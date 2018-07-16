@@ -21,49 +21,54 @@ use Fisharebest\Webtrees\I18N;
 /**
  * Class BatchUpdateMissingDeathPlugin Batch Update plugin: add missing 1 BIRT/DEAT Y
  */
-class BatchUpdateMissingDeathPlugin extends BatchUpdateBasePlugin {
-	/**
-	 * User-friendly name for this plugin.
-	 *
-	 * @return string
-	 */
-	public function getName() {
-		return I18N::translate('Add missing death records');
-	}
+class BatchUpdateMissingDeathPlugin extends BatchUpdateBasePlugin
+{
+    /**
+     * User-friendly name for this plugin.
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return I18N::translate('Add missing death records');
+    }
 
-	/**
-	 * Description / help-text for this plugin.
-	 *
-	 * @return string
-	 */
-	public function getDescription() {
-		return I18N::translate('You can speed up the privacy calculations by adding a death record to individuals whose death can be inferred from other dates, but who do not have a record of death, burial, cremation, etc.');
-	}
+    /**
+     * Description / help-text for this plugin.
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return I18N::translate('You can speed up the privacy calculations by adding a death record to individuals whose death can be inferred from other dates, but who do not have a record of death, burial, cremation, etc.');
+    }
 
-	/**
-	 * Does this record need updating?
-	 *
-	 * @param GedcomRecord $record
-	 *
-	 * @return bool
-	 */
-	public function doesRecordNeedUpdate(GedcomRecord $record): bool {
-		$gedcom = $record->getGedcom();
+    /**
+     * Does this record need updating?
+     *
+     * @param GedcomRecord $record
+     *
+     * @return bool
+     */
+    public function doesRecordNeedUpdate(GedcomRecord $record): bool
+    {
+        $gedcom = $record->getGedcom();
 
-		return !preg_match('/\n1 (' . WT_EVENTS_DEAT . ')/', $gedcom) && $record->isDead();
-	}
+        return !preg_match('/\n1 (' . WT_EVENTS_DEAT . ')/', $gedcom) && $record->isDead();
+    }
 
-	/**
-	 * Apply any updates to this record
-	 *
-	 * @param GedcomRecord $record
-	 *
-	 * @return string
-	 */
-	public function updateRecord(GedcomRecord $record): string {
-		$old_gedcom = $record->getGedcom();
-		$new_gedcom = $old_gedcom . "\n1 DEAT Y";
+    /**
+     * Apply any updates to this record
+     *
+     * @param GedcomRecord $record
+     *
+     * @return string
+     */
+    public function updateRecord(GedcomRecord $record): string
+    {
+        $old_gedcom = $record->getGedcom();
+        $new_gedcom = $old_gedcom . "\n1 DEAT Y";
 
-		return $new_gedcom;
-	}
+        return $new_gedcom;
+    }
 }

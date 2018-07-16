@@ -19,36 +19,39 @@ namespace Fisharebest\Webtrees\Census;
 /**
  * Test harness for the class CensusOfScotland
  */
-class CensusOfScotlandTest extends \PHPUnit\Framework\TestCase {
-	/**
-	 * Test the census place
-	 *
-	 * @covers \Fisharebest\Webtrees\Census\CensusOfScotland
-	 */
-	public function testPlace() {
-		$census = new CensusOfScotland;
+class CensusOfScotlandTest extends \PHPUnit\Framework\TestCase
+{
+    /**
+     * Test the census place
+     *
+     * @covers \Fisharebest\Webtrees\Census\CensusOfScotland
+     */
+    public function testPlace()
+    {
+        $census = new CensusOfScotland;
 
-		$this->assertSame('Scotland', $census->censusPlace());
-	}
+        $this->assertSame('Scotland', $census->censusPlace());
+    }
 
-	/**
-	 * Test the census dates
-	 *
-	 * @covers \Fisharebest\Webtrees\Census\CensusOfScotland
-	 */
-	public function testAllDates() {
-		$census = new CensusOfScotland;
+    /**
+     * Test the census dates
+     *
+     * @covers \Fisharebest\Webtrees\Census\CensusOfScotland
+     */
+    public function testAllDates()
+    {
+        $census = new CensusOfScotland;
 
-		$census_dates = $census->allCensusDates();
+        $census_dates = $census->allCensusDates();
 
-		$this->assertCount(8, $census_dates);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfScotland1841', $census_dates[0]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfScotland1851', $census_dates[1]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfScotland1861', $census_dates[2]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfScotland1871', $census_dates[3]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfScotland1881', $census_dates[4]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfScotland1891', $census_dates[5]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfScotland1901', $census_dates[6]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfScotland1911', $census_dates[7]);
-	}
+        $this->assertCount(8, $census_dates);
+        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfScotland1841', $census_dates[0]);
+        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfScotland1851', $census_dates[1]);
+        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfScotland1861', $census_dates[2]);
+        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfScotland1871', $census_dates[3]);
+        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfScotland1881', $census_dates[4]);
+        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfScotland1891', $census_dates[5]);
+        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfScotland1901', $census_dates[6]);
+        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfScotland1911', $census_dates[7]);
+    }
 }

@@ -18,17 +18,20 @@
 /**
  * Test harness for the class GregorianDate
  */
-class GregorianDateTest extends \PHPUnit\Framework\TestCase {
-	/**
-	 * Prepare the environment for these tests
-	 */
-	public function setUp() {
-	}
+class GregorianDateTest extends \PHPUnit\Framework\TestCase
+{
+    /**
+     * Prepare the environment for these tests
+     */
+    public function setUp()
+    {
+    }
 
-	/**
-	 * Test that the class exists
-	 */
-	public function testClassExists() {
-		$this->assertTrue(class_exists('\Fisharebest\Webtrees\Date\GregorianDate'));
-	}
+    /**
+     * Test that the class exists
+     */
+    public function testClassExists()
+    {
+        $this->assertTrue(class_exists('\Fisharebest\Webtrees\Date\GregorianDate'));
+    }
 }

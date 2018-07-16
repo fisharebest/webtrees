@@ -20,155 +20,170 @@ use Fisharebest\Webtrees\Menu;
 /**
  * Test harness for the class Menu
  */
-class MenuTest extends \PHPUnit\Framework\TestCase {
-	/**
-	 * Prepare the environment for these tests.
-	 */
-	public function setUp() {
-	}
+class MenuTest extends \PHPUnit\Framework\TestCase
+{
+    /**
+     * Prepare the environment for these tests.
+     */
+    public function setUp()
+    {
+    }
 
-	/**
-	 * Test the constructor with default parameters.
-	 */
-	public function testConstructorDefaults() {
-		$menu = new Menu('Test!');
+    /**
+     * Test the constructor with default parameters.
+     */
+    public function testConstructorDefaults()
+    {
+        $menu = new Menu('Test!');
 
-		$this->assertSame('Test!', $menu->getLabel());
-		$this->assertSame('#', $menu->getLink());
-		$this->assertSame('', $menu->getClass());
-		$this->assertSame([], $menu->getAttrs());
-		$this->assertSame([], $menu->getSubmenus());
-	}
+        $this->assertSame('Test!', $menu->getLabel());
+        $this->assertSame('#', $menu->getLink());
+        $this->assertSame('', $menu->getClass());
+        $this->assertSame([], $menu->getAttrs());
+        $this->assertSame([], $menu->getSubmenus());
+    }
 
-	/**
-	 * Test the constructor with non-default parameters.
-	 */
-	public function testConstructorNonDefaults() {
-		$submenus = [new Menu('Submenu')];
-		$menu     = new Menu('Test!', 'link.html', 'link-class', ['foo' => 'bar'], $submenus);
+    /**
+     * Test the constructor with non-default parameters.
+     */
+    public function testConstructorNonDefaults()
+    {
+        $submenus = [new Menu('Submenu')];
+        $menu     = new Menu('Test!', 'link.html', 'link-class', ['foo' => 'bar'], $submenus);
 
-		$this->assertSame('Test!', $menu->getLabel());
-		$this->assertSame('link.html', $menu->getLink());
-		$this->assertSame('link-class', $menu->getClass());
-		$this->assertSame(['foo' => 'bar'], $menu->getAttrs());
-		$this->assertSame($submenus, $menu->getSubmenus());
-	}
+        $this->assertSame('Test!', $menu->getLabel());
+        $this->assertSame('link.html', $menu->getLink());
+        $this->assertSame('link-class', $menu->getClass());
+        $this->assertSame(['foo' => 'bar'], $menu->getAttrs());
+        $this->assertSame($submenus, $menu->getSubmenus());
+    }
 
-	/**
-	 * Test the getter/setter for the label.
-	 */
-	public function testGetterSetterLabel() {
-		$menu = new Menu('Test!');
+    /**
+     * Test the getter/setter for the label.
+     */
+    public function testGetterSetterLabel()
+    {
+        $menu = new Menu('Test!');
 
-		$return = $menu->setLabel('Label');
+        $return = $menu->setLabel('Label');
 
-		$this->assertSame($return, $menu);
-		$this->assertSame('Label', $menu->getLabel());
-	}
+        $this->assertSame($return, $menu);
+        $this->assertSame('Label', $menu->getLabel());
+    }
 
-	/**
-	 * Test the getter/setter for the link.
-	 */
-	public function testGetterSetterLink() {
-		$menu = new Menu('Test!');
+    /**
+     * Test the getter/setter for the link.
+     */
+    public function testGetterSetterLink()
+    {
+        $menu = new Menu('Test!');
 
-		$return = $menu->setLink('link.html');
+        $return = $menu->setLink('link.html');
 
-		$this->assertSame($return, $menu);
-		$this->assertSame('link.html', $menu->getLink());
-	}
+        $this->assertSame($return, $menu);
+        $this->assertSame('link.html', $menu->getLink());
+    }
 
-	/**
-	 * Test the getter/setter for the ID.
-	 */
-	public function testGetterSetterId() {
-		$menu = new Menu('Test!');
+    /**
+     * Test the getter/setter for the ID.
+     */
+    public function testGetterSetterId()
+    {
+        $menu = new Menu('Test!');
 
-		$return = $menu->setClass('link-class');
+        $return = $menu->setClass('link-class');
 
-		$this->assertSame($return, $menu);
-		$this->assertSame('link-class', $menu->getClass());
-	}
+        $this->assertSame($return, $menu);
+        $this->assertSame('link-class', $menu->getClass());
+    }
 
-	/**
-	 * Test the getter/setter for the Attrs event.
-	 */
-	public function testGetterSetterAttrs() {
-		$menu = new Menu('Test!');
+    /**
+     * Test the getter/setter for the Attrs event.
+     */
+    public function testGetterSetterAttrs()
+    {
+        $menu = new Menu('Test!');
 
-		$return = $menu->setAttrs(['foo' => 'bar']);
+        $return = $menu->setAttrs(['foo' => 'bar']);
 
-		$this->assertSame($return, $menu);
-		$this->assertSame(['foo' => 'bar'], $menu->getAttrs());
-	}
+        $this->assertSame($return, $menu);
+        $this->assertSame(['foo' => 'bar'], $menu->getAttrs());
+    }
 
-	/**
-	 * Test the getter/setter for the submenus.
-	 */
-	public function testGetterSetterSubmenus() {
-		$menu     = new Menu('Test!');
-		$submenus = [
-			new Menu('Sub1'),
-			new Menu('Sub2'),
-		];
+    /**
+     * Test the getter/setter for the submenus.
+     */
+    public function testGetterSetterSubmenus()
+    {
+        $menu     = new Menu('Test!');
+        $submenus = [
+            new Menu('Sub1'),
+            new Menu('Sub2'),
+        ];
 
-		$return = $menu->setSubmenus($submenus);
+        $return = $menu->setSubmenus($submenus);
 
-		$this->assertSame($return, $menu);
-		$this->assertSame($submenus, $menu->getSubmenus());
-	}
+        $this->assertSame($return, $menu);
+        $this->assertSame($submenus, $menu->getSubmenus());
+    }
 
-	/**
-	 * Test the list rendering for a simple link.
-	 */
-	public function testFormatAsList() {
-		$menu = new Menu('Test!', 'link.html');
+    /**
+     * Test the list rendering for a simple link.
+     */
+    public function testFormatAsList()
+    {
+        $menu = new Menu('Test!', 'link.html');
 
-		$this->assertSame('<li class=""><a href="link.html">Test!</a></li>', $menu->getMenuAsList());
-	}
+        $this->assertSame('<li class=""><a href="link.html">Test!</a></li>', $menu->getMenuAsList());
+    }
 
-	/**
-	 * Test the list rendering for a simple link with a CSS ID.
-	 */
-	public function testFormatAsListWithClass() {
-		$menu = new Menu('Test!', 'link.html', 'link-class');
+    /**
+     * Test the list rendering for a simple link with a CSS ID.
+     */
+    public function testFormatAsListWithClass()
+    {
+        $menu = new Menu('Test!', 'link.html', 'link-class');
 
-		$this->assertSame('<li class="link-class"><a href="link.html">Test!</a></li>', $menu->getMenuAsList());
-	}
+        $this->assertSame('<li class="link-class"><a href="link.html">Test!</a></li>', $menu->getMenuAsList());
+    }
 
-	/**
-	 * Test the list rendering for an empty target.
-	 */
-	public function testFormatAsListWithNoTarget() {
-		$menu = new Menu('Test!', '');
+    /**
+     * Test the list rendering for an empty target.
+     */
+    public function testFormatAsListWithNoTarget()
+    {
+        $menu = new Menu('Test!', '');
 
-		$this->assertSame('<li class=""><a>Test!</a></li>', $menu->getMenuAsList());
-	}
+        $this->assertSame('<li class=""><a>Test!</a></li>', $menu->getMenuAsList());
+    }
 
-	/**
-	 * Test the list rendering for a default (hash) target.
-	 */
-	public function testFormatAsListWithHashTarget() {
-		$menu = new Menu('Test!');
+    /**
+     * Test the list rendering for a default (hash) target.
+     */
+    public function testFormatAsListWithHashTarget()
+    {
+        $menu = new Menu('Test!');
 
-		$this->assertSame('<li class=""><a href="#">Test!</a></li>', $menu->getMenuAsList());
-	}
+        $this->assertSame('<li class=""><a href="#">Test!</a></li>', $menu->getMenuAsList());
+    }
 
-	/**
-	 * Test the list rendering for an onclick link.
-	 */
-	public function testFormatAsListWithAttrs() {
-		$menu = new Menu('Test!', '#', '', ['foo' => 'bar']);
+    /**
+     * Test the list rendering for an onclick link.
+     */
+    public function testFormatAsListWithAttrs()
+    {
+        $menu = new Menu('Test!', '#', '', ['foo' => 'bar']);
 
-		$this->assertSame('<li class=""><a href="#" foo="bar">Test!</a></li>', $menu->getMenuAsList());
-	}
+        $this->assertSame('<li class=""><a href="#" foo="bar">Test!</a></li>', $menu->getMenuAsList());
+    }
 
-	/**
-	 * Test the list rendering for an onclick link.
-	 */
-	public function testFormatAsListWithAttrsAndId() {
-		$menu = new Menu('Test!', '#', 'link-class', ['foo' => 'bar']);
+    /**
+     * Test the list rendering for an onclick link.
+     */
+    public function testFormatAsListWithAttrsAndId()
+    {
+        $menu = new Menu('Test!', '#', 'link-class', ['foo' => 'bar']);
 
-		$this->assertSame('<li class="link-class"><a href="#" foo="bar">Test!</a></li>', $menu->getMenuAsList());
-	}
+        $this->assertSame('<li class="link-class"><a href="#" foo="bar">Test!</a></li>', $menu->getMenuAsList());
+    }
 }

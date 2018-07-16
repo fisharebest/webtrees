@@ -33,38 +33,42 @@ use Webuni\CommonMark\TableExtension\TableRowsRenderer;
  *
  * Based on the table parser from webuni/commonmark-table-extension.
  */
-class CensusTableExtension extends Extension {
-	/**
-	 * Returns a list of block parsers to add to the existing list
-	 *
-	 * @return BlockParserInterface[]
-	 */
-	public function getBlockParsers() {
-		return [
-			new CensusTableParser,
-		];
-	}
+class CensusTableExtension extends Extension
+{
+    /**
+     * Returns a list of block parsers to add to the existing list
+     *
+     * @return BlockParserInterface[]
+     */
+    public function getBlockParsers()
+    {
+        return [
+            new CensusTableParser,
+        ];
+    }
 
-	/**
-	 * Returns a list of block renderers to add to the existing list
-	 *
-	 * The list keys are the block class names which the corresponding value (renderer) will handle.
-	 *
-	 * @return BlockRendererInterface[]
-	 */
-	public function getBlockRenderers() {
-		return [
-			Table::class     => new TableRenderer,
-			TableRows::class => new TableRowsRenderer,
-			TableRow::class  => new TableRowRenderer,
-			TableCell::class => new TableCellRenderer,
-		];
-	}
+    /**
+     * Returns a list of block renderers to add to the existing list
+     *
+     * The list keys are the block class names which the corresponding value (renderer) will handle.
+     *
+     * @return BlockRendererInterface[]
+     */
+    public function getBlockRenderers()
+    {
+        return [
+            Table::class     => new TableRenderer,
+            TableRows::class => new TableRowsRenderer,
+            TableRow::class  => new TableRowRenderer,
+            TableCell::class => new TableCellRenderer,
+        ];
+    }
 
-	/**
-	 * @return string
-	 */
-	public function getName() {
-		return 'censustabletable';
-	}
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return 'censustabletable';
+    }
 }

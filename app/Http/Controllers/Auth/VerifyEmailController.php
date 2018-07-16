@@ -31,80 +31,82 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 /**
  * Controller for email verification.
  */
-class VerifyEmailController extends AbstractBaseController {
-	/**
-	 * Respond to a verification link that was emailed to a user.
-	 *
-	 * @param Request $request
-	 *
-	 * @return Response
-	 * @throws NotFoundHttpException
-	 */
-	public function verify(Request $request): Response {
-		/** @var Tree $tree */
-		$tree = $request->attributes->get('tree');
+class VerifyEmailController extends AbstractBaseController
+{
+    /**
+     * Respond to a verification link that was emailed to a user.
+     *
+     * @param Request $request
+     *
+     * @return Response
+     * @throws NotFoundHttpException
+     */
+    public function verify(Request $request): Response
+    {
+        /** @var Tree $tree */
+        $tree = $request->attributes->get('tree');
 
-		$username = $request->get('username', '');
-		$token    = $request->get('token', '');
+        $username = $request->get('username', '');
+        $token    = $request->get('token', '');
 
-		$title = I18N::translate('User verification');
+        $title = I18N::translate('User verification');
 
-		$user = User::findByUserName($username);
+        $user = User::findByUserName($username);
 
-		if ($user !== null && $user->getPreference('reg_hashcode') === $token) {
-			// switch language to webmaster settings
-			$webmaster = User::find($tree->getPreference('WEBMASTER_USER_ID'));
-			I18N::init($webmaster->getPreference('language'));
+        if ($user !== null && $user->getPreference('reg_hashcode') === $token) {
+            // switch language to webmaster settings
+            $webmaster = User::find($tree->getPreference('WEBMASTER_USER_ID'));
+            I18N::init($webmaster->getPreference('language'));
 
-			// Create a dummy user, so we can send messages from the tree.
-			$sender = new User(
-				(object) [
-					'user_id'   => null,
-					'user_name' => '',
-					'real_name' => $tree->getTitle(),
-					'email'     => $tree->getPreference('WEBTREES_EMAIL'),
-				]
-			);
+            // Create a dummy user, so we can send messages from the tree.
+            $sender = new User(
+                (object)[
+                    'user_id'   => null,
+                    'user_name' => '',
+                    'real_name' => $tree->getTitle(),
+                    'email'     => $tree->getPreference('WEBTREES_EMAIL'),
+                ]
+            );
 
-			Mail::send(
-				$sender,
-				$webmaster,
-				$sender,
-				/* I18N: %s is a server name/URL */
-				I18N::translate('New user at %s', WT_BASE_URL . ' ' . $tree->getTitle()),
-				view('emails/verify-notify-text', ['user' => $user]),
-				view('emails/verify-notify-html', ['user' => $user])
-			);
+            Mail::send(
+                $sender,
+                $webmaster,
+                $sender,
+                /* I18N: %s is a server name/URL */
+                I18N::translate('New user at %s', WT_BASE_URL . ' ' . $tree->getTitle()),
+                view('emails/verify-notify-text', ['user' => $user]),
+                view('emails/verify-notify-html', ['user' => $user])
+            );
 
-			$mail1_method = $webmaster->getPreference('CONTACT_METHOD');
-			if ($mail1_method !== 'messaging3' && $mail1_method !== 'mailto' && $mail1_method !== 'none') {
-				Database::prepare(
-					"INSERT INTO `##message` (sender, ip_address, user_id, subject, body) VALUES (? ,? ,? ,? ,?)"
-				)->execute([
-					$username,
-					$request->getClientIp(),
-					$webmaster->getUserId(),
-					/* I18N: %s is a server name/URL */
-					I18N::translate('New user at %s', WT_BASE_URL . ' ' . $tree->getTitle()),
-					view('emails/verify-notify-text', ['user' => $user]),
-				]);
-			}
-			I18N::init(WT_LOCALE);
+            $mail1_method = $webmaster->getPreference('CONTACT_METHOD');
+            if ($mail1_method !== 'messaging3' && $mail1_method !== 'mailto' && $mail1_method !== 'none') {
+                Database::prepare(
+                    "INSERT INTO `##message` (sender, ip_address, user_id, subject, body) VALUES (? ,? ,? ,? ,?)"
+                )->execute([
+                    $username,
+                    $request->getClientIp(),
+                    $webmaster->getUserId(),
+                    /* I18N: %s is a server name/URL */
+                    I18N::translate('New user at %s', WT_BASE_URL . ' ' . $tree->getTitle()),
+                    view('emails/verify-notify-text', ['user' => $user]),
+                ]);
+            }
+            I18N::init(WT_LOCALE);
 
-			$user
-				->setPreference('verified', '1')
-				->setPreference('reg_timestamp', date('U'))
-				->setPreference('reg_hashcode', '');
+            $user
+                ->setPreference('verified', '1')
+                ->setPreference('reg_timestamp', date('U'))
+                ->setPreference('reg_hashcode', '');
 
-			Log::addAuthenticationLog('User ' . $username . ' verified their email address');
+            Log::addAuthenticationLog('User ' . $username . ' verified their email address');
 
-			return $this->viewResponse('verify-success-page', [
-				'title' => $title,
-			]);
-		} else {
-			return $this->viewResponse('verify-failure-page', [
-				'title' => $title,
-			]);
-		}
-	}
+            return $this->viewResponse('verify-success-page', [
+                'title' => $title,
+            ]);
+        } else {
+            return $this->viewResponse('verify-failure-page', [
+                'title' => $title,
+            ]);
+        }
+    }
 }

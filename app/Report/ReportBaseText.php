@@ -18,72 +18,76 @@ namespace Fisharebest\Webtrees\Report;
 /**
  * Class ReportBaseText
  */
-class ReportBaseText extends ReportBaseElement {
-	/**
-	 * Text color in HTML code
-	 *
-	 * @var string
-	 */
-	public $color;
-	/**
-	 * Style name
-	 *
-	 * @var string
-	 */
-	public $styleName;
-	/**
-	 * Remaining width of a cel
-	 *
-	 * @var int User unit (points)
-	 */
-	public $wrapWidthRemaining;
-	/**
-	 * Original width of a cell
-	 *
-	 * @var int User unit (points)
-	 */
-	public $wrapWidthCell;
+class ReportBaseText extends ReportBaseElement
+{
+    /**
+     * Text color in HTML code
+     *
+     * @var string
+     */
+    public $color;
+    /**
+     * Style name
+     *
+     * @var string
+     */
+    public $styleName;
+    /**
+     * Remaining width of a cel
+     *
+     * @var int User unit (points)
+     */
+    public $wrapWidthRemaining;
+    /**
+     * Original width of a cell
+     *
+     * @var int User unit (points)
+     */
+    public $wrapWidthCell;
 
-	/**
-	 * Create a Text class - Base
-	 *
-	 * @param string $style The name of the text style
-	 * @param string $color HTML color code
-	 */
-	public function __construct($style, $color) {
-		$this->text               = '';
-		$this->color              = $color;
-		$this->wrapWidthRemaining = 0;
-		$this->styleName          = $style;
+    /**
+     * Create a Text class - Base
+     *
+     * @param string $style The name of the text style
+     * @param string $color HTML color code
+     */
+    public function __construct($style, $color)
+    {
+        $this->text               = '';
+        $this->color              = $color;
+        $this->wrapWidthRemaining = 0;
+        $this->styleName          = $style;
 
-		return 0;
-	}
+        return 0;
+    }
 
-	/**
-	 * Set the width for word-wrapping.
-	 *
-	 * @param $wrapwidth
-	 * @param $cellwidth
-	 *
-	 * @return mixed
-	 */
-	public function setWrapWidth($wrapwidth, $cellwidth) {
-		$this->wrapWidthCell = $cellwidth;
-		if (strpos($this->text, "\n") !== false) {
-			$this->wrapWidthRemaining = $cellwidth;
-		} else {
-			$this->wrapWidthRemaining = $wrapwidth;
-		}
+    /**
+     * Set the width for word-wrapping.
+     *
+     * @param $wrapwidth
+     * @param $cellwidth
+     *
+     * @return mixed
+     */
+    public function setWrapWidth($wrapwidth, $cellwidth)
+    {
+        $this->wrapWidthCell = $cellwidth;
+        if (strpos($this->text, "\n") !== false) {
+            $this->wrapWidthRemaining = $cellwidth;
+        } else {
+            $this->wrapWidthRemaining = $wrapwidth;
+        }
 
-		return $this->wrapWidthRemaining;
-	}
+        return $this->wrapWidthRemaining;
+    }
 
-	/**
-	 * Get the style name.
-	 *
-	 * @return string
-	 */
-	public function getStyleName() {
-		return $this->styleName;
-	}
+    /**
+     * Get the style name.
+     *
+     * @return string
+     */
+    public function getStyleName()
+    {
+        return $this->styleName;
+    }
 }

@@ -23,27 +23,29 @@ use PDOException;
 /**
  * Upgrade the database schema from version 2 to version 3.
  */
-class Migration2 implements MigrationInterface {
-	/** {@inheritDoc} */
-	public function upgrade() {
-		// Delete any data that might violate the new constraints
-		Database::exec(
-			"DELETE FROM `##news`" .
-			" WHERE user_id   NOT IN (SELECT user_id   FROM `##user`  )" .
-			" OR    gedcom_id NOT IN (SELECT gedcom_id FROM `##gedcom`)"
-		);
+class Migration2 implements MigrationInterface
+{
+    /** {@inheritDoc} */
+    public function upgrade()
+    {
+        // Delete any data that might violate the new constraints
+        Database::exec(
+            "DELETE FROM `##news`" .
+            " WHERE user_id   NOT IN (SELECT user_id   FROM `##user`  )" .
+            " OR    gedcom_id NOT IN (SELECT gedcom_id FROM `##gedcom`)"
+        );
 
-		// Add the new constraints
-		try {
-			Database::exec(
-				"ALTER TABLE `##news`" .
-				" ADD FOREIGN KEY `##news_fk1` (user_id  ) REFERENCES `##user`   (user_id)   ON DELETE CASCADE," .
-				" ADD FOREIGN KEY `##news_fk2` (gedcom_id) REFERENCES `##gedcom` (gedcom_id) ON DELETE CASCADE"
-			);
-		} catch (PDOException $ex) {
-			DebugBar::addThrowable($ex);
+        // Add the new constraints
+        try {
+            Database::exec(
+                "ALTER TABLE `##news`" .
+                " ADD FOREIGN KEY `##news_fk1` (user_id  ) REFERENCES `##user`   (user_id)   ON DELETE CASCADE," .
+                " ADD FOREIGN KEY `##news_fk2` (gedcom_id) REFERENCES `##gedcom` (gedcom_id) ON DELETE CASCADE"
+            );
+        } catch (PDOException $ex) {
+            DebugBar::addThrowable($ex);
 
-			// Already updated?
-		}
-	}
+            // Already updated?
+        }
+    }
 }

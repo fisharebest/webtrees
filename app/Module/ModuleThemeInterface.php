@@ -20,5 +20,6 @@ namespace Fisharebest\Webtrees\Module;
  *
  * This class is not currently used
  */
-interface ModuleThemeInterface {
+interface ModuleThemeInterface
+{
 }

@@ -24,75 +24,84 @@ use Fisharebest\Webtrees\Individual;
  * Class ExtraInformationModule
  * A sidebar to show non-genealogy information about an individual
  */
-class ExtraInformationModule extends AbstractModule implements ModuleSidebarInterface {
-	/** {@inheritdoc} */
-	public function getTitle() {
-		return /* I18N: Name of a module/sidebar */ I18N::translate('Extra information');
-	}
+class ExtraInformationModule extends AbstractModule implements ModuleSidebarInterface
+{
+    /** {@inheritdoc} */
+    public function getTitle()
+    {
+        return /* I18N: Name of a module/sidebar */
+            I18N::translate('Extra information');
+    }
 
-	/** {@inheritdoc} */
-	public function getDescription() {
-		return /* I18N: Description of the “Extra information” module */ I18N::translate('A sidebar showing non-genealogy information about an individual.');
-	}
+    /** {@inheritdoc} */
+    public function getDescription()
+    {
+        return /* I18N: Description of the “Extra information” module */
+            I18N::translate('A sidebar showing non-genealogy information about an individual.');
+    }
 
-	/** {@inheritdoc} */
-	public function defaultSidebarOrder() {
-		return 10;
-	}
+    /** {@inheritdoc} */
+    public function defaultSidebarOrder()
+    {
+        return 10;
+    }
 
-	/** {@inheritdoc} */
-	public function hasSidebarContent(Individual $individual) {
-		return true;
-	}
+    /** {@inheritdoc} */
+    public function hasSidebarContent(Individual $individual)
+    {
+        return true;
+    }
 
-	/**
-	 * Load this sidebar synchronously.
-	 *
-	 * @param Individual $individual
-	 *
-	 * @return string
-	 */
-	public function getSidebarContent(Individual $individual) {
-		$indifacts = [];
-		// The individual’s own facts
-		foreach ($individual->getFacts() as $fact) {
-			if (self::showFact($fact)) {
-				$indifacts[] = $fact;
-			}
-		}
+    /**
+     * Load this sidebar synchronously.
+     *
+     * @param Individual $individual
+     *
+     * @return string
+     */
+    public function getSidebarContent(Individual $individual)
+    {
+        $indifacts = [];
+        // The individual’s own facts
+        foreach ($individual->getFacts() as $fact) {
+            if (self::showFact($fact)) {
+                $indifacts[] = $fact;
+            }
+        }
 
-		ob_start();
-		if (!$indifacts) {
-			echo I18N::translate('There are no facts for this individual.');
-		} else {
-			foreach ($indifacts as $fact) {
-				FunctionsPrintFacts::printFact($fact, $individual);
-			}
-		}
+        ob_start();
+        if (!$indifacts) {
+            echo I18N::translate('There are no facts for this individual.');
+        } else {
+            foreach ($indifacts as $fact) {
+                FunctionsPrintFacts::printFact($fact, $individual);
+            }
+        }
 
-		return strip_tags(ob_get_clean(), '<a><div><span>');
-	}
+        return strip_tags(ob_get_clean(), '<a><div><span>');
+    }
 
-	/**
-	 * Does this module display a particular fact
-	 *
-	 * @param Fact $fact
-	 *
-	 * @return bool
-	 */
-	public static function showFact(Fact $fact) {
-		switch ($fact->getTag()) {
-			case 'AFN':
-			case 'CHAN':
-			case 'IDNO':
-			case 'REFN':
-			case 'RFN':
-			case 'RIN':
-			case 'SSN':
-			case '_UID':
-				return true;
-			default:
-				return false;
-		}
-	}
+    /**
+     * Does this module display a particular fact
+     *
+     * @param Fact $fact
+     *
+     * @return bool
+     */
+    public static function showFact(Fact $fact)
+    {
+        switch ($fact->getTag()) {
+            case 'AFN':
+            case 'CHAN':
+            case 'IDNO':
+            case 'REFN':
+            case 'RFN':
+            case 'RIN':
+            case 'SSN':
+            case '_UID':
+                return true;
+            default:
+                return false;
+        }
+    }
 }

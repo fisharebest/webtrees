@@ -23,75 +23,86 @@ use Fisharebest\Webtrees\Individual;
 /**
  * Class SourcesTabModule
  */
-class SourcesTabModule extends AbstractModule implements ModuleTabInterface {
-	/** @var Fact[] All facts belonging to this source. */
-	private $facts;
+class SourcesTabModule extends AbstractModule implements ModuleTabInterface
+{
+    /** @var Fact[] All facts belonging to this source. */
+    private $facts;
 
-	/** {@inheritdoc} */
-	public function getTitle() {
-		return /* I18N: Name of a module */ I18N::translate('Sources');
-	}
+    /** {@inheritdoc} */
+    public function getTitle()
+    {
+        return /* I18N: Name of a module */
+            I18N::translate('Sources');
+    }
 
-	/** {@inheritdoc} */
-	public function getDescription() {
-		return /* I18N: Description of the “Sources” module */ I18N::translate('A tab showing the sources linked to an individual.');
-	}
+    /** {@inheritdoc} */
+    public function getDescription()
+    {
+        return /* I18N: Description of the “Sources” module */
+            I18N::translate('A tab showing the sources linked to an individual.');
+    }
 
-	/** {@inheritdoc} */
-	public function defaultTabOrder() {
-		return 30;
-	}
+    /** {@inheritdoc} */
+    public function defaultTabOrder()
+    {
+        return 30;
+    }
 
-	/** {@inheritdoc} */
-	public function hasTabContent(Individual $individual) {
-		return $individual->canedit() || $this->getFactsWithSources($individual);
-	}
+    /** {@inheritdoc} */
+    public function hasTabContent(Individual $individual)
+    {
+        return $individual->canedit() || $this->getFactsWithSources($individual);
+    }
 
-	/** {@inheritdoc} */
-	public function isGrayedOut(Individual $individual) {
-		return !$this->getFactsWithSources($individual);
-	}
+    /** {@inheritdoc} */
+    public function isGrayedOut(Individual $individual)
+    {
+        return !$this->getFactsWithSources($individual);
+    }
 
-	/** {@inheritdoc} */
-	public function getTabContent(Individual $individual) {
-		return view('modules/sources_tab/tab', [
-			'can_edit'   => $individual->canEdit(),
-			'individual' => $individual,
-			'facts'      => $this->getFactsWithSources($individual),
-		]);
-	}
+    /** {@inheritdoc} */
+    public function getTabContent(Individual $individual)
+    {
+        return view('modules/sources_tab/tab', [
+            'can_edit'   => $individual->canEdit(),
+            'individual' => $individual,
+            'facts'      => $this->getFactsWithSources($individual),
+        ]);
+    }
 
-	/**
-	 * Get all the facts for an individual which contain sources.
-	 *
-	 * @param Individual $individual
-	 *
-	 * @return Fact[]
-	 */
-	private function getFactsWithSources(Individual $individual) {
-		if ($this->facts === null) {
-			$facts = $individual->getFacts();
-			foreach ($individual->getSpouseFamilies() as $family) {
-				if ($family->canShow()) {
-					foreach ($family->getFacts() as $fact) {
-						$facts[] = $fact;
-					}
-				}
-			}
-			$this->facts = [];
-			foreach ($facts as $fact) {
-				if (preg_match('/(?:^1|\n\d) SOUR/', $fact->getGedcom())) {
-					$this->facts[] = $fact;
-				}
-			}
-			Functions::sortFacts($this->facts);
-		}
+    /**
+     * Get all the facts for an individual which contain sources.
+     *
+     * @param Individual $individual
+     *
+     * @return Fact[]
+     */
+    private function getFactsWithSources(Individual $individual)
+    {
+        if ($this->facts === null) {
+            $facts = $individual->getFacts();
+            foreach ($individual->getSpouseFamilies() as $family) {
+                if ($family->canShow()) {
+                    foreach ($family->getFacts() as $fact) {
+                        $facts[] = $fact;
+                    }
+                }
+            }
+            $this->facts = [];
+            foreach ($facts as $fact) {
+                if (preg_match('/(?:^1|\n\d) SOUR/', $fact->getGedcom())) {
+                    $this->facts[] = $fact;
+                }
+            }
+            Functions::sortFacts($this->facts);
+        }
 
-		return $this->facts;
-	}
+        return $this->facts;
+    }
 
-	/** {@inheritdoc} */
-	public function canLoadAjax() {
-		return false;
-	}
+    /** {@inheritdoc} */
+    public function canLoadAjax()
+    {
+        return false;
+    }
 }

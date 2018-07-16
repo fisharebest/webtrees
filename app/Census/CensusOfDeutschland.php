@@ -19,28 +19,31 @@ namespace Fisharebest\Webtrees\Census;
 /**
  * Definitions for a census
  */
-class CensusOfDeutschland extends Census implements CensusPlaceInterface {
-	/**
-	 * All available censuses for this census place.
-	 *
-	 * @return CensusInterface[]
-	 */
-	public function allCensusDates() {
-		return [
-			new CensusOfDeutschland1819(),
-			new CensusOfDeutschland1867(),
-			new CensusOfDeutschlandNL1867(),
-			new CensusOfDeutschland1900(),
-			new CensusOfDeutschland1919(),
-		];
-	}
+class CensusOfDeutschland extends Census implements CensusPlaceInterface
+{
+    /**
+     * All available censuses for this census place.
+     *
+     * @return CensusInterface[]
+     */
+    public function allCensusDates()
+    {
+        return [
+            new CensusOfDeutschland1819(),
+            new CensusOfDeutschland1867(),
+            new CensusOfDeutschlandNL1867(),
+            new CensusOfDeutschland1900(),
+            new CensusOfDeutschland1919(),
+        ];
+    }
 
-	/**
-	 * Where did this census occur, in GEDCOM format.
-	 *
-	 * @return string
-	 */
-	public function censusPlace() {
-		return 'Deutschland';
-	}
+    /**
+     * Where did this census occur, in GEDCOM format.
+     *
+     * @return string
+     */
+    public function censusPlace()
+    {
+        return 'Deutschland';
+    }
 }

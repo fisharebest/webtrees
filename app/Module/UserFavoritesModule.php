@@ -17,7 +17,6 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
-use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
@@ -29,248 +28,263 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Class UserFavoritesModule
  */
-class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface {
-	/**
-	 * How should this module be labelled on tabs, menus, etc.?
-	 *
-	 * @return string
-	 */
-	public function getTitle() {
-		return /* I18N: Name of a module */ I18N::translate('Favorites');
-	}
+class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
+{
+    /**
+     * How should this module be labelled on tabs, menus, etc.?
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return /* I18N: Name of a module */
+            I18N::translate('Favorites');
+    }
 
-	/**
-	 * A sentence describing what this module does.
-	 *
-	 * @return string
-	 */
-	public function getDescription() {
-		return /* I18N: Description of the “Favorites” module */ I18N::translate('Display and manage a user’s favorite pages.');
-	}
+    /**
+     * A sentence describing what this module does.
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return /* I18N: Description of the “Favorites” module */
+            I18N::translate('Display and manage a user’s favorite pages.');
+    }
 
-	/**
-	 * Generate the HTML content of this block.
-	 *
-	 * @param Tree     $tree
-	 * @param int      $block_id
-	 * @param bool     $template
-	 * @param string[] $cfg
-	 *
-	 * @return string
-	 */
-	public function getBlock(Tree $tree, int $block_id, bool $template = true, array $cfg = []): string {
-		$content = view('modules/user_favorites/favorites', [
-			'block_id'   => $block_id,
-			'favorites'  => $this->getFavorites($tree, Auth::user()),
-			'tree'       => $tree,
-		]);
+    /**
+     * Generate the HTML content of this block.
+     *
+     * @param Tree     $tree
+     * @param int      $block_id
+     * @param bool     $template
+     * @param string[] $cfg
+     *
+     * @return string
+     */
+    public function getBlock(Tree $tree, int $block_id, bool $template = true, array $cfg = []): string
+    {
+        $content = view('modules/user_favorites/favorites', [
+            'block_id'  => $block_id,
+            'favorites' => $this->getFavorites($tree, Auth::user()),
+            'tree'      => $tree,
+        ]);
 
-		if ($template) {
-			return view('modules/block-template', [
-				'block'      => str_replace('_', '-', $this->getName()),
-				'id'         => $block_id,
-				'config_url' => '',
-				'title'      => $this->getTitle(),
-				'content'    => $content,
-			]);
-		} else {
-			return $content;
-		}
-	}
+        if ($template) {
+            return view('modules/block-template', [
+                'block'      => str_replace('_', '-', $this->getName()),
+                'id'         => $block_id,
+                'config_url' => '',
+                'title'      => $this->getTitle(),
+                'content'    => $content,
+            ]);
+        } else {
+            return $content;
+        }
+    }
 
-	/**
-	 * Should this block load asynchronously using AJAX?
-	 *
-	 * Simple blocks are faster in-line, more comples ones
-	 * can be loaded later.
-	 *
-	 * @return bool
-	 */
-	public function loadAjax(): bool {
-		return false;
-	}
+    /**
+     * Should this block load asynchronously using AJAX?
+     *
+     * Simple blocks are faster in-line, more comples ones
+     * can be loaded later.
+     *
+     * @return bool
+     */
+    public function loadAjax(): bool
+    {
+        return false;
+    }
 
-	/**
-	 * Can this block be shown on the user’s home page?
-	 *
-	 * @return bool
-	 */
-	public function isUserBlock(): bool {
-		return true;
-	}
+    /**
+     * Can this block be shown on the user’s home page?
+     *
+     * @return bool
+     */
+    public function isUserBlock(): bool
+    {
+        return true;
+    }
 
-	/**
-	 * Can this block be shown on the tree’s home page?
-	 *
-	 * @return bool
-	 */
-	public function isGedcomBlock(): bool {
-		return false;
-	}
+    /**
+     * Can this block be shown on the tree’s home page?
+     *
+     * @return bool
+     */
+    public function isGedcomBlock(): bool
+    {
+        return false;
+    }
 
-	/**
-	 * An HTML form to edit block settings
-	 *
-	 * @param Tree $tree
-	 * @param int  $block_id
-	 *
-	 * @return void
-	 */
-	public function configureBlock(Tree $tree, int $block_id) {
-	}
+    /**
+     * An HTML form to edit block settings
+     *
+     * @param Tree $tree
+     * @param int  $block_id
+     *
+     * @return void
+     */
+    public function configureBlock(Tree $tree, int $block_id)
+    {
+    }
 
-	/**
-	 * Get the favorites for a user
-	 *
-	 * @param Tree $tree
-	 * @param User $user
-	 *
-	 * @return stdClass[]
-	 */
-	public function getFavorites(Tree $tree, User $user) {
-		$favorites =
-			Database::prepare(
-				"SELECT favorite_id, user_id, gedcom_id, xref, favorite_type, title, note, url" .
-				" FROM `##favorite` WHERE gedcom_id = :tree_id AND user_id = :user_id")
-				->execute([
-					'tree_id' => $tree->getTreeId(),
-					'user_id' => $user->getUserId(),
-				])
-				->fetchAll();
+    /**
+     * Get the favorites for a user
+     *
+     * @param Tree $tree
+     * @param User $user
+     *
+     * @return stdClass[]
+     */
+    public function getFavorites(Tree $tree, User $user)
+    {
+        $favorites =
+            Database::prepare(
+                "SELECT favorite_id, user_id, gedcom_id, xref, favorite_type, title, note, url" .
+                " FROM `##favorite` WHERE gedcom_id = :tree_id AND user_id = :user_id")
+                ->execute([
+                    'tree_id' => $tree->getTreeId(),
+                    'user_id' => $user->getUserId(),
+                ])
+                ->fetchAll();
 
-		foreach ($favorites as $favorite) {
-			$favorite->record = GedcomRecord::getInstance($favorite->xref, $tree);
-		}
+        foreach ($favorites as $favorite) {
+            $favorite->record = GedcomRecord::getInstance($favorite->xref, $tree);
+        }
 
-		return $favorites;
-	}
+        return $favorites;
+    }
 
-	/**
-	 * @param Request $request
-	 *
-	 * @return RedirectResponse
-	 */
-	public function postAddFavoriteAction(Request $request): RedirectResponse {
-		/** @var Tree $tree */
-		$tree = $request->attributes->get('tree');
+    /**
+     * @param Request $request
+     *
+     * @return RedirectResponse
+     */
+    public function postAddFavoriteAction(Request $request): RedirectResponse
+    {
+        /** @var Tree $tree */
+        $tree = $request->attributes->get('tree');
 
-		/** @var User $user */
-		$user = $request->attributes->get('user');
+        /** @var User $user */
+        $user = $request->attributes->get('user');
 
-		$note  = $request->get('note', '');
-		$title = $request->get('title', '');
-		$url   = $request->get('url', '');
-		$xref  = $request->get('xref', '');
+        $note  = $request->get('note', '');
+        $title = $request->get('title', '');
+        $url   = $request->get('url', '');
+        $xref  = $request->get('xref', '');
 
-		if (Auth::check()) {
-			if ($url !== '') {
-				$this->addUrlFavorite($tree, $user, $url, $title ?: $url, $note);
-			} else {
-				$this->addRecordFavorite($tree, $user, $xref, $note);
-			}
-		}
+        if (Auth::check()) {
+            if ($url !== '') {
+                $this->addUrlFavorite($tree, $user, $url, $title ?: $url, $note);
+            } else {
+                $this->addRecordFavorite($tree, $user, $xref, $note);
+            }
+        }
 
-		$url = route('user-page', ['ged' => $tree->getName()]);
+        $url = route('user-page', ['ged' => $tree->getName()]);
 
-		return new RedirectResponse($url);
-	}
+        return new RedirectResponse($url);
+    }
 
-	/**
-	 * @param Request $request
-	 *
-	 * @return RedirectResponse
-	 */
-	public function postDeleteFavoriteAction(Request $request): RedirectResponse {
-		/** @var Tree $tree */
-		$tree = $request->attributes->get('tree');
+    /**
+     * @param Request $request
+     *
+     * @return RedirectResponse
+     */
+    public function postDeleteFavoriteAction(Request $request): RedirectResponse
+    {
+        /** @var Tree $tree */
+        $tree = $request->attributes->get('tree');
 
-		/** @var User $user */
-		$user = $request->attributes->get('user');
+        /** @var User $user */
+        $user = $request->attributes->get('user');
 
-		$favorite_id = (int) $request->get('favorite_id');
+        $favorite_id = (int)$request->get('favorite_id');
 
-		if (Auth::check()) {
-			Database::prepare(
-				"DELETE FROM `##favorite` WHERE favorite_id = :favorite_id AND user_id = :user_id"
-			)->execute([
-				'favorite_id' => $favorite_id,
-				'user_id'     => $user->getUserId(),
-			]);
-		}
+        if (Auth::check()) {
+            Database::prepare(
+                "DELETE FROM `##favorite` WHERE favorite_id = :favorite_id AND user_id = :user_id"
+            )->execute([
+                'favorite_id' => $favorite_id,
+                'user_id'     => $user->getUserId(),
+            ]);
+        }
 
-		$url = route('user-page', ['ged' => $tree->getName()]);
+        $url = route('user-page', ['ged' => $tree->getName()]);
 
-		return new RedirectResponse($url);
-	}
+        return new RedirectResponse($url);
+    }
 
-	/**
-	 * @param Tree   $tree
-	 * @param User   $user
-	 * @param string $url
-	 * @param string $title
-	 * @param string $note
-	 */
-	private function addUrlFavorite(Tree $tree, User $user, string $url, string $title, string $note) {
-		$favorite = Database::prepare(
-			"SELECT * FROM `##favorite` WHERE gedcom_id = :gedcom_id AND user_id = :user_id AND url = :url"
-		)->execute([
-			'gedcom_id' => $tree->getTreeId(),
-			'user_id'   => $user->getUserId(),
-			'url'       => $url,
-		])->fetchOneRow();
+    /**
+     * @param Tree   $tree
+     * @param User   $user
+     * @param string $url
+     * @param string $title
+     * @param string $note
+     */
+    private function addUrlFavorite(Tree $tree, User $user, string $url, string $title, string $note)
+    {
+        $favorite = Database::prepare(
+            "SELECT * FROM `##favorite` WHERE gedcom_id = :gedcom_id AND user_id = :user_id AND url = :url"
+        )->execute([
+            'gedcom_id' => $tree->getTreeId(),
+            'user_id'   => $user->getUserId(),
+            'url'       => $url,
+        ])->fetchOneRow();
 
-		if ($favorite === null) {
-			Database::prepare(
-				"INSERT INTO `##favorite` (gedcom_id, user_id, url, note, title) VALUES (:gedcom_id, :user_id, :url, :note, :title)"
-			)->execute([
-				'gedcom_id' => $tree->getTreeId(),
-				'user_id'   => $user->getUserId(),
-				'url'       => $url,
-				'note'      => $note,
-				'title'     => $title,
-			]);
-		} else {
-			Database::prepare(
-				"UPDATE `##favorite` SET note = :note, title = :title WHERE favorite_id = :favorite_id"
-			)->execute([
-				'note'        => $note,
-				'title'       => $title,
-				'favorite_id' => $favorite->favorite_id,
-			]);
-		}
-	}
+        if ($favorite === null) {
+            Database::prepare(
+                "INSERT INTO `##favorite` (gedcom_id, user_id, url, note, title) VALUES (:gedcom_id, :user_id, :url, :note, :title)"
+            )->execute([
+                'gedcom_id' => $tree->getTreeId(),
+                'user_id'   => $user->getUserId(),
+                'url'       => $url,
+                'note'      => $note,
+                'title'     => $title,
+            ]);
+        } else {
+            Database::prepare(
+                "UPDATE `##favorite` SET note = :note, title = :title WHERE favorite_id = :favorite_id"
+            )->execute([
+                'note'        => $note,
+                'title'       => $title,
+                'favorite_id' => $favorite->favorite_id,
+            ]);
+        }
+    }
 
-	/**
-	 * @param Tree   $tree
-	 * @param User   $user
-	 * @param string $xref
-	 * @param string $note
-	 */
-	private function addRecordFavorite(Tree $tree, User $user, string $xref, string $note) {
-		$favorite = Database::prepare(
-			"SELECT * FROM `##favorite` WHERE gedcom_id = :gedcom_id AND user_id = :user_id AND xref = :xref"
-		)->execute([
-			'gedcom_id' => $tree->getTreeId(),
-			'user_id'   => $user->getUserId(),
-			'xref'      => $xref,
-		])->fetchOneRow();
+    /**
+     * @param Tree   $tree
+     * @param User   $user
+     * @param string $xref
+     * @param string $note
+     */
+    private function addRecordFavorite(Tree $tree, User $user, string $xref, string $note)
+    {
+        $favorite = Database::prepare(
+            "SELECT * FROM `##favorite` WHERE gedcom_id = :gedcom_id AND user_id = :user_id AND xref = :xref"
+        )->execute([
+            'gedcom_id' => $tree->getTreeId(),
+            'user_id'   => $user->getUserId(),
+            'xref'      => $xref,
+        ])->fetchOneRow();
 
-		if ($favorite === null) {
-			Database::prepare(
-				"INSERT INTO `##favorite` (gedcom_id, user_id, xref, note) VALUES (:gedcom_id, :user_id, :xref, :note)"
-			)->execute([
-				'gedcom_id' => $tree->getTreeId(),
-				'user_id'   => $user->getUserId(),
-				'xref'      => $xref,
-				'note'      => $note,
-			]);
-		} else {
-			Database::prepare(
-				"UPDATE `##favorite` SET note = :note WHERE favorite_id = :favorite_id"
-			)->execute([
-				'note'        => $note,
-				'favorite_id' => $favorite->favorite_id,
-			]);
-		}
-	}
+        if ($favorite === null) {
+            Database::prepare(
+                "INSERT INTO `##favorite` (gedcom_id, user_id, xref, note) VALUES (:gedcom_id, :user_id, :xref, :note)"
+            )->execute([
+                'gedcom_id' => $tree->getTreeId(),
+                'user_id'   => $user->getUserId(),
+                'xref'      => $xref,
+                'note'      => $note,
+            ]);
+        } else {
+            Database::prepare(
+                "UPDATE `##favorite` SET note = :note WHERE favorite_id = :favorite_id"
+            )->execute([
+                'note'        => $note,
+                'favorite_id' => $favorite->favorite_id,
+            ]);
+        }
+    }
 }

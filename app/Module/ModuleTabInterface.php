@@ -14,52 +14,54 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 namespace Fisharebest\Webtrees\Module;
+
 use Fisharebest\Webtrees\Individual;
 
 /**
  * Interface ModuleTabInterface - Classes and libraries for module system
  */
-interface ModuleTabInterface {
-	/**
-	 * The user can re-arrange the tab order, but until they do, this
-	 * is the order in which tabs are shown.
-	 *
-	 * @return int
-	 */
-	public function defaultTabOrder();
+interface ModuleTabInterface
+{
+    /**
+     * The user can re-arrange the tab order, but until they do, this
+     * is the order in which tabs are shown.
+     *
+     * @return int
+     */
+    public function defaultTabOrder();
 
-	/**
-	 * Generate the HTML content of this tab.
-	 *
-	 * @param Individual $individual
-	 *
-	 * @return string
-	 */
-	public function getTabContent(Individual $individual);
+    /**
+     * Generate the HTML content of this tab.
+     *
+     * @param Individual $individual
+     *
+     * @return string
+     */
+    public function getTabContent(Individual $individual);
 
-	/**
-	 * Is this tab empty? If so, we don't always need to display it.
-	 *
-	 * @param Individual $individual
-	 *
-	 * @return bool
-	 */
-	public function hasTabContent(Individual $individual);
+    /**
+     * Is this tab empty? If so, we don't always need to display it.
+     *
+     * @param Individual $individual
+     *
+     * @return bool
+     */
+    public function hasTabContent(Individual $individual);
 
-	/**
-	 * Can this tab load asynchronously?
-	 *
-	 * @return bool
-	 */
-	public function canLoadAjax();
+    /**
+     * Can this tab load asynchronously?
+     *
+     * @return bool
+     */
+    public function canLoadAjax();
 
-	/**
-	 * A greyed out tab has no actual content, but may perhaps have
-	 * options to create content.
-	 *
-	 * @param Individual $individual
-	 *
-	 * @return bool
-	 */
-	public function isGrayedOut(Individual $individual);
+    /**
+     * A greyed out tab has no actual content, but may perhaps have
+     * options to create content.
+     *
+     * @param Individual $individual
+     *
+     * @return bool
+     */
+    public function isGrayedOut(Individual $individual);
 }

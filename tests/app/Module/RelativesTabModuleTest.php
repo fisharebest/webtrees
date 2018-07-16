@@ -18,17 +18,20 @@
 /**
  * Test harness for the class RelativesTabModule
  */
-class RelativesTabModuleTest extends \PHPUnit\Framework\TestCase {
-	/**
-	 * Prepare the environment for these tests
-	 */
-	public function setUp() {
-	}
+class RelativesTabModuleTest extends \PHPUnit\Framework\TestCase
+{
+    /**
+     * Prepare the environment for these tests
+     */
+    public function setUp()
+    {
+    }
 
-	/**
-	 * Test that the class exists
-	 */
-	public function testClassExists() {
-		$this->assertTrue(class_exists('\Fisharebest\Webtrees\Module\RelativesTabModule'));
-	}
+    /**
+     * Test that the class exists
+     */
+    public function testClassExists()
+    {
+        $this->assertTrue(class_exists('\Fisharebest\Webtrees\Module\RelativesTabModule'));
+    }
 }

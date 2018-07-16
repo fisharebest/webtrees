@@ -18,29 +18,31 @@ namespace Fisharebest\Webtrees\Report;
 /**
  * Class ReportPdfLine
  */
-class ReportPdfLine extends ReportBaseLine {
-	/**
-	 * PDF line renderer
-	 *
-	 * @param ReportTcpdf $renderer
-	 */
-	public function render($renderer) {
-		if ($this->x1 == '.') {
-			$this->x1 = $renderer->GetX();
-		}
-		if ($this->y1 == '.') {
-			$this->y1 = $renderer->GetY();
-		}
-		if ($this->x2 == '.') {
-			$this->x2 = $renderer->getMaxLineWidth();
-		}
-		if ($this->y2 == '.') {
-			$this->y2 = $renderer->GetY();
-		}
-		if ($renderer->getRTL()) {
-			$renderer->Line($renderer->getPageWidth() - $this->x1, $this->y1, $renderer->getPageWidth() - $this->x2, $this->y2);
-		} else {
-			$renderer->Line($this->x1, $this->y1, $this->x2, $this->y2);
-		}
-	}
+class ReportPdfLine extends ReportBaseLine
+{
+    /**
+     * PDF line renderer
+     *
+     * @param ReportTcpdf $renderer
+     */
+    public function render($renderer)
+    {
+        if ($this->x1 == '.') {
+            $this->x1 = $renderer->GetX();
+        }
+        if ($this->y1 == '.') {
+            $this->y1 = $renderer->GetY();
+        }
+        if ($this->x2 == '.') {
+            $this->x2 = $renderer->getMaxLineWidth();
+        }
+        if ($this->y2 == '.') {
+            $this->y2 = $renderer->GetY();
+        }
+        if ($renderer->getRTL()) {
+            $renderer->Line($renderer->getPageWidth() - $this->x1, $this->y1, $renderer->getPageWidth() - $this->x2, $this->y2);
+        } else {
+            $renderer->Line($this->x1, $this->y1, $this->x2, $this->y2);
+        }
+    }
 }

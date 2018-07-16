@@ -22,50 +22,51 @@ use Fisharebest\Webtrees\Tree;
 /**
  * Interface ModuleBlockInterface - Classes and libraries for module system
  */
-interface ModuleBlockInterface {
-	/**
-	 * Generate the HTML content of this block.
-	 *
-	 * @param Tree     $tree
-	 * @param int      $block_id
-	 * @param bool     $template
-	 * @param string[] $cfg
-	 *
-	 * @return string
-	 */
-	public function getBlock(Tree $tree, int $block_id, bool $template = true, array $cfg = []): string;
+interface ModuleBlockInterface
+{
+    /**
+     * Generate the HTML content of this block.
+     *
+     * @param Tree     $tree
+     * @param int      $block_id
+     * @param bool     $template
+     * @param string[] $cfg
+     *
+     * @return string
+     */
+    public function getBlock(Tree $tree, int $block_id, bool $template = true, array $cfg = []): string;
 
-	/**
-	 * Should this block load asynchronously using AJAX?
-	 *
-	 * Simple blocks are faster in-line, more comples ones
-	 * can be loaded later.
-	 *
-	 * @return bool
-	 */
-	public function loadAjax(): bool;
+    /**
+     * Should this block load asynchronously using AJAX?
+     *
+     * Simple blocks are faster in-line, more comples ones
+     * can be loaded later.
+     *
+     * @return bool
+     */
+    public function loadAjax(): bool;
 
-	/**
-	 * Can this block be shown on the user’s home page?
-	 *
-	 * @return bool
-	 */
-	public function isUserBlock(): bool;
+    /**
+     * Can this block be shown on the user’s home page?
+     *
+     * @return bool
+     */
+    public function isUserBlock(): bool;
 
-	/**
-	 * Can this block be shown on the tree’s home page?
-	 *
-	 * @return bool
-	 */
-	public function isGedcomBlock(): bool;
+    /**
+     * Can this block be shown on the tree’s home page?
+     *
+     * @return bool
+     */
+    public function isGedcomBlock(): bool;
 
-	/**
-	 * An HTML form to edit block settings
-	 *
-	 * @param Tree $tree
-	 * @param int  $block_id
-	 *
-	 * @return void
-	 */
-	public function configureBlock(Tree $tree, int $block_id);
+    /**
+     * An HTML form to edit block settings
+     *
+     * @param Tree $tree
+     * @param int  $block_id
+     *
+     * @return void
+     */
+    public function configureBlock(Tree $tree, int $block_id);
 }

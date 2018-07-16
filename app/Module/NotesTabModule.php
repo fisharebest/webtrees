@@ -23,75 +23,86 @@ use Fisharebest\Webtrees\Individual;
 /**
  * Class NotesTabModule
  */
-class NotesTabModule extends AbstractModule implements ModuleTabInterface {
-	/** @var Fact[] A list facts for this note. */
-	private $facts;
+class NotesTabModule extends AbstractModule implements ModuleTabInterface
+{
+    /** @var Fact[] A list facts for this note. */
+    private $facts;
 
-	/** {@inheritdoc} */
-	public function getTitle() {
-		return /* I18N: Name of a module */ I18N::translate('Notes');
-	}
+    /** {@inheritdoc} */
+    public function getTitle()
+    {
+        return /* I18N: Name of a module */
+            I18N::translate('Notes');
+    }
 
-	/** {@inheritdoc} */
-	public function getDescription() {
-		return /* I18N: Description of the “Notes” module */ I18N::translate('A tab showing the notes attached to an individual.');
-	}
+    /** {@inheritdoc} */
+    public function getDescription()
+    {
+        return /* I18N: Description of the “Notes” module */
+            I18N::translate('A tab showing the notes attached to an individual.');
+    }
 
-	/** {@inheritdoc} */
-	public function defaultTabOrder() {
-		return 40;
-	}
+    /** {@inheritdoc} */
+    public function defaultTabOrder()
+    {
+        return 40;
+    }
 
-	/** {@inheritdoc} */
-	public function hasTabContent(Individual $individual) {
-		return $individual->canEdit() || $this->getFactsWithNotes($individual);
-	}
+    /** {@inheritdoc} */
+    public function hasTabContent(Individual $individual)
+    {
+        return $individual->canEdit() || $this->getFactsWithNotes($individual);
+    }
 
-	/** {@inheritdoc} */
-	public function isGrayedOut(Individual $individual) {
-		return !$this->getFactsWithNotes($individual);
-	}
+    /** {@inheritdoc} */
+    public function isGrayedOut(Individual $individual)
+    {
+        return !$this->getFactsWithNotes($individual);
+    }
 
-	/** {@inheritdoc} */
-	public function getTabContent(Individual $individual) {
-		return view('modules/notes/tab', [
-			'can_edit'   => $individual->canEdit(),
-			'individual' => $individual,
-			'facts'      => $this->getFactsWithNotes($individual),
-		]);
-	}
+    /** {@inheritdoc} */
+    public function getTabContent(Individual $individual)
+    {
+        return view('modules/notes/tab', [
+            'can_edit'   => $individual->canEdit(),
+            'individual' => $individual,
+            'facts'      => $this->getFactsWithNotes($individual),
+        ]);
+    }
 
-	/**
-	 * Get all the facts for an individual which contain notes.
-	 *
-	 * @param Individual $individual
-	 *
-	 * @return Fact[]
-	 */
-	private function getFactsWithNotes(Individual $individual) {
-		if ($this->facts === null) {
-			$facts = $individual->getFacts();
-			foreach ($individual->getSpouseFamilies() as $family) {
-				if ($family->canShow()) {
-					foreach ($family->getFacts() as $fact) {
-						$facts[] = $fact;
-					}
-				}
-			}
-			$this->facts = [];
-			foreach ($facts as $fact) {
-				if (preg_match('/(?:^1|\n\d) NOTE/', $fact->getGedcom())) {
-					$this->facts[] = $fact;
-				}
-			}
-			Functions::sortFacts($this->facts);
-		}
+    /**
+     * Get all the facts for an individual which contain notes.
+     *
+     * @param Individual $individual
+     *
+     * @return Fact[]
+     */
+    private function getFactsWithNotes(Individual $individual)
+    {
+        if ($this->facts === null) {
+            $facts = $individual->getFacts();
+            foreach ($individual->getSpouseFamilies() as $family) {
+                if ($family->canShow()) {
+                    foreach ($family->getFacts() as $fact) {
+                        $facts[] = $fact;
+                    }
+                }
+            }
+            $this->facts = [];
+            foreach ($facts as $fact) {
+                if (preg_match('/(?:^1|\n\d) NOTE/', $fact->getGedcom())) {
+                    $this->facts[] = $fact;
+                }
+            }
+            Functions::sortFacts($this->facts);
+        }
 
-		return $this->facts;
-	}
+        return $this->facts;
+    }
 
-	/** {@inheritdoc} */
-	public function canLoadAjax() {
-		return false;
-	}
+    /** {@inheritdoc} */
+    public function canLoadAjax()
+    {
+        return false;
+    }
 }

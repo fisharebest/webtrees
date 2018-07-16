@@ -18,59 +18,62 @@ namespace Fisharebest\Webtrees\Functions;
 /**
  * Class FunctionsMedia - common functions
  */
-class FunctionsMedia {
-	/**
-	 * Convert raw values from php.ini file into bytes
-	 *
-	 * @param string $val
-	 *
-	 * @return int
-	 */
-	public static function sizeToBytes($val) {
-		if (!$val) {
-			// no value was passed in, assume no limit and return -1
-			$val = -1;
-		}
-		switch (substr($val, -1)) {
-			case 'g':
-			case 'G':
-				return (int) $val * 1024 * 1024 * 1024;
-			case 'm':
-			case 'M':
-				return (int) $val * 1024 * 1024;
-			case 'k':
-			case 'K':
-				return (int) $val * 1024;
-			default:
-				return (int) $val;
-		}
-	}
+class FunctionsMedia
+{
+    /**
+     * Convert raw values from php.ini file into bytes
+     *
+     * @param string $val
+     *
+     * @return int
+     */
+    public static function sizeToBytes($val)
+    {
+        if (!$val) {
+            // no value was passed in, assume no limit and return -1
+            $val = -1;
+        }
+        switch (substr($val, -1)) {
+            case 'g':
+            case 'G':
+                return (int)$val * 1024 * 1024 * 1024;
+            case 'm':
+            case 'M':
+                return (int)$val * 1024 * 1024;
+            case 'k':
+            case 'K':
+                return (int)$val * 1024;
+            default:
+                return (int)$val;
+        }
+    }
 
-	/**
-	 * Send a dummy image, where one could not be found or created.
-	 *
-	 * @param int    $status HTTP status code, such as 404 for "Not found"
-	 * @param string $message
-	 */
-	public static function outputHttpStatusAsImage($status, $message) {
-		$width      = 100;
-		$height     = 100;
-		$image      = imagecreatetruecolor($width, $height);
-		$foreground = imagecolorallocate($image, 255, 0, 0);
-		$background = imagecolorallocate($image, 224, 224, 224);
+    /**
+     * Send a dummy image, where one could not be found or created.
+     *
+     * @param int    $status HTTP status code, such as 404 for "Not found"
+     * @param string $message
+     */
+    public static function outputHttpStatusAsImage($status, $message)
+    {
+        $width      = 100;
+        $height     = 100;
+        $image      = imagecreatetruecolor($width, $height);
+        $foreground = imagecolorallocate($image, 255, 0, 0);
+        $background = imagecolorallocate($image, 224, 224, 224);
 
-		// Draw a border
-		imagefilledrectangle($image, 0, 0, $width, $height, $foreground);
-		imagefilledrectangle($image, 1, 1, $width - 2, $height - 2, $background);
+        // Draw a border
+        imagefilledrectangle($image, 0, 0, $width, $height, $foreground);
+        imagefilledrectangle($image, 1, 1, $width - 2, $height - 2, $background);
 
-		// Draw text
-		imagestring($image, 5, 5, 30, (string) $status, $foreground);
-		imagestring($image, 5, 5, 50, $message, $foreground);
+        // Draw text
+        imagestring($image, 5, 5, 30, (string)$status, $foreground);
+        imagestring($image, 5, 5, 50, $message, $foreground);
 
 
-		http_response_code(404);
-		header('Content-Type: image/png');
-		imagepng($image);
-		imagedestroy($image);
-	}
+        http_response_code(404);
+        header('Content-Type: image/png');
+        imagepng($image);
+        imagedestroy($image);
+    }
 }

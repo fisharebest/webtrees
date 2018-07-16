@@ -20,20 +20,22 @@ use Fisharebest\Webtrees\Database;
 /**
  * Upgrade the database schema from version 23 to version 24.
  */
-class Migration23 implements MigrationInterface {
-	/**
-	 * Upgrade to to the next version
-	 */
-	public function upgrade() {
-		// - media table columns should be not null, so we can find
-		// media objects with missing files
-		Database::exec(
-			"ALTER TABLE `##media`" .
-			" CHANGE m_ext      m_ext      VARCHAR(6)   COLLATE utf8_unicode_ci NOT NULL," .
-			" CHANGE m_type     m_type     VARCHAR(20)  COLLATE utf8_unicode_ci NOT NULL," .
-			" CHANGE m_filename m_filename VARCHAR(512) COLLATE utf8_unicode_ci NOT NULL," .
-			" CHANGE m_titl     m_titl     VARCHAR(255) COLLATE utf8_unicode_ci NOT NULL," .
-			" CHANGE m_gedcom   m_gedcom   MEDIUMTEXT   COLLATE utf8_unicode_ci NOT NULL"
-		);
-	}
+class Migration23 implements MigrationInterface
+{
+    /**
+     * Upgrade to to the next version
+     */
+    public function upgrade()
+    {
+        // - media table columns should be not null, so we can find
+        // media objects with missing files
+        Database::exec(
+            "ALTER TABLE `##media`" .
+            " CHANGE m_ext      m_ext      VARCHAR(6)   COLLATE utf8_unicode_ci NOT NULL," .
+            " CHANGE m_type     m_type     VARCHAR(20)  COLLATE utf8_unicode_ci NOT NULL," .
+            " CHANGE m_filename m_filename VARCHAR(512) COLLATE utf8_unicode_ci NOT NULL," .
+            " CHANGE m_titl     m_titl     VARCHAR(255) COLLATE utf8_unicode_ci NOT NULL," .
+            " CHANGE m_gedcom   m_gedcom   MEDIUMTEXT   COLLATE utf8_unicode_ci NOT NULL"
+        );
+    }
 }

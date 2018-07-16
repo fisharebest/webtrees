@@ -22,42 +22,43 @@ use Fisharebest\Webtrees\Individual;
 /**
  * Definitions for a census column
  */
-interface CensusColumnInterface {
-	/**
-	 * A short version of the column's name.
-	 *
-	 * @return string
-	 */
-	public function abbreviation();
+interface CensusColumnInterface
+{
+    /**
+     * A short version of the column's name.
+     *
+     * @return string
+     */
+    public function abbreviation();
 
-	/**
-	 * When did this census occur
-	 *
-	 * @return Date
-	 */
-	public function date();
+    /**
+     * When did this census occur
+     *
+     * @return Date
+     */
+    public function date();
 
-	/**
-	 * Generate the likely value of this census column, based on available information.
-	 *
-	 * @param Individual $individual
-	 * @param Individual $head
-	 *
-	 * @return string
-	 */
-	public function generate(Individual $individual, Individual $head = null);
+    /**
+     * Generate the likely value of this census column, based on available information.
+     *
+     * @param Individual $individual
+     * @param Individual $head
+     *
+     * @return string
+     */
+    public function generate(Individual $individual, Individual $head = null);
 
-	/**
-	 * Where did this census occur
-	 *
-	 * @return string
-	 */
-	public function place();
+    /**
+     * Where did this census occur
+     *
+     * @return string
+     */
+    public function place();
 
-	/**
-	 * The full version of the column's name.
-	 *
-	 * @return string
-	 */
-	public function title();
+    /**
+     * The full version of the column's name.
+     *
+     * @return string
+     */
+    public function title();
 }

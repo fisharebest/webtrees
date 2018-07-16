@@ -20,70 +20,74 @@ use Fisharebest\Webtrees\Theme\ThemeInterface;
 /**
  * Provide access to the current theme.
  */
-class Theme {
-	/** @var ThemeInterface The current theme*/
-	private static $theme;
+class Theme
+{
+    /** @var ThemeInterface The current theme */
+    private static $theme;
 
-	/** @var ThemeInterface[] All currently installed themes */
-	private static $installed_themes;
+    /** @var ThemeInterface[] All currently installed themes */
+    private static $installed_themes;
 
-	/**
-	 * Create a list of all themes available on the system, including
-	 * any custom themes.
-	 *
-	 * @return ThemeInterface[]
-	 */
-	public static function installedThemes() {
-		if (self::$installed_themes === null) {
-			self::$installed_themes = [];
-			foreach (glob(WT_ROOT . '/themes/*/theme.php') as $theme_path) {
-				try {
-					$theme = include $theme_path;
-					// Themes beginning with an underscore are reserved for special use.
-					if (substr_compare($theme->themeId(), '_', 0, 1) !== 0) {
-						self::$installed_themes[] = $theme;
-					}
-				} catch (\Exception $ex) {
-					DebugBar::addThrowable($ex);
+    /**
+     * Create a list of all themes available on the system, including
+     * any custom themes.
+     *
+     * @return ThemeInterface[]
+     */
+    public static function installedThemes()
+    {
+        if (self::$installed_themes === null) {
+            self::$installed_themes = [];
+            foreach (glob(WT_ROOT . '/themes/*/theme.php') as $theme_path) {
+                try {
+                    $theme = include $theme_path;
+                    // Themes beginning with an underscore are reserved for special use.
+                    if (substr_compare($theme->themeId(), '_', 0, 1) !== 0) {
+                        self::$installed_themes[] = $theme;
+                    }
+                } catch (\Exception $ex) {
+                    DebugBar::addThrowable($ex);
 
-					// Broken theme? Ignore it.
-				}
-			}
-		}
+                    // Broken theme? Ignore it.
+                }
+            }
+        }
 
-		return self::$installed_themes;
-	}
+        return self::$installed_themes;
+    }
 
-	/**
-	 * An associative array of theme names, for <select> fields, etc.
-	 *
-	 * @return string[]
-	 */
-	public static function themeNames() {
-		$theme_names = [];
-		foreach (self::installedThemes() as $theme) {
-			$theme_names[$theme->themeId()] = $theme->themeName();
-		}
+    /**
+     * An associative array of theme names, for <select> fields, etc.
+     *
+     * @return string[]
+     */
+    public static function themeNames()
+    {
+        $theme_names = [];
+        foreach (self::installedThemes() as $theme) {
+            $theme_names[$theme->themeId()] = $theme->themeName();
+        }
 
-		return $theme_names;
-	}
+        return $theme_names;
+    }
 
-	/**
-	 * The currently active theme
-	 *
-	 * @param ThemeInterface|null $theme
-	 *
-	 * @throws \LogicException
-	 *
-	 * @return ThemeInterface
-	 */
-	public static function theme(ThemeInterface $theme = null) {
-		if ($theme) {
-			self::$theme = $theme;
-		} elseif (!self::$theme) {
-			throw new \LogicException;
-		}
+    /**
+     * The currently active theme
+     *
+     * @param ThemeInterface|null $theme
+     *
+     * @throws \LogicException
+     *
+     * @return ThemeInterface
+     */
+    public static function theme(ThemeInterface $theme = null)
+    {
+        if ($theme) {
+            self::$theme = $theme;
+        } elseif (!self::$theme) {
+            throw new \LogicException;
+        }
 
-		return self::$theme;
-	}
+        return self::$theme;
+    }
 }

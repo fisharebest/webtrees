@@ -24,25 +24,27 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * Middleware to check whether the site is offline.
  */
-class CheckForMaintenanceMode implements MiddlewareInterface {
-	/**
-	 * @param Request $request
-	 * @param Closure $next
-	 *
-	 * @return Response
-	 */
-	public function handle(Request $request, Closure $next): Response {
-		$file = WT_ROOT . 'data/offline.txt';
+class CheckForMaintenanceMode implements MiddlewareInterface
+{
+    /**
+     * @param Request $request
+     * @param Closure $next
+     *
+     * @return Response
+     */
+    public function handle(Request $request, Closure $next): Response
+    {
+        $file = WT_ROOT . 'data/offline.txt';
 
-		if (file_exists($file)) {
-			$html = view('layouts/offline', [
-				'message' => file_get_contents($file),
-				'url'     => $request->getRequestUri(),
-			]);
+        if (file_exists($file)) {
+            $html = view('layouts/offline', [
+                'message' => file_get_contents($file),
+                'url'     => $request->getRequestUri(),
+            ]);
 
-			return new Response($html, Response::HTTP_SERVICE_UNAVAILABLE);
-		}
+            return new Response($html, Response::HTTP_SERVICE_UNAVAILABLE);
+        }
 
-		return $next($request);
-	}
+        return $next($request);
+    }
 }

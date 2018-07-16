@@ -14,174 +14,214 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+
 use Fisharebest\Webtrees\SurnameTradition\SpanishSurnameTradition;
 use Fisharebest\Webtrees\SurnameTradition\SurnameTraditionInterface;
 
 /**
  * Test harness for the class SpanishSurnameTradition
  */
-class SpanishSurnameTraditionTest extends \PHPUnit\Framework\TestCase {
-	/** @var SurnameTraditionInterface */
-	private $surname_tradition;
+class SpanishSurnameTraditionTest extends \PHPUnit\Framework\TestCase
+{
+    /** @var SurnameTraditionInterface */
+    private $surname_tradition;
 
-	/**
-	 * Prepare the environment for these tests
-	 */
-	public function setUp() {
-		$this->surname_tradition = new SpanishSurnameTradition;
-	}
+    /**
+     * Prepare the environment for these tests
+     */
+    public function setUp()
+    {
+        $this->surname_tradition = new SpanishSurnameTradition;
+    }
 
-	/**
-	 * Test whether married surnames are used
-	 *
-	 * @covers \Fisharebest\Webtrees\SurnameTradition\SpanishSurnameTradition
-	 */
-	public function testMarriedSurnames() {
-		$this->assertSame(false, $this->surname_tradition->hasMarriedNames());
-	}
+    /**
+     * Test whether married surnames are used
+     *
+     * @covers \Fisharebest\Webtrees\SurnameTradition\SpanishSurnameTradition
+     */
+    public function testMarriedSurnames()
+    {
+        $this->assertSame(false, $this->surname_tradition->hasMarriedNames());
+    }
 
-	/**
-	 * Test whether surnames are used
-	 *
-	 * @covers \Fisharebest\Webtrees\SurnameTradition\SpanishSurnameTradition
-	 */
-	public function testSurnames() {
-		$this->assertSame(true, $this->surname_tradition->hasSurnames());
-	}
+    /**
+     * Test whether surnames are used
+     *
+     * @covers \Fisharebest\Webtrees\SurnameTradition\SpanishSurnameTradition
+     */
+    public function testSurnames()
+    {
+        $this->assertSame(true, $this->surname_tradition->hasSurnames());
+    }
 
-	/**
-	 * Test new son names
-	 *
-	 * @covers \Fisharebest\Webtrees\SurnameTradition\SpanishSurnameTradition
-	 */
-	public function testNewSonNames() {
-		$this->assertSame(
-			['NAME' => '/Garcia/ /Ruiz/', 'SURN' => 'Garcia,Ruiz'],
-			$this->surname_tradition->newChildNames('Gabriel /Garcia/ /Iglesias/', 'Maria /Ruiz/ /Lorca/', 'M')
-		);
-	}
+    /**
+     * Test new son names
+     *
+     * @covers \Fisharebest\Webtrees\SurnameTradition\SpanishSurnameTradition
+     */
+    public function testNewSonNames()
+    {
+        $this->assertSame(
+            [
+                'NAME' => '/Garcia/ /Ruiz/',
+                'SURN' => 'Garcia,Ruiz',
+            ],
+            $this->surname_tradition->newChildNames('Gabriel /Garcia/ /Iglesias/', 'Maria /Ruiz/ /Lorca/', 'M')
+        );
+    }
 
-	/**
-	 * Test new daughter names
-	 *
-	 * @covers \Fisharebest\Webtrees\SurnameTradition\SpanishSurnameTradition
-	 */
-	public function testNewDaughterNames() {
-		$this->assertSame(
-			['NAME' => '/Garcia/ /Ruiz/', 'SURN' => 'Garcia,Ruiz'],
-			$this->surname_tradition->newChildNames('Gabriel /Garcia/ /Iglesias/', 'Maria /Ruiz/ /Lorca/', 'M')
-		);
-	}
+    /**
+     * Test new daughter names
+     *
+     * @covers \Fisharebest\Webtrees\SurnameTradition\SpanishSurnameTradition
+     */
+    public function testNewDaughterNames()
+    {
+        $this->assertSame(
+            [
+                'NAME' => '/Garcia/ /Ruiz/',
+                'SURN' => 'Garcia,Ruiz',
+            ],
+            $this->surname_tradition->newChildNames('Gabriel /Garcia/ /Iglesias/', 'Maria /Ruiz/ /Lorca/', 'M')
+        );
+    }
 
-	/**
-	 * Test new child names
-	 *
-	 * @covers \Fisharebest\Webtrees\SurnameTradition\SpanishSurnameTradition
-	 */
-	public function testNewChildNames() {
-		$this->assertSame(
-			['NAME' => '/Garcia/ /Ruiz/', 'SURN' => 'Garcia,Ruiz'],
-			$this->surname_tradition->newChildNames('Gabriel /Garcia/ /Iglesias/', 'Maria /Ruiz/ /Lorca/', 'M')
-		);
-	}
+    /**
+     * Test new child names
+     *
+     * @covers \Fisharebest\Webtrees\SurnameTradition\SpanishSurnameTradition
+     */
+    public function testNewChildNames()
+    {
+        $this->assertSame(
+            [
+                'NAME' => '/Garcia/ /Ruiz/',
+                'SURN' => 'Garcia,Ruiz',
+            ],
+            $this->surname_tradition->newChildNames('Gabriel /Garcia/ /Iglesias/', 'Maria /Ruiz/ /Lorca/', 'M')
+        );
+    }
 
-	/**
-	 * Test new child names
-	 *
-	 * @covers \Fisharebest\Webtrees\SurnameTradition\SpanishSurnameTradition
-	 */
-	public function testNewChildNamesWithNoParentsNames() {
-		$this->assertSame(
-			['NAME' => '// //', 'SURN' => ''],
-			$this->surname_tradition->newChildNames('', '', 'U')
-		);
-	}
+    /**
+     * Test new child names
+     *
+     * @covers \Fisharebest\Webtrees\SurnameTradition\SpanishSurnameTradition
+     */
+    public function testNewChildNamesWithNoParentsNames()
+    {
+        $this->assertSame(
+            [
+                'NAME' => '// //',
+                'SURN' => '',
+            ],
+            $this->surname_tradition->newChildNames('', '', 'U')
+        );
+    }
 
-	/**
-	 * Test new child names
-	 *
-	 * @covers \Fisharebest\Webtrees\SurnameTradition\SpanishSurnameTradition
-	 */
-	public function testNewChildNamesCompunds() {
-		$this->assertSame(
-			['NAME' => '/Garcia/ /Ruiz/', 'SURN' => 'Garcia,Ruiz'],
-			$this->surname_tradition->newChildNames('Gabriel /Garcia Iglesias/', 'Maria /Ruiz Lorca/', 'M')
-		);
-		$this->assertSame(
-			['NAME' => '/Garcia/ /Ruiz/', 'SURN' => 'Garcia,Ruiz'],
-			$this->surname_tradition->newChildNames('Gabriel /Garcia y Iglesias/', 'Maria /Ruiz y Lorca/', 'M')
-		);
-	}
+    /**
+     * Test new child names
+     *
+     * @covers \Fisharebest\Webtrees\SurnameTradition\SpanishSurnameTradition
+     */
+    public function testNewChildNamesCompunds()
+    {
+        $this->assertSame(
+            [
+                'NAME' => '/Garcia/ /Ruiz/',
+                'SURN' => 'Garcia,Ruiz',
+            ],
+            $this->surname_tradition->newChildNames('Gabriel /Garcia Iglesias/', 'Maria /Ruiz Lorca/', 'M')
+        );
+        $this->assertSame(
+            [
+                'NAME' => '/Garcia/ /Ruiz/',
+                'SURN' => 'Garcia,Ruiz',
+            ],
+            $this->surname_tradition->newChildNames('Gabriel /Garcia y Iglesias/', 'Maria /Ruiz y Lorca/', 'M')
+        );
+    }
 
-	/**
-	 * Test new father names
-	 *
-	 * @covers \Fisharebest\Webtrees\SurnameTradition\SpanishSurnameTradition
-	 */
-	public function testNewFatherNames() {
-		$this->assertSame(
-			['NAME' => '/Garcia/ //', 'SURN' => 'Garcia'],
-			$this->surname_tradition->newParentNames('Gabriel /Garcia/ /Iglesias/', 'M')
-		);
-	}
+    /**
+     * Test new father names
+     *
+     * @covers \Fisharebest\Webtrees\SurnameTradition\SpanishSurnameTradition
+     */
+    public function testNewFatherNames()
+    {
+        $this->assertSame(
+            [
+                'NAME' => '/Garcia/ //',
+                'SURN' => 'Garcia',
+            ],
+            $this->surname_tradition->newParentNames('Gabriel /Garcia/ /Iglesias/', 'M')
+        );
+    }
 
-	/**
-	 * Test new mother names
-	 *
-	 * @covers \Fisharebest\Webtrees\SurnameTradition\SpanishSurnameTradition
-	 */
-	public function testNewMotherNames() {
-		$this->assertSame(
-			['NAME' => '/Iglesias/ //', 'SURN' => 'Iglesias'],
-			$this->surname_tradition->newParentNames('Gabriel /Garcia/ /Iglesias/', 'F')
-		);
-	}
+    /**
+     * Test new mother names
+     *
+     * @covers \Fisharebest\Webtrees\SurnameTradition\SpanishSurnameTradition
+     */
+    public function testNewMotherNames()
+    {
+        $this->assertSame(
+            [
+                'NAME' => '/Iglesias/ //',
+                'SURN' => 'Iglesias',
+            ],
+            $this->surname_tradition->newParentNames('Gabriel /Garcia/ /Iglesias/', 'F')
+        );
+    }
 
-	/**
-	 * Test new parent names
-	 *
-	 * @covers \Fisharebest\Webtrees\SurnameTradition\SpanishSurnameTradition
-	 */
-	public function testNewParentNames() {
-		$this->assertSame(
-			['NAME' => '// //'],
-			$this->surname_tradition->newParentNames('Gabriel /Garcia/ /Iglesias/', 'U')
-		);
-	}
+    /**
+     * Test new parent names
+     *
+     * @covers \Fisharebest\Webtrees\SurnameTradition\SpanishSurnameTradition
+     */
+    public function testNewParentNames()
+    {
+        $this->assertSame(
+            ['NAME' => '// //'],
+            $this->surname_tradition->newParentNames('Gabriel /Garcia/ /Iglesias/', 'U')
+        );
+    }
 
-	/**
-	 * Test new husband names
-	 *
-	 * @covers \Fisharebest\Webtrees\SurnameTradition\SpanishSurnameTradition
-	 */
-	public function testNewHusbandNames() {
-		$this->assertSame(
-			['NAME' => '// //'],
-			$this->surname_tradition->newSpouseNames('Maria /Ruiz/ /Lorca/', 'M')
-		);
-	}
+    /**
+     * Test new husband names
+     *
+     * @covers \Fisharebest\Webtrees\SurnameTradition\SpanishSurnameTradition
+     */
+    public function testNewHusbandNames()
+    {
+        $this->assertSame(
+            ['NAME' => '// //'],
+            $this->surname_tradition->newSpouseNames('Maria /Ruiz/ /Lorca/', 'M')
+        );
+    }
 
-	/**
-	 * Test new wife names
-	 *
-	 * @covers \Fisharebest\Webtrees\SurnameTradition\SpanishSurnameTradition
-	 */
-	public function testNewWifeNames() {
-		$this->assertSame(
-			['NAME' => '// //'],
-			$this->surname_tradition->newSpouseNames('Gabriel /Garcia/ /Iglesias/', 'F')
-		);
-	}
+    /**
+     * Test new wife names
+     *
+     * @covers \Fisharebest\Webtrees\SurnameTradition\SpanishSurnameTradition
+     */
+    public function testNewWifeNames()
+    {
+        $this->assertSame(
+            ['NAME' => '// //'],
+            $this->surname_tradition->newSpouseNames('Gabriel /Garcia/ /Iglesias/', 'F')
+        );
+    }
 
-	/**
-	 * Test new spouse names
-	 *
-	 * @covers \Fisharebest\Webtrees\SurnameTradition\SpanishSurnameTradition
-	 */
-	public function testNewSpouseNames() {
-		$this->assertSame(
-			['NAME' => '// //'],
-			$this->surname_tradition->newSpouseNames('Gabriel /Garcia/ /Iglesias/', 'U')
-		);
-	}
+    /**
+     * Test new spouse names
+     *
+     * @covers \Fisharebest\Webtrees\SurnameTradition\SpanishSurnameTradition
+     */
+    public function testNewSpouseNames()
+    {
+        $this->assertSame(
+            ['NAME' => '// //'],
+            $this->surname_tradition->newSpouseNames('Gabriel /Garcia/ /Iglesias/', 'U')
+        );
+    }
 }

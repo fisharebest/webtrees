@@ -23,60 +23,71 @@ use Fisharebest\Webtrees\Menu;
 /**
  * Class HourglassChartModule
  */
-class HourglassChartModule extends AbstractModule implements ModuleChartInterface {
-	/**
-	 * How should this module be labelled on tabs, menus, etc.?
-	 *
-	 * @return string
-	 */
-	public function getTitle() {
-		return /* I18N: Name of a module/chart */ I18N::translate('Hourglass chart');
-	}
+class HourglassChartModule extends AbstractModule implements ModuleChartInterface
+{
+    /**
+     * How should this module be labelled on tabs, menus, etc.?
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return /* I18N: Name of a module/chart */
+            I18N::translate('Hourglass chart');
+    }
 
-	/**
-	 * A sentence describing what this module does.
-	 *
-	 * @return string
-	 */
-	public function getDescription() {
-		return /* I18N: Description of the “HourglassChart” module */ I18N::translate('An hourglass chart of an individual’s ancestors and descendants.');
-	}
+    /**
+     * A sentence describing what this module does.
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return /* I18N: Description of the “HourglassChart” module */
+            I18N::translate('An hourglass chart of an individual’s ancestors and descendants.');
+    }
 
-	/**
-	 * What is the default access level for this module?
-	 *
-	 * Some modules are aimed at admins or managers, and are not generally shown to users.
-	 *
-	 * @return int
-	 */
-	public function defaultAccessLevel() {
-		return Auth::PRIV_PRIVATE;
-	}
+    /**
+     * What is the default access level for this module?
+     *
+     * Some modules are aimed at admins or managers, and are not generally shown to users.
+     *
+     * @return int
+     */
+    public function defaultAccessLevel()
+    {
+        return Auth::PRIV_PRIVATE;
+    }
 
-	/**
-	 * Return a menu item for this chart.
-	 *
-	 * @param Individual $individual
-	 *
-	 * @return Menu|null
-	 */
-	public function getChartMenu(Individual $individual) {
-		return new Menu(
-			$this->getTitle(),
-			route('hourglass', ['xref' => $individual->getXref(), 'ged' => $individual->getTree()->getName()]),
-			'menu-chart-hourglass',
-			['rel' => 'nofollow']
-		);
-	}
+    /**
+     * Return a menu item for this chart.
+     *
+     * @param Individual $individual
+     *
+     * @return Menu|null
+     */
+    public function getChartMenu(Individual $individual)
+    {
+        return new Menu(
+            $this->getTitle(),
+            route('hourglass', [
+                'xref' => $individual->getXref(),
+                'ged'  => $individual->getTree()->getName(),
+            ]),
+            'menu-chart-hourglass',
+            ['rel' => 'nofollow']
+        );
+    }
 
-	/**
-	 * Return a menu item for this chart - for use in individual boxes.
-	 *
-	 * @param Individual $individual
-	 *
-	 * @return Menu|null
-	 */
-	public function getBoxChartMenu(Individual $individual) {
-		return $this->getChartMenu($individual);
-	}
+    /**
+     * Return a menu item for this chart - for use in individual boxes.
+     *
+     * @param Individual $individual
+     *
+     * @return Menu|null
+     */
+    public function getBoxChartMenu(Individual $individual)
+    {
+        return $this->getChartMenu($individual);
+    }
 }

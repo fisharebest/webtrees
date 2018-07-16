@@ -22,18 +22,20 @@ use PDOException;
 /**
  * Upgrade the database schema from version 13 to version 14.
  */
-class Migration13 implements MigrationInterface {
-	/**
-	 * Upgrade to to the next version
-	 */
-	public function upgrade() {
-		// Remove the i_isdead column
-		try {
-			Database::exec("ALTER TABLE `##individuals` DROP i_isdead");
-		} catch (PDOException $ex) {
-			DebugBar::addThrowable($ex);
+class Migration13 implements MigrationInterface
+{
+    /**
+     * Upgrade to to the next version
+     */
+    public function upgrade()
+    {
+        // Remove the i_isdead column
+        try {
+            Database::exec("ALTER TABLE `##individuals` DROP i_isdead");
+        } catch (PDOException $ex) {
+            DebugBar::addThrowable($ex);
 
-			// Already done this?
-		}
-	}
+            // Already done this?
+        }
+    }
 }

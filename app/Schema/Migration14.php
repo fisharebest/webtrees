@@ -20,16 +20,18 @@ use Fisharebest\Webtrees\Database;
 /**
  * Upgrade the database schema from version 14 to version 15.
  */
-class Migration14 implements MigrationInterface {
-	/**
-	 * Upgrade to to the next version
-	 */
-	public function upgrade() {
-		// Delete old config settings
-		Database::exec("DELETE FROM `##gedcom_setting` WHERE setting_name IN('GEDCOM_DEFAULT_TAB', 'LINK_ICONS', 'ZOOM_BOXES')");
-		Database::exec("DELETE FROM `##user_setting` WHERE setting_name='default'");
+class Migration14 implements MigrationInterface
+{
+    /**
+     * Upgrade to to the next version
+     */
+    public function upgrade()
+    {
+        // Delete old config settings
+        Database::exec("DELETE FROM `##gedcom_setting` WHERE setting_name IN('GEDCOM_DEFAULT_TAB', 'LINK_ICONS', 'ZOOM_BOXES')");
+        Database::exec("DELETE FROM `##user_setting` WHERE setting_name='default'");
 
-		// There is no way to add a RESN tag to NOTE objects
-		Database::exec("UPDATE `##gedcom_setting` SET setting_value='SOUR,RESN' WHERE setting_name='NOTE_FACTS_ADD' AND setting_value='SOUR'");
-	}
+        // There is no way to add a RESN tag to NOTE objects
+        Database::exec("UPDATE `##gedcom_setting` SET setting_value='SOUR,RESN' WHERE setting_name='NOTE_FACTS_ADD' AND setting_value='SOUR'");
+    }
 }

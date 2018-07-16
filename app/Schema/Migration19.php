@@ -20,13 +20,15 @@ use Fisharebest\Webtrees\Database;
 /**
  * Upgrade the database schema from version 19 to version 20.
  */
-class Migration19 implements MigrationInterface {
-	/**
-	 * Upgrade to to the next version
-	 */
-	public function upgrade() {
-		// Fix some broken data caused by a bug
-		Database::exec("UPDATE `##default_resn` SET xref     = NULL WHERE xref     = ''");
-		Database::exec("UPDATE `##default_resn` SET tag_type = NULL WHERE tag_type = ''");
-	}
+class Migration19 implements MigrationInterface
+{
+    /**
+     * Upgrade to to the next version
+     */
+    public function upgrade()
+    {
+        // Fix some broken data caused by a bug
+        Database::exec("UPDATE `##default_resn` SET xref     = NULL WHERE xref     = ''");
+        Database::exec("UPDATE `##default_resn` SET tag_type = NULL WHERE tag_type = ''");
+    }
 }

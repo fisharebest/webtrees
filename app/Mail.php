@@ -28,81 +28,84 @@ use Swift_Transport;
 /**
  * Send mail messages.
  */
-class Mail {
-	/**
-	 * Send an external email message
-	 * Caution! gmail may rewrite the "From" header unless you have added the address to your account.
-	 *
-	 * @param User   $from
-	 * @param User   $to
-	 * @param User   $reply_to
-	 * @param string $subject
-	 * @param string $message_text
-	 * @param string $message_html
-	 *
-	 * @return bool
-	 */
-	public static function send(User $from, User $to, User $reply_to, $subject, $message_text, $message_html) {
-		try {
-			// Swiftmailer uses the PHP default tmp directory.  On some servers, this
-			// is outside the open_basedir list.  Therefore we must set one explicitly.
-			File::mkdir(WT_DATA_DIR . 'tmp');
-			Swift_Preferences::getInstance()->setTempDir(WT_DATA_DIR . 'tmp');
+class Mail
+{
+    /**
+     * Send an external email message
+     * Caution! gmail may rewrite the "From" header unless you have added the address to your account.
+     *
+     * @param User   $from
+     * @param User   $to
+     * @param User   $reply_to
+     * @param string $subject
+     * @param string $message_text
+     * @param string $message_html
+     *
+     * @return bool
+     */
+    public static function send(User $from, User $to, User $reply_to, $subject, $message_text, $message_html)
+    {
+        try {
+            // Swiftmailer uses the PHP default tmp directory.  On some servers, this
+            // is outside the open_basedir list.  Therefore we must set one explicitly.
+            File::mkdir(WT_DATA_DIR . 'tmp');
+            Swift_Preferences::getInstance()->setTempDir(WT_DATA_DIR . 'tmp');
 
-			$message_text = preg_replace('/\r?\n/', "\r\n", $message_text);
-			$message_html = preg_replace('/\r?\n/', "\r\n", $message_html);
+            $message_text = preg_replace('/\r?\n/', "\r\n", $message_text);
+            $message_html = preg_replace('/\r?\n/', "\r\n", $message_html);
 
-			$message = Swift_Message::newInstance()
-				->setSubject($subject)
-				->setFrom($from->getEmail(), $from->getRealName())
-				->setTo($to->getEmail(), $to->getRealName())
-				->setReplyTo($reply_to->getEmail(), $reply_to->getRealName())
-				->setBody($message_html, 'text/html')
-				->addPart($message_text, 'text/plain');
+            $message = Swift_Message::newInstance()
+                ->setSubject($subject)
+                ->setFrom($from->getEmail(), $from->getRealName())
+                ->setTo($to->getEmail(), $to->getRealName())
+                ->setReplyTo($reply_to->getEmail(), $reply_to->getRealName())
+                ->setBody($message_html, 'text/html')
+                ->addPart($message_text, 'text/plain');
 
-			Swift_Mailer::newInstance(self::transport())->send($message);
-		} catch (Exception $ex) {
-			DebugBar::addThrowable($ex);
+            Swift_Mailer::newInstance(self::transport())->send($message);
+        } catch (Exception $ex) {
+            DebugBar::addThrowable($ex);
 
-			Log::addErrorLog('Mail: ' . $ex->getMessage());
+            Log::addErrorLog('Mail: ' . $ex->getMessage());
 
-			return false;
-		}
+            return false;
+        }
 
-		return true;
-	}
+        return true;
+    }
 
-	/**
-	 * Create a transport mechanism for sending mail
-	 *
-	 * @return Swift_Transport
-	 */
-	public static function transport() {
-		switch (Site::getPreference('SMTP_ACTIVE')) {
-			case 'internal':
-				return Swift_MailTransport::newInstance();
-			case 'sendmail':
-				return Swift_SendmailTransport::newInstance();
-			case 'external':
-				$transport = Swift_SmtpTransport::newInstance()
-					->setHost(Site::getPreference('SMTP_HOST'))
-					->setPort(Site::getPreference('SMTP_PORT'))
-					->setLocalDomain(Site::getPreference('SMTP_HELO'));
+    /**
+     * Create a transport mechanism for sending mail
+     *
+     * @return Swift_Transport
+     */
+    public static function transport()
+    {
+        switch (Site::getPreference('SMTP_ACTIVE')) {
+            case 'internal':
+                return Swift_MailTransport::newInstance();
+            case 'sendmail':
+                return Swift_SendmailTransport::newInstance();
+            case 'external':
+                $transport = Swift_SmtpTransport::newInstance()
+                    ->setHost(Site::getPreference('SMTP_HOST'))
+                    ->setPort(Site::getPreference('SMTP_PORT'))
+                    ->setLocalDomain(Site::getPreference('SMTP_HELO'));
 
-				if (Site::getPreference('SMTP_AUTH') === '1') {
-					$transport
-						->setUsername(Site::getPreference('SMTP_AUTH_USER'))
-						->setPassword(Site::getPreference('SMTP_AUTH_PASS'));
-				}
+                if (Site::getPreference('SMTP_AUTH') === '1') {
+                    $transport
+                        ->setUsername(Site::getPreference('SMTP_AUTH_USER'))
+                        ->setPassword(Site::getPreference('SMTP_AUTH_PASS'));
+                }
 
-				if (Site::getPreference('SMTP_SSL') !== 'none') {
-					$transport->setEncryption(Site::getPreference('SMTP_SSL'));
-				}
+                if (Site::getPreference('SMTP_SSL') !== 'none') {
+                    $transport->setEncryption(Site::getPreference('SMTP_SSL'));
+                }
 
-				return $transport;
-			default:
-				// For testing
-				return Swift_NullTransport::newInstance();
-		}
-	}
+                return $transport;
+            default:
+                // For testing
+                return Swift_NullTransport::newInstance();
+        }
+    }
 }

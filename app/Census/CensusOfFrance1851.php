@@ -19,36 +19,39 @@ namespace Fisharebest\Webtrees\Census;
 /**
  * Definitions for a census
  */
-class CensusOfFrance1851 extends CensusOfFrance implements CensusInterface {
-	/**
-	 * When did this census occur.
-	 *
-	 * @return string
-	 */
-	public function censusDate() {
-		return '16 JAN 1851';
-	}
+class CensusOfFrance1851 extends CensusOfFrance implements CensusInterface
+{
+    /**
+     * When did this census occur.
+     *
+     * @return string
+     */
+    public function censusDate()
+    {
+        return '16 JAN 1851';
+    }
 
-	/**
-	 * The columns of the census.
-	 *
-	 * @return CensusColumnInterface[]
-	 */
-	public function columns() {
-		return [
-			new CensusColumnSurname($this, 'Noms', 'Noms de famille'),
-			new CensusColumnGivenNames($this, 'Prénoms', ''),
-			new CensusColumnOccupation($this, 'Professions', ''),
-			new CensusColumnConditionFrenchGarcon($this, 'Garçons', ''),
-			new CensusColumnConditionFrenchHomme($this, 'Hommes', 'Hommes mariés'),
-			new CensusColumnConditionFrenchVeuf($this, 'Veufs', ''),
-			new CensusColumnConditionFrenchFille($this, 'Filles', ''),
-			new CensusColumnConditionFrenchFemme($this, 'Femmes', 'Femmes mariées'),
-			new CensusColumnConditionFrenchVeuve($this, 'Veuves', ''),
-			new CensusColumnAge($this, 'Âge', 'Âge'),
-			new CensusColumnNull($this, 'Fr', 'Français d’origine'),
-			new CensusColumnNull($this, 'Nat', 'Naturalisés français'),
-			new CensusColumnNull($this, 'Etr', 'Étrangers (indiquer leur pays d’origine)'),
-		];
-	}
+    /**
+     * The columns of the census.
+     *
+     * @return CensusColumnInterface[]
+     */
+    public function columns()
+    {
+        return [
+            new CensusColumnSurname($this, 'Noms', 'Noms de famille'),
+            new CensusColumnGivenNames($this, 'Prénoms', ''),
+            new CensusColumnOccupation($this, 'Professions', ''),
+            new CensusColumnConditionFrenchGarcon($this, 'Garçons', ''),
+            new CensusColumnConditionFrenchHomme($this, 'Hommes', 'Hommes mariés'),
+            new CensusColumnConditionFrenchVeuf($this, 'Veufs', ''),
+            new CensusColumnConditionFrenchFille($this, 'Filles', ''),
+            new CensusColumnConditionFrenchFemme($this, 'Femmes', 'Femmes mariées'),
+            new CensusColumnConditionFrenchVeuve($this, 'Veuves', ''),
+            new CensusColumnAge($this, 'Âge', 'Âge'),
+            new CensusColumnNull($this, 'Fr', 'Français d’origine'),
+            new CensusColumnNull($this, 'Nat', 'Naturalisés français'),
+            new CensusColumnNull($this, 'Etr', 'Étrangers (indiquer leur pays d’origine)'),
+        ];
+    }
 }

@@ -19,37 +19,40 @@ namespace Fisharebest\Webtrees\Census;
 /**
  * Test harness for the class CensusOfWales
  */
-class CensusOfWalesTest extends \PHPUnit\Framework\TestCase {
-	/**
-	 * Test the census place
-	 *
-	 * @covers \Fisharebest\Webtrees\Census\CensusOfWales
-	 */
-	public function testPlace() {
-		$census = new CensusOfWales;
+class CensusOfWalesTest extends \PHPUnit\Framework\TestCase
+{
+    /**
+     * Test the census place
+     *
+     * @covers \Fisharebest\Webtrees\Census\CensusOfWales
+     */
+    public function testPlace()
+    {
+        $census = new CensusOfWales;
 
-		$this->assertSame('Wales', $census->censusPlace());
-	}
+        $this->assertSame('Wales', $census->censusPlace());
+    }
 
-	/**
-	 * Test the census dates
-	 *
-	 * @covers \Fisharebest\Webtrees\Census\CensusOfWales
-	 */
-	public function testAllDates() {
-		$census = new CensusOfWales;
+    /**
+     * Test the census dates
+     *
+     * @covers \Fisharebest\Webtrees\Census\CensusOfWales
+     */
+    public function testAllDates()
+    {
+        $census = new CensusOfWales;
 
-		$census_dates = $census->allCensusDates();
+        $census_dates = $census->allCensusDates();
 
-		$this->assertCount(9, $census_dates);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfWales1841', $census_dates[0]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfWales1851', $census_dates[1]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfWales1861', $census_dates[2]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfWales1871', $census_dates[3]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfWales1881', $census_dates[4]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfWales1891', $census_dates[5]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfWales1901', $census_dates[6]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfWales1911', $census_dates[7]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\RegisterOfWales1939', $census_dates[8]);
-	}
+        $this->assertCount(9, $census_dates);
+        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfWales1841', $census_dates[0]);
+        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfWales1851', $census_dates[1]);
+        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfWales1861', $census_dates[2]);
+        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfWales1871', $census_dates[3]);
+        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfWales1881', $census_dates[4]);
+        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfWales1891', $census_dates[5]);
+        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfWales1901', $census_dates[6]);
+        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfWales1911', $census_dates[7]);
+        $this->assertInstanceOf('Fisharebest\Webtrees\Census\RegisterOfWales1939', $census_dates[8]);
+    }
 }

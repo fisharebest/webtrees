@@ -28,193 +28,211 @@ use Fisharebest\Webtrees\Tree;
 /**
  * Class YahrzeitModule
  */
-class YahrzeitModule extends AbstractModule implements ModuleBlockInterface {
-	// Default values for new blocks.
-	const DEFAULT_CALENDAR = 'jewish';
-	const DEFAULT_DAYS     = 7;
-	const DEFAULT_STYLE    = 'table';
+class YahrzeitModule extends AbstractModule implements ModuleBlockInterface
+{
+    // Default values for new blocks.
+    const DEFAULT_CALENDAR = 'jewish';
+    const DEFAULT_DAYS     = 7;
+    const DEFAULT_STYLE    = 'table';
 
-	// Can show this number of days into the future.
-	const MAX_DAYS = 30;
+    // Can show this number of days into the future.
+    const MAX_DAYS = 30;
 
-	/** {@inheritdoc} */
-	public function getTitle() {
-		return /* I18N: Name of a module. Yahrzeiten (the plural of Yahrzeit) are special anniversaries of deaths in the Hebrew faith/calendar. */ I18N::translate('Yahrzeiten');
-	}
+    /** {@inheritdoc} */
+    public function getTitle()
+    {
+        return /* I18N: Name of a module. Yahrzeiten (the plural of Yahrzeit) are special anniversaries of deaths in the Hebrew faith/calendar. */
+            I18N::translate('Yahrzeiten');
+    }
 
-	/** {@inheritdoc} */
-	public function getDescription() {
-		return /* I18N: Description of the “Yahrzeiten” module. A “Hebrew death” is a death where the date is recorded in the Hebrew calendar. */ I18N::translate('A list of the Hebrew death anniversaries that will occur in the near future.');
-	}
+    /** {@inheritdoc} */
+    public function getDescription()
+    {
+        return /* I18N: Description of the “Yahrzeiten” module. A “Hebrew death” is a death where the date is recorded in the Hebrew calendar. */
+            I18N::translate('A list of the Hebrew death anniversaries that will occur in the near future.');
+    }
 
-	/**
-	 * Generate the HTML content of this block.
-	 *
-	 * @param Tree     $tree
-	 * @param int      $block_id
-	 * @param bool     $template
-	 * @param string[] $cfg
-	 *
-	 * @return string
-	 */
-	public function getBlock(Tree $tree, int $block_id, bool $template = true, array $cfg = []): string {
-		global $ctype;
+    /**
+     * Generate the HTML content of this block.
+     *
+     * @param Tree     $tree
+     * @param int      $block_id
+     * @param bool     $template
+     * @param string[] $cfg
+     *
+     * @return string
+     */
+    public function getBlock(Tree $tree, int $block_id, bool $template = true, array $cfg = []): string
+    {
+        global $ctype;
 
-		$days      = (int) $this->getBlockSetting($block_id, 'days', self::DEFAULT_DAYS);
-		$infoStyle = $this->getBlockSetting($block_id, 'infoStyle', self::DEFAULT_STYLE);
-		$calendar  = $this->getBlockSetting($block_id, 'calendar', self::DEFAULT_CALENDAR);
+        $days      = (int)$this->getBlockSetting($block_id, 'days', self::DEFAULT_DAYS);
+        $infoStyle = $this->getBlockSetting($block_id, 'infoStyle', self::DEFAULT_STYLE);
+        $calendar  = $this->getBlockSetting($block_id, 'calendar', self::DEFAULT_CALENDAR);
 
-		extract($cfg, EXTR_OVERWRITE);
+        extract($cfg, EXTR_OVERWRITE);
 
-		$jewish_calendar = new JewishCalendar;
-		$startjd         = WT_CLIENT_JD;
-		$endjd           = WT_CLIENT_JD + $days - 1;
+        $jewish_calendar = new JewishCalendar;
+        $startjd         = WT_CLIENT_JD;
+        $endjd           = WT_CLIENT_JD + $days - 1;
 
-		// The standard anniversary rules cover most of the Yahrzeit rules, we just
-		// need to handle a few special cases.
-		// Fetch normal anniversaries, with an extra day before/after
-		$yahrzeits = [];
-		for ($jd = $startjd - 1; $jd <= $endjd + $days; ++$jd) {
-			foreach (FunctionsDb::getAnniversaryEvents($jd, 'DEAT _YART', $tree) as $fact) {
-				// Exact hebrew dates only
-				$date = $fact->getDate();
-				if ($date->minimumDate() instanceof JewishDate && $date->minimumJulianDay() === $date->maximumJulianDay()) {
+        // The standard anniversary rules cover most of the Yahrzeit rules, we just
+        // need to handle a few special cases.
+        // Fetch normal anniversaries, with an extra day before/after
+        $yahrzeits = [];
+        for ($jd = $startjd - 1; $jd <= $endjd + $days; ++$jd) {
+            foreach (FunctionsDb::getAnniversaryEvents($jd, 'DEAT _YART', $tree) as $fact) {
+                // Exact hebrew dates only
+                $date = $fact->getDate();
+                if ($date->minimumDate() instanceof JewishDate && $date->minimumJulianDay() === $date->maximumJulianDay()) {
 
-					// ...then adjust DEAT dates (but not _YART)
-					if ($fact->getTag() === 'DEAT') {
-						$today = new JewishDate($jd);
-						$hd    = $fact->getDate()->minimumDate();
-						$hd1   = new JewishDate($hd);
-						$hd1->y += 1;
-						$hd1->setJdFromYmd();
-						// Special rules. See http://www.hebcal.com/help/anniv.html
-						// Everything else is taken care of by our standard anniversary rules.
-						if ($hd->d == 30 && $hd->m == 2 && $hd->y != 0 && $hd1->daysInMonth() < 30) {
-							// 30 CSH - Last day in CSH
-							$jd = $jewish_calendar->ymdToJd($today->y, 3, 1) - 1;
-						} elseif ($hd->d == 30 && $hd->m == 3 && $hd->y != 0 && $hd1->daysInMonth() < 30) {
-							// 30 KSL - Last day in KSL
-							$jd = $jewish_calendar->ymdToJd($today->y, 4, 1) - 1;
-						} elseif ($hd->d == 30 && $hd->m == 6 && $hd->y != 0 && $today->daysInMonth() < 30 && !$today->isLeapYear()) {
-							// 30 ADR - Last day in SHV
-							$jd = $jewish_calendar->ymdToJd($today->y, 6, 1) - 1;
-						}
-					}
+                    // ...then adjust DEAT dates (but not _YART)
+                    if ($fact->getTag() === 'DEAT') {
+                        $today  = new JewishDate($jd);
+                        $hd     = $fact->getDate()->minimumDate();
+                        $hd1    = new JewishDate($hd);
+                        $hd1->y += 1;
+                        $hd1->setJdFromYmd();
+                        // Special rules. See http://www.hebcal.com/help/anniv.html
+                        // Everything else is taken care of by our standard anniversary rules.
+                        if ($hd->d == 30 && $hd->m == 2 && $hd->y != 0 && $hd1->daysInMonth() < 30) {
+                            // 30 CSH - Last day in CSH
+                            $jd = $jewish_calendar->ymdToJd($today->y, 3, 1) - 1;
+                        } elseif ($hd->d == 30 && $hd->m == 3 && $hd->y != 0 && $hd1->daysInMonth() < 30) {
+                            // 30 KSL - Last day in KSL
+                            $jd = $jewish_calendar->ymdToJd($today->y, 4, 1) - 1;
+                        } elseif ($hd->d == 30 && $hd->m == 6 && $hd->y != 0 && $today->daysInMonth() < 30 && !$today->isLeapYear()) {
+                            // 30 ADR - Last day in SHV
+                            $jd = $jewish_calendar->ymdToJd($today->y, 6, 1) - 1;
+                        }
+                    }
 
-					// Filter adjusted dates to our date range
-					if ($jd >= $startjd && $jd < $startjd + $days) {
-						// upcomming yahrzeit dates
-						switch ($calendar) {
-							case 'gregorian':
-								$yahrzeit_date = new GregorianDate($jd);
-								break;
-							case 'jewish':
-							default:
-								$yahrzeit_date = new JewishDate($jd);
-								break;
-						}
-						$yahrzeit_date = new Date($yahrzeit_date->format('%@ %A %O %E'));
+                    // Filter adjusted dates to our date range
+                    if ($jd >= $startjd && $jd < $startjd + $days) {
+                        // upcomming yahrzeit dates
+                        switch ($calendar) {
+                            case 'gregorian':
+                                $yahrzeit_date = new GregorianDate($jd);
+                                break;
+                            case 'jewish':
+                            default:
+                                $yahrzeit_date = new JewishDate($jd);
+                                break;
+                        }
+                        $yahrzeit_date = new Date($yahrzeit_date->format('%@ %A %O %E'));
 
-						$yahrzeits[] = (object) [
-							'individual' => $fact->getParent(),
-							'fact_date'  => $fact->getDate(),
-							'fact'       => $fact,
-							'jd'            => $jd,
-							'yahrzeit_date' => $yahrzeit_date,
-						];
-					}
-				}
-			}
-		}
+                        $yahrzeits[] = (object)[
+                            'individual'    => $fact->getParent(),
+                            'fact_date'     => $fact->getDate(),
+                            'fact'          => $fact,
+                            'jd'            => $jd,
+                            'yahrzeit_date' => $yahrzeit_date,
+                        ];
+                    }
+                }
+            }
+        }
 
-		switch ($infoStyle) {
-			case 'list':
-				$content = view('modules/yahrzeit/list', [
-					'yahrzeits' => $yahrzeits,
-				]);
-				break;
-			case 'table':
-			default:
-				$content = view('modules/yahrzeit/table', [
-					'yahrzeits' => $yahrzeits,
-				]);
-			break;
-		}
+        switch ($infoStyle) {
+            case 'list':
+                $content = view('modules/yahrzeit/list', [
+                    'yahrzeits' => $yahrzeits,
+                ]);
+                break;
+            case 'table':
+            default:
+                $content = view('modules/yahrzeit/table', [
+                    'yahrzeits' => $yahrzeits,
+                ]);
+                break;
+        }
 
-		if ($template) {
-			if ($ctype === 'gedcom' && Auth::isManager($tree)) {
-				$config_url = route('tree-page-block-edit', ['block_id' => $block_id, 'ged' => $tree->getName()]);
-			} elseif ($ctype === 'user' && Auth::check()) {
-				$config_url = route('user-page-block-edit', ['block_id' => $block_id, 'ged' => $tree->getName()]);
-			} else {
-				$config_url = '';
-			}
+        if ($template) {
+            if ($ctype === 'gedcom' && Auth::isManager($tree)) {
+                $config_url = route('tree-page-block-edit', [
+                    'block_id' => $block_id,
+                    'ged'      => $tree->getName(),
+                ]);
+            } elseif ($ctype === 'user' && Auth::check()) {
+                $config_url = route('user-page-block-edit', [
+                    'block_id' => $block_id,
+                    'ged'      => $tree->getName(),
+                ]);
+            } else {
+                $config_url = '';
+            }
 
-			return view('modules/block-template', [
-				'block'      => str_replace('_', '-', $this->getName()),
-				'id'         => $block_id,
-				'config_url' => $config_url,
-				'title'      => $this->getTitle(),
-				'content'    => $content,
-			]);
-		} else {
-			return $content;
-		}
-	}
+            return view('modules/block-template', [
+                'block'      => str_replace('_', '-', $this->getName()),
+                'id'         => $block_id,
+                'config_url' => $config_url,
+                'title'      => $this->getTitle(),
+                'content'    => $content,
+            ]);
+        } else {
+            return $content;
+        }
+    }
 
-	/** {@inheritdoc} */
-	public function loadAjax(): bool {
-		return true;
-	}
+    /** {@inheritdoc} */
+    public function loadAjax(): bool
+    {
+        return true;
+    }
 
-	/** {@inheritdoc} */
-	public function isUserBlock(): bool {
-		return true;
-	}
+    /** {@inheritdoc} */
+    public function isUserBlock(): bool
+    {
+        return true;
+    }
 
-	/** {@inheritdoc} */
-	public function isGedcomBlock(): bool {
-		return true;
-	}
+    /** {@inheritdoc} */
+    public function isGedcomBlock(): bool
+    {
+        return true;
+    }
 
-	/**
-	 * An HTML form to edit block settings
-	 *
-	 * @param Tree $tree
-	 * @param int  $block_id
-	 *
-	 * @return void
-	 */
-	public function configureBlock(Tree $tree, int $block_id) {
-		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-			$this->setBlockSetting($block_id, 'days', Filter::postInteger('days', 1, self::MAX_DAYS, self::DEFAULT_DAYS));
-			$this->setBlockSetting($block_id, 'infoStyle', Filter::post('infoStyle', 'list|table', self::DEFAULT_STYLE));
-			$this->setBlockSetting($block_id, 'calendar', Filter::post('calendar', 'jewish|gregorian', self::DEFAULT_CALENDAR));
+    /**
+     * An HTML form to edit block settings
+     *
+     * @param Tree $tree
+     * @param int  $block_id
+     *
+     * @return void
+     */
+    public function configureBlock(Tree $tree, int $block_id)
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $this->setBlockSetting($block_id, 'days', Filter::postInteger('days', 1, self::MAX_DAYS, self::DEFAULT_DAYS));
+            $this->setBlockSetting($block_id, 'infoStyle', Filter::post('infoStyle', 'list|table', self::DEFAULT_STYLE));
+            $this->setBlockSetting($block_id, 'calendar', Filter::post('calendar', 'jewish|gregorian', self::DEFAULT_CALENDAR));
 
-			return;
-		}
+            return;
+        }
 
-		$calendar  = $this->getBlockSetting($block_id, 'calendar', 'jewish');
-		$days      = $this->getBlockSetting($block_id, 'days', self::DEFAULT_DAYS);
-		$infoStyle = $this->getBlockSetting($block_id, 'infoStyle', 'table');
+        $calendar  = $this->getBlockSetting($block_id, 'calendar', 'jewish');
+        $days      = $this->getBlockSetting($block_id, 'days', self::DEFAULT_DAYS);
+        $infoStyle = $this->getBlockSetting($block_id, 'infoStyle', 'table');
 
-		$styles = [
-			'list'  => /* I18N: An option in a list-box */ I18N::translate('list'),
-			'table' => /* I18N: An option in a list-box */ I18N::translate('table'),
-		];
+        $styles = [
+            'list'  => /* I18N: An option in a list-box */
+                I18N::translate('list'),
+            'table' => /* I18N: An option in a list-box */
+                I18N::translate('table'),
+        ];
 
-		$calendars = [
-			'jewish'    => I18N::translate('Jewish'),
-			'gregorian' => I18N::translate('Gregorian'),
-		];
+        $calendars = [
+            'jewish'    => I18N::translate('Jewish'),
+            'gregorian' => I18N::translate('Gregorian'),
+        ];
 
-		echo view('modules/yahrzeit/config', [
-			'calendar'  => $calendar,
-			'calendars' => $calendars,
-			'days'      => $days,
-			'infoStyle' => $infoStyle,
-			'max_days'  => self::MAX_DAYS,
-			'styles'    => $styles,
-		]);
-	}
+        echo view('modules/yahrzeit/config', [
+            'calendar'  => $calendar,
+            'calendars' => $calendars,
+            'days'      => $days,
+            'infoStyle' => $infoStyle,
+            'max_days'  => self::MAX_DAYS,
+            'styles'    => $styles,
+        ]);
+    }
 }

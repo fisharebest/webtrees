@@ -23,60 +23,71 @@ use Fisharebest\Webtrees\Menu;
 /**
  * Class PedigreeChartModule
  */
-class PedigreeChartModule extends AbstractModule implements ModuleChartInterface {
-	/**
-	 * How should this module be labelled on tabs, menus, etc.?
-	 *
-	 * @return string
-	 */
-	public function getTitle() {
-		return /* I18N: Name of a module/chart */ I18N::translate('Pedigree');
-	}
+class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
+{
+    /**
+     * How should this module be labelled on tabs, menus, etc.?
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return /* I18N: Name of a module/chart */
+            I18N::translate('Pedigree');
+    }
 
-	/**
-	 * A sentence describing what this module does.
-	 *
-	 * @return string
-	 */
-	public function getDescription() {
-		return /* I18N: Description of the “PedigreeChart” module */ I18N::translate('A chart of an individual’s ancestors, formatted as a tree.');
-	}
+    /**
+     * A sentence describing what this module does.
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return /* I18N: Description of the “PedigreeChart” module */
+            I18N::translate('A chart of an individual’s ancestors, formatted as a tree.');
+    }
 
-	/**
-	 * What is the default access level for this module?
-	 *
-	 * Some modules are aimed at admins or managers, and are not generally shown to users.
-	 *
-	 * @return int
-	 */
-	public function defaultAccessLevel() {
-		return Auth::PRIV_PRIVATE;
-	}
+    /**
+     * What is the default access level for this module?
+     *
+     * Some modules are aimed at admins or managers, and are not generally shown to users.
+     *
+     * @return int
+     */
+    public function defaultAccessLevel()
+    {
+        return Auth::PRIV_PRIVATE;
+    }
 
-	/**
-	 * Return a menu item for this chart.
-	 *
-	 * @param Individual $individual
-	 *
-	 * @return Menu|null
-	 */
-	public function getChartMenu(Individual $individual) {
-		return new Menu(
-			$this->getTitle(),
-			route('pedigree', ['xref' => $individual->getXref(), 'ged' => $individual->getTree()->getName()]),
-			'menu-chart-pedigree',
-			['rel' => 'nofollow']
-		);
-	}
+    /**
+     * Return a menu item for this chart.
+     *
+     * @param Individual $individual
+     *
+     * @return Menu|null
+     */
+    public function getChartMenu(Individual $individual)
+    {
+        return new Menu(
+            $this->getTitle(),
+            route('pedigree', [
+                'xref' => $individual->getXref(),
+                'ged'  => $individual->getTree()->getName(),
+            ]),
+            'menu-chart-pedigree',
+            ['rel' => 'nofollow']
+        );
+    }
 
-	/**
-	 * Return a menu item for this chart - for use in individual boxes.
-	 *
-	 * @param Individual $individual
-	 *
-	 * @return Menu|null
-	 */
-	public function getBoxChartMenu(Individual $individual) {
-		return $this->getChartMenu($individual);
-	}
+    /**
+     * Return a menu item for this chart - for use in individual boxes.
+     *
+     * @param Individual $individual
+     *
+     * @return Menu|null
+     */
+    public function getBoxChartMenu(Individual $individual)
+    {
+        return $this->getChartMenu($individual);
+    }
 }

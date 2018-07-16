@@ -18,17 +18,20 @@
 /**
  * Test harness for the class FanChartModule
  */
-class FanChartModuleTest extends \PHPUnit\Framework\TestCase {
-	/**
-	 * Prepare the environment for these tests
-	 */
-	public function setUp() {
-	}
+class FanChartModuleTest extends \PHPUnit\Framework\TestCase
+{
+    /**
+     * Prepare the environment for these tests
+     */
+    public function setUp()
+    {
+    }
 
-	/**
-	 * Test that the class exists
-	 */
-	public function testClassExists() {
-		$this->assertTrue(class_exists('\Fisharebest\Webtrees\Module\FanChartModule'));
-	}
+    /**
+     * Test that the class exists
+     */
+    public function testClassExists()
+    {
+        $this->assertTrue(class_exists('\Fisharebest\Webtrees\Module\FanChartModule'));
+    }
 }

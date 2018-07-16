@@ -22,31 +22,33 @@ use PDOException;
 /**
  * Upgrade the database schema from version 9 to version 10.
  */
-class Migration9 implements MigrationInterface {
-	/**
-	 * Upgrade to to the next version
-	 */
-	public function upgrade() {
-		// Change index on name table
-		try {
-			Database::exec(
-				"ALTER TABLE `##dates` CHANGE d_type d_type ENUM('@#DGREGORIAN@', '@#DJULIAN@', '@#DHEBREW@', '@#DFRENCH R@', '@#DHIJRI@', '@#DROMAN@', '@#DJALALI@')"
-			);
-		} catch (PDOException $ex) {
-			DebugBar::addThrowable($ex);
+class Migration9 implements MigrationInterface
+{
+    /**
+     * Upgrade to to the next version
+     */
+    public function upgrade()
+    {
+        // Change index on name table
+        try {
+            Database::exec(
+                "ALTER TABLE `##dates` CHANGE d_type d_type ENUM('@#DGREGORIAN@', '@#DJULIAN@', '@#DHEBREW@', '@#DFRENCH R@', '@#DHIJRI@', '@#DROMAN@', '@#DJALALI@')"
+            );
+        } catch (PDOException $ex) {
+            DebugBar::addThrowable($ex);
 
-			// Already been run?
-		}
+            // Already been run?
+        }
 
-		try {
-			// The INDILIST and FAMLIST scripts have been rewritten to use this index
-			Database::exec(
-				"ALTER TABLE `##name` DROP INDEX ix2, ADD INDEX ix2 (n_surn, n_file, n_type, n_id), ADD INDEX ix3 (n_givn, n_file, n_type, n_id)"
-			);
-		} catch (PDOException $ex) {
-			DebugBar::addThrowable($ex);
+        try {
+            // The INDILIST and FAMLIST scripts have been rewritten to use this index
+            Database::exec(
+                "ALTER TABLE `##name` DROP INDEX ix2, ADD INDEX ix2 (n_surn, n_file, n_type, n_id), ADD INDEX ix3 (n_givn, n_file, n_type, n_id)"
+            );
+        } catch (PDOException $ex) {
+            DebugBar::addThrowable($ex);
 
-			// Already been run?
-		}
-	}
+            // Already been run?
+        }
+    }
 }

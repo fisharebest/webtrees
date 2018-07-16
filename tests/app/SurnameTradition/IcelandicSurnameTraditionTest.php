@@ -14,146 +14,163 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+
 use Fisharebest\Webtrees\SurnameTradition\IcelandicSurnameTradition;
 use Fisharebest\Webtrees\SurnameTradition\SurnameTraditionInterface;
 
 /**
  * Test harness for the class SpanishSurnameTradition
  */
-class IcelandicSurnameTraditionTest extends \PHPUnit\Framework\TestCase {
-	/** @var SurnameTraditionInterface */
-	private $surname_tradition;
+class IcelandicSurnameTraditionTest extends \PHPUnit\Framework\TestCase
+{
+    /** @var SurnameTraditionInterface */
+    private $surname_tradition;
 
-	/**
-	 * Prepare the environment for these tests
-	 */
-	public function setUp() {
-		$this->surname_tradition = new IcelandicSurnameTradition;
-	}
+    /**
+     * Prepare the environment for these tests
+     */
+    public function setUp()
+    {
+        $this->surname_tradition = new IcelandicSurnameTradition;
+    }
 
-	/**
-	 * Test whether married surnames are used
-	 *
-	 * @covers \Fisharebest\Webtrees\SurnameTradition\IcelandicSurnameTradition
-	 */
-	public function testMarriedSurnames() {
-		$this->assertSame(false, $this->surname_tradition->hasMarriedNames());
-	}
+    /**
+     * Test whether married surnames are used
+     *
+     * @covers \Fisharebest\Webtrees\SurnameTradition\IcelandicSurnameTradition
+     */
+    public function testMarriedSurnames()
+    {
+        $this->assertSame(false, $this->surname_tradition->hasMarriedNames());
+    }
 
-	/**
-	 * Test whether surnames are used
-	 *
-	 * @covers \Fisharebest\Webtrees\SurnameTradition\IcelandicSurnameTradition
-	 */
-	public function testSurnames() {
-		$this->assertSame(false, $this->surname_tradition->hasSurnames());
-	}
+    /**
+     * Test whether surnames are used
+     *
+     * @covers \Fisharebest\Webtrees\SurnameTradition\IcelandicSurnameTradition
+     */
+    public function testSurnames()
+    {
+        $this->assertSame(false, $this->surname_tradition->hasSurnames());
+    }
 
-	/**
-	 * Test new son names
-	 *
-	 * @covers \Fisharebest\Webtrees\SurnameTradition\IcelandicSurnameTradition
-	 */
-	public function testNewSonNames() {
-		$this->assertSame(
-			['NAME' => 'Jonsson'],
-			$this->surname_tradition->newChildNames('Jon Einarsson', 'Eva Stefansdottir', 'M')
-		);
-	}
+    /**
+     * Test new son names
+     *
+     * @covers \Fisharebest\Webtrees\SurnameTradition\IcelandicSurnameTradition
+     */
+    public function testNewSonNames()
+    {
+        $this->assertSame(
+            ['NAME' => 'Jonsson'],
+            $this->surname_tradition->newChildNames('Jon Einarsson', 'Eva Stefansdottir', 'M')
+        );
+    }
 
-	/**
-	 * Test new daughter names
-	 *
-	 * @covers \Fisharebest\Webtrees\SurnameTradition\IcelandicSurnameTradition
-	 */
-	public function testNewDaughterNames() {
-		$this->assertSame(
-			['NAME' => 'Jonsdottir'],
-			$this->surname_tradition->newChildNames('Jon Einarsson', 'Eva Stefansdottir', 'F')
-		);
-	}
+    /**
+     * Test new daughter names
+     *
+     * @covers \Fisharebest\Webtrees\SurnameTradition\IcelandicSurnameTradition
+     */
+    public function testNewDaughterNames()
+    {
+        $this->assertSame(
+            ['NAME' => 'Jonsdottir'],
+            $this->surname_tradition->newChildNames('Jon Einarsson', 'Eva Stefansdottir', 'F')
+        );
+    }
 
-	/**
-	 * Test new child names
-	 *
-	 * @covers \Fisharebest\Webtrees\SurnameTradition\IcelandicSurnameTradition
-	 */
-	public function testNewChildNames() {
-		$this->assertSame(
-			[],
-			$this->surname_tradition->newChildNames('Jon Einarsson', 'Eva Stefansdottir', 'U')
-		);
-	}
+    /**
+     * Test new child names
+     *
+     * @covers \Fisharebest\Webtrees\SurnameTradition\IcelandicSurnameTradition
+     */
+    public function testNewChildNames()
+    {
+        $this->assertSame(
+            [],
+            $this->surname_tradition->newChildNames('Jon Einarsson', 'Eva Stefansdottir', 'U')
+        );
+    }
 
-	/**
-	 * Test new father names
-	 *
-	 * @covers \Fisharebest\Webtrees\SurnameTradition\IcelandicSurnameTradition
-	 */
-	public function testNewFatherNames() {
-		$this->assertSame(
-			['NAME' => 'Einar', 'GIVN' => 'Einar'],
-			$this->surname_tradition->newParentNames('Jon Einarsson', 'M')
-		);
-	}
+    /**
+     * Test new father names
+     *
+     * @covers \Fisharebest\Webtrees\SurnameTradition\IcelandicSurnameTradition
+     */
+    public function testNewFatherNames()
+    {
+        $this->assertSame(
+            [
+                'NAME' => 'Einar',
+                'GIVN' => 'Einar',
+            ],
+            $this->surname_tradition->newParentNames('Jon Einarsson', 'M')
+        );
+    }
 
-	/**
-	 * Test new mother names
-	 *
-	 * @covers \Fisharebest\Webtrees\SurnameTradition\IcelandicSurnameTradition
-	 */
-	public function testNewMotherNames() {
-		$this->assertSame(
-			[],
-			$this->surname_tradition->newParentNames('Jon Einarsson', 'F')
-		);
-	}
+    /**
+     * Test new mother names
+     *
+     * @covers \Fisharebest\Webtrees\SurnameTradition\IcelandicSurnameTradition
+     */
+    public function testNewMotherNames()
+    {
+        $this->assertSame(
+            [],
+            $this->surname_tradition->newParentNames('Jon Einarsson', 'F')
+        );
+    }
 
-	/**
-	 * Test new parent names
-	 *
-	 * @covers \Fisharebest\Webtrees\SurnameTradition\IcelandicSurnameTradition
-	 */
-	public function testNewParentNames() {
-		$this->assertSame(
-			[],
-			$this->surname_tradition->newParentNames('Jon Einarsson', 'U')
-		);
-	}
+    /**
+     * Test new parent names
+     *
+     * @covers \Fisharebest\Webtrees\SurnameTradition\IcelandicSurnameTradition
+     */
+    public function testNewParentNames()
+    {
+        $this->assertSame(
+            [],
+            $this->surname_tradition->newParentNames('Jon Einarsson', 'U')
+        );
+    }
 
-	/**
-	 * Test new husband names
-	 *
-	 * @covers \Fisharebest\Webtrees\SurnameTradition\IcelandicSurnameTradition
-	 */
-	public function testNewHusbandNames() {
-		$this->assertSame(
-			[],
-			$this->surname_tradition->newSpouseNames('Eva Stefansdottir', 'M')
-		);
-	}
+    /**
+     * Test new husband names
+     *
+     * @covers \Fisharebest\Webtrees\SurnameTradition\IcelandicSurnameTradition
+     */
+    public function testNewHusbandNames()
+    {
+        $this->assertSame(
+            [],
+            $this->surname_tradition->newSpouseNames('Eva Stefansdottir', 'M')
+        );
+    }
 
-	/**
-	 * Test new wife names
-	 *
-	 * @covers \Fisharebest\Webtrees\SurnameTradition\IcelandicSurnameTradition
-	 */
-	public function testNewWifeNames() {
-		$this->assertSame(
-			[],
-			$this->surname_tradition->newSpouseNames('Jon Einarsson', 'F')
-		);
-	}
+    /**
+     * Test new wife names
+     *
+     * @covers \Fisharebest\Webtrees\SurnameTradition\IcelandicSurnameTradition
+     */
+    public function testNewWifeNames()
+    {
+        $this->assertSame(
+            [],
+            $this->surname_tradition->newSpouseNames('Jon Einarsson', 'F')
+        );
+    }
 
-	/**
-	 * Test new spouse names
-	 *
-	 * @covers \Fisharebest\Webtrees\SurnameTradition\IcelandicSurnameTradition
-	 */
-	public function testNewSpouseNames() {
-		$this->assertSame(
-			[],
-			$this->surname_tradition->newSpouseNames('Jon Einarsson', 'U')
-		);
-	}
+    /**
+     * Test new spouse names
+     *
+     * @covers \Fisharebest\Webtrees\SurnameTradition\IcelandicSurnameTradition
+     */
+    public function testNewSpouseNames()
+    {
+        $this->assertSame(
+            [],
+            $this->surname_tradition->newSpouseNames('Jon Einarsson', 'U')
+        );
+    }
 }

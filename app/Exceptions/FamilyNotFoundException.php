@@ -23,11 +23,13 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 /**
  * Exception thrown when a family does not exist.
  */
-class FamilyNotFoundException extends NotFoundHttpException {
-	/**
-	 * FamilyNotFoundException constructor.
-	 */
-	public function __construct() {
-		parent::__construct(I18N::translate('This family does not exist or you do not have permission to view it.'));
-	}
+class FamilyNotFoundException extends NotFoundHttpException
+{
+    /**
+     * FamilyNotFoundException constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct(I18N::translate('This family does not exist or you do not have permission to view it.'));
+    }
 }

@@ -25,13 +25,14 @@ use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 /**
  * Middleware.
  */
-interface MiddlewareInterface {
-	/**
-	 * @param Request $request
-	 * @param Closure $next
-	 *
-	 * @return Response
-	 * @throws AccessDeniedHttpException
-	 */
-	public function handle(Request $request, Closure $next): Response;
+interface MiddlewareInterface
+{
+    /**
+     * @param Request $request
+     * @param Closure $next
+     *
+     * @return Response
+     * @throws AccessDeniedHttpException
+     */
+    public function handle(Request $request, Closure $next): Response;
 }

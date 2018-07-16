@@ -19,20 +19,21 @@ namespace Fisharebest\Webtrees\Census;
 /**
  * Marital status.
  */
-class CensusColumnConditionDanish extends CensusColumnConditionEnglish {
-	/* Text to display for married individuals */
-	protected $husband = 'Gift';
-	protected $wife    = 'Gift';
+class CensusColumnConditionDanish extends CensusColumnConditionEnglish
+{
+    /* Text to display for married individuals */
+    protected $husband = 'Gift';
+    protected $wife    = 'Gift';
 
-	/* Text to display for unmarried individuals */
-	protected $bachelor = 'Ugift';
-	protected $spinster = 'Ugift';
+    /* Text to display for unmarried individuals */
+    protected $bachelor = 'Ugift';
+    protected $spinster = 'Ugift';
 
-	/* Text to display for divorced individuals */
-	protected $divorce  = 'Skilt';
-	protected $divorcee = 'Skilt';
+    /* Text to display for divorced individuals */
+    protected $divorce  = 'Skilt';
+    protected $divorcee = 'Skilt';
 
-	/* Text to display for widowed individuals */
-	protected $widower = 'Gift';
-	protected $widow   = 'Gift';
+    /* Text to display for widowed individuals */
+    protected $widower = 'Gift';
+    protected $widow   = 'Gift';
 }

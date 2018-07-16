@@ -21,22 +21,24 @@ use Fisharebest\Webtrees\Individual;
 /**
  * Birth place of the individual's fther.
  */
-class CensusColumnFatherBirthPlace extends AbstractCensusColumn implements CensusColumnInterface {
-	/**
-	 * Generate the likely value of this census column, based on available information.
-	 *
-	 * @param Individual $individual
-	 * @param Individual $head
-	 *
-	 * @return string
-	 */
-	public function generate(Individual $individual, Individual $head = null) {
-		$father = $this->father($individual);
+class CensusColumnFatherBirthPlace extends AbstractCensusColumn implements CensusColumnInterface
+{
+    /**
+     * Generate the likely value of this census column, based on available information.
+     *
+     * @param Individual $individual
+     * @param Individual $head
+     *
+     * @return string
+     */
+    public function generate(Individual $individual, Individual $head = null)
+    {
+        $father = $this->father($individual);
 
-		if ($father) {
-			return $this->notCountry($father->getBirthPlace()->getGedcomName());
-		} else {
-			return '';
-		}
-	}
+        if ($father) {
+            return $this->notCountry($father->getBirthPlace()->getGedcomName());
+        } else {
+            return '';
+        }
+    }
 }

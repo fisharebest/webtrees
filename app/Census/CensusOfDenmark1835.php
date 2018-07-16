@@ -19,36 +19,40 @@ namespace Fisharebest\Webtrees\Census;
 /**
  * Definitions for a census
  */
-class CensusOfDenmark1835 extends CensusOfDenmark implements CensusInterface {
-	/**
-	 * When did this census occur.
-	 *
-	 * @return string
-	 */
-	public function censusDate() {
-		return '18 FEB 1835';
-	}
+class CensusOfDenmark1835 extends CensusOfDenmark implements CensusInterface
+{
+    /**
+     * When did this census occur.
+     *
+     * @return string
+     */
+    public function censusDate()
+    {
+        return '18 FEB 1835';
+    }
 
-	/**
-	 * Where did this census occur, in GEDCOM format.
-	 *
-	 * @return string
-	 */
-	public function censusPlace() {
-		return 'Schleswig-Holstein, Deutschland';
-	}
+    /**
+     * Where did this census occur, in GEDCOM format.
+     *
+     * @return string
+     */
+    public function censusPlace()
+    {
+        return 'Schleswig-Holstein, Deutschland';
+    }
 
-	/**
-	 * The columns of the census.
-	 *
-	 * @return CensusColumnInterface[]
-	 */
-	public function columns() {
-		return [
-			new CensusColumnFullName($this, 'Navn', ''),
-			new CensusColumnAge($this, 'Alder', ''),
-			new CensusColumnConditionDanish($this, 'Civilstand', ''),
-			new CensusColumnRelationToHead($this, 'Stilling i familien', ''),
-		];
-	}
+    /**
+     * The columns of the census.
+     *
+     * @return CensusColumnInterface[]
+     */
+    public function columns()
+    {
+        return [
+            new CensusColumnFullName($this, 'Navn', ''),
+            new CensusColumnAge($this, 'Alder', ''),
+            new CensusColumnConditionDanish($this, 'Civilstand', ''),
+            new CensusColumnRelationToHead($this, 'Stilling i familien', ''),
+        ];
+    }
 }

@@ -38,347 +38,361 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 /**
  * Class BatchUpdateModule
  */
-class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface {
-	protected $layout = 'layouts/administration';
+class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
+{
+    protected $layout = 'layouts/administration';
 
-	/**
-	 * How should this module be labelled on tabs, menus, etc.?
-	 *
-	 * @return string
-	 */
-	public function getTitle() {
-		return /* I18N: Name of a module */
-			I18N::translate('Batch update');
-	}
+    /**
+     * How should this module be labelled on tabs, menus, etc.?
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return /* I18N: Name of a module */
+            I18N::translate('Batch update');
+    }
 
-	/**
-	 * A sentence describing what this module does.
-	 *
-	 * @return string
-	 */
-	public function getDescription() {
-		return /* I18N: Description of the “Batch update” module */
-			I18N::translate('Apply automatic corrections to your genealogy data.');
-	}
+    /**
+     * A sentence describing what this module does.
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return /* I18N: Description of the “Batch update” module */
+            I18N::translate('Apply automatic corrections to your genealogy data.');
+    }
 
-	/**
-	 * Main entry point
-	 *
-	 * @param Request $request
-	 *
-	 * @return Response
-	 */
-	public function getAdminAction(Request $request): Response {
-		/** @var Tree $tree */
-		$tree = $request->attributes->get('tree');
+    /**
+     * Main entry point
+     *
+     * @param Request $request
+     *
+     * @return Response
+     */
+    public function getAdminAction(Request $request): Response
+    {
+        /** @var Tree $tree */
+        $tree = $request->attributes->get('tree');
 
-		/** @var User $user */
-		$user = $request->attributes->get('user');
+        /** @var User $user */
+        $user = $request->attributes->get('user');
 
-		// We need a tree to work with.
-		if ($tree === null) {
-			throw new NotFoundHttpException;
-		}
+        // We need a tree to work with.
+        if ($tree === null) {
+            throw new NotFoundHttpException;
+        }
 
-		// Admins only.
-		if (!Auth::isAdmin($user)) {
-			throw new AccessDeniedHttpException;
-		}
+        // Admins only.
+        if (!Auth::isAdmin($user)) {
+            throw new AccessDeniedHttpException;
+        }
 
-		$plugin = $request->get('plugin', '');
-		$xref   = $request->get('xref', '');
+        $plugin = $request->get('plugin', '');
+        $xref   = $request->get('xref', '');
 
-		$plugins = $this->getPluginList();
-		$plugin  = $plugins[$plugin] ?? null;
+        $plugins = $this->getPluginList();
+        $plugin  = $plugins[$plugin] ?? null;
 
-		$curr_xref = '';
-		$prev_xref = '';
-		$next_xref = '';
+        $curr_xref = '';
+        $prev_xref = '';
+        $next_xref = '';
 
-		// Don't do any processing until a plugin is chosen.
-		if ($plugin !== null) {
-			$plugin->getOptions($request);
+        // Don't do any processing until a plugin is chosen.
+        if ($plugin !== null) {
+            $plugin->getOptions($request);
 
-			$all_data = $this->allData($plugin, $tree);
+            $all_data = $this->allData($plugin, $tree);
 
-			// Make sure that our requested record really does need updating.
-			// It may have been updated in another session, or may not have
-			// been specified at all.
-			if (array_key_exists($xref, $all_data) && $plugin->doesRecordNeedUpdate($this->getRecord($all_data[$xref], $tree))) {
-				$curr_xref = $xref;
-			}
+            // Make sure that our requested record really does need updating.
+            // It may have been updated in another session, or may not have
+            // been specified at all.
+            if (array_key_exists($xref, $all_data) && $plugin->doesRecordNeedUpdate($this->getRecord($all_data[$xref], $tree))) {
+                $curr_xref = $xref;
+            }
 
-			// The requested record doesn't need updating - find one that does
-			if ($curr_xref === '') {
-				$curr_xref = $this->findNextXref($plugin, $xref, $all_data, $tree);
-			}
-			if ($curr_xref === '') {
-				$curr_xref = $this->findPrevXref($plugin, $xref, $all_data, $tree);
-			}
+            // The requested record doesn't need updating - find one that does
+            if ($curr_xref === '') {
+                $curr_xref = $this->findNextXref($plugin, $xref, $all_data, $tree);
+            }
+            if ($curr_xref === '') {
+                $curr_xref = $this->findPrevXref($plugin, $xref, $all_data, $tree);
+            }
 
-			// If we've found a record to update, get details and look for the next/prev
-			if ($curr_xref !== '') {
-				$prev_xref = $this->findPrevXref($plugin, $xref, $all_data, $tree);
-				$next_xref = $this->findNextXref($plugin, $xref, $all_data, $tree);
-			}
-		}
+            // If we've found a record to update, get details and look for the next/prev
+            if ($curr_xref !== '') {
+                $prev_xref = $this->findPrevXref($plugin, $xref, $all_data, $tree);
+                $next_xref = $this->findNextXref($plugin, $xref, $all_data, $tree);
+            }
+        }
 
-		return $this->viewResponse('modules/batch_update/admin', [
-			'auto_accept' => (bool) $user->getPreference('auto_accept'),
-			'plugins'     => $plugins,
-			'curr_xref'   => $curr_xref,
-			'next_xref'   => $next_xref,
-			'plugin'      => $plugin,
-			'record'      => GedcomRecord::getInstance($curr_xref, $tree),
-			'prev_xref'   => $prev_xref,
-			'title'       => I18N::translate('Batch update'),
-			'tree'        => $tree,
-			'trees'       => Tree::getNameList(),
-		]);
-	}
+        return $this->viewResponse('modules/batch_update/admin', [
+            'auto_accept' => (bool)$user->getPreference('auto_accept'),
+            'plugins'     => $plugins,
+            'curr_xref'   => $curr_xref,
+            'next_xref'   => $next_xref,
+            'plugin'      => $plugin,
+            'record'      => GedcomRecord::getInstance($curr_xref, $tree),
+            'prev_xref'   => $prev_xref,
+            'title'       => I18N::translate('Batch update'),
+            'tree'        => $tree,
+            'trees'       => Tree::getNameList(),
+        ]);
+    }
 
-	/**
-	 * Perform an update
-	 *
-	 * @param Request $request
-	 *
-	 * @return RedirectResponse
-	 */
-	public function postAdminAction(Request $request): RedirectResponse {
-		/** @var Tree $tree */
-		$tree = $request->attributes->get('tree');
+    /**
+     * Perform an update
+     *
+     * @param Request $request
+     *
+     * @return RedirectResponse
+     */
+    public function postAdminAction(Request $request): RedirectResponse
+    {
+        /** @var Tree $tree */
+        $tree = $request->attributes->get('tree');
 
-		/** @var User $user */
-		$user = $request->attributes->get('user');
+        /** @var User $user */
+        $user = $request->attributes->get('user');
 
-		// We need a tree to work with.
-		if ($tree === null) {
-			throw new NotFoundHttpException;
-		}
+        // We need a tree to work with.
+        if ($tree === null) {
+            throw new NotFoundHttpException;
+        }
 
-		// Admins only.
-		if (!Auth::isAdmin($user)) {
-			throw new AccessDeniedHttpException;
-		}
+        // Admins only.
+        if (!Auth::isAdmin($user)) {
+            throw new AccessDeniedHttpException;
+        }
 
-		$plugin = $request->get('plugin', '');
-		$update = $request->get('update', '');
-		$xref   = $request->request->get('xref', '');
+        $plugin = $request->get('plugin', '');
+        $update = $request->get('update', '');
+        $xref   = $request->request->get('xref', '');
 
-		$plugins = $this->getPluginList();
-		$plugin  = $plugins[$plugin] ?? null;
+        $plugins = $this->getPluginList();
+        $plugin  = $plugins[$plugin] ?? null;
 
-		if ($plugin === null) {
-			throw new NotFoundHttpException;
-		}
-		$plugin->getOptions($request);
+        if ($plugin === null) {
+            throw new NotFoundHttpException;
+        }
+        $plugin->getOptions($request);
 
-		$all_data = $this->allData($plugin, $tree);
+        $all_data = $this->allData($plugin, $tree);
 
-		$parameters = $request->request->all();
-		unset($parameters['csrf']);
-		unset($parameters['update']);
+        $parameters = $request->request->all();
+        unset($parameters['csrf']);
+        unset($parameters['update']);
 
-		switch ($update) {
-			case 'one':
-				$record = $this->getRecord($all_data[$xref], $tree);
-				if ($plugin->doesRecordNeedUpdate($record)) {
-					$new_gedcom = $plugin->updateRecord($record);
-					$record->updateRecord($new_gedcom, !$plugin->chan);
-				}
+        switch ($update) {
+            case 'one':
+                $record = $this->getRecord($all_data[$xref], $tree);
+                if ($plugin->doesRecordNeedUpdate($record)) {
+                    $new_gedcom = $plugin->updateRecord($record);
+                    $record->updateRecord($new_gedcom, !$plugin->chan);
+                }
 
-				$parameters['xref'] = $this->findNextXref($plugin, $xref, $all_data, $tree);
-				break;
+                $parameters['xref'] = $this->findNextXref($plugin, $xref, $all_data, $tree);
+                break;
 
-			case 'all':
-				foreach ($all_data as $xref => $value) {
-					$record = $this->getRecord($value, $tree);
-					if ($plugin->doesRecordNeedUpdate($record)) {
-						$new_gedcom = $plugin->updateRecord($record);
-						$record->updateRecord($new_gedcom, !$plugin->chan);
-					}
-				}
-				$parameters['xref'] = '';
-				break;
-		}
+            case 'all':
+                foreach ($all_data as $xref => $value) {
+                    $record = $this->getRecord($value, $tree);
+                    if ($plugin->doesRecordNeedUpdate($record)) {
+                        $new_gedcom = $plugin->updateRecord($record);
+                        $record->updateRecord($new_gedcom, !$plugin->chan);
+                    }
+                }
+                $parameters['xref'] = '';
+                break;
+        }
 
-		$url = route('module', $parameters);
+        $url = route('module', $parameters);
 
-		return new RedirectResponse($url);
-	}
+        return new RedirectResponse($url);
+    }
 
 
-	/**
-	 * Find the next record that needs to be updated.
-	 *
-	 * @param BatchUpdateBasePlugin $plugin
-	 * @param string                $xref
-	 * @param array                 $all_data
-	 * @param Tree                  $tree
-	 *
-	 * @return string
-	 */
-	private function findNextXref(BatchUpdateBasePlugin $plugin, string $xref, array $all_data, Tree $tree): string {
-		foreach (array_keys($all_data) as $key) {
-			if ($key > $xref) {
-				$record = $this->getRecord($all_data[$key], $tree);
-				if ($plugin->doesRecordNeedUpdate($record)) {
-					return $key;
-				}
-			}
-		}
+    /**
+     * Find the next record that needs to be updated.
+     *
+     * @param BatchUpdateBasePlugin $plugin
+     * @param string                $xref
+     * @param array                 $all_data
+     * @param Tree                  $tree
+     *
+     * @return string
+     */
+    private function findNextXref(BatchUpdateBasePlugin $plugin, string $xref, array $all_data, Tree $tree): string
+    {
+        foreach (array_keys($all_data) as $key) {
+            if ($key > $xref) {
+                $record = $this->getRecord($all_data[$key], $tree);
+                if ($plugin->doesRecordNeedUpdate($record)) {
+                    return $key;
+                }
+            }
+        }
 
-		return '';
-	}
+        return '';
+    }
 
-	/**
-	 * Find the previous record that needs to be updated.
-	 *
-	 * @param BatchUpdateBasePlugin $plugin
-	 * @param string                $xref
-	 * @param array                 $all_data
-	 * @param Tree                  $tree
-	 *
-	 * @return string
-	 */
-	private function findPrevXref(BatchUpdateBasePlugin $plugin, string $xref, array $all_data, Tree $tree): string {
-		foreach (array_reverse($all_data) as $key => $value) {
-			if ($key > $xref) {
-				$record = $this->getRecord($all_data[$key], $tree);
-				if ($plugin->doesRecordNeedUpdate($record)) {
-					return $key;
-				}
-			}
-		}
+    /**
+     * Find the previous record that needs to be updated.
+     *
+     * @param BatchUpdateBasePlugin $plugin
+     * @param string                $xref
+     * @param array                 $all_data
+     * @param Tree                  $tree
+     *
+     * @return string
+     */
+    private function findPrevXref(BatchUpdateBasePlugin $plugin, string $xref, array $all_data, Tree $tree): string
+    {
+        foreach (array_reverse($all_data) as $key => $value) {
+            if ($key > $xref) {
+                $record = $this->getRecord($all_data[$key], $tree);
+                if ($plugin->doesRecordNeedUpdate($record)) {
+                    return $key;
+                }
+            }
+        }
 
-		return '';
-	}
+        return '';
+    }
 
-	/**
-	 * Fetch all records that might need updating.
-	 *
-	 * @param BatchUpdateBasePlugin $plugin
-	 * @param Tree                  $tree
-	 *
-	 * @return object[]
-	 */
-	private function allData(BatchUpdateBasePlugin $plugin, Tree $tree): array {
-		$tmp = [];
+    /**
+     * Fetch all records that might need updating.
+     *
+     * @param BatchUpdateBasePlugin $plugin
+     * @param Tree                  $tree
+     *
+     * @return object[]
+     */
+    private function allData(BatchUpdateBasePlugin $plugin, Tree $tree): array
+    {
+        $tmp = [];
 
-		foreach ($plugin->getRecordTypesToUpdate() as $type) {
-			switch ($type) {
-				case 'INDI':
-					$tmp += Database::prepare(
-						"SELECT i_id AS xref, 'INDI' AS type, i_gedcom AS gedcom  FROM `##individuals` WHERE i_file = :tree_id"
-					)->execute([
-						'tree_id' => $tree->getTreeId(),
-					])->fetchAll();
-					break;
+        foreach ($plugin->getRecordTypesToUpdate() as $type) {
+            switch ($type) {
+                case 'INDI':
+                    $tmp += Database::prepare(
+                        "SELECT i_id AS xref, 'INDI' AS type, i_gedcom AS gedcom  FROM `##individuals` WHERE i_file = :tree_id"
+                    )->execute([
+                        'tree_id' => $tree->getTreeId(),
+                    ])->fetchAll();
+                    break;
 
-				case 'FAM':
-					$tmp += Database::prepare(
-						"SELECT f_id AS xref, 'FAM' AS type, f_gedcom AS gedcom  FROM `##families` WHERE f_file = :tree_id"
-					)->execute([
-						'tree_id' => $tree->getTreeId(),
-					])->fetchAll();
-					break;
+                case 'FAM':
+                    $tmp += Database::prepare(
+                        "SELECT f_id AS xref, 'FAM' AS type, f_gedcom AS gedcom  FROM `##families` WHERE f_file = :tree_id"
+                    )->execute([
+                        'tree_id' => $tree->getTreeId(),
+                    ])->fetchAll();
+                    break;
 
-				case 'SOUR':
-					$tmp += Database::prepare(
-						"SELECT s_id AS xref, 'SOUR' AS type, s_gedcom AS gedcom  FROM `##sources` WHERE s_file = :tree_id"
-					)->execute([
-						'tree_id' => $tree->getTreeId(),
-					])->fetchAll();
-					break;
+                case 'SOUR':
+                    $tmp += Database::prepare(
+                        "SELECT s_id AS xref, 'SOUR' AS type, s_gedcom AS gedcom  FROM `##sources` WHERE s_file = :tree_id"
+                    )->execute([
+                        'tree_id' => $tree->getTreeId(),
+                    ])->fetchAll();
+                    break;
 
-				case 'OBJE':
-					$tmp += Database::prepare(
-						"SELECT m_id AS xref, 'OBJE' AS type, m_gedcom AS gedcom  FROM `##media` WHERE m_file = :tree_id"
-					)->execute([
-						'tree_id' => $tree->getTreeId(),
-					])->fetchAll();
-					break;
+                case 'OBJE':
+                    $tmp += Database::prepare(
+                        "SELECT m_id AS xref, 'OBJE' AS type, m_gedcom AS gedcom  FROM `##media` WHERE m_file = :tree_id"
+                    )->execute([
+                        'tree_id' => $tree->getTreeId(),
+                    ])->fetchAll();
+                    break;
 
-				default:
-					$tmp += Database::prepare(
-						"SELECT o_id AS xref, 'OBJE' AS type, o_gedcom AS gedcom  FROM `##other` WHERE o_file = :tree_id AND o_type = :type"
-					)->execute([
-						'tree_id' => $tree->getTreeId(),
-						'type'    => $type,
-					])->fetchAll();
-					break;
-			}
-		}
+                default:
+                    $tmp += Database::prepare(
+                        "SELECT o_id AS xref, 'OBJE' AS type, o_gedcom AS gedcom  FROM `##other` WHERE o_file = :tree_id AND o_type = :type"
+                    )->execute([
+                        'tree_id' => $tree->getTreeId(),
+                        'type'    => $type,
+                    ])->fetchAll();
+                    break;
+            }
+        }
 
-		$data = [];
+        $data = [];
 
-		foreach ($tmp as $value) {
-			$data[$value->xref] = $value;
-		}
+        foreach ($tmp as $value) {
+            $data[$value->xref] = $value;
+        }
 
-		ksort($tmp);
+        ksort($tmp);
 
-		return $data;
-	}
+        return $data;
+    }
 
-	/**
-	 * Scan the plugin folder for a list of plugins
-	 *
-	 * @return BatchUpdateBasePlugin[]
-	 */
-	private function getPluginList() {
-		$plugins = [];
+    /**
+     * Scan the plugin folder for a list of plugins
+     *
+     * @return BatchUpdateBasePlugin[]
+     */
+    private function getPluginList()
+    {
+        $plugins = [];
 
-		$dir_handle = opendir(__DIR__ . '/BatchUpdate');
-		while (($file = readdir($dir_handle)) !== false) {
-			if (substr($file, -10) == 'Plugin.php' && $file !== 'BatchUpdateBasePlugin.php') {
-				$class           = '\Fisharebest\Webtrees\Module\BatchUpdate\\' . basename($file, '.php');
-				$plugins[$class] = new $class;
-			}
-		}
-		closedir($dir_handle);
+        $dir_handle = opendir(__DIR__ . '/BatchUpdate');
+        while (($file = readdir($dir_handle)) !== false) {
+            if (substr($file, -10) == 'Plugin.php' && $file !== 'BatchUpdateBasePlugin.php') {
+                $class = '\Fisharebest\Webtrees\Module\BatchUpdate\\' . basename($file, '.php');
+                $plugins[$class] = new $class;
+            }
+        }
+        closedir($dir_handle);
 
-		return $plugins;
-	}
+        return $plugins;
+    }
 
-	/**
-	 * @param stdClass $record
-	 * @param Tree     $tree
-	 *
-	 * @return GedcomRecord
-	 */
-	public function getRecord(stdClass $record, Tree $tree): GedcomRecord {
-		switch ($record->type) {
-			case 'INDI':
-				return Individual::getInstance($record->xref, $tree, $record->gedcom);
+    /**
+     * @param stdClass $record
+     * @param Tree     $tree
+     *
+     * @return GedcomRecord
+     */
+    public function getRecord(stdClass $record, Tree $tree): GedcomRecord
+    {
+        switch ($record->type) {
+            case 'INDI':
+                return Individual::getInstance($record->xref, $tree, $record->gedcom);
 
-			case 'FAM':
-				return Family::getInstance($record->xref, $tree, $record->gedcom);
+            case 'FAM':
+                return Family::getInstance($record->xref, $tree, $record->gedcom);
 
-			case 'SOUR':
-				return Source::getInstance($record->xref, $tree, $record->gedcom);
+            case 'SOUR':
+                return Source::getInstance($record->xref, $tree, $record->gedcom);
 
-			case 'REPO':
-				return Repository::getInstance($record->xref, $tree, $record->gedcom);
+            case 'REPO':
+                return Repository::getInstance($record->xref, $tree, $record->gedcom);
 
-			case 'OBJE':
-				return Media::getInstance($record->xref, $tree, $record->gedcom);
+            case 'OBJE':
+                return Media::getInstance($record->xref, $tree, $record->gedcom);
 
-			case 'NOTE':
-				return Note::getInstance($record->xref, $tree, $record->gedcom);
+            case 'NOTE':
+                return Note::getInstance($record->xref, $tree, $record->gedcom);
 
-			default:
-				return GedcomRecord::getInstance($record->xref, $tree, $record->gedcom);
-		}
-	}
+            default:
+                return GedcomRecord::getInstance($record->xref, $tree, $record->gedcom);
+        }
+    }
 
-	/**
-	 * The URL to a page where the user can modify the configuration of this module.
-	 * These links are displayed in the admin page menu.
-	 *
-	 * @return string
-	 */
-	public function getConfigLink() {
-		return route('module', ['module' => $this->getName(), 'action' => 'Admin']);
-	}
+    /**
+     * The URL to a page where the user can modify the configuration of this module.
+     * These links are displayed in the admin page menu.
+     *
+     * @return string
+     */
+    public function getConfigLink()
+    {
+        return route('module', [
+            'module' => $this->getName(),
+            'action' => 'Admin',
+        ]);
+    }
 }

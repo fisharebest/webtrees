@@ -22,72 +22,82 @@ use Fisharebest\Webtrees\Tree;
 /**
  * Class ThemeSelectModule
  */
-class ThemeSelectModule extends AbstractModule implements ModuleBlockInterface {
-	/** {@inheritdoc} */
-	public function getTitle() {
-		return /* I18N: Name of a module */ I18N::translate('Theme change');
-	}
+class ThemeSelectModule extends AbstractModule implements ModuleBlockInterface
+{
+    /** {@inheritdoc} */
+    public function getTitle()
+    {
+        return /* I18N: Name of a module */
+            I18N::translate('Theme change');
+    }
 
-	/** {@inheritdoc} */
-	public function getDescription() {
-		return /* I18N: Description of the “Theme change” module */ I18N::translate('An alternative way to select a new theme.');
-	}
+    /** {@inheritdoc} */
+    public function getDescription()
+    {
+        return /* I18N: Description of the “Theme change” module */
+            I18N::translate('An alternative way to select a new theme.');
+    }
 
-	/**
-	 * Generate the HTML content of this block.
-	 *
-	 * @param Tree     $tree
-	 * @param int      $block_id
-	 * @param bool     $template
-	 * @param string[] $cfg
-	 *
-	 * @return string
-	 */
-	public function getBlock(Tree $tree, int $block_id, bool $template = true, array $cfg = []): string {
-		$menu = Theme::theme()->menuThemes();
+    /**
+     * Generate the HTML content of this block.
+     *
+     * @param Tree     $tree
+     * @param int      $block_id
+     * @param bool     $template
+     * @param string[] $cfg
+     *
+     * @return string
+     */
+    public function getBlock(Tree $tree, int $block_id, bool $template = true, array $cfg = []): string
+    {
+        $menu = Theme::theme()->menuThemes();
 
-		if ($menu) {
-			$content = '<ul class="nav text-justify">' . $menu->bootstrap4() . '</ul>';
+        if ($menu) {
+            $content = '<ul class="nav text-justify">' . $menu->bootstrap4() . '</ul>';
 
-			if ($template) {
-				return view('modules/block-template', [
-					'block'      => str_replace('_', '-', $this->getName()),
-					'id'         => $block_id,
-					'config_url' => '',
-					'title'      => $this->getTitle(),
-					'content'    => $content,
-				]);
-			} else {
-				return $content;
-			}
-		} else {
-			return '';
-		}
-	}
+            if ($template) {
+                return view('modules/block-template', [
+                    'block'      => str_replace('_', '-', $this->getName()),
+                    'id'         => $block_id,
+                    'config_url' => '',
+                    'title'      => $this->getTitle(),
+                    'content'    => $content,
+                ]);
+            } else {
+                return $content;
+            }
+        } else {
+            return '';
+        }
+    }
 
-	/** {@inheritdoc} */
-	public function loadAjax(): bool {
-		return false;
-	}
+    /** {@inheritdoc} */
+    public function loadAjax(): bool
+    {
+        return false;
+    }
 
-	/** {@inheritdoc} */
-	public function isUserBlock(): bool {
-		return true;
-	}
+    /** {@inheritdoc} */
+    public function isUserBlock(): bool
+    {
+        return true;
+    }
 
-	/** {@inheritdoc} */
-	public function isGedcomBlock(): bool {
-		return true;
-	}
+    /** {@inheritdoc} */
+    public function isGedcomBlock(): bool
+    {
+        return true;
+    }
 
-	/**
-	 * An HTML form to edit block settings
-	 *
-	 * @param Tree $tree
-	 * @param int  $block_id
-	 *
-	 * @return void
-	 */
-	public function configureBlock(Tree $tree, int $block_id) {
-	}
+    /**
+     * An HTML form to edit block settings
+     *
+     * @param Tree $tree
+     * @param int  $block_id
+     *
+     * @return void
+     */
+    public function configureBlock(Tree $tree, int $block_id)
+    {
+    }
 }

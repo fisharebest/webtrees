@@ -28,114 +28,129 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * Controller for edit forms and responses.
  */
-class EditNoteController extends AbstractEditController {
-	/**
-	 * Show a form to create a new note object.
-	 *
-	 * @param Request $request
-	 *
-	 * @return Response
-	 */
-	public function createNoteObject(Request $request): Response {
-		return new Response(view('modals/create-note-object'));
-	}
+class EditNoteController extends AbstractEditController
+{
+    /**
+     * Show a form to create a new note object.
+     *
+     * @param Request $request
+     *
+     * @return Response
+     */
+    public function createNoteObject(Request $request): Response
+    {
+        return new Response(view('modals/create-note-object'));
+    }
 
-	/**
-	 * Show a form to create a new note object.
-	 *
-	 * @param Request $request
-	 *
-	 * @return Response
-	 */
-	public function editNoteObject(Request $request): Response {
-		/** @var Tree $tree */
-		$tree = $request->attributes->get('tree');
+    /**
+     * Show a form to create a new note object.
+     *
+     * @param Request $request
+     *
+     * @return Response
+     */
+    public function editNoteObject(Request $request): Response
+    {
+        /** @var Tree $tree */
+        $tree = $request->attributes->get('tree');
 
-		$xref = $request->get('xref');
+        $xref = $request->get('xref');
 
-		$note = Note::getInstance($xref, $tree);
+        $note = Note::getInstance($xref, $tree);
 
-		$this->checkNoteAccess($note, true);
+        $this->checkNoteAccess($note, true);
 
-		return $this->viewResponse('edit/shared-note', [
-			'note'  => $note,
-			'title' => I18N::translate('Edit the shared note'),
-			'tree'  => $tree,
-		]);
-	}
+        return $this->viewResponse('edit/shared-note', [
+            'note'  => $note,
+            'title' => I18N::translate('Edit the shared note'),
+            'tree'  => $tree,
+        ]);
+    }
 
-	/**
-	 * Show a form to create a new note object.
-	 *
-	 * @param Request $request
-	 *
-	 * @return RedirectResponse
-	 */
-	public function updateNoteObject(Request $request): RedirectResponse {
-		/** @var Tree $tree */
-		$tree = $request->attributes->get('tree');
+    /**
+     * Show a form to create a new note object.
+     *
+     * @param Request $request
+     *
+     * @return RedirectResponse
+     */
+    public function updateNoteObject(Request $request): RedirectResponse
+    {
+        /** @var Tree $tree */
+        $tree = $request->attributes->get('tree');
 
-		$xref = $request->get('xref');
+        $xref = $request->get('xref');
 
-		$note = Note::getInstance($xref, $tree);
+        $note = Note::getInstance($xref, $tree);
 
-		$this->checkNoteAccess($note, true);
+        $this->checkNoteAccess($note, true);
 
-		$NOTE = $request->get('NOTE');
+        $NOTE = $request->get('NOTE');
 
-		// "\" and "$" are signficant in replacement strings, so escape them.
-		$NOTE = str_replace(['\\', '$'], ['\\\\', '\\$'], $NOTE);
+        // "\" and "$" are signficant in replacement strings, so escape them.
+        $NOTE = str_replace([
+            '\\',
+            '$',
+        ], [
+            '\\\\',
+            '\\$',
+        ], $NOTE);
 
-		$gedrec = preg_replace(
-			'/^0 @' . $note->getXref() . '@ NOTE.*(\n1 CONT.*)*/',
-			'0 @' . $note->getXref() . '@ NOTE ' . preg_replace("/\r?\n/", "\n1 CONT ", $NOTE),
-			$note->getGedcom()
-		);
+        $gedrec = preg_replace(
+            '/^0 @' . $note->getXref() . '@ NOTE.*(\n1 CONT.*)*/',
+            '0 @' . $note->getXref() . '@ NOTE ' . preg_replace("/\r?\n/", "\n1 CONT ", $NOTE),
+            $note->getGedcom()
+        );
 
-		$note->updateRecord($gedrec, true);
+        $note->updateRecord($gedrec, true);
 
-		return new RedirectResponse($note->url());
-	}
+        return new RedirectResponse($note->url());
+    }
 
-	/**
-	 * Process a form to create a new note object.
-	 *
-	 * @param Request $request
-	 *
-	 * @return JsonResponse
-	 */
-	public function createNoteObjectAction(Request $request): JsonResponse {
-		/** @var Tree $tree */
-		$tree                = $request->attributes->get('tree');
-		$note                = $request->get('note', '');
-		$privacy_restriction = $request->get('privacy-restriction', '');
-		$edit_restriction    = $request->get('edit-restriction', '');
+    /**
+     * Process a form to create a new note object.
+     *
+     * @param Request $request
+     *
+     * @return JsonResponse
+     */
+    public function createNoteObjectAction(Request $request): JsonResponse
+    {
+        /** @var Tree $tree */
+        $tree                = $request->attributes->get('tree');
+        $note                = $request->get('note', '');
+        $privacy_restriction = $request->get('privacy-restriction', '');
+        $edit_restriction    = $request->get('edit-restriction', '');
 
-		// Convert line endings to GEDDCOM continuations
-		$note = preg_replace('/\r|\r\n|\n|\r/', "\n1 CONT ", $note);
+        // Convert line endings to GEDDCOM continuations
+        $note = preg_replace('/\r|\r\n|\n|\r/', "\n1 CONT ", $note);
 
-		$gedcom = '0 @XREF@ NOTE ' . $note;
+        $gedcom = '0 @XREF@ NOTE ' . $note;
 
-		if (in_array($privacy_restriction, ['none', 'privacy', 'confidential'])) {
-			$gedcom .= "\n1 RESN " . $privacy_restriction;
-		}
+        if (in_array($privacy_restriction, [
+            'none',
+            'privacy',
+            'confidential',
+        ])) {
+            $gedcom .= "\n1 RESN " . $privacy_restriction;
+        }
 
-		if (in_array($edit_restriction, ['locked'])) {
-			$gedcom .= "\n1 RESN " . $edit_restriction;
-		}
+        if (in_array($edit_restriction, ['locked'])) {
+            $gedcom .= "\n1 RESN " . $edit_restriction;
+        }
 
-		$record = $tree->createRecord($gedcom);
+        $record = $tree->createRecord($gedcom);
 
-		return new JsonResponse([
-			'id'   => $record->getXref(),
-			'text' => view('selects/note', [
-				'note' => $record,
-			]),
-			'html' => view('modals/record-created', [
-				'title' => I18N::translate('The note has been created'),
-				'name'  => $record->getFullName(),
-				'url'   => $record->url(),
-			]),
-		]);
-	}
+        return new JsonResponse([
+            'id'   => $record->getXref(),
+            'text' => view('selects/note', [
+                'note' => $record,
+            ]),
+            'html' => view('modals/record-created', [
+                'title' => I18N::translate('The note has been created'),
+                'name'  => $record->getFullName(),
+                'url'   => $record->url(),
+            ]),
+        ]);
+    }
 }

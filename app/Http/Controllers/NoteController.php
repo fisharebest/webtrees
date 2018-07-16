@@ -26,49 +26,52 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * Controller for the note page.
  */
-class NoteController extends AbstractBaseController {
-	/**
-	 * Show a note's page.
-	 *
-	 * @param Request $request
-	 *
-	 * @return Response
-	 */
-	public function show(Request $request): Response {
-		/** @var Tree $tree */
-		$tree   = $request->attributes->get('tree');
-		$xref   = $request->get('xref');
-		$record = Note::getInstance($xref, $tree);
+class NoteController extends AbstractBaseController
+{
+    /**
+     * Show a note's page.
+     *
+     * @param Request $request
+     *
+     * @return Response
+     */
+    public function show(Request $request): Response
+    {
+        /** @var Tree $tree */
+        $tree   = $request->attributes->get('tree');
+        $xref   = $request->get('xref');
+        $record = Note::getInstance($xref, $tree);
 
-		$this->checkNoteAccess($record, false);
+        $this->checkNoteAccess($record, false);
 
-		return $this->viewResponse('note-page', [
-			'facts'         => $this->facts($record),
-			'families'      => $record->linkedFamilies('NOTE'),
-			'individuals'   => $record->linkedIndividuals('NOTE'),
-			'note'          => $record,
-			'notes'         => [],
-			'media_objects' => $record->linkedMedia('NOTE'),
-			'meta_robots'   => 'index,follow',
-			'sources'       => $record->linkedSources('NOTE'),
-			'text'          => Filter::formatText($record->getNote(), $tree),
-			'title'         => $record->getFullName(),
-		]);
-	}
+        return $this->viewResponse('note-page', [
+            'facts'         => $this->facts($record),
+            'families'      => $record->linkedFamilies('NOTE'),
+            'individuals'   => $record->linkedIndividuals('NOTE'),
+            'note'          => $record,
+            'notes'         => [],
+            'media_objects' => $record->linkedMedia('NOTE'),
+            'meta_robots'   => 'index,follow',
+            'sources'       => $record->linkedSources('NOTE'),
+            'text'          => Filter::formatText($record->getNote(), $tree),
+            'title'         => $record->getFullName(),
+        ]);
+    }
 
-	/**
-	 * @param Note $record
-	 *
-	 * @return array
-	 */
-	private function facts(Note $record): array {
-		$facts = [];
-		foreach ($record->getFacts() as $fact) {
-			if ($fact->getTag() != 'CONT') {
-				$facts[] = $fact;
-			}
-		}
+    /**
+     * @param Note $record
+     *
+     * @return array
+     */
+    private function facts(Note $record): array
+    {
+        $facts = [];
+        foreach ($record->getFacts() as $fact) {
+            if ($fact->getTag() != 'CONT') {
+                $facts[] = $fact;
+            }
+        }
 
-		return $facts;
-	}
+        return $facts;
+    }
 }

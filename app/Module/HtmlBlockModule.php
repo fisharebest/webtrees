@@ -25,129 +25,143 @@ use Fisharebest\Webtrees\Tree;
 /**
  * Class HtmlBlockModule
  */
-class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface {
-	/** {@inheritdoc} */
-	public function getTitle() {
-		return /* I18N: Name of a module */
-			I18N::translate('HTML');
-	}
+class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface
+{
+    /** {@inheritdoc} */
+    public function getTitle()
+    {
+        return /* I18N: Name of a module */
+            I18N::translate('HTML');
+    }
 
-	/** {@inheritdoc} */
-	public function getDescription() {
-		return /* I18N: Description of the “HTML” module */
-			I18N::translate('Add your own text and graphics.');
-	}
+    /** {@inheritdoc} */
+    public function getDescription()
+    {
+        return /* I18N: Description of the “HTML” module */
+            I18N::translate('Add your own text and graphics.');
+    }
 
-	/**
-	 * Generate the HTML content of this block.
-	 *
-	 * @param Tree     $tree
-	 * @param int      $block_id
-	 * @param bool     $template
-	 * @param string[] $cfg
-	 *
-	 * @return string
-	 */
-	public function getBlock(Tree $tree, int $block_id, bool $template = true, array $cfg = []): string {
-		global $ctype;
+    /**
+     * Generate the HTML content of this block.
+     *
+     * @param Tree     $tree
+     * @param int      $block_id
+     * @param bool     $template
+     * @param string[] $cfg
+     *
+     * @return string
+     */
+    public function getBlock(Tree $tree, int $block_id, bool $template = true, array $cfg = []): string
+    {
+        global $ctype;
 
-		$title          = $this->getBlockSetting($block_id, 'title', '');
-		$content        = $this->getBlockSetting($block_id, 'html', '');
-		$show_timestamp = $this->getBlockSetting($block_id, 'show_timestamp', '0');
-		$languages      = $this->getBlockSetting($block_id, 'languages');
+        $title          = $this->getBlockSetting($block_id, 'title', '');
+        $content        = $this->getBlockSetting($block_id, 'html', '');
+        $show_timestamp = $this->getBlockSetting($block_id, 'show_timestamp', '0');
+        $languages      = $this->getBlockSetting($block_id, 'languages');
 
-		// Only show this block for certain languages
-		if ($languages && !in_array(WT_LOCALE, explode(',', $languages))) {
-			return '';
-		}
+        // Only show this block for certain languages
+        if ($languages && !in_array(WT_LOCALE, explode(',', $languages))) {
+            return '';
+        }
 
-		$stats = new Stats($tree);
+        $stats = new Stats($tree);
 
-		/*
-		* Retrieve text, process embedded variables
-		*/
-		$title   = $stats->embedTags($title);
-		$content = $stats->embedTags($content);
+        /*
+        * Retrieve text, process embedded variables
+        */
+        $title   = $stats->embedTags($title);
+        $content = $stats->embedTags($content);
 
-		if ($show_timestamp === '1') {
-			$content .= '<br>' . FunctionsDate::formatTimestamp((int) $this->getBlockSetting($block_id, 'timestamp', WT_TIMESTAMP) + WT_TIMESTAMP_OFFSET);
-		}
+        if ($show_timestamp === '1') {
+            $content .= '<br>' . FunctionsDate::formatTimestamp((int)$this->getBlockSetting($block_id, 'timestamp', WT_TIMESTAMP) + WT_TIMESTAMP_OFFSET);
+        }
 
-		if ($template) {
-			if ($ctype === 'gedcom' && Auth::isManager($tree)) {
-				$config_url = route('tree-page-block-edit', ['block_id' => $block_id, 'ged' => $tree->getName()]);
-			} elseif ($ctype === 'user' && Auth::check()) {
-				$config_url = route('user-page-block-edit', ['block_id' => $block_id, 'ged' => $tree->getName()]);
-			} else {
-				$config_url = '';
-			}
+        if ($template) {
+            if ($ctype === 'gedcom' && Auth::isManager($tree)) {
+                $config_url = route('tree-page-block-edit', [
+                    'block_id' => $block_id,
+                    'ged'      => $tree->getName(),
+                ]);
+            } elseif ($ctype === 'user' && Auth::check()) {
+                $config_url = route('user-page-block-edit', [
+                    'block_id' => $block_id,
+                    'ged'      => $tree->getName(),
+                ]);
+            } else {
+                $config_url = '';
+            }
 
-			return view('modules/block-template', [
-				'block'      => str_replace('_', '-', $this->getName()),
-				'id'         => $block_id,
-				'config_url' => $config_url,
-				'title'      => $title,
-				'content'    => $content,
-			]);
-		} else {
-			return $content;
-		}
-	}
+            return view('modules/block-template', [
+                'block'      => str_replace('_', '-', $this->getName()),
+                'id'         => $block_id,
+                'config_url' => $config_url,
+                'title'      => $title,
+                'content'    => $content,
+            ]);
+        } else {
+            return $content;
+        }
+    }
 
-	/** {@inheritdoc} */
-	public function loadAjax(): bool {
-		return false;
-	}
+    /** {@inheritdoc} */
+    public function loadAjax(): bool
+    {
+        return false;
+    }
 
-	/** {@inheritdoc} */
-	public function isUserBlock(): bool {
-		return true;
-	}
+    /** {@inheritdoc} */
+    public function isUserBlock(): bool
+    {
+        return true;
+    }
 
-	/** {@inheritdoc} */
-	public function isGedcomBlock(): bool {
-		return true;
-	}
+    /** {@inheritdoc} */
+    public function isGedcomBlock(): bool
+    {
+        return true;
+    }
 
-	/**
-	 * An HTML form to edit block settings
-	 *
-	 * @param Tree $tree
-	 * @param int  $block_id
-	 *
-	 * @return void
-	 */
-	public function configureBlock(Tree $tree, int $block_id) {
-		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-			$languages = Filter::postArray('lang');
-			$this->setBlockSetting($block_id, 'title', Filter::post('title'));
-			$this->setBlockSetting($block_id, 'html', Filter::post('html'));
-			$this->setBlockSetting($block_id, 'show_timestamp', Filter::postBool('show_timestamp'));
-			$this->setBlockSetting($block_id, 'timestamp', Filter::post('timestamp'));
-			$this->setBlockSetting($block_id, 'languages', implode(',', $languages));
+    /**
+     * An HTML form to edit block settings
+     *
+     * @param Tree $tree
+     * @param int  $block_id
+     *
+     * @return void
+     */
+    public function configureBlock(Tree $tree, int $block_id)
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $languages = Filter::postArray('lang');
+            $this->setBlockSetting($block_id, 'title', Filter::post('title'));
+            $this->setBlockSetting($block_id, 'html', Filter::post('html'));
+            $this->setBlockSetting($block_id, 'show_timestamp', Filter::postBool('show_timestamp'));
+            $this->setBlockSetting($block_id, 'timestamp', Filter::post('timestamp'));
+            $this->setBlockSetting($block_id, 'languages', implode(',', $languages));
 
-			return;
-		}
+            return;
+        }
 
-		$templates = [
-			I18N::translate('Keyword examples')      => view('modules/html/template-keywords', []),
-			I18N::translate('Narrative description') => view('modules/html/template-narrative', []),
-			I18N::translate('Statistics')            => view('modules/html/template-statistics', []),
-		];
+        $templates = [
+            I18N::translate('Keyword examples')      => view('modules/html/template-keywords', []),
+            I18N::translate('Narrative description') => view('modules/html/template-narrative', []),
+            I18N::translate('Statistics')            => view('modules/html/template-statistics', []),
+        ];
 
-		$title          = $this->getBlockSetting($block_id, 'title', '');
-		$html           = $this->getBlockSetting($block_id, 'html', '');
-		$show_timestamp = $this->getBlockSetting($block_id, 'show_timestamp', '0');
-		$languages      = explode(',', $this->getBlockSetting($block_id, 'languages'));
-		$all_trees      = Tree::getNameList();
+        $title          = $this->getBlockSetting($block_id, 'title', '');
+        $html           = $this->getBlockSetting($block_id, 'html', '');
+        $show_timestamp = $this->getBlockSetting($block_id, 'show_timestamp', '0');
+        $languages      = explode(',', $this->getBlockSetting($block_id, 'languages'));
+        $all_trees      = Tree::getNameList();
 
-		echo view('modules/html/config', [
-			'all_trees'       => $all_trees,
-			'html'            => $html,
-			'languages'       => $languages,
-			'show_timestamp'  => $show_timestamp,
-			'templates'       => $templates,
-			'title'           => $title,
-		]);
-	}
+        echo view('modules/html/config', [
+            'all_trees'      => $all_trees,
+            'html'           => $html,
+            'languages'      => $languages,
+            'show_timestamp' => $show_timestamp,
+            'templates'      => $templates,
+            'title'          => $title,
+        ]);
+    }
 }

@@ -19,18 +19,19 @@ namespace Fisharebest\Webtrees\Census;
 /**
  * Definitions for a census
  */
-interface CensusPlaceInterface {
-	/**
-	 * All available censuses for this census place.
-	 *
-	 * @return CensusInterface[]
-	 */
-	public function allCensusDates();
+interface CensusPlaceInterface
+{
+    /**
+     * All available censuses for this census place.
+     *
+     * @return CensusInterface[]
+     */
+    public function allCensusDates();
 
-	/**
-	 * Where did this census occur, in GEDCOM format.
-	 *
-	 * @return string
-	 */
-	public function censusPlace();
+    /**
+     * Where did this census occur, in GEDCOM format.
+     *
+     * @return string
+     */
+    public function censusPlace();
 }

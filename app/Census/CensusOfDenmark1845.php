@@ -19,30 +19,33 @@ namespace Fisharebest\Webtrees\Census;
 /**
  * Definitions for a census
  */
-class CensusOfDenmark1845 extends CensusOfDenmark implements CensusInterface {
-	/**
-	 * When did this census occur.
-	 *
-	 * @return string
-	 */
-	public function censusDate() {
-		return '01 FEB 1845';
-	}
+class CensusOfDenmark1845 extends CensusOfDenmark implements CensusInterface
+{
+    /**
+     * When did this census occur.
+     *
+     * @return string
+     */
+    public function censusDate()
+    {
+        return '01 FEB 1845';
+    }
 
-	/**
-	 * The columns of the census.
-	 *
-	 * @return CensusColumnInterface[]
-	 */
-	public function columns() {
-		return [
-			new CensusColumnFullName($this, 'Navn', ''),
-			new CensusColumnAge($this, 'Alder', ''),
-			new CensusColumnConditionDanish($this, 'Civilstand', ''),
-			new CensusColumnOccupation($this, 'Erhverv', ''),
-			new CensusColumnRelationToHead($this, 'Stilling i familien', ''),
-			new CensusColumnNull($this, '', ''),
-			new CensusColumnNull($this, '', ''),
-		];
-	}
+    /**
+     * The columns of the census.
+     *
+     * @return CensusColumnInterface[]
+     */
+    public function columns()
+    {
+        return [
+            new CensusColumnFullName($this, 'Navn', ''),
+            new CensusColumnAge($this, 'Alder', ''),
+            new CensusColumnConditionDanish($this, 'Civilstand', ''),
+            new CensusColumnOccupation($this, 'Erhverv', ''),
+            new CensusColumnRelationToHead($this, 'Stilling i familien', ''),
+            new CensusColumnNull($this, '', ''),
+            new CensusColumnNull($this, '', ''),
+        ];
+    }
 }

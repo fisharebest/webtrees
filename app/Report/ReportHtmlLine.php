@@ -18,36 +18,38 @@ namespace Fisharebest\Webtrees\Report;
 /**
  * Class ReportHtmlLine
  */
-class ReportHtmlLine extends ReportBaseLine {
-	/**
-	 * HTML line renderer
-	 *
-	 * @param ReportHtml $renderer
-	 */
-	public function render($renderer) {
-		if ($this->x1 == '.') {
-			$this->x1 = $renderer->getX();
-		}
-		if ($this->y1 == '.') {
-			$this->y1 = $renderer->getY();
-		}
-		if ($this->x2 == '.') {
-			$this->x2 = $renderer->getRemainingWidth();
-		}
-		if ($this->y2 == '.') {
-			$this->y2 = $renderer->getY();
-		}
-		// Vertical line
-		if ($this->x1 == $this->x2) {
-			echo '<div style="position:absolute;overflow:hidden;border-', $renderer->alignRTL, ':solid black 1pt;', $renderer->alignRTL, ':', $this->x1, 'pt;top:', $this->y1 + 1, 'pt;width:1pt;height:', $this->y2 - $this->y1, "pt;\"> </div>\n";
-		}
-		// Horizontal line
-		if ($this->y1 == $this->y2) {
-			echo '<div style="position:absolute;overflow:hidden;border-top:solid black 1pt;', $renderer->alignRTL, ':', $this->x1, 'pt;top:', $this->y1 + 1, 'pt;width:', $this->x2 - $this->x1, "pt;height:1pt;\"> </div>\n";
-		}
-		// Keep max Y updated
-		// One or the other will be higher... lasy mans way...
-		$renderer->addMaxY($this->y1);
-		$renderer->addMaxY($this->y2);
-	}
+class ReportHtmlLine extends ReportBaseLine
+{
+    /**
+     * HTML line renderer
+     *
+     * @param ReportHtml $renderer
+     */
+    public function render($renderer)
+    {
+        if ($this->x1 == '.') {
+            $this->x1 = $renderer->getX();
+        }
+        if ($this->y1 == '.') {
+            $this->y1 = $renderer->getY();
+        }
+        if ($this->x2 == '.') {
+            $this->x2 = $renderer->getRemainingWidth();
+        }
+        if ($this->y2 == '.') {
+            $this->y2 = $renderer->getY();
+        }
+        // Vertical line
+        if ($this->x1 == $this->x2) {
+            echo '<div style="position:absolute;overflow:hidden;border-', $renderer->alignRTL, ':solid black 1pt;', $renderer->alignRTL, ':', $this->x1, 'pt;top:', $this->y1 + 1, 'pt;width:1pt;height:', $this->y2 - $this->y1, "pt;\"> </div>\n";
+        }
+        // Horizontal line
+        if ($this->y1 == $this->y2) {
+            echo '<div style="position:absolute;overflow:hidden;border-top:solid black 1pt;', $renderer->alignRTL, ':', $this->x1, 'pt;top:', $this->y1 + 1, 'pt;width:', $this->x2 - $this->x1, "pt;height:1pt;\"> </div>\n";
+        }
+        // Keep max Y updated
+        // One or the other will be higher... lasy mans way...
+        $renderer->addMaxY($this->y1);
+        $renderer->addMaxY($this->y2);
+    }
 }

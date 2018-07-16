@@ -18,17 +18,20 @@
 /**
  * Test harness for the class TopSurnamesModule
  */
-class TopSurnamesModuleTest extends \PHPUnit\Framework\TestCase {
-	/**
-	 * Prepare the environment for these tests
-	 */
-	public function setUp() {
-	}
+class TopSurnamesModuleTest extends \PHPUnit\Framework\TestCase
+{
+    /**
+     * Prepare the environment for these tests
+     */
+    public function setUp()
+    {
+    }
 
-	/**
-	 * Test that the class exists
-	 */
-	public function testClassExists() {
-		$this->assertTrue(class_exists('\Fisharebest\Webtrees\Module\TopSurnamesModule'));
-	}
+    /**
+     * Test that the class exists
+     */
+    public function testClassExists()
+    {
+        $this->assertTrue(class_exists('\Fisharebest\Webtrees\Module\TopSurnamesModule'));
+    }
 }

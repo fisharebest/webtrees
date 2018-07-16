@@ -18,36 +18,40 @@ namespace Fisharebest\Webtrees\Report;
 /**
  * Class ReportBasePageheader
  */
-class ReportBasePageheader extends ReportBaseElement {
-	/** @var ReportBaseElement[] Elements */
-	public $elements = [];
+class ReportBasePageheader extends ReportBaseElement
+{
+    /** @var ReportBaseElement[] Elements */
+    public $elements = [];
 
-	/**
-	 * Create a page header
-	 */
-	public function __construct() {
-		$this->elements = [];
+    /**
+     * Create a page header
+     */
+    public function __construct()
+    {
+        $this->elements = [];
 
-		return 0;
-	}
+        return 0;
+    }
 
-	/**
-	 * Unknown?
-	 *
-	 * @return int
-	 */
-	public function textBox() {
-		$this->elements = [];
+    /**
+     * Unknown?
+     *
+     * @return int
+     */
+    public function textBox()
+    {
+        $this->elements = [];
 
-		return 0;
-	}
+        return 0;
+    }
 
-	/**
-	 * Add element - PageHeader
-	 *
-	 * @param ReportBaseElement $element
-	 */
-	public function addElement($element) {
-		$this->elements[] = $element;
-	}
+    /**
+     * Add element - PageHeader
+     *
+     * @param ReportBaseElement $element
+     */
+    public function addElement($element)
+    {
+        $this->elements[] = $element;
+    }
 }

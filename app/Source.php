@@ -18,86 +18,92 @@ namespace Fisharebest\Webtrees;
 /**
  * A GEDCOM source (SOUR) object.
  */
-class Source extends GedcomRecord {
-	const RECORD_TYPE = 'SOUR';
-	const ROUTE_NAME  = 'source';
+class Source extends GedcomRecord
+{
+    const RECORD_TYPE = 'SOUR';
+    const ROUTE_NAME  = 'source';
 
-	/**
-	 * Get an instance of a source object. For single records,
-	 * we just receive the XREF. For bulk records (such as lists
-	 * and search results) we can receive the GEDCOM data as well.
-	 *
-	 * @param string      $xref
-	 * @param Tree        $tree
-	 * @param string|null $gedcom
-	 *
-	 * @throws \Exception
-	 *
-	 * @return Source|null
-	 */
-	public static function getInstance($xref, Tree $tree, $gedcom = null) {
-		$record = parent::getInstance($xref, $tree, $gedcom);
+    /**
+     * Get an instance of a source object. For single records,
+     * we just receive the XREF. For bulk records (such as lists
+     * and search results) we can receive the GEDCOM data as well.
+     *
+     * @param string      $xref
+     * @param Tree        $tree
+     * @param string|null $gedcom
+     *
+     * @throws \Exception
+     *
+     * @return Source|null
+     */
+    public static function getInstance($xref, Tree $tree, $gedcom = null)
+    {
+        $record = parent::getInstance($xref, $tree, $gedcom);
 
-		if ($record instanceof Source) {
-			return $record;
-		} else {
-			return null;
-		}
-	}
+        if ($record instanceof Source) {
+            return $record;
+        } else {
+            return null;
+        }
+    }
 
-	/**
-	 * Each object type may have its own special rules, and re-implement this function.
-	 *
-	 * @param int $access_level
-	 *
-	 * @return bool
-	 */
-	protected function canShowByType($access_level) {
-		// Hide sources if they are attached to private repositories ...
-		preg_match_all('/\n1 REPO @(.+)@/', $this->gedcom, $matches);
-		foreach ($matches[1] as $match) {
-			$repo = Repository::getInstance($match, $this->tree);
-			if ($repo && !$repo->canShow($access_level)) {
-				return false;
-			}
-		}
+    /**
+     * Each object type may have its own special rules, and re-implement this function.
+     *
+     * @param int $access_level
+     *
+     * @return bool
+     */
+    protected function canShowByType($access_level)
+    {
+        // Hide sources if they are attached to private repositories ...
+        preg_match_all('/\n1 REPO @(.+)@/', $this->gedcom, $matches);
+        foreach ($matches[1] as $match) {
+            $repo = Repository::getInstance($match, $this->tree);
+            if ($repo && !$repo->canShow($access_level)) {
+                return false;
+            }
+        }
 
-		// ... otherwise apply default behaviour
-		return parent::canShowByType($access_level);
-	}
+        // ... otherwise apply default behaviour
+        return parent::canShowByType($access_level);
+    }
 
-	/**
-	 * Generate a private version of this record
-	 *
-	 * @param int $access_level
-	 *
-	 * @return string
-	 */
-	protected function createPrivateGedcomRecord($access_level) {
-		return '0 @' . $this->xref . "@ SOUR\n1 TITL " . I18N::translate('Private');
-	}
+    /**
+     * Generate a private version of this record
+     *
+     * @param int $access_level
+     *
+     * @return string
+     */
+    protected function createPrivateGedcomRecord($access_level)
+    {
+        return '0 @' . $this->xref . "@ SOUR\n1 TITL " . I18N::translate('Private');
+    }
 
-	/**
-	 * Fetch data from the database
-	 *
-	 * @param string $xref
-	 * @param int    $tree_id
-	 *
-	 * @return null|string
-	 */
-	protected static function fetchGedcomRecord($xref, $tree_id) {
-		return Database::prepare(
-			"SELECT s_gedcom FROM `##sources` WHERE s_id = :xref AND s_file = :tree_id"
-		)->execute([
-			'xref'    => $xref,
-			'tree_id' => $tree_id,
-		])->fetchOne();
-	}
+    /**
+     * Fetch data from the database
+     *
+     * @param string $xref
+     * @param int    $tree_id
+     *
+     * @return null|string
+     */
+    protected static function fetchGedcomRecord($xref, $tree_id)
+    {
+        return Database::prepare(
+            "SELECT s_gedcom FROM `##sources` WHERE s_id = :xref AND s_file = :tree_id"
+        )->execute([
+            'xref'    => $xref,
+            'tree_id' => $tree_id,
+        ])->fetchOne();
+    }
 
-	/**
-	 * Extract names from the GEDCOM record.
-	 */
-	public function extractNames() {
-		parent::extractNamesFromFacts(1, 'TITL', $this->getFacts('TITL'));
-	}
+    /**
+     * Extract names from the GEDCOM record.
+     */
+    public function extractNames()
+    {
+        parent::extractNamesFromFacts(1, 'TITL', $this->getFacts('TITL'));
+    }
 }

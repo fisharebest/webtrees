@@ -20,17 +20,19 @@ use Fisharebest\Webtrees\Database;
 /**
  * Upgrade the database schema from version 27 to version 28.
  */
-class Migration27 implements MigrationInterface {
-	/**
-	 * Upgrade to to the next version
-	 */
-	public function upgrade() {
-		// Delete old/unused settings
-		Database::exec(
-			"DELETE FROM `##gedcom_setting` WHERE setting_name IN ('USE_GEONAMES')"
-		);
+class Migration27 implements MigrationInterface
+{
+    /**
+     * Upgrade to to the next version
+     */
+    public function upgrade()
+    {
+        // Delete old/unused settings
+        Database::exec(
+            "DELETE FROM `##gedcom_setting` WHERE setting_name IN ('USE_GEONAMES')"
+        );
 
-		// Originally, this updated wt_site_access_rule,
-		// however this table now gets deleted in Migration37.
-	}
+        // Originally, this updated wt_site_access_rule,
+        // however this table now gets deleted in Migration37.
+    }
 }

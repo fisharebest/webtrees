@@ -19,46 +19,49 @@ namespace Fisharebest\Webtrees\Census;
 /**
  * Definitions for a census
  */
-class CensusOfUnitedStates1880 extends CensusOfUnitedStates implements CensusInterface {
-	/**
-	 * When did this census occur.
-	 *
-	 * @return string
-	 */
-	public function censusDate() {
-		return 'JUN 1880';
-	}
+class CensusOfUnitedStates1880 extends CensusOfUnitedStates implements CensusInterface
+{
+    /**
+     * When did this census occur.
+     *
+     * @return string
+     */
+    public function censusDate()
+    {
+        return 'JUN 1880';
+    }
 
-	/**
-	 * The columns of the census.
-	 *
-	 * @return CensusColumnInterface[]
-	 */
-	public function columns() {
-		return [
-			new CensusColumnFullName($this, 'Name', 'Name'),
-			new CensusColumnAge($this, 'Age', 'Age'),
-			new CensusColumnSexMF($this, 'Sex', 'Sex'),
-			new CensusColumnMonthIfBornWithinYear($this, 'Mon', 'If born within the year, state month'),
-			new CensusColumnRelationToHead($this, 'Relation', 'Relation to head of household'),
-			new CensusColumnNull($this, 'S', 'Single'),
-			new CensusColumnNull($this, 'M', 'Married'),
-			new CensusColumnNull($this, 'W/D', 'Widowed, Divorced'),
-			new CensusColumnMarriedWithinYear($this, 'MY', 'Married during census year'),
-			new CensusColumnOccupation($this, 'Occupation', 'Profession, occupation, or trade'),
-			new CensusColumnNull($this, 'UnEm', 'Number of months the person has been unemployed during the census year'),
-			new CensusColumnNull($this, 'Sick', 'Sickness or disability'),
-			new CensusColumnNull($this, 'Blind', 'Blind'),
-			new CensusColumnNull($this, 'DD', 'Deaf and dumb'),
-			new CensusColumnNull($this, 'Idiotic', 'Idiotic'),
-			new CensusColumnNull($this, 'Insane', 'Insane'),
-			new CensusColumnNull($this, 'Disabled', 'Maimed, crippled, bedridden or otherwise disabled'),
-			new CensusColumnNull($this, 'School', 'Attended school within the census year'),
-			new CensusColumnNull($this, 'Read', 'Cannot read'),
-			new CensusColumnNull($this, 'Write', 'Cannot write'),
-			new CensusColumnBirthPlaceSimple($this, 'BP', 'Place of birth, naming the state, territory, or country'),
-			new CensusColumnFatherBirthPlaceSimple($this, 'FBP', 'Place of birth of father, naming the state, territory, or country'),
-			new CensusColumnMotherBirthPlaceSimple($this, 'MBP', 'Place of birth of mother, naming the state, territory, or country'),
-		];
-	}
+    /**
+     * The columns of the census.
+     *
+     * @return CensusColumnInterface[]
+     */
+    public function columns()
+    {
+        return [
+            new CensusColumnFullName($this, 'Name', 'Name'),
+            new CensusColumnAge($this, 'Age', 'Age'),
+            new CensusColumnSexMF($this, 'Sex', 'Sex'),
+            new CensusColumnMonthIfBornWithinYear($this, 'Mon', 'If born within the year, state month'),
+            new CensusColumnRelationToHead($this, 'Relation', 'Relation to head of household'),
+            new CensusColumnNull($this, 'S', 'Single'),
+            new CensusColumnNull($this, 'M', 'Married'),
+            new CensusColumnNull($this, 'W/D', 'Widowed, Divorced'),
+            new CensusColumnMarriedWithinYear($this, 'MY', 'Married during census year'),
+            new CensusColumnOccupation($this, 'Occupation', 'Profession, occupation, or trade'),
+            new CensusColumnNull($this, 'UnEm', 'Number of months the person has been unemployed during the census year'),
+            new CensusColumnNull($this, 'Sick', 'Sickness or disability'),
+            new CensusColumnNull($this, 'Blind', 'Blind'),
+            new CensusColumnNull($this, 'DD', 'Deaf and dumb'),
+            new CensusColumnNull($this, 'Idiotic', 'Idiotic'),
+            new CensusColumnNull($this, 'Insane', 'Insane'),
+            new CensusColumnNull($this, 'Disabled', 'Maimed, crippled, bedridden or otherwise disabled'),
+            new CensusColumnNull($this, 'School', 'Attended school within the census year'),
+            new CensusColumnNull($this, 'Read', 'Cannot read'),
+            new CensusColumnNull($this, 'Write', 'Cannot write'),
+            new CensusColumnBirthPlaceSimple($this, 'BP', 'Place of birth, naming the state, territory, or country'),
+            new CensusColumnFatherBirthPlaceSimple($this, 'FBP', 'Place of birth of father, naming the state, territory, or country'),
+            new CensusColumnMotherBirthPlaceSimple($this, 'MBP', 'Place of birth of mother, naming the state, territory, or country'),
+        ];
+    }
 }

@@ -21,32 +21,36 @@ use League\CommonMark\Extension\Extension;
 /**
  * Convert XREFs within markdown text to links
  */
-class XrefExtension extends Extension {
-	/** @var Tree - match XREFs in this tree */
-	private $tree;
+class XrefExtension extends Extension
+{
+    /** @var Tree - match XREFs in this tree */
+    private $tree;
 
-	/**
-	 * MarkdownXrefParser constructor.
-	 *
-	 * @param Tree $tree
-	 */
-	public function __construct(Tree $tree) {
-		$this->tree = $tree;
-	}
+    /**
+     * MarkdownXrefParser constructor.
+     *
+     * @param Tree $tree
+     */
+    public function __construct(Tree $tree)
+    {
+        $this->tree = $tree;
+    }
 
-	/**
-	 * @return array
-	 */
-	public function getInlineParsers() {
-		return [
-			new XrefParser($this->tree),
-		];
-	}
+    /**
+     * @return array
+     */
+    public function getInlineParsers()
+    {
+        return [
+            new XrefParser($this->tree),
+        ];
+    }
 
-	/**
-	 * @return string
-	 */
-	public function getName() {
-		return 'xref';
-	}
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return 'xref';
+    }
 }

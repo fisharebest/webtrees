@@ -25,150 +25,168 @@ use Fisharebest\Webtrees\Tree;
 /**
  * Class TopPageViewsModule
  */
-class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface {
-	/**
-	 * How should this module be labelled on tabs, menus, etc.?
-	 *
-	 * @return string
-	 */
-	public function getTitle() {
-		return /* I18N: Name of a module */ I18N::translate('Most viewed pages');
-	}
+class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface
+{
+    /**
+     * How should this module be labelled on tabs, menus, etc.?
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return /* I18N: Name of a module */
+            I18N::translate('Most viewed pages');
+    }
 
-	/**
-	 * A sentence describing what this module does.
-	 *
-	 * @return string
-	 */
-	public function getDescription() {
-		return /* I18N: Description of the “Most visited pages” module */ I18N::translate('A list of the pages that have been viewed the most number of times.');
-	}
+    /**
+     * A sentence describing what this module does.
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return /* I18N: Description of the “Most visited pages” module */
+            I18N::translate('A list of the pages that have been viewed the most number of times.');
+    }
 
-	/**
-	 * Generate the HTML content of this block.
-	 *
-	 * @param Tree     $tree
-	 * @param int      $block_id
-	 * @param bool     $template
-	 * @param string[] $cfg
-	 *
-	 * @return string
-	 */
-	public function getBlock(Tree $tree, int $block_id, bool $template = true, array $cfg = []): string {
-		global $ctype;
+    /**
+     * Generate the HTML content of this block.
+     *
+     * @param Tree     $tree
+     * @param int      $block_id
+     * @param bool     $template
+     * @param string[] $cfg
+     *
+     * @return string
+     */
+    public function getBlock(Tree $tree, int $block_id, bool $template = true, array $cfg = []): string
+    {
+        global $ctype;
 
-		$num             = $this->getBlockSetting($block_id, 'num', '10');
-		$count_placement = $this->getBlockSetting($block_id, 'count_placement', 'before');
+        $num             = $this->getBlockSetting($block_id, 'num', '10');
+        $count_placement = $this->getBlockSetting($block_id, 'count_placement', 'before');
 
-		extract($cfg, EXTR_OVERWRITE);
+        extract($cfg, EXTR_OVERWRITE);
 
-		// load the lines from the file
-		$top10 = Database::prepare(
-			"SELECT page_parameter, page_count" .
-			" FROM `##hit_counter`" .
-			" WHERE gedcom_id = :tree_id AND page_name IN ('individual.php','family.php','source.php','repo.php','note.php','mediaviewer.php')" .
-			" ORDER BY page_count DESC LIMIT :limit"
-		)->execute([
-			'tree_id' => $tree->getTreeId(),
-			'limit'   => (int) $num,
-		])->fetchAssoc();
+        // load the lines from the file
+        $top10 = Database::prepare(
+            "SELECT page_parameter, page_count" .
+            " FROM `##hit_counter`" .
+            " WHERE gedcom_id = :tree_id AND page_name IN ('individual.php','family.php','source.php','repo.php','note.php','mediaviewer.php')" .
+            " ORDER BY page_count DESC LIMIT :limit"
+        )->execute([
+            'tree_id' => $tree->getTreeId(),
+            'limit'   => (int)$num,
+        ])->fetchAssoc();
 
-		$content = '<table>';
-		foreach ($top10 as $id => $count) {
-			$record = GedcomRecord::getInstance($id, $tree);
-			if ($record && $record->canShow()) {
-				$content .= '<tr>';
-				if ($count_placement == 'before') {
-					$content .= '<td dir="ltr" style="text-align:right">[' . $count . ']</td>';
-				}
-				$content .= '<td class="name2" ><a href="' . e($record->url()) . '">' . $record->getFullName() . '</a></td>';
-				if ($count_placement == 'after') {
-					$content .= '<td dir="ltr" style="text-align:right">[' . $count . ']</td>';
-				}
-				$content .= '</tr>';
-			}
-		}
-		$content .= '</table>';
+        $content = '<table>';
+        foreach ($top10 as $id => $count) {
+            $record = GedcomRecord::getInstance($id, $tree);
+            if ($record && $record->canShow()) {
+                $content .= '<tr>';
+                if ($count_placement == 'before') {
+                    $content .= '<td dir="ltr" style="text-align:right">[' . $count . ']</td>';
+                }
+                $content .= '<td class="name2" ><a href="' . e($record->url()) . '">' . $record->getFullName() . '</a></td>';
+                if ($count_placement == 'after') {
+                    $content .= '<td dir="ltr" style="text-align:right">[' . $count . ']</td>';
+                }
+                $content .= '</tr>';
+            }
+        }
+        $content .= '</table>';
 
-		if ($template) {
-			if ($ctype === 'gedcom' && Auth::isManager($tree)) {
-				$config_url = route('tree-page-block-edit', ['block_id' => $block_id, 'ged' => $tree->getName()]);
-			} elseif ($ctype === 'user' && Auth::check()) {
-				$config_url = route('user-page-block-edit', ['block_id' => $block_id, 'ged' => $tree->getName()]);
-			} else {
-				$config_url = '';
-			}
+        if ($template) {
+            if ($ctype === 'gedcom' && Auth::isManager($tree)) {
+                $config_url = route('tree-page-block-edit', [
+                    'block_id' => $block_id,
+                    'ged'      => $tree->getName(),
+                ]);
+            } elseif ($ctype === 'user' && Auth::check()) {
+                $config_url = route('user-page-block-edit', [
+                    'block_id' => $block_id,
+                    'ged'      => $tree->getName(),
+                ]);
+            } else {
+                $config_url = '';
+            }
 
-			return view('modules/block-template', [
-				'block'      => str_replace('_', '-', $this->getName()),
-				'id'         => $block_id,
-				'config_url' => $config_url,
-				'title'      => $this->getTitle(),
-				'content'    => $content,
-			]);
-		} else {
-			return $content;
-		}
-	}
+            return view('modules/block-template', [
+                'block'      => str_replace('_', '-', $this->getName()),
+                'id'         => $block_id,
+                'config_url' => $config_url,
+                'title'      => $this->getTitle(),
+                'content'    => $content,
+            ]);
+        } else {
+            return $content;
+        }
+    }
 
-	/**
-	 * Should this block load asynchronously using AJAX?
-	 *
-	 * Simple blocks are faster in-line, more comples ones
-	 * can be loaded later.
-	 *
-	 * @return bool
-	 */
-	public function loadAjax(): bool {
-		return true;
-	}
+    /**
+     * Should this block load asynchronously using AJAX?
+     *
+     * Simple blocks are faster in-line, more comples ones
+     * can be loaded later.
+     *
+     * @return bool
+     */
+    public function loadAjax(): bool
+    {
+        return true;
+    }
 
-	/**
-	 * Can this block be shown on the user’s home page?
-	 *
-	 * @return bool
-	 */
-	public function isUserBlock(): bool {
-		return false;
-	}
+    /**
+     * Can this block be shown on the user’s home page?
+     *
+     * @return bool
+     */
+    public function isUserBlock(): bool
+    {
+        return false;
+    }
 
-	/**
-	 * Can this block be shown on the tree’s home page?
-	 *
-	 * @return bool
-	 */
-	public function isGedcomBlock(): bool {
-		return true;
-	}
+    /**
+     * Can this block be shown on the tree’s home page?
+     *
+     * @return bool
+     */
+    public function isGedcomBlock(): bool
+    {
+        return true;
+    }
 
-	/**
-	 * An HTML form to edit block settings
-	 *
-	 * @param Tree $tree
-	 * @param int  $block_id
-	 *
-	 * @return void
-	 */
-	public function configureBlock(Tree $tree, int $block_id) {
-		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-			$this->setBlockSetting($block_id, 'num', Filter::postInteger('num', 1, 10000, 10));
-			$this->setBlockSetting($block_id, 'count_placement', Filter::post('count_placement', 'before|after', 'before'));
+    /**
+     * An HTML form to edit block settings
+     *
+     * @param Tree $tree
+     * @param int  $block_id
+     *
+     * @return void
+     */
+    public function configureBlock(Tree $tree, int $block_id)
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $this->setBlockSetting($block_id, 'num', Filter::postInteger('num', 1, 10000, 10));
+            $this->setBlockSetting($block_id, 'count_placement', Filter::post('count_placement', 'before|after', 'before'));
 
-			return;
-		}
+            return;
+        }
 
-		$num             = $this->getBlockSetting($block_id, 'num', '10');
-		$count_placement = $this->getBlockSetting($block_id, 'count_placement', 'before');
+        $num             = $this->getBlockSetting($block_id, 'num', '10');
+        $count_placement = $this->getBlockSetting($block_id, 'count_placement', 'before');
 
-		$options = [
-			'before' => /* I18N: An option in a list-box */ I18N::translate('before'),
-			'after'  => /* I18N: An option in a list-box */ I18N::translate('after'),
-		];
+        $options = [
+            'before' => /* I18N: An option in a list-box */
+                I18N::translate('before'),
+            'after'  => /* I18N: An option in a list-box */
+                I18N::translate('after'),
+        ];
 
-		echo view('modules/top10_pageviews/config', [
-			'count_placement' => $count_placement,
-			'num'             => $num,
-			'options'         => $options,
-		]);
-	}
+        echo view('modules/top10_pageviews/config', [
+            'count_placement' => $count_placement,
+            'num'             => $num,
+            'options'         => $options,
+        ]);
+    }
 }

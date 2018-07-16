@@ -22,65 +22,77 @@ use Fisharebest\Webtrees\Individual;
 /**
  * Class RelativesTabModule
  */
-class RelativesTabModule extends AbstractModule implements ModuleTabInterface {
-	/**
-	 * How should this module be labelled on tabs, menus, etc.?
-	 *
-	 * @return string
-	 */
-	public function getTitle() {
-		return /* I18N: Name of a module */ I18N::translate('Families');
-	}
+class RelativesTabModule extends AbstractModule implements ModuleTabInterface
+{
+    /**
+     * How should this module be labelled on tabs, menus, etc.?
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return /* I18N: Name of a module */
+            I18N::translate('Families');
+    }
 
-	/**
-	 * A sentence describing what this module does.
-	 *
-	 * @return string
-	 */
-	public function getDescription() {
-		return /* I18N: Description of the “Families” module */ I18N::translate('A tab showing the close relatives of an individual.');
-	}
+    /**
+     * A sentence describing what this module does.
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return /* I18N: Description of the “Families” module */
+            I18N::translate('A tab showing the close relatives of an individual.');
+    }
 
-	/**
-	 * The user can re-arrange the tab order, but until they do, this
-	 * is the order in which tabs are shown.
-	 *
-	 * @return int
-	 */
-	public function defaultTabOrder() {
-		return 20;
-	}
+    /**
+     * The user can re-arrange the tab order, but until they do, this
+     * is the order in which tabs are shown.
+     *
+     * @return int
+     */
+    public function defaultTabOrder()
+    {
+        return 20;
+    }
 
-	/** {@inheritdoc} */
-	public function getTabContent(Individual $individual) {
-		$tree = $individual->getTree();
-		if ($tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS')) {
-			$fam_access_level = Auth::PRIV_HIDE;
-		} else {
-			$fam_access_level = Auth::accessLevel($tree);
-		}
+    /** {@inheritdoc} */
+    public function getTabContent(Individual $individual)
+    {
+        $tree = $individual->getTree();
+        if ($tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS')) {
+            $fam_access_level = Auth::PRIV_HIDE;
+        } else {
+            $fam_access_level = Auth::accessLevel($tree);
+        }
 
-		return view('modules/relatives/tab', [
-			'fam_access_level'     => $fam_access_level,
-			'can_edit'             => $individual->canEdit(),
-			'individual'           => $individual,
-			'parent_families'      => $individual->getChildFamilies(),
-			'spouse_families'      => $individual->getSpouseFamilies(),
-			'step_child_familiess' => $individual->getSpouseStepFamilies(),
-			'step_parent_families' => $individual->getChildStepFamilies(),
-		]);
-	}
+        return view('modules/relatives/tab', [
+            'fam_access_level'     => $fam_access_level,
+            'can_edit'             => $individual->canEdit(),
+            'individual'           => $individual,
+            'parent_families'      => $individual->getChildFamilies(),
+            'spouse_families'      => $individual->getSpouseFamilies(),
+            'step_child_familiess' => $individual->getSpouseStepFamilies(),
+            'step_parent_families' => $individual->getChildStepFamilies(),
+        ]);
+    }
 
-	/** {@inheritdoc} */
-	public function hasTabContent(Individual $individual) {
-		return true;
-	}
-	/** {@inheritdoc} */
-	public function isGrayedOut(Individual $individual) {
-		return false;
-	}
-	/** {@inheritdoc} */
-	public function canLoadAjax() {
-		return false;
-	}
+    /** {@inheritdoc} */
+    public function hasTabContent(Individual $individual)
+    {
+        return true;
+    }
+
+    /** {@inheritdoc} */
+    public function isGrayedOut(Individual $individual)
+    {
+        return false;
+    }
+
+    /** {@inheritdoc} */
+    public function canLoadAjax()
+    {
+        return false;
+    }
 }

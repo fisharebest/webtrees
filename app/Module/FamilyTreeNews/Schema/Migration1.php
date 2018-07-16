@@ -23,63 +23,65 @@ use PDOException;
 /**
  * Upgrade the database schema from version 1 to version 2.
  */
-class Migration1 implements MigrationInterface {
-	/** {@inheritDoc} */
-	public function upgrade() {
-		// Add new columns
-		try {
-			Database::exec(
-				"ALTER TABLE `##news`" .
-				" ADD user_id INTEGER NULL AFTER n_id," .
-				" ADD gedcom_id INTEGER NULL AFTER user_id," .
-				" ADD updated TIMESTAMP ON UPDATE CURRENT_TIMESTAMP DEFAULT CURRENT_TIMESTAMP," .
-				" ADD KEY news_ix1 (user_id, updated)," .
-				" ADD KEY news_ix2 (gedcom_id, updated)"
-			);
-		} catch (PDOException $ex) {
-			DebugBar::addThrowable($ex);
+class Migration1 implements MigrationInterface
+{
+    /** {@inheritDoc} */
+    public function upgrade()
+    {
+        // Add new columns
+        try {
+            Database::exec(
+                "ALTER TABLE `##news`" .
+                " ADD user_id INTEGER NULL AFTER n_id," .
+                " ADD gedcom_id INTEGER NULL AFTER user_id," .
+                " ADD updated TIMESTAMP ON UPDATE CURRENT_TIMESTAMP DEFAULT CURRENT_TIMESTAMP," .
+                " ADD KEY news_ix1 (user_id, updated)," .
+                " ADD KEY news_ix2 (gedcom_id, updated)"
+            );
+        } catch (PDOException $ex) {
+            DebugBar::addThrowable($ex);
 
-			// Already updated?
-		}
+            // Already updated?
+        }
 
-		// Migrate data from the old columns to the new ones
-		try {
-			Database::exec(
-				"UPDATE `##news` n" .
-				" LEFT JOIN `##gedcom` g ON (n.n_username=g.gedcom_name)" .
-				" LEFT JOIN `##user` u ON (n.n_username=u.user_name)" .
-				" SET n.gedcom_id=g.gedcom_id, n.user_id=u.user_id, updated=FROM_UNIXTIME(n_date)"
-			);
-		} catch (PDOException $ex) {
-			DebugBar::addThrowable($ex);
+        // Migrate data from the old columns to the new ones
+        try {
+            Database::exec(
+                "UPDATE `##news` n" .
+                " LEFT JOIN `##gedcom` g ON (n.n_username=g.gedcom_name)" .
+                " LEFT JOIN `##user` u ON (n.n_username=u.user_name)" .
+                " SET n.gedcom_id=g.gedcom_id, n.user_id=u.user_id, updated=FROM_UNIXTIME(n_date)"
+            );
+        } catch (PDOException $ex) {
+            DebugBar::addThrowable($ex);
 
-			// Already updated?
-		}
+            // Already updated?
+        }
 
-		// Delete orphaned rows
-		try {
-			Database::exec(
-				"DELETE FROM `##news` WHERE user_id IS NULL AND gedcom_id IS NULL"
-			);
-		} catch (PDOException $ex) {
-			DebugBar::addThrowable($ex);
+        // Delete orphaned rows
+        try {
+            Database::exec(
+                "DELETE FROM `##news` WHERE user_id IS NULL AND gedcom_id IS NULL"
+            );
+        } catch (PDOException $ex) {
+            DebugBar::addThrowable($ex);
 
-			// Already updated?
-		}
+            // Already updated?
+        }
 
-		// Delete/rename old columns
-		try {
-			Database::exec(
-				"ALTER TABLE `##news`" .
-				" DROP n_username, DROP n_date," .
-				" CHANGE n_id news_id INTEGER NOT NULL AUTO_INCREMENT," .
-				" CHANGE n_title subject VARCHAR(255) COLLATE utf8_unicode_ci," .
-				" CHANGE n_text body TEXT COLLATE utf8_unicode_ci"
-			);
-		} catch (PDOException $ex) {
-			DebugBar::addThrowable($ex);
+        // Delete/rename old columns
+        try {
+            Database::exec(
+                "ALTER TABLE `##news`" .
+                " DROP n_username, DROP n_date," .
+                " CHANGE n_id news_id INTEGER NOT NULL AUTO_INCREMENT," .
+                " CHANGE n_title subject VARCHAR(255) COLLATE utf8_unicode_ci," .
+                " CHANGE n_text body TEXT COLLATE utf8_unicode_ci"
+            );
+        } catch (PDOException $ex) {
+            DebugBar::addThrowable($ex);
 
-			// Already updated?
-		}
-	}
+            // Already updated?
+        }
+    }
 }

@@ -21,41 +21,45 @@ use Mockery;
 /**
  * Test harness for the class CensusColumnSurname
  */
-class CensusColumnSurnameTest extends \PHPUnit\Framework\TestCase {
-	/**
-	 * Delete mock objects
-	 */
-	public function tearDown() {
-		Mockery::close();
-	}
+class CensusColumnSurnameTest extends \PHPUnit\Framework\TestCase
+{
+    /**
+     * Delete mock objects
+     */
+    public function tearDown()
+    {
+        Mockery::close();
+    }
 
-	/**
-	 * @covers \Fisharebest\Webtrees\Census\CensusColumnSurname
-	 * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-	 */
-	public function testSurname() {
-		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
-		$individual->shouldReceive('getAllNames')->andReturn([['surname' => 'Bloggs']]);
+    /**
+     * @covers \Fisharebest\Webtrees\Census\CensusColumnSurname
+     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
+     */
+    public function testSurname()
+    {
+        $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
+        $individual->shouldReceive('getAllNames')->andReturn([['surname' => 'Bloggs']]);
 
-		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
+        $census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
 
-		$column = new CensusColumnSurname($census, '', '');
+        $column = new CensusColumnSurname($census, '', '');
 
-		$this->assertSame('Bloggs', $column->generate($individual));
-	}
+        $this->assertSame('Bloggs', $column->generate($individual));
+    }
 
-	/**
-	 * @covers \Fisharebest\Webtrees\Census\CensusColumnSurname
-	 * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-	 */
-	public function testNoName() {
-		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
-		$individual->shouldReceive('getAllNames')->andReturn([]);
+    /**
+     * @covers \Fisharebest\Webtrees\Census\CensusColumnSurname
+     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
+     */
+    public function testNoName()
+    {
+        $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
+        $individual->shouldReceive('getAllNames')->andReturn([]);
 
-		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
+        $census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
 
-		$column = new CensusColumnSurname($census, '', '');
+        $column = new CensusColumnSurname($census, '', '');
 
-		$this->assertSame('', $column->generate($individual));
-	}
+        $this->assertSame('', $column->generate($individual));
+    }
 }

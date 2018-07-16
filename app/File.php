@@ -20,66 +20,69 @@ use Throwable;
 /**
  * File manipulation utilities.
  */
-class File {
-	/**
-	 * Recursively delete a folder or file
-	 *
-	 * @param string $path
-	 *
-	 * @return bool Was the file deleted
-	 */
-	public static function delete($path) {
-		if (is_dir($path)) {
-			$dir = opendir($path);
-			while ($dir !== false && (($file = readdir($dir)) !== false)) {
-				if ($file !== '.' && $file !== '..') {
-					self::delete($path . DIRECTORY_SEPARATOR . $file);
-				}
-			}
-			closedir($dir);
-			try {
-				rmdir($path);
-			} catch (Throwable $ex) {
-				DebugBar::addThrowable($ex);
+class File
+{
+    /**
+     * Recursively delete a folder or file
+     *
+     * @param string $path
+     *
+     * @return bool Was the file deleted
+     */
+    public static function delete($path)
+    {
+        if (is_dir($path)) {
+            $dir = opendir($path);
+            while ($dir !== false && (($file = readdir($dir)) !== false)) {
+                if ($file !== '.' && $file !== '..') {
+                    self::delete($path . DIRECTORY_SEPARATOR . $file);
+                }
+            }
+            closedir($dir);
+            try {
+                rmdir($path);
+            } catch (Throwable $ex) {
+                DebugBar::addThrowable($ex);
 
-				// Continue, in case there are other files/folders that we can delete.
-			}
-		} else {
-			try {
-				unlink($path);
-			} catch (Throwable $ex) {
-				DebugBar::addThrowable($ex);
+                // Continue, in case there are other files/folders that we can delete.
+            }
+        } else {
+            try {
+                unlink($path);
+            } catch (Throwable $ex) {
+                DebugBar::addThrowable($ex);
 
-				// Continue, in case there are other files/folders that we can delete.
-			}
-		}
+                // Continue, in case there are other files/folders that we can delete.
+            }
+        }
 
-		return !file_exists($path);
-	}
+        return !file_exists($path);
+    }
 
-	/**
-	 * Create a folder, and sub-folders, if it does not already exist
-	 *
-	 * @param string $path
-	 *
-	 * @return bool Does the folder now exist
-	 */
-	public static function mkdir($path) {
-		if (is_dir($path)) {
-			return true;
-		} else {
-			if (dirname($path) && !is_dir(dirname($path))) {
-				self::mkdir(dirname($path));
-			}
-			try {
-				mkdir($path);
+    /**
+     * Create a folder, and sub-folders, if it does not already exist
+     *
+     * @param string $path
+     *
+     * @return bool Does the folder now exist
+     */
+    public static function mkdir($path)
+    {
+        if (is_dir($path)) {
+            return true;
+        } else {
+            if (dirname($path) && !is_dir(dirname($path))) {
+                self::mkdir(dirname($path));
+            }
+            try {
+                mkdir($path);
 
-				return true;
-			} catch (Throwable $ex) {
-				DebugBar::addThrowable($ex);
+                return true;
+            } catch (Throwable $ex) {
+                DebugBar::addThrowable($ex);
 
-				return false;
-			}
-		}
-	}
+                return false;
+            }
+        }
+    }
 }

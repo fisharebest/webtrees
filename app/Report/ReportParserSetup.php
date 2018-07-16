@@ -21,126 +21,135 @@ use Fisharebest\Webtrees\I18N;
 /**
  * Class ReportParserSetup - parse a report.xml file and extract the setup options.
  */
-class ReportParserSetup extends ReportParserBase {
-	/** @var array An array of report options/parameters */
-	private $data = [];
+class ReportParserSetup extends ReportParserBase
+{
+    /** @var array An array of report options/parameters */
+    private $data = [];
 
-	/** @var string[] An array of input attributes */
-	private $input;
+    /** @var string[] An array of input attributes */
+    private $input;
 
-	/**
-	 * Return the parsed data.
-	 *
-	 * @return array
-	 */
-	public function reportProperties() {
-		return $this->data;
-	}
+    /**
+     * Return the parsed data.
+     *
+     * @return array
+     */
+    public function reportProperties()
+    {
+        return $this->data;
+    }
 
-	/**
-	 * Process <Report>
-	 *
-	 * @param string[] $attrs
-	 */
-	protected function reportStartHandler($attrs) {
-		$access = Auth::PRIV_PRIVATE;
-		if (isset($attrs['access'])) {
-			if (isset($$attrs['access'])) {
-				$access = $$attrs['access'];
-			}
-		}
-		$this->data['access'] = $access;
+    /**
+     * Process <Report>
+     *
+     * @param string[] $attrs
+     */
+    protected function reportStartHandler($attrs)
+    {
+        $access = Auth::PRIV_PRIVATE;
+        if (isset($attrs['access'])) {
+            if (isset($$attrs['access'])) {
+                $access = $$attrs['access'];
+            }
+        }
+        $this->data['access'] = $access;
 
-		if (isset($attrs['icon'])) {
-			$this->data['icon'] = $attrs['icon'];
-		} else {
-			$this->data['icon'] = '';
-		}
-	}
+        if (isset($attrs['icon'])) {
+            $this->data['icon'] = $attrs['icon'];
+        } else {
+            $this->data['icon'] = '';
+        }
+    }
 
-	/**
-	 * Process <var var="">
-	 *
-	 * @param string[] $attrs
-	 */
-	protected function varStartHandler($attrs) {
-		if (preg_match('/^I18N::number\((.+)\)$/', $attrs['var'], $match)) {
-			$this->text .= I18N::number($match[1]);
-		} elseif (preg_match('/^I18N::translate\(\'(.+)\'\)$/', $attrs['var'], $match)) {
-			$this->text .= I18N::translate($match[1]);
-		} elseif (preg_match('/^I18N::translateContext\(\'(.+)\', *\'(.+)\'\)$/', $attrs['var'], $match)) {
-			$this->text .= I18N::translateContext($match[1], $match[2]);
-		} else {
-			$this->text .= $attrs['var'];
-		}
-	}
+    /**
+     * Process <var var="">
+     *
+     * @param string[] $attrs
+     */
+    protected function varStartHandler($attrs)
+    {
+        if (preg_match('/^I18N::number\((.+)\)$/', $attrs['var'], $match)) {
+            $this->text .= I18N::number($match[1]);
+        } elseif (preg_match('/^I18N::translate\(\'(.+)\'\)$/', $attrs['var'], $match)) {
+            $this->text .= I18N::translate($match[1]);
+        } elseif (preg_match('/^I18N::translateContext\(\'(.+)\', *\'(.+)\'\)$/', $attrs['var'], $match)) {
+            $this->text .= I18N::translateContext($match[1], $match[2]);
+        } else {
+            $this->text .= $attrs['var'];
+        }
+    }
 
-	/**
-	 * Process <Title>
-	 */
-	protected function titleStartHandler() {
-		$this->text = '';
-	}
+    /**
+     * Process <Title>
+     */
+    protected function titleStartHandler()
+    {
+        $this->text = '';
+    }
 
-	/**
-	 * Process </Title>
-	 */
-	protected function titleEndHandler() {
-		$this->data['title'] = $this->text;
-		$this->text          = '';
-	}
+    /**
+     * Process </Title>
+     */
+    protected function titleEndHandler()
+    {
+        $this->data['title'] = $this->text;
+        $this->text          = '';
+    }
 
-	/**
-	 * Process </Description>
-	 */
-	protected function descriptionEndHandler() {
-		$this->data['description'] = $this->text;
-		$this->text                = '';
-	}
+    /**
+     * Process </Description>
+     */
+    protected function descriptionEndHandler()
+    {
+        $this->data['description'] = $this->text;
+        $this->text                = '';
+    }
 
-	/**
-	 * Process <Input>
-	 *
-	 * @param string[] $attrs
-	 */
-	protected function inputStartHandler($attrs) {
-		$this->text  = '';
-		$this->input = [
-			'name'    => isset($attrs['name']) ? $attrs['name'] : '',
-			'type'    => isset($attrs['type']) ? $attrs['type'] : '',
-			'lookup'  => isset($attrs['lookup']) ? $attrs['lookup'] : '',
-			'options' => isset($attrs['options']) ? $attrs['options'] : '',
-			'default' => '',
-			'value'   => '',
-		];
+    /**
+     * Process <Input>
+     *
+     * @param string[] $attrs
+     */
+    protected function inputStartHandler($attrs)
+    {
+        $this->text  = '';
+        $this->input = [
+            'name'    => isset($attrs['name']) ? $attrs['name'] : '',
+            'type'    => isset($attrs['type']) ? $attrs['type'] : '',
+            'lookup'  => isset($attrs['lookup']) ? $attrs['lookup'] : '',
+            'options' => isset($attrs['options']) ? $attrs['options'] : '',
+            'default' => '',
+            'value'   => '',
+        ];
 
-		if (isset($attrs['default'])) {
-			if ($attrs['default'] === 'NOW') {
-				$this->input['default'] = date('d M Y');
-			} else {
-				$match = [];
-				if (preg_match('/NOW\s*([+\-])\s*(\d+)/', $attrs['default'], $match) > 0) {
-					$plus = 1;
-					if ($match[1] === '-') {
-						$plus = -1;
-					}
-					$this->input['default'] = date('d M Y', WT_TIMESTAMP + $plus * 60 * 60 * 24 * $match[2]);
-				} else {
-					$this->input['default'] = $attrs['default'];
-				}
-			}
-		}
-	}
+        if (isset($attrs['default'])) {
+            if ($attrs['default'] === 'NOW') {
+                $this->input['default'] = date('d M Y');
+            } else {
+                $match = [];
+                if (preg_match('/NOW\s*([+\-])\s*(\d+)/', $attrs['default'], $match) > 0) {
+                    $plus = 1;
+                    if ($match[1] === '-') {
+                        $plus = -1;
+                    }
+                    $this->input['default'] = date('d M Y', WT_TIMESTAMP + $plus * 60 * 60 * 24 * $match[2]);
+                } else {
+                    $this->input['default'] = $attrs['default'];
+                }
+            }
+        }
+    }
 
-	/**
-	 * Process </Input>
-	 */
-	protected function inputEndHandler() {
-		$this->input['value'] = $this->text;
-		if (!isset($this->data['inputs'])) {
-			$this->data['inputs'] = [];
-		}
-		$this->data['inputs'][] = $this->input;
-		$this->text             = '';
-	}
+    /**
+     * Process </Input>
+     */
+    protected function inputEndHandler()
+    {
+        $this->input['value'] = $this->text;
+        if (!isset($this->data['inputs'])) {
+            $this->data['inputs'] = [];
+        }
+        $this->data['inputs'][] = $this->input;
+        $this->text             = '';
+    }
 }

@@ -30,80 +30,85 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * User actions
  */
-class UserController extends AbstractBaseController {
-	/**
-	 * Delete a user.
-	 *
-	 * @param Request $request
-	 *
-	 * @return Response
-	 */
-	public function delete(Request $request): Response {
-		$user_id = (int) $request->get('user_id');
+class UserController extends AbstractBaseController
+{
+    /**
+     * Delete a user.
+     *
+     * @param Request $request
+     *
+     * @return Response
+     */
+    public function delete(Request $request): Response
+    {
+        $user_id = (int)$request->get('user_id');
 
-		$user = User::find($user_id);
+        $user = User::find($user_id);
 
-		if ($user && Auth::isAdmin() && Auth::user() !== $user) {
-			Log::addAuthenticationLog('Deleted user: ' . $user->getUserName());
-			$user->delete();
-		}
+        if ($user && Auth::isAdmin() && Auth::user() !== $user) {
+            Log::addAuthenticationLog('Deleted user: ' . $user->getUserName());
+            $user->delete();
+        }
 
-		return new Response;
-	}
+        return new Response;
+    }
 
-	/**
-	 * Select a language.
-	 *
-	 * @param Request $request
-	 *
-	 * @return Response
-	 */
-	public function language(Request $request): Response {
-		$language = $request->get('language');
+    /**
+     * Select a language.
+     *
+     * @param Request $request
+     *
+     * @return Response
+     */
+    public function language(Request $request): Response
+    {
+        $language = $request->get('language');
 
-		I18N::init($language);
-		Session::put('locale', $language);
-		Auth::user()->setPreference('language', $language);
+        I18N::init($language);
+        Session::put('locale', $language);
+        Auth::user()->setPreference('language', $language);
 
-		return new Response;
-	}
+        return new Response;
+    }
 
-	/**
-	 * Masquerade as another user.
-	 *
-	 * @param Request $request
-	 *
-	 * @return Response
-	 */
-	public function masquerade(Request $request): Response {
-		$user_id = (int) $request->get('user_id');
+    /**
+     * Masquerade as another user.
+     *
+     * @param Request $request
+     *
+     * @return Response
+     */
+    public function masquerade(Request $request): Response
+    {
+        $user_id = (int)$request->get('user_id');
 
-		$user = User::find($user_id);
+        $user = User::find($user_id);
 
-		if ($user !== null && Auth::isAdmin() && Auth::user() !== $user) {
-			Log::addAuthenticationLog('Masquerade as user: ' . $user->getUserName());
-			Auth::login($user);
-			Session::put('masquerade', '1');
-		}
+        if ($user !== null && Auth::isAdmin() && Auth::user() !== $user) {
+            Log::addAuthenticationLog('Masquerade as user: ' . $user->getUserName());
+            Auth::login($user);
+            Session::put('masquerade', '1');
+        }
 
-		return new Response;
-	}
+        return new Response;
+    }
 
-	/**
-	 * Select a theme.
-	 *
-	 * @param Request $request
-	 *
-	 * @return Response
-	 */
-	public function theme(Request $request): Response {
-		$theme = $request->get('theme');
+    /**
+     * Select a theme.
+     *
+     * @param Request $request
+     *
+     * @return Response
+     */
+    public function theme(Request $request): Response
+    {
+        $theme = $request->get('theme');
 
-		if (Site::getPreference('ALLOW_USER_THEMES') === '1' && array_key_exists($theme, Theme::themeNames())) {
-			Session::put('theme_id', $theme);
-			Auth::user()->setPreference('theme', $theme);
-		}
+        if (Site::getPreference('ALLOW_USER_THEMES') === '1' && array_key_exists($theme, Theme::themeNames())) {
+            Session::put('theme_id', $theme);
+            Auth::user()->setPreference('theme', $theme);
+        }
 
-		return new Response;
-	}
+        return new Response;
+    }
 }

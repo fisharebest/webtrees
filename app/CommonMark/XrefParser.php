@@ -24,64 +24,68 @@ use League\CommonMark\InlineParserContext;
 /**
  * Convert XREFs within markdown text to links
  */
-class XrefParser extends AbstractInlineParser {
-	/** @var Tree - match XREFs in this tree */
-	private $tree;
+class XrefParser extends AbstractInlineParser
+{
+    /** @var Tree - match XREFs in this tree */
+    private $tree;
 
-	/**
-	 * MarkdownXrefParser constructor.
-	 *
-	 * @param Tree $tree
-	 */
-	public function __construct(Tree $tree) {
-		$this->tree = $tree;
-	}
+    /**
+     * MarkdownXrefParser constructor.
+     *
+     * @param Tree $tree
+     */
+    public function __construct(Tree $tree)
+    {
+        $this->tree = $tree;
+    }
 
-	/**
-	 * We are only interested in text that begins with '@'.
-	 *
-	 * @return array
-	 */
-	public function getCharacters() {
-		return ['@'];
-	}
+    /**
+     * We are only interested in text that begins with '@'.
+     *
+     * @return array
+     */
+    public function getCharacters()
+    {
+        return ['@'];
+    }
 
-	/**
-	 * @param InlineParserContext $context
-	 *
-	 * @return bool
-	 */
-	public function parse(InlineParserContext $context) {
-		// The cursor should be positioned on the opening '@'.
-		$cursor = $context->getcursor();
+    /**
+     * @param InlineParserContext $context
+     *
+     * @return bool
+     */
+    public function parse(InlineParserContext $context)
+    {
+        // The cursor should be positioned on the opening '@'.
+        $cursor = $context->getcursor();
 
-		// If this isn't the start of an XREF, we'll need to rewind.
-		$previous_state = $cursor->saveState();
+        // If this isn't the start of an XREF, we'll need to rewind.
+        $previous_state = $cursor->saveState();
 
-		$handle = $cursor->match('/@' . WT_REGEX_XREF . '@/');
-		if (empty($handle)) {
-			// Not an XREF?
-			$cursor->restoreState($previous_state);
+        $handle = $cursor->match('/@' . WT_REGEX_XREF . '@/');
+        if (empty($handle)) {
+            // Not an XREF?
+            $cursor->restoreState($previous_state);
 
-			return false;
-		}
+            return false;
+        }
 
-		$xref = trim($handle, '@');
+        $xref = trim($handle, '@');
 
-		$record = GedcomRecord::getInstance($xref, $this->tree);
+        $record = GedcomRecord::getInstance($xref, $this->tree);
 
-		if ($record === null) {
-			// Linked record does not exist?
-			$cursor->restoreState($previous_state);
+        if ($record === null) {
+            // Linked record does not exist?
+            $cursor->restoreState($previous_state);
 
-			return false;
-		}
+            return false;
+        }
 
-		$url   = $record->url();
-		$label = $handle;
-		$title = strip_tags($record->getFullName());
-		$context->getContainer()->appendChild(new Link($url, $label, $title));
+        $url   = $record->url();
+        $label = $handle;
+        $title = strip_tags($record->getFullName());
+        $context->getContainer()->appendChild(new Link($url, $label, $title));
 
-		return true;
-	}
+        return true;
+    }
 }

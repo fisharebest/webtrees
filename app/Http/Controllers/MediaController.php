@@ -26,46 +26,49 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * Controller for the media page.
  */
-class MediaController extends AbstractBaseController {
-	/**
-	 * Show a repository's page.
-	 *
-	 * @param Request $request
-	 *
-	 * @return Response
-	 */
-	public function show(Request $request): Response {
-		/** @var Tree $tree */
-		$tree  = $request->attributes->get('tree');
-		$xref  = $request->get('xref');
-		$media = Media::getInstance($xref, $tree);
+class MediaController extends AbstractBaseController
+{
+    /**
+     * Show a repository's page.
+     *
+     * @param Request $request
+     *
+     * @return Response
+     */
+    public function show(Request $request): Response
+    {
+        /** @var Tree $tree */
+        $tree  = $request->attributes->get('tree');
+        $xref  = $request->get('xref');
+        $media = Media::getInstance($xref, $tree);
 
-		$this->checkMediaAccess($media);
+        $this->checkMediaAccess($media);
 
-		return $this->viewResponse('media-page', [
-			'families'    => $media->linkedFamilies('OBJE'),
-			'facts'       => $this->facts($media),
-			'individuals' => $media->linkedIndividuals('OBJE'),
-			'media'       => $media,
-			'meta_robots' => 'index,follow',
-			'notes'       => $media->linkedNotes('OBJE'),
-			'sources'     => $media->linkedSources('OBJE'),
-			'title'       => $media->getFullName(),
-		]);
-	}
+        return $this->viewResponse('media-page', [
+            'families'    => $media->linkedFamilies('OBJE'),
+            'facts'       => $this->facts($media),
+            'individuals' => $media->linkedIndividuals('OBJE'),
+            'media'       => $media,
+            'meta_robots' => 'index,follow',
+            'notes'       => $media->linkedNotes('OBJE'),
+            'sources'     => $media->linkedSources('OBJE'),
+            'title'       => $media->getFullName(),
+        ]);
+    }
 
-	/**
-	 * @param Media $record
-	 *
-	 * @return array
-	 */
-	private function facts(Media $record): array {
-		$facts = $record->getFacts();
+    /**
+     * @param Media $record
+     *
+     * @return array
+     */
+    private function facts(Media $record): array
+    {
+        $facts = $record->getFacts();
 
-		array_filter($facts, function (Fact $fact) {
-			return $fact->getTag() !== 'FILE';
-		});
+        array_filter($facts, function (Fact $fact) {
+            return $fact->getTag() !== 'FILE';
+        });
 
-		return $facts;
-	}
+        return $facts;
+    }
 }

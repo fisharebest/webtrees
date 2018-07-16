@@ -19,31 +19,34 @@ namespace Fisharebest\Webtrees\Census;
 /**
  * Definitions for a census
  */
-class CensusOfScotland extends Census implements CensusPlaceInterface {
-	/**
-	 * All available censuses for this census place.
-	 *
-	 * @return CensusInterface[]
-	 */
-	public function allCensusDates() {
-		return [
-			new CensusOfScotland1841(),
-			new CensusOfScotland1851(),
-			new CensusOfScotland1861(),
-			new CensusOfScotland1871(),
-			new CensusOfScotland1881(),
-			new CensusOfScotland1891(),
-			new CensusOfScotland1901(),
-			new CensusOfScotland1911(),
-		];
-	}
+class CensusOfScotland extends Census implements CensusPlaceInterface
+{
+    /**
+     * All available censuses for this census place.
+     *
+     * @return CensusInterface[]
+     */
+    public function allCensusDates()
+    {
+        return [
+            new CensusOfScotland1841(),
+            new CensusOfScotland1851(),
+            new CensusOfScotland1861(),
+            new CensusOfScotland1871(),
+            new CensusOfScotland1881(),
+            new CensusOfScotland1891(),
+            new CensusOfScotland1901(),
+            new CensusOfScotland1911(),
+        ];
+    }
 
-	/**
-	 * Where did this census occur, in GEDCOM format.
-	 *
-	 * @return string
-	 */
-	public function censusPlace() {
-		return 'Scotland';
-	}
+    /**
+     * Where did this census occur, in GEDCOM format.
+     *
+     * @return string
+     */
+    public function censusPlace()
+    {
+        return 'Scotland';
+    }
 }

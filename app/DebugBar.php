@@ -30,172 +30,186 @@ use Throwable;
  *
  * @see https://github.com/maximebf/php-debugbar
  */
-class DebugBar {
-	/** @var StandardDebugbar */
-	private static $debugbar;
+class DebugBar
+{
+    /** @var StandardDebugbar */
+    private static $debugbar;
 
-	/** @var JavascriptRenderer */
-	private static $renderer;
+    /** @var JavascriptRenderer */
+    private static $renderer;
 
-	/**
-	 * Prevent instantiation.
-	 */
-	private final function __construct() {
-	}
+    /**
+     * Prevent instantiation.
+     */
+    private final function __construct()
+    {
+    }
 
-	/**
-	 * Initialize the Debugbar.
-	 */
-	public static function init(bool $enable = true) {
-		if ($enable) {
-			self::$debugbar = new StandardDebugBar;
-			self::$debugbar->addCollector(new ViewCollector);
+    /**
+     * Initialize the Debugbar.
+     */
+    public static function init(bool $enable = true)
+    {
+        if ($enable) {
+            self::$debugbar = new StandardDebugBar;
+            self::$debugbar->addCollector(new ViewCollector);
 
-			self::$renderer = self::$debugbar->getJavascriptRenderer('./vendor/maximebf/debugbar/src/DebugBar/Resources/');
+            self::$renderer = self::$debugbar->getJavascriptRenderer('./vendor/maximebf/debugbar/src/DebugBar/Resources/');
 
-			// We can't use WT_DATA_DIR as it does not exist yet
-			$storage_dir = 'data/debugbar';
+            // We can't use WT_DATA_DIR as it does not exist yet
+            $storage_dir = 'data/debugbar';
 
-			if (File::mkdir($storage_dir)) {
-				$storage = new FileStorage($storage_dir);
-				self::$debugbar->setStorage($storage);
-			}
-		}
-	}
+            if (File::mkdir($storage_dir)) {
+                $storage = new FileStorage($storage_dir);
+                self::$debugbar->setStorage($storage);
+            }
+        }
+    }
 
-	/**
-	 * Initialize the PDO collector.
-	 *
-	 * @param PDO $pdo
-	 *
-	 * @return PDO
-	 */
-	public static function initPDO(PDO $pdo): PDO {
-		if (self::$debugbar !== null) {
-			$pdo = new TraceablePDO($pdo);
-			self::$debugbar->addCollector(new PDOCollector($pdo));
-		}
+    /**
+     * Initialize the PDO collector.
+     *
+     * @param PDO $pdo
+     *
+     * @return PDO
+     */
+    public static function initPDO(PDO $pdo): PDO
+    {
+        if (self::$debugbar !== null) {
+            $pdo = new TraceablePDO($pdo);
+            self::$debugbar->addCollector(new PDOCollector($pdo));
+        }
 
-		return $pdo;
-	}
+        return $pdo;
+    }
 
-	/**
-	 * Render the body content.
-	 *
-	 * @return string
-	 */
-	public static function render(): string {
-		if (self::$debugbar !== null) {
-			return self::$renderer->render();
-		} else {
-			return '';
-		}
-	}
+    /**
+     * Render the body content.
+     *
+     * @return string
+     */
+    public static function render(): string
+    {
+        if (self::$debugbar !== null) {
+            return self::$renderer->render();
+        } else {
+            return '';
+        }
+    }
 
-	/**
-	 * Render the head content.
-	 *
-	 * @return string
-	 */
-	public static function renderHead(): string {
-		if (self::$debugbar !== null) {
-			return self::$renderer->renderHead();
-		} else {
-			return '';
-		}
-	}
+    /**
+     * Render the head content.
+     *
+     * @return string
+     */
+    public static function renderHead(): string
+    {
+        if (self::$debugbar !== null) {
+            return self::$renderer->renderHead();
+        } else {
+            return '';
+        }
+    }
 
-	/**
-	 * For POST/redirect responses, we "stack" the data onto the next GET request.
-	 */
-	public static function stackData() {
-		if (self::$debugbar !== null) {
-			self::$debugbar->stackData();
-		}
-	}
+    /**
+     * For POST/redirect responses, we "stack" the data onto the next GET request.
+     */
+    public static function stackData()
+    {
+        if (self::$debugbar !== null) {
+            self::$debugbar->stackData();
+        }
+    }
 
-	/**
-	 * For JSON responses, we send the data in HTTP headers.
-	 */
-	public static function sendDataInHeaders() {
-		if (self::$debugbar !== null) {
-			self::$debugbar->sendDataInHeaders();
-		}
-	}
+    /**
+     * For JSON responses, we send the data in HTTP headers.
+     */
+    public static function sendDataInHeaders()
+    {
+        if (self::$debugbar !== null) {
+            self::$debugbar->sendDataInHeaders();
+        }
+    }
 
-	/**
-	 * Add a message.
-	 *
-	 * @param string $message
-	 * @param string $label
-	 * @param bool   $isString
-	 *
-	 * @return void
-	 */
-	public static function addMessage($message, $label = 'info', $isString = true) {
-		if (self::$debugbar !== null) {
-			self::$debugbar['messages']->addMessage($message, $label, $isString);
-		}
-	}
+    /**
+     * Add a message.
+     *
+     * @param string $message
+     * @param string $label
+     * @param bool   $isString
+     *
+     * @return void
+     */
+    public static function addMessage($message, $label = 'info', $isString = true)
+    {
+        if (self::$debugbar !== null) {
+            self::$debugbar['messages']->addMessage($message, $label, $isString);
+        }
+    }
 
-	/**
-	 * Start a timer.
-	 *
-	 * @param string      $name
-	 * @param string|null $label
-	 * @param string|null $collector
-	 */
-	public static function startMeasure($name, $label = null, $collector = null) {
-		if (self::$debugbar !== null) {
-			self::$debugbar['time']->startMeasure($name, $label, $collector);
-		}
-	}
+    /**
+     * Start a timer.
+     *
+     * @param string      $name
+     * @param string|null $label
+     * @param string|null $collector
+     */
+    public static function startMeasure($name, $label = null, $collector = null)
+    {
+        if (self::$debugbar !== null) {
+            self::$debugbar['time']->startMeasure($name, $label, $collector);
+        }
+    }
 
-	/**
-	 * Stop a timer.
-	 *
-	 * @param string $name
-	 * @param array  $params
-	 */
-	public static function stopMeasure($name, $params = []) {
-		if (self::$debugbar !== null) {
-			self::$debugbar['time']->stopMeasure($name, $params);
-		}
-	}
+    /**
+     * Stop a timer.
+     *
+     * @param string $name
+     * @param array  $params
+     */
+    public static function stopMeasure($name, $params = [])
+    {
+        if (self::$debugbar !== null) {
+            self::$debugbar['time']->stopMeasure($name, $params);
+        }
+    }
 
-	/**
-	 * Time a closure.
-	 *
-	 * @param string      $label
-	 * @param Closure     $closure
-	 * @param string|null $collector
-	 */
-	public static function measure($label, Closure $closure, $collector = null) {
-		if (self::$debugbar !== null) {
-			self::$debugbar['time']->measure($label, $closure, $collector);
-		}
-	}
+    /**
+     * Time a closure.
+     *
+     * @param string      $label
+     * @param Closure     $closure
+     * @param string|null $collector
+     */
+    public static function measure($label, Closure $closure, $collector = null)
+    {
+        if (self::$debugbar !== null) {
+            self::$debugbar['time']->measure($label, $closure, $collector);
+        }
+    }
 
-	/**
-	 * Log an exception/throwable
-	 *
-	 * @param Throwable $throwable
-	 */
-	public static function addThrowable(Throwable $throwable) {
-		if (self::$debugbar !== null) {
-			self::$debugbar['exceptions']->addThrowable($throwable);
-		}
-	}
+    /**
+     * Log an exception/throwable
+     *
+     * @param Throwable $throwable
+     */
+    public static function addThrowable(Throwable $throwable)
+    {
+        if (self::$debugbar !== null) {
+            self::$debugbar['exceptions']->addThrowable($throwable);
+        }
+    }
 
-	/**
-	 * Log an exception/throwable
-	 *
-	 * @param string  $view
-	 * @param mixed[] $data
-	 */
-	public static function addView(string $view, array $data) {
-		if (self::$debugbar !== null) {
-			self::$debugbar['views']->addView($view, $data);
-		}
-	}
+    /**
+     * Log an exception/throwable
+     *
+     * @param string  $view
+     * @param mixed[] $data
+     */
+    public static function addView(string $view, array $data)
+    {
+        if (self::$debugbar !== null) {
+            self::$debugbar['views']->addView($view, $data);
+        }
+    }
 }

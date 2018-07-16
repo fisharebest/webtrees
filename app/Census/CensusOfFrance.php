@@ -19,45 +19,48 @@ namespace Fisharebest\Webtrees\Census;
 /**
  * Definitions for a census
  */
-class CensusOfFrance extends Census implements CensusPlaceInterface {
-	/**
-	 * All available censuses for this census place.
-	 *
-	 * @return CensusInterface[]
-	 */
-	public function allCensusDates() {
-		return [
-			new CensusOfFrance1831(),
-			new CensusOfFrance1836(),
-			new CensusOfFrance1841(),
-			new CensusOfFrance1846(),
-			new CensusOfFrance1851(),
-			new CensusOfFrance1856(),
-			new CensusOfFrance1861(),
-			new CensusOfFrance1866(),
-			new CensusOfFrance1872(),
-			new CensusOfFrance1876(),
-			new CensusOfFrance1881(),
-			new CensusOfFrance1886(),
-			new CensusOfFrance1891(),
-			new CensusOfFrance1896(),
-			new CensusOfFrance1901(),
-			new CensusOfFrance1906(),
-			new CensusOfFrance1911(),
-			new CensusOfFrance1921(),
-			new CensusOfFrance1926(),
-			new CensusOfFrance1931(),
-			new CensusOfFrance1936(),
-			new CensusOfFrance1946(),
-		];
-	}
+class CensusOfFrance extends Census implements CensusPlaceInterface
+{
+    /**
+     * All available censuses for this census place.
+     *
+     * @return CensusInterface[]
+     */
+    public function allCensusDates()
+    {
+        return [
+            new CensusOfFrance1831(),
+            new CensusOfFrance1836(),
+            new CensusOfFrance1841(),
+            new CensusOfFrance1846(),
+            new CensusOfFrance1851(),
+            new CensusOfFrance1856(),
+            new CensusOfFrance1861(),
+            new CensusOfFrance1866(),
+            new CensusOfFrance1872(),
+            new CensusOfFrance1876(),
+            new CensusOfFrance1881(),
+            new CensusOfFrance1886(),
+            new CensusOfFrance1891(),
+            new CensusOfFrance1896(),
+            new CensusOfFrance1901(),
+            new CensusOfFrance1906(),
+            new CensusOfFrance1911(),
+            new CensusOfFrance1921(),
+            new CensusOfFrance1926(),
+            new CensusOfFrance1931(),
+            new CensusOfFrance1936(),
+            new CensusOfFrance1946(),
+        ];
+    }
 
-	/**
-	 * Where did this census occur, in GEDCOM format.
-	 *
-	 * @return string
-	 */
-	public function censusPlace() {
-		return 'France';
-	}
+    /**
+     * Where did this census occur, in GEDCOM format.
+     *
+     * @return string
+     */
+    public function censusPlace()
+    {
+        return 'France';
+    }
 }

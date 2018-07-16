@@ -21,17 +21,19 @@ use Fisharebest\Webtrees\Module;
 /**
  * Upgrade the database schema from version 34 to version 35.
  */
-class Migration34 implements MigrationInterface {
-	/**
-	 * Upgrade to to the next version
-	 */
-	public function upgrade() {
-		// New modules (charts) have been added.
-		Module::getInstalledModules('enabled');
+class Migration34 implements MigrationInterface
+{
+    /**
+     * Upgrade to to the next version
+     */
+    public function upgrade()
+    {
+        // New modules (charts) have been added.
+        Module::getInstalledModules('enabled');
 
-		// Delete old/unused settings
-		Database::exec(
-			"DELETE FROM `##gedcom_setting` WHERE setting_name IN ('COMMON_NAMES_ADD', 'COMMON_NAMES_REMOVE', 'COMMON_NAMES_THRESHOLD')"
-		);
-	}
+        // Delete old/unused settings
+        Database::exec(
+            "DELETE FROM `##gedcom_setting` WHERE setting_name IN ('COMMON_NAMES_ADD', 'COMMON_NAMES_REMOVE', 'COMMON_NAMES_THRESHOLD')"
+        );
+    }
 }

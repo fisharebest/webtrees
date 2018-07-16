@@ -23,11 +23,13 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 /**
  * Exception thrown when a record does not exist.
  */
-class RecordNotFoundException extends NotFoundHttpException {
-	/**
-	 * RecordNotFoundException constructor.
-	 */
-	public function __construct() {
-		parent::__construct(I18N::translate('This record does not exist or you do not have permission to view it.'));
-	}
+class RecordNotFoundException extends NotFoundHttpException
+{
+    /**
+     * RecordNotFoundException constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct(I18N::translate('This record does not exist or you do not have permission to view it.'));
+    }
 }

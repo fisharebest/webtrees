@@ -23,75 +23,86 @@ use Fisharebest\Webtrees\Individual;
 /**
  * Class MediaTabModule
  */
-class MediaTabModule extends AbstractModule implements ModuleTabInterface {
-	/** @var  Fact[] A list of facts with media objects. */
-	private $facts;
+class MediaTabModule extends AbstractModule implements ModuleTabInterface
+{
+    /** @var  Fact[] A list of facts with media objects. */
+    private $facts;
 
-	/** {@inheritdoc} */
-	public function getTitle() {
-		return /* I18N: Name of a module */ I18N::translate('Media');
-	}
+    /** {@inheritdoc} */
+    public function getTitle()
+    {
+        return /* I18N: Name of a module */
+            I18N::translate('Media');
+    }
 
-	/** {@inheritdoc} */
-	public function getDescription() {
-		return /* I18N: Description of the “Media” module */ I18N::translate('A tab showing the media objects linked to an individual.');
-	}
+    /** {@inheritdoc} */
+    public function getDescription()
+    {
+        return /* I18N: Description of the “Media” module */
+            I18N::translate('A tab showing the media objects linked to an individual.');
+    }
 
-	/** {@inheritdoc} */
-	public function defaultTabOrder() {
-		return 50;
-	}
+    /** {@inheritdoc} */
+    public function defaultTabOrder()
+    {
+        return 50;
+    }
 
-	/** {@inheritdoc} */
-	public function hasTabContent(Individual $individual) {
-		return $individual->canEdit() || $this->getFactsWithMedia($individual);
-	}
+    /** {@inheritdoc} */
+    public function hasTabContent(Individual $individual)
+    {
+        return $individual->canEdit() || $this->getFactsWithMedia($individual);
+    }
 
-	/** {@inheritdoc} */
-	public function isGrayedOut(Individual $individual) {
-		return !$this->getFactsWithMedia($individual);
-	}
+    /** {@inheritdoc} */
+    public function isGrayedOut(Individual $individual)
+    {
+        return !$this->getFactsWithMedia($individual);
+    }
 
-	/** {@inheritdoc} */
-	public function getTabContent(Individual $individual) {
-		return view('modules/media/tab', [
-			'can_edit'   => $individual->canEdit(),
-			'individual' => $individual,
-			'facts'      => $this->getFactsWithMedia($individual),
-		]);
-	}
+    /** {@inheritdoc} */
+    public function getTabContent(Individual $individual)
+    {
+        return view('modules/media/tab', [
+            'can_edit'   => $individual->canEdit(),
+            'individual' => $individual,
+            'facts'      => $this->getFactsWithMedia($individual),
+        ]);
+    }
 
-	/**
-	 * Get all the facts for an individual which contain media objects.
-	 *
-	 * @param Individual $individual
-	 *
-	 * @return Fact[]
-	 */
-	private function getFactsWithMedia(Individual $individual) {
-		if ($this->facts === null) {
-			$facts = $individual->getFacts();
-			foreach ($individual->getSpouseFamilies() as $family) {
-				if ($family->canShow()) {
-					foreach ($family->getFacts() as $fact) {
-						$facts[] = $fact;
-					}
-				}
-			}
-			$this->facts = [];
-			foreach ($facts as $fact) {
-				if (preg_match('/(?:^1|\n\d) OBJE @' . WT_REGEX_XREF . '@/', $fact->getGedcom())) {
-					$this->facts[] = $fact;
-				}
-			}
-			Functions::sortFacts($this->facts);
-		}
+    /**
+     * Get all the facts for an individual which contain media objects.
+     *
+     * @param Individual $individual
+     *
+     * @return Fact[]
+     */
+    private function getFactsWithMedia(Individual $individual)
+    {
+        if ($this->facts === null) {
+            $facts = $individual->getFacts();
+            foreach ($individual->getSpouseFamilies() as $family) {
+                if ($family->canShow()) {
+                    foreach ($family->getFacts() as $fact) {
+                        $facts[] = $fact;
+                    }
+                }
+            }
+            $this->facts = [];
+            foreach ($facts as $fact) {
+                if (preg_match('/(?:^1|\n\d) OBJE @' . WT_REGEX_XREF . '@/', $fact->getGedcom())) {
+                    $this->facts[] = $fact;
+                }
+            }
+            Functions::sortFacts($this->facts);
+        }
 
-		return $this->facts;
-	}
+        return $this->facts;
+    }
 
-	/** {@inheritdoc} */
-	public function canLoadAjax() {
-		return false;
-	}
+    /** {@inheritdoc} */
+    public function canLoadAjax()
+    {
+        return false;
+    }
 }

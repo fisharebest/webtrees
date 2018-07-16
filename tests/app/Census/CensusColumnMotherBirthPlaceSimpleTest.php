@@ -21,50 +21,54 @@ use Mockery;
 /**
  * Test harness for the class CensusColumnMotherBirthPlaceSimple
  */
-class CensusColumnMotherBirthPlaceSimpleTest extends \PHPUnit\Framework\TestCase {
-	/**
-	 * Delete mock objects
-	 */
-	public function tearDown() {
-		Mockery::close();
-	}
+class CensusColumnMotherBirthPlaceSimpleTest extends \PHPUnit\Framework\TestCase
+{
+    /**
+     * Delete mock objects
+     */
+    public function tearDown()
+    {
+        Mockery::close();
+    }
 
-	/**
-	 * Get place mock.
-	 *
-	 * @param string $place Gedcom Place
-	 *
-	 * @return \Fisharebest\Webtrees\Place
-	 */
-	private function getPlaceMock($place) {
-		$placeParts = explode(', ', $place);
+    /**
+     * Get place mock.
+     *
+     * @param string $place Gedcom Place
+     *
+     * @return \Fisharebest\Webtrees\Place
+     */
+    private function getPlaceMock($place)
+    {
+        $placeParts = explode(', ', $place);
 
-		$placeMock = Mockery::mock('\Fisharebest\Webtrees\Place');
-		$placeMock->shouldReceive('getGedcomName')->andReturn($place);
-		$placeMock->shouldReceive('lastPart')->andReturn(end($placeParts));
+        $placeMock = Mockery::mock('\Fisharebest\Webtrees\Place');
+        $placeMock->shouldReceive('getGedcomName')->andReturn($place);
+        $placeMock->shouldReceive('lastPart')->andReturn(end($placeParts));
 
-		return $placeMock;
-	}
+        return $placeMock;
+    }
 
-	/**
-	 * @covers \Fisharebest\Webtrees\Census\CensusColumnMotherBirthPlaceSimple
-	 * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-	 */
-	public function testKnownStateAndTown() {
-		$father = Mockery::mock('Fisharebest\Webtrees\Individual');
-		$father->shouldReceive('getBirthPlace')->andReturn($this->getPlaceMock('Miami, Florida, United States'));
+    /**
+     * @covers \Fisharebest\Webtrees\Census\CensusColumnMotherBirthPlaceSimple
+     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
+     */
+    public function testKnownStateAndTown()
+    {
+        $father = Mockery::mock('Fisharebest\Webtrees\Individual');
+        $father->shouldReceive('getBirthPlace')->andReturn($this->getPlaceMock('Miami, Florida, United States'));
 
-		$family = Mockery::mock('Fisharebest\Webtrees\Family');
-		$family->shouldReceive('getWife')->andReturn($father);
+        $family = Mockery::mock('Fisharebest\Webtrees\Family');
+        $family->shouldReceive('getWife')->andReturn($father);
 
-		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
-		$individual->shouldReceive('getPrimaryChildFamily')->andReturn($family);
+        $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
+        $individual->shouldReceive('getPrimaryChildFamily')->andReturn($family);
 
-		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
-		$census->shouldReceive('censusPlace')->andReturn('United States');
+        $census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
+        $census->shouldReceive('censusPlace')->andReturn('United States');
 
-		$column = new CensusColumnMotherBirthPlaceSimple($census, '', '');
+        $column = new CensusColumnMotherBirthPlaceSimple($census, '', '');
 
-		$this->assertSame('Florida', $column->generate($individual));
-	}
+        $this->assertSame('Florida', $column->generate($individual));
+    }
 }

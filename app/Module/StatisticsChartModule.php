@@ -23,60 +23,68 @@ use Fisharebest\Webtrees\Menu;
 /**
  * Class StatisticsChartModule
  */
-class StatisticsChartModule extends AbstractModule implements ModuleChartInterface {
-	/**
-	 * How should this module be labelled on tabs, menus, etc.?
-	 *
-	 * @return string
-	 */
-	public function getTitle() {
-		return /* I18N: Name of a module/chart */ I18N::translate('Statistics');
-	}
+class StatisticsChartModule extends AbstractModule implements ModuleChartInterface
+{
+    /**
+     * How should this module be labelled on tabs, menus, etc.?
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return /* I18N: Name of a module/chart */
+            I18N::translate('Statistics');
+    }
 
-	/**
-	 * A sentence describing what this module does.
-	 *
-	 * @return string
-	 */
-	public function getDescription() {
-		return /* I18N: Description of the “StatisticsChart” module */ I18N::translate('Various statistics charts.');
-	}
+    /**
+     * A sentence describing what this module does.
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return /* I18N: Description of the “StatisticsChart” module */
+            I18N::translate('Various statistics charts.');
+    }
 
-	/**
-	 * What is the default access level for this module?
-	 *
-	 * Some modules are aimed at admins or managers, and are not generally shown to users.
-	 *
-	 * @return int
-	 */
-	public function defaultAccessLevel() {
-		return Auth::PRIV_PRIVATE;
-	}
+    /**
+     * What is the default access level for this module?
+     *
+     * Some modules are aimed at admins or managers, and are not generally shown to users.
+     *
+     * @return int
+     */
+    public function defaultAccessLevel()
+    {
+        return Auth::PRIV_PRIVATE;
+    }
 
-	/**
-	 * Return a menu item for this chart.
-	 *
-	 * @param Individual $individual
-	 *
-	 * @return Menu|null
-	 */
-	public function getChartMenu(Individual $individual) {
-		return new Menu(
-			$this->getTitle(),
-			route('statistics', ['ged' => $individual->getTree()->getName()]),
-			'menu-chart-statistics',
-			['rel' => 'nofollow']
-		);
-	}
+    /**
+     * Return a menu item for this chart.
+     *
+     * @param Individual $individual
+     *
+     * @return Menu|null
+     */
+    public function getChartMenu(Individual $individual)
+    {
+        return new Menu(
+            $this->getTitle(),
+            route('statistics', ['ged' => $individual->getTree()->getName()]),
+            'menu-chart-statistics',
+            ['rel' => 'nofollow']
+        );
+    }
 
-	/**
-	 * Return a menu item for this chart - for use in individual boxes.
-	 *
-	 * @param Individual $individual
-	 *
-	 * @return Menu|null
-	 */
-	public function getBoxChartMenu(Individual $individual) {
-		return null;
-	}
+    /**
+     * Return a menu item for this chart - for use in individual boxes.
+     *
+     * @param Individual $individual
+     *
+     * @return Menu|null
+     */
+    public function getBoxChartMenu(Individual $individual)
+    {
+        return null;
+    }
 }

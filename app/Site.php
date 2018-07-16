@@ -18,57 +18,60 @@ namespace Fisharebest\Webtrees;
 /**
  * Provide an interface to the wt_site_setting table.
  */
-class Site {
-	/**
-	 * Everything from the wt_site_setting table.
-	 *
-	 * @var array
-	 */
-	private static $preferences = [];
+class Site
+{
+    /**
+     * Everything from the wt_site_setting table.
+     *
+     * @var array
+     */
+    private static $preferences = [];
 
-	/**
-	 * Get the site’s configuration settings
-	 *
-	 * @param string $setting_name
-	 * @param string $default
-	 *
-	 * @return string
-	 */
-	public static function getPreference($setting_name, $default = '') {
-		// There are lots of settings, and we need to fetch lots of them on every page
-		// so it is quicker to fetch them all in one go.
-		if (empty(self::$preferences)) {
-			self::$preferences = Database::prepare(
-				"SELECT setting_name, setting_value FROM `##site_setting`"
-			)->fetchAssoc();
-		}
+    /**
+     * Get the site’s configuration settings
+     *
+     * @param string $setting_name
+     * @param string $default
+     *
+     * @return string
+     */
+    public static function getPreference($setting_name, $default = '')
+    {
+        // There are lots of settings, and we need to fetch lots of them on every page
+        // so it is quicker to fetch them all in one go.
+        if (empty(self::$preferences)) {
+            self::$preferences = Database::prepare(
+                "SELECT setting_name, setting_value FROM `##site_setting`"
+            )->fetchAssoc();
+        }
 
-		if (!array_key_exists($setting_name, self::$preferences)) {
-			self::$preferences[$setting_name] = $default;
-		}
+        if (!array_key_exists($setting_name, self::$preferences)) {
+            self::$preferences[$setting_name] = $default;
+        }
 
-		return self::$preferences[$setting_name];
-	}
+        return self::$preferences[$setting_name];
+    }
 
-	/**
-	 * Set the site’s configuration settings.
-	 *
-	 * @param string $setting_name
-	 * @param string $setting_value
-	 */
-	public static function setPreference($setting_name, $setting_value) {
-		if (self::getPreference($setting_name) !== $setting_value) {
-			Database::prepare(
-				"REPLACE INTO `##site_setting` (setting_name, setting_value)" .
-				" VALUES (:setting_name, LEFT(:setting_value, 2000))"
-			)->execute([
-				'setting_name'  => $setting_name,
-				'setting_value' => $setting_value,
-			]);
+    /**
+     * Set the site’s configuration settings.
+     *
+     * @param string $setting_name
+     * @param string $setting_value
+     */
+    public static function setPreference($setting_name, $setting_value)
+    {
+        if (self::getPreference($setting_name) !== $setting_value) {
+            Database::prepare(
+                "REPLACE INTO `##site_setting` (setting_name, setting_value)" .
+                " VALUES (:setting_name, LEFT(:setting_value, 2000))"
+            )->execute([
+                'setting_name'  => $setting_name,
+                'setting_value' => $setting_value,
+            ]);
 
-			self::$preferences[$setting_name] = $setting_value;
+            self::$preferences[$setting_name] = $setting_value;
 
-			Log::addConfigurationLog('Site preference "' . $setting_name . '" set to "' . $setting_value . '"', null);
-		}
-	}
+            Log::addConfigurationLog('Site preference "' . $setting_name . '" set to "' . $setting_value . '"', null);
+        }
+    }
 }

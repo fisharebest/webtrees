@@ -21,19 +21,21 @@ use Fisharebest\Webtrees\Schema\MigrationInterface;
 /**
  * Upgrade the database schema from version 0 (empty database) to version 1.
  */
-class Migration0 implements MigrationInterface {
-	/** {@inheritDoc} */
-	public function upgrade() {
-		Database::exec(
-			"CREATE TABLE IF NOT EXISTS `##news` (" .
-			" n_id       INTEGER AUTO_INCREMENT NOT NULL," .
-			" n_username VARCHAR(100)           NOT NULL," .
-			" n_date     INTEGER                NOT NULL," .
-			" n_title    VARCHAR(255)           NOT NULL," .
-			" n_text     TEXT                   NOT NULL," .
-			" PRIMARY KEY     (n_id)," .
-			"         KEY ix1 (n_username)" .
-			") COLLATE utf8_unicode_ci ENGINE=InnoDB"
-		);
-	}
+class Migration0 implements MigrationInterface
+{
+    /** {@inheritDoc} */
+    public function upgrade()
+    {
+        Database::exec(
+            "CREATE TABLE IF NOT EXISTS `##news` (" .
+            " n_id       INTEGER AUTO_INCREMENT NOT NULL," .
+            " n_username VARCHAR(100)           NOT NULL," .
+            " n_date     INTEGER                NOT NULL," .
+            " n_title    VARCHAR(255)           NOT NULL," .
+            " n_text     TEXT                   NOT NULL," .
+            " PRIMARY KEY     (n_id)," .
+            "         KEY ix1 (n_username)" .
+            ") COLLATE utf8_unicode_ci ENGINE=InnoDB"
+        );
+    }
 }

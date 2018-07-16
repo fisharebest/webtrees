@@ -18,60 +18,65 @@ namespace Fisharebest\Webtrees;
 /**
  * Class Html - Add HTML markup to elements consistently.
  */
-class Html {
-	/**
-	 * Escape a string for inclusion within HTML.
-	 *
-	 * @param $string
-	 *
-	 * @return string
-	 */
-	public static function escape($string) {
-		return htmlspecialchars($string, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
-	}
+class Html
+{
+    /**
+     * Escape a string for inclusion within HTML.
+     *
+     * @param $string
+     *
+     * @return string
+     */
+    public static function escape($string)
+    {
+        return htmlspecialchars($string, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
+    }
 
-	/**
-	 * Convert an array of HTML attributes to an HTML string.
-	 *
-	 * @param array $attributes
-	 *
-	 * @return string
-	 */
-	public static function attributes(array $attributes) {
-		$html = [];
-		foreach ($attributes as $key => $value) {
-			if (is_string($value) || is_integer($value)) {
-				$html[] = self::escape($key) . '="' . self::escape($value) . '"';
-			} elseif ($value !== false) {
-				$html[] = self::escape($key);
-			}
-		}
+    /**
+     * Convert an array of HTML attributes to an HTML string.
+     *
+     * @param array $attributes
+     *
+     * @return string
+     */
+    public static function attributes(array $attributes)
+    {
+        $html = [];
+        foreach ($attributes as $key => $value) {
+            if (is_string($value) || is_integer($value)) {
+                $html[] = self::escape($key) . '="' . self::escape($value) . '"';
+            } elseif ($value !== false) {
+                $html[] = self::escape($key);
+            }
+        }
 
-		return implode(' ', $html);
-	}
+        return implode(' ', $html);
+    }
 
-	/**
-	 * Encode a URL.
-	 *
-	 * @param string $path
-	 * @param array  $data
-	 *
-	 * @return string
-	 */
-	public static function url($path, array $data) {
-		$path = strtr($path, ' ', '%20');
+    /**
+     * Encode a URL.
+     *
+     * @param string $path
+     * @param array  $data
+     *
+     * @return string
+     */
+    public static function url($path, array $data)
+    {
+        $path = strtr($path, ' ', '%20');
 
-		return $path . '?' . http_build_query($data, '', '&', PHP_QUERY_RFC3986);
-	}
+        return $path . '?' . http_build_query($data, '', '&', PHP_QUERY_RFC3986);
+    }
 
-	/**
-	 * Filenames are (almost?) always LTR, even on RTL systems.
-	 *
-	 * @param string $filename
-	 *
-	 * @return string
-	 */
-	public static function filename($filename) {
-		return '<samp class="filename" dir="ltr">' . self::escape($filename) . '</samp>';
-	}
+    /**
+     * Filenames are (almost?) always LTR, even on RTL systems.
+     *
+     * @param string $filename
+     *
+     * @return string
+     */
+    public static function filename($filename)
+    {
+        return '<samp class="filename" dir="ltr">' . self::escape($filename) . '</samp>';
+    }
 }

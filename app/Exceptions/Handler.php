@@ -28,38 +28,40 @@ use Whoops\Run;
 /**
  * Convert an exception into an HTTP response
  */
-class Handler {
-	/**
-	 * Render an exception into an HTTP response.
-	 *
-	 * @param  Request   $request
-	 * @param  Exception $exception
-	 *
-	 * @return Response
-	 */
-	public function render(Request $request, Exception $exception): Response {
-		if ($exception instanceof HttpException) {
-			// Show a friendly page for expected exceptions.
-			if ($request->isXmlHttpRequest()) {
-				$response = new Response($exception->getMessage(), $exception->getStatusCode());
-			} else {
-				$controller = new ErrorController;
-				$response   = $controller->errorResponse($exception);
-			}
-		} else {
-			// Show an error page for unexpected exceptions.
-			if (getenv('DEBUG')) {
-				// Local dev environment?  Show full debug.
-				$whoops = new Run;
-				$whoops->pushHandler(new PrettyPageHandler);
-				$whoops->handleException($exception);
-			} else {
-				// Running remotely?  Show a friendly error page.
-				$controller = new ErrorController;
-				$response   = $controller->unhandledExceptionResponse($request, $exception);
-			}
-		}
+class Handler
+{
+    /**
+     * Render an exception into an HTTP response.
+     *
+     * @param  Request   $request
+     * @param  Exception $exception
+     *
+     * @return Response
+     */
+    public function render(Request $request, Exception $exception): Response
+    {
+        if ($exception instanceof HttpException) {
+            // Show a friendly page for expected exceptions.
+            if ($request->isXmlHttpRequest()) {
+                $response = new Response($exception->getMessage(), $exception->getStatusCode());
+            } else {
+                $controller = new ErrorController;
+                $response   = $controller->errorResponse($exception);
+            }
+        } else {
+            // Show an error page for unexpected exceptions.
+            if (getenv('DEBUG')) {
+                // Local dev environment?  Show full debug.
+                $whoops = new Run;
+                $whoops->pushHandler(new PrettyPageHandler);
+                $whoops->handleException($exception);
+            } else {
+                // Running remotely?  Show a friendly error page.
+                $controller = new ErrorController;
+                $response   = $controller->unhandledExceptionResponse($request, $exception);
+            }
+        }
 
-		return $response;
-	}
+        return $response;
+    }
 }

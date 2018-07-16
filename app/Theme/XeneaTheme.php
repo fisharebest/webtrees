@@ -20,75 +20,81 @@ use Fisharebest\Webtrees\I18N;
 /**
  * The xenea theme.
  */
-class XeneaTheme extends AbstractTheme implements ThemeInterface {
-	/**
-	 * Where are our CSS, JS and other assets?
-	 */
-	const THEME_DIR  = 'xenea';
-	const ASSET_DIR  = 'themes/' . self::THEME_DIR . '/css-2.0.0/';
-	const STYLESHEET = self::ASSET_DIR . 'style.css';
+class XeneaTheme extends AbstractTheme implements ThemeInterface
+{
+    /**
+     * Where are our CSS, JS and other assets?
+     */
+    const THEME_DIR  = 'xenea';
+    const ASSET_DIR  = 'themes/' . self::THEME_DIR . '/css-2.0.0/';
+    const STYLESHEET = self::ASSET_DIR . 'style.css';
 
-	/**
-	 * Allow themes to add extra scripts to the page footer.
-	 *
-	 * @return string
-	 */
-	public function hookFooterExtraJavascript() {
-		return
-			'<script>' .
-			'activate_colorbox();' .
-			'jQuery.extend(jQuery.colorbox.settings, {' .
-			' width: "85%",' .
-			' height: "85%",' .
-			' transition: "none",' .
-			' slideshowStart: "' . I18N::translate('Play') . '",' .
-			' slideshowStop: "' . I18N::translate('Stop') . '",' .
-			' title: function() { return this.dataset.title; }' .
-			'});' .
-			'</script>';
-	}
+    /**
+     * Allow themes to add extra scripts to the page footer.
+     *
+     * @return string
+     */
+    public function hookFooterExtraJavascript()
+    {
+        return
+            '<script>' .
+            'activate_colorbox();' .
+            'jQuery.extend(jQuery.colorbox.settings, {' .
+            ' width: "85%",' .
+            ' height: "85%",' .
+            ' transition: "none",' .
+            ' slideshowStart: "' . I18N::translate('Play') . '",' .
+            ' slideshowStop: "' . I18N::translate('Stop') . '",' .
+            ' title: function() { return this.dataset.title; }' .
+            '});' .
+            '</script>';
+    }
 
-	/**
-	 * Misecellaneous dimensions, fonts, styles, etc.
-	 *
-	 * @param string $parameter_name
-	 *
-	 * @return string|int|float
-	 */
-	public function parameter($parameter_name) {
-		$parameters = [
-			'chart-background-f'             => 'e9daf1',
-			'chart-background-m'             => 'b1cff0',
-			'chart-box-x'                    => 260,
-			'chart-box-y'                    => 85,
-			'distribution-chart-high-values' => '84beff',
-			'distribution-chart-low-values'  => 'c3dfff',
-		];
+    /**
+     * Misecellaneous dimensions, fonts, styles, etc.
+     *
+     * @param string $parameter_name
+     *
+     * @return string|int|float
+     */
+    public function parameter($parameter_name)
+    {
+        $parameters = [
+            'chart-background-f'             => 'e9daf1',
+            'chart-background-m'             => 'b1cff0',
+            'chart-box-x'                    => 260,
+            'chart-box-y'                    => 85,
+            'distribution-chart-high-values' => '84beff',
+            'distribution-chart-low-values'  => 'c3dfff',
+        ];
 
-		if (array_key_exists($parameter_name, $parameters)) {
-			return $parameters[$parameter_name];
-		} else {
-			return parent::parameter($parameter_name);
-		}
-	}
+        if (array_key_exists($parameter_name, $parameters)) {
+            return $parameters[$parameter_name];
+        } else {
+            return parent::parameter($parameter_name);
+        }
+    }
 
-	/**
-	 * A list of CSS files to include for this page.
-	 *
-	 * @return string[]
-	 */
-	public function stylesheets() {
-		return array_merge(parent::stylesheets(), [
-			self::STYLESHEET,
-		]);
-	}
+    /**
+     * A list of CSS files to include for this page.
+     *
+     * @return string[]
+     */
+    public function stylesheets()
+    {
+        return array_merge(parent::stylesheets(), [
+            self::STYLESHEET,
+        ]);
+    }
 
-	/**
-	 * What is this theme called?
-	 *
-	 * @return string
-	 */
-	public function themeName() {
-		return /* I18N: Name of a theme. */ I18N::translate('xenea');
-	}
+    /**
+     * What is this theme called?
+     *
+     * @return string
+     */
+    public function themeName()
+    {
+        return /* I18N: Name of a theme. */
+            I18N::translate('xenea');
+    }
 }

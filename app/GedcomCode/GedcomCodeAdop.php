@@ -22,72 +22,79 @@ use Fisharebest\Webtrees\Individual;
 /**
  * Class GedcomCodeAdop - Functions and logic for GEDCOM "ADOP" codes
  */
-class GedcomCodeAdop {
-	/** @var string[] A list of possible adoption codes */
-	private static $TYPES = ['BOTH', 'HUSB', 'WIFE'];
+class GedcomCodeAdop
+{
+    /** @var string[] A list of possible adoption codes */
+    private static $TYPES = [
+        'BOTH',
+        'HUSB',
+        'WIFE',
+    ];
 
-	/**
-	 * Translate a code, for an (optional) record
-	 *
-	 * @param string               $type
-	 * @param GedcomRecord|null $record
-	 *
-	 * @return string
-	 */
-	public static function getValue($type, GedcomRecord $record = null) {
-		if ($record instanceof Individual) {
-			$sex = $record->getSex();
-		} else {
-			$sex = 'U';
-		}
+    /**
+     * Translate a code, for an (optional) record
+     *
+     * @param string $type
+     * @param GedcomRecord|null $record
+     *
+     * @return string
+     */
+    public static function getValue($type, GedcomRecord $record = null)
+    {
+        if ($record instanceof Individual) {
+            $sex = $record->getSex();
+        } else {
+            $sex = 'U';
+        }
 
-		switch ($type) {
-			case 'BOTH':
-				switch ($sex) {
-					case 'M':
-						return I18N::translateContext('MALE', 'Adopted by both parents');
-					case 'F':
-						return I18N::translateContext('FEMALE', 'Adopted by both parents');
-					default:
-						return I18N::translate('Adopted by both parents');
-				}
-			case 'HUSB':
-				switch ($sex) {
-					case 'M':
-						return I18N::translateContext('MALE', 'Adopted by father');
-					case 'F':
-						return I18N::translateContext('FEMALE', 'Adopted by father');
-					default:
-						return I18N::translate('Adopted by father');
-				}
-			case 'WIFE':
-				switch ($sex) {
-					case 'M':
-						return I18N::translateContext('MALE', 'Adopted by mother');
-					case 'F':
-						return I18N::translateContext('FEMALE', 'Adopted by mother');
-					default:
-						return I18N::translate('Adopted by mother');
-				}
-			default:
-				return $type;
-		}
-	}
+        switch ($type) {
+            case 'BOTH':
+                switch ($sex) {
+                    case 'M':
+                        return I18N::translateContext('MALE', 'Adopted by both parents');
+                    case 'F':
+                        return I18N::translateContext('FEMALE', 'Adopted by both parents');
+                    default:
+                        return I18N::translate('Adopted by both parents');
+                }
+            case 'HUSB':
+                switch ($sex) {
+                    case 'M':
+                        return I18N::translateContext('MALE', 'Adopted by father');
+                    case 'F':
+                        return I18N::translateContext('FEMALE', 'Adopted by father');
+                    default:
+                        return I18N::translate('Adopted by father');
+                }
+            case 'WIFE':
+                switch ($sex) {
+                    case 'M':
+                        return I18N::translateContext('MALE', 'Adopted by mother');
+                    case 'F':
+                        return I18N::translateContext('FEMALE', 'Adopted by mother');
+                    default:
+                        return I18N::translate('Adopted by mother');
+                }
+            default:
+                return $type;
+        }
+    }
 
-	/**
-	 * A list of all possible values for PEDI
-	 *
-	 * @param GedcomRecord|null $record
-	 *
-	 * @return string[]
-	 */
-	public static function getValues(GedcomRecord $record = null) {
-		$values = [];
-		foreach (self::$TYPES as $type) {
-			$values[$type] = self::getValue($type, $record);
-		}
+    /**
+     * A list of all possible values for PEDI
+     *
+     * @param GedcomRecord|null $record
+     *
+     * @return string[]
+     */
+    public static function getValues(GedcomRecord $record = null)
+    {
+        $values = [];
+        foreach (self::$TYPES as $type) {
+            $values[$type] = self::getValue($type, $record);
+        }
 
-		// Don't sort these. We want the order: both parents, father, mother
-		return $values;
-	}
+        // Don't sort these. We want the order: both parents, father, mother
+        return $values;
+    }
 }

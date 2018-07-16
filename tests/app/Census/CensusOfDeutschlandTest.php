@@ -19,33 +19,36 @@ namespace Fisharebest\Webtrees\Census;
 /**
  * Test harness for the class CensusOfDeutschland
  */
-class CensusOfDeutschlandTest extends \PHPUnit\Framework\TestCase {
-	/**
-	 * Test the census place
-	 *
-	 * @covers \Fisharebest\Webtrees\Census\CensusOfDeutschland
-	 */
-	public function testPlace() {
-		$census = new CensusOfDeutschland;
+class CensusOfDeutschlandTest extends \PHPUnit\Framework\TestCase
+{
+    /**
+     * Test the census place
+     *
+     * @covers \Fisharebest\Webtrees\Census\CensusOfDeutschland
+     */
+    public function testPlace()
+    {
+        $census = new CensusOfDeutschland;
 
-		$this->assertSame('Deutschland', $census->censusPlace());
-	}
+        $this->assertSame('Deutschland', $census->censusPlace());
+    }
 
-	/**
-	 * Test the census dates
-	 *
-	 * @covers \Fisharebest\Webtrees\Census\CensusOfDeutschland
-	 */
-	public function testAllDates() {
-		$census = new CensusOfDeutschland;
+    /**
+     * Test the census dates
+     *
+     * @covers \Fisharebest\Webtrees\Census\CensusOfDeutschland
+     */
+    public function testAllDates()
+    {
+        $census = new CensusOfDeutschland;
 
-		$census_dates = $census->allCensusDates();
+        $census_dates = $census->allCensusDates();
 
-		$this->assertCount(5, $census_dates);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfDeutschland1819', $census_dates[0]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfDeutschland1867', $census_dates[1]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfDeutschlandNL1867', $census_dates[2]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfDeutschland1900', $census_dates[3]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfDeutschland1919', $census_dates[4]);
-	}
+        $this->assertCount(5, $census_dates);
+        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfDeutschland1819', $census_dates[0]);
+        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfDeutschland1867', $census_dates[1]);
+        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfDeutschlandNL1867', $census_dates[2]);
+        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfDeutschland1900', $census_dates[3]);
+        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfDeutschland1919', $census_dates[4]);
+    }
 }

@@ -18,119 +18,131 @@ namespace Fisharebest\Webtrees\Report;
 /**
  * Class ReportBaseFootnote
  */
-class ReportBaseFootnote extends ReportBaseElement {
-	/**
-	 * The name of the style for this element
-	 *
-	 * @var string
-	 */
-	public $styleName = '';
+class ReportBaseFootnote extends ReportBaseElement
+{
+    /**
+     * The name of the style for this element
+     *
+     * @var string
+     */
+    public $styleName = '';
 
-	/**
-	 * Numbers for the links
-	 *
-	 * @var int
-	 */
-	public $num;
+    /**
+     * Numbers for the links
+     *
+     * @var int
+     */
+    public $num;
 
-	/**
-	 * The text that will be printed with the number
-	 *
-	 * @var string
-	 */
-	public $numText = '';
+    /**
+     * The text that will be printed with the number
+     *
+     * @var string
+     */
+    public $numText = '';
 
-	/**
-	 * Remaining width of a cell
-	 *
-	 * @var float User unit (points)
-	 */
-	public $wrapWidthRemaining;
+    /**
+     * Remaining width of a cell
+     *
+     * @var float User unit (points)
+     */
+    public $wrapWidthRemaining;
 
-	/**
-	 * Original width of a cell
-	 *
-	 * @var float User unit (points)
-	 */
-	public $wrapWidthCell;
+    /**
+     * Original width of a cell
+     *
+     * @var float User unit (points)
+     */
+    public $wrapWidthCell;
 
-	/** @var string A link */
-	public $addlink;
+    /** @var string A link */
+    public $addlink;
 
-	/**
-	 * Createa an element.
-	 *
-	 * @param string $style
-	 */
-	public function __construct($style = '') {
-		$this->text = '';
-		if (!empty($style)) {
-			$this->styleName = $style;
-		} else {
-			$this->styleName = 'footnote';
-		}
-	}
+    /**
+     * Createa an element.
+     *
+     * @param string $style
+     */
+    public function __construct($style = '')
+    {
+        $this->text = '';
+        if (!empty($style)) {
+            $this->styleName = $style;
+        } else {
+            $this->styleName = 'footnote';
+        }
+    }
 
-	/**
-	 * Add text.
-	 *
-	 * @param $t
-	 *
-	 * @return int
-	 */
-	public function addText($t) {
-		$t = trim($t, "\r\n\t");
-		$t = str_replace(['<br>', '&nbsp;'], ["\n", ' '], $t);
-		$t = strip_tags($t);
-		$t = htmlspecialchars_decode($t);
-		$this->text .= $t;
+    /**
+     * Add text.
+     *
+     * @param $t
+     *
+     * @return int
+     */
+    public function addText($t)
+    {
+        $t          = trim($t, "\r\n\t");
+        $t          = str_replace([
+            '<br>',
+            '&nbsp;',
+        ], [
+            "\n",
+            ' ',
+        ], $t);
+        $t          = strip_tags($t);
+        $t          = htmlspecialchars_decode($t);
+        $this->text .= $t;
 
-		return 0;
-	}
+        return 0;
+    }
 
-	/**
-	 * Set the width to wrap text.
-	 *
-	 * @param $wrapwidth
-	 * @param $cellwidth
-	 *
-	 * @return mixed
-	 */
-	public function setWrapWidth($wrapwidth, $cellwidth) {
-		$this->wrapWidthCell = $cellwidth;
-		if (strpos($this->numText, "\n") !== false) {
-			$this->wrapWidthRemaining = $cellwidth;
-		} else {
-			$this->wrapWidthRemaining = $wrapwidth;
-		}
+    /**
+     * Set the width to wrap text.
+     *
+     * @param $wrapwidth
+     * @param $cellwidth
+     *
+     * @return mixed
+     */
+    public function setWrapWidth($wrapwidth, $cellwidth)
+    {
+        $this->wrapWidthCell = $cellwidth;
+        if (strpos($this->numText, "\n") !== false) {
+            $this->wrapWidthRemaining = $cellwidth;
+        } else {
+            $this->wrapWidthRemaining = $wrapwidth;
+        }
 
-		return $this->wrapWidthRemaining;
-	}
+        return $this->wrapWidthRemaining;
+    }
 
-	/**
-	 * Set the number.
-	 *
-	 * @param $n
-	 *
-	 * @return int
-	 */
-	public function setNum($n) {
-		$this->num     = $n;
-		$this->numText = "$n ";
+    /**
+     * Set the number.
+     *
+     * @param $n
+     *
+     * @return int
+     */
+    public function setNum($n)
+    {
+        $this->num     = $n;
+        $this->numText = "$n ";
 
-		return 0;
-	}
+        return 0;
+    }
 
-	/**
-	 * Add a link.
-	 *
-	 * @param $a
-	 *
-	 * @return int
-	 */
-	public function setAddlink($a) {
-		$this->addlink = $a;
+    /**
+     * Add a link.
+     *
+     * @param $a
+     *
+     * @return int
+     */
+    public function setAddlink($a)
+    {
+        $this->addlink = $a;
 
-		return 0;
-	}
+        return 0;
+    }
 }

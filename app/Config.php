@@ -19,179 +19,422 @@ namespace Fisharebest\Webtrees;
  * Application configuration data. Data here has no GUI to edit it,
  * although most of it can be altered to customise local installations.
  */
-class Config {
-	/**
-	 * NPFX tags - name prefixes
-	 *
-	 * @return string[]
-	 */
-	public static function namePrefixes() {
-		return [
-			'Adm', 'Amb', 'Brig', 'Can', 'Capt', 'Chan', 'Chapln', 'Cmdr', 'Col', 'Cpl',
-			'Cpt', 'Dr', 'Gen', 'Gov', 'Hon', 'Lady', 'Lt', 'Mr', 'Mrs', 'Ms', 'Msgr',
-			'Pfc', 'Pres', 'Prof', 'Pvt', 'Rabbi', 'Rep', 'Rev', 'Sen', 'Sgt', 'Sir',
-			'Sr', 'Sra', 'Srta', 'Ven',
-		];
-	}
+class Config
+{
+    /**
+     * NPFX tags - name prefixes
+     *
+     * @return string[]
+     */
+    public static function namePrefixes()
+    {
+        return [
+            'Adm',
+            'Amb',
+            'Brig',
+            'Can',
+            'Capt',
+            'Chan',
+            'Chapln',
+            'Cmdr',
+            'Col',
+            'Cpl',
+            'Cpt',
+            'Dr',
+            'Gen',
+            'Gov',
+            'Hon',
+            'Lady',
+            'Lt',
+            'Mr',
+            'Mrs',
+            'Ms',
+            'Msgr',
+            'Pfc',
+            'Pres',
+            'Prof',
+            'Pvt',
+            'Rabbi',
+            'Rep',
+            'Rev',
+            'Sen',
+            'Sgt',
+            'Sir',
+            'Sr',
+            'Sra',
+            'Srta',
+            'Ven',
+        ];
+    }
 
-	/**
-	 * FILE:FORM tags - file formats
-	 *
-	 * @return string[]
-	 */
-	public static function fileFormats() {
-		return [
-			'avi', 'bmp', 'gif', 'jpeg', 'mp3', 'ole', 'pcx', 'png', 'tiff', 'wav',
-		];
-	}
+    /**
+     * FILE:FORM tags - file formats
+     *
+     * @return string[]
+     */
+    public static function fileFormats()
+    {
+        return [
+            'avi',
+            'bmp',
+            'gif',
+            'jpeg',
+            'mp3',
+            'ole',
+            'pcx',
+            'png',
+            'tiff',
+            'wav',
+        ];
+    }
 
-	/**
-	 * Facts and events that don't normally have a value
-	 *
-	 * return string[]
-	 */
-	public static function emptyFacts() {
-		return [
-			'ADOP', 'ANUL', 'BAPL', 'BAPM', 'BARM', 'BASM', 'BIRT', 'BLES', 'BURI',
-			'CENS', 'CHAN', 'CHR', 'CHRA', 'CONF', 'CONL', 'CREM', 'DATA', 'DEAT',
-			'DIV', 'DIVF', 'EMIG', 'ENDL', 'ENGA', 'FCOM', 'GRAD', 'HUSB', 'IMMI',
-			'MAP', 'MARB', 'MARC', 'MARL', 'MARR', 'MARS', 'NATU', 'ORDN', 'PROB',
-			'RESI', 'RETI', 'SLGC', 'SLGS', 'WIFE', 'WILL', '_HOL', '_NMR', '_NMAR',
-			'_SEPR',
-		];
-	}
+    /**
+     * Facts and events that don't normally have a value
+     *
+     * return string[]
+     */
+    public static function emptyFacts()
+    {
+        return [
+            'ADOP',
+            'ANUL',
+            'BAPL',
+            'BAPM',
+            'BARM',
+            'BASM',
+            'BIRT',
+            'BLES',
+            'BURI',
+            'CENS',
+            'CHAN',
+            'CHR',
+            'CHRA',
+            'CONF',
+            'CONL',
+            'CREM',
+            'DATA',
+            'DEAT',
+            'DIV',
+            'DIVF',
+            'EMIG',
+            'ENDL',
+            'ENGA',
+            'FCOM',
+            'GRAD',
+            'HUSB',
+            'IMMI',
+            'MAP',
+            'MARB',
+            'MARC',
+            'MARL',
+            'MARR',
+            'MARS',
+            'NATU',
+            'ORDN',
+            'PROB',
+            'RESI',
+            'RETI',
+            'SLGC',
+            'SLGS',
+            'WIFE',
+            'WILL',
+            '_HOL',
+            '_NMR',
+            '_NMAR',
+            '_SEPR',
+        ];
+    }
 
-	/**
-	 * Tags that don't require a PLAC subtag
-	 *
-	 * @return string[]
-	 */
-	public static function nonPlaceFacts() {
-		return [
-			'ENDL', 'NCHI', 'REFN', 'SLGC', 'SLGS',
-		];
-	}
+    /**
+     * Tags that don't require a PLAC subtag
+     *
+     * @return string[]
+     */
+    public static function nonPlaceFacts()
+    {
+        return [
+            'ENDL',
+            'NCHI',
+            'REFN',
+            'SLGC',
+            'SLGS',
+        ];
+    }
 
-	/**
-	 * Tags that don't require a DATE subtag
-	 *
-	 * @return string[]
-	 */
-	public static function nonDateFacts() {
-		return [
-			'ABBR', 'ADDR', 'AFN', 'ALIA', 'AUTH', 'CHIL', 'EMAIL', 'FAX', 'FILE',
-			'HUSB', 'NAME', 'NCHI', 'NOTE', 'OBJE', 'PHON', 'PUBL', 'REFN', 'REPO',
-			'RESN', 'SEX', 'SOUR', 'SSN', 'TEXT', 'WIFE', 'WWW', '_EMAIL',
-		];
-	}
+    /**
+     * Tags that don't require a DATE subtag
+     *
+     * @return string[]
+     */
+    public static function nonDateFacts()
+    {
+        return [
+            'ABBR',
+            'ADDR',
+            'AFN',
+            'ALIA',
+            'AUTH',
+            'CHIL',
+            'EMAIL',
+            'FAX',
+            'FILE',
+            'HUSB',
+            'NAME',
+            'NCHI',
+            'NOTE',
+            'OBJE',
+            'PHON',
+            'PUBL',
+            'REFN',
+            'REPO',
+            'RESN',
+            'SEX',
+            'SOUR',
+            'SSN',
+            'TEXT',
+            'WIFE',
+            'WWW',
+            '_EMAIL',
+        ];
+    }
 
-	/**
-	 * Tags that require a DATE:TIME as well as a DATE
-	 *
-	 * @return string[]
-	 */
-	public static function dateAndTime() {
-		return [
-			'BIRT', 'DEAT',
-		];
-	}
+    /**
+     * Tags that require a DATE:TIME as well as a DATE
+     *
+     * @return string[]
+     */
+    public static function dateAndTime()
+    {
+        return [
+            'BIRT',
+            'DEAT',
+        ];
+    }
 
-	/**
-	 * Level 2 tags that apply to specific Level 1 tags
-	 * Tags are applied in the order they appear here.
-	 *
-	 * @return string[][]
-	 */
-	public static function levelTwoTags() {
-		return [
-			'TYPE' => [
-				'EVEN', 'FACT', 'GRAD', 'IDNO', 'MARR', 'ORDN', 'SSN',
-			],
-			'AGNC' => [
-				'EDUC', 'GRAD', 'OCCU', 'ORDN', 'RETI',
-			],
-			'CALN' => [
-				'REPO',
-			],
-			'CEME' => [// CEME is NOT a valid 5.5.1 tag
-				//'BURI',
-			],
-			'RELA' => [
-				'ASSO', '_ASSO',
-			],
-			'DATE' => [
-				'ADOP', 'ANUL', 'BAPL', 'BAPM', 'BARM', 'BASM', 'BIRT', 'BLES', 'BURI',
-				'CENS', 'CENS', 'CHR', 'CHRA', 'CONF', 'CONL', 'CREM', 'DEAT', 'DIV', 'DIVF',
-				'DSCR', 'EDUC', 'EMIG', 'ENDL', 'ENGA', 'EVEN', 'FCOM', 'GRAD', 'IMMI',
-				'MARB', 'MARC', 'MARL', 'MARR', 'MARS', 'NATU', 'OCCU', 'ORDN', 'PROB',
-				'PROP', 'RELI', 'RESI', 'RETI', 'SLGC', 'SLGS', 'TITL', 'WILL', '_TODO',
-			],
-			'AGE' => [
-				'CENS', 'DEAT',
-			],
-			'TEMP' => [
-				'BAPL', 'CONL', 'ENDL', 'SLGC', 'SLGS',
-			],
-			'PLAC' => [
-				'ADOP', 'ANUL', 'BAPL', 'BAPM', 'BARM', 'BASM', 'BIRT', 'BLES', 'BURI',
-				'CENS', 'CHR', 'CHRA', 'CONF', 'CONL', 'CREM', 'DEAT', 'DIV', 'DIVF',
-				'EDUC', 'EMIG', 'ENDL', 'ENGA', 'EVEN', 'FCOM', 'GRAD', 'IMMI', 'MARB',
-				'MARC', 'MARL', 'MARR', 'MARS', 'NATU', 'OCCU', 'ORDN', 'PROB', 'PROP',
-				'RELI', 'RESI', 'RETI', 'SLGC', 'SLGS', 'SSN', 'TITL', 'WILL',
-			],
-			'STAT' => [
-				'BAPL', 'CONL', 'ENDL', 'SLGC', 'SLGS',
-			],
-			'ADDR' => [
-				'BAPM', 'BIRT', 'BURI', 'CENS', 'CHR', 'CHRA', 'CONF', 'CREM', 'DEAT',
-				'EDUC', 'EVEN', 'GRAD', 'MARR', 'OCCU', 'ORDN', 'PROP', 'RESI',
-			],
-			'CAUS' => [
-				'DEAT',
-			],
-			'PHON' => [
-				'OCCU', 'RESI',
-			],
-			'FAX' => [
-				'OCCU', 'RESI',
-			],
-			'WWW' => [
-				'OCCU', 'RESI',
-			],
-			'EMAIL' => [
-				'OCCU', 'RESI',
-			],
-			'HUSB' => [
-				'MARR',
-			],
-			'WIFE' => [
-				'MARR',
-			],
-			'FAMC' => [
-				'ADOP', 'SLGC',
-			],
-			'EVEN' => [
-				'DATA',
-			],
-			'_WT_USER' => [
-				'_TODO',
-			],
-			// See https://bugs.launchpad.net/webtrees/+bug/1082666
-			'RELI' => [
-				'CHR', 'CHRA', 'BAPM', 'MARR', 'BURI',
-			],
-		];
-	}
+    /**
+     * Level 2 tags that apply to specific Level 1 tags
+     * Tags are applied in the order they appear here.
+     *
+     * @return string[][]
+     */
+    public static function levelTwoTags()
+    {
+        return [
+            'TYPE'     => [
+                'EVEN',
+                'FACT',
+                'GRAD',
+                'IDNO',
+                'MARR',
+                'ORDN',
+                'SSN',
+            ],
+            'AGNC'     => [
+                'EDUC',
+                'GRAD',
+                'OCCU',
+                'ORDN',
+                'RETI',
+            ],
+            'CALN'     => [
+                'REPO',
+            ],
+            'CEME'     => [// CEME is NOT a valid 5.5.1 tag
+                           //'BURI',
+            ],
+            'RELA'     => [
+                'ASSO',
+                '_ASSO',
+            ],
+            'DATE'     => [
+                'ADOP',
+                'ANUL',
+                'BAPL',
+                'BAPM',
+                'BARM',
+                'BASM',
+                'BIRT',
+                'BLES',
+                'BURI',
+                'CENS',
+                'CENS',
+                'CHR',
+                'CHRA',
+                'CONF',
+                'CONL',
+                'CREM',
+                'DEAT',
+                'DIV',
+                'DIVF',
+                'DSCR',
+                'EDUC',
+                'EMIG',
+                'ENDL',
+                'ENGA',
+                'EVEN',
+                'FCOM',
+                'GRAD',
+                'IMMI',
+                'MARB',
+                'MARC',
+                'MARL',
+                'MARR',
+                'MARS',
+                'NATU',
+                'OCCU',
+                'ORDN',
+                'PROB',
+                'PROP',
+                'RELI',
+                'RESI',
+                'RETI',
+                'SLGC',
+                'SLGS',
+                'TITL',
+                'WILL',
+                '_TODO',
+            ],
+            'AGE'      => [
+                'CENS',
+                'DEAT',
+            ],
+            'TEMP'     => [
+                'BAPL',
+                'CONL',
+                'ENDL',
+                'SLGC',
+                'SLGS',
+            ],
+            'PLAC'     => [
+                'ADOP',
+                'ANUL',
+                'BAPL',
+                'BAPM',
+                'BARM',
+                'BASM',
+                'BIRT',
+                'BLES',
+                'BURI',
+                'CENS',
+                'CHR',
+                'CHRA',
+                'CONF',
+                'CONL',
+                'CREM',
+                'DEAT',
+                'DIV',
+                'DIVF',
+                'EDUC',
+                'EMIG',
+                'ENDL',
+                'ENGA',
+                'EVEN',
+                'FCOM',
+                'GRAD',
+                'IMMI',
+                'MARB',
+                'MARC',
+                'MARL',
+                'MARR',
+                'MARS',
+                'NATU',
+                'OCCU',
+                'ORDN',
+                'PROB',
+                'PROP',
+                'RELI',
+                'RESI',
+                'RETI',
+                'SLGC',
+                'SLGS',
+                'SSN',
+                'TITL',
+                'WILL',
+            ],
+            'STAT'     => [
+                'BAPL',
+                'CONL',
+                'ENDL',
+                'SLGC',
+                'SLGS',
+            ],
+            'ADDR'     => [
+                'BAPM',
+                'BIRT',
+                'BURI',
+                'CENS',
+                'CHR',
+                'CHRA',
+                'CONF',
+                'CREM',
+                'DEAT',
+                'EDUC',
+                'EVEN',
+                'GRAD',
+                'MARR',
+                'OCCU',
+                'ORDN',
+                'PROP',
+                'RESI',
+            ],
+            'CAUS'     => [
+                'DEAT',
+            ],
+            'PHON'     => [
+                'OCCU',
+                'RESI',
+            ],
+            'FAX'      => [
+                'OCCU',
+                'RESI',
+            ],
+            'WWW'      => [
+                'OCCU',
+                'RESI',
+            ],
+            'EMAIL'    => [
+                'OCCU',
+                'RESI',
+            ],
+            'HUSB'     => [
+                'MARR',
+            ],
+            'WIFE'     => [
+                'MARR',
+            ],
+            'FAMC'     => [
+                'ADOP',
+                'SLGC',
+            ],
+            'EVEN'     => [
+                'DATA',
+            ],
+            '_WT_USER' => [
+                '_TODO',
+            ],
+            // See https://bugs.launchpad.net/webtrees/+bug/1082666
+            'RELI'     => [
+                'CHR',
+                'CHRA',
+                'BAPM',
+                'MARR',
+                'BURI',
+            ],
+        ];
+    }
 
-	/**
-	 * A list of facts/events that generally have two associates
-	 * (two witnesses, two godparents, etc.)
-	 *
-	 * @return string[]
-	 */
-	public static function twoAssociates() {
-		return [
-			'CHR', 'BAPM', 'MARR',
-		];
-	}
+    /**
+     * A list of facts/events that generally have two associates
+     * (two witnesses, two godparents, etc.)
+     *
+     * @return string[]
+     */
+    public static function twoAssociates()
+    {
+        return [
+            'CHR',
+            'BAPM',
+            'MARR',
+        ];
+    }
 }

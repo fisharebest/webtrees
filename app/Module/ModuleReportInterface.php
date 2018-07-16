@@ -21,13 +21,14 @@ use Fisharebest\Webtrees\Tree;
 /**
  * Interface ModuleReportInterface - Classes and libraries for module system
  */
-interface ModuleReportInterface {
-	/**
-	 * Return a menu item for this report.
-	 *
-	 * @param Tree $tree
-	 *
-	 * @return Menu
-	 */
-	public function getReportMenu(Tree $tree): Menu;
+interface ModuleReportInterface
+{
+    /**
+     * Return a menu item for this report.
+     *
+     * @param Tree $tree
+     *
+     * @return Menu
+     */
+    public function getReportMenu(Tree $tree): Menu;
 }

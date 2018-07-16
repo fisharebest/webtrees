@@ -26,34 +26,36 @@ use Throwable;
 /**
  * Middleware to wrap a request in a transaction.
  */
-class UseTransaction implements MiddlewareInterface {
-	/**
-	 * @param Request $request
-	 * @param Closure $next
-	 *
-	 * @return Response
-	 * @throws Throwable
-	 */
-	public function handle(Request $request, Closure $next): Response {
-		$connected = Database::isConnected();
-		if ($connected) {
-			Database::beginTransaction();
-		}
+class UseTransaction implements MiddlewareInterface
+{
+    /**
+     * @param Request $request
+     * @param Closure $next
+     *
+     * @return Response
+     * @throws Throwable
+     */
+    public function handle(Request $request, Closure $next): Response
+    {
+        $connected = Database::isConnected();
+        if ($connected) {
+            Database::beginTransaction();
+        }
 
-		try {
-			$response = $next($request);
+        try {
+            $response = $next($request);
 
-			if ($connected) {
-				Database::commit();
-			}
-		} catch (Throwable $ex) {
-			if ($connected) {
-				Database::rollBack();
-			}
+            if ($connected) {
+                Database::commit();
+            }
+        } catch (Throwable $ex) {
+            if ($connected) {
+                Database::rollBack();
+            }
 
-			throw $ex;
-		}
+            throw $ex;
+        }
 
-		return $response;
-	}
+        return $response;
+    }
 }

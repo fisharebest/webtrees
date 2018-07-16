@@ -26,67 +26,70 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * Controller for the source page.
  */
-class SourceController extends AbstractBaseController {
-	/**
-	 * Show a repository's page.
-	 *
-	 * @param Request $request
-	 *
-	 * @return Response
-	 */
-	public function show(Request $request): Response {
-		/** @var Tree $tree */
-		$tree   = $request->attributes->get('tree');
-		$xref   = $request->get('xref');
-		$record = Source::getInstance($xref, $tree);
+class SourceController extends AbstractBaseController
+{
+    /**
+     * Show a repository's page.
+     *
+     * @param Request $request
+     *
+     * @return Response
+     */
+    public function show(Request $request): Response
+    {
+        /** @var Tree $tree */
+        $tree   = $request->attributes->get('tree');
+        $xref   = $request->get('xref');
+        $record = Source::getInstance($xref, $tree);
 
-		$this->checkSourceAccess($record, false);
+        $this->checkSourceAccess($record, false);
 
-		return $this->viewResponse('source-page', [
-			'facts'         => $this->facts($record),
-			'families'      => $record->linkedFamilies('SOUR'),
-			'individuals'   => $record->linkedIndividuals('SOUR'),
-			'meta_robots'   => 'index,follow',
-			'notes'         => $record->linkedNotes('SOUR'),
-			'media_objects' => $record->linkedMedia('SOUR'),
-			'source'        => $record,
-			'title'         => $record->getFullName(),
-		]);
-	}
+        return $this->viewResponse('source-page', [
+            'facts'         => $this->facts($record),
+            'families'      => $record->linkedFamilies('SOUR'),
+            'individuals'   => $record->linkedIndividuals('SOUR'),
+            'meta_robots'   => 'index,follow',
+            'notes'         => $record->linkedNotes('SOUR'),
+            'media_objects' => $record->linkedMedia('SOUR'),
+            'source'        => $record,
+            'title'         => $record->getFullName(),
+        ]);
+    }
 
-	/**
-	 * @param Source $record
-	 *
-	 * @return array
-	 */
-	private function facts(Source $record): array {
-		$facts = $record->getFacts();
+    /**
+     * @param Source $record
+     *
+     * @return array
+     */
+    private function facts(Source $record): array
+    {
+        $facts = $record->getFacts();
 
-		usort(
-			$facts,
-			function (Fact $x, Fact $y) {
-				static $order = [
-					'TITL' => 0,
-					'ABBR' => 1,
-					'AUTH' => 2,
-					'DATA' => 3,
-					'PUBL' => 4,
-					'TEXT' => 5,
-					'NOTE' => 6,
-					'OBJE' => 7,
-					'REFN' => 8,
-					'RIN'  => 9,
-					'_UID' => 10,
-					'CHAN' => 11,
-				];
+        usort(
+            $facts,
+            function (Fact $x, Fact $y) {
+                static $order = [
+                    'TITL' => 0,
+                    'ABBR' => 1,
+                    'AUTH' => 2,
+                    'DATA' => 3,
+                    'PUBL' => 4,
+                    'TEXT' => 5,
+                    'NOTE' => 6,
+                    'OBJE' => 7,
+                    'REFN' => 8,
+                    'RIN'  => 9,
+                    '_UID' => 10,
+                    'CHAN' => 11,
+                ];
 
-				return
-					(array_key_exists($x->getTag(), $order) ? $order[$x->getTag()] : PHP_INT_MAX)
-					-
-					(array_key_exists($y->getTag(), $order) ? $order[$y->getTag()] : PHP_INT_MAX);
-			}
-		);
+                return
+                    (array_key_exists($x->getTag(), $order) ? $order[$x->getTag()] : PHP_INT_MAX)
+                    -
+                    (array_key_exists($y->getTag(), $order) ? $order[$y->getTag()] : PHP_INT_MAX);
+            }
+        );
 
-		return $facts;
-	}
+        return $facts;
+    }
 }

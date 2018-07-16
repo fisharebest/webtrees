@@ -23,43 +23,52 @@ use Fisharebest\Webtrees\Tree;
 /**
  * Class IndividualReportModule
  */
-class IndividualReportModule extends AbstractModule implements ModuleReportInterface {
-	/** {@inheritdoc} */
-	public function getTitle() {
-		// This text also appears in the .XML file - update both together
-		return /* I18N: Name of a module/report */ I18N::translate('Individual');
-	}
+class IndividualReportModule extends AbstractModule implements ModuleReportInterface
+{
+    /** {@inheritdoc} */
+    public function getTitle()
+    {
+        // This text also appears in the .XML file - update both together
+        return /* I18N: Name of a module/report */
+            I18N::translate('Individual');
+    }
 
-	/** {@inheritdoc} */
-	public function getDescription() {
-		// This text also appears in the .XML file - update both together
-		return /* I18N: Description of the “Individual” module */ I18N::translate('A report of an individual’s details.');
-	}
+    /** {@inheritdoc} */
+    public function getDescription()
+    {
+        // This text also appears in the .XML file - update both together
+        return /* I18N: Description of the “Individual” module */
+            I18N::translate('A report of an individual’s details.');
+    }
 
-	/**
-	 * What is the default access level for this module?
-	 *
-	 * Some modules are aimed at admins or managers, and are not generally shown to users.
-	 *
-	 * @return int
-	 */
-	public function defaultAccessLevel() {
-		return Auth::PRIV_PRIVATE;
-	}
+    /**
+     * What is the default access level for this module?
+     *
+     * Some modules are aimed at admins or managers, and are not generally shown to users.
+     *
+     * @return int
+     */
+    public function defaultAccessLevel()
+    {
+        return Auth::PRIV_PRIVATE;
+    }
 
-	/**
-	 * Return a menu item for this report.
-	 *
-	 * @param Tree $tree
-	 *
-	 * @return Menu
-	 */
-	public function getReportMenu(Tree $tree): Menu {
-		return new Menu(
-			$this->getTitle(),
-			route('report-setup', ['ged' => $tree->getName(), 'report' => $this->getName()]),
-			'menu-report-' . $this->getName(),
-			['rel' => 'nofollow']
-		);
-	}
+    /**
+     * Return a menu item for this report.
+     *
+     * @param Tree $tree
+     *
+     * @return Menu
+     */
+    public function getReportMenu(Tree $tree): Menu
+    {
+        return new Menu(
+            $this->getTitle(),
+            route('report-setup', ['ged'    => $tree->getName(),
+                                   'report' => $this->getName(),
+            ]),
+            'menu-report-' . $this->getName(),
+            ['rel' => 'nofollow']
+        );
+    }
 }

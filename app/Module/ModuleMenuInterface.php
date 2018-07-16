@@ -21,20 +21,21 @@ use Fisharebest\Webtrees\Tree;
 /**
  * Interface ModuleMenuInterface - Classes and libraries for module system
  */
-interface ModuleMenuInterface {
-	/**
-	 * The user can re-order menus. Until they do, they are shown in this order.
-	 *
-	 * @return int
-	 */
-	public function defaultMenuOrder();
+interface ModuleMenuInterface
+{
+    /**
+     * The user can re-order menus. Until they do, they are shown in this order.
+     *
+     * @return int
+     */
+    public function defaultMenuOrder();
 
-	/**
-	 * A menu, to be added to the main application menu.
-	 *
-	 * @param Tree $tree
-	 *
-	 * @return Menu|null
-	 */
-	public function getMenu(Tree $tree);
+    /**
+     * A menu, to be added to the main application menu.
+     *
+     * @param Tree $tree
+     *
+     * @return Menu|null
+     */
+    public function getMenu(Tree $tree);
 }

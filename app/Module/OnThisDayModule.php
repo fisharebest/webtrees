@@ -25,200 +25,220 @@ use Fisharebest\Webtrees\Tree;
 /**
  * Class OnThisDayModule
  */
-class OnThisDayModule extends AbstractModule implements ModuleBlockInterface {
-	// All standard GEDCOM 5.5.1 events except CENS, RESI and EVEN
-	const ALL_EVENTS = [
-		'ADOP',
-		'ANUL',
-		'BAPM',
-		'BARM',
-		'BASM',
-		'BIRT',
-		'BLES',
-		'BURI',
-		'CHR',
-		'CHRA',
-		'CONF',
-		'CREM',
-		'DEAT',
-		'DIV',
-		'DIVF',
-		'EMIG',
-		'ENGA',
-		'FCOM',
-		'GRAD',
-		'IMMI',
-		'MARB',
-		'MARC',
-		'MARL',
-		'MARR',
-		'MARS',
-		'NATU',
-		'ORDN',
-		'PROB',
-		'RETI',
-		'WILL',
-	];
+class OnThisDayModule extends AbstractModule implements ModuleBlockInterface
+{
+    // All standard GEDCOM 5.5.1 events except CENS, RESI and EVEN
+    const ALL_EVENTS = [
+        'ADOP',
+        'ANUL',
+        'BAPM',
+        'BARM',
+        'BASM',
+        'BIRT',
+        'BLES',
+        'BURI',
+        'CHR',
+        'CHRA',
+        'CONF',
+        'CREM',
+        'DEAT',
+        'DIV',
+        'DIVF',
+        'EMIG',
+        'ENGA',
+        'FCOM',
+        'GRAD',
+        'IMMI',
+        'MARB',
+        'MARC',
+        'MARL',
+        'MARR',
+        'MARS',
+        'NATU',
+        'ORDN',
+        'PROB',
+        'RETI',
+        'WILL',
+    ];
 
-	const DEFAULT_EVENTS = [
-		'BIRT',
-		'MARR',
-		'DEAT',
-	];
+    const DEFAULT_EVENTS = [
+        'BIRT',
+        'MARR',
+        'DEAT',
+    ];
 
-	/**
-	 * How should this module be labelled on tabs, menus, etc.?
-	 *
-	 * @return string
-	 */
-	public function getTitle() {
-		return /* I18N: Name of a module */ I18N::translate('On this day');
-	}
+    /**
+     * How should this module be labelled on tabs, menus, etc.?
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return /* I18N: Name of a module */
+            I18N::translate('On this day');
+    }
 
-	/**
-	 * A sentence describing what this module does.
-	 *
-	 * @return string
-	 */
-	public function getDescription() {
-		return /* I18N: Description of the “On this day” module */ I18N::translate('A list of the anniversaries that occur today.');
-	}
+    /**
+     * A sentence describing what this module does.
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return /* I18N: Description of the “On this day” module */
+            I18N::translate('A list of the anniversaries that occur today.');
+    }
 
-	/**
-	 * Generate the HTML content of this block.
-	 *
-	 * @param Tree     $tree
-	 * @param int      $block_id
-	 * @param bool     $template
-	 * @param string[] $cfg
-	 *
-	 * @return string
-	 */
-	public function getBlock(Tree $tree, int $block_id, bool $template = true, array $cfg = []): string {
-		global $ctype;
+    /**
+     * Generate the HTML content of this block.
+     *
+     * @param Tree     $tree
+     * @param int      $block_id
+     * @param bool     $template
+     * @param string[] $cfg
+     *
+     * @return string
+     */
+    public function getBlock(Tree $tree, int $block_id, bool $template = true, array $cfg = []): string
+    {
+        global $ctype;
 
-		$default_events = implode(',', self::DEFAULT_EVENTS);
+        $default_events = implode(',', self::DEFAULT_EVENTS);
 
-		$filter    = (bool) $this->getBlockSetting($block_id, 'filter', '1');
-		$infoStyle = $this->getBlockSetting($block_id, 'infoStyle', 'table');
-		$sortStyle = $this->getBlockSetting($block_id, 'sortStyle', 'alpha');
-		$events    = $this->getBlockSetting($block_id, 'events', $default_events);
+        $filter    = (bool)$this->getBlockSetting($block_id, 'filter', '1');
+        $infoStyle = $this->getBlockSetting($block_id, 'infoStyle', 'table');
+        $sortStyle = $this->getBlockSetting($block_id, 'sortStyle', 'alpha');
+        $events    = $this->getBlockSetting($block_id, 'events', $default_events);
 
-		extract($cfg, EXTR_OVERWRITE);
+        extract($cfg, EXTR_OVERWRITE);
 
-		$event_array = explode(',', $events);
+        $event_array = explode(',', $events);
 
-		// If we are only showing living individuals, then we don't need to search for DEAT events.
-		if ($filter) {
-			$death_events = explode('|', WT_EVENTS_DEAT);
-			$event_array = array_diff($event_array, $death_events);
-		}
+        // If we are only showing living individuals, then we don't need to search for DEAT events.
+        if ($filter) {
+            $death_events = explode('|', WT_EVENTS_DEAT);
+            $event_array  = array_diff($event_array, $death_events);
+        }
 
-		$events_filter = implode('|', $event_array);
+        $events_filter = implode('|', $event_array);
 
-		$startjd = WT_CLIENT_JD;
-		$endjd   = WT_CLIENT_JD;
+        $startjd = WT_CLIENT_JD;
+        $endjd   = WT_CLIENT_JD;
 
-		$facts = FunctionsDb::getEventsList($startjd, $endjd, $events_filter, $filter, $sortStyle, $tree);
+        $facts = FunctionsDb::getEventsList($startjd, $endjd, $events_filter, $filter, $sortStyle, $tree);
 
-		if (empty($facts)) {
-			$content = view('modules/todays_events/empty');
-		} elseif ($infoStyle === 'list') {
-			$content = view('modules/todays_events/list', [
-				'facts' => $facts,
-			]);
-		} else {
-			$content = view('modules/todays_events/table', [
-				'facts' => $facts,
-			]);
-		}
+        if (empty($facts)) {
+            $content = view('modules/todays_events/empty');
+        } elseif ($infoStyle === 'list') {
+            $content = view('modules/todays_events/list', [
+                'facts' => $facts,
+            ]);
+        } else {
+            $content = view('modules/todays_events/table', [
+                'facts' => $facts,
+            ]);
+        }
 
-		if ($template) {
-			if ($ctype === 'gedcom' && Auth::isManager($tree)) {
-				$config_url = route('tree-page-block-edit', ['block_id' => $block_id, 'ged' => $tree->getName()]);
-			} elseif ($ctype === 'user' && Auth::check()) {
-				$config_url = route('user-page-block-edit', ['block_id' => $block_id, 'ged' => $tree->getName()]);
-			} else {
-				$config_url = '';
-			}
+        if ($template) {
+            if ($ctype === 'gedcom' && Auth::isManager($tree)) {
+                $config_url = route('tree-page-block-edit', [
+                    'block_id' => $block_id,
+                    'ged'      => $tree->getName(),
+                ]);
+            } elseif ($ctype === 'user' && Auth::check()) {
+                $config_url = route('user-page-block-edit', [
+                    'block_id' => $block_id,
+                    'ged'      => $tree->getName(),
+                ]);
+            } else {
+                $config_url = '';
+            }
 
-			return view('modules/block-template', [
-				'block'      => str_replace('_', '-', $this->getName()),
-				'id'         => $block_id,
-				'config_url' => $config_url,
-				'title'      => $this->getTitle(),
-				'content'    => $content,
-			]);
-		} else {
-			return $content;
-		}
-	}
+            return view('modules/block-template', [
+                'block'      => str_replace('_', '-', $this->getName()),
+                'id'         => $block_id,
+                'config_url' => $config_url,
+                'title'      => $this->getTitle(),
+                'content'    => $content,
+            ]);
+        } else {
+            return $content;
+        }
+    }
 
-	/** {@inheritdoc} */
-	public function loadAjax(): bool {
-		return true;
-	}
+    /** {@inheritdoc} */
+    public function loadAjax(): bool
+    {
+        return true;
+    }
 
-	/** {@inheritdoc} */
-	public function isUserBlock(): bool {
-		return true;
-	}
+    /** {@inheritdoc} */
+    public function isUserBlock(): bool
+    {
+        return true;
+    }
 
-	/** {@inheritdoc} */
-	public function isGedcomBlock(): bool {
-		return true;
-	}
+    /** {@inheritdoc} */
+    public function isGedcomBlock(): bool
+    {
+        return true;
+    }
 
-	/**
-	 * An HTML form to edit block settings
-	 *
-	 * @param Tree $tree
-	 * @param int  $block_id
-	 *
-	 * @return void
-	 */
-	public function configureBlock(Tree $tree, int $block_id) {
-		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-			$this->setBlockSetting($block_id, 'filter', Filter::postBool('filter'));
-			$this->setBlockSetting($block_id, 'infoStyle', Filter::post('infoStyle', 'list|table', 'table'));
-			$this->setBlockSetting($block_id, 'sortStyle', Filter::post('sortStyle', 'alpha|anniv', 'alpha'));
-			$this->setBlockSetting($block_id, 'events', implode(',', Filter::postArray('events')));
+    /**
+     * An HTML form to edit block settings
+     *
+     * @param Tree $tree
+     * @param int  $block_id
+     *
+     * @return void
+     */
+    public function configureBlock(Tree $tree, int $block_id)
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $this->setBlockSetting($block_id, 'filter', Filter::postBool('filter'));
+            $this->setBlockSetting($block_id, 'infoStyle', Filter::post('infoStyle', 'list|table', 'table'));
+            $this->setBlockSetting($block_id, 'sortStyle', Filter::post('sortStyle', 'alpha|anniv', 'alpha'));
+            $this->setBlockSetting($block_id, 'events', implode(',', Filter::postArray('events')));
 
-			return;
-		}
+            return;
+        }
 
-		$default_events = implode(',', self::DEFAULT_EVENTS);
+        $default_events = implode(',', self::DEFAULT_EVENTS);
 
-		$filter    = $this->getBlockSetting($block_id, 'filter', '1');
-		$infoStyle = $this->getBlockSetting($block_id, 'infoStyle', 'table');
-		$sortStyle = $this->getBlockSetting($block_id, 'sortStyle', 'alpha');
-		$events    = $this->getBlockSetting($block_id, 'events', $default_events);
+        $filter    = $this->getBlockSetting($block_id, 'filter', '1');
+        $infoStyle = $this->getBlockSetting($block_id, 'infoStyle', 'table');
+        $sortStyle = $this->getBlockSetting($block_id, 'sortStyle', 'alpha');
+        $events    = $this->getBlockSetting($block_id, 'events', $default_events);
 
-		$event_array = explode(',', $events);
+        $event_array = explode(',', $events);
 
-		$all_events = [];
-		foreach (self::ALL_EVENTS as $event) {
-			$all_events[$event] = GedcomTag::getLabel($event);
-		}
+        $all_events = [];
+        foreach (self::ALL_EVENTS as $event) {
+            $all_events[$event] = GedcomTag::getLabel($event);
+        }
 
-		$info_styles = [
-			'list'  => /* I18N: An option in a list-box */ I18N::translate('list'),
-			'table' => /* I18N: An option in a list-box */ I18N::translate('table'),
-		];
+        $info_styles = [
+            'list'  => /* I18N: An option in a list-box */
+                I18N::translate('list'),
+            'table' => /* I18N: An option in a list-box */
+                I18N::translate('table'),
+        ];
 
-		$sort_styles = [
-			'alpha' => /* I18N: An option in a list-box */ I18N::translate('sort by name'),
-			'anniv' => /* I18N: An option in a list-box */ I18N::translate('sort by date'),
-		];
+        $sort_styles = [
+            'alpha' => /* I18N: An option in a list-box */
+                I18N::translate('sort by name'),
+            'anniv' => /* I18N: An option in a list-box */
+                I18N::translate('sort by date'),
+        ];
 
-		echo view('modules/todays_events/config', [
-			'all_events'  => $all_events,
-			'event_array' => $event_array,
-			'filter'      => $filter,
-			'infoStyle'   => $infoStyle,
-			'info_styles' => $info_styles,
-			'sortStyle'   => $sortStyle,
-			'sort_styles' => $sort_styles,
-		]);
-	}
+        echo view('modules/todays_events/config', [
+            'all_events'  => $all_events,
+            'event_array' => $event_array,
+            'filter'      => $filter,
+            'infoStyle'   => $infoStyle,
+            'info_styles' => $info_styles,
+            'sortStyle'   => $sortStyle,
+            'sort_styles' => $sort_styles,
+        ]);
+    }
 }

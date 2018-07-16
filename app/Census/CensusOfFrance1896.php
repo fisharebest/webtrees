@@ -19,29 +19,32 @@ namespace Fisharebest\Webtrees\Census;
 /**
  * Definitions for a census
  */
-class CensusOfFrance1896 extends CensusOfFrance implements CensusInterface {
-	/**
-	 * When did this census occur.
-	 *
-	 * @return string
-	 */
-	public function censusDate() {
-		return '16 JAN 1896';
-	}
+class CensusOfFrance1896 extends CensusOfFrance implements CensusInterface
+{
+    /**
+     * When did this census occur.
+     *
+     * @return string
+     */
+    public function censusDate()
+    {
+        return '16 JAN 1896';
+    }
 
-	/**
-	 * The columns of the census.
-	 *
-	 * @return CensusColumnInterface[]
-	 */
-	public function columns() {
-		return [
-			new CensusColumnSurname($this, 'Noms', 'Noms de famille'),
-			new CensusColumnGivenNames($this, 'Prénoms', ''),
-			new CensusColumnAge($this, 'Âge', ''),
-			new CensusColumnNationality($this, 'Nationalité', ''),
-			new CensusColumnOccupation($this, 'Profession', ''),
-			new CensusColumnRelationToHead($this, 'Position', 'Position dans le ménage'),
-		];
-	}
+    /**
+     * The columns of the census.
+     *
+     * @return CensusColumnInterface[]
+     */
+    public function columns()
+    {
+        return [
+            new CensusColumnSurname($this, 'Noms', 'Noms de famille'),
+            new CensusColumnGivenNames($this, 'Prénoms', ''),
+            new CensusColumnAge($this, 'Âge', ''),
+            new CensusColumnNationality($this, 'Nationalité', ''),
+            new CensusColumnOccupation($this, 'Profession', ''),
+            new CensusColumnRelationToHead($this, 'Position', 'Position dans le ménage'),
+        ];
+    }
 }

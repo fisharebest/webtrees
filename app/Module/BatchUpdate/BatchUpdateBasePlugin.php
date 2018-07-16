@@ -24,121 +24,135 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Class BatchUpdateBasePlugin
  */
-abstract class BatchUpdateBasePlugin {
-	/** @var bool User option; update change record */
-	public $chan = false;
+abstract class BatchUpdateBasePlugin
+{
+    /** @var bool User option; update change record */
+    public $chan = false;
 
-	/**
-	 * @param GedcomRecord $record
-	 *
-	 * @return bool
-	 */
-	abstract public function doesRecordNeedUpdate(GedcomRecord $record): bool;
+    /**
+     * @param GedcomRecord $record
+     *
+     * @return bool
+     */
+    abstract public function doesRecordNeedUpdate(GedcomRecord $record): bool;
 
-	/**
-	 * @param GedcomRecord $record
-	 *
-	 * @return string
-	 */
-	abstract public function updateRecord(GedcomRecord $record): string;
+    /**
+     * @param GedcomRecord $record
+     *
+     * @return string
+     */
+    abstract public function updateRecord(GedcomRecord $record): string;
 
-	/**
-	 * Default is to operate on INDI records
-	 *
-	 * @return string[]
-	 */
-	public function getRecordTypesToUpdate() {
-		return ['INDI'];
-	}
+    /**
+     * Default is to operate on INDI records
+     *
+     * @return string[]
+     */
+    public function getRecordTypesToUpdate()
+    {
+        return ['INDI'];
+    }
 
-	/**
-	 * Default option is just the "don't update CHAN record"
-	 *
-	 * @param Request $request
-	 */
-	public function getOptions(Request $request) {
-		$this->chan = (bool) $request->get('chan');
-	}
+    /**
+     * Default option is just the "don't update CHAN record"
+     *
+     * @param Request $request
+     */
+    public function getOptions(Request $request)
+    {
+        $this->chan = (bool)$request->get('chan');
+    }
 
-	/**
-	 * Default option is just the "don't update CHAN record"
-	 *
-	 * @return string
-	 */
-	public function getOptionsForm() {
-		return
-			'<div class="row form-group">' .
-			'<label class="col-sm-3 col-form-label">' . I18N::translate('Keep the existing “last change” information') . '</label>' .
-			'<div class="col-sm-9">' .
-			Bootstrap4::radioButtons('chan', [0 => I18N::translate('no'), 1 => I18N::translate('yes')], ($this->chan ? 1 : 0), true, ['onchange' => 'this.form.submit();']) .
-			'</div></div>';
-	}
+    /**
+     * Default option is just the "don't update CHAN record"
+     *
+     * @return string
+     */
+    public function getOptionsForm()
+    {
+        return
+            '<div class="row form-group">' .
+            '<label class="col-sm-3 col-form-label">' . I18N::translate('Keep the existing “last change” information') . '</label>' .
+            '<div class="col-sm-9">' .
+            Bootstrap4::radioButtons('chan', [
+                0 => I18N::translate('no'),
+                1 => I18N::translate('yes'),
+            ], ($this->chan ? 1 : 0), true, ['onchange' => 'this.form.submit();']) .
+            '</div></div>';
+    }
 
-	/**
-	 * Default previewer for plugins with no custom preview.
-	 *
-	 * @param GedcomRecord $record
-	 *
-	 * @return string
-	 */
-	public function getActionPreview(GedcomRecord $record) {
-		$old_lines   = preg_split('/[\n]+/', $record->getGedcom());
-		$new_lines   = preg_split('/[\n]+/', $this->updateRecord($record));
-		$algorithm   = new MyersDiff;
-		$differences = $algorithm->calculate($old_lines, $new_lines);
-		$diff_lines  = [];
+    /**
+     * Default previewer for plugins with no custom preview.
+     *
+     * @param GedcomRecord $record
+     *
+     * @return string
+     */
+    public function getActionPreview(GedcomRecord $record)
+    {
+        $old_lines   = preg_split('/[\n]+/', $record->getGedcom());
+        $new_lines   = preg_split('/[\n]+/', $this->updateRecord($record));
+        $algorithm   = new MyersDiff;
+        $differences = $algorithm->calculate($old_lines, $new_lines);
+        $diff_lines  = [];
 
-		foreach ($differences as $difference) {
-			switch ($difference[1]) {
-				case MyersDiff::DELETE:
-					$diff_lines[] = self::decorateDeletedText($difference[0]);
-					break;
-				case MyersDiff::INSERT:
-					$diff_lines[] = self::decorateInsertedText($difference[0]);
-					break;
-				default:
-					$diff_lines[] = $difference[0];
-			}
-		}
+        foreach ($differences as $difference) {
+            switch ($difference[1]) {
+                case MyersDiff::DELETE:
+                    $diff_lines[] = self::decorateDeletedText($difference[0]);
+                    break;
+                case MyersDiff::INSERT:
+                    $diff_lines[] = self::decorateInsertedText($difference[0]);
+                    break;
+                default:
+                    $diff_lines[] = $difference[0];
+            }
+        }
 
-		return '<pre class="gedcom-data">' . self::createEditLinks(implode("\n", $diff_lines), $record) . '</pre>';
-	}
+        return '<pre class="gedcom-data">' . self::createEditLinks(implode("\n", $diff_lines), $record) . '</pre>';
+    }
 
-	/**
-	 * Decorate inserted text
-	 *
-	 * @param string $text
-	 *
-	 * @return string
-	 */
-	public static function decorateInsertedText($text) {
-		return '<ins>' . $text . '</ins>';
-	}
+    /**
+     * Decorate inserted text
+     *
+     * @param string $text
+     *
+     * @return string
+     */
+    public static function decorateInsertedText($text)
+    {
+        return '<ins>' . $text . '</ins>';
+    }
 
-	/**
-	 * Decorate deleted text
-	 *
-	 * @param string $text
-	 *
-	 * @return string
-	 */
-	public static function decorateDeletedText($text) {
-		return '<del>' . $text . '</del>';
-	}
+    /**
+     * Decorate deleted text
+     *
+     * @param string $text
+     *
+     * @return string
+     */
+    public static function decorateDeletedText($text)
+    {
+        return '<del>' . $text . '</del>';
+    }
 
-	/**
-	 * Converted gedcom links into editable links
-	 *
-	 * @param string       $gedrec
-	 * @param GedcomRecord $record
-	 *
-	 * @return string
-	 */
-	public static function createEditLinks($gedrec, GedcomRecord $record) {
-		return preg_replace(
-			"/@([^#@\n]+)@/m",
-			'<a href="' . e(route('edit-raw-record', ['ged' => $record->getTree()->getName(), 'xref' => $record->getXref()])) . '">@\\1@</a>',
-			$gedrec
-		);
-	}
+    /**
+     * Converted gedcom links into editable links
+     *
+     * @param string       $gedrec
+     * @param GedcomRecord $record
+     *
+     * @return string
+     */
+    public static function createEditLinks($gedrec, GedcomRecord $record)
+    {
+        return preg_replace(
+            "/@([^#@\n]+)@/m",
+            '<a href="' . e(route('edit-raw-record', [
+                'ged'  => $record->getTree()->getName(),
+                'xref' => $record->getXref(),
+            ])) . '">@\\1@</a>',
+            $gedrec
+        );
+    }
 }

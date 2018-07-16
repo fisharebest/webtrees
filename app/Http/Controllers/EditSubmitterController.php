@@ -26,65 +26,76 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * Controller for edit forms and responses.
  */
-class EditSubmitterController extends AbstractEditController {
-	/**
-	 * Show a form to create a new submitter.
-	 *
-	 * @param Request $request
-	 *
-	 * @return Response
-	 */
-	public function createSubmitter(Request $request): Response {
-		return new Response(view('modals/create-submitter'));
-	}
+class EditSubmitterController extends AbstractEditController
+{
+    /**
+     * Show a form to create a new submitter.
+     *
+     * @param Request $request
+     *
+     * @return Response
+     */
+    public function createSubmitter(Request $request): Response
+    {
+        return new Response(view('modals/create-submitter'));
+    }
 
-	/**
-	 * Process a form to create a new submitter.
-	 *
-	 * @param Request $request
-	 *
-	 * @return JsonResponse
-	 */
-	public function createSubmitterAction(Request $request): JsonResponse {
-		/** @var Tree $tree */
-		$tree                = $request->attributes->get('tree');
-		$name                = $request->get('submitter_name', '');
-		$address             = $request->get('submitter_address', '');
-		$privacy_restriction = $request->get('privacy-restriction', '');
-		$edit_restriction    = $request->get('edit-restriction', '');
+    /**
+     * Process a form to create a new submitter.
+     *
+     * @param Request $request
+     *
+     * @return JsonResponse
+     */
+    public function createSubmitterAction(Request $request): JsonResponse
+    {
+        /** @var Tree $tree */
+        $tree                = $request->attributes->get('tree');
+        $name                = $request->get('submitter_name', '');
+        $address             = $request->get('submitter_address', '');
+        $privacy_restriction = $request->get('privacy-restriction', '');
+        $edit_restriction    = $request->get('edit-restriction', '');
 
-		// Fix whitespace
-		$name = trim(preg_replace('/\s+/', ' ', $name));
+        // Fix whitespace
+        $name = trim(preg_replace('/\s+/', ' ', $name));
 
-		// Convert line endings to GEDDCOM continuations
-		$address = str_replace(["\r\n", "\r", "\n"], "\n1 CONT ", $address);
+        // Convert line endings to GEDDCOM continuations
+        $address = str_replace([
+            "\r\n",
+            "\r",
+            "\n",
+        ], "\n1 CONT ", $address);
 
-		$gedcom = "0 @XREF@ SUBM\n1 NAME " . $name;
+        $gedcom = "0 @XREF@ SUBM\n1 NAME " . $name;
 
-		if ($address !== '') {
-			$gedcom .= "\n1 ADDR " . $address;
-		}
+        if ($address !== '') {
+            $gedcom .= "\n1 ADDR " . $address;
+        }
 
-		if (in_array($privacy_restriction, ['none', 'privacy', 'confidential'])) {
-			$gedcom .= "\n1 RESN " . $privacy_restriction;
-		}
+        if (in_array($privacy_restriction, [
+            'none',
+            'privacy',
+            'confidential',
+        ])) {
+            $gedcom .= "\n1 RESN " . $privacy_restriction;
+        }
 
-		if (in_array($edit_restriction, ['locked'])) {
-			$gedcom .= "\n1 RESN " . $edit_restriction;
-		}
+        if (in_array($edit_restriction, ['locked'])) {
+            $gedcom .= "\n1 RESN " . $edit_restriction;
+        }
 
-		$record = $tree->createRecord($gedcom);
+        $record = $tree->createRecord($gedcom);
 
-		return new JsonResponse([
-			'id' => $record->getXref(),
-			'text' => view('selects/submitter', [
-				'submitter' => $record,
-			]),
-			'html' => view('modals/record-created', [
-				'title' => I18N::translate('The submitter has been created'),
-				'name'  => $record->getFullName(),
-				'url'   => $record->url(),
-			])
-		]);
-	}
+        return new JsonResponse([
+            'id'   => $record->getXref(),
+            'text' => view('selects/submitter', [
+                'submitter' => $record,
+            ]),
+            'html' => view('modals/record-created', [
+                'title' => I18N::translate('The submitter has been created'),
+                'name'  => $record->getFullName(),
+                'url'   => $record->url(),
+            ]),
+        ]);
+    }
 }

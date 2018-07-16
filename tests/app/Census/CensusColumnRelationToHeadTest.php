@@ -21,25 +21,28 @@ use Mockery;
 /**
  * Test harness for the class CensusColumnRelationToHead
  */
-class CensusColumnRelationToHeadTest extends \PHPUnit\Framework\TestCase {
-	/**
-	 * Delete mock objects
-	 */
-	public function tearDown() {
-		Mockery::close();
-	}
+class CensusColumnRelationToHeadTest extends \PHPUnit\Framework\TestCase
+{
+    /**
+     * Delete mock objects
+     */
+    public function tearDown()
+    {
+        Mockery::close();
+    }
 
-	/**
-	 * @covers \Fisharebest\Webtrees\Census\CensusColumnRelationToHead
-	 * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-	 */
-	public function testNull() {
-		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
+    /**
+     * @covers \Fisharebest\Webtrees\Census\CensusColumnRelationToHead
+     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
+     */
+    public function testNull()
+    {
+        $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
 
-		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
+        $census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
 
-		$column = new CensusColumnRelationToHead($census, '', '');
+        $column = new CensusColumnRelationToHead($census, '', '');
 
-		$this->assertSame('head', $column->generate($individual));
-	}
+        $this->assertSame('head', $column->generate($individual));
+    }
 }

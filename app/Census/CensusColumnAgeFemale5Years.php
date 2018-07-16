@@ -22,25 +22,27 @@ use Fisharebest\Webtrees\Individual;
 /**
  * The age of a female individual (rounded down to the nearest 5 years).
  */
-class CensusColumnAgeFemale5Years extends AbstractCensusColumn implements CensusColumnInterface {
-	/**
-	 * Generate the likely value of this census column, based on available information.
-	 *
-	 * @param Individual $individual
-	 * @param Individual $head
-	 *
-	 * @return string
-	 */
-	public function generate(Individual $individual, Individual $head = null) {
-		if ($individual->getSex() === 'M') {
-			return '';
-		} else {
-			$years = Date::getAge($individual->getEstimatedBirthDate(), $this->date(), 0);
-			if ($years > 15) {
-				$years -= $years % 5;
-			}
+class CensusColumnAgeFemale5Years extends AbstractCensusColumn implements CensusColumnInterface
+{
+    /**
+     * Generate the likely value of this census column, based on available information.
+     *
+     * @param Individual $individual
+     * @param Individual $head
+     *
+     * @return string
+     */
+    public function generate(Individual $individual, Individual $head = null)
+    {
+        if ($individual->getSex() === 'M') {
+            return '';
+        } else {
+            $years = Date::getAge($individual->getEstimatedBirthDate(), $this->date(), 0);
+            if ($years > 15) {
+                $years -= $years % 5;
+            }
 
-			return (string) $years;
-		}
-	}
+            return (string)$years;
+        }
+    }
 }

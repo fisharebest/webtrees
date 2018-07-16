@@ -20,35 +20,38 @@ use stdClass;
 /**
  * Generate messages in one request and display them in the next.
  */
-class FlashMessages {
-	// Session storage key
-	const FLASH_KEY = 'flash_messages';
+class FlashMessages
+{
+    // Session storage key
+    const FLASH_KEY = 'flash_messages';
 
-	/**
-	 * Add a message to the session storage.
-	 *
-	 * @param string $text
-	 * @param string $status "success", "info", "warning" or "danger"
-	 */
-	public static function addMessage($text, $status = 'info') {
-		$message         = new stdClass;
-		$message->text   = $text;
-		$message->status = $status;
+    /**
+     * Add a message to the session storage.
+     *
+     * @param string $text
+     * @param string $status "success", "info", "warning" or "danger"
+     */
+    public static function addMessage($text, $status = 'info')
+    {
+        $message         = new stdClass;
+        $message->text   = $text;
+        $message->status = $status;
 
-		$messages   = Session::get(self::FLASH_KEY, []);
-		$messages[] = $message;
-		Session::put(self::FLASH_KEY, $messages);
-	}
+        $messages   = Session::get(self::FLASH_KEY, []);
+        $messages[] = $message;
+        Session::put(self::FLASH_KEY, $messages);
+    }
 
-	/**
-	 * Get the current messages, and remove them from session storage.
-	 *
-	 * @return stdClass[]
-	 */
-	public static function getMessages() {
-		$messages = Session::get(self::FLASH_KEY, []);
-		Session::forget(self::FLASH_KEY);
+    /**
+     * Get the current messages, and remove them from session storage.
+     *
+     * @return stdClass[]
+     */
+    public static function getMessages()
+    {
+        $messages = Session::get(self::FLASH_KEY, []);
+        Session::forget(self::FLASH_KEY);
 
-		return $messages;
-	}
+        return $messages;
+    }
 }

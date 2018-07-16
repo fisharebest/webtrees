@@ -28,44 +28,46 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 /**
  * Controller for module actions.
  */
-class ModuleController extends AbstractBaseController {
-	/**
-	 * Perform an HTTP action for one of the modules.
-	 *
-	 * @param Request $request
-	 *
-	 * @return Response
-	 */
-	public function action(Request $request): Response {
-		/** @var User $user */
-		$user = $request->attributes->get('user');
+class ModuleController extends AbstractBaseController
+{
+    /**
+     * Perform an HTTP action for one of the modules.
+     *
+     * @param Request $request
+     *
+     * @return Response
+     */
+    public function action(Request $request): Response
+    {
+        /** @var User $user */
+        $user = $request->attributes->get('user');
 
-		$module_name = $request->get('module');
+        $module_name = $request->get('module');
 
-		// Check that the module is enabled.
-		// The module itself will need to check any tree-level access,
-		// which may be different for each component (tab, menu, etc.) of the module.
-		$module = Module::getModuleByName($module_name);
+        // Check that the module is enabled.
+        // The module itself will need to check any tree-level access,
+        // which may be different for each component (tab, menu, etc.) of the module.
+        $module = Module::getModuleByName($module_name);
 
-		// We'll call a function such as Module::getFooBarAction()
-		$verb   = strtolower($request->getMethod());
-		$action = $request->get('action');
-		$method = $verb . $action . 'Action';
+        // We'll call a function such as Module::getFooBarAction()
+        $verb   = strtolower($request->getMethod());
+        $action = $request->get('action');
+        $method = $verb . $action . 'Action';
 
-		// Actions with "Admin" in the name are for administrators only.
-		if (strpos($action, 'Admin') !== false && !Auth::isAdmin($user)) {
-			throw new AccessDeniedHttpException;
-		}
+        // Actions with "Admin" in the name are for administrators only.
+        if (strpos($action, 'Admin') !== false && !Auth::isAdmin($user)) {
+            throw new AccessDeniedHttpException;
+        }
 
-		if (method_exists($module, $method)) {
-			$response = $module->$method($request);
-			if ($response instanceof Response) {
-				return $response;
-			} else {
-				return $this->viewResponse($response->name, $response->data);
-			}
-		} else {
-			throw new NotFoundHttpException('Module not found');
-		}
-	}
+        if (method_exists($module, $method)) {
+            $response = $module->$method($request);
+            if ($response instanceof Response) {
+                return $response;
+            } else {
+                return $this->viewResponse($response->name, $response->data);
+            }
+        } else {
+            throw new NotFoundHttpException('Module not found');
+        }
+    }
 }

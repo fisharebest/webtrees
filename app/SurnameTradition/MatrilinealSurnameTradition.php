@@ -18,49 +18,52 @@ namespace Fisharebest\Webtrees\SurnameTradition;
 /**
  * Children take their mother’s surname.
  */
-class MatrilinealSurnameTradition extends DefaultSurnameTradition implements SurnameTraditionInterface {
-	/**
-	 * What names are given to a new child
-	 *
-	 * @param string $father_name A GEDCOM NAME
-	 * @param string $mother_name A GEDCOM NAME
-	 * @param string $child_sex   M, F or U
-	 *
-	 * @return string[] Associative array of GEDCOM name parts (SURN, _MARNM, etc.)
-	 */
-	public function newChildNames($father_name, $mother_name, $child_sex) {
-		if (preg_match(self::REGEX_SPFX_SURN, $mother_name, $match)) {
-			return array_filter([
-				'NAME' => $match['NAME'],
-				'SPFX' => $match['SPFX'],
-				'SURN' => $match['SURN'],
-			]);
-		} else {
-			return [
-				'NAME' => '//',
-			];
-		}
-	}
+class MatrilinealSurnameTradition extends DefaultSurnameTradition implements SurnameTraditionInterface
+{
+    /**
+     * What names are given to a new child
+     *
+     * @param string $father_name A GEDCOM NAME
+     * @param string $mother_name A GEDCOM NAME
+     * @param string $child_sex   M, F or U
+     *
+     * @return string[] Associative array of GEDCOM name parts (SURN, _MARNM, etc.)
+     */
+    public function newChildNames($father_name, $mother_name, $child_sex)
+    {
+        if (preg_match(self::REGEX_SPFX_SURN, $mother_name, $match)) {
+            return array_filter([
+                'NAME' => $match['NAME'],
+                'SPFX' => $match['SPFX'],
+                'SURN' => $match['SURN'],
+            ]);
+        } else {
+            return [
+                'NAME' => '//',
+            ];
+        }
+    }
 
-	/**
-	 * What names are given to a new parent
-	 *
-	 * @param string $child_name A GEDCOM NAME
-	 * @param string $parent_sex M, F or U
-	 *
-	 * @return string[] Associative array of GEDCOM name parts (SURN, _MARNM, etc.)
-	 */
-	public function newParentNames($child_name, $parent_sex) {
-		if ($parent_sex === 'F' && preg_match(self::REGEX_SPFX_SURN, $child_name, $match)) {
-			return array_filter([
-				'NAME' => $match['NAME'],
-				'SPFX' => $match['SPFX'],
-				'SURN' => $match['SURN'],
-			]);
-		} else {
-			return [
-				'NAME' => '//',
-			];
-		}
-	}
+    /**
+     * What names are given to a new parent
+     *
+     * @param string $child_name A GEDCOM NAME
+     * @param string $parent_sex M, F or U
+     *
+     * @return string[] Associative array of GEDCOM name parts (SURN, _MARNM, etc.)
+     */
+    public function newParentNames($child_name, $parent_sex)
+    {
+        if ($parent_sex === 'F' && preg_match(self::REGEX_SPFX_SURN, $child_name, $match)) {
+            return array_filter([
+                'NAME' => $match['NAME'],
+                'SPFX' => $match['SPFX'],
+                'SURN' => $match['SURN'],
+            ]);
+        } else {
+            return [
+                'NAME' => '//',
+            ];
+        }
+    }
 }

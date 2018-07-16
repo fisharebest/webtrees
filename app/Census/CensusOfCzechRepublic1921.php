@@ -19,37 +19,40 @@ namespace Fisharebest\Webtrees\Census;
 /**
  * Definitions for a census
  */
-class CensusOfCzechRepublic1921 extends CensusOfCzechRepublic implements CensusInterface {
-	/**
-	 * When did this census occur.
-	 *
-	 * @return string
-	 */
-	public function censusDate() {
-		return '15 FEB 1921';
-	}
+class CensusOfCzechRepublic1921 extends CensusOfCzechRepublic implements CensusInterface
+{
+    /**
+     * When did this census occur.
+     *
+     * @return string
+     */
+    public function censusDate()
+    {
+        return '15 FEB 1921';
+    }
 
-	/**
-	 * The columns of the census.
-	 *
-	 * @return CensusColumnInterface[]
-	 */
-	public function columns() {
-		return [
-			new CensusColumnFullName($this, 'Jméno', ''),
-			new CensusColumnRelationToHead($this, 'Vztah', ''),
-			new CensusColumnSexMZ($this, 'Pohlaví', ''),
-			new CensusColumnNull($this, 'Stav', 'Rodinný stav'),
-			new CensusColumnBirthDaySlashMonthYear($this, 'Narození', 'Datum narození'),
-			new CensusColumnBirthPlace($this, 'Místo', 'Místo narození'),
-			new CensusColumnNull($this, 'Přísluší', 'Domovské právo'),
-			new CensusColumnNull($this, 'Národnost', 'Mateřský jazyk'),
-			new CensusColumnReligion($this, 'Vyznání', ''),
-			new CensusColumnNull($this, 'Gramotnost', 'Znalost čtení a psaní'),
-			new CensusColumnOccupation($this, 'Povolání', ''),
-			new CensusColumnNull($this, 'Postavení', 'Postavení v zaměstnání'),
-			new CensusColumnNull($this, 'Podnik', ''),
-			new CensusColumnNull($this, '', ''),
-		];
-	}
+    /**
+     * The columns of the census.
+     *
+     * @return CensusColumnInterface[]
+     */
+    public function columns()
+    {
+        return [
+            new CensusColumnFullName($this, 'Jméno', ''),
+            new CensusColumnRelationToHead($this, 'Vztah', ''),
+            new CensusColumnSexMZ($this, 'Pohlaví', ''),
+            new CensusColumnNull($this, 'Stav', 'Rodinný stav'),
+            new CensusColumnBirthDaySlashMonthYear($this, 'Narození', 'Datum narození'),
+            new CensusColumnBirthPlace($this, 'Místo', 'Místo narození'),
+            new CensusColumnNull($this, 'Přísluší', 'Domovské právo'),
+            new CensusColumnNull($this, 'Národnost', 'Mateřský jazyk'),
+            new CensusColumnReligion($this, 'Vyznání', ''),
+            new CensusColumnNull($this, 'Gramotnost', 'Znalost čtení a psaní'),
+            new CensusColumnOccupation($this, 'Povolání', ''),
+            new CensusColumnNull($this, 'Postavení', 'Postavení v zaměstnání'),
+            new CensusColumnNull($this, 'Podnik', ''),
+            new CensusColumnNull($this, '', ''),
+        ];
+    }
 }

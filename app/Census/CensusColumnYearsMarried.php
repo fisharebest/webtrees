@@ -22,30 +22,32 @@ use Fisharebest\Webtrees\Individual;
 /**
  * For how many years has the individual been married.
  */
-class CensusColumnYearsMarried extends AbstractCensusColumn implements CensusColumnInterface {
-	/**
-	 * Generate the likely value of this census column, based on available information.
-	 *
-	 * @param Individual $individual
-	 * @param Individual $head
-	 *
-	 * @return string
-	 */
-	public function generate(Individual $individual, Individual $head = null) {
-		$marriage_date = null;
+class CensusColumnYearsMarried extends AbstractCensusColumn implements CensusColumnInterface
+{
+    /**
+     * Generate the likely value of this census column, based on available information.
+     *
+     * @param Individual $individual
+     * @param Individual $head
+     *
+     * @return string
+     */
+    public function generate(Individual $individual, Individual $head = null)
+    {
+        $marriage_date = null;
 
-		foreach ($individual->getSpouseFamilies() as $family) {
-			foreach ($family->getFacts('MARR', true) as $fact) {
-				if ($fact->getDate()->isOK() && Date::compare($fact->getDate(), $this->date()) <= 0) {
-					$marriage_date = $fact->getDate();
-				}
-			}
-		}
+        foreach ($individual->getSpouseFamilies() as $family) {
+            foreach ($family->getFacts('MARR', true) as $fact) {
+                if ($fact->getDate()->isOK() && Date::compare($fact->getDate(), $this->date()) <= 0) {
+                    $marriage_date = $fact->getDate();
+                }
+            }
+        }
 
-		if ($marriage_date === null) {
-			return '';
-		} else {
-			return (string) Date::getAge($marriage_date, $this->date(), 0);
-		}
-	}
+        if ($marriage_date === null) {
+            return '';
+        } else {
+            return (string)Date::getAge($marriage_date, $this->date(), 0);
+        }
+    }
 }

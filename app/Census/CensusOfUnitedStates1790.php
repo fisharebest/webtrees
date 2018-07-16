@@ -19,31 +19,34 @@ namespace Fisharebest\Webtrees\Census;
 /**
  * Definitions for a census
  */
-class CensusOfUnitedStates1790 extends CensusOfUnitedStates implements CensusInterface {
-	/**
-	 * When did this census occur.
-	 *
-	 * @return string
-	 */
-	public function censusDate() {
-		return '02 AUG 1790';
-	}
+class CensusOfUnitedStates1790 extends CensusOfUnitedStates implements CensusInterface
+{
+    /**
+     * When did this census occur.
+     *
+     * @return string
+     */
+    public function censusDate()
+    {
+        return '02 AUG 1790';
+    }
 
-	/**
-	 * The columns of the census.
-	 *
-	 * @return CensusColumnInterface[]
-	 */
-	public function columns() {
-		return [
-			new CensusColumnFullName($this, 'Name', 'Name of head of family'),
-			new CensusColumnOccupation($this, 'Occupation', 'Professions and occupation'),
-			new CensusColumnNull($this, 'White male 16+', 'White male of 16 yrs upward'),
-			new CensusColumnNull($this, 'White male 0-16', 'White males of under 16 yrs'),
-			new CensusColumnNull($this, 'White female', 'All White Females'),
-			new CensusColumnNull($this, 'Free', 'All other free persons'),
-			new CensusColumnNull($this, 'Slaves', 'Number of slaves'),
-			new CensusColumnNull($this, 'Total', 'Total'),
-		];
-	}
+    /**
+     * The columns of the census.
+     *
+     * @return CensusColumnInterface[]
+     */
+    public function columns()
+    {
+        return [
+            new CensusColumnFullName($this, 'Name', 'Name of head of family'),
+            new CensusColumnOccupation($this, 'Occupation', 'Professions and occupation'),
+            new CensusColumnNull($this, 'White male 16+', 'White male of 16 yrs upward'),
+            new CensusColumnNull($this, 'White male 0-16', 'White males of under 16 yrs'),
+            new CensusColumnNull($this, 'White female', 'All White Females'),
+            new CensusColumnNull($this, 'Free', 'All other free persons'),
+            new CensusColumnNull($this, 'Slaves', 'Number of slaves'),
+            new CensusColumnNull($this, 'Total', 'Total'),
+        ];
+    }
 }

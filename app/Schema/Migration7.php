@@ -20,20 +20,22 @@ use Fisharebest\Webtrees\Database;
 /**
  * Upgrade the database schema from version 7 to version 8.
  */
-class Migration7 implements MigrationInterface {
-	/**
-	 * Upgrade to to the next version
-	 */
-	public function upgrade() {
-		// Update config data defining theme selection
-		Database::exec(
-			"UPDATE `##gedcom_setting` SET setting_value=TRIM(LEADING 'themes/' FROM TRIM(TRAILING '/' FROM setting_value)) WHERE setting_name='THEME_DIR'"
-		);
-		Database::exec(
-			"UPDATE `##user_setting` SET setting_value=TRIM(LEADING 'themes/' FROM TRIM(TRAILING '/' FROM setting_value)) WHERE setting_name='THEME_DIR'"
-		);
-		Database::exec(
-			"UPDATE `##user_gedcom_setting` SET setting_value=TRIM(LEADING 'themes/' FROM TRIM(TRAILING '/' FROM setting_value)) WHERE setting_name='THEME_DIR'"
-		);
-	}
+class Migration7 implements MigrationInterface
+{
+    /**
+     * Upgrade to to the next version
+     */
+    public function upgrade()
+    {
+        // Update config data defining theme selection
+        Database::exec(
+            "UPDATE `##gedcom_setting` SET setting_value=TRIM(LEADING 'themes/' FROM TRIM(TRAILING '/' FROM setting_value)) WHERE setting_name='THEME_DIR'"
+        );
+        Database::exec(
+            "UPDATE `##user_setting` SET setting_value=TRIM(LEADING 'themes/' FROM TRIM(TRAILING '/' FROM setting_value)) WHERE setting_name='THEME_DIR'"
+        );
+        Database::exec(
+            "UPDATE `##user_gedcom_setting` SET setting_value=TRIM(LEADING 'themes/' FROM TRIM(TRAILING '/' FROM setting_value)) WHERE setting_name='THEME_DIR'"
+        );
+    }
 }

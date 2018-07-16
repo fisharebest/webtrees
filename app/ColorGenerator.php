@@ -18,81 +18,84 @@ namespace Fisharebest\Webtrees;
 /**
  * Generate a range of colurs for the lifespan chart.
  */
-class ColorGenerator {
-	/** @var int Current hue */
-	private $hue;
+class ColorGenerator
+{
+    /** @var int Current hue */
+    private $hue;
 
-	/** @var int Initial hue*/
-	private $basehue;
+    /** @var int Initial hue */
+    private $basehue;
 
-	/** @var int Saturation */
-	private $saturation;
+    /** @var int Saturation */
+    private $saturation;
 
-	/** @var int Lightness */
-	private $lightness;
+    /** @var int Lightness */
+    private $lightness;
 
-	/** @var int Initial lightness*/
-	private $baselightness;
+    /** @var int Initial lightness */
+    private $baselightness;
 
-	/** @var int Alpha transparancy */
-	private $alpha;
+    /** @var int Alpha transparancy */
+    private $alpha;
 
-	/** @var int Clockwise or anticlockwise color wheel */
-	private $range;
+    /** @var int Clockwise or anticlockwise color wheel */
+    private $range;
 
-	/**
-	 * Create a color generator.
-	 *
-	 * @param int $hue (0Deg = Red, 120Deg = green, 240Deg = blue)
-	 * @param int $saturation
-	 * @param int $lightness
-	 * @param int $alpha
-	 * @param int $range (sign determines direction. positive = clockwise, negative = anticlockwise)
-	 */
-	public function __construct($hue, $saturation, $lightness, $alpha, $range) {
-		$this->hue           = $hue;
-		$this->basehue       = $hue;
-		$this->saturation    = $saturation;
-		$this->lightness     = $lightness;
-		$this->baselightness = $lightness;
-		$this->alpha         = $alpha;
-		$this->range         = $range;
-	}
+    /**
+     * Create a color generator.
+     *
+     * @param int $hue   (0Deg = Red, 120Deg = green, 240Deg = blue)
+     * @param int $saturation
+     * @param int $lightness
+     * @param int $alpha
+     * @param int $range (sign determines direction. positive = clockwise, negative = anticlockwise)
+     */
+    public function __construct($hue, $saturation, $lightness, $alpha, $range)
+    {
+        $this->hue           = $hue;
+        $this->basehue       = $hue;
+        $this->saturation    = $saturation;
+        $this->lightness     = $lightness;
+        $this->baselightness = $lightness;
+        $this->alpha         = $alpha;
+        $this->range         = $range;
+    }
 
-	/**
-	 * Function getNextColor
-	 *
-	 * $lightness cycles between $baselightness and 100% in $lightnessStep steps
-	 * $hue cycles on each complete $lightness cycle
-	 * between $basehue and $basehue + $range degrees in $hueStep degrees
-	 *
-	 * @param int $lightnessStep
-	 * @param int $hueStep
-	 *
-	 * @return string
-	 */
-	public function getNextColor($lightnessStep = 10, $hueStep = 15) {
-		$lightness = $this->lightness + $lightnessStep;
-		$hue       = $this->hue;
+    /**
+     * Function getNextColor
+     *
+     * $lightness cycles between $baselightness and 100% in $lightnessStep steps
+     * $hue cycles on each complete $lightness cycle
+     * between $basehue and $basehue + $range degrees in $hueStep degrees
+     *
+     * @param int $lightnessStep
+     * @param int $hueStep
+     *
+     * @return string
+     */
+    public function getNextColor($lightnessStep = 10, $hueStep = 15)
+    {
+        $lightness = $this->lightness + $lightnessStep;
+        $hue       = $this->hue;
 
-		if ($lightness >= 100) {
-			$lightness = $this->baselightness;
-			if ($this->range > 0) {
-				$hue += $hueStep;
-			} else {
-				$hue -= $hueStep;
-			}
-			if (($hue - $this->basehue) * ($hue - ($this->basehue + $this->range)) >= 0) {
-				$hue = $this->basehue;
-			}
-			$this->hue = $hue;
-		}
-		$this->lightness = $lightness;
+        if ($lightness >= 100) {
+            $lightness = $this->baselightness;
+            if ($this->range > 0) {
+                $hue += $hueStep;
+            } else {
+                $hue -= $hueStep;
+            }
+            if (($hue - $this->basehue) * ($hue - ($this->basehue + $this->range)) >= 0) {
+                $hue = $this->basehue;
+            }
+            $this->hue = $hue;
+        }
+        $this->lightness = $lightness;
 
-		return sprintf('hsla(%s, %s%%, %s%%, %s)',
-			$this->hue,
-			$this->saturation,
-			$this->lightness,
-			$this->alpha);
-	}
+        return sprintf('hsla(%s, %s%%, %s%%, %s)',
+            $this->hue,
+            $this->saturation,
+            $this->lightness,
+            $this->alpha);
+    }
 }

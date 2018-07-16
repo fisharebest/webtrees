@@ -18,17 +18,20 @@
 /**
  * Test harness for the class ModuleThemeInterface
  */
-class ModuleThemeInterfaceTest extends \PHPUnit\Framework\TestCase {
-	/**
-	 * Prepare the environment for these tests
-	 */
-	public function setUp() {
-	}
+class ModuleThemeInterfaceTest extends \PHPUnit\Framework\TestCase
+{
+    /**
+     * Prepare the environment for these tests
+     */
+    public function setUp()
+    {
+    }
 
-	/**
-	 * Test that the class exists
-	 */
-	public function testClassExists() {
-		$this->assertTrue(interface_exists('\Fisharebest\Webtrees\Module\ModuleThemeInterface'));
-	}
+    /**
+     * Test that the class exists
+     */
+    public function testClassExists()
+    {
+        $this->assertTrue(interface_exists('\Fisharebest\Webtrees\Module\ModuleThemeInterface'));
+    }
 }

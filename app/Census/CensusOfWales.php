@@ -19,32 +19,35 @@ namespace Fisharebest\Webtrees\Census;
 /**
  * Definitions for a census
  */
-class CensusOfWales extends Census implements CensusPlaceInterface {
-	/**
-	 * All available censuses for this census place.
-	 *
-	 * @return CensusInterface[]
-	 */
-	public function allCensusDates() {
-		return [
-			new CensusOfWales1841(),
-			new CensusOfWales1851(),
-			new CensusOfWales1861(),
-			new CensusOfWales1871(),
-			new CensusOfWales1881(),
-			new CensusOfWales1891(),
-			new CensusOfWales1901(),
-			new CensusOfWales1911(),
-			new RegisterOfWales1939(),
-		];
-	}
+class CensusOfWales extends Census implements CensusPlaceInterface
+{
+    /**
+     * All available censuses for this census place.
+     *
+     * @return CensusInterface[]
+     */
+    public function allCensusDates()
+    {
+        return [
+            new CensusOfWales1841(),
+            new CensusOfWales1851(),
+            new CensusOfWales1861(),
+            new CensusOfWales1871(),
+            new CensusOfWales1881(),
+            new CensusOfWales1891(),
+            new CensusOfWales1901(),
+            new CensusOfWales1911(),
+            new RegisterOfWales1939(),
+        ];
+    }
 
-	/**
-	 * Where did this census occur, in GEDCOM format.
-	 *
-	 * @return string
-	 */
-	public function censusPlace() {
-		return 'Wales';
-	}
+    /**
+     * Where did this census occur, in GEDCOM format.
+     *
+     * @return string
+     */
+    public function censusPlace()
+    {
+        return 'Wales';
+    }
 }

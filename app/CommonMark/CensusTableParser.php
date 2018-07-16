@@ -29,75 +29,78 @@ use Webuni\CommonMark\TableExtension\TableRow;
  *
  * Based on the table parser from webuni/commonmark-table-extension.
  */
-class CensusTableParser extends AbstractBlockParser {
-	const REGEX_CENSUS_TABLE_HEADER = '/^\.b\.[^.|]+(?:\|\.b\.[^.|]+)*$/';
+class CensusTableParser extends AbstractBlockParser
+{
+    const REGEX_CENSUS_TABLE_HEADER = '/^\.b\.[^.|]+(?:\|\.b\.[^.|]+)*$/';
 
-	/**
-	 * Parse a paragraph of text with the following stucture:
-	 *
-	 * .b.HEADING1|.b.HEADING2|.b.HEADING3
-	 * COL1|COL2|COL3
-	 * COL1|COL2|COL3
-	 *
-	 * @param ContextInterface $context
-	 * @param Cursor           $cursor
-	 *
-	 * @return bool
-	 */
-	public function parse(ContextInterface $context, Cursor $cursor) {
-		$container = $context->getContainer();
+    /**
+     * Parse a paragraph of text with the following stucture:
+     *
+     * .b.HEADING1|.b.HEADING2|.b.HEADING3
+     * COL1|COL2|COL3
+     * COL1|COL2|COL3
+     *
+     * @param ContextInterface $context
+     * @param Cursor           $cursor
+     *
+     * @return bool
+     */
+    public function parse(ContextInterface $context, Cursor $cursor)
+    {
+        $container = $context->getContainer();
 
-		// Replace paragraphs with tables
-		if (!$container instanceof Paragraph) {
-			return false;
-		}
+        // Replace paragraphs with tables
+        if (!$container instanceof Paragraph) {
+            return false;
+        }
 
-		$lines = $container->getStrings();
+        $lines = $container->getStrings();
 
-		$first_line = array_pop($lines);
+        $first_line = array_pop($lines);
 
-		if (!preg_match(self::REGEX_CENSUS_TABLE_HEADER, $first_line)) {
-			return false;
-		}
+        if (!preg_match(self::REGEX_CENSUS_TABLE_HEADER, $first_line)) {
+            return false;
+        }
 
-		$head = $this->parseRow($first_line, TableCell::TYPE_HEAD);
+        $head = $this->parseRow($first_line, TableCell::TYPE_HEAD);
 
-		$table = new Table(function (Cursor $cursor) use (&$table) {
-			$row = $this->parseRow($cursor->getLine(), TableCell::TYPE_BODY);
-			if ($row === null) {
-				return false;
-			}
-			$table->getBody()->appendChild($row);
+        $table = new Table(function (Cursor $cursor) use (&$table) {
+            $row = $this->parseRow($cursor->getLine(), TableCell::TYPE_BODY);
+            if ($row === null) {
+                return false;
+            }
+            $table->getBody()->appendChild($row);
 
-			return true;
-		});
+            return true;
+        });
 
-		$table->getHead()->appendChild($head);
-		$context->replaceContainerBlock($table);
+        $table->getHead()->appendChild($head);
+        $context->replaceContainerBlock($table);
 
-		return true;
-	}
+        return true;
+    }
 
-	/**
-	 * @param string $line
-	 * @param string $type
-	 *
-	 * @return TableRow|null
-	 */
-	private function parseRow($line, $type) {
-		if (strpos($line, '|') === false) {
-			return null;
-		}
+    /**
+     * @param string $line
+     * @param string $type
+     *
+     * @return TableRow|null
+     */
+    private function parseRow($line, $type)
+    {
+        if (strpos($line, '|') === false) {
+            return null;
+        }
 
-		$row = new TableRow;
-		foreach (explode('|', $line) as $cell) {
-			// Strip leading ".b." from <th> cells
-			if ($type === TableCell::TYPE_HEAD && substr_compare($cell, '.b.', 0)) {
-				$cell = substr($cell, 3);
-			}
-			$row->appendChild(new TableCell($cell, $type, null));
-		}
+        $row = new TableRow;
+        foreach (explode('|', $line) as $cell) {
+            // Strip leading ".b." from <th> cells
+            if ($type === TableCell::TYPE_HEAD && substr_compare($cell, '.b.', 0)) {
+                $cell = substr($cell, 3);
+            }
+            $row->appendChild(new TableCell($cell, $type, null));
+        }
 
-		return $row;
-	}
+        return $row;
+    }
 }

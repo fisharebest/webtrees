@@ -22,23 +22,25 @@ use PDOException;
 /**
  * Upgrade the database schema from version 32 to version 33.
  */
-class Migration32 implements MigrationInterface {
-	/**
-	 * Upgrade to to the next version
-	 */
-	public function upgrade() {
-		try {
-			Database::prepare(
-				"ALTER TABLE `##site_setting` CHANGE setting_value setting_value VARCHAR(2000) NOT NULL"
-			)->execute();
-		} catch (PDOException $ex) {
-			DebugBar::addThrowable($ex);
+class Migration32 implements MigrationInterface
+{
+    /**
+     * Upgrade to to the next version
+     */
+    public function upgrade()
+    {
+        try {
+            Database::prepare(
+                "ALTER TABLE `##site_setting` CHANGE setting_value setting_value VARCHAR(2000) NOT NULL"
+            )->execute();
+        } catch (PDOException $ex) {
+            DebugBar::addThrowable($ex);
 
-			// Already done?
-		}
+            // Already done?
+        }
 
-		Database::prepare(
-			"DELETE FROM `##change` WHERE old_gedcom = '' AND new_gedcom = ''"
-		)->execute();
-	}
+        Database::prepare(
+            "DELETE FROM `##change` WHERE old_gedcom = '' AND new_gedcom = ''"
+        )->execute();
+    }
 }

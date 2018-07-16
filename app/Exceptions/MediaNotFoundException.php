@@ -23,11 +23,13 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 /**
  * Exception thrown when a media does not exist.
  */
-class MediaNotFoundException extends NotFoundHttpException {
-	/**
-	 * MediaNotFoundException constructor.
-	 */
-	public function __construct() {
-		parent::__construct(I18N::translate('This media object does not exist or you do not have permission to view it.'));
-	}
+class MediaNotFoundException extends NotFoundHttpException
+{
+    /**
+     * MediaNotFoundException constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct(I18N::translate('This media object does not exist or you do not have permission to view it.'));
+    }
 }

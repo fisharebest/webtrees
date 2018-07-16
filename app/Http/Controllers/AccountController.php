@@ -35,139 +35,144 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * Controller to allow the user to edit their account details.
  */
-class AccountController extends AbstractBaseController {
-	/**
-	 * Help for dates.
-	 *
-	 * @param Request $request
-	 *
-	 * @return Response
-	 */
-	public function edit(Request $request): Response {
-		/** @var Tree $tree */
-		$tree = $request->attributes->get('tree');
+class AccountController extends AbstractBaseController
+{
+    /**
+     * Help for dates.
+     *
+     * @param Request $request
+     *
+     * @return Response
+     */
+    public function edit(Request $request): Response
+    {
+        /** @var Tree $tree */
+        $tree = $request->attributes->get('tree');
 
-		/** @var User $user */
-		$user = $request->attributes->get('user');
+        /** @var User $user */
+        $user = $request->attributes->get('user');
 
-		$allow_user_themes    = (bool) Site::getPreference('ALLOW_USER_THEMES');
-		$my_individual_record = Individual::getInstance($tree->getUserPreference(Auth::user(), 'gedcomid'), $tree);
-		$contact_methods      = FunctionsEdit::optionsContactMethods();
-		$default_individual   = Individual::getInstance($tree->getUserPreference(Auth::user(), 'rootid'), $tree);
-		$installed_languages  = FunctionsEdit::optionsInstalledLanguages();
-		$show_delete_option   = !$user->getPreference('canadmin');
-		$themes               = $this->themeNames();
-		$timezone_ids         = DateTimeZone::listIdentifiers();
-		$timezones            = array_combine($timezone_ids, $timezone_ids);
-		$title                = I18N::translate('My account');
+        $allow_user_themes    = (bool)Site::getPreference('ALLOW_USER_THEMES');
+        $my_individual_record = Individual::getInstance($tree->getUserPreference(Auth::user(), 'gedcomid'), $tree);
+        $contact_methods      = FunctionsEdit::optionsContactMethods();
+        $default_individual   = Individual::getInstance($tree->getUserPreference(Auth::user(), 'rootid'), $tree);
+        $installed_languages  = FunctionsEdit::optionsInstalledLanguages();
+        $show_delete_option   = !$user->getPreference('canadmin');
+        $themes               = $this->themeNames();
+        $timezone_ids         = DateTimeZone::listIdentifiers();
+        $timezones            = array_combine($timezone_ids, $timezone_ids);
+        $title                = I18N::translate('My account');
 
-		return $this->viewResponse('edit-account-page', [
-			'allow_user_themes'    => $allow_user_themes,
-			'contact_methods'      => $contact_methods,
-			'default_individual'   => $default_individual,
-			'installed_languages'  => $installed_languages,
-			'my_individual_record' => $my_individual_record,
-			'show_delete_option'   => $show_delete_option,
-			'themes'               => $themes,
-			'timezones'            => $timezones,
-			'title'                => $title,
-			'user'                 => $user,
-		]);
-	}
+        return $this->viewResponse('edit-account-page', [
+            'allow_user_themes'    => $allow_user_themes,
+            'contact_methods'      => $contact_methods,
+            'default_individual'   => $default_individual,
+            'installed_languages'  => $installed_languages,
+            'my_individual_record' => $my_individual_record,
+            'show_delete_option'   => $show_delete_option,
+            'themes'               => $themes,
+            'timezones'            => $timezones,
+            'title'                => $title,
+            'user'                 => $user,
+        ]);
+    }
 
-	/**
-	 * @param Request $request
-	 *
-	 * @return RedirectResponse
-	 */
-	public function update(Request $request): RedirectResponse {
-		/** @var Tree $tree */
-		$tree = $request->attributes->get('tree');
+    /**
+     * @param Request $request
+     *
+     * @return RedirectResponse
+     */
+    public function update(Request $request): RedirectResponse
+    {
+        /** @var Tree $tree */
+        $tree = $request->attributes->get('tree');
 
-		/** @var User $user */
-		$user = $request->attributes->get('user');
+        /** @var User $user */
+        $user = $request->attributes->get('user');
 
-		$contact_method = (string) $request->get('contact_method');
-		$email          = (string) $request->get('email');
-		$language       = (string) $request->get('language');
-		$real_name      = (string) $request->get('real_name');
-		$password       = (string) $request->get('password');
-		$rootid         = (string) $request->get('root_id');
-		$theme          = (string) $request->get('theme');
-		$time_zone      = (string) $request->get('timezone');
-		$user_name      = (string) $request->get('user_name');
-		$visible_online = (string) $request->get('visible_online');
+        $contact_method = (string)$request->get('contact_method');
+        $email          = (string)$request->get('email');
+        $language       = (string)$request->get('language');
+        $real_name      = (string)$request->get('real_name');
+        $password       = (string)$request->get('password');
+        $rootid         = (string)$request->get('root_id');
+        $theme          = (string)$request->get('theme');
+        $time_zone      = (string)$request->get('timezone');
+        $user_name      = (string)$request->get('user_name');
+        $visible_online = (string)$request->get('visible_online');
 
-		// Change the password
-		if ($password !== '') {
-			$user->setPassword($password);
-		}
+        // Change the password
+        if ($password !== '') {
+            $user->setPassword($password);
+        }
 
-		// Change the username
-		if ($user_name !== $user->getUserName()) {
-			if (User::findByUserName($user_name) === null) {
-				$user->setUserName($user_name);
-			} else {
-				FlashMessages::addMessage(I18N::translate('Duplicate username. A user with that username already exists. Please choose another username.'));
-			}
-		}
+        // Change the username
+        if ($user_name !== $user->getUserName()) {
+            if (User::findByUserName($user_name) === null) {
+                $user->setUserName($user_name);
+            } else {
+                FlashMessages::addMessage(I18N::translate('Duplicate username. A user with that username already exists. Please choose another username.'));
+            }
+        }
 
-		// Change the email
-		if ($email !== $user->getEmail()) {
-			if (User::findByEmail($email) === null) {
-				$user->setEmail($email);
-			} else {
-				FlashMessages::addMessage(I18N::translate('Duplicate email address. A user with that email already exists.'));
-			}
-		}
+        // Change the email
+        if ($email !== $user->getEmail()) {
+            if (User::findByEmail($email) === null) {
+                $user->setEmail($email);
+            } else {
+                FlashMessages::addMessage(I18N::translate('Duplicate email address. A user with that email already exists.'));
+            }
+        }
 
-		$user
-			->setRealName($real_name)
-			->setPreference('contactmethod', $contact_method)
-			->setPreference('language', $language)
-			->setPreference('theme', $theme)
-			->setPreference('TIMEZONE', $time_zone)
-			->setPreference('visibleonline', $visible_online);
+        $user
+            ->setRealName($real_name)
+            ->setPreference('contactmethod', $contact_method)
+            ->setPreference('language', $language)
+            ->setPreference('theme', $theme)
+            ->setPreference('TIMEZONE', $time_zone)
+            ->setPreference('visibleonline', $visible_online);
 
-		$tree->setUserPreference($user,'rootid', $rootid);
+        $tree->setUserPreference($user, 'rootid', $rootid);
 
-		// Switch to the new theme now
-		Session::put('theme_id', $theme);
+        // Switch to the new theme now
+        Session::put('theme_id', $theme);
 
-		// Switch to the new language now
-		Session::put('locale', $language);
+        // Switch to the new language now
+        Session::put('locale', $language);
 
-		return new RedirectResponse(route('my-account', ['ged' => $tree->getName()]));
-	}
+        return new RedirectResponse(route('my-account', ['ged' => $tree->getName()]));
+    }
 
-	/**
-	 * @param Request $request
-	 *
-	 * @return RedirectResponse
-	 */
-	public function delete(Request $request): RedirectResponse {
-		/** @var User $user */
-		$user = $request->attributes->get('user');
+    /**
+     * @param Request $request
+     *
+     * @return RedirectResponse
+     */
+    public function delete(Request $request): RedirectResponse
+    {
+        /** @var User $user */
+        $user = $request->attributes->get('user');
 
-		// An administrator can only be deleted by another administrator
-		if (!$user->getPreference('canadmin')) {
-			$currentUser = Auth::user();
-			Auth::logout();
-			$currentUser->delete();
-		}
+        // An administrator can only be deleted by another administrator
+        if (!$user->getPreference('canadmin')) {
+            $currentUser = Auth::user();
+            Auth::logout();
+            $currentUser->delete();
+        }
 
-		return new RedirectResponse(route('my-account'));
-	}
+        return new RedirectResponse(route('my-account'));
+    }
 
-	/**
-	 * @return array
-	 */
-	private function themeNames(): array {
-		$default_option = [
-			'' => /* I18N: default option in list of themes */
-				I18N::translate('<default theme>'),
-		];
+    /**
+     * @return array
+     */
+    private function themeNames(): array
+    {
+        $default_option = [
+            '' => /* I18N: default option in list of themes */
+                I18N::translate('<default theme>'),
+        ];
 
-		return $default_option + Theme::themeNames();
-	}
+        return $default_option + Theme::themeNames();
+    }
 }

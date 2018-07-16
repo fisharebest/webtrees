@@ -21,58 +21,63 @@ use Fisharebest\Webtrees\I18N;
 /**
  * Class BatchUpdateNameFormatPlugin Batch Update plugin: fix spacing in names, particularly that before/after the surname slashes
  */
-class BatchUpdateNameFormatPlugin extends BatchUpdateBasePlugin {
-	/**
-	 * User-friendly name for this plugin.
-	 *
-	 * @return string
-	 */
-	public function getName() {
-		return I18N::translate('Fix name slashes and spaces');
-	}
+class BatchUpdateNameFormatPlugin extends BatchUpdateBasePlugin
+{
+    /**
+     * User-friendly name for this plugin.
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return I18N::translate('Fix name slashes and spaces');
+    }
 
-	/**
-	 * Description / help-text for this plugin.
-	 *
-	 * @return string
-	 */
-	public function getDescription() {
-		return I18N::translate('Correct NAME records of the form “John/DOE/” or “John /DOE”, as produced by older genealogy programs.');
-	}
+    /**
+     * Description / help-text for this plugin.
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return I18N::translate('Correct NAME records of the form “John/DOE/” or “John /DOE”, as produced by older genealogy programs.');
+    }
 
-	/**
-	 * Does this record need updating?
-	 *
-	 * @param GedcomRecord $record
-	 *
-	 * @return bool
-	 */
-	public function doesRecordNeedUpdate(GedcomRecord $record): bool {
-		$gedcom = $record->getGedcom();
+    /**
+     * Does this record need updating?
+     *
+     * @param GedcomRecord $record
+     *
+     * @return bool
+     */
+    public function doesRecordNeedUpdate(GedcomRecord $record): bool
+    {
+        $gedcom = $record->getGedcom();
 
-		return
-			preg_match('/^(?:1 NAME|2 (?:FONE|ROMN|_MARNM|_AKA|_HEB)) [^\/\n]*\/[^\/\n]*$/m', $gedcom) ||
-			preg_match('/^(?:1 NAME|2 (?:FONE|ROMN|_MARNM|_AKA|_HEB)) [^\/\n]*[^\/ ]\//m', $gedcom);
-	}
+        return
+            preg_match('/^(?:1 NAME|2 (?:FONE|ROMN|_MARNM|_AKA|_HEB)) [^\/\n]*\/[^\/\n]*$/m', $gedcom) ||
+            preg_match('/^(?:1 NAME|2 (?:FONE|ROMN|_MARNM|_AKA|_HEB)) [^\/\n]*[^\/ ]\//m', $gedcom);
+    }
 
-	/**
-	 * Apply any updates to this record
-	 *
-	 * @param GedcomRecord $record
-	 *
-	 * @return string
-	 */
-	public function updateRecord(GedcomRecord $record): string {
-		$old_gedcom = $record->getGedcom();
-		$new_gedcom = preg_replace([
-			'/^((?:1 NAME|2 (?:FONE|ROMN|_MARNM|_AKA|_HEB)) [^\/\n]*\/[^\/\n]*)$/m',
-			'/^((?:1 NAME|2 (?:FONE|ROMN|_MARNM|_AKA|_HEB)) [^\/\n]*[^\/ ])(\/)/m',
-		], [
-			'$1/',
-			'$1 $2',
-		], $old_gedcom
-		);
+    /**
+     * Apply any updates to this record
+     *
+     * @param GedcomRecord $record
+     *
+     * @return string
+     */
+    public function updateRecord(GedcomRecord $record): string
+    {
+        $old_gedcom = $record->getGedcom();
+        $new_gedcom = preg_replace([
+            '/^((?:1 NAME|2 (?:FONE|ROMN|_MARNM|_AKA|_HEB)) [^\/\n]*\/[^\/\n]*)$/m',
+            '/^((?:1 NAME|2 (?:FONE|ROMN|_MARNM|_AKA|_HEB)) [^\/\n]*[^\/ ])(\/)/m',
+        ], [
+            '$1/',
+            '$1 $2',
+        ], $old_gedcom
+        );
 
-		return $new_gedcom;
-	}
+        return $new_gedcom;
+    }
 }

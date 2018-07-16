@@ -23,11 +23,13 @@ use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 /**
  * Exception thrown when a repository cannot be accessed due to privacy rules.
  */
-class RepositoryAccessDeniedException extends AccessDeniedHttpException {
-	/**
-	 * RepositoryNotFoundException constructor.
-	 */
-	public function __construct() {
-		parent::__construct(I18N::translate('This repository does not exist or you do not have permission to view it.'));
-	}
+class RepositoryAccessDeniedException extends AccessDeniedHttpException
+{
+    /**
+     * RepositoryNotFoundException constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct(I18N::translate('This repository does not exist or you do not have permission to view it.'));
+    }
 }

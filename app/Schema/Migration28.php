@@ -20,14 +20,16 @@ use Fisharebest\Webtrees\Database;
 /**
  * Upgrade the database schema from version 28 to version 29.
  */
-class Migration28 implements MigrationInterface {
-	/**
-	 * Upgrade to to the next version
-	 */
-	public function upgrade() {
-		// Earlier versions used the wrong month number for Adar in non-leap years
-		Database::exec(
-			"UPDATE `##dates` SET d_mon = 7 WHERE d_mon = 6 && d_type = '@#DHEBREW@' AND MOD(7 * d_year + 1, 19) >= 7"
-		);
-	}
+class Migration28 implements MigrationInterface
+{
+    /**
+     * Upgrade to to the next version
+     */
+    public function upgrade()
+    {
+        // Earlier versions used the wrong month number for Adar in non-leap years
+        Database::exec(
+            "UPDATE `##dates` SET d_mon = 7 WHERE d_mon = 6 && d_type = '@#DHEBREW@' AND MOD(7 * d_year + 1, 19) >= 7"
+        );
+    }
 }

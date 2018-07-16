@@ -18,68 +18,72 @@ namespace Fisharebest\Webtrees\Report;
 /**
  * Class ReportBaseLine
  */
-class ReportBaseLine extends ReportBaseElement {
-	/**
-	 * Start horizontal position, current position (default)
-	 *
-	 * @var mixed
-	 */
-	public $x1 = '.';
-	/**
-	 * Start vertical position, current position (default)
-	 *
-	 * @var mixed
-	 */
-	public $y1 = '.';
-	/**
-	 * End horizontal position, maximum width (default)
-	 *
-	 * @var mixed
-	 */
-	public $x2 = '.';
-	/**
-	 * End vertical position
-	 *
-	 * @var mixed
-	 */
-	public $y2 = '.';
+class ReportBaseLine extends ReportBaseElement
+{
+    /**
+     * Start horizontal position, current position (default)
+     *
+     * @var mixed
+     */
+    public $x1 = '.';
+    /**
+     * Start vertical position, current position (default)
+     *
+     * @var mixed
+     */
+    public $y1 = '.';
+    /**
+     * End horizontal position, maximum width (default)
+     *
+     * @var mixed
+     */
+    public $x2 = '.';
+    /**
+     * End vertical position
+     *
+     * @var mixed
+     */
+    public $y2 = '.';
 
-	/**
-	 * Create a line class - Base
-	 *
-	 * @param mixed $x1
-	 * @param mixed $y1
-	 * @param mixed $x2
-	 * @param mixed $y2
-	 */
-	public function __construct($x1, $y1, $x2, $y2) {
-		$this->x1 = $x1;
-		$this->y1 = $y1;
-		$this->x2 = $x2;
-		$this->y2 = $y2;
+    /**
+     * Create a line class - Base
+     *
+     * @param mixed $x1
+     * @param mixed $y1
+     * @param mixed $x2
+     * @param mixed $y2
+     */
+    public function __construct($x1, $y1, $x2, $y2)
+    {
+        $this->x1 = $x1;
+        $this->y1 = $y1;
+        $this->x2 = $x2;
+        $this->y2 = $y2;
 
-		return 0;
-	}
+        return 0;
+    }
 
-	/**
-	 * Get the height of the line.
-	 *
-	 * @param $renderer
-	 *
-	 * @return number
-	 */
-	public function getHeight($renderer) {
-		return abs($this->y2 - $this->y1);
-	}
+    /**
+     * Get the height of the line.
+     *
+     * @param $renderer
+     *
+     * @return number
+     */
+    public function getHeight($renderer)
+    {
+        return abs($this->y2 - $this->y1);
+    }
 
-	/**
-	 * Get the width of the line.
-	 *
-	 * @param $renderer
-	 *
-	 * @return number
-	 */
-	public function getWidth($renderer) {
-		return abs($this->x2 - $this->x1);
-	}
+    /**
+     * Get the width of the line.
+     *
+     * @param $renderer
+     *
+     * @return number
+     */
+    public function getWidth($renderer)
+    {
+        return abs($this->x2 - $this->x1);
+    }
 }

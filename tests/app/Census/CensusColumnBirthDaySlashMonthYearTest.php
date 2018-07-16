@@ -21,35 +21,38 @@ use Mockery;
 /**
  * Test harness for the class CensusColumnBirthDaySlashMonthYearTest
  */
-class CensusColumnBirthDaySlashMonthYearTest extends \PHPUnit\Framework\TestCase {
-	/**
-	 * Delete mock objects
-	 */
-	public function tearDown() {
-		Mockery::close();
-	}
+class CensusColumnBirthDaySlashMonthYearTest extends \PHPUnit\Framework\TestCase
+{
+    /**
+     * Delete mock objects
+     */
+    public function tearDown()
+    {
+        Mockery::close();
+    }
 
-	/**
-	 * @covers \Fisharebest\Webtrees\Census\CensusColumnBirthDaySlashMonthYearTest
-	 * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-	 */
-	public function testGenerateColumn() {
-		$cal_date = Mockery::mock('Fisharebest\Webtrees\Date\GregorianDate');
-		$cal_date->shouldReceive('format')->andReturn('30/6 1832');
+    /**
+     * @covers \Fisharebest\Webtrees\Census\CensusColumnBirthDaySlashMonthYearTest
+     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
+     */
+    public function testGenerateColumn()
+    {
+        $cal_date = Mockery::mock('Fisharebest\Webtrees\Date\GregorianDate');
+        $cal_date->shouldReceive('format')->andReturn('30/6 1832');
 
-		$date = Mockery::mock('Fisharebest\Webtrees\Date');
-		$date->shouldReceive('minimumJulianDay')->andReturn($cal_date);
-		$date->shouldReceive('maximumJulianDay')->andReturn($cal_date);
-		$date->shouldReceive('minimumDate')->andReturn($cal_date);
+        $date = Mockery::mock('Fisharebest\Webtrees\Date');
+        $date->shouldReceive('minimumJulianDay')->andReturn($cal_date);
+        $date->shouldReceive('maximumJulianDay')->andReturn($cal_date);
+        $date->shouldReceive('minimumDate')->andReturn($cal_date);
 
-		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
-		$individual->shouldReceive('getBirthDate')->andReturn($date);
+        $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
+        $individual->shouldReceive('getBirthDate')->andReturn($date);
 
-		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
-		$census->shouldReceive('censusDate')->andReturn('30 JUN 1832');
+        $census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
+        $census->shouldReceive('censusDate')->andReturn('30 JUN 1832');
 
-		$column = new CensusColumnBirthDaySlashMonthYear($census, '', '');
+        $column = new CensusColumnBirthDaySlashMonthYear($census, '', '');
 
-		$this->assertSame('30/6 1832', $column->generate($individual));
-	}
+        $this->assertSame('30/6 1832', $column->generate($individual));
+    }
 }

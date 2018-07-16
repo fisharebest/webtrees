@@ -20,59 +20,61 @@ use Fisharebest\Webtrees\Database;
 /**
  * Upgrade the database schema from version 26 to version 27.
  */
-class Migration26 implements MigrationInterface {
-	/**
-	 * Upgrade to to the next version
-	 */
-	public function upgrade() {
-		// Earlier versions of webtrees put quote marks round soundex codes.
-		// These are harmless, but clean them up for consistency.
-		Database::exec(
-			"UPDATE `##name` SET" .
-			" n_soundex_givn_std = TRIM('''' FROM n_soundex_givn_std)," .
-			" n_soundex_surn_std = TRIM('''' FROM n_soundex_surn_std)," .
-			" n_soundex_givn_dm  = TRIM('''' FROM n_soundex_givn_dm )," .
-			" n_soundex_surn_dm  = TRIM('''' FROM n_soundex_surn_dm )"
-		);
+class Migration26 implements MigrationInterface
+{
+    /**
+     * Upgrade to to the next version
+     */
+    public function upgrade()
+    {
+        // Earlier versions of webtrees put quote marks round soundex codes.
+        // These are harmless, but clean them up for consistency.
+        Database::exec(
+            "UPDATE `##name` SET" .
+            " n_soundex_givn_std = TRIM('''' FROM n_soundex_givn_std)," .
+            " n_soundex_surn_std = TRIM('''' FROM n_soundex_surn_std)," .
+            " n_soundex_givn_dm  = TRIM('''' FROM n_soundex_givn_dm )," .
+            " n_soundex_surn_dm  = TRIM('''' FROM n_soundex_surn_dm )"
+        );
 
-		// Earlier versions of webtrees added zero codes for names without phonetic content.
-		// These are harmless, but clean them up for consistency.
-		Database::exec(
-			"UPDATE `##name` SET" .
-			" n_soundex_givn_std = REPLACE(n_soundex_givn_std, '0000:',   '')," .
-			" n_soundex_surn_std = REPLACE(n_soundex_surn_std, '0000:',   '')," .
-			" n_soundex_givn_dm  = REPLACE(n_soundex_givn_dm,  '000000:', '')," .
-			" n_soundex_surn_dm  = REPLACE(n_soundex_surn_dm,  '000000:', '')"
-		);
-		Database::exec(
-			"UPDATE `##name` SET" .
-			" n_soundex_givn_std = REPLACE(n_soundex_givn_std, ':0000',   '')," .
-			" n_soundex_surn_std = REPLACE(n_soundex_surn_std, ':0000',   '')," .
-			" n_soundex_givn_dm  = REPLACE(n_soundex_givn_dm,  ':000000', '')," .
-			" n_soundex_surn_dm  = REPLACE(n_soundex_surn_dm,  ':000000', '')"
-		);
-		Database::exec(
-			"UPDATE `##name` SET" .
-			" n_soundex_givn_std = NULLIF(n_soundex_givn_std, '0000'  )," .
-			" n_soundex_surn_std = NULLIF(n_soundex_surn_std, '0000'  )," .
-			" n_soundex_givn_dm  = NULLIF(n_soundex_givn_dm,  '000000')," .
-			" n_soundex_surn_dm  = NULLIF(n_soundex_surn_dm,  '000000')"
-		);
+        // Earlier versions of webtrees added zero codes for names without phonetic content.
+        // These are harmless, but clean them up for consistency.
+        Database::exec(
+            "UPDATE `##name` SET" .
+            " n_soundex_givn_std = REPLACE(n_soundex_givn_std, '0000:',   '')," .
+            " n_soundex_surn_std = REPLACE(n_soundex_surn_std, '0000:',   '')," .
+            " n_soundex_givn_dm  = REPLACE(n_soundex_givn_dm,  '000000:', '')," .
+            " n_soundex_surn_dm  = REPLACE(n_soundex_surn_dm,  '000000:', '')"
+        );
+        Database::exec(
+            "UPDATE `##name` SET" .
+            " n_soundex_givn_std = REPLACE(n_soundex_givn_std, ':0000',   '')," .
+            " n_soundex_surn_std = REPLACE(n_soundex_surn_std, ':0000',   '')," .
+            " n_soundex_givn_dm  = REPLACE(n_soundex_givn_dm,  ':000000', '')," .
+            " n_soundex_surn_dm  = REPLACE(n_soundex_surn_dm,  ':000000', '')"
+        );
+        Database::exec(
+            "UPDATE `##name` SET" .
+            " n_soundex_givn_std = NULLIF(n_soundex_givn_std, '0000'  )," .
+            " n_soundex_surn_std = NULLIF(n_soundex_surn_std, '0000'  )," .
+            " n_soundex_givn_dm  = NULLIF(n_soundex_givn_dm,  '000000')," .
+            " n_soundex_surn_dm  = NULLIF(n_soundex_surn_dm,  '000000')"
+        );
 
-		Database::exec(
-			"UPDATE `##places` SET" .
-			" p_std_soundex = REPLACE(p_std_soundex, '0000:',   '')," .
-			" p_dm_soundex  = REPLACE(p_dm_soundex,  '000000:', '')"
-		);
-		Database::exec(
-			"UPDATE `##places` SET" .
-			" p_std_soundex = REPLACE(p_std_soundex, ':0000',   '')," .
-			" p_dm_soundex  = REPLACE(p_dm_soundex,  ':000000', '')"
-		);
-		Database::exec(
-			"UPDATE `##places` SET" .
-			" p_std_soundex = NULLIF(p_std_soundex, '0000'  )," .
-			" p_dm_soundex  = NULLIF(p_dm_soundex,  '000000')"
-		);
-	}
+        Database::exec(
+            "UPDATE `##places` SET" .
+            " p_std_soundex = REPLACE(p_std_soundex, '0000:',   '')," .
+            " p_dm_soundex  = REPLACE(p_dm_soundex,  '000000:', '')"
+        );
+        Database::exec(
+            "UPDATE `##places` SET" .
+            " p_std_soundex = REPLACE(p_std_soundex, ':0000',   '')," .
+            " p_dm_soundex  = REPLACE(p_dm_soundex,  ':000000', '')"
+        );
+        Database::exec(
+            "UPDATE `##places` SET" .
+            " p_std_soundex = NULLIF(p_std_soundex, '0000'  )," .
+            " p_dm_soundex  = NULLIF(p_dm_soundex,  '000000')"
+        );
+    }
 }

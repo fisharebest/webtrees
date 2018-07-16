@@ -20,183 +20,194 @@ use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
 /**
  * A GEDCOM media (OBJE) object.
  */
-class Media extends GedcomRecord {
-	const RECORD_TYPE = 'OBJE';
-	const ROUTE_NAME  = 'media';
+class Media extends GedcomRecord
+{
+    const RECORD_TYPE = 'OBJE';
+    const ROUTE_NAME  = 'media';
 
-	/**
-	 * Get an instance of a media object. For single records,
-	 * we just receive the XREF. For bulk records (such as lists
-	 * and search results) we can receive the GEDCOM data as well.
-	 *
-	 * @param string      $xref
-	 * @param Tree        $tree
-	 * @param string|null $gedcom
-	 *
-	 * @throws \Exception
-	 *
-	 * @return Media|null
-	 */
-	public static function getInstance($xref, Tree $tree, $gedcom = null) {
-		$record = parent::getInstance($xref, $tree, $gedcom);
+    /**
+     * Get an instance of a media object. For single records,
+     * we just receive the XREF. For bulk records (such as lists
+     * and search results) we can receive the GEDCOM data as well.
+     *
+     * @param string      $xref
+     * @param Tree        $tree
+     * @param string|null $gedcom
+     *
+     * @throws \Exception
+     *
+     * @return Media|null
+     */
+    public static function getInstance($xref, Tree $tree, $gedcom = null)
+    {
+        $record = parent::getInstance($xref, $tree, $gedcom);
 
-		if ($record instanceof Media) {
-			return $record;
-		} else {
-			return null;
-		}
-	}
+        if ($record instanceof Media) {
+            return $record;
+        } else {
+            return null;
+        }
+    }
 
-	/**
-	 * Each object type may have its own special rules, and re-implement this function.
-	 *
-	 * @param int $access_level
-	 *
-	 * @return bool
-	 */
-	protected function canShowByType($access_level) {
-		// Hide media objects if they are attached to private records
-		$linked_ids = Database::prepare(
-			"SELECT l_from FROM `##link` WHERE l_to = ? AND l_file = ?"
-		)->execute([
-			$this->xref, $this->tree->getTreeId(),
-		])->fetchOneColumn();
-		foreach ($linked_ids as $linked_id) {
-			$linked_record = GedcomRecord::getInstance($linked_id, $this->tree);
-			if ($linked_record && !$linked_record->canShow($access_level)) {
-				return false;
-			}
-		}
+    /**
+     * Each object type may have its own special rules, and re-implement this function.
+     *
+     * @param int $access_level
+     *
+     * @return bool
+     */
+    protected function canShowByType($access_level)
+    {
+        // Hide media objects if they are attached to private records
+        $linked_ids = Database::prepare(
+            "SELECT l_from FROM `##link` WHERE l_to = ? AND l_file = ?"
+        )->execute([
+            $this->xref,
+            $this->tree->getTreeId(),
+        ])->fetchOneColumn();
+        foreach ($linked_ids as $linked_id) {
+            $linked_record = GedcomRecord::getInstance($linked_id, $this->tree);
+            if ($linked_record && !$linked_record->canShow($access_level)) {
+                return false;
+            }
+        }
 
-		// ... otherwise apply default behaviour
-		return parent::canShowByType($access_level);
-	}
+        // ... otherwise apply default behaviour
+        return parent::canShowByType($access_level);
+    }
 
-	/**
-	 * Fetch data from the database
-	 *
-	 * @param string $xref
-	 * @param int    $tree_id
-	 *
-	 * @return null|string
-	 */
-	protected static function fetchGedcomRecord($xref, $tree_id) {
-		return Database::prepare(
-			"SELECT m_gedcom FROM `##media` WHERE m_id = :xref AND m_file = :tree_id"
-		)->execute([
-			'xref'    => $xref,
-			'tree_id' => $tree_id,
-		])->fetchOne();
-	}
+    /**
+     * Fetch data from the database
+     *
+     * @param string $xref
+     * @param int    $tree_id
+     *
+     * @return null|string
+     */
+    protected static function fetchGedcomRecord($xref, $tree_id)
+    {
+        return Database::prepare(
+            "SELECT m_gedcom FROM `##media` WHERE m_id = :xref AND m_file = :tree_id"
+        )->execute([
+            'xref'    => $xref,
+            'tree_id' => $tree_id,
+        ])->fetchOne();
+    }
 
-	/**
-	 * Get the media files for this media object
-	 *
-	 * @return MediaFile[]
-	 */
-	public function mediaFiles(): array {
-		$media_files = [];
+    /**
+     * Get the media files for this media object
+     *
+     * @return MediaFile[]
+     */
+    public function mediaFiles(): array
+    {
+        $media_files = [];
 
-		foreach ($this->getFacts('FILE') as $fact) {
-			$media_files[] = new MediaFile($fact->getGedcom(), $this);
-		}
+        foreach ($this->getFacts('FILE') as $fact) {
+            $media_files[] = new MediaFile($fact->getGedcom(), $this);
+        }
 
-		return $media_files;
-	}
+        return $media_files;
+    }
 
-	/**
-	 * Get the first media file that contains an image.
-	 *
-	 * @return MediaFile|null
-	 */
-	public function firstImageFile() {
-		foreach ($this->mediaFiles() as $media_file) {
-			if ($media_file->isImage()) {
-				return $media_file;
-			}
-		}
+    /**
+     * Get the first media file that contains an image.
+     *
+     * @return MediaFile|null
+     */
+    public function firstImageFile()
+    {
+        foreach ($this->mediaFiles() as $media_file) {
+            if ($media_file->isImage()) {
+                return $media_file;
+            }
+        }
 
-		return null;
-	}
+        return null;
+    }
 
-	/**
-	 * Get the first note attached to this media object
-	 *
-	 * @return null|string
-	 */
-	public function getNote() {
-		$note = $this->getFirstFact('NOTE');
-		if ($note) {
-			$text = $note->getValue();
-			if (preg_match('/^@' . WT_REGEX_XREF . '@$/', $text)) {
-				$text = $note->getTarget()->getNote();
-			}
+    /**
+     * Get the first note attached to this media object
+     *
+     * @return null|string
+     */
+    public function getNote()
+    {
+        $note = $this->getFirstFact('NOTE');
+        if ($note) {
+            $text = $note->getValue();
+            if (preg_match('/^@' . WT_REGEX_XREF . '@$/', $text)) {
+                $text = $note->getTarget()->getNote();
+            }
 
-			return $text;
-		} else {
-			return '';
-		}
-	}
+            return $text;
+        } else {
+            return '';
+        }
+    }
 
-	/**
-	 * Extract names from the GEDCOM record.
-	 */
-	public function extractNames() {
-		$names = [];
-		foreach ($this->mediaFiles() as $media_file) {
-			$names[] = $media_file->title();
-		}
-		foreach ($this->mediaFiles() as $media_file) {
-			$names[] = $media_file->filename();
-		}
-		$names = array_filter(array_unique($names));
+    /**
+     * Extract names from the GEDCOM record.
+     */
+    public function extractNames()
+    {
+        $names = [];
+        foreach ($this->mediaFiles() as $media_file) {
+            $names[] = $media_file->title();
+        }
+        foreach ($this->mediaFiles() as $media_file) {
+            $names[] = $media_file->filename();
+        }
+        $names = array_filter(array_unique($names));
 
-		if (empty($names)) {
-			$names[] = $this->getFallBackName();
-		}
+        if (empty($names)) {
+            $names[] = $this->getFallBackName();
+        }
 
-		foreach ($names as $name) {
-			$this->addName(static::RECORD_TYPE, $name, null);
-		}
-	}
+        foreach ($names as $name) {
+            $this->addName(static::RECORD_TYPE, $name, null);
+        }
+    }
 
-	/**
-	 * This function should be redefined in derived classes to show any major
-	 * identifying characteristics of this record.
-	 *
-	 * @return string
-	 */
-	public function formatListDetails() {
-		ob_start();
-		FunctionsPrintFacts::printMediaLinks($this->getTree(), '1 OBJE @' . $this->getXref() . '@', 1);
+    /**
+     * This function should be redefined in derived classes to show any major
+     * identifying characteristics of this record.
+     *
+     * @return string
+     */
+    public function formatListDetails()
+    {
+        ob_start();
+        FunctionsPrintFacts::printMediaLinks($this->getTree(), '1 OBJE @' . $this->getXref() . '@', 1);
 
-		return ob_get_clean();
-	}
+        return ob_get_clean();
+    }
 
-	/**
-	 * Display an image-thumbnail or a media-icon, and add markup for image viewers such as colorbox.
-	 *
-	 * @param int      $width      Pixels
-	 * @param int      $height     Pixels
-	 * @param string   $fit        "crop" or "contain"
-	 * @param string[] $attributes Additional HTML attributes
-	 *
-	 * @return string
-	 */
-	public function displayImage($width, $height, $fit, $attributes = []) {
-		// Display the first image
-		foreach ($this->mediaFiles() as $media_file) {
-			if ($media_file->isImage()) {
-				return $media_file->displayImage($width, $height, $fit, $attributes);
-			}
-		}
+    /**
+     * Display an image-thumbnail or a media-icon, and add markup for image viewers such as colorbox.
+     *
+     * @param int      $width      Pixels
+     * @param int      $height     Pixels
+     * @param string   $fit        "crop" or "contain"
+     * @param string[] $attributes Additional HTML attributes
+     *
+     * @return string
+     */
+    public function displayImage($width, $height, $fit, $attributes = [])
+    {
+        // Display the first image
+        foreach ($this->mediaFiles() as $media_file) {
+            if ($media_file->isImage()) {
+                return $media_file->displayImage($width, $height, $fit, $attributes);
+            }
+        }
 
-		// Display the first file of any type
-		foreach ($this->mediaFiles() as $media_file) {
-			return $media_file->displayImage($width, $height, $fit, $attributes);
-		}
+        // Display the first file of any type
+        foreach ($this->mediaFiles() as $media_file) {
+            return $media_file->displayImage($width, $height, $fit, $attributes);
+        }
 
-		// No image?
-		return '';
-	}
+        // No image?
+        return '';
+    }
 }

@@ -19,43 +19,46 @@ namespace Fisharebest\Webtrees\Census;
 /**
  * Test harness for the class CensusOfDenmark1840
  */
-class CensusOfDenmark1840Test extends \PHPUnit\Framework\TestCase {
-	/**
-	 * Test the census place and date
-	 *
-	 * @covers \Fisharebest\Webtrees\Census\CensusOfDenmark1840
-	 */
-	public function testPlaceAndDate() {
-		$census = new CensusOfDenmark1840;
+class CensusOfDenmark1840Test extends \PHPUnit\Framework\TestCase
+{
+    /**
+     * Test the census place and date
+     *
+     * @covers \Fisharebest\Webtrees\Census\CensusOfDenmark1840
+     */
+    public function testPlaceAndDate()
+    {
+        $census = new CensusOfDenmark1840;
 
-		$this->assertSame('Danmark', $census->censusPlace());
-		$this->assertSame('01 FEB 1840', $census->censusDate());
-	}
+        $this->assertSame('Danmark', $census->censusPlace());
+        $this->assertSame('01 FEB 1840', $census->censusDate());
+    }
 
-	/**
-	 * Test the census columns
-	 *
-	 * @covers \Fisharebest\Webtrees\Census\CensusOfDenmark1840
-	 * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-	 */
-	public function testColumns() {
-		$census  = new CensusOfDenmark1840;
-		$columns = $census->columns();
+    /**
+     * Test the census columns
+     *
+     * @covers \Fisharebest\Webtrees\Census\CensusOfDenmark1840
+     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
+     */
+    public function testColumns()
+    {
+        $census  = new CensusOfDenmark1840;
+        $columns = $census->columns();
 
-		$this->assertCount(4, $columns);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnFullName', $columns[0]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnAge', $columns[1]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnConditionDanish', $columns[2]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnRelationToHead', $columns[3]);
+        $this->assertCount(4, $columns);
+        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnFullName', $columns[0]);
+        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnAge', $columns[1]);
+        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnConditionDanish', $columns[2]);
+        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnRelationToHead', $columns[3]);
 
-		$this->assertSame('Navn', $columns[0]->abbreviation());
-		$this->assertSame('Alder', $columns[1]->abbreviation());
-		$this->assertSame('Civilstand', $columns[2]->abbreviation());
-		$this->assertSame('Stilling i familien', $columns[3]->abbreviation());
+        $this->assertSame('Navn', $columns[0]->abbreviation());
+        $this->assertSame('Alder', $columns[1]->abbreviation());
+        $this->assertSame('Civilstand', $columns[2]->abbreviation());
+        $this->assertSame('Stilling i familien', $columns[3]->abbreviation());
 
-		$this->assertSame('', $columns[0]->title());
-		$this->assertSame('', $columns[1]->title());
-		$this->assertSame('', $columns[2]->title());
-		$this->assertSame('', $columns[3]->title());
-	}
+        $this->assertSame('', $columns[0]->title());
+        $this->assertSame('', $columns[1]->title());
+        $this->assertSame('', $columns[2]->title());
+        $this->assertSame('', $columns[3]->title());
+    }
 }

@@ -25,24 +25,26 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * Controller for static pages.
  */
-class StaticPageController extends AbstractBaseController {
-	/**
-	 * @param Request $request
-	 *
-	 * @return Response
-	 */
-	public function privacyPolicy(Request $request): Response {
-		/** @var Tree $tree */
-		$tree = $request->attributes->get('tree');
+class StaticPageController extends AbstractBaseController
+{
+    /**
+     * @param Request $request
+     *
+     * @return Response
+     */
+    public function privacyPolicy(Request $request): Response
+    {
+        /** @var Tree $tree */
+        $tree = $request->attributes->get('tree');
 
-		$title = I18N::translate('Privacy policy');
+        $title = I18N::translate('Privacy policy');
 
-		$uses_analytics = true;
+        $uses_analytics = true;
 
-		return $this->viewResponse('privacy-policy', [
-			'uses_analytics' => $uses_analytics,
-			'title'          => $title,
-			'tree'           => $tree,
-		]);
-	}
+        return $this->viewResponse('privacy-policy', [
+            'uses_analytics' => $uses_analytics,
+            'title'          => $title,
+            'tree'           => $tree,
+        ]);
+    }
 }

@@ -20,17 +20,19 @@ use Fisharebest\Webtrees\Database;
 /**
  * Upgrade the database schema from version 25 to version 26.
  */
-class Migration25 implements MigrationInterface {
-	/**
-	 * Upgrade to to the next version
-	 */
-	public function upgrade() {
-		// - delete unused settings and update indexes
-		Database::exec(
-			"DELETE FROM `##site_setting` WHERE setting_name IN ('WELCOME_TEXT_CUST_HEAD')"
-		);
+class Migration25 implements MigrationInterface
+{
+    /**
+     * Upgrade to to the next version
+     */
+    public function upgrade()
+    {
+        // - delete unused settings and update indexes
+        Database::exec(
+            "DELETE FROM `##site_setting` WHERE setting_name IN ('WELCOME_TEXT_CUST_HEAD')"
+        );
 
-		// Originally, this inserted entries into wt_site_access_rule,
-		// however this table now gets deleted in Migration37.
-	}
+        // Originally, this inserted entries into wt_site_access_rule,
+        // however this table now gets deleted in Migration37.
+    }
 }

@@ -29,159 +29,179 @@ use Symfony\Component\HttpFoundation\Response;
  * Class InteractiveTreeModule
  * Tip : you could change the number of generations loaded before ajax calls both in individual page and in treeview page to optimize speed and server load
  */
-class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface, ModuleChartInterface {
-	/** {@inheritdoc} */
-	public function getTitle() {
-		return /* I18N: Name of a module */
-			I18N::translate('Interactive tree');
-	}
+class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface, ModuleChartInterface
+{
+    /** {@inheritdoc} */
+    public function getTitle()
+    {
+        return /* I18N: Name of a module */
+            I18N::translate('Interactive tree');
+    }
 
-	/** {@inheritdoc} */
-	public function getDescription() {
-		return /* I18N: Description of the “Interactive tree” module */
-			I18N::translate('An interactive tree, showing all the ancestors and descendants of an individual.');
-	}
+    /** {@inheritdoc} */
+    public function getDescription()
+    {
+        return /* I18N: Description of the “Interactive tree” module */
+            I18N::translate('An interactive tree, showing all the ancestors and descendants of an individual.');
+    }
 
-	/** {@inheritdoc} */
-	public function defaultTabOrder() {
-		return 68;
-	}
+    /** {@inheritdoc} */
+    public function defaultTabOrder()
+    {
+        return 68;
+    }
 
-	/** {@inheritdoc} */
-	public function getTabContent(Individual $individual) {
-		$treeview = new TreeView('tvTab');
-		list($html, $js) = $treeview->drawViewport($individual, 3);
+    /** {@inheritdoc} */
+    public function getTabContent(Individual $individual)
+    {
+        $treeview = new TreeView('tvTab');
+        list($html, $js) = $treeview->drawViewport($individual, 3);
 
-		return view('modules/tree/tab', [
-			'html'         => $html,
-			'js'           => $js,
-			'treeview_css' => $this->css(),
-			'treeview_js'  => $this->js(),
-		]);
-	}
+        return view('modules/tree/tab', [
+            'html'         => $html,
+            'js'           => $js,
+            'treeview_css' => $this->css(),
+            'treeview_js'  => $this->js(),
+        ]);
+    }
 
-	/**
-	 * @return string
-	 */
-	public function css(): string {
-		return WT_MODULES_DIR . $this->getName() . '/css/treeview.css';
-	}
+    /**
+     * @return string
+     */
+    public function css(): string
+    {
+        return WT_MODULES_DIR . $this->getName() . '/css/treeview.css';
+    }
 
-	/**
-	 * @return string
-	 */
-	public function js(): string {
-		return WT_MODULES_DIR . $this->getName() . '/js/treeview.js';
-	}
+    /**
+     * @return string
+     */
+    public function js(): string
+    {
+        return WT_MODULES_DIR . $this->getName() . '/js/treeview.js';
+    }
 
-	/** {@inheritdoc} */
-	public function hasTabContent(Individual $individual) {
-		return true;
-	}
+    /** {@inheritdoc} */
+    public function hasTabContent(Individual $individual)
+    {
+        return true;
+    }
 
-	/** {@inheritdoc} */
-	public function isGrayedOut(Individual $individual) {
-		return false;
-	}
+    /** {@inheritdoc} */
+    public function isGrayedOut(Individual $individual)
+    {
+        return false;
+    }
 
-	/** {@inheritdoc} */
-	public function canLoadAjax() {
-		return true;
-	}
+    /** {@inheritdoc} */
+    public function canLoadAjax()
+    {
+        return true;
+    }
 
-	/**
-	 * Return a menu item for this chart.
-	 *
-	 * @param Individual $individual
-	 *
-	 * @return Menu|null
-	 */
-	public function getChartMenu(Individual $individual) {
-		return new Menu(
-			$this->getTitle(),
-			route('module', ['module' => $this->getName(), 'action' => 'Treeview', 'xref' => $individual->getXref(), 'ged' => $individual->getTree()->getName()]),
-			'menu-chart-tree',
-			['rel' => 'nofollow']
-		);
-	}
+    /**
+     * Return a menu item for this chart.
+     *
+     * @param Individual $individual
+     *
+     * @return Menu|null
+     */
+    public function getChartMenu(Individual $individual)
+    {
+        return new Menu(
+            $this->getTitle(),
+            route('module', [
+                'module' => $this->getName(),
+                'action' => 'Treeview',
+                'xref'   => $individual->getXref(),
+                'ged'    => $individual->getTree()->getName(),
+            ]),
+            'menu-chart-tree',
+            ['rel' => 'nofollow']
+        );
+    }
 
-	/**
-	 * Return a menu item for this chart - for use in individual boxes.
-	 *
-	 * @param Individual $individual
-	 *
-	 * @return Menu|null
-	 */
-	public function getBoxChartMenu(Individual $individual) {
-		return $this->getChartMenu($individual);
-	}
+    /**
+     * Return a menu item for this chart - for use in individual boxes.
+     *
+     * @param Individual $individual
+     *
+     * @return Menu|null
+     */
+    public function getBoxChartMenu(Individual $individual)
+    {
+        return $this->getChartMenu($individual);
+    }
 
-	/**
-	 * @param Request $request
-	 *
-	 * @return Response
-	 */
-	public function getTreeviewAction(Request $request): Response {
-		/** @var Tree $tree */
-		$tree = $request->attributes->get('tree');
+    /**
+     * @param Request $request
+     *
+     * @return Response
+     */
+    public function getTreeviewAction(Request $request): Response
+    {
+        /** @var Tree $tree */
+        $tree = $request->attributes->get('tree');
 
-		$xref = $request->get('xref');
+        $xref = $request->get('xref');
 
-		$individual = Individual::getInstance($xref, $tree);
-		$tv         = new TreeView('tv');
+        $individual = Individual::getInstance($xref, $tree);
+        $tv         = new TreeView('tv');
 
-		list($html, $js) = $tv->drawViewport($individual, 4);
+        list($html, $js) = $tv->drawViewport($individual, 4);
 
-		$title = I18N::translate('Interactive tree of %s', $individual->getFullName());
+        $title = I18N::translate('Interactive tree of %s', $individual->getFullName());
 
-		return $this->viewResponse('interactive-tree-page', [
-			'title'      => $title,
-			'individual' => $individual,
-			'js'         => $js,
-			'html'       => $html,
-			'tree'       => $tree,
-		]);
-	}
+        return $this->viewResponse('interactive-tree-page', [
+            'title'      => $title,
+            'individual' => $individual,
+            'js'         => $js,
+            'html'       => $html,
+            'tree'       => $tree,
+        ]);
+    }
 
-	/**
-	 * @param Request $request
-	 *
-	 * @return Response
-	 */
-	public function getDetailsAction(Request $request): Response {
-		/** @var Tree $tree */
-		$tree = $request->attributes->get('tree');
+    /**
+     * @param Request $request
+     *
+     * @return Response
+     */
+    public function getDetailsAction(Request $request): Response
+    {
+        /** @var Tree $tree */
+        $tree = $request->attributes->get('tree');
 
-		$pid        = $request->get('pid', WT_REGEX_XREF);
-		$individual = Individual::getInstance($pid, $tree);
+        $pid        = $request->get('pid', WT_REGEX_XREF);
+        $individual = Individual::getInstance($pid, $tree);
 
-		if ($individual === null) {
-			throw new IndividualNotFoundException;
-		}
+        if ($individual === null) {
+            throw new IndividualNotFoundException;
+        }
 
-		if (!$individual->canShow()) {
-			throw new IndividualAccessDeniedException;
-		}
+        if (!$individual->canShow()) {
+            throw new IndividualAccessDeniedException;
+        }
 
-		$instance = $request->get('instance');
-		$treeview = new TreeView($instance);
+        $instance = $request->get('instance');
+        $treeview = new TreeView($instance);
 
-		return new Response($treeview->getDetails($individual));
-	}
+        return new Response($treeview->getDetails($individual));
+    }
 
-	/**
-	 * @param Request $request
-	 *
-	 * @return Response
-	 */
-	public function getPersonsAction(Request $request): Response {
-		/** @var Tree $tree */
-		$tree = $request->attributes->get('tree');
+    /**
+     * @param Request $request
+     *
+     * @return Response
+     */
+    public function getPersonsAction(Request $request): Response
+    {
+        /** @var Tree $tree */
+        $tree = $request->attributes->get('tree');
 
-		$q  = $request->get('q');
-		$instance = $request->get('instance');
-		$treeview = new TreeView($instance);
+        $q        = $request->get('q');
+        $instance = $request->get('instance');
+        $treeview = new TreeView($instance);
 
-		return new Response($treeview->getPersons($tree, $q));
-	}
+        return new Response($treeview->getPersons($tree, $q));
+    }
 }

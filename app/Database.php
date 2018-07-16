@@ -23,230 +23,244 @@ use PDOException;
 /**
  * Extend PHP's native PDO class.
  */
-class Database {
-	/** @var Database Implement the singleton pattern */
-	private static $instance;
+class Database
+{
+    /** @var Database Implement the singleton pattern */
+    private static $instance;
 
-	/** @var PDO Native PHP database driver */
-	private static $pdo;
+    /** @var PDO Native PHP database driver */
+    private static $pdo;
 
-	/** @var Statement[] Cache of prepared statements */
-	private static $prepared = [];
+    /** @var Statement[] Cache of prepared statements */
+    private static $prepared = [];
 
-	/** @var string Prefix allows multiple instances in one database */
-	private static $table_prefix = '';
+    /** @var string Prefix allows multiple instances in one database */
+    private static $table_prefix = '';
 
-	/**
-	 * Begin a transaction.
-	 *
-	 * @return bool
-	 */
-	public static function beginTransaction() {
-		return self::$pdo->beginTransaction();
-	}
+    /**
+     * Begin a transaction.
+     *
+     * @return bool
+     */
+    public static function beginTransaction()
+    {
+        return self::$pdo->beginTransaction();
+    }
 
-	/**
-	 * Commit this transaction.
-	 *
-	 * @return bool
-	 */
-	public static function commit() {
-		return self::$pdo->commit();
-	}
+    /**
+     * Commit this transaction.
+     *
+     * @return bool
+     */
+    public static function commit()
+    {
+        return self::$pdo->commit();
+    }
 
-	/**
-	 * Disconnect from the server, so we can connect to another one
-	 */
-	public static function disconnect() {
-		self::$pdo = null;
-	}
+    /**
+     * Disconnect from the server, so we can connect to another one
+     */
+    public static function disconnect()
+    {
+        self::$pdo = null;
+    }
 
-	/**
-	 * Implement the singleton pattern, using a static accessor.
-	 *
-	 * @param string[] $config
-	 *
-	 * @throws Exception
-	 */
-	public static function createInstance(array $config) {
-		if (self::$pdo instanceof PDO) {
-			throw new Exception('Database::createInstance() can only be called once.');
-		}
+    /**
+     * Implement the singleton pattern, using a static accessor.
+     *
+     * @param string[] $config
+     *
+     * @throws Exception
+     */
+    public static function createInstance(array $config)
+    {
+        if (self::$pdo instanceof PDO) {
+            throw new Exception('Database::createInstance() can only be called once.');
+        }
 
-		self::$table_prefix = $config['tblpfx'];
+        self::$table_prefix = $config['tblpfx'];
 
-		// Create the underlying PDO object
-		self::$pdo = new PDO(
-			(substr($config['dbhost'], 0, 1) === '/' ?
-				"mysql:unix_socket={$config['dbhost']};dbname={$config['dbname']}" :
-				"mysql:host={$config['dbhost']};dbname={$config['dbname']};port={$config['dbport']}"
-			),
-			$config['dbuser'], $config['dbpass'],
-			[
-				PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-				PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ,
-				PDO::ATTR_CASE               => PDO::CASE_LOWER,
-				PDO::ATTR_AUTOCOMMIT         => true,
-			]
-		);
+        // Create the underlying PDO object
+        self::$pdo = new PDO(
+            (substr($config['dbhost'], 0, 1) === '/' ?
+                "mysql:unix_socket={$config['dbhost']};dbname={$config['dbname']}" :
+                "mysql:host={$config['dbhost']};dbname={$config['dbname']};port={$config['dbport']}"
+            ),
+            $config['dbuser'], $config['dbpass'],
+            [
+                PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ,
+                PDO::ATTR_CASE               => PDO::CASE_LOWER,
+                PDO::ATTR_AUTOCOMMIT         => true,
+            ]
+        );
 
-		self::$pdo = DebugBar::initPDO(self::$pdo);
+        self::$pdo = DebugBar::initPDO(self::$pdo);
 
-		self::$pdo->exec("SET NAMES 'utf8' COLLATE 'utf8_unicode_ci'");
-		self::$pdo->prepare("SET time_zone = :time_zone")->execute(['time_zone' => date('P')]);
+        self::$pdo->exec("SET NAMES 'utf8' COLLATE 'utf8_unicode_ci'");
+        self::$pdo->prepare("SET time_zone = :time_zone")->execute(['time_zone' => date('P')]);
 
-		self::$instance = new self;
-	}
+        self::$instance = new self;
+    }
 
-	/**
-	 * We don't access $instance directly, only via query(), exec() and prepare()
-	 *
-	 * @throws Exception
-	 *
-	 * @return Database
-	 */
-	public static function getInstance() {
-		if (self::$pdo instanceof PDO) {
-			return self::$instance;
-		} else {
-			throw new Exception('createInstance() must be called before getInstance().');
-		}
-	}
+    /**
+     * We don't access $instance directly, only via query(), exec() and prepare()
+     *
+     * @throws Exception
+     *
+     * @return Database
+     */
+    public static function getInstance()
+    {
+        if (self::$pdo instanceof PDO) {
+            return self::$instance;
+        } else {
+            throw new Exception('createInstance() must be called before getInstance().');
+        }
+    }
 
-	/**
-	 * Are we currently connected to a database?
-	 *
-	 * @return bool
-	 */
-	public static function isConnected() {
-		return self::$pdo instanceof PDO;
-	}
+    /**
+     * Are we currently connected to a database?
+     *
+     * @return bool
+     */
+    public static function isConnected()
+    {
+        return self::$pdo instanceof PDO;
+    }
 
-	/**
-	 * Determine the most recently created value of an AUTO_INCREMENT field.
-	 *
-	 * @return string
-	 */
-	public static function lastInsertId() {
-		return self::$pdo->lastInsertId();
-	}
+    /**
+     * Determine the most recently created value of an AUTO_INCREMENT field.
+     *
+     * @return string
+     */
+    public static function lastInsertId()
+    {
+        return self::$pdo->lastInsertId();
+    }
 
-	/**
-	 * Quote a string for embedding in a MySQL statement.
-	 *
-	 * The native quote() function does not convert PHP nulls to DB nulls
-	 *
-	 * @param  string $string
-	 *
-	 * @return string
-	 *
-	 * @deprecated We should use bind-variables instead.
-	 */
-	public static function quote($string) {
-		if (is_null($string)) {
-			return 'NULL';
-		} else {
-			return self::$pdo->quote($string, PDO::PARAM_STR);
-		}
-	}
+    /**
+     * Quote a string for embedding in a MySQL statement.
+     *
+     * The native quote() function does not convert PHP nulls to DB nulls
+     *
+     * @param  string $string
+     *
+     * @return string
+     *
+     * @deprecated We should use bind-variables instead.
+     */
+    public static function quote($string)
+    {
+        if (is_null($string)) {
+            return 'NULL';
+        } else {
+            return self::$pdo->quote($string, PDO::PARAM_STR);
+        }
+    }
 
-	/**
-	 * Execute an SQL statement, and log the result.
-	 *
-	 * @param string $sql The SQL statement to execute
-	 *
-	 * @return int The number of rows affected by this SQL query
-	 */
-	public static function exec($sql) {
-		$sql = str_replace('##', self::$table_prefix, $sql);
+    /**
+     * Execute an SQL statement, and log the result.
+     *
+     * @param string $sql The SQL statement to execute
+     *
+     * @return int The number of rows affected by this SQL query
+     */
+    public static function exec($sql)
+    {
+        $sql = str_replace('##', self::$table_prefix, $sql);
 
-		return self::$pdo->exec($sql);
-	}
+        return self::$pdo->exec($sql);
+    }
 
-	/**
-	 * Prepare an SQL statement for execution.
-	 *
-	 * @param $sql
-	 *
-	 * @throws Exception
-	 *
-	 * @return Statement
-	 */
-	public static function prepare($sql) {
-		if (!self::$pdo instanceof PDO) {
-			throw new Exception('No Connection Established');
-		}
-		$sql = str_replace('##', self::$table_prefix, $sql);
+    /**
+     * Prepare an SQL statement for execution.
+     *
+     * @param $sql
+     *
+     * @throws Exception
+     *
+     * @return Statement
+     */
+    public static function prepare($sql)
+    {
+        if (!self::$pdo instanceof PDO) {
+            throw new Exception('No Connection Established');
+        }
+        $sql = str_replace('##', self::$table_prefix, $sql);
 
-		$hash = md5($sql);
-		if (!array_key_exists($hash, self::$prepared)) {
-			self::$prepared[$hash] = new Statement(self::$pdo->prepare($sql));
-		}
+        $hash = md5($sql);
+        if (!array_key_exists($hash, self::$prepared)) {
+            self::$prepared[$hash] = new Statement(self::$pdo->prepare($sql));
+        }
 
-		return self::$prepared[$hash];
-	}
+        return self::$prepared[$hash];
+    }
 
-	/**
-	 * Roll back this transaction.
-	 *
-	 * @return bool
-	 */
-	public static function rollBack() {
-		return self::$pdo->rollBack();
-	}
+    /**
+     * Roll back this transaction.
+     *
+     * @return bool
+     */
+    public static function rollBack()
+    {
+        return self::$pdo->rollBack();
+    }
 
-	/**
-	 * Run a series of scripts to bring the database schema up to date.
-	 *
-	 * @param string $namespace      Where to find our MigrationXXX classes
-	 * @param string $schema_name    Where to find our MigrationXXX classes
-	 * @param int    $target_version updade/downgrade to this version
-	 *
-	 * @throws PDOException
-	 *
-	 * @return bool  Were any updates applied
-	 */
-	public static function updateSchema($namespace, $schema_name, $target_version) {
-		try {
-			$current_version = (int) Site::getPreference($schema_name);
-		} catch (PDOException $ex) {
-			DebugBar::addThrowable($ex);
+    /**
+     * Run a series of scripts to bring the database schema up to date.
+     *
+     * @param string $namespace      Where to find our MigrationXXX classes
+     * @param string $schema_name    Where to find our MigrationXXX classes
+     * @param int    $target_version updade/downgrade to this version
+     *
+     * @throws PDOException
+     *
+     * @return bool  Were any updates applied
+     */
+    public static function updateSchema($namespace, $schema_name, $target_version)
+    {
+        try {
+            $current_version = (int)Site::getPreference($schema_name);
+        } catch (PDOException $ex) {
+            DebugBar::addThrowable($ex);
 
-			// During initial installation, the site_preference table won’t exist.
-			$current_version = 0;
-		}
+            // During initial installation, the site_preference table won’t exist.
+            $current_version = 0;
+        }
 
-		$updates_applied = false;
+        $updates_applied = false;
 
-		// Update the schema, one version at a time.
-		while ($current_version < $target_version) {
-			$class = $namespace . '\\Migration' . $current_version;
-			/** @var MigrationInterface $migration */
-			$migration = new $class;
-			$migration->upgrade();
-			$current_version++;
-			Site::setPreference($schema_name, (string) $current_version);
-			$updates_applied = true;
-		}
+        // Update the schema, one version at a time.
+        while ($current_version < $target_version) {
+            $class = $namespace . '\\Migration' . $current_version;
+            /** @var MigrationInterface $migration */
+            $migration = new $class;
+            $migration->upgrade();
+            $current_version++;
+            Site::setPreference($schema_name, (string)$current_version);
+            $updates_applied = true;
+        }
 
-		return $updates_applied;
-	}
+        return $updates_applied;
+    }
 
-	/**
-	 * Escape a string for use in a SQL "LIKE" clause
-	 *
-	 * @param string $string
-	 *
-	 * @return string
-	 */
-	public static function escapeLike($string) {
-		return strtr(
-			$string,
-			[
-				'\\' => '\\\\',
-				'%'  => '\%',
-				'_'  => '\_',
-			]
-		);
-	}
+    /**
+     * Escape a string for use in a SQL "LIKE" clause
+     *
+     * @param string $string
+     *
+     * @return string
+     */
+    public static function escapeLike($string)
+    {
+        return strtr(
+            $string,
+            [
+                '\\' => '\\\\',
+                '%'  => '\%',
+                '_'  => '\_',
+            ]
+        );
+    }
 }

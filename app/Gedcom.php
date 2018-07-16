@@ -18,10 +18,11 @@ namespace Fisharebest\Webtrees;
 /**
  * GEDCOM 5.5.1 specification
  */
-class Gedcom {
-	// Use MSDOS style line endings, for maximum compatibility.
-	const EOL         = "\r\n";
+class Gedcom
+{
+    // Use MSDOS style line endings, for maximum compatibility.
+    const EOL = "\r\n";
 
-	// 255 less the EOL character.
-	const LINE_LENGTH = 253;
+    // 255 less the EOL character.
+    const LINE_LENGTH = 253;
 }

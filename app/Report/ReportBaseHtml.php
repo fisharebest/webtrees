@@ -18,59 +18,64 @@ namespace Fisharebest\Webtrees\Report;
 /**
  * Class ReportBaseHtml
  */
-class ReportBaseHtml extends ReportBaseElement {
-	/** @var string The XML tag. */
-	public $tag;
+class ReportBaseHtml extends ReportBaseElement
+{
+    /** @var string The XML tag. */
+    public $tag;
 
-	/** @var string[] Attributes of the XML tag. */
-	public $attrs;
+    /** @var string[] Attributes of the XML tag. */
+    public $attrs;
 
-	/** @var ReportBaseElement[] A list of elements. */
-	public $elements = [];
+    /** @var ReportBaseElement[] A list of elements. */
+    public $elements = [];
 
-	/**
-	 * Create an element.
-	 *
-	 * @param $tag
-	 * @param $attrs
-	 */
-	public function __construct($tag, $attrs) {
-		$this->tag   = $tag;
-		$this->attrs = $attrs;
+    /**
+     * Create an element.
+     *
+     * @param $tag
+     * @param $attrs
+     */
+    public function __construct($tag, $attrs)
+    {
+        $this->tag   = $tag;
+        $this->attrs = $attrs;
 
-		return 0;
-	}
+        return 0;
+    }
 
-	/**
-	 * Get the start tag.
-	 *
-	 * @return string
-	 */
-	public function getStart() {
-		$str = '<' . $this->tag . ' ';
-		foreach ($this->attrs as $key => $value) {
-			$str .= $key . '="' . $value . '" ';
-		}
-		$str .= '>';
+    /**
+     * Get the start tag.
+     *
+     * @return string
+     */
+    public function getStart()
+    {
+        $str = '<' . $this->tag . ' ';
+        foreach ($this->attrs as $key => $value) {
+            $str .= $key . '="' . $value . '" ';
+        }
+        $str .= '>';
 
-		return $str;
-	}
+        return $str;
+    }
 
-	/**
-	 * Get the end tag.
-	 *
-	 * @return string
-	 */
-	public function getEnd() {
-		return '</' . $this->tag . '>';
-	}
+    /**
+     * Get the end tag.
+     *
+     * @return string
+     */
+    public function getEnd()
+    {
+        return '</' . $this->tag . '>';
+    }
 
-	/**
-	 * Add an element.
-	 *
-	 * @param ReportBaseElement $element
-	 */
-	public function addElement($element) {
-		$this->elements[] = $element;
-	}
+    /**
+     * Add an element.
+     *
+     * @param ReportBaseElement $element
+     */
+    public function addElement($element)
+    {
+        $this->elements[] = $element;
+    }
 }

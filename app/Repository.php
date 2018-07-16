@@ -18,65 +18,70 @@ namespace Fisharebest\Webtrees;
 /**
  * A GEDCOM repository (REPO) object.
  */
-class Repository extends GedcomRecord {
-	const RECORD_TYPE = 'REPO';
-	const ROUTE_NAME  = 'repository';
+class Repository extends GedcomRecord
+{
+    const RECORD_TYPE = 'REPO';
+    const ROUTE_NAME  = 'repository';
 
-	/**
-	 * Get an instance of a repository object. For single records,
-	 * we just receive the XREF. For bulk records (such as lists
-	 * and search results) we can receive the GEDCOM data as well.
-	 *
-	 * @param string      $xref
-	 * @param Tree        $tree
-	 * @param string|null $gedcom
-	 *
-	 * @throws \Exception
-	 *
-	 * @return Repository|null
-	 */
-	public static function getInstance($xref, Tree $tree, $gedcom = null) {
-		$record = parent::getInstance($xref, $tree, $gedcom);
+    /**
+     * Get an instance of a repository object. For single records,
+     * we just receive the XREF. For bulk records (such as lists
+     * and search results) we can receive the GEDCOM data as well.
+     *
+     * @param string      $xref
+     * @param Tree        $tree
+     * @param string|null $gedcom
+     *
+     * @throws \Exception
+     *
+     * @return Repository|null
+     */
+    public static function getInstance($xref, Tree $tree, $gedcom = null)
+    {
+        $record = parent::getInstance($xref, $tree, $gedcom);
 
-		if ($record instanceof Repository) {
-			return $record;
-		} else {
-			return null;
-		}
-	}
+        if ($record instanceof Repository) {
+            return $record;
+        } else {
+            return null;
+        }
+    }
 
-	/**
-	 * Fetch data from the database
-	 *
-	 * @param string $xref
-	 * @param int    $tree_id
-	 *
-	 * @return null|string
-	 */
-	protected static function fetchGedcomRecord($xref, $tree_id) {
-		return Database::prepare(
-			"SELECT o_gedcom FROM `##other` WHERE o_id = :xref AND o_file = :tree_id AND o_type = 'REPO'"
-		)->execute([
-			'xref'    => $xref,
-			'tree_id' => $tree_id,
-		])->fetchOne();
-	}
+    /**
+     * Fetch data from the database
+     *
+     * @param string $xref
+     * @param int    $tree_id
+     *
+     * @return null|string
+     */
+    protected static function fetchGedcomRecord($xref, $tree_id)
+    {
+        return Database::prepare(
+            "SELECT o_gedcom FROM `##other` WHERE o_id = :xref AND o_file = :tree_id AND o_type = 'REPO'"
+        )->execute([
+            'xref'    => $xref,
+            'tree_id' => $tree_id,
+        ])->fetchOne();
+    }
 
-	/**
-	 * Generate a private version of this record
-	 *
-	 * @param int $access_level
-	 *
-	 * @return string
-	 */
-	protected function createPrivateGedcomRecord($access_level) {
-		return '0 @' . $this->xref . "@ REPO\n1 NAME " . I18N::translate('Private');
-	}
+    /**
+     * Generate a private version of this record
+     *
+     * @param int $access_level
+     *
+     * @return string
+     */
+    protected function createPrivateGedcomRecord($access_level)
+    {
+        return '0 @' . $this->xref . "@ REPO\n1 NAME " . I18N::translate('Private');
+    }
 
-	/**
-	 * Extract names from the GEDCOM record.
-	 */
-	public function extractNames() {
-		parent::extractNamesFromFacts(1, 'NAME', $this->getFacts('NAME'));
-	}
+    /**
+     * Extract names from the GEDCOM record.
+     */
+    public function extractNames()
+    {
+        parent::extractNamesFromFacts(1, 'NAME', $this->getFacts('NAME'));
+    }
 }

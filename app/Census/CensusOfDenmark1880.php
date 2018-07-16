@@ -19,36 +19,39 @@ namespace Fisharebest\Webtrees\Census;
 /**
  * Definitions for a census
  */
-class CensusOfDenmark1880 extends CensusOfDenmark implements CensusInterface {
-	/**
-	 * When did this census occur.
-	 *
-	 * @return string
-	 */
-	public function censusDate() {
-		return '01 FEB 1880';
-	}
+class CensusOfDenmark1880 extends CensusOfDenmark implements CensusInterface
+{
+    /**
+     * When did this census occur.
+     *
+     * @return string
+     */
+    public function censusDate()
+    {
+        return '01 FEB 1880';
+    }
 
-	/**
-	 * The columns of the census.
-	 *
-	 * @return CensusColumnInterface[]
-	 */
-	public function columns() {
-		return [
-			new CensusColumnFullName($this, 'Navn', ''),
-			new CensusColumnSexMK($this, 'Køn', ''),
-			new CensusColumnAge($this, 'Alder', ''),
-			new CensusColumnConditionDanish($this, 'Civilstand', ''),
-			new CensusColumnReligion($this, 'Religion', ''),
-			new CensusColumnOccupation($this, 'Erhverv', ''),
-			new CensusColumnRelationToHead($this, 'Stilling i familien', ''),
-			new CensusColumnNull($this, '', ''),
-			new CensusColumnNull($this, '', ''),
-			new CensusColumnNull($this, '', ''),
-			new CensusColumnNull($this, '', ''),
-			new CensusColumnNull($this, '', ''),
-			new CensusColumnNull($this, '', ''),
-		];
-	}
+    /**
+     * The columns of the census.
+     *
+     * @return CensusColumnInterface[]
+     */
+    public function columns()
+    {
+        return [
+            new CensusColumnFullName($this, 'Navn', ''),
+            new CensusColumnSexMK($this, 'Køn', ''),
+            new CensusColumnAge($this, 'Alder', ''),
+            new CensusColumnConditionDanish($this, 'Civilstand', ''),
+            new CensusColumnReligion($this, 'Religion', ''),
+            new CensusColumnOccupation($this, 'Erhverv', ''),
+            new CensusColumnRelationToHead($this, 'Stilling i familien', ''),
+            new CensusColumnNull($this, '', ''),
+            new CensusColumnNull($this, '', ''),
+            new CensusColumnNull($this, '', ''),
+            new CensusColumnNull($this, '', ''),
+            new CensusColumnNull($this, '', ''),
+            new CensusColumnNull($this, '', ''),
+        ];
+    }
 }

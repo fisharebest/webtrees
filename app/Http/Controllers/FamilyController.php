@@ -26,52 +26,55 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * Controller for the family page.
  */
-class FamilyController extends AbstractBaseController {
-	/**
-	 * Show a family's page.
-	 *
-	 * @param Request $request
-	 *
-	 * @return Response
-	 */
-	public function show(Request $request): Response {
-		/** @var Tree $tree */
-		$tree   = $request->attributes->get('tree');
-		$xref   = $request->get('xref');
-		$family = Family::getInstance($xref, $tree);
+class FamilyController extends AbstractBaseController
+{
+    /**
+     * Show a family's page.
+     *
+     * @param Request $request
+     *
+     * @return Response
+     */
+    public function show(Request $request): Response
+    {
+        /** @var Tree $tree */
+        $tree   = $request->attributes->get('tree');
+        $xref   = $request->get('xref');
+        $family = Family::getInstance($xref, $tree);
 
-		$this->checkFamilyAccess($family, false);
+        $this->checkFamilyAccess($family, false);
 
-		return $this->viewResponse('family-page', [
-			'facts'       => $family->getFacts(null, true),
-			'meta_robots' => 'index,follow',
-			'record'      => $family,
-			'significant' => $this->significant($family),
-			'title'       => $family->getFullName(),
-		]);
-	}
+        return $this->viewResponse('family-page', [
+            'facts'       => $family->getFacts(null, true),
+            'meta_robots' => 'index,follow',
+            'record'      => $family,
+            'significant' => $this->significant($family),
+            'title'       => $family->getFullName(),
+        ]);
+    }
 
-	/**
-	 * What are the significant elements of this page?
-	 * The layout will need them to generate URLs for charts and reports.
-	 *
-	 * @param Family $family
-	 *
-	 * @return stdClass
-	 */
-	private function significant(Family $family) {
-		$significant = (object) [
-			'family'     => $family,
-			'individual' => null,
-			'surname'    => '',
-		];
+    /**
+     * What are the significant elements of this page?
+     * The layout will need them to generate URLs for charts and reports.
+     *
+     * @param Family $family
+     *
+     * @return stdClass
+     */
+    private function significant(Family $family)
+    {
+        $significant = (object)[
+            'family'     => $family,
+            'individual' => null,
+            'surname'    => '',
+        ];
 
-		foreach ($family->getSpouses() + $family->getChildren() as $individual) {
-			$significant->individual = $individual;
-			list($significant->surname) = explode(',', $individual->getSortName());
-			break;
-		}
+        foreach ($family->getSpouses() + $family->getChildren() as $individual) {
+            $significant->individual = $individual;
+            list($significant->surname) = explode(',', $individual->getSortName());
+            break;
+        }
 
-		return $significant;
-	}
+        return $significant;
+    }
 }

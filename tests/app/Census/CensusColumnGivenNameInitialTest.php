@@ -21,56 +21,61 @@ use Mockery;
 /**
  * Test harness for the class CensusColumnGivenNameInitial
  */
-class CensusColumnGivenNameInitialTest extends \PHPUnit\Framework\TestCase {
-	/**
-	 * Delete mock objects
-	 */
-	public function tearDown() {
-		Mockery::close();
-	}
+class CensusColumnGivenNameInitialTest extends \PHPUnit\Framework\TestCase
+{
+    /**
+     * Delete mock objects
+     */
+    public function tearDown()
+    {
+        Mockery::close();
+    }
 
-	/**
-	 * @covers \Fisharebest\Webtrees\Census\CensusColumnGivenNameInitial
-	 * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-	 */
-	public function testOneGivenName() {
-		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
-		$individual->shouldReceive('getAllNames')->andReturn([['givn' => 'Joe']]);
+    /**
+     * @covers \Fisharebest\Webtrees\Census\CensusColumnGivenNameInitial
+     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
+     */
+    public function testOneGivenName()
+    {
+        $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
+        $individual->shouldReceive('getAllNames')->andReturn([['givn' => 'Joe']]);
 
-		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
+        $census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
 
-		$column = new CensusColumnGivenNameInitial($census, '', '');
+        $column = new CensusColumnGivenNameInitial($census, '', '');
 
-		$this->assertSame('Joe', $column->generate($individual));
-	}
+        $this->assertSame('Joe', $column->generate($individual));
+    }
 
-	/**
-	 * @covers \Fisharebest\Webtrees\Census\CensusColumnGivenNameInitial
-	 * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-	 */
-	public function testMultipleGivenNames() {
-		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
-		$individual->shouldReceive('getAllNames')->andReturn([['givn' => 'Joe Fred']]);
+    /**
+     * @covers \Fisharebest\Webtrees\Census\CensusColumnGivenNameInitial
+     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
+     */
+    public function testMultipleGivenNames()
+    {
+        $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
+        $individual->shouldReceive('getAllNames')->andReturn([['givn' => 'Joe Fred']]);
 
-		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
+        $census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
 
-		$column = new CensusColumnGivenNameInitial($census, '', '');
+        $column = new CensusColumnGivenNameInitial($census, '', '');
 
-		$this->assertSame('Joe F', $column->generate($individual));
-	}
+        $this->assertSame('Joe F', $column->generate($individual));
+    }
 
-	/**
-	 * @covers \Fisharebest\Webtrees\Census\CensusColumnGivenNameInitial
-	 * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-	 */
-	public function testNoName() {
-		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
-		$individual->shouldReceive('getAllNames')->andReturn([]);
+    /**
+     * @covers \Fisharebest\Webtrees\Census\CensusColumnGivenNameInitial
+     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
+     */
+    public function testNoName()
+    {
+        $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
+        $individual->shouldReceive('getAllNames')->andReturn([]);
 
-		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
+        $census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
 
-		$column = new CensusColumnGivenNameInitial($census, '', '');
+        $column = new CensusColumnGivenNameInitial($census, '', '');
 
-		$this->assertSame('', $column->generate($individual));
-	}
+        $this->assertSame('', $column->generate($individual));
+    }
 }

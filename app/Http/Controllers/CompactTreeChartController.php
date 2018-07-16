@@ -26,55 +26,59 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * A chart of direct-line ancestors in a compact layout.
  */
-class CompactTreeChartController extends AbstractChartController {
-	/**
-	 * A form to request the chart parameters.
-	 *
-	 * @param Request $request
-	 *
-	 * @return Response
-	 */
-	public function page(Request $request): Response {
-		/** @var Tree $tree */
-		$tree = $request->attributes->get('tree');
+class CompactTreeChartController extends AbstractChartController
+{
+    /**
+     * A form to request the chart parameters.
+     *
+     * @param Request $request
+     *
+     * @return Response
+     */
+    public function page(Request $request): Response
+    {
+        /** @var Tree $tree */
+        $tree = $request->attributes->get('tree');
 
-		$this->checkModuleIsActive($tree, 'compact_tree_chart');
+        $this->checkModuleIsActive($tree, 'compact_tree_chart');
 
-		$xref       = $request->get('xref');
-		$individual = Individual::getInstance($xref, $tree);
+        $xref       = $request->get('xref');
+        $individual = Individual::getInstance($xref, $tree);
 
-		$this->checkIndividualAccess($individual);
+        $this->checkIndividualAccess($individual);
 
-		$title = /* I18N: %s is an individual’s name */ I18N::translate('Compact tree of %s', $individual->getFullName());
+        $title = /* I18N: %s is an individual’s name */
+            I18N::translate('Compact tree of %s', $individual->getFullName());
 
-		return $this->viewResponse('compact-tree-page', [
-			'individual' => $individual,
-			'title'      => $title,
-		]);
-	}
+        return $this->viewResponse('compact-tree-page', [
+            'individual' => $individual,
+            'title'      => $title,
+        ]);
+    }
 
-	/**
-	 * @param Request $request
-	 *
-	 * @return Response
-	 */
-	public function chart(Request $request): Response {
-		/** @var Tree $tree */
-		$tree = $request->attributes->get('tree');
+    /**
+     * @param Request $request
+     *
+     * @return Response
+     */
+    public function chart(Request $request): Response
+    {
+        /** @var Tree $tree */
+        $tree = $request->attributes->get('tree');
 
-		$this->checkModuleIsActive($tree, 'compact_tree_chart');
+        $this->checkModuleIsActive($tree, 'compact_tree_chart');
 
-		$xref       = $request->get('xref');
-		$individual = Individual::getInstance($xref, $tree);
+        $xref       = $request->get('xref');
+        $individual = Individual::getInstance($xref, $tree);
 
-		$this->checkIndividualAccess($individual);
+        $this->checkIndividualAccess($individual);
 
-		$ancestors = $this->sosaStradonitzAncestors($individual, 5);
+        $ancestors = $this->sosaStradonitzAncestors($individual, 5);
 
-		$html = view('compact-tree-chart', [
-			'ancestors' => $ancestors,
-		]);
+        $html = view('compact-tree-chart', [
+            'ancestors' => $ancestors,
+        ]);
 
-		return  new Response($html);
-	}
+        return new Response($html);
+    }
 }

@@ -32,133 +32,137 @@ use Throwable;
  *
  * For historical reasons, we record the names of the original webtrees script and parameter.
  */
-class PageHitCounter implements MiddlewareInterface {
-	// Which pages/routes do we count?
-	const PAGE_NAMES = [
-		'family'     => 'family.php',
-		'individual' => 'individual.php',
-		'media'      => 'mediaviewer.php',
-		'note'       => 'note.php',
-		'repository' => 'repo.php',
-		'source'     => 'source.php',
-		'tree-page'  => 'index.php',
-		'user-page'  => 'index.php',
-	];
+class PageHitCounter implements MiddlewareInterface
+{
+    // Which pages/routes do we count?
+    const PAGE_NAMES = [
+        'family'     => 'family.php',
+        'individual' => 'individual.php',
+        'media'      => 'mediaviewer.php',
+        'note'       => 'note.php',
+        'repository' => 'repo.php',
+        'source'     => 'source.php',
+        'tree-page'  => 'index.php',
+        'user-page'  => 'index.php',
+    ];
 
-	/**
-	 * @param Request $request
-	 * @param Closure $next
-	 *
-	 * @return Response
-	 * @throws Throwable
-	 */
-	public function handle(Request $request, Closure $next): Response {
-		/** @var Tree $tree */
-		$tree = $request->attributes->get('tree');
+    /**
+     * @param Request $request
+     * @param Closure $next
+     *
+     * @return Response
+     * @throws Throwable
+     */
+    public function handle(Request $request, Closure $next): Response
+    {
+        /** @var Tree $tree */
+        $tree = $request->attributes->get('tree');
 
-		$page_hits = 0;
+        $page_hits = 0;
 
-		if ($tree !== null && $tree->getPreference('SHOW_COUNTER')) {
-			$route = $request->get('route');
+        if ($tree !== null && $tree->getPreference('SHOW_COUNTER')) {
+            $route = $request->get('route');
 
-			$page_name = self::PAGE_NAMES[$route] ?? '';
+            $page_name = self::PAGE_NAMES[$route] ?? '';
 
-			switch ($route) {
-				case 'family':
-				case 'individual':
-				case 'media':
-				case 'note':
-				case 'repository':
-				case 'source':
-					$page_hits = $this->countHit($tree, $page_name, $request->get('xref', ''));
-					break;
+            switch ($route) {
+                case 'family':
+                case 'individual':
+                case 'media':
+                case 'note':
+                case 'repository':
+                case 'source':
+                    $page_hits = $this->countHit($tree, $page_name, $request->get('xref', ''));
+                    break;
 
-				case 'tree-page':
-					$page_hits = $this->countHit($tree, $page_name, 'gedcom:' . $tree->getTreeId());
-					break;
+                case 'tree-page':
+                    $page_hits = $this->countHit($tree, $page_name, 'gedcom:' . $tree->getTreeId());
+                    break;
 
-				case 'user-page':
-					/** @var User $user */
-					$user = $request->attributes->get('user');
+                case 'user-page':
+                    /** @var User $user */
+                    $user = $request->attributes->get('user');
 
-					$page_hits = $this->countHit($tree, $page_name, 'user:' . $user->getUserId());
-					break;
-			}
-		}
+                    $page_hits = $this->countHit($tree, $page_name, 'user:' . $user->getUserId());
+                    break;
+            }
+        }
 
-		// Make the count available to the layout.
-		View::share('page_hits', $page_hits);
+        // Make the count available to the layout.
+        View::share('page_hits', $page_hits);
 
-		return $next($request);
-	}
+        return $next($request);
+    }
 
-	/**
-	 * Increment the page count.
-	 *
-	 * @param Tree   $tree
-	 * @param string $page
-	 * @param string $parameter
-	 *
-	 * @return int
-	 */
-	private function countHit(Tree $tree, $page, $parameter): int {
-		$gedcom_id = $tree->getTreeId();
+    /**
+     * Increment the page count.
+     *
+     * @param Tree   $tree
+     * @param string $page
+     * @param string $parameter
+     *
+     * @return int
+     */
+    private function countHit(Tree $tree, $page, $parameter): int
+    {
+        $gedcom_id = $tree->getTreeId();
 
-		// Don't increment the counter while we stay on the same page.
-		if (
-			Session::get('last_gedcom_id') === $gedcom_id &&
-			Session::get('last_page_name') === $page &&
-			Session::get('last_page_parameter') === $parameter
-		) {
-			return Session::get('last_count');
-		}
+        // Don't increment the counter while we stay on the same page.
+        if (
+            Session::get('last_gedcom_id') === $gedcom_id &&
+            Session::get('last_page_name') === $page &&
+            Session::get('last_page_parameter') === $parameter
+        ) {
+            return Session::get('last_count');
+        }
 
-		$count = self::getCount($tree, $page, $parameter);
+        $count = self::getCount($tree, $page, $parameter);
 
-		if ($count === 0) {
-			Database::prepare(
-				"INSERT INTO `##hit_counter` (gedcom_id, page_name, page_parameter, page_count) VALUES (:tree_id, :page, :parameter, 1)"
-			)->execute([
-				'tree_id'   => $gedcom_id,
-				'page'      => $page,
-				'parameter' => $parameter,
-			]);
-		} else {
-			Database::prepare(
-				"UPDATE `##hit_counter` SET page_count = page_count + 1 WHERE gedcom_id = :tree_id AND page_name = :page AND page_parameter = :parameter"
-			)->execute([
-				'tree_id'   => $gedcom_id,
-				'page'      => $page,
-				'parameter' => $parameter,
-			]);
-		}
+        if ($count === 0) {
+            Database::prepare(
+                "INSERT INTO `##hit_counter` (gedcom_id, page_name, page_parameter, page_count) VALUES (:tree_id, :page, :parameter, 1)"
+            )->execute([
+                'tree_id'   => $gedcom_id,
+                'page'      => $page,
+                'parameter' => $parameter,
+            ]);
+        } else {
+            Database::prepare(
+                "UPDATE `##hit_counter` SET page_count = page_count + 1 WHERE gedcom_id = :tree_id AND page_name = :page AND page_parameter = :parameter"
+            )->execute([
+                'tree_id'   => $gedcom_id,
+                'page'      => $page,
+                'parameter' => $parameter,
+            ]);
+        }
 
-		$count++;
+        $count++;
 
-		Session::put('last_gedcom_id', $gedcom_id);
-		Session::put('last_page_name', $page);
-		Session::put('last_page_parameter', $parameter);
-		Session::put('last_count', $count);
+        Session::put('last_gedcom_id', $gedcom_id);
+        Session::put('last_page_name', $page);
+        Session::put('last_page_parameter', $parameter);
+        Session::put('last_count', $count);
 
-		return $count;
-	}
+        return $count;
+    }
 
-	/**
-	 * How many times has a page been viewed
-	 *
-	 * @param Tree   $tree
-	 * @param string $page
-	 * @param string $parameter
-	 *
-	 * @return int
-	 */
-	public static function getCount(Tree $tree, $page, $parameter): int {
-		return (int) Database::prepare(
-			"SELECT page_count FROM `##hit_counter` WHERE gedcom_id = :tree_id AND page_name = :page AND page_parameter = :parameter"
-		)->execute([
-			'tree_id'   => $tree->getTreeId(),
-			'page'      => $page,
-			'parameter' => $parameter,
-		])->fetchOne();
-	}
+    /**
+     * How many times has a page been viewed
+     *
+     * @param Tree   $tree
+     * @param string $page
+     * @param string $parameter
+     *
+     * @return int
+     */
+    public static function getCount(Tree $tree, $page, $parameter): int
+    {
+        return (int)Database::prepare(
+            "SELECT page_count FROM `##hit_counter` WHERE gedcom_id = :tree_id AND page_name = :page AND page_parameter = :parameter"
+        )->execute([
+            'tree_id'   => $tree->getTreeId(),
+            'page'      => $page,
+            'parameter' => $parameter,
+        ])->fetchOne();
+    }
 }

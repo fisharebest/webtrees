@@ -21,70 +21,75 @@ namespace Fisharebest\Webtrees\SurnameTradition;
  * Sons get their father’s given name plus “sson”
  * Daughters get their father’s given name plus “sdottir”
  */
-class IcelandicSurnameTradition extends DefaultSurnameTradition implements SurnameTraditionInterface {
-	/**
-	 * Does this surname tradition use surnames?
-	 *
-	 * @return bool
-	 */
-	public function hasSurnames() {
-		return false;
-	}
+class IcelandicSurnameTradition extends DefaultSurnameTradition implements SurnameTraditionInterface
+{
+    /**
+     * Does this surname tradition use surnames?
+     *
+     * @return bool
+     */
+    public function hasSurnames()
+    {
+        return false;
+    }
 
-	/**
-	 * What names are given to a new child
-	 *
-	 * @param string $father_name A GEDCOM NAME
-	 * @param string $mother_name A GEDCOM NAME
-	 * @param string $child_sex   M, F or U
-	 *
-	 * @return string[] Associative array of GEDCOM name parts (SURN, _MARNM, etc.)
-	 */
-	public function newChildNames($father_name, $mother_name, $child_sex) {
-		if (preg_match(self::REGEX_GIVN, $father_name, $father_match)) {
-			switch ($child_sex) {
-				case 'M':
-					return [
-						'NAME' => $father_match['GIVN'] . 'sson',
-					];
-				case 'F':
-					return [
-						'NAME' => $father_match['GIVN'] . 'sdottir',
-					];
-			}
-		}
+    /**
+     * What names are given to a new child
+     *
+     * @param string $father_name A GEDCOM NAME
+     * @param string $mother_name A GEDCOM NAME
+     * @param string $child_sex   M, F or U
+     *
+     * @return string[] Associative array of GEDCOM name parts (SURN, _MARNM, etc.)
+     */
+    public function newChildNames($father_name, $mother_name, $child_sex)
+    {
+        if (preg_match(self::REGEX_GIVN, $father_name, $father_match)) {
+            switch ($child_sex) {
+                case 'M':
+                    return [
+                        'NAME' => $father_match['GIVN'] . 'sson',
+                    ];
+                case 'F':
+                    return [
+                        'NAME' => $father_match['GIVN'] . 'sdottir',
+                    ];
+            }
+        }
 
-		return [];
-	}
+        return [];
+    }
 
-	/**
-	 * What names are given to a new parent
-	 *
-	 * @param string $child_name A GEDCOM NAME
-	 * @param string $parent_sex M, F or U
-	 *
-	 * @return string[] Associative array of GEDCOM name parts (SURN, _MARNM, etc.)
-	 */
-	public function newParentNames($child_name, $parent_sex) {
-		if ($parent_sex === 'M' && preg_match('~(?<GIVN>[^ /]+)(:?sson|sdottir)$~', $child_name, $child_match)) {
-			return [
-				'NAME' => $child_match['GIVN'],
-				'GIVN' => $child_match['GIVN'],
-			];
-		} else {
-			return [];
-		}
-	}
+    /**
+     * What names are given to a new parent
+     *
+     * @param string $child_name A GEDCOM NAME
+     * @param string $parent_sex M, F or U
+     *
+     * @return string[] Associative array of GEDCOM name parts (SURN, _MARNM, etc.)
+     */
+    public function newParentNames($child_name, $parent_sex)
+    {
+        if ($parent_sex === 'M' && preg_match('~(?<GIVN>[^ /]+)(:?sson|sdottir)$~', $child_name, $child_match)) {
+            return [
+                'NAME' => $child_match['GIVN'],
+                'GIVN' => $child_match['GIVN'],
+            ];
+        } else {
+            return [];
+        }
+    }
 
-	/**
-	 * What names are given to a new spouse
-	 *
-	 * @param string $spouse_name A GEDCOM NAME
-	 * @param string $spouse_sex  M, F or U
-	 *
-	 * @return string[] Associative array of GEDCOM name parts (SURN, _MARNM, etc.)
-	 */
-	public function newSpouseNames($spouse_name, $spouse_sex) {
-		return [];
-	}
+    /**
+     * What names are given to a new spouse
+     *
+     * @param string $spouse_name A GEDCOM NAME
+     * @param string $spouse_sex  M, F or U
+     *
+     * @return string[] Associative array of GEDCOM name parts (SURN, _MARNM, etc.)
+     */
+    public function newSpouseNames($spouse_name, $spouse_sex)
+    {
+        return [];
+    }
 }

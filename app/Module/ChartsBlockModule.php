@@ -26,184 +26,192 @@ use Fisharebest\Webtrees\Tree;
 /**
  * Class ChartsBlockModule
  */
-class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
-	/** {@inheritdoc} */
-	public function getTitle() {
-		return /* I18N: Name of a module/block */
-			I18N::translate('Charts');
-	}
+class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
+{
+    /** {@inheritdoc} */
+    public function getTitle()
+    {
+        return /* I18N: Name of a module/block */
+            I18N::translate('Charts');
+    }
 
-	/** {@inheritdoc} */
-	public function getDescription() {
-		return /* I18N: Description of the “Charts” module */
-			I18N::translate('An alternative way to display charts.');
-	}
+    /** {@inheritdoc} */
+    public function getDescription()
+    {
+        return /* I18N: Description of the “Charts” module */
+            I18N::translate('An alternative way to display charts.');
+    }
 
-	/**
-	 * Generate the HTML content of this block.
-	 *
-	 * @param Tree     $tree
-	 * @param int      $block_id
-	 * @param bool     $template
-	 * @param string[] $cfg
-	 *
-	 * @return string
-	 */
-	public function getBlock(Tree $tree, int $block_id, bool $template = true, array $cfg = []): string {
-		global $ctype;
+    /**
+     * Generate the HTML content of this block.
+     *
+     * @param Tree     $tree
+     * @param int      $block_id
+     * @param bool     $template
+     * @param string[] $cfg
+     *
+     * @return string
+     */
+    public function getBlock(Tree $tree, int $block_id, bool $template = true, array $cfg = []): string
+    {
+        global $ctype;
 
-		$PEDIGREE_ROOT_ID = $tree->getPreference('PEDIGREE_ROOT_ID');
-		$gedcomid         = $tree->getUserPreference(Auth::user(), 'gedcomid');
+        $PEDIGREE_ROOT_ID = $tree->getPreference('PEDIGREE_ROOT_ID');
+        $gedcomid         = $tree->getUserPreference(Auth::user(), 'gedcomid');
 
-		$type = $this->getBlockSetting($block_id, 'type', 'pedigree');
-		$pid  = $this->getBlockSetting($block_id, 'pid', Auth::check() ? ($gedcomid ? $gedcomid : $PEDIGREE_ROOT_ID) : $PEDIGREE_ROOT_ID);
+        $type = $this->getBlockSetting($block_id, 'type', 'pedigree');
+        $pid  = $this->getBlockSetting($block_id, 'pid', Auth::check() ? ($gedcomid ? $gedcomid : $PEDIGREE_ROOT_ID) : $PEDIGREE_ROOT_ID);
 
-		extract($cfg, EXTR_OVERWRITE);
+        extract($cfg, EXTR_OVERWRITE);
 
-		$person = Individual::getInstance($pid, $tree);
-		if (!$person) {
-			$pid = $PEDIGREE_ROOT_ID;
-			$this->setBlockSetting($block_id, 'pid', $pid);
-			$person = Individual::getInstance($pid, $tree);
-		}
+        $person = Individual::getInstance($pid, $tree);
+        if (!$person) {
+            $pid = $PEDIGREE_ROOT_ID;
+            $this->setBlockSetting($block_id, 'pid', $pid);
+            $person = Individual::getInstance($pid, $tree);
+        }
 
-		$title = $this->getTitle();
+        $title = $this->getTitle();
 
-		if ($person) {
-			$content = '';
-			switch ($type) {
-				case 'pedigree':
-					$title     = I18N::translate('Pedigree of %s', $person->getFullName());
-					$chart_url = route('pedigree-chart', [
-						'xref'        => $person->getXref(),
-						'ged'         => $person->getTree()->getName(),
-						'generations' => 3,
-						'layout'      => PedigreeChartController::PORTRAIT,
-					]);
-					$content = view('modules/charts/chart', [
-						'block_id'  => $block_id,
-						'chart_url' => $chart_url,
-					]);
-					break;
-				case 'descendants':
-					$title           = I18N::translate('Descendants of %s', $person->getFullName());
-					$chart_url = route('descendants-chart', [
-						'xref'        => $person->getXref(),
-						'ged'         => $person->getTree()->getName(),
-						'generations' => 2,
-						'chart_style' => 0,
-					]);
-					$content = view('modules/charts/chart', [
-						'block_id'  => $block_id,
-						'chart_url' => $chart_url,
-					]);
-					break;
-				case 'hourglass':
-					$title           = I18N::translate('Hourglass chart of %s', $person->getFullName());
-					$chart_url = route('hourglass-chart', [
-						'xref'        => $person->getXref(),
-						'ged'         => $person->getTree()->getName(),
-						'generations' => 2,
-						'layout'      => PedigreeChartController::PORTRAIT,
-					]);
-					$content = view('modules/charts/chart', [
-						'block_id'  => $block_id,
-						'chart_url' => $chart_url,
-					]);
-					break;
-				case 'treenav':
-					$title   = I18N::translate('Interactive tree of %s', $person->getFullName());
-					$mod     = new InteractiveTreeModule(WT_MODULES_DIR . 'tree');
-					$tv      = new TreeView;
-					$content .= '<script>$("head").append(\'<link rel="stylesheet" href="' . $mod->css() . '" type="text/css" />\');</script>';
-					$content .= '<script src="' . $mod->js() . '"></script>';
-					list($html, $js) = $tv->drawViewport($person, 2);
-					$content .= $html . '<script>' . $js . '</script>';
-					break;
-			}
-		} else {
-			$content = I18N::translate('You must select an individual and a chart type in the block preferences');
-		}
+        if ($person) {
+            $content = '';
+            switch ($type) {
+                case 'pedigree':
+                    $title     = I18N::translate('Pedigree of %s', $person->getFullName());
+                    $chart_url = route('pedigree-chart', [
+                        'xref'        => $person->getXref(),
+                        'ged'         => $person->getTree()->getName(),
+                        'generations' => 3,
+                        'layout'      => PedigreeChartController::PORTRAIT,
+                    ]);
+                    $content   = view('modules/charts/chart', [
+                        'block_id'  => $block_id,
+                        'chart_url' => $chart_url,
+                    ]);
+                    break;
+                case 'descendants':
+                    $title     = I18N::translate('Descendants of %s', $person->getFullName());
+                    $chart_url = route('descendants-chart', [
+                        'xref'        => $person->getXref(),
+                        'ged'         => $person->getTree()->getName(),
+                        'generations' => 2,
+                        'chart_style' => 0,
+                    ]);
+                    $content   = view('modules/charts/chart', [
+                        'block_id'  => $block_id,
+                        'chart_url' => $chart_url,
+                    ]);
+                    break;
+                case 'hourglass':
+                    $title     = I18N::translate('Hourglass chart of %s', $person->getFullName());
+                    $chart_url = route('hourglass-chart', [
+                        'xref'        => $person->getXref(),
+                        'ged'         => $person->getTree()->getName(),
+                        'generations' => 2,
+                        'layout'      => PedigreeChartController::PORTRAIT,
+                    ]);
+                    $content   = view('modules/charts/chart', [
+                        'block_id'  => $block_id,
+                        'chart_url' => $chart_url,
+                    ]);
+                    break;
+                case 'treenav':
+                    $title   = I18N::translate('Interactive tree of %s', $person->getFullName());
+                    $mod     = new InteractiveTreeModule(WT_MODULES_DIR . 'tree');
+                    $tv      = new TreeView;
+                    $content .= '<script>$("head").append(\'<link rel="stylesheet" href="' . $mod->css() . '" type="text/css" />\');</script>';
+                    $content .= '<script src="' . $mod->js() . '"></script>';
+                    list($html, $js) = $tv->drawViewport($person, 2);
+                    $content .= $html . '<script>' . $js . '</script>';
+                    break;
+            }
+        } else {
+            $content = I18N::translate('You must select an individual and a chart type in the block preferences');
+        }
 
-		if ($template) {
-			if ($ctype === 'gedcom' && Auth::isManager($tree)) {
-				$config_url = route('tree-page-block-edit', [
-					'block_id' => $block_id,
-					'ged'      => $tree->getName(),
-				]);
-			} elseif ($ctype === 'user' && Auth::check()) {
-				$config_url = route('user-page-block-edit', [
-					'block_id' => $block_id,
-					'ged'      => $tree->getName(),
-				]);
-			} else {
-				$config_url = '';
-			}
+        if ($template) {
+            if ($ctype === 'gedcom' && Auth::isManager($tree)) {
+                $config_url = route('tree-page-block-edit', [
+                    'block_id' => $block_id,
+                    'ged'      => $tree->getName(),
+                ]);
+            } elseif ($ctype === 'user' && Auth::check()) {
+                $config_url = route('user-page-block-edit', [
+                    'block_id' => $block_id,
+                    'ged'      => $tree->getName(),
+                ]);
+            } else {
+                $config_url = '';
+            }
 
-			return view('modules/block-template', [
-				'block'      => str_replace('_', '-', $this->getName()),
-				'id'         => $block_id,
-				'config_url' => $config_url,
-				'title'      => strip_tags($title),
-				'content'    => $content,
-			]);
-		} else {
-			return $content;
-		}
-	}
+            return view('modules/block-template', [
+                'block'      => str_replace('_', '-', $this->getName()),
+                'id'         => $block_id,
+                'config_url' => $config_url,
+                'title'      => strip_tags($title),
+                'content'    => $content,
+            ]);
+        } else {
+            return $content;
+        }
+    }
 
-	/** {@inheritdoc} */
-	public function loadAjax(): bool {
-		return true;
-	}
+    /** {@inheritdoc} */
+    public function loadAjax(): bool
+    {
+        return true;
+    }
 
-	/** {@inheritdoc} */
-	public function isUserBlock(): bool {
-		return true;
-	}
+    /** {@inheritdoc} */
+    public function isUserBlock(): bool
+    {
+        return true;
+    }
 
-	/** {@inheritdoc} */
-	public function isGedcomBlock(): bool {
-		return true;
-	}
+    /** {@inheritdoc} */
+    public function isGedcomBlock(): bool
+    {
+        return true;
+    }
 
-	/**
-	 * An HTML form to edit block settings
-	 *
-	 * @param Tree $tree
-	 * @param int  $block_id
-	 *
-	 * @return void
-	 */
-	public function configureBlock(Tree $tree, int $block_id) {
-		$PEDIGREE_ROOT_ID = $tree->getPreference('PEDIGREE_ROOT_ID');
-		$gedcomid         = $tree->getUserPreference(Auth::user(), 'gedcomid');
+    /**
+     * An HTML form to edit block settings
+     *
+     * @param Tree $tree
+     * @param int  $block_id
+     *
+     * @return void
+     */
+    public function configureBlock(Tree $tree, int $block_id)
+    {
+        $PEDIGREE_ROOT_ID = $tree->getPreference('PEDIGREE_ROOT_ID');
+        $gedcomid         = $tree->getUserPreference(Auth::user(), 'gedcomid');
 
-		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-			$this->setBlockSetting($block_id, 'type', Filter::post('type', 'pedigree|descendants|hourglass|treenav', 'pedigree'));
-			$this->setBlockSetting($block_id, 'pid', Filter::post('pid', WT_REGEX_XREF));
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $this->setBlockSetting($block_id, 'type', Filter::post('type', 'pedigree|descendants|hourglass|treenav', 'pedigree'));
+            $this->setBlockSetting($block_id, 'pid', Filter::post('pid', WT_REGEX_XREF));
 
-			return;
-		}
+            return;
+        }
 
-		$type = $this->getBlockSetting($block_id, 'type', 'pedigree');
-		$pid  = $this->getBlockSetting($block_id, 'pid', Auth::check() ? ($gedcomid ? $gedcomid : $PEDIGREE_ROOT_ID) : $PEDIGREE_ROOT_ID);
+        $type = $this->getBlockSetting($block_id, 'type', 'pedigree');
+        $pid  = $this->getBlockSetting($block_id, 'pid', Auth::check() ? ($gedcomid ? $gedcomid : $PEDIGREE_ROOT_ID) : $PEDIGREE_ROOT_ID);
 
-		$charts = [
-			'pedigree'    => I18N::translate('Pedigree'),
-			'descendants' => I18N::translate('Descendants'),
-			'hourglass'   => I18N::translate('Hourglass chart'),
-			'treenav'     => I18N::translate('Interactive tree'),
-		];
-		uasort($charts, 'Fisharebest\Webtrees\I18N::strcasecmp');
+        $charts = [
+            'pedigree'    => I18N::translate('Pedigree'),
+            'descendants' => I18N::translate('Descendants'),
+            'hourglass'   => I18N::translate('Hourglass chart'),
+            'treenav'     => I18N::translate('Interactive tree'),
+        ];
+        uasort($charts, 'Fisharebest\Webtrees\I18N::strcasecmp');
 
-		$individual = Individual::getInstance($pid, $tree);
+        $individual = Individual::getInstance($pid, $tree);
 
-		echo view('modules/charts/config', [
-			'charts'     => $charts,
-			'individual' => $individual,
-			'tree'       => $tree,
-			'type'       => $type,
-		]);
-	}
+        echo view('modules/charts/config', [
+            'charts'     => $charts,
+            'individual' => $individual,
+            'tree'       => $tree,
+            'type'       => $type,
+        ]);
+    }
 }

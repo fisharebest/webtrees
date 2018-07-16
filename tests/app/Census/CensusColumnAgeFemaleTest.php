@@ -22,77 +22,83 @@ use Mockery;
 /**
  * Test harness for the class CensusColumnAgeFemale
  */
-class CensusColumnAgeFemaleTest extends \PHPUnit\Framework\TestCase {
-	/**
-	 * Delete mock objects
-	 */
-	public function tearDown() {
-		Mockery::close();
-	}
+class CensusColumnAgeFemaleTest extends \PHPUnit\Framework\TestCase
+{
+    /**
+     * Delete mock objects
+     */
+    public function tearDown()
+    {
+        Mockery::close();
+    }
 
-	/**
-	 * @covers \Fisharebest\Webtrees\Census\CensusColumnAgeFemale
-	 * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-	 */
-	public function testMale() {
-		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
-		$individual->shouldReceive('getSex')->andReturn('M');
+    /**
+     * @covers \Fisharebest\Webtrees\Census\CensusColumnAgeFemale
+     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
+     */
+    public function testMale()
+    {
+        $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
+        $individual->shouldReceive('getSex')->andReturn('M');
 
-		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
+        $census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
 
-		$column = new CensusColumnAgeFemale($census, '', '');
+        $column = new CensusColumnAgeFemale($census, '', '');
 
-		$this->assertSame('', $column->generate($individual));
-	}
+        $this->assertSame('', $column->generate($individual));
+    }
 
-	/**
-	 * @covers \Fisharebest\Webtrees\Census\CensusColumnAgeFemale
-	 * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-	 */
-	public function testFemale() {
-		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
-		$individual->shouldReceive('getSex')->andReturn('F');
-		$individual->shouldReceive('getEstimatedBirthDate')->andReturn(new Date('01 JAN 1800'));
+    /**
+     * @covers \Fisharebest\Webtrees\Census\CensusColumnAgeFemale
+     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
+     */
+    public function testFemale()
+    {
+        $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
+        $individual->shouldReceive('getSex')->andReturn('F');
+        $individual->shouldReceive('getEstimatedBirthDate')->andReturn(new Date('01 JAN 1800'));
 
-		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
-		$census->shouldReceive('censusDate')->andReturn('30 JUN 1832');
+        $census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
+        $census->shouldReceive('censusDate')->andReturn('30 JUN 1832');
 
-		$column = new CensusColumnAgeFemale($census, '', '');
+        $column = new CensusColumnAgeFemale($census, '', '');
 
-		$this->assertSame('32', $column->generate($individual));
-	}
+        $this->assertSame('32', $column->generate($individual));
+    }
 
-	/**
-	 * @covers \Fisharebest\Webtrees\Census\CensusColumnAgeFemale
-	 * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-	 */
-	public function testUnknownSex() {
-		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
-		$individual->shouldReceive('getSex')->andReturn('U');
-		$individual->shouldReceive('getEstimatedBirthDate')->andReturn(new Date('01 JAN 1800'));
+    /**
+     * @covers \Fisharebest\Webtrees\Census\CensusColumnAgeFemale
+     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
+     */
+    public function testUnknownSex()
+    {
+        $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
+        $individual->shouldReceive('getSex')->andReturn('U');
+        $individual->shouldReceive('getEstimatedBirthDate')->andReturn(new Date('01 JAN 1800'));
 
-		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
-		$census->shouldReceive('censusDate')->andReturn('30 JUN 1832');
+        $census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
+        $census->shouldReceive('censusDate')->andReturn('30 JUN 1832');
 
-		$column = new CensusColumnAgeFemale($census, '', '');
+        $column = new CensusColumnAgeFemale($census, '', '');
 
-		$this->assertSame('32', $column->generate($individual));
-	}
+        $this->assertSame('32', $column->generate($individual));
+    }
 
-	/**
-	 * @covers \Fisharebest\Webtrees\Census\CensusColumnAgeFemale
-	 * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-	 */
-	public function testLessThanOneYear() {
-		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
-		$individual->shouldReceive('getSex')->andReturn('F');
-		$individual->shouldReceive('getEstimatedBirthDate')->andReturn(new Date('01 JAN 1800'));
+    /**
+     * @covers \Fisharebest\Webtrees\Census\CensusColumnAgeFemale
+     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
+     */
+    public function testLessThanOneYear()
+    {
+        $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
+        $individual->shouldReceive('getSex')->andReturn('F');
+        $individual->shouldReceive('getEstimatedBirthDate')->andReturn(new Date('01 JAN 1800'));
 
-		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
-		$census->shouldReceive('censusDate')->andReturn('30 JUN 1800');
+        $census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
+        $census->shouldReceive('censusDate')->andReturn('30 JUN 1800');
 
-		$column = new CensusColumnAgeFemale($census, '', '');
+        $column = new CensusColumnAgeFemale($census, '', '');
 
-		$this->assertSame('0', $column->generate($individual));
-	}
+        $this->assertSame('0', $column->generate($individual));
+    }
 }

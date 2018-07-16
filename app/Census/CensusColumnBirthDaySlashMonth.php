@@ -21,22 +21,24 @@ use Fisharebest\Webtrees\Individual;
 /**
  * The individual's date of birth.
  */
-class CensusColumnBirthDaySlashMonth extends AbstractCensusColumn implements CensusColumnInterface {
-	/**
-	 * Generate the likely value of this census column, based on available information.
-	 *
-	 * @param Individual $individual
-	 * @param Individual $head
-	 *
-	 * @return string
-	 */
-	public function generate(Individual $individual, Individual $head = null) {
-		$birth_date = $individual->getBirthDate();
+class CensusColumnBirthDaySlashMonth extends AbstractCensusColumn implements CensusColumnInterface
+{
+    /**
+     * Generate the likely value of this census column, based on available information.
+     *
+     * @param Individual $individual
+     * @param Individual $head
+     *
+     * @return string
+     */
+    public function generate(Individual $individual, Individual $head = null)
+    {
+        $birth_date = $individual->getBirthDate();
 
-		if ($birth_date->minimumJulianDay() === $birth_date->maximumJulianDay()) {
-			return $birth_date->minimumDate()->format('%j/%n');
-		} else {
-			return '';
-		}
-	}
+        if ($birth_date->minimumJulianDay() === $birth_date->maximumJulianDay()) {
+            return $birth_date->minimumDate()->format('%j/%n');
+        } else {
+            return '';
+        }
+    }
 }

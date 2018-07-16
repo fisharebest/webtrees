@@ -18,12 +18,14 @@ namespace Fisharebest\Webtrees\Schema;
 /**
  * Upgrade the database schema from version 17 to version 18.
  */
-class Migration17 implements MigrationInterface {
-	/**
-	 * Upgrade to to the next version
-	 */
-	public function upgrade() {
-		// Originally, this created wt_site_access_rule,
-		// however this table now gets deleted in Migration37.
-	}
+class Migration17 implements MigrationInterface
+{
+    /**
+     * Upgrade to to the next version
+     */
+    public function upgrade()
+    {
+        // Originally, this created wt_site_access_rule,
+        // however this table now gets deleted in Migration37.
+    }
 }

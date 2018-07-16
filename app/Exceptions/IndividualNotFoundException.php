@@ -23,11 +23,13 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 /**
  * Exception thrown when an individual does not exist.
  */
-class IndividualNotFoundException extends NotFoundHttpException {
-	/**
-	 * IndividualNotFoundException constructor.
-	 */
-	public function __construct() {
-		parent::__construct(I18N::translate('This individual does not exist or you do not have permission to view it.'));
-	}
+class IndividualNotFoundException extends NotFoundHttpException
+{
+    /**
+     * IndividualNotFoundException constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct(I18N::translate('This individual does not exist or you do not have permission to view it.'));
+    }
 }

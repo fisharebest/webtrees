@@ -24,94 +24,105 @@ use Fisharebest\Webtrees\Tree;
 /**
  * Class WelcomeBlockModule
  */
-class WelcomeBlockModule extends AbstractModule implements ModuleBlockInterface {
-	/** {@inheritdoc} */
-	public function getTitle() {
-		return /* I18N: Name of a module */
-			I18N::translate('Home page');
-	}
+class WelcomeBlockModule extends AbstractModule implements ModuleBlockInterface
+{
+    /** {@inheritdoc} */
+    public function getTitle()
+    {
+        return /* I18N: Name of a module */
+            I18N::translate('Home page');
+    }
 
-	/** {@inheritdoc} */
-	public function getDescription() {
-		return /* I18N: Description of the “Home page” module */
-			I18N::translate('A greeting message for site visitors.');
-	}
+    /** {@inheritdoc} */
+    public function getDescription()
+    {
+        return /* I18N: Description of the “Home page” module */
+            I18N::translate('A greeting message for site visitors.');
+    }
 
-	/**
-	 * Generate the HTML content of this block.
-	 *
-	 * @param Tree     $tree
-	 * @param int      $block_id
-	 * @param bool     $template
-	 * @param string[] $cfg
-	 *
-	 * @return string
-	 */
-	public function getBlock(Tree $tree, int $block_id, bool $template = true, array $cfg = []): string {
-		$individual = $tree->getSignificantIndividual();
+    /**
+     * Generate the HTML content of this block.
+     *
+     * @param Tree     $tree
+     * @param int      $block_id
+     * @param bool     $template
+     * @param string[] $cfg
+     *
+     * @return string
+     */
+    public function getBlock(Tree $tree, int $block_id, bool $template = true, array $cfg = []): string
+    {
+        $individual = $tree->getSignificantIndividual();
 
-		$links = [];
+        $links = [];
 
-		if (Module::isActiveChart($individual->getTree(), 'pedigree_chart')) {
-			$links[] = [
-				'url'   => route('pedigree', ['xref' => $individual->getXref(), 'ged' => $individual->getTree()->getName()]),
-				'title' => I18N::translate('Default chart'),
-				'icon'  => 'icon-pedigree',
-			];
-		}
+        if (Module::isActiveChart($individual->getTree(), 'pedigree_chart')) {
+            $links[] = [
+                'url'   => route('pedigree', [
+                    'xref' => $individual->getXref(),
+                    'ged'  => $individual->getTree()->getName(),
+                ]),
+                'title' => I18N::translate('Default chart'),
+                'icon'  => 'icon-pedigree',
+            ];
+        }
 
-		$links[] = [
-			'url'   => $individual->url(),
-			'title' => I18N::translate('Default individual'),
-			'icon'  => 'icon-indis',
-		];
+        $links[] = [
+            'url'   => $individual->url(),
+            'title' => I18N::translate('Default individual'),
+            'icon'  => 'icon-indis',
+        ];
 
-		if (Site::getPreference('USE_REGISTRATION_MODULE') === '1' && !Auth::check()) {
-			$links[] = [
-				'url'   => route('register'),
-				'title' => I18N::translate('Request a new user account'),
-				'icon'  => 'icon-user_add',
-			];
-		}
+        if (Site::getPreference('USE_REGISTRATION_MODULE') === '1' && !Auth::check()) {
+            $links[] = [
+                'url'   => route('register'),
+                'title' => I18N::translate('Request a new user account'),
+                'icon'  => 'icon-user_add',
+            ];
+        }
 
-		$content = view('modules/gedcom_block/welcome', ['links' => $links]);
+        $content = view('modules/gedcom_block/welcome', ['links' => $links]);
 
-		if ($template) {
-			return view('modules/block-template', [
-				'block'      => str_replace('_', '-', $this->getName()),
-				'id'         => $block_id,
-				'config_url' => '',
-				'title'      => $individual->getTree()->getTitle(),
-				'content'    => $content,
-			]);
-		} else {
-			return $content;
-		}
-	}
+        if ($template) {
+            return view('modules/block-template', [
+                'block'      => str_replace('_', '-', $this->getName()),
+                'id'         => $block_id,
+                'config_url' => '',
+                'title'      => $individual->getTree()->getTitle(),
+                'content'    => $content,
+            ]);
+        } else {
+            return $content;
+        }
+    }
 
-	/** {@inheritdoc} */
-	public function loadAjax(): bool {
-		return false;
-	}
+    /** {@inheritdoc} */
+    public function loadAjax(): bool
+    {
+        return false;
+    }
 
-	/** {@inheritdoc} */
-	public function isUserBlock(): bool {
-		return false;
-	}
+    /** {@inheritdoc} */
+    public function isUserBlock(): bool
+    {
+        return false;
+    }
 
-	/** {@inheritdoc} */
-	public function isGedcomBlock(): bool {
-		return true;
-	}
+    /** {@inheritdoc} */
+    public function isGedcomBlock(): bool
+    {
+        return true;
+    }
 
-	/**
-	 * An HTML form to edit block settings
-	 *
-	 * @param Tree $tree
-	 * @param int  $block_id
-	 *
-	 * @return void
-	 */
-	public function configureBlock(Tree $tree, int $block_id) {
-	}
+    /**
+     * An HTML form to edit block settings
+     *
+     * @param Tree $tree
+     * @param int  $block_id
+     *
+     * @return void
+     */
+    public function configureBlock(Tree $tree, int $block_id)
+    {
+    }
 }

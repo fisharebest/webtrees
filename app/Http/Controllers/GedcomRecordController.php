@@ -32,53 +32,56 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * Controller for the gedcom record page.
  */
-class GedcomRecordController extends AbstractBaseController {
-	/**
-	 * Show a gedcom record's page.
-	 *
-	 * @param Request $request
-	 *
-	 * @return Response
-	 */
-	public function show(Request $request): Response {
-		/** @var Tree $tree */
-		$tree   = $request->attributes->get('tree');
-		$xref   = $request->get('xref');
-		$record = GedcomRecord::getInstance($xref, $tree);
+class GedcomRecordController extends AbstractBaseController
+{
+    /**
+     * Show a gedcom record's page.
+     *
+     * @param Request $request
+     *
+     * @return Response
+     */
+    public function show(Request $request): Response
+    {
+        /** @var Tree $tree */
+        $tree   = $request->attributes->get('tree');
+        $xref   = $request->get('xref');
+        $record = GedcomRecord::getInstance($xref, $tree);
 
-		$this->checkRecordAccess($record);
+        $this->checkRecordAccess($record);
 
-		if ($this->hasCustomPage($record)) {
-			return new RedirectResponse($record->url());
-		} else {
-			return $this->viewResponse('gedcom-record-page', [
-				'facts'         => $record->getFacts(),
-				'families'      => $record->linkedFamilies($record::RECORD_TYPE),
-				'individuals'   => $record->linkedIndividuals($record::RECORD_TYPE),
-				'meta_robots'   => 'index,follow',
-				'notes'         => $record->linkedNotes($record::RECORD_TYPE),
-				'media_objects' => $record->linkedMedia($record::RECORD_TYPE),
-				'record'        => $record,
-				'sources'       => $record->linkedSources($record::RECORD_TYPE),
-				'title'         => $record->getFullName(),
-			]);
-		}
-	}
+        if ($this->hasCustomPage($record)) {
+            return new RedirectResponse($record->url());
+        } else {
+            return $this->viewResponse('gedcom-record-page', [
+                'facts'         => $record->getFacts(),
+                'families'      => $record->linkedFamilies($record::RECORD_TYPE),
+                'individuals'   => $record->linkedIndividuals($record::RECORD_TYPE),
+                'meta_robots'   => 'index,follow',
+                'notes'         => $record->linkedNotes($record::RECORD_TYPE),
+                'media_objects' => $record->linkedMedia($record::RECORD_TYPE),
+                'record'        => $record,
+                'sources'       => $record->linkedSources($record::RECORD_TYPE),
+                'title'         => $record->getFullName(),
+            ]);
+        }
+    }
 
-	/**
-	 * Is there a better place to display this record?
-	 *
-	 * @param GedcomRecord $record
-	 *
-	 * @return bool
-	 */
-	private function hasCustomPage(GedcomRecord $record): bool {
-		return
-			$record instanceof Individual ||
-			$record instanceof Family ||
-			$record instanceof Source ||
-			$record instanceof Repository ||
-			$record instanceof Note ||
-			$record instanceof Media;
-	}
+    /**
+     * Is there a better place to display this record?
+     *
+     * @param GedcomRecord $record
+     *
+     * @return bool
+     */
+    private function hasCustomPage(GedcomRecord $record): bool
+    {
+        return
+            $record instanceof Individual ||
+            $record instanceof Family ||
+            $record instanceof Source ||
+            $record instanceof Repository ||
+            $record instanceof Note ||
+            $record instanceof Media;
+    }
 }

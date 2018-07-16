@@ -24,24 +24,27 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * Controller for maps and geographic data.
  */
-class AdminMapController extends AbstractBaseController {
-	protected $layout = 'layouts/administration';
+class AdminMapController extends AbstractBaseController
+{
+    protected $layout = 'layouts/administration';
 
-	/**
-	 * @param Request $request
-	 *
-	 * @return Response
-	 */
-	public function providerDetails(Request $request): Response {
+    /**
+     * @param Request $request
+     *
+     * @return Response
+     */
+    public function providerDetails(Request $request): Response
+    {
 
-	}
+    }
 
-	/**
-	 * @param Request $request
-	 *
-	 * @return RedirectResponse
-	 */
-	public function providerDetailsAction(Request $request): RedirectResponse {
+    /**
+     * @param Request $request
+     *
+     * @return RedirectResponse
+     */
+    public function providerDetailsAction(Request $request): RedirectResponse
+    {
 
-	}
+    }
 }

@@ -22,66 +22,71 @@ use DebugBar\DataCollector\Renderable;
  * A data collector for maximebf/php-debugbar.
  * Gathers information about views.
  */
-class ViewCollector extends DataCollector implements Renderable {
-	protected $views = [];
+class ViewCollector extends DataCollector implements Renderable
+{
+    protected $views = [];
 
-	/**
-	 * Add details about a view
-	 *
-	 * @param string $view
-	 * @param array  $data
-	 */
-	public function addView(string $view, array $data) {
-		$num = count($this->views) + 1;
-		$key = '#' . $num . ' ' . $view;
+    /**
+     * Add details about a view
+     *
+     * @param string $view
+     * @param array  $data
+     */
+    public function addView(string $view, array $data)
+    {
+        $num = count($this->views) + 1;
+        $key = '#' . $num . ' ' . $view;
 
-		//$this->views[$key] = $this->getVarDumper()->renderVar($data);
-		$this->views[$key] = $this->getDataFormatter()->formatVar($data);
-	}
+        //$this->views[$key] = $this->getVarDumper()->renderVar($data);
+        $this->views[$key] = $this->getDataFormatter()->formatVar($data);
+    }
 
-	/**
-	 * Called by the DebugBar when data needs to be collected
-	 *
-	 * @return array Collected data
-	 */
-	public function collect(): array {
-		$views = $this->views;
+    /**
+     * Called by the DebugBar when data needs to be collected
+     *
+     * @return array Collected data
+     */
+    public function collect(): array
+    {
+        $views = $this->views;
 
-		return [
-			'count' => count($views),
-			'views' => $views,
-		];
-	}
+        return [
+            'count' => count($views),
+            'views' => $views,
+        ];
+    }
 
-	/**
-	 * Returns the unique name of the collector
-	 *
-	 * @return string
-	 */
-	public function getName(): string {
-		return 'views';
-	}
+    /**
+     * Returns the unique name of the collector
+     *
+     * @return string
+     */
+    public function getName(): string
+    {
+        return 'views';
+    }
 
-	/**
-	 * Returns a hash where keys are control names and their values
-	 * an array of options as defined in {@see DebugBar\JavascriptRenderer::addControl()}
-	 *
-	 * @return array
-	 */
-	public function getWidgets(): array {
-		$name = $this->getName();
+    /**
+     * Returns a hash where keys are control names and their values
+     * an array of options as defined in {@see DebugBar\JavascriptRenderer::addControl()}
+     *
+     * @return array
+     */
+    public function getWidgets(): array
+    {
+        $name = $this->getName();
 
-		return [
-			$name            => [
-				'icon'    => 'list-alt',
-				'widget'  => 'PhpDebugBar.Widgets.VariableListWidget',
-				'map'     => $name . '.views',
-				'default' => '[]',
-			],
-			$name . ':badge' => [
-				'map'     => $name . '.count',
-				'default' => 0,
-			],
-		];
-	}
+        return [
+            $name            => [
+                'icon'    => 'list-alt',
+                'widget'  => 'PhpDebugBar.Widgets.VariableListWidget',
+                'map'     => $name . '.views',
+                'default' => '[]',
+            ],
+            $name . ':badge' => [
+                'map'     => $name . '.count',
+                'default' => 0,
+            ],
+        ];
+    }
 }

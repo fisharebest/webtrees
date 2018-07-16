@@ -19,32 +19,35 @@ namespace Fisharebest\Webtrees\Census;
 /**
  * Definitions for a census
  */
-class CensusOfScotland1871 extends CensusOfScotland implements CensusInterface {
-	/**
-	 * When did this census occur.
-	 *
-	 * @return string
-	 */
-	public function censusDate() {
-		return '02 APR 1871';
-	}
+class CensusOfScotland1871 extends CensusOfScotland implements CensusInterface
+{
+    /**
+     * When did this census occur.
+     *
+     * @return string
+     */
+    public function censusDate()
+    {
+        return '02 APR 1871';
+    }
 
-	/**
-	 * The columns of the census.
-	 *
-	 * @return CensusColumnInterface[]
-	 */
-	public function columns() {
-		return [
-			new CensusColumnFullName($this, 'Name', 'Name and surname'),
-			new CensusColumnRelationToHead($this, 'Relation', 'Relation to head of household'),
-			new CensusColumnConditionEnglish($this, 'Condition', 'Condition'),
-			new CensusColumnAgeMale($this, 'AgeM', 'Age (males)'),
-			new CensusColumnAgeFemale($this, 'AgeF', 'Age (females)'),
-			new CensusColumnOccupation($this, 'Occupation', 'Rank, profession or occupation'),
-			new CensusColumnBirthPlace($this, 'Birthplace', 'Where born'),
-			new CensusColumnNull($this, 'Infirm', 'Whether deaf-and-dumb, blind, imbecile, idiot or lunatic'),
-			new CensusColumnNull($this, 'School', 'Number of children between 5 and 13 attending school or educated at home'),
-		];
-	}
+    /**
+     * The columns of the census.
+     *
+     * @return CensusColumnInterface[]
+     */
+    public function columns()
+    {
+        return [
+            new CensusColumnFullName($this, 'Name', 'Name and surname'),
+            new CensusColumnRelationToHead($this, 'Relation', 'Relation to head of household'),
+            new CensusColumnConditionEnglish($this, 'Condition', 'Condition'),
+            new CensusColumnAgeMale($this, 'AgeM', 'Age (males)'),
+            new CensusColumnAgeFemale($this, 'AgeF', 'Age (females)'),
+            new CensusColumnOccupation($this, 'Occupation', 'Rank, profession or occupation'),
+            new CensusColumnBirthPlace($this, 'Birthplace', 'Where born'),
+            new CensusColumnNull($this, 'Infirm', 'Whether deaf-and-dumb, blind, imbecile, idiot or lunatic'),
+            new CensusColumnNull($this, 'School', 'Number of children between 5 and 13 attending school or educated at home'),
+        ];
+    }
 }

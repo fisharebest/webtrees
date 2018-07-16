@@ -26,59 +26,66 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * Controller for edit forms and responses.
  */
-class EditRepositoryController extends AbstractEditController {
-	/**
-	 * Show a form to create a new repository.
-	 *
-	 * @param Request $request
-	 *
-	 * @return Response
-	 */
-	public function createRepository(Request $request): Response {
-		return new Response(view('modals/create-repository'));
-	}
+class EditRepositoryController extends AbstractEditController
+{
+    /**
+     * Show a form to create a new repository.
+     *
+     * @param Request $request
+     *
+     * @return Response
+     */
+    public function createRepository(Request $request): Response
+    {
+        return new Response(view('modals/create-repository'));
+    }
 
-	/**
-	 * Process a form to create a new repository.
-	 *
-	 * @param Request $request
-	 *
-	 * @return JsonResponse
-	 */
-	public function createRepositoryAction(Request $request): JsonResponse {
-		/** @var Tree $tree */
-		$tree                = $request->attributes->get('tree');
-		$name                = $request->get('repository-name', '');
-		$privacy_restriction = $request->get('privacy-restriction', '');
-		$edit_restriction    = $request->get('edit-restriction', '');
+    /**
+     * Process a form to create a new repository.
+     *
+     * @param Request $request
+     *
+     * @return JsonResponse
+     */
+    public function createRepositoryAction(Request $request): JsonResponse
+    {
+        /** @var Tree $tree */
+        $tree                = $request->attributes->get('tree');
+        $name                = $request->get('repository-name', '');
+        $privacy_restriction = $request->get('privacy-restriction', '');
+        $edit_restriction    = $request->get('edit-restriction', '');
 
-		// Fix whitespace
-		$name   = trim(preg_replace('/\s+/', ' ', $name));
+        // Fix whitespace
+        $name = trim(preg_replace('/\s+/', ' ', $name));
 
-		$gedcom = "0 @XREF@ REPO\n1 NAME " . $name;
+        $gedcom = "0 @XREF@ REPO\n1 NAME " . $name;
 
-		if (in_array($privacy_restriction, ['none', 'privacy', 'confidential'])) {
-			$gedcom .= "\n1 RESN " . $privacy_restriction;
-		}
+        if (in_array($privacy_restriction, [
+            'none',
+            'privacy',
+            'confidential',
+        ])) {
+            $gedcom .= "\n1 RESN " . $privacy_restriction;
+        }
 
-		if (in_array($edit_restriction, ['locked'])) {
-			$gedcom .= "\n1 RESN " . $edit_restriction;
-		}
+        if (in_array($edit_restriction, ['locked'])) {
+            $gedcom .= "\n1 RESN " . $edit_restriction;
+        }
 
-		$record = $tree->createRecord($gedcom);
+        $record = $tree->createRecord($gedcom);
 
-		// id and text are for select2 / autocomplete
-		// html is for interactive modals
-		return new JsonResponse([
-			'id' => $record->getXref(),
-			'text' => view('selects/repository', [
-				'repository' => $record,
-			]),
-			'html' => view('modals/record-created', [
-				'title' => I18N::translate('The repository has been created'),
-				'name'  => $record->getFullName(),
-				'url'   => $record->url(),
-			])
-		]);
-	}
+        // id and text are for select2 / autocomplete
+        // html is for interactive modals
+        return new JsonResponse([
+            'id'   => $record->getXref(),
+            'text' => view('selects/repository', [
+                'repository' => $record,
+            ]),
+            'html' => view('modals/record-created', [
+                'title' => I18N::translate('The repository has been created'),
+                'name'  => $record->getFullName(),
+                'url'   => $record->url(),
+            ]),
+        ]);
+    }
 }

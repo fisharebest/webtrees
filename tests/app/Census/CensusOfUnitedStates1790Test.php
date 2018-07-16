@@ -19,55 +19,58 @@ namespace Fisharebest\Webtrees\Census;
 /**
  * Test harness for the class CensusOfUnitedStates1790
  */
-class CensusOfUnitedStates1790Test extends \PHPUnit\Framework\TestCase {
-	/**
-	 * Test the census place and date
-	 *
-	 * @covers \Fisharebest\Webtrees\Census\CensusOfUnitedStates1790
-	 */
-	public function testPlaceAndDate() {
-		$census = new CensusOfUnitedStates1790;
+class CensusOfUnitedStates1790Test extends \PHPUnit\Framework\TestCase
+{
+    /**
+     * Test the census place and date
+     *
+     * @covers \Fisharebest\Webtrees\Census\CensusOfUnitedStates1790
+     */
+    public function testPlaceAndDate()
+    {
+        $census = new CensusOfUnitedStates1790;
 
-		$this->assertSame('United States', $census->censusPlace());
-		$this->assertSame('02 AUG 1790', $census->censusDate());
-	}
+        $this->assertSame('United States', $census->censusPlace());
+        $this->assertSame('02 AUG 1790', $census->censusDate());
+    }
 
-	/**
-	 * Test the census columns
-	 *
-	 * @covers \Fisharebest\Webtrees\Census\CensusOfUnitedStates1790
-	 * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-	 */
-	public function testColumns() {
-		$census  = new CensusOfUnitedStates1790;
-		$columns = $census->columns();
+    /**
+     * Test the census columns
+     *
+     * @covers \Fisharebest\Webtrees\Census\CensusOfUnitedStates1790
+     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
+     */
+    public function testColumns()
+    {
+        $census  = new CensusOfUnitedStates1790;
+        $columns = $census->columns();
 
-		$this->assertCount(8, $columns);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnFullName', $columns[0]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnOccupation', $columns[1]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[2]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[3]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[4]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[5]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[6]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[7]);
+        $this->assertCount(8, $columns);
+        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnFullName', $columns[0]);
+        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnOccupation', $columns[1]);
+        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[2]);
+        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[3]);
+        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[4]);
+        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[5]);
+        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[6]);
+        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[7]);
 
-		$this->assertSame('Name', $columns[0]->abbreviation());
-		$this->assertSame('Occupation', $columns[1]->abbreviation());
-		$this->assertSame('White male 16+', $columns[2]->abbreviation());
-		$this->assertSame('White male 0-16', $columns[3]->abbreviation());
-		$this->assertSame('White female', $columns[4]->abbreviation());
-		$this->assertSame('Free', $columns[5]->abbreviation());
-		$this->assertSame('Slaves', $columns[6]->abbreviation());
-		$this->assertSame('Total', $columns[7]->abbreviation());
+        $this->assertSame('Name', $columns[0]->abbreviation());
+        $this->assertSame('Occupation', $columns[1]->abbreviation());
+        $this->assertSame('White male 16+', $columns[2]->abbreviation());
+        $this->assertSame('White male 0-16', $columns[3]->abbreviation());
+        $this->assertSame('White female', $columns[4]->abbreviation());
+        $this->assertSame('Free', $columns[5]->abbreviation());
+        $this->assertSame('Slaves', $columns[6]->abbreviation());
+        $this->assertSame('Total', $columns[7]->abbreviation());
 
-		$this->assertSame('Name of head of family', $columns[0]->title());
-		$this->assertSame('Professions and occupation', $columns[1]->title());
-		$this->assertSame('White male of 16 yrs upward', $columns[2]->title());
-		$this->assertSame('White males of under 16 yrs', $columns[3]->title());
-		$this->assertSame('All White Females', $columns[4]->title());
-		$this->assertSame('All other free persons', $columns[5]->title());
-		$this->assertSame('Number of slaves', $columns[6]->title());
-		$this->assertSame('Total', $columns[7]->title());
-	}
+        $this->assertSame('Name of head of family', $columns[0]->title());
+        $this->assertSame('Professions and occupation', $columns[1]->title());
+        $this->assertSame('White male of 16 yrs upward', $columns[2]->title());
+        $this->assertSame('White males of under 16 yrs', $columns[3]->title());
+        $this->assertSame('All White Females', $columns[4]->title());
+        $this->assertSame('All other free persons', $columns[5]->title());
+        $this->assertSame('Number of slaves', $columns[6]->title());
+        $this->assertSame('Total', $columns[7]->title());
+    }
 }

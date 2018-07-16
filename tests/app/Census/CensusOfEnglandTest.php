@@ -19,37 +19,40 @@ namespace Fisharebest\Webtrees\Census;
 /**
  * Test harness for the class CensusOfEngland
  */
-class CensusOfEnglandTest extends \PHPUnit\Framework\TestCase {
-	/**
-	 * Test the census place
-	 *
-	 * @covers \Fisharebest\Webtrees\Census\CensusOfEngland
-	 */
-	public function testPlace() {
-		$census = new CensusOfEngland;
+class CensusOfEnglandTest extends \PHPUnit\Framework\TestCase
+{
+    /**
+     * Test the census place
+     *
+     * @covers \Fisharebest\Webtrees\Census\CensusOfEngland
+     */
+    public function testPlace()
+    {
+        $census = new CensusOfEngland;
 
-		$this->assertSame('England', $census->censusPlace());
-	}
+        $this->assertSame('England', $census->censusPlace());
+    }
 
-	/**
-	 * Test the census dates
-	 *
-	 * @covers \Fisharebest\Webtrees\Census\CensusOfEngland
-	 */
-	public function testAllDates() {
-		$census = new CensusOfEngland;
+    /**
+     * Test the census dates
+     *
+     * @covers \Fisharebest\Webtrees\Census\CensusOfEngland
+     */
+    public function testAllDates()
+    {
+        $census = new CensusOfEngland;
 
-		$census_dates = $census->allCensusDates();
+        $census_dates = $census->allCensusDates();
 
-		$this->assertCount(9, $census_dates);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfEngland1841', $census_dates[0]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfEngland1851', $census_dates[1]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfEngland1861', $census_dates[2]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfEngland1871', $census_dates[3]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfEngland1881', $census_dates[4]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfEngland1891', $census_dates[5]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfEngland1901', $census_dates[6]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfEngland1911', $census_dates[7]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\RegisterOfEngland1939', $census_dates[8]);
-	}
+        $this->assertCount(9, $census_dates);
+        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfEngland1841', $census_dates[0]);
+        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfEngland1851', $census_dates[1]);
+        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfEngland1861', $census_dates[2]);
+        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfEngland1871', $census_dates[3]);
+        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfEngland1881', $census_dates[4]);
+        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfEngland1891', $census_dates[5]);
+        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfEngland1901', $census_dates[6]);
+        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfEngland1911', $census_dates[7]);
+        $this->assertInstanceOf('Fisharebest\Webtrees\Census\RegisterOfEngland1939', $census_dates[8]);
+    }
 }

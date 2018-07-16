@@ -21,28 +21,30 @@ use Fisharebest\Webtrees\Individual;
 /**
  * The individual's birth place.
  */
-class CensusColumnBirthPlace extends AbstractCensusColumn implements CensusColumnInterface {
-	/**
-	 * Generate the likely value of this census column, based on available information.
-	 *
-	 * @param Individual $individual
-	 * @param Individual $head
-	 *
-	 * @return string
-	 */
-	public function generate(Individual $individual, Individual $head = null) {
-		$birth_place  = $individual->getBirthPlace()->getGedcomName();
-		$census_place = $this->place();
+class CensusColumnBirthPlace extends AbstractCensusColumn implements CensusColumnInterface
+{
+    /**
+     * Generate the likely value of this census column, based on available information.
+     *
+     * @param Individual $individual
+     * @param Individual $head
+     *
+     * @return string
+     */
+    public function generate(Individual $individual, Individual $head = null)
+    {
+        $birth_place  = $individual->getBirthPlace()->getGedcomName();
+        $census_place = $this->place();
 
-		// Ignore the census country
-		if ($birth_place === $census_place) {
-			return '';
-		}
+        // Ignore the census country
+        if ($birth_place === $census_place) {
+            return '';
+        }
 
-		if (substr($birth_place, -strlen($census_place) - 2) === ', ' . $census_place) {
-			return substr($birth_place, 0, -strlen($census_place) - 2);
-		} else {
-			return $birth_place;
-		}
-	}
+        if (substr($birth_place, -strlen($census_place) - 2) === ', ' . $census_place) {
+            return substr($birth_place, 0, -strlen($census_place) - 2);
+        } else {
+            return $birth_place;
+        }
+    }
 }

@@ -22,26 +22,28 @@ use Fisharebest\Webtrees\Individual;
 /**
  * At what age did the individual marry.
  */
-class CensusColumnAgeMarried extends AbstractCensusColumn implements CensusColumnInterface {
-	/**
-	 * Generate the likely value of this census column, based on available information.
-	 *
-	 * @param Individual $individual
-	 * @param Individual $head
-	 *
-	 * @return string
-	 */
-	public function generate(Individual $individual, Individual $head = null) {
-		if ($individual->getBirthDate()->isOK()) {
-			foreach ($individual->getSpouseFamilies() as $family) {
-				foreach ($family->getFacts('MARR', true) as $fact) {
-					if ($fact->getDate()->isOK()) {
-						return Date::getAge($individual->getBirthDate(), $fact->getDate(), 0);
-					}
-				}
-			}
-		}
+class CensusColumnAgeMarried extends AbstractCensusColumn implements CensusColumnInterface
+{
+    /**
+     * Generate the likely value of this census column, based on available information.
+     *
+     * @param Individual $individual
+     * @param Individual $head
+     *
+     * @return string
+     */
+    public function generate(Individual $individual, Individual $head = null)
+    {
+        if ($individual->getBirthDate()->isOK()) {
+            foreach ($individual->getSpouseFamilies() as $family) {
+                foreach ($family->getFacts('MARR', true) as $fact) {
+                    if ($fact->getDate()->isOK()) {
+                        return Date::getAge($individual->getBirthDate(), $fact->getDate(), 0);
+                    }
+                }
+            }
+        }
 
-		return '';
-	}
+        return '';
+    }
 }

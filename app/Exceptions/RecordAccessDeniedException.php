@@ -23,11 +23,13 @@ use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 /**
  * Exception thrown when a record cannot be accessed due to privacy rules.
  */
-class RecordAccessDeniedException extends AccessDeniedHttpException {
-	/**
-	 * RecordNotFoundException constructor.
-	 */
-	public function __construct() {
-		parent::__construct(I18N::translate('This record does not exist or you do not have permission to view it.'));
-	}
+class RecordAccessDeniedException extends AccessDeniedHttpException
+{
+    /**
+     * RecordNotFoundException constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct(I18N::translate('This record does not exist or you do not have permission to view it.'));
+    }
 }

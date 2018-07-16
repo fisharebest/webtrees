@@ -19,29 +19,32 @@ namespace Fisharebest\Webtrees\Census;
 /**
  * Definitions for a census
  */
-class CensusOfFrance1946 extends CensusOfFrance implements CensusInterface {
-	/**
-	 * When did this census occur.
-	 *
-	 * @return string
-	 */
-	public function censusDate() {
-		return '17 JAN 1946';
-	}
+class CensusOfFrance1946 extends CensusOfFrance implements CensusInterface
+{
+    /**
+     * When did this census occur.
+     *
+     * @return string
+     */
+    public function censusDate()
+    {
+        return '17 JAN 1946';
+    }
 
-	/**
-	 * The columns of the census.
-	 *
-	 * @return CensusColumnInterface[]
-	 */
-	public function columns() {
-		return [
-			new CensusColumnSurname($this, 'Nom', 'Nom de famille'),
-			new CensusColumnGivenNames($this, 'Prénom', 'Prénom usuel'),
-			new CensusColumnRelationToHead($this, 'Parenté', 'Parenté avec le chef de ménage ou situation dans le ménage'),
-			new CensusColumnBirthYear($this, 'Année', 'Année de naissance'),
-			new CensusColumnNationality($this, 'Nationalité', ''),
-			new CensusColumnOccupation($this, 'Profession', ''),
-		];
-	}
+    /**
+     * The columns of the census.
+     *
+     * @return CensusColumnInterface[]
+     */
+    public function columns()
+    {
+        return [
+            new CensusColumnSurname($this, 'Nom', 'Nom de famille'),
+            new CensusColumnGivenNames($this, 'Prénom', 'Prénom usuel'),
+            new CensusColumnRelationToHead($this, 'Parenté', 'Parenté avec le chef de ménage ou situation dans le ménage'),
+            new CensusColumnBirthYear($this, 'Année', 'Année de naissance'),
+            new CensusColumnNationality($this, 'Nationalité', ''),
+            new CensusColumnOccupation($this, 'Profession', ''),
+        ];
+    }
 }

@@ -18,101 +18,105 @@ namespace Fisharebest\Webtrees\SurnameTradition;
 /**
  * Lithuanian — Children take their father’s surname. Wives take their husband’s surname. Surnames are inflected to indicate an individual’s sex and marital status.
  */
-class LithuanianSurnameTradition extends PaternalSurnameTradition implements SurnameTraditionInterface {
-	/** @var string[] Inflect a surname for wives */
-	protected $inflect_wife = [
-		'as\b' => 'ienė',
-		'is\b' => 'ienė',
-		'ys\b' => 'ienė',
-		'us\b' => 'ienė',
-	];
+class LithuanianSurnameTradition extends PaternalSurnameTradition implements SurnameTraditionInterface
+{
+    /** @var string[] Inflect a surname for wives */
+    protected $inflect_wife = [
+        'as\b' => 'ienė',
+        'is\b' => 'ienė',
+        'ys\b' => 'ienė',
+        'us\b' => 'ienė',
+    ];
 
-	/** @var string[] Inflect a surname for daughters */
-	protected $inflect_daughter = [
-		'a\b'   => 'aitė',
-		'as\b'  => 'aitė',
-		'is\b'  => 'ytė',
-		'ys\b'  => 'ytė',
-		'ius\b' => 'iūtė',
-		'us\b'  => 'utė',
-	];
+    /** @var string[] Inflect a surname for daughters */
+    protected $inflect_daughter = [
+        'a\b'   => 'aitė',
+        'as\b'  => 'aitė',
+        'is\b'  => 'ytė',
+        'ys\b'  => 'ytė',
+        'ius\b' => 'iūtė',
+        'us\b'  => 'utė',
+    ];
 
-	/** @var string[] Inflect a surname for males */
-	protected $inflect_male = [
-		'aitė\b' => 'as',
-		'ytė\b'  => 'is',
-		'iūtė\b' => 'ius',
-		'utė\b'  => 'us',
-	];
+    /** @var string[] Inflect a surname for males */
+    protected $inflect_male = [
+        'aitė\b' => 'as',
+        'ytė\b'  => 'is',
+        'iūtė\b' => 'ius',
+        'utė\b'  => 'us',
+    ];
 
-	/**
-	 * What names are given to a new child
-	 *
-	 * @param string $father_name A GEDCOM NAME
-	 * @param string $mother_name A GEDCOM NAME
-	 * @param string $child_sex   M, F or U
-	 *
-	 * @return string[] Associative array of GEDCOM name parts (SURN, _MARNM, etc.)
-	 */
-	public function newChildNames($father_name, $mother_name, $child_sex) {
-		if (preg_match(self::REGEX_SURN, $father_name, $match)) {
-			if ($child_sex === 'F') {
-				return array_filter([
-					'NAME' => $this->inflect($match['NAME'], $this->inflect_daughter),
-					'SURN' => $this->inflect($match['SURN'], $this->inflect_male),
-				]);
-			} else {
-				return array_filter([
-					'NAME' => $match['NAME'],
-					'SURN' => $match['SURN'],
-				]);
-			}
-		} else {
-			return [
-				'NAME' => '//',
-			];
-		}
-	}
+    /**
+     * What names are given to a new child
+     *
+     * @param string $father_name A GEDCOM NAME
+     * @param string $mother_name A GEDCOM NAME
+     * @param string $child_sex   M, F or U
+     *
+     * @return string[] Associative array of GEDCOM name parts (SURN, _MARNM, etc.)
+     */
+    public function newChildNames($father_name, $mother_name, $child_sex)
+    {
+        if (preg_match(self::REGEX_SURN, $father_name, $match)) {
+            if ($child_sex === 'F') {
+                return array_filter([
+                    'NAME' => $this->inflect($match['NAME'], $this->inflect_daughter),
+                    'SURN' => $this->inflect($match['SURN'], $this->inflect_male),
+                ]);
+            } else {
+                return array_filter([
+                    'NAME' => $match['NAME'],
+                    'SURN' => $match['SURN'],
+                ]);
+            }
+        } else {
+            return [
+                'NAME' => '//',
+            ];
+        }
+    }
 
-	/**
-	 * What names are given to a new parent
-	 *
-	 * @param string $child_name A GEDCOM NAME
-	 * @param string $parent_sex M, F or U
-	 *
-	 * @return string[] Associative array of GEDCOM name parts (SURN, _MARNM, etc.)
-	 */
-	public function newParentNames($child_name, $parent_sex) {
-		if ($parent_sex === 'M' && preg_match(self::REGEX_SURN, $child_name, $match)) {
-			return array_filter([
-				'NAME' => $this->inflect($match['NAME'], $this->inflect_male),
-				'SURN' => $this->inflect($match['SURN'], $this->inflect_male),
-			]);
-		} else {
-			return [
-				'NAME' => '//',
-			];
-		}
-	}
+    /**
+     * What names are given to a new parent
+     *
+     * @param string $child_name A GEDCOM NAME
+     * @param string $parent_sex M, F or U
+     *
+     * @return string[] Associative array of GEDCOM name parts (SURN, _MARNM, etc.)
+     */
+    public function newParentNames($child_name, $parent_sex)
+    {
+        if ($parent_sex === 'M' && preg_match(self::REGEX_SURN, $child_name, $match)) {
+            return array_filter([
+                'NAME' => $this->inflect($match['NAME'], $this->inflect_male),
+                'SURN' => $this->inflect($match['SURN'], $this->inflect_male),
+            ]);
+        } else {
+            return [
+                'NAME' => '//',
+            ];
+        }
+    }
 
-	/**
-	 * What names are given to a new spouse
-	 *
-	 * @param string $spouse_name A GEDCOM NAME
-	 * @param string $spouse_sex  M, F or U
-	 *
-	 * @return string[] Associative array of GEDCOM name parts (SURN, _MARNM, etc.)
-	 */
-	public function newSpouseNames($spouse_name, $spouse_sex) {
-		if ($spouse_sex === 'F' && preg_match(self::REGEX_SURN, $spouse_name, $match)) {
-			return [
-				'NAME'   => '//',
-				'_MARNM' => $this->inflect($match['NAME'], $this->inflect_wife),
-			];
-		} else {
-			return [
-				'NAME' => '//',
-			];
-		}
-	}
+    /**
+     * What names are given to a new spouse
+     *
+     * @param string $spouse_name A GEDCOM NAME
+     * @param string $spouse_sex  M, F or U
+     *
+     * @return string[] Associative array of GEDCOM name parts (SURN, _MARNM, etc.)
+     */
+    public function newSpouseNames($spouse_name, $spouse_sex)
+    {
+        if ($spouse_sex === 'F' && preg_match(self::REGEX_SURN, $spouse_name, $match)) {
+            return [
+                'NAME'   => '//',
+                '_MARNM' => $this->inflect($match['NAME'], $this->inflect_wife),
+            ];
+        } else {
+            return [
+                'NAME' => '//',
+            ];
+        }
+    }
 }

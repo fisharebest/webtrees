@@ -20,29 +20,30 @@ use Fisharebest\Webtrees\Individual;
 /**
  * Interface ModuleSidebarInterface - Classes and libraries for module system
  */
-interface ModuleSidebarInterface {
-	/**
-	 * The user can change the order of sidebars. Until they do this, they are shown in this order.
-	 *
-	 * @return int
-	 */
-	public function defaultSidebarOrder();
+interface ModuleSidebarInterface
+{
+    /**
+     * The user can change the order of sidebars. Until they do this, they are shown in this order.
+     *
+     * @return int
+     */
+    public function defaultSidebarOrder();
 
-	/**
-	 * Sidebar content.
-	 *
-	 * @param Individual $individual
-	 *
-	 * @return string
-	 */
-	public function getSidebarContent(Individual $individual);
+    /**
+     * Sidebar content.
+     *
+     * @param Individual $individual
+     *
+     * @return string
+     */
+    public function getSidebarContent(Individual $individual);
 
-	/**
-	 * Does this sidebar have anything to display for this individual?
-	 *
-	 * @param Individual $individual
-	 *
-	 * @return bool
-	 */
-	public function hasSidebarContent(Individual $individual);
+    /**
+     * Does this sidebar have anything to display for this individual?
+     *
+     * @param Individual $individual
+     *
+     * @return bool
+     */
+    public function hasSidebarContent(Individual $individual);
 }

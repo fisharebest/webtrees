@@ -20,175 +20,182 @@ namespace Fisharebest\Webtrees;
  *
  * @link https://www.getbootstrap.com
  */
-class Bootstrap4 extends Html {
-	/**
-	 * Generate a badge containing a count of items.
-	 *
-	 * @param array $items
-	 *
-	 * @return string
-	 */
-	public static function badgeCount(array $items) {
-		if (empty($items)) {
-			return '';
-		} else {
-			return '<span class="badge badge-secondary">' . I18N::number(count($items)) . '</span>';
-		}
-	}
+class Bootstrap4 extends Html
+{
+    /**
+     * Generate a badge containing a count of items.
+     *
+     * @param array $items
+     *
+     * @return string
+     */
+    public static function badgeCount(array $items)
+    {
+        if (empty($items)) {
+            return '';
+        } else {
+            return '<span class="badge badge-secondary">' . I18N::number(count($items)) . '</span>';
+        }
+    }
 
-	/**
-	 * Generate a breadcrumb trail.
-	 *
-	 * @param array  $hierarchy
-	 * @param string $active
-	 *
-	 * @return string
-	 */
-	public static function breadcrumbs(array $hierarchy, $active) {
-		$html = '<ol class="breadcrumb">';
+    /**
+     * Generate a breadcrumb trail.
+     *
+     * @param array  $hierarchy
+     * @param string $active
+     *
+     * @return string
+     */
+    public static function breadcrumbs(array $hierarchy, $active)
+    {
+        $html = '<ol class="breadcrumb">';
 
-		foreach ($hierarchy as $url => $label) {
-			$html .= '<li class="breadcrumb-item"><a href="' . e($url) . '">' . $label . '</a></li>';
-		}
+        foreach ($hierarchy as $url => $label) {
+            $html .= '<li class="breadcrumb-item"><a href="' . e($url) . '">' . $label . '</a></li>';
+        }
 
-		$html .= '<li class="breadcrumb-item active">' . $active . '</li></ol>';
+        $html .= '<li class="breadcrumb-item active">' . $active . '</li></ol>';
 
-		return $html;
-	}
+        return $html;
+    }
 
-	/**
-	 * Generate a checkbox.
-	 *
-	 * @param string   $label
-	 * @param bool     $inline
-	 * @param string[] $attributes
-	 *
-	 * @return string
-	 */
-	public static function checkbox($label, $inline, $attributes = []) {
-		if ($inline) {
-			$class = 'form-check form-check-inline';
-		} else {
-			$class = 'form-check';
-		}
+    /**
+     * Generate a checkbox.
+     *
+     * @param string   $label
+     * @param bool     $inline
+     * @param string[] $attributes
+     *
+     * @return string
+     */
+    public static function checkbox($label, $inline, $attributes = [])
+    {
+        if ($inline) {
+            $class = 'form-check form-check-inline';
+        } else {
+            $class = 'form-check';
+        }
 
-		$input_attributes = self::attributes([
-				'class' => 'form-check-input',
-				'type'  => 'checkbox',
-				'value' => '1',
-			] + $attributes);
+        $input_attributes = self::attributes([
+                'class' => 'form-check-input',
+                'type'  => 'checkbox',
+                'value' => '1',
+            ] + $attributes);
 
-		return
-			'<div class="' . $class . '">' .
-			'<label class="form-check-label">' .
-			'<input ' . $input_attributes . '> ' . self::escape($label) .
-			'</label>' .
-			'</div>';
-	}
+        return
+            '<div class="' . $class . '">' .
+            '<label class="form-check-label">' .
+            '<input ' . $input_attributes . '> ' . self::escape($label) .
+            '</label>' .
+            '</div>';
+    }
 
-	/**
-	 * Create a set of radio buttons for a form
-	 *
-	 * @param string   $name The ID for the form element
-	 * @param string[] $values Array of value=>display items
-	 * @param string   $selected The currently selected item
-	 * @param bool     $inline
-	 * @param string[] $attributes
-	 *
-	 * @return string
-	 */
-	public static function radioButtons($name, $values, $selected, $inline, $attributes = []) {
-		// An empty string is not the same as zero (but is the same as NULL).
-		if ($selected === null) {
-			$selected = '0';
-		}
+    /**
+     * Create a set of radio buttons for a form
+     *
+     * @param string   $name     The ID for the form element
+     * @param string[] $values   Array of value=>display items
+     * @param string   $selected The currently selected item
+     * @param bool     $inline
+     * @param string[] $attributes
+     *
+     * @return string
+     */
+    public static function radioButtons($name, $values, $selected, $inline, $attributes = [])
+    {
+        // An empty string is not the same as zero (but is the same as NULL).
+        if ($selected === null) {
+            $selected = '0';
+        }
 
-		if ($inline) {
-			$class = 'form-check form-check-inline';
-		} else {
-			$class = 'form-check';
-		}
+        if ($inline) {
+            $class = 'form-check form-check-inline';
+        } else {
+            $class = 'form-check';
+        }
 
-		$html = '';
-		foreach ($values as $value => $label) {
-			$input_attributes = self::attributes([
-				'class'   => 'form-check-input',
-				'type'    => 'radio',
-				'name'    => $name,
-				'value'   => $value,
-				'checked' => (string) $value === (string) $selected,
-			] + $attributes);
+        $html = '';
+        foreach ($values as $value => $label) {
+            $input_attributes = self::attributes([
+                    'class'   => 'form-check-input',
+                    'type'    => 'radio',
+                    'name'    => $name,
+                    'value'   => $value,
+                    'checked' => (string)$value === (string)$selected,
+                ] + $attributes);
 
-			$html .=
-				'<div class="' . $class . '">' .
-				'<label class="form-check-label">' .
-				'<input ' . $input_attributes . '> ' . self::escape($label) .
-				'</label>' .
-				'</div>';
-		}
+            $html .=
+                '<div class="' . $class . '">' .
+                '<label class="form-check-label">' .
+                '<input ' . $input_attributes . '> ' . self::escape($label) .
+                '</label>' .
+                '</div>';
+        }
 
-		return $html;
-	}
+        return $html;
+    }
 
-	/**
-	 * Create a <select> control for a form.
-	 *
-	 * @param string[] $options
-	 * @param string   $selected
-	 * @param string[] $attributes
-	 *
-	 * @return string
-	 */
-	public static function select($options, $selected, $attributes = []) {
-		$html = '';
-		foreach ($options as $value => $option) {
-			$option_attributes = self::attributes([
-				'value'    => $value,
-				'selected' => (string) $value === (string) $selected,
-			]);
+    /**
+     * Create a <select> control for a form.
+     *
+     * @param string[] $options
+     * @param string   $selected
+     * @param string[] $attributes
+     *
+     * @return string
+     */
+    public static function select($options, $selected, $attributes = [])
+    {
+        $html = '';
+        foreach ($options as $value => $option) {
+            $option_attributes = self::attributes([
+                'value'    => $value,
+                'selected' => (string)$value === (string)$selected,
+            ]);
 
-			$html .= '<option ' . $option_attributes . '>' . self::escape($option) . '</option>';
-		}
+            $html .= '<option ' . $option_attributes . '>' . self::escape($option) . '</option>';
+        }
 
-		if (empty($attributes['class'])) {
-			$attributes['class'] = 'form-control';
-		} else {
-			$attributes['class'] .= ' form-control';
-		}
+        if (empty($attributes['class'])) {
+            $attributes['class'] = 'form-control';
+        } else {
+            $attributes['class'] .= ' form-control';
+        }
 
-		$select_attributes = self::attributes($attributes);
+        $select_attributes = self::attributes($attributes);
 
-		return '<select ' . $select_attributes . '>' . $html . '</select>';
-	}
+        return '<select ' . $select_attributes . '>' . $html . '</select>';
+    }
 
-	/**
-	 * Create a multiple <select> control for a form.
-	 *
-	 * @param string[] $options
-	 * @param string[] $selected
-	 * @param string[] $attributes
-	 *
-	 * @return string
-	 */
-	public static function multiSelect($options, $selected, $attributes = []) {
-		$html = '';
-		foreach ($options as $value => $option) {
-			$option_attributes = self::attributes([
-				'value'    => $value,
-				'selected' => in_array((string) $value, $selected),
-			]);
+    /**
+     * Create a multiple <select> control for a form.
+     *
+     * @param string[] $options
+     * @param string[] $selected
+     * @param string[] $attributes
+     *
+     * @return string
+     */
+    public static function multiSelect($options, $selected, $attributes = [])
+    {
+        $html = '';
+        foreach ($options as $value => $option) {
+            $option_attributes = self::attributes([
+                'value'    => $value,
+                'selected' => in_array((string)$value, $selected),
+            ]);
 
-			$html .= '<option ' . $option_attributes . '>' . self::escape($option) . '</option>';
-		}
+            $html .= '<option ' . $option_attributes . '>' . self::escape($option) . '</option>';
+        }
 
-		if (empty($attributes['class'])) {
-			$attributes['class'] = 'form-control';
-		} else {
-			$attributes['class'] .= ' form-control';
-		}
+        if (empty($attributes['class'])) {
+            $attributes['class'] = 'form-control';
+        } else {
+            $attributes['class'] .= ' form-control';
+        }
 
-		$select_attributes = self::attributes($attributes);
+        $select_attributes = self::attributes($attributes);
 
-		return '<select ' . $select_attributes . ' multiple>' . $html . '</select>';
-	}
+        return '<select ' . $select_attributes . ' multiple>' . $html . '</select>';
+    }
 }

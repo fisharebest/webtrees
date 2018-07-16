@@ -14,6 +14,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+
 use Fisharebest\Webtrees\SurnameTradition;
 use Fisharebest\Webtrees\SurnameTradition\DefaultSurnameTradition;
 use Fisharebest\Webtrees\SurnameTradition\IcelandicSurnameTradition;
@@ -28,40 +29,45 @@ use Fisharebest\Webtrees\SurnameTradition\SpanishSurnameTradition;
 /**
  * Test harness for the class Soundex
  */
-class SurnameTraditionTest extends \PHPUnit\Framework\TestCase {
-	/**
-	 * Prepare the environment for these tests
-	 */
-	public function setUp() {
-	}
+class SurnameTraditionTest extends \PHPUnit\Framework\TestCase
+{
+    /**
+     * Prepare the environment for these tests
+     */
+    public function setUp()
+    {
+    }
 
-	/**
-	 * Test create()
-	 */
-	public function testCreate() {
-		$this->assertTrue(SurnameTradition::create('none') instanceof DefaultSurnameTradition);
-		$this->assertTrue(SurnameTradition::create('icelandic') instanceof IcelandicSurnameTradition);
-		$this->assertTrue(SurnameTradition::create('lithuanian') instanceof LithuanianSurnameTradition);
-		$this->assertTrue(SurnameTradition::create('matrilineal') instanceof MatrilinealSurnameTradition);
-		$this->assertTrue(SurnameTradition::create('paternal') instanceof PaternalSurnameTradition);
-		$this->assertTrue(SurnameTradition::create('patrilineal') instanceof PatrilinealSurnameTradition);
-		$this->assertTrue(SurnameTradition::create('polish') instanceof PolishSurnameTradition);
-		$this->assertTrue(SurnameTradition::create('portuguese') instanceof PortugueseSurnameTradition);
-		$this->assertTrue(SurnameTradition::create('spanish') instanceof SpanishSurnameTradition);
-	}
+    /**
+     * Test create()
+     */
+    public function testCreate()
+    {
+        $this->assertTrue(SurnameTradition::create('none') instanceof DefaultSurnameTradition);
+        $this->assertTrue(SurnameTradition::create('icelandic') instanceof IcelandicSurnameTradition);
+        $this->assertTrue(SurnameTradition::create('lithuanian') instanceof LithuanianSurnameTradition);
+        $this->assertTrue(SurnameTradition::create('matrilineal') instanceof MatrilinealSurnameTradition);
+        $this->assertTrue(SurnameTradition::create('paternal') instanceof PaternalSurnameTradition);
+        $this->assertTrue(SurnameTradition::create('patrilineal') instanceof PatrilinealSurnameTradition);
+        $this->assertTrue(SurnameTradition::create('polish') instanceof PolishSurnameTradition);
+        $this->assertTrue(SurnameTradition::create('portuguese') instanceof PortugueseSurnameTradition);
+        $this->assertTrue(SurnameTradition::create('spanish') instanceof SpanishSurnameTradition);
+    }
 
-	/**
-	 * Test create() with invalid input
-	 */
-	public function testCreateInvalid() {
-		$this->assertTrue(SurnameTradition::create('FOOBAR') instanceof DefaultSurnameTradition);
-	}
+    /**
+     * Test create() with invalid input
+     */
+    public function testCreateInvalid()
+    {
+        $this->assertTrue(SurnameTradition::create('FOOBAR') instanceof DefaultSurnameTradition);
+    }
 
-	/**
-	 * Test allDescriptions()
-	 */
-	public function testAllDescriptions() {
-		$descriptions = SurnameTradition::allDescriptions();
-		$this->assertCount(9, $descriptions);
-	}
+    /**
+     * Test allDescriptions()
+     */
+    public function testAllDescriptions()
+    {
+        $descriptions = SurnameTradition::allDescriptions();
+        $this->assertCount(9, $descriptions);
+    }
 }

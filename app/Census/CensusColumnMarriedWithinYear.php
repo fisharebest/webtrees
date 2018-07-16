@@ -21,26 +21,28 @@ use Fisharebest\Webtrees\Individual;
 /**
  * Did the individual marry within the last year.
  */
-class CensusColumnMarriedWithinYear extends AbstractCensusColumn implements CensusColumnInterface {
-	/**
-	 * Generate the likely value of this census column, based on available information.
-	 *
-	 * @param Individual $individual
-	 * @param Individual $head
-	 *
-	 * @return string
-	 */
-	public function generate(Individual $individual, Individual $head = null) {
-		foreach ($individual->getSpouseFamilies() as $family) {
-			foreach ($family->getFacts('MARR') as $fact) {
-				$marriage_jd = $fact->getDate()->julianDay();
-				$census_jd   = $this->date()->julianDay();
-				if ($marriage_jd <= $census_jd && $marriage_jd >= $census_jd - 365) {
-					return 'Y';
-				}
-			}
-		}
+class CensusColumnMarriedWithinYear extends AbstractCensusColumn implements CensusColumnInterface
+{
+    /**
+     * Generate the likely value of this census column, based on available information.
+     *
+     * @param Individual $individual
+     * @param Individual $head
+     *
+     * @return string
+     */
+    public function generate(Individual $individual, Individual $head = null)
+    {
+        foreach ($individual->getSpouseFamilies() as $family) {
+            foreach ($family->getFacts('MARR') as $fact) {
+                $marriage_jd = $fact->getDate()->julianDay();
+                $census_jd   = $this->date()->julianDay();
+                if ($marriage_jd <= $census_jd && $marriage_jd >= $census_jd - 365) {
+                    return 'Y';
+                }
+            }
+        }
 
-		return '';
-	}
+        return '';
+    }
 }

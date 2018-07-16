@@ -18,12 +18,14 @@ namespace Fisharebest\Webtrees\Schema;
 /**
  * Upgrade the database schema from version 33 to version 34.
  */
-class Migration33 implements MigrationInterface {
-	/**
-	 * Upgrade to to the next version
-	 */
-	public function upgrade() {
-		// Originally, this inserted entries into wt_site_access_rule,
-		// however this table now gets deleted in Migration37.
-	}
+class Migration33 implements MigrationInterface
+{
+    /**
+     * Upgrade to to the next version
+     */
+    public function upgrade()
+    {
+        // Originally, this inserted entries into wt_site_access_rule,
+        // however this table now gets deleted in Migration37.
+    }
 }

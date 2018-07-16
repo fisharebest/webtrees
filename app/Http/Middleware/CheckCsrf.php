@@ -27,22 +27,24 @@ use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 /**
  * Middleware to wrap a request in a transaction.
  */
-class CheckCsrf implements MiddlewareInterface {
-	/**
-	 * @param Request $request
-	 * @param Closure $next
-	 *
-	 * @return Response
-	 * @throws AccessDeniedHttpException
-	 */
-	public function handle(Request $request, Closure $next): Response {
-		$client_token  = $request->get('csrf', $request->headers->get('X_CSRF_TOKEN'));
-		$session_token = Session::get('CSRF_TOKEN');
+class CheckCsrf implements MiddlewareInterface
+{
+    /**
+     * @param Request $request
+     * @param Closure $next
+     *
+     * @return Response
+     * @throws AccessDeniedHttpException
+     */
+    public function handle(Request $request, Closure $next): Response
+    {
+        $client_token  = $request->get('csrf', $request->headers->get('X_CSRF_TOKEN'));
+        $session_token = Session::get('CSRF_TOKEN');
 
-		if ($client_token !== $session_token) {
-			throw new AccessDeniedHttpException(I18N::translate('This form has expired. Try again.'));
-		}
+        if ($client_token !== $session_token) {
+            throw new AccessDeniedHttpException(I18N::translate('This form has expired. Try again.'));
+        }
 
-		return $next($request);
-	}
+        return $next($request);
+    }
 }

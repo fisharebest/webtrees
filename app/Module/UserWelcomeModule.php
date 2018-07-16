@@ -24,93 +24,105 @@ use Fisharebest\Webtrees\Tree;
 /**
  * Class UserWelcomeModule
  */
-class UserWelcomeModule extends AbstractModule implements ModuleBlockInterface {
-	/** {@inheritdoc} */
-	public function getTitle() {
-		return /* I18N: Name of a module */
-			I18N::translate('My page');
-	}
+class UserWelcomeModule extends AbstractModule implements ModuleBlockInterface
+{
+    /** {@inheritdoc} */
+    public function getTitle()
+    {
+        return /* I18N: Name of a module */
+            I18N::translate('My page');
+    }
 
-	/** {@inheritdoc} */
-	public function getDescription() {
-		return /* I18N: Description of the “My page” module */
-			I18N::translate('A greeting message and useful links for a user.');
-	}
+    /** {@inheritdoc} */
+    public function getDescription()
+    {
+        return /* I18N: Description of the “My page” module */
+            I18N::translate('A greeting message and useful links for a user.');
+    }
 
-	/**
-	 * Generate the HTML content of this block.
-	 *
-	 * @param Tree     $tree
-	 * @param int      $block_id
-	 * @param bool     $template
-	 * @param string[] $cfg
-	 *
-	 * @return string
-	 */
-	public function getBlock(Tree $tree, int $block_id, bool $template = true, array $cfg = []): string {
-		$gedcomid   = $tree->getUserPreference(Auth::user(), 'gedcomid');
-		$individual = Individual::getInstance($gedcomid, $tree);
-		$links      = [];
+    /**
+     * Generate the HTML content of this block.
+     *
+     * @param Tree     $tree
+     * @param int      $block_id
+     * @param bool     $template
+     * @param string[] $cfg
+     *
+     * @return string
+     */
+    public function getBlock(Tree $tree, int $block_id, bool $template = true, array $cfg = []): string
+    {
+        $gedcomid   = $tree->getUserPreference(Auth::user(), 'gedcomid');
+        $individual = Individual::getInstance($gedcomid, $tree);
+        $links      = [];
 
-		if ($individual) {
-			if (Module::isActiveChart($tree, 'pedigree_chart')) {
-				$links[] = [
-					'url'   => route('pedigree', ['xref' => $individual->getXref(), 'ged' => $individual->getTree()->getName()]),
-					'title' => I18N::translate('Default chart'),
-					'icon'  => 'icon-pedigree',
-				];
-			}
+        if ($individual) {
+            if (Module::isActiveChart($tree, 'pedigree_chart')) {
+                $links[] = [
+                    'url'   => route('pedigree', [
+                        'xref' => $individual->getXref(),
+                        'ged'  => $individual->getTree()->getName(),
+                    ]),
+                    'title' => I18N::translate('Default chart'),
+                    'icon'  => 'icon-pedigree',
+                ];
+            }
 
-			$links[] = [
-				'url'   => $individual->url(),
-				'title' => I18N::translate('My individual record'),
-				'icon'  => 'icon-indis',
-			];
-		}
+            $links[] = [
+                'url'   => $individual->url(),
+                'title' => I18N::translate('My individual record'),
+                'icon'  => 'icon-indis',
+            ];
+        }
 
-		$links[] = [
-			'url'   => route('my-account', []),
-			'title' => I18N::translate('My account'),
-			'icon'  => 'icon-mypage',
-		];
-		$content = view('modules/user_welcome/welcome', ['links' => $links]);
+        $links[] = [
+            'url'   => route('my-account', []),
+            'title' => I18N::translate('My account'),
+            'icon'  => 'icon-mypage',
+        ];
+        $content = view('modules/user_welcome/welcome', ['links' => $links]);
 
-		if ($template) {
-			return view('modules/block-template', [
-				'block'      => str_replace('_', '-', $this->getName()),
-				'id'         => $block_id,
-				'config_url' => '',
-				'title'      => /* I18N: A %s is the user’s name */ I18N::translate('Welcome %s', Auth::user()->getRealName()),
-				'content'    => $content,
-			]);
-		} else {
-			return $content;
-		}
-	}
+        if ($template) {
+            return view('modules/block-template', [
+                'block'      => str_replace('_', '-', $this->getName()),
+                'id'         => $block_id,
+                'config_url' => '',
+                'title'      => /* I18N: A %s is the user’s name */
+                    I18N::translate('Welcome %s', Auth::user()->getRealName()),
+                'content'    => $content,
+            ]);
+        } else {
+            return $content;
+        }
+    }
 
-	/** {@inheritdoc} */
-	public function loadAjax(): bool {
-		return false;
-	}
+    /** {@inheritdoc} */
+    public function loadAjax(): bool
+    {
+        return false;
+    }
 
-	/** {@inheritdoc} */
-	public function isUserBlock(): bool {
-		return true;
-	}
+    /** {@inheritdoc} */
+    public function isUserBlock(): bool
+    {
+        return true;
+    }
 
-	/** {@inheritdoc} */
-	public function isGedcomBlock(): bool {
-		return false;
-	}
+    /** {@inheritdoc} */
+    public function isGedcomBlock(): bool
+    {
+        return false;
+    }
 
-	/**
-	 * An HTML form to edit block settings
-	 *
-	 * @param Tree $tree
-	 * @param int  $block_id
-	 *
-	 * @return void
-	 */
-	public function configureBlock(Tree $tree, int $block_id) {
-	}
+    /**
+     * An HTML form to edit block settings
+     *
+     * @param Tree $tree
+     * @param int  $block_id
+     *
+     * @return void
+     */
+    public function configureBlock(Tree $tree, int $block_id)
+    {
+    }
 }

@@ -19,56 +19,59 @@ namespace Fisharebest\Webtrees\Census;
 /**
  * Definitions for a census
  */
-class CensusOfUnitedStates1820 extends CensusOfUnitedStates implements CensusInterface {
-	/**
-	 * When did this census occur.
-	 *
-	 * @return string
-	 */
-	public function censusDate() {
-		return '07 AUG 1820';
-	}
+class CensusOfUnitedStates1820 extends CensusOfUnitedStates implements CensusInterface
+{
+    /**
+     * When did this census occur.
+     *
+     * @return string
+     */
+    public function censusDate()
+    {
+        return '07 AUG 1820';
+    }
 
-	/**
-	 * The columns of the census.
-	 *
-	 * @return CensusColumnInterface[]
-	 */
+    /**
+     * The columns of the census.
+     *
+     * @return CensusColumnInterface[]
+     */
 
-	public function columns() {
-		return [
-			new CensusColumnFullName($this, 'Name', 'Name of head of family'),
-			new CensusColumnNull($this, 'M0-10', 'Free white males 0-10 years'),
-			new CensusColumnNull($this, 'M10-16', 'Free white males 10-16 years'),
-			new CensusColumnNull($this, 'M16-18', 'Free white males 16-18 years'),
-			new CensusColumnNull($this, 'M16-26', 'Free white males 16-26 years'),
-			new CensusColumnNull($this, 'M26-45', 'Free white males 26-45 years'),
-			new CensusColumnNull($this, 'M45+', 'Free white males 45+ years'),
-			new CensusColumnNull($this, 'F0-10', 'Free white females 0-10 years'),
-			new CensusColumnNull($this, 'F10-16', 'Free white females 10-16 years'),
-			new CensusColumnNull($this, 'F16-26', 'Free white females 16-26 years'),
-			new CensusColumnNull($this, 'F26-45', 'Free white females 26-45 years'),
-			new CensusColumnNull($this, 'F45+', 'Free white females 45+ years'),
-			new CensusColumnNull($this, 'FNR', 'Foreigners not naturalized'),
-			new CensusColumnNull($this, 'AG', 'No. engaged in agriculture'),
-			new CensusColumnNull($this, 'COM', 'No. engaged in commerce'),
-			new CensusColumnNull($this, 'MNF', 'No. engaged in manufactures'),
-			new CensusColumnNull($this, 'M0', 'Slave males 0-14 years'),
-			new CensusColumnNull($this, 'M14', 'Slave males 14-26 years'),
-			new CensusColumnNull($this, 'M26', 'Slave males 26-45 years'),
-			new CensusColumnNull($this, 'M45', 'Slave males 45+ years'),
-			new CensusColumnNull($this, 'F0', 'Slave females 0-14 years'),
-			new CensusColumnNull($this, 'F14', 'Slave females 14-26 years'),
-			new CensusColumnNull($this, 'F26', 'Slave females 26-45 years'),
-			new CensusColumnNull($this, 'F45', 'Slave females 45+ years'),
-			new CensusColumnNull($this, 'M0', 'Free colored males 0-14 years'),
-			new CensusColumnNull($this, 'M14', 'Free colored males 14-26 years'),
-			new CensusColumnNull($this, 'M26', 'Free colored males 26-45 years'),
-			new CensusColumnNull($this, 'M45', 'Free colored males 45+ years'),
-			new CensusColumnNull($this, 'F0', 'Free colored females 0-14 years'),
-			new CensusColumnNull($this, 'F14', 'Free colored females 14-26 years'),
-			new CensusColumnNull($this, 'F26', 'Free colored females 26-45 years'),
-			new CensusColumnNull($this, 'F45', 'Free colored females 45+ years'),
-		];
-	}
+    public function columns()
+    {
+        return [
+            new CensusColumnFullName($this, 'Name', 'Name of head of family'),
+            new CensusColumnNull($this, 'M0-10', 'Free white males 0-10 years'),
+            new CensusColumnNull($this, 'M10-16', 'Free white males 10-16 years'),
+            new CensusColumnNull($this, 'M16-18', 'Free white males 16-18 years'),
+            new CensusColumnNull($this, 'M16-26', 'Free white males 16-26 years'),
+            new CensusColumnNull($this, 'M26-45', 'Free white males 26-45 years'),
+            new CensusColumnNull($this, 'M45+', 'Free white males 45+ years'),
+            new CensusColumnNull($this, 'F0-10', 'Free white females 0-10 years'),
+            new CensusColumnNull($this, 'F10-16', 'Free white females 10-16 years'),
+            new CensusColumnNull($this, 'F16-26', 'Free white females 16-26 years'),
+            new CensusColumnNull($this, 'F26-45', 'Free white females 26-45 years'),
+            new CensusColumnNull($this, 'F45+', 'Free white females 45+ years'),
+            new CensusColumnNull($this, 'FNR', 'Foreigners not naturalized'),
+            new CensusColumnNull($this, 'AG', 'No. engaged in agriculture'),
+            new CensusColumnNull($this, 'COM', 'No. engaged in commerce'),
+            new CensusColumnNull($this, 'MNF', 'No. engaged in manufactures'),
+            new CensusColumnNull($this, 'M0', 'Slave males 0-14 years'),
+            new CensusColumnNull($this, 'M14', 'Slave males 14-26 years'),
+            new CensusColumnNull($this, 'M26', 'Slave males 26-45 years'),
+            new CensusColumnNull($this, 'M45', 'Slave males 45+ years'),
+            new CensusColumnNull($this, 'F0', 'Slave females 0-14 years'),
+            new CensusColumnNull($this, 'F14', 'Slave females 14-26 years'),
+            new CensusColumnNull($this, 'F26', 'Slave females 26-45 years'),
+            new CensusColumnNull($this, 'F45', 'Slave females 45+ years'),
+            new CensusColumnNull($this, 'M0', 'Free colored males 0-14 years'),
+            new CensusColumnNull($this, 'M14', 'Free colored males 14-26 years'),
+            new CensusColumnNull($this, 'M26', 'Free colored males 26-45 years'),
+            new CensusColumnNull($this, 'M45', 'Free colored males 45+ years'),
+            new CensusColumnNull($this, 'F0', 'Free colored females 0-14 years'),
+            new CensusColumnNull($this, 'F14', 'Free colored females 14-26 years'),
+            new CensusColumnNull($this, 'F26', 'Free colored females 26-45 years'),
+            new CensusColumnNull($this, 'F45', 'Free colored females 45+ years'),
+        ];
+    }
 }

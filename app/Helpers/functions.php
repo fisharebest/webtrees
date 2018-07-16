@@ -24,8 +24,9 @@ use Fisharebest\Webtrees\View;
  *
  * @return string
  */
-function csrf_field() {
-	return '<input type="hidden" name="csrf" value="' . e(Filter::getCsrfToken()) . '">';
+function csrf_field()
+{
+    return '<input type="hidden" name="csrf" value="' . e(Filter::getCsrfToken()) . '">';
 }
 
 /**
@@ -33,8 +34,9 @@ function csrf_field() {
  *
  * @return string
  */
-function csrf_token() {
-	return Filter::getCsrfToken();
+function csrf_token()
+{
+    return Filter::getCsrfToken();
 }
 
 /**
@@ -44,8 +46,9 @@ function csrf_token() {
  *
  * @return string
  */
-function e(string $text): string {
-	return Html::escape($text);
+function e(string $text): string
+{
+    return Html::escape($text);
 }
 
 /**
@@ -57,14 +60,15 @@ function e(string $text): string {
  *
  * @return string
  */
-function route(string $route, array $parameters = [], bool $absolute = true): string {
-	$parameters = ['route' => $route] + $parameters;
+function route(string $route, array $parameters = [], bool $absolute = true): string
+{
+    $parameters = ['route' => $route] + $parameters;
 
-	if ($absolute) {
-		return Html::url(WT_BASE_URL . 'index.php', $parameters);
-	} else {
-		return Html::url('index.php', $parameters);
-	}
+    if ($absolute) {
+        return Html::url(WT_BASE_URL . 'index.php', $parameters);
+    } else {
+        return Html::url('index.php', $parameters);
+    }
 }
 
 /**
@@ -75,6 +79,7 @@ function route(string $route, array $parameters = [], bool $absolute = true): st
  *
  * @return string
  */
-function view(string $name, array $data = []) {
-	return View::make($name, $data);
+function view(string $name, array $data = [])
+{
+    return View::make($name, $data);
 }

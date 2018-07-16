@@ -18,11 +18,13 @@
 /**
  * Unit tests for the global functions in the file includes/functions/functions_db.php
  */
-class FunctionsDbTest extends \PHPUnit\Framework\TestCase {
-	/**
-	 * Test that the class exists
-	 */
-	public function testClassExists() {
-		$this->assertTrue(class_exists('\Fisharebest\Webtrees\Functions\FunctionsDb'));
-	}
+class FunctionsDbTest extends \PHPUnit\Framework\TestCase
+{
+    /**
+     * Test that the class exists
+     */
+    public function testClassExists()
+    {
+        $this->assertTrue(class_exists('\Fisharebest\Webtrees\Functions\FunctionsDb'));
+    }
 }

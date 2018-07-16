@@ -19,33 +19,36 @@ namespace Fisharebest\Webtrees\Census;
 /**
  * Test harness for the class CensusOfCzechRepublic
  */
-class CensusOfCzechRepublicTest extends \PHPUnit\Framework\TestCase {
-	/**
-	 * Test the census place
-	 *
-	 * @covers \Fisharebest\Webtrees\Census\CensusOfCzechRepublic
-	 */
-	public function testPlace() {
-		$census = new CensusOfCzechRepublic;
+class CensusOfCzechRepublicTest extends \PHPUnit\Framework\TestCase
+{
+    /**
+     * Test the census place
+     *
+     * @covers \Fisharebest\Webtrees\Census\CensusOfCzechRepublic
+     */
+    public function testPlace()
+    {
+        $census = new CensusOfCzechRepublic;
 
-		$this->assertSame('Česko', $census->censusPlace());
-	}
+        $this->assertSame('Česko', $census->censusPlace());
+    }
 
-	/**
-	 * Test the census dates
-	 *
-	 * @covers \Fisharebest\Webtrees\Census\CensusOfCzechRepublic
-	 */
-	public function testAllDates() {
-		$census = new CensusOfCzechRepublic;
+    /**
+     * Test the census dates
+     *
+     * @covers \Fisharebest\Webtrees\Census\CensusOfCzechRepublic
+     */
+    public function testAllDates()
+    {
+        $census = new CensusOfCzechRepublic;
 
-		$census_dates = $census->allCensusDates();
+        $census_dates = $census->allCensusDates();
 
-		$this->assertCount(5, $census_dates);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfCzechRepublic1880', $census_dates[0]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfCzechRepublic1890', $census_dates[1]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfCzechRepublic1900', $census_dates[2]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfCzechRepublic1910', $census_dates[3]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfCzechRepublic1921', $census_dates[4]);
-	}
+        $this->assertCount(5, $census_dates);
+        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfCzechRepublic1880', $census_dates[0]);
+        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfCzechRepublic1890', $census_dates[1]);
+        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfCzechRepublic1900', $census_dates[2]);
+        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfCzechRepublic1910', $census_dates[3]);
+        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusOfCzechRepublic1921', $census_dates[4]);
+    }
 }

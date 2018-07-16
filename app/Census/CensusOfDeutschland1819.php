@@ -19,45 +19,49 @@ namespace Fisharebest\Webtrees\Census;
 /**
  * Definitions for a census
  */
-class CensusOfDeutschland1819 extends CensusOfDeutschland implements CensusInterface {
-	/**
-	 * When did this census occur.
-	 *
-	 * @return string
-	 */
-	public function censusDate() {
-		return 'AUG 1819';
-	}
+class CensusOfDeutschland1819 extends CensusOfDeutschland implements CensusInterface
+{
+    /**
+     * When did this census occur.
+     *
+     * @return string
+     */
+    public function censusDate()
+    {
+        return 'AUG 1819';
+    }
 
-	/**
-	 * Where did this census occur, in GEDCOM format.
-	 *
-	 * @return string
-	 */
-	public function censusPlace() {
-		return 'Mecklenburg-Schwerin, Deutschland';
-	}
+    /**
+     * Where did this census occur, in GEDCOM format.
+     *
+     * @return string
+     */
+    public function censusPlace()
+    {
+        return 'Mecklenburg-Schwerin, Deutschland';
+    }
 
-	/**
-	 * The columns of the census.
-	 *
-	 * @return CensusColumnInterface[]
-	 */
-	public function columns() {
-		return [
-			new CensusColumnNull($this, 'Nr.', 'Laufende Num̅er.'),
-			new CensusColumnNull($this, 'Geschlecht', 'Ob männlichen oder weiblichen Geschlechts.'),
-			new CensusColumnFullName($this, 'Name', 'Vor- und Zuname.'),
-			new CensusColumnBirthYear($this, 'Geburtsdatum', 'Jahr und Tag der Geburt.'),
-			new CensusColumnBirthPlace($this, 'Geburtsort', 'Geburtsort.'),
-			new CensusColumnNull($this, 'Kirchspiel', 'Kirchspiel, wohin der Geburtsort gehört.'),
-			new CensusColumnNull($this, '', 'leere Spalte'),
-			new CensusColumnOccupation($this, 'Stand/Beruf', 'Stand und Gewerbe.'),
-			new CensusColumnNull($this, 'Besitz', 'Grundbesitz.'),
-			new CensusColumnNull($this, 'hier seit', 'Wie lange er schon hier ist.'),
-			new CensusColumnNull($this, 'Familienstand', 'Ob ledig oder verheirathet.'),
-			new CensusColumnReligion($this, 'Religion', 'Religion.'),
-			new CensusColumnNull($this, 'Bemerkungen', 'Allgemeine Bemerkungen.'),
-		];
-	}
+    /**
+     * The columns of the census.
+     *
+     * @return CensusColumnInterface[]
+     */
+    public function columns()
+    {
+        return [
+            new CensusColumnNull($this, 'Nr.', 'Laufende Num̅er.'),
+            new CensusColumnNull($this, 'Geschlecht', 'Ob männlichen oder weiblichen Geschlechts.'),
+            new CensusColumnFullName($this, 'Name', 'Vor- und Zuname.'),
+            new CensusColumnBirthYear($this, 'Geburtsdatum', 'Jahr und Tag der Geburt.'),
+            new CensusColumnBirthPlace($this, 'Geburtsort', 'Geburtsort.'),
+            new CensusColumnNull($this, 'Kirchspiel', 'Kirchspiel, wohin der Geburtsort gehört.'),
+            new CensusColumnNull($this, '', 'leere Spalte'),
+            new CensusColumnOccupation($this, 'Stand/Beruf', 'Stand und Gewerbe.'),
+            new CensusColumnNull($this, 'Besitz', 'Grundbesitz.'),
+            new CensusColumnNull($this, 'hier seit', 'Wie lange er schon hier ist.'),
+            new CensusColumnNull($this, 'Familienstand', 'Ob ledig oder verheirathet.'),
+            new CensusColumnReligion($this, 'Religion', 'Religion.'),
+            new CensusColumnNull($this, 'Bemerkungen', 'Allgemeine Bemerkungen.'),
+        ];
+    }
 }

@@ -20,26 +20,28 @@ use Fisharebest\Webtrees\Database;
 /**
  * Upgrade the database schema from version 24 to version 25.
  */
-class Migration24 implements MigrationInterface {
-	/**
-	 * Upgrade to to the next version
-	 */
-	public function upgrade() {
-		// Tree settings become site settings
-		Database::exec(
-			"INSERT IGNORE INTO `##site_setting` (setting_name, setting_value)" .
-			" SELECT setting_name, MIN(setting_value)" . // Can't use ANY_VALUE() until MySQL5.7
-			" FROM `##gedcom_setting`" .
-			" WHERE setting_name IN ('SHOW_REGISTER_CAUTION', 'WELCOME_TEXT_CUST_HEAD') OR setting_name LIKE 'WELCOME_TEXT_AUTH_MODE%'" .
-			" GROUP BY setting_name"
-		);
+class Migration24 implements MigrationInterface
+{
+    /**
+     * Upgrade to to the next version
+     */
+    public function upgrade()
+    {
+        // Tree settings become site settings
+        Database::exec(
+            "INSERT IGNORE INTO `##site_setting` (setting_name, setting_value)" .
+            " SELECT setting_name, MIN(setting_value)" . // Can't use ANY_VALUE() until MySQL5.7
+            " FROM `##gedcom_setting`" .
+            " WHERE setting_name IN ('SHOW_REGISTER_CAUTION', 'WELCOME_TEXT_CUST_HEAD') OR setting_name LIKE 'WELCOME_TEXT_AUTH_MODE%'" .
+            " GROUP BY setting_name"
+        );
 
-		Database::exec(
-			"DELETE FROM `##gedcom_setting` WHERE setting_name IN ('ALLOW_EDIT_GEDCOM', 'SHOW_REGISTER_CAUTION', 'WELCOME_TEXT_CUST_HEAD') OR setting_name LIKE 'WELCOME_TEXT_AUTH_MODE%'"
-		);
+        Database::exec(
+            "DELETE FROM `##gedcom_setting` WHERE setting_name IN ('ALLOW_EDIT_GEDCOM', 'SHOW_REGISTER_CAUTION', 'WELCOME_TEXT_CUST_HEAD') OR setting_name LIKE 'WELCOME_TEXT_AUTH_MODE%'"
+        );
 
-		Database::exec(
-			"DELETE FROM `##site_setting` WHERE setting_name IN ('STORE_MESSAGES')"
-		);
-	}
+        Database::exec(
+            "DELETE FROM `##site_setting` WHERE setting_name IN ('STORE_MESSAGES')"
+        );
+    }
 }
