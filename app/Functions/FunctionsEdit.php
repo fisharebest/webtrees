@@ -642,13 +642,10 @@ class FunctionsEdit
         } elseif ($fact === 'ASSO' || $fact === '_ASSO') {
             // @TODO we no longer have/user createNewRecord()
             $html .=
-                '<div class="input-group">' .
-                '<span class="input-group-btn"><button class="btn btn-secondary" type="button" onclick="createNewRecord(' . $id . ')" title="' . I18N::translate('Create an individual') . '"><i class="fas fa-plus"></i></button></span>' .
                 self::formControlIndividual($tree, Individual::getInstance($value, $tree), [
                     'id'   => $id,
                     'name' => $name,
-                ]) .
-                '</div>';
+                ]);
             if ($level === '1') {
                 $html .= '<p class="small text-muted">' . I18N::translate('An associate is another individual who was involved with this individual, such as a friend or an employer.') . '</p>';
             } else {

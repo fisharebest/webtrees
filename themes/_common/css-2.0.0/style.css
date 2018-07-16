@@ -18,22 +18,6 @@
 	white-space: normal !important;
 }
 
- /* Override Bootstrap formatting */
- .row .select2-selection--single {
-}
-
-.select2-container .select2-selection--single  { /* Relationships, thumbnail fit in parent */
-	height: auto;
-}
-
-.select2-container .select2-selection--single .select2-selection__rendered {
-	padding-left: 0;
-}
-
-.select2-selection--single img {
-    padding: 3px;
-}
-
 /*
  * Pages have the following high-level structure:
  *
