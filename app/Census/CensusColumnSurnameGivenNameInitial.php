@@ -36,9 +36,9 @@ class CensusColumnSurnameGivenNameInitial extends CensusColumnFullName
         $name  = $this->nameAtCensusDate($individual, $this->date());
         $given = $name['givn'];
         if (strpos($given, ' ') === false) {
-            return $name['surn'] . ', ' . $given;
+            return $name['surname'] . ', ' . $given;
         } else {
-            return $name['surn'] . ', ' . substr($given, 0, strpos($given, ' ') + 2);
+            return $name['surname'] . ', ' . substr($given, 0, strpos($given, ' ') + 2);
         }
     }
 }
