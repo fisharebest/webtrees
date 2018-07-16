@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Exception;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\DebugBar;
@@ -39,9 +40,8 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Class OpenStreetMapModule
  */
-class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterface, ModuleTabInterface, ModuleChartInterface
+class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterface
 {
-
     const OSM_MIN_ZOOM = 2;
     const LINE_COLORS  = [
         '#FF0000',
@@ -68,22 +68,18 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
     /** {@inheritdoc} */
     public function getTitle()
     {
-        return /* I18N: Name of a module */
-            I18N::translate('Event Map');
+        return 'OpenStreetMap';
     }
 
     /** {@inheritdoc} */
     public function getDescription()
     {
-        return /* I18N: Description of the “OSM” module */
-            I18N::translate('Show the location of events on a map using Open Street Maps');
+        return 'Legacy code.  This is being moved to the core';
     }
 
     /** {@inheritdoc} */
     public function defaultAccessLevel()
     {
-        # Auth::PRIV_PRIVATE actually means public.
-        # Auth::PRIV_NONE - no acces to anybody.
         return Auth::PRIV_PRIVATE;
     }
 
@@ -250,109 +246,9 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
      * @param Request $request
      *
      * @return JsonResponse
-     * @throws \Exception
+     * @throws Exception
      */
     public function getMapDataAction(Request $request): JsonResponse
-    {
-        switch ($request->get('type')) {
-            case 'placelist':
-                $response = $this->placelistGetMapData($request);
-                break;
-            default:
-                $response = $this->getMapData($request);
-        }
-
-        return $response;
-    }
-
-    /**
-     * @param Request $request
-     *
-     * @return JsonResponse
-     * @throws \Exception
-     */
-    private function getMapData(Request $request): JsonResponse
-    {
-        $mapType     = $request->get('type');
-        $xref        = $request->get('reference');
-        $tree        = $request->attributes->get('tree');
-        $indi        = Individual::getInstance($xref, $tree);
-        $color_count = count(self::LINE_COLORS);
-
-        switch ($mapType) {
-            case 'pedigree':
-                $facts = $this->getPedigreeMapFacts($request);
-                break;
-            default:
-                $facts = $this->getPersonalFacts($request);
-        }
-
-        $geojson = [
-            'type'     => 'FeatureCollection',
-            'features' => [],
-        ];
-        if (empty($facts)) {
-            $code = 204;
-        } else {
-            $code = 200;
-            foreach ($facts as $id => $fact) {
-                $event = new FactLocation($fact, $indi);
-                $icon  = $event->getIconDetails();
-                if ($event->knownLatLon()) {
-                    $polyline = null;
-                    if ($mapType === 'pedigree') {
-                        $color            = self::LINE_COLORS[log($id, 2) % $color_count];
-                        $icon['color']    = $color; //make icon color the same as the line
-                        $sosa_points[$id] = $event->getLatLonJSArray();
-                        $sosa_parent      = (int)floor($id / 2);
-                        if (array_key_exists($sosa_parent, $sosa_points)) {
-                            // Would like to use a GeometryCollection to hold LineStrings
-                            // rather than generate polylines but the MarkerCluster library
-                            // doesn't seem to like them
-                            $polyline = [
-                                'points'  => [
-                                    $sosa_points[$sosa_parent],
-                                    $event->getLatLonJSArray(),
-                                ],
-                                'options' => [
-                                    'color' => $color,
-                                ],
-                            ];
-                        }
-                    }
-                    $geojson['features'][] = [
-                        'type'       => 'Feature',
-                        'id'         => $id,
-                        'valid'      => true,
-                        'geometry'   => [
-                            'type'        => 'Point',
-                            'coordinates' => $event->getGeoJsonCoords(),
-                        ],
-                        'properties' => [
-                            'polyline' => $polyline,
-                            'icon'     => $icon,
-                            'tooltip'  => $event->toolTip(),
-                            'summary'  => view(
-                                'modules/openstreetmap/event-sidebar',
-                                $event->shortSummary($mapType, $id)
-                            ),
-                            'zoom'     => (int)$event->getZoom(),
-                        ],
-                    ];
-                }
-            }
-        }
-
-        return new JsonResponse($geojson, $code);
-    }
-
-    /**
-     * @param Request $request
-     *
-     * @return JsonResponse
-     * @throws \Exception
-     */
-    private function placelistGetMapData(Request $request): JsonResponse
     {
         $reference = $request->get('reference');
         $tree      = $request->attributes->get('tree');
@@ -362,15 +258,12 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
         $flag_path = WT_MODULES_DIR . $this->getName() . '/';
         $stats     = new Stats($tree);
         $showlink  = true;
-
         if (empty($places)) {
             $places[] = $placeObj;
             $showlink = false;
         }
-
         foreach ($places as $id => $place) {
             $location = new Location($place->getGedcomName());
-
             //Stats
             $placeStats = [];
             foreach ([
@@ -380,14 +273,12 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
                 $tmp               = $stats->statsPlaces($type, false, $place->getPlaceId());
                 $placeStats[$type] = empty($tmp) ? 0 : $tmp[0]['tot'];
             }
-
             //Flag
             if ($location->getIcon() !== null && is_file($flag_path . $location->getIcon())) {
                 $flag = $flag_path . $location->getIcon();
             } else {
                 $flag = '';
             }
-
             $features[] = [
                 'type'       => 'Feature',
                 'id'         => $id,
@@ -415,78 +306,11 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
                 ],
             ];
         }
-
         $code = empty($features) ? 204 : 200;
-
         return new JsonResponse([
             'type'     => 'FeatureCollection',
             'features' => $features,
         ], $code);
-    }
-
-    /**
-     * @param Request $request
-     *
-     * @return array
-     * @throws \Exception
-     */
-    private function getPersonalFacts(Request $request)
-    {
-        $xref       = $request->get('reference');
-        $tree       = $request->attributes->get('tree');
-        $individual = Individual::getInstance($xref, $tree);
-        $facts      = $individual->getFacts();
-        foreach ($individual->getSpouseFamilies() as $family) {
-            $facts = array_merge($facts, $family->getFacts());
-            // Add birth of children from this family to the facts array
-            foreach ($family->getChildren() as $child) {
-                $childsBirth = $child->getFirstFact('BIRT');
-                if ($childsBirth && !$childsBirth->getPlace()->isEmpty()) {
-                    $facts[] = $childsBirth;
-                }
-            }
-        }
-
-        Functions::sortFacts($facts);
-
-        $useable_facts = array_filter(
-            $facts,
-            function (Fact $item) {
-                return !$item->getPlace()->isEmpty();
-            }
-        );
-
-        return array_values($useable_facts);
-    }
-
-    /**
-     * @param Request $request
-     *
-     * @return array
-     * @throws \Exception
-     */
-    private function getPedigreeMapFacts(Request $request)
-    {
-        $xref        = $request->get('reference');
-        $tree        = $request->attributes->get('tree');
-        $individual  = Individual::getInstance($xref, $tree);
-        $generations = (int)$request->get(
-            'generations',
-            $tree->getPreference('DEFAULT_PEDIGREE_GENERATIONS')
-        );
-        $ancestors   = $this->sosaStradonitzAncestors($individual, $generations);
-        $facts       = [];
-        foreach ($ancestors as $sosa => $person) {
-            if ($person !== null && $person->canShow()) {
-                /** @var Fact $birth */
-                $birth = $person->getFirstFact('BIRT');
-                if ($birth && !$birth->getPlace()->isEmpty()) {
-                    $facts[$sosa] = $birth;
-                }
-            }
-        }
-
-        return $facts;
     }
 
     /**
@@ -533,7 +357,7 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
                         'styles' => array_combine($style_keys, (array)$provider->styles),
                     ];
                 }
-            } catch (\Exception $ex) {
+            } catch (Exception $ex) {
                 // Default provider is OpenStreetMap
                 self::$map_selections = [
                     'provider' => 'openstreetmap',
@@ -584,52 +408,8 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
     /**
      * @param Request $request
      *
-     * @return object
-     * @throws \Exception
-     */
-    public function getPedigreeMapAction(Request $request)
-    {
-        /** @var Tree $tree */
-        $tree           = $request->attributes->get('tree');
-        $xref           = $request->get('xref');
-        $individual     = Individual::getInstance($xref, $tree);
-        $maxgenerations = $tree->getPreference('MAX_PEDIGREE_GENERATIONS');
-        $generations    = $request->get('generations', $tree->getPreference('DEFAULT_PEDIGREE_GENERATIONS'));
-
-        return (object)[
-            'name' => 'modules/openstreetmap/pedigreemap',
-            'data' => [
-                'assets'         => $this->assets(),
-                'module'         => $this->getName(),
-                'title'          => /* I18N: %s is an individual’s name */
-                    I18N::translate('Pedigree map of %s', $individual->getFullName()),
-                'tree'           => $tree,
-                'individual'     => $individual,
-                'generations'    => $generations,
-                'maxgenerations' => $maxgenerations,
-                'map'            => view(
-                    'modules/openstreetmap/map',
-                    [
-                        'assets'      => $this->assets(),
-                        'module'      => $this->getName(),
-                        'ref'         => $individual->getXref(),
-                        'type'        => 'pedigree',
-                        'generations' => $generations,
-                    ]
-                ),
-            ],
-        ];
-    }
-
-    /*
-     * Admin functions called via admin-module route
-     */
-
-    /**
-     * @param Request $request
-     *
      * @return JsonResponse
-     * @throws \Exception
+     * @throws Exception
      */
     public function getAdminMapDataAction(Request $request): JsonResponse
     {
@@ -724,7 +504,7 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
      * @param Request $request
      *
      * @return object
-     * @throws \Exception
+     * @throws Exception
      */
     public function postAdminPlacesAction(Request $request)
     {
@@ -735,7 +515,7 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
      * @param Request $request
      *
      * @return object
-     * @throws \Exception
+     * @throws Exception
      */
     public function getAdminPlacesAction(Request $request)
     {
@@ -788,7 +568,7 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
      * @param Request $request
      *
      * @return object
-     * @throws \Exception
+     * @throws Exception
      */
     public function getAdminPlaceEditAction(Request $request)
     {
@@ -859,7 +639,7 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
      * @param Request $request
      *
      * @return RedirectResponse
-     * @throws \Exception
+     * @throws Exception
      */
     public function postAdminSaveAction(Request $request): RedirectResponse
     {
@@ -934,7 +714,7 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
      * @param Request $request
      *
      * @return RedirectResponse
-     * @throws \Exception
+     * @throws Exception
      */
     public function postAdminDeleteRecordAction(Request $request): RedirectResponse
     {
@@ -950,7 +730,7 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
                     'id' => $place_id,
                 ]
             );
-        } catch (\Exception $ex) {
+        } catch (Exception $ex) {
             DebugBar::addThrowable($ex);
 
             FlashMessages::addMessage(
@@ -989,7 +769,7 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
      * @param Request $request
      *
      * @return RedirectResponse
-     * @throws \Exception
+     * @throws Exception
      */
     public function getAdminExportAction(Request $request): RedirectResponse
     {
@@ -1090,7 +870,7 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
                 fwrite($fp, $jsonstr);
             }
             fclose($fp);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             Log::addErrorLog($e->getMessage());
             FlashMessages::addMessage($e->getMessage(), 'error');
         }
@@ -1160,7 +940,7 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
      * @param Request $request
      *
      * @return RedirectResponse
-     * @throws \Exception
+     * @throws Exception
      */
     public function postAdminImportAction(Request $request): RedirectResponse
     {
@@ -1368,7 +1148,7 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
      * @param Request $request
      *
      * @return RedirectResponse
-     * @throws \Exception
+     * @throws Exception
      */
     public function postAdminImportPlacesAction(Request $request): RedirectResponse
     {
@@ -1499,10 +1279,6 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
         );
     }
 
-    /*
-     * Utility Functions
-     */
-
     /**
      * Find all of the places in the hierarchy
      *
@@ -1510,7 +1286,7 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
      * @param bool $show_inactive
      *
      * @return \stdClass[]
-     * @throws \Exception
+     * @throws Exception
      */
     private function getPlaceListLocation($id, $show_inactive = false)
     {
@@ -1621,7 +1397,7 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
      * @param $id
      *
      * @return array
-     * @throws \Exception
+     * @throws Exception
      */
     private function gethierarchy($id)
     {
@@ -1644,7 +1420,7 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
      * @param $placename
      * @param $places
      *
-     * @throws \Exception
+     * @throws Exception
      */
     private function buildLevel($parent_id, $placename, &$places)
     {
@@ -1686,53 +1462,11 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
                     $placefiles[] = $file->getFilename();
                 }
             }
-        } catch (\Exception $ex) {
+        } catch (Exception $ex) {
             DebugBar::addThrowable($ex);
             Log::addErrorLog(basename($ex->getFile()) . ' - line: ' . $ex->getLine() . ' - ' . $ex->getMessage());
         }
 
         return $placefiles;
-    }
-
-    // @TODO shift the following function to somewhere more appropriate during restructure
-
-    /**
-     * Copied from AbstractChartController.php
-     *
-     * Find the ancestors of an individual, and generate an array indexed by
-     * Sosa-Stradonitz number.
-     *
-     * @param Individual $individual  Start with this individual
-     * @param int        $generations Fetch this number of generations
-     *
-     * @return Individual[]
-     */
-    private function sosaStradonitzAncestors(Individual $individual, int $generations): array
-    {
-        /** @var Individual[] $ancestors */
-        $ancestors = [
-            1 => $individual,
-        ];
-
-        for ($i = 1, $max = 2 ** ($generations - 1); $i < $max; $i++) {
-            $ancestors[$i * 2]     = null;
-            $ancestors[$i * 2 + 1] = null;
-
-            $individual = $ancestors[$i];
-
-            if ($individual !== null) {
-                $family = $individual->getPrimaryChildFamily();
-                if ($family !== null) {
-                    if ($family->getHusband() !== null) {
-                        $ancestors[$i * 2] = $family->getHusband();
-                    }
-                    if ($family->getWife() !== null) {
-                        $ancestors[$i * 2 + 1] = $family->getWife();
-                    }
-                }
-            }
-        }
-
-        return $ancestors;
     }
 }
