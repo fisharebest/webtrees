@@ -84,6 +84,7 @@ class MediaFile
 
         if (preg_match('/^\d FILE (.+)/m', $gedcom, $match)) {
             $this->multimedia_file_refn = $match[1];
+            $this->multimedia_format    = pathinfo($match[1], PATHINFO_EXTENSION);
         }
 
         if (preg_match('/^\d FORM (.+)/m', $gedcom, $match)) {
