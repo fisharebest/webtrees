@@ -3,7 +3,7 @@
 <?php use Fisharebest\Webtrees\I18N; ?>
 <?php use Fisharebest\Webtrees\Tree; ?>
 
-<?= view('admin/breadcrumbs', ['links' => $breadcrumbs]) ?>
+<?= view('components/breadcrumbs', ['links' => $breadcrumbs]) ?>
 
 <div class="form-group row">
 	<div class="col-sm-3 col-form-label">

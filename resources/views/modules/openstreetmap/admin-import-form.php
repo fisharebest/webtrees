@@ -2,7 +2,7 @@
 <?php use Fisharebest\Webtrees\I18N; ?>
 <?php use Fisharebest\Webtrees\View; ?>
 
-<?= view('admin/breadcrumbs', ['links' => $breadcrumbs]) ?>
+<?= view('components/breadcrumbs', ['links' => $breadcrumbs]) ?>
 
 <h3><?= $title ?></h3>
 <form id="upload_form" method="post" enctype="multipart/form-data" action="<?=

@@ -2,7 +2,7 @@
 <?php use Fisharebest\Webtrees\View; ?>
 <?php use Fisharebest\Webtrees\Functions\FunctionsEdit; ?>
 
-<?= view('admin/breadcrumbs', ['links' => $breadcrumbs]) ?>
+<?= view('components/breadcrumbs', ['links' => $breadcrumbs]) ?>
 
 <div class="form-group row">
 	<div class="col-sm-10 offset-sm-1">

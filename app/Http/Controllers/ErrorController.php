@@ -71,7 +71,7 @@ class ErrorController extends AbstractBaseController
      */
     public function errorResponse(HttpException $ex): Response
     {
-        return $this->viewResponse('alerts/danger', [
+        return $this->viewResponse('components/alert-danger', [
             'title' => 'Error',
             'alert' => $ex->getMessage(),
         ], $ex->getStatusCode());
@@ -104,7 +104,7 @@ class ErrorController extends AbstractBaseController
         }
 
         if ($request->isXmlHttpRequest()) {
-            return new Response(view('alerts/danger', ['alert' => $error]), Response::HTTP_INTERNAL_SERVER_ERROR);
+            return new Response(view('components/alert-danger', ['alert' => $error]), Response::HTTP_INTERNAL_SERVER_ERROR);
         }
 
         try {

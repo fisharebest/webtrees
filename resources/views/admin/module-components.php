@@ -4,7 +4,7 @@
 <?php use Fisharebest\Webtrees\Module\ModuleConfigInterface; ?>
 <?php use Fisharebest\Webtrees\Tree; ?>
 
-<?= view('admin/breadcrumbs', ['links' => [route('admin-control-panel') => I18N::translate('Control panel'), route('admin-modules') => I18N::translate('Modules'), $title]]) ?>
+<?= view('components/breadcrumbs', ['links' => [route('admin-control-panel') => I18N::translate('Control panel'), route('admin-modules') => I18N::translate('Modules'), $title]]) ?>
 
 <h1><?= $title ?></h1>
 

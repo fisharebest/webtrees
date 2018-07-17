@@ -2,7 +2,7 @@
 <?php use Fisharebest\Webtrees\Functions\FunctionsEdit; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 
-<?= view('admin/breadcrumbs', ['links' => [route('admin-control-panel') => I18N::translate('Control panel'), route('admin-modules') => I18N::translate('Modules'), route('module', ['module' => 'faq', 'action' => 'Admin', 'ged' => $tree->getName()]) => I18N::translate('Frequently asked questions'), $title]]) ?>
+<?= view('components/breadcrumbs', ['links' => [route('admin-control-panel') => I18N::translate('Control panel'), route('admin-modules') => I18N::translate('Modules'), route('module', ['module' => 'faq', 'action' => 'Admin', 'ged' => $tree->getName()]) => I18N::translate('Frequently asked questions'), $title]]) ?>
 
 <h1><?= $title ?></h1>
 

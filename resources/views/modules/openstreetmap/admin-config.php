@@ -3,7 +3,7 @@
 <?php use Fisharebest\Webtrees\I18N; ?>
 <?php use Fisharebest\Webtrees\View; ?>
 
-<?= view('admin/breadcrumbs', ['links' => [route('admin-control-panel') => I18N::translate('Control panel'), route('admin-modules') => I18N::translate('Module administration'), $title]]) ?>
+<?= view('components/breadcrumbs', ['links' => [route('admin-control-panel') => I18N::translate('Control panel'), route('admin-modules') => I18N::translate('Module administration'), $title]]) ?>
 
 <form method="POST" name="configform" action="<?= e(route('admin-module', ['module' => $module, 'action' => 'AdminUpdateConfig'])) ?>">
 	<?= csrf_field() ?>
