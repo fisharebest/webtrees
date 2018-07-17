@@ -63,7 +63,7 @@ class MessageController extends AbstractBaseController
 
         $this->layout = 'layouts/administration';
 
-        return $this->viewResponse('broadcast-page', [
+        return $this->viewResponse('admin/broadcast', [
             'body'     => $body,
             'from'     => $user,
             'subject'  => $subject,
