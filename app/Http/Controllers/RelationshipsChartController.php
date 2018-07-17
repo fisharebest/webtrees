@@ -23,7 +23,6 @@ use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\FontAwesome;
 use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
-use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module\RelationshipsChartModule;
@@ -127,7 +126,7 @@ class RelationshipsChartController extends AbstractChartController
             $num_paths = 0;
             foreach ($paths as $path) {
                 // Extract the relationship names between pairs of individuals
-                $relationships = $this->oldStyleRelationshipPath($path);
+                $relationships = $this->oldStyleRelationshipPath($tree, $path);
                 if (empty($relationships)) {
                     // Cannot see one of the families/individuals, due to privacy;
                     continue;
@@ -310,11 +309,12 @@ class RelationshipsChartController extends AbstractChartController
      *
      * Return an empty array, if privacy rules prevent us viewing any node.
      *
-     * @param GedcomRecord[] $path Alternately Individual / Family
+     * @param Tree     $tree
+     * @param string[] $path Alternately Individual / Family
      *
      * @return string[]
      */
-    private function oldStyleRelationshipPath(array $path)
+    private function oldStyleRelationshipPath(Tree $tree, array $path)
     {
         $spouse_codes  = [
             'M' => 'hus',
@@ -339,9 +339,9 @@ class RelationshipsChartController extends AbstractChartController
         $relationships = [];
 
         for ($i = 1, $count = count($path); $i < $count; $i += 2) {
-            $family = Family::getInstance($path[$i], $this->tree());
-            $prev   = Individual::getInstance($path[$i - 1], $this->tree());
-            $next   = Individual::getInstance($path[$i + 1], $this->tree());
+            $family = Family::getInstance($path[$i], $tree);
+            $prev   = Individual::getInstance($path[$i - 1], $tree);
+            $next   = Individual::getInstance($path[$i + 1], $tree);
             if (preg_match('/\n\d (HUSB|WIFE|CHIL) @' . $prev->getXref() . '@/', $family->getGedcom(), $match)) {
                 $rel1 = $match[1];
             } else {
