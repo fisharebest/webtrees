@@ -306,7 +306,7 @@ abstract class AbstractEditController extends AbstractBaseController
         $glevelsSave = $this->glevels;
         $tagSave     = $this->tag;
         $islinkSave  = $this->islink;
-        $textSave    = $$this->text;
+        $textSave    = $this->text;
 
         $this->glevels = $this->glevelsSOUR;
         $this->tag     = $this->tagSOUR;
