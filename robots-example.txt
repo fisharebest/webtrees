@@ -38,4 +38,4 @@ Disallow: /statisticsplot.php
 Disallow: /timeline.php
 
 # Put your sitemap here:
-#Sitemap: http://www.example.com/module.php?mod=sitemap&mod_action=generate&file=sitemap.xml
+#Sitemap: https://www.example.com/index.php?route=module&module=sitemap&action=Index
