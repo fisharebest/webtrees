@@ -31,7 +31,7 @@
 	<?php for ($i = 0; $i <= $count / $records_per_volume; ++$i): ?>
 	<sitemap>
 		<loc>
-			<?= e(route('module', ['module' => 'sitemap', 'action' => 'File', 'file' => $tree_id . '-i-' . $n])) ?>
+			<?= e(route('module', ['module' => 'sitemap', 'action' => 'File', 'file' => $tree_id . '-i-' . $i])) ?>
 		</loc>
 		<lastmod>
 			<?= $last_mod ?>
