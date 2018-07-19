@@ -32,7 +32,7 @@
 		<?php endif ?>
 
 
-		<a class="dropdown-item menu-indi-del" href="#" onclick="return delete_record('<?= I18N::translate('Are you sure you want to delete “%s”?', strip_tags($individual->getFullName())) ?>', '<?= e($individual->getXref()) ?>', '<?= e($individual->getTree()->getName()) ?>');">
+		<a class="dropdown-item menu-indi-del" href="#" data-confirm="<?= I18N::translate('Are you sure you want to delete “%s”?', strip_tags($individual->getFullName())) ?>" onclick="return confirm(this.dataset.confirm) && delete_record('<?= e($individual->getXref()) ?>', '<?= e($individual->getTree()->getName()) ?>');">
 			<?= I18N::translate('Delete') ?>
 		</a>
 

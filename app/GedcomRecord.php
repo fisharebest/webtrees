@@ -659,12 +659,10 @@ class GedcomRecord
             // Generally, the first name is the primary one....
             $this->_getPrimaryName = 0;
             // ...except when the language/name use different character sets
-            if (count($this->getAllNames()) > 1) {
-                foreach ($this->getAllNames() as $n => $name) {
-                    if (I18N::textScript($name['sort']) === $language_script) {
-                        $this->_getPrimaryName = $n;
-                        break;
-                    }
+            foreach ($this->getAllNames() as $n => $name) {
+                if (I18N::textScript($name['sort']) === $language_script) {
+                    $this->_getPrimaryName = $n;
+                    break;
                 }
             }
         }

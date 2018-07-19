@@ -28,7 +28,7 @@
 			</a>
 		<?php endif ?>
 
-		<a class="dropdown-item menu-obje-del" href="#" onclick="return delete_record('<?= I18N::translate('Are you sure you want to delete “%s”?', strip_tags($record->getFullName())) ?>', '<?= e($record->getXref()) ?>', '<?= e($record->getTree()->getName()) ?>');">
+		<a class="dropdown-item menu-obje-del" href="#" data-confirm="<?= I18N::translate('Are you sure you want to delete “%s”?', strip_tags($record->getFullName())) ?>" onclick="return confirm(this.dataset.confirm) && delete_record('<?= e($record->getXref()) ?>', '<?= e($record->getTree()->getName()) ?>');">
 			<?= I18N::translate('Delete') ?>
 		</a>
 

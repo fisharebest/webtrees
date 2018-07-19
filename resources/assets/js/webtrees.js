@@ -49,9 +49,8 @@ function reject_changes (xref, ged) {
 }
 
 // Delete a record - and reload the page
-function delete_record (message, xref, gedcom) {
-  if (confirm(message)) {
-    $.post('index.php', {
+function delete_record (xref, gedcom) {
+  $.post('index.php', {
       route: 'delete-record',
       xref: xref,
       ged: gedcom,
@@ -59,7 +58,7 @@ function delete_record (message, xref, gedcom) {
     function () {
       location.reload();
     });
-  }
+
   return false;
 }
 

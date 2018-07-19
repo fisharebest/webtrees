@@ -24,7 +24,7 @@
 
 		<div class="dropdown-divider"></div>
 
-		<a class="dropdown-item menu-fam-del" href="#" onclick="return delete_record('<?= I18N::translate('Deleting the family will unlink all of the individuals from each other but will leave the individuals in place. Are you sure you want to delete this family?') ?>', '<?= e($record->getXref()) ?>', '<?= e($record->getXref()) ?>', '<?= e($record->getTree()->getName()) ?>');">
+		<a class="dropdown-item menu-fam-del" href="#" data-confirm="<?= I18N::translate('Deleting the family will unlink all of the individuals from each other but will leave the individuals in place. Are you sure you want to delete this family?') ?>" onclick="return confirm(this.dataset.confirm) && delete_record('<?= e($record->getXref()) ?>', '<?= e($record->getTree()->getName()) ?>');">
 			<?= I18N::translate('Delete') ?>
 		</a>
 
