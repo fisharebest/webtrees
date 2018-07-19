@@ -103,7 +103,7 @@
 
 			<tr>
 				<td>
-					<a href="<?= e(route('add-new-spouse', ['ged' => $individual->getTree()->getName(), 'xref' => $individual->getXref()])) ?>">
+					<a href="<?= e(route('add-spouse-to-individual', ['ged' => $individual->getTree()->getName(), 'xref' => $individual->getXref()])) ?>">
 						<?php if ($individual->getSex() !== 'F'): ?>
 							<?= I18N::translate('Add a wife') ?>
 						<?php else: ?>
