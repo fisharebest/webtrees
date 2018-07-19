@@ -52,7 +52,7 @@
 
 	<?php foreach ($placelist as $place): ?>
 		<tr>
-            <td>
+            <th scope="row">
                 <a href="<?= e(route('admin-module',
 					   ['module' => $module,
 					    'action' => 'AdminPlaces',
@@ -65,7 +65,7 @@
 				        <?= I18N::number($place->child_count) ?>
                     </span>
                 </a>
-            </td>
+            </th>
 			<td>
 				<?= ($place->pl_lati === null) ? FontAwesome::decorativeIcon('warning') :
                     strtr($place->pl_lati, ['N' => '', 'S' => '-', ',' => '.']) ?>
@@ -79,9 +79,7 @@
 			</td>
 			<td>
 				<?php if (is_file(WT_MODULES_DIR . $module . '/' . $place->pl_icon)): ?>
-					<img src="<?= e(WT_MODULES_DIR . $module . '/' . $place->pl_icon) ?>" width="25" height="15"
-						 title="<?= I18N::translate("Flag of %s", $place->pl_place) ?>"
-                         alt="<?= I18N::translate("Flag of %s", $place->pl_place) ?>">
+					<img src="<?= e(WT_MODULES_DIR . $module . '/' . $place->pl_icon) ?>" width="25" height="15" alt="<?= I18N::translate("Flag of %s", $place->pl_place) ?>">
 				<?php endif ?>
 			</td>
 			<td>
