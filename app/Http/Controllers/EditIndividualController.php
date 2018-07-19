@@ -433,19 +433,20 @@ class EditIndividualController extends AbstractEditController
         /** @var Tree $tree */
         $tree = $request->attributes->get('tree');
 
-        $gender = $request->get('gender', 'F');
         $xref   = $request->get('xref', '');
 
         $individual = Individual::getInstance($xref, $tree);
 
         $this->checkIndividualAccess($individual, true);
 
-        if ($gender === 'F') {
-            $title  = $individual->getFullName() . ' - ' . I18N::translate('Add a wife');
-            $famtag = 'WIFE';
-        } else {
+        if ($individual->getSex() === 'F') {
             $title  = $individual->getFullName() . ' - ' . I18N::translate('Add a husband');
             $famtag = 'HUSB';
+            $gender = 'M';
+        } else {
+            $title  = $individual->getFullName() . ' - ' . I18N::translate('Add a wife');
+            $famtag = 'WIFE';
+            $gender = 'F';
         }
 
         return $this->viewResponse('edit/new-individual', [
