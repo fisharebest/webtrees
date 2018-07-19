@@ -620,7 +620,6 @@ class EditIndividualController extends AbstractEditController
         $this->checkIndividualAccess($individual, true);
 
         // Find the fact to edit
-        $name_fact = null;
         foreach ($individual->getFacts() as $fact) {
             if ($fact->getFactId() === $fact_id && $fact->canEdit()) {
                 return $this->viewResponse('edit/new-individual', [
@@ -629,7 +628,7 @@ class EditIndividualController extends AbstractEditController
                     'nextaction' => 'update',
                     'individual' => $individual,
                     'family'     => null,
-                    'name_fact'  => $name_fact,
+                    'name_fact'  => $fact,
                     'famtag'     => '',
                     'gender'     => $individual->getSex(),
                 ]);
