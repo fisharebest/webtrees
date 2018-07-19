@@ -67,11 +67,15 @@ class Migration37 implements MigrationInterface
             ") ENGINE=InnoDB COLLATE=utf8_unicode_ci"
         )->execute();
 
-        Database::prepare(
-            "INSERT INTO `##media_file` (" .
-            "m_id, m_file, multimedia_file_refn, multimedia_format, source_media_type, descriptive_title" .
-            ") SELECT m_id, m_file, m_filename, m_ext, LEFT(m_type, 15), m_titl FROM `##media`"
-        )->execute();
+        try {
+            Database::prepare(
+                "INSERT INTO `##media_file` (" .
+                "m_id, m_file, multimedia_file_refn, multimedia_format, source_media_type, descriptive_title" .
+                ") SELECT m_id, m_file, m_filename, m_ext, LEFT(m_type, 15), m_titl FROM `##media`"
+            )->execute();
+        } catch (PDOException $ex) {
+            // Already done?
+        }
 
         try {
             Database::prepare(
