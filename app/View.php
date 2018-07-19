@@ -15,6 +15,8 @@
  */
 namespace Fisharebest\Webtrees;
 
+use Exception;
+
 /**
  * Simple view/template class.
  */
@@ -127,17 +129,19 @@ class View
      * @param string $view_name
      *
      * @return string
+     * @throws Exception
      */
-    public static function getFilenameForView($view_name)
+    public function getFilenameForView($view_name)
     {
-        $view_file  = '/resources/views/' . $view_name . '.php';
-        $theme_view = WT_ROOT . WT_THEMES_DIR . Theme::theme()->themeId() . $view_file;
+        foreach ($this->paths() as $path) {
+            $view_file = $path . '/' . $view_name . '.php';
 
-        if (is_file($theme_view)) {
-            return $theme_view;
-        } else {
-            return WT_ROOT . $view_file;
+            if (is_file($view_file)) {
+                return $view_file;
+            }
         }
+
+        throw new Exception('View not found: ' . e($view_name));
     }
 
     /**
@@ -155,5 +159,27 @@ class View
         DebugBar::addView($name, $data);
 
         return $view->render();
+    }
+
+    /**
+     * @return string[]
+     */
+    private function paths(): array
+    {
+        static $paths = [];
+
+        if (empty($paths)) {
+            // Module views
+            // @TODO - this includes disabled modules.
+            $paths = glob(WT_ROOT . WT_MODULES_DIR . '*/resources/views');
+            // Theme views
+            $paths[] = WT_ROOT . WT_THEMES_DIR . Theme::theme()->themeId() . '/resources/views';
+            // Core views
+            $paths[] = WT_ROOT . 'resources/views';
+
+            $paths = array_filter($paths, function (string $path) { return is_dir($path); });
+        }
+
+        return $paths;
     }
 }
