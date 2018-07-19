@@ -235,7 +235,7 @@
 							<a href="<?= e($privacy_restriction->record->url()) ?>"><?= $privacy_restriction->record->getFullName() ?></a>
 						<?php elseif ($privacy_restriction->xref): ?>
 							<div class="text-danger">
-								<?= $privacy_restriction->xref ?> — <?= I18N::translate('this record does not exist') ?>
+								<?= $privacy_restriction->xref ?> — <?= I18N::translate('This record does not exist.') ?>
 							</div>
 						<?php else: ?>
 							<div class="text-muted">
