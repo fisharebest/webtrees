@@ -1356,7 +1356,7 @@ abstract class AbstractTheme
         $tree_favorites = Module::getModuleByName('gedcom_favorites');
 
         $show_user_favorites = $this->tree !== null && $user_favorites !== null && Auth::check();
-        $show_tree_favorites = $this->tree != null && $tree_favorites !== null;
+        $show_tree_favorites = $this->tree !== null && $tree_favorites !== null;
 
         if ($show_user_favorites && $show_tree_favorites) {
             $favorites = array_merge(
