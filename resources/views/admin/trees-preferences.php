@@ -1136,7 +1136,7 @@
 				<?= I18N::translate('save') ?>
 			</button>
 			<a class="btn btn-secondary" href="<?= e(route('admin-trees', ['ged' => $tree->getName()])) ?>">
-				<i class="fas times"></i>
+        <?= view('icons/cancel') ?>
 				<?= I18N::translate('cancel') ?>
 			</a>
 			<!-- Coming soon

@@ -18,7 +18,7 @@
 			if (in_array($entry, $protected)) {
 				echo '<li><span class="fa-li"><i class="fas fa-ban text-danger"></i></span>', e($entry), '</li>';
 			} else {
-				echo '<li><span class="fa-li"><i class="far fa-trash-alt"></i></span>';
+				echo '<li><span class="fa-li">' . view('icons/search') . '</span>';
 				echo '<label>';
 				echo '<input type="checkbox" name="to_delete[]" value="', e($entry), '"> ';
 				echo e($entry);
@@ -29,7 +29,7 @@
 	</ul>
 
 	<button class="btn btn-danger" type="submit">
-		<i class="far fa-trash-alt"></i>
+      <?= view('icons/delete') ?>
 		<?= /* I18N: A button label. */ I18N::translate('delete') ?>
 	</button>
 </form>

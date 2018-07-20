@@ -78,7 +78,7 @@
 		</div>
 		<div class="col-sm-9">
 			<button class="btn btn-primary" type="submit">
-				<i class="fas fa-check">
+          <?= view('icons/save') ?>
 				<?= I18N::translate('continue') ?>
 			</button>
 		</div>

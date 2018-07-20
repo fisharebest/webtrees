@@ -39,31 +39,31 @@
 			<div class="col-sm-6">
 				<ul class="fa-ul">
 					<li>
-						<span class="fa-li"><i class="fas fa-wrench"></i></span>
+						<span class="fa-li"><?= view('icons/preferences') ?></span>
 						<a href="<?= e(route('admin-site-preferences')) ?>">
 							<?= I18N::translate('Website preferences') ?>
 						</a>
 					</li>
 					<li>
-						<span class="fa-li"><i class="fas fa-wrench"></i></span>
+						<span class="fa-li"><?= view('icons/preferences') ?></span>
 						<a href="<?= e(route('admin-site-mail')) ?>">
 							<?= I18N::translate('Sending email') ?>
 						</a>
 					</li>
 					<li>
-						<span class="fa-li"><i class="fas fa-wrench"></i></span>
+						<span class="fa-li"><?= view('icons/preferences') ?></span>
 						<a href="<?= e(route('admin-site-registration')) ?>">
 							<?= I18N::translate('Sign-in and registration') ?>
 						</a>
 					</li>
 					<li>
-						<span class="fa-li"><i class="fas fa-wrench"></i></span>
+						<span class="fa-li"><?= view('icons/preferences') ?></span>
 						<a href="<?= e(route('admin-site-languages')) ?>">
 							<?= I18N::translate('Languages') ?>
 						</a>
 					</li>
 					<li>
-						<span class="fa-li"><i class="fas fa-wrench"></i></span>
+						<span class="fa-li"><?= view('icons/preferences') ?></span>
 						<a href="<?= e(route('admin-site-analytics')) ?>">
 							<?= I18N::translate('Tracking and analytics') ?>
 						</a>
@@ -73,19 +73,19 @@
 			<div class="col-sm-6">
 				<ul class="fa-ul">
 					<li>
-						<span class="fa-li"><i class="fas fa-wrench"></i></span>
+						<span class="fa-li"><?= view('icons/preferences') ?></span>
 						<a href="<?= e(route('admin-site-logs')) ?>">
 							<?= I18N::translate('Website logs') ?>
 						</a>
 					</li>
 					<li>
-						<span class="fa-li"><i class="fas fa-wrench"></i></span>
+						<span class="fa-li"><?= view('icons/preferences') ?></span>
 						<a href="<?= e(route('admin-clean-data')) ?>">
 							<?= I18N::translate('Clean up data folder') ?>
 						</a>
 					</li>
 					<li>
-						<span class="fa-li"><i class="fas fa-wrench"></i></span>
+						<span class="fa-li"><?= view('icons/preferences') ?></span>
 						<a href="<?= e(route('admin-site-information')) ?>">
 							<?= I18N::translate('Server information') ?>
 						</a>
@@ -239,20 +239,20 @@
 
 		<ul class="fa-ul">
 			<li>
-				<span class="fa-li"><i class="fas fa-wrench"></i></span>
+				<span class="fa-li"><?= view('icons/preferences') ?></span>
 				<a href="<?= e(route('admin-trees', ['ged' => $tree->getName()])) ?>">
 					<?= I18N::translate('Manage family trees') ?>
 				</a>
 			</li>
 			<li>
-				<span class="fa-li"><i class="fas fa-wrench"></i></span>
+				<span class="fa-li"><?= view('icons/preferences') ?></span>
 				<a href="<?= e(route('tree-page-default-edit')) ?>">
 					<?= I18N::translate('Set the default blocks for new family trees') ?>
 				</a>
 			</li>
 			<?php if (count($all_trees) > 1): ?>
 				<li>
-					<span class="fa-li"><i class="fas fa-wrench"></i></span>
+					<span class="fa-li"><?= view('icons/preferences') ?></span>
 					<a href="<?= e(route('admin-trees-merge')) ?>">
 						<?= I18N::translate('Merge family trees') ?>
 					</a>
@@ -295,25 +295,25 @@
 			<div class="col-sm-6">
 				<ul class="fa-ul">
 					<li>
-						<span class="fa-li"><i class="fas fa-wrench"></i></span>
+						<span class="fa-li"><?= view('icons/preferences') ?></span>
 						<a href="<?= e(route('admin-users', ['ged' => $tree->getName()])) ?>">
 							<?= I18N::translate('User administration') ?>
 						</a>
 					</li>
 					<li>
-						<span class="fa-li"><i class="fas fa-wrench"></i></span>
+						<span class="fa-li"><?= view('icons/preferences') ?></span>
 						<a href="<?= e(route('admin-users-create', ['ged' => $tree->getName()])) ?>">
 							<?= I18N::translate('Add a user') ?>
 						</a>
 					</li>
 					<li>
-						<span class="fa-li"><i class="fas fa-wrench"></i></span>
+						<span class="fa-li"><?= view('icons/preferences') ?></span>
 						<a href="<?= e(route('admin-users-cleanup')) ?>">
 							<?= I18N::translate('Delete inactive users') ?>
 						</a>
 					</li>
 					<li>
-						<span class="fa-li"><i class="fas fa-wrench"></i></span>
+						<span class="fa-li"><?= view('icons/preferences') ?></span>
 						<a href="<?= e(route('user-page-default-edit')) ?>">
 							<?= I18N::translate('Set the default blocks for new users') ?>
 						</a>
@@ -323,19 +323,19 @@
 			<div class="col-sm-6">
 				<ul class="fa-ul">
 					<li>
-						<span class="fa-li"><i class="fas fa-envelope"></i></span>
+						<span class="fa-li"><?= view('icons/email') ?></span>
 						<a href="<?= e(route('broadcast', ['to' => 'all'])) ?>">
 							<?= I18N::translate('Send a message to all users') ?>
 						</a>
 					</li>
 					<li>
-						<span class="fa-li"><i class="fas fa-envelope"></i></span>
+						<span class="fa-li"><?= view('icons/email') ?></span>
 						<a href="<?= e(route('broadcast', ['to' => 'never_logged'])) ?>">
 							<?= I18N::translate('Send a message to users who have never signed in') ?>
 						</a>
 					</li>
 					<li>
-						<span class="fa-li"><i class="fas fa-envelope"></i></span>
+						<span class="fa-li"><?= view('icons/email') ?></span>
 						<a href="<?= e(route('broadcast', ['to' => 'last_6mo'])) ?>">
 							<?= I18N::translate('Send a message to users who have not signed in for 6 months') ?>
 						</a>
@@ -402,7 +402,7 @@
 				<ul class="fa-ul">
 					<?php foreach ($config_modules as $module): ?>
 						<li>
-							<span class="fa-li"><i class="fas fa-cogs"></i></span>
+							<span class="fa-li"><?= view('icons/preferences') ?></span>
 							<a href="<?= e($module->getConfigLink()) ?>">
 								<?= $module->getTitle() ?>
 							</a>
@@ -414,7 +414,7 @@
 
 		<ul class="fa-ul">
 			<li>
-				<span class="fa-li"><i class="fas fa-cogs"></i></span>
+				<span class="fa-li"><?= view('icons/preferences') ?></span>
 				<a href="<?= e(route('admin-modules')) ?>">
 					<?= I18N::translate('Module administration') ?>
 				</a>
@@ -433,25 +433,25 @@
 	<div class="card-body">
 		<ul class="fa-ul">
 			<li>
-				<span class="fa-li"><i class="fas fa-cogs"></i></span>
+				<span class="fa-li"><?= view('icons/preferences') ?></span>
 				<a href="<?= e(route('admin-media')) ?>">
 					<?= I18N::translate('Manage media') ?>
 				</a>
 			</li>
 			<li>
-				<span class="fa-li"><i class="fas fa-cogs"></i></span>
+				<span class="fa-li"><?= view('icons/preferences') ?></span>
 				<a href="<?= e(route('admin-media-upload')) ?>">
 					<?= I18N::translate('Upload media files') ?>
 				</a>
 			</li>
 			<li>
-				<span class="fa-li"><i class="fas fa-cogs"></i></span>
+				<span class="fa-li"><?= view('icons/preferences') ?></span>
 				<a href="<?= e(route('admin-fix-level-0-media')) ?>">
 					<?= I18N::translate('Link media objects to facts and events') ?>
 				</a>
 			</li>
 			<li>
-				<span class="fa-li"><i class="fas fa-cogs"></i></span>
+				<span class="fa-li"><?= view('icons/preferences') ?></span>
 				<a href="<?= e(route('admin-webtrees1-thumbs')) ?>">
 					<?= I18N::translate('Import custom thumbnails from webtrees version 1') ?>
 				</a>

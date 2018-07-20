@@ -89,7 +89,8 @@
 					<th scope="row" data-sort="<?= $module->getTitle() ?>" dir="auto">
 						<?php if ($module instanceof ModuleConfigInterface): ?>
 							<a href="<?= e($module->getConfigLink()) ?>">
-								<?= $module->getTitle() ?> <i class="fas fa-cogs"></i>
+								<?= $module->getTitle() ?>
+                <?= view('icons/preferences') ?>
 							</a>
 						<?php else: ?>
 							<?= $module->getTitle() ?>

@@ -221,7 +221,7 @@
 				</th>
 				<th>
 					<button class="btn btn-primary" id="add-resn" type="button">
-						<i class="fas fa-plus"></i>
+              <?= view('icons/add') ?>
 						<?= /* I18N: A button label. */ I18N::translate('add') ?>
 					</button>
 				</th>

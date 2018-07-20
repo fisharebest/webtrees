@@ -9,7 +9,7 @@
 	<div class="btn-group">
 		<?php if (!empty($media)): ?>
 			<button class="btn <?= $difference < 99 ? 'btn-primary' : 'btn-secondary' ?> wt-fix-button" type="button" data-action="add">
-				<i class="fas fa-plus"></i>
+          <?= view('icons/add') ?>
 				<?= I18N::translate('add') ?>
 				<?php if (count($media) > 1): ?>
 					<?= I18N::number(count($media)) ?>
@@ -17,7 +17,7 @@
 			</button>
 		<?php endif ?>
 		<button class="btn <?= $difference >= 99 ? 'btn-primary' : 'btn-secondary' ?> wt-fix-button" type="button" data-action="delete">
-			<i class="fas fa-trash-alt"></i>
+        <?= view('icons/delete') ?>
 			<?= I18N::translate('delete') ?>
 		</button>
 	</div>

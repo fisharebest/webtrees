@@ -24,7 +24,10 @@
 				<tr>
 					<td>
 						<?php if ($module instanceof ModuleConfigInterface): ?>
-							<a href="<?= e($module->getConfigLink()) ?>"><?= $module->getTitle() ?> <i class="fas fa-cogs"></i></a>
+							<a href="<?= e($module->getConfigLink()) ?>">
+								<?= $module->getTitle() ?>
+                <?= view('icons/preferences') ?>
+							</a>
 						<?php else: ?>
 							<?= $module->getTitle() ?>
 						<?php endif ?>

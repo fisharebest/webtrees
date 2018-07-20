@@ -72,17 +72,17 @@
 
 	<div class="text-center">
 		<button type="submit" class="btn btn-primary">
-			<i class="fas fa-search">
+			<?= view('icons/search') ?>
 			<?= I18N::translate('search') ?>
 		</button>
 
 		<button type="submit" class="btn btn-secondary" onclick="document.logs.action.value='export';return true;" <?= $action === 'show' ? '' : 'disabled' ?>>
-			<i class="fas fa-download">
+          <?= view('icons/download') ?>
 			<?= /* I18N: A button label. */ I18N::translate('download') ?>
 		</button>
 
 		<button type="submit" class="btn btn-danger" data-confirm="<?= I18N::translate('Permanently delete these records?') ?>" onclick="if (confirm(this.dataset.confirm)) {document.logs.action.value='delete'; return true;} else {return false;}" <?= $action === 'show' ? '' : 'disabled' ?>>
-			<i class="fas fa-trash-alt"
+        <?= view('icons/delete') ?>
 			<?= I18N::translate('delete') ?>
 		</button>
 	</div>

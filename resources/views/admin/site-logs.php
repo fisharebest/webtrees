@@ -65,17 +65,17 @@
 
 	<div class="text-center">
 		<button type="submit" class="btn btn-primary">
-			<i class="fas fa-search"></i>
+        <?= view('icons/search') ?>
 			<?= /* I18N: A button label. */ I18N::translate('search') ?>
 		</button>
 
 		<a href="<?= e(route('admin-site-logs-export', ['from' => $from, 'to' => $to, 'type' => $type, 'text' => $text, 'ip' => $ip, 'username' => $username, 'gedc' => $gedc])) ?>" class="btn btn-primary" <?= $action === 'show' ? '' : 'disabled' ?>>
-			<i class="fas fa-download"></i>
+        <?= view('icons/download') ?>
 			<?= /* I18N: A button label. */ I18N::translate('download') ?>
 		</a>
 
 		<a href="#" class="btn btn-primary" data-confirm="<?= I18N::translate('Permanently delete these records?') ?>" id="delete-button" <?= $action === 'show' ? '' : 'disabled' ?>>
-			<i class="fas fa-trash-alt"></i>
+        <?= view('icons/delete') ?>
 			<?= /* I18N: A button label. */ I18N::translate('delete') ?>
 		</a>
 	</div>
