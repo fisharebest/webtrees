@@ -1,4 +1,3 @@
-<?php use Fisharebest\Webtrees\FontAwesome; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 
 <h1><?= $title ?></h1>
@@ -60,7 +59,9 @@
 							</a>
 						</th>
 						<td>
-							<?= FontAwesome::linkIcon('preferences', I18N::translate('Manage family trees'), ['href' => route('admin-trees', ['ged' => $tree->getName()])]) ?>
+							<a href="<?= e(route('admin-trees', ['ged' => $tree->getName()])) ?>" title="<?= I18N::translate('Preferences') ?>">
+								<?= view('icons/preferences') ?>
+							</a>
 						</td>
 						<td class="text-right">
 							<?php if ($changes[$tree->getTreeId()]): ?>

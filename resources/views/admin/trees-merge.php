@@ -38,7 +38,7 @@
 	</p>
 
 	<button type="submit" class="btn btn-primary">
-		<i class="fas fa-check" aria-hidden="true"></i>
+		<?= view('icons/save') ?>
 		<?= I18N::translate('continue') ?>
 	</button>
 </form>

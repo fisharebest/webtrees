@@ -156,7 +156,7 @@
 									</li>
 									<!-- CHECK FOR ERRORS -->
 									<li>
-										<span class="fa-li"><i class="fas fa-check"></i></span>
+										<span class="fa-li"><?= view('icons/save') ?></span>
 										<a href="<?= e(route('admin-trees-check', ['ged' => $managed_tree->getName()])) ?>">
 											<?= I18N::translate('Check for errors') ?>
 											<span class="sr-only">
@@ -342,7 +342,7 @@
 						<div class="row form-group">
 							<div class="offset-sm-2 col-sm-10">
 								<button type="submit" class="btn btn-primary">
-									<i class="fas fa-check" aria-hidden="true"></i>
+									<?= view('icons/save') ?>
 									<?= /* I18N: A button label. */ I18N::translate('create') ?>
 								</button>
 								<p class="small text-muted">

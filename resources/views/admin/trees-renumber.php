@@ -24,7 +24,7 @@
 	<form method="post">
 		<?= csrf_field() ?>
 		<button type="submit" class="btn btn-primary">
-			<i class="fas fa-check"></i>
+			<?= view('icons/save') ?>
 			<?= /* I18N: A button label. */
 			I18N::translate('continue') ?>
 		</button>

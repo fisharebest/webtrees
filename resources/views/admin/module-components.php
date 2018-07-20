@@ -53,7 +53,7 @@
 		</tbody>
 	</table>
 	<button class="btn btn-primary" type="submit">
-		<i class="fas fa-check"></i>
+		<?= view('icons/save') ?>
 		<?= I18N::translate('save') ?>
 	</button>
 </form>

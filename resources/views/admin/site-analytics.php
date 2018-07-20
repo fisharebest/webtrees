@@ -123,12 +123,12 @@
 	<div class="row form-group">
 		<div class="offset-sm-3 col-sm-9">
 			<button type="submit" class="btn btn-primary">
-				<i class="fas fa-check" aria-hidden="true"></i>
+				<?= view('icons/save') ?>
 				<?= I18N::translate('save') ?>
 			</button>
 
 			<a href="<?= e(route('admin-control-panel')) ?>" class="btn btn-secondary">
-				<i class="fas fa-times" aria-hidden="true"></i>
+				<?= view('icons/cancel') ?>
 				<?= I18N::translate('cancel') ?>
 			</a>
 		</div>

@@ -6385,6 +6385,8 @@ class Stats
     /**
      * Who is currently logged in?
      *
+     * @TODO - this is duplicated from the LoggedInUsersModule class.
+     *
      * @param string $type
      *
      * @return string
@@ -6431,17 +6433,11 @@ class Stats
                 } else {
                     $content .= e($user->getRealName()) . ' - ' . e($user->getUserName());
                 }
-                if (Auth::id() != $user->getUserId() && $user->getPreference('contactmethod') != 'none') {
+                if (Auth::id() !== $user->getUserId() && $user->getPreference('contactmethod') !== 'none') {
                     if ($type == 'list') {
                         $content .= '<br>';
                     }
-                    $content .= FontAwesome::linkIcon('email', I18N::translate('Send a message'), [
-                        'class' => 'btn btn-link',
-                        'href'  => route('message', [
-                            'to'  => $user->getUserName(),
-                            'ged' => $this->tree->getName(),
-                        ]),
-                    ]);
+                    $content .= '<a href="' . e(route('message', ['to'  => $user->getUserName(), 'ged' => $this->tree->getName()])) . '" class="btn btn-link" title="' . I18N::translate('Send a message') . '">' . view('icons/email') . '</a>';
                 }
                 if ($type == 'list') {
                     $content .= '</li>';

@@ -150,7 +150,7 @@
 	</div>
 
 	<button type="submit" class="btn btn-primary">
-		<i class="fas fa-check"></i>
+		<?= view('icons/save') ?>
 		<?= I18N::translate('save') ?>
 	</button>
 </form>
