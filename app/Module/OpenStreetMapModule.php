@@ -1343,19 +1343,16 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
             "SELECT pl_id, pl_parent_id, pl_place, pl_lati, pl_long, pl_zoom, pl_icon," .
             " (t1.p_place IS NULL) AS inactive" .
             " FROM `##placelocation`" .
-            " LEFT JOIN (SELECT p_place" .
+            " LEFT JOIN (SELECT DISTINCT p_place" .
             " FROM `##places`" .
             " WHERE p_parent_id = :p_id) AS t1 ON pl_place = t1.p_place" .
             " WHERE pl_parent_id=:id" .
             " ORDER BY pl_place COLLATE :collation"
-        )
-            ->execute(
-                [
-                    'id'        => $id,
-                    'p_id'      => $place_id,
-                    'collation' => I18N::collation(),
-                ]
-            )->fetchAll(\PDO::FETCH_ASSOC);
+        )->execute([
+            'id'        => $id,
+            'p_id'      => $place_id,
+            'collation' => I18N::collation(),
+        ])->fetchAll(\PDO::FETCH_ASSOC);
 
         $list = [];
         /** @var array $rows */
