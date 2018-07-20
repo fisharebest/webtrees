@@ -109,7 +109,9 @@
 				</tr>
 				<?php endforeach ?>
 				<?php foreach ($facts as $fact): ?>
-					<?php FunctionsPrintFacts::printFact($fact, $media) ?>
+					<?php if ($fact->getTag() !== 'FILE'): ?>
+						<?php FunctionsPrintFacts::printFact($fact, $media) ?>
+					<?php endif ?>
 				<?php endforeach ?>
 				<?php if ($media->canEdit()): ?>
 					<?php FunctionsPrint::printAddNewFact($media, $facts, 'OBJE') ?>
