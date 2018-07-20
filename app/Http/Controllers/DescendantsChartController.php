@@ -66,6 +66,8 @@ class DescendantsChartController extends AbstractChartController
         $xref       = $request->get('xref');
         $individual = Individual::getInstance($xref, $tree);
 
+        $this->checkIndividualAccess($individual);
+
         $minimum_generations = 2;
         $maximum_generations = (int)$tree->getPreference('MAX_DESCENDANCY_GENERATIONS', self::DEFAULT_MAXIMUM_GENERATIONS);
         $default_generations = (int)$tree->getPreference('DEFAULT_PEDIGREE_GENERATIONS', self::DEFAULT_GENERATIONS);
