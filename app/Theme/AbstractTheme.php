@@ -107,6 +107,12 @@ abstract class AbstractTheme
         'search'               => 'fas fa-search',
     ];
 
+    const PERSON_BOX_CLASSES = [
+        'M' => 'person_box',
+        'F' => 'person_boxF',
+        'U' => 'person_boxNN',
+    ];
+
     /** @var  Request */
     protected $request;
 
@@ -708,11 +714,8 @@ abstract class AbstractTheme
      */
     public function individualBox(Individual $individual)
     {
-        $personBoxClass = array_search($individual->getSex(), [
-            'person_box'   => 'M',
-            'person_boxF'  => 'F',
-            'person_boxNN' => 'U',
-        ]);
+        $person_box_class = self::PERSON_BOX_CLASSES[$individual->getSex()];
+
         if ($individual->canShow() && $individual->getTree()->getPreference('SHOW_HIGHLIGHT_IMAGES')) {
             $thumbnail = $individual->displayImage(40, 50, 'crop', []);
         } else {
@@ -727,7 +730,7 @@ abstract class AbstractTheme
             $icons   = '<div class="icons">' .
                 '<span class="iconz icon-zoomin" title="' . I18N::translate('Zoom in/out on this box.') . '"></span>' .
                 '<div class="itr"><i class="icon-pedigree"></i><div class="popup">' .
-                '<ul class="' . $personBoxClass . '">' . implode('', array_map(function (Menu $menu) {
+                '<ul class="' . $person_box_class . '">' . implode('', array_map(function (Menu $menu) {
                     return $menu->bootstrap4();
                 }, $this->individualBoxMenu($individual))) . '</ul>' .
                 '</div>' .
@@ -736,7 +739,7 @@ abstract class AbstractTheme
         }
 
         return
-            '<div data-xref="' . e($individual->getXref()) . '" data-tree="' . e($individual->getTree()->getName()) . '" class="person_box_template ' . $personBoxClass . ' box-style1" style="width: ' . $this->parameter('chart-box-x') . 'px; height: ' . $this->parameter('chart-box-y') . 'px">' .
+            '<div data-xref="' . e($individual->getXref()) . '" data-tree="' . e($individual->getTree()->getName()) . '" class="person_box_template ' . $person_box_class . ' box-style1" style="width: ' . $this->parameter('chart-box-x') . 'px; height: ' . $this->parameter('chart-box-y') . 'px">' .
             $icons .
             '<div class="chart_textbox" style="max-height:' . $this->parameter('chart-box-y') . 'px;">' .
             $thumbnail .
@@ -766,11 +769,8 @@ abstract class AbstractTheme
      */
     public function individualBoxLarge(Individual $individual)
     {
-        $personBoxClass = array_search($individual->getSex(), [
-            'person_box'   => 'M',
-            'person_boxF'  => 'F',
-            'person_boxNN' => 'U',
-        ]);
+        $person_box_class = self::PERSON_BOX_CLASSES[$individual->getSex()];
+
         if ($individual->getTree()->getPreference('SHOW_HIGHLIGHT_IMAGES')) {
             $thumbnail = $individual->displayImage(40, 50, 'crop', []);
         } else {
@@ -785,7 +785,7 @@ abstract class AbstractTheme
             $icons   = '<div class="icons">' .
                 '<span class="iconz icon-zoomin" title="' . I18N::translate('Zoom in/out on this box.') . '"></span>' .
                 '<div class="itr"><i class="icon-pedigree"></i><div class="popup">' .
-                '<ul class="' . $personBoxClass . '">' . implode('', array_map(function (Menu $menu) {
+                '<ul class="' . $person_box_class . '">' . implode('', array_map(function (Menu $menu) {
                     return $menu->bootstrap4();
                 }, $this->individualBoxMenu($individual))) . '</ul>' .
                 '</div>' .
@@ -794,7 +794,7 @@ abstract class AbstractTheme
         }
 
         return
-            '<div data-xref="' . e($individual->getXref()) . '" data-tree="' . e($individual->getTree()->getName()) . '" class="person_box_template ' . $personBoxClass . ' box-style2">' .
+            '<div data-xref="' . e($individual->getXref()) . '" data-tree="' . e($individual->getTree()->getName()) . '" class="person_box_template ' . $person_box_class . ' box-style2">' .
             $icons .
             '<div class="chart_textbox" style="max-height:' . $this->parameter('chart-box-y') . 'px;">' .
             $thumbnail .
@@ -814,11 +814,8 @@ abstract class AbstractTheme
      */
     public function individualBoxSmall(Individual $individual)
     {
-        $personBoxClass = array_search($individual->getSex(), [
-            'person_box'   => 'M',
-            'person_boxF'  => 'F',
-            'person_boxNN' => 'U',
-        ]);
+        $person_box_class = self::PERSON_BOX_CLASSES[$individual->getSex()];
+
         if ($individual->getTree()->getPreference('SHOW_HIGHLIGHT_IMAGES')) {
             $thumbnail = $individual->displayImage(40, 50, 'crop', []);
         } else {
@@ -826,7 +823,7 @@ abstract class AbstractTheme
         }
 
         return
-            '<div data-xref="' . $individual->getXref() . '" class="person_box_template ' . $personBoxClass . ' iconz box-style0" style="width: ' . $this->parameter('compact-chart-box-x') . 'px; min-height: ' . $this->parameter('compact-chart-box-y') . 'px">' .
+            '<div data-xref="' . $individual->getXref() . '" class="person_box_template ' . $person_box_class . ' iconz box-style0" style="width: ' . $this->parameter('compact-chart-box-x') . 'px; min-height: ' . $this->parameter('compact-chart-box-y') . 'px">' .
             '<div class="compact_view">' .
             $thumbnail .
             '<a href="' . e($individual->url()) . '">' .
