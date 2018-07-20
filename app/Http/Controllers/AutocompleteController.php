@@ -248,7 +248,7 @@ class AutocompleteController extends AbstractBaseController
      *
      * @return JsonResponse
      */
-    public function select2Media(Request $request): JsonResponse
+    public function select2MediaObject(Request $request): JsonResponse
     {
         /** @var Tree $tree */
         $tree = $request->attributes->get('tree');
