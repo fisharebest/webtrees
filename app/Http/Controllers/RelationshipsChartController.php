@@ -55,16 +55,16 @@ class RelationshipsChartController extends AbstractChartController
         $xref2       = $request->get('xref2');
         $individual2 = Individual::getInstance($xref2, $tree);
 
-        $recursion = (int)$request->get('recursion', '0');
-        $ancestors = (bool)$request->get('ancestors', '0');
+        $recursion = (int) $request->get('recursion', '0');
+        $ancestors = (bool) $request->get('ancestors', '0');
 
         if ($individual1 !== null && $individual2 !== null) {
             $this->checkIndividualAccess($individual1);
             $this->checkIndividualAccess($individual2);
         }
 
-        $ancestors_only = (bool)$tree->getPreference('RELATIONSHIP_ANCESTORS', RelationshipsChartModule::DEFAULT_ANCESTORS);
-        $max_recursion  = (int)$tree->getPreference('RELATIONSHIP_RECURSION', RelationshipsChartModule::DEFAULT_RECURSION);
+        $ancestors_only = (bool) $tree->getPreference('RELATIONSHIP_ANCESTORS', RelationshipsChartModule::DEFAULT_ANCESTORS);
+        $max_recursion  = (int) $tree->getPreference('RELATIONSHIP_RECURSION', RelationshipsChartModule::DEFAULT_RECURSION);
 
         $recursion = min($recursion, $max_recursion);
 
@@ -108,14 +108,14 @@ class RelationshipsChartController extends AbstractChartController
         $this->checkIndividualAccess($individual1);
         $this->checkIndividualAccess($individual2);
 
-        $recursion = (int)$request->get('recursion', '0');
-        $ancestors = (bool)$request->get('ancestors', '0');
+        $recursion = (int) $request->get('recursion', '0');
+        $ancestors = (bool) $request->get('ancestors', '0');
 
-        $max_recursion = (int)$tree->getPreference('RELATIONSHIP_RECURSION', RelationshipsChartModule::DEFAULT_RECURSION);
+        $max_recursion = (int) $tree->getPreference('RELATIONSHIP_RECURSION', RelationshipsChartModule::DEFAULT_RECURSION);
 
         $recursion = min($recursion, $max_recursion);
 
-        $paths = $this->calculateRelationships($individual1, $individual2, $recursion, (bool)$ancestors);
+        $paths = $this->calculateRelationships($individual1, $individual2, $recursion, (bool) $ancestors);
 
         // @TODO - convert to views
         ob_start();
@@ -159,14 +159,14 @@ class RelationshipsChartController extends AbstractChartController
                             case 'sis':
                             case 'sib':
                                 $table[$x + 1][$y] = '<div style="background:url(' . Theme::theme()->parameter('image-hline') . ') repeat-x center;  width: 94px; text-align: center"><div class="hline-text" style="height: 32px;">' . Functions::getRelationshipNameFromPath($relationships[$n], Individual::getInstance($path[$n - 1], $tree), Individual::getInstance($path[$n + 1], $tree)) . '</div><div style="height: 32px;">' . FontAwesome::decorativeIcon('arrow-end') . '</div></div>';
-                                $x                 += 2;
+                                $x += 2;
                                 break;
                             case 'son':
                             case 'dau':
                             case 'chi':
                                 if ($n > 2 && preg_match('/fat|mot|par/', $relationships[$n - 2])) {
                                     $table[$x + 1][$y - 1] = '<div style="background:url(' . $diagonal2 . '); width: 64px; height: 64px; text-align: center;"><div style="height: 32px; text-align: end;">' . Functions::getRelationshipNameFromPath($relationships[$n], Individual::getInstance($path[$n - 1], $tree), Individual::getInstance($path[$n + 1], $tree)) . '</div><div style="height: 32px; text-align: start;">' . FontAwesome::decorativeIcon('arrow-down') . '</div></div>';
-                                    $x                     += 2;
+                                    $x += 2;
                                 } else {
                                     $table[$x][$y - 1] = '<div style="background:url(' . Theme::theme()
                                             ->parameter('image-vline') . ') repeat-y center; height: 64px; text-align: center;"><div class="vline-text" style="display: inline-block; width:50%; line-height: 64px;">' . Functions::getRelationshipNameFromPath($relationships[$n], Individual::getInstance($path[$n - 1], $tree), Individual::getInstance($path[$n + 1], $tree)) . '</div><div style="display: inline-block; width:50%; line-height: 64px;">' . FontAwesome::decorativeIcon('arrow-down') . '</div></div>';
@@ -178,7 +178,7 @@ class RelationshipsChartController extends AbstractChartController
                             case 'par':
                                 if ($n > 2 && preg_match('/son|dau|chi/', $relationships[$n - 2])) {
                                     $table[$x + 1][$y + 1] = '<div style="background:url(' . $diagonal1 . '); background-position: top right; width: 64px; height: 64px; text-align: center;"><div style="height: 32px; text-align: start;">' . Functions::getRelationshipNameFromPath($relationships[$n], Individual::getInstance($path[$n - 1], $tree), Individual::getInstance($path[$n + 1], $tree)) . '</div><div style="height: 32px; text-align: end;">' . FontAwesome::decorativeIcon('arrow-down') . '</div></div>';
-                                    $x                     += 2;
+                                    $x += 2;
                                 } else {
                                     $table[$x][$y + 1] = '<div style="background:url(' . Theme::theme()
                                             ->parameter('image-vline') . ') repeat-y center; height: 64px; text-align:center; "><div class="vline-text" style="display: inline-block; width: 50%; line-height: 32px;">' . Functions::getRelationshipNameFromPath($relationships[$n], Individual::getInstance($path[$n - 1], $tree), Individual::getInstance($path[$n + 1], $tree)) . '</div><div style="display: inline-block; width: 50%; line-height: 32px">' . FontAwesome::decorativeIcon('arrow-up') . '</div></div>';
@@ -321,17 +321,17 @@ class RelationshipsChartController extends AbstractChartController
      */
     private function oldStyleRelationshipPath(Tree $tree, array $path)
     {
-        $spouse_codes  = [
+        $spouse_codes = [
             'M' => 'hus',
             'F' => 'wif',
             'U' => 'spo',
         ];
-        $parent_codes  = [
+        $parent_codes = [
             'M' => 'fat',
             'F' => 'mot',
             'U' => 'par',
         ];
-        $child_codes   = [
+        $child_codes = [
             'M' => 'son',
             'F' => 'dau',
             'U' => 'chi',
