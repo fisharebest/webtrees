@@ -41,7 +41,7 @@ class CensusColumnSurnameGivenNamesTest extends \PHPUnit\Framework\TestCase
         $individual->shouldReceive('getAllNames')->andReturn([
             [
                 'givn' => 'Joe',
-                'surn' => 'Sixpack',
+                'surname' => 'Sixpack',
             ],
         ]);
         $individual->shouldReceive('getSpouseFamilies')->andReturn([]);
@@ -64,7 +64,7 @@ class CensusColumnSurnameGivenNamesTest extends \PHPUnit\Framework\TestCase
         $individual->shouldReceive('getAllNames')->andReturn([
             [
                 'givn' => 'Joe Fred',
-                'surn' => 'Sixpack',
+                'surname' => 'Sixpack',
             ],
         ]);
         $individual->shouldReceive('getSpouseFamilies')->andReturn([]);
