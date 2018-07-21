@@ -21,15 +21,10 @@ use Exception;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\DebugBar;
-use Fisharebest\Webtrees\Fact;
-use Fisharebest\Webtrees\FactLocation;
 use Fisharebest\Webtrees\FlashMessages;
-use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Location;
 use Fisharebest\Webtrees\Log;
-use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Stats;
 use Fisharebest\Webtrees\Tree;
@@ -84,118 +79,12 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
     }
 
     /** {@inheritdoc} */
-    public function defaultTabOrder()
-    {
-        return 4;
-    }
-
-    /** {@inheritdoc} */
-    public function hasTabContent(Individual $individual)
-    {
-        return true;
-    }
-
-    /** {@inheritdoc} */
-    public function isGrayedOut(Individual $individual)
-    {
-        return false;
-    }
-
-    /** {@inheritdoc} */
-    public function canLoadAjax()
-    {
-        return true;
-    }
-
-    /** {@inheritdoc} */
-    public function modAction($mod_action)
-    {
-    }
-
-    /** {@inheritdoc} */
     public function getConfigLink()
     {
         return route('admin-module', [
             'module' => $this->getName(),
             'action' => 'AdminConfig',
         ]);
-    }
-
-    /**
-     * Return a menu item for this chart.
-     *
-     * @param Individual $individual
-     *
-     * @return Menu
-     */
-    public function getChartMenu(Individual $individual)
-    {
-        return new Menu(
-            I18N::translate('Pedigree map'),
-            route('module', [
-                'module' => $this->getName(),
-                'action' => 'PedigreeMap',
-                'xref'   => $individual->getXref(),
-            ]),
-            'menu-chart-pedigreemap',
-            ['rel' => 'nofollow']
-        );
-    }
-
-    /**
-     * Return a menu item for this chart - for use in individual boxes.
-     *
-     * @param Individual $individual
-     *
-     * @return Menu
-     */
-    public function getBoxChartMenu(Individual $individual)
-    {
-        return $this->getChartMenu($individual);
-    }
-
-    /**
-     * @param string $type
-     *
-     * @return array
-     */
-    public function assets($type = 'user')
-    {
-        $dir = WT_MODULES_DIR . $this->getName();
-        if ($type === 'admin') {
-            return [
-                'css' => [
-                    $dir . '/assets/css/osm-module.css',
-                ],
-                'js'  => [
-                    $dir . '/assets/js/osm-admin.js',
-                ],
-            ];
-        } else {
-            return [
-                'css' => [
-                    $dir . '/assets/css/osm-module.css',
-                ],
-                'js'  => [
-                    $dir . '/assets/js/osm-module.js',
-                ],
-            ];
-        }
-    }
-
-    /** {@inheritdoc} */
-    public function getTabContent(Individual $individual)
-    {
-
-        return view(
-            'modules/openstreetmap/map',
-            [
-                'assets' => $this->assets(),
-                'module' => $this->getName(),
-                'ref'    => $individual->getXref(),
-                'type'   => 'individual',
-            ]
-        );
     }
 
     /**
@@ -620,7 +509,6 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
             'name' => 'modules/openstreetmap/admin-place-edit',
             'data' => [
                 'module'      => $this->getName(),
-                'assets'      => $this->assets('admin'),
                 'breadcrumbs' => $breadcrumbs,
                 'title'       => $title,
                 'location'    => $location,

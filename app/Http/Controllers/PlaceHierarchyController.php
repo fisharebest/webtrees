@@ -29,6 +29,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
+/**
+ * Class PlaceHierarchyController
+ *
+ * @package Fisharebest\Webtrees\Http\Controllers
+ */
 class PlaceHierarchyController extends AbstractBaseController
 {
     const MAP_MODULE = 'openstreetmap';
@@ -48,23 +53,19 @@ class PlaceHierarchyController extends AbstractBaseController
         $place      = new Place($fqpn, $tree);
         $content    = '';
         $osm_module = Module::getModuleByName(self::MAP_MODULE);
-        $method     = 'assets';
         $showmap    = $osm_module &&
-            (bool)$osm_module->getPreference('place_hierarchy') &&
-            method_exists($osm_module, $method) &&
+            (bool) $osm_module->getPreference('place_hierarchy') &&
             strpos($action, 'hierarchy') === 0;
         $data       = null;
         $note       = false;
 
         if ($showmap) {
             $note    = true;
-            $content .= view('modules/openstreetmap/map',
-                [
-                    'assets' => $osm_module->$method(),
-                    'module' => self::MAP_MODULE,
-                    'ref'    => $fqpn,
-                    'type'   => 'placelist',
-                ]
+            $content .= view('place-map', [
+                'module' => self::MAP_MODULE,
+                'ref'    => $fqpn,
+                'type'   => 'placelist',
+            ]
             );
         }
 
@@ -119,7 +120,7 @@ class PlaceHierarchyController extends AbstractBaseController
 
         return
             [
-                'columns' => array_chunk($list_places, (int)ceil($numfound / $divisor)),
+                'columns' => array_chunk($list_places, (int) ceil($numfound / $divisor)),
             ];
     }
 
@@ -143,7 +144,7 @@ class PlaceHierarchyController extends AbstractBaseController
                 [
                     'tree'      => $tree,
                     'col_class' => "w-" . ($divisor === 2 ? "25" : "50"),
-                    'columns'   => array_chunk($child_places, (int)ceil($numfound / $divisor)),
+                    'columns'   => array_chunk($child_places, (int) ceil($numfound / $divisor)),
                     'place'     => $place,
                     'parent'    => $parent,
                 ];

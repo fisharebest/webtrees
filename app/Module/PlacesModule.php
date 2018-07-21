@@ -20,21 +20,12 @@ namespace Fisharebest\Webtrees\Module;
 use Exception;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
-use Fisharebest\Webtrees\DebugBar;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\FactLocation;
-use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
-use Fisharebest\Webtrees\Location;
-use Fisharebest\Webtrees\Log;
-use Fisharebest\Webtrees\Menu;
-use Fisharebest\Webtrees\Place;
-use Fisharebest\Webtrees\Stats;
-use Fisharebest\Webtrees\Tree;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -109,48 +100,14 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
         return true;
     }
 
-    /**
-     * @param string $type
-     *
-     * @return array
-     */
-    public function assets($type = 'user')
-    {
-        $dir = WT_MODULES_DIR . $this->getName();
-        if ($type === 'admin') {
-            return [
-                'css' => [
-                    $dir . '/assets/css/osm-module.css',
-                ],
-                'js'  => [
-                    $dir . '/assets/js/osm-admin.js',
-                ],
-            ];
-        } else {
-            return [
-                'css' => [
-                    $dir . '/assets/css/osm-module.css',
-                ],
-                'js'  => [
-                    $dir . '/assets/js/osm-module.js',
-                ],
-            ];
-        }
-    }
-
     /** {@inheritdoc} */
     public function getTabContent(Individual $individual)
     {
-
-        return view(
-            'modules/openstreetmap/map',
-            [
-                'assets' => $this->assets(),
-                'module' => $this->getName(),
-                'ref'    => $individual->getXref(),
-                'type'   => 'individual',
-            ]
-        );
+        return view('modules/places/tab', [
+            'module' => $this->getName(),
+            'ref'    => $individual->getXref(),
+            'type'   => 'individual',
+        ]);
     }
 
     /**
@@ -205,10 +162,9 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
      */
     public function getMapDataAction(Request $request): JsonResponse
     {
-        $xref        = $request->get('reference');
-        $tree        = $request->attributes->get('tree');
-        $indi        = Individual::getInstance($xref, $tree);
-
+        $xref  = $request->get('reference');
+        $tree  = $request->attributes->get('tree');
+        $indi  = Individual::getInstance($xref, $tree);
         $facts = $this->getPersonalFacts($request);
 
         $geojson = [
@@ -223,7 +179,7 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
                 $event = new FactLocation($fact, $indi);
                 $icon  = $event->getIconDetails();
                 if ($event->knownLatLon()) {
-                    $polyline = null;
+                    $polyline              = null;
                     $geojson['features'][] = [
                         'type'       => 'Feature',
                         'id'         => $id,
@@ -240,7 +196,7 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
                                 'modules/openstreetmap/event-sidebar',
                                 $event->shortSummary('individual', $id)
                             ),
-                            'zoom'     => (int)$event->getZoom(),
+                            'zoom'     => (int) $event->getZoom(),
                         ],
                     ];
                 }
@@ -319,14 +275,14 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
                         function ($item) {
                             return preg_replace('/[^a-z\d]/i', '', strtolower($item));
                         },
-                        (array)$provider->styles
+                        (array) $provider->styles
                     );
 
-                    $key = preg_replace('/[^a-z\d]/i', '', strtolower((string)$provider->name));
+                    $key = preg_replace('/[^a-z\d]/i', '', strtolower((string) $provider->name));
 
                     self::$map_providers[$key] = [
-                        'name'   => (string)$provider->name,
-                        'styles' => array_combine($style_keys, (array)$provider->styles),
+                        'name'   => (string) $provider->name,
+                        'styles' => array_combine($style_keys, (array) $provider->styles),
                     ];
                 }
             } catch (Exception $ex) {
@@ -387,7 +343,7 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
     private function buildLevel($parent_id, $placename, &$places)
     {
         $level = array_search('', $placename);
-        $rows  = (array)Database::prepare(
+        $rows  = (array) Database::prepare(
             "SELECT pl_level, pl_id, pl_place, pl_long, pl_lati, pl_zoom, pl_icon FROM `##placelocation` WHERE pl_parent_id=? ORDER BY pl_place"
         )
             ->execute([$parent_id])

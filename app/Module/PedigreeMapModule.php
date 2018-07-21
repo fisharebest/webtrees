@@ -19,17 +19,13 @@ namespace Fisharebest\Webtrees\Module;
 
 use Exception;
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Database;
-use Fisharebest\Webtrees\DebugBar;
 use Fisharebest\Webtrees\Exceptions\IndividualAccessDeniedException;
 use Fisharebest\Webtrees\Exceptions\IndividualNotFoundException;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\FactLocation;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
-use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Menu;
-use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Tree;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -113,35 +109,6 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
     public function getBoxChartMenu(Individual $individual)
     {
         return $this->getChartMenu($individual);
-    }
-
-    /**
-     * @param string $type
-     *
-     * @return array
-     */
-    public function assets($type = 'user')
-    {
-        $dir = WT_MODULES_DIR . $this->getName();
-        if ($type === 'admin') {
-            return [
-                'css' => [
-                    $dir . '/assets/css/osm-module.css',
-                ],
-                'js'  => [
-                    $dir . '/assets/js/osm-admin.js',
-                ],
-            ];
-        } else {
-            return [
-                'css' => [
-                    $dir . '/assets/css/osm-module.css',
-                ],
-                'js'  => [
-                    $dir . '/assets/js/osm-module.js',
-                ],
-            ];
-        }
     }
 
     /**
@@ -404,9 +371,8 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
         }
         
         return (object)[
-            'name' => 'modules/openstreetmap/pedigreemap',
+            'name' => 'modules/pedigree-map/pedigree-map-page',
             'data' => [
-                'assets'         => $this->assets(),
                 'module'         => $this->getName(),
                 'title'          => /* I18N: %s is an individual’s name */
                     I18N::translate('Pedigree map of %s', $individual->getFullName()),
@@ -415,9 +381,8 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
                 'generations'    => $generations,
                 'maxgenerations' => $maxgenerations,
                 'map'            => view(
-                    'modules/openstreetmap/map',
+                    'modules/pedigree-map/pedigree-map',
                     [
-                        'assets'      => $this->assets(),
                         'module'      => $this->getName(),
                         'ref'         => $individual->getXref(),
                         'type'        => 'pedigree',
