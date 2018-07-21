@@ -675,9 +675,8 @@ class FunctionsPrintFacts
                     $ttype = preg_match('/' . ($nlevel + 1) . ' TYPE (.*)/', $media->getGedcom(), $match);
                     if ($ttype > 0) {
                         $mediaType = GedcomTag::getFileFormTypeValue($match[1]);
-                        echo '<p class="label">', I18N::translate('Type'), ': </span> <span class="field">', $mediaType, '</p>';
+                        echo '<span class="label">', I18N::translate('Type'), ': </span> <span class="field">', $mediaType, '</span>';
                     }
-                    echo '</p>';
                     //-- print spouse name for marriage events
                     $ct = preg_match('/WT_SPOUSE: (.*)/', $factrec, $match);
                     if ($ct > 0) {
@@ -756,7 +755,7 @@ class FunctionsPrintFacts
                 } else {
                     echo '<tr>';
                 }
-                echo '<th';
+                echo '<th class="';
                 if ($level > 1) {
                     echo ' rela';
                 }
