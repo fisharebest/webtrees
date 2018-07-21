@@ -116,7 +116,7 @@ class PageHitCounter implements MiddlewareInterface
             return Session::get('last_count');
         }
 
-        $count = self::getCount($tree, $page, $parameter);
+        $count = $this->getCount($tree, $page, $parameter);
 
         if ($count === 0) {
             Database::prepare(
@@ -155,7 +155,7 @@ class PageHitCounter implements MiddlewareInterface
      *
      * @return int
      */
-    public static function getCount(Tree $tree, $page, $parameter): int
+    public function getCount(Tree $tree, $page, $parameter): int
     {
         return (int)Database::prepare(
             "SELECT page_count FROM `##hit_counter` WHERE gedcom_id = :tree_id AND page_name = :page AND page_parameter = :parameter"

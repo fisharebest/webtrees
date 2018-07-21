@@ -6830,8 +6830,10 @@ class Stats
         } else {
             // indi/fam/sour/etc.
         }
+        
+        $hit_counter = new PageHitCounter;
 
-        return '<span class="odometer">' . I18N::digits(PageHitCounter::getCount($this->tree, $page_name, $page_parameter)) . '</span>';
+        return '<span class="odometer">' . I18N::digits($hit_counter->getCount($this->tree, $page_name, $page_parameter)) . '</span>';
     }
 
     /**
