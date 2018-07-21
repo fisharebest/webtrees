@@ -182,15 +182,12 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
                         'color' => '#1e90ff',
                     ],
                     'tooltip' => strip_tags($place->getFullName()),
-                    'summary' => view(
-                        'modules/openstreetmap/place-sidebar',
-                        [
-                            'showlink' => $showlink,
-                            'flag'     => $flag,
-                            'place'    => $place,
-                            'stats'    => $placeStats,
-                        ]
-                    ),
+                    'summary' => view('place-sidebar', [
+                        'showlink' => $showlink,
+                        'flag'     => $flag,
+                        'place'    => $place,
+                        'stats'    => $placeStats,
+                    ]),
                     'zoom'    => (int)($location->getZoom() ?? 2),
                 ],
             ];
@@ -222,7 +219,7 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
     private function getMapProviderData(Request $request)
     {
         if (self::$map_providers === null) {
-            $providersFile        = WT_ROOT . WT_MODULES_DIR . $this->getName() . '/providers/providers.xml';
+            $providersFile        = WT_ROOT . WT_MODULES_DIR . 'openstreetmap/providers/providers.xml';
             self::$map_selections = [
                 'provider' => $this->getPreference('provider', 'openstreetmap'),
                 'style'    => $this->getPreference('provider_style', 'mapnik'),
@@ -344,7 +341,7 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
     public function getAdminConfigAction(Request $request)
     {
         return (object)[
-            'name' => 'modules/openstreetmap/admin-config',
+            'name' => 'admin/map-config',
             'data' => [
                 'title'        => I18N::translate('Open Street Maps (Configuration)'),
                 'module'       => $this->getName(),
@@ -439,7 +436,7 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
         $breadcrumbs[] = array_pop($breadcrumbs);
 
         return (object)[
-            'name' => 'modules/openstreetmap/admin-places',
+            'name' => 'admin/map-places',
             'data' => [
                 'title'       => $title,
                 'breadcrumbs' => $breadcrumbs,
@@ -506,7 +503,7 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
         $breadcrumbs[] = $place_id === 0 ? I18N::translate('Add') : I18N::translate('Edit');
 
         return (object)[
-            'name' => 'modules/openstreetmap/admin-place-edit',
+            'name' => 'admin/map-place-edit',
             'data' => [
                 'module'      => $this->getName(),
                 'breadcrumbs' => $breadcrumbs,
@@ -808,7 +805,7 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
         );
 
         return (object)[
-            'name' => 'modules/openstreetmap/admin-import-form',
+            'name' => 'admin/map-import-form',
             'data' => [
                 'title'       => I18N::translate('Import geographic data'),
                 'module'      => $this->getName(),

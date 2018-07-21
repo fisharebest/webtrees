@@ -65,8 +65,7 @@ class PlaceHierarchyController extends AbstractBaseController
                 'module' => self::MAP_MODULE,
                 'ref'    => $fqpn,
                 'type'   => 'placelist',
-            ]
-            );
+            ]);
         }
 
         switch ($action) {

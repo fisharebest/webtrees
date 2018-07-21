@@ -193,7 +193,7 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
                             'icon'     => $icon,
                             'tooltip'  => $event->toolTip(),
                             'summary'  => view(
-                                'modules/openstreetmap/event-sidebar',
+                                'modules/places/event-sidebar',
                                 $event->shortSummary('individual', $id)
                             ),
                             'zoom'     => (int) $event->getZoom(),
@@ -261,7 +261,7 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
     private function getMapProviderData(Request $request)
     {
         if (self::$map_providers === null) {
-            $providersFile        = WT_ROOT . WT_MODULES_DIR . $this->getName() . '/providers/providers.xml';
+            $providersFile        = WT_ROOT . WT_MODULES_DIR . 'openstreetmap/providers/providers.xml';
             self::$map_selections = [
                 'provider' => $this->getPreference('provider', 'openstreetmap'),
                 'style'    => $this->getPreference('provider_style', 'mapnik'),

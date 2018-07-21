@@ -213,10 +213,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
                             'polyline' => $polyline,
                             'icon'     => $icon,
                             'tooltip'  => $event->toolTip(),
-                            'summary'  => view(
-                                'modules/openstreetmap/event-sidebar',
-                                $event->shortSummary('pedigree', $id)
-                            ),
+                            'summary'  => view('modules/pedigree-map/event-sidebar', $event->shortSummary('pedigree', $id)),
                             'zoom'     => (int)$event->getZoom(),
                         ],
                     ];
@@ -277,7 +274,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
     private function getMapProviderData(Request $request)
     {
         if (self::$map_providers === null) {
-            $providersFile        = WT_ROOT . WT_MODULES_DIR . $this->getName() . '/providers/providers.xml';
+            $providersFile        = WT_ROOT . WT_MODULES_DIR . 'openstreetmap/providers/providers.xml';
             self::$map_selections = [
                 'provider' => $this->getPreference('provider', 'openstreetmap'),
                 'style'    => $this->getPreference('provider_style', 'mapnik'),
