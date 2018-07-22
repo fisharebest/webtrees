@@ -25,6 +25,8 @@ use Fisharebest\Webtrees\FactLocation;
 use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\View;
+use stdClass;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -33,26 +35,6 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class PlacesModule extends AbstractModule implements ModuleTabInterface
 {
-    const OSM_MIN_ZOOM = 2;
-    const LINE_COLORS  = [
-        '#FF0000',
-        // Red
-        '#00FF00',
-        // Green
-        '#0000FF',
-        // Blue
-        '#FFB300',
-        // Gold
-        '#00FFFF',
-        // Cyan
-        '#FF00FF',
-        // Purple
-        '#7777FF',
-        // Light blue
-        '#80FF80'
-        // Light green
-    ];
-
     private static $map_providers  = null;
     private static $map_selections = null;
 
@@ -104,119 +86,61 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
     public function getTabContent(Individual $individual)
     {
         return view('modules/places/tab', [
-            'module' => $this->getName(),
-            'ref'    => $individual->getXref(),
-            'type'   => 'individual',
+            'data' => $this->getMapData($individual),
         ]);
     }
 
     /**
      * @param Request $request
      *
-     * @return JsonResponse
+     * @return stdClass
      */
-    public function getBaseDataAction(Request $request): JsonResponse
+    private function getMapData(Individual $indi): stdClass
     {
-        $provider = $this->getMapProviderData($request);
-        $style    = $provider['selectedStyleName'] = '' ? '' : '.' . $provider['selectedStyleName'];
-
-        switch ($provider['selectedProvIndex']) {
-            case 'mapbox':
-                $providerOptions = [
-                    'id'          => $this->getPreference('mapbox_id'),
-                    'accessToken' => $this->getPreference('mapbox_token'),
-                ];
-                break;
-            case 'here':
-                $providerOptions = [
-                    'app_id'   => $this->getPreference('here_appid'),
-                    'app_code' => $this->getPreference('here_appcode'),
-                ];
-                break;
-            default:
-                $providerOptions = [];
-        };
-
-        $options = [
-            'minZoom'         => self::OSM_MIN_ZOOM,
-            'providerName'    => $provider['selectedProvName'] . $style,
-            'providerOptions' => $providerOptions,
-            'animate'         => $this->getPreference('map_animate', 0),
-            'I18N'            => [
-                'zoomInTitle'  => I18N::translate('Zoom in'),
-                'zoomOutTitle' => I18N::translate('Zoom out'),
-                'reset'        => I18N::translate('Reset to initial map state'),
-                'noData'       => I18N::translate('No mappable items'),
-                'error'        => I18N::translate('An unknown error occurred'),
-            ],
-        ];
-
-        return new JsonResponse($options);
-    }
-
-    /**
-     * @param Request $request
-     *
-     * @return JsonResponse
-     * @throws Exception
-     */
-    public function getMapDataAction(Request $request): JsonResponse
-    {
-        $xref  = $request->get('reference');
-        $tree  = $request->attributes->get('tree');
-        $indi  = Individual::getInstance($xref, $tree);
-        $facts = $this->getPersonalFacts($request);
+        $facts = $this->getPersonalFacts($indi);
 
         $geojson = [
             'type'     => 'FeatureCollection',
             'features' => [],
         ];
-        if (empty($facts)) {
-            $code = 204;
-        } else {
-            $code = 200;
-            foreach ($facts as $id => $fact) {
-                $event = new FactLocation($fact, $indi);
-                $icon  = $event->getIconDetails();
-                if ($event->knownLatLon()) {
-                    $polyline              = null;
-                    $geojson['features'][] = [
-                        'type'       => 'Feature',
-                        'id'         => $id,
-                        'valid'      => true,
-                        'geometry'   => [
-                            'type'        => 'Point',
-                            'coordinates' => $event->getGeoJsonCoords(),
-                        ],
-                        'properties' => [
-                            'polyline' => $polyline,
-                            'icon'     => $icon,
-                            'tooltip'  => $event->toolTip(),
-                            'summary'  => view(
-                                'modules/places/event-sidebar',
-                                $event->shortSummary('individual', $id)
-                            ),
-                            'zoom'     => (int) $event->getZoom(),
-                        ],
-                    ];
-                }
+
+        foreach ($facts as $id => $fact) {
+            $event = new FactLocation($fact, $indi);
+            $icon  = $event->getIconDetails();
+            if ($event->knownLatLon()) {
+                $geojson['features'][] = [
+                    'type'       => 'Feature',
+                    'id'         => $id,
+                    'valid'      => true,
+                    'geometry'   => [
+                        'type'        => 'Point',
+                        'coordinates' => $event->getGeoJsonCoords(),
+                    ],
+                    'properties' => [
+                        'polyline' => null,
+                        'icon'     => $icon,
+                        'tooltip'  => $event->toolTip(),
+                        'summary'  => view(
+                            'modules/places/event-sidebar',
+                            $event->shortSummary('individual', $id)
+                        ),
+                        'zoom'     => (int) $event->getZoom(),
+                    ],
+                ];
             }
         }
 
-        return new JsonResponse($geojson, $code);
+        return (object) $geojson;
     }
 
     /**
-     * @param Request $request
+     * @param Individual $individual
      *
      * @return array
      * @throws Exception
      */
-    private function getPersonalFacts(Request $request)
+    private function getPersonalFacts(Individual $individual)
     {
-        $xref       = $request->get('reference');
-        $tree       = $request->attributes->get('tree');
-        $individual = Individual::getInstance($xref, $tree);
         $facts      = $individual->getFacts();
         foreach ($individual->getSpouseFamilies() as $family) {
             $facts = array_merge($facts, $family->getFacts());

@@ -38,24 +38,6 @@ use Symfony\Component\HttpFoundation\Request;
 class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterface
 {
     const OSM_MIN_ZOOM = 2;
-    const LINE_COLORS  = [
-        '#FF0000',
-        // Red
-        '#00FF00',
-        // Green
-        '#0000FF',
-        // Blue
-        '#FFB300',
-        // Gold
-        '#00FFFF',
-        // Cyan
-        '#FF00FF',
-        // Purple
-        '#7777FF',
-        // Light blue
-        '#80FF80'
-        // Light green
-    ];
 
     private static $map_providers  = null;
     private static $map_selections = null;
@@ -85,50 +67,6 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
             'module' => $this->getName(),
             'action' => 'AdminConfig',
         ]);
-    }
-
-    /**
-     * @param Request $request
-     *
-     * @return JsonResponse
-     */
-    public function getBaseDataAction(Request $request): JsonResponse
-    {
-        $provider = $this->getMapProviderData($request);
-        $style    = $provider['selectedStyleName'] = '' ? '' : '.' . $provider['selectedStyleName'];
-
-        switch ($provider['selectedProvIndex']) {
-            case 'mapbox':
-                $providerOptions = [
-                    'id'          => $this->getPreference('mapbox_id'),
-                    'accessToken' => $this->getPreference('mapbox_token'),
-                ];
-                break;
-            case 'here':
-                $providerOptions = [
-                    'app_id'   => $this->getPreference('here_appid'),
-                    'app_code' => $this->getPreference('here_appcode'),
-                ];
-                break;
-            default:
-                $providerOptions = [];
-        };
-
-        $options = [
-            'minZoom'         => self::OSM_MIN_ZOOM,
-            'providerName'    => $provider['selectedProvName'] . $style,
-            'providerOptions' => $providerOptions,
-            'animate'         => $this->getPreference('map_animate', 0),
-            'I18N'            => [
-                'zoomInTitle'  => I18N::translate('Zoom in'),
-                'zoomOutTitle' => I18N::translate('Zoom out'),
-                'reset'        => I18N::translate('Reset to initial map state'),
-                'noData'       => I18N::translate('No mappable items'),
-                'error'        => I18N::translate('An unknown error occurred'),
-            ],
-        ];
-
-        return new JsonResponse($options);
     }
 
     /**
@@ -351,7 +289,6 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
                 'here_Appid'   => $this->getPreference('here_appid'),
                 'here_Appcode' => $this->getPreference('here_appcode'),
                 'hierarchy'    => $this->getPreference('place_hierarchy', '0'),
-                'animate'      => $this->getPreference('map_animate', '0'),
             ],
         ];
     }
@@ -370,7 +307,6 @@ class OpenStreetMapModule extends AbstractModule implements ModuleConfigInterfac
         $this->setPreference('provider', $request->get('provider'));
         $this->setPreference('provider_style', $request->get('provider_style', ''));
         $this->setPreference('place_hierarchy', $request->get('place_hierarchy'));
-        $this->setPreference('map_animate', $request->get('map_animate'));
 
         FlashMessages::addMessage(
             I18N::translate(

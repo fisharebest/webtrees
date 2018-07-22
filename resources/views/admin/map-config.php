@@ -65,29 +65,6 @@
 		</div>
 	</fieldset>
 
-	<!-- Animate map reset-->
-	<fieldset class="form-group">
-		<div class="form-row">
-			<legend class="col-form-label col-sm-3">
-				<?= I18N::translate('Animate map reset') ?>
-			</legend>
-			<div class="col-sm-9">
-				<div class="form-row">
-					<div class="col-sm-4">
-						<div class="input-group">
-							<?= Bootstrap4::radioButtons(
-								'map_animate',
-								[I18N::translate('no'), I18N::translate('yes')],
-								$animate,
-								true
-							) ?>
-						</div>
-					</div>
-				</div>
-			</div>
-		</Div>
-	</fieldset>
-
 	<!-- Place Hierarchy -->
 	<fieldset class="form-group">
 		<div class="form-row">

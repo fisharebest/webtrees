@@ -1,3 +1,4 @@
+<?php use Fisharebest\Webtrees\I18N; ?>
 <?php use Fisharebest\Webtrees\View; ?>
 
 <div class="py-4">
@@ -65,29 +66,23 @@
 <?php View::endpush() ?>
 
 <?php View::push('javascript') ?>
-<script>
+<script type="application/javascript">
   "use strict";
 
-  /* global L, console*/
-
-  /**
-   * webtrees: online genealogy
-   * Copyright (C) 2018 webtrees development team
-   * This program is free software: you can redistribute it and/or modify
-   * it under the terms of the GNU General Public License as published by
-   * the Free Software Foundation, either version 3 of the License, or
-   * (at your option) any later version.
-   * This program is distributed in the hope that it will be useful,
-   * but WITHOUT ANY WARRANTY; without even the implied warranty of
-   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-   * GNU General Public License for more details.
-   * You should have received a copy of the GNU General Public License
-   * along with this program. If not, see <http://www.gnu.org/licenses/>.
-   */
-
   window.WT_OSM = (function() {
+    let baseData = {
+      minZoom: 2,
+      providerName: "OpenStreetMap.Mapnik",
+      providerOptions: [],
+      I18N: {
+        zoomInTitle: <?= json_encode(I18N::translate('Zoom in')) ?>,
+        zoomOutTitle: <?= json_encode(I18N::translate('Zoom out')) ?>,
+        reset: <?= json_encode(I18N::translate('Reset to initial map state')) ?>,
+        noData: <?= json_encode(I18N::translate('No mappable items')) ?>,
+        error: <?= json_encode(I18N::translate('An unknown error occurred')) ?>
+      }
+    };
 
-    let baseData     = {};
     let map          = null;
     let zoom         = null;
     let markers      = L.markerClusterGroup({
@@ -97,20 +92,15 @@
     let resetControl = L.Control.extend({
       options: {
         position: 'topleft'
-        //control position - allowed: 'topleft', 'topright', 'bottomleft', 'bottomright'
       },
 
       onAdd: function (map) {
         let container     = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom');
         container.onclick = function () {
-          if (zoom && baseData.animate) {
+          if (zoom) {
             map.flyTo(markers.getBounds().getCenter(), zoom);
-          } else if (zoom) {
-            map.setView(markers.getBounds().getCenter(), zoom);
-          } else if (baseData.animate) {
-            map.flyToBounds(markers.getBounds().pad(0.2));
           } else {
-            map.fitBounds(markers.getBounds().pad(0.2));
+            map.flyToBounds(markers.getBounds().pad(0.2));
           }
           return false;
         };
@@ -279,20 +269,8 @@
           });
       });
 
-      $.getJSON('index.php?route=module', {
-        module: 'openstreetmap',
-        action: 'BaseData',
-      })
-        .done(function (data, textStatus, jqXHR) {
-          $.extend(true, baseData, data);
-        })
-        .fail(function (jqXHR, textStatus, errorThrown) {
-          console.log(jqXHR, textStatus, errorThrown);
-        })
-        .always(function (data_jqXHR, textStatus, jqXHR_errorThrown) {
-          _drawMap();
-          _addLayer(reference, mapType, generations);
-        });
+      _drawMap();
+      _addLayer(reference, mapType, generations);
     };
 
     return {

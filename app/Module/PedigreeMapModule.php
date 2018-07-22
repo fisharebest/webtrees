@@ -35,7 +35,6 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
 {
-    const OSM_MIN_ZOOM = 2;
     const LINE_COLORS  = [
         '#FF0000',
         // Red
@@ -109,50 +108,6 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
     public function getBoxChartMenu(Individual $individual)
     {
         return $this->getChartMenu($individual);
-    }
-
-    /**
-     * @param Request $request
-     *
-     * @return JsonResponse
-     */
-    public function getBaseDataAction(Request $request): JsonResponse
-    {
-        $provider = $this->getMapProviderData($request);
-        $style    = $provider['selectedStyleName'] = '' ? '' : '.' . $provider['selectedStyleName'];
-
-        switch ($provider['selectedProvIndex']) {
-            case 'mapbox':
-                $providerOptions = [
-                    'id'          => $this->getPreference('mapbox_id'),
-                    'accessToken' => $this->getPreference('mapbox_token'),
-                ];
-                break;
-            case 'here':
-                $providerOptions = [
-                    'app_id'   => $this->getPreference('here_appid'),
-                    'app_code' => $this->getPreference('here_appcode'),
-                ];
-                break;
-            default:
-                $providerOptions = [];
-        };
-
-        $options = [
-            'minZoom'         => self::OSM_MIN_ZOOM,
-            'providerName'    => $provider['selectedProvName'] . $style,
-            'providerOptions' => $providerOptions,
-            'animate'         => $this->getPreference('map_animate', 0),
-            'I18N'            => [
-                'zoomInTitle'  => I18N::translate('Zoom in'),
-                'zoomOutTitle' => I18N::translate('Zoom out'),
-                'reset'        => I18N::translate('Reset to initial map state'),
-                'noData'       => I18N::translate('No mappable items'),
-                'error'        => I18N::translate('An unknown error occurred'),
-            ],
-        ];
-
-        return new JsonResponse($options);
     }
 
     /**
