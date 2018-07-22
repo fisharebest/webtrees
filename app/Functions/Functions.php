@@ -984,8 +984,6 @@ class Functions
                 return I18N::translateContext('wife’s son', 'step-son');
 
             // Level Three relationships
-            // I have commented out some of the unknown-sex relationships that are unlikely to to occur.
-            // Feel free to add them in, if you think they might be needed
             case 'brochichi':
                 if ($sex1 === 'M') {
                     return I18N::translateContext('(a man’s) brother’s child’s child', 'great-nephew/niece');
@@ -1162,6 +1160,24 @@ class Functions
                 return I18N::translateContext('husband’s brother’s wife', 'sister-in-law');
             case 'hussishus':
                 return I18N::translateContext('husband’s sister’s husband', 'brother-in-law');
+            case 'hussibchi':
+                return I18N::translateContext('husband’s sibling’s child', 'nephew/niece');
+            case 'hussischi':
+                return I18N::translateContext('husband’s sister’s child', 'nephew/niece');
+            case 'husbrochi':
+                return I18N::translateContext('husband’s brother’s child', 'nephew/niece');
+            case 'hussibdau':
+                return I18N::translateContext('husband’s sibling’s daughter', 'niece');
+            case 'hussisdau':
+                return I18N::translateContext('husband’s sister’s daughter', 'niece');
+            case 'husbrodau':
+                return I18N::translateContext('husband’s brother’s daughter', 'niece');
+            case 'hussibson':
+                return I18N::translateContext('husband’s sibling’s son', 'nephew');
+            case 'hussisson':
+                return I18N::translateContext('husband’s sister’s son', 'nephew');
+            case 'husbroson':
+                return I18N::translateContext('husband’s brother’s son', 'nephew');
             case 'motbrochi':
                 return I18N::translateContext('mother’s brother’s child', 'first cousin');
             case 'motbrodau':
@@ -1384,6 +1400,24 @@ class Functions
                 return I18N::translateContext('wife’s brother’s wife', 'sister-in-law');
             case 'wifsishus':
                 return I18N::translateContext('wife’s sister’s husband', 'brother-in-law');
+            case 'wifsibchi':
+                return I18N::translateContext('wife’s sibling’s child', 'nephew/niece');
+            case 'wifsischi':
+                return I18N::translateContext('wife’s sister’s child', 'nephew/niece');
+            case 'wifbrochi':
+                return I18N::translateContext('wife’s brother’s child', 'nephew/niece');
+            case 'wifsibdau':
+                return I18N::translateContext('wife’s sibling’s daughter', 'niece');
+            case 'wifsisdau':
+                return I18N::translateContext('wife’s sister’s daughter', 'niece');
+            case 'wifbrodau':
+                return I18N::translateContext('wife’s brother’s daughter', 'niece');
+            case 'wifsibson':
+                return I18N::translateContext('wife’s sibling’s son', 'nephew');
+            case 'wifsisson':
+                return I18N::translateContext('wife’s sister’s son', 'nephew');
+            case 'wifbroson':
+                return I18N::translateContext('wife’s brother’s son', 'nephew');
 
             // Some “special case” level four relationships that have specific names in certain languages
             case 'fatfatbrowif':
