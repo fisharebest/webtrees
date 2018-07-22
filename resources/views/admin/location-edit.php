@@ -1,10 +1,10 @@
-<?php use Fisharebest\Webtrees\Functions\FunctionsEdit;
-use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\View; ?>
-<?php ?>
-<?php ?>
+<?php use Fisharebest\Webtrees\Functions\FunctionsEdit; ?>
+<?php use Fisharebest\Webtrees\I18N; ?>
+<?php use Fisharebest\Webtrees\View; ?>
 
 <?= view('components/breadcrumbs', ['links' => $breadcrumbs]) ?>
+
+<h1><?= $title ?></h1>
 
 <div class="form-group row">
     <div class="col-sm-10 offset-sm-1">
@@ -12,15 +12,12 @@ use Fisharebest\Webtrees\View; ?>
     </div>
 </div>
 
-<form method="post" id="editplaces" name="editplaces"
-action="<?= e(route('admin-module', ['module' => $module, 'action' => 'AdminSave'])) ?>">
+<form method="post">
     <?= csrf_field() ?>
     <input type="hidden" name="place_id" value="<?= $place_id ?>">
     <input type="hidden" name="level" value="<?= count($hierarchy) ?>">
-    <input type="hidden" name="parent_id" value="<?= $parent_id ?>">
     <input type="hidden" name="place_long" value="<?= $lng ?>">
     <input type="hidden" name="place_lati" value="<?= $lat ?>">
-    <input type="hidden" name="inactive" value="<?= $inactive ?>">
 
     <div class="form-group row">
         <label class="col-form-label col-sm-1" for="new_place_name">
@@ -82,18 +79,8 @@ action="<?= e(route('admin-module', ['module' => $module, 'action' => 'AdminSave
                 I18N::translate('save')
                 ?>
             </button>
-            <a class="btn btn-secondary" href="<?=
-            e(route('admin-module', [
-                    'module'    => $module,
-                    'action'    => 'AdminPlaces',
-                    'parent_id' => $parent_id,
-                    'inactive'  => $inactive,
-                ]
-            ));
-            ?>">
-                <?= /* I18N: A button label. */
-                I18N::translate('cancel')
-                ?>
+            <a class="btn btn-secondary" href="<?= e(route('map-data', ['parent_id' => $parent_id])) ?>">
+                <?= I18N::translate('cancel') ?>
             </a>
         </div>
     </div>

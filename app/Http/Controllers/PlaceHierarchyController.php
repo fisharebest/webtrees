@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Place;
+use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -52,10 +53,7 @@ class PlaceHierarchyController extends AbstractBaseController
         $fqpn       = implode(Place::GEDCOM_SEPARATOR, array_reverse($parent));
         $place      = new Place($fqpn, $tree);
         $content    = '';
-        $osm_module = Module::getModuleByName(self::MAP_MODULE);
-        $showmap    = $osm_module &&
-            (bool) $osm_module->getPreference('place_hierarchy') &&
-            strpos($action, 'hierarchy') === 0;
+        $showmap    = Site::getPreference('map-provider') !== '';
         $data       = null;
         $note       = false;
 

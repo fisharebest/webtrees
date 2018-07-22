@@ -5,36 +5,7 @@
 
 <?= view('components/breadcrumbs', ['links' => $breadcrumbs]) ?>
 
-<div class="form-group row">
-	<div class="col-sm-3 col-form-label">
-		<?= I18N::translate('Module configuration') ?>
-	</div>
-	<div class="col-sm-9">
-		<a class="btn btn-primary"
-		   href="<?= e(route('admin-module', ['module' => $module, 'action' => 'AdminConfig'])) ?>">
-			<?= FontAwesome::decorativeIcon('edit') ?>
-			<?= I18N::translate('edit') ?>
-		</a>
-	</div>
-</div>
-<form method="POST"
-	  action="<?=e(route('admin-module',
-		  ['module' => $module, 'action' => 'AdminPlaces', 'parent_id' => $parent_id])) ?>">
-
-	<?= csrf_field() ?>
-	<?= Bootstrap4::checkbox(
-		I18N::translate('Show inactive places'),
-		false,
-		['name' => 'inactive', 'checked' => $inactive, 'onclick' => 'this.form.submit()']
-	) ?>
-	<p class="small text-muted">
-		<?= I18N::translate(
-			'By default, the list shows only those places which can be found in your family trees. You may have details for other places, such as those imported in bulk from an external file. Selecting this option will show all places, including ones that are not currently used.'
-		) ?>
-		<?= I18N::translate('If you have a large number of inactive places, it can be slow to generate the list.') ?>
-
-	</p>
-</form>
+<h1><?= $title ?></h1>
 
 <table class="table table-bordered table-striped table-sm table-hover">
 	<thead class="thead-dark">
@@ -53,13 +24,7 @@
 	<?php foreach ($placelist as $place): ?>
 		<tr>
             <th scope="row">
-                <a href="<?= e(route('admin-module',
-					   ['module' => $module,
-					    'action' => 'AdminPlaces',
-					    'parent_id' => $place->pl_id,
-					    'inactive' => $inactive]
-				   )
-				   ) ?>">
+                <a href="<?= e(route('map-data', ['parent_id' => $place->pl_id])) ?>">
 					<?= e($place->pl_place) ?>
                     <span class="badge badge-pill badge-<?= $place->badge ?>">
 				        <?= I18N::number($place->child_count) ?>
@@ -78,46 +43,21 @@
 				<?= $place->pl_long === null ? FontAwesome::decorativeIcon('warning') : $place->pl_zoom ?>
 			</td>
 			<td>
-				<?php if (is_file(WT_MODULES_DIR . $module . '/' . $place->pl_icon)): ?>
-					<img src="<?= e(WT_MODULES_DIR . $module . '/' . $place->pl_icon) ?>" width="25" height="15" alt="<?= I18N::translate("Flag of %s", $place->pl_place) ?>">
+				<?php if (is_file(WT_MODULES_DIR . 'openstreetmap' . '/' . $place->pl_icon)): ?>
+					<img src="<?= e(WT_MODULES_DIR . 'openstreetmap' . '/' . $place->pl_icon) ?>" width="25" height="15" alt="<?= I18N::translate("Flag of %s", $place->pl_place) ?>">
 				<?php endif ?>
 			</td>
 			<td>
-				<?=
-				FontAwesome::linkIcon(
-					'edit',
-					I18N::translate('Edit'),
-					[
-						'href' => route('admin-module',
-							[
-								'module'	=> $module,
-								'action'	=> 'AdminPlaceEdit',
-								'place_id'  => $place->pl_id,
-								'parent_id' => $place->pl_parent_id,
-								'inactive'  => $inactive,
-							]
-						),
-						'class' => 'btn btn-primary'
-					]
-				)
-				?>
+				<?= FontAwesome::linkIcon('edit', I18N::translate('Edit'), ['href' => route('map-data-edit', ['place_id'  => $place->pl_id, 'parent_id' => $place->pl_parent_id]), 'class' => 'btn btn-primary']) ?>
 			</td>
 			<td>
 				<?php if ($place->child_count === 0): ?>
-					<form method="POST" action="<?=
-					e(route('admin-module', [
-						'module' => $module,
-						'action' => 'AdminDeleteRecord'
-					]));
-					?>"
+					<form method="POST" action="<?= e(route('map-data-delete', ['parent_id' => $parent_id, 'place_id' => $place->pl_id])) ?>"
 						  data-confirm="<?= I18N::translate('Remove this location?') ?>"
 						  onsubmit="return confirm(this.dataset.confirm)">
-						<input type="hidden" name="parent_id" value="<?= $parent_id ?>">
-						<input type="hidden" name="place_id" value="<?= $place->pl_id ?>">
-						<input type="hidden" name="inactive" value="<?= $inactive ?>">
-						<?= csrf_field() ?>
+                        <?= csrf_field() ?>
 						<button type="submit" class="btn btn-danger">
-							<?= FontAwesome::semanticIcon('delete', I18N::translate('Delete')) ?>
+							<?= FontAwesome::semanticIcon('delete', I18N::translate('delete')) ?>
 						</button>
 					</form>
 				<?php else: ?>
@@ -132,14 +72,7 @@
 	<tfoot>
 	<tr>
 		<td colspan="7">
-			<a class="btn btn-primary" href="<?= e(route('admin-module',
-				[
-					'module'	=> $module,
-					'action'	=> 'AdminPlaceEdit',
-					'parent_id' => $parent_id,
-					'inactive'  => $inactive,
-				]
-			)) ?>">
+			<a class="btn btn-primary" href="<?= e(route('map-data', ['parent_id' => $parent_id])) ?>">
 				<?= FontAwesome::decorativeIcon('add') ?>
 				<?= /* I18N: A button label. */
 				I18N::translate('add place') ?>
@@ -151,38 +84,16 @@
 				I18N::translate('export file') ?>
 			</button>
 			<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-				<a class="dropdown-item" href="<?=
-				e(route('admin-module',
-					[
-						'module'	=> $module,
-						'action'	=> 'AdminExport',
-						'parent_id' => $parent_id,
-						'inactive'  => $inactive,
-						'format'	=> 'csv',
-					]
-				)) ?>">csv
+				<a class="dropdown-item" href="<?= e(route('admin-module', ['module'	=> 'openstreetmap', 'action'	=> 'AdminExport', 'parent_id' => $parent_id, 'format' => 'csv'])) ?>">
+                    csv
 				</a>
-				<a class="dropdown-item" href="<?=
-				e(route('admin-module',
-					[
-						'module'	=> $module,
-						'action'	=> 'AdminExport',
-						'parent_id' => $parent_id,
-						'inactive'  => $inactive,
-						'format'	=> 'geojson',
-					]
-				)) ?>">geoJSON
+				<a class="dropdown-item" href="<?= e(route('admin-module', ['module'	=> 'openstreetmap', 'action'	=> 'AdminExport', 'parent_id' => $parent_id, 'format' => 'geojson']
+				)) ?>">
+                    geoJSON
 				</a>
 			</div>
 			<a class="btn btn-primary" href="<?=
-			e(route('admin-module',
-				[
-					'module'	=> $module,
-					'action'	=> 'AdminImportForm',
-					'parent_id' => $parent_id,
-					'inactive'  => $inactive,
-				]
-			)) ?>">
+			e(route('admin-module', ['module'	=> 'openstreetmap', 'action'	=> 'AdminImportForm', 'parent_id' => $parent_id])) ?>">
 				<?= FontAwesome::decorativeIcon('upload') ?>
 				<?= /* I18N: A button label. */
 				I18N::translate('import file') ?>
@@ -193,7 +104,7 @@
 </table>
 
 <form method="POST" action="<?= e(route('admin-module',[
-		'module' => $module,
+		'module' => 'openstreetmap',
 		'action' => 'AdminImportPlaces'
 	])) ?>">
 	<?= csrf_field() ?>

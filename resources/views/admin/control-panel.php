@@ -473,7 +473,7 @@
 				<ul class="fa-ul">
 					<li>
 						<span class="fa-li"><i class="fas fa-map-marker-alt"></i></span>
-						<a href="#">
+						<a href="<?= e(route('map-data')) ?>">
 							<?= I18N::translate('Geographic data') ?>
 						</a>
 					</li>
@@ -483,7 +483,7 @@
 				<ul class="fa-ul">
 					<li>
 						<span class="fa-li"><i class="far fa-map"></i></span>
-						<a href="#">
+						<a href="<?= e(route('map-provider')) ?>">
 							<?= I18N::translate('Map provider') ?>
 						</a>
 					</li>
