@@ -112,6 +112,10 @@ if (Auth::isAdmin()) {
         'GET:map-data-edit'                   => 'AdminLocationController@mapDataEdit',
         'POST:map-data-edit'                  => 'AdminLocationController@mapDataSave',
         'POST:map-data-delete'                => 'AdminLocationController@mapDataDelete',
+        'GET:locations-export'                => 'AdminLocationController@exportLocations',
+        'GET:locations-import'                => 'AdminLocationController@importLocations',
+        'POST:locations-import'               => 'AdminLocationController@importLocationsAction',
+        'POST:locations-import-from-tree'     => 'AdminLocationController@importLocationsFromTree',
     ];
 }
 

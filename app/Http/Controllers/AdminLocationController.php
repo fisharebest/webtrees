@@ -24,10 +24,14 @@ use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Location;
 use Fisharebest\Webtrees\Place;
+use Fisharebest\Webtrees\Tree;
 use stdClass;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 /**
  * Controller for maintaining geographic data.
@@ -214,15 +218,469 @@ class AdminLocationController extends AbstractBaseController
             ->fetchOne();
 
         if ($children === 0) {
-            $row       = Database::prepare('SELECT pl_parent_id FROM `##placelocation` WHERE pl_id = :parent_id')
-                ->execute(['parent_id' => $parent_id])
-                ->fetchOneRow();
+            $row = Database::prepare(
+                "SELECT pl_parent_id FROM `##placelocation` WHERE pl_id = :parent_id"
+            )->execute([
+                'parent_id' => $parent_id,
+            ])->fetchOneRow();
+
             $parent_id = $row->pl_parent_id;
         }
 
         $url = route('map-data', ['parent_id' => $parent_id]);
 
         return new RedirectResponse($url);
+    }
+
+    /**
+     * @param Request $request
+     *
+     * @return Response
+     */
+    public function exportLocations(Request $request): Response {
+        $parent_id = (int)$request->get('parent_id');
+        $format    = $request->get('format');
+        $maxlevel  = (int) Database::prepare("SELECT max(pl_level) FROM `##placelocation`")->execute()->fetchOne();
+        $startfqpn = [];
+        $hierarchy = $this->gethierarchy($parent_id);
+        $geojson   = [];
+
+        // Create the file name
+        $place_name = empty($hierarchy) ? 'Global' : $hierarchy[0]->fqpn; // $hierarchy[0] always holds the full placename
+        $place_name = str_replace(Place::GEDCOM_SEPARATOR, '-', $place_name);
+        $filename   = 'Places-' . preg_replace('/[^a-zA-Z0-9\-\.]/', '', $place_name);
+
+        // Fill in the place names for the starting conditions
+        foreach ($hierarchy as $level => $record) {
+            $startfqpn[$level] = $record->pl_place;
+        }
+        $startfqpn = array_pad($startfqpn, $maxlevel + 1, '');
+
+        // Generate an array containing the data to output
+        $places = [];
+        $this->buildLevel($parent_id, $startfqpn, $places);
+
+        // Clean up co-ordinates
+        $places = array_map(function ($place) {
+            $place['pl_long'] = (float) strtr($place['pl_long'] ?? '0', ['E' => '', 'W' => '-', ',' => '.']);
+            $place['pl_lati'] = (float) strtr($place['pl_lati'] ?? '0', ['N' => '', 'S' => '-', ',' => '.']);
+
+            return $place;
+        }, $places);
+
+        $places = array_filter($places, function(array $place) {
+            return $place['pl_long'] !== 0 && $place['pl_lati'] !== 0;
+        });
+
+        if ($format === 'csv') {
+            // Create the header line for the output file (always English)
+            $header[] = I18N::translate('Level');
+            for ($i = 0; $i <= $maxlevel; $i++) {
+                $header[] = 'Place' . $i;
+            }
+            $header[] = 'Longitude';
+            $header[] = 'Latitude';
+            $header[] = 'Zoom';
+            $header[] = 'Icon';
+
+            return $this->exportCSV($filename . '.csv', $header, $places);
+        } else {
+            return $this->exportGeoJSON($filename . '.geojson', $places, $maxlevel);
+        }
+    }
+
+    /**
+     * @param Request $request
+     *
+     * @return Response
+     */
+    public function importLocations(Request $request): Response
+    {
+        $parent_id   = (int) $request->get('parent_id');
+
+        $files = array_merge(
+            glob(WT_DATA_DIR . 'places/*.csv'),
+            glob(WT_DATA_DIR . 'places/*.geojson')
+        );
+
+        asort($files);
+
+        return $this->viewResponse('admin/map-import-form', [
+            'title'       => I18N::translate('Import geographic data'),
+            'parent_id'   => $parent_id,
+            'files'       => $files,
+        ]);
+    }
+
+    /**
+     * This function assumes the input file layout is
+     * level followed by a variable number of placename fields
+     * followed by Longitude, Latitude, Zoom & Icon
+     *
+     * @param Request $request
+     *
+     * @return RedirectResponse
+     * @throws Exception
+     */
+    public function importLocationsAction(Request $request): RedirectResponse
+    {
+        $serverfile  = $request->get('serverfile');
+        $options     = $request->get('import-options');
+        $parent_id   = $request->get('parent_id');
+
+        $filename    = '';
+        $places      = [];
+        $input_array = [];
+        $fields      = 0;
+        $delimiter   = '';
+        $field_names = [
+            'pl_level',
+            'pl_long',
+            'pl_lati',
+            'pl_zoom',
+            'pl_icon',
+            'fqpn',
+        ];
+
+        if ($serverfile !== '') {  // first choice is file on server
+            $filename = WT_DATA_DIR . 'places/' . $serverfile;
+        } elseif ($_FILES['localfile']['error'] === UPLOAD_ERR_OK) { // 2nd choice is local file
+            $filename = $_FILES['localfile']['tmp_name'];
+        }
+
+        if (is_file($filename)) {
+            $string   = file_get_contents($filename);
+
+            // Check the filetype
+            if (stripos($string, 'FeatureCollection') !== false) {
+                $input_array = json_decode($string);
+                foreach ($input_array->features as $feature) {
+                    $places[] = array_combine(
+                        $field_names,
+                        [
+                            isset($feature->properties->level) ? $feature->properties->level : substr_count(
+                                $feature->properties->name,
+                                ','
+                            ),
+                            ($feature->geometry->coordinates[0] < 0 ? 'W' : 'E') . abs(
+                                $feature->geometry->coordinates[0]
+                            ),
+                            ($feature->geometry->coordinates[1] < 0 ? 'S' : 'N') . abs(
+                                $feature->geometry->coordinates[1]
+                            ),
+                            isset($feature->properties->zoom) ? $feature->properties->zoom : null,
+                            isset($feature->properties->icon) ? $feature->properties->icon : null,
+                            $feature->properties->name,
+                        ]
+                    );
+                }
+            } else {
+                $fp = fopen($filename, 'r');
+                while (($row = fgetcsv($fp)) !== false) {
+                    if ($row[0] === 'Level') {
+                        continue;
+                    }
+
+                    $fields = count($row);
+
+                    // convert separate place fields into a comma separated placename
+                    $fqdn = implode(Place::GEDCOM_SEPARATOR, array_filter(array_reverse(array_slice($row, 1, $fields - 5))));
+
+                    $places[] = [
+                        'pl_level' => $row[0],
+                        'pl_long'  => $row[$fields-3],
+                        'pl_lati'  => $row[$fields-4],
+                        'pl_zoom'  => $row[$fields-2],
+                        'pl_icon'  => $row[$fields-1],
+                        'fqpn'     => $fqdn,
+                    ];
+                }
+            }
+
+            if ((bool) $request->get('cleardatabase')) {
+                Database::exec("DELETE FROM `##placelocation`");
+            }
+
+            //process places
+            $added   = 0;
+            $updated = 0;
+
+            //sort places by level
+            usort(
+                $places,
+                function (array $a, array $b) {
+                    if ((int)$a['pl_level'] === (int)$b['pl_level']) {
+                        return I18N::strcasecmp($a['fqpn'], $b['fqpn']);
+                    } else {
+                        return (int)$a['pl_level'] - (int)$b['pl_level'];
+                    }
+                }
+            );
+
+            foreach ($places as $place) {
+                $location = new Location($place['fqpn']);
+                $valid    = $location->isValid();
+
+                // can't match data type here because default table values are null
+                // but csv file return empty string
+                if ($valid && $options !== 'add' && (
+                    $place['pl_level'] != $location->getLevel() ||
+                    $place['pl_long'] != $location->getLon('DMS+') ||
+                    $place['pl_lati'] != $location->getLat('DMS+') ||
+                    $place['pl_zoom'] != $location->getZoom() ||
+                    $place['pl_icon'] != $location->getIcon()
+                )) {
+
+                    // overwrite
+                    $location->update((object) $place);
+                    $updated++;
+                } elseif (!$valid && $options !== 'update') {
+                    //add
+                    $place_parts = explode(Place::GEDCOM_SEPARATOR, $place['fqpn']);
+                    // work throught the place parts starting at level 0,
+                    // looking for a record in the database, if not found then add it
+                    $parent_id = 0;
+                    for ($i = count($place_parts) - 1; $i >= 0; $i--) {
+                        $new_parts    = array_slice($place_parts, $i);
+                        $new_fqpn     = implode(Place::GEDCOM_SEPARATOR, $new_parts);
+                        $new_location = new Location($new_fqpn,
+                            [
+                                'fqpn'         => $new_fqpn,
+                                'pl_id'        => 0,
+                                'pl_parent_id' => $parent_id,
+                                'pl_level'     => count($new_parts) - 1,
+                                'pl_place'     => $new_parts[0],
+                                'pl_long'      => $i === 0 ? $place['pl_long'] : null,
+                                'pl_lati'      => $i === 0 ? $place['pl_lati'] : null,
+                                'pl_zoom'      => $i === 0 ? $place['pl_zoom'] : null,
+                                'pl_icon'      => $i === 0 ? $place['pl_icon'] : null,
+                            ]
+                        );
+
+                        if ($new_location->isValid()) {
+                            $parent_id = $new_location->getId();
+                        } else {
+                            $parent_id = $new_location->add();
+                            $added++;
+                        }
+                    }
+                }
+            }
+            FlashMessages::addMessage(
+                I18N::translate('locations updated: %s, locations added: %s', I18N::number($updated), I18N::number($added)),
+                $added + $updated === 0 ? 'info' : 'success'
+            );
+        } else {
+            throw new Exception('Unable to open file: %s', $filename);
+        }
+
+        $url = route('map-data', ['parent_id' => $parent_id])
+;
+        return new RedirectResponse($url);
+    }
+
+    /**
+     * @param Request $request
+     *
+     * @return RedirectResponse
+     */
+    public function importLocationsFromTree(Request $request): RedirectResponse {
+        /** @var Tree $tree */
+        $tree = $request->attributes->get('tree');
+
+        // Get all the places from the places table ...
+        $places = Database::prepare(
+            "SELECT
+            CONCAT_WS(',', t1.p_place, t2.p_place, t3.p_place, t4.p_place, t5.p_place, t6.p_place, t7.p_place, t8.p_place, t9.p_place)
+            FROM `##places` t1
+            LEFT JOIN `##places` t2 ON t1.p_parent_id = t2.p_id
+            LEFT JOIN `##places` t3 ON t2.p_parent_id = t3.p_id
+            LEFT JOIN `##places` t4 ON t3.p_parent_id = t4.p_id
+            LEFT JOIN `##places` t5 ON t4.p_parent_id = t5.p_id
+            LEFT JOIN `##places` t6 ON t5.p_parent_id = t6.p_id
+            LEFT JOIN `##places` t7 ON t6.p_parent_id = t7.p_id
+            LEFT JOIN `##places` t8 ON t7.p_parent_id = t8.p_id
+            LEFT JOIN `##places` t9 ON t8.p_parent_id = t9.p_id
+            WHERE t1.p_file = :gedcom"
+        )->execute([
+            'gedcom' => $tree->getTreeId(),
+        ])->fetchOneColumn();
+
+        // ... and the placelocation table
+        $locations = Database::prepare(
+            "SELECT t1.pl_id, CONCAT_WS(',', t1.pl_place, t2.pl_place, t3.pl_place, t4.pl_place, t5.pl_place, t6.pl_place, t7.pl_place, t8.pl_place, t9.pl_place)
+            FROM `##placelocation` AS t1
+            LEFT JOIN `##placelocation` AS t2 ON t1.pl_parent_id = t2.pl_id
+            LEFT JOIN `##placelocation` AS t3 ON t2.pl_parent_id = t3.pl_id
+            LEFT JOIN `##placelocation` AS t4 ON t3.pl_parent_id = t4.pl_id
+            LEFT JOIN `##placelocation` AS t5 ON t4.pl_parent_id = t5.pl_id
+            LEFT JOIN `##placelocation` AS t6 ON t5.pl_parent_id = t6.pl_id
+            LEFT JOIN `##placelocation` AS t7 ON t6.pl_parent_id = t7.pl_id
+            LEFT JOIN `##placelocation` AS t8 ON t7.pl_parent_id = t8.pl_id
+            LEFT JOIN `##placelocation` AS t9 ON t8.pl_parent_id = t9.pl_id"
+        )->fetchAssoc();
+
+        // Compare the two ...
+        $diff = array_diff($places, $locations);
+
+        // ... and process the differences
+        $inserted = 0;
+        if (!empty($diff)) {
+            $nextRecordId    = Database::prepare("SELECT MAX(pl_id) FROM `##placelocation`")->fetchOne() + 1;
+            $insertRecordQry = Database::prepare(
+                "INSERT INTO `##placelocation` (pl_id, pl_parent_id, pl_level, pl_place)" .
+                " VALUES (:id, :parent, :level, :place)"
+            );
+            $checkRecordQry  = Database::prepare(
+                "SELECT pl1.pl_id" .
+                " FROM	  `##placelocation` AS pl1" .
+                " LEFT JOIN `##placelocation` AS pl2 ON (pl1.pl_parent_id = pl2.pl_id)" .
+                " LEFT JOIN `##placelocation` AS pl3 ON (pl2.pl_parent_id = pl3.pl_id)" .
+                " LEFT JOIN `##placelocation` AS pl4 ON (pl3.pl_parent_id = pl4.pl_id)" .
+                " LEFT JOIN `##placelocation` AS pl5 ON (pl4.pl_parent_id = pl5.pl_id)" .
+                " LEFT JOIN `##placelocation` AS pl6 ON (pl5.pl_parent_id = pl6.pl_id)" .
+                " LEFT JOIN `##placelocation` AS pl7 ON (pl6.pl_parent_id = pl7.pl_id)" .
+                " LEFT JOIN `##placelocation` AS pl8 ON (pl7.pl_parent_id = pl8.pl_id)" .
+                " LEFT JOIN `##placelocation` AS pl9 ON (pl8.pl_parent_id = pl9.pl_id)" .
+                " WHERE CONCAT_WS(',', pl1.pl_place, pl2.pl_place, pl3.pl_place, pl4.pl_place, pl5.pl_place, pl6.pl_place, pl7.pl_place, pl8.pl_place, pl9.pl_place) = :f1"
+            );
+
+            foreach ($diff as $place) {
+                // For Westminster, London, England, we must also create England and London, England
+                $place_parts = explode(',', $place);
+                $count = count($place_parts);
+
+                $parent_id = 0;
+                for ($i = $count - 1; $i >= 0; $i--) {
+                    $parent   = implode(',', array_slice($place_parts, $i));
+                    $place_id = array_search($parent, $locations);
+
+                    if ($place_id === false) {
+                        $insertRecordQry->execute([
+                            'id'     => $nextRecordId,
+                            'parent' => $parent_id,
+                            'level'  => $count - $i,
+                            'place'  => $place_parts[$i],
+                        ]);
+                        $parent_id = $nextRecordId;
+                        $locations[$parent_id] = $parent;
+                        $inserted++;
+                        $nextRecordId++;
+                    } else {
+                        $parent_id = $place_id;
+                    }
+                }
+            }
+        }
+
+        FlashMessages::addMessage(I18N::plural('%s location has been imported.', '%s locations have been imported.' , $inserted, I18N::number($inserted)),  'success');
+
+        $url = route('map-data');
+
+        return new RedirectResponse($url);
+    }
+
+    /**
+     * @param string $filename
+     *
+     * @param string[]   $columns
+     * @param string[][] $places
+     *
+     * @return Response
+     */
+    private function exportCSV(string $filename, array $columns, array $places): Response {
+        $response = new StreamedResponse(function () use ($columns, $places) {
+            $stream = fopen('php://output', 'w');
+
+            fputcsv($stream, $columns);
+            foreach ($places as $place) {
+                fputcsv($stream, $place);
+            }
+
+            fclose($stream);
+        });
+
+
+        $disposition = $response->headers->makeDisposition(
+            ResponseHeaderBag::DISPOSITION_ATTACHMENT, $filename
+        );
+        $response->headers->set('Content-Disposition', $disposition);
+        $response->headers->set('Content-Type', 'text/csv; charset=UTF-8');
+
+        return $response;
+    }
+
+    /**
+     * @param string $filename
+     *
+     * @return Response
+     */
+    private function exportGeoJSON(string $filename, array $rows, int $maxlevel): Response {
+        $geojson = [
+            'type'     => 'FeatureCollection',
+            'features' => [],
+        ];
+        foreach ($rows as $place) {
+            $fqpn = implode(
+                Place::GEDCOM_SEPARATOR,
+                array_reverse(
+                    array_filter(
+                        array_slice($place, 1, $maxlevel + 1)
+                    )
+                )
+            );
+
+            $geojson['features'][] = [
+                'type'       => 'Feature',
+                'geometry'   => [
+                    'type'        => 'Point',
+                    'coordinates' => [
+                        (float) $place['pl_long'],
+                        (float) $place['pl_lati'],
+                    ],
+                ],
+                'properties' => [
+                    'level' => $place[0],
+                    'name'  => $fqpn,
+                    'zoom'  => $place['pl_zoom'],
+                    'icon'  => $place['pl_icon'],
+                ],
+            ];
+        }
+
+        $response = new JsonResponse($geojson);
+
+        $disposition = $response->headers->makeDisposition(
+            ResponseHeaderBag::DISPOSITION_ATTACHMENT, $filename
+        );
+        $response->headers->set('Content-Disposition', $disposition);
+        $response->headers->set('Content-Type', 'application/vnd.geo+json');
+
+        return $response;
+    }
+
+    /**
+     * @param $parent_id
+     * @param $placename
+     * @param $places
+     *
+     * @throws Exception
+     */
+    private function buildLevel($parent_id, $placename, &$places)
+    {
+        $level = array_search('', $placename);
+        $rows  = (array)Database::prepare(
+            "SELECT pl_level, pl_id, pl_place, pl_long, pl_lati, pl_zoom, pl_icon FROM `##placelocation` WHERE pl_parent_id=? ORDER BY pl_place"
+        )
+            ->execute([$parent_id])
+            ->fetchAll(\PDO::FETCH_ASSOC);
+
+        foreach ($rows as $row) {
+            $index             = $row['pl_id'];
+            $placename[$level] = $row['pl_place'];
+            $places[]          = array_merge([$row['pl_level']], $placename, array_splice($row, 3));
+            $this->buildLevel($index, $placename, $places);
+        }
     }
 
     /**

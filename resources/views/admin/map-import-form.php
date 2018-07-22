@@ -2,18 +2,12 @@
 <?php use Fisharebest\Webtrees\I18N; ?>
 <?php use Fisharebest\Webtrees\View; ?>
 
-<?= view('components/breadcrumbs', ['links' => $breadcrumbs]) ?>
+<?= view('components/breadcrumbs', ['links' => [route('admin-control-panel') => I18N::translate('Control panel'), route('map-data')  => I18N::translate('Geographic data'), $title]]) ?>
 
 <h3><?= $title ?></h3>
-<form id="upload_form" method="post" enctype="multipart/form-data" action="<?=
-    e(route('admin-module',[
-        'module' => $module,
-        'action' => 'AdminImport',
-    ])) ?>">
+
+<form id="upload_form" method="post" enctype="multipart/form-data">
 	<?= csrf_field() ?>
-	<input type="hidden" name="parent_id" value="<?= $parent_id ?>">
-	<input type="hidden" name="inactive" value="<?= $inactive ?>">
-	<input type="hidden" name="MAX_FILE_SIZE" value="131072">
 
 	<!-- Server file -->
 	<div class="row form-group">
@@ -24,13 +18,15 @@
 			<div class="input-group" dir="ltr">
 				<div class="input-group-prepend">
 							<span class="input-group-text">
-								<?= WT_MODULES_DIR . $module . '/extra/' ?>
+								<?= WT_DATA_DIR . '/places/' ?>
 							</span>
 				</div>
 				<select id="serverfile" name="serverfile" class="form-control">
-                    <option class='custom-select' selected disabled value=''><?= I18N::translate('choose a file&hellip;') ?></option>
+                    <option selected value=""></option>
                     <?php foreach($files as $file): ?>
-                        <option value="<?= e($file) ?>"><?= $file ?></option>
+                        <option value="<?= e($file) ?>">
+                            <?= e($file) ?>
+                        </option>
                     <?php endforeach ?>
 				</select>
 			</div>

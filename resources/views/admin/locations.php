@@ -84,17 +84,16 @@
 				I18N::translate('export file') ?>
 			</button>
 			<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-				<a class="dropdown-item" href="<?= e(route('admin-module', ['module'	=> 'openstreetmap', 'action'	=> 'AdminExport', 'parent_id' => $parent_id, 'format' => 'csv'])) ?>">
+				<a class="dropdown-item" href="<?= e(route('locations-export', ['parent_id' => $parent_id, 'format' => 'csv'])) ?>">
                     csv
 				</a>
-				<a class="dropdown-item" href="<?= e(route('admin-module', ['module'	=> 'openstreetmap', 'action'	=> 'AdminExport', 'parent_id' => $parent_id, 'format' => 'geojson']
+				<a class="dropdown-item" href="<?= e(route('locations-export', ['parent_id' => $parent_id, 'format' => 'geojson']
 				)) ?>">
                     geoJSON
 				</a>
 			</div>
-			<a class="btn btn-primary" href="<?=
-			e(route('admin-module', ['module'	=> 'openstreetmap', 'action'	=> 'AdminImportForm', 'parent_id' => $parent_id])) ?>">
-				<?= FontAwesome::decorativeIcon('upload') ?>
+			<a class="btn btn-primary" href="<?= e(route('locations-import', ['parent_id' => $parent_id])) ?>">
+                <?= FontAwesome::decorativeIcon('upload') ?>
 				<?= /* I18N: A button label. */
 				I18N::translate('import file') ?>
 			</a>
@@ -103,10 +102,7 @@
 	</tfoot>
 </table>
 
-<form method="POST" action="<?= e(route('admin-module',[
-		'module' => 'openstreetmap',
-		'action' => 'AdminImportPlaces'
-	])) ?>">
+<form method="POST" action="<?= e(route('locations-import-from-tree')) ?>">
 	<?= csrf_field() ?>
 
 	<div class="form-group row">
@@ -122,7 +118,7 @@
 		</div>
 		<div class="col-sm-2">
 			<button type="submit" class="btn btn-primary">
-				<?= FontAwesome::decorativeIcon('add') ?>
+                <?= view('icons/upload') ?>
 				<?= /* I18N: A button label. */
 				I18N::translate('import') ?>
 			</button>
