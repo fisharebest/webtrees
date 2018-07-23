@@ -58,7 +58,7 @@ class ReportParserGenerate extends ReportParserBase
     /** @var int Quantity of data to repeat during loops */
     private $repeat_bytes = 0;
 
-    /** @var array[] Repeated data when iterating over loops */
+    /** @var string[] Repeated data when iterating over loops */
     private $repeats = [];
 
     /** @var array[] Nested repeating data */
@@ -112,7 +112,7 @@ class ReportParserGenerate extends ReportParserBase
     /** @var ReportBase A factory for creating report elements */
     private $report_root;
 
-    /** @var ReportBase Nested report elements */
+    /** @var ReportBaseElement Nested report elements */
     private $wt_report;
 
     /** @var string[][] Variables defined in the report at run-time */
