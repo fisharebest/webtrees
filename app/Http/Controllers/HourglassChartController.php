@@ -186,7 +186,7 @@ class HourglassChartController extends AbstractChartController
      */
     private function printDescendency($individual, $generation, int $generations, bool $show_spouse, bool $show_menu)
     {
-        global $lastGenSecondFam;
+        static $lastGenSecondFam = false;
 
         if ($generation > $generations) {
             return;
@@ -201,7 +201,7 @@ class HourglassChartController extends AbstractChartController
 
         //-- put a space between families on the last generation
         if ($generation == $generations - 1) {
-            if (isset($lastGenSecondFam)) {
+            if ($lastGenSecondFam) {
                 echo '<br>';
             }
             $lastGenSecondFam = true;
