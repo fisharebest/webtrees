@@ -271,11 +271,11 @@ class EditIndividualController extends AbstractEditController
 
         $PEDI = $request->get('PEDI', '');
 
-        global $glevels, $tag, $text, $islink;
-        $glevels = $request->get('glevels', []);
-        $tag     = $request->get('tag', []);
-        $text    = $request->get('text', []);
-        $islink  = $request->get('islink', []);
+        $this->glevels = $request->get('glevels', []);
+        $this->glevels = $request->get('glevels', []);
+        $this->tag     = $request->get('tag', []);
+        $this->text    = $request->get('text', []);
+        $this->islink  = $request->get('islink', []);
 
 
         // Create a family
@@ -374,11 +374,10 @@ class EditIndividualController extends AbstractEditController
 
         $this->checkIndividualAccess($individual, true);
 
-        global $glevels, $tag, $text, $islink;
-        $glevels = $request->get('glevels', []);
-        $tag     = $request->get('tag', []);
-        $text    = $request->get('text', []);
-        $islink  = $request->get('islink', []);
+        $this->glevels = $request->get('glevels', []);
+        $this->tag     = $request->get('tag', []);
+        $this->text    = $request->get('text', []);
+        $this->islink  = $request->get('islink', []);
 
         // Create a new family
         $gedcom = "0 @NEW@ FAM\n1 CHIL @" . $individual->getXref() . '@';
@@ -479,11 +478,10 @@ class EditIndividualController extends AbstractEditController
 
         $sex = $request->get('SEX', 'U');
 
-        global $glevels, $tag, $text, $islink;
-        $glevels = $request->get('glevels', []);
-        $tag     = $request->get('tag', []);
-        $text    = $request->get('text', []);
-        $islink  = $request->get('islink', []);
+        $this->glevels = $request->get('glevels', []);
+        $this->tag     = $request->get('tag', []);
+        $this->text    = $request->get('text', []);
+        $this->islink  = $request->get('islink', []);
 
         $this->splitSource();
         $indi_gedcom = '0 @REF@ INDI';
@@ -571,11 +569,10 @@ class EditIndividualController extends AbstractEditController
 
         $this->checkIndividualAccess($individual, true);
 
-        global $glevels, $tag, $text, $islink;
-        $glevels = $request->get('glevels', []);
-        $tag     = $request->get('tag', []);
-        $text    = $request->get('text', []);
-        $islink  = $request->get('islink', []);
+        $this->glevels = $request->get('glevels', []);
+        $this->tag     = $request->get('tag', []);
+        $this->text    = $request->get('text', []);
+        $this->islink  = $request->get('islink', []);
 
         $this->splitSource();
         $gedrec = '0 @REF@ INDI';

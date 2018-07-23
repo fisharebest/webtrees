@@ -145,11 +145,10 @@ class EditFamilyController extends AbstractEditController
         $PEDI      = $request->get('PEDI', '');
         $keep_chan = (bool)$request->get('keep_chan');
 
-        global $glevels, $tag, $text, $islink;
-        $glevels = $request->get('glevels', []);
-        $tag     = $request->get('tag', []);
-        $text    = $request->get('text', []);
-        $islink  = $request->get('islink', []);
+        $this->glevels = $request->get('glevels', []);
+        $this->tag     = $request->get('tag', []);
+        $this->text    = $request->get('text', []);
+        $this->islink  = $request->get('islink', []);
 
         $this->splitSource();
         $gedrec = '0 @REF@ INDI';
