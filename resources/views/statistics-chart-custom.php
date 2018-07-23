@@ -1,5 +1,6 @@
 <?php use Fisharebest\Webtrees\Bootstrap4; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
+<?php use Fisharebest\Webtrees\Http\Controllers\StatisticsChartController; ?>
 
 <script>
   function statusHide(sel) {
@@ -206,17 +207,17 @@
 		</div>
 		<div class="col-sm-4 wt-page-options-value" id="zyaxes">
 			<label>
-				<input type="radio" id="z_none" name="z-as" value="300" onclick="statusDisable('z-axis-boundaries-periods');">
+				<input type="radio" id="z_none" name="z-as" value="<?= StatisticsChartController::Z_AXIS_NONE ?>" onclick="statusDisable('z-axis-boundaries-periods');">
 				<?= I18N::translate('overall') ?>
 			</label>
 			<br>
 			<label>
-				<input type="radio" id="z_sex" name="z-as" value="301" onclick="statusDisable('z-axis-boundaries-periods');">
+				<input type="radio" id="z_sex" name="z-as" value="<?= StatisticsChartController::Z_AXIS_SEX ?>" onclick="statusDisable('z-axis-boundaries-periods');">
 				<?= I18N::translate('gender') ?>
 			</label>
 			<br>
 			<label>
-				<input type="radio" id="z_time" name="z-as" value="302" checked onclick="statusEnable('z-axis-boundaries-periods');">
+				<input type="radio" id="z_time" name="z-as" value="<?= StatisticsChartController::Z_AXIS_TIME ?>" checked onclick="statusEnable('z-axis-boundaries-periods');">
 				<?= I18N::translate('date periods') ?>
 			</label>
 			<br>
@@ -251,12 +252,12 @@
 			<?= I18N::translate('Results') ?>
 			<br>
 			<label>
-				<input type="radio" name="y-as" value="201" checked>
+				<input type="radio" name="y-as" value="<?= StatisticsChartController::Y_AXIS_NUMBERS ?>" checked>
 				<?= I18N::translate('numbers') ?>
 			</label>
 			<br>
 			<label>
-				<input type="radio" name="y-as" value="202">
+				<input type="radio" name="y-as" value="<?= StatisticsChartController::Y_AXIS_PERCENT ?>">
 				<?= I18N::translate('percentage') ?>
 			</label>
 			<br>

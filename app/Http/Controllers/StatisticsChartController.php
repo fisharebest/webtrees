@@ -32,20 +32,14 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
  */
 class StatisticsChartController extends AbstractChartController
 {
-    const MONTHS = [
-        'JAN',
-        'FEB',
-        'MAR',
-        'APR',
-        'MAY',
-        'JUN',
-        'JUL',
-        'AUG',
-        'SEP',
-        'OCT',
-        'NOV',
-        'DEC',
-    ];
+    const Y_AXIS_NUMBERS = 201;
+    const Y_AXIS_PERCENT = 202;
+
+    const Z_AXIS_NONE = 300;
+    const Z_AXIS_SEX  = 301;
+    const Z_AXIS_TIME = 302;
+
+    const MONTHS = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
 
     /**
      * A form to request the chart parameters.
@@ -158,11 +152,11 @@ class StatisticsChartController extends AbstractChartController
 
         // @TODO - convert to views and remove globals
         ob_start();
-        global $legend, $xdata, $ydata, $xmax, $zmax, $z_boundaries;
+        global $legend, $xdata, $ydata, $xmax, $z_boundaries;
 
-        $x_axis       = (int)$request->get('x-as');
-        $y_axis       = (int)$request->get('y-as');
-        $z_axis       = (int)$request->get('z-as');
+        $x_axis       = (int) $request->get('x-as');
+        $y_axis       = (int) $request->get('y-as');
+        $z_axis       = (int) $request->get('z-as');
         $stats        = new Stats($tree);
         $z_boundaries = [];
         $legend       = [];
@@ -198,94 +192,68 @@ class StatisticsChartController extends AbstractChartController
                 for ($i = 0; $i < 12; ++$i) {
                     $monthdata[$i] = GregorianDate::monthNameNominativeCase($i + 1, false);
                 }
-                $xgiven            = true;
-                $zgiven            = false;
                 $title             = I18N::translate('Month of birth');
                 $xtitle            = I18N::translate('Month');
                 $ytitle            = I18N::translate('numbers');
                 $boundaries_z_axis = $request->get('z-axis-boundaries-periods');
                 $xdata             = $monthdata;
                 $xmax              = 12;
-                if ($z_axis !== 300 && $z_axis !== 301) {
-                    $this->calculateLegend($boundaries_z_axis);
-                }
-                $percentage = false;
-                if ($y_axis === 201) {
-                    $percentage = false;
-                    $ytitle     = I18N::translate('Individuals');
-                } elseif ($y_axis === 202) {
-                    $percentage = true;
-                    $ytitle     = I18N::translate('percentage');
-                }
-                $male_female = false;
-                if ($z_axis === 300) {
-                    $zgiven          = false;
-                    $legend[0]       = 'all';
-                    $zmax            = 1;
-                    $z_boundaries[0] = 100000;
-                } elseif ($z_axis === 301) {
-                    $male_female = true;
-                    $zgiven      = true;
-                    $legend[0]   = I18N::translate('Male');
-                    $legend[1]   = I18N::translate('Female');
-                    $zmax        = 2;
-                }
-                //-- reset the data array
-                for ($i = 0; $i < $zmax; $i++) {
-                    for ($j = 0; $j < $xmax; $j++) {
-                        $ydata[$i][$j] = 0;
-                    }
-                }
-                $this->monthOfBirth($z_axis, $z_boundaries, $stats, $xgiven, $zgiven);
 
-                return new Response($this->myPlot($title, $xdata, $xtitle, $ydata, $ytitle, $legend, $male_female, $percentage));
+                if ($y_axis === self::Y_AXIS_NUMBERS) {
+                    $ytitle = I18N::translate('Individuals');
+                } elseif ($y_axis === self::Y_AXIS_PERCENT) {
+                    $ytitle = I18N::translate('percentage');
+                }
+
+                if ($z_axis === self::Z_AXIS_NONE) {
+                    $legend          = [I18N::translate(I18N::translate('All'))];
+                    $z_boundaries[0] = 100000;
+                } elseif ($z_axis === self::Z_AXIS_SEX) {
+                    $legend = [I18N::translate('Male'), I18N::translate('Female')];
+                } elseif ($z_axis === self::Z_AXIS_TIME) {
+                    $legend = $this->calculateLegend($boundaries_z_axis);
+                }
+
+                // Initialise the counts to zero.
+                $ydata = array_fill(0, count($legend), array_fill(0, $xmax, 0));
+
+                $this->monthOfBirth($z_axis, $z_boundaries, $stats, $z_axis === self::Z_AXIS_SEX);
+
+                return new Response($this->myPlot($title, $xdata, $xtitle, $ydata, $ytitle, $legend, $y_axis, $z_axis));
 
             case '12':
                 $monthdata = [];
                 for ($i = 0; $i < 12; ++$i) {
                     $monthdata[$i] = GregorianDate::monthNameNominativeCase($i + 1, false);
                 }
-                $xgiven            = true;
-                $zgiven            = false;
                 $title             = I18N::translate('Month of death');
                 $xtitle            = I18N::translate('Month');
                 $ytitle            = I18N::translate('numbers');
                 $boundaries_z_axis = $request->get('z-axis-boundaries-periods');
                 $xdata             = $monthdata;
                 $xmax              = 12;
-                if ($z_axis !== 300 && $z_axis !== 301) {
-                    $this->calculateLegend($boundaries_z_axis);
-                }
-                $percentage = false;
-                if ($y_axis === 201) {
-                    $percentage = false;
-                    $ytitle     = I18N::translate('Individuals');
-                } elseif ($y_axis === 202) {
-                    $percentage = true;
-                    $ytitle     = I18N::translate('percentage');
-                }
-                $male_female = false;
-                if ($z_axis === 300) {
-                    $zgiven          = false;
-                    $legend[0]       = 'all';
-                    $zmax            = 1;
-                    $z_boundaries[0] = 100000;
-                } elseif ($z_axis === 301) {
-                    $male_female = true;
-                    $zgiven      = true;
-                    $legend[0]   = I18N::translate('Male');
-                    $legend[1]   = I18N::translate('Female');
-                    $zmax        = 2;
-                }
-                //-- reset the data array
-                for ($i = 0; $i < $zmax; $i++) {
-                    for ($j = 0; $j < $xmax; $j++) {
-                        $ydata[$i][$j] = 0;
-                    }
-                }
-                $this->monthOfDeath($z_axis, $z_boundaries, $stats, $xgiven, $zgiven);
 
-                return new Response($this->myPlot($title, $xdata, $xtitle, $ydata, $ytitle, $legend, $male_female, $percentage));
+                if ($y_axis === self::Y_AXIS_NUMBERS) {
+                    $ytitle = I18N::translate('Individuals');
+                } elseif ($y_axis === self::Y_AXIS_PERCENT) {
+                    $ytitle = I18N::translate('percentage');
+                }
+
+                if ($z_axis === self::Z_AXIS_NONE) {
+                    $legend          = [I18N::translate(I18N::translate('All'))];
+                    $z_boundaries[0] = 100000;
+                } elseif ($z_axis === self::Z_AXIS_SEX) {
+                    $legend = [I18N::translate('Male'), I18N::translate('Female')];
+                } elseif ($z_axis === self::Z_AXIS_TIME) {
+                    $legend = $this->calculateLegend($boundaries_z_axis);
+                }
+
+                // Initialise the counts to zero.
+                $ydata = array_fill(0, count($legend), array_fill(0, $xmax, 0));
+
+                $this->monthOfDeath($z_axis, $z_boundaries, $stats, $z_axis === self::Z_AXIS_SEX);
+
+                return new Response($this->myPlot($title, $xdata, $xtitle, $ydata, $ytitle, $legend, $y_axis, $z_axis));
 
             case '13':
                 $monthdata = [];
@@ -293,97 +261,69 @@ class StatisticsChartController extends AbstractChartController
                     $monthdata[$i] = GregorianDate::monthNameNominativeCase($i + 1, false);
                 }
 
-                if ($z_axis === 301) {
-                    $z_axis = 300;
-                }
-                $xgiven            = true;
-                $zgiven            = false;
                 $title             = I18N::translate('Month of marriage');
                 $xtitle            = I18N::translate('Month');
                 $ytitle            = I18N::translate('numbers');
                 $boundaries_z_axis = $request->get('z-axis-boundaries-periods');
                 $xdata             = $monthdata;
                 $xmax              = 12;
-                if ($z_axis !== 300 && $z_axis !== 301) {
-                    $this->calculateLegend($boundaries_z_axis);
-                }
-                $percentage = false;
-                if ($y_axis === 201) {
-                    $percentage = false;
-                    $ytitle     = I18N::translate('Families');
-                } elseif ($y_axis === 202) {
-                    $percentage = true;
-                    $ytitle     = I18N::translate('percentage');
-                }
-                $male_female = false;
-                if ($z_axis === 300) {
-                    $zgiven          = false;
-                    $legend[0]       = 'all';
-                    $zmax            = 1;
-                    $z_boundaries[0] = 100000;
-                } elseif ($z_axis === 301) {
-                    $male_female = true;
-                    $zgiven      = true;
-                    $legend[0]   = I18N::translate('Male');
-                    $legend[1]   = I18N::translate('Female');
-                    $zmax        = 2;
-                }
-                //-- reset the data array
-                for ($i = 0; $i < $zmax; $i++) {
-                    for ($j = 0; $j < $xmax; $j++) {
-                        $ydata[$i][$j] = 0;
-                    }
-                }
-                $this->monthOfMarriage($z_axis, $z_boundaries, $stats, $xgiven, $zgiven);
 
-                return new Response($this->myPlot($title, $xdata, $xtitle, $ydata, $ytitle, $legend, $male_female, $percentage));
+                if ($y_axis === self::Y_AXIS_NUMBERS) {
+                    $ytitle = I18N::translate('Families');
+                } elseif ($y_axis === self::Y_AXIS_PERCENT) {
+                    $ytitle = I18N::translate('percentage');
+                }
+
+                if ($z_axis === self::Z_AXIS_NONE) {
+                    $legend          = [I18N::translate(I18N::translate('All'))];
+                    $z_boundaries[0] = 100000;
+                } elseif ($z_axis === self::Z_AXIS_SEX) {
+                    // This option is not used - it will be the same for male/female.
+                    $legend = [I18N::translate('Male'), I18N::translate('Female')];
+                } elseif ($z_axis === self::Z_AXIS_TIME) {
+                    $legend = $this->calculateLegend($boundaries_z_axis);
+                }
+
+                // Initialise the counts to zero.
+                $ydata = array_fill(0, count($legend), array_fill(0, $xmax, 0));
+
+                $this->monthOfMarriage($z_axis, $z_boundaries, $stats, $z_axis === self::Z_AXIS_SEX);
+
+                return new Response($this->myPlot($title, $xdata, $xtitle, $ydata, $ytitle, $legend, $y_axis, $z_axis));
 
             case '14':
                 $monthdata = [];
                 for ($i = 0; $i < 12; ++$i) {
                     $monthdata[$i] = GregorianDate::monthNameNominativeCase($i + 1, false);
                 }
-                $xgiven            = true;
-                $zgiven            = false;
                 $title             = I18N::translate('Month of birth of first child in a relation');
                 $xtitle            = I18N::translate('Month');
                 $ytitle            = I18N::translate('numbers');
                 $boundaries_z_axis = $request->get('z-axis-boundaries-periods');
                 $xdata             = $monthdata;
                 $xmax              = 12;
-                if ($z_axis !== 300 && $z_axis !== 301) {
-                    $this->calculateLegend($boundaries_z_axis);
-                }
-                $percentage = false;
-                if ($y_axis === 201) {
-                    $percentage = false;
-                    $ytitle     = I18N::translate('Children');
-                } elseif ($y_axis === 202) {
-                    $percentage = true;
-                    $ytitle     = I18N::translate('percentage');
-                }
-                $male_female = false;
-                if ($z_axis === 300) {
-                    $zgiven          = false;
-                    $legend[0]       = 'all';
-                    $zmax            = 1;
-                    $z_boundaries[0] = 100000;
-                } elseif ($z_axis === 301) {
-                    $male_female = true;
-                    $zgiven      = true;
-                    $legend[0]   = I18N::translate('Male');
-                    $legend[1]   = I18N::translate('Female');
-                    $zmax        = 2;
-                }
-                //-- reset the data array
-                for ($i = 0; $i < $zmax; $i++) {
-                    for ($j = 0; $j < $xmax; $j++) {
-                        $ydata[$i][$j] = 0;
-                    }
-                }
-                $this->monthOfBirthOfFirstChild($z_axis, $z_boundaries, $stats, $xgiven, $zgiven);
 
-                return new Response($this->myPlot($title, $xdata, $xtitle, $ydata, $ytitle, $legend, $male_female, $percentage));
+                if ($y_axis === self::Y_AXIS_NUMBERS) {
+                    $ytitle = I18N::translate('Children');
+                } elseif ($y_axis === self::Y_AXIS_PERCENT) {
+                    $ytitle = I18N::translate('percentage');
+                }
+
+                if ($z_axis === self::Z_AXIS_NONE) {
+                    $legend          = [I18N::translate(I18N::translate('All'))];
+                    $z_boundaries[0] = 100000;
+                } elseif ($z_axis === self::Z_AXIS_SEX) {
+                    $legend = [I18N::translate('Male'), I18N::translate('Female')];
+                } elseif ($z_axis === self::Z_AXIS_TIME) {
+                    $legend = $this->calculateLegend($boundaries_z_axis);
+                }
+
+                // Initialise the counts to zero.
+                $ydata = array_fill(0, count($legend), array_fill(0, $xmax, 0));
+
+                $this->monthOfBirthOfFirstChild($z_axis, $z_boundaries, $stats, $z_axis === self::Z_AXIS_SEX);
+
+                return new Response($this->myPlot($title, $xdata, $xtitle, $ydata, $ytitle, $legend, $y_axis, $z_axis));
 
             case '15':
                 $monthdata = [];
@@ -391,54 +331,37 @@ class StatisticsChartController extends AbstractChartController
                     $monthdata[$i] = GregorianDate::monthNameNominativeCase($i + 1, false);
                 }
 
-                if ($z_axis === 301) {
-                    $z_axis = 300;
-                }
-                $xgiven            = true;
-                $zgiven            = false;
                 $title             = I18N::translate('Month of first marriage');
                 $xtitle            = I18N::translate('Month');
                 $ytitle            = I18N::translate('numbers');
                 $boundaries_z_axis = $request->get('z-axis-boundaries-periods');
                 $xdata             = $monthdata;
                 $xmax              = 12;
-                if ($z_axis !== 300 && $z_axis !== 301) {
-                    $this->calculateLegend($boundaries_z_axis);
-                }
-                $percentage = false;
-                if ($y_axis === 201) {
-                    $percentage = false;
-                    $ytitle     = I18N::translate('Families');
-                } elseif ($y_axis === 202) {
-                    $percentage = true;
-                    $ytitle     = I18N::translate('percentage');
-                }
-                $male_female = false;
-                if ($z_axis === 300) {
-                    $zgiven          = false;
-                    $legend[0]       = 'all';
-                    $zmax            = 1;
-                    $z_boundaries[0] = 100000;
-                } elseif ($z_axis === 301) {
-                    $male_female = true;
-                    $zgiven      = true;
-                    $legend[0]   = I18N::translate('Male');
-                    $legend[1]   = I18N::translate('Female');
-                    $zmax        = 2;
-                }
-                //-- reset the data array
-                for ($i = 0; $i < $zmax; $i++) {
-                    for ($j = 0; $j < $xmax; $j++) {
-                        $ydata[$i][$j] = 0;
-                    }
-                }
-                $this->monthOfFirstMarriage($z_axis, $z_boundaries, $stats, $xgiven, $zgiven);
 
-                return new Response($this->myPlot($title, $xdata, $xtitle, $ydata, $ytitle, $legend, $male_female, $percentage));
+                if ($y_axis === self::Y_AXIS_NUMBERS) {
+                    $ytitle = I18N::translate('Families');
+                } elseif ($y_axis === self::Y_AXIS_PERCENT) {
+                    $ytitle = I18N::translate('percentage');
+                }
+
+                if ($z_axis === self::Z_AXIS_NONE) {
+                    $legend          = [I18N::translate(I18N::translate('All'))];
+                    $z_boundaries[0] = 100000;
+                } elseif ($z_axis === self::Z_AXIS_SEX) {
+                    // This option is not used - it will be the same for male/female.
+                    $legend = [I18N::translate('Male'), I18N::translate('Female')];
+                } elseif ($z_axis === self::Z_AXIS_TIME) {
+                    $legend = $this->calculateLegend($boundaries_z_axis);
+                }
+
+                // Initialise the counts to zero.
+                $ydata = array_fill(0, count($legend), array_fill(0, $xmax, 0));
+
+                $this->monthOfFirstMarriage($z_axis, $z_boundaries, $stats, $z_axis === self::Z_AXIS_SEX);
+
+                return new Response($this->myPlot($title, $xdata, $xtitle, $ydata, $ytitle, $legend, $y_axis, $z_axis));
 
             case '18':
-                $xgiven            = false;
-                $zgiven            = false;
                 $title             = /* I18N: Two axes of a graph */
                     I18N::translate('Longevity versus time');
                 $xtitle            = I18N::translate('age');
@@ -446,168 +369,118 @@ class StatisticsChartController extends AbstractChartController
                 $boundaries_x_axis = $request->get('x-axis-boundaries-ages');
                 $boundaries_z_axis = $request->get('z-axis-boundaries-periods');
                 $this->calculateAxis($boundaries_x_axis);
-                if ($z_axis !== 300 && $z_axis !== 301) {
-                    $this->calculateLegend($boundaries_z_axis);
-                }
-                $percentage = false;
-                if ($y_axis === 201) {
-                    $percentage = false;
-                    $ytitle     = I18N::translate('Individuals');
-                } elseif ($y_axis === 202) {
-                    $percentage = true;
-                    $ytitle     = I18N::translate('percentage');
-                }
-                $male_female = false;
-                if ($z_axis === 300) {
-                    $zgiven          = false;
-                    $legend[0]       = 'all';
-                    $zmax            = 1;
-                    $z_boundaries[0] = 100000;
-                } elseif ($z_axis === 301) {
-                    $male_female = true;
-                    $zgiven      = true;
-                    $legend[0]   = I18N::translate('Male');
-                    $legend[1]   = I18N::translate('Female');
-                    $zmax        = 2;
-                }
-                //-- reset the data array
-                for ($i = 0; $i < $zmax; $i++) {
-                    for ($j = 0; $j < $xmax; $j++) {
-                        $ydata[$i][$j] = 0;
-                    }
-                }
-                $this->longevityVersusTime($z_axis, $z_boundaries, $stats, $xgiven, $zgiven);
 
-                return new Response($this->myPlot($title, $xdata, $xtitle, $ydata, $ytitle, $legend, $male_female, $percentage));
+                if ($y_axis === self::Y_AXIS_NUMBERS) {
+                    $ytitle = I18N::translate('Individuals');
+                } elseif ($y_axis === self::Y_AXIS_PERCENT) {
+                    $ytitle = I18N::translate('percentage');
+                }
+
+                if ($z_axis === self::Z_AXIS_NONE) {
+                    $legend          = [I18N::translate(I18N::translate('All'))];
+                    $z_boundaries[0] = 100000;
+                } elseif ($z_axis === self::Z_AXIS_SEX) {
+                    $legend = [I18N::translate('Male'), I18N::translate('Female')];
+                } elseif ($z_axis === self::Z_AXIS_TIME) {
+                    $legend = $this->calculateLegend($boundaries_z_axis);
+                }
+
+                // Initialise the counts to zero.
+                $ydata = array_fill(0, count($legend), array_fill(0, $xmax, 0));
+
+                $this->longevityVersusTime($z_axis, $z_boundaries, $stats, $z_axis === self::Z_AXIS_SEX);
+
+                return new Response($this->myPlot($title, $xdata, $xtitle, $ydata, $ytitle, $legend, $y_axis, $z_axis));
 
             case '19':
-                $xgiven            = false;
-                $zgiven            = false;
                 $title             = I18N::translate('Age in year of marriage');
                 $xtitle            = I18N::translate('age');
                 $ytitle            = I18N::translate('numbers');
                 $boundaries_x_axis = $request->get('x-axis-boundaries-ages_m');
                 $boundaries_z_axis = $request->get('z-axis-boundaries-periods');
                 $this->calculateAxis($boundaries_x_axis);
-                if ($z_axis !== 300 && $z_axis !== 301) {
-                    $this->calculateLegend($boundaries_z_axis);
-                }
-                $percentage = false;
-                if ($y_axis === 201) {
-                    $percentage = false;
-                    $ytitle     = I18N::translate('Individuals');
-                } elseif ($y_axis === 202) {
-                    $percentage = true;
-                    $ytitle     = I18N::translate('percentage');
-                }
-                $male_female     = false;
-                $z_boundaries[0] = 100000;
-                if ($z_axis === 300) {
-                    $zgiven    = false;
-                    $legend[0] = 'all';
-                    $zmax      = 1;
-                } elseif ($z_axis === 301) {
-                    $male_female = true;
-                    $zgiven      = true;
-                    $legend[0]   = I18N::translate('Male');
-                    $legend[1]   = I18N::translate('Female');
-                    $zmax        = 2;
-                }
-                //-- reset the data array
-                for ($i = 0; $i < $zmax; $i++) {
-                    for ($j = 0; $j < $xmax; $j++) {
-                        $ydata[$i][$j] = 0;
-                    }
-                }
-                $this->ageAtMarriage($z_axis, $z_boundaries, $stats, $xgiven, $zgiven);
 
-                return new Response($this->myPlot($title, $xdata, $xtitle, $ydata, $ytitle, $legend, $male_female, $percentage));
+                if ($y_axis === self::Y_AXIS_NUMBERS) {
+                    $ytitle = I18N::translate('Individuals');
+                } elseif ($y_axis === self::Y_AXIS_PERCENT) {
+                    $ytitle = I18N::translate('percentage');
+                }
+
+                if ($z_axis === self::Z_AXIS_NONE) {
+                    $legend          = [I18N::translate(I18N::translate('All'))];
+                    $z_boundaries[0] = 100000;
+                } elseif ($z_axis === self::Z_AXIS_SEX) {
+                    $legend = [I18N::translate('Male'), I18N::translate('Female')];
+                } elseif ($z_axis === self::Z_AXIS_TIME) {
+                    $legend = $this->calculateLegend($boundaries_z_axis);
+                }
+
+                // Initialise the counts to zero.
+                $ydata = array_fill(0, count($legend), array_fill(0, $xmax, 0));
+
+                $this->ageAtMarriage($z_axis, $z_boundaries, $stats, $z_axis === self::Z_AXIS_SEX);
+
+                return new Response($this->myPlot($title, $xdata, $xtitle, $ydata, $ytitle, $legend, $y_axis, $z_axis));
 
             case '20':
-                $xgiven            = false;
-                $zgiven            = false;
                 $title             = I18N::translate('Age in year of first marriage');
                 $xtitle            = I18N::translate('age');
                 $ytitle            = I18N::translate('numbers');
                 $boundaries_x_axis = $request->get('x-axis-boundaries-ages_m');
                 $boundaries_z_axis = $request->get('z-axis-boundaries-periods');
                 $this->calculateAxis($boundaries_x_axis);
-                if ($z_axis !== 300 && $z_axis !== 301) {
-                    $this->calculateLegend($boundaries_z_axis);
-                }
-                $percentage = false;
-                if ($y_axis === 201) {
-                    $percentage = false;
-                    $ytitle     = I18N::translate('Individuals');
-                } elseif ($y_axis === 202) {
-                    $percentage = true;
-                    $ytitle     = I18N::translate('percentage');
-                }
-                $male_female = false;
-                if ($z_axis === 300) {
-                    $zgiven          = false;
-                    $legend[0]       = 'all';
-                    $zmax            = 1;
-                    $z_boundaries[0] = 100000;
-                } elseif ($z_axis === 301) {
-                    $male_female = true;
-                    $zgiven      = true;
-                    $legend[0]   = I18N::translate('Male');
-                    $legend[1]   = I18N::translate('Female');
-                    $zmax        = 2;
-                }
-                //-- reset the data array
-                for ($i = 0; $i < $zmax; $i++) {
-                    for ($j = 0; $j < $xmax; $j++) {
-                        $ydata[$i][$j] = 0;
-                    }
-                }
-                $this->ageAtFirstMarriage($z_axis, $z_boundaries, $stats, $xgiven, $zgiven);
 
-                return new Response($this->myPlot($title, $xdata, $xtitle, $ydata, $ytitle, $legend, $male_female, $percentage));
+                if ($y_axis === self::Y_AXIS_NUMBERS) {
+                    $ytitle = I18N::translate('Individuals');
+                } elseif ($y_axis === self::Y_AXIS_PERCENT) {
+                    $ytitle = I18N::translate('percentage');
+                }
+
+                if ($z_axis === self::Z_AXIS_NONE) {
+                    $legend          = [I18N::translate(I18N::translate('All'))];
+                    $z_boundaries[0] = 100000;
+                } elseif ($z_axis === self::Z_AXIS_SEX) {
+                    $legend = [I18N::translate('Male'), I18N::translate('Female')];
+                } elseif ($z_axis === self::Z_AXIS_TIME) {
+                    $legend = $this->calculateLegend($boundaries_z_axis);
+                }
+
+                // Initialise the counts to zero.
+                $ydata = array_fill(0, count($legend), array_fill(0, $xmax, 0));
+
+                $this->ageAtFirstMarriage($z_axis, $z_boundaries, $stats, $z_axis === self::Z_AXIS_SEX);
+
+                return new Response($this->myPlot($title, $xdata, $xtitle, $ydata, $ytitle, $legend, $y_axis, $z_axis));
 
             case '21':
-                $xgiven            = false;
-                $zgiven            = false;
                 $title             = I18N::translate('Number of children');
                 $xtitle            = I18N::translate('children');
                 $ytitle            = I18N::translate('numbers');
                 $boundaries_x_axis = $request->get('x-axis-boundaries-numbers');
                 $boundaries_z_axis = $request->get('z-axis-boundaries-periods');
                 $this->calculateAxis($boundaries_x_axis);
-                if ($z_axis !== 300 && $z_axis !== 301) {
-                    $this->calculateLegend($boundaries_z_axis);
-                }
-                $percentage = false;
-                if ($y_axis === 201) {
-                    $percentage = false;
-                    $ytitle     = I18N::translate('Families');
-                } elseif ($y_axis === 202) {
-                    $percentage = true;
-                    $ytitle     = I18N::translate('percentage');
-                }
-                $male_female = false;
-                if ($z_axis === 300) {
-                    $zgiven          = false;
-                    $legend[0]       = 'all';
-                    $zmax            = 1;
-                    $z_boundaries[0] = 100000;
-                } elseif ($z_axis === 301) {
-                    $male_female = true;
-                    $zgiven      = true;
-                    $legend[0]   = I18N::translate('Male');
-                    $legend[1]   = I18N::translate('Female');
-                    $zmax        = 2;
-                }
-                //-- reset the data array
-                for ($i = 0; $i < $zmax; $i++) {
-                    for ($j = 0; $j < $xmax; $j++) {
-                        $ydata[$i][$j] = 0;
-                    }
-                }
-                $this->numberOfChildren($z_axis, $z_boundaries, $stats, $xgiven, $zgiven);
 
-                return new Response($this->myPlot($title, $xdata, $xtitle, $ydata, $ytitle, $legend, $male_female, $percentage));
+                if ($y_axis === self::Y_AXIS_NUMBERS) {
+                    $ytitle = I18N::translate('Families');
+                } elseif ($y_axis === self::Y_AXIS_PERCENT) {
+                    $ytitle = I18N::translate('percentage');
+                }
+
+                if ($z_axis === self::Z_AXIS_NONE) {
+                    $legend          = [I18N::translate(I18N::translate('All'))];
+                    $z_boundaries[0] = 100000;
+                } elseif ($z_axis === self::Z_AXIS_SEX) {
+                    $legend = [I18N::translate('Male'), I18N::translate('Female')];
+                } elseif ($z_axis === self::Z_AXIS_TIME) {
+                    $legend = $this->calculateLegend($boundaries_z_axis);
+                }
+
+                // Initialise the counts to zero.
+                $ydata = array_fill(0, count($legend), array_fill(0, $xmax, 0));
+
+                $this->numberOfChildren($z_axis, $z_boundaries, $stats, $z_axis === self::Z_AXIS_SEX);
+
+                return new Response($this->myPlot($title, $xdata, $xtitle, $ydata, $ytitle, $legend, $y_axis, $z_axis));
 
             default:
                 throw new NotFoundHttpException;
@@ -621,41 +494,40 @@ class StatisticsChartController extends AbstractChartController
      * @param int   $z_axis
      * @param int[] $z_boundaries
      * @param Stats $stats
-     * @param bool  $xgiven
      * @param bool  $zgiven
      */
-    private function monthOfBirth($z_axis, array $z_boundaries, Stats $stats, bool $xgiven, bool $zgiven)
+    private function monthOfBirth($z_axis, array $z_boundaries, Stats $stats, bool $zgiven)
     {
-        if ($z_axis === 300) {
+        if ($z_axis === self::Z_AXIS_NONE) {
             $num = $stats->statsBirthQuery(false);
             foreach ($num as $values) {
                 foreach (self::MONTHS as $key => $month) {
                     if ($month === $values['d_month']) {
-                        $this->fillYData(0, $key, $values['total'], $xgiven, $zgiven);
+                        $this->fillYData(0, $key, $values['total'], true, $zgiven);
                     }
                 }
             }
-        } elseif ($z_axis === 301) {
+        } elseif ($z_axis === self::Z_AXIS_SEX) {
             $num = $stats->statsBirthQuery(false, true);
             foreach ($num as $values) {
                 foreach (self::MONTHS as $key => $month) {
                     if ($month === $values['d_month']) {
                         if ($values['i_sex'] === 'M') {
-                            $this->fillYData(0, $key, $values['total'], $xgiven, $zgiven);
+                            $this->fillYData(0, $key, $values['total'], true, $zgiven);
                         } elseif ($values['i_sex'] === 'F') {
-                            $this->fillYData(1, $key, $values['total'], $xgiven, $zgiven);
+                            $this->fillYData(1, $key, $values['total'], true, $zgiven);
                         }
                     }
                 }
             }
-        } else {
+        } elseif ($z_axis === self::Z_AXIS_TIME) {
             $zstart = 0;
             foreach ($z_boundaries as $boundary) {
                 $num = $stats->statsBirthQuery(false, false, $zstart, $boundary);
                 foreach ($num as $values) {
                     foreach (self::MONTHS as $key => $month) {
                         if ($month === $values['d_month']) {
-                            $this->fillYData($boundary, $key, $values['total'], $xgiven, $zgiven);
+                            $this->fillYData($boundary, $key, $values['total'], true, $zgiven);
                         }
                     }
                 }
@@ -670,41 +542,40 @@ class StatisticsChartController extends AbstractChartController
      * @param int   $z_axis
      * @param int[] $z_boundaries
      * @param Stats $stats
-     * @param bool  $xgiven
      * @param bool  $zgiven
      */
-    private function monthOfBirthOfFirstChild($z_axis, array $z_boundaries, Stats $stats, bool $xgiven, bool $zgiven)
+    private function monthOfBirthOfFirstChild($z_axis, array $z_boundaries, Stats $stats, bool $zgiven)
     {
-        if ($z_axis === 300) {
+        if ($z_axis === self::Z_AXIS_NONE) {
             $num = $stats->monthFirstChildQuery(false);
             foreach ($num as $values) {
                 foreach (self::MONTHS as $key => $month) {
                     if ($month === $values['d_month']) {
-                        $this->fillYData(0, $key, $values['total'], $xgiven, $zgiven);
+                        $this->fillYData(0, $key, $values['total'], true, $zgiven);
                     }
                 }
             }
-        } elseif ($z_axis === 301) {
+        } elseif ($z_axis === self::Z_AXIS_SEX) {
             $num = $stats->monthFirstChildQuery(false, true);
             foreach ($num as $values) {
                 foreach (self::MONTHS as $key => $month) {
                     if ($month === $values['d_month']) {
                         if ($values['i_sex'] === 'M') {
-                            $this->fillYData(0, $key, $values['total'], $xgiven, $zgiven);
+                            $this->fillYData(0, $key, $values['total'], true, $zgiven);
                         } elseif ($values['i_sex'] === 'F') {
-                            $this->fillYData(1, $key, $values['total'], $xgiven, $zgiven);
+                            $this->fillYData(1, $key, $values['total'], true, $zgiven);
                         }
                     }
                 }
             }
-        } else {
+        } elseif ($z_axis === self::Z_AXIS_TIME) {
             $zstart = 0;
             foreach ($z_boundaries as $boundary) {
                 $num = $stats->monthFirstChildQuery(false, false, $zstart, $boundary);
                 foreach ($num as $values) {
                     foreach (self::MONTHS as $key => $month) {
                         if ($month === $values['d_month']) {
-                            $this->fillYData($boundary, $key, $values['total'], $xgiven, $zgiven);
+                            $this->fillYData($boundary, $key, $values['total'], true, $zgiven);
                         }
                     }
                 }
@@ -719,41 +590,40 @@ class StatisticsChartController extends AbstractChartController
      * @param int   $z_axis
      * @param int[] $z_boundaries
      * @param Stats $stats
-     * @param bool  $xgiven
      * @param bool  $zgiven
      */
-    private function monthOfDeath($z_axis, array $z_boundaries, Stats $stats, bool $xgiven, bool $zgiven)
+    private function monthOfDeath($z_axis, array $z_boundaries, Stats $stats, bool $zgiven)
     {
-        if ($z_axis === 300) {
+        if ($z_axis === self::Z_AXIS_NONE) {
             $num = $stats->statsDeathQuery(false);
             foreach ($num as $values) {
                 foreach (self::MONTHS as $key => $month) {
                     if ($month === $values['d_month']) {
-                        $this->fillYData(0, $key, $values['total'], $xgiven, $zgiven);
+                        $this->fillYData(0, $key, $values['total'], true, $zgiven);
                     }
                 }
             }
-        } elseif ($z_axis === 301) {
+        } elseif ($z_axis === self::Z_AXIS_SEX) {
             $num = $stats->statsDeathQuery(false, true);
             foreach ($num as $values) {
                 foreach (self::MONTHS as $key => $month) {
                     if ($month === $values['d_month']) {
                         if ($values['i_sex'] === 'M') {
-                            $this->fillYData(0, $key, $values['total'], $xgiven, $zgiven);
+                            $this->fillYData(0, $key, $values['total'], true, $zgiven);
                         } elseif ($values['i_sex'] === 'F') {
-                            $this->fillYData(1, $key, $values['total'], $xgiven, $zgiven);
+                            $this->fillYData(1, $key, $values['total'], true, $zgiven);
                         }
                     }
                 }
             }
-        } else {
+        } elseif ($z_axis === self::Z_AXIS_TIME) {
             $zstart = 0;
             foreach ($z_boundaries as $boundary) {
                 $num = $stats->statsDeathQuery(false, false, $zstart, $boundary);
                 foreach ($num as $values) {
                     foreach (self::MONTHS as $key => $month) {
                         if ($month === $values['d_month']) {
-                            $this->fillYData($boundary, $key, $values['total'], $xgiven, $zgiven);
+                            $this->fillYData($boundary, $key, $values['total'], true, $zgiven);
                         }
                     }
                 }
@@ -768,28 +638,27 @@ class StatisticsChartController extends AbstractChartController
      * @param int   $z_axis
      * @param int[] $z_boundaries
      * @param Stats $stats
-     * @param bool  $xgiven
      * @param bool  $zgiven
      */
-    private function monthOfMarriage($z_axis, array $z_boundaries, Stats $stats, bool $xgiven, bool $zgiven)
+    private function monthOfMarriage($z_axis, array $z_boundaries, Stats $stats, bool $zgiven)
     {
-        if ($z_axis === 300) {
+        if ($z_axis === self::Z_AXIS_NONE) {
             $num = $stats->statsMarrQuery(false, false);
             foreach ($num as $values) {
                 foreach (self::MONTHS as $key => $month) {
                     if ($month === $values['d_month']) {
-                        $this->fillYData(0, $key, $values['total'], $xgiven, $zgiven);
+                        $this->fillYData(0, $key, $values['total'], true, $zgiven);
                     }
                 }
             }
-        } else {
+        } elseif ($z_axis === self::Z_AXIS_TIME) {
             $zstart = 0;
             foreach ($z_boundaries as $boundary) {
                 $num = $stats->statsMarrQuery(false, false, $zstart, $boundary);
                 foreach ($num as $values) {
                     foreach (self::MONTHS as $key => $month) {
                         if ($month === $values['d_month']) {
-                            $this->fillYData($boundary, $key, $values['total'], $xgiven, $zgiven);
+                            $this->fillYData($boundary, $key, $values['total'], true, $zgiven);
                         }
                     }
                 }
@@ -804,12 +673,11 @@ class StatisticsChartController extends AbstractChartController
      * @param int   $z_axis
      * @param int[] $z_boundaries
      * @param Stats $stats
-     * @param bool  $xgiven
      * @param bool  $zgiven
      */
-    private function monthOfFirstMarriage($z_axis, array $z_boundaries, Stats $stats, bool $xgiven, bool $zgiven)
+    private function monthOfFirstMarriage($z_axis, array $z_boundaries, Stats $stats, bool $zgiven)
     {
-        if ($z_axis === 300) {
+        if ($z_axis === self::Z_AXIS_NONE) {
             $num  = $stats->statsMarrQuery(false, true);
             $indi = [];
             $fam  = [];
@@ -817,14 +685,14 @@ class StatisticsChartController extends AbstractChartController
                 if (!in_array($values['indi'], $indi) && !in_array($values['fams'], $fam)) {
                     foreach (self::MONTHS as $key => $month) {
                         if ($month === $values['month']) {
-                            $this->fillYData(0, $key, 1, $xgiven, $zgiven);
+                            $this->fillYData(0, $key, 1, true, $zgiven);
                         }
                     }
                     $indi[] = $values['indi'];
                     $fam[]  = $values['fams'];
                 }
             }
-        } else {
+        } elseif ($z_axis === self::Z_AXIS_TIME) {
             $zstart = 0;
             $indi   = [];
             $fam    = [];
@@ -834,7 +702,7 @@ class StatisticsChartController extends AbstractChartController
                     if (!in_array($values['indi'], $indi) && !in_array($values['fams'], $fam)) {
                         foreach (self::MONTHS as $key => $month) {
                             if ($month === $values['month']) {
-                                $this->fillYData($boundary, $key, 1, $xgiven, $zgiven);
+                                $this->fillYData($boundary, $key, 1, true, $zgiven);
                             }
                         }
                         $indi[] = $values['indi'];
@@ -852,38 +720,37 @@ class StatisticsChartController extends AbstractChartController
      * @param int   $z_axis
      * @param int[] $z_boundaries
      * @param Stats $stats
-     * @param bool  $xgiven
      * @param bool  $zgiven
      */
-    private function longevityVersusTime($z_axis, array $z_boundaries, Stats $stats, bool $xgiven, bool $zgiven)
+    private function longevityVersusTime($z_axis, array $z_boundaries, Stats $stats, bool $zgiven)
     {
-        if ($z_axis === 300) {
+        if ($z_axis === self::Z_AXIS_NONE) {
             $num = $stats->statsAgeQuery(false, 'DEAT');
             foreach ($num as $values) {
                 foreach ($values as $age_value) {
-                    $this->fillYData(0, (int)($age_value / 365.25), 1, $xgiven, $zgiven);
+                    $this->fillYData(0, (int) ($age_value / 365.25), 1, false, $zgiven);
                 }
             }
-        } elseif ($z_axis === 301) {
+        } elseif ($z_axis === self::Z_AXIS_SEX) {
             $num = $stats->statsAgeQuery(false, 'DEAT', 'M');
             foreach ($num as $values) {
                 foreach ($values as $age_value) {
-                    $this->fillYData(0, (int)($age_value / 365.25), 1, $xgiven, $zgiven);
+                    $this->fillYData(0, (int) ($age_value / 365.25), 1, false, $zgiven);
                 }
             }
             $num = $stats->statsAgeQuery(false, 'DEAT', 'F');
             foreach ($num as $values) {
                 foreach ($values as $age_value) {
-                    $this->fillYData(1, (int)($age_value / 365.25), 1, $xgiven, $zgiven);
+                    $this->fillYData(1, (int) ($age_value / 365.25), 1, false, $zgiven);
                 }
             }
-        } else {
+        } elseif ($z_axis === self::Z_AXIS_TIME) {
             $zstart = 0;
             foreach ($z_boundaries as $boundary) {
                 $num = $stats->statsAgeQuery(false, 'DEAT', 'BOTH', $zstart, $boundary);
                 foreach ($num as $values) {
                     foreach ($values as $age_value) {
-                        $this->fillYData($boundary, (int)($age_value / 365.25), 1, $xgiven, $zgiven);
+                        $this->fillYData($boundary, (int) ($age_value / 365.25), 1, false, $zgiven);
                     }
                 }
                 $zstart = $boundary + 1;
@@ -897,39 +764,38 @@ class StatisticsChartController extends AbstractChartController
      * @param int   $z_axis
      * @param int[] $z_boundaries
      * @param Stats $stats
-     * @param bool  $xgiven
      * @param bool  $zgiven
      */
-    private function ageAtMarriage($z_axis, array $z_boundaries, Stats $stats, bool $xgiven, bool $zgiven)
+    private function ageAtMarriage($z_axis, array $z_boundaries, Stats $stats, bool $zgiven)
     {
-        if ($z_axis === 300) {
+        if ($z_axis === self::Z_AXIS_NONE) {
             $num = $stats->statsMarrAgeQuery(false, 'M');
             foreach ($num as $values) {
-                $this->fillYData(0, (int)($values['age'] / 365.25), 1, $xgiven, $zgiven);
+                $this->fillYData(0, (int) ($values['age'] / 365.25), 1, false, $zgiven);
             }
             $num = $stats->statsMarrAgeQuery(false, 'F');
             foreach ($num as $values) {
-                $this->fillYData(0, (int)($values['age'] / 365.25), 1, $xgiven, $zgiven);
+                $this->fillYData(0, (int) ($values['age'] / 365.25), 1, false, $zgiven);
             }
-        } elseif ($z_axis === 301) {
+        } elseif ($z_axis === self::Z_AXIS_SEX) {
             $num = $stats->statsMarrAgeQuery(false, 'M');
             foreach ($num as $values) {
-                $this->fillYData(0, (int)($values['age'] / 365.25), 1, $xgiven, $zgiven);
+                $this->fillYData(0, (int) ($values['age'] / 365.25), 1, false, $zgiven);
             }
             $num = $stats->statsMarrAgeQuery(false, 'F');
             foreach ($num as $values) {
-                $this->fillYData(1, (int)($values['age'] / 365.25), 1, $xgiven, $zgiven);
+                $this->fillYData(1, (int) ($values['age'] / 365.25), 1, false, $zgiven);
             }
-        } else {
+        } elseif ($z_axis === self::Z_AXIS_TIME) {
             $zstart = 0;
             foreach ($z_boundaries as $boundary) {
                 $num = $stats->statsMarrAgeQuery(false, 'M', $zstart, $boundary);
                 foreach ($num as $values) {
-                    $this->fillYData($boundary, (int)($values['age'] / 365.25), 1, $xgiven, $zgiven);
+                    $this->fillYData($boundary, (int) ($values['age'] / 365.25), 1, false, $zgiven);
                 }
                 $num = $stats->statsMarrAgeQuery(false, 'F', $zstart, $boundary);
                 foreach ($num as $values) {
-                    $this->fillYData($boundary, (int)($values['age'] / 365.25), 1, $xgiven, $zgiven);
+                    $this->fillYData($boundary, (int) ($values['age'] / 365.25), 1, false, $zgiven);
                 }
                 $zstart = $boundary + 1;
             }
@@ -942,17 +808,16 @@ class StatisticsChartController extends AbstractChartController
      * @param int   $z_axis
      * @param int[] $z_boundaries
      * @param Stats $stats
-     * @param bool  $xgiven
      * @param bool  $zgiven
      */
-    private function ageAtFirstMarriage($z_axis, array $z_boundaries, Stats $stats, bool $xgiven, bool $zgiven)
+    private function ageAtFirstMarriage($z_axis, array $z_boundaries, Stats $stats, bool $zgiven)
     {
-        if ($z_axis === 300) {
+        if ($z_axis === self::Z_AXIS_NONE) {
             $num  = $stats->statsMarrAgeQuery(false, 'M');
             $indi = [];
             foreach ($num as $values) {
                 if (!in_array($values['d_gid'], $indi)) {
-                    $this->fillYData(0, (int)($values['age'] / 365.25), 1, $xgiven, $zgiven);
+                    $this->fillYData(0, (int) ($values['age'] / 365.25), 1, false, $zgiven);
                     $indi[] = $values['d_gid'];
                 }
             }
@@ -960,16 +825,16 @@ class StatisticsChartController extends AbstractChartController
             $indi = [];
             foreach ($num as $values) {
                 if (!in_array($values['d_gid'], $indi)) {
-                    $this->fillYData(0, (int)($values['age'] / 365.25), 1, $xgiven, $zgiven);
+                    $this->fillYData(0, (int) ($values['age'] / 365.25), 1, false, $zgiven);
                     $indi[] = $values['d_gid'];
                 }
             }
-        } elseif ($z_axis === 301) {
+        } elseif ($z_axis === self::Z_AXIS_SEX) {
             $num  = $stats->statsMarrAgeQuery(false, 'M');
             $indi = [];
             foreach ($num as $values) {
                 if (!in_array($values['d_gid'], $indi)) {
-                    $this->fillYData(0, (int)($values['age'] / 365.25), 1, $xgiven, $zgiven);
+                    $this->fillYData(0, (int) ($values['age'] / 365.25), 1, false, $zgiven);
                     $indi[] = $values['d_gid'];
                 }
             }
@@ -977,25 +842,25 @@ class StatisticsChartController extends AbstractChartController
             $indi = [];
             foreach ($num as $values) {
                 if (!in_array($values['d_gid'], $indi)) {
-                    $this->fillYData(1, (int)($values['age'] / 365.25), 1, $xgiven, $zgiven);
+                    $this->fillYData(1, (int) ($values['age'] / 365.25), 1, false, $zgiven);
                     $indi[] = $values['d_gid'];
                 }
             }
-        } else {
+        } elseif ($z_axis === self::Z_AXIS_TIME) {
             $zstart = 0;
             $indi   = [];
             foreach ($z_boundaries as $boundary) {
                 $num = $stats->statsMarrAgeQuery(false, 'M', $zstart, $boundary);
                 foreach ($num as $values) {
                     if (!in_array($values['d_gid'], $indi)) {
-                        $this->fillYData($boundary, (int)($values['age'] / 365.25), 1, $xgiven, $zgiven);
+                        $this->fillYData($boundary, (int) ($values['age'] / 365.25), 1, false, $zgiven);
                         $indi[] = $values['d_gid'];
                     }
                 }
                 $num = $stats->statsMarrAgeQuery(false, 'F', $zstart, $boundary);
                 foreach ($num as $values) {
                     if (!in_array($values['d_gid'], $indi)) {
-                        $this->fillYData($boundary, (int)($values['age'] / 365.25), 1, $xgiven, $zgiven);
+                        $this->fillYData($boundary, (int) ($values['age'] / 365.25), 1, false, $zgiven);
                         $indi[] = $values['d_gid'];
                     }
                 }
@@ -1010,31 +875,30 @@ class StatisticsChartController extends AbstractChartController
      * @param int   $z_axis
      * @param int[] $z_boundaries
      * @param Stats $stats
-     * @param bool  $xgiven
      * @param bool  $zgiven
      */
-    private function numberOfChildren($z_axis, array $z_boundaries, Stats $stats, bool $xgiven, bool $zgiven)
+    private function numberOfChildren($z_axis, array $z_boundaries, Stats $stats, bool $zgiven)
     {
-        if ($z_axis === 300) {
+        if ($z_axis === self::Z_AXIS_NONE) {
             $num = $stats->statsChildrenQuery(false);
             foreach ($num as $values) {
-                $this->fillYData(0, $values['f_numchil'], $values['total'], $xgiven, $zgiven);
+                $this->fillYData(0, $values['f_numchil'], $values['total'], false, $zgiven);
             }
-        } elseif ($z_axis === 301) {
+        } elseif ($z_axis === self::Z_AXIS_SEX) {
             $num = $stats->statsChildrenQuery(false, 'M');
             foreach ($num as $values) {
-                $this->fillYData(0, $values['num'], $values['total'], $xgiven, $zgiven);
+                $this->fillYData(0, $values['num'], $values['total'], false, $zgiven);
             }
             $num = $stats->statsChildrenQuery(false, 'F');
             foreach ($num as $values) {
-                $this->fillYData(1, $values['num'], $values['total'], $xgiven, $zgiven);
+                $this->fillYData(1, $values['num'], $values['total'], false, $zgiven);
             }
-        } else {
+        } elseif ($z_axis === self::Z_AXIS_TIME) {
             $zstart = 0;
             foreach ($z_boundaries as $boundary) {
                 $num = $stats->statsChildrenQuery(false, 'BOTH', $zstart, $boundary);
                 foreach ($num as $values) {
-                    $this->fillYData($boundary, $values['f_numchil'], $values['total'], $xgiven, $zgiven);
+                    $this->fillYData($boundary, $values['f_numchil'], $values['total'], false, $zgiven);
                 }
                 $zstart = $boundary + 1;
             }
@@ -1087,24 +951,24 @@ class StatisticsChartController extends AbstractChartController
      * @param int[][]  $ydata
      * @param string   $ytitle
      * @param string[] $legend
-     * @param bool     $male_female
-     * @param bool     $percentage
+     * @param int      $y_axis
+     * @param int      $z_axis
      *
      * @return string
      */
-    private function myPlot(string $chart_title, array $xdata, string $xtitle, array $ydata, string $ytitle, array $legend, bool $male_female, bool $percentage): string
+    private function myPlot(string $chart_title, array $xdata, string $xtitle, array $ydata, string $ytitle, array $legend, int $y_axis, int $z_axis): string
     {
 
         // Google Chart API only allows text encoding for numbers less than 100
         // and it does not allow adjusting the y-axis range, so we must find the maximum y-value
         // in order to adjust beforehand by changing the numbers
 
-        if ($male_female) {
+        if ($z_axis === self::Z_AXIS_SEX) {
             $stop = 2;
         } else {
             $stop = count($ydata);
         }
-        if ($percentage) {
+        if ($y_axis === self::Y_AXIS_PERCENT) {
             $ypercentmax = 0;
             $yt          = [];
             for ($i = 0; $i < $stop; $i++) {
@@ -1141,7 +1005,7 @@ class StatisticsChartController extends AbstractChartController
                     }
                 }
             }
-        } else {
+        } elseif ($y_axis === self::Y_AXIS_NUMBERS) {
             $ymax = 0;
             for ($i = 0; $i < $stop; $i++) {
                 $ymax = max($ymax, max($ydata[$i]));
@@ -1164,6 +1028,7 @@ class StatisticsChartController extends AbstractChartController
                 }
             }
         }
+
         $colors      = [
             '0000FF',
             'FFA0CB',
@@ -1199,7 +1064,8 @@ class StatisticsChartController extends AbstractChartController
 
         $imgurl .= '1:||||' . rawurlencode($xtitle) . '|2:|';
         $imgurl .= '0|';
-        if ($percentage) {
+
+        if ($y_axis === self::Y_AXIS_PERCENT) {
             for ($i = 1; $i < 11; $i++) {
                 if ($ymax < 11) {
                     $imgurl .= round($ymax * $i / 10, 1) . '|';
@@ -1208,7 +1074,7 @@ class StatisticsChartController extends AbstractChartController
                 }
             }
             $imgurl .= '3:||%|';
-        } else {
+        } elseif ($y_axis === self::Y_AXIS_NUMBERS) {
             if ($ymax < 11) {
                 for ($i = 1; $i < $ymax + 1; $i++) {
                     $imgurl .= round($ymax * $i / ($ymax), 0) . '|';
@@ -1220,6 +1086,7 @@ class StatisticsChartController extends AbstractChartController
             }
             $imgurl .= '3:||' . rawurlencode($ytitle) . '|';
         }
+
         // Only show legend if y-data is non-2-dimensional
         if (count($ydata) > 1) {
             $imgurl .= '&amp;chdl=';
@@ -1301,13 +1168,15 @@ class StatisticsChartController extends AbstractChartController
     }
 
     /**
-     * Calculate the Z axis.
+     * Generate the Z axis legend from a list of boundary years
      *
      * @param string $boundaries_z_axis
+     *
+     * @return string[]
      */
-    private function calculateLegend($boundaries_z_axis)
+    private function calculateLegend($boundaries_z_axis): array
     {
-        global $legend, $zmax, $z_boundaries;
+        global $zmax, $z_boundaries;
 
         // calculate the legend values
         $hulpar          = explode(',', $boundaries_z_axis);
@@ -1315,21 +1184,19 @@ class StatisticsChartController extends AbstractChartController
         $date            = new Date('BEF ' . $hulpar[0]);
         $legend[0]       = strip_tags($date->display());
         $z_boundaries[0] = $hulpar[0] - 1;
+
         while (isset($hulpar[$i])) {
-            $i1               = $i - 1;
-            $date             = new Date('BET ' . $hulpar[$i1] . ' AND ' . ($hulpar[$i] - 1));
+            $date             = new Date('BET ' . $hulpar[$i - 1] . ' AND ' . ($hulpar[$i] - 1));
             $legend[$i]       = strip_tags($date->display());
             $z_boundaries[$i] = $hulpar[$i] - 1;
             $i++;
         }
-        $zmax                = $i;
-        $zmax1               = $zmax - 1;
-        $date                = new Date('AFT ' . $hulpar[$zmax1]);
-        $legend[$zmax]       = strip_tags($date->display());
-        $z_boundaries[$zmax] = 10000;
-        $zmax                = $zmax + 1;
-        if ($zmax > 8) {
-            $zmax = 8;
-        }
+        $date             = new Date('AFT ' . $hulpar[$i - 1]);
+        $legend[$i]       = strip_tags($date->display());
+        $z_boundaries[$i] = 10000;
+
+        $zmax = count($legend);
+
+        return $legend;
     }
 }
