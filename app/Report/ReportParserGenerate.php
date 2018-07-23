@@ -1569,64 +1569,6 @@ class ReportParserGenerate extends ReportParserBase
     }
 
     /**
-     * XML <AgeAtDeath /> element handler
-     */
-    private function ageAtDeathStartHandler()
-    {
-        // This duplicates functionality in FunctionsPrint::format_fact_date()
-        global $factrec;
-
-        $match = [];
-        if (preg_match('/0 @(.+)@/', $this->gedrec, $match)) {
-            $person = Individual::getInstance($match[1], $this->tree);
-            // Recorded age
-            if (preg_match('/\n2 AGE (.+)/', $factrec, $match)) {
-                $fact_age = $match[1];
-            } else {
-                $fact_age = '';
-            }
-            if (preg_match('/\n2 HUSB\n3 AGE (.+)/', $factrec, $match)) {
-                $husb_age = $match[1];
-            } else {
-                $husb_age = '';
-            }
-            if (preg_match('/\n2 WIFE\n3 AGE (.+)/', $factrec, $match)) {
-                $wife_age = $match[1];
-            } else {
-                $wife_age = '';
-            }
-
-            // Calculated age
-            $birth_date = $person->getBirthDate();
-            // Can't use getDeathDate(), as this also gives BURI/CREM events, which
-            // wouldn't give the correct "days after death" result for people with
-            // no DEAT.
-            $death_event = $person->getFirstFact('DEAT');
-            if ($death_event) {
-                $death_date = $death_event->getDate();
-            } else {
-                $death_date = new Date('');
-            }
-            $value = '';
-            if (Date::compare($birth_date, $death_date) <= 0 || !$person->isDead()) {
-                $age = Date::getAgeGedcom($birth_date, $death_date);
-                // Only show calculated age if it differs from recorded age
-                if ($age != '' && $age != '0d') {
-                    if ($fact_age != '' && $fact_age != $age || $fact_age == '' && $husb_age == '' && $wife_age == '' || $husb_age != '' && $person->getSex() == 'M' && $husb_age != $age || $wife_age != '' && $person->getSex() == 'F' && $wife_age != $age
-                    ) {
-                        $value  = FunctionsDate::getAgeAtEvent($age);
-                        $abbrev = substr($value, 0, strpos($value, ' ') + 5);
-                        if ($value !== $abbrev) {
-                            $value = $abbrev . '.';
-                        }
-                    }
-                }
-            }
-            $this->current_element->addText($value);
-        }
-    }
-
-    /**
      * XML element Forced line break handler - HTML code
      */
     private function brStartHandler()
