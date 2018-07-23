@@ -807,11 +807,8 @@ class FunctionsImport
      */
     public static function updatePlaces($gid, $ged_id, $gedrec)
     {
-        global $placecache;
+        static $placecache = [];
 
-        if (!isset($placecache)) {
-            $placecache = [];
-        }
         $personplace = [];
         // import all place locations, but not control info such as
         // 0 HEAD/1 PLAC or 0 _EVDEF/1 PLAC
