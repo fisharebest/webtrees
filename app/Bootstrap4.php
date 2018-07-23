@@ -18,7 +18,7 @@ namespace Fisharebest\Webtrees;
 /**
  * Helper functions to generate markup for Bootstrap 4.
  *
- * @link https://www.getbootstrap.com
+ * @deprecated Replace with view('components/...')
  */
 class Bootstrap4 extends Html
 {
@@ -64,7 +64,7 @@ class Bootstrap4 extends Html
         return
             '<div class="' . $class . '">' .
             '<label class="form-check-label">' .
-            '<input ' . $input_attributes . '> ' . self::escape($label) .
+            '<input ' . $input_attributes . '> ' . e($label) .
             '</label>' .
             '</div>';
     }
@@ -106,7 +106,7 @@ class Bootstrap4 extends Html
             $html .=
                 '<div class="' . $class . '">' .
                 '<label class="form-check-label">' .
-                '<input ' . $input_attributes . '> ' . self::escape($label) .
+                '<input ' . $input_attributes . '> ' . e($label) .
                 '</label>' .
                 '</div>';
         }
@@ -132,7 +132,7 @@ class Bootstrap4 extends Html
                 'selected' => (string)$value === (string)$selected,
             ]);
 
-            $html .= '<option ' . $option_attributes . '>' . self::escape($option) . '</option>';
+            $html .= '<option ' . $option_attributes . '>' . e($option) . '</option>';
         }
 
         if (empty($attributes['class'])) {
@@ -164,7 +164,7 @@ class Bootstrap4 extends Html
                 'selected' => in_array((string)$value, $selected),
             ]);
 
-            $html .= '<option ' . $option_attributes . '>' . self::escape($option) . '</option>';
+            $html .= '<option ' . $option_attributes . '>' . e($option) . '</option>';
         }
 
         if (empty($attributes['class'])) {

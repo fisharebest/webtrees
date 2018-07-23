@@ -21,18 +21,6 @@ namespace Fisharebest\Webtrees;
 class Html
 {
     /**
-     * Escape a string for inclusion within HTML.
-     *
-     * @param $string
-     *
-     * @return string
-     */
-    public static function escape($string)
-    {
-        return htmlspecialchars($string, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
-    }
-
-    /**
      * Convert an array of HTML attributes to an HTML string.
      *
      * @param array $attributes
@@ -44,9 +32,9 @@ class Html
         $html = [];
         foreach ($attributes as $key => $value) {
             if (is_string($value) || is_integer($value)) {
-                $html[] = self::escape($key) . '="' . self::escape($value) . '"';
+                $html[] = e($key) . '="' . e($value) . '"';
             } elseif ($value !== false) {
-                $html[] = self::escape($key);
+                $html[] = e($key);
             }
         }
 
@@ -77,6 +65,6 @@ class Html
      */
     public static function filename($filename)
     {
-        return '<samp class="filename" dir="ltr">' . self::escape($filename) . '</samp>';
+        return '<samp class="filename" dir="ltr">' . e($filename) . '</samp>';
     }
 }
