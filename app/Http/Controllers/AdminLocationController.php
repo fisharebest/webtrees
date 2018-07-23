@@ -119,6 +119,7 @@ class AdminLocationController extends AbstractBaseController
             'lat'         => $lat,
             'lng'         => $lng,
             'ref'         => $id,
+            'data'        => $this->mapLocationData($id)
         ]);
     }
 
@@ -388,8 +389,8 @@ class AdminLocationController extends AbstractBaseController
 
                     $places[] = [
                         'pl_level' => $row[0],
-                        'pl_long'  => $row[$fields-3],
-                        'pl_lati'  => $row[$fields-4],
+                        'pl_long'  => $row[$fields-4],
+                        'pl_lati'  => $row[$fields-3],
                         'pl_zoom'  => $row[$fields-2],
                         'pl_icon'  => $row[$fields-1],
                         'fqpn'     => $fqdn,
@@ -807,5 +808,37 @@ class AdminLocationController extends AbstractBaseController
         }
 
         return $list;
+    }
+
+    /**
+     * @param int $id
+     *
+     * @return array
+     */
+    private function mapLocationData(int $id): array
+    {
+        $row = Database::prepare("SELECT * FROM `##placelocation` WHERE pl_id = :id")
+            ->execute(['id' => $id])
+            ->fetchOneRow();
+
+        if (empty($row)) {
+            $json = [
+                'zoom'        => 2,
+                'coordinates' => [
+                    0.0,
+                    0.0,
+                ],
+            ];
+        } else {
+            $json = [
+                'zoom'        => (int) $row->pl_zoom ?: 2,
+                'coordinates' => [
+                    (float) strtr($row->pl_lati, ['N' => '', 'S' => '-', ',' => '.']),
+                    (float) strtr($row->pl_long, ['E' => '', 'W' => '-', ',' => '.']),
+                ],
+            ];
+        }
+
+        return $json;
     }
 }

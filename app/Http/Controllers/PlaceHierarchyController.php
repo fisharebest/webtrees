@@ -22,9 +22,11 @@ use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Location;
 use Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Site;
+use Fisharebest\Webtrees\Stats;
 use Fisharebest\Webtrees\Tree;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -63,6 +65,7 @@ class PlaceHierarchyController extends AbstractBaseController
                 'module' => self::MAP_MODULE,
                 'ref'    => $fqpn,
                 'type'   => 'placelist',
+                'data'   => $this->mapData($tree, $fqpn),
             ]);
         }
 
@@ -214,6 +217,68 @@ class PlaceHierarchyController extends AbstractBaseController
         return [
             'breadcrumbs' => $breadcrumbs,
             'current'     => $current,
+        ];
+    }
+
+    /**
+     * @param Request $request
+     *
+     * @return array
+     */
+    public function mapData(Tree $tree, $reference): array
+    {
+        $placeObj  = new Place($reference, $tree);
+        $places    = $placeObj->getChildPlaces();
+        $features  = [];
+        $flag_path = WT_MODULES_DIR . 'openstreetmap/';
+        $stats     = new Stats($tree);
+        $showlink  = true;
+        if (empty($places)) {
+            $places[] = $placeObj;
+            $showlink = false;
+        }
+        foreach ($places as $id => $place) {
+            $location = new Location($place->getGedcomName());
+            //Stats
+            $placeStats = [];
+            foreach (['INDI', 'FAM'] as $type) {
+                $tmp               = $stats->statsPlaces($type, false, $place->getPlaceId());
+                $placeStats[$type] = empty($tmp) ? 0 : $tmp[0]['tot'];
+            }
+            //Flag
+            if ($location->getIcon() !== null && is_file($flag_path . $location->getIcon())) {
+                $flag = $flag_path . $location->getIcon();
+            } else {
+                $flag = '';
+            }
+            $features[] = [
+                'type'       => 'Feature',
+                'id'         => $id,
+                'valid'      => $location->isValid() && $location->knownLatLon(),
+                'geometry'   => [
+                    'type'        => 'Point',
+                    'coordinates' => $location->getGeoJsonCoords(),
+                ],
+                'properties' => [
+                    'icon'    => [
+                        'name'  => 'globe',
+                        'color' => '#1e90ff',
+                    ],
+                    'tooltip' => strip_tags($place->getFullName()),
+                    'summary' => view('place-sidebar', [
+                        'showlink' => $showlink,
+                        'flag'     => $flag,
+                        'place'    => $place,
+                        'stats'    => $placeStats,
+                    ]),
+                    'zoom'    => (int) ($location->getZoom() ?? 2),
+                ],
+            ];
+        }
+
+        return [
+            'type'     => 'FeatureCollection',
+            'features' => $features,
         ];
     }
 }

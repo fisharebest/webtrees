@@ -137,80 +137,63 @@ use Fisharebest\Webtrees\View;
       let domObj  = ".osm-sidebar";
       let sidebar = "";
 
-      $.getJSON("index.php?route=module", {
-        module:      "openstreetmap",
-        action:      "MapData",
-        reference:   reference,
-        type:        mapType,
-        generations: Generations,
-      })
+      let data = <?= json_encode($data) ?>;
 
-        .done(function (data, textStatus, jqXHR) {
-          if (jqXHR.status === 200 && data.features.length === 1) {
-            zoom = data.features[0].properties.zoom;
+      if (data.features.length === 1) {
+        zoom = data.features[0].properties.zoom;
+      }
+      geoJsonLayer = L.geoJson(data, {
+        pointToLayer:  function (feature, latlng) {
+          return new L.Marker(latlng, {
+            icon:  L.BeautifyIcon.icon({
+              icon:            feature.properties.icon["name"],
+              borderColor:     "transparent",
+              backgroundColor: feature.valid ? feature.properties.icon["color"] : "transparent",
+              iconShape:       "marker",
+              textColor:       feature.valid ? "white" : "transparent",
+            }),
+            title: feature.properties.tooltip,
+            alt:   feature.properties.tooltip,
+            id:    feature.id,
+          })
+            .on("popupopen", function (e) {
+              let sidebar = $(".osm-sidebar");
+              let item    = sidebar.children(".gchart[data-id=" + e.target.feature.id + "]");
+              item.addClass("messagebox");
+              sidebar.scrollTo(item);
+            })
+            .on("popupclose", function () {
+              $(".osm-sidebar").children(".gchart")
+                .removeClass("messagebox");
+            });
+        },
+        onEachFeature: function (feature, layer) {
+          if (feature.properties.polyline) {
+            let pline = L.polyline(feature.properties.polyline.points, feature.properties.polyline.options);
+            markers.addLayer(pline);
           }
-          geoJsonLayer = L.geoJson(data, {
-            pointToLayer:  function (feature, latlng) {
-              return new L.Marker(latlng, {
-                icon:  L.BeautifyIcon.icon({
-                  icon:            feature.properties.icon["name"],
-                  borderColor:     "transparent",
-                  backgroundColor: feature.valid ? feature.properties.icon["color"] : "transparent",
-                  iconShape:       "marker",
-                  textColor:       feature.valid ? "white" : "transparent",
-                }),
-                title: feature.properties.tooltip,
-                alt:   feature.properties.tooltip,
-                id:    feature.id,
-              })
-                .on("popupopen", function (e) {
-                  let sidebar = $(".osm-sidebar");
-                  let item    = sidebar.children(".gchart[data-id=" + e.target.feature.id + "]");
-                  item.addClass("messagebox");
-                  sidebar.scrollTo(item);
-                })
-                .on("popupclose", function () {
-                  $(".osm-sidebar").children(".gchart")
-                    .removeClass("messagebox");
-                });
-            },
-            onEachFeature: function (feature, layer) {
-              if (feature.properties.polyline) {
-                let pline = L.polyline(feature.properties.polyline.points, feature.properties.polyline.options);
-                markers.addLayer(pline);
-              }
-              layer.bindPopup(feature.properties.summary);
-              let myclass = feature.valid ? "gchart" : "border border-danger";
-              sidebar += `<li class="${myclass}" data-id=${feature.id}>${feature.properties.summary}</li>`;
-            },
-          });
-        })
-        .fail(function (jqXHR, textStatus, errorThrown) {
-          console.log(jqXHR, textStatus, errorThrown);
-        })
-        .always(function (data_jqXHR, textStatus, jqXHR_errorThrown) {
-          switch (jqXHR_errorThrown.status) {
-            case 200: // Success
-              $(domObj).append(sidebar);
-              markers.addLayer(geoJsonLayer);
-              map
-                .addControl(new resetControl())
-                .addLayer(markers)
-                .fitBounds(markers.getBounds().pad(0.2));
-              if (zoom) {
-                map.setView(markers.getBounds().getCenter(), zoom);
-              }
-              break;
-            case 204: // No data
-              map.fitWorld();
-              $(domObj).append("<div class=\"bg-info text-white\">" + baseData.I18N.noData + "</div>");
-              break;
-            default: // Anything else
-              map.fitWorld();
-              $(domObj).append("<div class=\"bg-danger text-white\">" + baseData.I18N.error + "</div>");
-          }
-          $(domObj).slideDown(300);
-        });
+          layer.bindPopup(feature.properties.summary);
+          let myclass = feature.valid ? "gchart" : "border border-danger";
+          sidebar += `<li class="${myclass}" data-id=${feature.id}>${feature.properties.summary}</li>`;
+        },
+      });
+
+      if (data.features.length > 0) {
+        $(domObj).append(sidebar);
+        markers.addLayer(geoJsonLayer);
+        map
+          .addControl(new resetControl())
+          .addLayer(markers)
+          .fitBounds(markers.getBounds().pad(0.2));
+        if (zoom) {
+          map.setView(markers.getBounds().getCenter(), zoom);
+        }
+      } else {
+          map.fitWorld();
+          $(domObj).append("<div class=\"bg-info text-white\">" + baseData.I18N.noData + "</div>");
+      }
+
+      $(domObj).slideDown(300);
     };
 
     /**

@@ -225,37 +225,7 @@
         });
     };
 
-    /**
-     *
-     * @param id
-     * @private
-     */
-    let _addLayer = function (id) {
-      $.getJSON("index.php?route=admin-module", {
-        module: "openstreetmap",
-        action: "AdminMapData",
-        id:     id,
-      })
-        .done(function (data, textStatus, jqXHR) {
-          marker.setLatLng(data.coordinates);
-          map.setView(data.coordinates, data.zoom);
-        })
-
-        .fail(function (jqXHR, textStatus, errorThrown) {
-          console.log(jqXHR, textStatus, errorThrown);
-        })
-        .always(function (data_jqXHR, textStatus, jqXHR_errorThrown) {
-          switch (jqXHR_errorThrown.status) {
-            case 200: // Success
-              break;
-            case 204: // No data
-              map.fitWorld();
-              break;
-            default: // Anything else
-              map.fitWorld();
-          }
-        });
-    };
+    let data = <?= json_encode($data) ?>;
 
     /**
      *
@@ -287,7 +257,14 @@
      */
     let initialize = function (id) {
       _drawMap();
-      _addLayer(id);
+
+      marker.setLatLng(data.coordinates);
+
+      if (data.coordinates[0] === 0 && data.coordinates[1] === 0) {
+        map.fitWorld();
+      } else {
+        map.setView(data.coordinates, data.zoom);
+      }
     };
 
     return {
