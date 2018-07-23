@@ -39,27 +39,6 @@ class Bootstrap4 extends Html
     }
 
     /**
-     * Generate a breadcrumb trail.
-     *
-     * @param array  $hierarchy
-     * @param string $active
-     *
-     * @return string
-     */
-    public static function breadcrumbs(array $hierarchy, $active)
-    {
-        $html = '<ol class="breadcrumb">';
-
-        foreach ($hierarchy as $url => $label) {
-            $html .= '<li class="breadcrumb-item"><a href="' . e($url) . '">' . $label . '</a></li>';
-        }
-
-        $html .= '<li class="breadcrumb-item active">' . $active . '</li></ol>';
-
-        return $html;
-    }
-
-    /**
      * Generate a checkbox.
      *
      * @param string   $label
