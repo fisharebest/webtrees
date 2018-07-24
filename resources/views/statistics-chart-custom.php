@@ -69,21 +69,21 @@
 			<?= I18N::translate('Chart type') ?>
 		</div>
 		<div class="col-sm-4 wt-page-options-value">
-			<?= Bootstrap4::radioButtons('x-as', ['11' => I18N::translate('Month of birth')], true, false, ['onchange' => 'statusEnable("z_sex"); statusHide("x_years"); statusHide("x_months"); statusHide("x_numbers"); statusHide("map_opt");']) ?>
-			<?= Bootstrap4::radioButtons('x-as', ['12' => I18N::translate('Month of death')], false, false, ['onchange' => 'statusEnable("z_sex"); statusHide("x_years"); statusHide("x_months"); statusHide("x_numbers"); statusHide("map_opt");']) ?>
+			<?= Bootstrap4::radioButtons('x-as', [StatisticsChartController::X_AXIS_BIRTH_MONTH => I18N::translate('Month of birth')], true, false, ['onchange' => 'statusEnable("z_sex"); statusHide("x_years"); statusHide("x_months"); statusHide("x_numbers"); statusHide("map_opt");']) ?>
+			<?= Bootstrap4::radioButtons('x-as', [StatisticsChartController::X_AXIS_DEATH_MONTH => I18N::translate('Month of death')], false, false, ['onchange' => 'statusEnable("z_sex"); statusHide("x_years"); statusHide("x_months"); statusHide("x_numbers"); statusHide("map_opt");']) ?>
 			<?= Bootstrap4::radioButtons('x-as', [
-				'13' => I18N::translate('Month of marriage'),
-				'15' => I18N::translate('Month of first marriage'),
+				StatisticsChartController::X_AXIS_MARRIAGE_MONTH => I18N::translate('Month of marriage'),
+                StatisticsChartController::X_AXIS_FIRST_MARRIAGE_MONTH => I18N::translate('Month of first marriage'),
 			], false, false, ['onchange' => 'statusChecked("z_none"); statusDisable("z_sex"); statusHide("x_years"); statusHide("x_months"); statusHide("x_numbers"); statusHide("map_opt");']) ?>
-			<?= Bootstrap4::radioButtons('x-as', ['14' => I18N::translate('Month of birth of first child in a relation')], false, false, ['onchange' => 'statusEnable("z_sex"); statusHide("x_years"); statusHide("x_months"); statusHide("x_numbers"); statusHide("map_opt");']) ?>
-			<?= Bootstrap4::radioButtons('x-as', ['18' => I18N::translate('Longevity versus time')], false, false, ['onchange' => 'statusEnable("z_sex"); statusShow("x_years"); statusHide("x_months"); statusHide("x_numbers"); statusHide("map_opt");']) ?>
-			<?= Bootstrap4::radioButtons('x-as', ['19' => I18N::translate('Age in year of marriage')], false, false, ['onchange' => 'statusEnable("z_sex"); statusHide("x_years"); statusShow("x_years_m"); statusHide("x_months"); statusHide("x_numbers"); statusHide("map_opt");']) ?>
-			<?= Bootstrap4::radioButtons('x-as', ['20' => I18N::translate('Age in year of first marriage')], false, false, ['onchange' => 'statusEnable("z_sex"); statusHide("x_years"); statusShow("x_years_m"); statusHide("x_months"); statusHide("x_numbers"); statusHide("map_opt");']) ?>
-			<?= Bootstrap4::radioButtons('x-as', ['21' => I18N::translate('Number of children')], false, false, ['onchange' => 'statusEnable("z_sex"); statusHide("x_years"); statusHide("x_months"); statusShow("x_numbers"); statusHide("map_opt");']) ?>
-			<?= Bootstrap4::radioButtons('x-as', ['1' => I18N::translate('Individual distribution')], false, false, ['onchange' => 'statusHide("x_years"); statusHide("x_months"); statusHide("x_numbers"); statusShow("map_opt"); statusShow("chart_type"); statusHide("axes");']) ?>
-			<?= Bootstrap4::radioButtons('x-as', ['2' => I18N::translate('Birth by country')], false, false, ['onchange' => 'statusHide("x_years"); statusHide("x_months"); statusHide("x_numbers"); statusShow("map_opt"); statusHide("chart_type"); statusHide("surname_opt");']) ?>
-			<?= Bootstrap4::radioButtons('x-as', ['4' => I18N::translate('Marriage by country')], false, false, ['onchange' => 'statusHide("x_years"); statusHide("x_months"); statusHide("x_numbers"); statusShow("map_opt"); statusHide("chart_type"); statusHide("surname_opt");']) ?>
-			<?= Bootstrap4::radioButtons('x-as', ['3' => I18N::translate('Death by country')], false, false, ['onchange' => 'statusHide("x_years"); statusHide("x_months"); statusHide("x_numbers"); statusShow("map_opt"); statusHide("chart_type"); statusHide("surname_opt");']) ?>
+			<?= Bootstrap4::radioButtons('x-as', [StatisticsChartController::X_AXIS_FIRST_CHILD_MONTH => I18N::translate('Month of birth of first child in a relation')], false, false, ['onchange' => 'statusEnable("z_sex"); statusHide("x_years"); statusHide("x_months"); statusHide("x_numbers"); statusHide("map_opt");']) ?>
+			<?= Bootstrap4::radioButtons('x-as', [StatisticsChartController::X_AXIS_AGE_AT_DEATH => I18N::translate('Average age at death')], false, false, ['onchange' => 'statusEnable("z_sex"); statusShow("x_years"); statusHide("x_months"); statusHide("x_numbers"); statusHide("map_opt");']) ?>
+			<?= Bootstrap4::radioButtons('x-as', [StatisticsChartController::X_AXIS_AGE_AT_MARRIAGE => I18N::translate('Age in year of marriage')], false, false, ['onchange' => 'statusEnable("z_sex"); statusHide("x_years"); statusShow("x_years_m"); statusHide("x_months"); statusHide("x_numbers"); statusHide("map_opt");']) ?>
+			<?= Bootstrap4::radioButtons('x-as', [StatisticsChartController::X_AXIS_AGE_AT_FIRST_MARRIAGE => I18N::translate('Age in year of first marriage')], false, false, ['onchange' => 'statusEnable("z_sex"); statusHide("x_years"); statusShow("x_years_m"); statusHide("x_months"); statusHide("x_numbers"); statusHide("map_opt");']) ?>
+			<?= Bootstrap4::radioButtons('x-as', [StatisticsChartController::X_AXIS_NUMBER_OF_CHILDREN => I18N::translate('Number of children')], false, false, ['onchange' => 'statusEnable("z_sex"); statusHide("x_years"); statusHide("x_months"); statusShow("x_numbers"); statusHide("map_opt");']) ?>
+			<?= Bootstrap4::radioButtons('x-as', [StatisticsChartController::X_AXIS_INDIVIDUAL_MAP => I18N::translate('Individual distribution')], false, false, ['onchange' => 'statusHide("x_years"); statusHide("x_months"); statusHide("x_numbers"); statusShow("map_opt"); statusShow("chart_type"); statusHide("axes");']) ?>
+			<?= Bootstrap4::radioButtons('x-as', [StatisticsChartController::X_AXIS_BIRTH_MAP => I18N::translate('Birth by country')], false, false, ['onchange' => 'statusHide("x_years"); statusHide("x_months"); statusHide("x_numbers"); statusShow("map_opt"); statusHide("chart_type"); statusHide("surname_opt");']) ?>
+			<?= Bootstrap4::radioButtons('x-as', [StatisticsChartController::X_AXIS_MARRIAGE_MAP => I18N::translate('Marriage by country')], false, false, ['onchange' => 'statusHide("x_years"); statusHide("x_months"); statusHide("x_numbers"); statusShow("map_opt"); statusHide("chart_type"); statusHide("surname_opt");']) ?>
+			<?= Bootstrap4::radioButtons('x-as', [StatisticsChartController::X_AXIS_DEATH_MAP => I18N::translate('Death by country')], false, false, ['onchange' => 'statusHide("x_years"); statusHide("x_months"); statusHide("x_numbers"); statusShow("map_opt"); statusHide("chart_type"); statusHide("surname_opt");']) ?>
 
 			<div id="x_years" style="display:none;">
 				<label for="x-axis-boundaries-ages">
@@ -207,7 +207,7 @@
 		</div>
 		<div class="col-sm-4 wt-page-options-value" id="zyaxes">
 			<label>
-				<input type="radio" id="z_none" name="z-as" value="<?= StatisticsChartController::Z_AXIS_NONE ?>" onclick="statusDisable('z-axis-boundaries-periods');">
+				<input type="radio" id="z_none" name="z-as" value="<?= StatisticsChartController::Z_AXIS_ALL ?>" onclick="statusDisable('z-axis-boundaries-periods');">
 				<?= I18N::translate('overall') ?>
 			</label>
 			<br>
