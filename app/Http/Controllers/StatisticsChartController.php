@@ -20,10 +20,10 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Date\GregorianDate;
+use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Stats;
 use Fisharebest\Webtrees\Tree;
-use LogicException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -33,6 +33,10 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
  */
 class StatisticsChartController extends AbstractChartController
 {
+    // We generate a bitmap chart with these dimensions in pixels.
+    const CHART_WIDTH  = 950;
+    const CHART_HEIGHT = 300;
+
     const X_AXIS_INDIVIDUAL_MAP        = 1;
     const X_AXIS_BIRTH_MAP             = 2;
     const X_AXIS_DEATH_MAP             = 3;
@@ -53,6 +57,9 @@ class StatisticsChartController extends AbstractChartController
     const Z_AXIS_ALL  = 300;
     const Z_AXIS_SEX  = 301;
     const Z_AXIS_TIME = 302;
+
+    // First two colors are blue/pink, to work with Z_AXIS_SEX.
+    const Z_AXIS_COLORS = ['0000FF', 'FFA0CB', '9F00FF', 'FF7000', '905030', 'FF0000', '00FF00', 'F0F000'];
 
     const MONTHS = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
 
@@ -167,14 +174,14 @@ class StatisticsChartController extends AbstractChartController
         // @TODO - remove globals
         global $legend, $xdata, $ydata, $xmax, $z_boundaries;
 
-        $x_axis       = (int) $request->get('x-as');
+        $x_axis_type  = (int) $request->get('x-as');
         $y_axis       = (int) $request->get('y-as');
         $z_axis       = (int) $request->get('z-as');
         $stats        = new Stats($tree);
         $z_boundaries = [];
         $legend       = [];
 
-        switch ($x_axis) {
+        switch ($x_axis_type) {
             case self::X_AXIS_INDIVIDUAL_MAP:
                 return new Response($stats->chartDistribution([
                     $request->get('chart_shows'),
@@ -201,17 +208,17 @@ class StatisticsChartController extends AbstractChartController
                 ]));
 
             case self::X_AXIS_BIRTH_MONTH:
-                $title  = I18N::translate('Month of birth');
-                $xtitle = I18N::translate('Month');
-                $ytitle = I18N::translate('numbers');
+                $chart_title  = I18N::translate('Month of birth');
+                $x_axis_title = I18N::translate('Month');
+                $y_axis_title = I18N::translate('numbers');
 
                 $xdata = $this->xAxisMonths();
                 $xmax  = count($xdata);
 
                 if ($y_axis === self::Y_AXIS_NUMBERS) {
-                    $ytitle = I18N::translate('Individuals');
+                    $y_axis_title = I18N::translate('Individuals');
                 } elseif ($y_axis === self::Y_AXIS_PERCENT) {
-                    $ytitle = I18N::translate('percentage');
+                    $y_axis_title = I18N::translate('percentage');
                 }
 
                 if ($z_axis === self::Z_AXIS_ALL) {
@@ -229,20 +236,20 @@ class StatisticsChartController extends AbstractChartController
 
                 $this->monthOfBirth($z_axis, $z_boundaries, $stats);
 
-                return new Response($this->myPlot($title, $xdata, $xtitle, $ydata, $ytitle, $legend, $y_axis));
+                return new Response($this->myPlot($chart_title, $xdata, $x_axis_title, $ydata, $y_axis_title, $legend, $y_axis));
 
             case self::X_AXIS_DEATH_MONTH:
-                $title  = I18N::translate('Month of death');
-                $xtitle = I18N::translate('Month');
-                $ytitle = I18N::translate('numbers');
+                $chart_title  = I18N::translate('Month of death');
+                $x_axis_title = I18N::translate('Month');
+                $y_axis_title = I18N::translate('numbers');
 
                 $xdata = $this->xAxisMonths();
                 $xmax  = count($xdata);
 
                 if ($y_axis === self::Y_AXIS_NUMBERS) {
-                    $ytitle = I18N::translate('Individuals');
+                    $y_axis_title = I18N::translate('Individuals');
                 } elseif ($y_axis === self::Y_AXIS_PERCENT) {
-                    $ytitle = I18N::translate('percentage');
+                    $y_axis_title = I18N::translate('percentage');
                 }
 
                 if ($z_axis === self::Z_AXIS_ALL) {
@@ -260,20 +267,20 @@ class StatisticsChartController extends AbstractChartController
 
                 $this->monthOfDeath($z_axis, $z_boundaries, $stats, $z_axis === self::Z_AXIS_SEX);
 
-                return new Response($this->myPlot($title, $xdata, $xtitle, $ydata, $ytitle, $legend, $y_axis));
+                return new Response($this->myPlot($chart_title, $xdata, $x_axis_title, $ydata, $y_axis_title, $legend, $y_axis));
 
             case self::X_AXIS_MARRIAGE_MONTH:
-                $title  = I18N::translate('Month of marriage');
-                $xtitle = I18N::translate('Month');
-                $ytitle = I18N::translate('numbers');
+                $chart_title  = I18N::translate('Month of marriage');
+                $x_axis_title = I18N::translate('Month');
+                $y_axis_title = I18N::translate('numbers');
 
                 $xdata = $this->xAxisMonths();
                 $xmax  = count($xdata);
 
                 if ($y_axis === self::Y_AXIS_NUMBERS) {
-                    $ytitle = I18N::translate('Families');
+                    $y_axis_title = I18N::translate('Families');
                 } elseif ($y_axis === self::Y_AXIS_PERCENT) {
-                    $ytitle = I18N::translate('percentage');
+                    $y_axis_title = I18N::translate('percentage');
                 }
 
                 if ($z_axis === self::Z_AXIS_ALL) {
@@ -292,27 +299,27 @@ class StatisticsChartController extends AbstractChartController
 
                 $this->monthOfMarriage($z_axis, $z_boundaries, $stats);
 
-                return new Response($this->myPlot($title, $xdata, $xtitle, $ydata, $ytitle, $legend, $y_axis));
+                return new Response($this->myPlot($chart_title, $xdata, $x_axis_title, $ydata, $y_axis_title, $legend, $y_axis));
 
             case self::X_AXIS_FIRST_CHILD_MONTH:
-                $title  = I18N::translate('Month of birth of first child in a relation');
-                $xtitle = I18N::translate('Month');
-                $ytitle = I18N::translate('numbers');
+                $chart_title  = I18N::translate('Month of birth of first child in a relation');
+                $x_axis_title = I18N::translate('Month');
+                $y_axis_title = I18N::translate('numbers');
 
                 $xdata = $this->xAxisMonths();
                 $xmax  = count($xdata);
 
                 if ($y_axis === self::Y_AXIS_NUMBERS) {
-                    $ytitle = I18N::translate('Children');
+                    $y_axis_title = I18N::translate('Children');
                 } elseif ($y_axis === self::Y_AXIS_PERCENT) {
-                    $ytitle = I18N::translate('percentage');
+                    $y_axis_title = I18N::translate('percentage');
                 }
 
                 if ($z_axis === self::Z_AXIS_ALL) {
                     $legend       = [I18N::translate(I18N::translate('All'))];
                     $z_boundaries = [PHP_INT_MAX];
                 } elseif ($z_axis === self::Z_AXIS_SEX) {
-                    $legend = [I18N::translate('Male'), I18N::translate('Female')];
+                    $legend       = [I18N::translate('Male'), I18N::translate('Female')];
                 } elseif ($z_axis === self::Z_AXIS_TIME) {
                     $boundaries_z_axis = $request->get('z-axis-boundaries-periods');
                     $legend            = $this->calculateLegend($boundaries_z_axis);
@@ -323,20 +330,20 @@ class StatisticsChartController extends AbstractChartController
 
                 $this->monthOfBirthOfFirstChild($z_axis, $z_boundaries, $stats);
 
-                return new Response($this->myPlot($title, $xdata, $xtitle, $ydata, $ytitle, $legend, $y_axis));
+                return new Response($this->myPlot($chart_title, $xdata, $x_axis_title, $ydata, $y_axis_title, $legend, $y_axis));
 
             case self::X_AXIS_FIRST_MARRIAGE_MONTH:
-                $title  = I18N::translate('Month of first marriage');
-                $xtitle = I18N::translate('Month');
-                $ytitle = I18N::translate('numbers');
+                $chart_title  = I18N::translate('Month of first marriage');
+                $x_axis_title = I18N::translate('Month');
+                $y_axis_title = I18N::translate('numbers');
 
                 $xdata = $this->xAxisMonths();
                 $xmax  = count($xdata);
 
                 if ($y_axis === self::Y_AXIS_NUMBERS) {
-                    $ytitle = I18N::translate('Families');
+                    $y_axis_title = I18N::translate('Families');
                 } elseif ($y_axis === self::Y_AXIS_PERCENT) {
-                    $ytitle = I18N::translate('percentage');
+                    $y_axis_title = I18N::translate('percentage');
                 }
 
                 if ($z_axis === self::Z_AXIS_ALL) {
@@ -355,20 +362,20 @@ class StatisticsChartController extends AbstractChartController
 
                 $this->monthOfFirstMarriage($z_axis, $z_boundaries, $stats);
 
-                return new Response($this->myPlot($title, $xdata, $xtitle, $ydata, $ytitle, $legend, $y_axis));
+                return new Response($this->myPlot($chart_title, $xdata, $x_axis_title, $ydata, $y_axis_title, $legend, $y_axis));
 
             case self::X_AXIS_AGE_AT_DEATH:
-                $title  = I18N::translate('Average age at death');
-                $xtitle = I18N::translate('age');
-                $ytitle = I18N::translate('numbers');
+                $chart_title  = I18N::translate('Average age at death');
+                $x_axis_title = I18N::translate('age');
+                $y_axis_title = I18N::translate('numbers');
 
                 $boundaries_x_axis = $request->get('x-axis-boundaries-ages');
-                $this->calculateAxis($boundaries_x_axis);
+                $this->calculateAxis($boundaries_x_axis, $x_axis_type);
 
                 if ($y_axis === self::Y_AXIS_NUMBERS) {
-                    $ytitle = I18N::translate('Individuals');
+                    $y_axis_title = I18N::translate('Individuals');
                 } elseif ($y_axis === self::Y_AXIS_PERCENT) {
-                    $ytitle = I18N::translate('percentage');
+                    $y_axis_title = I18N::translate('percentage');
                 }
 
                 if ($z_axis === self::Z_AXIS_ALL) {
@@ -386,20 +393,20 @@ class StatisticsChartController extends AbstractChartController
 
                 $this->averageAgeAtDeath($z_axis, $z_boundaries, $stats);
 
-                return new Response($this->myPlot($title, $xdata, $xtitle, $ydata, $ytitle, $legend, $y_axis));
+                return new Response($this->myPlot($chart_title, $xdata, $x_axis_title, $ydata, $y_axis_title, $legend, $y_axis));
 
             case self::X_AXIS_AGE_AT_MARRIAGE:
-                $title  = I18N::translate('Age in year of marriage');
-                $xtitle = I18N::translate('age');
-                $ytitle = I18N::translate('numbers');
+                $chart_title  = I18N::translate('Age in year of marriage');
+                $x_axis_title = I18N::translate('age');
+                $y_axis_title = I18N::translate('numbers');
 
                 $boundaries_x_axis = $request->get('x-axis-boundaries-ages_m');
-                $this->calculateAxis($boundaries_x_axis);
+                $this->calculateAxis($boundaries_x_axis, $x_axis_type);
 
                 if ($y_axis === self::Y_AXIS_NUMBERS) {
-                    $ytitle = I18N::translate('Individuals');
+                    $y_axis_title = I18N::translate('Individuals');
                 } elseif ($y_axis === self::Y_AXIS_PERCENT) {
-                    $ytitle = I18N::translate('percentage');
+                    $y_axis_title = I18N::translate('percentage');
                 }
 
                 if ($z_axis === self::Z_AXIS_ALL) {
@@ -417,20 +424,20 @@ class StatisticsChartController extends AbstractChartController
 
                 $this->ageAtMarriage($z_axis, $z_boundaries, $stats);
 
-                return new Response($this->myPlot($title, $xdata, $xtitle, $ydata, $ytitle, $legend, $y_axis));
+                return new Response($this->myPlot($chart_title, $xdata, $x_axis_title, $ydata, $y_axis_title, $legend, $y_axis));
 
             case self::X_AXIS_AGE_AT_FIRST_MARRIAGE:
-                $title  = I18N::translate('Age in year of first marriage');
-                $xtitle = I18N::translate('age');
-                $ytitle = I18N::translate('numbers');
+                $chart_title  = I18N::translate('Age in year of first marriage');
+                $x_axis_title = I18N::translate('age');
+                $y_axis_title = I18N::translate('numbers');
 
                 $boundaries_x_axis = $request->get('x-axis-boundaries-ages_m');
-                $this->calculateAxis($boundaries_x_axis);
+                $this->calculateAxis($boundaries_x_axis, $x_axis_type);
 
                 if ($y_axis === self::Y_AXIS_NUMBERS) {
-                    $ytitle = I18N::translate('Individuals');
+                    $y_axis_title = I18N::translate('Individuals');
                 } elseif ($y_axis === self::Y_AXIS_PERCENT) {
-                    $ytitle = I18N::translate('percentage');
+                    $y_axis_title = I18N::translate('percentage');
                 }
 
                 if ($z_axis === self::Z_AXIS_ALL) {
@@ -448,20 +455,20 @@ class StatisticsChartController extends AbstractChartController
 
                 $this->ageAtFirstMarriage($z_axis, $z_boundaries, $stats);
 
-                return new Response($this->myPlot($title, $xdata, $xtitle, $ydata, $ytitle, $legend, $y_axis));
+                return new Response($this->myPlot($chart_title, $xdata, $x_axis_title, $ydata, $y_axis_title, $legend, $y_axis));
 
             case self::X_AXIS_NUMBER_OF_CHILDREN:
-                $title  = I18N::translate('Number of children');
-                $xtitle = I18N::translate('children');
-                $ytitle = I18N::translate('numbers');
+                $chart_title  = I18N::translate('Number of children');
+                $x_axis_title = I18N::translate('children');
+                $y_axis_title = I18N::translate('numbers');
 
-                $boundaries_x_axis = $request->get('x-axis-boundaries-numbers');
-                $this->calculateAxis($boundaries_x_axis);
+                $boundaries_x_axis = '1,2,3,4,5,6,7,8,9,10';
+                $this->calculateAxis($boundaries_x_axis, $x_axis_type);
 
                 if ($y_axis === self::Y_AXIS_NUMBERS) {
-                    $ytitle = I18N::translate('Families');
+                    $y_axis_title = I18N::translate('Families');
                 } elseif ($y_axis === self::Y_AXIS_PERCENT) {
-                    $ytitle = I18N::translate('percentage');
+                    $y_axis_title = I18N::translate('percentage');
                 }
 
                 if ($z_axis === self::Z_AXIS_ALL) {
@@ -469,6 +476,7 @@ class StatisticsChartController extends AbstractChartController
                     $z_boundaries = [PHP_INT_MAX];
                 } elseif ($z_axis === self::Z_AXIS_SEX) {
                     $legend = [I18N::translate('Male'), I18N::translate('Female')];
+                    $z_boundaries = $legend;
                 } elseif ($z_axis === self::Z_AXIS_TIME) {
                     $boundaries_z_axis = $request->get('z-axis-boundaries-periods');
                     $legend            = $this->calculateLegend($boundaries_z_axis);
@@ -476,10 +484,9 @@ class StatisticsChartController extends AbstractChartController
 
                 // Initialise the counts to zero.
                 $ydata = array_fill(0, count($legend), array_fill(0, $xmax, 0));
-
                 $this->numberOfChildren($z_axis, $z_boundaries, $stats);
 
-                return new Response($this->myPlot($title, $xdata, $xtitle, $ydata, $ytitle, $legend, $y_axis));
+                return new Response($this->myPlot($chart_title, $xdata, $x_axis_title, $ydata, $y_axis_title, $legend, $y_axis));
 
             default:
                 throw new NotFoundHttpException;
@@ -555,25 +562,6 @@ class StatisticsChartController extends AbstractChartController
                 $zstart = $boundary + 1;
             }
         }
-    }
-
-    /**
-     * Find the correct place in the chart for a given datapoint.
-     *
-     * @param $value
-     * @param $legend
-     *
-     * @return int|string
-     */
-    private function lookup($value, $legend)
-    {
-        foreach (array_keys($legend) as $key) {
-            if ($value <= $key) {
-                return $key;
-            }
-        }
-
-        throw new LogicException('Found data outside range of expected values');
     }
 
     /**
@@ -950,6 +938,7 @@ class StatisticsChartController extends AbstractChartController
     private function fillYData($z, $x, $val, bool $xgiven, bool $zgiven)
     {
         global $ydata, $xmax, $x_boundaries, $zmax, $z_boundaries;
+
         //-- calculate index $i out of given z value
         //-- calculate index $j out of given x value
         if ($xgiven) {
@@ -980,18 +969,34 @@ class StatisticsChartController extends AbstractChartController
      *
      * @param string   $chart_title
      * @param int[][]  $xdata
-     * @param string   $xtitle
+     * @param string   $x_axis_title
      * @param int[][]  $ydata
-     * @param string   $ytitle
+     * @param string   $y_axis_title
      * @param string[] $legend
      * @param int      $y_axis
      *
      * @return string
      */
-    private function myPlot(string $chart_title, array $xdata, string $xtitle, array $ydata, string $ytitle, array $legend, int $y_axis): string
+    private function myPlot(string $chart_title, array $xdata, string $x_axis_title, array $ydata, string $y_axis_title, array $legend, int $y_axis): string
     {
-        $stop = count($ydata);
+        // Bar dimensions
+        if (count($ydata) > 3) {
+            $chbh = '5,1';
+        } elseif (count($ydata) < 2) {
+            $chbh = '45,1';
+        } else {
+            $chbh = '20,3';
+        }
 
+        // Colors for z-axis
+        $colors = [];
+        $index  = 0;
+        while (count($colors) < count($ydata)) {
+            $colors[] = self::Z_AXIS_COLORS[$index];
+            $index    = ($index + 1) % count(self::Z_AXIS_COLORS);
+        }
+
+        // The chart data
         if ($y_axis === self::Y_AXIS_PERCENT) {
             // Normalise each (non-zero!) set of data to total 100%
             array_walk($ydata, function (array &$x) {
@@ -1013,94 +1018,64 @@ class StatisticsChartController extends AbstractChartController
             array_walk_recursive($ydata, function (& $n) use ($scalefactor) { $n *= $scalefactor; });
         }
 
-        $datastring = 'chd=t:' . implode('|', array_map(function (array $x) { return implode(',', $x); }, $ydata));
-
-        $colors = [
-            '0000FF',
-            'FFA0CB',
-            '9F00FF',
-            'FF7000',
-            '905030',
-            'FF0000',
-            '00FF00',
-            'F0F000',
-        ];
-
-        $colorstring = 'chco=';
-        for ($i = 0; $i < $stop; $i++) {
-            if (isset($colors[$i])) {
-                $colorstring .= $colors[$i];
-                if ($i !== ($stop - 1)) {
-                    $colorstring .= ',';
-                }
-            }
-        }
-
-        $imgurl = 'https://chart.googleapis.com/chart?cht=bvg&amp;chs=950x300&amp;chf=bg,s,ffffff00|c,s,ffffff00&amp;chtt=' . rawurlencode($chart_title) . '&amp;' . $datastring . '&amp;' . $colorstring . '&amp;chbh=';
-        if (count($ydata) > 3) {
-            $imgurl .= '5,1';
-        } elseif (count($ydata) < 2) {
-            $imgurl .= '45,1';
-        } else {
-            $imgurl .= '20,3';
-        }
-        $imgurl .= '&amp;chxt=x,x,y,y&amp;chxl=0:|';
-        foreach ($xdata as $data) {
-            $imgurl .= rawurlencode($data) . '|';
-        }
-
-        $imgurl .= '1:||||' . rawurlencode($xtitle) . '|2:|';
-        $imgurl .= '0|';
+        // Lables for the two axes.
+        $x_axis_labels = implode('|', $xdata);
+        $y_axis_labels = '';
 
         if ($y_axis === self::Y_AXIS_PERCENT) {
             for ($i = 1; $i < 11; $i++) {
                 if ($ymax < 11) {
-                    $imgurl .= round($ymax * $i / 10, 1) . '|';
+                    $y_axis_labels .= round($ymax * $i / 10, 1) . '|';
                 } else {
-                    $imgurl .= round($ymax * $i / 10, 0) . '|';
+                    $y_axis_labels .= round($ymax * $i / 10, 0) . '|';
                 }
             }
-            $imgurl .= '3:||%|';
+            $y_axis_labels .= '3:||%|';
         } elseif ($y_axis === self::Y_AXIS_NUMBERS) {
             if ($ymax < 11) {
                 for ($i = 1; $i < $ymax + 1; $i++) {
-                    $imgurl .= round($ymax * $i / ($ymax), 0) . '|';
+                    $y_axis_labels .= round($ymax * $i / ($ymax), 0) . '|';
                 }
             } else {
                 for ($i = 1; $i < 11; $i++) {
-                    $imgurl .= round($ymax * $i / 10, 0) . '|';
+                    $y_axis_labels .= round($ymax * $i / 10, 0) . '|';
                 }
             }
-            $imgurl .= '3:||' . rawurlencode($ytitle) . '|';
+            $y_axis_labels .= '3:||' . $y_axis_title . '|';
         }
 
-        // Only show legend if y-data is non-2-dimensional
-        if (count($ydata) > 1) {
-            $imgurl .= '&amp;chdl=';
-            foreach ($legend as $i => $data) {
-                if ($i > 0) {
-                    $imgurl .= '|';
-                }
-                $imgurl .= rawurlencode($data);
-            }
-        }
+        $attributes = [
+            'chbh' => $chbh,
+            'chd'  => 't:' . implode('|', array_map(function (array $x) { return implode(',', $x); }, $ydata)),
+            'chdl' => count($legend) > 1 ? implode('|', $legend) : '',
+            'chf'  => 'bg,s,ffffff00|c,s,ffffff00',
+            'chco' => implode(',', $colors),
+            'chs'  => self::CHART_WIDTH . 'x' . self::CHART_HEIGHT,
+            'cht'  => 'bvg',
+            'chtt' => $chart_title,
+            'chxl' => '0:|' . $x_axis_labels . '|1:||||' . $x_axis_title  . '|2:|0|' . $y_axis_labels,
+            'chxt' => 'x,x,y,y',
+        ];
 
-        return '<img src="' . $imgurl . '" width="950" height="300" alt="' . e($chart_title) . '">';
+        $url = Html::url('https://chart.googleapis.com/chart', $attributes);
+
+        return '<img src="' . e($url) . '" width="' . self::CHART_WIDTH . '" height="' . self::CHART_HEIGHT . '" alt="' . e($chart_title) . '">';
     }
 
     /**
      * Create the X axis.
      *
      * @param string $x_axis_boundaries
+     * @param int    $x_axis_type
      */
-    private function calculateAxis($x_axis_boundaries)
+    private function calculateAxis(string $x_axis_boundaries, int $x_axis_type)
     {
-        global $x_axis, $xdata, $xmax, $x_boundaries;
+        global $xdata, $xmax, $x_boundaries;
 
         // Calculate xdata and zdata elements out of chart values
         $hulpar = explode(',', $x_axis_boundaries);
         $i      = 1;
-        if ($x_axis === 21 && $hulpar[0] == 1) {
+        if ($x_axis_type === self::X_AXIS_NUMBER_OF_CHILDREN && $hulpar[0] == 1) {
             $xdata[0] = 0;
         } else {
             $xdata[0] = $this->formatRangeOfNumbers(0, $hulpar[0]);
