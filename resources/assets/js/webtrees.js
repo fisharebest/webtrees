@@ -321,22 +321,6 @@ function timeout_submenu (elementid) {
   }
 }
 
-function statusDisable (sel) {
-  var cbox = document.getElementById(sel);
-  cbox.checked = false;
-  cbox.disabled = true;
-}
-
-function statusEnable (sel) {
-  var cbox = document.getElementById(sel);
-  cbox.disabled = false;
-}
-
-function statusChecked (sel) {
-  var cbox = document.getElementById(sel);
-  cbox.checked = true;
-}
-
 var monthLabels = [];
 monthLabels[1] = 'January';
 monthLabels[2] = 'February';
