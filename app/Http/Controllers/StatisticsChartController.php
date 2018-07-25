@@ -30,12 +30,17 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * A chart showing the various statistics about the family tree.
+ *
+ * CAUTION - The google image charts (bitmap) API is deprecated.
+ * We need to migrate to the charts API (which uses SVG).
  */
 class StatisticsChartController extends AbstractChartController
 {
-    // We generate a bitmap chart with these dimensions in pixels.
+    // We generate a bitmap chart with these dimensions in image pixels.
+    // These set the aspect ratio.  The actual image is sized using CSS
+    // The maximum size (width x height) is 300,000
     const CHART_WIDTH  = 950;
-    const CHART_HEIGHT = 300;
+    const CHART_HEIGHT = 315;
 
     const X_AXIS_INDIVIDUAL_MAP        = 1;
     const X_AXIS_BIRTH_MAP             = 2;
@@ -172,7 +177,7 @@ class StatisticsChartController extends AbstractChartController
         $this->checkModuleIsActive($tree, 'statistics_chart');
 
         // @TODO - remove globals
-        global $xdata, $ydata, $xmax, $z_boundaries, $zmax;
+        global $x_axis, $ydata, $xmax, $z_boundaries, $zmax;
 
         $x_axis_type = (int) $request->get('x-as');
         $y_axis_type = (int) $request->get('y-as');
@@ -209,8 +214,8 @@ class StatisticsChartController extends AbstractChartController
                 $chart_title  = I18N::translate('Month of birth');
                 $x_axis_title = I18N::translate('Month');
 
-                $xdata = $this->xAxisMonths();
-                $xmax  = count($xdata);
+                $x_axis = $this->xAxisMonths();
+                $xmax   = count($x_axis);
 
                 switch ($y_axis_type) {
                     case self::Y_AXIS_NUMBERS:
@@ -242,18 +247,18 @@ class StatisticsChartController extends AbstractChartController
                 $zmax         = count($z_axis);
 
                 // Initialise the counts to zero.
-                $ydata = array_fill(0, count($z_axis), array_fill(0, count($xdata), 0));
+                $ydata = array_fill(0, count($z_axis), array_fill(0, count($x_axis), 0));
 
                 $this->monthOfBirth($z_axis_type, $z_boundaries, $stats);
 
-                return new Response($this->myPlot($chart_title, $xdata, $x_axis_title, $ydata, $y_axis_title, $z_axis, $y_axis_type));
+                return new Response($this->myPlot($chart_title, $x_axis, $x_axis_title, $ydata, $y_axis_title, $z_axis, $y_axis_type));
 
             case self::X_AXIS_DEATH_MONTH:
                 $chart_title  = I18N::translate('Month of death');
                 $x_axis_title = I18N::translate('Month');
 
-                $xdata = $this->xAxisMonths();
-                $xmax  = count($xdata);
+                $x_axis = $this->xAxisMonths();
+                $xmax   = count($x_axis);
 
                 switch ($y_axis_type) {
                     case self::Y_AXIS_NUMBERS:
@@ -285,18 +290,18 @@ class StatisticsChartController extends AbstractChartController
                 $zmax         = count($z_axis);
 
                 // Initialise the counts to zero.
-                $ydata = array_fill(0, count($z_axis), array_fill(0, count($xdata), 0));
+                $ydata = array_fill(0, count($z_axis), array_fill(0, count($x_axis), 0));
 
                 $this->monthOfDeath($z_axis_type, $z_boundaries, $stats, $z_axis_type === self::Z_AXIS_SEX);
 
-                return new Response($this->myPlot($chart_title, $xdata, $x_axis_title, $ydata, $y_axis_title, $z_axis, $y_axis_type));
+                return new Response($this->myPlot($chart_title, $x_axis, $x_axis_title, $ydata, $y_axis_title, $z_axis, $y_axis_type));
 
             case self::X_AXIS_MARRIAGE_MONTH:
                 $chart_title  = I18N::translate('Month of marriage');
                 $x_axis_title = I18N::translate('Month');
 
-                $xdata = $this->xAxisMonths();
-                $xmax  = count($xdata);
+                $x_axis = $this->xAxisMonths();
+                $xmax   = count($x_axis);
 
                 switch ($y_axis_type) {
                     case self::Y_AXIS_NUMBERS:
@@ -311,7 +316,7 @@ class StatisticsChartController extends AbstractChartController
 
                 switch ($z_axis_type) {
                     case self::Z_AXIS_ALL:
-                        $z_axis       = [I18N::translate(I18N::translate('All'))];
+                        $z_axis = [I18N::translate(I18N::translate('All'))];
                         break;
                     case self::Z_AXIS_TIME:
                         $boundaries_csv = $request->get('z-axis-boundaries-periods');
@@ -321,22 +326,22 @@ class StatisticsChartController extends AbstractChartController
                         throw new NotFoundHttpException;
                 }
 
-                $z_boundaries   = array_keys($z_axis);
-                $zmax           = count($z_axis);
+                $z_boundaries = array_keys($z_axis);
+                $zmax         = count($z_axis);
 
                 // Initialise the counts to zero.
-                $ydata = array_fill(0, count($z_axis), array_fill(0, count($xdata), 0));
+                $ydata = array_fill(0, count($z_axis), array_fill(0, count($x_axis), 0));
 
                 $this->monthOfMarriage($z_axis_type, $z_boundaries, $stats);
 
-                return new Response($this->myPlot($chart_title, $xdata, $x_axis_title, $ydata, $y_axis_title, $z_axis, $y_axis_type));
+                return new Response($this->myPlot($chart_title, $x_axis, $x_axis_title, $ydata, $y_axis_title, $z_axis, $y_axis_type));
 
             case self::X_AXIS_FIRST_CHILD_MONTH:
                 $chart_title  = I18N::translate('Month of birth of first child in a relation');
                 $x_axis_title = I18N::translate('Month');
 
-                $xdata = $this->xAxisMonths();
-                $xmax  = count($xdata);
+                $x_axis = $this->xAxisMonths();
+                $xmax   = count($x_axis);
 
                 switch ($y_axis_type) {
                     case self::Y_AXIS_NUMBERS:
@@ -351,8 +356,7 @@ class StatisticsChartController extends AbstractChartController
 
                 switch ($z_axis_type) {
                     case self::Z_AXIS_ALL:
-                        $z_axis       = [I18N::translate(I18N::translate('All'))];
-                        $z_boundaries = [PHP_INT_MAX];
+                        $z_axis = [I18N::translate(I18N::translate('All'))];
                         break;
                     case self::Z_AXIS_SEX:
                         $z_axis = [I18N::translate('Male'), I18N::translate('Female')];
@@ -365,22 +369,22 @@ class StatisticsChartController extends AbstractChartController
                         throw new NotFoundHttpException;
                 }
 
-                $z_boundaries   = array_keys($z_axis);
-                $zmax           = count($z_axis);
+                $z_boundaries = array_keys($z_axis);
+                $zmax         = count($z_axis);
 
                 // Initialise the counts to zero.
-                $ydata = array_fill(0, count($z_axis), array_fill(0, count($xdata), 0));
+                $ydata = array_fill(0, count($z_axis), array_fill(0, count($x_axis), 0));
 
                 $this->monthOfBirthOfFirstChild($z_axis_type, $z_boundaries, $stats);
 
-                return new Response($this->myPlot($chart_title, $xdata, $x_axis_title, $ydata, $y_axis_title, $z_axis, $y_axis_type));
+                return new Response($this->myPlot($chart_title, $x_axis, $x_axis_title, $ydata, $y_axis_title, $z_axis, $y_axis_type));
 
             case self::X_AXIS_FIRST_MARRIAGE_MONTH:
                 $chart_title  = I18N::translate('Month of first marriage');
                 $x_axis_title = I18N::translate('Month');
 
-                $xdata = $this->xAxisMonths();
-                $xmax  = count($xdata);
+                $x_axis = $this->xAxisMonths();
+                $xmax   = count($x_axis);
 
                 switch ($y_axis_type) {
                     case self::Y_AXIS_NUMBERS:
@@ -395,8 +399,7 @@ class StatisticsChartController extends AbstractChartController
 
                 switch ($z_axis_type) {
                     case self::Z_AXIS_ALL:
-                        $z_axis       = [I18N::translate(I18N::translate('All'))];
-                        $z_boundaries = [PHP_INT_MAX];
+                        $z_axis = [I18N::translate(I18N::translate('All'))];
                         break;
                     case self::Z_AXIS_TIME:
                         $boundaries_csv = $request->get('z-axis-boundaries-periods');
@@ -406,22 +409,22 @@ class StatisticsChartController extends AbstractChartController
                         throw new NotFoundHttpException;
                 }
 
-                $z_boundaries   = array_keys($z_axis);
-                $zmax           = count($z_axis);
+                $z_boundaries = array_keys($z_axis);
+                $zmax         = count($z_axis);
 
                 // Initialise the counts to zero.
-                $ydata = array_fill(0, count($z_axis), array_fill(0, count($xdata), 0));
+                $ydata = array_fill(0, count($z_axis), array_fill(0, count($x_axis), 0));
 
                 $this->monthOfFirstMarriage($z_axis_type, $z_boundaries, $stats);
 
-                return new Response($this->myPlot($chart_title, $xdata, $x_axis_title, $ydata, $y_axis_title, $z_axis, $y_axis_type));
+                return new Response($this->myPlot($chart_title, $x_axis, $x_axis_title, $ydata, $y_axis_title, $z_axis, $y_axis_type));
 
             case self::X_AXIS_AGE_AT_DEATH:
                 $chart_title  = I18N::translate('Average age at death');
                 $x_axis_title = I18N::translate('age');
 
                 $boundaries_x_axis = $request->get('x-axis-boundaries-ages');
-                $xdata             = $this->calculateAxis($boundaries_x_axis, $x_axis_type);
+                $x_axis            = $this->calculateAxis($boundaries_x_axis, $x_axis_type);
 
                 switch ($y_axis_type) {
                     case self::Y_AXIS_NUMBERS:
@@ -436,8 +439,7 @@ class StatisticsChartController extends AbstractChartController
 
                 switch ($z_axis_type) {
                     case self::Z_AXIS_ALL:
-                        $z_axis       = [I18N::translate(I18N::translate('All'))];
-                        $z_boundaries = [PHP_INT_MAX];
+                        $z_axis = [I18N::translate(I18N::translate('All'))];
                         break;
                     case self::Z_AXIS_SEX:
                         $z_axis = [I18N::translate('Male'), I18N::translate('Female')];
@@ -450,22 +452,22 @@ class StatisticsChartController extends AbstractChartController
                         throw new NotFoundHttpException;
                 }
 
-                $z_boundaries   = array_keys($z_axis);
-                $zmax           = count($z_axis);
+                $z_boundaries = array_keys($z_axis);
+                $zmax         = count($z_axis);
 
                 // Initialise the counts to zero.
-                $ydata = array_fill(0, count($z_axis), array_fill(0, count($xdata), 0));
+                $ydata = array_fill(0, count($z_axis), array_fill(0, count($x_axis), 0));
 
                 $this->averageAgeAtDeath($z_axis_type, $z_boundaries, $stats);
 
-                return new Response($this->myPlot($chart_title, $xdata, $x_axis_title, $ydata, $y_axis_title, $z_axis, $y_axis_type));
+                return new Response($this->myPlot($chart_title, $x_axis, $x_axis_title, $ydata, $y_axis_title, $z_axis, $y_axis_type));
 
             case self::X_AXIS_AGE_AT_MARRIAGE:
                 $chart_title  = I18N::translate('Age in year of marriage');
                 $x_axis_title = I18N::translate('age');
 
                 $boundaries_x_axis = $request->get('x-axis-boundaries-ages_m');
-                $xdata             = $this->calculateAxis($boundaries_x_axis, $x_axis_type);
+                $x_axis            = $this->calculateAxis($boundaries_x_axis, $x_axis_type);
 
                 switch ($y_axis_type) {
                     case self::Y_AXIS_NUMBERS:
@@ -480,8 +482,7 @@ class StatisticsChartController extends AbstractChartController
 
                 switch ($z_axis_type) {
                     case self::Z_AXIS_ALL:
-                        $z_axis       = [I18N::translate(I18N::translate('All'))];
-                        $z_boundaries = [PHP_INT_MAX];
+                        $z_axis = [I18N::translate(I18N::translate('All'))];
                         break;
                     case self::Z_AXIS_SEX:
                         $z_axis = [I18N::translate('Male'), I18N::translate('Female')];
@@ -494,27 +495,26 @@ class StatisticsChartController extends AbstractChartController
                         throw new NotFoundHttpException;
                 }
 
-                $z_boundaries   = array_keys($z_axis);
-                $zmax           = count($z_axis);
+                $z_boundaries = array_keys($z_axis);
+                $zmax         = count($z_axis);
 
                 // Initialise the counts to zero.
                 $ydata = array_fill(0, count($z_axis), array_fill(0, $xmax, 0));
 
                 $this->ageAtMarriage($z_axis_type, $z_boundaries, $stats);
 
-                return new Response($this->myPlot($chart_title, $xdata, $x_axis_title, $ydata, $y_axis_title, $z_axis, $y_axis_type));
+                return new Response($this->myPlot($chart_title, $x_axis, $x_axis_title, $ydata, $y_axis_title, $z_axis, $y_axis_type));
 
             case self::X_AXIS_AGE_AT_FIRST_MARRIAGE:
                 $chart_title  = I18N::translate('Age in year of first marriage');
                 $x_axis_title = I18N::translate('age');
 
                 $boundaries_x_axis = $request->get('x-axis-boundaries-ages_m');
-                $xdata             = $this->calculateAxis($boundaries_x_axis, $x_axis_type);
+                $x_axis            = $this->calculateAxis($boundaries_x_axis, $x_axis_type);
 
                 switch ($y_axis_type) {
                     case self::Y_AXIS_NUMBERS:
                         $y_axis_title = I18N::translate('Individuals');
-                        $z_boundaries = [PHP_INT_MAX];
                         break;
                     case self::Y_AXIS_PERCENT:
                         $y_axis_title = '%';
@@ -525,8 +525,7 @@ class StatisticsChartController extends AbstractChartController
 
                 switch ($z_axis_type) {
                     case self::Z_AXIS_ALL:
-                        $z_axis       = [I18N::translate(I18N::translate('All'))];
-                        $z_boundaries = [PHP_INT_MAX];
+                        $z_axis = [I18N::translate(I18N::translate('All'))];
                         break;
                     case self::Z_AXIS_SEX:
                         $z_axis = [I18N::translate('Male'), I18N::translate('Female')];
@@ -539,22 +538,22 @@ class StatisticsChartController extends AbstractChartController
                         throw new NotFoundHttpException;
                 }
 
-                $z_boundaries   = array_keys($z_axis);
-                $zmax           = count($z_axis);
+                $z_boundaries = array_keys($z_axis);
+                $zmax         = count($z_axis);
 
                 // Initialise the counts to zero.
                 $ydata = array_fill(0, count($z_axis), array_fill(0, $xmax, 0));
 
                 $this->ageAtFirstMarriage($z_axis_type, $z_boundaries, $stats);
 
-                return new Response($this->myPlot($chart_title, $xdata, $x_axis_title, $ydata, $y_axis_title, $z_axis, $y_axis_type));
+                return new Response($this->myPlot($chart_title, $x_axis, $x_axis_title, $ydata, $y_axis_title, $z_axis, $y_axis_type));
 
             case self::X_AXIS_NUMBER_OF_CHILDREN:
                 $chart_title  = I18N::translate('Number of children');
                 $x_axis_title = I18N::translate('Children');
 
                 $boundaries_x_axis = '1,2,3,4,5,6,7,8,9,10';
-                $xdata             = $this->calculateAxis($boundaries_x_axis, $x_axis_type);
+                $x_axis            = $this->calculateAxis($boundaries_x_axis, $x_axis_type);
 
                 switch ($y_axis_type) {
                     case self::Y_AXIS_NUMBERS:
@@ -569,8 +568,7 @@ class StatisticsChartController extends AbstractChartController
 
                 switch ($z_axis_type) {
                     case self::Z_AXIS_ALL:
-                        $z_axis       = [I18N::translate(I18N::translate('All'))];
-                        $z_boundaries = [PHP_INT_MAX];
+                        $z_axis = [I18N::translate(I18N::translate('All'))];
                         break;
                     case self::Z_AXIS_TIME:
                         $boundaries_csv = $request->get('z-axis-boundaries-periods');
@@ -580,14 +578,14 @@ class StatisticsChartController extends AbstractChartController
                         throw new NotFoundHttpException;
                 }
 
-                $z_boundaries   = array_keys($z_axis);
-                $zmax           = count($z_axis);
+                $z_boundaries = array_keys($z_axis);
+                $zmax         = count($z_axis);
 
                 // Initialise the counts to zero.
                 $ydata = array_fill(0, count($z_axis), array_fill(0, $xmax, 0));
                 $this->numberOfChildren($z_axis_type, $z_boundaries, $stats);
 
-                return new Response($this->myPlot($chart_title, $xdata, $x_axis_title, $ydata, $y_axis_title, $z_axis, $y_axis_type));
+                return new Response($this->myPlot($chart_title, $x_axis, $x_axis_title, $ydata, $y_axis_title, $z_axis, $y_axis_type));
 
             default:
                 throw new NotFoundHttpException;
@@ -1040,11 +1038,6 @@ class StatisticsChartController extends AbstractChartController
     {
         global $ydata, $xmax, $x_boundaries, $zmax, $z_boundaries;
 
-        if ($xgiven === false) {
-            //var_dump($xgiven, $x, $x_boundaries);
-            //exit;
-        }
-
         //-- calculate index $i out of given z value
         //-- calculate index $j out of given x value
         if ($xgiven) {
@@ -1075,7 +1068,7 @@ class StatisticsChartController extends AbstractChartController
      * Plot the data.
      *
      * @param string   $chart_title
-     * @param int[]    $xdata
+     * @param int[]    $x_axis
      * @param string   $x_axis_title
      * @param int[][]  $ydata
      * @param string   $y_axis_title
@@ -1084,7 +1077,7 @@ class StatisticsChartController extends AbstractChartController
      *
      * @return string
      */
-    private function myPlot(string $chart_title, array $xdata, string $x_axis_title, array $ydata, string $y_axis_title, array $z_axis, int $y_axis_type): string
+    private function myPlot(string $chart_title, array $x_axis, string $x_axis_title, array $ydata, string $y_axis_title, array $z_axis, int $y_axis_type): string
     {
         // Bar dimensions
         if (count($ydata) > 3) {
@@ -1116,7 +1109,6 @@ class StatisticsChartController extends AbstractChartController
 
         // Find the maximum value, so we can draw the scale
         $ymax = max(array_map(function (array $x) { return max($x); }, $ydata));
-
         // Google charts API requires data to be scaled 0 - 100.
         $scale = max(array_map(function (array $x) { return max($x); }, $ydata));
 
@@ -1126,7 +1118,7 @@ class StatisticsChartController extends AbstractChartController
         }
 
         // Lables for the two axes.
-        $x_axis_labels = implode('|', $xdata);
+        $x_axis_labels = implode('|', $x_axis);
         $y_axis_labels = '';
 
         // Draw 10 intervals on the Y axis.
@@ -1139,7 +1131,7 @@ class StatisticsChartController extends AbstractChartController
                 }
             }
         } elseif ($y_axis_type === self::Y_AXIS_NUMBERS) {
-            for ($i = 1; $i < $ymax + 1; $i++) {
+            for ($i = 1; $i < 11; $i++) {
                 if ($ymax < 11) {
                     $y_axis_labels .= round($ymax * $i / ($ymax), 0) . '|';
                 } else {
@@ -1167,7 +1159,7 @@ class StatisticsChartController extends AbstractChartController
 
         $url = Html::url('https://chart.googleapis.com/chart', $attributes);
 
-        return '<img src="' . e($url) . '" width="' . self::CHART_WIDTH . '" height="' . self::CHART_HEIGHT . '" alt="' . e($chart_title) . '">';
+        return '<img src="' . e($url) . '" class="img-fluid" alt="' . e($chart_title) . '">';
     }
 
     /**
@@ -1186,38 +1178,38 @@ class StatisticsChartController extends AbstractChartController
         $hulpar = explode(',', $x_axis_boundaries);
         $i      = 1;
         if ($x_axis_type === self::X_AXIS_NUMBER_OF_CHILDREN && $hulpar[0] == 1) {
-            $xdata[0] = 0;
+            $axis[0] = 0;
         } else {
-            $xdata[0] = $this->formatRangeOfNumbers(0, $hulpar[0]);
+            $axis[0] = $this->formatRangeOfNumbers(0, $hulpar[0]);
         }
         $x_boundaries[0] = $hulpar[0] - 1;
         while (isset($hulpar[$i])) {
             $i1 = $i - 1;
             if (($hulpar[$i] - $hulpar[$i1]) === 1) {
-                $xdata[$i]        = $hulpar[$i1];
+                $axis[$i]         = $hulpar[$i1];
                 $x_boundaries[$i] = $hulpar[$i1];
             } elseif ($hulpar[$i1] === $hulpar[0]) {
-                $xdata[$i]        = $this->formatRangeOfNumbers($hulpar[$i1], $hulpar[$i]);
+                $axis[$i]         = $this->formatRangeOfNumbers($hulpar[$i1], $hulpar[$i]);
                 $x_boundaries[$i] = $hulpar[$i];
             } else {
-                $xdata[$i]        = $this->formatRangeOfNumbers($hulpar[$i1] + 1, $hulpar[$i]);
+                $axis[$i]         = $this->formatRangeOfNumbers($hulpar[$i1] + 1, $hulpar[$i]);
                 $x_boundaries[$i] = $hulpar[$i];
             }
             $i++;
         }
-        $xdata[$i]        = $hulpar[$i - 1];
+        $axis[$i]         = $hulpar[$i - 1];
         $x_boundaries[$i] = $hulpar[$i - 1];
         if ($hulpar[$i - 1] === $i) {
             $xmax = $i + 1;
         } else {
             $xmax = $i;
         }
-        $xdata[$xmax]        = /* I18N: Label on a graph; 40+ means 40 or more */
+        $axis[$xmax]         = /* I18N: Label on a graph; 40+ means 40 or more */
             I18N::translate('%s+', I18N::number($hulpar[$i - 1]));
         $x_boundaries[$xmax] = PHP_INT_MAX;
         $xmax                = $xmax + 1;
 
-        return $xdata;
+        return $axis;
     }
 
     /**

@@ -211,7 +211,7 @@ use Fisharebest\Webtrees\I18N; ?>
         <div class="col-sm-4 wt-page-options-value" id="zyaxes">
             <label>
                 <input type="radio" id="z_none" name="z-as" value="<?= StatisticsChartController::Z_AXIS_ALL ?>" onclick="statusDisable('z-axis-boundaries-periods');">
-                <?= I18N::translate('overall') ?>
+                <?= I18N::translate('none') ?>
             </label>
             <br>
             <label>
