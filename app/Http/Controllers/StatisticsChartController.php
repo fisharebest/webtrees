@@ -1121,22 +1121,21 @@ class StatisticsChartController extends AbstractChartController
         $x_axis_labels = implode('|', $x_axis);
         $y_axis_labels = '';
 
-        // Draw 10 intervals on the Y axis.
         if ($y_axis_type === self::Y_AXIS_PERCENT) {
-            for ($i = 1; $i < 11; $i++) {
-                if ($ymax < 11) {
-                    $y_axis_labels .= round($ymax * $i / 10, 1) . '|';
+            // Draw 10 intervals on the Y axis.
+            $intervals = 10;
+            for ($i = 1; $i <= $intervals; $i++) {
+                if ($ymax <= 20.0) {
+                    $y_axis_labels .= round($ymax * $i / $intervals, 1) . '|';
                 } else {
-                    $y_axis_labels .= round($ymax * $i / 10, 0) . '|';
+                    $y_axis_labels .= round($ymax * $i / $intervals, 0) . '|';
                 }
             }
         } elseif ($y_axis_type === self::Y_AXIS_NUMBERS) {
-            for ($i = 1; $i < 11; $i++) {
-                if ($ymax < 11) {
-                    $y_axis_labels .= round($ymax * $i / ($ymax), 0) . '|';
-                } else {
-                    $y_axis_labels .= round($ymax * $i / 10, 0) . '|';
-                }
+            // Draw up to 10 intervals on the Y axis.
+            $intervals = min(10, $ymax);
+            for ($i = 1; $i <= $intervals; $i++) {
+                $y_axis_labels .= round($ymax * $i / $intervals, 0) . '|';
             }
         }
 
