@@ -821,7 +821,7 @@ class StatisticsChartController extends AbstractChartController
      * Some are direct lookup (e.g. M/F, JAN/FEB/MAR).
      * Others need to find the approprate range.
      *
-     * @param int/float/string $value
+     * @param int|float|string $value
      * @param string[]         $axis
      *
      * @return int|string
