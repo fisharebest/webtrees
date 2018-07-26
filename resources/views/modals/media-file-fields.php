@@ -9,15 +9,15 @@
 	<div class="col-sm-10">
 		<select class="form-control" id="file-location" name="file_location">
 			<option value="upload">
-				<?= I18N::translate('a file on your computer') ?>
+				<?= I18N::translate('A file on your computer') ?>
 			</option>
 			<?php if (!empty($unused_files)): ?>
 			<option value="unused">
-				<?= I18N::translate('a file on the server') ?>
+				<?= I18N::translate('A file on the server') ?>
 			</option>
 			<?php endif ?>
 			<option value="url">
-				<?= I18N::translate('a URL') ?>
+				<?= /* I18N: URL = web address */ I18N::translate('A URL') ?>
 			</option>
 		</select>
 	</div>
