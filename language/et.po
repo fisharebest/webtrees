@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-07-26 23:06+0100\n"
-"PO-Revision-Date: 2018-07-27 05:42+0000\n"
+"PO-Revision-Date: 2018-07-27 17:59+0000\n"
 "Last-Translator: Jorgen V <jorgenchip@gmail.com>\n"
 "Language-Team: Estonian <https://translate.webtrees.net/projects/webtrees/webtrees/et/>\n"
 "Language: et\n"
@@ -6257,7 +6257,7 @@ msgstr "Lipp"
 #: resources/views/admin/locations.php:47
 #, php-format
 msgid "Flag of %s"
-msgstr ""
+msgstr "%s lipp"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:7564
@@ -8520,7 +8520,7 @@ msgstr "Kaart"
 #: resources/views/admin/control-panel.php:487
 #: resources/views/admin/map-provider.php:12
 msgid "Map provider"
-msgstr ""
+msgstr "Kaarditeenuse pakkuja"
 
 #: app/Date/CalendarDate.php:361
 msgctxt "Abbreviation for March"
@@ -9834,7 +9834,7 @@ msgstr "Nende kahe isiku vahel seost ei leitud."
 #: resources/views/modules/pedigree-map/pedigree-map.php:81
 #: resources/views/modules/places/tab.php:77 resources/views/place-map.php:84
 msgid "No mappable items"
-msgstr ""
+msgstr "Pole kaardistatavaid üksuseid"
 
 #: resources/views/admin/merge-records-step-2.php:51
 #: resources/views/admin/merge-records-step-2.php:98
@@ -10840,7 +10840,7 @@ msgstr "Asukohad peaksid olema siseastatud genealoogia standarditele vastavalt. 
 
 #: resources/views/places-page.php:26
 msgid "Places without valid co-ordinates are not shown on the map and have a red border around the sidebar entry"
-msgstr ""
+msgstr "Kohtasid, millel ei ole kehtivaid kordinaate kaardil ei näidata, külgmenüüs on need tähistatud punase äärisega"
 
 #: app/Theme/CloudsTheme.php:48 app/Theme/FabTheme.php:76
 #: app/Theme/MinimalTheme.php:46 app/Theme/XeneaTheme.php:46
@@ -11602,7 +11602,7 @@ msgstr "Uurimisülesandeid hoiustatakse kasutades erilist GEDCOM-i silti \"_TODO
 #: resources/views/modules/pedigree-map/pedigree-map.php:80
 #: resources/views/modules/places/tab.php:76 resources/views/place-map.php:83
 msgid "Reset to initial map state"
-msgstr ""
+msgstr "Taasta kaardi algseis"
 
 #. I18N: gedcom tag RESI
 #: app/GedcomTag.php:961
@@ -12534,7 +12534,7 @@ msgstr "Näita pilte"
 
 #: app/Http/Controllers/PlaceHierarchyController.php:74
 msgid "Show place hierarchy"
-msgstr ""
+msgstr "Näita koha hierarhiat"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-privacy.php:146
@@ -12588,7 +12588,7 @@ msgstr "Näita %1$s %2$s osasid kohanimest."
 #. I18N: Description of the “OSM” module
 #: app/Module/PedigreeMapModule.php:71
 msgid "Show the birthplace of ancestors on a map."
-msgstr ""
+msgstr "Näita esivanemate sünnikohtasid kaardil."
 
 #: resources/views/modules/html/config.php:41
 msgid "Show the date and time of update"
@@ -12614,7 +12614,7 @@ msgstr "Näita perekonnanimede nimekirja"
 #. I18N: Description of the “OSM” module
 #: app/Module/PlacesModule.php:52
 msgid "Show the location of events on a map."
-msgstr ""
+msgstr "Näita sündmuste asukohtasid kaardil."
 
 #. I18N: label for a yes/no option
 #: resources/views/modules/recent_changes/config.php:35
@@ -13488,7 +13488,7 @@ msgstr "Väljalõigete korv võimaldab teil teha väljalõikeid sellest sugupuus
 
 #: resources/views/privacy-policy.php:8
 msgid "The data in this website has been collected for the purposes of genealogical research."
-msgstr ""
+msgstr "Antud lehel kogutud andmeid kasutatakse genealoogiliste uuringute jaoks."
 
 #: resources/views/admin/trees-preferences.php:441
 msgid "The date and time of the last update"
@@ -13497,7 +13497,7 @@ msgstr "Viimase uuenduse aeg ja kuupäev"
 #: app/Http/Controllers/AdminLocationController.php:177
 #, php-format
 msgid "The details for “%s” have been updated."
-msgstr ""
+msgstr "Detailid “%s” jaoks on uuendatud."
 
 #. I18N: %s is a filename
 #: app/Http/Controllers/AdminTreesController.php:535
@@ -13809,7 +13809,7 @@ msgstr "Allikas on loodud"
 
 #: app/Http/Controllers/AdminPhpGedViewController.php:198
 msgid "The specified folder does not contain an installation of PhpGedView."
-msgstr ""
+msgstr "Valitud kaust ei sisalda PhpGedView installatsiooni."
 
 #: app/Http/Controllers/EditSubmitterController.php:95
 msgid "The submitter has been created"
@@ -14454,11 +14454,11 @@ msgstr "See peaks olema komadega eraldatud nimekiri faktidest (lisaks sünnile j
 
 #: resources/views/privacy-policy.php:25
 msgid "This site does not use any third-party tracking or analytics services."
-msgstr ""
+msgstr "See veebileht ei kasuta kolmandate osapoolte poolt pakutavaid jälgimis- või analüütikateenuseid."
 
 #: resources/views/privacy-policy.php:16
 msgid "This site uses cookies to store your preferences on this site, such as the language you have selected."
-msgstr ""
+msgstr "See veebileht kasutab küpsiseid teie eelistuste salvestamiseks, näiteks teie poolt valitud keel."
 
 #: app/Exceptions/SourceAccessDeniedException.php:33
 #: app/Exceptions/SourceNotFoundException.php:33
@@ -15410,7 +15410,7 @@ msgstr "Vaata"
 #: resources/views/places-page.php:33
 #, php-format
 msgid "View table of events occurring in %s"
-msgstr ""
+msgstr "Vaata sündmuste tabelit, mis toimuvad %s"
 
 #: resources/views/calendar-page.php:159
 msgid "View this day"
@@ -18736,17 +18736,17 @@ msgstr "vennapoeg"
 #: app/Functions/Functions.php:1180
 msgctxt "husband’s brother’s son"
 msgid "nephew"
-msgstr ""
+msgstr "vennapoeg"
 
 #: app/Functions/Functions.php:1176
 msgctxt "husband’s sibling’s son"
 msgid "nephew"
-msgstr ""
+msgstr "venna-/õepoeg"
 
 #: app/Functions/Functions.php:1178
 msgctxt "husband’s sister’s son"
 msgid "nephew"
-msgstr ""
+msgstr "õepoeg"
 
 #: app/Functions/Functions.php:932
 msgctxt "sibling’s son"
@@ -18761,17 +18761,17 @@ msgstr "õepoeg"
 #: app/Functions/Functions.php:1420
 msgctxt "wife’s brother’s son"
 msgid "nephew"
-msgstr ""
+msgstr "vennapoeg"
 
 #: app/Functions/Functions.php:1416
 msgctxt "wife’s sibling’s son"
 msgid "nephew"
-msgstr ""
+msgstr "venna-/õepoeg"
 
 #: app/Functions/Functions.php:1418
 msgctxt "wife’s sister’s son"
 msgid "nephew"
-msgstr ""
+msgstr "õepoeg"
 
 #: app/Functions/Functions.php:1018
 msgctxt "brother’s daughter’s husband"
@@ -18796,17 +18796,17 @@ msgstr "vennapoeg/vennatütar"
 #: app/Functions/Functions.php:1168
 msgctxt "husband’s brother’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "vennatütar/-poeg"
 
 #: app/Functions/Functions.php:1164
 msgctxt "husband’s sibling’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "vennatütar/-poeg/õetütar/-poeg"
 
 #: app/Functions/Functions.php:1166
 msgctxt "husband’s sister’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "õepoeg/-tütar"
 
 #: app/Functions/Functions.php:928
 msgctxt "sibling’s child"
@@ -18821,17 +18821,17 @@ msgstr "vennapoeg/vennatütar"
 #: app/Functions/Functions.php:1408
 msgctxt "wife’s brother’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "vennapoeg/-tütar"
 
 #: app/Functions/Functions.php:1404
 msgctxt "wife’s sibling’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "vennatütar/-poeg/õetütar/-poeg"
 
 #: app/Functions/Functions.php:1406
 msgctxt "wife’s sister’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "õepoeg/-tütar"
 
 #: app/Functions/FunctionsEdit.php:806
 msgid "never"
@@ -18860,17 +18860,17 @@ msgstr "vennatütar"
 #: app/Functions/Functions.php:1174
 msgctxt "husband’s brother’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "vennatütar"
 
 #: app/Functions/Functions.php:1170
 msgctxt "husband’s sibling’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "õe-/vennatütar"
 
 #: app/Functions/Functions.php:1172
 msgctxt "husband’s sister’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "õetütar"
 
 #: app/Functions/Functions.php:930
 msgctxt "sibling’s daughter"
@@ -18885,17 +18885,17 @@ msgstr "õetütar"
 #: app/Functions/Functions.php:1414
 msgctxt "wife’s brother’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "vennatütar"
 
 #: app/Functions/Functions.php:1410
 msgctxt "wife’s sibling’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "õe-/vennatütar"
 
 #: app/Functions/Functions.php:1412
 msgctxt "wife’s sister’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "õetütar"
 
 #: app/Functions/Functions.php:1044
 msgctxt "brother’s son’s wife"
