@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-07-26 23:06+0100\n"
-"PO-Revision-Date: 2018-01-06 19:55+0000\n"
+"PO-Revision-Date: 2018-07-27 05:42+0000\n"
 "Last-Translator: Jorgen V <jorgenchip@gmail.com>\n"
 "Language-Team: Estonian <https://translate.webtrees.net/projects/webtrees/webtrees/et/>\n"
 "Language: et\n"
@@ -84,7 +84,7 @@ msgstr "%1$s KB laeti alla %2$s sekundiga."
 #: app/Http/Controllers/AdminUsersController.php:399
 #, php-format
 msgid "%1$s does not exist"
-msgstr ""
+msgstr "%1$s ei eksisteeri"
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: app/Http/Controllers/AdminTreesController.php:228
@@ -310,8 +310,8 @@ msgstr "%s on selles serveris keelatud. Te ei saa paigaldada webtrees-i kuni see
 #, php-format
 msgid "%s location has been imported."
 msgid_plural "%s locations have been imported."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s asukoht on imporditud."
+msgstr[1] "%s asukohta on imporditud."
 
 #: app/Module/UserMessagesModule.php:177
 #, php-format
@@ -366,8 +366,8 @@ msgstr "%s üks kord eemaldatud kahanev"
 #, php-format
 msgid "%s repository has been updated."
 msgid_plural "%s repositories have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s hoidla on uuendatud."
+msgstr[1] "%s hoidlat on uuendatud."
 
 #: app/I18N.php:883
 #, php-format
@@ -710,7 +710,7 @@ msgstr "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2
 #. I18N: URL = web address
 #: resources/views/modals/media-file-fields.php:20
 msgid "A URL"
-msgstr ""
+msgstr "URL"
 
 #. I18N: Description of the “RelationshipsChart” module
 #: app/Module/RelationshipsChartModule.php:61
@@ -1409,7 +1409,7 @@ msgstr "Lisa jutustavaid lugusid sugupuusse kuuluvatele isikutele."
 
 #: resources/views/admin/map-import-form.php:72
 msgid "Add new, and update existing records"
-msgstr ""
+msgstr "Lisa uusi ja uuenda olemasolevaid kirjeid"
 
 #: resources/views/admin/trees-import.php:83
 msgid "Add spaces where long lines were wrapped"
@@ -1928,7 +1928,7 @@ msgstr "Juhtus ootamatu andmebaasi viga."
 #: resources/views/modules/pedigree-map/pedigree-map.php:82
 #: resources/views/place-map.php:85
 msgid "An unknown error occurred"
-msgstr ""
+msgstr "Teadmata viga"
 
 #. I18N: Name of a module/report
 #. I18N: Name of a module/chart
@@ -7291,7 +7291,7 @@ msgstr "Impordi"
 
 #: resources/views/admin/map-import-form.php:67
 msgid "Import Options."
-msgstr ""
+msgstr "Importimise valikud."
 
 #: app/Http/Controllers/AdminTreesController.php:614
 msgid "Import a GEDCOM file"
@@ -7308,7 +7308,7 @@ msgstr "Impordi kohandatud pisipildid webtrees 1. versioonist"
 
 #: app/Http/Controllers/AdminLocationController.php:310
 msgid "Import geographic data"
-msgstr ""
+msgstr "Impordi geograafilisi andmeid"
 
 #: resources/views/admin/trees-import.php:71
 msgid "Import preferences"
@@ -8094,7 +8094,7 @@ msgstr "Kui te jätate selle tühjaks, kasutatakse vaikimisi olevat valikut."
 
 #: resources/views/admin/media-upload.php:36
 msgid "Leave this entry blank to keep the original filename"
-msgstr ""
+msgstr "Originaalse failinime säilitamiseks, jätke see lahter tühjaks"
 
 #: resources/views/lists/families-table.php:138
 #: resources/views/lists/individuals-table.php:190
@@ -8450,7 +8450,7 @@ msgstr "Korralda sugupuid"
 #: resources/views/admin/trees-renumber.php:3
 #: resources/views/admin/trees-unconnected.php:4
 msgid "Manage family trees "
-msgstr ""
+msgstr "Halda sugupuid "
 
 #: app/Http/Controllers/AdminMediaController.php:69
 #: resources/views/admin/control-panel.php:438
@@ -10231,7 +10231,7 @@ msgstr "Sellel päeval …"
 
 #: resources/views/admin/map-import-form.php:73
 msgid "Only add new records"
-msgstr ""
+msgstr "Lisa ainult uusi kirjeid"
 
 #: app/Functions/FunctionsEdit.php:230
 #: app/Functions/FunctionsPrintFacts.php:266
@@ -10244,7 +10244,7 @@ msgstr "Ainult haldajad saavad muuta"
 
 #: resources/views/admin/map-import-form.php:74
 msgid "Only update existing records"
-msgstr ""
+msgstr "Uuenda ainult olemasolevaid kirjeid"
 
 #: resources/views/errors/database-connection.php:5
 msgid "Oops! The webserver is unable to connect to the database server. It could be busy, undergoing maintenance, or simply broken. You should <a href=\"index.php\">try again</a> in a few minutes or contact the website administrator."
@@ -11022,7 +11022,7 @@ msgstr "Privaatsus"
 
 #: app/Http/Controllers/StaticPageController.php:40
 msgid "Privacy policy"
-msgstr ""
+msgstr "Privaatsuspoliitika"
 
 #. I18N: a restrction on viewing data
 #: resources/views/modals/restriction-fields.php:5
@@ -11274,7 +11274,7 @@ msgstr "Tegelik nimi"
 
 #: resources/views/admin/map-import-form.php:100
 msgid "Really delete all geographic data?"
-msgstr ""
+msgstr "Olete kindel, et soovite kustutada kõik geograafilised andmed?"
 
 #. I18N: Name of a module
 #: app/Module/RecentChangesModule.php:42 modules_v3/change_report/report.xml:92
@@ -12760,7 +12760,7 @@ msgstr "Lehekülje liikmed saavad üksteisele sõnumeid saata. Te saate valida k
 
 #: app/Http/Controllers/AdminPhpGedViewController.php:176
 msgid "Site preferences"
-msgstr ""
+msgstr "Veebilehe eelistused"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-analytics.php:20
@@ -14371,7 +14371,7 @@ msgstr "Seda kirjet pole olemas või teil puuduvad õigused selle vaatamiseks."
 
 #: resources/views/admin/trees-privacy.php:238
 msgid "This record does not exist."
-msgstr ""
+msgstr "Seda kirjet ei eksisteeri."
 
 #: resources/views/gedcom-record-page.php:11
 msgid "This record has been deleted. The deletion will need to be reviewed by a moderator."
@@ -16018,7 +16018,7 @@ msgstr "lisa"
 #. I18N: A button label.
 #: resources/views/admin/locations.php:78
 msgid "add place"
-msgstr ""
+msgstr "lisa koht"
 
 #. I18N: The name given to a child by its adoptive parents
 #: app/GedcomCode/GedcomCodeName.php:67
@@ -16586,7 +16586,7 @@ msgstr "eksnaine"
 #. I18N: A button label.
 #: resources/views/admin/locations.php:84
 msgid "export file"
-msgstr ""
+msgstr "ekspordi fail"
 
 #: app/Http/Controllers/AdminTreesController.php:933
 #: modules_v3/fact_sources/report.xml:6
@@ -18539,7 +18539,7 @@ msgstr "impordi"
 #. I18N: A button label.
 #: resources/views/admin/locations.php:98
 msgid "import file"
-msgstr ""
+msgstr "impordi fail"
 
 #. I18N: Gedcom INT dates
 #: app/Date.php:352
@@ -18610,7 +18610,7 @@ msgstr "loetelu"
 #: app/Http/Controllers/AdminLocationController.php:471
 #, php-format
 msgid "locations updated: %s, locations added: %s"
-msgstr ""
+msgstr "uuendatud asukohad: %s, lisatud asukohad: %s"
 
 #. I18N: A woman’s name, before she marries (in cultures where women take their new husband’s name on marriage)
 #: app/GedcomCode/GedcomCodeName.php:133
