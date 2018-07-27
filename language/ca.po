@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-07-26 23:06+0100\n"
-"PO-Revision-Date: 2018-07-27 09:06+0000\n"
+"PO-Revision-Date: 2018-07-27 09:07+0000\n"
 "Last-Translator: Antoni Planas Vilà <toniplanas@calvermell.cat>\n"
 "Language-Team: Catalan <https://translate.webtrees.net/projects/webtrees/webtrees/ca/>\n"
 "Language: ca\n"
@@ -309,8 +309,8 @@ msgstr "%s està deshabilitat en aquest servidor. No es pot instal webtrees fins
 #, php-format
 msgid "%s location has been imported."
 msgid_plural "%s locations have been imported."
-msgstr[0] "s'ha importat la ubicació %s"
-msgstr[1] "s'han importat les ubicacions %s"
+msgstr[0] "s'ha importat la ubicació %s."
+msgstr[1] "s'han importat les ubicacions %s."
 
 #: app/Module/UserMessagesModule.php:177
 #, php-format
@@ -365,8 +365,8 @@ msgstr "nebot valencià %s è"
 #, php-format
 msgid "%s repository has been updated."
 msgid_plural "%s repositories have been updated."
-msgstr[0] "s'ha actualitzat l'arxiu %s"
-msgstr[1] "s'han actualitzat els arxius %s"
+msgstr[0] "s'ha actualitzat l'arxiu %s."
+msgstr[1] "s'han actualitzat els arxius %s."
 
 #: app/I18N.php:883
 #, php-format
@@ -7290,7 +7290,7 @@ msgstr "Importa"
 
 #: resources/views/admin/map-import-form.php:67
 msgid "Import Options."
-msgstr "Opcions d'importació"
+msgstr "Opcions d'importació."
 
 #: app/Http/Controllers/AdminTreesController.php:614
 msgid "Import a GEDCOM file"
@@ -13496,7 +13496,7 @@ msgstr "La data i hora de l’última actualització"
 #: app/Http/Controllers/AdminLocationController.php:177
 #, php-format
 msgid "The details for “%s” have been updated."
-msgstr "S'han actualitzat els detalls per \"%s\""
+msgstr "S'han actualitzat els detalls per \"%s\"."
 
 #. I18N: %s is a filename
 #: app/Http/Controllers/AdminTreesController.php:535
