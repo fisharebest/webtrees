@@ -37,6 +37,7 @@
 		"league/glide": "~1.2",
 		"ramsey/uuid": "~3.6",
 		"swiftmailer/swiftmailer": "~5.0",
+		"symfony/expression-language": "~3.3",
 		"symfony/http-foundation": "~3.3",
 		"symfony/http-kernel": "~3.3",
 		"symfony/polyfill-mbstring": "~1.4",

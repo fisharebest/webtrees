@@ -31,6 +31,7 @@ use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Tree;
+use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
 
 /**
  * Class ReportParserGenerate - parse a report.xml file and generate the report.
@@ -1496,7 +1497,9 @@ class ReportParserGenerate extends ReportParserBase
             $condition = str_replace("@$id", $value, $condition);
             $i++;
         }
-        $ret = eval("return (bool) ($condition);");
+
+        $ret = (new ExpressionLanguage)->evaluate($condition);
+
         if (!$ret) {
             $this->process_ifs++;
         }
