@@ -77,9 +77,9 @@ define('WT_START_TIME', microtime(true));
 
 // We want to know about all PHP errors during development, and fewer in production.
 if (WT_DEBUG) {
-	error_reporting(E_ALL | E_STRICT | E_NOTICE | E_DEPRECATED);
+    error_reporting(E_ALL | E_STRICT | E_NOTICE | E_DEPRECATED);
 } else {
-	error_reporting(E_ALL);
+    error_reporting(E_ALL);
 }
 
 require WT_ROOT . 'vendor/autoload.php';
@@ -105,56 +105,56 @@ define('WT_BASE_URL', $base_uri);
 
 // Convert PHP warnings/notices into exceptions
 set_error_handler(function ($errno, $errstr, $errfile, $errline) {
-	// Ignore errors that are silenced with '@'
-	if (error_reporting() & $errno) {
-		throw new ErrorException($errstr, 0, $errno, $errfile, $errline);
-	}
+    // Ignore errors that are silenced with '@'
+    if (error_reporting() & $errno) {
+        throw new ErrorException($errstr, 0, $errno, $errfile, $errline);
+    }
 });
 
 DebugBar::startMeasure('init database');
 
 // Load our configuration file, so we can connect to the database
 if (!file_exists(WT_ROOT . 'data/config.ini.php')) {
-	// No config file. Set one up.
-	$url      = Html::url('setup.php', ['route' => 'setup']);
-	$response = new RedirectResponse($url);
-	$response->send();
-	return;
+    // No config file. Set one up.
+    $url      = Html::url('setup.php', ['route' => 'setup']);
+    $response = new RedirectResponse($url);
+    $response->send();
+    return;
 }
 
 // Connect to the database
 try {
-	// Read the connection settings and create the database
-	Database::createInstance(parse_ini_file(WT_ROOT . 'data/config.ini.php'));
+    // Read the connection settings and create the database
+    Database::createInstance(parse_ini_file(WT_ROOT . 'data/config.ini.php'));
 
-	// Update the database schema, if necessary.
-	Database::updateSchema('\Fisharebest\Webtrees\Schema', 'WT_SCHEMA_VERSION', WT_SCHEMA_VERSION);
+    // Update the database schema, if necessary.
+    Database::updateSchema('\Fisharebest\Webtrees\Schema', 'WT_SCHEMA_VERSION', WT_SCHEMA_VERSION);
 } catch (PDOException $ex) {
-	DebugBar::addThrowable($ex);
+    DebugBar::addThrowable($ex);
 
-	define('WT_DATA_DIR', 'data/');
-	I18N::init();
-	if ($ex->getCode() === 1045) {
-		// Error during connection?
-		$content = view('errors/database-connection', ['error' => $ex->getMessage()]);
-	} else {
-		// Error in a migration script?
-		$content = view('errors/database-error', ['error' => $ex->getMessage()]);
-	}
-	$html     = view('layouts/error', ['content' => $content]);
-	$response = new Response($html, 503);
-	$response->prepare($request)->send();
-	return;
+    define('WT_DATA_DIR', 'data/');
+    I18N::init();
+    if ($ex->getCode() === 1045) {
+        // Error during connection?
+        $content = view('errors/database-connection', ['error' => $ex->getMessage()]);
+    } else {
+        // Error in a migration script?
+        $content = view('errors/database-error', ['error' => $ex->getMessage()]);
+    }
+    $html     = view('layouts/error', ['content' => $content]);
+    $response = new Response($html, 503);
+    $response->prepare($request)->send();
+    return;
 } catch (Throwable $ex) {
-	DebugBar::addThrowable($ex);
+    DebugBar::addThrowable($ex);
 
-	define('WT_DATA_DIR', 'data/');
-	I18N::init();
-	$content  = view('errors/database-connection', ['error' => $ex->getMessage()]);
-	$html     = view('layouts/error', ['content' => $content]);
-	$response = new Response($html, 503);
-	$response->prepare($request)->send();
-	return;
+    define('WT_DATA_DIR', 'data/');
+    I18N::init();
+    $content  = view('errors/database-connection', ['error' => $ex->getMessage()]);
+    $html     = view('layouts/error', ['content' => $content]);
+    $response = new Response($html, 503);
+    $response->prepare($request)->send();
+    return;
 }
 
 DebugBar::stopMeasure('init database');
@@ -171,11 +171,11 @@ putenv('TMPDIR=' . WT_DATA_DIR . 'tmp');
 // Request more resources - if we can/want to
 $memory_limit = Site::getPreference('MEMORY_LIMIT');
 if ($memory_limit !== '' && strpos(ini_get('disable_functions'), 'ini_set') === false) {
-	ini_set('memory_limit', $memory_limit);
+    ini_set('memory_limit', $memory_limit);
 }
 $max_execution_time = Site::getPreference('MAX_EXECUTION_TIME');
 if ($max_execution_time !== '' && strpos(ini_get('disable_functions'), 'set_time_limit') === false) {
-	set_time_limit((int) $max_execution_time);
+    set_time_limit((int) $max_execution_time);
 }
 
 // Sessions
@@ -194,14 +194,14 @@ define('WT_TIMESTAMP', (int) Database::prepare("SELECT UNIX_TIMESTAMP()")->fetch
 
 // Users get their own time-zone. Visitors get the site time-zone.
 try {
-	if (Auth::check()) {
-		date_default_timezone_set(Auth::user()->getPreference('TIMEZONE'));
-	} else {
-		date_default_timezone_set(Site::getPreference('TIMEZONE'));
-	}
+    if (Auth::check()) {
+        date_default_timezone_set(Auth::user()->getPreference('TIMEZONE'));
+    } else {
+        date_default_timezone_set(Site::getPreference('TIMEZONE'));
+    }
 } catch (ErrorException $ex) {
-	// Server upgrades and migrations can leave us with invalid timezone settings.
-	date_default_timezone_set('UTC');
+    // Server upgrades and migrations can leave us with invalid timezone settings.
+    date_default_timezone_set('UTC');
 }
 
 define('WT_TIMESTAMP_OFFSET', date_offset_get(new DateTime('now')));
@@ -210,10 +210,10 @@ define('WT_CLIENT_JD', 2440588 + (int) ((WT_TIMESTAMP + WT_TIMESTAMP_OFFSET) / 8
 
 // Update the last-login time no more than once a minute
 if (WT_TIMESTAMP - Session::get('activity_time') >= 60) {
-	if (Session::get('masquerade') === null) {
-		Auth::user()->setPreference('sessiontime', WT_TIMESTAMP);
-	}
-	Session::put('activity_time', WT_TIMESTAMP);
+    if (Session::get('masquerade') === null) {
+        Auth::user()->setPreference('sessiontime', WT_TIMESTAMP);
+    }
+    Session::put('activity_time', WT_TIMESTAMP);
 }
 
 DebugBar::startMeasure('routing');
@@ -223,106 +223,106 @@ $request = Request::createFromGlobals();
 $route   = $request->get('route');
 
 try {
-	// Most requests will need the current tree and user.
-	$all_trees = Tree::getAll();
+    // Most requests will need the current tree and user.
+    $all_trees = Tree::getAll();
 
-	$tree = $all_trees[$request->get('ged')] ?? null;
+    $tree = $all_trees[$request->get('ged')] ?? null;
 
-	// No tree specified/available?  Choose one.
-	if ($tree === null && $request->getMethod() === Request::METHOD_GET) {
-		$tree = $all_trees[Site::getPreference('DEFAULT_GEDCOM')] ?? array_values($all_trees)[0] ?? null;
-	}
+    // No tree specified/available?  Choose one.
+    if ($tree === null && $request->getMethod() === Request::METHOD_GET) {
+        $tree = $all_trees[Site::getPreference('DEFAULT_GEDCOM')] ?? array_values($all_trees)[0] ?? null;
+    }
 
-	$request->attributes->set('tree', $tree);
-	$request->attributes->set('user', Auth::user());
+    $request->attributes->set('tree', $tree);
+    $request->attributes->set('user', Auth::user());
 
-	// Most layouts will require a tree for the page header/footer
-	View::share('tree', $tree);
+    // Most layouts will require a tree for the page header/footer
+    View::share('tree', $tree);
 
-	// Load the routing table.
-	$routes = require 'routes/web.php';
+    // Load the routing table.
+    $routes = require 'routes/web.php';
 
-	// Find the action for the selected route
-	$controller_action = $routes[$request->getMethod() . ':' . $route] ?? 'ErrorController@noRouteFound';
+    // Find the action for the selected route
+    $controller_action = $routes[$request->getMethod() . ':' . $route] ?? 'ErrorController@noRouteFound';
 
-	// Create the controller
-	list($controller_name, $action) = explode('@', $controller_action);
-	$controller_class = __NAMESPACE__ . '\\Http\\Controllers\\' . $controller_name;
-	$controller       = new $controller_class;
+    // Create the controller
+    list($controller_name, $action) = explode('@', $controller_action);
+    $controller_class = __NAMESPACE__ . '\\Http\\Controllers\\' . $controller_name;
+    $controller       = new $controller_class;
 
-	DebugBar::stopMeasure('routing');
+    DebugBar::stopMeasure('routing');
 
-	DebugBar::startMeasure('init theme');
+    DebugBar::startMeasure('init theme');
 
-	// Last theme used?
-	$theme_id = Session::get('theme_id');
-	// Default for tree
-	if (!array_key_exists($theme_id, Theme::themeNames()) && $tree) {
-		$theme_id = $tree->getPreference('THEME_DIR');
-	}
-	// Default for site
-	if (!array_key_exists($theme_id, Theme::themeNames())) {
-		$theme_id = Site::getPreference('THEME_DIR');
-	}
-	// Default
-	if (!array_key_exists($theme_id, Theme::themeNames())) {
-		$theme_id = 'webtrees';
-	}
-	foreach (Theme::installedThemes() as $theme) {
-		if ($theme->themeId() === $theme_id) {
-			Theme::theme($theme)->init($tree);
-			// Remember this setting
-			if (Site::getPreference('ALLOW_USER_THEMES') === '1') {
-				Session::put('theme_id', $theme_id);
-			}
-			break;
-		}
-	}
+    // Last theme used?
+    $theme_id = Session::get('theme_id');
+    // Default for tree
+    if (!array_key_exists($theme_id, Theme::themeNames()) && $tree) {
+        $theme_id = $tree->getPreference('THEME_DIR');
+    }
+    // Default for site
+    if (!array_key_exists($theme_id, Theme::themeNames())) {
+        $theme_id = Site::getPreference('THEME_DIR');
+    }
+    // Default
+    if (!array_key_exists($theme_id, Theme::themeNames())) {
+        $theme_id = 'webtrees';
+    }
+    foreach (Theme::installedThemes() as $theme) {
+        if ($theme->themeId() === $theme_id) {
+            Theme::theme($theme)->init($tree);
+            // Remember this setting
+            if (Site::getPreference('ALLOW_USER_THEMES') === '1') {
+                Session::put('theme_id', $theme_id);
+            }
+            break;
+        }
+    }
 
-	DebugBar::stopMeasure('init theme');
+    DebugBar::stopMeasure('init theme');
 
-	// Note that we can't stop this timer, as running the action will
-	// generate the response - which includes (and stops) the timer
-	DebugBar::startMeasure('controller_action', $controller_action);
+    // Note that we can't stop this timer, as running the action will
+    // generate the response - which includes (and stops) the timer
+    DebugBar::startMeasure('controller_action', $controller_action);
 
-	$middleware_stack = [
-		new CheckForMaintenanceMode,
-	];
+    $middleware_stack = [
+        new CheckForMaintenanceMode,
+    ];
 
-	if ($request->getMethod() === Request::METHOD_GET) {
-		$middleware_stack[] = new PageHitCounter;
-	}
+    if ($request->getMethod() === Request::METHOD_GET) {
+        $middleware_stack[] = new PageHitCounter;
+    }
 
-	if ($request->getMethod() === Request::METHOD_POST) {
-		$middleware_stack[] = new UseTransaction;
-		$middleware_stack[] = new CheckCsrf;
-	}
+    if ($request->getMethod() === Request::METHOD_POST) {
+        $middleware_stack[] = new UseTransaction;
+        $middleware_stack[] = new CheckCsrf;
+    }
 
-	// Apply the middleware using the "onion" pattern.
-	$pipeline = array_reduce($middleware_stack, function (Closure $next, MiddlewareInterface $middleware): Closure {
-		// Create a closure to apply the middleware.
-		return function (Request $request) use ($middleware, $next): Response {
-			return $middleware->handle($request, $next);
-		};
-	}, function (Request $request) use ($controller, $action): Response {
-		// Create a closure to generate the response.
-		return call_user_func([$controller, $action], $request);
-	});
+    // Apply the middleware using the "onion" pattern.
+    $pipeline = array_reduce($middleware_stack, function (Closure $next, MiddlewareInterface $middleware): Closure {
+        // Create a closure to apply the middleware.
+        return function (Request $request) use ($middleware, $next): Response {
+            return $middleware->handle($request, $next);
+        };
+    }, function (Request $request) use ($controller, $action): Response {
+        // Create a closure to generate the response.
+        return call_user_func([$controller, $action], $request);
+    });
 
-	$response = call_user_func($pipeline, $request);
+    $response = call_user_func($pipeline, $request);
 } catch (Exception $exception) {
-	DebugBar::addThrowable($exception);
+    DebugBar::addThrowable($exception);
 
-	$response = (new Handler)->render($request, $exception);
+    $response = (new Handler)->render($request, $exception);
 }
 
 // Send response
 if ($response instanceof RedirectResponse) {
-	// Show the debug data on the next page
-	DebugBar::stackData();
+    // Show the debug data on the next page
+    DebugBar::stackData();
 } elseif ($response instanceof JsonResponse) {
-	// Use HTTP headers and some jQuery to add debug to the current page.
-	DebugBar::sendDataInHeaders();
+    // Use HTTP headers and some jQuery to add debug to the current page.
+    DebugBar::sendDataInHeaders();
 }
 
 $response->prepare($request)->send();
