@@ -258,7 +258,7 @@ class ReportEngineController extends AbstractBaseController
                 new ReportParserGenerate($report_xml, new ReportHtml, $vars, $tree);
                 $html = ob_get_clean();
 
-                //$this->layout = 'layouts/report';
+                $this->layout = 'layouts/report';
 
                 return $this->viewResponse('report-page', [
                     'content' => $html,
