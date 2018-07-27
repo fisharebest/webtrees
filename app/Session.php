@@ -24,26 +24,30 @@ class Session
 {
     /**
      * Start a session
-     *
-     * @param array $config
      */
-    public static function start(array $config = [])
+    public static function start()
     {
-        $default_config = [
-            'use_cookies'     => '1',
-            'name'            => 'WT_SESSION',
-            'cookie_lifetime' => '0',
-            'gc_maxlifetime'  => '7200',
-            'gc_probability'  => '1',
-            'gc_divisor'      => '100',
-            'cookie_path'     => '',
-            'cookie_httponly' => '1',
-        ];
+        $lifetime = (int) Site::getPreference('SESSION_TIME', '7200');
+        $domain   = '';
+        $path     = parse_url(WT_BASE_URL, PHP_URL_PATH);
+        $secure   = parse_url(WT_BASE_URL, PHP_URL_SCHEME) === 'https';
+        $httponly = true;
+
+        // Paths containing UTF-8 characters need special handling.
+        $path = implode('/', array_map('rawurlencode', explode('/', $path)));
+
+        self::setSaveHandler();
+
+        session_name('WT_SESSION');
         session_register_shutdown();
-        foreach ($config + $default_config as $key => $value) {
-            ini_set('session.' . $key, $value);
-        }
+        session_set_cookie_params($lifetime, $path, $domain, $secure, $httponly);
         session_start();
+
+        // A new session? Prevent session fixation attacks by choosing a new session ID.
+        if (!self::get('initiated')) {
+            self::regenerate(true);
+            self::put('initiated', true);
+        }
     }
 
     /**
@@ -126,7 +130,7 @@ class Session
     /**
      * Initialise our session save handler
      */
-    public static function setSaveHandler()
+    private static function setSaveHandler()
     {
         session_set_save_handler(
             function (): bool {
@@ -215,7 +219,7 @@ class Session
      */
     private static function read(string $id): string
     {
-        return (string)Database::prepare(
+        return (string) Database::prepare(
             "SELECT session_data FROM `##session` WHERE session_id = :session_id"
         )->execute([
             'session_id' => $id,
@@ -245,7 +249,7 @@ class Session
             " session_time = CURRENT_TIMESTAMP - SECOND(CURRENT_TIMESTAMP)"
         )->execute([
             'session_id' => $id,
-            'user_id'    => (int)Auth::id(),
+            'user_id'    => (int) Auth::id(),
             'ip_address' => $request->getClientIp(),
             'data'       => $data,
         ]);

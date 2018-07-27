@@ -179,17 +179,7 @@ if ($max_execution_time !== '' && strpos(ini_get('disable_functions'), 'set_time
 }
 
 // Sessions
-Session::setSaveHandler();
-Session::start([
-	'gc_maxlifetime' => Site::getPreference('SESSION_TIME'),
-	'cookie_path'    => implode('/', array_map('rawurlencode', explode('/', parse_url(WT_BASE_URL, PHP_URL_PATH)))),
-]);
-
-// A new session, so prevent session fixation attacks by choosing a new PHPSESSID.
-if (!Session::get('initiated')) {
-	Session::regenerate(true);
-	Session::put('initiated', true);
-}
+Session::start();
 
 DebugBar::startMeasure('init i18n');
 
