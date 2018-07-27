@@ -146,7 +146,7 @@
 				<?= I18N::translate('Theme') ?>
 			</label>
 			<div class="col-sm-9 wt-page-options-value">
-				<?= Bootstrap4::select($themes, $user->getPreference('theme'), ['id' => 'theme', 'name' => 'theme', 'aria-describedby' => 'theme-description',]) ?>
+				<?= Bootstrap4::select($themes, $user->getPreference('theme'), ['id' => 'theme', 'name' => 'theme', 'aria-describedby' => 'theme-description']) ?>
 				<p class="small text-muted" id="theme-description">
 					<?= /* I18N: Help text for the "Default theme" site configuration setting */
 					I18N::translate('You can change the appearance of webtrees using “themes”. Each theme has a different style, layout, color scheme, etc.') ?>
@@ -160,7 +160,7 @@
 			<?= I18N::translate('Contact method') ?>
 		</label>
 		<div class="col-sm-9 wt-page-options-value">
-			<?= Bootstrap4::select($contact_methods, $user->getPreference('contactmethod'), ['id' => 'contact-method', 'name' => 'contact_method', 'aria-describedby' => 'contact-method-description',]) ?>
+			<?= Bootstrap4::select($contact_methods, $user->getPreference('contactmethod'), ['id' => 'contact-method', 'name' => 'contact_method', 'aria-describedby' => 'contact-method-description']) ?>
 			<p class="small text-muted" id="contact-method-description">
 			<?= I18N::translate('Site members can send each other messages. You can choose to how these messages are sent to you, or choose not receive them at all.') ?>
 			</p>
