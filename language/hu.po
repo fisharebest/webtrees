@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-07-26 23:06+0100\n"
-"PO-Revision-Date: 2018-07-27 15:33+0000\n"
+"PO-Revision-Date: 2018-07-27 15:34+0000\n"
 "Last-Translator: Gyönyör János <gyj@centrum.sk>\n"
 "Language-Team: Hungarian <https://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
 "Language: hu\n"
@@ -311,7 +311,7 @@ msgstr "%s nem aktív ezen a szerveren. Amíg inaktív, a webtrees nem telepíth
 msgid "%s location has been imported."
 msgid_plural "%s locations have been imported."
 msgstr[0] "%s hely betöltődött."
-msgstr[1] "%s hely betöltődött."
+msgstr[1] "%s  hely betöltődött."
 
 #: app/Module/UserMessagesModule.php:177
 #, php-format
@@ -367,7 +367,7 @@ msgstr "%s elsőfokú unokatestvére"
 msgid "%s repository has been updated."
 msgid_plural "%s repositories have been updated."
 msgstr[0] "%s adattár frissítése megtörtént."
-msgstr[1] "%s adattár frissítése megtörtént."
+msgstr[1] "%s  adattár frissítése megtörtént."
 
 #: app/I18N.php:883
 #, php-format
