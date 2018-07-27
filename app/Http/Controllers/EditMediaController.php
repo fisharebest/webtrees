@@ -607,8 +607,7 @@ class EditMediaController extends AbstractEditController
                 }
 
                 try {
-                    //if ($uploaded_file->isValid()) {
-                    //	$uploaded_file->move(WT_DATA_DIR . $media_folder . $folder, $file);
+                    // @TODO We should use the native ->isValid() and ->move() functions, but they don't work?
                     if (is_uploaded_file($_FILES['file']['tmp_name'])) {
                         move_uploaded_file($_FILES['file']['tmp_name'], WT_DATA_DIR . $media_folder . $folder . $file);
 

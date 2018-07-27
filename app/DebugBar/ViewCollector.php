@@ -37,7 +37,6 @@ class ViewCollector extends DataCollector implements Renderable
         $num = count($this->views) + 1;
         $key = '#' . $num . ' ' . $view;
 
-        //$this->views[$key] = $this->getVarDumper()->renderVar($data);
         $this->views[$key] = $this->getDataFormatter()->formatVar($data);
     }
 
