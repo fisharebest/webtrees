@@ -845,12 +845,7 @@ class FunctionsEdit
             $html .= 'document.getElementById(\'' . $id . '\').style.display=\'none\'';
             $html .= '</script>';
             $html .= '<select id="' . $id . '_sel" oninput="document.getElementById(\'' . $id . '\').value=this.value" >';
-            foreach ([
-                         'Unknown',
-                         'Civil',
-                         'Religious',
-                         'Partners',
-                     ] as $key) {
+            foreach (['Unknown', 'Civil', 'Religious', 'Partners'] as $key) {
                 if ($key === 'Unknown') {
                     $html .= '<option value="" ';
                 } else {
@@ -1180,14 +1175,7 @@ class FunctionsEdit
         }
         // Do something (anything!) with unrecognized custom tags
         if (substr($level1tag, 0, 1) === '_' && $level1tag !== '_UID' && $level1tag !== '_PRIM' && $level1tag !== '_TODO') {
-            foreach ([
-                         'DATE',
-                         'PLAC',
-                         'ADDR',
-                         'AGNC',
-                         'TYPE',
-                         'AGE',
-                     ] as $tag) {
+            foreach (['DATE', 'PLAC', 'ADDR', 'AGNC', 'TYPE', 'AGE'] as $tag) {
                 if (!in_array($tag, self::$tags)) {
                     echo self::addSimpleTag($tree, '2 ' . $tag);
                     if ($tag === 'PLAC') {

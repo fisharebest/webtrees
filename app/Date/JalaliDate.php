@@ -24,19 +24,20 @@ use Fisharebest\Webtrees\I18N;
 class JalaliDate extends CalendarDate
 {
     /** @var int[] Convert GEDCOM month names to month numbers */
-    public static $MONTH_ABBREV = [''      => 0,
-                                   'FARVA' => 1,
-                                   'ORDIB' => 2,
-                                   'KHORD' => 3,
-                                   'TIR'   => 4,
-                                   'MORDA' => 5,
-                                   'SHAHR' => 6,
-                                   'MEHR'  => 7,
-                                   'ABAN'  => 8,
-                                   'AZAR'  => 9,
-                                   'DEY'   => 10,
-                                   'BAHMA' => 11,
-                                   'ESFAN' => 12,
+    public static $MONTH_ABBREV = [
+        ''      => 0,
+        'FARVA' => 1,
+        'ORDIB' => 2,
+        'KHORD' => 3,
+        'TIR'   => 4,
+        'MORDA' => 5,
+        'SHAHR' => 6,
+        'MEHR'  => 7,
+        'ABAN'  => 8,
+        'AZAR'  => 9,
+        'DEY'   => 10,
+        'BAHMA' => 11,
+        'ESFAN' => 12,
     ];
 
     /**

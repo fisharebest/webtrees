@@ -302,13 +302,13 @@ class FunctionsDb
     {
         $found_facts = [];
         foreach ([
-                     new GregorianDate($jd),
-                     new JulianDate($jd),
-                     new FrenchDate($jd),
-                     new JewishDate($jd),
-                     new HijriDate($jd),
-                     new JalaliDate($jd),
-                 ] as $anniv) {
+             new GregorianDate($jd),
+             new JulianDate($jd),
+             new FrenchDate($jd),
+             new JewishDate($jd),
+             new HijriDate($jd),
+             new JalaliDate($jd),
+         ] as $anniv) {
             // Build a SQL where clause to match anniversaries in the appropriate calendar.
             $ind_sql =
                 "SELECT DISTINCT i_id AS xref, i_gedcom AS gedcom, d_type, d_day, d_month, d_year, d_fact" .
@@ -462,9 +462,9 @@ class FunctionsDb
 
             // Now fetch these anniversaries
             foreach ([
-                         'INDI' => $ind_sql . $where . $order_by,
-                         'FAM'  => $fam_sql . $where . $order_by,
-                     ] as $type => $sql) {
+                 'INDI' => $ind_sql . $where . $order_by,
+                 'FAM'  => $fam_sql . $where . $order_by,
+             ] as $type => $sql) {
                 $rows = Database::prepare($sql)->execute($args)->fetchAll();
                 foreach ($rows as $row) {
                     if ($type === 'INDI') {
@@ -522,9 +522,9 @@ class FunctionsDb
         $ind_sql = "SELECT d_gid AS xref, i_gedcom AS gedcom, d_type, d_day, d_month, d_year, d_fact, d_type FROM `##dates`, `##individuals` {$where} AND d_gid=i_id AND d_file=i_file ORDER BY d_julianday1";
         $fam_sql = "SELECT d_gid AS xref, f_gedcom AS gedcom, d_type, d_day, d_month, d_year, d_fact, d_type FROM `##dates`, `##families`    {$where} AND d_gid=f_id AND d_file=f_file ORDER BY d_julianday1";
         foreach ([
-                     'INDI' => $ind_sql,
-                     'FAM'  => $fam_sql,
-                 ] as $type => $sql) {
+             'INDI' => $ind_sql,
+             'FAM'  => $fam_sql,
+         ] as $type => $sql) {
             $rows = Database::prepare($sql)->fetchAll();
             foreach ($rows as $row) {
                 if ($type === 'INDI') {

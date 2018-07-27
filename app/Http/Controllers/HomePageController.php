@@ -840,9 +840,9 @@ class HomePageController extends AbstractBaseController
         }
 
         foreach ([
-                     'main' => $main_blocks,
-                     'side' => $side_blocks,
-                 ] as $location => $updated_blocks) {
+             'main' => $main_blocks,
+             'side' => $side_blocks,
+         ] as $location => $updated_blocks) {
             foreach ($updated_blocks as $block_order => $block_id) {
                 if (is_numeric($block_id)) {
                     // Updated block

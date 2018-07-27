@@ -345,10 +345,10 @@ class FunctionsPrint
         }
         // print gedcom ages
         foreach ([
-                     I18N::translate('Age')     => $fact_age,
-                     I18N::translate('Husband') => $husb_age,
-                     I18N::translate('Wife')    => $wife_age,
-                 ] as $label => $age) {
+             I18N::translate('Age')     => $fact_age,
+             I18N::translate('Husband') => $husb_age,
+             I18N::translate('Wife')    => $wife_age,
+         ] as $label => $age) {
             if ($age != '') {
                 $html .= ' <span class="label">' . $label . ':</span> <span class="age">' . FunctionsDate::getAgeAtEvent($age) . '</span>';
             }
