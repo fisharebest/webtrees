@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-07-26 23:06+0100\n"
-"PO-Revision-Date: 2018-07-11 20:50+0000\n"
+"PO-Revision-Date: 2018-07-27 15:33+0000\n"
 "Last-Translator: Gyönyör János <gyj@centrum.sk>\n"
 "Language-Team: Hungarian <https://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
 "Language: hu\n"
@@ -84,7 +84,7 @@ msgstr "%1$s kilobájt letöltése %2$s másodperc alatt megtörtént."
 #: app/Http/Controllers/AdminUsersController.php:399
 #, php-format
 msgid "%1$s does not exist"
-msgstr ""
+msgstr "%1$s nem létezik"
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: app/Http/Controllers/AdminTreesController.php:228
@@ -310,8 +310,8 @@ msgstr "%s nem aktív ezen a szerveren. Amíg inaktív, a webtrees nem telepíth
 #, php-format
 msgid "%s location has been imported."
 msgid_plural "%s locations have been imported."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s hely betöltődött."
+msgstr[1] "%s hely betöltődött."
 
 #: app/Module/UserMessagesModule.php:177
 #, php-format
@@ -366,8 +366,8 @@ msgstr "%s elsőfokú unokatestvére"
 #, php-format
 msgid "%s repository has been updated."
 msgid_plural "%s repositories have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s adattár frissítése megtörtént."
+msgstr[1] "%s adattár frissítése megtörtént."
 
 #: app/I18N.php:883
 #, php-format
@@ -710,7 +710,7 @@ msgstr "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2
 #. I18N: URL = web address
 #: resources/views/modals/media-file-fields.php:20
 msgid "A URL"
-msgstr ""
+msgstr "egy URL"
 
 #. I18N: Description of the “RelationshipsChart” module
 #: app/Module/RelationshipsChartModule.php:61
@@ -1409,7 +1409,7 @@ msgstr "Leíró történetek felvétele a családfa személyeihez."
 
 #: resources/views/admin/map-import-form.php:72
 msgid "Add new, and update existing records"
-msgstr ""
+msgstr "Új bejegyzések felvétele és a meglévők frissítése"
 
 #: resources/views/admin/trees-import.php:83
 msgid "Add spaces where long lines were wrapped"
@@ -1928,7 +1928,7 @@ msgstr "Váratlan adatbázishiba történt."
 #: resources/views/modules/pedigree-map/pedigree-map.php:82
 #: resources/views/place-map.php:85
 msgid "An unknown error occurred"
-msgstr ""
+msgstr "Ismeretlen hiba történt"
 
 #. I18N: Name of a module/report
 #. I18N: Name of a module/chart
@@ -6257,7 +6257,7 @@ msgstr "Zászló"
 #: resources/views/admin/locations.php:47
 #, php-format
 msgid "Flag of %s"
-msgstr ""
+msgstr "%s zászlaja"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:7564
@@ -7291,7 +7291,7 @@ msgstr "Betöltés"
 
 #: resources/views/admin/map-import-form.php:67
 msgid "Import Options."
-msgstr ""
+msgstr "Importálási lehetőségek."
 
 #: app/Http/Controllers/AdminTreesController.php:614
 msgid "Import a GEDCOM file"
@@ -7308,7 +7308,7 @@ msgstr "A webtrees 1 verziós egyéni bélyegképek betöltése"
 
 #: app/Http/Controllers/AdminLocationController.php:310
 msgid "Import geographic data"
-msgstr ""
+msgstr "Földrajzi adatok importálása"
 
 #: resources/views/admin/trees-import.php:71
 msgid "Import preferences"
@@ -8094,7 +8094,7 @@ msgstr "Ha ezt a rovatot üresen hagyja, az alapértelmezett érték lép érvé
 
 #: resources/views/admin/media-upload.php:36
 msgid "Leave this entry blank to keep the original filename"
-msgstr ""
+msgstr "Az eredeti fájlnév megőrzéséhez hagyja üresen ezt a bejegyzést"
 
 #: resources/views/lists/families-table.php:138
 #: resources/views/lists/individuals-table.php:190
@@ -8450,7 +8450,7 @@ msgstr "Családfakezelés"
 #: resources/views/admin/trees-renumber.php:3
 #: resources/views/admin/trees-unconnected.php:4
 msgid "Manage family trees "
-msgstr ""
+msgstr "Családfák kezelése "
 
 #: app/Http/Controllers/AdminMediaController.php:69
 #: resources/views/admin/control-panel.php:438
@@ -8520,7 +8520,7 @@ msgstr "Térkép"
 #: resources/views/admin/control-panel.php:487
 #: resources/views/admin/map-provider.php:12
 msgid "Map provider"
-msgstr ""
+msgstr "Térképszolgáltató"
 
 #: app/Date/CalendarDate.php:361
 msgctxt "Abbreviation for March"
@@ -9834,7 +9834,7 @@ msgstr "A két személy között nem található kapcsolat."
 #: resources/views/modules/pedigree-map/pedigree-map.php:81
 #: resources/views/modules/places/tab.php:77 resources/views/place-map.php:84
 msgid "No mappable items"
-msgstr ""
+msgstr "Nincs kijelölhető elem"
 
 #: resources/views/admin/merge-records-step-2.php:51
 #: resources/views/admin/merge-records-step-2.php:98
@@ -10231,7 +10231,7 @@ msgstr "A mai napon…"
 
 #: resources/views/admin/map-import-form.php:73
 msgid "Only add new records"
-msgstr ""
+msgstr "Csak új bejegyzések hozzáadása"
 
 #: app/Functions/FunctionsEdit.php:230
 #: app/Functions/FunctionsPrintFacts.php:266
@@ -10244,7 +10244,7 @@ msgstr "Csak webhelyfelügyelők szerkeszthetik"
 
 #: resources/views/admin/map-import-form.php:74
 msgid "Only update existing records"
-msgstr ""
+msgstr "Csak a meglévő bejegyzések frissítése"
 
 #: resources/views/errors/database-connection.php:5
 msgid "Oops! The webserver is unable to connect to the database server. It could be busy, undergoing maintenance, or simply broken. You should <a href=\"index.php\">try again</a> in a few minutes or contact the website administrator."
@@ -10840,7 +10840,7 @@ msgstr "A helyeket a származástan szabványaival összhangban kell megadni. A 
 
 #: resources/views/places-page.php:26
 msgid "Places without valid co-ordinates are not shown on the map and have a red border around the sidebar entry"
-msgstr ""
+msgstr "Az érvénytelen koordinátájú helyek nem jelennek meg a térképen, és piros szegély van az oldalpaneli bejegyzése körül"
 
 #: app/Theme/CloudsTheme.php:48 app/Theme/FabTheme.php:76
 #: app/Theme/MinimalTheme.php:46 app/Theme/XeneaTheme.php:46
@@ -11022,7 +11022,7 @@ msgstr "Adatvédelem"
 
 #: app/Http/Controllers/StaticPageController.php:40
 msgid "Privacy policy"
-msgstr ""
+msgstr "Adatvédelmi irányelvek"
 
 #. I18N: a restrction on viewing data
 #: resources/views/modals/restriction-fields.php:5
@@ -11274,7 +11274,7 @@ msgstr "Valódi név"
 
 #: resources/views/admin/map-import-form.php:100
 msgid "Really delete all geographic data?"
-msgstr ""
+msgstr "Biztos, hogy törli az összes földrajzi adatot?"
 
 #. I18N: Name of a module
 #: app/Module/RecentChangesModule.php:42 modules_v3/change_report/report.xml:92
@@ -11602,7 +11602,7 @@ msgstr "A kutatási teendőket az egyedi „_TODO” GEDCOM-címke használatáv
 #: resources/views/modules/pedigree-map/pedigree-map.php:80
 #: resources/views/modules/places/tab.php:76 resources/views/place-map.php:83
 msgid "Reset to initial map state"
-msgstr ""
+msgstr "Kezdeti térképállapot visszaállítása"
 
 #. I18N: gedcom tag RESI
 #: app/GedcomTag.php:961
@@ -12534,7 +12534,7 @@ msgstr "Mutassuk a fotókat"
 
 #: app/Http/Controllers/PlaceHierarchyController.php:74
 msgid "Show place hierarchy"
-msgstr ""
+msgstr "Helyrangsor megjelenítése"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-privacy.php:146
@@ -12588,7 +12588,7 @@ msgstr "Mutasd a helynév %1$s %2$s részét."
 #. I18N: Description of the “OSM” module
 #: app/Module/PedigreeMapModule.php:71
 msgid "Show the birthplace of ancestors on a map."
-msgstr ""
+msgstr "Az ősök születéshelyének megjelenítése a térképen."
 
 #: resources/views/modules/html/config.php:41
 msgid "Show the date and time of update"
@@ -12614,7 +12614,7 @@ msgstr "Vezetéknevek listája"
 #. I18N: Description of the “OSM” module
 #: app/Module/PlacesModule.php:52
 msgid "Show the location of events on a map."
-msgstr ""
+msgstr "Az eseményhelyek megjelenítése a térképen."
 
 #. I18N: label for a yes/no option
 #: resources/views/modules/recent_changes/config.php:35
@@ -12760,7 +12760,7 @@ msgstr "A tagok küldhetnek egymásnak üzeneteket. Megválaszthatja, hogy ezek 
 
 #: app/Http/Controllers/AdminPhpGedViewController.php:176
 msgid "Site preferences"
-msgstr ""
+msgstr "Webhelybeállítások"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-analytics.php:20
@@ -13488,7 +13488,7 @@ msgstr "A metszési kosár lehetővé teszi a családfából való kivonatok (�
 
 #: resources/views/privacy-policy.php:8
 msgid "The data in this website has been collected for the purposes of genealogical research."
-msgstr ""
+msgstr "A weboldal adatai genealógiai kutatás céljából lett összegyűjtve."
 
 #: resources/views/admin/trees-preferences.php:441
 msgid "The date and time of the last update"
@@ -13497,7 +13497,7 @@ msgstr "Az utolsó frissítés dátuma és ideje"
 #: app/Http/Controllers/AdminLocationController.php:177
 #, php-format
 msgid "The details for “%s” have been updated."
-msgstr ""
+msgstr "“%s” részletei frissítése megtörtént."
 
 #. I18N: %s is a filename
 #: app/Http/Controllers/AdminTreesController.php:535
@@ -13809,7 +13809,7 @@ msgstr "A forrás létrejött"
 
 #: app/Http/Controllers/AdminPhpGedViewController.php:198
 msgid "The specified folder does not contain an installation of PhpGedView."
-msgstr ""
+msgstr "A megadott mappa nem tartalmaz PhpGedView telepítést."
 
 #: app/Http/Controllers/EditSubmitterController.php:95
 msgid "The submitter has been created"
@@ -14371,7 +14371,7 @@ msgstr "Ez a bejegyzés nem létezik, vagy Önnek nincs jogosultsága megtekinte
 
 #: resources/views/admin/trees-privacy.php:238
 msgid "This record does not exist."
-msgstr ""
+msgstr "Ez a bejezyzés nem létezik."
 
 #: resources/views/gedcom-record-page.php:11
 msgid "This record has been deleted. The deletion will need to be reviewed by a moderator."
@@ -14454,11 +14454,11 @@ msgstr "Itt sorolhatók fel – a születésen és halálozáson túl – vessz�
 
 #: resources/views/privacy-policy.php:25
 msgid "This site does not use any third-party tracking or analytics services."
-msgstr ""
+msgstr "Ez a webhely nem használ harmadik féltől származó követési vagy elemzési szolgáltatásokat."
 
 #: resources/views/privacy-policy.php:16
 msgid "This site uses cookies to store your preferences on this site, such as the language you have selected."
-msgstr ""
+msgstr "Ez az oldal süti-ket használ az oldal beállításainak tárolására, mint például az ön által választott nyelvet."
 
 #: app/Exceptions/SourceAccessDeniedException.php:33
 #: app/Exceptions/SourceNotFoundException.php:33
@@ -15410,7 +15410,7 @@ msgstr "Megtekintés"
 #: resources/views/places-page.php:33
 #, php-format
 msgid "View table of events occurring in %s"
-msgstr ""
+msgstr "%s eseménytáblájának megjelenítése"
 
 #: resources/views/calendar-page.php:159
 msgid "View this day"
@@ -16018,7 +16018,7 @@ msgstr "felvétel"
 #. I18N: A button label.
 #: resources/views/admin/locations.php:78
 msgid "add place"
-msgstr ""
+msgstr "hely felvétele"
 
 #. I18N: The name given to a child by its adoptive parents
 #: app/GedcomCode/GedcomCodeName.php:67
@@ -16586,7 +16586,7 @@ msgstr "volt feleség"
 #. I18N: A button label.
 #: resources/views/admin/locations.php:84
 msgid "export file"
-msgstr ""
+msgstr "fájlkimentés"
 
 #: app/Http/Controllers/AdminTreesController.php:933
 #: modules_v3/fact_sources/report.xml:6
@@ -18539,7 +18539,7 @@ msgstr "betöltés"
 #. I18N: A button label.
 #: resources/views/admin/locations.php:98
 msgid "import file"
-msgstr ""
+msgstr "fájlbetöltés"
 
 #. I18N: Gedcom INT dates
 #: app/Date.php:352
@@ -18610,7 +18610,7 @@ msgstr "felsorolás"
 #: app/Http/Controllers/AdminLocationController.php:471
 #, php-format
 msgid "locations updated: %s, locations added: %s"
-msgstr ""
+msgstr "hely frissítve: %s, hely hozzáadva: %s"
 
 #. I18N: A woman’s name, before she marries (in cultures where women take their new husband’s name on marriage)
 #: app/GedcomCode/GedcomCodeName.php:133
@@ -18736,17 +18736,17 @@ msgstr "unokaöcs"
 #: app/Functions/Functions.php:1180
 msgctxt "husband’s brother’s son"
 msgid "nephew"
-msgstr ""
+msgstr "unokaöcs"
 
 #: app/Functions/Functions.php:1176
 msgctxt "husband’s sibling’s son"
 msgid "nephew"
-msgstr ""
+msgstr "unokaöcs"
 
 #: app/Functions/Functions.php:1178
 msgctxt "husband’s sister’s son"
 msgid "nephew"
-msgstr ""
+msgstr "unokaöcs"
 
 #: app/Functions/Functions.php:932
 msgctxt "sibling’s son"
@@ -18761,17 +18761,17 @@ msgstr "unokaöcs"
 #: app/Functions/Functions.php:1420
 msgctxt "wife’s brother’s son"
 msgid "nephew"
-msgstr ""
+msgstr "unokaöcs"
 
 #: app/Functions/Functions.php:1416
 msgctxt "wife’s sibling’s son"
 msgid "nephew"
-msgstr ""
+msgstr "unokaöcs"
 
 #: app/Functions/Functions.php:1418
 msgctxt "wife’s sister’s son"
 msgid "nephew"
-msgstr ""
+msgstr "unokaöcs"
 
 #: app/Functions/Functions.php:1018
 msgctxt "brother’s daughter’s husband"
@@ -18796,17 +18796,17 @@ msgstr "unokaöcs/unokahúg"
 #: app/Functions/Functions.php:1168
 msgctxt "husband’s brother’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "unokaöcs/unokahúg"
 
 #: app/Functions/Functions.php:1164
 msgctxt "husband’s sibling’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "unokaöcs/unokahúg"
 
 #: app/Functions/Functions.php:1166
 msgctxt "husband’s sister’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "unokaöcs/unokahúg"
 
 #: app/Functions/Functions.php:928
 msgctxt "sibling’s child"
@@ -18821,17 +18821,17 @@ msgstr "unokaöcs/unokahúg"
 #: app/Functions/Functions.php:1408
 msgctxt "wife’s brother’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "unokaöcs/unokahúg"
 
 #: app/Functions/Functions.php:1404
 msgctxt "wife’s sibling’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "unokaöcs/unokahúg"
 
 #: app/Functions/Functions.php:1406
 msgctxt "wife’s sister’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "unokaöcs/unokahúg"
 
 #: app/Functions/FunctionsEdit.php:806
 msgid "never"
@@ -18860,17 +18860,17 @@ msgstr "unokahúg"
 #: app/Functions/Functions.php:1174
 msgctxt "husband’s brother’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "unokahúg"
 
 #: app/Functions/Functions.php:1170
 msgctxt "husband’s sibling’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "unokahúg"
 
 #: app/Functions/Functions.php:1172
 msgctxt "husband’s sister’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "unokahúg"
 
 #: app/Functions/Functions.php:930
 msgctxt "sibling’s daughter"
@@ -18885,17 +18885,17 @@ msgstr "unokahúg"
 #: app/Functions/Functions.php:1414
 msgctxt "wife’s brother’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "unokahúg"
 
 #: app/Functions/Functions.php:1410
 msgctxt "wife’s sibling’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "unokahúg"
 
 #: app/Functions/Functions.php:1412
 msgctxt "wife’s sister’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "unokahúg"
 
 #: app/Functions/Functions.php:1044
 msgctxt "brother’s son’s wife"
