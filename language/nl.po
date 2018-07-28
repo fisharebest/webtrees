@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:51+0100\n"
-"PO-Revision-Date: 2018-07-28 13:22+0000\n"
+"PO-Revision-Date: 2018-09-27 18:52+0000\n"
 "Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/webtrees/nl/>\n"
 "Language: nl\n"
@@ -1715,7 +1715,7 @@ msgstr "Leeftijd bij huwelijk"
 #: resources/views/statistics-chart-custom.php:196
 #: resources/views/statistics-chart-custom.php:209
 msgid "Age interval"
-msgstr ""
+msgstr "Leeftijdsinterval"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.php:548
