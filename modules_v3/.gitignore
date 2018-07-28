@@ -1,5 +1,6 @@
 /*/
 !/GEDFact_assistant/
+!/address_report/
 !/ahnentafel_report/
 !/ancestors_chart/
 !/batch_update/
@@ -17,6 +18,7 @@
 !/descendancy_report/
 !/extra_info/
 !/fact_sources/
+!/families/
 !/family_book_chart/
 !/family_group_report/
 !/family_nav/
@@ -31,6 +33,7 @@
 !/html/
 !/individual_ext_report/
 !/individual_report/
+!/individuals/
 !/lifespans_chart/
 !/lightbox/
 !/logged_in/
