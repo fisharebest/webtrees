@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\Module\InteractiveTree\TreeView;
 use Fisharebest\Webtrees\Tree;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * Class InteractiveTreeModule
@@ -146,7 +147,16 @@ class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface
         $xref = $request->get('xref');
 
         $individual = Individual::getInstance($xref, $tree);
-        $tv         = new TreeView('tv');
+
+        if ($individual === null) {
+            throw new IndividualNotFoundException;
+        }
+
+        if (!$individual->canShow()) {
+            throw new IndividualAccessDeniedException;
+        }
+
+        $tv = new TreeView('tv');
 
         list($html, $js) = $tv->drawViewport($individual, 4);
 
