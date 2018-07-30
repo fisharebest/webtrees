@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-07-26 23:06+0100\n"
-"PO-Revision-Date: 2018-05-07 12:42+0000\n"
-"Last-Translator: Geir Kleiveland <geir@kleiveland.as>\n"
+"PO-Revision-Date: 2018-07-30 07:46+0000\n"
+"Last-Translator: hrnwebtrees <hrnwebtrees@yahoo.com>\n"
 "Language-Team: Norwegian Nynorsk <https://translate.webtrees.net/projects/webtrees/webtrees/nn/>\n"
 "Language: nn\n"
 "MIME-Version: 1.0\n"
@@ -83,7 +83,7 @@ msgstr "%1$sKB blei lasta ned på %2$s sekund."
 #: app/Http/Controllers/AdminUsersController.php:399
 #, php-format
 msgid "%1$s does not exist"
-msgstr ""
+msgstr "%1$s finnast ikkje"
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: app/Http/Controllers/AdminTreesController.php:228
@@ -309,8 +309,8 @@ msgstr "%s er ikkje aktivert på denne serveren, og webtrees kan ikkje installer
 #, php-format
 msgid "%s location has been imported."
 msgid_plural "%s locations have been imported."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s stad er importert."
+msgstr[1] "%s stadar er importerte."
 
 #: app/Module/UserMessagesModule.php:177
 #, php-format
@@ -365,8 +365,8 @@ msgstr "%s og ein generasjon fram"
 #, php-format
 msgid "%s repository has been updated."
 msgid_plural "%s repositories have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s arkiv har blitt oppdatert."
+msgstr[1] "%s arkiv har blitt oppdaterte."
 
 #: app/I18N.php:883
 #, php-format
@@ -709,7 +709,7 @@ msgstr "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2
 #. I18N: URL = web address
 #: resources/views/modals/media-file-fields.php:20
 msgid "A URL"
-msgstr ""
+msgstr "Ein URL"
 
 #. I18N: Description of the “RelationshipsChart” module
 #: app/Module/RelationshipsChartModule.php:61
@@ -1408,7 +1408,7 @@ msgstr "Legg til lengre tekst om personar i slektstreet."
 
 #: resources/views/admin/map-import-form.php:72
 msgid "Add new, and update existing records"
-msgstr ""
+msgstr "Legg til ny, og oppdater eksisterande postar"
 
 #: resources/views/admin/trees-import.php:83
 msgid "Add spaces where long lines were wrapped"
@@ -1927,7 +1927,7 @@ msgstr "Ein uventa databasefeil har oppstått."
 #: resources/views/modules/pedigree-map/pedigree-map.php:82
 #: resources/views/place-map.php:85
 msgid "An unknown error occurred"
-msgstr ""
+msgstr "Ein ukjend feil har oppstått"
 
 #. I18N: Name of a module/report
 #. I18N: Name of a module/chart
@@ -6256,7 +6256,7 @@ msgstr "Flagg"
 #: resources/views/admin/locations.php:47
 #, php-format
 msgid "Flag of %s"
-msgstr ""
+msgstr "%s sitt flagg"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:7564
@@ -7290,7 +7290,7 @@ msgstr "Importer"
 
 #: resources/views/admin/map-import-form.php:67
 msgid "Import Options."
-msgstr ""
+msgstr "Importval."
 
 #: app/Http/Controllers/AdminTreesController.php:614
 msgid "Import a GEDCOM file"
@@ -7307,7 +7307,7 @@ msgstr "Importer tilpassa miniatyrbileter frå webtrees versjon 1"
 
 #: app/Http/Controllers/AdminLocationController.php:310
 msgid "Import geographic data"
-msgstr ""
+msgstr "Importer geografiske data"
 
 #: resources/views/admin/trees-import.php:71
 msgid "Import preferences"
@@ -8093,7 +8093,7 @@ msgstr "Hvis du let denne innstillinga stå tom, vil standardverdien nyttast."
 
 #: resources/views/admin/media-upload.php:36
 msgid "Leave this entry blank to keep the original filename"
-msgstr ""
+msgstr "Lat være blank for å behalde opprinneleg filnamn"
 
 #: resources/views/lists/families-table.php:138
 #: resources/views/lists/individuals-table.php:190
@@ -8449,7 +8449,7 @@ msgstr "Administrere slektstre"
 #: resources/views/admin/trees-renumber.php:3
 #: resources/views/admin/trees-unconnected.php:4
 msgid "Manage family trees "
-msgstr ""
+msgstr "Handsam familietre "
 
 #: app/Http/Controllers/AdminMediaController.php:69
 #: resources/views/admin/control-panel.php:438
@@ -8519,7 +8519,7 @@ msgstr "Kart"
 #: resources/views/admin/control-panel.php:487
 #: resources/views/admin/map-provider.php:12
 msgid "Map provider"
-msgstr ""
+msgstr "Karttilbydar"
 
 #: app/Date/CalendarDate.php:361
 msgctxt "Abbreviation for March"
@@ -9833,7 +9833,7 @@ msgstr "Ingen forbindelse mellom dei to personane vart funne."
 #: resources/views/modules/pedigree-map/pedigree-map.php:81
 #: resources/views/modules/places/tab.php:77 resources/views/place-map.php:84
 msgid "No mappable items"
-msgstr ""
+msgstr "Ingen stadar å kartfeste"
 
 #: resources/views/admin/merge-records-step-2.php:51
 #: resources/views/admin/merge-records-step-2.php:98
@@ -10230,7 +10230,7 @@ msgstr "På denne dag …"
 
 #: resources/views/admin/map-import-form.php:73
 msgid "Only add new records"
-msgstr ""
+msgstr "Legg berre til nye postar"
 
 #: app/Functions/FunctionsEdit.php:230
 #: app/Functions/FunctionsPrintFacts.php:266
@@ -10243,7 +10243,7 @@ msgstr "Kun Forvaltarar kan redigere"
 
 #: resources/views/admin/map-import-form.php:74
 msgid "Only update existing records"
-msgstr ""
+msgstr "Oppdater kun eksisterande postar"
 
 #: resources/views/errors/database-connection.php:5
 msgid "Oops! The webserver is unable to connect to the database server. It could be busy, undergoing maintenance, or simply broken. You should <a href=\"index.php\">try again</a> in a few minutes or contact the website administrator."
@@ -10839,7 +10839,7 @@ msgstr "Stadnamn bør registrerast i tråd med genealogiske standarder: den mest
 
 #: resources/views/places-page.php:26
 msgid "Places without valid co-ordinates are not shown on the map and have a red border around the sidebar entry"
-msgstr ""
+msgstr "Stadar utan gyldige koordinatar vil ikkje synast på kartet, og har raud bord i sidemenyen"
 
 #: app/Theme/CloudsTheme.php:48 app/Theme/FabTheme.php:76
 #: app/Theme/MinimalTheme.php:46 app/Theme/XeneaTheme.php:46
@@ -11021,7 +11021,7 @@ msgstr "Personvern"
 
 #: app/Http/Controllers/StaticPageController.php:40
 msgid "Privacy policy"
-msgstr ""
+msgstr "Reglar for personvern"
 
 #. I18N: a restrction on viewing data
 #: resources/views/modals/restriction-fields.php:5
@@ -11273,7 +11273,7 @@ msgstr "Eigentleg namn"
 
 #: resources/views/admin/map-import-form.php:100
 msgid "Really delete all geographic data?"
-msgstr ""
+msgstr "Verkeleg slette alle geografiske data?"
 
 #. I18N: Name of a module
 #: app/Module/RecentChangesModule.php:42 modules_v3/change_report/report.xml:92
@@ -11601,7 +11601,7 @@ msgstr "Forskningsoppgåver vert lagra under koden «_TODO». Sidan denne ikkje 
 #: resources/views/modules/pedigree-map/pedigree-map.php:80
 #: resources/views/modules/places/tab.php:76 resources/views/place-map.php:83
 msgid "Reset to initial map state"
-msgstr ""
+msgstr "Attendestill til opphaveleg kart"
 
 #. I18N: gedcom tag RESI
 #: app/GedcomTag.php:961
@@ -12533,7 +12533,7 @@ msgstr "Syn bileter"
 
 #: app/Http/Controllers/PlaceHierarchyController.php:74
 msgid "Show place hierarchy"
-msgstr ""
+msgstr "Syn stadhierarkiet"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-privacy.php:146
@@ -12587,7 +12587,7 @@ msgstr "Syn %1$s %2$s nivå av stadsnamn."
 #. I18N: Description of the “OSM” module
 #: app/Module/PedigreeMapModule.php:71
 msgid "Show the birthplace of ancestors on a map."
-msgstr ""
+msgstr "Syn fødestad til anar på eit kart."
 
 #: resources/views/modules/html/config.php:41
 msgid "Show the date and time of update"
@@ -12613,7 +12613,7 @@ msgstr "Syn lista over etternamn"
 #. I18N: Description of the “OSM” module
 #: app/Module/PlacesModule.php:52
 msgid "Show the location of events on a map."
-msgstr ""
+msgstr "Syn stad for hendingar på eit kart."
 
 #. I18N: label for a yes/no option
 #: resources/views/modules/recent_changes/config.php:35
@@ -12759,7 +12759,7 @@ msgstr "Medlemar på nettstaden kan sende meldingar til einannan. Du kan velje k
 
 #: app/Http/Controllers/AdminPhpGedViewController.php:176
 msgid "Site preferences"
-msgstr ""
+msgstr "Innstillingar for nettstad"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-analytics.php:20
@@ -13487,7 +13487,7 @@ msgstr "Utklippsholdaren let deg ta «utklipp» frå slektstreet og laste dei ne
 
 #: resources/views/privacy-policy.php:8
 msgid "The data in this website has been collected for the purposes of genealogical research."
-msgstr ""
+msgstr "Data på denne nettstaden er samla for bruk i genealogisk gransking."
 
 #: resources/views/admin/trees-preferences.php:441
 msgid "The date and time of the last update"
@@ -13496,7 +13496,7 @@ msgstr "Dato og tidspunkt for siste oppdatering"
 #: app/Http/Controllers/AdminLocationController.php:177
 #, php-format
 msgid "The details for “%s” have been updated."
-msgstr ""
+msgstr "Detaljane for %s har blitt oppdaterte."
 
 #. I18N: %s is a filename
 #: app/Http/Controllers/AdminTreesController.php:535
@@ -13808,7 +13808,7 @@ msgstr "Kjelda har blitt oppretta"
 
 #: app/Http/Controllers/AdminPhpGedViewController.php:198
 msgid "The specified folder does not contain an installation of PhpGedView."
-msgstr ""
+msgstr "Den gitte mappa inneheld ingen installasjon av PhpGedView."
 
 #: app/Http/Controllers/EditSubmitterController.php:95
 msgid "The submitter has been created"
@@ -14370,7 +14370,7 @@ msgstr "Denne posten eksisterer ikkje eller du har ikkje løyve til å sjå den.
 
 #: resources/views/admin/trees-privacy.php:238
 msgid "This record does not exist."
-msgstr ""
+msgstr "Denne posten finnast ikkje."
 
 #: resources/views/gedcom-record-page.php:11
 msgid "This record has been deleted. The deletion will need to be reviewed by a moderator."
@@ -14453,11 +14453,11 @@ msgstr "Dette skal vere ei liste med faktatypar, skilt med komma eller mellomrom
 
 #: resources/views/privacy-policy.php:25
 msgid "This site does not use any third-party tracking or analytics services."
-msgstr ""
+msgstr "Denne nettstaden nyttar ingen tredjeparts sporing- eller analyseservice."
 
 #: resources/views/privacy-policy.php:16
 msgid "This site uses cookies to store your preferences on this site, such as the language you have selected."
-msgstr ""
+msgstr "Denne nettstaden nyttar cookies for å lagre dine innstillingar, som til dømes val av språk."
 
 #: app/Exceptions/SourceAccessDeniedException.php:33
 #: app/Exceptions/SourceNotFoundException.php:33
@@ -15409,7 +15409,7 @@ msgstr "Syn"
 #: resources/views/places-page.php:33
 #, php-format
 msgid "View table of events occurring in %s"
-msgstr ""
+msgstr "Syn tabell over hendingar i %s"
 
 #: resources/views/calendar-page.php:159
 msgid "View this day"
@@ -16017,7 +16017,7 @@ msgstr "legg til"
 #. I18N: A button label.
 #: resources/views/admin/locations.php:78
 msgid "add place"
-msgstr ""
+msgstr "legg til stad"
 
 #. I18N: The name given to a child by its adoptive parents
 #: app/GedcomCode/GedcomCodeName.php:67
@@ -16585,7 +16585,7 @@ msgstr "tidlegare hustru"
 #. I18N: A button label.
 #: resources/views/admin/locations.php:84
 msgid "export file"
-msgstr ""
+msgstr "eksporter fil"
 
 #: app/Http/Controllers/AdminTreesController.php:933
 #: modules_v3/fact_sources/report.xml:6
@@ -18538,7 +18538,7 @@ msgstr "importer"
 #. I18N: A button label.
 #: resources/views/admin/locations.php:98
 msgid "import file"
-msgstr ""
+msgstr "importer fil"
 
 #. I18N: Gedcom INT dates
 #: app/Date.php:352
@@ -18609,7 +18609,7 @@ msgstr "liste"
 #: app/Http/Controllers/AdminLocationController.php:471
 #, php-format
 msgid "locations updated: %s, locations added: %s"
-msgstr ""
+msgstr "stadar oppdatert: %s, stadar lagde til: %s"
 
 #. I18N: A woman’s name, before she marries (in cultures where women take their new husband’s name on marriage)
 #: app/GedcomCode/GedcomCodeName.php:133
@@ -18735,17 +18735,17 @@ msgstr "brorson"
 #: app/Functions/Functions.php:1180
 msgctxt "husband’s brother’s son"
 msgid "nephew"
-msgstr ""
+msgstr "nevø"
 
 #: app/Functions/Functions.php:1176
 msgctxt "husband’s sibling’s son"
 msgid "nephew"
-msgstr ""
+msgstr "nevø"
 
 #: app/Functions/Functions.php:1178
 msgctxt "husband’s sister’s son"
 msgid "nephew"
-msgstr ""
+msgstr "nevø"
 
 #: app/Functions/Functions.php:932
 msgctxt "sibling’s son"
@@ -18760,17 +18760,17 @@ msgstr "systerson"
 #: app/Functions/Functions.php:1420
 msgctxt "wife’s brother’s son"
 msgid "nephew"
-msgstr ""
+msgstr "nevø"
 
 #: app/Functions/Functions.php:1416
 msgctxt "wife’s sibling’s son"
 msgid "nephew"
-msgstr ""
+msgstr "nevø"
 
 #: app/Functions/Functions.php:1418
 msgctxt "wife’s sister’s son"
 msgid "nephew"
-msgstr ""
+msgstr "nevø"
 
 #: app/Functions/Functions.php:1018
 msgctxt "brother’s daughter’s husband"
@@ -18795,17 +18795,17 @@ msgstr "brorbarn"
 #: app/Functions/Functions.php:1168
 msgctxt "husband’s brother’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "nevø/niese"
 
 #: app/Functions/Functions.php:1164
 msgctxt "husband’s sibling’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "nevø/niese"
 
 #: app/Functions/Functions.php:1166
 msgctxt "husband’s sister’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "nevø/niese"
 
 #: app/Functions/Functions.php:928
 msgctxt "sibling’s child"
@@ -18820,17 +18820,17 @@ msgstr "systerbarn"
 #: app/Functions/Functions.php:1408
 msgctxt "wife’s brother’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "nevø/niese"
 
 #: app/Functions/Functions.php:1404
 msgctxt "wife’s sibling’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "nevø/niese"
 
 #: app/Functions/Functions.php:1406
 msgctxt "wife’s sister’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "nevø/niese"
 
 #: app/Functions/FunctionsEdit.php:806
 msgid "never"
@@ -18859,17 +18859,17 @@ msgstr "brordotter"
 #: app/Functions/Functions.php:1174
 msgctxt "husband’s brother’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "niese"
 
 #: app/Functions/Functions.php:1170
 msgctxt "husband’s sibling’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "niese"
 
 #: app/Functions/Functions.php:1172
 msgctxt "husband’s sister’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "niese"
 
 #: app/Functions/Functions.php:930
 msgctxt "sibling’s daughter"
@@ -18884,17 +18884,17 @@ msgstr "systerdotter"
 #: app/Functions/Functions.php:1414
 msgctxt "wife’s brother’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "niese"
 
 #: app/Functions/Functions.php:1410
 msgctxt "wife’s sibling’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "niese"
 
 #: app/Functions/Functions.php:1412
 msgctxt "wife’s sister’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "niese"
 
 #: app/Functions/Functions.php:1044
 msgctxt "brother’s son’s wife"
