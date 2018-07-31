@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2018-03-13 10:42+0000\n"
+"PO-Revision-Date: 2018-07-31 13:30+0000\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Hebrew <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/he/>\n"
 "Language: he\n"
@@ -3256,12 +3256,12 @@ msgstr "קונה"
 #: app/GedcomCode/GedcomCodeRela.php:84
 msgctxt "FEMALE"
 msgid "Buyer"
-msgstr "קונה"
+msgstr "קניינית"
 
 #: app/GedcomCode/GedcomCodeRela.php:82
 msgctxt "MALE"
 msgid "Buyer"
-msgstr "קונה"
+msgstr "קניין"
 
 #. I18N: Help text for the "Port number" site configuration setting
 #: admin_site_config.php:368
