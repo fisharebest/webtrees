@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-07-26 23:06+0100\n"
-"PO-Revision-Date: 2018-03-13 10:42+0000\n"
+"PO-Revision-Date: 2018-07-31 14:41+0000\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Hebrew <https://translate.webtrees.net/projects/webtrees/webtrees/he/>\n"
 "Language: he\n"
@@ -83,7 +83,7 @@ msgstr "%1$s KB הורדו ב- %2$s שניות."
 #: app/Http/Controllers/AdminUsersController.php:399
 #, php-format
 msgid "%1$s does not exist"
-msgstr ""
+msgstr "%1$s אינו קיים"
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: app/Http/Controllers/AdminTreesController.php:228
@@ -309,8 +309,8 @@ msgstr "%s אינו זמין בשרת זה. אינך יכול להתקין את 
 #, php-format
 msgid "%s location has been imported."
 msgid_plural "%s locations have been imported."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "מיקום %s יובא."
+msgstr[1] "%s מיקומים יובאו."
 
 #: app/Module/UserMessagesModule.php:177
 #, php-format
@@ -365,8 +365,8 @@ msgstr "%s מוזח/ת פעם אחת למטה"
 #, php-format
 msgid "%s repository has been updated."
 msgid_plural "%s repositories have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "מאגר %s עודכן."
+msgstr[1] "%s מאגרים עודכנו."
 
 #: app/I18N.php:883
 #, php-format
@@ -709,7 +709,7 @@ msgstr "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2
 #. I18N: URL = web address
 #: resources/views/modals/media-file-fields.php:20
 msgid "A URL"
-msgstr ""
+msgstr "URL"
 
 #. I18N: Description of the “RelationshipsChart” module
 #: app/Module/RelationshipsChartModule.php:61
@@ -1408,7 +1408,7 @@ msgstr "הוסף סיפורים נרטיביים לאנשים בעץ המשפח�
 
 #: resources/views/admin/map-import-form.php:72
 msgid "Add new, and update existing records"
-msgstr ""
+msgstr "הוסף רשומות חדשות ועדכן רשומות קיימות"
 
 #: resources/views/admin/trees-import.php:83
 msgid "Add spaces where long lines were wrapped"
@@ -1927,7 +1927,7 @@ msgstr "אירעה שגיאה לא צפויה במסד נתונים."
 #: resources/views/modules/pedigree-map/pedigree-map.php:82
 #: resources/views/place-map.php:85
 msgid "An unknown error occurred"
-msgstr ""
+msgstr "ארעה שגיאה לא ידועה"
 
 #. I18N: Name of a module/report
 #. I18N: Name of a module/chart
@@ -3219,12 +3219,12 @@ msgstr "קונה"
 #: app/GedcomCode/GedcomCodeRela.php:112
 msgctxt "FEMALE"
 msgid "Buyer"
-msgstr "קונה"
+msgstr "קניינית"
 
 #: app/GedcomCode/GedcomCodeRela.php:110
 msgctxt "MALE"
 msgid "Buyer"
-msgstr "קונה"
+msgstr "קניין"
 
 #. I18N: Help text for the "Port number" site configuration setting
 #: resources/views/admin/site-mail.php:66
@@ -6256,7 +6256,7 @@ msgstr "דגל"
 #: resources/views/admin/locations.php:47
 #, php-format
 msgid "Flag of %s"
-msgstr ""
+msgstr "דגל %s"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:7564
@@ -7290,7 +7290,7 @@ msgstr "ייבא"
 
 #: resources/views/admin/map-import-form.php:67
 msgid "Import Options."
-msgstr ""
+msgstr "אפשרויות ייבוא."
 
 #: app/Http/Controllers/AdminTreesController.php:614
 msgid "Import a GEDCOM file"
@@ -7307,7 +7307,7 @@ msgstr "ייבא תמונות ממוזערות מותאמות אישית מגר�
 
 #: app/Http/Controllers/AdminLocationController.php:310
 msgid "Import geographic data"
-msgstr ""
+msgstr "יבא נתונים גיאוגרפיים"
 
 #: resources/views/admin/trees-import.php:71
 msgid "Import preferences"
@@ -8093,7 +8093,7 @@ msgstr "אם תשאיר הגדרה זו ריקה, ערך ברירת המחדל �
 
 #: resources/views/admin/media-upload.php:36
 msgid "Leave this entry blank to keep the original filename"
-msgstr ""
+msgstr "השאר ערך זה ריק כדי לשמור את שם הקובץ המקורי"
 
 #: resources/views/lists/families-table.php:138
 #: resources/views/lists/individuals-table.php:190
@@ -8449,7 +8449,7 @@ msgstr "נהל עצי משפחה"
 #: resources/views/admin/trees-renumber.php:3
 #: resources/views/admin/trees-unconnected.php:4
 msgid "Manage family trees "
-msgstr ""
+msgstr "נהל עצי משפחה "
 
 #: app/Http/Controllers/AdminMediaController.php:69
 #: resources/views/admin/control-panel.php:438
@@ -8519,7 +8519,7 @@ msgstr "מפה"
 #: resources/views/admin/control-panel.php:487
 #: resources/views/admin/map-provider.php:12
 msgid "Map provider"
-msgstr ""
+msgstr "ספק מפה"
 
 #: app/Date/CalendarDate.php:361
 msgctxt "Abbreviation for March"
@@ -9833,7 +9833,7 @@ msgstr "לא נמצא קשר בין שני האנשים."
 #: resources/views/modules/pedigree-map/pedigree-map.php:81
 #: resources/views/modules/places/tab.php:77 resources/views/place-map.php:84
 msgid "No mappable items"
-msgstr ""
+msgstr "אין פריטים הניתנים למימוש במפה"
 
 #: resources/views/admin/merge-records-step-2.php:51
 #: resources/views/admin/merge-records-step-2.php:98
@@ -10230,7 +10230,7 @@ msgstr "ביום הזה …"
 
 #: resources/views/admin/map-import-form.php:73
 msgid "Only add new records"
-msgstr ""
+msgstr "הוסף רק רשומות חדשות"
 
 #: app/Functions/FunctionsEdit.php:230
 #: app/Functions/FunctionsPrintFacts.php:266
@@ -10243,7 +10243,7 @@ msgstr "רק מנהלים יכולים לערוך"
 
 #: resources/views/admin/map-import-form.php:74
 msgid "Only update existing records"
-msgstr ""
+msgstr "עדכן רק רשומות קיימות"
 
 #: resources/views/errors/database-connection.php:5
 msgid "Oops! The webserver is unable to connect to the database server. It could be busy, undergoing maintenance, or simply broken. You should <a href=\"index.php\">try again</a> in a few minutes or contact the website administrator."
@@ -10839,7 +10839,7 @@ msgstr "שמות מקומות יש להכניס לפי התקנים של חקר 
 
 #: resources/views/places-page.php:26
 msgid "Places without valid co-ordinates are not shown on the map and have a red border around the sidebar entry"
-msgstr ""
+msgstr "מקומות ללא קואורדינטות חוקיות אינם מוצגים במפה ויש להם גבול אדום סביב הערך הצדדי"
 
 #: app/Theme/CloudsTheme.php:48 app/Theme/FabTheme.php:76
 #: app/Theme/MinimalTheme.php:46 app/Theme/XeneaTheme.php:46
@@ -11021,7 +11021,7 @@ msgstr "פרטיות"
 
 #: app/Http/Controllers/StaticPageController.php:40
 msgid "Privacy policy"
-msgstr ""
+msgstr "מדיניות הפרטיות"
 
 #. I18N: a restrction on viewing data
 #: resources/views/modals/restriction-fields.php:5
@@ -11273,7 +11273,7 @@ msgstr "שם אמיתי"
 
 #: resources/views/admin/map-import-form.php:100
 msgid "Really delete all geographic data?"
-msgstr ""
+msgstr "האם באמת למחוק את כל הנתונים הגיאוגרפיים?"
 
 #. I18N: Name of a module
 #: app/Module/RecentChangesModule.php:42 modules_v3/change_report/report.xml:92
@@ -11601,7 +11601,7 @@ msgstr "משימות מחקר מאוחסנות באמצעות תג GEDCOM מות
 #: resources/views/modules/pedigree-map/pedigree-map.php:80
 #: resources/views/modules/places/tab.php:76 resources/views/place-map.php:83
 msgid "Reset to initial map state"
-msgstr ""
+msgstr "איפוס למצב המפה הראשוני"
 
 #. I18N: gedcom tag RESI
 #: app/GedcomTag.php:961
@@ -12533,7 +12533,7 @@ msgstr "הראה תמונות"
 
 #: app/Http/Controllers/PlaceHierarchyController.php:74
 msgid "Show place hierarchy"
-msgstr ""
+msgstr "הצג היררכית מקומות"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-privacy.php:146
@@ -12587,7 +12587,7 @@ msgstr "הצג את %2$s החלקים %1$s של שם המקום."
 #. I18N: Description of the “OSM” module
 #: app/Module/PedigreeMapModule.php:71
 msgid "Show the birthplace of ancestors on a map."
-msgstr ""
+msgstr "הצג את מקום הולדתם של אבות על המפה."
 
 #: resources/views/modules/html/config.php:41
 msgid "Show the date and time of update"
@@ -12613,7 +12613,7 @@ msgstr "הצג את רשימת שמות המשפחה"
 #. I18N: Description of the “OSM” module
 #: app/Module/PlacesModule.php:52
 msgid "Show the location of events on a map."
-msgstr ""
+msgstr "הצג את המיקום של ארועים במפה."
 
 #. I18N: label for a yes/no option
 #: resources/views/modules/recent_changes/config.php:35
@@ -12759,7 +12759,7 @@ msgstr "חברי האתר יכולים לשלוח אחד לשני הודעות. 
 
 #: app/Http/Controllers/AdminPhpGedViewController.php:176
 msgid "Site preferences"
-msgstr ""
+msgstr "העדפות אתר"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-analytics.php:20
@@ -13487,7 +13487,7 @@ msgstr "עגלת גזירי העץ מאפשרת לקיחת קטעים (”גזי
 
 #: resources/views/privacy-policy.php:8
 msgid "The data in this website has been collected for the purposes of genealogical research."
-msgstr ""
+msgstr "הנתונים באתר זה נאספו למטרות מחקר גניאלוגי."
 
 #: resources/views/admin/trees-preferences.php:441
 msgid "The date and time of the last update"
@@ -13496,7 +13496,7 @@ msgstr "התאריך והשעה של העדכון האחרון"
 #: app/Http/Controllers/AdminLocationController.php:177
 #, php-format
 msgid "The details for “%s” have been updated."
-msgstr ""
+msgstr "הפרטים של \"%s\" עודכנו."
 
 #. I18N: %s is a filename
 #: app/Http/Controllers/AdminTreesController.php:535
@@ -13808,7 +13808,7 @@ msgstr "המקור נוצר"
 
 #: app/Http/Controllers/AdminPhpGedViewController.php:198
 msgid "The specified folder does not contain an installation of PhpGedView."
-msgstr ""
+msgstr "התיקיה שצוינה אינה מכילה התקנה של PhpGedView."
 
 #: app/Http/Controllers/EditSubmitterController.php:95
 msgid "The submitter has been created"
@@ -14370,7 +14370,7 @@ msgstr "הרשומה אינה קיימת או שאין לך הרשאה לצפו�
 
 #: resources/views/admin/trees-privacy.php:238
 msgid "This record does not exist."
-msgstr ""
+msgstr "רשומה זו אינה קיימת."
 
 #: resources/views/gedcom-record-page.php:11
 msgid "This record has been deleted. The deletion will need to be reviewed by a moderator."
@@ -14453,11 +14453,11 @@ msgstr "זו צריכה להיות רשימה של עובדות המופרדת �
 
 #: resources/views/privacy-policy.php:25
 msgid "This site does not use any third-party tracking or analytics services."
-msgstr ""
+msgstr "אתר זה אינו משתמש בשירותי מעקב או ניתוח של צד שלישי."
 
 #: resources/views/privacy-policy.php:16
 msgid "This site uses cookies to store your preferences on this site, such as the language you have selected."
-msgstr ""
+msgstr "אתר זה משתמש בעוגיות כדי לאחסן את ההעדפות שלך באתר זה, כגון השפה שבחרת."
 
 #: app/Exceptions/SourceAccessDeniedException.php:33
 #: app/Exceptions/SourceNotFoundException.php:33
@@ -15409,7 +15409,7 @@ msgstr "צפה"
 #: resources/views/places-page.php:33
 #, php-format
 msgid "View table of events occurring in %s"
-msgstr ""
+msgstr "הצג טבלת אירועים המתרחשים ב-%s"
 
 #: resources/views/calendar-page.php:159
 msgid "View this day"
@@ -16017,7 +16017,7 @@ msgstr "הוסף"
 #. I18N: A button label.
 #: resources/views/admin/locations.php:78
 msgid "add place"
-msgstr ""
+msgstr "הוסף מקום"
 
 #. I18N: The name given to a child by its adoptive parents
 #: app/GedcomCode/GedcomCodeName.php:67
@@ -16585,7 +16585,7 @@ msgstr "גרושה"
 #. I18N: A button label.
 #: resources/views/admin/locations.php:84
 msgid "export file"
-msgstr ""
+msgstr "ייצא קובץ"
 
 #: app/Http/Controllers/AdminTreesController.php:933
 #: modules_v3/fact_sources/report.xml:6
@@ -18538,7 +18538,7 @@ msgstr "ייבא"
 #. I18N: A button label.
 #: resources/views/admin/locations.php:98
 msgid "import file"
-msgstr ""
+msgstr "ייבא קובץ"
 
 #. I18N: Gedcom INT dates
 #: app/Date.php:352
@@ -18609,7 +18609,7 @@ msgstr "רשימה"
 #: app/Http/Controllers/AdminLocationController.php:471
 #, php-format
 msgid "locations updated: %s, locations added: %s"
-msgstr ""
+msgstr "מיקומים שעודכנו: %s, מיקומים שנוספו: %s"
 
 #. I18N: A woman’s name, before she marries (in cultures where women take their new husband’s name on marriage)
 #: app/GedcomCode/GedcomCodeName.php:133
@@ -18735,17 +18735,17 @@ msgstr "אחיין"
 #: app/Functions/Functions.php:1180
 msgctxt "husband’s brother’s son"
 msgid "nephew"
-msgstr ""
+msgstr "אחיינו של הבעל"
 
 #: app/Functions/Functions.php:1176
 msgctxt "husband’s sibling’s son"
 msgid "nephew"
-msgstr ""
+msgstr "אחיינו של הבעל"
 
 #: app/Functions/Functions.php:1178
 msgctxt "husband’s sister’s son"
 msgid "nephew"
-msgstr ""
+msgstr "אחיינו של הבעל"
 
 #: app/Functions/Functions.php:932
 msgctxt "sibling’s son"
@@ -18760,17 +18760,17 @@ msgstr "אחיין"
 #: app/Functions/Functions.php:1420
 msgctxt "wife’s brother’s son"
 msgid "nephew"
-msgstr ""
+msgstr "אחיינה של האשה"
 
 #: app/Functions/Functions.php:1416
 msgctxt "wife’s sibling’s son"
 msgid "nephew"
-msgstr ""
+msgstr "אחיינה של האשה"
 
 #: app/Functions/Functions.php:1418
 msgctxt "wife’s sister’s son"
 msgid "nephew"
-msgstr ""
+msgstr "אחיינה של האשה"
 
 #: app/Functions/Functions.php:1018
 msgctxt "brother’s daughter’s husband"
@@ -18795,17 +18795,17 @@ msgstr "אחיין/אחיינית"
 #: app/Functions/Functions.php:1168
 msgctxt "husband’s brother’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "האחיין/אחיינית של הבעל"
 
 #: app/Functions/Functions.php:1164
 msgctxt "husband’s sibling’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "האחיין/אחיינית של הבעל"
 
 #: app/Functions/Functions.php:1166
 msgctxt "husband’s sister’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "האחיין/אחיינית של הבעל"
 
 #: app/Functions/Functions.php:928
 msgctxt "sibling’s child"
@@ -18820,17 +18820,17 @@ msgstr "אחיין/אחיינית"
 #: app/Functions/Functions.php:1408
 msgctxt "wife’s brother’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "האחיין/אחיינית של האישה"
 
 #: app/Functions/Functions.php:1404
 msgctxt "wife’s sibling’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "האחיין/אחיינית של האישה"
 
 #: app/Functions/Functions.php:1406
 msgctxt "wife’s sister’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "האחיין/אחיינית של האישה"
 
 #: app/Functions/FunctionsEdit.php:806
 msgid "never"
@@ -18859,17 +18859,17 @@ msgstr "אחיינית"
 #: app/Functions/Functions.php:1174
 msgctxt "husband’s brother’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "אחייניתו של הבעל"
 
 #: app/Functions/Functions.php:1170
 msgctxt "husband’s sibling’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "אחייניתו של הבעל"
 
 #: app/Functions/Functions.php:1172
 msgctxt "husband’s sister’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "אחייניתו של הבעל"
 
 #: app/Functions/Functions.php:930
 msgctxt "sibling’s daughter"
@@ -18884,17 +18884,17 @@ msgstr "אחיינית"
 #: app/Functions/Functions.php:1414
 msgctxt "wife’s brother’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "אחייניתה של האשה"
 
 #: app/Functions/Functions.php:1410
 msgctxt "wife’s sibling’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "אחייניתה של האשה"
 
 #: app/Functions/Functions.php:1412
 msgctxt "wife’s sister’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "אחייניתה של האשה"
 
 #: app/Functions/Functions.php:1044
 msgctxt "brother’s son’s wife"
