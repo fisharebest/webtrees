@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-07-26 23:06+0100\n"
-"PO-Revision-Date: 2018-07-29 16:34+0000\n"
+"PO-Revision-Date: 2018-07-31 08:45+0000\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Finnish <https://translate.webtrees.net/projects/webtrees/webtrees/fi/>\n"
 "Language: fi\n"
@@ -79,7 +79,7 @@ msgstr "%1$sKB ladattiin %2$s sekunnissa."
 #: app/Http/Controllers/AdminUsersController.php:399
 #, php-format
 msgid "%1$s does not exist"
-msgstr ""
+msgstr "%1$s ei ole olemassa"
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: app/Http/Controllers/AdminTreesController.php:228
@@ -305,8 +305,8 @@ msgstr "%s ei ole käytössä tässä palvelimessa. Et voi asentaa webtrees ohje
 #, php-format
 msgid "%s location has been imported."
 msgid_plural "%s locations have been imported."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s sijainti on tuotu."
+msgstr[1] "%s sijaintia on tuotu."
 
 #: app/Module/UserMessagesModule.php:177
 #, php-format
@@ -361,8 +361,8 @@ msgstr "%s"
 #, php-format
 msgid "%s repository has been updated."
 msgid_plural "%s repositories have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s tietovarasto on päivitetty."
+msgstr[1] "%s tietovarastoa on päivitetty."
 
 #: app/I18N.php:883
 #, php-format
@@ -705,7 +705,7 @@ msgstr "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2
 #. I18N: URL = web address
 #: resources/views/modals/media-file-fields.php:20
 msgid "A URL"
-msgstr ""
+msgstr "URL"
 
 #. I18N: Description of the “RelationshipsChart” module
 #: app/Module/RelationshipsChartModule.php:61
@@ -1404,7 +1404,7 @@ msgstr "Lisää kerronnallisia tarinoita sukupuun henkilöille."
 
 #: resources/views/admin/map-import-form.php:72
 msgid "Add new, and update existing records"
-msgstr ""
+msgstr "Lisää uusia, ja päivitä olemassa olevia tietueita"
 
 #: resources/views/admin/trees-import.php:83
 msgid "Add spaces where long lines were wrapped"
@@ -1923,7 +1923,7 @@ msgstr "Virhe tietokannassa."
 #: resources/views/modules/pedigree-map/pedigree-map.php:82
 #: resources/views/place-map.php:85
 msgid "An unknown error occurred"
-msgstr ""
+msgstr "Tuntematon virhe tapahtui"
 
 #. I18N: Name of a module/report
 #. I18N: Name of a module/chart
@@ -6252,7 +6252,7 @@ msgstr "Lippu"
 #: resources/views/admin/locations.php:47
 #, php-format
 msgid "Flag of %s"
-msgstr ""
+msgstr "Maan %s lippu"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:7564
@@ -7286,7 +7286,7 @@ msgstr "Tuo"
 
 #: resources/views/admin/map-import-form.php:67
 msgid "Import Options."
-msgstr ""
+msgstr "Tuontiasetukset."
 
 #: app/Http/Controllers/AdminTreesController.php:614
 msgid "Import a GEDCOM file"
@@ -7303,7 +7303,7 @@ msgstr "Tuo omat pikkukuvat webtrees-versiosta 1"
 
 #: app/Http/Controllers/AdminLocationController.php:310
 msgid "Import geographic data"
-msgstr ""
+msgstr "Tuo maantieteelliset tiedot"
 
 #: resources/views/admin/trees-import.php:71
 msgid "Import preferences"
@@ -8089,7 +8089,7 @@ msgstr "Oletusarvo on käytössä, kun et täytä mitään tähän kenttään."
 
 #: resources/views/admin/media-upload.php:36
 msgid "Leave this entry blank to keep the original filename"
-msgstr ""
+msgstr "Jätä tämä syöttökenttä tyhjäksi säilyttääksesi alkuperäisen tiedostonimen"
 
 #: resources/views/lists/families-table.php:138
 #: resources/views/lists/individuals-table.php:190
@@ -8445,7 +8445,7 @@ msgstr "Hallitse sukupuita"
 #: resources/views/admin/trees-renumber.php:3
 #: resources/views/admin/trees-unconnected.php:4
 msgid "Manage family trees "
-msgstr ""
+msgstr "Hallitse sukupuita "
 
 #: app/Http/Controllers/AdminMediaController.php:69
 #: resources/views/admin/control-panel.php:438
@@ -8515,7 +8515,7 @@ msgstr "Kartta"
 #: resources/views/admin/control-panel.php:487
 #: resources/views/admin/map-provider.php:12
 msgid "Map provider"
-msgstr ""
+msgstr "Karttaoperaattori"
 
 #: app/Date/CalendarDate.php:361
 msgctxt "Abbreviation for March"
@@ -9829,7 +9829,7 @@ msgstr "Sukuyhteyttä näiden kahden henkilön välillä ei löydy."
 #: resources/views/modules/pedigree-map/pedigree-map.php:81
 #: resources/views/modules/places/tab.php:77 resources/views/place-map.php:84
 msgid "No mappable items"
-msgstr ""
+msgstr "Ei kartoitettavia tietoja"
 
 #: resources/views/admin/merge-records-step-2.php:51
 #: resources/views/admin/merge-records-step-2.php:98
@@ -10226,7 +10226,7 @@ msgstr "Tänä päivänä tapahtui…"
 
 #: resources/views/admin/map-import-form.php:73
 msgid "Only add new records"
-msgstr ""
+msgstr "Lisää ainoastaan uusia tietueita"
 
 #: app/Functions/FunctionsEdit.php:230
 #: app/Functions/FunctionsPrintFacts.php:266
@@ -10239,7 +10239,7 @@ msgstr "Ainoastaan sukupuun ylläpitäjät voivat muuttaa"
 
 #: resources/views/admin/map-import-form.php:74
 msgid "Only update existing records"
-msgstr ""
+msgstr "Päivytä ainoastaan olemassa olevia tietueita"
 
 #: resources/views/errors/database-connection.php:5
 msgid "Oops! The webserver is unable to connect to the database server. It could be busy, undergoing maintenance, or simply broken. You should <a href=\"index.php\">try again</a> in a few minutes or contact the website administrator."
@@ -10835,7 +10835,7 @@ msgstr "Paikat tulisi lisätä sukututkimuksen standardien mukaisesti. Paikkatie
 
 #: resources/views/places-page.php:26
 msgid "Places without valid co-ordinates are not shown on the map and have a red border around the sidebar entry"
-msgstr ""
+msgstr "Paikkoja ilman kelvollisia koordinaatteja ei näytetä kartalla ja niissä on punainen reunus sivupalkin merkinnän ympärillä"
 
 #: app/Theme/CloudsTheme.php:48 app/Theme/FabTheme.php:76
 #: app/Theme/MinimalTheme.php:46 app/Theme/XeneaTheme.php:46
@@ -11017,7 +11017,7 @@ msgstr "Yksityisyys"
 
 #: app/Http/Controllers/StaticPageController.php:40
 msgid "Privacy policy"
-msgstr ""
+msgstr "Tietosuojakäytäntö"
 
 #. I18N: a restrction on viewing data
 #: resources/views/modals/restriction-fields.php:5
@@ -11269,7 +11269,7 @@ msgstr "Etu- ja sukunimi"
 
 #: resources/views/admin/map-import-form.php:100
 msgid "Really delete all geographic data?"
-msgstr ""
+msgstr "Poista todella kaikki maantieteelliset tiedot?"
 
 #. I18N: Name of a module
 #: app/Module/RecentChangesModule.php:42 modules_v3/change_report/report.xml:92
@@ -11597,7 +11597,7 @@ msgstr "Tutkimus tehtävät tallennetaan käyttäen GEDCOMin erikoistunnistetta 
 #: resources/views/modules/pedigree-map/pedigree-map.php:80
 #: resources/views/modules/places/tab.php:76 resources/views/place-map.php:83
 msgid "Reset to initial map state"
-msgstr ""
+msgstr "Palauta kartan alkutila"
 
 #. I18N: gedcom tag RESI
 #: app/GedcomTag.php:961
@@ -12529,7 +12529,7 @@ msgstr "Näytä valokuvat"
 
 #: app/Http/Controllers/PlaceHierarchyController.php:74
 msgid "Show place hierarchy"
-msgstr ""
+msgstr "Näytä paikkahierarkia"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-privacy.php:146
@@ -12583,7 +12583,7 @@ msgstr "Näytä paikan nimen %1$s %2$s osa."
 #. I18N: Description of the “OSM” module
 #: app/Module/PedigreeMapModule.php:71
 msgid "Show the birthplace of ancestors on a map."
-msgstr ""
+msgstr "Näytä esivanhempien syntymäpaikka kartalla."
 
 #: resources/views/modules/html/config.php:41
 msgid "Show the date and time of update"
@@ -12609,7 +12609,7 @@ msgstr "Näytä sukunimiluettelo"
 #. I18N: Description of the “OSM” module
 #: app/Module/PlacesModule.php:52
 msgid "Show the location of events on a map."
-msgstr ""
+msgstr "Näytä tapahtumien sijainti kartalla."
 
 #. I18N: label for a yes/no option
 #: resources/views/modules/recent_changes/config.php:35
@@ -12755,7 +12755,7 @@ msgstr "Sivuston jäsenet voivat lähettää toisilleen viestejä. Voit valita, 
 
 #: app/Http/Controllers/AdminPhpGedViewController.php:176
 msgid "Site preferences"
-msgstr ""
+msgstr "Sivustoasetukset"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-analytics.php:20
@@ -13483,7 +13483,7 @@ msgstr "Leikekorin avulla voit ottaa otteita tästä sukupuusta ja ladata ne GED
 
 #: resources/views/privacy-policy.php:8
 msgid "The data in this website has been collected for the purposes of genealogical research."
-msgstr ""
+msgstr "Tämän sivuston tiedot on kerätty sukututkimusta varten."
 
 #: resources/views/admin/trees-preferences.php:441
 msgid "The date and time of the last update"
@@ -13492,7 +13492,7 @@ msgstr "Viimeisen päivityksen päivä ja aika"
 #: app/Http/Controllers/AdminLocationController.php:177
 #, php-format
 msgid "The details for “%s” have been updated."
-msgstr ""
+msgstr "Paikan \"%s\" tiedot on päivitetty."
 
 #. I18N: %s is a filename
 #: app/Http/Controllers/AdminTreesController.php:535
@@ -13804,7 +13804,7 @@ msgstr "Lähde on luotu"
 
 #: app/Http/Controllers/AdminPhpGedViewController.php:198
 msgid "The specified folder does not contain an installation of PhpGedView."
-msgstr ""
+msgstr "Määritetty kansio ei sisällä PhpGedView-asennusta."
 
 #: app/Http/Controllers/EditSubmitterController.php:95
 msgid "The submitter has been created"
@@ -14366,7 +14366,7 @@ msgstr "Tämä tietue ei ole olemassa tai sinulla ei ole oikeutta katsella sitä
 
 #: resources/views/admin/trees-privacy.php:238
 msgid "This record does not exist."
-msgstr ""
+msgstr "Tämä tietue ei ole olemassa."
 
 #: resources/views/gedcom-record-page.php:11
 msgid "This record has been deleted. The deletion will need to be reviewed by a moderator."
@@ -14449,11 +14449,11 @@ msgstr "Faktaluettelo faktoista, jotka halutaan näkyviin kaaviolaatikoissa synt
 
 #: resources/views/privacy-policy.php:25
 msgid "This site does not use any third-party tracking or analytics services."
-msgstr ""
+msgstr "Tämä sivusto ei käytä kolmannen osapuolen seuranta- tai analytiikkapalveluja."
 
 #: resources/views/privacy-policy.php:16
 msgid "This site uses cookies to store your preferences on this site, such as the language you have selected."
-msgstr ""
+msgstr "Tämä sivusto käyttää evästeitä tallentaaksesi tämän sivuston asetukset, kuten valitsemasi kielen."
 
 #: app/Exceptions/SourceAccessDeniedException.php:33
 #: app/Exceptions/SourceNotFoundException.php:33
@@ -15405,7 +15405,7 @@ msgstr "Näytä"
 #: resources/views/places-page.php:33
 #, php-format
 msgid "View table of events occurring in %s"
-msgstr ""
+msgstr "Näytä tapahtumataulukkossa tapahtumat jotka sattuivat paikassa: %s"
 
 #: resources/views/calendar-page.php:159
 msgid "View this day"
@@ -16013,7 +16013,7 @@ msgstr "lisää"
 #. I18N: A button label.
 #: resources/views/admin/locations.php:78
 msgid "add place"
-msgstr ""
+msgstr "lisää paikka"
 
 #. I18N: The name given to a child by its adoptive parents
 #: app/GedcomCode/GedcomCodeName.php:67
@@ -16581,7 +16581,7 @@ msgstr "entinen vaimo"
 #. I18N: A button label.
 #: resources/views/admin/locations.php:84
 msgid "export file"
-msgstr ""
+msgstr "siirrä tietue"
 
 #: app/Http/Controllers/AdminTreesController.php:933
 #: modules_v3/fact_sources/report.xml:6
@@ -18534,7 +18534,7 @@ msgstr "tuo"
 #. I18N: A button label.
 #: resources/views/admin/locations.php:98
 msgid "import file"
-msgstr ""
+msgstr "tuo tietue"
 
 #. I18N: Gedcom INT dates
 #: app/Date.php:352
@@ -18605,7 +18605,7 @@ msgstr "luettelo"
 #: app/Http/Controllers/AdminLocationController.php:471
 #, php-format
 msgid "locations updated: %s, locations added: %s"
-msgstr ""
+msgstr "sijanteja päivitetty: %s, sijainteja lisätty: %s"
 
 #. I18N: A woman’s name, before she marries (in cultures where women take their new husband’s name on marriage)
 #: app/GedcomCode/GedcomCodeName.php:133
