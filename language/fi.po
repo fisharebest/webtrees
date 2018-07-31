@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-07-26 23:06+0100\n"
-"PO-Revision-Date: 2018-07-31 08:45+0000\n"
+"PO-Revision-Date: 2018-07-31 14:35+0000\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Finnish <https://translate.webtrees.net/projects/webtrees/webtrees/fi/>\n"
 "Language: fi\n"
@@ -15405,7 +15405,7 @@ msgstr "Näytä"
 #: resources/views/places-page.php:33
 #, php-format
 msgid "View table of events occurring in %s"
-msgstr "Näytä tapahtumataulukkossa tapahtumat jotka sattuivat paikassa: %s"
+msgstr "Näytä tapahtumataulukkossa tapahtumat jotka sattuivat paikassa %s"
 
 #: resources/views/calendar-page.php:159
 msgid "View this day"
