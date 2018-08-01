@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-07-26 23:06+0100\n"
-"PO-Revision-Date: 2018-08-01 11:28+0000\n"
+"PO-Revision-Date: 2018-08-01 11:29+0000\n"
 "Last-Translator: hrnwebtrees <hrnwebtrees@yahoo.com>\n"
 "Language-Team: Norwegian Bokmål <https://translate.webtrees.net/projects/webtrees/webtrees/nb/>\n"
 "Language: nb\n"
@@ -362,7 +362,7 @@ msgstr "%s en generasjon frem"
 msgid "%s repository has been updated."
 msgid_plural "%s repositories have been updated."
 msgstr[0] "%s arkiv har blitt oppdatert."
-msgstr[1] "%s arkiv har blitt oppdatert."
+msgstr[1] "%s arkiver har blitt oppdatert."
 
 #: app/I18N.php:883
 #, php-format
@@ -1233,7 +1233,7 @@ msgstr "Legg til"
 #: app/Module/ClippingsCartModule.php:892
 #, php-format
 msgid "Add %s to the clippings cart"
-msgstr "Legg %s i mappen"
+msgstr "Legg %s i utklippsmappen"
 
 #: resources/views/modules/relatives/family.php:203
 msgid "Add a brother or sister"
