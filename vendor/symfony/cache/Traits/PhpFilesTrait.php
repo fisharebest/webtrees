@@ -30,7 +30,7 @@ trait PhpFilesTrait
 
     public static function isSupported()
     {
-        return function_exists('opcache_invalidate') && ini_get('opcache.enable');
+        return \function_exists('opcache_invalidate') && ini_get('opcache.enable');
     }
 
     /**
@@ -40,7 +40,7 @@ trait PhpFilesTrait
     {
         $time = time();
         $pruned = true;
-        $allowCompile = 'cli' !== PHP_SAPI || ini_get('opcache.enable_cli');
+        $allowCompile = 'cli' !== \PHP_SAPI || ini_get('opcache.enable_cli');
 
         set_error_handler($this->includeHandler);
         try {
@@ -119,7 +119,7 @@ trait PhpFilesTrait
     {
         $ok = true;
         $data = array($lifetime ? time() + $lifetime : PHP_INT_MAX, '');
-        $allowCompile = 'cli' !== PHP_SAPI || ini_get('opcache.enable_cli');
+        $allowCompile = 'cli' !== \PHP_SAPI || ini_get('opcache.enable_cli');
 
         foreach ($values as $key => $value) {
             if (null === $value || \is_object($value)) {
@@ -137,7 +137,7 @@ trait PhpFilesTrait
                     $value = serialize($value);
                 }
             } elseif (!\is_scalar($value)) {
-                throw new InvalidArgumentException(sprintf('Cache key "%s" has non-serializable %s value.', $key, gettype($value)));
+                throw new InvalidArgumentException(sprintf('Cache key "%s" has non-serializable %s value.', $key, \gettype($value)));
             }
 
             $data[1] = $value;
