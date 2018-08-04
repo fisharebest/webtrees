@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-07-26 23:06+0100\n"
-"PO-Revision-Date: 2018-02-25 14:29+0000\n"
+"PO-Revision-Date: 2018-08-04 18:27+0000\n"
 "Last-Translator: Chris Theron <tronsmit@gmail.com>\n"
 "Language-Team: Afrikaans <https://translate.webtrees.net/projects/webtrees/webtrees/af/>\n"
 "Language: af\n"
@@ -79,7 +79,7 @@ msgstr "%1$s KB is in %2$s sekondes afgelaai."
 #: app/Http/Controllers/AdminUsersController.php:399
 #, php-format
 msgid "%1$s does not exist"
-msgstr ""
+msgstr "%1$s bestaan nie"
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: app/Http/Controllers/AdminTreesController.php:228
@@ -305,8 +305,8 @@ msgstr "%s is op hierdie bediener gesper. Jy kan webtrees nie installeer voordat
 #, php-format
 msgid "%s location has been imported."
 msgid_plural "%s locations have been imported."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s ligging is ingevoer."
+msgstr[1] "%s liggings is ingevoer."
 
 #: app/Module/UserMessagesModule.php:177
 #, php-format
@@ -361,8 +361,8 @@ msgstr "%s (één geslag laer)"
 #, php-format
 msgid "%s repository has been updated."
 msgid_plural "%s repositories have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s bergplek is verwerk."
+msgstr[1] "%s bergplekke is verwerk."
 
 #: app/I18N.php:883
 #, php-format
@@ -705,7 +705,7 @@ msgstr "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2
 #. I18N: URL = web address
 #: resources/views/modals/media-file-fields.php:20
 msgid "A URL"
-msgstr ""
+msgstr "’n URL"
 
 #. I18N: Description of the “RelationshipsChart” module
 #: app/Module/RelationshipsChartModule.php:61
@@ -1404,7 +1404,7 @@ msgstr "Voeg verhale by vir persone in die stamboom."
 
 #: resources/views/admin/map-import-form.php:72
 msgid "Add new, and update existing records"
-msgstr ""
+msgstr "Voeg nuwe rekords by en wysig bestaande rekords"
 
 #: resources/views/admin/trees-import.php:83
 msgid "Add spaces where long lines were wrapped"
@@ -1923,7 +1923,7 @@ msgstr "'n Onverwagte databasisfout het voorgekom."
 #: resources/views/modules/pedigree-map/pedigree-map.php:82
 #: resources/views/place-map.php:85
 msgid "An unknown error occurred"
-msgstr ""
+msgstr "’n Onbekende fout het plaasgevind"
 
 #. I18N: Name of a module/report
 #. I18N: Name of a module/chart
@@ -6252,7 +6252,7 @@ msgstr "Vlag"
 #: resources/views/admin/locations.php:47
 #, php-format
 msgid "Flag of %s"
-msgstr ""
+msgstr "Vlag van %s"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:7564
@@ -7286,7 +7286,7 @@ msgstr "Voer in"
 
 #: resources/views/admin/map-import-form.php:67
 msgid "Import Options."
-msgstr ""
+msgstr "Invoer Opsies."
 
 #: app/Http/Controllers/AdminTreesController.php:614
 msgid "Import a GEDCOM file"
@@ -7303,7 +7303,7 @@ msgstr "Voer aangepaste miniatuurbeelde in van webtrees weergawe 1"
 
 #: app/Http/Controllers/AdminLocationController.php:310
 msgid "Import geographic data"
-msgstr ""
+msgstr "Voer geografiese gegewens in"
 
 #: resources/views/admin/trees-import.php:71
 msgid "Import preferences"
