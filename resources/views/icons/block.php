@@ -1,1 +1,1 @@
-<i class="fas fa-th-list fa-flip-horizontal" aria-hidden="true"></i>
+<i class="fas fa-th-list fa-flip-horizontal fa-fw" aria-hidden="true"></i>

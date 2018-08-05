@@ -218,14 +218,14 @@ class AdminUsersController extends AbstractBaseController
             $user_name = $datum[2];
 
             if ($user_id != $user->getUserId()) {
-                $admin_options = '<div class="dropdown-item"><a href="#" onclick="return masquerade(' . $user_id . ')"><i class="far fa-user fa-fw"></i> ' . /* I18N: Pretend to be another user, by logging in as them */
-                    I18N::translate('Masquerade as this user') . '</a></div>' . '<div class="dropdown-item"><a href="#" data-confirm="' . I18N::translate('Are you sure you want to delete “%s”?', e($user_name)) . '" onclick="delete_user(this.dataset.confirm, ' . $user_id . ');"><i class="fas fa-trash-alt fa-fw" aria-hidden="true"></i> ' . I18N::translate('Delete') . '</a></div>';
+                $admin_options = '<div class="dropdown-item"><a href="#" onclick="return masquerade(' . $user_id . ')">' . view('icons/user') . ' ' . /* I18N: Pretend to be another user, by logging in as them */
+                    I18N::translate('Masquerade as this user') . '</a></div>' . '<div class="dropdown-item"><a href="#" data-confirm="' . I18N::translate('Are you sure you want to delete “%s”?', e($user_name)) . '" onclick="delete_user(this.dataset.confirm, ' . $user_id . ');">' . view('icons/delete') . ' ' . I18N::translate('Delete') . '</a></div>';
             } else {
                 // Do not delete ourself!
                 $admin_options = '';
             }
 
-            $datum[0] = '<div class="dropdown"><button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" id="edit-user-button-' . $user_id . '" aria-haspopup="true" aria-expanded="false"><i class="fas fa-pencil-alt"></i> <span class="caret"></span></button><div class="dropdown-menu" aria-labelledby="edit-user-button-' . $user_id . '"><div class="dropdown-item"><a href="' . e(route('admin-users-edit', ['user_id' => $user_id])) . '"><i class="fas fa-pencil-alt fa-fw"></i> ' . I18N::translate('Edit') . '</a></div><div class="divider"></div><div class="dropdown-item"><a href="' . e(route('user-page-user-edit', ['user_id' => $user_id])) . '"><i class="fas fa-th-large fa-fw" aria-hidden="true"></i> ' . I18N::translate('Change the blocks on this user’s “My page”') . '</a></div>' . $admin_options . '</div></div>';
+            $datum[0] = '<div class="dropdown"><button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" id="edit-user-button-' . $user_id . '" aria-haspopup="true" aria-expanded="false">' . view('icons/edit') . ' <span class="caret"></span></button><div class="dropdown-menu" aria-labelledby="edit-user-button-' . $user_id . '"><div class="dropdown-item"><a href="' . e(route('admin-users-edit', ['user_id' => $user_id])) . '">' . view('icons/edit') . ' ' . I18N::translate('Edit') . '</a></div><div class="divider"></div><div class="dropdown-item"><a href="' . e(route('user-page-user-edit', ['user_id' => $user_id])) . '">' . view('icons/block') . ' ' . I18N::translate('Change the blocks on this user’s “My page”') . '</a></div>' . $admin_options . '</div></div>';
             // The real name
             $datum[3] = '<span dir="auto">' . e($datum[3]) . '</span>';
             // $datum[4] is the email address

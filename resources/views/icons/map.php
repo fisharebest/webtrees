@@ -1,1 +1,1 @@
-<i class="far fa-map" aria-hidden="true"></i>
+<i class="far fa-map fa-fw" aria-hidden="true"></i>

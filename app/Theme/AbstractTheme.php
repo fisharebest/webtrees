@@ -525,7 +525,7 @@ abstract class AbstractTheme
             '<label class="sr-only" for="quick-search">' . I18N::translate('Search') . '</label>' .
             '<input type="search" class="form-control wt-header-search-field" id="quick-search" name="query" size="15" placeholder="' . I18N::translate('Search') . '">' .
             '<span class="input-group-btn">' .
-            '<button type="submit" class="btn btn-primary wt-header-search-button"><i class="fas fa-search"></i></button>' .
+            '<button type="submit" class="btn btn-primary wt-header-search-button">' . view('icons/search') . '</button>' .
             '</span>' .
             '</div>';
     }

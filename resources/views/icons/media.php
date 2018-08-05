@@ -1,1 +1,1 @@
-<i class="far fa-file-image" aria-hidden="true"></i>
+<i class="far fa-file-image fa-fw" aria-hidden="true"></i>

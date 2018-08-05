@@ -1,1 +1,1 @@
-<i class="fas fa-upload" aria-hidden="true"></i>
+<i class="fas fa-upload fa-fw" aria-hidden="true"></i>

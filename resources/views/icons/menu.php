@@ -1,1 +1,1 @@
-<i class="fas fa-bars" aria-hidden="true"></i>
+<i class="fas fa-bars fa-fw" aria-hidden="true"></i>

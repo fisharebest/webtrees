@@ -1,1 +1,1 @@
-<i class="far fa-trash-alt" aria-hidden="true"></i>
+<i class="far fa-trash-alt fa-fw" aria-hidden="true"></i>

@@ -1,1 +1,1 @@
-<i class="far fa-folder" aria-hidden="true"></i>
+<i class="far fa-folder fa-fw" aria-hidden="true"></i>

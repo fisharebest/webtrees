@@ -1,1 +1,1 @@
-<i class="fas fa-sync-alt" aria-hidden="true"></i>
+<i class="fas fa-sync-alt fa-fw" aria-hidden="true"></i>

@@ -1,1 +1,1 @@
-<i class="fas fa-sitemap" aria-hidden="true"></i>
+<i class="fas fa-sitemap fa-fw" aria-hidden="true"></i>

@@ -1,1 +1,1 @@
-<i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+<i class="fas fa-map-marker-alt fa-fw" aria-hidden="true"></i>

@@ -1,1 +1,1 @@
-<i class="far fa-envelope" aria-hidden="true"></i>
+<i class="far fa-envelope fa-fw" aria-hidden="true"></i>

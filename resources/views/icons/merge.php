@@ -1,1 +1,1 @@
-<i class="fas fa-code-branch" aria-hidden="true"></i>
+<i class="fas fa-code-branch fa-fw" aria-hidden="true"></i>

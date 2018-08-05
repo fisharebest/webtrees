@@ -1,1 +1,1 @@
-<i class="fas fa-exclamation-triangle" aria-hidden="true"></i>
+<i class="fas fa-exclamation-triangle fa-fw" aria-hidden="true"></i>

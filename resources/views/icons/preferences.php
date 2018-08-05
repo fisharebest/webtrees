@@ -1,1 +1,1 @@
-<i class="fas fa-wrench" aria-hidden="true"></i>
+<i class="fas fa-wrench fa-fw" aria-hidden="true"></i>
