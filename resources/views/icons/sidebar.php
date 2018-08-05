@@ -1,1 +1,1 @@
-<i class="far fa-pause" aria-hidden="true"></i>
+<i class="fas fa-pause" aria-hidden="true"></i>

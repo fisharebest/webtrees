@@ -26,7 +26,7 @@
 
 <p>
 	<a href="<?= e(route('module', ['module' => 'faq', 'action' => 'AdminEdit', 'ged' => $tree->getName()])) ?>" class="btn btn-link">
-		<i class="fas fa-plus"></i>
+        <?= view('icons/add') ?>
 		<?= /* I18N: FAQ = “Frequently Asked Question” */
 		I18N::translate('Add an FAQ') ?>
 	</a>
@@ -65,7 +65,7 @@
 						<form action="<?= e(route('module', ['module' => 'faq', 'action' => 'AdminMoveUp', 'block_id' => $faq->block_id, 'ged' => $tree->getName()])) ?>" method="post">
 							<?= csrf_field() ?>
 							<button type="submit" class="btn btn-secondary">
-								<i class="fas fa-arrow-up"></i>
+                                <?= view('icons/arrow-up') ?>
 								<?= I18N::translate('Move up') ?>
 							</button>
 						</form>
@@ -76,7 +76,7 @@
 						<form action="<?= e(route('module', ['module' => 'faq', 'action' => 'AdminMoveDown', 'block_id' => $faq->block_id, 'ged' => $tree->getName()])) ?>" method="post">
 							<?= csrf_field() ?>
 							<button type="submit" class="btn btn-secondary">
-								<i class="fas fa-arrow-down"></i>
+                                <?= view('icons/arrow-down') ?>
 								<?= I18N::translate('Move down') ?>
 							</button>
 						</form>
@@ -84,7 +84,7 @@
 				</td>
 				<td>
 					<a href="<?= e(route('module', ['module' => 'faq', 'action' => 'AdminEdit', 'block_id' => $faq->block_id, 'ged' => $tree->getName()])) ?>" class="btn btn-primary">
-						<i class="fas fa-pencil-alt"></i>
+                        <?= view('icons/edit') ?>
 						<?= I18N::translate('Edit') ?>
 					</a>
 				</td>
@@ -92,7 +92,7 @@
 					<form action="<?= e(route('module', ['module' => 'faq', 'action' => 'AdminDelete', 'block_id' => $faq->block_id, 'ged' => $tree->getName()])) ?>" method="post">
 						<?= csrf_field() ?>
 						<button type="submit" class="btn btn-danger" onclick="return confirm(this.dataset.confirm);" data-confirm="<?= I18N::translate('Are you sure you want to delete “%s”?', e($faq->header)) ?>">
-							<i class="fas fa-trash-alt"></i>
+                            <?= view('icons/delete') ?>
 							<?= I18N::translate('delete') ?>
 						</button>
 					</form>

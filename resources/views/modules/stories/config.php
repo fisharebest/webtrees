@@ -22,7 +22,7 @@
 
 <p>
 	<a href="<?= e(route('module', ['module' => 'stories', 'action' => 'AdminEdit', 'ged' => $tree->getName()])) ?>" class="btn btn-link">
-		<i class="fas fa-plus"></i>
+        <?= view('icons/add') ?>
 		<?= I18N::translate('Add a story') ?>
 	</a>
 </p>
@@ -53,14 +53,16 @@
 				</td>
 				<td>
 					<a class="btn btn-primary" href="<?= e(route('module', ['module' => 'stories', 'action' => 'AdminEdit', 'ged' => $tree->getName(), 'block_id' => $story->block_id])) ?>">
-						<i class="fas fa-pencil-alt"></i> <?= I18N::translate('Edit') ?>
+                        <?= view('icons/edit') ?>
+                        <?= I18N::translate('Edit') ?>
 					</a>
 				</td>
 				<td>
 					<form action="<?= e(route('module', ['module' => 'stories', 'action' => 'AdminDelete', 'ged' => $tree->getName(), 'block_id' => $story->block_id])) ?>" method="post">
 						<?= csrf_field() ?>
 						<button type="submit" class="btn btn-danger" data-confirm="<?= I18N::translate('Are you sure you want to delete “%s”?', e($story->title)) ?>" onclick="return confirm(this.dataset.confirm);">
-							<i class="fas fa-trash-alt"></i> <?= I18N::translate('Delete') ?>
+                            <?= view('icons/delete') ?>
+                            <?= I18N::translate('Delete') ?>
 						</button>
 					</form>
 				</td>

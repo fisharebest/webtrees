@@ -20,7 +20,7 @@
 			<div class="card">
 				<div class="card-header" role="tab" id="card-tree-header-<?= $managed_tree->getTreeId() ?>">
 					<h2 class="mb-0">
-						<i class="fas fa-tree fa-fw"></i>
+                        <?= view('icons/tree') ?>
 						<a data-toggle="collapse" data-parent="#accordion" href="#card-tree-content-<?= $managed_tree->getTreeId() ?>" <?= $managed_tree == $tree || $managed_tree->getPreference('imported') === '0' ? 'aria-expanded="true"' : '' ?> aria-controls="card-tree-content-<?= $managed_tree->getTreeId() ?>">
 							<?= e($managed_tree->getName()) ?> — <?= e($managed_tree->getTitle()) ?>
 						</a>
@@ -61,7 +61,7 @@
 									</li>
 									<!-- PRIVACY -->
 									<li>
-										<span class="fa-li"><i class="fas fa-lock"></i></span>
+										<span class="fa-li"><?= view('icons/lock') ?></span>
 										<a href="<?= e(route('tree-privacy', ['ged' => $managed_tree->getName()])) ?>">
 											<?= I18N::translate('Privacy') ?>
 											<span class="sr-only">
@@ -71,7 +71,7 @@
 									</li>
 									<!-- HOME PAGE BLOCKS-->
 									<li>
-										<span class="fa-li"><i class="fas fa-th-large"></i></span>
+										<span class="fa-li"><?= view('icons/block') ?></span>
 										<a href="<?= e(route('tree-page-edit', ['ged' => $managed_tree->getName()])) ?>">
 											<?= I18N::translate('Change the “Home page” blocks') ?>
 											<span class="sr-only">
@@ -99,7 +99,7 @@
 									<!-- SET AS DEFAULT -->
 									<?php if (count($all_trees) > 1): ?>
 										<li>
-											<span class="fa-li"><i class="far fa-star"></i></span>
+											<span class="fa-li"><?= view('icons/favorite') ?></span>
 											<?php if ($managed_tree->getName() === Site::getPreference('DEFAULT_GEDCOM')): ?>
 												<?= I18N::translate('Default family tree') ?>
 											<?php else: ?>
@@ -126,57 +126,57 @@
 								<ul class="fa-ul">
 									<!-- FIND DUPLICATES -->
 									<li>
-										<span class="fa-li"><i class="far fa-copy"></i></span>
+										<span class="fa-li"><?= view('icons/copy') ?></span>
 										<a href="<?= e(route('admin-trees-duplicates', ['ged' => $managed_tree->getName()])) ?>">
 											<?= I18N::translate('Find duplicates') ?>
 											<span class="sr-only">
-										<?= e($managed_tree->getTitle()) ?>
-									</span>
+										      <?= e($managed_tree->getTitle()) ?>
+								        	</span>
 										</a>
 									</li>
 									<!-- MERGE -->
 									<li>
-										<span class="fa-li"><i class="fas fa-code-branch"></i></span>
+										<span class="fa-li"><?= view('icons/merge') ?></span>
 										<a href="<?= e(route('merge-records', ['ged' => $managed_tree->getName()])) ?>">
 											<?= I18N::translate('Merge records') ?>
 											<span class="sr-only">
-										<?= e($managed_tree->getTitle()) ?>
-									</span>
+                                                <?= e($managed_tree->getTitle()) ?>
+                                          </span>
 										</a>
 									</li>
 									<!-- UPDATE PLACE NAMES -->
 									<li>
-										<span class="fa-li"><i class="fas fa-map-marker-alt"></i></span>
+										<span class="fa-li"><?= view('icons/location') ?></span>
 										<a href="<?= e(route('admin-trees-places', ['ged' => $managed_tree->getName()])) ?>">
 											<?= I18N::translate('Update place names') ?>
 											<span class="sr-only">
-										<?= e($managed_tree->getTitle()) ?>
-									</span>
+								        		<?= e($managed_tree->getTitle()) ?>
+								        	</span>
 										</a>
 									</li>
 									<!-- CHECK FOR ERRORS -->
 									<li>
-										<span class="fa-li"><?= view('icons/save') ?></span>
+										<span class="fa-li"><?= view('icons/warning') ?></span>
 										<a href="<?= e(route('admin-trees-check', ['ged' => $managed_tree->getName()])) ?>">
 											<?= I18N::translate('Check for errors') ?>
 											<span class="sr-only">
-										<?= e($managed_tree->getTitle()) ?>
-									</span>
+                                                <?= e($managed_tree->getTitle()) ?>
+                                            </span>
 										</a>
 									</li>
 									<!-- UNCONNECTED INDIVIDUALS -->
 									<li>
-										<span class="fa-li"><i class="fas fa-unlink"></i></span>
+										<span class="fa-li"><?= view('icons/unlink') ?></span>
 										<a href="<?= e(route('admin-trees-unconnected', ['ged' => $managed_tree->getName()])) ?>">
 											<?= I18N::translate('Find unrelated individuals') ?>
 											<span class="sr-only">
-										<?= e($managed_tree->getTitle()) ?>
-									</span>
+                                                <?= e($managed_tree->getTitle()) ?>
+                                            </span>
 										</a>
 									</li>
 									<!-- RENUMBER -->
 									<li>
-										<span class="fa-li"><i class="fas fa-sort-numeric-down"></i></span>
+										<span class="fa-li"><?= view('icons/sort') ?></span>
 										<a href="<?= e(route('admin-trees-renumber', ['ged' => $managed_tree->getName()])) ?>">
 											<?= I18N::translate('Renumber') ?>
 											<span class="sr-only">
@@ -186,12 +186,12 @@
 									</li>
 									<!-- CHANGES -->
 									<li>
-										<span class="fa-li"><i class="fas fa-th-list"></i></span>
+										<span class="fa-li"><?= view('icons/edit') ?></span>
 										<a href="<?= route('admin-changes-log', ['ged' => $managed_tree->getName()]) ?>">
 											<?= I18N::translate('Changes log') ?>
 											<span class="sr-only">
-										<?= e($managed_tree->getTitle()) ?>
-									</span>
+                                                <?= e($managed_tree->getTitle()) ?>
+                                            </span>
 										</a>
 									</li>
 								</ul>
@@ -208,8 +208,8 @@
 										<a href="<?= e(route('add-unlinked-individual', ['ged' => $managed_tree->getName()])) ?>">
 											<?= I18N::translate('Individual') ?>
 											<span class="sr-only">
-										<?= e($managed_tree->getTitle()) ?>
-									</span>
+                                                <?= e($managed_tree->getTitle()) ?>
+                                            </span>
 										</a>
 									</li>
 									<!-- UNLINKED SOURCE -->
@@ -218,8 +218,8 @@
 										<a href="#" data-href="<?= e(route('create-source', ['ged' => $managed_tree->getName()])) ?>" data-target="#wt-ajax-modal" data-toggle="modal">
 											<?= I18N::translate('Source') ?>
 											<span class="sr-only">
-										<?= e($managed_tree->getTitle()) ?>
-									</span>
+                                                <?= e($managed_tree->getTitle()) ?>
+                                            </span>
 										</a>
 									</li>
 									<!-- UNLINKED REPOSITORY -->
@@ -228,8 +228,8 @@
 										<a href="#" data-href="<?= e(route('create-repository', ['ged' => $managed_tree->getName()])) ?>" data-target="#wt-ajax-modal" data-toggle="modal">
 											<?= I18N::translate('Repository') ?>
 											<span class="sr-only">
-										<?= e($managed_tree->getTitle()) ?>
-									</span>
+                                                <?= e($managed_tree->getTitle()) ?>
+                                            </span>
 										</a>
 									</li>
 									<!-- UNLINKED MEDIA OBJECT -->
@@ -239,17 +239,17 @@
 
 											<?= I18N::translate('Media object') ?>
 											<span class="sr-only">
-										<?= e($managed_tree->getTitle()) ?>
-									</span>
+                                                <?= e($managed_tree->getTitle()) ?>
+                                            </span>
 										</a>
 									</li>
 									<!-- UNLINKED NOTE -->
 									<li>
 										<span class="fa-li"><?= view('icons/note') ?></span>
 										<a href="#" data-href="<?= e(route('create-note-object', ['ged' => $managed_tree->getName()])) ?>" data-target="#wt-ajax-modal" data-toggle="modal">
-									<span class="sr-only">
-										<?= e($managed_tree->getTitle()) ?>
-									</span>
+                                            <span class="sr-only">
+                                                <?= e($managed_tree->getTitle()) ?>
+                                            </span>
 											<?= I18N::translate('Shared note') ?>
 										</a>
 									</li>
@@ -257,9 +257,9 @@
 									<li>
 										<span class="fa-li"><?= view('icons/submitter') ?></span>
 										<a href="#" data-href="<?= e(route('create-submitter', ['ged' => $managed_tree->getName()])) ?>" data-target="#wt-ajax-modal" data-toggle="modal">
-									<span class="sr-only">
-										<?= e($managed_tree->getTitle()) ?>
-									</span>
+                                            <span class="sr-only">
+                                                <?= e($managed_tree->getTitle()) ?>
+                                            </span>
 											<?= I18N::translate('Submitter') ?>
 										</a>
 									</li>
@@ -361,7 +361,7 @@
 		<div class="card">
 			<div class="card-header" id="card-pgv-wizard-header">
 				<h2 class="mb-0">
-					<i class="fas fa-magic fa-fw"></i>
+					<?= view('icons/wizard') ?>
 					<a data-toggle="collapse" data-parent="#accordion" href="#card-pgv-wizard-content" aria-controls="card-pgv-wizard-content">
 						<?= I18N::translate('PhpGedView to webtrees transfer wizard') ?>
 					</a>
@@ -404,7 +404,7 @@
 		<div class="card">
 			<div class="card-header" id="card-tree-create-header">
 				<h2 class="mb-0">
-					<i class="fas fa-sync-alt fa-fw"></i>
+					<?= view('icons/sync') ?>
 					<a data-toggle="collapse" data-parent="#accordion" href="#synchronize-gedcom-files">
 						<?= I18N::translate('Synchronize family trees with GEDCOM files') ?>
 					</a>

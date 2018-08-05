@@ -68,7 +68,7 @@
 									<input type="search" class="form-control wt-header-search-field" id="quick-search" name="query" size="15" placeholder="<?= I18N::translate('Search') ?>">
 									<span class="input-group-btn">
 										<button type="submit" class="btn btn-primary wt-header-search-button">
-											<i class="fas fa-search"></i>
+                                            <?= view('icons/search') ?>
 										</button>
 									</span>
 								</div>

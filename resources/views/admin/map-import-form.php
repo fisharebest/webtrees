@@ -84,7 +84,7 @@
 	<div class="row form-group">
 		<div class="offset-sm-4 col-sm-8">
 			<button type="submit" class="btn btn-primary">
-				<i class="fas fa-check"></i>
+                <?= view('icons/save') ?>
 				<?= I18N::translate('continue') ?>
 			</button>
 		</div>

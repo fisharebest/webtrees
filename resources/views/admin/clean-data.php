@@ -5,7 +5,7 @@
 <h1><?= $title ?></h1>
 
 <p>
-	<?= I18N::translate('Files marked with %s are required for proper operation and cannot be removed.', '<i class="fas fa-ban text-danger"></i>') ?>
+	<?= I18N::translate('Files marked with %s are required for proper operation and cannot be removed.', view('icons/ban')) ?>
 </p>
 
 <form method="post">
@@ -15,9 +15,9 @@
 		<?php
 		foreach ($entries as $entry) {
 			if (in_array($entry, $protected)) {
-				echo '<li><span class="fa-li"><i class="fas fa-ban text-danger"></i></span>', e($entry), '</li>';
+				echo '<li><span class="fa-li">' . view('icons/ban') . '</span>', e($entry), '</li>';
 			} else {
-				echo '<li><span class="fa-li">' . view('icons/search') . '</span>';
+				echo '<li><span class="fa-li">' . view('icons/delete') . '</span>';
 				echo '<label>';
 				echo '<input type="checkbox" name="to_delete[]" value="', e($entry), '"> ';
 				echo e($entry);

@@ -1,1 +1,1 @@
-<i class="fas fa-pencil" aria-hidden="true"></i>
+<i class="fas fa-pencil-alt" aria-hidden="true"></i>

@@ -30,7 +30,7 @@
 			<?php if (!$fact->isPendingDeletion()): ?>
 				<div class="card my-2">
 					<label class="card-header py-1 px-2 d-flex" for="fact-<?= e($fact->getFactId()) ?>">
-						<i class="fas fa-sort fa-fw drag-handle" style="cursor:move;"></i>
+                        <?= view('icons/drag-handle') ?>
 						<?= $fact->summary() ?>
 					</label>
 					<input type="hidden" name="fact_id[]" value="<?= e($fact->getFactId()) ?>">

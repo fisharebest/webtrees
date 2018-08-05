@@ -103,7 +103,7 @@
 						<?= $module->getDescription() ?>
 						<?php if (!in_array($module->getName(), $core_module_names)): ?>
 							<br>
-							<i class="fas fa-asterisk"></i>
+                            <?= view('icons/warning') ?>
 							<?= I18N::translate('Custom module') ?>
 							<?php if ($module::CUSTOM_VERSION): ?>
 								- <?= I18N::translate('Version') ?> <?= $module::CUSTOM_VERSION ?>

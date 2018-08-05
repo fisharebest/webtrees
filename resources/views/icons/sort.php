@@ -1,1 +1,1 @@
-<i class="fas fa-sort" aria-hidden="true"></i>
+<i class="fas fa-sort-amount-down" aria-hidden="true"></i>

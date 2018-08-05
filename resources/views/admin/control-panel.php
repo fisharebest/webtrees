@@ -361,37 +361,37 @@
 			<div class="col-sm-6">
 				<ul class="fa-ul">
 					<li>
-						<span class="fa-li"><i class="fas fa-bars"></i></span>
+						<span class="fa-li"><?= view('icons/menu') ?></span>
 						<a href="<?= e(route('admin-menus')) ?>">
 							<?= I18N::translate('Menus') ?>
 						</a>
 					</li>
 					<li>
-						<span class="fa-li"><i class="far fa-folder"></i></span>
+						<span class="fa-li"><?= view('icons/tab') ?></span>
 						<a href="<?= e(route('admin-tabs')) ?>">
 							<?= I18N::translate('Tabs') ?>
 						</a>
 					</li>
 					<li>
-						<span class="fa-li"><i class="fas fa-th-list fa-flip-horizontal"></i></span>
+						<span class="fa-li"><?= view('icons/block') ?></span>
 						<a href="<?= e(route('admin-blocks')) ?>">
 							<?= I18N::translate('Blocks') ?>
 						</a>
 					</li>
 					<li>
-						<span class="fa-li"><i class="fas fa-pause"></i></span>
+						<span class="fa-li"><?= view('icons/sidebar') ?></span>
 						<a href="<?= e(route('admin-sidebars')) ?>">
 							<?= I18N::translate('Sidebars') ?>
 						</a>
 					</li>
 					<li>
-						<span class="fa-li"><i class="fas fa-sitemap"></i></span>
+						<span class="fa-li"><?= view('icons/chart') ?></span>
 						<a href="<?= e(route('admin-charts')) ?>">
 							<?= I18N::translate('Charts') ?>
 						</a>
 					</li>
 					<li>
-						<span class="fa-li"><i class="far fa-file"></i></span>
+						<span class="fa-li"><?= view('icons/report') ?></span>
 						<a href="<?= e(route('admin-reports')) ?>">
 							<?= I18N::translate('Reports') ?>
 						</a>
@@ -472,7 +472,7 @@
 			<div class="col-sm-6">
 				<ul class="fa-ul">
 					<li>
-						<span class="fa-li"><i class="fas fa-map-marker-alt"></i></span>
+						<span class="fa-li"><?= view('icons/location') ?></span>
 						<a href="<?= e(route('map-data')) ?>">
 							<?= I18N::translate('Geographic data') ?>
 						</a>
@@ -482,7 +482,7 @@
 			<div class="col-sm-6">
 				<ul class="fa-ul">
 					<li>
-						<span class="fa-li"><i class="far fa-map"></i></span>
+						<span class="fa-li"><?= view('icons/map') ?></span>
 						<a href="<?= e(route('map-provider')) ?>">
 							<?= I18N::translate('Map provider') ?>
 						</a>
