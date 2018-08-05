@@ -3316,13 +3316,7 @@ ituser-table .value {
 .icon-note {
 	width: 22px;
 	height: 22px;
-	background-image: url(images/notes.png);
-}
-
-.icon-note-list {
-	width: 22px;
-	height: 22px;
-	background-image: url(images/notes.png);
+	background-image: url(icons/note.png);
 }
 
 .icon-plus {

@@ -2557,13 +2557,7 @@ save-cancel {
 .icon-note {
 	width: 20px;
 	height: 20px;
-	background-image: url(images/notes.png);
-}
-
-.icon-note-list {
-	width: 20px;
-	height: 20px;
-	background-image: url(images/notes.png);
+	background-image: url(icons/note.png);
 }
 
 .icon-plus {

@@ -3118,13 +3118,7 @@ div.faq_body {
 .icon-note {
 	width: 33px;
 	height: 35px;
-	background-image: url(images/notes.png);
-}
-
-.icon-note-list {
-	width: 33px;
-	height: 35px;
-	background-image: url(images/notes.png);
+	background-image: url(icons/note.png);
 }
 
 .icon-plus {

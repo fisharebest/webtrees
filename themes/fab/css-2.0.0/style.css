@@ -2732,13 +2732,7 @@ div.faq_body {
 .icon-note {
 	width: 16px;
 	height: 16px;
-	background-image: url(images/notes.png);
-}
-
-.icon-note-list {
-	width: 16px;
-	height: 16px;
-	background-image: url(images/notes.png);
+	background-image: url(icons/note.png);
 }
 
 .icon-pin-in {
