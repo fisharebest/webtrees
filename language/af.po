@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:51+0100\n"
-"PO-Revision-Date: 2018-08-05 17:51+0000\n"
+"PO-Revision-Date: 2018-09-25 17:21+0000\n"
 "Last-Translator: Chris Theron <tronsmit@gmail.com>\n"
 "Language-Team: Afrikaans <https://translate.webtrees.net/projects/webtrees/webtrees/af/>\n"
 "Language: af\n"
@@ -1711,7 +1711,7 @@ msgstr "Ouderdom by huwelik"
 #: resources/views/statistics-chart-custom.php:196
 #: resources/views/statistics-chart-custom.php:209
 msgid "Age interval"
-msgstr ""
+msgstr "Ouderdomsinterval"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.php:548
