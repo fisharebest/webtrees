@@ -42,6 +42,14 @@ class FunctionsRtl
 
     const PUNCTUATION = ',.:;?!';
 
+    // Markup
+    const START_LTR    = '<LTR>';
+    const END_LTR      = '</LTR>';
+    const START_RTL    = '<RTL>';
+    const END_RTL      = '</RTL>';
+    const LENGTH_START = 5;
+    const LENGTH_END   = 6;
+
     /** @var string Were we previously processing LTR or RTL. */
     private static $previousState;
 
@@ -50,24 +58,6 @@ class FunctionsRtl
 
     /** @var string Text waiting to be processed. */
     private static $waitingText;
-
-    /** @var string LTR text. */
-    private static $startLTR;
-
-    /** @var string LTR text. */
-    private static $endLTR;
-
-    /** @var string RTL text. */
-    private static $startRTL;
-
-    /** @var string RTL text. */
-    private static $endRTL;
-
-    /** @var int Offset into the text. */
-    private static $lenStart;
-
-    /** @var int Offset into the text. */
-    private static $lenEnd;
 
     /** @var int Offset into the text. */
     private static $posSpanStart;
@@ -103,12 +93,10 @@ class FunctionsRtl
      * according to the directionality specified.
      *
      * @param string $inputText Raw input
-     * @param string $direction Directionality (LTR, BOTH, RTL) default BOTH
-     * @param string $class     Additional text to insert into output <span dir="xxx"> (such as 'class="yyy"')
      *
      * @return string The string with all texts encapsulated as required
      */
-    public static function spanLtrRtl($inputText, $direction = 'BOTH', $class = '')
+    public static function spanLtrRtl($inputText)
     {
         if ($inputText == '') {
             // Nothing to do
@@ -121,16 +109,6 @@ class FunctionsRtl
             '<span<br>class="starredname">',
         ], '<br><span class="starredname">', $workingText); // Reposition some incorrectly placed line breaks
         $workingText = self::stripLrmRlm($workingText); // Get rid of any existing UTF8 control codes
-
-        // $nothing  = '&zwnj;'; // Zero Width Non-Joiner  (not sure whether this is still needed to work around a TCPDF bug)
-        $nothing = '';
-
-        self::$startLTR = '<LTR>'; // This will become '<span dir="ltr">' at the end
-        self::$endLTR   = '</LTR>'; // This will become '</span>' at the end
-        self::$startRTL = '<RTL>'; // This will become '<span dir="rtl">' at the end
-        self::$endRTL   = '</RTL>'; // This will become '</span>' at the end
-        self::$lenStart = strlen(self::$startLTR); // RTL version MUST have same length
-        self::$lenEnd   = strlen(self::$endLTR); // RTL version MUST have same length
 
         self::$previousState = '';
         self::$currentState  = strtoupper(I18N::direction());
@@ -192,6 +170,7 @@ class FunctionsRtl
                     }
                     $workingText = substr($workingText, $currentLen);
                     break;
+                    // fall through
                 case '{':
                     if (substr($workingText, 1, 1) == '{') {
                         // Assume this '{{' starts a TCPDF directive
@@ -391,13 +370,13 @@ class FunctionsRtl
         // Get rid of any waiting text
         if (self::$waitingText != '') {
             if (I18N::direction() === 'rtl' && self::$currentState === 'LTR') {
-                $result .= self::$startRTL;
+                $result .= self::START_RTL;
                 $result .= self::$waitingText;
-                $result .= self::$endRTL;
+                $result .= self::END_RTL;
             } else {
-                $result .= self::$startLTR;
+                $result .= self::START_LTR;
                 $result .= self::$waitingText;
-                $result .= self::$endLTR;
+                $result .= self::END_LTR;
             }
             self::$waitingText = '';
         }
@@ -406,22 +385,22 @@ class FunctionsRtl
 
         // Move leading RTL numeric strings to following LTR text
         // (this happens when the page direction is RTL and the original text begins with a number and is followed by LTR text)
-        while (substr($result, 0, self::$lenStart + 3) === self::$startRTL . self::UTF8_LRE) {
-            $spanEnd = strpos($result, self::$endRTL . self::$startLTR);
+        while (substr($result, 0, self::LENGTH_START + 3) === self::START_RTL . self::UTF8_LRE) {
+            $spanEnd = strpos($result, self::END_RTL . self::START_LTR);
             if ($spanEnd === false) {
                 break;
             }
-            $textSpan = self::stripLrmRlm(substr($result, self::$lenStart + 3, $spanEnd - self::$lenStart - 3));
+            $textSpan = self::stripLrmRlm(substr($result, self::LENGTH_START + 3, $spanEnd - self::LENGTH_START - 3));
             if (I18N::scriptDirection(I18N::textScript($textSpan)) === 'rtl') {
                 break;
             }
-            $result = self::$startLTR . substr($result, self::$lenStart, $spanEnd - self::$lenStart) . substr($result, $spanEnd + self::$lenStart + self::$lenEnd);
+            $result = self::START_LTR . substr($result, self::LENGTH_START, $spanEnd - self::LENGTH_START) . substr($result, $spanEnd + self::LENGTH_START + self::LENGTH_END);
             break;
         }
 
         // On RTL pages, put trailing "." in RTL numeric strings into its own RTL span
         if (I18N::direction() === 'rtl') {
-            $result = str_replace(self::UTF8_PDF . '.' . self::$endRTL, self::UTF8_PDF . self::$endRTL . self::$startRTL . '.' . self::$endRTL, $result);
+            $result = str_replace(self::UTF8_PDF . '.' . self::END_RTL, self::UTF8_PDF . self::END_RTL . self::START_RTL . '.' . self::END_RTL, $result);
         }
 
         // Trim trailing blanks preceding <br> in LTR text
@@ -458,37 +437,37 @@ class FunctionsRtl
             break; // Neither space nor &nbsp; : we're done
         }
 
-        // Convert '<LTRbr>' and '<RTLbr /'
+        // Convert '<LTRbr>' and '<RTLbr'
         $result = str_replace([
             '<LTRbr>',
             '<RTLbr>',
         ], [
-            self::$endLTR . '<br>' . self::$startLTR,
-            self::$endRTL . '<br>' . self::$startRTL,
+            self::END_LTR . '<br>' . self::START_LTR,
+            self::END_RTL . '<br>' . self::START_RTL,
         ], $result);
 
         // Include leading indeterminate directional text in whatever follows
-        if (substr($result . "\n", 0, self::$lenStart) != self::$startLTR && substr($result . "\n", 0, self::$lenStart) != self::$startRTL && substr($result . "\n", 0, 6) != '<br>') {
+        if (substr($result . "\n", 0, self::LENGTH_START) != self::START_LTR && substr($result . "\n", 0, self::LENGTH_START) != self::START_RTL && substr($result . "\n", 0, 4) != '<br>') {
             $leadingText = '';
             while (true) {
                 if ($result == '') {
                     $result = $leadingText;
                     break;
                 }
-                if (substr($result . "\n", 0, self::$lenStart) != self::$startLTR && substr($result . "\n", 0, self::$lenStart) != self::$startRTL) {
+                if (substr($result . "\n", 0, self::LENGTH_START) != self::START_LTR && substr($result . "\n", 0, self::LENGTH_START) != self::START_RTL) {
                     $leadingText .= substr($result, 0, 1);
                     $result      = substr($result, 1);
                     continue;
                 }
-                $result = substr($result, 0, self::$lenStart) . $leadingText . substr($result, self::$lenStart);
+                $result = substr($result, 0, self::LENGTH_START) . $leadingText . substr($result, self::LENGTH_START);
                 break;
             }
         }
 
         // Include solitary "-" and "+" in surrounding RTL text
         $result = str_replace([
-            self::$endRTL . self::$startLTR . '-' . self::$endLTR . self::$startRTL,
-            self::$endRTL . self::$startLTR . '-' . self::$endLTR . self::$startRTL,
+            self::END_RTL . self::START_LTR . '-' . self::END_LTR . self::START_RTL,
+            self::END_RTL . self::START_LTR . '-' . self::END_LTR . self::START_RTL,
         ], [
             '-',
             '+',
@@ -496,51 +475,24 @@ class FunctionsRtl
 
         // Remove empty spans
         $result = str_replace([
-            self::$startLTR . self::$endLTR,
-            self::$startRTL . self::$endRTL,
+            self::START_LTR . self::END_LTR,
+            self::START_RTL . self::END_RTL,
         ], '', $result);
 
         // Finally, correct '<LTR>', '</LTR>', '<RTL>', and '</RTL>'
-        switch ($direction) {
-            case 'BOTH':
-            case 'both':
-                // LTR text: <span dir="ltr"> text </span>
-                // RTL text: <span dir="rtl"> text </span>
-                $sLTR = '<span dir="ltr" ' . $class . '>' . $nothing;
-                $eLTR = $nothing . '</span>';
-                $sRTL = '<span dir="rtl" ' . $class . '>' . $nothing;
-                $eRTL = $nothing . '</span>';
-                break;
-            case 'LTR':
-            case 'ltr':
-                // LTR text: <span dir="ltr"> text </span>
-                // RTL text: text
-                $sLTR = '<span dir="ltr" ' . $class . '>' . $nothing;
-                $eLTR = $nothing . '</span>';
-                $sRTL = '';
-                $eRTL = '';
-                break;
-            case 'RTL':
-            case 'rtl':
-            default:
-                // LTR text: text
-                // RTL text: <span dir="rtl"> text </span>
-                $sLTR = '';
-                $eLTR = '';
-                $sRTL = '<span dir="rtl" ' . $class . '>' . $nothing;
-                $eRTL = $nothing . '</span>';
-                break;
-        }
+        // LTR text: <span dir="ltr"> text </span>
+        // RTL text: <span dir="rtl"> text </span>
+
         $result = str_replace([
-            self::$startLTR,
-            self::$endLTR,
-            self::$startRTL,
-            self::$endRTL,
+            self::START_LTR,
+            self::END_LTR,
+            self::START_RTL,
+            self::END_RTL,
         ], [
-            $sLTR,
-            $eLTR,
-            $sRTL,
-            $eRTL,
+            '<span dir="ltr">',
+            '</span>',
+            '<span dir="rtl">',
+            '</span>',
         ], $result);
 
         return $result;
@@ -654,10 +606,10 @@ class FunctionsRtl
     public static function beginCurrentSpan(&$result)
     {
         if (self::$currentState == 'LTR') {
-            $result .= self::$startLTR;
+            $result .= self::START_LTR;
         }
         if (self::$currentState == 'RTL') {
-            $result .= self::$startRTL;
+            $result .= self::START_RTL;
         }
 
         self::$posSpanStart = strlen($result);
@@ -676,8 +628,8 @@ class FunctionsRtl
 
         // Get rid of empty spans, so that our check for presence of RTL will work
         $result = str_replace([
-            self::$startLTR . self::$endLTR,
-            self::$startRTL . self::$endRTL,
+            self::START_LTR . self::END_LTR,
+            self::START_RTL . self::END_RTL,
         ], '', $result);
 
         // Look for numeric strings that are times (hh:mm:ss). These have to be separated from surrounding numbers.
@@ -824,9 +776,9 @@ class FunctionsRtl
                 }
                 break;
             }
-            while (substr($textSpan, -9) == '<LTRbr>') {
+            while (substr($textSpan, -7) == '<LTRbr>') {
                 $trailingBreaks = '<br>' . $trailingBreaks; // Plain <br> because it’s outside a span
-                $textSpan       = substr($textSpan, 0, -9);
+                $textSpan       = substr($textSpan, 0, -7);
             }
             if ($trailingBreaks != '') {
                 while ($textSpan != '') {
@@ -835,7 +787,7 @@ class FunctionsRtl
                         $textSpan       = substr($textSpan, 0, -1);
                         continue;
                     }
-                    if (substr('......' . $textSpan, -6) == '&nbsp;') {
+                    if (substr($textSpan, -6) == '&nbsp;') {
                         $trailingBreaks = '&nbsp;' . $trailingBreaks;
                         $textSpan       = substr($textSpan, 0, -6);
                         continue;
@@ -853,7 +805,7 @@ class FunctionsRtl
             $trailingSeparator   = '';
             $leadingSeparator    = '';
             while (I18N::direction() === 'rtl') {
-                if (strpos($result, self::$startRTL) !== false) {
+                if (strpos($result, self::START_RTL) !== false) {
                     // Remove trailing blanks for inclusion in a separate LTR span
                     while ($textSpan != '') {
                         if (substr($textSpan, -1) === ' ') {
@@ -980,20 +932,20 @@ class FunctionsRtl
                 break;
             }
             if ($leadingSeparator != '') {
-                $result = $result . self::$startLTR . $leadingSeparator . self::$endLTR;
+                $result = $result . self::START_LTR . $leadingSeparator . self::END_LTR;
             }
-            $result = $result . $textSpan . self::$endLTR;
+            $result = $result . $textSpan . self::END_LTR;
             if ($trailingSeparator != '') {
-                $result = $result . self::$startLTR . $trailingSeparator . self::$endLTR;
+                $result = $result . self::START_LTR . $trailingSeparator . self::END_LTR;
             }
             if ($trailingID != '') {
-                $result = $result . self::$startLTR . $trailingID . self::$endLTR;
+                $result = $result . self::START_LTR . $trailingID . self::END_LTR;
             }
             if ($trailingPunctuation != '') {
-                $result = $result . self::$startLTR . $trailingPunctuation . self::$endLTR;
+                $result = $result . self::START_LTR . $trailingPunctuation . self::END_LTR;
             }
             if ($trailingBlanks != '') {
-                $result = $result . self::$startLTR . $trailingBlanks . self::$endLTR;
+                $result = $result . self::START_LTR . $trailingBlanks . self::END_LTR;
             }
         }
 
@@ -1016,9 +968,9 @@ class FunctionsRtl
                 }
                 break;
             }
-            while (substr($textSpan, -9) == '<RTLbr>') {
+            while (substr($textSpan, -7) == '<RTLbr>') {
                 $trailingBreaks = '<br>' . $trailingBreaks; // Plain <br> because it’s outside a span
-                $textSpan       = substr($textSpan, 0, -9);
+                $textSpan       = substr($textSpan, 0, -7);
             }
             if ($trailingBreaks != '') {
                 self::$waitingText = $trailingBlanks . self::$waitingText; // Put those trailing blanks inside the following span
@@ -1162,7 +1114,7 @@ class FunctionsRtl
 
             // We're done: finish the span
             $textSpan = self::starredName($textSpan, 'RTL'); // Wrap starred name in <u> and </u> tags
-            $result   = $result . $textSpan . self::$endRTL;
+            $result   = $result . $textSpan . self::END_RTL;
         }
 
         if (self::$currentState != 'LTR' && self::$currentState != 'RTL') {

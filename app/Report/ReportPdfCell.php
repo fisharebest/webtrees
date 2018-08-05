@@ -117,7 +117,7 @@ class ReportPdfCell extends ReportBaseCell
             if ($renderer->checkPageBreakPDF($cHT)) {
                 $this->top = $renderer->GetY();
             }
-            $temptext = FunctionsRtl::spanLtrRtl($temptext, 'BOTH');
+            $temptext = FunctionsRtl::spanLtrRtl($temptext);
         }
         // HTML ready - last value is true
         $renderer->MultiCell(
