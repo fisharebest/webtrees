@@ -24,7 +24,7 @@
 		</li>
 		<li class="nav-item">
 			<a class="nav-link" href="#custom-statistics" data-toggle="tab" data-href="<?= e(route('statistics-options', ['ged' => $tree->getName()])) ?>" role="tab">
-				<?= I18N::translate('Own charts') ?>
+				<?= I18N::translate('Custom') ?>
 			</a>
 		</li>
 	</ul>
