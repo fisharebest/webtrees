@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-07-26 23:06+0100\n"
-"PO-Revision-Date: 2018-08-01 11:29+0000\n"
+"PO-Revision-Date: 2018-08-07 06:46+0000\n"
 "Last-Translator: hrnwebtrees <hrnwebtrees@yahoo.com>\n"
 "Language-Team: Norwegian Bokmål <https://translate.webtrees.net/projects/webtrees/webtrees/nb/>\n"
 "Language: nb\n"
@@ -7157,7 +7157,7 @@ msgstr "Identifikasjonsnummer"
 
 #: resources/views/admin/fix-level-0-media.php:9
 msgid "If a media object is linked to an individual, when it should be linked to a fact or event, then you can move it to the correct location."
-msgstr "Hvis et medieobjekt er knyttet til en person, men skulle i stedet vært knyttet til et faktum eller en begivenhet, kan du flytte det til rett sted."
+msgstr "Hvis et medieobjekt er knyttet til en person, men skulle i stedet vært knyttet til et faktum eller en hendelse, kan du flytte det til rett sted."
 
 #. I18N: Help text for the “Language” configuration setting
 #: resources/views/admin/trees-preferences.php:78
@@ -8188,7 +8188,7 @@ msgstr "Lima, Peru"
 #: app/Http/Controllers/AdminController.php:858
 #: resources/views/admin/control-panel.php:450
 msgid "Link media objects to facts and events"
-msgstr "Knytt medieobjekter til fakta og begivenheter"
+msgstr "Knytt medieobjekter til fakta og hendelser"
 
 #. I18N: You need to:
 #: resources/views/emails/verify-notify-html.php:22
