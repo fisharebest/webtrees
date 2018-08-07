@@ -1,18 +1,20 @@
 <?php use Fisharebest\Webtrees\Bootstrap4;
 use Fisharebest\Webtrees\Http\Controllers\StatisticsChartController;
-use Fisharebest\Webtrees\I18N; ?>
+use Fisharebest\Webtrees\I18N;
+
+?>
 <?php ?>
 <?php ?>
 
 <script>
-  function statusDisable (sel) {
-    var cbox = document.getElementById(sel);
-    cbox.checked = false;
+  function statusDisable(sel) {
+    var cbox      = document.getElementById(sel);
+    cbox.checked  = false;
     cbox.disabled = true;
   }
 
-  function statusEnable (sel) {
-    var cbox = document.getElementById(sel);
+  function statusEnable(sel) {
+    var cbox      = document.getElementById(sel);
     cbox.disabled = false;
   }
 
@@ -54,8 +56,8 @@ use Fisharebest\Webtrees\I18N; ?>
     }
   }
 
-  function statusChecked (sel) {
-    var cbox = document.getElementById(sel);
+  function statusChecked(sel) {
+    var cbox     = document.getElementById(sel);
     cbox.checked = true;
   }
 
@@ -92,28 +94,107 @@ use Fisharebest\Webtrees\I18N; ?>
         <div class="col-sm-2 wt-page-options-label">
             <?= I18N::translate('Chart type') ?>
         </div>
-        <div class="col-sm-4 wt-page-options-value">
-            <?= Bootstrap4::radioButtons('x-as', [StatisticsChartController::X_AXIS_BIRTH_MONTH => I18N::translate('Month of birth')], StatisticsChartController::X_AXIS_BIRTH_MONTH, false, ['onchange' => 'statusEnable("z_sex"); statusHide("x_years");; statusHide("map_opt");']) ?>
-            <?= Bootstrap4::radioButtons('x-as', [StatisticsChartController::X_AXIS_DEATH_MONTH => I18N::translate('Month of death')], '', false, ['onchange' => 'statusEnable("z_sex"); statusHide("x_years");; statusHide("map_opt");']) ?>
-            <?= Bootstrap4::radioButtons('x-as', [
-                StatisticsChartController::X_AXIS_MARRIAGE_MONTH       => I18N::translate('Month of marriage'),
-                StatisticsChartController::X_AXIS_FIRST_MARRIAGE_MONTH => I18N::translate('Month of first marriage'),
-            ], '', false, ['onchange' => 'statusChecked("z_none"); statusDisable("z_sex"); statusHide("x_years");; statusHide("map_opt");']) ?>
-            <?= Bootstrap4::radioButtons('x-as', [StatisticsChartController::X_AXIS_FIRST_CHILD_MONTH => I18N::translate('Month of birth of first child in a relation')], '', false, ['onchange' => 'statusEnable("z_sex"); statusHide("x_years");; statusHide("map_opt");']) ?>
-            <?= Bootstrap4::radioButtons('x-as', [StatisticsChartController::X_AXIS_AGE_AT_DEATH => I18N::translate('Average age at death')], '', false, ['onchange' => 'statusEnable("z_sex"); statusShow("x_years");; statusHide("map_opt");']) ?>
-            <?= Bootstrap4::radioButtons('x-as', [StatisticsChartController::X_AXIS_AGE_AT_MARRIAGE => I18N::translate('Age in year of marriage')], '', false, ['onchange' => 'statusEnable("z_sex"); statusHide("x_years"); statusShow("x_years_m");; statusHide("map_opt");']) ?>
-            <?= Bootstrap4::radioButtons('x-as', [StatisticsChartController::X_AXIS_AGE_AT_FIRST_MARRIAGE => I18N::translate('Age in year of first marriage')], '', false, ['onchange' => 'statusEnable("z_sex"); statusHide("x_years"); statusShow("x_years_m");; statusHide("map_opt");']) ?>
-            <?= Bootstrap4::radioButtons('x-as', [StatisticsChartController::X_AXIS_NUMBER_OF_CHILDREN => I18N::translate('Number of children')], '', false, ['onchange' => 'statusChecked("z_none"); statusDisable("z_sex"); statusHide("x_years");; statusHide("map_opt");']) ?>
-            <?= Bootstrap4::radioButtons('x-as', [StatisticsChartController::X_AXIS_INDIVIDUAL_MAP => I18N::translate('Individual distribution')], '', false, ['onchange' => 'statusHide("x_years");; statusShow("map_opt"); statusShow("chart_type"); statusHide("axes");']) ?>
-            <?= Bootstrap4::radioButtons('x-as', [StatisticsChartController::X_AXIS_BIRTH_MAP => I18N::translate('Birth by country')], '', false, ['onchange' => 'statusHide("x_years");; statusShow("map_opt"); statusHide("chart_type"); statusHide("surname_opt");']) ?>
-            <?= Bootstrap4::radioButtons('x-as', [StatisticsChartController::X_AXIS_MARRIAGE_MAP => I18N::translate('Marriage by country')], '', false, ['onchange' => 'statusHide("x_years");; statusShow("map_opt"); statusHide("chart_type"); statusHide("surname_opt");']) ?>
-            <?= Bootstrap4::radioButtons('x-as', [StatisticsChartController::X_AXIS_DEATH_MAP => I18N::translate('Death by country')], '', false, ['onchange' => 'statusHide("x_years");; statusShow("map_opt"); statusHide("chart_type"); statusHide("surname_opt");']) ?>
 
-            <div id="x_years" style="display:none;">
-                <label for="x-axis-boundaries-ages">
-                    <?= I18N::translate('Select the desired age interval') ?>
+        <div class="col-sm-4 wt-page-options-value">
+            <fieldset>
+                <legend><?= I18N::translate('Individual') ?></legend>
+
+                <?= Bootstrap4::radioButtons('x-as', [StatisticsChartController::X_AXIS_BIRTH_MONTH => I18N::translate('Month of birth')], StatisticsChartController::X_AXIS_BIRTH_MONTH, false, ['onchange' => 'statusEnable("z_sex"); statusHide("x_years");; statusHide("map_opt");']) ?>
+                <?= Bootstrap4::radioButtons('x-as', [StatisticsChartController::X_AXIS_DEATH_MONTH => I18N::translate('Month of death')], '', false, ['onchange' => 'statusEnable("z_sex"); statusHide("x_years");; statusHide("map_opt");']) ?>
+                <?= Bootstrap4::radioButtons('x-as', [StatisticsChartController::X_AXIS_FIRST_CHILD_MONTH => I18N::translate('Month of birth of first child in a relation')], '', false, ['onchange' => 'statusEnable("z_sex"); statusHide("x_years");; statusHide("map_opt");']) ?>
+                <?= Bootstrap4::radioButtons('x-as', [StatisticsChartController::X_AXIS_AGE_AT_DEATH => I18N::translate('Average age at death')], '', false, ['onchange' => 'statusEnable("z_sex"); statusShow("x_years");; statusHide("map_opt");']) ?>
+                <?= Bootstrap4::radioButtons('x-as', [StatisticsChartController::X_AXIS_AGE_AT_MARRIAGE => I18N::translate('Age in year of marriage')], '', false, ['onchange' => 'statusEnable("z_sex"); statusHide("x_years"); statusShow("x_years_m");; statusHide("map_opt");']) ?>
+                <?= Bootstrap4::radioButtons('x-as', [StatisticsChartController::X_AXIS_AGE_AT_FIRST_MARRIAGE => I18N::translate('Age in year of first marriage')], '', false, ['onchange' => 'statusEnable("z_sex"); statusHide("x_years"); statusShow("x_years_m");; statusHide("map_opt");']) ?>
+            </fieldset>
+
+            <fieldset>
+                <legend><?= I18N::translate('Family') ?></legend>
+
+                <?= Bootstrap4::radioButtons('x-as', [
+                    StatisticsChartController::X_AXIS_MARRIAGE_MONTH       => I18N::translate('Month of marriage'),
+                    StatisticsChartController::X_AXIS_FIRST_MARRIAGE_MONTH => I18N::translate('Month of first marriage'),
+                ], '', false, ['onchange' => 'statusChecked("z_none"); statusDisable("z_sex"); statusHide("x_years");; statusHide("map_opt");']) ?>
+                <?= Bootstrap4::radioButtons('x-as', [StatisticsChartController::X_AXIS_NUMBER_OF_CHILDREN => I18N::translate('Number of children')], '', false, ['onchange' => 'statusChecked("z_none"); statusDisable("z_sex"); statusHide("x_years");; statusHide("map_opt");']) ?>
+            </fieldset>
+
+            <fieldset>
+                <legend><?= I18N::translate('Map') ?></legend>
+
+                <?= Bootstrap4::radioButtons('x-as', [StatisticsChartController::X_AXIS_INDIVIDUAL_MAP => I18N::translate('Individuals')], '', false, ['onchange' => 'statusHide("x_years");; statusShow("map_opt"); statusShow("chart_type");']) ?>
+                <?= Bootstrap4::radioButtons('x-as', [StatisticsChartController::X_AXIS_BIRTH_MAP => I18N::translate('Births')], '', false, ['onchange' => 'statusHide("x_years");; statusShow("map_opt"); statusHide("chart_type"); statusHide("surname_opt");']) ?>
+                <?= Bootstrap4::radioButtons('x-as', [StatisticsChartController::X_AXIS_MARRIAGE_MAP => I18N::translate('Marriages')], '', false, ['onchange' => 'statusHide("x_years");; statusShow("map_opt"); statusHide("chart_type"); statusHide("surname_opt");']) ?>
+                <?= Bootstrap4::radioButtons('x-as', [StatisticsChartController::X_AXIS_DEATH_MAP => I18N::translate('Deaths')], '', false, ['onchange' => 'statusHide("x_years");; statusShow("map_opt"); statusHide("chart_type"); statusHide("surname_opt");']) ?>
+            </fieldset>
+        </div>
+
+        <div class="col-sm-2 wt-page-options-label">
+            <?= I18N::translate('Details') ?>
+        </div>
+
+        <div class="col-sm-4 wt-page-options-value">
+            <fieldset id="axes">
+                <legend><?= I18N::translate('Categories') ?></legend>
+
+                <label>
+                    <input type="radio" id="z_none" name="z-as" value="<?= StatisticsChartController::Z_AXIS_ALL ?>" onclick="statusDisable('z-axis-boundaries-periods');">
+                    <?= I18N::translate('none') ?>
                 </label>
                 <br>
+                <label>
+                    <input type="radio" id="z_sex" name="z-as" value="<?= StatisticsChartController::Z_AXIS_SEX ?>" onclick="statusDisable('z-axis-boundaries-periods');">
+                    <?= I18N::translate('gender') ?>
+                </label>
+                <br>
+                <label>
+                    <input type="radio" id="z_time" name="z-as" value="<?= StatisticsChartController::Z_AXIS_TIME ?>" checked onclick="statusEnable('z-axis-boundaries-periods');">
+                    <?= I18N::translate('date periods') ?>
+                </label>
+                <label for="z-axis-boundaries-periods" class="sr-only">
+                    <?= I18N::translate('Date range') ?>
+                </label>
+                <select id="z-axis-boundaries-periods" class="form-control" name="z-axis-boundaries-periods">
+                    <option value="1700,1750,1800,1850,1900,1950,2000" selected>
+                        <?= /* I18N: from 1700 interval 50 years */
+                        I18N::plural('from %1$s interval %2$s year', 'from %1$s interval %2$s years', 50, I18N::digits(1700), I18N::number(50)) ?>
+                    </option>
+                    <option value="1800,1840,1880,1920,1950,1970,2000">
+                        <?= I18N::plural('from %1$s interval %2$s year', 'from %1$s interval %2$s years', 40, I18N::digits(1800), I18N::number(40)) ?>
+                    </option>
+                    <option value="1800,1850,1900,1950,2000">
+                        <?= I18N::plural('from %1$s interval %2$s year', 'from %1$s interval %2$s years', 50, I18N::digits(1800), I18N::number(50)) ?>
+                    </option>
+                    <option value="1900,1920,1940,1960,1980,1990,2000">
+                        <?= I18N::plural('from %1$s interval %2$s year', 'from %1$s interval %2$s years', 20, I18N::digits(1900), I18N::number(20)) ?>
+                    </option>
+                    <option value="1900,1925,1950,1975,2000">
+                        <?= I18N::plural('from %1$s interval %2$s year', 'from %1$s interval %2$s years', 25, I18N::digits(1900), I18N::number(25)) ?>
+                    </option>
+                    <option value="1940,1950,1960,1970,1980,1990,2000">
+                        <?= I18N::plural('from %1$s interval %2$s year', 'from %1$s interval %2$s years', 10, I18N::digits(1940), I18N::number(10)) ?>
+                    </option>
+                </select>
+            </fieldset>
+
+            <fieldset id="zyaxes">
+                <legend><?= I18N::translate('Results') ?></legend>
+
+                <label>
+                    <input type="radio" name="y-as" value="<?= StatisticsChartController::Y_AXIS_NUMBERS ?>" checked>
+                    <?= I18N::translate('numbers') ?>
+                </label>
+                <br>
+                <label>
+                    <input type="radio" name="y-as" value="<?= StatisticsChartController::Y_AXIS_PERCENT ?>">
+                    <?= I18N::translate('percentage') ?>
+                </label>
+            </fieldset>
+
+            <fieldset id="x_years" style="display:none;">
+                <legend><?= I18N::translate('Age interval') ?></legend>
+
+                <label for="x-axis-boundaries-ages" class="sr-only">
+                    <?= I18N::translate('Age interval') ?>
+                </label>
                 <?= Bootstrap4::select([
                     '1,5,10,20,30,40,50,60,70,80,90,100' => I18N::plural('%s year', '%s years', 10, I18N::number(10)),
                     '5,20,40,60,75,80,85,90'             => I18N::plural('%s year', '%s years', 20, I18N::number(20)),
@@ -122,10 +203,12 @@ use Fisharebest\Webtrees\I18N; ?>
                     'id'   => 'x-axis-boundaries-ages',
                     'name' => 'x-axis-boundaries-ages',
                 ]) ?>
-            </div>
+            </fieldset>
 
-            <div id="x_years_m" style="display:none;">
-                <label for="x-axis-boundaries-ages_m">
+            <fieldset id="x_years_m" style="display:none;">
+                <legend><?= I18N::translate('Age interval') ?></legend>
+
+                <label for="x-axis-boundaries-ages_m" class="sr-only">
                     <?= I18N::translate('Select the desired age interval') ?>
                 </label>
                 <?= Bootstrap4::select([
@@ -135,139 +218,63 @@ use Fisharebest\Webtrees\I18N; ?>
                     'id'   => 'x-axis-boundaries-ages_m',
                     'name' => 'x-axis-boundaries-ages_m',
                 ]) ?>
-            </div>
+            </fieldset>
 
-            <div id="x_numbers" style="display:none;">
-                <label for="x-axis-boundaries-numbers">
-                    <?= I18N::translate('Select the desired count interval') ?>
-                </label>
-                <br>
-                <select id="x-axis-boundaries-numbers" name="x-axis-boundaries-numbers">
-                    <option value="1,2,3,4,5,6,7,8,9,10" selected>
-                        <?= I18N::translate('interval one child') ?>
-                    </option>
-                    <option value="2,4,6,8,10,12">
-                        <?= I18N::translate('interval two children') ?>
-                    </option>
-                </select>
-                <br>
-            </div>
             <div id="map_opt" style="display:none;">
-                <div id="chart_type">
-                    <label>
-                        <?= I18N::translate('Chart type') ?>
-                        <br>
-                        <select name="chart_type" onchange="statusShowSurname(this);">
-                            <option value="indi_distribution_chart" selected>
-                                <?= I18N::translate('Individual distribution chart') ?>
-                            </option>
-                            <option value="surname_distribution_chart">
-                                <?= I18N::translate('Surname distribution chart') ?>
-                            </option>
-                        </select>
-                    </label>
-                    <br>
-                </div>
-                <div id="surname_opt" style="display:none;">
-                    <label for="SURN">
-                        <?= I18N::translate('Surname') ?>
-                    </label>
-                    <br>
-                    <input data-autocomplete-type="SURN" type="text" id="SURN" name="SURN" size="20">
-                    <br>
-                </div>
-                <label for="chart_shows">
-                    <?= I18N::translate('Geographic area') ?>
-                </label>
-                <br>
-                <select id="chart_shows" name="chart_shows">
-                    <option value="world" selected>
-                        <?= I18N::translate('World') ?>
-                    </option>
-                    <option value="europe">
-                        <?= I18N::translate('Europe') ?>
-                    </option>
-                    <option value="usa">
-                        <?= I18N::translate('United States') ?>
-                    </option>
-                    <option value="south_america">
-                        <?= I18N::translate('South America') ?>
-                    </option>
-                    <option value="asia">
-                        <?= I18N::translate('Asia') ?>
-                    </option>
-                    <option value="middle_east">
-                        <?= I18N::translate('Middle East') ?>
-                    </option>
-                    <option value="africa">
-                        <?= I18N::translate('Africa') ?>
-                    </option>
-                </select>
+                <fieldset id="chart_type">
+                    <legend><?= I18N::translate('Chart type') ?></legend>
+
+                    <label for="chart_type" class="sr-only"><?= I18N::translate('Chart type') ?></label>
+                    <select name="chart_type" class="form-control" onchange="statusShowSurname(this);">
+                        <option value="indi_distribution_chart" selected>
+                            <?= I18N::translate('Individuals') ?>
+                        </option>
+                        <option value="surname_distribution_chart">
+                            <?= I18N::translate('Surnames') ?>
+                        </option>
+                    </select>
+
+                    <div id="surname_opt" class="form-group" style="display:none;">
+                        <label for="SURN"><?= I18N::translate('Surname') ?></label>
+                        <input data-autocomplete-type="SURN" class="form-control" type="text" id="SURN" name="SURN">
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend id="label-area"><?= I18N::translate('Geographic area') ?></legend>
+
+                    <label for="chart_shows" class="sr-only"><?= I18N::translate('Geographic area') ?></label>
+                    <select id="chart_shows" class="form-control" name="chart_shows">
+                        <option value="world" selected>
+                            <?= I18N::translate('World') ?>
+                        </option>
+                        <option value="europe">
+                            <?= I18N::translate('Europe') ?>
+                        </option>
+                        <option value="usa">
+                            <?= I18N::translate('United States') ?>
+                        </option>
+                        <option value="south_america">
+                            <?= I18N::translate('South America') ?>
+                        </option>
+                        <option value="asia">
+                            <?= I18N::translate('Asia') ?>
+                        </option>
+                        <option value="middle_east">
+                            <?= I18N::translate('Middle East') ?>
+                        </option>
+                        <option value="africa">
+                            <?= I18N::translate('Africa') ?>
+                        </option>
+                    </select>
+                </fieldset>
             </div>
-        </div>
-        <div class="col-sm-2 wt-page-options-label" id="axes">
-            <?= I18N::translate('Categories') ?>
-        </div>
-        <div class="col-sm-4 wt-page-options-value" id="zyaxes">
-            <label>
-                <input type="radio" id="z_none" name="z-as" value="<?= StatisticsChartController::Z_AXIS_ALL ?>" onclick="statusDisable('z-axis-boundaries-periods');">
-                <?= I18N::translate('none') ?>
-            </label>
-            <br>
-            <label>
-                <input type="radio" id="z_sex" name="z-as" value="<?= StatisticsChartController::Z_AXIS_SEX ?>" onclick="statusDisable('z-axis-boundaries-periods');">
-                <?= I18N::translate('gender') ?>
-            </label>
-            <br>
-            <label>
-                <input type="radio" id="z_time" name="z-as" value="<?= StatisticsChartController::Z_AXIS_TIME ?>" checked onclick="statusEnable('z-axis-boundaries-periods');">
-                <?= I18N::translate('date periods') ?>
-            </label>
-            <br>
-            <br>
-            <label for="z-axis-boundaries-periods">
-                <?= I18N::translate('Date range') ?>
-            </label>
-            <br>
-            <select id="z-axis-boundaries-periods" name="z-axis-boundaries-periods">
-                <option value="1700,1750,1800,1850,1900,1950,2000" selected>
-                    <?= /* I18N: from 1700 interval 50 years */
-                    I18N::plural('from %1$s interval %2$s year', 'from %1$s interval %2$s years', 50, I18N::digits(1700), I18N::number(50)) ?>
-                </option>
-                <option value="1800,1840,1880,1920,1950,1970,2000">
-                    <?= I18N::plural('from %1$s interval %2$s year', 'from %1$s interval %2$s years', 40, I18N::digits(1800), I18N::number(40)) ?>
-                </option>
-                <option value="1800,1850,1900,1950,2000">
-                    <?= I18N::plural('from %1$s interval %2$s year', 'from %1$s interval %2$s years', 50, I18N::digits(1800), I18N::number(50)) ?>
-                </option>
-                <option value="1900,1920,1940,1960,1980,1990,2000">
-                    <?= I18N::plural('from %1$s interval %2$s year', 'from %1$s interval %2$s years', 20, I18N::digits(1900), I18N::number(20)) ?>
-                </option>
-                <option value="1900,1925,1950,1975,2000">
-                    <?= I18N::plural('from %1$s interval %2$s year', 'from %1$s interval %2$s years', 25, I18N::digits(1900), I18N::number(25)) ?>
-                </option>
-                <option value="1940,1950,1960,1970,1980,1990,2000">
-                    <?= I18N::plural('from %1$s interval %2$s year', 'from %1$s interval %2$s years', 10, I18N::digits(1940), I18N::number(10)) ?>
-                </option>
-            </select>
-            <br>
-            <br>
-            <?= I18N::translate('Results') ?>
-            <br>
-            <label>
-                <input type="radio" name="y-as" value="<?= StatisticsChartController::Y_AXIS_NUMBERS ?>" checked>
-                <?= I18N::translate('numbers') ?>
-            </label>
-            <br>
-            <label>
-                <input type="radio" name="y-as" value="<?= StatisticsChartController::Y_AXIS_PERCENT ?>">
-                <?= I18N::translate('percentage') ?>
-            </label>
-            <br>
         </div>
     </div>
+
     <p class="center">
         <button type="submit" class="btn btn-primary">
+            <?= view('icons/save') ?>
             <?= I18N::translate('show the chart') ?>
         </button>
     </p>
