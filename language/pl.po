@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-07-26 23:06+0100\n"
-"PO-Revision-Date: 2018-01-08 15:08+0000\n"
+"PO-Revision-Date: 2018-08-07 12:58+0000\n"
 "Last-Translator: Łukasz Wileński <lukas.the.best@poczta.fm>\n"
 "Language-Team: Polish <https://translate.webtrees.net/projects/webtrees/webtrees/pl/>\n"
 "Language: pl\n"
@@ -84,7 +84,7 @@ msgstr "%1$sKB zostało pobranych w %2$s sekund."
 #: app/Http/Controllers/AdminUsersController.php:399
 #, php-format
 msgid "%1$s does not exist"
-msgstr ""
+msgstr "%1$s nie istnieje"
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: app/Http/Controllers/AdminTreesController.php:228
@@ -323,9 +323,9 @@ msgstr "Wyłączono %s na tym serwerze. Nie można zainstalować webtrees dopók
 #, php-format
 msgid "%s location has been imported."
 msgid_plural "%s locations have been imported."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s miejsce zostało zaimportowane."
+msgstr[1] "%s miejsca zostały zaimportowane."
+msgstr[2] "%s miejsc zostało zaimportowanych."
 
 #: app/Module/UserMessagesModule.php:177
 #, php-format
@@ -385,9 +385,9 @@ msgstr "%s raz przesunięty w dół"
 #, php-format
 msgid "%s repository has been updated."
 msgid_plural "%s repositories have been updated."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s repozytorium zostało zaktualizowane."
+msgstr[1] "%s repozytoria zostały zaktualizowane."
+msgstr[2] "%s repozytoriów zostało zaktualizowanych."
 
 #: app/I18N.php:883
 #, php-format
@@ -736,7 +736,7 @@ msgstr "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2
 #. I18N: URL = web address
 #: resources/views/modals/media-file-fields.php:20
 msgid "A URL"
-msgstr ""
+msgstr "Adres strony internetowej"
 
 #. I18N: Description of the “RelationshipsChart” module
 #: app/Module/RelationshipsChartModule.php:61
@@ -1435,7 +1435,7 @@ msgstr "Dodaj historie do osób w drzewie genealogicznym."
 
 #: resources/views/admin/map-import-form.php:72
 msgid "Add new, and update existing records"
-msgstr ""
+msgstr "Dodaj nowe i uaktualnij istniejące wpisy"
 
 #: resources/views/admin/trees-import.php:83
 msgid "Add spaces where long lines were wrapped"
@@ -1954,7 +1954,7 @@ msgstr "Wystąpił nieoczekiwany błąd z bazą danych."
 #: resources/views/modules/pedigree-map/pedigree-map.php:82
 #: resources/views/place-map.php:85
 msgid "An unknown error occurred"
-msgstr ""
+msgstr "Wystąpił nieznany błąd"
 
 #. I18N: Name of a module/report
 #. I18N: Name of a module/chart
@@ -6285,7 +6285,7 @@ msgstr "Flaga"
 #: resources/views/admin/locations.php:47
 #, php-format
 msgid "Flag of %s"
-msgstr ""
+msgstr "Flaga - %s"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:7564
@@ -7319,7 +7319,7 @@ msgstr "Importuj"
 
 #: resources/views/admin/map-import-form.php:67
 msgid "Import Options."
-msgstr ""
+msgstr "Opcje importu."
 
 #: app/Http/Controllers/AdminTreesController.php:614
 msgid "Import a GEDCOM file"
@@ -7336,7 +7336,7 @@ msgstr "Importuj zmienione miniaturki z webtrees w wersji 1"
 
 #: app/Http/Controllers/AdminLocationController.php:310
 msgid "Import geographic data"
-msgstr ""
+msgstr "Importuj dane geograficzne"
 
 #: resources/views/admin/trees-import.php:71
 msgid "Import preferences"
@@ -8122,7 +8122,7 @@ msgstr "Jeśli to ustawienie zostanie puste, to będzie używana wartość domy�
 
 #: resources/views/admin/media-upload.php:36
 msgid "Leave this entry blank to keep the original filename"
-msgstr ""
+msgstr "Pozostaw puste pole, aby zachować oryginalną nazwę pliku"
 
 #: resources/views/lists/families-table.php:138
 #: resources/views/lists/individuals-table.php:190
@@ -8478,7 +8478,7 @@ msgstr "Zarządzaj drzewami genealogicznymi"
 #: resources/views/admin/trees-renumber.php:3
 #: resources/views/admin/trees-unconnected.php:4
 msgid "Manage family trees "
-msgstr ""
+msgstr "Zarządzaj drzewami genealogicznymi "
 
 #: app/Http/Controllers/AdminMediaController.php:69
 #: resources/views/admin/control-panel.php:438
@@ -8548,7 +8548,7 @@ msgstr "Mapa"
 #: resources/views/admin/control-panel.php:487
 #: resources/views/admin/map-provider.php:12
 msgid "Map provider"
-msgstr ""
+msgstr "Dostawca map"
 
 #: app/Date/CalendarDate.php:361
 msgctxt "Abbreviation for March"
@@ -9863,7 +9863,7 @@ msgstr "Nie znaleziono powiązania między tymi osobami."
 #: resources/views/modules/pedigree-map/pedigree-map.php:81
 #: resources/views/modules/places/tab.php:77 resources/views/place-map.php:84
 msgid "No mappable items"
-msgstr ""
+msgstr "Brak obiektów na mapie"
 
 #: resources/views/admin/merge-records-step-2.php:51
 #: resources/views/admin/merge-records-step-2.php:98
@@ -10260,7 +10260,7 @@ msgstr "Tego dnia…"
 
 #: resources/views/admin/map-import-form.php:73
 msgid "Only add new records"
-msgstr ""
+msgstr "Tylko dodaj nowe wpisy"
 
 #: app/Functions/FunctionsEdit.php:230
 #: app/Functions/FunctionsPrintFacts.php:266
@@ -10273,7 +10273,7 @@ msgstr "Tylko menedżerowie mogą edytować"
 
 #: resources/views/admin/map-import-form.php:74
 msgid "Only update existing records"
-msgstr ""
+msgstr "Tylko uaktualnij istniejące wpisy"
 
 #: resources/views/errors/database-connection.php:5
 msgid "Oops! The webserver is unable to connect to the database server. It could be busy, undergoing maintenance, or simply broken. You should <a href=\"index.php\">try again</a> in a few minutes or contact the website administrator."
@@ -10869,7 +10869,7 @@ msgstr "Miejsca należy wprowadzać zgodnie ze standardami przyjętymi w genealo
 
 #: resources/views/places-page.php:26
 msgid "Places without valid co-ordinates are not shown on the map and have a red border around the sidebar entry"
-msgstr ""
+msgstr "Miejsca bez prawidłowych współrzędnych nie są wyświetlane na mapie i mają czerwoną obwódkę wokół wpisu na pasku bocznym"
 
 #: app/Theme/CloudsTheme.php:48 app/Theme/FabTheme.php:76
 #: app/Theme/MinimalTheme.php:46 app/Theme/XeneaTheme.php:46
@@ -11051,7 +11051,7 @@ msgstr "Prywatność"
 
 #: app/Http/Controllers/StaticPageController.php:40
 msgid "Privacy policy"
-msgstr ""
+msgstr "Polityka prywatności"
 
 #. I18N: a restrction on viewing data
 #: resources/views/modals/restriction-fields.php:5
@@ -11303,7 +11303,7 @@ msgstr "Imię i nazwisko"
 
 #: resources/views/admin/map-import-form.php:100
 msgid "Really delete all geographic data?"
-msgstr ""
+msgstr "Czy naprawdę usunąć wszystkie dane geograficzne?"
 
 #. I18N: Name of a module
 #: app/Module/RecentChangesModule.php:42 modules_v3/change_report/report.xml:92
@@ -11631,7 +11631,7 @@ msgstr "Zadania badawcze są przechowywane przy użyciu niestandardowego znaczni
 #: resources/views/modules/pedigree-map/pedigree-map.php:80
 #: resources/views/modules/places/tab.php:76 resources/views/place-map.php:83
 msgid "Reset to initial map state"
-msgstr ""
+msgstr "Zresetuj mapę do początkowego stanu"
 
 #. I18N: gedcom tag RESI
 #: app/GedcomTag.php:961
@@ -12563,7 +12563,7 @@ msgstr "Pokaż zdjęcia"
 
 #: app/Http/Controllers/PlaceHierarchyController.php:74
 msgid "Show place hierarchy"
-msgstr ""
+msgstr "Pokaż hierarchię miejsc"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-privacy.php:146
@@ -12617,7 +12617,7 @@ msgstr "Pokaż %1$s %2$s części nazwy miejsca."
 #. I18N: Description of the “OSM” module
 #: app/Module/PedigreeMapModule.php:71
 msgid "Show the birthplace of ancestors on a map."
-msgstr ""
+msgstr "Pokazuje miejsca narodzin przodków na mapie."
 
 #: resources/views/modules/html/config.php:41
 msgid "Show the date and time of update"
@@ -12643,7 +12643,7 @@ msgstr "Pokaż listę nazwisk"
 #. I18N: Description of the “OSM” module
 #: app/Module/PlacesModule.php:52
 msgid "Show the location of events on a map."
-msgstr ""
+msgstr "Pokaż lokalizację wydarzeń na mapie."
 
 #. I18N: label for a yes/no option
 #: resources/views/modules/recent_changes/config.php:35
@@ -12789,7 +12789,7 @@ msgstr "Użytkownicy strony mogą wysyłać sobie wiadomości. Można wybrać w 
 
 #: app/Http/Controllers/AdminPhpGedViewController.php:176
 msgid "Site preferences"
-msgstr ""
+msgstr "Preferencje witryny"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-analytics.php:20
@@ -13517,7 +13517,7 @@ msgstr "Koszyk wycinków umożliwia zbieranie wybranych informacji („wycinków
 
 #: resources/views/privacy-policy.php:8
 msgid "The data in this website has been collected for the purposes of genealogical research."
-msgstr ""
+msgstr "Dane na tej stronie zostały zebrane na potrzeby badań genealogicznych."
 
 #: resources/views/admin/trees-preferences.php:441
 msgid "The date and time of the last update"
@@ -13526,7 +13526,7 @@ msgstr "Data i czas ostatniej aktualizacji"
 #: app/Http/Controllers/AdminLocationController.php:177
 #, php-format
 msgid "The details for “%s” have been updated."
-msgstr ""
+msgstr "Szczegóły dotyczące miejsca o nazwie „%s” zostały zaktualizowane."
 
 #. I18N: %s is a filename
 #: app/Http/Controllers/AdminTreesController.php:535
@@ -13838,7 +13838,7 @@ msgstr "Utworzono źródło"
 
 #: app/Http/Controllers/AdminPhpGedViewController.php:198
 msgid "The specified folder does not contain an installation of PhpGedView."
-msgstr ""
+msgstr "Określony folder nie zawiera instalacji PhpGedView."
 
 #: app/Http/Controllers/EditSubmitterController.php:95
 msgid "The submitter has been created"
@@ -14404,7 +14404,7 @@ msgstr "Dany wpis nie istnieje lub nie masz uprawnień, aby go zobaczyć."
 
 #: resources/views/admin/trees-privacy.php:238
 msgid "This record does not exist."
-msgstr ""
+msgstr "Ten wpis nie istnieje."
 
 #: resources/views/gedcom-record-page.php:11
 msgid "This record has been deleted. The deletion will need to be reviewed by a moderator."
@@ -14487,11 +14487,11 @@ msgstr "Powinna być to lista faktów rozdzielana przecinkami lub spacjami (doda
 
 #: resources/views/privacy-policy.php:25
 msgid "This site does not use any third-party tracking or analytics services."
-msgstr ""
+msgstr "Ta strona nie korzysta z żadnych usług śledzenia ani analitycznych innych firm."
 
 #: resources/views/privacy-policy.php:16
 msgid "This site uses cookies to store your preferences on this site, such as the language you have selected."
-msgstr ""
+msgstr "Ta strona używa plików cookie do przechowywania twoich preferencji na tej stronie, takich jak wybrany język."
 
 #: app/Exceptions/SourceAccessDeniedException.php:33
 #: app/Exceptions/SourceNotFoundException.php:33
@@ -15446,7 +15446,7 @@ msgstr "Pokaż"
 #: resources/views/places-page.php:33
 #, php-format
 msgid "View table of events occurring in %s"
-msgstr ""
+msgstr "Zobacz tabelę zdarzeń występujących w: %s"
 
 #: resources/views/calendar-page.php:159
 msgid "View this day"
@@ -16054,7 +16054,7 @@ msgstr "Dodaj"
 #. I18N: A button label.
 #: resources/views/admin/locations.php:78
 msgid "add place"
-msgstr ""
+msgstr "Dodaj miejsce"
 
 #. I18N: The name given to a child by its adoptive parents
 #: app/GedcomCode/GedcomCodeName.php:67
@@ -16622,7 +16622,7 @@ msgstr "była żona"
 #. I18N: A button label.
 #: resources/views/admin/locations.php:84
 msgid "export file"
-msgstr ""
+msgstr "Eksportuj plik"
 
 #: app/Http/Controllers/AdminTreesController.php:933
 #: modules_v3/fact_sources/report.xml:6
@@ -18576,7 +18576,7 @@ msgstr "importuj"
 #. I18N: A button label.
 #: resources/views/admin/locations.php:98
 msgid "import file"
-msgstr ""
+msgstr "Importuj plik"
 
 #. I18N: Gedcom INT dates
 #: app/Date.php:352
@@ -18647,7 +18647,7 @@ msgstr "Lista"
 #: app/Http/Controllers/AdminLocationController.php:471
 #, php-format
 msgid "locations updated: %s, locations added: %s"
-msgstr ""
+msgstr "%s miejsc zaktualizowano, %s miejsc dodano"
 
 #. I18N: A woman’s name, before she marries (in cultures where women take their new husband’s name on marriage)
 #: app/GedcomCode/GedcomCodeName.php:133
@@ -18774,17 +18774,17 @@ msgstr "bratanek"
 #: app/Functions/Functions.php:1180
 msgctxt "husband’s brother’s son"
 msgid "nephew"
-msgstr ""
+msgstr "bratanek"
 
 #: app/Functions/Functions.php:1176
 msgctxt "husband’s sibling’s son"
 msgid "nephew"
-msgstr ""
+msgstr "bratanek/siostrzeniec"
 
 #: app/Functions/Functions.php:1178
 msgctxt "husband’s sister’s son"
 msgid "nephew"
-msgstr ""
+msgstr "siostrzeniec"
 
 #: app/Functions/Functions.php:932
 msgctxt "sibling’s son"
@@ -18799,17 +18799,17 @@ msgstr "siostrzeniec"
 #: app/Functions/Functions.php:1420
 msgctxt "wife’s brother’s son"
 msgid "nephew"
-msgstr ""
+msgstr "bratanek"
 
 #: app/Functions/Functions.php:1416
 msgctxt "wife’s sibling’s son"
 msgid "nephew"
-msgstr ""
+msgstr "bratanek/siostrzeniec"
 
 #: app/Functions/Functions.php:1418
 msgctxt "wife’s sister’s son"
 msgid "nephew"
-msgstr ""
+msgstr "siostrzeniec"
 
 #: app/Functions/Functions.php:1018
 msgctxt "brother’s daughter’s husband"
@@ -18834,17 +18834,17 @@ msgstr "bratanek/bratanica"
 #: app/Functions/Functions.php:1168
 msgctxt "husband’s brother’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "dziecko brata męża"
 
 #: app/Functions/Functions.php:1164
 msgctxt "husband’s sibling’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "dziecko rodzeństwa męża"
 
 #: app/Functions/Functions.php:1166
 msgctxt "husband’s sister’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "dziecko siostry męża"
 
 #: app/Functions/Functions.php:928
 msgctxt "sibling’s child"
@@ -18859,17 +18859,17 @@ msgstr "dziecko siostry"
 #: app/Functions/Functions.php:1408
 msgctxt "wife’s brother’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "dziecko brata żony"
 
 #: app/Functions/Functions.php:1404
 msgctxt "wife’s sibling’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "dziecko rodzeństwa żony"
 
 #: app/Functions/Functions.php:1406
 msgctxt "wife’s sister’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "dziecko siostry żony"
 
 #: app/Functions/FunctionsEdit.php:806
 msgid "never"
@@ -18898,17 +18898,17 @@ msgstr "bratanica"
 #: app/Functions/Functions.php:1174
 msgctxt "husband’s brother’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "bratanica"
 
 #: app/Functions/Functions.php:1170
 msgctxt "husband’s sibling’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "bratanica/siostrzenica"
 
 #: app/Functions/Functions.php:1172
 msgctxt "husband’s sister’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "siostrzenica"
 
 #: app/Functions/Functions.php:930
 msgctxt "sibling’s daughter"
@@ -18923,17 +18923,17 @@ msgstr "siostrzenica"
 #: app/Functions/Functions.php:1414
 msgctxt "wife’s brother’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "bratanica"
 
 #: app/Functions/Functions.php:1410
 msgctxt "wife’s sibling’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "bratanica/siostrzenica"
 
 #: app/Functions/Functions.php:1412
 msgctxt "wife’s sister’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "siostrzenica"
 
 #: app/Functions/Functions.php:1044
 msgctxt "brother’s son’s wife"
