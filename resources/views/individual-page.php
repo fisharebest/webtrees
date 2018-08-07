@@ -133,6 +133,11 @@
 <script>
   "use strict";
 
+  // Bootstrap tabs - load content dynamically using AJAX
+  $('a[data-toggle="tab"][data-href]').on('show.bs.tab', function () {
+    $(this.getAttribute('href') + ':empty').load($(this).data('href'));
+  });
+
   // If the URL contains a fragment, then activate the corresponding tab.
   // Use a prefix on the fragment, to prevent scrolling to the element.
   var target = window.location.hash.replace("tab-", "");
@@ -142,7 +147,6 @@
     tab = $("#individual-tabs .nav-link:first");
   }
   tab.tab("show");
-  $(target + ':empty').load(tab.data('href'));
 
   // If the user selects a tab, update the URL to reflect this
   $('#individual-tabs a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
