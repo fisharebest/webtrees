@@ -22,6 +22,7 @@ use DateTime;
 use ErrorException;
 use Exception;
 use Fisharebest\Webtrees\Exceptions\Handler;
+use Fisharebest\Webtrees\Http\Controllers\SetupController;
 use Fisharebest\Webtrees\Http\Middleware\CheckCsrf;
 use Fisharebest\Webtrees\Http\Middleware\CheckForMaintenanceMode;
 use Fisharebest\Webtrees\Http\Middleware\MiddlewareInterface;
@@ -114,11 +115,14 @@ set_error_handler(function ($errno, $errstr, $errfile, $errline) {
 DebugBar::startMeasure('init database');
 
 // Load our configuration file, so we can connect to the database
-if (!file_exists(WT_ROOT . 'data/config.ini.php')) {
+define('WT_CONFIG_FILE', 'data/config.ini.php');
+if (!file_exists(WT_ROOT . WT_CONFIG_FILE)) {
     // No config file. Set one up.
-    $url      = Html::url('setup.php', ['route' => 'setup']);
-    $response = new RedirectResponse($url);
-    $response->send();
+    define('WT_DATA_DIR', 'data/');
+    $request  = Request::createFromGlobals();
+    $response = (new SetupController)->setup($request);
+    $response->prepare($request)->send();
+
     return;
 }
 

@@ -24,6 +24,8 @@ use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\DebugBar;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Theme;
+use Fisharebest\Webtrees\Theme\WebtreesTheme;
 use Fisharebest\Webtrees\User;
 use PDOException;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -46,10 +48,8 @@ class SetupController extends AbstractBaseController
      */
     public function setup(Request $request): Response
     {
-        // Config file exists?  Our work is done.
-        if (file_exists(WT_DATA_DIR . self::WT_CONFIG_FILE)) {
-            return new RedirectResponse(Html::url('index.php', []));
-        }
+        Theme::theme(new WebtreesTheme);
+        define('WT_LOCALE', I18N::init('en-US'));
 
         $step     = (int)$request->get('step', '1');
         $errors   = $this->serverErrors();
@@ -119,7 +119,7 @@ class SetupController extends AbstractBaseController
                 $error = $this->createConfigFile($data['dbhost'], $data['dbport'], $data['dbuser'], $data['dbpass'], $data['dbname'], $data['tblpfx'], $data['wtname'], $data['wtuser'], $data['wtpass'], $data['wtemail']);
 
                 if ($error === '') {
-                    return new RedirectResponse(Html::url('index.php', []));
+                    return new RedirectResponse(route('admin-trees'));
                 } else {
                     return $this->viewResponse('setup/step-6-failed', ['error' => $error]);
                 }
