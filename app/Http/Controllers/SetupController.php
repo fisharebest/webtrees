@@ -22,10 +22,7 @@ use Fisharebest\Localization\Locale;
 use Fisharebest\Localization\Locale\LocaleEnUs;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\DebugBar;
-use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Theme;
-use Fisharebest\Webtrees\Theme\WebtreesTheme;
 use Fisharebest\Webtrees\User;
 use PDOException;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -48,7 +45,6 @@ class SetupController extends AbstractBaseController
      */
     public function setup(Request $request): Response
     {
-        Theme::theme(new WebtreesTheme);
         define('WT_LOCALE', I18N::init('en-US'));
 
         $step     = (int)$request->get('step', '1');

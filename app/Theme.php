@@ -16,6 +16,7 @@
 namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Theme\ThemeInterface;
+use Fisharebest\Webtrees\Theme\WebtreesTheme;
 
 /**
  * Provide access to the current theme.
@@ -76,8 +77,6 @@ class Theme
      *
      * @param ThemeInterface|null $theme
      *
-     * @throws \LogicException
-     *
      * @return ThemeInterface
      */
     public static function theme(ThemeInterface $theme = null)
@@ -85,7 +84,7 @@ class Theme
         if ($theme) {
             self::$theme = $theme;
         } elseif (!self::$theme) {
-            throw new \LogicException;
+            self::$theme = new WebtreesTheme;
         }
 
         return self::$theme;
