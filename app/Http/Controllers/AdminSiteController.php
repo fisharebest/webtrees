@@ -567,7 +567,6 @@ class AdminSiteController extends AbstractBaseController
         Site::setPreference('ALLOW_USER_THEMES', (string)(bool)$request->get('ALLOW_USER_THEMES'));
         Site::setPreference('THEME_DIR', $request->get('THEME_DIR'));
         Site::setPreference('ALLOW_CHANGE_GEDCOM', (string)(bool)$request->get('ALLOW_CHANGE_GEDCOM'));
-        Site::setPreference('SESSION_TIME', (string)(int)$request->get('SESSION_TIME'));
         Site::setPreference('TIMEZONE', $request->get('TIMEZONE'));
 
         FlashMessages::addMessage(I18N::translate('The website preferences have been updated.'), 'success');

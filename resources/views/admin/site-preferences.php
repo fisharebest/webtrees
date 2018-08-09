@@ -133,22 +133,6 @@
 		</div>
 	</fieldset>
 
-	<!-- SESSION_TIME -->
-	<div class="row form-group">
-		<label for="SESSION_TIME" class="col-sm-3 col-form-label">
-			<?= /* I18N: A configuration setting */
-			I18N::translate('Session timeout') ?>
-		</label>
-		<div class="col-sm-9">
-			<input type="text" class="form-control" id="SESSION_TIME" name="SESSION_TIME" value="<?= e(Site::getPreference('SESSION_TIME')) ?>" pattern="[0-9]*" placeholder="7200" maxlength="255">
-			<p class="small text-muted">
-				<?= /* I18N: Help text for the “Session timeout” site configuration setting */
-				I18N::translate('The time in seconds that a webtrees session remains active before requiring a new sign-in. The default is 7200, which is 2 hours.') ?>
-				<?= I18N::translate('Leave this blank to use the default value.') ?>
-			</p>
-		</div>
-	</div>
-
 	<div class="row form-group">
 		<div class="offset-sm-3 col-sm-9">
 			<button type="submit" class="btn btn-primary">

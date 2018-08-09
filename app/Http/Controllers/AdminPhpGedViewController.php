@@ -287,7 +287,6 @@ class AdminPhpGedViewController extends AbstractBaseController
         Site::setPreference('USE_REGISTRATION_MODULE', $config['USE_REGISTRATION_MODULE'] ?? '');
         Site::setPreference('ALLOW_USER_THEMES', $config['ALLOW_USER_THEMES'] ?? '');
         Site::setPreference('ALLOW_CHANGE_GEDCOM', $config['ALLOW_CHANGE_GEDCOM'] ?? '');
-        Site::setPreference('SESSION_TIME', $config['PGV_SESSION_TIME'] ?? '');
         Site::setPreference('SMTP_ACTIVE', ($config['PGV_SMTP_ACTIVE'] ?? '') ? 'external' : 'internal');
         Site::setPreference('SMTP_HOST', $config['PGV_SMTP_HOST'] ?? '');
         Site::setPreference('SMTP_HELO', $config['PGV_SMTP_HELO'] ?? '');

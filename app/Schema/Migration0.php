@@ -367,7 +367,6 @@ class Migration0 implements MigrationInterface
         Site::setPreference('USE_REGISTRATION_MODULE', '1');
         Site::setPreference('ALLOW_USER_THEMES', '1');
         Site::setPreference('ALLOW_CHANGE_GEDCOM', '1');
-        Site::setPreference('SESSION_TIME', '7200');
         Site::setPreference('SMTP_ACTIVE', 'internal');
         Site::setPreference('SMTP_HOST', 'localhost');
         Site::setPreference('SMTP_PORT', '25');

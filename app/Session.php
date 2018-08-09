@@ -27,7 +27,6 @@ class Session
      */
     public static function start()
     {
-        $lifetime = (int) Site::getPreference('SESSION_TIME', '7200');
         $domain   = '';
         $path     = parse_url(WT_BASE_URL, PHP_URL_PATH);
         $secure   = parse_url(WT_BASE_URL, PHP_URL_SCHEME) === 'https';
@@ -40,7 +39,7 @@ class Session
 
         session_name('WT_SESSION');
         session_register_shutdown();
-        session_set_cookie_params($lifetime, $path, $domain, $secure, $httponly);
+        session_set_cookie_params(0, $path, $domain, $secure, $httponly);
         session_start();
 
         // A new session? Prevent session fixation attacks by choosing a new session ID.
