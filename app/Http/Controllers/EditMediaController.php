@@ -240,13 +240,17 @@ class EditMediaController extends AbstractEditController
         // Update the filesystem, if we can.
         if (!$media_file->isExternal()) {
             // Don't overwrite existing file
-            if (file_exists(WT_DATA_DIR . $new) && sha1_file(WT_DATA_DIR . $old) !== sha1_file(WT_DATA_DIR . $new)) {
+            if (file_exists(WT_DATA_DIR . $new) && file_exists(WT_DATA_DIR . $old)) {
                 FlashMessages::addMessage(I18N::translate('The media file %1$s could not be renamed to %2$s.', Html::filename($media_file->filename()), Html::filename($file)), 'info');
                 $file = $media_file->filename();
             } else {
                 try {
-                    File::mkdir(WT_DATA_DIR . $MEDIA_DIRECTORY . $folder);
-                    rename(WT_DATA_DIR . $MEDIA_DIRECTORY . $media_file->filename(), WT_DATA_DIR . $MEDIA_DIRECTORY . $file);
+                    // The "old" file may not exist.  For example, if the file was renamed on disk,
+                    // and we are now renaming the GEDCOM data to match.
+                    if (file_exists(WT_DATA_DIR . $old)) {
+                        File::mkdir(WT_DATA_DIR . $MEDIA_DIRECTORY . $folder);
+                        rename(WT_DATA_DIR . $old, WT_DATA_DIR . $new);
+                    }
                     FlashMessages::addMessage(I18N::translate('The media file %1$s has been renamed to %2$s.', Html::filename($media_file->filename()), Html::filename($file)), 'info');
                 } catch (Throwable $ex) {
                     FlashMessages::addMessage($ex, 'info');
