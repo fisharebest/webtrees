@@ -38,8 +38,8 @@ class ReportPdfImage extends ReportBaseImage
         // If current position (left)set "."
         if ($this->x == '.') {
             $this->x = $renderer->GetX();
-        } // For static position add margin
-        else {
+        } else {
+            // For static position add margin
             $this->x = $renderer->addMarginX($this->x);
             $renderer->SetX($curx);
         }

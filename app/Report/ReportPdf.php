@@ -169,9 +169,7 @@ class ReportPdf extends ReportBase
      *
      * @return ReportPdfCell
      */
-    public function createCell(
-        $width, $height, $border, $align, $bgcolor, $style, $ln, $top, $left, $fill, $stretch, $bocolor, $tcolor, $reseth
-    )
+    public function createCell($width, $height, $border, $align, $bgcolor, $style, $ln, $top, $left, $fill, $stretch, $bocolor, $tcolor, $reseth)
     {
         return new ReportPdfCell($width, $height, $border, $align, $bgcolor, $style, $ln, $top, $left, $fill, $stretch, $bocolor, $tcolor, $reseth);
     }
@@ -194,9 +192,7 @@ class ReportPdf extends ReportBase
      *
      * @return ReportPdfTextbox
      */
-    public function createTextBox(
-        $width, $height, $border, $bgcolor, $newline, $left, $top, $pagecheck, $style, $fill, $padding, $reseth
-    )
+    public function createTextBox($width, $height, $border, $bgcolor, $newline, $left, $top, $pagecheck, $style, $fill, $padding, $reseth)
     {
         return new ReportPdfTextbox($width, $height, $border, $bgcolor, $newline, $left, $top, $pagecheck, $style, $fill, $padding, $reseth);
     }

@@ -73,7 +73,6 @@ class Census
             default:
                 $census_places = [];
                 break;
-
         }
 
         foreach ($all_census_places as $census_place) {

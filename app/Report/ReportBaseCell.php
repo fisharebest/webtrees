@@ -130,9 +130,7 @@ class ReportBaseCell extends ReportBaseElement
      * @param string $tcolor  Text color
      * @param        $reseth
      */
-    public function __construct(
-        $width, $height, $border, $align, $bgcolor, $style, $ln, $top, $left, $fill, $stretch, $bocolor, $tcolor, $reseth
-    )
+    public function __construct($width, $height, $border, $align, $bgcolor, $style, $ln, $top, $left, $fill, $stretch, $bocolor, $tcolor, $reseth)
     {
         $this->align     = $align;
         $this->border    = $border;

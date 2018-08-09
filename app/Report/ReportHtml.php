@@ -451,14 +451,16 @@ class ReportHtml extends ReportBase
     public function addPage()
     {
         $this->pageN++;
+
         // Add a little margin to max Y "between pages"
         $this->maxY += 10;
+
         // If Y is still heigher by any reason...
         if ($this->maxY < $this->Y) {
             // ... update max Y
             $this->maxY = $this->Y;
-        } // else update Y so that nothing will be overwritten, like images or cells...
-        else {
+        } else {
+            // else update Y so that nothing will be overwritten, like images or cells...
             $this->Y = $this->maxY;
         }
     }

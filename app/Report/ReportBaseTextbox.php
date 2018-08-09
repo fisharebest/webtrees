@@ -129,9 +129,7 @@ class ReportBaseTextbox extends ReportBaseElement
      * @param bool   $padding
      * @param bool   $reseth
      */
-    public function __construct(
-        $width, $height, $border, $bgcolor, $newline, $left, $top, $pagecheck, $style, $fill, $padding, $reseth
-    )
+    public function __construct($width, $height, $border, $bgcolor, $newline, $left, $top, $pagecheck, $style, $fill, $padding, $reseth)
     {
         $this->border    = $border;
         $this->bgcolor   = $bgcolor;

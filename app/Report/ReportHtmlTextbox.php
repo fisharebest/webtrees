@@ -56,8 +56,7 @@ class ReportHtmlTextbox extends ReportBaseTextbox
                             $lastelement   = $element;
                         }
                     }
-                } // Collect the Footnote links
-                elseif ($element instanceof ReportBaseFootnote) {
+                } elseif ($element instanceof ReportBaseFootnote) {
                     // Check if the Footnote has been set with it’s link number
                     $renderer->checkFootnote($element);
                     // Save first the last element if any
@@ -67,8 +66,8 @@ class ReportHtmlTextbox extends ReportBaseTextbox
                     }
                     // Save the Footnote with it’s link number as key for sorting later
                     $footnote_element[$element->num] = $element;
-                } //-- do not keep empty footnotes
-                elseif (!($element instanceof ReportBaseFootnote) || trim($element->getValue()) != '') {
+                } elseif (!($element instanceof ReportBaseFootnote) || trim($element->getValue()) != '') {
+                    // Do not keep empty footnotes
                     if (!empty($footnote_element)) {
                         ksort($footnote_element);
                         foreach ($footnote_element as $links) {
@@ -193,8 +192,8 @@ class ReportHtmlTextbox extends ReportBaseTextbox
                 if ($cH < $cHT) {
                     $cH = $cHT;
                 }
-            } // This is any other element
-            else {
+            } else {
+                // This is any other element
                 if ($cH < $eH) {
                     $cH = $eH;
                 }

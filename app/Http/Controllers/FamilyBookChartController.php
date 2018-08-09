@@ -22,6 +22,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
+use stdClass;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -34,6 +35,24 @@ class FamilyBookChartController extends AbstractChartController
     const DEFAULT_GENERATIONS            = 2;
     const DEFAULT_DESCENDANT_GENERATIONS = 5;
     const DEFAULT_MAXIMUM_GENERATIONS    = 9;
+
+    /** @var stdClass */
+    private $box;
+
+    /** @var bool */
+    private $show_spouse;
+
+    /** @var int */
+    private $descent;
+
+    /** @var int */
+    private $bhalfheight;
+
+    /** @var int */
+    private $generations;
+
+    /** @var int */
+    private $dgenerations;
 
     /**
      * A form to request the chart parameters.

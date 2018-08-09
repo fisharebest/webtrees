@@ -54,8 +54,8 @@ class ReportPdfCell extends ReportBaseCell
                     $b = hexdec($match[3]);
                     $renderer->SetFillColor($r, $g, $b);
                 }
-            } // If no color set then don't fill
-            else {
+            } else {
+                // If no color set then don't fill
                 $this->fill = 0;
             }
         }
@@ -82,8 +82,8 @@ class ReportPdfCell extends ReportBaseCell
         // If current position (left)
         if ($this->left == '.') {
             $cX = $renderer->GetX();
-        } // For static position add margin (also updates X)
-        else {
+        } else {
+            // For static position add margin (also updates X)
             $cX = $renderer->addMarginX($this->left);
         }
 
@@ -137,8 +137,8 @@ class ReportPdfCell extends ReportBaseCell
         // Reset the last cell height for the next line
         if ($this->newline >= 1) {
             $renderer->lastCellHeight = 0;
-        } // OR save the last height if heigher then before
-        elseif ($renderer->lastCellHeight < $renderer->getLastH()) {
+        } elseif ($renderer->lastCellHeight < $renderer->getLastH()) {
+            // OR save the last height if heigher then before
             $renderer->lastCellHeight = $renderer->getLastH();
         }
 

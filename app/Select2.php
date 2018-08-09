@@ -93,13 +93,15 @@ class Select2 extends Html
         $more    = false;
         $results = [];
 
-        $cursor = Database::prepare("SELECT DISTINCT 'FAM' AS type, f_id AS xref, f_gedcom AS gedcom, husb_name.n_sort, wife_name.n_sort" .
+        $cursor = Database::prepare(
+            "SELECT DISTINCT 'FAM' AS type, f_id AS xref, f_gedcom AS gedcom, husb_name.n_sort, wife_name.n_sort" .
             " FROM `##families`" .
             " JOIN `##name` AS husb_name ON f_husb = husb_name.n_id AND f_file = husb_name.n_file" .
             " JOIN `##name` AS wife_name ON f_wife = wife_name.n_id AND f_file = wife_name.n_file" .
             " WHERE (CONCAT(husb_name.n_full, ' ', wife_name.n_full) LIKE CONCAT('%', REPLACE(:query, ' ', '%'), '%') OR f_id = :xref) AND f_file = :tree_id" .
             " AND husb_name.n_type <> '_MARNM' AND wife_name.n_type <> '_MARNM'" .
-            " ORDER BY husb_name.n_sort, wife_name.n_sort COLLATE :collation")->execute([
+            " ORDER BY husb_name.n_sort, wife_name.n_sort COLLATE :collation"
+        )->execute([
             'query'     => $query,
             'xref'      => $query,
             'tree_id'   => $tree->getTreeId(),
@@ -663,7 +665,8 @@ class Select2 extends Html
             "SELECT o_id AS xref, o_gedcom AS gedcom" .
             " FROM `##other`" .
             " WHERE (o_id LIKE CONCAT('%', REPLACE(:query, ' ', '%'), '%') OR o_id = :xref) AND o_file = :tree_id AND o_type = 'SUBM'" .
-            " ORDER BY o_id COLLATE :collation")->execute([
+            " ORDER BY o_id COLLATE :collation"
+        )->execute([
             'query'     => $query,
             'xref'      => $query,
             'tree_id'   => $tree->getTreeId(),
