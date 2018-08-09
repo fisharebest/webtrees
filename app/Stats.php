@@ -7022,8 +7022,11 @@ class Stats
      */
     public function totalGedcomFavorites()
     {
-        if (Module::getModuleByName('gedcom_favorites')) {
-            return count(FamilyTreeFavoritesModule::getFavorites($this->tree, Auth::user()));
+        /** @var FamilyTreeFavoritesModule|null $module */
+        $module = Module::getModuleByName('gedcom_favorites');
+
+        if ($module !== null) {
+            return count($module->getFavorites($this->tree));
         } else {
             return 0;
         }
@@ -7036,8 +7039,11 @@ class Stats
      */
     public function totalUserFavorites()
     {
-        if (Module::getModuleByName('user_favorites')) {
-            return count(UserFavoritesModule::getFavorites($this->tree, Auth::user()));
+        /** @var UserFavoritesModule|null $module */
+        $module = Module::getModuleByName('user_favorites');
+
+        if ($module !== null) {
+            return count($module->getFavorites($this->tree, Auth::user()));
         } else {
             return 0;
         }
