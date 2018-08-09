@@ -15,8 +15,8 @@
  */
 namespace Fisharebest\Webtrees\Date;
 
-use FishareBest\ExtCalendar\CalendarInterface;
-use FishareBest\ExtCalendar\JewishCalendar;
+use Fisharebest\ExtCalendar\CalendarInterface;
+use Fisharebest\ExtCalendar\JewishCalendar;
 use Fisharebest\Webtrees\DebugBar;
 use Fisharebest\Webtrees\I18N;
 

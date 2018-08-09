@@ -17,7 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-use stdclass;
+use stdClass;
 
 /**
  * Provide an interface to the wt_user table.
@@ -45,7 +45,7 @@ class User
     /**
      * Create a new user object from a row in the database.
      *
-     * @param stdclass $user A row from the wt_user table
+     * @param stdClass $user A row from the wt_user table
      */
     public function __construct(stdClass $user)
     {

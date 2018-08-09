@@ -449,7 +449,7 @@ class ListController extends AbstractBaseController
         /** @var Tree $tree */
         $tree = $request->attributes->get('tree');
 
-        $repositories = $this->allrepositories($tree);
+        $repositories = $this->allRepositories($tree);
 
         return $this->viewResponse('repository-list-page', [
             'repositories' => $repositories,

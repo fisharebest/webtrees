@@ -341,7 +341,7 @@ class MediaFile
      */
     public function fileSizeKB()
     {
-        $size = $this->filesizeBytes();
+        $size = $this->fileSizeBytes();
         $size = (int)(($size + 1023) / 1024);
 
         return /* I18N: size of file in KB */
