@@ -557,7 +557,7 @@ class FunctionsDb
      *
      * @return Fact[]
      */
-    public static function getEventsList($jd1, $jd2, $events, $only_living = false, $sort_by = 'anniv', Tree $tree)
+    public static function getEventsList(int $jd1, int $jd2, string $events, bool $only_living, string $sort_by, Tree $tree)
     {
         $found_facts = [];
         $facts       = [];
