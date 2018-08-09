@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Site;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class Functions - common functions
@@ -61,7 +62,7 @@ class Functions
                     ],
                 ]);
 
-                if ($response->getStatusCode() == 200) {
+                if ($response->getStatusCode() == Response::HTTP_OK) {
                     Site::setPreference('LATEST_WT_VERSION', $response->getBody()->getContents());
                     Site::setPreference('LATEST_WT_VERSION_TIMESTAMP', WT_TIMESTAMP);
                 }
