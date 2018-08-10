@@ -72,11 +72,11 @@ class Bootstrap4 extends Html
     /**
      * Create a set of radio buttons for a form
      *
-     * @param string   $name     The ID for the form element
-     * @param string[] $values   Array of value=>display items
-     * @param string   $selected The currently selected item
-     * @param bool     $inline
-     * @param string[] $attributes
+     * @param string      $name     The ID for the form element
+     * @param string[]    $values   Array of value=>display items
+     * @param string|null $selected The currently selected item
+     * @param bool        $inline
+     * @param string[]    $attributes
      *
      * @return string
      */

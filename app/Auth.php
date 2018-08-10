@@ -146,7 +146,7 @@ class Auth
     /**
      * The ID of the authenticated user, from the current session.
      *
-     * @return string|null
+     * @return int|null
      */
     public static function id()
     {

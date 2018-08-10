@@ -83,7 +83,6 @@ class Datatables
     {
         return Html::attributes([
                 'class'           => 'table table-bordered table-sm datatables table-event',
-                //'data-columns'   => '[{ type: "text" }, { type: "num" }, { type: "num" }, { type: "text" }]',
                 'data-columns'    => '[null, null, null, null]',
                 'data-info'       => 'false',
                 'data-paging'     => 'false',
@@ -101,7 +100,6 @@ class Datatables
     {
         return Html::attributes([
             'class'           => 'table table-bordered table-sm datatables table-given-name',
-            //'data-columns'   => '[{ type: "text" }, { type: "num" }]',
             'data-columns'    => '[null, null]',
             'data-info'       => 'false',
             'data-paging'     => 'false',

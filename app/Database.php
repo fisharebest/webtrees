@@ -74,7 +74,7 @@ class Database
      */
     public static function createInstance(array $config)
     {
-        if (self::$pdo instanceof PDO) {
+        if (self::$pdo !== null) {
             throw new Exception('Database::createInstance() can only be called once.');
         }
 
@@ -112,7 +112,7 @@ class Database
      */
     public static function getInstance()
     {
-        if (self::$pdo instanceof PDO) {
+        if (self::$pdo !== null) {
             return self::$instance;
         } else {
             throw new Exception('createInstance() must be called before getInstance().');
@@ -126,7 +126,7 @@ class Database
      */
     public static function isConnected()
     {
-        return self::$pdo instanceof PDO;
+        return self::$pdo !== null;
     }
 
     /**
@@ -144,7 +144,7 @@ class Database
      *
      * The native quote() function does not convert PHP nulls to DB nulls
      *
-     * @param  string $string
+     * @param  string|null $string
      *
      * @return string
      *
@@ -184,7 +184,7 @@ class Database
      */
     public static function prepare($sql)
     {
-        if (!self::$pdo instanceof PDO) {
+        if (self::$pdo === null) {
             throw new Exception('No Connection Established');
         }
         $sql = str_replace('##', self::$table_prefix, $sql);
