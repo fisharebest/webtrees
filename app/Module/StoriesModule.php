@@ -168,15 +168,12 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
     }
 
     /**
-     * @param Request $request
+     * @param Tree $tree
      *
      * @return Response
      */
-    public function getAdminAction(Request $request): Response
+    public function getAdminAction(Tree $tree): Response
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         $this->layout = 'layouts/administration';
 
         $stories = Database::prepare(
@@ -206,14 +203,12 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 
     /**
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return Response
      */
-    public function getAdminEditAction(Request $request): Response
+    public function getAdminEditAction(Request $request, Tree $tree): Response
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         $this->layout = 'layouts/administration';
 
         $block_id = (int)$request->get('block_id');
@@ -255,14 +250,12 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 
     /**
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return RedirectResponse
      */
-    public function postAdminEditAction(Request $request): RedirectResponse
+    public function postAdminEditAction(Request $request, Tree $tree): RedirectResponse
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         $block_id    = (int)$request->get('block_id');
         $xref        = $request->get('xref', '');
         $story_body  = $request->get('story_body', '');
@@ -303,14 +296,12 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 
     /**
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return Response
      */
-    public function postAdminDeleteAction(Request $request): Response
+    public function postAdminDeleteAction(Request $request, Tree $tree): Response
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         $block_id = (int)$request->get('block_id');
 
         Database::prepare(
@@ -335,16 +326,12 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
     }
 
     /**
-     * @param Request $request
+     * @param Tree $tree
      *
      * @return Response
      */
-    public function getShowListAction(Request $request): Response
+    public function getShowListAction(Tree $tree): Response
     {
-        /** @var Tree $tree
-         */
-        $tree = $request->attributes->get('tree');
-
         $stories = Database::prepare(
             "SELECT block_id, xref" .
             " FROM `##block` b" .

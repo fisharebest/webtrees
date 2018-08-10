@@ -113,14 +113,12 @@ class AdminUsersController extends AbstractBaseController
 
     /**
      * @param Request $request
+     * @param User    $user
      *
      * @return Response
      */
-    public function index(Request $request): Response
+    public function index(Request $request, User $user): Response
     {
-        /** @var User $user */
-        $user = $request->attributes->get('user');
-
         $filter = $request->get('filter', '');
 
         $all_users = User::all();
@@ -140,13 +138,12 @@ class AdminUsersController extends AbstractBaseController
     /**
      * @param Request $request
      *
+     * @param User    $user
+     *
      * @return JsonResponse
      */
-    public function data(Request $request): JsonResponse
+    public function data(Request $request, User $user): JsonResponse
     {
-        /** @var User $user */
-        $user = $request->attributes->get('user');
-
         $search = $request->get('search')['value'];
         $start  = (int)$request->get('start');
         $length = (int)$request->get('length');
@@ -369,14 +366,12 @@ class AdminUsersController extends AbstractBaseController
 
     /**
      * @param Request $request
+     * @param User    $user
      *
      * @return RedirectResponse
      */
-    public function update(Request $request): RedirectResponse
+    public function update(Request $request, User $user): RedirectResponse
     {
-        /** @var User $user */
-        $user = $request->attributes->get('user');
-
         $user_id        = (int)$request->get('user_id');
         $username       = $request->get('username');
         $real_name      = $request->get('real_name');

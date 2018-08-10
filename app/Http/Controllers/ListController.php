@@ -54,17 +54,13 @@ class ListController extends AbstractBaseController
      * Show a list of all individual or family records.
      *
      * @param Request $request
+     * @param Tree    $tree
+     * @param User    $user
      *
      * @return Response
      */
-    public function individualList(Request $request): Response
+    public function individualList(Request $request, Tree $tree, User $user): Response
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
-        /** @var User $user */
-        $user = $request->attributes->get('user');
-
         // This action can show lists of both families and individuals.
         $route    = $request->get('route');
         $families = $route === 'family-list';
@@ -361,14 +357,12 @@ class ListController extends AbstractBaseController
      * Show a list of all media records.
      *
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return Response
      */
-    public function mediaList(Request $request): Response
+    public function mediaList(Request $request, Tree $tree): Response
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         $formats = GedcomTag::getFileFormTypes();
 
         $action    = $request->get('action');
@@ -420,15 +414,12 @@ class ListController extends AbstractBaseController
     /**
      * Show a list of all note records.
      *
-     * @param Request $request
+     * @param Tree $tree
      *
      * @return Response
      */
-    public function noteList(Request $request): Response
+    public function noteList(Tree $tree): Response
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         $notes = $this->allNotes($tree);
 
         return $this->viewResponse('note-list-page', [
@@ -440,15 +431,12 @@ class ListController extends AbstractBaseController
     /**
      * Show a list of all repository records.
      *
-     * @param Request $request
+     * @param Tree $tree
      *
      * @return Response
      */
-    public function repositoryList(Request $request): Response
+    public function repositoryList(Tree $tree): Response
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         $repositories = $this->allRepositories($tree);
 
         return $this->viewResponse('repository-list-page', [
@@ -460,15 +448,12 @@ class ListController extends AbstractBaseController
     /**
      * Show a list of all source records.
      *
-     * @param Request $request
+     * @param Tree $tree
      *
      * @return Response
      */
-    public function sourceList(Request $request): Response
+    public function sourceList(Tree $tree): Response
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         $sources = $this->allSources($tree);
 
         return $this->viewResponse('source-list-page', [

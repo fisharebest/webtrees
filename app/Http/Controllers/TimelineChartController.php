@@ -52,14 +52,12 @@ class TimelineChartController extends AbstractChartController
      * A form to request the chart parameters.
      *
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return Response
      */
-    public function page(Request $request): Response
+    public function page(Request $request, Tree $tree): Response
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         $this->checkModuleIsActive($tree, 'timeline_chart');
 
         $scale = (int)$request->get('scale', self::SCALE_DEFAULT);
@@ -126,14 +124,12 @@ class TimelineChartController extends AbstractChartController
 
     /**
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return Response
      */
-    public function chart(Request $request): Response
+    public function chart(Request $request, Tree $tree): Response
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         $this->checkModuleIsActive($tree, 'timeline_chart');
 
         $scale = (int)$request->get('scale', self::SCALE_DEFAULT);

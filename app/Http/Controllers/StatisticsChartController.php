@@ -73,15 +73,12 @@ class StatisticsChartController extends AbstractChartController
     /**
      * A form to request the chart parameters.
      *
-     * @param Request $request
+     * @param Tree $tree
      *
      * @return Response
      */
-    public function page(Request $request): Response
+    public function page(Tree $tree): Response
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         $this->checkModuleIsActive($tree, 'statistics_chart');
 
         $title = I18N::translate('Statistics');
@@ -92,15 +89,12 @@ class StatisticsChartController extends AbstractChartController
     }
 
     /**
-     * @param Request $request
+     * @param Tree $tree
      *
      * @return Response
      */
-    public function chartIndividuals(Request $request): Response
+    public function chartIndividuals(Tree $tree): Response
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         $this->checkModuleIsActive($tree, 'statistics_chart');
 
         $html = view('statistics-chart-individuals', [
@@ -112,15 +106,12 @@ class StatisticsChartController extends AbstractChartController
     }
 
     /**
-     * @param Request $request
+     * @param Tree $tree
      *
      * @return Response
      */
-    public function chartFamilies(Request $request): Response
+    public function chartFamilies(Tree $tree): Response
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         $this->checkModuleIsActive($tree, 'statistics_chart');
 
         $html = view('statistics-chart-families', [
@@ -131,15 +122,12 @@ class StatisticsChartController extends AbstractChartController
     }
 
     /**
-     * @param Request $request
+     * @param Tree $tree
      *
      * @return Response
      */
-    public function chartOther(Request $request): Response
+    public function chartOther(Tree $tree): Response
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         $this->checkModuleIsActive($tree, 'statistics_chart');
 
         $html = view('statistics-chart-other', [
@@ -150,15 +138,12 @@ class StatisticsChartController extends AbstractChartController
     }
 
     /**
-     * @param Request $request
+     * @param Tree $tree
      *
      * @return Response
      */
-    public function chartCustomOptions(Request $request): Response
+    public function chartCustomOptions(Tree $tree): Response
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         $this->checkModuleIsActive($tree, 'statistics_chart');
 
         $html = view('statistics-chart-custom');
@@ -168,13 +153,12 @@ class StatisticsChartController extends AbstractChartController
 
     /**
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return Response
      */
-    public function chartCustomChart(Request $request): Response
+    public function chartCustomChart(Request $request, Tree $tree): Response
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
 
         $this->checkModuleIsActive($tree, 'statistics_chart');
 

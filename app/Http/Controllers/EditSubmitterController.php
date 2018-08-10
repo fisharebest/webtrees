@@ -44,13 +44,12 @@ class EditSubmitterController extends AbstractEditController
      * Process a form to create a new submitter.
      *
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return JsonResponse
      */
-    public function createSubmitterAction(Request $request): JsonResponse
+    public function createSubmitterAction(Request $request, Tree $tree): JsonResponse
     {
-        /** @var Tree $tree */
-        $tree                = $request->attributes->get('tree');
         $name                = $request->get('submitter_name', '');
         $address             = $request->get('submitter_address', '');
         $privacy_restriction = $request->get('privacy-restriction', '');

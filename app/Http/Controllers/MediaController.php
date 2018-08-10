@@ -32,13 +32,12 @@ class MediaController extends AbstractBaseController
      * Show a repository's page.
      *
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return Response
      */
-    public function show(Request $request): Response
+    public function show(Request $request, Tree $tree): Response
     {
-        /** @var Tree $tree */
-        $tree  = $request->attributes->get('tree');
         $xref  = $request->get('xref');
         $media = Media::getInstance($xref, $tree);
 

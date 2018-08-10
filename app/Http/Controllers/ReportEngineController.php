@@ -45,15 +45,12 @@ class ReportEngineController extends AbstractBaseController
     /**
      * A list of available reports.
      *
-     * @param Request $request
+     * @param Tree $tree
      *
      * @return Response
      */
-    public function reportList(Request $request): Response
+    public function reportList(Tree $tree): Response
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         $reports = $this->allReports($tree);
         $title   = I18N::translate('Choose a report to run');
 
@@ -68,20 +65,18 @@ class ReportEngineController extends AbstractBaseController
      * Fetch the options/parameters for a report.
      *
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return Response
      */
-    public function reportSetup(Request $request): Response
+    public function reportSetup(Request $request, Tree $tree): Response
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         $pid     = $request->get('pid');
         $report  = $request->get('report');
         $reports = $this->allReports($tree);
 
         if (!array_key_exists($report, $reports)) {
-            return $this->reportList($request);
+            return $this->reportList($tree);
         }
 
         $report_xml = WT_ROOT . WT_MODULES_DIR . $report . '/report.xml';
@@ -181,14 +176,12 @@ class ReportEngineController extends AbstractBaseController
      * Generate a report.
      *
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return Response
      */
-    public function reportRun(Request $request): Response
+    public function reportRun(Request $request, Tree $tree): Response
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         $report   = $request->get('report');
         $output   = $request->get('output');
         $vars     = $request->get('vars');

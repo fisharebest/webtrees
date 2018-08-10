@@ -44,13 +44,12 @@ class EditSourceController extends AbstractEditController
      * Process a form to create a new source.
      *
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return JsonResponse
      */
-    public function createSourceAction(Request $request): JsonResponse
+    public function createSourceAction(Request $request, Tree $tree): JsonResponse
     {
-        /** @var Tree $tree */
-        $tree                = $request->attributes->get('tree');
         $title               = $request->get('source-title', '');
         $abbreviation        = $request->get('source-abbreviation', '');
         $author              = $request->get('source-author', '');

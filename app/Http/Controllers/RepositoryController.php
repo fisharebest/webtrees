@@ -32,13 +32,12 @@ class RepositoryController extends AbstractBaseController
      * Show a repository's page.
      *
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return Response
      */
-    public function show(Request $request): Response
+    public function show(Request $request, Tree $tree): Response
     {
-        /** @var Tree $tree */
-        $tree   = $request->attributes->get('tree');
         $xref   = $request->get('xref');
         $record = Repository::getInstance($xref, $tree);
 

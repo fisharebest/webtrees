@@ -46,14 +46,12 @@ class EditNoteController extends AbstractEditController
      * Show a form to create a new note object.
      *
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return Response
      */
-    public function editNoteObject(Request $request): Response
+    public function editNoteObject(Request $request, Tree $tree): Response
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         $xref = $request->get('xref');
 
         $note = Note::getInstance($xref, $tree);
@@ -71,14 +69,12 @@ class EditNoteController extends AbstractEditController
      * Show a form to create a new note object.
      *
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return RedirectResponse
      */
-    public function updateNoteObject(Request $request): RedirectResponse
+    public function updateNoteObject(Request $request, Tree $tree): RedirectResponse
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         $xref = $request->get('xref');
 
         $note = Note::getInstance($xref, $tree);
@@ -111,13 +107,12 @@ class EditNoteController extends AbstractEditController
      * Process a form to create a new note object.
      *
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return JsonResponse
      */
-    public function createNoteObjectAction(Request $request): JsonResponse
+    public function createNoteObjectAction(Request $request, Tree $tree): JsonResponse
     {
-        /** @var Tree $tree */
-        $tree                = $request->attributes->get('tree');
         $note                = $request->get('note', '');
         $privacy_restriction = $request->get('privacy-restriction', '');
         $edit_restriction    = $request->get('edit-restriction', '');

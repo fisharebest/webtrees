@@ -155,14 +155,12 @@ class CalendarController extends AbstractBaseController
      * Show anniveraries that occured on a given day/month/year.
      *
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return Response
      */
-    public function calendar(Request $request): Response
+    public function calendar(Request $request, Tree $tree): Response
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         $CALENDAR_FORMAT = $tree->getPreference('CALENDAR_FORMAT');
 
         $cal      = $request->get('cal', '');

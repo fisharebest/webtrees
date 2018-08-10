@@ -79,13 +79,12 @@ class IndividualController extends AbstractBaseController
      * Show a individual's page.
      *
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return Response
      */
-    public function show(Request $request): Response
+    public function show(Request $request, Tree $tree): Response
     {
-        /** @var Tree $tree */
-        $tree       = $request->attributes->get('tree');
         $xref       = $request->get('xref');
         $individual = Individual::getInstance($xref, $tree);
 
@@ -153,13 +152,12 @@ class IndividualController extends AbstractBaseController
 
     /**
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return Response
      */
-    public function tab(Request $request): Response
+    public function tab(Request $request, Tree $tree): Response
     {
-        /** @var Tree $tree */
-        $tree   = $request->attributes->get('tree');
         $xref   = $request->get('xref');
         $record = Individual::getInstance($xref, $tree);
         $tab    = $request->get('module');
@@ -184,13 +182,12 @@ class IndividualController extends AbstractBaseController
      * Show additional details for a chart box.
      *
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return Response
      */
-    public function expandChartBox(Request $request): Response
+    public function expandChartBox(Request $request, Tree $tree): Response
     {
-        /** @var Tree $tree */
-        $tree       = $request->attributes->get('tree');
         $xref       = $request->get('xref');
         $individual = Individual::getInstance($xref, $tree);
 

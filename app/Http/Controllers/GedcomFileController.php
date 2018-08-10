@@ -36,15 +36,12 @@ class GedcomFileController extends AbstractBaseController
     /**
      * Import the next chunk of a GEDCOM file.
      *
-     * @param Request $request
+     * @param Tree $tree
      *
      * @return Response
      */
-    public function import(Request $request): Response
+    public function import(Tree $tree): Response
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         // Only allow one process to import each gedcom at a time
         Database::prepare(
             "SELECT imported FROM `##gedcom_chunk` WHERE gedcom_id = :tree_id FOR UPDATE"

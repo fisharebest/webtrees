@@ -481,14 +481,12 @@ class AdminLocationController extends AbstractBaseController
     }
 
     /**
-     * @param Request $request
+     * @param Tree $tree
      *
      * @return RedirectResponse
      */
-    public function importLocationsFromTree(Request $request): RedirectResponse {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
+    public function importLocationsFromTree(Tree $tree): RedirectResponse
+    {
         // Get all the places from the places table ...
         $places = Database::prepare(
             "SELECT

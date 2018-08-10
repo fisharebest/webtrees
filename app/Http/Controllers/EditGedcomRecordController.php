@@ -44,14 +44,12 @@ class EditGedcomRecordController extends AbstractEditController
      * Copy a fact to the clipboard.
      *
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return Response
      */
-    public function copyFact(Request $request): Response
+    public function copyFact(Request $request, Tree $tree): Response
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         $xref    = $request->get('xref', '');
         $fact_id = $request->get('fact_id');
 
@@ -97,14 +95,12 @@ class EditGedcomRecordController extends AbstractEditController
      * Delete a fact.
      *
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return Response
      */
-    public function deleteFact(Request $request): Response
+    public function deleteFact(Request $request, Tree $tree): Response
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         $xref    = $request->get('xref', '');
         $fact_id = $request->get('fact_id');
 
@@ -126,14 +122,12 @@ class EditGedcomRecordController extends AbstractEditController
      * Delete a record.
      *
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return Response
      */
-    public function deleteRecord(Request $request): Response
+    public function deleteRecord(Request $request, Tree $tree): Response
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         $xref = $request->get('xref', '');
 
         $record = GedcomRecord::getInstance($xref, $tree);
@@ -184,14 +178,12 @@ class EditGedcomRecordController extends AbstractEditController
      * Paste a fact from the clipboard into a record.
      *
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return Response
      */
-    public function pasteFact(Request $request): Response
+    public function pasteFact(Request $request, Tree $tree): Response
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         $xref    = $request->get('xref', '');
         $fact_id = $request->get('fact_id');
 
@@ -210,13 +202,12 @@ class EditGedcomRecordController extends AbstractEditController
 
     /**
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return Response
      */
-    public function editRawFact(Request $request): Response
+    public function editRawFact(Request $request, Tree $tree): Response
     {
-        /** @var Tree $tree */
-        $tree    = $request->attributes->get('tree');
         $xref    = $request->get('xref');
         $fact_id = $request->get('fact_id');
         $record  = GedcomRecord::getInstance($xref, $tree);
@@ -240,13 +231,12 @@ class EditGedcomRecordController extends AbstractEditController
 
     /**
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return Response
      */
-    public function editRawFactAction(Request $request): Response
+    public function editRawFactAction(Request $request, Tree $tree): Response
     {
-        /** @var Tree $tree */
-        $tree    = $request->attributes->get('tree');
         $xref    = $request->get('xref');
         $fact_id = $request->get('fact_id');
         $gedcom  = $request->get('gedcom');
@@ -271,13 +261,12 @@ class EditGedcomRecordController extends AbstractEditController
 
     /**
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return Response
      */
-    public function editRawRecord(Request $request): Response
+    public function editRawRecord(Request $request, Tree $tree): Response
     {
-        /** @var Tree $tree */
-        $tree   = $request->attributes->get('tree');
         $xref   = $request->get('xref');
         $record = GedcomRecord::getInstance($xref, $tree);
 
@@ -294,13 +283,12 @@ class EditGedcomRecordController extends AbstractEditController
 
     /**
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return Response
      */
-    public function editRawRecordAction(Request $request): Response
+    public function editRawRecordAction(Request $request, Tree $tree): Response
     {
-        /** @var Tree $tree */
-        $tree     = $request->attributes->get('tree');
         $xref     = $request->get('xref');
         $facts    = (array)$request->get('fact');
         $fact_ids = (array)$request->get('fact_id');
@@ -332,14 +320,12 @@ class EditGedcomRecordController extends AbstractEditController
 
     /**
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return Response
      */
-    public function addFact(Request $request): Response
+    public function addFact(Request $request, Tree $tree): Response
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         $xref = $request->get('xref', '');
         $fact = $request->get('fact', '');
 
@@ -358,14 +344,12 @@ class EditGedcomRecordController extends AbstractEditController
 
     /**
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return Response
      */
-    public function editFact(Request $request): Response
+    public function editFact(Request $request, Tree $tree): Response
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         $xref    = $request->get('xref', '');
         $fact_id = $request->get('fact_id', '');
 
@@ -399,14 +383,12 @@ class EditGedcomRecordController extends AbstractEditController
 
     /**
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return RedirectResponse
      */
-    public function updateFact(Request $request): RedirectResponse
+    public function updateFact(Request $request, Tree $tree): RedirectResponse
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         $xref    = $request->get('xref', '');
         $fact_id = $request->get('fact_id', '');
 

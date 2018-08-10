@@ -34,13 +34,12 @@ class EditFamilyController extends AbstractEditController
 {
     /**
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return Response
      */
-    public function reorderChildren(Request $request): Response
+    public function reorderChildren(Request $request, Tree $tree): Response
     {
-        /** @var Tree $tree */
-        $tree   = $request->attributes->get('tree');
         $xref   = $request->get('xref');
         $family = Family::getInstance($xref, $tree);
 
@@ -56,13 +55,12 @@ class EditFamilyController extends AbstractEditController
 
     /**
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return Response
      */
-    public function reorderChildrenAction(Request $request): Response
+    public function reorderChildrenAction(Request $request, Tree $tree): Response
     {
-        /** @var Tree $tree */
-        $tree   = $request->attributes->get('tree');
         $xref   = $request->get('xref');
         $order  = (array)$request->get('order', []);
         $family = Family::getInstance($xref, $tree);
@@ -98,13 +96,12 @@ class EditFamilyController extends AbstractEditController
     /**
      * @param Request $request
      *
+     * @param Tree    $tree
+     *
      * @return Response
      */
-    public function addChild(Request $request): Response
+    public function addChild(Request $request, Tree $tree): Response
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         $xref   = $request->get('xref', '');
         $gender = $request->get('gender', 'U');
 
@@ -128,14 +125,12 @@ class EditFamilyController extends AbstractEditController
 
     /**
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return RedirectResponse
      */
-    public function addChildAction(Request $request): RedirectResponse
+    public function addChildAction(Request $request, Tree $tree): RedirectResponse
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         $xref = $request->get('xref', '');
 
         $family = Family::getInstance($xref, $tree);
@@ -194,14 +189,12 @@ class EditFamilyController extends AbstractEditController
 
     /**
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return Response
      */
-    public function addSpouse(Request $request): Response
+    public function addSpouse(Request $request, Tree $tree): Response
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         $xref   = $request->get('xref', '');
         $famtag = $request->get('famtag', '');
 
@@ -231,14 +224,12 @@ class EditFamilyController extends AbstractEditController
 
     /**
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return RedirectResponse
      */
-    public function addSpouseAction(Request $request): RedirectResponse
+    public function addSpouseAction(Request $request, Tree $tree): RedirectResponse
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         $xref = $request->get('xref', '');
 
         $family = Family::getInstance($xref, $tree);
@@ -298,14 +289,12 @@ class EditFamilyController extends AbstractEditController
 
     /**
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return Response
      */
-    public function changeFamilyMembers(Request $request): Response
+    public function changeFamilyMembers(Request $request, Tree $tree): Response
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         $xref   = $request->get('xref', '');
         $family = Family::getInstance($xref, $tree);
         $this->checkFamilyAccess($family, true);
@@ -324,14 +313,12 @@ class EditFamilyController extends AbstractEditController
 
     /**
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return RedirectResponse
      */
-    public function changeFamilyMembersAction(Request $request): RedirectResponse
+    public function changeFamilyMembersAction(Request $request, Tree $tree): RedirectResponse
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         $xref   = $request->get('xref', '');
         $family = Family::getInstance($xref, $tree);
         $this->checkFamilyAccess($family, true);

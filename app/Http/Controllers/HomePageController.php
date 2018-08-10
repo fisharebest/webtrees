@@ -40,16 +40,12 @@ class HomePageController extends AbstractBaseController
      * Show a form to edit block config options.
      *
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return Response
-     * @throws NotFoundHttpException
-     * @throws AccessDeniedHttpException
      */
-    public function treePageBlockEdit(Request $request): Response
+    public function treePageBlockEdit(Request $request, Tree $tree): Response
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         $block_id = (int)$request->get('block_id');
         $block    = $this->treeBlock($request);
         $title    = $block->getTitle() . ' — ' . I18N::translate('Preferences');
@@ -67,14 +63,12 @@ class HomePageController extends AbstractBaseController
      * Update block config options.
      *
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return RedirectResponse
      */
-    public function treePageBlockUpdate(Request $request): RedirectResponse
+    public function treePageBlockUpdate(Request $request, Tree $tree): RedirectResponse
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         $block_id = (int)$request->get('block_id');
         $block    = $this->treeBlock($request);
 
@@ -87,15 +81,12 @@ class HomePageController extends AbstractBaseController
      * Load a block and check we have permission to edit it.
      *
      * @param Request $request
+     * @param User    $user
      *
      * @return ModuleBlockInterface
-     * @throws NotFoundHttpException
-     * @throws AccessDeniedHttpException
      */
-    private function treeBlock(Request $request): ModuleBlockInterface
+    private function treeBlock(Request $request, User $user): ModuleBlockInterface
     {
-        /** @var User $user */
-        $user     = $request->attributes->get('user');
         $block_id = (int)$request->get('block_id');
 
         $block_info = Database::prepare(
@@ -125,16 +116,12 @@ class HomePageController extends AbstractBaseController
      * Show a form to edit block config options.
      *
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return Response
-     * @throws NotFoundHttpException
-     * @throws AccessDeniedHttpException
      */
-    public function userPageBlockEdit(Request $request): Response
+    public function userPageBlockEdit(Request $request, Tree $tree): Response
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         $block_id = (int)$request->get('block_id');
         $block    = $this->userBlock($request);
         $title    = $block->getTitle() . ' — ' . I18N::translate('Preferences');
@@ -152,14 +139,12 @@ class HomePageController extends AbstractBaseController
      * Update block config options.
      *
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return RedirectResponse
      */
-    public function userPageBlockUpdate(Request $request): RedirectResponse
+    public function userPageBlockUpdate(Request $request, Tree $tree): RedirectResponse
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         $block_id = (int)$request->get('block_id');
         $block    = $this->userBlock($request);
 
@@ -172,16 +157,12 @@ class HomePageController extends AbstractBaseController
      * Load a block and check we have permission to edit it.
      *
      * @param Request $request
+     * @param User    $user
      *
      * @return ModuleBlockInterface
-     * @throws NotFoundHttpException
-     * @throws AccessDeniedHttpException
      */
-    private function userBlock(Request $request): ModuleBlockInterface
+    private function userBlock(Request $request, User $user): ModuleBlockInterface
     {
-        /** @var User $user */
-        $user = $request->attributes->get('user');
-
         $block_id = (int)$request->get('block_id');
 
         $block_info = Database::prepare(
@@ -212,15 +193,12 @@ class HomePageController extends AbstractBaseController
     /**
      * Show a tree's page.
      *
-     * @param Request $request
+     * @param Tree $tree
      *
      * @return Response
      */
-    public function treePage(Request $request): Response
+    public function treePage(Tree $tree): Response
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         $tree_id      = $tree->getTreeId();
         $access_level = Auth::accessLevel($tree);
         $main_blocks  = $this->getBlocksForTreePage($tree_id, $access_level, 'main');
@@ -243,13 +221,12 @@ class HomePageController extends AbstractBaseController
      * Load block asynchronously.
      *
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return Response
      */
-    public function treePageBlock(Request $request): Response
+    public function treePageBlock(Request $request, Tree $tree): Response
     {
-        /** @var Tree $tree */
-        $tree     = $request->attributes->get('tree');
         $block_id = (int)$request->get('block_id');
 
         $block = Database::prepare(
@@ -327,15 +304,12 @@ class HomePageController extends AbstractBaseController
     /**
      * Show a form to edit the blocks on a tree's page.
      *
-     * @param Request $request
+     * @param Tree $tree
      *
      * @return Response
      */
-    public function treePageEdit(Request $request): Response
+    public function treePageEdit(Tree $tree): Response
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         $main_blocks = $this->getBlocksForTreePage($tree->getTreeId(), Auth::accessLevel($tree), 'main');
         $side_blocks = $this->getBlocksForTreePage($tree->getTreeId(), Auth::accessLevel($tree), 'side');
         $all_blocks  = $this->getAvailableTreeBlocks();
@@ -358,14 +332,12 @@ class HomePageController extends AbstractBaseController
      * Save updated blocks on a tree's page.
      *
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return RedirectResponse
      */
-    public function treePageUpdate(Request $request): RedirectResponse
+    public function treePageUpdate(Request $request, Tree $tree): RedirectResponse
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         $defaults = (bool)$request->get('defaults');
 
         if ($defaults) {
@@ -384,18 +356,13 @@ class HomePageController extends AbstractBaseController
     /**
      * Show a users's page.
      *
-     * @param Request $request
+     * @param Tree $tree
+     * @param User $user
      *
      * @return Response
      */
-    public function userPage(Request $request)
+    public function userPage(Tree $tree, User $user)
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
-        /** @var User $user */
-        $user = $request->attributes->get('user');
-
         $tree_id      = $tree->getTreeId();
         $user_id      = $user->getUserId();
         $access_level = Auth::accessLevel($tree, $user);
@@ -418,17 +385,13 @@ class HomePageController extends AbstractBaseController
      * Load block asynchronously.
      *
      * @param Request $request
+     * @param Tree    $tree
+     * @param User    $user
      *
      * @return Response
      */
-    public function userPageBlock(Request $request): Response
+    public function userPageBlock(Request $request, Tree $tree, User $user): Response
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
-        /** @var User $user */
-        $user = $request->attributes->get('user');
-
         $block_id = (int)$request->get('block_id');
 
         $block = Database::prepare(
@@ -505,18 +468,13 @@ class HomePageController extends AbstractBaseController
     /**
      * Show a form to edit the blocks on the user's page.
      *
-     * @param Request $request
+     * @param Tree $tree
+     * @param User $user
      *
      * @return Response
      */
-    public function userPageEdit(Request $request): Response
+    public function userPageEdit(Tree $tree, User $user): Response
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
-        /** @var User $user */
-        $user = $request->attributes->get('user');
-
         $main_blocks = $this->getBlocksForUserPage($tree->getTreeId(), $user->getUserId(), Auth::accessLevel($tree, $user), 'main');
         $side_blocks = $this->getBlocksForUserPage($tree->getTreeId(), $user->getUserId(), Auth::accessLevel($tree, $user), 'side');
         $all_blocks  = $this->getAvailableUserBlocks();
@@ -539,17 +497,13 @@ class HomePageController extends AbstractBaseController
      * Save the updted blocks on a user's page.
      *
      * @param Request $request
+     * @param Tree    $tree
+     * @param User    $user
      *
      * @return RedirectResponse
      */
-    public function userPageUpdate(Request $request): RedirectResponse
+    public function userPageUpdate(Request $request, Tree $tree, User $user): RedirectResponse
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
-        /** @var User $user */
-        $user = $request->attributes->get('user');
-
         $defaults = (bool)$request->get('defaults');
 
         if ($defaults) {

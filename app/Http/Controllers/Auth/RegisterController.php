@@ -73,15 +73,12 @@ class RegisterController extends AbstractBaseController
      * Perform a registration.
      *
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return Response
-     * @throws NotFoundHttpException
      */
-    public function registerAction(Request $request): Response
+    public function registerAction(Request $request, Tree $tree): Response
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         $this->checkRegistrationAllowed();
 
         $comments  = $request->get('comments', '');

@@ -19,6 +19,8 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Module;
+use Fisharebest\Webtrees\Resolver;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -33,15 +35,14 @@ class ModuleController extends AbstractBaseController
     /**
      * Perform an HTTP action for one of the modules.
      *
-     * @param Request $request
+     * @param Request  $request
+     * @param User     $user
+     * @param Resolver $resolver
      *
      * @return Response
      */
-    public function action(Request $request): Response
+    public function action(Request $request, User $user, Resolver $resolver): Response
     {
-        /** @var User $user */
-        $user = $request->attributes->get('user');
-
         $module_name = $request->get('module');
 
         // Check that the module is enabled.
@@ -60,7 +61,8 @@ class ModuleController extends AbstractBaseController
         }
 
         if (method_exists($module, $method)) {
-            $response = $module->$method($request);
+            $response = $resolver->dispatch($module, $method);
+
             if ($response instanceof Response) {
                 return $response;
             } else {

@@ -43,15 +43,14 @@ class PlaceHierarchyController extends AbstractBaseController
 
     /**
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return Response
-     * @throws \Exception
      */
-    public function show(Request $request): Response
+    public function show(Request $request, Tree $tree): Response
     {
         $action     = $request->query->get('action', 'hierarchy');
         $parent     = $request->query->get('parent', []);
-        $tree       = $request->attributes->get('tree');
         $fqpn       = implode(Place::GEDCOM_SEPARATOR, array_reverse($parent));
         $place      = new Place($fqpn, $tree);
         $content    = '';

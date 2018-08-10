@@ -49,13 +49,12 @@ class MediaFileController extends AbstractBaseController
      * Download a non-image media file.
      *
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return Response
      */
-    public function mediaDownload(Request $request): Response
+    public function mediaDownload(Request $request, Tree $tree): Response
     {
-        /** @var Tree $tree */
-        $tree    = $request->attributes->get('tree');
         $xref    = $request->get('xref');
         $fact_id = $request->get('fact_id');
         $media   = Media::getInstance($xref, $tree);
@@ -98,13 +97,12 @@ class MediaFileController extends AbstractBaseController
      * Show an image/thumbnail, with/without a watermark.
      *
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return Response
      */
-    public function mediaThumbnail(Request $request): Response
+    public function mediaThumbnail(Request $request, Tree $tree): Response
     {
-        /** @var Tree $tree */
-        $tree    = $request->attributes->get('tree');
         $xref    = $request->get('xref');
         $fact_id = $request->get('fact_id');
         $media   = Media::getInstance($xref, $tree);

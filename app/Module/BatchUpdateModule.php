@@ -67,18 +67,14 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
     /**
      * Main entry point
      *
-     * @param Request $request
+     * @param Request   $request
+     * @param User      $user
+     * @param Tree|null $tree
      *
      * @return Response
      */
-    public function getAdminAction(Request $request): Response
+    public function getAdminAction(Request $request, User $user, Tree $tree = null): Response
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
-        /** @var User $user */
-        $user = $request->attributes->get('user');
-
         // We need a tree to work with.
         if ($tree === null) {
             throw new NotFoundHttpException;
@@ -128,7 +124,7 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
         }
 
         return $this->viewResponse('modules/batch_update/admin', [
-            'auto_accept' => (bool)$user->getPreference('auto_accept'),
+            'auto_accept' => (bool) $user->getPreference('auto_accept'),
             'plugins'     => $plugins,
             'curr_xref'   => $curr_xref,
             'next_xref'   => $next_xref,
@@ -144,18 +140,14 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
     /**
      * Perform an update
      *
-     * @param Request $request
+     * @param Request   $request
+     * @param User      $user
+     * @param Tree|null $tree
      *
      * @return RedirectResponse
      */
-    public function postAdminAction(Request $request): RedirectResponse
+    public function postAdminAction(Request $request, User $user, Tree $tree = null): RedirectResponse
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
-        /** @var User $user */
-        $user = $request->attributes->get('user');
-
         // We need a tree to work with.
         if ($tree === null) {
             throw new NotFoundHttpException;
@@ -341,7 +333,7 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
         $dir_handle = opendir(__DIR__ . '/BatchUpdate');
         while (($file = readdir($dir_handle)) !== false) {
             if (substr($file, -10) == 'Plugin.php' && $file !== 'BatchUpdateBasePlugin.php') {
-                $class = '\Fisharebest\Webtrees\Module\BatchUpdate\\' . basename($file, '.php');
+                $class           = '\Fisharebest\Webtrees\Module\BatchUpdate\\' . basename($file, '.php');
                 $plugins[$class] = new $class;
             }
         }

@@ -112,14 +112,13 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
 
     /**
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return JsonResponse
-     * @throws Exception
      */
-    public function getMapDataAction(Request $request): JsonResponse
+    public function getMapDataAction(Request $request, Tree $tree): JsonResponse
     {
         $xref        = $request->get('reference');
-        $tree        = $request->attributes->get('tree');
         $indi        = Individual::getInstance($xref, $tree);
         $color_count = count(self::LINE_COLORS);
 
@@ -181,14 +180,13 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
 
     /**
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return array
-     * @throws Exception
      */
-    private function getPedigreeMapFacts(Request $request)
+    private function getPedigreeMapFacts(Request $request, Tree $tree)
     {
         $xref        = $request->get('reference');
-        $tree        = $request->attributes->get('tree');
         $individual  = Individual::getInstance($xref, $tree);
         $generations = (int)$request->get(
             'generations',
@@ -303,14 +301,12 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
 
     /**
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return object
-     * @throws Exception
      */
-    public function getPedigreeMapAction(Request $request)
+    public function getPedigreeMapAction(Request $request, Tree $tree)
     {
-        /** @var Tree $tree */
-        $tree           = $request->attributes->get('tree');
         $xref           = $request->get('xref');
         $individual     = Individual::getInstance($xref, $tree);
         $maxgenerations = $tree->getPreference('MAX_PEDIGREE_GENERATIONS');

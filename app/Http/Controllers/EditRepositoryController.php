@@ -44,13 +44,12 @@ class EditRepositoryController extends AbstractEditController
      * Process a form to create a new repository.
      *
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return JsonResponse
      */
-    public function createRepositoryAction(Request $request): JsonResponse
+    public function createRepositoryAction(Request $request, Tree $tree): JsonResponse
     {
-        /** @var Tree $tree */
-        $tree                = $request->attributes->get('tree');
         $name                = $request->get('repository-name', '');
         $privacy_restriction = $request->get('privacy-restriction', '');
         $edit_restriction    = $request->get('edit-restriction', '');

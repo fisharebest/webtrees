@@ -19,6 +19,7 @@ namespace Fisharebest\Webtrees\Http\Middleware;
 
 use Closure;
 use Fisharebest\Webtrees\Database;
+use Fisharebest\Webtrees\Resolver;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
@@ -46,6 +47,24 @@ class PageHitCounter implements MiddlewareInterface
         'user-page'  => 'index.php',
     ];
 
+    /** @var Tree|null */
+    private $tree;
+
+    /** @var User */
+    private $user;
+
+    /**
+     * PageHitCounter constructor.
+     *
+     * @param Resolver  $resolver
+     * @param Tree|null $tree
+     */
+    public function __construct(User $user, Tree $tree = null)
+    {
+        $this->tree = $tree;
+        $this->user = $user;
+    }
+
     /**
      * @param Request $request
      * @param Closure $next
@@ -55,12 +74,9 @@ class PageHitCounter implements MiddlewareInterface
      */
     public function handle(Request $request, Closure $next): Response
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         $page_hits = 0;
 
-        if ($tree !== null && $tree->getPreference('SHOW_COUNTER')) {
+        if ($this->tree !== null && $this->tree->getPreference('SHOW_COUNTER')) {
             $route = $request->get('route');
 
             $page_name = self::PAGE_NAMES[$route] ?? '';
@@ -72,18 +88,15 @@ class PageHitCounter implements MiddlewareInterface
                 case 'note':
                 case 'repository':
                 case 'source':
-                    $page_hits = $this->countHit($tree, $page_name, $request->get('xref', ''));
+                    $page_hits = $this->countHit($this->tree, $page_name, $request->get('xref', ''));
                     break;
 
                 case 'tree-page':
-                    $page_hits = $this->countHit($tree, $page_name, 'gedcom:' . $tree->getTreeId());
+                    $page_hits = $this->countHit($this->tree, $page_name, 'gedcom:' . $this->tree->getTreeId());
                     break;
 
                 case 'user-page':
-                    /** @var User $user */
-                    $user = $request->attributes->get('user');
-
-                    $page_hits = $this->countHit($tree, $page_name, 'user:' . $user->getUserId());
+                    $page_hits = $this->countHit($this->tree, $page_name, 'user:' . $this->user->getUserId());
                     break;
             }
         }

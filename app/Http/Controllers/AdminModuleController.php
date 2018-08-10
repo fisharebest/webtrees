@@ -30,14 +30,12 @@ class AdminModuleController extends AdminController
 
     /**
      * @param Request $request
+     * @param User    $user
      *
      * @return Response
      */
-    public function action(Request $request): Response
+    public function action(Request $request, User $user): Response
     {
-        /** @var User $user */
-        $user = $request->attributes->get('user');
-
         $module_name = $request->get('module');
 
         // Check that the module is enabled.

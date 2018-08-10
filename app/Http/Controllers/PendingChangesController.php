@@ -44,14 +44,12 @@ class PendingChangesController extends AbstractBaseController
      * Accept all changes to a tree.
      *
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return RedirectResponse
      */
-    public function acceptAllChanges(Request $request): RedirectResponse
+    public function acceptAllChanges(Request $request, Tree $tree): RedirectResponse
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         $url = $request->get('url', '');
 
         $changes = Database::prepare(
@@ -92,14 +90,12 @@ class PendingChangesController extends AbstractBaseController
      * Accept a change (and all previous changes) to a single record.
      *
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return RedirectResponse
      */
-    public function acceptChange(Request $request): RedirectResponse
+    public function acceptChange(Request $request, Tree $tree): RedirectResponse
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         $url       = $request->get('url', '');
         $xref      = $request->get('xref', '');
         $change_id = (int)$request->get('change_id');
@@ -146,14 +142,12 @@ class PendingChangesController extends AbstractBaseController
      * Accept all changes to a single record.
      *
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return Response
      */
-    public function acceptChanges(Request $request): Response
+    public function acceptChanges(Request $request, Tree $tree): Response
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         $xref = $request->get('xref', '');
 
         $record = GedcomRecord::getInstance($xref, $tree);
@@ -178,14 +172,12 @@ class PendingChangesController extends AbstractBaseController
      * Reject all changes to a tree.
      *
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return RedirectResponse
      */
-    public function rejectAllChanges(Request $request): RedirectResponse
+    public function rejectAllChanges(Request $request, Tree $tree): RedirectResponse
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         $url = $request->get('url', '');
 
         Database::prepare(
@@ -204,14 +196,12 @@ class PendingChangesController extends AbstractBaseController
      * Reject a change (and all subsequent changes) to a single record.
      *
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return RedirectResponse
      */
-    public function rejectChange(Request $request): RedirectResponse
+    public function rejectChange(Request $request, Tree $tree): RedirectResponse
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         $url       = $request->get('url', '');
         $xref      = $request->get('xref', '');
         $change_id = (int)$request->get('change_id');
@@ -240,14 +230,12 @@ class PendingChangesController extends AbstractBaseController
      * Accept all changes to a single record.
      *
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return Response
      */
-    public function rejectChanges(Request $request): Response
+    public function rejectChanges(Request $request, Tree $tree): Response
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         $xref = $request->get('xref', '');
 
         $record = GedcomRecord::getInstance($xref, $tree);
@@ -267,14 +255,12 @@ class PendingChangesController extends AbstractBaseController
      * Show the pending changes for the current tree.
      *
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return Response
      */
-    public function showChanges(Request $request): Response
+    public function showChanges(Request $request, Tree $tree): Response
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         $url = $request->get('url', route('tree-page', ['ged' => $tree->getName()]));
 
         $rows = Database::prepare(

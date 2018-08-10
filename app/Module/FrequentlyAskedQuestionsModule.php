@@ -100,15 +100,12 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
     }
 
     /**
-     * @param Request $request
+     * @param Tree $tree
      *
      * @return Response
      */
-    public function getAdminAction(Request $request): Response
+    public function getAdminAction(Tree $tree): Response
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         $this->layout = 'layouts/administration';
 
         $faqs = Database::prepare(
@@ -153,14 +150,12 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
 
     /**
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return RedirectResponse
      */
-    public function postAdminDeleteAction(Request $request): RedirectResponse
+    public function postAdminDeleteAction(Request $request, Tree $tree): RedirectResponse
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         $block_id = (int)$request->get('block_id');
 
         Database::prepare(
@@ -183,14 +178,12 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
 
     /**
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return RedirectResponse
      */
-    public function postAdminMoveDownAction(Request $request): RedirectResponse
+    public function postAdminMoveDownAction(Request $request, Tree $tree): RedirectResponse
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         $block_id = (int)$request->get('block_id');
 
         $block_order = Database::prepare(
@@ -238,14 +231,12 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
 
     /**
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return RedirectResponse
      */
-    public function postAdminMoveUpAction(Request $request): RedirectResponse
+    public function postAdminMoveUpAction(Request $request, Tree $tree): RedirectResponse
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         $block_id = (int)$request->get('block_id');
 
         $block_order = Database::prepare(
@@ -293,14 +284,12 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
 
     /**
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return Response
      */
-    public function getAdminEditAction(Request $request): Response
+    public function getAdminEditAction(Request $request, Tree $tree): Response
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         $this->layout = 'layouts/administration';
 
         $block_id = (int)$request->get('block_id');
@@ -345,14 +334,12 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
 
     /**
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return RedirectResponse
      */
-    public function postAdminEditAction(Request $request): RedirectResponse
+    public function postAdminEditAction(Request $request, Tree $tree): RedirectResponse
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         $block_id  = (int)$request->get('block_id');
         $faqbody   = $request->get('faqbody', '');
         $header    = $request->get('header', '');
@@ -393,14 +380,12 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
 
     /**
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return Response
      */
-    public function getShowAction(Request $request): Response
+    public function getShowAction(Request $request, Tree $tree): Response
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         $faqs = Database::prepare(
             "SELECT block_id, bs1.setting_value AS header, bs2.setting_value AS body, bs3.setting_value AS languages" .
             " FROM `##block` b" .

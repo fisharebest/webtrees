@@ -177,14 +177,12 @@ class AdminUpgradeController extends AbstractBaseController
     }
 
     /**
-     * @param Request $request
+     * @param Tree $tree
      *
      * @return Response
      */
-    private function wizardStepExport(Request $request): Response
+    private function wizardStepExport(Tree $tree): Response
     {
-        $tree = $request->attributes->get('tree');
-
         $filename = WT_DATA_DIR . $tree->getName() . date('-Y-m-d') . '.ged';
 
         try {

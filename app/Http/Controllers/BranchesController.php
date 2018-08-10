@@ -64,17 +64,13 @@ class BranchesController extends AbstractBaseController
 
     /**
      * @param Request $request
+     * @param Tree    $tree
+     * @param User    $user
      *
      * @return Response
      */
-    public function list(Request $request): Response
+    public function list(Request $request, Tree $tree, User $user): Response
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
-        /** @var User $user */
-        $user = $request->attributes->get('user');
-
         $soundex_dm  = (bool)$request->get('soundex_dm');
         $soundex_std = (bool)$request->get('soundex_std');
         $surname     = $request->get('surname', '');

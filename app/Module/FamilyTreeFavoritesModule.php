@@ -156,17 +156,13 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 
     /**
      * @param Request $request
+     * @param Tree    $tree
+     * @param User    $user
      *
      * @return RedirectResponse
      */
-    public function postAddFavoriteAction(Request $request): RedirectResponse
+    public function postAddFavoriteAction(Request $request, Tree $tree, User $user): RedirectResponse
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
-        /** @var User $user */
-        $user = $request->attributes->get('user');
-
         $note  = $request->get('note', '');
         $title = $request->get('title', '');
         $url   = $request->get('url', '');
@@ -187,17 +183,13 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 
     /**
      * @param Request $request
+     * @param Tree    $tree
+     * @param User    $user
      *
      * @return RedirectResponse
      */
-    public function postDeleteFavoriteAction(Request $request): RedirectResponse
+    public function postDeleteFavoriteAction(Request $request, Tree $tree, User $user): RedirectResponse
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
-        /** @var User $user */
-        $user = $request->attributes->get('user');
-
         $favorite_id = (int)$request->get('favorite_id');
 
         if (Auth::isManager($tree, $user)) {

@@ -59,14 +59,12 @@ class CensusAssistantModule extends AbstractModule
 
     /**
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return Response
      */
-    public function getCensusIndividualAction(Request $request): Response
+    public function getCensusIndividualAction(Request $request, Tree $tree): Response
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         $census = $request->get('census');
 
         $individual = Individual::getInstance($request->get('xref'), $tree);

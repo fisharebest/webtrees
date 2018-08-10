@@ -44,14 +44,12 @@ class LifespansChartController extends AbstractChartController
      * A form to request the chart parameters.
      *
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return Response
      */
-    public function page(Request $request): Response
+    public function page(Request $request, Tree $tree): Response
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         $this->checkModuleIsActive($tree, 'lifespans_chart');
 
         $xrefs     = (array)$request->get('xrefs', []);
@@ -105,14 +103,12 @@ class LifespansChartController extends AbstractChartController
 
     /**
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return Response
      */
-    public function chart(Request $request): Response
+    public function chart(Request $request, Tree $tree): Response
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         $this->checkModuleIsActive($tree, 'lifespans_chart');
 
         $xrefs = (array)$request->get('xrefs', []);

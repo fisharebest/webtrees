@@ -136,14 +136,12 @@ class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface
 
     /**
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return Response
      */
-    public function getTreeviewAction(Request $request): Response
+    public function getTreeviewAction(Request $request, Tree $tree): Response
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         $xref = $request->get('xref');
 
         $individual = Individual::getInstance($xref, $tree);
@@ -173,14 +171,12 @@ class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface
 
     /**
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return Response
      */
-    public function getDetailsAction(Request $request): Response
+    public function getDetailsAction(Request $request, Tree $tree): Response
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         $pid        = $request->get('pid', WT_REGEX_XREF);
         $individual = Individual::getInstance($pid, $tree);
 
@@ -200,14 +196,12 @@ class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface
 
     /**
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return Response
      */
-    public function getPersonsAction(Request $request): Response
+    public function getPersonsAction(Request $request, Tree $tree): Response
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         $q        = $request->get('q');
         $instance = $request->get('instance');
         $treeview = new TreeView($instance);

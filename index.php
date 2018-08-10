@@ -246,13 +246,18 @@ try {
     // Load the routing table.
     $routes = require 'routes/web.php';
 
-    // Find the action for the selected route
+    // Find the controller and action for the selected route
     $controller_action = $routes[$request->getMethod() . ':' . $route] ?? 'ErrorController@noRouteFound';
-
-    // Create the controller
     list($controller_name, $action) = explode('@', $controller_action);
     $controller_class = __NAMESPACE__ . '\\Http\\Controllers\\' . $controller_name;
-    $controller       = new $controller_class;
+
+    // Set up dependency injection for the controller.
+    $resolver = new Resolver;
+    $resolver->bind(Resolver::class, $resolver);
+    $resolver->bind(Tree::class, $tree);
+    $resolver->bind(User::class, Auth::user());
+
+    $controller = $resolver->resolve($controller_class);
 
     DebugBar::stopMeasure('routing');
 
@@ -290,27 +295,28 @@ try {
     DebugBar::startMeasure('controller_action', $controller_action);
 
     $middleware_stack = [
-        new CheckForMaintenanceMode,
+        CheckForMaintenanceMode::class,
     ];
 
     if ($request->getMethod() === Request::METHOD_GET) {
-        $middleware_stack[] = new PageHitCounter;
+        $middleware_stack[] = PageHitCounter::class;
     }
 
     if ($request->getMethod() === Request::METHOD_POST) {
-        $middleware_stack[] = new UseTransaction;
-        $middleware_stack[] = new CheckCsrf;
+        $middleware_stack[] = UseTransaction::class;
+        $middleware_stack[] = CheckCsrf::class;
     }
 
     // Apply the middleware using the "onion" pattern.
-    $pipeline = array_reduce($middleware_stack, function (Closure $next, MiddlewareInterface $middleware): Closure {
+    $pipeline = array_reduce($middleware_stack, function (Closure $next, string $middleware) use ($resolver): Closure {
         // Create a closure to apply the middleware.
-        return function (Request $request) use ($middleware, $next): Response {
-            return $middleware->handle($request, $next);
+        return function (Request $request) use ($middleware, $next, $resolver): Response {
+            return $resolver->resolve($middleware)->handle($request, $next);
         };
-    }, function (Request $request) use ($controller, $action): Response {
-        // Create a closure to generate the response.
-        return call_user_func([$controller, $action], $request);
+    }, function (Request $request) use ($controller, $action, $resolver): Response {
+        $resolver->bind(Request::class, $request);
+
+        return $resolver->dispatch($controller, $action);
     });
 
     $response = call_user_func($pipeline, $request);

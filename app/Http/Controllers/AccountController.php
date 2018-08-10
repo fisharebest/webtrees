@@ -40,18 +40,13 @@ class AccountController extends AbstractBaseController
     /**
      * Help for dates.
      *
-     * @param Request $request
+     * @param Tree    $tree
+     * @param User    $user
      *
      * @return Response
      */
-    public function edit(Request $request): Response
+    public function edit(Tree $tree, User $user): Response
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
-        /** @var User $user */
-        $user = $request->attributes->get('user');
-
         $allow_user_themes    = (bool)Site::getPreference('ALLOW_USER_THEMES');
         $my_individual_record = Individual::getInstance($tree->getUserPreference(Auth::user(), 'gedcomid'), $tree);
         $contact_methods      = FunctionsEdit::optionsContactMethods();
@@ -80,16 +75,13 @@ class AccountController extends AbstractBaseController
     /**
      * @param Request $request
      *
+     * @param Tree    $tree
+     * @param User    $user
+     *
      * @return RedirectResponse
      */
-    public function update(Request $request): RedirectResponse
+    public function update(Request $request, Tree $tree, User $user): RedirectResponse
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
-        /** @var User $user */
-        $user = $request->attributes->get('user');
-
         $contact_method = (string)$request->get('contact_method');
         $email          = (string)$request->get('email');
         $language       = (string)$request->get('language');
@@ -144,15 +136,12 @@ class AccountController extends AbstractBaseController
     }
 
     /**
-     * @param Request $request
+     * @param User $user
      *
      * @return RedirectResponse
      */
-    public function delete(Request $request): RedirectResponse
+    public function delete(User $user): RedirectResponse
     {
-        /** @var User $user */
-        $user = $request->attributes->get('user');
-
         // An administrator can only be deleted by another administrator
         if (!$user->getPreference('canadmin')) {
             $currentUser = Auth::user();

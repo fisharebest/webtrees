@@ -37,15 +37,12 @@ class VerifyEmailController extends AbstractBaseController
      * Respond to a verification link that was emailed to a user.
      *
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return Response
-     * @throws NotFoundHttpException
      */
-    public function verify(Request $request): Response
+    public function verify(Request $request, Tree $tree): Response
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         $username = $request->get('username', '');
         $token    = $request->get('token', '');
 

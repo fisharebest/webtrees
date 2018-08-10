@@ -1174,13 +1174,12 @@ class AdminController extends AbstractBaseController
      * Merge two genealogy records.
      *
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return Response
      */
-    public function mergeRecords(Request $request): Response
+    public function mergeRecords(Request $request, Tree $tree): Response
     {
-        /** @var Tree $tree */
-        $tree  = $request->attributes->get('tree');
         $title = I18N::translate('Merge records') . ' — ' . e($tree->getTitle());
 
         $xref1 = $request->get('xref1', '');
@@ -1263,13 +1262,12 @@ class AdminController extends AbstractBaseController
 
     /**
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return Response
      */
-    public function mergeRecordsAction(Request $request): Response
+    public function mergeRecordsAction(Request $request, Tree $tree): Response
     {
-        /** @var Tree $tree */
-        $tree  = $request->attributes->get('tree');
         $xref1 = $request->get('xref1', '');
         $xref2 = $request->get('xref2', '');
         $keep1 = $request->get('keep1', []);
@@ -1455,14 +1453,12 @@ class AdminController extends AbstractBaseController
     }
 
     /**
-     * @param Request $request
+     * @param Tree $tree
      *
      * @return Response
      */
-    public function treePrivacyEdit(Request $request): Response
+    public function treePrivacyEdit(Tree $tree): Response
     {
-        /** @var Tree $tree */
-        $tree                 = $request->attributes->get('tree');
         $title                = e($tree->getName()) . ' — ' . I18N::translate('Privacy');
         $all_tags             = $this->tagsForPrivacy($tree);
         $privacy_constants    = $this->privacyConstants();
@@ -1479,14 +1475,12 @@ class AdminController extends AbstractBaseController
 
     /**
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return RedirectResponse
      */
-    public function treePrivacyUpdate(Request $request): RedirectResponse
+    public function treePrivacyUpdate(Request $request, Tree $tree): RedirectResponse
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         foreach ((array)$request->get('delete') as $default_resn_id) {
             Database::prepare(
                 "DELETE FROM `##default_resn` WHERE default_resn_id = :default_resn_id"

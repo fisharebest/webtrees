@@ -28,15 +28,12 @@ use Symfony\Component\HttpFoundation\Response;
 class StaticPageController extends AbstractBaseController
 {
     /**
-     * @param Request $request
+     * @param Tree $tree
      *
      * @return Response
      */
-    public function privacyPolicy(Request $request): Response
+    public function privacyPolicy(Tree $tree): Response
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         $title = I18N::translate('Privacy policy');
 
         $uses_analytics = true;

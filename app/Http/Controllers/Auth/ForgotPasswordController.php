@@ -53,14 +53,12 @@ class ForgotPasswordController extends AbstractBaseController
      * Send a password reset email.
      *
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return RedirectResponse
      */
-    public function forgotPasswordAction(Request $request): RedirectResponse
+    public function forgotPasswordAction(Request $request, Tree $tree): RedirectResponse
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         $identifier = $request->get('identifier');
 
         $user = User::findByIdentifier($identifier);

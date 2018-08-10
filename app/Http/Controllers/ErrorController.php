@@ -36,14 +36,13 @@ class ErrorController extends AbstractBaseController
     /**
      * No route was match?  Send the user somewhere sensible, if we can.
      *
-     * @param Request $request
+     * @param Request   $request
+     * @param Tree|null $tree
      *
      * @return Response
      */
-    public function noRouteFound(Request $request): Response
+    public function noRouteFound(Request $request, Tree $tree = null): Response
     {
-        $tree = $request->attributes->get('tree');
-
         // The tree exists, we have access to it, and it is fully imported.
         if ($tree instanceof Tree && $tree->getPreference('imported') === '1') {
             return new RedirectResponse(route('tree-page', ['ged' => $tree->getName()]));

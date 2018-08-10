@@ -131,14 +131,12 @@ class SearchController extends AbstractBaseController
      * The "omni-search" box in the header.
      *
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return Response
      */
-    public function quick(Request $request): Response
+    public function quick(Request $request, Tree $tree): Response
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         $query = $request->get('query', '');
 
         // Was the search query an XREF in the current tree?
@@ -156,14 +154,12 @@ class SearchController extends AbstractBaseController
      * The standard search.
      *
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return Response
      */
-    public function general(Request $request): Response
+    public function general(Request $request, Tree $tree): Response
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         $query = $request->get('query', '');
 
         // What type of records to search?
@@ -276,14 +272,12 @@ class SearchController extends AbstractBaseController
      * The phonetic search.
      *
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return Response
      */
-    public function phonetic(Request $request): Response
+    public function phonetic(Request $request, Tree $tree): Response
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         $firstname = $request->get('firstname', '');
         $lastname  = $request->get('lastname', '');
         $place     = $request->get('place', '');
@@ -363,11 +357,8 @@ class SearchController extends AbstractBaseController
      *
      * @return RedirectResponse
      */
-    public function replaceAction(Request $request): RedirectResponse
+    public function replaceAction(Request $request, Tree $tree): RedirectResponse
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         $search  = $request->get('search', '');
         $replace = $request->get('replace', '');
         $context = $request->get('context', '');
@@ -441,11 +432,8 @@ class SearchController extends AbstractBaseController
      *
      * @return Response
      */
-    public function advanced(Request $request): Response
+    public function advanced(Request $request, Tree $tree): Response
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         $default_fields = array_fill_keys(self::DEFAULT_ADVANCED_FIELDS, '');
 
         $fields      = $request->get('fields', $default_fields);

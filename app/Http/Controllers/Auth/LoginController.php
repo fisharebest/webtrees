@@ -42,15 +42,13 @@ class LoginController extends AbstractBaseController
     /**
      * Show a login page.
      *
-     * @param Request $request
+     * @param Request   $request
+     * @param Tree|null $tree
      *
      * @return Response
      */
-    public function loginPage(Request $request): Response
+    public function loginPage(Request $request, Tree $tree = null): Response
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         // Already logged in?
         if (Auth::check()) {
             $ged = $tree !== null ? $tree->getName() : '';
@@ -99,15 +97,13 @@ class LoginController extends AbstractBaseController
     /**
      * Perform a login.
      *
-     * @param Request $request
+     * @param Request   $request
+     * @param Tree|null $tree
      *
      * @return RedirectResponse
      */
-    public function loginAction(Request $request): RedirectResponse
+    public function loginAction(Request $request, Tree $tree = null): RedirectResponse
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         $username = $request->get('username', '');
         $password = $request->get('password', '');
         $url      = $request->get('url', '');
@@ -209,15 +205,12 @@ class LoginController extends AbstractBaseController
     /**
      * Perform a logout.
      *
-     * @param Request $request
+     * @param Tree|null $tree
      *
      * @return RedirectResponse
      */
-    public function logoutAction(Request $request): RedirectResponse
+    public function logoutAction(Tree $tree = null): RedirectResponse
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         if (Auth::id()) {
             Log::addAuthenticationLog('Logout: ' . Auth::user()->getUserName() . '/' . Auth::user()->getRealName());
             Auth::logout();

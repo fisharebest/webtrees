@@ -38,14 +38,12 @@ class MessageController extends AbstractBaseController
      * A form to compose a message from a member.
      *
      * @param Request $request
+     * @param User    $user
      *
      * @return Response
      */
-    public function broadcastPage(Request $request): Response
+    public function broadcastPage(Request $request, User $user): Response
     {
-        /** @var User $user */
-        $user = $request->attributes->get('user');
-
         $referer = $request->headers->get('referer', '');
 
         $body    = $request->get('body', '');
@@ -78,17 +76,13 @@ class MessageController extends AbstractBaseController
      * Send a message.
      *
      * @param Request $request
+     * @param Tree    $tree
+     * @param User    $user
      *
      * @return RedirectResponse
      */
-    public function broadcastAction(Request $request): RedirectResponse
+    public function broadcastAction(Request $request, Tree $tree, User $user): RedirectResponse
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
-        /** @var User $user */
-        $user = $request->attributes->get('user');
-
         $body    = $request->get('body', '');
         $subject = $request->get('subject', '');
         $to      = $request->get('to', '');
@@ -128,14 +122,12 @@ class MessageController extends AbstractBaseController
      * A form to compose a message from a visitor.
      *
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return Response
      */
-    public function contactPage(Request $request): Response
+    public function contactPage(Request $request, Tree $tree): Response
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         $referer = $request->headers->get('referer', '');
 
         $body       = $request->get('body', '');
@@ -171,14 +163,12 @@ class MessageController extends AbstractBaseController
      * Send a message.
      *
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return RedirectResponse
      */
-    public function contactAction(Request $request): RedirectResponse
+    public function contactAction(Request $request, Tree $tree): RedirectResponse
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         $body       = $request->get('body', '');
         $from_email = $request->get('from_email', '');
         $from_name  = $request->get('from_name', '');
@@ -244,14 +234,12 @@ class MessageController extends AbstractBaseController
      * A form to compose a message from a member.
      *
      * @param Request $request
+     * @param User    $user
      *
      * @return Response
      */
-    public function messagePage(Request $request): Response
+    public function messagePage(Request $request, User $user): Response
     {
-        /** @var User $user */
-        $user = $request->attributes->get('user');
-
         $referer = $request->headers->get('referer', '');
 
         $body    = $request->get('body', '');
@@ -281,17 +269,13 @@ class MessageController extends AbstractBaseController
      * Send a message.
      *
      * @param Request $request
+     * @param Tree    $tree
+     * @param User    $user
      *
      * @return RedirectResponse
      */
-    public function messageAction(Request $request): RedirectResponse
+    public function messageAction(Request $request, Tree $tree, User $user): RedirectResponse
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
-        /** @var User $user */
-        $user = $request->attributes->get('user');
-
         $body    = $request->get('body', '');
         $subject = $request->get('subject', '');
         $to      = $request->get('to', '');

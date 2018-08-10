@@ -6831,7 +6831,7 @@ class Stats
             // indi/fam/sour/etc.
         }
         
-        $hit_counter = new PageHitCounter;
+        $hit_counter = new PageHitCounter(Auth::user(), $this->tree);
 
         return '<span class="odometer">' . I18N::digits($hit_counter->getCount($this->tree, $page_name, $page_parameter)) . '</span>';
     }

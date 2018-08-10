@@ -45,14 +45,12 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
 
     /**
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return Response
      */
-    public function getSearchAction(Request $request): Response
+    public function getSearchAction(Request $request, Tree $tree): Response
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         $search = $request->get('search', '');
 
         $html = '';
@@ -86,14 +84,12 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
 
     /**
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return Response
      */
-    public function getDescendantsAction(Request $request): Response
+    public function getDescendantsAction(Request $request, Tree $tree): Response
     {
-        /** @var Tree $tree */
-        $tree = $request->attributes->get('tree');
-
         $xref = $request->get('xref');
 
         $individual = Individual::getInstance($xref, $tree);
