@@ -1,3 +1,4 @@
+[![Latest Stable Version](https://poser.pugx.org/fisharebest/php-polyfill/v/stable.svg)](https://packagist.org/packages/fisharebest/php-polyfill)
 [![Build Status](https://travis-ci.org/fisharebest/php-polyfill.svg?branch=master)](https://travis-ci.org/fisharebest/php-polyfill)
 [![Coverage Status](https://coveralls.io/repos/fisharebest/php-polyfill/badge.svg?branch=master&service=github)](https://coveralls.io/github/fisharebest/php-polyfill?branch=master)
 

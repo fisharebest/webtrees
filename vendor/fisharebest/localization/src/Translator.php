@@ -65,9 +65,9 @@ class Translator {
 	 * Translate a plural message into another language.
 	 * Works the same as ngettext().
 	 *
-	 * @param string  $message1 English text for singular
-	 * @param string  $message2 English text for plural
-	 * @param integer $number   Number of entities
+	 * @param string $message1 English text for singular
+	 * @param string $message2 English text for plural
+	 * @param int    $number   Number of entities
 	 *
 	 * @return string Translated text
 	 */

@@ -9,7 +9,7 @@ use InvalidArgumentException;
  * @link      http://php.net/manual/en/book.calendar.php
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2014-2015 Greg Roach
+ * @copyright (c) 2014-2017 Greg Roach
  * @license   This program is free software: you can redistribute it and/or modify
  *            it under the terms of the GNU General Public License as published by
  *            the Free Software Foundation, either version 3 of the License, or
@@ -112,7 +112,7 @@ class Shim {
 	 *
 	 * @link https://bugs.php.net/bug.php?id=54254
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 	public static function shouldEmulateBug54254() {
 		return version_compare(PHP_VERSION, '5.5.0', '<');
@@ -128,7 +128,7 @@ class Shim {
 	 * @link https://bugs.php.net/bug.php?id=67960
 	 * @link https://github.com/php/php-src/pull/806
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 	public static function shouldEmulateBug67960() {
 		return version_compare(PHP_VERSION, '5.5.21', '<') || version_compare(PHP_VERSION, '5.6.0', '>=') && version_compare(PHP_VERSION, '5.6.5', '<') ;
@@ -140,12 +140,14 @@ class Shim {
 	 * This bug relates to the number of days in the month 13 of year 14 in
 	 * the French calendar.
 	 *
+	 * It was fixed in PHP 5.6.25 and 7.0.10
+	 *
 	 * @link https://bugs.php.net/bug.php?id=67976
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 	public static function shouldEmulateBug67976() {
-		return true;
+		return version_compare(PHP_VERSION, '5.6.25', '<') || version_compare(PHP_VERSION, '7.0.0', '>=') && version_compare(PHP_VERSION, '7.0.10', '<') ;
 	}
 
 	/**
@@ -156,11 +158,11 @@ class Shim {
 	 * @link https://php.net/cal_days_in_month
 	 * @link https://bugs.php.net/bug.php?id=67976
 	 *
-	 * @param integer $calendar_id
-	 * @param integer $month
-	 * @param integer $year
+	 * @param int $calendar_id
+	 * @param int $month
+	 * @param int $year
 	 *
-	 * @return integer|boolean The number of days in the specified month, or false on error
+	 * @return int|bool The number of days in the specified month, or false on error
 	 */
 	public static function calDaysInMonth($calendar_id, $month, $year) {
 		switch ($calendar_id) {
@@ -185,16 +187,18 @@ class Shim {
 	 * Calculate the number of days in a month in a specified (Gregorian or Julian) calendar.
 	 *
 	 * @param CalendarInterface $calendar
-	 * @param integer           $year
-	 * @param integer           $month
+	 * @param int               $year
+	 * @param int               $month
 	 *
-	 * @return integer|boolean
+	 * @return int|bool
 	 */
 	private static function calDaysInMonthCalendar(CalendarInterface $calendar, $year, $month) {
 		try {
 			return $calendar->daysInMonth($year, $month);
 		} catch (InvalidArgumentException $ex) {
-			return trigger_error('invalid date.', E_USER_WARNING);
+			$error_msg = PHP_VERSION_ID < 70200 ? 'invalid date.' : 'invalid date';
+
+			return trigger_error($error_msg, E_USER_WARNING);
 		}
 	}
 
@@ -203,16 +207,18 @@ class Shim {
 	 *
 	 * Mimic PHP’s validation of the parameters
 	 *
-	 * @param integer $year
-	 * @param integer $month
+	 * @param int $year
+	 * @param int $month
 	 *
-	 * @return integer|boolean
+	 * @return int|bool
 	 */
 	private static function calDaysInMonthFrench($year, $month) {
 		if ($month == 13 && $year == 14 && self::shouldEmulateBug67976()) {
 			return -2380948;
 		} elseif ($year > 14) {
-			return trigger_error('invalid date.', E_USER_WARNING);
+			$error_msg = PHP_VERSION_ID < 70200 ? 'invalid date.' : 'invalid date';
+
+			return trigger_error($error_msg, E_USER_WARNING);
 		} else {
 			return self::calDaysInMonthCalendar(self::$french_calendar, $year, $month);
 		}
@@ -225,10 +231,10 @@ class Shim {
 	 *
 	 * @link https://php.net/cal_from_jd
 	 *
-	 * @param integer $julian_day  Julian Day number
-	 * @param integer $calendar_id Calendar constant
+	 * @param int $julian_day  Julian Day number
+	 * @param int $calendar_id Calendar constant
 	 *
-	 * @return array|boolean
+	 * @return array|bool
 	 */
 	public static function calFromJd($julian_day, $calendar_id) {
 		switch ($calendar_id) {
@@ -241,7 +247,15 @@ class Shim {
 		case CAL_JEWISH:
 			$months = self::jdMonthNameJewishMonths($julian_day);
 
-			return self::calFromJdCalendar($julian_day, self::jdToCalendar(self::$jewish_calendar, $julian_day, 347998, 324542846), $months, $months);
+			$cal = self::calFromJdCalendar($julian_day, self::jdToCalendar(self::$jewish_calendar, $julian_day, 347998, 324542846), $months, $months);
+
+			if (($julian_day < 347998 || $julian_day > 324542846) && !self::shouldEmulateBug67976()) {
+				$cal['dow'] = null;
+				$cal['dayname'] = '';
+				$cal['abbrevdayname'] = '';
+			}
+
+			return $cal;
 
 		case CAL_JULIAN:
 			return self::calFromJdCalendar($julian_day, self::jdToJulian($julian_day), self::$MONTH_NAMES, self::$MONTH_NAMES_SHORT);
@@ -254,7 +268,7 @@ class Shim {
 	/**
 	 * Convert a Julian day number to a calendar and provide details.
 	 *
-	 * @param integer  $julian_day
+	 * @param int      $julian_day
 	 * @param string   $mdy
 	 * @param string[] $months
 	 * @param string[] $months_short
@@ -284,9 +298,9 @@ class Shim {
 	 *
 	 * @link https://php.net/cal_info
 	 *
-	 * @param integer $calendar_id
+	 * @param int $calendar_id
 	 *
-	 * @return array|boolean
+	 * @return array|bool
 	 */
 	public static function calInfo($calendar_id) {
 		switch ($calendar_id) {
@@ -322,7 +336,7 @@ class Shim {
 	 *
 	 * @param string[] $month_names
 	 * @param string[] $month_names_short
-	 * @param integer  $max_days_in_month
+	 * @param int      $max_days_in_month
 	 * @param string   $calendar_name
 	 * @param string   $calendar_symbol
 	 *
@@ -345,12 +359,12 @@ class Shim {
 	 *
 	 * @link https://php.net/cal_to_jd
 	 *
-	 * @param integer $calendar_id
-	 * @param integer $month
-	 * @param integer $day
-	 * @param integer $year
+	 * @param int $calendar_id
+	 * @param int $month
+	 * @param int $day
+	 * @param int $year
 	 *
-	 * @return integer|boolean
+	 * @return int|bool
 	 */
 	public static function calToJd($calendar_id, $month, $day, $year) {
 		switch ($calendar_id) {
@@ -378,9 +392,9 @@ class Shim {
 	 *
 	 * @link https://php.net/easter_date
 	 *
-	 * @param integer $year
+	 * @param int $year
 	 *
-	 * @return integer|boolean
+	 * @return int|bool
 	 */
 	public static function easterDate($year) {
 		if ($year < 1970 || $year > 2037) {
@@ -407,10 +421,10 @@ class Shim {
 	 *
 	 * @link https://php.net/easter_days
 	 *
-	 * @param integer $year
-	 * @param integer $method Use the Julian or Gregorian calendar
+	 * @param int $year
+	 * @param int $method Use the Julian or Gregorian calendar
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	public static function easterDays($year, $method) {
 		if (
@@ -431,11 +445,11 @@ class Shim {
 	 *
 	 * @link https://php.net/FrenchToJD
 	 *
-	 * @param integer $month
-	 * @param integer $day
-	 * @param integer $year
+	 * @param int $month
+	 * @param int $day
+	 * @param int $year
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	public static function frenchToJd($month, $day, $year) {
 		if ($year <= 0) {
@@ -452,11 +466,11 @@ class Shim {
 	 *
 	 * @link https://php.net/GregorianToJD
 	 *
-	 * @param integer $month
-	 * @param integer $day
-	 * @param integer $year
+	 * @param int $month
+	 * @param int $day
+	 * @param int $year
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	public static function gregorianToJd($month, $day, $year) {
 		if ($year == 0) {
@@ -474,10 +488,10 @@ class Shim {
 	 * @link https://php.net/JDDayOfWeek
 	 * @link https://bugs.php.net/bug.php?id=67960
 	 *
-	 * @param integer $julian_day
-	 * @param integer $mode
+	 * @param int $julian_day
+	 * @param int $mode
 	 *
-	 * @return integer|string
+	 * @return int|string
 	 */
 	public static function jdDayOfWeek($julian_day, $mode) {
 		$day_of_week = ($julian_day + 1) % 7;
@@ -504,8 +518,8 @@ class Shim {
 	 *
 	 * @link https://php.net/JDMonthName
 	 *
-	 * @param integer $julian_day
-	 * @param integer $mode
+	 * @param int $julian_day
+	 * @param int $mode
 	 *
 	 * @return string
 	 */
@@ -537,7 +551,7 @@ class Shim {
 	 * with given set of month names.
 	 *
 	 * @param CalendarInterface $calendar
-	 * @param integer           $julian_day
+	 * @param int               $julian_day
 	 * @param string[]          $months
 	 *
 	 * @return string
@@ -551,7 +565,7 @@ class Shim {
 	/**
 	 * Determine which month names to use for the Jewish calendar.
 	 *
-	 * @param integer $julian_day
+	 * @param int $julian_day
 	 *
 	 * @return string[]
 	 */
@@ -571,9 +585,9 @@ class Shim {
 	 * Julian days outside the specified range are returned as “0/0/0”.
 	 *
 	 * @param CalendarInterface $calendar
-	 * @param integer           $julian_day
-	 * @param integer           $min_jd
-	 * @param integer           $max_jd
+	 * @param int               $julian_day
+	 * @param int               $min_jd
+	 * @param int               $max_jd
 	 *
 	 * @return string
 	 */
@@ -594,7 +608,7 @@ class Shim {
 	 *
 	 * @link https://php.net/JDToFrench
 	 *
-	 * @param integer $julian_day A Julian Day number
+	 * @param int $julian_day A Julian Day number
 	 *
 	 * @return string A string of the form "month/day/year"
 	 */
@@ -611,7 +625,7 @@ class Shim {
 	 *
 	 * @link https://php.net/JDToGregorian
 	 *
-	 * @param integer $julian_day A Julian Day number
+	 * @param int $julian_day A Julian Day number
 	 *
 	 * @return string A string of the form "month/day/year"
 	 */
@@ -629,16 +643,18 @@ class Shim {
 	 *
 	 * @link https://php.net/JdtoJewish
 	 *
-	 * @param integer $julian_day A Julian Day number
-	 * @param boolean $hebrew     If true, the date is returned in Hebrew text
-	 * @param integer $fl         If $hebrew is true, then add alafim and gereshayim to the text
+	 * @param int  $julian_day A Julian Day number
+	 * @param bool $hebrew     If true, the date is returned in Hebrew text
+	 * @param int  $fl         If $hebrew is true, then add alafim and gereshayim to the text
 	 *
-	 * @return string|boolean A string of the form "month/day/year", or false on error
+	 * @return string|bool A string of the form "month/day/year", or false on error
 	 */
 	public static function jdToJewish($julian_day, $hebrew, $fl) {
 		if ($hebrew) {
 			if ($julian_day < 347998 || $julian_day > 4000075) {
-				return trigger_error('Year out of range (0-9999).', E_USER_WARNING);
+				$error_msg = PHP_VERSION_ID < 70200 ? 'Year out of range (0-9999).' : 'Year out of range (0-9999)';
+
+				return trigger_error($error_msg, E_USER_WARNING);
 			}
 
 			return self::$jewish_calendar->jdToHebrew(
@@ -660,7 +676,7 @@ class Shim {
 	 *
 	 * @link https://php.net/JDToJulian
 	 *
-	 * @param integer $julian_day A Julian Day number
+	 * @param int $julian_day A Julian Day number
 	 *
 	 * @return string A string of the form "month/day/year"
 	 */
@@ -678,9 +694,9 @@ class Shim {
 	 *
 	 * @link https://php.net/jdtounix
 	 *
-	 * @param integer $julian_day
+	 * @param int $julian_day
 	 *
-	 * @return integer|false
+	 * @return int|false
 	 */
 	public static function jdToUnix($julian_day) {
 		if ($julian_day >= 2440588 && $julian_day <= 2465343) {
@@ -697,11 +713,11 @@ class Shim {
 	 *
 	 * @link https://php.net/JewishToJD
 	 *
-	 * @param integer $month
-	 * @param integer $day
-	 * @param integer $year
+	 * @param int $month
+	 * @param int $day
+	 * @param int $year
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	public static function jewishToJd($month, $day, $year) {
 		if ($year <= 0) {
@@ -718,11 +734,11 @@ class Shim {
 	 *
 	 * @link https://php.net/JdToJulian
 	 *
-	 * @param integer $month
-	 * @param integer $day
-	 * @param integer $year
+	 * @param int $month
+	 * @param int $day
+	 * @param int $year
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	public static function julianToJd($month, $day, $year) {
 		if ($year == 0) {
@@ -739,9 +755,9 @@ class Shim {
 	 *
 	 * @link https://php.net/unixtojd
 	 *
-	 * @param integer $timestamp
+	 * @param int $timestamp
 	 *
-	 * @return false|integer
+	 * @return false|int
 	 */
 	public static function unixToJd($timestamp) {
 		if ($timestamp < 0) {

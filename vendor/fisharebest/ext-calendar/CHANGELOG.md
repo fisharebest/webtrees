@@ -1,6 +1,18 @@
 CHANGE LOG
 ==========
 
+## 2.4.0 (2018-01-15)
+ - PHP error messages changed slightly in 7.2.0
+
+## 2.3.1 (2018-01-15)
+ - Update PHPdoc to use int/bool instead of integer/boolean
+
+## 2.3.0 (2017-05-07)
+ - Test against PHP 7.1
+ - Use civil instead of astronomical calendar for Arabic (jon48)
+ - Fix bugs in Hebrew calendar (jon48)
+ - PHP bug 67976 now fixed, so we need to emulate it.
+
 ## 2.2.1 (2015-12-11)
  - HHVM tests failing
 

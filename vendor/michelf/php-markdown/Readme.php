@@ -4,13 +4,15 @@
 // through the Markdown filter. You can adapt this sample code in any way
 // you like.
 
-// Install PSR-0-compatible class autoloader
+// Install PSR-4-compatible class autoloader
 spl_autoload_register(function($class){
-	require preg_replace('{\\\\|_(?!.*\\\\)}', DIRECTORY_SEPARATOR, ltrim($class, '\\')).'.php';
+	require str_replace('\\', DIRECTORY_SEPARATOR, ltrim($class, '\\')).'.php';
 });
+// If using Composer, use this instead:
+//require 'vendor/autoloader.php';
 
 // Get Markdown class
-use \Michelf\Markdown;
+use Michelf\Markdown;
 
 // Read file and pass content through the Markdown parser
 $text = file_get_contents('Readme.md');

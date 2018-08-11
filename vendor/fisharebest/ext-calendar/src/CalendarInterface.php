@@ -8,7 +8,7 @@ namespace Fisharebest\ExtCalendar;
  * Many of them are actually provided by the AbstractCalendar base class.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2014-2015 Greg Roach
+ * @copyright (c) 2014-2017 Greg Roach
  * @license   This program is free software: you can redistribute it and/or modify
  *            it under the terms of the GNU General Public License as published by
  *            the Free Software Foundation, either version 3 of the License, or
@@ -26,17 +26,17 @@ interface CalendarInterface {
 	/**
 	 * Determine the number of days in a specified month, allowing for leap years, etc.
 	 *
-	 * @param integer $year
-	 * @param integer $month
+	 * @param int $year
+	 * @param int $month
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	public function daysInMonth($year, $month);
 
 	/**
 	 * Determine the number of days in a week.
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	public function daysInWeek();
 
@@ -50,50 +50,50 @@ interface CalendarInterface {
 	/**
 	 * Determine whether or not a given year is a leap-year.
 	 *
-	 * @param integer $year
+	 * @param int $year
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 	public function isLeapYear($year);
 
 	/**
 	 * What is the highest Julian day number that can be converted into this calendar.
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	public function jdEnd();
 
 	/**
 	 * What is the lowest Julian day number that can be converted into this calendar.
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	public function jdStart();
 
 	/**
 	 * Convert a Julian day number into a year/month/day.
 	 *
-	 * @param integer $julian_day
+	 * @param int $julian_day
 	 *
-	 * @return integer[]
+	 * @return int[]
 	 */
 	public function jdToYmd($julian_day);
 
 	/**
 	 * Determine the number of months in a year.
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	public function monthsInYear();
 
 	/**
 	 * Convert a year/month/day to a Julian day number.
 	 *
-	 * @param integer $year
-	 * @param integer $month
-	 * @param integer $day
+	 * @param int $year
+	 * @param int $month
+	 * @param int $day
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	public function ymdToJd($year, $month, $day);
 }

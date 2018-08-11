@@ -1,11 +1,13 @@
 <?php
 namespace Fisharebest\ExtCalendar;
 
+use InvalidArgumentException;
+
 /**
  * class GregorianCalendar - calculations for the (proleptic) Gregorian calendar.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2014-2015 Greg Roach
+ * @copyright (c) 2014-2017 Greg Roach
  * @license   This program is free software: you can redistribute it and/or modify
  *            it under the terms of the GNU General Public License as published by
  *            the Free Software Foundation, either version 3 of the License, or
@@ -20,22 +22,20 @@ namespace Fisharebest\ExtCalendar;
  *            along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 class GregorianCalendar extends JulianCalendar implements CalendarInterface {
-	public function daysInWeek() {
-		return 7;
-	}
-
+	/**
+	 * The escape sequence used to indicate this calendar in GEDCOM files.
+	 *
+	 * @return string
+	 */
 	public function gedcomCalendarEscape() {
 		return '@#DGREGORIAN@';
 	}
 
-	public function jdEnd() {
-		return PHP_INT_MAX;
-	}
-
-	public function jdStart() {
-		return 1;
-	}
-
+	/**
+	 * @param int $year
+	 *
+	 * @return bool
+	 */
 	public function isLeapYear($year) {
 		if ($year < 0) {
 			$year++;
@@ -47,9 +47,9 @@ class GregorianCalendar extends JulianCalendar implements CalendarInterface {
 	/**
 	 * Convert a Julian day number into a year/month/day.
 	 *
-	 * @param integer $julian_day
+	 * @param int $julian_day
 	 *
-	 * @return integer[]
+	 * @return int[]
 	 */
 	public function jdToYmd($julian_day) {
 		$a = $julian_day + 32044;
@@ -62,29 +62,30 @@ class GregorianCalendar extends JulianCalendar implements CalendarInterface {
 		$day   = $e - (int) ((153 * $m + 2) / 5) + 1;
 		$month = $m + 3 - 12 * (int) ($m / 10);
 		$year  = $b * 100 + $d - 4800 + (int) ($m / 10);
-		if ($year < 1) { // 0 is 1 BCE, -1 is 2 BCE, etc.
+		if ($year < 1) {
+			// 0 is 1 BCE, -1 is 2 BCE, etc.
 			$year--;
 		}
 
 		return array($year, $month, $day);
 	}
 
-	public function monthsInYear() {
-		return 12;
-	}
-
 	/**
 	 * Convert a year/month/day into a Julian day number
 	 *
-	 * @param integer $year
-	 * @param integer $month
-	 * @param integer $day
+	 * @param int $year
+	 * @param int $month
+	 * @param int $day
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	public function ymdToJd($year, $month, $day) {
+		if ($month < 1 || $month > $this->monthsInYear()) {
+			throw new InvalidArgumentException('Month ' . $month . ' is invalid for this calendar');
+		}
+
 		if ($year < 0) {
-			// 1 B.C.E. => 0, 2 B.C.E> => 1, etc.
+			// 1 BCE is 0, 2 BCE is -1, etc.
 			++$year;
 		}
 		$a     = (int) ((14 - $month) / 12);
@@ -99,9 +100,9 @@ class GregorianCalendar extends JulianCalendar implements CalendarInterface {
 	 *
 	 * Uses the algorithm found in PHP’s ext/calendar/easter.c
 	 *
-	 * @param integer $year
+	 * @param int $year
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	public function easterDays($year) {
 		// The “golden” number

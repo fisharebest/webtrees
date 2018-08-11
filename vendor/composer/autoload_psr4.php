@@ -6,8 +6,8 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Symfony\\Polyfill\\Xml\\' => array($vendorDir . '/symfony/polyfill-xml'),
     'Symfony\\Polyfill\\Util\\' => array($vendorDir . '/symfony/polyfill-util'),
+    'Symfony\\Polyfill\\Php72\\' => array($vendorDir . '/symfony/polyfill-php72'),
     'Symfony\\Polyfill\\Php70\\' => array($vendorDir . '/symfony/polyfill-php70'),
     'Symfony\\Polyfill\\Php56\\' => array($vendorDir . '/symfony/polyfill-php56'),
     'Symfony\\Polyfill\\Php55\\' => array($vendorDir . '/symfony/polyfill-php55'),
@@ -16,7 +16,9 @@ return array(
     'Symfony\\Polyfill\\Intl\\Normalizer\\' => array($vendorDir . '/symfony/polyfill-intl-normalizer'),
     'Symfony\\Polyfill\\Intl\\Grapheme\\' => array($vendorDir . '/symfony/polyfill-intl-grapheme'),
     'Symfony\\Polyfill\\Iconv\\' => array($vendorDir . '/symfony/polyfill-iconv'),
+    'Symfony\\Polyfill\\Apcu\\' => array($vendorDir . '/symfony/polyfill-apcu'),
     'Rhumsaa\\Uuid\\' => array($vendorDir . '/rhumsaa/uuid/src'),
+    'Michelf\\' => array($vendorDir . '/michelf/php-markdown/Michelf'),
     'Fisharebest\\Webtrees\\' => array($baseDir . '/app'),
     'Fisharebest\\PhpPolyfill\\' => array($vendorDir . '/fisharebest/php-polyfill/src'),
     'Fisharebest\\Localization\\' => array($vendorDir . '/fisharebest/localization/src'),

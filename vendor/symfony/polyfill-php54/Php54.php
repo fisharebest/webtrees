@@ -20,7 +20,7 @@ final class Php54
 {
     public static function hex2bin($data)
     {
-        $len = strlen($data);
+        $len = \strlen($data);
 
         if (null === $len) {
             return;
@@ -31,12 +31,6 @@ final class Php54
             return false;
         }
 
-        $data = pack('H*', $data);
-
-        if (false !== strpos($data, "\0")) {
-            return false;
-        }
-
-        return $data;
+        return pack('H*', $data);
     }
 }

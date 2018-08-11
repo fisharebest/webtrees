@@ -7,7 +7,7 @@ use InvalidArgumentException;
  * Class JulianCalendar - calculations for the Julian calendar.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2014-2015 Greg Roach
+ * @copyright (c) 2014-2017 Greg Roach
  * @license   This program is free software: you can redistribute it and/or modify
  *            it under the terms of the GNU General Public License as published by
  *            the Free Software Foundation, either version 3 of the License, or
@@ -22,6 +22,14 @@ use InvalidArgumentException;
  *            along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 class JulianCalendar implements CalendarInterface {
+	/**
+	 * Determine the number of days in a specified month, allowing for leap years, etc.
+	 *
+	 * @param int $year
+	 * @param int $month
+	 *
+	 * @return int
+	 */
 	public function daysInMonth($year, $month) {
 		if ($year === 0) {
 			throw new InvalidArgumentException('Year ' . $year . ' is invalid for this calendar');
@@ -38,14 +46,31 @@ class JulianCalendar implements CalendarInterface {
 		}
 	}
 
+	/**
+	 * Determine the number of days in a week.
+	 *
+	 * @return int
+	 */
 	public function daysInWeek() {
 		return 7;
 	}
 
+	/**
+	 * The escape sequence used to indicate this calendar in GEDCOM files.
+	 *
+	 * @return string
+	 */
 	public function gedcomCalendarEscape() {
 		return '@#DJULIAN@';
 	}
 
+	/**
+	 * Determine whether or not a given year is a leap-year.
+	 *
+	 * @param int $year
+	 *
+	 * @return bool
+	 */
 	public function isLeapYear($year) {
 		if ($year < 0) {
 			$year++;
@@ -54,14 +79,31 @@ class JulianCalendar implements CalendarInterface {
 		return $year % 4 == 0;
 	}
 
+	/**
+	 * What is the highest Julian day number that can be converted into this calendar.
+	 *
+	 * @return int
+	 */
 	public function jdEnd() {
 		return PHP_INT_MAX;
 	}
 
+	/**
+	 * What is the lowest Julian day number that can be converted into this calendar.
+	 *
+	 * @return int
+	 */
 	public function jdStart() {
 		return 1;
 	}
 
+	/**
+	 * Convert a Julian day number into a year/month/day.
+	 *
+	 * @param int $julian_day
+	 *
+	 * @return int[]
+	 */
 	public function jdToYmd($julian_day) {
 		$c = $julian_day + 32082;
 		$d = (int) ((4 * $c + 3) / 1461);
@@ -79,11 +121,29 @@ class JulianCalendar implements CalendarInterface {
 		return array($year, $month, $day);
 	}
 
+	/**
+	 * Determine the number of months in a year.
+	 *
+	 * @return int
+	 */
 	public function monthsInYear() {
 		return 12;
 	}
 
+	/**
+	 * Convert a year/month/day to a Julian day number.
+	 *
+	 * @param int $year
+	 * @param int $month
+	 * @param int $day
+	 *
+	 * @return int
+	 */
 	public function ymdToJd($year, $month, $day) {
+		if ($month < 1 || $month > $this->monthsInYear()) {
+			throw new InvalidArgumentException('Month ' . $month . ' is invalid for this calendar');
+		}
+
 		if ($year < 0) {
 			// 1 BCE is 0, 2 BCE is -1, etc.
 			++$year;
@@ -100,9 +160,9 @@ class JulianCalendar implements CalendarInterface {
 	 *
 	 * Uses the algorithm found in PHP’s ext/calendar/easter.c
 	 *
-	 * @param integer $year
+	 * @param int $year
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	public function easterDays($year) {
 		// The “golden” number

@@ -1,5 +1,0 @@
-src_dir: src
-
-coverage_clover: tests/clover.xml
-
-json_path: tests/coverage-upload.json

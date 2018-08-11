@@ -104,7 +104,7 @@ Thus the package always provides the same behaviour as the native `ext/calendar`
 
 * [#54254](https://bugs.php.net/bug.php?id=54254) Jewish month "Adar" - fixed in PHP 5.5.
 
-* [#67960](https://bugs.php.net/bug.php?id=67960) Constants `CAL_DOW_SHORT` and `CAL_DOW_LONG` - found and fixed by this project - fixed in PHP 5.5.21 and 5.6.5.
+* [#67960](https://bugs.php.net/bug.php?id=67960) Constants `CAL_DOW_SHORT` and `CAL_DOW_LONG` - found and [fixed](https://github.com/php/php-src/commit/244fc1e05367dc7ebdf2db260c8bc8b106563d26) by this project - fixed in PHP 5.5.21 and 5.6.5.
 
 * [#67976](https://bugs.php.net/bug.php?id=67976) Wrong value in `cal_days_in_month()` for French calendar - found by this project.
 
