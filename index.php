@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\Exceptions\Handler;
 use Fisharebest\Webtrees\Http\Controllers\SetupController;
 use Fisharebest\Webtrees\Http\Middleware\CheckCsrf;
 use Fisharebest\Webtrees\Http\Middleware\CheckForMaintenanceMode;
+use Fisharebest\Webtrees\Http\Middleware\Housekeeping;
 use Fisharebest\Webtrees\Http\Middleware\MiddlewareInterface;
 use Fisharebest\Webtrees\Http\Middleware\PageHitCounter;
 use Fisharebest\Webtrees\Http\Middleware\UseTransaction;
@@ -300,6 +301,7 @@ try {
 
     if ($request->getMethod() === Request::METHOD_GET) {
         $middleware_stack[] = PageHitCounter::class;
+        $middleware_stack[] = Housekeeping::class;
     }
 
     if ($request->getMethod() === Request::METHOD_POST) {
