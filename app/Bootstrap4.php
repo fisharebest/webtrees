@@ -63,8 +63,8 @@ class Bootstrap4 extends Html
 
         return
             '<div class="' . $class . '">' .
-            '<label class="form-check-label">' .
             '<input ' . $input_attributes . '> ' . e($label) .
+            '<label class="form-check-label">' .
             '</label>' .
             '</div>';
     }
