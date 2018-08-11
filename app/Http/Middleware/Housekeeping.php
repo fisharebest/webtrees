@@ -55,7 +55,8 @@ class Housekeeping implements MiddlewareInterface
      *
      * @param HousekeepingService $housekeeping_service
      */
-    public function __construct(HousekeepingService $housekeeping_service) {
+    public function __construct(HousekeepingService $housekeeping_service)
+    {
         $this->housekeeping_service = $housekeeping_service;
     }
 
@@ -81,7 +82,8 @@ class Housekeeping implements MiddlewareInterface
     /**
      * Run the various housekeeping services.
      */
-    private function runHousekeeping() {
+    private function runHousekeeping()
+    {
         $filesystem = new Filesystem(new Local(WT_DATA_DIR));
 
         $this->housekeeping_service->deleteOldCacheFiles($filesystem, 'cache', self::MAX_CACHE_AGE);
