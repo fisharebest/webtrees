@@ -86,6 +86,7 @@ class EditMediaController extends AbstractEditController
      * Add a media file to an existing media object.
      *
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return RedirectResponse
      */
@@ -104,7 +105,7 @@ class EditMediaController extends AbstractEditController
             return new RedirectResponse(route('tree-page', ['ged' => $tree->getName()]));
         }
 
-        $file = $this->uploadFile($request);
+        $file = $this->uploadFile($request, $tree);
 
         if ($file === '') {
             FlashMessages::addMessage(I18N::translate('There was an error uploading your file.'));
@@ -350,7 +351,7 @@ class EditMediaController extends AbstractEditController
             "\n",
         ], "\n1 CONT ", $note);
 
-        $file = $this->uploadFile($request);
+        $file = $this->uploadFile($request, $tree);
 
         if ($file === '') {
             return new JsonResponse(['error_message' => I18N::translate('There was an error uploading your file.')], 406);
