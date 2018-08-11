@@ -597,11 +597,11 @@ class AdminTreesController extends AbstractBaseController
     }
 
     /**
-     * @param Tree $tree
+     * @param Tree|null $tree
      *
      * @return Response
      */
-    public function index(Tree $tree): Response
+    public function index(Tree $tree = null): Response
     {
         $multiple_tree_threshold = (int)Site::getPreference('MULTIPLE_TREE_THRESHOLD', self::MULTIPLE_TREE_THRESHOLD);
         $gedcom_files            = $this->gedcomFiles(WT_DATA_DIR);
