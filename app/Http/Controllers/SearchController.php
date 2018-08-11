@@ -146,7 +146,7 @@ class SearchController extends AbstractBaseController
         if ($record !== null && $record->canShow()) {
             return new RedirectResponse($record->url());
         } else {
-            return $this->general($request);
+            return $this->general($request, $tree);
         }
     }
 
@@ -354,6 +354,7 @@ class SearchController extends AbstractBaseController
      * Search and replace.
      *
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return RedirectResponse
      */
@@ -429,6 +430,7 @@ class SearchController extends AbstractBaseController
      * A structured search.
      *
      * @param Request $request
+     * @param Tree    $tree
      *
      * @return Response
      */
