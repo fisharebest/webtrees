@@ -153,9 +153,9 @@ define('WT_START_TIME', microtime(true));
 
 // We want to know about all PHP errors during development, and fewer in production.
 if (WT_DEBUG) {
-	error_reporting(E_ALL | E_STRICT | E_NOTICE | E_DEPRECATED);
+    error_reporting(E_ALL | E_STRICT | E_NOTICE | E_DEPRECATED);
 } else {
-	error_reporting(E_ALL);
+    error_reporting(E_ALL);
 }
 
 require WT_ROOT . 'vendor/autoload.php';
@@ -188,9 +188,12 @@ $path = substr($path, 0, stripos($path, WT_SCRIPT_NAME));
 
 define('WT_BASE_URL', $protocol . '://' . $host . $port . $path);
 
-// Convert PHP errors into exceptions
+// Convert PHP warnings/notices into exceptions
 set_error_handler(function ($errno, $errstr, $errfile, $errline) {
-	throw new \ErrorException($errfile . ':' . $errline . ' ' . $errstr, $errno);
+    // Ignore errors that are silenced with '@'
+    if (error_reporting() & $errno) {
+        throw new \ErrorException($errstr, 0, $errno, $errfile, $errline);
+    }
 });
 
 set_exception_handler(function ($ex) {
@@ -234,7 +237,7 @@ set_exception_handler(function ($ex) {
 		}
 	}
 
-	if (true || error_reporting() & $ex->getCode()) {
+	if (error_reporting() & $ex->getCode()) {
 		echo $message;
 	}
 
