@@ -322,11 +322,10 @@ class AdminTreesController extends AbstractBaseController
 
     /**
      * @param Request $request
-     * @param Tree    $tree
      *
      * @return RedirectResponse
      */
-    public function create(Request $request, Tree $tree): RedirectResponse
+    public function create(Request $request): RedirectResponse
     {
         $tree_name  = $request->get('tree_name', '');
         $tree_title = $request->get('tree_title', '');
@@ -334,13 +333,11 @@ class AdminTreesController extends AbstractBaseController
         // We use the tree name as a file name, so no directory separators allowed.
         $tree_name = basename($tree_name);
 
-        if ($tree_name !== '' && $tree_title !== '') {
-            if (Tree::findByName($tree_name)) {
-                FlashMessages::addMessage(I18N::translate('The family tree “%s” already exists.', e($tree_name)), 'danger');
-            } else {
-                $tree = Tree::create($tree_name, $tree_title);
-                FlashMessages::addMessage(I18N::translate('The family tree “%s” has been created.', e($tree->getName())), 'success');
-            }
+        if (Tree::findByName($tree_name)) {
+            FlashMessages::addMessage(I18N::translate('The family tree “%s” already exists.', e($tree_name)), 'danger');
+        } else {
+            $tree = Tree::create($tree_name, $tree_title);
+            FlashMessages::addMessage(I18N::translate('The family tree “%s” has been created.', e($tree->getName())), 'success');
         }
 
         $url = route('admin-trees', ['ged' => $tree->getName()]);
