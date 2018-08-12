@@ -24,9 +24,8 @@ WT_VERSION=$(shell grep "'WT_VERSION'" includes/session.php | cut -d "'" -f 4 | 
 WT_RELEASE=$(shell grep "'WT_VERSION'" includes/session.php | cut -d "'" -f 4 | awk -F - '{print $$2}')
 
 # Location of minification tools
-CLOSURE_JS=$(BUILD_DIR)/compiler-20140407.jar
-CLOSURE_CSS=$(BUILD_DIR)/closure-stylesheets-20111230.jar
-YUI_COMPRESSOR=$(BUILD_DIR)/yuicompressor-2.4.8.jar
+CLOSURE_JS=$(BUILD_DIR)/closure-compiler-v20180805.jar
+CLOSURE_CSS=$(BUILD_DIR)/closure-stylesheets-1.5.0.jar
 
 # Files to minify
 CSS_FILES=$(shell find $(BUILD_DIR) -name "*.css")
@@ -65,8 +64,6 @@ build/webtrees: clean update
 	# Minification
 	find $@ -name "*.js" -exec java -jar $(CLOSURE_JS) --js "{}" --js_output_file "{}.tmp" \; -exec mv "{}.tmp" "{}" \;
 	find $@ -name "*.css" -exec java -jar $(CLOSURE_CSS) --output-file "{}.tmp" "{}" \; -exec mv "{}.tmp" "{}" \;
-	find $@ -name "*.js"  -exec java -jar $(YUI_COMPRESSOR) -o "{}" "{}" \;
-	find $@ -name "*.css" -exec java -jar $(YUI_COMPRESSOR) -o "{}" "{}" \;
 	# Zip up the release files
 	cd $(@D) && zip -qr $(@F)-$(BUILD_VERSION).zip $(@F)
 	# If we have a GNU private key, sign the file with it
