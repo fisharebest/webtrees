@@ -42,12 +42,14 @@ class ListController extends AbstractBaseController
      * Show a list of all individual or family records.
      *
      * @param Request $request
+     * @param Tree    $tree
+     * @param User    $user
      *
      * @return Response
      */
-    public function familyList(Request $request): Response
+    public function familyList(Request $request, Tree $tree, User $user): Response
     {
-        return $this->individualList($request);
+        return $this->individualList($request, $tree, $user);
     }
 
     /**
