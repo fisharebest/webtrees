@@ -53,6 +53,12 @@
 		"php-coveralls/php-coveralls": "*"
 	},
 	"scripts": {
+                "build": [
+                    "@composer webtrees-mo",
+                    "rm -Rf webtrees/",
+                    "git archive --prefix=webtrees/ HEAD --format=tar | tar -x",
+                    "cp language/*.mo webtrees/language/
+                ],
 		"webtrees-mo": [
 			"msgfmt --output=language/af.mo language/af.po",
 			"msgfmt --output=language/ar.mo language/ar.po",
