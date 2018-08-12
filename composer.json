@@ -55,9 +55,11 @@
 	"scripts": {
                 "build": [
                     "@composer webtrees-mo",
+                    "git checkout language/en-US.mo",
                     "rm -Rf webtrees/",
                     "git archive --prefix=webtrees/ HEAD --format=tar | tar -x",
-                    "cp language/*.mo webtrees/language/
+                    "cp language/*.mo webtrees/language/",
+                    "zip --quiet --recurse-paths --move -9 webtrees.zip webtrees"
                 ],
 		"webtrees-mo": [
 			"msgfmt --output=language/af.mo language/af.po",
