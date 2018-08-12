@@ -378,6 +378,7 @@ a > .wt-icon-arrow-up:hover::before {
 .wt-primary-menu .dropdown-item {
 	/* Space between icons and align with submenu icons */
 	padding: 0 5px 0 0;
+	line-height: 1.0;
 }
 
 [dir=rtl] .wt-primary-menu .dropdown-item {
