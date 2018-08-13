@@ -151,7 +151,7 @@ class AdminUsersController extends AbstractBaseController
         $draw   = (int)$request->get('draw');
 
         $sql_select =
-            "SELECT SQL_CALC_FOUND_ROWS '', u.user_id, user_name, real_name, email, us1.setting_value, us2.setting_value, NULL, us3.setting_value, NULL, us4.setting_value, us5.setting_value" .
+            "SELECT SQL_CALC_FOUND_ROWS u.user_id, user_name, real_name, email, us1.setting_value AS language, us2.setting_value AS registered_at, us3.setting_value AS active_at, us4.setting_value AS verified, us5.setting_value AS verified_by_admin" .
             " FROM `##user` u" .
             " LEFT JOIN `##user_setting` us1 ON (u.user_id=us1.user_id AND us1.setting_name='language')" .
             " LEFT JOIN `##user_setting` us2 ON (u.user_id=us2.user_id AND us2.setting_name='reg_timestamp')" .
@@ -197,8 +197,7 @@ class AdminUsersController extends AbstractBaseController
             $args['offset'] = $start;
         }
 
-        // This becomes a JSON list, not array, so need to fetch with numeric keys.
-        $data = Database::prepare($sql_select)->execute($args)->fetchAll(PDO::FETCH_NUM);
+        $rows = Database::prepare($sql_select)->execute($args)->fetchAll();
 
         // Total filtered/unfiltered rows
         $recordsFiltered = (int)Database::prepare("SELECT FOUND_ROWS()")->fetchOne();
@@ -210,9 +209,10 @@ class AdminUsersController extends AbstractBaseController
         }
 
         // Reformat various columns for display
-        foreach ($data as &$datum) {
-            $user_id   = $datum[1];
-            $user_name = $datum[2];
+        $data = [];
+        foreach ($rows as $row) {
+            $user_id   = $row->user_id;
+            $user_name = $row->user_name;
 
             if ($user_id != $user->getUserId()) {
                 $admin_options = '<div class="dropdown-item"><a href="#" onclick="return masquerade(' . $user_id . ')">' . view('icons/user') . ' ' . /* I18N: Pretend to be another user, by logging in as them */
@@ -222,34 +222,34 @@ class AdminUsersController extends AbstractBaseController
                 $admin_options = '';
             }
 
-            $datum[0] = '<div class="dropdown"><button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" id="edit-user-button-' . $user_id . '" aria-haspopup="true" aria-expanded="false">' . view('icons/edit') . ' <span class="caret"></span></button><div class="dropdown-menu" aria-labelledby="edit-user-button-' . $user_id . '"><div class="dropdown-item"><a href="' . e(route('admin-users-edit', ['user_id' => $user_id])) . '">' . view('icons/edit') . ' ' . I18N::translate('Edit') . '</a></div><div class="divider"></div><div class="dropdown-item"><a href="' . e(route('user-page-user-edit', ['user_id' => $user_id])) . '">' . view('icons/block') . ' ' . I18N::translate('Change the blocks on this user’s “My page”') . '</a></div>' . $admin_options . '</div></div>';
-            // The real name
-            $datum[3] = '<span dir="auto">' . e($datum[3]) . '</span>';
-            // $datum[4] is the email address
+            $datum = [
+                '<div class="dropdown"><button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" id="edit-user-button-' . $user_id . '" aria-haspopup="true" aria-expanded="false">' . view('icons/edit') . ' <span class="caret"></span></button><div class="dropdown-menu" aria-labelledby="edit-user-button-' . $user_id . '"><div class="dropdown-item"><a href="' . e(route('admin-users-edit', ['user_id' => $user_id])) . '">' . view('icons/edit') . ' ' . I18N::translate('Edit') . '</a></div><div class="divider"></div><div class="dropdown-item"><a href="' . e(route('user-page-user-edit', ['user_id' => $user_id])) . '">' . view('icons/block') . ' ' . I18N::translate('Change the blocks on this user’s “My page”') . '</a></div>' . $admin_options . '</div></div>',
+                $user_id,
+                '<span dir="auto">' . e($user_name) . '</span>',
+                '<span dir="auto">' . e($row->user_name) . '</span>',
+                e($row->email),
+                $installed_languages[$row->language] ?? $row->language,
+                $row->registered_at,
+                $row->registered_at > 0 ? FunctionsDate::formatTimestamp($row->registered_at + WT_TIMESTAMP_OFFSET) : '',
+                $row->active_at,
+                $row->active_at > 0 ? FunctionsDate::formatTimestamp($row->active_at + WT_TIMESTAMP_OFFSET) : I18N::translate('Never'),
+                $row->verified ? I18N::translate('yes') : I18N::translate('no'),
+                $row->verified_by_admin ? I18N::translate('yes') : I18N::translate('no'),
+            ];
+
+            // Link to send email to other users.
             if ($user_id != $user->getUserId()) {
                 $datum[4] = '<a href="' . e(route('message', ['to'  => $datum[2],
                                                               'url' => route('admin-users'),
-                    ])) . '">' . e($datum[4]) . '</a>';
+                    ])) . '">' . $datum[4] . '</a>';
             }
-            // The username
-            $datum[2] = '<span dir="auto">' . e($datum[2]) . '</span>';
-            // The langauge
-            if (array_key_exists($datum[5], $installed_languages)) {
-                $datum[5] = $installed_languages[$datum[5]];
-            }
-            // $datum[6] is the sortable registration timestamp
-            $datum[7] = $datum[6] ? FunctionsDate::formatTimestamp($datum[6] + WT_TIMESTAMP_OFFSET) : '';
+
+            // Highlight old registrations.
             if (date('U') - $datum[6] > 604800 && !$datum[10]) {
                 $datum[7] = '<span class="red">' . $datum[7] . '</span>';
             }
-            // $The sortable last-login timestamp
-            if ($datum[8]) {
-                $datum[9] = FunctionsDate::formatTimestamp($datum[8] + WT_TIMESTAMP_OFFSET) . '<br>' . I18N::timeAgo(WT_TIMESTAMP - $datum[8]);
-            } else {
-                $datum[9] = I18N::translate('Never');
-            }
-            $datum[10] = $datum[10] ? I18N::translate('yes') : I18N::translate('no');
-            $datum[11] = $datum[11] ? I18N::translate('yes') : I18N::translate('no');
+
+            $data[] = $datum;
         }
 
         // See http://www.datatables.net/usage/server-side

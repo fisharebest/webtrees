@@ -26,7 +26,6 @@ use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
-use PDO;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -125,7 +124,7 @@ class AdminSiteController extends AbstractBaseController
      */
     public function cleanDataAction(Request $request): RedirectResponse
     {
-        $to_delete = (array)$request->get('to_delete');
+        $to_delete = (array) $request->get('to_delete');
         $to_delete = array_filter($to_delete);
 
         foreach ($to_delete as $path) {
@@ -250,10 +249,10 @@ class AdminSiteController extends AbstractBaseController
         $search   = $request->get('search', []);
         $search   = isset($search['value']) ? $search['value'] : '';
 
-        $start  = (int)$request->get('start');
-        $length = (int)$request->get('length');
+        $start  = (int) $request->get('start');
+        $length = (int) $request->get('length');
         $order  = $request->get('order', []);
-        $draw   = (int)$request->get('draw');
+        $draw   = (int) $request->get('draw');
 
         $sql =
             "SELECT SQL_CALC_FOUND_ROWS log_id, log_time, log_type, log_message, ip_address, IFNULL(user_name, '<none>') AS user_name, IFNULL(gedcom_name, '<none>') AS gedcom_name" .
@@ -323,20 +322,25 @@ class AdminSiteController extends AbstractBaseController
             $args['offset'] = $start;
         }
 
-        // This becomes a JSON list, not array, so need to fetch with numeric keys.
-        $data = Database::prepare($sql)->execute($args)->fetchAll(PDO::FETCH_NUM);
+        $rows = Database::prepare($sql)->execute($args)->fetchAll();
 
-        foreach ($data as &$datum) {
-            $datum[2] = e($datum[2]);
-            $datum[3] = '<span dir="auto">' . e($datum[3]) . '</span>';
-            $datum[4] = '<span dir="auto">' . e($datum[4]) . '</span>';
-            $datum[5] = '<span dir="auto">' . e($datum[5]) . '</span>';
-            $datum[6] = '<span dir="auto">' . e($datum[6]) . '</span>';
+        // Reformat various columns for display
+        $data = [];
+        foreach ($rows as $row) {
+            $data[] = [
+                $row->log_id,
+                $row->log_time,
+                $row->log_type,
+                '<span dir="auto">' . e($row->log_message) . '</span>',
+                '<span dir="auto">' . e($row->ip_address) . '</span>',
+                '<span dir="auto">' . e($row->user_name) . '</span>',
+                '<span dir="auto">' . e($row->gedcom_name) . '</span>',
+            ];
         }
 
         // Total filtered/unfiltered rows
-        $recordsFiltered = (int)Database::prepare("SELECT FOUND_ROWS()")->fetchOne();
-        $recordsTotal    = (int)Database::prepare("SELECT COUNT(*) FROM `##log`")->fetchOne();
+        $recordsFiltered = (int) Database::prepare("SELECT FOUND_ROWS()")->fetchOne();
+        $recordsTotal    = (int) Database::prepare("SELECT COUNT(*) FROM `##log`")->fetchOne();
 
         return new JsonResponse([
             'draw'            => $draw,
@@ -563,10 +567,10 @@ class AdminSiteController extends AbstractBaseController
         }
 
         Site::setPreference('MEMORY_LIMIT', $request->get('MEMORY_LIMIT'));
-        Site::setPreference('MAX_EXECUTION_TIME', (string)(int)$request->get('MAX_EXECUTION_TIME'));
-        Site::setPreference('ALLOW_USER_THEMES', (string)(bool)$request->get('ALLOW_USER_THEMES'));
+        Site::setPreference('MAX_EXECUTION_TIME', (string) (int) $request->get('MAX_EXECUTION_TIME'));
+        Site::setPreference('ALLOW_USER_THEMES', (string) (bool) $request->get('ALLOW_USER_THEMES'));
         Site::setPreference('THEME_DIR', $request->get('THEME_DIR'));
-        Site::setPreference('ALLOW_CHANGE_GEDCOM', (string)(bool)$request->get('ALLOW_CHANGE_GEDCOM'));
+        Site::setPreference('ALLOW_CHANGE_GEDCOM', (string) (bool) $request->get('ALLOW_CHANGE_GEDCOM'));
         Site::setPreference('TIMEZONE', $request->get('TIMEZONE'));
 
         FlashMessages::addMessage(I18N::translate('The website preferences have been updated.'), 'success');
@@ -601,8 +605,8 @@ class AdminSiteController extends AbstractBaseController
     {
         Site::setPreference('WELCOME_TEXT_AUTH_MODE', $request->get('WELCOME_TEXT_AUTH_MODE'));
         Site::setPreference('WELCOME_TEXT_AUTH_MODE_' . WT_LOCALE, $request->get('WELCOME_TEXT_AUTH_MODE_4'));
-        Site::setPreference('USE_REGISTRATION_MODULE', (string)(bool)$request->get('USE_REGISTRATION_MODULE'));
-        Site::setPreference('SHOW_REGISTER_CAUTION', (string)(bool)$request->get('SHOW_REGISTER_CAUTION'));
+        Site::setPreference('USE_REGISTRATION_MODULE', (string) (bool) $request->get('USE_REGISTRATION_MODULE'));
+        Site::setPreference('SHOW_REGISTER_CAUTION', (string) (bool) $request->get('SHOW_REGISTER_CAUTION'));
 
         FlashMessages::addMessage(I18N::translate('The website preferences have been updated.'), 'success');
         $url = route('admin-control-panel');
