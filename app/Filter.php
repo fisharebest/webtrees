@@ -15,7 +15,6 @@
  */
 namespace Fisharebest\Webtrees;
 
-use ErrorException;
 use Fisharebest\Webtrees\CommonMark\CensusTableExtension;
 use Fisharebest\Webtrees\CommonMark\XrefExtension;
 use League\CommonMark\Block\Renderer\DocumentRenderer;
@@ -27,6 +26,7 @@ use League\CommonMark\HtmlRenderer;
 use League\CommonMark\Inline\Parser\AutolinkParser;
 use League\CommonMark\Inline\Renderer\LinkRenderer;
 use League\CommonMark\Inline\Renderer\TextRenderer;
+use Throwable;
 use Webuni\CommonMark\TableExtension\TableExtension;
 
 /**
@@ -98,7 +98,7 @@ class Filter
 
         try {
             return $converter->convertToHtml($text);
-        } catch (ErrorException $ex) {
+        } catch (Throwable $ex) {
             // See issue #1824
             return $text;
         }
@@ -124,7 +124,7 @@ class Filter
 
         try {
             return $converter->convertToHtml($text);
-        } catch (ErrorException $ex) {
+        } catch (Throwable $ex) {
             // See issue #1824
             return $text;
         }
