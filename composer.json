@@ -15,7 +15,8 @@
 		"platform": {
 			"php" : "7.0.8"
 		},
-		"sort-packages": true
+		"sort-packages": true,
+		"process-timeout": 3600
 	},
 	"require": {
 		"ext-gd": "*",
@@ -47,19 +48,44 @@
 		"webuni/commonmark-table-extension": "~0.7"
 	},
 	"require-dev": {
+		"ext-ast": "*",
 		"maximebf/debugbar": "*",
 		"mockery/mockery": "*",
 		"phpunit/phpunit": "*",
 		"php-coveralls/php-coveralls": "*"
 	},
 	"scripts": {
-                "build": [
+                "webtrees-build": [
                     "@composer webtrees-mo",
                     "git checkout language/en-US.mo",
                     "rm -Rf webtrees/",
                     "git archive --prefix=webtrees/ HEAD --format=tar | tar -x",
                     "cp language/*.mo webtrees/language/",
                     "zip --quiet --recurse-paths --move -9 webtrees.zip webtrees"
+                ],
+                "webtrees-check": [
+                    "### PHP-CODE-ANALYZER",
+                    "phpca --since-version=7.0 app/",
+                    "### PHP-CODE-FIXER",
+                    "phpcf app/",
+                    "### PHAN",
+                    "phan --directory . --exclude-directory-list tests,vendor",
+                    "### PHP-PARALLEL-LINT",
+                    "parallel-lint --no-progress --exclude vendor .",
+                    "### PSALM",
+                    "psalm --threads=8"
+                ],
+                "webtrees-tools": [
+                    "### PHAN",
+                    "@composer global require phan/phan=*",
+                    "### PHP-CODE-ANALYZER",
+                    "@composer global require wapmorgan/php-code-analyzer=*",
+                    "### PHP-CODE-FIXER",
+                    "@composer global require wapmorgan/php-code-fixer=*",
+                    "### PHP-PARALLEL-LINT",
+                    "@composer global require jakub-onderka/php-parallel-lint=*",
+                    "### PSALM",
+                    "@composer global require vimeo/psalm=*"
                 ],
 		"webtrees-mo": [
 			"msgfmt --output=language/af.mo language/af.po",
