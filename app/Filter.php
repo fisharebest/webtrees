@@ -15,6 +15,7 @@
  */
 namespace Fisharebest\Webtrees;
 
+use ErrorException;
 use Fisharebest\Webtrees\CommonMark\CensusTableExtension;
 use Fisharebest\Webtrees\CommonMark\XrefExtension;
 use League\CommonMark\Block\Renderer\DocumentRenderer;
@@ -95,7 +96,12 @@ class Filter
 
         $converter = new Converter(new DocParser($environment), new HtmlRenderer($environment));
 
-        return $converter->convertToHtml($text);
+        try {
+            return $converter->convertToHtml($text);
+        } catch (ErrorException $ex) {
+            // See issue #1824
+            return $text;
+        }
     }
 
     /**
@@ -116,7 +122,12 @@ class Filter
 
         $converter = new Converter(new DocParser($environment), new HtmlRenderer($environment));
 
-        return $converter->convertToHtml($text);
+        try {
+            return $converter->convertToHtml($text);
+        } catch (ErrorException $ex) {
+            // See issue #1824
+            return $text;
+        }
     }
 
     /**
@@ -222,7 +233,7 @@ class Filter
      */
     public static function getBool($variable)
     {
-        return (bool)filter_input(INPUT_GET, $variable, FILTER_VALIDATE_BOOLEAN);
+        return (bool) filter_input(INPUT_GET, $variable, FILTER_VALIDATE_BOOLEAN);
     }
 
     /**
@@ -296,7 +307,7 @@ class Filter
      */
     public static function postBool($variable)
     {
-        return (bool)filter_input(INPUT_POST, $variable, FILTER_VALIDATE_BOOLEAN);
+        return (bool) filter_input(INPUT_POST, $variable, FILTER_VALIDATE_BOOLEAN);
     }
 
     /**
