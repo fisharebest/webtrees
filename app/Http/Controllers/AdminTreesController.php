@@ -608,7 +608,7 @@ class AdminTreesController extends AbstractBaseController
         // On sites with hundreds or thousands of trees, this page becomes very large.
         // Just show the current tree, the default tree, and unimported trees
         if (count($all_trees) >= $multiple_tree_threshold) {
-            $all_trees = array_filter($all_trees, function (Tree $x) use ($tree) {
+            $all_trees = array_filter($all_trees, function (Tree $x) use ($tree): bool {
                 return $x->getPreference('imported') === '0' || $tree->getTreeId() === $x->getTreeId() || $x->getName() === Site::getPreference('DEFAULT_GEDCOM');
             });
         }
@@ -960,7 +960,7 @@ class AdminTreesController extends AbstractBaseController
 
         $pedigree_individual = Individual::getInstance($tree->getPreference('PEDIGREE_ROOT_ID'), $tree);
 
-        $members = array_filter(User::all(), function (User $user) use ($tree) {
+        $members = array_filter(User::all(), function (User $user) use ($tree): bool {
             return Auth::isMember($tree, $user);
         });
 

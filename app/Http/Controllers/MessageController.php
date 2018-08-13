@@ -468,11 +468,11 @@ class MessageController extends AbstractBaseController
             case 'all':
                 return User::all();
             case 'never_logged':
-                return array_filter(User::all(), function (User $user) {
+                return array_filter(User::all(), function (User $user): bool {
                     return $user->getPreference('verified_by_admin') && $user->getPreference('reg_timestamp') > $user->getPreference('sessiontime');
                 });
             case 'last_6mo':
-                return array_filter(User::all(), function (User $user) {
+                return array_filter(User::all(), function (User $user): bool {
                     return $user->getPreference('sessiontime') > 0 && WT_TIMESTAMP - $user->getPreference('sessiontime') > 60 * 60 * 24 * 30 * 6;
                 });
         }

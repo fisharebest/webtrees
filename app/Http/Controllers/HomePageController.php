@@ -600,7 +600,7 @@ class HomePageController extends AbstractBaseController
     private function getAvailableTreeBlocks(): array
     {
         $blocks = Module::getAllModulesByComponent('block');
-        $blocks = array_filter($blocks, function (ModuleBlockInterface $block) {
+        $blocks = array_filter($blocks, function (ModuleBlockInterface $block): bool {
             return $block->isGedcomBlock();
         });
 
@@ -615,7 +615,7 @@ class HomePageController extends AbstractBaseController
     private function getAvailableUserBlocks(): array
     {
         $blocks = Module::getAllModulesByComponent('block');
-        $blocks = array_filter($blocks, function (ModuleBlockInterface $block) {
+        $blocks = array_filter($blocks, function (ModuleBlockInterface $block): bool {
             return $block->isUserBlock();
         });
 
@@ -695,7 +695,7 @@ class HomePageController extends AbstractBaseController
      */
     private function filterActiveBlocks(array $blocks, array $active_blocks): array
     {
-        return array_filter(array_map(function (string $module_name) use ($active_blocks) {
+        return array_filter(array_map(function (string $module_name) use ($active_blocks): bool {
             return $active_blocks[$module_name] ?? false;
         }, $blocks));
     }

@@ -385,14 +385,14 @@ class Module
      */
     public static function configurableModules()
     {
-        $modules = array_filter(self::getInstalledModules('disabled'), function (AbstractModule $module) {
+        $modules = array_filter(self::getInstalledModules('disabled'), function (AbstractModule $module): bool {
             return $module instanceof ModuleConfigInterface;
         });
 
         // Exclude disabled modules
         $enabled_modules = Database::prepare("SELECT module_name, status FROM `##module` WHERE status='enabled'")->fetchOneColumn();
 
-        return array_filter($modules, function (AbstractModule $module) use ($enabled_modules) {
+        return array_filter($modules, function (AbstractModule $module) use ($enabled_modules): bool {
             return in_array($module->getName(), $enabled_modules);
         });
     }

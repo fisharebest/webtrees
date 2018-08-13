@@ -405,7 +405,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
         ])->fetchAll();
 
         // Filter foreign languages.
-        $faqs = array_filter($faqs, function (stdClass $faq) {
+        $faqs = array_filter($faqs, function (stdClass $faq): bool {
             return $faq->languages === '' || in_array(WT_LOCALE, explode(',', $faq->languages));
         });
 

@@ -591,7 +591,7 @@ class ListController extends AbstractBaseController
             $list[] = Note::getInstance($row->xref, $tree, $row->gedcom);
         }
 
-        return array_filter($list, function (Note $x) {
+        return array_filter($list, function (Note $x): bool {
             return $x->canShowName();
         });
     }
@@ -616,7 +616,7 @@ class ListController extends AbstractBaseController
             $list[] = Repository::getInstance($row->xref, $tree, $row->gedcom);
         }
 
-        return array_filter($list, function (Repository $x) {
+        return array_filter($list, function (Repository $x): bool {
             return $x->canShowName();
         });
     }
@@ -641,7 +641,7 @@ class ListController extends AbstractBaseController
             $list[] = Source::getInstance($row->xref, $tree, $row->gedcom);
         }
 
-        return array_filter($list, function (Source $x) {
+        return array_filter($list, function (Source $x): bool {
             return $x->canShow();
         });
     }

@@ -186,7 +186,7 @@ class SearchController extends AbstractBaseController
 
         $search_tree_names = (array)$request->get('search_trees', []);
 
-        $search_trees = array_filter($all_trees, function (Tree $tree) use ($search_tree_names) {
+        $search_trees = array_filter($all_trees, function (Tree $tree) use ($search_tree_names): bool {
             return in_array($tree->getName(), $search_tree_names);
         });
 
@@ -292,7 +292,7 @@ class SearchController extends AbstractBaseController
 
         $search_tree_names = (array)$request->get('search_trees', []);
 
-        $search_trees = array_filter($all_trees, function (Tree $tree) use ($search_tree_names) {
+        $search_trees = array_filter($all_trees, function (Tree $tree) use ($search_tree_names): bool {
             return in_array($tree->getName(), $search_tree_names);
         });
 
@@ -673,7 +673,7 @@ class SearchController extends AbstractBaseController
             }
             $list[] = $record;
         }
-        $list = array_filter($list, function (Family $x) {
+        $list = array_filter($list, function (Family $x): bool {
             return $x->canShowName();
         });
 
@@ -719,7 +719,7 @@ class SearchController extends AbstractBaseController
             $list[] = Family::getInstance($row->xref, Tree::findById($row->gedcom_id), $row->gedcom);
         }
 
-        $list = array_filter($list, function (Family $x) use ($search_terms) {
+        $list = array_filter($list, function (Family $x) use ($search_terms): bool {
             $name = I18N::strtolower(strip_tags($x->getFullName()));
             foreach ($search_terms as $q) {
                 if (stripos($name, I18N::strtolower($q)) === false) {
@@ -780,7 +780,7 @@ class SearchController extends AbstractBaseController
             }
             $list[] = $record;
         }
-        $list = array_filter($list, function (Individual $x) {
+        $list = array_filter($list, function (Individual $x): bool {
             return $x->canShowName();
         });
 
@@ -1287,7 +1287,7 @@ class SearchController extends AbstractBaseController
             $list[] = Individual::getInstance($row->xref, Tree::findById($row->gedcom_id), $row->gedcom);
         }
 
-        $list = array_filter($list, function (Individual $x) {
+        $list = array_filter($list, function (Individual $x): bool {
             return $x->canShowName();
         });
 
@@ -1343,7 +1343,7 @@ class SearchController extends AbstractBaseController
             }
             $list[] = $record;
         }
-        $list = array_filter($list, function (Note $x) {
+        $list = array_filter($list, function (Note $x): bool {
             return $x->canShowName();
         });
 
@@ -1399,7 +1399,7 @@ class SearchController extends AbstractBaseController
             }
             $list[] = $record;
         }
-        $list = array_filter($list, function (Repository $x) {
+        $list = array_filter($list, function (Repository $x): bool {
             return $x->canShowName();
         });
 
@@ -1455,7 +1455,7 @@ class SearchController extends AbstractBaseController
             }
             $list[] = $record;
         }
-        $list = array_filter($list, function (Source $x) {
+        $list = array_filter($list, function (Source $x): bool {
             return $x->canShowName();
         });
 

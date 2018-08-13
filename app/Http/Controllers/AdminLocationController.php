@@ -269,7 +269,7 @@ class AdminLocationController extends AbstractBaseController
             return $place;
         }, $places);
 
-        $places = array_filter($places, function(array $place) {
+        $places = array_filter($places, function(array $place): bool {
             return $place['pl_long'] !== 0 && $place['pl_lati'] !== 0;
         });
 

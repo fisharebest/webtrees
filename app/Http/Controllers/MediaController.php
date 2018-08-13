@@ -64,7 +64,7 @@ class MediaController extends AbstractBaseController
     {
         $facts = $record->getFacts();
 
-        array_filter($facts, function (Fact $fact) {
+        array_filter($facts, function (Fact $fact): bool {
             return $fact->getTag() !== 'FILE';
         });
 

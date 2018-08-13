@@ -114,7 +114,7 @@ class AbstractCensusColumn
         if (empty($families)) {
             return null;
         } else {
-            usort($families, function (Family $x, Family $y) {
+            usort($families, function (Family $x, Family $y): int {
                 return Date::compare($x->getMarriageDate(), $y->getMarriageDate());
             });
 

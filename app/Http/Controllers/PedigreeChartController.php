@@ -378,7 +378,7 @@ class PedigreeChartController extends AbstractChartController
             }
             //-- echo the siblings
             foreach ($this->root->getChildFamilies() as $family) {
-                $siblings = array_filter($family->getChildren(), function (Individual $item) {
+                $siblings = array_filter($family->getChildren(), function (Individual $item): bool {
                     return $this->root->getXref() !== $item->getXref();
                 });
                 if (!empty($siblings)) {

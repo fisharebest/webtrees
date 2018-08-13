@@ -250,7 +250,7 @@ class AdminUpgradeController extends AbstractBaseController
         $src_filesystem = new Filesystem(new ZipArchiveAdapter($zip_file, null, 'webtrees'));
         $dst_filesystem = new Filesystem(new Local($tmp_folder));
         $paths          = $src_filesystem->listContents('', true);
-        $paths          = array_filter($paths, function (array $file) {
+        $paths          = array_filter($paths, function (array $file): bool {
             return $file['type'] === 'file';
         });
 
@@ -284,7 +284,7 @@ class AdminUpgradeController extends AbstractBaseController
         $src_filesystem = new Filesystem(new Local(WT_DATA_DIR . basename($download_url, '.zip') . '/webtrees'));
         $dst_filesystem = new Filesystem(new Local(WT_ROOT));
         $paths          = $src_filesystem->listContents('', true);
-        $paths          = array_filter($paths, function (array $file) {
+        $paths          = array_filter($paths, function (array $file): bool {
             return $file['type'] === 'file';
         });
 

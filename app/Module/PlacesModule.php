@@ -157,7 +157,7 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
 
         $useable_facts = array_filter(
             $facts,
-            function (Fact $item) {
+            function (Fact $item): bool {
                 return !$item->getPlace()->isEmpty();
             }
         );

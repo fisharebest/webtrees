@@ -105,7 +105,7 @@ class FunctionsDb
                 }
             }
         }
-        $list = array_filter($list, function (Individual $x) {
+        $list = array_filter($list, function (Individual $x): bool {
             return $x->canShowName();
         });
 
@@ -222,7 +222,7 @@ class FunctionsDb
         foreach ($rows as $row) {
             $list[] = Individual::getInstance($row->xref, Tree::findById($row->gedcom_id), $row->gedcom);
         }
-        $list = array_filter($list, function (Individual $x) {
+        $list = array_filter($list, function (Individual $x): bool {
             return $x->canShowName();
         });
 

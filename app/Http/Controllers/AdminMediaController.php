@@ -320,7 +320,7 @@ class AdminMediaController extends AbstractBaseController
 
                 // Filter unused files
                 if ($search) {
-                    $unused_files = array_filter($unused_files, function ($x) use ($search) {
+                    $unused_files = array_filter($unused_files, function ($x) use ($search): bool {
                         return strpos($x, $search) !== false;
                     });
                 }

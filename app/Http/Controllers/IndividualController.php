@@ -201,7 +201,7 @@ class IndividualController extends AbstractBaseController
         }
         Functions::sortFacts($facts);
 
-        $facts = array_filter($facts, function (Fact $fact) {
+        $facts = array_filter($facts, function (Fact $fact): bool {
             return !in_array($fact->getTag(), self::EXCLUDE_CHART_FACTS);
         });
 
@@ -408,7 +408,7 @@ class IndividualController extends AbstractBaseController
     {
         $sidebars = Module::getActiveSidebars($individual->getTree());
 
-        return array_filter($sidebars, function (ModuleSidebarInterface $sidebar) use ($individual) {
+        return array_filter($sidebars, function (ModuleSidebarInterface $sidebar) use ($individual): bool {
             return $sidebar->hasSidebarContent($individual);
         });
     }
@@ -425,7 +425,7 @@ class IndividualController extends AbstractBaseController
     {
         $tabs = Module::getActiveTabs($individual->getTree());
 
-        return array_filter($tabs, function (ModuleTabInterface $tab) use ($individual) {
+        return array_filter($tabs, function (ModuleTabInterface $tab) use ($individual): bool {
             return $tab->hasTabContent($individual);
         });
     }

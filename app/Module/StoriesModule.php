@@ -350,12 +350,12 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
         }
 
         // Filter non-existant and private individuals.
-        $stories = array_filter($stories, function (stdClass $story) {
+        $stories = array_filter($stories, function (stdClass $story): bool {
             return $story->individual !== null && $story->individual->canShow();
         });
 
         // Filter foreign languages.
-        $stories = array_filter($stories, function (stdClass $story) {
+        $stories = array_filter($stories, function (stdClass $story): bool {
             return $story->languages === '' || in_array(WT_LOCALE, explode(',', $story->languages));
         });
 

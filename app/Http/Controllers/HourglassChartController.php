@@ -348,7 +348,7 @@ class HourglassChartController extends AbstractChartController
                 }
 
                 // filter out root person from children array so only siblings remain
-                $siblings       = array_filter($family->getChildren(), function (Individual $x) use ($individual) {
+                $siblings       = array_filter($family->getChildren(), function (Individual $x) use ($individual): bool {
                     return $x !== $individual;
                 });
                 $count_siblings = count($siblings);

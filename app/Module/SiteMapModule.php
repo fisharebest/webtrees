@@ -246,7 +246,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
         $records = array_filter($records);
 
         // Skip private records.
-        $records = array_filter($records, function (GedcomRecord $record) {
+        $records = array_filter($records, function (GedcomRecord $record): bool {
             return $record->canShow();
         });
 

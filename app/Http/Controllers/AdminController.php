@@ -125,7 +125,7 @@ class AdminController extends AbstractBaseController
      */
     public function controlPanelManager(): Response
     {
-        $all_trees = array_filter(Tree::getAll(), function (Tree $tree) {
+        $all_trees = array_filter(Tree::getAll(), function (Tree $tree): bool {
             return Auth::isManager($tree);
         });
 
@@ -491,7 +491,7 @@ class AdminController extends AbstractBaseController
             $individual = Individual::getInstance($datum->i_id, $tree, $datum->i_gedcom);
 
             $facts = $individual->getFacts(null, true);
-            $facts = array_filter($facts, function (Fact $fact) use ($ignore_facts) {
+            $facts = array_filter($facts, function (Fact $fact) use ($ignore_facts): bool {
                 return !$fact->isPendingDeletion() && !in_array($fact->getTag(), $ignore_facts);
             });
 
@@ -632,7 +632,7 @@ class AdminController extends AbstractBaseController
         $recordsTotal = count($thumbnails);
 
         if ($search !== '') {
-            $thumbnails = array_filter($thumbnails, function (string $thumbnail) use ($search) {
+            $thumbnails = array_filter($thumbnails, function (string $thumbnail) use ($search): bool {
                 return stripos($thumbnail, $search) !== false;
             });
         }

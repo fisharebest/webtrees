@@ -85,7 +85,7 @@ class LifespansChartController extends AbstractChartController
 
         // Filter duplicates and private individuals.
         $xrefs = array_unique($xrefs);
-        $xrefs = array_filter($xrefs, function (string $xref) use ($tree) {
+        $xrefs = array_filter($xrefs, function (string $xref) use ($tree): bool {
             $individual = Individual::getInstance($xref, $tree);
 
             return $individual !== null && $individual->canShow();
@@ -119,7 +119,7 @@ class LifespansChartController extends AbstractChartController
             return Individual::getInstance($xref, $tree);
         }, $xrefs);
 
-        $individuals = array_filter($individuals, function (Individual $individual = null) {
+        $individuals = array_filter($individuals, function (Individual $individual = null): bool {
             return $individual !== null && $individual->canShow();
         });
 

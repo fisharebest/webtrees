@@ -66,7 +66,7 @@ class TimelineChartController extends AbstractChartController
 
         $xrefs = (array)$request->get('xrefs', []);
         $xrefs = array_unique($xrefs);
-        $xrefs = array_filter($xrefs, function (string $xref) use ($tree) {
+        $xrefs = array_filter($xrefs, function (string $xref) use ($tree): bool {
             $individual = Individual::getInstance($xref, $tree);
 
             return $individual !== null && $individual->canShow();
@@ -75,7 +75,7 @@ class TimelineChartController extends AbstractChartController
         // Generate URLs omitting each xref.
         $remove_urls = [];
         foreach ($xrefs as $xref) {
-            $tmp = array_filter($xrefs, function ($x) use ($xref) {
+            $tmp = array_filter($xrefs, function ($x) use ($xref): bool {
                 return $x !== $xref;
             });
 
@@ -144,7 +144,7 @@ class TimelineChartController extends AbstractChartController
             return Individual::getInstance($xref, $tree);
         }, $xrefs);
 
-        $individuals = array_filter($individuals, function (Individual $individual = null) {
+        $individuals = array_filter($individuals, function (Individual $individual = null): bool {
             return $individual !== null && $individual->canShow();
         });
 
