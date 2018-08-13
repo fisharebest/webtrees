@@ -49,15 +49,14 @@ class User
      */
     public function __construct(stdClass $user)
     {
-        $this->user_id = (int)$user->user_id;
+        $this->user_id   = (int) $user->user_id;
         $this->user_name = $user->user_name;
         $this->real_name = $user->real_name;
-        $this->email = $user->email;
+        $this->email     = $user->email;
     }
 
     /**
      * Create a new user.
-     *
      * The calling code needs to check for duplicates identifiers before calling
      * this function.
      *
@@ -84,13 +83,17 @@ class User
         Database::prepare(
             "INSERT INTO `##block` (`user_id`, `location`, `block_order`, `module_name`)" .
             " SELECT :user_id , `location`, `block_order`, `module_name` FROM `##block` WHERE `user_id` = -1"
-        )->execute(['user_id' => $user->getUserId()]);
+        )->execute([
+            'user_id' => $user->getUserId(),
+        ]);
 
         return $user;
     }
 
     /**
      * Delete a user
+     *
+     * @return void
      */
     public function delete()
     {
@@ -105,7 +108,7 @@ class User
         Database::prepare("DELETE `##block_setting` FROM `##block_setting` JOIN `##block` USING (block_id) WHERE user_id=?")->execute([$this->user_id]);
         Database::prepare("DELETE FROM `##block` WHERE user_id=?")->execute([$this->user_id]);
         Database::prepare("DELETE FROM `##user_gedcom_setting` WHERE user_id=?")->execute([$this->user_id]);
-        Database::prepare("DELETE FROM `##gedcom_setting` WHERE setting_value=? AND setting_name IN ('CONTACT_USER_ID', 'WEBMASTER_USER_ID')")->execute([(string)$this->user_id]);
+        Database::prepare("DELETE FROM `##gedcom_setting` WHERE setting_value=? AND setting_name IN ('CONTACT_USER_ID', 'WEBMASTER_USER_ID')")->execute([(string) $this->user_id]);
         Database::prepare("DELETE FROM `##user_setting` WHERE user_id=?")->execute([$this->user_id]);
         Database::prepare("DELETE FROM `##message` WHERE user_id=?")->execute([$this->user_id]);
         Database::prepare("DELETE FROM `##user` WHERE user_id=?")->execute([$this->user_id]);
@@ -143,7 +146,7 @@ class User
      */
     public static function findByEmail($email)
     {
-        $user_id = Database::prepare(
+        $user_id = (int) Database::prepare(
             "SELECT user_id FROM `##user` WHERE email = :email"
         )->execute([
             'email' => $email,
@@ -161,7 +164,7 @@ class User
      */
     public static function findByIdentifier($identifier)
     {
-        $user_id = Database::prepare(
+        $user_id = (int) Database::prepare(
             "SELECT user_id FROM `##user` WHERE ? IN (user_name, email)"
         )->execute([$identifier])->fetchOne();
 
@@ -177,7 +180,7 @@ class User
      */
     public static function findByIndividual(Individual $individual)
     {
-        $user_id = Database::prepare(
+        $user_id = (int) Database::prepare(
             "SELECT user_id" .
             " FROM `##user_gedcom_setting`" .
             " WHERE gedcom_id = :tree_id AND setting_name = 'gedcomid' AND setting_value = :xref"
@@ -198,7 +201,7 @@ class User
      */
     public static function findByUserName($user_name)
     {
-        $user_id = Database::prepare(
+        $user_id = (int) Database::prepare(
             "SELECT user_id FROM `##user` WHERE user_name = :user_name"
         )->execute([
             'user_name' => $user_name,
@@ -214,7 +217,7 @@ class User
      */
     public static function findLatestToRegister()
     {
-        $user_id = Database::prepare(
+        $user_id = (int) Database::prepare(
             "SELECT u.user_id" .
             " FROM `##user` u" .
             " LEFT JOIN `##user_setting` us ON (u.user_id=us.user_id AND us.setting_name='reg_timestamp') " .
@@ -229,7 +232,7 @@ class User
      *
      * @return User[]
      */
-    public static function all()
+    public static function all(): array
     {
         $rows = Database::prepare(
             "SELECT user_id, user_name, real_name, email" .
@@ -248,7 +251,7 @@ class User
      *
      * @return User[]
      */
-    public static function administrators()
+    public static function administrators(): array
     {
         $rows = Database::prepare(
             "SELECT user_id, user_name, real_name, email" .
@@ -258,18 +261,19 @@ class User
             " ORDER BY real_name"
         )->fetchAll();
 
-        return array_map(function ($row) {
+        return array_map(function (stdClass $row) {
             return new static($row);
         }, $rows);
     }
 
-    /** Validate a supplied password
+    /**
+     * Validate a supplied password
      *
      * @param string $password
      *
      * @return bool
      */
-    public function checkPassword($password)
+    public function checkPassword(string $password): bool
     {
         $password_hash = Database::prepare(
             "SELECT password FROM `##user` WHERE user_id = ?"
@@ -291,7 +295,7 @@ class User
      *
      * @return User[]
      */
-    public static function managers()
+    public static function managers(): array
     {
         $rows = Database::prepare(
             "SELECT user_id, user_name, real_name, email" .
@@ -301,7 +305,7 @@ class User
             " ORDER BY real_name"
         )->fetchAll();
 
-        return array_map(function ($row) {
+        return array_map(function (stdClass $row) {
             return new static($row);
         }, $rows);
     }
@@ -311,7 +315,7 @@ class User
      *
      * @return User[]
      */
-    public static function moderators()
+    public static function moderators(): array
     {
         $rows = Database::prepare(
             "SELECT user_id, user_name, real_name, email" .
@@ -321,7 +325,7 @@ class User
             " ORDER BY real_name"
         )->fetchAll();
 
-        return array_map(function ($row) {
+        return array_map(function (stdClass $row) {
             return new static($row);
         }, $rows);
     }
@@ -331,7 +335,7 @@ class User
      *
      * @return User[]
      */
-    public static function unapproved()
+    public static function unapproved(): array
     {
         $rows = Database::prepare(
             "SELECT user_id, user_name, real_name, email" .
@@ -340,7 +344,7 @@ class User
             " ORDER BY real_name"
         )->fetchAll();
 
-        return array_map(function ($row) {
+        return array_map(function (stdClass $row) {
             return new static($row);
         }, $rows);
     }
@@ -350,7 +354,7 @@ class User
      *
      * @return User[]
      */
-    public static function unverified()
+    public static function unverified(): array
     {
         $rows = Database::prepare(
             "SELECT user_id, user_name, real_name, email" .
@@ -359,7 +363,7 @@ class User
             " ORDER BY real_name"
         )->fetchAll();
 
-        return array_map(function ($row) {
+        return array_map(function (stdClass $row) {
             return new static($row);
         }, $rows);
     }
@@ -369,7 +373,7 @@ class User
      *
      * @return User[]
      */
-    public static function allLoggedIn()
+    public static function allLoggedIn(): array
     {
         $rows = Database::prepare(
             "SELECT DISTINCT user_id, user_name, real_name, email" .
@@ -377,7 +381,7 @@ class User
             " JOIN `##session` USING (user_id)"
         )->fetchAll();
 
-        return array_map(function ($row) {
+        return array_map(function (stdClass $row) {
             return new static($row);
         }, $rows);
     }
@@ -509,7 +513,6 @@ class User
 
     /**
      * Fetch a user option/setting from the wt_user_setting table.
-     *
      * Since we'll fetch several settings for each user, and since there aren’t
      * that many of them, fetch them all in one database query
      *

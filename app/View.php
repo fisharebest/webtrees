@@ -50,10 +50,10 @@ class View
     /**
      * Createa view from a template name and optional data.
      *
-     * @param       $name
-     * @param array $data
+     * @param string $name
+     * @param array  $data
      */
-    public function __construct($name, $data = [])
+    public function __construct(string $name, $data = [])
     {
         $this->name = $name;
         $this->data = $data;
@@ -64,6 +64,8 @@ class View
      *
      * @param string $key
      * @param mixed  $value
+     *
+     * @return void
      */
     public static function share(string $key, $value)
     {
@@ -76,6 +78,8 @@ class View
      * @see https://laravel.com/docs/5.5/blade#stacks
      *
      * @param string $stack
+     *
+     * @return void
      */
     public static function push(string $stack)
     {
@@ -85,6 +89,8 @@ class View
 
     /**
      * Implementation of Blade "stacks".
+     *
+     * @return void
      */
     public static function endpush()
     {
@@ -177,7 +183,7 @@ class View
             // Core views
             $paths[] = WT_ROOT . 'resources/views';
 
-            $paths = array_filter($paths, function (string $path) { return is_dir($path); });
+            $paths = array_filter($paths, function (string $path): bool { return is_dir($path); });
         }
 
         return $paths;
