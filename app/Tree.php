@@ -208,13 +208,13 @@ class Tree
     /**
      * Get the tree’s user-configuration settings.
      *
-     * @param User        $user
-     * @param string      $setting_name
-     * @param string|null $default
+     * @param User   $user
+     * @param string $setting_name
+     * @param string $default
      *
      * @return string
      */
-    public function getUserPreference(User $user, $setting_name, $default = null)
+    public function getUserPreference(User $user, $setting_name, $default = '')
     {
         // There are lots of settings, and we need to fetch lots of them on every page
         // so it is quicker to fetch them all in one go.
@@ -247,7 +247,7 @@ class Tree
     {
         if ($this->getUserPreference($user, $setting_name) !== $setting_value) {
             // Update the database
-            if ($setting_value === null) {
+            if ($setting_value === '') {
                 Database::prepare(
                     "DELETE FROM `##user_gedcom_setting` WHERE gedcom_id = :tree_id AND user_id = :user_id AND setting_name = :setting_name"
                 )->execute([
@@ -783,10 +783,10 @@ class Tree
     {
         static $individual; // Only query the DB once.
 
-        if (!$individual && $this->getUserPreference($user, 'rootid')) {
+        if (!$individual && $this->getUserPreference($user, 'rootid') !== '') {
             $individual = Individual::getInstance($this->getUserPreference($user, 'rootid'), $this);
         }
-        if (!$individual && $this->getUserPreference($user, 'gedcomid')) {
+        if (!$individual && $this->getUserPreference($user, 'gedcomid') !== '') {
             $individual = Individual::getInstance($this->getUserPreference($user, 'gedcomid'), $this);
         }
         if (!$individual) {
@@ -820,10 +820,10 @@ class Tree
     {
         static $individual; // Only query the DB once.
 
-        if (!$individual && $this->getUserPreference(Auth::user(), 'rootid')) {
+        if (!$individual && $this->getUserPreference(Auth::user(), 'rootid') !== '') {
             $individual = Individual::getInstance($this->getUserPreference(Auth::user(), 'rootid'), $this);
         }
-        if (!$individual && $this->getUserPreference(Auth::user(), 'gedcomid')) {
+        if (!$individual && $this->getUserPreference(Auth::user(), 'gedcomid') !== '') {
             $individual = Individual::getInstance($this->getUserPreference(Auth::user(), 'gedcomid'), $this);
         }
         if (!$individual) {

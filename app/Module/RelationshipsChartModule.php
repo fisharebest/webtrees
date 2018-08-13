@@ -83,7 +83,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleConfigInt
     public function getChartMenu(Individual $individual)
     {
         $tree     = $individual->getTree();
-        $gedcomid = $tree->getUserPreference(Auth::user(), 'gedcomid', '');
+        $gedcomid = $tree->getUserPreference(Auth::user(), 'gedcomid');
 
         if ($gedcomid !== '') {
             return new Menu(

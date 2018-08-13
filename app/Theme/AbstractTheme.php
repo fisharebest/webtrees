@@ -1719,7 +1719,7 @@ abstract class AbstractTheme
     {
         $gedcomid = $this->tree->getUserPreference(Auth::user(), 'gedcomid');
 
-        if ($gedcomid && Module::isActiveChart($this->tree, 'pedigree_chart')) {
+        if ($gedcomid !== '' && Module::isActiveChart($this->tree, 'pedigree_chart')) {
             return new Menu(
                 I18N::translate('My pedigree'),
                 route('pedigree', [
