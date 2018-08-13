@@ -48,7 +48,6 @@
 		"webuni/commonmark-table-extension": "~0.7"
 	},
 	"require-dev": {
-		"ext-ast": "*",
 		"maximebf/debugbar": "*",
 		"mockery/mockery": "*",
 		"phpunit/phpunit": "*",
