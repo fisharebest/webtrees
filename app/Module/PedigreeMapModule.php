@@ -122,7 +122,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
         $indi        = Individual::getInstance($xref, $tree);
         $color_count = count(self::LINE_COLORS);
 
-        $facts = $this->getPedigreeMapFacts($request);
+        $facts = $this->getPedigreeMapFacts($request, $tree);
 
         $geojson = [
             'type'     => 'FeatureCollection',

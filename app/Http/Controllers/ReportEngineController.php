@@ -211,7 +211,7 @@ class ReportEngineController extends AbstractBaseController
                         if ($record && $record->canShowName()) {
                             $newvars[$name]['gedcom'] = $record->privatizeGedcom(Auth::accessLevel($tree));
                         } else {
-                            return $this->reportSetup($request);
+                            return $this->reportSetup($request, $tree);
                         }
                         break;
                     case 'FAM':
@@ -219,7 +219,7 @@ class ReportEngineController extends AbstractBaseController
                         if ($record && $record->canShowName()) {
                             $newvars[$name]['gedcom'] = $record->privatizeGedcom(Auth::accessLevel($tree));
                         } else {
-                            return $this->reportSetup($request);
+                            return $this->reportSetup($request, $tree);
                         }
                         break;
                     case 'SOUR':
@@ -227,7 +227,7 @@ class ReportEngineController extends AbstractBaseController
                         if ($record && $record->canShowName()) {
                             $newvars[$name]['gedcom'] = $record->privatizeGedcom(Auth::accessLevel($tree));
                         } else {
-                            return $this->reportSetup($request);
+                            return $this->reportSetup($request, $tree);
                         }
                         break;
                 }

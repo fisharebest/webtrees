@@ -41,13 +41,14 @@ class HomePageController extends AbstractBaseController
      *
      * @param Request $request
      * @param Tree    $tree
+     * @param User    $user
      *
      * @return Response
      */
-    public function treePageBlockEdit(Request $request, Tree $tree): Response
+    public function treePageBlockEdit(Request $request, Tree $tree, User $user): Response
     {
         $block_id = (int)$request->get('block_id');
-        $block    = $this->treeBlock($request);
+        $block    = $this->treeBlock($request, $user);
         $title    = $block->getTitle() . ' — ' . I18N::translate('Preferences');
 
         return $this->viewResponse('modules/edit-block-config', [
@@ -64,13 +65,14 @@ class HomePageController extends AbstractBaseController
      *
      * @param Request $request
      * @param Tree    $tree
+     * @param User    $user
      *
      * @return RedirectResponse
      */
-    public function treePageBlockUpdate(Request $request, Tree $tree): RedirectResponse
+    public function treePageBlockUpdate(Request $request, Tree $tree, User $user): RedirectResponse
     {
         $block_id = (int)$request->get('block_id');
-        $block    = $this->treeBlock($request);
+        $block    = $this->treeBlock($request, $user);
 
         $block->configureBlock($tree, $block_id);
 
@@ -117,13 +119,14 @@ class HomePageController extends AbstractBaseController
      *
      * @param Request $request
      * @param Tree    $tree
+     * @param User    $user
      *
      * @return Response
      */
-    public function userPageBlockEdit(Request $request, Tree $tree): Response
+    public function userPageBlockEdit(Request $request, Tree $tree, User $user): Response
     {
         $block_id = (int)$request->get('block_id');
-        $block    = $this->userBlock($request);
+        $block    = $this->userBlock($request, $user);
         $title    = $block->getTitle() . ' — ' . I18N::translate('Preferences');
 
         return $this->viewResponse('modules/edit-block-config', [
@@ -143,10 +146,10 @@ class HomePageController extends AbstractBaseController
      *
      * @return RedirectResponse
      */
-    public function userPageBlockUpdate(Request $request, Tree $tree): RedirectResponse
+    public function userPageBlockUpdate(Request $request, Tree $tree, User $user): RedirectResponse
     {
         $block_id = (int)$request->get('block_id');
-        $block    = $this->userBlock($request);
+        $block    = $this->userBlock($request, $user);
 
         $block->configureBlock($tree, $block_id);
 
