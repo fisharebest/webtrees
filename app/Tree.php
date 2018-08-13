@@ -15,6 +15,7 @@
  */
 namespace Fisharebest\Webtrees;
 
+use Exception;
 use Fisharebest\Webtrees\Functions\FunctionsExport;
 use Fisharebest\Webtrees\Functions\FunctionsImport;
 use PDOException;
@@ -83,12 +84,12 @@ class Tree
         foreach ($rows as $row) {
             if ($row->xref !== null) {
                 if ($row->tag_type !== null) {
-                    $this->individual_fact_privacy[$row->xref][$row->tag_type] = (int)$row->resn;
+                    $this->individual_fact_privacy[$row->xref][$row->tag_type] = (int) $row->resn;
                 } else {
-                    $this->individual_privacy[$row->xref] = (int)$row->resn;
+                    $this->individual_privacy[$row->xref] = (int) $row->resn;
                 }
             } else {
-                $this->fact_privacy[$row->tag_type] = (int)$row->resn;
+                $this->fact_privacy[$row->tag_type] = (int) $row->resn;
             }
         }
     }
@@ -316,7 +317,7 @@ class Tree
                 Auth::id(),
             ])->fetchAll();
             foreach ($rows as $row) {
-                self::$trees[$row->tree_name] = new self((int)$row->tree_id, $row->tree_name, $row->tree_title);
+                self::$trees[$row->tree_name] = new self((int) $row->tree_id, $row->tree_name, $row->tree_title);
             }
         }
 
@@ -329,7 +330,6 @@ class Tree
      * @param int $tree_id
      *
      * @throws \DomainException
-     *
      * @return Tree
      */
     public static function findById($tree_id)
@@ -499,7 +499,7 @@ class Tree
      */
     public function hasPendingEdit()
     {
-        return (bool)Database::prepare(
+        return (bool) Database::prepare(
             "SELECT 1 FROM `##change` WHERE status = 'pending' AND gedcom_id = :tree_id"
         )->execute([
             'tree_id' => $this->tree_id,
@@ -513,8 +513,10 @@ class Tree
      * support) media data.
      *
      * @param bool $keep_media
+     *
+     * @return void
      */
-    public function deleteGenealogyData($keep_media)
+    public function deleteGenealogyData(bool $keep_media)
     {
         Database::prepare("DELETE FROM `##gedcom_chunk` WHERE gedcom_id = ?")->execute([$this->tree_id]);
         Database::prepare("DELETE FROM `##individuals`  WHERE i_file    = ?")->execute([$this->tree_id]);
@@ -538,6 +540,8 @@ class Tree
 
     /**
      * Delete everything relating to a tree
+     *
+     * @return void
      */
     public function delete()
     {
@@ -567,6 +571,8 @@ class Tree
      * Export the tree to a GEDCOM file
      *
      * @param resource $stream
+     *
+     * @return void
      */
     public function exportGedcom($stream)
     {
@@ -607,7 +613,8 @@ class Tree
      * @param string $path     The full path to the (possibly temporary) file.
      * @param string $filename The preferred filename, for export/download.
      *
-     * @throws \Exception
+     * @return void
+     * @throws Exception
      */
     public function importGedcomFile($path, $filename)
     {
@@ -622,7 +629,7 @@ class Tree
         // Don’t allow the user to cancel the request. We do not want to be left with an incomplete transaction.
         ignore_user_abort(true);
 
-        $this->deleteGenealogyData($this->getPreference('keep_media'));
+        $this->deleteGenealogyData((bool) $this->getPreference('keep_media'));
         $this->setPreference('gedcom_filename', $filename);
         $this->setPreference('imported', '0');
 
@@ -672,7 +679,7 @@ class Tree
                 "UPDATE `##site_setting` SET setting_value = LAST_INSERT_ID(setting_value + :increment) WHERE setting_name = 'next_xref'"
             );
             $statement->execute([
-                'increment' => (int)$increment,
+                'increment' => (int) $increment,
             ]);
 
             if ($statement->rowCount() === 0) {
@@ -716,9 +723,8 @@ class Tree
      *
      * @param string $gedcom
      *
-     * @throws \Exception
-     *
      * @return GedcomRecord|Individual|Family|Note|Source|Repository|Media
+     * @throws Exception
      */
     public function createRecord($gedcom)
     {
@@ -726,11 +732,11 @@ class Tree
             $xref = $match[1];
             $type = $match[2];
         } else {
-            throw new \Exception('Invalid argument to GedcomRecord::createRecord(' . $gedcom . ')');
+            throw new Exception('Invalid argument to GedcomRecord::createRecord(' . $gedcom . ')');
         }
         if (strpos("\r", $gedcom) !== false) {
             // MSDOS line endings will break things in horrible ways
-            throw new \Exception('Evil line endings found in GedcomRecord::createRecord(' . $gedcom . ')');
+            throw new Exception('Evil line endings found in GedcomRecord::createRecord(' . $gedcom . ')');
         }
 
         // webtrees creates XREFs containing digits. Anything else (e.g. “new”) is just a placeholder.
