@@ -827,8 +827,8 @@ class AdminLocationController extends AbstractBaseController
             $json = [
                 'zoom'        => (int) $row->pl_zoom ?: 2,
                 'coordinates' => [
-                    (float) strtr($row->pl_lati, ['N' => '', 'S' => '-', ',' => '.']),
-                    (float) strtr($row->pl_long, ['E' => '', 'W' => '-', ',' => '.']),
+                    (float) strtr($row->pl_lati ?? '0', ['N' => '', 'S' => '-', ',' => '.']),
+                    (float) strtr($row->pl_long ?? '0', ['E' => '', 'W' => '-', ',' => '.']),
                 ],
             ];
         }
