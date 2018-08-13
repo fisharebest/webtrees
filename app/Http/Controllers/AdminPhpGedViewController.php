@@ -764,7 +764,7 @@ class AdminPhpGedViewController extends AbstractBaseController
             " WHERE gedcom_id>0" .
             " AND   gs1.setting_name='config'" .
             " AND   gs2.setting_name='privacy'"
-        )->fetchAll(PDO::FETCH_ASSOC);
+        )->fetchAll();
 
         foreach ($GEDCOMS as $GEDCOM => $GED_DATA) {
             // We read these variables from PhpGedView's index/*_conf.php, and set them here in case any are missing.
@@ -837,7 +837,7 @@ class AdminPhpGedViewController extends AbstractBaseController
             $config = str_replace([
                 '$INDEX_DIRECTORY',
                 '${INDEX_DIRECTORY}',
-            ], $INDEX_DIRECTORY, $GED_DATA['config']);
+            ], $INDEX_DIRECTORY, $GED_DATA->config);
             if (substr($config, 0, 1) === '.') {
                 $config = $pgv_path . '/' . $config;
             }
@@ -851,7 +851,7 @@ class AdminPhpGedViewController extends AbstractBaseController
             $privacy = str_replace([
                 '$INDEX_DIRECTORY',
                 '${INDEX_DIRECTORY}',
-            ], $INDEX_DIRECTORY, $GED_DATA['privacy']);
+            ], $INDEX_DIRECTORY, $GED_DATA->privacy);
             if (substr($config, 0, 1) == '.') {
                 $privacy = $pgv_path . '/' . $privacy;
             }
@@ -867,7 +867,7 @@ class AdminPhpGedViewController extends AbstractBaseController
                 foreach ($global_facts as $key => $value) {
                     if (isset($value['details'])) {
                         $stmt_default_resn->execute([
-                            $GED_DATA['id'],
+                            $GED_DATA->id,
                             null,
                             $key,
                             $value['details'],
@@ -877,7 +877,7 @@ class AdminPhpGedViewController extends AbstractBaseController
 
                 foreach ($person_privacy as $key => $value) {
                     $stmt_default_resn->execute([
-                        $GED_DATA['id'],
+                        $GED_DATA->id,
                         $key,
                         null,
                         $value['details'],
@@ -888,7 +888,7 @@ class AdminPhpGedViewController extends AbstractBaseController
                     foreach ($array as $key2 => $value) {
                         if (isset($value['details'])) {
                             $stmt_default_resn->execute([
-                                $GED_DATA['id'],
+                                $GED_DATA->id,
                                 $key1,
                                 $key2,
                                 $value['details'],
@@ -899,280 +899,280 @@ class AdminPhpGedViewController extends AbstractBaseController
             }
 
             $stmt_gedcom_setting->execute([
-                $GED_DATA['id'],
+                $GED_DATA->id,
                 'ADVANCED_NAME_FACTS',
                 $ADVANCED_NAME_FACTS,
             ]);
             $stmt_gedcom_setting->execute([
-                $GED_DATA['id'],
+                $GED_DATA->id,
                 'ADVANCED_PLAC_FACTS',
                 $ADVANCED_PLAC_FACTS,
             ]);
             $stmt_gedcom_setting->execute([
-                $GED_DATA['id'],
+                $GED_DATA->id,
                 'ALLOW_THEME_DROPDOWN',
                 $ALLOW_THEME_DROPDOWN,
             ]);
             $stmt_gedcom_setting->execute([
-                $GED_DATA['id'],
+                $GED_DATA->id,
                 'CALENDAR_FORMAT',
                 $CALENDAR_FORMAT,
             ]);
             $stmt_gedcom_setting->execute([
-                $GED_DATA['id'],
+                $GED_DATA->id,
                 'CHART_BOX_TAGS',
                 $CHART_BOX_TAGS,
             ]);
             $user = User::findByIdentifier($CONTACT_EMAIL);
             if ($user) {
                 $stmt_gedcom_setting->execute([
-                    $GED_DATA['id'],
+                    $GED_DATA->id,
                     'CONTACT_USER_ID',
                     $user->getUserId(),
                 ]);
             }
             $stmt_gedcom_setting->execute([
-                $GED_DATA['id'],
+                $GED_DATA->id,
                 'DEFAULT_PEDIGREE_GENERATIONS',
                 $DEFAULT_PEDIGREE_GENERATIONS,
             ]);
             $stmt_gedcom_setting->execute([
-                $GED_DATA['id'],
+                $GED_DATA->id,
                 'EXPAND_NOTES',
                 $EXPAND_NOTES,
             ]);
             $stmt_gedcom_setting->execute([
-                $GED_DATA['id'],
+                $GED_DATA->id,
                 'EXPAND_SOURCES',
                 $EXPAND_SOURCES,
             ]);
             $stmt_gedcom_setting->execute([
-                $GED_DATA['id'],
+                $GED_DATA->id,
                 'FAM_FACTS_ADD',
                 $FAM_FACTS_ADD,
             ]);
             $stmt_gedcom_setting->execute([
-                $GED_DATA['id'],
+                $GED_DATA->id,
                 'FAM_FACTS_QUICK',
                 $FAM_FACTS_QUICK,
             ]);
             $stmt_gedcom_setting->execute([
-                $GED_DATA['id'],
+                $GED_DATA->id,
                 'FAM_FACTS_UNIQUE',
                 $FAM_FACTS_UNIQUE,
             ]);
             $stmt_gedcom_setting->execute([
-                $GED_DATA['id'],
+                $GED_DATA->id,
                 'FULL_SOURCES',
                 $FULL_SOURCES,
             ]);
             $stmt_gedcom_setting->execute([
-                $GED_DATA['id'],
+                $GED_DATA->id,
                 'GENERATE_UIDS',
                 $GENERATE_UIDS,
             ]);
             $stmt_gedcom_setting->execute([
-                $GED_DATA['id'],
+                $GED_DATA->id,
                 'HIDE_GEDCOM_ERRORS',
                 $HIDE_GEDCOM_ERRORS,
             ]);
             $stmt_gedcom_setting->execute([
-                $GED_DATA['id'],
+                $GED_DATA->id,
                 'HIDE_LIVE_PEOPLE',
                 $HIDE_LIVE_PEOPLE,
             ]);
             $stmt_gedcom_setting->execute([
-                $GED_DATA['id'],
+                $GED_DATA->id,
                 'INDI_FACTS_ADD',
                 $INDI_FACTS_ADD,
             ]);
             $stmt_gedcom_setting->execute([
-                $GED_DATA['id'],
+                $GED_DATA->id,
                 'INDI_FACTS_QUICK',
                 $INDI_FACTS_QUICK,
             ]);
             $stmt_gedcom_setting->execute([
-                $GED_DATA['id'],
+                $GED_DATA->id,
                 'INDI_FACTS_UNIQUE',
                 $INDI_FACTS_UNIQUE,
             ]);
             $stmt_gedcom_setting->execute([
-                $GED_DATA['id'],
+                $GED_DATA->id,
                 'LANGUAGE',
                 self::PGV_LANGUAGES[$LANGUAGE] ?? 'en-US',
             ]);
             $stmt_gedcom_setting->execute([
-                $GED_DATA['id'],
+                $GED_DATA->id,
                 'MAX_ALIVE_AGE',
                 $MAX_ALIVE_AGE,
             ]);
             $stmt_gedcom_setting->execute([
-                $GED_DATA['id'],
+                $GED_DATA->id,
                 'MAX_DESCENDANCY_GENERATIONS',
                 $MAX_DESCENDANCY_GENERATIONS,
             ]);
             $stmt_gedcom_setting->execute([
-                $GED_DATA['id'],
+                $GED_DATA->id,
                 'MAX_PEDIGREE_GENERATIONS',
                 $MAX_PEDIGREE_GENERATIONS,
             ]);
             $stmt_gedcom_setting->execute([
-                $GED_DATA['id'],
+                $GED_DATA->id,
                 'MAX_RELATION_PATH_LENGTH',
                 $MAX_RELATION_PATH_LENGTH,
             ]);
             $stmt_gedcom_setting->execute([
-                $GED_DATA['id'],
+                $GED_DATA->id,
                 'MEDIA_DIRECTORY',
                 'media/',
             ]);
             $stmt_gedcom_setting->execute([
-                $GED_DATA['id'],
+                $GED_DATA->id,
                 'META_DESCRIPTION',
                 $META_DESCRIPTION,
             ]);
             $stmt_gedcom_setting->execute([
-                $GED_DATA['id'],
+                $GED_DATA->id,
                 'META_TITLE',
                 $META_TITLE,
             ]);
             $stmt_gedcom_setting->execute([
-                $GED_DATA['id'],
+                $GED_DATA->id,
                 'MEDIA_UPLOAD',
                 $MULTI_MEDIA,
             ]); // see schema v12-13
             $stmt_gedcom_setting->execute([
-                $GED_DATA['id'],
+                $GED_DATA->id,
                 'NOTE_FACTS_ADD',
                 $NOTE_FACTS_ADD,
             ]);
             $stmt_gedcom_setting->execute([
-                $GED_DATA['id'],
+                $GED_DATA->id,
                 'NOTE_FACTS_QUICK',
                 $NOTE_FACTS_QUICK,
             ]);
             $stmt_gedcom_setting->execute([
-                $GED_DATA['id'],
+                $GED_DATA->id,
                 'NOTE_FACTS_UNIQUE',
                 $NOTE_FACTS_UNIQUE,
             ]);
             $stmt_gedcom_setting->execute([
-                $GED_DATA['id'],
+                $GED_DATA->id,
                 'NO_UPDATE_CHAN',
                 $NO_UPDATE_CHAN,
             ]);
             $stmt_gedcom_setting->execute([
-                $GED_DATA['id'],
+                $GED_DATA->id,
                 'PEDIGREE_LAYOUT',
                 $PEDIGREE_LAYOUT,
             ]);
             $stmt_gedcom_setting->execute([
-                $GED_DATA['id'],
+                $GED_DATA->id,
                 'PEDIGREE_ROOT_ID',
                 $PEDIGREE_ROOT_ID,
             ]);
             $stmt_gedcom_setting->execute([
-                $GED_DATA['id'],
+                $GED_DATA->id,
                 'PEDIGREE_SHOW_GENDER',
                 $PEDIGREE_SHOW_GENDER,
             ]);
             $stmt_gedcom_setting->execute([
-                $GED_DATA['id'],
+                $GED_DATA->id,
                 'PREFER_LEVEL2_SOURCES',
                 $PREFER_LEVEL2_SOURCES,
             ]);
             $stmt_gedcom_setting->execute([
-                $GED_DATA['id'],
+                $GED_DATA->id,
                 'QUICK_REQUIRED_FACTS',
                 $QUICK_REQUIRED_FACTS,
             ]);
             $stmt_gedcom_setting->execute([
-                $GED_DATA['id'],
+                $GED_DATA->id,
                 'QUICK_REQUIRED_FAMFACTS',
                 $QUICK_REQUIRED_FAMFACTS,
             ]);
             $stmt_gedcom_setting->execute([
-                $GED_DATA['id'],
+                $GED_DATA->id,
                 'REPO_FACTS_ADD',
                 $REPO_FACTS_ADD,
             ]);
             $stmt_gedcom_setting->execute([
-                $GED_DATA['id'],
+                $GED_DATA->id,
                 'REPO_FACTS_QUICK',
                 $REPO_FACTS_QUICK,
             ]);
             $stmt_gedcom_setting->execute([
-                $GED_DATA['id'],
+                $GED_DATA->id,
                 'REPO_FACTS_UNIQUE',
                 $REPO_FACTS_UNIQUE,
             ]);
             $stmt_gedcom_setting->execute([
-                $GED_DATA['id'],
+                $GED_DATA->id,
                 'REQUIRE_AUTHENTICATION',
                 $REQUIRE_AUTHENTICATION,
             ]);
             $stmt_gedcom_setting->execute([
-                $GED_DATA['id'],
+                $GED_DATA->id,
                 'SHOW_COUNTER',
                 $SHOW_COUNTER,
             ]);
             $stmt_gedcom_setting->execute([
-                $GED_DATA['id'],
+                $GED_DATA->id,
                 'SHOW_DEAD_PEOPLE',
                 $SHOW_DEAD_PEOPLE,
             ]);
             $stmt_gedcom_setting->execute([
-                $GED_DATA['id'],
+                $GED_DATA->id,
                 'SHOW_EST_LIST_DATES',
                 $SHOW_EST_LIST_DATES,
             ]);
             $stmt_gedcom_setting->execute([
-                $GED_DATA['id'],
+                $GED_DATA->id,
                 'SHOW_FACT_ICONS',
                 $SHOW_FACT_ICONS,
             ]);
             $stmt_gedcom_setting->execute([
-                $GED_DATA['id'],
+                $GED_DATA->id,
                 'SHOW_GEDCOM_RECORD',
                 $SHOW_GEDCOM_RECORD,
             ]);
             $stmt_gedcom_setting->execute([
-                $GED_DATA['id'],
+                $GED_DATA->id,
                 'SHOW_HIGHLIGHT_IMAGES',
                 $SHOW_HIGHLIGHT_IMAGES,
             ]);
             $stmt_gedcom_setting->execute([
-                $GED_DATA['id'],
+                $GED_DATA->id,
                 'SHOW_LDS_AT_GLANCE',
                 $SHOW_LDS_AT_GLANCE,
             ]);
             $stmt_gedcom_setting->execute([
-                $GED_DATA['id'],
+                $GED_DATA->id,
                 'SHOW_LIST_PLACES',
                 $SHOW_LIST_PLACES,
             ]);
             $stmt_gedcom_setting->execute([
-                $GED_DATA['id'],
+                $GED_DATA->id,
                 'SHOW_LIVING_NAMES',
                 $SHOW_LIVING_NAMES,
             ]);
             $stmt_gedcom_setting->execute([
-                $GED_DATA['id'],
+                $GED_DATA->id,
                 'SHOW_MEDIA_DOWNLOAD',
                 $SHOW_MEDIA_DOWNLOAD,
             ]);
             $stmt_gedcom_setting->execute([
-                $GED_DATA['id'],
+                $GED_DATA->id,
                 'SHOW_PARENTS_AGE',
                 $SHOW_PARENTS_AGE,
             ]);
             $stmt_gedcom_setting->execute([
-                $GED_DATA['id'],
+                $GED_DATA->id,
                 'SHOW_PEDIGREE_PLACES',
                 $SHOW_PEDIGREE_PLACES,
             ]);
             $stmt_gedcom_setting->execute([
-                $GED_DATA['id'],
+                $GED_DATA->id,
                 'SHOW_PRIVATE_RELATIONSHIPS',
                 $SHOW_PRIVATE_RELATIONSHIPS,
             ]);
@@ -1184,48 +1184,48 @@ class AdminPhpGedViewController extends AbstractBaseController
             $SHOW_RELATIVES_EVENTS = preg_replace('/_DEAT_(MOTH|FATH)/', '_DEAT_PARE', $SHOW_RELATIVES_EVENTS);
             preg_match_all('/[_A-Z]+/', $SHOW_RELATIVES_EVENTS, $match);
             $stmt_gedcom_setting->execute([
-                $GED_DATA['id'],
+                $GED_DATA->id,
                 'SHOW_RELATIVES_EVENTS',
                 implode(',', array_unique($match[0])),
             ]);
 
             $stmt_gedcom_setting->execute([
-                $GED_DATA['id'],
+                $GED_DATA->id,
                 'SOUR_FACTS_ADD',
                 $SOUR_FACTS_ADD,
             ]);
             $stmt_gedcom_setting->execute([
-                $GED_DATA['id'],
+                $GED_DATA->id,
                 'SOUR_FACTS_QUICK',
                 $SOUR_FACTS_QUICK,
             ]);
             $stmt_gedcom_setting->execute([
-                $GED_DATA['id'],
+                $GED_DATA->id,
                 'SOUR_FACTS_UNIQUE',
                 $SOUR_FACTS_UNIQUE,
             ]);
             $stmt_gedcom_setting->execute([
-                $GED_DATA['id'],
+                $GED_DATA->id,
                 'SUBLIST_TRIGGER_I',
                 $SUBLIST_TRIGGER_I,
             ]);
             $stmt_gedcom_setting->execute([
-                $GED_DATA['id'],
+                $GED_DATA->id,
                 'SURNAME_LIST_STYLE',
                 $SURNAME_LIST_STYLE,
             ]);
             $stmt_gedcom_setting->execute([
-                $GED_DATA['id'],
+                $GED_DATA->id,
                 'SURNAME_TRADITION',
                 $SURNAME_TRADITION,
             ]);
             $stmt_gedcom_setting->execute([
-                $GED_DATA['id'],
+                $GED_DATA->id,
                 'THEME_DIR',
                 self::PGV_THEMES[$THEME_DIR] ?? 'webtrees',
             ]);
             $stmt_gedcom_setting->execute([
-                $GED_DATA['id'],
+                $GED_DATA->id,
                 'USE_RELATIONSHIP_PRIVACY',
                 $USE_RELATIONSHIP_PRIVACY,
             ]);
@@ -1233,13 +1233,13 @@ class AdminPhpGedViewController extends AbstractBaseController
             $user = User::findByIdentifier($WEBMASTER_EMAIL);
             if ($user) {
                 $stmt_gedcom_setting->execute([
-                    $GED_DATA['id'],
+                    $GED_DATA->id,
                     'WEBMASTER_USER_ID',
                     $user->getUserId(),
                 ]);
             }
             $stmt_gedcom_setting->execute([
-                $GED_DATA['id'],
+                $GED_DATA->id,
                 'WORD_WRAPPED_NOTES',
                 $WORD_WRAPPED_NOTES,
             ]);
@@ -1307,7 +1307,7 @@ class AdminPhpGedViewController extends AbstractBaseController
             $statement = Database::prepare("INSERT IGNORE INTO `##hit_counter` (gedcom_id, page_name, page_parameter, page_count) VALUES (?, ?, ?, ?)");
 
             foreach ($GEDCOMS as $GEDCOM => $GED_DATA) {
-                $file = $INDEX_DIRECTORY . '/' . $GED_DATA['gedcom'] . 'pgv_counters.txt';
+                $file = $INDEX_DIRECTORY . '/' . $GED_DATA->gedcom . 'pgv_counters.txt';
                 // $file, ' => wt_hit_counter…
 
                 if (file_exists($file)) {
@@ -1318,11 +1318,11 @@ class AdminPhpGedViewController extends AbstractBaseController
                                 $page_parameter = $match[2];
                             } else {
                                 $page_name      = 'index.php';
-                                $page_parameter = 'gedcom:' . $GED_DATA['id'];
+                                $page_parameter = 'gedcom:' . $GED_DATA->id;
                             }
                             try {
                                 $statement->execute([
-                                    $GED_DATA['id'],
+                                    $GED_DATA->id,
                                     $page_name,
                                     $page_parameter,
                                     $match[3],
@@ -1341,7 +1341,7 @@ class AdminPhpGedViewController extends AbstractBaseController
         ////////////////////////////////////////////////////////////////////////////////
 
         foreach ($GEDCOMS as $GED_DATA) {
-            Module::setDefaultAccess($GED_DATA['id']);
+            Module::setDefaultAccess($GED_DATA->id);
         }
 
         // pgv_site_setting => wt_module_setting…

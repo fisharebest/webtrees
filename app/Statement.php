@@ -125,15 +125,15 @@ class Statement
      *
      * @param int $fetch_style
      *
-     * @return stdClass[]|string[][]
+     * @return stdClass[]
      */
-    public function fetchAll($fetch_style = PDO::FETCH_OBJ)
+    public function fetchAll()
     {
         if (!$this->executed) {
             $this->execute();
         }
 
-        $rows = $this->pdo_statement->fetchAll($fetch_style);
+        $rows = $this->pdo_statement->fetchAll(PDO::FETCH_OBJ);
         $this->closeCursor();
 
         return $rows;

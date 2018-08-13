@@ -215,14 +215,14 @@ class StatisticsChartController extends AbstractChartController
                         $z_axis = $this->axisAll();
                         $rows   = $stats->statsBirthQuery(false, false);
                         foreach ($rows as $row) {
-                            $this->fillYData($row['d_month'], 0, $row['total'], $x_axis, $z_axis, $ydata);
+                            $this->fillYData($row->d_month, 0, $row->total, $x_axis, $z_axis, $ydata);
                         }
                         break;
                     case self::Z_AXIS_SEX:
                         $z_axis = $this->axisSexes();
                         $rows = $stats->statsBirthQuery(false, true);
                         foreach ($rows as $row) {
-                            $this->fillYData($row['d_month'], $row['i_sex'], $row['total'], $x_axis, $z_axis, $ydata);
+                            $this->fillYData($row->d_month, $row->i_sex, $row->total, $x_axis, $z_axis, $ydata);
                         }
                         break;
                     case self::Z_AXIS_TIME:
@@ -232,7 +232,7 @@ class StatisticsChartController extends AbstractChartController
                         foreach (array_keys($z_axis) as $boundary) {
                             $rows = $stats->statsBirthQuery(false, false, $prev_boundary, $boundary);
                             foreach ($rows as $row) {
-                                $this->fillYData($boundary, $row['d_month'], $row['total'], $x_axis, $z_axis, $ydata);
+                                $this->fillYData($boundary, $row->d_month, $row->total, $x_axis, $z_axis, $ydata);
                             }
                             $prev_boundary = $boundary + 1;
                         }
@@ -264,14 +264,14 @@ class StatisticsChartController extends AbstractChartController
                         $z_axis = $this->axisAll();
                         $rows   = $stats->statsDeathQuery(false, false);
                         foreach ($rows as $row) {
-                            $this->fillYData($row['d_month'], 0, $row['total'], $x_axis, $z_axis, $ydata);
+                            $this->fillYData($row->d_month, 0, $row->total, $x_axis, $z_axis, $ydata);
                         }
                         break;
                     case self::Z_AXIS_SEX:
                         $z_axis = $this->axisSexes();
                         $rows = $stats->statsDeathQuery(false, true);
                         foreach ($rows as $row) {
-                            $this->fillYData($row['d_month'], $row['i_sex'], $row['total'], $x_axis, $z_axis, $ydata);
+                            $this->fillYData($row->d_month, $row->i_sex, $row->total, $x_axis, $z_axis, $ydata);
                         }
                         break;
                     case self::Z_AXIS_TIME:
@@ -281,7 +281,7 @@ class StatisticsChartController extends AbstractChartController
                         foreach (array_keys($z_axis) as $boundary) {
                             $rows = $stats->statsDeathQuery(false, false, $prev_boundary, $boundary);
                             foreach ($rows as $row) {
-                                $this->fillYData($boundary, $row['d_month'], $row['total'], $x_axis, $z_axis, $ydata);
+                                $this->fillYData($boundary, $row->d_month, $row->total, $x_axis, $z_axis, $ydata);
                             }
                             $prev_boundary = $boundary + 1;
                         }
@@ -313,7 +313,7 @@ class StatisticsChartController extends AbstractChartController
                         $z_axis = $this->axisAll();
                         $rows   = $stats->statsMarrQuery(false, false);
                         foreach ($rows as $row) {
-                            $this->fillYData($row['d_month'], 0, $row['total'], $x_axis, $z_axis, $ydata);
+                            $this->fillYData($row->d_month, 0, $row->total, $x_axis, $z_axis, $ydata);
                         }
                         break;
                     case self::Z_AXIS_TIME:
@@ -323,7 +323,7 @@ class StatisticsChartController extends AbstractChartController
                         foreach (array_keys($z_axis) as $boundary) {
                             $rows = $stats->statsMarrQuery(false, false, $prev_boundary, $boundary);
                             foreach ($rows as $row) {
-                                $this->fillYData($boundary, $row['d_month'], $row['total'], $x_axis, $z_axis, $ydata);
+                                $this->fillYData($boundary, $row->d_month, $row->total, $x_axis, $z_axis, $ydata);
                             }
                             $prev_boundary = $boundary + 1;
                         }
@@ -355,14 +355,14 @@ class StatisticsChartController extends AbstractChartController
                         $z_axis = $this->axisAll();
                         $rows   = $stats->monthFirstChildQuery(false, false);
                         foreach ($rows as $row) {
-                            $this->fillYData($row['d_month'], 0, $row['total'], $x_axis, $z_axis, $ydata);
+                            $this->fillYData($row->d_month, 0, $row->total, $x_axis, $z_axis, $ydata);
                         }
                         break;
                     case self::Z_AXIS_SEX:
                         $z_axis = $this->axisSexes();
                         $rows = $stats->monthFirstChildQuery(false, true);
                         foreach ($rows as $row) {
-                            $this->fillYData($row['d_month'], $row['i_sex'], $row['total'], $x_axis, $z_axis, $ydata);
+                            $this->fillYData($row->d_month, $row->i_sex, $row->total, $x_axis, $z_axis, $ydata);
                         }
                         break;
                     case self::Z_AXIS_TIME:
@@ -372,7 +372,7 @@ class StatisticsChartController extends AbstractChartController
                         foreach (array_keys($z_axis) as $boundary) {
                             $rows = $stats->statsMarrQuery(false, false, $prev_boundary, $boundary);
                             foreach ($rows as $row) {
-                                $this->fillYData($row['d_month'], $boundary, $row['total'], $x_axis, $z_axis, $ydata);
+                                $this->fillYData($row->d_month, $boundary, $row->total, $x_axis, $z_axis, $ydata);
                             }
                             $prev_boundary = $boundary + 1;
                         }
@@ -406,11 +406,11 @@ class StatisticsChartController extends AbstractChartController
                         $indi   = [];
                         $fam    = [];
                         foreach ($rows as $row) {
-                            if (!in_array($row['indi'], $indi) && !in_array($row['fams'], $fam)) {
-                                $this->fillYData($row['month'], 0, 1, $x_axis, $z_axis, $ydata);
+                            if (!in_array($row->indi, $indi) && !in_array($row->fams, $fam)) {
+                                $this->fillYData($row->month, 0, 1, $x_axis, $z_axis, $ydata);
                             }
-                            $indi[] = $row['indi'];
-                            $fam[]  = $row['fams'];
+                            $indi[] = $row->indi;
+                            $fam[]  = $row->fams;
                         }
                         break;
                     case self::Z_AXIS_TIME:
@@ -422,11 +422,11 @@ class StatisticsChartController extends AbstractChartController
                         foreach (array_keys($z_axis) as $boundary) {
                             $rows = $stats->statsMarrQuery(false, true, $prev_boundary, $boundary);
                             foreach ($rows as $row) {
-                                if (!in_array($row['indi'], $indi) && !in_array($row['fams'], $fam)) {
-                                    $this->fillYData($row['month'], $boundary, 1, $x_axis, $z_axis, $ydata);
+                                if (!in_array($row->indi, $indi) && !in_array($row->fams, $fam)) {
+                                    $this->fillYData($row->month, $boundary, 1, $x_axis, $z_axis, $ydata);
                                 }
-                                $indi[] = $row['indi'];
-                                $fam[]  = $row['fams'];
+                                $indi[] = $row->indi;
+                                $fam[]  = $row->fams;
                             }
                             $prev_boundary = $boundary + 1;
                         }
@@ -520,7 +520,7 @@ class StatisticsChartController extends AbstractChartController
                         foreach (['M', 'F', 'U'] as $sex) {
                             $rows = $stats->statsMarrAgeQuery(false, $sex);
                             foreach ($rows as $row) {
-                                $this->fillYData($row['age'] / self::DAYS_IN_YEAR, 0, 1, $x_axis, $z_axis, $ydata);
+                                $this->fillYData($row->age / self::DAYS_IN_YEAR, 0, 1, $x_axis, $z_axis, $ydata);
                             }
                         }
                         break;
@@ -529,7 +529,7 @@ class StatisticsChartController extends AbstractChartController
                         foreach (array_keys($z_axis) as $sex) {
                             $rows = $stats->statsMarrAgeQuery(false, $sex);
                             foreach ($rows as $row) {
-                                $this->fillYData($row['age'] / self::DAYS_IN_YEAR, $sex, 1, $x_axis, $z_axis, $ydata);
+                                $this->fillYData($row->age / self::DAYS_IN_YEAR, $sex, 1, $x_axis, $z_axis, $ydata);
                             }
                         }
                         break;
@@ -542,7 +542,7 @@ class StatisticsChartController extends AbstractChartController
                             foreach (array_keys($z_axis) as $boundary) {
                                 $rows = $stats->statsMarrAgeQuery(false, $sex, $prev_boundary, $boundary);
                                 foreach ($rows as $row) {
-                                    $this->fillYData($row['age'] / self::DAYS_IN_YEAR, $boundary, 1, $x_axis, $z_axis, $ydata);
+                                    $this->fillYData($row->age / self::DAYS_IN_YEAR, $boundary, 1, $x_axis, $z_axis, $ydata);
                                 }
                                 $prev_boundary = $boundary + 1;
                             }
@@ -579,9 +579,9 @@ class StatisticsChartController extends AbstractChartController
                             $rows  = $stats->statsMarrAgeQuery(false, $sex);
                             $indi = [];
                             foreach ($rows as $row) {
-                                if (!in_array($row['d_gid'], $indi)) {
-                                    $this->fillYData($row['age'] / self::DAYS_IN_YEAR, 0, 1, $x_axis, $z_axis, $ydata);
-                                    $indi[] = $row['d_gid'];
+                                if (!in_array($row->d_gid, $indi)) {
+                                    $this->fillYData($row->age / self::DAYS_IN_YEAR, 0, 1, $x_axis, $z_axis, $ydata);
+                                    $indi[] = $row->d_gid;
                                 }
                             }
                         }
@@ -592,9 +592,9 @@ class StatisticsChartController extends AbstractChartController
                             $rows  = $stats->statsMarrAgeQuery(false, $sex);
                             $indi = [];
                             foreach ($rows as $row) {
-                                if (!in_array($row['d_gid'], $indi)) {
-                                    $this->fillYData($row['age'] / self::DAYS_IN_YEAR, $sex, 1, $x_axis, $z_axis, $ydata);
-                                    $indi[] = $row['d_gid'];
+                                if (!in_array($row->d_gid, $indi)) {
+                                    $this->fillYData($row->age / self::DAYS_IN_YEAR, $sex, 1, $x_axis, $z_axis, $ydata);
+                                    $indi[] = $row->d_gid;
                                 }
                             }
                         }
@@ -609,9 +609,9 @@ class StatisticsChartController extends AbstractChartController
                             foreach (array_keys($z_axis) as $boundary) {
                                 $rows = $stats->statsMarrAgeQuery(false, $sex, $prev_boundary, $boundary);
                                 foreach ($rows as $row) {
-                                    if (!in_array($row['d_gid'], $indi)) {
-                                        $this->fillYData($row['age'] / self::DAYS_IN_YEAR, $boundary, 1, $x_axis, $z_axis, $ydata);
-                                        $indi[] = $row['d_gid'];
+                                    if (!in_array($row->d_gid, $indi)) {
+                                        $this->fillYData($row->age / self::DAYS_IN_YEAR, $boundary, 1, $x_axis, $z_axis, $ydata);
+                                        $indi[] = $row->d_gid;
                                     }
                                 }
                                 $prev_boundary = $boundary + 1;
@@ -645,7 +645,7 @@ class StatisticsChartController extends AbstractChartController
                         $z_axis = $this->axisAll();
                         $rows = $stats->statsChildrenQuery(false);
                         foreach ($rows as $row) {
-                            $this->fillYData($row['f_numchil'], 0, $row['total'], $x_axis, $z_axis, $ydata);
+                            $this->fillYData($row->f_numchil, 0, $row->total, $x_axis, $z_axis, $ydata);
                         }
                         break;
                     case self::Z_AXIS_TIME:
@@ -655,7 +655,7 @@ class StatisticsChartController extends AbstractChartController
                         foreach (array_keys($z_axis) as $boundary) {
                             $rows = $stats->statsChildrenQuery(false, 'BOTH', $prev_boundary, $boundary);
                             foreach ($rows as $row) {
-                                $this->fillYData($row['f_numchil'], $boundary, $row['total'], $x_axis, $z_axis, $ydata);
+                                $this->fillYData($row->f_numchil, $boundary, $row->total, $x_axis, $z_axis, $ydata);
 
                             }
                             $prev_boundary = $boundary + 1;

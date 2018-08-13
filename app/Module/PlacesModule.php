@@ -256,30 +256,4 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
 
         return $payload;
     }
-
-    /**
-     * @param $parent_id
-     * @param $placename
-     * @param $places
-     *
-     * @throws Exception
-     */
-    private function buildLevel($parent_id, $placename, &$places)
-    {
-        $level = array_search('', $placename);
-        $rows  = (array) Database::prepare(
-            "SELECT pl_level, pl_id, pl_place, pl_long, pl_lati, pl_zoom, pl_icon FROM `##placelocation` WHERE pl_parent_id=? ORDER BY pl_place"
-        )
-            ->execute([$parent_id])
-            ->fetchAll(\PDO::FETCH_ASSOC);
-
-        if (!empty($rows)) {
-            foreach ($rows as $row) {
-                $index             = $row['pl_id'];
-                $placename[$level] = $row['pl_place'];
-                $places[]          = array_merge([$row['pl_level']], $placename, array_splice($row, 3));
-                $this->buildLevel($index, $placename, $places);
-            }
-        }
-    }
 }

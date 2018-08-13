@@ -668,16 +668,16 @@ class AdminLocationController extends AbstractBaseController
     private function buildLevel($parent_id, $placename, &$places)
     {
         $level = array_search('', $placename);
-        $rows  = (array)Database::prepare(
+        $rows  = Database::prepare(
             "SELECT pl_level, pl_id, pl_place, pl_long, pl_lati, pl_zoom, pl_icon FROM `##placelocation` WHERE pl_parent_id=? ORDER BY pl_place"
         )
             ->execute([$parent_id])
-            ->fetchAll(\PDO::FETCH_ASSOC);
+            ->fetchAll();
 
         foreach ($rows as $row) {
-            $index             = $row['pl_id'];
-            $placename[$level] = $row['pl_place'];
-            $places[]          = array_merge([$row['pl_level']], $placename, array_splice($row, 3));
+            $index             = $row->pl_id;
+            $placename[$level] = $row->pl_place;
+            $places[]          = array_merge([$row->pl_level], $placename, [$row->pl_long, $row->pl_lati, $row->pl_zoom, $row->pl_icon]);
             $this->buildLevel($index, $placename, $places);
         }
     }
@@ -774,19 +774,18 @@ class AdminLocationController extends AbstractBaseController
             'id'        => $id,
             'p_id'      => $place_id,
             'collation' => I18N::collation(),
-        ])->fetchAll(\PDO::FETCH_ASSOC);
+        ])->fetchAll();
 
         $list = [];
-        /** @var array $rows */
         foreach ($rows as $row) {
             // Find/count places without co-ordinates
             $children = $child_qry->execute(
                 [
-                    'parent_id' => $row['pl_id'],
+                    'parent_id' => $row->pl_id,
                 ]
             )->fetchOneRow();
 
-            if ($row['inactive']) {
+            if ($row->inactive) {
                 $badge = 'danger';
             } elseif ((int) $children->no_coord > 0) {
                 $badge = 'warning';
@@ -796,13 +795,10 @@ class AdminLocationController extends AbstractBaseController
                 $badge = 'secondary';
             }
 
-            $list[] = (object) array_merge(
-                $row,
-                [
-                    'child_count' => (int) $children->child_count,
-                    'badge'       => $badge,
-                ]
-            );
+            $row->child_count = (int) $children->child_count;
+            $row->badge       = $badge;
+
+            $list[] = $row;
         }
 
         return $list;
