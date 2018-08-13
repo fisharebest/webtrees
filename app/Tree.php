@@ -44,7 +44,7 @@ class Tree
     private $individual_fact_privacy;
 
     /** @var Tree[] All trees that we have permission to see. */
-    private static $trees;
+    private static $trees = [];
 
     /** @var string[] Cached copy of the wt_gedcom_setting table. */
     private $preferences = [];
@@ -293,8 +293,7 @@ class Tree
      */
     public static function getAll()
     {
-        if (self::$trees === null) {
-            self::$trees = [];
+        if (empty(self::$trees)) {
             $rows        = Database::prepare(
                 "SELECT g.gedcom_id AS tree_id, g.gedcom_name AS tree_name, gs1.setting_value AS tree_title" .
                 " FROM `##gedcom` g" .
@@ -316,6 +315,7 @@ class Tree
                 Auth::id(),
                 Auth::id(),
             ])->fetchAll();
+
             foreach ($rows as $row) {
                 self::$trees[$row->tree_name] = new self((int) $row->tree_id, $row->tree_name, $row->tree_title);
             }
@@ -416,7 +416,7 @@ class Tree
         }
 
         // Update the list of trees - to include this new one
-        self::$trees = null;
+        self::$trees = [];
         $tree        = self::findById($tree_id);
 
         $tree->setPreference('imported', '0');
@@ -564,7 +564,7 @@ class Tree
         Database::prepare("DELETE FROM `##gedcom`              WHERE gedcom_id = ?")->execute([$this->tree_id]);
 
         // After updating the database, we need to fetch a new (sorted) copy
-        self::$trees = null;
+        self::$trees = [];
     }
 
     /**
@@ -832,7 +832,7 @@ class Tree
         if (!$individual) {
             $individual = Individual::getInstance(
                 Database::prepare(
-                    "SELECT MIN(i_id) FROM `##individuals` WHERE i_file=?"
+                    "SELECT MIN(i_id) FROM `##individuals` WHERE i_file = ?"
                 )->execute([$this->getTreeId()])->fetchOne(),
                 $this
             );
