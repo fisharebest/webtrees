@@ -695,7 +695,7 @@ class HomePageController extends AbstractBaseController
      */
     private function filterActiveBlocks(array $blocks, array $active_blocks): array
     {
-        return array_filter(array_map(function (string $module_name) use ($active_blocks): bool {
+        return array_filter(array_map(function (string $module_name) use ($active_blocks) {
             return $active_blocks[$module_name] ?? false;
         }, $blocks));
     }
