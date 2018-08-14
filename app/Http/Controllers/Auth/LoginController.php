@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Http\Controllers\AbstractBaseController;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
+use Fisharebest\Webtrees\Services\UpgradeService;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
@@ -97,12 +98,13 @@ class LoginController extends AbstractBaseController
     /**
      * Perform a login.
      *
-     * @param Request   $request
-     * @param Tree|null $tree
+     * @param Request        $request
+     * @param UpgradeService $upgrade_service
+     * @param Tree|null      $tree
      *
      * @return RedirectResponse
      */
-    public function loginAction(Request $request, Tree $tree = null): RedirectResponse
+    public function loginAction(Request $request, UpgradeService $upgrade_service, Tree $tree = null): RedirectResponse
     {
         $username = $request->get('username', '');
         $password = $request->get('password', '');
@@ -111,8 +113,8 @@ class LoginController extends AbstractBaseController
         try {
             $this->doLogin($username, $password);
 
-            if (Auth::isAdmin()) {
-                $this->doCheckForUpgrade();
+            if (Auth::isAdmin() && $upgrade_service->isUpgradeAvailable()) {
+                FlashMessages::addMessage(I18N::translate('A new version of webtrees is available.') . ' <a class="alert-link" href="' . e(route('upgrade')) . '">' . I18N::translate('Upgrade to webtrees %s.', '<span dir="ltr">' . $upgrade_service->latestVersion() . '</span>') . '</a>');
             }
 
             // If there was no referring page, redirect to "my page".
@@ -184,22 +186,6 @@ class LoginController extends AbstractBaseController
         Session::put('locale', Auth::user()->getPreference('language'));
         Session::put('theme_id', Auth::user()->getPreference('theme'));
         I18N::init(Auth::user()->getPreference('language'));
-    }
-
-    /**
-     * Tell the user if a new version of webtrees exists.
-     */
-    private function doCheckForUpgrade()
-    {
-        $latest_version_txt = Functions::fetchLatestVersion();
-
-        if (preg_match('/^[0-9.]+\|[0-9.]+\|/', $latest_version_txt)) {
-            list($latest_version) = explode('|', $latest_version_txt);
-
-            if (version_compare(WT_VERSION, $latest_version) < 0) {
-                FlashMessages::addMessage(I18N::translate('A new version of webtrees is available.') . ' <a class="alert-link" href="' . e(route('upgrade')) . '">' . I18N::translate('Upgrade to webtrees %s.', '<span dir="ltr">' . $latest_version . '</span>') . '</a>');
-            }
-        }
     }
 
     /**

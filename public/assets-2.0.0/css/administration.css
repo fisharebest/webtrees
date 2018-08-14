@@ -18,6 +18,14 @@
 .wt-global {
 	background: url(paper_fibers.png); /* http://www.subtlepatterns.com */
 }
+
+/* Show a placeholder for slow ajax responses. */
+.wt-ajax-load:empty {
+	height: 32px;
+	width: 32px;
+	background: url(images/loading-32x32.gif) no-repeat;
+}
+
 @media (min-device-pixel-ratio: 2) {
 	.wt-global {
 		background: url(paper_fibers_@2X.png);

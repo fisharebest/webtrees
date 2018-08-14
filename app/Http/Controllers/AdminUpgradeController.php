@@ -20,9 +20,9 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 use Exception;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\DebugBar;
-use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Functions\FunctionsDate;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Services\UpgradeService;
 use Fisharebest\Webtrees\Tree;
 use GuzzleHttp\Client;
 use League\Flysystem\Adapter\Local;
@@ -54,6 +54,19 @@ class AdminUpgradeController extends AbstractBaseController
 
     protected $layout = 'layouts/administration';
 
+    /** @var UpgradeService */
+    private $upgrade_service;
+
+    /**
+     * AdminUpgradeController constructor.
+     *
+     * @param UpgradeService $upgrade_service
+     */
+    public function __construct(UpgradeService $upgrade_service)
+    {
+        $this->upgrade_service = $upgrade_service;
+    }
+
     /**
      * @param Request $request
      *
@@ -61,7 +74,7 @@ class AdminUpgradeController extends AbstractBaseController
      */
     public function wizard(Request $request): Response
     {
-        $continue = (bool)$request->get('continue');
+        $continue = (bool) $request->get('continue');
 
         $title = I18N::translate('Upgrade wizard');
 
@@ -72,8 +85,8 @@ class AdminUpgradeController extends AbstractBaseController
             ]);
         } else {
             return $this->viewResponse('admin/upgrade/wizard', [
-                'current_version' => $this->currentVersion(),
-                'latest_version'  => $this->latestVersion(),
+                'current_version' => WT_VERSION,
+                'latest_version'  => $this->upgrade_service->latestVersion(),
                 'title'           => $title,
             ]);
         }
@@ -82,11 +95,12 @@ class AdminUpgradeController extends AbstractBaseController
     /**
      * Perform one step of the wizard
      *
-     * @param Request $request
+     * @param Request   $request
+     * @param Tree|null $tree
      *
      * @return Response
      */
-    public function step(Request $request): Response
+    public function step(Request $request, Tree $tree = null): Response
     {
         $step = $request->get('step');
 
@@ -96,15 +110,13 @@ class AdminUpgradeController extends AbstractBaseController
             case 'Pending':
                 return $this->wizardStepPending();
             case 'Export':
-                return $this->wizardStepExport($request);
+                return $this->wizardStepExport($tree);
             case 'Download':
                 return $this->wizardStepDownload();
             case 'Unzip':
                 return $this->wizardStepUnzip();
             case 'Copy':
                 return $this->wizardStepCopy();
-            case 'Cleanup':
-                return $this->wizardStepCleanup();
             default:
                 throw new NotFoundHttpException;
         }
@@ -115,17 +127,17 @@ class AdminUpgradeController extends AbstractBaseController
      */
     private function wizardSteps(): array
     {
-        $download_url = $this->downloadUrl();
+        $download_url = $this->upgrade_service->downloadUrl();
 
         $export_steps = [];
 
         foreach (Tree::getAll() as $tree) {
-            $route                = route('upgrade', [
+            $route = route('upgrade', [
                 'step' => 'Export',
                 'ged'  => $tree->getName(),
             ]);
-            $message              = I18N::translate('Export all the family trees to GEDCOM files…') . ' ' . e($tree->getTitle());
-            $export_steps[$route] = $message;
+
+            $export_steps[$route] = I18N::translate('Export all the family trees to GEDCOM files…') . ' ' . e($tree->getTitle());
         }
 
         return [
@@ -135,7 +147,6 @@ class AdminUpgradeController extends AbstractBaseController
                 route('upgrade', ['step' => 'Download']) => I18N::translate('Download %s…', e($download_url)),
                 route('upgrade', ['step' => 'Unzip'])    => I18N::translate('Unzip %s to a temporary folder…', e(basename($download_url))),
                 route('upgrade', ['step' => 'Copy'])     => I18N::translate('Copy files…'),
-                route('upgrade', ['step' => 'Cleanup'])  => I18N::translate('Delete temporary files…'),
             ];
     }
 
@@ -144,13 +155,13 @@ class AdminUpgradeController extends AbstractBaseController
      */
     private function wizardStepCheck(): Response
     {
-        $latest_version = $this->latestVersion();
+        $latest_version = $this->upgrade_service->latestVersion();
 
         if ($latest_version === '') {
             return $this->failure(I18N::translate('No upgrade information is available.'));
         }
 
-        if (version_compare($this->currentVersion(), $latest_version) >= 0) {
+        if (version_compare(WT_VERSION, $latest_version) >= 0) {
             return $this->failure(I18N::translate('This is the latest version of webtrees. No upgrade is available.'));
         }
 
@@ -203,7 +214,7 @@ class AdminUpgradeController extends AbstractBaseController
      */
     private function wizardStepDownload(): Response
     {
-        $download_url = $this->downloadUrl();
+        $download_url = $this->upgrade_service->downloadUrl();
         $zip_file     = WT_DATA_DIR . basename($download_url);
         $zip_stream   = fopen($zip_file, 'w');
         $start_time   = microtime(true);
@@ -228,7 +239,7 @@ class AdminUpgradeController extends AbstractBaseController
 
                 return $this->success(/* I18N: %1$s is a number of KB, %2$s is a (fractional) number of seconds */
                     I18N::translate('%1$s KB were downloaded in %2$s seconds.', $kb, $seconds));
-            } elseif (preg_match('/^https:/', $download_url) && !in_array('ssl', stream_get_transports())) {
+            } elseif (!in_array('ssl', stream_get_transports())) {
                 // Guess why we might have failed...
                 return $this->failure(I18N::translate('This server does not support secure downloads using HTTPS.'));
             } else {
@@ -244,7 +255,7 @@ class AdminUpgradeController extends AbstractBaseController
      */
     private function wizardStepUnzip(): Response
     {
-        $download_url   = $this->downloadUrl();
+        $download_url   = $this->upgrade_service->downloadUrl();
         $zip_file       = WT_DATA_DIR . basename($download_url);
         $tmp_folder     = WT_DATA_DIR . basename($download_url, '.zip');
         $src_filesystem = new Filesystem(new ZipArchiveAdapter($zip_file, null, 'webtrees'));
@@ -280,7 +291,7 @@ class AdminUpgradeController extends AbstractBaseController
      */
     private function wizardStepCopy(): Response
     {
-        $download_url   = $this->downloadUrl();
+        $download_url   = $this->upgrade_service->downloadUrl();
         $src_filesystem = new Filesystem(new Local(WT_DATA_DIR . basename($download_url, '.zip') . '/webtrees'));
         $dst_filesystem = new Filesystem(new Local(WT_ROOT));
         $paths          = $src_filesystem->listContents('', true);
@@ -288,58 +299,26 @@ class AdminUpgradeController extends AbstractBaseController
             return $file['type'] === 'file';
         });
 
-        $lock_file_text = I18N::translate('This website is being upgraded. Try again in a few minutes.') . PHP_EOL . FunctionsDate::formatTimestamp(WT_TIMESTAMP) . /* I18N: Timezone - http://en.wikipedia.org/wiki/UTC */
-            I18N::translate('UTC');
+        $lock_file_text = I18N::translate('This website is being upgraded. Try again in a few minutes.');
         $dst_filesystem->put(self::LOCK_FILE, $lock_file_text);
-
-        $start_time = microtime(true);
 
         foreach ($paths as $path) {
             $dst_filesystem->put($path['path'], $src_filesystem->read($path['path']));
-            // Delete files as we go, in case disk space is limited.
-            $src_filesystem->delete($path['path']);
 
-            if (microtime(true) - WT_START_TIME > ini_get('max_execution_time') - 5) {
+            if (microtime(true) - WT_START_TIME > ini_get('max_execution_time') - 2) {
                 return $this->failure(I18N::translate('The server’s time limit has been reached.'));
             }
         }
 
         $dst_filesystem->delete(self::LOCK_FILE);
 
-        $seconds = I18N::number(microtime(true) - $start_time, 2);
-        $count   = count($paths);
+        // Delete the temporary files - if there is enough time.
+        foreach ($paths as $path) {
+            $src_filesystem->delete($path['path']);
 
-        return $this->success(/* I18N: …from the .ZIP file, %2$s is a (fractional) number of seconds */
-            I18N::plural('%1$s file was extracted in %2$s seconds.', '%1$s files were extracted in %2$s seconds.', $count, $count, $seconds));
-    }
-
-    /**
-     * @return Response
-     */
-    private function wizardStepCleanup(): Response
-    {
-        $download_url = $this->downloadUrl();
-
-        $filesystem = new Filesystem(new Local(WT_DATA_DIR));
-
-        try {
-            $files = $filesystem->listContents(basename($download_url, '.zip'), true);
-
-            foreach ($files as $file) {
-                if ($file['type'] === 'file') {
-                    $filesystem->delete($file['path']);
-                } else {
-                    $filesystem->deleteDir($file['path']);
-                }
+            if (microtime(true) - WT_START_TIME > ini_get('max_execution_time') - 2) {
+                break;
             }
-
-            $filesystem->delete(basename($download_url));
-            $filesystem->deleteDir(basename(basename($download_url, '.zip')));
-        } catch (Exception $ex) {
-            // We don't really care if we cannot delete these temporary files.
-            // But show an error message, anyway.
-
-            return $this->failure($ex->getMessage());
         }
 
         return $this->success(I18N::translate('The upgrade is complete.'));
@@ -363,39 +342,5 @@ class AdminUpgradeController extends AbstractBaseController
     private function failure(string $message): Response
     {
         return new Response(self::FAILURE . $message, Response::HTTP_INTERNAL_SERVER_ERROR);
-    }
-
-    /**
-     * @return string
-     */
-    private function currentVersion(): string
-    {
-        return WT_VERSION;
-    }
-
-    /**
-     * @return string
-     */
-    private function latestVersion(): string
-    {
-        $latest_version_txt = Functions::fetchLatestVersion();
-        if (preg_match('/^[0-9.]+\|[0-9.]+\|/', $latest_version_txt)) {
-            return explode('|', $latest_version_txt)[0];
-        } else {
-            return '';
-        }
-    }
-
-    /**
-     * @return string
-     */
-    private function downloadUrl(): string
-    {
-        $latest_version_txt = Functions::fetchLatestVersion();
-        if (preg_match('/^[0-9.]+\|[0-9.]+\|/', $latest_version_txt)) {
-            return explode('|', $latest_version_txt)[2];
-        } else {
-            return '';
-        }
     }
 }

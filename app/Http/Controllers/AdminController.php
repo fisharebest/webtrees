@@ -37,6 +37,7 @@ use Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Services\HousekeepingService;
+use Fisharebest\Webtrees\Services\UpgradeService;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
@@ -85,10 +86,14 @@ class AdminController extends AbstractBaseController
      * The control panel shows a summary of the site and links to admin functions.
      *
      * @param HousekeepingService $housekeeping_service
+     * @param UpgradeService      $upgrade_service
      *
      * @return Response
      */
-    public function controlPanel(HousekeepingService $housekeeping_service): Response
+    public function controlPanel(
+        HousekeepingService $housekeeping_service,
+        UpgradeService      $upgrade_service
+    ): Response
     {
         $filesystem      = new Filesystem(new Local(WT_ROOT));
         $files_to_delete = $housekeeping_service->deleteOldWebtreesFiles($filesystem);
@@ -96,7 +101,7 @@ class AdminController extends AbstractBaseController
         return $this->viewResponse('admin/control-panel', [
             'title'           => I18N::translate('Control panel'),
             'server_warnings' => $this->serverWarnings(),
-            'latest_version'  => $this->latestVersion(),
+            'latest_version'  => $upgrade_service->latestVersion(),
             'all_users'       => User::all(),
             'administrators'  => User::administrators(),
             'managers'        => User::managers(),
@@ -1451,24 +1456,6 @@ class AdminController extends AbstractBaseController
         file_put_contents($cache_file, '<?php return ' . var_export($pixels, true) . ';');
 
         return $pixels;
-    }
-
-    /**
-     * Look for the latest version of webtrees.
-     *
-     * @return string
-     */
-    private function latestVersion()
-    {
-        $latest_version_txt = Functions::fetchLatestVersion();
-        if (preg_match('/^[0-9.]+\|[0-9.]+\|/', $latest_version_txt)) {
-            list($latest_version) = explode('|', $latest_version_txt);
-        } else {
-            // Cannot determine the latest version.
-            $latest_version = '';
-        }
-
-        return $latest_version;
     }
 
     /**

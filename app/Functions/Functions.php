@@ -32,50 +32,6 @@ use Symfony\Component\HttpFoundation\Response;
 class Functions
 {
     /**
-     * Check with the webtrees.net server for the latest version of webtrees.
-     * Fetching the remote file can be slow, so check infrequently, and cache the result.
-     * Pass the current versions of webtrees, PHP and MySQL, as the response
-     * may be different for each. The server logs are used to generate
-     * installation statistics which can be found at http://dev.webtrees.net/statistics.html
-     *
-     * @return string
-     */
-    public static function fetchLatestVersion()
-    {
-        $last_update_timestamp = Site::getPreference('LATEST_WT_VERSION_TIMESTAMP');
-
-        if ($last_update_timestamp < WT_TIMESTAMP - 24 * 60 * 60) {
-            $row           = Database::prepare("SHOW VARIABLES LIKE 'version'")->fetchOneRow();
-            $mysql_version = $row->value;
-
-            try {
-                $client = new Client([
-                    'timeout' => 3.0,
-                ]);
-
-                $response = $client->get('https://dev.webtrees.net/build/latest-version.txt', [
-                    'query' => [
-                        'w' => WT_VERSION,
-                        'p' => PHP_VERSION,
-                        'm' => $mysql_version,
-                        'o' => DIRECTORY_SEPARATOR === '/' ? 'u' : 'w',
-                    ],
-                ]);
-
-                if ($response->getStatusCode() == Response::HTTP_OK) {
-                    Site::setPreference('LATEST_WT_VERSION', $response->getBody()->getContents());
-                    Site::setPreference('LATEST_WT_VERSION_TIMESTAMP', WT_TIMESTAMP);
-                }
-            } catch (RequestException $ex) {
-                DebugBar::addThrowable($ex);
-
-            }
-        }
-
-        return Site::getPreference('LATEST_WT_VERSION');
-    }
-
-    /**
      * Convert a file upload PHP error code into user-friendly text.
      *
      * @param int $error_code
