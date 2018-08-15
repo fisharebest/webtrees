@@ -1131,8 +1131,6 @@ class FunctionsImport
                     'descriptive_title'    => $media_file->title(),
                 ]);
             }
-
-
         }
 
         return "\n" . $level . ' OBJE @' . $xref . '@';

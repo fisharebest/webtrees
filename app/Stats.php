@@ -7956,23 +7956,23 @@ class Stats
                 return strip_tags(I18N::translateContext('CENTURY', '11th'));
             case 10:
                 return strip_tags(I18N::translateContext('CENTURY', '10th'));
-            case  9:
+            case 9:
                 return strip_tags(I18N::translateContext('CENTURY', '9th'));
-            case  8:
+            case 8:
                 return strip_tags(I18N::translateContext('CENTURY', '8th'));
-            case  7:
+            case 7:
                 return strip_tags(I18N::translateContext('CENTURY', '7th'));
-            case  6:
+            case 6:
                 return strip_tags(I18N::translateContext('CENTURY', '6th'));
-            case  5:
+            case 5:
                 return strip_tags(I18N::translateContext('CENTURY', '5th'));
-            case  4:
+            case 4:
                 return strip_tags(I18N::translateContext('CENTURY', '4th'));
-            case  3:
+            case 3:
                 return strip_tags(I18N::translateContext('CENTURY', '3rd'));
-            case  2:
+            case 2:
                 return strip_tags(I18N::translateContext('CENTURY', '2nd'));
-            case  1:
+            case 1:
                 return strip_tags(I18N::translateContext('CENTURY', '1st'));
             default:
                 return ($century - 1) . '01-' . $century . '00';

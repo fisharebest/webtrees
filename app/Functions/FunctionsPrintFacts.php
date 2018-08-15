@@ -190,26 +190,26 @@ class FunctionsPrintFacts
         if ($fact->getFactId() != 'histo' && $fact->canEdit()) {
             ?>
             <?= $label ?>
-					<div class="editfacts">
-              <?= FontAwesome::linkIcon('edit', I18N::translate('Edit'), [
-                  'class' => 'btn btn-link',
-                  'href'  => route('edit-fact', [
-                      'xref'    => $parent->getXref(),
-                      'fact_id' => $fact->getFactId(),
-                      'ged' . $tree->getName(),
-                  ]),
-              ]) ?>
-              <?= FontAwesome::linkIcon('copy', I18N::translate('Copy'), [
-                  'class'   => 'btn btn-link',
-                  'href'    => '#',
-                  'onclick' => 'return copy_fact("' . e($tree->getName()) . '", "' . e($parent->getXref()) . '", "' . $fact->getFactId() . '");',
-              ]) ?>
-              <?= FontAwesome::linkIcon('delete', I18N::translate('Delete'), [
-                  'class'   => 'btn btn-link',
-                  'href'    => '#',
-                  'onclick' => 'return delete_fact("' . I18N::translate('Are you sure you want to delete this fact?') . '", "' . e($tree->getName()) . '", "' . e($parent->getXref()) . '", "' . $fact->getFactId() . '");',
-              ]) ?>
-					</div>
+            <div class="editfacts">
+                <?= FontAwesome::linkIcon('edit', I18N::translate('Edit'), [
+                    'class' => 'btn btn-link',
+                    'href'  => route('edit-fact', [
+                        'xref'    => $parent->getXref(),
+                        'fact_id' => $fact->getFactId(),
+                        'ged' . $tree->getName(),
+                    ]),
+                ]) ?>
+                <?= FontAwesome::linkIcon('copy', I18N::translate('Copy'), [
+                    'class'   => 'btn btn-link',
+                    'href'    => '#',
+                    'onclick' => 'return copy_fact("' . e($tree->getName()) . '", "' . e($parent->getXref()) . '", "' . $fact->getFactId() . '");',
+                ]) ?>
+                <?= FontAwesome::linkIcon('delete', I18N::translate('Delete'), [
+                    'class'   => 'btn btn-link',
+                    'href'    => '#',
+                    'onclick' => 'return delete_fact("' . I18N::translate('Are you sure you want to delete this fact?') . '", "' . e($tree->getName()) . '", "' . e($parent->getXref()) . '", "' . $fact->getFactId() . '");',
+                ]) ?>
+            </div>
             <?php
         } else {
             echo $label;

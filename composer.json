@@ -67,6 +67,8 @@
                     "phpca --since-version=7.0 app/",
                     "### PHP-CODE-FIXER",
                     "phpcf app/",
+                    "### PHP-CODE-SNIFFER",
+                    "phpcs --standard=PSR2 --exclude=Generic.Files.LineLength app",
                     "### PHAN",
                     "phan --directory . --exclude-directory-list tests,vendor",
                     "### PHP-PARALLEL-LINT",

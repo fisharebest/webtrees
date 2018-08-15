@@ -180,7 +180,6 @@ abstract class AbstractEditController extends AbstractBaseController
         }
 
         for ($j = 0; $j < count($this->glevels); $j++) {
-
             // Look for empty SOUR reference with non-empty sub-records.
             // This can happen when the SOUR entry is deleted but its sub-records
             // were incorrectly left intact.

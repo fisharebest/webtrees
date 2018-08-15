@@ -25,6 +25,13 @@ use PDOException;
  */
 class Database
 {
+    const PDO_OPTIONS = [
+        PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ,
+        PDO::ATTR_CASE               => PDO::CASE_LOWER,
+        PDO::ATTR_AUTOCOMMIT         => true,
+    ];
+
     /** @var Database Implement the singleton pattern */
     private static $instance;
 
@@ -80,21 +87,15 @@ class Database
 
         self::$table_prefix = $config['tblpfx'];
 
-        // Create the underlying PDO object
-        self::$pdo = new PDO(
-            (substr($config['dbhost'], 0, 1) === '/' ?
-                "mysql:unix_socket={$config['dbhost']};dbname={$config['dbname']}" :
-                "mysql:host={$config['dbhost']};dbname={$config['dbname']};port={$config['dbport']}"
-            ),
-            $config['dbuser'], $config['dbpass'],
-            [
-                PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ,
-                PDO::ATTR_CASE               => PDO::CASE_LOWER,
-                PDO::ATTR_AUTOCOMMIT         => true,
-            ]
+        $dsn = (substr($config['dbhost'], 0, 1) === '/' ?
+            "mysql:unix_socket='{$config['dbhost']};dbname={$config['dbname']}" :
+            "mysql:host={$config['dbhost']};dbname={$config['dbname']};port={$config['dbport']}"
         );
 
+        // Create the underlying PDO object.
+        self::$pdo = new PDO($dsn, $config['dbuser'], $config['dbpass'], self::PDO_OPTIONS);
+
+        // Add logging/debugging.
         self::$pdo = DebugBar::initPDO(self::$pdo);
 
         self::$pdo->exec("SET NAMES 'utf8' COLLATE 'utf8_unicode_ci'");

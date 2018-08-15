@@ -429,31 +429,31 @@ class Functions
         switch ($sex) {
             case 'M':
                 switch ($n) {
-                    case  1:
+                    case 1:
                         /* I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers. */
                         return I18N::translateContext('MALE', 'first cousin');
-                    case  2:
+                    case 2:
                         /* I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers. */
                         return I18N::translateContext('MALE', 'second cousin');
-                    case  3:
+                    case 3:
                         /* I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers. */
                         return I18N::translateContext('MALE', 'third cousin');
-                    case  4:
+                    case 4:
                         /* I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers. */
                         return I18N::translateContext('MALE', 'fourth cousin');
-                    case  5:
+                    case 5:
                         /* I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers. */
                         return I18N::translateContext('MALE', 'fifth cousin');
-                    case  6:
+                    case 6:
                         /* I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers. */
                         return I18N::translateContext('MALE', 'sixth cousin');
-                    case  7:
+                    case 7:
                         /* I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers. */
                         return I18N::translateContext('MALE', 'seventh cousin');
-                    case  8:
+                    case 8:
                         /* I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers. */
                         return I18N::translateContext('MALE', 'eighth cousin');
-                    case  9:
+                    case 9:
                         /* I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers. */
                         return I18N::translateContext('MALE', 'ninth cousin');
                     case 10:
@@ -480,23 +480,23 @@ class Functions
                 }
             case 'F':
                 switch ($n) {
-                    case  1:
+                    case 1:
                         return I18N::translateContext('FEMALE', 'first cousin');
-                    case  2:
+                    case 2:
                         return I18N::translateContext('FEMALE', 'second cousin');
-                    case  3:
+                    case 3:
                         return I18N::translateContext('FEMALE', 'third cousin');
-                    case  4:
+                    case 4:
                         return I18N::translateContext('FEMALE', 'fourth cousin');
-                    case  5:
+                    case 5:
                         return I18N::translateContext('FEMALE', 'fifth cousin');
-                    case  6:
+                    case 6:
                         return I18N::translateContext('FEMALE', 'sixth cousin');
-                    case  7:
+                    case 7:
                         return I18N::translateContext('FEMALE', 'seventh cousin');
-                    case  8:
+                    case 8:
                         return I18N::translateContext('FEMALE', 'eighth cousin');
-                    case  9:
+                    case 9:
                         return I18N::translateContext('FEMALE', 'ninth cousin');
                     case 10:
                         return I18N::translateContext('FEMALE', 'tenth cousin');
@@ -515,23 +515,23 @@ class Functions
                 }
             default:
                 switch ($n) {
-                    case  1:
+                    case 1:
                         return I18N::translate('first cousin');
-                    case  2:
+                    case 2:
                         return I18N::translate('second cousin');
-                    case  3:
+                    case 3:
                         return I18N::translate('third cousin');
-                    case  4:
+                    case 4:
                         return I18N::translate('fourth cousin');
-                    case  5:
+                    case 5:
                         return I18N::translate('fifth cousin');
-                    case  6:
+                    case 6:
                         return I18N::translate('sixth cousin');
-                    case  7:
+                    case 7:
                         return I18N::translate('seventh cousin');
-                    case  8:
+                    case 8:
                         return I18N::translate('eighth cousin');
-                    case  9:
+                    case 9:
                         return I18N::translate('ninth cousin');
                     case 10:
                         return I18N::translate('tenth cousin');
@@ -566,16 +566,16 @@ class Functions
         switch ($sex) {
             case 'M':
                 switch ($n) {
-                    case  1:
+                    case 1:
                         return /* I18N: A Spanish relationship name, such as third great-nephew */
                             I18N::translateContext('MALE', 'first %s', $relation);
-                    case  2:
+                    case 2:
                         return I18N::translateContext('MALE', 'second %s', $relation);
-                    case  3:
+                    case 3:
                         return I18N::translateContext('MALE', 'third %s', $relation);
-                    case  4:
+                    case 4:
                         return I18N::translateContext('MALE', 'fourth %s', $relation);
-                    case  5:
+                    case 5:
                         return I18N::translateContext('MALE', 'fifth %s', $relation);
                     default:
                         return /* I18N: A Spanish relationship name, such as third great-nephew */
@@ -583,35 +583,35 @@ class Functions
                 }
             case 'F':
                 switch ($n) {
-                    case  1:
+                    case 1:
                         return /* I18N: A Spanish relationship name, such as third great-nephew */
                             I18N::translateContext('FEMALE', 'first %s', $relation);
-                    case  2:
+                    case 2:
                         return I18N::translateContext('FEMALE', 'second %s', $relation);
-                    case  3:
+                    case 3:
                         return I18N::translateContext('FEMALE', 'third %s', $relation);
-                    case  4:
+                    case 4:
                         return I18N::translateContext('FEMALE', 'fourth %s', $relation);
-                    case  5:
+                    case 5:
                         return I18N::translateContext('FEMALE', 'fifth %s', $relation);
                     default: // I18N: A Spanish relationship name, such as third great-nephew
                         return I18N::translateContext('FEMALE', '%1$s × %2$s', I18N::number($n), $relation);
                 }
             default:
                 switch ($n) {
-                    case  1:
+                    case 1:
                         return /* I18N: A Spanish relationship name, such as first great-nephew */
                             I18N::translate('first %s', $relation);
-                    case  2:
+                    case 2:
                         return /* I18N: A Spanish relationship name, such as second great-nephew */
                             I18N::translate('second %s', $relation);
-                    case  3:
+                    case 3:
                         return /* I18N: A Spanish relationship name, such as third great-nephew */
                             I18N::translate('third %s', $relation);
-                    case  4:
+                    case 4:
                         return /* I18N: A Spanish relationship name, such as fourth great-nephew */
                             I18N::translate('fourth %s', $relation);
-                    case  5:
+                    case 5:
                         return /* I18N: A Spanish relationship name, such as fifth great-nephew */
                             I18N::translate('fifth %s', $relation);
                     default:

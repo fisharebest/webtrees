@@ -30,10 +30,10 @@ class Individual extends GedcomRecord
     public $generation;
 
     /** @var Date The estimated date of birth */
-    private $_getEstimatedBirthDate;
+    private $estimated_birth_date;
 
     /** @var Date The estimated date of death */
-    private $_getEstimatedDeathDate;
+    private $estimated_death_date;
 
     /**
      * Get an instance of an individual object. For single records,
@@ -643,14 +643,14 @@ class Individual extends GedcomRecord
      */
     public function getEstimatedBirthDate()
     {
-        if (is_null($this->_getEstimatedBirthDate)) {
+        if (is_null($this->estimated_birth_date)) {
             foreach ($this->getAllBirthDates() as $date) {
                 if ($date->isOK()) {
-                    $this->_getEstimatedBirthDate = $date;
+                    $this->estimated_birth_date = $date;
                     break;
                 }
             }
-            if (is_null($this->_getEstimatedBirthDate)) {
+            if (is_null($this->estimated_birth_date)) {
                 $min = [];
                 $max = [];
                 $tmp = $this->getDeathDate();
@@ -712,14 +712,14 @@ class Individual extends GedcomRecord
                     $gregorian_calendar = new GregorianCalendar;
 
                     list($year) = $gregorian_calendar->jdToYmd((int)((max($min) + min($max)) / 2));
-                    $this->_getEstimatedBirthDate = new Date('EST ' . $year);
+                    $this->estimated_birth_date = new Date('EST ' . $year);
                 } else {
-                    $this->_getEstimatedBirthDate = new Date(''); // always return a date object
+                    $this->estimated_birth_date = new Date(''); // always return a date object
                 }
             }
         }
 
-        return $this->_getEstimatedBirthDate;
+        return $this->estimated_birth_date;
     }
 
     /**
@@ -729,24 +729,24 @@ class Individual extends GedcomRecord
      */
     public function getEstimatedDeathDate()
     {
-        if ($this->_getEstimatedDeathDate === null) {
+        if ($this->estimated_death_date === null) {
             foreach ($this->getAllDeathDates() as $date) {
                 if ($date->isOK()) {
-                    $this->_getEstimatedDeathDate = $date;
+                    $this->estimated_death_date = $date;
                     break;
                 }
             }
-            if ($this->_getEstimatedDeathDate === null) {
+            if ($this->estimated_death_date === null) {
                 if ($this->getEstimatedBirthDate()->minimumJulianDay()) {
-                    $max_alive_age                = (int)$this->tree->getPreference('MAX_ALIVE_AGE');
-                    $this->_getEstimatedDeathDate = $this->getEstimatedBirthDate()->addYears($max_alive_age, 'BEF');
+                    $max_alive_age              = (int)$this->tree->getPreference('MAX_ALIVE_AGE');
+                    $this->estimated_death_date = $this->getEstimatedBirthDate()->addYears($max_alive_age, 'BEF');
                 } else {
-                    $this->_getEstimatedDeathDate = new Date(''); // always return a date object
+                    $this->estimated_death_date = new Date(''); // always return a date object
                 }
             }
         }
 
-        return $this->_getEstimatedDeathDate;
+        return $this->estimated_death_date;
     }
 
     /**
