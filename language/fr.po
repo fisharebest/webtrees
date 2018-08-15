@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-07-26 23:06+0100\n"
-"PO-Revision-Date: 2018-01-14 10:58+0000\n"
+"PO-Revision-Date: 2018-08-15 06:57+0000\n"
 "Last-Translator: Michel <gustine@laposte.net>\n"
 "Language-Team: French <https://translate.webtrees.net/projects/webtrees/webtrees/fr/>\n"
 "Language: fr\n"
@@ -83,7 +83,7 @@ msgstr "%1$sKB ont été téléchargés en %2$s secondes."
 #: app/Http/Controllers/AdminUsersController.php:399
 #, php-format
 msgid "%1$s does not exist"
-msgstr ""
+msgstr "%1$s n'existe pas"
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: app/Http/Controllers/AdminTreesController.php:228
@@ -309,8 +309,8 @@ msgstr "%s est désactivé sur ce serveur. Vous ne pouvez installer webtrees san
 #, php-format
 msgid "%s location has been imported."
 msgid_plural "%s locations have been imported."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s lieu a été importé."
+msgstr[1] "%s lieux ont été importés."
 
 #: app/Module/UserMessagesModule.php:177
 #, php-format
@@ -365,8 +365,8 @@ msgstr "%s éloigné(e) au 1<sup>er</sup> degré"
 #, php-format
 msgid "%s repository has been updated."
 msgid_plural "%s repositories have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s dépôt a été mis à jour."
+msgstr[1] "%s dépôts ont été mis à jour."
 
 #: app/I18N.php:883
 #, php-format
@@ -709,7 +709,7 @@ msgstr "<span class=\"label\">%1$s&nbsp;:</span> <span class=\"field\" dir=\"aut
 #. I18N: URL = web address
 #: resources/views/modals/media-file-fields.php:20
 msgid "A URL"
-msgstr ""
+msgstr "Une URL"
 
 #. I18N: Description of the “RelationshipsChart” module
 #: app/Module/RelationshipsChartModule.php:61
@@ -1408,7 +1408,7 @@ msgstr "Ajouter un texte historique narratif aux individus de l’arbre généal
 
 #: resources/views/admin/map-import-form.php:72
 msgid "Add new, and update existing records"
-msgstr ""
+msgstr "Ajouter un nouvel enregistrement et mettre à jour les existants"
 
 #: resources/views/admin/trees-import.php:83
 msgid "Add spaces where long lines were wrapped"
@@ -1927,7 +1927,7 @@ msgstr "Une erreur de base de données s’est produite de manière inattendue."
 #: resources/views/modules/pedigree-map/pedigree-map.php:82
 #: resources/views/place-map.php:85
 msgid "An unknown error occurred"
-msgstr ""
+msgstr "Une erreur inconnue est survenue"
 
 #. I18N: Name of a module/report
 #. I18N: Name of a module/chart
@@ -6256,7 +6256,7 @@ msgstr "Drapeau"
 #: resources/views/admin/locations.php:47
 #, php-format
 msgid "Flag of %s"
-msgstr ""
+msgstr "Drapeau de %s"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:7564
@@ -7290,7 +7290,7 @@ msgstr "Importer"
 
 #: resources/views/admin/map-import-form.php:67
 msgid "Import Options."
-msgstr ""
+msgstr "Options d’importation."
 
 #: app/Http/Controllers/AdminTreesController.php:614
 msgid "Import a GEDCOM file"
@@ -7307,7 +7307,7 @@ msgstr "Importer des vignettes personnalisées depuis webtrees version 1"
 
 #: app/Http/Controllers/AdminLocationController.php:310
 msgid "Import geographic data"
-msgstr ""
+msgstr "Importer les données géographiques"
 
 #: resources/views/admin/trees-import.php:71
 msgid "Import preferences"
@@ -8093,7 +8093,7 @@ msgstr "Si vous laissez ce paramètre vide, la valeur par défaut sera utilisée
 
 #: resources/views/admin/media-upload.php:36
 msgid "Leave this entry blank to keep the original filename"
-msgstr ""
+msgstr "Laisser vide pour conserver le nom du fichier original"
 
 #: resources/views/lists/families-table.php:138
 #: resources/views/lists/individuals-table.php:190
@@ -8449,7 +8449,7 @@ msgstr "Gérer les arbres généalogiques"
 #: resources/views/admin/trees-renumber.php:3
 #: resources/views/admin/trees-unconnected.php:4
 msgid "Manage family trees "
-msgstr ""
+msgstr "Gérer les arbres généalogiques "
 
 #: app/Http/Controllers/AdminMediaController.php:69
 #: resources/views/admin/control-panel.php:438
@@ -8519,7 +8519,7 @@ msgstr "Plan/Carte"
 #: resources/views/admin/control-panel.php:487
 #: resources/views/admin/map-provider.php:12
 msgid "Map provider"
-msgstr ""
+msgstr "Fournisseur de carte"
 
 #: app/Date/CalendarDate.php:361
 msgctxt "Abbreviation for March"
@@ -9833,7 +9833,7 @@ msgstr "Aucun lien entre les deux individus n’a pu être trouvé."
 #: resources/views/modules/pedigree-map/pedigree-map.php:81
 #: resources/views/modules/places/tab.php:77 resources/views/place-map.php:84
 msgid "No mappable items"
-msgstr ""
+msgstr "Pas d’élément à cartographier"
 
 #: resources/views/admin/merge-records-step-2.php:51
 #: resources/views/admin/merge-records-step-2.php:98
@@ -10230,7 +10230,7 @@ msgstr "Ce jour-là…"
 
 #: resources/views/admin/map-import-form.php:73
 msgid "Only add new records"
-msgstr ""
+msgstr "Ajouter seulement les nouveaux enregistrements"
 
 #: app/Functions/FunctionsEdit.php:230
 #: app/Functions/FunctionsPrintFacts.php:266
@@ -10243,7 +10243,7 @@ msgstr "Seuls les gestionnaires peuvent modifier"
 
 #: resources/views/admin/map-import-form.php:74
 msgid "Only update existing records"
-msgstr ""
+msgstr "Mettre à jour seulement les enregistrements existants"
 
 #: resources/views/errors/database-connection.php:5
 msgid "Oops! The webserver is unable to connect to the database server. It could be busy, undergoing maintenance, or simply broken. You should <a href=\"index.php\">try again</a> in a few minutes or contact the website administrator."
@@ -10839,7 +10839,7 @@ msgstr "Lieux doit être saisi conformément aux normes généalogiques. En gén
 
 #: resources/views/places-page.php:26
 msgid "Places without valid co-ordinates are not shown on the map and have a red border around the sidebar entry"
-msgstr ""
+msgstr "Les lieux sans coordonnées valides ne sont pas montrés sur la carte et sont entourés d’une bordure rouge"
 
 #: app/Theme/CloudsTheme.php:48 app/Theme/FabTheme.php:76
 #: app/Theme/MinimalTheme.php:46 app/Theme/XeneaTheme.php:46
@@ -11021,7 +11021,7 @@ msgstr "Confidentialité"
 
 #: app/Http/Controllers/StaticPageController.php:40
 msgid "Privacy policy"
-msgstr ""
+msgstr "Politique de confidentialité"
 
 #. I18N: a restrction on viewing data
 #: resources/views/modals/restriction-fields.php:5
@@ -11273,7 +11273,7 @@ msgstr "Nom réel"
 
 #: resources/views/admin/map-import-form.php:100
 msgid "Really delete all geographic data?"
-msgstr ""
+msgstr "Supprimer vraiment toutes les données géographiques ?"
 
 #. I18N: Name of a module
 #: app/Module/RecentChangesModule.php:42 modules_v3/change_report/report.xml:92
@@ -11601,7 +11601,7 @@ msgstr "Les tâches à faire sont stockées sous la balise GEDCOM standard «&nb
 #: resources/views/modules/pedigree-map/pedigree-map.php:80
 #: resources/views/modules/places/tab.php:76 resources/views/place-map.php:83
 msgid "Reset to initial map state"
-msgstr ""
+msgstr "Réinitialiser la carte"
 
 #. I18N: gedcom tag RESI
 #: app/GedcomTag.php:961
@@ -12533,7 +12533,7 @@ msgstr "Afficher les photos"
 
 #: app/Http/Controllers/PlaceHierarchyController.php:74
 msgid "Show place hierarchy"
-msgstr ""
+msgstr "Afficher la hiérarchie des lieux"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-privacy.php:146
@@ -12587,7 +12587,7 @@ msgstr "Afficher les %1$s %2$s parties du nom d’un lieu."
 #. I18N: Description of the “OSM” module
 #: app/Module/PedigreeMapModule.php:71
 msgid "Show the birthplace of ancestors on a map."
-msgstr ""
+msgstr "Montrer le lieu de naissance des ancêtres sur la carte."
 
 #: resources/views/modules/html/config.php:41
 msgid "Show the date and time of update"
@@ -12613,7 +12613,7 @@ msgstr "Afficher la liste des noms de famille"
 #. I18N: Description of the “OSM” module
 #: app/Module/PlacesModule.php:52
 msgid "Show the location of events on a map."
-msgstr ""
+msgstr "Montrer l’emplacement des événements sur la carte."
 
 #. I18N: label for a yes/no option
 #: resources/views/modules/recent_changes/config.php:35
@@ -12759,7 +12759,7 @@ msgstr "Les membres peuvent s’envoyer mutuellement des messages. Vous pouvez c
 
 #: app/Http/Controllers/AdminPhpGedViewController.php:176
 msgid "Site preferences"
-msgstr ""
+msgstr "Préférences du site web"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-analytics.php:20
@@ -13487,7 +13487,7 @@ msgstr "Le panier vous permet d’extraire des données de cet arbre généalogi
 
 #: resources/views/privacy-policy.php:8
 msgid "The data in this website has been collected for the purposes of genealogical research."
-msgstr ""
+msgstr "Les données de ce site web ont été collectées dans un but de recherches généalogiques."
 
 #: resources/views/admin/trees-preferences.php:441
 msgid "The date and time of the last update"
@@ -13496,7 +13496,7 @@ msgstr "La date et l’heure de la dernière mise à jour"
 #: app/Http/Controllers/AdminLocationController.php:177
 #, php-format
 msgid "The details for “%s” have been updated."
-msgstr ""
+msgstr "Les détails de « %s » ont été mis à jour."
 
 #. I18N: %s is a filename
 #: app/Http/Controllers/AdminTreesController.php:535
@@ -13808,7 +13808,7 @@ msgstr "La source a été créée"
 
 #: app/Http/Controllers/AdminPhpGedViewController.php:198
 msgid "The specified folder does not contain an installation of PhpGedView."
-msgstr ""
+msgstr "Le répertoire indiqué ne contient pas d’installation PhpGedView."
 
 #: app/Http/Controllers/EditSubmitterController.php:95
 msgid "The submitter has been created"
@@ -14370,7 +14370,7 @@ msgstr "Cet enregistrement n'existe pas ou vous n'avez pas les droits pour le vo
 
 #: resources/views/admin/trees-privacy.php:238
 msgid "This record does not exist."
-msgstr ""
+msgstr "Cet enregistrement n’existe pas."
 
 #: resources/views/gedcom-record-page.php:11
 msgid "This record has been deleted. The deletion will need to be reviewed by a moderator."
@@ -14453,11 +14453,11 @@ msgstr "Ceci est une liste de faits additionnels qui doivent être séparés par
 
 #: resources/views/privacy-policy.php:25
 msgid "This site does not use any third-party tracking or analytics services."
-msgstr ""
+msgstr "Ce site web n’utilise aucun service tiers de pistage ou d’analyse."
 
 #: resources/views/privacy-policy.php:16
 msgid "This site uses cookies to store your preferences on this site, such as the language you have selected."
-msgstr ""
+msgstr "Ce site utilise des cookies pour enregistrer vos préférences, telles que la langue que vous avez choisie."
 
 #: app/Exceptions/SourceAccessDeniedException.php:33
 #: app/Exceptions/SourceNotFoundException.php:33
@@ -15409,7 +15409,7 @@ msgstr "Afficher"
 #: resources/views/places-page.php:33
 #, php-format
 msgid "View table of events occurring in %s"
-msgstr ""
+msgstr "Voir la table des événements survenus à %s"
 
 #: resources/views/calendar-page.php:159
 msgid "View this day"
@@ -16017,7 +16017,7 @@ msgstr "ajouter"
 #. I18N: A button label.
 #: resources/views/admin/locations.php:78
 msgid "add place"
-msgstr ""
+msgstr "ajouter le lieu"
 
 #. I18N: The name given to a child by its adoptive parents
 #: app/GedcomCode/GedcomCodeName.php:67
@@ -16585,7 +16585,7 @@ msgstr "ex-épouse"
 #. I18N: A button label.
 #: resources/views/admin/locations.php:84
 msgid "export file"
-msgstr ""
+msgstr "exporter le fichier"
 
 #: app/Http/Controllers/AdminTreesController.php:933
 #: modules_v3/fact_sources/report.xml:6
@@ -18538,7 +18538,7 @@ msgstr "importer"
 #. I18N: A button label.
 #: resources/views/admin/locations.php:98
 msgid "import file"
-msgstr ""
+msgstr "importer le fichier"
 
 #. I18N: Gedcom INT dates
 #: app/Date.php:352
@@ -18609,7 +18609,7 @@ msgstr "liste"
 #: app/Http/Controllers/AdminLocationController.php:471
 #, php-format
 msgid "locations updated: %s, locations added: %s"
-msgstr ""
+msgstr "lieux mis à jour : %s, lieux ajoutés : %s"
 
 #. I18N: A woman’s name, before she marries (in cultures where women take their new husband’s name on marriage)
 #: app/GedcomCode/GedcomCodeName.php:133
@@ -18735,17 +18735,17 @@ msgstr "neveu"
 #: app/Functions/Functions.php:1180
 msgctxt "husband’s brother’s son"
 msgid "nephew"
-msgstr ""
+msgstr "neveu"
 
 #: app/Functions/Functions.php:1176
 msgctxt "husband’s sibling’s son"
 msgid "nephew"
-msgstr ""
+msgstr "neveu"
 
 #: app/Functions/Functions.php:1178
 msgctxt "husband’s sister’s son"
 msgid "nephew"
-msgstr ""
+msgstr "neveu"
 
 #: app/Functions/Functions.php:932
 msgctxt "sibling’s son"
@@ -18760,17 +18760,17 @@ msgstr "neveu"
 #: app/Functions/Functions.php:1420
 msgctxt "wife’s brother’s son"
 msgid "nephew"
-msgstr ""
+msgstr "neveu"
 
 #: app/Functions/Functions.php:1416
 msgctxt "wife’s sibling’s son"
 msgid "nephew"
-msgstr ""
+msgstr "neveu"
 
 #: app/Functions/Functions.php:1418
 msgctxt "wife’s sister’s son"
 msgid "nephew"
-msgstr ""
+msgstr "neveu"
 
 #: app/Functions/Functions.php:1018
 msgctxt "brother’s daughter’s husband"
@@ -18795,17 +18795,17 @@ msgstr "neveu/nièce"
 #: app/Functions/Functions.php:1168
 msgctxt "husband’s brother’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "neveu/nièce"
 
 #: app/Functions/Functions.php:1164
 msgctxt "husband’s sibling’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "neveu/nièce"
 
 #: app/Functions/Functions.php:1166
 msgctxt "husband’s sister’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "neveu/nièce"
 
 #: app/Functions/Functions.php:928
 msgctxt "sibling’s child"
@@ -18820,17 +18820,17 @@ msgstr "neveu/nièce"
 #: app/Functions/Functions.php:1408
 msgctxt "wife’s brother’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "neveu/nièce"
 
 #: app/Functions/Functions.php:1404
 msgctxt "wife’s sibling’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "neveu/nièce"
 
 #: app/Functions/Functions.php:1406
 msgctxt "wife’s sister’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "neveu/nièce"
 
 #: app/Functions/FunctionsEdit.php:806
 msgid "never"
@@ -18859,17 +18859,17 @@ msgstr "nièce"
 #: app/Functions/Functions.php:1174
 msgctxt "husband’s brother’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "nièce"
 
 #: app/Functions/Functions.php:1170
 msgctxt "husband’s sibling’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "nièce"
 
 #: app/Functions/Functions.php:1172
 msgctxt "husband’s sister’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "nièce"
 
 #: app/Functions/Functions.php:930
 msgctxt "sibling’s daughter"
@@ -18884,17 +18884,17 @@ msgstr "nièce"
 #: app/Functions/Functions.php:1414
 msgctxt "wife’s brother’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "nièce"
 
 #: app/Functions/Functions.php:1410
 msgctxt "wife’s sibling’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "nièce"
 
 #: app/Functions/Functions.php:1412
 msgctxt "wife’s sister’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "nièce"
 
 #: app/Functions/Functions.php:1044
 msgctxt "brother’s son’s wife"
