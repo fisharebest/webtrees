@@ -17,7 +17,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
-use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Date\FrenchDate;
 use Fisharebest\Webtrees\Date\GregorianDate;
