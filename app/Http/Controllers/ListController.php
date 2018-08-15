@@ -145,7 +145,7 @@ class ListController extends AbstractBaseController
                 $show    = $request->get('show', 'surn');
             }
         } elseif ($surname) {
-            $alpha    = $this->initialLetter($surname); // so we can highlight the initial letter
+            $alpha    = $this->localization_service->initialLetter($surname); // so we can highlight the initial letter
             $show_all = 'no';
             if ($surname === '@N.N.') {
                 $legend = I18N::translateContext('Unknown surname', '…');
@@ -659,61 +659,6 @@ class ListController extends AbstractBaseController
         return array_filter($list, function (Source $x): bool {
             return $x->canShow();
         });
-    }
-
-    /**
-     * Get the initial letter of a name, taking care of multi-letter sequences and equivalences.
-     *
-     * @param string $name
-     *
-     * @return string
-     */
-    public function initialLetter($name)
-    {
-        $name = I18N::strtoupper($name);
-        switch (WT_LOCALE) {
-            case 'cs':
-                if (substr($name, 0, 2) == 'CH') {
-                    return 'CH';
-                }
-                break;
-            case 'da':
-            case 'nb':
-            case 'nn':
-                if (substr($name, 0, 2) == 'AA') {
-                    return 'Å';
-                }
-                break;
-            case 'hu':
-                if (substr($name, 0, 2) == 'CS') {
-                    return 'CS';
-                } elseif (substr($name, 0, 3) == 'DZS') {
-                    return 'DZS';
-                } elseif (substr($name, 0, 2) == 'DZ') {
-                    return 'DZ';
-                } elseif (substr($name, 0, 2) == 'GY') {
-                    return 'GY';
-                } elseif (substr($name, 0, 2) == 'LY') {
-                    return 'LY';
-                } elseif (substr($name, 0, 2) == 'NY') {
-                    return 'NY';
-                } elseif (substr($name, 0, 2) == 'SZ') {
-                    return 'SZ';
-                } elseif (substr($name, 0, 2) == 'TY') {
-                    return 'TY';
-                } elseif (substr($name, 0, 2) == 'ZS') {
-                    return 'ZS';
-                }
-                break;
-            case 'nl':
-                if (substr($name, 0, 2) == 'IJ') {
-                    return 'IJ';
-                }
-                break;
-        }
-
-        // No special rules - just take the first character
-        return mb_substr($name, 0, 1);
     }
 
     /**
