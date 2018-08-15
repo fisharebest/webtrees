@@ -142,7 +142,7 @@ class ListController extends AbstractBaseController
                     'ged'      => $tree->getName(),
                     'show_all' => 'yes',
                 ];
-                $show    = $request->get('show', 'surn');
+                $show = $request->get('show', 'surn');
             }
         } elseif ($surname) {
             $alpha    = $this->localization_service->initialLetter($surname); // so we can highlight the initial letter
@@ -524,7 +524,7 @@ class ListController extends AbstractBaseController
     private function allMedia(Tree $tree, string $folder, string $subfolders, string $sort, string $filter, string $form_type): array
     {
         // All files in the folder, plus external files
-        $sql  =
+        $sql =
             "SELECT m_id AS xref, m_gedcom AS gedcom" .
             " FROM `##media`" .
             " JOIN `##media_file` USING (m_id, m_file)" .
@@ -543,11 +543,11 @@ class ListController extends AbstractBaseController
         // Include / exclude subfolders (but always include external)
         switch ($subfolders) {
             case 'include':
-                $sql    .= " AND (multimedia_file_refn LIKE CONCAT(?, '%') $sql_external)";
+                $sql .= " AND (multimedia_file_refn LIKE CONCAT(?, '%') $sql_external)";
                 $args[] = Database::escapeLike($folder);
                 break;
             case 'exclude':
-                $sql    .= " AND (multimedia_file_refn LIKE CONCAT(?, '%') AND multimedia_file_refn NOT LIKE CONCAT(?, '%/%') $sql_external)";
+                $sql .= " AND (multimedia_file_refn LIKE CONCAT(?, '%') AND multimedia_file_refn NOT LIKE CONCAT(?, '%/%') $sql_external)";
                 $args[] = Database::escapeLike($folder);
                 $args[] = Database::escapeLike($folder);
                 break;
@@ -555,13 +555,13 @@ class ListController extends AbstractBaseController
 
         // Apply search terms
         if ($filter) {
-            $sql    .= " AND (SUBSTRING_INDEX(multimedia_file_refn, '/', -1) LIKE CONCAT('%', ?, '%') OR descriptive_title LIKE CONCAT('%', ?, '%'))";
+            $sql .= " AND (SUBSTRING_INDEX(multimedia_file_refn, '/', -1) LIKE CONCAT('%', ?, '%') OR descriptive_title LIKE CONCAT('%', ?, '%'))";
             $args[] = Database::escapeLike($filter);
             $args[] = Database::escapeLike($filter);
         }
 
         if ($form_type) {
-            $sql    .= " AND source_media_type = ?";
+            $sql .= " AND source_media_type = ?";
             $args[] = $form_type;
         }
 
@@ -778,7 +778,7 @@ class ListController extends AbstractBaseController
         ];
 
         foreach ($this->localization_service->alphabet() as $n => $letter) {
-            $sql                   .= " AND n_surn COLLATE :collate_" . $n . " NOT LIKE :letter_" . $n;
+            $sql .= " AND n_surn COLLATE :collate_" . $n . " NOT LIKE :letter_" . $n;
             $args['collate_' . $n] = I18N::collation();
             $args['letter_' . $n]  = $letter . '%';
         }
@@ -865,7 +865,7 @@ class ListController extends AbstractBaseController
         ];
 
         if ($surn) {
-            $sql               .= " AND n_surn COLLATE :collate_1 = :surn";
+            $sql .= " AND n_surn COLLATE :collate_1 = :surn";
             $args['collate_1'] = I18N::collation();
             $args['surn']      = $surn;
         } elseif ($salpha === ',') {
@@ -918,7 +918,7 @@ class ListController extends AbstractBaseController
         ];
 
         if ($surn) {
-            $sql               .= " AND n_surn COLLATE :collate_1 = :surn";
+            $sql .= " AND n_surn COLLATE :collate_1 = :surn";
             $args['collate_1'] = I18N::collation();
             $args['surn']      = $surn;
         } elseif ($salpha === ',') {
@@ -931,7 +931,7 @@ class ListController extends AbstractBaseController
             // All surnames
             $sql .= " AND n_surn NOT IN ('', '@N.N.')";
         }
-        $sql               .= " GROUP BY n_surn COLLATE :collate_2, n_file) AS n2 ON (n1.n_surn = n2.n_surn COLLATE :collate_3 AND n1.n_file = n2.n_file)";
+        $sql .= " GROUP BY n_surn COLLATE :collate_2, n_file) AS n2 ON (n1.n_surn = n2.n_surn COLLATE :collate_3 AND n1.n_file = n2.n_file)";
         $args['collate_2'] = I18N::collation();
         $args['collate_3'] = I18N::collation();
 
@@ -972,7 +972,7 @@ class ListController extends AbstractBaseController
         ];
 
         if ($surn) {
-            $sql               .= " AND n_surn COLLATE :collate_1 = :surn";
+            $sql .= " AND n_surn COLLATE :collate_1 = :surn";
             $args['collate_1'] = I18N::collation();
             $args['surn']      = $surn;
         } elseif ($salpha === ',') {
@@ -989,7 +989,7 @@ class ListController extends AbstractBaseController
             $sql .= " AND " . $this->getInitialSql('n_givn', $galpha);
         }
 
-        $sql               .= " ORDER BY CASE n_surn WHEN '@N.N.' THEN 1 ELSE 0 END, n_surn COLLATE :collate_2, CASE n_givn WHEN '@P.N.' THEN 1 ELSE 0 END, n_givn COLLATE :collate_3";
+        $sql .= " ORDER BY CASE n_surn WHEN '@N.N.' THEN 1 ELSE 0 END, n_surn COLLATE :collate_2, CASE n_givn WHEN '@P.N.' THEN 1 ELSE 0 END, n_givn COLLATE :collate_3";
         $args['collate_2'] = I18N::collation();
         $args['collate_3'] = I18N::collation();
 
