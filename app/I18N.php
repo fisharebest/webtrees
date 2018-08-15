@@ -927,44 +927,4 @@ class I18N
 
         return self::substitutePlaceholders($args);
     }
-
-    /**
-     * What is the last day of the weekend.
-     *
-     * @return int Sunday=0, Monday=1, etc.
-     */
-    public static function weekendEnd()
-    {
-        return self::$locale->territory()->weekendEnd();
-    }
-
-    /**
-     * What is the first day of the weekend.
-     *
-     * @return int Sunday=0, Monday=1, etc.
-     */
-    public static function weekendStart()
-    {
-        return self::$locale->territory()->weekendStart();
-    }
-
-    /**
-     * Which calendar prefered in this locale?
-     *
-     * @return CalendarInterface
-     */
-    public static function defaultCalendar()
-    {
-        switch (self::$locale->languageTag()) {
-            case 'ar':
-                return new ArabicCalendar;
-            case 'fa':
-                return new PersianCalendar;
-            case 'he':
-            case 'yi':
-                return new JewishCalendar;
-            default:
-                return new GregorianCalendar;
-        }
-    }
 }

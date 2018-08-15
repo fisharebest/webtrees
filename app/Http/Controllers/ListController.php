@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
@@ -26,6 +27,7 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Repository;
+use Fisharebest\Webtrees\Services\LocalizationService;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
@@ -38,6 +40,19 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class ListController extends AbstractBaseController
 {
+    /** @var LocalizationService */
+    private $localization_service;
+
+    /**
+     * ListController constructor.
+     *
+     * @param LocalizationService $localization_service
+     */
+    public function __construct(LocalizationService $localization_service)
+    {
+        $this->localization_service = $localization_service;
+    }
+
     /**
      * Show a list of all individual or family records.
      *
@@ -196,154 +211,154 @@ class ListController extends AbstractBaseController
         }
 
         ?>
-			<div class="d-flex flex-column wt-page-options wt-page-options-individual-list d-print-none">
-				<ul class="d-flex flex-wrap wt-initials-list">
+        <div class="d-flex flex-column wt-page-options wt-page-options-individual-list d-print-none">
+            <ul class="d-flex flex-wrap wt-initials-list">
 
-            <?php
-            foreach ($this->surnameAlpha($tree, $show_marnm === 'yes', $families) as $letter => $count) {
-                echo '<li class="wt-initials-list-item">';
-                if ($count > 0) {
-                    echo '<a href="' . e(route($route, [
-                            'alpha' => $letter,
-                            'ged'   => $tree->getName(),
-                        ])) . '" class="wt-initial' . ($letter === $alpha ? ' active' : '') . '" title="' . I18N::number($count) . '">' . $this->surnameInitial((string)$letter) . '</a>';
-                } else {
-                    echo '<span class="wt-initial text-muted">' . $this->surnameInitial((string)$letter) . '</span>';
-                }
-                echo '</li>';
-            }
-
-            // Search spiders don't get the "show all" option as the other links give them everything.
-            if (Session::has('initiated')) {
-                echo '<li class="wt-initials-list-item">';
-                echo '<a class="wt-initial' . ($show_all === 'yes' ? ' active' : '') . '" href="' . e(route($route, ['show_all' => 'yes'] + $params)) . '">';
-                echo I18N::translate('All');
-                echo '</a>';
-                echo '</li>';
-            }
-            echo '</ul>';
-
-            // Search spiders don't get an option to show/hide the surname sublists,
-            // nor does it make sense on the all/unknown/surname views
-            if (Session::has('initiated') && $show !== 'none') {
-                if ($show_marnm === 'yes') {
-                    echo '<p><a href="', e(route($route, [
-                            'show'       => $show,
-                            'show_marnm' => 'no',
-                        ] + $params)), '">', I18N::translate('Exclude individuals with “%s” as a married name', $legend), '</a></p>';
-                } else {
-                    echo '<p><a href="', e(route($route, [
-                            'show'       => $show,
-                            'show_marnm' => 'yes',
-                        ] + $params)), '">', I18N::translate('Include individuals with “%s” as a married name', $legend), '</a></p>';
+                <?php
+                foreach ($this->surnameAlpha($tree, $show_marnm === 'yes', $families) as $letter => $count) {
+                    echo '<li class="wt-initials-list-item">';
+                    if ($count > 0) {
+                        echo '<a href="' . e(route($route, [
+                                'alpha' => $letter,
+                                'ged'   => $tree->getName(),
+                            ])) . '" class="wt-initial' . ($letter === $alpha ? ' active' : '') . '" title="' . I18N::number($count) . '">' . $this->surnameInitial((string) $letter) . '</a>';
+                    } else {
+                        echo '<span class="wt-initial text-muted">' . $this->surnameInitial((string) $letter) . '</span>';
+                    }
+                    echo '</li>';
                 }
 
-                if ($alpha !== '@' && $alpha !== ',' && !$surname) {
-                    if ($show === 'surn') {
+                // Search spiders don't get the "show all" option as the other links give them everything.
+                if (Session::has('initiated')) {
+                    echo '<li class="wt-initials-list-item">';
+                    echo '<a class="wt-initial' . ($show_all === 'yes' ? ' active' : '') . '" href="' . e(route($route, ['show_all' => 'yes'] + $params)) . '">';
+                    echo I18N::translate('All');
+                    echo '</a>';
+                    echo '</li>';
+                }
+                echo '</ul>';
+
+                // Search spiders don't get an option to show/hide the surname sublists,
+                // nor does it make sense on the all/unknown/surname views
+                if (Session::has('initiated') && $show !== 'none') {
+                    if ($show_marnm === 'yes') {
                         echo '<p><a href="', e(route($route, [
-                                'show'       => 'indi',
+                                'show'       => $show,
                                 'show_marnm' => 'no',
-                            ] + $params)), '">', I18N::translate('Show the list of individuals'), '</a></p>';
+                            ] + $params)), '">', I18N::translate('Exclude individuals with “%s” as a married name', $legend), '</a></p>';
                     } else {
                         echo '<p><a href="', e(route($route, [
-                                'show'       => 'surn',
-                                'show_marnm' => 'no',
-                            ] + $params)), '">', I18N::translate('Show the list of surnames'), '</a></p>';
+                                'show'       => $show,
+                                'show_marnm' => 'yes',
+                            ] + $params)), '">', I18N::translate('Include individuals with “%s” as a married name', $legend), '</a></p>';
+                    }
+
+                    if ($alpha !== '@' && $alpha !== ',' && !$surname) {
+                        if ($show === 'surn') {
+                            echo '<p><a href="', e(route($route, [
+                                    'show'       => 'indi',
+                                    'show_marnm' => 'no',
+                                ] + $params)), '">', I18N::translate('Show the list of individuals'), '</a></p>';
+                        } else {
+                            echo '<p><a href="', e(route($route, [
+                                    'show'       => 'surn',
+                                    'show_marnm' => 'no',
+                                ] + $params)), '">', I18N::translate('Show the list of surnames'), '</a></p>';
+                        }
+                    }
+                }
+
+                ?>
+        </div>
+        <div class="wt-page-content">
+            <?php
+
+            if ($show === 'indi' || $show === 'surn') {
+                $surns = $this->surnames($tree, $surname, $alpha, $show_marnm === 'yes', $families);
+                if ($show === 'surn') {
+                    // Show the surname list
+                    switch ($tree->getPreference('SURNAME_LIST_STYLE')) {
+                        case 'style1':
+                            echo FunctionsPrintLists::surnameList($surns, 3, true, $route, $tree);
+                            break;
+                        case 'style3':
+                            echo FunctionsPrintLists::surnameTagCloud($surns, $route, true, $tree);
+                            break;
+                        case 'style2':
+                        default:
+                            echo view('lists/surnames-table', [
+                                'surnames' => $surns,
+                                'route'    => $route,
+                            ]);
+                            break;
+                    }
+                } else {
+                    // Show the list
+                    $count = 0;
+                    foreach ($surns as $surnames) {
+                        foreach ($surnames as $list) {
+                            $count += count($list);
+                        }
+                    }
+                    // Don't sublists short lists.
+                    if ($count < $tree->getPreference('SUBLIST_TRIGGER_I')) {
+                        $falpha = '';
+                    } else {
+                        $givn_initials = $this->givenAlpha($tree, $surname, $alpha, $show_marnm === 'yes', $families);
+                        // Break long lists by initial letter of given name
+                        if ($surname || $show_all === 'yes') {
+                            if ($show_all === 'no') {
+                                echo '<h2 class="wt-page-title">', I18N::translate('Individuals with surname %s', $legend), '</h2>';
+                            }
+                            // Don't show the list until we have some filter criteria
+                            $show = ($falpha || $show_all_firstnames === 'yes') ? 'indi' : 'none';
+                            $list = [];
+                            echo '<ul class="d-flex flex-wrap justify-content-center wt-initials-list">';
+                            foreach ($givn_initials as $givn_initial => $count) {
+                                echo '<li class="wt-initials-list-item">';
+                                if ($count > 0) {
+                                    if ($show === 'indi' && $givn_initial === $falpha && $show_all_firstnames === 'no') {
+                                        echo '<a class="wt-initial active" href="' . e(route($route, ['falpha' => $givn_initial] + $params)) . '" title="' . I18N::number($count) . '">' . $this->givenNameInitial((string) $givn_initial) . '</a>';
+                                    } else {
+                                        echo '<a class="wt-initial" href="' . e(route($route, ['falpha' => $givn_initial] + $params)) . '" title="' . I18N::number($count) . '">' . $this->givenNameInitial((string) $givn_initial) . '</a>';
+                                    }
+                                } else {
+                                    echo '<span class="wt-initial text-muted">' . $this->givenNameInitial((string) $givn_initial) . '</span>';
+                                }
+                                echo '</li>';
+                            }
+                            // Search spiders don't get the "show all" option as the other links give them everything.
+                            if (Session::has('initiated')) {
+                                echo '<li class="wt-initials-list-item">';
+                                if ($show_all_firstnames === 'yes') {
+                                    echo '<span class="wt-initial warning">' . I18N::translate('All') . '</span>';
+                                } else {
+                                    echo '<a class="wt-initial" href="' . e(route($route, ['show_all_firstnames' => 'yes'] + $params)) . '" title="' . I18N::number($count) . '">' . I18N::translate('All') . '</a>';
+                                }
+                                echo '</li>';
+                            }
+                            echo '</ul>';
+                            echo '<p class="center alpha_index">', implode(' | ', $list), '</p>';
+                        }
+                    }
+                    if ($show === 'indi') {
+                        if ($route === 'individual-list') {
+                            echo view('lists/individuals-table', [
+                                'individuals' => $this->individuals($tree, $surname, $alpha, $falpha, $show_marnm === 'yes', false),
+                                'sosa'        => false,
+                                'tree'        => $tree,
+                            ]);
+                        } else {
+                            echo view('lists/families-table', [
+                                'families' => $this->families($tree, $surname, $alpha, $falpha, $show_marnm === 'yes'),
+                                'tree'     => $tree,
+                            ]);
+                        }
                     }
                 }
             }
-
             ?>
-			</div>
-			<div class="wt-page-content">
-          <?php
-
-          if ($show === 'indi' || $show === 'surn') {
-              $surns = $this->surnames($tree, $surname, $alpha, $show_marnm === 'yes', $families);
-              if ($show === 'surn') {
-                  // Show the surname list
-                  switch ($tree->getPreference('SURNAME_LIST_STYLE')) {
-                      case 'style1':
-                          echo FunctionsPrintLists::surnameList($surns, 3, true, $route, $tree);
-                          break;
-                      case 'style3':
-                          echo FunctionsPrintLists::surnameTagCloud($surns, $route, true, $tree);
-                          break;
-                      case 'style2':
-                      default:
-                          echo view('lists/surnames-table', [
-                              'surnames' => $surns,
-                              'route'    => $route,
-                          ]);
-                          break;
-                  }
-              } else {
-                  // Show the list
-                  $count = 0;
-                  foreach ($surns as $surnames) {
-                      foreach ($surnames as $list) {
-                          $count += count($list);
-                      }
-                  }
-                  // Don't sublists short lists.
-                  if ($count < $tree->getPreference('SUBLIST_TRIGGER_I')) {
-                      $falpha = '';
-                  } else {
-                      $givn_initials = $this->givenAlpha($tree, $surname, $alpha, $show_marnm === 'yes', $families);
-                      // Break long lists by initial letter of given name
-                      if ($surname || $show_all === 'yes') {
-                          if ($show_all === 'no') {
-                              echo '<h2 class="wt-page-title">', I18N::translate('Individuals with surname %s', $legend), '</h2>';
-                          }
-                          // Don't show the list until we have some filter criteria
-                          $show = ($falpha || $show_all_firstnames === 'yes') ? 'indi' : 'none';
-                          $list = [];
-                          echo '<ul class="d-flex flex-wrap justify-content-center wt-initials-list">';
-                          foreach ($givn_initials as $givn_initial => $count) {
-                              echo '<li class="wt-initials-list-item">';
-                              if ($count > 0) {
-                                  if ($show === 'indi' && $givn_initial === $falpha && $show_all_firstnames === 'no') {
-                                      echo '<a class="wt-initial active" href="' . e(route($route, ['falpha' => $givn_initial] + $params)) . '" title="' . I18N::number($count) . '">' . $this->givenNameInitial((string)$givn_initial) . '</a>';
-                                  } else {
-                                      echo '<a class="wt-initial" href="' . e(route($route, ['falpha' => $givn_initial] + $params)) . '" title="' . I18N::number($count) . '">' . $this->givenNameInitial((string)$givn_initial) . '</a>';
-                                  }
-                              } else {
-                                  echo '<span class="wt-initial text-muted">' . $this->givenNameInitial((string)$givn_initial) . '</span>';
-                              }
-                              echo '</li>';
-                          }
-                          // Search spiders don't get the "show all" option as the other links give them everything.
-                          if (Session::has('initiated')) {
-                              echo '<li class="wt-initials-list-item">';
-                              if ($show_all_firstnames === 'yes') {
-                                  echo '<span class="wt-initial warning">' . I18N::translate('All') . '</span>';
-                              } else {
-                                  echo '<a class="wt-initial" href="' . e(route($route, ['show_all_firstnames' => 'yes'] + $params)) . '" title="' . I18N::number($count) . '">' . I18N::translate('All') . '</a>';
-                              }
-                              echo '</li>';
-                          }
-                          echo '</ul>';
-                          echo '<p class="center alpha_index">', implode(' | ', $list), '</p>';
-                      }
-                  }
-                  if ($show === 'indi') {
-                      if ($route === 'individual-list') {
-                          echo view('lists/individuals-table', [
-                              'individuals' => $this->individuals($tree, $surname, $alpha, $falpha, $show_marnm === 'yes', false),
-                              'sosa'        => false,
-                              'tree'        => $tree,
-                          ]);
-                      } else {
-                          echo view('lists/families-table', [
-                              'families' => $this->families($tree, $surname, $alpha, $falpha, $show_marnm === 'yes'),
-                              'tree'     => $tree,
-                          ]);
-                      }
-                  }
-              }
-          }
-          ?>
-			</div>
+        </div>
         <?php
 
         $html = ob_get_clean();
@@ -368,8 +383,8 @@ class ListController extends AbstractBaseController
         $formats = GedcomTag::getFileFormTypes();
 
         $action    = $request->get('action');
-        $page      = (int)$request->get('page');
-        $max       = (int)$request->get('max', 20);
+        $page      = (int) $request->get('page');
+        $max       = (int) $request->get('max', 20);
         $folder    = $request->get('folder', '');
         $filter    = $request->get('filter', '');
         $subdirs   = $request->get('subdirs', '1');
@@ -392,7 +407,7 @@ class ListController extends AbstractBaseController
 
         // Pagination
         $count = count($media_objects);
-        $pages = (int)(($count + $max - 1) / $max);
+        $pages = (int) (($count + $max - 1) / $max);
         $page  = max(min($page, $pages), 1);
 
         $media_objects = array_slice($media_objects, ($page - 1) * $max, $max);
@@ -647,651 +662,6 @@ class ListController extends AbstractBaseController
     }
 
     /**
-     * Get a list of initial letters, for lists of names.
-     *
-     * @param string $locale Return the alphabet for this locale
-     *
-     * @return string[]
-     */
-    private function getAlphabetForLocale($locale)
-    {
-        switch ($locale) {
-            case 'ar':
-                return [
-                    'ا',
-                    'ب',
-                    'ت',
-                    'ث',
-                    'ج',
-                    'ح',
-                    'خ',
-                    'د',
-                    'ذ',
-                    'ر',
-                    'ز',
-                    'س',
-                    'ش',
-                    'ص',
-                    'ض',
-                    'ط',
-                    'ظ',
-                    'ع',
-                    'غ',
-                    'ف',
-                    'ق',
-                    'ك',
-                    'ل',
-                    'م',
-                    'ن',
-                    'ه',
-                    'و',
-                    'ي',
-                    'آ',
-                    'ة',
-                    'ى',
-                    'ی',
-                ];
-            case 'cs':
-                return [
-                    'A',
-                    'B',
-                    'C',
-                    'D',
-                    'E',
-                    'F',
-                    'G',
-                    'H',
-                    'CH',
-                    'I',
-                    'J',
-                    'K',
-                    'L',
-                    'M',
-                    'N',
-                    'O',
-                    'P',
-                    'Q',
-                    'R',
-                    'S',
-                    'T',
-                    'U',
-                    'V',
-                    'W',
-                    'X',
-                    'Y',
-                    'Z',
-                ];
-            case 'da':
-            case 'nb':
-            case 'nn':
-                return [
-                    'A',
-                    'B',
-                    'C',
-                    'D',
-                    'E',
-                    'F',
-                    'G',
-                    'H',
-                    'I',
-                    'J',
-                    'K',
-                    'L',
-                    'M',
-                    'N',
-                    'O',
-                    'P',
-                    'Q',
-                    'R',
-                    'S',
-                    'T',
-                    'U',
-                    'V',
-                    'W',
-                    'X',
-                    'Y',
-                    'Z',
-                    'Æ',
-                    'Ø',
-                    'Å',
-                ];
-            case 'el':
-                return [
-                    'Α',
-                    'Β',
-                    'Γ',
-                    'Δ',
-                    'Ε',
-                    'Ζ',
-                    'Η',
-                    'Θ',
-                    'Ι',
-                    'Κ',
-                    'Λ',
-                    'Μ',
-                    'Ν',
-                    'Ξ',
-                    'Ο',
-                    'Π',
-                    'Ρ',
-                    'Σ',
-                    'Τ',
-                    'Υ',
-                    'Φ',
-                    'Χ',
-                    'Ψ',
-                    'Ω',
-                ];
-            case 'es':
-                return [
-                    'A',
-                    'B',
-                    'C',
-                    'D',
-                    'E',
-                    'F',
-                    'G',
-                    'H',
-                    'I',
-                    'J',
-                    'K',
-                    'L',
-                    'M',
-                    'N',
-                    'Ñ',
-                    'O',
-                    'P',
-                    'Q',
-                    'R',
-                    'S',
-                    'T',
-                    'U',
-                    'V',
-                    'W',
-                    'X',
-                    'Y',
-                    'Z',
-                ];
-            case 'et':
-                return [
-                    'A',
-                    'B',
-                    'C',
-                    'D',
-                    'E',
-                    'F',
-                    'G',
-                    'H',
-                    'I',
-                    'J',
-                    'K',
-                    'L',
-                    'M',
-                    'N',
-                    'O',
-                    'P',
-                    'Q',
-                    'R',
-                    'S',
-                    'Š',
-                    'Z',
-                    'Ž',
-                    'T',
-                    'U',
-                    'V',
-                    'W',
-                    'Õ',
-                    'Ä',
-                    'Ö',
-                    'Ü',
-                    'X',
-                    'Y',
-                ];
-            case 'fi':
-            case 'sv':
-                return [
-                    'A',
-                    'B',
-                    'C',
-                    'D',
-                    'E',
-                    'F',
-                    'G',
-                    'H',
-                    'I',
-                    'J',
-                    'K',
-                    'L',
-                    'M',
-                    'N',
-                    'O',
-                    'P',
-                    'Q',
-                    'R',
-                    'S',
-                    'T',
-                    'U',
-                    'V',
-                    'W',
-                    'X',
-                    'Y',
-                    'Z',
-                    'Å',
-                    'Ä',
-                    'Ö',
-                ];
-            case 'he':
-                return [
-                    'א',
-                    'ב',
-                    'ג',
-                    'ד',
-                    'ה',
-                    'ו',
-                    'ז',
-                    'ח',
-                    'ט',
-                    'י',
-                    'כ',
-                    'ל',
-                    'מ',
-                    'נ',
-                    'ס',
-                    'ע',
-                    'פ',
-                    'צ',
-                    'ק',
-                    'ר',
-                    'ש',
-                    'ת',
-                ];
-            case 'hu':
-                return [
-                    'A',
-                    'B',
-                    'C',
-                    'CS',
-                    'D',
-                    'DZ',
-                    'DZS',
-                    'E',
-                    'F',
-                    'G',
-                    'GY',
-                    'H',
-                    'I',
-                    'J',
-                    'K',
-                    'L',
-                    'LY',
-                    'M',
-                    'N',
-                    'NY',
-                    'O',
-                    'Ö',
-                    'P',
-                    'Q',
-                    'R',
-                    'S',
-                    'SZ',
-                    'T',
-                    'TY',
-                    'U',
-                    'Ü',
-                    'V',
-                    'W',
-                    'X',
-                    'Y',
-                    'Z',
-                    'ZS',
-                ];
-            case 'lt':
-                return [
-                    'A',
-                    'Ą',
-                    'B',
-                    'C',
-                    'Č',
-                    'D',
-                    'E',
-                    'Ę',
-                    'Ė',
-                    'F',
-                    'G',
-                    'H',
-                    'I',
-                    'Y',
-                    'Į',
-                    'J',
-                    'K',
-                    'L',
-                    'M',
-                    'N',
-                    'O',
-                    'P',
-                    'R',
-                    'S',
-                    'Š',
-                    'T',
-                    'U',
-                    'Ų',
-                    'Ū',
-                    'V',
-                    'Z',
-                    'Ž',
-                ];
-            case 'nl':
-                return [
-                    'A',
-                    'B',
-                    'C',
-                    'D',
-                    'E',
-                    'F',
-                    'G',
-                    'H',
-                    'I',
-                    'J',
-                    'K',
-                    'L',
-                    'M',
-                    'N',
-                    'O',
-                    'P',
-                    'Q',
-                    'R',
-                    'S',
-                    'T',
-                    'U',
-                    'V',
-                    'W',
-                    'X',
-                    'Y',
-                    'Z',
-                    'IJ',
-                ];
-            case 'pl':
-                return [
-                    'A',
-                    'B',
-                    'C',
-                    'Ć',
-                    'D',
-                    'E',
-                    'F',
-                    'G',
-                    'H',
-                    'I',
-                    'J',
-                    'K',
-                    'L',
-                    'Ł',
-                    'M',
-                    'N',
-                    'O',
-                    'Ó',
-                    'P',
-                    'Q',
-                    'R',
-                    'S',
-                    'Ś',
-                    'T',
-                    'U',
-                    'V',
-                    'W',
-                    'X',
-                    'Y',
-                    'Z',
-                    'Ź',
-                    'Ż',
-                ];
-            case 'ro':
-                return [
-                    'A',
-                    'Ă',
-                    'Â',
-                    'B',
-                    'C',
-                    'D',
-                    'E',
-                    'F',
-                    'G',
-                    'H',
-                    'I',
-                    'Î',
-                    'J',
-                    'K',
-                    'L',
-                    'M',
-                    'N',
-                    'O',
-                    'P',
-                    'Q',
-                    'R',
-                    'S',
-                    'Ş',
-                    'T',
-                    'Ţ',
-                    'U',
-                    'V',
-                    'W',
-                    'X',
-                    'Y',
-                    'Z',
-                ];
-            case 'ru':
-                return [
-                    'А',
-                    'Б',
-                    'В',
-                    'Г',
-                    'Д',
-                    'Е',
-                    'Ё',
-                    'Ж',
-                    'З',
-                    'И',
-                    'Й',
-                    'К',
-                    'Л',
-                    'М',
-                    'Н',
-                    'О',
-                    'П',
-                    'Р',
-                    'С',
-                    'Т',
-                    'У',
-                    'Ф',
-                    'Х',
-                    'Ц',
-                    'Ч',
-                    'Ш',
-                    'Щ',
-                    'Ъ',
-                    'Ы',
-                    'Ь',
-                    'Э',
-                    'Ю',
-                    'Я',
-                ];
-            case 'sk':
-                return [
-                    'A',
-                    'Á',
-                    'Ä',
-                    'B',
-                    'C',
-                    'Č',
-                    'D',
-                    'Ď',
-                    'E',
-                    'É',
-                    'F',
-                    'G',
-                    'H',
-                    'I',
-                    'Í',
-                    'J',
-                    'K',
-                    'L',
-                    'Ľ',
-                    'Ĺ',
-                    'M',
-                    'N',
-                    'Ň',
-                    'O',
-                    'Ó',
-                    'Ô',
-                    'P',
-                    'Q',
-                    'R',
-                    'Ŕ',
-                    'S',
-                    'Š',
-                    'T',
-                    'Ť',
-                    'U',
-                    'Ú',
-                    'V',
-                    'W',
-                    'X',
-                    'Y',
-                    'Ý',
-                    'Z',
-                    'Ž',
-                ];
-            case 'sl':
-                return [
-                    'A',
-                    'B',
-                    'C',
-                    'Č',
-                    'Ć',
-                    'D',
-                    'E',
-                    'F',
-                    'G',
-                    'H',
-                    'I',
-                    'J',
-                    'K',
-                    'L',
-                    'M',
-                    'N',
-                    'O',
-                    'P',
-                    'Q',
-                    'R',
-                    'S',
-                    'Š',
-                    'T',
-                    'U',
-                    'V',
-                    'W',
-                    'X',
-                    'Y',
-                    'Z',
-                    'Ž',
-                ];
-            case 'sr':
-                return [
-                    'A',
-                    'B',
-                    'C',
-                    'Č',
-                    'Ć',
-                    'D',
-                    'E',
-                    'F',
-                    'G',
-                    'H',
-                    'I',
-                    'J',
-                    'K',
-                    'L',
-                    'M',
-                    'N',
-                    'O',
-                    'P',
-                    'Q',
-                    'R',
-                    'S',
-                    'Š',
-                    'T',
-                    'U',
-                    'V',
-                    'W',
-                    'X',
-                    'Y',
-                    'Z',
-                    'Ž',
-                ];
-            case 'tr':
-                return [
-                    'A',
-                    'B',
-                    'C',
-                    'Ç',
-                    'D',
-                    'E',
-                    'F',
-                    'G',
-                    'Ğ',
-                    'H',
-                    'I',
-                    'İ',
-                    'J',
-                    'K',
-                    'L',
-                    'M',
-                    'N',
-                    'O',
-                    'Ö',
-                    'P',
-                    'R',
-                    'S',
-                    'Ş',
-                    'T',
-                    'U',
-                    'Ü',
-                    'V',
-                    'Y',
-                    'Z',
-                ];
-            default:
-                return [
-                    'A',
-                    'B',
-                    'C',
-                    'D',
-                    'E',
-                    'F',
-                    'G',
-                    'H',
-                    'I',
-                    'J',
-                    'K',
-                    'L',
-                    'M',
-                    'N',
-                    'O',
-                    'P',
-                    'Q',
-                    'R',
-                    'S',
-                    'T',
-                    'U',
-                    'V',
-                    'W',
-                    'X',
-                    'Y',
-                    'Z',
-                ];
-        }
-    }
-
-    /**
      * Get the initial letter of a name, taking care of multi-letter sequences and equivalences.
      *
      * @param string $name
@@ -1349,14 +719,11 @@ class ListController extends AbstractBaseController
     /**
      * Generate SQL to match a given letter, taking care of cases that
      * are not covered by the collation setting.
-     *
      * We must consider:
      * potential substrings, such as Czech "CH" and "C"
      * equivalent letters, such as Danish "AA" and "Å"
-     *
      * We COULD write something that handles all languages generically,
      * but its performance would most likely be poor.
-     *
      * For languages that don't appear in this list, we could write
      * simpler versions of the surnameAlpha() and givenAlpha() functions,
      * but it gives no noticable improvement in performance.
@@ -1444,7 +811,7 @@ class ListController extends AbstractBaseController
         // Fetch all the letters in our alphabet, whether or not there
         // are any names beginning with that letter. It looks better to
         // show the full alphabet, rather than omitting rare letters such as X
-        foreach ($this->getAlphabetForLocale(WT_LOCALE) as $letter) {
+        foreach ($this->localization_service->alphabet() as $letter) {
             $count = 1;
             if ($totals) {
                 $count = Database::prepare($sql . " AND " . $this->getInitialSql('n_surn', $letter))->fetchOne();
@@ -1465,7 +832,7 @@ class ListController extends AbstractBaseController
             'tree_id' => $tree->getTreeId(),
         ];
 
-        foreach ($this->getAlphabetForLocale(WT_LOCALE) as $n => $letter) {
+        foreach ($this->localization_service->alphabet() as $n => $letter) {
             $sql                   .= " AND n_surn COLLATE :collate_" . $n . " NOT LIKE :letter_" . $n;
             $args['collate_' . $n] = I18N::collation();
             $args['letter_' . $n]  = $letter . '%';
@@ -1487,7 +854,7 @@ class ListController extends AbstractBaseController
             'tree_id' => $tree->getTreeId(),
         ];
 
-        $count_no_surname = (int)Database::prepare($sql)->execute($args)->fetchOne();
+        $count_no_surname = (int) Database::prepare($sql)->execute($args)->fetchOne();
         if ($count_no_surname !== 0) {
             // Special code to indicate "no surname"
             $alphas[','] = $count_no_surname;
@@ -1534,7 +901,7 @@ class ListController extends AbstractBaseController
         // Fetch all the letters in our alphabet, whether or not there
         // are any names beginning with that letter. It looks better to
         // show the full alphabet, rather than omitting rare letters such as X
-        foreach ($this->getAlphabetForLocale(WT_LOCALE) as $letter) {
+        foreach ($this->localization_service->alphabet() as $letter) {
             $count           = Database::prepare($sql . " AND " . $this->getInitialSql('n_givn', $letter))->fetchOne();
             $alphas[$letter] = $count;
         }
@@ -1567,7 +934,7 @@ class ListController extends AbstractBaseController
             $sql .= " AND n_surn NOT IN ('', '@N.N.')";
         }
 
-        foreach ($this->getAlphabetForLocale(WT_LOCALE) as $letter) {
+        foreach ($this->localization_service->alphabet() as $letter) {
             $sql .= " AND n_givn NOT LIKE '" . $letter . "%' COLLATE " . I18N::collation();
         }
         $sql .= " GROUP BY UPPER(LEFT(n_givn, 1))) AS subquery ORDER BY initial = '@', initial = '', initial";
@@ -1633,7 +1000,6 @@ class ListController extends AbstractBaseController
 
     /**
      * Fetch a list of individuals with specified names
-     *
      * To search for unknown names, use $surn="@N.N.", $salpha="@" or $galpha="@"
      * To search for names with no surnames, use $salpha=","
      *
@@ -1704,7 +1070,6 @@ class ListController extends AbstractBaseController
 
     /**
      * Fetch a list of families with specified names
-     *
      * To search for unknown names, use $surn="@N.N.", $salpha="@" or $galpha="@"
      * To search for names with no surnames, use $salpha=","
      *

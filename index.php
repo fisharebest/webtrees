@@ -21,12 +21,13 @@ use Closure;
 use DateTime;
 use ErrorException;
 use Exception;
+use Fisharebest\Localization\Locale;
+use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\Exceptions\Handler;
 use Fisharebest\Webtrees\Http\Controllers\SetupController;
 use Fisharebest\Webtrees\Http\Middleware\CheckCsrf;
 use Fisharebest\Webtrees\Http\Middleware\CheckForMaintenanceMode;
 use Fisharebest\Webtrees\Http\Middleware\Housekeeping;
-use Fisharebest\Webtrees\Http\Middleware\MiddlewareInterface;
 use Fisharebest\Webtrees\Http\Middleware\PageHitCounter;
 use Fisharebest\Webtrees\Http\Middleware\UseTransaction;
 use League\Flysystem\Adapter\Local;
@@ -252,11 +253,12 @@ try {
     list($controller_name, $action) = explode('@', $controller_action);
     $controller_class = __NAMESPACE__ . '\\Http\\Controllers\\' . $controller_name;
 
-    // Set up dependency injection for the controller.
+    // Set up dependency injection for the controllers.
     $resolver = new Resolver;
     $resolver->bind(Resolver::class, $resolver);
     $resolver->bind(Tree::class, $tree);
     $resolver->bind(User::class, Auth::user());
+    $resolver->bind(LocaleInterface::class, Locale::create(WT_LOCALE));
 
     $controller = $resolver->resolve($controller_class);
 

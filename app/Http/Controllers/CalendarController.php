@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Date\FrenchDate;
 use Fisharebest\Webtrees\Date\GregorianDate;
@@ -30,6 +31,7 @@ use Fisharebest\Webtrees\Functions\FunctionsDb;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Services\LocalizationService;
 use Fisharebest\Webtrees\Tree;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -39,6 +41,18 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class CalendarController extends AbstractBaseController
 {
+    /** @var LocalizationService */
+    private $localization_service;
+
+    /**
+     * CalendarController constructor.
+     *
+     * @param LocalizationService $localization_service
+     */
+    public function __construct(LocalizationService $localization_service) {
+        $this->localization_service = $localization_service;
+    }
+
     /**
      * A form to request the page parameters.
      *
@@ -59,7 +73,7 @@ class CalendarController extends AbstractBaseController
 
         if ($cal . $day . $month . $year === '') {
             // No date specified? Use the most likely calendar
-            $cal = I18N::defaultCalendar()->gedcomCalendarEscape();
+            $cal = $this->localization_service->calendar()->gedcomCalendarEscape();
         }
 
         // We cannot display new-style/old-style years, so convert to new style
@@ -174,7 +188,7 @@ class CalendarController extends AbstractBaseController
 
         if ($cal . $day . $month . $year === '') {
             // No date specified? Use the most likely calendar
-            $cal = I18N::defaultCalendar()->gedcomCalendarEscape();
+            $cal = $this->localization_service->calendar()->gedcomCalendarEscape();
         }
 
         // Create a CalendarDate from the parameters
@@ -343,8 +357,8 @@ class CalendarController extends AbstractBaseController
             case 'month':
                 // We use JD%7 = 0/Mon…6/Sun. Standard definitions use 0/Sun…6/Sat.
                 $week_start    = (I18N::firstDay() + 6) % 7;
-                $weekend_start = (I18N::weekendStart() + 6) % 7;
-                $weekend_end   = (I18N::weekendEnd() + 6) % 7;
+                $weekend_start = ($this->localization_service->weekendStart() + 6) % 7;
+                $weekend_end   = ($this->localization_service->weekendEnd() + 6) % 7;
                 // The french  calendar has a 10-day week, which starts on primidi
                 if ($days_in_week === 10) {
                     $week_start    = 0;
