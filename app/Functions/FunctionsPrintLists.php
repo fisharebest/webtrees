@@ -26,10 +26,10 @@ class FunctionsPrintLists
     /**
      * Print a tagcloud of surnames.
      *
-     * @param string[][] $surnames array (of SURN, of array of SPFX_SURN, of array of PID)
-     * @param string     $route    individual-list or family-listlist
-     * @param bool       $totals   show totals after each name
-     * @param Tree       $tree     generate links to this tree
+     * @param string[][][] $surnames array (of SURN, of array of SPFX_SURN, of array of XREF)
+     * @param string       $route    individual-list or family-listlist
+     * @param bool         $totals   show totals after each name
+     * @param Tree         $tree     generate links to this tree
      *
      * @return string
      */
@@ -73,11 +73,11 @@ class FunctionsPrintLists
     /**
      * Print a list of surnames.
      *
-     * @param string[][] $surnames array (of SURN, of array of SPFX_SURN, of array of PID)
-     * @param int        $style    1=bullet list, 2=semicolon-separated list, 3=tabulated list with up to 4 columns
-     * @param bool       $totals   show totals after each name
-     * @param string     $route    individual-list or family-list
-     * @param Tree       $tree     Link back to the individual list in this tree
+     * @param string[][][] $surnames array (of SURN, of array of SPFX_SURN, of array of XREF)
+     * @param int          $style    1=bullet list, 2=semicolon-separated list, 3=tabulated list with up to 4 columns
+     * @param bool         $totals   show totals after each name
+     * @param string       $route    individual-list or family-list
+     * @param Tree         $tree     Link back to the individual list in this tree
      *
      * @return string
      */
@@ -102,7 +102,7 @@ class FunctionsPrintLists
             $first_spfxsurn = null;
             foreach ($surns as $spfxsurn => $indis) {
                 if ($first_spfxsurn) {
-                    if (I18N::strtoupper($spfxsurn) == I18N::strtoupper($first_spfxsurn)) {
+                    if (I18N::strcasecmp($spfxsurn, $first_spfxsurn) === 0) {
                         $surns[$first_spfxsurn] = array_merge($surns[$first_spfxsurn], $surns[$spfxsurn]);
                         unset($surns[$spfxsurn]);
                     }

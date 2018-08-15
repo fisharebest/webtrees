@@ -1796,7 +1796,7 @@ class Stats
                 $chart_title = I18N::translate('Surname distribution chart') . ': ' . $surname;
                 // Count how many people are events in each country
                 $surn_countries = [];
-                $indis          = QueryName::individuals($this->tree, I18N::strtoupper($surname), '', '', false, false);
+                $indis          = QueryName::individuals($this->tree, $surname, '', '', false, false);
                 foreach ($indis as $person) {
                     if (preg_match_all('/^2 PLAC (?:.*, *)*(.*)/m', $person->getGedcom(), $matches)) {
                         // webtrees uses 3 letter country codes and localised country names, but google uses 2 letter codes.
@@ -5828,7 +5828,7 @@ class Stats
         $all_surnames      = [];
         $tot               = 0;
         foreach ($surnames as $surname => $num) {
-            $all_surnames = array_merge($all_surnames, QueryName::surnames($this->tree, I18N::strtoupper($surname), '', false, false));
+            $all_surnames = array_merge($all_surnames, QueryName::surnames($this->tree, $surname, '', false, false));
             $tot          += $num;
         }
         $chd = '';
