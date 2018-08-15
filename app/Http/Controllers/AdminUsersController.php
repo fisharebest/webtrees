@@ -398,7 +398,6 @@ class AdminUsersController extends AbstractBaseController
             ->setRealName($real_name)
             ->setEmail($email)
             ->setUserName($username)
-            ->setPassword($pass1)
             ->setPreference('theme', $theme)
             ->setPreference('language', $language)
             ->setPreference('TIMEZONE', $timezone)
@@ -408,6 +407,10 @@ class AdminUsersController extends AbstractBaseController
             ->setPreference('visibleonline', (string)$visible_online)
             ->setPreference('verified', (string)$verified)
             ->setPreference('verified_by_admin', (string)$approved);
+
+        if ($pass1 !== '') {
+            $edit_user->setPassword($pass1);
+        }
 
         // We cannot change our own admin status. Another admin will need to do it.
         if ($edit_user->getUserId() !== $user->getUserId()) {
