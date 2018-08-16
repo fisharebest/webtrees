@@ -114,10 +114,10 @@ class ReportParserSetup extends ReportParserBase
     {
         $this->text  = '';
         $this->input = [
-            'name'    => isset($attrs['name']) ? $attrs['name'] : '',
-            'type'    => isset($attrs['type']) ? $attrs['type'] : '',
-            'lookup'  => isset($attrs['lookup']) ? $attrs['lookup'] : '',
-            'options' => isset($attrs['options']) ? $attrs['options'] : '',
+            'name'    => $attrs['name'] ?? '',
+            'type'    => $attrs['type'] ?? '',
+            'lookup'  => $attrs['lookup'] ?? '',
+            'options' => $attrs['options'] ?? '',
             'default' => '',
             'value'   => '',
         ];

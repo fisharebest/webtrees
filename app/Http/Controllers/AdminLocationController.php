@@ -356,24 +356,14 @@ class AdminLocationController extends AbstractBaseController
             if (stripos($string, 'FeatureCollection') !== false) {
                 $input_array = json_decode($string);
                 foreach ($input_array->features as $feature) {
-                    $places[] = array_combine(
-                        $field_names,
-                        [
-                            isset($feature->properties->level) ? $feature->properties->level : substr_count(
-                                $feature->properties->name,
-                                ','
-                            ),
-                            ($feature->geometry->coordinates[0] < 0 ? 'W' : 'E') . abs(
-                                $feature->geometry->coordinates[0]
-                            ),
-                            ($feature->geometry->coordinates[1] < 0 ? 'S' : 'N') . abs(
-                                $feature->geometry->coordinates[1]
-                            ),
-                            isset($feature->properties->zoom) ? $feature->properties->zoom : null,
-                            isset($feature->properties->icon) ? $feature->properties->icon : null,
-                            $feature->properties->name,
-                        ]
-                    );
+                    $places[] = array_combine($field_names, [
+                        $feature->properties->level ?? substr_count($feature->properties->name, ','),
+                        ($feature->geometry->coordinates[0] < 0 ? 'W' : 'E') . abs($feature->geometry->coordinates[0]),
+                        ($feature->geometry->coordinates[1] < 0 ? 'S' : 'N') . abs($feature->geometry->coordinates[1]),
+                        $feature->properties->zoom ?? null,
+                        $feature->properties->icon ?? null,
+                        $feature->properties->name,
+                    ]);
                 }
             } else {
                 $fp = fopen($filename, 'r');

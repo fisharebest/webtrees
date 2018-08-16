@@ -148,7 +148,7 @@ class ReportEngineController extends AbstractBaseController
                             foreach (preg_split('/[|]+/', $input['options']) as $option) {
                                 list($key, $value) = explode('=>', $option);
                                 if (preg_match('/^I18N::number\((.+?)(,([\d+]))?\)$/', $value, $match)) {
-                                    $options[$key] = I18N::number($match[1], isset($match[3]) ? $match[3] : 0);
+                                    $options[$key] = I18N::number($match[1], $match[3] ?? 0);
                                 } elseif (preg_match('/^I18N::translate\(\'(.+)\'\)$/', $value, $match)) {
                                     $options[$key] = I18N::translate($match[1]);
                                 } elseif (preg_match('/^I18N::translateContext\(\'(.+)\', *\'(.+)\'\)$/', $value, $match)) {

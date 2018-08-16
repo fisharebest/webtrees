@@ -247,7 +247,7 @@ class AdminSiteController extends AbstractBaseController
         $username = $request->get('username', '');
         $gedc     = $request->get('gedc');
         $search   = $request->get('search', []);
-        $search   = isset($search['value']) ? $search['value'] : '';
+        $search   = $search['value'] ?? '';
 
         $start  = (int) $request->get('start');
         $length = (int) $request->get('length');
@@ -365,7 +365,7 @@ class AdminSiteController extends AbstractBaseController
         $username = $request->get('username', '');
         $gedc     = $request->get('gedc');
         $search   = $request->get('search', []);
-        $search   = isset($search['value']) ? $search['value'] : '';
+        $search   = $search['value'] ?? '';
 
         $sql =
             "DELETE `##log` FROM `##log`" .
