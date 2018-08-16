@@ -16,11 +16,10 @@
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Filter;
-use Fisharebest\Webtrees\Functions\FunctionsDb;
 use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Query\QueryName;
 use Fisharebest\Webtrees\Tree;
 
 /**
@@ -68,42 +67,50 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
     {
         global $ctype;
 
-        $num       = $this->getBlockSetting($block_id, 'num', self::DEFAULT_NUMBER);
+        $num       = (int) $this->getBlockSetting($block_id, 'num', self::DEFAULT_NUMBER);
         $infoStyle = $this->getBlockSetting($block_id, 'infoStyle', self::DEFAULT_STYLE);
 
         extract($cfg, EXTR_OVERWRITE);
 
-        // This next function is a bit out of date, and doesn't cope well with surname variants
-        $top_surnames = FunctionsDb::getTopSurnames($tree->getTreeId(), 0, $num);
+         // Use the count of base surnames.
+        $top_surnames = Database::prepare(
+            "SELECT n_surn FROM `##name`" .
+            " WHERE n_file = :tree_id AND n_type != '_MARNM' AND n_surn NOT IN ('@N.N.', '')" .
+            " GROUP BY n_surn" .
+            " ORDER BY COUNT(n_surn) DESC" .
+            " LIMIT :limit"
+        )->execute([
+            'tree_id' => $tree->getTreeId(),
+            'limit'   => $num,
+        ])->fetchOneColumn();
 
         $all_surnames = [];
-        $i            = 0;
-        foreach (array_keys($top_surnames) as $top_surname) {
-            $all_surnames = array_merge($all_surnames, QueryName::surnames($tree, $top_surname, '', false, false));
-            if (++$i == $num) {
-                break;
-            }
-        }
-        if ($i < $num) {
-            $num = $i;
+        foreach ($top_surnames as $top_surname) {
+            $variants = Database::prepare(
+                "SELECT n_surname COLLATE utf8_bin, COUNT(*) FROM `##name` WHERE n_file = :tree_id AND n_surn COLLATE :collate = :surname GROUP BY 1"
+            )->execute([
+                'collate' => I18N::collation(),
+                'surname' => $top_surname,
+                'tree_id' => $tree->getTreeId(),
+            ])->fetchAssoc();
+
+            $all_surnames[$top_surname] = $variants;
         }
 
         switch ($infoStyle) {
             case 'tagcloud':
-                uksort($all_surnames, '\Fisharebest\Webtrees\I18N::strcasecmp');
+                //uksort($all_surnames, '\Fisharebest\Webtrees\I18N::strcasecmp');
+                uksort($all_surnames, [I18N::class, 'strcasecmp']);
                 $content = FunctionsPrintLists::surnameTagCloud($all_surnames, 'individual-list', true, $tree);
                 break;
             case 'list':
-                uasort($all_surnames, '\Fisharebest\Webtrees\Module\TopSurnamesModule::surnameCountSort');
                 $content = FunctionsPrintLists::surnameList($all_surnames, 1, true, 'individual-list', $tree);
                 break;
             case 'array':
-                uasort($all_surnames, '\Fisharebest\Webtrees\Module\TopSurnamesModule::surnameCountSort');
                 $content = FunctionsPrintLists::surnameList($all_surnames, 2, true, 'individual-list', $tree);
                 break;
             case 'table':
             default:
-                uasort($all_surnames, '\Fisharebest\Webtrees\Module\TopSurnamesModule::surnameCountSort');
                 $content = view('lists/surnames-table', [
                     'surnames' => $all_surnames,
                     'route'    => 'individual-list',
@@ -113,7 +120,8 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
         }
 
         if ($template) {
-            if ($num == 1) {
+            $num = count($top_surnames);
+            if ($num === 1) {
                 // I18N: i.e. most popular surname.
                 $title = I18N::translate('Top surname');
             } else {
@@ -201,27 +209,5 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
             'infoStyle'   => $infoStyle,
             'info_styles' => $info_styles,
         ]);
-    }
-
-    /**
-     * Sort (lists of counts of similar) surname by total count.
-     *
-     * @param string[][] $a
-     * @param string[][] $b
-     *
-     * @return int
-     */
-    private static function surnameCountSort($a, $b)
-    {
-        $counta = 0;
-        foreach ($a as $x) {
-            $counta += count($x);
-        }
-        $countb = 0;
-        foreach ($b as $x) {
-            $countb += count($x);
-        }
-
-        return $countb - $counta;
     }
 }

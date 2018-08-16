@@ -230,24 +230,6 @@ class FunctionsDb
     }
 
     /**
-     * Get array of common surnames
-     *
-     * This function returns a simple array of the most common surnames
-     * found in the individuals list.
-     *
-     * @deprecated
-     *
-     * @param int  $min The number of times a surname must occur before it is added to the array
-     * @param Tree $tree
-     *
-     * @return int[]
-     */
-    public static function getCommonSurnames($min, Tree $tree)
-    {
-        return self::getTopSurnames($tree->getTreeId(), $min, 0);
-    }
-
-    /**
      * get the top surnames
      *
      * @param int $ged_id fetch surnames from this gedcom

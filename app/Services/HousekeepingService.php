@@ -446,6 +446,7 @@ class HousekeepingService
         'app/Module/GoogleMaps',
         'app/Module/IndividualSidebarModule.php',
         'app/Module/PageMenuModule.php',
+        'app/Query',
         'app/SpecialChars',
         'assets/js-1.7.7',
         'assets/js-1.7.9',

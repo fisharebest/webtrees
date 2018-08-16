@@ -742,7 +742,7 @@ class ListController extends AbstractBaseController
      *
      * @return int[]
      */
-    public function surnameAlpha(Tree $tree, $marnm, $fams, $totals = true)
+    private function surnameAlpha(Tree $tree, $marnm, $fams, $totals = true)
     {
         $alphas = [];
 
@@ -819,7 +819,7 @@ class ListController extends AbstractBaseController
      *
      * @return int[]
      */
-    public function givenAlpha(Tree $tree, $surn, $salpha, $marnm, $fams)
+    private function givenAlpha(Tree $tree, $surn, $salpha, $marnm, $fams)
     {
         $alphas = [];
 
@@ -892,29 +892,28 @@ class ListController extends AbstractBaseController
     }
 
     /**
-     * Get a list of actual surnames and variants, based on a "root" surname.
+     * Get a count of actual surnames and variants, based on a "root" surname.
      *
      * @param Tree   $tree
-     * @param string $surn   if set, only fetch people with this surname
+     * @param string $surn   if set, only count people with this surname
      * @param string $salpha if set, only consider surnames starting with this letter
      * @param bool   $marnm  if set, include married names
      * @param bool   $fams   if set, only consider individuals with FAMS records
      *
      * @return array
      */
-    public function surnames(Tree $tree, $surn, $salpha, $marnm, $fams)
+    private function surnames(Tree $tree, $surn, $salpha, $marnm, $fams)
     {
         $sql =
-            "SELECT n2.n_surn, n1.n_surname, n1.n_id" .
-            " FROM `##name` n1 " .
+            "SELECT UPPER(n_surn COLLATE :collate) AS n_surn, n_surname COLLATE utf8_bin AS n_surname, COUNT(*) AS total" .
+            " FROM `##name` " .
             ($fams ? " JOIN `##link` ON n_id = l_from AND n_file = l_file AND l_type = 'FAMS' " : "") .
-            " JOIN (SELECT n_surn COLLATE :collate_0 AS n_surn, n_file FROM `##name`" .
             " WHERE n_file = :tree_id" .
             ($marnm ? "" : " AND n_type != '_MARNM'");
 
         $args = [
-            'tree_id'   => $tree->getTreeId(),
-            'collate_0' => I18N::collation(),
+            'tree_id' => $tree->getTreeId(),
+            'collate' => I18N::collation(),
         ];
 
         if ($surn) {
@@ -931,13 +930,11 @@ class ListController extends AbstractBaseController
             // All surnames
             $sql .= " AND n_surn NOT IN ('', '@N.N.')";
         }
-        $sql .= " GROUP BY n_surn COLLATE :collate_2, n_file) AS n2 ON (n1.n_surn = n2.n_surn COLLATE :collate_3 AND n1.n_file = n2.n_file)";
-        $args['collate_2'] = I18N::collation();
-        $args['collate_3'] = I18N::collation();
+        $sql .= " GROUP BY 1,2";
 
         $list = [];
         foreach (Database::prepare($sql)->execute($args)->fetchAll() as $row) {
-            $list[I18N::strtoupper($row->n_surn)][$row->n_surname][$row->n_id] = true;
+            $list[$row->n_surn][$row->n_surname] = $row->total;
         }
 
         return $list;
@@ -1046,7 +1043,7 @@ class ListController extends AbstractBaseController
      *
      * @return string
      */
-    public function givenNameInitial(string $initial): string
+    private function givenNameInitial(string $initial): string
     {
         switch ($initial) {
             case '@':
@@ -1063,7 +1060,7 @@ class ListController extends AbstractBaseController
      *
      * @return string
      */
-    public function surnameInitial(string $initial): string
+    private function surnameInitial(string $initial): string
     {
         switch ($initial) {
             case '@':

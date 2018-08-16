@@ -43,14 +43,14 @@
 					<?php endforeach ?>
 				</td>
 
-				<td class="text-center" data-sort="<?= array_sum(array_map(function(array $x) { return count($x); }, $surns)) ?>">
+				<td class="text-center" data-sort="<?= array_sum($surns) ?>">
 					<?php foreach ($surns as $indis): ?>
-						<?= I18N::number(count($indis)) ?>
+						<?= I18N::number($indis) ?>
 						<br>
 					<?php endforeach ?>
 
 					<?php if (count($surns) > 1): ?>
-						<?= I18N::number(array_sum(array_map(function(array $x) { return count($x); }, $surns))) ?>
+						<?= I18N::number(array_sum($surns)) ?>
 					<?php endif ?>
 				</td>
 			</tr>

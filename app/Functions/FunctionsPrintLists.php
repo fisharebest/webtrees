@@ -26,10 +26,10 @@ class FunctionsPrintLists
     /**
      * Print a tagcloud of surnames.
      *
-     * @param string[][][] $surnames array (of SURN, of array of SPFX_SURN, of array of XREF)
-     * @param string       $route    individual-list or family-listlist
-     * @param bool         $totals   show totals after each name
-     * @param Tree         $tree     generate links to this tree
+     * @param string[][] $surnames array (of SURN, of array of SPFX_SURN, of array of XREF)
+     * @param string     $route    individual-list or family-listlist
+     * @param bool       $totals   show totals after each name
+     * @param Tree       $tree     generate links to this tree
      *
      * @return string
      */
@@ -38,20 +38,20 @@ class FunctionsPrintLists
         $minimum = PHP_INT_MAX;
         $maximum = 1;
         foreach ($surnames as $surn => $surns) {
-            foreach ($surns as $spfxsurn => $indis) {
-                $maximum = max($maximum, count($indis));
-                $minimum = min($minimum, count($indis));
+            foreach ($surns as $spfxsurn => $count) {
+                $maximum = max($maximum, $count);
+                $minimum = min($minimum, $count);
             }
         }
 
         $html = '';
         foreach ($surnames as $surn => $surns) {
-            foreach ($surns as $spfxsurn => $indis) {
+            foreach ($surns as $spfxsurn => $count) {
                 if ($maximum === $minimum) {
                     // All surnames occur the same number of times
                     $size = 150.0;
                 } else {
-                    $size = 75.0 + 125.0 * (count($indis) - $minimum) / ($maximum - $minimum);
+                    $size = 75.0 + 125.0 * ($count - $minimum) / ($maximum - $minimum);
                 }
                 $url  = route($route, [
                     'surname' => $surn,
@@ -59,7 +59,7 @@ class FunctionsPrintLists
                 ]);
                 $html .= '<a style="font-size:' . $size . '%" href="' . e($url) . '">';
                 if ($totals) {
-                    $html .= I18N::translate('%1$s (%2$s)', '<span dir="auto">' . $spfxsurn . '</span>', I18N::number(count($indis)));
+                    $html .= I18N::translate('%1$s (%2$s)', '<span dir="auto">' . $spfxsurn . '</span>', I18N::number($count));
                 } else {
                     $html .= $spfxsurn;
                 }
@@ -99,29 +99,19 @@ class FunctionsPrintLists
             }
             // If all the surnames are just case variants, then merge them into one
             // Comment out this block if you want SMITH listed separately from Smith
-            $first_spfxsurn = null;
-            foreach ($surns as $spfxsurn => $indis) {
-                if ($first_spfxsurn) {
-                    if (I18N::strcasecmp($spfxsurn, $first_spfxsurn) === 0) {
-                        $surns[$first_spfxsurn] = array_merge($surns[$first_spfxsurn], $surns[$spfxsurn]);
-                        unset($surns[$spfxsurn]);
-                    }
-                } else {
-                    $first_spfxsurn = $spfxsurn;
-                }
-            }
             $subhtml = '<a href="' . e($url) . '" dir="auto">' . e(implode(I18N::$list_separator, array_keys($surns))) . '</a>';
 
             if ($totals) {
                 $subtotal = 0;
-                foreach ($surns as $indis) {
-                    $subtotal += count($indis);
+                foreach ($surns as $count) {
+                    $subtotal += $count;
                 }
                 $subhtml .= '&nbsp;(' . I18N::number($subtotal) . ')';
             }
             $html[] = $subhtml;
         }
         switch ($style) {
+            default:
             case 1:
                 return '<ul><li>' . implode('</li><li>', $html) . '</li></ul>';
             case 2:

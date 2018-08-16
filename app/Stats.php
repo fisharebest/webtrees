@@ -1796,9 +1796,21 @@ class Stats
                 $chart_title = I18N::translate('Surname distribution chart') . ': ' . $surname;
                 // Count how many people are events in each country
                 $surn_countries = [];
-                $indis          = QueryName::individuals($this->tree, $surname, '', '', false, false);
-                foreach ($indis as $person) {
-                    if (preg_match_all('/^2 PLAC (?:.*, *)*(.*)/m', $person->getGedcom(), $matches)) {
+
+                $rows = Database::prepare(
+                    "SELECT i_gedcom" .
+                    " FROM `##individuals`" .
+                    " JOIN `##name` ON n_id = i_id AND n_file = i_file" .
+                    " WHERE n_file = :tree_id" .
+                    " AND n_surn COLLATE :collate = :surname"
+                )->execute([
+                    'tree_id' => $this->tree->getTreeId(),
+                    'collate' => I18N::collation(),
+                    'surname' => $surname,
+                ])->fetchAll();
+
+                foreach ($rows as $row) {
+                    if (preg_match_all('/^2 PLAC (?:.*, *)*(.*)/m', $row->i_gedcom, $matches)) {
                         // webtrees uses 3 letter country codes and localised country names, but google uses 2 letter codes.
                         foreach ($matches[1] as $country) {
                             if (array_key_exists($country, $country_to_iso3166)) {
@@ -5696,31 +5708,58 @@ class Stats
         $number_of_surnames = empty($params[1]) ? 10 : (int)$params[1];
         $sorting            = empty($params[2]) ? 'alpha' : $params[2];
 
-        $surname_list = FunctionsDb::getTopSurnames($this->tree->getTreeId(), $threshold, $number_of_surnames);
-        if (empty($surname_list)) {
-            return '';
-        }
+        $surnames = $this->topSurnames($number_of_surnames, $threshold);
 
         switch ($sorting) {
             default:
             case 'alpha':
-                uksort($surname_list, '\Fisharebest\Webtrees\I18N::strcasecmp');
+                uksort($surnames, [I18N::class, 'strcasecmp']);
                 break;
             case 'count':
-                asort($surname_list);
                 break;
             case 'rcount':
-                arsort($surname_list);
+                $surname_list = array_reverse($surnames, true);
                 break;
-        }
-
-        // Note that we count/display SPFX SURN, but sort/group under just SURN
-        $surnames = [];
-        foreach (array_keys($surname_list) as $surname) {
-            $surnames = array_merge($surnames, QueryName::surnames($this->tree, $surname, '', false, false));
         }
 
         return FunctionsPrintLists::surnameList($surnames, ($type == 'list' ? 1 : 2), $show_tot, 'individual-list', $this->tree);
+    }
+
+    /**
+     * @param int $number_of_surnames
+     *
+     * @return array
+     */
+    private function topSurnames(int $number_of_surnames, int $threshold): array
+    {
+        // Use the count of base surnames.
+        $top_surnames = Database::prepare(
+            "SELECT n_surn FROM `##name`" .
+            " WHERE n_file = :tree_id AND n_type != '_MARNM' AND n_surn NOT IN ('@N.N.', '')" .
+            " GROUP BY n_surn" .
+            " ORDER BY COUNT(n_surn) DESC" .
+            " LIMIT :limit"
+        )->execute([
+            'tree_id' => $this->tree->getTreeId(),
+            'limit'   => $number_of_surnames,
+        ])->fetchOneColumn();
+
+        $surnames = [];
+        foreach ($top_surnames as $top_surname) {
+            $variants = Database::prepare(
+                "SELECT n_surname COLLATE utf8_bin, COUNT(*) FROM `##name` WHERE n_file = :tree_id AND n_surn COLLATE :collate = :surname GROUP BY 1"
+            )->execute([
+                'collate' => I18N::collation(),
+                'surname' => $top_surname,
+                'tree_id' => $this->tree->getTreeId(),
+            ])->fetchAssoc();
+
+            if (array_sum($variants) > $threshold) {
+                $surnames[$top_surname] = $variants;
+            }
+        }
+
+        return $surnames;
     }
 
     /**
@@ -5730,9 +5769,9 @@ class Stats
      */
     public function getCommonSurname()
     {
-        $surnames = array_keys(FunctionsDb::getTopSurnames($this->tree->getTreeId(), 1, 1));
+        $top_surname = $this->topSurnames(1, 0);
 
-        return array_shift($surnames);
+        return implode(', ', $top_surname[0] ?? []);
     }
 
     /**
@@ -5816,29 +5855,33 @@ class Stats
         $size               = empty($params[0]) ? $WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y : strtolower($params[0]);
         $color_from         = empty($params[1]) ? $WT_STATS_CHART_COLOR1 : strtolower($params[1]);
         $color_to           = empty($params[2]) ? $WT_STATS_CHART_COLOR2 : strtolower($params[2]);
-        $number_of_surnames = empty($params[3]) ? 10 : (int)$params[3];
+        $number_of_surnames = empty($params[3]) ? 10 : (int) $params[3];
 
         $sizes    = explode('x', $size);
         $tot_indi = $this->totalIndividualsQuery();
-        $surnames = FunctionsDb::getTopSurnames($this->tree->getTreeId(), 0, $number_of_surnames);
-        if (empty($surnames)) {
+
+        $all_surnames = $this->topSurnames($number_of_surnames, 0);
+
+        if (empty($all_surnames)) {
             return '';
         }
+
         $SURNAME_TRADITION = $this->tree->getPreference('SURNAME_TRADITION');
-        $all_surnames      = [];
-        $tot               = 0;
-        foreach ($surnames as $surname => $num) {
-            $all_surnames = array_merge($all_surnames, QueryName::surnames($this->tree, $surname, '', false, false));
-            $tot          += $num;
+
+        $tot = 0;
+
+        foreach ($all_surnames as $surn => $surnames) {
+            $tot += array_sum($surnames);
         }
+
         $chd = '';
         $chl = [];
         foreach ($all_surnames as $surns) {
             $count_per = 0;
             $max_name  = 0;
             $top_name  = '';
-            foreach ($surns as $spfxsurn => $indis) {
-                $per       = count($indis);
+            foreach ($surns as $spfxsurn => $count) {
+                $per       = $count;
                 $count_per += $per;
                 // select most common surname from all variants
                 if ($per > $max_name) {
