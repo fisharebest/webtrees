@@ -648,13 +648,12 @@ class I18N
      *
      * @return string
      */
-    public static function plural(/* var_args */)
+    public static function plural(...$args)
     {
-        $args    = func_get_args();
-        $args[0] = self::$translator->translatePlural($args[0], $args[1], (int)$args[2]);
+        $args[0] = self::$translator->translatePlural($args[0], $args[1], (int) $args[2]);
         unset($args[1], $args[2]);
 
-        return self::substitutePlaceholders($args);
+        return sprintf(...$args);
     }
 
     /**
@@ -775,24 +774,6 @@ class I18N
     }
 
     /**
-     * Substitute any "%s" placeholders in a translated string.
-     * This also allows us to have translated strings that contain
-     * "%" characters, which can't be passed to sprintf.
-     *
-     * @param string[] $args translated string plus optional parameters
-     *
-     * @return string
-     */
-    private static function substitutePlaceholders(array $args)
-    {
-        if (count($args) > 1) {
-            return call_user_func_array('sprintf', $args);
-        } else {
-            return $args[0];
-        }
-    }
-
-    /**
      * Identify the script used for a piece of text
      *
      * @param $string
@@ -903,12 +884,11 @@ class I18N
      *
      * @return string
      */
-    public static function translate(/* var_args */)
+    public static function translate(...$args)
     {
-        $args    = func_get_args();
         $args[0] = self::$translator->translate($args[0]);
 
-        return self::substitutePlaceholders($args);
+        return sprintf(...$args);
     }
 
     /**
@@ -919,12 +899,11 @@ class I18N
      *
      * @return string
      */
-    public static function translateContext(/* var_args */)
+    public static function translateContext(...$args)
     {
-        $args    = func_get_args();
-        $args[0] = self::$translator->translateContext($args[0], $args[1]);
-        unset($args[1]);
+        $args[1] = self::$translator->translateContext($args[0], $args[1]);
+        unset($args[0]);
 
-        return self::substitutePlaceholders($args);
+        return sprintf(...$args);
     }
 }

@@ -67,6 +67,8 @@
                     "phpca --since-version=7.0 app/",
                     "### PHP-CODE-FIXER",
                     "phpcf app/",
+                    "### PAHOUT",
+                    "pahout --php-version 7.0.8 --ignore-paths=data .",
                     "### PHP-CODE-SNIFFER",
                     "phpcs --standard=PSR2 --exclude=Generic.Files.LineLength app",
                     "### PHAN",
@@ -77,6 +79,8 @@
                     "psalm --threads=8"
                 ],
                 "webtrees-tools": [
+                    "### PAHOUT",
+                    "@composer global require wata727/pahout=*",
                     "### PHAN",
                     "@composer global require phan/phan=*",
                     "### PHP-CODE-ANALYZER",
