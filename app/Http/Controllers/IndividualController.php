@@ -306,10 +306,10 @@ class IndividualController extends AbstractBaseController
                 echo '</dl>';
             }
         }
-        if (preg_match("/\n2 SOUR/", $fact->getGedcom())) {
+        if (strpos($fact->getGedcom(), "\n2 SOUR") !== false) {
             echo '<div id="indi_sour" class="clearfloat">', FunctionsPrintFacts::printFactSources($tree, $fact->getGedcom(), 2), '</div>';
         }
-        if (preg_match("/\n2 NOTE/", $fact->getGedcom())) {
+        if (strpos($fact->getGedcom(), "\n2 NOTE") !== false) {
             echo '<div id="indi_note" class="clearfloat">', FunctionsPrint::printFactNotes($tree, $fact->getGedcom(), 2), '</div>';
         }
         $content = ob_get_clean();
