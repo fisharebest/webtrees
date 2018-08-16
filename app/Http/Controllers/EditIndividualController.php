@@ -616,10 +616,10 @@ class EditIndividualController extends AbstractEditController
      *
      * @return RedirectResponse
      */
-    public function editNameAction(Request $request): RedirectResponse
+    public function editNameAction(Request $request, Tree $tree): RedirectResponse
     {
         // @TODO - Move the name-specific code to this function?
-        return (new EditGedcomRecordController)->updateFact($request);
+        return (new EditGedcomRecordController)->updateFact($request, $tree);
     }
 
     /**
