@@ -230,47 +230,6 @@ class FunctionsDb
     }
 
     /**
-     * get the top surnames
-     *
-     * @param int $ged_id fetch surnames from this gedcom
-     * @param int $min    only fetch surnames occuring this many times
-     * @param int $max    only fetch this number of surnames (0=all)
-     *
-     * @return int[]
-     */
-    public static function getTopSurnames($ged_id, $min, $max)
-    {
-        // Use n_surn, rather than n_surname, as it is used to generate URLs for
-        // the indi-list, etc.
-        $max = (int)$max;
-        if ($max == 0) {
-            return
-                Database::prepare(
-                    "SELECT n_surn, COUNT(n_surn) FROM `##name`" .
-                    " WHERE n_file = :tree_id AND n_type != '_MARNM' AND n_surn NOT IN ('@N.N.', '')" .
-                    " GROUP BY n_surn HAVING COUNT(n_surn) >= :min" .
-                    " ORDER BY 2 DESC"
-                )->execute([
-                    'tree_id' => $ged_id,
-                    'min'     => $min,
-                ])->fetchAssoc();
-        } else {
-            return
-                Database::prepare(
-                    "SELECT n_surn, COUNT(n_surn) FROM `##name`" .
-                    " WHERE n_file = :tree_id AND n_type != '_MARNM' AND n_surn NOT IN ('@N.N.', '')" .
-                    " GROUP BY n_surn HAVING COUNT(n_surn) >= :min" .
-                    " ORDER BY 2 DESC" .
-                    " LIMIT :limit"
-                )->execute([
-                    'tree_id' => $ged_id,
-                    'min'     => $min,
-                    'limit'   => $max,
-                ])->fetchAssoc();
-        }
-    }
-
-    /**
      * Get a list of events whose anniversary occured on a given julian day.
      * Used on the on-this-day/upcoming blocks and the day/month calendar views.
      *
@@ -586,46 +545,5 @@ class FunctionsDb
         }
 
         return $facts;
-    }
-
-    /**
-     * Check if a media file is shared (i.e. used by another gedcom)
-     *
-     * @param string $file_name
-     * @param int    $ged_id
-     *
-     * @return bool
-     */
-    public static function isMediaUsedInOtherTree($file_name, $ged_id)
-    {
-        return
-            (bool)Database::prepare(
-                "SELECT COUNT(*) FROM `##media_file`" .
-                " WHERE multimedia_file_refn LIKE :search AND m_file <> :tree_id"
-            )->execute([
-                'search'  => '%' . $file_name,
-                'tree_id' => $ged_id,
-            ])->fetchOne();
-    }
-
-    /**
-     * Update favorites after merging records.
-     *
-     * @param string $xref_from
-     * @param string $xref_to
-     * @param Tree   $tree
-     *
-     * @return int
-     */
-    public static function updateFavorites($xref_from, $xref_to, Tree $tree)
-    {
-        return
-            Database::prepare("UPDATE `##favorite` SET xref=? WHERE xref=? AND gedcom_id=?")
-                ->execute([
-                    $xref_to,
-                    $xref_from,
-                    $tree->getTreeId(),
-                ])
-                ->rowCount();
     }
 }

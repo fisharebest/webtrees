@@ -910,9 +910,17 @@ class AdminController extends AbstractBaseController
             }
         }
 
+        Database::prepare(
+            "UPDATE `##favorite` SET xref = :new_xref WHERE xref = :old_xref AND gedcom_id = :tree_id"
+        )->execute([
+            'old_xref' => $xref1,
+            'new_xref' => $xref2,
+            'tree_id' => $tree->getTreeId(),
+        ]);
+
         $record1->updateRecord($gedcom, true);
         $record2->deleteRecord();
-        FunctionsDb::updateFavorites($xref2, $xref1, $tree);
+
         FlashMessages::addMessage(I18N::translate(
         /* I18N: Records are individuals, sources, etc. */
             'The records “%1$s” and “%2$s” have been merged.',
