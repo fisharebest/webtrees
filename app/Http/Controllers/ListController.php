@@ -296,8 +296,8 @@ class ListController extends AbstractBaseController
                     // Show the list
                     $count = 0;
                     foreach ($surns as $surnames) {
-                        foreach ($surnames as $list) {
-                            $count += count($list);
+                        foreach ($surnames as $total) {
+                            $count += $total;
                         }
                     }
                     // Don't sublists short lists.
