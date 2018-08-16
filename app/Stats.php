@@ -22,7 +22,6 @@ use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
 use Fisharebest\Webtrees\Http\Middleware\PageHitCounter;
 use Fisharebest\Webtrees\Module\FamilyTreeFavoritesModule;
 use Fisharebest\Webtrees\Module\UserFavoritesModule;
-use Fisharebest\Webtrees\Query\QueryName;
 use PDOException;
 use stdClass;
 
