@@ -144,7 +144,6 @@ class ReportParserGenerate extends ReportParserBase
 
     /**
      * XML start element handler
-     *
      * This function is called whenever a starting element is reached
      * The element handler will be called if found, otherwise it must be HTML
      *
@@ -178,7 +177,6 @@ class ReportParserGenerate extends ReportParserBase
 
     /**
      * XML end element handler
-     *
      * This function is called whenever an ending element is reached
      * The element handler will be called if found, otherwise it must be HTML
      *
@@ -237,7 +235,7 @@ class ReportParserGenerate extends ReportParserBase
         // int The size of the font in points
         $s['size'] = $this->wt_report->defaultFontSize;
         if (!empty($attrs['size'])) {
-            $s['size'] = (int)$attrs['size'];
+            $s['size'] = (int) $attrs['size'];
         } // Get it as int to ignore all decimal points or text (if any text then int(0))
 
         // string B: bold, I: italic, U: underline, D: line trough, The default value is regular.
@@ -251,7 +249,6 @@ class ReportParserGenerate extends ReportParserBase
 
     /**
      * XML <Doc>
-     *
      * Sets up the basics of the document proparties
      *
      * @param array $attrs an array of key value pairs for the attributes
@@ -262,11 +259,11 @@ class ReportParserGenerate extends ReportParserBase
 
         // Custom page width
         if (!empty($attrs['customwidth'])) {
-            $this->wt_report->pagew = (int)$attrs['customwidth'];
+            $this->wt_report->pagew = (int) $attrs['customwidth'];
         } // Get it as int to ignore all decimal points or text (if any text then int(0))
         // Custom Page height
         if (!empty($attrs['customheight'])) {
-            $this->wt_report->pageh = (int)$attrs['customheight'];
+            $this->wt_report->pageh = (int) $attrs['customheight'];
         } // Get it as int to ignore all decimal points or text (if any text then int(0))
 
         // Left Margin
@@ -274,7 +271,7 @@ class ReportParserGenerate extends ReportParserBase
             if ($attrs['leftmargin'] === '0') {
                 $this->wt_report->leftmargin = 0;
             } elseif (!empty($attrs['leftmargin'])) {
-                $this->wt_report->leftmargin = (int)$attrs['leftmargin']; // Get it as int to ignore all decimal points or text (if any text then int(0))
+                $this->wt_report->leftmargin = (int) $attrs['leftmargin']; // Get it as int to ignore all decimal points or text (if any text then int(0))
             }
         }
         // Right Margin
@@ -282,7 +279,7 @@ class ReportParserGenerate extends ReportParserBase
             if ($attrs['rightmargin'] === '0') {
                 $this->wt_report->rightmargin = 0;
             } elseif (!empty($attrs['rightmargin'])) {
-                $this->wt_report->rightmargin = (int)$attrs['rightmargin']; // Get it as int to ignore all decimal points or text (if any text then int(0))
+                $this->wt_report->rightmargin = (int) $attrs['rightmargin']; // Get it as int to ignore all decimal points or text (if any text then int(0))
             }
         }
         // Top Margin
@@ -290,7 +287,7 @@ class ReportParserGenerate extends ReportParserBase
             if ($attrs['topmargin'] === '0') {
                 $this->wt_report->topmargin = 0;
             } elseif (!empty($attrs['topmargin'])) {
-                $this->wt_report->topmargin = (int)$attrs['topmargin']; // Get it as int to ignore all decimal points or text (if any text then int(0))
+                $this->wt_report->topmargin = (int) $attrs['topmargin']; // Get it as int to ignore all decimal points or text (if any text then int(0))
             }
         }
         // Bottom Margin
@@ -298,7 +295,7 @@ class ReportParserGenerate extends ReportParserBase
             if ($attrs['bottommargin'] === '0') {
                 $this->wt_report->bottommargin = 0;
             } elseif (!empty($attrs['bottommargin'])) {
-                $this->wt_report->bottommargin = (int)$attrs['bottommargin']; // Get it as int to ignore all decimal points or text (if any text then int(0))
+                $this->wt_report->bottommargin = (int) $attrs['bottommargin']; // Get it as int to ignore all decimal points or text (if any text then int(0))
             }
         }
         // Header Margin
@@ -306,7 +303,7 @@ class ReportParserGenerate extends ReportParserBase
             if ($attrs['headermargin'] === '0') {
                 $this->wt_report->headermargin = 0;
             } elseif (!empty($attrs['headermargin'])) {
-                $this->wt_report->headermargin = (int)$attrs['headermargin']; // Get it as int to ignore all decimal points or text (if any text then int(0))
+                $this->wt_report->headermargin = (int) $attrs['headermargin']; // Get it as int to ignore all decimal points or text (if any text then int(0))
             }
         }
         // Footer Margin
@@ -314,7 +311,7 @@ class ReportParserGenerate extends ReportParserBase
             if ($attrs['footermargin'] === '0') {
                 $this->wt_report->footermargin = 0;
             } elseif (!empty($attrs['footermargin'])) {
-                $this->wt_report->footermargin = (int)$attrs['footermargin']; // Get it as int to ignore all decimal points or text (if any text then int(0))
+                $this->wt_report->footermargin = (int) $attrs['footermargin']; // Get it as int to ignore all decimal points or text (if any text then int(0))
             }
         }
 
@@ -366,10 +363,10 @@ class ReportParserGenerate extends ReportParserBase
      */
     private function pageHeaderStartHandler()
     {
-        array_push($this->print_data_stack, $this->print_data);
-        $this->print_data = false;
-        array_push($this->wt_report_stack, $this->wt_report);
-        $this->wt_report = $this->report_root->createPageHeader();
+        $this->print_data_stack[] = $this->print_data;
+        $this->print_data         = false;
+        $this->wt_report_stack[]  = $this->wt_report;
+        $this->wt_report          = $this->report_root->createPageHeader();
     }
 
     /**
@@ -466,18 +463,18 @@ class ReportParserGenerate extends ReportParserBase
         // int Cell height (expressed in points) The starting height of this cell. If the text wraps the height will automatically be adjusted.
         $height = 0;
         if (!empty($attrs['height'])) {
-            $height = (int)$attrs['height'];
+            $height = (int) $attrs['height'];
         }
         // int Cell width (expressed in points) Setting the width to 0 will make it the width from the current location to the right margin.
         $width = 0;
         if (!empty($attrs['width'])) {
-            $width = (int)$attrs['width'];
+            $width = (int) $attrs['width'];
         }
 
         // int Stretch carachter mode
         $stretch = 0;
         if (!empty($attrs['stretch'])) {
-            $stretch = (int)$attrs['stretch'];
+            $stretch = (int) $attrs['stretch'];
         }
 
         // mixed Position the left corner of this box on the page. The default is the current position.
@@ -486,7 +483,7 @@ class ReportParserGenerate extends ReportParserBase
             if ($attrs['left'] === '.') {
                 $left = '.';
             } elseif (!empty($attrs['left'])) {
-                $left = (int)$attrs['left'];
+                $left = (int) $attrs['left'];
             } elseif ($attrs['left'] === '0') {
                 $left = 0;
             }
@@ -497,7 +494,7 @@ class ReportParserGenerate extends ReportParserBase
             if ($attrs['top'] === '.') {
                 $top = '.';
             } elseif (!empty($attrs['top'])) {
-                $top = (int)$attrs['top'];
+                $top = (int) $attrs['top'];
             } elseif ($attrs['top'] === '0') {
                 $top = 0;
             }
@@ -519,7 +516,7 @@ class ReportParserGenerate extends ReportParserBase
         $ln = 0;
         if (isset($attrs['newline'])) {
             if (!empty($attrs['newline'])) {
-                $ln = (int)$attrs['newline'];
+                $ln = (int) $attrs['newline'];
             } elseif ($attrs['newline'] === '0') {
                 $ln = 0;
             }
@@ -535,8 +532,8 @@ class ReportParserGenerate extends ReportParserBase
             $align = 'J';
         }
 
-        array_push($this->print_data_stack, $this->print_data);
-        $this->print_data = true;
+        $this->print_data_stack[] = $this->print_data;
+        $this->print_data         = true;
 
         $this->current_element = $this->report_root->createCell(
             $width,
@@ -643,12 +640,8 @@ class ReportParserGenerate extends ReportParserBase
             }
         }
         if (!empty($newgedrec)) {
-            array_push($this->gedrec_stack, [
-                $this->gedrec,
-                $this->fact,
-                $this->desc,
-            ]);
-            $this->gedrec = $newgedrec;
+            $this->gedrec_stack[] = [$this->gedrec, $this->fact, $this->desc];
+            $this->gedrec         = $newgedrec;
             if (preg_match("/(\d+) (_?[A-Z0-9]+) (.*)/", $this->gedrec, $match)) {
                 $this->fact = $match[2];
                 $this->desc = trim($match[3]);
@@ -706,12 +699,12 @@ class ReportParserGenerate extends ReportParserBase
         // int The starting height of this cell. If the text wraps the height will automatically be adjusted
         $height = 0;
         if (!empty($attrs['height'])) {
-            $height = (int)$attrs['height'];
+            $height = (int) $attrs['height'];
         }
         // int Setting the width to 0 will make it the width from the current location to the margin
         $width = 0;
         if (!empty($attrs['width'])) {
-            $width = (int)$attrs['width'];
+            $width = (int) $attrs['width'];
         }
 
         // mixed Position the left corner of this box on the page. The default is the current position.
@@ -720,7 +713,7 @@ class ReportParserGenerate extends ReportParserBase
             if ($attrs['left'] === '.') {
                 $left = '.';
             } elseif (!empty($attrs['left'])) {
-                $left = (int)$attrs['left'];
+                $left = (int) $attrs['left'];
             } elseif ($attrs['left'] === '0') {
                 $left = 0;
             }
@@ -731,7 +724,7 @@ class ReportParserGenerate extends ReportParserBase
             if ($attrs['top'] === '.') {
                 $top = '.';
             } elseif (!empty($attrs['top'])) {
-                $top = (int)$attrs['top'];
+                $top = (int) $attrs['top'];
             } elseif ($attrs['top'] === '0') {
                 $top = 0;
             }
@@ -776,11 +769,11 @@ class ReportParserGenerate extends ReportParserBase
         // string Style of rendering
         $style = '';
 
-        array_push($this->print_data_stack, $this->print_data);
-        $this->print_data = false;
+        $this->print_data_stack[] = $this->print_data;
+        $this->print_data         = false;
 
-        array_push($this->wt_report_stack, $this->wt_report);
-        $this->wt_report = $this->report_root->createTextBox(
+        $this->wt_report_stack[] = $this->wt_report;
+        $this->wt_report         = $this->report_root->createTextBox(
             $width,
             $height,
             $border,
@@ -814,8 +807,8 @@ class ReportParserGenerate extends ReportParserBase
      */
     private function textStartHandler($attrs)
     {
-        array_push($this->print_data_stack, $this->print_data);
-        $this->print_data = true;
+        $this->print_data_stack[] = $this->print_data;
+        $this->print_data         = true;
 
         // string The name of the Style that should be used to render the text.
         $style = '';
@@ -843,7 +836,6 @@ class ReportParserGenerate extends ReportParserBase
 
     /**
      * XML <GetPersonName/>
-     *
      * Get the name
      * 1. id is empty - current GEDCOM record
      * 2. id is set with a record id
@@ -1028,12 +1020,9 @@ class ReportParserGenerate extends ReportParserBase
             return;
         }
 
-        array_push($this->repeats_stack, [
-            $this->repeats,
-            $this->repeat_bytes,
-        ]);
-        $this->repeats      = [];
-        $this->repeat_bytes = xml_get_current_line_number($this->parser);
+        $this->repeats_stack[] = [$this->repeats, $this->repeat_bytes];
+        $this->repeats         = [];
+        $this->repeat_bytes    = xml_get_current_line_number($this->parser);
 
         $tag = '';
         if (isset($attrs['tag'])) {
@@ -1135,8 +1124,8 @@ class ReportParserGenerate extends ReportParserBase
             unset($lines);
             $reportxml .= "</tempdoc>\n";
             // Save original values
-            array_push($this->parser_stack, $this->parser);
-            $oldgedrec = $this->gedrec;
+            $this->parser_stack[] = $this->parser;
+            $oldgedrec            = $this->gedrec;
             foreach ($this->repeats as $gedrec) {
                 $this->gedrec  = $gedrec;
                 $repeat_parser = xml_parser_create();
@@ -1171,9 +1160,7 @@ class ReportParserGenerate extends ReportParserBase
 
     /**
      * Variable lookup
-     *
      * Retrieve predefined variables :
-     *
      * @ desc GEDCOM fact description, example:
      *        1 EVEN This is a description
      * @ fact GEDCOM fact tag, such as BIRT, DEAT etc.
@@ -1237,12 +1224,9 @@ class ReportParserGenerate extends ReportParserBase
             return;
         }
 
-        array_push($this->repeats_stack, [
-            $this->repeats,
-            $this->repeat_bytes,
-        ]);
-        $this->repeats      = [];
-        $this->repeat_bytes = xml_get_current_line_number($this->parser);
+        $this->repeats_stack[] = [$this->repeats, $this->repeat_bytes];
+        $this->repeats         = [];
+        $this->repeat_bytes    = xml_get_current_line_number($this->parser);
 
         $id    = '';
         $match = [];
@@ -1312,10 +1296,10 @@ class ReportParserGenerate extends ReportParserBase
             unset($lines);
             $reportxml .= "</tempdoc>\n";
             // Save original values
-            array_push($this->parser_stack, $this->parser);
-            $oldgedrec = $this->gedrec;
-            $count     = count($this->repeats);
-            $i         = 0;
+            $this->parser_stack[] = $this->parser;
+            $oldgedrec            = $this->gedrec;
+            $count                = count($this->repeats);
+            $i                    = 0;
             while ($i < $count) {
                 $this->gedrec = $this->repeats[$i];
                 $this->fact   = '';
@@ -1530,9 +1514,9 @@ class ReportParserGenerate extends ReportParserBase
         }
         $record = GedcomRecord::getInstance($id, $this->tree);
         if ($record && $record->canShow()) {
-            array_push($this->print_data_stack, $this->print_data);
-            $this->print_data = true;
-            $style            = '';
+            $this->print_data_stack[] = $this->print_data;
+            $this->print_data         = true;
+            $style                    = '';
             if (!empty($attrs['style'])) {
                 $style = $attrs['style'];
             }
@@ -1612,7 +1596,7 @@ class ReportParserGenerate extends ReportParserBase
             } elseif ($attrs['top'] === '.') {
                 $top = '.';
             } elseif (!empty($attrs['top'])) {
-                $top = (int)$attrs['top'];
+                $top = (int) $attrs['top'];
             }
         }
 
@@ -1624,7 +1608,7 @@ class ReportParserGenerate extends ReportParserBase
             } elseif ($attrs['left'] === '.') {
                 $left = '.';
             } elseif (!empty($attrs['left'])) {
-                $left = (int)$attrs['left'];
+                $left = (int) $attrs['left'];
             }
         }
 
@@ -1643,10 +1627,10 @@ class ReportParserGenerate extends ReportParserBase
         $width  = 0;
         $height = 0;
         if (!empty($attrs['width'])) {
-            $width = (int)$attrs['width'];
+            $width = (int) $attrs['width'];
         }
         if (!empty($attrs['height'])) {
-            $height = (int)$attrs['height'];
+            $height = (int) $attrs['height'];
         }
 
         $person     = Individual::getInstance($id, $this->tree);
@@ -1687,7 +1671,7 @@ class ReportParserGenerate extends ReportParserBase
             } elseif ($attrs['top'] === '.') {
                 $top = '.';
             } elseif (!empty($attrs['top'])) {
-                $top = (int)$attrs['top'];
+                $top = (int) $attrs['top'];
             }
         }
 
@@ -1699,7 +1683,7 @@ class ReportParserGenerate extends ReportParserBase
             } elseif ($attrs['left'] === '.') {
                 $left = '.';
             } elseif (!empty($attrs['left'])) {
-                $left = (int)$attrs['left'];
+                $left = (int) $attrs['left'];
             }
         }
 
@@ -1718,10 +1702,10 @@ class ReportParserGenerate extends ReportParserBase
         $width  = 0;
         $height = 0;
         if (!empty($attrs['width'])) {
-            $width = (int)$attrs['width'];
+            $width = (int) $attrs['width'];
         }
         if (!empty($attrs['height'])) {
-            $height = (int)$attrs['height'];
+            $height = (int) $attrs['height'];
         }
 
         $file = '';
@@ -1787,7 +1771,7 @@ class ReportParserGenerate extends ReportParserBase
             } elseif ($attrs['x1'] === '.') {
                 $x1 = '.';
             } elseif (!empty($attrs['x1'])) {
-                $x1 = (int)$attrs['x1'];
+                $x1 = (int) $attrs['x1'];
             }
         }
         // Start vertical position, current position (default)
@@ -1798,7 +1782,7 @@ class ReportParserGenerate extends ReportParserBase
             } elseif ($attrs['y1'] === '.') {
                 $y1 = '.';
             } elseif (!empty($attrs['y1'])) {
-                $y1 = (int)$attrs['y1'];
+                $y1 = (int) $attrs['y1'];
             }
         }
         // End horizontal position, maximum width (default)
@@ -1809,7 +1793,7 @@ class ReportParserGenerate extends ReportParserBase
             } elseif ($attrs['x2'] === '.') {
                 $x2 = '.';
             } elseif (!empty($attrs['x2'])) {
-                $x2 = (int)$attrs['x2'];
+                $x2 = (int) $attrs['x2'];
             }
         }
         // End vertical position
@@ -1820,7 +1804,7 @@ class ReportParserGenerate extends ReportParserBase
             } elseif ($attrs['y2'] === '.') {
                 $y2 = '.';
             } elseif (!empty($attrs['y2'])) {
-                $y2 = (int)$attrs['y2'];
+                $y2 = (int) $attrs['y2'];
             }
         }
 
@@ -2207,11 +2191,8 @@ class ReportParserGenerate extends ReportParserBase
                 break;
         }
 
-        array_push($this->repeats_stack, [
-            $this->repeats,
-            $this->repeat_bytes,
-        ]);
-        $this->repeat_bytes = xml_get_current_line_number($this->parser) + 1;
+        $this->repeats_stack[] = [$this->repeats, $this->repeat_bytes];
+        $this->repeat_bytes    = xml_get_current_line_number($this->parser) + 1;
     }
 
     /**
@@ -2255,8 +2236,8 @@ class ReportParserGenerate extends ReportParserBase
             unset($lines);
             $reportxml .= '</tempdoc>';
             // Save original values
-            array_push($this->parser_stack, $this->parser);
-            $oldgedrec = $this->gedrec;
+            $this->parser_stack[] = $this->parser;
+            $oldgedrec            = $this->gedrec;
 
             $this->list_total   = count($this->list);
             $this->list_private = 0;
@@ -2299,7 +2280,6 @@ class ReportParserGenerate extends ReportParserBase
 
     /**
      * XML <ListTotal> element handler
-     *
      * Prints the total number of records in a list
      * The total number is collected from
      * List and Relatives
@@ -2449,11 +2429,8 @@ class ReportParserGenerate extends ReportParserBase
                 // unsorted
                 break;
         }
-        array_push($this->repeats_stack, [
-            $this->repeats,
-            $this->repeat_bytes,
-        ]);
-        $this->repeat_bytes = xml_get_current_line_number($this->parser) + 1;
+        $this->repeats_stack[] = [$this->repeats, $this->repeat_bytes];
+        $this->repeat_bytes    = xml_get_current_line_number($this->parser) + 1;
     }
 
     /**
@@ -2497,8 +2474,8 @@ class ReportParserGenerate extends ReportParserBase
             unset($lines);
             $reportxml .= "</tempdoc>\n";
             // Save original values
-            array_push($this->parser_stack, $this->parser);
-            $oldgedrec = $this->gedrec;
+            $this->parser_stack[] = $this->parser;
+            $oldgedrec            = $this->gedrec;
 
             $this->list_total   = count($this->list);
             $this->list_private = 0;
@@ -2539,7 +2516,6 @@ class ReportParserGenerate extends ReportParserBase
 
     /**
      * XML <Generation /> element handler
-     *
      * Prints the number of generations
      */
     private function generationStartHandler()
@@ -2549,7 +2525,6 @@ class ReportParserGenerate extends ReportParserBase
 
     /**
      * XML <NewPage /> element handler
-     *
      * Has to be placed in an element (header, pageheader, body or footer)
      */
     private function newPageStartHandler()
@@ -2569,12 +2544,12 @@ class ReportParserGenerate extends ReportParserBase
         if ($tag === 'tempdoc') {
             return;
         }
-        array_push($this->wt_report_stack, $this->wt_report);
-        $this->wt_report       = $this->report_root->createHTML($tag, $attrs);
-        $this->current_element = $this->wt_report;
+        $this->wt_report_stack[] = $this->wt_report;
+        $this->wt_report         = $this->report_root->createHTML($tag, $attrs);
+        $this->current_element   = $this->wt_report;
 
-        array_push($this->print_data_stack, $this->print_data);
-        $this->print_data = true;
+        $this->print_data_stack[] = $this->print_data;
+        $this->print_data         = true;
     }
 
     /**
@@ -2737,10 +2712,10 @@ class ReportParserGenerate extends ReportParserBase
                 }
                 if ($generations == -1 || $list[$id]->generation + 1 < $generations) {
                     if ($husband) {
-                        array_push($genlist, $husband->getXref());
+                        $genlist[] = $husband->getXref();
                     }
                     if ($wife) {
-                        array_push($genlist, $wife->getXref());
+                        $genlist[] = $wife->getXref();
                     }
                 }
                 if ($children) {
