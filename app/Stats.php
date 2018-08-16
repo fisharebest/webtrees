@@ -5718,7 +5718,7 @@ class Stats
             case 'count':
                 break;
             case 'rcount':
-                $surname_list = array_reverse($surnames, true);
+                $surnames = array_reverse($surnames, true);
                 break;
         }
 
