@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-07-26 23:06+0100\n"
-"PO-Revision-Date: 2018-08-16 00:24+0000\n"
+"PO-Revision-Date: 2018-08-16 00:28+0000\n"
 "Last-Translator: Jacqueline Gazaille <gazaillegen@gmail.com>\n"
 "Language-Team: French (Canada) <https://translate.webtrees.net/projects/webtrees/webtrees/fr-CA/>\n"
 "Language: fr-CA\n"
@@ -14140,7 +14140,7 @@ msgstr "Cette case vous permet de changer l’année du calendrier. Entrez une a
 #. I18N: Help text for the “Advanced name facts” configuration setting
 #: resources/views/admin/trees-preferences.php:1052
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown on the add/edit name form. If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store names in several different alphabets."
-msgstr "Ceci est une liste de balises des faits GEDCOM séparées par des virgules qui sera affichée sur le formulaire Ajouter/Modifier le nom. Si vous utilisez des alphabets non-latins comme l’hébreu, le grec, le cyrillique ou l’arabe, vous pouvez ajouter des balises telles que _HEB, ROMN, FONE, etc pour vous permettre de stocker les noms de plusieurs alphabets différents."
+msgstr "Ceci est une liste de balises des faits GEDCOM séparées par des virgules qui sera affichée sur le formulaire Ajouter/Modifier le nom. Si vous utilisez des alphabets non-latins comme l’hébreu, le grec, le cyrillique ou l’arabe, vous pouvez ajouter des balises telles que _HEB, ROMN, FONE, etc pour vous permettre d’enregistrer les noms de plusieurs alphabets différents."
 
 #. I18N: Help text for the “Facts for new families” configuration setting
 #: resources/views/admin/trees-preferences.php:942
@@ -14155,7 +14155,7 @@ msgstr "Il s’agit d’une liste séparée par des virgules des balises GEDCOM 
 #. I18N: Help text for the “Advanced place name facts” configuration setting
 #: resources/views/admin/trees-preferences.php:1065
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when you add or edit place names. If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store place names in several different alphabets."
-msgstr "Il s’agit d’une liste séparée par des virgules de balises GEDCOM fait qui sera affiché lorsque vous ajoutez ou modifiez les noms de lieux. Si vous utilisez des alphabets non latins comme l’hébreu, grec, cyrillique ou arabe, vous pouvez ajouter de tags tels que _HEB, ROMN, FONE, etc pour vous permettre de stocker les noms de lieu dans plusieurs alphabets différents."
+msgstr "Il s’agit d’une liste séparée par des virgules de balises GEDCOM fait qui sera affiché lorsque vous ajoutez ou modifiez les noms de lieux. Si vous utilisez des alphabets non latins comme l’hébreu, grec, cyrillique ou arabe, vous pouvez ajouter de tags tels que _HEB, ROMN, FONE, etc pour vous permettre d’enregistrer les noms de lieu dans plusieurs alphabets différents."
 
 #: resources/views/edit-account-page.php:66
 msgid "This is a link to your own record in the family tree. If this is the wrong individual, contact an administrator."
@@ -14455,7 +14455,7 @@ msgstr "Ce site web n’utilise aucun service tiers de pistage ou d’analyse."
 
 #: resources/views/privacy-policy.php:16
 msgid "This site uses cookies to store your preferences on this site, such as the language you have selected."
-msgstr "Ce site utilise des cookies pour stocker vos préférences, telles que la langue que vous avez choisie."
+msgstr "Ce site utilise des cookies pour enregistrer vos préférences, telles que la langue que vous avez choisie."
 
 #: app/Exceptions/SourceAccessDeniedException.php:33
 #: app/Exceptions/SourceNotFoundException.php:33
