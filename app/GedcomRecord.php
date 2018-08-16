@@ -383,13 +383,13 @@ class GedcomRecord
         }
 
         // Does this record have a RESN?
-        if (strpos($this->gedcom, "\n1 RESN confidential")) {
+        if (strpos($this->gedcom, "\n1 RESN confidential") !== false) {
             return Auth::PRIV_NONE >= $access_level;
         }
-        if (strpos($this->gedcom, "\n1 RESN privacy")) {
+        if (strpos($this->gedcom, "\n1 RESN privacy") !== false) {
             return Auth::PRIV_USER >= $access_level;
         }
-        if (strpos($this->gedcom, "\n1 RESN none")) {
+        if (strpos($this->gedcom, "\n1 RESN none") !== false) {
             return true;
         }
 

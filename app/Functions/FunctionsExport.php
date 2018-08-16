@@ -49,17 +49,17 @@ class FunctionsExport
             // tag, value, delimiters, and terminator, must not exceed 255 (wide) characters.
             if (mb_strlen($line) > Gedcom::LINE_LENGTH) {
                 list($level, $tag) = explode(' ', $line, 3);
-                if ($tag != 'CONT' && $tag != 'CONC') {
+                if ($tag !== 'CONT' && $tag !== 'CONC') {
                     $level++;
                 }
                 do {
                     // Split after $pos chars
                     $pos = Gedcom::LINE_LENGTH;
                     // Split on a non-space (standard gedcom behaviour)
-                    while ($pos && mb_substr($line, $pos - 1, 1) == ' ') {
+                    while (mb_substr($line, $pos - 1, 1) === ' ') {
                         --$pos;
                     }
-                    if ($pos == strpos($line, ' ', 3)) {
+                    if ($pos === strpos($line, ' ', 3)) {
                         // No non-spaces in the data! Can’t split it :-(
                         break;
                     }

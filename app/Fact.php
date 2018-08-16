@@ -253,13 +253,13 @@ class Fact
         }
 
         // Does this record have an explicit RESN?
-        if (strpos($this->gedcom, "\n2 RESN confidential")) {
+        if (strpos($this->gedcom, "\n2 RESN confidential") !== false) {
             return Auth::PRIV_NONE >= $access_level;
         }
-        if (strpos($this->gedcom, "\n2 RESN privacy")) {
+        if (strpos($this->gedcom, "\n2 RESN privacy") !== false) {
             return Auth::PRIV_USER >= $access_level;
         }
-        if (strpos($this->gedcom, "\n2 RESN none")) {
+        if (strpos($this->gedcom, "\n2 RESN none") !== false) {
             return true;
         }
 

@@ -1937,7 +1937,7 @@ class GedcomTag
                 return I18N::translate('Image dimensions');
             default:
                 // If no specialisation exists (e.g. DEAT:CAUS), then look for the general (CAUS)
-                if (strpos($tag, ':')) {
+                if (strpos($tag, ':') !== false) {
                     list(, $tag) = explode(':', $tag, 2);
 
                     return self::getLabel($tag, $record);
