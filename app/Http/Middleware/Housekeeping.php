@@ -72,7 +72,7 @@ class Housekeeping implements MiddlewareInterface
         $response = $next($request);
 
         // Run the cleanup after random page requests.
-        if (rand(1, self::PROBABILITY) === 1) {
+        if (random_int(1, self::PROBABILITY) === 1) {
             $this->runHousekeeping();
         }
 

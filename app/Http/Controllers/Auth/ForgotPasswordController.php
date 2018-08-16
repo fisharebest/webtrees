@@ -104,7 +104,7 @@ class ForgotPasswordController extends AbstractBaseController
         $max       = strlen($passchars) - 1;
 
         for ($i = 0; $i < 8; $i++) {
-            $index    = rand(0, $max);
+            $index    = random_int(0, $max);
             $password .= $passchars{$index};
         }
 

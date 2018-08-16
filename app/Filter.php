@@ -392,7 +392,7 @@ class Filter
             $charset    = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcedfghijklmnopqrstuvwxyz0123456789';
             $csrf_token = '';
             for ($n = 0; $n < 32; ++$n) {
-                $csrf_token .= substr($charset, mt_rand(0, 61), 1);
+                $csrf_token .= substr($charset, random_int(0, 61), 1);
             }
             Session::put('CSRF_TOKEN', $csrf_token);
         }
