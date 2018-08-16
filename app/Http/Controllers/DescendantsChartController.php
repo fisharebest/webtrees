@@ -285,7 +285,7 @@ class DescendantsChartController extends AbstractChartController
         } else {
             // Distinguish between no children (NCHI 0) and no recorded
             // children (no CHIL records)
-            if (strpos($family->getGedcom(), '\n1 NCHI 0')) {
+            if (strpos($family->getGedcom(), '\n1 NCHI 0') !== false) {
                 echo GedcomTag::getLabel('NCHI') . ': ' . count($children);
             } else {
                 echo I18N::translate('No children');
