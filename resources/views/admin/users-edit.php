@@ -329,7 +329,7 @@
 						<select class="form-control" name="RELATIONSHIP_PATH_LENGTH<?= $tree->getTreeId() ?>" id="RELATIONSHIP_PATH_LENGTH<?= $tree->getTreeId() ?>" class="relpath">
 							<?php for ($n = 0; $n <= 10; ++$n): ?>
 								<option value="<?= $n ?>" <?= $tree->getUserPreference($user, 'RELATIONSHIP_PATH_LENGTH') == $n ? 'selected' : '' ?>>
-									<?= $n ? $n : I18N::translate('No') ?>
+									<?= $n ?: I18N::translate('No') ?>
 								</option>
 							<?php endfor ?>
 						</select>

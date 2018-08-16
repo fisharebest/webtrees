@@ -60,7 +60,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
         $gedcomid         = $tree->getUserPreference(Auth::user(), 'gedcomid');
 
         $type = $this->getBlockSetting($block_id, 'type', 'pedigree');
-        $pid  = $this->getBlockSetting($block_id, 'pid', Auth::check() ? ($gedcomid ? $gedcomid : $PEDIGREE_ROOT_ID) : $PEDIGREE_ROOT_ID);
+        $pid  = $this->getBlockSetting($block_id, 'pid', Auth::check() ? ($gedcomid ?: $PEDIGREE_ROOT_ID) : $PEDIGREE_ROOT_ID);
 
         extract($cfg, EXTR_OVERWRITE);
 
@@ -195,7 +195,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
         }
 
         $type = $this->getBlockSetting($block_id, 'type', 'pedigree');
-        $pid  = $this->getBlockSetting($block_id, 'pid', Auth::check() ? ($gedcomid ? $gedcomid : $PEDIGREE_ROOT_ID) : $PEDIGREE_ROOT_ID);
+        $pid  = $this->getBlockSetting($block_id, 'pid', Auth::check() ? ($gedcomid ?: $PEDIGREE_ROOT_ID) : $PEDIGREE_ROOT_ID);
 
         $charts = [
             'pedigree'    => I18N::translate('Pedigree'),
