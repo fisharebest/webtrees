@@ -99,7 +99,6 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
 
         switch ($infoStyle) {
             case 'tagcloud':
-                //uksort($all_surnames, '\Fisharebest\Webtrees\I18N::strcasecmp');
                 uksort($all_surnames, [I18N::class, 'strcasecmp']);
                 $content = FunctionsPrintLists::surnameTagCloud($all_surnames, 'individual-list', true, $tree);
                 break;
