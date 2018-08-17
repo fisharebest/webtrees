@@ -749,7 +749,7 @@
 					Bootstrap4::select([
 						'0' => I18N::translateContext('Show the [first/last] [N] parts of a place name.', 'first'),
 						'1' => I18N::translateContext('Show the [first/last] [N] parts of a place name.', 'last'),
-					], $tree->getPreference('SHOW_PEDIGREE_PLACES_SUFFIX', ['name' => 'SHOW_PEDIGREE_PLACES_SUFFIX'])),
+					], $tree->getPreference('SHOW_PEDIGREE_PLACES_SUFFIX'), ['name' => 'SHOW_PEDIGREE_PLACES_SUFFIX']),
 					Bootstrap4::select(FunctionsEdit::numericOptions(range(1, 9)), $tree->getPreference('SHOW_PEDIGREE_PLACES'), ['name' => 'SHOW_PEDIGREE_PLACES'])
 				) ?>
 				<p class="small text-muted">
