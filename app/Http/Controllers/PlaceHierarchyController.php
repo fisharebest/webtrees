@@ -242,7 +242,7 @@ class PlaceHierarchyController extends AbstractBaseController
             $placeStats = [];
             foreach (['INDI', 'FAM'] as $type) {
                 $tmp               = $stats->statsPlaces($type, false, $place->getPlaceId());
-                $placeStats[$type] = empty($tmp) ? 0 : $tmp[0]['tot'];
+                $placeStats[$type] = empty($tmp) ? 0 : $tmp[0]->tot;
             }
             //Flag
             if ($location->getIcon() !== null && is_file($flag_path . $location->getIcon())) {
