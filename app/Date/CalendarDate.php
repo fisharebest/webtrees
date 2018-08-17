@@ -95,18 +95,28 @@ class CalendarDate {
 			return;
 		}
 
+        $this->minJD = $date->minJD;
+        $this->maxJD = $date->maxJD;
+
 		// Construct from an equivalent xxxxDate object
 		if (get_class($this) == get_class($date)) {
 			$this->y     = $date->y;
 			$this->m     = $date->m;
 			$this->d     = $date->d;
-			$this->minJD = $date->minJD;
-			$this->maxJD = $date->maxJD;
 
 			return;
 		}
 
-		// ...else construct an inequivalent xxxxDate object
+        // Not all dates can be converted
+        if (!$this->inValidRange()) {
+            $this->y = 0;
+            $this->m = 0;
+            $this->d = 0;
+
+            return;
+        }
+
+        // ...else construct an inequivalent xxxxDate object
 		if ($date->y == 0) {
 			// Incomplete date - convert on basis of anniversary in current year
 			$today = $date->calendar->jdToYmd(unixtojd());
