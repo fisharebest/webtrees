@@ -127,11 +127,14 @@ class RegisterController extends AbstractBaseController
 
         // Send a verification message to the user.
         /* I18N: %s is a server name/URL */
-        Mail::send($sender, $user, $sender, I18N::translate('Your registration at %s', WT_BASE_URL), view('emails/register-user-text', [
-                'user' => $user,
-            ]), view('emails/register-user-html', [
-                'user' => $user,
-            ]));
+        Mail::send(
+            $sender,
+            $user,
+            $sender,
+            I18N::translate('Your registration at %s', WT_BASE_URL),
+            view('emails/register-user-text', ['user' => $user]),
+            view('emails/register-user-html', ['user' => $user])
+        );
 
         // Tell the genealogy contact about the registration.
         $webmaster = User::find((int)$tree->getPreference('WEBMASTER_USER_ID'));
@@ -140,13 +143,13 @@ class RegisterController extends AbstractBaseController
             I18N::init($webmaster->getPreference('language'));
 
             /* I18N: %s is a server name/URL */
-            Mail::send($sender, $webmaster, $user, I18N::translate('New registration at %s', WT_BASE_URL . ' ' . $tree->getTitle()), view('emails/register-notify-text', [
-                    'user'     => $user,
-                    'comments' => $comments,
-                ]), view('emails/register-notify-html', [
-                    'user'     => $user,
-                    'comments' => $comments,
-                ])
+            Mail::send(
+                $sender,
+                $webmaster,
+                $user,
+                I18N::translate('New registration at %s', WT_BASE_URL . ' ' . $tree->getTitle()),
+                view('emails/register-notify-text', ['user' => $user, 'comments' => $comments]),
+                view('emails/register-notify-html', ['user' => $user, 'comments' => $comments])
             );
 
             $mail1_method = $webmaster->getPreference('contact_method');

@@ -138,15 +138,13 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
      */
     public function getFavorites(Tree $tree, User $user)
     {
-        $favorites =
-            Database::prepare(
-                "SELECT favorite_id, user_id, gedcom_id, xref, favorite_type, title, note, url" .
-                " FROM `##favorite` WHERE gedcom_id = :tree_id AND user_id = :user_id")
-                ->execute([
-                    'tree_id' => $tree->getTreeId(),
-                    'user_id' => $user->getUserId(),
-                ])
-                ->fetchAll();
+        $favorites = Database::prepare(
+            "SELECT favorite_id, user_id, gedcom_id, xref, favorite_type, title, note, url" .
+            " FROM `##favorite` WHERE gedcom_id = :tree_id AND user_id = :user_id"
+        )->execute([
+            'tree_id' => $tree->getTreeId(),
+            'user_id' => $user->getUserId(),
+        ])->fetchAll();
 
         foreach ($favorites as $favorite) {
             $favorite->record = GedcomRecord::getInstance($favorite->xref, $tree);

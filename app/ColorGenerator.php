@@ -92,10 +92,6 @@ class ColorGenerator
         }
         $this->lightness = $lightness;
 
-        return sprintf('hsla(%s, %s%%, %s%%, %s)',
-            $this->hue,
-            $this->saturation,
-            $this->lightness,
-            $this->alpha);
+        return sprintf('hsla(%s, %s%%, %s%%, %s)', $this->hue, $this->saturation, $this->lightness, $this->alpha);
     }
 }

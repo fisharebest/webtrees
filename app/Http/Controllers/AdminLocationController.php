@@ -238,7 +238,8 @@ class AdminLocationController extends AbstractBaseController
      *
      * @return Response
      */
-    public function exportLocations(Request $request): Response {
+    public function exportLocations(Request $request): Response
+    {
         $parent_id = (int)$request->get('parent_id');
         $format    = $request->get('format');
         $maxlevel  = (int) Database::prepare("SELECT max(pl_level) FROM `##placelocation`")->execute()->fetchOne();
@@ -269,7 +270,7 @@ class AdminLocationController extends AbstractBaseController
             return $place;
         }, $places);
 
-        $places = array_filter($places, function(array $place): bool {
+        $places = array_filter($places, function (array $place): bool {
             return $place['pl_long'] !== 0 && $place['pl_lati'] !== 0;
         });
 
@@ -421,7 +422,6 @@ class AdminLocationController extends AbstractBaseController
                     $place['pl_zoom'] != $location->getZoom() ||
                     $place['pl_icon'] != $location->getIcon()
                 )) {
-
                     // overwrite
                     $location->update((object) $place);
                     $updated++;
@@ -434,7 +434,8 @@ class AdminLocationController extends AbstractBaseController
                     for ($i = count($place_parts) - 1; $i >= 0; $i--) {
                         $new_parts    = array_slice($place_parts, $i);
                         $new_fqpn     = implode(Place::GEDCOM_SEPARATOR, $new_parts);
-                        $new_location = new Location($new_fqpn,
+                        $new_location = new Location(
+                            $new_fqpn,
                             [
                                 'fqpn'         => $new_fqpn,
                                 'pl_id'        => 0,
@@ -465,8 +466,8 @@ class AdminLocationController extends AbstractBaseController
             throw new Exception('Unable to open file: %s', $filename);
         }
 
-        $url = route('map-data', ['parent_id' => $parent_id])
-;
+        $url = route('map-data', ['parent_id' => $parent_id]);
+
         return new RedirectResponse($url);
     }
 
@@ -562,7 +563,7 @@ class AdminLocationController extends AbstractBaseController
             }
         }
 
-        FlashMessages::addMessage(I18N::plural('%s location has been imported.', '%s locations have been imported.' , $inserted, I18N::number($inserted)),  'success');
+        FlashMessages::addMessage(I18N::plural('%s location has been imported.', '%s locations have been imported.', $inserted, I18N::number($inserted)), 'success');
 
         $url = route('map-data');
 
@@ -577,7 +578,8 @@ class AdminLocationController extends AbstractBaseController
      *
      * @return Response
      */
-    private function exportCSV(string $filename, array $columns, array $places): Response {
+    private function exportCSV(string $filename, array $columns, array $places): Response
+    {
         $response = new StreamedResponse(function () use ($columns, $places) {
             $stream = fopen('php://output', 'w');
 
@@ -590,9 +592,7 @@ class AdminLocationController extends AbstractBaseController
         });
 
 
-        $disposition = $response->headers->makeDisposition(
-            ResponseHeaderBag::DISPOSITION_ATTACHMENT, $filename
-        );
+        $disposition = $response->headers->makeDisposition(ResponseHeaderBag::DISPOSITION_ATTACHMENT, $filename);
         $response->headers->set('Content-Disposition', $disposition);
         $response->headers->set('Content-Type', 'text/csv; charset=UTF-8');
 
@@ -604,7 +604,8 @@ class AdminLocationController extends AbstractBaseController
      *
      * @return Response
      */
-    private function exportGeoJSON(string $filename, array $rows, int $maxlevel): Response {
+    private function exportGeoJSON(string $filename, array $rows, int $maxlevel): Response
+    {
         $geojson = [
             'type'     => 'FeatureCollection',
             'features' => [],
@@ -639,9 +640,7 @@ class AdminLocationController extends AbstractBaseController
 
         $response = new JsonResponse($geojson);
 
-        $disposition = $response->headers->makeDisposition(
-            ResponseHeaderBag::DISPOSITION_ATTACHMENT, $filename
-        );
+        $disposition = $response->headers->makeDisposition(ResponseHeaderBag::DISPOSITION_ATTACHMENT, $filename);
         $response->headers->set('Content-Disposition', $disposition);
         $response->headers->set('Content-Type', 'application/vnd.geo+json');
 

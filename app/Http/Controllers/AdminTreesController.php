@@ -217,11 +217,8 @@ class AdminTreesController extends AbstractBaseController
                             /* I18N: placeholders are GEDCOM XREFs, such as R123 */
                             I18N::translate('%1$s does not exist. Did you mean %2$s?', $this->checkLink($tree, $xref2), $this->checkLink($tree, $upper_links[strtoupper($xref2)]));
                     } else {
-                        $errors[] =
-                            $this->checkLinkMessage($tree,
-                                $type1, $xref1, $type2, $xref2) . ' ' .
-                            /* I18N: placeholders are GEDCOM XREFs, such as R123 */
-                            I18N::translate('%1$s does not exist.', $this->checkLink($tree, $xref2));
+                        /* I18N: placeholders are GEDCOM XREFs, such as R123 */
+                        $errors[] = $this->checkLinkMessage($tree, $type1, $xref1, $type2, $xref2) . ' ' . I18N::translate('%1$s does not exist.', $this->checkLink($tree, $xref2));
                     }
                 } elseif ($type2 === 'SOUR' && $type1 === 'NOTE') {
                     // Notes are intended to add explanations and comments to other records. They should not have their own sources.
@@ -250,10 +247,8 @@ class AdminTreesController extends AbstractBaseController
                     $type2 === 'HUSB' && (!array_key_exists($xref1, $all_links[$xref2]) || $all_links[$xref2][$xref1] !== 'FAMS') ||
                     $type2 === 'WIFE' && (!array_key_exists($xref1, $all_links[$xref2]) || $all_links[$xref2][$xref1] !== 'FAMS')
                 ) {
-                    $errors[] =
-                        $this->checkLinkMessage($tree, $type1, $xref1, $type2, $xref2) . ' ' .
-                        /* I18N: %1$s and %2$s are internal ID numbers such as R123 */
-                        I18N::translate('%1$s does not have a link back to %2$s.', $this->checkLink($tree, $xref2), $this->checkLink($tree, $xref1));
+                    /* I18N: %1$s and %2$s are internal ID numbers such as R123 */
+                    $errors[] = $this->checkLinkMessage($tree, $type1, $xref1, $type2, $xref2) . ' ' . I18N::translate('%1$s does not have a link back to %2$s.', $this->checkLink($tree, $xref2), $this->checkLink($tree, $xref1));
                 }
             }
         }

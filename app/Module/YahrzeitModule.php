@@ -85,7 +85,6 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface
                 // Exact hebrew dates only
                 $date = $fact->getDate();
                 if ($date->minimumDate() instanceof JewishDate && $date->minimumJulianDay() === $date->maximumJulianDay()) {
-
                     // ...then adjust DEAT dates (but not _YART)
                     if ($fact->getTag() === 'DEAT') {
                         $today  = new JewishDate($jd);

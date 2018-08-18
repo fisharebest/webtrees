@@ -244,7 +244,9 @@ class FanChartController extends AbstractChartController
                     imagettftext(
                         $image,
                         7,
-                        $tangle, (int)$tx, (int)$ty,
+                        $tangle,
+                        (int) $tx,
+                        (int) $ty,
                         $foreground,
                         WT_ROOT . 'resources/fonts/DejaVuSans.ttf',
                         $text

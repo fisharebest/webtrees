@@ -75,8 +75,7 @@ class BatchUpdateNameFormatPlugin extends BatchUpdateBasePlugin
         ], [
             '$1/',
             '$1 $2',
-        ], $old_gedcom
-        );
+        ], $old_gedcom);
 
         return $new_gedcom;
     }

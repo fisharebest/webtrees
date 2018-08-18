@@ -58,7 +58,7 @@ class Stats
     ];
 
     /** @var string[] List of GEDCOM media types */
-    private $_media_types = [
+    private $media_types = [
         'audio',
         'book',
         'card',
@@ -163,9 +163,7 @@ class Stats
         $new_tags   = []; // tag to replace
         $new_values = []; // value to replace it with
 
-        /*
-		 * Parse block tags.
-		 */
+        // Parse block tags.
         for ($i = 0; $i < $c; $i++) {
             $full_tag = $tags[$i];
             // Added for new parameter support
@@ -1245,7 +1243,7 @@ class Stats
      */
     private function totalMediaType($type = 'all')
     {
-        if (!in_array($type, $this->_media_types) && $type != 'all' && $type != 'unknown') {
+        if (!in_array($type, $this->media_types) && $type != 'all' && $type != 'unknown') {
             return 0;
         }
         $sql  = "SELECT COUNT(*) AS tot FROM `##media` WHERE m_file=?";
@@ -1254,7 +1252,7 @@ class Stats
         if ($type != 'all') {
             if ($type == 'unknown') {
                 // There has to be a better way then this :(
-                foreach ($this->_media_types as $t) {
+                foreach ($this->media_types as $t) {
                     $sql    .= " AND (m_gedcom NOT LIKE ? AND m_gedcom NOT LIKE ?)";
                     $vars[] = "%3 TYPE {$t}%";
                     $vars[] = "%1 _TYPE {$t}%";
@@ -1511,7 +1509,7 @@ class Stats
         $c           = 0;
         $max         = 0;
         $media       = [];
-        foreach ($this->_media_types as $type) {
+        foreach ($this->media_types as $type) {
             $count = $this->totalMediaType($type);
             if ($count > 0) {
                 $media[$type] = $count;
@@ -2753,7 +2751,8 @@ class Stats
                 " birth.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND" .
                 " death.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND" .
                 " death.d_julianday1>birth.d_julianday2" .
-                " GROUP BY century, sex ORDER BY century, sex");
+                " GROUP BY century, sex ORDER BY century, sex"
+            );
             if (empty($rows)) {
                 return '';
             }
@@ -2852,7 +2851,8 @@ class Stats
                 " death.d_julianday1>birth.d_julianday2" .
                 $years .
                 $sex_search .
-                " ORDER BY age DESC");
+                " ORDER BY age DESC"
+            );
 
             return $rows;
         }
@@ -3165,21 +3165,21 @@ class Stats
         if ($direction != 'ASC') {
             $direction = 'DESC';
         }
-        $rows = $this->runSql(''
-            . ' SELECT'
-            . ' d_gid AS id,'
-            . ' d_year AS year,'
-            . ' d_fact AS fact,'
-            . ' d_type AS type'
-            . ' FROM'
-            . " `##dates`"
-            . ' WHERE'
-            . " d_file={$this->tree->getTreeId()} AND"
-            . " d_gid<>'HEAD' AND"
-            . " d_fact {$fact_query} AND"
-            . ' d_julianday1<>0'
-            . ' ORDER BY'
-            . " d_julianday1 {$direction}, d_type LIMIT 1"
+        $rows = $this->runSql(
+            ' SELECT' .
+            ' d_gid AS id,' .
+            ' d_year AS year,' .
+            ' d_fact AS fact,' .
+            ' d_type AS type' .
+            ' FROM' .
+            " `##dates`" .
+            ' WHERE' .
+            " d_file={$this->tree->getTreeId()} AND" .
+            " d_gid<>'HEAD' AND" .
+            " d_fact {$fact_query} AND" .
+            ' d_julianday1<>0' .
+            ' ORDER BY' .
+            " d_julianday1 {$direction}, d_type LIMIT 1"
         );
         if (!isset($rows[0])) {
             return '';
@@ -3436,7 +3436,8 @@ class Stats
             " married.d_julianday1 < husbdeath.d_julianday2 AND" .
             " married.d_julianday1 <> 0" .
             " GROUP BY family" .
-            " ORDER BY age {$age_dir}");
+            " ORDER BY age {$age_dir}"
+        );
         $wrows = $this->runSql(
             " SELECT DISTINCT fam.f_id AS family, MIN(wifedeath.d_julianday2-married.d_julianday1) AS age" .
             " FROM `##families` AS fam" .
@@ -3451,7 +3452,8 @@ class Stats
             " married.d_julianday1 < wifedeath.d_julianday2 AND" .
             " married.d_julianday1 <> 0" .
             " GROUP BY family" .
-            " ORDER BY age {$age_dir}");
+            " ORDER BY age {$age_dir}"
+        );
         $drows = $this->runSql(
             " SELECT DISTINCT fam.f_id AS family, MIN(divorced.d_julianday2-married.d_julianday1) AS age" .
             " FROM `##families` AS fam" .
@@ -3466,7 +3468,8 @@ class Stats
             " married.d_julianday1 < divorced.d_julianday2 AND" .
             " married.d_julianday1 <> 0" .
             " GROUP BY family" .
-            " ORDER BY age {$age_dir}");
+            " ORDER BY age {$age_dir}"
+        );
         if (!isset($hrows) && !isset($wrows) && !isset($drows)) {
             return '';
         }
@@ -5270,7 +5273,8 @@ class Stats
                 " AND   d_fact = 'MARR'" .
                 " AND   d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')" .
                 " GROUP BY century" .
-                " ORDER BY century");
+                " ORDER BY century"
+            );
             if (empty($rows)) {
                 return '';
             }
@@ -5421,7 +5425,8 @@ class Stats
         $rows = $this->runSql(
             " SELECT COUNT(*) AS tot" .
             " FROM  `##families`" .
-            " WHERE f_numchil = 0 AND f_file = {$this->tree->getTreeId()}");
+            " WHERE f_numchil = 0 AND f_file = {$this->tree->getTreeId()}"
+        );
 
         return $rows[0]->tot;
     }
@@ -5453,7 +5458,8 @@ class Stats
         $rows = $this->runSql(
             " SELECT f_id AS family" .
             " FROM `##families` AS fam" .
-            " WHERE f_numchil = 0 AND fam.f_file = {$this->tree->getTreeId()}");
+            " WHERE f_numchil = 0 AND fam.f_file = {$this->tree->getTreeId()}"
+        );
         if (!isset($rows[0])) {
             return '';
         }
@@ -7969,9 +7975,8 @@ class Stats
     private function centuryName($century)
     {
         if ($century < 0) {
-
             /* I18N: BCE=Before the Common Era, for Julian years < 0. See http://en.wikipedia.org/wiki/Common_Era */
-            return str_replace(-$century, self::centuryName(-$century), I18N::translate('%s BCE', I18N::number(-$century)));
+            return str_replace(-$century, $this->centuryName(-$century), I18N::translate('%s BCE', I18N::number(-$century)));
         }
         // The current chart engine (Google charts) can't handle <sup></sup> markup
         switch ($century) {

@@ -226,7 +226,6 @@ class LifespansChartController extends AbstractChartController
 
         // Don't show future dates
         return min($year, (int)date('Y'));
-
     }
 
     /**
@@ -361,22 +360,28 @@ class LifespansChartController extends AbstractChartController
             return I18N::plural(
                 '%s individual with events in %s between %s and %s',
                 '%s individuals with events in %s between %s and %s',
-                $count, I18N::number($count),
-                $placename, $start->display(false, '%Y'), $end->display(false, '%Y')
+                $count,
+                I18N::number($count),
+                $placename,
+                $start->display(false, '%Y'),
+                $end->display(false, '%Y')
             );
         } elseif ($placename !== '') {
             return I18N::plural(
                 '%s individual with events in %s',
                 '%s individuals with events in %s',
-                $count, I18N::number($count),
+                $count,
+                I18N::number($count),
                 $placename
             );
         } elseif ($start->isOK() && $end->isOK()) {
             return I18N::plural(
                 '%s individual with events between %s and %s',
                 '%s individuals with events between %s and %s',
-                $count, I18N::number($count),
-                $start->display(false, '%Y'), $end->display(false, '%Y')
+                $count,
+                I18N::number($count),
+                $start->display(false, '%Y'),
+                $end->display(false, '%Y')
             );
         } else {
             return I18N::plural('%s individual', '%s individuals', $count, I18N::number($count));

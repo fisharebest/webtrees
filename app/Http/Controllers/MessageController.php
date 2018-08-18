@@ -396,23 +396,23 @@ class MessageController extends AbstractBaseController
         // Send via email
         if ($this->sendEmail($recipient)) {
             $success = $success && Mail::send(
-                    $from,
-                    $recipient,
-                    $sender,
-                    I18N::translate('webtrees message') . ' - ' . $subject,
-                    view('emails/message-user-text', [
-                        'sender'    => $sender,
-                        'recipient' => $recipient,
-                        'message'   => $body,
-                        'url'       => $url,
-                    ]),
-                    view('emails/message-user-html', [
-                        'sender'    => $sender,
-                        'recipient' => $recipient,
-                        'message'   => $body,
-                        'url'       => $url,
-                    ])
-                );
+                $from,
+                $recipient,
+                $sender,
+                I18N::translate('webtrees message') . ' - ' . $subject,
+                view('emails/message-user-text', [
+                    'sender'    => $sender,
+                    'recipient' => $recipient,
+                    'message'   => $body,
+                    'url'       => $url,
+                ]),
+                view('emails/message-user-html', [
+                    'sender'    => $sender,
+                    'recipient' => $recipient,
+                    'message'   => $body,
+                    'url'       => $url,
+                ])
+            );
         }
 
         I18N::init(WT_LOCALE);

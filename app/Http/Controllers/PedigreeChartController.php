@@ -188,7 +188,6 @@ class PedigreeChartController extends AbstractChartController
         // -- calculating the box positions
 
         for ($i = ($this->treesize - 1); $i >= 0; $i--) {
-
             // -- check to see if we have moved to the next generation
             if ($i < (int)($this->treesize / pow(2, $curgen))) {
                 $curgen++;

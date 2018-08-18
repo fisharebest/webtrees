@@ -138,14 +138,12 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
      */
     public function getFavorites(Tree $tree)
     {
-        $favorites =
-            Database::prepare(
-                "SELECT favorite_id, user_id, gedcom_id, xref, favorite_type, title, note, url" .
-                " FROM `##favorite` WHERE gedcom_id = :tree_id AND user_id IS NULL")
-                ->execute([
-                    'tree_id' => $tree->getTreeId(),
-                ])
-                ->fetchAll();
+        $favorites = Database::prepare(
+            "SELECT favorite_id, user_id, gedcom_id, xref, favorite_type, title, note, url" .
+            " FROM `##favorite` WHERE gedcom_id = :tree_id AND user_id IS NULL"
+        )->execute([
+            'tree_id' => $tree->getTreeId(),
+        ])->fetchAll();
 
         foreach ($favorites as $favorite) {
             $favorite->record = GedcomRecord::getInstance($favorite->xref, $tree);

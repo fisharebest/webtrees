@@ -258,7 +258,6 @@ class AdminUsersController extends AbstractBaseController
             'recordsFiltered' => $recordsFiltered,
             'data'            => $data,
         ]);
-
     }
 
     /**

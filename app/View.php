@@ -183,7 +183,9 @@ class View
             // Core views
             $paths[] = WT_ROOT . 'resources/views';
 
-            $paths = array_filter($paths, function (string $path): bool { return is_dir($path); });
+            $paths = array_filter($paths, function (string $path): bool {
+                return is_dir($path);
+            });
         }
 
         return $paths;

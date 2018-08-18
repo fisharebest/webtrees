@@ -39,13 +39,6 @@ class DebugBar
     private static $renderer;
 
     /**
-     * Prevent instantiation.
-     */
-    private final function __construct()
-    {
-    }
-
-    /**
      * Initialize the Debugbar.
      */
     public static function init(bool $enable = true)

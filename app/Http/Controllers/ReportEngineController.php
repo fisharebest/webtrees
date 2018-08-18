@@ -58,7 +58,6 @@ class ReportEngineController extends AbstractBaseController
             'reports' => $reports,
             'title'   => $title,
         ]);
-
     }
 
     /**
@@ -169,7 +168,6 @@ class ReportEngineController extends AbstractBaseController
             'report'      => $report,
             'title'       => $title,
         ]);
-
     }
 
     /**

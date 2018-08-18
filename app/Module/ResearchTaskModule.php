@@ -170,6 +170,5 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
             'show_other'      => $show_other,
             'show_unassigned' => $show_unassigned,
         ]);
-
     }
 }

@@ -373,7 +373,7 @@ class Family extends GedcomRecord
      */
     public function getAllNames()
     {
-        if (is_null($this->_getAllNames)) {
+        if (is_null($this->getAllNames)) {
             // Check the script used by each name, so we can match cyrillic with cyrillic, greek with greek, etc.
             $husb_names = [];
             if ($this->husb) {
@@ -415,7 +415,7 @@ class Family extends GedcomRecord
             foreach ($husb_names as $husb_name) {
                 foreach ($wife_names as $wife_name) {
                     if ($husb_name['script'] == $wife_name['script']) {
-                        $this->_getAllNames[] = [
+                        $this->getAllNames[] = [
                             'type' => $husb_name['type'],
                             'sort' => $husb_name['sort'] . ' + ' . $wife_name['sort'],
                             'full' => $husb_name['full'] . ' + ' . $wife_name['full'],
@@ -429,7 +429,7 @@ class Family extends GedcomRecord
             foreach ($husb_names as $husb_name) {
                 foreach ($wife_names as $wife_name) {
                     if ($husb_name['script'] != $wife_name['script']) {
-                        $this->_getAllNames[] = [
+                        $this->getAllNames[] = [
                             'type' => $husb_name['type'],
                             'sort' => $husb_name['sort'] . ' + ' . $wife_name['sort'],
                             'full' => $husb_name['full'] . ' + ' . $wife_name['full'],
@@ -440,7 +440,7 @@ class Family extends GedcomRecord
             }
         }
 
-        return $this->_getAllNames;
+        return $this->getAllNames;
     }
 
     /**

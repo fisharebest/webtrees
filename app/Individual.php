@@ -1291,7 +1291,7 @@ class Individual extends GedcomRecord
                 $SURN = substr_replace($SURN, 'Mac', 0, 4);
             }
 
-            $this->_getAllNames[] = [
+            $this->getAllNames[] = [
                 'type'    => $type,
                 'sort'    => $SURN . ',' . $GIVN,
                 'full'    => $full,

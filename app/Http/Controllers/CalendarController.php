@@ -48,7 +48,8 @@ class CalendarController extends AbstractBaseController
      *
      * @param LocalizationService $localization_service
      */
-    public function __construct(LocalizationService $localization_service) {
+    public function __construct(LocalizationService $localization_service)
+    {
         $this->localization_service = $localization_service;
     }
 

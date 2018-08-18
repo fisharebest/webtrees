@@ -166,12 +166,10 @@ class PlaceHierarchyController extends AbstractBaseController
 
         $xrefs = Database::prepare(
             "SELECT DISTINCT pl_gid FROM `##placelinks` WHERE pl_p_id=:id AND pl_file=:gedcom"
-        )
-            ->execute([
-                    'id'     => $place->getPlaceId(),
-                    'gedcom' => $tree->getTreeId(),
-                ]
-            )->fetchOneColumn();
+        )->execute([
+            'id'     => $place->getPlaceId(),
+            'gedcom' => $tree->getTreeId(),
+        ])->fetchOneColumn();
 
         foreach ($xrefs as $xref) {
             $record = GedcomRecord::getInstance($xref, $tree);

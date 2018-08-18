@@ -90,10 +90,7 @@ class AdminController extends AbstractBaseController
      *
      * @return Response
      */
-    public function controlPanel(
-        HousekeepingService $housekeeping_service,
-        UpgradeService      $upgrade_service
-    ): Response
+    public function controlPanel(HousekeepingService $housekeeping_service, UpgradeService $upgrade_service): Response
     {
         $filesystem      = new Filesystem(new Local(WT_ROOT));
         $files_to_delete = $housekeeping_service->deleteOldWebtreesFiles($filesystem);
@@ -277,7 +274,8 @@ class AdminController extends AbstractBaseController
                 I18N::translate($row->status),
                 $record ? '<a href="' . e($record->url()) . '">' . $record->getXref() . '</a>' : $row->xref,
                 '<div class="gedcom-data" dir="ltr">' .
-                preg_replace_callback('/@(' . WT_REGEX_XREF . ')@/',
+                preg_replace_callback(
+                    '/@(' . WT_REGEX_XREF . ')@/',
                     function ($match) use ($tree) {
                         $record = GedcomRecord::getInstance($match[1], $tree);
 
@@ -327,9 +325,7 @@ class AdminController extends AbstractBaseController
         }, $rows);
 
         $response    = new Response(implode("\n", $rows));
-        $disposition = $response->headers->makeDisposition(
-            ResponseHeaderBag::DISPOSITION_ATTACHMENT, 'changes.csv'
-        );
+        $disposition = $response->headers->makeDisposition(ResponseHeaderBag::DISPOSITION_ATTACHMENT, 'changes.csv');
         $response->headers->set('Content-Disposition', $disposition);
         $response->headers->set('Content-Type', 'text/csv; charset=UTF-8');
 
@@ -1113,7 +1109,7 @@ class AdminController extends AbstractBaseController
                 $key          = 'access-' . $module->getName() . '-' . $tree->getTreeId();
                 $access_level = (int)$request->get($key, $module->defaultAccessLevel());
 
-                Database::prepare("REPLACE INTO `##module_privacy` (module_name, gedcom_id, component, access_level)" . " VALUES (:module_name, :tree_id, :component, :access_level)")->execute([
+                Database::prepare("REPLACE INTO `##module_privacy` (module_name, gedcom_id, component, access_level) VALUES (:module_name, :tree_id, :component, :access_level)")->execute([
                     'module_name'  => $module->getName(),
                     'tree_id'      => $tree->getTreeId(),
                     'component'    => $component,
@@ -1594,7 +1590,7 @@ class AdminController extends AbstractBaseController
      */
     private function totalChanges()
     {
-        return Database::prepare("SELECT g.gedcom_id, COUNT(change_id)" . " FROM `##gedcom` AS g" . " LEFT JOIN `##change` AS c ON g.gedcom_id = c.gedcom_id AND status = 'pending'" . " GROUP BY g.gedcom_id")->fetchAssoc();
+        return Database::prepare("SELECT g.gedcom_id, COUNT(change_id) FROM `##gedcom` AS g LEFT JOIN `##change` AS c ON g.gedcom_id = c.gedcom_id AND status = 'pending' GROUP BY g.gedcom_id")->fetchAssoc();
     }
 
     /**
@@ -1604,7 +1600,7 @@ class AdminController extends AbstractBaseController
      */
     private function totalFamilies()
     {
-        return Database::prepare("SELECT gedcom_id, COUNT(f_id)" . " FROM `##gedcom`" . " LEFT JOIN `##families` ON gedcom_id = f_file" . " GROUP BY gedcom_id")->fetchAssoc();
+        return Database::prepare("SELECT gedcom_id, COUNT(f_id) FROM `##gedcom` LEFT JOIN `##families` ON gedcom_id = f_file GROUP BY gedcom_id")->fetchAssoc();
     }
 
     /**
@@ -1614,7 +1610,7 @@ class AdminController extends AbstractBaseController
      */
     private function totalIndividuals()
     {
-        return Database::prepare("SELECT gedcom_id, COUNT(i_id)" . " FROM `##gedcom`" . " LEFT JOIN `##individuals` ON gedcom_id = i_file" . " GROUP BY gedcom_id")->fetchAssoc();
+        return Database::prepare("SELECT gedcom_id, COUNT(i_id) FROM `##gedcom` LEFT JOIN `##individuals` ON gedcom_id = i_file GROUP BY gedcom_id")->fetchAssoc();
     }
 
     /**
@@ -1624,7 +1620,7 @@ class AdminController extends AbstractBaseController
      */
     private function totalMediaObjects()
     {
-        return Database::prepare("SELECT gedcom_id, COUNT(m_id)" . " FROM `##gedcom`" . " LEFT JOIN `##media` ON gedcom_id = m_file" . " GROUP BY gedcom_id")->fetchAssoc();
+        return Database::prepare("SELECT gedcom_id, COUNT(m_id) FROM `##gedcom` LEFT JOIN `##media` ON gedcom_id = m_file GROUP BY gedcom_id")->fetchAssoc();
     }
 
     /**
@@ -1634,9 +1630,7 @@ class AdminController extends AbstractBaseController
      */
     private function totalNotes()
     {
-        return Database::prepare("SELECT gedcom_id, COUNT(o_id)" . " FROM `##gedcom`" . " LEFT JOIN `##other` ON gedcom_id = o_file AND o_type = 'NOTE'" . " GROUP BY gedcom_id"
-
-        )->fetchAssoc();
+        return Database::prepare("SELECT gedcom_id, COUNT(o_id) FROM `##gedcom` LEFT JOIN `##other` ON gedcom_id = o_file AND o_type = 'NOTE' GROUP BY gedcom_id")->fetchAssoc();
     }
 
     /**
@@ -1646,7 +1640,7 @@ class AdminController extends AbstractBaseController
      */
     private function totalRepositories()
     {
-        return Database::prepare("SELECT gedcom_id, COUNT(o_id)" . " FROM `##gedcom`" . " LEFT JOIN `##other` ON gedcom_id = o_file AND o_type = 'REPO'" . " GROUP BY gedcom_id")->fetchAssoc();
+        return Database::prepare("SELECT gedcom_id, COUNT(o_id) FROM `##gedcom` LEFT JOIN `##other` ON gedcom_id = o_file AND o_type = 'REPO' GROUP BY gedcom_id")->fetchAssoc();
     }
 
     /**
@@ -1656,6 +1650,6 @@ class AdminController extends AbstractBaseController
      */
     private function totalSources()
     {
-        return Database::prepare("SELECT gedcom_id, COUNT(s_id)" . " FROM `##gedcom`" . " LEFT JOIN `##sources` ON gedcom_id = s_file" . " GROUP BY gedcom_id")->fetchAssoc();
+        return Database::prepare("SELECT gedcom_id, COUNT(s_id) FROM `##gedcom` LEFT JOIN `##sources` ON gedcom_id = s_file GROUP BY gedcom_id")->fetchAssoc();
     }
 }

@@ -53,13 +53,13 @@ class GedcomRecord
     private $disp_none;
 
     /** @var string[][] All the names of this individual */
-    protected $_getAllNames;
+    protected $getAllNames;
 
     /** @var int Cached result */
-    protected $_getPrimaryName;
+    protected $getPrimaryName;
 
     /** @var int Cached result */
-    protected $_getSecondaryName;
+    protected $getSecondaryName;
 
     /** @var GedcomRecord[][] Allow getInstance() to return references to existing objects */
     protected static $gedcom_record_cache;
@@ -552,7 +552,7 @@ class GedcomRecord
      */
     protected function addName($type, $value, $gedcom)
     {
-        $this->_getAllNames[] = [
+        $this->getAllNames[] = [
             'type'   => $type,
             'sort'   => preg_replace_callback('/([0-9]+)/', function ($matches) {
                 return str_pad($matches[0], 10, '0', STR_PAD_LEFT);
@@ -615,13 +615,13 @@ class GedcomRecord
      */
     public function getAllNames()
     {
-        if ($this->_getAllNames === null) {
-            $this->_getAllNames = [];
+        if ($this->getAllNames === null) {
+            $this->getAllNames = [];
             if ($this->canShowName()) {
                 // Ask the record to extract its names
                 $this->extractNames();
                 // No name found? Use a fallback.
-                if (!$this->_getAllNames) {
+                if (!$this->getAllNames) {
                     $this->addName(static::RECORD_TYPE, $this->getFallBackName(), null);
                 }
             } else {
@@ -629,7 +629,7 @@ class GedcomRecord
             }
         }
 
-        return $this->_getAllNames;
+        return $this->getAllNames;
     }
 
     /**
@@ -655,19 +655,19 @@ class GedcomRecord
             $language_script = I18N::languageScript(WT_LOCALE);
         }
 
-        if ($this->_getPrimaryName === null) {
+        if ($this->getPrimaryName === null) {
             // Generally, the first name is the primary one....
-            $this->_getPrimaryName = 0;
+            $this->getPrimaryName = 0;
             // ...except when the language/name use different character sets
             foreach ($this->getAllNames() as $n => $name) {
                 if (I18N::textScript($name['sort']) === $language_script) {
-                    $this->_getPrimaryName = $n;
+                    $this->getPrimaryName = $n;
                     break;
                 }
             }
         }
 
-        return $this->_getPrimaryName;
+        return $this->getPrimaryName;
     }
 
     /**
@@ -677,23 +677,23 @@ class GedcomRecord
      */
     public function getSecondaryName()
     {
-        if (is_null($this->_getSecondaryName)) {
+        if (is_null($this->getSecondaryName)) {
             // Generally, the primary and secondary names are the same
-            $this->_getSecondaryName = $this->getPrimaryName();
+            $this->getSecondaryName = $this->getPrimaryName();
             // ....except when there are names with different character sets
             $all_names = $this->getAllNames();
             if (count($all_names) > 1) {
                 $primary_script = I18N::textScript($all_names[$this->getPrimaryName()]['sort']);
                 foreach ($all_names as $n => $name) {
                     if ($n != $this->getPrimaryName() && $name['type'] != '_MARNM' && I18N::textScript($name['sort']) != $primary_script) {
-                        $this->_getSecondaryName = $n;
+                        $this->getSecondaryName = $n;
                         break;
                     }
                 }
             }
         }
 
-        return $this->_getSecondaryName;
+        return $this->getSecondaryName;
     }
 
     /**
@@ -703,8 +703,8 @@ class GedcomRecord
      */
     public function setPrimaryName($n)
     {
-        $this->_getPrimaryName   = $n;
-        $this->_getSecondaryName = null;
+        $this->getPrimaryName   = $n;
+        $this->getSecondaryName = null;
     }
 
     /**

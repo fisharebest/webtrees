@@ -466,7 +466,7 @@ class StatisticsChartController extends AbstractChartController
                         break;
                     case self::Z_AXIS_SEX:
                         $z_axis = $this->axisSexes();
-                        foreach(array_keys($z_axis) as $sex) {
+                        foreach (array_keys($z_axis) as $sex) {
                             $rows = $stats->statsAgeQuery(false, 'DEAT', $sex);
                             foreach ($rows as $row) {
                                 foreach ($row as $age) {
@@ -656,7 +656,6 @@ class StatisticsChartController extends AbstractChartController
                             $rows = $stats->statsChildrenQuery(false, 'BOTH', $prev_boundary, $boundary);
                             foreach ($rows as $row) {
                                 $this->fillYData($row->f_numchil, $boundary, $row->total, $x_axis, $z_axis, $ydata);
-
                             }
                             $prev_boundary = $boundary + 1;
                         }
@@ -810,7 +809,8 @@ class StatisticsChartController extends AbstractChartController
      *
      * @return int|string
      */
-    private function findAxisEntry($value, $axis) {
+    private function findAxisEntry($value, $axis)
+    {
         if (is_numeric($value)) {
             $value = (int) $value;
 
@@ -875,19 +875,28 @@ class StatisticsChartController extends AbstractChartController
             array_walk($ydata, function (array &$x) {
                 $sum = array_sum($x);
                 if ($sum > 0) {
-                    $x = array_map(function ($y) use ($sum) { return $y * 100.0 / $sum; }, $x);
+                    $x = array_map(function ($y) use ($sum) {
+                        return $y * 100.0 / $sum;
+                    }, $x);
                 }
             });
         }
 
         // Find the maximum value, so we can draw the scale
-        $ymax = max(array_map(function (array $x) { return max($x); }, $ydata));
+        $ymax = max(array_map(function (array $x) {
+            return max($x);
+        }, $ydata));
+
         // Google charts API requires data to be scaled 0 - 100.
-        $scale = max(array_map(function (array $x) { return max($x); }, $ydata));
+        $scale = max(array_map(function (array $x) {
+            return max($x);
+        }, $ydata));
 
         if ($scale > 0) {
             $scalefactor = 100.0 / $scale;
-            array_walk_recursive($ydata, function (& $n) use ($scalefactor) { $n *= $scalefactor; });
+            array_walk_recursive($ydata, function (& $n) use ($scalefactor) {
+                $n *= $scalefactor;
+            });
         }
 
         // Lables for the two axes.
@@ -912,9 +921,13 @@ class StatisticsChartController extends AbstractChartController
             }
         }
 
+        $data = implode('|', array_map(function (array $x) {
+            return implode(',', $x);
+        }, $ydata));
+
         $attributes = [
             'chbh' => $chbh,
-            'chd'  => 't:' . implode('|', array_map(function (array $x) { return implode(',', $x); }, $ydata)),
+            'chd'  => 't:' . $data,
             'chf'  => 'bg,s,ffffff00|c,s,ffffff00',
             'chco' => implode(',', $colors),
             'chs'  => self::CHART_WIDTH . 'x' . self::CHART_HEIGHT,
