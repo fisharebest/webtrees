@@ -33,8 +33,8 @@ class AhnentafelReportModule extends AbstractModule implements ModuleReportInter
     public function getTitle()
     {
         // This text also appears in the .XML file - update both together
-        return /* I18N: Name of a module/report */
-            I18N::translate('Ancestors');
+        /* I18N: Name of a module/report */
+        return I18N::translate('Ancestors');
     }
 
     /**
@@ -45,8 +45,8 @@ class AhnentafelReportModule extends AbstractModule implements ModuleReportInter
     public function getDescription()
     {
         // This text also appears in the .XML file - update both together
-        return /* I18N: Description of the “Ancestors” module */
-            I18N::translate('A report of an individual’s ancestors, in a narrative style.');
+        /* I18N: Description of the “Ancestors” module */
+        return I18N::translate('A report of an individual’s ancestors, in a narrative style.');
     }
 
     /**

@@ -215,8 +215,7 @@ class AdminUsersController extends AbstractBaseController
             $user_name = $row->user_name;
 
             if ($user_id != $user->getUserId()) {
-                $admin_options = '<div class="dropdown-item"><a href="#" onclick="return masquerade(' . $user_id . ')">' . view('icons/user') . ' ' . /* I18N: Pretend to be another user, by logging in as them */
-                    I18N::translate('Masquerade as this user') . '</a></div>' . '<div class="dropdown-item"><a href="#" data-confirm="' . I18N::translate('Are you sure you want to delete “%s”?', e($user_name)) . '" onclick="delete_user(this.dataset.confirm, ' . $user_id . ');">' . view('icons/delete') . ' ' . I18N::translate('Delete') . '</a></div>';
+                $admin_options = '<div class="dropdown-item"><a href="#" onclick="return masquerade(' . $user_id . ')">' . view('icons/user') . ' ' . I18N::translate('Masquerade as this user') . '</a></div>' . '<div class="dropdown-item"><a href="#" data-confirm="' . I18N::translate('Are you sure you want to delete “%s”?', e($user_name)) . '" onclick="delete_user(this.dataset.confirm, ' . $user_id . ');">' . view('icons/delete') . ' ' . I18N::translate('Delete') . '</a></div>';
             } else {
                 // Do not delete ourself!
                 $admin_options = '';
@@ -443,16 +442,16 @@ class AdminUsersController extends AbstractBaseController
     private function roles(): array
     {
         return [
-            'none'   => /* I18N: Listbox entry; name of a role */
-                I18N::translate('Visitor'),
-            'access' => /* I18N: Listbox entry; name of a role */
-                I18N::translate('Member'),
-            'edit'   => /* I18N: Listbox entry; name of a role */
-                I18N::translate('Editor'),
-            'accept' => /* I18N: Listbox entry; name of a role */
-                I18N::translate('Moderator'),
-            'admin'  => /* I18N: Listbox entry; name of a role */
-                I18N::translate('Manager'),
+            /* I18N: Listbox entry; name of a role */
+            'none'   => I18N::translate('Visitor'),
+            /* I18N: Listbox entry; name of a role */
+            'access' => I18N::translate('Member'),
+            /* I18N: Listbox entry; name of a role */
+            'edit'   => I18N::translate('Editor'),
+            /* I18N: Listbox entry; name of a role */
+            'accept' => I18N::translate('Moderator'),
+            /* I18N: Listbox entry; name of a role */
+            'admin'  => I18N::translate('Manager'),
         ];
     }
 

@@ -75,7 +75,8 @@ class SurnameTradition
                 I18N::translate('Children take their father’s surname.') . ' ' .
                 /* I18N: In the paternal surname tradition, ... */
                 I18N::translate('Wives take their husband’s surname.'),
-            'patrilineal ' => /* I18N: A system where children take their father’s surname */
+            'patrilineal ' =>
+                /* I18N: A system where children take their father’s surname */
                 I18N::translate('patrilineal') . ' — ' .
                 /* I18N: In the patrilineal surname tradition, ... */
                 I18N::translate('Children take their father’s surname.'),

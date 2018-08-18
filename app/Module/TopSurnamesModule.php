@@ -38,8 +38,8 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
      */
     public function getTitle()
     {
-        return /* I18N: Name of a module. Top=Most common */
-            I18N::translate('Top surnames');
+        /* I18N: Name of a module. Top=Most common */
+        return I18N::translate('Top surnames');
     }
 
     /**
@@ -49,8 +49,8 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
      */
     public function getDescription()
     {
-        return /* I18N: Description of the “Top surnames” module */
-            I18N::translate('A list of the most popular surnames.');
+        /* I18N: Description of the “Top surnames” module */
+        return I18N::translate('A list of the most popular surnames.');
     }
 
     /**
@@ -193,14 +193,14 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
         $infoStyle = $this->getBlockSetting($block_id, 'infoStyle', self::DEFAULT_STYLE);
 
         $info_styles = [
-            'list'     => /* I18N: An option in a list-box */
-                I18N::translate('bullet list'),
-            'array'    => /* I18N: An option in a list-box */
-                I18N::translate('compact list'),
-            'table'    => /* I18N: An option in a list-box */
-                I18N::translate('table'),
-            'tagcloud' => /* I18N: An option in a list-box */
-                I18N::translate('tag cloud'),
+            /* I18N: An option in a list-box */
+            'list'     => I18N::translate('bullet list'),
+            /* I18N: An option in a list-box */
+            'array'    => I18N::translate('compact list'),
+            /* I18N: An option in a list-box */
+            'table'    => I18N::translate('table'),
+            /* I18N: An option in a list-box */
+            'tagcloud' => I18N::translate('tag cloud'),
         ];
 
         echo view('modules/top10_surnames/config', [

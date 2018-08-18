@@ -1803,7 +1803,8 @@ abstract class AbstractTheme
      */
     public function menuSearchPhonetic()
     {
-        return new Menu(/* I18N: search using “sounds like”, rather than exact spelling */
+        /* I18N: search using “sounds like”, rather than exact spelling */
+        return new Menu(
             I18N::translate('Phonetic search'), route('search-phonetic', [
             'ged'    => $this->tree->getName(),
             'action' => 'soundex',

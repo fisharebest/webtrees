@@ -32,8 +32,8 @@ class CompactTreeChartModule extends AbstractModule implements ModuleChartInterf
      */
     public function getTitle()
     {
-        return /* I18N: Name of a module/chart */
-            I18N::translate('Compact tree');
+        /* I18N: Name of a module/chart */
+        return I18N::translate('Compact tree');
     }
 
     /**
@@ -43,8 +43,8 @@ class CompactTreeChartModule extends AbstractModule implements ModuleChartInterf
      */
     public function getDescription()
     {
-        return /* I18N: Description of the “CompactTreeChart” module */
-            I18N::translate('A chart of an individual’s ancestors, as a compact tree.');
+        /* I18N: Description of the “CompactTreeChart” module */
+        return I18N::translate('A chart of an individual’s ancestors, as a compact tree.');
     }
 
     /**

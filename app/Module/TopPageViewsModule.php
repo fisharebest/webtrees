@@ -34,8 +34,8 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface
      */
     public function getTitle()
     {
-        return /* I18N: Name of a module */
-            I18N::translate('Most viewed pages');
+        /* I18N: Name of a module */
+        return I18N::translate('Most viewed pages');
     }
 
     /**
@@ -45,8 +45,8 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface
      */
     public function getDescription()
     {
-        return /* I18N: Description of the “Most visited pages” module */
-            I18N::translate('A list of the pages that have been viewed the most number of times.');
+        /* I18N: Description of the “Most visited pages” module */
+        return I18N::translate('A list of the pages that have been viewed the most number of times.');
     }
 
     /**
@@ -177,10 +177,10 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface
         $count_placement = $this->getBlockSetting($block_id, 'count_placement', 'before');
 
         $options = [
-            'before' => /* I18N: An option in a list-box */
-                I18N::translate('before'),
-            'after'  => /* I18N: An option in a list-box */
-                I18N::translate('after'),
+            /* I18N: An option in a list-box */
+            'before' => I18N::translate('before'),
+            /* I18N: An option in a list-box */
+            'after'  => I18N::translate('after'),
         ];
 
         echo view('modules/top10_pageviews/config', [

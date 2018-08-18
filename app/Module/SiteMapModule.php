@@ -46,8 +46,8 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
      */
     public function getTitle()
     {
-        return /* I18N: Name of a module - see http://en.wikipedia.org/wiki/Sitemaps */
-            I18N::translate('Sitemaps');
+        /* I18N: Name of a module - see http://en.wikipedia.org/wiki/Sitemaps */
+        return I18N::translate('Sitemaps');
     }
 
     /**
@@ -57,8 +57,8 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
      */
     public function getDescription()
     {
-        return /* I18N: Description of the “Sitemaps” module */
-            I18N::translate('Generate sitemap files for search engines.');
+        /* I18N: Description of the “Sitemaps” module */
+        return I18N::translate('Generate sitemap files for search engines.');
     }
 
     /**

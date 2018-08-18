@@ -7448,514 +7448,514 @@ class Stats
     public function getAllCountries()
     {
         return [
-            '???' => /* I18N: Name of a country or state */
-                I18N::translate('Unknown'),
-            'ABW' => /* I18N: Name of a country or state */
-                I18N::translate('Aruba'),
-            'AFG' => /* I18N: Name of a country or state */
-                I18N::translate('Afghanistan'),
-            'AGO' => /* I18N: Name of a country or state */
-                I18N::translate('Angola'),
-            'AIA' => /* I18N: Name of a country or state */
-                I18N::translate('Anguilla'),
-            'ALA' => /* I18N: Name of a country or state */
-                I18N::translate('Aland Islands'),
-            'ALB' => /* I18N: Name of a country or state */
-                I18N::translate('Albania'),
-            'AND' => /* I18N: Name of a country or state */
-                I18N::translate('Andorra'),
-            'ARE' => /* I18N: Name of a country or state */
-                I18N::translate('United Arab Emirates'),
-            'ARG' => /* I18N: Name of a country or state */
-                I18N::translate('Argentina'),
-            'ARM' => /* I18N: Name of a country or state */
-                I18N::translate('Armenia'),
-            'ASM' => /* I18N: Name of a country or state */
-                I18N::translate('American Samoa'),
-            'ATA' => /* I18N: Name of a country or state */
-                I18N::translate('Antarctica'),
-            'ATF' => /* I18N: Name of a country or state */
-                I18N::translate('French Southern Territories'),
-            'ATG' => /* I18N: Name of a country or state */
-                I18N::translate('Antigua and Barbuda'),
-            'AUS' => /* I18N: Name of a country or state */
-                I18N::translate('Australia'),
-            'AUT' => /* I18N: Name of a country or state */
-                I18N::translate('Austria'),
-            'AZE' => /* I18N: Name of a country or state */
-                I18N::translate('Azerbaijan'),
-            'AZR' => /* I18N: Name of a country or state */
-                I18N::translate('Azores'),
-            'BDI' => /* I18N: Name of a country or state */
-                I18N::translate('Burundi'),
-            'BEL' => /* I18N: Name of a country or state */
-                I18N::translate('Belgium'),
-            'BEN' => /* I18N: Name of a country or state */
-                I18N::translate('Benin'),
+            /* I18N: Name of a country or state */
+            '???' => I18N::translate('Unknown'),
+            /* I18N: Name of a country or state */
+            'ABW' => I18N::translate('Aruba'),
+            /* I18N: Name of a country or state */
+            'AFG' => I18N::translate('Afghanistan'),
+            /* I18N: Name of a country or state */
+            'AGO' => I18N::translate('Angola'),
+            /* I18N: Name of a country or state */
+            'AIA' => I18N::translate('Anguilla'),
+            /* I18N: Name of a country or state */
+            'ALA' => I18N::translate('Aland Islands'),
+            /* I18N: Name of a country or state */
+            'ALB' => I18N::translate('Albania'),
+            /* I18N: Name of a country or state */
+            'AND' => I18N::translate('Andorra'),
+            /* I18N: Name of a country or state */
+            'ARE' => I18N::translate('United Arab Emirates'),
+            /* I18N: Name of a country or state */
+            'ARG' => I18N::translate('Argentina'),
+            /* I18N: Name of a country or state */
+            'ARM' => I18N::translate('Armenia'),
+            /* I18N: Name of a country or state */
+            'ASM' => I18N::translate('American Samoa'),
+            /* I18N: Name of a country or state */
+            'ATA' => I18N::translate('Antarctica'),
+            /* I18N: Name of a country or state */
+            'ATF' => I18N::translate('French Southern Territories'),
+            /* I18N: Name of a country or state */
+            'ATG' => I18N::translate('Antigua and Barbuda'),
+            /* I18N: Name of a country or state */
+            'AUS' => I18N::translate('Australia'),
+            /* I18N: Name of a country or state */
+            'AUT' => I18N::translate('Austria'),
+            /* I18N: Name of a country or state */
+            'AZE' => I18N::translate('Azerbaijan'),
+            /* I18N: Name of a country or state */
+            'AZR' => I18N::translate('Azores'),
+            /* I18N: Name of a country or state */
+            'BDI' => I18N::translate('Burundi'),
+            /* I18N: Name of a country or state */
+            'BEL' => I18N::translate('Belgium'),
+            /* I18N: Name of a country or state */
+            'BEN' => I18N::translate('Benin'),
             // BES => Bonaire, Sint Eustatius and Saba
-            'BFA' => /* I18N: Name of a country or state */
-                I18N::translate('Burkina Faso'),
-            'BGD' => /* I18N: Name of a country or state */
-                I18N::translate('Bangladesh'),
-            'BGR' => /* I18N: Name of a country or state */
-                I18N::translate('Bulgaria'),
-            'BHR' => /* I18N: Name of a country or state */
-                I18N::translate('Bahrain'),
-            'BHS' => /* I18N: Name of a country or state */
-                I18N::translate('Bahamas'),
-            'BIH' => /* I18N: Name of a country or state */
-                I18N::translate('Bosnia and Herzegovina'),
+            /* I18N: Name of a country or state */
+            'BFA' => I18N::translate('Burkina Faso'),
+            /* I18N: Name of a country or state */
+            'BGD' => I18N::translate('Bangladesh'),
+            /* I18N: Name of a country or state */
+            'BGR' => I18N::translate('Bulgaria'),
+            /* I18N: Name of a country or state */
+            'BHR' => I18N::translate('Bahrain'),
+            /* I18N: Name of a country or state */
+            'BHS' => I18N::translate('Bahamas'),
+            /* I18N: Name of a country or state */
+            'BIH' => I18N::translate('Bosnia and Herzegovina'),
             // BLM => Saint Barthélemy
-            'BLR' => /* I18N: Name of a country or state */
-                I18N::translate('Belarus'),
-            'BLZ' => /* I18N: Name of a country or state */
-                I18N::translate('Belize'),
-            'BMU' => /* I18N: Name of a country or state */
-                I18N::translate('Bermuda'),
-            'BOL' => /* I18N: Name of a country or state */
-                I18N::translate('Bolivia'),
-            'BRA' => /* I18N: Name of a country or state */
-                I18N::translate('Brazil'),
-            'BRB' => /* I18N: Name of a country or state */
-                I18N::translate('Barbados'),
-            'BRN' => /* I18N: Name of a country or state */
-                I18N::translate('Brunei Darussalam'),
-            'BTN' => /* I18N: Name of a country or state */
-                I18N::translate('Bhutan'),
-            'BVT' => /* I18N: Name of a country or state */
-                I18N::translate('Bouvet Island'),
-            'BWA' => /* I18N: Name of a country or state */
-                I18N::translate('Botswana'),
-            'CAF' => /* I18N: Name of a country or state */
-                I18N::translate('Central African Republic'),
-            'CAN' => /* I18N: Name of a country or state */
-                I18N::translate('Canada'),
-            'CCK' => /* I18N: Name of a country or state */
-                I18N::translate('Cocos (Keeling) Islands'),
-            'CHE' => /* I18N: Name of a country or state */
-                I18N::translate('Switzerland'),
-            'CHL' => /* I18N: Name of a country or state */
-                I18N::translate('Chile'),
-            'CHN' => /* I18N: Name of a country or state */
-                I18N::translate('China'),
-            'CIV' => /* I18N: Name of a country or state */
-                I18N::translate('Cote d’Ivoire'),
-            'CMR' => /* I18N: Name of a country or state */
-                I18N::translate('Cameroon'),
-            'COD' => /* I18N: Name of a country or state */
-                I18N::translate('Democratic Republic of the Congo'),
-            'COG' => /* I18N: Name of a country or state */
-                I18N::translate('Republic of the Congo'),
-            'COK' => /* I18N: Name of a country or state */
-                I18N::translate('Cook Islands'),
-            'COL' => /* I18N: Name of a country or state */
-                I18N::translate('Colombia'),
-            'COM' => /* I18N: Name of a country or state */
-                I18N::translate('Comoros'),
-            'CPV' => /* I18N: Name of a country or state */
-                I18N::translate('Cape Verde'),
-            'CRI' => /* I18N: Name of a country or state */
-                I18N::translate('Costa Rica'),
-            'CUB' => /* I18N: Name of a country or state */
-                I18N::translate('Cuba'),
+            /* I18N: Name of a country or state */
+            'BLR' => I18N::translate('Belarus'),
+            /* I18N: Name of a country or state */
+            'BLZ' => I18N::translate('Belize'),
+            /* I18N: Name of a country or state */
+            'BMU' => I18N::translate('Bermuda'),
+            /* I18N: Name of a country or state */
+            'BOL' => I18N::translate('Bolivia'),
+            /* I18N: Name of a country or state */
+            'BRA' => I18N::translate('Brazil'),
+            /* I18N: Name of a country or state */
+            'BRB' => I18N::translate('Barbados'),
+            /* I18N: Name of a country or state */
+            'BRN' => I18N::translate('Brunei Darussalam'),
+            /* I18N: Name of a country or state */
+            'BTN' => I18N::translate('Bhutan'),
+            /* I18N: Name of a country or state */
+            'BVT' => I18N::translate('Bouvet Island'),
+            /* I18N: Name of a country or state */
+            'BWA' => I18N::translate('Botswana'),
+            /* I18N: Name of a country or state */
+            'CAF' => I18N::translate('Central African Republic'),
+            /* I18N: Name of a country or state */
+            'CAN' => I18N::translate('Canada'),
+            /* I18N: Name of a country or state */
+            'CCK' => I18N::translate('Cocos (Keeling) Islands'),
+            /* I18N: Name of a country or state */
+            'CHE' => I18N::translate('Switzerland'),
+            /* I18N: Name of a country or state */
+            'CHL' => I18N::translate('Chile'),
+            /* I18N: Name of a country or state */
+            'CHN' => I18N::translate('China'),
+            /* I18N: Name of a country or state */
+            'CIV' => I18N::translate('Cote d’Ivoire'),
+            /* I18N: Name of a country or state */
+            'CMR' => I18N::translate('Cameroon'),
+            /* I18N: Name of a country or state */
+            'COD' => I18N::translate('Democratic Republic of the Congo'),
+            /* I18N: Name of a country or state */
+            'COG' => I18N::translate('Republic of the Congo'),
+            /* I18N: Name of a country or state */
+            'COK' => I18N::translate('Cook Islands'),
+            /* I18N: Name of a country or state */
+            'COL' => I18N::translate('Colombia'),
+            /* I18N: Name of a country or state */
+            'COM' => I18N::translate('Comoros'),
+            /* I18N: Name of a country or state */
+            'CPV' => I18N::translate('Cape Verde'),
+            /* I18N: Name of a country or state */
+            'CRI' => I18N::translate('Costa Rica'),
+            /* I18N: Name of a country or state */
+            'CUB' => I18N::translate('Cuba'),
             // CUW => Curaçao
-            'CXR' => /* I18N: Name of a country or state */
-                I18N::translate('Christmas Island'),
-            'CYM' => /* I18N: Name of a country or state */
-                I18N::translate('Cayman Islands'),
-            'CYP' => /* I18N: Name of a country or state */
-                I18N::translate('Cyprus'),
-            'CZE' => /* I18N: Name of a country or state */
-                I18N::translate('Czech Republic'),
-            'DEU' => /* I18N: Name of a country or state */
-                I18N::translate('Germany'),
-            'DJI' => /* I18N: Name of a country or state */
-                I18N::translate('Djibouti'),
-            'DMA' => /* I18N: Name of a country or state */
-                I18N::translate('Dominica'),
-            'DNK' => /* I18N: Name of a country or state */
-                I18N::translate('Denmark'),
-            'DOM' => /* I18N: Name of a country or state */
-                I18N::translate('Dominican Republic'),
-            'DZA' => /* I18N: Name of a country or state */
-                I18N::translate('Algeria'),
-            'ECU' => /* I18N: Name of a country or state */
-                I18N::translate('Ecuador'),
-            'EGY' => /* I18N: Name of a country or state */
-                I18N::translate('Egypt'),
-            'ENG' => /* I18N: Name of a country or state */
-                I18N::translate('England'),
-            'ERI' => /* I18N: Name of a country or state */
-                I18N::translate('Eritrea'),
-            'ESH' => /* I18N: Name of a country or state */
-                I18N::translate('Western Sahara'),
-            'ESP' => /* I18N: Name of a country or state */
-                I18N::translate('Spain'),
-            'EST' => /* I18N: Name of a country or state */
-                I18N::translate('Estonia'),
-            'ETH' => /* I18N: Name of a country or state */
-                I18N::translate('Ethiopia'),
-            'FIN' => /* I18N: Name of a country or state */
-                I18N::translate('Finland'),
-            'FJI' => /* I18N: Name of a country or state */
-                I18N::translate('Fiji'),
-            'FLD' => /* I18N: Name of a country or state */
-                I18N::translate('Flanders'),
-            'FLK' => /* I18N: Name of a country or state */
-                I18N::translate('Falkland Islands'),
-            'FRA' => /* I18N: Name of a country or state */
-                I18N::translate('France'),
-            'FRO' => /* I18N: Name of a country or state */
-                I18N::translate('Faroe Islands'),
-            'FSM' => /* I18N: Name of a country or state */
-                I18N::translate('Micronesia'),
-            'GAB' => /* I18N: Name of a country or state */
-                I18N::translate('Gabon'),
-            'GBR' => /* I18N: Name of a country or state */
-                I18N::translate('United Kingdom'),
-            'GEO' => /* I18N: Name of a country or state */
-                I18N::translate('Georgia'),
-            'GGY' => /* I18N: Name of a country or state */
-                I18N::translate('Guernsey'),
-            'GHA' => /* I18N: Name of a country or state */
-                I18N::translate('Ghana'),
-            'GIB' => /* I18N: Name of a country or state */
-                I18N::translate('Gibraltar'),
-            'GIN' => /* I18N: Name of a country or state */
-                I18N::translate('Guinea'),
-            'GLP' => /* I18N: Name of a country or state */
-                I18N::translate('Guadeloupe'),
-            'GMB' => /* I18N: Name of a country or state */
-                I18N::translate('Gambia'),
-            'GNB' => /* I18N: Name of a country or state */
-                I18N::translate('Guinea-Bissau'),
-            'GNQ' => /* I18N: Name of a country or state */
-                I18N::translate('Equatorial Guinea'),
-            'GRC' => /* I18N: Name of a country or state */
-                I18N::translate('Greece'),
-            'GRD' => /* I18N: Name of a country or state */
-                I18N::translate('Grenada'),
-            'GRL' => /* I18N: Name of a country or state */
-                I18N::translate('Greenland'),
-            'GTM' => /* I18N: Name of a country or state */
-                I18N::translate('Guatemala'),
-            'GUF' => /* I18N: Name of a country or state */
-                I18N::translate('French Guiana'),
-            'GUM' => /* I18N: Name of a country or state */
-                I18N::translate('Guam'),
-            'GUY' => /* I18N: Name of a country or state */
-                I18N::translate('Guyana'),
-            'HKG' => /* I18N: Name of a country or state */
-                I18N::translate('Hong Kong'),
-            'HMD' => /* I18N: Name of a country or state */
-                I18N::translate('Heard Island and McDonald Islands'),
-            'HND' => /* I18N: Name of a country or state */
-                I18N::translate('Honduras'),
-            'HRV' => /* I18N: Name of a country or state */
-                I18N::translate('Croatia'),
-            'HTI' => /* I18N: Name of a country or state */
-                I18N::translate('Haiti'),
-            'HUN' => /* I18N: Name of a country or state */
-                I18N::translate('Hungary'),
-            'IDN' => /* I18N: Name of a country or state */
-                I18N::translate('Indonesia'),
-            'IND' => /* I18N: Name of a country or state */
-                I18N::translate('India'),
-            'IOM' => /* I18N: Name of a country or state */
-                I18N::translate('Isle of Man'),
-            'IOT' => /* I18N: Name of a country or state */
-                I18N::translate('British Indian Ocean Territory'),
-            'IRL' => /* I18N: Name of a country or state */
-                I18N::translate('Ireland'),
-            'IRN' => /* I18N: Name of a country or state */
-                I18N::translate('Iran'),
-            'IRQ' => /* I18N: Name of a country or state */
-                I18N::translate('Iraq'),
-            'ISL' => /* I18N: Name of a country or state */
-                I18N::translate('Iceland'),
-            'ISR' => /* I18N: Name of a country or state */
-                I18N::translate('Israel'),
-            'ITA' => /* I18N: Name of a country or state */
-                I18N::translate('Italy'),
-            'JAM' => /* I18N: Name of a country or state */
-                I18N::translate('Jamaica'),
+            /* I18N: Name of a country or state */
+            'CXR' => I18N::translate('Christmas Island'),
+            /* I18N: Name of a country or state */
+            'CYM' => I18N::translate('Cayman Islands'),
+            /* I18N: Name of a country or state */
+            'CYP' => I18N::translate('Cyprus'),
+            /* I18N: Name of a country or state */
+            'CZE' => I18N::translate('Czech Republic'),
+            /* I18N: Name of a country or state */
+            'DEU' => I18N::translate('Germany'),
+            /* I18N: Name of a country or state */
+            'DJI' => I18N::translate('Djibouti'),
+            /* I18N: Name of a country or state */
+            'DMA' => I18N::translate('Dominica'),
+            /* I18N: Name of a country or state */
+            'DNK' => I18N::translate('Denmark'),
+            /* I18N: Name of a country or state */
+            'DOM' => I18N::translate('Dominican Republic'),
+            /* I18N: Name of a country or state */
+            'DZA' => I18N::translate('Algeria'),
+            /* I18N: Name of a country or state */
+            'ECU' => I18N::translate('Ecuador'),
+            /* I18N: Name of a country or state */
+            'EGY' => I18N::translate('Egypt'),
+            /* I18N: Name of a country or state */
+            'ENG' => I18N::translate('England'),
+            /* I18N: Name of a country or state */
+            'ERI' => I18N::translate('Eritrea'),
+            /* I18N: Name of a country or state */
+            'ESH' => I18N::translate('Western Sahara'),
+            /* I18N: Name of a country or state */
+            'ESP' => I18N::translate('Spain'),
+            /* I18N: Name of a country or state */
+            'EST' => I18N::translate('Estonia'),
+            /* I18N: Name of a country or state */
+            'ETH' => I18N::translate('Ethiopia'),
+            /* I18N: Name of a country or state */
+            'FIN' => I18N::translate('Finland'),
+            /* I18N: Name of a country or state */
+            'FJI' => I18N::translate('Fiji'),
+            /* I18N: Name of a country or state */
+            'FLD' => I18N::translate('Flanders'),
+            /* I18N: Name of a country or state */
+            'FLK' => I18N::translate('Falkland Islands'),
+            /* I18N: Name of a country or state */
+            'FRA' => I18N::translate('France'),
+            /* I18N: Name of a country or state */
+            'FRO' => I18N::translate('Faroe Islands'),
+            /* I18N: Name of a country or state */
+            'FSM' => I18N::translate('Micronesia'),
+            /* I18N: Name of a country or state */
+            'GAB' => I18N::translate('Gabon'),
+            /* I18N: Name of a country or state */
+            'GBR' => I18N::translate('United Kingdom'),
+            /* I18N: Name of a country or state */
+            'GEO' => I18N::translate('Georgia'),
+            /* I18N: Name of a country or state */
+            'GGY' => I18N::translate('Guernsey'),
+            /* I18N: Name of a country or state */
+            'GHA' => I18N::translate('Ghana'),
+            /* I18N: Name of a country or state */
+            'GIB' => I18N::translate('Gibraltar'),
+            /* I18N: Name of a country or state */
+            'GIN' => I18N::translate('Guinea'),
+            /* I18N: Name of a country or state */
+            'GLP' => I18N::translate('Guadeloupe'),
+            /* I18N: Name of a country or state */
+            'GMB' => I18N::translate('Gambia'),
+            /* I18N: Name of a country or state */
+            'GNB' => I18N::translate('Guinea-Bissau'),
+            /* I18N: Name of a country or state */
+            'GNQ' => I18N::translate('Equatorial Guinea'),
+            /* I18N: Name of a country or state */
+            'GRC' => I18N::translate('Greece'),
+            /* I18N: Name of a country or state */
+            'GRD' => I18N::translate('Grenada'),
+            /* I18N: Name of a country or state */
+            'GRL' => I18N::translate('Greenland'),
+            /* I18N: Name of a country or state */
+            'GTM' => I18N::translate('Guatemala'),
+            /* I18N: Name of a country or state */
+            'GUF' => I18N::translate('French Guiana'),
+            /* I18N: Name of a country or state */
+            'GUM' => I18N::translate('Guam'),
+            /* I18N: Name of a country or state */
+            'GUY' => I18N::translate('Guyana'),
+            /* I18N: Name of a country or state */
+            'HKG' => I18N::translate('Hong Kong'),
+            /* I18N: Name of a country or state */
+            'HMD' => I18N::translate('Heard Island and McDonald Islands'),
+            /* I18N: Name of a country or state */
+            'HND' => I18N::translate('Honduras'),
+            /* I18N: Name of a country or state */
+            'HRV' => I18N::translate('Croatia'),
+            /* I18N: Name of a country or state */
+            'HTI' => I18N::translate('Haiti'),
+            /* I18N: Name of a country or state */
+            'HUN' => I18N::translate('Hungary'),
+            /* I18N: Name of a country or state */
+            'IDN' => I18N::translate('Indonesia'),
+            /* I18N: Name of a country or state */
+            'IND' => I18N::translate('India'),
+            /* I18N: Name of a country or state */
+            'IOM' => I18N::translate('Isle of Man'),
+            /* I18N: Name of a country or state */
+            'IOT' => I18N::translate('British Indian Ocean Territory'),
+            /* I18N: Name of a country or state */
+            'IRL' => I18N::translate('Ireland'),
+            /* I18N: Name of a country or state */
+            'IRN' => I18N::translate('Iran'),
+            /* I18N: Name of a country or state */
+            'IRQ' => I18N::translate('Iraq'),
+            /* I18N: Name of a country or state */
+            'ISL' => I18N::translate('Iceland'),
+            /* I18N: Name of a country or state */
+            'ISR' => I18N::translate('Israel'),
+            /* I18N: Name of a country or state */
+            'ITA' => I18N::translate('Italy'),
+            /* I18N: Name of a country or state */
+            'JAM' => I18N::translate('Jamaica'),
             //'JEY' => Jersey
-            'JOR' => /* I18N: Name of a country or state */
-                I18N::translate('Jordan'),
-            'JPN' => /* I18N: Name of a country or state */
-                I18N::translate('Japan'),
-            'KAZ' => /* I18N: Name of a country or state */
-                I18N::translate('Kazakhstan'),
-            'KEN' => /* I18N: Name of a country or state */
-                I18N::translate('Kenya'),
-            'KGZ' => /* I18N: Name of a country or state */
-                I18N::translate('Kyrgyzstan'),
-            'KHM' => /* I18N: Name of a country or state */
-                I18N::translate('Cambodia'),
-            'KIR' => /* I18N: Name of a country or state */
-                I18N::translate('Kiribati'),
-            'KNA' => /* I18N: Name of a country or state */
-                I18N::translate('Saint Kitts and Nevis'),
-            'KOR' => /* I18N: Name of a country or state */
-                I18N::translate('Korea'),
-            'KWT' => /* I18N: Name of a country or state */
-                I18N::translate('Kuwait'),
-            'LAO' => /* I18N: Name of a country or state */
-                I18N::translate('Laos'),
-            'LBN' => /* I18N: Name of a country or state */
-                I18N::translate('Lebanon'),
-            'LBR' => /* I18N: Name of a country or state */
-                I18N::translate('Liberia'),
-            'LBY' => /* I18N: Name of a country or state */
-                I18N::translate('Libya'),
-            'LCA' => /* I18N: Name of a country or state */
-                I18N::translate('Saint Lucia'),
-            'LIE' => /* I18N: Name of a country or state */
-                I18N::translate('Liechtenstein'),
-            'LKA' => /* I18N: Name of a country or state */
-                I18N::translate('Sri Lanka'),
-            'LSO' => /* I18N: Name of a country or state */
-                I18N::translate('Lesotho'),
-            'LTU' => /* I18N: Name of a country or state */
-                I18N::translate('Lithuania'),
-            'LUX' => /* I18N: Name of a country or state */
-                I18N::translate('Luxembourg'),
-            'LVA' => /* I18N: Name of a country or state */
-                I18N::translate('Latvia'),
-            'MAC' => /* I18N: Name of a country or state */
-                I18N::translate('Macau'),
+            /* I18N: Name of a country or state */
+            'JOR' => I18N::translate('Jordan'),
+            /* I18N: Name of a country or state */
+            'JPN' => I18N::translate('Japan'),
+            /* I18N: Name of a country or state */
+            'KAZ' => I18N::translate('Kazakhstan'),
+            /* I18N: Name of a country or state */
+            'KEN' => I18N::translate('Kenya'),
+            /* I18N: Name of a country or state */
+            'KGZ' => I18N::translate('Kyrgyzstan'),
+            /* I18N: Name of a country or state */
+            'KHM' => I18N::translate('Cambodia'),
+            /* I18N: Name of a country or state */
+            'KIR' => I18N::translate('Kiribati'),
+            /* I18N: Name of a country or state */
+            'KNA' => I18N::translate('Saint Kitts and Nevis'),
+            /* I18N: Name of a country or state */
+            'KOR' => I18N::translate('Korea'),
+            /* I18N: Name of a country or state */
+            'KWT' => I18N::translate('Kuwait'),
+            /* I18N: Name of a country or state */
+            'LAO' => I18N::translate('Laos'),
+            /* I18N: Name of a country or state */
+            'LBN' => I18N::translate('Lebanon'),
+            /* I18N: Name of a country or state */
+            'LBR' => I18N::translate('Liberia'),
+            /* I18N: Name of a country or state */
+            'LBY' => I18N::translate('Libya'),
+            /* I18N: Name of a country or state */
+            'LCA' => I18N::translate('Saint Lucia'),
+            /* I18N: Name of a country or state */
+            'LIE' => I18N::translate('Liechtenstein'),
+            /* I18N: Name of a country or state */
+            'LKA' => I18N::translate('Sri Lanka'),
+            /* I18N: Name of a country or state */
+            'LSO' => I18N::translate('Lesotho'),
+            /* I18N: Name of a country or state */
+            'LTU' => I18N::translate('Lithuania'),
+            /* I18N: Name of a country or state */
+            'LUX' => I18N::translate('Luxembourg'),
+            /* I18N: Name of a country or state */
+            'LVA' => I18N::translate('Latvia'),
+            /* I18N: Name of a country or state */
+            'MAC' => I18N::translate('Macau'),
             // MAF => Saint Martin
-            'MAR' => /* I18N: Name of a country or state */
-                I18N::translate('Morocco'),
-            'MCO' => /* I18N: Name of a country or state */
-                I18N::translate('Monaco'),
-            'MDA' => /* I18N: Name of a country or state */
-                I18N::translate('Moldova'),
-            'MDG' => /* I18N: Name of a country or state */
-                I18N::translate('Madagascar'),
-            'MDV' => /* I18N: Name of a country or state */
-                I18N::translate('Maldives'),
-            'MEX' => /* I18N: Name of a country or state */
-                I18N::translate('Mexico'),
-            'MHL' => /* I18N: Name of a country or state */
-                I18N::translate('Marshall Islands'),
-            'MKD' => /* I18N: Name of a country or state */
-                I18N::translate('Macedonia'),
-            'MLI' => /* I18N: Name of a country or state */
-                I18N::translate('Mali'),
-            'MLT' => /* I18N: Name of a country or state */
-                I18N::translate('Malta'),
-            'MMR' => /* I18N: Name of a country or state */
-                I18N::translate('Myanmar'),
-            'MNG' => /* I18N: Name of a country or state */
-                I18N::translate('Mongolia'),
-            'MNP' => /* I18N: Name of a country or state */
-                I18N::translate('Northern Mariana Islands'),
-            'MNT' => /* I18N: Name of a country or state */
-                I18N::translate('Montenegro'),
-            'MOZ' => /* I18N: Name of a country or state */
-                I18N::translate('Mozambique'),
-            'MRT' => /* I18N: Name of a country or state */
-                I18N::translate('Mauritania'),
-            'MSR' => /* I18N: Name of a country or state */
-                I18N::translate('Montserrat'),
-            'MTQ' => /* I18N: Name of a country or state */
-                I18N::translate('Martinique'),
-            'MUS' => /* I18N: Name of a country or state */
-                I18N::translate('Mauritius'),
-            'MWI' => /* I18N: Name of a country or state */
-                I18N::translate('Malawi'),
-            'MYS' => /* I18N: Name of a country or state */
-                I18N::translate('Malaysia'),
-            'MYT' => /* I18N: Name of a country or state */
-                I18N::translate('Mayotte'),
-            'NAM' => /* I18N: Name of a country or state */
-                I18N::translate('Namibia'),
-            'NCL' => /* I18N: Name of a country or state */
-                I18N::translate('New Caledonia'),
-            'NER' => /* I18N: Name of a country or state */
-                I18N::translate('Niger'),
-            'NFK' => /* I18N: Name of a country or state */
-                I18N::translate('Norfolk Island'),
-            'NGA' => /* I18N: Name of a country or state */
-                I18N::translate('Nigeria'),
-            'NIC' => /* I18N: Name of a country or state */
-                I18N::translate('Nicaragua'),
-            'NIR' => /* I18N: Name of a country or state */
-                I18N::translate('Northern Ireland'),
-            'NIU' => /* I18N: Name of a country or state */
-                I18N::translate('Niue'),
-            'NLD' => /* I18N: Name of a country or state */
-                I18N::translate('Netherlands'),
-            'NOR' => /* I18N: Name of a country or state */
-                I18N::translate('Norway'),
-            'NPL' => /* I18N: Name of a country or state */
-                I18N::translate('Nepal'),
-            'NRU' => /* I18N: Name of a country or state */
-                I18N::translate('Nauru'),
-            'NZL' => /* I18N: Name of a country or state */
-                I18N::translate('New Zealand'),
-            'OMN' => /* I18N: Name of a country or state */
-                I18N::translate('Oman'),
-            'PAK' => /* I18N: Name of a country or state */
-                I18N::translate('Pakistan'),
-            'PAN' => /* I18N: Name of a country or state */
-                I18N::translate('Panama'),
-            'PCN' => /* I18N: Name of a country or state */
-                I18N::translate('Pitcairn'),
-            'PER' => /* I18N: Name of a country or state */
-                I18N::translate('Peru'),
-            'PHL' => /* I18N: Name of a country or state */
-                I18N::translate('Philippines'),
-            'PLW' => /* I18N: Name of a country or state */
-                I18N::translate('Palau'),
-            'PNG' => /* I18N: Name of a country or state */
-                I18N::translate('Papua New Guinea'),
-            'POL' => /* I18N: Name of a country or state */
-                I18N::translate('Poland'),
-            'PRI' => /* I18N: Name of a country or state */
-                I18N::translate('Puerto Rico'),
-            'PRK' => /* I18N: Name of a country or state */
-                I18N::translate('North Korea'),
-            'PRT' => /* I18N: Name of a country or state */
-                I18N::translate('Portugal'),
-            'PRY' => /* I18N: Name of a country or state */
-                I18N::translate('Paraguay'),
-            'PSE' => /* I18N: Name of a country or state */
-                I18N::translate('Occupied Palestinian Territory'),
-            'PYF' => /* I18N: Name of a country or state */
-                I18N::translate('French Polynesia'),
-            'QAT' => /* I18N: Name of a country or state */
-                I18N::translate('Qatar'),
-            'REU' => /* I18N: Name of a country or state */
-                I18N::translate('Reunion'),
-            'ROM' => /* I18N: Name of a country or state */
-                I18N::translate('Romania'),
-            'RUS' => /* I18N: Name of a country or state */
-                I18N::translate('Russia'),
-            'RWA' => /* I18N: Name of a country or state */
-                I18N::translate('Rwanda'),
-            'SAU' => /* I18N: Name of a country or state */
-                I18N::translate('Saudi Arabia'),
-            'SCT' => /* I18N: Name of a country or state */
-                I18N::translate('Scotland'),
-            'SDN' => /* I18N: Name of a country or state */
-                I18N::translate('Sudan'),
-            'SEA' => /* I18N: Name of a country or state */
-                I18N::translate('At sea'),
-            'SEN' => /* I18N: Name of a country or state */
-                I18N::translate('Senegal'),
-            'SER' => /* I18N: Name of a country or state */
-                I18N::translate('Serbia'),
-            'SGP' => /* I18N: Name of a country or state */
-                I18N::translate('Singapore'),
-            'SGS' => /* I18N: Name of a country or state */
-                I18N::translate('South Georgia and the South Sandwich Islands'),
-            'SHN' => /* I18N: Name of a country or state */
-                I18N::translate('Saint Helena'),
-            'SJM' => /* I18N: Name of a country or state */
-                I18N::translate('Svalbard and Jan Mayen'),
-            'SLB' => /* I18N: Name of a country or state */
-                I18N::translate('Solomon Islands'),
-            'SLE' => /* I18N: Name of a country or state */
-                I18N::translate('Sierra Leone'),
-            'SLV' => /* I18N: Name of a country or state */
-                I18N::translate('El Salvador'),
-            'SMR' => /* I18N: Name of a country or state */
-                I18N::translate('San Marino'),
-            'SOM' => /* I18N: Name of a country or state */
-                I18N::translate('Somalia'),
-            'SPM' => /* I18N: Name of a country or state */
-                I18N::translate('Saint Pierre and Miquelon'),
-            'SSD' => /* I18N: Name of a country or state */
-                I18N::translate('South Sudan'),
-            'STP' => /* I18N: Name of a country or state */
-                I18N::translate('Sao Tome and Principe'),
-            'SUR' => /* I18N: Name of a country or state */
-                I18N::translate('Suriname'),
-            'SVK' => /* I18N: Name of a country or state */
-                I18N::translate('Slovakia'),
-            'SVN' => /* I18N: Name of a country or state */
-                I18N::translate('Slovenia'),
-            'SWE' => /* I18N: Name of a country or state */
-                I18N::translate('Sweden'),
-            'SWZ' => /* I18N: Name of a country or state */
-                I18N::translate('Swaziland'),
+            /* I18N: Name of a country or state */
+            'MAR' => I18N::translate('Morocco'),
+            /* I18N: Name of a country or state */
+            'MCO' => I18N::translate('Monaco'),
+            /* I18N: Name of a country or state */
+            'MDA' => I18N::translate('Moldova'),
+            /* I18N: Name of a country or state */
+            'MDG' => I18N::translate('Madagascar'),
+            /* I18N: Name of a country or state */
+            'MDV' => I18N::translate('Maldives'),
+            /* I18N: Name of a country or state */
+            'MEX' => I18N::translate('Mexico'),
+            /* I18N: Name of a country or state */
+            'MHL' => I18N::translate('Marshall Islands'),
+            /* I18N: Name of a country or state */
+            'MKD' => I18N::translate('Macedonia'),
+            /* I18N: Name of a country or state */
+            'MLI' => I18N::translate('Mali'),
+            /* I18N: Name of a country or state */
+            'MLT' => I18N::translate('Malta'),
+            /* I18N: Name of a country or state */
+            'MMR' => I18N::translate('Myanmar'),
+            /* I18N: Name of a country or state */
+            'MNG' => I18N::translate('Mongolia'),
+            /* I18N: Name of a country or state */
+            'MNP' => I18N::translate('Northern Mariana Islands'),
+            /* I18N: Name of a country or state */
+            'MNT' => I18N::translate('Montenegro'),
+            /* I18N: Name of a country or state */
+            'MOZ' => I18N::translate('Mozambique'),
+            /* I18N: Name of a country or state */
+            'MRT' => I18N::translate('Mauritania'),
+            /* I18N: Name of a country or state */
+            'MSR' => I18N::translate('Montserrat'),
+            /* I18N: Name of a country or state */
+            'MTQ' => I18N::translate('Martinique'),
+            /* I18N: Name of a country or state */
+            'MUS' => I18N::translate('Mauritius'),
+            /* I18N: Name of a country or state */
+            'MWI' => I18N::translate('Malawi'),
+            /* I18N: Name of a country or state */
+            'MYS' => I18N::translate('Malaysia'),
+            /* I18N: Name of a country or state */
+            'MYT' => I18N::translate('Mayotte'),
+            /* I18N: Name of a country or state */
+            'NAM' => I18N::translate('Namibia'),
+            /* I18N: Name of a country or state */
+            'NCL' => I18N::translate('New Caledonia'),
+            /* I18N: Name of a country or state */
+            'NER' => I18N::translate('Niger'),
+            /* I18N: Name of a country or state */
+            'NFK' => I18N::translate('Norfolk Island'),
+            /* I18N: Name of a country or state */
+            'NGA' => I18N::translate('Nigeria'),
+            /* I18N: Name of a country or state */
+            'NIC' => I18N::translate('Nicaragua'),
+            /* I18N: Name of a country or state */
+            'NIR' => I18N::translate('Northern Ireland'),
+            /* I18N: Name of a country or state */
+            'NIU' => I18N::translate('Niue'),
+            /* I18N: Name of a country or state */
+            'NLD' => I18N::translate('Netherlands'),
+            /* I18N: Name of a country or state */
+            'NOR' => I18N::translate('Norway'),
+            /* I18N: Name of a country or state */
+            'NPL' => I18N::translate('Nepal'),
+            /* I18N: Name of a country or state */
+            'NRU' => I18N::translate('Nauru'),
+            /* I18N: Name of a country or state */
+            'NZL' => I18N::translate('New Zealand'),
+            /* I18N: Name of a country or state */
+            'OMN' => I18N::translate('Oman'),
+            /* I18N: Name of a country or state */
+            'PAK' => I18N::translate('Pakistan'),
+            /* I18N: Name of a country or state */
+            'PAN' => I18N::translate('Panama'),
+            /* I18N: Name of a country or state */
+            'PCN' => I18N::translate('Pitcairn'),
+            /* I18N: Name of a country or state */
+            'PER' => I18N::translate('Peru'),
+            /* I18N: Name of a country or state */
+            'PHL' => I18N::translate('Philippines'),
+            /* I18N: Name of a country or state */
+            'PLW' => I18N::translate('Palau'),
+            /* I18N: Name of a country or state */
+            'PNG' => I18N::translate('Papua New Guinea'),
+            /* I18N: Name of a country or state */
+            'POL' => I18N::translate('Poland'),
+            /* I18N: Name of a country or state */
+            'PRI' => I18N::translate('Puerto Rico'),
+            /* I18N: Name of a country or state */
+            'PRK' => I18N::translate('North Korea'),
+            /* I18N: Name of a country or state */
+            'PRT' => I18N::translate('Portugal'),
+            /* I18N: Name of a country or state */
+            'PRY' => I18N::translate('Paraguay'),
+            /* I18N: Name of a country or state */
+            'PSE' => I18N::translate('Occupied Palestinian Territory'),
+            /* I18N: Name of a country or state */
+            'PYF' => I18N::translate('French Polynesia'),
+            /* I18N: Name of a country or state */
+            'QAT' => I18N::translate('Qatar'),
+            /* I18N: Name of a country or state */
+            'REU' => I18N::translate('Reunion'),
+            /* I18N: Name of a country or state */
+            'ROM' => I18N::translate('Romania'),
+            /* I18N: Name of a country or state */
+            'RUS' => I18N::translate('Russia'),
+            /* I18N: Name of a country or state */
+            'RWA' => I18N::translate('Rwanda'),
+            /* I18N: Name of a country or state */
+            'SAU' => I18N::translate('Saudi Arabia'),
+            /* I18N: Name of a country or state */
+            'SCT' => I18N::translate('Scotland'),
+            /* I18N: Name of a country or state */
+            'SDN' => I18N::translate('Sudan'),
+            /* I18N: Name of a country or state */
+            'SEA' => I18N::translate('At sea'),
+            /* I18N: Name of a country or state */
+            'SEN' => I18N::translate('Senegal'),
+            /* I18N: Name of a country or state */
+            'SER' => I18N::translate('Serbia'),
+            /* I18N: Name of a country or state */
+            'SGP' => I18N::translate('Singapore'),
+            /* I18N: Name of a country or state */
+            'SGS' => I18N::translate('South Georgia and the South Sandwich Islands'),
+            /* I18N: Name of a country or state */
+            'SHN' => I18N::translate('Saint Helena'),
+            /* I18N: Name of a country or state */
+            'SJM' => I18N::translate('Svalbard and Jan Mayen'),
+            /* I18N: Name of a country or state */
+            'SLB' => I18N::translate('Solomon Islands'),
+            /* I18N: Name of a country or state */
+            'SLE' => I18N::translate('Sierra Leone'),
+            /* I18N: Name of a country or state */
+            'SLV' => I18N::translate('El Salvador'),
+            /* I18N: Name of a country or state */
+            'SMR' => I18N::translate('San Marino'),
+            /* I18N: Name of a country or state */
+            'SOM' => I18N::translate('Somalia'),
+            /* I18N: Name of a country or state */
+            'SPM' => I18N::translate('Saint Pierre and Miquelon'),
+            /* I18N: Name of a country or state */
+            'SSD' => I18N::translate('South Sudan'),
+            /* I18N: Name of a country or state */
+            'STP' => I18N::translate('Sao Tome and Principe'),
+            /* I18N: Name of a country or state */
+            'SUR' => I18N::translate('Suriname'),
+            /* I18N: Name of a country or state */
+            'SVK' => I18N::translate('Slovakia'),
+            /* I18N: Name of a country or state */
+            'SVN' => I18N::translate('Slovenia'),
+            /* I18N: Name of a country or state */
+            'SWE' => I18N::translate('Sweden'),
+            /* I18N: Name of a country or state */
+            'SWZ' => I18N::translate('Swaziland'),
             // SXM => Sint Maarten
-            'SYC' => /* I18N: Name of a country or state */
-                I18N::translate('Seychelles'),
-            'SYR' => /* I18N: Name of a country or state */
-                I18N::translate('Syria'),
-            'TCA' => /* I18N: Name of a country or state */
-                I18N::translate('Turks and Caicos Islands'),
-            'TCD' => /* I18N: Name of a country or state */
-                I18N::translate('Chad'),
-            'TGO' => /* I18N: Name of a country or state */
-                I18N::translate('Togo'),
-            'THA' => /* I18N: Name of a country or state */
-                I18N::translate('Thailand'),
-            'TJK' => /* I18N: Name of a country or state */
-                I18N::translate('Tajikistan'),
-            'TKL' => /* I18N: Name of a country or state */
-                I18N::translate('Tokelau'),
-            'TKM' => /* I18N: Name of a country or state */
-                I18N::translate('Turkmenistan'),
-            'TLS' => /* I18N: Name of a country or state */
-                I18N::translate('Timor-Leste'),
-            'TON' => /* I18N: Name of a country or state */
-                I18N::translate('Tonga'),
-            'TTO' => /* I18N: Name of a country or state */
-                I18N::translate('Trinidad and Tobago'),
-            'TUN' => /* I18N: Name of a country or state */
-                I18N::translate('Tunisia'),
-            'TUR' => /* I18N: Name of a country or state */
-                I18N::translate('Turkey'),
-            'TUV' => /* I18N: Name of a country or state */
-                I18N::translate('Tuvalu'),
-            'TWN' => /* I18N: Name of a country or state */
-                I18N::translate('Taiwan'),
-            'TZA' => /* I18N: Name of a country or state */
-                I18N::translate('Tanzania'),
-            'UGA' => /* I18N: Name of a country or state */
-                I18N::translate('Uganda'),
-            'UKR' => /* I18N: Name of a country or state */
-                I18N::translate('Ukraine'),
-            'UMI' => /* I18N: Name of a country or state */
-                I18N::translate('US Minor Outlying Islands'),
-            'URY' => /* I18N: Name of a country or state */
-                I18N::translate('Uruguay'),
-            'USA' => /* I18N: Name of a country or state */
-                I18N::translate('United States'),
-            'UZB' => /* I18N: Name of a country or state */
-                I18N::translate('Uzbekistan'),
-            'VAT' => /* I18N: Name of a country or state */
-                I18N::translate('Vatican City'),
-            'VCT' => /* I18N: Name of a country or state */
-                I18N::translate('Saint Vincent and the Grenadines'),
-            'VEN' => /* I18N: Name of a country or state */
-                I18N::translate('Venezuela'),
-            'VGB' => /* I18N: Name of a country or state */
-                I18N::translate('British Virgin Islands'),
-            'VIR' => /* I18N: Name of a country or state */
-                I18N::translate('US Virgin Islands'),
-            'VNM' => /* I18N: Name of a country or state */
-                I18N::translate('Vietnam'),
-            'VUT' => /* I18N: Name of a country or state */
-                I18N::translate('Vanuatu'),
-            'WLF' => /* I18N: Name of a country or state */
-                I18N::translate('Wallis and Futuna'),
-            'WLS' => /* I18N: Name of a country or state */
-                I18N::translate('Wales'),
-            'WSM' => /* I18N: Name of a country or state */
-                I18N::translate('Samoa'),
-            'YEM' => /* I18N: Name of a country or state */
-                I18N::translate('Yemen'),
-            'ZAF' => /* I18N: Name of a country or state */
-                I18N::translate('South Africa'),
-            'ZMB' => /* I18N: Name of a country or state */
-                I18N::translate('Zambia'),
-            'ZWE' => /* I18N: Name of a country or state */
-                I18N::translate('Zimbabwe'),
+            /* I18N: Name of a country or state */
+            'SYC' => I18N::translate('Seychelles'),
+            /* I18N: Name of a country or state */
+            'SYR' => I18N::translate('Syria'),
+            /* I18N: Name of a country or state */
+            'TCA' => I18N::translate('Turks and Caicos Islands'),
+            /* I18N: Name of a country or state */
+            'TCD' => I18N::translate('Chad'),
+            /* I18N: Name of a country or state */
+            'TGO' => I18N::translate('Togo'),
+            /* I18N: Name of a country or state */
+            'THA' => I18N::translate('Thailand'),
+            /* I18N: Name of a country or state */
+            'TJK' => I18N::translate('Tajikistan'),
+            /* I18N: Name of a country or state */
+            'TKL' => I18N::translate('Tokelau'),
+            /* I18N: Name of a country or state */
+            'TKM' => I18N::translate('Turkmenistan'),
+            /* I18N: Name of a country or state */
+            'TLS' => I18N::translate('Timor-Leste'),
+            /* I18N: Name of a country or state */
+            'TON' => I18N::translate('Tonga'),
+            /* I18N: Name of a country or state */
+            'TTO' => I18N::translate('Trinidad and Tobago'),
+            /* I18N: Name of a country or state */
+            'TUN' => I18N::translate('Tunisia'),
+            /* I18N: Name of a country or state */
+            'TUR' => I18N::translate('Turkey'),
+            /* I18N: Name of a country or state */
+            'TUV' => I18N::translate('Tuvalu'),
+            /* I18N: Name of a country or state */
+            'TWN' => I18N::translate('Taiwan'),
+            /* I18N: Name of a country or state */
+            'TZA' => I18N::translate('Tanzania'),
+            /* I18N: Name of a country or state */
+            'UGA' => I18N::translate('Uganda'),
+            /* I18N: Name of a country or state */
+            'UKR' => I18N::translate('Ukraine'),
+            /* I18N: Name of a country or state */
+            'UMI' => I18N::translate('US Minor Outlying Islands'),
+            /* I18N: Name of a country or state */
+            'URY' => I18N::translate('Uruguay'),
+            /* I18N: Name of a country or state */
+            'USA' => I18N::translate('United States'),
+            /* I18N: Name of a country or state */
+            'UZB' => I18N::translate('Uzbekistan'),
+            /* I18N: Name of a country or state */
+            'VAT' => I18N::translate('Vatican City'),
+            /* I18N: Name of a country or state */
+            'VCT' => I18N::translate('Saint Vincent and the Grenadines'),
+            /* I18N: Name of a country or state */
+            'VEN' => I18N::translate('Venezuela'),
+            /* I18N: Name of a country or state */
+            'VGB' => I18N::translate('British Virgin Islands'),
+            /* I18N: Name of a country or state */
+            'VIR' => I18N::translate('US Virgin Islands'),
+            /* I18N: Name of a country or state */
+            'VNM' => I18N::translate('Vietnam'),
+            /* I18N: Name of a country or state */
+            'VUT' => I18N::translate('Vanuatu'),
+            /* I18N: Name of a country or state */
+            'WLF' => I18N::translate('Wallis and Futuna'),
+            /* I18N: Name of a country or state */
+            'WLS' => I18N::translate('Wales'),
+            /* I18N: Name of a country or state */
+            'WSM' => I18N::translate('Samoa'),
+            /* I18N: Name of a country or state */
+            'YEM' => I18N::translate('Yemen'),
+            /* I18N: Name of a country or state */
+            'ZAF' => I18N::translate('South Africa'),
+            /* I18N: Name of a country or state */
+            'ZMB' => I18N::translate('Zambia'),
+            /* I18N: Name of a country or state */
+            'ZWE' => I18N::translate('Zimbabwe'),
         ];
     }
 
@@ -7969,8 +7969,9 @@ class Stats
     private function centuryName($century)
     {
         if ($century < 0) {
-            return str_replace(-$century, self::centuryName(-$century), /* I18N: BCE=Before the Common Era, for Julian years < 0. See http://en.wikipedia.org/wiki/Common_Era */
-                I18N::translate('%s BCE', I18N::number(-$century)));
+
+            /* I18N: BCE=Before the Common Era, for Julian years < 0. See http://en.wikipedia.org/wiki/Common_Era */
+            return str_replace(-$century, self::centuryName(-$century), I18N::translate('%s BCE', I18N::number(-$century)));
         }
         // The current chart engine (Google charts) can't handle <sup></sup> markup
         switch ($century) {

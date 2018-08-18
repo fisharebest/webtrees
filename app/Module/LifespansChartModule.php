@@ -32,8 +32,8 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
      */
     public function getTitle()
     {
-        return /* I18N: Name of a module/chart */
-            I18N::translate('Lifespans');
+        /* I18N: Name of a module/chart */
+        return I18N::translate('Lifespans');
     }
 
     /**
@@ -43,8 +43,8 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
      */
     public function getDescription()
     {
-        return /* I18N: Description of the “LifespansChart” module */
-            I18N::translate('A chart of individuals’ lifespans.');
+        /* I18N: Description of the “LifespansChart” module */
+        return I18N::translate('A chart of individuals’ lifespans.');
     }
 
     /**

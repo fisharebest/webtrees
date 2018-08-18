@@ -758,16 +758,16 @@ class StatisticsChartController extends AbstractChartController
         $axis = [];
         foreach ($boundaries as $n => $boundary) {
             if ($n === 0) {
-                $axis[$boundary - 1] = /* I18N: A range of numbers */
-                    I18N::translate('%1$s–%2$s', I18N::number(0), I18N::number($boundary));
+                /* I18N: A range of numbers */
+                $axis[$boundary - 1] = I18N::translate('%1$s–%2$s', I18N::number(0), I18N::number($boundary));
             } else {
-                $axis[$boundary - 1] = /* I18N: A range of numbers */
-                    I18N::translate('%1$s–%2$s', I18N::number($boundaries[$n - 1]), I18N::number($boundary));
+                /* I18N: A range of numbers */
+                $axis[$boundary - 1] = I18N::translate('%1$s–%2$s', I18N::number($boundaries[$n - 1]), I18N::number($boundary));
             }
         }
 
-        $axis[PHP_INT_MAX] = /* I18N: Label on a graph; 40+ means 40 or more */
-            I18N::translate('%s+', I18N::number($boundaries[count($boundaries) - 1]));
+        /* I18N: Label on a graph; 40+ means 40 or more */
+        $axis[PHP_INT_MAX] = I18N::translate('%s+', I18N::number($boundaries[count($boundaries) - 1]));
 
         return $axis;
     }

@@ -29,16 +29,16 @@ class DeathReportModule extends AbstractModule implements ModuleReportInterface
     public function getTitle()
     {
         // This text also appears in the .XML file - update both together
-        return /* I18N: Name of a module/report */
-            I18N::translate('Deaths');
+        /* I18N: Name of a module/report */
+        return I18N::translate('Deaths');
     }
 
     /** {@inheritdoc} */
     public function getDescription()
     {
         // This text also appears in the .XML file - update both together
-        return /* I18N: Description of the “Deaths” module */
-            I18N::translate('A report of individuals who died in a given time or place.');
+        /* I18N: Description of the “Deaths” module */
+        return I18N::translate('A report of individuals who died in a given time or place.');
     }
 
     /**

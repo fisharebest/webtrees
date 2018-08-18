@@ -65,15 +65,15 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
     /** {@inheritdoc} */
     public function getTitle()
     {
-        return /* I18N: Name of a module */
-            I18N::translate('Clippings cart');
+        /* I18N: Name of a module */
+        return I18N::translate('Clippings cart');
     }
 
     /** {@inheritdoc} */
     public function getDescription()
     {
-        return /* I18N: Description of the “Clippings cart” module */
-            I18N::translate('Select records from your family tree and save them as a GEDCOM file.');
+        /* I18N: Description of the “Clippings cart” module */
+        return I18N::translate('Select records from your family tree and save them as a GEDCOM file.');
     }
 
     /**
@@ -418,10 +418,10 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
 
         return [
             'parents'     => $name,
-            'members'     => /* I18N: %s is a family (husband + wife) */
-                I18N::translate('%s and their children', $name),
-            'descendants' => /* I18N: %s is a family (husband + wife) */
-                I18N::translate('%s and their descendants', $name),
+            /* I18N: %s is a family (husband + wife) */
+            'members'     => I18N::translate('%s and their children', $name),
+            /* I18N: %s is a family (husband + wife) */
+            'descendants' => I18N::translate('%s and their descendants', $name),
         ];
     }
 

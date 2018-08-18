@@ -158,8 +158,8 @@ class AccountController extends AbstractBaseController
     private function themeNames(): array
     {
         $default_option = [
-            '' => /* I18N: default option in list of themes */
-                I18N::translate('<default theme>'),
+            /* I18N: default option in list of themes */
+            '' => I18N::translate('<default theme>'),
         ];
 
         return $default_option + Theme::themeNames();

@@ -28,15 +28,15 @@ class LoginBlockModule extends AbstractModule implements ModuleBlockInterface
     /** {@inheritdoc} */
     public function getTitle()
     {
-        return /* I18N: Name of a module */
-            I18N::translate('Sign in');
+        /* I18N: Name of a module */
+        return I18N::translate('Sign in');
     }
 
     /** {@inheritdoc} */
     public function getDescription()
     {
-        return /* I18N: Description of the “Sign in” module */
-            I18N::translate('An alternative way to sign in and sign out.');
+        /* I18N: Description of the “Sign in” module */
+        return I18N::translate('An alternative way to sign in and sign out.');
     }
 
     /**

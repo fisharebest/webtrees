@@ -85,9 +85,8 @@ class FamilyBookChartController extends AbstractChartController
         $book_size = min($book_size, 5);
         $book_size = max($book_size, 2);
 
-        $title
-            = /* I18N: %s is an individual’s name */
-            I18N::translate('Family book of %s', $individual->getFullName());
+        /* I18N: %s is an individual’s name */
+        $title = I18N::translate('Family book of %s', $individual->getFullName());
 
         return $this->viewResponse('family-book-page', [
             'book_size'           => $book_size,
@@ -449,7 +448,7 @@ class FamilyBookChartController extends AbstractChartController
         if (1 || !empty($families)) {
             echo
             '<h3>',
-                /* I18N: %s is an individual’s name */
+            /* I18N: %s is an individual’s name */
             I18N::translate('Family of %s', $person->getFullName()),
             '</h3>',
             '<table cellspacing="0" cellpadding="0" border="0" ><tr><td class="align-middle">';

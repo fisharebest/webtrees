@@ -72,8 +72,8 @@ class FanChartController extends AbstractChartController
         $generations = min($generations, self::MAXIMUM_GENERATIONS);
         $generations = max($generations, self::MINIMUM_GENERATIONS);
 
-        $title = /* I18N: http://en.wikipedia.org/wiki/Family_tree#Fan_chart - %s is an individual’s name */
-            I18N::translate('Fan chart of %s', $individual->getFullName());
+        /* I18N: http://en.wikipedia.org/wiki/Family_tree#Fan_chart - %s is an individual’s name */
+        $title = I18N::translate('Fan chart of %s', $individual->getFullName());
 
         return $this->viewResponse('fan-page', [
             'chart_style'         => $chart_style,
@@ -309,8 +309,8 @@ class FanChartController extends AbstractChartController
         imagedestroy($image);
         $png = ob_get_clean();
 
-        $title = /* I18N: http://en.wikipedia.org/wiki/Family_tree#Fan_chart - %s is an individual’s name */
-            I18N::translate('Fan chart of %s', $individual->getFullName());
+        /* I18N: http://en.wikipedia.org/wiki/Family_tree#Fan_chart - %s is an individual’s name */
+        $title = I18N::translate('Fan chart of %s', $individual->getFullName());
 
         return new Response(view('fan-chart', [
             'fanh'  => $fanh,
@@ -423,12 +423,12 @@ class FanChartController extends AbstractChartController
     private function chartStyles(): array
     {
         return [
-            self::STYLE_HALF_CIRCLE          => /* I18N: layout option for the fan chart */
-                I18N::translate('half circle'),
-            self::STYLE_THREE_QUARTER_CIRCLE => /* I18N: layout option for the fan chart */
-                I18N::translate('three-quarter circle'),
-            self::STYLE_FULL_CIRCLE          => /* I18N: layout option for the fan chart */
-                I18N::translate('full circle'),
+            /* I18N: layout option for the fan chart */
+            self::STYLE_HALF_CIRCLE          => I18N::translate('half circle'),
+            /* I18N: layout option for the fan chart */
+            self::STYLE_THREE_QUARTER_CIRCLE => I18N::translate('three-quarter circle'),
+            /* I18N: layout option for the fan chart */
+            self::STYLE_FULL_CIRCLE          => I18N::translate('full circle'),
         ];
     }
 }

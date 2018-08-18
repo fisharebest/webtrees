@@ -115,34 +115,34 @@ class JewishDate extends CalendarDate
         if ($translated_month_names === null) {
             $translated_month_names = [
                 0  => '',
-                1  => /* I18N: a month in the Jewish calendar */
-                    I18N::translateContext('NOMINATIVE', 'Tishrei'),
-                2  => /* I18N: a month in the Jewish calendar */
-                    I18N::translateContext('NOMINATIVE', 'Heshvan'),
-                3  => /* I18N: a month in the Jewish calendar */
-                    I18N::translateContext('NOMINATIVE', 'Kislev'),
-                4  => /* I18N: a month in the Jewish calendar */
-                    I18N::translateContext('NOMINATIVE', 'Tevet'),
-                5  => /* I18N: a month in the Jewish calendar */
-                    I18N::translateContext('NOMINATIVE', 'Shevat'),
-                6  => /* I18N: a month in the Jewish calendar */
-                    I18N::translateContext('NOMINATIVE', 'Adar I'),
-                7  => /* I18N: a month in the Jewish calendar */
-                    I18N::translateContext('NOMINATIVE', 'Adar'),
-                -7 => /* I18N: a month in the Jewish calendar */
-                    I18N::translateContext('NOMINATIVE', 'Adar II'),
-                8  => /* I18N: a month in the Jewish calendar */
-                    I18N::translateContext('NOMINATIVE', 'Nissan'),
-                9  => /* I18N: a month in the Jewish calendar */
-                    I18N::translateContext('NOMINATIVE', 'Iyar'),
-                10 => /* I18N: a month in the Jewish calendar */
-                    I18N::translateContext('NOMINATIVE', 'Sivan'),
-                11 => /* I18N: a month in the Jewish calendar */
-                    I18N::translateContext('NOMINATIVE', 'Tamuz'),
-                12 => /* I18N: a month in the Jewish calendar */
-                    I18N::translateContext('NOMINATIVE', 'Av'),
-                13 => /* I18N: a month in the Jewish calendar */
-                    I18N::translateContext('NOMINATIVE', 'Elul'),
+                /* I18N: a month in the Jewish calendar */
+                1  => I18N::translateContext('NOMINATIVE', 'Tishrei'),
+                /* I18N: a month in the Jewish calendar */
+                2  => I18N::translateContext('NOMINATIVE', 'Heshvan'),
+                /* I18N: a month in the Jewish calendar */
+                3  => I18N::translateContext('NOMINATIVE', 'Kislev'),
+                /* I18N: a month in the Jewish calendar */
+                4  => I18N::translateContext('NOMINATIVE', 'Tevet'),
+                /* I18N: a month in the Jewish calendar */
+                5  => I18N::translateContext('NOMINATIVE', 'Shevat'),
+                /* I18N: a month in the Jewish calendar */
+                6  => I18N::translateContext('NOMINATIVE', 'Adar I'),
+                /* I18N: a month in the Jewish calendar */
+                7  => I18N::translateContext('NOMINATIVE', 'Adar'),
+                /* I18N: a month in the Jewish calendar */
+                -7 => I18N::translateContext('NOMINATIVE', 'Adar II'),
+                /* I18N: a month in the Jewish calendar */
+                8  => I18N::translateContext('NOMINATIVE', 'Nissan'),
+                /* I18N: a month in the Jewish calendar */
+                9  => I18N::translateContext('NOMINATIVE', 'Iyar'),
+                /* I18N: a month in the Jewish calendar */
+                10 => I18N::translateContext('NOMINATIVE', 'Sivan'),
+                /* I18N: a month in the Jewish calendar */
+                11 => I18N::translateContext('NOMINATIVE', 'Tamuz'),
+                /* I18N: a month in the Jewish calendar */
+                12 => I18N::translateContext('NOMINATIVE', 'Av'),
+                /* I18N: a month in the Jewish calendar */
+                13 => I18N::translateContext('NOMINATIVE', 'Elul'),
             ];
         }
 
@@ -168,34 +168,34 @@ class JewishDate extends CalendarDate
         if ($translated_month_names === null) {
             $translated_month_names = [
                 0  => '',
-                1  => /* I18N: a month in the Jewish calendar */
-                    I18N::translateContext('GENITIVE', 'Tishrei'),
-                2  => /* I18N: a month in the Jewish calendar */
-                    I18N::translateContext('GENITIVE', 'Heshvan'),
-                3  => /* I18N: a month in the Jewish calendar */
-                    I18N::translateContext('GENITIVE', 'Kislev'),
-                4  => /* I18N: a month in the Jewish calendar */
-                    I18N::translateContext('GENITIVE', 'Tevet'),
-                5  => /* I18N: a month in the Jewish calendar */
-                    I18N::translateContext('GENITIVE', 'Shevat'),
-                6  => /* I18N: a month in the Jewish calendar */
-                    I18N::translateContext('GENITIVE', 'Adar I'),
-                7  => /* I18N: a month in the Jewish calendar */
-                    I18N::translateContext('GENITIVE', 'Adar'),
-                -7 => /* I18N: a month in the Jewish calendar */
-                    I18N::translateContext('GENITIVE', 'Adar II'),
-                8  => /* I18N: a month in the Jewish calendar */
-                    I18N::translateContext('GENITIVE', 'Nissan'),
-                9  => /* I18N: a month in the Jewish calendar */
-                    I18N::translateContext('GENITIVE', 'Iyar'),
-                10 => /* I18N: a month in the Jewish calendar */
-                    I18N::translateContext('GENITIVE', 'Sivan'),
-                11 => /* I18N: a month in the Jewish calendar */
-                    I18N::translateContext('GENITIVE', 'Tamuz'),
-                12 => /* I18N: a month in the Jewish calendar */
-                    I18N::translateContext('GENITIVE', 'Av'),
-                13 => /* I18N: a month in the Jewish calendar */
-                    I18N::translateContext('GENITIVE', 'Elul'),
+                /* I18N: a month in the Jewish calendar */
+                1  => I18N::translateContext('GENITIVE', 'Tishrei'),
+                /* I18N: a month in the Jewish calendar */
+                2  => I18N::translateContext('GENITIVE', 'Heshvan'),
+                /* I18N: a month in the Jewish calendar */
+                3  => I18N::translateContext('GENITIVE', 'Kislev'),
+                /* I18N: a month in the Jewish calendar */
+                4  => I18N::translateContext('GENITIVE', 'Tevet'),
+                /* I18N: a month in the Jewish calendar */
+                5  => I18N::translateContext('GENITIVE', 'Shevat'),
+                /* I18N: a month in the Jewish calendar */
+                6  => I18N::translateContext('GENITIVE', 'Adar I'),
+                /* I18N: a month in the Jewish calendar */
+                7  => I18N::translateContext('GENITIVE', 'Adar'),
+                /* I18N: a month in the Jewish calendar */
+                -7 => I18N::translateContext('GENITIVE', 'Adar II'),
+                /* I18N: a month in the Jewish calendar */
+                8  => I18N::translateContext('GENITIVE', 'Nissan'),
+                /* I18N: a month in the Jewish calendar */
+                9  => I18N::translateContext('GENITIVE', 'Iyar'),
+                /* I18N: a month in the Jewish calendar */
+                10 => I18N::translateContext('GENITIVE', 'Sivan'),
+                /* I18N: a month in the Jewish calendar */
+                11 => I18N::translateContext('GENITIVE', 'Tamuz'),
+                /* I18N: a month in the Jewish calendar */
+                12 => I18N::translateContext('GENITIVE', 'Av'),
+                /* I18N: a month in the Jewish calendar */
+                13 => I18N::translateContext('GENITIVE', 'Elul'),
             ];
         }
 
@@ -221,34 +221,34 @@ class JewishDate extends CalendarDate
         if ($translated_month_names === null) {
             $translated_month_names = [
                 0  => '',
-                1  => /* I18N: a month in the Jewish calendar */
-                    I18N::translateContext('LOCATIVE', 'Tishrei'),
-                2  => /* I18N: a month in the Jewish calendar */
-                    I18N::translateContext('LOCATIVE', 'Heshvan'),
-                3  => /* I18N: a month in the Jewish calendar */
-                    I18N::translateContext('LOCATIVE', 'Kislev'),
-                4  => /* I18N: a month in the Jewish calendar */
-                    I18N::translateContext('LOCATIVE', 'Tevet'),
-                5  => /* I18N: a month in the Jewish calendar */
-                    I18N::translateContext('LOCATIVE', 'Shevat'),
-                6  => /* I18N: a month in the Jewish calendar */
-                    I18N::translateContext('LOCATIVE', 'Adar I'),
-                7  => /* I18N: a month in the Jewish calendar */
-                    I18N::translateContext('LOCATIVE', 'Adar'),
-                -7 => /* I18N: a month in the Jewish calendar */
-                    I18N::translateContext('LOCATIVE', 'Adar II'),
-                8  => /* I18N: a month in the Jewish calendar */
-                    I18N::translateContext('LOCATIVE', 'Nissan'),
-                9  => /* I18N: a month in the Jewish calendar */
-                    I18N::translateContext('LOCATIVE', 'Iyar'),
-                10 => /* I18N: a month in the Jewish calendar */
-                    I18N::translateContext('LOCATIVE', 'Sivan'),
-                11 => /* I18N: a month in the Jewish calendar */
-                    I18N::translateContext('LOCATIVE', 'Tamuz'),
-                12 => /* I18N: a month in the Jewish calendar */
-                    I18N::translateContext('LOCATIVE', 'Av'),
-                13 => /* I18N: a month in the Jewish calendar */
-                    I18N::translateContext('LOCATIVE', 'Elul'),
+                /* I18N: a month in the Jewish calendar */
+                1  => I18N::translateContext('LOCATIVE', 'Tishrei'),
+                /* I18N: a month in the Jewish calendar */
+                2  => I18N::translateContext('LOCATIVE', 'Heshvan'),
+                /* I18N: a month in the Jewish calendar */
+                3  => I18N::translateContext('LOCATIVE', 'Kislev'),
+                /* I18N: a month in the Jewish calendar */
+                4  => I18N::translateContext('LOCATIVE', 'Tevet'),
+                /* I18N: a month in the Jewish calendar */
+                5  => I18N::translateContext('LOCATIVE', 'Shevat'),
+                /* I18N: a month in the Jewish calendar */
+                6  => I18N::translateContext('LOCATIVE', 'Adar I'),
+                /* I18N: a month in the Jewish calendar */
+                7  => I18N::translateContext('LOCATIVE', 'Adar'),
+                /* I18N: a month in the Jewish calendar */
+                -7 => I18N::translateContext('LOCATIVE', 'Adar II'),
+                /* I18N: a month in the Jewish calendar */
+                8  => I18N::translateContext('LOCATIVE', 'Nissan'),
+                /* I18N: a month in the Jewish calendar */
+                9  => I18N::translateContext('LOCATIVE', 'Iyar'),
+                /* I18N: a month in the Jewish calendar */
+                10 => I18N::translateContext('LOCATIVE', 'Sivan'),
+                /* I18N: a month in the Jewish calendar */
+                11 => I18N::translateContext('LOCATIVE', 'Tamuz'),
+                /* I18N: a month in the Jewish calendar */
+                12 => I18N::translateContext('LOCATIVE', 'Av'),
+                /* I18N: a month in the Jewish calendar */
+                13 => I18N::translateContext('LOCATIVE', 'Elul'),
             ];
         }
 
@@ -274,34 +274,34 @@ class JewishDate extends CalendarDate
         if ($translated_month_names === null) {
             $translated_month_names = [
                 0  => '',
-                1  => /* I18N: a month in the Jewish calendar */
-                    I18N::translateContext('INSTRUMENTAL', 'Tishrei'),
-                2  => /* I18N: a month in the Jewish calendar */
-                    I18N::translateContext('INSTRUMENTAL', 'Heshvan'),
-                3  => /* I18N: a month in the Jewish calendar */
-                    I18N::translateContext('INSTRUMENTAL', 'Kislev'),
-                4  => /* I18N: a month in the Jewish calendar */
-                    I18N::translateContext('INSTRUMENTAL', 'Tevet'),
-                5  => /* I18N: a month in the Jewish calendar */
-                    I18N::translateContext('INSTRUMENTAL', 'Shevat'),
-                6  => /* I18N: a month in the Jewish calendar */
-                    I18N::translateContext('INSTRUMENTAL', 'Adar I'),
-                7  => /* I18N: a month in the Jewish calendar */
-                    I18N::translateContext('INSTRUMENTAL', 'Adar'),
-                -7 => /* I18N: a month in the Jewish calendar */
-                    I18N::translateContext('INSTRUMENTAL', 'Adar II'),
-                8  => /* I18N: a month in the Jewish calendar */
-                    I18N::translateContext('INSTRUMENTAL', 'Nissan'),
-                9  => /* I18N: a month in the Jewish calendar */
-                    I18N::translateContext('INSTRUMENTAL', 'Iyar'),
-                10 => /* I18N: a month in the Jewish calendar */
-                    I18N::translateContext('INSTRUMENTAL', 'Sivan'),
-                11 => /* I18N: a month in the Jewish calendar */
-                    I18N::translateContext('INSTRUMENTAL', 'Tamuz'),
-                12 => /* I18N: a month in the Jewish calendar */
-                    I18N::translateContext('INSTRUMENTAL', 'Av'),
-                13 => /* I18N: a month in the Jewish calendar */
-                    I18N::translateContext('INSTRUMENTAL', 'Elul'),
+                /* I18N: a month in the Jewish calendar */
+                1  => I18N::translateContext('INSTRUMENTAL', 'Tishrei'),
+                /* I18N: a month in the Jewish calendar */
+                2  => I18N::translateContext('INSTRUMENTAL', 'Heshvan'),
+                /* I18N: a month in the Jewish calendar */
+                3  => I18N::translateContext('INSTRUMENTAL', 'Kislev'),
+                /* I18N: a month in the Jewish calendar */
+                4  => I18N::translateContext('INSTRUMENTAL', 'Tevet'),
+                /* I18N: a month in the Jewish calendar */
+                5  => I18N::translateContext('INSTRUMENTAL', 'Shevat'),
+                /* I18N: a month in the Jewish calendar */
+                6  => I18N::translateContext('INSTRUMENTAL', 'Adar I'),
+                /* I18N: a month in the Jewish calendar */
+                7  => I18N::translateContext('INSTRUMENTAL', 'Adar'),
+                /* I18N: a month in the Jewish calendar */
+                -7 => I18N::translateContext('INSTRUMENTAL', 'Adar II'),
+                /* I18N: a month in the Jewish calendar */
+                8  => I18N::translateContext('INSTRUMENTAL', 'Nissan'),
+                /* I18N: a month in the Jewish calendar */
+                9  => I18N::translateContext('INSTRUMENTAL', 'Iyar'),
+                /* I18N: a month in the Jewish calendar */
+                10 => I18N::translateContext('INSTRUMENTAL', 'Sivan'),
+                /* I18N: a month in the Jewish calendar */
+                11 => I18N::translateContext('INSTRUMENTAL', 'Tamuz'),
+                /* I18N: a month in the Jewish calendar */
+                12 => I18N::translateContext('INSTRUMENTAL', 'Av'),
+                /* I18N: a month in the Jewish calendar */
+                13 => I18N::translateContext('INSTRUMENTAL', 'Elul'),
             ];
         }
 

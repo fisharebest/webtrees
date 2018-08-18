@@ -339,16 +339,16 @@ class TreeView
         }
         switch ($individual->getSex()) {
             case 'M':
-                $title = ' title="' . /* I18N: e.g. “Son of [father name & mother name]” */
-                    I18N::translate('Son of %s', $family_name) . '"';
+                /* I18N: e.g. “Son of [father name & mother name]” */
+                $title = ' title="' . I18N::translate('Son of %s', $family_name) . '"';
                 break;
             case 'F':
-                $title = ' title="' . /* I18N: e.g. “Daughter of [father name & mother name]” */
-                    I18N::translate('Daughter of %s', $family_name) . '"';
+                /* I18N: e.g. “Daughter of [father name & mother name]” */
+                $title = ' title="' . I18N::translate('Daughter of %s', $family_name) . '"';
                 break;
             default:
-                $title = ' title="' . /* I18N: e.g. “Child of [father name & mother name]” */
-                    I18N::translate('Child of %s', $family_name) . '"';
+                /* I18N: e.g. “Child of [father name & mother name]” */
+                $title = ' title="' . I18N::translate('Child of %s', $family_name) . '"';
                 break;
         }
         $sex = $individual->getSex();

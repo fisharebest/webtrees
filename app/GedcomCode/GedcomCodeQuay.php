@@ -41,21 +41,17 @@ class GedcomCodeQuay
     {
         switch ($type) {
             case '3':
-                return
-                    /* I18N: Quality of source information - GEDCOM tag “QUAY 3” */
-                    I18N::translate('primary evidence');
+                /* I18N: Quality of source information - GEDCOM tag “QUAY 3” */
+                return I18N::translate('primary evidence');
             case '2':
-                return
-                    /* I18N: Quality of source information - GEDCOM tag “QUAY 2” */
-                    I18N::translate('secondary evidence');
+                /* I18N: Quality of source information - GEDCOM tag “QUAY 2” */
+                return I18N::translate('secondary evidence');
             case '1':
-                return
-                    /* I18N: Quality of source information - GEDCOM tag “QUAY 1” */
-                    I18N::translate('questionable evidence');
+                /* I18N: Quality of source information - GEDCOM tag “QUAY 1” */
+                return I18N::translate('questionable evidence');
             case '0':
-                return
-                    /* I18N: Quality of source information - GEDCOM tag “QUAY 0” */
-                    I18N::translate('unreliable evidence');
+                /* I18N: Quality of source information - GEDCOM tag “QUAY 0” */
+                return I18N::translate('unreliable evidence');
             default:
                 return $type;
         }

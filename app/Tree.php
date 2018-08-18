@@ -478,8 +478,8 @@ class Tree
 
         // Genealogy data
         // It is simpler to create a temporary/unimported GEDCOM than to populate all the tables...
-        $john_doe = /* I18N: This should be a common/default/placeholder name of an individual. Put slashes around the surname. */
-            I18N::translate('John /DOE/');
+        /* I18N: This should be a common/default/placeholder name of an individual. Put slashes around the surname. */
+        $john_doe = I18N::translate('John /DOE/');
         $note     = I18N::translate('Edit this individual and replace their details with your own.');
         Database::prepare("INSERT INTO `##gedcom_chunk` (gedcom_id, chunk_data) VALUES (?, ?)")->execute([
             $tree_id,

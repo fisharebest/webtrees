@@ -35,15 +35,15 @@ class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface
     /** {@inheritdoc} */
     public function getTitle()
     {
-        return /* I18N: Name of a module */
-            I18N::translate('Interactive tree');
+        /* I18N: Name of a module */
+        return I18N::translate('Interactive tree');
     }
 
     /** {@inheritdoc} */
     public function getDescription()
     {
-        return /* I18N: Description of the “Interactive tree” module */
-            I18N::translate('An interactive tree, showing all the ancestors and descendants of an individual.');
+        /* I18N: Description of the “Interactive tree” module */
+        return I18N::translate('An interactive tree, showing all the ancestors and descendants of an individual.');
     }
 
     /** {@inheritdoc} */

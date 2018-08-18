@@ -34,15 +34,15 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
     /** {@inheritdoc} */
     public function getTitle()
     {
-        return /* I18N: Name of a module */
-            I18N::translate('Messages');
+        /* I18N: Name of a module */
+        return I18N::translate('Messages');
     }
 
     /** {@inheritdoc} */
     public function getDescription()
     {
-        return /* I18N: Description of the “Messages” module */
-            I18N::translate('Communicate directly with other users, using private messages.');
+        /* I18N: Description of the “Messages” module */
+        return I18N::translate('Communicate directly with other users, using private messages.');
     }
 
     /**
@@ -146,8 +146,8 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
                 $content .= '</tr>';
                 $content .= '<tr><td class="list_value_wrap" colspan="4"><div id="message' . $message->message_id . '" style="display:none;">';
                 $content .= '<div dir="auto" style="white-space: pre-wrap;">' . Filter::expandUrls($message->body, $tree) . '</div><br>';
-                if (strpos($message->subject, /* I18N: When replying to an email, the subject becomes “RE: <subject>” */
-                        I18N::translate('RE: ')) !== 0) {
+                /* I18N: When replying to an email, the subject becomes “RE: <subject>” */
+                if (strpos($message->subject, I18N::translate('RE: ')) !== 0) {
                     $message->subject = I18N::translate('RE: ') . $message->subject;
                 }
 

@@ -32,8 +32,8 @@ class FamilyBookChartModule extends AbstractModule implements ModuleChartInterfa
      */
     public function getTitle()
     {
-        return /* I18N: Name of a module/chart */
-            I18N::translate('Family book');
+        /* I18N: Name of a module/chart */
+        return I18N::translate('Family book');
     }
 
     /**
@@ -43,8 +43,8 @@ class FamilyBookChartModule extends AbstractModule implements ModuleChartInterfa
      */
     public function getDescription()
     {
-        return /* I18N: Description of the “FamilyBookChart” module */
-            I18N::translate('A chart of an individual’s ancestors and descendants, as a family book.');
+        /* I18N: Description of the “FamilyBookChart” module */
+        return I18N::translate('A chart of an individual’s ancestors and descendants, as a family book.');
     }
 
     /**

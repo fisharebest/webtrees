@@ -31,8 +31,8 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface
      */
     public function getTitle()
     {
-        return /* I18N: Name of a module */
-            I18N::translate('Families');
+        /* I18N: Name of a module */
+        return I18N::translate('Families');
     }
 
     /**
@@ -42,8 +42,8 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface
      */
     public function getDescription()
     {
-        return /* I18N: Description of the “Families” module */
-            I18N::translate('A tab showing the close relatives of an individual.');
+        /* I18N: Description of the “Families” module */
+        return I18N::translate('A tab showing the close relatives of an individual.');
     }
 
     /**

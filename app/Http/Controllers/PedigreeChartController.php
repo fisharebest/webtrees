@@ -101,8 +101,8 @@ class PedigreeChartController extends AbstractChartController
         $orientations       = $this->orientations();
         $generation_options = $this->generationOptions($tree);
 
-        $title = /* I18N: %s is an individual’s name */
-            I18N::translate('Pedigree tree of %s', $individual->getFullName());
+        /* I18N: %s is an individual’s name */
+        $title = I18N::translate('Pedigree tree of %s', $individual->getFullName());
 
         return $this->viewResponse('pedigree-page', [
             'generations'        => $generations,

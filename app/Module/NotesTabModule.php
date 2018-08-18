@@ -31,15 +31,15 @@ class NotesTabModule extends AbstractModule implements ModuleTabInterface
     /** {@inheritdoc} */
     public function getTitle()
     {
-        return /* I18N: Name of a module */
-            I18N::translate('Notes');
+        /* I18N: Name of a module */
+        return I18N::translate('Notes');
     }
 
     /** {@inheritdoc} */
     public function getDescription()
     {
-        return /* I18N: Description of the “Notes” module */
-            I18N::translate('A tab showing the notes attached to an individual.');
+        /* I18N: Description of the “Notes” module */
+        return I18N::translate('A tab showing the notes attached to an individual.');
     }
 
     /** {@inheritdoc} */

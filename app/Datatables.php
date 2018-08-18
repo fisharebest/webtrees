@@ -42,23 +42,23 @@ class Datatables
 
         $language = [
             'paginate'       => [
-                'first'    => /* I18N: A button label, first page */
-                    I18N::translate('first'),
-                'last'     => /* I18N: A button label, last page */
-                    I18N::translate('last'),
-                'next'     => /* I18N: A button label, next page */
-                    I18N::translate('next'),
-                'previous' => /* I18N: A button label, previous page */
-                    I18N::translate('previous'),
+                /* I18N: A button label, first page */
+                'first'    => I18N::translate('first'),
+                /* I18N: A button label, last page */
+                'last'     => I18N::translate('last'),
+                /* I18N: A button label, next page */
+                'next'     => I18N::translate('next'),
+                /* I18N: A button label, previous page */
+                'previous' => I18N::translate('previous'),
             ],
             'emptyTable'     => I18N::translate('No records to display'),
-            'info'           => /* I18N: %s are placeholders for numbers */
-                I18N::translate('Showing %1$s to %2$s of %3$s', '_START_', '_END_', '_TOTAL_'),
+            /* I18N: %s are placeholders for numbers */
+            'info'           => I18N::translate('Showing %1$s to %2$s of %3$s', '_START_', '_END_', '_TOTAL_'),
             'infoEmpty'      => I18N::translate('Showing %1$s to %2$s of %3$s', 0, 0, 0),
-            'infoFiltered'   => /* I18N: %s is a number */
-                I18N::translate('(filtered from %s total entries)', '_MAX_'),
-            'lengthMenu'     => /* I18N: %s is a number of records per page */
-                I18N::translate('Display %s', '_MENU_'),
+            /* I18N: %s is a number */
+            'infoFiltered'   => I18N::translate('(filtered from %s total entries)', '_MAX_'),
+            /* I18N: %s is a number of records per page */
+            'lengthMenu'     => I18N::translate('Display %s', '_MENU_'),
             'loadingRecords' => I18N::translate('Loading…'),
             'processing'     => I18N::translate('Calculating…'),
             'search'         => I18N::translate('Filter'),

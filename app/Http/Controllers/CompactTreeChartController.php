@@ -45,8 +45,8 @@ class CompactTreeChartController extends AbstractChartController
 
         $this->checkIndividualAccess($individual);
 
-        $title = /* I18N: %s is an individual’s name */
-            I18N::translate('Compact tree of %s', $individual->getFullName());
+        /* I18N: %s is an individual’s name */
+        $title = I18N::translate('Compact tree of %s', $individual->getFullName());
 
         return $this->viewResponse('compact-tree-page', [
             'individual' => $individual,

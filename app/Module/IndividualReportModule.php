@@ -29,16 +29,16 @@ class IndividualReportModule extends AbstractModule implements ModuleReportInter
     public function getTitle()
     {
         // This text also appears in the .XML file - update both together
-        return /* I18N: Name of a module/report */
-            I18N::translate('Individual');
+        /* I18N: Name of a module/report */
+        return I18N::translate('Individual');
     }
 
     /** {@inheritdoc} */
     public function getDescription()
     {
         // This text also appears in the .XML file - update both together
-        return /* I18N: Description of the “Individual” module */
-            I18N::translate('A report of an individual’s details.');
+        /* I18N: Description of the “Individual” module */
+        return I18N::translate('A report of an individual’s details.');
     }
 
     /**

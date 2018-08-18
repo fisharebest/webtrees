@@ -31,15 +31,15 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
     /** {@inheritdoc} */
     public function getTitle()
     {
-        return /* I18N: Name of a module */
-            I18N::translate('Slide show');
+        /* I18N: Name of a module */
+        return I18N::translate('Slide show');
     }
 
     /** {@inheritdoc} */
     public function getDescription()
     {
-        return /* I18N: Description of the “Slide show” module */
-            I18N::translate('Random images from the current family tree.');
+        /* I18N: Description of the “Slide show” module */
+        return I18N::translate('Random images from the current family tree.');
     }
 
     /**

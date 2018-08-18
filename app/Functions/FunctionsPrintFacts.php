@@ -175,15 +175,15 @@ class FunctionsPrintFacts
         switch ($fact->getTag()) {
             case '_BIRT_CHIL':
                 $children[$fact->getParent()->getXref()] = true;
-                $label                                   .= '<br>' . /* I18N: Abbreviation for "number %s" */
-                    I18N::translate('#%s', count($children));
+                /* I18N: Abbreviation for "number %s" */
+                $label                                   .= '<br>' . I18N::translate('#%s', count($children));
                 break;
             case '_BIRT_GCHI':
             case '_BIRT_GCH1':
             case '_BIRT_GCH2':
                 $grandchildren[$fact->getParent()->getXref()] = true;
-                $label                                        .= '<br>' . /* I18N: Abbreviation for "number %s" */
-                    I18N::translate('#%s', count($grandchildren));
+                /* I18N: Abbreviation for "number %s" */
+                $label                                        .= '<br>' . I18N::translate('#%s', count($grandchildren));
                 break;
         }
 

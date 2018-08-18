@@ -49,8 +49,8 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
      */
     public function getTitle()
     {
-        return /* I18N: Name of a module */
-            I18N::translate('Batch update');
+        /* I18N: Name of a module */
+        return I18N::translate('Batch update');
     }
 
     /**
@@ -60,8 +60,8 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
      */
     public function getDescription()
     {
-        return /* I18N: Description of the “Batch update” module */
-            I18N::translate('Apply automatic corrections to your genealogy data.');
+        /* I18N: Description of the “Batch update” module */
+        return I18N::translate('Apply automatic corrections to your genealogy data.');
     }
 
     /**

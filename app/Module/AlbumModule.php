@@ -34,8 +34,8 @@ class AlbumModule extends AbstractModule implements ModuleTabInterface
      */
     public function getTitle()
     {
-        return /* I18N: Name of a module */
-            I18N::translate('Album');
+        /* I18N: Name of a module */
+        return I18N::translate('Album');
     }
 
     /**
@@ -45,8 +45,8 @@ class AlbumModule extends AbstractModule implements ModuleTabInterface
      */
     public function getDescription()
     {
-        return /* I18N: Description of the “Album” module */
-            I18N::translate('An alternative to the “media” tab, and an enhanced image viewer.');
+        /* I18N: Description of the “Album” module */
+        return I18N::translate('An alternative to the “media” tab, and an enhanced image viewer.');
     }
 
     /**

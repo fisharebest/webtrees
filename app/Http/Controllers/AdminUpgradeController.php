@@ -165,8 +165,8 @@ class AdminUpgradeController extends AbstractBaseController
             return $this->failure(I18N::translate('This is the latest version of webtrees. No upgrade is available.'));
         }
 
-        return $this->success(/* I18N: %s is a version number, such as 1.2.3 */
-            I18N::translate('Upgrade to webtrees %s.', e($latest_version)));
+        /* I18N: %s is a version number, such as 1.2.3 */
+        return $this->success(I18N::translate('Upgrade to webtrees %s.', e($latest_version)));
     }
 
     /**
@@ -237,8 +237,8 @@ class AdminUpgradeController extends AbstractBaseController
                 $kb      = I18N::number($zip_size / 1024);
                 $seconds = I18N::number($end_time - $start_time, 2);
 
-                return $this->success(/* I18N: %1$s is a number of KB, %2$s is a (fractional) number of seconds */
-                    I18N::translate('%1$s KB were downloaded in %2$s seconds.', $kb, $seconds));
+                /* I18N: %1$s is a number of KB, %2$s is a (fractional) number of seconds */
+                return $this->success(I18N::translate('%1$s KB were downloaded in %2$s seconds.', $kb, $seconds));
             } elseif (!in_array('ssl', stream_get_transports())) {
                 // Guess why we might have failed...
                 return $this->failure(I18N::translate('This server does not support secure downloads using HTTPS.'));
@@ -282,8 +282,8 @@ class AdminUpgradeController extends AbstractBaseController
         $seconds = I18N::number(microtime(true) - $start_time, 2);
         $count   = count($paths);
 
-        return $this->success(/* I18N: …from the .ZIP file, %2$s is a (fractional) number of seconds */
-            I18N::plural('%1$s file was extracted in %2$s seconds.', '%1$s files were extracted in %2$s seconds.', $count, $count, $seconds));
+        /* I18N: …from the .ZIP file, %2$s is a (fractional) number of seconds */
+        return $this->success(I18N::plural('%1$s file was extracted in %2$s seconds.', '%1$s files were extracted in %2$s seconds.', $count, $count, $seconds));
     }
 
     /**

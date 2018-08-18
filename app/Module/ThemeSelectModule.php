@@ -27,15 +27,15 @@ class ThemeSelectModule extends AbstractModule implements ModuleBlockInterface
     /** {@inheritdoc} */
     public function getTitle()
     {
-        return /* I18N: Name of a module */
-            I18N::translate('Theme change');
+        /* I18N: Name of a module */
+        return I18N::translate('Theme change');
     }
 
     /** {@inheritdoc} */
     public function getDescription()
     {
-        return /* I18N: Description of the “Theme change” module */
-            I18N::translate('An alternative way to select a new theme.');
+        /* I18N: Description of the “Theme change” module */
+        return I18N::translate('An alternative way to select a new theme.');
     }
 
     /**

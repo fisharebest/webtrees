@@ -284,8 +284,8 @@ class I18N
      */
     public static function dateFormat()
     {
-        return /* I18N: This is the format string for full dates. See http://php.net/date for codes */
-            self::$translator->translate('%j %F %Y');
+        /* I18N: This is the format string for full dates. See http://php.net/date for codes */
+        return self::$translator->translate('%j %F %Y');
     }
 
     /**
@@ -310,14 +310,10 @@ class I18N
             '"formatNumber": function(n) { return String(n).replace(/[0-9]/g, function(w) { return ("' . self::$locale->digits('0123456789') . '")[+w]; }); },' .
             '"language": {' .
             ' "paginate": {' .
-            '  "first":    "' . /* I18N: A button label, first page */
-            self::translate('first') . '",' .
-            '  "last":     "' . /* I18N: A button label, last page */
-            self::translate('last') . '",' .
-            '  "next":     "' . /* I18N: A button label, next page */
-            self::translate('next') . '",' .
-            '  "previous": "' . /* I18N: A button label, previous page */
-            self::translate('previous') . '"' .
+            '  "first":    "' . self::translate('first') . '",' .
+            '  "last":     "' . self::translate('last') . '",' .
+            '  "next":     "' . self::translate('next') . '",' .
+            '  "previous": "' . self::translate('previous') . '"' .
             ' },' .
             ' "emptyTable":     "' . self::translate('No records to display') . '",' .
             ' "info":           "' . /* I18N: %s are placeholders for numbers */
@@ -537,8 +533,8 @@ class I18N
         // Create a translator
         self::$translator = new Translator($translations, self::$locale->pluralRule());
 
-        self::$list_separator = /* I18N: This punctuation is used to separate lists of items */
-            self::translate(', ');
+        /* I18N: This punctuation is used to separate lists of items */
+        self::$list_separator = self::translate(', ');
 
         // Create a collator
         try {
@@ -872,8 +868,8 @@ class I18N
      */
     public static function timeFormat()
     {
-        return /* I18N: This is the format string for the time-of-day. See http://php.net/date for codes */
-            self::$translator->translate('%H:%i:%s');
+        /* I18N: This is the format string for the time-of-day. See http://php.net/date for codes */
+        return self::$translator->translate('%H:%i:%s');
     }
 
     /**

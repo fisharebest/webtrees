@@ -28,10 +28,10 @@ class Soundex
     public static function getAlgorithms()
     {
         return [
-            'std' => /* I18N: http://en.wikipedia.org/wiki/Soundex */
-                I18N::translate('Russell'),
-            'dm'  => /* I18N: http://en.wikipedia.org/wiki/Daitch–Mokotoff_Soundex */
-                I18N::translate('Daitch-Mokotoff'),
+            /* I18N: http://en.wikipedia.org/wiki/Soundex */
+            'std' => I18N::translate('Russell'),
+            /* I18N: http://en.wikipedia.org/wiki/Daitch–Mokotoff_Soundex */
+            'dm'  => I18N::translate('Daitch-Mokotoff'),
         ];
     }
 

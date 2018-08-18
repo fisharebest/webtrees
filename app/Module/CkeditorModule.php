@@ -25,14 +25,14 @@ class CkeditorModule extends AbstractModule
     /** {@inheritdoc} */
     public function getTitle()
     {
-        return /* I18N: Name of a module. CKEditor is a trademark. Do not translate it? http://ckeditor.com */
-            I18N::translate('CKEditor™');
+        /* I18N: Name of a module. CKEditor is a trademark. Do not translate it? http://ckeditor.com */
+        return I18N::translate('CKEditor™');
     }
 
     /** {@inheritdoc} */
     public function getDescription()
     {
-        return /* I18N: Description of the “CKEditor” module. WYSIWYG = “what you see is what you get” */
-            I18N::translate('Allow other modules to edit text using a “WYSIWYG” editor, instead of using HTML codes.');
+        /* I18N: Description of the “CKEditor” module. WYSIWYG = “what you see is what you get” */
+        return I18N::translate('Allow other modules to edit text using a “WYSIWYG” editor, instead of using HTML codes.');
     }
 }

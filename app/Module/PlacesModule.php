@@ -41,15 +41,15 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
     /** {@inheritdoc} */
     public function getTitle()
     {
-        return /* I18N: Name of a module */
-            I18N::translate('Places');
+        /* I18N: Name of a module */
+        return I18N::translate('Places');
     }
 
     /** {@inheritdoc} */
     public function getDescription()
     {
-        return /* I18N: Description of the “OSM” module */
-            I18N::translate('Show the location of events on a map.');
+        /* I18N: Description of the “OSM” module */
+        return I18N::translate('Show the location of events on a map.');
     }
 
     /** {@inheritdoc} */

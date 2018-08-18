@@ -31,15 +31,15 @@ class SourcesTabModule extends AbstractModule implements ModuleTabInterface
     /** {@inheritdoc} */
     public function getTitle()
     {
-        return /* I18N: Name of a module */
-            I18N::translate('Sources');
+        /* I18N: Name of a module */
+        return I18N::translate('Sources');
     }
 
     /** {@inheritdoc} */
     public function getDescription()
     {
-        return /* I18N: Description of the “Sources” module */
-            I18N::translate('A tab showing the sources linked to an individual.');
+        /* I18N: Description of the “Sources” module */
+        return I18N::translate('A tab showing the sources linked to an individual.');
     }
 
     /** {@inheritdoc} */

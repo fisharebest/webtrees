@@ -31,15 +31,15 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
     /** {@inheritdoc} */
     public function getTitle()
     {
-        return /* I18N: Name of a module/block */
-            I18N::translate('Charts');
+        /* I18N: Name of a module/block */
+        return I18N::translate('Charts');
     }
 
     /** {@inheritdoc} */
     public function getDescription()
     {
-        return /* I18N: Description of the “Charts” module */
-            I18N::translate('An alternative way to display charts.');
+        /* I18N: Description of the “Charts” module */
+        return I18N::translate('An alternative way to display charts.');
     }
 
     /**

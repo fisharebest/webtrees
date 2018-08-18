@@ -80,25 +80,21 @@ class GedcomCodePedi
             case 'sealing':
                 switch ($sex) {
                     case 'M':
-                        return
-                            /* I18N: “sealing” is a ceremony in the Mormon church. */
-                            I18N::translateContext('Male pedigree', 'Sealing');
+                        /* I18N: “sealing” is a ceremony in the Mormon church. */
+                        return I18N::translateContext('Male pedigree', 'Sealing');
                     case 'F':
-                        return
-                            /* I18N: “sealing” is a ceremony in the Mormon church. */
-                            I18N::translateContext('Female pedigree', 'Sealing');
+                        /* I18N: “sealing” is a ceremony in the Mormon church. */
+                        return I18N::translateContext('Female pedigree', 'Sealing');
                     default:
-                        return
-                            /* I18N: “sealing” is a ceremony in the Mormon church. */
-                            I18N::translateContext('Pedigree', 'Sealing');
+                        /* I18N: “sealing” is a ceremony in the Mormon church. */
+                        return I18N::translateContext('Pedigree', 'Sealing');
                 }
             case 'rada':
                 // Not standard GEDCOM - a webtrees extension
                 // This is an arabic word which does not exist in other languages.
                 // So, it will not have any inflected forms.
-                return
-                    /* I18N: This is an Arabic word, pronounced “ra DAH”. It is child-to-parent pedigree, established by wet-nursing. */
-                    I18N::translate('Rada');
+                /* I18N: This is an Arabic word, pronounced “ra DAH”. It is child-to-parent pedigree, established by wet-nursing. */
+                return I18N::translate('Rada');
             default:
                 return $type;
         }
@@ -140,13 +136,11 @@ class GedcomCodePedi
             case 'foster':
                 return I18N::translate('Family with foster parents');
             case 'sealing':
-                return
-                    /* I18N: “sealing” is a Mormon ceremony. */
-                    I18N::translate('Family with sealing parents');
+                /* I18N: “sealing” is a Mormon ceremony. */
+                return I18N::translate('Family with sealing parents');
             case 'rada':
-                return
-                    /* I18N: “rada” is an Arabic word, pronounced “ra DAH”. It is child-to-parent pedigree, established by wet-nursing. */
-                    I18N::translate('Family with rada parents');
+                /* I18N: “rada” is an Arabic word, pronounced “ra DAH”. It is child-to-parent pedigree, established by wet-nursing. */
+                return I18N::translate('Family with rada parents');
             default:
                 return I18N::translate('Family with parents') . ' - ' . $pedi;
         }

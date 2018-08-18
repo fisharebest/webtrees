@@ -29,16 +29,16 @@ class MarriageReportModule extends AbstractModule implements ModuleReportInterfa
     public function getTitle()
     {
         // This text also appears in the .XML file - update both together
-        return /* I18N: Name of a module/report */
-            I18N::translate('Marriages');
+        /* I18N: Name of a module/report */
+        return I18N::translate('Marriages');
     }
 
     /** {@inheritdoc} */
     public function getDescription()
     {
         // This text also appears in the .XML file - update both together
-        return /* I18N: Description of the “Marriages” module */
-            I18N::translate('A report of individuals who were married in a given time or place.');
+        /* I18N: Description of the “Marriages” module */
+        return I18N::translate('A report of individuals who were married in a given time or place.');
     }
 
     /**

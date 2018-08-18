@@ -74,8 +74,8 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface
      */
     public function getTitle()
     {
-        return /* I18N: Name of a module */
-            I18N::translate('On this day');
+        /* I18N: Name of a module */
+        return I18N::translate('On this day');
     }
 
     /**
@@ -85,8 +85,8 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface
      */
     public function getDescription()
     {
-        return /* I18N: Description of the “On this day” module */
-            I18N::translate('A list of the anniversaries that occur today.');
+        /* I18N: Description of the “On this day” module */
+        return I18N::translate('A list of the anniversaries that occur today.');
     }
 
     /**
@@ -218,17 +218,17 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface
         }
 
         $info_styles = [
-            'list'  => /* I18N: An option in a list-box */
-                I18N::translate('list'),
-            'table' => /* I18N: An option in a list-box */
-                I18N::translate('table'),
+            /* I18N: An option in a list-box */
+            'list'  => I18N::translate('list'),
+            /* I18N: An option in a list-box */
+            'table' => I18N::translate('table'),
         ];
 
         $sort_styles = [
-            'alpha' => /* I18N: An option in a list-box */
-                I18N::translate('sort by name'),
-            'anniv' => /* I18N: An option in a list-box */
-                I18N::translate('sort by date'),
+            /* I18N: An option in a list-box */
+            'alpha' => I18N::translate('sort by name'),
+            /* I18N: An option in a list-box */
+            'anniv' => I18N::translate('sort by date'),
         ];
 
         echo view('modules/todays_events/config', [

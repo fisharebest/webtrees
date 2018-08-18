@@ -46,8 +46,8 @@ class RelationshipsChartModule extends AbstractModule implements ModuleConfigInt
      */
     public function getTitle()
     {
-        return /* I18N: Name of a module/chart */
-            I18N::translate('Relationships');
+        /* I18N: Name of a module/chart */
+        return I18N::translate('Relationships');
     }
 
     /**
@@ -57,8 +57,8 @@ class RelationshipsChartModule extends AbstractModule implements ModuleConfigInt
      */
     public function getDescription()
     {
-        return /* I18N: Description of the “RelationshipsChart” module */
-            I18N::translate('A chart displaying relationships between two individuals.');
+        /* I18N: Description of the “RelationshipsChart” module */
+        return I18N::translate('A chart displaying relationships between two individuals.');
     }
 
     /**

@@ -517,8 +517,8 @@ class FunctionsPrint
             }
             if (!$newRow) {
                 echo '</select>';
-                echo '&nbsp;&nbsp;<input type="button" value="', /* I18N: A button label. */
-                I18N::translate('add'), '" onclick="return paste_fact(\'' . e($tree->getName()) . '\',\'' . e($record->getXref()) . '\', \'#newClipboardFact\');"> ';
+                /* I18N: A button label. */
+                echo '&nbsp;&nbsp;<input type="button" value="', I18N::translate('add'), '" onclick="return paste_fact(\'' . e($tree->getName()) . '\',\'' . e($record->getXref()) . '\', \'#newClipboardFact\');"> ';
                 echo '</form></td></tr>', "\n";
             }
         }
@@ -585,8 +585,8 @@ class FunctionsPrint
             echo '<option value="EVEN">', I18N::translate('Custom event'), '</option>';
         }
         echo '</select>';
-        echo '<input type="submit" value="', /* I18N: A button label. */
-        I18N::translate('add'), '">';
+        /* I18N: A button label. */
+        echo '<input type="submit" value="', I18N::translate('add'), '">';
         echo '</form>';
         echo '<span class="quickfacts">';
         foreach ($quickfacts as $fact) {

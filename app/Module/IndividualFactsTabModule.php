@@ -32,15 +32,15 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
     /** {@inheritdoc} */
     public function getTitle()
     {
-        return /* I18N: Name of a module/tab on the individual page. */
-            I18N::translate('Facts and events');
+        /* I18N: Name of a module/tab on the individual page. */
+        return I18N::translate('Facts and events');
     }
 
     /** {@inheritdoc} */
     public function getDescription()
     {
-        return /* I18N: Description of the “Facts and events” module */
-            I18N::translate('A tab showing the facts and events of an individual.');
+        /* I18N: Description of the “Facts and events” module */
+        return I18N::translate('A tab showing the facts and events of an individual.');
     }
 
     /** {@inheritdoc} */

@@ -31,15 +31,15 @@ class MediaTabModule extends AbstractModule implements ModuleTabInterface
     /** {@inheritdoc} */
     public function getTitle()
     {
-        return /* I18N: Name of a module */
-            I18N::translate('Media');
+        /* I18N: Name of a module */
+        return I18N::translate('Media');
     }
 
     /** {@inheritdoc} */
     public function getDescription()
     {
-        return /* I18N: Description of the “Media” module */
-            I18N::translate('A tab showing the media objects linked to an individual.');
+        /* I18N: Description of the “Media” module */
+        return I18N::translate('A tab showing the media objects linked to an individual.');
     }
 
     /** {@inheritdoc} */

@@ -281,8 +281,8 @@ class AdminTreesController extends AbstractBaseController
      */
     private function checkLinkMessage(Tree $tree, $type1, $xref1, $type2, $xref2)
     {
-        return /* I18N: The placeholders are GEDCOM XREFs and tags. e.g. “INDI I123 contains a FAMC link to F234.” */
-            I18N::translate(
+        /* I18N: The placeholders are GEDCOM XREFs and tags. e.g. “INDI I123 contains a FAMC link to F234.” */
+        return I18N::translate(
                 '%1$s %2$s has a %3$s link to %4$s.',
                 $this->formatType($type1),
                 $this->checkLink($tree, $xref1),
@@ -352,8 +352,8 @@ class AdminTreesController extends AbstractBaseController
      */
     public function delete(Tree $tree): RedirectResponse
     {
-        FlashMessages::addMessage(/* I18N: %s is the name of a family tree */
-            I18N::translate('The family tree “%s” has been deleted.', e($tree->getTitle())), 'success');
+        /* I18N: %s is the name of a family tree */
+        FlashMessages::addMessage(I18N::translate('The family tree “%s” has been deleted.', e($tree->getTitle())), 'success');
 
         $tree->delete();
 
@@ -508,8 +508,8 @@ class AdminTreesController extends AbstractBaseController
             fclose($stream);
             rename($filename . '.tmp', $filename);
 
-            FlashMessages::addMessage(/* I18N: %s is a filename */
-                I18N::translate('The family tree has been exported to %s.', Html::filename($filename)), 'success');
+            /* I18N: %s is a filename */
+            FlashMessages::addMessage(I18N::translate('The family tree has been exported to %s.', Html::filename($filename)), 'success');
         } catch (Throwable $ex) {
             DebugBar::addThrowable($ex);
 
@@ -815,8 +815,8 @@ class AdminTreesController extends AbstractBaseController
             $changes = [];
         }
 
-        $title = I18N::translate(/* I18N: Renumber the records in a family tree */
-                'Renumber family tree') . ' — ' . e($tree->getTitle());
+        /* I18N: Renumber the records in a family tree */
+        $title = I18N::translate('Renumber family tree') . ' — ' . e($tree->getTitle());
 
         return $this->viewResponse('admin/trees-places', [
             'changes' => $changes,
@@ -868,26 +868,26 @@ class AdminTreesController extends AbstractBaseController
         $gregorian_calendar_start = new Date('15 OCT 1582');
 
         $surname_list_styles = [
-            'style1' => /* I18N: Layout option for lists of names */
-                I18N::translate('list'),
-            'style2' => /* I18N: Layout option for lists of names */
-                I18N::translate('table'),
-            'style3' => /* I18N: Layout option for lists of names */
-                I18N::translate('tag cloud'),
+            /* I18N: Layout option for lists of names */
+            'style1' => I18N::translate('list'),
+            /* I18N: Layout option for lists of names */
+            'style2' => I18N::translate('table'),
+            /* I18N: Layout option for lists of names */
+            'style3' => I18N::translate('tag cloud'),
         ];
 
         $page_layouts = [
-            0 => /* I18N: page orientation */
-                I18N::translate('Portrait'),
-            1 => /* I18N: page orientation */
-                I18N::translate('Landscape'),
+            /* I18N: page orientation */
+            0 => I18N::translate('Portrait'),
+            /* I18N: page orientation */
+            1 => I18N::translate('Landscape'),
         ];
 
         $formats = [
-            ''         => /* I18N: None of the other options */
-                I18N::translate('none'),
-            'markdown' => /* I18N: https://en.wikipedia.org/wiki/Markdown */
-                I18N::translate('markdown'),
+            /* I18N: None of the other options */
+            ''         => I18N::translate('none'),
+            /* I18N: https://en.wikipedia.org/wiki/Markdown */
+            'markdown' => I18N::translate('markdown'),
         ];
 
         $source_types = [
@@ -1013,8 +1013,8 @@ class AdminTreesController extends AbstractBaseController
     {
         $xrefs = $this->duplicateXrefs($tree);
 
-        $title = I18N::translate(/* I18N: Renumber the records in a family tree */
-                'Renumber family tree') . ' — ' . e($tree->getTitle());
+        /* I18N: Renumber the records in a family tree */
+        $title = I18N::translate('Renumber family tree') . ' — ' . e($tree->getTitle());
 
         return $this->viewResponse('admin/trees-renumber', [
             'title' => $title,
@@ -1585,8 +1585,8 @@ class AdminTreesController extends AbstractBaseController
     {
         Site::setPreference('DEFAULT_GEDCOM', $tree->getName());
 
-        FlashMessages::addMessage(/* I18N: %s is the name of a family tree */
-            I18N::translate('The family tree “%s” will be shown to visitors when they first arrive at this website.', e($tree->getTitle())), 'success');
+        /* I18N: %s is the name of a family tree */
+        FlashMessages::addMessage(I18N::translate('The family tree “%s” will be shown to visitors when they first arrive at this website.', e($tree->getTitle())), 'success');
 
         $url = route('admin-trees');
 

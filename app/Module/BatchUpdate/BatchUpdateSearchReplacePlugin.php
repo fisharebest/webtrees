@@ -62,8 +62,8 @@ class BatchUpdateSearchReplacePlugin extends BatchUpdateBasePlugin
      */
     public function getDescription()
     {
-        return /* I18N: Description of the “Search and replace” option of the batch update module */
-            I18N::translate('Search and replace text, using simple searches or advanced pattern matching.');
+        /* I18N: Description of the “Search and replace” option of the batch update module */
+        return I18N::translate('Search and replace text, using simple searches or advanced pattern matching.');
     }
 
     /**
@@ -156,8 +156,8 @@ class BatchUpdateSearchReplacePlugin extends BatchUpdateBasePlugin
                 } catch (Throwable $ex) {
                     DebugBar::addThrowable($ex);
 
-                    $this->error = '<div class="alert alert-danger">' . /* I18N: http://en.wikipedia.org/wiki/Regular_expression */
-                        I18N::translate('The regular expression appears to contain an error. It can’t be used.') . '</div>';
+                    /* I18N: http://en.wikipedia.org/wiki/Regular_expression */
+                    $this->error = '<div class="alert alert-danger">' . I18N::translate('The regular expression appears to contain an error. It can’t be used.') . '</div>';
                 }
                 break;
         }
@@ -174,9 +174,8 @@ class BatchUpdateSearchReplacePlugin extends BatchUpdateBasePlugin
             'exact'     => I18N::translate('Match the exact text, even if it occurs in the middle of a word.'),
             'words'     => I18N::translate('Match the exact text, unless it occurs in the middle of a word.'),
             'wildcards' => I18N::translate('Use a “?” to match a single character, use “*” to match zero or more characters.'),
-            'regex'     => /* I18N: http://en.wikipedia.org/wiki/Regular_expression */
-                I18N::translate('Regular expressions are an advanced pattern matching technique.') . '<br>' . /* I18N: %s is a URL */
-                I18N::translate('See %s for more information.', '<a href="http://php.net/manual/regexp.reference.php">php.net/manual/regexp.reference.php</a>'),
+            /* I18N: http://en.wikipedia.org/wiki/Regular_expression */
+            'regex'     => I18N::translate('Regular expressions are an advanced pattern matching technique.') . '<br>' .  I18N::translate('See %s for more information.', '<a href="http://php.net/manual/regexp.reference.php">php.net/manual/regexp.reference.php</a>'),
         ];
 
         return
@@ -210,7 +209,8 @@ class BatchUpdateSearchReplacePlugin extends BatchUpdateBasePlugin
                 ''  => I18N::translate('no'),
                 'i' => I18N::translate('yes'),
             ], ($this->case ? 'i' : ''), true, ['onchange' => 'this.form.submit();']) .
-            '<p class="small text-muted">' . /* I18N: Help text for "Case insensitive" searches */
+            '<p class="small text-muted">' .
+            /* I18N: Help text for "Case insensitive" searches */
             I18N::translate('Match both upper and lower case letters.') . '</p>' .
             '</div></div>' .
             parent::getOptionsForm();

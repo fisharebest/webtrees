@@ -32,15 +32,15 @@ class CensusAssistantModule extends AbstractModule
     /** {@inheritdoc} */
     public function getTitle()
     {
-        return /* I18N: Name of a module */
-            I18N::translate('Census assistant');
+        /* I18N: Name of a module */
+        return I18N::translate('Census assistant');
     }
 
     /** {@inheritdoc} */
     public function getDescription()
     {
-        return /* I18N: Description of the “Census assistant” module */
-            I18N::translate('An alternative way to enter census transcripts and link them to individuals.');
+        /* I18N: Description of the “Census assistant” module */
+        return I18N::translate('An alternative way to enter census transcripts and link them to individuals.');
     }
 
     /**

@@ -26,15 +26,15 @@ class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInter
     /** {@inheritdoc} */
     public function getTitle()
     {
-        return /* I18N: Name of a module/sidebar */
-            I18N::translate('Family navigator');
+        /* I18N: Name of a module/sidebar */
+        return I18N::translate('Family navigator');
     }
 
     /** {@inheritdoc} */
     public function getDescription()
     {
-        return /* I18N: Description of the “Family navigator” module */
-            I18N::translate('A sidebar showing an individual’s close families and relatives.');
+        /* I18N: Description of the “Family navigator” module */
+        return I18N::translate('A sidebar showing an individual’s close families and relatives.');
     }
 
     /** {@inheritdoc} */

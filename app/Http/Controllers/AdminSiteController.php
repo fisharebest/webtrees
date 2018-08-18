@@ -45,8 +45,8 @@ class AdminSiteController extends AbstractBaseController
      */
     public function analyticsForm(Request $request): Response
     {
-        $title = /* I18N: e.g. http://www.google.com/analytics */
-            I18N::translate('Tracking and analytics');
+        /* I18N: e.g. http://www.google.com/analytics */
+        $title = I18N::translate('Tracking and analytics');
 
         return $this->viewResponse('admin/site-analytics', [
             'title' => $title,
@@ -664,8 +664,8 @@ class AdminSiteController extends AbstractBaseController
     {
         $options = [
             'internal' => I18N::translate('Use PHP mail to send messages'),
-            'sendmail' => /* I18N: "sendmail" is the name of some mail software */
-                I18N::translate('Use sendmail to send messages'),
+            /* I18N: "sendmail" is the name of some mail software */
+            'sendmail' => I18N::translate('Use sendmail to send messages'),
             'external' => I18N::translate('Use SMTP to send messages'),
         ];
 

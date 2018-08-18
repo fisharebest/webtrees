@@ -29,15 +29,15 @@ class ExtraInformationModule extends AbstractModule implements ModuleSidebarInte
     /** {@inheritdoc} */
     public function getTitle()
     {
-        return /* I18N: Name of a module/sidebar */
-            I18N::translate('Extra information');
+        /* I18N: Name of a module/sidebar */
+        return I18N::translate('Extra information');
     }
 
     /** {@inheritdoc} */
     public function getDescription()
     {
-        return /* I18N: Description of the “Extra information” module */
-            I18N::translate('A sidebar showing non-genealogy information about an individual.');
+        /* I18N: Description of the “Extra information” module */
+        return I18N::translate('A sidebar showing non-genealogy information about an individual.');
     }
 
     /** {@inheritdoc} */

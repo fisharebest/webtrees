@@ -559,8 +559,8 @@ class Individual extends GedcomRecord
         $birth_date = strip_tags($this->getBirthDate()->display());
         $death_date = strip_tags($this->getDeathDate()->display());
 
+        /* I18N: A range of years, e.g. “1870–”, “1870–1920”, “–1920” */
         return
-            /* I18N: A range of years, e.g. “1870–”, “1870–1920”, “–1920” */
             I18N::translate(
                 '%1$s–%2$s',
                 '<span title="' . e($birth_place) . ' ' . $birth_date . '">' . $this->getBirthYear() . '</span>',
@@ -1038,24 +1038,20 @@ class Individual extends GedcomRecord
                             if ($parent->getSex() == 'M') {
                                 // Father’s family with someone else
                                 if ($step_family->getSpouse($step_parent)) {
-                                    return
-                                        /* I18N: A step-family. %s is an individual’s name */
-                                        I18N::translate('Father’s family with %s', $step_family->getSpouse($step_parent)->getFullName());
+                                    /* I18N: A step-family. %s is an individual’s name */
+                                    return I18N::translate('Father’s family with %s', $step_family->getSpouse($step_parent)->getFullName());
                                 } else {
-                                    return
-                                        /* I18N: A step-family. */
-                                        I18N::translate('Father’s family with an unknown individual');
+                                    /* I18N: A step-family. */
+                                    return I18N::translate('Father’s family with an unknown individual');
                                 }
                             } else {
                                 // Mother’s family with someone else
                                 if ($step_family->getSpouse($step_parent)) {
-                                    return
-                                        /* I18N: A step-family. %s is an individual’s name */
-                                        I18N::translate('Mother’s family with %s', $step_family->getSpouse($step_parent)->getFullName());
+                                    /* I18N: A step-family. %s is an individual’s name */
+                                    return I18N::translate('Mother’s family with %s', $step_family->getSpouse($step_parent)->getFullName());
                                 } else {
-                                    return
-                                        /* I18N: A step-family. */
-                                        I18N::translate('Mother’s family with an unknown individual');
+                                    /* I18N: A step-family. */
+                                    return I18N::translate('Mother’s family with an unknown individual');
                                 }
                             }
                         }
@@ -1082,9 +1078,8 @@ class Individual extends GedcomRecord
     {
         $spouse = $family->getSpouse($this);
         if ($spouse) {
-            return
-                /* I18N: %s is the spouse name */
-                I18N::translate('Family with %s', $spouse->getFullName());
+            /* I18N: %s is the spouse name */
+            return I18N::translate('Family with %s', $spouse->getFullName());
         } else {
             return $family->getFullName();
         }
@@ -1118,9 +1113,8 @@ class Individual extends GedcomRecord
             // want the default name, not the one selected for display on the indilist.
             $primary = $husb->getPrimaryName();
             $husb->setPrimaryName(null);
-            $txt .=
-                /* I18N: %s is the name of an individual’s father */
-                I18N::translate('Father: %s', $husb->getFullName()) . '<br>';
+            /* I18N: %s is the name of an individual’s father */
+            $txt .= I18N::translate('Father: %s', $husb->getFullName()) . '<br>';
             $husb->setPrimaryName($primary);
         }
         $wife = $fam->getWife();
@@ -1129,9 +1123,8 @@ class Individual extends GedcomRecord
             // want the default name, not the one selected for display on the indilist.
             $primary = $wife->getPrimaryName();
             $wife->setPrimaryName(null);
-            $txt .=
-                /* I18N: %s is the name of an individual’s mother */
-                I18N::translate('Mother: %s', $wife->getFullName());
+            /* I18N: %s is the name of an individual’s mother */
+            $txt .= I18N::translate('Mother: %s', $wife->getFullName());
             $wife->setPrimaryName($primary);
         }
         $txt .= '</div>';

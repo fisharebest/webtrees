@@ -29,16 +29,16 @@ class BirthReportModule extends AbstractModule implements ModuleReportInterface
     public function getTitle()
     {
         // This text also appears in the .XML file - update both together
-        return /* I18N: Name of a module/report */
-            I18N::translate('Births');
+        /* I18N: Name of a module/report */
+        return I18N::translate('Births');
     }
 
     /** {@inheritdoc} */
     public function getDescription()
     {
         // This text also appears in the .XML file - update both together
-        return /* I18N: Description of the “Births” module */
-            I18N::translate('A report of individuals who were born in a given time or place.');
+        /* I18N: Description of the “Births” module */
+        return I18N::translate('A report of individuals who were born in a given time or place.');
     }
 
     /**

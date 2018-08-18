@@ -32,8 +32,8 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
      */
     public function getTitle()
     {
-        return /* I18N: Name of a module/chart */
-            I18N::translate('Pedigree');
+        /* I18N: Name of a module/chart */
+        return I18N::translate('Pedigree');
     }
 
     /**
@@ -43,8 +43,8 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
      */
     public function getDescription()
     {
-        return /* I18N: Description of the “PedigreeChart” module */
-            I18N::translate('A chart of an individual’s ancestors, formatted as a tree.');
+        /* I18N: Description of the “PedigreeChart” module */
+        return I18N::translate('A chart of an individual’s ancestors, formatted as a tree.');
     }
 
     /**

@@ -34,15 +34,15 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
     /** {@inheritdoc} */
     public function getTitle()
     {
-        return /* I18N: Name of a module */
-            I18N::translate('Stories');
+        /* I18N: Name of a module */
+        return I18N::translate('Stories');
     }
 
     /** {@inheritdoc} */
     public function getDescription()
     {
-        return /* I18N: Description of the “Stories” module */
-            I18N::translate('Add narrative stories to individuals in the family tree.');
+        /* I18N: Description of the “Stories” module */
+        return I18N::translate('Add narrative stories to individuals in the family tree.');
     }
 
     /**

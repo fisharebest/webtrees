@@ -77,8 +77,8 @@ class DescendantsChartController extends AbstractChartController
         $generations = max($generations, $minimum_generations);
 
         if ($individual !== null && $individual->canShowName()) {
-            $title = /* I18N: %s is an individual’s name */
-                I18N::translate('Descendants of %s', $individual->getFullName());
+            /* I18N: %s is an individual’s name */
+            $title = I18N::translate('Descendants of %s', $individual->getFullName());
         } else {
             $title = I18N::translate('Descendants');
         }

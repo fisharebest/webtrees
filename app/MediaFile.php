@@ -344,8 +344,8 @@ class MediaFile
         $size = $this->fileSizeBytes();
         $size = (int)(($size + 1023) / 1024);
 
-        return /* I18N: size of file in KB */
-            I18N::translate('%s KB', I18N::number($size));
+        /* I18N: size of file in KB */
+        return I18N::translate('%s KB', I18N::number($size));
     }
 
     /**

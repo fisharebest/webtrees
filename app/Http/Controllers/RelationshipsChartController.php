@@ -67,8 +67,8 @@ class RelationshipsChartController extends AbstractChartController
         $recursion = min($recursion, $max_recursion);
 
         if ($individual1 && $individual2) {
-            $title = I18N::translate(/* I18N: %s are individual’s names */
-                'Relationships between %1$s and %2$s', $individual1->getFullName(), $individual2->getFullName());
+            /* I18N: %s are individual’s names */
+            $title = I18N::translate('Relationships between %1$s and %2$s', $individual1->getFullName(), $individual2->getFullName());
         } else {
             $title = I18N::translate('Relationships');
         }

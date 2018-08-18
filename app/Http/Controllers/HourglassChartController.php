@@ -65,8 +65,8 @@ class HourglassChartController extends AbstractChartController
 
         $show_spouse = (bool)$request->get('show_spouse');
 
-        $title = /* I18N: %s is an individual’s name */
-            I18N::translate('Hourglass chart of %s', $individual->getFullName());
+        /* I18N: %s is an individual’s name */
+        $title = I18N::translate('Hourglass chart of %s', $individual->getFullName());
 
         return $this->viewResponse('hourglass-page', [
             'generations'         => $generations,

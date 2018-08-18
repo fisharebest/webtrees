@@ -156,11 +156,11 @@ class PendingChangesController extends AbstractBaseController
 
         if ($record && Auth::isModerator($tree)) {
             if ($record->isPendingDeletion()) {
-                FlashMessages::addMessage(/* I18N: %s is the name of a genealogy record */
-                    I18N::translate('“%s” has been deleted.', $record->getFullName()));
+                /* I18N: %s is the name of a genealogy record */
+                FlashMessages::addMessage(I18N::translate('“%s” has been deleted.', $record->getFullName()));
             } else {
-                FlashMessages::addMessage(/* I18N: %s is the name of a genealogy record */
-                    I18N::translate('The changes to “%s” have been accepted.', $record->getFullName()));
+                /* I18N: %s is the name of a genealogy record */
+                FlashMessages::addMessage(I18N::translate('The changes to “%s” have been accepted.', $record->getFullName()));
             }
             FunctionsImport::acceptAllChanges($record->getXref(), $record->getTree());
         }
@@ -243,8 +243,8 @@ class PendingChangesController extends AbstractBaseController
         $this->checkRecordAccess($record, false);
 
         if ($record && Auth::isModerator($tree)) {
-            FlashMessages::addMessage(/* I18N: %s is the name of an individual, source or other record */
-                I18N::translate('The changes to “%s” have been rejected.', $record->getFullName()));
+            /* I18N: %s is the name of an individual, source or other record */
+            FlashMessages::addMessage(I18N::translate('The changes to “%s” have been rejected.', $record->getFullName()));
             FunctionsImport::rejectAllChanges($record);
         }
 

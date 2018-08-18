@@ -32,15 +32,15 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
     /** {@inheritdoc} */
     public function getTitle()
     {
-        return /* I18N: Name of a module/sidebar */
-            I18N::translate('Descendants');
+        /* I18N: Name of a module/sidebar */
+        return I18N::translate('Descendants');
     }
 
     /** {@inheritdoc} */
     public function getDescription()
     {
-        return /* I18N: Description of the “Descendants” module */
-            I18N::translate('A sidebar showing the descendants of an individual.');
+        /* I18N: Description of the “Descendants” module */
+        return I18N::translate('A sidebar showing the descendants of an individual.');
     }
 
     /**

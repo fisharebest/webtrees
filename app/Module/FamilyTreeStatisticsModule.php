@@ -34,15 +34,15 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
     /** {@inheritdoc} */
     public function getTitle()
     {
-        return /* I18N: Name of a module */
-            I18N::translate('Statistics');
+        /* I18N: Name of a module */
+        return I18N::translate('Statistics');
     }
 
     /** {@inheritdoc} */
     public function getDescription()
     {
-        return /* I18N: Description of “Statistics” module */
-            I18N::translate('The size of the family tree, earliest and latest events, common names, etc.');
+        /* I18N: Description of “Statistics” module */
+        return I18N::translate('The size of the family tree, earliest and latest events, common names, etc.');
     }
 
     /**

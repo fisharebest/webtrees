@@ -29,16 +29,16 @@ class MissingFactsReportModule extends AbstractModule implements ModuleReportInt
     public function getTitle()
     {
         // This text also appears in the .XML file - update both together
-        return /* I18N: Name of a module/report */
-            I18N::translate('Missing data');
+        /* I18N: Name of a module/report */
+        return I18N::translate('Missing data');
     }
 
     /** {@inheritdoc} */
     public function getDescription()
     {
         // This text also appears in the .XML file - update both together
-        return /* I18N: Description of the “Missing data” */
-            I18N::translate('A report of the information that is missing for an individual and their relatives.');
+        /* I18N: Description of the “Missing data” */
+        return I18N::translate('A report of the information that is missing for an individual and their relatives.');
     }
 
     /**

@@ -32,8 +32,8 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface
      */
     public function getTitle()
     {
-        return /* I18N: Name of a module/chart */
-            I18N::translate('Fan chart');
+        /* I18N: Name of a module/chart */
+        return I18N::translate('Fan chart');
     }
 
     /**
@@ -43,8 +43,8 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface
      */
     public function getDescription()
     {
-        return /* I18N: Description of the “Fan Chart” module */
-            I18N::translate('A fan chart of an individual’s ancestors.');
+        /* I18N: Description of the “Fan Chart” module */
+        return I18N::translate('A fan chart of an individual’s ancestors.');
     }
 
     /**

@@ -228,18 +228,18 @@ class Date
     public static function calendarNames()
     {
         return [
-            'gregorian' => /* I18N: The gregorian calendar */
-                I18N::translate('Gregorian'),
-            'julian'    => /* I18N: The julian calendar */
-                I18N::translate('Julian'),
-            'french'    => /* I18N: The French calendar */
-                I18N::translate('French'),
-            'jewish'    => /* I18N: The Hebrew/Jewish calendar */
-                I18N::translate('Jewish'),
-            'hijri'     => /* I18N: The Arabic/Hijri calendar */
-                I18N::translate('Hijri'),
-            'jalali'    => /* I18N: The Persian/Jalali calendar */
-                I18N::translate('Jalali'),
+            /* I18N: The gregorian calendar */
+            'gregorian' => I18N::translate('Gregorian'),
+            /* I18N: The julian calendar */
+            'julian'    => I18N::translate('Julian'),
+            /* I18N: The French calendar */
+            'french'    => I18N::translate('French'),
+            /* I18N: The Hebrew/Jewish calendar */
+            'jewish'    => I18N::translate('Jewish'),
+            /* I18N: The Arabic/Hijri calendar */
+            'hijri'     => I18N::translate('Hijri'),
+            /* I18N: The Persian/Jalali calendar */
+            'jalali'    => I18N::translate('Jalali'),
         ];
     }
 
@@ -336,48 +336,48 @@ class Date
                 $tmp = $d1 . $conv1;
                 break;
             case 'ABT':
-                $tmp = /* I18N: Gedcom ABT dates */
-                    I18N::translate('about %s', $d1 . $conv1);
+                /* I18N: Gedcom ABT dates */
+                $tmp = I18N::translate('about %s', $d1 . $conv1);
                 break;
             case 'CAL':
-                $tmp = /* I18N: Gedcom CAL dates */
-                    I18N::translate('calculated %s', $d1 . $conv1);
+                /* I18N: Gedcom CAL dates */
+                $tmp = I18N::translate('calculated %s', $d1 . $conv1);
                 break;
             case 'EST':
-                $tmp = /* I18N: Gedcom EST dates */
-                    I18N::translate('estimated %s', $d1 . $conv1);
+                /* I18N: Gedcom EST dates */
+                $tmp = I18N::translate('estimated %s', $d1 . $conv1);
                 break;
             case 'INT':
-                $tmp = /* I18N: Gedcom INT dates */
-                    I18N::translate('interpreted %s (%s)', $d1 . $conv1, e($this->text));
+                /* I18N: Gedcom INT dates */
+                $tmp = I18N::translate('interpreted %s (%s)', $d1 . $conv1, e($this->text));
                 break;
             case 'BEF':
-                $tmp = /* I18N: Gedcom BEF dates */
-                    I18N::translate('before %s', $d1 . $conv1);
+                /* I18N: Gedcom BEF dates */
+                $tmp = I18N::translate('before %s', $d1 . $conv1);
                 break;
             case 'AFT':
-                $tmp = /* I18N: Gedcom AFT dates */
-                    I18N::translate('after %s', $d1 . $conv1);
+                /* I18N: Gedcom AFT dates */
+                $tmp = I18N::translate('after %s', $d1 . $conv1);
                 break;
             case 'FROM':
-                $tmp = /* I18N: Gedcom FROM dates */
-                    I18N::translate('from %s', $d1 . $conv1);
+                /* I18N: Gedcom FROM dates */
+                $tmp = I18N::translate('from %s', $d1 . $conv1);
                 break;
             case 'TO':
-                $tmp = /* I18N: Gedcom TO dates */
-                    I18N::translate('to %s', $d1 . $conv1);
+                /* I18N: Gedcom TO dates */
+                $tmp = I18N::translate('to %s', $d1 . $conv1);
                 break;
             case 'BETAND':
-                $tmp = /* I18N: Gedcom BET-AND dates */
-                    I18N::translate('between %s and %s', $d1 . $conv1, $d2 . $conv2);
+                /* I18N: Gedcom BET-AND dates */
+                $tmp = I18N::translate('between %s and %s', $d1 . $conv1, $d2 . $conv2);
                 break;
             case 'FROMTO':
-                $tmp = /* I18N: Gedcom FROM-TO dates */
-                    I18N::translate('from %s to %s', $d1 . $conv1, $d2 . $conv2);
+                /* I18N: Gedcom FROM-TO dates */
+                $tmp = I18N::translate('from %s to %s', $d1 . $conv1, $d2 . $conv2);
                 break;
             default:
                 $tmp = I18N::translate('Invalid date');
-                break; // e.g. BET without AND
+                break;
         }
         if ($this->text && !$q1) {
             $tmp = I18N::translate('%1$s (%2$s)', $tmp, e($this->text));

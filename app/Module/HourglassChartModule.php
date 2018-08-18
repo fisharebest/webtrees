@@ -32,8 +32,8 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
      */
     public function getTitle()
     {
-        return /* I18N: Name of a module/chart */
-            I18N::translate('Hourglass chart');
+        /* I18N: Name of a module/chart */
+        return I18N::translate('Hourglass chart');
     }
 
     /**
@@ -43,8 +43,8 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
      */
     public function getDescription()
     {
-        return /* I18N: Description of the “HourglassChart” module */
-            I18N::translate('An hourglass chart of an individual’s ancestors and descendants.');
+        /* I18N: Description of the “HourglassChart” module */
+        return I18N::translate('An hourglass chart of an individual’s ancestors and descendants.');
     }
 
     /**

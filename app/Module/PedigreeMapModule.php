@@ -60,15 +60,15 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
     /** {@inheritdoc} */
     public function getTitle()
     {
-        return /* I18N: Name of a module */
-            I18N::translate('Pedigree map');
+        /* I18N: Name of a module */
+        return I18N::translate('Pedigree map');
     }
 
     /** {@inheritdoc} */
     public function getDescription()
     {
-        return /* I18N: Description of the “OSM” module */
-            I18N::translate('Show the birthplace of ancestors on a map.');
+        /* I18N: Description of the “OSM” module */
+        return I18N::translate('Show the birthplace of ancestors on a map.');
     }
 
     /** {@inheritdoc} */
@@ -322,8 +322,8 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
             'name' => 'modules/pedigree-map/pedigree-map-page',
             'data' => [
                 'module'         => $this->getName(),
-                'title'          => /* I18N: %s is an individual’s name */
-                    I18N::translate('Pedigree map of %s', $individual->getFullName()),
+                /* I18N: %s is an individual’s name */
+                'title'          => I18N::translate('Pedigree map of %s', $individual->getFullName()),
                 'tree'           => $tree,
                 'individual'     => $individual,
                 'generations'    => $generations,

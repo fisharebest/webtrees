@@ -32,8 +32,8 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
      */
     public function getTitle()
     {
-        return /* I18N: Name of a module/chart */
-            I18N::translate('Descendants');
+        /* I18N: Name of a module/chart */
+        return I18N::translate('Descendants');
     }
 
     /**
@@ -43,8 +43,8 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
      */
     public function getDescription()
     {
-        return /* I18N: Description of the “DescendancyChart” module */
-            I18N::translate('A chart of an individual’s descendants.');
+        /* I18N: Description of the “DescendancyChart” module */
+        return I18N::translate('A chart of an individual’s descendants.');
     }
 
     /**

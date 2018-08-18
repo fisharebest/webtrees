@@ -35,15 +35,15 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
     /** {@inheritdoc} */
     public function getTitle()
     {
-        return /* I18N: Name of a module. Tasks that need further research. */
-            I18N::translate('Research tasks');
+        /* I18N: Name of a module. Tasks that need further research. */
+        return I18N::translate('Research tasks');
     }
 
     /** {@inheritdoc} */
     public function getDescription()
     {
-        return /* I18N: Description of “Research tasks” module */
-            I18N::translate('A list of tasks and activities that are linked to the family tree.');
+        /* I18N: Description of “Research tasks” module */
+        return I18N::translate('A list of tasks and activities that are linked to the family tree.');
     }
 
     /**

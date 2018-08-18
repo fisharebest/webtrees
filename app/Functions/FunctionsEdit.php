@@ -792,8 +792,8 @@ class FunctionsEdit
                 'name' => $name,
             ]);
         } elseif ($fact === 'TIME') {
-            $html .= '<input class="form-control" type="text" id="' . $id . '" name="' . $name . '" value="' . e($value) . '" pattern="([0-1][0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?" dir="ltr" placeholder="' . /* I18N: Examples of valid time formats (hours:minutes:seconds) */
-                I18N::translate('hh:mm or hh:mm:ss') . '">';
+            /* I18N: Examples of valid time formats (hours:minutes:seconds) */
+            $html .= '<input class="form-control" type="text" id="' . $id . '" name="' . $name . '" value="' . e($value) . '" pattern="([0-1][0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?" dir="ltr" placeholder="' . I18N::translate('hh:mm or hh:mm:ss') . '">';
         } elseif ($fact === '_WT_USER') {
             $html .= Bootstrap4::select(FunctionsEdit::optionsUsers(), $value, [
                 'id'   => $id,

@@ -455,201 +455,207 @@ class GedcomTag
 
         switch ($tag) {
             case 'ABBR':
-                return /* I18N: gedcom tag ABBR */
-                    I18N::translate('Abbreviation');
+                /* I18N: gedcom tag ABBR */
+                return I18N::translate('Abbreviation');
             case 'ADDR':
-                return /* I18N: gedcom tag ADDR */
-                    I18N::translate('Address');
+                /* I18N: gedcom tag ADDR */
+                return I18N::translate('Address');
             case 'ADR1':
+                /* I18N: gedcom tag ADD1 */
                 return I18N::translate('Address line 1');
             case 'ADR2':
+                /* I18N: gedcom tag ADD2 */
                 return I18N::translate('Address line 2');
             case 'ADOP':
-                return /* I18N: gedcom tag ADOP */
-                    I18N::translate('Adoption');
+                /* I18N: gedcom tag ADOP */
+                return I18N::translate('Adoption');
             case 'ADOP:DATE':
                 return I18N::translate('Date of adoption');
             case 'ADOP:PLAC':
                 return I18N::translate('Place of adoption');
             case 'AFN':
-                return /* I18N: gedcom tag AFN */
-                    I18N::translate('Ancestral file number');
+                /* I18N: gedcom tag AFN */
+                return I18N::translate('Ancestral file number');
             case 'AGE':
-                return /* I18N: gedcom tag AGE */
-                    I18N::translate('Age');
+                /* I18N: gedcom tag AGE */
+                return I18N::translate('Age');
             case 'AGNC':
-                return /* I18N: gedcom tag AGNC */
-                    I18N::translate('Agency');
+                /* I18N: gedcom tag AGNC */
+                return I18N::translate('Agency');
             case 'ALIA':
-                return /* I18N: gedcom tag ALIA */
-                    I18N::translate('Alias');
+                /* I18N: gedcom tag ALIA */
+                return I18N::translate('Alias');
             case 'ANCE':
-                return /* I18N: gedcom tag ANCE */
-                    I18N::translate('Generations of ancestors');
+                /* I18N: gedcom tag ANCE */
+                return I18N::translate('Generations of ancestors');
             case 'ANCI':
-                return /* I18N: gedcom tag ANCI */
-                    I18N::translate('Ancestors interest');
+                /* I18N: gedcom tag ANCI */
+                return I18N::translate('Ancestors interest');
             case 'ANUL':
-                return /* I18N: gedcom tag ANUL */
-                    I18N::translate('Annulment');
+                /* I18N: gedcom tag ANUL */
+                return I18N::translate('Annulment');
             case 'ASSO':
-                return /* I18N: gedcom tag ASSO */
-                    I18N::translate('Associate'); /* see also _ASSO */
+                /* I18N: gedcom tag ASSO */
+                return I18N::translate('Associate');
             case 'AUTH':
-                return /* I18N: gedcom tag AUTH */
-                    I18N::translate('Author');
+                /* I18N: gedcom tag AUTH */
+                return I18N::translate('Author');
             case 'BAPL':
-                return /* I18N: gedcom tag BAPL. LDS = Church of Latter Day Saints. */
-                    I18N::translate('LDS baptism');
+                /* I18N: gedcom tag BAPL. LDS = Church of Latter Day Saints. */
+                return I18N::translate('LDS baptism');
             case 'BAPL:DATE':
-                return /* I18N: LDS = Church of Latter Day Saints. */
-                    I18N::translate('Date of LDS baptism');
+                /* I18N: LDS = Church of Latter Day Saints. */
+                return I18N::translate('Date of LDS baptism');
             case 'BAPL:PLAC':
-                return /* I18N: LDS = Church of Latter Day Saints. */
-                    I18N::translate('Place of LDS baptism');
+                /* I18N: LDS = Church of Latter Day Saints. */
+                return I18N::translate('Place of LDS baptism');
             case 'BAPM':
-                return /* I18N: gedcom tag BAPM */
-                    I18N::translate('Baptism');
+                /* I18N: gedcom tag BAPM */
+                return I18N::translate('Baptism');
             case 'BAPM:DATE':
                 return I18N::translate('Date of baptism');
             case 'BAPM:PLAC':
                 return I18N::translate('Place of baptism');
             case 'BARM':
-                return /* I18N: gedcom tag BARM */
-                    I18N::translate('Bar mitzvah');
+                /* I18N: gedcom tag BARM */
+                return I18N::translate('Bar mitzvah');
             case 'BARM:DATE':
                 return I18N::translate('Date of bar mitzvah');
             case 'BARM:PLAC':
                 return I18N::translate('Place of bar mitzvah');
             case 'BASM':
-                return /* I18N: gedcom tag BASM */
-                    I18N::translate('Bat mitzvah');
+                /* I18N: gedcom tag BASM */
+                return I18N::translate('Bat mitzvah');
             case 'BASM:DATE':
                 return I18N::translate('Date of bat mitzvah');
             case 'BASM:PLAC':
                 return I18N::translate('Place of bat mitzvah');
             case 'BIRT':
-                return /* I18N: gedcom tag BIRT */
-                    I18N::translate('Birth');
+                /* I18N: gedcom tag BIRT */
+                return I18N::translate('Birth');
             case 'BIRT:DATE':
                 return I18N::translate('Date of birth');
             case 'BIRT:PLAC':
                 return I18N::translate('Place of birth');
             case 'BLES':
-                return /* I18N: gedcom tag BLES */
-                    I18N::translate('Blessing');
+                /* I18N: gedcom tag BLES */
+                return I18N::translate('Blessing');
             case 'BLES:DATE':
                 return I18N::translate('Date of blessing');
             case 'BLES:PLAC':
                 return I18N::translate('Place of blessing');
             case 'BLOB':
-                return /* I18N: gedcom tag BLOB */
-                    I18N::translate('Binary data object');
+                /* I18N: gedcom tag BLOB */
+                return I18N::translate('Binary data object');
             case 'BURI':
-                return /* I18N: gedcom tag BURI */
-                    I18N::translate('Burial');
+                /* I18N: gedcom tag BURI */
+                return I18N::translate('Burial');
             case 'BURI:DATE':
                 return I18N::translate('Date of burial');
             case 'BURI:PLAC':
                 return I18N::translate('Place of burial');
             case 'CALN':
-                return /* I18N: gedcom tag CALN */
-                    I18N::translate('Call number');
+                /* I18N: gedcom tag CALN */
+                return I18N::translate('Call number');
             case 'CAST':
-                return /* I18N: gedcom tag CAST */
-                    I18N::translate('Caste');
+                /* I18N: gedcom tag CAST */
+                return I18N::translate('Caste');
             case 'CAUS':
-                return /* I18N: gedcom tag CAUS */
-                    I18N::translate('Cause');
+                /* I18N: gedcom tag CAUS */
+                return I18N::translate('Cause');
             case 'CEME':
-                return /* I18N: gedcom tag CEME */
-                    I18N::translate('Cemetery');
+                /* I18N: gedcom tag CEME */
+                return I18N::translate('Cemetery');
             case 'CENS':
-                return /* I18N: gedcom tag CENS */
-                    I18N::translate('Census');
+                /* I18N: gedcom tag CENS */
+                return I18N::translate('Census');
             case 'CENS:DATE':
                 return I18N::translate('Census date');
             case 'CENS:PLAC':
                 return I18N::translate('Census place');
-            case '_UPD': // Family Tree Builder uses "1 _UPD 14 APR 2012 00:14:10 GMT-5" instead of 1 CHAN/2 DATE/3 TIME
+            case '_UPD':
+                // Family Tree Builder uses "1 _UPD 14 APR 2012 00:14:10 GMT-5" instead of 1 CHAN/2 DATE/3 TIME
+                // no break
             case 'CHAN':
-                return /* I18N: gedcom tag CHAN */
-                    I18N::translate('Last change');
+            /* I18N: gedcom tag CHAN */
+                return I18N::translate('Last change');
             case 'CHAN:DATE':
-                return /* I18N: gedcom tag CHAN:DATE */
-                    I18N::translate('Date of last change');
+                /* I18N: gedcom tag CHAN:DATE */
+                return I18N::translate('Date of last change');
             case 'CHAN:_WT_USER':
-                return /* I18N: gedcom tag CHAN:_WT_USER */
-                    I18N::translate('Author of last change');
+                /* I18N: gedcom tag CHAN:_WT_USER */
+                return I18N::translate('Author of last change');
             case 'CHAR':
-                return /* I18N: gedcom tag CHAR */
-                    I18N::translate('Character set');
+                /* I18N: gedcom tag CHAR */
+                return I18N::translate('Character set');
             case 'CHIL':
-                return /* I18N: gedcom tag CHIL */
-                    I18N::translate('Child');
+                /* I18N: gedcom tag CHIL */
+                return I18N::translate('Child');
             case 'CHR':
-                return /* I18N: gedcom tag CHR */
-                    I18N::translate('Christening');
+                /* I18N: gedcom tag CHR */
+                return I18N::translate('Christening');
             case 'CHR:DATE':
                 return I18N::translate('Date of christening');
             case 'CHR:PLAC':
                 return I18N::translate('Place of christening');
             case 'CHRA':
-                return /* I18N: gedcom tag CHRA */
-                    I18N::translate('Adult christening');
+                /* I18N: gedcom tag CHRA */
+                return I18N::translate('Adult christening');
             case 'CITN':
-                return /* I18N: gedcom tag CITN */
-                    I18N::translate('Citizenship');
+                /* I18N: gedcom tag CITN */
+                return I18N::translate('Citizenship');
             case 'CITY':
-                return /* I18N: gedcom tag CITY */
-                    I18N::translate('City');
+                /* I18N: gedcom tag CITY */
+                return I18N::translate('City');
             case 'COMM':
-                return /* I18N: gedcom tag COMM */
-                    I18N::translate('Comment');
+                /* I18N: gedcom tag COMM */
+                return I18N::translate('Comment');
             case 'CONC':
-                return /* I18N: gedcom tag CONC */
-                    I18N::translate('Concatenation');
+                /* I18N: gedcom tag CONC */
+                return I18N::translate('Concatenation');
             case 'CONT':
-                return /* I18N: gedcom tag CONT */
-                    I18N::translate('Continued');
+                /* I18N: gedcom tag CONT */
+                return I18N::translate('Continued');
             case 'CONF':
-                return /* I18N: gedcom tag CONF */
-                    I18N::translate('Confirmation');
+                /* I18N: gedcom tag CONF */
+                return I18N::translate('Confirmation');
             case 'CONF:DATE':
                 return I18N::translate('Date of confirmation');
             case 'CONF:PLAC':
                 return I18N::translate('Place of confirmation');
             case 'CONL':
-                return /* I18N: gedcom tag CONL. LDS = Church of Latter Day Saints. */
-                    I18N::translate('LDS confirmation');
+                /* I18N: gedcom tag CONL. LDS = Church of Latter Day Saints. */
+                return I18N::translate('LDS confirmation');
             case 'COPR':
-                return /* I18N: gedcom tag COPR */
-                    I18N::translate('Copyright');
+                /* I18N: gedcom tag COPR */
+                return I18N::translate('Copyright');
             case 'CORP':
-                return /* I18N: gedcom tag CORP */
-                    I18N::translate('Corporation');
+                /* I18N: gedcom tag CORP */
+                return I18N::translate('Corporation');
             case 'CREM':
-                return /* I18N: gedcom tag CREM */
-                    I18N::translate('Cremation');
+                /* I18N: gedcom tag CREM */
+                return I18N::translate('Cremation');
             case 'CREM:DATE':
                 return I18N::translate('Date of cremation');
             case 'CREM:PLAC':
                 return I18N::translate('Place of cremation');
             case 'CTRY':
-                return /* I18N: gedcom tag CTRY */
-                    I18N::translate('Country');
+                /* I18N: gedcom tag CTRY */
+                return I18N::translate('Country');
             case 'DATA':
-                return /* I18N: gedcom tag DATA */
-                    I18N::translate('Data');
+                /* I18N: gedcom tag DATA */
+                return I18N::translate('Data');
             case 'DATA:DATE':
                 return I18N::translate('Date of entry in original source');
-            case '_DATE': // Family Tree Builder uses OBJE:_DATE
+            case '_DATE':
+                // Family Tree Builder uses OBJE:_DATE
+                // no break
             case 'DATE':
-                return /* I18N: gedcom tag DATE */
-                    I18N::translate('Date');
+                /* I18N: gedcom tag DATE */
+                return I18N::translate('Date');
             case 'DEAT':
-                return /* I18N: gedcom tag DEAT */
-                    I18N::translate('Death');
+                /* I18N: gedcom tag DEAT */
+                return I18N::translate('Death');
             case 'DEAT:CAUS':
                 return I18N::translate('Cause of death');
             case 'DEAT:DATE':
@@ -657,59 +663,61 @@ class GedcomTag
             case 'DEAT:PLAC':
                 return I18N::translate('Place of death');
             case 'DESC':
-                return /* I18N: gedcom tag DESC */
-                    I18N::translate('Descendants');
+                /* I18N: gedcom tag DESC */
+                return I18N::translate('Descendants');
             case 'DESI':
-                return /* I18N: gedcom tag DESI */
-                    I18N::translate('Descendants interest');
+                /* I18N: gedcom tag DESI */
+                return I18N::translate('Descendants interest');
             case 'DEST':
-                return /* I18N: gedcom tag DEST */
-                    I18N::translate('Destination');
+                /* I18N: gedcom tag DEST */
+                return I18N::translate('Destination');
             case 'DIV':
-                return /* I18N: gedcom tag DIV */
-                    I18N::translate('Divorce');
+                /* I18N: gedcom tag DIV */
+                return I18N::translate('Divorce');
             case 'DIVF':
-                return /* I18N: gedcom tag DIVF */
-                    I18N::translate('Divorce filed');
+                /* I18N: gedcom tag DIVF */
+                return I18N::translate('Divorce filed');
             case 'DSCR':
-                return /* I18N: gedcom tag DSCR */
-                    I18N::translate('Description');
+                /* I18N: gedcom tag DSCR */
+                return I18N::translate('Description');
             case 'EDUC':
-                return /* I18N: gedcom tag EDUC */
-                    I18N::translate('Education');
+                /* I18N: gedcom tag EDUC */
+                return I18N::translate('Education');
             case 'EDUC:AGNC':
                 return I18N::translate('School or college');
             case 'EMAI':
+                // no break
             case 'EMAL':
+                // no break
             case 'EMAIL':
-                return /* I18N: gedcom tag EMAIL */
-                    I18N::translate('Email address');
+                /* I18N: gedcom tag EMAIL */
+                return I18N::translate('Email address');
             case 'EMIG':
-                return /* I18N: gedcom tag EMIG */
-                    I18N::translate('Emigration');
+                /* I18N: gedcom tag EMIG */
+                return I18N::translate('Emigration');
             case 'EMIG:DATE':
                 return I18N::translate('Date of emigration');
             case 'EMIG:PLAC':
                 return I18N::translate('Place of emigration');
             case 'ENDL':
-                return /* I18N: gedcom tag ENDL. LDS = Church of Latter Day Saints. */
-                    I18N::translate('LDS endowment');
+                /* I18N: gedcom tag ENDL. LDS = Church of Latter Day Saints. */
+                return I18N::translate('LDS endowment');
             case 'ENDL:DATE':
-                return /* I18N: LDS = Church of Latter Day Saints. */
-                    I18N::translate('Date of LDS endowment');
+                /* I18N: LDS = Church of Latter Day Saints. */
+                return I18N::translate('Date of LDS endowment');
             case 'ENDL:PLAC':
-                return /* I18N: LDS = Church of Latter Day Saints. */
-                    I18N::translate('Place of LDS endowment');
+                /* I18N: LDS = Church of Latter Day Saints. */
+                return I18N::translate('Place of LDS endowment');
             case 'ENGA':
-                return /* I18N: gedcom tag ENGA */
-                    I18N::translate('Engagement');
+                /* I18N: gedcom tag ENGA */
+                return I18N::translate('Engagement');
             case 'ENGA:DATE':
                 return I18N::translate('Date of engagement');
             case 'ENGA:PLAC':
                 return I18N::translate('Place of engagement');
             case 'EVEN':
-                return /* I18N: gedcom tag EVEN */
-                    I18N::translate('Event');
+                /* I18N: gedcom tag EVEN */
+                return I18N::translate('Event');
             case 'EVEN:DATE':
                 return I18N::translate('Date of event');
             case 'EVEN:PLAC':
@@ -717,22 +725,22 @@ class GedcomTag
             case 'EVEN:TYPE':
                 return I18N::translate('Type of event');
             case 'FACT':
-                return /* I18N: gedcom tag FACT */
-                    I18N::translate('Fact');
+                /* I18N: gedcom tag FACT */
+                return I18N::translate('Fact');
             case 'FACT:TYPE':
                 return I18N::translate('Type of fact');
             case 'FAM':
-                return /* I18N: gedcom tag FAM */
-                    I18N::translate('Family');
+                /* I18N: gedcom tag FAM */
+                return I18N::translate('Family');
             case 'FAMC':
-                return /* I18N: gedcom tag FAMC */
-                    I18N::translate('Family as a child');
+                /* I18N: gedcom tag FAMC */
+                return I18N::translate('Family as a child');
             case 'FAMF':
-                return /* I18N: gedcom tag FAMF */
-                    I18N::translate('Family file');
+                /* I18N: gedcom tag FAMF */
+                return I18N::translate('Family file');
             case 'FAMS':
-                return /* I18N: gedcom tag FAMS */
-                    I18N::translate('Family as a spouse');
+                /* I18N: gedcom tag FAMS */
+                return I18N::translate('Family as a spouse');
             case 'FAMS:CENS:DATE':
                 return I18N::translate('Spouse census date');
             case 'FAMS:CENS:PLAC':
@@ -746,92 +754,92 @@ class GedcomTag
             case 'FAMS:NOTE':
                 return I18N::translate('Spouse note');
             case 'FAMS:SLGS:DATE':
-                return /* I18N: LDS = Church of Latter Day Saints. */
-                    I18N::translate('Date of LDS spouse sealing');
+                /* I18N: LDS = Church of Latter Day Saints. */
+                return I18N::translate('Date of LDS spouse sealing');
             case 'FAMS:SLGS:PLAC':
-                return /* I18N: LDS = Church of Latter Day Saints. */
-                    I18N::translate('Place of LDS spouse sealing');
+                /* I18N: LDS = Church of Latter Day Saints. */
+                return I18N::translate('Place of LDS spouse sealing');
             case 'FAX':
-                return /* I18N: gedcom tag FAX */
-                    I18N::translate('Fax');
+                /* I18N: gedcom tag FAX */
+                return I18N::translate('Fax');
             case 'FCOM':
-                return /* I18N: gedcom tag FCOM */
-                    I18N::translate('First communion');
+                /* I18N: gedcom tag FCOM */
+                return I18N::translate('First communion');
             case 'FCOM:DATE':
                 return I18N::translate('Date of first communion');
             case 'FCOM:PLAC':
                 return I18N::translate('Place of first communion');
             case 'FILE':
-                return /* I18N: gedcom tag FILE */
-                    I18N::translate('Filename');
+                /* I18N: gedcom tag FILE */
+                return I18N::translate('Filename');
             case 'FONE':
-                return /* I18N: gedcom tag FONE */
-                    I18N::translate('Phonetic');
+                /* I18N: gedcom tag FONE */
+                return I18N::translate('Phonetic');
             case 'FORM':
-                return /* I18N: gedcom tag FORM */
-                    I18N::translate('Format');
+                /* I18N: gedcom tag FORM */
+                return I18N::translate('Format');
             case 'GEDC':
-                return /* I18N: gedcom tag GEDC */
-                    I18N::translate('GEDCOM file');
+                /* I18N: gedcom tag GEDC */
+                return I18N::translate('GEDCOM file');
             case 'GIVN':
-                return /* I18N: gedcom tag GIVN */
-                    I18N::translate('Given names');
+                /* I18N: gedcom tag GIVN */
+                return I18N::translate('Given names');
             case 'GRAD':
-                return /* I18N: gedcom tag GRAD */
-                    I18N::translate('Graduation');
+                /* I18N: gedcom tag GRAD */
+                return I18N::translate('Graduation');
             case 'HEAD':
-                return /* I18N: gedcom tag HEAD */
-                    I18N::translate('Header');
+                /* I18N: gedcom tag HEAD */
+                return I18N::translate('Header');
             case 'HUSB':
-                return /* I18N: gedcom tag HUSB */
-                    I18N::translate('Husband');
+                /* I18N: gedcom tag HUSB */
+                return I18N::translate('Husband');
             case 'IDNO':
-                return /* I18N: gedcom tag IDNO */
-                    I18N::translate('Identification number');
+                /* I18N: gedcom tag IDNO */
+                return I18N::translate('Identification number');
             case 'IMMI':
-                return /* I18N: gedcom tag IMMI */
-                    I18N::translate('Immigration');
+                /* I18N: gedcom tag IMMI */
+                return I18N::translate('Immigration');
             case 'IMMI:DATE':
                 return I18N::translate('Date of immigration');
             case 'IMMI:PLAC':
                 return I18N::translate('Place of immigration');
             case 'INDI':
-                return /* I18N: gedcom tag INDI */
-                    I18N::translate('Individual');
+                /* I18N: gedcom tag INDI */
+                return I18N::translate('Individual');
             case 'INFL':
-                return /* I18N: gedcom tag INFL */
-                    I18N::translate('Infant');
+                /* I18N: gedcom tag INFL */
+                return I18N::translate('Infant');
             case 'LANG':
-                return /* I18N: gedcom tag LANG */
-                    I18N::translate('Language');
+                /* I18N: gedcom tag LANG */
+                return I18N::translate('Language');
             case 'LATI':
-                return /* I18N: gedcom tag LATI */
-                    I18N::translate('Latitude');
+                /* I18N: gedcom tag LATI */
+                return I18N::translate('Latitude');
             case 'LEGA':
-                return /* I18N: gedcom tag LEGA */
-                    I18N::translate('Legatee');
+                /* I18N: gedcom tag LEGA */
+                return I18N::translate('Legatee');
             case 'LONG':
-                return /* I18N: gedcom tag LONG */
-                    I18N::translate('Longitude');
+                /* I18N: gedcom tag LONG */
+                return I18N::translate('Longitude');
             case 'MAP':
-                return /* I18N: gedcom tag MAP */
-                    I18N::translate('Map');
+                /* I18N: gedcom tag MAP */
+                return I18N::translate('Map');
             case 'MARB':
-                return /* I18N: gedcom tag MARB */
-                    I18N::translate('Marriage banns');
+                /* I18N: gedcom tag MARB */
+                return I18N::translate('Marriage banns');
             case 'MARB:DATE':
                 return I18N::translate('Date of marriage banns');
             case 'MARB:PLAC':
                 return I18N::translate('Place of marriage banns');
             case 'MARC':
-                return /* I18N: gedcom tag MARC */
-                    I18N::translate('Marriage contract');
+                /* I18N: gedcom tag MARC */
+                return I18N::translate('Marriage contract');
             case 'MARL':
-                return /* I18N: gedcom tag MARL */
-                    I18N::translate('Marriage license');
+                /* I18N: gedcom tag MARL */
+                return I18N::translate('Marriage license');
             case 'MARR':
-                return /* I18N: gedcom tag MARR */
-                    I18N::translate('Marriage');
+                /* I18N: gedcom tag MARR */
+                return I18N::translate('Marriage');
             case 'MARR:DATE':
                 return I18N::translate('Date of marriage');
             case 'MARR:PLAC':
@@ -845,65 +853,65 @@ class GedcomTag
             case 'MARR_UNKNOWN':
                 return I18N::translate('Marriage type unknown');
             case 'MARS':
-                return /* I18N: gedcom tag MARS */
-                    I18N::translate('Marriage settlement');
+                /* I18N: gedcom tag MARS */
+                return I18N::translate('Marriage settlement');
             case 'MEDI':
-                return /* I18N: gedcom tag MEDI */
-                    I18N::translate('Media type');
+                /* I18N: gedcom tag MEDI */
+                return I18N::translate('Media type');
             case 'NAME':
                 if ($record instanceof Repository) {
-                    return /* I18N: gedcom tag REPO:NAME */
-                        I18N::translateContext('Repository', 'Name');
+                    /* I18N: gedcom tag REPO:NAME */
+                    return I18N::translateContext('Repository', 'Name');
                 } else {
-                    return /* I18N: gedcom tag NAME */
-                        I18N::translate('Name');
+                    /* I18N: gedcom tag NAME */
+                    return I18N::translate('Name');
                 }
             case 'NAME:FONE':
                 return I18N::translate('Phonetic name');
             case 'NAME:_HEB':
                 return I18N::translate('Name in Hebrew');
             case 'NATI':
-                return /* I18N: gedcom tag NATI */
-                    I18N::translate('Nationality');
+                /* I18N: gedcom tag NATI */
+                return I18N::translate('Nationality');
             case 'NATU':
-                return /* I18N: gedcom tag NATU */
-                    I18N::translate('Naturalization');
+                /* I18N: gedcom tag NATU */
+                return I18N::translate('Naturalization');
             case 'NATU:DATE':
                 return I18N::translate('Date of naturalization');
             case 'NATU:PLAC':
                 return I18N::translate('Place of naturalization');
             case 'NCHI':
-                return /* I18N: gedcom tag NCHI */
-                    I18N::translate('Number of children');
+                /* I18N: gedcom tag NCHI */
+                return I18N::translate('Number of children');
             case 'NICK':
-                return /* I18N: gedcom tag NICK */
-                    I18N::translate('Nickname');
+                /* I18N: gedcom tag NICK */
+                return I18N::translate('Nickname');
             case 'NMR':
-                return /* I18N: gedcom tag NMR */
-                    I18N::translate('Number of marriages');
+                /* I18N: gedcom tag NMR */
+                return I18N::translate('Number of marriages');
             case 'NOTE':
-                return /* I18N: gedcom tag NOTE */
-                    I18N::translate('Note');
+                /* I18N: gedcom tag NOTE */
+                return I18N::translate('Note');
             case 'NPFX':
-                return /* I18N: gedcom tag NPFX */
-                    I18N::translate('Name prefix');
+                /* I18N: gedcom tag NPFX */
+                return I18N::translate('Name prefix');
             case 'NSFX':
-                return /* I18N: gedcom tag NSFX */
-                    I18N::translate('Name suffix');
+                /* I18N: gedcom tag NSFX */
+                return I18N::translate('Name suffix');
             case 'OBJE':
-                return /* I18N: gedcom tag OBJE */
-                    I18N::translate('Media object');
+                /* I18N: gedcom tag OBJE */
+                return I18N::translate('Media object');
             case 'OCCU':
-                return /* I18N: gedcom tag OCCU */
-                    I18N::translate('Occupation');
+                /* I18N: gedcom tag OCCU */
+                return I18N::translate('Occupation');
             case 'OCCU:AGNC':
                 return I18N::translate('Employer');
             case 'ORDI':
-                return /* I18N: gedcom tag ORDI */
-                    I18N::translate('Ordinance');
+                /* I18N: gedcom tag ORDI */
+                return I18N::translate('Ordinance');
             case 'ORDN':
-                return /* I18N: gedcom tag ORDN */
-                    I18N::translate('Ordination');
+                /* I18N: gedcom tag ORDN */
+                return I18N::translate('Ordination');
             case 'ORDN:AGNC':
                 return I18N::translate('Religious institution');
             case 'ORDN:DATE':
@@ -911,18 +919,20 @@ class GedcomTag
             case 'ORDN:PLAC':
                 return I18N::translate('Place of ordination');
             case 'PAGE':
-                return /* I18N: gedcom tag PAGE */
-                    I18N::translate('Citation details');
+                /* I18N: gedcom tag PAGE */
+                return I18N::translate('Citation details');
             case 'PEDI':
-                return /* I18N: gedcom tag PEDI */
-                    I18N::translate('Relationship to parents');
+                /* I18N: gedcom tag PEDI */
+                return I18N::translate('Relationship to parents');
             case 'PHON':
-                return /* I18N: gedcom tag PHON */
-                    I18N::translate('Phone');
-            case '_PLACE': // Family Tree Builder uses OBJE:_PLACE
+                /* I18N: gedcom tag PHON */
+                return I18N::translate('Phone');
+            case '_PLACE':
+                // Family Tree Builder uses OBJE:_PLACE
+                // no break
             case 'PLAC':
-                return /* I18N: gedcom tag PLAC */
-                    I18N::translate('Place');
+            /* I18N: gedcom tag PLAC */
+                return I18N::translate('Place');
             case 'PLAC:FONE':
                 return I18N::translate('Phonetic place');
             case 'PLAC:ROMN':
@@ -930,119 +940,123 @@ class GedcomTag
             case 'PLAC:_HEB':
                 return I18N::translate('Place in Hebrew');
             case 'POST':
-                return /* I18N: gedcom tag POST */
-                    I18N::translate('Postal code');
+                /* I18N: gedcom tag POST */
+                return I18N::translate('Postal code');
             case 'PROB':
-                return /* I18N: gedcom tag PROB */
-                    I18N::translate('Probate');
+                /* I18N: gedcom tag PROB */
+                return I18N::translate('Probate');
             case 'PROP':
-                return /* I18N: gedcom tag PROP */
-                    I18N::translate('Property');
+                /* I18N: gedcom tag PROP */
+                return I18N::translate('Property');
             case 'PUBL':
-                return /* I18N: gedcom tag PUBL */
-                    I18N::translate('Publication');
+                /* I18N: gedcom tag PUBL */
+                return I18N::translate('Publication');
             case 'QUAY':
-                return /* I18N: gedcom tag QUAY */
-                    I18N::translate('Quality of data');
+                /* I18N: gedcom tag QUAY */
+                return I18N::translate('Quality of data');
             case 'REFN':
-                return /* I18N: gedcom tag REFN */
-                    I18N::translate('Reference number');
+                /* I18N: gedcom tag REFN */
+                return I18N::translate('Reference number');
             case 'RELA':
-                return /* I18N: gedcom tag RELA */
-                    I18N::translate('Relationship');
+                /* I18N: gedcom tag RELA */
+                return I18N::translate('Relationship');
             case 'RELI':
-                return /* I18N: gedcom tag RELI */
-                    I18N::translate('Religion');
+                /* I18N: gedcom tag RELI */
+                return I18N::translate('Religion');
             case 'REPO':
-                return /* I18N: gedcom tag REPO */
-                    I18N::translate('Repository');
+                /* I18N: gedcom tag REPO */
+                return I18N::translate('Repository');
             case 'RESI':
-                return /* I18N: gedcom tag RESI */
-                    I18N::translate('Residence');
+                /* I18N: gedcom tag RESI */
+                return I18N::translate('Residence');
             case 'RESI:DATE':
                 return I18N::translate('Date of residence');
             case 'RESI:PLAC':
                 return I18N::translate('Place of residence');
             case 'RESN':
-                return /* I18N: gedcom tag RESN */
-                    I18N::translate('Restriction');
+                /* I18N: gedcom tag RESN */
+                return I18N::translate('Restriction');
             case 'RETI':
-                return /* I18N: gedcom tag RETI */
-                    I18N::translate('Retirement');
+                /* I18N: gedcom tag RETI */
+                return I18N::translate('Retirement');
             case 'RETI:AGNC':
                 return I18N::translate('Employer');
             case 'RFN':
-                return /* I18N: gedcom tag RFN */
-                    I18N::translate('Record file number');
-            case '_PHOTO_RIN': // Family Tree Builder uses "0 OBJE/1 _PHOTO_RIN"
-            case '_PRIN': // Family Tree Builder uses "0 _ALBUM/1 _PHOTO/2 _PRIN"
+                /* I18N: gedcom tag RFN */
+                return I18N::translate('Record file number');
+            case '_PHOTO_RIN':
+                // Family Tree Builder uses "0 OBJE/1 _PHOTO_RIN"
+                // no  break
+            case '_PRIN':
+                // Family Tree Builder uses "0 _ALBUM/1 _PHOTO/2 _PRIN"
+                // no break
             case 'RIN':
-                return /* I18N: gedcom tag RIN */
-                    I18N::translate('Record ID number');
+                /* I18N: gedcom tag RIN */
+                return I18N::translate('Record ID number');
             case 'ROLE':
-                return /* I18N: gedcom tag ROLE */
-                    I18N::translate('Role');
+                /* I18N: gedcom tag ROLE */
+                return I18N::translate('Role');
             case 'ROMN':
-                return /* I18N: gedcom tag ROMN */
-                    I18N::translate('Romanized');
+                /* I18N: gedcom tag ROMN */
+                return I18N::translate('Romanized');
             case 'SERV':
-                return /* I18N: gedcom tag SERV */
-                    I18N::translate('Remote server');
+                /* I18N: gedcom tag SERV */
+                return I18N::translate('Remote server');
             case 'SEX':
-                return /* I18N: gedcom tag SEX */
-                    I18N::translate('Gender');
+                /* I18N: gedcom tag SEX */
+                return I18N::translate('Gender');
             case 'SHARED_NOTE':
                 return I18N::translate('Shared note');
             case 'SLGC':
-                return /* I18N: gedcom tag SLGC. LDS = Church of Latter Day Saints. */
-                    I18N::translate('LDS child sealing');
+                /* I18N: gedcom tag SLGC. LDS = Church of Latter Day Saints. */
+                return I18N::translate('LDS child sealing');
             case 'SLGC:DATE':
-                return /* I18N: LDS = Church of Latter Day Saints. */
-                    I18N::translate('Date of LDS child sealing');
+                /* I18N: LDS = Church of Latter Day Saints. */
+                return I18N::translate('Date of LDS child sealing');
             case 'SLGC:PLAC':
-                return /* I18N: LDS = Church of Latter Day Saints. */
-                    I18N::translate('Place of LDS child sealing');
+                /* I18N: LDS = Church of Latter Day Saints. */
+                return I18N::translate('Place of LDS child sealing');
             case 'SLGS':
-                return /* I18N: gedcom tag SLGS. LDS = Church of Latter Day Saints. */
-                    I18N::translate('LDS spouse sealing');
+                /* I18N: gedcom tag SLGS. LDS = Church of Latter Day Saints. */
+                return I18N::translate('LDS spouse sealing');
             case 'SOUR':
-                return /* I18N: gedcom tag SOUR */
-                    I18N::translate('Source');
+                /* I18N: gedcom tag SOUR */
+                return I18N::translate('Source');
             case 'SPFX':
-                return /* I18N: gedcom tag SPFX */
-                    I18N::translate('Surname prefix');
+                /* I18N: gedcom tag SPFX */
+                return I18N::translate('Surname prefix');
             case 'SSN':
-                return /* I18N: gedcom tag SSN */
-                    I18N::translate('Social security number');
+                /* I18N: gedcom tag SSN */
+                return I18N::translate('Social security number');
             case 'STAE':
-                return /* I18N: gedcom tag STAE */
-                    I18N::translate('State');
+                /* I18N: gedcom tag STAE */
+                return I18N::translate('State');
             case 'STAT':
-                return /* I18N: gedcom tag STAT */
-                    I18N::translate('Status');
+                /* I18N: gedcom tag STAT */
+                return I18N::translate('Status');
             case 'STAT:DATE':
                 return I18N::translate('Status change date');
             case 'SUBM':
-                return /* I18N: gedcom tag SUBM */
-                    I18N::translate('Submitter');
+                /* I18N: gedcom tag SUBM */
+                return I18N::translate('Submitter');
             case 'SUBN':
-                return /* I18N: gedcom tag SUBN */
-                    I18N::translate('Submission');
+                /* I18N: gedcom tag SUBN */
+                return I18N::translate('Submission');
             case 'SURN':
-                return /* I18N: gedcom tag SURN */
-                    I18N::translate('Surname');
+                /* I18N: gedcom tag SURN */
+                return I18N::translate('Surname');
             case 'TEMP':
-                return /* I18N: gedcom tag TEMP */
-                    I18N::translate('Temple');
+                /* I18N: gedcom tag TEMP */
+                return I18N::translate('Temple');
             case 'TEXT':
-                return /* I18N: gedcom tag TEXT */
-                    I18N::translate('Text');
+                /* I18N: gedcom tag TEXT */
+                return I18N::translate('Text');
             case 'TIME':
-                return /* I18N: gedcom tag TIME */
-                    I18N::translate('Time');
+                /* I18N: gedcom tag TIME */
+                return I18N::translate('Time');
             case 'TITL':
-                return /* I18N: gedcom tag TITL */
-                    I18N::translate('Title');
+                /* I18N: gedcom tag TITL */
+                return I18N::translate('Title');
             case 'TITL:FONE':
                 return I18N::translate('Phonetic title');
             case 'TITL:ROMN':
@@ -1050,26 +1064,26 @@ class GedcomTag
             case 'TITL:_HEB':
                 return I18N::translate('Title in Hebrew');
             case 'TRLR':
-                return /* I18N: gedcom tag TRLR */
-                    I18N::translate('Trailer');
+                /* I18N: gedcom tag TRLR */
+                return I18N::translate('Trailer');
             case 'TYPE':
-                return /* I18N: gedcom tag TYPE */
-                    I18N::translate('Type');
+                /* I18N: gedcom tag TYPE */
+                return I18N::translate('Type');
             case 'URL':
-                return /* I18N: gedcom tag URL (A web address / URL) */
-                    I18N::translate('URL');
+                /* I18N: gedcom tag URL (A web address / URL) */
+                return I18N::translate('URL');
             case 'VERS':
-                return /* I18N: gedcom tag VERS */
-                    I18N::translate('Version');
+                /* I18N: gedcom tag VERS */
+                return I18N::translate('Version');
             case 'WIFE':
-                return /* I18N: gedcom tag WIFE */
-                    I18N::translate('Wife');
+                /* I18N: gedcom tag WIFE */
+                return I18N::translate('Wife');
             case 'WILL':
-                return /* I18N: gedcom tag WILL */
-                    I18N::translate('Will');
+                /* I18N: gedcom tag WILL */
+                return I18N::translate('Will');
             case 'WWW':
-                return /* I18N: gedcom tag WWW (A web address / URL) */
-                    I18N::translate('URL');
+                /* I18N: gedcom tag WWW (A web address / URL) */
+                return I18N::translate('URL');
             case '_ADOP_CHIL':
                 switch ($sex) {
                     case 'M':
@@ -1127,46 +1141,47 @@ class GedcomTag
             case '_ADPF':
                 switch ($sex) {
                     case 'M':
-                        return /* I18N: gedcom tag _ADPF */
-                            I18N::translateContext('MALE', 'Adopted by father');
+                        /* I18N: gedcom tag _ADPF */
+                        return I18N::translateContext('MALE', 'Adopted by father');
                     case 'F':
-                        return /* I18N: gedcom tag _ADPF */
-                            I18N::translateContext('FEMALE', 'Adopted by father');
+                        /* I18N: gedcom tag _ADPF */
+                        return I18N::translateContext('FEMALE', 'Adopted by father');
                     default:
-                        return /* I18N: gedcom tag _ADPF */
-                            I18N::translate('Adopted by father');
+                        /* I18N: gedcom tag _ADPF */
+                        return I18N::translate('Adopted by father');
                 }
             case '_ADPM':
                 switch ($sex) {
                     case 'M':
-                        return /* I18N: gedcom tag _ADPM */
-                            I18N::translateContext('MALE', 'Adopted by mother');
+                        /* I18N: gedcom tag _ADPM */
+                        return I18N::translateContext('MALE', 'Adopted by mother');
                     case 'F':
-                        return /* I18N: gedcom tag _ADPM */
-                            I18N::translateContext('FEMALE', 'Adopted by mother');
+                        /* I18N: gedcom tag _ADPM */
+                        return I18N::translateContext('FEMALE', 'Adopted by mother');
                     default:
-                        return /* I18N: gedcom tag _ADPM */
-                            I18N::translate('Adopted by mother');
+                        /* I18N: gedcom tag _ADPM */
+                        return I18N::translate('Adopted by mother');
                 }
             case '_AKA':
             case '_AKAN':
                 switch ($sex) {
                     case 'M':
-                        return /* I18N: gedcom tag _AKA */
-                            I18N::translateContext('MALE', 'Also known as');
+                        /* I18N: gedcom tag _AKA */
+                        return I18N::translateContext('MALE', 'Also known as');
                     case 'F':
-                        return /* I18N: gedcom tag _AKA */
-                            I18N::translateContext('FEMALE', 'Also known as');
+                        /* I18N: gedcom tag _AKA */
+                        return I18N::translateContext('FEMALE', 'Also known as');
                     default:
-                        return /* I18N: gedcom tag _AKA */
-                            I18N::translate('Also known as');
+                        /* I18N: gedcom tag _AKA */
+                        return I18N::translate('Also known as');
                 }
-            case '_ALBUM': // Family Tree Builder uses OBJE:_ALBUM
-                return /* I18N: gedcom tag _ALBUM */
-                    I18N::translate('Album');
+            case '_ALBUM':
+                // Family Tree Builder uses OBJE:_ALBUM
+                /* I18N: gedcom tag _ALBUM */
+                return I18N::translate('Album');
             case '_ASSO':
-                return /* I18N: gedcom tag _ASSO */
-                    I18N::translate('Associate'); /* see also ASSO */
+                /* I18N: gedcom tag _ASSO */
+                return I18N::translate('Associate');
             case '_BAPM_CHIL':
                 switch ($sex) {
                     case 'M':
@@ -1222,8 +1237,8 @@ class GedcomTag
                         return I18N::translate('Baptism of a sibling');
                 }
             case '_BIBL':
-                return /* I18N: gedcom tag _BIBL */
-                    I18N::translate('Bibliography');
+                /* I18N: gedcom tag _BIBL */
+                return I18N::translate('Bibliography');
             case '_BIRT_CHIL':
                 switch ($sex) {
                     case 'M':
@@ -1279,8 +1294,8 @@ class GedcomTag
                         return I18N::translate('Birth of a sibling');
                 }
             case '_BRTM':
-                return /* I18N: gedcom tag _BRTM */
-                    I18N::translate('Brit milah');
+                /* I18N: gedcom tag _BRTM */
+                return I18N::translate('Brit milah');
             case '_BRTM:DATE':
                 return I18N::translate('Date of brit milah');
             case '_BRTM:PLAC':
@@ -1439,8 +1454,8 @@ class GedcomTag
                         return I18N::translate('Christening of a sibling');
                 }
             case '_COML':
-                return /* I18N: gedcom tag _COML */
-                    I18N::translate('Common law marriage');
+                /* I18N: gedcom tag _COML */
+                return I18N::translate('Common law marriage');
             case '_CREM_CHIL':
                 switch ($sex) {
                     case 'M':
@@ -1541,8 +1556,8 @@ class GedcomTag
                         return I18N::translate('Cremation of a spouse');
                 }
             case '_DBID':
-                return /* I18N: gedcom tag _DBID */
-                    I18N::translate('Linked database ID');
+                /* I18N: gedcom tag _DBID */
+                return I18N::translate('Linked database ID');
             case '_DEAT_CHIL':
                 switch ($sex) {
                     case 'M':
@@ -1643,20 +1658,20 @@ class GedcomTag
                         return I18N::translate('Death of a spouse');
                 }
             case '_DEG':
-                return /* I18N: gedcom tag _DEG */
-                    I18N::translate('Degree');
+                /* I18N: gedcom tag _DEG */
+                return I18N::translate('Degree');
             case '_DETS':
-                return /* I18N: gedcom tag _DETS */
-                    I18N::translate('Death of one spouse');
+                /* I18N: gedcom tag _DETS */
+                return I18N::translate('Death of one spouse');
             case '_DNA':
-                return /* I18N: gedcom tag _DNA (from FTM 2010) */
-                    I18N::translate('DNA markers');
+                /* I18N: gedcom tag _DNA (from FTM 2010) */
+                return I18N::translate('DNA markers');
             case '_EMAIL':
-                return /* I18N: gedcom tag _EMAIL */
-                    I18N::translate('Email address');
+                /* I18N: gedcom tag _EMAIL */
+                return I18N::translate('Email address');
             case '_EYEC':
-                return /* I18N: gedcom tag _EYEC */
-                    I18N::translate('Eye color');
+                /* I18N: gedcom tag _EYEC */
+                return I18N::translate('Eye color');
             case '_FA1':
                 return I18N::translate('Fact 1');
             case '_FA2':
@@ -1684,56 +1699,56 @@ class GedcomTag
             case '_FA13':
                 return I18N::translate('Fact 13');
             case '_FNRL':
-                return /* I18N: gedcom tag _FNRL */
-                    I18N::translate('Funeral');
+                /* I18N: gedcom tag _FNRL */
+                return I18N::translate('Funeral');
             case '_FREL':
-                return /* I18N: gedcom tag _FREL */
-                    I18N::translate('Relationship to father');
+                /* I18N: gedcom tag _FREL */
+                return I18N::translate('Relationship to father');
             case '_GEDF':
-                return /* I18N: gedcom tag _GEDF */
-                    I18N::translate('GEDCOM file');
+                /* I18N: gedcom tag _GEDF */
+                return I18N::translate('GEDCOM file');
             case '_GODP':
-                return /* I18N: gedcom tag _GODP */
-                    I18N::translate('Godparent');
+                /* I18N: gedcom tag _GODP */
+                return I18N::translate('Godparent');
             case '_HAIR':
-                return /* I18N: gedcom tag _HAIR */
-                    I18N::translate('Hair color');
+                /* I18N: gedcom tag _HAIR */
+                return I18N::translate('Hair color');
             case '_HEB':
-                return /* I18N: gedcom tag _HEB */
-                    I18N::translate('Hebrew');
+                /* I18N: gedcom tag _HEB */
+                return I18N::translate('Hebrew');
             case '_HEIG':
-                return /* I18N: gedcom tag _HEIG */
-                    I18N::translate('Height');
+                /* I18N: gedcom tag _HEIG */
+                return I18N::translate('Height');
             case '_HNM':
-                return /* I18N: gedcom tag _HNM */
-                    I18N::translate('Hebrew name');
+                /* I18N: gedcom tag _HNM */
+                return I18N::translate('Hebrew name');
             case '_HOL':
-                return /* I18N: gedcom tag _HOL */
-                    I18N::translate('Holocaust');
+                /* I18N: gedcom tag _HOL */
+                return I18N::translate('Holocaust');
             case '_INTE':
                 switch ($sex) {
                     case 'M':
-                        return /* I18N: gedcom tag _INTE */
-                            I18N::translateContext('MALE', 'Interred');
+                        /* I18N: gedcom tag _INTE */
+                        return I18N::translateContext('MALE', 'Interred');
                     case 'F':
-                        return /* I18N: gedcom tag _INTE */
-                            I18N::translateContext('FEMALE', 'Interred');
+                        /* I18N: gedcom tag _INTE */
+                        return I18N::translateContext('FEMALE', 'Interred');
                     default:
-                        return /* I18N: gedcom tag _INTE */
-                            I18N::translate('Interred');
+                        /* I18N: gedcom tag _INTE */
+                        return I18N::translate('Interred');
                 }
             case '_LOC':
-                return /* I18N: gedcom tag _LOC */
-                    I18N::translate('Location');
+                /* I18N: gedcom tag _LOC */
+                return I18N::translate('Location');
             case '_MARI':
-                return /* I18N: gedcom tag _MARI */
-                    I18N::translate('Marriage intention');
+                /* I18N: gedcom tag _MARI */
+                return I18N::translate('Marriage intention');
             case '_MARNM':
-                return /* I18N: gedcom tag _MARNM */
-                    I18N::translate('Married name');
+                /* I18N: gedcom tag _MARNM */
+                return I18N::translate('Married name');
             case '_PRIM':
-                return /* I18N: gedcom tag _PRIM */
-                    I18N::translate('Highlighted image');
+                /* I18N: gedcom tag _PRIM */
+                return I18N::translate('Highlighted image');
             case '_MARNM_SURN':
                 return I18N::translate('Married surname');
             case '_MARR_CHIL':
@@ -1746,8 +1761,8 @@ class GedcomTag
                         return I18N::translate('Marriage of a child');
                 }
             case '_MARR_FAMC':
-                return /* I18N: ...to each other */
-                    I18N::translate('Marriage of parents');
+                /* I18N: ...to each other */
+                return I18N::translate('Marriage of parents');
             case '_MARR_GCHI':
                 switch ($sex) {
                     case 'M':
@@ -1787,14 +1802,14 @@ class GedcomTag
             case '_MARR_PARE':
                 switch ($sex) {
                     case 'M':
-                        return /* I18N: ...to another spouse */
-                            I18N::translate('Marriage of a father');
+                        /* I18N: ...to another spouse */
+                        return I18N::translate('Marriage of a father');
                     case 'F':
-                        return /* I18N: ...to another spouse */
-                            I18N::translate('Marriage of a mother');
+                        /* I18N: ...to another spouse */
+                        return I18N::translate('Marriage of a mother');
                     default:
-                        return /* I18N: ...to another spouse */
-                            I18N::translate('Marriage of a parent');
+                        /* I18N: ...to another spouse */
+                        return I18N::translate('Marriage of a parent');
                 }
             case '_MARR_SIBL':
                 switch ($sex) {
@@ -1806,70 +1821,72 @@ class GedcomTag
                         return I18N::translate('Marriage of a sibling');
                 }
             case '_MBON':
-                return /* I18N: gedcom tag _MBON */
-                    I18N::translate('Marriage bond');
+                /* I18N: gedcom tag _MBON */
+                return I18N::translate('Marriage bond');
             case '_MDCL':
-                return /* I18N: gedcom tag _MDCL */
-                    I18N::translate('Medical');
+                /* I18N: gedcom tag _MDCL */
+                return I18N::translate('Medical');
             case '_MEDC':
-                return /* I18N: gedcom tag _MEDC */
-                    I18N::translate('Medical condition');
+                /* I18N: gedcom tag _MEDC */
+                return I18N::translate('Medical condition');
             case '_MEND':
-                return /* I18N: gedcom tag _MEND */
-                    I18N::translate('Marriage ending status');
+                /* I18N: gedcom tag _MEND */
+                return I18N::translate('Marriage ending status');
             case '_MILI':
-                return /* I18N: gedcom tag _MILI */
-                    I18N::translate('Military');
+                /* I18N: gedcom tag _MILI */
+                return I18N::translate('Military');
             case '_MILT':
-                return /* I18N: gedcom tag _MILT */
-                    I18N::translate('Military service');
+                /* I18N: gedcom tag _MILT */
+                return I18N::translate('Military service');
             case '_MREL':
-                return /* I18N: gedcom tag _MREL */
-                    I18N::translate('Relationship to mother');
+                /* I18N: gedcom tag _MREL */
+                return I18N::translate('Relationship to mother');
             case '_MSTAT':
-                return /* I18N: gedcom tag _MSTAT */
-                    I18N::translate('Marriage beginning status');
+                /* I18N: gedcom tag _MSTAT */
+                return I18N::translate('Marriage beginning status');
             case '_NAME':
-                return /* I18N: gedcom tag _NAME */
-                    I18N::translate('Mailing name');
+                /* I18N: gedcom tag _NAME */
+                return I18N::translate('Mailing name');
             case '_NAMS':
-                return /* I18N: gedcom tag _NAMS */
-                    I18N::translate('Namesake');
+                /* I18N: gedcom tag _NAMS */
+                return I18N::translate('Namesake');
             case '_NLIV':
-                return /* I18N: gedcom tag _NLIV */
-                    I18N::translate('Not living');
+                /* I18N: gedcom tag _NLIV */
+                return I18N::translate('Not living');
             case '_NMAR':
                 switch ($sex) {
                     case 'M':
-                        return /* I18N: gedcom tag _NMAR */
-                            I18N::translateContext('MALE', 'Never married');
+                        /* I18N: gedcom tag _NMAR */
+                        return I18N::translateContext('MALE', 'Never married');
                     case 'F':
-                        return /* I18N: gedcom tag _NMAR */
-                            I18N::translateContext('FEMALE', 'Never married');
+                        /* I18N: gedcom tag _NMAR */
+                        return I18N::translateContext('FEMALE', 'Never married');
                     default:
-                        return /* I18N: gedcom tag _NMAR */
-                            I18N::translate('Never married');
+                        /* I18N: gedcom tag _NMAR */
+                        return I18N::translate('Never married');
                 }
             case '_NMR':
                 switch ($sex) {
                     case 'M':
-                        return /* I18N: gedcom tag _NMR */
-                            I18N::translateContext('MALE', 'Not married');
+                        /* I18N: gedcom tag _NMR */
+                        return I18N::translateContext('MALE', 'Not married');
                     case 'F':
-                        return /* I18N: gedcom tag _NMR */
-                            I18N::translateContext('FEMALE', 'Not married');
+                        /* I18N: gedcom tag _NMR */
+                        return I18N::translateContext('FEMALE', 'Not married');
                     default:
-                        return /* I18N: gedcom tag _NMR */
-                            I18N::translate('Not married');
+                        /* I18N: gedcom tag _NMR */
+                        return I18N::translate('Not married');
                 }
-            case '_PHOTO': // Family Tree Builder uses "0 _ALBUM/1_PHOTO"
+            case '_PHOTO':
+                // Family Tree Builder uses "0 _ALBUM/1_PHOTO"
                 return I18N::translate('Photo');
             case '_WT_USER':
                 return I18N::translate('by');
             case '_PRMN':
-                return /* I18N: gedcom tag _PRMN */
-                    I18N::translate('Permanent number');
-            case '_RNAME': // Family Tree Builder user "1 NAME / 2 _RNAME"
+                /* I18N: gedcom tag _PRMN */
+                return I18N::translate('Permanent number');
+            case '_RNAME':
+                // Family Tree Builder user "1 NAME / 2 _RNAME"
                 switch ($sex) {
                     case 'M':
                         return I18N::translateContext('MALE', 'Religious name');
@@ -1879,48 +1896,49 @@ class GedcomTag
                         return I18N::translate('Religious name');
                 }
             case '_SCBK':
-                return /* I18N: gedcom tag _SCBK */
-                    I18N::translate('Scrapbook');
+                /* I18N: gedcom tag _SCBK */
+                return I18N::translate('Scrapbook');
             case '_SEPR':
-                return /* I18N: gedcom tag _SEPR */
-                    I18N::translate('Separated');
+                /* I18N: gedcom tag _SEPR */
+                return I18N::translate('Separated');
             case '_SSHOW':
-                return /* I18N: gedcom tag _SSHOW */
-                    I18N::translate('Slide show');
+                /* I18N: gedcom tag _SSHOW */
+                return I18N::translate('Slide show');
             case '_STAT':
-                return /* I18N: gedcom tag _STAT */
-                    I18N::translate('Marriage status');
+                /* I18N: gedcom tag _STAT */
+                return I18N::translate('Marriage status');
             case '_SUBQ':
-                return /* I18N: gedcom tag _SUBQ */
-                    I18N::translate('Short version');
+                /* I18N: gedcom tag _SUBQ */
+                return I18N::translate('Short version');
             case '_TODO':
-                return /* I18N: gedcom tag _TODO */
-                    I18N::translate('Research task');
+                /* I18N: gedcom tag _TODO */
+                return I18N::translate('Research task');
             case '_TYPE':
-                return /* I18N: gedcom tag _TYPE */
-                    I18N::translate('Media type');
+                /* I18N: gedcom tag _TYPE */
+                return I18N::translate('Media type');
             case '_UID':
-                return /* I18N: gedcom tag _UID */
-                    I18N::translate('Unique identifier');
+                /* I18N: gedcom tag _UID */
+                return I18N::translate('Unique identifier');
             case '_URL':
-                return /* I18N: gedcom tag _URL */
-                    I18N::translate('URL');
+                /* I18N: gedcom tag _URL */
+                return I18N::translate('URL');
             case '_WEIG':
-                return /* I18N: gedcom tag _WEIG */
-                    I18N::translate('Weight');
+                /* I18N: gedcom tag _WEIG */
+                return I18N::translate('Weight');
             case '_WITN':
-                return /* I18N: gedcom tag _WITN */
-                    I18N::translate('Witness');
+                /* I18N: gedcom tag _WITN */
+                return I18N::translate('Witness');
             case '_WT_OBJE_SORT':
-                return /* I18N: gedcom tag _WT_OBJE_SORT */
-                    I18N::translate('Re-order media');
+                /* I18N: gedcom tag _WT_OBJE_SORT */
+                return I18N::translate('Re-order media');
             case '_YART':
-                return /* I18N: gedcom tag _YART - A yahrzeit is a special anniversary of death in the Hebrew faith/calendar. */
-                    I18N::translate('Yahrzeit');
-            // Brit milah applies only to males, no need for male/female translations
+                /* I18N: gedcom tag _YART - A yahrzeit is a special anniversary of death in the Hebrew faith/calendar. */
+                return I18N::translate('Yahrzeit');
             case '__BRTM_CHIL':
+                // Brit milah applies only to males, no need for male/female translations
                 return I18N::translate('Brit milah of a son');
             case '__BRTM_GCHI':
+                // Brit milah applies only to males, no need for male/female translations
                 return I18N::translate('Brit milah of a grandson');
             case '__BRTM_GCH1':
                 return I18N::translateContext('daughter’s son', 'Brit milah of a grandson');
@@ -1930,10 +1948,14 @@ class GedcomTag
                 return I18N::translate('Brit milah of a half-brother');
             case '__BRTM_SIBL':
                 return I18N::translate('Brit milah of a brother');
-            case '_FILESIZE': // Family Tree Builder uses OBJE:_FILESIZE
-            case '__FILE_SIZE__': // This pseudo-tag is generated internally to present information about a media object
+            case '_FILESIZE':
+                // Family Tree Builder uses OBJE:_FILESIZE
+                // no break
+            case '__FILE_SIZE__':
+                // This pseudo-tag is generated internally to present information about a media object
                 return I18N::translate('File size');
-            case '__IMAGE_SIZE__': // This pseudo-tag is generated internally to present information about a media object
+            case '__IMAGE_SIZE__':
+                // This pseudo-tag is generated internally to present information about a media object
                 return I18N::translate('Image dimensions');
             default:
                 // If no specialisation exists (e.g. DEAT:CAUS), then look for the general (CAUS)
@@ -2184,59 +2206,59 @@ class GedcomTag
     {
         switch (strtolower($type)) {
             case 'audio':
-                return /* I18N: Type of media object */
-                    I18N::translate('Audio');
+                /* I18N: Type of media object */
+                return I18N::translate('Audio');
             case 'book':
-                return /* I18N: Type of media object */
-                    I18N::translate('Book');
+                /* I18N: Type of media object */
+                return I18N::translate('Book');
             case 'card':
-                return /* I18N: Type of media object */
-                    I18N::translate('Card');
+                /* I18N: Type of media object */
+                return I18N::translate('Card');
             case 'certificate':
-                return /* I18N: Type of media object */
-                    I18N::translate('Certificate');
+                /* I18N: Type of media object */
+                return I18N::translate('Certificate');
             case 'coat':
-                return /* I18N: Type of media object */
-                    I18N::translate('Coat of arms');
+                /* I18N: Type of media object */
+                return I18N::translate('Coat of arms');
             case 'document':
-                return /* I18N: Type of media object */
-                    I18N::translate('Document');
+                /* I18N: Type of media object */
+                return I18N::translate('Document');
             case 'electronic':
-                return /* I18N: Type of media object */
-                    I18N::translate('Electronic');
+                /* I18N: Type of media object */
+                return I18N::translate('Electronic');
             case 'fiche':
-                return /* I18N: Type of media object */
-                    I18N::translate('Microfiche');
+                /* I18N: Type of media object */
+                return I18N::translate('Microfiche');
             case 'film':
-                return /* I18N: Type of media object */
-                    I18N::translate('Microfilm');
+                /* I18N: Type of media object */
+                return I18N::translate('Microfilm');
             case 'magazine':
-                return /* I18N: Type of media object */
-                    I18N::translate('Magazine');
+                /* I18N: Type of media object */
+                return I18N::translate('Magazine');
             case 'manuscript':
-                return /* I18N: Type of media object */
-                    I18N::translate('Manuscript');
+                /* I18N: Type of media object */
+                return I18N::translate('Manuscript');
             case 'map':
-                return /* I18N: Type of media object */
-                    I18N::translate('Map');
+                /* I18N: Type of media object */
+                return I18N::translate('Map');
             case 'newspaper':
-                return /* I18N: Type of media object */
-                    I18N::translate('Newspaper');
+                /* I18N: Type of media object */
+                return I18N::translate('Newspaper');
             case 'photo':
-                return /* I18N: Type of media object */
-                    I18N::translate('Photo');
+                /* I18N: Type of media object */
+                return I18N::translate('Photo');
             case 'tombstone':
-                return /* I18N: Type of media object */
-                    I18N::translate('Tombstone');
+                /* I18N: Type of media object */
+                return I18N::translate('Tombstone');
             case 'video':
-                return /* I18N: Type of media object */
-                    I18N::translate('Video');
+                /* I18N: Type of media object */
+                return I18N::translate('Video');
             case 'painting':
-                return /* I18N: Type of media object */
-                    I18N::translate('Painting');
+                /* I18N: Type of media object */
+                return I18N::translate('Painting');
             default:
-                return /* I18N: Type of media object */
-                    I18N::translate('Other');
+                /* I18N: Type of media object */
+                return I18N::translate('Other');
         }
     }
 

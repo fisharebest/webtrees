@@ -29,16 +29,16 @@ class RelatedIndividualsReportModule extends AbstractModule implements ModuleRep
     public function getTitle()
     {
         // This text also appears in the .XML file - update both together
-        return /* I18N: Name of a report */
-            I18N::translate('Related individuals');
+        /* I18N: Name of a report */
+        return I18N::translate('Related individuals');
     }
 
     /** {@inheritdoc} */
     public function getDescription()
     {
         // This text also appears in the .XML file - update both together
-        return /* I18N: Description of the “Related individuals” module */
-            I18N::translate('A report of the individuals that are closely related to an individual.');
+        /* I18N: Description of the “Related individuals” module */
+        return I18N::translate('A report of the individuals that are closely related to an individual.');
     }
 
     /**

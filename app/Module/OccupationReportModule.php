@@ -29,16 +29,16 @@ class OccupationReportModule extends AbstractModule implements ModuleReportInter
     public function getTitle()
     {
         // This text also appears in the .XML file - update both together
-        return /* I18N: Name of a report */
-            I18N::translate('Occupations');
+        /* I18N: Name of a report */
+        return I18N::translate('Occupations');
     }
 
     /** {@inheritdoc} */
     public function getDescription()
     {
         // This text also appears in the .XML file - update both together
-        return /* I18N: Description of the “Occupations” module */
-            I18N::translate('A report of individuals who had a given occupation.');
+        /* I18N: Description of the “Occupations” module */
+        return I18N::translate('A report of individuals who had a given occupation.');
     }
 
     /**

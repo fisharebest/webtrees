@@ -41,15 +41,15 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface
     /** {@inheritdoc} */
     public function getTitle()
     {
-        return /* I18N: Name of a module. Yahrzeiten (the plural of Yahrzeit) are special anniversaries of deaths in the Hebrew faith/calendar. */
-            I18N::translate('Yahrzeiten');
+        /* I18N: Name of a module. Yahrzeiten (the plural of Yahrzeit) are special anniversaries of deaths in the Hebrew faith/calendar. */
+        return I18N::translate('Yahrzeiten');
     }
 
     /** {@inheritdoc} */
     public function getDescription()
     {
-        return /* I18N: Description of the “Yahrzeiten” module. A “Hebrew death” is a death where the date is recorded in the Hebrew calendar. */
-            I18N::translate('A list of the Hebrew death anniversaries that will occur in the near future.');
+        /* I18N: Description of the “Yahrzeiten” module. A “Hebrew death” is a death where the date is recorded in the Hebrew calendar. */
+        return I18N::translate('A list of the Hebrew death anniversaries that will occur in the near future.');
     }
 
     /**
@@ -215,10 +215,10 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface
         $infoStyle = $this->getBlockSetting($block_id, 'infoStyle', 'table');
 
         $styles = [
-            'list'  => /* I18N: An option in a list-box */
-                I18N::translate('list'),
-            'table' => /* I18N: An option in a list-box */
-                I18N::translate('table'),
+            /* I18N: An option in a list-box */
+            'list'  => I18N::translate('list'),
+            /* I18N: An option in a list-box */
+            'table' => I18N::translate('table'),
         ];
 
         $calendars = [

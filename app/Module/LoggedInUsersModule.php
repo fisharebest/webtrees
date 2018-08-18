@@ -30,15 +30,15 @@ class LoggedInUsersModule extends AbstractModule implements ModuleBlockInterface
     /** {@inheritdoc} */
     public function getTitle()
     {
-        return /* I18N: Name of a module. (A list of users who are online now) */
-            I18N::translate('Who is online');
+        /* I18N: Name of a module. (A list of users who are online now) */
+        return I18N::translate('Who is online');
     }
 
     /** {@inheritdoc} */
     public function getDescription()
     {
-        return /* I18N: Description of the “Who is online” module */
-            I18N::translate('A list of users and visitors who are currently online.');
+        /* I18N: Description of the “Who is online” module */
+        return I18N::translate('A list of users and visitors who are currently online.');
     }
 
     /**

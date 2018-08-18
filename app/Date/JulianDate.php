@@ -92,8 +92,8 @@ class JulianDate extends CalendarDate
             if ($this->new_old_style) {
                 return I18N::translate('%s&nbsp;CE', I18N::digits(sprintf('%d/%02d', $this->y - 1, $this->y % 100)));
             } else {
-                return /* I18N: CE=Common Era, for Julian years > 0. See http://en.wikipedia.org/wiki/Common_Era */
-                    I18N::translate('%s&nbsp;CE', I18N::digits($this->y));
+                /* I18N: CE=Common Era, for Julian years > 0. See http://en.wikipedia.org/wiki/Common_Era */
+                return I18N::translate('%s&nbsp;CE', I18N::digits($this->y));
             }
         }
     }

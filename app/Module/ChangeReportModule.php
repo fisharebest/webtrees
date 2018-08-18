@@ -29,16 +29,16 @@ class ChangeReportModule extends AbstractModule implements ModuleReportInterface
     public function getTitle()
     {
         // This text also appears in the .XML file - update both together
-        return /* I18N: Name of a module/report */
-            I18N::translate('Changes');
+        /* I18N: Name of a module/report */
+        return I18N::translate('Changes');
     }
 
     /** {@inheritdoc} */
     public function getDescription()
     {
         // This text also appears in the .XML file - update both together
-        return /* I18N: Description of the “Changes” module */
-            I18N::translate('A report of recent and pending changes.');
+        /* I18N: Description of the “Changes” module */
+        return I18N::translate('A report of recent and pending changes.');
     }
 
     /**

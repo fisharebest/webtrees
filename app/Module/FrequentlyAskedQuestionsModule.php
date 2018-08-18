@@ -33,15 +33,15 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
     /** {@inheritdoc} */
     public function getTitle()
     {
-        return /* I18N: Name of a module. Abbreviation for “Frequently Asked Questions” */
-            I18N::translate('FAQ');
+        /* I18N: Name of a module. Abbreviation for “Frequently Asked Questions” */
+        return I18N::translate('FAQ');
     }
 
     /** {@inheritdoc} */
     public function getDescription()
     {
-        return /* I18N: Description of the “FAQ” module */
-            I18N::translate('A list of frequently asked questions and answers.');
+        /* I18N: Description of the “FAQ” module */
+        return I18N::translate('A list of frequently asked questions and answers.');
     }
 
     /**

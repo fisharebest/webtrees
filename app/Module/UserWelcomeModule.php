@@ -29,15 +29,15 @@ class UserWelcomeModule extends AbstractModule implements ModuleBlockInterface
     /** {@inheritdoc} */
     public function getTitle()
     {
-        return /* I18N: Name of a module */
-            I18N::translate('My page');
+        /* I18N: Name of a module */
+        return I18N::translate('My page');
     }
 
     /** {@inheritdoc} */
     public function getDescription()
     {
-        return /* I18N: Description of the “My page” module */
-            I18N::translate('A greeting message and useful links for a user.');
+        /* I18N: Description of the “My page” module */
+        return I18N::translate('A greeting message and useful links for a user.');
     }
 
     /**
@@ -82,13 +82,15 @@ class UserWelcomeModule extends AbstractModule implements ModuleBlockInterface
         ];
         $content = view('modules/user_welcome/welcome', ['links' => $links]);
 
+        /* I18N: A %s is the user’s name */
+        $title = I18N::translate('Welcome %s', Auth::user()->getRealName());
+
         if ($template) {
             return view('modules/block-template', [
                 'block'      => str_replace('_', '-', $this->getName()),
                 'id'         => $block_id,
                 'config_url' => '',
-                'title'      => /* I18N: A %s is the user’s name */
-                    I18N::translate('Welcome %s', Auth::user()->getRealName()),
+                'title'      => $title,
                 'content'    => $content,
             ]);
         } else {

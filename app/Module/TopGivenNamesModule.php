@@ -29,15 +29,15 @@ class TopGivenNamesModule extends AbstractModule implements ModuleBlockInterface
     /** {@inheritdoc} */
     public function getTitle()
     {
-        return /* I18N: Name of a module. Top=Most common */
-            I18N::translate('Top given names');
+        /* I18N: Name of a module. Top=Most common */
+        return I18N::translate('Top given names');
     }
 
     /** {@inheritdoc} */
     public function getDescription()
     {
-        return /* I18N: Description of the “Top given names” module */
-            I18N::translate('A list of the most popular given names.');
+        /* I18N: Description of the “Top given names” module */
+        return I18N::translate('A list of the most popular given names.');
     }
 
     /**
@@ -171,10 +171,10 @@ class TopGivenNamesModule extends AbstractModule implements ModuleBlockInterface
         $infoStyle = $this->getBlockSetting($block_id, 'infoStyle', 'table');
 
         $info_styles = [
-            'list'  => /* I18N: An option in a list-box */
-                I18N::translate('list'),
-            'table' => /* I18N: An option in a list-box */
-                I18N::translate('table'),
+            /* I18N: An option in a list-box */
+            'list'  => I18N::translate('list'),
+            /* I18N: An option in a list-box */
+            'table' => I18N::translate('table'),
         ];
 
         echo view('modules/top10_givnnames/config', [

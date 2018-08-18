@@ -84,8 +84,8 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
      */
     public function getTitle()
     {
-        return /* I18N: Name of a module */
-            I18N::translate('Upcoming events');
+        /* I18N: Name of a module */
+        return I18N::translate('Upcoming events');
     }
 
     /**
@@ -95,8 +95,8 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
      */
     public function getDescription()
     {
-        return /* I18N: Description of the “Upcoming events” module */
-            I18N::translate('A list of the anniversaries that will occur in the near future.');
+        /* I18N: Description of the “Upcoming events” module */
+        return I18N::translate('A list of the anniversaries that will occur in the near future.');
     }
 
     /**
@@ -144,9 +144,8 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
                     'message' => I18N::translate('No events exist for tomorrow.'),
                 ]);
             } else {
-                $content = view('modules/upcoming_events/empty', [
-                    'message' => /* I18N: translation for %s==1 is unused; it is translated separately as “tomorrow” */
-                        I18N::plural('No events exist for the next %s day.', 'No events exist for the next %s days.', $endjd - $startjd + 1, I18N::number($endjd - $startjd + 1)),
+                /* I18N: translation for %s==1 is unused; it is translated separately as “tomorrow” */                $content = view('modules/upcoming_events/empty', [
+                    'message' => I18N::plural('No events exist for the next %s day.', 'No events exist for the next %s days.', $endjd - $startjd + 1, I18N::number($endjd - $startjd + 1)),
                 ]);
             }
         } elseif ($infoStyle === 'list') {
@@ -240,17 +239,17 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
         }
 
         $info_styles = [
-            'list'  => /* I18N: An option in a list-box */
-                I18N::translate('list'),
-            'table' => /* I18N: An option in a list-box */
-                I18N::translate('table'),
+            /* I18N: An option in a list-box */
+            'list'  => I18N::translate('list'),
+            /* I18N: An option in a list-box */
+            'table' => I18N::translate('table'),
         ];
 
         $sort_styles = [
-            'alpha' => /* I18N: An option in a list-box */
-                I18N::translate('sort by name'),
-            'anniv' => /* I18N: An option in a list-box */
-                I18N::translate('sort by date'),
+            /* I18N: An option in a list-box */
+            'alpha' => I18N::translate('sort by name'),
+            /* I18N: An option in a list-box */
+            'anniv' => I18N::translate('sort by date'),
         ];
 
         echo view('modules/upcoming_events/config', [

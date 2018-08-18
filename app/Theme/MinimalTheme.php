@@ -94,7 +94,7 @@ class MinimalTheme extends AbstractTheme implements ThemeInterface
      */
     public function themeName()
     {
-        return /* I18N: Name of a theme. */
-            I18N::translate('minimal');
+        /* I18N: Name of a theme. */
+        return I18N::translate('minimal');
     }
 }

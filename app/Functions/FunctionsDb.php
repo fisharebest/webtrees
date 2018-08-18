@@ -529,18 +529,14 @@ class FunctionsDb
 
         switch ($sort_by) {
             case 'anniv':
-                uasort($facts,
-                    function (Fact $x, Fact $y) {
-                        return Fact::compareDate($y, $x);
-                    }
-                );
+                uasort($facts, function (Fact $x, Fact $y) {
+                    return Fact::compareDate($y, $x);
+                });
                 break;
             case 'alpha':
-                uasort($facts,
-                    function (Fact $x, Fact $y) {
-                        return GedcomRecord::compare($x->getParent(), $y->getParent());
-                    }
-                );
+                uasort($facts, function (Fact $x, Fact $y) {
+                    return GedcomRecord::compare($x->getParent(), $y->getParent());
+                });
                 break;
         }
 

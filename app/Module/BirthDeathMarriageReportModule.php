@@ -33,8 +33,8 @@ class BirthDeathMarriageReportModule extends AbstractModule implements ModuleRep
     public function getTitle()
     {
         // This text also appears in the .XML file - update both together
-        return /* I18N: Name of a module/report. “Vital records” are life events - birth/marriage/death */
-            I18N::translate('Vital records');
+        /* I18N: Name of a module/report. “Vital records” are life events - birth/marriage/death */
+        return I18N::translate('Vital records');
     }
 
     /**
@@ -45,8 +45,8 @@ class BirthDeathMarriageReportModule extends AbstractModule implements ModuleRep
     public function getDescription()
     {
         // This text also appears in the .XML file - update both together
-        return /* I18N: Description of the “Vital records” module. “Vital records” are life events - birth/marriage/death */
-            I18N::translate('A report of vital records for a given date or place.');
+        /* I18N: Description of the “Vital records” module. “Vital records” are life events - birth/marriage/death */
+        return I18N::translate('A report of vital records for a given date or place.');
     }
 
     /**

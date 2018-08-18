@@ -38,15 +38,15 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
     /** {@inheritdoc} */
     public function getTitle()
     {
-        return /* I18N: Name of a module */
-            I18N::translate('Recent changes');
+        /* I18N: Name of a module */
+        return I18N::translate('Recent changes');
     }
 
     /** {@inheritdoc} */
     public function getDescription()
     {
-        return /* I18N: Description of the “Recent changes” module */
-            I18N::translate('A list of records that have been updated recently.');
+        /* I18N: Description of the “Recent changes” module */
+        return I18N::translate('A list of records that have been updated recently.');
     }
 
     /** {@inheritdoc} */
@@ -161,19 +161,19 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
         $show_user = $this->getBlockSetting($block_id, 'show_user', self::DEFAULT_SHOW_USER);
 
         $info_styles = [
-            'list'  => /* I18N: An option in a list-box */
-                I18N::translate('list'),
-            'table' => /* I18N: An option in a list-box */
-                I18N::translate('table'),
+            /* I18N: An option in a list-box */
+            'list'  => I18N::translate('list'),
+            /* I18N: An option in a list-box */
+            'table' => I18N::translate('table'),
         ];
 
         $sort_styles = [
-            'name'      => /* I18N: An option in a list-box */
-                I18N::translate('sort by name'),
-            'date_asc'  => /* I18N: An option in a list-box */
-                I18N::translate('sort by date, oldest first'),
-            'date_desc' => /* I18N: An option in a list-box */
-                I18N::translate('sort by date, newest first'),
+            /* I18N: An option in a list-box */
+            'name'      => I18N::translate('sort by name'),
+            /* I18N: An option in a list-box */
+            'date_asc'  => I18N::translate('sort by date, oldest first'),
+            /* I18N: An option in a list-box */
+            'date_desc' => I18N::translate('sort by date, newest first'),
         ];
 
         echo view('modules/recent_changes/config', [

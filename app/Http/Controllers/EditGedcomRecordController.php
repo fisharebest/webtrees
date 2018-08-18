@@ -147,8 +147,8 @@ class EditGedcomRecordController extends AbstractEditController
                     if (preg_match('/^0 @' . WT_REGEX_XREF . '@ FAM/', $new_gedcom) && preg_match_all('/\n1 (HUSB|WIFE|CHIL) @(' . WT_REGEX_XREF . ')@/', $new_gedcom, $match) == 1) {
                         // Delete the family
                         $family = GedcomRecord::getInstance($xref, $tree);
-                        FlashMessages::addMessage(/* I18N: %s is the name of a family group, e.g. “Husband name + Wife name” */
-                            I18N::translate('The family “%s” has been deleted because it only has one member.', $family->getFullName()));
+                        /* I18N: %s is the name of a family group, e.g. “Husband name + Wife name” */
+                        FlashMessages::addMessage(I18N::translate('The family “%s” has been deleted because it only has one member.', $family->getFullName()));
                         $family->deleteRecord();
                         // Delete any remaining link to this family
                         if ($match) {
@@ -156,13 +156,13 @@ class EditGedcomRecordController extends AbstractEditController
                             $new_gedcom = $relict->getGedcom();
                             $new_gedcom = $this->removeLinks($new_gedcom, $linker->getXref());
                             $relict->updateRecord($new_gedcom, false);
-                            FlashMessages::addMessage(/* I18N: %s are names of records, such as sources, repositories or individuals */
-                                I18N::translate('The link from “%1$s” to “%2$s” has been deleted.', $relict->getFullName(), $family->getFullName()));
+                            /* I18N: %s are names of records, such as sources, repositories or individuals */
+                            FlashMessages::addMessage(I18N::translate('The link from “%1$s” to “%2$s” has been deleted.', $relict->getFullName(), $family->getFullName()));
                         }
                     } else {
                         // Remove links from $linker to $record
-                        FlashMessages::addMessage(/* I18N: %s are names of records, such as sources, repositories or individuals */
-                            I18N::translate('The link from “%1$s” to “%2$s” has been deleted.', $linker->getFullName(), $record->getFullName()));
+                        /* I18N: %s are names of records, such as sources, repositories or individuals */
+                        FlashMessages::addMessage(I18N::translate('The link from “%1$s” to “%2$s” has been deleted.', $linker->getFullName(), $record->getFullName()));
                         $linker->updateRecord($new_gedcom, false);
                     }
                 }

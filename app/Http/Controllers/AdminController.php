@@ -197,12 +197,12 @@ class AdminController extends AbstractBaseController
 
         $statuses = [
             ''         => '',
-            'accepted' => /* I18N: the status of an edit accepted/rejected/pending */
-                I18N::translate('accepted'),
-            'rejected' => /* I18N: the status of an edit accepted/rejected/pending */
-                I18N::translate('rejected'),
-            'pending'  => /* I18N: the status of an edit accepted/rejected/pending */
-                I18N::translate('pending'),
+            /* I18N: the status of an edit accepted/rejected/pending */
+            'accepted' => I18N::translate('accepted'),
+            /* I18N: the status of an edit accepted/rejected/pending */
+            'rejected' => I18N::translate('rejected'),
+            /* I18N: the status of an edit accepted/rejected/pending */
+            'pending'  => I18N::translate('pending'),
         ];
 
         return $this->viewResponse('admin/changes-log', [
@@ -843,8 +843,8 @@ class AdminController extends AbstractBaseController
         foreach ($ids as $id) {
             $record = GedcomRecord::getInstance($id, $tree);
             if (!$record->isPendingDeletion()) {
-                FlashMessages::addMessage(I18N::translate(
                 /* I18N: The placeholders are the names of individuals, sources, etc. */
+                FlashMessages::addMessage(I18N::translate(
                     'The link from “%1$s” to “%2$s” has been updated.',
                     '<a class="alert-link" href="' . e($record->url()) . '">' . $record->getFullName() . '</a>',
                     $record2_name
@@ -928,8 +928,8 @@ class AdminController extends AbstractBaseController
         $record1->updateRecord($gedcom, true);
         $record2->deleteRecord();
 
-        FlashMessages::addMessage(I18N::translate(
         /* I18N: Records are individuals, sources, etc. */
+        FlashMessages::addMessage(I18N::translate(
             'The records “%1$s” and “%2$s” have been merged.',
             '<a class="alert-link" href="' . e($record1->url()) . '">' . $record1->getFullName() . '</a>',
             $record2_name

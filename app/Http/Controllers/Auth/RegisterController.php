@@ -126,8 +126,8 @@ class RegisterController extends AbstractBaseController
         ]);
 
         // Send a verification message to the user.
-        Mail::send($sender, $user, $sender, /* I18N: %s is a server name/URL */
-            I18N::translate('Your registration at %s', WT_BASE_URL), view('emails/register-user-text', [
+        /* I18N: %s is a server name/URL */
+        Mail::send($sender, $user, $sender, I18N::translate('Your registration at %s', WT_BASE_URL), view('emails/register-user-text', [
                 'user' => $user,
             ]), view('emails/register-user-html', [
                 'user' => $user,
@@ -139,8 +139,8 @@ class RegisterController extends AbstractBaseController
         if ($webmaster !== null) {
             I18N::init($webmaster->getPreference('language'));
 
-            Mail::send($sender, $webmaster, $user, /* I18N: %s is a server name/URL */
-                I18N::translate('New registration at %s', WT_BASE_URL . ' ' . $tree->getTitle()), view('emails/register-notify-text', [
+            /* I18N: %s is a server name/URL */
+            Mail::send($sender, $webmaster, $user, I18N::translate('New registration at %s', WT_BASE_URL . ' ' . $tree->getTitle()), view('emails/register-notify-text', [
                     'user'     => $user,
                     'comments' => $comments,
                 ]), view('emails/register-notify-html', [

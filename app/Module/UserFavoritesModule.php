@@ -37,8 +37,8 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
      */
     public function getTitle()
     {
-        return /* I18N: Name of a module */
-            I18N::translate('Favorites');
+        /* I18N: Name of a module */
+        return I18N::translate('Favorites');
     }
 
     /**
@@ -48,8 +48,8 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
      */
     public function getDescription()
     {
-        return /* I18N: Description of the “Favorites” module */
-            I18N::translate('Display and manage a user’s favorite pages.');
+        /* I18N: Description of the “Favorites” module */
+        return I18N::translate('Display and manage a user’s favorite pages.');
     }
 
     /**

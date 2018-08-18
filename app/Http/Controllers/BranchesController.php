@@ -47,11 +47,11 @@ class BranchesController extends AbstractBaseController
         $soundex_dm  = (bool)$request->get('soundex_dm');
 
         if ($surname !== '') {
-            $title = /* I18N: %s is a surname */
-                I18N::translate('Branches of the %s family', e($surname));
+            /* I18N: %s is a surname */
+            $title = I18N::translate('Branches of the %s family', e($surname));
         } else {
-            $title = /* I18N: Branches of a family tree */
-                I18N::translate('Branches');
+            /* I18N: Branches of a family tree */
+            $title = I18N::translate('Branches');
         }
 
         return $this->viewResponse('branches-page', [

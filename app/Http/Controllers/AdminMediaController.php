@@ -661,16 +661,16 @@ class AdminMediaController extends AbstractBaseController
         try {
             $size = filesize($full_path);
             $size = (int)(($size + 1023) / 1024); // Round up to next KB
-            $size = /* I18N: size of file in KB */
-                I18N::translate('%s KB', I18N::number($size));
+            /* I18N: size of file in KB */
+            $size = I18N::translate('%s KB', I18N::number($size));
             $html .= '<dt>' . I18N::translate('File size') . '</dt>';
             $html .= '<dd>' . $size . '</dd>';
 
             try {
                 $imgsize = getimagesize($full_path);
                 $html    .= '<dt>' . I18N::translate('Image dimensions') . '</dt>';
-                $html    .= '<dd>' . /* I18N: image dimensions, width × height */
-                    I18N::translate('%1$s × %2$s pixels', I18N::number($imgsize['0']), I18N::number($imgsize['1'])) . '</dd>';
+                /* I18N: image dimensions, width × height */
+                $html    .= '<dd>' . I18N::translate('%1$s × %2$s pixels', I18N::number($imgsize['0']), I18N::number($imgsize['1'])) . '</dd>';
             } catch (Throwable $ex) {
                 DebugBar::addThrowable($ex);
 

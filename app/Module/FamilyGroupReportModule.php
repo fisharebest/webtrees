@@ -29,16 +29,16 @@ class FamilyGroupReportModule extends AbstractModule implements ModuleReportInte
     public function getTitle()
     {
         // This text also appears in the .XML file - update both together
-        return /* I18N: Name of a module/report */
-            I18N::translate('Family');
+        /* I18N: Name of a module/report */
+        return I18N::translate('Family');
     }
 
     /** {@inheritdoc} */
     public function getDescription()
     {
         // This text also appears in the .XML file - update both together
-        return /* I18N: Description of the “Family” module */
-            I18N::translate('A report of family members and their details.');
+        /* I18N: Description of the “Family” module */
+        return I18N::translate('A report of family members and their details.');
     }
 
     /**

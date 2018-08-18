@@ -431,8 +431,8 @@ class SetupController extends AbstractBaseController
         $disable_functions = preg_split('/ *, */', ini_get('disable_functions'));
         foreach ($functions as $function) {
             if (in_array($function, $disable_functions)) {
-                $errors[] = /* I18N: %s is a PHP function/module/setting */
-                    I18N::translate('%s is disabled on this server. You cannot install webtrees until it is enabled. Please ask your server’s administrator to enable it.', $function . '()');
+                /* I18N: %s is a PHP function/module/setting */
+                $errors[] = I18N::translate('%s is disabled on this server. You cannot install webtrees until it is enabled. Please ask your server’s administrator to enable it.', $function . '()');
             }
         }
 
@@ -447,16 +447,16 @@ class SetupController extends AbstractBaseController
     private function serverWarnings(): array
     {
         $extensions = [
-            'gd'        => /* I18N: a program feature */
-                I18N::translate('creating thumbnails of images'),
-            'xml'       => /* I18N: a program feature */
-                I18N::translate('reporting'),
-            'simplexml' => /* I18N: a program feature */
-                I18N::translate('reporting'),
+            /* I18N: a program feature */
+            'gd'        => I18N::translate('creating thumbnails of images'),
+            /* I18N: a program feature */
+            'xml'       => I18N::translate('reporting'),
+            /* I18N: a program feature */
+            'simplexml' => I18N::translate('reporting'),
         ];
         $settings   = [
-            'file_uploads' => /* I18N: a program feature */
-                I18N::translate('file upload capability'),
+            /* I18N: a program feature */
+            'file_uploads' => I18N::translate('file upload capability'),
         ];
         $warnings   = [];
 
