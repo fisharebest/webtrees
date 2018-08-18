@@ -639,6 +639,8 @@ class EditMediaController extends AbstractEditController
 
         $unused_files = array_diff($disk_files, $used_files);
 
+        sort($unused_files);
+
         return array_combine($unused_files, $unused_files);
     }
 }
