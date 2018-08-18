@@ -387,7 +387,7 @@ class ListController extends AbstractBaseController
         $max       = (int) $request->get('max', 20);
         $folder    = $request->get('folder', '');
         $filter    = $request->get('filter', '');
-        $subdirs   = $request->get('subdirs', '1');
+        $subdirs   = $request->get('subdirs', '');
         $form_type = $request->get('form_type', '');
 
         $folders = $this->allFolders($tree);
