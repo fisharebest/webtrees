@@ -2771,25 +2771,25 @@ class Stats
                 }
                 $chxl    .= $this->centuryName($century) . '|';
                 $average = 0;
-                if (isset($values->F)) {
-                    $countsf .= $values->F . ',';
-                    $average = $values->F;
+                if (isset($values['F'])) {
+                    $countsf .= $values['F'] . ',';
+                    $average = $values['F'];
                 } else {
                     $countsf .= '0,';
                 }
-                if (isset($values->M)) {
-                    $countsm .= $values->M . ',';
+                if (isset($values['M'])) {
+                    $countsm .= $values['M'] . ',';
                     if ($average == 0) {
-                        $countsa .= $values->M . ',';
+                        $countsa .= $values['M'] . ',';
                     } else {
-                        $countsa .= (($values->M + $average) / 2) . ',';
+                        $countsa .= (($values['M'] + $average) / 2) . ',';
                     }
                 } else {
                     $countsm .= '0,';
                     if ($average == 0) {
                         $countsa .= '0,';
                     } else {
-                        $countsa .= $values->F . ',';
+                        $countsa .= $values['F'] . ',';
                     }
                 }
             }
@@ -4172,24 +4172,24 @@ class Stats
                 }
                 $chxl    .= $this->centuryName($century) . '|';
                 $average = 0;
-                if (isset($values->F)) {
+                if (isset($values['F'])) {
                     if ($max <= 50) {
-                        $value = $values->F * 2;
+                        $value = $values['F'] * 2;
                     } else {
-                        $value = $values->F;
+                        $value = $values['F'];
                     }
                     $countsf .= $value . ',';
                     $average = $value;
-                    $chmf    .= 't' . $values->F . ',000000,1,' . $i . ',11,1|';
+                    $chmf    .= 't' . $values['F'] . ',000000,1,' . $i . ',11,1|';
                 } else {
                     $countsf .= '0,';
                     $chmf    .= 't0,000000,1,' . $i . ',11,1|';
                 }
-                if (isset($values->M)) {
+                if (isset($values['M'])) {
                     if ($max <= 50) {
-                        $value = $values->M * 2;
+                        $value = $values['M'] * 2;
                     } else {
-                        $value = $values->M;
+                        $value = $values['M'];
                     }
                     $countsm .= $value . ',';
                     if ($average == 0) {
@@ -4197,7 +4197,7 @@ class Stats
                     } else {
                         $countsa .= (($value + $average) / 2) . ',';
                     }
-                    $chmm .= 't' . $values->M . ',000000,0,' . $i . ',11,1|';
+                    $chmm .= 't' . $values['M'] . ',000000,0,' . $i . ',11,1|';
                 } else {
                     $countsm .= '0,';
                     if ($average == 0) {
