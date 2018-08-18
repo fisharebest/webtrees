@@ -139,7 +139,7 @@ class TreeView
         ]);
 
         $hmtl = $this->getThumbnail($individual);
-        $hmtl .= '<a class="tv_link" href="' . e($individual->url()) . '">' . $individual->getFullName() . '</a> <a href="' . e($chart_url) . '" title="' . I18N::translate('Interactive tree of %s', strip_tags($individual->getFullName())) . '" class="icon-button_indi tv_link tv_treelink"></a>';
+        $hmtl .= '<a class="tv_link" href="' . e($individual->url()) . '">' . $individual->getFullName() . '</a> <a href="' . e($chart_url) . '" title="' . I18N::translate('Interactive tree of %s', strip_tags($individual->getFullName())) . '" class="wt-icon-individual tv_link tv_treelink"></a>';
         foreach ($individual->getFacts(WT_EVENTS_BIRT, true) as $fact) {
             $hmtl .= $fact->summary();
         }
