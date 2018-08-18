@@ -891,24 +891,7 @@ class ReportParserGenerate extends ReportParserBase
                 $name = strip_tags($name);
                 if (!empty($attrs['truncate'])) {
                     if (mb_strlen($name) > $attrs['truncate']) {
-                        $name  = preg_replace("/\(.*\) ?/", '', $name); //removes () and text inbetween - what about ", [ and { etc?
-                        $words = preg_split('/[, -]+/', $name); // names separated with space, comma or hyphen - any others?
-                        $name  = $words[count($words) - 1];
-                        for ($i = count($words) - 2; $i >= 0; $i--) {
-                            $len = mb_strlen($name);
-                            for ($j = count($words) - 3; $j >= 0; $j--) {
-                                $len += mb_strlen($words[$j]);
-                            }
-                            if ($len > $attrs['truncate']) {
-                                $first_letter = mb_substr($words[$i], 0, 1);
-                                // Do not show " of nick-names
-                                if ($first_letter != '"') {
-                                    $name = mb_substr($words[$i], 0, 1) . '. ' . $name;
-                                }
-                            } else {
-                                $name = $words[$i] . ' ' . $name;
-                            }
-                        }
+                        $name = mb_substr($name, 0, $attrs['truncate'] -1) . '…';
                     }
                 } else {
                     $addname = $record->getAddName();
