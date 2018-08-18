@@ -168,11 +168,18 @@ class AdminController extends AbstractBaseController
             $user_list[$tmp_user->getUserName()] = $tmp_user->getUserName();
         }
 
+        $action   = $request->get('action');
+
+        // @TODO This ought to be a POST action
+        if ($action === 'delete') {
+            list(, $delete, $where, $args) = $this->changesQuery($request);
+            Database::prepare($delete . $where)->execute($args);
+        }
+
         // First and last change in the database.
         $earliest = Database::prepare("SELECT IFNULL(DATE(MIN(change_time)), CURDATE()) FROM `##change`")->fetchOne();
         $latest   = Database::prepare("SELECT IFNULL(DATE(MAX(change_time)), CURDATE()) FROM `##change`")->fetchOne();
 
-        $action   = $request->get('action');
         $ged      = $request->get('ged');
         $from     = $request->get('from', $earliest);
         $to       = $request->get('to', $latest);
