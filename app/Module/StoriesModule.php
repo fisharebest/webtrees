@@ -162,6 +162,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
         $menu = new Menu($this->getTitle(), route('module', [
             'module' => $this->getName(),
             'action' => 'ShowList',
+            'ged'    => $tree->getName(),
         ]), 'menu-story');
 
         return $menu;
