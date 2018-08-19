@@ -25,6 +25,8 @@ class Migration34 implements MigrationInterface
 {
     /**
      * Upgrade to to the next version
+     *
+     * @return void
      */
     public function upgrade()
     {

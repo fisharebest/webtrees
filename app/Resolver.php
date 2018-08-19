@@ -33,6 +33,8 @@ class Resolver
      *
      * @param string $class
      * @param object $object
+     *
+     * @return void
      */
     public function bind(string $class, $object)
     {

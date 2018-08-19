@@ -24,6 +24,8 @@ class Migration1 implements MigrationInterface
 {
     /**
      * Upgrade to to the next version
+     *
+     * @return void
      */
     public function upgrade()
     {

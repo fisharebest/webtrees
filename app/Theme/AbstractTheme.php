@@ -116,7 +116,7 @@ abstract class AbstractTheme
     /** @var  Request */
     protected $request;
 
-    /** @var Tree */
+    /** @var Tree|null */
     protected $tree;
 
     /**
