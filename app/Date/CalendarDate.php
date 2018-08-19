@@ -489,7 +489,7 @@ class CalendarDate
      *
      * @return string
      */
-    public function getAge($full, $jd, $warn_on_negative = true)
+    public function getAge($full, $jd, $warn_on_negative)
     {
         if ($this->y == 0 || $jd == 0) {
             return $full ? '' : '0';

@@ -123,8 +123,6 @@ class Statement
      *
      * Execute the query, if necessary. Typically when there are no parameters.
      *
-     * @param int $fetch_style
-     *
      * @return stdClass[]
      */
     public function fetchAll()
