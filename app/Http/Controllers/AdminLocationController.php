@@ -380,10 +380,10 @@ class AdminLocationController extends AbstractBaseController
 
                     $places[] = [
                         'pl_level' => $row[0],
-                        'pl_long'  => $row[$fields-4],
-                        'pl_lati'  => $row[$fields-3],
-                        'pl_zoom'  => $row[$fields-2],
-                        'pl_icon'  => $row[$fields-1],
+                        'pl_long'  => $row[$fields - 4],
+                        'pl_lati'  => $row[$fields - 3],
+                        'pl_zoom'  => $row[$fields - 2],
+                        'pl_icon'  => $row[$fields - 1],
                         'fqpn'     => $fqdn,
                     ];
                 }
