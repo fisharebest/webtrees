@@ -47,7 +47,7 @@ class CensusColumnAgeMaleTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnAgeMale($census, '', '');
 
-        $this->assertSame('32', $column->generate($individual));
+        $this->assertSame('32', $column->generate($individual, $individual));
     }
 
     /**
@@ -63,7 +63,7 @@ class CensusColumnAgeMaleTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnAgeMale($census, '', '');
 
-        $this->assertSame('', $column->generate($individual));
+        $this->assertSame('', $column->generate($individual, $individual));
     }
 
     /**
@@ -81,7 +81,7 @@ class CensusColumnAgeMaleTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnAgeMale($census, '', '');
 
-        $this->assertSame('32', $column->generate($individual));
+        $this->assertSame('32', $column->generate($individual, $individual));
     }
 
     /**
@@ -99,6 +99,6 @@ class CensusColumnAgeMaleTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnAgeMale($census, '', '');
 
-        $this->assertSame('0', $column->generate($individual));
+        $this->assertSame('0', $column->generate($individual, $individual));
     }
 }

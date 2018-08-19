@@ -43,6 +43,6 @@ class CensusColumnNullTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnNull($census, '', '');
 
-        $this->assertSame('', $column->generate($individual));
+        $this->assertSame('', $column->generate($individual, $individual));
     }
 }

@@ -52,7 +52,7 @@ class CensusColumnMarriedWithinYearTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnMarriedWithinYear($census, '', '');
 
-        $this->assertSame('Y', $column->generate($individual));
+        $this->assertSame('Y', $column->generate($individual, $individual));
     }
 
     /**
@@ -75,7 +75,7 @@ class CensusColumnMarriedWithinYearTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnMarriedWithinYear($census, '', '');
 
-        $this->assertSame('', $column->generate($individual));
+        $this->assertSame('', $column->generate($individual, $individual));
     }
 
     /**
@@ -98,7 +98,7 @@ class CensusColumnMarriedWithinYearTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnMarriedWithinYear($census, '', '');
 
-        $this->assertSame('', $column->generate($individual));
+        $this->assertSame('', $column->generate($individual, $individual));
     }
 
     /**
@@ -118,7 +118,7 @@ class CensusColumnMarriedWithinYearTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnMarriedWithinYear($census, '', '');
 
-        $this->assertSame('', $column->generate($individual));
+        $this->assertSame('', $column->generate($individual, $individual));
     }
 
     /**
@@ -135,6 +135,6 @@ class CensusColumnMarriedWithinYearTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnMarriedWithinYear($census, '', '');
 
-        $this->assertSame('', $column->generate($individual));
+        $this->assertSame('', $column->generate($individual, $individual));
     }
 }

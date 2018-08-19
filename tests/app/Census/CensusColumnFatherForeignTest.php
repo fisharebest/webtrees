@@ -66,7 +66,7 @@ class CensusColumnFatherForeignTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnFatherForeign($census, '', '');
 
-        $this->assertSame('', $column->generate($individual));
+        $this->assertSame('', $column->generate($individual, $individual));
     }
 
     /**
@@ -89,7 +89,7 @@ class CensusColumnFatherForeignTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnFatherForeign($census, '', '');
 
-        $this->assertSame('Y', $column->generate($individual));
+        $this->assertSame('Y', $column->generate($individual, $individual));
     }
 
     /**
@@ -109,7 +109,7 @@ class CensusColumnFatherForeignTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnFatherForeign($census, '', '');
 
-        $this->assertSame('', $column->generate($individual));
+        $this->assertSame('', $column->generate($individual, $individual));
     }
 
     /**
@@ -126,6 +126,6 @@ class CensusColumnFatherForeignTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnFatherForeign($census, '', '');
 
-        $this->assertSame('', $column->generate($individual));
+        $this->assertSame('', $column->generate($individual, $individual));
     }
 }

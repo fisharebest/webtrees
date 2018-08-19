@@ -45,7 +45,7 @@ class CensusColumnAgeFemale5YearsTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnAgeFemale5Years($census, '', '');
 
-        $this->assertSame('', $column->generate($individual));
+        $this->assertSame('', $column->generate($individual, $individual));
     }
 
     /**
@@ -63,7 +63,7 @@ class CensusColumnAgeFemale5YearsTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnAgeFemale5Years($census, '', '');
 
-        $this->assertSame('30', $column->generate($individual));
+        $this->assertSame('30', $column->generate($individual, $individual));
     }
 
     /**
@@ -81,7 +81,7 @@ class CensusColumnAgeFemale5YearsTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnAgeFemale5Years($census, '', '');
 
-        $this->assertSame('30', $column->generate($individual));
+        $this->assertSame('30', $column->generate($individual, $individual));
     }
 
     /**
@@ -99,7 +99,7 @@ class CensusColumnAgeFemale5YearsTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnAgeFemale5Years($census, '', '');
 
-        $this->assertSame('0', $column->generate($individual));
+        $this->assertSame('0', $column->generate($individual, $individual));
     }
 
     /**
@@ -117,7 +117,7 @@ class CensusColumnAgeFemale5YearsTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnAgeFemale5Years($census, '', '');
 
-        $this->assertSame('14', $column->generate($individual));
+        $this->assertSame('14', $column->generate($individual, $individual));
     }
 
     /**
@@ -135,6 +135,6 @@ class CensusColumnAgeFemale5YearsTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnAgeFemale5Years($census, '', '');
 
-        $this->assertSame('40', $column->generate($individual));
+        $this->assertSame('40', $column->generate($individual, $individual));
     }
 }

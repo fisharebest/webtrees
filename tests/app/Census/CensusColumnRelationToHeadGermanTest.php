@@ -43,6 +43,6 @@ class CensusColumnRelationToHeadGermanTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnRelationToHeadGerman($census, '', '');
 
-        $this->assertSame('Haushaltungsvorstand', $column->generate($individual));
+        $this->assertSame('Haushaltungsvorstand', $column->generate($individual, $individual));
     }
 }

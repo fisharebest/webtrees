@@ -31,7 +31,7 @@ class CensusColumnNull extends AbstractCensusColumn implements CensusColumnInter
      *
      * @return string
      */
-    public function generate(Individual $individual, Individual $head = null)
+    public function generate(Individual $individual, Individual $head)
     {
         return '';
     }

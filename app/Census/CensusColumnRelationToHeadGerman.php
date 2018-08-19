@@ -32,7 +32,7 @@ class CensusColumnRelationToHeadGerman extends AbstractCensusColumn implements C
      *
      * @return string
      */
-    public function generate(Individual $individual, Individual $head = null)
+    public function generate(Individual $individual, Individual $head)
     {
         if ($head === null || $individual === $head) {
             return 'Haushaltungsvorstand';

@@ -65,7 +65,7 @@ abstract class AbstractCensusColumnCondition extends AbstractCensusColumn implem
      *
      * @return string
      */
-    public function generate(Individual $individual, Individual $head = null)
+    public function generate(Individual $individual, Individual $head)
     {
         $family = $this->spouseFamily($individual);
         $sex    = $individual->getSex();

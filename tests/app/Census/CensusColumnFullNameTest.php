@@ -46,6 +46,6 @@ class CensusColumnFullNameTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnFullName($census, '', '');
 
-        $this->assertSame('Joe Bloggs', $column->generate($individual));
+        $this->assertSame('Joe Bloggs', $column->generate($individual, $individual));
     }
 }

@@ -44,7 +44,7 @@ class CensusColumnSurnameTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnSurname($census, '', '');
 
-        $this->assertSame('Bloggs', $column->generate($individual));
+        $this->assertSame('Bloggs', $column->generate($individual, $individual));
     }
 
     /**
@@ -60,6 +60,6 @@ class CensusColumnSurnameTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnSurname($census, '', '');
 
-        $this->assertSame('', $column->generate($individual));
+        $this->assertSame('', $column->generate($individual, $individual));
     }
 }

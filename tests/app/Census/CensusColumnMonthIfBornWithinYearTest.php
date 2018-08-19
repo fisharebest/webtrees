@@ -46,7 +46,7 @@ class CensusColumnMonthIfBornWithinYearTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnMonthIfBornWithinYear($census, '', '');
 
-        $this->assertSame('Jan', $column->generate($individual));
+        $this->assertSame('Jan', $column->generate($individual, $individual));
     }
 
     /**
@@ -63,7 +63,7 @@ class CensusColumnMonthIfBornWithinYearTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnMonthIfBornWithinYear($census, '', '');
 
-        $this->assertSame('', $column->generate($individual));
+        $this->assertSame('', $column->generate($individual, $individual));
     }
 
     /**
@@ -81,7 +81,7 @@ class CensusColumnMonthIfBornWithinYearTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnMonthIfBornWithinYear($census, '', '');
 
-        $this->assertSame('', $column->generate($individual));
+        $this->assertSame('', $column->generate($individual, $individual));
     }
 
 
@@ -99,6 +99,6 @@ class CensusColumnMonthIfBornWithinYearTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnMonthIfBornWithinYear($census, '', '');
 
-        $this->assertSame('', $column->generate($individual));
+        $this->assertSame('', $column->generate($individual, $individual));
     }
 }

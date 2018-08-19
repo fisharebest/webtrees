@@ -52,7 +52,7 @@ class CensusColumnMonthIfMarriedWithinYearTest extends \PHPUnit\Framework\TestCa
 
         $column = new CensusColumnMonthIfMarriedWithinYear($census, '', '');
 
-        $this->assertSame('Dec', $column->generate($individual));
+        $this->assertSame('Dec', $column->generate($individual, $individual));
     }
 
     /**
@@ -75,7 +75,7 @@ class CensusColumnMonthIfMarriedWithinYearTest extends \PHPUnit\Framework\TestCa
 
         $column = new CensusColumnMonthIfMarriedWithinYear($census, '', '');
 
-        $this->assertSame('', $column->generate($individual));
+        $this->assertSame('', $column->generate($individual, $individual));
     }
 
     /**
@@ -98,7 +98,7 @@ class CensusColumnMonthIfMarriedWithinYearTest extends \PHPUnit\Framework\TestCa
 
         $column = new CensusColumnMonthIfMarriedWithinYear($census, '', '');
 
-        $this->assertSame('', $column->generate($individual));
+        $this->assertSame('', $column->generate($individual, $individual));
     }
 
     /**
@@ -118,7 +118,7 @@ class CensusColumnMonthIfMarriedWithinYearTest extends \PHPUnit\Framework\TestCa
 
         $column = new CensusColumnMonthIfMarriedWithinYear($census, '', '');
 
-        $this->assertSame('', $column->generate($individual));
+        $this->assertSame('', $column->generate($individual, $individual));
     }
 
     /**
@@ -135,6 +135,6 @@ class CensusColumnMonthIfMarriedWithinYearTest extends \PHPUnit\Framework\TestCa
 
         $column = new CensusColumnMonthIfMarriedWithinYear($census, '', '');
 
-        $this->assertSame('', $column->generate($individual));
+        $this->assertSame('', $column->generate($individual, $individual));
     }
 }

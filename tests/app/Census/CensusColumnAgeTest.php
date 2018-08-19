@@ -46,6 +46,6 @@ class CensusColumnAgeTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnAge($census, '', '');
 
-        $this->assertSame('32', $column->generate($individual));
+        $this->assertSame('32', $column->generate($individual, $individual));
     }
 }

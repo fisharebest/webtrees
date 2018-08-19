@@ -60,7 +60,7 @@ class CensusColumnBirthPlaceTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnBirthPlace($census, '', '');
 
-        $this->assertSame('Westminster, London', $column->generate($individual));
+        $this->assertSame('Westminster, London', $column->generate($individual, $individual));
     }
 
     /**
@@ -77,7 +77,7 @@ class CensusColumnBirthPlaceTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnBirthPlace($census, '', '');
 
-        $this->assertSame('', $column->generate($individual));
+        $this->assertSame('', $column->generate($individual, $individual));
     }
 
     /**
@@ -94,6 +94,6 @@ class CensusColumnBirthPlaceTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnBirthPlace($census, '', '');
 
-        $this->assertSame('Paris, France', $column->generate($individual));
+        $this->assertSame('Paris, France', $column->generate($individual, $individual));
     }
 }

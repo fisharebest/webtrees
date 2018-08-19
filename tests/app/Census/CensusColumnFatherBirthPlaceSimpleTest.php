@@ -69,6 +69,6 @@ class CensusColumnFatherBirthPlaceSimpleTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnFatherBirthPlaceSimple($census, '', '');
 
-        $this->assertSame('Florida', $column->generate($individual));
+        $this->assertSame('Florida', $column->generate($individual, $individual));
     }
 }

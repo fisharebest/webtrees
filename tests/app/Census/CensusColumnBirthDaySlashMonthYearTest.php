@@ -53,6 +53,6 @@ class CensusColumnBirthDaySlashMonthYearTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnBirthDaySlashMonthYear($census, '', '');
 
-        $this->assertSame('30/6 1832', $column->generate($individual));
+        $this->assertSame('30/6 1832', $column->generate($individual, $individual));
     }
 }

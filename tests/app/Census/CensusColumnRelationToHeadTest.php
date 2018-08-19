@@ -43,6 +43,6 @@ class CensusColumnRelationToHeadTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnRelationToHead($census, '', '');
 
-        $this->assertSame('head', $column->generate($individual));
+        $this->assertSame('head', $column->generate($individual, $individual));
     }
 }

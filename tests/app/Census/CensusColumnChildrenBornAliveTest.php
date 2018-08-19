@@ -45,7 +45,7 @@ class CensusColumnChildrenBornAliveTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnChildrenBornAlive($census, '', '');
 
-        $this->assertSame('', $column->generate($individual));
+        $this->assertSame('', $column->generate($individual, $individual));
     }
 
     /**
@@ -91,6 +91,6 @@ class CensusColumnChildrenBornAliveTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnChildrenBornAlive($census, '', '');
 
-        $this->assertSame('3', $column->generate($individual));
+        $this->assertSame('3', $column->generate($individual, $individual));
     }
 }

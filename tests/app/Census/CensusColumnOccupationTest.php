@@ -44,7 +44,7 @@ class CensusColumnOccupationTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnOccupation($census, '', '');
 
-        $this->assertSame('', $column->generate($individual));
+        $this->assertSame('', $column->generate($individual, $individual));
     }
 
     /**
@@ -63,6 +63,6 @@ class CensusColumnOccupationTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnOccupation($census, '', '');
 
-        $this->assertSame('Farmer', $column->generate($individual));
+        $this->assertSame('Farmer', $column->generate($individual, $individual));
     }
 }

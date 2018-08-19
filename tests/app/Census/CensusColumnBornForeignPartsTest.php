@@ -63,7 +63,7 @@ class CensusColumnBornForeignPartsTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnBornForeignParts($census, '', '');
 
-        $this->assertSame('', $column->generate($individual));
+        $this->assertSame('', $column->generate($individual, $individual));
     }
 
     /**
@@ -80,7 +80,7 @@ class CensusColumnBornForeignPartsTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnBornForeignParts($census, '', '');
 
-        $this->assertSame('', $column->generate($individual));
+        $this->assertSame('', $column->generate($individual, $individual));
     }
 
     /**
@@ -97,7 +97,7 @@ class CensusColumnBornForeignPartsTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnBornForeignParts($census, '', '');
 
-        $this->assertSame('S', $column->generate($individual));
+        $this->assertSame('S', $column->generate($individual, $individual));
     }
 
     /**
@@ -114,7 +114,7 @@ class CensusColumnBornForeignPartsTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnBornForeignParts($census, '', '');
 
-        $this->assertSame('I', $column->generate($individual));
+        $this->assertSame('I', $column->generate($individual, $individual));
     }
 
     /**
@@ -131,7 +131,7 @@ class CensusColumnBornForeignPartsTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnBornForeignParts($census, '', '');
 
-        $this->assertSame('F', $column->generate($individual));
+        $this->assertSame('F', $column->generate($individual, $individual));
     }
 
     /**
@@ -148,7 +148,7 @@ class CensusColumnBornForeignPartsTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnBornForeignParts($census, '', '');
 
-        $this->assertSame('E', $column->generate($individual));
+        $this->assertSame('E', $column->generate($individual, $individual));
     }
 
     /**
@@ -165,7 +165,7 @@ class CensusColumnBornForeignPartsTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnBornForeignParts($census, '', '');
 
-        $this->assertSame('E', $column->generate($individual));
+        $this->assertSame('E', $column->generate($individual, $individual));
     }
 
     /**
@@ -182,7 +182,7 @@ class CensusColumnBornForeignPartsTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnBornForeignParts($census, '', '');
 
-        $this->assertSame('S', $column->generate($individual));
+        $this->assertSame('S', $column->generate($individual, $individual));
     }
 
     /**
@@ -199,7 +199,7 @@ class CensusColumnBornForeignPartsTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnBornForeignParts($census, '', '');
 
-        $this->assertSame('', $column->generate($individual));
+        $this->assertSame('', $column->generate($individual, $individual));
     }
 
     /**
@@ -216,7 +216,7 @@ class CensusColumnBornForeignPartsTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnBornForeignParts($census, '', '');
 
-        $this->assertSame('F', $column->generate($individual));
+        $this->assertSame('F', $column->generate($individual, $individual));
     }
 
     /**
@@ -233,7 +233,7 @@ class CensusColumnBornForeignPartsTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnBornForeignParts($census, '', '');
 
-        $this->assertSame('E', $column->generate($individual));
+        $this->assertSame('E', $column->generate($individual, $individual));
     }
 
     /**
@@ -250,7 +250,7 @@ class CensusColumnBornForeignPartsTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnBornForeignParts($census, '', '');
 
-        $this->assertSame('E', $column->generate($individual));
+        $this->assertSame('E', $column->generate($individual, $individual));
     }
 
     /**
@@ -267,7 +267,7 @@ class CensusColumnBornForeignPartsTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnBornForeignParts($census, '', '');
 
-        $this->assertSame('', $column->generate($individual));
+        $this->assertSame('', $column->generate($individual, $individual));
     }
 
     /**
@@ -284,7 +284,7 @@ class CensusColumnBornForeignPartsTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnBornForeignParts($census, '', '');
 
-        $this->assertSame('I', $column->generate($individual));
+        $this->assertSame('I', $column->generate($individual, $individual));
     }
 
     /**
@@ -301,7 +301,7 @@ class CensusColumnBornForeignPartsTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnBornForeignParts($census, '', '');
 
-        $this->assertSame('F', $column->generate($individual));
+        $this->assertSame('F', $column->generate($individual, $individual));
     }
 
     /**
@@ -318,7 +318,7 @@ class CensusColumnBornForeignPartsTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnBornForeignParts($census, '', '');
 
-        $this->assertSame('', $column->generate($individual));
+        $this->assertSame('', $column->generate($individual, $individual));
     }
 
     /**
@@ -335,7 +335,7 @@ class CensusColumnBornForeignPartsTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnBornForeignParts($census, '', '');
 
-        $this->assertSame('', $column->generate($individual));
+        $this->assertSame('', $column->generate($individual, $individual));
     }
 
     /**
@@ -352,7 +352,7 @@ class CensusColumnBornForeignPartsTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnBornForeignParts($census, '', '');
 
-        $this->assertSame('S', $column->generate($individual));
+        $this->assertSame('S', $column->generate($individual, $individual));
     }
 
     /**
@@ -369,7 +369,7 @@ class CensusColumnBornForeignPartsTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnBornForeignParts($census, '', '');
 
-        $this->assertSame('I', $column->generate($individual));
+        $this->assertSame('I', $column->generate($individual, $individual));
     }
 
     /**
@@ -386,7 +386,7 @@ class CensusColumnBornForeignPartsTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnBornForeignParts($census, '', '');
 
-        $this->assertSame('F', $column->generate($individual));
+        $this->assertSame('F', $column->generate($individual, $individual));
     }
 
     /**
@@ -403,7 +403,7 @@ class CensusColumnBornForeignPartsTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnBornForeignParts($census, '', '');
 
-        $this->assertSame('', $column->generate($individual));
+        $this->assertSame('', $column->generate($individual, $individual));
     }
 
     /**
@@ -420,7 +420,7 @@ class CensusColumnBornForeignPartsTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnBornForeignParts($census, '', '');
 
-        $this->assertSame('', $column->generate($individual));
+        $this->assertSame('', $column->generate($individual, $individual));
     }
 
     /**
@@ -437,6 +437,6 @@ class CensusColumnBornForeignPartsTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnBornForeignParts($census, '', '');
 
-        $this->assertSame('', $column->generate($individual));
+        $this->assertSame('', $column->generate($individual, $individual));
     }
 }

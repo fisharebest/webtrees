@@ -44,6 +44,6 @@ class CensusColumnReligionTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnReligion($census, '', '');
 
-        $this->assertSame('', $column->generate($individual));
+        $this->assertSame('', $column->generate($individual, $individual));
     }
 }

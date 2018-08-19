@@ -44,7 +44,7 @@ class CensusColumnGivenNameInitialTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnGivenNameInitial($census, '', '');
 
-        $this->assertSame('Joe', $column->generate($individual));
+        $this->assertSame('Joe', $column->generate($individual, $individual));
     }
 
     /**
@@ -60,7 +60,7 @@ class CensusColumnGivenNameInitialTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnGivenNameInitial($census, '', '');
 
-        $this->assertSame('Joe F', $column->generate($individual));
+        $this->assertSame('Joe F', $column->generate($individual, $individual));
     }
 
     /**
@@ -76,6 +76,6 @@ class CensusColumnGivenNameInitialTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnGivenNameInitial($census, '', '');
 
-        $this->assertSame('', $column->generate($individual));
+        $this->assertSame('', $column->generate($individual, $individual));
     }
 }

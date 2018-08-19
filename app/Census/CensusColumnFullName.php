@@ -32,7 +32,7 @@ class CensusColumnFullName extends AbstractCensusColumn implements CensusColumnI
      *
      * @return string
      */
-    public function generate(Individual $individual, Individual $head = null)
+    public function generate(Individual $individual, Individual $head)
     {
         $name = $this->nameAtCensusDate($individual, $this->date());
 

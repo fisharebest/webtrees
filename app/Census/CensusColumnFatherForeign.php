@@ -31,7 +31,7 @@ class CensusColumnFatherForeign extends AbstractCensusColumn implements CensusCo
      *
      * @return string
      */
-    public function generate(Individual $individual, Individual $head = null)
+    public function generate(Individual $individual, Individual $head)
     {
         $father = $this->father($individual);
 

@@ -46,7 +46,7 @@ interface CensusColumnInterface
      *
      * @return string
      */
-    public function generate(Individual $individual, Individual $head = null);
+    public function generate(Individual $individual, Individual $head);
 
     /**
      * Where did this census occur

@@ -51,6 +51,6 @@ class CensusColumnBirthMonthTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnBirthMonth($census, '', '');
 
-        $this->assertSame('Jan', $column->generate($individual));
+        $this->assertSame('Jan', $column->generate($individual, $individual));
     }
 }

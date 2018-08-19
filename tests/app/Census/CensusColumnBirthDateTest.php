@@ -51,6 +51,6 @@ class CensusColumnBirthDateTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnBirthDate($census, '', '');
 
-        $this->assertSame('1 1 1800', $column->generate($individual));
+        $this->assertSame('1 1 1800', $column->generate($individual, $individual));
     }
 }

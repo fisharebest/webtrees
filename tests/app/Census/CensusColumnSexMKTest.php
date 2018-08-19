@@ -44,7 +44,7 @@ class CensusColumnSexMKTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnSexMK($census, '', '');
 
-        $this->assertSame('M', $column->generate($individual));
+        $this->assertSame('M', $column->generate($individual, $individual));
     }
 
     /**
@@ -60,7 +60,7 @@ class CensusColumnSexMKTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnSexMK($census, '', '');
 
-        $this->assertSame('K', $column->generate($individual));
+        $this->assertSame('K', $column->generate($individual, $individual));
     }
 
     /**
@@ -76,6 +76,6 @@ class CensusColumnSexMKTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnSexMK($census, '', '');
 
-        $this->assertSame('', $column->generate($individual));
+        $this->assertSame('', $column->generate($individual, $individual));
     }
 }

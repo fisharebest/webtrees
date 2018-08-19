@@ -51,7 +51,7 @@ class CensusColumnSurnameGivenNameInitialTest extends \PHPUnit\Framework\TestCas
 
         $column = new CensusColumnSurnameGivenNameInitial($census, '', '');
 
-        $this->assertSame('Sixpack, Joe', $column->generate($individual));
+        $this->assertSame('Sixpack, Joe', $column->generate($individual, $individual));
     }
 
     /**
@@ -74,6 +74,6 @@ class CensusColumnSurnameGivenNameInitialTest extends \PHPUnit\Framework\TestCas
 
         $column = new CensusColumnSurnameGivenNameInitial($census, '', '');
 
-        $this->assertSame('Sixpack, Joe F', $column->generate($individual));
+        $this->assertSame('Sixpack, Joe F', $column->generate($individual, $individual));
     }
 }

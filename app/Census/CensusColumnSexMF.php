@@ -37,7 +37,7 @@ class CensusColumnSexMF extends AbstractCensusColumn implements CensusColumnInte
      *
      * @return string
      */
-    public function generate(Individual $individual, Individual $head = null)
+    public function generate(Individual $individual, Individual $head)
     {
         switch ($individual->getSex()) {
             case 'M':

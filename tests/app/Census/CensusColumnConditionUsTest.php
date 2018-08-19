@@ -48,7 +48,7 @@ class CensusColumnConditionUsTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnConditionUs($census, '', '');
 
-        $this->assertSame('S', $column->generate($individual));
+        $this->assertSame('S', $column->generate($individual, $individual));
     }
 
     /**
@@ -67,7 +67,7 @@ class CensusColumnConditionUsTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnConditionUs($census, '', '');
 
-        $this->assertSame('S', $column->generate($individual));
+        $this->assertSame('S', $column->generate($individual, $individual));
     }
 
     /**
@@ -90,7 +90,7 @@ class CensusColumnConditionUsTest extends \PHPUnit\Framework\TestCase
         $column = new CensusColumnConditionUs($census, '', '');
         $census->shouldReceive('censusDate')->andReturn('30 JUN 1830');
 
-        $this->assertSame('S', $column->generate($individual));
+        $this->assertSame('S', $column->generate($individual, $individual));
     }
 
     /**
@@ -113,7 +113,7 @@ class CensusColumnConditionUsTest extends \PHPUnit\Framework\TestCase
         $column = new CensusColumnConditionUs($census, '', '');
         $census->shouldReceive('censusDate')->andReturn('30 JUN 1830');
 
-        $this->assertSame('S', $column->generate($individual));
+        $this->assertSame('S', $column->generate($individual, $individual));
     }
 
     /**
@@ -142,7 +142,7 @@ class CensusColumnConditionUsTest extends \PHPUnit\Framework\TestCase
         $column = new CensusColumnConditionUs($census, '', '');
         $census->shouldReceive('censusDate')->andReturn('30 JUN 1830');
 
-        $this->assertSame('W', $column->generate($individual));
+        $this->assertSame('W', $column->generate($individual, $individual));
     }
 
     /**
@@ -171,7 +171,7 @@ class CensusColumnConditionUsTest extends \PHPUnit\Framework\TestCase
         $column = new CensusColumnConditionUs($census, '', '');
         $census->shouldReceive('censusDate')->andReturn('30 JUN 1830');
 
-        $this->assertSame('W', $column->generate($individual));
+        $this->assertSame('W', $column->generate($individual, $individual));
     }
 
     /**
@@ -194,7 +194,7 @@ class CensusColumnConditionUsTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnConditionUs($census, '', '');
 
-        $this->assertSame('S', $column->generate($individual));
+        $this->assertSame('S', $column->generate($individual, $individual));
     }
 
     /**
@@ -217,7 +217,7 @@ class CensusColumnConditionUsTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnConditionUs($census, '', '');
 
-        $this->assertSame('S', $column->generate($individual));
+        $this->assertSame('S', $column->generate($individual, $individual));
     }
 
     /**
@@ -240,7 +240,7 @@ class CensusColumnConditionUsTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnConditionUs($census, '', '');
 
-        $this->assertSame('S', $column->generate($individual));
+        $this->assertSame('S', $column->generate($individual, $individual));
     }
 
     /**
@@ -263,7 +263,7 @@ class CensusColumnConditionUsTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnConditionUs($census, '', '');
 
-        $this->assertSame('S', $column->generate($individual));
+        $this->assertSame('S', $column->generate($individual, $individual));
     }
 
     /**
@@ -288,7 +288,7 @@ class CensusColumnConditionUsTest extends \PHPUnit\Framework\TestCase
         $column = new CensusColumnConditionUs($census, '', '');
         $census->shouldReceive('censusDate')->andReturn('30 JUN 1830');
 
-        $this->assertSame('D', $column->generate($individual));
+        $this->assertSame('D', $column->generate($individual, $individual));
     }
 
     /**
@@ -313,6 +313,6 @@ class CensusColumnConditionUsTest extends \PHPUnit\Framework\TestCase
         $column = new CensusColumnConditionUs($census, '', '');
         $census->shouldReceive('censusDate')->andReturn('30 JUN 1830');
 
-        $this->assertSame('D', $column->generate($individual));
+        $this->assertSame('D', $column->generate($individual, $individual));
     }
 }

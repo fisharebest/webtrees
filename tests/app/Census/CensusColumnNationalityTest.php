@@ -62,7 +62,7 @@ class CensusColumnNationalityTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnNationality($census, '', '');
 
-        $this->assertSame('Deutsch', $column->generate($individual));
+        $this->assertSame('Deutsch', $column->generate($individual, $individual));
     }
 
     /**
@@ -80,7 +80,7 @@ class CensusColumnNationalityTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnNationality($census, '', '');
 
-        $this->assertSame('Australia', $column->generate($individual));
+        $this->assertSame('Australia', $column->generate($individual, $individual));
     }
 
     /**
@@ -98,7 +98,7 @@ class CensusColumnNationalityTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnNationality($census, '', '');
 
-        $this->assertSame('British', $column->generate($individual));
+        $this->assertSame('British', $column->generate($individual, $individual));
     }
 
     /**
@@ -134,6 +134,6 @@ class CensusColumnNationalityTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnNationality($census, '', '');
 
-        $this->assertSame('United States', $column->generate($individual));
+        $this->assertSame('United States', $column->generate($individual, $individual));
     }
 }
