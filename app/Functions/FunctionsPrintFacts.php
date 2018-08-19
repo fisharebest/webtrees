@@ -196,7 +196,7 @@ class FunctionsPrintFacts
                     'href'  => route('edit-fact', [
                         'xref'    => $parent->getXref(),
                         'fact_id' => $fact->getFactId(),
-                        'ged' . $tree->getName(),
+                        'ged'     => $tree->getName(),
                     ]),
                 ]) ?>
                 <?= FontAwesome::linkIcon('copy', I18N::translate('Copy'), [
@@ -774,8 +774,7 @@ class FunctionsPrintFacts
                     echo '<a href="' . e(route('edit-fact', [
                             'xref'    => $parent->getXref(),
                             'fact_id' => $fact->getFactId(),
-                            'ged',
-                            $tree->getName(),
+                            'ged'     => $tree->getName(),
                         ])) . '" title="', I18N::translate('Edit'), '">';
                     if ($tree->getPreference('SHOW_FACT_ICONS')) {
                         if ($level == 1) {
@@ -979,10 +978,8 @@ class FunctionsPrintFacts
     public static function printMainNotes(Fact $fact, $level)
     {
         $factrec = $fact->getGedcom();
-        $fact_id = $fact->getFactId();
         $parent  = $fact->getParent();
         $tree    = $parent->getTree();
-        $pid     = $parent->getXref();
 
         if ($fact->isPendingAddition()) {
             $styleadd = ' new';
@@ -1058,7 +1055,6 @@ class FunctionsPrintFacts
                 $factlines = explode("\n", $factrec); // 1 BIRT Y\n2 NOTE ...
                 $factwords = explode(' ', $factlines[0]); // 1 BIRT Y
                 $factname  = $factwords[1]; // BIRT
-                $parent    = GedcomRecord::getInstance($pid, $tree);
                 if ($factname == 'EVEN' || $factname == 'FACT') {
                     // Add ' EVEN' to provide sensible output for an event with an empty TYPE record
                     $ct = preg_match('/2 TYPE (.*)/', $factrec, $ematch);
