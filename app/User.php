@@ -261,7 +261,7 @@ class User
             " ORDER BY real_name"
         )->fetchAll();
 
-        return array_map(function (stdClass $row) {
+        return array_map(function (stdClass $row): User {
             return new static($row);
         }, $rows);
     }

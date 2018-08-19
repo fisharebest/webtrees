@@ -590,6 +590,8 @@ abstract class AbstractTheme
     /**
      * Allow themes to do things after initialization (since they cannot use
      * the constructor).
+     *
+     * @return void
      */
     public function hookAfterInit()
     {
