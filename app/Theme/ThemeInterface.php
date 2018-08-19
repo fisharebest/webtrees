@@ -20,6 +20,7 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Specification for a theme.
@@ -89,9 +90,12 @@ interface ThemeInterface
      * Initialise the theme. We cannot pass these in a constructor, as the construction
      * happens in a theme file, and we need to be able to change it.
      *
+     * @param Request   $request
      * @param Tree|null $tree The current tree (if there is one).
+     *
+     * @return void
      */
-    public function init(Tree $tree = null);
+    public function init(Request $request, Tree $tree = null);
 
     /**
      * Links, to show in chart boxes;

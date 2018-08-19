@@ -1014,11 +1014,14 @@ abstract class AbstractTheme
      * Initialise the theme. We cannot pass these in a constructor, as the construction
      * happens in a theme file, and we need to be able to change it.
      *
+     * @param Request   $request
      * @param Tree|null $tree The current tree (if there is one).
+     *
+     * @return void
      */
-    final public function init(Tree $tree = null)
+    final public function init(Request $request, Tree $tree = null)
     {
-        $this->request = Request::createFromGlobals();
+        $this->request = $request;
         $this->tree    = $tree;
 
         $this->hookAfterInit();
