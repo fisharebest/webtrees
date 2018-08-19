@@ -2116,14 +2116,6 @@ abstract class AbstractTheme
     }
 
     /**
-     * Send any HTTP headers.
-     */
-    public function sendHeaders()
-    {
-        header('Content-Type: text/html; charset=UTF-8');
-    }
-
-    /**
      * A list of CSS files to include for this page.
      *
      * @return string[]
