@@ -71,11 +71,11 @@ class Migration22 implements MigrationInterface
                     $_media_dir .= $_cfg->media_directory;
                     Database::prepare(
                         "UPDATE `##gedcom_setting`" .
-                        " SET setting_value=?" .
-                        " WHERE gedcom_id=? AND setting_name='MEDIA_DIRECTORY'"
+                        " SET setting_value = :media_dir" .
+                        " WHERE gedcom_id = :tree_id AND setting_name='MEDIA_DIRECTORY'"
                     )->execute([
-                        $_media_dir,
-                        $_cfg->gedcom_id,
+                        'media_dir' => $_media_dir,
+                        'tree_id'   => $_cfg->gedcom_id,
                     ]);
                 }
             } else {
