@@ -31,6 +31,7 @@ use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Tree;
+use stdClass;
 use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
 
 /**
@@ -2400,7 +2401,7 @@ class ReportParserGenerate extends ReportParserBase
                     foreach ($this->list as $key => $value) {
                         $this->generation = $value->generation;
                         if ($this->generation == $genCounter) {
-                            $newarray[$key]             = new \stdClass();
+                            $newarray[$key]             = new stdClass();
                             $newarray[$key]->generation = $this->generation;
                         }
                     }

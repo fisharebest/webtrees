@@ -19,6 +19,7 @@ use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Functions\FunctionsDate;
 use Fisharebest\Webtrees\Functions\FunctionsImport;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
+use stdClass;
 
 /**
  * A GEDCOM object.
@@ -64,7 +65,7 @@ class GedcomRecord
     /** @var GedcomRecord[][] Allow getInstance() to return references to existing objects */
     protected static $gedcom_record_cache;
 
-    /** @var \stdClass[][] Fetch all pending edits in one database query */
+    /** @var stdClass[][] Fetch all pending edits in one database query */
     private static $pending_record_cache;
 
     /**
