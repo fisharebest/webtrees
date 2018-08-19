@@ -719,9 +719,7 @@ class FunctionsPrintFacts
     public static function printMainSources(Fact $fact, $level)
     {
         $factrec = $fact->getGedcom();
-        $fact_id = $fact->getFactId();
         $parent  = $fact->getParent();
-        $pid     = $parent->getXref();
         $tree    = $fact->getParent()->getTree();
 
         $nlevel = $level + 1;
