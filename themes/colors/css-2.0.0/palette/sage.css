@@ -28,12 +28,12 @@
 
 /* Tbls and menus  */
 .wt-page-options-label,
-.wt-facts-table th,
+.wt-facts-table th, .wt-facts-table .dropdown-toggle,
 .descriptionbox, .descriptionbox a,
 .topbottombar, .topbottombar a,
 .list_label, .list_label a {
 	background-color: #cca;
-	color: #fff;
+	color: #333;
 }
 
 .ui-state-active, .ui-widget-content .ui-state-active {

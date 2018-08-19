@@ -213,6 +213,13 @@
 	overflow-y: hidden;
 }
 
+/* Fit thumbnail into parent on charts */
+.select2-selection.select2-selection--single {
+	min-height: 36px;
+	height: auto;
+	padding: 2px 0;
+}
+
 /*
  *  These selectors control how the short horizontal lines are positioned in the Charts
  *  Optimized for Win10 and FF, Chrome and Edge browsers

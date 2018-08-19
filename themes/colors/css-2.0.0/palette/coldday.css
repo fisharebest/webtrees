@@ -28,7 +28,7 @@
 
 /* Tbls and menus  */
 .wt-page-options-label,
-.wt-facts-table th,
+.wt-facts-table th, .wt-facts-table .dropdown-toggle,
 .descriptionbox, .descriptionbox a,
 .topbottombar, .topbottombar a,
 .list_label, .list_label a {
