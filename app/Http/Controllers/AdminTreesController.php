@@ -278,12 +278,12 @@ class AdminTreesController extends AbstractBaseController
     {
         /* I18N: The placeholders are GEDCOM XREFs and tags. e.g. “INDI I123 contains a FAMC link to F234.” */
         return I18N::translate(
-                '%1$s %2$s has a %3$s link to %4$s.',
-                $this->formatType($type1),
-                $this->checkLink($tree, $xref1),
-                $this->formatType($type2),
-                $this->checkLink($tree, $xref2)
-            );
+            '%1$s %2$s has a %3$s link to %4$s.',
+            $this->formatType($type1),
+            $this->checkLink($tree, $xref1),
+            $this->formatType($type2),
+            $this->checkLink($tree, $xref2)
+        );
     }
 
 
@@ -900,22 +900,17 @@ class AdminTreesController extends AbstractBaseController
         ];
 
         $tags = array_unique(array_merge(
-            explode(',', $tree->getPreference('INDI_FACTS_ADD')), explode(',', $tree->getPreference('INDI_FACTS_UNIQUE')),
-            explode(',', $tree->getPreference('FAM_FACTS_ADD')), explode(',', $tree->getPreference('FAM_FACTS_UNIQUE')),
-            explode(',', $tree->getPreference('NOTE_FACTS_ADD')), explode(',', $tree->getPreference('NOTE_FACTS_UNIQUE')),
-            explode(',', $tree->getPreference('SOUR_FACTS_ADD')), explode(',', $tree->getPreference('SOUR_FACTS_UNIQUE')),
-            explode(',', $tree->getPreference('REPO_FACTS_ADD')), explode(',', $tree->getPreference('REPO_FACTS_UNIQUE')),
-            [
-                'SOUR',
-                'REPO',
-                'OBJE',
-                '_PRIM',
-                'NOTE',
-                'SUBM',
-                'SUBN',
-                '_UID',
-                'CHAN',
-            ]
+            explode(',', $tree->getPreference('INDI_FACTS_ADD')),
+            explode(',', $tree->getPreference('INDI_FACTS_UNIQUE')),
+            explode(',', $tree->getPreference('FAM_FACTS_ADD')),
+            explode(',', $tree->getPreference('FAM_FACTS_UNIQUE')),
+            explode(',', $tree->getPreference('NOTE_FACTS_ADD')),
+            explode(',', $tree->getPreference('NOTE_FACTS_UNIQUE')),
+            explode(',', $tree->getPreference('SOUR_FACTS_ADD')),
+            explode(',', $tree->getPreference('SOUR_FACTS_UNIQUE')),
+            explode(',', $tree->getPreference('REPO_FACTS_ADD')),
+            explode(',', $tree->getPreference('REPO_FACTS_UNIQUE')),
+            ['SOUR', 'REPO', 'OBJE', '_PRIM', 'NOTE', 'SUBM', 'SUBN', '_UID', 'CHAN']
         ));
 
         $all_tags = [];
@@ -1868,15 +1863,11 @@ class AdminTreesController extends AbstractBaseController
             'tree_id' => $tree->getTreeId(),
         ])->fetchAll();
 
-        $repositories = array_map(
-            function (stdClass $x) use ($tree) {
-                $tmp = explode(',', $x->xrefs);
-
-                return array_map(function ($y) use ($tree) {
-                    return Repository::getInstance($y, $tree);
-                }, $tmp);
-            }, $repositories
-        );
+        $repositories = array_map(function (stdClass $x) use ($tree) {
+            return array_map(function ($y) use ($tree) {
+                return Repository::getInstance($y, $tree);
+            }, explode(',', $x->xrefs));
+        }, $repositories);
 
         $sources = Database::prepare(
             "SELECT GROUP_CONCAT(n_id) AS xrefs " .
@@ -1889,15 +1880,11 @@ class AdminTreesController extends AbstractBaseController
             'tree_id' => $tree->getTreeId(),
         ])->fetchAll();
 
-        $sources = array_map(
-            function (stdClass $x) use ($tree) {
-                $tmp = explode(',', $x->xrefs);
-
-                return array_map(function ($y) use ($tree) {
-                    return Source::getInstance($y, $tree);
-                }, $tmp);
-            }, $sources
-        );
+        $sources = array_map(function (stdClass $x) use ($tree) {
+            return array_map(function ($y) use ($tree) {
+                return Source::getInstance($y, $tree);
+            }, explode(',', $x->xrefs));
+        }, $sources);
 
         $individuals = Database::prepare(
             "SELECT DISTINCT GROUP_CONCAT(d_gid ORDER BY d_gid) AS xrefs" .
@@ -1910,15 +1897,11 @@ class AdminTreesController extends AbstractBaseController
             'tree_id' => $tree->getTreeId(),
         ])->fetchAll();
 
-        $individuals = array_map(
-            function (stdClass $x) use ($tree) {
-                $tmp = explode(',', $x->xrefs);
-
-                return array_map(function ($y) use ($tree) {
-                    return Individual::getInstance($y, $tree);
-                }, $tmp);
-            }, $individuals
-        );
+        $individuals = array_map(function (stdClass $x) use ($tree) {
+            return array_map(function ($y) use ($tree) {
+                return Individual::getInstance($y, $tree);
+            }, explode(',', $x->xrefs));
+        }, $individuals);
 
         $families = Database::prepare(
             "SELECT GROUP_CONCAT(f_id) AS xrefs " .
@@ -1930,15 +1913,11 @@ class AdminTreesController extends AbstractBaseController
             'tree_id' => $tree->getTreeId(),
         ])->fetchAll();
 
-        $families = array_map(
-            function (stdClass $x) use ($tree) {
-                $tmp = explode(',', $x->xrefs);
-
-                return array_map(function ($y) use ($tree) {
-                    return Family::getInstance($y, $tree);
-                }, $tmp);
-            }, $families
-        );
+        $families = array_map(function (stdClass $x) use ($tree) {
+            return array_map(function ($y) use ($tree) {
+                return Family::getInstance($y, $tree);
+            }, explode(',', $x->xrefs));
+        }, $families);
 
         $media = Database::prepare(
             "SELECT GROUP_CONCAT(m_id) AS xrefs " .
@@ -1951,15 +1930,11 @@ class AdminTreesController extends AbstractBaseController
             'tree_id' => $tree->getTreeId(),
         ])->fetchAll();
 
-        $media = array_map(
-            function (stdClass $x) use ($tree) {
-                $tmp = explode(',', $x->xrefs);
-
-                return array_map(function ($y) use ($tree) {
-                    return Media::getInstance($y, $tree);
-                }, $tmp);
-            }, $media
-        );
+        $media = array_map(function (stdClass $x) use ($tree) {
+            return array_map(function ($y) use ($tree) {
+                return Media::getInstance($y, $tree);
+            }, explode(',', $x->xrefs));
+        }, $media);
 
         return [
             I18N::translate('Repositories')  => $repositories,

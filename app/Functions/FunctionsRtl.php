@@ -170,7 +170,6 @@ class FunctionsRtl
                     }
                     $workingText = substr($workingText, $currentLen);
                     break;
-                    // fall through
                 case '{':
                     if (substr($workingText, 1, 1) == '{') {
                         // Assume this '{{' starts a TCPDF directive
@@ -185,6 +184,7 @@ class FunctionsRtl
                         self::$waitingText = '';
                         break;
                     }
+                    // no break
                 default:
                     // Look for strings of numbers with optional leading or trailing + or -
                     // and with optional embedded numeric punctuation

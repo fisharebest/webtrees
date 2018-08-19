@@ -1597,8 +1597,7 @@ abstract class AbstractTheme
      */
     public function menuListsSources()
     {
-        return new Menu(
-            I18N::translate('Sources'), route('source-list', ['ged' => $this->tree->getName()]), 'menu-list-sour', ['rel' => 'nofollow']);
+        return new Menu(I18N::translate('Sources'), route('source-list', ['ged' => $this->tree->getName()]), 'menu-list-sour', ['rel' => 'nofollow']);
     }
 
     /**
@@ -1804,11 +1803,7 @@ abstract class AbstractTheme
     public function menuSearchPhonetic()
     {
         /* I18N: search using “sounds like”, rather than exact spelling */
-        return new Menu(
-            I18N::translate('Phonetic search'), route('search-phonetic', [
-            'ged'    => $this->tree->getName(),
-            'action' => 'soundex',
-        ]), 'menu-search-soundex', ['rel' => 'nofollow']);
+        return new Menu(I18N::translate('Phonetic search'), route('search-phonetic', ['ged'    => $this->tree->getName(), 'action' => 'soundex',]), 'menu-search-soundex', ['rel' => 'nofollow']);
     }
 
     /**

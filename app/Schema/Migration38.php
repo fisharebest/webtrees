@@ -70,7 +70,8 @@ class Migration38 implements MigrationInterface
         }
 
         try {
-            Database::exec("ALTER TABLE `##placelocation`" .
+            Database::exec(
+                "ALTER TABLE `##placelocation`" .
                 " DROP COLUMN pl_media," .
                 " DROP COLUMN sv_long," .
                 " DROP COLUMN sv_lati," .

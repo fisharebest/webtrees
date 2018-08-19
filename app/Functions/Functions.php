@@ -2059,19 +2059,23 @@ class Functions
                                 default:
                                     return I18N::translate('great ×%s grandchild', I18N::number($up - 3));
                             }
-                        case 'it': // Source: Michele Locati
-                        case 'es': // Source: Wes Groleau (adding doesn’t change behavior, but needs to be better researched)
+                        case 'it':
+                            // Source: Michele Locati
+                        case 'es':
+                            // Source: Wes Groleau (adding doesn’t change behavior, but needs to be better researched)
                         case 'en_AU':
                         case 'en_GB':
                         case 'en_US':
                         default:
                             switch ($sex2) {
-
-                                case 'M': // I18N: if you need a different number for %s, contact the developers, as a code-change is required
+                                case 'M':
+                                    // I18N: if you need a different number for %s, contact the developers, as a code-change is required
                                     return I18N::translate('great ×%s grandson', I18N::number($up - 2));
                                 case 'F':
+                                    // I18N: if you need a different number for %s, contact the developers, as a code-change is required
                                     return I18N::translate('great ×%s granddaughter', I18N::number($up - 2));
                                 default:
+                                    // I18N: if you need a different number for %s, contact the developers, as a code-change is required
                                     return I18N::translate('great ×%s grandchild', I18N::number($up - 2));
                             }
                     }
@@ -2167,10 +2171,11 @@ class Functions
         $path1        = substr($path, 0, 3);
         $path2        = substr($path, 3);
         while ($path2) {
-            $tmp = I18N::translate(
+            // @TODO need the actual people
             // I18N: A complex relationship, such as “third-cousin’s great-uncle”
+            $tmp = I18N::translate(
                 '%1$s’s %2$s',
-                self::getRelationshipNameFromPath($path1, null, null), // TODO: need the actual people
+                self::getRelationshipNameFromPath($path1, null, null),
                 self::getRelationshipNameFromPath($path2, null, null)
             );
             if (!$relationship || strlen($tmp) < strlen($relationship)) {
