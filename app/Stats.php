@@ -3470,9 +3470,6 @@ class Stats
             " GROUP BY family" .
             " ORDER BY age {$age_dir}"
         );
-        if (!isset($hrows) && !isset($wrows) && !isset($drows)) {
-            return '';
-        }
         $rows = [];
         foreach ($drows as $family) {
             $rows[$family->family] = $family->age;
@@ -3775,9 +3772,7 @@ class Stats
             $sql .= " GROUP BY d_month";
         }
         $rows = $this->runSql($sql);
-        if (!isset($rows)) {
-            return '';
-        }
+
         if ($simple) {
             if (isset($params[0]) && $params[0] != '') {
                 $size = strtolower($params[0]);
@@ -3873,9 +3868,7 @@ class Stats
             $sql .= " GROUP BY d_month";
         }
         $rows = $this->runSql($sql);
-        if (!isset($rows)) {
-            return '';
-        }
+
         if ($simple) {
             if (isset($params[0]) && $params[0] != '') {
                 $size = strtolower($params[0]);

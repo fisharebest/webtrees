@@ -159,7 +159,7 @@ class PedigreeChartController extends AbstractChartController
             $this->chartHasAncestors = $this->chartHasAncestors || ($this->nodes[$i]['indi'] && $this->nodes[$i]['indi']->getChildFamilies());
         }
 
-        $this->arrows = new stdClass;
+        $this->arrows = new stdClass();
         switch ($this->orientation) {
             case self::PORTRAIT:
                 //drop through

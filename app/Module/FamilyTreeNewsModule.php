@@ -146,7 +146,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
     public function getEditNewsAction(Request $request, Tree $tree): Response
     {
         if (!Auth::isManager($tree)) {
-            throw new AccessDeniedHttpException;
+            throw new AccessDeniedHttpException();
         }
 
         $news_id = $request->get('news_id');
@@ -184,7 +184,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
     public function postEditNewsAction(Request $request, Tree $tree): RedirectResponse
     {
         if (!Auth::isManager($tree)) {
-            throw new AccessDeniedHttpException;
+            throw new AccessDeniedHttpException();
         }
 
         $news_id = $request->get('news_id');
@@ -229,7 +229,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
         $news_id = $request->get('news_id');
 
         if (!Auth::isManager($tree)) {
-            throw new AccessDeniedHttpException;
+            throw new AccessDeniedHttpException();
         }
 
         Database::prepare(

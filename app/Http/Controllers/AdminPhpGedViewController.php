@@ -146,7 +146,7 @@ class AdminPhpGedViewController extends AbstractBaseController
             case 'Users':
                 return $this->wizardStepUsers($config);
             default:
-                throw new NotFoundHttpException;
+                throw new NotFoundHttpException();
         }
     }
 

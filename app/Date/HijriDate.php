@@ -53,7 +53,7 @@ class HijriDate extends CalendarDate
      */
     public function __construct($date)
     {
-        $this->calendar = new ArabicCalendar;
+        $this->calendar = new ArabicCalendar();
         parent::__construct($date);
     }
 

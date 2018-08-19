@@ -165,7 +165,7 @@ class PendingChangesController extends AbstractBaseController
             FunctionsImport::acceptAllChanges($record->getXref(), $record->getTree());
         }
 
-        return new Response;
+        return new Response();
     }
 
     /**
@@ -248,7 +248,7 @@ class PendingChangesController extends AbstractBaseController
             FunctionsImport::rejectAllChanges($record);
         }
 
-        return new Response;
+        return new Response();
     }
 
     /**

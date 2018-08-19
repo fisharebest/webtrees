@@ -88,7 +88,7 @@ class EditGedcomRecordController extends AbstractEditController
             }
         }
 
-        return new Response;
+        return new Response();
     }
 
     /**
@@ -115,7 +115,7 @@ class EditGedcomRecordController extends AbstractEditController
             }
         }
 
-        return new Response;
+        return new Response();
     }
 
     /**
@@ -171,7 +171,7 @@ class EditGedcomRecordController extends AbstractEditController
             $record->deleteRecord();
         }
 
-        return new Response;
+        return new Response();
     }
 
     /**
@@ -197,7 +197,7 @@ class EditGedcomRecordController extends AbstractEditController
             $record->createFact($clipboard[$fact_id]['factrec'], true);
         }
 
-        return new Response;
+        return new Response();
     }
 
     /**
@@ -365,7 +365,7 @@ class EditGedcomRecordController extends AbstractEditController
             }
         }
         if ($edit_fact === null) {
-            throw new NotFoundHttpException;
+            throw new NotFoundHttpException();
         }
 
         $can_edit_raw = Auth::isAdmin() || $tree->getPreference('SHOW_GEDCOM_RECORD');

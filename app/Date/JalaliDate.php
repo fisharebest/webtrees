@@ -50,7 +50,7 @@ class JalaliDate extends CalendarDate
      */
     public function __construct($date)
     {
-        $this->calendar = new PersianCalendar;
+        $this->calendar = new PersianCalendar();
         parent::__construct($date);
     }
 

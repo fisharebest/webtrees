@@ -50,7 +50,7 @@ class AdminModuleController extends AdminController
 
         // Actions with "Admin" in the name are for administrators only.
         if (strpos($action, 'Admin') !== false && !Auth::isAdmin($user)) {
-            throw new AccessDeniedHttpException;
+            throw new AccessDeniedHttpException();
         }
 
         if (method_exists($module, $method)) {

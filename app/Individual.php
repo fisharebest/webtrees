@@ -709,7 +709,7 @@ class Individual extends GedcomRecord
                     }
                 }
                 if ($min && $max) {
-                    $gregorian_calendar = new GregorianCalendar;
+                    $gregorian_calendar = new GregorianCalendar();
 
                     list($year) = $gregorian_calendar->jdToYmd((int)((max($min) + min($max)) / 2));
                     $this->estimated_birth_date = new Date('EST ' . $year);

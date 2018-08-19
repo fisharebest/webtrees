@@ -92,7 +92,7 @@ class CensusTableParser extends AbstractBlockParser
             return null;
         }
 
-        $row = new TableRow;
+        $row = new TableRow();
         foreach (explode('|', $line) as $cell) {
             // Strip leading ".b." from <th> cells
             if ($type === TableCell::TYPE_HEAD && substr_compare($cell, '.b.', 0)) {

@@ -313,9 +313,9 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
         $generations    = $request->get('generations', $tree->getPreference('DEFAULT_PEDIGREE_GENERATIONS'));
 
         if ($individual === null) {
-            throw new IndividualNotFoundException;
+            throw new IndividualNotFoundException();
         } elseif (!$individual->canShow()) {
-            throw new IndividualAccessDeniedException;
+            throw new IndividualAccessDeniedException();
         }
         
         return (object)[

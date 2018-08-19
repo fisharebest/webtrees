@@ -162,7 +162,7 @@ class Auth
     {
         $user = User::find(self::id());
         if ($user === null) {
-            $visitor            = new \stdClass;
+            $visitor            = new \stdClass();
             $visitor->user_id   = '';
             $visitor->user_name = '';
             $visitor->real_name = '';

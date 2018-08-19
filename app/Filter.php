@@ -73,7 +73,7 @@ class Filter
         $text = preg_replace('/' . addcslashes(self::URL_REGEX, '/') . '/', '<$0>', $text);
 
         // Create a minimal commonmark processor - just add support for autolinks.
-        $environment = new Environment;
+        $environment = new Environment();
         $environment->mergeConfig([
             'renderer'           => [
                 'block_separator' => "\n",
@@ -85,13 +85,13 @@ class Filter
         ]);
 
         $environment
-            ->addBlockRenderer('League\CommonMark\Block\Element\Document', new DocumentRenderer)
-            ->addBlockRenderer('League\CommonMark\Block\Element\Paragraph', new ParagraphRenderer)
-            ->addInlineRenderer('League\CommonMark\Inline\Element\Text', new TextRenderer)
-            ->addInlineRenderer('League\CommonMark\Inline\Element\Link', new LinkRenderer)
-            ->addInlineParser(new AutolinkParser);
+            ->addBlockRenderer('League\CommonMark\Block\Element\Document', new DocumentRenderer())
+            ->addBlockRenderer('League\CommonMark\Block\Element\Paragraph', new ParagraphRenderer())
+            ->addInlineRenderer('League\CommonMark\Inline\Element\Text', new TextRenderer())
+            ->addInlineRenderer('League\CommonMark\Inline\Element\Link', new LinkRenderer())
+            ->addInlineParser(new AutolinkParser());
 
-        $environment->addExtension(new CensusTableExtension);
+        $environment->addExtension(new CensusTableExtension());
         $environment->addExtension(new XrefExtension($tree));
 
         $converter = new Converter(new DocParser($environment), new HtmlRenderer($environment));
@@ -116,8 +116,8 @@ class Filter
     {
         $environment = Environment::createCommonMarkEnvironment();
         $environment->mergeConfig(['html_input' => 'escape']);
-        $environment->addExtension(new TableExtension);
-        $environment->addExtension(new CensusTableExtension);
+        $environment->addExtension(new TableExtension());
+        $environment->addExtension(new CensusTableExtension());
         $environment->addExtension(new XrefExtension($tree));
 
         $converter = new Converter(new DocParser($environment), new HtmlRenderer($environment));

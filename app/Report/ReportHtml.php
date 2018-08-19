@@ -370,7 +370,7 @@ class ReportHtml extends ReportBase
      */
     public function createPageHeader()
     {
-        return new ReportHtmlPageheader;
+        return new ReportHtmlPageheader();
     }
 
     /**

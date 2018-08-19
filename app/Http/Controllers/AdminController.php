@@ -243,7 +243,7 @@ class AdminController extends AbstractBaseController
         $recordsTotal    = (int)Database::prepare("SELECT COUNT(*) FROM `##change`")->fetchOne();
 
         $data      = [];
-        $algorithm = new MyersDiff;
+        $algorithm = new MyersDiff();
 
         foreach ($rows as $row) {
             $old_lines = preg_split('/[\n]+/', $row->old_gedcom, -1, PREG_SPLIT_NO_EMPTY);
@@ -424,7 +424,7 @@ class AdminController extends AbstractBaseController
             }
         }
 
-        return new Response;
+        return new Response();
     }
 
     /**
@@ -1452,7 +1452,7 @@ class AdminController extends AbstractBaseController
             return include $cache_file;
         }
 
-        $manager = new ImageManager;
+        $manager = new ImageManager();
         $image   = $manager->make($path)->resize($size, $size);
 
         $pixels = [];

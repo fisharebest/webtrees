@@ -339,7 +339,7 @@ class Tree
                 return $tree;
             }
         }
-        throw new \DomainException;
+        throw new \DomainException();
     }
 
     /**

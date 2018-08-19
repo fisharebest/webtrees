@@ -51,7 +51,7 @@ class FrenchDate extends CalendarDate
      */
     public function __construct($date)
     {
-        $this->calendar = new FrenchCalendar;
+        $this->calendar = new FrenchCalendar();
         parent::__construct($date);
     }
 

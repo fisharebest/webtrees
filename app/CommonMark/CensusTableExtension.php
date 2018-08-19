@@ -43,7 +43,7 @@ class CensusTableExtension extends Extension
     public function getBlockParsers()
     {
         return [
-            new CensusTableParser,
+            new CensusTableParser(),
         ];
     }
 
@@ -57,10 +57,10 @@ class CensusTableExtension extends Extension
     public function getBlockRenderers()
     {
         return [
-            Table::class     => new TableRenderer,
-            TableRows::class => new TableRowsRenderer,
-            TableRow::class  => new TableRowRenderer,
-            TableCell::class => new TableCellRenderer,
+            Table::class     => new TableRenderer(),
+            TableRows::class => new TableRowsRenderer(),
+            TableRow::class  => new TableRowRenderer(),
+            TableCell::class => new TableCellRenderer(),
         ];
     }
 

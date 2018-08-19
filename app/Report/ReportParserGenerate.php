@@ -135,7 +135,7 @@ class ReportParserGenerate extends ReportParserBase
         $this->report          = $report;
         $this->report_root     = $report_root;
         $this->wt_report       = $report_root;
-        $this->current_element = new ReportBaseElement;
+        $this->current_element = new ReportBaseElement();
         $this->vars            = $vars;
         $this->tree            = $tree;
 
@@ -891,7 +891,7 @@ class ReportParserGenerate extends ReportParserBase
                 $name = strip_tags($name);
                 if (!empty($attrs['truncate'])) {
                     if (mb_strlen($name) > $attrs['truncate']) {
-                        $name = mb_substr($name, 0, $attrs['truncate'] -1) . '…';
+                        $name = mb_substr($name, 0, $attrs['truncate'] - 1) . '…';
                     }
                 } else {
                     $addname = $record->getAddName();
@@ -1465,7 +1465,7 @@ class ReportParserGenerate extends ReportParserBase
             $i++;
         }
 
-        $ret = (new ExpressionLanguage)->evaluate($condition);
+        $ret = (new ExpressionLanguage())->evaluate($condition);
 
         if (!$ret) {
             $this->process_ifs++;
@@ -2400,7 +2400,7 @@ class ReportParserGenerate extends ReportParserBase
                     foreach ($this->list as $key => $value) {
                         $this->generation = $value->generation;
                         if ($this->generation == $genCounter) {
-                            $newarray[$key]             = new \stdClass;
+                            $newarray[$key]             = new \stdClass();
                             $newarray[$key]->generation = $this->generation;
                         }
                     }

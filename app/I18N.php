@@ -455,13 +455,13 @@ class I18N
             self::$locale = Locale::create($code);
         } else {
             // Negotiate a locale, but if we can't then use a failsafe
-            self::$locale = new LocaleEnUs;
+            self::$locale = new LocaleEnUs();
             if (Session::has('locale') && file_exists(WT_ROOT . 'language/' . Session::get('locale') . '.mo')) {
                 // Previously used
                 self::$locale = Locale::create(Session::get('locale'));
             } else {
                 // Browser negotiation
-                $default_locale = new LocaleEnUs;
+                $default_locale = new LocaleEnUs();
                 try {
                     // @TODO, when no language is requested by the user (e.g. search engines), we should use
                     // the tree's default language.  However, we currently initialise languages before trees,

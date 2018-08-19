@@ -639,7 +639,7 @@ class Date
     public function gregorianYear()
     {
         if ($this->isOK()) {
-            $gregorian_calendar = new GregorianCalendar;
+            $gregorian_calendar = new GregorianCalendar();
             list($year) = $gregorian_calendar->jdToYmd($this->julianDay());
 
             return $year;

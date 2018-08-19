@@ -101,7 +101,7 @@ class Database
         self::$pdo->exec("SET NAMES 'utf8' COLLATE 'utf8_unicode_ci'");
         self::$pdo->prepare("SET time_zone = :time_zone")->execute(['time_zone' => date('P')]);
 
-        self::$instance = new self;
+        self::$instance = new self();
     }
 
     /**
@@ -236,7 +236,7 @@ class Database
         while ($current_version < $target_version) {
             $class = $namespace . '\\Migration' . $current_version;
             /** @var MigrationInterface $migration */
-            $migration = new $class;
+            $migration = new $class();
             $migration->upgrade();
             $current_version++;
             Site::setPreference($schema_name, (string)$current_version);

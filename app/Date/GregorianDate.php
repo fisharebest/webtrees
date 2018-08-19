@@ -32,7 +32,7 @@ class GregorianDate extends CalendarDate
      */
     public function __construct($date)
     {
-        $this->calendar = new GregorianCalendar;
+        $this->calendar = new GregorianCalendar();
         parent::__construct($date);
     }
 }

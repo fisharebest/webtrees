@@ -258,7 +258,7 @@ class RegisterController extends AbstractBaseController
     private function checkRegistrationAllowed()
     {
         if (Site::getPreference('USE_REGISTRATION_MODULE') !== '1') {
-            throw new NotFoundHttpException;
+            throw new NotFoundHttpException();
         }
     }
 }

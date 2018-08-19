@@ -560,7 +560,7 @@ class EditIndividualController extends AbstractEditController
                 $gedrec .= $this->addNewFact($tree, $match);
             }
         }
-        if ((BOOL)$request->get('SOUR_INDI')) {
+        if ((bool)$request->get('SOUR_INDI')) {
             $gedrec = $this->handleUpdates($gedrec);
         } else {
             $gedrec = $this->updateRest($gedrec);
@@ -608,7 +608,7 @@ class EditIndividualController extends AbstractEditController
             }
         }
 
-        throw new NotFoundHttpException;
+        throw new NotFoundHttpException();
     }
 
     /**
@@ -619,7 +619,7 @@ class EditIndividualController extends AbstractEditController
     public function editNameAction(Request $request, Tree $tree): RedirectResponse
     {
         // @TODO - Move the name-specific code to this function?
-        return (new EditGedcomRecordController)->updateFact($request, $tree);
+        return (new EditGedcomRecordController())->updateFact($request, $tree);
     }
 
     /**

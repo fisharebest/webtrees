@@ -50,7 +50,7 @@ class UserController extends AbstractBaseController
             $user->delete();
         }
 
-        return new Response;
+        return new Response();
     }
 
     /**
@@ -68,7 +68,7 @@ class UserController extends AbstractBaseController
         Session::put('locale', $language);
         Auth::user()->setPreference('language', $language);
 
-        return new Response;
+        return new Response();
     }
 
     /**
@@ -90,7 +90,7 @@ class UserController extends AbstractBaseController
             Session::put('masquerade', '1');
         }
 
-        return new Response;
+        return new Response();
     }
 
     /**
@@ -109,6 +109,6 @@ class UserController extends AbstractBaseController
             Auth::user()->setPreference('theme', $theme);
         }
 
-        return new Response;
+        return new Response();
     }
 }

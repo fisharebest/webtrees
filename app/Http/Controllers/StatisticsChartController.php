@@ -207,7 +207,7 @@ class StatisticsChartController extends AbstractChartController
                         $y_axis_title = '%';
                         break;
                     default:
-                        throw new NotFoundHttpException;
+                        throw new NotFoundHttpException();
                 }
 
                 switch ($z_axis_type) {
@@ -238,7 +238,7 @@ class StatisticsChartController extends AbstractChartController
                         }
                         break;
                     default:
-                        throw new NotFoundHttpException;
+                        throw new NotFoundHttpException();
                 }
 
                 return new Response($this->myPlot($chart_title, $x_axis, $x_axis_title, $ydata, $y_axis_title, $z_axis, $y_axis_type));
@@ -256,7 +256,7 @@ class StatisticsChartController extends AbstractChartController
                         $y_axis_title = '%';
                         break;
                     default:
-                        throw new NotFoundHttpException;
+                        throw new NotFoundHttpException();
                 }
 
                 switch ($z_axis_type) {
@@ -287,7 +287,7 @@ class StatisticsChartController extends AbstractChartController
                         }
                         break;
                     default:
-                        throw new NotFoundHttpException;
+                        throw new NotFoundHttpException();
                 }
 
                 return new Response($this->myPlot($chart_title, $x_axis, $x_axis_title, $ydata, $y_axis_title, $z_axis, $y_axis_type));
@@ -305,7 +305,7 @@ class StatisticsChartController extends AbstractChartController
                         $y_axis_title = '%';
                         break;
                     default:
-                        throw new NotFoundHttpException;
+                        throw new NotFoundHttpException();
                 }
 
                 switch ($z_axis_type) {
@@ -329,7 +329,7 @@ class StatisticsChartController extends AbstractChartController
                         }
                         break;
                     default:
-                        throw new NotFoundHttpException;
+                        throw new NotFoundHttpException();
                 }
 
                 return new Response($this->myPlot($chart_title, $x_axis, $x_axis_title, $ydata, $y_axis_title, $z_axis, $y_axis_type));
@@ -347,7 +347,7 @@ class StatisticsChartController extends AbstractChartController
                         $y_axis_title = '%';
                         break;
                     default:
-                        throw new NotFoundHttpException;
+                        throw new NotFoundHttpException();
                 }
 
                 switch ($z_axis_type) {
@@ -378,7 +378,7 @@ class StatisticsChartController extends AbstractChartController
                         }
                         break;
                     default:
-                        throw new NotFoundHttpException;
+                        throw new NotFoundHttpException();
                 }
 
                 return new Response($this->myPlot($chart_title, $x_axis, $x_axis_title, $ydata, $y_axis_title, $z_axis, $y_axis_type));
@@ -396,7 +396,7 @@ class StatisticsChartController extends AbstractChartController
                         $y_axis_title = '%';
                         break;
                     default:
-                        throw new NotFoundHttpException;
+                        throw new NotFoundHttpException();
                 }
 
                 switch ($z_axis_type) {
@@ -432,7 +432,7 @@ class StatisticsChartController extends AbstractChartController
                         }
                         break;
                     default:
-                        throw new NotFoundHttpException;
+                        throw new NotFoundHttpException();
                 }
 
                 return new Response($this->myPlot($chart_title, $x_axis, $x_axis_title, $ydata, $y_axis_title, $z_axis, $y_axis_type));
@@ -451,7 +451,7 @@ class StatisticsChartController extends AbstractChartController
                         $y_axis_title = '%';
                         break;
                     default:
-                        throw new NotFoundHttpException;
+                        throw new NotFoundHttpException();
                 }
 
                 switch ($z_axis_type) {
@@ -491,7 +491,7 @@ class StatisticsChartController extends AbstractChartController
 
                         break;
                     default:
-                        throw new NotFoundHttpException;
+                        throw new NotFoundHttpException();
                 }
 
                 return new Response($this->myPlot($chart_title, $x_axis, $x_axis_title, $ydata, $y_axis_title, $z_axis, $y_axis_type));
@@ -510,7 +510,7 @@ class StatisticsChartController extends AbstractChartController
                         $y_axis_title = '%';
                         break;
                     default:
-                        throw new NotFoundHttpException;
+                        throw new NotFoundHttpException();
                 }
 
                 switch ($z_axis_type) {
@@ -549,7 +549,7 @@ class StatisticsChartController extends AbstractChartController
                         }
                         break;
                     default:
-                        throw new NotFoundHttpException;
+                        throw new NotFoundHttpException();
                 }
 
                 return new Response($this->myPlot($chart_title, $x_axis, $x_axis_title, $ydata, $y_axis_title, $z_axis, $y_axis_type));
@@ -568,7 +568,7 @@ class StatisticsChartController extends AbstractChartController
                         $y_axis_title = '%';
                         break;
                     default:
-                        throw new NotFoundHttpException;
+                        throw new NotFoundHttpException();
                 }
 
                 switch ($z_axis_type) {
@@ -619,7 +619,7 @@ class StatisticsChartController extends AbstractChartController
                         }
                         break;
                     default:
-                        throw new NotFoundHttpException;
+                        throw new NotFoundHttpException();
                 }
 
                 return new Response($this->myPlot($chart_title, $x_axis, $x_axis_title, $ydata, $y_axis_title, $z_axis, $y_axis_type));
@@ -637,7 +637,7 @@ class StatisticsChartController extends AbstractChartController
                         $y_axis_title = '%';
                         break;
                     default:
-                        throw new NotFoundHttpException;
+                        throw new NotFoundHttpException();
                 }
 
                 switch ($z_axis_type) {
@@ -661,13 +661,13 @@ class StatisticsChartController extends AbstractChartController
                         }
                         break;
                     default:
-                        throw new NotFoundHttpException;
+                        throw new NotFoundHttpException();
                 }
 
                 return new Response($this->myPlot($chart_title, $x_axis, $x_axis_title, $ydata, $y_axis_title, $z_axis, $y_axis_type));
 
             default:
-                throw new NotFoundHttpException;
+                throw new NotFoundHttpException();
                 break;
         }
     }

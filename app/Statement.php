@@ -105,17 +105,15 @@ class Statement
      *
      * Execute the query, if necessary. Typically when there are no parameters.
      *
-     * @param int $fetch_style
-     *
-     * @return stdClass|array|false
+     * @return stdClass|false
      */
-    public function fetch($fetch_style = PDO::FETCH_OBJ)
+    public function fetch()
     {
         if (!$this->executed) {
             $this->execute();
         }
 
-        return $this->pdo_statement->fetch($fetch_style);
+        return $this->pdo_statement->fetch();
     }
 
     /**
@@ -131,7 +129,7 @@ class Statement
             $this->execute();
         }
 
-        $rows = $this->pdo_statement->fetchAll(PDO::FETCH_OBJ);
+        $rows = $this->pdo_statement->fetchAll();
         $this->closeCursor();
 
         return $rows;
@@ -142,17 +140,15 @@ class Statement
      *
      * Execute the query, if necessary. Typically when there are no parameters.
      *
-     * @param int $fetch_style
-     *
-     * @return stdClass|array|null
+     * @return stdClass|null
      */
-    public function fetchOneRow($fetch_style = PDO::FETCH_OBJ)
+    public function fetchOneRow()
     {
         if (!$this->executed) {
             $this->execute();
         }
 
-        $row = $this->pdo_statement->fetch($fetch_style);
+        $row = $this->pdo_statement->fetch();
         $this->closeCursor();
 
         return $row === false ? null : $row;

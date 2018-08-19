@@ -52,7 +52,7 @@ class CensusAssistantModule extends AbstractModule
     {
         $census = $request->get('census');
 
-        $html = $this->censusTableHeader(new $census);
+        $html = $this->censusTableHeader(new $census());
 
         return new Response($html);
     }
@@ -69,7 +69,7 @@ class CensusAssistantModule extends AbstractModule
 
         $individual = Individual::getInstance($request->get('xref'), $tree);
         $head       = Individual::getInstance($request->get('head'), $tree);
-        $html       = $this->censusTableRow(new $census, $individual, $head);
+        $html       = $this->censusTableRow(new $census(), $individual, $head);
 
         return new Response($html);
     }
@@ -104,7 +104,7 @@ class CensusAssistantModule extends AbstractModule
         $ca_census      = Filter::post('ca_census', 'Fisharebest\\\\Webtrees\\\\Census\\\\CensusOf[A-Za-z0-9]+');
 
         if ($ca_census !== '' && !empty($ca_individuals)) {
-            $census = new $ca_census;
+            $census = new $ca_census();
 
             $note_text   = $this->createNoteText($census, $ca_title, $ca_place, $ca_citation, $ca_individuals, $ca_notes);
             $note_gedcom = '0 @new@ NOTE ' . str_replace("\n", "\n1 CONT ", $note_text);

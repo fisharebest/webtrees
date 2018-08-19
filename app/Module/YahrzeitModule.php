@@ -72,7 +72,7 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface
 
         extract($cfg, EXTR_OVERWRITE);
 
-        $jewish_calendar = new JewishCalendar;
+        $jewish_calendar = new JewishCalendar();
         $startjd         = WT_CLIENT_JD;
         $endjd           = WT_CLIENT_JD + $days - 1;
 

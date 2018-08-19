@@ -106,7 +106,7 @@ class AdminMediaController extends AbstractBaseController
             }
         }
 
-        return new Response;
+        return new Response();
     }
 
     /**
@@ -382,7 +382,7 @@ class AdminMediaController extends AbstractBaseController
                 break;
 
             default:
-                throw new BadRequestHttpException;
+                throw new BadRequestHttpException();
         }
 
         // See http://www.datatables.net/usage/server-side

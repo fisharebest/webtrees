@@ -84,7 +84,7 @@ class Theme
         if ($theme) {
             self::$theme = $theme;
         } elseif (!self::$theme) {
-            self::$theme = new WebtreesTheme;
+            self::$theme = new WebtreesTheme();
         }
 
         return self::$theme;

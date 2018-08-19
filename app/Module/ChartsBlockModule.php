@@ -118,7 +118,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
                 case 'treenav':
                     $title   = I18N::translate('Interactive tree of %s', $person->getFullName());
                     $mod     = new InteractiveTreeModule(WT_MODULES_DIR . 'tree');
-                    $tv      = new TreeView;
+                    $tv      = new TreeView();
                     $content .= '<script>$("head").append(\'<link rel="stylesheet" href="' . $mod->css() . '" type="text/css" />\');</script>';
                     $content .= '<script src="' . $mod->js() . '"></script>';
                     list($html, $js) = $tv->drawViewport($person, 2);

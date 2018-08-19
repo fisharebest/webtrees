@@ -33,7 +33,7 @@ class FlashMessages
      */
     public static function addMessage($text, $status = 'info')
     {
-        $message         = new stdClass;
+        $message         = new stdClass();
         $message->text   = $text;
         $message->status = $status;
 

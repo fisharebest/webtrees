@@ -53,7 +53,7 @@ class SetupController extends AbstractBaseController
         $data     = $this->extractParameters($request);
 
         if ($data['lang'] === '') {
-            $data['lang'] = Locale::httpAcceptLanguage($_SERVER, I18N::installedLocales(), new LocaleEnUs)->languageTag();
+            $data['lang'] = Locale::httpAcceptLanguage($_SERVER, I18N::installedLocales(), new LocaleEnUs())->languageTag();
         }
 
         if ($data['dbuser'] !== '') {

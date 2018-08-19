@@ -80,7 +80,7 @@ class ReportEngineController extends AbstractBaseController
 
         $report_xml = WT_ROOT . WT_MODULES_DIR . $report . '/report.xml';
 
-        $report_array = (new ReportParserSetup($report_xml, new ReportBase, [], $tree))->reportProperties();
+        $report_array = (new ReportParserSetup($report_xml, new ReportBase(), [], $tree))->reportProperties();
         $description  = $report_array['description'];
         $title        = $report_array['title'];
 
@@ -246,7 +246,7 @@ class ReportEngineController extends AbstractBaseController
             default:
             case 'HTML':
                 ob_start();
-                new ReportParserGenerate($report_xml, new ReportHtml, $vars, $tree);
+                new ReportParserGenerate($report_xml, new ReportHtml(), $vars, $tree);
                 $html = ob_get_clean();
 
                 $this->layout = 'layouts/report';
@@ -259,7 +259,7 @@ class ReportEngineController extends AbstractBaseController
                 break;
             case 'PDF':
                 ob_start();
-                new ReportParserGenerate($report_xml, new ReportPdf, $vars, $tree);
+                new ReportParserGenerate($report_xml, new ReportPdf(), $vars, $tree);
                 $pdf = ob_get_clean();
 
                 $response = new Response($pdf);

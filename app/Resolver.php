@@ -58,7 +58,7 @@ class Resolver
 
         // No constructor?  Nothing to inject.
         if ($constructor === null) {
-            return new $class;
+            return new $class();
         }
 
         $parameters = $this->resolveParameters($constructor->getParameters());

@@ -147,11 +147,11 @@ class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface
         $individual = Individual::getInstance($xref, $tree);
 
         if ($individual === null) {
-            throw new IndividualNotFoundException;
+            throw new IndividualNotFoundException();
         }
 
         if (!$individual->canShow()) {
-            throw new IndividualAccessDeniedException;
+            throw new IndividualAccessDeniedException();
         }
 
         $tv = new TreeView('tv');
@@ -181,11 +181,11 @@ class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface
         $individual = Individual::getInstance($pid, $tree);
 
         if ($individual === null) {
-            throw new IndividualNotFoundException;
+            throw new IndividualNotFoundException();
         }
 
         if (!$individual->canShow()) {
-            throw new IndividualAccessDeniedException;
+            throw new IndividualAccessDeniedException();
         }
 
         $instance = $request->get('instance');

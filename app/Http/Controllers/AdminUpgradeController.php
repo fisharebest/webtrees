@@ -118,7 +118,7 @@ class AdminUpgradeController extends AbstractBaseController
             case 'Copy':
                 return $this->wizardStepCopy();
             default:
-                throw new NotFoundHttpException;
+                throw new NotFoundHttpException();
         }
     }
 
@@ -270,7 +270,7 @@ class AdminUpgradeController extends AbstractBaseController
         // The Flysystem/ZipArchiveAdapter is very slow, taking over a second per file.
         // So we do this step using the native PHP library.
 
-        $zip = new ZipArchive;
+        $zip = new ZipArchive();
         if ($zip->open($zip_file)) {
             $zip->extractTo($tmp_folder);
             $zip->close();

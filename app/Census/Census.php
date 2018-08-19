@@ -29,45 +29,45 @@ class Census
     public static function censusPlaces(string $locale)
     {
         $all_census_places = [
-            new CensusOfCzechRepublic,
-            new CensusOfDenmark,
-            new CensusOfDeutschland,
-            new CensusOfEngland,
-            new CensusOfFrance,
-            new CensusOfScotland,
-            new CensusOfUnitedStates,
-            new CensusOfWales,
+            new CensusOfCzechRepublic(),
+            new CensusOfDenmark(),
+            new CensusOfDeutschland(),
+            new CensusOfEngland(),
+            new CensusOfFrance(),
+            new CensusOfScotland(),
+            new CensusOfUnitedStates(),
+            new CensusOfWales(),
         ];
 
         switch ($locale) {
             case 'cs':
-                $census_places = [new CensusOfCzechRepublic];
+                $census_places = [new CensusOfCzechRepublic()];
                 break;
 
             case 'en-AU':
             case 'en-GB':
                 $census_places = [
-                    new CensusOfEngland,
-                    new CensusOfWales,
-                    new CensusOfScotland,
+                    new CensusOfEngland(),
+                    new CensusOfWales(),
+                    new CensusOfScotland(),
                 ];
                 break;
 
             case 'en-US':
-                $census_places = [new CensusOfUnitedStates];
+                $census_places = [new CensusOfUnitedStates()];
                 break;
 
             case 'fr':
             case 'fr-CA':
-                $census_places = [new CensusOfFrance];
+                $census_places = [new CensusOfFrance()];
                 break;
 
             case 'da':
-                $census_places = [new CensusOfDenmark];
+                $census_places = [new CensusOfDenmark()];
                 break;
 
             case 'de':
-                $census_places = [new CensusOfDeutschland];
+                $census_places = [new CensusOfDeutschland()];
                 break;
 
             default:

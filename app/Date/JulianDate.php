@@ -37,7 +37,7 @@ class JulianDate extends CalendarDate
      */
     public function __construct($date)
     {
-        $this->calendar = new JulianCalendar;
+        $this->calendar = new JulianCalendar();
         parent::__construct($date);
     }
 

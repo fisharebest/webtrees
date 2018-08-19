@@ -60,11 +60,11 @@ class MediaFileController extends AbstractBaseController
         $media   = Media::getInstance($xref, $tree);
 
         if ($media === null) {
-            throw new MediaNotFoundException;
+            throw new MediaNotFoundException();
         }
 
         if (!$media->canShow()) {
-            throw new AccessDeniedHttpException;
+            throw new AccessDeniedHttpException();
         }
 
         foreach ($media->mediaFiles() as $media_file) {
@@ -90,7 +90,7 @@ class MediaFileController extends AbstractBaseController
             }
         }
 
-        throw new NotFoundHttpException;
+        throw new NotFoundHttpException();
     }
 
     /**

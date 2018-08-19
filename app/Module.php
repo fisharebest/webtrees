@@ -239,7 +239,7 @@ class Module
                     if ($module instanceof AbstractModule) {
                         $modules[$module->getName()] = $module;
                     } else {
-                        throw new \Exception;
+                        throw new \Exception();
                     }
                 } catch (\Exception $ex) {
                     DebugBar::addThrowable($ex);

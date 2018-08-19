@@ -51,7 +51,7 @@ class JewishDate extends CalendarDate
      */
     public function __construct($date)
     {
-        $this->calendar = new JewishCalendar;
+        $this->calendar = new JewishCalendar();
         parent::__construct($date);
     }
 
@@ -63,7 +63,7 @@ class JewishDate extends CalendarDate
     protected function formatDay()
     {
         if (WT_LOCALE === 'he' || WT_LOCALE === 'yi') {
-            return (new JewishCalendar)->numberToHebrewNumerals($this->d, true);
+            return (new JewishCalendar())->numberToHebrewNumerals($this->d, true);
         } else {
             return $this->d;
         }
@@ -80,7 +80,7 @@ class JewishDate extends CalendarDate
     protected function formatShortYear()
     {
         if (WT_LOCALE === 'he' || WT_LOCALE === 'yi') {
-            return (new JewishCalendar)->numberToHebrewNumerals($this->y, false);
+            return (new JewishCalendar())->numberToHebrewNumerals($this->y, false);
         } else {
             return $this->y;
         }
@@ -94,7 +94,7 @@ class JewishDate extends CalendarDate
     protected function formatLongYear()
     {
         if (WT_LOCALE === 'he' || WT_LOCALE === 'yi') {
-            return (new JewishCalendar)->numberToHebrewNumerals($this->y, true);
+            return (new JewishCalendar())->numberToHebrewNumerals($this->y, true);
         } else {
             return $this->y;
         }

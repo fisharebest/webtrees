@@ -44,8 +44,8 @@ class DebugBar
     public static function init(bool $enable = true)
     {
         if ($enable) {
-            self::$debugbar = new StandardDebugBar;
-            self::$debugbar->addCollector(new ViewCollector);
+            self::$debugbar = new StandardDebugBar();
+            self::$debugbar->addCollector(new ViewCollector());
 
             self::$renderer = self::$debugbar->getJavascriptRenderer('./vendor/maximebf/debugbar/src/DebugBar/Resources/');
 

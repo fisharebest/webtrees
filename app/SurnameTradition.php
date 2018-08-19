@@ -42,23 +42,23 @@ class SurnameTradition
     {
         switch ($name) {
             case 'paternal':
-                return new PaternalSurnameTradition;
+                return new PaternalSurnameTradition();
             case 'patrilineal':
-                return new PatrilinealSurnameTradition;
+                return new PatrilinealSurnameTradition();
             case 'matrilineal':
-                return new MatrilinealSurnameTradition;
+                return new MatrilinealSurnameTradition();
             case 'portuguese':
-                return new PortugueseSurnameTradition;
+                return new PortugueseSurnameTradition();
             case 'spanish':
-                return new SpanishSurnameTradition;
+                return new SpanishSurnameTradition();
             case 'polish':
-                return new PolishSurnameTradition;
+                return new PolishSurnameTradition();
             case 'lithuanian':
-                return new LithuanianSurnameTradition;
+                return new LithuanianSurnameTradition();
             case 'icelandic':
-                return new IcelandicSurnameTradition;
+                return new IcelandicSurnameTradition();
             default:
-                return new DefaultSurnameTradition;
+                return new DefaultSurnameTradition();
         }
     }
 

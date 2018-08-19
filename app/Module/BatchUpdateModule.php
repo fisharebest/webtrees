@@ -77,12 +77,12 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
     {
         // We need a tree to work with.
         if ($tree === null) {
-            throw new NotFoundHttpException;
+            throw new NotFoundHttpException();
         }
 
         // Admins only.
         if (!Auth::isAdmin($user)) {
-            throw new AccessDeniedHttpException;
+            throw new AccessDeniedHttpException();
         }
 
         $plugin = $request->get('plugin', '');
@@ -150,12 +150,12 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
     {
         // We need a tree to work with.
         if ($tree === null) {
-            throw new NotFoundHttpException;
+            throw new NotFoundHttpException();
         }
 
         // Admins only.
         if (!Auth::isAdmin($user)) {
-            throw new AccessDeniedHttpException;
+            throw new AccessDeniedHttpException();
         }
 
         $plugin = $request->get('plugin', '');
@@ -166,7 +166,7 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
         $plugin  = $plugins[$plugin] ?? null;
 
         if ($plugin === null) {
-            throw new NotFoundHttpException;
+            throw new NotFoundHttpException();
         }
         $plugin->getOptions($request);
 
@@ -334,7 +334,7 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
         while (($file = readdir($dir_handle)) !== false) {
             if (substr($file, -10) == 'Plugin.php' && $file !== 'BatchUpdateBasePlugin.php') {
                 $class           = '\Fisharebest\Webtrees\Module\BatchUpdate\\' . basename($file, '.php');
-                $plugins[$class] = new $class;
+                $plugins[$class] = new $class();
             }
         }
         closedir($dir_handle);

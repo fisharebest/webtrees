@@ -241,7 +241,7 @@ class User
             " ORDER BY real_name"
         )->fetchAll();
 
-        return array_map(function ($row) {
+        return array_map(function (stdClass $row): User {
             return new static($row);
         }, $rows);
     }
@@ -305,7 +305,7 @@ class User
             " ORDER BY real_name"
         )->fetchAll();
 
-        return array_map(function (stdClass $row) {
+        return array_map(function (stdClass $row): User {
             return new static($row);
         }, $rows);
     }
@@ -325,7 +325,7 @@ class User
             " ORDER BY real_name"
         )->fetchAll();
 
-        return array_map(function (stdClass $row) {
+        return array_map(function (stdClass $row): User {
             return new static($row);
         }, $rows);
     }
@@ -344,7 +344,7 @@ class User
             " ORDER BY real_name"
         )->fetchAll();
 
-        return array_map(function (stdClass $row) {
+        return array_map(function (stdClass $row): User {
             return new static($row);
         }, $rows);
     }
@@ -363,7 +363,7 @@ class User
             " ORDER BY real_name"
         )->fetchAll();
 
-        return array_map(function (stdClass $row) {
+        return array_map(function (stdClass $row): User {
             return new static($row);
         }, $rows);
     }
@@ -381,7 +381,7 @@ class User
             " JOIN `##session` USING (user_id)"
         )->fetchAll();
 
-        return array_map(function (stdClass $row) {
+        return array_map(function (stdClass $row): User {
             return new static($row);
         }, $rows);
     }
@@ -551,12 +551,13 @@ class User
     public function setPreference($setting_name, $setting_value)
     {
         if ($this->user_id !== 0 && $this->getPreference($setting_name) !== $setting_value) {
-            Database::prepare("REPLACE INTO `##user_setting` (user_id, setting_name, setting_value) VALUES (?, ?, LEFT(?, 255))")
-                ->execute([
-                    $this->user_id,
-                    $setting_name,
-                    $setting_value,
-                ]);
+            Database::prepare(
+                "REPLACE INTO `##user_setting` (user_id, setting_name, setting_value) VALUES (?, ?, LEFT(?, 255))"
+            )->execute([
+                $this->user_id,
+                $setting_name,
+                $setting_value,
+            ]);
 
             $this->preferences[$setting_name] = $setting_value;
         }

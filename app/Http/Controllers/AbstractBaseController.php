@@ -57,11 +57,11 @@ abstract class AbstractBaseController
     protected function checkFamilyAccess(Family $family = null, $edit = false)
     {
         if ($family === null) {
-            throw new FamilyNotFoundException;
+            throw new FamilyNotFoundException();
         }
 
         if (!$family->canShow() || $edit && (!$family->canEdit() || $family->isPendingDeletion())) {
-            throw new FamilyAccessDeniedException;
+            throw new FamilyAccessDeniedException();
         }
     }
 
@@ -75,11 +75,11 @@ abstract class AbstractBaseController
     protected function checkIndividualAccess(Individual $individual = null, $edit = false)
     {
         if ($individual === null) {
-            throw new IndividualNotFoundException;
+            throw new IndividualNotFoundException();
         }
 
         if (!$individual->canShow() || $edit && (!$individual->canEdit() || $individual->isPendingDeletion())) {
-            throw new IndividualAccessDeniedException;
+            throw new IndividualAccessDeniedException();
         }
     }
 
@@ -93,11 +93,11 @@ abstract class AbstractBaseController
     protected function checkMediaAccess(Media $media = null, $edit = false)
     {
         if ($media === null) {
-            throw new MediaNotFoundException;
+            throw new MediaNotFoundException();
         }
 
         if (!$media->canShow() || $edit && (!$media->canEdit() || $media->isPendingDeletion())) {
-            throw new MediaAccessDeniedException;
+            throw new MediaAccessDeniedException();
         }
     }
 
@@ -111,11 +111,11 @@ abstract class AbstractBaseController
     protected function checkNoteAccess(Note $note = null, $edit = false)
     {
         if ($note === null) {
-            throw new NoteNotFoundException;
+            throw new NoteNotFoundException();
         }
 
         if (!$note->canShow() || $edit && (!$note->canEdit() || $note->isPendingDeletion())) {
-            throw new NoteAccessDeniedException;
+            throw new NoteAccessDeniedException();
         }
     }
 
@@ -129,11 +129,11 @@ abstract class AbstractBaseController
     protected function checkRecordAccess(GedcomRecord $record = null, $edit = false)
     {
         if ($record === null) {
-            throw new RecordNotFoundException;
+            throw new RecordNotFoundException();
         }
 
         if (!$record->canShow() || $edit && (!$record->canEdit() || $record->isPendingDeletion())) {
-            throw new RecordAccessDeniedException;
+            throw new RecordAccessDeniedException();
         }
     }
 
@@ -147,11 +147,11 @@ abstract class AbstractBaseController
     protected function checkRepositoryAccess(Repository $repository = null, $edit = false)
     {
         if ($repository === null) {
-            throw new RepositoryNotFoundException;
+            throw new RepositoryNotFoundException();
         }
 
         if (!$repository->canShow() || $edit && (!$repository->canEdit() || $repository->isPendingDeletion())) {
-            throw new RepositoryAccessDeniedException;
+            throw new RepositoryAccessDeniedException();
         }
     }
 
@@ -165,11 +165,11 @@ abstract class AbstractBaseController
     protected function checkSourceAccess(Source $source = null, $edit = false)
     {
         if ($source === null) {
-            throw new SourceNotFoundException;
+            throw new SourceNotFoundException();
         }
 
         if (!$source->canShow() || $edit && (!$source->canEdit() || $source->isPendingDeletion())) {
-            throw new SourceAccessDeniedException;
+            throw new SourceAccessDeniedException();
         }
     }
 

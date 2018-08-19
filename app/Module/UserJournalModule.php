@@ -140,7 +140,7 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
     public function getEditJournalAction(Request $request): Response
     {
         if (!Auth::check()) {
-            throw new AccessDeniedHttpException;
+            throw new AccessDeniedHttpException();
         }
 
         $news_id = $request->get('news_id');
@@ -178,7 +178,7 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
     public function postEditJournalAction(Request $request, Tree $tree): RedirectResponse
     {
         if (!Auth::check()) {
-            throw new AccessDeniedHttpException;
+            throw new AccessDeniedHttpException();
         }
 
         $news_id = $request->get('news_id');
@@ -223,7 +223,7 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
         $news_id = $request->get('news_id');
 
         if (!Auth::check()) {
-            throw new AccessDeniedHttpException;
+            throw new AccessDeniedHttpException();
         }
 
         Database::prepare(

@@ -72,8 +72,7 @@ define('WT_EVENTS_DEAT', 'DEAT|BURI|CREM');
 define('WT_EVENTS_MARR', 'MARR|_NMR');
 define('WT_EVENTS_DIV', 'DIV|ANUL|_SEPR');
 
-// For performance, it is quicker to refer to files using absolute paths
-define('WT_ROOT', realpath(__DIR__) . DIRECTORY_SEPARATOR);
+define('WT_ROOT', __DIR__ . DIRECTORY_SEPARATOR);
 
 // Keep track of time so we can handle timeouts gracefully.
 define('WT_START_TIME', microtime(true));
@@ -122,7 +121,7 @@ if (!file_exists(WT_ROOT . WT_CONFIG_FILE)) {
     // No config file. Set one up.
     define('WT_DATA_DIR', 'data/');
     $request  = Request::createFromGlobals();
-    $response = (new SetupController)->setup($request);
+    $response = (new SetupController())->setup($request);
     $response->prepare($request)->send();
 
     return;
@@ -217,7 +216,7 @@ define('WT_CLIENT_JD', 2440588 + (int) ((WT_TIMESTAMP + WT_TIMESTAMP_OFFSET) / 8
 // Update the last-login time no more than once a minute
 if (WT_TIMESTAMP - Session::get('activity_time') >= 60) {
     if (Session::get('masquerade') === null) {
-        Auth::user()->setPreference('sessiontime', WT_TIMESTAMP);
+        Auth::user()->setPreference('sessiontime', (string) WT_TIMESTAMP);
     }
     Session::put('activity_time', WT_TIMESTAMP);
 }
@@ -254,7 +253,7 @@ try {
     $controller_class = __NAMESPACE__ . '\\Http\\Controllers\\' . $controller_name;
 
     // Set up dependency injection for the controllers.
-    $resolver = new Resolver;
+    $resolver = new Resolver();
     $resolver->bind(Resolver::class, $resolver);
     $resolver->bind(Tree::class, $tree);
     $resolver->bind(User::class, Auth::user());
@@ -327,7 +326,7 @@ try {
 } catch (Exception $exception) {
     DebugBar::addThrowable($exception);
 
-    $response = (new Handler)->render($request, $exception);
+    $response = (new Handler())->render($request, $exception);
 }
 
 // Send response

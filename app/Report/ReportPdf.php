@@ -229,7 +229,7 @@ class ReportPdf extends ReportBase
      */
     public function createPageHeader()
     {
-        return new ReportPdfPageheader;
+        return new ReportPdfPageheader();
     }
 
     /**

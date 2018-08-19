@@ -87,10 +87,10 @@ class ErrorController extends AbstractBaseController
     public function unhandledExceptionResponse(Request $request, Throwable $ex): Response
     {
         // Create a stack dump for the exception
-        $whoops = new Run;
+        $whoops = new Run();
         $whoops->allowQuit(false);
         $whoops->writeToOutput(false);
-        $whoops->pushHandler(new PlainTextHandler);
+        $whoops->pushHandler(new PlainTextHandler());
         $error = $whoops->handleException($ex);
 
         // We do not need to show the full path.

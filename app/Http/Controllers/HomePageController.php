@@ -98,17 +98,17 @@ class HomePageController extends AbstractBaseController
         ])->fetchOneRow();
 
         if ($block_info === null) {
-            throw new NotFoundHttpException;
+            throw new NotFoundHttpException();
         }
 
         $block = Module::getModuleByName($block_info->module_name);
 
         if (!$block instanceof ModuleBlockInterface) {
-            throw new NotFoundHttpException;
+            throw new NotFoundHttpException();
         }
 
         if ($block_info->user_id !== $user->getUserId() && !Auth::isAdmin()) {
-            throw new AccessDeniedHttpException;
+            throw new AccessDeniedHttpException();
         }
 
         return $block;
