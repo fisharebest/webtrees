@@ -29,8 +29,6 @@ class ReportBasePageheader extends ReportBaseElement
     public function __construct()
     {
         $this->elements = [];
-
-        return 0;
     }
 
     /**

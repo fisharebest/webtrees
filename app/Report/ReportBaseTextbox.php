@@ -143,8 +143,6 @@ class ReportBaseTextbox extends ReportBaseElement
         $this->width     = $width;
         $this->padding   = $padding;
         $this->reseth    = $reseth;
-
-        return 0;
     }
 
     /**
