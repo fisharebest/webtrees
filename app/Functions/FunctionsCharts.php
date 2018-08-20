@@ -384,12 +384,7 @@ class FunctionsCharts
                         }
                         echo '</td>';
                         // spouse information
-                        echo '<td style="vertical-align: center;';
-                        if (!empty($divrec)) {
-                            echo ' filter:alpha(opacity=40);opacity:0.4;">';
-                        } else {
-                            echo '">';
-                        }
+                        echo '<td style="vertical-align: center;">';
                         FunctionsPrint::printPedigreePerson($spouse);
                         echo '</td>';
                         // cousins
