@@ -1089,10 +1089,6 @@ class FunctionsPrintFacts
             echo '<td class="optionbox', $styleadd, ' wrap">';
             echo $text;
 
-            if (!empty($noterec)) {
-                echo self::printFactSources($tree, $noterec, 1);
-            }
-
             // 2 RESN tags. Note, there can be more than one, such as "privacy" and "locked"
             if (preg_match_all("/\n2 RESN (.+)/", $factrec, $matches)) {
                 foreach ($matches[1] as $match) {
