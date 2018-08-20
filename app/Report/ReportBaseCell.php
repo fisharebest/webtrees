@@ -148,8 +148,6 @@ class ReportBaseCell extends ReportBaseElement
         $this->stretch   = $stretch;
         $this->width     = $width;
         $this->reseth    = $reseth;
-
-        return 0;
     }
 
     /**

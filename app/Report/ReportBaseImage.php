@@ -83,8 +83,6 @@ class ReportBaseImage extends ReportBaseElement
         $this->y      = $y;
         $this->align  = $align;
         $this->line   = $ln;
-
-        return 0;
     }
 
     /**

@@ -39,8 +39,6 @@ class ReportBaseHtml extends ReportBaseElement
     {
         $this->tag   = $tag;
         $this->attrs = $attrs;
-
-        return 0;
     }
 
     /**
