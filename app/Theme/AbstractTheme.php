@@ -598,16 +598,6 @@ abstract class AbstractTheme
     }
 
     /**
-     * Allow themes to add extra scripts to the page footer.
-     *
-     * @return string
-     */
-    public function hookFooterExtraJavascript()
-    {
-        return '';
-    }
-
-    /**
      * Allow themes to add extra content to the page header.
      * Typically this will be additional CSS.
      *

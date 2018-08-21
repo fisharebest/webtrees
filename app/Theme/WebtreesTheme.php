@@ -30,27 +30,6 @@ class WebtreesTheme extends AbstractTheme implements ThemeInterface
     const STYLESHEET = self::ASSET_DIR . 'style.css';
 
     /**
-     * Allow themes to add extra scripts to the page footer.
-     *
-     * @return string
-     */
-    public function hookFooterExtraJavascript()
-    {
-        return
-            '<script>' .
-            'activate_colorbox();' .
-            'jQuery.extend(jQuery.colorbox.settings, {' .
-            ' width:"85%",' .
-            ' height:"85%",' .
-            ' transition:"none",' .
-            //' slideshowStart:"' . I18N::translate('Play') . '",' .
-            //' slideshowStop:"' . I18N::translate('Stop') . '",' .
-            ' title: function() { return this.dataset.title; }' .
-            '});' .
-            '</script>';
-    }
-
-    /**
      * Misecellaneous dimensions, fonts, styles, etc.
      *
      * @param string $parameter_name
