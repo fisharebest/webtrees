@@ -19,7 +19,7 @@ return array(
     'NumberFormatter' => $vendorDir . '/symfony/intl/Symfony/Component/Intl/Resources/stubs/NumberFormatter.php',
     'PDF417' => $vendorDir . '/tecnickcom/tcpdf/include/barcodes/pdf417.php',
     'ParseError' => $vendorDir . '/symfony/polyfill-php70/Resources/stubs/ParseError.php',
-    'PclZip' => $vendorDir . '/pclzip/pclzip/pclzip.lib.php',
+    'PclZip' => $vendorDir . '/lutana/pclzip/pclzip.lib.php',
     'QRcode' => $vendorDir . '/tecnickcom/tcpdf/include/barcodes/qrcode.php',
     'RecursiveCallbackFilterIterator' => $vendorDir . '/symfony/polyfill-php54/Resources/stubs/RecursiveCallbackFilterIterator.php',
     'SessionHandlerInterface' => $vendorDir . '/symfony/polyfill-php54/Resources/stubs/SessionHandlerInterface.php',

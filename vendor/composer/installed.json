@@ -363,6 +363,48 @@
         "description": "Provides functionality for http_build_url() to environments without pecl_http."
     },
     {
+        "name": "lutana/pclzip",
+        "version": "2.8.2.1",
+        "version_normalized": "2.8.2.1",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/lutana-de/pclzip.git",
+            "reference": "31ca75283bc48037ac15fc23adbcf7257c4d0b78"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/lutana-de/pclzip/zipball/31ca75283bc48037ac15fc23adbcf7257c4d0b78",
+            "reference": "31ca75283bc48037ac15fc23adbcf7257c4d0b78",
+            "shasum": ""
+        },
+        "time": "2017-03-23T01:57:18+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "pclzip.lib.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "LGPL-2.1"
+        ],
+        "authors": [
+            {
+                "name": "Vincent Blavet",
+                "homepage": "http://www.phpconcept.net/pclzip"
+            },
+            {
+                "name": "Matthias Mohr"
+            }
+        ],
+        "description": "A PHP library that offers compression and extraction functions for Zip formatted archives. Based on the PclZip library, but added PHP 7 compatibility and several bug fixes.",
+        "keywords": [
+            "php",
+            "zip"
+        ]
+    },
+    {
         "name": "michelf/php-markdown",
         "version": "1.8.0",
         "version_normalized": "1.8.0.0",
@@ -459,45 +501,6 @@
             "polyfill",
             "pseudorandom",
             "random"
-        ]
-    },
-    {
-        "name": "pclzip/pclzip",
-        "version": "2.8.2",
-        "version_normalized": "2.8.2.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/ivanlanin/pclzip.git",
-            "reference": "19dd1de9d3f5fc4d7d70175b4c344dee329f45fd"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/ivanlanin/pclzip/zipball/19dd1de9d3f5fc4d7d70175b4c344dee329f45fd",
-            "reference": "19dd1de9d3f5fc4d7d70175b4c344dee329f45fd",
-            "shasum": ""
-        },
-        "time": "2014-06-05T11:42:24+00:00",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "classmap": [
-                "pclzip.lib.php"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "LGPL-2.1"
-        ],
-        "authors": [
-            {
-                "name": "Vincent Blavet"
-            }
-        ],
-        "description": "A PHP library that offers compression and extraction functions for Zip formatted archives",
-        "homepage": "http://www.phpconcept.net/pclzip",
-        "keywords": [
-            "php",
-            "zip"
         ]
     },
     {
