@@ -1066,7 +1066,7 @@ class SearchController extends AbstractBaseController
                                     $sql .= ' AND (' . implode(' OR ', $sdx) . ')';
                                 } else {
                                     // No phonetic content? Use a substring match
-                                    $sql    .= " AND {$table}.n_givn = LIKE CONCAT('%', ?, '%')";
+                                    $sql    .= " AND {$table}.n_givn LIKE CONCAT('%', ?, '%')";
                                     $bind[] = $field_value;
                                 }
                                 break;
@@ -1083,7 +1083,7 @@ class SearchController extends AbstractBaseController
                                     break;
                                 } else {
                                     // No phonetic content? Use a substring match
-                                    $sql    .= " AND {$table}.n_givn = LIKE CONCAT('%', ?, '%')";
+                                    $sql    .= " AND {$table}.n_givn LIKE CONCAT('%', ?, '%')";
                                     $bind[] = $field_value;
                                 }
                         }
@@ -1113,7 +1113,7 @@ class SearchController extends AbstractBaseController
                                     $sql .= ' AND (' . implode(' OR ', $sdx) . ')';
                                 } else {
                                     // No phonetic content? Use a substring match
-                                    $sql    .= " AND {$table}.n_surn = LIKE CONCAT('%', ?, '%')";
+                                    $sql    .= " AND {$table}.n_surn LIKE CONCAT('%', ?, '%')";
                                     $bind[] = $field_value;
                                 }
                                 break;
@@ -1129,7 +1129,7 @@ class SearchController extends AbstractBaseController
                                     $sql .= ' AND (' . implode(' OR ', $sdx) . ')';
                                 } else {
                                     // No phonetic content? Use a substring match
-                                    $sql    .= " AND {$table}.n_surn = LIKE CONCAT('%', ?, '%')";
+                                    $sql    .= " AND {$table}.n_surn LIKE CONCAT('%', ?, '%')";
                                     $bind[] = $field_value;
                                 }
                                 break;
