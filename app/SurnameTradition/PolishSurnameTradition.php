@@ -45,7 +45,7 @@ class PolishSurnameTradition extends PaternalSurnameTradition implements Surname
      *
      * @return string[] Associative array of GEDCOM name parts (SURN, _MARNM, etc.)
      */
-    public function newChildNames($father_name, $mother_name, $child_sex)
+    public function newChildNames(string $father_name, string $mother_name, string $child_sex): array
     {
         if (preg_match(self::REGEX_SURN, $father_name, $match)) {
             if ($child_sex === 'F') {
@@ -74,7 +74,7 @@ class PolishSurnameTradition extends PaternalSurnameTradition implements Surname
      *
      * @return string[] Associative array of GEDCOM name parts (SURN, _MARNM, etc.)
      */
-    public function newParentNames($child_name, $parent_sex)
+    public function newParentNames(string $child_name, string $parent_sex): array
     {
         if ($parent_sex === 'M' && preg_match(self::REGEX_SURN, $child_name, $match)) {
             return array_filter([
@@ -96,7 +96,7 @@ class PolishSurnameTradition extends PaternalSurnameTradition implements Surname
      *
      * @return string[] Associative array of GEDCOM name parts (SURN, _MARNM, etc.)
      */
-    public function newSpouseNames($spouse_name, $spouse_sex)
+    public function newSpouseNames(string $spouse_name, string $spouse_sex): array
     {
         if ($spouse_sex === 'F' && preg_match(self::REGEX_SURN, $spouse_name, $match)) {
             return [

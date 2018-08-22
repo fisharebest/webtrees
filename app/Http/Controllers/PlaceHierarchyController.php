@@ -218,11 +218,12 @@ class PlaceHierarchyController extends AbstractBaseController
     }
 
     /**
-     * @param Request $request
+     * @param Tree   $tree
+     * @param string $reference
      *
      * @return array
      */
-    public function mapData(Tree $tree, $reference): array
+    protected function mapData(Tree $tree, $reference): array
     {
         $placeObj  = new Place($reference, $tree);
         $places    = $placeObj->getChildPlaces();

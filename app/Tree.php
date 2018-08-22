@@ -162,7 +162,7 @@ class Tree
      *
      * @return string
      */
-    public function getPreference($setting_name, $default = '')
+    public function getPreference(string $setting_name, string $default = ''): string
     {
         if (empty($this->preferences)) {
             $this->preferences = Database::prepare(
@@ -185,7 +185,7 @@ class Tree
      *
      * @return $this
      */
-    public function setPreference($setting_name, $setting_value)
+    public function setPreference(string $setting_name, string $setting_value): Tree
     {
         if ($setting_value !== $this->getPreference($setting_name)) {
             Database::prepare(
@@ -214,7 +214,7 @@ class Tree
      *
      * @return string
      */
-    public function getUserPreference(User $user, $setting_name, $default = '')
+    public function getUserPreference(User $user, string $setting_name, string $default = ''): string
     {
         // There are lots of settings, and we need to fetch lots of them on every page
         // so it is quicker to fetch them all in one go.
@@ -243,7 +243,7 @@ class Tree
      *
      * @return $this
      */
-    public function setUserPreference(User $user, $setting_name, $setting_value)
+    public function setUserPreference(User $user, string $setting_name, string $setting_value): Tree
     {
         if ($this->getUserPreference($user, $setting_name) !== $setting_value) {
             // Update the database
@@ -281,7 +281,7 @@ class Tree
      *
      * @return bool
      */
-    public function canAcceptChanges(User $user)
+    public function canAcceptChanges(User $user): bool
     {
         return Auth::isModerator($this, $user);
     }
@@ -291,7 +291,7 @@ class Tree
      *
      * @return Tree[]
      */
-    public static function getAll()
+    public static function getAll(): array
     {
         if (empty(self::$trees)) {
             $rows        = Database::prepare(
@@ -332,7 +332,7 @@ class Tree
      * @throws \DomainException
      * @return Tree
      */
-    public static function findById($tree_id)
+    public static function findById($tree_id): Tree
     {
         foreach (self::getAll() as $tree) {
             if ($tree->tree_id == $tree_id) {
@@ -366,7 +366,7 @@ class Tree
      *
      * @return string[]
      */
-    public static function getIdList()
+    public static function getIdList(): array
     {
         $list = [];
         foreach (self::getAll() as $tree) {
@@ -382,7 +382,7 @@ class Tree
      *
      * @return string[]
      */
-    public static function getNameList()
+    public static function getNameList(): array
     {
         $list = [];
         foreach (self::getAll() as $tree) {
@@ -400,7 +400,7 @@ class Tree
      *
      * @return Tree
      */
-    public static function create($tree_name, $tree_title)
+    public static function create(string $tree_name, string $tree_title): Tree
     {
         try {
             // Create a new tree
@@ -497,7 +497,7 @@ class Tree
      *
      * @return bool
      */
-    public function hasPendingEdit()
+    public function hasPendingEdit(): bool
     {
         return (bool) Database::prepare(
             "SELECT 1 FROM `##change` WHERE status = 'pending' AND gedcom_id = :tree_id"
@@ -616,7 +616,7 @@ class Tree
      * @return void
      * @throws Exception
      */
-    public function importGedcomFile($path, $filename)
+    public function importGedcomFile(string $path, string $filename)
     {
         // Read the file in blocks of roughly 64K. Ensure that each block
         // contains complete gedcom records. This will ensure we don’t split
@@ -667,7 +667,7 @@ class Tree
      *
      * @return string
      */
-    public function getNewXref()
+    public function getNewXref(): string
     {
         $prefix = 'X';
 
@@ -726,7 +726,7 @@ class Tree
      * @return GedcomRecord|Individual|Family|Note|Source|Repository|Media
      * @throws Exception
      */
-    public function createRecord($gedcom)
+    public function createRecord(string $gedcom): GedcomRecord
     {
         if (preg_match('/^0 @(' . WT_REGEX_XREF . ')@ (' . WT_REGEX_TAG . ')/', $gedcom, $match)) {
             $xref = $match[1];
@@ -816,7 +816,7 @@ class Tree
      *
      * @return Individual
      */
-    public function getSignificantIndividual()
+    public function getSignificantIndividual(): Individual
     {
         static $individual; // Only query the DB once.
 
