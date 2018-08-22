@@ -1,0 +1,18 @@
+{
+	"name": "lutana/pclzip",
+	"type": "library",
+	"description": "A PHP library that offers compression and extraction functions for Zip formatted archives. Based on the PclZip library, but added PHP 7 compatibility and several bug fixes.",
+	"keywords": ["php", "zip"],
+	"license": ["LGPL-2.1"],
+	"authors": [
+		{
+			"name": "Vincent Blavet",
+			"homepage": "http://www.phpconcept.net/pclzip"
+		}, {
+			"name": "Matthias Mohr"
+		}
+	],
+	"autoload": {
+		"classmap": ["pclzip.lib.php"]
+	}
+}

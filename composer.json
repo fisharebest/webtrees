@@ -29,7 +29,7 @@
 		"fisharebest/localization": "1.*",
 		"fisharebest/php-polyfill": "1.*",
 		"michelf/php-markdown": "1.*",
-		"pclzip/pclzip": "2.*",
+		"lutana/pclzip": "2.*",
 		"rhumsaa/uuid": "2.*",
 		"swiftmailer/swiftmailer": "~5.0",
 		"tecnickcom/tcpdf": "6.*"
