@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-07-26 23:06+0100\n"
-"PO-Revision-Date: 2018-04-25 10:41+0000\n"
+"PO-Revision-Date: 2018-08-22 11:20+0000\n"
 "Last-Translator: Enes <enes_s@yahoo.com>\n"
 "Language-Team: Serbian (latin) <https://translate.webtrees.net/projects/webtrees/webtrees/sr-Latn/>\n"
 "Language: sr-Latn\n"
@@ -1776,12 +1776,12 @@ msgstr "Albuquerque, Novi Meksiko, S.A.D."
 #. I18N: Name of a country or state
 #: app/Stats.php:7542
 msgid "Algeria"
-msgstr "Alžírsko"
+msgstr "Alžir"
 
 #. I18N: gedcom tag ALIA
 #: app/GedcomTag.php:485
 msgid "Alias"
-msgstr "Pseudonim"
+msgstr "Nadimak"
 
 #: resources/views/lists/individuals-table.php:130
 msgid "Alive"
@@ -6911,7 +6911,7 @@ msgstr "Umro je"
 #: modules_v3/ahnentafel_report/report.xml:259
 #: modules_v3/descendancy_report/report.xml:173
 msgid "He married"
-msgstr "Oženio se"
+msgstr "Oženio se sa"
 
 #: modules_v3/ahnentafel_report/report.xml:222
 msgid "He resided at"
@@ -11681,7 +11681,7 @@ msgstr ""
 
 #: resources/views/edit-blocks-page.php:150
 msgid "Right section blocks"
-msgstr ""
+msgstr "Blokovi desne sekcije"
 
 #. I18N: gedcom tag ROLE
 #: app/GedcomTag.php:984 resources/views/admin/users-edit.php:281
@@ -11957,7 +11957,7 @@ msgstr ""
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.php:115
 msgid "Secure connection"
-msgstr ""
+msgstr "Sigurno povezivanje"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-analytics.php:113
@@ -11982,7 +11982,7 @@ msgstr ""
 
 #: resources/views/edit-blocks-page.php:130
 msgid "Select a block and use the arrows to move it."
-msgstr ""
+msgstr "Izaberi blok i koristi strelice da bi ga pomerili."
 
 #: app/Http/Controllers/ReportEngineController.php:129
 #: resources/views/edit/input-addon-calendar.php:6
@@ -12048,12 +12048,12 @@ msgstr "Pošalji poruku"
 #: app/Http/Controllers/MessageController.php:507
 #: resources/views/admin/control-panel.php:328
 msgid "Send a message to all users"
-msgstr ""
+msgstr "Pošalji poruku svim korisnicima"
 
 #: app/Http/Controllers/MessageController.php:509
 #: resources/views/admin/control-panel.php:334
 msgid "Send a message to users who have never signed in"
-msgstr ""
+msgstr "Pošaljite poruku korisnicima koji se nikada nisu prijavili"
 
 #: app/Http/Controllers/MessageController.php:511
 #: resources/views/admin/control-panel.php:340
@@ -12073,7 +12073,7 @@ msgstr "Ime pošiljaoca"
 #: app/Http/Controllers/AdminSiteController.php:497
 #: resources/views/admin/control-panel.php:50
 msgid "Sending email"
-msgstr ""
+msgstr "Slanje e-maila"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.php:128
@@ -12148,7 +12148,7 @@ msgstr ""
 #: app/Http/Controllers/AdminSiteController.php:633
 #: resources/views/admin/control-panel.php:90
 msgid "Server information"
-msgstr ""
+msgstr "Informacije o serveru"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.php:48
@@ -12159,7 +12159,7 @@ msgstr "Ime servera"
 #. I18N: A configuration setting
 #: resources/views/admin/site-preferences.php:140
 msgid "Session timeout"
-msgstr ""
+msgstr "Vremensko ograničenje sesije"
 
 #: resources/views/admin/trees.php:107 resources/views/admin/trees.php:114
 msgid "Set as default"
@@ -12179,7 +12179,7 @@ msgstr ""
 #: app/Http/Controllers/HomePageController.php:473
 #: resources/views/admin/control-panel.php:318
 msgid "Set the default blocks for new users"
-msgstr ""
+msgstr "Podesi podrazumevane blokove za nove korisnike"
 
 #. I18N: Help text for the “Default pedigree generations” configuration setting
 #: resources/views/admin/trees-preferences.php:484
@@ -12327,7 +12327,7 @@ msgstr ""
 #: modules_v3/ahnentafel_report/report.xml:260
 #: modules_v3/descendancy_report/report.xml:242
 msgid "She married"
-msgstr ""
+msgstr "Udala se za"
 
 #: modules_v3/ahnentafel_report/report.xml:223
 msgid "She resided at"
@@ -12785,7 +12785,7 @@ msgstr ""
 #: resources/views/admin/users-edit.php:184
 #: resources/views/edit-account-page.php:165
 msgid "Site members can send each other messages. You can choose to how these messages are sent to you, or choose not receive them at all."
-msgstr ""
+msgstr "Članovi mogu međusobno slati poruke. Možete odabrati kako će se te poruke slati vama, ili odabrati da ih uopšte ne primate."
 
 #: app/Http/Controllers/AdminPhpGedViewController.php:176
 msgid "Site preferences"
@@ -13235,7 +13235,7 @@ msgstr "Nedelja"
 #: resources/views/admin/control-panel.php:22
 #, php-format
 msgid "Support and documentation can be found at %s."
-msgstr ""
+msgstr "Podrška i dokumentacija nalazi se na %s."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:7836
@@ -14109,7 +14109,7 @@ msgstr ""
 #. I18N: do not translate the #keywords#
 #: resources/views/modules/html/template-narrative.php:3
 msgid "This family tree was last updated on #gedcomUpdated#. There are #totalSurnames# surnames in this family tree. The earliest recorded event is the #firstEventType# of #firstEventName# in #firstEventYear#. The most recent event is the #lastEventType# of #lastEventName# in #lastEventYear#.<br><br>If you have any comments or feedback please contact #contactWebmaster#."
-msgstr ""
+msgstr "Ovo porodično stablo je poslednji put ažurirano #gedcomUpdated#. Ukupno je #totalSurnames# prezimena u ovom porodičnom stablu. Najraniji zabeležni događaj je #firstEventType# #firstEventName# godine #firstEventYear#. Najnoviji događaj je #lastEventType# #lastEventName# godine #lastEventYear#.<br><br>Ako imate bilo kakav komentar molimo kontaktirajte #contactWebmaster#."
 
 #: resources/views/modules/gedcom_stats/statistics.php:5
 #: resources/views/modules/html/template-statistics.php:8
@@ -14214,7 +14214,7 @@ msgstr ""
 #: resources/views/admin/control-panel.php:34
 #: resources/views/admin/upgrade/wizard.php:13
 msgid "This is the latest version of webtrees. No upgrade is available."
-msgstr ""
+msgstr "Koristite poslednju verziju webtrees. Ne postoji novija verzija."
 
 #. I18N: Help text for the “All family facts” configuration setting
 #: resources/views/admin/trees-preferences.php:916
@@ -14597,7 +14597,7 @@ msgstr "Ura"
 #: resources/views/admin/users-edit.php:129
 #: resources/views/edit-account-page.php:121
 msgid "Time zone"
-msgstr ""
+msgstr "Vremenska zona"
 
 #. I18N: Name of a module/chart
 #: app/Http/Controllers/TimelineChartController.php:95
@@ -14696,7 +14696,7 @@ msgstr ""
 #: resources/views/admin/site-logs.php:23 resources/views/contact-page.php:12
 #: resources/views/message-page.php:21
 msgid "To"
-msgstr ""
+msgstr "Do"
 
 #: resources/views/modules/html/config.php:21
 msgid "To assist you in getting started with this block, we have created several standard templates. When you select one of these templates, the text area will contain a copy that you can then alter to suit your site’s requirements."
@@ -14810,27 +14810,27 @@ msgstr ""
 #: app/Http/Controllers/StatisticsChartController.php:698
 #: resources/views/admin/control-panel.php:212
 msgid "Total"
-msgstr ""
+msgstr "Ukupno"
 
 #: modules_v3/change_report/report.xml:127
 msgid "Total accepted changes: "
-msgstr ""
+msgstr "Ukupno prihvaćenih promena: "
 
 #: resources/views/statistics-chart-individuals.php:37
 msgid "Total births"
-msgstr ""
+msgstr "Ukupno rođenih"
 
 #: resources/views/statistics-chart-individuals.php:13
 msgid "Total dead"
-msgstr ""
+msgstr "Ukupno preminulih"
 
 #: resources/views/statistics-chart-individuals.php:38
 msgid "Total deaths"
-msgstr ""
+msgstr "Ukupno umrlih"
 
 #: resources/views/statistics-chart-families.php:10
 msgid "Total divorces"
-msgstr ""
+msgstr "Ukupno razvoda"
 
 #: modules_v3/missing_facts_report/report.xml:602
 #: resources/views/modules/gedcom_stats/config.php:28
@@ -14858,7 +14858,7 @@ msgstr "Ukupno žena"
 
 #: resources/views/statistics-chart-individuals.php:122
 msgid "Total given names"
-msgstr ""
+msgstr "Ukupno imena"
 
 #: modules_v3/bdm_report/report.xml:210 modules_v3/birth_report/report.xml:66
 #: modules_v3/cemetery_report/report.xml:89
@@ -14880,7 +14880,7 @@ msgstr "Ukupno osoba: %s"
 
 #: resources/views/statistics-chart-individuals.php:12
 msgid "Total living"
-msgstr ""
+msgstr "Ukupno živih"
 
 #: resources/views/statistics-chart-individuals.php:10
 msgid "Total males"
@@ -14892,7 +14892,7 @@ msgstr "Ukupno brakova"
 
 #: modules_v3/change_report/report.xml:87
 msgid "Total pending changes: "
-msgstr ""
+msgstr "Ukupno promena na čekanju: "
 
 #: resources/views/modules/gedcom_stats/config.php:23
 #: resources/views/modules/html/template-statistics.php:26
@@ -15004,7 +15004,7 @@ msgstr ""
 #: resources/views/admin/users-create.php:56
 #: resources/views/admin/users-edit.php:61 resources/views/register-page.php:71
 msgid "Type the password again."
-msgstr ""
+msgstr "Ponovo upiši lozinku."
 
 #: resources/views/edit-account-page.php:105
 #: resources/views/register-page.php:73
@@ -15148,7 +15148,7 @@ msgstr "Nastupajući događaji"
 
 #: resources/views/modules/batch_update/admin.php:74
 msgid "Update"
-msgstr ""
+msgstr "Izmeni"
 
 #: resources/views/modules/batch_update/admin.php:79
 #: resources/views/modules/batch_update/admin.php:83
@@ -15175,7 +15175,7 @@ msgstr ""
 #: app/Http/Controllers/AdminMediaController.php:411
 #: resources/views/admin/control-panel.php:444
 msgid "Upload media files"
-msgstr ""
+msgstr "Učitaj medijske datoteke"
 
 #: resources/views/admin/media-upload.php:8
 msgid "Upload one or more media files from your local computer. Media files can be pictures, video, audio, or other formats."
@@ -15206,9 +15206,9 @@ msgstr ""
 #, php-format
 msgid "Use at least %s character."
 msgid_plural "Use at least %s characters."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Najmanje %s karakter."
+msgstr[1] "Najmanje %s karaktera."
+msgstr[2] "Najmanje %s karaktera."
 
 #: modules_v3/family_group_report/report.xml:12
 #: modules_v3/individual_ext_report/report.xml:13
@@ -15228,7 +15228,7 @@ msgstr ""
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.php:75
 msgid "Use password"
-msgstr ""
+msgstr "Koristi lozinku"
 
 #. I18N: "sendmail" is the name of some mail software
 #: app/Http/Controllers/AdminSiteController.php:665
@@ -15264,7 +15264,7 @@ msgstr ""
 #: resources/views/modules/recent_changes/changes-table.php:21
 #: resources/views/pending-changes-page.php:46
 msgid "User"
-msgstr ""
+msgstr "Korisnik"
 
 #: app/Http/Controllers/AdminUsersController.php:130
 #: resources/views/admin/control-panel.php:300
@@ -15272,7 +15272,7 @@ msgstr ""
 #: resources/views/admin/users-create.php:4
 #: resources/views/admin/users-edit.php:8
 msgid "User administration"
-msgstr ""
+msgstr "Administracija korisnika"
 
 #: resources/views/admin/users-cleanup.php:58
 msgid "User didn’t verify within 7 days."
@@ -15325,7 +15325,7 @@ msgstr ""
 #: resources/views/modules/gedcom_stats/statistics.php:119
 #: resources/views/modules/html/template-statistics.php:50
 msgid "Users"
-msgstr ""
+msgstr "Korisnici"
 
 #: resources/views/admin/users-cleanup.php:40
 msgid "User’s account has been inactive too long: "
@@ -15416,7 +15416,7 @@ msgstr ""
 
 #: resources/views/admin/users.php:21
 msgid "Verified"
-msgstr ""
+msgstr "Potvrđeno"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:674
@@ -15482,13 +15482,13 @@ msgstr ""
 #: resources/views/admin/users-edit.php:160
 #: resources/views/edit-account-page.php:173
 msgid "Visible online"
-msgstr ""
+msgstr "Vidljiv online"
 
 #. I18N: A configuration setting
 #: resources/views/admin/users-edit.php:166
 #: resources/views/edit-account-page.php:176
 msgid "Visible to other users when online"
-msgstr ""
+msgstr "Vidljiv drugim korisnicima kad je online"
 
 #. I18N: Listbox entry; name of a role
 #: app/Http/Controllers/AdminUsersController.php:449
@@ -15562,7 +15562,7 @@ msgstr ""
 #: app/Http/Controllers/AdminSiteController.php:540
 #: resources/views/admin/control-panel.php:44
 msgid "Website preferences"
-msgstr ""
+msgstr "Podešavanja web stranice"
 
 #. I18N: abbreviation for Wednesday
 #: app/Date/CalendarDate.php:421
@@ -15588,7 +15588,7 @@ msgstr "Dobrodošli %s"
 #. I18N: A configuration setting
 #: resources/views/admin/site-registration.php:16
 msgid "Welcome text on sign-in page"
-msgstr ""
+msgstr "Tekst dobrodošlice na stranici za prijavu"
 
 #: resources/views/login-page.php:10
 msgid "Welcome to this genealogy website"
@@ -16180,7 +16180,7 @@ msgstr ""
 
 #: resources/views/modules/faq/show.php:20
 msgid "back to top"
-msgstr ""
+msgstr "natrag na vrh"
 
 #. I18N: An option in a list-box
 #: app/Module/TopPageViewsModule.php:181
@@ -16498,7 +16498,7 @@ msgstr ""
 #: resources/views/admin/webtrees1-thumbnails-form.php:21
 #: resources/views/modules/faq/config.php:96
 msgid "delete"
-msgstr ""
+msgstr "obriši"
 
 #: modules_v3/descendancy_report/report.xml:137
 #: modules_v3/descendancy_report/report.xml:365
@@ -18981,7 +18981,7 @@ msgstr ""
 #: resources/views/components/radios-no-yes.php:6
 #: resources/views/lists/families-table.php:309
 msgid "no"
-msgstr ""
+msgstr "ne"
 
 #. I18N: None of the other options
 #: app/Http/Controllers/AdminSiteController.php:647
@@ -19211,7 +19211,7 @@ msgstr ""
 #: resources/views/modules/stories/edit.php:51
 #: resources/views/modules/user_blog/edit.php:37
 msgid "save"
-msgstr ""
+msgstr "snimi"
 
 #. I18N: A button label.
 #: resources/views/admin/changes-log.php:76
@@ -19907,7 +19907,7 @@ msgstr ""
 #: resources/views/admin/trees-unconnected.php:13
 #: resources/views/admin/users-cleanup.php:20
 msgid "update"
-msgstr ""
+msgstr "izmeni"
 
 #. I18N: A button label.
 #: resources/views/admin/media-upload.php:59
