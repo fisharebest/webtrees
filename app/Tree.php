@@ -734,7 +734,7 @@ class Tree
         } else {
             throw new Exception('Invalid argument to GedcomRecord::createRecord(' . $gedcom . ')');
         }
-        if (strpos("\r", $gedcom) !== false) {
+        if (strpos($gedcom, "\r") !== false) {
             // MSDOS line endings will break things in horrible ways
             throw new Exception('Evil line endings found in GedcomRecord::createRecord(' . $gedcom . ')');
         }
