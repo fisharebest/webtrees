@@ -1,173 +1,121 @@
 {
-	"name": "fisharebest/webtrees",
-	"description": "webtrees online genealogy",
-	"keywords": ["webtrees", "genealogy"],
-	"license": "GPL-3.0-or-later",
-	"autoload": {
-		"psr-4": {
-			"Fisharebest\\Webtrees\\": "app/"
-		},
-		"files": [
-			"app/Helpers/functions.php"
-		]
-	},
-	"config": {
-		"platform": {
-			"php" : "7.0.8"
-		},
-		"sort-packages": true,
-		"process-timeout": 3600
-	},
-	"require": {
-		"ext-gd": "*",
-		"ext-iconv": "*",
-		"ext-json": "*",
-		"ext-pcre": "*",
-		"ext-pdo": "*",
-		"ext-pdo_mysql": "*",
-		"ext-session": "*",
-		"ext-simplexml": "*",
-		"ext-xml": "*",
-		"filp/whoops": "~2.1",
-		"fisharebest/algorithm": "~1.3",
-		"fisharebest/ext-calendar": "~2.3",
-		"fisharebest/localization": "~1.10",
-		"guzzlehttp/guzzle": "~6.0",
-		"league/commonmark": "~0.17",
-		"league/flysystem": "~1.0",
-		"league/flysystem-ziparchive": "~1.0",
-		"league/glide": "~1.2",
-		"ramsey/uuid": "~3.6",
-		"swiftmailer/swiftmailer": "~5.0",
-		"symfony/expression-language": "~3.3",
-		"symfony/http-foundation": "~3.3",
-		"symfony/http-kernel": "~3.3",
-		"symfony/polyfill-mbstring": "~1.4",
-		"symfony/polyfill-php71": "~1.4",
-		"symfony/polyfill-php72": "~1.4",
-		"tecnickcom/tcpdf": "~6.2",
-		"webuni/commonmark-table-extension": "~0.7"
-	},
-	"require-dev": {
-		"maximebf/debugbar": "*",
-		"mockery/mockery": "*",
-		"phpunit/phpunit": "*",
-		"php-coveralls/php-coveralls": "*"
-	},
-	"scripts": {
-                "webtrees-build": [
-                    "@composer webtrees-mo",
-                    "git checkout language/en-US.mo",
-                    "rm -Rf webtrees/",
-                    "git archive --prefix=webtrees/ HEAD --format=tar | tar -x",
-                    "cp language/*.mo webtrees/language/",
-                    "zip --quiet --recurse-paths --move -9 webtrees.zip webtrees"
-                ],
-                "webtrees-check": [
-                    "### PHP-CODE-ANALYZER",
-                    "phpca --since-version=7.0 app/",
-                    "### PHP-CODE-FIXER",
-                    "phpcf app/",
-                    "### PAHOUT",
-                    "pahout --php-version 7.0.8 --ignore-paths=data .",
-                    "### PHP-PARALLEL-LINT",
-                    "parallel-lint --no-progress --exclude vendor .",
-                    "### PHP-CODE-SNIFFER",
-                    "phpcs --standard=PSR12 -s --exclude=Generic.Files.LineLength,PSR2.ControlStructures.ControlStructureSpacing,PSR2.ControlStructures.SwitchDeclaration app routes",
-                    "### PHAN",
-                    "phan --directory . --exclude-directory-list data,resources,routes,tests,vendor",
-                    "### PHPSTAN",
-                    "phpstan --level=7 analyze app",
-                    "### PSALM",
-                    "psalm --threads=8"
-                ],
-                "webtrees-tools": [
-                    "### PAHOUT",
-                    "@composer global require wata727/pahout=*",
-                    "### PHAN",
-                    "@composer global require phan/phan=*",
-                    "### PHP-CODE-ANALYZER",
-                    "@composer global require wapmorgan/php-code-analyzer=*",
-                    "### PHP-CODE-FIXER",
-                    "@composer global require wapmorgan/php-code-fixer=*",
-                    "### PHP-PARALLEL-LINT",
-                    "@composer global require jakub-onderka/php-parallel-lint=*",
-                    "### PSALM",
-                    "@composer global require vimeo/psalm=*"
-                ],
-		"webtrees-mo": [
-			"msgfmt --output=language/af.mo language/af.po",
-			"msgfmt --output=language/ar.mo language/ar.po",
-			"msgfmt --output=language/bg.mo language/bg.po",
-			"msgfmt --output=language/bs.mo language/bs.po",
-			"msgfmt --output=language/ca.mo language/ca.po",
-			"msgfmt --output=language/cs.mo language/cs.po",
-			"msgfmt --output=language/da.mo language/da.po",
-			"msgfmt --output=language/de.mo language/de.po",
-			"msgfmt --output=language/dv.mo language/dv.po",
-			"msgfmt --output=language/el.mo language/el.po",
-			"msgfmt --output=language/en-AU.mo language/en-AU.po",
-			"msgfmt --output=language/en-GB.mo language/en-GB.po",
-			"msgfmt --output=language/en-US.mo language/en-US.po",
-			"msgfmt --output=language/es.mo language/es.po",
-			"msgfmt --output=language/et.mo language/et.po",
-			"msgfmt --output=language/fa.mo language/fa.po",
-			"msgfmt --output=language/fi.mo language/fi.po",
-			"msgfmt --output=language/fo.mo language/fo.po",
-			"msgfmt --output=language/fr-CA.mo language/fr-CA.po",
-			"msgfmt --output=language/fr.mo language/fr.po",
-			"msgfmt --output=language/gl.mo language/gl.po",
-			"msgfmt --output=language/he.mo language/he.po",
-			"msgfmt --output=language/hr.mo language/hr.po",
-			"msgfmt --output=language/hu.mo language/hu.po",
-			"msgfmt --output=language/id.mo language/id.po",
-			"msgfmt --output=language/is.mo language/is.po",
-			"msgfmt --output=language/it.mo language/it.po",
-			"msgfmt --output=language/ja.mo language/ja.po",
-			"msgfmt --output=language/ka.mo language/ka.po",
-			"msgfmt --output=language/kk.mo language/kk.po",
-			"msgfmt --output=language/ko.mo language/ko.po",
-			"msgfmt --output=language/ln.mo language/ln.po",
-			"msgfmt --output=language/lt.mo language/lt.po",
-			"msgfmt --output=language/lv.mo language/lv.po",
-			"msgfmt --output=language/mi.mo language/mi.po",
-			"msgfmt --output=language/mr.mo language/mr.po",
-			"msgfmt --output=language/ms.mo language/ms.po",
-			"msgfmt --output=language/nb.mo language/nb.po",
-			"msgfmt --output=language/ne.mo language/ne.po",
-			"msgfmt --output=language/nl.mo language/nl.po",
-			"msgfmt --output=language/nn.mo language/nn.po",
-			"msgfmt --output=language/oc.mo language/oc.po",
-			"msgfmt --output=language/pl.mo language/pl.po",
-			"msgfmt --output=language/pt-BR.mo language/pt-BR.po",
-			"msgfmt --output=language/pt.mo language/pt.po",
-			"msgfmt --output=language/ro.mo language/ro.po",
-			"msgfmt --output=language/ru.mo language/ru.po",
-			"msgfmt --output=language/sk.mo language/sk.po",
-			"msgfmt --output=language/sl.mo language/sl.po",
-			"msgfmt --output=language/sq.mo language/sq.po",
-			"msgfmt --output=language/sr-Latn.mo language/sr-Latn.po",
-			"msgfmt --output=language/sr.mo language/sr.po",
-			"msgfmt --output=language/sv.mo language/sv.po",
-			"msgfmt --output=language/sw.mo language/sw.po",
-			"msgfmt --output=language/ta.mo language/ta.po",
-			"msgfmt --output=language/th.mo language/th.po",
-			"msgfmt --output=language/tr.mo language/tr.po",
-			"msgfmt --output=language/tt.mo language/tt.po",
-			"msgfmt --output=language/uk.mo language/uk.po",
-			"msgfmt --output=language/vi.mo language/vi.po",
-			"msgfmt --output=language/yi.mo language/yi.po",
-			"msgfmt --output=language/zh-Hans.mo language/zh-Hans.po",
-			"msgfmt --output=language/zh-Hant.mo language/zh-Hant.po",
-			"rm -Rf data/cache/language*"
-		]
-	},
-	"extra": {
-		"branch-alias": {
-			"dev-master": "2.0-dev"
-		},
-		"scripts-description": {
-			"webtrees-mo": "Compile the language files"
-		}
-	}
+    "name": "fisharebest/webtrees",
+    "description": "webtrees online genealogy",
+    "keywords": ["webtrees", "genealogy"],
+    "license": "GPL-3.0-or-later",
+    "autoload": {
+        "psr-4": {
+            "Fisharebest\\Webtrees\\": "app/"
+        },
+        "files": [
+            "app/Helpers/functions.php"
+        ]
+    },
+    "config": {
+        "platform": {
+            "php" : "7.0.8"
+        },
+        "sort-packages": true,
+        "process-timeout": 3600
+    },
+    "require": {
+        "ext-gd": "*",
+        "ext-iconv": "*",
+        "ext-json": "*",
+        "ext-pcre": "*",
+        "ext-pdo": "*",
+        "ext-pdo_mysql": "*",
+        "ext-session": "*",
+        "ext-simplexml": "*",
+        "ext-xml": "*",
+        "filp/whoops": "~2.1",
+        "fisharebest/algorithm": "~1.3",
+        "fisharebest/ext-calendar": "~2.3",
+        "fisharebest/localization": "~1.10",
+        "guzzlehttp/guzzle": "~6.0",
+        "league/commonmark": "~0.17",
+        "league/flysystem": "~1.0",
+        "league/flysystem-ziparchive": "~1.0",
+        "league/glide": "~1.2",
+        "ramsey/uuid": "~3.6",
+        "swiftmailer/swiftmailer": "~5.0",
+        "symfony/expression-language": "~3.3",
+        "symfony/http-foundation": "~3.3",
+        "symfony/http-kernel": "~3.3",
+        "symfony/polyfill-mbstring": "~1.4",
+        "symfony/polyfill-php71": "~1.4",
+        "symfony/polyfill-php72": "~1.4",
+        "tecnickcom/tcpdf": "~6.2",
+        "webuni/commonmark-table-extension": "~0.7"
+    },
+    "require-dev": {
+        "maximebf/debugbar": "*",
+        "mockery/mockery": "*",
+        "phpunit/phpunit": "*",
+        "php-coveralls/php-coveralls": "*"
+    },
+    "scripts": {
+       "webtrees-build": [
+           "@composer webtrees-mo",
+           "git checkout language/en-US.mo",
+           "rm -Rf webtrees/",
+           "git archive --prefix=webtrees/ HEAD --format=tar | tar -x",
+           "cp language/*.mo webtrees/language/",
+           "zip --quiet --recurse-paths --move -9 webtrees.zip webtrees"
+       ],
+       "webtrees-check": [
+            "### PHP-CODE-ANALYZER",
+            "phpca --since-version=7.0 app/",
+            "### PHP-CODE-FIXER",
+            "phpcf app/",
+            "### PAHOUT",
+            "pahout --php-version 7.0.8 --ignore-paths=data .",
+            "### PHP-PARALLEL-LINT",
+            "parallel-lint --no-progress --exclude vendor .",
+            "### PHP-CODE-SNIFFER",
+            "phpcs --standard=PSR12 -s --exclude=Generic.Files.LineLength,PSR2.ControlStructures.ControlStructureSpacing,PSR2.ControlStructures.SwitchDeclaration app routes",
+            "### PHAN",
+            "phan --directory . --exclude-directory-list data,resources,routes,tests,vendor",
+            "### PHPSTAN",
+            "phpstan --level=7 analyze app",
+            "### PSALM",
+            "psalm --threads=8"
+        ],
+        "webtrees-tools": [
+            "### PAHOUT",
+            "@composer global require wata727/pahout=*",
+            "### PHAN",
+            "@composer global require phan/phan=*",
+            "### PHP-CODE-ANALYZER",
+            "@composer global require wapmorgan/php-code-analyzer=*",
+            "### PHP-CODE-FIXER",
+            "@composer global require wapmorgan/php-code-fixer=*",
+            "### PHP-PARALLEL-LINT",
+            "@composer global require jakub-onderka/php-parallel-lint=*",
+            "### PSALM",
+            "@composer global require vimeo/psalm=*"
+        ],
+        "webtrees-mo": [
+            "for FILE in language/*.po; do msgfmt --output=$(basename $FILE .po).mo $FILE; done",
+            "rm -Rf data/cache/language*"
+        ],
+        "webtrees-po": [
+            "sed -i.bak -e 's/\\(I18N::[^)]*[)]\\)/<?php echo \\1; ?>/g' modules*/*/*.xml",
+            "git grep -I --name-only --fixed-strings -e I18N:: -- '*.php' '*.xml' | xargs xgettext --package-name=webtrees --package-version=1.0 --msgid-bugs-address=i18n@webtrees.net --output=language/webtrees.pot --no-wrap --language=PHP --add-comments=I18N --from-code=utf-8 --keyword --keyword=translate:1 --keyword=translateContext:1c,2 --keyword=plural:1,2",
+            "find modules*/ -name '*.xml' -exec mv {}.bak {} \\;",
+            "find language -name '*.po' -exec msgmerge --no-wrap --sort-output --no-fuzzy-matching --quiet --output={} {} language/webtrees.pot \\;"
+        ]
+    },
+    "scripts-descriptions": {
+        "webtrees-build": "Create a distribution file (webtrees.zip)",
+        "webtrees-check": "Run various static analysis tools",
+        "webtrees-mo": "Compile the language files (*.mo)",
+        "webtrees-po": "Update the language (webtrees.pot, *.po)",
+        "webtrees-tools": "Install the tools needed to run webtrees-check"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "2.0-dev"
+        }
+    }
 }
