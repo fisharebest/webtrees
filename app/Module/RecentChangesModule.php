@@ -143,8 +143,15 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
         return true;
     }
 
-    /** {@inheritdoc} */
-    public function configureBlock(Tree $tree, int $block_id)
+    /**
+     * An HTML form to edit block settings
+     *
+     * @param Tree $tree
+     * @param int  $block_id
+     *
+     * @return void
+     */
+   public function configureBlock(Tree $tree, int $block_id)
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $this->setBlockSetting($block_id, 'days', Filter::postInteger('days', 1, self::MAX_DAYS));

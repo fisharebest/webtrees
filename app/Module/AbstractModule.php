@@ -73,30 +73,21 @@ abstract class AbstractModule
     /**
      * Set a block setting.
      *
-     * @param int         $block_id
-     * @param string      $setting_name
-     * @param string|null $setting_value
+     * @param int    $block_id
+     * @param string $setting_name
+     * @param string $setting_value
      *
      * @return $this
      */
-    public function setBlockSetting($block_id, $setting_name, $setting_value)
+    public function setBlockSetting(int $block_id, string $setting_name, string $setting_value)
     {
-        if ($setting_value === null) {
-            Database::prepare(
-                "DELETE FROM `##block_setting` WHERE block_id = :block_id AND setting_name = :setting_name"
-            )->execute([
-                'block_id'     => $block_id,
-                'setting_name' => $setting_name,
-            ]);
-        } else {
-            Database::prepare(
-                "REPLACE INTO `##block_setting` (block_id, setting_name, setting_value) VALUES (:block_id, :setting_name, :setting_value)"
-            )->execute([
-                'block_id'      => $block_id,
-                'setting_name'  => $setting_name,
-                'setting_value' => $setting_value,
-            ]);
-        }
+        Database::prepare(
+            "REPLACE INTO `##block_setting` (block_id, setting_name, setting_value) VALUES (:block_id, :setting_name, :setting_value)"
+        )->execute([
+            'block_id'      => $block_id,
+            'setting_name'  => $setting_name,
+            'setting_value' => $setting_value,
+        ]);
 
         return $this;
     }

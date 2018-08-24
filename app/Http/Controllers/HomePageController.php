@@ -143,6 +143,7 @@ class HomePageController extends AbstractBaseController
      *
      * @param Request $request
      * @param Tree    $tree
+     * @param User    $user
      *
      * @return RedirectResponse
      */
