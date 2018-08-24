@@ -346,12 +346,12 @@ class Stats
     /**
      * Convert totals into percentages.
      *
-     * @param string $total
+     * @param int    $total
      * @param string $type
      *
      * @return string
      */
-    private function getPercentage($total, $type)
+    private function getPercentage(int $total, string $type)
     {
         switch ($type) {
             case 'individual':
@@ -371,11 +371,8 @@ class Stats
                 $type = $this->totalIndividualsQuery() + $this->totalFamiliesQuery() + $this->totalSourcesQuery();
                 break;
         }
-        if ($type == 0) {
-            return I18N::percentage(0, 1);
-        } else {
-            return I18N::percentage($total / $type, 1);
-        }
+
+        return I18N::percentage($total / $type, 1);
     }
 
     /**
@@ -6037,11 +6034,7 @@ class Stats
      *
      * @return string
      */
-    public function commonGiven($params = [
-        1,
-        10,
-        'alpha',
-    ])
+    public function commonGiven($params = ['1', '10', 'alpha'])
     {
         return $this->commonGivenQuery('B', 'nolist', false, $params);
     }
@@ -6053,11 +6046,7 @@ class Stats
      *
      * @return string
      */
-    public function commonGivenTotals($params = [
-        1,
-        10,
-        'rcount',
-    ])
+    public function commonGivenTotals($params = ['1', '10', 'rcount'])
     {
         return $this->commonGivenQuery('B', 'nolist', true, $params);
     }
@@ -6069,11 +6058,7 @@ class Stats
      *
      * @return string
      */
-    public function commonGivenList($params = [
-        1,
-        10,
-        'alpha',
-    ])
+    public function commonGivenList($params = ['1', '10', 'alpha'])
     {
         return $this->commonGivenQuery('B', 'list', false, $params);
     }
@@ -6085,11 +6070,7 @@ class Stats
      *
      * @return string
      */
-    public function commonGivenListTotals($params = [
-        1,
-        10,
-        'rcount',
-    ])
+    public function commonGivenListTotals($params = ['1', '10', 'rcount'])
     {
         return $this->commonGivenQuery('B', 'list', true, $params);
     }
@@ -6101,11 +6082,7 @@ class Stats
      *
      * @return string
      */
-    public function commonGivenTable($params = [
-        1,
-        10,
-        'rcount',
-    ])
+    public function commonGivenTable($params = ['1', '10', 'rcount'])
     {
         return $this->commonGivenQuery('B', 'table', false, $params);
     }
@@ -6117,11 +6094,7 @@ class Stats
      *
      * @return string
      */
-    public function commonGivenFemale($params = [
-        1,
-        10,
-        'alpha',
-    ])
+    public function commonGivenFemale($params = ['1', '10', 'alpha'])
     {
         return $this->commonGivenQuery('F', 'nolist', false, $params);
     }
@@ -6133,11 +6106,7 @@ class Stats
      *
      * @return string
      */
-    public function commonGivenFemaleTotals($params = [
-        1,
-        10,
-        'rcount',
-    ])
+    public function commonGivenFemaleTotals($params = ['1', '10', 'rcount'])
     {
         return $this->commonGivenQuery('F', 'nolist', true, $params);
     }
@@ -6149,11 +6118,7 @@ class Stats
      *
      * @return string
      */
-    public function commonGivenFemaleList($params = [
-        1,
-        10,
-        'alpha',
-    ])
+    public function commonGivenFemaleList($params = ['1', '10', 'alpha'])
     {
         return $this->commonGivenQuery('F', 'list', false, $params);
     }
@@ -6165,11 +6130,7 @@ class Stats
      *
      * @return string
      */
-    public function commonGivenFemaleListTotals($params = [
-        1,
-        10,
-        'rcount',
-    ])
+    public function commonGivenFemaleListTotals($params = ['1', '10', 'rcount'])
     {
         return $this->commonGivenQuery('F', 'list', true, $params);
     }
@@ -6181,11 +6142,7 @@ class Stats
      *
      * @return string
      */
-    public function commonGivenFemaleTable($params = [
-        1,
-        10,
-        'rcount',
-    ])
+    public function commonGivenFemaleTable($params = ['1', '10', 'rcount'])
     {
         return $this->commonGivenQuery('F', 'table', false, $params);
     }
@@ -6197,11 +6154,7 @@ class Stats
      *
      * @return string
      */
-    public function commonGivenMale($params = [
-        1,
-        10,
-        'alpha',
-    ])
+    public function commonGivenMale($params = ['1', '10', 'alpha'])
     {
         return $this->commonGivenQuery('M', 'nolist', false, $params);
     }
@@ -6213,11 +6166,7 @@ class Stats
      *
      * @return string
      */
-    public function commonGivenMaleTotals($params = [
-        1,
-        10,
-        'rcount',
-    ])
+    public function commonGivenMaleTotals($params = ['1', '10', 'rcount'])
     {
         return $this->commonGivenQuery('M', 'nolist', true, $params);
     }
@@ -6229,11 +6178,7 @@ class Stats
      *
      * @return string
      */
-    public function commonGivenMaleList($params = [
-        1,
-        10,
-        'alpha',
-    ])
+    public function commonGivenMaleList($params = ['1', '10', 'alpha'])
     {
         return $this->commonGivenQuery('M', 'list', false, $params);
     }
@@ -6245,11 +6190,7 @@ class Stats
      *
      * @return string
      */
-    public function commonGivenMaleListTotals($params = [
-        1,
-        10,
-        'rcount',
-    ])
+    public function commonGivenMaleListTotals($params = ['1', '10', 'rcount'])
     {
         return $this->commonGivenQuery('M', 'list', true, $params);
     }
@@ -6261,11 +6202,7 @@ class Stats
      *
      * @return string
      */
-    public function commonGivenMaleTable($params = [
-        1,
-        10,
-        'rcount',
-    ])
+    public function commonGivenMaleTable($params = ['1', '10', 'rcount'])
     {
         return $this->commonGivenQuery('M', 'table', false, $params);
     }
@@ -6277,11 +6214,7 @@ class Stats
      *
      * @return string
      */
-    public function commonGivenUnknown($params = [
-        1,
-        10,
-        'alpha',
-    ])
+    public function commonGivenUnknown($params = ['1', '10', 'alpha'])
     {
         return $this->commonGivenQuery('U', 'nolist', false, $params);
     }
@@ -6293,11 +6226,7 @@ class Stats
      *
      * @return string
      */
-    public function commonGivenUnknownTotals($params = [
-        1,
-        10,
-        'rcount',
-    ])
+    public function commonGivenUnknownTotals($params = ['1', '10', 'rcount'])
     {
         return $this->commonGivenQuery('U', 'nolist', true, $params);
     }
@@ -6309,11 +6238,7 @@ class Stats
      *
      * @return string
      */
-    public function commonGivenUnknownList($params = [
-        1,
-        10,
-        'alpha',
-    ])
+    public function commonGivenUnknownList($params = ['1', '10', 'alpha'])
     {
         return $this->commonGivenQuery('U', 'list', false, $params);
     }
@@ -6325,11 +6250,7 @@ class Stats
      *
      * @return string
      */
-    public function commonGivenUnknownListTotals($params = [
-        1,
-        10,
-        'rcount',
-    ])
+    public function commonGivenUnknownListTotals($params = ['1', '10', 'rcount'])
     {
         return $this->commonGivenQuery('U', 'list', true, $params);
     }
@@ -6341,11 +6262,7 @@ class Stats
      *
      * @return string
      */
-    public function commonGivenUnknownTable($params = [
-        1,
-        10,
-        'rcount',
-    ])
+    public function commonGivenUnknownTable($params = ['1', '10', 'rcount'])
     {
         return $this->commonGivenQuery('U', 'table', false, $params);
     }
@@ -7120,7 +7037,7 @@ class Stats
         }
         $block    = $all_blocks[$block];
         $block_id = Filter::getInteger('block_id');
-        $content  = $block->getBlock($block_id, false, $cfg);
+        $content  = $block->getBlock($this->tree, $block_id, false, $cfg);
 
         return $content;
     }
