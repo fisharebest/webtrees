@@ -39,13 +39,13 @@ use Fisharebest\Webtrees\Date\RomanDate;
 class Date
 {
     /** @var string Optional qualifier, such as BEF, FROM, ABT */
-    public $qual1;
+    public $qual1 = '';
 
     /** @var CalendarDate  The first (or only) date */
     private $date1;
 
     /** @var string  Optional qualifier, such as TO, AND */
-    public $qual2;
+    public $qual2 = '';
 
     /** @var CalendarDate Optional second date */
     private $date2;

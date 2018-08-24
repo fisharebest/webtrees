@@ -24,14 +24,22 @@ namespace Fisharebest\Webtrees\Date;
  */
 class RomanDate extends JulianDate
 {
-    /** {@inheritdoc} */
-    protected function formatGedcomYear()
+    /**
+     * Generate the %E format for a date.
+     *
+     * @return string
+     */
+    protected function formatGedcomYear(): string
     {
         return sprintf('%04dAUC', $this->y);
     }
 
-    /** {@inheritdoc} */
-    protected function formatLongYear()
+    /**
+     * Generate the %Y format for a date.
+     *
+     * @return string
+     */
+    protected function formatLongYear(): string
     {
         return $this->y . 'AUC';
     }

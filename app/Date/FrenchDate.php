@@ -63,7 +63,7 @@ class FrenchDate extends CalendarDate
      *
      * @return string
      */
-    public static function monthNameNominativeCase($month_number, $leap_year)
+    public static function monthNameNominativeCase(int $month_number, bool $leap_year): string
     {
         static $translated_month_names;
 
@@ -111,7 +111,7 @@ class FrenchDate extends CalendarDate
      *
      * @return string
      */
-    protected function monthNameGenitiveCase($month_number, $leap_year)
+    protected function monthNameGenitiveCase(int $month_number, bool $leap_year): string
     {
         static $translated_month_names;
 
@@ -158,7 +158,7 @@ class FrenchDate extends CalendarDate
      *
      * @return string
      */
-    protected function monthNameLocativeCase($month_number, $leap_year)
+    protected function monthNameLocativeCase(int $month_number, bool $leap_year): string
     {
         static $translated_month_names;
 
@@ -205,7 +205,7 @@ class FrenchDate extends CalendarDate
      *
      * @return string
      */
-    protected function monthNameInstrumentalCase($month_number, $leap_year)
+    protected function monthNameInstrumentalCase(int $month_number, bool $leap_year): string
     {
         static $translated_month_names;
 
@@ -252,7 +252,7 @@ class FrenchDate extends CalendarDate
      *
      * @return string
      */
-    protected function monthNameAbbreviated($month_number, $leap_year)
+    protected function monthNameAbbreviated(int $month_number, bool $leap_year): string
     {
         return self::monthNameNominativeCase($month_number, $leap_year);
     }
@@ -264,7 +264,7 @@ class FrenchDate extends CalendarDate
      *
      * @return string
      */
-    public function dayNames($day_number)
+    public function dayNames(int $day_number): string
     {
         static $translated_day_names;
 
@@ -303,7 +303,7 @@ class FrenchDate extends CalendarDate
      *
      * @return string
      */
-    protected function dayNamesAbbreviated($day_number)
+    protected function dayNamesAbbreviated(int $day_number): string
     {
         return $this->dayNames($day_number);
     }
@@ -313,7 +313,7 @@ class FrenchDate extends CalendarDate
      *
      * @return string
      */
-    protected function formatLongYear()
+    protected function formatLongYear(): string
     {
         return $this->numberToRomanNumerals($this->y);
     }

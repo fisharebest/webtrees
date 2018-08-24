@@ -175,13 +175,15 @@ class CalendarDate
      *
      * @return bool
      */
-    public function isLeapYear()
+    public function isLeapYear(): bool
     {
         return $this->calendar->isLeapYear($this->y);
     }
 
     /**
      * Set the object’s Julian day number from a potentially incomplete year/month/day
+     *
+     * @return void
      */
     public function setJdFromYmd()
     {
@@ -211,7 +213,7 @@ class CalendarDate
      *
      * @return string
      */
-    public static function monthNameNominativeCase($month_number, $leap_year)
+    public static function monthNameNominativeCase(int $month_number, bool $leap_year): string
     {
         static $translated_month_names;
 
@@ -246,7 +248,7 @@ class CalendarDate
      *
      * @return string
      */
-    protected function monthNameGenitiveCase($month_number, $leap_year)
+    protected function monthNameGenitiveCase(int $month_number, bool $leap_year): string
     {
         static $translated_month_names;
 
@@ -281,7 +283,7 @@ class CalendarDate
      *
      * @return string
      */
-    protected function monthNameLocativeCase($month_number, $leap_year)
+    protected function monthNameLocativeCase(int $month_number, bool $leap_year): string
     {
         static $translated_month_names;
 
@@ -316,7 +318,7 @@ class CalendarDate
      *
      * @return string
      */
-    protected function monthNameInstrumentalCase($month_number, $leap_year)
+    protected function monthNameInstrumentalCase(int $month_number, bool $leap_year): string
     {
         static $translated_month_names;
 
@@ -349,7 +351,7 @@ class CalendarDate
      *
      * @return string
      */
-    protected function monthNameAbbreviated($month_number, $leap_year)
+    protected function monthNameAbbreviated(int $month_number, bool $leap_year): string
     {
         static $translated_month_names;
 
@@ -381,7 +383,7 @@ class CalendarDate
      *
      * @return string
      */
-    public function dayNames($day_number)
+    public function dayNames(int $day_number): string
     {
         static $translated_day_names;
 
@@ -407,7 +409,7 @@ class CalendarDate
      *
      * @return string
      */
-    protected function dayNamesAbbreviated($day_number)
+    protected function dayNamesAbbreviated(int $day_number): string
     {
         static $translated_day_names;
 
@@ -440,7 +442,7 @@ class CalendarDate
      *
      * @return int
      */
-    protected function nextYear($year)
+    protected function nextYear(int $year): int
     {
         return $year + 1;
     }
@@ -452,9 +454,9 @@ class CalendarDate
      *
      * @return int
      */
-    protected function extractYear($year)
+    protected function extractYear(string $year): int
     {
-        return (int)$year;
+        return (int) $year;
     }
 
     /**
@@ -465,7 +467,7 @@ class CalendarDate
      *
      * @return int
      */
-    public static function compare(CalendarDate $d1, CalendarDate $d2)
+    public static function compare(CalendarDate $d1, CalendarDate $d2): int
     {
         if ($d1->maxJD < $d2->minJD) {
             return -1;
@@ -489,7 +491,7 @@ class CalendarDate
      *
      * @return string
      */
-    public function getAge($full, $jd, $warn_on_negative)
+    public function getAge(bool $full, int $jd, bool $warn_on_negative): string
     {
         if ($this->y == 0 || $jd == 0) {
             return $full ? '' : '0';
@@ -516,7 +518,7 @@ class CalendarDate
         }
         // Not a full age? Then just the years
         if (!$full) {
-            return $dy;
+            return (string) $dy;
         }
         // Age in years?
         if ($dy > 1) {
@@ -539,7 +541,7 @@ class CalendarDate
      *
      * @return CalendarDate
      */
-    public function convertToCalendar($calendar)
+    public function convertToCalendar(string $calendar): CalendarDate
     {
         switch ($calendar) {
             case 'gregorian':
@@ -564,7 +566,7 @@ class CalendarDate
      *
      * @return bool
      */
-    public function inValidRange()
+    public function inValidRange(): bool
     {
         return $this->minJD >= $this->calendar->jdStart() && $this->maxJD <= $this->calendar->jdEnd();
     }
@@ -574,7 +576,7 @@ class CalendarDate
      *
      * @return int
      */
-    public function monthsInYear()
+    public function monthsInYear(): int
     {
         return $this->calendar->monthsInYear();
     }
@@ -584,7 +586,7 @@ class CalendarDate
      *
      * @return int
      */
-    public function daysInMonth()
+    public function daysInMonth(): int
     {
         try {
             return $this->calendar->daysInMonth($this->y, $this->m);
@@ -602,7 +604,7 @@ class CalendarDate
      *
      * @return int
      */
-    public function daysInWeek()
+    public function daysInWeek(): int
     {
         return $this->calendar->daysInWeek();
     }
@@ -615,7 +617,7 @@ class CalendarDate
      *
      * @return string
      */
-    public function format($format, $qualifier = '')
+    public function format(string $format, string $qualifier = ''): string
     {
         // Don’t show exact details for inexact dates
         if (!$this->d) {
@@ -709,10 +711,10 @@ class CalendarDate
                     $format = str_replace($match, $this->formatMonth(), $format);
                     break;
                 case '%t':
-                    $format = str_replace($match, $this->daysInMonth(), $format);
+                    $format = str_replace($match, (string) $this->daysInMonth(), $format);
                     break;
                 case '%L':
-                    $format = str_replace($match, (int)$this->isLeapYear(), $format);
+                    $format = str_replace($match, $this->isLeapYear() ? '1' : '0', $format);
                     break;
                 case '%Y':
                     $format = str_replace($match, $this->formatLongYear(), $format);
@@ -744,7 +746,7 @@ class CalendarDate
      *
      * @return string
      */
-    protected function formatDayZeros()
+    protected function formatDayZeros(): string
     {
         if ($this->d > 9) {
             return I18N::digits($this->d);
@@ -758,7 +760,7 @@ class CalendarDate
      *
      * @return string
      */
-    protected function formatDay()
+    protected function formatDay(): string
     {
         return I18N::digits($this->d);
     }
@@ -768,7 +770,7 @@ class CalendarDate
      *
      * @return string
      */
-    protected function formatLongWeekday()
+    protected function formatLongWeekday(): string
     {
         return $this->dayNames($this->minJD % $this->calendar->daysInWeek());
     }
@@ -778,7 +780,7 @@ class CalendarDate
      *
      * @return string
      */
-    protected function formatShortWeekday()
+    protected function formatShortWeekday(): string
     {
         return $this->dayNamesAbbreviated($this->minJD % $this->calendar->daysInWeek());
     }
@@ -788,7 +790,7 @@ class CalendarDate
      *
      * @return string
      */
-    protected function formatIsoWeekday()
+    protected function formatIsoWeekday(): string
     {
         return I18N::digits($this->minJD % 7 + 1);
     }
@@ -798,7 +800,7 @@ class CalendarDate
      *
      * @return string
      */
-    protected function formatNumericWeekday()
+    protected function formatNumericWeekday(): string
     {
         return I18N::digits(($this->minJD + 1) % $this->calendar->daysInWeek());
     }
@@ -808,7 +810,7 @@ class CalendarDate
      *
      * @return string
      */
-    protected function formatDayOfYear()
+    protected function formatDayOfYear(): string
     {
         return I18N::digits($this->minJD - $this->calendar->ymdToJd($this->y, 1, 1));
     }
@@ -818,7 +820,7 @@ class CalendarDate
      *
      * @return string
      */
-    protected function formatMonth()
+    protected function formatMonth(): string
     {
         return I18N::digits($this->m);
     }
@@ -828,7 +830,7 @@ class CalendarDate
      *
      * @return string
      */
-    protected function formatMonthZeros()
+    protected function formatMonthZeros(): string
     {
         if ($this->m > 9) {
             return I18N::digits($this->m);
@@ -844,7 +846,7 @@ class CalendarDate
      *
      * @return string
      */
-    protected function formatLongMonth($case = 'NOMINATIVE')
+    protected function formatLongMonth($case = 'NOMINATIVE'): string
     {
         switch ($case) {
             case 'GENITIVE':
@@ -865,7 +867,7 @@ class CalendarDate
      *
      * @return string
      */
-    protected function formatShortMonth()
+    protected function formatShortMonth(): string
     {
         return $this->monthNameAbbreviated($this->m, $this->isLeapYear());
     }
@@ -877,7 +879,7 @@ class CalendarDate
      *
      * @return string
      */
-    protected function formatShortYear()
+    protected function formatShortYear(): string
     {
         return $this->formatLongYear();
     }
@@ -887,7 +889,7 @@ class CalendarDate
      *
      * @return string
      */
-    protected function formatGedcomDay()
+    protected function formatGedcomDay(): string
     {
         if ($this->d == 0) {
             return '';
@@ -901,7 +903,7 @@ class CalendarDate
      *
      * @return string
      */
-    protected function formatGedcomMonth()
+    protected function formatGedcomMonth(): string
     {
         // Our simple lookup table doesn't work correctly for Adar on leap years
         if ($this->m == 7 && $this->calendar instanceof JewishCalendar && !$this->calendar->isLeapYear($this->y)) {
@@ -916,7 +918,7 @@ class CalendarDate
      *
      * @return string
      */
-    protected function formatGedcomYear()
+    protected function formatGedcomYear(): string
     {
         if ($this->y == 0) {
             return '';
@@ -930,7 +932,7 @@ class CalendarDate
      *
      * @return string
      */
-    protected function formatLongYear()
+    protected function formatLongYear(): string
     {
         return I18N::digits($this->y);
     }
@@ -940,7 +942,7 @@ class CalendarDate
      *
      * @return int[]
      */
-    protected function nextMonth()
+    protected function nextMonth(): array
     {
         return [
             $this->m === $this->calendar->monthsInYear() ? $this->nextYear($this->y) : $this->y,
@@ -955,7 +957,7 @@ class CalendarDate
      *
      * @return string
      */
-    protected function numberToRomanNumerals($number)
+    protected function numberToRomanNumerals($number): string
     {
         if ($number < 1) {
             // Cannot convert zero/negative numbers
@@ -979,7 +981,7 @@ class CalendarDate
      *
      * @return int
      */
-    protected function romanNumeralsToNumber($roman)
+    protected function romanNumeralsToNumber($roman): int
     {
         $num = 0;
         foreach (self::$roman_numerals as $key => $value) {
@@ -997,7 +999,7 @@ class CalendarDate
      *
      * @return int[]
      */
-    public function todayYmd()
+    public function todayYmd(): array
     {
         return $this->calendar->jdToYmd(unixtojd());
     }
@@ -1007,7 +1009,7 @@ class CalendarDate
      *
      * @return CalendarDate
      */
-    public function today()
+    public function today(): CalendarDate
     {
         $tmp    = clone $this;
         $ymd    = $tmp->todayYmd();
@@ -1026,7 +1028,7 @@ class CalendarDate
      *
      * @return string
      */
-    public function calendarUrl($date_format)
+    public function calendarUrl(string $date_format): string
     {
         if (strpbrk($date_format, 'dDj') && $this->d) {
             // If the format includes a day, and the date also includes a day, then use the day view

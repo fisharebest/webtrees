@@ -48,7 +48,7 @@ class JulianDate extends CalendarDate
      *
      * @return int
      */
-    protected function nextYear($year)
+    protected function nextYear(int $year): int
     {
         if ($year == -1) {
             return 1;
@@ -64,7 +64,7 @@ class JulianDate extends CalendarDate
      *
      * @return int
      */
-    protected function extractYear($year)
+    protected function extractYear(string $year): int
     {
         if (preg_match('/^(\d\d\d\d)\/\d{1,4}$/', $year, $match)) {
             // Assume the first year is correct
@@ -74,7 +74,7 @@ class JulianDate extends CalendarDate
         } elseif (preg_match('/^(\d+) B\.C\.$/', $year, $match)) {
             return -$match[1];
         } else {
-            return (int)$year;
+            return (int) $year;
         }
     }
 
@@ -83,7 +83,7 @@ class JulianDate extends CalendarDate
      *
      * @return string
      */
-    protected function formatLongYear()
+    protected function formatLongYear(): string
     {
         if ($this->y < 0) {
             return /*  I18N: BCE=Before the Common Era, for Julian years < 0. See http://en.wikipedia.org/wiki/Common_Era */
@@ -103,7 +103,7 @@ class JulianDate extends CalendarDate
      *
      * @return string
      */
-    protected function formatGedcomYear()
+    protected function formatGedcomYear(): string
     {
         if ($this->y < 0) {
             return sprintf('%04d B.C.', -$this->y);
