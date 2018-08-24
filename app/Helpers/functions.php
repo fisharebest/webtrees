@@ -16,6 +16,7 @@
 declare(strict_types=1);
 
 use Fisharebest\Webtrees\Html;
+use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\View;
 
@@ -83,3 +84,16 @@ function view(string $name, array $data = [])
 {
     return View::make($name, $data);
 }
+
+/**
+ * Translate a string.
+ *
+ * @param array $args Variable list of function arguments
+ *
+ * @return string
+ */
+function __(...$args): string
+{
+    return I18N::translate(...$args);
+}
+
