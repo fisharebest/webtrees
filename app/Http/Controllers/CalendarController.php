@@ -26,10 +26,10 @@ use Fisharebest\Webtrees\Date\JewishDate;
 use Fisharebest\Webtrees\Date\JulianDate;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
-use Fisharebest\Webtrees\Functions\FunctionsDb;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Services\CalendarService;
 use Fisharebest\Webtrees\Services\LocalizationService;
 use Fisharebest\Webtrees\Tree;
 use Symfony\Component\HttpFoundation\Request;
@@ -168,12 +168,13 @@ class CalendarController extends AbstractBaseController
     /**
      * Show anniveraries that occured on a given day/month/year.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param Request         $request
+     * @param Tree            $tree
+     * @param CalendarService $calendar_service
      *
      * @return Response
      */
-    public function calendar(Request $request, Tree $tree): Response
+    public function calendar(Request $request, Tree $tree, CalendarService $calendar_service): Response
     {
         $CALENDAR_FORMAT = $tree->getPreference('CALENDAR_FORMAT');
 
@@ -249,7 +250,7 @@ class CalendarController extends AbstractBaseController
 
         switch ($view) {
             case 'day':
-                $found_facts = $this->applyFilter(FunctionsDb::getAnniversaryEvents($cal_date->minJD, $filterev, $tree), $filterof, $filtersx);
+                $found_facts = $this->applyFilter($calendar_service->getAnniversaryEvents($cal_date->minJD, $filterev, $tree), $filterof, $filtersx);
                 break;
             case 'month':
                 $cal_date->d = 0;
@@ -260,7 +261,7 @@ class CalendarController extends AbstractBaseController
                 }
                 // Fetch events for each day
                 for ($jd = $cal_date->minJD; $jd <= $cal_date->maxJD; ++$jd) {
-                    foreach ($this->applyFilter(FunctionsDb::getAnniversaryEvents($jd, $filterev, $tree), $filterof, $filtersx) as $fact) {
+                    foreach ($this->applyFilter($calendar_service->getAnniversaryEvents($jd, $filterev, $tree), $filterof, $filtersx) as $fact) {
                         $tmp = $fact->getDate()->minimumDate();
                         if ($tmp->d >= 1 && $tmp->d <= $tmp->daysInMonth()) {
                             // If the day is valid (for its own calendar), display it in the
@@ -276,7 +277,7 @@ class CalendarController extends AbstractBaseController
             case 'year':
                 $cal_date->m = 0;
                 $cal_date->setJdFromYmd();
-                $found_facts = $this->applyFilter(FunctionsDb::getCalendarEvents($ged_date->minimumJulianDay(), $ged_date->maximumJulianDay(), $filterev, $tree), $filterof, $filtersx);
+                $found_facts = $this->applyFilter($calendar_service->getCalendarEvents($ged_date->minimumJulianDay(), $ged_date->maximumJulianDay(), $filterev, $tree), $filterof, $filtersx);
                 // Eliminate duplicates (e.g. BET JUL 1900 AND SEP 1900 will appear twice in 1900)
                 $found_facts = array_unique($found_facts);
                 break;

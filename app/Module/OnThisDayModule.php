@@ -17,9 +17,9 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Filter;
-use Fisharebest\Webtrees\Functions\FunctionsDb;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Services\CalendarService;
 use Fisharebest\Webtrees\Tree;
 
 /**
@@ -103,6 +103,8 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface
     {
         global $ctype;
 
+        $calendar_service = new CalendarService();
+
         $default_events = implode(',', self::DEFAULT_EVENTS);
 
         $filter    = (bool)$this->getBlockSetting($block_id, 'filter', '1');
@@ -125,7 +127,7 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface
         $startjd = WT_CLIENT_JD;
         $endjd   = WT_CLIENT_JD;
 
-        $facts = FunctionsDb::getEventsList($startjd, $endjd, $events_filter, $filter, $sortStyle, $tree);
+        $facts = $calendar_service->getEventsList($startjd, $endjd, $events_filter, $filter, $sortStyle, $tree);
 
         if (empty($facts)) {
             $content = view('modules/todays_events/empty');

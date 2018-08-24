@@ -18,7 +18,6 @@ namespace Fisharebest\Webtrees\Services;
 use Exception;
 use Fisharebest\Webtrees\Database;
 use League\Flysystem\Filesystem;
-use const WT_TIMESTAMP;
 
 /**
  * Clean up old data, files and folders.

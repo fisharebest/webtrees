@@ -17,9 +17,9 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Filter;
-use Fisharebest\Webtrees\Functions\FunctionsDb;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Services\CalendarService;
 use Fisharebest\Webtrees\Tree;
 
 /**
@@ -113,6 +113,8 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
     {
         global $ctype;
 
+        $calendar_service = new CalendarService();
+
         $default_events = implode(',', self::DEFAULT_EVENTS);
 
         $days      = $this->getBlockSetting($block_id, 'days', self::DEFAULT_DAYS);
@@ -136,7 +138,7 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
         $startjd = WT_CLIENT_JD + 1;
         $endjd   = WT_CLIENT_JD + (int)$days;
 
-        $facts = FunctionsDb::getEventsList($startjd, $endjd, $events_filter, $filter, $sortStyle, $tree);
+        $facts = $calendar_service->getEventsList($startjd, $endjd, $events_filter, $filter, $sortStyle, $tree);
 
         if (empty($facts)) {
             if ($endjd == $startjd) {

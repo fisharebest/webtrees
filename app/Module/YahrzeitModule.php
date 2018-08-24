@@ -21,8 +21,8 @@ use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Date\GregorianDate;
 use Fisharebest\Webtrees\Date\JewishDate;
 use Fisharebest\Webtrees\Filter;
-use Fisharebest\Webtrees\Functions\FunctionsDb;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Services\CalendarService;
 use Fisharebest\Webtrees\Tree;
 
 /**
@@ -66,6 +66,8 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface
     {
         global $ctype;
 
+        $calendar_service = new CalendarService();
+
         $days      = (int)$this->getBlockSetting($block_id, 'days', self::DEFAULT_DAYS);
         $infoStyle = $this->getBlockSetting($block_id, 'infoStyle', self::DEFAULT_STYLE);
         $calendar  = $this->getBlockSetting($block_id, 'calendar', self::DEFAULT_CALENDAR);
@@ -81,7 +83,7 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface
         // Fetch normal anniversaries, with an extra day before/after
         $yahrzeits = [];
         for ($jd = $startjd - 1; $jd <= $endjd + $days; ++$jd) {
-            foreach (FunctionsDb::getAnniversaryEvents($jd, 'DEAT _YART', $tree) as $fact) {
+            foreach ($calendar_service->getAnniversaryEvents($jd, 'DEAT _YART', $tree) as $fact) {
                 // Exact hebrew dates only
                 $date = $fact->getDate();
                 if ($date->minimumDate() instanceof JewishDate && $date->minimumJulianDay() === $date->maximumJulianDay()) {
