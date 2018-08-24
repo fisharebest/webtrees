@@ -645,7 +645,6 @@ class Functions
     public static function getRelationshipNameFromPath($path, Individual $person1 = null, Individual $person2 = null)
     {
         if (!preg_match('/^(mot|fat|par|hus|wif|spo|son|dau|chi|bro|sis|sib)*$/', $path)) {
-            // TODO: Update all the “3 RELA ” values in class_person
             return '<span class="error">' . $path . '</span>';
         }
         // The path does not include the starting person. In some languages, the
@@ -2225,17 +2224,5 @@ class Functions
         $query_string = substr($query_string, strlen($separator)); // Remove leading “&amp;”
 
         return 'index.php?' . $query_string;
-    }
-
-    /**
-     * Determines whether the passed in filename is a link to an external source (i.e. contains “://”)
-     *
-     * @param string $file
-     *
-     * @return bool
-     */
-    public static function isFileExternal($file)
-    {
-        return strpos($file, '://') !== false;
     }
 }
