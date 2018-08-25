@@ -21,6 +21,7 @@
 	"require": {
 		"ext-gd": "*",
 		"ext-iconv": "*",
+		"ext-json": "*",
 		"ext-pcre": "*",
 		"ext-pdo": "*",
 		"ext-pdo_mysql": "*",
