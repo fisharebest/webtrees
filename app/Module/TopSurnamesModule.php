@@ -17,10 +17,10 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
-use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Class TopSurnamesModule
@@ -28,7 +28,7 @@ use Fisharebest\Webtrees\Tree;
 class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
 {
     // Default values for new blocks.
-    const DEFAULT_NUMBER = 10;
+    const DEFAULT_NUMBER = '10';
     const DEFAULT_STYLE  = 'table';
 
     /**
@@ -173,6 +173,20 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
     }
 
     /**
+     * Update the configuration for a block.
+     *
+     * @param Request $request
+     * @param int     $block_id
+     *
+     * @return void
+     */
+    public function saveBlockConfiguration(Request $request, int $block_id)
+    {
+        $this->setBlockSetting($block_id, 'num', $request->get('num', self::DEFAULT_NUMBER));
+        $this->setBlockSetting($block_id, 'infoStyle', $request->get('infoStyle', self::DEFAULT_STYLE));
+    }
+
+    /**
      * An HTML form to edit block settings
      *
      * @param Tree $tree
@@ -180,15 +194,8 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
      *
      * @return void
      */
-    public function configureBlock(Tree $tree, int $block_id)
+    public function editBlockConfiguration(Tree $tree, int $block_id)
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $this->setBlockSetting($block_id, 'num', Filter::postInteger('num', 1, 10000, 10));
-            $this->setBlockSetting($block_id, 'infoStyle', Filter::post('infoStyle', 'list|array|table|tagcloud', self::DEFAULT_STYLE));
-
-            return;
-        }
-
         $num       = $this->getBlockSetting($block_id, 'num', self::DEFAULT_NUMBER);
         $infoStyle = $this->getBlockSetting($block_id, 'infoStyle', self::DEFAULT_STYLE);
 

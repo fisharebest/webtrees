@@ -472,7 +472,7 @@ class EditGedcomRecordController extends AbstractEditController
         /** @var CensusAssistantModule $census_assistant */
         $census_assistant = Module::getModuleByName('GEDFact_assistant');
         if ($census_assistant !== null && $record instanceof Individual) {
-            $newged = $census_assistant->updateCensusAssistant($record, $fact_id, $newged, $keep_chan);
+            $newged = $census_assistant->updateCensusAssistant($request, $record, $fact_id, $newged, $keep_chan);
         }
 
         $record->updateFact($fact_id, $newged, !$keep_chan);

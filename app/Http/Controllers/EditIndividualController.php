@@ -283,12 +283,12 @@ class EditIndividualController extends AbstractEditController
         $this->splitSource(); // separate SOUR record from the rest
 
         $gedcom = '0 @NEW@ INDI';
-        $gedcom .= $this->addNewName($tree);
-        $gedcom .= $this->addNewSex();
+        $gedcom .= $this->addNewName($request, $tree);
+        $gedcom .= $this->addNewSex($request);
         $gedcom .= "\n" . GedcomCodePedi::createNewFamcPedi($PEDI, $family->getXref());
         if (preg_match_all('/([A-Z0-9_]+)/', $tree->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
             foreach ($matches[1] as $match) {
-                $gedcom .= $this->addNewFact($tree, $match);
+                $gedcom .= $this->addNewFact($request, $tree, $match);
             }
         }
         if ((bool)$request->get('SOUR_INDI')) {
@@ -376,11 +376,11 @@ class EditIndividualController extends AbstractEditController
         $this->splitSource(); // separate SOUR record from the rest
 
         $gedcom = '0 @NEW@ INDI';
-        $gedcom .= $this->addNewName($tree);
-        $gedcom .= $this->addNewSex();
+        $gedcom .= $this->addNewName($request, $tree);
+        $gedcom .= $this->addNewSex($request);
         if (preg_match_all('/([A-Z0-9_]+)/', $tree->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
             foreach ($matches[1] as $match) {
-                $gedcom .= $this->addNewFact($tree, $match);
+                $gedcom .= $this->addNewFact($request, $tree, $match);
             }
         }
         if ((bool)$request->get('SOUR_INDI')) {
@@ -467,11 +467,11 @@ class EditIndividualController extends AbstractEditController
 
         $this->splitSource();
         $indi_gedcom = '0 @REF@ INDI';
-        $indi_gedcom .= $this->addNewName($tree);
-        $indi_gedcom .= $this->addNewSex();
+        $indi_gedcom .= $this->addNewName($request, $tree);
+        $indi_gedcom .= $this->addNewSex($request);
         if (preg_match_all('/([A-Z0-9_]+)/', $tree->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
             foreach ($matches[1] as $match) {
-                $indi_gedcom .= $this->addNewFact($tree, $match);
+                $indi_gedcom .= $this->addNewFact($request, $tree, $match);
             }
         }
         if ((bool)$request->get('SOUR_INDI')) {
@@ -483,7 +483,7 @@ class EditIndividualController extends AbstractEditController
         $fam_gedcom = '';
         if (preg_match_all('/([A-Z0-9_]+)/', $tree->getPreference('QUICK_REQUIRED_FAMFACTS'), $matches)) {
             foreach ($matches[1] as $match) {
-                $fam_gedcom .= $this->addNewFact($tree, $match);
+                $fam_gedcom .= $this->addNewFact($request, $tree, $match);
             }
         }
         if ((bool)$request->get('SOUR_FAM')) {
@@ -553,11 +553,11 @@ class EditIndividualController extends AbstractEditController
 
         $this->splitSource();
         $gedrec = '0 @REF@ INDI';
-        $gedrec .= $this->addNewName($tree);
-        $gedrec .= $this->addNewSex();
+        $gedrec .= $this->addNewName($request, $tree);
+        $gedrec .= $this->addNewSex($request);
         if (preg_match_all('/([A-Z0-9_]+)/', $tree->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
             foreach ($matches[1] as $match) {
-                $gedrec .= $this->addNewFact($tree, $match);
+                $gedrec .= $this->addNewFact($request, $tree, $match);
             }
         }
         if ((bool)$request->get('SOUR_INDI')) {
@@ -791,7 +791,7 @@ class EditIndividualController extends AbstractEditController
             $gedcom = "0 @new@ FAM\n1 WIFE @" . $individual->getXref() . "@\n1 HUSB @" . $spouse->getXref() . '@';
         }
 
-        $gedcom .= $this->addNewFact($tree, 'MARR');
+        $gedcom .= $this->addNewFact($request, $tree, 'MARR');
 
         $family = $tree->createRecord($gedcom);
 

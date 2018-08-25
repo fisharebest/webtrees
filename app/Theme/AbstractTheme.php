@@ -18,7 +18,6 @@ namespace Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Fact;
-use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
@@ -40,6 +39,7 @@ use Fisharebest\Webtrees\Module\RelationshipsChartModule;
 use Fisharebest\Webtrees\Module\StatisticsChartModule;
 use Fisharebest\Webtrees\Module\TimelineChartModule;
 use Fisharebest\Webtrees\Module\UserFavoritesModule;
+use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
@@ -1072,9 +1072,9 @@ abstract class AbstractTheme
      */
     public function menuChangeBlocks()
     {
-        if (Auth::check() && Filter::get('route') === 'user-page') {
+        if (Auth::check() && $this->request->get('route') === 'user-page') {
             return new Menu(I18N::translate('Customize this page'), route('user-page-edit', ['ged' => $this->tree->getName()]), 'menu-change-blocks');
-        } elseif (Auth::isManager($this->tree) && Filter::get('route') === 'tree-page') {
+        } elseif (Auth::isManager($this->tree) && $this->request->get('route') === 'tree-page') {
             return new Menu(I18N::translate('Customize this page'), route('tree-page-edit', ['ged' => $this->tree->getName()]), 'menu-change-blocks');
         } else {
             return null;
@@ -1874,7 +1874,7 @@ abstract class AbstractTheme
      */
     protected function metaCsrf()
     {
-        return '<meta name="csrf" content="' . e(Filter::getCsrfToken()) . '">';
+        return '<meta name="csrf" content="' . e(Session::getCsrfToken()) . '">';
     }
 
     /**

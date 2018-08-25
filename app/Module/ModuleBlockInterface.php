@@ -18,6 +18,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Tree;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Interface ModuleBlockInterface - Classes and libraries for module system
@@ -68,5 +69,15 @@ interface ModuleBlockInterface
      *
      * @return void
      */
-    public function configureBlock(Tree $tree, int $block_id);
+    public function editBlockConfiguration(Tree $tree, int $block_id);
+
+    /**
+     * Update the configuration for a block.
+     *
+     * @param Request $request
+     * @param int     $block_id
+     *
+     * @return void
+     */
+    public function saveBlockConfiguration(Request $request, int $block_id);
 }

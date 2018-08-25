@@ -16,11 +16,11 @@
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\CalendarService;
 use Fisharebest\Webtrees\Tree;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Class UpcomingAnniversariesModule
@@ -206,6 +206,23 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
     }
 
     /**
+     * Update the configuration for a block.
+     *
+     * @param Request $request
+     * @param int     $block_id
+     *
+     * @return void
+     */
+    public function saveBlockConfiguration(Request $request, int $block_id)
+    {
+        $this->setBlockSetting($block_id, 'days', $request->get('days', self::DEFAULT_DAYS));
+        $this->setBlockSetting($block_id, 'filter', $request->get('filter', ''));
+        $this->setBlockSetting($block_id, 'infoStyle', $request->get('infoStyle', self::DEFAULT_STYLE));
+        $this->setBlockSetting($block_id, 'sortStyle', $request->get('sortStyle', self::DEFAULT_SORT));
+        $this->setBlockSetting($block_id, 'events', implode(',', (array) $request->get('events')));
+    }
+
+    /**
      * An HTML form to edit block settings
      *
      * @param Tree $tree
@@ -213,18 +230,8 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
      *
      * @return void
      */
-    public function configureBlock(Tree $tree, int $block_id)
+    public function editBlockConfiguration(Tree $tree, int $block_id)
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $this->setBlockSetting($block_id, 'days', Filter::postInteger('days', self::MIN_DAYS, self::MAX_DAYS, self::DEFAULT_DAYS));
-            $this->setBlockSetting($block_id, 'filter', Filter::postBool('filter'));
-            $this->setBlockSetting($block_id, 'infoStyle', Filter::post('infoStyle', 'list|table', self::DEFAULT_STYLE));
-            $this->setBlockSetting($block_id, 'sortStyle', Filter::post('sortStyle', 'alpha|anniv', self::DEFAULT_SORT));
-            $this->setBlockSetting($block_id, 'events', implode(',', Filter::postArray('events')));
-
-            return;
-        }
-
         $default_events = implode(',', self::DEFAULT_EVENTS);
 
         $days      = $this->getBlockSetting($block_id, 'days', self::DEFAULT_DAYS);

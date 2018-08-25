@@ -16,10 +16,10 @@
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Stats;
 use Fisharebest\Webtrees\Tree;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Class TopGivenNamesModule
@@ -151,6 +151,20 @@ class TopGivenNamesModule extends AbstractModule implements ModuleBlockInterface
     }
 
     /**
+     * Update the configuration for a block.
+     *
+     * @param Request $request
+     * @param int     $block_id
+     *
+     * @return void
+     */
+    public function saveBlockConfiguration(Request $request, int $block_id)
+    {
+        $this->setBlockSetting($block_id, 'num', $request->get('num', '10'));
+        $this->setBlockSetting($block_id, 'infoStyle', $request->get('infoStyle', 'table'));
+    }
+
+    /**
      * An HTML form to edit block settings
      *
      * @param Tree $tree
@@ -158,15 +172,8 @@ class TopGivenNamesModule extends AbstractModule implements ModuleBlockInterface
      *
      * @return void
      */
-    public function configureBlock(Tree $tree, int $block_id)
+    public function editBlockConfiguration(Tree $tree, int $block_id)
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $this->setBlockSetting($block_id, 'num', Filter::postInteger('num', 1, 10000, 10));
-            $this->setBlockSetting($block_id, 'infoStyle', Filter::post('infoStyle', 'list|table', 'table'));
-
-            return;
-        }
-
         $num       = $this->getBlockSetting($block_id, 'num', '10');
         $infoStyle = $this->getBlockSetting($block_id, 'infoStyle', 'table');
 

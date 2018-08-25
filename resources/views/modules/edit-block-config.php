@@ -13,7 +13,7 @@
 	<input type="hidden" name="save" value="1">
 	<?= csrf_field() ?>
 
-	<?= $block->configureBlock($tree, $block_id) ?>
+	<?= $block->editBlockConfiguration($tree, $block_id) ?>
 
 	<div class="row form-group">
 		<div class="offset-sm-3 col-sm-9">

@@ -16,11 +16,11 @@
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\Functions\FunctionsDate;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Stats;
 use Fisharebest\Webtrees\Tree;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Class HtmlBlockModule
@@ -123,6 +123,24 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface
     }
 
     /**
+     * Update the configuration for a block.
+     *
+     * @param Request $request
+     * @param int     $block_id
+     *
+     * @return void
+     */
+    public function saveBlockConfiguration(Request $request, int $block_id)
+    {
+        $languages = (array) $request->get('lang');
+        $this->setBlockSetting($block_id, 'title', $request->get('title', ''));
+        $this->setBlockSetting($block_id, 'html', $request->get('html', ''));
+        $this->setBlockSetting($block_id, 'show_timestamp', $request->get('show_timestamp', ''));
+        $this->setBlockSetting($block_id, 'timestamp', $request->get('timestamp', ''));
+        $this->setBlockSetting($block_id, 'languages', implode(',', $languages));
+    }
+
+    /**
      * An HTML form to edit block settings
      *
      * @param Tree $tree
@@ -130,19 +148,8 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface
      *
      * @return void
      */
-    public function configureBlock(Tree $tree, int $block_id)
+    public function editBlockConfiguration(Tree $tree, int $block_id)
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $languages = Filter::postArray('lang');
-            $this->setBlockSetting($block_id, 'title', Filter::post('title'));
-            $this->setBlockSetting($block_id, 'html', Filter::post('html'));
-            $this->setBlockSetting($block_id, 'show_timestamp', Filter::postBool('show_timestamp'));
-            $this->setBlockSetting($block_id, 'timestamp', Filter::post('timestamp'));
-            $this->setBlockSetting($block_id, 'languages', implode(',', $languages));
-
-            return;
-        }
-
         $templates = [
             I18N::translate('Keyword examples')      => view('modules/html/template-keywords', []),
             I18N::translate('Narrative description') => view('modules/html/template-narrative', []),

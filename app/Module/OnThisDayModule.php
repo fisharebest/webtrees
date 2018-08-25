@@ -16,11 +16,11 @@
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\CalendarService;
 use Fisharebest\Webtrees\Tree;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Class OnThisDayModule
@@ -187,6 +187,22 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface
     }
 
     /**
+     * Update the configuration for a block.
+     *
+     * @param Request $request
+     * @param int     $block_id
+     *
+     * @return void
+     */
+    public function saveBlockConfiguration(Request $request, int $block_id)
+    {
+        $this->setBlockSetting($block_id, 'filter', $request->get('filter', '1'));
+        $this->setBlockSetting($block_id, 'infoStyle', $request->get('infoStyle', 'table'));
+        $this->setBlockSetting($block_id, 'sortStyle', $request->get('sortStyle', 'alpha'));
+        $this->setBlockSetting($block_id, 'events', implode(',', (array) $request->get('events')));
+    }
+
+    /**
      * An HTML form to edit block settings
      *
      * @param Tree $tree
@@ -194,17 +210,8 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface
      *
      * @return void
      */
-    public function configureBlock(Tree $tree, int $block_id)
+    public function editBlockConfiguration(Tree $tree, int $block_id)
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $this->setBlockSetting($block_id, 'filter', Filter::postBool('filter'));
-            $this->setBlockSetting($block_id, 'infoStyle', Filter::post('infoStyle', 'list|table', 'table'));
-            $this->setBlockSetting($block_id, 'sortStyle', Filter::post('sortStyle', 'alpha|anniv', 'alpha'));
-            $this->setBlockSetting($block_id, 'events', implode(',', Filter::postArray('events')));
-
-            return;
-        }
-
         $default_events = implode(',', self::DEFAULT_EVENTS);
 
         $filter    = $this->getBlockSetting($block_id, 'filter', '1');

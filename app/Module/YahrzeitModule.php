@@ -20,10 +20,10 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Date\GregorianDate;
 use Fisharebest\Webtrees\Date\JewishDate;
-use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\CalendarService;
 use Fisharebest\Webtrees\Tree;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Class YahrzeitModule
@@ -194,6 +194,21 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface
     }
 
     /**
+     * Update the configuration for a block.
+     *
+     * @param Request $request
+     * @param int     $block_id
+     *
+     * @return void
+     */
+    public function saveBlockConfiguration(Request $request, int $block_id)
+    {
+        $this->setBlockSetting($block_id, 'days', $request->get('days', self::DEFAULT_DAYS));
+        $this->setBlockSetting($block_id, 'infoStyle', $request->get('infoStyle', self::DEFAULT_STYLE));
+        $this->setBlockSetting($block_id, 'calendar', $request->get('calendar', self::DEFAULT_CALENDAR));
+    }
+
+    /**
      * An HTML form to edit block settings
      *
      * @param Tree $tree
@@ -201,16 +216,8 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface
      *
      * @return void
      */
-    public function configureBlock(Tree $tree, int $block_id)
+    public function editBlockConfiguration(Tree $tree, int $block_id)
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $this->setBlockSetting($block_id, 'days', Filter::postInteger('days', 1, self::MAX_DAYS, self::DEFAULT_DAYS));
-            $this->setBlockSetting($block_id, 'infoStyle', Filter::post('infoStyle', 'list|table', self::DEFAULT_STYLE));
-            $this->setBlockSetting($block_id, 'calendar', Filter::post('calendar', 'jewish|gregorian', self::DEFAULT_CALENDAR));
-
-            return;
-        }
-
         $calendar  = $this->getBlockSetting($block_id, 'calendar', 'jewish');
         $days      = $this->getBlockSetting($block_id, 'days', self::DEFAULT_DAYS);
         $infoStyle = $this->getBlockSetting($block_id, 'infoStyle', 'table');

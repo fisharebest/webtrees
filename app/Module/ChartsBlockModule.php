@@ -16,12 +16,12 @@
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\Http\Controllers\PedigreeChartController;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module\InteractiveTree\TreeView;
 use Fisharebest\Webtrees\Tree;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Class ChartsBlockModule
@@ -175,6 +175,20 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
     }
 
     /**
+     * Update the configuration for a block.
+     *
+     * @param Request $request
+     * @param int     $block_id
+     *
+     * @return void
+     */
+    public function saveBlockConfiguration(Request $request, int $block_id)
+    {
+        $this->setBlockSetting($block_id, 'type', $request->get('type', 'pedigree'));
+        $this->setBlockSetting($block_id, 'pid', $request->get('pid', ''));
+    }
+
+    /**
      * An HTML form to edit block settings
      *
      * @param Tree $tree
@@ -182,17 +196,10 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
      *
      * @return void
      */
-    public function configureBlock(Tree $tree, int $block_id)
+    public function editBlockConfiguration(Tree $tree, int $block_id)
     {
         $PEDIGREE_ROOT_ID = $tree->getPreference('PEDIGREE_ROOT_ID');
         $gedcomid         = $tree->getUserPreference(Auth::user(), 'gedcomid');
-
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $this->setBlockSetting($block_id, 'type', Filter::post('type', 'pedigree|descendants|hourglass|treenav', 'pedigree'));
-            $this->setBlockSetting($block_id, 'pid', Filter::post('pid', WT_REGEX_XREF));
-
-            return;
-        }
 
         $type = $this->getBlockSetting($block_id, 'type', 'pedigree');
         $pid  = $this->getBlockSetting($block_id, 'pid', Auth::check() ? ($gedcomid ?: $PEDIGREE_ROOT_ID) : $PEDIGREE_ROOT_ID);

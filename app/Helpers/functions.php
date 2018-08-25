@@ -15,8 +15,8 @@
  */
 declare(strict_types=1);
 
-use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\Html;
+use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\View;
 
 /**
@@ -26,7 +26,7 @@ use Fisharebest\Webtrees\View;
  */
 function csrf_field()
 {
-    return '<input type="hidden" name="csrf" value="' . e(Filter::getCsrfToken()) . '">';
+    return '<input type="hidden" name="csrf" value="' . e(Session::getCsrfToken()) . '">';
 }
 
 /**
@@ -36,7 +36,7 @@ function csrf_field()
  */
 function csrf_token()
 {
-    return Filter::getCsrfToken();
+    return \Fisharebest\Webtrees\Session::getCsrfToken();
 }
 
 /**

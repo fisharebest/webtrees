@@ -17,7 +17,6 @@ namespace Fisharebest\Webtrees\Schema;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
-use Fisharebest\Webtrees\Filter;
 
 /**
  * Upgrade the database schema from version 30 to version 31.
@@ -31,7 +30,7 @@ class Migration30 implements MigrationInterface
      */
     public function upgrade()
     {
-        $WEBTREES_EMAIL = 'webtrees-noreply@' . preg_replace('/^www\./i', '', Filter::server('SERVER_NAME'));
+        $WEBTREES_EMAIL = 'webtrees-noreply@' . preg_replace('/^www\./i', '', $_SERVER['SERVER_NAME'] ?? '');
 
         // Default settings for new trees. No defaults for:
         // imported, title, CONTACT_USER_ID, WEBMASTER_USER_ID

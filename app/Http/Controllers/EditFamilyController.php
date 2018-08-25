@@ -147,11 +147,11 @@ class EditFamilyController extends AbstractEditController
 
         $this->splitSource();
         $gedrec = '0 @REF@ INDI';
-        $gedrec .= $this->addNewName($tree);
-        $gedrec .= $this->addNewSex();
+        $gedrec .= $this->addNewName($request, $tree);
+        $gedrec .= $this->addNewSex($request);
         if (preg_match_all('/([A-Z0-9_]+)/', $tree->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
             foreach ($matches[1] as $match) {
-                $gedrec .= $this->addNewFact($tree, $match);
+                $gedrec .= $this->addNewFact($request, $tree, $match);
             }
         }
         $gedrec .= "\n" . GedcomCodePedi::createNewFamcPedi($PEDI, $xref);
@@ -245,11 +245,11 @@ class EditFamilyController extends AbstractEditController
         $this->splitSource(); // separate SOUR record from the rest
 
         $gedrec = '0 @REF@ INDI';
-        $gedrec .= $this->addNewName($tree);
-        $gedrec .= $this->addNewSex();
+        $gedrec .= $this->addNewName($request, $tree);
+        $gedrec .= $this->addNewSex($request);
         if (preg_match_all('/([A-Z0-9_]+)/', $tree->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
             foreach ($matches[1] as $match) {
-                $gedrec .= $this->addNewFact($tree, $match);
+                $gedrec .= $this->addNewFact($request, $tree, $match);
             }
         }
 
@@ -270,7 +270,7 @@ class EditFamilyController extends AbstractEditController
         $famrec = '';
         if (preg_match_all('/([A-Z0-9_]+)/', $tree->getPreference('QUICK_REQUIRED_FAMFACTS'), $matches)) {
             foreach ($matches[1] as $match) {
-                $famrec .= $this->addNewFact($tree, $match);
+                $famrec .= $this->addNewFact($request, $tree, $match);
             }
         }
         if ((bool)$request->get('SOUR_FAM')) {

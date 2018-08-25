@@ -71,10 +71,10 @@ class HomePageController extends AbstractBaseController
      */
     public function treePageBlockUpdate(Request $request, Tree $tree, User $user): RedirectResponse
     {
-        $block_id = (int)$request->get('block_id');
         $block    = $this->treeBlock($request, $user);
+        $block_id = (int) $request->get('block_id');
 
-        $block->configureBlock($tree, $block_id);
+        $block->saveBlockConfiguration($request, $block_id);
 
         return new RedirectResponse(route('tree-page', ['ged' => $tree->getName()]));
     }
@@ -149,10 +149,10 @@ class HomePageController extends AbstractBaseController
      */
     public function userPageBlockUpdate(Request $request, Tree $tree, User $user): RedirectResponse
     {
-        $block_id = (int)$request->get('block_id');
         $block    = $this->userBlock($request, $user);
+        $block_id = (int) $request->get('block_id');
 
-        $block->configureBlock($tree, $block_id);
+        $block->saveBlockConfiguration($request, $block_id);
 
         return new RedirectResponse(route('user-page', ['ged' => $tree->getName()]));
     }

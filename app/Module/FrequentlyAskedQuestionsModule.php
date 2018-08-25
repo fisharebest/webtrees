@@ -16,7 +16,6 @@
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Database;
-use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Tree;
@@ -349,17 +348,17 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
             Database::prepare(
                 "UPDATE `##block` SET gedcom_id = NULLIF(:tree_id, '0'), block_order = :block_order WHERE block_id = :block_id"
             )->execute([
-                'tree_id'     => Filter::postInteger('gedcom_id'),
-                'block_order' => Filter::postInteger('block_order'),
+                'tree_id'     => (int) $request->get('gedcom_id'),
+                'block_order' => (int) $request->get('block_order'),
                 'block_id'    => $block_id,
             ]);
         } else {
             Database::prepare(
                 "INSERT INTO `##block` (gedcom_id, module_name, block_order) VALUES (NULLIF(:tree_id, '0'), :module_name, :block_order)"
             )->execute([
-                'tree_id'     => Filter::postInteger('gedcom_id'),
+                'tree_id'     => (int) $request->get('gedcom_id'),
                 'module_name' => $this->getName(),
-                'block_order' => Filter::postInteger('block_order'),
+                'block_order' => (int) $request->get('block_order'),
             ]);
 
             $block_id = Database::getInstance()->lastInsertId();

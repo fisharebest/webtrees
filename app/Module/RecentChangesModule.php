@@ -17,10 +17,10 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
-use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Class RecentChangesModule
@@ -144,6 +144,22 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
     }
 
     /**
+     * Update the configuration for a block.
+     *
+     * @param Request $request
+     * @param int     $block_id
+     *
+     * @return void
+     */
+    public function saveBlockConfiguration(Request $request, int $block_id)
+    {
+        $this->setBlockSetting($block_id, 'days', $request->get('days', self::DEFAULT_DAYS));
+        $this->setBlockSetting($block_id, 'infoStyle', $request->get('infoStyle', self::DEFAULT_INFO_STYLE));
+        $this->setBlockSetting($block_id, 'sortStyle', $request->get('sortStyle', self::DEFAULT_SORT_STYLE));
+        $this->setBlockSetting($block_id, 'show_user', $request->get('show_user', self::DEFAULT_SHOW_USER));
+    }
+
+    /**
      * An HTML form to edit block settings
      *
      * @param Tree $tree
@@ -151,17 +167,8 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
      *
      * @return void
      */
-   public function configureBlock(Tree $tree, int $block_id)
+    public function editBlockConfiguration(Tree $tree, int $block_id)
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $this->setBlockSetting($block_id, 'days', Filter::postInteger('days', 1, self::MAX_DAYS));
-            $this->setBlockSetting($block_id, 'infoStyle', Filter::post('infoStyle', 'list|table'));
-            $this->setBlockSetting($block_id, 'sortStyle', Filter::post('sortStyle', 'name|date_asc|date_desc'));
-            $this->setBlockSetting($block_id, 'show_user', Filter::postBool('show_user'));
-
-            return;
-        }
-
         $days      = $this->getBlockSetting($block_id, 'days', self::DEFAULT_DAYS);
         $infoStyle = $this->getBlockSetting($block_id, 'infoStyle', self::DEFAULT_INFO_STYLE);
         $sortStyle = $this->getBlockSetting($block_id, 'sortStyle', self::DEFAULT_SORT_STYLE);

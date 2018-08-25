@@ -17,7 +17,6 @@
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Census\CensusInterface;
-use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Tree;
@@ -87,6 +86,7 @@ class CensusAssistantModule extends AbstractModule
     }
 
     /**
+     * @param Request    $request
      * @param Individual $individual
      * @param string     $fact_id
      * @param string     $newged
@@ -94,14 +94,14 @@ class CensusAssistantModule extends AbstractModule
      *
      * @return string
      */
-    public function updateCensusAssistant(Individual $individual, $fact_id, $newged, $keep_chan)
+    public function updateCensusAssistant(Request $request, Individual $individual, $fact_id, $newged, $keep_chan)
     {
-        $ca_title       = Filter::post('ca_title');
-        $ca_place       = Filter::post('ca_place');
-        $ca_citation    = Filter::post('ca_citation');
-        $ca_individuals = Filter::postArray('ca_individuals');
-        $ca_notes       = Filter::post('ca_notes');
-        $ca_census      = Filter::post('ca_census', 'Fisharebest\\\\Webtrees\\\\Census\\\\CensusOf[A-Za-z0-9]+');
+        $ca_title       = $request->get('ca_title', '');
+        $ca_place       = $request->get('ca_place', '');
+        $ca_citation    = $request->get('ca_citation', '');
+        $ca_individuals = (array) $request->get('ca_individuals');
+        $ca_notes       = $request->get('ca_notes', '');
+        $ca_census      = $request->get('ca_census', '');
 
         if ($ca_census !== '' && !empty($ca_individuals)) {
             $census = new $ca_census();

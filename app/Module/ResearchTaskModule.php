@@ -17,10 +17,10 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
-use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Class ResearchTaskModule
@@ -144,6 +144,21 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
     }
 
     /**
+     * Update the configuration for a block.
+     *
+     * @param Request $request
+     * @param int     $block_id
+     *
+     * @return void
+     */
+    public function saveBlockConfiguration(Request $request, int $block_id)
+    {
+        $this->setBlockSetting($block_id, 'show_other', $request->get('show_other', ''));
+        $this->setBlockSetting($block_id, 'show_unassigned', $request->get('show_unassigned', ''));
+        $this->setBlockSetting($block_id, 'show_future', $request->get('show_future', ''));
+    }
+
+    /**
      * An HTML form to edit block settings
      *
      * @param Tree $tree
@@ -151,16 +166,8 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
      *
      * @return void
      */
-    public function configureBlock(Tree $tree, int $block_id)
+    public function editBlockConfiguration(Tree $tree, int $block_id)
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $this->setBlockSetting($block_id, 'show_other', Filter::postBool('show_other'));
-            $this->setBlockSetting($block_id, 'show_unassigned', Filter::postBool('show_unassigned'));
-            $this->setBlockSetting($block_id, 'show_future', Filter::postBool('show_future'));
-
-            return;
-        }
-
         $show_other      = $this->getBlockSetting($block_id, 'show_other', self::DEFAULT_SHOW_OTHER);
         $show_unassigned = $this->getBlockSetting($block_id, 'show_unassigned', self::DEFAULT_SHOW_UNASSIGNED);
         $show_future     = $this->getBlockSetting($block_id, 'show_future', self::DEFAULT_SHOW_FUTURE);

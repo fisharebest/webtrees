@@ -17,7 +17,6 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
-use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\Functions\FunctionsDate;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
@@ -25,6 +24,7 @@ use Fisharebest\Webtrees\Mail;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Class ReviewChangesModule
@@ -186,6 +186,20 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
     }
 
     /**
+     * Update the configuration for a block.
+     *
+     * @param Request $request
+     * @param int     $block_id
+     *
+     * @return void
+     */
+    public function saveBlockConfiguration(Request $request, int $block_id)
+    {
+        $this->setBlockSetting($block_id, 'days', $request->get('num', '1'));
+        $this->setBlockSetting($block_id, 'sendmail', $request->get('sendmail', ''));
+    }
+
+    /**
      * An HTML form to edit block settings
      *
      * @param Tree $tree
@@ -193,15 +207,8 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
      *
      * @return void
      */
-    public function configureBlock(Tree $tree, int $block_id)
+    public function editBlockConfiguration(Tree $tree, int $block_id)
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $this->setBlockSetting($block_id, 'days', Filter::postInteger('num', 1, 180, 1));
-            $this->setBlockSetting($block_id, 'sendmail', Filter::postBool('sendmail'));
-
-            return;
-        }
-
         $sendmail = $this->getBlockSetting($block_id, 'sendmail', '1');
         $days     = $this->getBlockSetting($block_id, 'days', '1');
 

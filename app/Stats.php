@@ -7036,8 +7036,7 @@ class Stats
             $cfg[$v] = implode('=', $bits);
         }
         $block    = $all_blocks[$block];
-        $block_id = Filter::getInteger('block_id');
-        $content  = $block->getBlock($this->tree, $block_id, false, $cfg);
+        $content  = $block->getBlock($this->tree, 0, false, $cfg);
 
         return $content;
     }

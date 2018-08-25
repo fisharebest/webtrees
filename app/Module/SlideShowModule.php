@@ -17,11 +17,11 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
-use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Tree;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Class SlideShowModule
@@ -58,7 +58,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
 
         $filter   = $this->getBlockSetting($block_id, 'filter', 'all');
         $controls = $this->getBlockSetting($block_id, 'controls', '1');
-        $start    = $this->getBlockSetting($block_id, 'start', '0') || Filter::getBool('start');
+        $start    = $this->getBlockSetting($block_id, 'start', '0');
 
         // We can apply the filters using SQL
         // Do not use "ORDER BY RAND()" - it is very slow on large tables. Use PHP::array_rand() instead.
@@ -172,6 +172,39 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
     }
 
     /**
+     * Update the configuration for a block.
+     *
+     * @param Request $request
+     * @param int     $block_id
+     *
+     * @return void
+     */
+    public function saveBlockConfiguration(Request $request, int $block_id)
+    {
+        $this->setBlockSetting($block_id, 'filter', $request->get('filter', 'all'));
+        $this->setBlockSetting($block_id, 'controls', $request->get('controls', ''));
+        $this->setBlockSetting($block_id, 'start', $request->get('start', ''));
+        $this->setBlockSetting($block_id, 'filter_audio', $request->get('filter_audio', ''));
+        $this->setBlockSetting($block_id, 'filter_book', $request->get('filter_book', ''));
+        $this->setBlockSetting($block_id, 'filter_card', $request->get('filter_card', ''));
+        $this->setBlockSetting($block_id, 'filter_certificate', $request->get('filter_certificate', ''));
+        $this->setBlockSetting($block_id, 'filter_coat', $request->get('filter_coat', ''));
+        $this->setBlockSetting($block_id, 'filter_document', $request->get('filter_document', ''));
+        $this->setBlockSetting($block_id, 'filter_electronic', $request->get('filter_electronic', ''));
+        $this->setBlockSetting($block_id, 'filter_fiche', $request->get('filter_fiche', ''));
+        $this->setBlockSetting($block_id, 'filter_film', $request->get('filter_film', ''));
+        $this->setBlockSetting($block_id, 'filter_magazine', $request->get('filter_magazine', ''));
+        $this->setBlockSetting($block_id, 'filter_manuscript', $request->get('filter_manuscript', ''));
+        $this->setBlockSetting($block_id, 'filter_map', $request->get('filter_map', ''));
+        $this->setBlockSetting($block_id, 'filter_newspaper', $request->get('filter_newspaper', ''));
+        $this->setBlockSetting($block_id, 'filter_other', $request->get('filter_other', ''));
+        $this->setBlockSetting($block_id, 'filter_painting', $request->get('filter_painting', ''));
+        $this->setBlockSetting($block_id, 'filter_photo', $request->get('filter_photo', ''));
+        $this->setBlockSetting($block_id, 'filter_tombstone', $request->get('filter_tombstone', ''));
+        $this->setBlockSetting($block_id, 'filter_video', $request->get('filter_video', ''));
+    }
+
+    /**
      * An HTML form to edit block settings
      *
      * @param Tree $tree
@@ -179,34 +212,8 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
      *
      * @return void
      */
-    public function configureBlock(Tree $tree, int $block_id)
+    public function editBlockConfiguration(Tree $tree, int $block_id)
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $this->setBlockSetting($block_id, 'filter', Filter::post('filter', 'indi|event|all', 'all'));
-            $this->setBlockSetting($block_id, 'controls', Filter::postBool('controls'));
-            $this->setBlockSetting($block_id, 'start', Filter::postBool('start'));
-            $this->setBlockSetting($block_id, 'filter_audio', Filter::postBool('filter_audio'));
-            $this->setBlockSetting($block_id, 'filter_book', Filter::postBool('filter_book'));
-            $this->setBlockSetting($block_id, 'filter_card', Filter::postBool('filter_card'));
-            $this->setBlockSetting($block_id, 'filter_certificate', Filter::postBool('filter_certificate'));
-            $this->setBlockSetting($block_id, 'filter_coat', Filter::postBool('filter_coat'));
-            $this->setBlockSetting($block_id, 'filter_document', Filter::postBool('filter_document'));
-            $this->setBlockSetting($block_id, 'filter_electronic', Filter::postBool('filter_electronic'));
-            $this->setBlockSetting($block_id, 'filter_fiche', Filter::postBool('filter_fiche'));
-            $this->setBlockSetting($block_id, 'filter_film', Filter::postBool('filter_film'));
-            $this->setBlockSetting($block_id, 'filter_magazine', Filter::postBool('filter_magazine'));
-            $this->setBlockSetting($block_id, 'filter_manuscript', Filter::postBool('filter_manuscript'));
-            $this->setBlockSetting($block_id, 'filter_map', Filter::postBool('filter_map'));
-            $this->setBlockSetting($block_id, 'filter_newspaper', Filter::postBool('filter_newspaper'));
-            $this->setBlockSetting($block_id, 'filter_other', Filter::postBool('filter_other'));
-            $this->setBlockSetting($block_id, 'filter_painting', Filter::postBool('filter_painting'));
-            $this->setBlockSetting($block_id, 'filter_photo', Filter::postBool('filter_photo'));
-            $this->setBlockSetting($block_id, 'filter_tombstone', Filter::postBool('filter_tombstone'));
-            $this->setBlockSetting($block_id, 'filter_video', Filter::postBool('filter_video'));
-
-            return;
-        }
-
         $filter   = $this->getBlockSetting($block_id, 'filter', 'all');
         $controls = $this->getBlockSetting($block_id, 'controls', '1');
         $start    = $this->getBlockSetting($block_id, 'start', '0');

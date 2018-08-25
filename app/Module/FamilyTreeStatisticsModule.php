@@ -17,11 +17,11 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
-use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Stats;
 use Fisharebest\Webtrees\Tree;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Class FamilyTreeStatisticsModule
@@ -184,6 +184,38 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
     }
 
     /**
+     * Update the configuration for a block.
+     *
+     * @param Request $request
+     * @param int     $block_id
+     *
+     * @return void
+     */
+    public function saveBlockConfiguration(Request $request, int $block_id)
+    {
+        $this->setBlockSetting($block_id, 'show_last_update', $request->get('show_last_update', ''));
+        $this->setBlockSetting($block_id, 'show_common_surnames', $request->get('show_common_surnames', ''));
+        $this->setBlockSetting($block_id, 'number_of_surnames', $request->get('number_of_surnames', self::DEFAULT_NUMBER_OF_SURNAMES));
+        $this->setBlockSetting($block_id, 'stat_indi', $request->get('stat_indi', ''));
+        $this->setBlockSetting($block_id, 'stat_fam', $request->get('stat_fam', ''));
+        $this->setBlockSetting($block_id, 'stat_sour', $request->get('stat_sour', ''));
+        $this->setBlockSetting($block_id, 'stat_other', $request->get('stat_other', ''));
+        $this->setBlockSetting($block_id, 'stat_media', $request->get('stat_media', ''));
+        $this->setBlockSetting($block_id, 'stat_repo', $request->get('stat_repo', ''));
+        $this->setBlockSetting($block_id, 'stat_surname', $request->get('stat_surname', ''));
+        $this->setBlockSetting($block_id, 'stat_events', $request->get('stat_events', ''));
+        $this->setBlockSetting($block_id, 'stat_users', $request->get('stat_users', ''));
+        $this->setBlockSetting($block_id, 'stat_first_birth', $request->get('stat_first_birth', ''));
+        $this->setBlockSetting($block_id, 'stat_last_birth', $request->get('stat_last_birth', ''));
+        $this->setBlockSetting($block_id, 'stat_first_death', $request->get('stat_first_death', ''));
+        $this->setBlockSetting($block_id, 'stat_last_death', $request->get('stat_last_death', ''));
+        $this->setBlockSetting($block_id, 'stat_long_life', $request->get('stat_long_life', ''));
+        $this->setBlockSetting($block_id, 'stat_avg_life', $request->get('stat_avg_life', ''));
+        $this->setBlockSetting($block_id, 'stat_most_chil', $request->get('stat_most_chil', ''));
+        $this->setBlockSetting($block_id, 'stat_avg_chil', $request->get('stat_avg_chil', ''));
+    }
+
+    /**
      * An HTML form to edit block settings
      *
      * @param Tree $tree
@@ -191,33 +223,8 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
      *
      * @return void
      */
-    public function configureBlock(Tree $tree, int $block_id)
+    public function editBlockConfiguration(Tree $tree, int $block_id)
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $this->setBlockSetting($block_id, 'show_last_update', Filter::postBool('show_last_update'));
-            $this->setBlockSetting($block_id, 'show_common_surnames', Filter::postBool('show_common_surnames'));
-            $this->setBlockSetting($block_id, 'number_of_surnames', Filter::postInteger('number_of_surnames'));
-            $this->setBlockSetting($block_id, 'stat_indi', Filter::postBool('stat_indi'));
-            $this->setBlockSetting($block_id, 'stat_fam', Filter::postBool('stat_fam'));
-            $this->setBlockSetting($block_id, 'stat_sour', Filter::postBool('stat_sour'));
-            $this->setBlockSetting($block_id, 'stat_other', Filter::postBool('stat_other'));
-            $this->setBlockSetting($block_id, 'stat_media', Filter::postBool('stat_media'));
-            $this->setBlockSetting($block_id, 'stat_repo', Filter::postBool('stat_repo'));
-            $this->setBlockSetting($block_id, 'stat_surname', Filter::postBool('stat_surname'));
-            $this->setBlockSetting($block_id, 'stat_events', Filter::postBool('stat_events'));
-            $this->setBlockSetting($block_id, 'stat_users', Filter::postBool('stat_users'));
-            $this->setBlockSetting($block_id, 'stat_first_birth', Filter::postBool('stat_first_birth'));
-            $this->setBlockSetting($block_id, 'stat_last_birth', Filter::postBool('stat_last_birth'));
-            $this->setBlockSetting($block_id, 'stat_first_death', Filter::postBool('stat_first_death'));
-            $this->setBlockSetting($block_id, 'stat_last_death', Filter::postBool('stat_last_death'));
-            $this->setBlockSetting($block_id, 'stat_long_life', Filter::postBool('stat_long_life'));
-            $this->setBlockSetting($block_id, 'stat_avg_life', Filter::postBool('stat_avg_life'));
-            $this->setBlockSetting($block_id, 'stat_most_chil', Filter::postBool('stat_most_chil'));
-            $this->setBlockSetting($block_id, 'stat_avg_chil', Filter::postBool('stat_avg_chil'));
-
-            return;
-        }
-
         $show_last_update     = $this->getBlockSetting($block_id, 'show_last_update', '1');
         $show_common_surnames = $this->getBlockSetting($block_id, 'show_common_surnames', '1');
         $number_of_surnames   = $this->getBlockSetting($block_id, 'number_of_surnames', self::DEFAULT_NUMBER_OF_SURNAMES);

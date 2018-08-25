@@ -17,8 +17,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
-use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\Tree;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Common logic for edit controllers.
@@ -238,13 +238,13 @@ abstract class AbstractEditController extends AbstractBaseController
      *
      * @return string
      */
-    protected function addNewFact(Tree $tree, $fact)
+    protected function addNewFact(Request $request, Tree $tree, $fact)
     {
-        $FACT = Filter::post($fact);
-        $DATE = Filter::post($fact . '_DATE');
-        $PLAC = Filter::post($fact . '_PLAC');
-        if ($DATE || $PLAC || $FACT && $FACT !== 'Y') {
-            if ($FACT && $FACT !== 'Y') {
+        $FACT = $request->get($fact, '');
+        $DATE = $request->get($fact . '_DATE', '');
+        $PLAC = $request->get($fact . '_PLAC', '');
+        if ($DATE !== '' || $PLAC !== '' || $FACT !== '' && $FACT !== 'Y') {
+            if ($FACT !== '' && $FACT !== 'Y') {
                 $gedrec = "\n1 " . $fact . ' ' . $FACT;
             } else {
                 $gedrec = "\n1 " . $fact;
@@ -257,25 +257,25 @@ abstract class AbstractEditController extends AbstractBaseController
 
                 if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $tree->getPreference('ADVANCED_PLAC_FACTS'), $match)) {
                     foreach ($match[1] as $tag) {
-                        $TAG = Filter::post($fact . '_' . $tag);
-                        if ($TAG) {
+                        $TAG = $request->get($fact . '_' . $tag, '');
+                        if ($TAG !== '') {
                             $gedrec .= "\n3 " . $tag . ' ' . $TAG;
                         }
                     }
                 }
-                $LATI = Filter::post($fact . '_LATI');
-                $LONG = Filter::post($fact . '_LONG');
-                if ($LATI || $LONG) {
+                $LATI = $request->get($fact . '_LATI', '');
+                $LONG = $request->get($fact . '_LONG', '');
+                if ($LATI !== '' || $LONG !== '') {
                     $gedrec .= "\n3 MAP\n4 LATI " . $LATI . "\n4 LONG " . $LONG;
                 }
             }
-            if (Filter::postBool('SOUR_' . $fact)) {
+            if ((bool) $request->get('SOUR_' . $fact)) {
                 return $this->updateSource($gedrec, 2);
             } else {
                 return $gedrec;
             }
         } elseif ($FACT === 'Y') {
-            if (Filter::postBool('SOUR_' . $fact)) {
+            if ((bool) $request->get('SOUR_' . $fact)) {
                 return $this->updateSource("\n1 " . $fact . ' Y', 2);
             } else {
                 return "\n1 " . $fact . ' Y';
@@ -326,11 +326,13 @@ abstract class AbstractEditController extends AbstractBaseController
     /**
      * Create a form to add a sex record.
      *
+     * @param Request $request
+     *
      * @return string
      */
-    protected function addNewSex()
+    protected function addNewSex(Request $request): string
     {
-        switch (Filter::post('SEX', '[MF]', 'U')) {
+        switch ($request->get('SEX', '')) {
             case 'M':
                 return "\n1 SEX M";
             case 'F':
@@ -343,13 +345,14 @@ abstract class AbstractEditController extends AbstractBaseController
     /**
      * Assemble the pieces of a newly created record into gedcom
      *
-     * @param Tree $tree
+     * @param Request $request
+     * @param Tree    $tree
      *
      * @return string
      */
-    public static function addNewName(Tree $tree)
+    public static function addNewName(Request $request, Tree $tree)
     {
-        $gedrec = "\n1 NAME " . Filter::post('NAME');
+        $gedrec = "\n1 NAME " . $request->get('NAME', '');
 
         $tags = [
             'NPFX',
@@ -370,8 +373,8 @@ abstract class AbstractEditController extends AbstractBaseController
         }
 
         foreach (array_unique($tags) as $tag) {
-            $TAG = Filter::post($tag);
-            if ($TAG) {
+            $TAG = $request->get($tag, '');
+            if ($TAG !== '') {
                 $gedrec .= "\n2 {$tag} {$TAG}";
             }
         }
