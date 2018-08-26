@@ -1178,7 +1178,7 @@ class ReportParserGenerate extends ReportParserBase
                 $this->desc,
             ], $var);
             if (preg_match('/^I18N::number\((.+)\)$/', $var, $match)) {
-                $var = I18N::number($match[1]);
+                $var = I18N::number((int) $match[1]);
             } elseif (preg_match('/^I18N::translate\(\'(.+)\'\)$/', $var, $match)) {
                 $var = I18N::translate($match[1]);
             } elseif (preg_match('/^I18N::translateContext\(\'(.+)\', *\'(.+)\'\)$/', $var, $match)) {
@@ -1375,7 +1375,7 @@ class ReportParserGenerate extends ReportParserBase
             $i++;
         }
         if (preg_match('/^I18N::number\((.+)\)$/', $value, $match)) {
-            $value = I18N::number($match[1]);
+            $value = I18N::number((int) $match[1]);
         } elseif (preg_match('/^I18N::translate\(\'(.+)\'\)$/', $value, $match)) {
             $value = I18N::translate($match[1]);
         } elseif (preg_match('/^I18N::translateContext\(\'(.+)\', *\'(.+)\'\)$/', $value, $match)) {

@@ -708,7 +708,7 @@ class Stats
      *
      * @return string
      */
-    public function totalSurnames($params = [])
+    public function totalSurnames($params = []): string
     {
         if ($params) {
             $opt      = 'IN (' . implode(',', array_fill(0, count($params), '?')) . ')';
@@ -718,14 +718,14 @@ class Stats
             $distinct = 'DISTINCT';
         }
         $params[] = $this->tree->getTreeId();
-        $total    =
-            Database::prepare(
-                "SELECT COUNT({$distinct} n_surn COLLATE '" . I18N::collation() . "')" .
-                " FROM `##name`" .
-                " WHERE n_surn COLLATE '" . I18N::collation() . "' {$opt} AND n_file=?"
-            )->execute(
-                $params
-            )->fetchOne();
+
+        $total = (int) Database::prepare(
+            "SELECT COUNT({$distinct} n_surn COLLATE '" . I18N::collation() . "')" .
+            " FROM `##name`" .
+            " WHERE n_surn COLLATE '" . I18N::collation() . "' {$opt} AND n_file=?"
+        )->execute(
+            $params
+        )->fetchOne();
 
         return I18N::number($total);
     }
@@ -738,20 +738,22 @@ class Stats
      *
      * @return string
      */
-    public function totalGivennames($params = [])
+    public function totalGivennames($params = []): string
     {
         if ($params) {
             $qs       = implode(',', array_fill(0, count($params), '?'));
             $params[] = $this->tree->getTreeId();
-            $total    =
-                Database::prepare("SELECT COUNT( n_givn) FROM `##name` WHERE n_givn IN ({$qs}) AND n_file=?")
-                    ->execute($params)
-                    ->fetchOne();
+            $total    = (int) Database::prepare(
+                "SELECT COUNT( n_givn) FROM `##name` WHERE n_givn IN ({$qs}) AND n_file=?"
+            )->execute(
+                $params
+            )->fetchOne();
         } else {
-            $total =
-                Database::prepare("SELECT COUNT(DISTINCT n_givn) FROM `##name` WHERE n_givn IS NOT NULL AND n_file=?")
-                    ->execute([$this->tree->getTreeId()])
-                    ->fetchOne();
+            $total = (int) Database::prepare(
+                "SELECT COUNT(DISTINCT n_givn) FROM `##name` WHERE n_givn IS NOT NULL AND n_file=?"
+            )->execute([
+                $this->tree->getTreeId(),
+            ])->fetchOne();
         }
 
         return I18N::number($total);
@@ -764,7 +766,7 @@ class Stats
      *
      * @return string
      */
-    public function totalEvents($params = [])
+    public function totalEvents($params = []): string
     {
         $sql  = "SELECT COUNT(*) AS tot FROM `##dates` WHERE d_file=?";
         $vars = [$this->tree->getTreeId()];
@@ -790,7 +792,9 @@ class Stats
         $sql  .= ' AND d_fact NOT IN (' . implode(', ', array_fill(0, count($no_types), '?')) . ')';
         $vars = array_merge($vars, $no_types);
 
-        return I18N::number(Database::prepare($sql)->execute($vars)->fetchOne());
+        $n = Database::prepare($sql)->execute($vars)->fetchOne();
+
+        return I18N::number($n);
     }
 
     /**
@@ -4671,11 +4675,13 @@ class Stats
      *
      * @return string
      */
-    public function totalMarriedMales()
+    public function totalMarriedMales(): string
     {
-        $n = Database::prepare("SELECT COUNT(DISTINCT f_husb) FROM `##families` WHERE f_file=? AND f_gedcom LIKE '%\\n1 MARR%'")
-            ->execute([$this->tree->getTreeId()])
-            ->fetchOne();
+        $n = (int) Database::prepare(
+            "SELECT COUNT(DISTINCT f_husb) FROM `##families` WHERE f_file = :tree_id AND f_gedcom LIKE '%\\n1 MARR%'"
+        )->execute([
+            'tree_id' => $this->tree->getTreeId(),
+        ])->fetchOne();
 
         return I18N::number($n);
     }
@@ -4685,11 +4691,13 @@ class Stats
      *
      * @return string
      */
-    public function totalMarriedFemales()
+    public function totalMarriedFemales(): string
     {
-        $n = Database::prepare("SELECT COUNT(DISTINCT f_wife) FROM `##families` WHERE f_file=? AND f_gedcom LIKE '%\\n1 MARR%'")
-            ->execute([$this->tree->getTreeId()])
-            ->fetchOne();
+        $n = (int) Database::prepare(
+            "SELECT COUNT(DISTINCT f_wife) FROM `##families` WHERE f_file = :tree_id AND f_gedcom LIKE '%\\n1 MARR%'"
+        )->execute([
+            'tree_id' => $this->tree->getTreeId(),
+        ])->fetchOne();
 
         return I18N::number($n);
     }
@@ -5407,9 +5415,9 @@ class Stats
     /**
      * Find the families with no children.
      *
-     * @return string
+     * @return int
      */
-    private function noChildrenFamiliesQuery()
+    private function noChildrenFamiliesQuery(): int
     {
         $rows = $this->runSql(
             " SELECT COUNT(*) AS tot" .
@@ -5417,7 +5425,7 @@ class Stats
             " WHERE f_numchil = 0 AND f_file = {$this->tree->getTreeId()}"
         );
 
-        return $rows[0]->tot;
+        return (int) $rows[0]->tot;
     }
 
     /**
