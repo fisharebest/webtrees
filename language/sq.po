@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Albanian (webtrees)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-08-20 16:06+0000\n"
-"PO-Revision-Date: 2018-08-26 10:19+0200\n"
+"PO-Revision-Date: 2018-08-26 23:57+0200\n"
 "Last-Translator: Astrit Bokshi <astritbokshi@gmail.com>\n"
 "Language-Team: Albanian <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/sq/>\n"
 "Language: sq\n"
@@ -524,7 +524,7 @@ msgstr[1] "%s javë"
 msgid "%s year"
 msgid_plural "%s years"
 msgstr[0] "%s vit"
-msgstr[1] "%s vite"
+msgstr[1] "%s vjet"
 
 #: app/I18N.php:794
 #, php-format
@@ -538,7 +538,7 @@ msgstr[1] "Para %s vitesh"
 #: app/Module/YahrzeitModule.php:129,
 #, php-format
 msgid "%s year anniversary"
-msgstr "%s vit përvjetor"
+msgstr "përvjetor %s vjeçar"
 
 #: app/Functions/Functions.php:585
 #, php-format
@@ -1800,7 +1800,7 @@ msgstr "Administratorët"
 #: app/GedcomCode/GedcomCodePedi.php:59
 msgctxt "Female pedigree"
 msgid "Adopted"
-msgstr "E adoptuar"
+msgstr "Adoptuar"
 
 #: app/GedcomCode/GedcomCodePedi.php:57
 msgctxt "Male pedigree"
@@ -1814,7 +1814,7 @@ msgstr "Adoptuar"
 
 #: app/GedcomCode/GedcomCodeAdop.php:52
 msgid "Adopted by both parents"
-msgstr "Adoptuar nga të dy prindërit"
+msgstr "I adoptuar nga të dy prindërit"
 
 #: app/GedcomCode/GedcomCodeAdop.php:50
 msgctxt "FEMALE"
@@ -1831,7 +1831,7 @@ msgstr "I adoptuar nga të dy prindërit"
 #: app/GedcomCode/GedcomCodeAdop.php:61 app/GedcomTag.php:936
 #: app/GedcomCode/GedcomCodeAdop.php:61,
 msgid "Adopted by father"
-msgstr "Adoptuar nga babai"
+msgstr "I adoptuar nga babai"
 
 # I18N: gedcom tag _ADPF
 #. I18N: gedcom tag _ADPF
@@ -1854,7 +1854,7 @@ msgstr "I adoptuar nga babai"
 #: app/GedcomCode/GedcomCodeAdop.php:70 app/GedcomTag.php:951
 #: app/GedcomCode/GedcomCodeAdop.php:70,
 msgid "Adopted by mother"
-msgstr "Adoptuar nga nëna"
+msgstr "I adoptuar nga nëna"
 
 # I18N: gedcom tag _ADPM
 #. I18N: gedcom tag _ADPM
@@ -1951,7 +1951,7 @@ msgstr "Adoptimi i djalit"
 #. I18N: gedcom tag CHRA
 #: app/GedcomTag.php:286
 msgid "Adult christening"
-msgstr "Krishterimi i personit të rritur"
+msgstr "Pagëzim i të rriturit"
 
 #: admin_trees_config.php:2027
 msgid "Advanced fact preferences"
@@ -2030,7 +2030,7 @@ msgstr "Dallimi në moshë"
 
 #: statistics.php:550 statisticsplot.php:1282 statistics.php:550,
 msgid "Age in year of first marriage"
-msgstr "Mosha në vitin e martesës së parë"
+msgstr "Mosha në vitin e parë të martesës"
 
 #: app/Functions/FunctionsPrintLists.php:972 statistics.php:260
 #: statistics.php:545 statisticsplot.php:1232
@@ -2213,7 +2213,7 @@ msgstr "Lejo vizitorët të kërkojnë llogari të reja përdoruesish"
 #. I18N: gedcom tag _AKA
 #: app/GedcomTag.php:967
 msgid "Also known as"
-msgstr "Poashtu njohur si"
+msgstr "Poashtu i njohur si"
 
 # I18N: gedcom tag _AKA
 #. I18N: gedcom tag _AKA
@@ -2349,7 +2349,7 @@ msgstr "Paraardhësit e %s"
 #. I18N: gedcom tag AFN
 #: app/GedcomTag.php:138
 msgid "Ancestral file number"
-msgstr "Numi i fajlit të paraardhësve"
+msgstr "Numri i fajlit të paraardhësve"
 
 # I18N: Location of an LDS church temple
 #. I18N: Location of an LDS church temple
@@ -2926,7 +2926,7 @@ msgstr "Bangladeshi"
 #: app/GedcomTag.php:182 modules_v3/missing_facts_report/report.xml:16
 #: app/GedcomTag.php:182,
 msgid "Baptism"
-msgstr "Pagëzimi"
+msgstr "Pagëzim"
 
 #: app/GedcomTag.php:1021
 msgid "Baptism of a brother"
@@ -3364,7 +3364,7 @@ msgstr "Birmingham, Alabama, SHBA"
 #: modules_v3/pedigree_report/report.xml:1349,
 #: modules_v3/pedigree_report/report.xml:1368,
 msgid "Birth"
-msgstr "Lindja"
+msgstr "Lindur"
 
 #: app/GedcomCode/GedcomCodePedi.php:50
 msgctxt "Female pedigree"
@@ -4080,7 +4080,7 @@ msgstr "Varrezë"
 #. I18N: gedcom tag CENS
 #: app/GedcomTag.php:250
 msgid "Census"
-msgstr "Regjistrimi"
+msgstr "Regjistrimi (censusi)"
 
 # I18N: Name of a module
 #. I18N: Name of a module
@@ -4692,7 +4692,7 @@ msgstr "Konfirmo fjalëkalimin"
 #: app/GedcomTag.php:310 modules_v3/missing_facts_report/report.xml:19
 #: app/GedcomTag.php:310,
 msgid "Confirmation"
-msgstr "Konfirmimi"
+msgstr "Konfirmim"
 
 #: setup.php:275
 msgid "Connection to database server"
@@ -5246,17 +5246,17 @@ msgstr "Data e pagëzimit LSD"
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:778
 msgid "Date of LDS child sealing"
-msgstr "Date of LDS child sealing"
+msgstr "Data e zotimit LDS të fëmijës"
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:414
 msgid "Date of LDS endowment"
-msgstr "Date of LDS endowment"
+msgstr "Data e ndihmës LDS"
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:470
 msgid "Date of LDS spouse sealing"
-msgstr "Date of LDS spouse sealing"
+msgstr "Data e zotimit bashkëshortor LDS"
 
 #: app/GedcomTag.php:132
 msgid "Date of adoption"
@@ -5878,7 +5878,7 @@ msgstr "Dekada të martesës"
 #: app/Date/CalendarDate.php:222
 msgctxt "GENITIVE"
 msgid "December"
-msgstr "Dhjetor"
+msgstr "Dhjetori"
 
 #: app/Date/CalendarDate.php:290
 msgctxt "INSTRUMENTAL"
@@ -6380,7 +6380,7 @@ msgstr "Mos krijo lokacione të reja, vetëm importo koordinatat për lokacionet
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:88
 msgid "Do not seal, previous sealing canceled"
-msgstr "Mos vulos, vulosja paraprake u anulua"
+msgstr "Mos zoto, zotimi paraprak u anulua"
 
 # I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
@@ -6468,7 +6468,7 @@ msgstr "Lindja më e hershme"
 #: app/Module/FamilyTreeStatisticsModule.php:142,
 #: app/Module/FamilyTreeStatisticsModule.php:320,
 msgid "Earliest birth year"
-msgstr "Viti më i hershëm i lindjes"
+msgstr "Viti i lindjes më të hershëm"
 
 #: statistics.php:130
 msgid "Earliest death"
@@ -7372,7 +7372,7 @@ msgstr "Familja me prindër qumështi"
 #. I18N: “sealing” is a Mormon ceremony.
 #: app/GedcomCode/GedcomCodePedi.php:135
 msgid "Family with sealing parents"
-msgstr "Familje me prindër të zyrtarizuar"
+msgstr "Familje me prindër të zotuar"
 
 #: app/Theme/AbstractTheme.php:994
 msgid "Family with spouse"
@@ -7703,7 +7703,7 @@ msgstr "Finlanda"
 #: app/GedcomTag.php:480 modules_v3/missing_facts_report/report.xml:21
 #: app/GedcomTag.php:480,
 msgid "First communion"
-msgstr "First communion"
+msgstr "Kungimi i parë"
 
 #: statistics.php:370
 msgid "First event"
@@ -7813,7 +7813,7 @@ msgstr "P.sh., poqese fajli GEDCOM përbën %1$s dhe webtrees pret të gjej %2$s
 
 #: admin_users.php:600
 msgid "For example, if you specify a path length of 2, the individual will be able to see their grandson (child, child), their aunt (parent, sibling), their step-daughter (spouse, child), but not their first cousin (parent, sibling, child)."
-msgstr "P.sh., po të specifikoni madhësinë e pathit 2, personi do të jetë në gjendje të shoh nipat e tij (të fëmijës, fëmijën), tezet e tyre (nga prindi, vëllau/motra), bijat e tyre të adoptuara (nga bashkëshorti, fëmija), por jo edhe kushëririn e parë (prindin, vëllau/motrën, fëmijën)."
+msgstr "P.sh., po të specifikoni madhësinë e pathit 2, personi do të jetë në gjendje të shoh nipat e tij (fëmija i fëmijës), tezet e tyre (nga prindi, vëllau/motra), bijat e tyre të adoptuara (nga bashkëshorti, fëmija), por jo edhe kushëririn e parë (prindin, vëllaun/motrën, fëmijën)."
 
 #: app/Theme/AbstractTheme.php:296
 #, php-format
@@ -7864,7 +7864,7 @@ msgstr "Fort Lauderdale, Florida, SHBA"
 #: app/GedcomCode/GedcomCodePedi.php:68
 msgctxt "Female pedigree"
 msgid "Foster"
-msgstr "E birësuar"
+msgstr "Birësuar"
 
 #: app/GedcomCode/GedcomCodePedi.php:66
 msgctxt "Male pedigree"
@@ -8470,7 +8470,7 @@ msgstr "Haiti"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:185
 msgid "Halifax, Nova Scotia, Canada"
-msgstr "Halifax, Nova Scotia, Canada"
+msgstr "Halifax, Nova Scotia, Kanada"
 
 # I18N: Location of an LDS church temple
 #. I18N: Location of an LDS church temple
@@ -8482,7 +8482,7 @@ msgstr "Hamilton, New Zealand"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:187
 msgid "Hartford, Connecticut, United States"
-msgstr "Hartford, Connecticut, United States"
+msgstr "Hartford, Connecticut, SHBA"
 
 #: modules_v3/descendancy_report/report.xml:428
 msgid "He "
@@ -8496,7 +8496,7 @@ msgstr "Ai vdiq"
 #: modules_v3/descendancy_report/report.xml:173
 #: modules_v3/ahnentafel_report/report.xml:259,
 msgid "He married"
-msgstr "Ai është i martuar"
+msgstr "Ai u martua"
 
 #: modules_v3/ahnentafel_report/report.xml:222
 msgid "He resided at"
@@ -8508,15 +8508,15 @@ msgstr "Ai ka lindur"
 
 #: modules_v3/ahnentafel_report/report.xml:339
 msgid "He was buried"
-msgstr "Ai është varrosur"
+msgstr "Ai u varros"
 
 #: modules_v3/ahnentafel_report/report.xml:166
 msgid "He was christened"
-msgstr "Ai është pagëzuar"
+msgstr "Ai u pagëzua"
 
 #: modules_v3/ahnentafel_report/report.xml:314
 msgid "He was cremated"
-msgstr "Ai është kremuar"
+msgstr "Ai u kremua"
 
 #: app/Module/CensusAssistantModule.php:420
 #: modules_v3/GEDFact_assistant/census/census-edit.php:64
@@ -8542,13 +8542,13 @@ msgstr "Ishujt Heard Island dhe McDonald"
 #. I18N: gedcom tag _HEB
 #: app/GedcomTag.php:1521
 msgid "Hebrew"
-msgstr "Çifutësh"
+msgstr "Çifut"
 
 # I18N: gedcom tag _HNM
 #. I18N: gedcom tag _HNM
 #: app/GedcomTag.php:1529
 msgid "Hebrew name"
-msgstr "Emër çifutësh"
+msgstr "Emër çifut"
 
 # I18N: gedcom tag _HEIG
 #. I18N: gedcom tag _HEIG
@@ -8579,7 +8579,7 @@ msgstr "Ndihmë"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:191
 msgid "Helsinki, Finland"
-msgstr "Helsinki, Finland"
+msgstr "Helsinki, Finlandë"
 
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
@@ -8621,7 +8621,7 @@ msgstr "Profesioni i saj ishte"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:193
 msgid "Hermosillo, Mexico"
-msgstr "Hermosillo, Mexico"
+msgstr "Hermosillo, Meksikë"
 
 # I18N: a month in the Jewish calendar
 #. I18N: a month in the Jewish calendar
@@ -8657,7 +8657,7 @@ msgstr "Heshvan"
 #: admin_trees_config.php:89, admin_trees_config.php:492,
 #: admin_trees_config.php:1021,
 msgid "Hide from everyone"
-msgstr "Mshef nga secilido"
+msgstr "Mshef nga secili"
 
 #: app/Stats.php:1737
 msgid "Highest population"
@@ -8674,7 +8674,7 @@ msgstr "Imazhi i potencuar"
 #. I18N: The Arabic/Hijri calendar
 #: app/Date.php:202 help_text.php:186
 msgid "Hijri"
-msgstr ""
+msgstr "Hijri"
 
 #: modules_v3/ahnentafel_report/report.xml:195
 msgid "His occupation was"
@@ -8736,7 +8736,7 @@ msgstr "Grafi i orës së qelqit i %s"
 
 #: modules_v3/GEDFact_assistant/census/census-edit.php:143
 msgid "Household"
-msgstr "Vatra"
+msgstr "Shtëpiak"
 
 # I18N: Location of an LDS church temple
 #. I18N: Location of an LDS church temple
@@ -8827,7 +8827,7 @@ msgstr "Numri identifikues"
 #. I18N: Help text for the “Language” configuration setting
 #: admin_trees_config.php:646
 msgid "If a visitor to the website has not selected a preferred language in their browser preferences, or they have selected an unsupported language, then this language will be used. Typically this applies to search engines."
-msgstr "Nëse vizitori i web faqes nuk ka specifikuar gjuhën e preferuar në konfigurimin e shfletuesit të tyre, ose po të kenë specifikuar gjuhë të papërkrahur, atëherë do të përdoret kjo gjuhë. Zakonisht, ky përkufizim zbatohet në makinat kërkuese."
+msgstr "Nëse vizitori i ueb faqes nuk e ka specifikuar gjuhën e preferuar në konfigurimin e shfletuesit të tyre, ose po të kenë specifikuar gjuhë të papërkrahur, atëherë do të përdoret kjo gjuhë. Zakonisht, ky përkufizim zbatohet në makinat kërkuese."
 
 #: admin_users.php:391
 msgid "If an administrator creates a user account, the verification email is not sent, and the email must be verified manually."
@@ -8868,7 +8868,7 @@ msgstr "Nëse personi ka çfarëdo ngjarje përveç vdekjes, varrimit, apo kremi
 #. I18N: Help text for the “Media folder” configuration setting
 #: admin_trees_config.php:1008
 msgid "If two family trees use the same media folder, then they will be able to share media files. If they use different media folders, then their media files will be kept separate."
-msgstr "Nëse dy trungje familjare përdorin media folderin e njëjtë, atëherë ato do të mund t’i ndajnë media fajlat. Po të përdorin media folderë të ndryshëm, atëherë media fajlat e tyre do të mbahen të veçuar."
+msgstr "Nëse dy trungje familjare përdorin media folderin e njëjtë, atëherë ata do të mund t’i ndajnë media fajlat. Po të përdorin media folderë të ndryshëm, atëherë media fajlat e tyre do të mbahen të veçuar."
 
 #: admin_trees_config.php:374
 msgid "If visitors can not see the family tree, they will not be able to sign up for an account. You will need to add their account manually."
@@ -8910,7 +8910,7 @@ msgstr "Po të keni krijuar media objekte në webtrees, dhe e keni edituar kët�
 
 #: app/Module/RecentChangesModule.php:186
 msgid "If you hide an empty block, you will not be able to change its configuration until it becomes visible by no longer being empty."
-msgstr "Po tw mshefni bllokun e zbrazët, nuk do të mundeni të ndryshoni konfigurimin e saj përderisa ajo të bëhet e dukshme përmes asaj që më të mos jetë e zbrazët."
+msgstr "Po të mshefni bllokun e zbrazët, nuk do të mund të ndryshoni konfigurimin e saj përderisa ajo të bëhet e dukshme, përmes asaj që më të mos jetë e zbrazët."
 
 #: admin_site_config.php:192
 msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php, and .htaccess) from the existing folder to the new folder."
@@ -8944,7 +8944,7 @@ msgstr "Nëse politika e sigurisë së serverit e lejon, ju mund të kërkoni rr
 #. I18N: Help text for the "Website URL" site configuration setting
 #: admin_site_config.php:310
 msgid "If your website can be reached using more than one URL, such as <b>http://www.example.com/webtrees/</b> and <b>http://webtrees.example.com/</b>, you can specify the preferred URL. Requests for the other URLs will be redirected to the preferred one."
-msgstr "Nëse në faqen tiaj ju mund të arrihet [ërmes më shumë URL-ve, siç është <b>http://www.example.com/webtrees/</b> dhe <b> http://webtrees.example.com/</b>, ju mund të specifikoni URL-në e preferuar. Kërkesat për URL-në tjetër do të ridrejtohen në atë të preferuarën."
+msgstr "Nëse faqja juaj mund të arrihet përmes më shumë URL-ve, siç është <b>http://www.example.com/webtrees/</b> dhe <b> http://webtrees.example.com/</b>, ju mund të specifikoni URL-në e preferuar. Kërkesat për URL-në tjetër do të ridrejtohen në atë të preferuarën."
 
 #: admin_media.php:495 app/GedcomTag.php:1787 admin_media.php:495,
 msgid "Image dimensions"
@@ -8994,13 +8994,13 @@ msgstr "Në shumë kultura, është e zakonshme që emri tradicional të shkruhe
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: admin_trees_config.php:712
 msgid "In some calendars, days start at midnight. In other calendars, days start at sunset. The conversion process does not take account of the time, so for any event that occurs between sunset and midnight, the conversion between these types of calendar will be one day out."
-msgstr "Në disa nga kalendarët dita fillon në mesnatë. Në të tjerët dita fillon në perëndim të diellit. Procesi i konvertimit nuk merr parasysh kohën, ashtuqë për secilën ngjarje që shfaqet nga përëndimi i diellit e deri në medsnatë, konvertimi ndërmjet atyre dy kalendarëve do të jetë një ditë."
+msgstr "Në disa nga kalendarët dita fillon në mesnatë. Në të tjerët dita fillon në perëndim të diellit. Procesi i konvertimit nuk merr parasysh kohën, ashtuqë për secilën ngjarje që shfaqet nga përëndimi i diellit e deri në mesnatë, konvertimi ndërmjet atyre dy kalendarëve do të shkaktojë ndryshim prej një dite."
 
 # I18N: Help text for the “Extend privacy to dead individuals” configuration setting
 #. I18N: Help text for the “Extend privacy to dead individuals” configuration setting
 #: admin_trees_config.php:455
 msgid "In some countries, privacy laws apply not only to living individuals, but also to those who have died recently. This option will allow you to extend the privacy rules for living individuals to those who were born or died within a specified number of years. Leave these values empty to disable this feature."
-msgstr "Në disa shtete, ligjet e privatësisë aplikohen jo vetën te personat e gjallë, por poashtu te ata të cilët kanë vdekur kohët e fundit. Kjo mundësi ju lejon të zgjeroni rregullat e privatësisë për personat e gjallë në atë për ata të cilët kanë lindur ose vdekur për një numër të specifikuar të viteve. Lërini këto vlera bosh që të anuloni këtë veçori."
+msgstr "Në disa shtete, ligjet e privatësisë aplikohen jo vetën te personat e gjallë, por poashtu te ata të cilët kanë vdekur së fundi. Kjo mundësi ju lejon të zgjeroni rregullat e privatësisë për personat e gjallë, duke specifikuar numrin e viteve të lindjes dhe vdekjes së personave. Lërini këto vlera bosh që të anuloni këtë veçori."
 
 #: calendar.php:125
 msgid "In this month…"
@@ -9281,7 +9281,7 @@ msgstr "Irlanda"
 #. I18N: Name of a country or state
 #: app/Stats.php:6778
 msgid "Isle of Man"
-msgstr ""
+msgstr "Isle of Man"
 
 # I18N: Name of a country or state
 #. I18N: Name of a country or state
@@ -9304,7 +9304,7 @@ msgstr "Italia"
 #: app/Date/JewishDate.php:144
 msgctxt "GENITIVE"
 msgid "Iyar"
-msgstr ""
+msgstr "Iyar"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:220
@@ -9327,7 +9327,7 @@ msgstr ""
 #. I18N: The Persian/Jalali calendar
 #: app/Date.php:203
 msgid "Jalali"
-msgstr ""
+msgstr "Jalali"
 
 # I18N: Name of a country or state
 #. I18N: Name of a country or state
@@ -9384,7 +9384,7 @@ msgstr "Johannesburg, Afrika Jugore"
 #. I18N: This should be a common/default/placeholder name of an individual. Put slashes around the surname.
 #: app/Tree.php:493
 msgid "John /DOE/"
-msgstr "John /DOE/"
+msgstr "Ben /BOKSHI/"
 
 # I18N: Name of a country or state
 #. I18N: Name of a country or state
@@ -9440,7 +9440,7 @@ msgstr "Korrik"
 #: app/Date/HijriDate.php:94
 msgctxt "GENITIVE"
 msgid "Jumada al-awwal"
-msgstr ""
+msgstr "Jumada al-awwal"
 
 #. I18N: http://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php:158
@@ -9464,7 +9464,7 @@ msgstr ""
 #: app/Date/HijriDate.php:95
 msgctxt "GENITIVE"
 msgid "Jumada al-thani"
-msgstr ""
+msgstr "Jumada al-thani"
 
 #. I18N: http://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php:159
@@ -9566,7 +9566,7 @@ msgstr "Khor"
 #: app/Date/JalaliDate.php:89
 msgctxt "GENITIVE"
 msgid "Khordad"
-msgstr ""
+msgstr "Khordad"
 
 #. I18N: 3rd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:153
@@ -9602,7 +9602,7 @@ msgstr "Kiribati"
 #: app/Date/JewishDate.php:137
 msgctxt "GENITIVE"
 msgid "Kislev"
-msgstr ""
+msgstr "Kislev"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:213
@@ -9650,36 +9650,36 @@ msgstr "Kirgistani"
 #. I18N: gedcom tag BAPL. LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:174
 msgid "LDS baptism"
-msgstr "LDS pagëzim"
+msgstr "Pagëzim LDS"
 
 #. I18N: gedcom tag SLGC. LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:776
 msgid "LDS child sealing"
-msgstr ""
+msgstr "Zotim fëmije LDS"
 
 #. I18N: gedcom tag CONL. LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:318
 msgid "LDS confirmation"
-msgstr ""
+msgstr "Konfirmim LDS"
 
 #. I18N: gedcom tag ENDL. LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:412
 msgid "LDS endowment"
-msgstr ""
+msgstr "Ndihmë LDS"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1324
 msgid "LDS ordinance codes in chart boxes"
-msgstr ""
+msgstr "Kodet rituale LDS në kutitë e grafeve"
 
 #. I18N: gedcom tag SLGS. LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:784
 msgid "LDS spouse sealing"
-msgstr ""
+msgstr "Zotim bashkëshortor LDS"
 
 #: app/Functions/FunctionsPrint.php:480
 msgid "LDS temple"
-msgstr ""
+msgstr "Tempull LDS"
 
 # I18N: Location of an LDS church temple
 #. I18N: Location of an LDS church temple
@@ -10374,7 +10374,7 @@ msgstr "Mars"
 #. I18N: Help text for the “Format text and notes” configuration setting
 #: admin_trees_config.php:1565
 msgid "Markdown is a simple system of formatting, used on websites such as Wikipedia. It uses unobtrusive punctuation characters to create headings and sub-headings, bold and italic text, lists, tables, etc."
-msgstr "Markdown është sistem i thjeshtë formatimi, që përdoret në qeb faqet si Wikipedia. Ajo përdor shenja modeste pikësimi për të krijuar kaptinat dhe nën-kaptinat, tekstet bold dhe italik, listat, tabelat, etj."
+msgstr "Markdown është sistem i thjeshtë formatimi, që përdoret në ueb faqet si Wikipedia. Ajo përdor shenja modeste pikësimi për të krijuar kaptinat dhe nën-kaptinat, tekstet bold dhe italik, listat, tabelat, etj."
 
 # I18N: gedcom tag MARR
 #. I18N: gedcom tag MARR
@@ -10558,7 +10558,7 @@ msgstr "Martesa e nipit"
 
 #: app/GedcomTag.php:1585
 msgid "Marriage of a granddaughter"
-msgstr "Martesa e mbesës"
+msgstr "Martesa e mbesës nga djali"
 
 #: app/GedcomTag.php:1594
 msgctxt "daughter’s daughter"
@@ -10932,7 +10932,7 @@ msgstr ""
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:239
 msgid "Melbourne, Australia"
-msgstr ""
+msgstr "Melbourne, Australi"
 
 # I18N: Listbox entry; name of a role
 #. I18N: Listbox entry; name of a role
@@ -11022,7 +11022,7 @@ msgstr "Mesazhet"
 #: app/Date/FrenchDate.php:97
 msgctxt "GENITIVE"
 msgid "Messidor"
-msgstr ""
+msgstr "Messidor"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:163
@@ -11252,7 +11252,7 @@ msgstr "Montreal, Quebec, Kanada"
 #. I18N: Name of a country or state
 #: app/Stats.php:6827
 msgid "Montserrat"
-msgstr ""
+msgstr "Montserrat"
 
 #: app/Date/JalaliDate.php:187
 msgctxt "Abbreviation for Persian month: Mordad"
@@ -11263,7 +11263,7 @@ msgstr "Mor"
 #: app/Date/JalaliDate.php:91
 msgctxt "GENITIVE"
 msgid "Mordad"
-msgstr ""
+msgstr "Mordad"
 
 #. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:155
@@ -11285,7 +11285,7 @@ msgstr ""
 
 #: app/Module/FamilyTreeNewsModule.php:137
 msgid "More news articles"
-msgstr ""
+msgstr "Më shumë artikuj lajmesh"
 
 # I18N: Name of a country or state
 #. I18N: Name of a country or state
@@ -11315,7 +11315,7 @@ msgstr "Shumica e serverave nuk përdorin lidhjet e sigurta."
 
 #: setup.php:282
 msgid "Most sites are configured to use localhost. This means that your database runs on the same computer as your web server."
-msgstr "Shumica e sajtave konfigurohen për të përdorur localhost-in. Kjo nënkupton se databaza e juaj punon në të njëjtin kompjuter ku është edhe web server juaj."
+msgstr "Shumica e sajtave konfigurohen për të përdorur localhost-in. Kjo nënkupton se databaza e juaj punon në të njëjtin kompjuter ku është edhe ueb server juaj."
 
 #: setup.php:286
 msgid "Most sites are configured to use the default value of 3306."
@@ -11402,7 +11402,7 @@ msgstr "Mozambiku"
 #: app/Date/HijriDate.php:90
 msgctxt "GENITIVE"
 msgid "Muharram"
-msgstr ""
+msgstr "Muharram"
 
 #. I18N: http://en.wikipedia.org/wiki/Muharram
 #: app/Date/HijriDate.php:154
@@ -11591,12 +11591,12 @@ msgstr "Nacionaliteti"
 #. I18N: gedcom tag NATU
 #: app/GedcomTag.php:618
 msgid "Naturalization"
-msgstr "Shtetësia"
+msgstr "Natyralizim"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6844
 msgid "Nauru"
-msgstr ""
+msgstr "Nauru"
 
 # I18N: Location of an LDS church temple
 #. I18N: Location of an LDS church temple
@@ -11736,7 +11736,7 @@ msgstr "Nigeria"
 #: app/Date/JewishDate.php:143
 msgctxt "GENITIVE"
 msgid "Nissan"
-msgstr ""
+msgstr "Nissan"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:219
@@ -11759,13 +11759,13 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6840
 msgid "Niue"
-msgstr ""
+msgstr "Niue"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:91
 msgctxt "GENITIVE"
 msgid "Nivose"
-msgstr ""
+msgstr "Nivose"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:157
@@ -11849,7 +11849,7 @@ msgstr[1] "Nuk ka ngjarje për %s ditët në vijim."
 #: app/Functions/FunctionsPrintLists.php:1819
 #: app/Functions/FunctionsPrintLists.php:1710,
 msgid "No events exist for today."
-msgstr "Nuk k ngjarje për sot."
+msgstr "Nuk ka ngjarje për sot."
 
 #: app/Functions/FunctionsPrintLists.php:1718
 #: app/Functions/FunctionsPrintLists.php:1829
@@ -11961,7 +11961,7 @@ msgstr "Mu askush"
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:86
 msgid "Nocturnal"
-msgstr ""
+msgstr "Nocturnal"
 
 #: admin_trees_download.php:178 app/Module/ClippingsCartModule.php:387
 #: app/Module/ClippingsCartModule.php:766
@@ -11986,7 +11986,7 @@ msgstr "Asgjë"
 #. I18N: The ninth day in the French republican calendar
 #: app/Date/FrenchDate.php:205
 msgid "Nonidi"
-msgstr ""
+msgstr "Nonidi"
 
 # I18N: time format “%A” - exactly 12:00:00
 #. I18N: time format “%A” - exactly 12:00:00
@@ -12090,7 +12090,7 @@ msgstr "Vëreni që nëse një llogari përdoruesi lidhet me shënimin, atëher�
 
 #: admin_users.php:601
 msgid "Note: longer path lengths require a lot of calculation, which can make your website run slowly for these users."
-msgstr "Vërejtje: gjatësitë më të mëdha të pathit kërkojnë më shumë kalkulime, gjë që bën që qeb faqja juaj të jetë më e ngadalshme pë këta përdorues."
+msgstr "Vërejtje: gjatësitë më të mëdha të pathit kërkojnë më shumë kalkulime, gjë që bën që ueb faqja juaj të jetë më e ngadalshme për këta përdorues."
 
 # I18N: Name of a module
 #. I18N: Name of a module
@@ -12124,7 +12124,7 @@ msgstr "Nën"
 #: app/Date/CalendarDate.php:221
 msgctxt "GENITIVE"
 msgid "November"
-msgstr "Nëntorit"
+msgstr "Nëntor"
 
 #: app/Date/CalendarDate.php:289
 msgctxt "INSTRUMENTAL"
@@ -12264,7 +12264,7 @@ msgstr "Tet"
 #. I18N: The eighth day in the French republican calendar
 #: app/Date/FrenchDate.php:204
 msgid "Octidi"
-msgstr ""
+msgstr "Octidi"
 
 #: app/Date/CalendarDate.php:220
 msgctxt "GENITIVE"
@@ -12338,7 +12338,7 @@ msgstr "Nëna më e vjetër"
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:87
 msgid "Olivia"
-msgstr ""
+msgstr "Olivia"
 
 # I18N: Name of a country or state
 #. I18N: Name of a country or state
@@ -12370,7 +12370,7 @@ msgstr "Vetëm udhëheqësit mund të editojnë"
 
 #: site-unavailable.php:79
 msgid "Oops! The webserver is unable to connect to the database server. It could be busy, undergoing maintenance, or simply broken. You should <a href=\"index.php\">try again</a> in a few minutes or contact the website administrator."
-msgstr "Upps! Web serveri nuk është në gjendje të lidhet me serverin e databazës. Mund të jetë e zënë, në mirëmbajtje, ose thjeshtë e prishur.  Ju mund të <a href=\"index.php\">provoni përsëri</a>pas pak ose të kontaktoni administratorin e web faqes."
+msgstr "Upps! Ueb serveri nuk është në gjendje të lidhet me serverin e databazës. Mund të jetë e zënë, në mirëmbajtje, ose thjeshtë e prishur.  Ju mund të <a href=\"index.php\">provoni përsëri</a>pas pak ose të kontaktoni administratorin e ueb faqes."
 
 #: setup.php:213
 msgid "Oops! webtrees was unable to create files in this folder."
@@ -12405,7 +12405,7 @@ msgstr "Renditja"
 #: app/Date/JalaliDate.php:88
 msgctxt "GENITIVE"
 msgid "Ordibehesht"
-msgstr ""
+msgstr "Ordibehesht"
 
 #. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:152
@@ -12435,7 +12435,7 @@ msgstr "Urdhëresë"
 #. I18N: gedcom tag ORDN
 #: app/GedcomTag.php:664
 msgid "Ordination"
-msgstr "Vendimi"
+msgstr "Urdhëresë fetare"
 
 #: modules_v3/change_report/report.xml:10
 #: modules_v3/pedigree_report/report.xml:6
@@ -12866,12 +12866,12 @@ msgstr "Magjistari i transferimit PhpGedView në webtrees"
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:88
 msgid "Pink Plastic"
-msgstr ""
+msgstr "Pink Plastic"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6849
 msgid "Pitcairn"
-msgstr ""
+msgstr "Pitcairn"
 
 # I18N: gedcom tag PLAC
 #. I18N: gedcom tag PLAC
@@ -12948,17 +12948,17 @@ msgstr "Vendi i pagëzimit LDS"
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:780
 msgid "Place of LDS child sealing"
-msgstr ""
+msgstr "Vendi i zotimit LDS të fëmijës"
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:416
 msgid "Place of LDS endowment"
-msgstr ""
+msgstr "Vendi i ndihmës LDS"
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:472
 msgid "Place of LDS spouse sealing"
-msgstr ""
+msgstr "Vendi i zotimit LDS të fëmijës"
 
 #: app/GedcomTag.php:134
 msgid "Place of adoption"
@@ -12971,11 +12971,11 @@ msgstr "Vendi i pagëzimit"
 
 #: app/GedcomTag.php:194 modules_v3/missing_facts_report/report.xml:223
 msgid "Place of bar mitzvah"
-msgstr ""
+msgstr "Vendi i bar mitzvah"
 
 #: app/GedcomTag.php:202 modules_v3/missing_facts_report/report.xml:264
 msgid "Place of bat mitzvah"
-msgstr ""
+msgstr "Vendi i bat mitzvah"
 
 #: app/GedcomTag.php:210 modules_v3/fact_sources/report.xml:273
 #: modules_v3/missing_facts_report/report.xml:93 app/GedcomTag.php:210,
@@ -12989,7 +12989,7 @@ msgstr "Vendi i bekimit"
 
 #: app/GedcomTag.php:1092
 msgid "Place of brit milah"
-msgstr ""
+msgstr "Vendi i synetisë"
 
 #: app/GedcomTag.php:230 modules_v3/missing_facts_report/report.xml:557
 #: app/GedcomTag.php:230,
@@ -13031,7 +13031,7 @@ msgstr "Vendi i ngjarjes"
 
 #: app/GedcomTag.php:484 modules_v3/missing_facts_report/report.xml:389
 msgid "Place of first communion"
-msgstr ""
+msgstr "Vendi i bashkangjitjes së parë"
 
 #: app/GedcomTag.php:528
 msgid "Place of immigration"
@@ -13128,7 +13128,7 @@ msgstr "Ju lutem jepni email adresën ashtuqë të mund t'ju kontaktojmë në p�
 #: app/Date/FrenchDate.php:92
 msgctxt "GENITIVE"
 msgid "Pluviose"
-msgstr ""
+msgstr "Pluviose"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:158
@@ -13207,7 +13207,7 @@ msgstr "Kodi postal"
 #: app/Date/FrenchDate.php:96
 msgctxt "GENITIVE"
 msgid "Prairial"
-msgstr ""
+msgstr "Prairial"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:162
@@ -13309,7 +13309,7 @@ msgstr "Prifti"
 #. I18N: The first day in the French republican calendar
 #: app/Date/FrenchDate.php:197
 msgid "Primidi"
-msgstr ""
+msgstr "Primidi"
 
 #: modules_v3/family_group_report/report.xml:10
 msgid "Print basic events when blank"
@@ -13347,7 +13347,7 @@ msgstr "Private"
 #. I18N: gedcom tag PROB
 #: app/GedcomTag.php:700
 msgid "Probate"
-msgstr "Trashëgimia"
+msgstr "Homologimi"
 
 # I18N: gedcom tag PROP
 #. I18N: gedcom tag PROP
@@ -13394,7 +13394,7 @@ msgstr "Cilësia e shënimeve"
 #. I18N: The fourth day in the French republican calendar
 #: app/Date/FrenchDate.php:200
 msgid "Quartidi"
-msgstr ""
+msgstr "Quartidi"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:175
 msgid "Question"
@@ -13425,7 +13425,7 @@ msgstr "Faktet e shpejta të burimit"
 #. I18N: The fifth day in the French republican calendar
 #: app/Date/FrenchDate.php:201
 msgid "Quintidi"
-msgstr ""
+msgstr "Quintidi"
 
 # I18N: When replying to an email, the subject becomes “RE: <subject>”
 #. I18N: When replying to an email, the subject becomes “RE: <subject>”
@@ -13496,13 +13496,13 @@ msgstr ""
 #. I18N: This is an Arabic word, pronounced “ra DAH”. It is child-to-parent pedigree, established by wet-nursing.
 #: app/GedcomCode/GedcomCodePedi.php:93
 msgid "Rada"
-msgstr ""
+msgstr "Rada"
 
 #. I18N: http://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php:96
 msgctxt "GENITIVE"
 msgid "Rajab"
-msgstr ""
+msgstr "Rajab"
 
 #. I18N: http://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php:160
@@ -13533,7 +13533,7 @@ msgstr "Raleigh, North Carolina, SHBA"
 #: app/Date/HijriDate.php:98
 msgctxt "GENITIVE"
 msgid "Ramadan"
-msgstr "Ramazan"
+msgstr "Ramazanit"
 
 # I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #. I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
@@ -13984,7 +13984,7 @@ msgstr "Rivendos bllokun e dukjes së parazgjedhur"
 #. I18N: http://en.wikipedia.org/wiki/User_agent
 #: admin_site_access.php:351
 msgid "Restrict access to the website, using IP addresses and user-agent strings."
-msgstr "Kufizoni çasjen në web faqe, duke përdorur adresat IP dhe vargjet e agjentëve-përdorues."
+msgstr "Kufizoni çasjen në ueb faqe, duke përdorur adresat IP dhe vargjet e agjentëve-përdorues."
 
 #: admin_users.php:584
 msgid "Restrict to immediate family"
@@ -13994,7 +13994,7 @@ msgstr "Kufizo në familjen e ngushtë"
 #. I18N: gedcom tag RESN
 #: app/GedcomTag.php:740
 msgid "Restriction"
-msgstr "Kufizimi"
+msgstr "Kufizim"
 
 #: help_text.php:259
 msgid "Restrictions can be added to records and/or facts. They restrict who can view the data and who can edit it."
@@ -14074,7 +14074,7 @@ msgstr "Rregulli"
 #. I18N: http://en.wikipedia.org/wiki/Soundex
 #: app/Soundex.php:29 branches.php:55 search.php:258
 msgid "Russell"
-msgstr ""
+msgstr "Russell"
 
 # I18N: Name of a country or state
 #. I18N: Name of a country or state
@@ -14102,7 +14102,7 @@ msgstr "Sacramento, California, SHBA"
 #: app/Date/HijriDate.php:91
 msgctxt "GENITIVE"
 msgid "Safar"
-msgstr ""
+msgstr "Safar"
 
 #. I18N: http://en.wikipedia.org/wiki/Safar
 #: app/Date/HijriDate.php:155
@@ -14125,32 +14125,32 @@ msgstr ""
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:89
 msgid "Sage"
-msgstr ""
+msgstr "I urtë"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6874
 msgid "Saint Helena"
-msgstr ""
+msgstr "Shën Helena"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6795
 msgid "Saint Kitts and Nevis"
-msgstr ""
+msgstr "Shën Kitt dhe Nevis"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6802
 msgid "Saint Lucia"
-msgstr ""
+msgstr "Shën Lucia"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6881
 msgid "Saint Pierre and Miquelon"
-msgstr ""
+msgstr "Shën Pierre dhe Miquelon"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6914
 msgid "Saint Vincent and the Grenadines"
-msgstr ""
+msgstr "Shën Vincent dhe Grenadina"
 
 # I18N: Location of an LDS church temple
 #. I18N: Location of an LDS church temple
@@ -14215,7 +14215,7 @@ msgstr "Sao Paulo, Brazil"
 #. I18N: Name of a country or state
 #: app/Stats.php:6883
 msgid "Sao Tome and Principe"
-msgstr ""
+msgstr "Sao Tome dhe Principe"
 
 # I18N: abbreviation for Saturday
 #. I18N: abbreviation for Saturday
@@ -14258,7 +14258,7 @@ msgstr "Fletorja"
 #: app/GedcomCode/GedcomCodePedi.php:81
 msgctxt "Female pedigree"
 msgid "Sealing"
-msgstr ""
+msgstr "Zotim"
 
 #. I18N: “sealing” is a ceremony in the Mormon church.
 #: app/GedcomCode/GedcomCodePedi.php:77
@@ -14532,7 +14532,7 @@ msgstr "Të ndarë"
 #: app/Date/CalendarDate.php:219
 msgctxt "GENITIVE"
 msgid "September"
-msgstr "Shtatorit"
+msgstr "Shtator"
 
 #: app/Date/CalendarDate.php:287
 msgctxt "INSTRUMENTAL"
@@ -14553,12 +14553,12 @@ msgstr "Shtatori"
 #. I18N: The seventh day in the French republican calendar
 #: app/Date/FrenchDate.php:203
 msgid "Septidi"
-msgstr ""
+msgstr "Septidi"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6871
 msgid "Serbia"
-msgstr ""
+msgstr "Serbia"
 
 #: app/GedcomCode/GedcomCodeRela.php:245
 msgid "Servant"
@@ -14661,7 +14661,7 @@ msgstr "Magjistari i instalimit të webtrees"
 #. I18N: The sixth day in the French republican calendar
 #: app/Date/FrenchDate.php:202
 msgid "Sextidi"
-msgstr ""
+msgstr "Sextidi"
 
 # I18N: Name of a country or state
 #. I18N: Name of a country or state
@@ -14678,7 +14678,7 @@ msgstr "Shah"
 #: app/Date/JalaliDate.php:92
 msgctxt "GENITIVE"
 msgid "Shahrivar"
-msgstr ""
+msgstr "Shahrivar"
 
 #. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:156
@@ -14728,7 +14728,7 @@ msgstr "U gjetën këto njoftime të ndara"
 #: app/Date/HijriDate.php:99
 msgctxt "GENITIVE"
 msgid "Shawwal"
-msgstr ""
+msgstr "Shawwal"
 
 #. I18N: http://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php:163
@@ -14810,7 +14810,7 @@ msgstr "Ajo është kremuar me"
 #: app/Date/JewishDate.php:139
 msgctxt "GENITIVE"
 msgid "Shevat"
-msgstr ""
+msgstr "Shevat"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:215
@@ -14833,7 +14833,7 @@ msgstr ""
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:90
 msgid "Shiny Tomato"
-msgstr ""
+msgstr "Shiny Tomato"
 
 # I18N: gedcom tag _SUBQ
 #. I18N: gedcom tag _SUBQ
@@ -15381,7 +15381,7 @@ msgstr "Sitemaps janë mënyrë për webmasterat të tregojnë makinave kërkues
 #: app/Date/JewishDate.php:145
 msgctxt "GENITIVE"
 msgid "Sivan"
-msgstr ""
+msgstr "Sivan"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:221
@@ -15460,7 +15460,7 @@ msgstr "Snowflake, Arizona, SHBA"
 #. I18N: gedcom tag SSN
 #: app/GedcomTag.php:796
 msgid "Social security number"
-msgstr "Numri i amzës"
+msgstr "Numri i sigurimit social"
 
 # I18N: Name of a country or state
 #. I18N: Name of a country or state
@@ -15478,7 +15478,7 @@ msgstr "Somalia"
 #. I18N: Help text for the “GEDCOM media path” configuration setting. A “path” is something like “C:\Documents\Genealogy\Photos\John_Smith.jpeg”
 #: admin_trees_manage.php:300
 msgid "Some genealogy software creates GEDCOM files that contain media filenames with full paths. These paths will not exist on the web-server. To allow webtrees to find the file, the first part of the path must be removed."
-msgstr "Disa programe gjenealogjike krijojnë fajla GEDCOM që përbëjnë emrat e fajlit të mediave më path-e të plota. Këto path-e nuk do të ekzistojnënë web server. Për të lejuar webtrees që të gjejë fajlin, pjesa e parë e path-it duhet mënjanuar."
+msgstr "Disa programe gjenealogjike krijojnë fajla GEDCOM që përbëjnë emrat e fajlit të mediave më path-e të plota. Këto path-e nuk do të ekzistojnënë ueb server. Për të lejuar webtrees që të gjejë fajlin, pjesa e parë e path-it duhet mënjanuar."
 
 # I18N: Help text for the “Hit counters” configuration setting
 #. I18N: Help text for the “Hit counters” configuration setting
@@ -15542,7 +15542,7 @@ msgstr "Renditja"
 #: app/Controller/BranchesController.php:250
 #: app/Functions/FunctionsPrintLists.php:285
 msgid "Sosa"
-msgstr ""
+msgstr "Sosa"
 
 #: search_advanced.php:160 search_advanced.php:222 search_advanced.php:237
 #: search_advanced.php:258 search_advanced.php:273 search_advanced.php:160,
@@ -15992,7 +15992,7 @@ msgstr "Suva, Fixhi"
 #. I18N: Name of a country or state
 #: app/Stats.php:6875
 msgid "Svalbard and Jan Mayen"
-msgstr ""
+msgstr "Svalbard dhe Jan Mayen"
 
 # I18N: Reverse the order of two individuals
 #. I18N: Reverse the order of two individuals
@@ -16082,7 +16082,7 @@ msgstr "Tampico, Meksikê"
 #: app/Date/JewishDate.php:146
 msgctxt "GENITIVE"
 msgid "Tamuz"
-msgstr ""
+msgstr "Tamuz"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:222
@@ -16111,7 +16111,7 @@ msgstr "Tanzani"
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:91
 msgid "Teal Top"
-msgstr ""
+msgstr "Kaptina cian"
 
 # I18N: A configuration setting
 #. I18N: A configuration setting
@@ -16144,7 +16144,7 @@ msgstr "Terreni"
 #: app/Date/JewishDate.php:138
 msgctxt "GENITIVE"
 msgid "Tevet"
-msgstr ""
+msgstr "Tevet"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:214
@@ -16422,13 +16422,13 @@ msgstr "Teksti i ndihmës nuk është shkruar për këtë element."
 #. I18N: Help text for the “Technical help contact” configuration setting
 #: admin_trees_config.php:909
 msgid "The individual to be contacted about technical questions or errors encountered on your website."
-msgstr "Personi që duhet kontaktuar për pyetjet teknike ose gabimet e paraqitura në web faqen tuaj."
+msgstr "Personi që duhet kontaktuar për pyetjet teknike ose gabimet e paraqitura në ueb faqen tuaj."
 
 # I18N: Help text for the “Genealogy contact” configuration setting
 #. I18N: Help text for the “Genealogy contact” configuration setting
 #: admin_trees_config.php:887
 msgid "The individual to contact about the genealogy data on this website."
-msgstr "Personi për ta kontaktuar për shënimet gjenealogjike në këtë web faqe."
+msgstr "Personi për ta kontaktuar për shënimet gjenealogjike në këtë ueb faqe."
 
 # I18N: %s are names of records, such as sources, repositories or individuals
 #. I18N: %s are names of records, such as sources, repositories or individuals
@@ -16706,28 +16706,28 @@ msgstr "Versioni i %s është shumë i vjetër."
 
 #: admin_site_access.php:77
 msgid "The website access rule has been created."
-msgstr "Rregulla e çasjes së web faqes u krijua."
+msgstr "Rregulla e çasjes së ueb faqes u krijua."
 
 #: admin_site_access.php:105
 msgid "The website access rule has been deleted."
-msgstr "Rregulla e çasjes së web faqes është fshirë."
+msgstr "Rregulla e çasjes së ueb faqes është fshirë."
 
 #: admin_site_access.php:89
 msgid "The website access rule has been updated."
-msgstr "Rregulla e çasjes së web faqes është pëditësuar."
+msgstr "Rregulla e çasjes së ueb faqes është pëditësuar."
 
 #: admin_site_config.php:47 admin_site_config.php:66 admin_site_config.php:78
 #: admin_site_config.php:93 admin_site_config.php:102 admin_site_config.php:47,
 #: admin_site_config.php:66, admin_site_config.php:78,
 #: admin_site_config.php:93,
 msgid "The website preferences have been updated."
-msgstr "Preferencat e web faqes janë përditësuar."
+msgstr "Preferencat e ueb faqes janë përditësuar."
 
 # I18N: Help text for the “Use GeoNames database for autocomplete on places” configuration setting
 #. I18N: Help text for the “Use GeoNames database for autocomplete on places” configuration setting
 #: admin_trees_config.php:1547
 msgid "The website www.geonames.org provides a large database of place names. This can be searched when entering new places. To use this feature, you must register for a free account at www.geonames.org and provide the username."
-msgstr "Web sajti www.geonames.org ka databazë të madhe të merave të vendeve. Kjo mund të kërkohet kur fusni vendet e reja. Për të përdorur këtë veçori, ju duhet të regjistroheni për një llogari falas te www.geonames.org dhe të jepni pseudonimin."
+msgstr "Ueb sajti www.geonames.org ka databazë të madhe të merave të vendeve. Kjo mund të kërkohet kur fusni vendet e reja. Për të përdorur këtë veçori, ju duhet të regjistroheni për një llogari falas te www.geonames.org dhe të jepni pseudonimin."
 
 #: setup.php:509
 msgid "The webtrees developers would be very interested to learn about this error. If you contact them, they will help you resolve the problem."
@@ -16815,7 +16815,7 @@ msgstr "Kishte një gabim gjatë ngarkimit të fajlit."
 #: app/Date/FrenchDate.php:98
 msgctxt "GENITIVE"
 msgid "Thermidor"
-msgstr ""
+msgstr "Thermidor"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:164
@@ -16875,7 +16875,7 @@ msgstr "Databaza po punon me versionin %s të MySQL. Ju këtu nuk mund të insta
 #: admin_users.php:366 edituser.php:265 login.php:434 setup.php:445
 #: admin_users.php:366, edituser.php:265, login.php:434,
 msgid "This email address will be used to send password reminders, website notifications, and messages from other family members who are registered on the website."
-msgstr "Email adresa do të përdoret për të dërguar përkujtuesit e fjalëkalimeve, njoftimet e web faqes dhe mesazhet nga anëtarët tjerë të familjes, të cilët janë regjistruar në web faqe."
+msgstr "Email adresa do të përdoret për të dërguar përkujtuesit e fjalëkalimeve, njoftimet e ueb faqes dhe mesazhet nga anëtarët tjerë të familjes, të cilët janë regjistruar në web faqe."
 
 #: addmedia.php:540
 msgid "This entry is ignored if you have entered a URL into the filename field."
@@ -17036,7 +17036,7 @@ msgstr "Kjo është lidhja për shënimin tuaj në trungun familjar. Nëse ky ë
 #. I18N: Help text for the “LDS ordinance codes in chart boxes” configuration setting. "B", "E", "S" and "P" should not be translated.
 #: admin_trees_config.php:1329
 msgid "This is a summary of the <abbr title=\"The Church of Jesus Christ of Latter-day Saints\">LDS</abbr> ordinances for the individual. “B” indicates an LDS baptism. “E” indicates an LDS endowment. “S” indicates an LDS spouse sealing. “P” indicates an LDS child-to-parent sealing."
-msgstr "Kjo është përmbledhje <abbr title=“The Church of Jesus Christ of Latter-day Saints”>LDS</abbr> e ritualeve për personin. “B” tregon pagëzimin LDS. “E” tregon fondin LDS. “S” tregon martesën zyrtare LDS. “P” tregon zyrtarizimin LSD fëmijë-prind."
+msgstr "Kjo është përmbledhje <abbr title=\"The Church of Jesus Christ of Latter-day Saints\">LSD</abbr> e ritualeve për personin. “B” tregon pagëzimin LDS. “E” tregon fondin LDS. “S” tregon martesën zyrtare LDS. “P” tregon zyrtarizimin LSD fëmijë-prind."
 
 #: setup.php:290 setup.php:294 setup.php:290,
 msgid "This is case sensitive."
@@ -17351,7 +17351,7 @@ msgstr "Ky rol i ka të gjitha autorizimet e rolit të editorit, plus lejet për
 
 #: admin_users.php:566
 msgid "This role has all the permissions of the manager role in all family trees, plus permission to change the settings/configuration of the website, users, and modules."
-msgstr "Ky rol i ka të gjitha autorizimet e rolit të udhëheqësit në të gjitha trungjet familjare, plus lejet për ndryshim të përkufizimeve/konfiduracionit të web faqes, përdoruesve dhe moduleve."
+msgstr "Ky rol i ka të gjitha autorizimet e rolit të udhëheqësit në të gjitha trungjet familjare, plus lejet për ndryshim të përkufizimeve/konfiduracionit të ueb faqes, përdoruesve dhe moduleve."
 
 #: admin_users.php:546
 msgid "This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be reviewed by a moderator, unless the user has the “automatically accept changes” option enabled."
@@ -17359,11 +17359,11 @@ msgstr "Ky rol i ka të gjitha autorizimet e rolit të anëtarit, plus lejet pë
 
 #: admin_users.php:560
 msgid "This role has all the permissions of the moderator role, plus any additional access granted by the family tree configuration, plus permission to change the settings/configuration of a family tree."
-msgstr "Ky rol i ka të gjitha autorizimet e rolit të moderatorit, plus çfarëdo çasje e lejuar nga konfigurimi i trungut familjar, plus leje për të ndryshuar përkufizimet/konfigurimin e trungut familjar."
+msgstr "Ky rol i ka të gjitha autorizimet e rolit të moderuesit, plus çfarëdo çasje e lejuar nga konfigurimi i trungut familjar, plus leje për të ndryshuar përkufizimet/konfigurimin e trungut familjar."
 
 #: admin_users.php:538
 msgid "This role has all the permissions of the visitor role, plus any additional access granted by the family tree configuration."
-msgstr "Ky rol i ka të gjitha autorizimet të rolit të vizitorit, plus çfarëdo çasje shtesëe lejuar nga konfigurimi i trungut familjar."
+msgstr "Ky rol i ka të gjitha autorizimet e rolit të vizitorit, plus çfarëdo çasje shtesë e lejuar nga konfigurimi i trungut familjar."
 
 # I18N: http://en.wikipedia.org/wiki/Https
 #. I18N: http://en.wikipedia.org/wiki/Https
@@ -17429,19 +17429,19 @@ msgstr "Kjo zakonisht nënkupton që ju duhet të ndryshoni lejen e folderit në
 
 #: admin_site_upgrade.php:41
 msgid "This website is being upgraded. Try again in a few minutes."
-msgstr "Ky web sajt po ngritet në post. Provoni përsëri pas disa minutash."
+msgstr "Ky ueb sajt po ngritet në post. Provoni përsëri pas disa minutash."
 
 #: site-offline.php:71
 msgid "This website is down for maintenance. You should <a href=\"index.php\">try again</a> in a few minutes."
-msgstr "Ky web sajt është aktualisht i padisponueshëm për mirëmbajtje. Ju duhet të <a href=\"index.php\">provoni</a> pas disa minutash."
+msgstr "Ky ueb sajt është aktualisht i padisponueshëm për mirëmbajtje. Ju duhet të <a href=\"index.php\">provoni</a> pas disa minutash."
 
 #: site-offline.php:65 site-unavailable.php:76 site-offline.php:65,
 msgid "This website is temporarily unavailable"
-msgstr "Ky web sajt përkohësisht është i padisponueshëm"
+msgstr "Ky ueb sajt përkohësisht është i padisponueshëm"
 
 #: app/Theme/AbstractTheme.php:346
 msgid "This website uses cookies to learn about visitor behaviour."
-msgstr "Ky web sajt përdor kukit për të mësuar sjelljen e vizitorëve."
+msgstr "Ky ueb sajt përdor kukit për të mësuar sjelljen e vizitorëve."
 
 # I18N: %s is the name of a family tree
 #. I18N: %s is the name of a family tree
@@ -17549,7 +17549,7 @@ msgstr ""
 #: app/Date/JewishDate.php:135
 msgctxt "GENITIVE"
 msgid "Tishrei"
-msgstr ""
+msgstr "Tishrei"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:211
@@ -17609,7 +17609,7 @@ msgstr "Për të sigururar kompatibilitet me aplikacionet tjera gjenealogjike, n
 #: admin_site_upgrade.php:340
 #, php-format
 msgid "To prevent visitors from accessing the website while you are in the middle of copying files, you can temporarily create a file %s on the server. If it contains a message, it will be displayed to visitors."
-msgstr "Për të ndaluar vizitorët të kenë çasje në web faqe derisa ju jeni në mes të kopjimit të fajlave, ju përkohësisht mund të krijoni një fajl %s në server. Nëse ajo përbën mesazh, ajo do të shfaqet për vizitorët."
+msgstr "Për të ndaluar vizitorët të kenë çasje në ueb faqe derisa ju jeni në mes të kopjimit të fajlave, ju përkohësisht mund të krijoni një fajl %s në server. Nëse ajo përbën mesazh, ajo do të shfaqet për vizitorët."
 
 # I18N: “Apache” is a software program.
 #. I18N: “Apache” is a software program.
@@ -17638,7 +17638,7 @@ msgstr "Për t'u treguar makinave të kërkimit se harta e sajtave janë në dis
 
 #: admin_site_config.php:441
 msgid "To use a Google mail account, use the following settings: server=smtp.gmail.com, port=587, security=tls, username=xxxxx@gmail.com, password=[your gmail password]"
-msgstr "Për të përdorur llogarinë e emailit Google, përdorni përkufizimet si në vijim: server=smtp.gmail.com, port=587, security=tls, username=xxxxx@gmail.com, password=[your gmail password]"
+msgstr "Për të përdorur llogarinë e emailit Google, përdorni përkufizimet si në vijim: server=smtp.gmail.com, port=587, security=tls, username=xxxxx@gmail.com, password=[fjalëkalimi juaj gmail]"
 
 # I18N: Name of a country or state
 #. I18N: Name of a country or state
@@ -17649,7 +17649,7 @@ msgstr "Togo"
 #. I18N: Name of a country or state
 #: app/Stats.php:6897
 msgid "Tokelau"
-msgstr ""
+msgstr "Tokelau"
 
 # I18N: Location of an LDS church temple
 #. I18N: Location of an LDS church temple
@@ -17666,7 +17666,7 @@ msgstr "Gur varri"
 #. I18N: Name of a country or state
 #: app/Stats.php:6900
 msgid "Tonga"
-msgstr ""
+msgstr "Tonga"
 
 # I18N: Title for a list of the most common given names, %s is a number. Note that a separate translation exists when %s is 1
 #. I18N: Title for a list of the most common given names, %s is a number. Note that a separate translation exists when %s is 1
@@ -17880,12 +17880,12 @@ msgstr "Gjurmimi dhe analitika nuk janë shtuar në panelin e kontrollit."
 #. I18N: gedcom tag TRLR
 #: app/GedcomTag.php:844
 msgid "Trailer"
-msgstr ""
+msgstr "Paraqitje e shkurtër"
 
 #. I18N: The third day in the French republican calendar
 #: app/Date/FrenchDate.php:199
 msgid "Tridi"
-msgstr ""
+msgstr "Tridi"
 
 # I18N: Name of a country or state
 #. I18N: Name of a country or state
@@ -17937,7 +17937,7 @@ msgstr "Ishujt Turks dhe Caicos"
 #. I18N: Name of a country or state
 #: app/Stats.php:6904
 msgid "Tuvalu"
-msgstr ""
+msgstr "Tuvalu"
 
 # I18N: Location of an LDS church temple
 #. I18N: Location of an LDS church temple
@@ -18098,7 +18098,7 @@ msgstr "Shtetet e Bashkuara"
 #: app/GedcomRecord.php:1159 app/GedcomRecord.php:1163 app/Stats.php:6670
 #: app/GedcomRecord.php:1159, app/GedcomRecord.php:1163,
 msgid "Unknown"
-msgstr "I panjohur"
+msgstr "Të panjohur"
 
 #: app/Stats.php:5190
 msgctxt "unknown century"
@@ -18396,7 +18396,7 @@ msgstr "Vancouver, British Columbia, Kanada"
 #. I18N: Name of a country or state
 #: app/Stats.php:6919
 msgid "Vanuatu"
-msgstr ""
+msgstr "Vanuatu"
 
 # I18N: Description of the “StatisticsChart” module
 #. I18N: Description of the “StatisticsChart” module
@@ -18414,7 +18414,7 @@ msgstr "Vatikani"
 #: app/Date/FrenchDate.php:88
 msgctxt "GENITIVE"
 msgid "Vendemiaire"
-msgstr ""
+msgstr "Vendemiaire"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:154
@@ -18444,7 +18444,7 @@ msgstr "Venecuela"
 #: app/Date/FrenchDate.php:93
 msgctxt "GENITIVE"
 msgid "Ventose"
-msgstr ""
+msgstr "Ventose"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:159
@@ -18611,7 +18611,7 @@ msgstr "Uellsi"
 #. I18N: Name of a country or state
 #: app/Stats.php:6920
 msgid "Wallis and Futuna"
-msgstr ""
+msgstr "Wallis dhe Futuna"
 
 #: app/GedcomCode/GedcomCodeRela.php:263
 msgid "Ward"
@@ -18647,25 +18647,25 @@ msgstr "Vulat e ujit janë opcionale dhe normalisht shfaqen për vizitorët."
 #. I18N: Help text for the “Store watermarked full size images on server” configuration setting
 #: admin_trees_config.php:1118
 msgid "Watermarks can be slow to generate for large images. Busy websites may prefer to generate them once and store the watermarked image on the server."
-msgstr "Vulat e ujit mund të jenë të ngadalshme për imazhed e mëdha. Websajtat e zënë mund të preferojnë t'i gjenerojnë ato një herë dhe të ruajnë imazhin me vulë uji në server."
+msgstr "Vulat e ujit mund të jenë të ngadalshme për imazhed e mëdha. Uebsajtat e zënë mund të preferojnë t'i gjenerojnë ato një herë dhe të ruajnë imazhin me vulë uji në server."
 
 #: login.php:390
 #, php-format
 msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically. You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To sign in to this website, you will need to know your username and password."
-msgstr "Ne do të dërgojmë tash një email konfirmimi në adresën <b>%s</b>. Ju duhet ta verifikoni kërkesën për llogarinë tuaj duke ndjekur këshillat në emailin për konfirmim. Po të mos konfirmoni kërkesën tuaj për llogari brenda shtatë ditësh, kërkesa juaj do të refuzohet automatikisht. Ju duhet të aplikoni përsëri.<br><br>Pasi të keni ndjekur këshillat në emailin konfirmues, administratori prap duhet të aprovojë kërkesën tuaj para se llogaria e juaj të mund të përdoret.<br><br>Për të hyrë në këtë websajt, ju duhet të dini pseudonimin dhe fjalëkalimin tuaj."
+msgstr "Ne do të dërgojmë tash një email konfirmimi në adresën <b>%s</b>. Ju duhet ta verifikoni kërkesën për llogarinë tuaj duke ndjekur këshillat në emailin për konfirmim. Po të mos konfirmoni kërkesën tuaj për llogari brenda shtatë ditësh, kërkesa juaj do të refuzohet automatikisht. Ju duhet të aplikoni përsëri.<br><br>Pasi të keni ndjekur këshillat në emailin konfirmues, administratori prap duhet të aprovojë kërkesën tuaj para se llogaria e juaj të mund të përdoret.<br><br>Për të hyrë në këtë uebsajt, ju duhet të dini pseudonimin dhe fjalëkalimin tuaj."
 
 # I18N: Menu entry
 #. I18N: Menu entry
 #: admin_trees_config.php:914 app/Theme/AdministrationTheme.php:94
 #: admin_trees_config.php:914,
 msgid "Website"
-msgstr "Websajti"
+msgstr "Uebsajti"
 
 # I18N: A configuration setting
 #. I18N: A configuration setting
 #: admin_site_config.php:305
 msgid "Website URL"
-msgstr "URL e websajtit"
+msgstr "URL e uebsajtit"
 
 # I18N: Menu entry
 #. I18N: Menu entry
@@ -18673,21 +18673,21 @@ msgstr "URL e websajtit"
 #: app/Theme/AdministrationTheme.php:101 admin_site_access.php:127,
 #: admin_site_access.php:240,
 msgid "Website access rules"
-msgstr "Rregullat e çasjes së websajtit"
+msgstr "Rregullat e çasjes së uebsajtit"
 
 # I18N: Menu entry
 #. I18N: Menu entry
 #: admin_site_logs.php:35 app/Theme/AdministrationTheme.php:100
 #: admin_site_logs.php:35,
 msgid "Website logs"
-msgstr "Logjet e websajtit"
+msgstr "Logjet e uebsajtit"
 
 # I18N: Menu entry
 #. I18N: Menu entry
 #: admin_site_config.php:141 app/Theme/AdministrationTheme.php:95
 #: admin_site_config.php:141,
 msgid "Website preferences"
-msgstr "Preferencat e websajtit"
+msgstr "Preferencat e uebsajtit"
 
 # I18N: abbreviation for Wednesday
 #. I18N: abbreviation for Wednesday
@@ -18721,7 +18721,7 @@ msgstr "Teksti mirëseardhës në faqen hyrëse"
 
 #: login.php:166
 msgid "Welcome to this genealogy website"
-msgstr "Mirë se erdhët në web faqes e gjenealogjisë"
+msgstr "Mirë se erdhët në ueb faqes e gjenealogjisë"
 
 # I18N: Name of a country or state
 #. I18N: Name of a country or state
@@ -18765,7 +18765,7 @@ msgstr "Kur të dërgoni këtë mesazh ju do të pranoni një kopje të dërguar
 
 #: admin_users.php:599
 msgid "Where a user is associated to an individual record in a family tree and has a role of member, editor, or moderator, you can prevent them from accessing the details of distant, living relations. You specify the number of relationship steps that the user is allowed to see."
-msgstr "Kur një përdorues është i lidhur me një shënim personal në trungun familjar dhe ka rolin e anëtarit, editorit ose moderatorit, ju mund ta parandaloni atë që t'i çaset detajeve të kushërinjëve të largët të gjallë. Ju specifikoni numrin e hapave të marëdhënjeve që përdoruesit i lejohet të shoh."
+msgstr "Kur një përdorues është i lidhur me një shënim personal në trungun familjar dhe ka rolin e anëtarit, editorit ose moderuesit, ju mund ta parandaloni atë që t'i çaset detajeve të kushërinjëve të largët të gjallë. Ju specifikoni numrin e hapave të marëdhënjeve që përdoruesit i lejohet të shoh."
 
 #: admin_pgv_to_wt.php:163
 msgid "Where is your PhpGedView installation?"
@@ -18903,12 +18903,12 @@ msgstr "Prefikset XREF"
 #. I18N: gedcom tag _YART - A yahrzeit is a special anniversary of death in the Hebrew faith/calendar.
 #: app/GedcomTag.php:1769
 msgid "Yahrzeit"
-msgstr ""
+msgstr "Yahrzeit"
 
 #. I18N: Name of a module. Yahrzeiten (the plural of Yahrzeit) are special anniversaries of deaths in the Hebrew faith/calendar.
 #: app/Module/YahrzeitModule.php:37
 msgid "Yahrzeiten"
-msgstr ""
+msgstr "Yahrzeiten"
 
 #: app/Theme/AbstractTheme.php:1067 calendar.php:203 search.php:248
 #: app/Theme/AbstractTheme.php:1067, calendar.php:203,
@@ -18967,7 +18967,7 @@ msgstr "Mund të zgjedhni prefiksin, të cilin do ta përdorni kurdoherë që XR
 
 #: admin_users.php:462 edituser.php:312 admin_users.php:462,
 msgid "You can choose whether to appear in the list of users who are currently signed-in."
-msgstr "Mund të zgjedhni se a duhet të paraqitet në listën e përdoruesve kush është kyçur. "
+msgstr "Mund të zgjedhni se a duhet të paraqitet në listën e përdoruesve kush është kyçur."
 
 # I18N: %s is a URL
 #. I18N: %s is a URL
@@ -19013,7 +19013,7 @@ msgstr "Ju mund të shpejtoni kalkulimet e privatësisë duke shtuar shënimin e
 
 #: admin_site_access.php:66
 msgid "You cannot create a rule which would prevent yourself from accessing the website."
-msgstr "Ju nuk mund të krijoni rregull, e cila do të ju ndalojë çasjen e websajtit."
+msgstr "Ju nuk mund të krijoni rregull, e cila do të ju ndalojë çasjen e uebsajtit."
 
 #: login.php:75
 msgid "You cannot sign in because your browser does not accept cookies."
@@ -19049,7 +19049,7 @@ msgstr "Ju mund të fusni një URL, duke filluar me \"http://\"."
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:445
 msgid "You may use HTML to format the answer and to add links to other websites."
-msgstr "Ju mund të përdorni HTML për formatizimin e përgjigjes dhe për të shtuar lidhje për websajtat tjerë."
+msgstr "Ju mund të përdorni HTML për formatizimin e përgjigjes dhe për të shtuar lidhje për uebsajtat tjerë."
 
 #: admin_site_config.php:441
 msgid "You must also enable “less secure applications” in your Google account."
@@ -19091,7 +19091,7 @@ msgstr "Ju duhet të rinumëroni shënimet në një nga trungjet para se t'i bas
 
 #: app/Module/ChartsBlockModule.php:138
 msgid "You must select an individual and a chart type in the block preferences"
-msgstr "Ju duhet të zgjedhni një person dhe një lloj grafi në bllokun e përkufizimeve të konfigurimit."
+msgstr "Ju duhet të zgjedhni një person dhe një lloj grafi në bllokun e përkufizimeve të konfigurimit"
 
 #: admin_users.php:286
 msgid "You must specify an individual record before you can restrict the user to their immediate family."
@@ -19115,7 +19115,7 @@ msgstr "Ju duhet të kontrolloni detajet e llogarisë."
 
 #: setup.php:425
 msgid "You need to set up an administrator account. This account can control all aspects of this webtrees installation. Please choose a strong password."
-msgstr "Ju duhet të krijoni një llogari administratori. Kjo llogari mund të kontrollojë të gjitha aspektet e instalimit të kësaj web faqeje. Ju lutem zgjedhni fjalëkalim të fortë."
+msgstr "Ju duhet të krijoni një llogari administratori. Kjo llogari mund të kontrollojë të gjitha aspektet e instalimit të kësaj ueb faqeje. Ju lutem zgjedhni fjalëkalim të fortë."
 
 #: admin_pgv_to_wt.php:1153
 msgid "You need to sign in again, using your PhpGedView username and password."
@@ -19125,7 +19125,7 @@ msgstr "Ju duhet të hyni përsëri, duke përdorur pseudonimin dha fjalëkalimi
 #. I18N: Help text for the "Login URL" site configuration setting
 #: admin_site_config.php:458
 msgid "You only need to enter a Sign-in URL if you want to redirect to a different website or location when your users sign in. This is very useful if you need to switch from http to https when your users sign in. Include the full URL to <i>login.php</i>. For example, https://www.yourserver.com/webtrees/login.php ."
-msgstr "Ju duhet vetë të fusni URL-në e hyrjes nëse doni të shkoni në websajt tjetër ose lokacion ku përdoruesit tuaj hyjnë. Kjo është shumë e dobishme nëse doni të kaloni nga http në https kur të hyjnë përdoruesit. Përfshini tërë URL-në në <i>login.php</i>. P. sh., https://www.serverijuaj.com/webtrees/login.php."
+msgstr "Ju duhet vetë të fusni URL-në e hyrjes nëse doni të shkoni në uebsajt tjetër ose lokacion ku përdoruesit tuaj hyjnë. Kjo është shumë e dobishme nëse doni të kaloni nga http në https kur të hyjnë përdoruesit. Përfshini tërë URL-në në <i>login.php</i>. P. sh., https://www.serverijuaj.com/webtrees/login.php."
 
 #: message.php:247
 msgid "You sent the following message to a webtrees administrator:"
@@ -19211,12 +19211,12 @@ msgstr "Llogaria juaj e përdoruesit nuk e ka të aktivizuar \"aprovo automatiki
 #: admin.php:578
 #, php-format
 msgid "Your web server is using PHP version %s, which is no longer maintained. You should upgrade to a later version."
-msgstr "Web serveri juaj përdor versionin %s PHP, i cili nuk mirëmbahet më. ju duhet të ngreni në post në një version më të vonshëm."
+msgstr "Ueb serveri juaj përdor versionin %s PHP, i cili nuk mirëmbahet më. ju duhet të ngreni në post në një version më të vonshëm."
 
 #: admin.php:570
 #, php-format
 msgid "Your web server is using PHP version %s, which is no longer receiving security updates. You should upgrade to a later version as soon as possible."
-msgstr "Web serveri përdor versionin %s PHP, i cili nuk pranon më përditësimet e sigurisë. Ju duhet ta ngreni në post në një version më të ri sa më shpejtë."
+msgstr "Ueb serveri përdor versionin %s PHP, i cili nuk pranon më përditësimet e sigurisë. Ju duhet ta ngreni në post në një version më të ri sa më shpejtë."
 
 # I18N: Name of a country or state
 #. I18N: Name of a country or state
@@ -19414,7 +19414,7 @@ msgstr "dhe"
 #: app/Functions/Functions.php:1092
 msgctxt "father’s brother’s wife"
 msgid "aunt"
-msgstr "gruaja e axhës"
+msgstr "halla/tezja"
 
 #: app/Functions/Functions.php:848
 msgctxt "father’s sister"
@@ -19444,7 +19444,7 @@ msgstr "halla/tezja"
 #: app/Functions/Functions.php:846
 msgctxt "father’s sibling"
 msgid "aunt/uncle"
-msgstr "halla/axha"
+msgstr "halla, tezja/axha, daja"
 
 #: app/Functions/Functions.php:884
 msgctxt "mother’s sibling"
@@ -19516,7 +19516,7 @@ msgstr "vëllau"
 #: app/Functions/Functions.php:1030
 msgctxt "brother’s wife’s brother"
 msgid "brother-in-law"
-msgstr "kunat"
+msgstr "kunati"
 
 #: app/Functions/Functions.php:854
 msgctxt "husband’s brother"
@@ -20061,7 +20061,7 @@ msgstr "i pari %s"
 
 #: app/Functions/Functions.php:555
 msgid "first cousin"
-msgstr "kushëriri i parë"
+msgstr "kushëri nga rrënja e parë"
 
 #: app/Functions/Functions.php:520
 msgctxt "FEMALE"
@@ -20138,7 +20138,7 @@ msgstr "kushëri nga rrënja e parë"
 #: app/Functions/Functions.php:1430
 msgctxt "father’s father’s brother’s child"
 msgid "first cousin once removed ascending"
-msgstr "fëmija e vëllaut të gjyshit"
+msgstr "djali i motrës së gjyshes nga nëna"
 
 #: app/Functions/Functions.php:1426
 msgctxt "father’s father’s brother’s daughter"
@@ -20316,7 +20316,7 @@ msgstr "kushëri i brezit të katërt"
 msgid "from %1$s interval %2$s year"
 msgid_plural "from %1$s interval %2$s years"
 msgstr[0] "nga %1$s intervali %2$s vit"
-msgstr[1] "nga %1$s intervali %2$s vite"
+msgstr[1] "nga %1$s intervali %2$s vjet"
 
 # I18N: Gedcom FROM dates
 #. I18N: Gedcom FROM dates
@@ -20351,7 +20351,7 @@ msgstr "shkoni te personi i ri"
 #: app/Functions/Functions.php:814
 msgctxt "child’s child"
 msgid "grandchild"
-msgstr "nipi"
+msgstr "nipi/mbesa nga djali"
 
 #: app/Functions/Functions.php:826
 msgctxt "daughter’s child"
@@ -20366,7 +20366,7 @@ msgstr "nipi/mbesa nga djali"
 #: app/Functions/Functions.php:816
 msgctxt "child’s daughter"
 msgid "granddaughter"
-msgstr "mbesa"
+msgstr "mbesa nga djali"
 
 #: app/Functions/Functions.php:828
 msgctxt "daughter’s daughter"
@@ -20882,7 +20882,7 @@ msgstr "7x stër-xhaxha"
 #: app/Functions/Functions.php:1372
 msgctxt "father’s father’s brother’s wife"
 msgid "great-aunt"
-msgstr "7x stër-hallë"
+msgstr "stër-hallë/teze"
 
 #: app/Functions/Functions.php:1104
 msgctxt "father’s father’s sister"
@@ -20972,7 +20972,7 @@ msgstr "stër-hallë/teze"
 #: app/Functions/Functions.php:1102
 msgctxt "father’s father’s sibling"
 msgid "great-aunt/uncle"
-msgstr "stër-hallë/teze"
+msgstr "stër-hallë/xhaxha"
 
 #: app/Functions/Functions.php:1374
 msgctxt "father’s father’s sibling’s spouse"
@@ -21107,7 +21107,7 @@ msgstr "stërnipi"
 #: app/Functions/Functions.php:1038
 msgctxt "child’s child’s daughter"
 msgid "great-granddaughter"
-msgstr "stërmbesa"
+msgstr "stërmbesa nga djali i djalit"
 
 #: app/Functions/Functions.php:1044
 msgctxt "child’s daughter’s daughter"
@@ -21152,7 +21152,7 @@ msgstr "stërmbesa nga djali i djalit"
 #: app/Functions/Functions.php:1096
 msgctxt "father’s father’s father"
 msgid "great-grandfather"
-msgstr "stërgjyshi nga gjyshi"
+msgstr "stërgjyshi"
 
 #: app/Functions/Functions.php:1108
 msgctxt "father’s mother’s father"
@@ -21287,7 +21287,7 @@ msgstr "stërgjyshi"
 #: app/Functions/Functions.php:1040
 msgctxt "child’s child’s son"
 msgid "great-grandson"
-msgstr "stërnipi"
+msgstr "stërnipi nga djali i djalit"
 
 #: app/Functions/Functions.php:1048
 msgctxt "child’s daughter’s son"
@@ -21741,7 +21741,7 @@ msgstr "stër-mbesë"
 #: app/Functions/Functions.php:1094
 msgctxt "father’s father’s brother"
 msgid "great-uncle"
-msgstr "stër-xhaxha"
+msgstr "stër-xhaxha/dajë"
 
 #: app/Functions/Functions.php:1376
 msgctxt "father’s father’s sister’s husband"
@@ -21837,7 +21837,7 @@ msgstr "gjysmë rrethi"
 #: app/Functions/Functions.php:850
 msgctxt "father’s son"
 msgid "half-brother"
-msgstr "gjysmë-vëllau nga babai"
+msgstr "gjysmë-vëllau"
 
 #: app/Functions/Functions.php:888
 msgctxt "mother’s son"
@@ -21852,7 +21852,7 @@ msgstr "gjysmë-vëllau"
 #: app/Functions/Functions.php:836
 msgctxt "father’s child"
 msgid "half-sibling"
-msgstr "gjysmë-vëlla/motër nga babai"
+msgstr "gjysmë-vëlla/motër"
 
 #: app/Functions/Functions.php:872
 msgctxt "mother’s child"
@@ -21867,7 +21867,7 @@ msgstr "gjysmë-vëlla/motër"
 #: app/Functions/Functions.php:838
 msgctxt "father’s daughter"
 msgid "half-sister"
-msgstr "gjysmë-motër nga babai"
+msgstr "gjysmë-motër"
 
 #: app/Functions/Functions.php:874
 msgctxt "mother’s daughter"
@@ -21970,7 +21970,7 @@ msgstr "zgjedhja e anasjelltë"
 #: app/Date/FrenchDate.php:100
 msgctxt "GENITIVE"
 msgid "jours complementaires"
-msgstr ""
+msgstr "jours complementaires"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:166
@@ -22005,7 +22005,7 @@ msgstr "të fundit"
 #. I18N: A button label (a verb).
 #: inverselink.php:152
 msgid "link"
-msgstr "Lidhja"
+msgstr "vegza"
 
 # I18N: Layout option for lists of names
 #. I18N: Layout option for lists of names
@@ -22033,7 +22033,7 @@ msgstr "udhëheqësit"
 #. I18N: https://en.wikipedia.org/wiki/Markdown
 #: admin_trees_config.php:64
 msgid "markdown"
-msgstr ""
+msgstr "ulje"
 
 #: app/Stats.php:2912
 msgid "marriage"
@@ -22042,7 +22042,7 @@ msgstr "martesa"
 #: modules_v3/descendancy_report/report.xml:245
 msgctxt "FEMALE"
 msgid "married"
-msgstr "e martuar"
+msgstr "i martuar"
 
 #: modules_v3/descendancy_report/report.xml:176
 msgctxt "MALE"
@@ -22169,7 +22169,7 @@ msgstr "vjehrra/vjehrri"
 #: app/Functions/Functions.php:810
 msgctxt "brother’s son"
 msgid "nephew"
-msgstr "nipi"
+msgstr "nipi nga vajza"
 
 #: app/Functions/Functions.php:914
 msgctxt "sibling’s son"
@@ -22226,7 +22226,7 @@ msgstr "më tej"
 #: app/Functions/Functions.php:808
 msgctxt "brother’s daughter"
 msgid "niece"
-msgstr "mbesa nga vëllau"
+msgstr "mbesa nga motra"
 
 #: app/Functions/Functions.php:912
 msgctxt "sibling’s daughter"
@@ -22897,11 +22897,11 @@ msgstr "kushëri i brezit të gjashtë"
 #: edit_interface.php:1999 app/Functions/Functions.php:747,
 #: app/Functions/FunctionsCharts.php:311,
 msgid "son"
-msgstr "biri"
+msgstr "djali"
 
 #: modules_v3/descendancy_report/report.xml:295
 msgid "son of"
-msgstr "i biri i"
+msgstr "djali i"
 
 #: app/Functions/Functions.php:818
 msgctxt "child’s husband"
@@ -23031,12 +23031,12 @@ msgstr "bashkëshorti"
 #. I18N: Secure Sockets Layer - a secure communications protocol
 #: admin_site_config.php:112
 msgid "ssl"
-msgstr ""
+msgstr "ssl"
 
 #: app/Functions/Functions.php:1142
 msgctxt "father’s wife’s son"
 msgid "step-brother"
-msgstr "djali i njerkës"
+msgstr "djali i njerkës/njerkut"
 
 #: app/Functions/Functions.php:1172
 msgctxt "mother’s husband’s son"
@@ -23051,7 +23051,7 @@ msgstr "djali i njerkës/njerkut"
 #: app/Functions/Functions.php:856
 msgctxt "husband’s child"
 msgid "step-child"
-msgstr "fëmija e burrit"
+msgstr "fëmija e gruas"
 
 #: app/Functions/Functions.php:936
 msgctxt "spouse’s child"
@@ -23066,7 +23066,7 @@ msgstr "fëmija e gruas"
 #: app/Functions/Functions.php:858
 msgctxt "husband’s daughter"
 msgid "step-daughter"
-msgstr "vajza e burrit"
+msgstr "vajza e gruas"
 
 #: app/Functions/Functions.php:938
 msgctxt "spouse’s daughter"
@@ -23098,7 +23098,7 @@ msgstr "njerku/njerka"
 #: app/Functions/Functions.php:1138
 msgctxt "father’s wife’s child"
 msgid "step-sibling"
-msgstr "fëmija e njerkës"
+msgstr "fëmija e njerkut/njerkës"
 
 #: app/Functions/Functions.php:1168
 msgctxt "mother’s husband’s child"
@@ -23113,7 +23113,7 @@ msgstr "fëmija e njerkut/njerkës"
 #: app/Functions/Functions.php:1140
 msgctxt "father’s wife’s daughter"
 msgid "step-sister"
-msgstr "vajza e njerkës"
+msgstr "vajza e njerkut/njerkës"
 
 #: app/Functions/Functions.php:1170
 msgctxt "mother’s husband’s daughter"
@@ -23128,7 +23128,7 @@ msgstr "vajza e njerkut/njerkës"
 #: app/Functions/Functions.php:868
 msgctxt "husband’s son"
 msgid "step-son"
-msgstr "djali nga burri"
+msgstr "djali nga gruaja"
 
 #: app/Functions/Functions.php:946
 msgctxt "spouse’s son"
@@ -23259,7 +23259,7 @@ msgstr "rrethi tri të katërtat"
 #. I18N: Transport Layer Security - a secure communications protocol
 #: admin_site_config.php:113
 msgid "tls"
-msgstr ""
+msgstr "tls"
 
 # I18N: Gedcom TO dates
 #. I18N: Gedcom TO dates
@@ -23299,7 +23299,7 @@ msgstr "motër binjake"
 #: app/Functions/Functions.php:834
 msgctxt "father’s brother"
 msgid "uncle"
-msgstr "axha"
+msgstr "burri i hallës/tezes"
 
 #: app/Functions/Functions.php:1134
 msgctxt "father’s sister’s husband"
@@ -23408,7 +23408,7 @@ msgstr "ishte lindur"
 
 #: app/Theme/WebtreesTheme.php:133
 msgid "webtrees"
-msgstr ""
+msgstr "webtrees"
 
 # I18N: %s is a database name/identifier
 #. I18N: %s is a database name/identifier
@@ -23449,7 +23449,7 @@ msgstr "webtrees përdor enkodimin UTF-8 për shenjat me thekse, karakteret spec
 
 #: app/Functions/FunctionsPrint.php:211
 msgid "webtrees wiki"
-msgstr ""
+msgstr "webtrees wiki"
 
 #: admin_trees_manage.php:718
 msgid "webtrees’ database must be on the same server as PhpGedView’s"
@@ -23468,11 +23468,11 @@ msgstr "gruaja"
 #. I18N: Name of a theme.
 #: app/Theme/XeneaTheme.php:149
 msgid "xenea"
-msgstr ""
+msgstr "xenea"
 
 #: timeline.php:130
 msgid "years"
-msgstr "vite"
+msgstr "vjet"
 
 #: admin_trees_config.php:75 admin_users.php:241 admin_users.php:242
 #: app/Functions/FunctionsEdit.php:134 app/Functions/FunctionsEdit.php:620
@@ -23530,7 +23530,7 @@ msgstr "motra e vogël"
 msgid "±%s year"
 msgid_plural "±%s years"
 msgstr[0] "±%s vit"
-msgstr[1] "±%s vite"
+msgstr[1] "±%s vjet"
 
 #: app/Individual.php:1218
 #, php-format
