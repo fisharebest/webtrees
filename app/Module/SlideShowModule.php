@@ -58,7 +58,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
 
         $filter   = $this->getBlockSetting($block_id, 'filter', 'all');
         $controls = $this->getBlockSetting($block_id, 'controls', '1');
-        $start    = $this->getBlockSetting($block_id, 'start', '0');
+        $start    = (bool) $this->getBlockSetting($block_id, 'start', '0');
 
         // We can apply the filters using SQL
         // Do not use "ORDER BY RAND()" - it is very slow on large tables. Use PHP::array_rand() instead.
