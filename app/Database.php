@@ -153,7 +153,7 @@ class Database
      */
     public static function quote($string)
     {
-        if (is_null($string)) {
+        if ($string === null) {
             return 'NULL';
         } else {
             return self::$pdo->quote($string, PDO::PARAM_STR);
