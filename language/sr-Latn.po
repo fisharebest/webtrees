@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2018-08-26 10:16+0000\n"
+"PO-Revision-Date: 2018-08-27 19:53+0000\n"
 "Last-Translator: Enes <enes_s@yahoo.com>\n"
 "Language-Team: Serbian (latin) <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/sr-Latn/>\n"
 "Language: sr-Latn\n"
@@ -761,7 +761,7 @@ msgstr "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2
 #. I18N: Description of the “RelationshipsChart” module
 #: app/Module/RelationshipsChartModule.php:56
 msgid "A chart displaying relationships between two individuals."
-msgstr "Grafikon sa prikazom odnosa između dve osobe."
+msgstr "Grafikon sa prikazom srodnosti između dve osobe."
 
 #. I18N: Description of the “FamilyBookChart” module
 #: app/Module/FamilyBookChartModule.php:42
@@ -795,7 +795,7 @@ msgstr "Grafikon životnog veka osobe."
 
 #: edit_interface.php:1011
 msgid "A child may have more than one set of parents. The relationship between the child and the parents can be biological, legal, or based on local culture and tradition. If no pedigree is specified, then a biological relationship will be assumed."
-msgstr "Dete može imati više od jednog para roditelja. Odnos između deteta i roditelja može biti biološki, pravni ili baziran na lokalnoj kulturi i tradiciji. Ako poreklo nije navedeno, tada se podrazumeva biološki odnos."
+msgstr "Dete može imati više od jednog para roditelja. Srodnost između deteta i roditelja može biti biološki, pravni ili baziran na lokalnoj kulturi i tradiciji. Ako poreklo nije navedeno, tada se podrazumeva biološka srodnost."
 
 #: app/Module/BatchUpdate/BatchUpdateDuplicateLinksPlugin.php:39
 msgid "A common error is to have multiple links to the same record, for example listing the same child more than once in a family record."
@@ -1539,7 +1539,7 @@ msgstr "Adresa, linija 2"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:85
 msgid "Adelaide, Australia"
-msgstr "Adelaide, Australija"
+msgstr ""
 
 #: admin_users.php:514 admin_users.php:563
 msgid "Administrator"
@@ -1811,7 +1811,7 @@ msgstr "Album"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:89
 msgid "Albuquerque, New Mexico, United States"
-msgstr "Albuquerque, Novi Meksiko, S.A.D."
+msgstr ""
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6736
@@ -2137,7 +2137,7 @@ msgstr "aprila"
 #: app/Date/CalendarDate.php:282
 msgctxt "INSTRUMENTAL"
 msgid "April"
-msgstr "aprilom"
+msgstr "aprila"
 
 #: app/Date/CalendarDate.php:248
 msgctxt "LOCATIVE"
@@ -2317,7 +2317,7 @@ msgstr "avgusta"
 #: app/Date/CalendarDate.php:286
 msgctxt "INSTRUMENTAL"
 msgid "August"
-msgstr "avgustom"
+msgstr "avgusta"
 
 #: app/Date/CalendarDate.php:252
 msgctxt "LOCATIVE"
@@ -4915,7 +4915,7 @@ msgstr "decembra"
 #: app/Date/CalendarDate.php:290
 msgctxt "INSTRUMENTAL"
 msgid "December"
-msgstr "decembrom"
+msgstr "decembra"
 
 #: app/Date/CalendarDate.php:256
 msgctxt "LOCATIVE"
@@ -6233,7 +6233,7 @@ msgstr "februara"
 #: app/Date/CalendarDate.php:280
 msgctxt "INSTRUMENTAL"
 msgid "February"
-msgstr "februarom"
+msgstr "februara"
 
 #: app/Date/CalendarDate.php:246
 msgctxt "LOCATIVE"
@@ -6346,7 +6346,7 @@ msgstr "Pronađi specijalni znak"
 
 #: relationship.php:132
 msgid "Find all possible relationships"
-msgstr "Pronađi sve moguće odnose"
+msgstr "Pronađi sve moguće srodnosti"
 
 #: app/Functions/FunctionsPrint.php:687 app/Module/CensusAssistantModule.php:83
 #: app/Module/CensusAssistantModule.php:88
@@ -6357,7 +6357,7 @@ msgstr "Pronađi osobu"
 
 #: app/Module/RelationshipsChartModule.php:134 relationship.php:109
 msgid "Find any relationship"
-msgstr "Pronađi bilo koji odnos"
+msgstr "Pronađi bilo koju srodnost"
 
 #: admin_trees_duplicates.php:33 admin_trees_manage.php:469
 msgid "Find duplicates"
@@ -6365,16 +6365,16 @@ msgstr "Pronađi duplikate"
 
 #: relationship.php:134
 msgid "Find other relationships"
-msgstr "Pronađi ostale odnose"
+msgstr "Pronađi ostale srodnosti"
 
 #: app/Module/RelationshipsChartModule.php:135 relationship.php:105
 #: relationship.php:114
 msgid "Find relationships via ancestors"
-msgstr "Pronađi odnose preko predaka"
+msgstr "Pronađi srodnost preko predaka"
 
 #: relationship.php:121 relationship.php:126
 msgid "Find the closest relationships"
-msgstr "Pronađi najbliže odnose"
+msgstr "Pronađi najbližu srodnost"
 
 #: admin_trees_manage.php:509 admin_trees_unconnected.php:34
 msgid "Find unrelated individuals"
@@ -7249,7 +7249,7 @@ msgstr ""
 #. I18N: Configuration option
 #: app/Module/RelationshipsChartModule.php:188
 msgid "How much recursion to use when searching for relationships"
-msgstr "Koliko resursa treba koristiti prilikom traženja odnosa"
+msgstr "Koliko resursa treba koristiti prilikom traženja srodnosti"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6775
@@ -7761,7 +7761,7 @@ msgstr "januara"
 #: app/Date/CalendarDate.php:279
 msgctxt "INSTRUMENTAL"
 msgid "January"
-msgstr "januarom"
+msgstr "januara"
 
 #: app/Date/CalendarDate.php:245
 msgctxt "LOCATIVE"
@@ -7826,7 +7826,7 @@ msgstr "jula"
 #: app/Date/CalendarDate.php:285
 msgctxt "INSTRUMENTAL"
 msgid "July"
-msgstr "julom"
+msgstr "jula"
 
 #: app/Date/CalendarDate.php:251
 msgctxt "LOCATIVE"
@@ -7899,7 +7899,7 @@ msgstr "juna"
 #: app/Date/CalendarDate.php:284
 msgctxt "INSTRUMENTAL"
 msgid "June"
-msgstr "junom"
+msgstr "juna"
 
 #: app/Date/CalendarDate.php:250
 msgctxt "LOCATIVE"
@@ -7939,7 +7939,7 @@ msgstr "Zadrži medijske objekte"
 #: app/Module/BatchUpdate/BatchUpdateBasePlugin.php:62 edit_interface.php:2276
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:545
 msgid "Keep the existing “last change” information"
-msgstr "Zadrži postojeću informaciju \"poslednja promena\""
+msgstr "Zadrži postojeću informaciju \"poslednja izmena\""
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6791
@@ -8605,7 +8605,7 @@ msgstr "marta"
 #: app/Date/CalendarDate.php:281
 msgctxt "INSTRUMENTAL"
 msgid "March"
-msgstr "martom"
+msgstr "marta"
 
 #: app/Date/CalendarDate.php:247
 msgctxt "LOCATIVE"
@@ -10089,7 +10089,7 @@ msgstr "novembra"
 #: app/Date/CalendarDate.php:289
 msgctxt "INSTRUMENTAL"
 msgid "November"
-msgstr "novembrom"
+msgstr "novembra"
 
 #: app/Date/CalendarDate.php:255
 msgctxt "LOCATIVE"
@@ -10213,7 +10213,7 @@ msgstr "oktobra"
 #: app/Date/CalendarDate.php:288
 msgctxt "INSTRUMENTAL"
 msgid "October"
-msgstr "oktobrom"
+msgstr "oktobra"
 
 #: app/Date/CalendarDate.php:254
 msgctxt "LOCATIVE"
@@ -11451,31 +11451,31 @@ msgstr "Povezane osobe"
 #. I18N: gedcom tag RELA
 #: app/GedcomTag.php:720
 msgid "Relationship"
-msgstr "Sorodstvo"
+msgstr "Srodnost"
 
 #. I18N: gedcom tag _FREL
 #: app/GedcomTag.php:1505
 msgid "Relationship to father"
-msgstr "Veza sa ocem"
+msgstr "Srodnost sa ocem"
 
 #: app/Module/RelationshipsChartModule.php:83
 msgid "Relationship to me"
-msgstr ""
+msgstr "Srodnost sa mnom"
 
 #. I18N: gedcom tag _MREL
 #: app/GedcomTag.php:1667
 msgid "Relationship to mother"
-msgstr "Veza sa majkom"
+msgstr "Srodnost sa majkom"
 
 #. I18N: gedcom tag PEDI
 #: app/GedcomTag.php:678
 msgid "Relationship to parents"
-msgstr ""
+msgstr "Srodnost sa roditeljima"
 
 #: relationship.php:166
 #, php-format
 msgid "Relationship: %s"
-msgstr ""
+msgstr "Srodnost: %s"
 
 #. I18N: Name of a module/chart
 #. I18N: Configuration option
@@ -11484,13 +11484,13 @@ msgstr ""
 #: app/Module/RelationshipsChartModule.php:90
 #: app/Module/RelationshipsChartModule.php:179 relationship.php:59
 msgid "Relationships"
-msgstr ""
+msgstr "Srodnost"
 
 #. I18N: %s are individual’s names
 #: relationship.php:54
 #, php-format
 msgid "Relationships between %1$s and %2$s"
-msgstr ""
+msgstr "Srodnost između %1$s i %2$s"
 
 #. I18N: gedcom tag RELI
 #: app/GedcomTag.php:724 modules_v3/missing_facts_report/report.xml:26
@@ -11731,7 +11731,7 @@ msgstr ""
 #: app/Functions/FunctionsPrintLists.php:267
 #: app/Functions/FunctionsPrintLists.php:657
 msgid "Roots"
-msgstr ""
+msgstr "Koreni"
 
 #. I18N: A configuration setting
 #. I18N: noun
@@ -11979,7 +11979,7 @@ msgstr "Traži tekst/uzorak"
 
 #: app/Module/RelationshipsChartModule.php:171
 msgid "Searching for all possible relationships can take a lot of time in complex trees."
-msgstr ""
+msgstr "Pretraga svih mogućih srodnosti može dosta potrajati na kompleksnim stablima."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:333
@@ -12150,7 +12150,7 @@ msgstr "septembra"
 #: app/Date/CalendarDate.php:287
 msgctxt "INSTRUMENTAL"
 msgid "September"
-msgstr "septembrom"
+msgstr "septembra"
 
 #: app/Date/CalendarDate.php:253
 msgctxt "LOCATIVE"
@@ -12203,17 +12203,17 @@ msgstr "Vremensko ograničenje sesije"
 
 #: admin_trees_manage.php:441 admin_trees_manage.php:452
 msgid "Set as default"
-msgstr ""
+msgstr "Postavi kao podrazumevano"
 
 #. I18N: You need to:
 #: login.php:573
 msgid "Set the access level for each tree."
-msgstr ""
+msgstr "Podesite pristupne nivoe za svako stablo."
 
 #. I18N: Menu entry
 #: app/Theme/AdministrationTheme.php:150 index_edit.php:47
 msgid "Set the default blocks for new family trees"
-msgstr ""
+msgstr "Podesi podrazumevane blokove za nova porodična stabla"
 
 #. I18N: Menu entry
 #: app/Theme/AdministrationTheme.php:167 index_edit.php:39
@@ -12243,7 +12243,7 @@ msgstr ""
 #. I18N: You need to:
 #: login.php:571
 msgid "Set the status to “approved”."
-msgstr ""
+msgstr "Postavite status na “odobren”."
 
 #. I18N: Help text for the “Allow users to see raw GEDCOM records” configuration setting
 #: admin_trees_config.php:1580
@@ -12252,7 +12252,7 @@ msgstr ""
 
 #: setup.php:93
 msgid "Setup wizard for webtrees"
-msgstr ""
+msgstr "Čarobnjak za instalaciju webtrees"
 
 #. I18N: The sixth day in the French republican calendar
 #: app/Date/FrenchDate.php:202
@@ -12262,7 +12262,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6890
 msgid "Seychelles"
-msgstr "Seychely"
+msgstr "Sejšeli"
 
 #: app/Date/JalaliDate.php:188
 msgctxt "Abbreviation for Persian month: Shahrivar"
@@ -12302,7 +12302,7 @@ msgstr "Deljena beleška"
 #. I18N: Label for search field
 #: find.php:239
 msgid "Shared note contains"
-msgstr ""
+msgstr "Deljena beleška sadrži"
 
 #: app/Functions/FunctionsPrintLists.php:1045 app/Theme/AbstractTheme.php:1522
 #: notelist.php:33 notelist.php:37 search.php:103
@@ -12363,7 +12363,7 @@ msgstr ""
 
 #: modules_v3/descendancy_report/report.xml:358
 msgid "She "
-msgstr ""
+msgstr "Ona "
 
 #: modules_v3/ahnentafel_report/report.xml:290
 msgid "She died"
@@ -12376,23 +12376,23 @@ msgstr "Udala se za"
 
 #: modules_v3/ahnentafel_report/report.xml:223
 msgid "She resided at"
-msgstr ""
+msgstr "Stanovala je u"
 
 #: modules_v3/descendancy_report/report.xml:331
 msgid "She was born"
-msgstr ""
+msgstr "Rođena je"
 
 #: modules_v3/ahnentafel_report/report.xml:340
 msgid "She was buried"
-msgstr ""
+msgstr "Sahranjena je"
 
 #: modules_v3/ahnentafel_report/report.xml:167
 msgid "She was christened"
-msgstr ""
+msgstr "Krštena je"
 
 #: modules_v3/ahnentafel_report/report.xml:315
 msgid "She was cremated"
-msgstr ""
+msgstr "Kremirana je"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:139
@@ -12430,7 +12430,7 @@ msgstr ""
 
 #: help_text.php:136 help_text.php:148 help_text.php:159
 msgid "Shortcut"
-msgstr ""
+msgstr "Prečica"
 
 #: statistics.php:252
 msgid "Shortest marriage"
@@ -12438,7 +12438,7 @@ msgstr "Najkraći brak"
 
 #: app/Module/RecentChangesModule.php:181
 msgid "Should this block be hidden when it is empty"
-msgstr ""
+msgstr "Da li ovaj blok treba biti sakriven kada je prazan"
 
 #: calendar.php:221
 msgid "Show"
@@ -12653,7 +12653,7 @@ msgstr "Prikaži mesta hijerarhijski"
 #. I18N: A configuration setting
 #: admin_trees_config.php:484
 msgid "Show private relationships"
-msgstr ""
+msgstr "Prikaži privatne srodnosti"
 
 #: search.php:112 search.php:270
 msgid "Show related individuals/families"
@@ -12701,7 +12701,7 @@ msgstr "Prikaži grafikon statistike"
 #: admin_trees_config.php:1516
 #, php-format
 msgid "Show the %1$s %2$s parts of a place name."
-msgstr ""
+msgstr "Prikaži %1$s %2$s delove imena mesta."
 
 #: app/Module/HtmlBlockModule.php:325
 msgid "Show the date and time of update"
@@ -12732,7 +12732,7 @@ msgstr "Prikazuje lokaciju mesta i događaja koristeći Google Maps™ servis."
 #. I18N: label for a yes/no option
 #: app/Module/RecentChangesModule.php:169
 msgid "Show the user who made the change"
-msgstr ""
+msgstr "Prikaži korisnika koji je napravio izmenu"
 
 #. I18N: Label for a configuration option
 #: app/Module/FrequentlyAskedQuestionsModule.php:197
@@ -12742,7 +12742,7 @@ msgstr "Za koje jezike želite prikazati ovaj blok"
 
 #: admin_trees_config.php:1051
 msgid "Show thumbnail images in charts and family groups."
-msgstr ""
+msgstr "Prikaži sličice u grafikonima i grupama familija."
 
 #: admin_trees_config.php:81 admin_trees_config.php:88
 #: admin_trees_config.php:1021 app/Functions/FunctionsEdit.php:207
@@ -12784,33 +12784,33 @@ msgstr "Prikaži osobe ili parove koji su živi ali nemaju zabeleženu decu u ba
 #: app/Functions/FunctionsPrintLists.php:264
 #: app/Functions/FunctionsPrintLists.php:655
 msgid "Show “roots” couples or individuals. These individuals may also be called “patriarchs”. They are individuals who have no parents recorded in the database."
-msgstr ""
+msgstr "Prikaži “korenske” parove ili osobe. Te osobe se još zovu i “patrijarsi”. To su osobe koje nemaju zabeležene roditelje u bazi podataka."
 
 #. I18N: %s are placeholders for numbers
 #: app/I18N.php:228 app/I18N.php:229
 #, php-format
 msgid "Showing %1$s to %2$s of %3$s"
-msgstr "Prikazujem %1$s za %2$s od %3$s"
+msgstr "Prikazujem od %1$s do %2$s od ukupno %3$s"
 
 #: app/Controller/HourglassController.php:358
 #: app/Controller/PedigreeController.php:285
 msgid "Sibling"
-msgstr ""
+msgstr "Brat/Sestra"
 
 #: app/Controller/HourglassController.php:358
 #: app/Controller/PedigreeController.php:285
 msgid "Siblings"
-msgstr ""
+msgstr "Braća/Sestre"
 
 #: admin_module_sidebar.php:87 admin_modules.php:218
 msgid "Sidebar"
-msgstr ""
+msgstr "Bočna traka"
 
 #. I18N: Menu entry
 #: admin_module_sidebar.php:28 admin_modules.php:161
 #: app/Theme/AdministrationTheme.php:194
 msgid "Sidebars"
-msgstr ""
+msgstr "Bočne trake"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6877
@@ -12835,7 +12835,7 @@ msgstr "URL za prijavljivanje"
 #. I18N: Menu entry
 #: admin_site_config.php:147 app/Theme/AdministrationTheme.php:97
 msgid "Sign-in and registration"
-msgstr ""
+msgstr "Prijava i registracija"
 
 #: help_text.php:164
 msgid "Simple dates are assumed to be in the gregorian calendar. To specify a date in another calendar, add a keyword before the date. This keyword is optional if the month or year format make the date unambiguous."
@@ -12908,26 +12908,26 @@ msgstr ""
 
 #: app/Module/GoogleMapsModule.php:429
 msgid "Size of map (in pixels)"
-msgstr ""
+msgstr "Veličina mape (u pikselima)"
 
 #. I18N: Skip over the headers and menus, to the main content of the page
 #: app/Theme/AbstractTheme.php:84
 msgid "Skip to content"
-msgstr ""
+msgstr "Preskoči na sadržaj"
 
 #: app/GedcomCode/GedcomCodeRela.php:254
 msgid "Slave"
-msgstr ""
+msgstr "Rob"
 
 #: app/GedcomCode/GedcomCodeRela.php:252
 msgctxt "FEMALE"
 msgid "Slave"
-msgstr ""
+msgstr "Robinja"
 
 #: app/GedcomCode/GedcomCodeRela.php:250
 msgctxt "MALE"
 msgid "Slave"
-msgstr ""
+msgstr "Rob"
 
 #. I18N: gedcom tag _SSHOW
 #. I18N: Name of a module
@@ -12938,7 +12938,7 @@ msgstr "Automatsko puštanje slika"
 #. I18N: Name of a country or state
 #: app/Stats.php:6885
 msgid "Slovakia"
-msgstr "Slovaška"
+msgstr "Slovačka"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6886
@@ -12962,12 +12962,12 @@ msgstr "Broj socijalnog osiguranja (SSN)"
 #. I18N: Name of a country or state
 #: app/Stats.php:6876
 msgid "Solomon Islands"
-msgstr "Šalamúnove ostrovy"
+msgstr "Solomonska ostrva"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6880
 msgid "Somalia"
-msgstr "Somálsko"
+msgstr "Somalija"
 
 #. I18N: Help text for the “GEDCOM media path” configuration setting. A “path” is something like “C:\Documents\Genealogy\Photos\John_Smith.jpeg”
 #: admin_trees_manage.php:300
@@ -13095,16 +13095,16 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6924
 msgid "South Africa"
-msgstr "Južná Afrika"
+msgstr "Južna Afrika"
 
 #: statistics.php:688
 msgid "South America"
-msgstr ""
+msgstr "Južna Amerika"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6873
 msgid "South Georgia and the South Sandwich Islands"
-msgstr "Južná Georgia a Južné Sandwichove ostrovy"
+msgstr "Južna Džordžija i Južna Sendvička ostrva"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6882
@@ -13119,7 +13119,7 @@ msgstr "Španija"
 #: app/SurnameTradition.php:81
 msgctxt "Surname tradition"
 msgid "Spanish"
-msgstr ""
+msgstr "Španski"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:351
@@ -13130,7 +13130,7 @@ msgstr ""
 #: modules_v3/individual_ext_report/report.xml:202
 #: modules_v3/individual_ext_report/report.xml:219
 msgid "Spouse"
-msgstr ""
+msgstr "Supružnik"
 
 #: app/GedcomTag.php:458
 msgid "Spouse census date"
@@ -13142,22 +13142,22 @@ msgstr ""
 
 #: app/GedcomTag.php:468
 msgid "Spouse note"
-msgstr ""
+msgstr "Beleška supružnika"
 
 #: app/Functions/FunctionsPrintLists.php:1431
 msgid "Spouses"
-msgstr ""
+msgstr "Supružnici"
 
 #: modules_v3/individual_ext_report/report.xml:6
 #: modules_v3/missing_facts_report/report.xml:6
 #: modules_v3/relative_ext_report/report.xml:6
 msgid "Spouses and children"
-msgstr ""
+msgstr "Supružnici i deca"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6804
 msgid "Sri Lanka"
-msgstr "Srí Lanka"
+msgstr "Šri Lanka"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:337
@@ -13176,17 +13176,17 @@ msgstr ""
 
 #: app/Module/GoogleMapsModule.php:457
 msgid "Standard"
-msgstr ""
+msgstr "Standardno"
 
 #. I18N …of a range of addresses
 #: admin_site_access.php:254 admin_site_access.php:360
 msgid "Start IP address"
-msgstr ""
+msgstr "Početna IP adresa"
 
 #: app/Controller/DescendancyController.php:114
 #: app/Controller/DescendancyController.php:191
 msgid "Start at parents"
-msgstr ""
+msgstr "Počni od roditelja"
 
 #. I18N: Label for a configuration option
 #: app/Module/SlideShowModule.php:415
@@ -13205,7 +13205,7 @@ msgstr "Od datuma promene"
 #. I18N: gedcom tag STAE
 #: app/GedcomTag.php:800 app/Module/GoogleMapsModule.php:3446
 msgid "State"
-msgstr ""
+msgstr "Država"
 
 #. I18N: Name of a module
 #. I18N: Name of a module/chart
@@ -13224,11 +13224,11 @@ msgstr ""
 #: admin_site_change.php:321 admin_site_change.php:388
 #: app/Functions/FunctionsPrint.php:483 app/GedcomTag.php:804
 msgid "Status"
-msgstr ""
+msgstr "Status"
 
 #: app/GedcomTag.php:806
 msgid "Status change date"
-msgstr ""
+msgstr "Datum promene statusa"
 
 #: app/Functions/FunctionsDate.php:39
 msgid "Stillborn"
@@ -13263,16 +13263,16 @@ msgstr ""
 #. I18N: Name of a module
 #: app/Module/StoriesModule.php:36 app/Module/StoriesModule.php:454
 msgid "Stories"
-msgstr ""
+msgstr "Priče"
 
 #: app/Module/StoriesModule.php:237
 msgid "Story"
-msgstr ""
+msgstr "Priča"
 
 #: app/Module/StoriesModule.php:228 app/Module/StoriesModule.php:374
 #: app/Module/StoriesModule.php:458
 msgid "Story title"
-msgstr ""
+msgstr "Naslov priče"
 
 #. I18N: Part of a country, state/region/county
 #: app/Module/GoogleMapsModule.php:654 app/Module/GoogleMapsModule.php:1344
@@ -13301,16 +13301,16 @@ msgstr "Podnosioc"
 #. I18N: Name of a country or state
 #: app/Stats.php:6868
 msgid "Sudan"
-msgstr "Sudán"
+msgstr "Sudan"
 
 #: app/Module/GoogleMapsModule.php:394
 msgid "Suffixes"
-msgstr ""
+msgstr "Sufiksi"
 
 #. I18N: abbreviation for Sunday
 #: app/Date/CalendarDate.php:372 app/Functions/FunctionsPrint.php:659
 msgid "Sun"
-msgstr ""
+msgstr "ned"
 
 #: app/Date/CalendarDate.php:347
 msgid "Sunday"
@@ -13371,17 +13371,17 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6875
 msgid "Svalbard and Jan Mayen"
-msgstr "Svalbard Jan Mayen"
+msgstr "Svalbard i Jan Majen ostrva"
 
 #. I18N: Reverse the order of two individuals
 #: relationship.php:100
 msgid "Swap individuals"
-msgstr ""
+msgstr "Zameni osobe"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6888
 msgid "Swaziland"
-msgstr "Švajčiarsko"
+msgstr "Svazilend"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6887
@@ -13391,7 +13391,7 @@ msgstr "Švedska"
 #. I18N: Name of a country or state
 #: app/Stats.php:6713
 msgid "Switzerland"
-msgstr "Švica"
+msgstr "Švajcarska"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:359
@@ -13405,11 +13405,11 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6891
 msgid "Syria"
-msgstr ""
+msgstr "Sirija"
 
 #: admin_module_tabs.php:87 admin_modules.php:211
 msgid "Tab"
-msgstr ""
+msgstr "Kartica"
 
 #: setup.php:379
 msgid "Table prefix"
@@ -13419,7 +13419,7 @@ msgstr ""
 #: admin_module_tabs.php:28 admin_modules.php:160
 #: app/Theme/AdministrationTheme.php:192
 msgid "Tabs"
-msgstr ""
+msgstr "Kartice"
 
 #: find.php:519
 msgid "Tag"
@@ -13472,7 +13472,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6906
 msgid "Tanzania"
-msgstr "Tanzánia"
+msgstr "Tanzanija"
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:91
@@ -13496,11 +13496,11 @@ msgstr ""
 #. I18N: gedcom tag TEMP
 #: app/GedcomTag.php:822 modules_v3/individual_report/report.xml:208
 msgid "Temple"
-msgstr "Svetišče (cerkev)"
+msgstr "Hram"
 
 #: app/Module/GoogleMapsModule.php:329
 msgid "Terrain"
-msgstr ""
+msgstr "Teren"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:138
@@ -13534,7 +13534,7 @@ msgstr "Tekst"
 #. I18N: Name of a country or state
 #: app/Stats.php:6895
 msgid "Thailand"
-msgstr "Thajsko"
+msgstr "Tajland"
 
 #: help_text.php:219
 msgid "The <b>name</b> field contains the individual’s full name, as they would have spelled it or as it was recorded. This is how it will be displayed on screen. It uses standard genealogy annotations to identify different parts of the name."
@@ -13547,7 +13547,7 @@ msgstr ""
 #: admin_trees_manage.php:148
 #, php-format
 msgid "The GEDCOM file “%s” has been imported."
-msgstr ""
+msgstr "GEDCOM datoteka “%s” je učitana."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:183
@@ -13557,7 +13557,7 @@ msgstr ""
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:82
 msgid "The PHP temporary folder is missing."
-msgstr ""
+msgstr "Nedostaje PHP privremeni direktorijum."
 
 #: admin_trees_manage.php:714
 msgid "The PhpGedView to webtrees wizard is an automated process to assist administrators make the move from a PhpGedView installation to a new webtrees one. It will transfer all PhpGedView GEDCOM and other database information directly to your new webtrees database. The following requirements are necessary:"
@@ -13566,7 +13566,7 @@ msgstr ""
 #: admin_users.php:101
 #, php-format
 msgid "The administrator at the webtrees site %s has approved your application for an account. You may now sign in by accessing the following link: %s"
-msgstr ""
+msgstr "Administrator webtrees web prezentacije %s odobrio je vašu prijavu. Možete se prijaviti koristeći sledeći link %s"
 
 #: login.php:616
 msgid "The administrator has been informed. As soon as they give you permission to sign in, you can sign in with your username and password."
@@ -13576,13 +13576,13 @@ msgstr "Administrator je obavešten. Čim vam da odobrenje, moći ćete da se pr
 #: action.php:50
 #, php-format
 msgid "The changes to “%s” have been accepted."
-msgstr ""
+msgstr "Promene na „%s” su prihvaćene."
 
 #. I18N: %s is the name of an individual, source or other record
 #: action.php:234
 #, php-format
 msgid "The changes to “%s” have been rejected."
-msgstr ""
+msgstr "Promene na „%s” su odbijene."
 
 #: app/Module/ClippingsCartModule.php:311
 msgid "The clippings cart allows you to take extracts from this family tree and download them as a GEDCOM file."
@@ -13590,7 +13590,7 @@ msgstr ""
 
 #: site-unavailable.php:52
 msgid "The database reported the following error message:"
-msgstr ""
+msgstr "Baza podataka prijavljuje sledeću grešku:"
 
 #: admin_trees_config.php:1197
 msgid "The date and time of the last update"
@@ -13598,7 +13598,7 @@ msgstr "Datum i vreme poslednje promene"
 
 #: family.php:111
 msgid "The details of this family are private."
-msgstr ""
+msgstr "Detalji ove porodice su privatni."
 
 #: individual.php:76
 msgid "The details of this individual are private."
@@ -13608,41 +13608,41 @@ msgstr "Detalji ove osobe su privatni."
 #: admin_site_upgrade.php:231 admin_trees_export.php:41
 #, php-format
 msgid "The family tree has been exported to %s."
-msgstr ""
+msgstr "Porodično stablo je izvezeno u %s."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:77
 #, php-format
 msgid "The family tree “%s” already exists."
-msgstr ""
+msgstr "Porodično stablo “%s” već postoji."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:80
 #, php-format
 msgid "The family tree “%s” has been created."
-msgstr ""
+msgstr "Porodično stablo “%s” je kreirano."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:57 admin_trees_manage.php:154
 #, php-format
 msgid "The family tree “%s” has been deleted."
-msgstr ""
+msgstr "Porodično stablo “%s” je obrisano."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:66
 #, php-format
 msgid "The family tree “%s” will be shown to visitors when they first arrive at this website."
-msgstr ""
+msgstr "Porodično stablo “%s” će biti vidljivo posetiocima kada prvi pristupi ovoj web stranici."
 
 #: admin_trees_merge.php:189
 msgid "The family trees have been merged successfully."
-msgstr ""
+msgstr "Porodična stabla su uspešno spojena."
 
 #. I18N: %s is the name of a family group, e.g. “Husband name + Wife name”
 #: action.php:144
 #, php-format
 msgid "The family “%s” has been deleted because it only has one member."
-msgstr ""
+msgstr "Porodica „%s” je obrisana pošto ima samo jednog člana."
 
 #: addmedia.php:178 admin_media_upload.php:136
 #, php-format
@@ -13654,50 +13654,50 @@ msgstr "Datoteka %s već postoji. Koristite drugo ime za datoteku."
 #: app/Module/ClippingsCart/ClippingsCartController.php:320
 #, php-format
 msgid "The file %s could not be created."
-msgstr ""
+msgstr "Datoteka %s ne može biti kreirana."
 
 #: admin_media.php:63 admin_media.php:72 admin_site_clean.php:38
 #: admin_site_upgrade.php:415 admin_site_upgrade.php:436
 #, php-format
 msgid "The file %s could not be deleted."
-msgstr ""
+msgstr "Datoteka %s ne može biti obrisana."
 
 #: admin_site_upgrade.php:335
 #, php-format
 msgid "The file %s could not be updated."
-msgstr ""
+msgstr "Datoteka %s ne može biti izmenjena."
 
 #: admin_site_upgrade.php:358
 #, php-format
 msgid "The file %s has been created."
-msgstr ""
+msgstr "Datoteka %s je kreirana."
 
 #: admin_media.php:61 admin_media.php:70 admin_site_clean.php:32
 #: admin_site_upgrade.php:413 admin_site_upgrade.php:434
 #, php-format
 msgid "The file %s has been deleted."
-msgstr ""
+msgstr "Datoteka %s je obrisana."
 
 #: admin_media_upload.php:141 admin_media_upload.php:159
 #, php-format
 msgid "The file %s has been uploaded."
-msgstr ""
+msgstr "Datoteka %s je prebačena."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:76
 msgid "The file was only partially uploaded. Please try again."
-msgstr ""
+msgstr "Datoteka je samo delimično učitana. Molimo pokušajte ponovno."
 
 #. I18N: %s is a filename
 #: medialist.php:301 mediaviewer.php:146
 #, php-format
 msgid "The file “%s” does not exist."
-msgstr ""
+msgstr "Datoteka „%s” ne postoji."
 
 #: admin_site_clean.php:36 admin_site_upgrade.php:430
 #, php-format
 msgid "The folder %s could not be deleted."
-msgstr ""
+msgstr "Folder %s ne može biti obrisan."
 
 #: addmedia.php:102 addmedia.php:113 addmedia.php:125 addmedia.php:259
 #: addmedia.php:270 addmedia.php:282 admin_media_upload.php:66
@@ -13705,23 +13705,23 @@ msgstr ""
 #: admin_trees_config.php:287
 #, php-format
 msgid "The folder %s does not exist, and it could not be created."
-msgstr ""
+msgstr "Folder %s ne postoji, i ne može biti kreiran."
 
 #: addmedia.php:100 addmedia.php:111 addmedia.php:257 addmedia.php:268
 #: admin_media_upload.php:64 admin_media_upload.php:75
 #: admin_trees_config.php:285
 #, php-format
 msgid "The folder %s has been created."
-msgstr ""
+msgstr "Folder %s je kreiran."
 
 #: admin_site_clean.php:30 admin_site_upgrade.php:428
 #, php-format
 msgid "The folder %s has been deleted."
-msgstr ""
+msgstr "Folder %s je obrisan."
 
 #: admin_site_config.php:195
 msgid "The folder can be specified in full (e.g. /home/user_name/webtrees_data/) or relative to the installation folder (e.g. ../../webtrees_data/)."
-msgstr ""
+msgstr "Folder može biti napisan u punoj putanji (/home/user_name/webtrees_data/) ili relativno u odnosu na instalacioni folder (../../webtrees_data/)."
 
 #: admin_site_merge.php:205
 msgid "The following facts and events were found in both records."
@@ -13731,7 +13731,7 @@ msgstr "Sledeće činjenice i događaji su pronađeni u oba zapisa."
 #: admin_site_merge.php:252 admin_site_merge.php:298
 #, php-format
 msgid "The following facts and events were only found in the record of %s."
-msgstr ""
+msgstr "Sledeće činjenice i događaji su pronađeni samo u zapisu %s."
 
 #: setup.php:174
 msgid "The following list shows typical requirements."
@@ -13739,11 +13739,11 @@ msgstr ""
 
 #: admin_trees_places.php:115
 msgid "The following places have been changed:"
-msgstr ""
+msgstr "Sledeća mesta su promenjena:"
 
 #: admin_trees_places.php:115
 msgid "The following places would be changed:"
-msgstr ""
+msgstr "Sledeća mesta će biti promenjena:"
 
 #: admin_site_access.php:355
 msgid "The following rules are used to decide whether a visitor is a human being (allow full access), a search-engine robot (allow restricted access) or an unwanted crawler (deny all access)."
@@ -13751,45 +13751,45 @@ msgstr ""
 
 #: help_text.php:321
 msgid "The help text has not been written for this item."
-msgstr ""
+msgstr "Pomoćni tekst za ovu stavku nije napisan."
 
 #. I18N: Help text for the “Technical help contact” configuration setting
 #: admin_trees_config.php:909
 msgid "The individual to be contacted about technical questions or errors encountered on your website."
-msgstr ""
+msgstr "Osoba za kontakt o tehničkim pitanjima ili greškama na vašoj web stranici."
 
 #. I18N: Help text for the “Genealogy contact” configuration setting
 #: admin_trees_config.php:887
 msgid "The individual to contact about the genealogy data on this website."
-msgstr ""
+msgstr "Osoba za kontakt o genealoškim podacima na ovoj web stranici."
 
 #. I18N: %s are names of records, such as sources, repositories or individuals
 #: action.php:152 action.php:156 app/Controller/GedcomRecordController.php:57
 #: app/Controller/GedcomRecordController.php:65
 #, php-format
 msgid "The link from “%1$s” to “%2$s” has been deleted."
-msgstr ""
+msgstr "Link od „%1$s” do „%2$s” je obrisan."
 
 #. I18N: The placeholders are the names of individuals, sources, etc.
 #: admin_site_merge.php:113
 #, php-format
 msgid "The link from “%1$s” to “%2$s” has been updated."
-msgstr ""
+msgstr "Link od “%1$s” do “%2$s” je izmenjen."
 
 #: addmedia.php:313 addmedia.php:344
 #, php-format
 msgid "The media file %1$s could not be renamed to %2$s."
-msgstr ""
+msgstr "Multimedijalna datoteka %1$s ne može biti preimenovana u %2$s."
 
 #: addmedia.php:342
 #, php-format
 msgid "The media file %1$s has been renamed to %2$s."
-msgstr ""
+msgstr "Multimedijalna datoteka %1$s je preimenovana u %2$s."
 
 #: addmedia.php:349
 #, php-format
 msgid "The media file %s does not exist."
-msgstr ""
+msgstr "Multimedijalna datoteka %s ne postoji."
 
 #: mediafirewall.php:38
 msgid "The media file was not found in this family tree."
@@ -13805,22 +13805,22 @@ msgstr ""
 
 #: message.php:193
 msgid "The message was not sent."
-msgstr ""
+msgstr "Poruka nije poslata."
 
 #: message.php:191
 #, php-format
 msgid "The message was successfully sent to %s."
-msgstr ""
+msgstr "Poruka uspešno poslata za %s."
 
 #: admin_modules.php:54
 #, php-format
 msgid "The module “%s” has been disabled."
-msgstr ""
+msgstr "Modul “%s” je isključen."
 
 #: admin_modules.php:56
 #, php-format
 msgid "The module “%s” has been enabled."
-msgstr ""
+msgstr "Modul “%s” je uključen."
 
 #. I18N: Help text for the “Quick family facts” configuration setting
 #: admin_trees_config.php:1844
@@ -13849,7 +13849,7 @@ msgstr ""
 
 #: admin_site_config.php:496
 msgid "The new user will be asked to confirm their email address before the account is created."
-msgstr ""
+msgstr "Od novog korisnika će biti zatražena potvrda email adrese pre nego što se korisnički nalog kreira."
 
 #: help_text.php:298
 msgid "The number of occurrences of the specified name will be shown on the map. If you leave this field empty, the most common surname will be used."
@@ -13857,7 +13857,7 @@ msgstr ""
 
 #: setup.php:417
 msgid "The password needs to be at least six characters long."
-msgstr ""
+msgstr "Lozinka mora imati najmanje šest znakova."
 
 #. I18N: Help text for the "Password" site configuration setting
 #: admin_site_config.php:407
@@ -13866,7 +13866,7 @@ msgstr ""
 
 #: admin_users.php:75 edituser.php:134 setup.php:419
 msgid "The passwords do not match."
-msgstr ""
+msgstr "Lozinke se ne poklapaju."
 
 #: admin_trees_config.php:190
 msgid "The preferences for all family trees have been updated."
@@ -13922,16 +13922,16 @@ msgstr ""
 
 #: setup.php:154
 msgid "The server configuration is OK."
-msgstr ""
+msgstr "Konfiguracija servera je u redu."
 
 #: admin_trees_renumber.php:257
 msgid "The server’s time limit has been reached."
-msgstr ""
+msgstr "Dostignuto je vremensko ograničenje servera."
 
 #. I18N: Description of “Statistics” module
 #: app/Module/FamilyTreeStatisticsModule.php:42
 msgid "The size of the family tree, earliest and latest events, common names, etc."
-msgstr ""
+msgstr "Veličina porodičnog stabla, najraniji i najkasniji događaji, česta imena, itd."
 
 #: help_text.php:222
 #, php-format
@@ -13972,23 +13972,23 @@ msgstr ""
 #, php-format
 msgid "The two family trees have %1$s record which uses the same “XREF”."
 msgid_plural "The two family trees have %1$s records which use the same “XREF”."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Porodična stabla imaju %1$s zapis koji koristi isti „XREF”."
+msgstr[1] "Porodična stabla imaju %1$s zapisa koji koriste isti „XREF”."
+msgstr[2] "Porodična stabla imaju %1$s zapisa koji koriste isti „XREF”."
 
 #: admin_site_upgrade.php:447
 msgid "The upgrade is complete."
-msgstr ""
+msgstr "Nadogradnja je završena."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:73
 msgid "The uploaded file exceeds the allowed size."
-msgstr ""
+msgstr "Učitana datoteka prelazi maksimalo dozvoljenu veličinu."
 
 #: admin_users.php:786
 #, php-format
 msgid "The user %s has been deleted."
-msgstr ""
+msgstr "Korisnik %s je obrisan."
 
 #: login.php:327
 msgid "The user has been sent an email with the information necessary to confirm the access request."
@@ -14011,12 +14011,12 @@ msgstr ""
 #: admin_pgv_to_wt.php:104
 #, php-format
 msgid "The version of %s is too new."
-msgstr ""
+msgstr "Verzija %s je previše nova."
 
 #: admin_pgv_to_wt.php:101
 #, php-format
 msgid "The version of %s is too old."
-msgstr ""
+msgstr "Verzija %s je previše stara."
 
 #: admin_site_access.php:77
 msgid "The website access rule has been created."
@@ -14927,7 +14927,7 @@ msgstr ""
 #: app/Module/GoogleMapsModule.php:3944 app/Module/GoogleMapsModule.php:4020
 #: placelist.php:107
 msgid "Top level"
-msgstr ""
+msgstr "Najviši nivo"
 
 #. I18N: i.e. most popular surname.
 #: app/Module/TopSurnamesModule.php:94
@@ -15424,7 +15424,7 @@ msgstr ""
 
 #: app/Functions/FunctionsEdit.php:665
 msgid "Use this image for charts and on the individual’s page."
-msgstr ""
+msgstr "Koristi ovu sliku za grafikone i na stranicama osobe."
 
 #: app/Module/GoogleMapsModule.php:3277
 msgid "Use this value"
@@ -15609,7 +15609,7 @@ msgstr "Vijetnam"
 #: app/Functions/FunctionsPrintFacts.php:1028
 #: app/Functions/FunctionsPrintFacts.php:1060
 msgid "View"
-msgstr ""
+msgstr "Prikaži"
 
 #: placelist.php:157
 msgid "View all records found in this place"
@@ -16002,7 +16002,7 @@ msgstr ""
 #: help_text.php:288
 #, php-format
 msgid "You can download a copy of the GEDCOM specification from %s."
-msgstr ""
+msgstr "Možete skinuti kopiju GEDCOM specifikacije sa %s."
 
 #: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php:44
 msgid "You can make it easier to search for married women by recording their married name. However not all women take their husband’s surname, so beware of introducing incorrect information into your database."
@@ -16124,7 +16124,7 @@ msgstr ""
 
 #: login.php:176
 msgid "You need to be a family member to access this website."
-msgstr ""
+msgstr "Morate biti član familije da bi pristupili ovoj stranici."
 
 #: login.php:173
 msgid "You need to be an authorized user to access this website."
@@ -16132,15 +16132,15 @@ msgstr "Morate biti registrovani korisnik da bi pristupili ovoj stranici."
 
 #: admin_trees_manage.php:320
 msgid "You need to create a family tree."
-msgstr ""
+msgstr "Morate kreirati porodično stablo."
 
 #: login.php:567
 msgid "You need to review the account details."
-msgstr ""
+msgstr "Morate pregledati detalje o nalogu."
 
 #: setup.php:425
 msgid "You need to set up an administrator account. This account can control all aspects of this webtrees installation. Please choose a strong password."
-msgstr ""
+msgstr "Morate podesiti adminstratorski nalog. Taj nalog će kontrolisati sve aspekte ove webtrees instalacije. Molim izaberite jaku lozinku."
 
 #: admin_pgv_to_wt.php:1153
 msgid "You need to sign in again, using your PhpGedView username and password."
@@ -16288,7 +16288,7 @@ msgstr ""
 #: app/Date.php:298
 #, php-format
 msgid "about %s"
-msgstr ""
+msgstr "oko %s"
 
 #: family.php:50 gedrecord.php:63 individual.php:64 mediaviewer.php:51
 #: note.php:52 repo.php:51 source.php:51
@@ -16345,7 +16345,7 @@ msgstr "posle"
 #: app/Date.php:313
 #, php-format
 msgid "after %s"
-msgstr ""
+msgstr "posle %s"
 
 #: app/Functions/FunctionsPrint.php:375
 msgid "after death"
@@ -16381,7 +16381,7 @@ msgstr ""
 #. I18N: option in list box “always use this image”
 #: app/Functions/FunctionsEdit.php:657
 msgid "always"
-msgstr ""
+msgstr "uvek"
 
 #: app/Controller/AncestryController.php:92 app/Stats.php:4533
 #: app/Stats.php:4559 app/Stats.php:4570 app/Stats.php:4580 app/Stats.php:5911
@@ -16452,13 +16452,13 @@ msgstr "pre"
 #: app/Date.php:310
 #, php-format
 msgid "before %s"
-msgstr ""
+msgstr "pre %s"
 
 #. I18N: Gedcom BET-AND dates
 #: app/Date.php:322
 #, php-format
 msgid "between %s and %s"
-msgstr ""
+msgstr "između %s i %s"
 
 #: app/Stats.php:2910
 msgid "birth"
@@ -16577,7 +16577,7 @@ msgstr "od"
 #: app/Date.php:301
 #, php-format
 msgid "calculated %s"
-msgstr ""
+msgstr "izračunato %s"
 
 #. I18N: A button label.
 #: app/Module/ClippingsCartModule.php:796
@@ -16632,7 +16632,7 @@ msgstr ""
 #: edit_interface.php:2588 find.php:760 inverselink.php:161 message.php:137
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:554
 msgid "close"
-msgstr ""
+msgstr "zatvori"
 
 #. I18N: Name of a theme.
 #: app/Theme/CloudsTheme.php:180
@@ -17221,13 +17221,13 @@ msgstr[2] ""
 #: app/Date.php:316
 #, php-format
 msgid "from %s"
-msgstr ""
+msgstr "od %s"
 
 #. I18N: Gedcom FROM-TO dates
 #: app/Date.php:325
 #, php-format
 msgid "from %s to %s"
-msgstr ""
+msgstr "od %s do %s"
 
 #. I18N: layout option for the fan chart
 #: app/Controller/FanchartController.php:69
@@ -18808,7 +18808,7 @@ msgstr ""
 #: app/Date.php:307
 #, php-format
 msgid "interpreted %s (%s)"
-msgstr ""
+msgstr "interpretirano %s (%s)"
 
 #: statistics.php:586 statistics.php:589 statistics.php:592 statistics.php:604
 #: statistics.php:607
@@ -18858,7 +18858,7 @@ msgstr ""
 #. I18N: A button label, last page
 #: admin_trees_config.php:1508 app/I18N.php:223
 msgid "last"
-msgstr "posljednji"
+msgstr "poslednji"
 
 #: admin_trees_config.php:1520
 msgctxt "Show the [first/last] [N] parts of a place name."
@@ -19063,7 +19063,7 @@ msgstr ""
 #. I18N: option in list box “never use this image”
 #: app/Functions/FunctionsEdit.php:663
 msgid "never"
-msgstr ""
+msgstr "nikada"
 
 #. I18N: A button label, next page
 #: app/I18N.php:224 app/Module/BatchUpdateModule.php:247
@@ -20072,7 +20072,7 @@ msgstr ""
 #: compact.php:54 descendancy.php:71 familybook.php:61 fanchart.php:95
 #: hourglass.php:62 lifespan.php:110 pedigree.php:169 relationship.php:87
 msgid "view"
-msgstr ""
+msgstr "prikaži"
 
 #: admin_trees_config.php:363 admin_trees_config.php:387
 #: admin_trees_config.php:427 admin_trees_config.php:467
