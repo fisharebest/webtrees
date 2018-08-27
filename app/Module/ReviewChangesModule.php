@@ -77,16 +77,16 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
                 // Which users have pending changes?
                 foreach (User::all() as $user) {
                     if ($user->getPreference('contactmethod') !== 'none') {
-                        foreach (Tree::getAll() as $tree) {
-                            if ($tree->hasPendingEdit() && Auth::isManager($tree, $user)) {
+                        foreach (Tree::getAll() as $tmp_tree) {
+                            if ($tmp_tree->hasPendingEdit() && Auth::isManager($tmp_tree, $user)) {
                                 I18N::init($user->getPreference('language'));
 
                                 $sender = new User(
                                     (object)[
                                         'user_id'   => null,
                                         'user_name' => '',
-                                        'real_name' => $tree->getTitle(),
-                                        'email'     => $tree->getPreference('WEBTREES_EMAIL'),
+                                        'real_name' => $tmp_tree->getTitle(),
+                                        'email'     => $tmp_tree->getPreference('WEBTREES_EMAIL'),
                                     ]
                                 );
 
@@ -96,11 +96,11 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
                                     $sender,
                                     I18N::translate('Pending changes'),
                                     view('emails/pending-changes-text', [
-                                        'tree' => $tree,
+                                        'tree' => $tmp_tree,
                                         'user' => $user,
                                     ]),
                                     view('emails/pending-changes-html', [
-                                        'tree' => $tree,
+                                        'tree' => $tmp_tree,
                                         'user' => $user,
                                     ])
                                 );
