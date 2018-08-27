@@ -853,7 +853,7 @@ class FunctionsEdit
                 }
                 $a = strtolower($key);
                 $b = strtolower($value);
-                if ($b !== '' && strpos($a, $b) !== false || strpos($b, $a) !== false) {
+                if ($b !== '' && ((strpos($a, $b) !== false) || (strpos($b, $a) !== false))) {
                     $html .= 'selected';
                 }
                 $html .= '>' . GedcomTag::getLabel('MARR_' . strtoupper($key)) . '</option>';
@@ -1117,7 +1117,9 @@ class FunctionsEdit
         }
 
         foreach (Config::levelTwoTags() as $key => $value) {
-            if ($key === 'DATE' && in_array($level1tag, Config::nonDateFacts()) || $key === 'PLAC' && in_array($level1tag, Config::nonPlaceFacts())) {
+            if (($key === 'DATE' && in_array($level1tag, Config::nonDateFacts()))
+                || ($key === 'PLAC' && in_array($level1tag, Config::nonPlaceFacts()))
+            ) {
                 continue;
             }
             if (in_array($level1tag, $value) && !in_array($key, self::$tags)) {

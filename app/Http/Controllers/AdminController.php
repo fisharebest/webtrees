@@ -1529,7 +1529,10 @@ class AdminController extends AbstractBaseController
         $today             = date('Y-m-d');
         $warnings          = [];
 
-        if ($php_minor_version === '70' && $today >= '2018-12-03' || $php_minor_version === '71' && $today >= '2019-12-01' || $php_minor_version === '72' && $today >= '2020-11-30') {
+        if (($php_minor_version === '70' && $today >= '2018-12-03')
+            || ($php_minor_version === '71' && $today >= '2019-12-01')
+            || ($php_minor_version === '72' && $today >= '2020-11-30')
+        ) {
             $warnings[] = I18N::translate('Your web server is using PHP version %s, which is no longer receiving security updates. You should upgrade to a later version as soon as possible.', PHP_VERSION) . ' <a href="' . $php_support_url . '">' . $php_support_url . '</a>';
         }
 

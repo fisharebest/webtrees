@@ -236,7 +236,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
      */
     private static function sortByChangeDateAndName(GedcomRecord $a, GedcomRecord $b): int
     {
-        return $b->lastChangeTimestamp(true) - $a->lastChangeTimestamp(true) ?: GedcomRecord::compare($a, $b);
+        return ($b->lastChangeTimestamp(true) - $a->lastChangeTimestamp(true)) ?: GedcomRecord::compare($a, $b);
     }
 
     /**

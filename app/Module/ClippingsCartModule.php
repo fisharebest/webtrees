@@ -932,7 +932,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
 
         // Group and sort.
         uasort($records, function (GedcomRecord $x, GedcomRecord $y) {
-            return $x::RECORD_TYPE <=> $y::RECORD_TYPE ?: GedcomRecord::compare($x, $y);
+            return (x::RECORD_TYPE <=> $y::RECORD_TYPE) ?: GedcomRecord::compare($x, $y);
         });
 
         return $records;

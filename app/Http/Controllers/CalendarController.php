@@ -496,7 +496,8 @@ class CalendarController extends AbstractBaseController
                 if ($record instanceof Family) {
                     $husb = $record->getHusband();
                     $wife = $record->getWife();
-                    if ($husb && $husb->isDead() || $wife && $wife->isDead()) {
+
+                    if (($husb && $husb->isDead()) || ($wife && $wife->isDead())) {
                         continue;
                     }
                 }

@@ -290,7 +290,7 @@ class Fact
         return
             $this->parent->canEdit() && !$this->isPendingDeletion() && (
                 Auth::isManager($this->parent->getTree()) ||
-                Auth::isEditor($this->parent->getTree()) && strpos($this->gedcom, "\n2 RESN locked") === false && $this->getTag() != 'RESN' && $this->getTag() != 'CHAN'
+                (Auth::isEditor($this->parent->getTree()) && (strpos($this->gedcom, "\n2 RESN locked") === false) && $this->getTag() != 'RESN' && $this->getTag() != 'CHAN')
             );
     }
 
