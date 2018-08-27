@@ -40,7 +40,7 @@ class FunctionsExport
      *
      * @return string
      */
-    public static function reformatRecord($rec)
+    public static function reformatRecord($rec): string
     {
         $newrec = '';
         foreach (preg_split('/[\r\n]+/', $rec, -1, PREG_SPLIT_NO_EMPTY) as $line) {
@@ -80,7 +80,7 @@ class FunctionsExport
      *
      * @return string
      */
-    public static function gedcomHeader(Tree $tree)
+    public static function gedcomHeader(Tree $tree): string
     {
         // Default values for a new header
         $HEAD = '0 HEAD';
@@ -142,7 +142,7 @@ class FunctionsExport
      *
      * @return string
      */
-    public static function convertMediaPath($rec, $path)
+    public static function convertMediaPath($rec, $path): string
     {
         if ($path && preg_match('/\n1 FILE (.+)/', $rec, $match)) {
             $old_file_name = $match[1];

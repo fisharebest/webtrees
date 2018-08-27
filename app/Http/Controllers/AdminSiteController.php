@@ -644,7 +644,7 @@ class AdminSiteController extends AbstractBaseController
      *
      * @return string[]
      */
-    private function mailSslOptions()
+    private function mailSslOptions(): array
     {
         return [
             'none' => I18N::translate('none'),
@@ -660,7 +660,7 @@ class AdminSiteController extends AbstractBaseController
      *
      * @return string[]
      */
-    private function mailTransportOptions()
+    private function mailTransportOptions(): array
     {
         $options = [
             'internal' => I18N::translate('Use PHP mail to send messages'),
@@ -681,7 +681,7 @@ class AdminSiteController extends AbstractBaseController
      *
      * @return string[]
      */
-    private function registrationTextOptions()
+    private function registrationTextOptions(): array
     {
         return [
             0 => I18N::translate('No predefined text'),

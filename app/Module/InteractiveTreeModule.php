@@ -33,14 +33,14 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface, ModuleChartInterface
 {
     /** {@inheritdoc} */
-    public function getTitle()
+    public function getTitle(): string
     {
         /* I18N: Name of a module */
         return I18N::translate('Interactive tree');
     }
 
     /** {@inheritdoc} */
-    public function getDescription()
+    public function getDescription(): string
     {
         /* I18N: Description of the “Interactive tree” module */
         return I18N::translate('An interactive tree, showing all the ancestors and descendants of an individual.');

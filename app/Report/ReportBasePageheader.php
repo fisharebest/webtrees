@@ -36,7 +36,7 @@ class ReportBasePageheader extends ReportBaseElement
      *
      * @return int
      */
-    public function textBox()
+    public function textBox(): int
     {
         $this->elements = [];
 

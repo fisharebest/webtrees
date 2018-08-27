@@ -47,7 +47,7 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
      *
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): string
     {
         /* I18N: Name of a module */
         return I18N::translate('Batch update');
@@ -58,7 +58,7 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
      *
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): string
     {
         /* I18N: Description of the “Batch update” module */
         return I18N::translate('Apply automatic corrections to your genealogy data.');
@@ -326,7 +326,7 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
      *
      * @return BatchUpdateBasePlugin[]
      */
-    private function getPluginList()
+    private function getPluginList(): array
     {
         $plugins = [];
 
@@ -380,7 +380,7 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
      *
      * @return string
      */
-    public function getConfigLink()
+    public function getConfigLink(): string
     {
         return route('module', [
             'module' => $this->getName(),

@@ -34,7 +34,7 @@ class ReportParserSetup extends ReportParserBase
      *
      * @return array
      */
-    public function reportProperties()
+    public function reportProperties(): array
     {
         return $this->data;
     }

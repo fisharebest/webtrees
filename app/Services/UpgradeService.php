@@ -116,7 +116,7 @@ class UpgradeService
     /**
      * The upgrade server needs to know a little about this server.
      */
-    private function serverParameters()
+    private function serverParameters(): array
     {
         $mysql_version = Database::prepare("SHOW VARIABLES LIKE 'version'")->fetchOneRow();
 

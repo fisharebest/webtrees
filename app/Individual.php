@@ -102,7 +102,7 @@ class Individual extends GedcomRecord
      *
      * @return bool
      */
-    public function canShowName($access_level = null)
+    public function canShowName($access_level = null): bool
     {
         if ($access_level === null) {
             $access_level = Auth::accessLevel($this->tree);
@@ -118,7 +118,7 @@ class Individual extends GedcomRecord
      *
      * @return bool
      */
-    protected function canShowByType($access_level)
+    protected function canShowByType($access_level): bool
     {
         // Dead people...
         if ($this->tree->getPreference('SHOW_DEAD_PEOPLE') >= $access_level && $this->isDead()) {
@@ -168,7 +168,7 @@ class Individual extends GedcomRecord
      *
      * @return bool
      */
-    private static function isRelated(Individual $target, $distance)
+    private static function isRelated(Individual $target, $distance): bool
     {
         static $cache = null;
 
@@ -243,7 +243,7 @@ class Individual extends GedcomRecord
      *
      * @return string
      */
-    protected function createPrivateGedcomRecord($access_level)
+    protected function createPrivateGedcomRecord($access_level): string
     {
         $SHOW_PRIVATE_RELATIONSHIPS = $this->tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS');
 
@@ -296,7 +296,7 @@ class Individual extends GedcomRecord
      *
      * @return int
      */
-    public static function compareBirthDate(Individual $x, Individual $y)
+    public static function compareBirthDate(Individual $x, Individual $y): int
     {
         return Date::compare($x->getEstimatedBirthDate(), $y->getEstimatedBirthDate());
     }
@@ -309,7 +309,7 @@ class Individual extends GedcomRecord
      *
      * @return int
      */
-    public static function compareDeathDate(Individual $x, Individual $y)
+    public static function compareDeathDate(Individual $x, Individual $y): int
     {
         return Date::compare($x->getEstimatedDeathDate(), $y->getEstimatedDeathDate());
     }
@@ -320,7 +320,7 @@ class Individual extends GedcomRecord
      *
      * @return bool
      */
-    public function isDead()
+    public function isDead(): bool
     {
         $MAX_ALIVE_AGE = (int)$this->tree->getPreference('MAX_ALIVE_AGE');
 
@@ -443,7 +443,7 @@ class Individual extends GedcomRecord
      *
      * @return string
      */
-    public function displayImage($width, $height, $fit, $attributes)
+    public function displayImage($width, $height, $fit, $attributes): string
     {
         $media_file = $this->findHighlightedMediaFile();
 
@@ -463,7 +463,7 @@ class Individual extends GedcomRecord
      *
      * @return Date
      */
-    public function getBirthDate()
+    public function getBirthDate(): Date
     {
         foreach ($this->getAllBirthDates() as $date) {
             if ($date->isOK()) {
@@ -479,7 +479,7 @@ class Individual extends GedcomRecord
      *
      * @return Place
      */
-    public function getBirthPlace()
+    public function getBirthPlace(): Place
     {
         foreach ($this->getAllBirthPlaces() as $place) {
             if ($place) {
@@ -495,7 +495,7 @@ class Individual extends GedcomRecord
      *
      * @return string the year of birth
      */
-    public function getBirthYear()
+    public function getBirthYear(): string
     {
         return $this->getBirthDate()->minimumDate()->format('%Y');
     }
@@ -505,7 +505,7 @@ class Individual extends GedcomRecord
      *
      * @return Date
      */
-    public function getDeathDate()
+    public function getDeathDate(): Date
     {
         foreach ($this->getAllDeathDates() as $date) {
             if ($date->isOK()) {
@@ -521,7 +521,7 @@ class Individual extends GedcomRecord
      *
      * @return Place
      */
-    public function getDeathPlace()
+    public function getDeathPlace(): Place
     {
         foreach ($this->getAllDeathPlaces() as $place) {
             if ($place) {
@@ -537,7 +537,7 @@ class Individual extends GedcomRecord
      *
      * @return string the year of death
      */
-    public function getDeathYear()
+    public function getDeathYear(): string
     {
         return $this->getDeathDate()->minimumDate()->format('%Y');
     }
@@ -550,7 +550,7 @@ class Individual extends GedcomRecord
      *
      * @return string
      */
-    public function getLifeSpan()
+    public function getLifeSpan(): string
     {
         // Just the first part of the place name
         $birth_place = strip_tags($this->getBirthPlace()->getShortName());
@@ -573,7 +573,7 @@ class Individual extends GedcomRecord
      *
      * @return Date[]
      */
-    public function getAllBirthDates()
+    public function getAllBirthDates(): array
     {
         foreach (explode('|', WT_EVENTS_BIRT) as $event) {
             $tmp = $this->getAllEventDates($event);
@@ -590,7 +590,7 @@ class Individual extends GedcomRecord
      *
      * @return Place[]
      */
-    public function getAllBirthPlaces()
+    public function getAllBirthPlaces(): array
     {
         foreach (explode('|', WT_EVENTS_BIRT) as $event) {
             $places = $this->getAllEventPlaces($event);
@@ -607,7 +607,7 @@ class Individual extends GedcomRecord
      *
      * @return Date[]
      */
-    public function getAllDeathDates()
+    public function getAllDeathDates(): array
     {
         foreach (explode('|', WT_EVENTS_DEAT) as $event) {
             $tmp = $this->getAllEventDates($event);
@@ -624,7 +624,7 @@ class Individual extends GedcomRecord
      *
      * @return Place[]
      */
-    public function getAllDeathPlaces()
+    public function getAllDeathPlaces(): array
     {
         foreach (explode('|', WT_EVENTS_DEAT) as $event) {
             $places = $this->getAllEventPlaces($event);
@@ -641,7 +641,7 @@ class Individual extends GedcomRecord
      *
      * @return Date
      */
-    public function getEstimatedBirthDate()
+    public function getEstimatedBirthDate(): Date
     {
         if (is_null($this->estimated_birth_date)) {
             foreach ($this->getAllBirthDates() as $date) {
@@ -727,7 +727,7 @@ class Individual extends GedcomRecord
      *
      * @return Date
      */
-    public function getEstimatedDeathDate()
+    public function getEstimatedDeathDate(): Date
     {
         if ($this->estimated_death_date === null) {
             foreach ($this->getAllDeathDates() as $date) {
@@ -772,7 +772,7 @@ class Individual extends GedcomRecord
      *
      * @return string
      */
-    public function getSexImage($size = 'small')
+    public function getSexImage($size = 'small'): string
     {
         return self::sexImage($this->getSex(), $size);
     }
@@ -785,7 +785,7 @@ class Individual extends GedcomRecord
      *
      * @return string
      */
-    public static function sexImage($sex, $size = 'small')
+    public static function sexImage($sex, $size = 'small'): string
     {
         return '<i class="icon-sex_' . strtolower($sex) . '_' . ($size == 'small' ? '9x9' : '15x15') . '"></i>';
     }
@@ -795,7 +795,7 @@ class Individual extends GedcomRecord
      *
      * @return string
      */
-    public function getBoxStyle()
+    public function getBoxStyle(): string
     {
         $tmp = [
             'M' => '',
@@ -813,7 +813,7 @@ class Individual extends GedcomRecord
      *
      * @return Family[]
      */
-    public function getSpouseFamilies($access_level = null)
+    public function getSpouseFamilies($access_level = null): array
     {
         if ($access_level === null) {
             $access_level = Auth::accessLevel($this->tree);
@@ -879,7 +879,7 @@ class Individual extends GedcomRecord
      *
      * @return Family[]
      */
-    public function getChildFamilies($access_level = null)
+    public function getChildFamilies($access_level = null): array
     {
         if ($access_level === null) {
             $access_level = Auth::accessLevel($this->tree);
@@ -952,7 +952,7 @@ class Individual extends GedcomRecord
      *
      * @return Family[]
      */
-    public function getChildStepFamilies()
+    public function getChildStepFamilies(): array
     {
         $step_families = [];
         $families      = $this->getChildFamilies();
@@ -983,7 +983,7 @@ class Individual extends GedcomRecord
      *
      * @return Family[]
      */
-    public function getSpouseStepFamilies()
+    public function getSpouseStepFamilies(): array
     {
         $step_families = [];
         $families      = $this->getSpouseFamilies();
@@ -1026,7 +1026,7 @@ class Individual extends GedcomRecord
      *
      * @return string
      */
-    public function getStepFamilyLabel(Family $step_family)
+    public function getStepFamilyLabel(Family $step_family): string
     {
         foreach ($this->getChildFamilies() as $family) {
             if ($family !== $step_family) {
@@ -1093,7 +1093,7 @@ class Individual extends GedcomRecord
      *
      * @return string a div block with father & mother names
      */
-    public function getPrimaryParentsNames($classname = '', $display = '')
+    public function getPrimaryParentsNames($classname = '', $display = ''): string
     {
         $fam = $this->getPrimaryChildFamily();
         if (!$fam) {
@@ -1133,7 +1133,7 @@ class Individual extends GedcomRecord
     }
 
     /** {@inheritdoc} */
-    public function getFallBackName()
+    public function getFallBackName(): string
     {
         return '@P.N. /@N.N./';
     }
@@ -1313,7 +1313,16 @@ class Individual extends GedcomRecord
      */
     public function extractNames()
     {
-        $this->extractNamesFromFacts(1, 'NAME', $this->getFacts('NAME', false, Auth::accessLevel($this->tree), $this->canShowName()));
+        $this->extractNamesFromFacts(
+            1,
+            'NAME',
+            $this->getFacts(
+                'NAME',
+                false,
+                Auth::accessLevel($this->tree),
+                $this->canShowName()
+            )
+        );
     }
 
     /**
@@ -1322,7 +1331,7 @@ class Individual extends GedcomRecord
      *
      * @return string
      */
-    public function formatListDetails()
+    public function formatListDetails(): string
     {
         return
             $this->formatFirstMajorFact(WT_EVENTS_BIRT, 1) .

@@ -114,7 +114,7 @@ class FunctionsPrint
      *
      * @return string HTML
      */
-    public static function printFactNotes(Tree $tree, $factrec, $level)
+    public static function printFactNotes(Tree $tree, $factrec, $level): string
     {
         $data          = '';
         $previous_spos = 0;
@@ -157,7 +157,7 @@ class FunctionsPrint
      *
      * @return string
      */
-    public static function helpLink($topic)
+    public static function helpLink($topic): string
     {
         return
             FontAwesome::linkIcon('help', I18N::translate('Help'), [
@@ -176,7 +176,7 @@ class FunctionsPrint
      *
      * @return string HTML
      */
-    public static function formatParentsAges(Individual $person, Date $birth_date)
+    public static function formatParentsAges(Individual $person, Date $birth_date): string
     {
         $html     = '';
         $families = $person->getChildFamilies();
@@ -229,7 +229,7 @@ class FunctionsPrint
      *
      * @return string
      */
-    public static function formatFactDate(Fact $event, GedcomRecord $record, $anchor, $time)
+    public static function formatFactDate(Fact $event, GedcomRecord $record, $anchor, $time): string
     {
         global $pid;
 
@@ -367,7 +367,7 @@ class FunctionsPrint
      *
      * @return string HTML
      */
-    public static function formatFactPlace(Fact $event, $anchor = false, $sub_records = false, $lds = false)
+    public static function formatFactPlace(Fact $event, $anchor = false, $sub_records = false, $lds = false): string
     {
         $tree = $event->getParent()->getTree();
 
@@ -450,7 +450,7 @@ class FunctionsPrint
      *
      * @return string[]
      */
-    public static function checkFactUnique($uniquefacts, $recfacts, $type)
+    public static function checkFactUnique($uniquefacts, $recfacts, $type): array
     {
         foreach ($recfacts as $factarray) {
             $fact = false;
@@ -607,7 +607,7 @@ class FunctionsPrint
      *
      * @return string
      */
-    public static function getLdsSummary(Individual $individual)
+    public static function getLdsSummary(Individual $individual): string
     {
         $BAPL = $individual->getFacts('BAPL') ? 'B' : '_';
         $ENDL = $individual->getFacts('ENDL') ? 'E' : '_';

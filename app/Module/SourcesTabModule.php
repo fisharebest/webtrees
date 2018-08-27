@@ -29,33 +29,33 @@ class SourcesTabModule extends AbstractModule implements ModuleTabInterface
     private $facts;
 
     /** {@inheritdoc} */
-    public function getTitle()
+    public function getTitle(): string
     {
         /* I18N: Name of a module */
         return I18N::translate('Sources');
     }
 
     /** {@inheritdoc} */
-    public function getDescription()
+    public function getDescription(): string
     {
         /* I18N: Description of the “Sources” module */
         return I18N::translate('A tab showing the sources linked to an individual.');
     }
 
     /** {@inheritdoc} */
-    public function defaultTabOrder()
+    public function defaultTabOrder(): int
     {
         return 30;
     }
 
     /** {@inheritdoc} */
-    public function hasTabContent(Individual $individual)
+    public function hasTabContent(Individual $individual): bool
     {
         return $individual->canEdit() || $this->getFactsWithSources($individual);
     }
 
     /** {@inheritdoc} */
-    public function isGrayedOut(Individual $individual)
+    public function isGrayedOut(Individual $individual): bool
     {
         return !$this->getFactsWithSources($individual);
     }
@@ -77,7 +77,7 @@ class SourcesTabModule extends AbstractModule implements ModuleTabInterface
      *
      * @return Fact[]
      */
-    private function getFactsWithSources(Individual $individual)
+    private function getFactsWithSources(Individual $individual): array
     {
         if ($this->facts === null) {
             $facts = $individual->getFacts();
@@ -101,7 +101,7 @@ class SourcesTabModule extends AbstractModule implements ModuleTabInterface
     }
 
     /** {@inheritdoc} */
-    public function canLoadAjax()
+    public function canLoadAjax(): bool
     {
         return false;
     }

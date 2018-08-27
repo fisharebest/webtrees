@@ -35,7 +35,7 @@ class Theme
      *
      * @return ThemeInterface[]
      */
-    public static function installedThemes()
+    public static function installedThemes(): array
     {
         if (self::$installed_themes === null) {
             self::$installed_themes = [];
@@ -62,7 +62,7 @@ class Theme
      *
      * @return string[]
      */
-    public static function themeNames()
+    public static function themeNames(): array
     {
         $theme_names = [];
         foreach (self::installedThemes() as $theme) {
@@ -79,7 +79,7 @@ class Theme
      *
      * @return ThemeInterface
      */
-    public static function theme(ThemeInterface $theme = null)
+    public static function theme(ThemeInterface $theme = null): ThemeInterface
     {
         if ($theme) {
             self::$theme = $theme;

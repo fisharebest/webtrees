@@ -32,14 +32,14 @@ use Symfony\Component\HttpFoundation\Response;
 class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
 {
     /** {@inheritdoc} */
-    public function getTitle()
+    public function getTitle(): string
     {
         /* I18N: Name of a module */
         return I18N::translate('Messages');
     }
 
     /** {@inheritdoc} */
-    public function getDescription()
+    public function getDescription(): string
     {
         /* I18N: Description of the “Messages” module */
         return I18N::translate('Communicate directly with other users, using private messages.');

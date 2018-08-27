@@ -31,7 +31,7 @@ class CensusColumnBirthDate extends AbstractCensusColumn implements CensusColumn
      *
      * @return string
      */
-    public function generate(Individual $individual, Individual $head)
+    public function generate(Individual $individual, Individual $head): string
     {
         return $individual->getEstimatedBirthDate()->minimumDate()->format('%j %n %Y');
     }

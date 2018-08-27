@@ -305,7 +305,7 @@ class GedcomCodeRela
      *
      * @return string[]
      */
-    public static function getValues(GedcomRecord $record = null)
+    public static function getValues(GedcomRecord $record = null): array
     {
         $values = [];
         foreach (self::$TYPES as $type) {

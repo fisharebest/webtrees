@@ -27,14 +27,14 @@ use Symfony\Component\HttpFoundation\Request;
 class TopGivenNamesModule extends AbstractModule implements ModuleBlockInterface
 {
     /** {@inheritdoc} */
-    public function getTitle()
+    public function getTitle(): string
     {
         /* I18N: Name of a module. Top=Most common */
         return I18N::translate('Top given names');
     }
 
     /** {@inheritdoc} */
-    public function getDescription()
+    public function getDescription(): string
     {
         /* I18N: Description of the “Top given names” module */
         return I18N::translate('A list of the most popular given names.');

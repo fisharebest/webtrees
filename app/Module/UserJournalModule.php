@@ -47,7 +47,7 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
      *
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): string
     {
         /* I18N: Name of a module */
         return I18N::translate('Journal');
@@ -58,7 +58,7 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
      *
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): string
     {
         /* I18N: Description of the “Journal” module */
         return I18N::translate('A private area to record notes or keep a journal.');

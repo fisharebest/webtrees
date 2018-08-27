@@ -97,7 +97,7 @@ class ReportBase
      * Setting up document wide defaults that will be inherited of the report modules
      * As DEFAULT A4 and Portrait will be used if not set
      */
-    public function setup()
+    public function setup(): int
     {
         // Set RTL direction
         if (I18N::direction() === 'rtl') {
@@ -652,7 +652,7 @@ class ReportBase
      *
      * @return int
      */
-    public function setProcessing($p)
+    public function setProcessing($p): int
     {
         $this->processing = $p;
 
@@ -666,7 +666,7 @@ class ReportBase
      *
      * @return int
      */
-    public function addTitle($data)
+    public function addTitle($data): int
     {
         $this->title .= $data;
 
@@ -680,7 +680,7 @@ class ReportBase
      *
      * @return int
      */
-    public function addDescription($data)
+    public function addDescription($data): int
     {
         $this->rsubject .= $data;
 
@@ -694,7 +694,7 @@ class ReportBase
      *
      * @return int
      */
-    public function addStyle($style)
+    public function addStyle($style): int
     {
         $this->Styles[$style['name']] = $style;
 
@@ -708,7 +708,7 @@ class ReportBase
      *
      * @return array
      */
-    public function getStyle($s)
+    public function getStyle($s): array
     {
         if (!isset($this->Styles[$s])) {
             return current($this->Styles);

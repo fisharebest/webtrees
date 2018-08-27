@@ -27,14 +27,14 @@ use Symfony\Component\HttpFoundation\Request;
 class LoginBlockModule extends AbstractModule implements ModuleBlockInterface
 {
     /** {@inheritdoc} */
-    public function getTitle()
+    public function getTitle(): string
     {
         /* I18N: Name of a module */
         return I18N::translate('Sign in');
     }
 
     /** {@inheritdoc} */
-    public function getDescription()
+    public function getDescription(): string
     {
         /* I18N: Description of the “Sign in” module */
         return I18N::translate('An alternative way to sign in and sign out.');

@@ -34,7 +34,7 @@ interface ThemeInterface
      *
      * @return string
      */
-    public function contactLink(User $user);
+    public function contactLink(User $user): string;
 
     /**
      * Display an icon for this fact.
@@ -43,7 +43,7 @@ interface ThemeInterface
      *
      * @return string
      */
-    public function icon(Fact $fact);
+    public function icon(Fact $fact): string;
 
     /**
      * Display an individual in a box - for charts, etc.
@@ -52,14 +52,14 @@ interface ThemeInterface
      *
      * @return string
      */
-    public function individualBox(Individual $individual);
+    public function individualBox(Individual $individual): string;
 
     /**
      * Display an empty box - for a missing individual in a chart.
      *
      * @return string
      */
-    public function individualBoxEmpty();
+    public function individualBoxEmpty(): string;
 
     /**
      * Display an individual in a box - for charts, etc.
@@ -68,7 +68,7 @@ interface ThemeInterface
      *
      * @return string
      */
-    public function individualBoxLarge(Individual $individual);
+    public function individualBoxLarge(Individual $individual): string;
 
     /**
      * Display an individual in a box - for charts, etc.
@@ -77,14 +77,14 @@ interface ThemeInterface
      *
      * @return string
      */
-    public function individualBoxSmall(Individual $individual);
+    public function individualBoxSmall(Individual $individual): string;
 
     /**
      * Display an individual in a box - for charts, etc.
      *
      * @return string
      */
-    public function individualBoxSmallEmpty();
+    public function individualBoxSmallEmpty(): string;
 
     /**
      * Initialise the theme. We cannot pass these in a constructor, as the construction
@@ -104,7 +104,7 @@ interface ThemeInterface
      *
      * @return Menu[]
      */
-    public function individualBoxMenu(Individual $individual);
+    public function individualBoxMenu(Individual $individual): array;
 
     /**
      * Misecellaneous dimensions, fonts, styles, etc.
@@ -120,12 +120,12 @@ interface ThemeInterface
      *
      * @return string
      */
-    public function themeId();
+    public function themeId(): string;
 
     /**
      * What is this theme called?
      *
      * @return string
      */
-    public function themeName();
+    public function themeName(): string;
 }

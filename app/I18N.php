@@ -231,7 +231,7 @@ class I18N
      *
      * @return LocaleInterface[]
      */
-    public static function activeLocales()
+    public static function activeLocales(): array
     {
         $code_list = Site::getPreference('LANGUAGES');
 
@@ -282,7 +282,7 @@ class I18N
      *
      * @return string
      */
-    public static function dateFormat()
+    public static function dateFormat(): string
     {
         /* I18N: This is the format string for full dates. See http://php.net/date for codes */
         return self::$translator->translate('%j %F %Y');
@@ -302,8 +302,7 @@ class I18N
         50,
         100,
         -1,
-    ])
-    {
+    ]): string {
         $length_options = Bootstrap4::select(FunctionsEdit::numericOptions($lengths), 10);
 
         return
@@ -339,7 +338,7 @@ class I18N
      *
      * @return string
      */
-    public static function digits($n)
+    public static function digits($n): string
     {
         return self::$locale->digits($n);
     }
@@ -349,7 +348,7 @@ class I18N
      *
      * @return string "ltr" or "rtl"
      */
-    public static function direction()
+    public static function direction(): string
     {
         return self::$locale->direction();
     }
@@ -359,7 +358,7 @@ class I18N
      *
      * @return int Sunday=0, Monday=1, etc.
      */
-    public static function firstDay()
+    public static function firstDay(): int
     {
         return self::$locale->territory()->firstDay();
     }
@@ -434,7 +433,7 @@ class I18N
      *
      * @return string
      */
-    public static function htmlAttributes()
+    public static function htmlAttributes(): string
     {
         return self::$locale->htmlAttributes();
     }
@@ -446,7 +445,7 @@ class I18N
      *
      * @return string $string
      */
-    public static function init($code = '')
+    public static function init($code = ''): string
     {
         mb_internal_encoding('UTF-8');
 
@@ -558,7 +557,7 @@ class I18N
      *
      * @return LocaleInterface[]
      */
-    public static function installedLocales()
+    public static function installedLocales(): array
     {
         $locales = [];
         foreach (glob(WT_ROOT . 'language/*.mo') as $file) {
@@ -582,7 +581,7 @@ class I18N
      *
      * @return string
      */
-    public static function languageName($locale)
+    public static function languageName($locale): string
     {
         return Locale::create($locale)->endonym();
     }
@@ -594,7 +593,7 @@ class I18N
      *
      * @return string
      */
-    public static function languageScript($locale)
+    public static function languageScript($locale): string
     {
         return Locale::create($locale)->script()->code();
     }
@@ -612,7 +611,7 @@ class I18N
      *
      * @return string
      */
-    public static function number($n, $precision = 0)
+    public static function number($n, $precision = 0): string
     {
         return self::$locale->number(round($n, $precision));
     }
@@ -630,7 +629,7 @@ class I18N
      *
      * @return string
      */
-    public static function percentage($n, $precision = 0)
+    public static function percentage($n, $precision = 0): string
     {
         return self::$locale->percent(round($n, $precision + 2));
     }
@@ -644,7 +643,7 @@ class I18N
      *
      * @return string
      */
-    public static function plural(...$args)
+    public static function plural(...$args): string
     {
         $args[0] = self::$translator->translatePlural($args[0], $args[1], (int) $args[2]);
         unset($args[1], $args[2]);
@@ -666,7 +665,7 @@ class I18N
      *
      * @return string
      */
-    public static function reverseText($text)
+    public static function reverseText($text): string
     {
         // Remove HTML markup - we can't display it and it is LTR.
         $text = strip_tags($text);
@@ -744,7 +743,7 @@ class I18N
      *
      * @return string
      */
-    public static function strtolower($string)
+    public static function strtolower($string): string
     {
         if (in_array(self::$locale->language()->code(), self::DOTLESS_I_LOCALES)) {
             $string = strtr($string, self::DOTLESS_I_TOLOWER);
@@ -760,7 +759,7 @@ class I18N
      *
      * @return string
      */
-    public static function strtoupper($string)
+    public static function strtoupper($string): string
     {
         if (in_array(self::$locale->language()->code(), self::DOTLESS_I_LOCALES)) {
             $string = strtr($string, self::DOTLESS_I_TOUPPER);
@@ -776,7 +775,7 @@ class I18N
      *
      * @return string
      */
-    public static function textScript($string)
+    public static function textScript($string): string
     {
         $string = strip_tags($string); // otherwise HTML tags show up as latin
         $string = html_entity_decode($string, ENT_QUOTES, 'UTF-8'); // otherwise HTML entities show up as latin
@@ -866,7 +865,7 @@ class I18N
      *
      * @return string
      */
-    public static function timeFormat()
+    public static function timeFormat(): string
     {
         /* I18N: This is the format string for the time-of-day. See http://php.net/date for codes */
         return self::$translator->translate('%H:%i:%s');
@@ -880,7 +879,7 @@ class I18N
      *
      * @return string
      */
-    public static function translate(...$args)
+    public static function translate(...$args): string
     {
         $args[0] = self::$translator->translate($args[0]);
 
@@ -895,7 +894,7 @@ class I18N
      *
      * @return string
      */
-    public static function translateContext(...$args)
+    public static function translateContext(...$args): string
     {
         $args[1] = self::$translator->translateContext($args[0], $args[1]);
         unset($args[0]);

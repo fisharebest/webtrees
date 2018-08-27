@@ -28,14 +28,14 @@ use Symfony\Component\HttpFoundation\Request;
 class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface
 {
     /** {@inheritdoc} */
-    public function getTitle()
+    public function getTitle(): string
     {
         /* I18N: Name of a module */
         return I18N::translate('HTML');
     }
 
     /** {@inheritdoc} */
-    public function getDescription()
+    public function getDescription(): string
     {
         /* I18N: Description of the “HTML” module */
         return I18N::translate('Add your own text and graphics.');

@@ -33,7 +33,7 @@ class Auth
      *
      * @return bool
      */
-    public static function check()
+    public static function check(): bool
     {
         return self::id() !== null;
     }
@@ -45,7 +45,7 @@ class Auth
      *
      * @return bool
      */
-    public static function isAdmin(User $user = null)
+    public static function isAdmin(User $user = null): bool
     {
         if ($user === null) {
             $user = self::user();
@@ -62,7 +62,7 @@ class Auth
      *
      * @return bool
      */
-    public static function isManager(Tree $tree, User $user = null)
+    public static function isManager(Tree $tree, User $user = null): bool
     {
         if ($user === null) {
             $user = self::user();
@@ -79,7 +79,7 @@ class Auth
      *
      * @return bool
      */
-    public static function isModerator(Tree $tree, User $user = null)
+    public static function isModerator(Tree $tree, User $user = null): bool
     {
         if ($user === null) {
             $user = self::user();
@@ -96,7 +96,7 @@ class Auth
      *
      * @return bool
      */
-    public static function isEditor(Tree $tree, User $user = null)
+    public static function isEditor(Tree $tree, User $user = null): bool
     {
         if ($user === null) {
             $user = self::user();
@@ -113,7 +113,7 @@ class Auth
      *
      * @return bool
      */
-    public static function isMember(Tree $tree, User $user = null)
+    public static function isMember(Tree $tree, User $user = null): bool
     {
         if ($user === null) {
             $user = self::user();

@@ -43,7 +43,7 @@ class Mail
      *
      * @return bool
      */
-    public static function send(User $from, User $to, User $reply_to, $subject, $message_text, $message_html)
+    public static function send(User $from, User $to, User $reply_to, $subject, $message_text, $message_html): bool
     {
         try {
             // Swiftmailer uses the PHP default tmp directory.  On some servers, this

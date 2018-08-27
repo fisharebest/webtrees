@@ -54,7 +54,7 @@ class Source extends GedcomRecord
      *
      * @return bool
      */
-    protected function canShowByType($access_level)
+    protected function canShowByType($access_level): bool
     {
         // Hide sources if they are attached to private repositories ...
         preg_match_all('/\n1 REPO @(.+)@/', $this->gedcom, $matches);
@@ -76,7 +76,7 @@ class Source extends GedcomRecord
      *
      * @return string
      */
-    protected function createPrivateGedcomRecord($access_level)
+    protected function createPrivateGedcomRecord($access_level): string
     {
         return '0 @' . $this->xref . "@ SOUR\n1 TITL " . I18N::translate('Private');
     }

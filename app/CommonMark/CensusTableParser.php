@@ -45,7 +45,7 @@ class CensusTableParser extends AbstractBlockParser
      *
      * @return bool
      */
-    public function parse(ContextInterface $context, Cursor $cursor)
+    public function parse(ContextInterface $context, Cursor $cursor): bool
     {
         $container = $context->getContainer();
 

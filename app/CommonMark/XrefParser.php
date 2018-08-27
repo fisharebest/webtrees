@@ -44,7 +44,7 @@ class XrefParser extends AbstractInlineParser
      *
      * @return array
      */
-    public function getCharacters()
+    public function getCharacters(): array
     {
         return ['@'];
     }
@@ -54,7 +54,7 @@ class XrefParser extends AbstractInlineParser
      *
      * @return bool
      */
-    public function parse(InlineParserContext $context)
+    public function parse(InlineParserContext $context): bool
     {
         // The cursor should be positioned on the opening '@'.
         $cursor = $context->getCursor();

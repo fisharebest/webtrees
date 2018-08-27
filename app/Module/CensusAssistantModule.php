@@ -29,14 +29,14 @@ use Symfony\Component\HttpFoundation\Response;
 class CensusAssistantModule extends AbstractModule
 {
     /** {@inheritdoc} */
-    public function getTitle()
+    public function getTitle(): string
     {
         /* I18N: Name of a module */
         return I18N::translate('Census assistant');
     }
 
     /** {@inheritdoc} */
-    public function getDescription()
+    public function getDescription(): string
     {
         /* I18N: Description of the “Census assistant” module */
         return I18N::translate('An alternative way to enter census transcripts and link them to individuals.');
@@ -78,7 +78,7 @@ class CensusAssistantModule extends AbstractModule
      *
      * @return string
      */
-    public function createCensusAssistant(Individual $individual)
+    public function createCensusAssistant(Individual $individual): string
     {
         return view('modules/census-assistant', [
             'individual' => $individual,
@@ -94,7 +94,7 @@ class CensusAssistantModule extends AbstractModule
      *
      * @return string
      */
-    public function updateCensusAssistant(Request $request, Individual $individual, $fact_id, $newged, $keep_chan)
+    public function updateCensusAssistant(Request $request, Individual $individual, $fact_id, $newged, $keep_chan): string
     {
         $ca_title       = $request->get('ca_title', '');
         $ca_place       = $request->get('ca_place', '');
@@ -134,7 +134,7 @@ class CensusAssistantModule extends AbstractModule
      *
      * @return string
      */
-    private function createNoteText(CensusInterface $census, $ca_title, $ca_place, $ca_citation, $ca_individuals, $ca_notes)
+    private function createNoteText(CensusInterface $census, $ca_title, $ca_place, $ca_citation, $ca_individuals, $ca_notes): string
     {
         $text = $ca_title . "\n" . $ca_citation . "\n" . $ca_place . "\n\n";
 
@@ -172,7 +172,7 @@ class CensusAssistantModule extends AbstractModule
      *
      * @return string
      */
-    public static function censusTableHeader(CensusInterface $census)
+    public static function censusTableHeader(CensusInterface $census): string
     {
         $html = '';
         foreach ($census->columns() as $column) {
@@ -191,7 +191,7 @@ class CensusAssistantModule extends AbstractModule
      *
      * @return string
      */
-    public static function censusTableEmptyRow(CensusInterface $census)
+    public static function censusTableEmptyRow(CensusInterface $census): string
     {
         return '<tr class="wt-census-assistant-row"><td hidden></td>' . str_repeat('<td class="wt-census-assistant-field"><input type="text" class="form-control wt-census-assistant-form-control"></td>', count($census->columns())) . '<td><a class="icon-remove" href="#" title="' . I18N::translate('Remove') . '"></a></td></tr>';
     }
@@ -207,7 +207,7 @@ class CensusAssistantModule extends AbstractModule
      *
      * @return string
      */
-    public static function censusTableRow(CensusInterface $census, Individual $individual, Individual $head)
+    public static function censusTableRow(CensusInterface $census, Individual $individual, Individual $head): string
     {
         $html = '';
         foreach ($census->columns() as $column) {

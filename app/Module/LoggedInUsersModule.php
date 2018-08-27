@@ -29,14 +29,14 @@ use Symfony\Component\HttpFoundation\Request;
 class LoggedInUsersModule extends AbstractModule implements ModuleBlockInterface
 {
     /** {@inheritdoc} */
-    public function getTitle()
+    public function getTitle(): string
     {
         /* I18N: Name of a module. (A list of users who are online now) */
         return I18N::translate('Who is online');
     }
 
     /** {@inheritdoc} */
-    public function getDescription()
+    public function getDescription(): string
     {
         /* I18N: Description of the “Who is online” module */
         return I18N::translate('A list of users and visitors who are currently online.');

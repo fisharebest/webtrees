@@ -84,7 +84,7 @@ class ReportBaseText extends ReportBaseElement
      *
      * @return string
      */
-    public function getStyleName()
+    public function getStyleName(): string
     {
         return $this->styleName;
     }

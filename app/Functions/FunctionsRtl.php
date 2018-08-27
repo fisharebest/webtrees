@@ -71,7 +71,7 @@ class FunctionsRtl
      *
      * @return string The input string, with &lrm; and &rlm; stripped
      */
-    public static function stripLrmRlm($inputText)
+    public static function stripLrmRlm($inputText): string
     {
         return str_replace([
             self::UTF8_LRM,
@@ -96,7 +96,7 @@ class FunctionsRtl
      *
      * @return string The string with all texts encapsulated as required
      */
-    public static function spanLtrRtl($inputText)
+    public static function spanLtrRtl($inputText): string
     {
         if ($inputText == '') {
             // Nothing to do
@@ -507,7 +507,7 @@ class FunctionsRtl
      *
      * @return string
      */
-    public static function starredName($textSpan, $direction)
+    public static function starredName($textSpan, $direction): string
     {
         // To avoid a TCPDF bug that mixes up the word order, insert those <u> and </u> tags
         // only when page and span directions are identical.
@@ -555,7 +555,7 @@ class FunctionsRtl
      *
      * @return array
      */
-    public static function getChar($text, $offset)
+    public static function getChar($text, $offset): array
     {
         if ($text == '') {
             return [
@@ -1134,7 +1134,7 @@ class FunctionsRtl
      *
      * @return string
      */
-    public static function utf8WordWrap($string, $width = 75, $sep = "\n", $cut = false)
+    public static function utf8WordWrap($string, $width = 75, $sep = "\n", $cut = false): string
     {
         $out = '';
         while ($string) {

@@ -26,7 +26,7 @@ class CensusOfScotland1851 extends CensusOfScotland implements CensusInterface
      *
      * @return string
      */
-    public function censusDate()
+    public function censusDate(): string
     {
         return '30 MAR 1851';
     }
@@ -36,7 +36,7 @@ class CensusOfScotland1851 extends CensusOfScotland implements CensusInterface
      *
      * @return CensusColumnInterface[]
      */
-    public function columns()
+    public function columns(): array
     {
         return [
             new CensusColumnFullName($this, 'Name', 'Name and surname'),

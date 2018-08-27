@@ -36,8 +36,7 @@ class Datatables
         25,
         100,
         -1,
-    ])
-    {
+    ]): array {
         $length_menu = FunctionsEdit::numericOptions($lengths);
 
         $language = [
@@ -79,7 +78,7 @@ class Datatables
      *
      * @return string
      */
-    public static function eventTableAttributes()
+    public static function eventTableAttributes(): string
     {
         return Html::attributes([
                 'class'           => 'table table-bordered table-sm datatables table-event',
@@ -96,7 +95,7 @@ class Datatables
      *
      * @return string
      */
-    public static function givenNameTableAttributes()
+    public static function givenNameTableAttributes(): string
     {
         return Html::attributes([
             'class'           => 'table table-bordered table-sm datatables table-given-name',

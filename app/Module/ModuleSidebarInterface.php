@@ -27,7 +27,7 @@ interface ModuleSidebarInterface
      *
      * @return int
      */
-    public function defaultSidebarOrder();
+    public function defaultSidebarOrder(): int;
 
     /**
      * Sidebar content.
@@ -36,7 +36,7 @@ interface ModuleSidebarInterface
      *
      * @return string
      */
-    public function getSidebarContent(Individual $individual);
+    public function getSidebarContent(Individual $individual): string;
 
     /**
      * Does this sidebar have anything to display for this individual?
@@ -45,5 +45,5 @@ interface ModuleSidebarInterface
      *
      * @return bool
      */
-    public function hasSidebarContent(Individual $individual);
+    public function hasSidebarContent(Individual $individual): bool;
 }

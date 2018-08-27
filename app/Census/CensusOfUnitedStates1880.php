@@ -26,7 +26,7 @@ class CensusOfUnitedStates1880 extends CensusOfUnitedStates implements CensusInt
      *
      * @return string
      */
-    public function censusDate()
+    public function censusDate(): string
     {
         return 'JUN 1880';
     }
@@ -36,7 +36,7 @@ class CensusOfUnitedStates1880 extends CensusOfUnitedStates implements CensusInt
      *
      * @return CensusColumnInterface[]
      */
-    public function columns()
+    public function columns(): array
     {
         return [
             new CensusColumnFullName($this, 'Name', 'Name'),

@@ -147,7 +147,7 @@ class GedcomCodeStat
      *
      * @return string[]
      */
-    public static function statusNames($tag)
+    public static function statusNames($tag): array
     {
         $status_names = [];
         foreach (self::statusCodes($tag) as $status_code) {

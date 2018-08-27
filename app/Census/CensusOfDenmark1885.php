@@ -26,7 +26,7 @@ class CensusOfDenmark1885 extends CensusOfDenmark implements CensusInterface
      *
      * @return string
      */
-    public function censusDate()
+    public function censusDate(): string
     {
         return '01 FEB 1885';
     }
@@ -36,7 +36,7 @@ class CensusOfDenmark1885 extends CensusOfDenmark implements CensusInterface
      *
      * @return string
      */
-    public function censusPlace()
+    public function censusPlace(): string
     {
         return 'København, Danmark';
     }
@@ -46,7 +46,7 @@ class CensusOfDenmark1885 extends CensusOfDenmark implements CensusInterface
      *
      * @return CensusColumnInterface[]
      */
-    public function columns()
+    public function columns(): array
     {
         return [
             new CensusColumnFullName($this, 'Navn', ''),

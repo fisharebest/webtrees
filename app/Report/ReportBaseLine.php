@@ -68,7 +68,7 @@ class ReportBaseLine extends ReportBaseElement
      *
      * @return number
      */
-    public function getHeight($renderer)
+    public function getHeight($renderer): float
     {
         return abs($this->y2 - $this->y1);
     }
@@ -80,7 +80,7 @@ class ReportBaseLine extends ReportBaseElement
      *
      * @return number
      */
-    public function getWidth($renderer)
+    public function getWidth($renderer): float
     {
         return abs($this->x2 - $this->x1);
     }

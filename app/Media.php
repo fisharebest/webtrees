@@ -56,7 +56,7 @@ class Media extends GedcomRecord
      *
      * @return bool
      */
-    protected function canShowByType($access_level)
+    protected function canShowByType($access_level): bool
     {
         // Hide media objects if they are attached to private records
         $linked_ids = Database::prepare(
@@ -175,7 +175,7 @@ class Media extends GedcomRecord
      *
      * @return string
      */
-    public function formatListDetails()
+    public function formatListDetails(): string
     {
         ob_start();
         FunctionsPrintFacts::printMediaLinks($this->getTree(), '1 OBJE @' . $this->getXref() . '@', 1);
@@ -193,7 +193,7 @@ class Media extends GedcomRecord
      *
      * @return string
      */
-    public function displayImage($width, $height, $fit, $attributes = [])
+    public function displayImage($width, $height, $fit, $attributes = []): string
     {
         // Display the first image
         foreach ($this->mediaFiles() as $media_file) {

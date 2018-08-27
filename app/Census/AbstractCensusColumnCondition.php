@@ -95,7 +95,7 @@ abstract class AbstractCensusColumnCondition extends AbstractCensusColumn implem
      *
      * @return bool
      */
-    private function isChild(Individual $individual)
+    private function isChild(Individual $individual): bool
     {
         $age = (int)Date::getAge($individual->getEstimatedBirthDate(), $this->date(), 0);
 
@@ -157,7 +157,7 @@ abstract class AbstractCensusColumnCondition extends AbstractCensusColumn implem
      *
      * @return bool
      */
-    private function isDead(Individual $individual)
+    private function isDead(Individual $individual): bool
     {
         return $individual->getDeathDate()->isOK() && Date::compare($individual->getDeathDate(), $this->date()) < 0;
     }

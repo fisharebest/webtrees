@@ -52,7 +52,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
      *
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): string
     {
         /* I18N: Name of a module */
         return I18N::translate('News');
@@ -63,7 +63,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
      *
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): string
     {
         /* I18N: Description of the “News” module */
         return I18N::translate('Family news and site announcements.');

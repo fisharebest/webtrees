@@ -39,7 +39,7 @@ class XrefExtension extends Extension
     /**
      * @return array
      */
-    public function getInlineParsers()
+    public function getInlineParsers(): array
     {
         return [
             new XrefParser($this->tree),
@@ -49,7 +49,7 @@ class XrefExtension extends Extension
     /**
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return 'xref';
     }

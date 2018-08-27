@@ -26,7 +26,7 @@ class RegisterOfEngland1939 extends CensusOfEngland implements CensusInterface
      *
      * @return string
      */
-    public function censusDate()
+    public function censusDate(): string
     {
         return '29 SEP 1939';
     }
@@ -36,7 +36,7 @@ class RegisterOfEngland1939 extends CensusOfEngland implements CensusInterface
      *
      * @return CensusColumnInterface[]
      */
-    public function columns()
+    public function columns(): array
     {
         return [
             new CensusColumnNull($this, 'Schedule', 'Schedule Number'),

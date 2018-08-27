@@ -32,7 +32,7 @@ class AlbumModule extends AbstractModule implements ModuleTabInterface
      *
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): string
     {
         /* I18N: Name of a module */
         return I18N::translate('Album');
@@ -43,7 +43,7 @@ class AlbumModule extends AbstractModule implements ModuleTabInterface
      *
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): string
     {
         /* I18N: Description of the “Album” module */
         return I18N::translate('An alternative to the “media” tab, and an enhanced image viewer.');
@@ -55,7 +55,7 @@ class AlbumModule extends AbstractModule implements ModuleTabInterface
      *
      * @return int
      */
-    public function defaultTabOrder()
+    public function defaultTabOrder(): int
     {
         return 60;
     }
@@ -67,7 +67,7 @@ class AlbumModule extends AbstractModule implements ModuleTabInterface
      *
      * @return bool
      */
-    public function hasTabContent(Individual $individual)
+    public function hasTabContent(Individual $individual): bool
     {
         return $individual->canEdit() || $this->getMedia($individual);
     }
@@ -80,7 +80,7 @@ class AlbumModule extends AbstractModule implements ModuleTabInterface
      *
      * @return bool
      */
-    public function isGrayedOut(Individual $individual)
+    public function isGrayedOut(Individual $individual): bool
     {
         return !$this->getMedia($individual);
     }
@@ -92,7 +92,7 @@ class AlbumModule extends AbstractModule implements ModuleTabInterface
      *
      * @return string
      */
-    public function getTabContent(Individual $individual)
+    public function getTabContent(Individual $individual): string
     {
         return view('modules/lightbox/tab', [
             'media_list' => $this->getMedia($individual),
@@ -106,7 +106,7 @@ class AlbumModule extends AbstractModule implements ModuleTabInterface
      *
      * @return Media[]
      */
-    private function getMedia(Individual $individual)
+    private function getMedia(Individual $individual): array
     {
         if ($this->media_list === null) {
             // Use facts from this individual and all their spouses
@@ -150,7 +150,7 @@ class AlbumModule extends AbstractModule implements ModuleTabInterface
      *
      * @return bool
      */
-    public function canLoadAjax()
+    public function canLoadAjax(): bool
     {
         return false;
     }

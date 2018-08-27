@@ -68,7 +68,7 @@ class Note extends GedcomRecord
      *
      * @return bool
      */
-    protected function canShowByType($access_level)
+    protected function canShowByType($access_level): bool
     {
         // Hide notes if they are attached to private records
         $linked_ids = Database::prepare(
@@ -95,7 +95,7 @@ class Note extends GedcomRecord
      *
      * @return string
      */
-    protected function createPrivateGedcomRecord($access_level)
+    protected function createPrivateGedcomRecord($access_level): string
     {
         return '0 @' . $this->xref . '@ NOTE ' . I18N::translate('Private');
     }

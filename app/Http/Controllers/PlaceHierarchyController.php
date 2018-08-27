@@ -111,7 +111,7 @@ class PlaceHierarchyController extends AbstractBaseController
      * @return array
      * @throws \Exception
      */
-    private function getList(Tree $tree)
+    private function getList(Tree $tree): array
     {
         $list_places = Place::allPlaces($tree);
         $numfound    = count($list_places);
@@ -159,7 +159,7 @@ class PlaceHierarchyController extends AbstractBaseController
      * @return array
      * @throws \Exception
      */
-    private function getEvents($tree, $place)
+    private function getEvents($tree, $place): array
     {
         $indilist = [];
         $famlist  = [];
@@ -195,7 +195,7 @@ class PlaceHierarchyController extends AbstractBaseController
      *
      * @return array
      */
-    private function breadcrumbs($place)
+    private function breadcrumbs($place): array
     {
         $breadcrumbs = [];
         if (!$place->isEmpty()) {

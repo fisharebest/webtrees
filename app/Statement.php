@@ -49,7 +49,7 @@ class Statement
      *
      * @return Statement
      */
-    public function execute($bind_variables = [])
+    public function execute($bind_variables = []): Statement
     {
         if ($this->executed) {
             throw new \Exception('Statement::execute() called twice.');
@@ -123,7 +123,7 @@ class Statement
      *
      * @return stdClass[]
      */
-    public function fetchAll()
+    public function fetchAll(): array
     {
         if (!$this->executed) {
             $this->execute();
@@ -180,7 +180,7 @@ class Statement
      *
      * @return string[]
      */
-    public function fetchAssoc()
+    public function fetchAssoc(): array
     {
         if (!$this->executed) {
             $this->execute();
@@ -202,7 +202,7 @@ class Statement
      *
      * @return string[]
      */
-    public function fetchOneColumn()
+    public function fetchOneColumn(): array
     {
         if (!$this->executed) {
             $this->execute();
@@ -222,7 +222,7 @@ class Statement
      *
      * @return int
      */
-    public function rowCount()
+    public function rowCount(): int
     {
         return $this->pdo_statement->rowCount();
     }

@@ -58,7 +58,7 @@ abstract class AbstractModule
      *
      * @return string
      */
-    public function getBlockSetting($block_id, $setting_name, $default_value = '')
+    public function getBlockSetting($block_id, $setting_name, $default_value = ''): string
     {
         $setting_value = Database::prepare(
             "SELECT setting_value FROM `##block_setting` WHERE block_id = :block_id AND setting_name = :setting_name"
@@ -79,7 +79,7 @@ abstract class AbstractModule
      *
      * @return $this
      */
-    public function setBlockSetting(int $block_id, string $setting_name, string $setting_value)
+    public function setBlockSetting(int $block_id, string $setting_name, string $setting_value): self
     {
         Database::prepare(
             "REPLACE INTO `##block_setting` (block_id, setting_name, setting_value) VALUES (:block_id, :setting_name, :setting_value)"
@@ -97,14 +97,14 @@ abstract class AbstractModule
      *
      * @return string
      */
-    abstract public function getTitle();
+    abstract public function getTitle(): string;
 
     /**
      * A sentence describing what this module does.
      *
      * @return string
      */
-    abstract public function getDescription();
+    abstract public function getDescription(): string;
 
     /**
      * What is the default access level for this module?
@@ -113,7 +113,7 @@ abstract class AbstractModule
      *
      * @return int
      */
-    public function defaultAccessLevel()
+    public function defaultAccessLevel(): int
     {
         // Returns one of: Auth::PRIV_HIDE, Auth::PRIV_PRIVATE, Auth::PRIV_USER, WT_PRIV_ADMIN
         return Auth::PRIV_PRIVATE;
@@ -124,7 +124,7 @@ abstract class AbstractModule
      *
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return basename($this->directory);
     }
@@ -174,7 +174,7 @@ abstract class AbstractModule
      *
      * @return $this
      */
-    public function setPreference($setting_name, $setting_value)
+    public function setPreference($setting_name, $setting_value): self
     {
         $this->loadAllSettings();
 

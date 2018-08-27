@@ -90,7 +90,7 @@ class ReportPdfText extends ReportBaseText
      *
      * @return float 0
      */
-    public function getHeight($pdf)
+    public function getHeight($pdf): float
     {
         return 0;
     }
@@ -102,7 +102,7 @@ class ReportPdfText extends ReportBaseText
      *
      * @return array
      */
-    public function getWidth($pdf)
+    public function getWidth($pdf): array
     {
         // Setup the style name, a font must be selected to calculate the width
         if ($pdf->getCurrentStyle() != $this->styleName) {

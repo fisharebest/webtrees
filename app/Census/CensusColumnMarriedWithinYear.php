@@ -31,7 +31,7 @@ class CensusColumnMarriedWithinYear extends AbstractCensusColumn implements Cens
      *
      * @return string
      */
-    public function generate(Individual $individual, Individual $head)
+    public function generate(Individual $individual, Individual $head): string
     {
         foreach ($individual->getSpouseFamilies() as $family) {
             foreach ($family->getFacts('MARR') as $fact) {

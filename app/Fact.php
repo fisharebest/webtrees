@@ -246,7 +246,7 @@ class Fact
      *
      * @return bool
      */
-    public function canShow($access_level = null)
+    public function canShow($access_level = null): bool
     {
         if ($access_level === null) {
             $access_level = Auth::accessLevel($this->getParent()->getTree());
@@ -283,7 +283,7 @@ class Fact
      *
      * @return bool
      */
-    public function canEdit()
+    public function canEdit(): bool
     {
         // Managers can edit anything
         // Members cannot edit RESN, CHAN and locked records
@@ -299,7 +299,7 @@ class Fact
      *
      * @return Place
      */
-    public function getPlace()
+    public function getPlace(): Place
     {
         if ($this->place === null) {
             $this->place = new Place($this->getAttribute('PLAC'), $this->getParent()->getTree());
@@ -315,7 +315,7 @@ class Fact
      *
      * @return Date
      */
-    public function getDate()
+    public function getDate(): Date
     {
         if ($this->date === null) {
             $this->date = new Date($this->getAttribute('DATE'));
@@ -329,7 +329,7 @@ class Fact
      *
      * @return string
      */
-    public function getGedcom()
+    public function getGedcom(): string
     {
         return $this->gedcom;
     }
@@ -339,7 +339,7 @@ class Fact
      *
      * @return string
      */
-    public function getFactId()
+    public function getFactId(): string
     {
         return $this->fact_id;
     }
@@ -349,7 +349,7 @@ class Fact
      *
      * @return string
      */
-    public function getTag()
+    public function getTag(): string
     {
         return $this->tag;
     }
@@ -379,7 +379,7 @@ class Fact
      *
      * @return string
      */
-    public function getLabel()
+    public function getLabel(): string
     {
         // Custom FACT/EVEN - with a TYPE
         if (($this->tag === 'FACT' || $this->tag === 'EVEN') && $this->getAttribute('TYPE') !== '') {
@@ -403,7 +403,7 @@ class Fact
      *
      * @return bool
      */
-    public function isPendingDeletion()
+    public function isPendingDeletion(): bool
     {
         return $this->pending_deletion;
     }
@@ -422,7 +422,7 @@ class Fact
      *
      * @return bool
      */
-    public function isPendingAddition()
+    public function isPendingAddition(): bool
     {
         return $this->pending_addition;
     }
@@ -432,7 +432,7 @@ class Fact
      *
      * @return string[]
      */
-    public function getCitations()
+    public function getCitations(): array
     {
         preg_match_all('/\n(2 SOUR @(' . WT_REGEX_XREF . ')@(?:\n[3-9] .*)*)/', $this->getGedcom(), $matches, PREG_SET_ORDER);
         $citations = [];
@@ -451,7 +451,7 @@ class Fact
      *
      * @return string[]|Note[]
      */
-    public function getNotes()
+    public function getNotes(): array
     {
         $notes = [];
         preg_match_all('/\n2 NOTE ?(.*(?:\n3.*)*)/', $this->getGedcom(), $matches);
@@ -477,7 +477,7 @@ class Fact
      *
      * @return Media[]
      */
-    public function getMedia()
+    public function getMedia(): array
     {
         $media = [];
         preg_match_all('/\n2 OBJE @(' . WT_REGEX_XREF . ')@/', $this->getGedcom(), $matches);
@@ -496,7 +496,7 @@ class Fact
      *
      * @return string
      */
-    public function summary()
+    public function summary(): string
     {
         $attributes = [];
         $target     = $this->getTarget();
@@ -576,7 +576,7 @@ class Fact
      *
      * @return int
      */
-    public static function compareType(Fact $a, Fact $b)
+    public static function compareType(Fact $a, Fact $b): int
     {
         static $factsort = [];
 

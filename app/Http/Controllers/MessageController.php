@@ -325,7 +325,7 @@ class MessageController extends AbstractBaseController
      *
      * @return User[]
      */
-    private function validContacts(Tree $tree)
+    private function validContacts(Tree $tree): array
     {
         $contacts = [
             User::find((int)$tree->getPreference('CONTACT_USER_ID')),

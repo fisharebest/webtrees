@@ -66,7 +66,7 @@ class Location
     /**
      * @return bool
      */
-    public function knownLatLon()
+    public function knownLatLon(): bool
     {
         return ($this->record->pl_lati && $this->record->pl_long);
     }
@@ -116,7 +116,7 @@ class Location
     /**
      * @return array
      */
-    public function getLatLonJSArray()
+    public function getLatLonJSArray(): array
     {
         return [
             $this->getLat('signed'),
@@ -129,7 +129,7 @@ class Location
      *
      * @return array
      */
-    public function getGeoJsonCoords()
+    public function getGeoJsonCoords(): array
     {
         return [
             $this->getLon('signed'),
@@ -140,7 +140,7 @@ class Location
     /**
      * @return string
      */
-    public function getId()
+    public function getId(): string
     {
         return $this->record->pl_id;
     }
@@ -148,7 +148,7 @@ class Location
     /**
      * @return string
      */
-    public function getLevel()
+    public function getLevel(): string
     {
         return $this->record->pl_level;
     }
@@ -156,7 +156,7 @@ class Location
     /**
      * @return bool
      */
-    public function isValid()
+    public function isValid(): bool
     {
         return $this->record->pl_id !== 0;
     }
@@ -164,7 +164,7 @@ class Location
     /**
      * @return string
      */
-    public function getPlace()
+    public function getPlace(): string
     {
         return $this->record->pl_place;
     }
@@ -188,7 +188,7 @@ class Location
     /**
      * @return stdClass
      */
-    public function getRecord()
+    public function getRecord(): stdClass
     {
         return $this->record;
     }

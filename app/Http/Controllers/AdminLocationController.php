@@ -676,7 +676,7 @@ class AdminLocationController extends AbstractBaseController
      *
      * @return array
      */
-    private function gethierarchy($id)
+    private function gethierarchy($id): array
     {
         $statement = Database::prepare("SELECT pl_id, pl_parent_id, pl_place FROM `##placelocation` WHERE pl_id=:id");
         $arr       = [];
@@ -699,7 +699,7 @@ class AdminLocationController extends AbstractBaseController
      *
      * @return stdClass[]
      */
-    private function getPlaceListLocation($id)
+    private function getPlaceListLocation($id): array
     {
         $child_qry = Database::prepare(
             "SELECT  COUNT(*) AS child_count, SUM(" .

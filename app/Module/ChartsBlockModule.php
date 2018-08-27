@@ -29,14 +29,14 @@ use Symfony\Component\HttpFoundation\Request;
 class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
 {
     /** {@inheritdoc} */
-    public function getTitle()
+    public function getTitle(): string
     {
         /* I18N: Name of a module/block */
         return I18N::translate('Charts');
     }
 
     /** {@inheritdoc} */
-    public function getDescription()
+    public function getDescription(): string
     {
         /* I18N: Description of the “Charts” module */
         return I18N::translate('An alternative way to display charts.');

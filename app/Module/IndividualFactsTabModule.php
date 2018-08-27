@@ -30,27 +30,27 @@ use Fisharebest\Webtrees\Site;
 class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterface
 {
     /** {@inheritdoc} */
-    public function getTitle()
+    public function getTitle(): string
     {
         /* I18N: Name of a module/tab on the individual page. */
         return I18N::translate('Facts and events');
     }
 
     /** {@inheritdoc} */
-    public function getDescription()
+    public function getDescription(): string
     {
         /* I18N: Description of the “Facts and events” module */
         return I18N::translate('A tab showing the facts and events of an individual.');
     }
 
     /** {@inheritdoc} */
-    public function defaultTabOrder()
+    public function defaultTabOrder(): int
     {
         return 10;
     }
 
     /** {@inheritdoc} */
-    public function isGrayedOut(Individual $individual)
+    public function isGrayedOut(Individual $individual): bool
     {
         return false;
     }
@@ -133,13 +133,13 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
     }
 
     /** {@inheritdoc} */
-    public function hasTabContent(Individual $individual)
+    public function hasTabContent(Individual $individual): bool
     {
         return true;
     }
 
     /** {@inheritdoc} */
-    public function canLoadAjax()
+    public function canLoadAjax(): bool
     {
         return false;
     }
@@ -152,7 +152,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
      *
      * @return Fact[]
      */
-    private static function spouseFacts(Individual $individual, Individual $spouse)
+    private static function spouseFacts(Individual $individual, Individual $spouse): array
     {
         $SHOW_RELATIVES_EVENTS = $individual->getTree()->getPreference('SHOW_RELATIVES_EVENTS');
 
@@ -186,7 +186,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
      *
      * @return Fact[]
      */
-    private static function childFacts(Individual $person, Family $family, $option, $relation)
+    private static function childFacts(Individual $person, Family $family, $option, $relation): array
     {
         $SHOW_RELATIVES_EVENTS = $person->getTree()->getPreference('SHOW_RELATIVES_EVENTS');
 
@@ -318,7 +318,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
      *
      * @return Fact[]
      */
-    private static function parentFacts(Individual $person, $sosa)
+    private static function parentFacts(Individual $person, $sosa): array
     {
         $SHOW_RELATIVES_EVENTS = $person->getTree()->getPreference('SHOW_RELATIVES_EVENTS');
 
@@ -417,7 +417,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
      *
      * @return Fact[]
      */
-    private static function historicalFacts(Individual $person)
+    private static function historicalFacts(Individual $person): array
     {
         $SHOW_RELATIVES_EVENTS = $person->getTree()->getPreference('SHOW_RELATIVES_EVENTS');
 
@@ -451,7 +451,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
      *
      * @return Fact[]
      */
-    private static function associateFacts(Individual $person)
+    private static function associateFacts(Individual $person): array
     {
         $facts = [];
 

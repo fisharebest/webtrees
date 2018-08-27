@@ -28,7 +28,7 @@ class BatchUpdateMissingDeathPlugin extends BatchUpdateBasePlugin
      *
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return I18N::translate('Add missing death records');
     }
@@ -38,7 +38,7 @@ class BatchUpdateMissingDeathPlugin extends BatchUpdateBasePlugin
      *
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): string
     {
         return I18N::translate('You can speed up the privacy calculations by adding a death record to individuals whose death can be inferred from other dates, but who do not have a record of death, burial, cremation, etc.');
     }

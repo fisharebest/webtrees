@@ -365,7 +365,7 @@ class HomePageController extends AbstractBaseController
      *
      * @return Response
      */
-    public function userPage(Tree $tree, User $user)
+    public function userPage(Tree $tree, User $user): Response
     {
         $tree_id      = $tree->getTreeId();
         $user_id      = $user->getUserId();

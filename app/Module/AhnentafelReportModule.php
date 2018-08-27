@@ -30,7 +30,7 @@ class AhnentafelReportModule extends AbstractModule implements ModuleReportInter
      *
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): string
     {
         // This text also appears in the .XML file - update both together
         /* I18N: Name of a module/report */
@@ -42,7 +42,7 @@ class AhnentafelReportModule extends AbstractModule implements ModuleReportInter
      *
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): string
     {
         // This text also appears in the .XML file - update both together
         /* I18N: Description of the “Ancestors” module */
@@ -56,7 +56,7 @@ class AhnentafelReportModule extends AbstractModule implements ModuleReportInter
      *
      * @return int
      */
-    public function defaultAccessLevel()
+    public function defaultAccessLevel(): int
     {
         return Auth::PRIV_PRIVATE;
     }

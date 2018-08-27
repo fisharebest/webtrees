@@ -40,7 +40,7 @@ class ReportBaseElement
      *
      * @return float
      */
-    public function getHeight($renderer)
+    public function getHeight($renderer): float
     {
         return 0.0;
     }
@@ -52,7 +52,7 @@ class ReportBaseElement
      *
      * @return float
      */
-    public function getWidth($renderer)
+    public function getWidth($renderer): float
     {
         return 0.0;
     }
@@ -64,7 +64,7 @@ class ReportBaseElement
      *
      * @return int
      */
-    public function addText($t)
+    public function addText($t): int
     {
         $t          = trim($t, "\r\n\t");
         $t          = str_replace([
@@ -86,7 +86,7 @@ class ReportBaseElement
      *
      * @return int
      */
-    public function addNewline()
+    public function addNewline(): int
     {
         $this->text .= "\n";
 
@@ -98,7 +98,7 @@ class ReportBaseElement
      *
      * @return string
      */
-    public function getValue()
+    public function getValue(): string
     {
         return $this->text;
     }
@@ -111,7 +111,7 @@ class ReportBaseElement
      *
      * @return int
      */
-    public function setWrapWidth($wrapwidth, $cellwidth)
+    public function setWrapWidth($wrapwidth, $cellwidth): int
     {
         return 0;
     }

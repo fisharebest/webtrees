@@ -92,7 +92,7 @@ class ReportBaseImage extends ReportBaseElement
      *
      * @return float
      */
-    public function getHeight($renderer)
+    public function getHeight($renderer): float
     {
         return $this->height;
     }
@@ -104,7 +104,7 @@ class ReportBaseImage extends ReportBaseElement
      *
      * @return float
      */
-    public function getWidth($renderer)
+    public function getWidth($renderer): float
     {
         return $this->width;
     }

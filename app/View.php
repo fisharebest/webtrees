@@ -118,7 +118,7 @@ class View
      *
      * @return string
      */
-    public function render()
+    public function render(): string
     {
         extract($this->data + self::$shared_data);
 
@@ -137,7 +137,7 @@ class View
      * @return string
      * @throws Exception
      */
-    public function getFilenameForView($view_name)
+    public function getFilenameForView($view_name): string
     {
         foreach ($this->paths() as $path) {
             $view_file = $path . '/' . $view_name . '.php';
@@ -158,7 +158,7 @@ class View
      *
      * @return string
      */
-    public static function make($name, $data = [])
+    public static function make($name, $data = []): string
     {
         $view = new static($name, $data);
 

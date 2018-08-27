@@ -24,27 +24,27 @@ use Fisharebest\Webtrees\Individual;
 class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInterface
 {
     /** {@inheritdoc} */
-    public function getTitle()
+    public function getTitle(): string
     {
         /* I18N: Name of a module/sidebar */
         return I18N::translate('Family navigator');
     }
 
     /** {@inheritdoc} */
-    public function getDescription()
+    public function getDescription(): string
     {
         /* I18N: Description of the “Family navigator” module */
         return I18N::translate('A sidebar showing an individual’s close families and relatives.');
     }
 
     /** {@inheritdoc} */
-    public function defaultSidebarOrder()
+    public function defaultSidebarOrder(): int
     {
         return 20;
     }
 
     /** {@inheritdoc} */
-    public function hasSidebarContent(Individual $individual)
+    public function hasSidebarContent(Individual $individual): bool
     {
         return true;
     }
@@ -56,7 +56,7 @@ class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInter
      *
      * @return string
      */
-    public function getSidebarContent(Individual $individual)
+    public function getSidebarContent(Individual $individual): string
     {
         return view('modules/family_nav/sidebar', ['individual' => $individual]);
     }

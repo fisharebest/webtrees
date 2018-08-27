@@ -32,7 +32,7 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface
      *
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): string
     {
         /* I18N: Name of a module */
         return I18N::translate('Most viewed pages');
@@ -43,7 +43,7 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface
      *
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): string
     {
         /* I18N: Description of the “Most visited pages” module */
         return I18N::translate('A list of the pages that have been viewed the most number of times.');

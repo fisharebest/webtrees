@@ -58,21 +58,21 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
     private static $map_selections = null;
 
     /** {@inheritdoc} */
-    public function getTitle()
+    public function getTitle(): string
     {
         /* I18N: Name of a module */
         return I18N::translate('Pedigree map');
     }
 
     /** {@inheritdoc} */
-    public function getDescription()
+    public function getDescription(): string
     {
         /* I18N: Description of the “OSM” module */
         return I18N::translate('Show the birthplace of ancestors on a map.');
     }
 
     /** {@inheritdoc} */
-    public function defaultAccessLevel()
+    public function defaultAccessLevel(): int
     {
         return Auth::PRIV_PRIVATE;
     }
@@ -84,7 +84,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
      *
      * @return Menu
      */
-    public function getChartMenu(Individual $individual)
+    public function getChartMenu(Individual $individual): Menu
     {
         return new Menu(
             I18N::translate('Pedigree map'),
@@ -105,7 +105,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
      *
      * @return Menu
      */
-    public function getBoxChartMenu(Individual $individual)
+    public function getBoxChartMenu(Individual $individual): Menu
     {
         return $this->getChartMenu($individual);
     }
@@ -184,7 +184,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
      *
      * @return array
      */
-    private function getPedigreeMapFacts(Request $request, Tree $tree)
+    private function getPedigreeMapFacts(Request $request, Tree $tree): array
     {
         $xref        = $request->get('reference');
         $individual  = Individual::getInstance($xref, $tree);
@@ -317,7 +317,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
         } elseif (!$individual->canShow()) {
             throw new IndividualAccessDeniedException();
         }
-        
+
         return (object)[
             'name' => 'modules/pedigree-map/pedigree-map-page',
             'data' => [

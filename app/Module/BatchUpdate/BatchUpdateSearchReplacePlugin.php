@@ -50,7 +50,7 @@ class BatchUpdateSearchReplacePlugin extends BatchUpdateBasePlugin
      *
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return I18N::translate('Search and replace');
     }
@@ -60,7 +60,7 @@ class BatchUpdateSearchReplacePlugin extends BatchUpdateBasePlugin
      *
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): string
     {
         /* I18N: Description of the “Search and replace” option of the batch update module */
         return I18N::translate('Search and replace text, using simple searches or advanced pattern matching.');
@@ -71,7 +71,7 @@ class BatchUpdateSearchReplacePlugin extends BatchUpdateBasePlugin
      *
      * @return string[]
      */
-    public function getRecordTypesToUpdate()
+    public function getRecordTypesToUpdate(): array
     {
         return [
             'INDI',
@@ -168,7 +168,7 @@ class BatchUpdateSearchReplacePlugin extends BatchUpdateBasePlugin
      *
      * @return string
      */
-    public function getOptionsForm()
+    public function getOptionsForm(): string
     {
         $descriptions = [
             'exact'     => I18N::translate('Match the exact text, even if it occurs in the middle of a word.'),

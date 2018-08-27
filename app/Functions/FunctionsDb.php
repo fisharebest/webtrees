@@ -45,7 +45,7 @@ class FunctionsDb
      *
      * @return string[]
      */
-    public static function fetchAllLinks($xref, $gedcom_id)
+    public static function fetchAllLinks($xref, $gedcom_id): array
     {
         return
             Database::prepare(

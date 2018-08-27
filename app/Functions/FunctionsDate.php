@@ -70,7 +70,7 @@ class FunctionsDate
      *
      * @return string
      */
-    public static function formatTimestamp($time)
+    public static function formatTimestamp($time): string
     {
         $time_fmt = I18N::timeFormat();
         // PHP::date() doesn't do I18N. Do it ourselves....
@@ -124,7 +124,7 @@ class FunctionsDate
      *
      * @return Date
      */
-    public static function timestampToGedcomDate($time)
+    public static function timestampToGedcomDate($time): Date
     {
         return new Date(strtoupper(gmdate('j M Y', $time)));
     }

@@ -40,7 +40,7 @@ class CensusTableExtension extends Extension
      *
      * @return BlockParserInterface[]
      */
-    public function getBlockParsers()
+    public function getBlockParsers(): array
     {
         return [
             new CensusTableParser(),
@@ -54,7 +54,7 @@ class CensusTableExtension extends Extension
      *
      * @return BlockRendererInterface[]
      */
-    public function getBlockRenderers()
+    public function getBlockRenderers(): array
     {
         return [
             Table::class     => new TableRenderer(),
@@ -67,7 +67,7 @@ class CensusTableExtension extends Extension
     /**
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return 'censustabletable';
     }

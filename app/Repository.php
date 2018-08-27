@@ -72,7 +72,7 @@ class Repository extends GedcomRecord
      *
      * @return string
      */
-    protected function createPrivateGedcomRecord($access_level)
+    protected function createPrivateGedcomRecord($access_level): string
     {
         return '0 @' . $this->xref . "@ REPO\n1 NAME " . I18N::translate('Private');
     }

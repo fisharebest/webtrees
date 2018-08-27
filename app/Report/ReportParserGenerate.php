@@ -2725,7 +2725,7 @@ class ReportParserGenerate extends ReportParserBase
      *
      * @return string the value of a gedcom tag from the given gedcom record
      */
-    private function getGedcomValue($tag, $level, $gedrec)
+    private function getGedcomValue($tag, $level, $gedrec): string
     {
         if (empty($gedrec)) {
             return '';
@@ -2800,7 +2800,7 @@ class ReportParserGenerate extends ReportParserBase
      *
      * @return string
      */
-    private function substituteVars($expression, $quote)
+    private function substituteVars($expression, $quote): string
     {
         return preg_replace_callback(
             '/\$(\w+)/',

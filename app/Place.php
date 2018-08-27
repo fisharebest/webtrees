@@ -49,7 +49,7 @@ class Place
      *
      * @return string - e.g. "England"
      */
-    public function lastPart()
+    public function lastPart(): string
     {
         return end($this->gedcom_place);
     }
@@ -60,7 +60,7 @@ class Place
      * @return int
      * @throws \Exception
      */
-    public function getPlaceId()
+    public function getPlaceId(): int
     {
         $place_id = 0;
         foreach (array_reverse($this->gedcom_place) as $place) {
@@ -81,7 +81,7 @@ class Place
      *
      * @return Place
      */
-    public function getParentPlace()
+    public function getParentPlace(): Place
     {
         return new self(implode(self::GEDCOM_SEPARATOR, array_slice($this->gedcom_place, 1)), $this->tree);
     }
@@ -92,7 +92,7 @@ class Place
      * @return Place[]
      * @throws \Exception
      */
-    public function getChildPlaces()
+    public function getChildPlaces(): array
     {
         $children = [];
         if ($this->getPlaceId()) {
@@ -122,7 +122,7 @@ class Place
      *
      * @return string
      */
-    public function getURL()
+    public function getURL(): string
     {
         return e(route('place-hierarchy', [
             'parent' => array_reverse($this->gedcom_place),
@@ -135,7 +135,7 @@ class Place
      *
      * @return string
      */
-    public function getGedcomName()
+    public function getGedcomName(): string
     {
         return implode(self::GEDCOM_SEPARATOR, $this->gedcom_place);
     }
@@ -145,7 +145,7 @@ class Place
      *
      * @return string
      */
-    public function getPlaceName()
+    public function getPlaceName(): string
     {
         $place = reset($this->gedcom_place);
 
@@ -157,7 +157,7 @@ class Place
      *
      * @return bool
      */
-    public function isEmpty()
+    public function isEmpty(): bool
     {
         return empty($this->gedcom_place);
     }
@@ -215,7 +215,7 @@ class Place
      *
      * @return string
      */
-    public function getReverseName()
+    public function getReverseName(): string
     {
         $tmp = [];
         foreach (array_reverse($this->gedcom_place) as $place) {
@@ -233,7 +233,7 @@ class Place
      * @return Place[]
      * @throws \Exception
      */
-    public static function allPlaces(Tree $tree)
+    public static function allPlaces(Tree $tree): array
     {
         $places = [];
         $rows   =
@@ -271,7 +271,7 @@ class Place
      * @return Place[]
      * @throws \Exception
      */
-    public static function findPlaces($filter, Tree $tree)
+    public static function findPlaces($filter, Tree $tree): array
     {
         $places = [];
         $rows   =
