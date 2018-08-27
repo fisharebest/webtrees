@@ -158,11 +158,11 @@ class Tree
      * Get the tree’s configuration settings.
      *
      * @param string $setting_name
-     * @param string $default
+     * @param mixed  $default
      *
-     * @return string
+     * @return mixed
      */
-    public function getPreference(string $setting_name, string $default = ''): string
+    public function getPreference(string $setting_name, $default = '')
     {
         if (empty($this->preferences)) {
             $this->preferences = Database::prepare(
