@@ -26,14 +26,14 @@ class FunctionsPrintLists
     /**
      * Print a tagcloud of surnames.
      *
-     * @param string[][] $surnames array (of SURN, of array of SPFX_SURN, of array of XREF)
-     * @param string     $route    individual-list or family-listlist
-     * @param bool       $totals   show totals after each name
-     * @param Tree       $tree     generate links to this tree
+     * @param int[][] $surnames array (of SURN, of array of SPFX_SURN, of counts)
+     * @param string  $route    individual-list or family-listlist
+     * @param bool    $totals   show totals after each name
+     * @param Tree    $tree     generate links to this tree
      *
      * @return string
      */
-    public static function surnameTagCloud($surnames, $route, $totals, Tree $tree): string
+    public static function surnameTagCloud(array $surnames, string $route, bool $totals, Tree $tree): string
     {
         $minimum = PHP_INT_MAX;
         $maximum = 1;

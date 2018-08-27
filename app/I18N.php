@@ -17,11 +17,6 @@ namespace Fisharebest\Webtrees;
 
 use Collator;
 use Exception;
-use Fisharebest\ExtCalendar\ArabicCalendar;
-use Fisharebest\ExtCalendar\CalendarInterface;
-use Fisharebest\ExtCalendar\GregorianCalendar;
-use Fisharebest\ExtCalendar\JewishCalendar;
-use Fisharebest\ExtCalendar\PersianCalendar;
 use Fisharebest\Localization\Locale;
 use Fisharebest\Localization\Locale\LocaleEnUs;
 use Fisharebest\Localization\Locale\LocaleInterface;
@@ -291,7 +286,7 @@ class I18N
     /**
      * Generate consistent I18N for datatables.js
      *
-     * @param array|null $lengths An optional array of page lengths
+     * @param int[] $lengths An optional array of page lengths
      *
      * @return string
      */
@@ -302,8 +297,9 @@ class I18N
         50,
         100,
         -1,
-    ]): string {
-        $length_options = Bootstrap4::select(FunctionsEdit::numericOptions($lengths), 10);
+    ]): string
+    {
+        $length_options = Bootstrap4::select(FunctionsEdit::numericOptions($lengths), '10');
 
         return
             '"formatNumber": function(n) { return String(n).replace(/[0-9]/g, function(w) { return ("' . self::$locale->digits('0123456789') . '")[+w]; }); },' .
@@ -334,13 +330,13 @@ class I18N
      *
      * Used for years, etc., where we do not want thousands-separators, decimals, etc.
      *
-     * @param int $n
+     * @param string|int $n
      *
      * @return string
      */
     public static function digits($n): string
     {
-        return self::$locale->digits($n);
+        return self::$locale->digits((string) $n);
     }
 
     /**
@@ -374,7 +370,7 @@ class I18N
      *
      * @return string
      */
-    public static function gedcomAge($string)
+    public static function gedcomAge(string $string): string
     {
         switch ($string) {
             case 'STILLBORN':
@@ -389,23 +385,26 @@ class I18N
         }
         $age = [];
         if (preg_match('/(\d+)y/', $string, $match)) {
+            $years = (int) $match[1];
             // I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
-            $years = $match[1];
             $age[] = self::plural('%s year', '%s years', $years, self::number($years));
         } else {
             $years = -1;
         }
         if (preg_match('/(\d+)m/', $string, $match)) {
+            $months = (int) $match[1];
             // I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
-            $age[] = self::plural('%s month', '%s months', $match[1], self::number($match[1]));
+            $age[] = self::plural('%s month', '%s months', $months, self::number($months));
         }
         if (preg_match('/(\d+)w/', $string, $match)) {
+            $weeks = (int) $match[1];
             // I18N: Part of an age string. e.g. 7 weeks and 3 days
-            $age[] = self::plural('%s week', '%s weeks', $match[1], self::number($match[1]));
+            $age[] = self::plural('%s week', '%s weeks', $weeks, self::number($weeks));
         }
         if (preg_match('/(\d+)d/', $string, $match)) {
+            $days = (int) $match[1];
             // I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
-            $age[] = self::plural('%s day', '%s days', $match[1], self::number($match[1]));
+            $age[] = self::plural('%s day', '%s days', $days, self::number($days));
         }
         // If an age is just a number of years, only show the number
         if (count($age) === 1 && $years >= 0) {
@@ -445,7 +444,7 @@ class I18N
      *
      * @return string $string
      */
-    public static function init($code = ''): string
+    public static function init(string $code = ''): string
     {
         mb_internal_encoding('UTF-8');
 
@@ -581,7 +580,7 @@ class I18N
      *
      * @return string
      */
-    public static function languageName($locale): string
+    public static function languageName(string $locale): string
     {
         return Locale::create($locale)->endonym();
     }
@@ -593,7 +592,7 @@ class I18N
      *
      * @return string
      */
-    public static function languageScript($locale): string
+    public static function languageScript(string $locale): string
     {
         return Locale::create($locale)->script()->code();
     }
@@ -611,7 +610,7 @@ class I18N
      *
      * @return string
      */
-    public static function number($n, $precision = 0): string
+    public static function number(float $n, int $precision = 0): string
     {
         return self::$locale->number(round($n, $precision));
     }
@@ -629,14 +628,13 @@ class I18N
      *
      * @return string
      */
-    public static function percentage($n, $precision = 0): string
+    public static function percentage(float $n, int $precision = 0): string
     {
         return self::$locale->percent(round($n, $precision + 2));
     }
 
     /**
      * Translate a plural string
-     *
      * echo self::plural('There is an error', 'There are errors', $num_errors);
      * echo self::plural('There is one error', 'There are %s errors', $num_errors);
      * echo self::plural('There is %1$s %2$s cat', 'There are %1$s %2$s cats', $num, $num, $colour);
@@ -888,7 +886,6 @@ class I18N
 
     /**
      * Context sensitive version of translate.
-     *
      * echo I18N::translateContext('NOMINATIVE', 'January');
      * echo I18N::translateContext('GENITIVE', 'January');
      *

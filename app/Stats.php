@@ -792,7 +792,7 @@ class Stats
         $sql  .= ' AND d_fact NOT IN (' . implode(', ', array_fill(0, count($no_types), '?')) . ')';
         $vars = array_merge($vars, $no_types);
 
-        $n = Database::prepare($sql)->execute($vars)->fetchOne();
+        $n = (int) Database::prepare($sql)->execute($vars)->fetchOne();
 
         return I18N::number($n);
     }

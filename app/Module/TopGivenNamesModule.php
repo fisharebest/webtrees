@@ -26,6 +26,10 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class TopGivenNamesModule extends AbstractModule implements ModuleBlockInterface
 {
+    // Default values for new blocks.
+    const DEFAULT_NUMBER = '10';
+    const DEFAULT_STYLE  = 'table';
+
     /** {@inheritdoc} */
     public function getTitle(): string
     {
@@ -54,25 +58,17 @@ class TopGivenNamesModule extends AbstractModule implements ModuleBlockInterface
     {
         global $ctype;
 
-        $num       = $this->getBlockSetting($block_id, 'num', '10');
-        $infoStyle = $this->getBlockSetting($block_id, 'infoStyle', 'table');
+        $num       = (int) $this->getBlockSetting($block_id, 'num', self::DEFAULT_NUMBER);
+        $infoStyle = $this->getBlockSetting($block_id, 'infoStyle', self::DEFAULT_STYLE);
 
         extract($cfg, EXTR_OVERWRITE);
 
-        $stats = new Stats($tree);
+        $stats   = new Stats($tree);
+        $males   = $stats->commonGivenMaleTable(['1', $num, 'rcount']);
+        $females = $stats->commonGivenFemaleTable(['1', $num, 'rcount']);
 
         switch ($infoStyle) {
             case 'list':
-                $males   = $stats->commonGivenMaleTotals([
-                    1,
-                    $num,
-                    'rcount',
-                ]);
-                $females = $stats->commonGivenFemaleTotals([
-                    1,
-                    $num,
-                    'rcount',
-                ]);
                 $content = view('modules/top10_givnnames/list', [
                     'males'   => $males,
                     'females' => $females,
@@ -80,16 +76,6 @@ class TopGivenNamesModule extends AbstractModule implements ModuleBlockInterface
                 break;
             default:
             case 'table':
-                $males   = $stats->commonGivenMaleTable([
-                    1,
-                    $num,
-                    'rcount',
-                ]);
-                $females = $stats->commonGivenFemaleTable([
-                    1,
-                    $num,
-                    'rcount',
-                ]);
                 $content = view('modules/top10_givnnames/table', [
                     'males'   => $males,
                     'females' => $females,
@@ -98,7 +84,7 @@ class TopGivenNamesModule extends AbstractModule implements ModuleBlockInterface
         }
 
         if ($template) {
-            if ($num == 1) {
+            if ($num === 1) {
                 // I18N: i.e. most popular given name.
                 $title = I18N::translate('Top given name');
             } else {
@@ -160,8 +146,8 @@ class TopGivenNamesModule extends AbstractModule implements ModuleBlockInterface
      */
     public function saveBlockConfiguration(Request $request, int $block_id)
     {
-        $this->setBlockSetting($block_id, 'num', $request->get('num', '10'));
-        $this->setBlockSetting($block_id, 'infoStyle', $request->get('infoStyle', 'table'));
+        $this->setBlockSetting($block_id, 'num', $request->get('num', self::DEFAULT_NUMBER));
+        $this->setBlockSetting($block_id, 'infoStyle', $request->get('infoStyle', self::DEFAULT_STYLE));
     }
 
     /**
@@ -174,8 +160,8 @@ class TopGivenNamesModule extends AbstractModule implements ModuleBlockInterface
      */
     public function editBlockConfiguration(Tree $tree, int $block_id)
     {
-        $num       = $this->getBlockSetting($block_id, 'num', '10');
-        $infoStyle = $this->getBlockSetting($block_id, 'infoStyle', 'table');
+        $num       = $this->getBlockSetting($block_id, 'num', self::DEFAULT_NUMBER);
+        $infoStyle = $this->getBlockSetting($block_id, 'infoStyle', self::DEFAULT_STYLE);
 
         $info_styles = [
             /* I18N: An option in a list-box */

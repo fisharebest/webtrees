@@ -18,9 +18,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Middleware;
 
 use Closure;
-use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\HousekeepingService;
-use Fisharebest\Webtrees\Session;
 use League\Flysystem\Adapter\Local;
 use League\Flysystem\Filesystem;
 use Symfony\Component\HttpFoundation\Request;

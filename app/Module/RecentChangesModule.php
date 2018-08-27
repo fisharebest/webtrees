@@ -28,12 +28,12 @@ use Symfony\Component\HttpFoundation\Request;
 class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 {
     const DEFAULT_BLOCK      = '1';
-    const DEFAULT_DAYS       = 7;
+    const DEFAULT_DAYS       = '7';
     const DEFAULT_HIDE_EMPTY = '0';
     const DEFAULT_SHOW_USER  = '1';
     const DEFAULT_SORT_STYLE = 'date_desc';
     const DEFAULT_INFO_STYLE = 'table';
-    const MAX_DAYS           = 90;
+    const MAX_DAYS           = '90';
 
     /** {@inheritdoc} */
     public function getTitle(): string
@@ -54,7 +54,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
     {
         global $ctype;
 
-        $days      = $this->getBlockSetting($block_id, 'days', self::DEFAULT_DAYS);
+        $days      = (int) $this->getBlockSetting($block_id, 'days', self::DEFAULT_DAYS);
         $infoStyle = $this->getBlockSetting($block_id, 'infoStyle', self::DEFAULT_INFO_STYLE);
         $sortStyle = $this->getBlockSetting($block_id, 'sortStyle', self::DEFAULT_SORT_STYLE);
         $show_user = (bool)$this->getBlockSetting($block_id, 'show_user', self::DEFAULT_SHOW_USER);
@@ -65,23 +65,14 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 
         switch ($sortStyle) {
             case 'name':
-                uasort($records, [
-                    'self',
-                    'sortByNameAndChangeDate',
-                ]);
+                uasort($records, ['self', 'sortByNameAndChangeDate']);
                 break;
             case 'date_asc':
-                uasort($records, [
-                    'self',
-                    'sortByChangeDateAndName',
-                ]);
+                uasort($records, ['self', 'sortByChangeDateAndName']);
                 $records = array_reverse($records);
                 break;
             case 'date_desc':
-                uasort($records, [
-                    'self',
-                    'sortByChangeDateAndName',
-                ]);
+                uasort($records, ['self', 'sortByChangeDateAndName']);
         }
 
         if (empty($records)) {
@@ -169,7 +160,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
      */
     public function editBlockConfiguration(Tree $tree, int $block_id)
     {
-        $days      = $this->getBlockSetting($block_id, 'days', self::DEFAULT_DAYS);
+        $days      = (int) $this->getBlockSetting($block_id, 'days', self::DEFAULT_DAYS);
         $infoStyle = $this->getBlockSetting($block_id, 'infoStyle', self::DEFAULT_INFO_STYLE);
         $sortStyle = $this->getBlockSetting($block_id, 'sortStyle', self::DEFAULT_SORT_STYLE);
         $show_user = $this->getBlockSetting($block_id, 'show_user', self::DEFAULT_SHOW_USER);
@@ -209,7 +200,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
      *
      * @return GedcomRecord[] List of records with changes
      */
-    private function getRecentChanges(Tree $tree, $days): array
+    private function getRecentChanges(Tree $tree, int $days): array
     {
         $sql =
             "SELECT xref FROM `##change`" .

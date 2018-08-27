@@ -523,7 +523,9 @@ class Date
                     if ($d1->minimumJulianDay() > $jd) {
                         return '<i class="icon-warning"></i>';
                     } else {
-                        return I18N::number($d1->minimumDate()->getAge(false, $jd, true));
+                        $years = (int) $d1->minimumDate()->getAge(false, $jd, false);
+
+                        return I18N::number($years);
                     }
                 } else {
                     return '';

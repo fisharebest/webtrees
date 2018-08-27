@@ -32,7 +32,7 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface
 {
     // Default values for new blocks.
     const DEFAULT_CALENDAR = 'jewish';
-    const DEFAULT_DAYS     = 7;
+    const DEFAULT_DAYS     = '7';
     const DEFAULT_STYLE    = 'table';
 
     // Can show this number of days into the future.

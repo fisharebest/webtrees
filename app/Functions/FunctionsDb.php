@@ -16,20 +16,6 @@
 namespace Fisharebest\Webtrees\Functions;
 
 use Fisharebest\Webtrees\Database;
-use Fisharebest\Webtrees\Date;
-use Fisharebest\Webtrees\Date\FrenchDate;
-use Fisharebest\Webtrees\Date\GregorianDate;
-use Fisharebest\Webtrees\Date\HijriDate;
-use Fisharebest\Webtrees\Date\JalaliDate;
-use Fisharebest\Webtrees\Date\JewishDate;
-use Fisharebest\Webtrees\Date\JulianDate;
-use Fisharebest\Webtrees\Fact;
-use Fisharebest\Webtrees\Family;
-use Fisharebest\Webtrees\GedcomRecord;
-use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Individual;
-use Fisharebest\Webtrees\Soundex;
-use Fisharebest\Webtrees\Tree;
 
 /**
  * Class FunctionsDb - common functions
