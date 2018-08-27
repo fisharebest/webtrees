@@ -97,7 +97,7 @@ class CalendarDate
     public function __construct($date)
     {
         // Construct from an integer (a julian day number)
-        if (is_integer($date)) {
+        if (is_int($date)) {
             $this->minJD = $date;
             $this->maxJD = $date;
             list($this->y, $this->m, $this->d) = $this->calendar->jdToYmd($date);
