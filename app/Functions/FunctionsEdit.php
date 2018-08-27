@@ -1019,7 +1019,7 @@ class FunctionsEdit
             $label = implode(':', array_slice($stack, 0, $level));
 
             $text = '';
-            for ($j = 2; $j < count($fields); $j++) {
+            for ($j = 2, $jMax = count($fields); $j < $jMax; $j++) {
                 if ($j > 2) {
                     $text .= ' ';
                 }

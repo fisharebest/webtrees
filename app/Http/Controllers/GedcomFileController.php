@@ -72,7 +72,7 @@ class GedcomFileController extends AbstractBaseController
 
         $first_time = ($row->import_offset == 0);
         // Run for one second. This keeps the resource requirements low.
-        for ($end_time = microtime(true) + 1.0; microtime(true) < $end_time;) {
+        for ($end_time = microtime(true) + 1.0, $end_timeMax = microtime(true); $end_timeMax < $end_time;) {
             $data = Database::prepare(
                 "SELECT gedcom_chunk_id, REPLACE(chunk_data, '\r', '\n') AS chunk_data" .
                 " FROM `##gedcom_chunk`" .

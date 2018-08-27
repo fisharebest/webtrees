@@ -943,11 +943,11 @@ class FunctionsPrintFacts
 
         if ($srec) {
             $subrecords = explode("\n", $srec);
-            for ($i = 0; $i < count($subrecords); $i++) {
+            for ($i = 0, $iMax = count($subrecords); $i < $iMax; $i++) {
                 $tag  = substr($subrecords[$i], 2, 4);
                 $text = substr($subrecords[$i], 7);
                 $i++;
-                for (; $i < count($subrecords); $i++) {
+                for (; $i < $iMax; $i++) {
                     $nextTag = substr($subrecords[$i], 2, 4);
                     if ($nextTag != 'CONT') {
                         $i--;

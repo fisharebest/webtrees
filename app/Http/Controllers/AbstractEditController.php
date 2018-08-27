@@ -77,7 +77,7 @@ abstract class AbstractEditController extends AbstractBaseController
         $inSOUR    = false;
         $levelSOUR = 0;
 
-        for ($i = 0; $i < count($this->glevels); $i++) {
+        for ($i = 0, $iMax = count($this->glevels); $i < $iMax; $i++) {
             if ($inSOUR) {
                 if ($levelSOUR < $this->glevels[$i]) {
                     $dest = 'S';
@@ -179,7 +179,7 @@ abstract class AbstractEditController extends AbstractBaseController
             $levelAdjust = $levelOverride - $this->glevels[0];
         }
 
-        for ($j = 0; $j < count($this->glevels); $j++) {
+        for ($j = 0, $jMax = count($this->glevels); $j < $jMax; $j++) {
             // Look for empty SOUR reference with non-empty sub-records.
             // This can happen when the SOUR entry is deleted but its sub-records
             // were incorrectly left intact.
