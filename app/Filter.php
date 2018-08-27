@@ -85,10 +85,10 @@ class Filter
         ]);
 
         $environment
-            ->addBlockRenderer('League\CommonMark\Block\Element\Document', new DocumentRenderer())
-            ->addBlockRenderer('League\CommonMark\Block\Element\Paragraph', new ParagraphRenderer())
-            ->addInlineRenderer('League\CommonMark\Inline\Element\Text', new TextRenderer())
-            ->addInlineRenderer('League\CommonMark\Inline\Element\Link', new LinkRenderer())
+            ->addBlockRenderer(\League\CommonMark\Block\Element\Document::class, new DocumentRenderer())
+            ->addBlockRenderer(\League\CommonMark\Block\Element\Paragraph::class, new ParagraphRenderer())
+            ->addInlineRenderer(\League\CommonMark\Inline\Element\Text::class, new TextRenderer())
+            ->addInlineRenderer(\League\CommonMark\Inline\Element\Link::class, new LinkRenderer())
             ->addInlineParser(new AutolinkParser());
 
         $environment->addExtension(new CensusTableExtension());
