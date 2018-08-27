@@ -262,7 +262,6 @@ class EditIndividualController extends AbstractEditController
         $PEDI = $request->get('PEDI', '');
 
         $this->glevels = $request->get('glevels', []);
-        $this->glevels = $request->get('glevels', []);
         $this->tag     = $request->get('tag', []);
         $this->text    = $request->get('text', []);
         $this->islink  = $request->get('islink', []);
