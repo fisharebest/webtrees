@@ -215,7 +215,7 @@ class PendingChangesController extends AbstractBaseController
             " AND   xref       = :xref" .
             " AND   change_id >= :change_id"
         )->execute([
-            'tree_id'   => $tree->getTreeid(),
+            'tree_id'   => $tree->getTreeId(),
             'xref'      => $xref,
             'change_id' => $change_id,
         ]);

@@ -124,7 +124,7 @@ class EditMediaController extends AbstractEditController
         $media->createFact($gedcom, true);
 
         // Accept the changes, to keep the filesystem in sync with the GEDCOM data.
-        FunctionsImport::acceptAllChanges($media->getxref(), $tree);
+        FunctionsImport::acceptAllChanges($media->getXref(), $tree);
 
         return new RedirectResponse($media->url());
     }
@@ -262,7 +262,7 @@ class EditMediaController extends AbstractEditController
 
         // Accept the changes, to keep the filesystem in sync with the GEDCOM data.
         if ($old !== $new && !$media_file->isExternal()) {
-            FunctionsImport::acceptAllChanges($media->getxref(), $tree);
+            FunctionsImport::acceptAllChanges($media->getXref(), $tree);
         }
 
         return new RedirectResponse($media->url());
