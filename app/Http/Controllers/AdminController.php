@@ -582,7 +582,7 @@ class AdminController extends AbstractBaseController
             case 'add':
                 $image_size = getimagesize($thumbnail);
                 list(, $extension) = explode('/', $image_size['mime']);
-                $move_to = dirname(dirname($thumbnail)) . '/' . sha1_file($thumbnail) . '.' . $extension;
+                $move_to = dirname($thumbnail, 2) . '/' . sha1_file($thumbnail) . '.' . $extension;
                 rename($thumbnail, $move_to);
 
                 foreach ($media_objects as $media_object) {
