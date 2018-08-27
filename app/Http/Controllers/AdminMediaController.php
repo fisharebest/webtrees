@@ -694,7 +694,7 @@ class AdminMediaController extends AbstractBaseController
      *
      * @return string HTML
      */
-    private function mediaObjectInfo(Media $media)
+    private function mediaObjectInfo(Media $media): string
     {
         $html = '<b><a href="' . e($media->url()) . '">' . $media->getFullName() . '</a></b>' . '<br><i>' . e($media->getNote()) . '</i></br><br>';
 

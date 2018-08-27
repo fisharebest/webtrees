@@ -30,7 +30,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
      *
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): string
     {
         /* I18N: Name of a module/chart */
         return I18N::translate('Statistics');
@@ -41,7 +41,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
      *
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): string
     {
         /* I18N: Description of the “StatisticsChart” module */
         return I18N::translate('Various statistics charts.');
@@ -54,7 +54,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
      *
      * @return int
      */
-    public function defaultAccessLevel()
+    public function defaultAccessLevel(): int
     {
         return Auth::PRIV_PRIVATE;
     }

@@ -31,7 +31,7 @@ class CensusColumnGivenNameInitial extends AbstractCensusColumn implements Censu
      *
      * @return string
      */
-    public function generate(Individual $individual, Individual $head)
+    public function generate(Individual $individual, Individual $head): string
     {
         foreach ($individual->getAllNames() as $name) {
             $given = $name['givn'];

@@ -25,7 +25,7 @@ class PaternalSurnameTradition extends PatrilinealSurnameTradition implements Su
      *
      * @return bool
      */
-    public function hasMarriedNames()
+    public function hasMarriedNames(): bool
     {
         return true;
     }

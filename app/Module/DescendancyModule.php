@@ -30,14 +30,14 @@ use Symfony\Component\HttpFoundation\Response;
 class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
 {
     /** {@inheritdoc} */
-    public function getTitle()
+    public function getTitle(): string
     {
         /* I18N: Name of a module/sidebar */
         return I18N::translate('Descendants');
     }
 
     /** {@inheritdoc} */
-    public function getDescription()
+    public function getDescription(): string
     {
         /* I18N: Description of the “Descendants” module */
         return I18N::translate('A sidebar showing the descendants of an individual.');
@@ -104,13 +104,13 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
     }
 
     /** {@inheritdoc} */
-    public function defaultSidebarOrder()
+    public function defaultSidebarOrder(): int
     {
         return 30;
     }
 
     /** {@inheritdoc} */
-    public function hasSidebarContent(Individual $individual)
+    public function hasSidebarContent(Individual $individual): bool
     {
         return true;
     }
@@ -122,7 +122,7 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
      *
      * @return string
      */
-    public function getSidebarContent(Individual $individual)
+    public function getSidebarContent(Individual $individual): string
     {
         return view('modules/descendancy/sidebar', [
             'individual_list' => $this->getPersonLi($individual, 1),
@@ -137,7 +137,7 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
      *
      * @return string
      */
-    public function getPersonLi(Individual $person, $generations = 0)
+    public function getPersonLi(Individual $person, $generations = 0): string
     {
         $icon     = $generations > 0 ? 'icon-minus' : 'icon-plus';
         $lifespan = $person->canShow() ? '(' . $person->getLifeSpan() . ')' : '';
@@ -168,7 +168,7 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
      *
      * @return string
      */
-    public function getFamilyLi(Family $family, Individual $person, $generations = 0)
+    public function getFamilyLi(Family $family, Individual $person, $generations = 0): string
     {
         $spouse = $family->getSpouse($person);
         if ($spouse) {

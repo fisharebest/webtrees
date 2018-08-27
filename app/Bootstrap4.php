@@ -47,7 +47,7 @@ class Bootstrap4 extends Html
      *
      * @return string
      */
-    public static function checkbox($label, $inline, $attributes = [])
+    public static function checkbox($label, $inline, $attributes = []): string
     {
         if ($inline) {
             $class = 'form-check form-check-inline';
@@ -80,7 +80,7 @@ class Bootstrap4 extends Html
      *
      * @return string
      */
-    public static function radioButtons($name, $values, $selected, $inline, $attributes = [])
+    public static function radioButtons($name, $values, $selected, $inline, $attributes = []): string
     {
         // An empty string is not the same as zero (but is the same as NULL).
         if ($selected === null) {
@@ -123,7 +123,7 @@ class Bootstrap4 extends Html
      *
      * @return string
      */
-    public static function select($options, $selected, $attributes = [])
+    public static function select($options, $selected, $attributes = []): string
     {
         $html = '';
         foreach ($options as $value => $option) {
@@ -155,7 +155,7 @@ class Bootstrap4 extends Html
      *
      * @return string
      */
-    public static function multiSelect($options, $selected, $attributes = [])
+    public static function multiSelect($options, $selected, $attributes = []): string
     {
         $html = '';
         foreach ($options as $value => $option) {

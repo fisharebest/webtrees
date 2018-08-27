@@ -347,7 +347,7 @@ class PedigreeChartController extends AbstractChartController
      *
      * @return string
      */
-    public function getMenu()
+    public function getMenu(): string
     {
         $families = $this->root->getSpouseFamilies();
         $html     = '';
@@ -411,7 +411,7 @@ class PedigreeChartController extends AbstractChartController
      *
      * @return string
      */
-    public function gotoPreviousGen($index)
+    public function gotoPreviousGen($index): string
     {
         $html = '';
         if ($this->chartHasAncestors) {

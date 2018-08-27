@@ -29,7 +29,7 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface
      *
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): string
     {
         /* I18N: Name of a module */
         return I18N::translate('Families');
@@ -40,7 +40,7 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface
      *
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): string
     {
         /* I18N: Description of the “Families” module */
         return I18N::translate('A tab showing the close relatives of an individual.');
@@ -52,7 +52,7 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface
      *
      * @return int
      */
-    public function defaultTabOrder()
+    public function defaultTabOrder(): int
     {
         return 20;
     }
@@ -79,19 +79,19 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface
     }
 
     /** {@inheritdoc} */
-    public function hasTabContent(Individual $individual)
+    public function hasTabContent(Individual $individual): bool
     {
         return true;
     }
 
     /** {@inheritdoc} */
-    public function isGrayedOut(Individual $individual)
+    public function isGrayedOut(Individual $individual): bool
     {
         return false;
     }
 
     /** {@inheritdoc} */
-    public function canLoadAjax()
+    public function canLoadAjax(): bool
     {
         return false;
     }

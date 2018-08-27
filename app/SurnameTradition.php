@@ -67,7 +67,7 @@ class SurnameTradition
      *
      * @return string[]
      */
-    public static function allDescriptions()
+    public static function allDescriptions(): array
     {
         return [
             'paternal'     => I18N::translateContext('Surname tradition', 'paternal') . ' — ' .

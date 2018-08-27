@@ -61,7 +61,7 @@ class FunctionsEdit
      *
      * @return string
      */
-    public static function editLanguageCheckboxes($parameter_name, $accepted_languages)
+    public static function editLanguageCheckboxes($parameter_name, $accepted_languages): string
     {
         $html = '';
         foreach (I18N::activeLocales() as $locale) {
@@ -82,7 +82,7 @@ class FunctionsEdit
      *
      * @return string[]
      */
-    public static function optionsAccessLevels()
+    public static function optionsAccessLevels(): array
     {
         return [
             Auth::PRIV_PRIVATE => I18N::translate('Show to visitors'),
@@ -97,7 +97,7 @@ class FunctionsEdit
      *
      * @return string[]
      */
-    public static function optionsActiveLanguages()
+    public static function optionsActiveLanguages(): array
     {
         $languages = [];
         foreach (I18N::activeLocales() as $locale) {
@@ -112,7 +112,7 @@ class FunctionsEdit
      *
      * @return string[]
      */
-    public static function optionsCalendarConversions()
+    public static function optionsCalendarConversions(): array
     {
         return ['none' => I18N::translate('No calendar conversion')] + Date::calendarNames();
     }
@@ -122,7 +122,7 @@ class FunctionsEdit
      *
      * @return string[]
      */
-    public static function optionsContactMethods()
+    public static function optionsContactMethods(): array
     {
         return [
             'messaging'  => I18N::translate('Internal messaging'),
@@ -138,7 +138,7 @@ class FunctionsEdit
      *
      * @return string[]
      */
-    public static function optionsHideShow()
+    public static function optionsHideShow(): array
     {
         return [
             '0' => I18N::translate('no'),
@@ -151,7 +151,7 @@ class FunctionsEdit
      *
      * @return string[]
      */
-    public static function optionsInstalledLanguages()
+    public static function optionsInstalledLanguages(): array
     {
         $languages = [];
         foreach (I18N::installedLocales() as $locale) {
@@ -168,7 +168,7 @@ class FunctionsEdit
      *
      * @return string[]
      */
-    public static function numericOptions($integers)
+    public static function numericOptions($integers): array
     {
         $array = [];
         foreach ($integers as $integer) {
@@ -187,7 +187,7 @@ class FunctionsEdit
      *
      * @return string[]
      */
-    public static function optionsNoYes()
+    public static function optionsNoYes(): array
     {
         return [
             '0' => I18N::translate('no'),
@@ -202,7 +202,7 @@ class FunctionsEdit
      *
      * @return string[]
      */
-    public static function optionsRelationships($relationship)
+    public static function optionsRelationships($relationship): array
     {
         $relationships = GedcomCodeRela::getValues();
         // The user is allowed to specify values that aren't in the list.
@@ -220,7 +220,7 @@ class FunctionsEdit
      *
      * @return string[]
      */
-    public static function optionsRestrictions($include_empty)
+    public static function optionsRestrictions($include_empty): array
     {
         $options = [
             'none'         => I18N::translate('Show to visitors'),
@@ -242,7 +242,7 @@ class FunctionsEdit
      *
      * @return string[]
      */
-    public static function optionsMailTransports()
+    public static function optionsMailTransports(): array
     {
         return [
             'internal' => I18N::translate('Use PHP mail to send messages'),
@@ -255,7 +255,7 @@ class FunctionsEdit
      *
      * @return string[]
      */
-    public static function optionsTemples()
+    public static function optionsTemples(): array
     {
         return ['' => I18N::translate('No temple - living ordinance')] + GedcomCodeTemp::templeNames();
     }
@@ -265,7 +265,7 @@ class FunctionsEdit
      *
      * @return string[]
      */
-    public static function optionsUsers()
+    public static function optionsUsers(): array
     {
         $options = ['' => '-'];
 
@@ -285,7 +285,7 @@ class FunctionsEdit
      *
      * @return string
      */
-    public static function formControlFamily(Tree $tree, Family $family = null, array $attributes = [])
+    public static function formControlFamily(Tree $tree, Family $family = null, array $attributes = []): string
     {
         $value   = '';
         $options = ['' => ''];
@@ -306,7 +306,7 @@ class FunctionsEdit
      *
      * @return string
      */
-    public static function formControlFlag($flag, array $attributes = [])
+    public static function formControlFlag($flag, array $attributes = []): string
     {
         $value   = '';
         $options = ['' => ''];
@@ -328,7 +328,7 @@ class FunctionsEdit
      *
      * @return string
      */
-    public static function formControlIndividual(Tree $tree, Individual $individual = null, array $attributes = [])
+    public static function formControlIndividual(Tree $tree, Individual $individual = null, array $attributes = []): string
     {
         $value   = '';
         $options = ['' => ''];
@@ -350,7 +350,7 @@ class FunctionsEdit
      *
      * @return string
      */
-    public static function formControlMediaObject(Tree $tree, Media $media = null, array $attributes = [])
+    public static function formControlMediaObject(Tree $tree, Media $media = null, array $attributes = []): string
     {
         $value   = '';
         $options = ['' => ''];
@@ -372,7 +372,7 @@ class FunctionsEdit
      *
      * @return string
      */
-    public static function formControlNote(Tree $tree, Note $note = null, array $attributes = [])
+    public static function formControlNote(Tree $tree, Note $note = null, array $attributes = []): string
     {
         $value   = '';
         $options = ['' => ''];
@@ -394,7 +394,7 @@ class FunctionsEdit
      *
      * @return string
      */
-    public static function formControlPlace(Tree $tree, $place, array $attributes = [])
+    public static function formControlPlace(Tree $tree, $place, array $attributes = []): string
     {
         $value   = '';
         $options = ['' => ''];
@@ -415,7 +415,7 @@ class FunctionsEdit
      *
      * @return string
      */
-    public static function formControlRepository(Tree $tree, Repository $repository = null, array $attributes = [])
+    public static function formControlRepository(Tree $tree, Repository $repository = null, array $attributes = []): string
     {
         $value   = '';
         $options = ['' => ''];
@@ -437,7 +437,7 @@ class FunctionsEdit
      *
      * @return string
      */
-    public static function formControlSource(Tree $tree, Source $source = null, array $attributes = [])
+    public static function formControlSource(Tree $tree, Source $source = null, array $attributes = []): string
     {
         $value   = '';
         $options = ['' => ''];
@@ -459,7 +459,7 @@ class FunctionsEdit
      *
      * @return string
      */
-    public static function formControlSubmitter(Tree $tree, GedcomRecord $submitter = null, array $attributes = [])
+    public static function formControlSubmitter(Tree $tree, GedcomRecord $submitter = null, array $attributes = []): string
     {
         $value   = '';
         $options = ['' => ''];
@@ -492,7 +492,7 @@ class FunctionsEdit
      *
      * @return string
      */
-    public static function addSimpleTag(Tree $tree, $tag, $upperlevel = '', $label = '', $extra = null, Individual $person = null)
+    public static function addSimpleTag(Tree $tree, $tag, $upperlevel = '', $label = '', $extra = null, Individual $person = null): string
     {
         // @TODO $xref is no longer set (from edit_interface).
         global $request;

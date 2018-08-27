@@ -82,7 +82,7 @@ class ReportHtmlImage extends ReportBaseImage
      *
      * @return float
      */
-    public function getHeight($html)
+    public function getHeight($html): float
     {
         return $this->height + ($html->cPadding * 2);
     }

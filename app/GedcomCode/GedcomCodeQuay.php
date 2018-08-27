@@ -62,7 +62,7 @@ class GedcomCodeQuay
      *
      * @return string[]
      */
-    public static function getValues()
+    public static function getValues(): array
     {
         $values = [];
         foreach (self::$TYPES as $type) {

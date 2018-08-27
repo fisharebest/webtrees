@@ -33,7 +33,7 @@ class CensusColumnReligion extends AbstractCensusColumn implements CensusColumnI
      *
      * @return string
      */
-    public function generate(Individual $individual, Individual $head)
+    public function generate(Individual $individual, Individual $head): string
     {
         return '';
     }

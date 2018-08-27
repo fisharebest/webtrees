@@ -111,7 +111,7 @@ class ReportPdf extends ReportBase
      *
      * @return int
      */
-    public function addElement($element)
+    public function addElement($element): int
     {
         if ($this->processing == 'B') {
             return $this->pdf->addBody($element);
@@ -169,7 +169,7 @@ class ReportPdf extends ReportBase
      *
      * @return ReportPdfCell
      */
-    public function createCell($width, $height, $border, $align, $bgcolor, $style, $ln, $top, $left, $fill, $stretch, $bocolor, $tcolor, $reseth)
+    public function createCell($width, $height, $border, $align, $bgcolor, $style, $ln, $top, $left, $fill, $stretch, $bocolor, $tcolor, $reseth): ReportPdfCell
     {
         return new ReportPdfCell($width, $height, $border, $align, $bgcolor, $style, $ln, $top, $left, $fill, $stretch, $bocolor, $tcolor, $reseth);
     }
@@ -192,7 +192,7 @@ class ReportPdf extends ReportBase
      *
      * @return ReportPdfTextbox
      */
-    public function createTextBox($width, $height, $border, $bgcolor, $newline, $left, $top, $pagecheck, $style, $fill, $padding, $reseth)
+    public function createTextBox($width, $height, $border, $bgcolor, $newline, $left, $top, $pagecheck, $style, $fill, $padding, $reseth): ReportPdfTextbox
     {
         return new ReportPdfTextbox($width, $height, $border, $bgcolor, $newline, $left, $top, $pagecheck, $style, $fill, $padding, $reseth);
     }
@@ -205,7 +205,7 @@ class ReportPdf extends ReportBase
      *
      * @return ReportPdfText
      */
-    public function createText($style, $color)
+    public function createText($style, $color): ReportPdfText
     {
         return new ReportPdfText($style, $color);
     }
@@ -217,7 +217,7 @@ class ReportPdf extends ReportBase
      *
      * @return ReportPdfFootnote
      */
-    public function createFootnote($style)
+    public function createFootnote($style): ReportPdfFootnote
     {
         return new ReportPdfFootnote($style);
     }
@@ -227,7 +227,7 @@ class ReportPdf extends ReportBase
      *
      * @return ReportPdfPageheader
      */
-    public function createPageHeader()
+    public function createPageHeader(): ReportPdfPageheader
     {
         return new ReportPdfPageheader();
     }
@@ -245,7 +245,7 @@ class ReportPdf extends ReportBase
      *
      * @return ReportPdfImage
      */
-    public function createImage($file, $x, $y, $w, $h, $align, $ln)
+    public function createImage($file, $x, $y, $w, $h, $align, $ln): ReportPdfImage
     {
         return new ReportPdfImage($file, $x, $y, $w, $h, $align, $ln);
     }
@@ -263,7 +263,7 @@ class ReportPdf extends ReportBase
      *
      * @return ReportPdfImage
      */
-    public function createImageFromObject(MediaFile $media_file, $x, $y, $w, $h, $align, $ln)
+    public function createImageFromObject(MediaFile $media_file, $x, $y, $w, $h, $align, $ln): ReportPdfImage
     {
         return new ReportPdfImage($media_file->getServerFilename(), $x, $y, $w, $h, $align, $ln);
     }
@@ -278,7 +278,7 @@ class ReportPdf extends ReportBase
      *
      * @return ReportPdfLine
      */
-    public function createLine($x1, $y1, $x2, $y2)
+    public function createLine($x1, $y1, $x2, $y2): ReportPdfLine
     {
         return new ReportPdfLine($x1, $y1, $x2, $y2);
     }
@@ -291,7 +291,7 @@ class ReportPdf extends ReportBase
      *
      * @return ReportPdfHtml
      */
-    public function createHTML($tag, $attrs)
+    public function createHTML($tag, $attrs): ReportPdfHtml
     {
         return new ReportPdfHtml($tag, $attrs);
     }

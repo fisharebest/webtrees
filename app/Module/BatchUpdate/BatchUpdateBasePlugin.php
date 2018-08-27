@@ -48,7 +48,7 @@ abstract class BatchUpdateBasePlugin
      *
      * @return string[]
      */
-    public function getRecordTypesToUpdate()
+    public function getRecordTypesToUpdate(): array
     {
         return ['INDI'];
     }
@@ -68,7 +68,7 @@ abstract class BatchUpdateBasePlugin
      *
      * @return string
      */
-    public function getOptionsForm()
+    public function getOptionsForm(): string
     {
         return
             '<div class="row form-group">' .
@@ -88,7 +88,7 @@ abstract class BatchUpdateBasePlugin
      *
      * @return string
      */
-    public function getActionPreview(GedcomRecord $record)
+    public function getActionPreview(GedcomRecord $record): string
     {
         $old_lines   = preg_split('/[\n]+/', $record->getGedcom());
         $new_lines   = preg_split('/[\n]+/', $this->updateRecord($record));
@@ -119,7 +119,7 @@ abstract class BatchUpdateBasePlugin
      *
      * @return string
      */
-    public static function decorateInsertedText($text)
+    public static function decorateInsertedText($text): string
     {
         return '<ins>' . $text . '</ins>';
     }
@@ -131,7 +131,7 @@ abstract class BatchUpdateBasePlugin
      *
      * @return string
      */
-    public static function decorateDeletedText($text)
+    public static function decorateDeletedText($text): string
     {
         return '<del>' . $text . '</del>';
     }
@@ -144,7 +144,7 @@ abstract class BatchUpdateBasePlugin
      *
      * @return string
      */
-    public static function createEditLinks($gedrec, GedcomRecord $record)
+    public static function createEditLinks($gedrec, GedcomRecord $record): string
     {
         return preg_replace(
             "/@([^#@\n]+)@/m",

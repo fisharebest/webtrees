@@ -82,7 +82,7 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
      *
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): string
     {
         /* I18N: Name of a module */
         return I18N::translate('Upcoming events');
@@ -93,7 +93,7 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
      *
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): string
     {
         /* I18N: Description of the “Upcoming events” module */
         return I18N::translate('A list of the anniversaries that will occur in the near future.');

@@ -28,14 +28,14 @@ use Symfony\Component\HttpFoundation\Request;
 class WelcomeBlockModule extends AbstractModule implements ModuleBlockInterface
 {
     /** {@inheritdoc} */
-    public function getTitle()
+    public function getTitle(): string
     {
         /* I18N: Name of a module */
         return I18N::translate('Home page');
     }
 
     /** {@inheritdoc} */
-    public function getDescription()
+    public function getDescription(): string
     {
         /* I18N: Description of the “Home page” module */
         return I18N::translate('A greeting message for site visitors.');

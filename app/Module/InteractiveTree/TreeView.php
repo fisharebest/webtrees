@@ -47,7 +47,7 @@ class TreeView
      *
      * @return string[]  HTML and Javascript
      */
-    public function drawViewport(Individual $individual, $generations)
+    public function drawViewport(Individual $individual, $generations): array
     {
         $html = view('interactive-tree-chart', [
             'name'       => $this->name,
@@ -68,7 +68,7 @@ class TreeView
      *
      * @return string
      */
-    public function getPersons(Tree $tree, $list)
+    public function getPersons(Tree $tree, $list): string
     {
         $list = explode(';', $list);
         $r    = [];
@@ -108,7 +108,7 @@ class TreeView
      *
      * @return string
      */
-    public function getDetails(Individual $individual)
+    public function getDetails(Individual $individual): string
     {
         $html = $this->getPersonDetails($individual, null);
         foreach ($individual->getSpouseFamilies() as $family) {
@@ -129,7 +129,7 @@ class TreeView
      *
      * @return string
      */
-    private function getPersonDetails(Individual $individual, Family $family = null)
+    private function getPersonDetails(Individual $individual, Family $family = null): string
     {
         $chart_url = route('module', [
             'module' => 'tree',
@@ -164,7 +164,7 @@ class TreeView
      *
      * @return string
      */
-    private function drawChildren(array $familyList, $gen = 1, $ajax = false)
+    private function drawChildren(array $familyList, $gen = 1, $ajax = false): string
     {
         $html          = '';
         $children2draw = [];
@@ -224,7 +224,7 @@ class TreeView
      * (for "life partner") here fits much better than "spouse" or "mate"
      * to translate properly the modern french meaning of "conjoint"
      */
-    private function drawPerson(Individual $person, $gen, $state, Family $pfamily = null, $order = null, $isRoot = false)
+    private function drawPerson(Individual $person, $gen, $state, Family $pfamily = null, $order = null, $isRoot = false): string
     {
         if ($gen < 0) {
             return '';
@@ -329,7 +329,7 @@ class TreeView
      *
      * @return string
      */
-    private function drawPersonName(Individual $individual, $dashed = '')
+    private function drawPersonName(Individual $individual, $dashed = ''): string
     {
         $family = $individual->getPrimaryChildFamily();
         if ($family) {
@@ -383,7 +383,7 @@ class TreeView
      * and some other browsers (ex: firefox) shows a <div> tag, which have no size limit in height
      * Therefore, Firefox is a good choice to print very big trees.
      */
-    private function drawVerticalLine($order)
+    private function drawVerticalLine($order): string
     {
         return '<td class="tv_vline tv_vline_' . $order . '"><div class="tv_vline tv_vline_' . $order . '"></div></td>';
     }
@@ -391,7 +391,7 @@ class TreeView
     /**
      * Draw an horizontal line
      */
-    private function drawHorizontalLine()
+    private function drawHorizontalLine(): string
     {
         return '<td class="tv_hline"><div class="tv_hline"></div></td>';
     }

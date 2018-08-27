@@ -72,7 +72,7 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface
      *
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): string
     {
         /* I18N: Name of a module */
         return I18N::translate('On this day');
@@ -83,7 +83,7 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface
      *
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): string
     {
         /* I18N: Description of the “On this day” module */
         return I18N::translate('A list of the anniversaries that occur today.');

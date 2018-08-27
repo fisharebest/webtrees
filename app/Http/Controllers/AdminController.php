@@ -1322,7 +1322,7 @@ class AdminController extends AbstractBaseController
      *
      * @return string[]
      */
-    private function deletedModuleNames()
+    private function deletedModuleNames(): array
     {
         $database_modules = Database::prepare("SELECT module_name FROM `##module`")->fetchOneColumn();
         $disk_modules     = Module::getInstalledModules('disabled');
@@ -1521,7 +1521,7 @@ class AdminController extends AbstractBaseController
      *
      * @return string[]
      */
-    private function serverWarnings()
+    private function serverWarnings(): array
     {
         $php_support_url   = 'https://secure.php.net/supported-versions.php';
         $version_parts     = explode('.', PHP_VERSION);
@@ -1586,7 +1586,7 @@ class AdminController extends AbstractBaseController
      *
      * @return string[]
      */
-    private function totalChanges()
+    private function totalChanges(): array
     {
         return Database::prepare("SELECT g.gedcom_id, COUNT(change_id) FROM `##gedcom` AS g LEFT JOIN `##change` AS c ON g.gedcom_id = c.gedcom_id AND status = 'pending' GROUP BY g.gedcom_id")->fetchAssoc();
     }
@@ -1596,7 +1596,7 @@ class AdminController extends AbstractBaseController
      *
      * @return string[]
      */
-    private function totalFamilies()
+    private function totalFamilies(): array
     {
         return Database::prepare("SELECT gedcom_id, COUNT(f_id) FROM `##gedcom` LEFT JOIN `##families` ON gedcom_id = f_file GROUP BY gedcom_id")->fetchAssoc();
     }
@@ -1606,7 +1606,7 @@ class AdminController extends AbstractBaseController
      *
      * @return string[]
      */
-    private function totalIndividuals()
+    private function totalIndividuals(): array
     {
         return Database::prepare("SELECT gedcom_id, COUNT(i_id) FROM `##gedcom` LEFT JOIN `##individuals` ON gedcom_id = i_file GROUP BY gedcom_id")->fetchAssoc();
     }
@@ -1616,7 +1616,7 @@ class AdminController extends AbstractBaseController
      *
      * @return string[]
      */
-    private function totalMediaObjects()
+    private function totalMediaObjects(): array
     {
         return Database::prepare("SELECT gedcom_id, COUNT(m_id) FROM `##gedcom` LEFT JOIN `##media` ON gedcom_id = m_file GROUP BY gedcom_id")->fetchAssoc();
     }
@@ -1626,7 +1626,7 @@ class AdminController extends AbstractBaseController
      *
      * @return string[]
      */
-    private function totalNotes()
+    private function totalNotes(): array
     {
         return Database::prepare("SELECT gedcom_id, COUNT(o_id) FROM `##gedcom` LEFT JOIN `##other` ON gedcom_id = o_file AND o_type = 'NOTE' GROUP BY gedcom_id")->fetchAssoc();
     }
@@ -1636,7 +1636,7 @@ class AdminController extends AbstractBaseController
      *
      * @return string[]
      */
-    private function totalRepositories()
+    private function totalRepositories(): array
     {
         return Database::prepare("SELECT gedcom_id, COUNT(o_id) FROM `##gedcom` LEFT JOIN `##other` ON gedcom_id = o_file AND o_type = 'REPO' GROUP BY gedcom_id")->fetchAssoc();
     }
@@ -1646,7 +1646,7 @@ class AdminController extends AbstractBaseController
      *
      * @return string[]
      */
-    private function totalSources()
+    private function totalSources(): array
     {
         return Database::prepare("SELECT gedcom_id, COUNT(s_id) FROM `##gedcom` LEFT JOIN `##sources` ON gedcom_id = s_file GROUP BY gedcom_id")->fetchAssoc();
     }

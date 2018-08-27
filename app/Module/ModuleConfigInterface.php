@@ -25,5 +25,5 @@ interface ModuleConfigInterface
      *
      * @return string
      */
-    public function getConfigLink();
+    public function getConfigLink(): string;
 }

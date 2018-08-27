@@ -27,27 +27,27 @@ use Fisharebest\Webtrees\Individual;
 class ExtraInformationModule extends AbstractModule implements ModuleSidebarInterface
 {
     /** {@inheritdoc} */
-    public function getTitle()
+    public function getTitle(): string
     {
         /* I18N: Name of a module/sidebar */
         return I18N::translate('Extra information');
     }
 
     /** {@inheritdoc} */
-    public function getDescription()
+    public function getDescription(): string
     {
         /* I18N: Description of the “Extra information” module */
         return I18N::translate('A sidebar showing non-genealogy information about an individual.');
     }
 
     /** {@inheritdoc} */
-    public function defaultSidebarOrder()
+    public function defaultSidebarOrder(): int
     {
         return 10;
     }
 
     /** {@inheritdoc} */
-    public function hasSidebarContent(Individual $individual)
+    public function hasSidebarContent(Individual $individual): bool
     {
         return true;
     }
@@ -59,7 +59,7 @@ class ExtraInformationModule extends AbstractModule implements ModuleSidebarInte
      *
      * @return string
      */
-    public function getSidebarContent(Individual $individual)
+    public function getSidebarContent(Individual $individual): string
     {
         $indifacts = [];
         // The individual’s own facts

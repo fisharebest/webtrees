@@ -86,7 +86,7 @@ class ReportHtmlText extends ReportBaseText
      *
      * @return float
      */
-    public function getHeight($html)
+    public function getHeight($html): float
     {
         $ct = substr_count($this->text, "\n");
         if ($ct > 0) {
@@ -104,7 +104,7 @@ class ReportHtmlText extends ReportBaseText
      *
      * @return array
      */
-    public function getWidth($html)
+    public function getWidth($html): array
     {
         // Setup the style name
         if ($html->getCurrentStyle() != $this->styleName) {

@@ -36,14 +36,14 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
     const MAX_DAYS           = 90;
 
     /** {@inheritdoc} */
-    public function getTitle()
+    public function getTitle(): string
     {
         /* I18N: Name of a module */
         return I18N::translate('Recent changes');
     }
 
     /** {@inheritdoc} */
-    public function getDescription()
+    public function getDescription(): string
     {
         /* I18N: Description of the “Recent changes” module */
         return I18N::translate('A list of records that have been updated recently.');
@@ -209,7 +209,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
      *
      * @return GedcomRecord[] List of records with changes
      */
-    private function getRecentChanges(Tree $tree, $days)
+    private function getRecentChanges(Tree $tree, $days): array
     {
         $sql =
             "SELECT xref FROM `##change`" .
@@ -243,7 +243,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
      *
      * @return int
      */
-    private static function sortByChangeDateAndName(GedcomRecord $a, GedcomRecord $b)
+    private static function sortByChangeDateAndName(GedcomRecord $a, GedcomRecord $b): int
     {
         return $b->lastChangeTimestamp(true) - $a->lastChangeTimestamp(true) ?: GedcomRecord::compare($a, $b);
     }
@@ -256,7 +256,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
      *
      * @return int
      */
-    private static function sortByNameAndChangeDate(GedcomRecord $a, GedcomRecord $b)
+    private static function sortByNameAndChangeDate(GedcomRecord $a, GedcomRecord $b): int
     {
         return GedcomRecord::compare($a, $b) ?: $b->lastChangeTimestamp(true) - $a->lastChangeTimestamp(true);
     }

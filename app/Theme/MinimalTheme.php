@@ -59,7 +59,7 @@ class MinimalTheme extends AbstractTheme implements ThemeInterface
      *
      * @return string[]
      */
-    public function stylesheets()
+    public function stylesheets(): array
     {
         return array_merge(parent::stylesheets(), [
             self::STYLESHEET,
@@ -71,7 +71,7 @@ class MinimalTheme extends AbstractTheme implements ThemeInterface
      *
      * @return string
      */
-    public function themeName()
+    public function themeName(): string
     {
         /* I18N: Name of a theme. */
         return I18N::translate('minimal');

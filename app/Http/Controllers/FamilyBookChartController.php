@@ -159,7 +159,7 @@ class FamilyBookChartController extends AbstractChartController
      *
      * @return int
      */
-    private function printDescendency(Individual $person = null, $generation)
+    private function printDescendency(Individual $person = null, $generation): int
     {
         if ($generation > $this->dgenerations) {
             return 0;
@@ -398,7 +398,7 @@ class FamilyBookChartController extends AbstractChartController
      *
      * @return int
      */
-    private function maxDescendencyGenerations(Individual $individual, $depth)
+    private function maxDescendencyGenerations(Individual $individual, $depth): int
     {
         if ($depth > $this->generations) {
             return $depth;

@@ -26,7 +26,7 @@ class CensusOfFrance1846 extends CensusOfFrance implements CensusInterface
      *
      * @return string
      */
-    public function censusDate()
+    public function censusDate(): string
     {
         return '15 JAN 1846';
     }
@@ -36,7 +36,7 @@ class CensusOfFrance1846 extends CensusOfFrance implements CensusInterface
      *
      * @return CensusColumnInterface[]
      */
-    public function columns()
+    public function columns(): array
     {
         return [
             new CensusColumnSurname($this, 'Noms', 'Noms de famille'),

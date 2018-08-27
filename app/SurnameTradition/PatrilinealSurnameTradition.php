@@ -73,7 +73,7 @@ class PatrilinealSurnameTradition extends DefaultSurnameTradition implements Sur
      *
      * @return string An inflected name
      */
-    protected function inflect($name, $inflections)
+    protected function inflect($name, $inflections): string
     {
         foreach ($inflections as $from => $to) {
             $name = preg_replace('~' . $from . '~u', $to, $name);

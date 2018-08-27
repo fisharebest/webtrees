@@ -28,7 +28,7 @@ class BatchUpdateDuplicateLinksPlugin extends BatchUpdateBasePlugin
      *
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return I18N::translate('Remove duplicate links');
     }
@@ -38,7 +38,7 @@ class BatchUpdateDuplicateLinksPlugin extends BatchUpdateBasePlugin
      *
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): string
     {
         return I18N::translate('A common error is to have multiple links to the same record, for example listing the same child more than once in a family record.');
     }
@@ -48,7 +48,7 @@ class BatchUpdateDuplicateLinksPlugin extends BatchUpdateBasePlugin
      *
      * @return string[]
      */
-    public function getRecordTypesToUpdate()
+    public function getRecordTypesToUpdate(): array
     {
         return [
             'INDI',

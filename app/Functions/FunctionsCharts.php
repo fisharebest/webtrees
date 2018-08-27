@@ -436,7 +436,7 @@ class FunctionsCharts
      *
      * @return string
      */
-    public static function getSosaName($sosa)
+    public static function getSosaName($sosa): string
     {
         $path = '';
         while ($sosa > 1) {

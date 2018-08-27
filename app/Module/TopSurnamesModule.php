@@ -36,7 +36,7 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
      *
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): string
     {
         /* I18N: Name of a module. Top=Most common */
         return I18N::translate('Top surnames');
@@ -47,7 +47,7 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
      *
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): string
     {
         /* I18N: Description of the “Top surnames” module */
         return I18N::translate('A list of the most popular surnames.');

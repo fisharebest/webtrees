@@ -49,7 +49,7 @@ class Database
      *
      * @return bool
      */
-    public static function beginTransaction()
+    public static function beginTransaction(): bool
     {
         return self::$pdo->beginTransaction();
     }
@@ -59,7 +59,7 @@ class Database
      *
      * @return bool
      */
-    public static function commit()
+    public static function commit(): bool
     {
         return self::$pdo->commit();
     }
@@ -125,7 +125,7 @@ class Database
      *
      * @return bool
      */
-    public static function isConnected()
+    public static function isConnected(): bool
     {
         return self::$pdo !== null;
     }
@@ -135,7 +135,7 @@ class Database
      *
      * @return string
      */
-    public static function lastInsertId()
+    public static function lastInsertId(): string
     {
         return self::$pdo->lastInsertId();
     }
@@ -167,7 +167,7 @@ class Database
      *
      * @return int The number of rows affected by this SQL query
      */
-    public static function exec($sql)
+    public static function exec($sql): int
     {
         $sql = str_replace('##', self::$table_prefix, $sql);
 
@@ -183,7 +183,7 @@ class Database
      *
      * @return Statement
      */
-    public static function prepare($sql)
+    public static function prepare($sql): Statement
     {
         if (self::$pdo === null) {
             throw new Exception('No Connection Established');
@@ -203,7 +203,7 @@ class Database
      *
      * @return bool
      */
-    public static function rollBack()
+    public static function rollBack(): bool
     {
         return self::$pdo->rollBack();
     }
@@ -219,7 +219,7 @@ class Database
      *
      * @return bool  Were any updates applied
      */
-    public static function updateSchema($namespace, $schema_name, $target_version)
+    public static function updateSchema($namespace, $schema_name, $target_version): bool
     {
         try {
             $current_version = (int)Site::getPreference($schema_name);
@@ -253,7 +253,7 @@ class Database
      *
      * @return string
      */
-    public static function escapeLike($string)
+    public static function escapeLike($string): string
     {
         return strtr(
             $string,

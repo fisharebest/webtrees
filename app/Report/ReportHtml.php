@@ -333,7 +333,7 @@ class ReportHtml extends ReportBase
      *
      * @return ReportHtmlTextbox
      */
-    public function createTextBox($width, $height, $border, $bgcolor, $newline, $left, $top, $pagecheck, $style, $fill, $padding, $reseth)
+    public function createTextBox($width, $height, $border, $bgcolor, $newline, $left, $top, $pagecheck, $style, $fill, $padding, $reseth): ReportHtmlTextbox
     {
         return new ReportHtmlTextbox($width, $height, $border, $bgcolor, $newline, $left, $top, $pagecheck, $style, $fill, $padding, $reseth);
     }
@@ -346,7 +346,7 @@ class ReportHtml extends ReportBase
      *
      * @return ReportHtmlText
      */
-    public function createText($style, $color)
+    public function createText($style, $color): ReportHtmlText
     {
         return new ReportHtmlText($style, $color);
     }
@@ -358,7 +358,7 @@ class ReportHtml extends ReportBase
      *
      * @return ReportHtmlFootnote
      */
-    public function createFootnote($style = '')
+    public function createFootnote($style = ''): ReportHtmlFootnote
     {
         return new ReportHtmlFootnote($style);
     }
@@ -368,7 +368,7 @@ class ReportHtml extends ReportBase
      *
      * @return ReportHtmlPageheader
      */
-    public function createPageHeader()
+    public function createPageHeader(): ReportHtmlPageheader
     {
         return new ReportHtmlPageheader();
     }
@@ -386,7 +386,7 @@ class ReportHtml extends ReportBase
      *
      * @return ReportHtmlImage
      */
-    public function createImage($file, $x, $y, $w, $h, $align, $ln)
+    public function createImage($file, $x, $y, $w, $h, $align, $ln): ReportHtmlImage
     {
         return new ReportHtmlImage($file, $x, $y, $w, $h, $align, $ln);
     }
@@ -404,7 +404,7 @@ class ReportHtml extends ReportBase
      *
      * @return ReportHtmlImage
      */
-    public function createImageFromObject(MediaFile $media_file, $x, $y, $w, $h, $align, $ln)
+    public function createImageFromObject(MediaFile $media_file, $x, $y, $w, $h, $align, $ln): ReportHtmlImage
     {
         return new ReportHtmlImage($media_file->imageUrl($w, $h, ''), $x, $y, $w, $h, $align, $ln);
     }
@@ -419,7 +419,7 @@ class ReportHtml extends ReportBase
      *
      * @return ReportHtmlLine
      */
-    public function createLine($x1, $y1, $x2, $y2)
+    public function createLine($x1, $y1, $x2, $y2): ReportHtmlLine
     {
         return new ReportHtmlLine($x1, $y1, $x2, $y2);
     }
@@ -432,7 +432,7 @@ class ReportHtml extends ReportBase
      *
      * @return ReportHtmlHtml
      */
-    public function createHTML($tag, $attrs)
+    public function createHTML($tag, $attrs): ReportHtmlHtml
     {
         return new ReportHtmlHtml($tag, $attrs);
     }
@@ -484,7 +484,7 @@ class ReportHtml extends ReportBase
      *
      * @return int
      */
-    public function addPageHeader($element)
+    public function addPageHeader($element): int
     {
         $this->pageHeaderElements[] = $element;
 
@@ -498,7 +498,7 @@ class ReportHtml extends ReportBase
      *
      * @return bool false if not numbered before | object if already numbered
      */
-    public function checkFootnote($footnote)
+    public function checkFootnote($footnote): bool
     {
         $ct  = count($this->printedfootnotes);
         $i   = 0;
@@ -536,7 +536,7 @@ class ReportHtml extends ReportBase
      *
      * @return int Number of lines. 0 if empty line
      */
-    public function countLines($str)
+    public function countLines($str): int
     {
         if ($str == '') {
             return 0;
@@ -550,7 +550,7 @@ class ReportHtml extends ReportBase
      *
      * @return string
      */
-    public function getCurrentStyle()
+    public function getCurrentStyle(): string
     {
         return $this->currentStyle;
     }
@@ -560,7 +560,7 @@ class ReportHtml extends ReportBase
      *
      * @return int
      */
-    public function getCurrentStyleHeight()
+    public function getCurrentStyleHeight(): int
     {
         if (empty($this->currentStyle)) {
             return $this->defaultFontSize;
@@ -577,7 +577,7 @@ class ReportHtml extends ReportBase
      *
      * @return int
      */
-    public function getFootnotesHeight($cellWidth)
+    public function getFootnotesHeight($cellWidth): int
     {
         $h = 0;
         foreach ($this->printedfootnotes as $element) {
@@ -592,7 +592,7 @@ class ReportHtml extends ReportBase
      *
      * @return float
      */
-    public function getRemainingWidth()
+    public function getRemainingWidth(): float
     {
         return $this->noMarginWidth - $this->X;
     }
@@ -602,7 +602,7 @@ class ReportHtml extends ReportBase
      *
      * @return float
      */
-    public function getPageHeight()
+    public function getPageHeight(): float
     {
         return $this->pageh - $this->topmargin;
     }
@@ -614,7 +614,7 @@ class ReportHtml extends ReportBase
      *
      * @return int
      */
-    public function getStringWidth($text)
+    public function getStringWidth($text): int
     {
         $style = $this->getStyle($this->currentStyle);
 
@@ -628,7 +628,7 @@ class ReportHtml extends ReportBase
      *
      * @return int
      */
-    public function getTextCellHeight($str)
+    public function getTextCellHeight($str): int
     {
         // Count the number of lines to calculate the height
         $nl = $this->countLines($str);
@@ -642,7 +642,7 @@ class ReportHtml extends ReportBase
      *
      * @return float
      */
-    public function getX()
+    public function getX(): float
     {
         return $this->X;
     }
@@ -652,7 +652,7 @@ class ReportHtml extends ReportBase
      *
      * @return float
      */
-    public function getY()
+    public function getY(): float
     {
         return $this->Y;
     }
@@ -662,7 +662,7 @@ class ReportHtml extends ReportBase
      *
      * @return int
      */
-    public function pageNo()
+    public function pageNo(): int
     {
         return $this->pageN;
     }
@@ -724,7 +724,7 @@ class ReportHtml extends ReportBase
      *
      * @return string
      */
-    public function textWrap($str, $width)
+    public function textWrap($str, $width): string
     {
         // Calculate the line width
         $lw = (int)($width / ($this->getCurrentStyleHeight() / 2));

@@ -34,7 +34,7 @@ class BatchUpdateMarriedNamesPlugin extends BatchUpdateBasePlugin
      *
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return I18N::translate('Add missing married names');
     }
@@ -44,7 +44,7 @@ class BatchUpdateMarriedNamesPlugin extends BatchUpdateBasePlugin
      *
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): string
     {
         return I18N::translate('You can make it easier to search for married women by recording their married name. However not all women take their husband’s surname, so beware of introducing incorrect information into your database.');
     }
@@ -177,7 +177,7 @@ class BatchUpdateMarriedNamesPlugin extends BatchUpdateBasePlugin
      *
      * @return string
      */
-    public function getOptionsForm()
+    public function getOptionsForm(): string
     {
         return
             '<div class="row form-group">' .

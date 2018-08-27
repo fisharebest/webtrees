@@ -46,7 +46,7 @@ class ReportBaseHtml extends ReportBaseElement
      *
      * @return string
      */
-    public function getStart()
+    public function getStart(): string
     {
         $str = '<' . $this->tag . ' ';
         foreach ($this->attrs as $key => $value) {
@@ -62,7 +62,7 @@ class ReportBaseHtml extends ReportBaseElement
      *
      * @return string
      */
-    public function getEnd()
+    public function getEnd(): string
     {
         return '</' . $this->tag . '>';
     }

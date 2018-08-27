@@ -26,7 +26,7 @@ class Config
      *
      * @return string[]
      */
-    public static function namePrefixes()
+    public static function namePrefixes(): array
     {
         return [
             'Adm',
@@ -72,7 +72,7 @@ class Config
      *
      * @return string[]
      */
-    public static function fileFormats()
+    public static function fileFormats(): array
     {
         return [
             'avi',
@@ -93,7 +93,7 @@ class Config
      *
      * return string[]
      */
-    public static function emptyFacts()
+    public static function emptyFacts(): array
     {
         return [
             'ADOP',
@@ -150,7 +150,7 @@ class Config
      *
      * @return string[]
      */
-    public static function nonPlaceFacts()
+    public static function nonPlaceFacts(): array
     {
         return [
             'ENDL',
@@ -166,7 +166,7 @@ class Config
      *
      * @return string[]
      */
-    public static function nonDateFacts()
+    public static function nonDateFacts(): array
     {
         return [
             'ABBR',
@@ -203,7 +203,7 @@ class Config
      *
      * @return string[]
      */
-    public static function dateAndTime()
+    public static function dateAndTime(): array
     {
         return [
             'BIRT',
@@ -217,7 +217,7 @@ class Config
      *
      * @return string[][]
      */
-    public static function levelTwoTags()
+    public static function levelTwoTags(): array
     {
         return [
             'TYPE'     => [
@@ -430,7 +430,7 @@ class Config
      *
      * @return string[]
      */
-    public static function twoAssociates()
+    public static function twoAssociates(): array
     {
         return [
             'CHR',

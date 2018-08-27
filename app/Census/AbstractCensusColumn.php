@@ -53,7 +53,7 @@ class AbstractCensusColumn
      *
      * @return string
      */
-    public function abbreviation()
+    public function abbreviation(): string
     {
         return $this->abbr;
     }
@@ -127,7 +127,7 @@ class AbstractCensusColumn
      *
      * @return Date
      */
-    public function date()
+    public function date(): Date
     {
         return new Date($this->census->censusDate());
     }
@@ -137,7 +137,7 @@ class AbstractCensusColumn
      *
      * @return string
      */
-    public function title()
+    public function title(): string
     {
         return $this->title;
     }
@@ -149,7 +149,7 @@ class AbstractCensusColumn
      *
      * @return string - e.g. "England"
      */
-    protected function lastPartOfPlace($place)
+    protected function lastPartOfPlace($place): string
     {
         $place = explode(', ', $place);
 
@@ -179,7 +179,7 @@ class AbstractCensusColumn
      *
      * @return string
      */
-    public function place()
+    public function place(): string
     {
         return $this->census->censusPlace();
     }

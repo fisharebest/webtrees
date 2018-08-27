@@ -38,7 +38,7 @@ class CensusColumnFatherBirthPlaceTest extends \PHPUnit\Framework\TestCase
      *
      * @return \Fisharebest\Webtrees\Place
      */
-    private function getPlaceMock($place)
+    private function getPlaceMock($place): \Fisharebest\Webtrees\Place
     {
         $placeParts = explode(', ', $place);
 

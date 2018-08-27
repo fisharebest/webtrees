@@ -29,14 +29,14 @@ interface CensusColumnInterface
      *
      * @return string
      */
-    public function abbreviation();
+    public function abbreviation(): string;
 
     /**
      * When did this census occur
      *
      * @return Date
      */
-    public function date();
+    public function date(): Date;
 
     /**
      * Generate the likely value of this census column, based on available information.
@@ -46,19 +46,19 @@ interface CensusColumnInterface
      *
      * @return string
      */
-    public function generate(Individual $individual, Individual $head);
+    public function generate(Individual $individual, Individual $head): string;
 
     /**
      * Where did this census occur
      *
      * @return string
      */
-    public function place();
+    public function place(): string;
 
     /**
      * The full version of the column's name.
      *
      * @return string
      */
-    public function title();
+    public function title(): string;
 }

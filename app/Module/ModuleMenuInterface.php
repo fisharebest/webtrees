@@ -28,7 +28,7 @@ interface ModuleMenuInterface
      *
      * @return int
      */
-    public function defaultMenuOrder();
+    public function defaultMenuOrder(): int;
 
     /**
      * A menu, to be added to the main application menu.

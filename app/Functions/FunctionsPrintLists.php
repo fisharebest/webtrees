@@ -33,7 +33,7 @@ class FunctionsPrintLists
      *
      * @return string
      */
-    public static function surnameTagCloud($surnames, $route, $totals, Tree $tree)
+    public static function surnameTagCloud($surnames, $route, $totals, Tree $tree): string
     {
         $minimum = PHP_INT_MAX;
         $maximum = 1;

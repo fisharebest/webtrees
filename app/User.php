@@ -67,7 +67,7 @@ class User
      *
      * @return User
      */
-    public static function create($user_name, $real_name, $email, $password)
+    public static function create($user_name, $real_name, $email, $password): User
     {
         Database::prepare(
             "INSERT INTO `##user` (user_name, real_name, email, password) VALUES (:user_name, :real_name, :email, :password)"
@@ -401,7 +401,7 @@ class User
      *
      * @return string
      */
-    public function getUserName()
+    public function getUserName(): string
     {
         return $this->user_name;
     }
@@ -413,7 +413,7 @@ class User
      *
      * @return $this
      */
-    public function setUserName($user_name)
+    public function setUserName($user_name): self
     {
         if ($this->user_name !== $user_name) {
             $this->user_name = $user_name;
@@ -433,7 +433,7 @@ class User
      *
      * @return string
      */
-    public function getRealName()
+    public function getRealName(): string
     {
         return $this->real_name;
     }
@@ -445,7 +445,7 @@ class User
      *
      * @return User
      */
-    public function setRealName($real_name)
+    public function setRealName($real_name): User
     {
         if ($this->real_name !== $real_name) {
             $this->real_name = $real_name;
@@ -465,7 +465,7 @@ class User
      *
      * @return string
      */
-    public function getEmail()
+    public function getEmail(): string
     {
         return $this->email;
     }
@@ -477,7 +477,7 @@ class User
      *
      * @return User
      */
-    public function setEmail($email)
+    public function setEmail($email): User
     {
         if ($this->email !== $email) {
             $this->email = $email;
@@ -499,7 +499,7 @@ class User
      *
      * @return User
      */
-    public function setPassword($password)
+    public function setPassword($password): User
     {
         Database::prepare(
             "UPDATE `##user` SET password = :password WHERE user_id = :user_id"
@@ -521,7 +521,7 @@ class User
      *
      * @return string
      */
-    public function getPreference($setting_name, $default = '')
+    public function getPreference($setting_name, $default = ''): string
     {
         if (empty($this->preferences) && $this->user_id !== 0) {
             $this->preferences = Database::prepare(
@@ -548,7 +548,7 @@ class User
      *
      * @return User
      */
-    public function setPreference($setting_name, $setting_value)
+    public function setPreference($setting_name, $setting_value): User
     {
         if ($this->user_id !== 0 && $this->getPreference($setting_name) !== $setting_value) {
             Database::prepare(

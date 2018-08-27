@@ -432,7 +432,7 @@ class GedcomTag
      *
      * @return bool
      */
-    public static function isTag($tag)
+    public static function isTag($tag): bool
     {
         return in_array($tag, self::$ALL_TAGS);
     }
@@ -1980,7 +1980,7 @@ class GedcomTag
      *
      * @return string
      */
-    public static function getLabelValue($tag, $value, GedcomRecord $record = null, $element = 'div')
+    public static function getLabelValue($tag, $value, GedcomRecord $record = null, $element = 'div'): string
     {
         return
             '<' . $element . ' class="fact_' . $tag . '">' .
@@ -1996,7 +1996,7 @@ class GedcomTag
      *
      * @return string[]
      */
-    public static function getPicklistFacts($fact_type)
+    public static function getPicklistFacts($fact_type): array
     {
         switch ($fact_type) {
             case 'INDI':
@@ -2267,7 +2267,7 @@ class GedcomTag
      *
      * @return string[]
      */
-    public static function getFileFormTypes()
+    public static function getFileFormTypes(): array
     {
         $values = [];
         foreach (self::$OBJE_FILE_FORM_TYPE as $type) {
@@ -2287,7 +2287,7 @@ class GedcomTag
      *
      * @return string
      */
-    public static function createUid()
+    public static function createUid(): string
     {
         $uid = str_replace('-', '', Uuid::uuid4());
 

@@ -225,7 +225,7 @@ class Date
      *
      * @return string[]
      */
-    public static function calendarNames()
+    public static function calendarNames(): array
     {
         return [
             /* I18N: The gregorian calendar */
@@ -397,7 +397,7 @@ class Date
      *
      * @return CalendarDate
      */
-    public function minimumDate()
+    public function minimumDate(): CalendarDate
     {
         return $this->date1;
     }
@@ -423,7 +423,7 @@ class Date
      *
      * @return int
      */
-    public function minimumJulianDay()
+    public function minimumJulianDay(): int
     {
         return $this->minimumDate()->minJD;
     }
@@ -433,7 +433,7 @@ class Date
      *
      * @return int
      */
-    public function maximumJulianDay()
+    public function maximumJulianDay(): int
     {
         return $this->maximumDate()->maxJD;
     }
@@ -446,7 +446,7 @@ class Date
      *
      * @return int
      */
-    public function julianDay()
+    public function julianDay(): int
     {
         return (int)(($this->minimumJulianDay() + $this->maximumJulianDay()) / 2);
     }
@@ -462,7 +462,7 @@ class Date
      *
      * @return Date
      */
-    public function addYears(int $years, string $qualifier = '')
+    public function addYears(int $years, string $qualifier = ''): Date
     {
         $tmp           = clone $this;
         $tmp->date1->y += $years;
@@ -623,7 +623,7 @@ class Date
      *
      * @return bool
      */
-    public function isOK()
+    public function isOK(): bool
     {
         return $this->minimumJulianDay() && $this->maximumJulianDay();
     }

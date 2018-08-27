@@ -80,7 +80,7 @@ class ReportBaseFootnote extends ReportBaseElement
      *
      * @return int
      */
-    public function addText($t)
+    public function addText($t): int
     {
         $t          = trim($t, "\r\n\t");
         $t          = str_replace([
@@ -124,7 +124,7 @@ class ReportBaseFootnote extends ReportBaseElement
      *
      * @return int
      */
-    public function setNum($n)
+    public function setNum($n): int
     {
         $this->num     = $n;
         $this->numText = "$n ";
@@ -139,7 +139,7 @@ class ReportBaseFootnote extends ReportBaseElement
      *
      * @return int
      */
-    public function setAddlink($a)
+    public function setAddlink($a): int
     {
         $this->addlink = $a;
 

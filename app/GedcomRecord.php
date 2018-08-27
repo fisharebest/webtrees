@@ -277,7 +277,7 @@ class GedcomRecord
      *
      * @return string
      */
-    public function getXref()
+    public function getXref(): string
     {
         return $this->xref;
     }
@@ -287,7 +287,7 @@ class GedcomRecord
      *
      * @return Tree
      */
-    public function getTree()
+    public function getTree(): Tree
     {
         return $this->tree;
     }
@@ -312,7 +312,7 @@ class GedcomRecord
      *
      * @return bool
      */
-    public function isPendingAddition()
+    public function isPendingAddition(): bool
     {
         return $this->pending !== null;
     }
@@ -322,7 +322,7 @@ class GedcomRecord
      *
      * @return bool
      */
-    public function isPendingDeletion()
+    public function isPendingDeletion(): bool
     {
         return $this->pending === '';
     }
@@ -334,7 +334,7 @@ class GedcomRecord
      *
      * @return string
      */
-    public function getHtmlUrl()
+    public function getHtmlUrl(): string
     {
         return e($this->url());
     }
@@ -346,7 +346,7 @@ class GedcomRecord
      *
      * @return string
      */
-    public function getRawUrl()
+    public function getRawUrl(): string
     {
         return $this->url();
     }
@@ -356,7 +356,7 @@ class GedcomRecord
      *
      * @return string
      */
-    public function url()
+    public function url(): string
     {
         return route(static::ROUTE_NAME, [
             'xref' => $this->getXref(),
@@ -371,7 +371,7 @@ class GedcomRecord
      *
      * @return bool
      */
-    private function canShowRecord($access_level)
+    private function canShowRecord($access_level): bool
     {
         // This setting would better be called "$ENABLE_PRIVACY"
         if (!$this->tree->getPreference('HIDE_LIVE_PEOPLE')) {
@@ -480,7 +480,7 @@ class GedcomRecord
      *
      * @return bool
      */
-    public function canShowName($access_level = null)
+    public function canShowName($access_level = null): bool
     {
         if ($access_level === null) {
             $access_level = Auth::accessLevel($this->tree);
@@ -494,7 +494,7 @@ class GedcomRecord
      *
      * @return bool
      */
-    public function canEdit()
+    public function canEdit(): bool
     {
         return Auth::isManager($this->tree) || Auth::isEditor($this->tree) && strpos($this->gedcom, "\n1 RESN locked") === false;
     }
@@ -538,7 +538,7 @@ class GedcomRecord
      *
      * @return string
      */
-    protected function createPrivateGedcomRecord($access_level)
+    protected function createPrivateGedcomRecord($access_level): string
     {
         return '0 @' . $this->xref . '@ ' . static::RECORD_TYPE . "\n1 NOTE " . I18N::translate('Private');
     }
@@ -614,7 +614,7 @@ class GedcomRecord
      *
      * @return string[][]
      */
-    public function getAllNames()
+    public function getAllNames(): array
     {
         if ($this->getAllNames === null) {
             $this->getAllNames = [];
@@ -638,7 +638,7 @@ class GedcomRecord
      *
      * @return string
      */
-    public function getFallBackName()
+    public function getFallBackName(): string
     {
         return e($this->getXref());
     }
@@ -648,7 +648,7 @@ class GedcomRecord
      *
      * @return int
      */
-    public function getPrimaryName()
+    public function getPrimaryName(): int
     {
         static $language_script;
 
@@ -676,7 +676,7 @@ class GedcomRecord
      *
      * @return int
      */
-    public function getSecondaryName()
+    public function getSecondaryName(): int
     {
         if (is_null($this->getSecondaryName)) {
             // Generally, the primary and secondary names are the same
@@ -765,7 +765,7 @@ class GedcomRecord
      *
      * @return string
      */
-    public function getSortName()
+    public function getSortName(): string
     {
         // The sortable name is never displayed, no need to call canShowName()
         $tmp = $this->getAllNames();
@@ -794,7 +794,7 @@ class GedcomRecord
      *
      * @return string
      */
-    public function formatList()
+    public function formatList(): string
     {
         $html = '<a href="' . e($this->url()) . '" class="list_item">';
         $html .= '<b>' . $this->getFullName() . '</b>';
@@ -810,7 +810,7 @@ class GedcomRecord
      *
      * @return string
      */
-    public function formatListDetails()
+    public function formatListDetails(): string
     {
         return '';
     }
@@ -823,7 +823,7 @@ class GedcomRecord
      *
      * @return string
      */
-    public function formatFirstMajorFact($facts, $style)
+    public function formatFirstMajorFact($facts, $style): string
     {
         foreach ($this->getFacts($facts, true) as $event) {
             // Only display if it has a date or place (or both)
@@ -852,7 +852,7 @@ class GedcomRecord
      *
      * @return Individual[]
      */
-    public function linkedIndividuals($link)
+    public function linkedIndividuals($link): array
     {
         $rows = Database::prepare(
             "SELECT i_id AS xref, i_gedcom AS gedcom" .
@@ -886,7 +886,7 @@ class GedcomRecord
      *
      * @return Family[]
      */
-    public function linkedFamilies($link)
+    public function linkedFamilies($link): array
     {
         $rows = Database::prepare(
             "SELECT f_id AS xref, f_gedcom AS gedcom" .
@@ -918,7 +918,7 @@ class GedcomRecord
      *
      * @return Source[]
      */
-    public function linkedSources($link)
+    public function linkedSources($link): array
     {
         $rows = Database::prepare(
             "SELECT s_id AS xref, s_gedcom AS gedcom" .
@@ -951,7 +951,7 @@ class GedcomRecord
      *
      * @return Media[]
      */
-    public function linkedMedia($link)
+    public function linkedMedia($link): array
     {
         $rows = Database::prepare(
             "SELECT m_id AS xref, m_gedcom AS gedcom" .
@@ -982,7 +982,7 @@ class GedcomRecord
      *
      * @return Note[]
      */
-    public function linkedNotes($link)
+    public function linkedNotes($link): array
     {
         $rows = Database::prepare(
             "SELECT o_id AS xref, o_gedcom AS gedcom" .
@@ -1016,7 +1016,7 @@ class GedcomRecord
      *
      * @return Repository[]
      */
-    public function linkedRepositories($link)
+    public function linkedRepositories($link): array
     {
         $rows = Database::prepare(
             "SELECT o_id AS xref, o_gedcom AS gedcom" .
@@ -1054,7 +1054,7 @@ class GedcomRecord
      *
      * @return Date[]
      */
-    public function getAllEventDates($event_type)
+    public function getAllEventDates($event_type): array
     {
         $dates = [];
         foreach ($this->getFacts($event_type) as $event) {
@@ -1073,7 +1073,7 @@ class GedcomRecord
      *
      * @return Place[]
      */
-    public function getAllEventPlaces($event_type)
+    public function getAllEventPlaces($event_type): array
     {
         $places = [];
         foreach ($this->getFacts($event_type) as $event) {
@@ -1115,7 +1115,7 @@ class GedcomRecord
      *
      * @return Fact[]
      */
-    public function getFacts($filter = null, $sort = false, $access_level = null, $override = false)
+    public function getFacts($filter = null, $sort = false, $access_level = null, $override = false): array
     {
         if ($access_level === null) {
             $access_level = Auth::accessLevel($this->tree);

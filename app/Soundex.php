@@ -25,7 +25,7 @@ class Soundex
      *
      * @return string[]
      */
-    public static function getAlgorithms()
+    public static function getAlgorithms(): array
     {
         return [
             /* I18N: http://en.wikipedia.org/wiki/Soundex */
@@ -43,7 +43,7 @@ class Soundex
      *
      * @return bool
      */
-    public static function compare($soundex1, $soundex2)
+    public static function compare($soundex1, $soundex2): bool
     {
         if ($soundex1 !== '' && $soundex2 !== '') {
             return !empty(array_intersect(explode(':', $soundex1), explode(':', $soundex2)));
@@ -3578,7 +3578,7 @@ class Soundex
      *
      * @return string[] List of possible DM codes for the word.
      */
-    private static function daitchMokotoffWord($name)
+    private static function daitchMokotoffWord($name): array
     {
         // Apply special transformation rules to the input string
         $name = I18N::strtoupper($name);

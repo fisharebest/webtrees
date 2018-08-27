@@ -73,7 +73,7 @@ class ColorGenerator
      *
      * @return string
      */
-    public function getNextColor($lightnessStep = 10, $hueStep = 15)
+    public function getNextColor($lightnessStep = 10, $hueStep = 15): string
     {
         $lightness = $this->lightness + $lightnessStep;
         $hue       = $this->hue;

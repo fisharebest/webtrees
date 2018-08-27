@@ -179,7 +179,7 @@ class MediaFile
     /**
      * @return bool
      */
-    public function isPendingAddition()
+    public function isPendingAddition(): bool
     {
         foreach ($this->media->getFacts() as $fact) {
             if ($fact->getFactId() === $this->fact_id) {
@@ -193,7 +193,7 @@ class MediaFile
     /**
      * @return bool
      */
-    public function isPendingDeletion()
+    public function isPendingDeletion(): bool
     {
         foreach ($this->media->getFacts() as $fact) {
             if ($fact->getFactId() === $this->fact_id) {
@@ -214,7 +214,7 @@ class MediaFile
      *
      * @return string
      */
-    public function displayImage($width, $height, $fit, $attributes = [])
+    public function displayImage($width, $height, $fit, $attributes = []): string
     {
         if ($this->isExternal()) {
             $src    = $this->multimedia_file_refn;
@@ -284,7 +284,7 @@ class MediaFile
      *
      * @return bool
      */
-    public function fileExists()
+    public function fileExists(): bool
     {
         return !$this->isExternal() && file_exists($this->folder() . $this->multimedia_file_refn);
     }
@@ -339,7 +339,7 @@ class MediaFile
      *
      * @return string
      */
-    public function fileSizeKB()
+    public function fileSizeKB(): string
     {
         $size = $this->fileSizeBytes();
         $size = (int)(($size + 1023) / 1024);
@@ -372,7 +372,7 @@ class MediaFile
      *
      * @return string
      */
-    public function downloadUrl()
+    public function downloadUrl(): string
     {
         return route('media-download', [
             'xref'    => $this->media->getXref(),
@@ -390,7 +390,7 @@ class MediaFile
      *
      * @return string
      */
-    public function imageUrl($width, $height, $fit)
+    public function imageUrl($width, $height, $fit): string
     {
         // Sign the URL, to protect against mass-resize attacks.
         $glide_key = Site::getPreference('glide-key');
@@ -446,7 +446,7 @@ class MediaFile
      *
      * @return string
      */
-    public function mimeType()
+    public function mimeType(): string
     {
         return self::MIME_TYPES[$this->extension()] ?? 'application/octet-stream';
     }

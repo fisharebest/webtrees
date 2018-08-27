@@ -26,7 +26,7 @@ class CensusOfScotland extends Census implements CensusPlaceInterface
      *
      * @return CensusInterface[]
      */
-    public function allCensusDates()
+    public function allCensusDates(): array
     {
         return [
             new CensusOfScotland1841(),
@@ -45,7 +45,7 @@ class CensusOfScotland extends Census implements CensusPlaceInterface
      *
      * @return string
      */
-    public function censusPlace()
+    public function censusPlace(): string
     {
         return 'Scotland';
     }

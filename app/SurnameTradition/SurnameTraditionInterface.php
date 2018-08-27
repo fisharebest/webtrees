@@ -26,14 +26,14 @@ interface SurnameTraditionInterface
      *
      * @return bool
      */
-    public function hasMarriedNames();
+    public function hasMarriedNames(): bool;
 
     /**
      * Does this surname tradition use surnames?
      *
      * @return bool
      */
-    public function hasSurnames();
+    public function hasSurnames(): bool;
 
     /**
      * What names are given to a new child

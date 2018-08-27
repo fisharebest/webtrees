@@ -274,7 +274,7 @@ class AdminTreesController extends AbstractBaseController
      *
      * @return string
      */
-    private function checkLinkMessage(Tree $tree, $type1, $xref1, $type2, $xref2)
+    private function checkLinkMessage(Tree $tree, $type1, $xref1, $type2, $xref2): string
     {
         /* I18N: The placeholders are GEDCOM XREFs and tags. e.g. “INDI I123 contains a FAMC link to F234.” */
         return I18N::translate(
@@ -295,7 +295,7 @@ class AdminTreesController extends AbstractBaseController
      *
      * @return string
      */
-    private function checkLink(Tree $tree, string $xref)
+    private function checkLink(Tree $tree, string $xref): string
     {
         return '<b><a href="' . e(route('record', [
                 'xref' => $xref,
@@ -310,7 +310,7 @@ class AdminTreesController extends AbstractBaseController
      *
      * @return string
      */
-    private function formatType($type)
+    private function formatType($type): string
     {
         return '<b title="' . GedcomTag::getLabel($type) . '">' . $type . '</b>';
     }

@@ -89,7 +89,7 @@ class FontAwesome extends Html
      *
      * @return string
      */
-    public static function decorativeIcon($icon, $attributes = [])
+    public static function decorativeIcon($icon, $attributes = []): string
     {
         if (empty($attributes['class'])) {
             $attributes['class'] = self::ICONS[$icon];
@@ -113,7 +113,7 @@ class FontAwesome extends Html
      *
      * @return string
      */
-    public static function semanticIcon($icon, $title, $attributes = [])
+    public static function semanticIcon($icon, $title, $attributes = []): string
     {
         $attributes['title'] = $title;
 
@@ -129,7 +129,7 @@ class FontAwesome extends Html
      *
      * @return string
      */
-    public static function linkIcon($icon, $title, $attributes = [])
+    public static function linkIcon($icon, $title, $attributes = []): string
     {
         $title                    = strip_tags($title);
         $attributes['aria-label'] = $title;

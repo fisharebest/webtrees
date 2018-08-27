@@ -32,14 +32,14 @@ use Symfony\Component\HttpFoundation\Response;
 class StoriesModule extends AbstractModule implements ModuleTabInterface, ModuleConfigInterface, ModuleMenuInterface
 {
     /** {@inheritdoc} */
-    public function getTitle()
+    public function getTitle(): string
     {
         /* I18N: Name of a module */
         return I18N::translate('Stories');
     }
 
     /** {@inheritdoc} */
-    public function getDescription()
+    public function getDescription(): string
     {
         /* I18N: Description of the “Stories” module */
         return I18N::translate('Add narrative stories to individuals in the family tree.');
@@ -50,7 +50,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
      *
      * @return string
      */
-    public function getConfigLink()
+    public function getConfigLink(): string
     {
         return route('module', [
             'module' => $this->getName(),
@@ -133,7 +133,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
      *
      * @return int
      */
-    public function defaultMenuOrder()
+    public function defaultMenuOrder(): int
     {
         return 30;
     }
@@ -145,7 +145,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
      *
      * @return int
      */
-    public function defaultAccessLevel()
+    public function defaultAccessLevel(): int
     {
         return Auth::PRIV_HIDE;
     }

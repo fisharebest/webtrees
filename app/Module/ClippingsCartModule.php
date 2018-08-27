@@ -63,14 +63,14 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
     ];
 
     /** {@inheritdoc} */
-    public function getTitle()
+    public function getTitle(): string
     {
         /* I18N: Name of a module */
         return I18N::translate('Clippings cart');
     }
 
     /** {@inheritdoc} */
-    public function getDescription()
+    public function getDescription(): string
     {
         /* I18N: Description of the “Clippings cart” module */
         return I18N::translate('Select records from your family tree and save them as a GEDCOM file.');
@@ -83,7 +83,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      *
      * @return int
      */
-    public function defaultAccessLevel()
+    public function defaultAccessLevel(): int
     {
         return Auth::PRIV_USER;
     }
@@ -93,7 +93,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      *
      * @return int
      */
-    public function defaultMenuOrder()
+    public function defaultMenuOrder(): int
     {
         return 20;
     }

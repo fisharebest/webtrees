@@ -27,7 +27,7 @@ class Html
      *
      * @return string
      */
-    public static function attributes(array $attributes)
+    public static function attributes(array $attributes): string
     {
         $html = [];
         foreach ($attributes as $key => $value) {
@@ -49,7 +49,7 @@ class Html
      *
      * @return string
      */
-    public static function url($path, array $data)
+    public static function url($path, array $data): string
     {
         $path = strtr($path, ' ', '%20');
 
@@ -63,7 +63,7 @@ class Html
      *
      * @return string
      */
-    public static function filename($filename)
+    public static function filename($filename): string
     {
         return '<samp class="filename" dir="ltr">' . e($filename) . '</samp>';
     }

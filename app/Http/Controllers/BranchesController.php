@@ -338,7 +338,7 @@ class BranchesController extends AbstractBaseController
      *
      * @return string
      */
-    private static function sosaGeneration($sosa)
+    private static function sosaGeneration($sosa): string
     {
         $generation = (int)log($sosa, 2) + 1;
 

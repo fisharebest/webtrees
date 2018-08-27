@@ -26,12 +26,12 @@ interface CensusInterface extends CensusPlaceInterface
      *
      * @return string
      */
-    public function censusDate();
+    public function censusDate(): string;
 
     /**
      * The columns of the census.
      *
      * @return CensusColumnInterface[]
      */
-    public function columns();
+    public function columns(): array;
 }

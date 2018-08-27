@@ -101,7 +101,7 @@ class Menu
      *
      * @return string[]
      */
-    public function getAttrs()
+    public function getAttrs(): array
     {
         return $this->attrs;
     }
@@ -113,7 +113,7 @@ class Menu
      *
      * @return $this
      */
-    public function setAttrs(array $attrs)
+    public function setAttrs(array $attrs): self
     {
         $this->attrs = $attrs;
 
@@ -125,7 +125,7 @@ class Menu
      *
      * @return string
      */
-    public function getClass()
+    public function getClass(): string
     {
         return $this->class;
     }
@@ -137,7 +137,7 @@ class Menu
      *
      * @return $this
      */
-    public function setClass($class)
+    public function setClass($class): self
     {
         $this->class = $class;
 
@@ -149,7 +149,7 @@ class Menu
      *
      * @return string
      */
-    public function getLabel()
+    public function getLabel(): string
     {
         return $this->label;
     }
@@ -161,7 +161,7 @@ class Menu
      *
      * @return $this
      */
-    public function setLabel($label)
+    public function setLabel($label): self
     {
         $this->label = $label;
 
@@ -173,7 +173,7 @@ class Menu
      *
      * @return string
      */
-    public function getLink()
+    public function getLink(): string
     {
         return $this->link;
     }
@@ -185,7 +185,7 @@ class Menu
      *
      * @return $this
      */
-    public function setLink($link)
+    public function setLink($link): self
     {
         $this->link = $link;
 
@@ -199,7 +199,7 @@ class Menu
      *
      * @return $this
      */
-    public function addSubmenu($menu)
+    public function addSubmenu($menu): self
     {
         $this->submenus[] = $menu;
 
@@ -211,7 +211,7 @@ class Menu
      *
      * @return string
      */
-    public function getMenuAsList()
+    public function getMenuAsList(): string
     {
         $attrs = '';
         foreach ($this->attrs as $key => $value) {
@@ -239,7 +239,7 @@ class Menu
      *
      * @return Menu[]
      */
-    public function getSubmenus()
+    public function getSubmenus(): array
     {
         return $this->submenus;
     }
@@ -251,7 +251,7 @@ class Menu
      *
      * @return $this
      */
-    public function setSubmenus(array $submenus)
+    public function setSubmenus(array $submenus): self
     {
         $this->submenus = $submenus;
 

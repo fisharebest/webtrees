@@ -39,45 +39,45 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
     private static $map_selections = null;
 
     /** {@inheritdoc} */
-    public function getTitle()
+    public function getTitle(): string
     {
         /* I18N: Name of a module */
         return I18N::translate('Places');
     }
 
     /** {@inheritdoc} */
-    public function getDescription()
+    public function getDescription(): string
     {
         /* I18N: Description of the “OSM” module */
         return I18N::translate('Show the location of events on a map.');
     }
 
     /** {@inheritdoc} */
-    public function defaultAccessLevel()
+    public function defaultAccessLevel(): int
     {
         return Auth::PRIV_PRIVATE;
     }
 
     /** {@inheritdoc} */
-    public function defaultTabOrder()
+    public function defaultTabOrder(): int
     {
         return 4;
     }
 
     /** {@inheritdoc} */
-    public function hasTabContent(Individual $individual)
+    public function hasTabContent(Individual $individual): bool
     {
         return true;
     }
 
     /** {@inheritdoc} */
-    public function isGrayedOut(Individual $individual)
+    public function isGrayedOut(Individual $individual): bool
     {
         return false;
     }
 
     /** {@inheritdoc} */
-    public function canLoadAjax()
+    public function canLoadAjax(): bool
     {
         return true;
     }
@@ -139,7 +139,7 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
      * @return array
      * @throws Exception
      */
-    private function getPersonalFacts(Individual $individual)
+    private function getPersonalFacts(Individual $individual): array
     {
         $facts      = $individual->getFacts();
         foreach ($individual->getSpouseFamilies() as $family) {

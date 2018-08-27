@@ -32,14 +32,14 @@ use Symfony\Component\HttpFoundation\Request;
 class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
 {
     /** {@inheritdoc} */
-    public function getTitle()
+    public function getTitle(): string
     {
         /* I18N: Name of a module */
         return I18N::translate('Pending changes');
     }
 
     /** {@inheritdoc} */
-    public function getDescription()
+    public function getDescription(): string
     {
         /* I18N: Description of the “Pending changes” module */
         return I18N::translate('A list of changes that need to be reviewed by a moderator, and email notifications.');

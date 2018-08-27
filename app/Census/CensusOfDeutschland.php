@@ -26,7 +26,7 @@ class CensusOfDeutschland extends Census implements CensusPlaceInterface
      *
      * @return CensusInterface[]
      */
-    public function allCensusDates()
+    public function allCensusDates(): array
     {
         return [
             new CensusOfDeutschland1819(),
@@ -42,7 +42,7 @@ class CensusOfDeutschland extends Census implements CensusPlaceInterface
      *
      * @return string
      */
-    public function censusPlace()
+    public function censusPlace(): string
     {
         return 'Deutschland';
     }

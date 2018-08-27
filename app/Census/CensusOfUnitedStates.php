@@ -26,7 +26,7 @@ class CensusOfUnitedStates extends Census implements CensusPlaceInterface
      *
      * @return CensusInterface[]
      */
-    public function allCensusDates()
+    public function allCensusDates(): array
     {
         return [
             new CensusOfUnitedStates1790(),
@@ -53,7 +53,7 @@ class CensusOfUnitedStates extends Census implements CensusPlaceInterface
      *
      * @return string
      */
-    public function censusPlace()
+    public function censusPlace(): string
     {
         return 'United States';
     }

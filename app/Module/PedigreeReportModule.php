@@ -26,7 +26,7 @@ use Fisharebest\Webtrees\Tree;
 class PedigreeReportModule extends AbstractModule implements ModuleReportInterface
 {
     /** {@inheritdoc} */
-    public function getTitle()
+    public function getTitle(): string
     {
         // This text also appears in the .XML file - update both together
         /* I18N: Name of a report */
@@ -34,7 +34,7 @@ class PedigreeReportModule extends AbstractModule implements ModuleReportInterfa
     }
 
     /** {@inheritdoc} */
-    public function getDescription()
+    public function getDescription(): string
     {
         // This text also appears in the .XML file - update both together
         /* I18N: Description of the “Pedigree” module */
@@ -48,7 +48,7 @@ class PedigreeReportModule extends AbstractModule implements ModuleReportInterfa
      *
      * @return int
      */
-    public function defaultAccessLevel()
+    public function defaultAccessLevel(): int
     {
         return Auth::PRIV_PRIVATE;
     }

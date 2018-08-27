@@ -26,7 +26,7 @@ class CensusOfEngland1841 extends CensusOfEngland implements CensusInterface
      *
      * @return string
      */
-    public function censusDate()
+    public function censusDate(): string
     {
         return '06 JUN 1841';
     }
@@ -36,7 +36,7 @@ class CensusOfEngland1841 extends CensusOfEngland implements CensusInterface
      *
      * @return CensusColumnInterface[]
      */
-    public function columns()
+    public function columns(): array
     {
         return [
             new CensusColumnFullName($this, 'Name', 'Name'),

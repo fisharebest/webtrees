@@ -242,7 +242,7 @@ class IndividualController extends AbstractBaseController
      *
      * @return string
      */
-    private function formatNameRecord(Tree $tree, $n, Fact $fact)
+    private function formatNameRecord(Tree $tree, $n, Fact $fact): string
     {
         $individual = $fact->getParent();
 
@@ -351,7 +351,7 @@ class IndividualController extends AbstractBaseController
      *
      * @return string
      */
-    private function formatSexRecord(Fact $fact)
+    private function formatSexRecord(Fact $fact): string
     {
         $individual = $fact->getParent();
 
@@ -404,7 +404,7 @@ class IndividualController extends AbstractBaseController
      *
      * @return ModuleTabInterface[]
      */
-    public function getSidebars(Individual $individual)
+    public function getSidebars(Individual $individual): array
     {
         $sidebars = Module::getActiveSidebars($individual->getTree());
 
@@ -421,7 +421,7 @@ class IndividualController extends AbstractBaseController
      *
      * @return ModuleTabInterface[]
      */
-    public function getTabs(Individual $individual)
+    public function getTabs(Individual $individual): array
     {
         $tabs = Module::getActiveTabs($individual->getTree());
 
@@ -438,7 +438,7 @@ class IndividualController extends AbstractBaseController
      *
      * @return stdClass
      */
-    private function significant(Individual $individual)
+    private function significant(Individual $individual): stdClass
     {
         $significant = (object)[
             'family'     => null,

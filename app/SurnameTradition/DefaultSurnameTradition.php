@@ -37,7 +37,7 @@ class DefaultSurnameTradition implements SurnameTraditionInterface
      *
      * @return bool
      */
-    public function hasMarriedNames()
+    public function hasMarriedNames(): bool
     {
         return false;
     }
@@ -47,7 +47,7 @@ class DefaultSurnameTradition implements SurnameTraditionInterface
      *
      * @return bool
      */
-    public function hasSurnames()
+    public function hasSurnames(): bool
     {
         return true;
     }

@@ -30,14 +30,14 @@ use Symfony\Component\HttpFoundation\Response;
 class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMenuInterface, ModuleConfigInterface
 {
     /** {@inheritdoc} */
-    public function getTitle()
+    public function getTitle(): string
     {
         /* I18N: Name of a module. Abbreviation for “Frequently Asked Questions” */
         return I18N::translate('FAQ');
     }
 
     /** {@inheritdoc} */
-    public function getDescription()
+    public function getDescription(): string
     {
         /* I18N: Description of the “FAQ” module */
         return I18N::translate('A list of frequently asked questions and answers.');
@@ -48,7 +48,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
      *
      * @return string
      */
-    public function getConfigLink()
+    public function getConfigLink(): string
     {
         return route('module', [
             'module' => $this->getName(),
@@ -61,7 +61,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
      *
      * @return int
      */
-    public function defaultMenuOrder()
+    public function defaultMenuOrder(): int
     {
         return 40;
     }

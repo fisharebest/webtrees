@@ -44,7 +44,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleConfigInt
      *
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): string
     {
         /* I18N: Name of a module/chart */
         return I18N::translate('Relationships');
@@ -55,7 +55,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleConfigInt
      *
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): string
     {
         /* I18N: Description of the “RelationshipsChart” module */
         return I18N::translate('A chart displaying relationships between two individuals.');
@@ -68,7 +68,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleConfigInt
      *
      * @return int
      */
-    public function defaultAccessLevel()
+    public function defaultAccessLevel(): int
     {
         return Auth::PRIV_PRIVATE;
     }
@@ -127,7 +127,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleConfigInt
      *
      * @return string
      */
-    public function getConfigLink()
+    public function getConfigLink(): string
     {
         return route('module', [
             'module' => $this->getName(),

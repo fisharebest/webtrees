@@ -30,7 +30,7 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
      *
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): string
     {
         /* I18N: Name of a module/chart */
         return I18N::translate('Pedigree');
@@ -41,7 +41,7 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
      *
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): string
     {
         /* I18N: Description of the “PedigreeChart” module */
         return I18N::translate('A chart of an individual’s ancestors, formatted as a tree.');
@@ -54,7 +54,7 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
      *
      * @return int
      */
-    public function defaultAccessLevel()
+    public function defaultAccessLevel(): int
     {
         return Auth::PRIV_PRIVATE;
     }

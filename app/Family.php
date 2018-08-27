@@ -94,7 +94,7 @@ class Family extends GedcomRecord
      *
      * @return string
      */
-    protected function createPrivateGedcomRecord($access_level)
+    protected function createPrivateGedcomRecord($access_level): string
     {
         $SHOW_PRIVATE_RELATIONSHIPS = $this->tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS');
 
@@ -172,7 +172,7 @@ class Family extends GedcomRecord
      *
      * @return bool
      */
-    protected function canShowByType($access_level)
+    protected function canShowByType($access_level): bool
     {
         // Hide a family if any member is private
         preg_match_all('/\n1 (?:CHIL|HUSB|WIFE) @(' . WT_REGEX_XREF . ')@/', $this->gedcom, $matches);
@@ -193,7 +193,7 @@ class Family extends GedcomRecord
      *
      * @return bool
      */
-    public function canShowName($access_level = null)
+    public function canShowName($access_level = null): bool
     {
         // We can always see the name (Husband-name + Wife-name), however,
         // the name will often be "private + private"
@@ -224,7 +224,7 @@ class Family extends GedcomRecord
      *
      * @return Individual[]
      */
-    public function getSpouses($access_level = null)
+    public function getSpouses($access_level = null): array
     {
         return array_filter([
             $this->getHusband($access_level),
@@ -239,7 +239,7 @@ class Family extends GedcomRecord
      *
      * @return Individual[]
      */
-    public function getChildren($access_level = null)
+    public function getChildren($access_level = null): array
     {
         if ($access_level === null) {
             $access_level = Auth::accessLevel($this->tree);
@@ -266,7 +266,7 @@ class Family extends GedcomRecord
      *
      * @return int
      */
-    public static function compareMarrDate(Family $x, Family $y)
+    public static function compareMarrDate(Family $x, Family $y): int
     {
         return Date::compare($x->getMarriageDate(), $y->getMarriageDate());
     }
@@ -276,7 +276,7 @@ class Family extends GedcomRecord
      *
      * @return int
      */
-    public function getNumberOfChildren()
+    public function getNumberOfChildren(): int
     {
         $nchi = count($this->getChildren());
         foreach ($this->getFacts('NCHI') as $fact) {
@@ -291,7 +291,7 @@ class Family extends GedcomRecord
      *
      * @return Fact
      */
-    public function getMarriage()
+    public function getMarriage(): Fact
     {
         return $this->getFirstFact('MARR');
     }
@@ -316,7 +316,7 @@ class Family extends GedcomRecord
      *
      * @return int
      */
-    public function getMarriageYear()
+    public function getMarriageYear(): int
     {
         return $this->getMarriageDate()->minimumDate()->y;
     }
@@ -326,7 +326,7 @@ class Family extends GedcomRecord
      *
      * @return Place
      */
-    public function getMarriagePlace()
+    public function getMarriagePlace(): Place
     {
         $marriage = $this->getMarriage();
 
@@ -338,7 +338,7 @@ class Family extends GedcomRecord
      *
      * @return Date[]
      */
-    public function getAllMarriageDates()
+    public function getAllMarriageDates(): array
     {
         foreach (explode('|', WT_EVENTS_MARR) as $event) {
             if ($array = $this->getAllEventDates($event)) {
@@ -354,7 +354,7 @@ class Family extends GedcomRecord
      *
      * @return Place[]
      */
-    public function getAllMarriagePlaces()
+    public function getAllMarriagePlaces(): array
     {
         foreach (explode('|', WT_EVENTS_MARR) as $event) {
             $places = $this->getAllEventPlaces($event);
@@ -371,7 +371,7 @@ class Family extends GedcomRecord
      *
      * @return string[][]
      */
-    public function getAllNames()
+    public function getAllNames(): array
     {
         if (is_null($this->getAllNames)) {
             // Check the script used by each name, so we can match cyrillic with cyrillic, greek with greek, etc.
@@ -449,7 +449,7 @@ class Family extends GedcomRecord
      *
      * @return string
      */
-    public function formatListDetails()
+    public function formatListDetails(): string
     {
         return
             $this->formatFirstMajorFact(WT_EVENTS_MARR, 1) .

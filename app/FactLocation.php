@@ -51,7 +51,7 @@ class FactLocation extends Location
      *
      * @return array
      */
-    public function shortSummary($datatype, $sosa)
+    public function shortSummary($datatype, $sosa): array
     {
         $self        = $this->indi->getXref();
         $parent      = $this->fact->getParent();
@@ -93,7 +93,7 @@ class FactLocation extends Location
     /**
      * @return array
      */
-    public function getIconDetails()
+    public function getIconDetails(): array
     {
         $tag = $this->fact->getTag();
         if (false !== stripos(WT_EVENTS_BIRT, $tag)) {

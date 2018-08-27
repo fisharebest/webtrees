@@ -35,7 +35,7 @@ class FabTheme extends AbstractTheme implements ThemeInterface
      *
      * @return string
      */
-    public function formatSecondaryMenu()
+    public function formatSecondaryMenu(): string
     {
         return
             '<ul class="nav wt-secondary-menu justify-content-end">' .
@@ -53,7 +53,7 @@ class FabTheme extends AbstractTheme implements ThemeInterface
      *
      * @return string
      */
-    public function formQuickSearchFields()
+    public function formQuickSearchFields(): string
     {
         return
             '<input type="search" name="query" size="20" placeholder="' . I18N::translate('Search') . '">';
@@ -89,7 +89,7 @@ class FabTheme extends AbstractTheme implements ThemeInterface
      *
      * @return string[]
      */
-    public function stylesheets()
+    public function stylesheets(): array
     {
         return array_merge(parent::stylesheets(), [
             self::STYLESHEET,
@@ -101,7 +101,7 @@ class FabTheme extends AbstractTheme implements ThemeInterface
      *
      * @return string
      */
-    public function themeName()
+    public function themeName(): string
     {
         /* I18N: Name of a theme. */
         return I18N::translate('F.A.B.');

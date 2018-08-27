@@ -229,7 +229,7 @@ class RelationshipsChartController extends AbstractChartController
      *
      * @return string[][]
      */
-    private function calculateRelationships(Individual $individual1, Individual $individual2, $recursion, $ancestor = false)
+    private function calculateRelationships(Individual $individual1, Individual $individual2, $recursion, $ancestor = false): array
     {
         $rows = Database::prepare(
             "SELECT l_from, l_to FROM `##link` WHERE l_file = :tree_id AND l_type IN ('FAMS', 'FAMC')"
@@ -315,7 +315,7 @@ class RelationshipsChartController extends AbstractChartController
      *
      * @return string[]
      */
-    private function oldStyleRelationshipPath(Tree $tree, array $path)
+    private function oldStyleRelationshipPath(Tree $tree, array $path): array
     {
         $spouse_codes = [
             'M' => 'hus',
@@ -376,7 +376,7 @@ class RelationshipsChartController extends AbstractChartController
      *
      * @return string[]
      */
-    private function allAncestors($xref1, $xref2, $tree_id)
+    private function allAncestors($xref1, $xref2, $tree_id): array
     {
         $ancestors = [
             $xref1,
@@ -422,7 +422,7 @@ class RelationshipsChartController extends AbstractChartController
      *
      * @return string[]
      */
-    private function excludeFamilies($xref1, $xref2, $tree_id)
+    private function excludeFamilies($xref1, $xref2, $tree_id): array
     {
         return Database::prepare(
             "SELECT l_to" .

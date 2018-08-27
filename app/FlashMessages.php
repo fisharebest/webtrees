@@ -47,7 +47,7 @@ class FlashMessages
      *
      * @return stdClass[]
      */
-    public static function getMessages()
+    public static function getMessages(): array
     {
         $messages = Session::get(self::FLASH_KEY, []);
         Session::forget(self::FLASH_KEY);

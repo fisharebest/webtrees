@@ -140,7 +140,7 @@ class Module
      *
      * @return string[]
      */
-    public static function getCoreModuleNames()
+    public static function getCoreModuleNames(): array
     {
         return [
             'GEDFact_assistant',
@@ -222,7 +222,7 @@ class Module
      *
      * @return AbstractModule[]
      */
-    private static function getActiveModules()
+    private static function getActiveModules(): array
     {
         /** @var AbstractModule[] - Only query the database once. */
         static $modules;
@@ -269,7 +269,7 @@ class Module
      *
      * @return ModuleBlockInterface[]|ModuleChartInterface[]|ModuleMenuInterface[]|ModuleReportInterface[]|ModuleSidebarInterface[]|ModuleTabInterface[]|ModuleThemeInterface[]
      */
-    private static function getActiveModulesByComponent(Tree $tree, $component)
+    private static function getActiveModulesByComponent(Tree $tree, $component): array
     {
         $module_names = Database::prepare(
             "SELECT module_name" .
@@ -312,7 +312,7 @@ class Module
      *
      * @return AbstractModule[]
      */
-    public static function getAllModulesByComponent($component)
+    public static function getAllModulesByComponent($component): array
     {
         $module_names = Database::prepare(
             "SELECT module_name" .
@@ -348,7 +348,7 @@ class Module
      *
      * @return ModuleBlockInterface[]
      */
-    public static function getActiveBlocks(Tree $tree)
+    public static function getActiveBlocks(Tree $tree): array
     {
         return self::getActiveModulesByComponent($tree, 'block');
     }
@@ -360,7 +360,7 @@ class Module
      *
      * @return ModuleChartInterface[]
      */
-    public static function getActiveCharts(Tree $tree)
+    public static function getActiveCharts(Tree $tree): array
     {
         return self::getActiveModulesByComponent($tree, 'chart');
     }
@@ -373,7 +373,7 @@ class Module
      *
      * @return bool
      */
-    public static function isActiveChart(Tree $tree, $module)
+    public static function isActiveChart(Tree $tree, $module): bool
     {
         return array_key_exists($module, self::getActiveModulesByComponent($tree, 'chart'));
     }
@@ -383,7 +383,7 @@ class Module
      *
      * @return ModuleConfigInterface[]
      */
-    public static function configurableModules()
+    public static function configurableModules(): array
     {
         $modules = array_filter(self::getInstalledModules('disabled'), function (AbstractModule $module): bool {
             return $module instanceof ModuleConfigInterface;
@@ -404,7 +404,7 @@ class Module
      *
      * @return ModuleMenuInterface[]
      */
-    public static function getActiveMenus(Tree $tree)
+    public static function getActiveMenus(Tree $tree): array
     {
         return self::getActiveModulesByComponent($tree, 'menu');
     }
@@ -416,7 +416,7 @@ class Module
      *
      * @return ModuleReportInterface[]
      */
-    public static function getActiveReports(Tree $tree)
+    public static function getActiveReports(Tree $tree): array
     {
         return self::getActiveModulesByComponent($tree, 'report');
     }
@@ -428,7 +428,7 @@ class Module
      *
      * @return ModuleSidebarInterface[]
      */
-    public static function getActiveSidebars(Tree $tree)
+    public static function getActiveSidebars(Tree $tree): array
     {
         return self::getActiveModulesByComponent($tree, 'sidebar');
     }
@@ -440,7 +440,7 @@ class Module
      *
      * @return ModuleTabInterface[]
      */
-    public static function getActiveTabs(Tree $tree)
+    public static function getActiveTabs(Tree $tree): array
     {
         return self::getActiveModulesByComponent($tree, 'tab');
     }
@@ -452,7 +452,7 @@ class Module
      *
      * @return ModuleThemeInterface[]
      */
-    public static function getActiveThemes(Tree $tree)
+    public static function getActiveThemes(Tree $tree): array
     {
         return self::getActiveModulesByComponent($tree, 'theme');
     }
@@ -484,7 +484,7 @@ class Module
      *
      * @return AbstractModule[]
      */
-    public static function getInstalledModules($default_status)
+    public static function getInstalledModules($default_status): array
     {
         $modules = [];
 

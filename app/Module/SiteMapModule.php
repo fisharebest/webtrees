@@ -44,7 +44,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
      *
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): string
     {
         /* I18N: Name of a module - see http://en.wikipedia.org/wiki/Sitemaps */
         return I18N::translate('Sitemaps');
@@ -55,7 +55,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
      *
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): string
     {
         /* I18N: Description of the “Sitemaps” module */
         return I18N::translate('Generate sitemap files for search engines.');
@@ -66,7 +66,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
      *
      * @return string
      */
-    public function getConfigLink()
+    public function getConfigLink(): string
     {
         return route('module', [
             'module' => $this->getName(),

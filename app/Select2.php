@@ -51,7 +51,7 @@ class Select2 extends Html
      *
      * @return string[]
      */
-    private static function commonConfig()
+    private static function commonConfig(): array
     {
         return [
             'autocomplete'                    => 'off',
@@ -71,7 +71,7 @@ class Select2 extends Html
      *
      * @return string[]
      */
-    public static function familyConfig(Tree $tree)
+    public static function familyConfig(Tree $tree): array
     {
         $url = route('select2-family', ['ged' => $tree->getName()]);
 
@@ -87,7 +87,7 @@ class Select2 extends Html
      *
      * @return mixed[]
      */
-    public static function familySearch(Tree $tree, $page, $query)
+    public static function familySearch(Tree $tree, $page, $query): array
     {
         $offset  = $page * self::RESULTS_PER_PAGE;
         $more    = false;
@@ -143,7 +143,7 @@ class Select2 extends Html
      *
      * @return string[]
      */
-    public static function flagConfig()
+    public static function flagConfig(): array
     {
         return self::commonConfig() + ['data-ajax--url' => route('select2-flag')];
     }
@@ -155,7 +155,7 @@ class Select2 extends Html
      *
      * @return string
      */
-    public static function flagValue($flag)
+    public static function flagValue($flag): string
     {
         return '<img src="' . WT_MODULES_DIR . 'googlemap/places/flags/' . $flag . '"> ' . $flag;
     }
@@ -168,7 +168,7 @@ class Select2 extends Html
      *
      * @return mixed[]
      */
-    public static function flagSearch($page, $query)
+    public static function flagSearch($page, $query): array
     {
         $offset    = $page * self::RESULTS_PER_PAGE;
         $more      = false;
@@ -215,7 +215,7 @@ class Select2 extends Html
      *
      * @return string[]
      */
-    public static function individualConfig(Tree $tree)
+    public static function individualConfig(Tree $tree): array
     {
         $url = route('select2-individual', ['ged' => $tree->getName()]);
 
@@ -231,7 +231,7 @@ class Select2 extends Html
      *
      * @return mixed[]
      */
-    public static function individualSearch(Tree $tree, $page, $query)
+    public static function individualSearch(Tree $tree, $page, $query): array
     {
         $offset  = $page * self::RESULTS_PER_PAGE;
         $more    = false;
@@ -281,7 +281,7 @@ class Select2 extends Html
      *
      * @return string[]
      */
-    public static function mediaObjectConfig(Tree $tree)
+    public static function mediaObjectConfig(Tree $tree): array
     {
         $url = route('select2-media', ['ged' => $tree->getName()]);
 
@@ -297,7 +297,7 @@ class Select2 extends Html
      *
      * @return mixed[]
      */
-    public static function mediaObjectSearch(Tree $tree, $page, $query)
+    public static function mediaObjectSearch(Tree $tree, $page, $query): array
     {
         $offset  = $page * self::RESULTS_PER_PAGE;
         $more    = false;
@@ -346,7 +346,7 @@ class Select2 extends Html
      *
      * @return string[]
      */
-    public static function noteConfig(Tree $tree)
+    public static function noteConfig(Tree $tree): array
     {
         $url = route('select2-note', ['ged' => $tree->getName()]);
 
@@ -362,7 +362,7 @@ class Select2 extends Html
      *
      * @return mixed[]
      */
-    public static function noteSearch(Tree $tree, $page, $query)
+    public static function noteSearch(Tree $tree, $page, $query): array
     {
         $offset  = $page * self::RESULTS_PER_PAGE;
         $more    = false;
@@ -411,7 +411,7 @@ class Select2 extends Html
      *
      * @return string[]
      */
-    public static function placeConfig(Tree $tree)
+    public static function placeConfig(Tree $tree): array
     {
         $url = route('select2-place', ['ged' => $tree->getName()]);
 
@@ -428,7 +428,7 @@ class Select2 extends Html
      *
      * @return mixed[]
      */
-    public static function placeSearch(Tree $tree, $page, $query, $create)
+    public static function placeSearch(Tree $tree, $page, $query, $create): array
     {
         $offset  = $page * self::RESULTS_PER_PAGE;
         $results = [];
@@ -510,7 +510,7 @@ class Select2 extends Html
      *
      * @return string[]
      */
-    public static function repositoryConfig(Tree $tree)
+    public static function repositoryConfig(Tree $tree): array
     {
         $url = route('select2-repository', ['ged' => $tree->getName()]);
 
@@ -526,7 +526,7 @@ class Select2 extends Html
      *
      * @return mixed[]
      */
-    public static function repositorySearch(Tree $tree, $page, $query)
+    public static function repositorySearch(Tree $tree, $page, $query): array
     {
         $offset  = $page * self::RESULTS_PER_PAGE;
         $more    = false;
@@ -575,7 +575,7 @@ class Select2 extends Html
      *
      * @return string[]
      */
-    public static function sourceConfig(Tree $tree)
+    public static function sourceConfig(Tree $tree): array
     {
         $url = route('select2-source', ['ged' => $tree->getName()]);
 
@@ -591,7 +591,7 @@ class Select2 extends Html
      *
      * @return mixed[]
      */
-    public static function sourceSearch(Tree $tree, $page, $query)
+    public static function sourceSearch(Tree $tree, $page, $query): array
     {
         $offset  = $page * self::RESULTS_PER_PAGE;
         $more    = false;
@@ -640,7 +640,7 @@ class Select2 extends Html
      *
      * @return string[]
      */
-    public static function submitterConfig(Tree $tree)
+    public static function submitterConfig(Tree $tree): array
     {
         $url = route('select2-submitter', ['ged' => $tree->getName()]);
 
@@ -656,7 +656,7 @@ class Select2 extends Html
      *
      * @return mixed[]
      */
-    public static function submitterSearch(Tree $tree, $page, $query)
+    public static function submitterSearch(Tree $tree, $page, $query): array
     {
         $offset  = $page * self::RESULTS_PER_PAGE;
         $more    = false;

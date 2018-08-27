@@ -118,7 +118,7 @@ abstract class AbstractEditController extends AbstractBaseController
      *
      * @return string
      */
-    protected function updateRest($inputRec, $levelOverride = 'no')
+    protected function updateRest($inputRec, $levelOverride = 'no'): string
     {
         if (count($this->tagRest) === 0) {
             return $inputRec; // No update required
@@ -171,7 +171,7 @@ abstract class AbstractEditController extends AbstractBaseController
      *
      * @return string The updated gedcom record
      */
-    protected function handleUpdates($newged, $levelOverride = 'no')
+    protected function handleUpdates($newged, $levelOverride = 'no'): string
     {
         if ($levelOverride === 'no' || count($this->glevels) === 0) {
             $levelAdjust = 0;
@@ -295,7 +295,7 @@ abstract class AbstractEditController extends AbstractBaseController
      *
      * @return string
      */
-    protected function updateSource($inputRec, $levelOverride = 'no')
+    protected function updateSource($inputRec, $levelOverride = 'no'): string
     {
         if (count($this->tagSOUR) === 0) {
             return $inputRec; // No update required
@@ -350,7 +350,7 @@ abstract class AbstractEditController extends AbstractBaseController
      *
      * @return string
      */
-    public static function addNewName(Request $request, Tree $tree)
+    public static function addNewName(Request $request, Tree $tree): string
     {
         $gedrec = "\n1 NAME " . $request->get('NAME', '');
 

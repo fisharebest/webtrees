@@ -90,7 +90,7 @@ class Session
      *
      * @return bool
      */
-    public static function has($name)
+    public static function has($name): bool
     {
         return isset($_SESSION[$name]);
     }
@@ -158,7 +158,7 @@ class Session
      *
      * @return bool
      */
-    private static function close()
+    private static function close(): bool
     {
         return true;
     }
@@ -170,7 +170,7 @@ class Session
      *
      * @return bool
      */
-    private static function destroy(string $id)
+    private static function destroy(string $id): bool
     {
         Database::prepare(
             "DELETE FROM `##session` WHERE session_id = :session_id"
@@ -188,7 +188,7 @@ class Session
      *
      * @return bool
      */
-    private static function gc(int $maxlifetime)
+    private static function gc(int $maxlifetime): bool
     {
         Database::prepare(
             "DELETE FROM `##session` WHERE session_time < DATE_SUB(NOW(), INTERVAL :maxlifetime SECOND)"
@@ -204,7 +204,7 @@ class Session
      *
      * @return bool
      */
-    private static function open()
+    private static function open(): bool
     {
         return true;
     }
@@ -263,7 +263,7 @@ class Session
      *
      * @return string
      */
-    public static function getCsrfToken()
+    public static function getCsrfToken(): string
     {
         if (!Session::has('CSRF_TOKEN')) {
             $charset    = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcedfghijklmnopqrstuvwxyz0123456789';

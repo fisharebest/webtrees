@@ -35,7 +35,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
      *
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): string
     {
         /* I18N: Name of a module */
         return I18N::translate('Favorites');
@@ -46,7 +46,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
      *
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): string
     {
         /* I18N: Description of the “Favorites” module */
         return I18N::translate('Display and manage a family tree’s favorite pages.');
@@ -148,7 +148,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
      *
      * @return stdClass[]
      */
-    public function getFavorites(Tree $tree)
+    public function getFavorites(Tree $tree): array
     {
         $favorites = Database::prepare(
             "SELECT favorite_id, user_id, gedcom_id, xref, favorite_type, title, note, url" .

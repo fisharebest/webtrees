@@ -283,7 +283,7 @@ class ReportEngineController extends AbstractBaseController
      *
      * @return string[]
      */
-    private function allReports(Tree $tree)
+    private function allReports(Tree $tree): array
     {
         $reports = [];
 

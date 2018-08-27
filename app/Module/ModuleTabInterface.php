@@ -28,7 +28,7 @@ interface ModuleTabInterface
      *
      * @return int
      */
-    public function defaultTabOrder();
+    public function defaultTabOrder(): int;
 
     /**
      * Generate the HTML content of this tab.
@@ -37,7 +37,7 @@ interface ModuleTabInterface
      *
      * @return string
      */
-    public function getTabContent(Individual $individual);
+    public function getTabContent(Individual $individual): string;
 
     /**
      * Is this tab empty? If so, we don't always need to display it.
@@ -46,14 +46,14 @@ interface ModuleTabInterface
      *
      * @return bool
      */
-    public function hasTabContent(Individual $individual);
+    public function hasTabContent(Individual $individual): bool;
 
     /**
      * Can this tab load asynchronously?
      *
      * @return bool
      */
-    public function canLoadAjax();
+    public function canLoadAjax(): bool;
 
     /**
      * A greyed out tab has no actual content, but may perhaps have
@@ -63,5 +63,5 @@ interface ModuleTabInterface
      *
      * @return bool
      */
-    public function isGrayedOut(Individual $individual);
+    public function isGrayedOut(Individual $individual): bool;
 }

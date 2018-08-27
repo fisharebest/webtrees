@@ -99,7 +99,7 @@ class Tree
      *
      * @return int
      */
-    public function getTreeId()
+    public function getTreeId(): int
     {
         return $this->tree_id;
     }
@@ -109,7 +109,7 @@ class Tree
      *
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
@@ -119,7 +119,7 @@ class Tree
      *
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): string
     {
         return $this->title;
     }
@@ -129,7 +129,7 @@ class Tree
      *
      * @return int[]
      */
-    public function getFactPrivacy()
+    public function getFactPrivacy(): array
     {
         return $this->fact_privacy;
     }
@@ -139,7 +139,7 @@ class Tree
      *
      * @return int[]
      */
-    public function getIndividualPrivacy()
+    public function getIndividualPrivacy(): array
     {
         return $this->individual_privacy;
     }
@@ -149,7 +149,7 @@ class Tree
      *
      * @return int[][]
      */
-    public function getIndividualFactPrivacy()
+    public function getIndividualFactPrivacy(): array
     {
         return $this->individual_fact_privacy;
     }

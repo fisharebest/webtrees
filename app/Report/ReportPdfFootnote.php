@@ -70,7 +70,7 @@ class ReportPdfFootnote extends ReportBaseFootnote
      *
      * @return float $h
      */
-    public function getFootnoteHeight($renderer)
+    public function getFootnoteHeight($renderer): float
     {
         return 0;
     }
@@ -83,7 +83,7 @@ class ReportPdfFootnote extends ReportBaseFootnote
      *
      * @return array
      */
-    public function getWidth($pdf)
+    public function getWidth($pdf): array
     {
         // Setup the style name, a font must be selected to calculate the width
         $pdf->setCurrentStyle('footnotenum');

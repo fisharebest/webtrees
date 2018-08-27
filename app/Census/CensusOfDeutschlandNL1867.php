@@ -26,7 +26,7 @@ class CensusOfDeutschlandNL1867 extends CensusOfDeutschland implements CensusInt
      *
      * @return string
      */
-    public function censusDate()
+    public function censusDate(): string
     {
         return '03 DEC 1867';
     }
@@ -36,7 +36,7 @@ class CensusOfDeutschlandNL1867 extends CensusOfDeutschland implements CensusInt
      *
      * @return string
      */
-    public function censusPlace()
+    public function censusPlace(): string
     {
         return 'Mecklenburg-Schwerin (Nachtragsliste), Deutschland';
     }
@@ -46,7 +46,7 @@ class CensusOfDeutschlandNL1867 extends CensusOfDeutschland implements CensusInt
      *
      * @return CensusColumnInterface[]
      */
-    public function columns()
+    public function columns(): array
     {
         return [
             new CensusColumnNull($this, '1.Nr.', 'Ordnungs-Nummer.'),

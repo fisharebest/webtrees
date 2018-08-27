@@ -28,7 +28,7 @@ class IcelandicSurnameTradition extends DefaultSurnameTradition implements Surna
      *
      * @return bool
      */
-    public function hasSurnames()
+    public function hasSurnames(): bool
     {
         return false;
     }

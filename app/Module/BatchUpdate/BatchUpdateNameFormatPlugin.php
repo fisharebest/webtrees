@@ -28,7 +28,7 @@ class BatchUpdateNameFormatPlugin extends BatchUpdateBasePlugin
      *
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return I18N::translate('Fix name slashes and spaces');
     }
@@ -38,7 +38,7 @@ class BatchUpdateNameFormatPlugin extends BatchUpdateBasePlugin
      *
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): string
     {
         return I18N::translate('Correct NAME records of the form “John/DOE/” or “John /DOE”, as produced by older genealogy programs.');
     }

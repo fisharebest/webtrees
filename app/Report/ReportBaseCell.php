@@ -157,7 +157,7 @@ class ReportBaseCell extends ReportBaseElement
      *
      * @return float
      */
-    public function getHeight($renderer)
+    public function getHeight($renderer): float
     {
         return $this->height;
     }
@@ -169,7 +169,7 @@ class ReportBaseCell extends ReportBaseElement
      *
      * @return int
      */
-    public function setUrl($url)
+    public function setUrl($url): int
     {
         $this->url = $url;
 
@@ -183,7 +183,7 @@ class ReportBaseCell extends ReportBaseElement
      *
      * @return float
      */
-    public function getWidth($renderer)
+    public function getWidth($renderer): float
     {
         return $this->width;
     }

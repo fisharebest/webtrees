@@ -26,12 +26,12 @@ interface CensusPlaceInterface
      *
      * @return CensusInterface[]
      */
-    public function allCensusDates();
+    public function allCensusDates(): array;
 
     /**
      * Where did this census occur, in GEDCOM format.
      *
      * @return string
      */
-    public function censusPlace();
+    public function censusPlace(): string;
 }

@@ -23,14 +23,14 @@ use Fisharebest\Webtrees\I18N;
 class CkeditorModule extends AbstractModule
 {
     /** {@inheritdoc} */
-    public function getTitle()
+    public function getTitle(): string
     {
         /* I18N: Name of a module. CKEditor is a trademark. Do not translate it? http://ckeditor.com */
         return I18N::translate('CKEditor™');
     }
 
     /** {@inheritdoc} */
-    public function getDescription()
+    public function getDescription(): string
     {
         /* I18N: Description of the “CKEditor” module. WYSIWYG = “what you see is what you get” */
         return I18N::translate('Allow other modules to edit text using a “WYSIWYG” editor, instead of using HTML codes.');

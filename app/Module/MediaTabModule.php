@@ -29,33 +29,33 @@ class MediaTabModule extends AbstractModule implements ModuleTabInterface
     private $facts;
 
     /** {@inheritdoc} */
-    public function getTitle()
+    public function getTitle(): string
     {
         /* I18N: Name of a module */
         return I18N::translate('Media');
     }
 
     /** {@inheritdoc} */
-    public function getDescription()
+    public function getDescription(): string
     {
         /* I18N: Description of the “Media” module */
         return I18N::translate('A tab showing the media objects linked to an individual.');
     }
 
     /** {@inheritdoc} */
-    public function defaultTabOrder()
+    public function defaultTabOrder(): int
     {
         return 50;
     }
 
     /** {@inheritdoc} */
-    public function hasTabContent(Individual $individual)
+    public function hasTabContent(Individual $individual): bool
     {
         return $individual->canEdit() || $this->getFactsWithMedia($individual);
     }
 
     /** {@inheritdoc} */
-    public function isGrayedOut(Individual $individual)
+    public function isGrayedOut(Individual $individual): bool
     {
         return !$this->getFactsWithMedia($individual);
     }
@@ -77,7 +77,7 @@ class MediaTabModule extends AbstractModule implements ModuleTabInterface
      *
      * @return Fact[]
      */
-    private function getFactsWithMedia(Individual $individual)
+    private function getFactsWithMedia(Individual $individual): array
     {
         if ($this->facts === null) {
             $facts = $individual->getFacts();
@@ -101,7 +101,7 @@ class MediaTabModule extends AbstractModule implements ModuleTabInterface
     }
 
     /** {@inheritdoc} */
-    public function canLoadAjax()
+    public function canLoadAjax(): bool
     {
         return false;
     }

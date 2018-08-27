@@ -115,7 +115,7 @@ class ColorsTheme extends CloudsTheme implements ThemeInterface
      *
      * @return Menu[]
      */
-    public function secondaryMenu()
+    public function secondaryMenu(): array
     {
         return array_filter([
             $this->menuPendingChanges(),
@@ -162,7 +162,7 @@ class ColorsTheme extends CloudsTheme implements ThemeInterface
      *
      * @return string[]
      */
-    public function stylesheets()
+    public function stylesheets(): array
     {
         return array_merge(parent::stylesheets(), [
             'themes/colors/css-2.0.0/style.css',
@@ -175,7 +175,7 @@ class ColorsTheme extends CloudsTheme implements ThemeInterface
      *
      * @return string
      */
-    public function themeName()
+    public function themeName(): string
     {
         /* I18N: Name of a theme. */
         return I18N::translate('colors');

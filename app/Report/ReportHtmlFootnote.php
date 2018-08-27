@@ -69,7 +69,7 @@ class ReportHtmlFootnote extends ReportBaseFootnote
      *
      * @return int       Footnote height in points
      */
-    public function getFootnoteHeight($html, $cellWidth = 0)
+    public function getFootnoteHeight($html, $cellWidth = 0): int
     {
         if ($html->getCurrentStyle() != $this->styleName) {
             $html->setCurrentStyle($this->styleName);
@@ -93,7 +93,7 @@ class ReportHtmlFootnote extends ReportBaseFootnote
      *
      * @return array
      */
-    public function getWidth($html)
+    public function getWidth($html): array
     {
         // Setup the style name
         $html->setCurrentStyle('footnotenum');

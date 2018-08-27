@@ -29,14 +29,14 @@ use Symfony\Component\HttpFoundation\Request;
 class SlideShowModule extends AbstractModule implements ModuleBlockInterface
 {
     /** {@inheritdoc} */
-    public function getTitle()
+    public function getTitle(): string
     {
         /* I18N: Name of a module */
         return I18N::translate('Slide show');
     }
 
     /** {@inheritdoc} */
-    public function getDescription()
+    public function getDescription(): string
     {
         /* I18N: Description of the “Slide show” module */
         return I18N::translate('Random images from the current family tree.');

@@ -501,7 +501,7 @@ class EditGedcomRecordController extends AbstractEditController
      *
      * @return string
      */
-    private function removeLinks($gedrec, $xref)
+    private function removeLinks($gedrec, $xref): string
     {
         $gedrec = preg_replace('/\n1 ' . WT_REGEX_TAG . ' @' . $xref . '@(\n[2-9].*)*/', '', $gedrec);
         $gedrec = preg_replace('/\n2 ' . WT_REGEX_TAG . ' @' . $xref . '@(\n[3-9].*)*/', '', $gedrec);

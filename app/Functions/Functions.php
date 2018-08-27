@@ -89,7 +89,7 @@ class Functions
      *
      * @return string the subrecord that was found or an empty string "" if not found.
      */
-    public static function getSubRecord($level, $tag, $gedrec, $num = 1)
+    public static function getSubRecord($level, $tag, $gedrec, $num = 1): string
     {
         if (empty($gedrec)) {
             return '';
@@ -131,7 +131,7 @@ class Functions
      *
      * @return string a string with all CONT lines merged
      */
-    public static function getCont($nlevel, $nrec)
+    public static function getCont($nlevel, $nrec): string
     {
         $text = '';
 
@@ -214,7 +214,7 @@ class Functions
      *
      * @return string
      */
-    public static function getCloseRelationshipName(Individual $individual1, Individual $individual2)
+    public static function getCloseRelationshipName(Individual $individual1, Individual $individual2): string
     {
         if ($individual1 === $individual2) {
             $label = self::reflexivePronoun($individual1);
@@ -385,7 +385,7 @@ class Functions
      *
      * @return string
      */
-    public static function getRelationshipName($nodes)
+    public static function getRelationshipName($nodes): string
     {
         if (!is_array($nodes)) {
             return '';
@@ -642,7 +642,7 @@ class Functions
      *
      * @return string
      */
-    public static function getRelationshipNameFromPath($path, Individual $person1 = null, Individual $person2 = null)
+    public static function getRelationshipNameFromPath($path, Individual $person1 = null, Individual $person2 = null): string
     {
         if (!preg_match('/^(mot|fat|par|hus|wif|spo|son|dau|chi|bro|sis|sib)*$/', $path)) {
             return '<span class="error">' . $path . '</span>';
@@ -2198,7 +2198,7 @@ class Functions
      *
      * @return string
      */
-    public static function getQueryUrl($overwrite = null, $separator = '&')
+    public static function getQueryUrl($overwrite = null, $separator = '&'): string
     {
         if (empty($_GET)) {
             $get = [];

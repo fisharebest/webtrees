@@ -29,7 +29,7 @@ class File
      *
      * @return bool Was the file deleted
      */
-    public static function delete($path)
+    public static function delete($path): bool
     {
         if (is_dir($path)) {
             $dir = opendir($path);

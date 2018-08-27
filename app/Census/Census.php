@@ -26,7 +26,7 @@ class Census
      *
      * @return CensusPlaceInterface[]
      */
-    public static function censusPlaces(string $locale)
+    public static function censusPlaces(string $locale): array
     {
         $all_census_places = [
             new CensusOfCzechRepublic(),

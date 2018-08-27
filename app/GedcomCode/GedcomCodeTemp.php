@@ -29,7 +29,7 @@ class GedcomCodeTemp
      *
      * @return bool
      */
-    public static function isTagLDS($tag)
+    public static function isTagLDS($tag): bool
     {
         return $tag === 'BAPL' || $tag === 'CONL' || $tag === 'ENDL' || $tag === 'SLGC' || $tag === 'SLGS';
     }
@@ -45,7 +45,7 @@ class GedcomCodeTemp
      *
      * @return string[]
      */
-    public static function templeCodes()
+    public static function templeCodes(): array
     {
         return [
             'ABA',
@@ -691,7 +691,7 @@ class GedcomCodeTemp
      *
      * @return string[]
      */
-    public static function templeNames()
+    public static function templeNames(): array
     {
         $temple_names = [];
         foreach (self::templeCodes() as $temple_code) {

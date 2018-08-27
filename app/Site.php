@@ -35,7 +35,7 @@ class Site
      *
      * @return string
      */
-    public static function getPreference($setting_name, $default = '')
+    public static function getPreference($setting_name, $default = ''): string
     {
         // There are lots of settings, and we need to fetch lots of them on every page
         // so it is quicker to fetch them all in one go.

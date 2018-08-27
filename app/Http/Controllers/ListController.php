@@ -486,7 +486,7 @@ class ListController extends AbstractBaseController
      *
      * @return string[]
      */
-    private function allFolders(Tree $tree)
+    private function allFolders(Tree $tree): array
     {
         $folders = Database::prepare(
             "SELECT LEFT(multimedia_file_refn, CHAR_LENGTH(multimedia_file_refn) - CHAR_LENGTH(SUBSTRING_INDEX(multimedia_file_refn, '/', -1))) AS media_path" .
@@ -678,7 +678,7 @@ class ListController extends AbstractBaseController
      *
      * @return string
      */
-    private function getInitialSql($field, $letter)
+    private function getInitialSql($field, $letter): string
     {
         switch (WT_LOCALE) {
             case 'cs':
@@ -742,7 +742,7 @@ class ListController extends AbstractBaseController
      *
      * @return int[]
      */
-    private function surnameAlpha(Tree $tree, $marnm, $fams, $totals = true)
+    private function surnameAlpha(Tree $tree, $marnm, $fams, $totals = true): array
     {
         $alphas = [];
 
@@ -819,7 +819,7 @@ class ListController extends AbstractBaseController
      *
      * @return int[]
      */
-    private function givenAlpha(Tree $tree, $surn, $salpha, $marnm, $fams)
+    private function givenAlpha(Tree $tree, $surn, $salpha, $marnm, $fams): array
     {
         $alphas = [];
 
@@ -902,7 +902,7 @@ class ListController extends AbstractBaseController
      *
      * @return array
      */
-    private function surnames(Tree $tree, $surn, $salpha, $marnm, $fams)
+    private function surnames(Tree $tree, $surn, $salpha, $marnm, $fams): array
     {
         $sql =
             "SELECT UPPER(n_surn COLLATE :collate) AS n_surn, n_surname COLLATE utf8_bin AS n_surname, COUNT(*) AS total" .
@@ -954,7 +954,7 @@ class ListController extends AbstractBaseController
      *
      * @return Individual[]
      */
-    private function individuals(Tree $tree, $surn, $salpha, $galpha, $marnm, $fams)
+    private function individuals(Tree $tree, $surn, $salpha, $galpha, $marnm, $fams): array
     {
         $sql =
             "SELECT i_id AS xref, i_gedcom AS gedcom, n_full " .
@@ -1023,7 +1023,7 @@ class ListController extends AbstractBaseController
      *
      * @return Family[]
      */
-    private function families(Tree $tree, $surn, $salpha, $galpha, $marnm)
+    private function families(Tree $tree, $surn, $salpha, $galpha, $marnm): array
     {
         $list = [];
         foreach ($this->individuals($tree, $surn, $salpha, $galpha, $marnm, true) as $indi) {

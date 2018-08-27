@@ -487,7 +487,7 @@ class FunctionsPrintFacts
      *
      * @return string
      */
-    private static function formatAssociateRelationship(Fact $event)
+    private static function formatAssociateRelationship(Fact $event): string
     {
         $parent = $event->getParent();
         // To whom is this record an assocate?
@@ -564,7 +564,7 @@ class FunctionsPrintFacts
      *
      * @return string HTML text
      */
-    public static function printFactSources(Tree $tree, $factrec, $level)
+    public static function printFactSources(Tree $tree, $factrec, $level): string
     {
         $data   = '';
         $nlevel = $level + 1;
@@ -881,7 +881,7 @@ class FunctionsPrintFacts
      *
      * @return string
      */
-    public static function printSourceStructure(Tree $tree, array $textSOUR)
+    public static function printSourceStructure(Tree $tree, array $textSOUR): string
     {
         $html = '';
 
@@ -928,7 +928,7 @@ class FunctionsPrintFacts
      *
      * @return string[]
      */
-    public static function getSourceStructure($srec)
+    public static function getSourceStructure($srec): array
     {
         // Set up the output array
         $textSOUR = [

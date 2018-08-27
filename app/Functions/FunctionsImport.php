@@ -44,7 +44,7 @@ class FunctionsImport
      *
      * @return string
      */
-    public static function reformatRecord($rec, Tree $tree)
+    public static function reformatRecord($rec, Tree $tree): string
     {
         // Strip out mac/msdos line endings
         $rec = preg_replace("/[\r\n]+/", "\n", $rec);
@@ -1048,7 +1048,7 @@ class FunctionsImport
      *
      * @return string
      */
-    public static function convertInlineMedia(Tree $tree, $gedrec)
+    public static function convertInlineMedia(Tree $tree, $gedrec): string
     {
         while (preg_match('/\n1 OBJE(?:\n[2-9].+)+/', $gedrec, $match)) {
             $gedrec = str_replace($match[0], self::createMediaObject(1, $match[0], $tree), $gedrec);
@@ -1072,7 +1072,7 @@ class FunctionsImport
      *
      * @return string
      */
-    public static function createMediaObject($level, $gedrec, Tree $tree)
+    public static function createMediaObject($level, $gedrec, Tree $tree): string
     {
         if (preg_match('/\n\d FILE (.+)/', $gedrec, $file_match)) {
             $file = $file_match[1];

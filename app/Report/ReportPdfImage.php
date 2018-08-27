@@ -102,7 +102,7 @@ class ReportPdfImage extends ReportBaseImage
      *
      * @return float
      */
-    public function getHeight($pdf)
+    public function getHeight($pdf): float
     {
         return $this->height;
     }
@@ -114,7 +114,7 @@ class ReportPdfImage extends ReportBaseImage
      *
      * @return float
      */
-    public function getWidth($pdf)
+    public function getWidth($pdf): float
     {
         return $this->width;
     }
