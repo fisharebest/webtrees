@@ -165,17 +165,19 @@ class IndividualController extends AbstractBaseController
 
         if ($record === null || !array_key_exists($tab, $tabs)) {
             return new Response('', Response::HTTP_NOT_FOUND);
-        } elseif (!$record->canShow()) {
-            return new Response('', Response::HTTP_FORBIDDEN);
-        } else {
-            $tab = $tabs[$tab];
-
-            $layout = view('layouts/ajax', [
-                'content' => $tab->getTabContent($record),
-            ]);
-
-            return new Response($layout);
         }
+
+        if (!$record->canShow()) {
+            return new Response('', Response::HTTP_FORBIDDEN);
+        }
+
+        $tab = $tabs[$tab];
+
+        $layout = view('layouts/ajax', [
+            'content' => $tab->getTabContent($record),
+        ]);
+
+        return new Response($layout);
     }
 
     /**

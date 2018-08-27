@@ -51,19 +51,19 @@ class GedcomRecordController extends AbstractBaseController
 
         if ($this->hasCustomPage($record)) {
             return new RedirectResponse($record->url());
-        } else {
-            return $this->viewResponse('gedcom-record-page', [
-                'facts'         => $record->getFacts(),
-                'families'      => $record->linkedFamilies($record::RECORD_TYPE),
-                'individuals'   => $record->linkedIndividuals($record::RECORD_TYPE),
-                'meta_robots'   => 'index,follow',
-                'notes'         => $record->linkedNotes($record::RECORD_TYPE),
-                'media_objects' => $record->linkedMedia($record::RECORD_TYPE),
-                'record'        => $record,
-                'sources'       => $record->linkedSources($record::RECORD_TYPE),
-                'title'         => $record->getFullName(),
-            ]);
         }
+
+        return $this->viewResponse('gedcom-record-page', [
+            'facts'         => $record->getFacts(),
+            'families'      => $record->linkedFamilies($record::RECORD_TYPE),
+            'individuals'   => $record->linkedIndividuals($record::RECORD_TYPE),
+            'meta_robots'   => 'index,follow',
+            'notes'         => $record->linkedNotes($record::RECORD_TYPE),
+            'media_objects' => $record->linkedMedia($record::RECORD_TYPE),
+            'record'        => $record,
+            'sources'       => $record->linkedSources($record::RECORD_TYPE),
+            'title'         => $record->getFullName(),
+        ]);
     }
 
     /**

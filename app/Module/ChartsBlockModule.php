@@ -151,9 +151,9 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
                 'title'      => strip_tags($title),
                 'content'    => $content,
             ]);
-        } else {
-            return $content;
         }
+
+        return $content;
     }
 
     /** {@inheritdoc} */

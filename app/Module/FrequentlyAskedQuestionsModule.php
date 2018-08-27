@@ -93,9 +93,9 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
                 'action' => 'Show',
                 'ged'    => $tree->getName(),
             ]), 'menu-help');
-        } else {
-            return null;
         }
+
+        return null;
     }
 
     /**

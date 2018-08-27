@@ -131,9 +131,9 @@ class MediaFile
 
         if ($dirname === '.') {
             return '';
-        } else {
-            return $dirname;
         }
+
+        return $dirname;
     }
 
     /**
@@ -361,10 +361,10 @@ class MediaFile
         if ($this->isExternal() || !$this->multimedia_file_refn) {
             // External image, or (in the case of corrupt GEDCOM data) no image at all
             return $this->multimedia_file_refn;
-        } else {
-            // Main image
-            return WT_DATA_DIR . $MEDIA_DIRECTORY . $this->multimedia_file_refn;
         }
+
+        // Main image
+        return WT_DATA_DIR . $MEDIA_DIRECTORY . $this->multimedia_file_refn;
     }
 
     /**
@@ -435,9 +435,9 @@ class MediaFile
     {
         if (preg_match('/\.([a-zA-Z0-9]+)$/', $this->multimedia_file_refn, $match)) {
             return strtolower($match[1]);
-        } else {
-            return '';
         }
+
+        return '';
     }
 
     /**

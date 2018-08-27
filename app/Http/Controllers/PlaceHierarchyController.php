@@ -151,9 +151,9 @@ class PlaceHierarchyController extends AbstractBaseController
                     'place'     => $place,
                     'parent'    => $parent,
                 ];
-        } else {
-            return null;
         }
+
+        return null;
     }
 
     /**

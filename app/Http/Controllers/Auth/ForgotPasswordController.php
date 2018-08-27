@@ -87,11 +87,11 @@ class ForgotPasswordController extends AbstractBaseController
             FlashMessages::addMessage(I18N::translate('A new password has been created and emailed to %s. You can change this password after you sign in.', e($identifier)), 'success');
 
             return new RedirectResponse(route('login', ['username' => $user->getUserName()]));
-        } else {
-            FlashMessages::addMessage(I18N::translate('There is no account with the username or email “%s”.', e($identifier)), 'danger');
-
-            return new RedirectResponse(route('forgot-password'));
         }
+
+        FlashMessages::addMessage(I18N::translate('There is no account with the username or email “%s”.', e($identifier)), 'danger');
+
+        return new RedirectResponse(route('forgot-password'));
     }
 
     /**

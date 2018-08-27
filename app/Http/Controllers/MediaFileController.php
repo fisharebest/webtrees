@@ -120,13 +120,13 @@ class MediaFileController extends AbstractBaseController
             if ($media_file->factId() === $fact_id) {
                 if ($media_file->isExternal()) {
                     return new RedirectResponse($media_file->filename());
-                } else {
-                    if ($media_file->isImage()) {
-                        return $this->generateImage($media_file, $request->query->all());
-                    } else {
-                        return $this->fileExtensionAsImage($media_file->extension());
-                    }
                 }
+
+                if ($media_file->isImage()) {
+                    return $this->generateImage($media_file, $request->query->all());
+                }
+
+                return $this->fileExtensionAsImage($media_file->extension());
             }
         }
 

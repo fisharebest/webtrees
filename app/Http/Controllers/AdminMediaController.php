@@ -449,11 +449,15 @@ class AdminMediaController extends AbstractBaseController
                 if (strpos('/' . $filename, '/../') !== false) {
                     FlashMessages::addMessage('Folder names are not allowed to include “../”');
                     continue;
-                } elseif (preg_match('/([:])/', $filename, $match)) {
+                }
+
+                if (preg_match('/([:])/', $filename, $match)) {
                     // Local media files cannot contain certain special characters, especially on MS Windows
                     FlashMessages::addMessage(I18N::translate('Filenames are not allowed to contain the character “%s”.', $match[1]));
                     continue;
-                } elseif (preg_match('/(\.(php|pl|cgi|bash|sh|bat|exe|com|htm|html|shtml))$/i', $filename, $match)) {
+                }
+
+                if (preg_match('/(\.(php|pl|cgi|bash|sh|bat|exe|com|htm|html|shtml))$/i', $filename, $match)) {
                     // Do not allow obvious script files.
                     FlashMessages::addMessage(I18N::translate('Filenames are not allowed to have the extension “%s”.', $match[1]));
                     continue;

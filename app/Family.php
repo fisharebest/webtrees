@@ -82,9 +82,9 @@ class Family extends GedcomRecord
 
         if ($record instanceof Family) {
             return $record;
-        } else {
-            return null;
         }
+
+        return null;
     }
 
     /**
@@ -142,9 +142,9 @@ class Family extends GedcomRecord
 
         if ($this->husb && ($SHOW_PRIVATE_RELATIONSHIPS || $this->husb->canShowName($access_level))) {
             return $this->husb;
-        } else {
-            return null;
         }
+
+        return null;
     }
 
     /**
@@ -160,9 +160,9 @@ class Family extends GedcomRecord
 
         if ($this->wife && ($SHOW_PRIVATE_RELATIONSHIPS || $this->wife->canShowName($access_level))) {
             return $this->wife;
-        } else {
-            return null;
         }
+
+        return null;
     }
 
     /**
@@ -212,9 +212,9 @@ class Family extends GedcomRecord
     {
         if ($person === $this->wife) {
             return $this->getHusband($access_level);
-        } else {
-            return $this->getWife($access_level);
         }
+
+        return $this->getWife($access_level);
     }
 
     /**
@@ -306,9 +306,9 @@ class Family extends GedcomRecord
         $marriage = $this->getMarriage();
         if ($marriage) {
             return $marriage->getDate();
-        } else {
-            return new Date('');
         }
+
+        return new Date('');
     }
 
     /**

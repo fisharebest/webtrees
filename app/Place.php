@@ -172,15 +172,15 @@ class Place
         if (true) {
             // If a place hierarchy is a single entity
             return '<span dir="auto">' . e(implode(I18N::$list_separator, $this->gedcom_place)) . '</span>';
-        } else {
-            // If a place hierarchy is a list of distinct items
-            $tmp = [];
-            foreach ($this->gedcom_place as $place) {
-                $tmp[] = '<span dir="auto">' . e($place) . '</span>';
-            }
-
-            return implode(I18N::$list_separator, $tmp);
         }
+
+        // If a place hierarchy is a list of distinct items
+        $tmp = [];
+        foreach ($this->gedcom_place as $place) {
+            $tmp[] = '<span dir="auto">' . e($place) . '</span>';
+        }
+
+        return implode(I18N::$list_separator, $tmp);
     }
 
     /**
@@ -195,19 +195,19 @@ class Place
         if ($SHOW_PEDIGREE_PLACES >= count($this->gedcom_place)) {
             // A short place name - no need to abbreviate
             return $this->getFullName();
-        } else {
-            // Abbreviate the place name, for lists
-            if ($this->tree->getPreference('SHOW_PEDIGREE_PLACES_SUFFIX')) {
-                // The *last* $SHOW_PEDIGREE_PLACES components
-                $short_name = implode(self::GEDCOM_SEPARATOR, array_slice($this->gedcom_place, -$SHOW_PEDIGREE_PLACES));
-            } else {
-                // The *first* $SHOW_PEDIGREE_PLACES components
-                $short_name = implode(self::GEDCOM_SEPARATOR, array_slice($this->gedcom_place, 0, $SHOW_PEDIGREE_PLACES));
-            }
-
-            // Add a tool-tip showing the full name
-            return '<span title="' . e($this->getGedcomName()) . '" dir="auto">' . e($short_name) . '</span>';
         }
+
+        // Abbreviate the place name, for lists
+        if ($this->tree->getPreference('SHOW_PEDIGREE_PLACES_SUFFIX')) {
+            // The *last* $SHOW_PEDIGREE_PLACES components
+            $short_name = implode(self::GEDCOM_SEPARATOR, array_slice($this->gedcom_place, -$SHOW_PEDIGREE_PLACES));
+        } else {
+            // The *first* $SHOW_PEDIGREE_PLACES components
+            $short_name = implode(self::GEDCOM_SEPARATOR, array_slice($this->gedcom_place, 0, $SHOW_PEDIGREE_PLACES));
+        }
+
+        // Add a tool-tip showing the full name
+        return '<span title="' . e($this->getGedcomName()) . '" dir="auto">' . e($short_name) . '</span>';
     }
 
     /**

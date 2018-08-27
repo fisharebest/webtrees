@@ -209,9 +209,9 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
         }
         if ($out) {
             return '<ul>' . $out . '</ul>';
-        } else {
-            return '';
         }
+
+        return '';
     }
 
     /**
@@ -237,8 +237,8 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
         }
         if ($out) {
             return '<ul>' . $out . '</ul>';
-        } else {
-            return '';
         }
+
+        return '';
     }
 }

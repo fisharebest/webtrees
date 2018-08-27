@@ -302,9 +302,9 @@ class GedcomRecord
     {
         if ($this->pending === null) {
             return $this->gedcom;
-        } else {
-            return $this->pending;
         }
+
+        return $this->pending;
     }
 
     /**
@@ -423,10 +423,10 @@ class GedcomRecord
         if (isset($fact_privacy[static::RECORD_TYPE])) {
             // Restriction found
             return $fact_privacy[static::RECORD_TYPE] >= $access_level;
-        } else {
-            // No restriction found - must be public:
-            return true;
         }
+
+        // No restriction found - must be public:
+        return true;
     }
 
     /**
@@ -512,7 +512,9 @@ class GedcomRecord
         if ($access_level == Auth::PRIV_HIDE) {
             // We may need the original record, for example when downloading a GEDCOM or clippings cart
             return $this->gedcom;
-        } elseif ($this->canShow($access_level)) {
+        }
+
+        if ($this->canShow($access_level)) {
             // The record is not private, but the individual facts may be.
 
             // Include the entire first line (for NOTE records)
@@ -524,11 +526,11 @@ class GedcomRecord
             }
 
             return $gedrec;
-        } else {
-            // We cannot display the details, but we may be able to display
-            // limited data, such as links to other records.
-            return $this->createPrivateGedcomRecord($access_level);
         }
+
+        // We cannot display the details, but we may be able to display
+        // limited data, such as links to other records.
+        return $this->createPrivateGedcomRecord($access_level);
     }
 
     /**
@@ -734,16 +736,16 @@ class GedcomRecord
         if ($x->canShowName()) {
             if ($y->canShowName()) {
                 return I18N::strcasecmp($x->getSortName(), $y->getSortName());
-            } else {
-                return -1; // only $y is private
             }
-        } else {
-            if ($y->canShowName()) {
-                return 1; // only $x is private
-            } else {
-                return 0; // both $x and $y private
-            }
+
+            return -1; // only $y is private
         }
+
+        if ($y->canShowName()) {
+            return 1; // only $x is private
+        }
+
+        return 0; // both $x and $y private
     }
 
     /**
@@ -757,9 +759,9 @@ class GedcomRecord
             $tmp = $this->getAllNames();
 
             return $tmp[$this->getPrimaryName()]['full'];
-        } else {
-            return I18N::translate('Private');
         }
+
+        return I18N::translate('Private');
     }
 
     /**
@@ -786,9 +788,9 @@ class GedcomRecord
             $all_names = $this->getAllNames();
 
             return $all_names[$this->getSecondaryName()]['full'];
-        } else {
-            return null;
         }
+
+        return null;
     }
 
     /**
@@ -1162,17 +1164,17 @@ class GedcomRecord
             }
             if ($sorting) {
                 return $t;
-            } else {
-                return strip_tags(FunctionsDate::formatTimestamp($t));
             }
-        } else {
-            // The record does not have a CHAN event
-            if ($sorting) {
-                return '0';
-            } else {
-                return '';
-            }
+
+            return strip_tags(FunctionsDate::formatTimestamp($t));
         }
+
+        // The record does not have a CHAN event
+        if ($sorting) {
+            return '0';
+        }
+
+        return '';
     }
 
     /**
@@ -1186,14 +1188,14 @@ class GedcomRecord
 
         if ($chan === null) {
             return I18N::translate('Unknown');
-        } else {
-            $chan_user = $chan->getAttribute('_WT_USER');
-            if ($chan_user === '') {
-                return I18N::translate('Unknown');
-            } else {
-                return $chan_user;
-            }
         }
+
+        $chan_user = $chan->getAttribute('_WT_USER');
+        if ($chan_user === '') {
+            return I18N::translate('Unknown');
+        }
+
+        return $chan_user;
     }
 
     /**

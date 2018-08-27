@@ -145,9 +145,9 @@ class SearchController extends AbstractBaseController
 
         if ($record !== null && $record->canShow()) {
             return new RedirectResponse($record->url());
-        } else {
-            return $this->general($request, $tree);
         }
+
+        return $this->general($request, $tree);
     }
 
     /**
@@ -991,11 +991,11 @@ class SearchController extends AbstractBaseController
                                     }
                                     $sql .= " AND (" . implode(' OR ', $sdx) . ")";
                                     break;
-                                } else {
-                                    // No phonetic content? Use a substring match
-                                    $sql    .= " AND i_n.n_surn LIKE CONCAT('%', ?, '%')";
-                                    $bind[] = $field_value;
                                 }
+
+// No phonetic content? Use a substring match
+                            $sql    .= " AND i_n.n_surn LIKE CONCAT('%', ?, '%')";
+                            $bind[] = $field_value;
                         }
                         break;
                     case 'NICK':
@@ -1081,11 +1081,11 @@ class SearchController extends AbstractBaseController
                                     }
                                     $sql .= ' AND (' . implode(' OR ', $sdx) . ')';
                                     break;
-                                } else {
-                                    // No phonetic content? Use a substring match
-                                    $sql    .= " AND {$table}.n_givn LIKE CONCAT('%', ?, '%')";
-                                    $bind[] = $field_value;
                                 }
+
+// No phonetic content? Use a substring match
+                            $sql    .= " AND {$table}.n_givn LIKE CONCAT('%', ?, '%')";
+                            $bind[] = $field_value;
                         }
                         break;
                     case 'SURN':

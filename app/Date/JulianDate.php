@@ -52,9 +52,9 @@ class JulianDate extends CalendarDate
     {
         if ($year == -1) {
             return 1;
-        } else {
-            return $year + 1;
         }
+
+        return $year + 1;
     }
 
     /**
@@ -71,11 +71,13 @@ class JulianDate extends CalendarDate
             $this->new_old_style = true;
 
             return $match[1] + 1;
-        } elseif (preg_match('/^(\d+) B\.C\.$/', $year, $match)) {
-            return -$match[1];
-        } else {
-            return (int) $year;
         }
+
+        if (preg_match('/^(\d+) B\.C\.$/', $year, $match)) {
+            return -$match[1];
+        }
+
+        return (int) $year;
     }
 
     /**
@@ -88,14 +90,14 @@ class JulianDate extends CalendarDate
         if ($this->y < 0) {
             return /*  I18N: BCE=Before the Common Era, for Julian years < 0. See http://en.wikipedia.org/wiki/Common_Era */
                 I18N::translate('%s&nbsp;BCE', I18N::digits(-$this->y));
-        } else {
-            if ($this->new_old_style) {
-                return I18N::translate('%s&nbsp;CE', I18N::digits(sprintf('%d/%02d', $this->y - 1, $this->y % 100)));
-            } else {
-                /* I18N: CE=Common Era, for Julian years > 0. See http://en.wikipedia.org/wiki/Common_Era */
-                return I18N::translate('%s&nbsp;CE', I18N::digits($this->y));
-            }
         }
+
+        if ($this->new_old_style) {
+            return I18N::translate('%s&nbsp;CE', I18N::digits(sprintf('%d/%02d', $this->y - 1, $this->y % 100)));
+        }
+
+        /* I18N: CE=Common Era, for Julian years > 0. See http://en.wikipedia.org/wiki/Common_Era */
+        return I18N::translate('%s&nbsp;CE', I18N::digits($this->y));
     }
 
     /**
@@ -107,12 +109,12 @@ class JulianDate extends CalendarDate
     {
         if ($this->y < 0) {
             return sprintf('%04d B.C.', -$this->y);
-        } else {
-            if ($this->new_old_style) {
-                return sprintf('%04d/%02d', $this->y - 1, $this->y % 100);
-            } else {
-                return sprintf('%04d', $this->y);
-            }
         }
+
+        if ($this->new_old_style) {
+            return sprintf('%04d/%02d', $this->y - 1, $this->y % 100);
+        }
+
+        return sprintf('%04d', $this->y);
     }
 }

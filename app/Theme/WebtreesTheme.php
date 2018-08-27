@@ -49,9 +49,9 @@ class WebtreesTheme extends AbstractTheme implements ThemeInterface
 
         if (array_key_exists($parameter_name, $parameters)) {
             return $parameters[$parameter_name];
-        } else {
-            return parent::parameter($parameter_name);
         }
+
+        return parent::parameter($parameter_name);
     }
 
     /**

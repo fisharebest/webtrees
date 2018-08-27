@@ -314,7 +314,9 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
 
         if ($individual === null) {
             throw new IndividualNotFoundException();
-        } elseif (!$individual->canShow()) {
+        }
+
+        if (!$individual->canShow()) {
             throw new IndividualAccessDeniedException();
         }
 

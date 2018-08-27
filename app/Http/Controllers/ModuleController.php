@@ -64,11 +64,11 @@ class ModuleController extends AbstractBaseController
 
             if ($response instanceof Response) {
                 return $response;
-            } else {
-                return $this->viewResponse($response->name, $response->data);
             }
-        } else {
-            throw new NotFoundHttpException('Module not found');
+
+            return $this->viewResponse($response->name, $response->data);
         }
+
+        throw new NotFoundHttpException('Module not found');
     }
 }

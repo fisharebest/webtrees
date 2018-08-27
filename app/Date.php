@@ -385,9 +385,9 @@ class Date
 
         if (strip_tags($tmp) === '') {
             return '';
-        } else {
-            return '<span class="date">' . $tmp . '</span>';
         }
+
+        return '<span class="date">' . $tmp . '</span>';
     }
 
     /**
@@ -413,9 +413,9 @@ class Date
     {
         if ($this->date2 === null) {
             return $this->date1;
-        } else {
-            return $this->date2;
         }
+
+        return $this->date2;
     }
 
     /**
@@ -507,29 +507,29 @@ class Date
                 // Years - integer only (for statistics, rather than for display)
                 if ($jd && $d1->minimumJulianDay() && $d1->minimumJulianDay() <= $jd) {
                     return $d1->minimumDate()->getAge(false, $jd, false);
-                } else {
-                    return -1;
                 }
+
+                return -1;
             case 1:
                 // Days - integer only (for sorting, rather than for display)
                 if ($jd && $d1->minimumJulianDay()) {
                     return $jd - $d1->minimumJulianDay();
-                } else {
-                    return -1;
                 }
+
+                return -1;
             case 2:
                 // Just years, in local digits, with warning for negative/
                 if ($jd && $d1->minimumJulianDay()) {
                     if ($d1->minimumJulianDay() > $jd) {
                         return '<i class="icon-warning"></i>';
-                    } else {
-                        $years = (int) $d1->minimumDate()->getAge(false, $jd, false);
-
-                        return I18N::number($years);
                     }
-                } else {
-                    return '';
+
+                    $years = (int) $d1->minimumDate()->getAge(false, $jd, false);
+
+                    return I18N::number($years);
                 }
+
+                return '';
             default:
                 throw new \InvalidArgumentException('format: ' . $format);
         }
@@ -548,16 +548,18 @@ class Date
     {
         if ($d2 === null) {
             return $d1->date1->getAge(true, WT_CLIENT_JD, true);
-        } else {
-            // If dates overlap, then can’t calculate age.
-            if (self::compare($d1, $d2)) {
-                return $d1->date1->getAge(true, $d2->minimumJulianDay(), true);
-            } elseif (self::compare($d1, $d2) == 0 && $d1->minimumJulianDay() == $d2->minimumJulianDay()) {
-                return '0d';
-            } else {
-                return '';
-            }
         }
+
+        // If dates overlap, then can’t calculate age.
+        if (self::compare($d1, $d2)) {
+            return $d1->date1->getAge(true, $d2->minimumJulianDay(), true);
+        }
+
+        if (self::compare($d1, $d2) == 0 && $d1->minimumJulianDay() == $d2->minimumJulianDay()) {
+            return '0d';
+        }
+
+        return '';
     }
 
     /**
@@ -606,15 +608,21 @@ class Date
         }
         if ($amax < $bmin) {
             return -1;
-        } elseif ($amin > $bmax && $bmax > 0) {
-            return 1;
-        } elseif ($amin < $bmin && $amax <= $bmax) {
-            return -1;
-        } elseif ($amin > $bmin && $amax >= $bmax && $bmax > 0) {
-            return 1;
-        } else {
-            return 0;
         }
+
+        if ($amin > $bmax && $bmax > 0) {
+            return 1;
+        }
+
+        if ($amin < $bmin && $amax <= $bmax) {
+            return -1;
+        }
+
+        if ($amin > $bmin && $amax >= $bmax && $bmax > 0) {
+            return 1;
+        }
+
+        return 0;
     }
 
     /**
@@ -645,8 +653,8 @@ class Date
             list($year) = $gregorian_calendar->jdToYmd($this->julianDay());
 
             return $year;
-        } else {
-            return 0;
         }
+
+        return 0;
     }
 }

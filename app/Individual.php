@@ -54,9 +54,9 @@ class Individual extends GedcomRecord
 
         if ($record instanceof Individual) {
             return $record;
-        } else {
-            return null;
         }
+
+        return null;
     }
 
     /**
@@ -760,9 +760,9 @@ class Individual extends GedcomRecord
     {
         if (preg_match('/\n1 SEX ([MF])/', $this->gedcom . $this->pending, $match)) {
             return $match[1];
-        } else {
-            return 'U';
         }
+
+        return 'U';
     }
 
     /**
@@ -846,9 +846,9 @@ class Individual extends GedcomRecord
         $family = end($tmp);
         if ($family) {
             return $family->getSpouse($this);
-        } else {
-            return null;
         }
+
+        return null;
     }
 
     /**
@@ -860,16 +860,16 @@ class Individual extends GedcomRecord
     {
         if (preg_match('/\n1 NCHI (\d+)(?:\n|$)/', $this->getGedcom(), $match)) {
             return $match[1];
-        } else {
-            $children = [];
-            foreach ($this->getSpouseFamilies() as $fam) {
-                foreach ($fam->getChildren() as $child) {
-                    $children[$child->getXref()] = true;
-                }
-            }
-
-            return count($children);
         }
+
+        $children = [];
+        foreach ($this->getSpouseFamilies() as $fam) {
+            foreach ($fam->getChildren() as $child) {
+                $children[$child->getXref()] = true;
+            }
+        }
+
+        return count($children);
     }
 
     /**
@@ -1013,10 +1013,10 @@ class Individual extends GedcomRecord
         if (preg_match('/\n1 FAMC @' . $family->getXref() . '@(?:\n[2-9].*)*\n2 PEDI (.+)/', $this->getGedcom(), $match)) {
             // A specified pedigree
             return GedcomCodePedi::getChildFamilyLabel($match[1]);
-        } else {
-            // Default (birth) pedigree
-            return GedcomCodePedi::getChildFamilyLabel('');
         }
+
+        // Default (birth) pedigree
+        return GedcomCodePedi::getChildFamilyLabel('');
     }
 
     /**
@@ -1040,20 +1040,20 @@ class Individual extends GedcomRecord
                                 if ($step_family->getSpouse($step_parent)) {
                                     /* I18N: A step-family. %s is an individual’s name */
                                     return I18N::translate('Father’s family with %s', $step_family->getSpouse($step_parent)->getFullName());
-                                } else {
-                                    /* I18N: A step-family. */
-                                    return I18N::translate('Father’s family with an unknown individual');
                                 }
-                            } else {
-                                // Mother’s family with someone else
-                                if ($step_family->getSpouse($step_parent)) {
-                                    /* I18N: A step-family. %s is an individual’s name */
-                                    return I18N::translate('Mother’s family with %s', $step_family->getSpouse($step_parent)->getFullName());
-                                } else {
-                                    /* I18N: A step-family. */
-                                    return I18N::translate('Mother’s family with an unknown individual');
-                                }
+
+                                /* I18N: A step-family. */
+                                return I18N::translate('Father’s family with an unknown individual');
                             }
+
+                            // Mother’s family with someone else
+                            if ($step_family->getSpouse($step_parent)) {
+                                /* I18N: A step-family. %s is an individual’s name */
+                                return I18N::translate('Mother’s family with %s', $step_family->getSpouse($step_parent)->getFullName());
+                            }
+
+                            /* I18N: A step-family. */
+                            return I18N::translate('Mother’s family with an unknown individual');
                         }
                     }
                 }
@@ -1080,9 +1080,9 @@ class Individual extends GedcomRecord
         if ($spouse) {
             /* I18N: %s is the spouse name */
             return I18N::translate('Family with %s', $spouse->getFullName());
-        } else {
-            return $family->getFullName();
         }
+
+        return $family->getFullName();
     }
 
     /**

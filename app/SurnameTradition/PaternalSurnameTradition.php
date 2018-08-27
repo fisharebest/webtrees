@@ -76,10 +76,10 @@ class PaternalSurnameTradition extends PatrilinealSurnameTradition implements Su
                 'NAME'   => '//',
                 '_MARNM' => $match['NAME'],
             ];
-        } else {
-            return [
-                'NAME' => '//',
-            ];
         }
+
+        return [
+            'NAME' => '//',
+        ];
     }
 }

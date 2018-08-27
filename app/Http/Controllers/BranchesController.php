@@ -325,10 +325,10 @@ class BranchesController extends AbstractBaseController
             }
 
             return '<li>' . $fam_html . '</li>';
-        } else {
-            // No spouses - just show the individual
-            return '<li>' . $indi_html . '</li>';
         }
+
+        // No spouses - just show the individual
+        return '<li>' . $indi_html . '</li>';
     }
 
     /**

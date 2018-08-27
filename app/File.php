@@ -70,19 +70,19 @@ class File
     {
         if (is_dir($path)) {
             return true;
-        } else {
-            if (dirname($path) && !is_dir(dirname($path))) {
-                self::mkdir(dirname($path));
-            }
-            try {
-                mkdir($path);
+        }
 
-                return true;
-            } catch (Throwable $ex) {
-                DebugBar::addThrowable($ex);
+        if (dirname($path) && !is_dir(dirname($path))) {
+            self::mkdir(dirname($path));
+        }
+        try {
+            mkdir($path);
 
-                return false;
-            }
+            return true;
+        } catch (Throwable $ex) {
+            DebugBar::addThrowable($ex);
+
+            return false;
         }
     }
 }

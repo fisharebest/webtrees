@@ -328,9 +328,9 @@ class Stats
             $date = new Date("{$row->d_day} {$row->d_month} {$row->d_year}");
 
             return $date->display();
-        } else {
-            return $this->gedcomDate();
         }
+
+        return $this->gedcomDate();
     }
 
     /**
@@ -468,18 +468,18 @@ class Stats
         $tot_indi = $this->totalIndividualsQuery();
         if ($tot_indi == 0) {
             return '';
-        } else {
-            $tot_sindi_per = round($this->totalIndisWithSourcesQuery() / $tot_indi, 3);
-            $chd           = $this->arrayToExtendedEncoding([
-                100 - 100 * $tot_sindi_per,
-                100 * $tot_sindi_per,
-            ]);
-            $chl           = I18N::translate('Without sources') . ' - ' . I18N::percentage(1 - $tot_sindi_per, 1) . '|' .
-                I18N::translate('With sources') . ' - ' . I18N::percentage($tot_sindi_per, 1);
-            $chart_title   = I18N::translate('Individuals with sources');
-
-            return '<img src="https://chart.googleapis.com/chart?cht=p3&amp;chd=e:' . $chd . '&amp;chs=' . $size . '&amp;chco=' . $color_from . ',' . $color_to . '&amp;chf=bg,s,ffffff00&amp;chl=' . rawurlencode($chl) . '" width="' . $sizes[0] . '" height="' . $sizes[1] . '" alt="' . $chart_title . '" title="' . $chart_title . '">';
         }
+
+        $tot_sindi_per = round($this->totalIndisWithSourcesQuery() / $tot_indi, 3);
+        $chd           = $this->arrayToExtendedEncoding([
+            100 - 100 * $tot_sindi_per,
+            100 * $tot_sindi_per,
+        ]);
+        $chl           = I18N::translate('Without sources') . ' - ' . I18N::percentage(1 - $tot_sindi_per, 1) . '|' .
+                     I18N::translate('With sources') . ' - ' . I18N::percentage($tot_sindi_per, 1);
+        $chart_title   = I18N::translate('Individuals with sources');
+
+        return '<img src="https://chart.googleapis.com/chart?cht=p3&amp;chd=e:' . $chd . '&amp;chs=' . $size . '&amp;chco=' . $color_from . ',' . $color_to . '&amp;chf=bg,s,ffffff00&amp;chl=' . rawurlencode($chl) . '" width="' . $sizes[0] . '" height="' . $sizes[1] . '" alt="' . $chart_title . '" title="' . $chart_title . '">';
     }
 
     /**
@@ -575,18 +575,18 @@ class Stats
         $tot_fam = $this->totalFamiliesQuery();
         if ($tot_fam == 0) {
             return '';
-        } else {
-            $tot_sfam_per = round($this->totalFamsWithSourcesQuery() / $tot_fam, 3);
-            $chd          = $this->arrayToExtendedEncoding([
-                100 - 100 * $tot_sfam_per,
-                100 * $tot_sfam_per,
-            ]);
-            $chl          = I18N::translate('Without sources') . ' - ' . I18N::percentage(1 - $tot_sfam_per, 1) . '|' .
-                I18N::translate('With sources') . ' - ' . I18N::percentage($tot_sfam_per, 1);
-            $chart_title  = I18N::translate('Families with sources');
-
-            return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . $chart_title . '" title="' . $chart_title . '" />';
         }
+
+        $tot_sfam_per = round($this->totalFamsWithSourcesQuery() / $tot_fam, 3);
+        $chd          = $this->arrayToExtendedEncoding([
+            100 - 100 * $tot_sfam_per,
+            100 * $tot_sfam_per,
+        ]);
+        $chl          = I18N::translate('Without sources') . ' - ' . I18N::percentage(1 - $tot_sfam_per, 1) . '|' .
+                    I18N::translate('With sources') . ' - ' . I18N::percentage($tot_sfam_per, 1);
+        $chart_title  = I18N::translate('Families with sources');
+
+        return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . $chart_title . '" title="' . $chart_title . '" />';
     }
 
     /**
@@ -1040,7 +1040,9 @@ class Stats
         $per_u = $this->totalSexUnknownPercentage();
         if ($tot == 0) {
             return '';
-        } elseif ($tot_u > 0) {
+        }
+
+        if ($tot_u > 0) {
             $chd         = $this->arrayToExtendedEncoding([
                 4095 * $tot_u / $tot,
                 4095 * $tot_f / $tot,
@@ -1056,19 +1058,19 @@ class Stats
                 I18N::translateContext('unknown people', 'Unknown') . ' - ' . $per_u;
 
             return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_unknown},{$color_female},{$color_male}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . $chart_title . '" title="' . $chart_title . '" />';
-        } else {
-            $chd         = $this->arrayToExtendedEncoding([
-                4095 * $tot_f / $tot,
-                4095 * $tot_m / $tot,
-            ]);
-            $chl         =
-                I18N::translate('Females') . ' - ' . $per_f . '|' .
-                I18N::translate('Males') . ' - ' . $per_m;
-            $chart_title = I18N::translate('Males') . ' - ' . $per_m . I18N::$list_separator .
-                I18N::translate('Females') . ' - ' . $per_f;
-
-            return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_female},{$color_male}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . $chart_title . '" title="' . $chart_title . '" />';
         }
+
+        $chd         = $this->arrayToExtendedEncoding([
+            4095 * $tot_f / $tot,
+            4095 * $tot_m / $tot,
+        ]);
+        $chl         =
+            I18N::translate('Females') . ' - ' . $per_f . '|' .
+            I18N::translate('Males') . ' - ' . $per_m;
+        $chart_title = I18N::translate('Males') . ' - ' . $per_m . I18N::$list_separator .
+                   I18N::translate('Females') . ' - ' . $per_f;
+
+        return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_female},{$color_male}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . $chart_title . '" title="' . $chart_title . '" />';
     }
 
     /**
@@ -1181,19 +1183,19 @@ class Stats
         $per_d = $this->totalDeceasedPercentage();
         if ($tot == 0) {
             return '';
-        } else {
-            $chd         = $this->arrayToExtendedEncoding([
-                4095 * $tot_l / $tot,
-                4095 * $tot_d / $tot,
-            ]);
-            $chl         =
-                I18N::translate('Living') . ' - ' . $per_l . '|' .
-                I18N::translate('Dead') . ' - ' . $per_d . '|';
-            $chart_title = I18N::translate('Living') . ' - ' . $per_l . I18N::$list_separator .
-                I18N::translate('Dead') . ' - ' . $per_d;
-
-            return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_living},{$color_dead}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . $chart_title . '" title="' . $chart_title . '" />';
         }
+
+        $chd         = $this->arrayToExtendedEncoding([
+            4095 * $tot_l / $tot,
+            4095 * $tot_d / $tot,
+        ]);
+        $chl         =
+            I18N::translate('Living') . ' - ' . $per_l . '|' .
+            I18N::translate('Dead') . ' - ' . $per_d . '|';
+        $chart_title = I18N::translate('Living') . ' - ' . $per_l . I18N::$list_separator .
+                   I18N::translate('Dead') . ' - ' . $per_d;
+
+        return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_living},{$color_dead}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . $chart_title . '" title="' . $chart_title . '" />';
     }
 
     /**
@@ -1667,7 +1669,9 @@ class Stats
             }
 
             return $placelist;
-        } elseif ($parent > 0) {
+        }
+
+        if ($parent > 0) {
             // used by placehierarchy googlemap module
             if ($what == 'INDI') {
                 $join = " JOIN `##individuals` ON pl_file = i_file AND pl_gid = i_id";
@@ -1691,30 +1695,30 @@ class Stats
             );
 
             return $rows;
-        } else {
-            if ($what == 'INDI') {
-                $join = " JOIN `##individuals` ON pl_file = i_file AND pl_gid = i_id";
-            } elseif ($what == 'FAM') {
-                $join = " JOIN `##families` ON pl_file = f_file AND pl_gid = f_id";
-            } else {
-                $join = "";
-            }
-            $rows = $this->runSql(
-                " SELECT" .
-                " p_place AS country," .
-                " COUNT(*) AS tot" .
-                " FROM" .
-                " `##places`" .
-                " JOIN `##placelinks` ON pl_file=p_file AND p_id=pl_p_id" .
-                $join .
-                " WHERE" .
-                " p_file={$this->tree->getTreeId()}" .
-                " AND p_parent_id='0'" .
-                " GROUP BY country ORDER BY tot DESC, country ASC"
-            );
-
-            return $rows;
         }
+
+        if ($what == 'INDI') {
+            $join = " JOIN `##individuals` ON pl_file = i_file AND pl_gid = i_id";
+        } elseif ($what == 'FAM') {
+            $join = " JOIN `##families` ON pl_file = f_file AND pl_gid = f_id";
+        } else {
+            $join = "";
+        }
+        $rows = $this->runSql(
+            " SELECT" .
+            " p_place AS country," .
+            " COUNT(*) AS tot" .
+            " FROM" .
+            " `##places`" .
+            " JOIN `##placelinks` ON pl_file=p_file AND p_id=pl_p_id" .
+            $join .
+            " WHERE" .
+            " p_file={$this->tree->getTreeId()}" .
+            " AND p_parent_id='0'" .
+            " GROUP BY country ORDER BY tot DESC, country ASC"
+        );
+
+        return $rows;
     }
 
     /**
@@ -2123,9 +2127,9 @@ class Stats
             $chl = rawurlencode(substr($centuries, 0, -1));
 
             return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . I18N::translate('Births by century') . '" title="' . I18N::translate('Births by century') . '" />';
-        } else {
-            return $rows;
         }
+
+        return $rows;
     }
 
     /**
@@ -2704,9 +2708,9 @@ class Stats
             }
 
             return FunctionsDate::getAgeAtEvent($age);
-        } else {
-            return I18N::number($age / 365.25);
         }
+
+        return I18N::number($age / 365.25);
     }
 
     /**
@@ -2815,47 +2819,47 @@ class Stats
             }
 
             return '<img src="' . "https://chart.googleapis.com/chart?cht=bvg&amp;chs={$sizes[0]}x{$sizes[1]}&amp;chm=D,FF0000,2,0,3,1|N*f1*,000000,0,-1,11,1|N*f1*,000000,1,-1,11,1&amp;chf=bg,s,ffffff00|c,s,ffffff00&amp;chtt=" . rawurlencode($chtt) . "&amp;chd={$chd}&amp;chco=0000FF,FFA0CB,FF0000&amp;chbh=20,3&amp;chxt=x,x,y,y&amp;chxl=" . rawurlencode($chxl) . '&amp;chdl=' . rawurlencode(I18N::translate('Males') . '|' . I18N::translate('Females') . '|' . I18N::translate('Average age at death')) . "\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . I18N::translate('Average age related to death century') . '" title="' . I18N::translate('Average age related to death century') . '" />';
-        } else {
-            $sex_search = '';
-            $years      = '';
-            if ($sex == 'F') {
-                $sex_search = " AND i_sex='F'";
-            } elseif ($sex == 'M') {
-                $sex_search = " AND i_sex='M'";
-            }
-            if ($year1 >= 0 && $year2 >= 0) {
-                if ($related == 'BIRT') {
-                    $years = " AND birth.d_year BETWEEN '{$year1}' AND '{$year2}'";
-                } elseif ($related == 'DEAT') {
-                    $years = " AND death.d_year BETWEEN '{$year1}' AND '{$year2}'";
-                }
-            }
-            $rows = $this->runSql(
-                "SELECT" .
-                " death.d_julianday2-birth.d_julianday1 AS age" .
-                " FROM" .
-                " `##dates` AS death," .
-                " `##dates` AS birth," .
-                " `##individuals` AS indi" .
-                " WHERE" .
-                " indi.i_id=birth.d_gid AND" .
-                " birth.d_gid=death.d_gid AND" .
-                " death.d_file={$this->tree->getTreeId()} AND" .
-                " birth.d_file=death.d_file AND" .
-                " birth.d_file=indi.i_file AND" .
-                " birth.d_fact='BIRT' AND" .
-                " death.d_fact='DEAT' AND" .
-                " birth.d_julianday1 <> 0 AND" .
-                " birth.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND" .
-                " death.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND" .
-                " death.d_julianday1>birth.d_julianday2" .
-                $years .
-                $sex_search .
-                " ORDER BY age DESC"
-            );
-
-            return $rows;
         }
+
+        $sex_search = '';
+        $years      = '';
+        if ($sex == 'F') {
+            $sex_search = " AND i_sex='F'";
+        } elseif ($sex == 'M') {
+            $sex_search = " AND i_sex='M'";
+        }
+        if ($year1 >= 0 && $year2 >= 0) {
+            if ($related == 'BIRT') {
+                $years = " AND birth.d_year BETWEEN '{$year1}' AND '{$year2}'";
+            } elseif ($related == 'DEAT') {
+                $years = " AND death.d_year BETWEEN '{$year1}' AND '{$year2}'";
+            }
+        }
+        $rows = $this->runSql(
+            "SELECT" .
+            " death.d_julianday2-birth.d_julianday1 AS age" .
+            " FROM" .
+            " `##dates` AS death," .
+            " `##dates` AS birth," .
+            " `##individuals` AS indi" .
+            " WHERE" .
+            " indi.i_id=birth.d_gid AND" .
+            " birth.d_gid=death.d_gid AND" .
+            " death.d_file={$this->tree->getTreeId()} AND" .
+            " birth.d_file=death.d_file AND" .
+            " birth.d_file=indi.i_file AND" .
+            " birth.d_fact='BIRT' AND" .
+            " death.d_fact='DEAT' AND" .
+            " birth.d_julianday1 <> 0 AND" .
+            " birth.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND" .
+            " death.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND" .
+            " death.d_julianday1>birth.d_julianday2" .
+            $years .
+            $sex_search .
+            " ORDER BY age DESC"
+        );
+
+        return $rows;
     }
 
     /**
@@ -4228,42 +4232,42 @@ class Stats
             }
 
             return '<img src="' . "https://chart.googleapis.com/chart?cht=bvg&amp;chs={$sizes[0]}x{$sizes[1]}&amp;chm=D,FF0000,2,0,3,1|{$chmm}{$chmf}&amp;chf=bg,s,ffffff00|c,s,ffffff00&amp;chtt=" . rawurlencode($chtt) . "&amp;chd={$chd}&amp;chco=0000FF,FFA0CB,FF0000&amp;chbh=20,3&amp;chxt=x,x,y,y&amp;chxl=" . rawurlencode($chxl) . '&amp;chdl=' . rawurlencode(I18N::translate('Males') . '|' . I18N::translate('Females') . '|' . I18N::translate('Average age')) . "\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . I18N::translate('Average age in century of marriage') . '" title="' . I18N::translate('Average age in century of marriage') . '" />';
-        } else {
-            if ($year1 >= 0 && $year2 >= 0) {
-                $years = " married.d_year BETWEEN {$year1} AND {$year2} AND ";
-            } else {
-                $years = '';
-            }
-            $rows = $this->runSql(
-                "SELECT " .
-                " fam.f_id, " .
-                " birth.d_gid, " .
-                " married.d_julianday2-birth.d_julianday1 AS age " .
-                "FROM `##dates` AS married " .
-                "JOIN `##families` AS fam ON (married.d_gid=fam.f_id AND married.d_file=fam.f_file) " .
-                "JOIN `##dates` AS birth ON (birth.d_gid=fam.f_husb AND birth.d_file=fam.f_file) " .
-                "WHERE " .
-                " '{$sex}' IN ('M', 'BOTH') AND {$years} " .
-                " married.d_file={$this->tree->getTreeId()} AND married.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND married.d_fact='MARR' AND " .
-                " birth.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND birth.d_fact='BIRT' AND " .
-                " married.d_julianday1>birth.d_julianday1 AND birth.d_julianday1<>0 " .
-                "UNION ALL " .
-                "SELECT " .
-                " fam.f_id, " .
-                " birth.d_gid, " .
-                " married.d_julianday2-birth.d_julianday1 AS age " .
-                "FROM `##dates` AS married " .
-                "JOIN `##families` AS fam ON (married.d_gid=fam.f_id AND married.d_file=fam.f_file) " .
-                "JOIN `##dates` AS birth ON (birth.d_gid=fam.f_wife AND birth.d_file=fam.f_file) " .
-                "WHERE " .
-                " '{$sex}' IN ('F', 'BOTH') AND {$years} " .
-                " married.d_file={$this->tree->getTreeId()} AND married.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND married.d_fact='MARR' AND " .
-                " birth.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND birth.d_fact='BIRT' AND " .
-                " married.d_julianday1>birth.d_julianday1 AND birth.d_julianday1<>0 "
-            );
-
-            return $rows;
         }
+
+        if ($year1 >= 0 && $year2 >= 0) {
+            $years = " married.d_year BETWEEN {$year1} AND {$year2} AND ";
+        } else {
+            $years = '';
+        }
+        $rows = $this->runSql(
+            "SELECT " .
+            " fam.f_id, " .
+            " birth.d_gid, " .
+            " married.d_julianday2-birth.d_julianday1 AS age " .
+            "FROM `##dates` AS married " .
+            "JOIN `##families` AS fam ON (married.d_gid=fam.f_id AND married.d_file=fam.f_file) " .
+            "JOIN `##dates` AS birth ON (birth.d_gid=fam.f_husb AND birth.d_file=fam.f_file) " .
+            "WHERE " .
+            " '{$sex}' IN ('M', 'BOTH') AND {$years} " .
+            " married.d_file={$this->tree->getTreeId()} AND married.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND married.d_fact='MARR' AND " .
+            " birth.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND birth.d_fact='BIRT' AND " .
+            " married.d_julianday1>birth.d_julianday1 AND birth.d_julianday1<>0 " .
+            "UNION ALL " .
+            "SELECT " .
+            " fam.f_id, " .
+            " birth.d_gid, " .
+            " married.d_julianday2-birth.d_julianday1 AS age " .
+            "FROM `##dates` AS married " .
+            "JOIN `##families` AS fam ON (married.d_gid=fam.f_id AND married.d_file=fam.f_file) " .
+            "JOIN `##dates` AS birth ON (birth.d_gid=fam.f_wife AND birth.d_file=fam.f_file) " .
+            "WHERE " .
+            " '{$sex}' IN ('F', 'BOTH') AND {$years} " .
+            " married.d_file={$this->tree->getTreeId()} AND married.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND married.d_fact='MARR' AND " .
+            " birth.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND birth.d_fact='BIRT' AND " .
+            " married.d_julianday1>birth.d_julianday1 AND birth.d_julianday1<>0 "
+        );
+
+        return $rows;
     }
 
     /**
@@ -4924,9 +4928,8 @@ class Stats
                     $return .= '<br><a href="' . e($family->url()) . '">[' . I18N::translate('View this family') . ']</a>';
 
                     return $return;
-                } else {
-                    return I18N::translate('This information is private and cannot be shown.');
                 }
+                return I18N::translate('This information is private and cannot be shown.');
             }
         }
         if ($type === 'list') {
@@ -5310,46 +5313,46 @@ class Stats
             }
 
             return "<img src=\"https://chart.googleapis.com/chart?cht=bvg&amp;chs={$sizes[0]}x{$sizes[1]}&amp;chf=bg,s,ffffff00|c,s,ffffff00&amp;chm=D,FF0000,0,0,3,1|{$chm}&amp;chd=e:{$chd}&amp;chco=0000FF&amp;chbh=30,3&amp;chxt=x,x,y,y&amp;chxl=" . rawurlencode($chxl) . "\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . I18N::translate('Average number of children per family') . '" title="' . I18N::translate('Average number of children per family') . '" />';
-        } else {
-            if ($sex == 'M') {
-                $sql =
-                    "SELECT num, COUNT(*) AS total FROM " .
-                    "(SELECT count(i_sex) AS num FROM `##link` " .
-                    "LEFT OUTER JOIN `##individuals` " .
-                    "ON l_from=i_id AND l_file=i_file AND i_sex='M' AND l_type='FAMC' " .
-                    "JOIN `##families` ON f_file=l_file AND f_id=l_to WHERE f_file={$this->tree->getTreeId()} GROUP BY l_to" .
-                    ") boys" .
-                    " GROUP BY num" .
-                    " ORDER BY num";
-            } elseif ($sex == 'F') {
-                $sql =
-                    "SELECT num, COUNT(*) AS total FROM " .
-                    "(SELECT count(i_sex) AS num FROM `##link` " .
-                    "LEFT OUTER JOIN `##individuals` " .
-                    "ON l_from=i_id AND l_file=i_file AND i_sex='F' AND l_type='FAMC' " .
-                    "JOIN `##families` ON f_file=l_file AND f_id=l_to WHERE f_file={$this->tree->getTreeId()} GROUP BY l_to" .
-                    ") girls" .
-                    " GROUP BY num" .
-                    " ORDER BY num";
-            } else {
-                $sql = "SELECT f_numchil, COUNT(*) AS total FROM `##families` ";
-                if ($year1 >= 0 && $year2 >= 0) {
-                    $sql .=
-                        "AS fam LEFT JOIN `##dates` AS married ON married.d_file = {$this->tree->getTreeId()}"
-                        . " WHERE"
-                        . " married.d_gid = fam.f_id AND"
-                        . " fam.f_file = {$this->tree->getTreeId()} AND"
-                        . " married.d_fact = 'MARR' AND"
-                        . " married.d_year BETWEEN '{$year1}' AND '{$year2}'";
-                } else {
-                    $sql .= "WHERE f_file={$this->tree->getTreeId()}";
-                }
-                $sql .= ' GROUP BY f_numchil';
-            }
-            $rows = $this->runSql($sql);
-
-            return $rows;
         }
+
+        if ($sex == 'M') {
+            $sql =
+                "SELECT num, COUNT(*) AS total FROM " .
+                "(SELECT count(i_sex) AS num FROM `##link` " .
+                "LEFT OUTER JOIN `##individuals` " .
+                "ON l_from=i_id AND l_file=i_file AND i_sex='M' AND l_type='FAMC' " .
+                "JOIN `##families` ON f_file=l_file AND f_id=l_to WHERE f_file={$this->tree->getTreeId()} GROUP BY l_to" .
+                ") boys" .
+                " GROUP BY num" .
+                " ORDER BY num";
+        } elseif ($sex == 'F') {
+            $sql =
+                "SELECT num, COUNT(*) AS total FROM " .
+                "(SELECT count(i_sex) AS num FROM `##link` " .
+                "LEFT OUTER JOIN `##individuals` " .
+                "ON l_from=i_id AND l_file=i_file AND i_sex='F' AND l_type='FAMC' " .
+                "JOIN `##families` ON f_file=l_file AND f_id=l_to WHERE f_file={$this->tree->getTreeId()} GROUP BY l_to" .
+                ") girls" .
+                " GROUP BY num" .
+                " ORDER BY num";
+        } else {
+            $sql = "SELECT f_numchil, COUNT(*) AS total FROM `##families` ";
+            if ($year1 >= 0 && $year2 >= 0) {
+                $sql .=
+                    "AS fam LEFT JOIN `##dates` AS married ON married.d_file = {$this->tree->getTreeId()}"
+                    . " WHERE"
+                    . " married.d_gid = fam.f_id AND"
+                    . " fam.f_file = {$this->tree->getTreeId()} AND"
+                    . " married.d_fact = 'MARR' AND"
+                    . " married.d_year BETWEEN '{$year1}' AND '{$year2}'";
+            } else {
+                $sql .= "WHERE f_file={$this->tree->getTreeId()}";
+            }
+            $sql .= ' GROUP BY f_numchil';
+        }
+        $rows = $this->runSql($sql);
+
+        return $rows;
     }
 
     /**
@@ -6417,11 +6420,13 @@ class Stats
         }
         if ($type == 'anon') {
             return $anon;
-        } elseif ($type == 'visible') {
-            return $visible;
-        } else {
-            return $visible + $anon;
         }
+
+        if ($type == 'visible') {
+            return $visible;
+        }
+
+        return $visible + $anon;
     }
 
     /**
@@ -6495,12 +6500,14 @@ class Stats
     {
         if (Auth::check()) {
             return e(Auth::user()->getUserName());
-        } elseif (isset($params[0]) && $params[0] != '') {
+        }
+
+        if (isset($params[0]) && $params[0] != '') {
             // if #username:visitor# was specified, then "visitor" will be returned when the user is not logged in
             return e($params[0]);
-        } else {
-            return '';
         }
+
+        return '';
     }
 
     /**
@@ -6648,9 +6655,9 @@ class Stats
         $user    = User::find($user_id);
         if ($user) {
             return Theme::theme()->contactLink($user);
-        } else {
-            return $user_id;
         }
+
+        return $user_id;
     }
 
     /**
@@ -6664,9 +6671,9 @@ class Stats
         $user    = User::find($user_id);
         if ($user) {
             return Theme::theme()->contactLink($user);
-        } else {
-            return $user_id;
         }
+
+        return $user_id;
     }
 
     /**
@@ -6934,9 +6941,9 @@ class Stats
             $block = new FamilyTreeFavoritesModule(WT_MODULES_DIR . 'gedcom_favorites');
 
             return $block->getBlock($this->tree, 0, false);
-        } else {
-            return '';
         }
+
+        return '';
     }
 
     /**
@@ -6950,9 +6957,9 @@ class Stats
             $block = new UserFavoritesModule(WT_MODULES_DIR . 'gedcom_favorites');
 
             return $block->getBlock($this->tree, 0, false);
-        } else {
-            return '';
         }
+
+        return '';
     }
 
     /**
@@ -6967,9 +6974,9 @@ class Stats
 
         if ($module !== null) {
             return count($module->getFavorites($this->tree));
-        } else {
-            return 0;
         }
+
+        return 0;
     }
 
     /**
@@ -6984,9 +6991,9 @@ class Stats
 
         if ($module !== null) {
             return count($module->getFavorites($this->tree, Auth::user()));
-        } else {
-            return 0;
         }
+
+        return 0;
     }
 
     /**

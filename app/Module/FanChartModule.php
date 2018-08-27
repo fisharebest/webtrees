@@ -80,9 +80,9 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface
                 'menu-chart-fanchart',
                 ['rel' => 'nofollow']
             );
-        } else {
-            return null;
         }
+
+        return null;
     }
 
     /**

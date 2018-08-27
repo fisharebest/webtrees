@@ -38,8 +38,8 @@ class CensusColumnMonthIfBornWithinYear extends AbstractCensusColumn implements 
         if ($birth_jd <= $census_jd && $birth_jd >= $census_jd - 365) {
             // Use the GEDCOM month, as we need this in English - for the US census
             return ucfirst(strtolower($individual->getBirthDate()->minimumDate()->format('%O')));
-        } else {
-            return '';
         }
+
+        return '';
     }
 }

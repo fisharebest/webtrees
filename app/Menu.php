@@ -84,16 +84,16 @@ class Menu
                 $submenus .
                 '</div>' .
                 '</li>';
-        } else {
-            $attrs = '';
-            foreach ($this->attrs as $key => $value) {
-                $attrs .= ' ' . $key . '="' . e($value) . '"';
-            }
-
-            $class = trim('nav-item ' . $this->class);
-
-            return '<li class="' . $class . '"><a class="nav-link" href="' . e($this->link) . '"' . $attrs . '>' . $this->label . '</a></li>';
         }
+
+        $attrs = '';
+        foreach ($this->attrs as $key => $value) {
+            $attrs .= ' ' . $key . '="' . e($value) . '"';
+        }
+
+        $class = trim('nav-item ' . $this->class);
+
+        return '<li class="' . $class . '"><a class="nav-link" href="' . e($this->link) . '"' . $attrs . '>' . $this->label . '</a></li>';
     }
 
     /**

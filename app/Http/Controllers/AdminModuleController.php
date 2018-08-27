@@ -57,11 +57,11 @@ class AdminModuleController extends AdminController
             $response = $module->$method($request);
             if ($response instanceof Response) {
                 return $response;
-            } else {
-                return $this->viewResponse($response->name, $response->data);
             }
-        } else {
-            throw new NotFoundHttpException('Module not found');
+
+            return $this->viewResponse($response->name, $response->data);
         }
+
+        throw new NotFoundHttpException('Module not found');
     }
 }

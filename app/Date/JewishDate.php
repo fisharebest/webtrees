@@ -64,9 +64,9 @@ class JewishDate extends CalendarDate
     {
         if (WT_LOCALE === 'he' || WT_LOCALE === 'yi') {
             return (new JewishCalendar())->numberToHebrewNumerals($this->d, true);
-        } else {
-            return parent::formatDay();
         }
+
+        return parent::formatDay();
     }
 
     /**
@@ -81,9 +81,9 @@ class JewishDate extends CalendarDate
     {
         if (WT_LOCALE === 'he' || WT_LOCALE === 'yi') {
             return (new JewishCalendar())->numberToHebrewNumerals($this->y, false);
-        } else {
-            return parent::formatLongYear();
         }
+
+        return parent::formatLongYear();
     }
 
     /**
@@ -95,9 +95,9 @@ class JewishDate extends CalendarDate
     {
         if (WT_LOCALE === 'he' || WT_LOCALE === 'yi') {
             return (new JewishCalendar())->numberToHebrewNumerals($this->y, true);
-        } else {
-            return parent::formatLongYear();
         }
+
+        return parent::formatLongYear();
     }
 
     /**
@@ -148,9 +148,9 @@ class JewishDate extends CalendarDate
 
         if ($month_number === 7 && $leap_year) {
             return $translated_month_names[-7];
-        } else {
-            return $translated_month_names[$month_number];
         }
+
+        return $translated_month_names[$month_number];
     }
 
     /**
@@ -201,9 +201,9 @@ class JewishDate extends CalendarDate
 
         if ($month_number === 7 && $leap_year) {
             return $translated_month_names[-7];
-        } else {
-            return $translated_month_names[$month_number];
         }
+
+        return $translated_month_names[$month_number];
     }
 
     /**
@@ -254,9 +254,9 @@ class JewishDate extends CalendarDate
 
         if ($month_number === 7 && $leap_year) {
             return $translated_month_names[-7];
-        } else {
-            return $translated_month_names[$month_number];
         }
+
+        return $translated_month_names[$month_number];
     }
 
     /**
@@ -307,9 +307,9 @@ class JewishDate extends CalendarDate
 
         if ($month_number === 7 && $leap_year) {
             return $translated_month_names[-7];
-        } else {
-            return $translated_month_names[$month_number];
         }
+
+        return $translated_month_names[$month_number];
     }
 
     /**
@@ -337,11 +337,11 @@ class JewishDate extends CalendarDate
                 $this->y,
                 8,
             ];
-        } else {
-            return [
-                $this->y + ($this->m == 13 ? 1 : 0),
-                ($this->m % 13) + 1,
-            ];
         }
+
+        return [
+            $this->y + ($this->m == 13 ? 1 : 0),
+            ($this->m % 13) + 1,
+        ];
     }
 }

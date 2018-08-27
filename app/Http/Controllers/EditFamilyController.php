@@ -182,9 +182,9 @@ class EditFamilyController extends AbstractEditController
 
         if ($request->get('goto') === 'new') {
             return new RedirectResponse($new_child->url());
-        } else {
-            return new RedirectResponse($family->url());
         }
+
+        return new RedirectResponse($family->url());
     }
 
     /**
@@ -282,9 +282,9 @@ class EditFamilyController extends AbstractEditController
 
         if ($request->get('goto') === 'new') {
             return new RedirectResponse($spouse->url());
-        } else {
-            return new RedirectResponse($family->url());
         }
+
+        return new RedirectResponse($family->url());
     }
 
     /**

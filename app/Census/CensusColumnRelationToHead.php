@@ -36,8 +36,8 @@ class CensusColumnRelationToHead extends AbstractCensusColumn implements CensusC
     {
         if ($head === null || $individual === $head) {
             return 'head';
-        } else {
-            return Functions::getCloseRelationshipName($head, $individual);
         }
+
+        return Functions::getCloseRelationshipName($head, $individual);
     }
 }

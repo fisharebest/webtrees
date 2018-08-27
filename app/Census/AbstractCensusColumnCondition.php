@@ -73,19 +73,21 @@ abstract class AbstractCensusColumnCondition extends AbstractCensusColumn implem
         if ($family === null || count($family->getFacts('MARR')) === 0) {
             if ($this->isChild($individual)) {
                 return $this->conditionChild($sex);
-            } else {
-                return $this->conditionSingle($sex);
             }
-        } elseif (count($family->getFacts('DIV')) > 0) {
-            return $this->conditionDivorced($sex);
-        } else {
-            $spouse = $family->getSpouse($individual);
-            if ($spouse instanceof Individual && $this->isDead($spouse)) {
-                return $this->conditionWidowed($sex);
-            } else {
-                return $this->conditionMarried($sex);
-            }
+
+            return $this->conditionSingle($sex);
         }
+
+        if (count($family->getFacts('DIV')) > 0) {
+            return $this->conditionDivorced($sex);
+        }
+
+        $spouse = $family->getSpouse($individual);
+        if ($spouse instanceof Individual && $this->isDead($spouse)) {
+            return $this->conditionWidowed($sex);
+        }
+
+        return $this->conditionMarried($sex);
     }
 
     /**
@@ -113,9 +115,9 @@ abstract class AbstractCensusColumnCondition extends AbstractCensusColumn implem
     {
         if ($sex === 'F') {
             return $this->girl;
-        } else {
-            return $this->boy;
         }
+
+        return $this->boy;
     }
 
     /**
@@ -129,9 +131,9 @@ abstract class AbstractCensusColumnCondition extends AbstractCensusColumn implem
     {
         if ($sex === 'F') {
             return $this->spinster;
-        } else {
-            return $this->bachelor;
         }
+
+        return $this->bachelor;
     }
 
     /**
@@ -145,9 +147,9 @@ abstract class AbstractCensusColumnCondition extends AbstractCensusColumn implem
     {
         if ($sex === 'F') {
             return $this->divorcee;
-        } else {
-            return $this->divorce;
         }
+
+        return $this->divorce;
     }
 
     /**
@@ -173,9 +175,9 @@ abstract class AbstractCensusColumnCondition extends AbstractCensusColumn implem
     {
         if ($sex === 'F') {
             return $this->widow;
-        } else {
-            return $this->widower;
         }
+
+        return $this->widower;
     }
 
     /**
@@ -189,8 +191,8 @@ abstract class AbstractCensusColumnCondition extends AbstractCensusColumn implem
     {
         if ($sex === 'F') {
             return $this->wife;
-        } else {
-            return $this->husband;
         }
+
+        return $this->husband;
     }
 }

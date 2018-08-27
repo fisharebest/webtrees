@@ -66,9 +66,9 @@ function route(string $route, array $parameters = [], bool $absolute = true): st
 
     if ($absolute) {
         return Html::url(WT_BASE_URL . 'index.php', $parameters);
-    } else {
-        return Html::url('index.php', $parameters);
     }
+
+    return Html::url('index.php', $parameters);
 }
 
 /**

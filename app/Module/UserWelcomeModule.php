@@ -94,9 +94,9 @@ class UserWelcomeModule extends AbstractModule implements ModuleBlockInterface
                 'title'      => $title,
                 'content'    => $content,
             ]);
-        } else {
-            return $content;
         }
+
+        return $content;
     }
 
     /** {@inheritdoc} */

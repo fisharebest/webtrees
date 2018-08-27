@@ -42,9 +42,9 @@ class Repository extends GedcomRecord
 
         if ($record instanceof Repository) {
             return $record;
-        } else {
-            return null;
         }
+
+        return null;
     }
 
     /**

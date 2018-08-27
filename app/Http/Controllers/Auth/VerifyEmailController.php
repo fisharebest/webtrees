@@ -99,10 +99,10 @@ class VerifyEmailController extends AbstractBaseController
             return $this->viewResponse('verify-success-page', [
                 'title' => $title,
             ]);
-        } else {
-            return $this->viewResponse('verify-failure-page', [
-                'title' => $title,
-            ]);
         }
+
+        return $this->viewResponse('verify-failure-page', [
+            'title' => $title,
+        ]);
     }
 }

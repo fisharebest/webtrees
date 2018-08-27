@@ -172,9 +172,9 @@ class Tree
 
         if (array_key_exists($setting_name, $this->preferences)) {
             return $this->preferences[$setting_name];
-        } else {
-            return $default;
         }
+
+        return $default;
     }
 
     /**
@@ -229,9 +229,9 @@ class Tree
 
         if (array_key_exists($setting_name, $this->user_preferences[$user->getUserId()])) {
             return $this->user_preferences[$user->getUserId()][$setting_name];
-        } else {
-            return $default;
         }
+
+        return $default;
     }
 
     /**

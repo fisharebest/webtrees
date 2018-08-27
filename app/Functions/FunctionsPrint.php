@@ -83,26 +83,28 @@ class FunctionsPrint
         if (strpos($text, "\n") === false) {
             // A one-line note? strip the block-level tags, so it displays inline
             return GedcomTag::getLabelValue($label, strip_tags($html, '<a><strong><em>'));
-        } elseif ($tree->getPreference('EXPAND_NOTES')) {
+        }
+
+        if ($tree->getPreference('EXPAND_NOTES')) {
             // A multi-line note, and we're expanding notes by default
             return GedcomTag::getLabelValue($label, $html);
-        } else {
-            // A multi-line note, with an expand/collapse option
-            $element_id = Uuid::uuid4()->toString();
-            // NOTE: class "note-details" is (currently) used only by some third-party themes
-            if ($note) {
-                $first_line = '<a href="' . e($note->url()) . '">' . $note->getFullName() . '</a>';
-            } else {
-                list($text) = explode("\n", strip_tags($html));
-                $first_line = strlen($text) > 100 ? mb_substr($text, 0, 100) . I18N::translate('…') : $text;
-            }
-
-            return
-                '<div class="fact_NOTE"><span class="label">' .
-                '<a href="#" onclick="expand_layer(\'' . $element_id . '\'); return false;"><i id="' . $element_id . '_img" class="icon-plus"></i></a> ' . GedcomTag::getLabel($label) . ':</span> ' . '<span id="' . $element_id . '-alt">' . $first_line . '</span>' .
-                '</div>' .
-                '<div class="note-details" id="' . $element_id . '" style="display:none">' . $html . '</div>';
         }
+
+        // A multi-line note, with an expand/collapse option
+        $element_id = Uuid::uuid4()->toString();
+        // NOTE: class "note-details" is (currently) used only by some third-party themes
+        if ($note) {
+            $first_line = '<a href="' . e($note->url()) . '">' . $note->getFullName() . '</a>';
+        } else {
+            list($text) = explode("\n", strip_tags($html));
+            $first_line = strlen($text) > 100 ? mb_substr($text, 0, 100) . I18N::translate('…') : $text;
+        }
+
+        return
+            '<div class="fact_NOTE"><span class="label">' .
+            '<a href="#" onclick="expand_layer(\'' . $element_id . '\'); return false;"><i id="' . $element_id . '_img" class="icon-plus"></i></a> ' . GedcomTag::getLabel($label) . ':</span> ' . '<span id="' . $element_id . '-alt">' . $first_line . '</span>' .
+            '</div>' .
+            '<div class="note-details" id="' . $element_id . '" style="display:none">' . $html . '</div>';
     }
 
     /**

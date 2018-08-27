@@ -349,9 +349,9 @@ class ReportTcpdf extends TCPDF
         $m = $this->getMargins();
         if ($this->getRTL()) {
             return ($this->getRemainingWidth() + $m['right']);
-        } else {
-            return ($this->getRemainingWidth() + $m['left']);
         }
+
+        return ($this->getRemainingWidth() + $m['left']);
     }
 
     /**

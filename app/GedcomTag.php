@@ -862,10 +862,10 @@ class GedcomTag
                 if ($record instanceof Repository) {
                     /* I18N: gedcom tag REPO:NAME */
                     return I18N::translateContext('Repository', 'Name');
-                } else {
-                    /* I18N: gedcom tag NAME */
-                    return I18N::translate('Name');
                 }
+
+                /* I18N: gedcom tag NAME */
+                return I18N::translate('Name');
             case 'NAME:FONE':
                 return I18N::translate('Phonetic name');
             case 'NAME:_HEB':

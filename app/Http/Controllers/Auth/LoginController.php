@@ -204,8 +204,8 @@ class LoginController extends AbstractBaseController
 
         if ($tree === null) {
             return new RedirectResponse(route('tree-page'));
-        } else {
-            return new RedirectResponse(route('tree-page', ['ged' => $tree->getName()]));
         }
+
+        return new RedirectResponse(route('tree-page', ['ged' => $tree->getName()]));
     }
 }

@@ -37,8 +37,8 @@ class CensusColumnFatherForeign extends AbstractCensusColumn implements CensusCo
 
         if ($father && $this->lastPartOfPlace($father->getBirthPlace()->getGedcomName()) !== $this->place()) {
             return 'Y';
-        } else {
-            return '';
         }
+
+        return '';
     }
 }

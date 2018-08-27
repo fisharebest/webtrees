@@ -37,11 +37,11 @@ class MatrilinealSurnameTradition extends DefaultSurnameTradition implements Sur
                 'SPFX' => $match['SPFX'],
                 'SURN' => $match['SURN'],
             ]);
-        } else {
-            return [
-                'NAME' => '//',
-            ];
         }
+
+        return [
+            'NAME' => '//',
+        ];
     }
 
     /**
@@ -60,10 +60,10 @@ class MatrilinealSurnameTradition extends DefaultSurnameTradition implements Sur
                 'SPFX' => $match['SPFX'],
                 'SURN' => $match['SURN'],
             ]);
-        } else {
-            return [
-                'NAME' => '//',
-            ];
         }
+
+        return [
+            'NAME' => '//',
+        ];
     }
 }

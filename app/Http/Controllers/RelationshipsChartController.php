@@ -283,9 +283,9 @@ class RelationshipsChartController extends AbstractChartController
                     $tmp = implode('-', $exclude);
                     if (in_array($tmp, $excluded)) {
                         continue;
-                    } else {
-                        $excluded[] = $tmp;
                     }
+
+                    $excluded[] = $tmp;
                     // Add any new path to the queue
                     foreach ($dijkstra->shortestPaths($xref1, $xref2, $exclude) as $new_path) {
                         $queue[] = [

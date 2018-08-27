@@ -37,8 +37,8 @@ class CensusColumnFatherBirthPlace extends AbstractCensusColumn implements Censu
 
         if ($father) {
             return $this->notCountry($father->getBirthPlace()->getGedcomName());
-        } else {
-            return '';
         }
+
+        return '';
     }
 }

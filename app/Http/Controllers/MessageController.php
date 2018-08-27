@@ -214,20 +214,20 @@ class MessageController extends AbstractBaseController
             $url = $url ?: route('tree-page', ['ged' => $tree->getName()]);
 
             return new RedirectResponse($url);
-        } else {
-            FlashMessages::addMessage(I18N::translate('The message was not sent.'), 'danger');
-
-            $redirect_url = route('contact', [
-                'body'       => $body,
-                'from_email' => $from_email,
-                'from_name'  => $from_name,
-                'subject'    => $subject,
-                'to'         => $to,
-                'url'        => $url,
-            ]);
-
-            return new RedirectResponse($redirect_url);
         }
+
+        FlashMessages::addMessage(I18N::translate('The message was not sent.'), 'danger');
+
+        $redirect_url = route('contact', [
+            'body'       => $body,
+            'from_email' => $from_email,
+            'from_name'  => $from_name,
+            'subject'    => $subject,
+            'to'         => $to,
+            'url'        => $url,
+        ]);
+
+        return new RedirectResponse($redirect_url);
     }
 
     /**
@@ -304,18 +304,18 @@ class MessageController extends AbstractBaseController
             $url = $url ?: route('tree-page', ['ged' => $tree->getName()]);
 
             return new RedirectResponse($url);
-        } else {
-            FlashMessages::addMessage(I18N::translate('The message was not sent.'), 'danger');
-
-            $redirect_url = route('contact', [
-                'body'    => $body,
-                'subject' => $subject,
-                'to'      => $to,
-                'url'     => $url,
-            ]);
-
-            return new RedirectResponse($redirect_url);
         }
+
+        FlashMessages::addMessage(I18N::translate('The message was not sent.'), 'danger');
+
+        $redirect_url = route('contact', [
+            'body'    => $body,
+            'subject' => $subject,
+            'to'      => $to,
+            'url'     => $url,
+        ]);
+
+        return new RedirectResponse($redirect_url);
     }
 
     /**

@@ -115,9 +115,9 @@ class Database
     {
         if (self::$pdo !== null) {
             return self::$instance;
-        } else {
-            throw new Exception('createInstance() must be called before getInstance().');
         }
+
+        throw new Exception('createInstance() must be called before getInstance().');
     }
 
     /**
@@ -155,9 +155,9 @@ class Database
     {
         if ($string === null) {
             return 'NULL';
-        } else {
-            return self::$pdo->quote($string, PDO::PARAM_STR);
         }
+
+        return self::$pdo->quote($string, PDO::PARAM_STR);
     }
 
     /**

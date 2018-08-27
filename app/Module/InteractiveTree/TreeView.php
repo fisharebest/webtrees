@@ -367,9 +367,9 @@ class TreeView
     {
         if ($individual->getTree()->getPreference('SHOW_HIGHLIGHT_IMAGES')) {
             return $individual->displayImage(40, 50, 'crop', []);
-        } else {
-            return '';
         }
+
+        return '';
     }
 
     /**

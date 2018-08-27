@@ -120,9 +120,9 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
                 'title'      => $this->getTitle(),
                 'content'    => $content,
             ]);
-        } else {
-            return $content;
         }
+
+        return $content;
     }
 
     /** {@inheritdoc} */

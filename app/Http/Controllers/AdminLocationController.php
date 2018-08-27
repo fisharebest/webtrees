@@ -286,9 +286,9 @@ class AdminLocationController extends AbstractBaseController
             $header[] = 'Icon';
 
             return $this->exportCSV($filename . '.csv', $header, $places);
-        } else {
-            return $this->exportGeoJSON($filename . '.geojson', $places, $maxlevel);
         }
+
+        return $this->exportGeoJSON($filename . '.geojson', $places, $maxlevel);
     }
 
     /**
@@ -403,9 +403,9 @@ class AdminLocationController extends AbstractBaseController
                 function (array $a, array $b) {
                     if ((int)$a['pl_level'] === (int)$b['pl_level']) {
                         return I18N::strcasecmp($a['fqpn'], $b['fqpn']);
-                    } else {
-                        return (int)$a['pl_level'] - (int)$b['pl_level'];
                     }
+
+                    return (int)$a['pl_level'] - (int)$b['pl_level'];
                 }
             );
 

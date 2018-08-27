@@ -111,9 +111,9 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
                 'title'      => I18N::plural('Changes in the last %s day', 'Changes in the last %s days', $days, I18N::number($days)),
                 'content'    => $content,
             ]);
-        } else {
-            return $content;
         }
+
+        return $content;
     }
 
     /** {@inheritdoc} */
