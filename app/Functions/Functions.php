@@ -16,15 +16,9 @@
 namespace Fisharebest\Webtrees\Functions;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Database;
-use Fisharebest\Webtrees\DebugBar;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
-use Fisharebest\Webtrees\Site;
-use GuzzleHttp\Client;
-use GuzzleHttp\Exception\RequestException;
-use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class Functions - common functions

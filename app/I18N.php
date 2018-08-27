@@ -17,11 +17,6 @@ namespace Fisharebest\Webtrees;
 
 use Collator;
 use Exception;
-use Fisharebest\ExtCalendar\ArabicCalendar;
-use Fisharebest\ExtCalendar\CalendarInterface;
-use Fisharebest\ExtCalendar\GregorianCalendar;
-use Fisharebest\ExtCalendar\JewishCalendar;
-use Fisharebest\ExtCalendar\PersianCalendar;
 use Fisharebest\Localization\Locale;
 use Fisharebest\Localization\Locale\LocaleEnUs;
 use Fisharebest\Localization\Locale\LocaleInterface;

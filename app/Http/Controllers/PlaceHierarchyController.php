@@ -23,7 +23,6 @@ use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Location;
-use Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Stats;

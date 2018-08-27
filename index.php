@@ -33,11 +33,11 @@ use Fisharebest\Webtrees\Http\Middleware\UseTransaction;
 use League\Flysystem\Adapter\Local;
 use League\Flysystem\Filesystem;
 use PDOException;
-use Throwable;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Throwable;
 
 // Identify ourself
 define('WT_WEBTREES', 'webtrees');
