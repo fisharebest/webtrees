@@ -314,7 +314,7 @@ for ($year = 1550; $year < 2030; $year += 10) {
 
 				<!-- Age at death -->
 				<?php if (isset($birth_dates[0]) && isset($death_dates[0])): ?>
-					<?php $age_at_death = Date::getAge($birth_dates[0], $death_dates[0], 0); ?>
+					<?php $age_at_death = I18N::number((int) Date::getAge($birth_dates[0], $death_dates[0], 0)); ?>
 					<?php $age_at_death_sort = Date::getAge($birth_dates[0], $death_dates[0], 2); ?>
 					<?php if (!isset($unique_indis[$individual->getXref()]) && $age_at_death >= 0 && $age_at_death <= $max_age): ?>
 						<?php $deat_by_age[$age_at_death] .= $individual->getSex(); ?>
@@ -324,7 +324,7 @@ for ($year = 1550; $year < 2030; $year += 10) {
 					<?php $age_at_death_sort = PHP_INT_MAX; ?>
 				<?php endif ?>
 				<td class="center" data-sort="<?= e($age_at_death_sort) ?>">
-					<?= I18N::number($age_at_death) ?>
+					<?= e($age_at_death) ?>
 				</td>
 
 				<!-- Death place -->
