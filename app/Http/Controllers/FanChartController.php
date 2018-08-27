@@ -173,7 +173,7 @@ class FanChartController extends AbstractChartController
             $rx -= 3;
 
             // calculate new angle
-            $p2    = pow(2, $gen);
+            $p2    = 2 ** $gen;
             $angle = $fandeg / $p2;
             $deg2  = 360 + ($fandeg - 180) / 2;
             $deg1  = $deg2 - $angle;

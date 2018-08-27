@@ -432,7 +432,7 @@ class HourglassChartController extends AbstractChartController
                 echo '<td> ';
                 if ($generation < $genoffset - 1) {
                     echo '<table>';
-                    for ($i = $generation; $i < (pow(2, ($genoffset - 1) - $generation) / 2) + 2; $i++) {
+                    for ($i = $generation; $i < ((2 ** (($genoffset - 1) - $generation)) / 2) + 2; $i++) {
                         echo Theme::theme()->individualBoxEmpty();
                         echo '</tr>';
                         echo Theme::theme()->individualBoxEmpty();
