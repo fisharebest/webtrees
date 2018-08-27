@@ -122,11 +122,11 @@ class CalendarService
                 }
                 if ($record instanceof Family) {
                     $husb = $record->getHusband();
-                    if (is_null($husb) || $husb->isDead()) {
+                    if ($husb === null || $husb->isDead()) {
                         continue;
                     }
                     $wife = $record->getWife();
-                    if (is_null($wife) || $wife->isDead()) {
+                    if ($wife === null || $wife->isDead()) {
                         continue;
                     }
                 }

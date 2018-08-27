@@ -255,7 +255,7 @@ class TreeView
         $html .= '<td' . ($isRoot ? ' style="width:1px"' : '') . '><div class="tv_box' . ($isRoot ? ' rootPerson' : '') . '" dir="' . I18N::direction() . '" style="text-align: ' . (I18N::direction() === 'rtl' ? 'right' : 'left') . '; direction: ' . I18N::direction() . '" abbr="' . $person->getXref() . '" onclick="' . $this->name . 'Handler.expandBox(this, event);">';
         $html .= $this->drawPersonName($person);
         $fop  = []; // $fop is fathers of partners
-        if (!is_null($partner)) {
+        if ($partner !== null) {
             $dashed = '';
             foreach ($person->getSpouseFamilies() as $family) {
                 $spouse = $family->getSpouse($person);
