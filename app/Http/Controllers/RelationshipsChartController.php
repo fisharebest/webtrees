@@ -54,14 +54,14 @@ class RelationshipsChartController extends AbstractChartController
         $individual2 = Individual::getInstance($xref2, $tree);
 
         $recursion = (int) $request->get('recursion', '0');
-        $ancestors = (bool) $request->get('ancestors', '0');
+        $ancestors = (int) $request->get('ancestors', '0');
 
         if ($individual1 !== null && $individual2 !== null) {
             $this->checkIndividualAccess($individual1);
             $this->checkIndividualAccess($individual2);
         }
 
-        $ancestors_only = (bool) $tree->getPreference('RELATIONSHIP_ANCESTORS', RelationshipsChartModule::DEFAULT_ANCESTORS);
+        $ancestors_only = (int) $tree->getPreference('RELATIONSHIP_ANCESTORS', RelationshipsChartModule::DEFAULT_ANCESTORS);
         $max_recursion  = (int) $tree->getPreference('RELATIONSHIP_RECURSION', RelationshipsChartModule::DEFAULT_RECURSION);
 
         $recursion = min($recursion, $max_recursion);

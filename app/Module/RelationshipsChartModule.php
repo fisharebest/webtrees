@@ -31,13 +31,13 @@ use Symfony\Component\HttpFoundation\Response;
 class RelationshipsChartModule extends AbstractModule implements ModuleConfigInterface, ModuleChartInterface
 {
     /** It would be more correct to use PHP_INT_MAX, but this isn't friendly in URLs */
-    const UNLIMITED_RECURSION = 99;
+    const UNLIMITED_RECURSION = '99';
 
     /** By default new trees allow unlimited recursion */
     const DEFAULT_RECURSION = self::UNLIMITED_RECURSION;
 
     /** By default new trees search for all relationships (not via ancestors) */
-    const DEFAULT_ANCESTORS = 0;
+    const DEFAULT_ANCESTORS = '0';
 
     /**
      * How should this module be labelled on tabs, menus, etc.?
