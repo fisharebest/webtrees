@@ -289,9 +289,9 @@ class Family extends GedcomRecord
     /**
      * get the marriage event
      *
-     * @return Fact
+     * @return Fact|null
      */
-    public function getMarriage(): Fact
+    public function getMarriage()
     {
         return $this->getFirstFact('MARR');
     }
