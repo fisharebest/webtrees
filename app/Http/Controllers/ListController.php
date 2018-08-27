@@ -761,7 +761,7 @@ class ListController extends AbstractBaseController
             if ($totals) {
                 $count = Database::prepare($sql . " AND " . $this->getInitialSql('n_surn', $letter))->fetchOne();
             }
-            $alphas[$letter] = $count;
+            $alphas[$letter] = (int) $count;
         }
 
         // Now fetch initial letters that are not in our alphabet,
@@ -784,7 +784,7 @@ class ListController extends AbstractBaseController
         }
         $sql .= " GROUP BY UPPER(LEFT(n_surn, 1))) AS subquery ORDER BY initial = '', initial = '@', initial";
         foreach (Database::prepare($sql)->execute($args)->fetchAssoc() as $alpha => $count) {
-            $alphas[$alpha] = $count;
+            $alphas[$alpha] = (int) $count;
         }
 
         // Names with no surname
