@@ -274,7 +274,7 @@ class FamilyBookChartController extends AbstractChartController
 
         $genoffset = $this->generations; // handle pedigree n generations lines
         //-- calculate how tall the lines should be
-        $lh = ($this->bhalfheight) * pow(2, ($genoffset - $count - 1));
+        $lh = ($this->bhalfheight) * (2 ** ($genoffset - $count - 1));
         //
         //Prints empty table columns for children w/o parents up to the max generation
         //This allows vertical line spacing to be consistent
