@@ -75,7 +75,14 @@ class File
                 self::mkdir(dirname($path));
             }
             try {
-                mkdir($path);
+                if (!mkdir($path) && !is_dir($path)) {
+                    throw new \RuntimeException(
+                        sprintf(
+                            'Directory "%s" was not created',
+                            $path
+                        )
+                    );
+                }
 
                 return true;
             } catch (Throwable $ex) {
