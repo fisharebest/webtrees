@@ -67,7 +67,7 @@ abstract class AbstractModule
             'setting_name' => $setting_name,
         ])->fetchOne();
 
-        return $setting_value === null ? $default_value : $setting_value;
+        return $setting_value ?? $default_value;
     }
 
     /**
