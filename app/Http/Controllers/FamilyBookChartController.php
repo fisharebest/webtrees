@@ -32,9 +32,9 @@ use Symfony\Component\HttpFoundation\Response;
 class FamilyBookChartController extends AbstractChartController
 {
     // Defaults
-    const DEFAULT_GENERATIONS            = 2;
-    const DEFAULT_DESCENDANT_GENERATIONS = 5;
-    const DEFAULT_MAXIMUM_GENERATIONS    = 9;
+    const DEFAULT_GENERATIONS            = '2';
+    const DEFAULT_DESCENDANT_GENERATIONS = '5';
+    const DEFAULT_MAXIMUM_GENERATIONS    = '9';
 
     /** @var stdClass */
     private $box;
@@ -157,9 +157,9 @@ class FamilyBookChartController extends AbstractChartController
      * @param Individual|null $person
      * @param int             $generation
      *
-     * @return int
+     * @return float
      */
-    private function printDescendency(Individual $person = null, $generation): int
+    private function printDescendency(Individual $person = null, $generation): float
     {
         if ($generation > $this->dgenerations) {
             return 0;
