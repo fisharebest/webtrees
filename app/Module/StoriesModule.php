@@ -59,13 +59,13 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
     }
 
     /** {@inheritdoc} */
-    public function defaultTabOrder()
+    public function defaultTabOrder(): int
     {
         return 55;
     }
 
     /** {@inheritdoc} */
-    public function getTabContent(Individual $individual)
+    public function getTabContent(Individual $individual): string
     {
         return view('modules/stories/tab', [
             'is_admin'   => Auth::isAdmin(),
@@ -75,19 +75,19 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
     }
 
     /** {@inheritdoc} */
-    public function hasTabContent(Individual $individual)
+    public function hasTabContent(Individual $individual): bool
     {
         return Auth::isManager($individual->getTree()) || !empty($this->getStoriesForIndividual($individual));
     }
 
     /** {@inheritdoc} */
-    public function isGrayedOut(Individual $individual)
+    public function isGrayedOut(Individual $individual): bool
     {
         return !empty($this->getStoriesForIndividual($individual));
     }
 
     /** {@inheritdoc} */
-    public function canLoadAjax()
+    public function canLoadAjax(): bool
     {
         return false;
     }

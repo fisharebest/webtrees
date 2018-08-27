@@ -56,7 +56,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
     }
 
     /** {@inheritdoc} */
-    public function getTabContent(Individual $individual)
+    public function getTabContent(Individual $individual): string
     {
         $indifacts = [];
         // The individual’s own facts

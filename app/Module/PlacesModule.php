@@ -83,7 +83,7 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
     }
 
     /** {@inheritdoc} */
-    public function getTabContent(Individual $individual)
+    public function getTabContent(Individual $individual): string
     {
         return view('modules/places/tab', [
             'data' => $this->getMapData($individual),

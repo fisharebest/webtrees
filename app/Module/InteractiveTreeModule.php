@@ -47,13 +47,13 @@ class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface
     }
 
     /** {@inheritdoc} */
-    public function defaultTabOrder()
+    public function defaultTabOrder(): int
     {
         return 68;
     }
 
     /** {@inheritdoc} */
-    public function getTabContent(Individual $individual)
+    public function getTabContent(Individual $individual): string
     {
         $treeview = new TreeView('tvTab');
         list($html, $js) = $treeview->drawViewport($individual, 3);
@@ -83,19 +83,19 @@ class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface
     }
 
     /** {@inheritdoc} */
-    public function hasTabContent(Individual $individual)
+    public function hasTabContent(Individual $individual): bool
     {
         return true;
     }
 
     /** {@inheritdoc} */
-    public function isGrayedOut(Individual $individual)
+    public function isGrayedOut(Individual $individual): bool
     {
         return false;
     }
 
     /** {@inheritdoc} */
-    public function canLoadAjax()
+    public function canLoadAjax():  bool
     {
         return true;
     }

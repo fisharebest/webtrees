@@ -304,7 +304,7 @@ abstract class AbstractTheme
      *
      * @return string
      */
-    public function contactLink(User $user)
+    public function contactLink(User $user): string
     {
         $method = $user->getPreference('contactmethod');
 
@@ -652,7 +652,7 @@ abstract class AbstractTheme
      *
      * @return string
      */
-    public function icon(Fact $fact)
+    public function icon(Fact $fact): string
     {
         $icon = 'images/facts/' . $fact->getTag() . '.png';
         if (file_exists(self::ASSET_DIR . $icon)) {
