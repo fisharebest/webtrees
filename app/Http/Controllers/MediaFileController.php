@@ -151,7 +151,7 @@ class MediaFileController extends AbstractBaseController
             $cache  = $server->getCache();
 
             return new Response($cache->read($path), Response::HTTP_OK, [
-                'Content-Type'   => $cache->getMimeType($path),
+                'Content-Type'   => $cache->getMimetype($path),
                 'Content-Length' => $cache->getSize($path),
                 'Cache-Control'  => 'max-age=31536000, public',
                 'Expires'        => date_create('+1 years')->format('D, d M Y H:i:s') . ' GMT',
@@ -185,7 +185,7 @@ class MediaFileController extends AbstractBaseController
             $path   = $server->makeImage($media_file->filename(), $params);
 
             return new Response($server->getCache()->read($path), Response::HTTP_OK, [
-                'Content-Type'   => $server->getCache()->getMimeType($path),
+                'Content-Type'   => $server->getCache()->getMimetype($path),
                 'Content-Length' => $server->getCache()->getSize($path),
                 'Cache-Control'  => 'max-age=31536000, public',
                 'Expires'        => date_create('+1 years')->format('D, d M Y H:i:s') . ' GMT',

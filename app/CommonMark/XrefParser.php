@@ -57,7 +57,7 @@ class XrefParser extends AbstractInlineParser
     public function parse(InlineParserContext $context)
     {
         // The cursor should be positioned on the opening '@'.
-        $cursor = $context->getcursor();
+        $cursor = $context->getCursor();
 
         // If this isn't the start of an XREF, we'll need to rewind.
         $previous_state = $cursor->saveState();
