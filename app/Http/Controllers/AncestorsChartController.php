@@ -41,8 +41,8 @@ class AncestorsChartController extends AbstractChartController
     // Defaults
     const DEFAULT_COUSINS             = false;
     const DEFAULT_STYLE               = self::CHART_STYLE_LIST;
-    const DEFAULT_GENERATIONS         = 3;
-    const DEFAULT_MAXIMUM_GENERATIONS = 9;
+    const DEFAULT_GENERATIONS         = '3';
+    const DEFAULT_MAXIMUM_GENERATIONS = '9';
 
     /**
      * A form to request the chart parameters.
