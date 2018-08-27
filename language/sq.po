@@ -3,15 +3,15 @@ msgstr ""
 "Project-Id-Version: Albanian (webtrees)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-08-20 16:06+0000\n"
-"PO-Revision-Date: 2018-08-26 22:11+0000\n"
+"PO-Revision-Date: 2018-08-27 23:15+0200\n"
 "Last-Translator: Astrit Bokshi <astritbokshi@gmail.com>\n"
-"Language-Team: Albanian <https://translate.webtrees.net/projects/webtrees/webtrees/sq/>\n"
+"Language-Team: Albanian <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/sq/>\n"
 "Language: sq\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.10\n"
+"X-Generator: Poedit 2.1.1\n"
 
 #: modules_v3/ahnentafel_report/report.xml:160
 #: modules_v3/ahnentafel_report/report.xml:188
@@ -2638,7 +2638,7 @@ msgstr "Përpos përdorimit të shiritit të veglave për formatizim HTML, ju mu
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:52 app/Theme/ColorsTheme.php:77
 msgid "Ash"
-msgstr "Ash"
+msgstr "Hiri"
 
 #: resources/views/statistics-chart-custom.php:197 statistics.php:691
 msgid "Asia"
@@ -6661,7 +6661,7 @@ msgstr ""
 #: resources/views/admin/users-edit.php:246 admin_users.php:41,
 #: admin_users.php:543
 msgid "Editor"
-msgstr "Editori"
+msgstr "Editor"
 
 # I18N: Location of an LDS church temple
 #. I18N: Location of an LDS church temple
@@ -10400,7 +10400,7 @@ msgstr "Udhëheq lidhjet"
 #: app/Module/ClippingsCartModule.php:390,
 #: app/Module/ClippingsCartModule.php:767
 msgid "Manager"
-msgstr "Udhëheqësi"
+msgstr "Udhëheqës"
 
 #: resources/views/admin/control-panel.php:277 admin.php:687
 msgid "Managers"
@@ -11275,7 +11275,7 @@ msgstr "Shënimet që mungojnë"
 #: resources/views/admin/users-edit.php:252 admin_users.php:42,
 #: admin_users.php:549
 msgid "Moderator"
-msgstr "Moderuesi"
+msgstr "Moderues"
 
 #: resources/views/admin/control-panel.php:277 admin.php:700
 msgid "Moderators"
@@ -12191,7 +12191,7 @@ msgstr "Norvegjia"
 
 #: resources/views/admin/control-panel.php:277 admin.php:726
 msgid "Not approved by an administrator"
-msgstr "Nuk është aprovuar nga administratori"
+msgstr "Nuk është miratuar nga administratori"
 
 # I18N: gedcom tag _NLIV
 #. I18N: gedcom tag _NLIV
@@ -12793,7 +12793,7 @@ msgstr "Palau"
 #. I18N: A colour scheme
 #: app/Theme/ColorsTheme.php:140 app/Theme/ColorsTheme.php:149
 msgid "Palette"
-msgstr "Paletë"
+msgstr "Paleta"
 
 # I18N: Location of an LDS church temple
 #. I18N: Location of an LDS church temple
@@ -14842,7 +14842,7 @@ msgstr "Përcakto statutin në \"e aprovuar\"."
 #. I18N: Help text for the “Allow users to see raw GEDCOM records” configuration setting
 #: resources/views/admin/trees-preferences.php:814 admin_trees_config.php:1580
 msgid "Setting this to <b>Yes</b> will place links on individuals, sources, and families to let users bring up another window containing the raw data taken right out of the GEDCOM file."
-msgstr "Me përcaktim në <b>Po</b>lidhja do të vëhet në persona, burime, dhe familje për të lejuar përdoruesit të hapin një dritare tjetër që përbën shënime të papërpunuara të marra nga fajli GEDCOM."
+msgstr "Me përcaktim në <b>Po</b> lidhja do të vëhet në persona, burime, dhe familje për të lejuar përdoruesit të hapin një dritare tjetër që përbën shënime të papërpunuara të marra nga fajli GEDCOM."
 
 #: resources/views/layouts/setup.php:8 resources/views/layouts/setup.php:16
 #: setup.php:93
@@ -15383,7 +15383,7 @@ msgstr "Shfaq imazhet e zgjedhura në kutitë personale."
 #: app/Functions/FunctionsPrintFacts.php:836,
 #: app/Functions/FunctionsPrintFacts.php:1102
 msgid "Show to managers"
-msgstr "Shfaq për ushëheqësit"
+msgstr "Shfaq për udhëheqësit"
 
 #: app/Functions/FunctionsEdit.php:89 app/Functions/FunctionsEdit.php:228
 #: app/Functions/FunctionsPrintFacts.php:260
@@ -17119,7 +17119,7 @@ msgstr "Trungu familjar së fundi u përditësua më %s."
 #. I18N: Help text for the "Data folder" site configuration setting
 #: resources/views/admin/site-preferences.php:23 admin_site_config.php:186
 msgid "This folder will be used by webtrees to store media files, GEDCOM files, temporary files, etc. These files may contain private data, and should not be made available over the internet."
-msgstr "Ky folder do të pvrdoret nga webtrees për të vendosur media fajla, fajla GRDCOM. ata të përkohshëm, etj. Këta fajla mund të përbëjnë shënime private dhe nuk duhet të jenë në dispozicion nëpër internet."
+msgstr "Ky folder do të përdoret nga webtrees për të vendosur media fajla, fajla GEDCOM. ata të përkohshëm, etj. Këta fajla mund të përbëjnë shënime private dhe nuk duhet të jenë në dispozicion nëpër internet."
 
 # I18N: Help text for the “Media folder” configuration setting
 #. I18N: Help text for the “Media folder” configuration setting
@@ -18734,7 +18734,7 @@ msgstr "E dukshme për përdoruesit tjerë kur janë online"
 #: app/Module/ClippingsCartModule.php:769,
 #: app/Module/ClippingsCartModule.php:776
 msgid "Visitor"
-msgstr "Vizitori"
+msgstr "Vizitor"
 
 # I18N: Name of a module/report. “Vital records” are life events - birth/marriage/death
 #. I18N: Name of a module/report. “Vital records” are life events - birth/marriage/death
@@ -18785,7 +18785,7 @@ msgstr "Vulat e ujit"
 #. I18N: Help text for the “Images without watermarks” configuration setting
 #: resources/views/admin/trees-preferences.php:382 admin_trees_config.php:1141
 msgid "Watermarks are optional and normally shown just to visitors."
-msgstr "Vulat e ujit janë opcionale dhe normalisht shfaqen për vizitorët."
+msgstr "Shenjat e ujit janë opcionale dhe normalisht shfaqen për vizitorët."
 
 #: resources/views/register-success-page.php:13 login.php:390
 #, php-format
@@ -19215,7 +19215,7 @@ msgstr "Ju duhet të fshini \"%1$s\" nga \"%2$s\" dhe të provoni përsëri."
 
 #: resources/views/admin/users-edit.php:101 admin_users.php:394
 msgid "You should not approve an account unless you know that the email address is correct."
-msgstr "Ju nuk duhet të aprovoni llogarinë përderisa të dini që email adresa ësjhtë korrekte."
+msgstr "Ju nuk duhet të aprovoni llogarinë përderisa të dini që email adresa është korrekte."
 
 #: resources/views/emails/register-notify-html.php:26
 #: resources/views/emails/register-notify-text.php:13 login.php:328
@@ -24487,11 +24487,11 @@ msgstr "…"
 
 # I18N: A configuration setting
 #~ msgid "Store watermarked full size images on server"
-#~ msgstr "Vendos watermark imazhet me madhësi të plotë në server"
+#~ msgstr "Vendos shenja uji në imazhet me madhësi të plotë në server"
 
 # I18N: A configuration setting
 #~ msgid "Store watermarked thumbnails on server"
-#~ msgstr "Vendos fotografizat watermark në server"
+#~ msgstr "Vendos fotografizat me shenja uji në server"
 
 # I18N: Part of a country, state/region/county
 #~ msgid "Subdivision"
@@ -24618,7 +24618,7 @@ msgstr "…"
 #~ msgstr "Ky media fajl ekziston, por nuk mund t'i çaseni."
 
 #~ msgid "This media file is broken and cannot be watermarked."
-#~ msgstr "Ky media fajl është prishur dhe nuk mund të marrë vulë uji."
+#~ msgstr "Ky media fajl është prishur dhe nuk mund të marrë shenjë uji."
 
 #~ msgid "This media object is not linked to any other record."
 #~ msgstr "Media objekti nuk është i lidhur me ndonjë shënim."
@@ -24733,7 +24733,7 @@ msgstr "…"
 
 # I18N: Help text for the “Store watermarked full size images on server” configuration setting
 #~ msgid "Watermarks can be slow to generate for large images. Busy websites may prefer to generate them once and store the watermarked image on the server."
-#~ msgstr "Vulat e ujit mund të jenë të ngadalshme për imazhed e mëdha. Uebsajtat e zënë mund të preferojnë t'i gjenerojnë ato një herë dhe të ruajnë imazhin me vulë uji në server."
+#~ msgstr "Shenjat e ujit mund të jenë të ngadalshme për imazhed e mëdha. Uebsajtat e zënë mund të preferojnë t'i gjenerojnë ato një herë dhe të ruajnë imazhin me shenjë uji në server."
 
 # I18N: A configuration setting
 #~ msgid "Website URL"
