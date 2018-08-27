@@ -43,8 +43,8 @@ class DescendantsChartController extends AbstractChartController
 
     // Defaults
     const DEFAULT_STYLE               = self::CHART_STYLE_LIST;
-    const DEFAULT_GENERATIONS         = 3;
-    const DEFAULT_MAXIMUM_GENERATIONS = 9;
+    const DEFAULT_GENERATIONS         = '3';
+    const DEFAULT_MAXIMUM_GENERATIONS = '9';
 
     protected $dabo_num = [];
     protected $dabo_sex = [];
