@@ -32,8 +32,8 @@ use Symfony\Component\HttpFoundation\Response;
 class HourglassChartController extends AbstractChartController
 {
     // Defaults
-    const DEFAULT_GENERATIONS         = 3;
-    const DEFAULT_MAXIMUM_GENERATIONS = 9;
+    const DEFAULT_GENERATIONS         = '3';
+    const DEFAULT_MAXIMUM_GENERATIONS = '9';
 
     // Limits
     const MINIMUM_GENERATIONS = 2;
