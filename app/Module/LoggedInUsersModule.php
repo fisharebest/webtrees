@@ -88,7 +88,7 @@ class LoggedInUsersModule extends AbstractModule implements ModuleBlockInterface
                     $content .= e($user->getRealName());
                 }
                 $content .= ' - ' . e($user->getUserName());
-                if (true || Auth::id() !== $user->getUserId() && $user->getPreference('contactmethod') !== 'none') {
+                if (Auth::id() !== $user->getUserId() && $user->getPreference('contactmethod') !== 'none') {
                     $content .= '<a href="' . e(route('message', ['to'  => $user->getUserName(), 'ged' => $tree->getName()])) . '" class="btn btn-link" title="' . I18N::translate('Send a message') . '">' . view('icons/email') . '</a>';
                 }
                 $content .= '</div>';
