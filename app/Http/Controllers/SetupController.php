@@ -256,7 +256,7 @@ class SetupController extends AbstractBaseController
     private function checkLanguage(Request $request): bool
     {
         try {
-            I18N::init($request->get('lang'));
+            I18N::init($request->get('lang', ''));
         } catch (Exception $ex) {
             DebugBar::addThrowable($ex);
 
