@@ -114,12 +114,17 @@ class PlaceHierarchyController extends AbstractBaseController
     {
         $list_places = Place::allPlaces($tree);
         $numfound    = count($list_places);
-        $divisor     = $numfound > 20 ? 3 : 2;
 
-        return
-            [
-                'columns' => array_chunk($list_places, (int) ceil($numfound / $divisor)),
-            ];
+        if ($numfound === 0) {
+            $columns = [];
+        } else {
+            $divisor = $numfound > 20 ? 3 : 2;
+            $columns = array_chunk($list_places, (int) ceil($numfound / $divisor));
+        }
+
+        return [
+            'columns' => $columns,
+        ];
     }
 
     /**
