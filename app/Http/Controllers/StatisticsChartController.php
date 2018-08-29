@@ -701,18 +701,18 @@ class StatisticsChartController extends AbstractChartController
     private function axisMonths(): array
     {
         return [
-            'JAN' => GregorianDate::monthNameNominativeCase(1, false),
-            'FEB' => GregorianDate::monthNameNominativeCase(2, false),
-            'MAR' => GregorianDate::monthNameNominativeCase(3, false),
-            'APR' => GregorianDate::monthNameNominativeCase(4, false),
-            'MAY' => GregorianDate::monthNameNominativeCase(5, false),
-            'JUN' => GregorianDate::monthNameNominativeCase(6, false),
-            'JUL' => GregorianDate::monthNameNominativeCase(7, false),
-            'AUG' => GregorianDate::monthNameNominativeCase(8, false),
-            'SEP' => GregorianDate::monthNameNominativeCase(9, false),
-            'OCT' => GregorianDate::monthNameNominativeCase(10, false),
-            'NOV' => GregorianDate::monthNameNominativeCase(11, false),
-            'DEC' => GregorianDate::monthNameNominativeCase(12, false),
+            'JAN' => I18N::translateContext('NOMINATIVE', 'January'),
+            'FEB' => I18N::translateContext('NOMINATIVE', 'February'),
+            'MAR' => I18N::translateContext('NOMINATIVE', 'March'),
+            'APR' => I18N::translateContext('NOMINATIVE', 'April'),
+            'MAY' => I18N::translateContext('NOMINATIVE', 'May'),
+            'JUN' => I18N::translateContext('NOMINATIVE', 'June'),
+            'JUL' => I18N::translateContext('NOMINATIVE', 'July'),
+            'AUG' => I18N::translateContext('NOMINATIVE', 'August'),
+            'SEP' => I18N::translateContext('NOMINATIVE', 'September'),
+            'OCT' => I18N::translateContext('NOMINATIVE', 'October'),
+            'NOV' => I18N::translateContext('NOMINATIVE', 'November'),
+            'DEC' => I18N::translateContext('NOMINATIVE', 'December'),
         ];
     }
 
