@@ -852,7 +852,7 @@ class CalendarDate
             case 'GENITIVE':
                 return $this->monthNameGenitiveCase($this->m, $this->isLeapYear());
             case 'NOMINATIVE':
-                return $this->monthNameNominativeCase($this->m, $this->isLeapYear());
+                return self::monthNameNominativeCase($this->m, $this->isLeapYear());
             case 'LOCATIVE':
                 return $this->monthNameLocativeCase($this->m, $this->isLeapYear());
             case 'INSTRUMENTAL':
