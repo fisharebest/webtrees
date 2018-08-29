@@ -987,22 +987,6 @@ abstract class AbstractTheme
     }
 
     /**
-     * Create part of an individual box
-     *
-     * @param Individual $individual
-     *
-     * @return string
-     */
-    public function individualBoxSexSymbol(Individual $individual)
-    {
-        if ($individual->getTree()->getPreference('PEDIGREE_SHOW_GENDER')) {
-            return $individual->sexImage('large');
-        } else {
-            return '';
-        }
-    }
-
-    /**
      * Initialise the theme. We cannot pass these in a constructor, as the construction
      * happens in a theme file, and we need to be able to change it.
      *
