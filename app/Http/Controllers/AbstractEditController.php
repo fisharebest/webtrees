@@ -350,7 +350,7 @@ abstract class AbstractEditController extends AbstractBaseController
      *
      * @return string
      */
-    public static function addNewName(Request $request, Tree $tree): string
+    protected function addNewName(Request $request, Tree $tree): string
     {
         $gedrec = "\n1 NAME " . $request->get('NAME', '');
 
