@@ -49,7 +49,7 @@ class Filter
      *
      * @return string
      */
-    public static function formatText($text, Tree $tree)
+    public static function formatText(string $text, Tree $tree): string
     {
         switch ($tree->getPreference('FORMAT_TEXT')) {
             case 'markdown':
@@ -63,11 +63,11 @@ class Filter
      * Format a block of text, expanding URLs and XREFs.
      *
      * @param string $text
-     * @param        Tree   tree
+     * @param Tree   $tree
      *
      * @return string
      */
-    public static function expandUrls($text, Tree $tree)
+    public static function expandUrls(string $text, Tree $tree): string
     {
         // If it looks like a URL, turn it into a markdown autolink.
         $text = preg_replace('/' . addcslashes(self::URL_REGEX, '/') . '/', '<$0>', $text);
@@ -112,7 +112,7 @@ class Filter
      *
      * @return string
      */
-    public static function markdown($text, Tree $tree)
+    public static function markdown(string $text, Tree $tree): string
     {
         $environment = Environment::createCommonMarkEnvironment();
         $environment->mergeConfig(['html_input' => 'escape']);

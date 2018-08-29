@@ -19,7 +19,6 @@ namespace Fisharebest\Webtrees\Http\Middleware;
 
 use Closure;
 use Fisharebest\Webtrees\Database;
-use Fisharebest\Webtrees\Resolver;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
@@ -56,7 +55,7 @@ class PageHitCounter implements MiddlewareInterface
     /**
      * PageHitCounter constructor.
      *
-     * @param Resolver  $resolver
+     * @param User      $user
      * @param Tree|null $tree
      */
     public function __construct(User $user, Tree $tree = null)
