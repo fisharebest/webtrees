@@ -31,7 +31,7 @@ class CensusColumnBornForeignParts extends AbstractCensusColumn implements Censu
      *
      * @return string
      */
-    public function generate(Individual $individual, Individual $head)
+    public function generate(Individual $individual, Individual $head): string
     {
         $birth_place  = $individual->getBirthPlace()->lastPart();
         $census_place = $this->place();

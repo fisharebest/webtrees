@@ -172,8 +172,9 @@ class CensusAssistantModule extends AbstractModule
      *
      * @return string
      */
-    public static function censusTableHeader(CensusInterface $census): string
+    protected function censusTableHeader(CensusInterface $census): string
     {
+        //throw new \Exception('eek');
         $html = '';
         foreach ($census->columns() as $column) {
             $html .= '<th class="wt-census-assistant-field" title="' . $column->title() . '">' . $column->abbreviation() . '</th>';

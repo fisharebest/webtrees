@@ -31,7 +31,7 @@ class CensusColumnBirthDaySlashMonth extends AbstractCensusColumn implements Cen
      *
      * @return string
      */
-    public function generate(Individual $individual, Individual $head)
+    public function generate(Individual $individual, Individual $head): string
     {
         $birth_date = $individual->getBirthDate();
 

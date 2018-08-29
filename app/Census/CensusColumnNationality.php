@@ -41,7 +41,7 @@ class CensusColumnNationality extends AbstractCensusColumn implements CensusColu
      *
      * @return string
      */
-    public function generate(Individual $individual, Individual $head)
+    public function generate(Individual $individual, Individual $head): string
     {
         $place = $individual->getBirthPlace()->getGedcomName();
 

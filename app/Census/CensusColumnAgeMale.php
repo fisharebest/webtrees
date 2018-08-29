@@ -32,7 +32,7 @@ class CensusColumnAgeMale extends AbstractCensusColumn implements CensusColumnIn
      *
      * @return string
      */
-    public function generate(Individual $individual, Individual $head)
+    public function generate(Individual $individual, Individual $head): string
     {
         if ($individual->getSex() === 'F') {
             return '';
