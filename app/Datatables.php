@@ -31,12 +31,8 @@ class Datatables
      *
      * @return string[]
      */
-    public static function languageAttributes(array $lengths = [
-        10,
-        25,
-        100,
-        -1,
-    ]): array {
+    public static function languageAttributes(array $lengths = [10, 25, 100, -1]): array
+    {
         $length_menu = FunctionsEdit::numericOptions($lengths);
 
         $language = [

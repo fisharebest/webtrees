@@ -5783,11 +5783,8 @@ class Stats
      *
      * @return string
      */
-    public function commonSurnames($params = [
-        '',
-        '',
-        'alpha',
-    ]): string {
+    public function commonSurnames($params = ['', '', 'alpha']): string
+    {
         return $this->commonSurnamesQuery('nolist', false, $params);
     }
 
@@ -5798,11 +5795,8 @@ class Stats
      *
      * @return string
      */
-    public function commonSurnamesTotals($params = [
-        '',
-        '',
-        'rcount',
-    ]): string {
+    public function commonSurnamesTotals($params = ['', '', 'rcount']): string
+    {
         return $this->commonSurnamesQuery('nolist', true, $params);
     }
 
@@ -5813,11 +5807,8 @@ class Stats
      *
      * @return string
      */
-    public function commonSurnamesList($params = [
-        '',
-        '',
-        'alpha',
-    ]): string {
+    public function commonSurnamesList($params = ['', '', 'alpha']): string
+    {
         return $this->commonSurnamesQuery('list', false, $params);
     }
 
@@ -5828,11 +5819,8 @@ class Stats
      *
      * @return string
      */
-    public function commonSurnamesListTotals($params = [
-        '',
-        '',
-        'rcount',
-    ]): string {
+    public function commonSurnamesListTotals($params = ['', '', 'rcount']): string
+    {
         return $this->commonSurnamesQuery('list', true, $params);
     }
 
