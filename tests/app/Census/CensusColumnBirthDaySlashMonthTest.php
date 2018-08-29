@@ -41,8 +41,8 @@ class CensusColumnBirthDaySlashMonthTest extends \PHPUnit\Framework\TestCase
         $cal_date->shouldReceive('format')->andReturn('30/6');
 
         $date = Mockery::mock('Fisharebest\Webtrees\Date');
-        $date->shouldReceive('minimumJulianDay')->andReturn($cal_date);
-        $date->shouldReceive('maximumJulianDay')->andReturn($cal_date);
+        $date->shouldReceive('minimumJulianDay')->andReturn(2390364);
+        $date->shouldReceive('maximumJulianDay')->andReturn(2390364);
         $date->shouldReceive('minimumDate')->andReturn($cal_date);
 
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');

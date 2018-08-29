@@ -53,7 +53,7 @@ class CensusColumnAgeMarriedTest extends \PHPUnit\Framework\TestCase
 
         $column = new CensusColumnAgeMarried($census, '', '');
 
-        $this->assertSame(19, $column->generate($individual, $individual));
+        $this->assertSame('19', $column->generate($individual, $individual));
     }
 
     /**

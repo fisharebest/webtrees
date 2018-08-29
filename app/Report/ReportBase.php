@@ -97,7 +97,7 @@ class ReportBase
      * Setting up document wide defaults that will be inherited of the report modules
      * As DEFAULT A4 and Portrait will be used if not set
      */
-    public function setup(): int
+    public function setup()
     {
         // Set RTL direction
         if (I18N::direction() === 'rtl') {
@@ -641,8 +641,6 @@ class ReportBase
                 throw new \DomainException('REPORT ERROR ReportBase::setup(): For custom size pages you must set "customheight" larger then this in the XML file');
             }
         }
-
-        return 0;
     }
 
     /**

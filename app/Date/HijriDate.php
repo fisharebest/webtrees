@@ -65,7 +65,7 @@ class HijriDate extends CalendarDate
      *
      * @return string
      */
-    public static function monthNameNominativeCase(int $month_number, bool $leap_year): string
+    protected function monthNameNominativeCase(int $month_number, bool $leap_year): string
     {
         static $translated_month_names;
 
