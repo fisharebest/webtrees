@@ -91,9 +91,9 @@ class ReportHtmlFootnote extends ReportBaseFootnote
      *
      * @param ReportHtml $html
      *
-     * @return array
+     * @return float|array
      */
-    public function getWidth($html): array
+    public function getWidth($html)
     {
         // Setup the style name
         $html->setCurrentStyle('footnotenum');

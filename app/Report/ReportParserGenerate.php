@@ -214,6 +214,8 @@ class ReportParserGenerate extends ReportParserBase
      * XML <style>
      *
      * @param array $attrs an array of key value pairs for the attributes
+     *
+     * @return void
      */
     private function styleStartHandler($attrs)
     {
@@ -253,6 +255,8 @@ class ReportParserGenerate extends ReportParserBase
      * Sets up the basics of the document proparties
      *
      * @param array $attrs an array of key value pairs for the attributes
+     *
+     * @return void
      */
     private function docStartHandler($attrs)
     {
@@ -343,6 +347,8 @@ class ReportParserGenerate extends ReportParserBase
 
     /**
      * XML </Doc>
+     *
+     * @return void
      */
     private function docEndHandler()
     {
@@ -351,6 +357,8 @@ class ReportParserGenerate extends ReportParserBase
 
     /**
      * XML <Header>
+     *
+     * @return void
      */
     private function headerStartHandler()
     {
@@ -361,6 +369,8 @@ class ReportParserGenerate extends ReportParserBase
 
     /**
      * XML <PageHeader>
+     *
+     * @return void
      */
     private function pageHeaderStartHandler()
     {
@@ -372,6 +382,8 @@ class ReportParserGenerate extends ReportParserBase
 
     /**
      * XML <pageHeaderEndHandler>
+     *
+     * @return void
      */
     private function pageHeaderEndHandler()
     {
@@ -383,6 +395,8 @@ class ReportParserGenerate extends ReportParserBase
 
     /**
      * XML <bodyStartHandler>
+     *
+     * @return void
      */
     private function bodyStartHandler()
     {
@@ -391,6 +405,8 @@ class ReportParserGenerate extends ReportParserBase
 
     /**
      * XML <footerStartHandler>
+     *
+     * @return void
      */
     private function footerStartHandler()
     {
@@ -401,6 +417,8 @@ class ReportParserGenerate extends ReportParserBase
      * XML <Cell>
      *
      * @param array $attrs an array of key value pairs for the attributes
+     *
+     * @return void
      */
     private function cellStartHandler($attrs)
     {
@@ -556,6 +574,8 @@ class ReportParserGenerate extends ReportParserBase
 
     /**
      * XML </Cell>
+     *
+     * @return void
      */
     private function cellEndHandler()
     {
@@ -565,6 +585,8 @@ class ReportParserGenerate extends ReportParserBase
 
     /**
      * XML <Now /> element handler
+     *
+     * @return void
      */
     private function nowStartHandler()
     {
@@ -574,6 +596,8 @@ class ReportParserGenerate extends ReportParserBase
 
     /**
      * XML <PageNum /> element handler
+     *
+     * @return void
      */
     private function pageNumStartHandler()
     {
@@ -582,6 +606,8 @@ class ReportParserGenerate extends ReportParserBase
 
     /**
      * XML <TotalPages /> element handler
+     *
+     * @return void
      */
     private function totalPagesStartHandler()
     {
@@ -592,6 +618,8 @@ class ReportParserGenerate extends ReportParserBase
      * Called at the start of an element.
      *
      * @param array $attrs an array of key value pairs for the attributes
+     *
+     * @return void
      */
     private function gedcomStartHandler($attrs)
     {
@@ -654,6 +682,8 @@ class ReportParserGenerate extends ReportParserBase
 
     /**
      * Called at the end of an element.
+     *
+     * @return void
      */
     private function gedcomEndHandler()
     {
@@ -668,6 +698,8 @@ class ReportParserGenerate extends ReportParserBase
      * XML <textBoxStartHandler>
      *
      * @param array $attrs an array of key value pairs for the attributes
+     *
+     * @return void
      */
     private function textBoxStartHandler($attrs)
     {
@@ -792,6 +824,8 @@ class ReportParserGenerate extends ReportParserBase
 
     /**
      * XML <textBoxEndHandler>
+     *
+     * @return void
      */
     private function textBoxEndHandler()
     {
@@ -805,6 +839,8 @@ class ReportParserGenerate extends ReportParserBase
      * XLM <Text>.
      *
      * @param array $attrs an array of key value pairs for the attributes
+     *
+     * @return void
      */
     private function textStartHandler($attrs)
     {
@@ -828,6 +864,8 @@ class ReportParserGenerate extends ReportParserBase
 
     /**
      * XML </Text>
+     *
+     * @return void
      */
     private function textEndHandler()
     {
@@ -842,6 +880,8 @@ class ReportParserGenerate extends ReportParserBase
      * 2. id is set with a record id
      *
      * @param array $attrs an array of key value pairs for the attributes
+     *
+     * @return void
      */
     private function getPersonNameStartHandler($attrs)
     {
@@ -923,6 +963,8 @@ class ReportParserGenerate extends ReportParserBase
      * XML <GedcomValue/>
      *
      * @param array $attrs an array of key value pairs for the attributes
+     *
+     * @return void
      */
     private function gedcomValueStartHandler($attrs)
     {
@@ -996,6 +1038,8 @@ class ReportParserGenerate extends ReportParserBase
      * XML <RepeatTag>
      *
      * @param array $attrs an array of key value pairs for the attributes
+     *
+     * @return void
      */
     private function repeatTagStartHandler($attrs)
     {
@@ -1067,6 +1111,8 @@ class ReportParserGenerate extends ReportParserBase
 
     /**
      * XML </ RepeatTag>
+     *
+     * @return void
      */
     private function repeatTagEndHandler()
     {
@@ -1152,6 +1198,8 @@ class ReportParserGenerate extends ReportParserBase
      * $ language_settings[]
      *
      * @param array $attrs an array of key value pairs for the attributes
+     *
+     * @return void
      */
     private function varStartHandler($attrs)
     {
@@ -1200,6 +1248,8 @@ class ReportParserGenerate extends ReportParserBase
      * XML <Facts>
      *
      * @param array $attrs an array of key value pairs for the attributes
+     *
+     * @return void
      */
     private function factsStartHandler($attrs)
     {
@@ -1247,6 +1297,8 @@ class ReportParserGenerate extends ReportParserBase
 
     /**
      * XML </Facts>
+     *
+     * @return void
      */
     private function factsEndHandler()
     {
@@ -1337,6 +1389,8 @@ class ReportParserGenerate extends ReportParserBase
      * The XML variable name and value is stored in $this->vars
      *
      * @param array $attrs an array of key value pairs for the attributes
+     *
+     * @return void
      */
     private function setVarStartHandler($attrs)
     {
@@ -1412,6 +1466,8 @@ class ReportParserGenerate extends ReportParserBase
      * XML <if > start element
      *
      * @param array $attrs an array of key value pairs for the attributes
+     *
+     * @return void
      */
     private function ifStartHandler($attrs)
     {
@@ -1475,6 +1531,8 @@ class ReportParserGenerate extends ReportParserBase
 
     /**
      * XML <if /> end element
+     *
+     * @return void
      */
     private function ifEndHandler()
     {
@@ -1489,6 +1547,8 @@ class ReportParserGenerate extends ReportParserBase
      * GEDCOM Records that are protected by Privacy setting will be ignore
      *
      * @param array $attrs an array of key value pairs for the attributes
+     *
+     * @return void
      */
     private function footnoteStartHandler($attrs)
     {
@@ -1515,6 +1575,8 @@ class ReportParserGenerate extends ReportParserBase
     /**
      * XML <Footnote /> end element
      * Print the collected Footnote data
+     *
+     * @return void
      */
     private function footnoteEndHandler()
     {
@@ -1532,6 +1594,8 @@ class ReportParserGenerate extends ReportParserBase
 
     /**
      * XML <FootnoteTexts /> element
+     *
+     * @return void
      */
     private function footnoteTextsStartHandler()
     {
@@ -1541,6 +1605,8 @@ class ReportParserGenerate extends ReportParserBase
 
     /**
      * XML element Forced line break handler - HTML code
+     *
+     * @return void
      */
     private function brStartHandler()
     {
@@ -1551,6 +1617,8 @@ class ReportParserGenerate extends ReportParserBase
 
     /**
      * XML <sp />element Forced space handler
+     *
+     * @return void
      */
     private function spStartHandler()
     {
@@ -1563,6 +1631,8 @@ class ReportParserGenerate extends ReportParserBase
      * XML <HighlightedImage/>
      *
      * @param array $attrs an array of key value pairs for the attributes
+     *
+     * @return void
      */
     private function highlightedImageStartHandler($attrs)
     {
@@ -1644,6 +1714,8 @@ class ReportParserGenerate extends ReportParserBase
      * XML <Image/>
      *
      * @param array $attrs an array of key value pairs for the attributes
+     *
+     * @return void
      */
     private function imageStartHandler($attrs)
     {
@@ -1744,6 +1816,8 @@ class ReportParserGenerate extends ReportParserBase
      * XML <Line> element handler
      *
      * @param array $attrs an array of key value pairs for the attributes
+     *
+     * @return void
      */
     private function lineStartHandler($attrs)
     {
@@ -1800,6 +1874,8 @@ class ReportParserGenerate extends ReportParserBase
      * XML <List>
      *
      * @param array $attrs an array of key value pairs for the attributes
+     *
+     * @return void
      */
     private function listStartHandler($attrs)
     {
@@ -2181,6 +2257,8 @@ class ReportParserGenerate extends ReportParserBase
 
     /**
      * XML <List>
+     *
+     * @return void
      */
     private function listEndHandler()
     {
@@ -2267,6 +2345,8 @@ class ReportParserGenerate extends ReportParserBase
      * Prints the total number of records in a list
      * The total number is collected from
      * List and Relatives
+     *
+     * @return void
      */
     private function listTotalStartHandler()
     {
@@ -2281,6 +2361,8 @@ class ReportParserGenerate extends ReportParserBase
      * XML <Relatives>
      *
      * @param array $attrs an array of key value pairs for the attributes
+     *
+     * @return void
      */
     private function relativesStartHandler($attrs)
     {
@@ -2419,6 +2501,8 @@ class ReportParserGenerate extends ReportParserBase
 
     /**
      * XML </ Relatives>
+     *
+     * @return void
      */
     private function relativesEndHandler()
     {
@@ -2501,6 +2585,8 @@ class ReportParserGenerate extends ReportParserBase
     /**
      * XML <Generation /> element handler
      * Prints the number of generations
+     *
+     * @return void
      */
     private function generationStartHandler()
     {
@@ -2510,6 +2596,8 @@ class ReportParserGenerate extends ReportParserBase
     /**
      * XML <NewPage /> element handler
      * Has to be placed in an element (header, pageheader, body or footer)
+     *
+     * @return void
      */
     private function newPageStartHandler()
     {
@@ -2522,6 +2610,8 @@ class ReportParserGenerate extends ReportParserBase
      *
      * @param string  $tag   HTML tag name
      * @param array[] $attrs an array of key value pairs for the attributes
+     *
+     * @return void
      */
     private function htmlStartHandler($tag, $attrs)
     {
@@ -2540,6 +2630,8 @@ class ReportParserGenerate extends ReportParserBase
      * XML </html>
      *
      * @param string $tag
+     *
+     * @return void
      */
     private function htmlEndHandler($tag)
     {
@@ -2559,6 +2651,8 @@ class ReportParserGenerate extends ReportParserBase
 
     /**
      * Handle <Input>
+     *
+     * @return void
      */
     private function inputStartHandler()
     {
@@ -2567,6 +2661,8 @@ class ReportParserGenerate extends ReportParserBase
 
     /**
      * Handle </Input>
+     *
+     * @return void
      */
     private function inputEndHandler()
     {
@@ -2575,6 +2671,8 @@ class ReportParserGenerate extends ReportParserBase
 
     /**
      * Handle <Report>
+     *
+     * @return void
      */
     private function reportStartHandler()
     {
@@ -2583,6 +2681,8 @@ class ReportParserGenerate extends ReportParserBase
 
     /**
      * Handle </Report>
+     *
+     * @return void
      */
     private function reportEndHandler()
     {
@@ -2591,6 +2691,8 @@ class ReportParserGenerate extends ReportParserBase
 
     /**
      * XML </titleEndHandler>
+     *
+     * @return void
      */
     private function titleEndHandler()
     {
@@ -2599,6 +2701,8 @@ class ReportParserGenerate extends ReportParserBase
 
     /**
      * XML </descriptionEndHandler>
+     *
+     * @return void
      */
     private function descriptionEndHandler()
     {
@@ -2612,6 +2716,8 @@ class ReportParserGenerate extends ReportParserBase
      * @param string   $pid
      * @param bool     $parents
      * @param int      $generations
+     *
+     * @return void
      */
     private function addDescendancy(&$list, $pid, $parents = false, $generations = -1)
     {
@@ -2672,6 +2778,8 @@ class ReportParserGenerate extends ReportParserBase
      * @param string   $pid
      * @param bool     $children
      * @param int      $generations
+     *
+     * @return void
      */
     private function addAncestors(&$list, $pid, $children = false, $generations = -1)
     {

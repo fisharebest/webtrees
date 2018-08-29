@@ -181,9 +181,9 @@ class ReportBaseCell extends ReportBaseElement
      *
      * @param $renderer
      *
-     * @return float
+     * @return float|array
      */
-    public function getWidth($renderer): float
+    public function getWidth($renderer)
     {
         return $this->width;
     }

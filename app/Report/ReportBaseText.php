@@ -65,9 +65,9 @@ class ReportBaseText extends ReportBaseElement
      * @param $wrapwidth
      * @param $cellwidth
      *
-     * @return mixed
+     * @return int
      */
-    public function setWrapWidth($wrapwidth, $cellwidth)
+    public function setWrapWidth($wrapwidth, $cellwidth): int
     {
         $this->wrapWidthCell = $cellwidth;
         if (strpos($this->text, "\n") !== false) {

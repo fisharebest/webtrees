@@ -81,9 +81,9 @@ class ReportPdfFootnote extends ReportBaseFootnote
      *
      * @param ReportTcpdf $pdf
      *
-     * @return array
+     * @return float|array
      */
-    public function getWidth($pdf): array
+    public function getWidth($pdf)
     {
         // Setup the style name, a font must be selected to calculate the width
         $pdf->setCurrentStyle('footnotenum');

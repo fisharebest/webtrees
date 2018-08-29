@@ -112,9 +112,9 @@ class ReportPdfImage extends ReportBaseImage
      *
      * @param $pdf
      *
-     * @return float
+     * @return float|array
      */
-    public function getWidth($pdf): float
+    public function getWidth($pdf)
     {
         return $this->width;
     }

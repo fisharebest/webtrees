@@ -102,9 +102,9 @@ class ReportHtmlText extends ReportBaseText
      *
      * @param ReportHtml $html
      *
-     * @return array
+     * @return float|array
      */
-    public function getWidth($html): array
+    public function getWidth($html)
     {
         // Setup the style name
         if ($html->getCurrentStyle() != $this->styleName) {

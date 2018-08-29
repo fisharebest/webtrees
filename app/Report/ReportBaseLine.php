@@ -78,9 +78,9 @@ class ReportBaseLine extends ReportBaseElement
      *
      * @param $renderer
      *
-     * @return number
+     * @return float|array
      */
-    public function getWidth($renderer): float
+    public function getWidth($renderer)
     {
         return abs($this->x2 - $this->x1);
     }

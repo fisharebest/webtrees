@@ -100,9 +100,9 @@ class ReportPdfText extends ReportBaseText
      *
      * @param ReportTcpdf $pdf
      *
-     * @return array
+     * @return float|array
      */
-    public function getWidth($pdf): array
+    public function getWidth($pdf)
     {
         // Setup the style name, a font must be selected to calculate the width
         if ($pdf->getCurrentStyle() != $this->styleName) {
