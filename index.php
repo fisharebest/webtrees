@@ -106,11 +106,13 @@ $base_uri = preg_replace('/[^\/]+\.php(\?.*)?$/', '', $request_uri);
 define('WT_BASE_URL', $base_uri);
 
 // Convert PHP warnings/notices into exceptions
-set_error_handler(function ($errno, $errstr, $errfile, $errline) {
+set_error_handler(function (int $errno, string $errstr, string $errfile, int $errline): bool {
     // Ignore errors that are silenced with '@'
     if (error_reporting() & $errno) {
         throw new ErrorException($errstr, 0, $errno, $errfile, $errline);
     }
+
+    return true;
 });
 
 DebugBar::startMeasure('init database');
