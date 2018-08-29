@@ -147,7 +147,7 @@ class EditFamilyController extends AbstractEditController
 
         $this->splitSource();
         $gedrec = '0 @REF@ INDI';
-        $gedrec .= $this->addNewName($request, $tree);
+        $gedrec .= self::addNewName($request, $tree);
         $gedrec .= $this->addNewSex($request);
         if (preg_match_all('/([A-Z0-9_]+)/', $tree->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
             foreach ($matches[1] as $match) {
@@ -245,7 +245,7 @@ class EditFamilyController extends AbstractEditController
         $this->splitSource(); // separate SOUR record from the rest
 
         $gedrec = '0 @REF@ INDI';
-        $gedrec .= $this->addNewName($request, $tree);
+        $gedrec .= self::addNewName($request, $tree);
         $gedrec .= $this->addNewSex($request);
         if (preg_match_all('/([A-Z0-9_]+)/', $tree->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
             foreach ($matches[1] as $match) {

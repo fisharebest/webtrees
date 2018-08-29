@@ -996,7 +996,7 @@ abstract class AbstractTheme
     public function individualBoxSexSymbol(Individual $individual)
     {
         if ($individual->getTree()->getPreference('PEDIGREE_SHOW_GENDER')) {
-            return $individual->sexImage('large');
+            return $individual->getSexImage('large');
         } else {
             return '';
         }

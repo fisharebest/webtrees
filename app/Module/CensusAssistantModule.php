@@ -51,7 +51,7 @@ class CensusAssistantModule extends AbstractModule
     {
         $census = $request->get('census');
 
-        $html = $this->censusTableHeader(new $census());
+        $html = self::censusTableHeader(new $census());
 
         return new Response($html);
     }
@@ -68,7 +68,7 @@ class CensusAssistantModule extends AbstractModule
 
         $individual = Individual::getInstance($request->get('xref'), $tree);
         $head       = Individual::getInstance($request->get('head'), $tree);
-        $html       = $this->censusTableRow(new $census(), $individual, $head);
+        $html       = self::censusTableRow(new $census(), $individual, $head);
 
         return new Response($html);
     }
