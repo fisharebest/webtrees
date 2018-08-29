@@ -26,6 +26,8 @@ class ReportHtmlText extends ReportBaseText
      * @param ReportHtml $renderer
      * @param int        $curx
      * @param bool       $attrib Is is called from a different element?
+     *
+     * @return void
      */
     public function render($renderer, $curx = 0, $attrib = true)
     {

@@ -537,6 +537,8 @@ class HousekeepingService
      * @param Filesystem $filesystem
      * @param string     $path_to_cache
      * @param int        $max_age_in_seconds
+     *
+     * @return void
      */
     public function deleteOldCacheFiles(Filesystem $filesystem, string $path_to_cache, int $max_age_in_seconds)
     {
@@ -551,6 +553,8 @@ class HousekeepingService
 
     /**
      * @param int $max_age_in_seconds
+     *
+     * @return void
      */
     public function deleteOldLogs(int $max_age_in_seconds)
     {
@@ -565,6 +569,8 @@ class HousekeepingService
 
     /**
      * @param int $max_age_in_seconds
+     *
+     * @return void
      */
     public function deleteOldSessions(int $max_age_in_seconds)
     {

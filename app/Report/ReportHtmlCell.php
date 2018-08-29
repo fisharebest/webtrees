@@ -24,6 +24,8 @@ class ReportHtmlCell extends ReportBaseCell
      * HTML Cell renderer
      *
      * @param ReportHtml $renderer
+     *
+     * @return void
      */
     public function render($renderer)
     {

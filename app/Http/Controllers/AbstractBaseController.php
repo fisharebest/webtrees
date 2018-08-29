@@ -51,6 +51,7 @@ abstract class AbstractBaseController
      * @param Family|null $family
      * @param bool|null   $edit
      *
+     * @return void
      * @throws FamilyNotFoundException
      * @throws FamilyAccessDeniedException
      */
@@ -69,6 +70,7 @@ abstract class AbstractBaseController
      * @param Individual|null $individual
      * @param bool|null       $edit
      *
+     * @return void
      * @throws IndividualNotFoundException
      * @throws IndividualAccessDeniedException
      */
@@ -87,6 +89,7 @@ abstract class AbstractBaseController
      * @param Media|null $media
      * @param bool|null  $edit
      *
+     * @return void
      * @throws MediaNotFoundException
      * @throws MediaNotFoundException
      */
@@ -105,6 +108,7 @@ abstract class AbstractBaseController
      * @param Note|null $note
      * @param bool|null $edit
      *
+     * @return void
      * @throws NoteNotFoundException
      * @throws NoteAccessDeniedException
      */
@@ -123,6 +127,7 @@ abstract class AbstractBaseController
      * @param GedcomRecord|null $record
      * @param bool|null         $edit
      *
+     * @return void
      * @throws RecordNotFoundException
      * @throws RecordAccessDeniedException
      */
@@ -141,6 +146,7 @@ abstract class AbstractBaseController
      * @param Repository|null $repository
      * @param bool|null       $edit
      *
+     * @return void
      * @throws RepositoryNotFoundException
      * @throws RepositoryAccessDeniedException
      */
@@ -159,6 +165,7 @@ abstract class AbstractBaseController
      * @param Source|null $source
      * @param bool|null   $edit
      *
+     * @return void
      * @throws SourceNotFoundException
      * @throws SourceAccessDeniedException
      */

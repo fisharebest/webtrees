@@ -26,6 +26,8 @@ class ReportPdfText extends ReportBaseText
      * PDF Text renderer
      *
      * @param ReportTcpdf $renderer
+     *
+     * @return void
      */
     public function render($renderer)
     {

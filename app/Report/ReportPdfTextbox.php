@@ -25,7 +25,7 @@ class ReportPdfTextbox extends ReportBaseTextbox
      *
      * @param ReportTcpdf $renderer
      *
-     * @return bool|int
+     * @return void
      */
     public function render($renderer)
     {
@@ -322,7 +322,5 @@ class ReportPdfTextbox extends ReportBaseTextbox
             $renderer->SetY($cY + $cH);
             $renderer->lastCellHeight = 0;
         }
-
-        return true;
     }
 }

@@ -24,6 +24,8 @@ class ReportPdfImage extends ReportBaseImage
      * PDF image renderer
      *
      * @param ReportTcpdf $renderer
+     *
+     * @return void
      */
     public function render($renderer)
     {

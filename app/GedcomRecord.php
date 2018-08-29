@@ -603,6 +603,8 @@ class GedcomRecord
 
     /**
      * Default for "other" object types
+     *
+     * @return void
      */
     public function extractNames()
     {

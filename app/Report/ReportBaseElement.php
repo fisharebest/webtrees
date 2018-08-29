@@ -27,6 +27,8 @@ class ReportBaseElement
      * Element renderer
      *
      * @param ReportHtml|ReportTcpdf $renderer
+     *
+     * @return void
      */
     public function render($renderer)
     {

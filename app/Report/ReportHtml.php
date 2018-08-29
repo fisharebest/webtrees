@@ -197,6 +197,8 @@ class ReportHtml extends ReportBase
 
     /**
      * Generate footnotes
+     *
+     * @return void
      */
     public function footnotes()
     {
@@ -439,6 +441,8 @@ class ReportHtml extends ReportBase
 
     /**
      * Clear the Header - ReportHtml
+     *
+     * @return void
      */
     public function clearHeader()
     {
@@ -523,6 +527,8 @@ class ReportHtml extends ReportBase
 
     /**
      * Clear the Page Header - ReportHtml
+     *
+     * @return void
      */
     public function clearPageHeader()
     {
@@ -671,6 +677,8 @@ class ReportHtml extends ReportBase
      * Set the current style.
      *
      * @param $s
+     *
+     * @void
      */
     public function setCurrentStyle($s)
     {

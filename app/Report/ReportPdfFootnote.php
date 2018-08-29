@@ -24,6 +24,8 @@ class ReportPdfFootnote extends ReportBaseFootnote
      * PDF Footnotes number renderer
      *
      * @param ReportTcpdf $renderer
+     *
+     * @return void
      */
     public function render($renderer)
     {

@@ -55,11 +55,11 @@ class Soundex
     /**
      * Generate Russell soundex codes for a given text.
      *
-     * @param $text
+     * @param string $text
      *
-     * @return null|string
+     * @return string
      */
-    public static function russell($text)
+    public static function russell(string $text): string
     {
         $words         = preg_split('/\s/', $text, -1, PREG_SPLIT_NO_EMPTY);
         $soundex_array = [];
@@ -87,11 +87,11 @@ class Soundex
     /**
      * Generate Daitch–Mokotoff soundex codes for a given text.
      *
-     * @param $text
+     * @param string $text
      *
      * @return string
      */
-    public static function daitchMokotoff($text)
+    public static function daitchMokotoff(string $text): string
     {
         $words         = preg_split('/\s/', $text, -1, PREG_SPLIT_NO_EMPTY);
         $soundex_array = [];

@@ -24,6 +24,8 @@ class ReportHtmlFootnote extends ReportBaseFootnote
      * HTML Footnotes number renderer
      *
      * @param ReportHtml $renderer
+     *
+     * @return void
      */
     public function render($renderer)
     {

@@ -24,6 +24,8 @@ class ReportHtmlLine extends ReportBaseLine
      * HTML line renderer
      *
      * @param ReportHtml $renderer
+     *
+     * @return void
      */
     public function render($renderer)
     {

@@ -24,6 +24,8 @@ class ReportPdfPageheader extends ReportBasePageheader
      * PageHeader element renderer
      *
      * @param ReportTcpdf $renderer
+     *
+     * @return void
      */
     public function render($renderer)
     {

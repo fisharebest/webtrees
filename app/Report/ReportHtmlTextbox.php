@@ -24,6 +24,8 @@ class ReportHtmlTextbox extends ReportBaseTextbox
      * Render the elements.
      *
      * @param ReportHtml $renderer
+     *
+     * @return void
      */
     public function render($renderer)
     {

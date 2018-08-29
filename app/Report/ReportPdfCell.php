@@ -26,6 +26,8 @@ class ReportPdfCell extends ReportBaseCell
      * PDF Cell renderer
      *
      * @param ReportTcpdf $renderer
+     *
+     * @return void
      */
     public function render($renderer)
     {

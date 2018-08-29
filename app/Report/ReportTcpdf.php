@@ -40,7 +40,7 @@ class ReportTcpdf extends TCPDF
     public $printedfootnotes = [];
 
     /** @var string Currently used style name */
-    public $currentStyle;
+    public $currentStyle = '';
 
     /** @var int The last cell height */
     public $lastCellHeight = 0;
@@ -56,6 +56,8 @@ class ReportTcpdf extends TCPDF
 
     /**
      * PDF Header -PDF
+     *
+     * @return void
      */
     public function header()
     {
@@ -81,6 +83,8 @@ class ReportTcpdf extends TCPDF
 
     /**
      * PDF Body -PDF
+     *
+     * @return void
      */
     public function body()
     {
@@ -100,6 +104,8 @@ class ReportTcpdf extends TCPDF
 
     /**
      * PDF Footnotes -PDF
+     *
+     * @return void
      */
     public function footnotes()
     {
@@ -116,6 +122,8 @@ class ReportTcpdf extends TCPDF
 
     /**
      * PDF Footer -PDF
+     *
+     * @return void
      */
     public function footer()
     {
@@ -190,6 +198,8 @@ class ReportTcpdf extends TCPDF
      * Remove the header.
      *
      * @param $index
+     *
+     * @return void
      */
     public function removeHeader($index)
     {
@@ -200,6 +210,8 @@ class ReportTcpdf extends TCPDF
      * Remove the page header.
      *
      * @param $index
+     *
+     * @return void
      */
     public function removePageHeader($index)
     {
@@ -210,6 +222,8 @@ class ReportTcpdf extends TCPDF
      * Remove the body.
      *
      * @param $index
+     *
+     * @return void
      */
     public function removeBody($index)
     {
@@ -220,6 +234,8 @@ class ReportTcpdf extends TCPDF
      * Remove the footer.
      *
      * @param $index
+     *
+     * @return void
      */
     public function removeFooter($index)
     {
@@ -228,6 +244,8 @@ class ReportTcpdf extends TCPDF
 
     /**
      * Clear the Header -PDF
+     *
+     * @return void
      */
     public function clearHeader()
     {
@@ -237,6 +255,8 @@ class ReportTcpdf extends TCPDF
 
     /**
      * Clear the Page Header -PDF
+     *
+     * @return void
      */
     public function clearPageHeader()
     {
@@ -248,6 +268,8 @@ class ReportTcpdf extends TCPDF
      * Set the report.
      *
      * @param $r
+     *
+     * @return void
      */
     public function setReport($r)
     {
@@ -268,6 +290,8 @@ class ReportTcpdf extends TCPDF
      * Setup a style for usage -PDF
      *
      * @param string $s Style name
+     *
+     * @return void
      */
     public function setCurrentStyle($s)
     {

@@ -57,6 +57,8 @@ class Site
      *
      * @param string $setting_name
      * @param string $setting_value
+     *
+     * @return void
      */
     public static function setPreference($setting_name, $setting_value)
     {

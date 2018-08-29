@@ -24,6 +24,8 @@ class ReportPdfLine extends ReportBaseLine
      * PDF line renderer
      *
      * @param ReportTcpdf $renderer
+     *
+     * @return void
      */
     public function render($renderer)
     {

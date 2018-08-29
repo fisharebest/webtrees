@@ -148,6 +148,8 @@ class Media extends GedcomRecord
 
     /**
      * Extract names from the GEDCOM record.
+     *
+     * @return void
      */
     public function extractNames()
     {

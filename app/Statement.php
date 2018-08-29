@@ -93,6 +93,8 @@ class Statement
     /**
      * Close the cursor, and mark it as not-executed, so we can execute
      * it again (perhaps with different parameters).
+     *
+     * @return void
      */
     public function closeCursor()
     {

@@ -24,6 +24,8 @@ class Session
 {
     /**
      * Start a session
+     *
+     * @return void
      */
     public static function start()
     {
@@ -57,7 +59,7 @@ class Session
      *
      * @return mixed
      */
-    public static function get($name, $default = null)
+    public static function get(string $name, $default = null)
     {
         return $_SESSION[$name] ?? $default;
     }
@@ -67,8 +69,10 @@ class Session
      *
      * @param string $name
      * @param mixed  $value
+     *
+     * @return void
      */
-    public static function put($name, $value)
+    public static function put(string $name, $value)
     {
         $_SESSION[$name] = $value;
     }
@@ -77,8 +81,10 @@ class Session
      * Remove a value from the session
      *
      * @param string $name
+     *
+     * @return void
      */
-    public static function forget($name)
+    public static function forget(string $name)
     {
         unset($_SESSION[$name]);
     }
@@ -90,13 +96,15 @@ class Session
      *
      * @return bool
      */
-    public static function has($name): bool
+    public static function has(string $name): bool
     {
         return isset($_SESSION[$name]);
     }
 
     /**
      * Remove all stored data from the session.
+     *
+     * @return void
      */
     public static function clear()
     {
@@ -107,8 +115,10 @@ class Session
      * After any change in authentication level, we should use a new session ID.
      *
      * @param bool $destroy
+     *
+     * @return void
      */
-    public static function regenerate($destroy = false)
+    public static function regenerate(bool $destroy = false)
     {
         if ($destroy) {
             self::clear();
@@ -120,14 +130,18 @@ class Session
      * Set an explicit session ID. Typically used for search robots.
      *
      * @param string $id
+     *
+     * @return void
      */
-    public static function setId($id)
+    public static function setId(string $id)
     {
         session_id($id);
     }
 
     /**
      * Initialise our session save handler
+     *
+     * @return void
      */
     private static function setSaveHandler()
     {

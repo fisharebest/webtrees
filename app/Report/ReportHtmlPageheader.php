@@ -24,6 +24,8 @@ class ReportHtmlPageheader extends ReportBasePageheader
      * Render elements.
      *
      * @param ReportHtml $renderer
+     *
+     * @return void
      */
     public function render($renderer)
     {

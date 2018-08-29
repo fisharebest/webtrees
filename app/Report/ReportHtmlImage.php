@@ -24,6 +24,8 @@ class ReportHtmlImage extends ReportBaseImage
      * Image renderer
      *
      * @param ReportHtml $renderer
+     *
+     * @return void
      */
     public function render($renderer)
     {

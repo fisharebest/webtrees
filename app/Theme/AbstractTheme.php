@@ -553,7 +553,7 @@ abstract class AbstractTheme
     {
         return
             '<ul class="nav wt-secondary-menu">' .
-            implode('', array_map(function (Menu $menu) {
+            implode('', array_map(function (Menu $menu): string {
                 return $this->formatSecondaryMenuItem($menu);
             }, $this->secondaryMenu())) .
             '</ul>';
@@ -777,7 +777,7 @@ abstract class AbstractTheme
             $icons   = '<div class="icons">' .
                 '<span class="iconz icon-zoomin" title="' . I18N::translate('Zoom in/out on this box.') . '"></span>' .
                 '<div class="itr"><i class="icon-pedigree"></i><div class="popup">' .
-                '<ul class="' . $person_box_class . '">' . implode('', array_map(function (Menu $menu) {
+                '<ul class="' . $person_box_class . '">' . implode('', array_map(function (Menu $menu): string {
                     return $menu->bootstrap4();
                 }, $this->individualBoxMenu($individual))) . '</ul>' .
                 '</div>' .
@@ -1325,10 +1325,10 @@ abstract class AbstractTheme
     {
         global $controller;
 
-        /** @var UserFavoritesModule $user_favorites */
+        /** @var UserFavoritesModule|null $user_favorites */
         $user_favorites = Module::getModuleByName('user_favorites');
 
-        /** @var FamilyTreeFavoritesModule $tree_favorites */
+        /** @var FamilyTreeFavoritesModule|null $tree_favorites */
         $tree_favorites = Module::getModuleByName('gedcom_favorites');
 
         $show_user_favorites = $this->tree !== null && $user_favorites !== null && Auth::check();
@@ -1829,7 +1829,7 @@ abstract class AbstractTheme
                 ]);
             }
 
-            usort($submenus, function (Menu $x, Menu $y) {
+            usort($submenus, function (Menu $x, Menu $y): int {
                 return I18N::strcasecmp($x->getLabel(), $y->getLabel());
             });
 
@@ -2040,7 +2040,7 @@ abstract class AbstractTheme
      */
     public function primaryMenuContent(array $menus): string
     {
-        return implode('', array_map(function (Menu $menu) {
+        return implode('', array_map(function (Menu $menu): string {
             return $menu->bootstrap4();
         }, $menus));
     }
@@ -2084,7 +2084,7 @@ abstract class AbstractTheme
      */
     public function secondaryMenuContent(array $menus): string
     {
-        return implode('', array_map(function (Menu $menu) {
+        return implode('', array_map(function (Menu $menu): string {
             return $menu->bootstrap4();
         }, $menus));
     }

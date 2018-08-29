@@ -26,7 +26,7 @@ class ReportPdfHtml extends ReportBaseHtml
      * @param      $renderer
      * @param bool $sub
      *
-     * @return int|string
+     * @return void
      */
     public function render($renderer, $sub = false)
     {
@@ -54,7 +54,5 @@ class ReportPdfHtml extends ReportBaseHtml
             return $this->text;
         }
         $renderer->writeHTML($this->text); //prints 2 empty cells in the Expanded Relatives report
-
-        return 0;
     }
 }

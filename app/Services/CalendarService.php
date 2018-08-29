@@ -98,7 +98,7 @@ class CalendarService
      * @param int     $jd1
      * @param int     $jd2
      * @param string  $events
-     * @param Boolean $only_living
+     * @param bool    $only_living
      * @param string  $sort_by
      * @param Tree    $tree
      *
