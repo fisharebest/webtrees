@@ -136,12 +136,12 @@ class CalendarService
 
         switch ($sort_by) {
             case 'anniv':
-                uasort($facts, function (Fact $x, Fact $y) {
+                uasort($facts, function (Fact $x, Fact $y): int {
                     return Fact::compareDate($y, $x);
                 });
                 break;
             case 'alpha':
-                uasort($facts, function (Fact $x, Fact $y) {
+                uasort($facts, function (Fact $x, Fact $y): int {
                     return GedcomRecord::compare($x->getParent(), $y->getParent());
                 });
                 break;
