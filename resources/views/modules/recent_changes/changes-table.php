@@ -30,7 +30,7 @@
 					<?php if ($record::RECORD_TYPE === 'INDI') : ?>
 						<?= FontAwesome::semanticIcon('individual', I18N::translate('Individual')) ?>
 					<?php elseif ($record::RECORD_TYPE === 'FAM'): ?>
-						<?= FontAwesome::semanticicon('family', I18N::translate('Family')) ?>
+						<?= FontAwesome::semanticIcon('family', I18N::translate('Family')) ?>
 					<?php elseif ($record::RECORD_TYPE === 'OBJE'): ?>
 						<?= FontAwesome::semanticIcon('media', I18N::translate('Media')) ?>
 					<?php elseif ($record::RECORD_TYPE === 'NOTE'): ?>

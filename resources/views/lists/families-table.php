@@ -225,7 +225,7 @@ for ($year = 1550; $year < 2030; $year += 10) {
 
 			<tr class="<?= $family->isPendingDeletion() ? 'old' : ($family->isPendingAddition() ? 'new' : '') ?>">
 				<!-- Husband name -->
-				<td colspan="2" data-sort=""<?= e(str_replace([',', '@P.N.', '@N.N.'], 'AAAA', implode(',', array_reverse(explode(',', $husb->getSortName()))))) ?>">
+				<td colspan="2" data-sort="<?= e(str_replace([',', '@P.N.', '@N.N.'], 'AAAA', implode(',', array_reverse(explode(',', $husb->getSortName()))))) ?>">
 					<?php foreach ($husb->getAllNames() as $num => $name): ?>
 						<?php if ($name['type'] != '_MARNM' || $num == $husb->getPrimaryName()): ?>
 						<a title="<?= $name['type'] === 'NAME' ? '' : GedcomTag::getLabel($name['type'], $husb) ?>" href="<?= e($family->url()) ?>" class="<?= $num === $husb->getPrimaryName() ? 'name2' : '' ?>">
@@ -261,7 +261,7 @@ for ($year = 1550; $year < 2030; $year += 10) {
 				</td>
 
 				<!-- Wife name -->
-				<td colspan="2" data-sort=""<?= e(str_replace([',', '@P.N.', '@N.N.'], 'AAAA', implode(',', array_reverse(explode(',', $wife->getSortName()))))) ?>">
+				<td colspan="2" data-sort="<?= e(str_replace([',', '@P.N.', '@N.N.'], 'AAAA', implode(',', array_reverse(explode(',', $wife->getSortName()))))) ?>">
 					<?php foreach ($wife->getAllNames() as $num => $name): ?>
 						<?php if ($name['type'] != '_MARNM' || $num == $wife->getPrimaryName()): ?>
 							<a title="<?= $name['type'] === 'NAME' ? '' : GedcomTag::getLabel($name['type'], $wife) ?>" href="<?= e($family->url()) ?>" class="<?= $num === $wife->getPrimaryName() ? 'name2' : '' ?>">

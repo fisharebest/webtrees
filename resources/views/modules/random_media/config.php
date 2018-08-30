@@ -14,7 +14,7 @@
 <fieldset class="form-group">
 	<div class="row">
 		<legend class="col-form-label col-sm-3">
-			<?= I18n::translate('Type') ?>
+			<?= I18N::translate('Type') ?>
 		</legend>
 		<div class="col-sm-9">
 			<?php foreach ($formats as $typeName => $typeValue): ?>
