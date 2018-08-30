@@ -37,7 +37,7 @@
 </div>
 
 <div class="form-group row file-location file-location-upload <?= $media_file && $media_file->isExternal() ? 'd-none' : '' ?>">
-	<label class="col-form-label col-sm-2" for="type">
+	<label class="col-form-label col-sm-2" for="folder">
 		<?= I18N::translate('Filename on server') ?>
 	</label>
 	<div class="col-sm-10">
