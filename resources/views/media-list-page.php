@@ -161,7 +161,7 @@
 								echo '<a href="' . e($individual->url()) . '">' . FontAwesome::semanticIcon('individual', I18N::translate('Individual')) . ' ' . $individual->getFullName() . '</a><br>';
 							}
 							foreach ($media_object->linkedFamilies('OBJE') as $family) {
-								echo '<a href="' . e($family->url()) . '">' . FontAwesome::semanticicon('family', I18N::translate('Family')) . ' ' . $family->getFullName() . '</a><br>';
+								echo '<a href="' . e($family->url()) . '">' . FontAwesome::semanticIcon('family', I18N::translate('Family')) . ' ' . $family->getFullName() . '</a><br>';
 							}
 							foreach ($media_object->linkedSources('OBJE') as $source) {
 								echo '<a href="' . e($source->url()) . '">' . FontAwesome::semanticIcon('source', I18N::translate('Source')) . ' ' . $source->getFullName() . '</a><br>';

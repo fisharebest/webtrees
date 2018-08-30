@@ -45,7 +45,7 @@
 							<?php FunctionsCharts::printFamilyParents($record) ?>
 							<?php if (Auth::isEditor($record->getTree())): ?>
 								<?php if ($record->getHusband() === null): ?>
-									<a href="<?= e(route('add-spouse-to-family', ['ged=' => $record->getTree()->getName(), 'xref' => $record->getXref(), 'famtag' => 'HUSB'])) ?>>
+									<a href="<?= e(route('add-spouse-to-family', ['ged=' => $record->getTree()->getName(), 'xref' => $record->getXref(), 'famtag' => 'HUSB'])) ?>">
 										<?= I18N::translate('Add a father') ?>
 									</a>
 									<br>

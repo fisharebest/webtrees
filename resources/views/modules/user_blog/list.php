@@ -12,7 +12,7 @@
 			<a class="btn btn-link" data-toggle="collapse" data-target="#more-news-<?= e($block_id) ?>" role="button" aria-expanded="false" aria-controls="more-news-<?= e($block_id) ?>"><?= I18N::translate('More news articles') ?>
 			</a>
 		</p>
-		<div class="collapse" id="more-news-<?= e($block_id) ?>" =>
+		<div class="collapse" id="more-news-<?= e($block_id) ?>">
 	<?php endif ?>
 
 	<div class="news_box">
