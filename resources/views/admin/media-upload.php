@@ -39,7 +39,7 @@
 		</div>
 
 		<div class="form-group row">
-			<label class="form-control-label col-sm-3" for="filename<?= e($i) ?>">
+			<label class="form-control-label col-sm-3" for="folder_list<?= e($i) ?>">
 				<?= I18N::translate('Folder name on server') ?>
 				<span class="sr-only"><?= e($i) ?></span>
 			</label>
