@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2018-08-29 08:29+0000\n"
+"PO-Revision-Date: 2018-08-30 04:34+0000\n"
 "Last-Translator: Andi Ahmad Fachrudin <nugeonet@gmail.com>\n"
 "Language-Team: Indonesian <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/id/>\n"
 "Language: id\n"
@@ -125,14 +125,14 @@ msgstr[0] "%1$s file telah terurai dalam %2$s seconds."
 #, php-format
 msgid "%1$s individual displayed, out of the normal total of %2$s, from %3$s generations."
 msgid_plural "%1$s individuals displayed, out of the normal total of %2$s, from %3$s generations."
-msgstr[0] "%1$s individu yang ditampilkan, dari jumlah normal keseluruhan %2$s, dari %3$s generasi."
+msgstr[0] "%1$s orang yang ditampilkan, dari jumlah normal keseluruhan %2$s, dari %3$s generasi."
 
 #. I18N: %1$s is a count of individuals, %2$s is a list of their names
 #: app/Module/GoogleMapsModule.php:852
 #, php-format
 msgid "%1$s individual is missing birthplace map coordinates: %2$s."
 msgid_plural "%1$s individuals are missing birthplace map coordinates: %2$s."
-msgstr[0] "%1$s individu tidak mempunyai catatan koordinat peta tempat kelahiran: %2$s."
+msgstr[0] "%1$s orang tidak mempunyai catatan koordinat peta tempat kelahiran: %2$s."
 
 #. I18N: %1$s is an internal ID number such as R123. %2$s and %3$s are record types, such as INDI or SOUR
 #: admin_trees_check.php:192
@@ -217,7 +217,7 @@ msgstr "%s dan nenek moyangnya"
 #: app/Module/ClippingsCartModule.php:292
 #, php-format
 msgid "%s and the individuals that reference it."
-msgstr "%s dan individu yang berhubungan dengannya."
+msgstr "%s dan orang yang berhubungan dengannya."
 
 #. I18N: %s is a family (husband + wife)
 #: app/Module/ClippingsCartModule.php:121
@@ -284,37 +284,37 @@ msgstr[0] "%s jam yang lalu"
 #, php-format
 msgid "%s individual"
 msgid_plural "%s individuals"
-msgstr[0] "%s individu"
+msgstr[0] "%s orang"
 
 #: app/Controller/SearchController.php:349
 #, php-format
 msgid "%s individual has been updated."
 msgid_plural "%s individuals have been updated."
-msgstr[0] "%s individu telah diperbarui."
+msgstr[0] "%s orang telah diperbarui."
 
 #: app/Module/GoogleMapsModule.php:845
 #, php-format
 msgid "%s individual is private."
 msgid_plural "%s individuals are private."
-msgstr[0] "%s individu bersifat pribadi."
+msgstr[0] "%s orang bersifat pribadi."
 
 #: app/Controller/LifespanController.php:253
 #, php-format
 msgid "%s individual with events between %s and %s"
 msgid_plural "%s individuals with events between %s and %s"
-msgstr[0] "%s individu dengan agenda antara %s dan %s"
+msgstr[0] "%s orang dengan peristiwa antara %s dan %s"
 
 #: app/Controller/LifespanController.php:246
 #, php-format
 msgid "%s individual with events in %s"
 msgid_plural "%s individuals with events in %s"
-msgstr[0] "%s individu dengan agenda pada %s"
+msgstr[0] "%s orang dengan peristiwa pada %s"
 
 #: app/Controller/LifespanController.php:239
 #, php-format
 msgid "%s individual with events in %s between %s and %s"
 msgid_plural "%s individuals with events in %s between %s and %s"
-msgstr[0] "%s individu dengan agenda pada %s antara %s dan %s"
+msgstr[0] "%s orang dengan peristiwa pada %s antara %s dan %s"
 
 #. I18N: %s is a PHP function/module/setting
 #: setup.php:122
@@ -438,7 +438,7 @@ msgstr[0] "%s tahun yang lalu"
 #: calendar.php:601
 #, php-format
 msgid "%s year anniversary"
-msgstr "Ulangtahun %s"
+msgstr "Ulang Tahun %s"
 
 #: app/Functions/Functions.php:585
 #, php-format
@@ -684,7 +684,7 @@ msgstr "<b> Catatan penting: </b> Pemandu transfer tidak dapat membantu dengan m
 
 #: message.php:107
 msgid "<b>Please note:</b> Private information of living individuals will only be given to family relatives and close friends. You will be asked to verify your relationship before you will receive any private data. Sometimes information of dead individuals may also be private. If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives. If you are submitting changes to the genealogy data, please include the sources where you obtained the data."
-msgstr "<b>Harap diperhatikan:</ b> Informasi pribadi dari individu yang hidup hanya akan diberikan kepada kerabat keluarga dan teman dekat. Anda akan diminta untuk memverifikasi hubungan Anda sebelum Anda menerima data pribadi apa pun. Kadang-kadang informasi dari individu yang mati juga dapat bersifat pribadi. Jika ini masalahnya, itu karena tidak ada cukup informasi yang diketahui tentang individu untuk menentukan apakah mereka hidup atau tidak dan kita mungkin tidak memiliki informasi lebih lanjut tentang individu ini. <br><br> Sebelum mengajukan pertanyaan, tolong verifikasi bahwa Anda bertanya tentang individu yang tepat dengan memeriksa tanggal, tempat, dan kerabat dekat. Jika Anda mengirimkan perubahan ke data genealogi, harap sertakan sumber-sumber dari mana Anda memperoleh datanya."
+msgstr "<b>Harap diperhatikan:</ b> Informasi pribadi dari orang yang masih hidup hanya akan diberikan kepada kerabat keluarga dan teman dekat. anda akan diminta untuk memverifikasi hubungan anda sebelum anda menerima data pribadi apa pun. terkadang informasi dari orang yang sudah mati juga dapat bersifat pribadi. Jika ini masalahnya, itu karena tidak ada cukup informasi yang diketahui tentang seseorang untuk menentukan apakah mereka hidup atau tidak dan kita mungkin tidak memiliki informasi lebih lanjut tentang orang ini. <br><br>Sebelum mengajukan pertanyaan, tolong verifikasi bahwa anda bertanya tentang orang yang tepat dengan memeriksa tanggal, tempat, dan kerabat dekat. Jika anda mengirimkan perubahan ke data genealogi, harap sertakan sumber akurat dari mana anda memperoleh datanya. Terima kasih."
 
 #. I18N: default option in list of themes
 #: admin_trees_config.php:976 admin_users.php:488 edituser.php:278
@@ -693,7 +693,7 @@ msgstr "<tema sederhana>"
 
 #: login.php:409
 msgid "<div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul></div>"
-msgstr "<div class=\"largeError\"> Pemberitahuan:</div> <div class=\"error\">Dengan mengisi dan mengirimkan formulir ini, Anda setuju: <ul><li>untuk melindungi privasi individu yang hidup yang terdaftar di situs kami;</li><li> dan dalam kotak teks di bawah ini, untuk menjelaskan kepada siapa Anda terkait, atau untuk memberikan kami informasi tentang seseorang yang harus terdaftar di situs web kami.</li></ul></div>"
+msgstr "<div class=\"largeError\">Pemberitahuan:</div> <div class=\"error\">Dengan mengisi dan mengirimkan formulir ini, anda setuju: <ul><li>untuk melindungi privasi orang yang masih hidup yang terdaftar di situs kami;</li><li> dan dalam kotak teks di bawah ini, untuk menjelaskan kepada siapa anda terkait, atau untuk memberikan kami informasi tentang seseorang yang harus terdaftar di situs silsilah keluarga kami.</li></ul></div>"
 
 #. I18N: a label/value pair, such as “Occupation: Farmer”. Some languages may need to change the punctuation.
 #: app/Fact.php:413 app/Functions/FunctionsPrintFacts.php:545
@@ -705,7 +705,7 @@ msgstr "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2
 #. I18N: Description of the “RelationshipsChart” module
 #: app/Module/RelationshipsChartModule.php:56
 msgid "A chart displaying relationships between two individuals."
-msgstr "Bagan yang menampilkan hubungan antara dua individu."
+msgstr "Grafik yang menampilkan hubungan antara dua orang."
 
 #. I18N: Description of the “FamilyBookChart” module
 #: app/Module/FamilyBookChartModule.php:42
@@ -720,7 +720,7 @@ msgstr "Grafik dari leluhur seseorang, sebagai silsilah yang ringkas."
 #. I18N: Description of the “PedigreeChart” module
 #: app/Module/PedigreeChartModule.php:42
 msgid "A chart of an individual’s ancestors, formatted as a tree."
-msgstr "Grafik dari leluhur seseorang, yang diformat seperti silsilah."
+msgstr "Grafik dari leluhur seseorang, yang diformat seperti sebuah pohon."
 
 #. I18N: Description of the “AncestorsChart” module
 #: app/Module/AncestorsChartModule.php:42
@@ -735,7 +735,7 @@ msgstr "Grafik dari keturunan seseorang."
 #. I18N: Description of the “LifespansChart” module
 #: app/Module/LifespansChartModule.php:42
 msgid "A chart of individuals’ lifespans."
-msgstr "Sebuah grafik rentang hidup individu."
+msgstr "Sebuah grafik rentang hidup seseorang."
 
 #: edit_interface.php:1011
 msgid "A child may have more than one set of parents. The relationship between the child and the parents can be biological, legal, or based on local culture and tradition. If no pedigree is specified, then a biological relationship will be assumed."
@@ -867,7 +867,7 @@ msgstr "Seorang calon pengguna telah terdaftar dengan webtrees di %s."
 #: app/Module/PedigreeReportModule.php:35
 #: modules_v3/pedigree_report/report.xml:4
 msgid "A report of an individual’s ancestors, formatted as a tree."
-msgstr "Laporan nenek moyang seseorang, yang diformat seperti silsilah."
+msgstr "Laporan nenek moyang seseorang, yang diformat seperti sebuah pohon."
 
 #. I18N: Description of the “Ancestors” module
 #: app/Module/AhnentafelReportModule.php:43
@@ -879,13 +879,13 @@ msgstr "Laporan tentang leluhur seseorang, dalam gaya naratif."
 #: app/Module/DescendancyReportModule.php:35
 #: modules_v3/descendancy_report/report.xml:4
 msgid "A report of an individual’s descendants, in a narrative style."
-msgstr "Laporan keturunan individu, dalam gaya naratif."
+msgstr "Laporan keturunan seseorang, dalam gaya naratif."
 
 #. I18N: Description of the “Individual” module
 #: app/Module/IndividualReportModule.php:35
 #: modules_v3/individual_report/report.xml:4
 msgid "A report of an individual’s details."
-msgstr "Laporan tentang detail individu."
+msgstr "Laporan tentang rincian seseorang."
 
 #: modules_v3/fact_sources/report.xml:4
 msgid "A report of facts which are supported by a given source."
@@ -900,30 +900,30 @@ msgstr "Laporan anggota keluarga dan detilnya masing-masing."
 #. I18N: Description of the “Deaths” module
 #: app/Module/DeathReportModule.php:35 modules_v3/death_report/report.xml:4
 msgid "A report of individuals who died in a given time or place."
-msgstr "Laporan individu yang meninggal pada waktu atau tempat tertentu."
+msgstr "Laporan seseorang yang meninggal pada waktu atau tempat tertentu."
 
 #. I18N: Description of the “Occupations” module
 #: app/Module/OccupationReportModule.php:35
 #: modules_v3/occupation_report/report.xml:4
 msgid "A report of individuals who had a given occupation."
-msgstr "Laporan individu yang memiliki pekerjaan tertentu."
+msgstr "Laporan seseorang yang memiliki pekerjaan tertentu."
 
 #. I18N: Description of the “Births” module
 #: app/Module/BirthReportModule.php:35 modules_v3/birth_report/report.xml:4
 msgid "A report of individuals who were born in a given time or place."
-msgstr "Laporan individu yang lahir di waktu atau tempat tertentu."
+msgstr "Laporan seseorang yang lahir di waktu atau tempat tertentu."
 
 #. I18N: Description of the “Cemeteries” module
 #: app/Module/CemeteryReportModule.php:35
 #: modules_v3/cemetery_report/report.xml:4
 msgid "A report of individuals who were buried in a given place."
-msgstr "Laporan individu yang dikubur di tempat tertentu."
+msgstr "Laporan seseorang yang dikubur di tempat tertentu."
 
 #. I18N: Description of the “Marriages” module
 #: app/Module/MarriageReportModule.php:35
 #: modules_v3/marriage_report/report.xml:4
 msgid "A report of individuals who were married in a given time or place."
-msgstr "Laporan individu yang menikah pada waktu atau tempat tertentu."
+msgstr "Laporan seseorang yang menikah pada waktu atau tempat tertentu."
 
 #. I18N: Description of the “Changes” module
 #: app/Module/ChangeReportModule.php:35 modules_v3/change_report/report.xml:4
@@ -940,7 +940,7 @@ msgstr "Laporan keluarga yang terkait erat dengan seseorang."
 #: app/Module/RelatedIndividualsReportModule.php:35
 #: modules_v3/relative_ext_report/report.xml:4
 msgid "A report of the individuals that are closely related to an individual."
-msgstr "Laporan dari individu yang terkait erat dengan individu."
+msgstr "Laporan dari seseorang yang terkait erat dengan orang lain."
 
 #. I18N: Description of the “Source” module
 #: app/Module/FactSourcesReportModule.php:35
@@ -951,7 +951,7 @@ msgstr "Laporan informasi yang disediakan oleh sumber."
 #: app/Module/MissingFactsReportModule.php:35
 #: modules_v3/missing_facts_report/report.xml:4
 msgid "A report of the information that is missing for an individual and their relatives."
-msgstr "Laporan dari informasi yang hilang untuk individu dan keluarga mereka."
+msgstr "Laporan dari informasi yang hilang untuk seseorang dan keluarganya."
 
 #. I18N: Description of the “Vital records” module. “Vital records” are life events - birth/marriage/death
 #: app/Module/BirthDeathMarriageReportModule.php:43
@@ -971,7 +971,7 @@ msgstr "Bilah sisi yang menampilkan daftar abjad semua keluarga dalam silsilah k
 #. I18N: Description of “Individuals” module
 #: app/Module/IndividualSidebarModule.php:38
 msgid "A sidebar showing an alphabetic list of all the individuals in the family tree."
-msgstr "Bilah sisi yang menampilkan daftar abjad semua individu dalam silsilah keluarga."
+msgstr "Bilah sisi yang menampilkan daftar abjad semua orang dalam silsilah keluarga."
 
 #. I18N: Description of the “Family navigator” module
 #: app/Module/FamilyNavigatorModule.php:39
@@ -986,7 +986,7 @@ msgstr "Bilah sisi yang menunjukkan informasi non-genealogi tentang seseorang."
 #. I18N: Description of the “Descendants” module
 #: app/Module/DescendancyModule.php:38
 msgid "A sidebar showing the descendants of an individual."
-msgstr "Bilah sisi yang menunjukkan turunan individu."
+msgstr "Bilah sisi yang menunjukkan keturunan seseorang."
 
 #. I18N: Description of the “Families” module
 #: app/Module/RelativesTabModule.php:46
@@ -1001,7 +1001,7 @@ msgstr "Panel yang menunjukkan fakta dan peristiwa seseorang."
 #. I18N: Description of the “Media” module
 #: app/Module/MediaTabModule.php:40
 msgid "A tab showing the media objects linked to an individual."
-msgstr "Sebuah panel menunjukkan objek media terkait dengan seseorang."
+msgstr "Sebuah panel menunjukkan media yang terkait dengan seseorang."
 
 #. I18N: Description of the “Notes” module
 #: app/Module/NotesTabModule.php:39
@@ -1234,7 +1234,7 @@ msgstr "Tambahkan"
 #: app/Module/ClippingsCartModule.php:724
 #, php-format
 msgid "Add %s to the clippings cart"
-msgstr "Tambahkan %s ke troli kliping"
+msgstr "Tambah %s Ke Kliping"
 
 #: modules_v3/GEDFact_assistant/census/census-edit.php:120
 msgid "Add a blank row"
@@ -1302,7 +1302,7 @@ msgstr "Tambahkan ibu baru"
 
 #: app/Controller/IndividualController.php:276 edit_interface.php:1655
 msgid "Add a name"
-msgstr "Tambahkan Nama baru"
+msgstr "Tambah Nama Baru"
 
 #: app/Module/FamilyTreeNewsModule.php:130
 msgid "Add a news article"
@@ -1338,7 +1338,7 @@ msgstr "Tambahkan putra atau putri"
 #: app/Controller/FamilyController.php:172 app/Functions/FunctionsEdit.php:1057
 #: app/Module/SourcesTabModule.php:95
 msgid "Add a source citation"
-msgstr "Tambahkan Kutipan Sumber baru"
+msgstr "Tambahkan kutipan sumber"
 
 #: edit_interface.php:837
 msgid "Add a spouse"
@@ -1357,7 +1357,7 @@ msgstr "Tambahkan pengguna"
 #: app/Module/RelativesTabModule.php:375 edit_interface.php:807
 #: edit_interface.php:897
 msgid "Add a wife"
-msgstr "Tambahkan istri baru"
+msgstr "Tambahkan istri"
 
 #: app/Module/RelativesTabModule.php:188
 msgid "Add a wife to this family"
@@ -1388,7 +1388,7 @@ msgstr "Tambahkan dari Papanklip"
 
 #: lifespan.php:44 modules_v3/GEDFact_assistant/census/census-edit.php:82
 msgid "Add individuals"
-msgstr "Tambahkan individu"
+msgstr "Tambahkan seseorang"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:158
 msgid "Add links"
@@ -1404,7 +1404,7 @@ msgstr "Tambahkan catatan kematian yang hilang"
 
 #: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php:35
 msgid "Add missing married names"
-msgstr "Tambahkan nama pernikahan yang hilang"
+msgstr "Tambah nama pernikahan yang hilang"
 
 #: search_advanced.php:280
 msgid "Add more fields"
@@ -1413,7 +1413,7 @@ msgstr "Tambah Field Lagi"
 #. I18N: Description of the “Stories” module
 #: app/Module/StoriesModule.php:41
 msgid "Add narrative stories to individuals in the family tree."
-msgstr "Tambahkan kisah naratif kepada seseorang dalam silsilah keluarga."
+msgstr "Tambahkan kisah naratif untuk seseorang dalam silsilah keluarga."
 
 #: admin_trees_manage.php:282
 msgid "Add spaces where long lines were wrapped"
@@ -1442,7 +1442,7 @@ msgstr "Tambahkan ke Favorit"
 #: app/Module/ClippingsCartModule.php:446
 #: app/Module/ClippingsCartModule.php:562
 msgid "Add to the clippings cart"
-msgstr "Tambahkan ke troli kliping"
+msgstr "Tambah Ke Kliping"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:720
@@ -1657,7 +1657,7 @@ msgstr "Fakta nama tempat lebih lanjut"
 #: app/Controller/AdvancedSearchController.php:45
 #: app/Theme/AbstractTheme.php:1742
 msgid "Advanced search"
-msgstr "Pencarian rinci"
+msgstr "Pencarian Rinci"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6672
@@ -1818,11 +1818,11 @@ msgstr "Semua file memiliki izin baca dan tulis."
 
 #: admin_trees_config.php:1618
 msgid "All individual facts"
-msgstr "Semua fakta individu"
+msgstr "Semua fakta seseorang"
 
 #: calendar.php:228 calendar.php:239 calendar.php:438
 msgid "All individuals"
-msgstr "Semua individu"
+msgstr "Semua Orang"
 
 #: admin_trees_config.php:554
 msgid "All records"
@@ -1900,7 +1900,7 @@ msgstr "Cara alternatif untuk menampilkan grafik."
 #. I18N: Description of the “Census assistant” module
 #: app/Module/CensusAssistantModule.php:44
 msgid "An alternative way to enter census transcripts and link them to individuals."
-msgstr "Cara alternatif untuk memasukkan transkrip sensus dan menghubungkannya dengan individu."
+msgstr "Cara alternatif untuk memasukkan transkrip sensus dan menghubungkannya dengan seseorang."
 
 #. I18N: Description of the “Theme change” module
 #: app/Module/ThemeSelectModule.php:32
@@ -1923,7 +1923,7 @@ msgstr "Rekan adalah orang lain yang terlibat dengan seseorang ini, seperti tema
 #. I18N: Description of the “Edit” module
 #: app/Module/PageMenuModule.php:33
 msgid "An edit menu for individuals, families, sources, etc."
-msgstr "Menu edit untuk individu, keluarga, sumber, dll."
+msgstr "Menu ubah untuk seseorang, keluarga, sumber, dll."
 
 #: admin_site_upgrade.php:282 admin_site_upgrade.php:304
 #: admin_site_upgrade.php:314 admin_site_upgrade.php:398
@@ -1999,11 +1999,11 @@ msgstr "Anguillas"
 #: app/Functions/FunctionsPrintLists.php:727
 #: app/Functions/FunctionsPrintLists.php:1682 app/Module/YahrzeitModule.php:171
 msgid "Anniversary"
-msgstr "Ulang tahun"
+msgstr "Ulang Tahun"
 
 #: calendar.php:118
 msgid "Anniversary calendar"
-msgstr "Kalender Ulang tahun"
+msgstr "Kalender Ulang Tahun"
 
 #. I18N: gedcom tag ANUL
 #: app/GedcomTag.php:162
@@ -3865,7 +3865,7 @@ msgstr "Komoros"
 #: app/Controller/CompactController.php:46
 #: app/Module/CompactTreeChartModule.php:33
 msgid "Compact tree"
-msgstr "Grafik ringkas"
+msgstr "Grafik Ringkas"
 
 #. I18N: %s is an individual’s name
 #: app/Controller/CompactController.php:43
@@ -4085,7 +4085,7 @@ msgstr "Buat catatan umum dengan menggunakan asisten pendataan"
 #: app/Functions/FunctionsEdit.php:461 edit_interface.php:1196
 #: edit_interface.php:1279
 msgid "Create a source"
-msgstr "Ciptakan sumber baru"
+msgstr "Buat sumber baru"
 
 #: admin_site_access.php:218
 msgid "Create a website access rule"
@@ -4093,7 +4093,7 @@ msgstr "Buat aturan akses situs web"
 
 #: edit_interface.php:750
 msgid "Create an individual"
-msgstr "Buat individu"
+msgstr "Buat seseorang"
 
 #: statistics.php:497
 msgid "Create your own chart"
@@ -4258,11 +4258,11 @@ msgstr "Pilihan"
 
 #: app/Functions/FunctionsPrint.php:625 calendar.php:281
 msgid "Custom event"
-msgstr "Acara khusus"
+msgstr "Peristiwa"
 
 #: app/Functions/FunctionsPrint.php:624
 msgid "Custom fact"
-msgstr "Fakta khusus"
+msgstr "Fakta Khusus"
 
 #: admin_modules.php:191 admin_site_upgrade.php:126 admin_site_upgrade.php:129
 msgid "Custom module"
@@ -4888,7 +4888,7 @@ msgstr "Silsilah Keluarga Sederhana"
 #: admin_trees_config.php:654 app/Module/WelcomeBlockModule.php:58
 #: edituser.php:196
 msgid "Default individual"
-msgstr "Lihat Individu"
+msgstr "Lihat Pribadi"
 
 #: app/Module/GoogleMapsModule.php:321
 msgid "Default map type"
@@ -4993,7 +4993,7 @@ msgstr "Hapus akun anda"
 
 #: app/Controller/FamilyController.php:95
 msgid "Deleting the family will unlink all of the individuals from each other but will leave the individuals in place. Are you sure you want to delete this family?"
-msgstr "Penghapusan keluarga akan membatalkan tautan semua individu dari satu sama lain tetapi akan membiarkan individu di tempat. Anda yakin ingin menghapus keluarga ini?"
+msgstr "Penghapusan keluarga akan menghapus keterkaitan dengan semua orang satu sama lain dan akan membiarkan orang tersebut sendiri tanpa hubungan dengan siapa pun. anda yakin ingin menghapus keluarga ini?"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6718
@@ -5226,7 +5226,7 @@ msgstr "Cerai"
 #. I18N: gedcom tag DIVF
 #: app/GedcomTag.php:378
 msgid "Divorce filed"
-msgstr "Perceraian diajukan"
+msgstr "Perceraian Diajukan"
 
 #: app/Stats.php:3637 statistics.php:224
 msgid "Divorces by century"
@@ -5402,7 +5402,7 @@ msgstr "Ubah Rincian"
 #: app/Controller/IndividualController.php:283
 #: app/Controller/IndividualController.php:291
 msgid "Edit the gender"
-msgstr "Sunting Jender"
+msgstr "Ubah Kelamin"
 
 #: addmedia.php:237 addmedia.php:406 app/Controller/MediaController.php:43
 #: app/Module/AlbumModule.php:159
@@ -5427,7 +5427,7 @@ msgstr "Ubah catatan"
 #: edit_interface.php:112 edit_interface.php:162 edit_interface.php:224
 #: edit_interface.php:319 edit_interface.php:2579 help_text.php:284
 msgid "Edit the raw GEDCOM"
-msgstr "Sunting bahan rekaman GEDCOM"
+msgstr "Ubah Rekaman GEDCOM"
 
 #: app/Controller/RepositoryController.php:43
 #: app/Controller/RepositoryController.php:48
@@ -5437,12 +5437,12 @@ msgstr "Ubah repositori"
 #: app/Functions/FunctionsEdit.php:450 edit_interface.php:1444
 #: edit_interface.php:1490
 msgid "Edit the shared note"
-msgstr "Ubah catatan bersama"
+msgstr "Ubah catatan umum"
 
 #: app/Controller/SourceController.php:42
 #: app/Controller/SourceController.php:47
 msgid "Edit the source"
-msgstr "Ubah sumber terbuka"
+msgstr "Ubah sumbernya"
 
 #: app/Module/StoriesModule.php:106 app/Module/StoriesModule.php:188
 msgid "Edit the story"
@@ -5454,7 +5454,7 @@ msgstr "Ubah pengguna"
 
 #: app/Tree.php:494
 msgid "Edit this individual and replace their details with your own."
-msgstr "Ubah individu ini dan ganti rinciannya dengan milik anda."
+msgstr "Ubah orang ini dan ganti rinciannya dengan milik anda."
 
 #. I18N: Listbox entry; name of a role
 #: admin_users.php:41 admin_users.php:543
@@ -5618,7 +5618,7 @@ msgstr "Inggris"
 
 #: addmedia.php:429 app/Module/FamilyTreeFavoritesModule.php:212
 msgid "Enter an individual, family, or source ID"
-msgstr "Masukkan Orang, Keluarga, atau ID Sumber"
+msgstr "Masukkan seseorang, keluarga, atau ID sumber"
 
 #: app/Module/FamilyTreeFavoritesModule.php:225
 msgid "Enter an optional note about this favorite"
@@ -5627,7 +5627,7 @@ msgstr "Buat catatan tentang favorit ini"
 #: addmedia.php:434
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:175
 msgid "Enter or search for the ID of the individual, family, or source to which this media object should be linked."
-msgstr "Masukkan atau cari ID orang, keluarga, atau sumber yang akan dikaitkan dengan item media ini."
+msgstr "Masukkan atau cari ID seseorang, keluarga, atau sumber yang akan dikaitkan dengan media ini."
 
 #: search.php:191
 msgid "Entire record"
@@ -5735,7 +5735,7 @@ msgstr "Teks yang tepat"
 #: famlist.php:176 indilist.php:176
 #, php-format
 msgid "Exclude individuals with “%s” as a married name"
-msgstr "Kecualikan individu dengan \"%s\" sebagai nama yang sudah menikah"
+msgstr "Kecualikan seseorang dengan \"%s\" sebagai nama yang sudah menikah"
 
 #: admin_media.php:671
 msgid "Exclude subfolders"
@@ -5771,7 +5771,7 @@ msgstr "Preferensi ekspor"
 #. I18N: A configuration setting. …who were born in the last XX years or died in the last YY years
 #: admin_trees_config.php:443
 msgid "Extend privacy to dead individuals"
-msgstr "Perpanjang privasi kepada individu yang meninggal"
+msgstr "Perpanjang privasi kepada orang yang meninggal"
 
 #. I18N: “External files” are stored on other computers
 #: admin_media.php:637
@@ -5805,7 +5805,7 @@ msgstr "FAQ"
 #. I18N: FAQ = “Frequently Asked Question”
 #: app/Module/FrequentlyAskedQuestionsModule.php:444
 msgid "FAQs are lists of questions and answers, which allow you to explain the site’s rules, policies, and procedures to your visitors. Questions are typically concerned with privacy, copyright, user-accounts, unsuitable content, requirement for source-citations, etc."
-msgstr "FAQ adalah daftar pertanyaan dan jawaban, yang memungkinkan Anda menjelaskan aturan, kebijakan, dan prosedur situs kepada pengunjung Anda. Pertanyaan biasanya berkaitan dengan privasi, hak cipta, akun pengguna, konten yang tidak sesuai, persyaratan untuk sitasi sumber, dll."
+msgstr "FAQ adalah daftar pertanyaan dan jawaban, yang memungkinkan anda menjelaskan aturan, kebijakan, dan prosedur situs silsilah keluarga kepada pengunjung. Pertanyaan biasanya berkaitan dengan privasi, hak cipta, akun pengguna, konten yang tidak sesuai, persyaratan untuk kutipan sumber, dll."
 
 #. I18N: gedcom tag FACT
 #: app/GedcomTag.php:438
@@ -5871,7 +5871,7 @@ msgstr "Ikon Fakta"
 
 #: admin_trees_config.php:529 app/Functions/FunctionsPrint.php:614
 msgid "Fact or event"
-msgstr "Fakta atau peristiwa"
+msgstr "Fakta / Peristiwa"
 
 #. I18N: Name of a module/tab on the individual page.
 #: app/Module/IndividualFactsTabModule.php:36
@@ -5879,7 +5879,7 @@ msgstr "Fakta atau peristiwa"
 #: modules_v3/individual_ext_report/report.xml:153
 #: modules_v3/individual_report/report.xml:149
 msgid "Facts and events"
-msgstr "Fakta dan peristiwa"
+msgstr "Fakta & Peristiwa"
 
 #: admin_trees_config.php:1731
 msgid "Facts for family records"
@@ -5887,7 +5887,7 @@ msgstr "Fakta untuk catatan keluarga"
 
 #: admin_trees_config.php:1613
 msgid "Facts for individual records"
-msgstr "Fakta untuk catatan individu"
+msgstr "Fakta untuk catatan seseorang"
 
 #: admin_trees_config.php:1794
 msgid "Facts for new families"
@@ -5895,7 +5895,7 @@ msgstr "Fakta untuk keluarga baru"
 
 #: admin_trees_config.php:1676
 msgid "Facts for new individuals"
-msgstr "Fakta untuk individu baru"
+msgstr "Fakta untuk orang baru"
 
 #: admin_trees_config.php:1938
 msgid "Facts for repository records"
@@ -5949,7 +5949,7 @@ msgstr "Keluarga"
 #. I18N: gedcom tag FAMC
 #: app/GedcomTag.php:448
 msgid "Family as a child"
-msgstr "Keluarga Sebagai Anak"
+msgstr "Keluarga sebagai anak"
 
 #. I18N: gedcom tag FAMS
 #: app/GedcomTag.php:456
@@ -5960,7 +5960,7 @@ msgstr "Keluarga Sebagai Pasangan"
 #: app/Controller/FamilyBookController.php:63
 #: app/Module/FamilyBookChartModule.php:33
 msgid "Family book"
-msgstr "Buku keluarga"
+msgstr "Buku Keluarga"
 
 #. I18N: %s is an individual’s name
 #: app/Controller/FamilyBookController.php:60
@@ -6078,7 +6078,7 @@ msgstr "Keluarga dengan istri"
 #. I18N: Name of a module/chart
 #: app/Controller/FanchartController.php:56 app/Module/FanChartModule.php:33
 msgid "Fan chart"
-msgstr "Grafik ranting"
+msgstr "Grafik Ranting"
 
 #. I18N: http://en.wikipedia.org/wiki/Family_tree#Fan_chart - %s is an individual’s name
 #: app/Controller/FanchartController.php:53
@@ -6253,7 +6253,7 @@ msgstr "Penyaring"
 #: app/Functions/FunctionsPrint.php:794 find.php:76 find.php:81 find.php:86
 #: find.php:91 find.php:96 find.php:101
 msgid "Find a fact or event"
-msgstr "Temukan fakta atau peristiwa"
+msgstr "Temukan fakta / peristiwa"
 
 #: app/Functions/FunctionsPrint.php:709 find.php:54
 msgid "Find a family"
@@ -6273,7 +6273,7 @@ msgstr "Temukan repositori"
 
 #: app/Functions/FunctionsPrint.php:760 find.php:66
 msgid "Find a shared note"
-msgstr "Temukan catatan yang dibagikan"
+msgstr "Temukan catatan umum"
 
 #: app/Functions/FunctionsPrint.php:748 find.php:69
 #: modules_v3/fact_sources/report.xml:5
@@ -6318,7 +6318,7 @@ msgstr "Temukan hubungan terdekat"
 
 #: admin_trees_manage.php:509 admin_trees_unconnected.php:34
 msgid "Find unrelated individuals"
-msgstr "Temukan individu tidak terkait"
+msgstr "Temukan orang yang tidak terkait"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6745
@@ -6415,7 +6415,7 @@ msgstr "Misalnya, jika file GEDCOM berisi %1$s dan webtrees mengharapkan untuk m
 
 #: admin_users.php:600
 msgid "For example, if you specify a path length of 2, the individual will be able to see their grandson (child, child), their aunt (parent, sibling), their step-daughter (spouse, child), but not their first cousin (parent, sibling, child)."
-msgstr "Misalnya, jika Anda menentukan panjang jalur 2, individu tersebut akan dapat melihat cucu mereka (anak, anak), bibi mereka (orang tua, saudara kandung), anak tiri mereka (pasangan, anak), tetapi bukan sepupu pertama mereka (orang tua, saudara, anak)."
+msgstr "Misalnya, jika anda menentukan panjang jalur 2, orang tersebut akan dapat melihat cucu mereka (anak, anak), bibi mereka (orang tua, saudara kandung), anak tiri mereka (pasangan, anak), tetapi bukan sepupu pertama mereka (orang tua, saudara, anak)."
 
 #: app/Theme/AbstractTheme.php:296
 #, php-format
@@ -6669,7 +6669,7 @@ msgstr "Umum"
 #: app/Controller/SearchController.php:188
 #: app/Controller/SearchController.php:192 app/Theme/AbstractTheme.php:1724
 msgid "General search"
-msgstr "Pencarian umum"
+msgstr "Pencarian Umum"
 
 #. I18N: Description of the “Sitemaps” module
 #: app/Module/SiteMapModule.php:44
@@ -7168,7 +7168,7 @@ msgstr "Hongkong"
 #. I18N: Name of a module/chart
 #: app/Module/ChartsBlockModule.php:187 app/Module/HourglassChartModule.php:33
 msgid "Hourglass chart"
-msgstr "Grafik waktu"
+msgstr "Grafik Waktu"
 
 #. I18N: %s is an individual’s name
 #: app/Controller/HourglassController.php:87
@@ -7260,7 +7260,7 @@ msgstr "Jika administrator membuat akun pengguna, email verifikasi tidak dikirim
 #: help_text.php:228
 #, php-format
 msgid "If an individual does not have a surname, no slashes are needed: <%s>Jón Einarsson<%s>"
-msgstr "Jika seseorang tidak memiliki nama keluarga, tidak ada garis miring yang diperlukan: <%s>Ahmad Fachrudin<%s>"
+msgstr "Jika seseorang tidak memiliki nama keluarga, tidak ada garis miring yang diperlukan: <%s>Andi Ahmad<%s>"
 
 #: help_text.php:226
 #, php-format
@@ -7414,7 +7414,7 @@ msgstr "Di beberapa kalender, hari dimulai pada tengah malam. Di kalender lain, 
 #. I18N: Help text for the “Extend privacy to dead individuals” configuration setting
 #: admin_trees_config.php:455
 msgid "In some countries, privacy laws apply not only to living individuals, but also to those who have died recently. This option will allow you to extend the privacy rules for living individuals to those who were born or died within a specified number of years. Leave these values empty to disable this feature."
-msgstr "Di beberapa negara, undang-undang privasi berlaku tidak hanya bagi individu yang hidup, tetapi juga bagi mereka yang baru saja mati. Opsi ini akan memungkinkan Anda untuk memperpanjang aturan privasi bagi individu yang hidup bagi mereka yang lahir atau meninggal dalam jangka waktu tertentu. Biarkan nilai-nilai ini kosong untuk menonaktifkan fitur ini."
+msgstr "Di beberapa negara, undang-undang privasi berlaku tidak hanya bagi individu yang hidup, tetapi juga bagi mereka yang baru saja mati. Opsi ini akan memungkinkan anda untuk memperpanjang aturan privasi bagi individu yang hidup bagi mereka yang lahir atau meninggal dalam jangka waktu tertentu. biarkan nilai-nilai ini kosong untuk menonaktifkan fitur ini."
 
 #: calendar.php:125
 msgid "In this month…"
@@ -7431,7 +7431,7 @@ msgstr "Sertakan tempat yang sepenuhnya cocok"
 #: famlist.php:178 indilist.php:178
 #, php-format
 msgid "Include individuals with “%s” as a married name"
-msgstr "Sertakan individu dengan \"%s\" sebagai nama yang sudah menikah"
+msgstr "Sertakan seseorang dengan \"%s\" sebagai nama yang sudah menikah"
 
 #: app/Module/ClippingsCartModule.php:373
 #: app/Module/ClippingsCartModule.php:758
@@ -7446,7 +7446,7 @@ msgstr "Sertakan subfolder"
 #. I18N: Label for a configuration option
 #: lifespan.php:86
 msgid "Include the individual’s immediate family"
-msgstr "Sertakan keluarga langsung individu"
+msgstr "Sertakan keluarga dekat seseorang"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6777
@@ -7477,36 +7477,36 @@ msgstr "Indianapolis, Indiana, Amerika"
 #: modules_v3/pedigree_report/report.xml:5
 #: modules_v3/relative_ext_report/report.xml:5 pedigree.php:157
 msgid "Individual"
-msgstr "Individu"
+msgstr "Seseorang"
 
 #: relationship.php:73
 msgid "Individual 1"
-msgstr "Individu 1"
+msgstr "Orang 1"
 
 #: relationship.php:93
 msgid "Individual 2"
-msgstr "Individu 2"
+msgstr "Orang 2"
 
 #: statistics.php:560
 msgid "Individual distribution"
-msgstr "Distribusi individu"
+msgstr "Distribusi seseorang"
 
 #: app/Stats.php:1708 statistics.php:655
 msgid "Individual distribution chart"
-msgstr "Grafik distribusi individu"
+msgstr "Grafik distribusi seseorang"
 
 #. I18N: Name of a module
 #: app/Module/IndividualSidebarModule.php:33
 msgid "Individual list"
-msgstr "Data per Individu"
+msgstr "Data Perorang"
 
 #: admin_trees_config.php:1363
 msgid "Individual pages"
-msgstr "Halaman individu"
+msgstr "Halaman seseorang"
 
 #: admin_users.php:581 edituser.php:181
 msgid "Individual record"
-msgstr "Rekam individu"
+msgstr "Rekaman seseorang"
 
 #: app/Module/FamilyTreeStatisticsModule.php:170
 #: app/Module/FamilyTreeStatisticsModule.php:376
@@ -7531,16 +7531,16 @@ msgstr "Hidup terlama"
 #: statisticsplot.php:886 statisticsplot.php:936 statisticsplot.php:1144
 #: statisticsplot.php:1194 statisticsplot.php:1244 statisticsplot.php:1294
 msgid "Individuals"
-msgstr "Individu"
+msgstr "Orang"
 
 #: app/Stats.php:422 statistics.php:394
 msgid "Individuals with sources"
-msgstr "Individu dengan sumber"
+msgstr "Seseorang dengan sumber"
 
 #: famlist.php:255 indilist.php:255
 #, php-format
 msgid "Individuals with surname %s"
-msgstr "Individu dengan marga ayah %s"
+msgstr "Orang dengan marga ayah %s"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6776
@@ -7573,7 +7573,7 @@ msgstr "Berkas instalasi"
 #. I18N: Name of a module
 #: app/Module/ChartsBlockModule.php:188 app/Module/InteractiveTreeModule.php:33
 msgid "Interactive tree"
-msgstr "Silsilah interaktif"
+msgstr "Silsilah Interaktif"
 
 #: app/Module/ChartsBlockModule.php:128
 #: app/Module/InteractiveTree/TreeView.php:69
@@ -7610,7 +7610,7 @@ msgstr "Dimakamkan"
 
 #: import.php:114
 msgid "Invalid GEDCOM file - no header record found."
-msgstr "File GEDCOM tidak valid - tidak ditemukan catatan tajuk."
+msgstr "File GEDCOM tidak sesuai - tidak ditemukan judul rekaman."
 
 #: app/Functions/FunctionsImport.php:619
 msgid "Invalid GEDCOM format"
@@ -8038,7 +8038,7 @@ msgstr "Laja"
 
 #: setup.php:180
 msgid "Large systems (50,000 individuals): 64–128 MB, 40–80 seconds"
-msgstr "Sistem besar (50.000 individu): 64–128 MB, 40–80 detik"
+msgstr "Sistem besar (50.000 orang): 64–128 MB, 40–80 detik"
 
 #: app/Stats.php:4855 statistics.php:318
 msgid "Largest families"
@@ -8211,7 +8211,7 @@ msgstr "Masa hidup"
 #: app/Controller/LifespanController.php:120
 #: app/Module/LifespansChartModule.php:33 lifespan.php:34
 msgid "Lifespans"
-msgstr "Rentang hidup"
+msgstr "Rentang Hidup"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:215
@@ -8221,7 +8221,7 @@ msgstr "Gangsal, Feru"
 #. I18N: You need to:
 #: login.php:575
 msgid "Link the user account to an individual."
-msgstr "Tautkan akun pengguna ke seorang individu."
+msgstr "Tautkan akun pengguna ke seseorang."
 
 #: app/Module/RelativesTabModule.php:369 edit_interface.php:983
 #: edit_interface.php:1043
@@ -8236,16 +8236,16 @@ msgstr "Tautkan objek media ini ke keluarga"
 #: admin_media.php:532 app/Controller/MediaController.php:61
 #: app/Controller/MediaController.php:130 app/Module/AlbumModule.php:184
 msgid "Link this media object to a source"
-msgstr "Tautkan objek media ini ke sumber"
+msgstr "Tautkan media ini ke sumber"
 
 #: admin_media.php:530 app/Controller/MediaController.php:53
 #: app/Controller/MediaController.php:124 app/Module/AlbumModule.php:172
 msgid "Link this media object to an individual"
-msgstr "Tautkan objek media ini ke seseorang"
+msgstr "Tautkan media ini ke seseorang"
 
 #: admin_users.php:594
 msgid "Link this user to an individual in the family tree."
-msgstr "Tautkan pengguna ini ke individu di silsilah keluarga."
+msgstr "Tautkan pengguna ini ke seseorang di silsilah keluarga."
 
 #: app/Controller/FamilyController.php:165 app/Module/AlbumModule.php:103
 #: app/Module/AlbumModule.php:104 app/Module/CensusAssistantModule.php:234
@@ -8288,7 +8288,7 @@ msgstr "Hidup"
 
 #: calendar.php:231
 msgid "Living individuals"
-msgstr "Orang yang Hidup"
+msgstr "Masih Hidup"
 
 #: app/I18N.php:233 app/I18N.php:234
 msgid "Loading…"
@@ -8335,7 +8335,7 @@ msgstr "London, Inggris"
 #. I18N: Help text for the “Maximum number of surnames on individual list” configuration setting
 #: admin_trees_config.php:1176
 msgid "Long lists of individuals with the same surname can be broken into smaller sub-lists according to the first letter of the individual’s given name.<br><br>This option determines when sub-listing of surnames will occur. To disable sub-listing completely, set this option to zero."
-msgstr "Daftar panjang individu dengan nama keluarga yang sama dapat dipecah menjadi sub-daftar yang lebih kecil sesuai dengan huruf pertama dari nama yang diberikan individu. <br><br> Opsi ini menentukan kapan sub-listing nama keluarga akan terjadi. Untuk menonaktifkan sub-listing sepenuhnya, atur opsi ini ke nol."
+msgstr "Daftar panjang seseorang dengan nama keluarga yang sama dapat dipecah menjadi sub-daftar yang lebih kecil sesuai dengan huruf pertama dari nama yang diberikan seseorang. <br><br>Opsi ini menentukan kapan sub-daftar nama keluarga akan terjadi. Untuk menonaktifkan sub-daftar sepenuhnya, atur opsi ini ke nol."
 
 #: statistics.php:251
 msgid "Longest marriage"
@@ -8613,7 +8613,7 @@ msgstr "Penurunan harga adalah sistem pemformatan sederhana, yang digunakan di s
 #: modules_v3/pedigree_report/report.xml:1316
 #: modules_v3/pedigree_report/report.xml:1354
 msgid "Marriage"
-msgstr "Pernikahan"
+msgstr "Menikah"
 
 #. I18N: gedcom tag MARB
 #: app/GedcomTag.php:560 modules_v3/missing_facts_report/report.xml:22
@@ -8761,7 +8761,7 @@ msgstr "Tempat pernikahan"
 #. I18N: gedcom tag MARS
 #: app/GedcomTag.php:592
 msgid "Marriage settlement"
-msgstr "Penyelesaian perkawinan"
+msgstr "Akad Pernikahan"
 
 #. I18N: gedcom tag _STAT
 #: app/GedcomTag.php:1735
@@ -8843,7 +8843,7 @@ msgstr "Maksimal generasi keturunan"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1163
 msgid "Maximum number of surnames on individual list"
-msgstr "Jumlah maksimal nama keluarga pada daftar individu"
+msgstr "Jumlah maksimal nama keluarga pada daftar seseorang"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1245
@@ -8979,7 +8979,7 @@ msgstr "Mediterania"
 
 #: setup.php:178
 msgid "Medium systems (5,000 individuals): 32–64 MB, 20–40 seconds"
-msgstr "Sistem menengah (5.000 individu): 32–64 MB, 20–40 detik"
+msgstr "Sistem menengah (5.000 orang): 32-64 MB, 20-40 detik"
 
 #: app/Date/JalaliDate.php:189
 msgctxt "Abbreviation for Persian month: Mehr"
@@ -9800,12 +9800,12 @@ msgstr "Tidak ada peristiwa untuk besok."
 #: app/Functions/FunctionsPrintLists.php:1712
 #: app/Functions/FunctionsPrintLists.php:1821
 msgid "No events for living individuals exist for today."
-msgstr "Tidak ada peristiwa orang-hidup untuk hari ini."
+msgstr "Tidak ada peristiwa seseorang untuk hari ini."
 
 #: app/Functions/FunctionsPrintLists.php:1724
 #: app/Functions/FunctionsPrintLists.php:1836
 msgid "No events for living individuals exist for tomorrow."
-msgstr "Tidak ada peristiwa orang-hidup untuk besok."
+msgstr "Tidak ada peristiwa seseorang untuk besok."
 
 #. I18N: translation for %s==1 is unused; it is translated separately as “tomorrow”
 #: app/Functions/FunctionsPrintLists.php:1727
@@ -9813,7 +9813,7 @@ msgstr "Tidak ada peristiwa orang-hidup untuk besok."
 #, php-format
 msgid "No events for living people exist for the next %s day."
 msgid_plural "No events for living people exist for the next %s days."
-msgstr[0] "Tidak ada acara untuk orang yang hidup ada untuk hari %s berikutnya."
+msgstr[0] "Tidak ada peristiwa bagi orang yang masih hidup selama %s hari berikutnya."
 
 #: app/Controller/FamilyController.php:140
 msgid "No facts exist for this family."
@@ -9943,7 +9943,7 @@ msgstr "Norwegia"
 
 #: app/Module/CensusAssistantModule.php:262
 msgid "Not a valid individual, family, or source ID"
-msgstr "Bukan individu, keluarga, atau ID sumber yang valid"
+msgstr "Bukan seseorang, keluarga, atau ID sumber yang sesuai"
 
 #: admin.php:726
 msgid "Not approved by an administrator"
@@ -9957,19 +9957,19 @@ msgstr "Tidak hidup"
 #. I18N: gedcom tag _NMR
 #: app/GedcomTag.php:1712
 msgid "Not married"
-msgstr "Tidak menikah"
+msgstr "Tidak Menikah"
 
 #. I18N: gedcom tag _NMR
 #: app/GedcomTag.php:1708
 msgctxt "FEMALE"
 msgid "Not married"
-msgstr "Tidak menikah"
+msgstr "Tidak Menikah"
 
 #. I18N: gedcom tag _NMR
 #: app/GedcomTag.php:1704
 msgctxt "MALE"
 msgid "Not married"
-msgstr "Tidak menikah"
+msgstr "Tidak Menikah"
 
 #: admin.php:713
 msgid "Not verified by the user"
@@ -10046,7 +10046,7 @@ msgstr "Nukualopa, Tonga"
 #: app/GedcomTag.php:626 app/Stats.php:4940 app/Stats.php:4942
 #: app/Stats.php:4944 statistics.php:555 statisticsplot.php:1332
 msgid "Number of children"
-msgstr "Jumlah anak"
+msgstr "Jumlah Anak"
 
 #: app/Module/RecentChangesModule.php:146
 #: app/Module/UpcomingAnniversariesModule.php:147
@@ -10530,7 +10530,7 @@ msgstr "Bagan kerabat"
 
 #: app/Module/GoogleMapsModule.php:210
 msgid "Pedigree map"
-msgstr "Peta silsilah"
+msgstr "Peta Silsilah"
 
 #. I18N: %s is an individual’s name
 #: app/Module/GoogleMapsModule.php:708
@@ -10616,7 +10616,7 @@ msgstr "Tempat fonetik"
 #: app/Controller/SearchController.php:198 app/Theme/AbstractTheme.php:1733
 #: branches.php:51
 msgid "Phonetic search"
-msgstr "Pencarian fonetik"
+msgstr "Pencarian Fonetik"
 
 #: app/GedcomTag.php:836
 msgid "Phonetic title"
@@ -11124,7 +11124,7 @@ msgstr "Fakta repositori cepat"
 
 #: admin_trees_config.php:1912
 msgid "Quick source facts"
-msgstr "Fakta sumber cepat"
+msgstr "Fakta sumber singkat"
 
 #. I18N: The fifth day in the French republican calendar
 #: app/Date/FrenchDate.php:201
@@ -11440,7 +11440,7 @@ msgstr "Lembaga agama"
 
 #: app/GedcomTag.php:586 modules_v3/fact_sources/report.xml:199
 msgid "Religious marriage"
-msgstr "Pernikahan agama"
+msgstr "Pernikahan Agama"
 
 #: app/Module/ReviewChangesModule.php:189
 msgid "Reminder email frequency (days)"
@@ -11581,7 +11581,7 @@ msgstr "Tugas penelitian"
 
 #: app/Module/ResearchTaskModule.php:201
 msgid "Research tasks are special events, added to individuals in your family tree, which identify the need for further research. You can use them as a reminder to check facts against more reliable sources, to obtain documents or photographs, to resolve conflicting information, etc."
-msgstr "Tugas penelitian adalah acara khusus, ditambahkan ke seseorang di silsilah keluarga anda, yang mengidentifikasi kebutuhan untuk penelitian lebih lanjut. anda dapat menggunakannya sebagai pengingat untuk memeriksa fakta terhadap sumber yang lebih dapat dipercaya, untuk mendapatkan dokumen atau foto, untuk menyelesaikan informasi yang bertentangan, dll."
+msgstr "Tugas penelitian adalah kegiatan khusus, ditambahkan ke seseorang di silsilah keluarga anda, yang mengidentifikasi kebutuhan untuk penelitian lebih lanjut. anda dapat menggunakannya sebagai pengingat untuk memeriksa fakta terhadap sumber temuan yang lebih dapat dipercaya, untuk mendapatkan dokumen atau foto, untuk menyelesaikan informasi yang bertentangan, dll."
 
 #: app/Module/ResearchTaskModule.php:203
 msgid "Research tasks are stored using the custom GEDCOM tag “_TODO”. Other genealogy applications may not recognize this tag."
@@ -11878,7 +11878,7 @@ msgstr "Pencarian"
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:50
 #: app/Theme/AbstractTheme.php:1752
 msgid "Search and replace"
-msgstr "Pencarian ganti"
+msgstr "Pencarian Ganti"
 
 #. I18N: Description of the “Search and replace” option of the batch update module
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:59
@@ -12174,7 +12174,7 @@ msgstr "Tetapkan jumlah generasi maksimum untuk ditampilkan pada grafik silsilah
 #. I18N: Help text for the “Show dead individuals” configuration setting
 #: admin_trees_config.php:394
 msgid "Set the privacy access level for all dead individuals."
-msgstr "Setel tingkat akses privasi untuk semua individu yang meninggal."
+msgstr "Setel tingkat akses privasi untuk semua orang yang meninggal."
 
 #. I18N: You need to:
 #: login.php:571
@@ -12184,7 +12184,7 @@ msgstr "Setel status menjadi \"disetujui\"."
 #. I18N: Help text for the “Allow users to see raw GEDCOM records” configuration setting
 #: admin_trees_config.php:1580
 msgid "Setting this to <b>Yes</b> will place links on individuals, sources, and families to let users bring up another window containing the raw data taken right out of the GEDCOM file."
-msgstr "Menyetel ini ke <b>Ya</b> akan menempatkan tautan pada individu, sumber, dan keluarga untuk memungkinkan pengguna membuka jendela lain yang berisi data mentah yang diambil langsung dari file GEDCOM."
+msgstr "Menyetel ini ke <b>Ya</b> akan menempatkan tautan pada seseorang, sumber, dan keluarga untuk memungkinkan pengguna membuka jendela lain yang berisi data mentah yang diambil langsung dari file GEDCOM."
 
 #: setup.php:93
 msgid "Setup wizard for webtrees"
@@ -12233,21 +12233,21 @@ msgstr "Sahrivar"
 #: app/GedcomTag.php:772 edit_interface.php:1364 edit_interface.php:1457
 #: inverselink.php:141 note.php:152 note.php:162
 msgid "Shared note"
-msgstr "Catatan bersama"
+msgstr "Catatan umum"
 
 #. I18N: Label for search field
 #: find.php:239
 msgid "Shared note contains"
-msgstr "Catatan bersama mengandung"
+msgstr "Catatan umum kehamilan"
 
 #: app/Functions/FunctionsPrintLists.php:1045 app/Theme/AbstractTheme.php:1522
 #: notelist.php:33 notelist.php:37 search.php:103
 msgid "Shared notes"
-msgstr "Catatan bersama"
+msgstr "Catatan umum"
 
 #: find.php:709
 msgid "Shared notes found"
-msgstr "Catatan bersama ditemukan"
+msgstr "Catatan umum ditemukan"
 
 #. I18N: http://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php:99
@@ -12495,7 +12495,7 @@ msgstr "Perlihatkan orang yang lahir selama 100 tahun terakhir."
 #: app/Functions/FunctionsPrintLists.php:206
 #: app/Functions/FunctionsPrintLists.php:617
 msgid "Show individuals who are alive or couples where both partners are alive."
-msgstr "Perlihatkan orang yang hidup atau pasangan yang keduanya hidup."
+msgstr "Perlihatkan yang masih hidup atau pasangan yang keduanya hidup."
 
 #: app/Functions/FunctionsPrintLists.php:215
 #: app/Functions/FunctionsPrintLists.php:644
@@ -12552,7 +12552,7 @@ msgstr "Hanya perlihatkan perempuan."
 
 #: app/Functions/FunctionsPrintLists.php:195
 msgid "Show only individuals for whom the gender is not known."
-msgstr "Hanya perlihatkan orang yang jendernya tidak diketahui."
+msgstr "Hanya perlihatkan orang yang kelaminnya tidak diketahui."
 
 #. I18N: Label for a configuration option
 #: app/Module/SlideShowModule.php:262
@@ -12922,7 +12922,7 @@ msgstr "Beberapa nama tempat dapat ditulis dengan awalan dan akhiran opsional. M
 #. I18N: Help text for the “Fact icons” configuration setting
 #: admin_trees_config.php:1465
 msgid "Some themes can display icons on the “Facts and events” tab."
-msgstr "Beberapa tema dapat menampilkan ikon pada tab “Fakta dan Peristiwa”."
+msgstr "Beberapa tema dapat menampilkan ikon pada tab “Fakta & Peristiwa”."
 
 #: modules_v3/family_group_report/report.xml:774
 #: modules_v3/individual_ext_report/report.xml:526
@@ -12992,12 +12992,12 @@ msgstr "Sumber"
 #. I18N: Help text for the “Use full source citations” configuration setting
 #: admin_trees_config.php:2110
 msgid "Source citations can include fields to record the quality of the data (primary, secondary, etc.) and the date the event was recorded in the source. If you don’t use these fields, you can disable them when creating new source citations."
-msgstr "Kutipan sumber dapat mencakup bidang untuk mencatat kualitas data (primer, sekunder, dll.) Dan tanggal acara direkam dalam sumber. Jika Anda tidak menggunakan bidang ini, Anda dapat menonaktifkannya saat membuat kutipan sumber baru."
+msgstr "Kutipan sumber dapat mencakup bidang untuk mencatat kualitas data (primer, sekunder, dll.) dan tanggal peristiwa yang direkam dalam sumber. Jika anda tidak menggunakan bidang ini, anda dapat menonaktifkannya saat membuat kutipan sumber baru."
 
 #. I18N: Label for search field
 #: find.php:257
 msgid "Source contains"
-msgstr "Sumber mengandung"
+msgstr "Sumber kehamilan"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:2118 modules_v3/fact_sources/report.xml:6
@@ -14028,7 +14028,7 @@ msgstr "Tidak ada tugas penelitian dalam silsilah keluarga ini."
 
 #: app/Module/SourcesTabModule.php:83
 msgid "There are no source citations for this individual."
-msgstr "Tidak ada kutipan sumber untuk individu ini."
+msgstr "Tidak ada kutipan sumber untuk orang ini."
 
 #: app/Module/ReviewChangesModule.php:87 app/Module/ReviewChangesModule.php:111
 #: app/Theme/AbstractTheme.php:1961
@@ -14134,7 +14134,7 @@ msgstr "Keluarga ini telah dihapus. Anda harus meninjau penghapusan dan kemudian
 
 #: family.php:54
 msgid "This family has been edited. The changes need to be reviewed by a moderator."
-msgstr "Keluarga ini telah diedit. Perubahan perlu ditinjau oleh moderator."
+msgstr "Keluarga ini telah diubah. Perubahan perlu ditinjau oleh moderator."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: family.php:49
@@ -14202,13 +14202,13 @@ msgstr "Individu ini telah dihapus. Anda harus meninjau penghapusan dan kemudian
 
 #: individual.php:68
 msgid "This individual has been edited. The changes need to be reviewed by a moderator."
-msgstr "Individu ini telah diedit. Perubahan perlu ditinjau oleh moderator."
+msgstr "Individu ini telah diubah. Perubahan perlu ditinjau oleh moderator."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: individual.php:63
 #, php-format
 msgid "This individual has been edited. You should review the changes and then %1$s or %2$s them."
-msgstr "Individu ini telah diedit. Anda harus meninjau perubahan dan kemudian %1$s atau %2$s mereka."
+msgstr "Individu ini telah diubah. Anda harus meninjau perubahan dan kemudian %1$s atau %2$s nya."
 
 #. I18N: Help text for the “Default individual” configuration setting
 #: admin_trees_config.php:680 edituser.php:207
@@ -14289,7 +14289,7 @@ msgstr "Ini adalah daftar fakta GEDCOM yang dapat ditambahkan pengguna ke reposi
 #. I18N: Help text for the “All source facts” configuration setting
 #: admin_trees_config.php:1875
 msgid "This is the list of GEDCOM facts that your users can add to sources. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique source facts” list."
-msgstr "Ini adalah daftar fakta GEDCOM yang dapat ditambahkan pengguna Anda ke sumber. Anda dapat memodifikasi daftar ini dengan menghapus atau menambahkan nama fakta, bahkan yang khusus, jika diperlukan. Nama-nama fakta yang muncul dalam daftar ini juga tidak boleh muncul dalam daftar “Fakta sumber unik”."
+msgstr "Ini adalah daftar fakta GEDCOM yang dapat ditambahkan pengguna situs ke sumber. anda dapat memodifikasi daftar ini dengan menghapus atau menambahkan nama fakta, bahkan yang khusus, jika diperlukan. nama-nama fakta yang muncul dalam daftar ini juga tidak boleh muncul dalam daftar “Fakta sumber unik”."
 
 #. I18N: Help text for the “Unique family facts” configuration setting
 #: admin_trees_config.php:1786
@@ -14309,7 +14309,7 @@ msgstr "Ini adalah daftar fakta GEDCOM bahwa pengguna Anda hanya dapat menambahk
 #. I18N: Help text for the “Unique source facts” configuration setting
 #: admin_trees_config.php:1904
 msgid "This is the list of GEDCOM facts that your users can only add once to sources. For example, if TITL is in this list, users will not be able to add more than one TITL record to a source. Fact names that appear in this list must not also appear in the “All source facts” list."
-msgstr "Ini adalah daftar fakta GEDCOM bahwa pengguna Anda hanya dapat menambahkan satu kali ke sumber. Misalnya, jika TITL ada dalam daftar ini, pengguna tidak akan dapat menambahkan lebih dari satu catatan TITL ke sumber. Nama-nama fakta yang muncul dalam daftar ini juga tidak boleh muncul di daftar “Semua fakta sumber”."
+msgstr "Ini adalah daftar fakta GEDCOM bahwa pengguna situs hanya dapat menambahkan satu kali ke sumber. misalnya, jika TITL ada dalam daftar ini, pengguna tidak akan dapat menambahkan lebih dari satu catatan TITL ke sumber. nama-nama fakta yang muncul dalam daftar ini juga tidak boleh muncul di daftar “Semua fakta sumber”."
 
 #. I18N: Help text for the “Server name” site configuration setting
 #: admin_site_config.php:355
@@ -14411,13 +14411,13 @@ msgstr "Catatan ini telah dihapus. Anda harus meninjau penghapusan dan kemudian 
 
 #: note.php:56
 msgid "This note has been edited. The changes need to be reviewed by a moderator."
-msgstr "Catatan ini telah diedit. Perubahan perlu ditinjau oleh moderator."
+msgstr "Catatan ini telah diubah. Perubahan perlu ditinjau oleh moderator."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: note.php:51
 #, php-format
 msgid "This note has been edited. You should review the changes and then %1$s or %2$s them."
-msgstr "Catatan ini telah diedit. Anda harus meninjau perubahan dan kemudian %1$s atau %2$s mereka."
+msgstr "Catatan ini telah diubah. Anda harus meninjau perubahan dan kemudian %1$s atau %2$s nya."
 
 #. I18N: Help text for the “Automatically expand notes” configuration setting
 #: admin_trees_config.php:1480
@@ -14427,7 +14427,7 @@ msgstr "Opsi ini mengontrol apakah akan secara otomatis menampilkan konten catat
 #. I18N: Help text for the “Automatically expand sources” configuration setting
 #: admin_trees_config.php:1495
 msgid "This option controls whether or not to automatically display content of a <i>Source</i> record on the Individual page."
-msgstr "Opsi ini mengontrol apakah akan menampilkan konten <i>Sumber</i> pada halaman Individu secara otomatis atau tidak."
+msgstr "Pilihan ini mengontrol apakah akan menampilkan konten <i>Sumber</i> pada halaman seseorang secara otomatis atau tidak."
 
 #. I18N: Help text for the “Age of parents next to child’s birthdate” configuration setting
 #: admin_trees_config.php:1316
@@ -14522,13 +14522,13 @@ msgstr "Repositori ini telah dihapus. Anda harus meninjau penghapusan dan kemudi
 
 #: repo.php:55
 msgid "This repository has been edited. The changes need to be reviewed by a moderator."
-msgstr "Repositori ini telah diedit. Perubahan perlu ditinjau oleh moderator."
+msgstr "Repositori ini telah diubah. Perubahan perlu ditinjau oleh moderator."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: repo.php:50
 #, php-format
 msgid "This repository has been edited. You should review the changes and then %1$s or %2$s them."
-msgstr "Repositori ini telah diedit. Anda harus meninjau perubahan dan kemudian %1$s atau %2$s mereka."
+msgstr "Repositori ini telah diubah. Anda harus meninjau perubahan dan kemudian %1$s atau %2$s nya."
 
 #: admin_users.php:552
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
@@ -14567,27 +14567,27 @@ msgstr "Ini harus berupa daftar fakta yang dipisahkan koma atau ruang, selain ke
 
 #: source.php:60
 msgid "This source does not exist or you do not have permission to view it."
-msgstr "Sumber ini tidak ada atau Anda tidak memiliki izin untuk melihatnya."
+msgstr "Sumber ini tidak ada atau anda tidak memiliki izin untuk melihatnya."
 
 #: source.php:45
 msgid "This source has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr "Sumber ini telah dihapus. Penghapusan perlu ditinjau oleh moderator."
+msgstr "Sumber ini telah dihapus. penghapusan perlu ditinjau oleh moderator."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: source.php:40
 #, php-format
 msgid "This source has been deleted. You should review the deletion and then %1$s or %2$s it."
-msgstr "Sumber ini telah dihapus. Anda harus meninjau penghapusan dan kemudian %1$s atau %2$s itu."
+msgstr "Sumber ini telah dihapus. anda harus meninjau penghapusan dan kemudian %1$s atau %2$s itu."
 
 #: source.php:55
 msgid "This source has been edited. The changes need to be reviewed by a moderator."
-msgstr "Sumber ini telah diubah. Perubahan perlu ditinjau oleh moderator."
+msgstr "Sumber ini telah diubah. perubahan perlu ditinjau oleh moderator."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: source.php:50
 #, php-format
 msgid "This source has been edited. You should review the changes and then %1$s or %2$s them."
-msgstr "Sumber ini telah diubah. Anda harus meninjau perubahan dan kemudian %1$s atau %2$s mereka."
+msgstr "Sumber ini telah diubah. anda harus meninjau perubahan dan kemudian %1$s atau %2$s nya."
 
 #. I18N: Help text for the “Add to TITLE header tag” configuration setting
 #: admin_trees_config.php:931
@@ -14672,7 +14672,7 @@ msgstr "Waktu setempat"
 #: app/Controller/TimelineController.php:74
 #: app/Module/TimelineChartModule.php:33 timeline.php:246
 msgid "Timeline"
-msgstr "Garis waktu"
+msgstr "Garis Waktu"
 
 #: admin_site_change.php:387 admin_site_logs.php:327
 msgid "Timestamp"
@@ -15082,7 +15082,7 @@ msgstr "Ketik ulang kata sandi."
 
 #: edituser.php:232 login.php:477 setup.php:441
 msgid "Type your password again, to make sure you have typed it correctly."
-msgstr "Ketik ulang kata sandi Anda, untuk memastikan Anda telah mengetiknya dengan benar."
+msgstr "Ketik ulang kata sandi anda, untuk memastikan anda telah mengetiknya dengan benar."
 
 #: admin_trees_check.php:132
 msgid "Types of error"
@@ -15314,7 +15314,7 @@ msgstr "Gunakan tampilan yang ringkas"
 #. I18N: A configuration setting
 #: admin_trees_config.php:2105
 msgid "Use full source citations"
-msgstr "Gunakan kutipan sumber lengkap"
+msgstr "Gunakan seluruh kutipan sumber"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:376
@@ -15729,7 +15729,7 @@ msgstr "Saat menambahkan tautan, bidang ID tidak boleh kosong."
 #. I18N: Help text for the “Source type” configuration setting
 #: admin_trees_config.php:2123
 msgid "When adding new close relatives, you can add source citations to the records (individual and family) or to the facts and events (birth, marriage, and death). This option controls whether records or facts will be selected by default."
-msgstr "Ketika menambahkan kerabat dekat baru, Anda dapat menambahkan kutipan sumber ke catatan (seseorang dan keluarga) atau fakta dan peristiwa (kelahiran, pernikahan, dan kematian). Opsi ini mengontrol apakah rekaman atau fakta akan dipilih secara default."
+msgstr "Ketika menambahkan kerabat dekat baru, anda dapat menambahkan kutipan sumber ke catatan (seseorang dan keluarga) atau fakta dan peristiwa (kelahiran, pernikahan, dan kematian). pilihan ini mengontrol apakah rekaman atau fakta akan dipilih secara otomatis."
 
 #. I18N: Help text for the “Surname tradition” configuration setting
 #: admin_trees_config.php:2097
@@ -16286,19 +16286,19 @@ msgstr "terima"
 #. I18N: The name by which an individual is also known. e.g. a professional name or a stage name
 #: app/GedcomCode/GedcomCodeName.php:67
 msgid "also known as"
-msgstr "dikenal juga sebagai"
+msgstr "nama terkenal"
 
 #. I18N: The name by which an individual is also known. e.g. a professional name or a stage name
 #: app/GedcomCode/GedcomCodeName.php:64
 msgctxt "FEMALE"
 msgid "also known as"
-msgstr "dikenal juga sebagai"
+msgstr "nama terkenal"
 
 #. I18N: The name by which an individual is also known. e.g. a professional name or a stage name
 #: app/GedcomCode/GedcomCodeName.php:61
 msgctxt "MALE"
 msgid "also known as"
-msgstr "dikenal juga sebagai"
+msgstr "nama terkenal"
 
 #. I18N: option in list box “always use this image”
 #: app/Functions/FunctionsEdit.php:657
@@ -16518,19 +16518,19 @@ msgstr "kurun"
 #. I18N: A name chosen by an individual, to replace their existing name (whether legal or otherwise)
 #: app/GedcomCode/GedcomCodeName.php:91
 msgid "change of name"
-msgstr "penggantian nama"
+msgstr "nama julukan"
 
 #. I18N: A name chosen by an individual, to replace their existing name (whether legal or otherwise)
 #: app/GedcomCode/GedcomCodeName.php:88
 msgctxt "FEMALE"
 msgid "change of name"
-msgstr "penggantian nama"
+msgstr "nama julukan"
 
 #. I18N: A name chosen by an individual, to replace their existing name (whether legal or otherwise)
 #: app/GedcomCode/GedcomCodeName.php:85
 msgctxt "MALE"
 msgid "change of name"
-msgstr "penggantian nama"
+msgstr "nama julukan"
 
 #: app/Functions/Functions.php:751 edit_interface.php:2001
 #: edit_interface.php:2023
@@ -16734,19 +16734,19 @@ msgstr "sepupu kesebelas"
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: app/GedcomCode/GedcomCodeName.php:103
 msgid "estate name"
-msgstr "nama kebun"
+msgstr "nama daerah"
 
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: app/GedcomCode/GedcomCodeName.php:100
 msgctxt "FEMALE"
 msgid "estate name"
-msgstr "nama kebun"
+msgstr "nama daerah"
 
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: app/GedcomCode/GedcomCodeName.php:97
 msgctxt "MALE"
 msgid "estate name"
-msgstr "nama kebun"
+msgstr "nama daerah"
 
 #. I18N: Gedcom EST dates
 #: app/Date.php:304
@@ -17241,17 +17241,17 @@ msgstr "cucu"
 #: app/Functions/Functions.php:1056
 msgctxt "child’s son’s wife"
 msgid "grandson’s wife"
-msgstr "istri cucu"
+msgstr "cucu istri"
 
 #: app/Functions/Functions.php:1084
 msgctxt "daughter’s son’s wife"
 msgid "grandson’s wife"
-msgstr "istri cucu"
+msgstr "cucu istri"
 
 #: app/Functions/Functions.php:1358
 msgctxt "son’s son’s wife"
 msgid "grandson’s wife"
-msgstr "istri cucu"
+msgstr "cucu istri"
 
 #: app/Functions/Functions.php:1639 app/Functions/Functions.php:1654
 #: app/Functions/Functions.php:1667
@@ -19976,7 +19976,7 @@ msgstr "bukti yang tidak dapat diandalkan"
 #. I18N: A button label.
 #: admin_trees_places.php:109
 msgid "update"
-msgstr "memperbarui"
+msgstr "perbarui"
 
 #. I18N: A button label.
 #: admin_media_upload.php:263 app/Module/GoogleMapsModule.php:4062
@@ -20060,7 +20060,7 @@ msgstr "barat"
 #: app/Functions/Functions.php:727 edit_interface.php:1929
 #: edit_interface.php:1964
 msgid "wife"
-msgstr "Istri"
+msgstr "istri"
 
 #. I18N: Name of a theme.
 #: app/Theme/XeneaTheme.php:149
