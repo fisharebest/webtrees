@@ -1767,38 +1767,6 @@ div.faq_body {
 	width: 300px;
 }
 
-save-cancel {
-	position: fixed;
-	bottom: 0;
-	background-color: #fff;
-	width: 96.5%;
-	border-radius: 4px;
-	border: solid #555 1px;
-	margin: 0;
-}
-
-#save-cancel input {
-	padding: 2px 8px;
-}
-
-#save-cancel .save {
-	float: left;
-	margin: 5px;
-}
-
-#save-cancel .cancel {
-	float: right;
-	margin: 5px;
-}
-
-[dir=rtl] #save-cancel .save {
-	float: right;
-}
-
-[dir=rtl] #save-cancel .cancel {
-	float: left;
-}
-
 #edit_interface-page,
 #addmedia-page {
 	margin-bottom: 50px;
