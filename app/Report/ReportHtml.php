@@ -133,6 +133,8 @@ class ReportHtml extends ReportBase
 
     /**
      * HTML Setup - ReportHtml
+     *
+     * @return void
      */
     public function setup()
     {
@@ -212,6 +214,8 @@ class ReportHtml extends ReportBase
 
     /**
      * Run the report.
+     *
+     * @return void
      */
     public function run()
     {
@@ -378,17 +382,17 @@ class ReportHtml extends ReportBase
     /**
      * Create an image.
      *
-     * @param $file
-     * @param $x
-     * @param $y
-     * @param $w
-     * @param $h
-     * @param $align
-     * @param $ln
+     * @param string $file
+     * @param float  $x
+     * @param float  $y
+     * @param float  $w
+     * @param float  $h
+     * @param string $align
+     * @param string $ln
      *
      * @return ReportHtmlImage
      */
-    public function createImage($file, $x, $y, $w, $h, $align, $ln): ReportHtmlImage
+    public function createImage(string $file, float $x, float $y, float $w, float $h, string $align, string $ln): ReportHtmlImage
     {
         return new ReportHtmlImage($file, $x, $y, $w, $h, $align, $ln);
     }
@@ -397,16 +401,16 @@ class ReportHtml extends ReportBase
      * Create an image.
      *
      * @param MediaFile $media_file
-     * @param           $x
-     * @param           $y
-     * @param           $w
-     * @param           $h
-     * @param           $align
-     * @param           $ln
+     * @param int       $x
+     * @param int       $y
+     * @param int       $w
+     * @param int       $h
+     * @param string    $align
+     * @param string    $ln
      *
      * @return ReportHtmlImage
      */
-    public function createImageFromObject(MediaFile $media_file, $x, $y, $w, $h, $align, $ln): ReportHtmlImage
+    public function createImageFromObject(MediaFile $media_file, int $x, int $y, int $w, int $h, string $align, string $ln): ReportHtmlImage
     {
         return new ReportHtmlImage($media_file->imageUrl($w, $h, ''), $x, $y, $w, $h, $align, $ln);
     }

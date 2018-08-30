@@ -37,15 +37,16 @@ class ReportPdfImage extends ReportBaseImage
         }
 
         $curx = $renderer->GetX();
-        // If current position (left)set "."
-        if ($this->x == '.') {
+
+        // Get the current positions
+        if ($this->x === -1) {
             $this->x = $renderer->GetX();
         } else {
             // For static position add margin
             $this->x = $renderer->addMarginX($this->x);
             $renderer->SetX($curx);
         }
-        if ($this->y == '.') {
+        if ($this->y === -1) {
             //-- first check for a collision with the last picture
             if (isset($lastpicbottom)) {
                 if (($renderer->PageNo() == $lastpicpage) && ($lastpicbottom >= $renderer->GetY()) && ($this->x >= $lastpicleft) && ($this->x <= $lastpicright)

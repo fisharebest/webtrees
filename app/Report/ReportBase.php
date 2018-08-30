@@ -96,6 +96,8 @@ class ReportBase
      *
      * Setting up document wide defaults that will be inherited of the report modules
      * As DEFAULT A4 and Portrait will be used if not set
+     *
+     * @return void
      */
     public function setup()
     {

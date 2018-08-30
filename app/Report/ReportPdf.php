@@ -57,6 +57,8 @@ class ReportPdf extends ReportBase
 
     /**
      * PDF Setup - ReportPdf
+     *
+     * @return void
      */
     public function setup()
     {
@@ -126,6 +128,8 @@ class ReportPdf extends ReportBase
 
     /**
      * Run the report.
+     *
+     * @return void
      */
     public function run()
     {
@@ -143,6 +147,8 @@ class ReportPdf extends ReportBase
 
     /**
      * Clear the Page Header - ReportPdf
+     *
+     * @return void
      */
     public function clearPageHeader()
     {
@@ -236,16 +242,16 @@ class ReportPdf extends ReportBase
      * Create a new image object - ReportPdf
      *
      * @param string $file  Filename
-     * @param mixed  $x
-     * @param mixed  $y
-     * @param int    $w     Image width
-     * @param int    $h     Image height
+     * @param string $x
+     * @param string $y
+     * @param float  $w    Image width
+     * @param float  $h    Image height
      * @param string $align L:left, C:center, R:right or empty to use x/y
      * @param string $ln    T:same line, N:next line
      *
      * @return ReportPdfImage
      */
-    public function createImage($file, $x, $y, $w, $h, $align, $ln): ReportPdfImage
+    public function createImage(string $file, float $x, float $y, float $w, float $h, string $align, string $ln): ReportPdfImage
     {
         return new ReportPdfImage($file, $x, $y, $w, $h, $align, $ln);
     }
@@ -254,8 +260,8 @@ class ReportPdf extends ReportBase
      * Create a new image object from Media Object - ReportPdf
      *
      * @param MediaFile $media_file
-     * @param mixed     $x
-     * @param mixed     $y
+     * @param int       $x
+     * @param int       $y
      * @param int       $w     Image width
      * @param int       $h     Image height
      * @param string    $align L:left, C:center, R:right or empty to use x/y
@@ -263,7 +269,7 @@ class ReportPdf extends ReportBase
      *
      * @return ReportPdfImage
      */
-    public function createImageFromObject(MediaFile $media_file, $x, $y, $w, $h, $align, $ln): ReportPdfImage
+    public function createImageFromObject(MediaFile $media_file, int $x, int $y, int $w, int $h, string $align, string $ln): ReportPdfImage
     {
         return new ReportPdfImage($media_file->getServerFilename(), $x, $y, $w, $h, $align, $ln);
     }

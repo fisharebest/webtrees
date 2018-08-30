@@ -1636,56 +1636,26 @@ class ReportParserGenerate extends ReportParserBase
      */
     private function highlightedImageStartHandler($attrs)
     {
-        $id    = '';
-        $match = [];
+        $id = '';
         if (preg_match('/0 @(.+)@/', $this->gedrec, $match)) {
             $id = $match[1];
         }
 
-        // mixed Position the top corner of this box on the page. the default is the current position
-        $top = '.';
-        if (isset($attrs['top'])) {
-            if ($attrs['top'] === '0') {
-                $top = 0;
-            } elseif ($attrs['top'] === '.') {
-                $top = '.';
-            } elseif (!empty($attrs['top'])) {
-                $top = (int) $attrs['top'];
-            }
-        }
+        // Position the top corner of this box on the page. the default is the current position
+        $top = (int) ($attrs['top'] ?? -1);
 
         // mixed Position the left corner of this box on the page. the default is the current position
-        $left = '.';
-        if (isset($attrs['left'])) {
-            if ($attrs['left'] === '0') {
-                $left = 0;
-            } elseif ($attrs['left'] === '.') {
-                $left = '.';
-            } elseif (!empty($attrs['left'])) {
-                $left = (int) $attrs['left'];
-            }
-        }
+        $left = (int) ($attrs['left'] ?? -1);
 
-        // string Align the image in left, center, right
-        $align = '';
-        if (!empty($attrs['align'])) {
-            $align = $attrs['align'];
-        }
+        // string Align the image in left, center, right (or empty to use x/y position).
+        $align = $attrs['align'] ?? '';
 
         // string Next Line should be T:next to the image, N:next line
-        $ln = '';
-        if (!empty($attrs['ln'])) {
-            $ln = $attrs['ln'];
-        }
+        $ln = $attrs['ln'] ?? 'T';
 
-        $width  = 0;
-        $height = 0;
-        if (!empty($attrs['width'])) {
-            $width = (int) $attrs['width'];
-        }
-        if (!empty($attrs['height'])) {
-            $height = (int) $attrs['height'];
-        }
+        // Width, height (or both).
+        $width  = (int) ($attrs['width'] ?? 0);
+        $height = (int) ($attrs['height'] ?? 0);
 
         $person     = Individual::getInstance($id, $this->tree);
         $media_file = $person->findHighlightedMediaFile();
@@ -1719,55 +1689,24 @@ class ReportParserGenerate extends ReportParserBase
      */
     private function imageStartHandler($attrs)
     {
-        // mixed Position the top corner of this box on the page. the default is the current position
-        $top = '.';
-        if (isset($attrs['top'])) {
-            if ($attrs['top'] === '0') {
-                $top = 0;
-            } elseif ($attrs['top'] === '.') {
-                $top = '.';
-            } elseif (!empty($attrs['top'])) {
-                $top = (int) $attrs['top'];
-            }
-        }
+        // Position the top corner of this box on the page. the default is the current position
+        $top = (int) ($attrs['top'] ?? -1);
 
         // mixed Position the left corner of this box on the page. the default is the current position
-        $left = '.';
-        if (isset($attrs['left'])) {
-            if ($attrs['left'] === '0') {
-                $left = 0;
-            } elseif ($attrs['left'] === '.') {
-                $left = '.';
-            } elseif (!empty($attrs['left'])) {
-                $left = (int) $attrs['left'];
-            }
-        }
+        $left = (int) ($attrs['left'] ?? -1);
 
-        // string Align the image in left, center, right
-        $align = '';
-        if (!empty($attrs['align'])) {
-            $align = $attrs['align'];
-        }
+        // string Align the image in left, center, right (or empty to use x/y position).
+        $align = $attrs['align'] ?? '';
 
         // string Next Line should be T:next to the image, N:next line
-        $ln = 'T';
-        if (!empty($attrs['ln'])) {
-            $ln = $attrs['ln'];
-        }
+        $ln = $attrs['ln'] ?? 'T';
 
-        $width  = 0;
-        $height = 0;
-        if (!empty($attrs['width'])) {
-            $width = (int) $attrs['width'];
-        }
-        if (!empty($attrs['height'])) {
-            $height = (int) $attrs['height'];
-        }
+        // Width, height (or both).
+        $width  = (int) ($attrs['width'] ?? 0);
+        $height = (int) ($attrs['height'] ?? 0);
 
-        $file = '';
-        if (!empty($attrs['file'])) {
-            $file = $attrs['file'];
-        }
+        $file = $attrs['file'] ?? '';
+
         if ($file == '@FILE') {
             $match = [];
             if (preg_match("/\d OBJE @(.+)@/", $this->gedrec, $match)) {

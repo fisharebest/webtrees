@@ -43,6 +43,8 @@ class ReportParserSetup extends ReportParserBase
      * Process <Report>
      *
      * @param string[] $attrs
+     *
+     * @return void
      */
     protected function reportStartHandler($attrs)
     {
@@ -65,6 +67,8 @@ class ReportParserSetup extends ReportParserBase
      * Process <var var="">
      *
      * @param string[] $attrs
+     *
+     * @return void
      */
     protected function varStartHandler($attrs)
     {
@@ -81,6 +85,8 @@ class ReportParserSetup extends ReportParserBase
 
     /**
      * Process <Title>
+     *
+     * @return void
      */
     protected function titleStartHandler()
     {
@@ -89,6 +95,8 @@ class ReportParserSetup extends ReportParserBase
 
     /**
      * Process </Title>
+     *
+     * @return void
      */
     protected function titleEndHandler()
     {
@@ -98,6 +106,8 @@ class ReportParserSetup extends ReportParserBase
 
     /**
      * Process </Description>
+     *
+     * @return void
      */
     protected function descriptionEndHandler()
     {
@@ -109,6 +119,8 @@ class ReportParserSetup extends ReportParserBase
      * Process <Input>
      *
      * @param string[] $attrs
+     *
+     * @return void
      */
     protected function inputStartHandler($attrs)
     {
@@ -142,6 +154,8 @@ class ReportParserSetup extends ReportParserBase
 
     /**
      * Process </Input>
+     *
+     * @return void
      */
     protected function inputEndHandler()
     {

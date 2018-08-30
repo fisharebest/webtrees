@@ -20,61 +20,39 @@ namespace Fisharebest\Webtrees\Report;
  */
 class ReportBaseImage extends ReportBaseElement
 {
-    /**
-     * Filename of the image
-     *
-     * @var string
-     */
+    /** @var string Filename of the image */
     public $file;
-    /**
-     * Height of the image
-     *
-     * @var float
-     */
+
+    /** @var int Height of the image */
     public $height;
-    /**
-     * Width of the image
-     *
-     * @var float
-     */
+
+    /** @var int Width of the image */
     public $width;
-    /**
-     * X-position (left) of the image
-     *
-     * @var float
-     */
+
+    /** @var int X-position (left) of the image */
     public $x;
-    /**
-     * Y-position (top) of the image
-     *
-     * @var float
-     */
+
+    /** @var int Y-position (top) of the image */
     public $y;
-    /**
-     * Placement fo the image. L: left, C:center, R:right
-     *
-     * @var string
-     */
-    public $align = '';
-    /**
-     * T:same line, N:next line
-     *
-     * @var string
-     */
-    public $line = '';
+
+    /** @var string Placement fo the image. L: left, C:center, R:right (or empty for x/y) */
+    public $align;
+
+    /** @var string T:same line, N:next line */
+    public $line;
 
     /**
      * Image class function - Base
      *
      * @param string $file  Filename of the image
-     * @param float  $x     X-position (left) of the image
-     * @param float  $y     Y-position (top) of the image
-     * @param float  $w     Width of the image
-     * @param float  $h     Height of the image
+     * @param int    $x     X-position (left) of the image
+     * @param int    $y     Y-position (top) of the image
+     * @param int    $w     Width of the image
+     * @param int    $h     Height of the image
      * @param string $align Placement of the image. L: left, C:center, R:right
      * @param string $ln    T:same line, N:next line
      */
-    public function __construct($file, $x, $y, $w, $h, $align, $ln)
+    public function __construct(string $file, int $x, int $y, int $w, int $h, string $align, string $ln)
     {
         $this->file   = $file;
         $this->width  = $w;
