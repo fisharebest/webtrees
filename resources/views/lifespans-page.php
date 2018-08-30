@@ -44,18 +44,18 @@
 	</div>
 
 	<div class="row form-group">
-		<div class="col-sm-3 col-form-label wt-page-options-label" for="start">
+		<label class="col-sm-3 col-form-label wt-page-options-label" for="start">
 			<?= I18N::translate('Start year') ?>
-		</div>
+		</label>
 		<div class="col-sm-9 wt-page-options-value">
 			<input class="form-control" id="start" name="start" type="text">
 		</div>
 	</div>
 
 	<div class="row form-group">
-		<div class="col-sm-3 col-form-label wt-page-options-label" for="end-year">
+		<label class="col-sm-3 col-form-label wt-page-options-label" for="end">
 			<?= I18N::translate('End year') ?>
-		</div>
+		</label>
 		<div class="col-sm-9 wt-page-options-value">
 			<input class="form-control" id="end" name="end" type="text">
 		</div>
