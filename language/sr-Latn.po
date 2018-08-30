@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-07-26 23:06+0100\n"
-"PO-Revision-Date: 2018-08-27 19:45+0000\n"
+"PO-Revision-Date: 2018-08-30 20:49+0000\n"
 "Last-Translator: Enes <enes_s@yahoo.com>\n"
 "Language-Team: Serbian (latin) <https://translate.webtrees.net/projects/webtrees/webtrees/sr-Latn/>\n"
 "Language: sr-Latn\n"
@@ -111,7 +111,7 @@ msgstr "%1$s nema vezu nazad na %2$s."
 #, php-format
 msgid "%1$s file was extracted in %2$s seconds."
 msgid_plural "%1$s files were extracted in %2$s seconds."
-msgstr[0] "Datoteka %1$s je raspakovana za %2$s sekundi."
+msgstr[0] "Datoteka %1$s je raspakovana za %2$s sekund."
 msgstr[1] "Datoteke %1$s su raspakovane za %2$s sekundi."
 msgstr[2] "Datoteka %1$s je raspakovana za %2$s sekundi."
 
@@ -251,7 +251,7 @@ msgstr[2] "Pre %s dana"
 msgid "%s family has been updated."
 msgid_plural "%s families have been updated."
 msgstr[0] "%s porodica je ažurirana."
-msgstr[1] "%s porodica je ažurirano."
+msgstr[1] "%s porodice su ažurirane."
 msgstr[2] "%s porodica je ažurirano."
 
 #: app/Stats.php:5630 app/Stats.php:5632
@@ -339,7 +339,7 @@ msgstr[2] "%s poruka"
 #, php-format
 msgid "%s minute ago"
 msgid_plural "%s minutes ago"
-msgstr[0] "Pre %s minut(a)"
+msgstr[0] "Pre %s minut"
 msgstr[1] "Pre %s minuta"
 msgstr[2] "Pre %s minuta"
 
@@ -14063,7 +14063,7 @@ msgstr ""
 #: resources/views/register-page.php:37
 #: resources/views/setup/step-5-administrator.php:68
 msgid "This email address will be used to send password reminders, website notifications, and messages from other family members who are registered on the website."
-msgstr ""
+msgstr "Ova e-mail adresa će se koristiti za slanje podsetnika za lozinku, obaveštenja web stranice i poruka drugih članova porodice koji su registrovani na našoj web stranici."
 
 #: app/Exceptions/FamilyAccessDeniedException.php:33
 #: app/Exceptions/FamilyNotFoundException.php:33
@@ -14267,7 +14267,7 @@ msgstr ""
 #: resources/views/register-page.php:25
 #: resources/views/setup/step-5-administrator.php:32
 msgid "This is your real name, as you would like it displayed on screen."
-msgstr ""
+msgstr "Ovo je vaše pravo ime, koje će biti prikazano na ekranu."
 
 #: app/Exceptions/MediaAccessDeniedException.php:33
 #: app/Exceptions/MediaNotFoundException.php:33
@@ -15009,7 +15009,7 @@ msgstr "Ponovo upiši lozinku."
 #: resources/views/edit-account-page.php:105
 #: resources/views/register-page.php:73
 msgid "Type your password again, to make sure you have typed it correctly."
-msgstr ""
+msgstr "Upišite lozinku još jednom, da budemo sigurni da ste je napisali ispravno."
 
 #. I18N: gedcom tag URL (A web address / URL)
 #. I18N: gedcom tag WWW (A web address / URL)
@@ -15067,7 +15067,7 @@ msgstr ""
 #. I18N: gedcom tag _UID
 #: app/GedcomTag.php:1904
 msgid "Unique identifier"
-msgstr ""
+msgstr "Jedinstveni identifikator"
 
 #. I18N: Help text for the “Add unique identifiers” configuration setting
 #: resources/views/admin/trees-preferences.php:139
@@ -15251,7 +15251,7 @@ msgstr ""
 
 #: resources/views/register-page.php:85
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site. You can also use this to enter any other comments you may have for the site administrator."
-msgstr ""
+msgstr "Koristite ovo polje da objasnite administratoru zašto želite otvoriti korisnički nalog i kako ste vezani za genealoške podatke prikazane na ovim stranicama. Takođe, možete upisati i bilo kakve druge komentare koje imate za administratora ove stranice."
 
 #: app/Functions/FunctionsEdit.php:811
 msgid "Use this image for charts and on the individual’s page."
@@ -15318,7 +15318,7 @@ msgstr "Korisničko ime ili adresa elektronske pošte"
 #: resources/views/edit-account-page.php:36
 #: resources/views/register-page.php:49
 msgid "Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same."
-msgstr ""
+msgstr "Korisničko ime ne razlikuje velika/mala i akcentirana slova, pa se tako „suco”, „šućo” i „Šućo” smatraju istim korisničkim imenima."
 
 #: app/Http/Controllers/AdminPhpGedViewController.php:184
 #: resources/views/admin/control-panel.php:269
@@ -16431,7 +16431,7 @@ msgstr ""
 #: resources/views/report-select-page.php:29
 #: resources/views/report-setup-page.php:55
 msgid "continue"
-msgstr ""
+msgstr "nastavi"
 
 #. I18N: A button label.
 #: resources/views/admin/trees.php:346
