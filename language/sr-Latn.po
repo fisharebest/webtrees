@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2018-08-27 19:53+0000\n"
+"PO-Revision-Date: 2018-08-30 20:49+0000\n"
 "Last-Translator: Enes <enes_s@yahoo.com>\n"
 "Language-Team: Serbian (latin) <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/sr-Latn/>\n"
 "Language: sr-Latn\n"
@@ -119,7 +119,7 @@ msgstr "%1$s nema vezu nazad na %2$s."
 #, php-format
 msgid "%1$s file was extracted in %2$s seconds."
 msgid_plural "%1$s files were extracted in %2$s seconds."
-msgstr[0] "Datoteka %1$s je raspakovana za %2$s sekundi."
+msgstr[0] "Datoteka %1$s je raspakovana za %2$s sekund."
 msgstr[1] "Datoteke %1$s su raspakovane za %2$s sekundi."
 msgstr[2] "Datoteka %1$s je raspakovana za %2$s sekundi."
 
@@ -127,8 +127,8 @@ msgstr[2] "Datoteka %1$s je raspakovana za %2$s sekundi."
 #, php-format
 msgid "%1$s individual displayed, out of the normal total of %2$s, from %3$s generations."
 msgid_plural "%1$s individuals displayed, out of the normal total of %2$s, from %3$s generations."
-msgstr[0] "%1$s osoba prikazano, od ukupno %2$s, koje obuhvata %3$s generacije."
-msgstr[1] "%1$s osoba prikazano, od ukupno %2$s, koje obuhvata %3$s generacije."
+msgstr[0] "%1$s osoba prikazana, od ukupno %2$s, koje obuhvata %3$s generacije."
+msgstr[1] "%1$s osobe prikazane, od ukupno %2$s, koje obuhvata %3$s generacije."
 msgstr[2] "%1$s osoba prikazano, od ukupno %2$s, koje obuhvata %3$s generacije."
 
 #. I18N: %1$s is a count of individuals, %2$s is a list of their names
@@ -137,7 +137,7 @@ msgstr[2] "%1$s osoba prikazano, od ukupno %2$s, koje obuhvata %3$s generacije."
 msgid "%1$s individual is missing birthplace map coordinates: %2$s."
 msgid_plural "%1$s individuals are missing birthplace map coordinates: %2$s."
 msgstr[0] "%1$s osoba nema kordinate mesta rođenja na mapi: %2$s."
-msgstr[1] "%1$s osoba nema kordinate mesta rođenja na mapi: %2$s."
+msgstr[1] "%1$s osobe nemaju kordinate mesta rođenja na mapi: %2$s."
 msgstr[2] "%1$s osoba nema kordinate mesta rođenja na mapi: %2$s."
 
 #. I18N: %1$s is an internal ID number such as R123. %2$s and %3$s are record types, such as INDI or SOUR
@@ -275,7 +275,7 @@ msgstr[2] "Pre %s dana"
 msgid "%s family has been updated."
 msgid_plural "%s families have been updated."
 msgstr[0] "%s porodica je ažurirana."
-msgstr[1] "%s porodica je ažurirano."
+msgstr[1] "%s porodice su ažurirane."
 msgstr[2] "%s porodica je ažurirano."
 
 #: admin.php:861
@@ -368,7 +368,7 @@ msgstr[2] "%s poruka"
 #, php-format
 msgid "%s minute ago"
 msgid_plural "%s minutes ago"
-msgstr[0] "Pre %s minut(a)"
+msgstr[0] "Pre %s minut"
 msgstr[1] "Pre %s minuta"
 msgstr[2] "Pre %s minuta"
 
@@ -14180,7 +14180,7 @@ msgstr ""
 
 #: admin_users.php:366 edituser.php:265 login.php:434 setup.php:445
 msgid "This email address will be used to send password reminders, website notifications, and messages from other family members who are registered on the website."
-msgstr ""
+msgstr "Ova e-mail adresa će se koristiti za slanje podsetnika za lozinku, obaveštenja web stranice i poruka drugih članova porodice koji su registrovani na našoj web stranici."
 
 #: addmedia.php:540
 msgid "This entry is ignored if you have entered a URL into the filename field."
@@ -14393,7 +14393,7 @@ msgstr ""
 
 #: admin_users.php:317 edituser.php:176 login.php:424 setup.php:430
 msgid "This is your real name, as you would like it displayed on screen."
-msgstr ""
+msgstr "Ovo je vaše pravo ime, koje će biti prikazano na ekranu."
 
 #: admin_trees_check.php:135
 msgid "This may be a mistake in your data."
@@ -14454,7 +14454,7 @@ msgstr ""
 #: message.php:113
 #, php-format
 msgid "This message will be sent to %s"
-msgstr ""
+msgstr "Ova poruka će biti poslata na %s"
 
 #: setup.php:438
 msgid "This must be at least six characters long. It is case-sensitive."
@@ -15158,7 +15158,7 @@ msgstr "Ponovo upiši lozinku."
 
 #: edituser.php:232 login.php:477 setup.php:441
 msgid "Type your password again, to make sure you have typed it correctly."
-msgstr ""
+msgstr "Upišite lozinku još jednom, da budemo sigurni da ste je napisali ispravno."
 
 #: admin_trees_check.php:132
 msgid "Types of error"
@@ -15219,7 +15219,7 @@ msgstr ""
 #. I18N: gedcom tag _UID
 #: app/GedcomTag.php:1751
 msgid "Unique identifier"
-msgstr ""
+msgstr "Jedinstveni identifikator"
 
 #. I18N: Help text for the “Add unique identifiers” configuration setting
 #: admin_trees_config.php:725
@@ -15420,7 +15420,7 @@ msgstr ""
 
 #: login.php:491
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site. You can also use this to enter any other comments you may have for the site administrator."
-msgstr ""
+msgstr "Koristite ovo polje da objasnite administratoru zašto želite otvoriti korisnički nalog i kako ste vezani za genealoške podatke prikazane na ovim stranicama. Takođe, možete upisati i bilo kakve druge komentare koje imate za administratora ove stranice."
 
 #: app/Functions/FunctionsEdit.php:665
 msgid "Use this image for charts and on the individual’s page."
@@ -15476,7 +15476,7 @@ msgstr "Korisničko ime ili adresa elektronske pošte"
 
 #: admin_users.php:330 edituser.php:164 login.php:444
 msgid "Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same."
-msgstr ""
+msgstr "Korisničko ime ne razlikuje velika/mala i akcentirana slova, pa se tako „suco”, „šućo” i „Šućo” smatraju istim korisničkim imenima."
 
 #. I18N: Menu entry
 #: admin.php:651 admin.php:659 app/Theme/AdministrationTheme.php:162
@@ -15820,7 +15820,7 @@ msgstr ""
 
 #: message.php:132
 msgid "When you send this message you will receive a copy sent via email to the address you provided."
-msgstr ""
+msgstr "Kada pošaljete ovu poruku, dobićete kopiju poruke na e-mail koji ste ostavili."
 
 #: admin_users.php:599
 msgid "Where a user is associated to an individual record in a family tree and has a role of member, editor, or moderator, you can prevent them from accessing the details of distant, living relations. You specify the number of relationship steps that the user is allowed to see."
@@ -16660,7 +16660,7 @@ msgstr ""
 #: login.php:228 login.php:498 reportengine.php:131 reportengine.php:265
 #: setup.php:190 setup.php:216 setup.php:298 setup.php:384 setup.php:449
 msgid "continue"
-msgstr ""
+msgstr "nastavi"
 
 #. I18N: A button label.
 #: admin_trees_manage.php:688
