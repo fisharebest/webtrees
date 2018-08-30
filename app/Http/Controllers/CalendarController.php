@@ -40,16 +40,21 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class CalendarController extends AbstractBaseController
 {
+    /** @var CalendarService */
+    private $calendar_service;
+
     /** @var LocalizationService */
     private $localization_service;
 
     /**
      * CalendarController constructor.
      *
+     * @param CalendarService     $calendar_service
      * @param LocalizationService $localization_service
      */
-    public function __construct(LocalizationService $localization_service)
+    public function __construct(CalendarService $calendar_service, LocalizationService $localization_service)
     {
+        $this->calendar_service = $calendar_service;
         $this->localization_service = $localization_service;
     }
 
@@ -157,6 +162,7 @@ class CalendarController extends AbstractBaseController
             'filterof'      => $filterof,
             'filtersx'      => $filtersx,
             'month'         => $month,
+            'months'        => $this->calendar_service->calendarMonthsInYear($cal, $year),
             'title'         => $title,
             'today'         => $today,
             'today_month'   => $today_month,

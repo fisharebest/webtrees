@@ -17,6 +17,7 @@ namespace Fisharebest\Webtrees\Services;
 
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Date\CalendarDate;
 use Fisharebest\Webtrees\Date\FrenchDate;
 use Fisharebest\Webtrees\Date\GregorianDate;
 use Fisharebest\Webtrees\Date\HijriDate;
@@ -34,6 +35,45 @@ use Fisharebest\Webtrees\Tree;
  */
 class CalendarService
 {
+    /**
+     * List all the months in a given year.
+     *
+     * @param string $calendar
+     * @param int    $year
+     *
+     * @return string[]
+     */
+    public function calendarMonthsInYear(string $calendar, int $year): array
+    {
+        $date          = new Date($calendar . ' ' . $year);
+        $calendar_date = $date->minimumDate();
+        $month_numbers = range(1, $calendar_date->monthsInYear());
+        $month_names   = [];
+
+        foreach ($month_numbers as $month_number) {
+            $calendar_date->d = 1;
+            $calendar_date->m = $month_number;
+            $calendar_date->setJdFromYmd();
+
+            if ($month_number === 6 && $calendar_date instanceof JewishDate && !$calendar_date->isLeapYear()) {
+                // No month 6 in Jewish non-leap years.
+                continue;
+            }
+
+            if ($month_number === 7 && $calendar_date instanceof JewishDate && !$calendar_date->isLeapYear()) {
+                // Month 7 is ADR in Jewish non-leap years (and ADS in others).
+                $mon = 'ADR';
+            } else {
+                $mon = $calendar_date->format('%O');
+            }
+
+
+            $month_names[$mon] = $calendar_date->format('%F');
+        }
+
+        return $month_names;
+    }
+
     /**
      * Get a list of events which occured during a given date range.
      *

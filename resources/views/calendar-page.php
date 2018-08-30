@@ -41,25 +41,15 @@
 				<?= I18N::translate('Month') ?>
 			</th>
 			<td class="wt-page-options-value" colspan="3">
-				<?php
-					for ($n = 1, $months_in_year = $cal_date->monthsInYear(); $n <= $months_in_year; ++$n) {
-						$month_name = $cal_date->monthNameNominativeCase($n, $cal_date->isLeapYear());
-						$m          = array_search($n, $cal_date::$MONTH_ABBREV);
-						if ($n === 6 && $cal_date instanceof JewishDate && !$cal_date->isLeapYear()) {
-							// No month 6 in Jewish non-leap years.
-							continue;
-						}
-						if ($n === 7 && $cal_date instanceof JewishDate && !$cal_date->isLeapYear()) {
-							// Month 7 is ADR in Jewish non-leap years.
-							$m = 'ADR';
-						}
-						if ($n === $cal_date->m) {
-							$month_name = '<span class="error">' . $month_name . '</span>';
-						}
-						echo '<a href="' . e(route('calendar', ['cal' => $cal, 'day' => $cal_date->d, 'month' => $m, 'year' => $cal_date->y, 'filterev' => $filterev, 'filterof' => $filterof, 'filtersx' => $filtersx, 'view' => 'month', 'ged' => $tree->getName()])) . '" rel="nofollow">', $month_name, '</a>';
-						echo ' | ';
-					}
-				?>
+                <?php foreach ($months as $m => $month_name): ?>
+                    <a href="<?= e(route('calendar', ['cal' => $cal, 'day' => $cal_date->d, 'month' => $m, 'year' => $cal_date->y, 'filterev' => $filterev, 'filterof' => $filterof, 'filtersx' => $filtersx, 'view' => 'month', 'ged' => $tree->getName()])) ?>" rel="nofollow">
+                        <?php if ($m === $cal_month): ?>
+                            <span class="error"><?= e($month_name) ?></span>
+                        <?php else: ?>
+                            <?= e($month_name) ?>
+                        <?php endif ?>
+                    </a> |
+                <?php endforeach ?>
 				<a href="<?= e(route('calendar', ['cal' => $cal, 'day' => min($cal_date->d, $today->daysInMonth()), 'month' => $today_month, 'year' => $today->y, 'filterev' => $filterev, 'filterof' => $filterof, 'filtersx' => $filtersx, 'view' => 'month', 'ged' => $tree->getName()])) ?>" rel="nofollow">
 					<b><?= $today->format('%F %Y') ?></b>
 				</a>
