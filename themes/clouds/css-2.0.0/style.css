@@ -2745,11 +2745,6 @@ div.faq_body {
 	float: left;
 }
 
-ituser-table .value {
-	margin: 0 260px 0 0;
-}
-
-
 #addmedia-page input[type="text"][id*="PAGE"],
 #addmedia-page input[type="text"][id*="_UID"] {
 	width: 350px;
