@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-07-26 23:06+0100\n"
-"PO-Revision-Date: 2018-08-30 04:33+0000\n"
+"PO-Revision-Date: 2018-08-30 04:35+0000\n"
 "Last-Translator: Andi Ahmad Fachrudin <nugeonet@gmail.com>\n"
 "Language-Team: Indonesian <https://translate.webtrees.net/projects/webtrees/webtrees/id/>\n"
 "Language: id\n"
@@ -9799,7 +9799,7 @@ msgstr "Tidak ada berkas yang diterima. Silakan unggah lagi."
 
 #: app/Http/Controllers/RelationshipsChartController.php:217
 msgid "No link between the two individuals could be found."
-msgstr "Tidak ada kaitan (lain) antara dua individu yang ditemukan."
+msgstr "Tidak ada kaitan apapun antara dua orang yang ditemukan."
 
 #: resources/views/admin/location-edit.php:159
 #: resources/views/modules/pedigree-map/pedigree-map.php:81
