@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2018-08-31 04:31+0000\n"
+"PO-Revision-Date: 2018-08-31 10:05+0000\n"
 "Last-Translator: Andi Ahmad Fachrudin <nugeonet@gmail.com>\n"
 "Language-Team: Indonesian <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/id/>\n"
 "Language: id\n"
@@ -320,7 +320,7 @@ msgstr[0] "%s orang dengan peristiwa pada %s antara %s dan %s"
 #: setup.php:122
 #, php-format
 msgid "%s is disabled on this server. You cannot install webtrees until it is enabled. Please ask your server’s administrator to enable it."
-msgstr "%s dinonaktifkan pada server ini. anda tidak dapat menginstal webtrees jika belum diaktifkan. harap hubungi pengurus situs atau server untuk mengaktifkannya."
+msgstr "%s dinonaktifkan pada server ini. anda tidak dapat menginstal situs jika belum diaktifkan. harap hubungi pengurus situs atau server untuk mengaktifkannya."
 
 #: app/Module/UserMessagesModule.php:91
 #, php-format
@@ -850,7 +850,7 @@ msgstr "Pengguna baru (%1$s) telah meminta akun (%2$s) dan memverifikasi alamat 
 
 #: admin.php:632 admin_site_upgrade.php:79 login.php:116
 msgid "A new version of webtrees is available."
-msgstr "Versi webtrees baru tersedia."
+msgstr "Versi WEBTREES Terbaru Sudah Tersedia."
 
 #. I18N: Description of the “Journal” module
 #: app/Module/UserJournalModule.php:56
@@ -861,7 +861,7 @@ msgstr "Area pribadi untuk membuat catatan atau membuat jurnal."
 #: login.php:322
 #, php-format
 msgid "A prospective user has registered with webtrees at %s."
-msgstr "Seorang calon pengguna telah terdaftar dengan webtrees di %s."
+msgstr "Seorang calon pengguna telah terdaftar dengan situs silsilah di %s."
 
 #. I18N: Description of the “Pedigree” module
 #: app/Module/PedigreeReportModule.php:35
@@ -3355,11 +3355,11 @@ msgstr "Peringatan! Ini mungkin membutuhkan waktu lama. Sabar."
 
 #: admin_site_upgrade.php:138
 msgid "Caution: old modules may not work, or they may prevent webtrees from working."
-msgstr "Perhatian: modul lama mungkin tidak berfungsi, atau mereka dapat mencegah webtrees bekerja."
+msgstr "Perhatian : modul lama mungkin tidak berfungsi, atau bisa saja membuat situs berhenti bekerja."
 
 #: admin_site_upgrade.php:202
 msgid "Caution: old themes may not work, or they may prevent webtrees from working."
-msgstr "Perhatian: tema lama mungkin tidak berfungsi, atau mungkin mencegah webtrees bekerja."
+msgstr "Perhatian : tema lama mungkin tidak berfungsi, atau bisa saja membuat situs tidak bisa bekerja."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6728
@@ -4985,7 +4985,7 @@ msgstr "Hapus preferensi untuk modul ini."
 
 #: app/Controller/IndividualController.php:167
 msgid "Delete this name"
-msgstr "Hapus nama ini"
+msgstr "Hapus Nama"
 
 #: edituser.php:321
 msgid "Delete your account"
@@ -5529,7 +5529,7 @@ msgstr "Alamat Email"
 #. I18N: Help text for the “webtrees reply address” configuration setting
 #: admin_trees_config.php:865
 msgid "Email address to be used in the “From:” field of emails that webtrees creates automatically.<br><br>webtrees can automatically create emails to notify administrators of changes that need to be reviewed. webtrees also sends notification emails to users who have requested an account.<br><br>Usually, the “From:” field of these automatically created emails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the email is required. To guard against spam or other email abuse, some email systems require each message’s “From:” field to reflect a valid email account and will not accept messages that are apparently from account <i>webtrees-noreply</i>."
-msgstr "Alamat email yang akan digunakan dalam bidang \"Dari:\" dari email yang dibuat webtrees secara otomatis. <br><br> webtrees dapat secara otomatis membuat email untuk memberi tahu administrator tentang perubahan yang perlu ditinjau. webtrees juga mengirim email pemberitahuan kepada pengguna yang telah meminta akun. <br><br> Biasanya, bidang \"Dari:\" dari email yang dibuat secara otomatis ini seperti <i>Dari: noreply@yoursite.com</i> ini menunjukkan bahwa tidak ada tanggapan terhadap email yang diperlukan. Untuk melindungi dari spam atau penyalahgunaan email lainnya, beberapa sistem email mengharuskan setiap bidang “Dari:” untuk mencerminkan akun email yang valid dan tidak akan menerima pesan yang tampaknya berasal dari akun <i>noreply</i>."
+msgstr "Alamat email yang akan digunakan dalam bidang \"Dari:\" dari email yang dibuat situs secara otomatis. <br><br>situs dapat secara otomatis membuat email untuk memberi tahu pengurus tentang perubahan yang perlu ditinjau. situs juga mengirim email pemberitahuan kepada pengguna yang telah meminta akun. <br><br> biasanya, bidang \"Dari:\" dari email yang dibuat secara otomatis ini seperti <i>Dari: noreply@yoursite.com</i> ini menunjukkan bahwa tidak ada tanggapan terhadap email yang diperlukan. untuk melindungi dari spam atau penyalahgunaan email lainnya, beberapa sistem email mengharuskan setiap bidang “Dari:” untuk mencerminkan akun email yang valid dan tidak akan menerima pesan yang tampaknya berasal dari akun <i>noreply</i>."
 
 #: admin_users.php:381
 msgid "Email verified"
@@ -6239,7 +6239,7 @@ msgstr "Nama file tidak diizinkan memiliki ekstensi \"%s\"."
 
 #: admin.php:901
 msgid "Files have been found from a previous version of webtrees. Old files can sometimes be a security risk. You should delete them."
-msgstr "File telah ditemukan dari versi webtrees sebelumnya. File lama terkadang bisa menjadi risiko keamanan. Anda harus menghapusnya."
+msgstr "File telah ditemukan dari versi situs sebelumnya. file lama terkadang bisa menjadi risiko keamanan bagi situs. anda harus menghapusnya."
 
 #: admin_site_clean.php:88
 #, php-format
@@ -6411,7 +6411,7 @@ msgstr "Gaya"
 #: admin_trees_manage.php:301
 #, php-format
 msgid "For example, if the GEDCOM file contains %1$s and webtrees expects to find %2$s in the media folder, then you would need to remove %3$s."
-msgstr "Misalnya, jika file GEDCOM berisi %1$s dan webtrees mengharapkan untuk menemukan %2$s di folder media, maka Anda harus menghapus %3$s."
+msgstr "Misalnya, jika file GEDCOM berisi %1$s dan situs mengharapkan untuk menemukan %2$s di folder media, maka anda harus menghapus %3$s."
 
 #: admin_users.php:600
 msgid "For example, if you specify a path length of 2, the individual will be able to see their grandson (child, child), their aunt (parent, sibling), their step-daughter (spouse, child), but not their first cousin (parent, sibling, child)."
@@ -7307,7 +7307,7 @@ msgstr "Jika anda adalah pengurus situs, anda harus memeriksanya:"
 
 #: site-unavailable.php:95
 msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"https://webtrees.net\">webtrees.net</a>."
-msgstr "Jika Anda tidak dapat menyelesaikan masalah sendiri, Anda dapat meminta bantuan di forum <a href=\"https://webtrees.net\">webtrees</a>."
+msgstr "Jika anda tidak dapat menyelesaikan masalah sendiri, anda dapat meminta bantuan di forum <a href=\"https://webtrees.net\">WEBTREES</a>."
 
 #: admin_trees_manage.php:285
 msgid "If you created this GEDCOM file using genealogy software that omits spaces when splitting long lines, then select this option to reinsert the missing spaces."
@@ -7327,7 +7327,7 @@ msgstr "Jika Anda memiliki banyak file media, Anda dapat mengaturnya ke dalam fo
 
 #: admin_trees_manage.php:278
 msgid "If you have created media objects in webtrees, and have subsequently edited this GEDCOM file using genealogy software that deletes media objects, then select this option to merge the current media objects with the new GEDCOM file."
-msgstr "Jika anda telah membuat media di situs ini, dan kemudian mengubah file GEDCOM menggunakan perangkat lunak genealogi yang menghapus media, kemudian pilih opsi ini untuk menggabungkan media saat ini dengan file GEDCOM baru."
+msgstr "Jika anda telah membuat media di situs ini, dan kemudian mengubah file GEDCOM menggunakan perangkat lunak genealogi yang dapat menghapus media, kemudian pilih opsi ini untuk menggabungkan media saat ini dengan file GEDCOM baru."
 
 #: app/Module/RecentChangesModule.php:186
 msgid "If you hide an empty block, you will not be able to change its configuration until it becomes visible by no longer being empty."
@@ -7357,12 +7357,12 @@ msgstr "Jika anda menggunakan salah satu layanan pelacak dan analisa berikut, si
 
 #: setup.php:187
 msgid "If your server’s security policy permits it, you will be able to request increased memory or CPU time using the webtrees administration page. Otherwise, you will need to contact your server’s administrator."
-msgstr "Jika kebijakan keamanan server Anda mengizinkannya, Anda akan dapat meminta peningkatan memori atau waktu CPU menggunakan halaman administrasi webtrees. Jika tidak, Anda harus menghubungi administrator server Anda."
+msgstr "Jika kebijakan keamanan server anda mengizinkannya, anda akan dapat meminta peningkatan memori atau waktu CPU menggunakan halaman pengaturan situs. jika tidak, anda harus menghubungi pengurus server anda."
 
 #. I18N: Help text for the "Website URL" site configuration setting
 #: admin_site_config.php:310
 msgid "If your website can be reached using more than one URL, such as <b>http://www.example.com/webtrees/</b> and <b>http://webtrees.example.com/</b>, you can specify the preferred URL. Requests for the other URLs will be redirected to the preferred one."
-msgstr "Jika situs anda dapat dijangkau menggunakan lebih dari satu URL, seperti <b>http://www.example.com/webtrees/</b> dan <b>http://webtrees.example.com/ </b>, anda dapat menentukan URL yang disukai. permintaan untuk URL lainnya akan dialihkan ke yang lebih disukai."
+msgstr "Jika situs anda dapat dijangkau menggunakan lebih dari satu URL, seperti <b>http://www.situs.com/silsilah/</b> dan <b>http://silsilah.situs.com/ </b>, anda dapat menentukan URL yang disukai. permintaan untuk URL lainnya akan dialihkan ke yang lebih disukai."
 
 #: admin_media.php:495 app/GedcomTag.php:1787
 msgid "Image dimensions"
@@ -8518,7 +8518,7 @@ msgstr "Manuskrip"
 #. I18N: Help text for the “GEDCOM errors” configuration setting
 #: admin_trees_config.php:1593
 msgid "Many genealogy programs create GEDCOM files with custom tags, and webtrees understands most of them. When unrecognized tags are found, this option lets you choose whether to ignore them or display a warning message."
-msgstr "Banyak program genealogi membuat file GEDCOM dengan tag khusus, dan webtrees memahami sebagian besar dari mereka. ketika tag yang tidak dikenal ditemukan, opsi ini memungkinkan anda memilih apakah akan mengabaikannya atau menampilkan pesan peringatan."
+msgstr "Banyak program genealogi membuat file GEDCOM dengan tag khusus, dan situs ini dirancang untuk memahami sebagian besar dari program mereka. ketika tag yang tidak dikenal ditemukan, opsi ini memungkinkan anda memilih apakah akan mengabaikannya atau menampilkan pesan peringatan."
 
 #. I18N: Help text for the "Sending server name" site configuration setting
 #: admin_site_config.php:433
@@ -10240,7 +10240,7 @@ msgstr "Waduh! webserver tidak dapat terhubung ke server database. bisa jadi ser
 
 #: setup.php:213
 msgid "Oops! webtrees was unable to create files in this folder."
-msgstr "Ups! webtrees tidak dapat membuat file di folder ini."
+msgstr "Waduh! situs tidak dapat membuat file di folder ini."
 
 #: app/Functions/FunctionsPrint.php:471
 msgid "OpenStreetMap™"
@@ -10639,11 +10639,11 @@ msgstr "PhpGedView harus versi 4.2.3, atau SVN hingga #%s"
 
 #: admin_pgv_to_wt.php:91
 msgid "PhpGedView must use the same database as webtrees."
-msgstr "PhpGedView harus menggunakan database yang sama dengan webtrees."
+msgstr "Situs PhpGedView harus menggunakan Database yang sama dengan Situs Webtrees."
 
 #: admin_pgv_to_wt.php:42 admin_trees_manage.php:707 admin_trees_manage.php:735
 msgid "PhpGedView to webtrees transfer wizard"
-msgstr "PhpGedView ke wizard transfer webtrees"
+msgstr "PhpGedView ke wizard transfer Webtrees"
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:88
@@ -12188,7 +12188,7 @@ msgstr "Menyetel ini ke <b>Ya</b> akan menempatkan tautan pada seseorang, sumber
 
 #: setup.php:93
 msgid "Setup wizard for webtrees"
-msgstr "Setup wizard untuk webtrees"
+msgstr "Setup wizard untuk Webtrees"
 
 #. I18N: The sixth day in the French republican calendar
 #: app/Date/FrenchDate.php:202
@@ -12806,7 +12806,7 @@ msgstr "Kode verifikasi situs"
 #. I18N: Help text for the "Site verification code for Google Webmaster Tools" site configuration setting
 #: admin_site_config.php:538 admin_site_config.php:559
 msgid "Site verification codes do not work when webtrees is installed in a subfolder."
-msgstr "Kode verifikasi situs tidak berfungsi saat webtrees dipasang di subfolder."
+msgstr "Kode verifikasi situs tidak berfungsi saat situs dipasang di subfolder."
 
 #. I18N: Name of a module - see http://en.wikipedia.org/wiki/Sitemaps
 #: app/Module/SiteMapModule.php:39
@@ -12908,7 +12908,7 @@ msgstr "Somali"
 #. I18N: Help text for the “GEDCOM media path” configuration setting. A “path” is something like “C:\Documents\Genealogy\Photos\John_Smith.jpeg”
 #: admin_trees_manage.php:300
 msgid "Some genealogy software creates GEDCOM files that contain media filenames with full paths. These paths will not exist on the web-server. To allow webtrees to find the file, the first part of the path must be removed."
-msgstr "Beberapa perangkat lunak genealogi menciptakan file GEDCOM yang berisi nama file media dengan path lengkap. jalur-jalur ini tidak akan ada di web server. untuk memungkinkan webtrees menemukan file, bagian pertama jalur harus dihapus."
+msgstr "Beberapa perangkat lunak genealogi menciptakan file GEDCOM yang berisi nama file media dengan path lengkap. jalur-jalur ini tidak akan ada di web server. untuk memungkinkan situs dapat menemukan file, bagian pertama jalur harus dihapus."
 
 #. I18N: Help text for the “Hit counters” configuration setting
 #: admin_trees_config.php:1606
@@ -13497,12 +13497,12 @@ msgstr "Kehilangan direktori sementara PHP."
 
 #: admin_trees_manage.php:714
 msgid "The PhpGedView to webtrees wizard is an automated process to assist administrators make the move from a PhpGedView installation to a new webtrees one. It will transfer all PhpGedView GEDCOM and other database information directly to your new webtrees database. The following requirements are necessary:"
-msgstr "The PhpGedView ke webtrees wizard adalah proses otomatis untuk membantu administrator melakukan perpindahan dari instalasi PhpGedView ke webtrees baru. Ini akan mentransfer semua PhpGedView GEDCOM dan informasi database lainnya langsung ke database webtrees Anda yang baru. Persyaratan berikut diperlukan:"
+msgstr "PhpGedView ke wizard Webtrees adalah proses otomatis untuk membantu pengurus situs melakukan perpindahan dari instalasi PhpGedView ke Webtrees baru. ini akan mentransfer semua data PhpGedView GEDCOM dan informasi database lainnya langsung ke database Webtrees anda yang baru. persyaratan berikut diperlukan:"
 
 #: admin_users.php:101
 #, php-format
 msgid "The administrator at the webtrees site %s has approved your application for an account. You may now sign in by accessing the following link: %s"
-msgstr "Administrator di situs webtrees %s telah menyetujui permohonan Anda untuk akun. Anda sekarang dapat masuk dengan mengakses tautan berikut: %s"
+msgstr "Pengurus di situs Silsilah Keluarga %s telah menyetujui permohonan akun anda. kini anda dapat masuk dengan mengakses tautan berikut: %s"
 
 #: login.php:616
 msgid "The administrator has been informed. As soon as they give you permission to sign in, you can sign in with your username and password."
@@ -13897,7 +13897,7 @@ msgstr "File thumbnail %s tidak ada."
 #. I18N: Help text for the “Session timeout” site configuration setting
 #: admin_site_config.php:296
 msgid "The time in seconds that a webtrees session remains active before requiring a new sign-in. The default is 7200, which is 2 hours."
-msgstr "Waktu dalam detik sesi webtrees tetap aktif sebelum memerlukan proses masuk baru. standarnya adalah 7200, yaitu 2 jam."
+msgstr "Waktu dalam detik sesi situs tetap aktif sebelum memerlukan proses masuk baru. standarnya adalah 7200, yaitu 2 jam."
 
 #: admin_site_config.php:242 admin_users.php:427 edituser.php:253
 msgid "The time zone is required for date calculations, such as knowing today’s date."
@@ -13976,7 +13976,7 @@ msgstr "Situs geonames.org menyediakan basis data besar untuk nama tempat. ini d
 
 #: setup.php:509
 msgid "The webtrees developers would be very interested to learn about this error. If you contact them, they will help you resolve the problem."
-msgstr "Pengembang webtrees akan sangat tertarik untuk belajar tentang kesalahan ini. Jika Anda menghubungi mereka, mereka akan membantu Anda menyelesaikan masalah."
+msgstr "Pengembang situs akan sangat tertarik untuk belajar tentang kesalahan ini. jika anda menghubungi mereka, mereka akan membantu anda menyelesaikan masalah."
 
 #: admin_site_access.php:279
 msgid "The “%” character is a wildcard, and will match zero or more other characters."
@@ -14081,7 +14081,7 @@ msgstr "Kelompok dari orang ini tidak terkait dengan %s."
 
 #: admin.php:586
 msgid "These pages provide access to all the preferences and management tools for this webtrees site."
-msgstr "Halaman-halaman ini memberikan akses ke semua preferensi dan alat manajemen untuk situs webtrees ini."
+msgstr "Halaman-halaman ini memberikan akses ke semua preferensi dan alat manajemen untuk situs ini."
 
 #. I18N: %1$s and %2$s are the names of character encodings, such as ISO-8859-1 or ASCII
 #: import.php:150
@@ -14103,12 +14103,12 @@ msgstr "Blok ini akan menunjukkan kepada editor daftar rekaman dengan perubahan 
 
 #: setup.php:351 setup.php:362
 msgid "This database and table-prefix appear to be used by another application. If you have an existing PhpGedView system, you should create a new webtrees system. You can import your PhpGedView data and settings later."
-msgstr "Database dan awalan tabel ini tampaknya digunakan oleh aplikasi lain. Jika Anda memiliki sistem PhpGedView yang ada, Anda harus membuat sistem webtrees baru. Anda dapat mengimpor data dan pengaturan PhpGedView Anda nanti."
+msgstr "Database dan awalan tabel ini tampaknya digunakan oleh aplikasi lain. jika anda memiliki sistem PhpGedView yang ada, anda harus membuat sistem Webtrees baru. anda dapat mengimpor data dan pengaturan PhpGedView anda nanti."
 
 #: setup.php:258
 #, php-format
 msgid "This database is only running MySQL version %s. You cannot install webtrees here."
-msgstr "Database ini hanya menjalankan MySQL versi %s. Anda tidak dapat menginstal webtrees di sini."
+msgstr "Database ini hanya menjalankan MySQL versi %s. anda tidak dapat menginstal situs di sini."
 
 #: admin_users.php:366 edituser.php:265 login.php:434 setup.php:445
 msgid "This email address will be used to send password reminders, website notifications, and messages from other family members who are registered on the website."
@@ -14175,7 +14175,7 @@ msgstr "Berkas ini terkait ke basisdata genealogis lain di server ini. Ia tidak 
 #. I18N: Help text for the "Data folder" site configuration setting
 #: admin_site_config.php:186
 msgid "This folder will be used by webtrees to store media files, GEDCOM files, temporary files, etc. These files may contain private data, and should not be made available over the internet."
-msgstr "Folder ini akan digunakan oleh webtrees untuk menyimpan file media, file GEDCOM, file sementara, dll. File-file ini mungkin berisi data pribadi, dan tidak boleh tersedia melalui internet."
+msgstr "Folder ini akan digunakan oleh situs untuk menyimpan file media, file GEDCOM, file sementara, dll. file-file ini mungkin berisi data pribadi, dan tidak boleh tersedia melalui internet."
 
 #. I18N: Help text for the “Media folder” configuration setting
 #: admin_trees_config.php:1006
@@ -14260,7 +14260,7 @@ msgstr "Ini sensitif huruf."
 
 #: setup.php:377
 msgid "This is case sensitive. If a database with this name does not already exist webtrees will attempt to create one for you. Success will depend on permissions set for your web server, but you will be notified if this fails."
-msgstr "Ini sensitif huruf. Jika database dengan nama ini belum ada, webtrees akan berusaha membuatnya untuk Anda. Sukses akan bergantung pada izin yang ditetapkan untuk server web Anda, tetapi Anda akan diberitahu jika ini gagal."
+msgstr "Ini huruf sangat sensitif. jika database dengan nama ini belum ada, situs akan berusaha membuatnya untuk anda. keberhasilan akan bergantung pada izin yang ditetapkan untuk server situs milik anda, tetapi anda akan diberitahu jika proses ini gagal."
 
 #. I18N: Help text for the “Show chart details by default” configuration setting
 #: admin_trees_config.php:1290
@@ -14269,7 +14269,7 @@ msgstr "Ini adalah nilai awal untuk opsi \"detail acara\" pada grafik."
 
 #: admin.php:637 admin_site_upgrade.php:67
 msgid "This is the latest version of webtrees. No upgrade is available."
-msgstr "Ini adalah versi webtrees terbaru. Tidak ada peningkatan versi."
+msgstr "Ini adalah versi situs terbaru. tidak ada peningkatan versi."
 
 #. I18N: Help text for the “All family facts” configuration setting
 #: admin_trees_config.php:1757
@@ -14335,7 +14335,7 @@ msgstr "Ini dapat menyebabkan masalah untuk aplikasi lain."
 
 #: admin_trees_check.php:133
 msgid "This may cause a problem for webtrees."
-msgstr "Ini dapat menyebabkan masalah untuk webtrees."
+msgstr "Ini dapat menyebabkan masalah untuk situs."
 
 #: admin_media.php:509
 msgid "This media file does not exist."
@@ -14776,7 +14776,7 @@ msgstr "Untuk mencegah pengunjung mengakses situs saat anda sedang menyalin file
 #. I18N: “Apache” is a software program.
 #: admin_site_config.php:189
 msgid "To protect this private data, webtrees uses an Apache configuration file (.htaccess) which blocks all access to this folder. If your web-server does not support .htaccess files, and you cannot restrict access to this folder, then you can select another folder, away from your web documents."
-msgstr "Untuk melindungi data pribadi ini, webtrees menggunakan file konfigurasi Apache (.htaccess) yang memblokir semua akses ke folder ini. Jika web-server Anda tidak mendukung file .htaccess, dan Anda tidak dapat membatasi akses ke folder ini, maka Anda dapat memilih folder lain, jauh dari dokumen web Anda."
+msgstr "Untuk melindungi data pribadi ini, situs menggunakan file konfigurasi Apache (.htaccess) yang memblokir semua akses ke folder ini. jika server anda tidak mendukung file .htaccess, dan anda tidak dapat membatasi akses ke folder ini, maka anda dapat memilih folder lain, jauh dari dokumen situs anda."
 
 #: admin_trees_download.php:144 app/Module/ClippingsCartModule.php:364
 msgid "To reduce the size of the download, you can compress the data into a .ZIP file. You will need to uncompress the .ZIP file before you can use it."
@@ -15254,7 +15254,7 @@ msgstr "Tingkatkan pula"
 #: admin.php:634 admin_site_upgrade.php:82 login.php:118
 #, php-format
 msgid "Upgrade to webtrees %s."
-msgstr "Tingkatkan ke webtrees %s."
+msgstr "Tingkatkan sistem situs ke versi %s."
 
 #: admin_site_upgrade.php:55
 msgid "Upgrade wizard"
@@ -15909,7 +15909,7 @@ msgstr "anda juga dapat mengajukan permohonan untuk mendaftarkan diri anda sebag
 #. I18N: Help text for the "Default theme" site configuration setting
 #: admin_site_config.php:255 admin_trees_config.php:978 edituser.php:287
 msgid "You can change the appearance of webtrees using “themes”. Each theme has a different style, layout, color scheme, etc."
-msgstr "Anda dapat mengubah tampilan webtrees menggunakan \"tema\". Setiap tema memiliki gaya, tata letak, skema warna yang berbeda, dll."
+msgstr "Anda dapat mengubah tampilan situs menggunakan \"tema\". setiap tema memiliki gaya, tata letak, skema warna yang berbeda, dll."
 
 #. I18N: An XREF is the identification number used in GEDCOM files, such as F123 or R14.
 #: admin_trees_config.php:842
@@ -16087,11 +16087,11 @@ msgstr "Anda harus menerima atau menolak semua perubahan yang menunggu sebelum m
 
 #: admin_site_upgrade.php:136
 msgid "You should consult the module’s author to confirm compatibility with this version of webtrees."
-msgstr "Anda harus berkonsultasi dengan penulis modul untuk memastikan kompatibilitas dengan versi webtrees ini."
+msgstr "Anda harus berkonsultasi dengan penulis modul untuk memastikan kompatibilitas dengan versi situs ini."
 
 #: admin_site_upgrade.php:200
 msgid "You should consult the theme’s author to confirm compatibility with this version of webtrees."
-msgstr "Anda harus berkonsultasi dengan penulis tema untuk memastikan kompatibilitas dengan versi webtrees ini."
+msgstr "Anda harus berkonsultasi dengan penulis tema untuk memastikan kompatibilitas dengan versi situs ini."
 
 #. I18N: e.g. ‘You should delete the “http://” from “http://www.example.com” and try again.’
 #: login.php:293 message.php:58
@@ -16109,7 +16109,7 @@ msgstr "Anda akan diberitahu melalui email ketika calon pengguna ini telah mengk
 
 #: setup.php:434
 msgid "You will use this to sign in to webtrees."
-msgstr "Anda akan menggunakan ini untuk masuk ke webtrees."
+msgstr "Anda akan menggunakan ini untuk masuk ke situs."
 
 #: statistics.php:286
 msgid "Youngest father"
@@ -20010,13 +20010,13 @@ msgstr "lahir pada"
 
 #: app/Theme/WebtreesTheme.php:133
 msgid "webtrees"
-msgstr "webtris"
+msgstr "situs"
 
 #. I18N: %s is a database name/identifier
 #: admin_pgv_to_wt.php:110
 #, php-format
 msgid "webtrees cannot connect to the PhpGedView database: %s."
-msgstr "webtrees tidak dapat terhubung ke database PhpGedView: %s."
+msgstr "Situs Webtrees tidak dapat terhubung ke database PhpGedView: %s."
 
 #: message.php:40 message.php:260 message.php:320
 msgid "webtrees message"
@@ -20025,7 +20025,7 @@ msgstr "Kirim Pesan"
 #: setup.php:276
 #, php-format
 msgid "webtrees needs a MySQL database, version %s or later."
-msgstr "webtrees memerlukan database MySQL, versi %s atau lebih baru."
+msgstr "situs memerlukan database MySQL, versi %s atau lebih baru."
 
 #. I18N: Help text for the “Messages” site configuration setting
 #: admin_site_config.php:327
@@ -20043,15 +20043,15 @@ msgstr "Situs mengirim pesan tanpa penyimpanan"
 
 #: admin_trees_download.php:153
 msgid "webtrees uses UTF-8 encoding for accented letters, special characters and non-Latin scripts. If you want to use this GEDCOM file with genealogy software that does not support UTF-8, then you can create it using ISO-8859-1 encoding."
-msgstr "webtrees menggunakan enkode UTF-8 untuk huruf beraksen, karakter khusus dan skrip non-Latin. Jika Anda ingin menggunakan file GEDCOM ini dengan perangkat lunak genealogi yang tidak mendukung UTF-8, maka Anda dapat membuatnya menggunakan pengkodean ISO-8859-1."
+msgstr "situs menggunakan enkode UTF-8 untuk huruf beraksen, karakter khusus dan skrip non-latin. jika anda ingin menggunakan file GEDCOM ini dengan perangkat lunak genealogi yang tidak mendukung UTF-8, maka anda dapat membuatnya menggunakan pengkodean ISO-8859-1."
 
 #: app/Functions/FunctionsPrint.php:211
 msgid "webtrees wiki"
-msgstr "wiki webtrees"
+msgstr "wiki situs"
 
 #: admin_trees_manage.php:718
 msgid "webtrees’ database must be on the same server as PhpGedView’s"
-msgstr "Database webtrees harus berada di server yang sama dengan PhpGedView"
+msgstr "Database situs ini harus berada di server yang sama dengan PhpGedView"
 
 #: app/Module/GoogleMapsModule.php:3373
 msgid "west"
