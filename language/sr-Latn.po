@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-07-26 23:06+0100\n"
-"PO-Revision-Date: 2018-08-30 20:49+0000\n"
+"PO-Revision-Date: 2018-08-31 13:31+0000\n"
 "Last-Translator: Enes <enes_s@yahoo.com>\n"
 "Language-Team: Serbian (latin) <https://translate.webtrees.net/projects/webtrees/webtrees/sr-Latn/>\n"
 "Language: sr-Latn\n"
@@ -1896,7 +1896,7 @@ msgstr "Americká Samoa"
 #. I18N: FAQ = “Frequently Asked Question”
 #: resources/views/modules/faq/edit.php:64
 msgid "An FAQ can be displayed on just one of the family trees, or on all the family trees."
-msgstr ""
+msgstr "FAQ (Često postavljena pitanja) mogu biti prikazana samo na jednom porodičnom stablu ili na svim porodičnim stablima."
 
 #: resources/views/admin/site-registration.php:49
 msgid "An administrator must approve the new user account and select an access level before the user can sign in."
@@ -3350,7 +3350,7 @@ msgstr "Nebitna velika i mala slova"
 #. I18N: gedcom tag CAST
 #: app/GedcomTag.php:560
 msgid "Caste"
-msgstr ""
+msgstr "Kasta"
 
 #: resources/views/statistics-chart-custom.php:209
 msgid "Categories"
@@ -5729,7 +5729,7 @@ msgstr "Boja očiju"
 #. I18N: Name of a theme.
 #: app/Theme/FabTheme.php:128
 msgid "F.A.B."
-msgstr ""
+msgstr "F.A.B."
 
 #. I18N: Name of a module. Abbreviation for “Frequently Asked Questions”
 #: app/Module/FrequentlyAskedQuestionsModule.php:37
@@ -7462,11 +7462,11 @@ msgstr "Osoba 2"
 
 #: resources/views/statistics-chart-custom.php:107
 msgid "Individual distribution"
-msgstr ""
+msgstr "Pojedinačna distribucija"
 
 #: app/Stats.php:1866 resources/views/statistics-chart-custom.php:162
 msgid "Individual distribution chart"
-msgstr ""
+msgstr "Grafikon pojedinačne distribucije"
 
 #: resources/views/admin/trees-preferences.php:589
 msgid "Individual pages"
@@ -9835,7 +9835,7 @@ msgstr "Nisu pronađene greške."
 msgid "No events exist for the next %s day."
 msgid_plural "No events exist for the next %s days."
 msgstr[0] "Nema događaja za sledeći %s dan."
-msgstr[1] "Nema događaja za sledećih %s dana."
+msgstr[1] "Nema događaja za sledeća %s dana."
 msgstr[2] "Nema događaja za sledećih %s dana."
 
 #: resources/views/modules/todays_events/empty.php:4
@@ -9981,7 +9981,7 @@ msgstr "Nije živ"
 #. I18N: gedcom tag _NMR
 #: app/GedcomTag.php:1863 app/Http/Controllers/BranchesController.php:319
 msgid "Not married"
-msgstr "Nevenčan/Nevenčana"
+msgstr "Nevenčani"
 
 #. I18N: gedcom tag _NMR
 #: app/GedcomTag.php:1860
@@ -10476,7 +10476,7 @@ msgstr "Palau (Muskiz)"
 #. I18N: A colour scheme
 #: app/Theme/ColorsTheme.php:140
 msgid "Palette"
-msgstr ""
+msgstr "Paleta"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:527
@@ -10801,7 +10801,7 @@ msgstr "Mesto krštenja"
 
 #: app/GedcomTag.php:621 modules_v3/missing_facts_report/report.xml:305
 msgid "Place of confirmation"
-msgstr ""
+msgstr "Mesto potvrde"
 
 #: app/GedcomTag.php:637
 msgid "Place of cremation"
@@ -10844,11 +10844,11 @@ msgstr "Mesto objave venčanja"
 
 #: app/GedcomTag.php:874
 msgid "Place of naturalization"
-msgstr ""
+msgstr "Mesto državljanstva"
 
 #: app/GedcomTag.php:912
 msgid "Place of ordination"
-msgstr ""
+msgstr "Mesto odluke"
 
 #: app/GedcomTag.php:965
 msgid "Place of residence"
@@ -10865,7 +10865,7 @@ msgstr "Mesta"
 
 #: resources/views/help/place.php:4
 msgid "Places should be entered according to the standards for genealogy. In genealogy, places are recorded with the most specific information about the place first and then working up to the least specific place last, using commas to separate the different place levels. The level at which you record the place information should represent the levels of government or church where vital records for that place are kept.<br><br>For example, a place like Salt Lake City would be entered as “Salt Lake City, Salt Lake, Utah, USA”.<br><br>Let’s examine each part of this place. The first part, “Salt Lake City,” is the city or township where the event occurred. In some countries, there may be municipalities or districts inside a city which are important to note. In that case, they should come before the city. The next part, “Salt Lake,” is the county. “Utah” is the state, and “USA” is the country. It is important to note each place because genealogy records are kept by the governments of each level.<br><br>If a level of the place is unknown, you should leave a space between the commas. Suppose, in the example above, you didn’t know the county for Salt Lake City. You should then record it like this: “Salt Lake City, , Utah, USA”. Suppose you only know that an individual was born in Utah. You would enter the information like this: “, , Utah, USA”. <br><br>You can use the <b>Find Place</b> link to help you find places that already exist in the database."
-msgstr ""
+msgstr "Mesta treba uneti prema standardima za rodoslovlje. U rodoslovnoj prezentaciji, mesta se beleže od najmanjeg područja prema većim, koristeći zareze za razdvajanje različitih nivoa mesta. Područje koje beležite treba da predstavlja nivoe vlasti ili hrama u kojima se čuvaju bitni zapisi za to mesto. <br> Na primer, mesto kao što je Novi Beograd biće upisano kao \"Novi Beograd, Beograd, Srbija\". <br> <br> Pregledajte svaki deo ovog mesta. Prvi deo, \"Novi Beograd\", je opština unutar grada Beograda. U tim slučajevima, kada su naselja, opštine ili okruzi unutar grada važni za napomenu, oni se pišu ispred naziva grada/mesta. Sledeći deo \"Beograd\" je naziv grada/mesta i na kraju \"Srbija\" je naziv zemlje. Važno je zabeležiti svaki deo naziva mesta, jer na primer \"Rakovica\" može da bude selo kod Čajetine ili opština grada Beograda. <br> <br> Ako je nivo mesta nepoznat, treba ostaviti razmak između zareza. Pretpostavimo, u prethodnom primeru, ne znate o kojoj Rakovici je reč. Tada bi naziv mesta trebali sačuvati kao: \"Rakovica, , Srbija\". Ako znate samo da je neka osoba rođena u Srbiji, tada bi trebali uneti: \", Srbija\". <br> <br> Možete koristiti link <b> Pronađi mesto </ b> da biste pronašli mesta koja već postoje u bazi podataka."
 
 #: resources/views/places-page.php:26
 msgid "Places without valid co-ordinates are not shown on the map and have a red border around the sidebar entry"
@@ -10886,25 +10886,25 @@ msgstr "Molimo vas da upišete ispravnu e-mail adresu."
 #: app/Date/FrenchDate.php:128
 msgctxt "GENITIVE"
 msgid "Pluviose"
-msgstr "Pluviôse"
+msgstr ""
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:222
 msgctxt "INSTRUMENTAL"
 msgid "Pluviose"
-msgstr "Pluviôse"
+msgstr ""
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:175
 msgctxt "LOCATIVE"
 msgid "Pluviose"
-msgstr "Pluviôse"
+msgstr ""
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:81
 msgctxt "NOMINATIVE"
 msgid "Pluviose"
-msgstr "Pluviôse"
+msgstr ""
 
 #. I18N: Name of a country or state
 #: app/Stats.php:7776
@@ -10959,37 +10959,37 @@ msgstr "Poštanski broj"
 #: app/Date/FrenchDate.php:136
 msgctxt "GENITIVE"
 msgid "Prairial"
-msgstr "Prairial"
+msgstr ""
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:230
 msgctxt "INSTRUMENTAL"
 msgid "Prairial"
-msgstr "Prairial"
+msgstr ""
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:183
 msgctxt "LOCATIVE"
 msgid "Prairial"
-msgstr "Prairial"
+msgstr ""
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:89
 msgctxt "NOMINATIVE"
 msgid "Prairial"
-msgstr "Prairial"
+msgstr ""
 
 #: app/Http/Controllers/AdminSiteController.php:686
 msgid "Predefined text that states admin will decide on each request for a user account"
-msgstr "Predefinirani tekst koji navodi da administrator mora odlučiti za svaki zahtev za korisnički nalog"
+msgstr "Predefinisani tekst koji navodi da administrator mora odlučiti za svaki zahtev za korisnički nalog"
 
 #: app/Http/Controllers/AdminSiteController.php:685
 msgid "Predefined text that states all users can request a user account"
-msgstr "Predefinirani tekst koji navodi da svi korisnici mogu zatražiti korisnički nalog"
+msgstr "Predefinisani tekst koji navodi da svi korisnici mogu zatražiti korisnički nalog"
 
 #: app/Http/Controllers/AdminSiteController.php:687
 msgid "Predefined text that states only family members can request a user account"
-msgstr "Predefinirani tekst koji navodi da samo članovi porodice mogu zatražiti korisnički nalog"
+msgstr "Predefinisani tekst koji navodi da samo članovi porodice mogu zatražiti korisnički nalog"
 
 #: app/Http/Controllers/AdminTreesController.php:1016
 #: app/Http/Controllers/HomePageController.php:55
@@ -11038,7 +11038,7 @@ msgstr "Sveštenik"
 #. I18N: The first day in the French republican calendar
 #: app/Date/FrenchDate.php:272
 msgid "Primidi"
-msgstr "Primidi"
+msgstr ""
 
 #: modules_v3/family_group_report/report.xml:10
 msgid "Print basic events when blank"
@@ -11117,7 +11117,7 @@ msgstr "Kvalitet podatka"
 #. I18N: The fourth day in the French republican calendar
 #: app/Date/FrenchDate.php:278
 msgid "Quartidi"
-msgstr "Quartidi"
+msgstr ""
 
 #: resources/views/modules/faq/config.php:40
 #: resources/views/modules/faq/edit.php:15
@@ -11148,12 +11148,12 @@ msgstr "Brze činjenice izvora"
 #. I18N: The fifth day in the French republican calendar
 #: app/Date/FrenchDate.php:280
 msgid "Quintidi"
-msgstr "Quintidi"
+msgstr ""
 
 #. I18N: When replying to an email, the subject becomes “RE: <subject>”
 #: app/Module/UserMessagesModule.php:152 app/Module/UserMessagesModule.php:153
 msgid "RE: "
-msgstr "Odgovor: "
+msgstr "ODG: "
 
 #: app/GedcomCode/GedcomCodeRela.php:247
 msgid "Rabbi"
@@ -11364,7 +11364,7 @@ msgstr ""
 
 #: app/GedcomTag.php:842 modules_v3/fact_sources/report.xml:205
 msgid "Registered partnership"
-msgstr ""
+msgstr "Registrovano partnerstvo"
 
 #: app/GedcomCode/GedcomCodeRela.php:255
 msgid "Registry officer"
@@ -11382,7 +11382,7 @@ msgstr ""
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:202
 msgid "Regular expression"
-msgstr ""
+msgstr "Regularni izraz"
 
 #. I18N: http://en.wikipedia.org/wiki/Regular_expression
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:178
@@ -14389,7 +14389,7 @@ msgstr ""
 #, php-format
 msgid "This page has been viewed %s time."
 msgid_plural "This page has been viewed %s times."
-msgstr[0] "Ova stranica je pogledana %s puta."
+msgstr[0] "Ova stranica je pogledana %s put."
 msgstr[1] "Ova stranica je pogledana %s puta."
 msgstr[2] "Ova stranica je pogledana %s puta."
 
