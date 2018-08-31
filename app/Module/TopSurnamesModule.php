@@ -103,9 +103,11 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
                 $content = FunctionsPrintLists::surnameTagCloud($all_surnames, 'individual-list', true, $tree);
                 break;
             case 'list':
+                uasort($all_surnames,  array($this, 'surnameCountSort'));
                 $content = FunctionsPrintLists::surnameList($all_surnames, 1, true, 'individual-list', $tree);
                 break;
             case 'array':
+                uasort($all_surnames,  array($this, 'surnameCountSort'));
                 $content = FunctionsPrintLists::surnameList($all_surnames, 2, true, 'individual-list', $tree);
                 break;
             case 'table':
@@ -215,5 +217,18 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
             'infoStyle'   => $infoStyle,
             'info_styles' => $info_styles,
         ]);
+    }
+
+    /**
+     * Sort (lists of counts of similar) surname by total count.
+     *
+     * @param string[] $a
+     * @param string[] $b
+     *
+     * @return int
+     */
+    private function surnameCountSort(array $a, array $b): int
+    {
+        return array_sum($b) - array_sum($a);
     }
 }
