@@ -1,4 +1,3 @@
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2018 webtrees development team
@@ -292,8 +291,9 @@ a > .wt-icon-arrow-up:hover::before {
 }
 
 .wt-header-wrapper .dropdown-item.active {
-	font-weight: bold;
+	background-color: inherit;
 	color: inherit;
+	font-weight: bold;
 }
 
 .wt-header-container {
