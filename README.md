@@ -134,6 +134,11 @@ Once the system requirements are met, perform the following steps
 
 That's it!
 
+#### Run on YunoHost
+[![Install Webtrees with YunoHost](https://install-app.yunohost.org/install-with-yunohost.png)](https://install-app.yunohost.org/?app=webtrees)
+
+Webtrees app for [YunoHost](https://yunohost.org). See [here](https://github.com/YunoHost-Apps/Webtrees_ynh).
+
 However, before you can use **webtrees**, you need at least one GEDCOM
 (family tree) file. If you have been doing your research using a desktop program
 such as Family Tree Maker, you can use it's “save as GEDCOM” function to create
