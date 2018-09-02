@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-07-26 23:06+0100\n"
-"PO-Revision-Date: 2018-08-07 06:46+0000\n"
-"Last-Translator: hrnwebtrees <hrnwebtrees@yahoo.com>\n"
+"PO-Revision-Date: 2018-09-02 09:46+0000\n"
+"Last-Translator: Eyolf Østrem <eyolf@oestrem.com>\n"
 "Language-Team: Norwegian Bokmål <https://translate.webtrees.net/projects/webtrees/webtrees/nb/>\n"
 "Language: nb\n"
 "MIME-Version: 1.0\n"
@@ -2726,22 +2726,22 @@ msgstr "Birmingham, Alabama, USA"
 #: resources/views/lists/individuals-table.php:172
 #: resources/views/lists/individuals-table.php:201
 msgid "Birth"
-msgstr "Fødsel"
+msgstr "Født"
 
 #: app/GedcomCode/GedcomCodePedi.php:58
 msgctxt "Female pedigree"
 msgid "Birth"
-msgstr "Fødsel"
+msgstr "Født"
 
 #: app/GedcomCode/GedcomCodePedi.php:56
 msgctxt "Male pedigree"
 msgid "Birth"
-msgstr "Fødsel"
+msgstr "Født"
 
 #: app/GedcomCode/GedcomCodePedi.php:60
 msgctxt "Pedigree"
 msgid "Birth"
-msgstr "Fødsel"
+msgstr "Født"
 
 #: app/Stats.php:1816 resources/views/statistics-chart-custom.php:108
 msgid "Birth by country"
