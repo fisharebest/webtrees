@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-07-26 23:06+0100\n"
-"PO-Revision-Date: 2018-08-31 10:05+0000\n"
+"PO-Revision-Date: 2018-09-03 02:51+0000\n"
 "Last-Translator: Andi Ahmad Fachrudin <nugeonet@gmail.com>\n"
 "Language-Team: Indonesian <https://translate.webtrees.net/projects/webtrees/webtrees/id/>\n"
 "Language: id\n"
@@ -1288,7 +1288,7 @@ msgstr "Tambah Nama Baru"
 #: resources/views/modules/gedcom_news/list.php:46
 #: resources/views/modules/user_blog/list.php:45
 msgid "Add a news article"
-msgstr "Tambahkan Artikel berita baru"
+msgstr "Tambahkan Berita Baru"
 
 #: resources/views/cards/add-note.php:7 resources/views/family-page.php:88
 #: resources/views/modules/notes/tab.php:38
@@ -3385,7 +3385,7 @@ msgstr "Ubah Anggota Keluarga"
 #: app/Http/Controllers/AdminUsersController.php:228
 #: app/Http/Controllers/HomePageController.php:582
 msgid "Change the blocks on this user’s “My page”"
-msgstr "Ubah blokir di “Halaman Saya” pada pengguna ini"
+msgstr "Ubah setelan blok di “Halaman Saya”"
 
 #: app/Http/Controllers/HomePageController.php:342
 #: resources/views/admin/trees.php:76
@@ -4826,7 +4826,7 @@ msgstr "Desidi"
 
 #: app/Module/UserWelcomeModule.php:66 app/Module/WelcomeBlockModule.php:65
 msgid "Default chart"
-msgstr "Grafik Sederhana"
+msgstr "Grafik Silsilah"
 
 #: resources/views/admin/trees.php:104
 msgid "Default family tree"
@@ -4837,7 +4837,7 @@ msgstr "Silsilah Keluarga Sederhana"
 #: resources/views/admin/trees-preferences.php:86
 #: resources/views/edit-account-page.php:73
 msgid "Default individual"
-msgstr "Lihat Pribadi"
+msgstr "Data Pribadi"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.php:457
@@ -7186,7 +7186,7 @@ msgstr "Jika dua silsilah keluarga menggunakan folder media yang sama, maka mere
 
 #: resources/views/admin/trees-privacy.php:34
 msgid "If visitors can not see the family tree, they will not be able to sign up for an account. You will need to add their account manually."
-msgstr "Jika pengunjung tidak dapat melihat silsilah keluarga, mereka tidak akan dapat mendaftar untuk sebuah akun. Anda perlu menambahkan akun mereka secara manual."
+msgstr "Jika pengunjung tidak dapat melihat silsilah keluarga, mereka tidak akan dapat mendaftar untuk sebuah akun. anda perlu menambahkan akun mereka secara manual."
 
 #. I18N: Help text for the “Who can upload new media files” configuration setting
 #: resources/views/admin/trees-preferences.php:320
@@ -9306,7 +9306,7 @@ msgstr "Murdad"
 #: resources/views/modules/gedcom_news/list.php:12
 #: resources/views/modules/user_blog/list.php:12
 msgid "More news articles"
-msgstr "Lebih banyak artikel berita"
+msgstr "Lihat Berita Lainnya"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:7690
@@ -9816,7 +9816,7 @@ msgstr "Tidak ada fakta yang cocok ditemukan"
 #: resources/views/modules/gedcom_news/list.php:6
 #: resources/views/modules/user_blog/list.php:6
 msgid "No news articles have been submitted."
-msgstr "Tidak ada artikel berita yang dikirim."
+msgstr "Belum ada berita yang dibuat."
 
 #: resources/views/admin/trees-places.php:37
 msgid "No places have been found."
@@ -9913,7 +9913,7 @@ msgstr "Norwegia"
 
 #: resources/views/admin/control-panel.php:277
 msgid "Not approved by an administrator"
-msgstr "Tidak Disetujui Oleh Pengurus"
+msgstr "Tidak disetujui oleh pengurus"
 
 #. I18N: gedcom tag _NLIV
 #: app/GedcomTag.php:1840
@@ -11582,7 +11582,7 @@ msgstr "Kediaman"
 
 #: resources/views/edit-blocks-page.php:223
 msgid "Restore the default block layout"
-msgstr "Kembalikan tata letak blok default"
+msgstr "Kembalikan tata letak blok otomatis"
 
 #: resources/views/admin/users-edit.php:287
 msgid "Restrict to immediate family"
@@ -11924,7 +11924,7 @@ msgstr "Pilih file GEDCOM untuk mengimpor"
 
 #: resources/views/edit-blocks-page.php:130
 msgid "Select a block and use the arrows to move it."
-msgstr "Highlight blok nama kemudian klik pada salah satu ikon panah untuk memindah blok terhighlight tersebut pada arah yang ditandakan."
+msgstr "Tandai nama blok kemudian klik pada salah satu tanda panah untuk memindah blok yang ditandai tersebut ke arah yang dipilih."
 
 #: app/Http/Controllers/ReportEngineController.php:129
 #: resources/views/edit/input-addon-calendar.php:6
@@ -13993,7 +13993,7 @@ msgstr "Akun ini belum diverifikasi. silakan periksa email anda untuk pesan veri
 
 #: resources/views/modules/review_changes/config.php:6
 msgid "This block will show editors a list of records with pending changes that need to be reviewed by a moderator. It also generates daily emails to moderators whenever pending changes exist."
-msgstr "Blok ini akan menunjukkan kepada editor daftar rekaman dengan perubahan yang menunggu keputusan yang perlu ditinjau oleh moderator. Ini juga menghasilkan email setiap hari untuk moderator setiap kali ada perubahan yang tertunda."
+msgstr "Blok ini akan menunjukkan kepada editor daftar rekaman dengan perubahan yang menunggu keputusan yang perlu ditinjau oleh moderator. ini juga menghasilkan email setiap hari untuk moderator setiap kali ada perubahan yang tertunda."
 
 #: resources/views/admin/users-create.php:68
 #: resources/views/admin/users-edit.php:73
@@ -14634,7 +14634,7 @@ msgstr "Hingga"
 
 #: resources/views/modules/html/config.php:21
 msgid "To assist you in getting started with this block, we have created several standard templates. When you select one of these templates, the text area will contain a copy that you can then alter to suit your site’s requirements."
-msgstr "Untuk membantu Anda memulai dengan blok ini, kami telah membuat beberapa templat standar. Saat Anda memilih salah satu dari templat ini, area teks akan berisi salinan yang kemudian dapat Anda ubah agar sesuai dengan persyaratan situs Anda."
+msgstr "Untuk membantu anda memulai dengan blok ini, kami telah membuat beberapa tema standar. saat anda memilih salah satu dari tema, area teks akan berisi salinan yang kemudian dapat anda ubah agar sesuai dengan persyaratan situs anda."
 
 #: resources/views/modules/todo/config.php:7
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
