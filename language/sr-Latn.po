@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-07-26 23:06+0100\n"
-"PO-Revision-Date: 2018-08-31 13:31+0000\n"
+"PO-Revision-Date: 2018-09-03 13:21+0000\n"
 "Last-Translator: Enes <enes_s@yahoo.com>\n"
 "Language-Team: Serbian (latin) <https://translate.webtrees.net/projects/webtrees/webtrees/sr-Latn/>\n"
 "Language: sr-Latn\n"
@@ -824,7 +824,7 @@ msgstr "Lista promena koja treba biti pregledana od strane moderatora i e-mail o
 #. I18N: Description of the “FAQ” module
 #: app/Module/FrequentlyAskedQuestionsModule.php:44
 msgid "A list of frequently asked questions and answers."
-msgstr "Popis najčešćih pitanja i odgovora."
+msgstr "Lista najčešćih pitanja i odgovora."
 
 #. I18N: Description of the “Recent changes” module
 #: app/Module/RecentChangesModule.php:49
@@ -1008,7 +1008,7 @@ msgstr "Izveštaj o bitnim zapisima za navedeni datum ili mesto."
 
 #: resources/views/admin/users-edit.php:226
 msgid "A role is a set of access rights, which give permission to view data, change preferences, etc. Access rights are assigned to roles, and roles are granted to users. Each family tree can assign different access to each role, and users can have a different role in each family tree."
-msgstr "Uloga je skup pristupnih prava koja daju prava za pregled podataka, izmenu podešavanja itd. Pristupna prava se dodeljuju ulogama, a uloge su pridružene korisnicima. Svako porodično stablo može pridružiti različiti pristup za svaku ulogu a korisnici mogu imati različite uloge u svakom porodičnom stablu."
+msgstr "Status je skup pristupnih prava koja daju prava za pregled podataka, izmenu podešavanja itd. Pristupna prava se dodeljuju statusima, a statusi se odobravaju korisnicima. Svako porodično stablo može imati različite nivoe pristupa za svaki status, a korisnici mogu imati različite statuse u svakom porodičnom stablu."
 
 #. I18N: Description of the “Family navigator” module
 #: app/Module/FamilyNavigatorModule.php:37
@@ -1057,7 +1057,7 @@ msgstr "Vremenska linija sa prikazom pojedinčnih događaja."
 
 #: resources/views/admin/users-edit.php:104
 msgid "A user will not be able to sign in until both “email verified” and “approved by administrator” are selected."
-msgstr "Korisnik se neće moći prijaviti sve dok ne budu selektovani \"e-mail verifikovan\" i \"odobren od strane administratora\"."
+msgstr "Korisnik se neće moći prijaviti sve dok ne budu selektovani \"E-mail potrvđen\" i \"Odobren od strane administratora\"."
 
 #. I18N: time format “%A” - between 00:00:01 and 11:59:59
 #: app/Functions/FunctionsDate.php:103
@@ -1463,7 +1463,7 @@ msgstr "Dodaj u isečke"
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.php:134
 msgid "Add unique identifiers"
-msgstr "Dodaj jedinstvene indentifikatore"
+msgstr "Dodaj jedinstvene identifikatore"
 
 #: resources/views/admin/trees.php:202
 msgid "Add unlinked records"
@@ -1938,7 +1938,7 @@ msgstr "Učesnik je druga osoba koja je umešana sa ovom osobom, kao prijatelj i
 #. I18N: Description of the “HourglassChart” module
 #: app/Module/HourglassChartModule.php:47
 msgid "An hourglass chart of an individual’s ancestors and descendants."
-msgstr ""
+msgstr "Prikaz predaka i potomaka pojedinca u grafikonu \"peščani sat\"."
 
 #. I18N: Description of the “Interactive tree” module
 #: app/Module/InteractiveTreeModule.php:45
@@ -2076,7 +2076,7 @@ msgstr "Odobreno"
 
 #: resources/views/admin/users-edit.php:92
 msgid "Approved by administrator"
-msgstr "Odobreno od strane administratora"
+msgstr "Odobren od strane administratora"
 
 #: app/Date/CalendarDate.php:362
 msgctxt "Abbreviation for April"
@@ -3401,7 +3401,7 @@ msgstr "Popis"
 #. I18N: Name of a module
 #: app/Module/CensusAssistantModule.php:36
 msgid "Census assistant"
-msgstr "Popis učesnika"
+msgstr "Asistent za popis"
 
 #: app/GedcomTag.php:571
 #: resources/views/modules/GEDFact_assistant/select-census.php:15
@@ -3907,7 +3907,7 @@ msgstr "Kontakt podaci"
 
 #: resources/views/edit-account-page.php:160
 msgid "Contact method"
-msgstr "Metoda komunikacije"
+msgstr "Metod komunikacije"
 
 #: app/Http/Controllers/SearchController.php:606
 msgid "Contains"
@@ -5653,7 +5653,7 @@ msgstr "Događaji bliže rodbine"
 
 #: resources/views/admin/users-edit.php:235
 msgid "Everybody has this role, including visitors to the website and search engines."
-msgstr "Svi imaju ova prava, uključujući posetioce ove stranice i pretraživače (robote)."
+msgstr "Svi imaju ovaj status, uključujući posetioce ove stranice i pretraživače (robote)."
 
 #: app/Http/Controllers/SearchController.php:604
 msgid "Exact"
@@ -6355,7 +6355,7 @@ msgstr "Na primer, ako GEDCOM datoteka sadrži %1$s a webtrees očekuje %2$s u m
 
 #: resources/views/admin/users-edit.php:303
 msgid "For example, if you specify a path length of 2, the individual will be able to see their grandson (child, child), their aunt (parent, sibling), their step-daughter (spouse, child), but not their first cousin (parent, sibling, child)."
-msgstr "Na primer, ako postavite na 2, osoba će moći videti svoju unučad (deteta, dete), svoju tetku (roditelja, braću/sestre), svoju polu-ćerku (supružnikovo dete), ali neće videti njihove rođake iz prvog kolena (roditelje, braću/sestre, decu)."
+msgstr "Na primer, ako postavite na 2, osoba će moći videti svoju unučad (od deteta, dete), svoje tetke/teče (od roditelja, braća/sestre), svoju polu-ćerku (od supružnika, dete), ali neće videti njihove rođake iz sledeceg kolena (od roditelja, braća/sestre, njihova deca)."
 
 #: app/Theme/AbstractTheme.php:348
 #, php-format
@@ -7475,7 +7475,7 @@ msgstr "Stranice osoba"
 #: resources/views/admin/users-edit.php:284
 #: resources/views/edit-account-page.php:55
 msgid "Individual record"
-msgstr "Zapis osobe"
+msgstr "Lični podatak"
 
 #: resources/views/modules/gedcom_stats/config.php:34
 #: resources/views/modules/gedcom_stats/statistics.php:184
@@ -11516,7 +11516,7 @@ msgstr ""
 #. I18N: A media path (e.g. c:\aaa\bbb\ccc\ddd.jpeg) in a GEDCOM file
 #: resources/views/admin/trees-import.php:89
 msgid "Remove the GEDCOM media path from filenames"
-msgstr ""
+msgstr "Ukloni GEDCOM medija putanju iz imena datoteke"
 
 #: resources/views/admin/locations.php:56
 msgid "Remove this location?"
@@ -11529,7 +11529,7 @@ msgstr ""
 
 #: resources/views/admin/trees.php:181
 msgid "Renumber"
-msgstr ""
+msgstr "Renumeracija"
 
 #. I18N: Renumber the records in a family tree
 #: app/Http/Controllers/AdminTreesController.php:852
@@ -11537,7 +11537,7 @@ msgstr ""
 #: resources/views/admin/trees-merge.php:20
 #: resources/views/admin/trees-merge.php:25
 msgid "Renumber family tree"
-msgstr ""
+msgstr "Renumeriši porodično stablo"
 
 #: resources/views/admin/trees-places.php:23
 #: resources/views/search-replace-page.php:22
@@ -11590,7 +11590,7 @@ msgstr "Skladište"
 
 #: resources/views/lists/repositories-table.php:28
 msgid "Repository name"
-msgstr ""
+msgstr "Ime skladišta"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:7509
@@ -11617,15 +11617,15 @@ msgstr ""
 #. I18N: Name of a module. Tasks that need further research.
 #: app/Module/ResearchTaskModule.php:39
 msgid "Research tasks"
-msgstr ""
+msgstr "Zadaci za istraživanje"
 
 #: resources/views/modules/todo/config.php:6
 msgid "Research tasks are special events, added to individuals in your family tree, which identify the need for further research. You can use them as a reminder to check facts against more reliable sources, to obtain documents or photographs, to resolve conflicting information, etc."
-msgstr ""
+msgstr "Zadaci za istraživanja su posebni događaji, pridruženi osobama u vašem porodičnom stablu, koji identifikuju potrebu za dodatnim istraživanjem. Možete ih koristiti kao podsetnik da proverite informacije koristeći pouzdanije izvore, da pribavite dokumente ili fotografije, da rešite konfliktne informacije, itd."
 
 #: resources/views/modules/todo/config.php:8
 msgid "Research tasks are stored using the custom GEDCOM tag “_TODO”. Other genealogy applications may not recognize this tag."
-msgstr ""
+msgstr "Zadaci za istraživanja su sačuvani koristeći poseban GEDCOM tag “_TODO”. Ostale genaloške aplikacije možda neće prepoznati ovaj tag."
 
 #: resources/views/admin/location-edit.php:158
 #: resources/views/modules/pedigree-map/pedigree-map.php:80
@@ -11640,11 +11640,11 @@ msgstr "Prebivalište"
 
 #: resources/views/edit-blocks-page.php:223
 msgid "Restore the default block layout"
-msgstr ""
+msgstr "Vrati podrazumevani raspored blokova"
 
 #: resources/views/admin/users-edit.php:287
 msgid "Restrict to immediate family"
-msgstr ""
+msgstr "Ograniči na užu porodicu"
 
 #. I18N: gedcom tag RESN
 #: app/GedcomTag.php:968 app/Http/Controllers/HelpTextController.php:220
@@ -11686,7 +11686,7 @@ msgstr "Blokovi desne sekcije"
 #. I18N: gedcom tag ROLE
 #: app/GedcomTag.php:984 resources/views/admin/users-edit.php:281
 msgid "Role"
-msgstr ""
+msgstr "Status"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:7794
@@ -11952,7 +11952,7 @@ msgstr ""
 
 #: resources/views/admin/merge-records-step-1.php:54
 msgid "Second record"
-msgstr ""
+msgstr "Drugi zapis"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.php:115
@@ -11978,7 +11978,7 @@ msgstr ""
 
 #: resources/views/admin/trees-import.php:20
 msgid "Select a GEDCOM file to import"
-msgstr ""
+msgstr "Odaberi GEDCOM datoteku za uvoz"
 
 #: resources/views/edit-blocks-page.php:130
 msgid "Select a block and use the arrows to move it."
@@ -12199,7 +12199,7 @@ msgstr ""
 #. I18N: Help text for the “Show dead individuals” configuration setting
 #: resources/views/admin/trees-privacy.php:54
 msgid "Set the privacy access level for all dead individuals."
-msgstr ""
+msgstr "Podesite nivo privatnosti za sve umrle osobe."
 
 #. I18N: You need to:
 #: resources/views/emails/verify-notify-html.php:20
@@ -12612,7 +12612,7 @@ msgstr "Prikaži grafikon statistike"
 #: resources/views/admin/trees-preferences.php:748
 #, php-format
 msgid "Show the %1$s %2$s parts of a place name."
-msgstr "Prikaži %1$s %2$s delove imena mesta."
+msgstr "Prikaži %1$s %2$s delova imena mesta."
 
 #. I18N: Description of the “OSM” module
 #: app/Module/PedigreeMapModule.php:71
@@ -12901,7 +12901,7 @@ msgstr "Somalija"
 #. I18N: Help text for the “GEDCOM media path” configuration setting. A “path” is something like “C:\Documents\Genealogy\Photos\John_Smith.jpeg”
 #: resources/views/admin/trees-import.php:101
 msgid "Some genealogy software creates GEDCOM files that contain media filenames with full paths. These paths will not exist on the web-server. To allow webtrees to find the file, the first part of the path must be removed."
-msgstr ""
+msgstr "Neki genealoški programi kreiraju GEDCOM datoteke koje sadrže imena datoteka medija sa punom putanjom. Te putanje ne postoje na web serveru. Da bi omogućili webrees-u pronalaženje datoteka, prvi deo putanje mora biti uklonjen."
 
 #. I18N: Help text for the “Hit counters” configuration setting
 #: resources/views/admin/trees-preferences.php:844
@@ -13213,7 +13213,7 @@ msgstr ""
 #: app/GedcomTag.php:1027 resources/views/admin/trees.php:263
 #: resources/views/modules/recent_changes/changes-table.php:41
 msgid "Submitter"
-msgstr "Podnosioc"
+msgstr "Podnosilac"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:7804
@@ -13863,7 +13863,7 @@ msgstr ""
 #: resources/views/admin/users-edit.php:134
 #: resources/views/edit-account-page.php:126
 msgid "The time zone is required for date calculations, such as knowing today’s date."
-msgstr ""
+msgstr "Vremenska zona je potrebna za kalkulacije datuma, kao što je npr. današnji datum."
 
 #. I18N: An XREF is the identification number used in GEDCOM files.
 #: resources/views/admin/trees-merge.php:13
@@ -13985,7 +13985,7 @@ msgstr ""
 
 #: app/Module/ResearchTaskModule.php:96
 msgid "There are no research tasks in this family tree."
-msgstr ""
+msgstr "Ne postoje zadaci za istraživanje u ovom porodičnom stablu."
 
 #: resources/views/modules/sources_tab/tab.php:24
 msgid "There are no source citations for this individual."
@@ -14008,7 +14008,7 @@ msgstr[2] ""
 #: app/Http/Controllers/Auth/ForgotPasswordController.php:93
 #, php-format
 msgid "There is no account with the username or email “%s”."
-msgstr ""
+msgstr "Ne postoji korisnički nalog sa korisničkim imenom ili email-om “%s”."
 
 #: app/Http/Controllers/AdminMediaController.php:486
 #: app/Http/Controllers/EditMediaController.php:113
@@ -14043,7 +14043,7 @@ msgstr ""
 #: resources/views/admin/trees-unconnected.php:17
 #, php-format
 msgid "These groups of individuals are not related to %s."
-msgstr ""
+msgstr "Ove grupe ili pojedinci nisu povezani sa %s."
 
 #: app/Http/Controllers/Auth/LoginController.php:181
 msgid "This account has not been approved. Please wait for an administrator to approve it."
@@ -14098,9 +14098,9 @@ msgstr ""
 #, php-format
 msgid "This family tree has %s record which uses the same “XREF” as another family tree."
 msgid_plural "This family tree has %s records which use the same “XREF” as another family tree."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Ovo porodično stablo ima %s zapis koji koristi isti „XREF” kao drugo porodično stablo."
+msgstr[1] "Ovo porodično stablo ima %s zapisa koji koriste isti „XREF” kao drugo porodično stablo."
+msgstr[2] "Ovo porodično stablo ima %s zapisa koji koriste isti „XREF” kao drugo porodično stablo."
 
 #: app/Module/SlideShowModule.php:126
 msgid "This family tree has no images to display."
@@ -14160,7 +14160,7 @@ msgstr ""
 #: resources/views/admin/trees-preferences.php:91
 #: resources/views/edit-account-page.php:79
 msgid "This individual will be selected by default when viewing charts and reports."
-msgstr ""
+msgstr "Ova osoba će biti izabrana kao početna osoba kada gledate grafikone i izveštaje."
 
 #: app/Stats.php:1603 app/Stats.php:2450 app/Stats.php:2572 app/Stats.php:3187
 #: app/Stats.php:3372 app/Stats.php:3685 app/Stats.php:4729 app/Stats.php:4871
@@ -14194,7 +14194,7 @@ msgstr ""
 
 #: resources/views/edit-account-page.php:66
 msgid "This is a link to your own record in the family tree. If this is the wrong individual, contact an administrator."
-msgstr ""
+msgstr "Ovo je link ka vašim ličnim podacima u porodičnosm stablu. Ako je ovo pogrešna osoba, kontaktirajte administratora."
 
 #. I18N: Help text for the “LDS ordinance codes in chart boxes” configuration setting. "B", "E", "S" and "P" should not be translated.
 #: resources/views/admin/trees-preferences.php:568
@@ -14373,12 +14373,12 @@ msgstr ""
 #. I18N: Help text for the “Show private relationships” configuration setting
 #: resources/views/admin/trees-privacy.php:156
 msgid "This option will retain family links in private records. This means that you will see empty “private” boxes on the pedigree chart and on other charts with private individuals."
-msgstr ""
+msgstr "Ova opcija će zadržati porodične veze u privatnim zapisima. To znači da ćete videti prazna „privatna” polja na grafikonu rodoslovlja i na drugim grafikonima sa privatnim pojedincima."
 
 #. I18N: Help text for the “Show names of private individuals” configuration setting
 #: resources/views/admin/trees-privacy.php:137
 msgid "This option will show the names (but no other details) of private individuals. Individuals are private if they are still alive or if a privacy restriction has been added to their individual record. To hide a specific name, add a privacy restriction to that name record."
-msgstr ""
+msgstr "Ova opcija će prikazati imena (ali ne i druge detalje) privatnih pojedinaca. Pojedinci su privatni ako su još živi ili ako je ograničenje privatnosti dodato u njegov zapis. Ako želite sakriti određeno ime, dodajte ograničenje privatnosti u zapis imena pojedinca."
 
 #: resources/views/edit/raw-gedcom-fact.php:14
 #: resources/views/edit/raw-gedcom-record.php:13
@@ -14453,23 +14453,23 @@ msgstr ""
 
 #: resources/views/admin/users-edit.php:255
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
-msgstr ""
+msgstr "Ovaj status ima sve dozvole koje ima status Uređivač, plus dozvolu da prihvati/odbije izmene koje ostali korisnici naprave."
 
 #: resources/views/admin/users-edit.php:269
 msgid "This role has all the permissions of the manager role in all family trees, plus permission to change the settings/configuration of the website, users, and modules."
-msgstr ""
+msgstr "Ovaj status ima sve dozvole koje ima status Menadžer na svim porodičnim stablima, plus dozvolu izmena podešavanja/konfiguracije web stranice, korisnika i modula."
 
 #: resources/views/admin/users-edit.php:249
 msgid "This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be reviewed by a moderator, unless the user has the “automatically accept changes” option enabled."
-msgstr ""
+msgstr "Oavj status ima sve dozvole koje ima status Član, plus dozvolu da dodaje/menja/briše podatke. Sve izmene će morati da pregleda i odobri moderator, osim ako korisniku nije uključena opcija \"automatski prihvati izmene\"."
 
 #: resources/views/admin/users-edit.php:263
 msgid "This role has all the permissions of the moderator role, plus any additional access granted by the family tree configuration, plus permission to change the settings/configuration of a family tree."
-msgstr ""
+msgstr "Ovaj status ima sve dozvole koje ima status Moderator, plus dodatni pristup odobren od strane konfiguracije porodičnog stabla, plus dozvolu za izmenu podešavanja/konfiguracije porodičnog stabla."
 
 #: resources/views/admin/users-edit.php:241
 msgid "This role has all the permissions of the visitor role, plus any additional access granted by the family tree configuration."
-msgstr ""
+msgstr "Ovaj status ima sve dozvole koje ima status Posetilac, plus dodatni pristup odobren od strane konfiguracije porodičnog stabla."
 
 #: app/Http/Controllers/AdminUpgradeController.php:235
 msgid "This server does not support secure downloads using HTTPS."
@@ -14557,11 +14557,11 @@ msgstr ""
 #: resources/views/admin/trees-import.php:9
 #, php-format
 msgid "This will delete all the genealogy data from “%s” and replace it with data from a GEDCOM file."
-msgstr ""
+msgstr "Ovo će obrisati sve genealoške podatke iz „%s” i prepisati ih sa podacima iz GEDCOM datoteke."
 
 #: resources/views/admin/trees-places.php:8
 msgid "This will update the highest-level part or parts of the place name. For example, “Mexico” will match “Quintana Roo, Mexico”, but not “Santa Fe, New Mexico”."
-msgstr ""
+msgstr "Ovo će ažurirati najviši nivo imena mesta. Na primer, „Mexico” će ažurirati „Quintana Roo, Mexico”, ali ne i „Santa Fe, New Mexico”."
 
 #. I18N: abbreviation for Thursday
 #: app/Date/CalendarDate.php:423
@@ -14704,7 +14704,7 @@ msgstr ""
 
 #: resources/views/modules/todo/config.php:7
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
-msgstr ""
+msgstr "Za kreiranje novog zadatka za istraživanje, prvo morate dodati “zadatak za istraživanje” na listu činjenica i događaja u podešavanjima za porodično stablo."
 
 #. I18N: Help text for the “Format text and notes” configuration setting
 #: resources/views/admin/trees-preferences.php:794
@@ -14718,7 +14718,7 @@ msgstr ""
 
 #: resources/views/admin/trees-export.php:42
 msgid "To reduce the size of the download, you can compress the data into a .ZIP file. You will need to uncompress the .ZIP file before you can use it."
-msgstr ""
+msgstr "Da bi smanjili veličinu fajla za preuzimanje, možete zapakovati podatke u .ZIP datoteku. Morate otpakovati datoteku pre nego što možete da je upotrebite."
 
 #. I18N: Help text for the "Custom welcome text" site configuration setting
 #: resources/views/admin/site-registration.php:33
@@ -14789,7 +14789,7 @@ msgstr ""
 #: app/Module/TopGivenNamesModule.php:33
 #: resources/views/statistics-chart-individuals.php:130
 msgid "Top given names"
-msgstr ""
+msgstr "Najčešća imena"
 
 #. I18N: i.e. most popular surname.
 #: app/Module/TopSurnamesModule.php:118
@@ -15023,27 +15023,27 @@ msgstr "Upišite lozinku još jednom, da budemo sigurni da ste je napisali ispra
 #: resources/views/modules/gedcom_favorites/favorites.php:47
 #: resources/views/modules/user_favorites/favorites.php:44
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:7885
 msgid "US Minor Outlying Islands"
-msgstr "Menšie odľahlé ostrovy USA"
+msgstr "Mala spoljna ostrva Sjedinjenih Država"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:7901
 msgid "US Virgin Islands"
-msgstr "US Panenské ostrovy"
+msgstr "Američka Devičanska Ostrva"
 
 #. I18N: Timezone - http://en.wikipedia.org/wiki/UTC
 #: app/Http/Controllers/AdminUpgradeController.php:294
 msgid "UTC"
-msgstr ""
+msgstr "UTC"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:7881
 msgid "Uganda"
-msgstr ""
+msgstr "Uganda"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:7883
@@ -15053,7 +15053,7 @@ msgstr "Ukrajina"
 #: app/Http/Controllers/SetupController.php:177
 #: app/Http/Controllers/SetupController.php:224
 msgid "Unable to connect using this username and password. Your server gave the following error."
-msgstr ""
+msgstr "Ne mogu se konektovati koristeči ovo korisničko ime i lozinku. Vaš server je dao sleceću grešku."
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:150
@@ -15062,7 +15062,7 @@ msgstr ""
 
 #: resources/views/admin/trees-preferences.php:924
 msgid "Unique family facts"
-msgstr ""
+msgstr "Jedinstvene porodične činjenice"
 
 #. I18N: gedcom tag _UID
 #: app/GedcomTag.php:1904
@@ -15072,44 +15072,44 @@ msgstr "Jedinstveni identifikator"
 #. I18N: Help text for the “Add unique identifiers” configuration setting
 #: resources/views/admin/trees-preferences.php:139
 msgid "Unique identifiers allow the same record to be found in different family trees and in different systems. They will be added whenever records are created or updated. If you do not want unique identifiers to be displayed, you can hide them using the privacy rules."
-msgstr ""
+msgstr "Jedinstveni identifikatori omogućavaju da isti zapis bude pronađen u različitim porodičnim stablima i u različitim sistemima. Oni će biti dodati svaki put kada se zapis napravi ili izmeni. Ako ne želite da se jedinstveni identifikatori prikazuju, možete ih sakriti koristeći pravila privatnosti."
 
 #: resources/views/admin/trees-preferences.php:870
 msgid "Unique individual facts"
-msgstr ""
+msgstr "Jedinstvene individualne činjenice"
 
 #: resources/views/admin/trees-preferences.php:1019
 msgid "Unique repository facts"
-msgstr ""
+msgstr "Jedinstvene činjenice o mestu čuvanja"
 
 #: resources/views/admin/trees-preferences.php:978
 msgid "Unique source facts"
-msgstr ""
+msgstr "Jedinstvene činjenice izvora"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:7429
 msgid "United Arab Emirates"
-msgstr "Spojené arabské emiráty"
+msgstr "Ujedinjeni Arapski Emirati"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:7576
 msgid "United Kingdom"
-msgstr "Velika britanija"
+msgstr "Velika Britanija"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:7889 resources/views/statistics-chart-custom.php:191
 msgid "United States"
-msgstr ""
+msgstr "Sjedinjene Američke Države"
 
 #. I18N: Name of a country or state
 #: app/GedcomRecord.php:1185 app/GedcomRecord.php:1189 app/Stats.php:7413
 msgid "Unknown"
-msgstr "Ukupan broj nepoznat"
+msgstr "Nepoznato"
 
 #: app/Stats.php:5567
 msgctxt "unknown century"
 msgid "Unknown"
-msgstr ""
+msgstr "Nepoznato"
 
 #: app/Functions/FunctionsEdit.php:767
 #: app/Http/Controllers/IndividualController.php:369 app/Stats.php:5979
@@ -15120,26 +15120,28 @@ msgstr ""
 #: modules_v3/individual_report/report.xml:602
 msgctxt "unknown gender"
 msgid "Unknown"
-msgstr ""
+msgstr "Nepoznat"
 
 #: app/Stats.php:1053 app/Stats.php:1059
 #: resources/views/edit-account-page.php:62
 msgctxt "unknown people"
 msgid "Unknown"
-msgstr ""
+msgstr "Nepoznati"
 
 #: app/GedcomTag.php:1947
 msgid "Unrecognized GEDCOM code"
-msgstr ""
+msgstr "Neprepoznati GEDCOM kod"
 
 #: resources/views/admin/media.php:33
 msgid "Unused files"
-msgstr ""
+msgstr "Nekorišćene datoteke"
 
 #: app/Http/Controllers/AdminUpgradeController.php:136
 #, php-format
 msgid "Unzip %s to a temporary folder…"
 msgstr ""
+"Croatian\n"
+"Raspakujte %s u privremeni direktorijum…"
 
 #. I18N: Name of a module
 #: app/Module/UpcomingAnniversariesModule.php:88
@@ -15153,11 +15155,11 @@ msgstr "Izmeni"
 #: resources/views/modules/batch_update/admin.php:79
 #: resources/views/modules/batch_update/admin.php:83
 msgid "Update all"
-msgstr ""
+msgstr "Izmeni sve"
 
 #: resources/views/admin/trees.php:151
 msgid "Update place names"
-msgstr ""
+msgstr "Izmeni imena mesta"
 
 #. I18N: %s is a version number, such as 1.2.3
 #. I18N: %s is a version number
@@ -15166,11 +15168,11 @@ msgstr ""
 #: resources/views/admin/control-panel.php:31
 #, php-format
 msgid "Upgrade to webtrees %s."
-msgstr ""
+msgstr "Nadogradi na webtrees %s."
 
 #: app/Http/Controllers/AdminUpgradeController.php:66
 msgid "Upgrade wizard"
-msgstr ""
+msgstr "Čarobnjak nadogradnje"
 
 #: app/Http/Controllers/AdminMediaController.php:411
 #: resources/views/admin/control-panel.php:444
@@ -15179,26 +15181,26 @@ msgstr "Učitaj medijske datoteke"
 
 #: resources/views/admin/media-upload.php:8
 msgid "Upload one or more media files from your local computer. Media files can be pictures, video, audio, or other formats."
-msgstr ""
+msgstr "Učitajte jednu ili više medijskih datoteka sa vašeg računara. Medijske datoteke mogu biti fotografije, video, audio, ili drugi formati."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:7887
 msgid "Uruguay"
-msgstr "Uruguaj"
+msgstr "Urugvaj"
 
 #: app/Functions/FunctionsEdit.php:248
 #: app/Http/Controllers/AdminSiteController.php:663
 msgid "Use PHP mail to send messages"
-msgstr ""
+msgstr "Koristi PHP mail za slanje e-pošte"
 
 #: app/Functions/FunctionsEdit.php:249
 #: app/Http/Controllers/AdminSiteController.php:666
 msgid "Use SMTP to send messages"
-msgstr ""
+msgstr "Koristi SMTP za slanje e-pošte"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:176
 msgid "Use a “?” to match a single character, use “*” to match zero or more characters."
-msgstr ""
+msgstr "Koristi “?” za zamenu jednog karaktera, koristi “*” za zamenu nula ili više karaktera."
 
 #. I18N: placeholder text for new-password field
 #: resources/views/admin/users-create.php:43
@@ -15233,7 +15235,7 @@ msgstr "Koristi lozinku"
 #. I18N: "sendmail" is the name of some mail software
 #: app/Http/Controllers/AdminSiteController.php:665
 msgid "Use sendmail to send messages"
-msgstr ""
+msgstr "Koristi sendmail za slanje e-pošte"
 
 #. I18N: Help text for the “Use silhouettes” configuration setting
 #: resources/views/admin/trees-preferences.php:366
@@ -15247,7 +15249,7 @@ msgstr ""
 
 #: resources/views/admin/trees-preferences.php:765
 msgid "Use the GeoNames database for autocomplete on places"
-msgstr ""
+msgstr "Koristi GeoNames bazu podataka za automatsko popunjavanje mesta"
 
 #: resources/views/register-page.php:85
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site. You can also use this to enter any other comments you may have for the site administrator."
@@ -15276,11 +15278,11 @@ msgstr "Administracija korisnika"
 
 #: resources/views/admin/users-cleanup.php:58
 msgid "User didn’t verify within 7 days."
-msgstr ""
+msgstr "Korisnik nije potvrdio u roku od 7 dana."
 
 #: resources/views/admin/users-cleanup.php:60
 msgid "User not verified by administrator."
-msgstr ""
+msgstr "Korisnik nije potvrđen od administratora."
 
 #: resources/views/admin/trees-preferences.php:250
 msgid "User preferences"
@@ -15289,7 +15291,7 @@ msgstr ""
 #: app/Http/Controllers/Auth/RegisterController.php:230
 #: app/Http/Controllers/Auth/VerifyEmailController.php:52
 msgid "User verification"
-msgstr ""
+msgstr "Korisnička provera"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.php:89
@@ -15329,12 +15331,12 @@ msgstr "Korisnici"
 
 #: resources/views/admin/users-cleanup.php:40
 msgid "User’s account has been inactive too long: "
-msgstr ""
+msgstr "Korisnički nalog je predugo neaktivan: "
 
 #. I18N: Name of a country or state
 #: app/Stats.php:7891
 msgid "Uzbekistan"
-msgstr ""
+msgstr "Uzbekistan"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:668
@@ -15354,7 +15356,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:7893
 msgid "Vatican City"
-msgstr "Vatikán"
+msgstr "Vatikan"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:120
@@ -15383,7 +15385,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:7897
 msgid "Venezuela"
-msgstr ""
+msgstr "Venecuela"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:130
@@ -15431,7 +15433,7 @@ msgstr ""
 #. I18N: Type of media object
 #: app/GedcomTag.php:2233
 msgid "Video"
-msgstr ""
+msgstr "Video"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:7903
@@ -15497,7 +15499,7 @@ msgstr "Vidljiv drugim korisnicima kad je online"
 #: resources/views/modules/clippings/download.php:28
 #: resources/views/modules/clippings/download.php:41
 msgid "Visitor"
-msgstr ""
+msgstr "Posetilac"
 
 #. I18N: Name of a module/report. “Vital records” are life events - birth/marriage/death
 #: app/Module/BirthDeathMarriageReportModule.php:37
@@ -15537,7 +15539,7 @@ msgstr ""
 
 #: resources/views/admin/trees-preferences.php:372
 msgid "Watermarks"
-msgstr ""
+msgstr "Vodeni žigovi"
 
 #. I18N: Help text for the “Images without watermarks” configuration setting
 #: resources/views/admin/trees-preferences.php:382
@@ -15547,12 +15549,12 @@ msgstr "Vodeni žigovi su opcionalni i uobičajeno se prikazuju samo posetiocima
 #: resources/views/register-success-page.php:13
 #, php-format
 msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically. You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To sign in to this website, you will need to know your username and password."
-msgstr ""
+msgstr "Sada ćemo vam poslati potvrdni e-mail na adresu <b>%s</b>. Morate potvrditi svoj zahtev za korisnički nalog tako što ćete pratiti uputstva u e-mail poruci. Ako ne potvrdite zahtev za vaš korisnički nalog u roku od sedam dana, vaša prijava će automatski biti odbijena. Moraćete ponovo da se prijavite. <br> <br> Nakon što ispratite uputstva u potvrdnom e-mailu, administrator mora da odobri vaš zahtev pre nego što budete u mogućnosti da koristite vaš nalog. <br> <br> Da se prijavite na ovu web stranicu, moraćete da znate svoje korisničko ime i lozinku."
 
 #: resources/views/admin/control-panel.php:9
 #: resources/views/admin/trees-preferences.php:208
 msgid "Website"
-msgstr ""
+msgstr "Web stranica"
 
 #: app/Http/Controllers/AdminSiteController.php:217
 #: resources/views/admin/control-panel.php:78
@@ -15568,7 +15570,7 @@ msgstr "Podešavanja web stranice"
 #: app/Date/CalendarDate.php:421
 #: resources/views/edit/initialize-calendar-popup.php:25
 msgid "Wed"
-msgstr ""
+msgstr "Sre"
 
 #: app/Date/CalendarDate.php:392
 msgid "Wednesday"
@@ -15597,16 +15599,16 @@ msgstr "Dobrodošli na genealošku web stranicu"
 #. I18N: Name of a country or state
 #: app/Stats.php:7552
 msgid "Western Sahara"
-msgstr "Západná Sahara"
+msgstr "Zapadna Sahara"
 
 #. I18N: Help text for the “Keep the existing ‘last change’ information” configuration setting
 #: resources/views/admin/trees-preferences.php:1126
 msgid "When a record is edited, the user and timestamp are recorded. Sometimes it is desirable to keep the existing “last change” information, for example when making minor corrections to someone else’s data. This option controls whether this feature is selected by default."
-msgstr ""
+msgstr "Kada se uređuje zapis, beleži se korisnik i vreme promene. Ponekad je potrebno zadržati postojeći podatak \"poslednja izmena\", na primer kada uradimo sitne promene na nečijem podatku. Ova opcija kontroliše da li će ova opcija biti odabrana kao podrazumevana."
 
 #: resources/views/admin/users-edit.php:95
 msgid "When a user registers for an account, an email is sent to their email address with a verification link. When they follow this link, we know the email address is correct, and the “email verified” option is selected automatically."
-msgstr ""
+msgstr "Kada se korisnik registruje novi nalog, šalje se email na njegovu e-mail adresu sa verifikacionim linkom. Kada korisnik klikne na taj link, znamo da je e-mail adresa ispravna i opcija \"E-mail potvrđen\" se automatski selektuje."
 
 #. I18N: Help text for the “Source type” configuration setting
 #: resources/views/admin/trees-preferences.php:1111
@@ -15616,7 +15618,7 @@ msgstr ""
 #. I18N: Help text for the “Surname tradition” configuration setting
 #: resources/views/admin/trees-preferences.php:1081
 msgid "When you add a new family member, a default surname can be provided. This surname will depend on the local tradition."
-msgstr ""
+msgstr "Kada dodate novog člana porodice, može se ponuditi podrazumevano prezime. Ovo prezime će zavisiti od lokalne tradicije."
 
 #: resources/views/help/pending-changes.php:4
 msgid "When you add, edit, or delete information, the changes are not saved immediately. Instead, they are kept in a “pending” area. These pending changes need to be reviewed by a moderator before they are accepted."
@@ -15624,11 +15626,11 @@ msgstr ""
 
 #: resources/views/admin/users-edit.php:302
 msgid "Where a user is associated to an individual record in a family tree and has a role of member, editor, or moderator, you can prevent them from accessing the details of distant, living relations. You specify the number of relationship steps that the user is allowed to see."
-msgstr ""
+msgstr "Kada je korisnik povezan sa osobom u porodičnom stablu i ima status člana, uređivača ili moderatora, možete mu onemogućiti pristup detaljima udaljenih živih rođaka. Upišite broj generacija koje korisnik može videti."
 
 #: resources/views/admin/phpgedview/wizard.php:28
 msgid "Where is your PhpGedView installation?"
-msgstr ""
+msgstr "Gde je vaša PhpGedView instalacija?"
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/sitemap/config.php:13
@@ -15638,7 +15640,7 @@ msgstr ""
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.php:315
 msgid "Who can upload new media files"
-msgstr ""
+msgstr "Ko može učitati novu medijsku datoteku"
 
 #. I18N: Name of a module. (A list of users who are online now)
 #: app/Module/LoggedInUsersModule.php:34
@@ -15703,16 +15705,16 @@ msgstr ""
 
 #: app/Stats.php:485 app/Stats.php:592
 msgid "With sources"
-msgstr ""
+msgstr "Sa izvorima"
 
 #: app/Stats.php:484 app/Stats.php:591
 msgid "Without sources"
-msgstr ""
+msgstr "Bez izvora"
 
 #. I18N: gedcom tag _WITN
 #: app/GedcomCode/GedcomCodeRela.php:295 app/GedcomTag.php:1913
 msgid "Witness"
-msgstr ""
+msgstr "Svedok"
 
 #. I18N: In the paternal surname tradition, ...
 #. I18N: In the Polish surname tradition, ...
@@ -15725,7 +15727,7 @@ msgstr "Žene uzimaju prezimena svojih muževa."
 #: resources/views/places-page.php:9 resources/views/places-page.php:12
 #: resources/views/statistics-chart-custom.php:185
 msgid "World"
-msgstr ""
+msgstr "Svet"
 
 #. I18N: gedcom tag _YART - A yahrzeit is a special anniversary of death in the Hebrew faith/calendar.
 #: app/GedcomTag.php:1919 resources/views/modules/yahrzeit/table.php:9
@@ -15743,12 +15745,12 @@ msgstr "Godina"
 
 #: app/Http/Controllers/HelpTextController.php:235
 msgid "Year input box"
-msgstr ""
+msgstr "Polje za unos godine"
 
 #: resources/views/timeline-chart.php:139
 #: resources/views/timeline-chart.php:407
 msgid "Year:"
-msgstr ""
+msgstr "Godina:"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:7913
@@ -15760,21 +15762,21 @@ msgstr "Jemen"
 #: resources/views/emails/register-user-text.php:4
 #, php-format
 msgid "You (or someone claiming to be you) has requested an account at %1$s using the email address %2$s."
-msgstr ""
+msgstr "Vi (ili neko ko se predstavlja da ste vi) je zatražio korisnički nalog na %1$s koristeći e-mail adresu %2$s."
 
 #: app/Http/Controllers/Auth/RegisterController.php:210
 #: app/Http/Controllers/MessageController.php:204
 msgid "You are not allowed to send messages that contain external links."
-msgstr ""
+msgstr "Nije vam dozvoljeno da šaljete poruke koje sadrže spoljne linkove."
 
 #: resources/views/modules/login_block/sign-out.php:4
 #, php-format
 msgid "You are signed in as %s."
-msgstr ""
+msgstr "Prijavljeni ste kao %s."
 
 #: app/Http/Controllers/Auth/LoginController.php:84
 msgid "You can apply for an account using the link below."
-msgstr "Možete zatražiti novi nalog klikom na link ispod."
+msgstr "Možete zatražiti novi korisnički nalog klikom na link ispod."
 
 #. I18N: Help text for the "Default theme" site configuration setting
 #. I18N: Help text for the “Default theme” configuration setting
@@ -15783,12 +15785,12 @@ msgstr "Možete zatražiti novi nalog klikom na link ispod."
 #: resources/views/admin/trees-preferences.php:274
 #: resources/views/edit-account-page.php:152
 msgid "You can change the appearance of webtrees using “themes”. Each theme has a different style, layout, color scheme, etc."
-msgstr ""
+msgstr "Možete promeniti izgled webtrees starnice koristeći „teme”. Svaka tema ima drugačiji stil, izgled, boje, itd."
 
 #: resources/views/admin/users-edit.php:169
 #: resources/views/edit-account-page.php:178
 msgid "You can choose whether to appear in the list of users who are currently signed-in."
-msgstr ""
+msgstr "Možete odabrati da li želite da se pojavite na listi korisnika koji su trenutno prijavljeni (online)."
 
 #. I18N: %s is a URL
 #: resources/views/edit/raw-gedcom-fact.php:17
@@ -15803,21 +15805,21 @@ msgstr ""
 
 #: resources/views/admin/trees-renumber.php:12
 msgid "You can renumber the records in a family tree, so that these internal reference numbers are not duplicated in any other family tree."
-msgstr ""
+msgstr "Možete renumerisati zapise u porodičnom stablu, tako da ovi interni referentni brojevi ne budu duplirani ni u jednom drugom porodičnom stablu."
 
 #: resources/views/admin/trees-renumber.php:21
 msgid "You can renumber this family tree."
-msgstr ""
+msgstr "Možete renumerisati ovo porodično stablo."
 
 #: resources/views/admin/site-preferences.php:49
 #: resources/views/admin/site-preferences.php:69
 msgid "You can request a higher or lower limit, although the server may ignore this request."
-msgstr ""
+msgstr "Možete zatražiti više ili niže ograničenje, iako server može ignorisati te zahteve."
 
 #. I18N: Privacy restrictions are RESN tags in GEDCOM.
 #: resources/views/admin/trees-privacy.php:162
 msgid "You can set the access for a specific record, fact, or event by adding a restriction to it. If a record, fact, or event does not have a restriction, the following default restrictions will be used."
-msgstr ""
+msgstr "Možete podesiti pristup pojedinačnim zapisima, činjenicama ili događajima dodavajući ograničenja na njih.Ako zapis, činjenica ili događaj nemaju restrikcije, sledeće podrazumevane restrikcije će biti korišćene."
 
 #: app/Module/BatchUpdate/BatchUpdateMissingDeathPlugin.php:43
 msgid "You can speed up the privacy calculations by adding a death record to individuals whose death can be inferred from other dates, but who do not have a record of death, burial, cremation, etc."
@@ -15829,7 +15831,7 @@ msgstr "Ne možete se prijaviti jer vaš internet pretraživač ne prihvata kola
 
 #: resources/views/verify-success-page.php:9
 msgid "You have confirmed your request to become a registered user."
-msgstr ""
+msgstr "Potvrdili ste vaš zahtev da postanete registrovani korisnik."
 
 #: resources/views/admin/trees-import.php:12
 msgid "You have selected a GEDCOM file with a different name. Is this correct?"
@@ -15837,11 +15839,11 @@ msgstr ""
 
 #: app/Http/Controllers/Auth/LoginController.php:224
 msgid "You have signed out."
-msgstr ""
+msgstr "Odjavili ste se."
 
 #: resources/views/modules/faq/config.php:11
 msgid "You may use HTML to format the answer and to add links to other websites."
-msgstr ""
+msgstr "Možete koristit HTML da formatirate odgovor i da dodate linkove na ostale web stranice."
 
 #: resources/views/admin/site-mail.php:11
 msgid "You must also enable “less secure applications” in your Google account."
@@ -15849,7 +15851,7 @@ msgstr ""
 
 #: app/Http/Controllers/SetupController.php:426
 msgid "You must change this before you can continue."
-msgstr ""
+msgstr "Morate ovo promeniti pre nego što nastavite."
 
 #: app/Http/Controllers/SetupController.php:140
 msgid "You must enter all the administrator account fields."
@@ -15857,7 +15859,7 @@ msgstr ""
 
 #: resources/views/admin/trees-merge.php:16
 msgid "You must renumber the records in one of the trees before you can merge them."
-msgstr ""
+msgstr "Morate renumerisati zapise u jednom porodičnom stablu pre nego što ih spojite."
 
 #: app/Module/ChartsBlockModule.php:129
 msgid "You must select an individual and a chart type in the block preferences"
@@ -15910,7 +15912,7 @@ msgstr ""
 
 #: resources/views/admin/users-edit.php:101
 msgid "You should not approve an account unless you know that the email address is correct."
-msgstr ""
+msgstr "Ne bi trebali da odobrite nalog dok niste sigurni da je e-mail adresa ispravna."
 
 #: resources/views/emails/register-notify-html.php:26
 #: resources/views/emails/register-notify-text.php:13
@@ -16224,7 +16226,7 @@ msgstr "rođeno ime"
 #: resources/views/admin/trees-privacy.php:111
 #, php-format
 msgid "born in the last %1$s years or died in the last %2$s years"
-msgstr ""
+msgstr "rođeni u poslednjih %1$s godina ili umrli u poslednjih %2$s godina"
 
 #: app/Functions/Functions.php:786
 msgid "brother"
@@ -17015,7 +17017,7 @@ msgstr ""
 #. I18N: A button label.
 #: resources/views/edit/new-individual.php:327
 msgid "go to new individual"
-msgstr ""
+msgstr "idi na novog pojedinca"
 
 #: app/Functions/Functions.php:832
 msgctxt "child’s child"
@@ -18540,7 +18542,7 @@ msgstr ""
 
 #: resources/views/components/radios-hide-show.php:6
 msgid "hide"
-msgstr ""
+msgstr "sakrij"
 
 #. I18N: reflexive pronoun
 #: app/Functions/Functions.php:283
@@ -18632,7 +18634,7 @@ msgstr "poslednji"
 #: resources/views/admin/trees-preferences.php:751
 msgctxt "Show the [first/last] [N] parts of a place name."
 msgid "last"
-msgstr "poslednji"
+msgstr "poslednjih"
 
 #. I18N: Layout option for lists of names
 #. I18N: An option in a list-box
@@ -19084,7 +19086,7 @@ msgstr ""
 #. I18N: A button label.
 #: resources/views/admin/trees-places.php:31
 msgid "preview"
-msgstr ""
+msgstr "pregled"
 
 #. I18N: A button label, previous page
 #: app/Datatables.php:52 app/I18N.php:320
@@ -19912,7 +19914,7 @@ msgstr "izmeni"
 #. I18N: A button label.
 #: resources/views/admin/media-upload.php:59
 msgid "upload"
-msgstr ""
+msgstr "učitaj"
 
 #. I18N: A button label.
 #: resources/views/ancestors-page.php:46 resources/views/branches-page.php:38
