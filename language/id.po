@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2018-08-31 10:05+0000\n"
+"PO-Revision-Date: 2018-09-03 02:51+0000\n"
 "Last-Translator: Andi Ahmad Fachrudin <nugeonet@gmail.com>\n"
 "Language-Team: Indonesian <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/id/>\n"
 "Language: id\n"
@@ -1306,7 +1306,7 @@ msgstr "Tambah Nama Baru"
 
 #: app/Module/FamilyTreeNewsModule.php:130
 msgid "Add a news article"
-msgstr "Tambahkan Artikel berita baru"
+msgstr "Tambahkan Berita Baru"
 
 #: app/Controller/FamilyController.php:149 app/Functions/FunctionsEdit.php:1108
 #: app/Module/NotesTabModule.php:102
@@ -1324,7 +1324,7 @@ msgstr "Tambahkan batasan"
 #: app/Module/UpcomingAnniversariesModule.php:181
 #: app/Module/UserMessagesModule.php:184 app/Module/YahrzeitModule.php:289
 msgid "Add a scrollbar when block contents grow"
-msgstr "Tambahkan scrollbar ketika isi blok penuh"
+msgstr "Tambahkan navigasi gulir ketika isi blok penuh"
 
 #: app/Controller/FamilyController.php:155 app/Functions/FunctionsEdit.php:1118
 #: app/Module/NotesTabModule.php:112
@@ -3438,7 +3438,7 @@ msgstr "Ubah bendera"
 
 #: admin_users.php:216
 msgid "Change the blocks on this user’s “My page”"
-msgstr "Ubah blokir di “Halaman Saya” pada pengguna ini"
+msgstr "Ubah setelan blok di “Halaman Saya”"
 
 #: admin_trees_manage.php:408 index_edit.php:50
 msgid "Change the “Home page” blocks"
@@ -4878,7 +4878,7 @@ msgstr "Sederhana"
 
 #: app/Module/WelcomeBlockModule.php:56
 msgid "Default chart"
-msgstr "Grafik Sederhana"
+msgstr "Grafik Silsilah"
 
 #: admin_trees_manage.php:438
 msgid "Default family tree"
@@ -4888,7 +4888,7 @@ msgstr "Silsilah Keluarga Sederhana"
 #: admin_trees_config.php:654 app/Module/WelcomeBlockModule.php:58
 #: edituser.php:196
 msgid "Default individual"
-msgstr "Lihat Pribadi"
+msgstr "Data Pribadi"
 
 #: app/Module/GoogleMapsModule.php:321
 msgid "Default map type"
@@ -7294,7 +7294,7 @@ msgstr "Jika dua silsilah keluarga menggunakan folder media yang sama, maka mere
 
 #: admin_trees_config.php:374
 msgid "If visitors can not see the family tree, they will not be able to sign up for an account. You will need to add their account manually."
-msgstr "Jika pengunjung tidak dapat melihat silsilah keluarga, mereka tidak akan dapat mendaftar untuk sebuah akun. Anda perlu menambahkan akun mereka secara manual."
+msgstr "Jika pengunjung tidak dapat melihat silsilah keluarga, mereka tidak akan dapat mendaftar untuk sebuah akun. anda perlu menambahkan akun mereka secara manual."
 
 #. I18N: Help text for the “Who can upload new media files” configuration setting
 #: admin_trees_config.php:1023
@@ -7331,7 +7331,7 @@ msgstr "Jika anda telah membuat media di situs ini, dan kemudian mengubah file G
 
 #: app/Module/RecentChangesModule.php:186
 msgid "If you hide an empty block, you will not be able to change its configuration until it becomes visible by no longer being empty."
-msgstr "Jika Anda menyembunyikan blok kosong, Anda tidak akan dapat mengubah konfigurasinya hingga terlihat tidak lagi kosong."
+msgstr "Jika anda menyembunyikan blok kosong, anda tidak akan dapat mengubah konfigurasinya hingga terlihat tidak lagi kosong."
 
 #: admin_site_config.php:192
 msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php, and .htaccess) from the existing folder to the new folder."
@@ -9311,7 +9311,7 @@ msgstr "Murdad"
 
 #: app/Module/FamilyTreeNewsModule.php:137
 msgid "More news articles"
-msgstr "Lebih banyak artikel berita"
+msgstr "Lihat Berita Lainnya"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6811
@@ -9842,7 +9842,7 @@ msgstr "Tidak ada file media yang disediakan."
 
 #: app/Module/FamilyTreeNewsModule.php:109
 msgid "No news articles have been submitted."
-msgstr "Tidak ada artikel berita yang dikirim."
+msgstr "Belum ada berita yang dibuat."
 
 #: app/Module/GoogleMapsModule.php:3269 app/Module/GoogleMapsModule.php:3972
 msgid "No places found"
@@ -9947,7 +9947,7 @@ msgstr "Bukan seseorang, keluarga, atau ID sumber yang sesuai"
 
 #: admin.php:726
 msgid "Not approved by an administrator"
-msgstr "Tidak Disetujui Oleh Pengurus"
+msgstr "Tidak disetujui oleh pengurus"
 
 #. I18N: gedcom tag _NLIV
 #: app/GedcomTag.php:1683
@@ -11594,7 +11594,7 @@ msgstr "Kediaman"
 
 #: index_edit.php:371
 msgid "Restore the default block layout"
-msgstr "Kembalikan tata letak blok default"
+msgstr "Kembalikan tata letak blok otomatis"
 
 #. I18N: http://en.wikipedia.org/wiki/User_agent
 #: admin_site_access.php:351
@@ -11954,7 +11954,7 @@ msgstr "Pilih file GEDCOM untuk mengimpor"
 
 #: index_edit.php:284 index_edit.php:367
 msgid "Select a block and use the arrows to move it."
-msgstr "Highlight blok nama kemudian klik pada salah satu ikon panah untuk memindah blok terhighlight tersebut pada arah yang ditandakan."
+msgstr "Tandai nama blok kemudian klik pada salah satu tanda panah untuk memindah blok yang ditandai tersebut ke arah yang dipilih."
 
 #: app/Functions/FunctionsEdit.php:405 reportengine.php:244
 msgid "Select a date"
@@ -14099,7 +14099,7 @@ msgstr "Akun ini belum diverifikasi. silakan periksa email anda untuk pesan veri
 
 #: app/Module/ReviewChangesModule.php:179
 msgid "This block will show editors a list of records with pending changes that need to be reviewed by a moderator. It also generates daily emails to moderators whenever pending changes exist."
-msgstr "Blok ini akan menunjukkan kepada editor daftar rekaman dengan perubahan yang menunggu keputusan yang perlu ditinjau oleh moderator. Ini juga menghasilkan email setiap hari untuk moderator setiap kali ada perubahan yang tertunda."
+msgstr "Blok ini akan menunjukkan kepada editor daftar rekaman dengan perubahan yang menunggu keputusan yang perlu ditinjau oleh moderator. ini juga menghasilkan email setiap hari untuk moderator setiap kali ada perubahan yang tertunda."
 
 #: setup.php:351 setup.php:362
 msgid "This database and table-prefix appear to be used by another application. If you have an existing PhpGedView system, you should create a new webtrees system. You can import your PhpGedView data and settings later."
@@ -14753,7 +14753,7 @@ msgstr "Hingga"
 
 #: app/Module/HtmlBlockModule.php:291
 msgid "To assist you in getting started with this block, we have created several standard templates. When you select one of these templates, the text area will contain a copy that you can then alter to suit your site’s requirements."
-msgstr "Untuk membantu Anda memulai dengan blok ini, kami telah membuat beberapa templat standar. Saat Anda memilih salah satu dari templat ini, area teks akan berisi salinan yang kemudian dapat Anda ubah agar sesuai dengan persyaratan situs Anda."
+msgstr "Untuk membantu anda memulai dengan blok ini, kami telah membuat beberapa tema standar. saat anda memilih salah satu dari tema, area teks akan berisi salinan yang kemudian dapat anda ubah agar sesuai dengan persyaratan situs anda."
 
 #: admin_site_upgrade.php:337
 msgid "To complete the upgrade, you should install the files manually."
