@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-07-26 23:06+0100\n"
-"PO-Revision-Date: 2018-09-03 02:51+0000\n"
+"PO-Revision-Date: 2018-09-03 04:42+0000\n"
 "Last-Translator: Andi Ahmad Fachrudin <nugeonet@gmail.com>\n"
 "Language-Team: Indonesian <https://translate.webtrees.net/projects/webtrees/webtrees/id/>\n"
 "Language: id\n"
@@ -11582,7 +11582,7 @@ msgstr "Kediaman"
 
 #: resources/views/edit-blocks-page.php:223
 msgid "Restore the default block layout"
-msgstr "Kembalikan tata letak blok otomatis"
+msgstr "Kembalikan ke posisi tata letak blok standar"
 
 #: resources/views/admin/users-edit.php:287
 msgid "Restrict to immediate family"
@@ -12116,7 +12116,7 @@ msgstr "Atur tingkat akses untuk setiap silsilah keluarga."
 #: app/Http/Controllers/HomePageController.php:295
 #: resources/views/admin/control-panel.php:250
 msgid "Set the default blocks for new family trees"
-msgstr "Setel blok otomatis untuk silsilah keluarga baru"
+msgstr "Atur tata letak blok standar untuk silsilah keluarga baru"
 
 #: app/Http/Controllers/HomePageController.php:473
 #: resources/views/admin/control-panel.php:318
