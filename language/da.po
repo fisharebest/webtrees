@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-07-26 23:06+0100\n"
-"PO-Revision-Date: 2018-05-01 18:09+0000\n"
-"Last-Translator: Lars Juul <lars@krugerjuul.dk>\n"
+"PO-Revision-Date: 2018-09-04 08:19+0000\n"
+"Last-Translator: Eyolf Østrem <eyolf@oestrem.com>\n"
 "Language-Team: Danish <https://translate.webtrees.net/projects/webtrees/webtrees/da/>\n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
@@ -83,7 +83,7 @@ msgstr "%1$sKB blev downloadet på %2$s sekunder."
 #: app/Http/Controllers/AdminUsersController.php:399
 #, php-format
 msgid "%1$s does not exist"
-msgstr ""
+msgstr "%1$s findes ikke"
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: app/Http/Controllers/AdminTreesController.php:228
@@ -309,8 +309,8 @@ msgstr "%s er deaktiveret på denne server. Du kan ikke installere webtrees før
 #, php-format
 msgid "%s location has been imported."
 msgid_plural "%s locations have been imported."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s sted er importeret."
+msgstr[1] "%s steder er importerede."
 
 #: app/Module/UserMessagesModule.php:177
 #, php-format
@@ -2735,12 +2735,12 @@ msgstr "Født"
 #: app/GedcomCode/GedcomCodePedi.php:58
 msgctxt "Female pedigree"
 msgid "Birth"
-msgstr "Fødsel"
+msgstr "Født"
 
 #: app/GedcomCode/GedcomCodePedi.php:56
 msgctxt "Male pedigree"
 msgid "Birth"
-msgstr "Fødsel"
+msgstr "Født"
 
 #: app/GedcomCode/GedcomCodePedi.php:60
 msgctxt "Pedigree"
