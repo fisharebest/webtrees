@@ -633,9 +633,3 @@ fieldset.row > legend, fieldset.row > div {
 	text-align: center;
 	}
 }
-
-@media (max-width: 500px) {
-	.wt-page-options-individual-list, .wt-page-options-family-list, .wt-page-content {
-    align-items: left;
-	}
-}
