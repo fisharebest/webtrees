@@ -47,6 +47,7 @@ class Resolver
      * @param string $class
      *
      * @return object
+     * @throws \ReflectionException
      */
     public function resolve(string $class)
     {
@@ -75,6 +76,7 @@ class Resolver
      * @param string $method
      *
      * @return mixed
+     * @throws \ReflectionException
      */
     public function dispatch($object, string $method)
     {

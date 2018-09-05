@@ -35,6 +35,7 @@ class FamilyController extends AbstractBaseController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function show(Request $request, Tree $tree): Response
     {
@@ -59,6 +60,7 @@ class FamilyController extends AbstractBaseController
      * @param Family $family
      *
      * @return stdClass
+     * @throws \Exception
      */
     private function significant(Family $family): stdClass
     {

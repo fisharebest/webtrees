@@ -60,6 +60,7 @@ class ListController extends AbstractBaseController
      * @param User    $user
      *
      * @return Response
+     * @throws \Exception
      */
     public function familyList(Request $request, Tree $tree, User $user): Response
     {
@@ -74,6 +75,7 @@ class ListController extends AbstractBaseController
      * @param User    $user
      *
      * @return Response
+     * @throws \Exception
      */
     public function individualList(Request $request, Tree $tree, User $user): Response
     {
@@ -376,6 +378,7 @@ class ListController extends AbstractBaseController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function mediaList(Request $request, Tree $tree): Response
     {
@@ -433,6 +436,7 @@ class ListController extends AbstractBaseController
      * @param Tree $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function noteList(Tree $tree): Response
     {
@@ -450,6 +454,7 @@ class ListController extends AbstractBaseController
      * @param Tree $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function repositoryList(Tree $tree): Response
     {
@@ -467,6 +472,7 @@ class ListController extends AbstractBaseController
      * @param Tree $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function sourceList(Tree $tree): Response
     {
@@ -484,6 +490,7 @@ class ListController extends AbstractBaseController
      * @param Tree $tree
      *
      * @return string[]
+     * @throws \Exception
      */
     private function allFolders(Tree $tree): array
     {
@@ -519,6 +526,7 @@ class ListController extends AbstractBaseController
      * @param string $form_type  option OBJE/FILE/FORM/TYPE
      *
      * @return Media[]
+     * @throws \Exception
      */
     private function allMedia(Tree $tree, string $folder, string $subfolders, string $sort, string $filter, string $form_type): array
     {
@@ -591,6 +599,7 @@ class ListController extends AbstractBaseController
      * @param Tree $tree
      *
      * @return array
+     * @throws \Exception
      */
     private function allNotes(Tree $tree): array
     {
@@ -616,6 +625,7 @@ class ListController extends AbstractBaseController
      * @param Tree $tree
      *
      * @return array
+     * @throws \Exception
      */
     private function allRepositories(Tree $tree): array
     {
@@ -641,6 +651,7 @@ class ListController extends AbstractBaseController
      * @param Tree $tree
      *
      * @return array
+     * @throws \Exception
      */
     private function allSources(Tree $tree): array
     {
@@ -740,6 +751,7 @@ class ListController extends AbstractBaseController
      * @param bool $totals if set, count the number of names beginning with each letter
      *
      * @return int[]
+     * @throws \Exception
      */
     private function surnameAlpha(Tree $tree, $marnm, $fams, $totals = true): array
     {
@@ -817,6 +829,7 @@ class ListController extends AbstractBaseController
      * @param bool   $fams   if set, only consider individuals with FAMS records
      *
      * @return int[]
+     * @throws \Exception
      */
     private function givenAlpha(Tree $tree, $surn, $salpha, $marnm, $fams): array
     {
@@ -900,6 +913,7 @@ class ListController extends AbstractBaseController
      * @param bool   $fams   if set, only consider individuals with FAMS records
      *
      * @return array
+     * @throws \Exception
      */
     private function surnames(Tree $tree, $surn, $salpha, $marnm, $fams): array
     {
@@ -952,6 +966,7 @@ class ListController extends AbstractBaseController
      * @param bool   $fams   if set, only fetch individuals with FAMS records
      *
      * @return Individual[]
+     * @throws \Exception
      */
     private function individuals(Tree $tree, $surn, $salpha, $galpha, $marnm, $fams): array
     {
@@ -1021,6 +1036,7 @@ class ListController extends AbstractBaseController
      * @param bool   $marnm  if set, include married names
      *
      * @return Family[]
+     * @throws \Exception
      */
     private function families(Tree $tree, $surn, $salpha, $galpha, $marnm): array
     {

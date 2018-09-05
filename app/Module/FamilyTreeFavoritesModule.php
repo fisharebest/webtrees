@@ -61,6 +61,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
      * @param string[] $cfg
      *
      * @return string
+     * @throws \Exception
      */
     public function getBlock(Tree $tree, int $block_id, bool $template = true, array $cfg = []): string
     {
@@ -147,6 +148,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
      * @param Tree $tree
      *
      * @return stdClass[]
+     * @throws \Exception
      */
     public function getFavorites(Tree $tree): array
     {
@@ -170,6 +172,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
      * @param User    $user
      *
      * @return RedirectResponse
+     * @throws \Exception
      */
     public function postAddFavoriteAction(Request $request, Tree $tree, User $user): RedirectResponse
     {
@@ -197,6 +200,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
      * @param User    $user
      *
      * @return RedirectResponse
+     * @throws \Exception
      */
     public function postDeleteFavoriteAction(Request $request, Tree $tree, User $user): RedirectResponse
     {
@@ -221,6 +225,8 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
      * @param string $url
      * @param string $title
      * @param string $note
+     *
+     * @throws \Exception
      */
     private function addUrlFavorite(Tree $tree, string $url, string $title, string $note)
     {
@@ -255,6 +261,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
      * @param Tree   $tree
      * @param string $xref
      * @param string $note
+     * @throws \Exception
      */
     private function addRecordFavorite(Tree $tree, string $xref, string $note)
     {

@@ -44,6 +44,7 @@ class AdminLocationController extends AbstractBaseController
      * @param Request $request
      *
      * @return Response
+     * @throws Exception
      */
     public function mapData(Request $request): Response
     {
@@ -72,6 +73,7 @@ class AdminLocationController extends AbstractBaseController
      * @param Request $request
      *
      * @return Response
+     * @throws Exception
      */
     public function mapDataEdit(Request $request): Response
     {
@@ -127,6 +129,7 @@ class AdminLocationController extends AbstractBaseController
      * @param Request $request
      *
      * @return RedirectResponse
+     * @throws Exception
      */
     public function mapDataSave(Request $request): RedirectResponse
     {
@@ -189,6 +192,7 @@ class AdminLocationController extends AbstractBaseController
      * @param Request $request
      *
      * @return RedirectResponse
+     * @throws Exception
      */
     public function mapDataDelete(Request $request): RedirectResponse
     {
@@ -237,6 +241,7 @@ class AdminLocationController extends AbstractBaseController
      * @param Request $request
      *
      * @return Response
+     * @throws Exception
      */
     public function exportLocations(Request $request): Response
     {
@@ -475,6 +480,7 @@ class AdminLocationController extends AbstractBaseController
      * @param Tree $tree
      *
      * @return RedirectResponse
+     * @throws Exception
      */
     public function importLocationsFromTree(Tree $tree): RedirectResponse
     {
@@ -678,6 +684,7 @@ class AdminLocationController extends AbstractBaseController
      * @param $id
      *
      * @return array
+     * @throws Exception
      */
     private function gethierarchy($id): array
     {
@@ -701,6 +708,7 @@ class AdminLocationController extends AbstractBaseController
      * @param int $id
      *
      * @return stdClass[]
+     * @throws Exception
      */
     private function getPlaceListLocation($id): array
     {
@@ -800,6 +808,7 @@ class AdminLocationController extends AbstractBaseController
      * @param int $id
      *
      * @return array
+     * @throws Exception
      */
     private function mapLocationData(int $id): array
     {

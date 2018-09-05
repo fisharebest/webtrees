@@ -64,6 +64,7 @@ class AdminController extends AbstractBaseController
      * Show the admin page for blocks.
      *
      * @return Response
+     * @throws \Exception
      */
     public function blocks(): Response
     {
@@ -74,6 +75,7 @@ class AdminController extends AbstractBaseController
      * Show the admin page for charts.
      *
      * @return Response
+     * @throws \Exception
      */
     public function charts(): Response
     {
@@ -87,6 +89,7 @@ class AdminController extends AbstractBaseController
      * @param UpgradeService      $upgrade_service
      *
      * @return Response
+     * @throws \Exception
      */
     public function controlPanel(HousekeepingService $housekeeping_service, UpgradeService $upgrade_service): Response
     {
@@ -122,6 +125,7 @@ class AdminController extends AbstractBaseController
      * Managers see a restricted version of the contol panel.
      *
      * @return Response
+     * @throws \Exception
      */
     public function controlPanelManager(): Response
     {
@@ -148,6 +152,7 @@ class AdminController extends AbstractBaseController
      * @param Request $request
      *
      * @return Response
+     * @throws \Exception
      */
     public function changesLog(Request $request): Response
     {
@@ -226,6 +231,7 @@ class AdminController extends AbstractBaseController
      * @param Request $request
      *
      * @return Response
+     * @throws \Exception
      */
     public function changesLogData(Request $request): Response
     {
@@ -302,6 +308,7 @@ class AdminController extends AbstractBaseController
      * @param Request $request
      *
      * @return Response
+     * @throws \Exception
      */
     public function changesLogDownload(Request $request): Response
     {
@@ -336,6 +343,7 @@ class AdminController extends AbstractBaseController
      * @param Request $request
      *
      * @return RedirectResponse
+     * @throws \Exception
      */
     public function deleteModuleSettings(Request $request): RedirectResponse
     {
@@ -395,6 +403,7 @@ class AdminController extends AbstractBaseController
      * @param Request $request
      *
      * @return Response
+     * @throws \Exception
      */
     public function fixLevel0MediaAction(Request $request): Response
     {
@@ -432,6 +441,7 @@ class AdminController extends AbstractBaseController
      * @param Request $request
      *
      * @return JsonResponse
+     * @throws \Exception
      */
     public function fixLevel0MediaData(Request $request): JsonResponse
     {
@@ -555,6 +565,7 @@ class AdminController extends AbstractBaseController
      * @param Request $request
      *
      * @return Response
+     * @throws \Exception
      */
     public function webtrees1ThumbnailsAction(Request $request): Response
     {
@@ -707,6 +718,7 @@ class AdminController extends AbstractBaseController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function mergeRecords(Request $request, Tree $tree): Response
     {
@@ -795,6 +807,7 @@ class AdminController extends AbstractBaseController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function mergeRecordsAction(Request $request, Tree $tree): Response
     {
@@ -936,6 +949,7 @@ class AdminController extends AbstractBaseController
      * Show the administrator a list of modules.
      *
      * @return Response
+     * @throws \Exception
      */
     public function modules(): Response
     {
@@ -954,6 +968,7 @@ class AdminController extends AbstractBaseController
      * Show the admin page for menus.
      *
      * @return Response
+     * @throws \Exception
      */
     public function menus(): Response
     {
@@ -964,6 +979,7 @@ class AdminController extends AbstractBaseController
      * Show the admin page for reports.
      *
      * @return Response
+     * @throws \Exception
      */
     public function reports(): Response
     {
@@ -974,6 +990,7 @@ class AdminController extends AbstractBaseController
      * Show the admin page for sidebars.
      *
      * @return Response
+     * @throws \Exception
      */
     public function sidebars(): Response
     {
@@ -984,6 +1001,7 @@ class AdminController extends AbstractBaseController
      * Show the admin page for tabs.
      *
      * @return Response
+     * @throws \Exception
      */
     public function tabs(): Response
     {
@@ -994,6 +1012,7 @@ class AdminController extends AbstractBaseController
      * @param Tree $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function treePrivacyEdit(Tree $tree): Response
     {
@@ -1016,6 +1035,7 @@ class AdminController extends AbstractBaseController
      * @param Tree    $tree
      *
      * @return RedirectResponse
+     * @throws \Exception
      */
     public function treePrivacyUpdate(Request $request, Tree $tree): RedirectResponse
     {
@@ -1096,6 +1116,7 @@ class AdminController extends AbstractBaseController
      * @param Request $request
      *
      * @return RedirectResponse
+     * @throws \Exception
      */
     public function updateModuleAccess(Request $request): RedirectResponse
     {
@@ -1125,6 +1146,7 @@ class AdminController extends AbstractBaseController
      * @param Request $request
      *
      * @return RedirectResponse
+     * @throws \Exception
      */
     public function updateModuleStatus(Request $request): RedirectResponse
     {
@@ -1254,6 +1276,7 @@ class AdminController extends AbstractBaseController
      * @param string $title
      *
      * @return Response
+     * @throws \Exception
      */
     private function components($component, $route, $component_title, $title): Response
     {
@@ -1269,9 +1292,10 @@ class AdminController extends AbstractBaseController
     /**
      * Conver request parameters into paging/sorting for datatables
      *
-     * @param $request
+     * @param Request $request
      *
      * @return array
+     * @throws \Exception
      */
     private function dataTablesPagination(Request $request): array
     {
@@ -1321,6 +1345,7 @@ class AdminController extends AbstractBaseController
      * Generate a list of module names which exist in the database but not on disk.
      *
      * @return string[]
+     * @throws \Exception
      */
     private function deletedModuleNames(): array
     {
@@ -1336,6 +1361,7 @@ class AdminController extends AbstractBaseController
      * @param string $file
      *
      * @return Media[]
+     * @throws \Exception
      */
     private function findMediaObjectsForMediaFile(string $file): array
     {
@@ -1488,6 +1514,7 @@ class AdminController extends AbstractBaseController
      * @param Tree $tree
      *
      * @return array
+     * @throws \Exception
      */
     private function privacyRestrictions(Tree $tree): array
     {
@@ -1542,6 +1569,7 @@ class AdminController extends AbstractBaseController
      * @param Tree $tree
      *
      * @return string[]
+     * @throws \Exception
      */
     private function tagsForPrivacy(Tree $tree): array
     {
@@ -1585,6 +1613,7 @@ class AdminController extends AbstractBaseController
      * Count the number of pending changes in each tree.
      *
      * @return string[]
+     * @throws \Exception
      */
     private function totalChanges(): array
     {
@@ -1595,6 +1624,7 @@ class AdminController extends AbstractBaseController
      * Count the number of families in each tree.
      *
      * @return string[]
+     * @throws \Exception
      */
     private function totalFamilies(): array
     {
@@ -1605,6 +1635,7 @@ class AdminController extends AbstractBaseController
      * Count the number of individuals in each tree.
      *
      * @return string[]
+     * @throws \Exception
      */
     private function totalIndividuals(): array
     {
@@ -1615,6 +1646,7 @@ class AdminController extends AbstractBaseController
      * Count the number of media objects in each tree.
      *
      * @return string[]
+     * @throws \Exception
      */
     private function totalMediaObjects(): array
     {
@@ -1625,6 +1657,7 @@ class AdminController extends AbstractBaseController
      * Count the number of notes in each tree.
      *
      * @return string[]
+     * @throws \Exception
      */
     private function totalNotes(): array
     {
@@ -1635,6 +1668,7 @@ class AdminController extends AbstractBaseController
      * Count the number of repositorie in each tree.
      *
      * @return string[]
+     * @throws \Exception
      */
     private function totalRepositories(): array
     {
@@ -1645,6 +1679,7 @@ class AdminController extends AbstractBaseController
      * Count the number of sources in each tree.
      *
      * @return string[]
+     * @throws \Exception
      */
     private function totalSources(): array
     {

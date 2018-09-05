@@ -42,6 +42,7 @@ class SetupController extends AbstractBaseController
      * @param Request $request
      *
      * @return Response
+     * @throws Exception
      */
     public function setup(Request $request): Response
     {
@@ -153,7 +154,7 @@ class SetupController extends AbstractBaseController
      * @param string $dbpass
      *
      * @return string
-     *
+     * @throws Exception
      */
     private function checkDatabaseConnection($dbhost, $dbport, $buser, $dbpass): string
     {
@@ -187,7 +188,7 @@ class SetupController extends AbstractBaseController
      * @param string $tblpfx
      *
      * @return string
-     *
+     * @throws Exception
      */
     private function checkDatabaseName($dbhost, $dbport, $dbuser, $dbpass, $dbname, $tblpfx): string
     {
@@ -279,6 +280,7 @@ class SetupController extends AbstractBaseController
      * @param string $wtemail
      *
      * @return string
+     * @throws Exception
      */
     private function createConfigFile($dbhost, $dbport, $dbuser, $dbpass, $dbname, $tblpfx, $wtname, $wtuser, $wtpass, $wtemail): string
     {

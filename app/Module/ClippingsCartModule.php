@@ -153,6 +153,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      * @param Tree    $tree
      *
      * @return BinaryFileResponse
+     * @throws \League\Flysystem\FileExistsException
      */
     public function getDownloadAction(Request $request, Tree $tree): BinaryFileResponse
     {
@@ -309,6 +310,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      * @param User $user
      *
      * @return Response
+     * @throws \Exception
      */
     public function getDownloadFormAction(Tree $tree, User $user): Response
     {
@@ -383,6 +385,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function getAddFamilyAction(Request $request, Tree $tree): Response
     {
@@ -411,6 +414,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      * @param Family $family
      *
      * @return string[]
+     * @throws \Exception
      */
     private function familyOptions(Family $family): array
     {
@@ -430,6 +434,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      * @param Tree    $tree
      *
      * @return RedirectResponse
+     * @throws \Exception
      */
     public function postAddFamilyAction(Request $request, Tree $tree): RedirectResponse
     {
@@ -461,6 +466,8 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
 
     /**
      * @param Family $family
+     *
+     * @throws \Exception
      */
     private function addFamilyToCart(Family $family)
     {
@@ -473,6 +480,8 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
 
     /**
      * @param Family $family
+     *
+     * @throws \Exception
      */
     private function addFamilyAndChildrenToCart(Family $family)
     {
@@ -488,6 +497,8 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
 
     /**
      * @param Family $family
+     *
+     * @throws \Exception
      */
     private function addFamilyAndDescendantsToCart(Family $family)
     {
@@ -509,6 +520,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function getAddIndividualAction(Request $request, Tree $tree): Response
     {
@@ -537,6 +549,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      * @param Individual $individual
      *
      * @return string[]
+     * @throws \Exception
      */
     private function individualOptions(Individual $individual): array
     {
@@ -568,6 +581,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      * @param Tree    $tree
      *
      * @return RedirectResponse
+     * @throws \Exception
      */
     public function postAddIndividualAction(Request $request, Tree $tree): RedirectResponse
     {
@@ -617,6 +631,8 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
 
     /**
      * @param Individual $individual
+     *
+     * @throws \Exception
      */
     private function addAncestorsToCart(Individual $individual)
     {
@@ -631,6 +647,8 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
 
     /**
      * @param Individual $individual
+     *
+     * @throws \Exception
      */
     private function addAncestorFamiliesToCart(Individual $individual)
     {
@@ -647,6 +665,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function getAddMediaAction(Request $request, Tree $tree): Response
     {
@@ -675,6 +694,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      * @param Media $media
      *
      * @return string[]
+     * @throws \Exception
      */
     private function mediaOptions(Media $media): array
     {
@@ -690,6 +710,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      * @param Tree    $tree
      *
      * @return RedirectResponse
+     * @throws \Exception
      */
     public function postAddMediaAction(Request $request, Tree $tree): RedirectResponse
     {
@@ -711,6 +732,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function getAddNoteAction(Request $request, Tree $tree): Response
     {
@@ -739,6 +761,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      * @param Note $note
      *
      * @return string[]
+     * @throws \Exception
      */
     private function noteOptions(Note $note): array
     {
@@ -754,6 +777,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      * @param Tree    $tree
      *
      * @return RedirectResponse
+     * @throws \Exception
      */
     public function postAddNoteAction(Request $request, Tree $tree): RedirectResponse
     {
@@ -775,6 +799,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function getAddRepositoryAction(Request $request, Tree $tree): Response
     {
@@ -803,6 +828,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      * @param Repository $repository
      *
      * @return string[]
+     * @throws \Exception
      */
     private function repositoryOptions(Repository $repository): array
     {
@@ -818,6 +844,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      * @param Tree    $tree
      *
      * @return RedirectResponse
+     * @throws \Exception
      */
     public function postAddRepositoryAction(Request $request, Tree $tree): RedirectResponse
     {
@@ -839,6 +866,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function getAddSourceAction(Request $request, Tree $tree): Response
     {
@@ -867,6 +895,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      * @param Source $source
      *
      * @return string[]
+     * @throws \Exception
      */
     private function sourceOptions(Source $source): array
     {
@@ -883,6 +912,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      * @param Tree    $tree
      *
      * @return RedirectResponse
+     * @throws \Exception
      */
     public function postAddSourceAction(Request $request, Tree $tree): RedirectResponse
     {
@@ -978,6 +1008,8 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      * Only allow access to the routes/functions if the menu is active
      *
      * @param Tree $tree
+     *
+     * @throws \Exception
      */
     private function checkModuleAccess(Tree $tree)
     {

@@ -44,7 +44,7 @@ class RegisterController extends AbstractBaseController
      * @param Request $request
      *
      * @return Response
-     * @throws NotFoundHttpException
+     * @throws Exception
      */
     public function registerPage(Request $request): Response
     {
@@ -76,6 +76,7 @@ class RegisterController extends AbstractBaseController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws Exception
      */
     public function registerAction(Request $request, Tree $tree): Response
     {
@@ -222,6 +223,7 @@ class RegisterController extends AbstractBaseController
      *
      * @return Response
      * @throws NotFoundHttpException
+     * @throws Exception
      */
     public function verifyPage(Request $request): Response
     {
@@ -241,6 +243,7 @@ class RegisterController extends AbstractBaseController
      *
      * @return RedirectResponse
      * @throws NotFoundHttpException
+     * @throws Exception
      */
     public function verifyAction(Request $request): RedirectResponse
     {
@@ -253,7 +256,7 @@ class RegisterController extends AbstractBaseController
      * Check that visitors are allowed to register on this site.
      *
      * @return void
-     * @throws NotFoundHttpException
+     * @throws Exception
      */
     private function checkRegistrationAllowed()
     {

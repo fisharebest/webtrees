@@ -555,6 +555,7 @@ class HousekeepingService
      * @param int $max_age_in_seconds
      *
      * @return void
+     * @throws Exception
      */
     public function deleteOldLogs(int $max_age_in_seconds)
     {
@@ -571,6 +572,7 @@ class HousekeepingService
      * @param int $max_age_in_seconds
      *
      * @return void
+     * @throws Exception
      */
     public function deleteOldSessions(int $max_age_in_seconds)
     {

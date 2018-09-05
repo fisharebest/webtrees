@@ -34,6 +34,7 @@ class AdminMapController extends AbstractBaseController
      * @param Request $request
      *
      * @return Response
+     * @throws \Exception
      */
     public function mapProviderEdit(Request $request): Response
     {
@@ -47,6 +48,7 @@ class AdminMapController extends AbstractBaseController
      * @param Request $request
      *
      * @return RedirectResponse
+     * @throws \Exception
      */
     public function mapProviderSave(Request $request): RedirectResponse
     {

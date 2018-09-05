@@ -115,6 +115,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
      * @param Tree    $tree
      *
      * @return JsonResponse
+     * @throws Exception
      */
     public function getMapDataAction(Request $request, Tree $tree): JsonResponse
     {
@@ -183,6 +184,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
      * @param Tree    $tree
      *
      * @return array
+     * @throws Exception
      */
     private function getPedigreeMapFacts(Request $request, Tree $tree): array
     {
@@ -304,6 +306,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
      * @param Tree    $tree
      *
      * @return object
+     * @throws Exception
      */
     public function getPedigreeMapAction(Request $request, Tree $tree)
     {
@@ -353,6 +356,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
      * @param int        $generations Fetch this number of generations
      *
      * @return Individual[]
+     * @throws Exception
      */
     private function sosaStradonitzAncestors(Individual $individual, int $generations): array
     {

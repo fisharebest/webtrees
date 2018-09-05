@@ -33,6 +33,8 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
      * Create a new module.
      *
      * @param string $directory Where is this module installed
+     *
+     * @throws \Exception
      */
     public function __construct($directory)
     {
@@ -73,6 +75,7 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
      * @param string[] $cfg
      *
      * @return string
+     * @throws \Exception
      */
     public function getBlock(Tree $tree, int $block_id, bool $template = true, array $cfg = []): string
     {
@@ -148,6 +151,7 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
      * @param Request $request
      *
      * @return Response
+     * @throws \Exception
      */
     public function getEditJournalAction(Request $request): Response
     {
@@ -186,6 +190,7 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
      * @param Tree    $tree
      *
      * @return RedirectResponse
+     * @throws \Exception
      */
     public function postEditJournalAction(Request $request, Tree $tree): RedirectResponse
     {
@@ -229,6 +234,7 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
      * @param Tree    $tree
      *
      * @return RedirectResponse
+     * @throws \Exception
      */
     public function postDeleteJournalAction(Request $request, Tree $tree): RedirectResponse
     {

@@ -409,6 +409,7 @@ class ReportHtml extends ReportBase
      * @param string    $ln
      *
      * @return ReportHtmlImage
+     * @throws \Exception
      */
     public function createImageFromObject(MediaFile $media_file, int $x, int $y, int $w, int $h, string $align, string $ln): ReportHtmlImage
     {

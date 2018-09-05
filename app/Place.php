@@ -187,6 +187,7 @@ class Place
      * For lists and charts, where the full name won’t fit.
      *
      * @return string
+     * @throws \Exception
      */
     public function getShortName()
     {

@@ -40,10 +40,11 @@ class AccountController extends AbstractBaseController
     /**
      * Help for dates.
      *
-     * @param Tree    $tree
-     * @param User    $user
+     * @param Tree $tree
+     * @param User $user
      *
      * @return Response
+     * @throws \Exception
      */
     public function edit(Tree $tree, User $user): Response
     {
@@ -79,6 +80,7 @@ class AccountController extends AbstractBaseController
      * @param User    $user
      *
      * @return RedirectResponse
+     * @throws \Exception
      */
     public function update(Request $request, Tree $tree, User $user): RedirectResponse
     {
@@ -139,6 +141,7 @@ class AccountController extends AbstractBaseController
      * @param User $user
      *
      * @return RedirectResponse
+     * @throws \Exception
      */
     public function delete(User $user): RedirectResponse
     {

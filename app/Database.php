@@ -215,9 +215,8 @@ class Database
      * @param string $schema_name    Where to find our MigrationXXX classes
      * @param int    $target_version updade/downgrade to this version
      *
-     * @throws PDOException
-     *
      * @return bool  Were any updates applied
+     * @throws Exception
      */
     public static function updateSchema($namespace, $schema_name, $target_version): bool
     {

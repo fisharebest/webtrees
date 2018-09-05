@@ -82,6 +82,7 @@ class IndividualController extends AbstractBaseController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function show(Request $request, Tree $tree): Response
     {
@@ -155,6 +156,7 @@ class IndividualController extends AbstractBaseController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function tab(Request $request, Tree $tree): Response
     {
@@ -185,6 +187,7 @@ class IndividualController extends AbstractBaseController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function expandChartBox(Request $request, Tree $tree): Response
     {
@@ -219,6 +222,7 @@ class IndividualController extends AbstractBaseController
      * @param string     $fact_name
      *
      * @return int
+     * @throws \Exception
      */
     private function countFacts(Individual $individual, $fact_name): int
     {
@@ -241,6 +245,7 @@ class IndividualController extends AbstractBaseController
      * @param Fact $fact
      *
      * @return string
+     * @throws \Exception
      */
     private function formatNameRecord(Tree $tree, $n, Fact $fact): string
     {
@@ -350,6 +355,7 @@ class IndividualController extends AbstractBaseController
      * @param Fact $fact
      *
      * @return string
+     * @throws \Exception
      */
     private function formatSexRecord(Fact $fact): string
     {
@@ -403,6 +409,7 @@ class IndividualController extends AbstractBaseController
      * @param Individual $individual
      *
      * @return ModuleTabInterface[]
+     * @throws \Exception
      */
     public function getSidebars(Individual $individual): array
     {
@@ -420,6 +427,7 @@ class IndividualController extends AbstractBaseController
      * @param Individual $individual
      *
      * @return ModuleTabInterface[]
+     * @throws \Exception
      */
     public function getTabs(Individual $individual): array
     {
@@ -437,6 +445,7 @@ class IndividualController extends AbstractBaseController
      * @param Individual $individual
      *
      * @return stdClass
+     * @throws \Exception
      */
     private function significant(Individual $individual): stdClass
     {

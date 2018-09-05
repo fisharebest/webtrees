@@ -47,6 +47,7 @@ class LifespansChartController extends AbstractChartController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function page(Request $request, Tree $tree): Response
     {
@@ -106,6 +107,7 @@ class LifespansChartController extends AbstractChartController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function chart(Request $request, Tree $tree): Response
     {
@@ -158,6 +160,7 @@ class LifespansChartController extends AbstractChartController
      * @param Individual[] $individuals
      *
      * @return stdClass[]
+     * @throws \Exception
      */
     private function layoutIndividuals(array $individuals): array
     {
@@ -269,6 +272,7 @@ class LifespansChartController extends AbstractChartController
      * @param Tree $tree
      *
      * @return string[]
+     * @throws \Exception
      */
     private function findIndividualsByDate(Date $start, Date $end, Tree $tree): array
     {
@@ -291,6 +295,7 @@ class LifespansChartController extends AbstractChartController
      * @param Tree  $tree
      *
      * @return string[]
+     * @throws \Exception
      */
     private function findIndividualsByPlace(Place $place, Tree $tree): array
     {
@@ -316,6 +321,7 @@ class LifespansChartController extends AbstractChartController
      * @param Individual $individual
      *
      * @return string[]
+     * @throws \Exception
      */
     private function closeFamily(Individual $individual): array
     {
@@ -353,6 +359,7 @@ class LifespansChartController extends AbstractChartController
      * @param string $placename
      *
      * @return string
+     * @throws \Exception
      */
     private function subtitle(int $count, Date $start, Date $end, string $placename): string
     {

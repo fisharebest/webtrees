@@ -42,6 +42,7 @@ class AutocompleteController extends AbstractBaseController
      * @param Tree    $tree
      *
      * @return JsonResponse
+     * @throws \Exception
      */
     public function folder(Request $request, Tree $tree): JsonResponse
     {
@@ -71,6 +72,7 @@ class AutocompleteController extends AbstractBaseController
      * @param Tree    $tree
      *
      * @return JsonResponse
+     * @throws \Exception
      */
     public function page(Request $request, Tree $tree): JsonResponse
     {
@@ -154,6 +156,7 @@ class AutocompleteController extends AbstractBaseController
      * @param Tree    $tree
      *
      * @return JsonResponse
+     * @throws \Exception
      */
     public function place(Request $request, Tree $tree): JsonResponse
     {
@@ -203,6 +206,7 @@ class AutocompleteController extends AbstractBaseController
      * @param Tree    $tree
      *
      * @return JsonResponse
+     * @throws \Exception
      */
     public function select2Family(Request $request, Tree $tree): JsonResponse
     {
@@ -230,6 +234,7 @@ class AutocompleteController extends AbstractBaseController
      * @param Tree    $tree
      *
      * @return JsonResponse
+     * @throws \Exception
      */
     public function select2Individual(Request $request, Tree $tree): JsonResponse
     {
@@ -244,6 +249,7 @@ class AutocompleteController extends AbstractBaseController
      * @param Tree    $tree
      *
      * @return JsonResponse
+     * @throws \Exception
      */
     public function select2MediaObject(Request $request, Tree $tree): JsonResponse
     {
@@ -258,6 +264,7 @@ class AutocompleteController extends AbstractBaseController
      * @param Tree    $tree
      *
      * @return JsonResponse
+     * @throws \Exception
      */
     public function select2Note(Request $request, Tree $tree): JsonResponse
     {
@@ -272,6 +279,7 @@ class AutocompleteController extends AbstractBaseController
      * @param Tree    $tree
      *
      * @return JsonResponse
+     * @throws \Exception
      */
     public function select2Place(Request $request, Tree $tree): JsonResponse
     {
@@ -286,6 +294,7 @@ class AutocompleteController extends AbstractBaseController
      * @param Tree    $tree
      *
      * @return JsonResponse
+     * @throws \Exception
      */
     public function select2Repository(Request $request, Tree $tree): JsonResponse
     {
@@ -300,6 +309,7 @@ class AutocompleteController extends AbstractBaseController
      * @param Tree    $tree
      *
      * @return JsonResponse
+     * @throws \Exception
      */
     public function select2Source(Request $request, Tree $tree): JsonResponse
     {
@@ -314,6 +324,7 @@ class AutocompleteController extends AbstractBaseController
      * @param Tree    $tree
      *
      * @return JsonResponse
+     * @throws \Exception
      */
     public function select2Submitter(Request $request, Tree $tree): JsonResponse
     {

@@ -56,6 +56,7 @@ class ForgotPasswordController extends AbstractBaseController
      * @param Tree    $tree
      *
      * @return RedirectResponse
+     * @throws \Exception
      */
     public function forgotPasswordAction(Request $request, Tree $tree): RedirectResponse
     {
@@ -96,6 +97,7 @@ class ForgotPasswordController extends AbstractBaseController
 
     /**
      * @return string
+     * @throws \Exception
      */
     private function createNewPassword(): string
     {

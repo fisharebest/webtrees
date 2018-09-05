@@ -45,6 +45,7 @@ class HourglassChartController extends AbstractChartController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function page(Request $request, Tree $tree): Response
     {
@@ -85,6 +86,7 @@ class HourglassChartController extends AbstractChartController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function chart(Request $request, Tree $tree): Response
     {
@@ -124,6 +126,7 @@ class HourglassChartController extends AbstractChartController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function chartAddAncestor(Request $request, Tree $tree): Response
     {
@@ -148,6 +151,7 @@ class HourglassChartController extends AbstractChartController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function chartAddDescendant(Request $request, Tree $tree): Response
     {
@@ -173,6 +177,8 @@ class HourglassChartController extends AbstractChartController
      * @param int        $generations Show this number of generations
      * @param bool       $show_spouse
      * @param bool       $show_menu
+     *
+     * @throws \Exception
      */
     private function printDescendency($individual, $generation, int $generations, bool $show_spouse, bool $show_menu)
     {
@@ -378,6 +384,8 @@ class HourglassChartController extends AbstractChartController
      * @param int        $generation  Current generation number
      * @param int        $generations Show this number of generations
      * @param bool       $show_spouse
+     *
+     * @throws \Exception
      */
     private function printPersonPedigree(Individual $individual, int $generation, int $generations, bool $show_spouse)
     {

@@ -47,6 +47,7 @@ class PendingChangesController extends AbstractBaseController
      * @param Tree    $tree
      *
      * @return RedirectResponse
+     * @throws \Exception
      */
     public function acceptAllChanges(Request $request, Tree $tree): RedirectResponse
     {
@@ -93,6 +94,7 @@ class PendingChangesController extends AbstractBaseController
      * @param Tree    $tree
      *
      * @return RedirectResponse
+     * @throws \Exception
      */
     public function acceptChange(Request $request, Tree $tree): RedirectResponse
     {
@@ -145,6 +147,7 @@ class PendingChangesController extends AbstractBaseController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function acceptChanges(Request $request, Tree $tree): Response
     {
@@ -175,6 +178,7 @@ class PendingChangesController extends AbstractBaseController
      * @param Tree    $tree
      *
      * @return RedirectResponse
+     * @throws \Exception
      */
     public function rejectAllChanges(Request $request, Tree $tree): RedirectResponse
     {
@@ -199,6 +203,7 @@ class PendingChangesController extends AbstractBaseController
      * @param Tree    $tree
      *
      * @return RedirectResponse
+     * @throws \Exception
      */
     public function rejectChange(Request $request, Tree $tree): RedirectResponse
     {
@@ -233,6 +238,7 @@ class PendingChangesController extends AbstractBaseController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function rejectChanges(Request $request, Tree $tree): Response
     {
@@ -258,6 +264,7 @@ class PendingChangesController extends AbstractBaseController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function showChanges(Request $request, Tree $tree): Response
     {

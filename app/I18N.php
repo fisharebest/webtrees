@@ -225,6 +225,7 @@ class I18N
      * The prefered locales for this site, or a default list if no preference.
      *
      * @return LocaleInterface[]
+     * @throws Exception
      */
     public static function activeLocales(): array
     {

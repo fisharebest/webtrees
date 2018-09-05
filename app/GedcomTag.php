@@ -2286,6 +2286,7 @@ class GedcomTag
      * and a two-byte checksum is added.
      *
      * @return string
+     * @throws \Exception
      */
     public static function createUid(): string
     {

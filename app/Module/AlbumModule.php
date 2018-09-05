@@ -66,6 +66,7 @@ class AlbumModule extends AbstractModule implements ModuleTabInterface
      * @param Individual $individual
      *
      * @return bool
+     * @throws \Exception
      */
     public function hasTabContent(Individual $individual): bool
     {
@@ -79,6 +80,7 @@ class AlbumModule extends AbstractModule implements ModuleTabInterface
      * @param Individual $individual
      *
      * @return bool
+     * @throws \Exception
      */
     public function isGrayedOut(Individual $individual): bool
     {
@@ -91,6 +93,7 @@ class AlbumModule extends AbstractModule implements ModuleTabInterface
      * @param Individual $individual
      *
      * @return string
+     * @throws \Exception
      */
     public function getTabContent(Individual $individual): string
     {
@@ -105,6 +108,7 @@ class AlbumModule extends AbstractModule implements ModuleTabInterface
      * @param Individual $individual
      *
      * @return Media[]
+     * @throws \Exception
      */
     private function getMedia(Individual $individual): array
     {

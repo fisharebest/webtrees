@@ -198,6 +198,7 @@ class Fact
      * Get the record to which this fact links
      *
      * @return Individual|Family|Source|Repository|Media|Note|null
+     * @throws \Exception
      */
     public function getTarget()
     {
@@ -245,6 +246,7 @@ class Fact
      * @param int|null $access_level
      *
      * @return bool
+     * @throws \Exception
      */
     public function canShow($access_level = null): bool
     {
@@ -282,6 +284,7 @@ class Fact
      * Check whether this fact is protected against edit
      *
      * @return bool
+     * @throws \Exception
      */
     public function canEdit(): bool
     {
@@ -431,6 +434,7 @@ class Fact
      * Source citations linked to this fact
      *
      * @return string[]
+     * @throws \Exception
      */
     public function getCitations(): array
     {
@@ -450,6 +454,7 @@ class Fact
      * Notes (inline and objects) linked to this fact
      *
      * @return string[]|Note[]
+     * @throws \Exception
      */
     public function getNotes(): array
     {
@@ -476,6 +481,7 @@ class Fact
      * Media objects linked to this fact
      *
      * @return Media[]
+     * @throws \Exception
      */
     public function getMedia(): array
     {
@@ -495,6 +501,7 @@ class Fact
      * A one-line summary of the fact - for charts, etc.
      *
      * @return string
+     * @throws \Exception
      */
     public function summary(): string
     {

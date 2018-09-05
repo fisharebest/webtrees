@@ -41,6 +41,7 @@ class MessageController extends AbstractBaseController
      * @param User    $user
      *
      * @return Response
+     * @throws \Exception
      */
     public function broadcastPage(Request $request, User $user): Response
     {
@@ -80,6 +81,7 @@ class MessageController extends AbstractBaseController
      * @param User    $user
      *
      * @return RedirectResponse
+     * @throws \Exception
      */
     public function broadcastAction(Request $request, Tree $tree, User $user): RedirectResponse
     {
@@ -125,6 +127,7 @@ class MessageController extends AbstractBaseController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function contactPage(Request $request, Tree $tree): Response
     {
@@ -166,6 +169,7 @@ class MessageController extends AbstractBaseController
      * @param Tree    $tree
      *
      * @return RedirectResponse
+     * @throws \Exception
      */
     public function contactAction(Request $request, Tree $tree): RedirectResponse
     {
@@ -237,6 +241,7 @@ class MessageController extends AbstractBaseController
      * @param User    $user
      *
      * @return Response
+     * @throws \Exception
      */
     public function messagePage(Request $request, User $user): Response
     {
@@ -273,6 +278,7 @@ class MessageController extends AbstractBaseController
      * @param User    $user
      *
      * @return RedirectResponse
+     * @throws \Exception
      */
     public function messageAction(Request $request, Tree $tree, User $user): RedirectResponse
     {
@@ -324,6 +330,7 @@ class MessageController extends AbstractBaseController
      * @param Tree $tree
      *
      * @return User[]
+     * @throws \Exception
      */
     private function validContacts(Tree $tree): array
     {
@@ -339,8 +346,8 @@ class MessageController extends AbstractBaseController
      * Add a message to a user's inbox, send it to them via email, or both.
      *
      * @param Tree   $tree
-     * @param string $sender_name
      * @param string $sender_email
+     * @param string $sender_name
      * @param User   $recipient
      * @param string $subject
      * @param string $body
@@ -348,6 +355,7 @@ class MessageController extends AbstractBaseController
      * @param string $ip
      *
      * @return bool
+     * @throws \Exception
      */
     private function deliverMessage(Tree $tree, string $sender_email, string $sender_name, User $recipient, string $subject, string $body, string $url, string $ip): bool
     {
@@ -426,6 +434,7 @@ class MessageController extends AbstractBaseController
      * @param User $user
      *
      * @return bool
+     * @throws \Exception
      */
     private function sendInternalMessage(User $user): bool
     {
@@ -443,6 +452,7 @@ class MessageController extends AbstractBaseController
      * @param User $user
      *
      * @return bool
+     * @throws \Exception
      */
     private function sendEmail(User $user): bool
     {
@@ -457,9 +467,10 @@ class MessageController extends AbstractBaseController
     /**
      * Convert a username (or mailing list name) into an array of recipients.
      *
-     * @param $to
+     * @param string $to
      *
      * @return User[]
+     * @throws \Exception
      */
     private function recipientUsers(string $to): array
     {

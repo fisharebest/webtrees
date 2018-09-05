@@ -63,6 +63,8 @@ class FunctionsCharts
      * @param string $label  indi label (descendancy booklet)
      * @param string $parid  parent ID (descendancy booklet)
      * @param string $gparid gd-parent ID (descendancy booklet)
+     *
+     * @throws \Exception
      */
     public static function printFamilyParents(Family $family, $sosa = 0, $label = '', $parid = '', $gparid = '')
     {
@@ -266,6 +268,8 @@ class FunctionsCharts
      * @param int    $sosa         child sosa number
      * @param string $label        indi label (descendancy booklet)
      * @param int    $show_cousins display cousins on chart
+     *
+     * @throws \Exception
      */
     public static function printFamilyChildren(Family $family, $childid = '', $sosa = 0, $label = '', $show_cousins = 0)
     {
@@ -415,6 +419,8 @@ class FunctionsCharts
      * @param string $parid        parent ID (descendancy booklet)
      * @param string $gparid       gd-parent ID (descendancy booklet)
      * @param int    $show_cousins display cousins on chart
+     *
+     * @throws \Exception
      */
     public static function printSosaFamily(Family $family, $childid, $sosa, $label = '', $parid = '', $gparid = '', $show_cousins = 0)
     {
@@ -435,6 +441,7 @@ class FunctionsCharts
      * @param string $sosa sosa number
      *
      * @return string
+     * @throws \Exception
      */
     public static function getSosaName($sosa): string
     {
@@ -456,6 +463,8 @@ class FunctionsCharts
      * print cousins list
      *
      * @param Family $family
+     *
+     * @throws \Exception
      */
     private static function printCousins(Family $family)
     {

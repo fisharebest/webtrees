@@ -52,6 +52,7 @@ class FanChartController extends AbstractChartController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function page(Request $request, Tree $tree): Response
     {
@@ -96,6 +97,7 @@ class FanChartController extends AbstractChartController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function chart(Request $request, Tree $tree): Response
     {

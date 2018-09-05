@@ -30,6 +30,7 @@ class FunctionsDb
      * @param int    $gedcom_id
      *
      * @return string[]
+     * @throws \Exception
      */
     public static function fetchAllLinks($xref, $gedcom_id): array
     {

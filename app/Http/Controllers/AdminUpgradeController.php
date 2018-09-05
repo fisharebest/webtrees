@@ -70,6 +70,7 @@ class AdminUpgradeController extends AbstractBaseController
      * @param Request $request
      *
      * @return Response
+     * @throws Exception
      */
     public function wizard(Request $request): Response
     {
@@ -98,6 +99,7 @@ class AdminUpgradeController extends AbstractBaseController
      * @param Tree|null $tree
      *
      * @return Response
+     * @throws \League\Flysystem\FileNotFoundException
      */
     public function step(Request $request, Tree $tree = null): Response
     {
@@ -123,6 +125,7 @@ class AdminUpgradeController extends AbstractBaseController
 
     /**
      * @return string[]
+     * @throws Exception
      */
     private function wizardSteps(): array
     {
@@ -151,6 +154,7 @@ class AdminUpgradeController extends AbstractBaseController
 
     /**
      * @return Response
+     * @throws Exception
      */
     private function wizardStepCheck(): Response
     {
@@ -170,6 +174,7 @@ class AdminUpgradeController extends AbstractBaseController
 
     /**
      * @return Response
+     * @throws Exception
      */
     private function wizardStepPending(): Response
     {
@@ -210,6 +215,7 @@ class AdminUpgradeController extends AbstractBaseController
 
     /**
      * @return Response
+     * @throws Exception
      */
     private function wizardStepDownload(): Response
     {
@@ -251,6 +257,7 @@ class AdminUpgradeController extends AbstractBaseController
 
     /**
      * @return Response
+     * @throws Exception
      */
     private function wizardStepUnzip(): Response
     {
@@ -287,6 +294,7 @@ class AdminUpgradeController extends AbstractBaseController
 
     /**
      * @return Response
+     * @throws \League\Flysystem\FileNotFoundException
      */
     private function wizardStepCopy(): Response
     {

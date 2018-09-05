@@ -65,6 +65,8 @@ class Individual extends GedcomRecord
      *
      * @param Tree     $tree
      * @param string[] $xrefs
+     *
+     * @throws \Exception
      */
     public static function load(Tree $tree, array $xrefs)
     {
@@ -101,6 +103,7 @@ class Individual extends GedcomRecord
      * @param int|null $access_level
      *
      * @return bool
+     * @throws \Exception
      */
     public function canShowName($access_level = null): bool
     {
@@ -117,6 +120,7 @@ class Individual extends GedcomRecord
      * @param int $access_level
      *
      * @return bool
+     * @throws \Exception
      */
     protected function canShowByType($access_level): bool
     {
@@ -167,6 +171,7 @@ class Individual extends GedcomRecord
      * @param int        $distance
      *
      * @return bool
+     * @throws \Exception
      */
     private static function isRelated(Individual $target, $distance): bool
     {
@@ -242,6 +247,7 @@ class Individual extends GedcomRecord
      * @param int $access_level
      *
      * @return string
+     * @throws \Exception
      */
     protected function createPrivateGedcomRecord($access_level): string
     {
@@ -277,6 +283,7 @@ class Individual extends GedcomRecord
      * @param int    $tree_id
      *
      * @return null|string
+     * @throws \Exception
      */
     protected static function fetchGedcomRecord($xref, $tree_id)
     {
@@ -295,6 +302,7 @@ class Individual extends GedcomRecord
      * @param Individual $y
      *
      * @return int
+     * @throws \Exception
      */
     public static function compareBirthDate(Individual $x, Individual $y): int
     {
@@ -308,6 +316,7 @@ class Individual extends GedcomRecord
      * @param Individual $y
      *
      * @return int
+     * @throws \Exception
      */
     public static function compareDeathDate(Individual $x, Individual $y): int
     {
@@ -319,6 +328,7 @@ class Individual extends GedcomRecord
      * If not known to be dead, then assume living.
      *
      * @return bool
+     * @throws \Exception
      */
     public function isDead(): bool
     {
@@ -415,6 +425,7 @@ class Individual extends GedcomRecord
      * Find the highlighted media object for an individual
      *
      * @return null|MediaFile
+     * @throws \Exception
      */
     public function findHighlightedMediaFile()
     {
@@ -442,6 +453,7 @@ class Individual extends GedcomRecord
      * @param string[] $attributes Additional HTML attributes
      *
      * @return string
+     * @throws \Exception
      */
     public function displayImage($width, $height, $fit, $attributes): string
     {
@@ -462,6 +474,7 @@ class Individual extends GedcomRecord
      * Get the date of birth
      *
      * @return Date
+     * @throws \Exception
      */
     public function getBirthDate(): Date
     {
@@ -478,6 +491,7 @@ class Individual extends GedcomRecord
      * Get the place of birth
      *
      * @return Place
+     * @throws \Exception
      */
     public function getBirthPlace(): Place
     {
@@ -494,6 +508,7 @@ class Individual extends GedcomRecord
      * Get the year of birth
      *
      * @return string the year of birth
+     * @throws \Exception
      */
     public function getBirthYear(): string
     {
@@ -504,6 +519,7 @@ class Individual extends GedcomRecord
      * Get the date of death
      *
      * @return Date
+     * @throws \Exception
      */
     public function getDeathDate(): Date
     {
@@ -520,6 +536,7 @@ class Individual extends GedcomRecord
      * Get the place of death
      *
      * @return Place
+     * @throws \Exception
      */
     public function getDeathPlace(): Place
     {
@@ -536,6 +553,7 @@ class Individual extends GedcomRecord
      * get the death year
      *
      * @return string the year of death
+     * @throws \Exception
      */
     public function getDeathYear(): string
     {
@@ -549,6 +567,7 @@ class Individual extends GedcomRecord
      * Note that this is a (non-breaking) en-dash, and not a hyphen.
      *
      * @return string
+     * @throws \Exception
      */
     public function getLifeSpan(): string
     {
@@ -572,6 +591,7 @@ class Individual extends GedcomRecord
      * Get all the birth dates - for the individual lists.
      *
      * @return Date[]
+     * @throws \Exception
      */
     public function getAllBirthDates(): array
     {
@@ -589,6 +609,7 @@ class Individual extends GedcomRecord
      * Gat all the birth places - for the individual lists.
      *
      * @return Place[]
+     * @throws \Exception
      */
     public function getAllBirthPlaces(): array
     {
@@ -606,6 +627,7 @@ class Individual extends GedcomRecord
      * Get all the death dates - for the individual lists.
      *
      * @return Date[]
+     * @throws \Exception
      */
     public function getAllDeathDates(): array
     {
@@ -623,6 +645,7 @@ class Individual extends GedcomRecord
      * Get all the death places - for the individual lists.
      *
      * @return Place[]
+     * @throws \Exception
      */
     public function getAllDeathPlaces(): array
     {
@@ -640,6 +663,7 @@ class Individual extends GedcomRecord
      * Generate an estimate for the date of birth, based on dates of parents/children/spouses
      *
      * @return Date
+     * @throws \Exception
      */
     public function getEstimatedBirthDate(): Date
     {
@@ -726,6 +750,7 @@ class Individual extends GedcomRecord
      * Generate an estimated date of death.
      *
      * @return Date
+     * @throws \Exception
      */
     public function getEstimatedDeathDate(): Date
     {
@@ -812,6 +837,7 @@ class Individual extends GedcomRecord
      * @param int|null $access_level
      *
      * @return Family[]
+     * @throws \Exception
      */
     public function getSpouseFamilies($access_level = null): array
     {
@@ -839,6 +865,7 @@ class Individual extends GedcomRecord
      * in chronological order, and take the last one found.
      *
      * @return Individual|null
+     * @throws \Exception
      */
     public function getCurrentSpouse()
     {
@@ -855,6 +882,7 @@ class Individual extends GedcomRecord
      * Count the children belonging to this individual.
      *
      * @return int
+     * @throws \Exception
      */
     public function getNumberOfChildren()
     {
@@ -878,6 +906,7 @@ class Individual extends GedcomRecord
      * @param int|null $access_level
      *
      * @return Family[]
+     * @throws \Exception
      */
     public function getChildFamilies($access_level = null): array
     {
@@ -909,6 +938,7 @@ class Individual extends GedcomRecord
      * (d) the first one found
      *
      * @return Family|null
+     * @throws \Exception
      */
     public function getPrimaryChildFamily()
     {
@@ -951,6 +981,7 @@ class Individual extends GedcomRecord
      * Get a list of step-parent families.
      *
      * @return Family[]
+     * @throws \Exception
      */
     public function getChildStepFamilies(): array
     {
@@ -982,6 +1013,7 @@ class Individual extends GedcomRecord
      * Get a list of step-parent families.
      *
      * @return Family[]
+     * @throws \Exception
      */
     public function getSpouseStepFamilies(): array
     {
@@ -1025,6 +1057,7 @@ class Individual extends GedcomRecord
      * @param Family $step_family
      *
      * @return string
+     * @throws \Exception
      */
     public function getStepFamilyLabel(Family $step_family): string
     {
@@ -1073,6 +1106,7 @@ class Individual extends GedcomRecord
      * @param Family $family
      *
      * @return string
+     * @throws \Exception
      */
     public function getSpouseFamilyLabel(Family $family)
     {
@@ -1092,6 +1126,7 @@ class Individual extends GedcomRecord
      * @param string $display   optional css style display
      *
      * @return string a div block with father & mother names
+     * @throws \Exception
      */
     public function getPrimaryParentsNames($classname = '', $display = ''): string
     {
@@ -1312,6 +1347,7 @@ class Individual extends GedcomRecord
      * Extract names from the GEDCOM record.
      *
      * @return void
+     * @throws \Exception
      */
     public function extractNames()
     {
@@ -1332,6 +1368,7 @@ class Individual extends GedcomRecord
      * selection items or favorites.
      *
      * @return string
+     * @throws \Exception
      */
     public function formatListDetails(): string
     {

@@ -36,6 +36,7 @@ class AdminModuleController extends AdminController
      * @param User    $user
      *
      * @return Response
+     * @throws \Exception
      */
     public function action(Request $request, User $user): Response
     {

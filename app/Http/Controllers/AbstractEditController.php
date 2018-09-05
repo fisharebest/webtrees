@@ -238,6 +238,7 @@ abstract class AbstractEditController extends AbstractBaseController
      * @param string  $fact
      *
      * @return string
+     * @throws \Exception
      */
     protected function addNewFact(Request $request, Tree $tree, $fact)
     {
@@ -350,6 +351,7 @@ abstract class AbstractEditController extends AbstractBaseController
      * @param Tree    $tree
      *
      * @return string
+     * @throws \Exception
      */
     protected function addNewName(Request $request, Tree $tree): string
     {

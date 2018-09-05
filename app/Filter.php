@@ -48,6 +48,7 @@ class Filter
      * @param Tree   $tree
      *
      * @return string
+     * @throws \Exception
      */
     public static function formatText(string $text, Tree $tree): string
     {

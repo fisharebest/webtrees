@@ -587,6 +587,7 @@ class ReportParserGenerate extends ReportParserBase
      * XML <Now /> element handler
      *
      * @return void
+     * @throws \Exception
      */
     private function nowStartHandler()
     {
@@ -620,6 +621,7 @@ class ReportParserGenerate extends ReportParserBase
      * @param array $attrs an array of key value pairs for the attributes
      *
      * @return void
+     * @throws \Exception
      */
     private function gedcomStartHandler($attrs)
     {
@@ -882,6 +884,7 @@ class ReportParserGenerate extends ReportParserBase
      * @param array $attrs an array of key value pairs for the attributes
      *
      * @return void
+     * @throws \Exception
      */
     private function getPersonNameStartHandler($attrs)
     {
@@ -965,6 +968,7 @@ class ReportParserGenerate extends ReportParserBase
      * @param array $attrs an array of key value pairs for the attributes
      *
      * @return void
+     * @throws \Exception
      */
     private function gedcomValueStartHandler($attrs)
     {
@@ -1040,6 +1044,7 @@ class ReportParserGenerate extends ReportParserBase
      * @param array $attrs an array of key value pairs for the attributes
      *
      * @return void
+     * @throws \Exception
      */
     private function repeatTagStartHandler($attrs)
     {
@@ -1200,6 +1205,7 @@ class ReportParserGenerate extends ReportParserBase
      * @param array $attrs an array of key value pairs for the attributes
      *
      * @return void
+     * @throws \Exception
      */
     private function varStartHandler($attrs)
     {
@@ -1250,6 +1256,7 @@ class ReportParserGenerate extends ReportParserBase
      * @param array $attrs an array of key value pairs for the attributes
      *
      * @return void
+     * @throws \Exception
      */
     private function factsStartHandler($attrs)
     {
@@ -1468,6 +1475,7 @@ class ReportParserGenerate extends ReportParserBase
      * @param array $attrs an array of key value pairs for the attributes
      *
      * @return void
+     * @throws \Exception
      */
     private function ifStartHandler($attrs)
     {
@@ -1549,6 +1557,7 @@ class ReportParserGenerate extends ReportParserBase
      * @param array $attrs an array of key value pairs for the attributes
      *
      * @return void
+     * @throws \Exception
      */
     private function footnoteStartHandler($attrs)
     {
@@ -1633,6 +1642,7 @@ class ReportParserGenerate extends ReportParserBase
      * @param array $attrs an array of key value pairs for the attributes
      *
      * @return void
+     * @throws \Exception
      */
     private function highlightedImageStartHandler($attrs)
     {
@@ -1686,6 +1696,7 @@ class ReportParserGenerate extends ReportParserBase
      * @param array $attrs an array of key value pairs for the attributes
      *
      * @return void
+     * @throws \Exception
      */
     private function imageStartHandler($attrs)
     {
@@ -1815,6 +1826,7 @@ class ReportParserGenerate extends ReportParserBase
      * @param array $attrs an array of key value pairs for the attributes
      *
      * @return void
+     * @throws \Exception
      */
     private function listStartHandler($attrs)
     {
@@ -2198,6 +2210,7 @@ class ReportParserGenerate extends ReportParserBase
      * XML <List>
      *
      * @return void
+     * @throws \Exception
      */
     private function listEndHandler()
     {
@@ -2302,6 +2315,7 @@ class ReportParserGenerate extends ReportParserBase
      * @param array $attrs an array of key value pairs for the attributes
      *
      * @return void
+     * @throws \Exception
      */
     private function relativesStartHandler($attrs)
     {
@@ -2442,6 +2456,7 @@ class ReportParserGenerate extends ReportParserBase
      * XML </ Relatives>
      *
      * @return void
+     * @throws \Exception
      */
     private function relativesEndHandler()
     {
@@ -2657,6 +2672,7 @@ class ReportParserGenerate extends ReportParserBase
      * @param int      $generations
      *
      * @return void
+     * @throws \Exception
      */
     private function addDescendancy(&$list, $pid, $parents = false, $generations = -1)
     {
@@ -2719,6 +2735,7 @@ class ReportParserGenerate extends ReportParserBase
      * @param int      $generations
      *
      * @return void
+     * @throws \Exception
      */
     private function addAncestors(&$list, $pid, $children = false, $generations = -1)
     {
@@ -2771,6 +2788,7 @@ class ReportParserGenerate extends ReportParserBase
      * @param string $gedrec The gedcom record to get the value from
      *
      * @return string the value of a gedcom tag from the given gedcom record
+     * @throws \Exception
      */
     private function getGedcomValue($tag, $level, $gedrec): string
     {

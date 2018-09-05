@@ -55,6 +55,7 @@ class Media extends GedcomRecord
      * @param int $access_level
      *
      * @return bool
+     * @throws \Exception
      */
     protected function canShowByType($access_level): bool
     {
@@ -83,6 +84,7 @@ class Media extends GedcomRecord
      * @param int    $tree_id
      *
      * @return null|string
+     * @throws \Exception
      */
     protected static function fetchGedcomRecord($xref, $tree_id)
     {
@@ -98,6 +100,7 @@ class Media extends GedcomRecord
      * Get the media files for this media object
      *
      * @return MediaFile[]
+     * @throws \Exception
      */
     public function mediaFiles(): array
     {
@@ -114,6 +117,7 @@ class Media extends GedcomRecord
      * Get the first media file that contains an image.
      *
      * @return MediaFile|null
+     * @throws \Exception
      */
     public function firstImageFile()
     {
@@ -130,6 +134,7 @@ class Media extends GedcomRecord
      * Get the first note attached to this media object
      *
      * @return null|string
+     * @throws \Exception
      */
     public function getNote()
     {
@@ -150,6 +155,7 @@ class Media extends GedcomRecord
      * Extract names from the GEDCOM record.
      *
      * @return void
+     * @throws \Exception
      */
     public function extractNames()
     {
@@ -176,6 +182,7 @@ class Media extends GedcomRecord
      * identifying characteristics of this record.
      *
      * @return string
+     * @throws \Exception
      */
     public function formatListDetails(): string
     {
@@ -194,6 +201,7 @@ class Media extends GedcomRecord
      * @param string[] $attributes Additional HTML attributes
      *
      * @return string
+     * @throws \Exception
      */
     public function displayImage($width, $height, $fit, $attributes = []): string
     {

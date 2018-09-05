@@ -35,6 +35,7 @@ class NoteController extends AbstractBaseController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function show(Request $request, Tree $tree): Response
     {
@@ -61,6 +62,7 @@ class NoteController extends AbstractBaseController
      * @param Note $record
      *
      * @return array
+     * @throws \Exception
      */
     private function facts(Note $record): array
     {

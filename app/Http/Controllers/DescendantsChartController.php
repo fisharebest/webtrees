@@ -56,6 +56,7 @@ class DescendantsChartController extends AbstractChartController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function page(Request $request, Tree $tree): Response
     {
@@ -100,6 +101,7 @@ class DescendantsChartController extends AbstractChartController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function chart(Request $request, Tree $tree): Response
     {
@@ -144,6 +146,7 @@ class DescendantsChartController extends AbstractChartController
      * @param int        $generations
      *
      * @return Response
+     * @throws \Exception
      */
     private function descendantsList(Individual $individual, int $generations): Response
     {
@@ -164,6 +167,8 @@ class DescendantsChartController extends AbstractChartController
      * @param Individual $person
      * @param int        $depth the descendancy depth to show
      * @param int        $generations
+     *
+     * @throws \Exception
      */
     private function printChildDescendancy(Individual $person, $depth, int $generations)
     {
@@ -234,6 +239,8 @@ class DescendantsChartController extends AbstractChartController
      * @param Family     $family
      * @param int        $depth the descendancy depth to show
      * @param int        $generations
+     *
+     * @throws \Exception
      */
     private function printFamilyDescendancy(Individual $person, Family $family, int $depth, int $generations)
     {
@@ -328,6 +335,7 @@ class DescendantsChartController extends AbstractChartController
      * @param Individual[] $descendants
      *
      * @return Response
+     * @throws \Exception
      */
     private function descendantsFamilies(Tree $tree, array $descendants): Response
     {
@@ -355,6 +363,7 @@ class DescendantsChartController extends AbstractChartController
      * @param int        $generations
      *
      * @return Response
+     * @throws \Exception
      */
     private function descendantsBooklet(Individual $individual, int $generations): Response
     {
@@ -375,6 +384,8 @@ class DescendantsChartController extends AbstractChartController
      * @param int        $depth the descendancy depth to show
      * @param string     $label
      * @param string     $gpid
+     *
+     * @throws \Exception
      */
     private function printChildFamily(Individual $person, $depth, $label = '1.', $gpid = '')
     {

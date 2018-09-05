@@ -68,6 +68,7 @@ class BranchesController extends AbstractBaseController
      * @param User    $user
      *
      * @return Response
+     * @throws \Exception
      */
     public function list(Request $request, Tree $tree, User $user): Response
     {
@@ -104,6 +105,7 @@ class BranchesController extends AbstractBaseController
      * @param Individual $individual
      *
      * @return Individual[]
+     * @throws \Exception
      */
     protected function allAncestors(Individual $individual): array
     {
@@ -139,6 +141,7 @@ class BranchesController extends AbstractBaseController
      * @param bool   $soundex_std
      *
      * @return Individual[]
+     * @throws \Exception
      */
     private function loadIndividuals(Tree $tree, string $surname, bool $soundex_dm, bool $soundex_std): array
     {
@@ -199,6 +202,7 @@ class BranchesController extends AbstractBaseController
      * @param bool         $soundex_std
      *
      * @return string
+     * @throws \Exception
      */
     public function getPatriarchsHtml(array $individuals, array $ancestors, string $surname, bool $soundex_dm, bool $soundex_std): string
     {
@@ -230,6 +234,7 @@ class BranchesController extends AbstractBaseController
      * @param Family|null $parents
      *
      * @return string
+     * @throws \Exception
      */
     private function getDescendantsHtml(array $individuals, array $ancestors, string $surname, bool $soundex_dm, bool $soundex_std, Individual $individual, Family $parents = null)
     {

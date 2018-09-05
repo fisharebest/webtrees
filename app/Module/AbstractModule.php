@@ -57,6 +57,7 @@ abstract class AbstractModule
      * @param string $default_value
      *
      * @return string
+     * @throws \Exception
      */
     public function getBlockSetting($block_id, $setting_name, $default_value = ''): string
     {
@@ -78,6 +79,7 @@ abstract class AbstractModule
      * @param string $setting_value
      *
      * @return $this
+     * @throws \Exception
      */
     public function setBlockSetting(int $block_id, string $setting_name, string $setting_value): self
     {
@@ -173,6 +175,7 @@ abstract class AbstractModule
      * @param string $setting_value
      *
      * @return $this
+     * @throws \Exception
      */
     public function setPreference($setting_name, $setting_value): self
     {
@@ -212,6 +215,7 @@ abstract class AbstractModule
      * @param string $component tab, block, menu, etc
      *
      * @return int
+     * @throws \Exception
      */
     public function getAccessLevel(Tree $tree, $component)
     {

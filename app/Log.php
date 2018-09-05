@@ -36,6 +36,8 @@ class Log
      * @param string    $message
      * @param string    $log_type
      * @param Tree|null $tree
+     *
+     * @throws \Exception
      */
     private static function addLog($message, $log_type, Tree $tree = null)
     {
@@ -56,6 +58,8 @@ class Log
      * Store an authentication message in the message log.
      *
      * @param string $message
+     *
+     * @throws \Exception
      */
     public static function addAuthenticationLog($message)
     {
@@ -67,6 +71,7 @@ class Log
      *
      * @param string    $message
      * @param Tree|null $tree
+     * @throws \Exception
      */
     public static function addConfigurationLog($message, Tree $tree = null)
     {
@@ -78,6 +83,7 @@ class Log
      *
      * @param string $message
      * @param Tree   $tree
+     * @throws \Exception
      */
     public static function addEditLog($message, Tree $tree)
     {
@@ -88,6 +94,7 @@ class Log
      * Store an error message in the message log.
      *
      * @param string $message
+     * @throws \Exception
      */
     public static function addErrorLog($message)
     {
@@ -98,6 +105,7 @@ class Log
      * Store an media management message in the message log.
      *
      * @param string $message
+     * @throws \Exception
      */
     public static function addMediaLog($message)
     {
@@ -112,6 +120,7 @@ class Log
      *
      * @param string $message
      * @param Tree[] $trees Which trees were searched
+     * @throws \Exception
      */
     public static function addSearchLog($message, array $trees)
     {

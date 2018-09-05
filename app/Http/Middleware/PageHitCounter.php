@@ -114,6 +114,7 @@ class PageHitCounter implements MiddlewareInterface
      * @param string $parameter
      *
      * @return int
+     * @throws \Exception
      */
     private function countHit(Tree $tree, $page, $parameter): int
     {
@@ -166,6 +167,7 @@ class PageHitCounter implements MiddlewareInterface
      * @param string $parameter
      *
      * @return int
+     * @throws \Exception
      */
     public function getCount(Tree $tree, $page, $parameter): int
     {

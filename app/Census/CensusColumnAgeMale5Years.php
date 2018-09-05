@@ -31,6 +31,7 @@ class CensusColumnAgeMale5Years extends AbstractCensusColumn implements CensusCo
      * @param Individual $head
      *
      * @return string
+     * @throws \Exception
      */
     public function generate(Individual $individual, Individual $head): string
     {

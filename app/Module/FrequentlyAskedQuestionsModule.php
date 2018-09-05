@@ -72,6 +72,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
      * @param Tree $tree
      *
      * @return Menu|null
+     * @throws \Exception
      */
     public function getMenu(Tree $tree)
     {
@@ -102,6 +103,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
      * @param Tree $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function getAdminAction(Tree $tree): Response
     {
@@ -152,6 +154,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
      * @param Tree    $tree
      *
      * @return RedirectResponse
+     * @throws \Exception
      */
     public function postAdminDeleteAction(Request $request, Tree $tree): RedirectResponse
     {
@@ -180,6 +183,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
      * @param Tree    $tree
      *
      * @return RedirectResponse
+     * @throws \Exception
      */
     public function postAdminMoveDownAction(Request $request, Tree $tree): RedirectResponse
     {
@@ -233,6 +237,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
      * @param Tree    $tree
      *
      * @return RedirectResponse
+     * @throws \Exception
      */
     public function postAdminMoveUpAction(Request $request, Tree $tree): RedirectResponse
     {
@@ -286,6 +291,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function getAdminEditAction(Request $request, Tree $tree): Response
     {
@@ -336,6 +342,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
      * @param Tree    $tree
      *
      * @return RedirectResponse
+     * @throws \Exception
      */
     public function postAdminEditAction(Request $request, Tree $tree): RedirectResponse
     {
@@ -382,6 +389,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function getShowAction(Request $request, Tree $tree): Response
     {

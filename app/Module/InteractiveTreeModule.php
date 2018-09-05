@@ -138,6 +138,7 @@ class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function getTreeviewAction(Request $request, Tree $tree): Response
     {
@@ -173,6 +174,7 @@ class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function getDetailsAction(Request $request, Tree $tree): Response
     {
@@ -198,6 +200,7 @@ class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function getPersonsAction(Request $request, Tree $tree): Response
     {

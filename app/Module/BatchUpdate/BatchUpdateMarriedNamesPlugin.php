@@ -55,6 +55,7 @@ class BatchUpdateMarriedNamesPlugin extends BatchUpdateBasePlugin
      * @param GedcomRecord $record
      *
      * @return bool
+     * @throws \Exception
      */
     public function doesRecordNeedUpdate(GedcomRecord $record): bool
     {
@@ -69,6 +70,7 @@ class BatchUpdateMarriedNamesPlugin extends BatchUpdateBasePlugin
      * @param GedcomRecord $record
      *
      * @return string
+     * @throws \Exception
      */
     public function updateRecord(GedcomRecord $record): string
     {
@@ -113,6 +115,7 @@ class BatchUpdateMarriedNamesPlugin extends BatchUpdateBasePlugin
      * @param GedcomRecord $record
      *
      * @return string[]
+     * @throws \Exception
      */
     private function surnamesToAdd(GedcomRecord $record): array
     {

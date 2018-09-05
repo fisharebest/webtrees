@@ -83,6 +83,7 @@ class CalendarService
      * @param Tree   $tree  the tree to search
      *
      * @return Fact[]
+     * @throws \Exception
      */
     public function getCalendarEvents(int $jd1, int $jd2, string $facts, Tree $tree): array
     {
@@ -135,14 +136,15 @@ class CalendarService
     /**
      * Get the list of current and upcoming events, sorted by anniversary date
      *
-     * @param int     $jd1
-     * @param int     $jd2
-     * @param string  $events
-     * @param bool    $only_living
-     * @param string  $sort_by
-     * @param Tree    $tree
+     * @param int    $jd1
+     * @param int    $jd2
+     * @param string $events
+     * @param bool   $only_living
+     * @param string $sort_by
+     * @param Tree   $tree
      *
      * @return Fact[]
+     * @throws \Exception
      */
     public function getEventsList(int $jd1, int $jd2, string $events, bool $only_living, string $sort_by, Tree $tree): array
     {
@@ -199,6 +201,7 @@ class CalendarService
      * @param Tree   $tree  the tree to search
      *
      * @return Fact[]
+     * @throws \Exception
      */
     public function getAnniversaryEvents($jd, $facts, Tree $tree): array
     {

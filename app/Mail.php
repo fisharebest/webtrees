@@ -42,6 +42,7 @@ class Mail
      * @param string $message_html
      *
      * @return bool
+     * @throws Exception
      */
     public static function send(User $from, User $to, User $reply_to, $subject, $message_text, $message_html): bool
     {
@@ -78,6 +79,7 @@ class Mail
      * Create a transport mechanism for sending mail
      *
      * @return Swift_Transport
+     * @throws Exception
      */
     public static function transport()
     {

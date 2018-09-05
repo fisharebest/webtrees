@@ -52,6 +52,7 @@ class MediaFileController extends AbstractBaseController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function mediaDownload(Request $request, Tree $tree): Response
     {
@@ -100,6 +101,7 @@ class MediaFileController extends AbstractBaseController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function mediaThumbnail(Request $request, Tree $tree): Response
     {
@@ -172,6 +174,7 @@ class MediaFileController extends AbstractBaseController
      * @param array     $params
      *
      * @return Response
+     * @throws \Exception
      */
     private function generateImage(MediaFile $media_file, array $params): Response
     {
@@ -229,6 +232,7 @@ class MediaFileController extends AbstractBaseController
      * Generate a signature, to verify the request parameters.
      *
      * @return Signature
+     * @throws \Exception
      */
     private function glideSignature(): Signature
     {

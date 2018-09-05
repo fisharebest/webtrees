@@ -92,6 +92,7 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
      * @param Individual $indi
      *
      * @return stdClass
+     * @throws Exception
      */
     private function getMapData(Individual $indi): stdClass
     {

@@ -52,6 +52,8 @@ class FunctionsPrintFacts
      *
      * @param Fact         $fact
      * @param GedcomRecord $record
+     *
+     * @throws \Exception
      */
     public static function printFact(Fact $fact, GedcomRecord $record)
     {
@@ -486,6 +488,7 @@ class FunctionsPrintFacts
      * @param Fact $event
      *
      * @return string
+     * @throws \Exception
      */
     private static function formatAssociateRelationship(Fact $event): string
     {
@@ -563,6 +566,7 @@ class FunctionsPrintFacts
      * @param int    $level   The level to look for sources at
      *
      * @return string HTML text
+     * @throws \Exception
      */
     public static function printFactSources(Tree $tree, $factrec, $level): string
     {
@@ -646,6 +650,7 @@ class FunctionsPrintFacts
      * @param Tree   $tree
      * @param string $factrec
      * @param int    $level
+     * @throws \Exception
      */
     public static function printMediaLinks(Tree $tree, $factrec, $level)
     {
@@ -715,6 +720,7 @@ class FunctionsPrintFacts
      *
      * @param Fact $fact
      * @param int  $level
+     * @throws \Exception
      */
     public static function printMainSources(Fact $fact, $level)
     {
@@ -880,6 +886,7 @@ class FunctionsPrintFacts
      * @param string[] $textSOUR
      *
      * @return string
+     * @throws \Exception
      */
     public static function printSourceStructure(Tree $tree, array $textSOUR): string
     {
@@ -974,6 +981,7 @@ class FunctionsPrintFacts
      *
      * @param Fact $fact
      * @param int  $level
+     * @throws \Exception
      */
     public static function printMainNotes(Fact $fact, $level)
     {
@@ -1124,6 +1132,7 @@ class FunctionsPrintFacts
      *
      * @param Fact $fact
      * @param int  $level
+     * @throws \Exception
      */
     public static function printMainMedia(Fact $fact, $level)
     {

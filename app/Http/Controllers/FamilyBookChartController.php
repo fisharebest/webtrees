@@ -61,6 +61,7 @@ class FamilyBookChartController extends AbstractChartController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function page(Request $request, Tree $tree): Response
     {
@@ -104,6 +105,7 @@ class FamilyBookChartController extends AbstractChartController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function chart(Request $request, Tree $tree): Response
     {
@@ -158,6 +160,7 @@ class FamilyBookChartController extends AbstractChartController
      * @param int             $generation
      *
      * @return float
+     * @throws \Exception
      */
     private function printDescendency(Individual $person = null, $generation): float
     {
@@ -265,6 +268,8 @@ class FamilyBookChartController extends AbstractChartController
      *
      * @param Individual $person
      * @param int        $count
+     *
+     * @throws \Exception
      */
     private function printPersonPedigree($person, $count)
     {
@@ -397,6 +402,7 @@ class FamilyBookChartController extends AbstractChartController
      * @param int        $depth
      *
      * @return int
+     * @throws \Exception
      */
     private function maxDescendencyGenerations(Individual $individual, $depth): int
     {
@@ -437,6 +443,8 @@ class FamilyBookChartController extends AbstractChartController
      *
      * @param Individual $person
      * @param int        $descent_steps
+     *
+     * @throws \Exception
      */
     private function printFamilyBook(Individual $person, $descent_steps)
     {

@@ -76,6 +76,7 @@ class MediaTabModule extends AbstractModule implements ModuleTabInterface
      * @param Individual $individual
      *
      * @return Fact[]
+     * @throws \Exception
      */
     private function getFactsWithMedia(Individual $individual): array
     {

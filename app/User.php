@@ -66,6 +66,7 @@ class User
      * @param string $password
      *
      * @return User
+     * @throws \Exception
      */
     public static function create($user_name, $real_name, $email, $password): User
     {
@@ -94,6 +95,7 @@ class User
      * Delete a user
      *
      * @return void
+     * @throws \Exception
      */
     public function delete()
     {
@@ -120,6 +122,7 @@ class User
      * @param int|null $user_id
      *
      * @return User|null
+     * @throws \Exception
      */
     public static function find($user_id)
     {
@@ -143,6 +146,7 @@ class User
      * @param string $email
      *
      * @return User|null
+     * @throws \Exception
      */
     public static function findByEmail($email)
     {
@@ -161,6 +165,7 @@ class User
      * @param string $identifier
      *
      * @return User|null
+     * @throws \Exception
      */
     public static function findByIdentifier($identifier)
     {
@@ -177,6 +182,7 @@ class User
      * @param Individual $individual
      *
      * @return User|null
+     * @throws \Exception
      */
     public static function findByIndividual(Individual $individual)
     {
@@ -198,6 +204,7 @@ class User
      * @param string $user_name
      *
      * @return User|null
+     * @throws \Exception
      */
     public static function findByUserName($user_name)
     {
@@ -214,6 +221,7 @@ class User
      * Find the latest user to register.
      *
      * @return User|null
+     * @throws \Exception
      */
     public static function findLatestToRegister()
     {
@@ -231,6 +239,7 @@ class User
      * Get a list of all users.
      *
      * @return User[]
+     * @throws \Exception
      */
     public static function all(): array
     {
@@ -250,6 +259,7 @@ class User
      * Get a list of all administrators.
      *
      * @return User[]
+     * @throws \Exception
      */
     public static function administrators(): array
     {
@@ -272,6 +282,7 @@ class User
      * @param string $password
      *
      * @return bool
+     * @throws \Exception
      */
     public function checkPassword(string $password): bool
     {
@@ -294,6 +305,7 @@ class User
      * Get a list of all managers.
      *
      * @return User[]
+     * @throws \Exception
      */
     public static function managers(): array
     {
@@ -314,6 +326,7 @@ class User
      * Get a list of all moderators.
      *
      * @return User[]
+     * @throws \Exception
      */
     public static function moderators(): array
     {
@@ -334,6 +347,7 @@ class User
      * Get a list of all verified users.
      *
      * @return User[]
+     * @throws \Exception
      */
     public static function unapproved(): array
     {
@@ -353,6 +367,7 @@ class User
      * Get a list of all verified users.
      *
      * @return User[]
+     * @throws \Exception
      */
     public static function unverified(): array
     {
@@ -372,6 +387,7 @@ class User
      * Get a list of all users who are currently logged in.
      *
      * @return User[]
+     * @throws \Exception
      */
     public static function allLoggedIn(): array
     {
@@ -412,6 +428,7 @@ class User
      * @param string $user_name
      *
      * @return $this
+     * @throws \Exception
      */
     public function setUserName($user_name): self
     {
@@ -444,6 +461,7 @@ class User
      * @param string $real_name
      *
      * @return User
+     * @throws \Exception
      */
     public function setRealName($real_name): User
     {
@@ -476,6 +494,7 @@ class User
      * @param string $email
      *
      * @return User
+     * @throws \Exception
      */
     public function setEmail($email): User
     {
@@ -498,6 +517,7 @@ class User
      * @param string $password
      *
      * @return User
+     * @throws \Exception
      */
     public function setPassword($password): User
     {
@@ -520,6 +540,7 @@ class User
      * @param string $default
      *
      * @return string
+     * @throws \Exception
      */
     public function getPreference($setting_name, $default = ''): string
     {
@@ -547,6 +568,7 @@ class User
      * @param string $setting_value
      *
      * @return User
+     * @throws \Exception
      */
     public function setPreference($setting_name, $setting_value): User
     {

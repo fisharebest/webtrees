@@ -51,6 +51,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
      * @param string[] $cfg
      *
      * @return string
+     * @throws \Exception
      */
     public function getBlock(Tree $tree, int $block_id, bool $template = true, array $cfg = []): string
     {
@@ -178,6 +179,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
      * @param int     $block_id
      *
      * @return void
+     * @throws \Exception
      */
     public function saveBlockConfiguration(Request $request, int $block_id)
     {
@@ -211,6 +213,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
      * @param int  $block_id
      *
      * @return void
+     * @throws \Exception
      */
     public function editBlockConfiguration(Tree $tree, int $block_id)
     {

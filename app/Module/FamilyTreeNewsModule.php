@@ -38,6 +38,8 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
      * Create a new module.
      *
      * @param string $directory Where is this module installed
+     *
+     * @throws \Exception
      */
     public function __construct($directory)
     {
@@ -78,6 +80,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
      * @param string[] $cfg
      *
      * @return string
+     * @throws \Exception
      */
     public function getBlock(Tree $tree, int $block_id, bool $template = true, array $cfg = []): string
     {
@@ -154,6 +157,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function getEditNewsAction(Request $request, Tree $tree): Response
     {
@@ -192,6 +196,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
      * @param Tree    $tree
      *
      * @return RedirectResponse
+     * @throws \Exception
      */
     public function postEditNewsAction(Request $request, Tree $tree): RedirectResponse
     {
@@ -235,6 +240,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
      * @param Tree    $tree
      *
      * @return RedirectResponse
+     * @throws \Exception
      */
     public function postDeleteNewsAction(Request $request, Tree $tree): RedirectResponse
     {

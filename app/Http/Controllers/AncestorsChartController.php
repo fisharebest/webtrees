@@ -51,6 +51,7 @@ class AncestorsChartController extends AbstractChartController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function page(Request $request, Tree $tree): Response
     {
@@ -97,6 +98,7 @@ class AncestorsChartController extends AbstractChartController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function chart(Request $request, Tree $tree): Response
     {
@@ -142,6 +144,7 @@ class AncestorsChartController extends AbstractChartController
      * @param int        $generations
      *
      * @return Response
+     * @throws \Exception
      */
     private function ancestorsList(Individual $individual, int $generations): Response
     {
@@ -163,6 +166,8 @@ class AncestorsChartController extends AbstractChartController
      * @param Individual $individual
      * @param int        $sosa
      * @param int        $generations
+     *
+     * @throws \Exception
      */
     private function printChildAscendancy(Individual $individual, $sosa, $generations)
     {
@@ -240,6 +245,7 @@ class AncestorsChartController extends AbstractChartController
      * @param Individual[] $ancestors
      *
      * @return Response
+     * @throws \Exception
      */
     private function ancestorsFamilies(Tree $tree, array $ancestors): Response
     {
@@ -268,6 +274,7 @@ class AncestorsChartController extends AbstractChartController
      * @param bool         $show_cousins
      *
      * @return Response
+     * @throws \Exception
      */
     private function ancestorsBooklet(array $ancestors, bool $show_cousins): Response
     {

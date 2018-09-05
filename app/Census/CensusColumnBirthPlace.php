@@ -30,6 +30,7 @@ class CensusColumnBirthPlace extends AbstractCensusColumn implements CensusColum
      * @param Individual $head
      *
      * @return string
+     * @throws \Exception
      */
     public function generate(Individual $individual, Individual $head): string
     {

@@ -76,6 +76,7 @@ class StatisticsChartController extends AbstractChartController
      * @param Tree $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function page(Tree $tree): Response
     {
@@ -92,6 +93,7 @@ class StatisticsChartController extends AbstractChartController
      * @param Tree $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function chartIndividuals(Tree $tree): Response
     {
@@ -109,6 +111,7 @@ class StatisticsChartController extends AbstractChartController
      * @param Tree $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function chartFamilies(Tree $tree): Response
     {
@@ -125,6 +128,7 @@ class StatisticsChartController extends AbstractChartController
      * @param Tree $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function chartOther(Tree $tree): Response
     {
@@ -141,6 +145,7 @@ class StatisticsChartController extends AbstractChartController
      * @param Tree $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function chartCustomOptions(Tree $tree): Response
     {
@@ -156,6 +161,7 @@ class StatisticsChartController extends AbstractChartController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function chartCustomChart(Request $request, Tree $tree): Response
     {
@@ -722,6 +728,7 @@ class StatisticsChartController extends AbstractChartController
      * @param string $boundaries_csv
      *
      * @return string[]
+     * @throws \Exception
      */
     private function axisYears($boundaries_csv): array
     {

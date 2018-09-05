@@ -26,6 +26,7 @@ class Migration5 implements MigrationInterface
      * Upgrade to to the next version
      *
      * @return void
+     * @throws \Exception
      */
     public function upgrade()
     {

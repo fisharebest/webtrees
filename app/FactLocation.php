@@ -53,6 +53,7 @@ class FactLocation extends Location
      * @param $sosa
      *
      * @return array
+     * @throws \Exception
      */
     public function shortSummary($datatype, $sosa): array
     {

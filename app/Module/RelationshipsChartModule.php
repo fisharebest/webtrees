@@ -79,6 +79,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleConfigInt
      * @param Individual $individual
      *
      * @return Menu|null
+     * @throws \Exception
      */
     public function getChartMenu(Individual $individual)
     {
@@ -115,6 +116,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleConfigInt
      * @param Individual $individual
      *
      * @return Menu|null
+     * @throws \Exception
      */
     public function getBoxChartMenu(Individual $individual)
     {
@@ -139,6 +141,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleConfigInt
      * @param Request $request
      *
      * @return Response
+     * @throws \Exception
      */
     public function getAdminAction(Request $request): Response
     {
@@ -158,6 +161,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleConfigInt
      * @param Request $request
      *
      * @return RedirectResponse
+     * @throws \Exception
      */
     public function postAdminAction(Request $request): RedirectResponse
     {

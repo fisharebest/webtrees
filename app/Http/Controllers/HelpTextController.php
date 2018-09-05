@@ -161,6 +161,7 @@ class HelpTextController extends AbstractBaseController
      * @param Request $request
      *
      * @return Response
+     * @throws \Exception
      */
     public function helpText(Request $request): Response
     {
@@ -268,6 +269,7 @@ class HelpTextController extends AbstractBaseController
      * @param string[] $gedcom_dates
      *
      * @return string[]
+     * @throws \Exception
      */
     private function formatDates(array $gedcom_dates): array
     {

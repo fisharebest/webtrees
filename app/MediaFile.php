@@ -178,6 +178,7 @@ class MediaFile
 
     /**
      * @return bool
+     * @throws \Exception
      */
     public function isPendingAddition(): bool
     {
@@ -192,6 +193,7 @@ class MediaFile
 
     /**
      * @return bool
+     * @throws \Exception
      */
     public function isPendingDeletion(): bool
     {
@@ -213,6 +215,7 @@ class MediaFile
      * @param string[] $attributes Additional HTML attributes
      *
      * @return string
+     * @throws \Exception
      */
     public function displayImage($width, $height, $fit, $attributes = []): string
     {
@@ -353,6 +356,7 @@ class MediaFile
      * need the filename, such as the PDF reports.
      *
      * @return string
+     * @throws \Exception
      */
     public function getServerFilename()
     {
@@ -389,6 +393,7 @@ class MediaFile
      * @param string $fit    "crop" or "contain"
      *
      * @return string
+     * @throws \Exception
      */
     public function imageUrl($width, $height, $fit): string
     {

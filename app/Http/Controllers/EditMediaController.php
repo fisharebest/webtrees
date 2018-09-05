@@ -59,6 +59,7 @@ class EditMediaController extends AbstractEditController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws Exception
      */
     public function addMediaFile(Request $request, Tree $tree): Response
     {
@@ -89,6 +90,7 @@ class EditMediaController extends AbstractEditController
      * @param Tree    $tree
      *
      * @return RedirectResponse
+     * @throws Exception
      */
     public function addMediaFileAction(Request $request, Tree $tree): RedirectResponse
     {
@@ -136,6 +138,7 @@ class EditMediaController extends AbstractEditController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws Exception
      */
     public function editMediaFile(Request $request, Tree $tree): Response
     {
@@ -174,6 +177,7 @@ class EditMediaController extends AbstractEditController
      * @param Tree    $tree
      *
      * @return RedirectResponse
+     * @throws Exception
      */
     public function editMediaFileAction(Request $request, Tree $tree): RedirectResponse
     {
@@ -274,6 +278,7 @@ class EditMediaController extends AbstractEditController
      * @param Tree $tree
      *
      * @return Response
+     * @throws Exception
      */
     public function createMediaObject(Tree $tree): Response
     {
@@ -289,6 +294,7 @@ class EditMediaController extends AbstractEditController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws Exception
      */
     public function createMediaObjectFromFileAction(Request $request, Tree $tree): Response
     {
@@ -331,6 +337,7 @@ class EditMediaController extends AbstractEditController
      * @param Tree    $tree
      *
      * @return JsonResponse
+     * @throws Exception
      */
     public function createMediaObjectAction(Request $request, Tree $tree): JsonResponse
     {
@@ -394,6 +401,7 @@ class EditMediaController extends AbstractEditController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws Exception
      */
     public function linkMediaToIndividual(Request $request, Tree $tree): Response
     {
@@ -412,6 +420,7 @@ class EditMediaController extends AbstractEditController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws Exception
      */
     public function linkMediaToFamily(Request $request, Tree $tree): Response
     {
@@ -430,6 +439,7 @@ class EditMediaController extends AbstractEditController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws Exception
      */
     public function linkMediaToSource(Request $request, Tree $tree): Response
     {
@@ -448,6 +458,7 @@ class EditMediaController extends AbstractEditController
      * @param Tree    $tree
      *
      * @return RedirectResponse
+     * @throws Exception
      */
     public function linkMediaToRecordAction(Request $request, Tree $tree): RedirectResponse
     {
@@ -527,6 +538,7 @@ class EditMediaController extends AbstractEditController
      * @param Tree    $tree
      *
      * @return string The value to be stored in the 'FILE' field of the media object.
+     * @throws Exception
      */
     private function uploadFile(Request $request, Tree $tree): string
     {
@@ -612,6 +624,7 @@ class EditMediaController extends AbstractEditController
      * @param Tree $tree
      *
      * @return array
+     * @throws Exception
      */
     private function unusedFiles(Tree $tree): array
     {

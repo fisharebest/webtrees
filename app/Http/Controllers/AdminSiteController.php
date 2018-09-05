@@ -57,6 +57,7 @@ class AdminSiteController extends AbstractBaseController
      * @param Request $request
      *
      * @return RedirectResponse
+     * @throws \Exception
      */
     public function analyticsSave(Request $request): RedirectResponse
     {
@@ -78,6 +79,7 @@ class AdminSiteController extends AbstractBaseController
      * Show old user files in the data folder.
      *
      * @return Response
+     * @throws \Exception
      */
     public function cleanData(): Response
     {
@@ -153,6 +155,7 @@ class AdminSiteController extends AbstractBaseController
      * @param Request $request
      *
      * @return Response
+     * @throws \Exception
      */
     public function languagesForm(Request $request): Response
     {
@@ -173,6 +176,7 @@ class AdminSiteController extends AbstractBaseController
      * @param Request $request
      *
      * @return RedirectResponse
+     * @throws \Exception
      */
     public function languagesSave(Request $request): RedirectResponse
     {
@@ -188,6 +192,7 @@ class AdminSiteController extends AbstractBaseController
      * @param Request $request
      *
      * @return Response
+     * @throws \Exception
      */
     public function logs(Request $request): Response
     {
@@ -236,6 +241,7 @@ class AdminSiteController extends AbstractBaseController
      * @param Request $request
      *
      * @return JsonResponse
+     * @throws \Exception
      */
     public function logsData(Request $request): JsonResponse
     {
@@ -354,6 +360,7 @@ class AdminSiteController extends AbstractBaseController
      * @param Request $request
      *
      * @return Response
+     * @throws \Exception
      */
     public function logsDelete(Request $request): Response
     {
@@ -416,6 +423,7 @@ class AdminSiteController extends AbstractBaseController
      * @param Request $request
      *
      * @return Response
+     * @throws \Exception
      */
     public function logsExport(Request $request): Response
     {
@@ -511,6 +519,7 @@ class AdminSiteController extends AbstractBaseController
      * @param Request $request
      *
      * @return RedirectResponse
+     * @throws \Exception
      */
     public function mailSave(Request $request): RedirectResponse
     {
@@ -553,6 +562,7 @@ class AdminSiteController extends AbstractBaseController
      * @param Request $request
      *
      * @return RedirectResponse
+     * @throws \Exception
      */
     public function preferencesSave(Request $request): RedirectResponse
     {
@@ -600,6 +610,7 @@ class AdminSiteController extends AbstractBaseController
      * @param Request $request
      *
      * @return RedirectResponse
+     * @throws \Exception
      */
     public function registrationSave(Request $request): RedirectResponse
     {
@@ -618,6 +629,7 @@ class AdminSiteController extends AbstractBaseController
      * Show the server information page.
      *
      * @return Response
+     * @throws \Exception
      */
     public function serverInformation(): Response
     {

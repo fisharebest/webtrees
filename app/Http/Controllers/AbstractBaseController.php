@@ -54,6 +54,7 @@ abstract class AbstractBaseController
      * @return void
      * @throws FamilyNotFoundException
      * @throws FamilyAccessDeniedException
+     * @throws \Exception
      */
     protected function checkFamilyAccess(Family $family = null, $edit = false)
     {
@@ -73,6 +74,7 @@ abstract class AbstractBaseController
      * @return void
      * @throws IndividualNotFoundException
      * @throws IndividualAccessDeniedException
+     * @throws \Exception
      */
     protected function checkIndividualAccess(Individual $individual = null, $edit = false)
     {
@@ -92,6 +94,7 @@ abstract class AbstractBaseController
      * @return void
      * @throws MediaNotFoundException
      * @throws MediaNotFoundException
+     * @throws \Exception
      */
     protected function checkMediaAccess(Media $media = null, $edit = false)
     {
@@ -111,6 +114,7 @@ abstract class AbstractBaseController
      * @return void
      * @throws NoteNotFoundException
      * @throws NoteAccessDeniedException
+     * @throws \Exception
      */
     protected function checkNoteAccess(Note $note = null, $edit = false)
     {
@@ -130,6 +134,7 @@ abstract class AbstractBaseController
      * @return void
      * @throws RecordNotFoundException
      * @throws RecordAccessDeniedException
+     * @throws \Exception
      */
     protected function checkRecordAccess(GedcomRecord $record = null, $edit = false)
     {
@@ -149,6 +154,7 @@ abstract class AbstractBaseController
      * @return void
      * @throws RepositoryNotFoundException
      * @throws RepositoryAccessDeniedException
+     * @throws \Exception
      */
     protected function checkRepositoryAccess(Repository $repository = null, $edit = false)
     {
@@ -168,6 +174,7 @@ abstract class AbstractBaseController
      * @return void
      * @throws SourceNotFoundException
      * @throws SourceAccessDeniedException
+     * @throws \Exception
      */
     protected function checkSourceAccess(Source $source = null, $edit = false)
     {

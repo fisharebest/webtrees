@@ -61,6 +61,7 @@ class CensusAssistantModule extends AbstractModule
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function getCensusIndividualAction(Request $request, Tree $tree): Response
     {
@@ -93,6 +94,7 @@ class CensusAssistantModule extends AbstractModule
      * @param bool       $keep_chan
      *
      * @return string
+     * @throws \Exception
      */
     public function updateCensusAssistant(Request $request, Individual $individual, $fact_id, $newged, $keep_chan): string
     {

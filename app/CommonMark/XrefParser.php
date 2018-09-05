@@ -53,6 +53,7 @@ class XrefParser extends AbstractInlineParser
      * @param InlineParserContext $context
      *
      * @return bool
+     * @throws \Exception
      */
     public function parse(InlineParserContext $context): bool
     {

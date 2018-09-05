@@ -49,6 +49,7 @@ class EditNoteController extends AbstractEditController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function editNoteObject(Request $request, Tree $tree): Response
     {
@@ -72,6 +73,7 @@ class EditNoteController extends AbstractEditController
      * @param Tree    $tree
      *
      * @return RedirectResponse
+     * @throws \Exception
      */
     public function updateNoteObject(Request $request, Tree $tree): RedirectResponse
     {
@@ -110,6 +112,7 @@ class EditNoteController extends AbstractEditController
      * @param Tree    $tree
      *
      * @return JsonResponse
+     * @throws \Exception
      */
     public function createNoteObjectAction(Request $request, Tree $tree): JsonResponse
     {

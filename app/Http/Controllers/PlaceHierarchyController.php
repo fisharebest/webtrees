@@ -45,6 +45,7 @@ class PlaceHierarchyController extends AbstractBaseController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function show(Request $request, Tree $tree): Response
     {
@@ -226,6 +227,7 @@ class PlaceHierarchyController extends AbstractBaseController
      * @param string $reference
      *
      * @return array
+     * @throws \Exception
      */
     protected function mapData(Tree $tree, $reference): array
     {

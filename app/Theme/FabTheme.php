@@ -34,6 +34,7 @@ class FabTheme extends AbstractTheme implements ThemeInterface
      * Add markup to the secondary menu.
      *
      * @return string
+     * @throws \Exception
      */
     public function formatSecondaryMenu(): string
     {

@@ -38,6 +38,7 @@ class GedcomFileController extends AbstractBaseController
      * @param Tree $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function import(Tree $tree): Response
     {

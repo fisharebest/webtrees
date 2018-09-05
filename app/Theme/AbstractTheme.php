@@ -150,6 +150,7 @@ abstract class AbstractTheme
      * Create scripts for analytics and tracking.
      *
      * @return string
+     * @throws \Exception
      */
     public function analytics()
     {
@@ -209,6 +210,7 @@ abstract class AbstractTheme
      * @param string $analytics_id
      *
      * @return string
+     * @throws \Exception
      */
     public function analyticsGoogleTracker($analytics_id)
     {
@@ -303,6 +305,7 @@ abstract class AbstractTheme
      * @param User $user
      *
      * @return string
+     * @throws \Exception
      */
     public function contactLink(User $user): string
     {
@@ -330,6 +333,7 @@ abstract class AbstractTheme
      * @param User $user
      *
      * @return string
+     * @throws \Exception
      */
     public function contactLinkEverything(User $user): string
     {
@@ -342,6 +346,7 @@ abstract class AbstractTheme
      * @param User $user
      *
      * @return string
+     * @throws \Exception
      */
     public function contactLinkGenealogy(User $user): string
     {
@@ -354,6 +359,7 @@ abstract class AbstractTheme
      * @param User $user
      *
      * @return string
+     * @throws \Exception
      */
     public function contactLinkTechnical(User $user): string
     {
@@ -364,6 +370,7 @@ abstract class AbstractTheme
      * Create contact links for the page footer.
      *
      * @return string
+     * @throws \Exception
      */
     public function contactLinks()
     {
@@ -387,6 +394,7 @@ abstract class AbstractTheme
      * Create a cookie warning.
      *
      * @return string
+     * @throws \Exception
      */
     public function cookieWarning()
     {
@@ -468,6 +476,7 @@ abstract class AbstractTheme
      * Add markup to the contact links.
      *
      * @return string
+     * @throws \Exception
      */
     public function formatContactLinks()
     {
@@ -482,6 +491,7 @@ abstract class AbstractTheme
      * Create a pending changes link for the page footer.
      *
      * @return string
+     * @throws \Exception
      */
     public function formatPendingChangesLink()
     {
@@ -548,6 +558,7 @@ abstract class AbstractTheme
      * Add markup to the secondary menu.
      *
      * @return string
+     * @throws \Exception
      */
     public function formatSecondaryMenu(): string
     {
@@ -575,6 +586,7 @@ abstract class AbstractTheme
      * Create the contents of the <header> tag.
      *
      * @return string
+     * @throws \Exception
      */
     protected function headerContent(): string
     {
@@ -703,6 +715,7 @@ abstract class AbstractTheme
      * @param Individual $individual
      *
      * @return string
+     * @throws \Exception
      */
     public function individualBox(Individual $individual): string
     {
@@ -758,6 +771,7 @@ abstract class AbstractTheme
      * @param Individual $individual
      *
      * @return string
+     * @throws \Exception
      */
     public function individualBoxLarge(Individual $individual): string
     {
@@ -803,6 +817,7 @@ abstract class AbstractTheme
      * @param Individual $individual
      *
      * @return string
+     * @throws \Exception
      */
     public function individualBoxSmall(Individual $individual): string
     {
@@ -843,6 +858,7 @@ abstract class AbstractTheme
      * @param Individual $individual
      *
      * @return string
+     * @throws \Exception
      */
     public function individualBoxFacts(Individual $individual): string
     {
@@ -897,6 +913,7 @@ abstract class AbstractTheme
      * @param Individual $individual
      *
      * @return string
+     * @throws \Exception
      */
     public function individualBoxLdsSummary(Individual $individual)
     {
@@ -924,6 +941,7 @@ abstract class AbstractTheme
      * @param Individual $individual
      *
      * @return Menu[]
+     * @throws \Exception
      */
     public function individualBoxMenu(Individual $individual): array
     {
@@ -941,6 +959,7 @@ abstract class AbstractTheme
      * @param Individual $individual
      *
      * @return Menu[]
+     * @throws \Exception
      */
     public function individualBoxMenuCharts(Individual $individual): array
     {
@@ -965,6 +984,7 @@ abstract class AbstractTheme
      * @param Individual $individual
      *
      * @return Menu[]
+     * @throws \Exception
      */
     public function individualBoxMenuFamilyLinks(Individual $individual): array
     {
@@ -1053,6 +1073,7 @@ abstract class AbstractTheme
      * Generate a menu item to change the blocks on the current (index.php) page.
      *
      * @return Menu|null
+     * @throws \Exception
      */
     public function menuChangeBlocks()
     {
@@ -1071,6 +1092,7 @@ abstract class AbstractTheme
      * @param Individual $individual
      *
      * @return Menu|null
+     * @throws \Exception
      */
     public function menuChart(Individual $individual)
     {
@@ -1262,6 +1284,7 @@ abstract class AbstractTheme
      * @return Menu|null
      *
      * @deprecated
+     * @throws \Exception
      */
     public function menuChartRelationship(Individual $individual)
     {
@@ -1304,6 +1327,7 @@ abstract class AbstractTheme
      * Generate a menu item for the control panel.
      *
      * @return Menu|null
+     * @throws \Exception
      */
     public function menuControlPanel()
     {
@@ -1320,6 +1344,7 @@ abstract class AbstractTheme
      * Favorites menu.
      *
      * @return Menu|null
+     * @throws \Exception
      */
     public function menuFavorites()
     {
@@ -1390,6 +1415,7 @@ abstract class AbstractTheme
      * A menu for the home (family tree) pages.
      *
      * @return Menu
+     * @throws \Exception
      */
     public function menuHomePage()
     {
@@ -1414,6 +1440,7 @@ abstract class AbstractTheme
      * A menu to show a list of available languages.
      *
      * @return Menu|null
+     * @throws \Exception
      */
     public function menuLanguages()
     {
@@ -1441,6 +1468,7 @@ abstract class AbstractTheme
      * @param string $surname The significant surname on the page
      *
      * @return Menu
+     * @throws \Exception
      */
     public function menuLists($surname): Menu
     {
@@ -1616,6 +1644,7 @@ abstract class AbstractTheme
      * Get the additional menus created by each of the modules
      *
      * @return Menu[]
+     * @throws \Exception
      */
     public function menuModules(): array
     {
@@ -1645,6 +1674,7 @@ abstract class AbstractTheme
      * A link to the user's individual record (individual.php).
      *
      * @return Menu|null
+     * @throws \Exception
      */
     public function menuMyIndividualRecord()
     {
@@ -1671,6 +1701,7 @@ abstract class AbstractTheme
      * A menu for the user's personal pages.
      *
      * @return Menu|null
+     * @throws \Exception
      */
     public function menuMyPages()
     {
@@ -1692,6 +1723,7 @@ abstract class AbstractTheme
      * A link to the user's individual record.
      *
      * @return Menu|null
+     * @throws \Exception
      */
     public function menuMyPedigree()
     {
@@ -1715,6 +1747,7 @@ abstract class AbstractTheme
      * Create a pending changes menu.
      *
      * @return Menu|null
+     * @throws \Exception
      */
     public function menuPendingChanges()
     {
@@ -1734,6 +1767,7 @@ abstract class AbstractTheme
      * A menu with a list of reports.
      *
      * @return Menu|null
+     * @throws \Exception
      */
     public function menuReports()
     {
@@ -1753,6 +1787,7 @@ abstract class AbstractTheme
      * Create the search menu.
      *
      * @return Menu
+     * @throws \Exception
      */
     public function menuSearch(): Menu
     {
@@ -1799,6 +1834,7 @@ abstract class AbstractTheme
      * Create the advanced search sub-menu.
      *
      * @return Menu
+     * @throws \Exception
      */
     public function menuSearchAndReplace()
     {
@@ -1816,6 +1852,7 @@ abstract class AbstractTheme
      * Themes menu.
      *
      * @return Menu|null
+     * @throws \Exception
      */
     public function menuThemes()
     {
@@ -1855,6 +1892,7 @@ abstract class AbstractTheme
      * Make the CSRF token available to Javascript.
      *
      * @return string
+     * @throws \Exception
      */
     protected function metaCsrf(): string
     {
@@ -1972,6 +2010,7 @@ abstract class AbstractTheme
      * Are there any pending changes for us to approve?
      *
      * @return bool
+     * @throws \Exception
      */
     public function pendingChangesExist(): bool
     {
@@ -2004,6 +2043,7 @@ abstract class AbstractTheme
      * @param Individual $individual
      *
      * @return Menu[]
+     * @throws \Exception
      */
     public function primaryMenu(Individual $individual): array
     {
@@ -2049,6 +2089,7 @@ abstract class AbstractTheme
      * Generate a list of items for the user menu.
      *
      * @return Menu[]
+     * @throws \Exception
      */
     public function secondaryMenu(): array
     {

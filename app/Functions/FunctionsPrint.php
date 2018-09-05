@@ -64,6 +64,7 @@ class FunctionsPrint
      * @param string $nrec   the note record to print
      *
      * @return string
+     * @throws \Exception
      */
     private static function printNoteRecord(Tree $tree, $text, $nlevel, $nrec)
     {
@@ -113,6 +114,7 @@ class FunctionsPrint
      * @param int    $level   The level of the factrecord
      *
      * @return string HTML
+     * @throws \Exception
      */
     public static function printFactNotes(Tree $tree, $factrec, $level): string
     {
@@ -175,6 +177,7 @@ class FunctionsPrint
      * @param Date       $birth_date
      *
      * @return string HTML
+     * @throws \Exception
      */
     public static function formatParentsAges(Individual $person, Date $birth_date): string
     {
@@ -228,6 +231,7 @@ class FunctionsPrint
      * @param bool         $time   option to print TIME value
      *
      * @return string
+     * @throws \Exception
      */
     public static function formatFactDate(Fact $event, GedcomRecord $record, $anchor, $time): string
     {
@@ -366,6 +370,7 @@ class FunctionsPrint
      * @param bool $lds         to print LDS TEMPle and STATus
      *
      * @return string HTML
+     * @throws \Exception
      */
     public static function formatFactPlace(Fact $event, $anchor = false, $sub_records = false, $lds = false): string
     {
@@ -486,6 +491,8 @@ class FunctionsPrint
      * @param GedcomRecord $record    the person, family, source etc the fact will be added to
      * @param array        $usedfacts an array of facts already used in this record
      * @param string       $type      the type of record INDI, FAM, SOUR etc
+     *
+     * @throws \Exception
      */
     public static function printAddNewFact(GedcomRecord $record, $usedfacts, $type)
     {
@@ -606,6 +613,7 @@ class FunctionsPrint
      * @param Individual $individual
      *
      * @return string
+     * @throws \Exception
      */
     public static function getLdsSummary(Individual $individual): string
     {

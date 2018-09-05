@@ -64,6 +64,7 @@ class CalendarController extends AbstractBaseController
      * @param Request $request
      *
      * @return Response
+     * @throws \Exception
      */
     public function page(Request $request): Response
     {
@@ -179,6 +180,7 @@ class CalendarController extends AbstractBaseController
      * @param CalendarService $calendar_service
      *
      * @return Response
+     * @throws \Exception
      */
     public function calendar(Request $request, Tree $tree, CalendarService $calendar_service): Response
     {
@@ -471,6 +473,7 @@ class CalendarController extends AbstractBaseController
      * @param string $filtersx
      *
      * @return Fact[]
+     * @throws \Exception
      */
     private function applyFilter(array $facts, string $filterof, string $filtersx): array
     {
@@ -518,6 +521,7 @@ class CalendarController extends AbstractBaseController
      * @param bool $show_places
      *
      * @return string
+     * @throws \Exception
      */
     private function calendarFactText(Fact $fact, bool $show_places): string
     {
@@ -541,6 +545,7 @@ class CalendarController extends AbstractBaseController
      * @param Tree   $tree
      *
      * @return string
+     * @throws \Exception
      */
     private function calendarListText(array $list, string $tag1, string $tag2, Tree $tree): string
     {

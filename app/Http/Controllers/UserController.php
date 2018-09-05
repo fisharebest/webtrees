@@ -38,6 +38,7 @@ class UserController extends AbstractBaseController
      * @param Request $request
      *
      * @return Response
+     * @throws \Exception
      */
     public function delete(Request $request): Response
     {
@@ -59,6 +60,7 @@ class UserController extends AbstractBaseController
      * @param Request $request
      *
      * @return Response
+     * @throws \Exception
      */
     public function language(Request $request): Response
     {
@@ -77,6 +79,7 @@ class UserController extends AbstractBaseController
      * @param Request $request
      *
      * @return Response
+     * @throws \Exception
      */
     public function masquerade(Request $request): Response
     {
@@ -99,6 +102,7 @@ class UserController extends AbstractBaseController
      * @param Request $request
      *
      * @return Response
+     * @throws \Exception
      */
     public function theme(Request $request): Response
     {
