@@ -613,6 +613,8 @@ class EditIndividualController extends AbstractEditController
     /**
      * @param Request $request
      *
+     * @param Tree    $tree
+     *
      * @return RedirectResponse
      */
     public function editNameAction(Request $request, Tree $tree): RedirectResponse

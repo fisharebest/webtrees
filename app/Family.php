@@ -132,7 +132,7 @@ class Family extends GedcomRecord
     /**
      * Get the male (or first female) partner of the family
      *
-     * @param $access_level int|null
+     * @param int|null $access_level
      *
      * @return Individual|null
      */
@@ -150,7 +150,7 @@ class Family extends GedcomRecord
     /**
      * Get the female (or second male) partner of the family
      *
-     * @param $access_level int|null
+     * @param int|null $access_level
      *
      * @return Individual|null
      */

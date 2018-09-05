@@ -602,6 +602,9 @@ class AdminLocationController extends AbstractBaseController
     /**
      * @param string $filename
      *
+     * @param array  $rows
+     * @param int    $maxlevel
+     *
      * @return Response
      */
     private function exportGeoJSON(string $filename, array $rows, int $maxlevel): Response
