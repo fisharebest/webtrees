@@ -405,7 +405,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
 
         // Filter foreign languages.
         $faqs = array_filter($faqs, function (stdClass $faq): bool {
-            return $faq->languages === '' || in_array(WT_LOCALE, explode(',', $faq->languages));
+            return $faq->languages === '' || \in_array(WT_LOCALE, explode(',', $faq->languages));
         });
 
         return $this->viewResponse('modules/faq/show', [

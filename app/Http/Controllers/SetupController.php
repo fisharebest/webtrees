@@ -45,7 +45,7 @@ class SetupController extends AbstractBaseController
      */
     public function setup(Request $request): Response
     {
-        define('WT_LOCALE', I18N::init('en-US'));
+        \define('WT_LOCALE', I18N::init('en-US'));
 
         $step     = (int)$request->get('step', '1');
         $errors   = $this->serverErrors();
@@ -202,7 +202,7 @@ class SetupController extends AbstractBaseController
         }
 
         try {
-            define('WT_TBLPREFIX', $tblpfx);
+            \define('WT_TBLPREFIX', $tblpfx);
             Database::createInstance([
                 'dbhost' => $dbhost,
                 'dbport' => $dbport,
@@ -423,14 +423,14 @@ class SetupController extends AbstractBaseController
         }
 
         foreach ($extensions as $extension) {
-            if (!extension_loaded($extension)) {
+            if (!\extension_loaded($extension)) {
                 $errors[] = I18N::translate('PHP extension “%s” is disabled. You cannot install webtrees until this is enabled. Please ask your server’s administrator to enable it.', $extension);
             }
         }
 
         $disable_functions = preg_split('/ *, */', ini_get('disable_functions'));
         foreach ($functions as $function) {
-            if (in_array($function, $disable_functions)) {
+            if (\in_array($function, $disable_functions)) {
                 /* I18N: %s is a PHP function/module/setting */
                 $errors[] = I18N::translate('%s is disabled on this server. You cannot install webtrees until it is enabled. Please ask your server’s administrator to enable it.', $function . '()');
             }
@@ -461,7 +461,7 @@ class SetupController extends AbstractBaseController
         $warnings   = [];
 
         foreach ($extensions as $extension => $features) {
-            if (!extension_loaded($extension)) {
+            if (!\extension_loaded($extension)) {
                 $warnings[] = I18N::translate('PHP extension “%1$s” is disabled. Without it, the following features will not work: %2$s. Please ask your server’s administrator to enable it.', $extension, $features);
             }
         }

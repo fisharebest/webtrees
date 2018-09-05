@@ -119,7 +119,7 @@ class FanChartController extends AbstractChartController
         $ancestors = $this->sosaStradonitzAncestors($individual, $generations);
 
         $gen  = $generations - 1;
-        $sosa = count($ancestors);
+        $sosa = \count($ancestors);
 
         // fan size
         $fanw = 640 * $fan_width / 100;
@@ -344,7 +344,7 @@ class FanChartController extends AbstractChartController
 
         $lines = explode("\n", $data);
         // more than 1 line : recursive calls
-        if (count($lines) > 1) {
+        if (\count($lines) > 1) {
             $text = '';
             foreach ($lines as $line) {
                 $text .= $this->splitAlignText($line, $maxlen) . "\n";
@@ -360,7 +360,7 @@ class FanChartController extends AbstractChartController
         // do not split hebrew line
         $found = false;
         foreach ($RTLOrd as $ord) {
-            if (strpos($data, chr($ord)) !== false) {
+            if (strpos($data, \chr($ord)) !== false) {
                 $found = true;
             }
         }
@@ -368,8 +368,8 @@ class FanChartController extends AbstractChartController
             $line = $data;
         } else {
             foreach ($split as $word) {
-                $len  = strlen($line);
-                $wlen = strlen($word);
+                $len  = \strlen($line);
+                $wlen = \strlen($word);
                 if (($len + $wlen) < $maxlen) {
                     if (!empty($line)) {
                         $line .= ' ';
@@ -387,8 +387,8 @@ class FanChartController extends AbstractChartController
         }
         // last line
         if (!empty($line)) {
-            $len = strlen($line);
-            if (in_array(ord($line{0}), $RTLOrd)) {
+            $len = \strlen($line);
+            if (\in_array(\ord($line{0}), $RTLOrd)) {
                 $len /= 2;
             }
             $p    = max(0, (int)(($maxlen - $len) / 2));

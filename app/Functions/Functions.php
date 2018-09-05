@@ -173,8 +173,8 @@ class Functions
         usort($nondated, '\Fisharebest\Webtrees\Fact::compareType');
 
         //-- merge the arrays back together comparing by Facts
-        $dc = count($dated);
-        $nc = count($nondated);
+        $dc = \count($dated);
+        $nc = \count($nondated);
         $i  = 0;
         $j  = 0;
         $k  = 0;
@@ -298,7 +298,7 @@ class Functions
 
             foreach ($paths as $i => $path) {
                 // Try each new relation from the end of the path
-                $indi = $path['path'][count($path['path']) - 1];
+                $indi = $path['path'][\count($path['path']) - 1];
 
                 // Parents and siblings
                 foreach ($indi->getChildFamilies(Auth::PRIV_HIDE) as $family) {
@@ -381,12 +381,12 @@ class Functions
      */
     public static function getRelationshipName($nodes): string
     {
-        if (!is_array($nodes)) {
+        if (!\is_array($nodes)) {
             return '';
         }
         $person1 = $nodes['path'][0];
-        $person2 = $nodes['path'][count($nodes['path']) - 1];
-        $path    = array_slice($nodes['relations'], 1);
+        $person2 = $nodes['path'][\count($nodes['path']) - 1];
+        $path    = \array_slice($nodes['relations'], 1);
         // Look for paths with *specific* names first.
         // Note that every combination must be listed separately, as the same English
         // name can be used for many different relationships. e.g.
@@ -1543,7 +1543,7 @@ class Functions
         // Look for generic/pattern relationships.
         if (preg_match('/^((?:mot|fat|par)+)(bro|sis|sib)$/', $path, $match)) {
             // siblings of direct ancestors
-            $up       = strlen($match[1]) / 3;
+            $up       = \strlen($match[1]) / 3;
             $bef_last = substr($path, -6, 3);
             switch ($up) {
                 case 3:
@@ -1684,7 +1684,7 @@ class Functions
         }
         if (preg_match('/^(?:bro|sis|sib)((?:son|dau|chi)+)$/', $path, $match)) {
             // direct descendants of siblings
-            $down  = strlen($match[1]) / 3 + 1; // Add one, as we count generations from the common ancestor
+            $down  = \strlen($match[1]) / 3 + 1; // Add one, as we count generations from the common ancestor
             $first = substr($path, 0, 3);
             switch ($down) {
                 case 4:
@@ -1855,7 +1855,7 @@ class Functions
         }
         if (preg_match('/^((?:mot|fat|par)*)$/', $path, $match)) {
             // direct ancestors
-            $up = strlen($match[1]) / 3;
+            $up = \strlen($match[1]) / 3;
             switch ($up) {
                 case 4:
                     switch ($sex2) {
@@ -1973,7 +1973,7 @@ class Functions
         }
         if (preg_match('/^((?:son|dau|chi)*)$/', $path, $match)) {
             // direct descendants
-            $up = strlen($match[1]) / 3;
+            $up = \strlen($match[1]) / 3;
             switch ($up) {
                 case 4:
                     switch ($sex2) {
@@ -2078,8 +2078,8 @@ class Functions
             // cousins in English
             $ascent  = $match[1];
             $descent = $match[2];
-            $up      = strlen($ascent) / 3;
-            $down    = strlen($descent) / 3;
+            $up      = \strlen($ascent) / 3;
+            $down    = \strlen($descent) / 3;
             $cousin  = min($up, $down); // Moved out of switch (en/default case) so that
             $removed = abs($down - $up); // Spanish (and other languages) can use it, too.
 
@@ -2171,7 +2171,7 @@ class Functions
                 self::getRelationshipNameFromPath($path1, null, null),
                 self::getRelationshipNameFromPath($path2, null, null)
             );
-            if (!$relationship || strlen($tmp) < strlen($relationship)) {
+            if (!$relationship || \strlen($tmp) < \strlen($relationship)) {
                 $relationship = $tmp;
             }
             $path1 .= substr($path2, 0, 3);
@@ -2199,7 +2199,7 @@ class Functions
         } else {
             $get = $_GET;
         }
-        if (is_array($overwrite)) {
+        if (\is_array($overwrite)) {
             foreach ($overwrite as $key => $value) {
                 $get[$key] = $value;
             }
@@ -2207,7 +2207,7 @@ class Functions
 
         $query_string = '';
         foreach ($get as $key => $value) {
-            if (!is_array($value)) {
+            if (!\is_array($value)) {
                 $query_string .= $separator . rawurlencode($key) . '=' . rawurlencode($value);
             } else {
                 foreach ($value as $k => $v) {
@@ -2215,7 +2215,7 @@ class Functions
                 }
             }
         }
-        $query_string = substr($query_string, strlen($separator)); // Remove leading “&amp;”
+        $query_string = substr($query_string, \strlen($separator)); // Remove leading “&amp;”
 
         return 'index.php?' . $query_string;
     }

@@ -54,7 +54,7 @@ class AutocompleteController extends AbstractBaseController
         // Iterator finds media/foo/. but not media/foo ??
         foreach ($iterator as $iteration) {
             if ($iteration->getFileName() === '.') {
-                $path = dirname(substr($iteration->getPathName(), strlen($folder)));
+                $path = \dirname(substr($iteration->getPathName(), \strlen($folder)));
                 if ($query === '' || stripos($path, $query) !== false) {
                     $folders[] = ['value' => $path];
                 }
@@ -177,7 +177,7 @@ class AutocompleteController extends AbstractBaseController
             // try to use curl when file_get_contents not allowed
             if (ini_get('allow_url_fopen')) {
                 $json = file_get_contents($url);
-            } elseif (function_exists('curl_init')) {
+            } elseif (\function_exists('curl_init')) {
                 $ch = curl_init();
                 curl_setopt($ch, CURLOPT_URL, $url);
                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -188,7 +188,7 @@ class AutocompleteController extends AbstractBaseController
             }
 
             $places = json_decode($json, true);
-            if (isset($places['geonames']) && is_array($places['geonames'])) {
+            if (isset($places['geonames']) && \is_array($places['geonames'])) {
                 foreach ($places['geonames'] as $k => $place) {
                     $data[] = ['value' => $place['name'] . ', ' . $place['adminName2'] . ', ' . $place['adminName1'] . ', ' . $place['countryName']];
                 }

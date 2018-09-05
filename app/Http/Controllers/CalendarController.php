@@ -88,8 +88,8 @@ class CalendarController extends AbstractBaseController
 
         // advanced-year "year range"
         if (preg_match('/^(\d+)-(\d+)$/', $year, $match)) {
-            if (strlen($match[1]) > strlen($match[2])) {
-                $match[2] = substr($match[1], 0, strlen($match[1]) - strlen($match[2])) . $match[2];
+            if (\strlen($match[1]) > \strlen($match[2])) {
+                $match[2] = substr($match[1], 0, \strlen($match[1]) - \strlen($match[2])) . $match[2];
             }
             $ged_date = new Date("FROM {$cal} {$match[1]} TO {$cal} {$match[2]}");
             $view     = 'year';
@@ -207,8 +207,8 @@ class CalendarController extends AbstractBaseController
 
         // advanced-year "year range"
         if (preg_match('/^(\d+)-(\d+)$/', $year, $match)) {
-            if (strlen($match[1]) > strlen($match[2])) {
-                $match[2] = substr($match[1], 0, strlen($match[1]) - strlen($match[2])) . $match[2];
+            if (\strlen($match[1]) > \strlen($match[2])) {
+                $match[2] = substr($match[1], 0, \strlen($match[1]) - \strlen($match[2])) . $match[2];
             }
             $ged_date = new Date("FROM {$cal} {$match[1]} TO {$cal} {$match[2]}");
             $view     = 'year';
@@ -356,8 +356,8 @@ class CalendarController extends AbstractBaseController
 
                 echo '</td>';
                 echo '</tr><tr>';
-                echo '<td class="descriptionbox">', I18N::translate('Total individuals: %s', count($indis)), '</td>';
-                echo '<td class="descriptionbox">', I18N::translate('Total families: %s', count($fams)), '</td>';
+                echo '<td class="descriptionbox">', I18N::translate('Total individuals: %s', \count($indis)), '</td>';
+                echo '<td class="descriptionbox">', I18N::translate('Total families: %s', \count($fams)), '</td>';
                 echo '</tr></table>';
 
                 break;
@@ -389,7 +389,7 @@ class CalendarController extends AbstractBaseController
                 $start_d = 1 - ($cal_date->minJD - $week_start) % $days_in_week;
                 $end_d   = $days_in_month + ($days_in_week - ($cal_date->maxJD - $week_start + 1) % $days_in_week) % $days_in_week;
                 // Make sure that there is an empty box for any leap/missing days
-                if ($start_d === 1 && $end_d === $days_in_month && count($found_facts[0]) > 0) {
+                if ($start_d === 1 && $end_d === $days_in_month && \count($found_facts[0]) > 0) {
                     $end_d += $days_in_week;
                 }
                 for ($d = $start_d; $d <= $end_d; ++$d) {
@@ -398,7 +398,7 @@ class CalendarController extends AbstractBaseController
                     }
                     echo '<td class="optionbox wrap">';
                     if ($d < 1 || $d > $days_in_month) {
-                        if (count($cal_facts[0]) > 0) {
+                        if (\count($cal_facts[0]) > 0) {
                             echo '<span class="cal_day">', I18N::translate('Day not set'), '</span><br style="clear: both;">';
                             echo '<div class="details1" style="height: 180px; overflow: auto;">';
                             echo $this->calendarListText($cal_facts[0], '', '', $tree);
@@ -438,7 +438,7 @@ class CalendarController extends AbstractBaseController
                                 default:
                                     break 2;
                             }
-                            if (get_class($alt_date) !== get_class($cal_date) && $alt_date->inValidRange()) {
+                            if (\get_class($alt_date) !== \get_class($cal_date) && $alt_date->inValidRange()) {
                                 echo '<span class="rtl_cal_day">' . $alt_date->format('%j %M') . '</span>';
                                 // Just show the first conversion
                                 break;

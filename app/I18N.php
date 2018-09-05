@@ -407,7 +407,7 @@ class I18N
             $age[] = self::plural('%s day', '%s days', $days, self::number($days));
         }
         // If an age is just a number of years, only show the number
-        if (count($age) === 1 && $years >= 0) {
+        if (\count($age) === 1 && $years >= 0) {
             $age = $years;
         }
         if ($age) {
@@ -482,7 +482,7 @@ class I18N
         // Load the translation file(s)
         // Note that glob() returns false instead of an empty array when open_basedir_restriction
         // is in force and no files are found. See PHP bug #47358.
-        if (defined('GLOB_BRACE')) {
+        if (\defined('GLOB_BRACE')) {
             $translation_files = array_merge(
                 [WT_ROOT . 'language/' . self::$locale->languageTag() . '.mo'],
                 glob(WT_MODULES_DIR . '*/language/' . self::$locale->languageTag() . '.{csv,php,mo}', GLOB_BRACE) ?: [],
@@ -743,7 +743,7 @@ class I18N
      */
     public static function strtolower($string): string
     {
-        if (in_array(self::$locale->language()->code(), self::DOTLESS_I_LOCALES)) {
+        if (\in_array(self::$locale->language()->code(), self::DOTLESS_I_LOCALES)) {
             $string = strtr($string, self::DOTLESS_I_TOLOWER);
         }
 
@@ -759,7 +759,7 @@ class I18N
      */
     public static function strtoupper($string): string
     {
-        if (in_array(self::$locale->language()->code(), self::DOTLESS_I_LOCALES)) {
+        if (\in_array(self::$locale->language()->code(), self::DOTLESS_I_LOCALES)) {
             $string = strtr($string, self::DOTLESS_I_TOUPPER);
         }
 
@@ -782,10 +782,10 @@ class I18N
             '@P.N.',
         ], '', $string); // otherwise unknown names show up as latin
         $pos    = 0;
-        $strlen = strlen($string);
+        $strlen = \strlen($string);
         while ($pos < $strlen) {
             // get the Unicode Code Point for the character at position $pos
-            $byte1 = ord($string[$pos]);
+            $byte1 = \ord($string[$pos]);
             if ($byte1 < 0x80) {
                 $code_point = $byte1;
                 $chrlen     = 1;
@@ -793,13 +793,13 @@ class I18N
                 // Invalid continuation character
                 return 'Latn';
             } elseif ($byte1 < 0xE0) {
-                $code_point = (($byte1 & 0x1F) << 6) + (ord($string[$pos + 1]) & 0x3F);
+                $code_point = (($byte1 & 0x1F) << 6) + (\ord($string[$pos + 1]) & 0x3F);
                 $chrlen     = 2;
             } elseif ($byte1 < 0xF0) {
-                $code_point = (($byte1 & 0x0F) << 12) + ((ord($string[$pos + 1]) & 0x3F) << 6) + (ord($string[$pos + 2]) & 0x3F);
+                $code_point = (($byte1 & 0x0F) << 12) + ((\ord($string[$pos + 1]) & 0x3F) << 6) + (\ord($string[$pos + 2]) & 0x3F);
                 $chrlen     = 3;
             } elseif ($byte1 < 0xF8) {
-                $code_point = (($byte1 & 0x07) << 24) + ((ord($string[$pos + 1]) & 0x3F) << 12) + ((ord($string[$pos + 2]) & 0x3F) << 6) + (ord($string[$pos + 3]) & 0x3F);
+                $code_point = (($byte1 & 0x07) << 24) + ((\ord($string[$pos + 1]) & 0x3F) << 12) + ((\ord($string[$pos + 2]) & 0x3F) << 6) + (\ord($string[$pos + 3]) & 0x3F);
                 $chrlen     = 3;
             } else {
                 // Invalid UTF

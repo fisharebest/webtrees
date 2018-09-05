@@ -110,13 +110,13 @@ class GedcomRecord
 
         foreach ($gedcom_facts as $gedcom_fact) {
             $fact = new Fact($gedcom_fact, $this, md5($gedcom_fact));
-            if ($this->pending !== null && !in_array($gedcom_fact, $pending_facts)) {
+            if ($this->pending !== null && !\in_array($gedcom_fact, $pending_facts)) {
                 $fact->setPendingDeletion();
             }
             $this->facts[] = $fact;
         }
         foreach ($pending_facts as $pending_fact) {
-            if (!in_array($pending_fact, $gedcom_facts)) {
+            if (!\in_array($pending_fact, $gedcom_facts)) {
                 $fact = new Fact($pending_fact, $this, md5($pending_fact));
                 $fact->setPendingAddition();
                 $this->facts[] = $fact;
@@ -685,7 +685,7 @@ class GedcomRecord
             $this->getSecondaryName = $this->getPrimaryName();
             // ....except when there are names with different character sets
             $all_names = $this->getAllNames();
-            if (count($all_names) > 1) {
+            if (\count($all_names) > 1) {
                 $primary_script = I18N::textScript($all_names[$this->getPrimaryName()]['sort']);
                 foreach ($all_names as $n => $name) {
                     if ($n != $this->getPrimaryName() && $name['type'] != '_MARNM' && I18N::textScript($name['sort']) != $primary_script) {

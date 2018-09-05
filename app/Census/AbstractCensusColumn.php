@@ -168,7 +168,7 @@ class AbstractCensusColumn
         $parts = explode(', ', $place);
 
         if (end($parts) === $this->place()) {
-            return implode(', ', array_slice($parts, 0, -1));
+            return implode(', ', \array_slice($parts, 0, -1));
         } else {
             return $place;
         }

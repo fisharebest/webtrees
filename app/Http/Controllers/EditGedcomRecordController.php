@@ -70,7 +70,7 @@ class EditGedcomRecordController extends AbstractEditController
                         break;
                 }
                 $clipboard = Session::get('clipboard');
-                if (!is_array($clipboard)) {
+                if (!\is_array($clipboard)) {
                     $clipboard = [];
                 }
                 $clipboard[$fact_id] = [
@@ -80,7 +80,7 @@ class EditGedcomRecordController extends AbstractEditController
                 ];
 
                 // The clipboard only holds 10 facts
-                $clipboard = array_slice($clipboard, -10);
+                $clipboard = \array_slice($clipboard, -10);
 
                 Session::put('clipboard', $clipboard);
                 FlashMessages::addMessage(I18N::translate('The record has been copied to the clipboard.'));
@@ -300,7 +300,7 @@ class EditGedcomRecordController extends AbstractEditController
 
         // Retain any private facts
         foreach ($record->getFacts(null, false, Auth::PRIV_HIDE) as $fact) {
-            if (!in_array($fact->getFactId(), $fact_ids) && !$fact->isPendingDeletion()) {
+            if (!\in_array($fact->getFactId(), $fact_ids) && !$fact->isPendingDeletion()) {
                 $gedcom .= "\n" . $fact->getGedcom();
             }
         }
@@ -453,7 +453,7 @@ class EditGedcomRecordController extends AbstractEditController
             $name_facts = array_unique(array_merge(['_MARNM'], $match[0]));
             foreach ($name_facts as $name_fact) {
                 // Ignore advanced facts that duplicate standard facts.
-                if (!in_array($name_fact, [
+                if (!\in_array($name_fact, [
                         'TYPE',
                         'NPFX',
                         'GIVN',

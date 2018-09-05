@@ -34,11 +34,11 @@ class ReportHtmlTextbox extends ReportBaseTextbox
         $lastelement      = [];
         $footnote_element = [];
         // Element counter
-        $cE = count($this->elements);
+        $cE = \count($this->elements);
         //-- collapse duplicate elements
         for ($i = 0; $i < $cE; $i++) {
             $element = $this->elements[$i];
-            if (is_object($element)) {
+            if (\is_object($element)) {
                 if ($element instanceof ReportBaseText) {
                     if (!empty($footnote_element)) {
                         ksort($footnote_element);
@@ -155,9 +155,9 @@ class ReportHtmlTextbox extends ReportBaseTextbox
         // 2 => number of LF
         $lw = [];
         // Element counter
-        $cE = count($this->elements);
+        $cE = \count($this->elements);
         for ($i = 0; $i < $cE; $i++) {
-            if (is_object($this->elements[$i])) {
+            if (\is_object($this->elements[$i])) {
                 $ew = $this->elements[$i]->setWrapWidth($cW - $w - 2, $cW);
                 if ($ew == $cW) {
                     $w = 0;
@@ -246,11 +246,11 @@ class ReportHtmlTextbox extends ReportBaseTextbox
 
         // Print the text elements
         foreach ($this->elements as $element) {
-            if (is_object($element)) {
+            if (\is_object($element)) {
                 $element->render($renderer, $cX, false);
-            } elseif (is_string($element) && $element == 'footnotetexts') {
+            } elseif (\is_string($element) && $element == 'footnotetexts') {
                 $renderer->footnotes();
-            } elseif (is_string($element) && $element == 'addpage') {
+            } elseif (\is_string($element) && $element == 'addpage') {
                 $renderer->addPage();
             }
         }

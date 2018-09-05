@@ -176,14 +176,14 @@ class FunctionsPrintFacts
             case '_BIRT_CHIL':
                 $children[$fact->getParent()->getXref()] = true;
                 /* I18N: Abbreviation for "number %s" */
-                $label                                   .= '<br>' . I18N::translate('#%s', count($children));
+                $label                                   .= '<br>' . I18N::translate('#%s', \count($children));
                 break;
             case '_BIRT_GCHI':
             case '_BIRT_GCH1':
             case '_BIRT_GCH2':
                 $grandchildren[$fact->getParent()->getXref()] = true;
                 /* I18N: Abbreviation for "number %s" */
-                $label                                        .= '<br>' . I18N::translate('#%s', count($grandchildren));
+                $label                                        .= '<br>' . I18N::translate('#%s', \count($grandchildren));
                 break;
         }
 
@@ -387,7 +387,7 @@ class FunctionsPrintFacts
                     foreach (preg_split('/ *, */', $match[2]) as $event) {
                         $events[] = GedcomTag::getLabel($event);
                     }
-                    if (count($events) == 1) {
+                    if (\count($events) == 1) {
                         echo GedcomTag::getLabelValue('EVEN', $event);
                     } else {
                         echo GedcomTag::getLabelValue('EVEN', implode(I18N::$list_separator, $events));
@@ -591,7 +591,7 @@ class FunctionsPrintFacts
                     $spos1 = strpos($factrec, "$level SOUR @" . $sid . '@', $spos2);
                     $spos2 = strpos($factrec, "\n$level", $spos1);
                     if (!$spos2) {
-                        $spos2 = strlen($factrec);
+                        $spos2 = \strlen($factrec);
                     }
                     $srec      = substr($factrec, $spos1, $spos2 - $spos1);
                     $lt        = preg_match_all("/$nlevel \w+/", $srec, $matches);
@@ -654,7 +654,7 @@ class FunctionsPrintFacts
             return;
         }
         $objectNum = 0;
-        while ($objectNum < count($omatch)) {
+        while ($objectNum < \count($omatch)) {
             $media_id = $omatch[$objectNum][1];
             $media    = Media::getInstance($media_id, $tree);
             if ($media) {
@@ -742,7 +742,7 @@ class FunctionsPrintFacts
             $spos1 = strpos($factrec, $match[$j][1], $spos2);
             $spos2 = strpos($factrec, "\n$level", $spos1);
             if (!$spos2) {
-                $spos2 = strlen($factrec);
+                $spos2 = \strlen($factrec);
             }
             $srec   = substr($factrec, $spos1, $spos2 - $spos1);
             $source = Source::getInstance($sid, $tree);
@@ -896,7 +896,7 @@ class FunctionsPrintFacts
             }
         }
 
-        if ($textSOUR['DATE'] || count($textSOUR['TEXT'])) {
+        if ($textSOUR['DATE'] || \count($textSOUR['TEXT'])) {
             if ($textSOUR['DATE']) {
                 $date = new Date($textSOUR['DATE']);
                 $html .= GedcomTag::getLabelValue('DATA:DATE', $date->display());
@@ -943,11 +943,11 @@ class FunctionsPrintFacts
 
         if ($srec) {
             $subrecords = explode("\n", $srec);
-            for ($i = 0; $i < count($subrecords); $i++) {
+            for ($i = 0; $i < \count($subrecords); $i++) {
                 $tag  = substr($subrecords[$i], 2, 4);
                 $text = substr($subrecords[$i], 7);
                 $i++;
-                for (; $i < count($subrecords); $i++) {
+                for (; $i < \count($subrecords); $i++) {
                     $nextTag = substr($subrecords[$i], 2, 4);
                     if ($nextTag != 'CONT') {
                         $i--;

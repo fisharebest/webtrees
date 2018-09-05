@@ -737,11 +737,11 @@ class AdminPhpGedViewController extends AbstractBaseController
             }
         }
 
-        define('PGV_PHPGEDVIEW', true);
-        define('PGV_PRIV_PUBLIC', Auth::PRIV_PRIVATE);
-        define('PGV_PRIV_USER', Auth::PRIV_USER);
-        define('PGV_PRIV_NONE', Auth::PRIV_NONE);
-        define('PGV_PRIV_HIDE', Auth::PRIV_HIDE);
+        \define('PGV_PHPGEDVIEW', true);
+        \define('PGV_PRIV_PUBLIC', Auth::PRIV_PRIVATE);
+        \define('PGV_PRIV_USER', Auth::PRIV_USER);
+        \define('PGV_PRIV_NONE', Auth::PRIV_NONE);
+        \define('PGV_PRIV_HIDE', Auth::PRIV_HIDE);
 
         global $PRIV_HIDE, $PRIV_PUBLIC, $PRIV_USER, $PRIV_NONE;
         $PRIV_PUBLIC = Auth::PRIV_PRIVATE;
@@ -1466,7 +1466,7 @@ class AdminPhpGedViewController extends AbstractBaseController
         );
 
         return array_map(function (string $path) {
-            return dirname($path) . DIRECTORY_SEPARATOR;
+            return \dirname($path) . DIRECTORY_SEPARATOR;
         }, $php_paths);
     }
 

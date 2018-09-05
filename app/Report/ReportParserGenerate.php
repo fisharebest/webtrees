@@ -633,7 +633,7 @@ class ReportParserGenerate extends ReportParserBase
         $tag       = str_replace('@fact', $this->fact, $tag);
         $tags      = explode(':', $tag);
         $newgedrec = '';
-        if (count($tags) < 2) {
+        if (\count($tags) < 2) {
             $tmp       = GedcomRecord::getInstance($attrs['id'], $this->tree);
             $newgedrec = $tmp ? $tmp->privatizeGedcom(Auth::accessLevel($this->tree)) : '';
         }
@@ -1023,7 +1023,7 @@ class ReportParserGenerate extends ReportParserBase
                     }
                 }
                 $tmp = explode(':', $tag);
-                if (in_array(end($tmp), [
+                if (\in_array(end($tmp), [
                     'NOTE',
                     'TEXT',
                 ])) {
@@ -1071,7 +1071,7 @@ class ReportParserGenerate extends ReportParserBase
                 }
                 $subrec = $this->gedrec;
                 $t      = $tag;
-                $count  = count($tags);
+                $count  = \count($tags);
                 $i      = 0;
                 while ($i < $count) {
                     $t = $tags[$i];
@@ -1122,7 +1122,7 @@ class ReportParserGenerate extends ReportParserBase
         }
 
         // Check if there is anything to repeat
-        if (count($this->repeats) > 0) {
+        if (\count($this->repeats) > 0) {
             // No need to load them if not used...
 
             $lineoffset = 0;
@@ -1282,7 +1282,7 @@ class ReportParserGenerate extends ReportParserBase
             $this->repeats = [];
             $nonfacts      = explode(',', $tag);
             foreach ($facts as $event) {
-                if (!in_array($event->getTag(), $nonfacts)) {
+                if (!\in_array($event->getTag(), $nonfacts)) {
                     $this->repeats[] = $event->getGedcom();
                 }
             }
@@ -1308,7 +1308,7 @@ class ReportParserGenerate extends ReportParserBase
         }
 
         // Check if there is anything to repeat
-        if (count($this->repeats) > 0) {
+        if (\count($this->repeats) > 0) {
             $line       = xml_get_current_line_number($this->parser) - 1;
             $lineoffset = 0;
             foreach ($this->repeats_stack as $rep) {
@@ -1334,7 +1334,7 @@ class ReportParserGenerate extends ReportParserBase
             // Save original values
             $this->parser_stack[] = $this->parser;
             $oldgedrec            = $this->gedrec;
-            $count                = count($this->repeats);
+            $count                = \count($this->repeats);
             $i                    = 0;
             while ($i < $count) {
                 $this->gedrec = $this->repeats[$i];
@@ -1583,7 +1583,7 @@ class ReportParserGenerate extends ReportParserBase
         if ($this->process_footnote) {
             $this->print_data = array_pop($this->print_data_stack);
             $temp             = trim($this->current_element->getValue());
-            if (strlen($temp) > 3) {
+            if (\strlen($temp) > 3) {
                 $this->wt_report->addElement($this->current_element);
             }
             $this->current_element = $this->footnote_element;
@@ -2018,7 +2018,7 @@ class ReportParserGenerate extends ReportParserBase
 
         $filters  = [];
         $filters2 = [];
-        if (isset($attrs['filter1']) && count($this->list) > 0) {
+        if (isset($attrs['filter1']) && \count($this->list) > 0) {
             foreach ($attrs as $key => $value) {
                 if (preg_match("/filter(\d)/", $key)) {
                     $condition = $value;
@@ -2053,7 +2053,7 @@ class ReportParserGenerate extends ReportParserBase
                             $searchstr = '';
                             $tags      = explode(':', $tag);
                             //-- only limit to a level number if we are specifically looking at a level
-                            if (count($tags) > 1) {
+                            if (\count($tags) > 1) {
                                 $level = 1;
                                 foreach ($tags as $t) {
                                     if (!empty($searchstr)) {
@@ -2207,7 +2207,7 @@ class ReportParserGenerate extends ReportParserBase
         }
 
         // Check if there is any list
-        if (count($this->list) > 0) {
+        if (\count($this->list) > 0) {
             $lineoffset = 0;
             foreach ($this->repeats_stack as $rep) {
                 $lineoffset += $rep[1];
@@ -2240,7 +2240,7 @@ class ReportParserGenerate extends ReportParserBase
             $this->parser_stack[] = $this->parser;
             $oldgedrec            = $this->gedrec;
 
-            $this->list_total   = count($this->list);
+            $this->list_total   = \count($this->list);
             $this->list_private = 0;
             foreach ($this->list as $record) {
                 if ($record->canShow()) {
@@ -2418,7 +2418,7 @@ class ReportParserGenerate extends ReportParserBase
                 $newarray = [];
                 reset($this->list);
                 $genCounter = 1;
-                while (count($newarray) < count($this->list)) {
+                while (\count($newarray) < \count($this->list)) {
                     foreach ($this->list as $key => $value) {
                         $this->generation = $value->generation;
                         if ($this->generation == $genCounter) {
@@ -2451,7 +2451,7 @@ class ReportParserGenerate extends ReportParserBase
         }
 
         // Check if there is any relatives
-        if (count($this->list) > 0) {
+        if (\count($this->list) > 0) {
             $lineoffset = 0;
             foreach ($this->repeats_stack as $rep) {
                 $lineoffset += $rep[1];
@@ -2484,7 +2484,7 @@ class ReportParserGenerate extends ReportParserBase
             $this->parser_stack[] = $this->parser;
             $oldgedrec            = $this->gedrec;
 
-            $this->list_total   = count($this->list);
+            $this->list_total   = \count($this->list);
             $this->list_private = 0;
             foreach ($this->list as $key => $value) {
                 if (isset($value->generation)) {
@@ -2724,7 +2724,7 @@ class ReportParserGenerate extends ReportParserBase
     {
         $genlist                = [$pid];
         $list[$pid]->generation = 1;
-        while (count($genlist) > 0) {
+        while (\count($genlist) > 0) {
             $id = array_shift($genlist);
             if (strpos($id, 'empty') === 0) {
                 continue; // id can be something like “empty7”

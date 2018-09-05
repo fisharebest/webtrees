@@ -139,7 +139,7 @@ class MessageController extends AbstractBaseController
 
         $to_user = User::findByUserName($to);
 
-        if (!in_array($to_user, $this->validContacts($tree))) {
+        if (!\in_array($to_user, $this->validContacts($tree))) {
             throw new AccessDeniedHttpException('Invalid contact user id');
         }
 
@@ -179,7 +179,7 @@ class MessageController extends AbstractBaseController
         $to_user = User::findByUserName($to);
         $ip      = $request->getClientIp();
 
-        if (!in_array($to_user, $this->validContacts($tree))) {
+        if (!\in_array($to_user, $this->validContacts($tree))) {
             throw new AccessDeniedHttpException('Invalid contact user id');
         }
 
@@ -429,7 +429,7 @@ class MessageController extends AbstractBaseController
      */
     private function sendInternalMessage(User $user): bool
     {
-        return in_array($user->getPreference('contactmethod'), [
+        return \in_array($user->getPreference('contactmethod'), [
             'messaging',
             'messaging2',
             'mailto',
@@ -446,7 +446,7 @@ class MessageController extends AbstractBaseController
      */
     private function sendEmail(User $user): bool
     {
-        return in_array($user->getPreference('contactmethod'), [
+        return \in_array($user->getPreference('contactmethod'), [
             'messaging2',
             'messaging3',
             'mailto',

@@ -382,7 +382,7 @@ class PedigreeChartController extends AbstractChartController
                 });
                 if (!empty($siblings)) {
                     $html .= '<span class="name1">';
-                    $html .= count($siblings) > 1 ? I18N::translate('Siblings') : I18N::translate('Sibling');
+                    $html .= \count($siblings) > 1 ? I18N::translate('Siblings') : I18N::translate('Sibling');
                     $html .= '</span>';
                     foreach ($siblings as $sibling) {
                         $html .= '<a class="name1" href="' . e(route('pedigree', [

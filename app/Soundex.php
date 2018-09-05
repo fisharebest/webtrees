@@ -71,11 +71,11 @@ class Soundex
             }
         }
         // Combine words, e.g. “New York” as “Newyork”
-        if (count($words) > 1) {
+        if (\count($words) > 1) {
             $soundex_array[] = soundex(strtr($text, ' ', ''));
         }
         // A varchar(255) column can only hold 51 4-character codes (plus 50 delimiters)
-        $soundex_array = array_slice(array_unique($soundex_array), 0, 51);
+        $soundex_array = \array_slice(array_unique($soundex_array), 0, 51);
 
         if ($soundex_array) {
             return implode(':', $soundex_array);
@@ -99,11 +99,11 @@ class Soundex
             $soundex_array = array_merge($soundex_array, self::daitchMokotoffWord($word));
         }
         // Combine words, e.g. “New York” as “Newyork”
-        if (count($words) > 1) {
+        if (\count($words) > 1) {
             $soundex_array = array_merge($soundex_array, self::daitchMokotoffWord(strtr($text, ' ', '')));
         }
         // A varchar(255) column can only hold 36 6-character codes (plus 35 delimiters)
-        $soundex_array = array_slice(array_unique($soundex_array), 0, 36);
+        $soundex_array = \array_slice(array_unique($soundex_array), 0, 36);
 
         if ($soundex_array) {
             return implode(':', $soundex_array);
@@ -3590,7 +3590,7 @@ class Soundex
         $name_script = I18N::textScript($name);
         $noVowels    = ($name_script == 'Hebr' || $name_script == 'Arab');
 
-        $lastPos         = strlen($name) - 1;
+        $lastPos         = \strlen($name) - 1;
         $currPos         = 0;
         $state           = 1; // 1: start of input string, 2: before vowel, 3: other
         $result          = []; // accumulate complete 6-digit D-M codes here
@@ -3599,7 +3599,7 @@ class Soundex
 
         // Loop through the input string.
         // Stop when the string is exhausted or when no more partial results remain
-        while (count($partialResult) !== 0 && $currPos <= $lastPos) {
+        while (\count($partialResult) !== 0 && $currPos <= $lastPos) {
             // Find the DM coding table entry for the chunk at the current position
             $thisEntry = substr($name, $currPos, self::MAXCHAR); // Get maximum length chunk
             while ($thisEntry != '') {
@@ -3616,7 +3616,7 @@ class Soundex
             $soundTableEntry = self::$dmsounds[$thisEntry];
             $workingResult   = $partialResult;
             $partialResult   = [];
-            $currPos         += strlen($thisEntry);
+            $currPos         += \strlen($thisEntry);
 
             // Not at beginning of input string
             if ($state != 1) {
@@ -3640,17 +3640,17 @@ class Soundex
                 }
             }
 
-            while ($state < count($soundTableEntry)) {
+            while ($state < \count($soundTableEntry)) {
                 // empty means 'ignore this sound in this state'
                 if ($soundTableEntry[$state] == '') {
                     foreach ($workingResult as $workingEntry) {
-                        $tempEntry                        = $workingEntry;
-                        $tempEntry[count($tempEntry) - 1] .= '!'; // Prevent false 'doubles'
-                        $partialResult[]                  = $tempEntry;
+                        $tempEntry                         = $workingEntry;
+                        $tempEntry[\count($tempEntry) - 1] .= '!'; // Prevent false 'doubles'
+                        $partialResult[]                   = $tempEntry;
                     }
                 } else {
                     foreach ($workingResult as $workingEntry) {
-                        if ($soundTableEntry[$state] !== $workingEntry[count($workingEntry) - 1]) {
+                        if ($soundTableEntry[$state] !== $workingEntry[\count($workingEntry) - 1]) {
                             // Incoming sound isn't a duplicate of the previous sound
                             $workingEntry[] = $soundTableEntry[$state];
                         } else {
@@ -3662,7 +3662,7 @@ class Soundex
                                 $workingEntry[] = $soundTableEntry[$state];
                             }
                         }
-                        if (count($workingEntry) < 7) {
+                        if (\count($workingEntry) < 7) {
                             $partialResult[] = $workingEntry;
                         } else {
                             // This is the 6th code in the sequence

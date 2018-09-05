@@ -274,7 +274,7 @@ class FunctionsCharts
         $pbheight = $bheight + 14;
 
         $children = $family->getChildren();
-        $numchil  = count($children);
+        $numchil  = \count($children);
 
         echo '<table border="0" cellpadding="0" cellspacing="0"><tr>';
         if ($sosa > 0) {
@@ -338,7 +338,7 @@ class FunctionsCharts
                 if ($sosa != 0) {
                     // loop for all families where current child is a spouse
                     $famids = $child->getSpouseFamilies();
-                    $maxfam = count($famids) - 1;
+                    $maxfam = \count($famids) - 1;
                     for ($f = 0; $f <= $maxfam; $f++) {
                         // multiple marriages
                         if ($f > 0) {
@@ -346,7 +346,7 @@ class FunctionsCharts
                             echo '<td style="text-align:end; vertical-align: top;">';
                             //find out how many cousins there are to establish vertical line on second families
                             $fchildren = $famids[$f]->getChildren();
-                            $kids      = count($fchildren);
+                            $kids      = \count($fchildren);
                             $Pheader   = ($bheight - 1) * $kids;
                             $PBadj     = 6; // default
 
@@ -461,7 +461,7 @@ class FunctionsCharts
     {
         $bheight   = Theme::theme()->parameter('chart-box-y');
         $fchildren = $family->getChildren();
-        $kids      = count($fchildren);
+        $kids      = \count($fchildren);
 
         echo '<td>';
         if ($kids) {
@@ -469,7 +469,7 @@ class FunctionsCharts
             if ($kids > 1) {
                 echo '<td rowspan="', $kids, '"><img width="3px" height="', (($bheight) * ($kids - 1)), 'px" src="', Theme::theme()->parameter('image-vline'), '"></td>';
             }
-            $ctkids = count($fchildren);
+            $ctkids = \count($fchildren);
             $i      = 1;
             foreach ($fchildren as $fchil) {
                 if ($i == 1) {

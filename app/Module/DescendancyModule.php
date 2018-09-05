@@ -55,7 +55,7 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
 
         $html = '';
 
-        if (strlen($search) >= 2) {
+        if (\strlen($search) >= 2) {
             $rows = Database::prepare(
                 "SELECT i_id AS xref" .
                 " FROM `##individuals`" .

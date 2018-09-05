@@ -120,7 +120,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
     {
         $xref        = $request->get('reference');
         $indi        = Individual::getInstance($xref, $tree);
-        $color_count = count(self::LINE_COLORS);
+        $color_count = \count(self::LINE_COLORS);
 
         $facts = $this->getPedigreeMapFacts($request, $tree);
 

@@ -174,7 +174,7 @@ class TimelineChartController extends AbstractChartController
             foreach ($facts as $event) {
                 // get the fact type
                 $fact = $event->getTag();
-                if (!in_array($fact, self::NON_FACTS)) {
+                if (!\in_array($fact, self::NON_FACTS)) {
                     // check for a date
                     $date = $event->getDate();
                     if ($date->isOK()) {
@@ -187,7 +187,7 @@ class TimelineChartController extends AbstractChartController
                         }
 
                         // do not add the same fact twice (prevents marriages from being added multiple times)
-                        if (!in_array($event, $indifacts, true)) {
+                        if (!\in_array($event, $indifacts, true)) {
                             $indifacts[] = $event;
                         }
                     }
@@ -196,7 +196,7 @@ class TimelineChartController extends AbstractChartController
         }
 
         if ($scale === 0) {
-            $scale = (int)(($topyear - $baseyear) / 20 * count($indifacts) / 4);
+            $scale = (int)(($topyear - $baseyear) / 20 * \count($indifacts) / 4);
             if ($scale < 6) {
                 $scale = 6;
             }

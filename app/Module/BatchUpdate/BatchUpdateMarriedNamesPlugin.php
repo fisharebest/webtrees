@@ -134,7 +134,7 @@ class BatchUpdateMarriedNamesPlugin extends BatchUpdateBasePlugin
             }
         }
         foreach ($husb_surnames as $husb_surname) {
-            if (!in_array($husb_surname, $wife_surnames)) {
+            if (!\in_array($husb_surname, $wife_surnames)) {
                 $missing_surnames[] = $husb_surname;
             }
         }

@@ -71,8 +71,8 @@ class File
         if (is_dir($path)) {
             return true;
         } else {
-            if (dirname($path) && !is_dir(dirname($path))) {
-                self::mkdir(dirname($path));
+            if (\dirname($path) && !is_dir(\dirname($path))) {
+                self::mkdir(\dirname($path));
             }
             try {
                 mkdir($path);

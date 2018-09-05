@@ -129,7 +129,7 @@ class ReportHtmlFootnote extends ReportBaseFootnote
                     // If the line has to be wraped
                     if ($lw > $wrapWidthRemaining) {
                         $words    = explode(' ', $line);
-                        $addspace = count($words);
+                        $addspace = \count($words);
                         $lw       = 0;
                         foreach ($words as $word) {
                             $addspace--;

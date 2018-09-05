@@ -188,15 +188,15 @@ class ReportEngineController extends AbstractBaseController
         $varnames = $request->get('varnames');
         $type     = $request->get('type');
 
-        if (!is_array($vars)) {
+        if (!\is_array($vars)) {
             $vars = [];
         }
 
-        if (!is_array($varnames)) {
+        if (!\is_array($varnames)) {
             $varnames = [];
         }
 
-        if (!is_array($type)) {
+        if (!\is_array($type)) {
             $type = [];
         }
 

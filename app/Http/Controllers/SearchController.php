@@ -187,7 +187,7 @@ class SearchController extends AbstractBaseController
         $search_tree_names = (array)$request->get('search_trees', []);
 
         $search_trees = array_filter($all_trees, function (Tree $tree) use ($search_tree_names): bool {
-            return in_array($tree->getName(), $search_tree_names);
+            return \in_array($tree->getName(), $search_tree_names);
         });
 
         if (empty($search_trees)) {
@@ -232,19 +232,19 @@ class SearchController extends AbstractBaseController
         }
 
         // If only 1 item is returned, automatically forward to that item
-        if (count($individuals) === 1 && empty($families) && empty($sources) && empty($notes)) {
+        if (\count($individuals) === 1 && empty($families) && empty($sources) && empty($notes)) {
             return new RedirectResponse($individuals[0]->url());
         }
 
-        if (empty($individuals) && count($families) === 1 && empty($sources) && empty($notes)) {
+        if (empty($individuals) && \count($families) === 1 && empty($sources) && empty($notes)) {
             return new RedirectResponse($families[0]->url());
         }
 
-        if (empty($individuals) && empty($families) && count($sources) === 1 && empty($notes)) {
+        if (empty($individuals) && empty($families) && \count($sources) === 1 && empty($notes)) {
             return new RedirectResponse($sources[0]->url());
         }
 
-        if (empty($individuals) && empty($families) && empty($sources) && count($notes) === 1) {
+        if (empty($individuals) && empty($families) && empty($sources) && \count($notes) === 1) {
             return new RedirectResponse($notes[0]->url());
         }
 
@@ -293,7 +293,7 @@ class SearchController extends AbstractBaseController
         $search_tree_names = (array)$request->get('search_trees', []);
 
         $search_trees = array_filter($all_trees, function (Tree $tree) use ($search_tree_names): bool {
-            return in_array($tree->getName(), $search_tree_names);
+            return \in_array($tree->getName(), $search_tree_names);
         });
 
         if (empty($search_trees)) {

@@ -70,7 +70,7 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface
      */
     public function getChartMenu(Individual $individual)
     {
-        if (function_exists('imagettftext')) {
+        if (\function_exists('imagettftext')) {
             return new Menu(
                 $this->getTitle(),
                 route('fan', [

@@ -92,7 +92,7 @@ class LifespansChartController extends AbstractChartController
         });
 
         $title    = I18N::translate('Lifespans');
-        $subtitle = $this->subtitle(count($xrefs), $start_date, $end_date, $placename);
+        $subtitle = $this->subtitle(\count($xrefs), $start_date, $end_date, $placename);
 
         return $this->viewResponse('lifespans-page', [
             'xrefs'    => $xrefs,
@@ -184,7 +184,7 @@ class LifespansChartController extends AbstractChartController
             $death_year = min($death_year, $current_year);
 
             // Add this individual to the next row in the chart...
-            $next_row = count($rows);
+            $next_row = \count($rows);
             // ...unless we can find an existing row where it fits.
             foreach ($rows as $row => $year) {
                 if ($year < $birth_year) {

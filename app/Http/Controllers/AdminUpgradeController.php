@@ -238,7 +238,7 @@ class AdminUpgradeController extends AbstractBaseController
 
                 /* I18N: %1$s is a number of KB, %2$s is a (fractional) number of seconds */
                 return $this->success(I18N::translate('%1$s KB were downloaded in %2$s seconds.', $kb, $seconds));
-            } elseif (!in_array('ssl', stream_get_transports())) {
+            } elseif (!\in_array('ssl', stream_get_transports())) {
                 // Guess why we might have failed...
                 return $this->failure(I18N::translate('This server does not support secure downloads using HTTPS.'));
             } else {
@@ -279,7 +279,7 @@ class AdminUpgradeController extends AbstractBaseController
         }
 
         $seconds = I18N::number(microtime(true) - $start_time, 2);
-        $count   = count($paths);
+        $count   = \count($paths);
 
         /* I18N: …from the .ZIP file, %2$s is a (fractional) number of seconds */
         return $this->success(I18N::plural('%1$s file was extracted in %2$s seconds.', '%1$s files were extracted in %2$s seconds.', $count, $count, $seconds));

@@ -598,7 +598,7 @@ class Tree
         $buffer = FunctionsExport::reformatRecord(FunctionsExport::gedcomHeader($this));
         while (($row = $stmt->fetch()) !== false) {
             $buffer .= FunctionsExport::reformatRecord($row->gedcom);
-            if (strlen($buffer) > 65535) {
+            if (\strlen($buffer) > 65535) {
                 fwrite($stream, $buffer);
                 $buffer = '';
             }
@@ -636,7 +636,7 @@ class Tree
         while (!feof($fp)) {
             $file_data .= fread($fp, 65536);
             // There is no strrpos() function that searches for substrings :-(
-            for ($pos = strlen($file_data) - 1; $pos > 0; --$pos) {
+            for ($pos = \strlen($file_data) - 1; $pos > 0; --$pos) {
                 if ($file_data[$pos] === '0' && ($file_data[$pos - 1] === "\n" || $file_data[$pos - 1] === "\r")) {
                     // We’ve found the last record boundary in this chunk of data
                     break;

@@ -98,7 +98,7 @@ class Stats
         $examples = [];
         foreach (get_class_methods($this) as $method) {
             $reflection = new \ReflectionMethod($this, $method);
-            if ($reflection->isPublic() && !in_array($method, $this->public_but_not_allowed)) {
+            if ($reflection->isPublic() && !\in_array($method, $this->public_but_not_allowed)) {
                 $examples[$method] = $this->$method();
             }
         }
@@ -137,7 +137,7 @@ class Stats
         $examples = [];
         foreach (get_class_methods($this) as $method) {
             $reflection = new \ReflectionMethod($this, $method);
-            if ($reflection->isPublic() && !in_array($method, $this->public_but_not_allowed)) {
+            if ($reflection->isPublic() && !\in_array($method, $this->public_but_not_allowed)) {
                 $examples[$method] = $method;
             }
         }
@@ -158,7 +158,7 @@ class Stats
         // Extract all tags from the provided text
         preg_match_all('/#([^#]+)(?=#)/', (string)$text, $match);
         $tags       = $match[1];
-        $c          = count($tags);
+        $c          = \count($tags);
         $new_tags   = []; // tag to replace
         $new_values = []; // value to replace it with
 
@@ -167,7 +167,7 @@ class Stats
             $full_tag = $tags[$i];
             // Added for new parameter support
             $params = explode(':', $tags[$i]);
-            if (count($params) > 1) {
+            if (\count($params) > 1) {
                 $tags[$i] = array_shift($params);
             } else {
                 $params = [];
@@ -176,7 +176,7 @@ class Stats
             // Generate the replacement value for the tag
             if (method_exists($this, $tags[$i])) {
                 $new_tags[]   = "#{$full_tag}#";
-                $new_values[] = call_user_func_array([
+                $new_values[] = \call_user_func_array([
                     $this,
                     $tags[$i],
                 ], [$params]);
@@ -711,7 +711,7 @@ class Stats
     public function totalSurnames($params = []): string
     {
         if ($params) {
-            $opt      = 'IN (' . implode(',', array_fill(0, count($params), '?')) . ')';
+            $opt      = 'IN (' . implode(',', array_fill(0, \count($params), '?')) . ')';
             $distinct = '';
         } else {
             $opt      = "IS NOT NULL";
@@ -741,7 +741,7 @@ class Stats
     public function totalGivennames($params = []): string
     {
         if ($params) {
-            $qs       = implode(',', array_fill(0, count($params), '?'));
+            $qs       = implode(',', array_fill(0, \count($params), '?'));
             $params[] = $this->tree->getTreeId();
             $total    = (int) Database::prepare(
                 "SELECT COUNT( n_givn) FROM `##name` WHERE n_givn IN ({$qs}) AND n_file=?"
@@ -785,11 +785,11 @@ class Stats
                 }
             }
             if ($types) {
-                $sql  .= ' AND d_fact IN (' . implode(', ', array_fill(0, count($types), '?')) . ')';
+                $sql  .= ' AND d_fact IN (' . implode(', ', array_fill(0, \count($types), '?')) . ')';
                 $vars = array_merge($vars, $types);
             }
         }
-        $sql  .= ' AND d_fact NOT IN (' . implode(', ', array_fill(0, count($no_types), '?')) . ')';
+        $sql  .= ' AND d_fact NOT IN (' . implode(', ', array_fill(0, \count($no_types), '?')) . ')';
         $vars = array_merge($vars, $no_types);
 
         $n = (int) Database::prepare($sql)->execute($vars)->fetchOne();
@@ -1206,9 +1206,9 @@ class Stats
     public function totalUsers($params = []): string
     {
         if (isset($params[0])) {
-            $total = count(User::all()) + (int)$params[0];
+            $total = \count(User::all()) + (int) $params[0];
         } else {
-            $total = count(User::all());
+            $total = \count(User::all());
         }
 
         return I18N::number($total);
@@ -1221,7 +1221,7 @@ class Stats
      */
     public function totalAdmins(): string
     {
-        return I18N::number(count(User::administrators()));
+        return I18N::number(\count(User::administrators()));
     }
 
     /**
@@ -1231,7 +1231,7 @@ class Stats
      */
     public function totalNonAdmins(): string
     {
-        return I18N::number(count(User::all()) - count(User::administrators()));
+        return I18N::number(\count(User::all()) - \count(User::administrators()));
     }
 
     /**
@@ -1243,7 +1243,7 @@ class Stats
      */
     private function totalMediaType($type = 'all'): int
     {
-        if (!in_array($type, $this->media_types) && $type != 'all' && $type != 'unknown') {
+        if (!\in_array($type, $this->media_types) && $type != 'all' && $type != 'unknown') {
             return 0;
         }
         $sql  = "SELECT COUNT(*) AS tot FROM `##media` WHERE m_file=?";
@@ -1526,9 +1526,9 @@ class Stats
                 $max = $count;
             }
         }
-        if (($max / $tot) > 0.6 && count($media) > 10) {
+        if (($max / $tot) > 0.6 && \count($media) > 10) {
             arsort($media);
-            $media = array_slice($media, 0, 10);
+            $media = \array_slice($media, 0, 10);
             $c     = $tot;
             foreach ($media as $cm) {
                 $c -= $cm;
@@ -2802,7 +2802,7 @@ class Stats
             }
             $chxl  .= '1:||' . I18N::translate('century') . '|2:' . $decades . '|3:||' . I18N::translate('Age') . '|';
             $title = I18N::translate('Average age related to death century');
-            if (count($rows) > 6 || mb_strlen($title) < 30) {
+            if (\count($rows) > 6 || mb_strlen($title) < 30) {
                 $chtt = $title;
             } else {
                 $offset  = 0;
@@ -2810,7 +2810,7 @@ class Stats
                 while ($offset = strpos($title, ' ', $offset + 1)) {
                     $counter[] = $offset;
                 }
-                $half = (int)(count($counter) / 2);
+                $half = (int)(\count($counter) / 2);
                 $chtt = substr_replace($title, '|', $counter[$half], 1);
             }
 
@@ -4215,7 +4215,7 @@ class Stats
             } else {
                 $chxl .= '1:||' . I18N::translate('century') . '|2:|0|10|20|30|40|50|60|70|80|90|100|3:||' . I18N::translate('Age') . '|';
             }
-            if (count($rows) > 4 || mb_strlen(I18N::translate('Average age in century of marriage')) < 30) {
+            if (\count($rows) > 4 || mb_strlen(I18N::translate('Average age in century of marriage')) < 30) {
                 $chtt = I18N::translate('Average age in century of marriage');
             } else {
                 $offset  = 0;
@@ -4223,7 +4223,7 @@ class Stats
                 while ($offset = strpos(I18N::translate('Average age in century of marriage'), ' ', $offset + 1)) {
                     $counter[] = $offset;
                 }
-                $half = (int)(count($counter) / 2);
+                $half = (int)(\count($counter) / 2);
                 $chtt = substr_replace(I18N::translate('Average age in century of marriage'), '|', $counter[$half], 1);
             }
 
@@ -4774,8 +4774,8 @@ class Stats
         if (!isset($rows[0])) {
             return '';
         }
-        if (count($rows) < $total) {
-            $total = count($rows);
+        if (\count($rows) < $total) {
+            $total = \count($rows);
         }
         $top10 = [];
         for ($c = 0; $c < $total; $c++) {
@@ -4894,7 +4894,7 @@ class Stats
                 return $age;
             }
             if ($type == 'list') {
-                if ($one && !in_array($fam->family, $dist)) {
+                if ($one && !\in_array($fam->family, $dist)) {
                     if ($child1->canShow() && $child2->canShow()) {
                         $return  = '<li>';
                         $return  .= '<a href="' . e($child2->url()) . '">' . $child2->getFullName() . '</a> ';
@@ -5961,9 +5961,9 @@ class Stats
             }
         }
         arsort($nameList, SORT_NUMERIC);
-        $nameList = array_slice($nameList, 0, $maxtoshow);
+        $nameList = \array_slice($nameList, 0, $maxtoshow);
 
-        if (count($nameList) == 0) {
+        if (\count($nameList) == 0) {
             return '';
         }
         if ($type == 'chart') {
@@ -6296,11 +6296,11 @@ class Stats
         $sizes    = explode('x', $size);
         $tot_indi = $this->totalIndividualsQuery();
         $given    = $this->commonGivenQuery('B', 'chart');
-        if (!is_array($given)) {
+        if (!\is_array($given)) {
             return '';
         }
-        $given = array_slice($given, 0, $maxtoshow);
-        if (count($given) <= 0) {
+        $given = \array_slice($given, 0, $maxtoshow);
+        if (\count($given) <= 0) {
             return '';
         }
         $tot = 0;
@@ -6350,7 +6350,7 @@ class Stats
                 $NumAnonymous++;
             }
         }
-        $LoginUsers = count($loggedusers);
+        $LoginUsers = \count($loggedusers);
         if ($LoginUsers == 0 && $NumAnonymous == 0) {
             return I18N::translate('No signed-in and no anonymous users');
         }
@@ -6540,7 +6540,7 @@ class Stats
             case 'fullname':
                 return e($user->getRealName());
             case 'regdate':
-                if (is_array($params) && isset($params[0]) && $params[0] != '') {
+                if (\is_array($params) && isset($params[0]) && $params[0] != '') {
                     $datestamp = $params[0];
                 } else {
                     $datestamp = I18N::dateFormat();
@@ -6548,7 +6548,7 @@ class Stats
 
                 return FunctionsDate::timestampToGedcomDate((int)$user->getPreference('reg_timestamp'))->display(false, $datestamp);
             case 'regtime':
-                if (is_array($params) && isset($params[0]) && $params[0] != '') {
+                if (\is_array($params) && isset($params[0]) && $params[0] != '') {
                     $datestamp = $params[0];
                 } else {
                     $datestamp = str_replace('%', '', I18N::timeFormat());
@@ -6556,12 +6556,12 @@ class Stats
 
                 return date($datestamp, (int)$user->getPreference('reg_timestamp'));
             case 'loggedin':
-                if (is_array($params) && isset($params[0]) && $params[0] != '') {
+                if (\is_array($params) && isset($params[0]) && $params[0] != '') {
                     $yes = $params[0];
                 } else {
                     $yes = I18N::translate('yes');
                 }
-                if (is_array($params) && isset($params[1]) && $params[1] != '') {
+                if (\is_array($params) && isset($params[1]) && $params[1] != '') {
                     $no = $params[1];
                 } else {
                     $no = I18N::translate('no');
@@ -6759,7 +6759,7 @@ class Stats
      */
     private function hitCountQuery($page_name, $params): string
     {
-        if (is_array($params) && isset($params[0]) && $params[0] != '') {
+        if (\is_array($params) && isset($params[0]) && $params[0] != '') {
             $page_parameter = $params[0];
         } else {
             $page_parameter = '';
@@ -6966,7 +6966,7 @@ class Stats
         $module = Module::getModuleByName('gedcom_favorites');
 
         if ($module !== null) {
-            return count($module->getFavorites($this->tree));
+            return \count($module->getFavorites($this->tree));
         } else {
             return 0;
         }
@@ -6983,7 +6983,7 @@ class Stats
         $module = Module::getModuleByName('user_favorites');
 
         if ($module !== null) {
-            return count($module->getFavorites($this->tree, Auth::user()));
+            return \count($module->getFavorites($this->tree, Auth::user()));
         } else {
             return 0;
         }
@@ -7021,7 +7021,7 @@ class Stats
         $cfg = [];
         foreach ($params as $config) {
             $bits = explode('=', $config);
-            if (count($bits) < 2) {
+            if (\count($bits) < 2) {
                 continue;
             }
             $v       = array_shift($bits);

@@ -137,7 +137,7 @@ class FunctionsRtl
                     $currentLen += $endPos;
                     $element    = substr($workingText, 0, $currentLen);
                     $temp       = strtolower(substr($element, 0, 3));
-                    if (strlen($element) < 7 && $temp == '<br') {
+                    if (\strlen($element) < 7 && $temp == '<br') {
                         if ($numberState) {
                             $numberState = false;
                             if (self::$currentState == 'RTL') {
@@ -566,13 +566,13 @@ class FunctionsRtl
 
         $char   = substr($text, $offset, 1);
         $length = 1;
-        if ((ord($char) & 0xE0) == 0xC0) {
+        if ((\ord($char) & 0xE0) == 0xC0) {
             $length = 2;
         }
-        if ((ord($char) & 0xF0) == 0xE0) {
+        if ((\ord($char) & 0xF0) == 0xE0) {
             $length = 3;
         }
-        if ((ord($char) & 0xF8) == 0xF0) {
+        if ((\ord($char) & 0xF8) == 0xF0) {
             $length = 4;
         }
         $letter = substr($text, $offset, $length);
@@ -612,7 +612,7 @@ class FunctionsRtl
             $result .= self::START_RTL;
         }
 
-        self::$posSpanStart = strlen($result);
+        self::$posSpanStart = \strlen($result);
     }
 
     /**
@@ -738,7 +738,7 @@ class FunctionsRtl
                     if ($posStartNumber === false) {
                         $posStartNumber = 0;
                     }
-                    $trailingString = substr($textSpan, $posStartNumber, strlen($textSpan) - $posStartNumber) . $trailingString;
+                    $trailingString = substr($textSpan, $posStartNumber, \strlen($textSpan) - $posStartNumber) . $trailingString;
                     $textSpan       = substr($textSpan, 0, $posStartNumber);
 
                     // Look for more spaces and move them too
@@ -1005,7 +1005,7 @@ class FunctionsRtl
                     if ($posStartNumber === false) {
                         $posStartNumber = 0;
                     }
-                    $trailingString = substr($textSpan, $posStartNumber, strlen($textSpan) - $posStartNumber) . $trailingString;
+                    $trailingString = substr($textSpan, $posStartNumber, \strlen($textSpan) - $posStartNumber) . $trailingString;
                     $textSpan       = substr($textSpan, 0, $posStartNumber);
 
                     // Look for more spaces and move them too
@@ -1084,7 +1084,7 @@ class FunctionsRtl
 
             // Look for trailing " -", reverse it, and relocate it to the front of the string
             if (substr($textSpan, -2) === ' -') {
-                $posDashString  = strlen($textSpan) - 2;
+                $posDashString  = \strlen($textSpan) - 2;
                 $posStringStart = strrpos(substr($textSpan, 0, $posDashString), '<RTLbr>');
                 if ($posStringStart === false) {
                     $posStringStart = 0;
@@ -1096,18 +1096,18 @@ class FunctionsRtl
             }
 
             if ($countLeadingSpaces != 0) {
-                $newLength = strlen($textSpan) + $countLeadingSpaces;
+                $newLength = \strlen($textSpan) + $countLeadingSpaces;
                 $textSpan  = str_pad($textSpan, $newLength, ' ', (I18N::direction() === 'rtl' ? STR_PAD_LEFT : STR_PAD_RIGHT));
             }
             if ($countTrailingSpaces != 0) {
                 if (I18N::direction() === 'ltr') {
                     if ($trailingBreaks === '') {
                         // Move trailing RTL spaces to front of following LTR span
-                        $newLength         = strlen(self::$waitingText) + $countTrailingSpaces;
+                        $newLength         = \strlen(self::$waitingText) + $countTrailingSpaces;
                         self::$waitingText = str_pad(self::$waitingText, $newLength, ' ', STR_PAD_LEFT);
                     }
                 } else {
-                    $newLength = strlen($textSpan) + $countTrailingSpaces;
+                    $newLength = \strlen($textSpan) + $countTrailingSpaces;
                     $textSpan  = str_pad($textSpan, $newLength, ' ', STR_PAD_RIGHT);
                 }
             }

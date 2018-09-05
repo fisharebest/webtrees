@@ -851,7 +851,7 @@ abstract class AbstractTheme
         $opt_tags = preg_split('/\W/', $individual->getTree()->getPreference('CHART_BOX_TAGS'), 0, PREG_SPLIT_NO_EMPTY);
         // Show BIRT or equivalent event
         foreach (explode('|', WT_EVENTS_BIRT) as $birttag) {
-            if (!in_array($birttag, $opt_tags)) {
+            if (!\in_array($birttag, $opt_tags)) {
                 $event = $individual->getFirstFact($birttag);
                 if ($event) {
                     $html .= $event->summary();
@@ -874,7 +874,7 @@ abstract class AbstractTheme
             $event = $individual->getFirstFact($deattag);
             if ($event) {
                 $html .= $event->summary();
-                if (in_array($deattag, $opt_tags)) {
+                if (\in_array($deattag, $opt_tags)) {
                     unset($opt_tags[array_search($deattag, $opt_tags)]);
                 }
                 break;
@@ -1365,7 +1365,7 @@ abstract class AbstractTheme
         }
 
         // @TODO we no longer have a global $controller
-        if ($show_user_favorites && isset($controller->record) && $controller->record instanceof GedcomRecord && !in_array($controller->record, $records)) {
+        if ($show_user_favorites && isset($controller->record) && $controller->record instanceof GedcomRecord && !\in_array($controller->record, $records)) {
             $url = route('module', [
                 'module' => 'user_favorites',
                 'action' => 'AddFavorite',
@@ -1393,7 +1393,7 @@ abstract class AbstractTheme
      */
     public function menuHomePage()
     {
-        if (count(Tree::getAll()) === 1 || Site::getPreference('ALLOW_CHANGE_GEDCOM') !== '1') {
+        if (\count(Tree::getAll()) === 1 || Site::getPreference('ALLOW_CHANGE_GEDCOM') !== '1') {
             return new Menu(I18N::translate('Family tree'), route('tree-page', ['ged' => $this->tree->getName()]), 'menu-tree');
         } else {
             $submenus = [];
@@ -1428,7 +1428,7 @@ abstract class AbstractTheme
             ]));
         }
 
-        if (count($menu->getSubmenus()) > 1) {
+        if (\count($menu->getSubmenus()) > 1) {
             return $menu;
         } else {
             return null;

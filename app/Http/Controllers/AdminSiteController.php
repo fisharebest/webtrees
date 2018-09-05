@@ -669,7 +669,7 @@ class AdminSiteController extends AbstractBaseController
             'external' => I18N::translate('Use SMTP to send messages'),
         ];
 
-        if (!function_exists('proc_open')) {
+        if (!\function_exists('proc_open')) {
             unset($options['sendmail']);
         }
 

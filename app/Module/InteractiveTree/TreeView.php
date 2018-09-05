@@ -183,7 +183,7 @@ class TreeView
                 }
             }
         }
-        $tc = count($children2draw);
+        $tc = \count($children2draw);
         if ($tc) {
             $f2load = implode(',', $f2load);
             $nbc    = 0;
@@ -286,12 +286,12 @@ class TreeView
                 $parent = $primaryChildFamily->getWife();
             }
         }
-        if (!empty($parent) || count($fop) || ($state < 0)) {
+        if (!empty($parent) || \count($fop) || ($state < 0)) {
             $html .= $this->drawHorizontalLine();
         }
         /* draw the parents */
-        if ($state >= 0 && (!empty($parent) || count($fop))) {
-            $unique = (empty($parent) || count($fop) == 0);
+        if ($state >= 0 && (!empty($parent) || \count($fop))) {
+            $unique = (empty($parent) || \count($fop) == 0);
             $html   .= '<td align="left"><table class="tv_tree"><tbody>';
             if (!empty($parent)) {
                 $u    = $unique ? 'c' : 't';
@@ -299,9 +299,9 @@ class TreeView
                 $html .= $this->drawPerson($parent, $gen - 1, 1, $primaryChildFamily, $u);
                 $html .= '</td></tr>';
             }
-            if (count($fop)) {
+            if (\count($fop)) {
                 $n  = 0;
-                $nb = count($fop);
+                $nb = \count($fop);
                 foreach ($fop as $p) {
                     $n++;
                     $u    = $unique ? 'c' : ($n == $nb || empty($p[1]) ? 'b' : 'h');

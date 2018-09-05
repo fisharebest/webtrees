@@ -34,7 +34,7 @@ class Bootstrap4 extends Html
         if (empty($items)) {
             return '';
         } else {
-            return '<span class="badge badge-secondary">' . I18N::number(count($items)) . '</span>';
+            return '<span class="badge badge-secondary">' . I18N::number(\count($items)) . '</span>';
         }
     }
 
@@ -160,8 +160,8 @@ class Bootstrap4 extends Html
         $html = '';
         foreach ($options as $value => $option) {
             $option_attributes = self::attributes([
-                'value'    => $value,
-                'selected' => in_array((string)$value, $selected),
+                                                      'value'    => $value,
+                                                      'selected' => \in_array((string)$value, $selected),
             ]);
 
             $html .= '<option ' . $option_attributes . '>' . e($option) . '</option>';

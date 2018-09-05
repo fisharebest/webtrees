@@ -232,7 +232,7 @@ class CalendarService
             // SIMPLE CASES:
             // a) Non-hebrew anniversaries
             // b) Hebrew months TVT, SHV, IYR, SVN, TMZ, AAV, ELL
-            if (!$anniv instanceof JewishDate || in_array($anniv->m, [
+            if (!$anniv instanceof JewishDate || \in_array($anniv->m, [
                     1,
                     5,
                     6,

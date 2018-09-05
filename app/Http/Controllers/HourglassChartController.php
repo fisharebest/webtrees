@@ -211,7 +211,7 @@ class HourglassChartController extends AbstractChartController
                 }
             }
 
-            $ct = count($children);
+            $ct = \count($children);
             if ($ct > 0) {
                 echo '<table cellspacing="0" cellpadding="0" border="0" style="position: relative; top: auto; float: ' . $tablealign . ';">';
                 for ($i = 0; $i < $ct; $i++) {
@@ -266,7 +266,7 @@ class HourglassChartController extends AbstractChartController
 
                 //-- move the arrow up to line up with the correct box
                 if ($show_spouse) {
-                    echo str_repeat('<br><br><br>', count($families));
+                    echo str_repeat('<br><br><br>', \count($families));
                 }
                 echo "</td><td style='width:", Theme::theme()->parameter('chart-box-x'), "px'>";
             }
@@ -349,7 +349,7 @@ class HourglassChartController extends AbstractChartController
                 $siblings       = array_filter($family->getChildren(), function (Individual $x) use ($individual): bool {
                     return $x !== $individual;
                 });
-                $count_siblings = count($siblings);
+                $count_siblings = \count($siblings);
                 if ($count_siblings > 0) {
                     echo '<span class="name1">';
                     echo $count_siblings > 1 ? I18N::translate('Siblings') : I18N::translate('Sibling');

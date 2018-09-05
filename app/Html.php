@@ -31,7 +31,7 @@ class Html
     {
         $html = [];
         foreach ($attributes as $key => $value) {
-            if (is_string($value) || is_integer($value)) {
+            if (\is_string($value) || \is_integer($value)) {
                 $html[] = e($key) . '="' . e($value) . '"';
             } elseif ($value !== false) {
                 $html[] = e($key);

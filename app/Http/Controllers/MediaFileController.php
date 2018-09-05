@@ -247,7 +247,7 @@ class MediaFileController extends AbstractBaseController
      */
     private function graphicsDriver(): string
     {
-        if (extension_loaded('imagick')) {
+        if (\extension_loaded('imagick')) {
             $driver = 'imagick';
         } else {
             $driver = 'gd';

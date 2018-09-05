@@ -405,11 +405,11 @@ class ListController extends AbstractBaseController
         }
 
         // Pagination
-        $count = count($media_objects);
+        $count = \count($media_objects);
         $pages = (int) (($count + $max - 1) / $max);
         $page  = max(min($page, $pages), 1);
 
-        $media_objects = array_slice($media_objects, ($page - 1) * $max, $max);
+        $media_objects = \array_slice($media_objects, ($page - 1) * $max, $max);
 
         return $this->viewResponse('media-list-page', [
             'count'         => $count,

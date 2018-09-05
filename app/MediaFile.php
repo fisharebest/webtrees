@@ -127,7 +127,7 @@ class MediaFile
      */
     public function dirname(): string
     {
-        $dirname = dirname($this->multimedia_file_refn);
+        $dirname = \dirname($this->multimedia_file_refn);
 
         if ($dirname === '.') {
             return '';
@@ -271,7 +271,7 @@ class MediaFile
             $attributes['__FILE_SIZE__'] = $this->fileSizeKB();
 
             $imgsize = getimagesize($file);
-            if (is_array($imgsize) && !empty($imgsize['0'])) {
+            if (\is_array($imgsize) && !empty($imgsize['0'])) {
                 $attributes['__IMAGE_SIZE__'] = I18N::translate('%1$s × %2$s pixels', I18N::number($imgsize['0']), I18N::number($imgsize['1']));
             }
         }
@@ -302,7 +302,7 @@ class MediaFile
      */
     public function isImage(): bool
     {
-        return in_array($this->extension(), [
+        return \in_array($this->extension(), [
             'jpeg',
             'jpg',
             'gif',

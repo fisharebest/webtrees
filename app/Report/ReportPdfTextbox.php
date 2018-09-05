@@ -33,11 +33,11 @@ class ReportPdfTextbox extends ReportBaseTextbox
         $lastelement      = '';
         $footnote_element = [];
         // Element counter
-        $cE = count($this->elements);
+        $cE = \count($this->elements);
         //-- collapse duplicate elements
         for ($i = 0; $i < $cE; $i++) {
             $element = $this->elements[$i];
-            if (is_object($element)) {
+            if (\is_object($element)) {
                 if ($element instanceof ReportBaseText) {
                     if (!empty($footnote_element)) {
                         ksort($footnote_element);
@@ -139,7 +139,7 @@ class ReportPdfTextbox extends ReportBaseTextbox
         $cM = $renderer->getMargins();
         // Use cell padding to wrap the width
         // Temp Width with cell padding
-        if (is_array($cM['cell'])) {
+        if (\is_array($cM['cell'])) {
             $cWT = $cW - ($cM['padding_left'] + $cM['padding_right']);
         } else {
             $cWT = $cW - ($cM['cell'] * 2);
@@ -155,10 +155,10 @@ class ReportPdfTextbox extends ReportBaseTextbox
         // 2 => number of LF
         $lw = [];
         // Element counter
-        $cE = count($this->elements);
+        $cE = \count($this->elements);
         //-- calculate the text box height + width
         for ($i = 0; $i < $cE; $i++) {
-            if (is_object($this->elements[$i])) {
+            if (\is_object($this->elements[$i])) {
                 $ew = $this->elements[$i]->setWrapWidth($cWT - $w, $cWT);
                 if ($ew == $cWT) {
                     $w = 0;
@@ -195,7 +195,7 @@ class ReportPdfTextbox extends ReportBaseTextbox
                 $cHT = $cHT * $renderer->largestFontHeight;
                 // Add cell padding
                 if ($this->padding) {
-                    if (is_array($cM['cell'])) {
+                    if (\is_array($cM['cell'])) {
                         $cHT += ($cM['padding_bottom'] + $cM['padding_top']);
                     } else {
                         $cHT += ($cM['cell'] * 2);
@@ -254,7 +254,7 @@ class ReportPdfTextbox extends ReportBaseTextbox
         // Add cell padding if set and if any text (element) exist
         if ($this->padding) {
             if ($cHT > 0) {
-                if (is_array($cM['cell'])) {
+                if (\is_array($cM['cell'])) {
                     $renderer->SetY($cY + $cM['padding_top']);
                 } else {
                     $renderer->SetY($cY + $cM['cell']);
@@ -264,7 +264,7 @@ class ReportPdfTextbox extends ReportBaseTextbox
         // Change the margins X, Width
         if (!$renderer->getRTL()) {
             if ($this->padding) {
-                if (is_array($cM['cell'])) {
+                if (\is_array($cM['cell'])) {
                     $renderer->SetLeftMargin($cX + $cM['padding_left']);
                 } else {
                     $renderer->SetLeftMargin($cX + $cM['cell']);
@@ -276,7 +276,7 @@ class ReportPdfTextbox extends ReportBaseTextbox
             }
         } else {
             if ($this->padding) {
-                if (is_array($cM['cell'])) {
+                if (\is_array($cM['cell'])) {
                     $renderer->SetRightMargin($cX + $cM['padding_right']);
                 } else {
                     $renderer->SetRightMargin($cX + $cM['cell']);
@@ -292,11 +292,11 @@ class ReportPdfTextbox extends ReportBaseTextbox
 
         // Render the elements (write text, print picture...)
         foreach ($this->elements as $element) {
-            if (is_object($element)) {
+            if (\is_object($element)) {
                 $element->render($renderer);
-            } elseif (is_string($element) && $element == 'footnotetexts') {
+            } elseif (\is_string($element) && $element == 'footnotetexts') {
                 $renderer->footnotes();
-            } elseif (is_string($element) && $element == 'addpage') {
+            } elseif (\is_string($element) && $element == 'addpage') {
                 $renderer->newPage();
             }
         }

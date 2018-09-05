@@ -498,7 +498,7 @@ class AdminController extends AbstractBaseController
 
             $facts = $individual->getFacts(null, true);
             $facts = array_filter($facts, function (Fact $fact) use ($ignore_facts): bool {
-                return !$fact->isPendingDeletion() && !in_array($fact->getTag(), $ignore_facts);
+                return !$fact->isPendingDeletion() && !\in_array($fact->getTag(), $ignore_facts);
             });
 
             // The link to the media object may have been deleted in a pending change.
@@ -582,12 +582,12 @@ class AdminController extends AbstractBaseController
             case 'add':
                 $image_size = getimagesize($thumbnail);
                 list(, $extension) = explode('/', $image_size['mime']);
-                $move_to = dirname(dirname($thumbnail)) . '/' . sha1_file($thumbnail) . '.' . $extension;
+                $move_to = \dirname(\dirname($thumbnail)) . '/' . sha1_file($thumbnail) . '.' . $extension;
                 rename($thumbnail, $move_to);
 
                 foreach ($media_objects as $media_object) {
                     $prefix = WT_DATA_DIR . $media_object->getTree()->getPreference('MEDIA_DIRECTORY');
-                    $gedcom = "1 FILE " . substr($move_to, strlen($prefix)) . "\n2 FORM " . $extension;
+                    $gedcom = "1 FILE " . substr($move_to, \strlen($prefix)) . "\n2 FORM " . $extension;
 
                     if ($media_object->firstImageFile() === null) {
                         // The media object doesn't have an image.  Add this as a secondary file.
@@ -635,7 +635,7 @@ class AdminController extends AbstractBaseController
             }
         }
 
-        $recordsTotal = count($thumbnails);
+        $recordsTotal = \count($thumbnails);
 
         if ($search !== '') {
             $thumbnails = array_filter($thumbnails, function (string $thumbnail) use ($search): bool {
@@ -643,22 +643,22 @@ class AdminController extends AbstractBaseController
             });
         }
 
-        $recordsFiltered = count($thumbnails);
+        $recordsFiltered = \count($thumbnails);
 
-        $thumbnails = array_slice($thumbnails, $start, $length);
+        $thumbnails = \array_slice($thumbnails, $start, $length);
 
         // Turn each filename into a row for the table
         $data = array_map(function (string $thumbnail) {
             $original = $this->findOriginalFileFromThumbnail($thumbnail);
 
             $original_url  = route('unused-media-thumbnail', [
-                'folder' => dirname($original),
+                'folder' => \dirname($original),
                 'file'   => basename($original),
                 'w'      => 100,
                 'h'      => 100,
             ]);
             $thumbnail_url = route('unused-media-thumbnail', [
-                'folder' => dirname($thumbnail),
+                'folder' => \dirname($thumbnail),
                 'file'   => basename($thumbnail),
                 'w'      => 100,
                 'h'      => 100,
@@ -666,8 +666,8 @@ class AdminController extends AbstractBaseController
 
             $difference = $this->imageDiff($thumbnail, $original);
 
-            $original_path  = substr($original, strlen(WT_DATA_DIR));
-            $thumbnail_path = substr($thumbnail, strlen(WT_DATA_DIR));
+            $original_path  = substr($original, \strlen(WT_DATA_DIR));
+            $thumbnail_path = substr($thumbnail, \strlen(WT_DATA_DIR));
 
             $media = $this->findMediaObjectsForMediaFile($original_path);
 
@@ -901,12 +901,12 @@ class AdminController extends AbstractBaseController
             $gedcom .= "\n" . $fact->getGedcom();
         }
         foreach ($facts1 as $fact_id => $fact) {
-            if (in_array($fact_id, $keep1)) {
+            if (\in_array($fact_id, $keep1)) {
                 $gedcom .= "\n" . $fact->getGedcom();
             }
         }
         foreach ($facts2 as $fact_id => $fact) {
-            if (in_array($fact_id, $keep2)) {
+            if (\in_array($fact_id, $keep2)) {
                 $gedcom .= "\n" . $fact->getGedcom();
             }
         }
@@ -1004,7 +1004,7 @@ class AdminController extends AbstractBaseController
 
         return $this->viewResponse('admin/trees-privacy', [
             'all_tags'             => $all_tags,
-            'count_trees'          => count(Tree::getAll()),
+            'count_trees'          => \count(Tree::getAll()),
             'privacy_constants'    => $privacy_constants,
             'privacy_restrictions' => $privacy_restrictions,
             'title'                => $title,
@@ -1280,7 +1280,7 @@ class AdminController extends AbstractBaseController
         $order  = $request->get('order', []);
         $args   = [];
 
-        if (is_array($order) && !empty($order)) {
+        if (\is_array($order) && !empty($order)) {
             $order_by = ' ORDER BY ';
             foreach ($order as $key => $value) {
                 if ($key > 0) {

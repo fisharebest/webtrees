@@ -198,7 +198,7 @@ class Individual extends GedcomRecord
         for ($n = 0; $n <= $distance; ++$n) {
             if (array_key_exists($n, $cache)) {
                 // We have already calculated all records with this length
-                if ($n % 2 == 0 && in_array($target, $cache[$n], true)) {
+                if ($n % 2 == 0 && \in_array($target, $cache[$n], true)) {
                     return true;
                 }
             } else {
@@ -210,12 +210,12 @@ class Individual extends GedcomRecord
                         foreach ($family->getFacts('HUSB|WIFE|CHIL', false, Auth::PRIV_HIDE) as $fact) {
                             $individual = $fact->getTarget();
                             // Don’t backtrack
-                            if ($individual && !in_array($individual, $cache[$n - 2], true)) {
+                            if ($individual && !\in_array($individual, $cache[$n - 2], true)) {
                                 $cache[$n][] = $individual;
                             }
                         }
                     }
-                    if (in_array($target, $cache[$n], true)) {
+                    if (\in_array($target, $cache[$n], true)) {
                         return true;
                     }
                 } else {
@@ -224,7 +224,7 @@ class Individual extends GedcomRecord
                         foreach ($individual->getFacts('FAM[CS]', false, Auth::PRIV_HIDE) as $fact) {
                             $family = $fact->getTarget();
                             // Don’t backtrack
-                            if ($family && !in_array($family, $cache[$n - 2], true)) {
+                            if ($family && !\in_array($family, $cache[$n - 2], true)) {
                                 $cache[$n][] = $family;
                             }
                         }
@@ -868,7 +868,7 @@ class Individual extends GedcomRecord
                 }
             }
 
-            return count($children);
+            return \count($children);
         }
     }
 
@@ -913,7 +913,7 @@ class Individual extends GedcomRecord
     public function getPrimaryChildFamily()
     {
         $families = $this->getChildFamilies();
-        switch (count($families)) {
+        switch (\count($families)) {
             case 0:
                 return null;
             case 1:
@@ -960,7 +960,7 @@ class Individual extends GedcomRecord
             $father = $family->getHusband();
             if ($father) {
                 foreach ($father->getSpouseFamilies() as $step_family) {
-                    if (!in_array($step_family, $families, true)) {
+                    if (!\in_array($step_family, $families, true)) {
                         $step_families[] = $step_family;
                     }
                 }
@@ -968,7 +968,7 @@ class Individual extends GedcomRecord
             $mother = $family->getWife();
             if ($mother) {
                 foreach ($mother->getSpouseFamilies() as $step_family) {
-                    if (!in_array($step_family, $families, true)) {
+                    if (!\in_array($step_family, $families, true)) {
                         $step_families[] = $step_family;
                     }
                 }
@@ -991,7 +991,7 @@ class Individual extends GedcomRecord
             $spouse = $family->getSpouse($this);
             if ($spouse) {
                 foreach ($family->getSpouse($this)->getSpouseFamilies() as $step_family) {
-                    if (!in_array($step_family, $families, true)) {
+                    if (!\in_array($step_family, $families, true)) {
                         $step_families[] = $step_family;
                     }
                 }

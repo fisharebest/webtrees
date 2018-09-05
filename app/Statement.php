@@ -66,7 +66,7 @@ class Statement
                 // Named parameters are prefixed with a colon
                 $key = ':' . $key;
             }
-            switch (gettype($bind_variable)) {
+            switch (\gettype($bind_variable)) {
                 case 'NULL':
                     $this->pdo_statement->bindValue($key, $bind_variable, PDO::PARAM_NULL);
                     break;

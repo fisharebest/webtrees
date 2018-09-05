@@ -93,7 +93,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
             ->execute([Auth::id()])
             ->fetchAll();
 
-        $count = count($messages);
+        $count = \count($messages);
         $users = array_filter(User::all(), function (User $user): bool {
             return $user->getUserId() !== Auth::id() && $user->getPreference('verified_by_admin') && $user->getPreference('contactmethod') !== 'none';
         });

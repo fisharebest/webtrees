@@ -110,7 +110,7 @@ class ReportPdfCell extends ReportBaseCell
             $cHT = $cHT * $renderer->getCellHeightRatio() * $renderer->getCurrentStyleHeight();
             $cM  = $renderer->getMargins();
             // Add padding
-            if (is_array($cM['cell'])) {
+            if (\is_array($cM['cell'])) {
                 $cHT += ($cM['padding_bottom'] + $cM['padding_top']);
             } else {
                 $cHT += ($cM['cell'] * 2);

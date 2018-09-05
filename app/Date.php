@@ -85,7 +85,7 @@ class Date
     public function __clone()
     {
         $this->date1 = clone $this->date1;
-        if (is_object($this->date2)) {
+        if (\is_object($this->date2)) {
             $this->date2 = clone $this->date2;
         }
     }

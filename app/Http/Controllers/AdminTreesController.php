@@ -229,7 +229,7 @@ class AdminTreesController extends AbstractBaseController
                         $this->checkLinkMessage($tree, $type1, $xref1, $type2, $xref2) .
                         ' ' .
                         I18N::translate('This type of link is not allowed here.');
-                } elseif (!array_key_exists($type1, $RECORD_LINKS) || !in_array($type2, $RECORD_LINKS[$type1]) || !array_key_exists($type2, $XREF_LINKS)) {
+                } elseif (!array_key_exists($type1, $RECORD_LINKS) || !\in_array($type2, $RECORD_LINKS[$type1]) || !array_key_exists($type2, $XREF_LINKS)) {
                     $errors[] =
                         $this->checkLinkMessage($tree, $type1, $xref1, $type2, $xref2) .
                         ' ' .
@@ -450,7 +450,7 @@ class AdminTreesController extends AbstractBaseController
             }
 
             // The ZipArchiveAdapter may or may not close the stream.
-            if (is_resource($tmp_stream)) {
+            if (\is_resource($tmp_stream)) {
                 fclose($tmp_stream);
             }
 
@@ -602,7 +602,7 @@ class AdminTreesController extends AbstractBaseController
 
         // On sites with hundreds or thousands of trees, this page becomes very large.
         // Just show the current tree, the default tree, and unimported trees
-        if (count($all_trees) >= $multiple_tree_threshold) {
+        if (\count($all_trees) >= $multiple_tree_threshold) {
             $all_trees = array_filter($all_trees, function (Tree $x) use ($tree): bool {
                 return $x->getPreference('imported') === '0' || $tree->getTreeId() === $x->getTreeId() || $x->getName() === Site::getPreference('DEFAULT_GEDCOM');
             });
@@ -963,7 +963,7 @@ class AdminTreesController extends AbstractBaseController
 
         $all_surname_traditions = SurnameTradition::allDescriptions();
 
-        $tree_count = count(Tree::getAll());
+        $tree_count = \count(Tree::getAll());
 
         $title = I18N::translate('Preferences') . ' — ' . e($tree->getTitle());
 
@@ -1607,7 +1607,7 @@ class AdminTreesController extends AbstractBaseController
         }
 
         foreach (Tree::getAll() as $tree) {
-            if (!in_array($tree->getName(), $gedcom_files)) {
+            if (!\in_array($tree->getName(), $gedcom_files)) {
                 FlashMessages::addMessage(I18N::translate('The family tree “%s” has been deleted.', e($tree->getTitle())), 'success');
                 $tree->delete();
             }
@@ -1654,7 +1654,7 @@ class AdminTreesController extends AbstractBaseController
         $individual_groups = [];
 
         foreach ($components as $component) {
-            if (!in_array($xref, $component)) {
+            if (!\in_array($xref, $component)) {
                 $individuals = [];
                 foreach ($component as $xref) {
                     $individuals[] = Individual::getInstance($xref, $tree);

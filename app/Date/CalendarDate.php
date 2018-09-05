@@ -97,7 +97,7 @@ class CalendarDate
     public function __construct($date)
     {
         // Construct from an integer (a julian day number)
-        if (is_integer($date)) {
+        if (\is_integer($date)) {
             $this->minJD = $date;
             $this->maxJD = $date;
             list($this->y, $this->m, $this->d) = $this->calendar->jdToYmd($date);
@@ -106,7 +106,7 @@ class CalendarDate
         }
 
         // Construct from an array (of three gedcom-style strings: "1900", "FEB", "4")
-        if (is_array($date)) {
+        if (\is_array($date)) {
             $this->d = (int)$date[2];
             if (array_key_exists($date[1], static::$MONTH_ABBREV)) {
                 $this->m = static::$MONTH_ABBREV[$date[1]];
@@ -130,7 +130,7 @@ class CalendarDate
         $this->maxJD = $date->maxJD;
 
         // Construct from an equivalent xxxxDate object
-        if (get_class($this) == get_class($date)) {
+        if (\get_class($this) == \get_class($date)) {
             $this->y = $date->y;
             $this->m = $date->m;
             $this->d = $date->d;
@@ -987,7 +987,7 @@ class CalendarDate
         foreach (self::$roman_numerals as $key => $value) {
             if (strpos($roman, $value) === 0) {
                 $num   += $key;
-                $roman = substr($roman, strlen($value));
+                $roman = substr($roman, \strlen($value));
             }
         }
 

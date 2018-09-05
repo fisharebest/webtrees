@@ -94,7 +94,7 @@ class FunctionsPrint
                 $first_line = '<a href="' . e($note->url()) . '">' . $note->getFullName() . '</a>';
             } else {
                 list($text) = explode("\n", strip_tags($html));
-                $first_line = strlen($text) > 100 ? mb_substr($text, 0, 100) . I18N::translate('…') : $text;
+                $first_line = \strlen($text) > 100 ? mb_substr($text, 0, 100) . I18N::translate('…') : $text;
             }
 
             return
@@ -124,7 +124,7 @@ class FunctionsPrint
             $spos1 = strpos($factrec, $match[$j][0], $previous_spos);
             $spos2 = strpos($factrec . "\n$level", "\n$level", $spos1 + 1);
             if (!$spos2) {
-                $spos2 = strlen($factrec);
+                $spos2 = \strlen($factrec);
             }
             $previous_spos = $spos2;
             $nrec          = substr($factrec, $spos1, $spos2 - $spos1);
@@ -181,7 +181,7 @@ class FunctionsPrint
         $html     = '';
         $families = $person->getChildFamilies();
         // Multiple sets of parents (e.g. adoption) cause complications, so ignore.
-        if ($birth_date->isOK() && count($families) == 1) {
+        if ($birth_date->isOK() && \count($families) == 1) {
             $family = current($families);
             foreach ($family->getSpouses() as $parent) {
                 if ($parent->getBirthDate()->isOK()) {
@@ -339,7 +339,7 @@ class FunctionsPrint
                     }
                 }
             }
-        } elseif (strpos($factrec, "\n2 PLAC ") === false && in_array($fact, Config::emptyFacts())) {
+        } elseif (strpos($factrec, "\n2 PLAC ") === false && \in_array($fact, Config::emptyFacts())) {
             // There is no DATE.  If there is also no PLAC, then print "yes"
             $html .= I18N::translate('yes');
         }
@@ -454,7 +454,7 @@ class FunctionsPrint
     {
         foreach ($recfacts as $factarray) {
             $fact = false;
-            if (is_object($factarray)) {
+            if (\is_object($factarray)) {
                 $fact = $factarray->getTag();
             } else {
                 if ($type === 'SOUR' || $type === 'REPO') {
@@ -492,7 +492,7 @@ class FunctionsPrint
         $tree = $record->getTree();
 
         // -- Add from clipboard
-        if (is_array(Session::get('clipboard'))) {
+        if (\is_array(Session::get('clipboard'))) {
             $newRow = true;
             foreach (array_reverse(Session::get('clipboard'), true) as $fact_id => $fact) {
                 if ($fact['type'] == $type || $fact['type'] == 'all') {

@@ -202,7 +202,7 @@ class IndividualController extends AbstractBaseController
         Functions::sortFacts($facts);
 
         $facts = array_filter($facts, function (Fact $fact): bool {
-            return !in_array($fact->getTag(), self::EXCLUDE_CHART_FACTS);
+            return !\in_array($fact->getTag(), self::EXCLUDE_CHART_FACTS);
         });
 
         $html = view('expand-chart-box', [

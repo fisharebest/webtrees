@@ -137,7 +137,7 @@ class AdminLocationController extends AbstractBaseController
         $lng       = round($request->get('new_place_long'), 5);
         $lng       = ($lng < 0 ? 'W' : 'E') . abs($lng);
         $hierarchy = $this->gethierarchy($parent_id);
-        $level     = count($hierarchy);
+        $level     = \count($hierarchy);
         $icon      = $request->get('icon', null);
         $icon      = $icon === '' ? null : $icon;
         $zoom      = $request->get('new_zoom_factor');
@@ -373,10 +373,11 @@ class AdminLocationController extends AbstractBaseController
                         continue;
                     }
 
-                    $fields = count($row);
+                    $fields = \count($row);
 
                     // convert separate place fields into a comma separated placename
-                    $fqdn = implode(Place::GEDCOM_SEPARATOR, array_filter(array_reverse(array_slice($row, 1, $fields - 5))));
+                    $fqdn = implode(Place::GEDCOM_SEPARATOR, array_filter(array_reverse(
+                                                                              \array_slice($row, 1, $fields - 5))));
 
                     $places[] = [
                         'pl_level' => $row[0],
@@ -431,8 +432,8 @@ class AdminLocationController extends AbstractBaseController
                     // work throught the place parts starting at level 0,
                     // looking for a record in the database, if not found then add it
                     $parent_id = 0;
-                    for ($i = count($place_parts) - 1; $i >= 0; $i--) {
-                        $new_parts    = array_slice($place_parts, $i);
+                    for ($i = \count($place_parts) - 1; $i >= 0; $i--) {
+                        $new_parts    = \array_slice($place_parts, $i);
                         $new_fqpn     = implode(Place::GEDCOM_SEPARATOR, $new_parts);
                         $new_location = new Location(
                             $new_fqpn,
@@ -440,7 +441,7 @@ class AdminLocationController extends AbstractBaseController
                                 'fqpn'         => $new_fqpn,
                                 'pl_id'        => 0,
                                 'pl_parent_id' => $parent_id,
-                                'pl_level'     => count($new_parts) - 1,
+                                'pl_level'     => \count($new_parts) - 1,
                                 'pl_place'     => $new_parts[0],
                                 'pl_long'      => $i === 0 ? $place['pl_long'] : null,
                                 'pl_lati'      => $i === 0 ? $place['pl_lati'] : null,
@@ -538,11 +539,11 @@ class AdminLocationController extends AbstractBaseController
             foreach ($diff as $place) {
                 // For Westminster, London, England, we must also create England and London, England
                 $place_parts = explode(',', $place);
-                $count = count($place_parts);
+                $count = \count($place_parts);
 
                 $parent_id = 0;
                 for ($i = $count - 1; $i >= 0; $i--) {
-                    $parent   = implode(',', array_slice($place_parts, $i));
+                    $parent   = implode(',', \array_slice($place_parts, $i));
                     $place_id = array_search($parent, $locations);
 
                     if ($place_id === false) {
@@ -615,7 +616,7 @@ class AdminLocationController extends AbstractBaseController
                 Place::GEDCOM_SEPARATOR,
                 array_reverse(
                     array_filter(
-                        array_slice($place, 1, $maxlevel + 1)
+                        \array_slice($place, 1, $maxlevel + 1)
                     )
                 )
             );

@@ -187,11 +187,11 @@ class ReportHtml extends ReportBase
     public function runPageHeader()
     {
         foreach ($this->pageHeaderElements as $element) {
-            if (is_object($element)) {
+            if (\is_object($element)) {
                 $element->render($this);
-            } elseif (is_string($element) && $element == 'footnotetexts') {
+            } elseif (\is_string($element) && $element == 'footnotetexts') {
                 $this->footnotes();
-            } elseif (is_string($element) && $element == 'addpage') {
+            } elseif (\is_string($element) && $element == 'addpage') {
                 $this->addPage();
             }
         }
@@ -250,11 +250,11 @@ class ReportHtml extends ReportBase
         echo '<div id="headermargin" style="position: relative; top: auto; height: ', $this->headermargin, 'pt; width: ', $this->noMarginWidth, 'pt;"></div>';
         echo '<div id="headerdiv" style="position: relative; top: auto; width: ', $this->noMarginWidth, 'pt;">';
         foreach ($this->headerElements as $element) {
-            if (is_object($element)) {
+            if (\is_object($element)) {
                 $element->render($this);
-            } elseif (is_string($element) && $element == 'footnotetexts') {
+            } elseif (\is_string($element) && $element == 'footnotetexts') {
                 $this->footnotes();
-            } elseif (is_string($element) && $element == 'addpage') {
+            } elseif (\is_string($element) && $element == 'addpage') {
                 $this->addPage();
             }
         }
@@ -266,11 +266,11 @@ class ReportHtml extends ReportBase
         $this->maxY = 0;
         $this->runPageHeader();
         foreach ($this->bodyElements as $element) {
-            if (is_object($element)) {
+            if (\is_object($element)) {
                 $element->render($this);
-            } elseif (is_string($element) && $element == 'footnotetexts') {
+            } elseif (\is_string($element) && $element == 'footnotetexts') {
                 $this->footnotes();
-            } elseif (is_string($element) && $element == 'addpage') {
+            } elseif (\is_string($element) && $element == 'addpage') {
                 $this->addPage();
             }
         }
@@ -283,11 +283,11 @@ class ReportHtml extends ReportBase
         $this->X    = 0;
         $this->maxY = 0;
         foreach ($this->footerElements as $element) {
-            if (is_object($element)) {
+            if (\is_object($element)) {
                 $element->render($this);
-            } elseif (is_string($element) && $element == 'footnotetexts') {
+            } elseif (\is_string($element) && $element == 'footnotetexts') {
                 $this->footnotes();
-            } elseif (is_string($element) && $element == 'addpage') {
+            } elseif (\is_string($element) && $element == 'addpage') {
                 $this->addPage();
             }
         }
@@ -496,7 +496,7 @@ class ReportHtml extends ReportBase
     {
         $this->pageHeaderElements[] = $element;
 
-        return count($this->headerElements) - 1;
+        return \count($this->headerElements) - 1;
     }
 
     /**
@@ -508,7 +508,7 @@ class ReportHtml extends ReportBase
      */
     public function checkFootnote($footnote): bool
     {
-        $ct  = count($this->printedfootnotes);
+        $ct  = \count($this->printedfootnotes);
         $i   = 0;
         $val = $footnote->getValue();
         while ($i < $ct) {
@@ -743,7 +743,7 @@ class ReportHtml extends ReportBase
         // Wordwrap each line
         $lines = explode("\n", $str);
         // Line Feed counter
-        $lfct     = count($lines);
+        $lfct     = \count($lines);
         $wraptext = '';
         foreach ($lines as $line) {
             $wtext    = FunctionsRtl::utf8WordWrap($line, $lw, "\n", true);

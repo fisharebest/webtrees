@@ -108,14 +108,14 @@ class Select2 extends Html
             'collation' => I18N::collation(),
         ]);
 
-        while (is_object($row = $cursor->fetch())) {
+        while (\is_object($row = $cursor->fetch())) {
             $family = Family::getInstance($row->xref, $tree, $row->gedcom);
             // Filter for privacy
             if ($family !== null && $family->canShowName()) {
                 if ($offset > 0) {
                     // Skip results
                     $offset--;
-                } elseif (count($results) === self::RESULTS_PER_PAGE) {
+                } elseif (\count($results) === self::RESULTS_PER_PAGE) {
                     // Stop when we have found a page of results
                     $more = true;
                     break;
@@ -179,12 +179,12 @@ class Select2 extends Html
 
         $flag_files = [];
         foreach ($it as $file) {
-            $file_path = substr($file->getPathname(), strlen($directory));
+            $file_path = substr($file->getPathname(), \strlen($directory));
             if ($file->getExtension() === 'png' && stripos($file_path, $query) !== false) {
                 if ($offset > 0) {
                     // Skip results
                     $offset--;
-                } elseif (count($flag_files) >= self::RESULTS_PER_PAGE) {
+                } elseif (\count($flag_files) >= self::RESULTS_PER_PAGE) {
                     $more = true;
                     break;
                 } else {
@@ -243,7 +243,7 @@ class Select2 extends Html
             'collation' => I18N::collation(),
         ]);
 
-        while (is_object($row = $cursor->fetch())) {
+        while (\is_object($row = $cursor->fetch())) {
             $individual = Individual::getInstance($row->xref, $tree, $row->gedcom);
             $individual->setPrimaryName($row->n_num);
             // Filter for privacy
@@ -251,7 +251,7 @@ class Select2 extends Html
                 if ($offset > 0) {
                     // Skip results
                     $offset--;
-                } elseif (count($results) === self::RESULTS_PER_PAGE) {
+                } elseif (\count($results) === self::RESULTS_PER_PAGE) {
                     // Stop when we have found a page of results
                     $more = true;
                     break;
@@ -309,14 +309,14 @@ class Select2 extends Html
             'collation' => I18N::collation(),
         ]);
 
-        while (is_object($row = $cursor->fetch())) {
+        while (\is_object($row = $cursor->fetch())) {
             $media = Media::getInstance($row->xref, $tree, $row->gedcom);
             // Filter for privacy
             if ($media !== null && $media->canShow()) {
                 if ($offset > 0) {
                     // Skip results
                     $offset--;
-                } elseif (count($results) === self::RESULTS_PER_PAGE) {
+                } elseif (\count($results) === self::RESULTS_PER_PAGE) {
                     // Stop when we have found a page of results
                     $more = true;
                     break;
@@ -374,14 +374,14 @@ class Select2 extends Html
             'collation' => I18N::collation(),
         ]);
 
-        while (is_object($row = $cursor->fetch())) {
+        while (\is_object($row = $cursor->fetch())) {
             $note = Note::getInstance($row->xref, $tree, $row->gedcom);
             // Filter for privacy
             if ($note !== null && $note->canShowName()) {
                 if ($offset > 0) {
                     // Skip results
                     $offset--;
-                } elseif (count($results) === self::RESULTS_PER_PAGE) {
+                } elseif (\count($results) === self::RESULTS_PER_PAGE) {
                     // Stop when we have found a page of results
                     $more = true;
                     break;
@@ -459,7 +459,7 @@ class Select2 extends Html
             if (ini_get('allow_url_fopen')) {
                 $json   = file_get_contents($url);
                 $places = json_decode($json, true);
-            } elseif (function_exists('curl_init')) {
+            } elseif (\function_exists('curl_init')) {
                 $ch = curl_init();
                 curl_setopt($ch, CURLOPT_URL, $url);
                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -469,7 +469,7 @@ class Select2 extends Html
             } else {
                 $places = [];
             }
-            if (isset($places['geonames']) && is_array($places['geonames'])) {
+            if (isset($places['geonames']) && \is_array($places['geonames'])) {
                 foreach ($places['geonames'] as $k => $place) {
                     $place_name = $place['name'] . ', ' . $place['adminName2'] . ', ' . $place['adminName1'] . ', ' . $place['countryName'];
                     if ($place_name === $query) {
@@ -492,8 +492,8 @@ class Select2 extends Html
             ]);
         }
 
-        $more    = count($results) > $offset + self::RESULTS_PER_PAGE;
-        $results = array_slice($results, $offset, self::RESULTS_PER_PAGE);
+        $more    = \count($results) > $offset + self::RESULTS_PER_PAGE;
+        $results = \array_slice($results, $offset, self::RESULTS_PER_PAGE);
 
         return [
             'results'    => $results,
@@ -538,14 +538,14 @@ class Select2 extends Html
             'collation' => I18N::collation(),
         ]);
 
-        while (is_object($row = $cursor->fetch())) {
+        while (\is_object($row = $cursor->fetch())) {
             $repository = Repository::getInstance($row->xref, $tree, $row->gedcom);
             // Filter for privacy
             if ($repository !== null && $repository->canShow()) {
                 if ($offset > 0) {
                     // Skip results
                     $offset--;
-                } elseif (count($results) === self::RESULTS_PER_PAGE) {
+                } elseif (\count($results) === self::RESULTS_PER_PAGE) {
                     // Stop when we have found a page of results
                     $more = true;
                     break;
@@ -603,14 +603,14 @@ class Select2 extends Html
             'collation' => I18N::collation(),
         ]);
 
-        while (is_object($row = $cursor->fetch())) {
+        while (\is_object($row = $cursor->fetch())) {
             $source = Source::getInstance($row->xref, $tree, $row->gedcom);
             // Filter for privacy
             if ($source !== null && $source->canShow()) {
                 if ($offset > 0) {
                     // Skip results
                     $offset--;
-                } elseif (count($results) === self::RESULTS_PER_PAGE) {
+                } elseif (\count($results) === self::RESULTS_PER_PAGE) {
                     // Stop when we have found a page of results
                     $more = true;
                     break;
@@ -673,14 +673,14 @@ class Select2 extends Html
             'collation' => I18N::collation(),
         ]);
 
-        while (is_object($row = $cursor->fetch())) {
+        while (\is_object($row = $cursor->fetch())) {
             $submitter = GedcomRecord::getInstance($row->xref, $tree, $row->gedcom);
             // Filter for privacy
             if ($submitter !== null && $submitter->canShow()) {
                 if ($offset > 0) {
                     // Skip results
                     $offset--;
-                } elseif (count($results) === self::RESULTS_PER_PAGE) {
+                } elseif (\count($results) === self::RESULTS_PER_PAGE) {
                     // Stop when we have found a page of results
                     $more = true;
                     break;

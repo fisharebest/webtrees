@@ -387,7 +387,7 @@ class EditFamilyController extends AbstractEditController
         }
 
         foreach ($old_children as $old_child) {
-            if ($old_child && !in_array($old_child, $new_children)) {
+            if ($old_child && !\in_array($old_child, $new_children)) {
                 // Remove old FAMC link
                 foreach ($old_child->getFacts('FAMC') as $fact) {
                     if ($fact->getTarget() === $family) {
@@ -404,7 +404,7 @@ class EditFamilyController extends AbstractEditController
         }
 
         foreach ($new_children as $new_child) {
-            if ($new_child && !in_array($new_child, $old_children)) {
+            if ($new_child && !\in_array($new_child, $old_children)) {
                 // Add new FAMC link
                 $new_child->createFact('1 FAMC @' . $family->getXref() . '@', true);
                 // Add new CHIL link

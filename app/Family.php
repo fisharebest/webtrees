@@ -278,7 +278,7 @@ class Family extends GedcomRecord
      */
     public function getNumberOfChildren(): int
     {
-        $nchi = count($this->getChildren());
+        $nchi = \count($this->getChildren());
         foreach ($this->getFacts('NCHI') as $fact) {
             $nchi = max($nchi, (int)$fact->getValue());
         }

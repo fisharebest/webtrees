@@ -363,11 +363,11 @@ class EditMediaController extends AbstractEditController
             $gedcom .= "\n1 NOTE " . preg_replace('/\r?\n/', "\n2 CONT ", $note);
         }
 
-        if (in_array($privacy_restriction, self::PRIVACY_RESTRICTIONS)) {
+        if (\in_array($privacy_restriction, self::PRIVACY_RESTRICTIONS)) {
             $gedcom .= "\n1 RESN " . $privacy_restriction;
         }
 
-        if (in_array($edit_restriction, self::EDIT_RESTRICTIONS)) {
+        if (\in_array($edit_restriction, self::EDIT_RESTRICTIONS)) {
             $gedcom .= "\n1 RESN " . $edit_restriction;
         }
 
@@ -629,7 +629,7 @@ class EditMediaController extends AbstractEditController
 
         foreach ($iter as $file) {
             if ($file->isFile()) {
-                $filename = substr($file->getPathname(), strlen($media_dir));
+                $filename = substr($file->getPathname(), \strlen($media_dir));
                 // Older versions of webtrees used a couple of special folders.
                 if (strpos($filename, 'thumbs/') !== 0 && strpos($filename, 'watermarks/') !== 0) {
                     $disk_files[] = $filename;

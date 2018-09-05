@@ -94,7 +94,7 @@ class AdminMediaController extends AbstractBaseController
         $disk_files = $this->allDiskFiles($media_folder, '', 'include', '');
 
         // Check file exists? Maybe it was already deleted or renamed.
-        if (in_array($delete_file, $disk_files)) {
+        if (\in_array($delete_file, $disk_files)) {
             $tmp = WT_DATA_DIR . $media_folder . $delete_file;
             try {
                 unlink($tmp);
@@ -316,7 +316,7 @@ class AdminMediaController extends AbstractBaseController
 
                 // All unused files
                 $unused_files = array_diff($disk_files, $db_files);
-                $recordsTotal = count($unused_files);
+                $recordsTotal = \count($unused_files);
 
                 // Filter unused files
                 if ($search) {
@@ -324,7 +324,7 @@ class AdminMediaController extends AbstractBaseController
                         return strpos($x, $search) !== false;
                     });
                 }
-                $recordsFiltered = count($unused_files);
+                $recordsFiltered = \count($unused_files);
 
                 // Sort files - only option is column 0
                 sort($unused_files);
@@ -334,7 +334,7 @@ class AdminMediaController extends AbstractBaseController
                 }
 
                 // Paginate unused files
-                $unused_files = array_slice($unused_files, $start, $length);
+                $unused_files = \array_slice($unused_files, $start, $length);
 
                 $data = [];
                 foreach ($unused_files as $unused_file) {
@@ -438,7 +438,7 @@ class AdminMediaController extends AbstractBaseController
                 }
 
                 // Validate the folder
-                if (!in_array($folder, $all_folders)) {
+                if (!\in_array($folder, $all_folders)) {
                     break;
                 }
 
@@ -461,7 +461,7 @@ class AdminMediaController extends AbstractBaseController
 
                 // The new filename may have created a new sub-folder.
                 $full_path = WT_DATA_DIR . $folder . $filename;
-                $folder    = dirname($full_path);
+                $folder    = \dirname($full_path);
 
                 // Make sure the media folder exists
                 if (!is_dir($folder)) {

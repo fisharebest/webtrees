@@ -249,7 +249,7 @@ class RelationshipsChartController extends AbstractChartController
         $graph = [];
 
         foreach ($rows as $row) {
-            if (empty($ancestors) || in_array($row->l_from, $ancestors) && !in_array($row->l_to, $exclude)) {
+            if (empty($ancestors) || \in_array($row->l_from, $ancestors) && !\in_array($row->l_to, $exclude)) {
                 $graph[$row->l_from][$row->l_to] = 1;
                 $graph[$row->l_to][$row->l_from] = 1;
             }
@@ -273,15 +273,15 @@ class RelationshipsChartController extends AbstractChartController
             // While there are un-extended paths
             for ($next = current($queue); $next !== false; $next = next($queue)) {
                 // For each family on the path
-                for ($n = count($next['path']) - 2; $n >= 1; $n -= 2) {
+                for ($n = \count($next['path']) - 2; $n >= 1; $n -= 2) {
                     $exclude = $next['exclude'];
-                    if (count($exclude) >= $recursion) {
+                    if (\count($exclude) >= $recursion) {
                         continue;
                     }
                     $exclude[] = $next['path'][$n];
                     sort($exclude);
                     $tmp = implode('-', $exclude);
-                    if (in_array($tmp, $excluded)) {
+                    if (\in_array($tmp, $excluded)) {
                         continue;
                     } else {
                         $excluded[] = $tmp;
@@ -339,7 +339,7 @@ class RelationshipsChartController extends AbstractChartController
         ];
         $relationships = [];
 
-        for ($i = 1, $count = count($path); $i < $count; $i += 2) {
+        for ($i = 1, $count = \count($path); $i < $count; $i += 2) {
             $family = Family::getInstance($path[$i], $tree);
             $prev   = Individual::getInstance($path[$i - 1], $tree);
             $next   = Individual::getInstance($path[$i + 1], $tree);
@@ -388,7 +388,7 @@ class RelationshipsChartController extends AbstractChartController
             $xref2,
         ];
         while (!empty($queue)) {
-            $placeholders = implode(',', array_fill(0, count($queue), '?'));
+            $placeholders = implode(',', array_fill(0, \count($queue), '?'));
             $parameters   = $queue;
             $parameters[] = $tree_id;
 
@@ -403,7 +403,7 @@ class RelationshipsChartController extends AbstractChartController
 
             $queue = [];
             foreach ($parents as $parent) {
-                if (!in_array($parent, $ancestors)) {
+                if (!\in_array($parent, $ancestors)) {
                     $ancestors[] = $parent;
                     $queue[]     = $parent;
                 }

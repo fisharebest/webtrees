@@ -113,7 +113,7 @@ class PlaceHierarchyController extends AbstractBaseController
     private function getList(Tree $tree): array
     {
         $list_places = Place::allPlaces($tree);
-        $numfound    = count($list_places);
+        $numfound    = \count($list_places);
 
         if ($numfound === 0) {
             $columns = [];
@@ -138,7 +138,7 @@ class PlaceHierarchyController extends AbstractBaseController
     private function getHierarchy($tree, $place, $parent)
     {
         $child_places = $place->getChildPlaces();
-        $numfound     = count($child_places);
+        $numfound     = \count($child_places);
 
         if ($numfound > 0) {
             $divisor = $numfound > 20 ? 3 : 2;

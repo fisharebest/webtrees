@@ -34,7 +34,7 @@ class ViewCollector extends DataCollector implements Renderable
      */
     public function addView(string $view, array $data)
     {
-        $num = count($this->views) + 1;
+        $num = \count($this->views) + 1;
         $key = '#' . $num . ' ' . $view;
 
         $this->views[$key] = $this->getDataFormatter()->formatVar($data);
@@ -50,7 +50,7 @@ class ViewCollector extends DataCollector implements Renderable
         $views = $this->views;
 
         return [
-            'count' => count($views),
+            'count' => \count($views),
             'views' => $views,
         ];
     }

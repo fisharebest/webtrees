@@ -145,7 +145,7 @@ class LocalizationService
         $digraphs = self::DIGRAPHS[$this->locale->languageTag()] ?? [];
 
         foreach ($digraphs as $key => $value) {
-            if (substr_compare($text, $key, 0, strlen($key)) === 0) {
+            if (substr_compare($text, $key, 0, \strlen($key)) === 0) {
                 return $value;
             }
         }

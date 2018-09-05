@@ -138,7 +138,7 @@ class Note extends GedcomRecord
             }
 
             list($text) = explode("\n", $text);
-            $this->addName('NOTE', strlen($text) > 100 ? mb_substr($text, 0, 100) . I18N::translate('…') : $text, $this->getGedcom());
+            $this->addName('NOTE', \strlen($text) > 100 ? mb_substr($text, 0, 100) . I18N::translate('…') : $text, $this->getGedcom());
         }
     }
 }

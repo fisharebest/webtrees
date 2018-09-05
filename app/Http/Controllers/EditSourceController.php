@@ -101,7 +101,7 @@ class EditSourceController extends AbstractEditController
             }
         }
 
-        if (in_array($privacy_restriction, [
+        if (\in_array($privacy_restriction, [
             'none',
             'privacy',
             'confidential',
@@ -109,7 +109,7 @@ class EditSourceController extends AbstractEditController
             $gedcom .= "\n1 RESN " . $privacy_restriction;
         }
 
-        if (in_array($edit_restriction, ['locked'])) {
+        if (\in_array($edit_restriction, ['locked'])) {
             $gedcom .= "\n1 RESN " . $edit_restriction;
         }
 

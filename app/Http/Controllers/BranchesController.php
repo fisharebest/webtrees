@@ -206,7 +206,7 @@ class BranchesController extends AbstractBaseController
         foreach ($individuals as $individual) {
             foreach ($individual->getChildFamilies() as $family) {
                 foreach ($family->getSpouses() as $parent) {
-                    if (in_array($parent, $individuals, true)) {
+                    if (\in_array($parent, $individuals, true)) {
                         continue 3;
                     }
                 }

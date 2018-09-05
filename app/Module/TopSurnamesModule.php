@@ -119,7 +119,7 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
         }
 
         if ($template) {
-            $num = count($top_surnames);
+            $num = \count($top_surnames);
             if ($num === 1) {
                 // I18N: i.e. most popular surname.
                 $title = I18N::translate('Top surname');

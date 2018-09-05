@@ -406,7 +406,7 @@ class StatisticsChartController extends AbstractChartController
                         $indi   = [];
                         $fam    = [];
                         foreach ($rows as $row) {
-                            if (!in_array($row->indi, $indi) && !in_array($row->fams, $fam)) {
+                            if (!\in_array($row->indi, $indi) && !\in_array($row->fams, $fam)) {
                                 $this->fillYData($row->month, 0, 1, $x_axis, $z_axis, $ydata);
                             }
                             $indi[] = $row->indi;
@@ -422,7 +422,7 @@ class StatisticsChartController extends AbstractChartController
                         foreach (array_keys($z_axis) as $boundary) {
                             $rows = $stats->statsMarrQuery(false, true, $prev_boundary, $boundary);
                             foreach ($rows as $row) {
-                                if (!in_array($row->indi, $indi) && !in_array($row->fams, $fam)) {
+                                if (!\in_array($row->indi, $indi) && !\in_array($row->fams, $fam)) {
                                     $this->fillYData($row->month, $boundary, 1, $x_axis, $z_axis, $ydata);
                                 }
                                 $indi[] = $row->indi;
@@ -579,7 +579,7 @@ class StatisticsChartController extends AbstractChartController
                             $rows  = $stats->statsMarrAgeQuery(false, $sex);
                             $indi = [];
                             foreach ($rows as $row) {
-                                if (!in_array($row->d_gid, $indi)) {
+                                if (!\in_array($row->d_gid, $indi)) {
                                     $this->fillYData($row->age / self::DAYS_IN_YEAR, 0, 1, $x_axis, $z_axis, $ydata);
                                     $indi[] = $row->d_gid;
                                 }
@@ -592,7 +592,7 @@ class StatisticsChartController extends AbstractChartController
                             $rows  = $stats->statsMarrAgeQuery(false, $sex);
                             $indi = [];
                             foreach ($rows as $row) {
-                                if (!in_array($row->d_gid, $indi)) {
+                                if (!\in_array($row->d_gid, $indi)) {
                                     $this->fillYData($row->age / self::DAYS_IN_YEAR, $sex, 1, $x_axis, $z_axis, $ydata);
                                     $indi[] = $row->d_gid;
                                 }
@@ -609,7 +609,7 @@ class StatisticsChartController extends AbstractChartController
                             foreach (array_keys($z_axis) as $boundary) {
                                 $rows = $stats->statsMarrAgeQuery(false, $sex, $prev_boundary, $boundary);
                                 foreach ($rows as $row) {
-                                    if (!in_array($row->d_gid, $indi)) {
+                                    if (!\in_array($row->d_gid, $indi)) {
                                         $this->fillYData($row->age / self::DAYS_IN_YEAR, $boundary, 1, $x_axis, $z_axis, $ydata);
                                         $indi[] = $row->d_gid;
                                     }
@@ -737,7 +737,7 @@ class StatisticsChartController extends AbstractChartController
             $axis[$boundary - 1] = strip_tags($date->display());
         }
 
-        $date              = new Date('AFT ' . $boundaries[count($boundaries) - 1]);
+        $date              = new Date('AFT ' . $boundaries[\count($boundaries) - 1]);
         $axis[PHP_INT_MAX] = strip_tags($date->display());
 
         return $axis;
@@ -770,7 +770,7 @@ class StatisticsChartController extends AbstractChartController
         }
 
         /* I18N: Label on a graph; 40+ means 40 or more */
-        $axis[PHP_INT_MAX] = I18N::translate('%s+', I18N::number($boundaries[count($boundaries) - 1]));
+        $axis[PHP_INT_MAX] = I18N::translate('%s+', I18N::number($boundaries[\count($boundaries) - 1]));
 
         return $axis;
     }
@@ -848,9 +848,9 @@ class StatisticsChartController extends AbstractChartController
     private function myPlot(string $chart_title, array $x_axis, string $x_axis_title, array $ydata, string $y_axis_title, array $z_axis, int $y_axis_type): string
     {
         // Bar dimensions
-        if (count($ydata) > 3) {
+        if (\count($ydata) > 3) {
             $chbh = '5,1';
-        } elseif (count($ydata) < 2) {
+        } elseif (\count($ydata) < 2) {
             $chbh = '45,1';
         } else {
             $chbh = '20,3';
@@ -859,9 +859,9 @@ class StatisticsChartController extends AbstractChartController
         // Colors for z-axis
         $colors = [];
         $index  = 0;
-        while (count($colors) < count($ydata)) {
+        while (\count($colors) < \count($ydata)) {
             $colors[] = self::Z_AXIS_COLORS[$index];
-            $index    = ($index + 1) % count(self::Z_AXIS_COLORS);
+            $index    = ($index + 1) % \count(self::Z_AXIS_COLORS);
         }
 
         // Convert our sparse dataset into a fixed-size array
@@ -942,7 +942,7 @@ class StatisticsChartController extends AbstractChartController
         ];
 
         // More than one Z axis?  Show a legend for them.
-        if (count($z_axis) > 1) {
+        if (\count($z_axis) > 1) {
             $attributes['chdl'] = implode('|', $z_axis);
         }
 

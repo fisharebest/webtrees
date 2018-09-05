@@ -393,7 +393,7 @@ class Module
         $enabled_modules = Database::prepare("SELECT module_name, status FROM `##module` WHERE status='enabled'")->fetchOneColumn();
 
         return array_filter($modules, function (AbstractModule $module) use ($enabled_modules): bool {
-            return in_array($module->getName(), $enabled_modules);
+            return \in_array($module->getName(), $enabled_modules);
         });
     }
 

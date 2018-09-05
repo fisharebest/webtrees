@@ -62,20 +62,20 @@ class ReportTcpdf extends TCPDF
     public function header()
     {
         foreach ($this->headerElements as $element) {
-            if (is_object($element)) {
+            if (\is_object($element)) {
                 $element->render($this);
-            } elseif (is_string($element) && $element == 'footnotetexts') {
+            } elseif (\is_string($element) && $element == 'footnotetexts') {
                 $this->footnotes();
-            } elseif (is_string($element) && $element == 'addpage') {
+            } elseif (\is_string($element) && $element == 'addpage') {
                 $this->newPage();
             }
         }
         foreach ($this->pageHeaderElements as $element) {
-            if (is_object($element)) {
+            if (\is_object($element)) {
                 $element->render($this);
-            } elseif (is_string($element) && $element == 'footnotetexts') {
+            } elseif (\is_string($element) && $element == 'footnotetexts') {
                 $this->footnotes();
-            } elseif (is_string($element) && $element == 'addpage') {
+            } elseif (\is_string($element) && $element == 'addpage') {
                 $this->newPage();
             }
         }
@@ -90,11 +90,11 @@ class ReportTcpdf extends TCPDF
     {
         $this->AddPage();
         foreach ($this->bodyElements as $key => $element) {
-            if (is_object($element)) {
+            if (\is_object($element)) {
                 $element->render($this);
-            } elseif (is_string($element) && $element == 'footnotetexts') {
+            } elseif (\is_string($element) && $element == 'footnotetexts') {
                 $this->footnotes();
-            } elseif (is_string($element) && $element == 'addpage') {
+            } elseif (\is_string($element) && $element == 'addpage') {
                 $this->newPage();
             }
             // Delete used elements in hope to reduce 'some' memory usage
@@ -128,11 +128,11 @@ class ReportTcpdf extends TCPDF
     public function footer()
     {
         foreach ($this->footerElements as $element) {
-            if (is_object($element)) {
+            if (\is_object($element)) {
                 $element->render($this);
-            } elseif (is_string($element) && $element == 'footnotetexts') {
+            } elseif (\is_string($element) && $element == 'footnotetexts') {
                 $this->footnotes();
-            } elseif (is_string($element) && $element == 'addpage') {
+            } elseif (\is_string($element) && $element == 'addpage') {
                 $this->newPage();
             }
         }
@@ -149,7 +149,7 @@ class ReportTcpdf extends TCPDF
     {
         $this->headerElements[] = $element;
 
-        return count($this->headerElements) - 1;
+        return \count($this->headerElements) - 1;
     }
 
     /**
@@ -163,7 +163,7 @@ class ReportTcpdf extends TCPDF
     {
         $this->pageHeaderElements[] = $element;
 
-        return count($this->pageHeaderElements) - 1;
+        return \count($this->pageHeaderElements) - 1;
     }
 
     /**
@@ -177,7 +177,7 @@ class ReportTcpdf extends TCPDF
     {
         $this->bodyElements[] = $element;
 
-        return count($this->bodyElements) - 1;
+        return \count($this->bodyElements) - 1;
     }
 
     /**
@@ -191,7 +191,7 @@ class ReportTcpdf extends TCPDF
     {
         $this->footerElements[] = $element;
 
-        return count($this->footerElements) - 1;
+        return \count($this->footerElements) - 1;
     }
 
     /**
@@ -393,7 +393,7 @@ class ReportTcpdf extends TCPDF
      */
     public function checkFootnote($footnote): bool
     {
-        $ct  = count($this->printedfootnotes);
+        $ct  = \count($this->printedfootnotes);
         $val = $footnote->getValue();
         $i   = 0;
         while ($i < $ct) {

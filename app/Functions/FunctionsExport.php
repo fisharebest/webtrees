@@ -278,7 +278,7 @@ class FunctionsExport
                 $rec = utf8_decode($rec);
             }
             $buffer .= self::reformatRecord($rec);
-            if (strlen($buffer) > 65536) {
+            if (\strlen($buffer) > 65536) {
                 fwrite($gedout, $buffer);
                 $buffer = '';
             }
@@ -297,7 +297,7 @@ class FunctionsExport
                 $rec = utf8_decode($rec);
             }
             $buffer .= self::reformatRecord($rec);
-            if (strlen($buffer) > 65536) {
+            if (\strlen($buffer) > 65536) {
                 fwrite($gedout, $buffer);
                 $buffer = '';
             }

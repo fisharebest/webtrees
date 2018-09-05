@@ -570,7 +570,7 @@ class FunctionsImport
                     // Strip off the user-defined path prefix
                     $GEDCOM_MEDIA_PATH = $tree->getPreference('GEDCOM_MEDIA_PATH');
                     if ($GEDCOM_MEDIA_PATH && strpos($data, $GEDCOM_MEDIA_PATH) === 0) {
-                        $data = substr($data, strlen($GEDCOM_MEDIA_PATH));
+                        $data = substr($data, \strlen($GEDCOM_MEDIA_PATH));
                     }
                     // convert backslashes in filenames to forward slashes
                     $data = preg_replace("/\\\/", '/', $data);
@@ -961,7 +961,7 @@ class FunctionsImport
             $data = [];
             foreach ($matches as $match) {
                 // Include each link once only.
-                if (!in_array($match[1] . $match[2], $data)) {
+                if (!\in_array($match[1] . $match[2], $data)) {
                     $data[] = $match[1] . $match[2];
                     // Ignore any errors, which may be caused by "duplicates" that differ on case/collation, e.g. "S1" and "s1"
                     try {

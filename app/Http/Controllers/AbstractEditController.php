@@ -77,7 +77,7 @@ abstract class AbstractEditController extends AbstractBaseController
         $inSOUR    = false;
         $levelSOUR = 0;
 
-        for ($i = 0; $i < count($this->glevels); $i++) {
+        for ($i = 0; $i < \count($this->glevels); $i++) {
             if ($inSOUR) {
                 if ($levelSOUR < $this->glevels[$i]) {
                     $dest = 'S';
@@ -120,7 +120,7 @@ abstract class AbstractEditController extends AbstractBaseController
      */
     protected function updateRest($inputRec, $levelOverride = 'no'): string
     {
-        if (count($this->tagRest) === 0) {
+        if (\count($this->tagRest) === 0) {
             return $inputRec; // No update required
         }
 
@@ -173,13 +173,13 @@ abstract class AbstractEditController extends AbstractBaseController
      */
     protected function handleUpdates($newged, $levelOverride = 'no'): string
     {
-        if ($levelOverride === 'no' || count($this->glevels) === 0) {
+        if ($levelOverride === 'no' || \count($this->glevels) === 0) {
             $levelAdjust = 0;
         } else {
             $levelAdjust = $levelOverride - $this->glevels[0];
         }
 
-        for ($j = 0; $j < count($this->glevels); $j++) {
+        for ($j = 0; $j < \count($this->glevels); $j++) {
             // Look for empty SOUR reference with non-empty sub-records.
             // This can happen when the SOUR entry is deleted but its sub-records
             // were incorrectly left intact.
@@ -187,7 +187,7 @@ abstract class AbstractEditController extends AbstractBaseController
             if ($this->tag[$j] === 'SOUR' && ($this->text[$j] === '@@' || $this->text[$j] === '')) {
                 $this->text[$j] = '';
                 $k              = $j + 1;
-                while (($k < count($this->glevels)) && ($this->glevels[$k] > $this->glevels[$j])) {
+                while (($k < \count($this->glevels)) && ($this->glevels[$k] > $this->glevels[$j])) {
                     $this->text[$k] = '';
                     $k++;
                 }
@@ -200,7 +200,7 @@ abstract class AbstractEditController extends AbstractBaseController
                 //-- this section checks if they have subrecords
                 $k    = $j + 1;
                 $pass = false;
-                while (($k < count($this->glevels)) && ($this->glevels[$k] > $this->glevels[$j])) {
+                while (($k < \count($this->glevels)) && ($this->glevels[$k] > $this->glevels[$j])) {
                     if ($this->text[$k] !== '') {
                         if (($this->tag[$j] !== 'OBJE') || ($this->tag[$k] === 'FILE')) {
                             $pass = true;
@@ -297,7 +297,7 @@ abstract class AbstractEditController extends AbstractBaseController
      */
     protected function updateSource($inputRec, $levelOverride = 'no'): string
     {
-        if (count($this->tagSOUR) === 0) {
+        if (\count($this->tagSOUR) === 0) {
             return $inputRec; // No update required
         }
 

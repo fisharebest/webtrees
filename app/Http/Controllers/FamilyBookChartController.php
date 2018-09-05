@@ -191,7 +191,7 @@ class FamilyBookChartController extends AbstractChartController
                     $numkids += $kids;
                     echo '</td>';
                     // Print the lines
-                    if (count($children) > 1) {
+                    if (\count($children) > 1) {
                         if ($i === 0) {
                             // Adjust for the first column on left
                             $h = round(((($this->box->height) * $kids) + 8) / 2); // Assumes border = 1 and padding = 3
@@ -201,7 +201,7 @@ class FamilyBookChartController extends AbstractChartController
                             }
                             echo '<td class="align-bottom">',
                             '<img id="vline_', $child->getXref(), '" src="', Theme::theme()->parameter('image-vline'), '" width="3" height="', $h - 4, '"></td>';
-                        } elseif ($i === count($children) - 1) {
+                        } elseif ($i === \count($children) - 1) {
                             // Adjust for the first column on left
                             $h = round(((($this->box->height) * $kids) + 8) / 2);
                             // Adjust for other vertical columns
@@ -278,7 +278,7 @@ class FamilyBookChartController extends AbstractChartController
         //
         //Prints empty table columns for children w/o parents up to the max generation
         //This allows vertical line spacing to be consistent
-        if (count($person->getChildFamilies()) == 0) {
+        if (\count($person->getChildFamilies()) == 0) {
             echo '<table cellspacing="0" cellpadding="0" border="0" >';
             $this->printEmptyBox();
 
@@ -300,7 +300,7 @@ class FamilyBookChartController extends AbstractChartController
             $famcount = 0;
             if ($this->show_spouse) {
                 // count number of spouses
-                $famcount += count($person->getSpouseFamilies());
+                $famcount += \count($person->getSpouseFamilies());
             }
             $savlh = $lh; // Save current line height
             if ($count == 1 && $genoffset <= $famcount) {
