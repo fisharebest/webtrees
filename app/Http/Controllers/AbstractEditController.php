@@ -233,8 +233,9 @@ abstract class AbstractEditController extends AbstractBaseController
     /**
      * Create a form to add a new fact.
      *
-     * @param Tree   $tree
-     * @param string $fact
+     * @param Request $request
+     * @param Tree    $tree
+     * @param string  $fact
      *
      * @return string
      */

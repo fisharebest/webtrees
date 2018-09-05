@@ -5730,6 +5730,8 @@ class Stats
     /**
      * @param int $number_of_surnames
      *
+     * @param int $threshold
+     *
      * @return array
      */
     private function topSurnames(int $number_of_surnames, int $threshold): array
