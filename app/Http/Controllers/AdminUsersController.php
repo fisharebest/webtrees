@@ -122,7 +122,7 @@ class AdminUsersController extends AbstractBaseController
 
         $all_users = User::all();
 
-        $page_size = (int)$user->getPreference(' admin_users_page_size', 10);
+        $page_size = (int) $user->getPreference(' admin_users_page_size', '10');
 
         $title = I18N::translate('User administration');
 
