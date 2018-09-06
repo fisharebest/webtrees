@@ -847,7 +847,7 @@ class ListController extends AbstractBaseController
         // show the full alphabet, rather than omitting rare letters such as X
         foreach ($this->localization_service->alphabet() as $letter) {
             $count           = Database::prepare($sql . " AND " . $this->getInitialSql('n_givn', $letter))->fetchOne();
-            $alphas[$letter] = $count;
+            $alphas[$letter] = (int) $count;
         }
 
         // Now fetch initial letters that are not in our alphabet,
@@ -884,7 +884,7 @@ class ListController extends AbstractBaseController
         $sql .= " GROUP BY UPPER(LEFT(n_givn, 1))) AS subquery ORDER BY initial = '@', initial = '', initial";
 
         foreach (Database::prepare($sql)->execute($args)->fetchAssoc() as $alpha => $count) {
-            $alphas[$alpha] = $count;
+            $alphas[$alpha] = (int) $count;
         }
 
         return $alphas;
