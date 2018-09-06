@@ -88,7 +88,7 @@
 												<?= e($managed_tree->getTitle()) ?>
 											</span>
 										</a>
-										<form name="delete_form<?= $managed_tree->getTreeId() ?>" method="post" action="<?= route('admin-trees-delete', ['ged' => $tree->getName()]) ?>">
+										<form name="delete_form<?= $managed_tree->getTreeId() ?>" method="post" action="<?= route('admin-trees-delete', ['ged' => $managed_tree->getName()]) ?>">
 											<?= csrf_field() ?>
 											<!-- A11Y - forms need submit buttons, but they look ugly here -->
 											<button class="sr-only" data-confirm="<?= I18N::translate('Are you sure you want to delete “%s”?', e($managed_tree->getTitle())) ?>" onclick="return confirm(this.dataset.confirm)" type="submit">
