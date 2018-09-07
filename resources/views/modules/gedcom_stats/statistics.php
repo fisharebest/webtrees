@@ -210,7 +210,7 @@
 						<?= I18N::translate('Family with the most children') ?>
 					</th>
 					<td>
-						<?= I18N::plural('%s child', '%s children', $stats->largestFamilySize(), I18N::number($stats->largestFamilySize())) ?>
+						<?= e($stats->largestFamilySize()) ?>
 						<br>
 						<?= $stats->largestFamily() ?>
 					</td>
