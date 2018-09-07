@@ -143,7 +143,7 @@ class PedigreeChartController extends AbstractChartController
 
         $this->root = $individual;
 
-        $this->treesize = pow(2, $this->generations) - 1;
+        $this->treesize = (2 ** $this->generations) - 1;
 
         // sosaAncestors() starts array at index 1 we need to start at 0
         $this->nodes = array_map(function ($item) {
@@ -189,18 +189,18 @@ class PedigreeChartController extends AbstractChartController
 
         for ($i = ($this->treesize - 1); $i >= 0; $i--) {
             // -- check to see if we have moved to the next generation
-            if ($i < (int)($this->treesize / pow(2, $curgen))) {
+            if ($i < (int)($this->treesize / (2 ** $curgen))) {
                 $curgen++;
             }
 
             // -- box position in current generation
-            $boxpos = $i - pow(2, $this->generations - $curgen);
+            $boxpos = $i - (2 ** ($this->generations - $curgen));
             // -- offset multiple for current generation
             if ($this->orientation < self::OLDEST_AT_TOP) {
-                $genoffset  = pow(2, $curgen - $this->orientation);
+                $genoffset  = 2 ** ($curgen - $this->orientation);
                 $boxspacing = Theme::theme()->parameter('chart-box-y') + $byspacing;
             } else {
-                $genoffset  = pow(2, $curgen - 1);
+                $genoffset  = 2 ** ($curgen - 1);
                 $boxspacing = Theme::theme()->parameter('chart-box-x') + $byspacing;
             }
             // -- calculate the yoffset position in the generation put child between parents
@@ -232,7 +232,7 @@ class PedigreeChartController extends AbstractChartController
                             if ($pgen > 3) {
                                 $temp = 0;
                                 for ($j = 1; $j < ($pgen - 2); $j++) {
-                                    $temp += (pow(2, $j) - 1);
+                                    $temp += ((2 ** $j) - 1);
                                 }
                                 if ($parent % 2 == 0) {
                                     $yoffset = $yoffset - (($boxspacing / 2) * $temp);
@@ -245,7 +245,7 @@ class PedigreeChartController extends AbstractChartController
                         if ($curgen > 3) {
                             $temp = 0;
                             for ($j = 1; $j < ($curgen - 2); $j++) {
-                                $temp += (pow(2, $j) - 1);
+                                $temp += ((2 ** $j) - 1);
                             }
                             if ($i % 2 == 0) {
                                 $yoffset = $yoffset - (($boxspacing / 2) * $temp);
@@ -254,7 +254,7 @@ class PedigreeChartController extends AbstractChartController
                             }
                         }
                     }
-                    $yoffset -= (($boxspacing / 2) * pow(2, ($this->generations - 2)) - ($boxspacing / 2));
+                    $yoffset -= (($boxspacing / 2) * (2 ** ($this->generations - 2)) - ($boxspacing / 2));
                     break;
                 case self::LANDSCAPE:
                     $xoffset = ($this->generations - $curgen) * (Theme::theme()->parameter('chart-box-x') + $bxspacing);

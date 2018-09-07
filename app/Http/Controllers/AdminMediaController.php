@@ -578,7 +578,7 @@ class AdminMediaController extends AbstractBaseController
 
         // $dir comes from the database. The actual folder may not exist.
         if (is_dir($dir)) {
-            foreach (scandir($dir) as $path) {
+            foreach (scandir($dir,SCANDIR_SORT_NONE) as $path) {
                 if (is_dir($dir . $path)) {
                     // What if there are user-defined subfolders “thumbs” or “watermarks”?
                     if ($path != '.' && $path != '..' && $path != 'thumbs' && $path != 'watermark' && $recursive) {
