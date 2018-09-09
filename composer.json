@@ -17,33 +17,27 @@
 		"ext-gd": "*",
 		"ext-iconv": "*",
 		"ext-mbstring": "*",
+        "ext-json": "*",
 		"ext-pcre": "*",
 		"ext-pdo": "*",
 		"ext-pdo_mysql": "*",
 		"ext-session": "*",
 		"ext-simplexml": "*",
 		"ext-xml": "*",
-		"ezyang/htmlpurifier": "4.*",
-		"fisharebest/algorithm": "1.*",
-		"fisharebest/ext-calendar": "2.*",
-		"fisharebest/localization": "1.*",
-		"fisharebest/php-polyfill": "1.*",
-		"michelf/php-markdown": "1.*",
-		"lutana/pclzip": "2.*",
-		"rhumsaa/uuid": "2.*",
+		"ezyang/htmlpurifier": "~4.10",
+		"fisharebest/algorithm": "~1.5",
+		"fisharebest/ext-calendar": "~2.4",
+		"fisharebest/localization": "~1.11",
+		"fisharebest/php-polyfill": "~1.5",
+		"michelf/php-markdown": "~1.8",
+		"lutana/pclzip": "2.8.2.1",
+		"ramsey/uuid": "~2.9",
 		"swiftmailer/swiftmailer": "~5.0",
-		"tecnickcom/tcpdf": "6.*"
+		"tecnickcom/tcpdf": "~6.2"
 	},
 	"require-dev": {
-		"fabpot/php-cs-fixer": "*",
 		"mockery/mockery": "*",
-		"phpdocumentor/phpdocumentor": "*",
-		"phpunit/phpunit": "*",
-		"satooshi/php-coveralls": "~1.0"
-	},
-	"extra": {
-		"branch-alias": {
-			"dev-master": "1.8-dev"
-		}
+        "phpunit/phpunit": "<6.0",
+		"php-coveralls/php-coveralls": "*"
 	}
 }
