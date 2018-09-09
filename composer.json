@@ -96,7 +96,7 @@
             "@composer global require vimeo/psalm=*"
         ],
         "webtrees-mo": [
-            "for FILE in language/*.po; do msgfmt --output=$(basename $FILE .po).mo $FILE; done",
+            "for FILE in language/*.po; do msgfmt --output=$(dirname $FILE)/$(basename $FILE .po).mo $FILE; done",
             "rm -Rf data/cache/language*"
         ],
         "webtrees-po": [
