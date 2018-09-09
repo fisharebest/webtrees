@@ -7,19 +7,23 @@ use Fisharebest\Localization\Territory\TerritoryLv;
  * Class LanguageLv - Representation of the Latvian language.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2015 Greg Roach
+ * @copyright (c) 2018 Greg Roach
  * @license   GPLv3+
  */
-class LanguageLv extends AbstractLanguage implements LanguageInterface {
-	public function code() {
-		return 'lv';
-	}
+class LanguageLv extends AbstractLanguage implements LanguageInterface
+{
+    public function code()
+    {
+        return 'lv';
+    }
 
-	public function defaultTerritory() {
-		return new TerritoryLv;
-	}
+    public function defaultTerritory()
+    {
+        return new TerritoryLv();
+    }
 
-	public function pluralRule() {
-		return new PluralRule3;
-	}
+    public function pluralRule()
+    {
+        return new PluralRule3();
+    }
 }

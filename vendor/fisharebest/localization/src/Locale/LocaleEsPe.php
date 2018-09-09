@@ -5,12 +5,14 @@ use Fisharebest\Localization\Territory\TerritoryPe;
 /**
  * Class LocaleEsPe
  *
- * @author        Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2015 Greg Roach
- * @license       GPLv3+
+ * @author    Greg Roach <fisharebest@gmail.com>
+ * @copyright (c) 2018 Greg Roach
+ * @license   GPLv3+
  */
-class LocaleEsPe extends LocaleEs {
-	public function territory() {
-		return new TerritoryPe;
-	}
+class LocaleEsPe extends LocaleEs
+{
+    public function territory()
+    {
+        return new TerritoryPe();
+    }
 }

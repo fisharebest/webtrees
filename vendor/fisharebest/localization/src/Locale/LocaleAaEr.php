@@ -5,12 +5,14 @@ use Fisharebest\Localization\Territory\TerritoryEr;
 /**
  * Class LocaleAaEr
  *
- * @author        Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2015 Greg Roach
- * @license       GPLv3+
+ * @author    Greg Roach <fisharebest@gmail.com>
+ * @copyright (c) 2018 Greg Roach
+ * @license   GPLv3+
  */
-class LocaleAaEr extends LocaleAa implements LocaleInterface {
-	public function territory() {
-		return new TerritoryEr;
-	}
+class LocaleAaEr extends LocaleAa
+{
+    public function territory()
+    {
+        return new TerritoryEr();
+    }
 }

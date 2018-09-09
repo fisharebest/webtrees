@@ -4,11 +4,13 @@
  * Class AbstractTerritory - Representation of the territory TG - Togo.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2015 Greg Roach
+ * @copyright (c) 2018 Greg Roach
  * @license   GPLv3+
  */
-class TerritoryTg extends AbstractTerritory implements TerritoryInterface {
-	public function code() {
-		return 'TG';
-	}
+class TerritoryTg extends AbstractTerritory implements TerritoryInterface
+{
+    public function code()
+    {
+        return 'TG';
+    }
 }

@@ -5,24 +5,29 @@ use Fisharebest\Localization\Language\LanguageDz;
 /**
  * Class LocaleDz - Dzongkha
  *
- * @author        Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2015 Greg Roach
- * @license       GPLv3+
+ * @author    Greg Roach <fisharebest@gmail.com>
+ * @copyright (c) 2018 Greg Roach
+ * @license   GPLv3+
  */
-class LocaleDz extends AbstractLocale implements LocaleInterface {
-	protected function digitsGroup() {
-		return 2;
-	}
+class LocaleDz extends AbstractLocale implements LocaleInterface
+{
+    protected function digitsGroup()
+    {
+        return 2;
+    }
 
-	public function endonym() {
-		return 'རྫོང་ཁ';
-	}
+    public function endonym()
+    {
+        return 'རྫོང་ཁ';
+    }
 
-	public function language() {
-		return new LanguageDz;
-	}
+    public function language()
+    {
+        return new LanguageDz();
+    }
 
-	protected function percentFormat() {
-		return '%s' . self::NBSP . self::PERCENT;
-	}
+    protected function percentFormat()
+    {
+        return self::PLACEHOLDER . self::NBSP . self::PERCENT;
+    }
 }

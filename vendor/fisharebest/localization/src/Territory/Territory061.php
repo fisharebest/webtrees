@@ -4,11 +4,13 @@
  * Class AbstractTerritory - Representation of the territory 061 - Polynesia.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2015 Greg Roach
+ * @copyright (c) 2018 Greg Roach
  * @license   GPLv3+
  */
-class Territory061 extends AbstractTerritory implements TerritoryInterface {
-	public function code() {
-		return '061';
-	}
+class Territory061 extends AbstractTerritory implements TerritoryInterface
+{
+    public function code()
+    {
+        return '061';
+    }
 }

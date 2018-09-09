@@ -4,27 +4,48 @@
  * Class AbstractTerritory - Representation of a geographic area.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2015 Greg Roach
+ * @copyright (c) 2018 Greg Roach
  * @license   GPLv3+
  */
-abstract class AbstractTerritory {
-	public function firstDay() {
-		return 1;
-	}
+abstract class AbstractTerritory
+{
+    /**
+     * @return int
+     */
+    public function firstDay()
+    {
+        return 1;
+    }
 
-	public function measurementSystem() {
-		return 'metric';
-	}
+    /**
+     * @return string
+     */
+    public function measurementSystem()
+    {
+        return 'metric';
+    }
 
-	public function paperSize() {
-		return 'A4';
-	}
+    /**
+     * @return string
+     */
+    public function paperSize()
+    {
+        return 'A4';
+    }
 
-	public function weekendStart() {
-		return 6;
-	}
+    /**
+     * @return int
+     */
+    public function weekendStart()
+    {
+        return 6;
+    }
 
-	public function weekendEnd() {
-		return 0;
-	}
+    /**
+     * @return int
+     */
+    public function weekendEnd()
+    {
+        return 0;
+    }
 }

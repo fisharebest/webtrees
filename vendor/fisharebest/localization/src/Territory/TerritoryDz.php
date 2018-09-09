@@ -4,23 +4,28 @@
  * Class AbstractTerritory - Representation of the territory DZ - Algeria.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2015 Greg Roach
+ * @copyright (c) 2018 Greg Roach
  * @license   GPLv3+
  */
-class TerritoryDz extends AbstractTerritory implements TerritoryInterface {
-	public function code() {
-		return 'DZ';
-	}
+class TerritoryDz extends AbstractTerritory implements TerritoryInterface
+{
+    public function code()
+    {
+        return 'DZ';
+    }
 
-	public function firstDay() {
-		return 6;
-	}
+    public function firstDay()
+    {
+        return 6;
+    }
 
-	public function weekendStart() {
-		return 5;
-	}
+    public function weekendStart()
+    {
+        return 5;
+    }
 
-	public function weekendEnd() {
-		return 6;
-	}
+    public function weekendEnd()
+    {
+        return 6;
+    }
 }

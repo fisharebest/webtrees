@@ -1,6 +1,9 @@
 CHANGE LOG
 ==========
 
+## 1.6.0 (2018-09-09)
+ - Update dependencies
+
 ## 1.5.0 (2018-05-11)
  - Update dependencies
 

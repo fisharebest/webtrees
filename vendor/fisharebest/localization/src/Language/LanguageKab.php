@@ -7,19 +7,23 @@ use Fisharebest\Localization\Territory\TerritoryDz;
  * Class LanguageKab - Representation of the Kabyle language.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2015 Greg Roach
+ * @copyright (c) 2018 Greg Roach
  * @license   GPLv3+
  */
-class LanguageKab extends AbstractLanguage implements LanguageInterface {
-	public function code() {
-		return 'kab';
-	}
+class LanguageKab extends AbstractLanguage implements LanguageInterface
+{
+    public function code()
+    {
+        return 'kab';
+    }
 
-	public function defaultTerritory() {
-		return new TerritoryDz;
-	}
+    public function defaultTerritory()
+    {
+        return new TerritoryDz();
+    }
 
-	public function pluralRule() {
-		return new PluralRule2;
-	}
+    public function pluralRule()
+    {
+        return new PluralRule2();
+    }
 }

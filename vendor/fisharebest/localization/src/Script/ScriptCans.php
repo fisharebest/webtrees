@@ -4,19 +4,23 @@
  * Class ScriptCans - Representation of the Unified Canadian Aboriginal Syllabics script.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2015 Greg Roach
+ * @copyright (c) 2018 Greg Roach
  * @license   GPLv3+
  */
-class ScriptCans extends AbstractScript implements ScriptInterface {
-	public function code() {
-		return 'Cans';
-	}
+class ScriptCans extends AbstractScript implements ScriptInterface
+{
+    public function code()
+    {
+        return 'Cans';
+    }
 
-	public function number() {
-		return '440';
-	}
+    public function number()
+    {
+        return '440';
+    }
 
-	public function unicodeName() {
-		return 'Canadian_Aboriginal';
-	}
+    public function unicodeName()
+    {
+        return 'Canadian_Aboriginal';
+    }
 }

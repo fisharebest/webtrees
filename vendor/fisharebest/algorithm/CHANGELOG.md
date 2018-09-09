@@ -1,6 +1,10 @@
 CHANGE LOG
 ==========
 
+## 1.5.0 (2018-09-07)
+ - Fix compatibility with PHP5.3
+ - Adopt PSR12 code style
+
 ## 1.4.0 (2017-08-21)
  - each() is deprecated in PHP7.2
 

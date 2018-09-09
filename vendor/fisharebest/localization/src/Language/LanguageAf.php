@@ -7,19 +7,23 @@ use Fisharebest\Localization\Territory\TerritoryZa;
  * Class LanguageAf - Representation of the Afrikaans language.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2015 Greg Roach
+ * @copyright (c) 2018 Greg Roach
  * @license   GPLv3+
  */
-class LanguageAf extends AbstractLanguage implements LanguageInterface {
-	public function code() {
-		return 'af';
-	}
+class LanguageAf extends AbstractLanguage implements LanguageInterface
+{
+    public function code()
+    {
+        return 'af';
+    }
 
-	public function defaultTerritory() {
-		return new TerritoryZa;
-	}
+    public function defaultTerritory()
+    {
+        return new TerritoryZa();
+    }
 
-	public function pluralRule() {
-		return new PluralRule1;
-	}
+    public function pluralRule()
+    {
+        return new PluralRule1();
+    }
 }

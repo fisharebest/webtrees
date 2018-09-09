@@ -5,20 +5,24 @@ use Fisharebest\Localization\Language\LanguageSo;
 /**
  * Class LocaleSo - Somali
  *
- * @author        Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2015 Greg Roach
- * @license       GPLv3+
+ * @author    Greg Roach <fisharebest@gmail.com>
+ * @copyright (c) 2018 Greg Roach
+ * @license   GPLv3+
  */
-class LocaleSo extends AbstractLocale implements LocaleInterface {
-	public function endonym() {
-		return 'Soomaali';
-	}
+class LocaleSo extends AbstractLocale implements LocaleInterface
+{
+    public function endonym()
+    {
+        return 'Soomaali';
+    }
 
-	public function endonymSortable() {
-		return 'SOOMAALI';
-	}
+    public function endonymSortable()
+    {
+        return 'SOOMAALI';
+    }
 
-	public function language() {
-		return new LanguageSo;
-	}
+    public function language()
+    {
+        return new LanguageSo();
+    }
 }

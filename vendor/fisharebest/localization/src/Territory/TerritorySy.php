@@ -4,23 +4,28 @@
  * Class AbstractTerritory - Representation of the territory SY - Syrian Arab Republic.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2015 Greg Roach
+ * @copyright (c) 2018 Greg Roach
  * @license   GPLv3+
  */
-class TerritorySy extends AbstractTerritory implements TerritoryInterface {
-	public function code() {
-		return 'SY';
-	}
+class TerritorySy extends AbstractTerritory implements TerritoryInterface
+{
+    public function code()
+    {
+        return 'SY';
+    }
 
-	public function firstDay() {
-		return 6;
-	}
+    public function firstDay()
+    {
+        return 6;
+    }
 
-	public function weekendStart() {
-		return 5;
-	}
+    public function weekendStart()
+    {
+        return 5;
+    }
 
-	public function weekendEnd() {
-		return 6;
-	}
+    public function weekendEnd()
+    {
+        return 6;
+    }
 }

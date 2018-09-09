@@ -5,20 +5,24 @@ use Fisharebest\Localization\Language\LanguageVo;
 /**
  * Class LocaleVo - Volapük
  *
- * @author        Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2015 Greg Roach
- * @license       GPLv3+
+ * @author    Greg Roach <fisharebest@gmail.com>
+ * @copyright (c) 2018 Greg Roach
+ * @license   GPLv3+
  */
-class LocaleVo extends AbstractLocale implements LocaleInterface {
-	public function endonym() {
-		return 'Volapük';
-	}
+class LocaleVo extends AbstractLocale implements LocaleInterface
+{
+    public function endonym()
+    {
+        return 'Volapük';
+    }
 
-	public function endonymSortable() {
-		return 'VOLAPUK';
-	}
+    public function endonymSortable()
+    {
+        return 'VOLAPUK';
+    }
 
-	public function language() {
-		return new LanguageVo;
-	}
+    public function language()
+    {
+        return new LanguageVo();
+    }
 }

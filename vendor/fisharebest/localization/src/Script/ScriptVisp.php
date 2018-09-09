@@ -4,15 +4,18 @@
  * Class ScriptVisp - Representation of the Visible Speech script.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2015 Greg Roach
+ * @copyright (c) 2018 Greg Roach
  * @license   GPLv3+
  */
-class ScriptVisp extends AbstractScript implements ScriptInterface {
-	public function code() {
-		return 'Visp';
-	}
+class ScriptVisp extends AbstractScript implements ScriptInterface
+{
+    public function code()
+    {
+        return 'Visp';
+    }
 
-	public function number() {
-		return '280';
-	}
+    public function number()
+    {
+        return '280';
+    }
 }

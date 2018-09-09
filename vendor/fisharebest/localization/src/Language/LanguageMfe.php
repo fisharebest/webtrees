@@ -7,19 +7,23 @@ use Fisharebest\Localization\Territory\TerritoryMu;
  * Class LanguageMfe - Representation of the Morisyen language.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2015 Greg Roach
+ * @copyright (c) 2018 Greg Roach
  * @license   GPLv3+
  */
-class LanguageMfe extends AbstractLanguage implements LanguageInterface {
-	public function code() {
-		return 'mfe';
-	}
+class LanguageMfe extends AbstractLanguage implements LanguageInterface
+{
+    public function code()
+    {
+        return 'mfe';
+    }
 
-	public function defaultTerritory() {
-		return new TerritoryMu;
-	}
+    public function defaultTerritory()
+    {
+        return new TerritoryMu();
+    }
 
-	public function pluralRule() {
-		return new PluralRule2;
-	}
+    public function pluralRule()
+    {
+        return new PluralRule2();
+    }
 }

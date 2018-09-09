@@ -4,15 +4,18 @@
  * Class ScriptLatf - Representation of the Latin (Fraktur variant) script.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2015 Greg Roach
+ * @copyright (c) 2018 Greg Roach
  * @license   GPLv3+
  */
-class ScriptLatf extends AbstractScript implements ScriptInterface {
-	public function code() {
-		return 'Latf';
-	}
+class ScriptLatf extends AbstractScript implements ScriptInterface
+{
+    public function code()
+    {
+        return 'Latf';
+    }
 
-	public function number() {
-		return '217';
-	}
+    public function number()
+    {
+        return '217';
+    }
 }

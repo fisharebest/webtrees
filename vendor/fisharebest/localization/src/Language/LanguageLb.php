@@ -7,19 +7,23 @@ use Fisharebest\Localization\Territory\TerritoryLu;
  * Class LanguageLb - Representation of the Luxembourgish language.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2015 Greg Roach
+ * @copyright (c) 2018 Greg Roach
  * @license   GPLv3+
  */
-class LanguageLb extends AbstractLanguage implements LanguageInterface {
-	public function code() {
-		return 'lb';
-	}
+class LanguageLb extends AbstractLanguage implements LanguageInterface
+{
+    public function code()
+    {
+        return 'lb';
+    }
 
-	public function defaultTerritory() {
-		return new TerritoryLu;
-	}
+    public function defaultTerritory()
+    {
+        return new TerritoryLu();
+    }
 
-	public function pluralRule() {
-		return new PluralRule1;
-	}
+    public function pluralRule()
+    {
+        return new PluralRule1();
+    }
 }

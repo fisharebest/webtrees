@@ -6,15 +6,18 @@ use Fisharebest\Localization\Territory\TerritoryPe;
  * Class LanguageQu - Representation of the Quechua language.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2015 Greg Roach
+ * @copyright (c) 2018 Greg Roach
  * @license   GPLv3+
  */
-class LanguageQu extends AbstractLanguage implements LanguageInterface {
-	public function code() {
-		return 'qu';
-	}
+class LanguageQu extends AbstractLanguage implements LanguageInterface
+{
+    public function code()
+    {
+        return 'qu';
+    }
 
-	public function defaultTerritory() {
-		return new TerritoryPe;
-	}
+    public function defaultTerritory()
+    {
+        return new TerritoryPe();
+    }
 }

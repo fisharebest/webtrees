@@ -16,7 +16,7 @@ the [Unicode CLDR](http://cldr.unicode.org),
 etc., to help you produce applications that behave nicely for visitors from
 around the world.
 
-Includes definitions for over 750 locales.
+Includes definitions for over 800 locales.
 
 Locales, languages, scripts and territories
 ===========================================

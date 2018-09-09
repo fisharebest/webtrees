@@ -7,19 +7,23 @@ use Fisharebest\Localization\Territory\TerritoryCz;
  * Class LanguageCs - Representation of the Czech language.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2015 Greg Roach
+ * @copyright (c) 2018 Greg Roach
  * @license   GPLv3+
  */
-class LanguageCs extends AbstractLanguage implements LanguageInterface {
-	public function code() {
-		return 'cs';
-	}
+class LanguageCs extends AbstractLanguage implements LanguageInterface
+{
+    public function code()
+    {
+        return 'cs';
+    }
 
-	public function defaultTerritory() {
-		return new TerritoryCz;
-	}
+    public function defaultTerritory()
+    {
+        return new TerritoryCz();
+    }
 
-	public function pluralRule() {
-		return new PluralRule8;
-	}
+    public function pluralRule()
+    {
+        return new PluralRule8();
+    }
 }

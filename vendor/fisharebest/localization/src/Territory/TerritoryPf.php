@@ -4,11 +4,13 @@
  * Class AbstractTerritory - Representation of the territory PF - French Polynesia.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2015 Greg Roach
+ * @copyright (c) 2018 Greg Roach
  * @license   GPLv3+
  */
-class TerritoryPf extends AbstractTerritory implements TerritoryInterface {
-	public function code() {
-		return 'PF';
-	}
+class TerritoryPf extends AbstractTerritory implements TerritoryInterface
+{
+    public function code()
+    {
+        return 'PF';
+    }
 }

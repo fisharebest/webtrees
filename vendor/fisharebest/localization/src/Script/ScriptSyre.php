@@ -4,15 +4,18 @@
  * Class ScriptSyre - Representation of the Syriac (Estrangelo variant) script.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2015 Greg Roach
+ * @copyright (c) 2018 Greg Roach
  * @license   GPLv3+
  */
-class ScriptSyre extends AbstractScript implements ScriptInterface {
-	public function code() {
-		return 'Syre';
-	}
+class ScriptSyre extends AbstractScript implements ScriptInterface
+{
+    public function code()
+    {
+        return 'Syre';
+    }
 
-	public function number() {
-		return '138';
-	}
+    public function number()
+    {
+        return '138';
+    }
 }

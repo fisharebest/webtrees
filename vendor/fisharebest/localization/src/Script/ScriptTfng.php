@@ -4,19 +4,23 @@
  * Class ScriptTfng - Representation of the Tifinagh script.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2015 Greg Roach
+ * @copyright (c) 2018 Greg Roach
  * @license   GPLv3+
  */
-class ScriptTfng extends AbstractScript implements ScriptInterface {
-	public function code() {
-		return 'Tfng';
-	}
+class ScriptTfng extends AbstractScript implements ScriptInterface
+{
+    public function code()
+    {
+        return 'Tfng';
+    }
 
-	public function number() {
-		return '120';
-	}
+    public function number()
+    {
+        return '120';
+    }
 
-	public function unicodeName() {
-		return 'Tifinagh';
-	}
+    public function unicodeName()
+    {
+        return 'Tifinagh';
+    }
 }

@@ -33,7 +33,7 @@ Add the dependency to your `composer.json` and allow autoloading magic to do the
 ```json
 {
     "require": {
-        "fisharebest/php-polyfill": "~1.4",
+        "fisharebest/php-polyfill": "~1.6",
     },
 }
 ```

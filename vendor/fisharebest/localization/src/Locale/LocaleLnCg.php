@@ -5,12 +5,14 @@ use Fisharebest\Localization\Territory\TerritoryCg;
 /**
  * Class LocaleLnCg
  *
- * @author        Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2015 Greg Roach
- * @license       GPLv3+
+ * @author    Greg Roach <fisharebest@gmail.com>
+ * @copyright (c) 2018 Greg Roach
+ * @license   GPLv3+
  */
-class LocaleLnCg extends LocaleLn {
-	public function territory() {
-		return new TerritoryCg;
-	}
+class LocaleLnCg extends LocaleLn
+{
+    public function territory()
+    {
+        return new TerritoryCg();
+    }
 }

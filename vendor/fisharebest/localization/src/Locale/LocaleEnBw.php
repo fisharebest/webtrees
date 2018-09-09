@@ -5,12 +5,14 @@ use Fisharebest\Localization\Territory\TerritoryBw;
 /**
  * Class LocaleEnBw
  *
- * @author        Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2015 Greg Roach
- * @license       GPLv3+
+ * @author    Greg Roach <fisharebest@gmail.com>
+ * @copyright (c) 2018 Greg Roach
+ * @license   GPLv3+
  */
-class LocaleEnBw extends LocaleEn {
-	public function territory() {
-		return new TerritoryBw;
-	}
+class LocaleEnBw extends LocaleEn
+{
+    public function territory()
+    {
+        return new TerritoryBw();
+    }
 }

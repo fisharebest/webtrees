@@ -4,19 +4,23 @@
  * Class ScriptXsux - Representation of the Cuneiform, Sumero-Akkadian script.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2015 Greg Roach
+ * @copyright (c) 2018 Greg Roach
  * @license   GPLv3+
  */
-class ScriptXsux extends AbstractScript implements ScriptInterface {
-	public function code() {
-		return 'Xsux';
-	}
+class ScriptXsux extends AbstractScript implements ScriptInterface
+{
+    public function code()
+    {
+        return 'Xsux';
+    }
 
-	public function number() {
-		return '020';
-	}
+    public function number()
+    {
+        return '020';
+    }
 
-	public function unicodeName() {
-		return 'Cuneiform';
-	}
+    public function unicodeName()
+    {
+        return 'Cuneiform';
+    }
 }

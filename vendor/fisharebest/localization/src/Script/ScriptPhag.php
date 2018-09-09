@@ -4,19 +4,23 @@
  * Class ScriptPhag - Representation of the Phags-pa script.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2015 Greg Roach
+ * @copyright (c) 2018 Greg Roach
  * @license   GPLv3+
  */
-class ScriptPhag extends AbstractScript implements ScriptInterface {
-	public function code() {
-		return 'Phag';
-	}
+class ScriptPhag extends AbstractScript implements ScriptInterface
+{
+    public function code()
+    {
+        return 'Phag';
+    }
 
-	public function number() {
-		return '331';
-	}
+    public function number()
+    {
+        return '331';
+    }
 
-	public function unicodeName() {
-		return 'Phags_Pa';
-	}
+    public function unicodeName()
+    {
+        return 'Phags_Pa';
+    }
 }

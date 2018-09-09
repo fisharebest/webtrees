@@ -5,20 +5,24 @@ use Fisharebest\Localization\Language\LanguageMy;
 /**
  * Class LocaleMy - Burmese
  *
- * @author        Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2015 Greg Roach
- * @license       GPLv3+
+ * @author    Greg Roach <fisharebest@gmail.com>
+ * @copyright (c) 2018 Greg Roach
+ * @license   GPLv3+
  */
-class LocaleMy extends AbstractLocale implements LocaleInterface {
-	public function endonym() {
-		return 'ဗမာ';
-	}
+class LocaleMy extends AbstractLocale implements LocaleInterface
+{
+    public function endonym()
+    {
+        return 'မြန်မာ';
+    }
 
-	public function language() {
-		return new LanguageMy;
-	}
+    public function language()
+    {
+        return new LanguageMy();
+    }
 
-	protected function minimumGroupingDigits() {
-		return 3;
-	}
+    protected function minimumGroupingDigits()
+    {
+        return 3;
+    }
 }

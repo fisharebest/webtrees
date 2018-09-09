@@ -4,19 +4,23 @@
  * Class ScriptModi - Representation of the Modi, Moḍī script.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2015 Greg Roach
+ * @copyright (c) 2018 Greg Roach
  * @license   GPLv3+
  */
-class ScriptModi extends AbstractScript implements ScriptInterface {
-	public function code() {
-		return 'Modi';
-	}
+class ScriptModi extends AbstractScript implements ScriptInterface
+{
+    public function code()
+    {
+        return 'Modi';
+    }
 
-	public function number() {
-		return '324';
-	}
+    public function number()
+    {
+        return '324';
+    }
 
-	public function unicodeName() {
-		return 'Modi';
-	}
+    public function unicodeName()
+    {
+        return 'Modi';
+    }
 }
