@@ -15,6 +15,28 @@
 
 /* The administration theme is mostly vanilla bootstrap. */
 
+/* Tree Preferences - fit thumbnail into parent for Default Individual*/
+.select2-selection.select2-selection--single {
+	min-height: 36px;
+	height: auto;
+	padding: 2px 0;
+}
+
+.select2-container .select2-selection--single .select2-selection__rendered {
+    padding-left: 2px;
+}
+.select2-selection--single .NAME {
+    padding-left: 4px;
+}
+
+.select2-container[dir="rtl"] .select2-selection--single .select2-selection__rendered {
+    padding-right: 2px;
+}
+
+.select2-container[dir="rtl"] .select2-selection--single .NAME {
+    padding-right: 4px;
+}
+
 .wt-global {
 	background: url(paper_fibers.png); /* http://www.subtlepatterns.com */
 }
