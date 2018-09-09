@@ -39,5 +39,25 @@
 		"mockery/mockery": "*",
         "phpunit/phpunit": "<6.0",
 		"php-coveralls/php-coveralls": "*"
-	}
+	},
+    "scripts": {
+       "webtrees-build": [
+           "@composer webtrees-mo",
+           "git checkout language/en-US.mo",
+           "rm -Rf webtrees/",
+           "git archive --prefix=webtrees/ HEAD --format=tar | tar -x",
+           "cp language/*.mo webtrees/language/",
+           "zip --quiet --recurse-paths --move -9 webtrees.zip webtrees"
+       ],
+        "webtrees-mo": [
+            "for FILE in language/*.po; do msgfmt --output=$(dirname $FILE)/$(basename $FILE .po).mo $FILE; done",
+            "rm -Rf data/cache/language*"
+        ],
+        "webtrees-po": [
+            "sed -i.bak -e 's/\\(I18N::[^)]*[)]\\)/<?php echo \\1; ?>/g' modules*/*/*.xml",
+            "git grep -I --name-only --fixed-strings -e I18N:: -- '*.php' '*.xml' | xargs xgettext --package-name=webtrees --package-version=1.0 --msgid-bugs-address=i18n@webtrees.net --output=language/webtrees.pot --no-wrap --language=PHP --add-comments=I18N --from-code=utf-8 --keyword --keyword=translate:1 --keyword=translateContext:1c,2 --keyword=plural:1,2",
+            "find modules*/ -name '*.xml' -exec mv {}.bak {} \\;",
+            "find language -name '*.po' -exec msgmerge --no-wrap --sort-output --no-fuzzy-matching --quiet --output={} {} language/webtrees.pot \\;"
+        ]
+    }
 }
