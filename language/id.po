@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-07-26 23:06+0100\n"
-"PO-Revision-Date: 2018-09-03 04:42+0000\n"
+"PO-Revision-Date: 2018-09-10 08:01+0000\n"
 "Last-Translator: Andi Ahmad Fachrudin <nugeonet@gmail.com>\n"
 "Language-Team: Indonesian <https://translate.webtrees.net/projects/webtrees/webtrees/id/>\n"
 "Language: id\n"
@@ -3930,7 +3930,7 @@ msgstr "Kepulauan Cook"
 
 #: app/Theme/AbstractTheme.php:400 resources/views/privacy-policy.php:12
 msgid "Cookies"
-msgstr "Kukis"
+msgstr "Pelacak"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:314
@@ -14485,7 +14485,7 @@ msgstr "Situs ini sementara tidak tersedia untuk umum"
 
 #: app/Theme/AbstractTheme.php:401
 msgid "This website uses cookies to learn about visitor behaviour."
-msgstr "Situs ini menggunakan cookie untuk mempelajari perilaku pengunjung."
+msgstr "Situs ini menggunakan pelacak untuk mempelajari perilaku pengunjung."
 
 #. I18N: %s is the name of a family tree
 #: resources/views/admin/trees-import.php:9
@@ -15753,7 +15753,7 @@ msgstr "Anda dapat mempercepat perhitungan privasi dengan menambahkan catatan ke
 
 #: app/Http/Controllers/Auth/LoginController.php:159
 msgid "You cannot sign in because your browser does not accept cookies."
-msgstr "Anda tidak dapat masuk karena browser Anda tidak menerima cookie."
+msgstr "Anda tidak dapat masuk karena browser yang anda gunakan tidak menerima pelacak."
 
 #: resources/views/verify-success-page.php:9
 msgid "You have confirmed your request to become a registered user."
