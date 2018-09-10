@@ -47,6 +47,10 @@
            "rm -Rf webtrees/",
            "git archive --prefix=webtrees/ HEAD --format=tar | tar -x",
            "cp language/*.mo webtrees/language/",
+           "echo npm install -g uglify-js",
+           "echo npm install -g uglifycss",
+           "find webtrees -name '*.js' ! -name '*.min.js' -exec uglifyjs -o {}.OUT {} \\; -exec rm {} \\;  -exec mv {}.OUT {} \\;",
+           "find webtrees -name '*.css' ! -name '*.css.js' -exec uglifycss --output {}.OUT {} \\; -exec rm {} \\;  -exec mv {}.OUT {} \\;",
            "zip --quiet --recurse-paths --move -9 webtrees.zip webtrees"
        ],
         "webtrees-mo": [
