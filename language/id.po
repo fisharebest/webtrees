@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:51+0100\n"
-"PO-Revision-Date: 2018-09-10 08:01+0000\n"
+"PO-Revision-Date: 2018-09-30 08:27+0000\n"
 "Last-Translator: Andi Ahmad Fachrudin <nugeonet@gmail.com>\n"
 "Language-Team: Indonesian <https://translate.webtrees.net/projects/webtrees/webtrees/id/>\n"
 "Language: id\n"
@@ -1690,7 +1690,7 @@ msgstr "Usia dalam tahun pernikahan"
 #: resources/views/statistics-chart-custom.php:196
 #: resources/views/statistics-chart-custom.php:209
 msgid "Age interval"
-msgstr ""
+msgstr "Interval usia"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.php:548
