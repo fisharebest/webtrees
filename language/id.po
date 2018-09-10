@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2018-09-03 04:41+0000\n"
+"PO-Revision-Date: 2018-09-10 08:01+0000\n"
 "Last-Translator: Andi Ahmad Fachrudin <nugeonet@gmail.com>\n"
 "Language-Team: Indonesian <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/id/>\n"
 "Language: id\n"
@@ -3964,7 +3964,7 @@ msgstr "Kepulauan Cook"
 
 #: app/Theme/AbstractTheme.php:345
 msgid "Cookies"
-msgstr "Kukis"
+msgstr "Pelacak"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:143
@@ -14620,7 +14620,7 @@ msgstr "Situs ini sementara tidak tersedia untuk umum"
 
 #: app/Theme/AbstractTheme.php:346
 msgid "This website uses cookies to learn about visitor behaviour."
-msgstr "Situs ini menggunakan cookie untuk mempelajari perilaku pengunjung."
+msgstr "Situs ini menggunakan pelacak untuk mempelajari perilaku pengunjung."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:199
@@ -15965,7 +15965,7 @@ msgstr "Anda tidak dapat membuat aturan yang mencegah anda mengakses situs."
 
 #: login.php:75
 msgid "You cannot sign in because your browser does not accept cookies."
-msgstr "Anda tidak dapat masuk karena browser Anda tidak menerima cookie."
+msgstr "Anda tidak dapat masuk karena browser yang anda gunakan tidak menerima pelacak."
 
 #: includes/session.php:506
 msgid "You do not have permission to view this page."
