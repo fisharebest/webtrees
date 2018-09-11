@@ -30,6 +30,7 @@ use Fisharebest\Webtrees\Http\Middleware\CheckForMaintenanceMode;
 use Fisharebest\Webtrees\Http\Middleware\Housekeeping;
 use Fisharebest\Webtrees\Http\Middleware\PageHitCounter;
 use Fisharebest\Webtrees\Http\Middleware\UseTransaction;
+use Fisharebest\Webtrees\Services\TimeoutService;
 use League\Flysystem\Adapter\Local;
 use League\Flysystem\Filesystem;
 use PDOException;
@@ -73,9 +74,6 @@ define('WT_EVENTS_MARR', 'MARR|_NMR');
 define('WT_EVENTS_DIV', 'DIV|ANUL|_SEPR');
 
 define('WT_ROOT', __DIR__ . DIRECTORY_SEPARATOR);
-
-// Keep track of time so we can handle timeouts gracefully.
-define('WT_START_TIME', microtime(true));
 
 // We want to know about all PHP errors during development, and fewer in production.
 if (WT_DEBUG) {
@@ -260,6 +258,7 @@ try {
     $resolver->bind(Tree::class, $tree);
     $resolver->bind(User::class, Auth::user());
     $resolver->bind(LocaleInterface::class, Locale::create(WT_LOCALE));
+    $resolver->bind(TimeoutService::class, new TimeoutService(microtime(true)));
 
     $controller = $resolver->resolve($controller_class);
 

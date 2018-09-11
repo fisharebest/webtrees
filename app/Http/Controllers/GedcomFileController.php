@@ -21,6 +21,7 @@ use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\DebugBar;
 use Fisharebest\Webtrees\Functions\FunctionsImport;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Services\TimeoutService;
 use Fisharebest\Webtrees\Tree;
 use PDOException;
 use Symfony\Component\HttpFoundation\Response;
@@ -35,11 +36,12 @@ class GedcomFileController extends AbstractBaseController
     /**
      * Import the next chunk of a GEDCOM file.
      *
-     * @param Tree $tree
+     * @param TimeoutService $timeout_service
+     * @param Tree           $tree
      *
      * @return Response
      */
-    public function import(Tree $tree): Response
+    public function import(TimeoutService $timeout_service, Tree $tree): Response
     {
         // Only allow one process to import each gedcom at a time
         Database::prepare(
@@ -71,8 +73,9 @@ class GedcomFileController extends AbstractBaseController
         $progress = $row->import_offset / $row->import_total;
 
         $first_time = ($row->import_offset == 0);
-        // Run for one second. This keeps the resource requirements low.
-        for ($end_time = microtime(true) + 1.0; microtime(true) < $end_time;) {
+
+        // Run for a short period of time. This keeps the resource requirements low.
+        do {
             $data = Database::prepare(
                 "SELECT gedcom_chunk_id, REPLACE(chunk_data, '\r', '\n') AS chunk_data" .
                 " FROM `##gedcom_chunk`" .
@@ -223,7 +226,7 @@ class GedcomFileController extends AbstractBaseController
                     'error' => $ex->getMessage(),
                 ]);
             }
-        }
+        } while (!$timeout_service->isTimeLimitUp());
 
         return $this->viewResponse('admin/import-progress', [
             'progress' => $progress,

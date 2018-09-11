@@ -21,6 +21,7 @@ use Exception;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\DebugBar;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Services\TimeoutService;
 use Fisharebest\Webtrees\Services\UpgradeService;
 use Fisharebest\Webtrees\Tree;
 use GuzzleHttp\Client;
@@ -53,16 +54,21 @@ class AdminUpgradeController extends AbstractBaseController
 
     protected $layout = 'layouts/administration';
 
+    /** @var TimeoutService */
+    private $timeout_service;
+
     /** @var UpgradeService */
     private $upgrade_service;
 
     /**
      * AdminUpgradeController constructor.
      *
+     * @param TimeoutService $timeout_service
      * @param UpgradeService $upgrade_service
      */
-    public function __construct(UpgradeService $upgrade_service)
+    public function __construct(TimeoutService $timeout_service, UpgradeService $upgrade_service)
     {
+        $this->timeout_service = $timeout_service;
         $this->upgrade_service = $upgrade_service;
     }
 
@@ -278,8 +284,9 @@ class AdminUpgradeController extends AbstractBaseController
             echo 'failed';
         }
 
-        $seconds = I18N::number(microtime(true) - $start_time, 2);
-        $count   = count($paths);
+        $end_time = microtime(true);
+        $seconds  = I18N::number($end_time - $start_time, 2);
+        $count    = count($paths);
 
         /* I18N: …from the .ZIP file, %2$s is a (fractional) number of seconds */
         return $this->success(I18N::plural('%1$s file was extracted in %2$s seconds.', '%1$s files were extracted in %2$s seconds.', $count, $count, $seconds));
@@ -304,7 +311,7 @@ class AdminUpgradeController extends AbstractBaseController
         foreach ($paths as $path) {
             $dst_filesystem->put($path['path'], $src_filesystem->read($path['path']));
 
-            if (microtime(true) - WT_START_TIME > ini_get('max_execution_time') - 2) {
+            if ($this->timeout_service->isTimeNearlyUp()) {
                 return $this->failure(I18N::translate('The server’s time limit has been reached.'));
             }
         }
@@ -315,7 +322,7 @@ class AdminUpgradeController extends AbstractBaseController
         foreach ($paths as $path) {
             $src_filesystem->delete($path['path']);
 
-            if (microtime(true) - WT_START_TIME > ini_get('max_execution_time') - 2) {
+            if (($this->timeout_service->isTimeNearlyUp())) {
                 break;
             }
         }

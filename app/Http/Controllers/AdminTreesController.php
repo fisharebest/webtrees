@@ -34,6 +34,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Repository;
+use Fisharebest\Webtrees\Services\TimeoutService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\SurnameTradition;
@@ -1137,11 +1138,12 @@ class AdminTreesController extends AbstractBaseController
     }
 
     /**
-     * @param Tree $tree
+     * @param Tree           $tree
+     * @param TimeoutService $timeout_service
      *
      * @return RedirectResponse
      */
-    public function renumberAction(Tree $tree): RedirectResponse
+    public function renumberAction(Tree $tree, TimeoutService $timeout_service): RedirectResponse
     {
         $xrefs = $this->duplicateXrefs($tree);
 
@@ -1555,7 +1557,7 @@ class AdminTreesController extends AbstractBaseController
             }
 
             // How much time do we have left?
-            if (microtime(true) - WT_START_TIME > ini_get('max_execution_time') - 5) {
+            if ($timeout_service->isTimeNearlyUp()) {
                 FlashMessages::addMessage(I18N::translate('The server’s time limit has been reached.'), 'warning');
                 break;
             }
