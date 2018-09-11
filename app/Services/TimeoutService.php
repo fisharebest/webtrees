@@ -51,7 +51,7 @@ class TimeoutService
         $max_execution_time = (float) ini_get('max_execution_time');
 
         // If there's no time limit, then we can't run out of time.
-        if ($max_execution_time === 0) {
+        if ($max_execution_time === 0.0) {
             return false;
         }
 
