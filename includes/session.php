@@ -18,6 +18,7 @@ namespace Fisharebest\Webtrees;
 use Fisharebest\Webtrees\Controller\PageController;
 use Fisharebest\Webtrees\Theme\AdministrationTheme;
 use PDOException;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * This is the bootstrap script, that is run on every request.
@@ -164,29 +165,12 @@ require WT_ROOT . 'vendor/autoload.php';
 date_default_timezone_set('UTC');
 
 // Calculate the base URL, so we can generate absolute URLs.
-$https    = strtolower(Filter::server('HTTPS'));
-$protocol = ($https === '' || $https === 'off') ? 'http' : 'https';
-$protocol = Filter::server('HTTP_X_FORWARDED_PROTO', 'https?', $protocol);
+$request     = Request::createFromGlobals();
+$request_uri = $request->getSchemeAndHttpHost() . $request->getRequestUri();
 
-$host = Filter::server('SERVER_ADDR', null, '127.0.0.1');
-$host = Filter::server('SERVER_NAME', null, $host);
-
-$port = Filter::server('SERVER_PORT', null, '80');
-$port = Filter::server('HTTP_X_FORWARDED_PORT', '80|443', $port);
-
-// Ignore the default port.
-if ($protocol === 'http' && $port === '80' || $protocol === 'https' && $port === '443') {
-	$port = '';
-} else {
-	$port = ':' . $port;
-}
-
-// REDIRECT_URL should be set when Apache is following a RedirectRule
-// PHP_SELF may have trailing path: /path/to/script.php/FOO/BAR
-$path = Filter::server('REDIRECT_URL', null, Filter::server('PHP_SELF'));
-$path = substr($path, 0, stripos($path, WT_SCRIPT_NAME));
-
-define('WT_BASE_URL', $protocol . '://' . $host . $port . $path);
+// Remove any PHP script name and parameters.
+$base_uri = preg_replace('/[^\/]+\.php(\?.*)?$/', '', $request_uri);
+define('WT_BASE_URL', $base_uri);
 
 // Convert PHP warnings/notices into exceptions
 set_error_handler(function ($errno, $errstr, $errfile, $errline) {

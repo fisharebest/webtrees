@@ -10,7 +10,7 @@
 	},
 	"config": {
 		"platform": {
-			"php" : "5.3.3"
+			"php" : "5.3.9"
 		}
 	},
 	"require": {
@@ -33,7 +33,8 @@
 		"lutana/pclzip": "2.8.2.1",
 		"ramsey/uuid": "~2.9",
 		"swiftmailer/swiftmailer": "~5.0",
-		"tecnickcom/tcpdf": "~6.2"
+		"tecnickcom/tcpdf": "~6.2",
+		"symfony/http-foundation": "^2.6"
 	},
 	"require-dev": {
 		"mockery/mockery": "*",
