@@ -41,7 +41,7 @@ use Throwable;
 
 // Identify ourself
 define('WT_WEBTREES', 'webtrees');
-define('WT_VERSION', '2.0.0-dev');
+define('WT_VERSION', '2.0.0-alpha.2');
 define('WT_WEBTREES_URL', 'https://www.webtrees.net/');
 
 // Location of our modules and themes. These are used as URLs and folder paths.
