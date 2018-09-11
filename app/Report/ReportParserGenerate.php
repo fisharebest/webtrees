@@ -32,6 +32,7 @@ use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Tree;
 use stdClass;
+use Symfony\Component\ExpressionLanguage\ExpressionFunction;
 use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
 
 /**
@@ -1522,7 +1523,11 @@ class ReportParserGenerate extends ReportParserBase
             $i++;
         }
 
-        $ret = (new ExpressionLanguage())->evaluate($condition);
+        // Create an expression language with the functions used by our reports.
+        $expression_provider  = new ReportExpressionLanguageProvider();
+        $expression_language  = new ExpressionLanguage(null, [$expression_provider]);
+
+        $ret = $expression_language->evaluate($condition);
 
         if (!$ret) {
             $this->process_ifs++;
