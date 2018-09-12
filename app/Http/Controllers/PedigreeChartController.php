@@ -92,8 +92,8 @@ class PedigreeChartController extends AbstractChartController
 
         $this->checkIndividualAccess($individual);
 
-        $orientation = (int)$request->get('orientation', self::LANDSCAPE);
-        $generations = (int)$request->get('generations', self::DEFAULT_GENERATIONS);
+        $orientation = (int) $request->get('orientation', self::LANDSCAPE);
+        $generations = (int) $request->get('generations', self::DEFAULT_GENERATIONS);
 
         $generations = min(self::MAX_GENERATIONS, $generations);
         $generations = max(self::MIN_GENERATIONS, $generations);
@@ -129,8 +129,8 @@ class PedigreeChartController extends AbstractChartController
 
         $this->checkIndividualAccess($individual);
 
-        $this->orientation = (int)$request->get('orientation');
-        $this->generations = (int)$request->get('generations');
+        $this->orientation = (int) $request->get('orientation');
+        $this->generations = (int) $request->get('generations');
         $bxspacing         = Theme::theme()->parameter('chart-spacing-x');
         $byspacing         = Theme::theme()->parameter('chart-spacing-y');
         $curgen            = 1; // -- track which generation the algorithm is currently working on
@@ -155,7 +155,7 @@ class PedigreeChartController extends AbstractChartController
         }, array_values($this->sosaStradonitzAncestors($individual, $this->generations)));
 
         //check earliest generation for any ancestors
-        for ($i = (int)($this->treesize / 2); $i < $this->treesize; $i++) {
+        for ($i = (int) ($this->treesize / 2); $i < $this->treesize; $i++) {
             $this->chartHasAncestors = $this->chartHasAncestors || ($this->nodes[$i]['indi'] && $this->nodes[$i]['indi']->getChildFamilies());
         }
 
@@ -189,7 +189,7 @@ class PedigreeChartController extends AbstractChartController
 
         for ($i = ($this->treesize - 1); $i >= 0; $i--) {
             // -- check to see if we have moved to the next generation
-            if ($i < (int)($this->treesize / (2 ** $curgen))) {
+            if ($i < (int) ($this->treesize / (2 ** $curgen))) {
                 $curgen++;
             }
 
@@ -220,7 +220,7 @@ class PedigreeChartController extends AbstractChartController
                         } else {
                             $yoffset = $yoffset + (($boxspacing / 2) * ($curgen - 1));
                         }
-                        $parent = (int)(($i - 1) / 2);
+                        $parent = (int) (($i - 1) / 2);
                         $pgen   = $curgen;
                         while ($parent > 0) {
                             if ($parent % 2 == 0) {
@@ -240,7 +240,7 @@ class PedigreeChartController extends AbstractChartController
                                     $yoffset = $yoffset + (($boxspacing / 2) * $temp);
                                 }
                             }
-                            $parent = (int)(($parent - 1) / 2);
+                            $parent = (int) (($parent - 1) / 2);
                         }
                         if ($curgen > 3) {
                             $temp = 0;
@@ -276,8 +276,8 @@ class PedigreeChartController extends AbstractChartController
                     }
                     break;
             }
-            $this->nodes[$i]['x'] = (int)$xoffset;
-            $this->nodes[$i]['y'] = (int)$yoffset;
+            $this->nodes[$i]['x'] = (int) $xoffset;
+            $this->nodes[$i]['y'] = (int) $yoffset;
         }
 
         // find the minimum x & y offsets and deduct that number from
@@ -306,7 +306,7 @@ class PedigreeChartController extends AbstractChartController
         $canvas_width   = $max_xoffset + $bxspacing + Theme::theme()->parameter('chart-box-x') + $addoffset['x'];
         $canvas_height  = $max_yoffset + $byspacing + Theme::theme()->parameter('chart-box-y') + $addoffset['y'];
         $posn           = I18N::direction() === 'rtl' ? 'right' : 'left';
-        $last_gen_start = (int)floor($this->treesize / 2);
+        $last_gen_start = (int) floor($this->treesize / 2);
         if ($this->orientation === self::OLDEST_AT_TOP || $this->orientation === self::OLDEST_AT_BOTTOM) {
             $flex_direction = ' flex-column';
         } else {
@@ -355,7 +355,7 @@ class PedigreeChartController extends AbstractChartController
             $html = sprintf('<div id="childarrow"><a href="#" class="menuselect %s"></a><div id="childbox-pedigree">', $this->arrows->menu);
 
             foreach ($families as $family) {
-                $html   .= '<span class="name1">' . I18N::translate('Family') . '</span>';
+                $html .= '<span class="name1">' . I18N::translate('Family') . '</span>';
                 $spouse = $family->getSpouse($this->root);
                 if ($spouse) {
                     $html .= '<a class="name1" href="' . e(route('pedigree', [
@@ -416,9 +416,9 @@ class PedigreeChartController extends AbstractChartController
         $html = '';
         if ($this->chartHasAncestors) {
             if ($this->nodes[$index]['indi'] && $this->nodes[$index]['indi']->getChildFamilies()) {
-                $html         .= '<div class="ancestorarrow">';
+                $html .= '<div class="ancestorarrow">';
                 $rootParentId = 1;
-                if ($index > (int)($this->treesize / 2) + (int)($this->treesize / 4)) {
+                if ($index > (int) ($this->treesize / 2) + (int) ($this->treesize / 4)) {
                     $rootParentId++;
                 }
                 $html .= '<a class="' . $this->arrows->prevGen . '" href="' . e(route('pedigree', [
@@ -445,7 +445,7 @@ class PedigreeChartController extends AbstractChartController
     private function generationOptions(Tree $tree): array
     {
         // @TODO - do we need this config setting, given that we cannot show more than 8 generations?
-        $max_generations = min(self::MAX_GENERATIONS, (int)$tree->getPreference('MAX_PEDIGREE_GENERATIONS'));
+        $max_generations = min(self::MAX_GENERATIONS, (int) $tree->getPreference('MAX_PEDIGREE_GENERATIONS'));
 
         return FunctionsEdit::numericOptions(range(self::MIN_GENERATIONS, $max_generations));
     }
