@@ -59,6 +59,7 @@ class TimeoutServiceTest extends TestCase
     }
 
     /**
+     * @covers \Fisharebest\Webtrees\Services\TimeoutService::__construct()
      * @covers \Fisharebest\Webtrees\Services\TimeoutService::isTimeNearlyUp()
      */
     public function testNoTimeOut()
@@ -77,6 +78,7 @@ class TimeoutServiceTest extends TestCase
     }
 
     /**
+     * @covers \Fisharebest\Webtrees\Services\TimeoutService::__construct()
      * @covers \Fisharebest\Webtrees\Services\TimeoutService::isTimeNearlyUp()
      */
     public function testTimeOutReached()
@@ -101,6 +103,7 @@ class TimeoutServiceTest extends TestCase
     }
 
     /**
+     * @covers \Fisharebest\Webtrees\Services\TimeoutService::__construct()
      * @covers \Fisharebest\Webtrees\Services\TimeoutService::isTimeNearlyUp()
      */
     public function testTimeOutNotReached()
@@ -125,6 +128,7 @@ class TimeoutServiceTest extends TestCase
     }
 
     /**
+     * @covers \Fisharebest\Webtrees\Services\TimeoutService::__construct()
      * @covers \Fisharebest\Webtrees\Services\TimeoutService::isTimeLimitUp()
      */
     public function testTimeLimitNotReached()
@@ -143,6 +147,7 @@ class TimeoutServiceTest extends TestCase
     }
 
     /**
+     * @covers \Fisharebest\Webtrees\Services\TimeoutService::__construct()
      * @covers \Fisharebest\Webtrees\Services\TimeoutService::isTimeLimitUp()
      */
     public function testTimeLimitReached()
