@@ -15,6 +15,7 @@
  */
 namespace Fisharebest\Webtrees\Services;
 
+use Fisharebest\Webtrees\TestCase;
 use Mockery;
 
 /**
@@ -24,7 +25,8 @@ use Mockery;
  *
  * @return mixed
  */
-function ini_get(...$args) {
+function ini_get(...$args)
+{
     return TimeoutServiceTest::$mock_functions->ini_get(...$args);
 }
 
@@ -35,14 +37,15 @@ function ini_get(...$args) {
  *
  * @return mixed
  */
-function microtime(...$args) {
+function microtime(...$args)
+{
     return TimeoutServiceTest::$mock_functions->microtime(...$args);
 }
 
 /**
  * Test harness for the class TimeoutServiceTest
  */
-class TimeoutServiceTest extends \Fisharebest\Webtrees\TestCase
+class TimeoutServiceTest extends TestCase
 {
     /** @var object */
     public static $mock_functions;
@@ -50,7 +53,8 @@ class TimeoutServiceTest extends \Fisharebest\Webtrees\TestCase
     /**
      * Initialize the test script
      */
-    public function setUp() {
+    public function setUp()
+    {
         self::$mock_functions = Mockery::mock();
     }
 
