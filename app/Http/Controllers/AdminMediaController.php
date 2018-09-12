@@ -119,8 +119,8 @@ class AdminMediaController extends AbstractBaseController
         $files  = $request->get('files'); // local|external|unused
         $search = $request->get('search');
         $search = $search['value'];
-        $start  = (int)$request->get('start');
-        $length = (int)$request->get('length');
+        $start  = (int) $request->get('start');
+        $length = (int) $request->get('length');
 
         // family tree setting MEDIA_DIRECTORY
         $media_folders = $this->allMediaFolders();
@@ -156,7 +156,7 @@ class AdminMediaController extends AbstractBaseController
                     "  OR   descriptive_title LIKE CONCAT('%', :search_2, '%'))" .
                     " AND   multimedia_file_refn NOT LIKE 'http://%'" .
                     " AND   multimedia_file_refn NOT LIKE 'https://%'";
-                $ARGS1   = [
+                $ARGS1 = [
                     'media_path_1' => $media_path,
                     'media_folder' => $media_folder,
                     'media_path_2' => Database::escapeLike($media_path),
@@ -173,7 +173,7 @@ class AdminMediaController extends AbstractBaseController
                     " AND   multimedia_file_refn LIKE CONCAT(:media_path_3, '%')" .
                     " AND   multimedia_file_refn NOT LIKE 'http://%'" .
                     " AND   multimedia_file_refn NOT LIKE 'https://%'";
-                $ARGS2   = [
+                $ARGS2 = [
                     'media_folder' => $media_folder,
                     'media_path_3' => $media_path,
                 ];
@@ -185,7 +185,7 @@ class AdminMediaController extends AbstractBaseController
                     $ARGS2['media_path_4'] = Database::escapeLike($media_path);
                 }
 
-                $order   = $request->get('order', []);
+                $order = $request->get('order', []);
                 $SELECT1 .= " ORDER BY ";
                 if ($order) {
                     foreach ($order as $key => $value) {
@@ -209,7 +209,7 @@ class AdminMediaController extends AbstractBaseController
                 }
 
                 if ($length > 0) {
-                    $SELECT1         .= " LIMIT :length OFFSET :start";
+                    $SELECT1 .= " LIMIT :length OFFSET :start";
                     $ARGS1['length'] = $length;
                     $ARGS1['start']  = $start;
                 }
@@ -242,7 +242,7 @@ class AdminMediaController extends AbstractBaseController
                     " JOIN  `##media_file` USING (m_id, m_file)" .
                     " WHERE (multimedia_file_refn LIKE 'http://%' OR multimedia_file_refn LIKE 'https://%')" .
                     " AND   (multimedia_file_refn LIKE CONCAT('%', :search_1, '%') OR descriptive_title LIKE CONCAT('%', :search_2, '%'))";
-                $ARGS1   = [
+                $ARGS1 = [
                     'search_1' => Database::escapeLike($search),
                     'search_2' => Database::escapeLike($search),
                 ];
@@ -278,7 +278,7 @@ class AdminMediaController extends AbstractBaseController
                 }
 
                 if ($length > 0) {
-                    $SELECT1         .= " LIMIT :length OFFSET :start";
+                    $SELECT1 .= " LIMIT :length OFFSET :start";
                     $ARGS1['length'] = $length;
                     $ARGS1['start']  = $start;
                 }
@@ -578,7 +578,7 @@ class AdminMediaController extends AbstractBaseController
 
         // $dir comes from the database. The actual folder may not exist.
         if (is_dir($dir)) {
-            foreach (scandir($dir,SCANDIR_SORT_NONE) as $path) {
+            foreach (scandir($dir, SCANDIR_SORT_NONE) as $path) {
                 if (is_dir($dir . $path)) {
                     // What if there are user-defined subfolders “thumbs” or “watermarks”?
                     if ($path != '.' && $path != '..' && $path != 'thumbs' && $path != 'watermark' && $recursive) {
@@ -660,7 +660,7 @@ class AdminMediaController extends AbstractBaseController
         $full_path = WT_DATA_DIR . $media_folder . $media_path . $file;
         try {
             $size = filesize($full_path);
-            $size = (int)(($size + 1023) / 1024); // Round up to next KB
+            $size = (int) (($size + 1023) / 1024); // Round up to next KB
             /* I18N: size of file in KB */
             $size = I18N::translate('%s KB', I18N::number($size));
             $html .= '<dt>' . I18N::translate('File size') . '</dt>';
