@@ -100,9 +100,9 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
                 // Check if it is linked to a suitable individual
                 foreach ($media->linkedIndividuals('OBJE') as $indi) {
                     if (
-                        $filter === 'all' ||
-                        $filter === 'indi' && strpos($indi->getGedcom(), "\n1 OBJE @" . $media->getXref() . '@') !== false ||
-                        $filter === 'event' && strpos($indi->getGedcom(), "\n2 OBJE @" . $media->getXref() . '@') !== false
+                        ($filter === 'all') ||
+                        ($filter === 'indi' && strpos($indi->getGedcom(), "\n1 OBJE @" . $media->getXref() . '@') !== false) ||
+                        ($filter === 'event' && strpos($indi->getGedcom(), "\n2 OBJE @" . $media->getXref() . '@') !== false)
                     ) {
                         // Found one :-)
                         $random_media = $media;

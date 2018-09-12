@@ -496,7 +496,7 @@ class GedcomRecord
      */
     public function canEdit(): bool
     {
-        return Auth::isManager($this->tree) || Auth::isEditor($this->tree) && strpos($this->gedcom, "\n1 RESN locked") === false;
+        return (Auth::isManager($this->tree) || Auth::isEditor($this->tree)) && (strpos($this->gedcom, "\n1 RESN locked") === false);
     }
 
     /**

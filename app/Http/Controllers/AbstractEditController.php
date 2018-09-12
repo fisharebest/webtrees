@@ -243,7 +243,7 @@ abstract class AbstractEditController extends AbstractBaseController
         $FACT = $request->get($fact, '');
         $DATE = $request->get($fact . '_DATE', '');
         $PLAC = $request->get($fact . '_PLAC', '');
-        if ($DATE !== '' || $PLAC !== '' || $FACT !== '' && $FACT !== 'Y') {
+        if ($DATE !== '' || $PLAC !== '' || ($FACT !== '' && $FACT !== 'Y')) {
             if ($FACT !== '' && $FACT !== 'Y') {
                 $gedrec = "\n1 " . $fact . ' ' . $FACT;
             } else {

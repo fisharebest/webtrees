@@ -235,7 +235,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
                 foreach ($child->getFacts(WT_EVENTS_BIRT) as $fact) {
                     $sgdate = $fact->getDate();
                     // Always show _BIRT_CHIL, even if the dates are not known
-                    if ($option == '_CHIL' || $sgdate->isOK() && Date::compare($birt_date, $sgdate) <= 0 && Date::compare($sgdate, $deat_date) <= 0) {
+                    if ($option == '_CHIL' || ($sgdate->isOK() && Date::compare($birt_date, $sgdate) <= 0 && Date::compare($sgdate, $deat_date) <= 0)) {
                         if ($option == '_GCHI' && $relation == 'dau') {
                             // Convert the event to a close relatives event.
                             $rela_fact = clone($fact);

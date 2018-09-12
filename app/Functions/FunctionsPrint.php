@@ -284,10 +284,10 @@ class FunctionsPrint
                         // Only show calculated age if it differs from recorded age
                         if ($age != '') {
                             if (
-                                $fact_age != '' && $fact_age != $age ||
-                                $fact_age == '' && $husb_age == '' && $wife_age == '' ||
-                                $husb_age != '' && $record->getSex() == 'M' && $husb_age != $age ||
-                                $wife_age != '' && $record->getSex() == 'F' && $wife_age != $age
+                                ($fact_age != '' && $fact_age != $age) ||
+                                ($fact_age == '' && $husb_age == '' && $wife_age == '') ||
+                                ($husb_age != '' && $record->getSex() == 'M' && $husb_age != $age) ||
+                                ($wife_age != '' && $record->getSex() == 'F' && $wife_age != $age)
                             ) {
                                 if ($age != '0d') {
                                     $ageText = '(' . I18N::translate('Age') . ' ' . FunctionsDate::getAgeAtEvent($age) . ')';
@@ -325,10 +325,10 @@ class FunctionsPrint
                         // Only show calculated age if it differs from recorded age
                         if ($age != '' && $age > 0) {
                             if (
-                                $fact_age != '' && $fact_age != $age ||
-                                $fact_age == '' && $husb_age == '' && $wife_age == '' ||
-                                $husb_age != '' && $indi->getSex() == 'M' && $husb_age != $age ||
-                                $wife_age != '' && $indi->getSex() == 'F' && $wife_age != $age
+                                ($fact_age != '' && $fact_age != $age) ||
+                                ($fact_age == '' && $husb_age == '' && $wife_age == '') ||
+                                ($husb_age != '' && $indi->getSex() == 'M' && $husb_age != $age) ||
+                                ($wife_age != '' && $indi->getSex() == 'F' && $wife_age != $age)
                             ) {
                                 $ageText = '(' . I18N::translate('Age') . ' ' . FunctionsDate::getAgeAtEvent($age) . ')';
                             }

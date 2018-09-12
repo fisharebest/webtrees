@@ -3511,7 +3511,9 @@ class Stats
             }
             $husb = $family->getHusband();
             $wife = $family->getWife();
-            if ($husb && $wife && ($husb->getAllDeathDates() && $wife->getAllDeathDates() || !$husb->isDead() || !$wife->isDead())) {
+            if (($husb && ($husb->getAllDeathDates() || !$husb->isDead()))
+                && ($wife && ($wife->getAllDeathDates() || !$wife->isDead()))
+            ) {
                 if ($family->canShow()) {
                     if ($type === 'list') {
                         $top10[] = '<li><a href="' . e($family->url()) . '">' . $family->getFullName() . '</a> (' . $age . ')' . '</li>';
@@ -7009,7 +7011,9 @@ class Stats
         }
         $all_blocks = [];
         foreach (Module::getActiveBlocks($this->tree) as $name => $active_block) {
-            if ($ctype == 'user' && $active_block->isUserBlock() || $ctype == 'gedcom' && $active_block->isGedcomBlock()) {
+            if (($ctype == 'user' && $active_block->isUserBlock())
+                || ($ctype == 'gedcom' && $active_block->isGedcomBlock())
+            ) {
                 $all_blocks[$name] = $active_block;
             }
         }

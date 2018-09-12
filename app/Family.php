@@ -55,7 +55,9 @@ class Family extends GedcomRecord
         }
 
         // Make sure husb/wife are the right way round.
-        if ($this->husb && $this->husb->getSex() === 'F' || $this->wife && $this->wife->getSex() === 'M') {
+        if (($this->husb && $this->husb->getSex() === 'F')
+            || ($this->wife && $this->wife->getSex() === 'M')
+        ) {
             list($this->husb, $this->wife) = [
                 $this->wife,
                 $this->husb,

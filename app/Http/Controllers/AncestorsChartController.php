@@ -184,7 +184,7 @@ class AncestorsChartController extends AbstractChartController
             ]),
             ]);
         }
-        echo '</td><td class="details1">&nbsp;<span class="person_box' . ($sosa === 1 ? 'NN' : ($sosa % 2 ? 'F' : '')) . '">', I18N::number($sosa), '</span> ';
+        echo '</td><td class="details1">&nbsp;<span class="person_box' . ($sosa === 1 ? 'NN' : (($sosa % 2) ? 'F' : '')) . '">', I18N::number($sosa), '</span> ';
         echo '</td><td class="details1">&nbsp;', FunctionsCharts::getSosaName($sosa), '</td>';
         echo '</tr></tbody></table>';
 

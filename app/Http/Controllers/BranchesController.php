@@ -241,8 +241,8 @@ class BranchesController extends AbstractBaseController
                 stripos($surn1, $surname) !== false ||
                 stripos($surname, $surn1) !== false ||
                 // one name sounds like the other
-                $soundex_std && Soundex::compare(Soundex::russell($surn1), Soundex::russell($surname)) ||
-                $soundex_dm && Soundex::compare(Soundex::daitchMokotoff($surn1), Soundex::daitchMokotoff($surname))
+                ($soundex_std && Soundex::compare(Soundex::russell($surn1), Soundex::russell($surname))) ||
+                ($soundex_dm && Soundex::compare(Soundex::daitchMokotoff($surn1), Soundex::daitchMokotoff($surname)))
             ) {
                 $person_name = $name['full'];
                 break;

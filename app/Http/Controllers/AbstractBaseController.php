@@ -61,7 +61,7 @@ abstract class AbstractBaseController
             throw new FamilyNotFoundException();
         }
 
-        if (!$family->canShow() || $edit && (!$family->canEdit() || $family->isPendingDeletion())) {
+        if (!$family->canShow() || ($edit && (!$family->canEdit() || $family->isPendingDeletion()))) {
             throw new FamilyAccessDeniedException();
         }
     }
@@ -80,7 +80,7 @@ abstract class AbstractBaseController
             throw new IndividualNotFoundException();
         }
 
-        if (!$individual->canShow() || $edit && (!$individual->canEdit() || $individual->isPendingDeletion())) {
+        if (!$individual->canShow() || ($edit && (!$individual->canEdit() || $individual->isPendingDeletion()))) {
             throw new IndividualAccessDeniedException();
         }
     }
@@ -99,7 +99,7 @@ abstract class AbstractBaseController
             throw new MediaNotFoundException();
         }
 
-        if (!$media->canShow() || $edit && (!$media->canEdit() || $media->isPendingDeletion())) {
+        if (!$media->canShow() || ($edit && (!$media->canEdit() || $media->isPendingDeletion()))) {
             throw new MediaAccessDeniedException();
         }
     }
