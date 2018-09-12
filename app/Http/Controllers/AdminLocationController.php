@@ -368,7 +368,7 @@ class AdminLocationController extends AbstractBaseController
                 }
             } else {
                 $fp = fopen($filename, 'r');
-                while (($row = fgetcsv($fp)) !== false) {
+                while (($row = fgetcsv($fp, 0, ';')) !== false) {
                     if ($row[0] === 'Level') {
                         continue;
                     }
