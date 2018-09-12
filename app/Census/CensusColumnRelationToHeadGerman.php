@@ -34,7 +34,7 @@ class CensusColumnRelationToHeadGerman extends AbstractCensusColumn implements C
      */
     public function generate(Individual $individual, Individual $head): string
     {
-        if ($head === null || $individual === $head) {
+        if ($individual === $head) {
             return 'Haushaltungsvorstand';
         } else {
             return Functions::getCloseRelationshipName($head, $individual);
