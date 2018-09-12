@@ -1,5 +1,4 @@
 <?php
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2018 webtrees development team
@@ -14,11 +13,12 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\GedcomCode;
 
 /**
- * Test harness for the class GedcomCodeName
+ * Test harness for the class GedcomCodeRela
  */
-class GedcomCodeNameTest extends \PHPUnit\Framework\TestCase
+class GedcomCodeRelaTest extends \Fisharebest\Webtrees\TestCase
 {
     /**
      * Prepare the environment for these tests
@@ -32,6 +32,6 @@ class GedcomCodeNameTest extends \PHPUnit\Framework\TestCase
      */
     public function testClassExists()
     {
-        $this->assertTrue(class_exists('\Fisharebest\Webtrees\GedcomCode\GedcomCodePedi'));
+        $this->assertTrue(class_exists('\Fisharebest\Webtrees\GedcomCode\GedcomCodeRela'));
     }
 }

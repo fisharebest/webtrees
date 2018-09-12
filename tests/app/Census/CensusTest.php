@@ -1,5 +1,4 @@
 <?php
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2018 webtrees development team
@@ -19,7 +18,7 @@ namespace Fisharebest\Webtrees\Census;
 /**
  * Test harness for the class CensusColumnAgeFemale5Years
  */
-class CensusTest extends \PHPUnit\Framework\TestCase
+class CensusTest extends \Fisharebest\Webtrees\TestCase
 {
     /**
      * @covers \Fisharebest\Webtrees\Census\Census

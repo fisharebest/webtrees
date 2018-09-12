@@ -1,5 +1,4 @@
 <?php
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2018 webtrees development team
@@ -14,11 +13,12 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Module;
 
 /**
  * Test harness for the class BirthDeathMarriageReportModule
  */
-class BirthDeathMarriageReportModuleTest extends \PHPUnit\Framework\TestCase
+class BirthDeathMarriageReportModuleTest extends \Fisharebest\Webtrees\TestCase
 {
     /**
      * Prepare the environment for these tests

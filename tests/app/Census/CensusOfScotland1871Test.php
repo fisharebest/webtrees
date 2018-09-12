@@ -1,5 +1,4 @@
 <?php
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2018 webtrees development team
@@ -19,7 +18,7 @@ namespace Fisharebest\Webtrees\Census;
 /**
  * Test harness for the class CensusOfScotland1871
  */
-class CensusOfScotland1871Test extends \PHPUnit\Framework\TestCase
+class CensusOfScotland1871Test extends \Fisharebest\Webtrees\TestCase
 {
     /**
      * Test the census place and date

@@ -11,6 +11,11 @@
             "app/Helpers/functions.php"
         ]
     },
+    "autoload-dev": {
+        "classmap": [
+            "tests/TestCase.php"
+        ]
+    },
     "config": {
         "platform": {
             "php" : "7.0.8"

@@ -1,5 +1,4 @@
 <?php
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2018 webtrees development team
@@ -18,7 +17,7 @@
 /**
  * Test harness for the class Place
  */
-class PlaceTest extends \PHPUnit\Framework\TestCase
+class PlaceTest extends \Fisharebest\Webtrees\TestCase
 {
     /**
      * Prepare the environment for these tests

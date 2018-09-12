@@ -1,5 +1,4 @@
 <?php
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2018 webtrees development team
@@ -22,7 +21,7 @@ use Mockery;
 /**
  * Test harness for the class CensusColumnChildrenBornAlive
  */
-class CensusColumnChildrenBornAliveTest extends \PHPUnit\Framework\TestCase
+class CensusColumnChildrenBornAliveTest extends \Fisharebest\Webtrees\TestCase
 {
     /**
      * Delete mock objects

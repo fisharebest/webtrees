@@ -1,5 +1,4 @@
 <?php
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2018 webtrees development team
@@ -14,11 +13,12 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees;
 
 /**
  * Test harness for the class WT_User
  */
-class UserTest extends \PHPUnit\Framework\TestCase
+class UserTest extends \Fisharebest\Webtrees\TestCase
 {
     /**
      * Prepare the environment for these tests

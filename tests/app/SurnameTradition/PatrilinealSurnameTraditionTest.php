@@ -1,5 +1,4 @@
 <?php
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2018 webtrees development team
@@ -14,6 +13,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\SurnameTradition;
 
 use Fisharebest\Webtrees\SurnameTradition\PatrilinealSurnameTradition;
 use Fisharebest\Webtrees\SurnameTradition\SurnameTraditionInterface;
@@ -21,7 +21,7 @@ use Fisharebest\Webtrees\SurnameTradition\SurnameTraditionInterface;
 /**
  * Test harness for the class PatrilinenalSurnameTradition
  */
-class PatrilinealSurnameTraditionTest extends \PHPUnit\Framework\TestCase
+class PatrilinealSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
 {
     /** @var SurnameTraditionInterface */
     private $surname_tradition;

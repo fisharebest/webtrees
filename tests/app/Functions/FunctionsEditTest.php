@@ -1,5 +1,4 @@
 <?php
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2018 webtrees development team
@@ -14,11 +13,12 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Functions;
 
 /**
  * Unit tests for the global functions in the file includes/functions/functions_edit.php
  */
-class FunctionsEditTest extends \PHPUnit\Framework\TestCase
+class FunctionsEditTest extends \Fisharebest\Webtrees\TestCase
 {
     /**
      * Test that the class exists

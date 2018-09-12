@@ -1,5 +1,4 @@
 <?php
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2018 webtrees development team
@@ -19,7 +18,7 @@ namespace Fisharebest\Webtrees\Census;
 /**
  * Test harness for the class CensusOfUnitedStates1940
  */
-class CensusOfUnitedStates1940Test extends \PHPUnit\Framework\TestCase
+class CensusOfUnitedStates1940Test extends \Fisharebest\Webtrees\TestCase
 {
     /**
      * Test the census place and date
