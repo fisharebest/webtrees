@@ -463,7 +463,7 @@ class AdminLocationController extends AbstractBaseController
                 $added + $updated === 0 ? 'info' : 'success'
             );
         } else {
-            throw new Exception('Unable to open file: %s', $filename);
+            throw new Exception('Unable to open file: ' . $filename);
         }
 
         $url = route('map-data', ['parent_id' => $parent_id]);
