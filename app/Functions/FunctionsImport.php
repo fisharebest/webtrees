@@ -43,6 +43,7 @@ class FunctionsImport
      * @param Tree   $tree
      *
      * @return string
+     * @throws \Exception
      */
     public static function reformatRecord($rec, Tree $tree): string
     {
@@ -595,6 +596,8 @@ class FunctionsImport
      * @param string $gedrec the raw gedcom record to parse
      * @param Tree   $tree   import the record into this tree
      * @param bool   $update whether or not this is an updated record that has been accepted
+     *
+     * @throws \Exception
      */
     public static function importRecord($gedrec, Tree $tree, $update)
     {
@@ -804,6 +807,7 @@ class FunctionsImport
      * @param string $gid
      * @param int    $ged_id
      * @param string $gedrec
+     * @throws \Exception
      */
     public static function updatePlaces($gid, $ged_id, $gedrec)
     {
@@ -904,6 +908,7 @@ class FunctionsImport
      * @param string $xref
      * @param int    $ged_id
      * @param string $gedrec
+     * @throws \Exception
      */
     public static function updateDates($xref, $ged_id, $gedrec)
     {
@@ -954,6 +959,7 @@ class FunctionsImport
      * @param string $xref
      * @param int    $ged_id
      * @param string $gedrec
+     * @throws \Exception
      */
     public static function updateLinks($xref, $ged_id, $gedrec)
     {
@@ -989,6 +995,7 @@ class FunctionsImport
      * @param string       $xref
      * @param int          $ged_id
      * @param GedcomRecord $record
+     * @throws \Exception
      */
     public static function updateNames($xref, $ged_id, GedcomRecord $record)
     {
@@ -1047,6 +1054,7 @@ class FunctionsImport
      * @param string $gedrec
      *
      * @return string
+     * @throws \Exception
      */
     public static function convertInlineMedia(Tree $tree, $gedrec): string
     {
@@ -1071,6 +1079,7 @@ class FunctionsImport
      * @param Tree   $tree
      *
      * @return string
+     * @throws \Exception
      */
     public static function createMediaObject($level, $gedrec, Tree $tree): string
     {
@@ -1141,6 +1150,7 @@ class FunctionsImport
      *
      * @param string $xref
      * @param Tree   $tree
+     * @throws \Exception
      */
     public static function acceptAllChanges($xref, Tree $tree)
     {
@@ -1176,6 +1186,7 @@ class FunctionsImport
      * Reject all pending changes for a specified record.
      *
      * @param GedcomRecord $record
+     * @throws \Exception
      */
     public static function rejectAllChanges(GedcomRecord $record)
     {
@@ -1195,6 +1206,7 @@ class FunctionsImport
      * @param string $gedrec
      * @param Tree   $tree
      * @param bool   $delete
+     * @throws \Exception
      */
     public static function updateRecord($gedrec, Tree $tree, bool $delete)
     {

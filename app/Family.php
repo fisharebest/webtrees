@@ -37,6 +37,8 @@ class Family extends GedcomRecord
      * @param string|null $pending null for a record with no pending edits,
      *                             empty string for records with pending deletions
      * @param Tree        $tree
+     *
+     * @throws \Exception
      */
     public function __construct($xref, $gedcom, $pending, $tree)
     {
@@ -93,6 +95,7 @@ class Family extends GedcomRecord
      * @param int $access_level
      *
      * @return string
+     * @throws \Exception
      */
     protected function createPrivateGedcomRecord($access_level): string
     {
@@ -118,6 +121,7 @@ class Family extends GedcomRecord
      * @param int    $tree_id
      *
      * @return null|string
+     * @throws \Exception
      */
     protected static function fetchGedcomRecord($xref, $tree_id)
     {
@@ -132,9 +136,10 @@ class Family extends GedcomRecord
     /**
      * Get the male (or first female) partner of the family
      *
-     * @param $access_level int|null
+     * @param int|null $access_level
      *
      * @return Individual|null
+     * @throws \Exception
      */
     public function getHusband($access_level = null)
     {
@@ -150,9 +155,10 @@ class Family extends GedcomRecord
     /**
      * Get the female (or second male) partner of the family
      *
-     * @param $access_level int|null
+     * @param int|null $access_level
      *
      * @return Individual|null
+     * @throws \Exception
      */
     public function getWife($access_level = null)
     {
@@ -171,6 +177,7 @@ class Family extends GedcomRecord
      * @param int $access_level
      *
      * @return bool
+     * @throws \Exception
      */
     protected function canShowByType($access_level): bool
     {
@@ -207,6 +214,7 @@ class Family extends GedcomRecord
      * @param int|null   $access_level
      *
      * @return Individual|null
+     * @throws \Exception
      */
     public function getSpouse(Individual $person, $access_level = null)
     {
@@ -223,6 +231,7 @@ class Family extends GedcomRecord
      * @param int|null $access_level
      *
      * @return Individual[]
+     * @throws \Exception
      */
     public function getSpouses($access_level = null): array
     {
@@ -238,6 +247,7 @@ class Family extends GedcomRecord
      * @param int|null $access_level
      *
      * @return Individual[]
+     * @throws \Exception
      */
     public function getChildren($access_level = null): array
     {
@@ -265,6 +275,7 @@ class Family extends GedcomRecord
      * @param Family $y
      *
      * @return int
+     * @throws \Exception
      */
     public static function compareMarrDate(Family $x, Family $y): int
     {
@@ -275,6 +286,7 @@ class Family extends GedcomRecord
      * Number of children - for the individual list
      *
      * @return int
+     * @throws \Exception
      */
     public function getNumberOfChildren(): int
     {
@@ -290,6 +302,7 @@ class Family extends GedcomRecord
      * get the marriage event
      *
      * @return Fact|null
+     * @throws \Exception
      */
     public function getMarriage()
     {
@@ -300,6 +313,7 @@ class Family extends GedcomRecord
      * Get marriage date
      *
      * @return Date
+     * @throws \Exception
      */
     public function getMarriageDate()
     {
@@ -315,6 +329,7 @@ class Family extends GedcomRecord
      * Get the marriage year - displayed on lists of families
      *
      * @return int
+     * @throws \Exception
      */
     public function getMarriageYear(): int
     {
@@ -325,6 +340,7 @@ class Family extends GedcomRecord
      * Get the marriage place
      *
      * @return Place
+     * @throws \Exception
      */
     public function getMarriagePlace(): Place
     {
@@ -337,6 +353,7 @@ class Family extends GedcomRecord
      * Get a list of all marriage dates - for the family lists.
      *
      * @return Date[]
+     * @throws \Exception
      */
     public function getAllMarriageDates(): array
     {
@@ -353,6 +370,7 @@ class Family extends GedcomRecord
      * Get a list of all marriage places - for the family lists.
      *
      * @return Place[]
+     * @throws \Exception
      */
     public function getAllMarriagePlaces(): array
     {
@@ -370,6 +388,7 @@ class Family extends GedcomRecord
      * Derived classes should redefine this function, otherwise the object will have no name
      *
      * @return string[][]
+     * @throws \Exception
      */
     public function getAllNames(): array
     {
@@ -448,6 +467,7 @@ class Family extends GedcomRecord
      * identifying characteristics of this record.
      *
      * @return string
+     * @throws \Exception
      */
     public function formatListDetails(): string
     {

@@ -50,6 +50,7 @@ class AdminMediaController extends AbstractBaseController
      * @param Request $request
      *
      * @return Response
+     * @throws \Exception
      */
     public function index(Request $request): Response
     {
@@ -113,6 +114,7 @@ class AdminMediaController extends AbstractBaseController
      * @param Request $request
      *
      * @return JsonResponse
+     * @throws \Exception
      */
     public function data(Request $request): JsonResponse
     {
@@ -398,6 +400,7 @@ class AdminMediaController extends AbstractBaseController
      * @param Request $request
      *
      * @return Response
+     * @throws \Exception
      */
     public function upload(Request $request): Response
     {
@@ -422,6 +425,7 @@ class AdminMediaController extends AbstractBaseController
      * @param Request $request
      *
      * @return RedirectResponse
+     * @throws \Exception
      */
     public function uploadAction(Request $request): RedirectResponse
     {
@@ -497,6 +501,7 @@ class AdminMediaController extends AbstractBaseController
      * Generate a list of all folders from all the trees.
      *
      * @return string[]
+     * @throws \Exception
      */
     private function folderListAll(): array
     {
@@ -520,6 +525,7 @@ class AdminMediaController extends AbstractBaseController
      * A unique list of media folders, from all trees.
      *
      * @return string[]
+     * @throws \Exception
      */
     private function allMediaFolders(): array
     {
@@ -538,6 +544,7 @@ class AdminMediaController extends AbstractBaseController
      * @param string $media_folder
      *
      * @return string[]
+     * @throws \Exception
      */
     private function mediaPaths(string $media_folder): array
     {
@@ -618,6 +625,7 @@ class AdminMediaController extends AbstractBaseController
      * @param string $filter
      *
      * @return string[]
+     * @throws \Exception
      */
     private function allMediaFiles(string $media_folder, string $media_path, string $filter): array
     {
@@ -693,6 +701,7 @@ class AdminMediaController extends AbstractBaseController
      * @param Media $media
      *
      * @return string HTML
+     * @throws \Exception
      */
     private function mediaObjectInfo(Media $media): string
     {

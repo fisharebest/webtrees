@@ -53,6 +53,7 @@ class Source extends GedcomRecord
      * @param int $access_level
      *
      * @return bool
+     * @throws \Exception
      */
     protected function canShowByType($access_level): bool
     {
@@ -88,6 +89,7 @@ class Source extends GedcomRecord
      * @param int    $tree_id
      *
      * @return null|string
+     * @throws \Exception
      */
     protected static function fetchGedcomRecord($xref, $tree_id)
     {
@@ -103,6 +105,7 @@ class Source extends GedcomRecord
      * Extract names from the GEDCOM record.
      *
      * @return void
+     * @throws \Exception
      */
     public function extractNames()
     {

@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\View;
  * Generate a CSRF token form field.
  *
  * @return string
+ * @throws Exception
  */
 function csrf_field()
 {
@@ -33,6 +34,7 @@ function csrf_field()
  * Get the CSRF token value.
  *
  * @return string
+ * @throws Exception
  */
 function csrf_token()
 {

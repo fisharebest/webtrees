@@ -86,6 +86,7 @@ class Select2 extends Html
      * @param string $query Search terms.
      *
      * @return mixed[]
+     * @throws \Exception
      */
     public static function familySearch(Tree $tree, $page, $query): array
     {
@@ -230,6 +231,7 @@ class Select2 extends Html
      * @param string $query Search terms.
      *
      * @return mixed[]
+     * @throws \Exception
      */
     public static function individualSearch(Tree $tree, $page, $query): array
     {
@@ -296,6 +298,7 @@ class Select2 extends Html
      * @param string $query Search terms.
      *
      * @return mixed[]
+     * @throws \Exception
      */
     public static function mediaObjectSearch(Tree $tree, $page, $query): array
     {
@@ -361,6 +364,7 @@ class Select2 extends Html
      * @param string $query Search terms.
      *
      * @return mixed[]
+     * @throws \Exception
      */
     public static function noteSearch(Tree $tree, $page, $query): array
     {
@@ -427,6 +431,7 @@ class Select2 extends Html
      * @param bool   $create if true, include the query in the results so it can be created.
      *
      * @return mixed[]
+     * @throws \Exception
      */
     public static function placeSearch(Tree $tree, $page, $query, $create): array
     {
@@ -525,6 +530,7 @@ class Select2 extends Html
      * @param string $query Search terms.
      *
      * @return mixed[]
+     * @throws \Exception
      */
     public static function repositorySearch(Tree $tree, $page, $query): array
     {
@@ -590,6 +596,7 @@ class Select2 extends Html
      * @param string $query Search terms.
      *
      * @return mixed[]
+     * @throws \Exception
      */
     public static function sourceSearch(Tree $tree, $page, $query): array
     {
@@ -655,6 +662,7 @@ class Select2 extends Html
      * @param string $query Search terms.
      *
      * @return mixed[]
+     * @throws \Exception
      */
     public static function submitterSearch(Tree $tree, $page, $query): array
     {

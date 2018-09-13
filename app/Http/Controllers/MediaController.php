@@ -35,6 +35,7 @@ class MediaController extends AbstractBaseController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function show(Request $request, Tree $tree): Response
     {
@@ -59,6 +60,7 @@ class MediaController extends AbstractBaseController
      * @param Media $record
      *
      * @return array
+     * @throws \Exception
      */
     private function facts(Media $record): array
     {

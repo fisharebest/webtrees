@@ -48,6 +48,7 @@ class ReportEngineController extends AbstractBaseController
      * @param Tree $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function reportList(Tree $tree): Response
     {
@@ -67,6 +68,7 @@ class ReportEngineController extends AbstractBaseController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function reportSetup(Request $request, Tree $tree): Response
     {
@@ -179,6 +181,7 @@ class ReportEngineController extends AbstractBaseController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function reportRun(Request $request, Tree $tree): Response
     {
@@ -284,6 +287,7 @@ class ReportEngineController extends AbstractBaseController
      * @param Tree $tree
      *
      * @return string[]
+     * @throws \Exception
      */
     private function allReports(Tree $tree): array
     {

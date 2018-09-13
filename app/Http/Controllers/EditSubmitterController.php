@@ -47,6 +47,7 @@ class EditSubmitterController extends AbstractEditController
      * @param Tree    $tree
      *
      * @return JsonResponse
+     * @throws \Exception
      */
     public function createSubmitterAction(Request $request, Tree $tree): JsonResponse
     {

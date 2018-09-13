@@ -64,6 +64,7 @@ class AbstractCensusColumn
      * @param Individual $individual
      *
      * @return Individual|null
+     * @throws \Exception
      */
     public function father(Individual $individual)
     {
@@ -82,6 +83,7 @@ class AbstractCensusColumn
      * @param Individual $individual
      *
      * @return Individual|null
+     * @throws \Exception
      */
     public function mother(Individual $individual)
     {
@@ -100,6 +102,7 @@ class AbstractCensusColumn
      * @param Individual $individual
      *
      * @return Family|null
+     * @throws \Exception
      */
     public function spouseFamily(Individual $individual)
     {

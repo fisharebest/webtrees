@@ -42,6 +42,7 @@ class UpgradeService
 
     /**
      * @return bool
+     * @throws \Exception
      */
     public function isUpgradeAvailable(): bool
     {
@@ -54,6 +55,7 @@ class UpgradeService
      * What is the latest version of webtrees.
      *
      * @return string
+     * @throws \Exception
      */
     public function latestVersion(): string
     {
@@ -68,6 +70,7 @@ class UpgradeService
      * Where can we download the latest version of webtrees.
      *
      * @return string
+     * @throws \Exception
      */
     public function downloadUrl(): string
     {
@@ -86,6 +89,7 @@ class UpgradeService
      * installation statistics which can be found at http://dev.webtrees.net/statistics.html
      *
      * @return string
+     * @throws \Exception
      */
     private function fetchLatestVersion(): string
     {

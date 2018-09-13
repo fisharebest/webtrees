@@ -37,6 +37,7 @@ class EditIndividualController extends AbstractEditController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function reorderMedia(Request $request, Tree $tree): Response
     {
@@ -58,6 +59,7 @@ class EditIndividualController extends AbstractEditController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function reorderMediaAction(Request $request, Tree $tree): Response
     {
@@ -98,6 +100,7 @@ class EditIndividualController extends AbstractEditController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function reorderNames(Request $request, Tree $tree): Response
     {
@@ -119,6 +122,7 @@ class EditIndividualController extends AbstractEditController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function reorderNamesAction(Request $request, Tree $tree): Response
     {
@@ -159,6 +163,7 @@ class EditIndividualController extends AbstractEditController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function reorderSpouses(Request $request, Tree $tree): Response
     {
@@ -180,6 +185,7 @@ class EditIndividualController extends AbstractEditController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function reorderSpousesAction(Request $request, Tree $tree): Response
     {
@@ -222,6 +228,7 @@ class EditIndividualController extends AbstractEditController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function addChild(Request $request, Tree $tree): Response
     {
@@ -250,6 +257,7 @@ class EditIndividualController extends AbstractEditController
      * @param Tree    $tree
      *
      * @return RedirectResponse
+     * @throws \Exception
      */
     public function addChildAction(Request $request, Tree $tree): RedirectResponse
     {
@@ -315,6 +323,7 @@ class EditIndividualController extends AbstractEditController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function addParent(Request $request, Tree $tree): Response
     {
@@ -350,6 +359,7 @@ class EditIndividualController extends AbstractEditController
      * @param Tree    $tree
      *
      * @return RedirectResponse
+     * @throws \Exception
      */
     public function addParentAction(Request $request, Tree $tree): RedirectResponse
     {
@@ -412,6 +422,7 @@ class EditIndividualController extends AbstractEditController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function addSpouse(Request $request, Tree $tree): Response
     {
@@ -448,6 +459,7 @@ class EditIndividualController extends AbstractEditController
      * @param Tree    $tree
      *
      * @return RedirectResponse
+     * @throws \Exception
      */
     public function addSpouseAction(Request $request, Tree $tree): RedirectResponse
     {
@@ -536,6 +548,7 @@ class EditIndividualController extends AbstractEditController
      * @param Tree    $tree
      *
      * @return RedirectResponse
+     * @throws \Exception
      */
     public function addUnlinkedAction(Request $request, Tree $tree): RedirectResponse
     {
@@ -581,6 +594,7 @@ class EditIndividualController extends AbstractEditController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function editName(Request $request, Tree $tree): Response
     {
@@ -613,7 +627,10 @@ class EditIndividualController extends AbstractEditController
     /**
      * @param Request $request
      *
+     * @param Tree    $tree
+     *
      * @return RedirectResponse
+     * @throws \Exception
      */
     public function editNameAction(Request $request, Tree $tree): RedirectResponse
     {
@@ -628,6 +645,7 @@ class EditIndividualController extends AbstractEditController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function addName(Request $request, Tree $tree): Response
     {
@@ -656,6 +674,7 @@ class EditIndividualController extends AbstractEditController
      * @param Tree    $tree
      *
      * @return RedirectResponse
+     * @throws \Exception
      */
     public function addNameAction(Request $request, Tree $tree): RedirectResponse
     {
@@ -675,6 +694,7 @@ class EditIndividualController extends AbstractEditController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function linkChildToFamily(Request $request, Tree $tree): Response
     {
@@ -697,6 +717,7 @@ class EditIndividualController extends AbstractEditController
      * @param Tree    $tree
      *
      * @return RedirectResponse
+     * @throws \Exception
      */
     public function linkChildToFamilyAction(Request $request, Tree $tree): RedirectResponse
     {
@@ -743,6 +764,7 @@ class EditIndividualController extends AbstractEditController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function linkSpouseToIndividual(Request $request, Tree $tree): Response
     {
@@ -772,6 +794,7 @@ class EditIndividualController extends AbstractEditController
      * @param Tree    $tree
      *
      * @return RedirectResponse
+     * @throws \Exception
      */
     public function linkSpouseToIndividualAction(Request $request, Tree $tree): RedirectResponse
     {

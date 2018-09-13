@@ -31,6 +31,7 @@ class CensusColumnRelationToHeadGerman extends AbstractCensusColumn implements C
      * @param Individual $head
      *
      * @return string
+     * @throws \Exception
      */
     public function generate(Individual $individual, Individual $head): string
     {

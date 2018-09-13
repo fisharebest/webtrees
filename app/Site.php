@@ -34,6 +34,7 @@ class Site
      * @param string $default
      *
      * @return string
+     * @throws \Exception
      */
     public static function getPreference($setting_name, $default = ''): string
     {
@@ -59,6 +60,7 @@ class Site
      * @param string $setting_value
      *
      * @return void
+     * @throws \Exception
      */
     public static function setPreference($setting_name, $setting_value)
     {

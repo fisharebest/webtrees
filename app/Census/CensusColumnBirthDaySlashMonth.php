@@ -30,6 +30,7 @@ class CensusColumnBirthDaySlashMonth extends AbstractCensusColumn implements Cen
      * @param Individual $head
      *
      * @return string
+     * @throws \Exception
      */
     public function generate(Individual $individual, Individual $head): string
     {

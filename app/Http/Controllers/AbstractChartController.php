@@ -33,6 +33,8 @@ abstract class AbstractChartController extends AbstractBaseController
      *
      * @param Tree   $tree
      * @param string $module
+     *
+     * @throws \Exception
      */
     protected function checkModuleIsActive(Tree $tree, string $module)
     {
@@ -51,6 +53,7 @@ abstract class AbstractChartController extends AbstractBaseController
      * @param int        $generations Fetch this number of generations
      *
      * @return Individual[]
+     * @throws \Exception
      */
     protected function sosaStradonitzAncestors(Individual $individual, int $generations): array
     {
@@ -91,6 +94,7 @@ abstract class AbstractChartController extends AbstractBaseController
      * @param Individual[] $array
      *
      * @return Individual[]
+     * @throws \Exception
      */
     protected function descendants(Individual $individual, int $generations, array $array): array
     {

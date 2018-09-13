@@ -54,6 +54,7 @@ class Repository extends GedcomRecord
      * @param int    $tree_id
      *
      * @return null|string
+     * @throws \Exception
      */
     protected static function fetchGedcomRecord($xref, $tree_id)
     {
@@ -81,6 +82,7 @@ class Repository extends GedcomRecord
      * Extract names from the GEDCOM record.
      *
      * @return void
+     * @throws \Exception
      */
     public function extractNames()
     {

@@ -82,6 +82,7 @@ class PedigreeChartController extends AbstractChartController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function page(Request $request, Tree $tree): Response
     {
@@ -119,6 +120,7 @@ class PedigreeChartController extends AbstractChartController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function chart(Request $request, Tree $tree): Response
     {
@@ -346,6 +348,7 @@ class PedigreeChartController extends AbstractChartController
      * Build a menu for the chart root individual
      *
      * @return string
+     * @throws \Exception
      */
     public function getMenu(): string
     {
@@ -441,6 +444,7 @@ class PedigreeChartController extends AbstractChartController
      * @param Tree $tree
      *
      * @return string[]
+     * @throws \Exception
      */
     private function generationOptions(Tree $tree): array
     {

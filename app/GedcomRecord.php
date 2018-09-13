@@ -233,6 +233,7 @@ class GedcomRecord
      * @param int    $tree_id
      *
      * @return null|string
+     * @throws \Exception
      */
     protected static function fetchGedcomRecord($xref, $tree_id)
     {
@@ -370,6 +371,7 @@ class GedcomRecord
      * @param int $access_level
      *
      * @return bool
+     * @throws \Exception
      */
     private function canShowRecord($access_level): bool
     {
@@ -435,6 +437,7 @@ class GedcomRecord
      * @param int|null $access_level
      *
      * @return bool
+     * @throws \Exception
      */
     public function canShow($access_level = null)
     {
@@ -479,6 +482,7 @@ class GedcomRecord
      * @param int|null $access_level
      *
      * @return bool
+     * @throws \Exception
      */
     public function canShowName($access_level = null): bool
     {
@@ -493,6 +497,7 @@ class GedcomRecord
      * Can we edit this record?
      *
      * @return bool
+     * @throws \Exception
      */
     public function canEdit(): bool
     {
@@ -506,6 +511,7 @@ class GedcomRecord
      * @param int $access_level
      *
      * @return string
+     * @throws \Exception
      */
     public function privatizeGedcom($access_level)
     {
@@ -615,6 +621,7 @@ class GedcomRecord
      * Derived classes should redefine this function, otherwise the object will have no name
      *
      * @return string[][]
+     * @throws \Exception
      */
     public function getAllNames(): array
     {
@@ -649,6 +656,7 @@ class GedcomRecord
      * Which of the (possibly several) names of this record is the primary one.
      *
      * @return int
+     * @throws \Exception
      */
     public function getPrimaryName(): int
     {
@@ -677,6 +685,7 @@ class GedcomRecord
      * Which of the (possibly several) names of this record is the secondary one.
      *
      * @return int
+     * @throws \Exception
      */
     public function getSecondaryName(): int
     {
@@ -728,6 +737,7 @@ class GedcomRecord
      * @param GedcomRecord $y
      *
      * @return int
+     * @throws \Exception
      */
     public static function compare(GedcomRecord $x, GedcomRecord $y)
     {
@@ -750,6 +760,7 @@ class GedcomRecord
      * Get variants of the name
      *
      * @return string
+     * @throws \Exception
      */
     public function getFullName()
     {
@@ -766,6 +777,7 @@ class GedcomRecord
      * Get a sortable version of the name. Do not display this!
      *
      * @return string
+     * @throws \Exception
      */
     public function getSortName(): string
     {
@@ -779,6 +791,7 @@ class GedcomRecord
      * Get the full name in an alternative character set
      *
      * @return null|string
+     * @throws \Exception
      */
     public function getAddName()
     {
@@ -795,6 +808,7 @@ class GedcomRecord
      * Format this object for display in a list
      *
      * @return string
+     * @throws \Exception
      */
     public function formatList(): string
     {
@@ -824,6 +838,7 @@ class GedcomRecord
      * @param int    $style
      *
      * @return string
+     * @throws \Exception
      */
     public function formatFirstMajorFact($facts, $style): string
     {
@@ -853,6 +868,7 @@ class GedcomRecord
      * @param string $link
      *
      * @return Individual[]
+     * @throws \Exception
      */
     public function linkedIndividuals($link): array
     {
@@ -887,6 +903,7 @@ class GedcomRecord
      * @param string $link
      *
      * @return Family[]
+     * @throws \Exception
      */
     public function linkedFamilies($link): array
     {
@@ -919,6 +936,7 @@ class GedcomRecord
      * @param string $link
      *
      * @return Source[]
+     * @throws \Exception
      */
     public function linkedSources($link): array
     {
@@ -952,6 +970,7 @@ class GedcomRecord
      * @param string $link
      *
      * @return Media[]
+     * @throws \Exception
      */
     public function linkedMedia($link): array
     {
@@ -983,6 +1002,7 @@ class GedcomRecord
      * @param string $link
      *
      * @return Note[]
+     * @throws \Exception
      */
     public function linkedNotes($link): array
     {
@@ -1017,6 +1037,7 @@ class GedcomRecord
      * @param string $link
      *
      * @return Repository[]
+     * @throws \Exception
      */
     public function linkedRepositories($link): array
     {
@@ -1055,6 +1076,7 @@ class GedcomRecord
      * @param string $event_type
      *
      * @return Date[]
+     * @throws \Exception
      */
     public function getAllEventDates($event_type): array
     {
@@ -1074,6 +1096,7 @@ class GedcomRecord
      * @param string $event_type
      *
      * @return Place[]
+     * @throws \Exception
      */
     public function getAllEventPlaces($event_type): array
     {
@@ -1095,6 +1118,7 @@ class GedcomRecord
      * @param string $tag
      *
      * @return Fact|null
+     * @throws \Exception
      */
     public function getFirstFact($tag)
     {
@@ -1113,9 +1137,11 @@ class GedcomRecord
      * @param string   $filter
      * @param bool     $sort
      * @param int|null $access_level
-     * @param bool     $override Include private records, to allow us to implement $SHOW_PRIVATE_RELATIONSHIPS and $SHOW_LIVING_NAMES.
+     * @param bool     $override Include private records, to allow us to implement $SHOW_PRIVATE_RELATIONSHIPS and
+     *                           $SHOW_LIVING_NAMES.
      *
      * @return Fact[]
+     * @throws \Exception
      */
     public function getFacts($filter = null, $sort = false, $access_level = null, $override = false): array
     {
@@ -1145,6 +1171,7 @@ class GedcomRecord
      * @param bool $sorting
      *
      * @return string
+     * @throws \Exception
      */
     public function lastChangeTimestamp($sorting = false)
     {
@@ -1179,6 +1206,7 @@ class GedcomRecord
      * Get the last-change user for this record
      *
      * @return string
+     * @throws \Exception
      */
     public function lastChangeUser()
     {
@@ -1201,6 +1229,8 @@ class GedcomRecord
      *
      * @param string $gedcom
      * @param bool   $update_chan
+     *
+     * @throws \Exception
      */
     public function createFact($gedcom, $update_chan)
     {
@@ -1212,6 +1242,7 @@ class GedcomRecord
      *
      * @param string $fact_id
      * @param bool   $update_chan
+     * @throws \Exception
      */
     public function deleteFact($fact_id, $update_chan)
     {
@@ -1299,6 +1330,7 @@ class GedcomRecord
      *
      * @param string $gedcom
      * @param bool   $update_chan
+     * @throws \Exception
      */
     public function updateRecord($gedcom, $update_chan)
     {
@@ -1372,6 +1404,7 @@ class GedcomRecord
      *
      * @param string $xref
      * @param bool   $update_chan
+     * @throws \Exception
      */
     public function removeLinks($xref, $update_chan)
     {

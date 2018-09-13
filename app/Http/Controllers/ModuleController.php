@@ -39,6 +39,7 @@ class ModuleController extends AbstractBaseController
      * @param Resolver $resolver
      *
      * @return Response
+     * @throws \ReflectionException
      */
     public function action(Request $request, User $user, Resolver $resolver): Response
     {

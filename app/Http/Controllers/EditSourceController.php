@@ -47,6 +47,7 @@ class EditSourceController extends AbstractEditController
      * @param Tree    $tree
      *
      * @return JsonResponse
+     * @throws \Exception
      */
     public function createSourceAction(Request $request, Tree $tree): JsonResponse
     {

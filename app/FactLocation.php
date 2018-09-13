@@ -19,6 +19,9 @@ namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Functions\FunctionsCharts;
 
+/**
+ * Class FactLocation
+ */
 class FactLocation extends Location
 {
     private $indi;
@@ -50,6 +53,7 @@ class FactLocation extends Location
      * @param $sosa
      *
      * @return array
+     * @throws \Exception
      */
     public function shortSummary($datatype, $sosa): array
     {

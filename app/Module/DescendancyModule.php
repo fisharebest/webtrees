@@ -48,6 +48,7 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function getSearchAction(Request $request, Tree $tree): Response
     {
@@ -87,6 +88,7 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function getDescendantsAction(Request $request, Tree $tree): Response
     {
@@ -121,6 +123,7 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
      * @param Individual $individual
      *
      * @return string
+     * @throws \Exception
      */
     public function getSidebarContent(Individual $individual): string
     {
@@ -136,6 +139,7 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
      * @param int        $generations
      *
      * @return string
+     * @throws \Exception
      */
     public function getPersonLi(Individual $person, $generations = 0): string
     {
@@ -167,6 +171,7 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
      * @param int        $generations
      *
      * @return string
+     * @throws \Exception
      */
     public function getFamilyLi(Family $family, Individual $person, $generations = 0): string
     {
@@ -198,6 +203,7 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
      * @param int        $generations
      *
      * @return string
+     * @throws \Exception
      */
     public function loadSpouses(Individual $person, $generations)
     {
@@ -221,6 +227,7 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
      * @param int    $generations
      *
      * @return string
+     * @throws \Exception
      */
     public function loadChildren(Family $family, $generations)
     {

@@ -114,6 +114,7 @@ class Module
      * @param string $file
      *
      * @return AbstractModule|null
+     * @throws \Exception
      */
     private static function loadModule($file)
     {
@@ -221,6 +222,7 @@ class Module
      * Get a list of all active (enabled) modules.
      *
      * @return AbstractModule[]
+     * @throws \Exception
      */
     private static function getActiveModules(): array
     {
@@ -268,6 +270,7 @@ class Module
      * @param string $component The type of module, such as "tab", "report" or "menu"
      *
      * @return ModuleBlockInterface[]|ModuleChartInterface[]|ModuleMenuInterface[]|ModuleReportInterface[]|ModuleSidebarInterface[]|ModuleTabInterface[]|ModuleThemeInterface[]
+     * @throws \Exception
      */
     private static function getActiveModulesByComponent(Tree $tree, $component): array
     {
@@ -311,6 +314,7 @@ class Module
      * @param string $component The type of module, such as "tab", "report" or "menu"
      *
      * @return AbstractModule[]
+     * @throws \Exception
      */
     public static function getAllModulesByComponent($component): array
     {
@@ -347,6 +351,7 @@ class Module
      * @param Tree $tree
      *
      * @return ModuleBlockInterface[]
+     * @throws \Exception
      */
     public static function getActiveBlocks(Tree $tree): array
     {
@@ -359,6 +364,7 @@ class Module
      * @param Tree $tree
      *
      * @return ModuleChartInterface[]
+     * @throws \Exception
      */
     public static function getActiveCharts(Tree $tree): array
     {
@@ -372,6 +378,7 @@ class Module
      * @param string $module
      *
      * @return bool
+     * @throws \Exception
      */
     public static function isActiveChart(Tree $tree, $module): bool
     {
@@ -382,6 +389,7 @@ class Module
      * Get a list of module names which have configuration options.
      *
      * @return ModuleConfigInterface[]
+     * @throws \Exception
      */
     public static function configurableModules(): array
     {
@@ -403,6 +411,7 @@ class Module
      * @param Tree $tree
      *
      * @return ModuleMenuInterface[]
+     * @throws \Exception
      */
     public static function getActiveMenus(Tree $tree): array
     {
@@ -415,6 +424,7 @@ class Module
      * @param Tree $tree
      *
      * @return ModuleReportInterface[]
+     * @throws \Exception
      */
     public static function getActiveReports(Tree $tree): array
     {
@@ -427,6 +437,7 @@ class Module
      * @param Tree $tree
      *
      * @return ModuleSidebarInterface[]
+     * @throws \Exception
      */
     public static function getActiveSidebars(Tree $tree): array
     {
@@ -439,6 +450,7 @@ class Module
      * @param Tree $tree
      *
      * @return ModuleTabInterface[]
+     * @throws \Exception
      */
     public static function getActiveTabs(Tree $tree): array
     {
@@ -451,6 +463,7 @@ class Module
      * @param Tree $tree
      *
      * @return ModuleThemeInterface[]
+     * @throws \Exception
      */
     public static function getActiveThemes(Tree $tree): array
     {
@@ -463,6 +476,7 @@ class Module
      * @param string $module_name
      *
      * @return AbstractModule|null
+     * @throws \Exception
      */
     public static function getModuleByName($module_name)
     {
@@ -483,6 +497,7 @@ class Module
      * @param string $default_status
      *
      * @return AbstractModule[]
+     * @throws \Exception
      */
     public static function getInstalledModules($default_status): array
     {
@@ -589,6 +604,8 @@ class Module
      * rights for each module.
      *
      * @param int $tree_id
+     *
+     * @throws \Exception
      */
     public static function setDefaultAccess($tree_id)
     {

@@ -117,6 +117,7 @@ class View
      * Render a view.
      *
      * @return string
+     * @throws Exception
      */
     public function render(): string
     {

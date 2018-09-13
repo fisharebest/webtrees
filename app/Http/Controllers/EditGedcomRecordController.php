@@ -47,6 +47,7 @@ class EditGedcomRecordController extends AbstractEditController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function copyFact(Request $request, Tree $tree): Response
     {
@@ -98,6 +99,7 @@ class EditGedcomRecordController extends AbstractEditController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function deleteFact(Request $request, Tree $tree): Response
     {
@@ -125,6 +127,7 @@ class EditGedcomRecordController extends AbstractEditController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function deleteRecord(Request $request, Tree $tree): Response
     {
@@ -181,6 +184,7 @@ class EditGedcomRecordController extends AbstractEditController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function pasteFact(Request $request, Tree $tree): Response
     {
@@ -205,6 +209,7 @@ class EditGedcomRecordController extends AbstractEditController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function editRawFact(Request $request, Tree $tree): Response
     {
@@ -234,6 +239,7 @@ class EditGedcomRecordController extends AbstractEditController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function editRawFactAction(Request $request, Tree $tree): Response
     {
@@ -264,6 +270,7 @@ class EditGedcomRecordController extends AbstractEditController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function editRawRecord(Request $request, Tree $tree): Response
     {
@@ -286,6 +293,7 @@ class EditGedcomRecordController extends AbstractEditController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function editRawRecordAction(Request $request, Tree $tree): Response
     {
@@ -323,6 +331,7 @@ class EditGedcomRecordController extends AbstractEditController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function addFact(Request $request, Tree $tree): Response
     {
@@ -347,6 +356,7 @@ class EditGedcomRecordController extends AbstractEditController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function editFact(Request $request, Tree $tree): Response
     {
@@ -386,6 +396,7 @@ class EditGedcomRecordController extends AbstractEditController
      * @param Tree    $tree
      *
      * @return RedirectResponse
+     * @throws \Exception
      */
     public function updateFact(Request $request, Tree $tree): RedirectResponse
     {

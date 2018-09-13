@@ -44,6 +44,7 @@ class HomePageController extends AbstractBaseController
      * @param User    $user
      *
      * @return Response
+     * @throws \Exception
      */
     public function treePageBlockEdit(Request $request, Tree $tree, User $user): Response
     {
@@ -68,6 +69,7 @@ class HomePageController extends AbstractBaseController
      * @param User    $user
      *
      * @return RedirectResponse
+     * @throws \Exception
      */
     public function treePageBlockUpdate(Request $request, Tree $tree, User $user): RedirectResponse
     {
@@ -86,6 +88,7 @@ class HomePageController extends AbstractBaseController
      * @param User    $user
      *
      * @return ModuleBlockInterface
+     * @throws \Exception
      */
     private function treeBlock(Request $request, User $user): ModuleBlockInterface
     {
@@ -122,6 +125,7 @@ class HomePageController extends AbstractBaseController
      * @param User    $user
      *
      * @return Response
+     * @throws \Exception
      */
     public function userPageBlockEdit(Request $request, Tree $tree, User $user): Response
     {
@@ -146,6 +150,7 @@ class HomePageController extends AbstractBaseController
      * @param User    $user
      *
      * @return RedirectResponse
+     * @throws \Exception
      */
     public function userPageBlockUpdate(Request $request, Tree $tree, User $user): RedirectResponse
     {
@@ -164,6 +169,7 @@ class HomePageController extends AbstractBaseController
      * @param User    $user
      *
      * @return ModuleBlockInterface
+     * @throws \Exception
      */
     private function userBlock(Request $request, User $user): ModuleBlockInterface
     {
@@ -200,6 +206,7 @@ class HomePageController extends AbstractBaseController
      * @param Tree $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function treePage(Tree $tree): Response
     {
@@ -228,6 +235,7 @@ class HomePageController extends AbstractBaseController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function treePageBlock(Request $request, Tree $tree): Response
     {
@@ -267,6 +275,7 @@ class HomePageController extends AbstractBaseController
      * @param Request $request
      *
      * @return Response
+     * @throws \Exception
      */
     public function treePageDefaultEdit(Request $request): Response
     {
@@ -294,6 +303,7 @@ class HomePageController extends AbstractBaseController
      * @param Request $request
      *
      * @return RedirectResponse
+     * @throws \Exception
      */
     public function treePageDefaultUpdate(Request $request): RedirectResponse
     {
@@ -311,6 +321,7 @@ class HomePageController extends AbstractBaseController
      * @param Tree $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function treePageEdit(Tree $tree): Response
     {
@@ -339,6 +350,7 @@ class HomePageController extends AbstractBaseController
      * @param Tree    $tree
      *
      * @return RedirectResponse
+     * @throws \Exception
      */
     public function treePageUpdate(Request $request, Tree $tree): RedirectResponse
     {
@@ -364,6 +376,7 @@ class HomePageController extends AbstractBaseController
      * @param User $user
      *
      * @return Response
+     * @throws \Exception
      */
     public function userPage(Tree $tree, User $user): Response
     {
@@ -393,6 +406,7 @@ class HomePageController extends AbstractBaseController
      * @param User    $user
      *
      * @return Response
+     * @throws \Exception
      */
     public function userPageBlock(Request $request, Tree $tree, User $user): Response
     {
@@ -431,6 +445,7 @@ class HomePageController extends AbstractBaseController
      * @param Request $request
      *
      * @return Response
+     * @throws \Exception
      */
     public function userPageDefaultEdit(Request $request): Response
     {
@@ -458,6 +473,7 @@ class HomePageController extends AbstractBaseController
      * @param Request $request
      *
      * @return RedirectResponse
+     * @throws \Exception
      */
     public function userPageDefaultUpdate(Request $request): RedirectResponse
     {
@@ -476,6 +492,7 @@ class HomePageController extends AbstractBaseController
      * @param User $user
      *
      * @return Response
+     * @throws \Exception
      */
     public function userPageEdit(Tree $tree, User $user): Response
     {
@@ -505,6 +522,7 @@ class HomePageController extends AbstractBaseController
      * @param User    $user
      *
      * @return RedirectResponse
+     * @throws \Exception
      */
     public function userPageUpdate(Request $request, Tree $tree, User $user): RedirectResponse
     {
@@ -529,6 +547,7 @@ class HomePageController extends AbstractBaseController
      * @param Request $request
      *
      * @return Response
+     * @throws \Exception
      */
     public function userPageUserEdit(Request $request): Response
     {
@@ -558,6 +577,7 @@ class HomePageController extends AbstractBaseController
      * @param Request $request
      *
      * @return RedirectResponse
+     * @throws \Exception
      */
     public function userPageUserUpdate(Request $request): RedirectResponse
     {
@@ -577,6 +597,7 @@ class HomePageController extends AbstractBaseController
      * @param int  $block_id
      *
      * @return ModuleBlockInterface|null
+     * @throws \Exception
      */
     private function getBlockModule(Tree $tree, int $block_id)
     {
@@ -597,6 +618,7 @@ class HomePageController extends AbstractBaseController
      * Get all the available blocks for a tree page.
      *
      * @return ModuleBlockInterface[]
+     * @throws \Exception
      */
     private function getAvailableTreeBlocks(): array
     {
@@ -612,6 +634,7 @@ class HomePageController extends AbstractBaseController
      * Get all the available blocks for a user page.
      *
      * @return ModuleBlockInterface[]
+     * @throws \Exception
      */
     private function getAvailableUserBlocks(): array
     {
@@ -631,6 +654,7 @@ class HomePageController extends AbstractBaseController
      * @param string $location "main" or "side"
      *
      * @return ModuleBlockInterface[]
+     * @throws \Exception
      */
     private function getBlocksForTreePage(int $tree_id, int $access_level, string $location): array
     {
@@ -662,6 +686,7 @@ class HomePageController extends AbstractBaseController
      * @param string $location "main" or "side"
      *
      * @return ModuleBlockInterface[]
+     * @throws \Exception
      */
     private function getBlocksForUserPage(int $tree_id, int $user_id, int $access_level, string $location): array
     {
@@ -707,6 +732,8 @@ class HomePageController extends AbstractBaseController
      * @param int   $tree_id
      * @param array $main_blocks
      * @param array $side_blocks
+     *
+     * @throws \Exception
      */
     private function updateTreeBlocks(int $tree_id, array $main_blocks, array $side_blocks)
     {
@@ -772,6 +799,7 @@ class HomePageController extends AbstractBaseController
      * @param int   $user_id
      * @param array $main_blocks
      * @param array $side_blocks
+     * @throws \Exception
      */
     private function updateUserBlocks(int $user_id, array $main_blocks, array $side_blocks)
     {

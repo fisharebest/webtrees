@@ -134,6 +134,7 @@ class SearchController extends AbstractBaseController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function quick(Request $request, Tree $tree): Response
     {
@@ -157,6 +158,7 @@ class SearchController extends AbstractBaseController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function general(Request $request, Tree $tree): Response
     {
@@ -275,6 +277,7 @@ class SearchController extends AbstractBaseController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function phonetic(Request $request, Tree $tree): Response
     {
@@ -357,6 +360,7 @@ class SearchController extends AbstractBaseController
      * @param Tree    $tree
      *
      * @return RedirectResponse
+     * @throws \Exception
      */
     public function replaceAction(Request $request, Tree $tree): RedirectResponse
     {
@@ -433,6 +437,7 @@ class SearchController extends AbstractBaseController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function advanced(Request $request, Tree $tree): Response
     {
@@ -477,6 +482,7 @@ class SearchController extends AbstractBaseController
      * @param string[]       $name_tags
      *
      * @return int
+     * @throws \Exception
      */
     private function replaceIndividualNames(array $records, string $search, string $replace, array $name_tags): int
     {
@@ -503,6 +509,7 @@ class SearchController extends AbstractBaseController
      * @param string         $replace
      *
      * @return int
+     * @throws \Exception
      */
     private function replacePlaces(array $records, string $search, string $replace): int
     {
@@ -529,6 +536,7 @@ class SearchController extends AbstractBaseController
      * @param string         $replace
      *
      * @return int
+     * @throws \Exception
      */
     private function replaceRecords(array $records, string $search, string $replace): int
     {
@@ -629,6 +637,7 @@ class SearchController extends AbstractBaseController
      * @param Tree[]   $search_trees
      *
      * @return Family[]
+     * @throws \Exception
      */
     private function searchFamilies(array $search_terms, array $search_trees): array
     {
@@ -685,6 +694,7 @@ class SearchController extends AbstractBaseController
      * @param Tree[]   $search_trees
      *
      * @return Family[]
+     * @throws \Exception
      */
     private function searchFamilyNames(array $search_terms, array $search_trees): array
     {
@@ -738,6 +748,7 @@ class SearchController extends AbstractBaseController
      * @param Tree[]   $search_trees
      *
      * @return Individual[]
+     * @throws \Exception
      */
     private function searchIndividuals(array $search_terms, array $search_trees): array
     {
@@ -793,6 +804,7 @@ class SearchController extends AbstractBaseController
      * @param string[] $modifiers
      *
      * @return Individual[]
+     * @throws \Exception
      */
     private function searchIndividualsAdvanced(Tree $tree, array $fields, array $modifiers): array
     {
@@ -1182,6 +1194,7 @@ class SearchController extends AbstractBaseController
      * @param Tree[] $search_trees
      *
      * @return Individual[]
+     * @throws \Exception
      */
     private function searchIndividualsPhonetic(string $soundex, string $lastname, string $firstname, string $place, array $search_trees): array
     {
@@ -1299,6 +1312,7 @@ class SearchController extends AbstractBaseController
      * @param Tree[]   $search_trees
      *
      * @return Note[]
+     * @throws \Exception
      */
     private function searchNotes(array $search_terms, array $search_trees): array
     {
@@ -1355,6 +1369,7 @@ class SearchController extends AbstractBaseController
      * @param Tree[]   $search_trees
      *
      * @return Repository[]
+     * @throws \Exception
      */
     private function searchRepositories(array $search_terms, array $search_trees): array
     {
@@ -1411,6 +1426,7 @@ class SearchController extends AbstractBaseController
      * @param Tree[]   $search_trees
      *
      * @return Source[]
+     * @throws \Exception
      */
     private function searchSources(array $search_terms, array $search_trees): array
     {

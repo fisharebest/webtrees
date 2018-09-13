@@ -67,6 +67,7 @@ class Note extends GedcomRecord
      * @param int $access_level
      *
      * @return bool
+     * @throws \Exception
      */
     protected function canShowByType($access_level): bool
     {
@@ -107,6 +108,7 @@ class Note extends GedcomRecord
      * @param int    $tree_id
      *
      * @return null|string
+     * @throws \Exception
      */
     protected static function fetchGedcomRecord($xref, $tree_id)
     {
@@ -123,6 +125,7 @@ class Note extends GedcomRecord
      * a maximum of 100 characters from the first line.
      *
      * @return void
+     * @throws \Exception
      */
     public function extractNames()
     {

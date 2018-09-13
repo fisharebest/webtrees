@@ -47,6 +47,7 @@ class EditRepositoryController extends AbstractEditController
      * @param Tree    $tree
      *
      * @return JsonResponse
+     * @throws \Exception
      */
     public function createRepositoryAction(Request $request, Tree $tree): JsonResponse
     {

@@ -69,6 +69,7 @@ class FunctionsDate
      * @param int $time
      *
      * @return string
+     * @throws \Exception
      */
     public static function formatTimestamp($time): string
     {

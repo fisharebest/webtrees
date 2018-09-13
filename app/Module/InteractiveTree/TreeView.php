@@ -46,6 +46,7 @@ class TreeView
      * @param int        $generations number of generations to draw
      *
      * @return string[]  HTML and Javascript
+     * @throws \Exception
      */
     public function drawViewport(Individual $individual, $generations): array
     {
@@ -67,6 +68,7 @@ class TreeView
      * @param string $list list of JSON requests
      *
      * @return string
+     * @throws \Exception
      */
     public function getPersons(Tree $tree, $list): string
     {
@@ -107,6 +109,7 @@ class TreeView
      * @param Individual $individual the individual to return the details for
      *
      * @return string
+     * @throws \Exception
      */
     public function getDetails(Individual $individual): string
     {
@@ -128,6 +131,7 @@ class TreeView
      * @param Family     $family
      *
      * @return string
+     * @throws \Exception
      */
     private function getPersonDetails(Individual $individual, Family $family = null): string
     {
@@ -163,6 +167,7 @@ class TreeView
      * @param bool     $ajax       setted to true for an ajax call
      *
      * @return string
+     * @throws \Exception
      */
     private function drawChildren(array $familyList, $gen = 1, $ajax = false): string
     {
@@ -223,6 +228,7 @@ class TreeView
      * Notes : "spouse" means explicitely married partners. Thus, the word "partner"
      * (for "life partner") here fits much better than "spouse" or "mate"
      * to translate properly the modern french meaning of "conjoint"
+     * @throws \Exception
      */
     private function drawPerson(Individual $person, $gen, $state, Family $pfamily = null, $order = null, $isRoot = false): string
     {
@@ -328,6 +334,7 @@ class TreeView
      * @param string     $dashed     if = 'dashed' print dashed top border to separate multiple spuses
      *
      * @return string
+     * @throws \Exception
      */
     private function drawPersonName(Individual $individual, $dashed = ''): string
     {
@@ -362,6 +369,7 @@ class TreeView
      * @param Individual $individual
      *
      * @return string
+     * @throws \Exception
      */
     private function getThumbnail(Individual $individual)
     {

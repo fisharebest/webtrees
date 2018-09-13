@@ -35,6 +35,7 @@ class RepositoryController extends AbstractBaseController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function show(Request $request, Tree $tree): Response
     {
@@ -56,6 +57,7 @@ class RepositoryController extends AbstractBaseController
      * @param Repository $record
      *
      * @return array
+     * @throws \Exception
      */
     private function facts(Repository $record): array
     {

@@ -123,6 +123,7 @@ class AdminPhpGedViewController extends AbstractBaseController
      * @param Request $request
      *
      * @return Response
+     * @throws Exception
      */
     public function step(Request $request): Response
     {
@@ -256,6 +257,7 @@ class AdminPhpGedViewController extends AbstractBaseController
      * @param mixed[] $config
      *
      * @return Response
+     * @throws Exception
      */
     private function wizardStepGeographicData(array $config): Response
     {
@@ -280,6 +282,7 @@ class AdminPhpGedViewController extends AbstractBaseController
      * @param mixed[] $config
      *
      * @return Response
+     * @throws Exception
      */
     private function wizardStepSitePreferences(array $config): Response
     {
@@ -326,6 +329,7 @@ class AdminPhpGedViewController extends AbstractBaseController
      * @param mixed[] $config
      *
      * @return Response
+     * @throws Exception
      */
     private function wizardStepUsers(array $config): Response
     {

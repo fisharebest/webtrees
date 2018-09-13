@@ -25,6 +25,9 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
+/**
+ * Class AdminModuleController
+ */
 class AdminModuleController extends AdminController
 {
 
@@ -33,6 +36,7 @@ class AdminModuleController extends AdminController
      * @param User    $user
      *
      * @return Response
+     * @throws \Exception
      */
     public function action(Request $request, User $user): Response
     {

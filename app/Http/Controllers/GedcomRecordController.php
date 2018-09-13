@@ -41,6 +41,7 @@ class GedcomRecordController extends AbstractBaseController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function show(Request $request, Tree $tree): Response
     {

@@ -40,6 +40,8 @@ class DebugBar
 
     /**
      * Initialize the Debugbar.
+     *
+     * @param bool $enable
      */
     public static function init(bool $enable = true)
     {

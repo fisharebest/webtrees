@@ -251,6 +251,7 @@ class Date
      * @param bool|null   $convert_calendars Convert the date into other calendars
      *
      * @return string
+     * @throws \Exception
      */
     public function display($url = false, $date_format = null, $convert_calendars = true)
     {

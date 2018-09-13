@@ -151,6 +151,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
      * @param Individual $spouse     Show events of this individual
      *
      * @return Fact[]
+     * @throws \Exception
      */
     private static function spouseFacts(Individual $individual, Individual $spouse): array
     {
@@ -185,6 +186,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
      * @param string     $relation
      *
      * @return Fact[]
+     * @throws \Exception
      */
     private static function childFacts(Individual $person, Family $family, $option, $relation): array
     {
@@ -317,6 +319,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
      * @param int        $sosa
      *
      * @return Fact[]
+     * @throws \Exception
      */
     private static function parentFacts(Individual $person, $sosa): array
     {
@@ -416,6 +419,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
      * @param Individual $person
      *
      * @return Fact[]
+     * @throws \Exception
      */
     private static function historicalFacts(Individual $person): array
     {
@@ -450,6 +454,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
      * @param Individual $person
      *
      * @return Fact[]
+     * @throws \Exception
      */
     private static function associateFacts(Individual $person): array
     {

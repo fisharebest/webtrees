@@ -114,6 +114,7 @@ class ColorsTheme extends CloudsTheme implements ThemeInterface
      * Generate a list of items for the user menu.
      *
      * @return Menu[]
+     * @throws \Exception
      */
     public function secondaryMenu(): array
     {
@@ -133,6 +134,7 @@ class ColorsTheme extends CloudsTheme implements ThemeInterface
      * Create a menu of palette options
      *
      * @return Menu
+     * @throws \Exception
      */
     public function menuPalette()
     {

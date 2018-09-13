@@ -63,6 +63,7 @@ class CloudsTheme extends AbstractTheme implements ThemeInterface
      * @param Individual $individual
      *
      * @return Menu[]
+     * @throws \Exception
      */
     public function primaryMenu(Individual $individual): array
     {

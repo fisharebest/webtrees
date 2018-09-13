@@ -76,6 +76,7 @@ class NotesTabModule extends AbstractModule implements ModuleTabInterface
      * @param Individual $individual
      *
      * @return Fact[]
+     * @throws \Exception
      */
     private function getFactsWithNotes(Individual $individual): array
     {

@@ -58,6 +58,7 @@ class ExtraInformationModule extends AbstractModule implements ModuleSidebarInte
      * @param Individual $individual
      *
      * @return string
+     * @throws \Exception
      */
     public function getSidebarContent(Individual $individual): string
     {

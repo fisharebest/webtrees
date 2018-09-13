@@ -207,6 +207,7 @@ class Functions
      * @param Individual $individual2
      *
      * @return string
+     * @throws \Exception
      */
     public static function getCloseRelationshipName(Individual $individual1, Individual $individual2): string
     {
@@ -378,6 +379,7 @@ class Functions
      * @param mixed[][] $nodes
      *
      * @return string
+     * @throws \Exception
      */
     public static function getRelationshipName($nodes): string
     {
@@ -635,6 +637,7 @@ class Functions
      * @param Individual $person2
      *
      * @return string
+     * @throws \Exception
      */
     public static function getRelationshipNameFromPath($path, Individual $person1 = null, Individual $person2 = null): string
     {

@@ -60,6 +60,7 @@ class FunctionsEdit
      * @param array  $accepted_languages
      *
      * @return string
+     * @throws \Exception
      */
     public static function editLanguageCheckboxes($parameter_name, $accepted_languages): string
     {
@@ -96,6 +97,7 @@ class FunctionsEdit
      * A list of active languages (e.g. for an edit control).
      *
      * @return string[]
+     * @throws \Exception
      */
     public static function optionsActiveLanguages(): array
     {
@@ -264,6 +266,7 @@ class FunctionsEdit
      * A list of user options (e.g. for an edit control).
      *
      * @return string[]
+     * @throws \Exception
      */
     public static function optionsUsers(): array
     {
@@ -491,6 +494,7 @@ class FunctionsEdit
      * @param Individual $person     For male/female translations
      *
      * @return string
+     * @throws \Exception
      */
     public static function addSimpleTag(Tree $tree, $tag, $upperlevel = '', $label = '', $extra = null, Individual $person = null): string
     {
@@ -879,6 +883,8 @@ class FunctionsEdit
      *
      * @param Tree   $tree
      * @param string $fact
+     *
+     * @throws \Exception
      */
     public static function addSimpleTags(Tree $tree, $fact)
     {
@@ -913,6 +919,7 @@ class FunctionsEdit
      *
      * @param Tree   $tree
      * @param string $fact the new fact we are adding
+     * @throws \Exception
      */
     public static function createAddForm(Tree $tree, $fact)
     {
@@ -957,6 +964,7 @@ class FunctionsEdit
      * Create a form to edit a Fact object.
      *
      * @param Fact $fact
+     * @throws \Exception
      */
     public static function createEditForm(Fact $fact)
     {
@@ -1106,6 +1114,7 @@ class FunctionsEdit
      * @param Tree   $tree
      * @param string $level1tag the type of the level 1 gedcom record
      * @param bool   $add_date
+     * @throws \Exception
      */
     public static function insertMissingSubtags(Tree $tree, $level1tag, $add_date = false)
     {

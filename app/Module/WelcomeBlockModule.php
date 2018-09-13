@@ -50,6 +50,7 @@ class WelcomeBlockModule extends AbstractModule implements ModuleBlockInterface
      * @param string[] $cfg
      *
      * @return string
+     * @throws \Exception
      */
     public function getBlock(Tree $tree, int $block_id, bool $template = true, array $cfg = []): string
     {

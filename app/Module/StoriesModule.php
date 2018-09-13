@@ -96,6 +96,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
      * @param Individual $individual
      *
      * @return stdClass[]
+     * @throws \Exception
      */
     private function getStoriesForIndividual(Individual $individual): array
     {
@@ -172,6 +173,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
      * @param Tree $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function getAdminAction(Tree $tree): Response
     {
@@ -207,6 +209,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function getAdminEditAction(Request $request, Tree $tree): Response
     {
@@ -254,6 +257,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
      * @param Tree    $tree
      *
      * @return RedirectResponse
+     * @throws \Exception
      */
     public function postAdminEditAction(Request $request, Tree $tree): RedirectResponse
     {
@@ -300,6 +304,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function postAdminDeleteAction(Request $request, Tree $tree): Response
     {
@@ -330,6 +335,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
      * @param Tree $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function getShowListAction(Tree $tree): Response
     {

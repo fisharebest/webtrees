@@ -35,6 +35,7 @@ class SourceController extends AbstractBaseController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function show(Request $request, Tree $tree): Response
     {
@@ -59,6 +60,7 @@ class SourceController extends AbstractBaseController
      * @param Source $record
      *
      * @return array
+     * @throws \Exception
      */
     private function facts(Source $record): array
     {

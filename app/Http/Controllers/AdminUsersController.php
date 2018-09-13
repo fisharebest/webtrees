@@ -46,6 +46,7 @@ class AdminUsersController extends AbstractBaseController
      * @param Request $request
      *
      * @return Response
+     * @throws \Exception
      */
     public function cleanup(Request $request): Response
     {
@@ -93,6 +94,7 @@ class AdminUsersController extends AbstractBaseController
      * @param Request $request
      *
      * @return RedirectResponse
+     * @throws \Exception
      */
     public function cleanupAction(Request $request): RedirectResponse
     {
@@ -115,6 +117,7 @@ class AdminUsersController extends AbstractBaseController
      * @param User    $user
      *
      * @return Response
+     * @throws \Exception
      */
     public function index(Request $request, User $user): Response
     {
@@ -140,6 +143,7 @@ class AdminUsersController extends AbstractBaseController
      * @param User    $user
      *
      * @return JsonResponse
+     * @throws \Exception
      */
     public function data(Request $request, User $user): JsonResponse
     {
@@ -283,6 +287,7 @@ class AdminUsersController extends AbstractBaseController
      * @param Request $request
      *
      * @return Response
+     * @throws \Exception
      */
     public function edit(Request $request): Response
     {
@@ -309,6 +314,7 @@ class AdminUsersController extends AbstractBaseController
      * @param Request $request
      *
      * @return RedirectResponse
+     * @throws \Exception
      */
     public function save(Request $request): RedirectResponse
     {
@@ -366,6 +372,7 @@ class AdminUsersController extends AbstractBaseController
      * @param User    $user
      *
      * @return RedirectResponse
+     * @throws \Exception
      */
     public function update(Request $request, User $user): RedirectResponse
     {

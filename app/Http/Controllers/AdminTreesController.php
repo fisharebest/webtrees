@@ -66,6 +66,7 @@ class AdminTreesController extends AbstractBaseController
      * @param Tree $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function check(Tree $tree): Response
     {
@@ -320,6 +321,7 @@ class AdminTreesController extends AbstractBaseController
      * @param Request $request
      *
      * @return RedirectResponse
+     * @throws \Exception
      */
     public function create(Request $request): RedirectResponse
     {
@@ -345,6 +347,7 @@ class AdminTreesController extends AbstractBaseController
      * @param Tree $tree
      *
      * @return RedirectResponse
+     * @throws \Exception
      */
     public function delete(Tree $tree): RedirectResponse
     {
@@ -362,6 +365,7 @@ class AdminTreesController extends AbstractBaseController
      * @param Tree $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function duplicates(Tree $tree): Response
     {
@@ -396,6 +400,7 @@ class AdminTreesController extends AbstractBaseController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \League\Flysystem\FileExistsException
      */
     public function exportClient(Request $request, Tree $tree): Response
     {
@@ -528,6 +533,7 @@ class AdminTreesController extends AbstractBaseController
      * @param Tree    $tree
      *
      * @return RedirectResponse
+     * @throws \Exception
      */
     public function importAction(Request $request, Tree $tree): RedirectResponse
     {
@@ -572,6 +578,7 @@ class AdminTreesController extends AbstractBaseController
      * @param Tree $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function importForm(Tree $tree): Response
     {
@@ -593,6 +600,7 @@ class AdminTreesController extends AbstractBaseController
      * @param Tree|null $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function index(Tree $tree = null): Response
     {
@@ -631,6 +639,7 @@ class AdminTreesController extends AbstractBaseController
      * @param Request $request
      *
      * @return Response
+     * @throws \Exception
      */
     public function merge(Request $request): Response
     {
@@ -663,6 +672,7 @@ class AdminTreesController extends AbstractBaseController
      * @param Request $request
      *
      * @return RedirectResponse
+     * @throws \Exception
      */
     public function mergeAction(Request $request): RedirectResponse
     {
@@ -799,6 +809,7 @@ class AdminTreesController extends AbstractBaseController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function places(Request $request, Tree $tree): Response
     {
@@ -827,6 +838,7 @@ class AdminTreesController extends AbstractBaseController
      * @param Tree    $tree
      *
      * @return RedirectResponse
+     * @throws \Exception
      */
     public function placesAction(Request $request, Tree $tree): RedirectResponse
     {
@@ -856,6 +868,7 @@ class AdminTreesController extends AbstractBaseController
      * @param Tree $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function preferences(Tree $tree): Response
     {
@@ -999,6 +1012,7 @@ class AdminTreesController extends AbstractBaseController
      * @param Tree $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function renumber(Tree $tree): Response
     {
@@ -1018,6 +1032,7 @@ class AdminTreesController extends AbstractBaseController
      * @param Tree    $tree
      *
      * @return RedirectResponse
+     * @throws \Exception
      */
     public function preferencesUpdate(Request $request, Tree $tree): RedirectResponse
     {
@@ -1142,6 +1157,7 @@ class AdminTreesController extends AbstractBaseController
      * @param TimeoutService $timeout_service
      *
      * @return RedirectResponse
+     * @throws \Exception
      */
     public function renumberAction(Tree $tree, TimeoutService $timeout_service): RedirectResponse
     {
@@ -1572,6 +1588,7 @@ class AdminTreesController extends AbstractBaseController
      * @param Tree $tree
      *
      * @return RedirectResponse
+     * @throws \Exception
      */
     public function setDefault(Tree $tree): RedirectResponse
     {
@@ -1589,6 +1606,7 @@ class AdminTreesController extends AbstractBaseController
      * @param Tree $tree
      *
      * @return RedirectResponse
+     * @throws \Exception
      */
     public function synchronize(Tree $tree): RedirectResponse
     {
@@ -1626,6 +1644,7 @@ class AdminTreesController extends AbstractBaseController
      * @param User    $user
      *
      * @return Response
+     * @throws \Exception
      */
     public function unconnected(Request $request, Tree $tree, User $user): Response
     {
@@ -1684,6 +1703,7 @@ class AdminTreesController extends AbstractBaseController
      * @param string $replace
      *
      * @return string[]
+     * @throws \Exception
      */
     private function changePlacesPreview(Tree $tree, string $search, string $replace): array
     {
@@ -1743,6 +1763,7 @@ class AdminTreesController extends AbstractBaseController
      * @param string $replace
      *
      * @return string[]
+     * @throws \Exception
      */
     private function changePlacesUpdate(Tree $tree, string $search, string $replace): array
     {
@@ -1805,6 +1826,7 @@ class AdminTreesController extends AbstractBaseController
      * @param Tree $tree2
      *
      * @return string[]
+     * @throws \Exception
      */
     private function commonXrefs(Tree $tree1, Tree $tree2): array
     {
@@ -1851,6 +1873,7 @@ class AdminTreesController extends AbstractBaseController
      * @param Tree $tree
      *
      * @return array
+     * @throws \Exception
      */
     private function duplicateRecords(Tree $tree): array
     {
@@ -1953,6 +1976,7 @@ class AdminTreesController extends AbstractBaseController
      * @param Tree $tree
      *
      * @return string[]
+     * @throws \Exception
      */
     private function duplicateXrefs(Tree $tree): array
     {
@@ -2025,6 +2049,7 @@ class AdminTreesController extends AbstractBaseController
      * Generate a unqiue name for new trees
      *
      * @return string
+     * @throws \Exception
      */
     private function generateNewTreeName(): string
     {

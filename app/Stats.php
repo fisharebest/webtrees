@@ -92,6 +92,7 @@ class Stats
      * Return a string of all supported tags and an example of its output in table row form.
      *
      * @return string
+     * @throws \ReflectionException
      */
     public function getAllTagsTable(): string
     {
@@ -131,6 +132,7 @@ class Stats
      * Return a string of all supported tags in plain text.
      *
      * @return string
+     * @throws \ReflectionException
      */
     public function getAllTagsText(): string
     {
@@ -240,6 +242,7 @@ class Stats
      * Get information from the GEDCOM's HEAD record.
      *
      * @return string[]
+     * @throws \Exception
      */
     private function gedcomHead(): array
     {
@@ -266,6 +269,7 @@ class Stats
      * Get the software originally used to create the GEDCOM file.
      *
      * @return string
+     * @throws \Exception
      */
     public function gedcomCreatedSoftware(): string
     {
@@ -278,6 +282,7 @@ class Stats
      * Get the version of software which created the GEDCOM file.
      *
      * @return string
+     * @throws \Exception
      */
     public function gedcomCreatedVersion(): string
     {
@@ -300,6 +305,7 @@ class Stats
      * Get the date the GEDCOM file was created.
      *
      * @return string
+     * @throws \Exception
      */
     public function gedcomDate(): string
     {
@@ -318,6 +324,7 @@ class Stats
      * When was this tree last updated?
      *
      * @return string
+     * @throws \Exception
      */
     public function gedcomUpdated()
     {
@@ -337,6 +344,7 @@ class Stats
      * What is the significant individual from this tree?
      *
      * @return string
+     * @throws \Exception
      */
     public function gedcomRootId(): string
     {
@@ -350,6 +358,7 @@ class Stats
      * @param string $type
      *
      * @return string
+     * @throws \Exception
      */
     private function getPercentage(int $total, string $type): string
     {
@@ -379,6 +388,7 @@ class Stats
      * How many GEDCOM records exist in the tree.
      *
      * @return string
+     * @throws \Exception
      */
     public function totalRecords(): string
     {
@@ -389,6 +399,7 @@ class Stats
      * How many individuals exist in the tree.
      *
      * @return int
+     * @throws \Exception
      */
     private function totalIndividualsQuery(): int
     {
@@ -403,6 +414,7 @@ class Stats
      * How many individuals exist in the tree.
      *
      * @return string
+     * @throws \Exception
      */
     public function totalIndividuals(): string
     {
@@ -413,6 +425,7 @@ class Stats
      * How many individuals have one or more sources.
      *
      * @return int
+     * @throws \Exception
      */
     private function totalIndisWithSourcesQuery(): int
     {
@@ -429,6 +442,7 @@ class Stats
      * How many individuals have one or more sources.
      *
      * @return string
+     * @throws \Exception
      */
     public function totalIndisWithSources(): string
     {
@@ -441,6 +455,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function chartIndisWithSources($params = [])
     {
@@ -486,6 +501,7 @@ class Stats
      * Show the total individuals as a percentage.
      *
      * @return string
+     * @throws \Exception
      */
     public function totalIndividualsPercentage(): string
     {
@@ -496,6 +512,7 @@ class Stats
      * Count the total families.
      *
      * @return int
+     * @throws \Exception
      */
     private function totalFamiliesQuery(): int
     {
@@ -510,6 +527,7 @@ class Stats
      * Count the total families.
      *
      * @return string
+     * @throws \Exception
      */
     public function totalFamilies(): string
     {
@@ -520,6 +538,7 @@ class Stats
      * Count the families with source records.
      *
      * @return int
+     * @throws \Exception
      */
     private function totalFamsWithSourcesQuery(): int
     {
@@ -536,6 +555,7 @@ class Stats
      * Count the families with with source records.
      *
      * @return string
+     * @throws \Exception
      */
     public function totalFamsWithSources(): string
     {
@@ -548,6 +568,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function chartFamsWithSources($params = [])
     {
@@ -593,6 +614,7 @@ class Stats
      * Show the total families as a percentage.
      *
      * @return string
+     * @throws \Exception
      */
     public function totalFamiliesPercentage(): string
     {
@@ -603,6 +625,7 @@ class Stats
      * Count the total number of sources.
      *
      * @return int
+     * @throws \Exception
      */
     private function totalSourcesQuery(): int
     {
@@ -617,6 +640,7 @@ class Stats
      * Count the total number of sources.
      *
      * @return string
+     * @throws \Exception
      */
     public function totalSources(): string
     {
@@ -627,6 +651,7 @@ class Stats
      * Show the number of sources as a percentage.
      *
      * @return string
+     * @throws \Exception
      */
     public function totalSourcesPercentage(): string
     {
@@ -637,6 +662,7 @@ class Stats
      * Count the number of notes.
      *
      * @return int
+     * @throws \Exception
      */
     private function totalNotesQuery(): int
     {
@@ -651,6 +677,7 @@ class Stats
      * Count the number of notes.
      *
      * @return string
+     * @throws \Exception
      */
     public function totalNotes(): string
     {
@@ -661,6 +688,7 @@ class Stats
      * Show the number of notes as a percentage.
      *
      * @return string
+     * @throws \Exception
      */
     public function totalNotesPercentage(): string
     {
@@ -671,6 +699,7 @@ class Stats
      * Count the number of repositories.
      *
      * @return int
+     * @throws \Exception
      */
     private function totalRepositoriesQuery(): int
     {
@@ -685,6 +714,7 @@ class Stats
      * Count the number of repositories
      *
      * @return string
+     * @throws \Exception
      */
     public function totalRepositories(): string
     {
@@ -695,6 +725,7 @@ class Stats
      * Show the total number of repositories as a percentage.
      *
      * @return string
+     * @throws \Exception
      */
     public function totalRepositoriesPercentage(): string
     {
@@ -707,6 +738,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function totalSurnames($params = []): string
     {
@@ -737,6 +769,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function totalGivennames($params = []): string
     {
@@ -765,6 +798,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function totalEvents($params = []): string
     {
@@ -801,6 +835,7 @@ class Stats
      * Count the number of births.
      *
      * @return string
+     * @throws \Exception
      */
     public function totalEventsBirth(): string
     {
@@ -811,6 +846,7 @@ class Stats
      * Count the number of births.
      *
      * @return string
+     * @throws \Exception
      */
     public function totalBirths(): string
     {
@@ -821,6 +857,7 @@ class Stats
      * Count the number of deaths.
      *
      * @return string
+     * @throws \Exception
      */
     public function totalEventsDeath(): string
     {
@@ -831,6 +868,7 @@ class Stats
      * Count the number of deaths.
      *
      * @return string
+     * @throws \Exception
      */
     public function totalDeaths(): string
     {
@@ -841,6 +879,7 @@ class Stats
      * Count the number of marriages.
      *
      * @return string
+     * @throws \Exception
      */
     public function totalEventsMarriage(): string
     {
@@ -851,6 +890,7 @@ class Stats
      * Count the number of marriages.
      *
      * @return string
+     * @throws \Exception
      */
     public function totalMarriages(): string
     {
@@ -861,6 +901,7 @@ class Stats
      * Count the number of divorces.
      *
      * @return string
+     * @throws \Exception
      */
     public function totalEventsDivorce(): string
     {
@@ -871,6 +912,7 @@ class Stats
      * Count the number of divorces.
      *
      * @return string
+     * @throws \Exception
      */
     public function totalDivorces(): string
     {
@@ -881,6 +923,7 @@ class Stats
      * Count the number of other events.
      *
      * @return string
+     * @throws \Exception
      */
     public function totalEventsOther(): string
     {
@@ -898,6 +941,7 @@ class Stats
      * Count the number of males.
      *
      * @return int
+     * @throws \Exception
      */
     private function totalSexMalesQuery(): int
     {
@@ -912,6 +956,7 @@ class Stats
      * Count the number of males.
      *
      * @return string
+     * @throws \Exception
      */
     public function totalSexMales(): string
     {
@@ -922,6 +967,7 @@ class Stats
      * Count the number of males
      *
      * @return string
+     * @throws \Exception
      */
     public function totalSexMalesPercentage(): string
     {
@@ -932,6 +978,7 @@ class Stats
      * Count the number of females.
      *
      * @return int
+     * @throws \Exception
      */
     private function totalSexFemalesQuery(): int
     {
@@ -946,6 +993,7 @@ class Stats
      * Count the number of females.
      *
      * @return string
+     * @throws \Exception
      */
     public function totalSexFemales(): string
     {
@@ -956,6 +1004,7 @@ class Stats
      * Count the number of females.
      *
      * @return string
+     * @throws \Exception
      */
     public function totalSexFemalesPercentage(): string
     {
@@ -966,6 +1015,7 @@ class Stats
      * Count the number of individuals with unknown sex.
      *
      * @return int
+     * @throws \Exception
      */
     private function totalSexUnknownQuery(): int
     {
@@ -980,6 +1030,7 @@ class Stats
      * Count the number of individuals with unknown sex.
      *
      * @return string
+     * @throws \Exception
      */
     public function totalSexUnknown(): string
     {
@@ -990,6 +1041,7 @@ class Stats
      * Count the number of individuals with unknown sex.
      *
      * @return string
+     * @throws \Exception
      */
     public function totalSexUnknownPercentage(): string
     {
@@ -1002,6 +1054,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function chartSex($params = [])
     {
@@ -1080,6 +1133,7 @@ class Stats
      * A good reason to run the “Add missing DEAT records” batch-update!
      *
      * @return int
+     * @throws \Exception
      */
     private function totalLivingQuery(): int
     {
@@ -1094,6 +1148,7 @@ class Stats
      * Count the number of living individuals.
      *
      * @return string
+     * @throws \Exception
      */
     public function totalLiving(): string
     {
@@ -1104,6 +1159,7 @@ class Stats
      * Count the number of living individuals.
      *
      * @return string
+     * @throws \Exception
      */
     public function totalLivingPercentage(): string
     {
@@ -1114,6 +1170,7 @@ class Stats
      * Count the number of dead individuals.
      *
      * @return int
+     * @throws \Exception
      */
     private function totalDeceasedQuery(): int
     {
@@ -1128,6 +1185,7 @@ class Stats
      * Count the number of dead individuals.
      *
      * @return string
+     * @throws \Exception
      */
     public function totalDeceased(): string
     {
@@ -1138,6 +1196,7 @@ class Stats
      * Count the number of dead individuals.
      *
      * @return string
+     * @throws \Exception
      */
     public function totalDeceasedPercentage(): string
     {
@@ -1150,6 +1209,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function chartMortality($params = [])
     {
@@ -1202,6 +1262,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function totalUsers($params = []): string
     {
@@ -1218,6 +1279,7 @@ class Stats
      * Count the number of administrators.
      *
      * @return string
+     * @throws \Exception
      */
     public function totalAdmins(): string
     {
@@ -1228,6 +1290,7 @@ class Stats
      * Count the number of administrators.
      *
      * @return string
+     * @throws \Exception
      */
     public function totalNonAdmins(): string
     {
@@ -1240,6 +1303,7 @@ class Stats
      * @param string $type
      *
      * @return int
+     * @throws \Exception
      */
     private function totalMediaType($type = 'all'): int
     {
@@ -1271,6 +1335,7 @@ class Stats
      * Count the number of media records.
      *
      * @return string
+     * @throws \Exception
      */
     public function totalMedia(): string
     {
@@ -1281,6 +1346,7 @@ class Stats
      * Count the number of media records with type "audio".
      *
      * @return string
+     * @throws \Exception
      */
     public function totalMediaAudio(): string
     {
@@ -1291,6 +1357,7 @@ class Stats
      * Count the number of media records with type "book".
      *
      * @return string
+     * @throws \Exception
      */
     public function totalMediaBook(): string
     {
@@ -1301,6 +1368,7 @@ class Stats
      * Count the number of media records with type "card".
      *
      * @return string
+     * @throws \Exception
      */
     public function totalMediaCard(): string
     {
@@ -1311,6 +1379,7 @@ class Stats
      * Count the number of media records with type "certificate".
      *
      * @return string
+     * @throws \Exception
      */
     public function totalMediaCertificate(): string
     {
@@ -1321,6 +1390,7 @@ class Stats
      * Count the number of media records with type "coat of arms".
      *
      * @return string
+     * @throws \Exception
      */
     public function totalMediaCoatOfArms(): string
     {
@@ -1331,6 +1401,7 @@ class Stats
      * Count the number of media records with type "document".
      *
      * @return string
+     * @throws \Exception
      */
     public function totalMediaDocument(): string
     {
@@ -1341,6 +1412,7 @@ class Stats
      * Count the number of media records with type "electronic".
      *
      * @return string
+     * @throws \Exception
      */
     public function totalMediaElectronic(): string
     {
@@ -1351,6 +1423,7 @@ class Stats
      * Count the number of media records with type "magazine".
      *
      * @return string
+     * @throws \Exception
      */
     public function totalMediaMagazine(): string
     {
@@ -1361,6 +1434,7 @@ class Stats
      * Count the number of media records with type "manuscript".
      *
      * @return string
+     * @throws \Exception
      */
     public function totalMediaManuscript(): string
     {
@@ -1371,6 +1445,7 @@ class Stats
      * Count the number of media records with type "map".
      *
      * @return string
+     * @throws \Exception
      */
     public function totalMediaMap(): string
     {
@@ -1381,6 +1456,7 @@ class Stats
      * Count the number of media records with type "microfiche".
      *
      * @return string
+     * @throws \Exception
      */
     public function totalMediaFiche(): string
     {
@@ -1391,6 +1467,7 @@ class Stats
      * Count the number of media records with type "microfilm".
      *
      * @return string
+     * @throws \Exception
      */
     public function totalMediaFilm(): string
     {
@@ -1401,6 +1478,7 @@ class Stats
      * Count the number of media records with type "newspaper".
      *
      * @return string
+     * @throws \Exception
      */
     public function totalMediaNewspaper(): string
     {
@@ -1411,6 +1489,7 @@ class Stats
      * Count the number of media records with type "painting".
      *
      * @return string
+     * @throws \Exception
      */
     public function totalMediaPainting(): string
     {
@@ -1421,6 +1500,7 @@ class Stats
      * Count the number of media records with type "photograph".
      *
      * @return string
+     * @throws \Exception
      */
     public function totalMediaPhoto(): string
     {
@@ -1431,6 +1511,7 @@ class Stats
      * Count the number of media records with type "tombstone".
      *
      * @return string
+     * @throws \Exception
      */
     public function totalMediaTombstone(): string
     {
@@ -1441,6 +1522,7 @@ class Stats
      * Count the number of media records with type "video".
      *
      * @return string
+     * @throws \Exception
      */
     public function totalMediaVideo(): string
     {
@@ -1451,6 +1533,7 @@ class Stats
      * Count the number of media records with type "other".
      *
      * @return string
+     * @throws \Exception
      */
     public function totalMediaOther(): string
     {
@@ -1461,6 +1544,7 @@ class Stats
      * Count the number of media records with type "unknown".
      *
      * @return string
+     * @throws \Exception
      */
     public function totalMediaUnknown(): string
     {
@@ -1473,6 +1557,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function chartMedia($params = []): string
     {
@@ -1560,6 +1645,7 @@ class Stats
      * @param string $birth_death
      *
      * @return string
+     * @throws \Exception
      */
     private function mortalityQuery($type = 'full', $life_dir = 'ASC', $birth_death = 'BIRT'): string
     {
@@ -1632,6 +1718,7 @@ class Stats
      * @param bool   $country
      *
      * @return int[]|stdClass[]
+     * @throws \Exception
      */
     public function statsPlaces($what = 'ALL', $fact = '', $parent = 0, $country = false)
     {
@@ -1721,6 +1808,7 @@ class Stats
      * Count total places.
      *
      * @return int
+     * @throws \Exception
      */
     private function totalPlacesQuery(): int
     {
@@ -1734,6 +1822,7 @@ class Stats
      * Count total places.
      *
      * @return string
+     * @throws \Exception
      */
     public function totalPlaces(): string
     {
@@ -1746,6 +1835,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function chartDistribution($params = []): string
     {
@@ -1913,6 +2003,7 @@ class Stats
      * A list of common countries.
      *
      * @return string
+     * @throws \Exception
      */
     public function commonCountriesList(): string
     {
@@ -1966,6 +2057,7 @@ class Stats
      * A list of common birth places.
      *
      * @return string
+     * @throws \Exception
      */
     public function commonBirthPlacesList(): string
     {
@@ -1990,6 +2082,7 @@ class Stats
      * A list of common death places.
      *
      * @return string
+     * @throws \Exception
      */
     public function commonDeathPlacesList(): string
     {
@@ -2014,6 +2107,7 @@ class Stats
      * A list of common marriage places.
      *
      * @return string
+     * @throws \Exception
      */
     public function commonMarriagePlacesList(): string
     {
@@ -2044,6 +2138,7 @@ class Stats
      * @param string[] $params
      *
      * @return array|string
+     * @throws \Exception
      */
     public function statsBirthQuery($simple = true, $sex = false, $year1 = -1, $year2 = -1, $params = [])
     {
@@ -2138,6 +2233,7 @@ class Stats
      * @param string[] $params
      *
      * @return array|string
+     * @throws \Exception
      */
     public function statsDeathQuery($simple = true, $sex = false, $year1 = -1, $year2 = -1, $params = [])
     {
@@ -2226,6 +2322,7 @@ class Stats
      * Find the earliest birth.
      *
      * @return string
+     * @throws \Exception
      */
     public function firstBirth(): string
     {
@@ -2236,6 +2333,7 @@ class Stats
      * Find the earliest birth year.
      *
      * @return string
+     * @throws \Exception
      */
     public function firstBirthYear(): string
     {
@@ -2246,6 +2344,7 @@ class Stats
      * Find the name of the earliest birth.
      *
      * @return string
+     * @throws \Exception
      */
     public function firstBirthName(): string
     {
@@ -2256,6 +2355,7 @@ class Stats
      * Find the earliest birth place.
      *
      * @return string
+     * @throws \Exception
      */
     public function firstBirthPlace(): string
     {
@@ -2266,6 +2366,7 @@ class Stats
      * Find the latest birth.
      *
      * @return string
+     * @throws \Exception
      */
     public function lastBirth(): string
     {
@@ -2276,6 +2377,7 @@ class Stats
      * Find the latest birth year.
      *
      * @return string
+     * @throws \Exception
      */
     public function lastBirthYear(): string
     {
@@ -2286,6 +2388,7 @@ class Stats
      * Find the latest birth name.
      *
      * @return string
+     * @throws \Exception
      */
     public function lastBirthName(): string
     {
@@ -2296,6 +2399,7 @@ class Stats
      * Find the latest birth place.
      *
      * @return string
+     * @throws \Exception
      */
     public function lastBirthPlace(): string
     {
@@ -2308,6 +2412,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function statsBirth($params = []): string
     {
@@ -2318,6 +2423,7 @@ class Stats
      * Find the earliest death.
      *
      * @return string
+     * @throws \Exception
      */
     public function firstDeath(): string
     {
@@ -2328,6 +2434,7 @@ class Stats
      * Find the earliest death year.
      *
      * @return string
+     * @throws \Exception
      */
     public function firstDeathYear(): string
     {
@@ -2338,6 +2445,7 @@ class Stats
      * Find the earliest death name.
      *
      * @return string
+     * @throws \Exception
      */
     public function firstDeathName(): string
     {
@@ -2348,6 +2456,7 @@ class Stats
      * Find the earliest death place.
      *
      * @return string
+     * @throws \Exception
      */
     public function firstDeathPlace(): string
     {
@@ -2358,6 +2467,7 @@ class Stats
      * Find the latest death.
      *
      * @return string
+     * @throws \Exception
      */
     public function lastDeath(): string
     {
@@ -2368,6 +2478,7 @@ class Stats
      * Find the latest death year.
      *
      * @return string
+     * @throws \Exception
      */
     public function lastDeathYear(): string
     {
@@ -2378,6 +2489,7 @@ class Stats
      * Find the latest death name.
      *
      * @return string
+     * @throws \Exception
      */
     public function lastDeathName(): string
     {
@@ -2388,6 +2500,7 @@ class Stats
      * Find the place of the latest death.
      *
      * @return string
+     * @throws \Exception
      */
     public function lastDeathPlace(): string
     {
@@ -2400,6 +2513,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function statsDeath($params = []): string
     {
@@ -2413,6 +2527,7 @@ class Stats
      * @param string $sex
      *
      * @return string
+     * @throws \Exception
      */
     private function longlifeQuery($type = 'full', $sex = 'F'): string
     {
@@ -2478,6 +2593,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     private function topTenOldestQuery($type = 'list', $sex = 'BOTH', $params = []): string
     {
@@ -2574,6 +2690,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     private function topTenOldestAliveQuery($type = 'list', $sex = 'BOTH', $params = []): string
     {
@@ -2663,6 +2780,7 @@ class Stats
      * @param bool   $show_years
      *
      * @return string
+     * @throws \Exception
      */
     private function averageLifespanQuery($sex = 'BOTH', $show_years = false)
     {
@@ -2720,6 +2838,7 @@ class Stats
      * @param string[] $params
      *
      * @return array|string
+     * @throws \Exception
      */
     public function statsAgeQuery($simple = true, $related = 'BIRT', $sex = 'BOTH', $year1 = -1, $year2 = -1, $params = [])
     {
@@ -2864,6 +2983,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function statsAge($params = []): string
     {
@@ -2874,6 +2994,7 @@ class Stats
      * Find the lognest lived individual.
      *
      * @return string
+     * @throws \Exception
      */
     public function longestLife(): string
     {
@@ -2884,6 +3005,7 @@ class Stats
      * Find the age of the longest lived individual.
      *
      * @return string
+     * @throws \Exception
      */
     public function longestLifeAge(): string
     {
@@ -2894,6 +3016,7 @@ class Stats
      * Find the name of the longest lived individual.
      *
      * @return string
+     * @throws \Exception
      */
     public function longestLifeName(): string
     {
@@ -2906,6 +3029,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function topTenOldest($params = []): string
     {
@@ -2918,6 +3042,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function topTenOldestList($params = []): string
     {
@@ -2930,6 +3055,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function topTenOldestAlive($params = []): string
     {
@@ -2942,6 +3068,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function topTenOldestListAlive($params = []): string
     {
@@ -2954,6 +3081,7 @@ class Stats
      * @param bool $show_years
      *
      * @return string
+     * @throws \Exception
      */
     public function averageLifespan($show_years = false): string
     {
@@ -2964,6 +3092,7 @@ class Stats
      * Find the longest lived female.
      *
      * @return string
+     * @throws \Exception
      */
     public function longestLifeFemale(): string
     {
@@ -2974,6 +3103,7 @@ class Stats
      * Find the age of the longest lived female.
      *
      * @return string
+     * @throws \Exception
      */
     public function longestLifeFemaleAge(): string
     {
@@ -2984,6 +3114,7 @@ class Stats
      * Find the name of the longest lived female.
      *
      * @return string
+     * @throws \Exception
      */
     public function longestLifeFemaleName(): string
     {
@@ -2996,6 +3127,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function topTenOldestFemale($params = []): string
     {
@@ -3008,6 +3140,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function topTenOldestFemaleList($params = []): string
     {
@@ -3020,6 +3153,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function topTenOldestFemaleAlive($params = []): string
     {
@@ -3032,6 +3166,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function topTenOldestFemaleListAlive($params = []): string
     {
@@ -3044,6 +3179,7 @@ class Stats
      * @param bool $show_years
      *
      * @return string
+     * @throws \Exception
      */
     public function averageLifespanFemale($show_years = false): string
     {
@@ -3054,6 +3190,7 @@ class Stats
      * Find the longest lived male.
      *
      * @return string
+     * @throws \Exception
      */
     public function longestLifeMale(): string
     {
@@ -3064,6 +3201,7 @@ class Stats
      * Find the age of the longest lived male.
      *
      * @return string
+     * @throws \Exception
      */
     public function longestLifeMaleAge(): string
     {
@@ -3074,6 +3212,7 @@ class Stats
      * Find the name of the longest lived male.
      *
      * @return string
+     * @throws \Exception
      */
     public function longestLifeMaleName(): string
     {
@@ -3086,6 +3225,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function topTenOldestMale($params = []): string
     {
@@ -3098,6 +3238,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function topTenOldestMaleList($params = []): string
     {
@@ -3110,6 +3251,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function topTenOldestMaleAlive($params = []): string
     {
@@ -3122,6 +3264,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function topTenOldestMaleListAlive($params = []): string
     {
@@ -3134,6 +3277,7 @@ class Stats
      * @param bool $show_years
      *
      * @return string
+     * @throws \Exception
      */
     public function averageLifespanMale($show_years = false): string
     {
@@ -3148,6 +3292,7 @@ class Stats
      * @param string $facts
      *
      * @return string
+     * @throws \Exception
      */
     private function eventQuery($type, $direction, $facts): string
     {
@@ -3226,6 +3371,7 @@ class Stats
      * Find the earliest event.
      *
      * @return string
+     * @throws \Exception
      */
     public function firstEvent(): string
     {
@@ -3236,6 +3382,7 @@ class Stats
      * Find the year of the earliest event.
      *
      * @return string
+     * @throws \Exception
      */
     public function firstEventYear(): string
     {
@@ -3246,6 +3393,7 @@ class Stats
      * Find the type of the earliest event.
      *
      * @return string
+     * @throws \Exception
      */
     public function firstEventType(): string
     {
@@ -3256,6 +3404,7 @@ class Stats
      * Find the name of the individual with the earliest event.
      *
      * @return string
+     * @throws \Exception
      */
     public function firstEventName(): string
     {
@@ -3266,6 +3415,7 @@ class Stats
      * Find the location of the earliest event.
      *
      * @return string
+     * @throws \Exception
      */
     public function firstEventPlace(): string
     {
@@ -3276,6 +3426,7 @@ class Stats
      * Find the latest event.
      *
      * @return string
+     * @throws \Exception
      */
     public function lastEvent(): string
     {
@@ -3286,6 +3437,7 @@ class Stats
      * Find the year of the latest event.
      *
      * @return string
+     * @throws \Exception
      */
     public function lastEventYear(): string
     {
@@ -3296,6 +3448,7 @@ class Stats
      * Find the type of the latest event.
      *
      * @return string
+     * @throws \Exception
      */
     public function lastEventType(): string
     {
@@ -3306,6 +3459,7 @@ class Stats
      * Find the name of the individual with the latest event.
      *
      * @return string
+     * @throws \Exception
      */
     public function lastEventName(): string
     {
@@ -3316,6 +3470,7 @@ class Stats
      * FInd the location of the latest event.
      *
      * @return string
+     * @throws \Exception
      */
     public function lastEventPlace(): string
     {
@@ -3331,6 +3486,7 @@ class Stats
      * @param bool   $show_years
      *
      * @return string
+     * @throws \Exception
      */
     private function marriageQuery($type = 'full', $age_dir = 'ASC', $sex = 'F', $show_years = false): string
     {
@@ -3411,6 +3567,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     private function ageOfMarriageQuery($type = 'list', $age_dir = 'ASC', $params = []): string
     {
@@ -3559,6 +3716,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     private function ageBetweenSpousesQuery($type = 'list', $age_dir = 'DESC', $params = []): string
     {
@@ -3645,6 +3803,7 @@ class Stats
      * @param bool   $show_years
      *
      * @return string
+     * @throws \Exception
      */
     private function parentsQuery($type = 'full', $age_dir = 'ASC', $sex = 'F', $show_years = false): string
     {
@@ -3726,6 +3885,7 @@ class Stats
      * @param string[] $params
      *
      * @return string|array
+     * @throws \Exception
      */
     public function statsMarrQuery($simple = true, $first = false, $year1 = -1, $year2 = -1, $params = [])
     {
@@ -3823,6 +3983,7 @@ class Stats
      * @param string[] $params
      *
      * @return string|array
+     * @throws \Exception
      */
     private function statsDivQuery($simple = true, $first = false, $year1 = -1, $year2 = -1, $params = [])
     {
@@ -3913,6 +4074,7 @@ class Stats
      * Find the earliest marriage.
      *
      * @return string
+     * @throws \Exception
      */
     public function firstMarriage(): string
     {
@@ -3923,6 +4085,7 @@ class Stats
      * Find the year of the earliest marriage.
      *
      * @return string
+     * @throws \Exception
      */
     public function firstMarriageYear(): string
     {
@@ -3933,6 +4096,7 @@ class Stats
      * Find the names of spouses of the earliest marriage.
      *
      * @return string
+     * @throws \Exception
      */
     public function firstMarriageName(): string
     {
@@ -3943,6 +4107,7 @@ class Stats
      * Find the place of the earliest marriage.
      *
      * @return string
+     * @throws \Exception
      */
     public function firstMarriagePlace(): string
     {
@@ -3953,6 +4118,7 @@ class Stats
      * Find the latest marriage.
      *
      * @return string
+     * @throws \Exception
      */
     public function lastMarriage(): string
     {
@@ -3963,6 +4129,7 @@ class Stats
      * Find the year of the latest marriage.
      *
      * @return string
+     * @throws \Exception
      */
     public function lastMarriageYear(): string
     {
@@ -3973,6 +4140,7 @@ class Stats
      * Find the names of spouses of the latest marriage.
      *
      * @return string
+     * @throws \Exception
      */
     public function lastMarriageName(): string
     {
@@ -3983,6 +4151,7 @@ class Stats
      * Find the location of the latest marriage.
      *
      * @return string
+     * @throws \Exception
      */
     public function lastMarriagePlace(): string
     {
@@ -3995,6 +4164,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function statsMarr($params = []): string
     {
@@ -4005,6 +4175,7 @@ class Stats
      * Find the earliest divorce.
      *
      * @return string
+     * @throws \Exception
      */
     public function firstDivorce(): string
     {
@@ -4015,6 +4186,7 @@ class Stats
      * Find the year of the earliest divorce.
      *
      * @return string
+     * @throws \Exception
      */
     public function firstDivorceYear(): string
     {
@@ -4025,6 +4197,7 @@ class Stats
      * Find the names of individuals in the earliest divorce.
      *
      * @return string
+     * @throws \Exception
      */
     public function firstDivorceName(): string
     {
@@ -4035,6 +4208,7 @@ class Stats
      * Find the location of the earliest divorce.
      *
      * @return string
+     * @throws \Exception
      */
     public function firstDivorcePlace(): string
     {
@@ -4045,6 +4219,7 @@ class Stats
      * Find the latest divorce.
      *
      * @return string
+     * @throws \Exception
      */
     public function lastDivorce(): string
     {
@@ -4055,6 +4230,7 @@ class Stats
      * Find the year of the latest divorce.
      *
      * @return string
+     * @throws \Exception
      */
     public function lastDivorceYear(): string
     {
@@ -4065,6 +4241,7 @@ class Stats
      * Find the names of the individuals in the latest divorce.
      *
      * @return string
+     * @throws \Exception
      */
     public function lastDivorceName(): string
     {
@@ -4075,6 +4252,7 @@ class Stats
      * Find the location of the latest divorce.
      *
      * @return string
+     * @throws \Exception
      */
     public function lastDivorcePlace(): string
     {
@@ -4087,6 +4265,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function statsDiv($params = []): string
     {
@@ -4103,6 +4282,7 @@ class Stats
      * @param string[] $params
      *
      * @return array|string
+     * @throws \Exception
      */
     public function statsMarrAgeQuery($simple = true, $sex = 'M', $year1 = -1, $year2 = -1, $params = [])
     {
@@ -4270,6 +4450,7 @@ class Stats
      * Find the youngest wife.
      *
      * @return string
+     * @throws \Exception
      */
     public function youngestMarriageFemale(): string
     {
@@ -4280,6 +4461,7 @@ class Stats
      * Find the name of the youngest wife.
      *
      * @return string
+     * @throws \Exception
      */
     public function youngestMarriageFemaleName(): string
     {
@@ -4292,6 +4474,7 @@ class Stats
      * @param bool $show_years
      *
      * @return string
+     * @throws \Exception
      */
     public function youngestMarriageFemaleAge($show_years = false): string
     {
@@ -4302,6 +4485,7 @@ class Stats
      * Find the oldest wife.
      *
      * @return string
+     * @throws \Exception
      */
     public function oldestMarriageFemale(): string
     {
@@ -4312,6 +4496,7 @@ class Stats
      * Find the name of the oldest wife.
      *
      * @return string
+     * @throws \Exception
      */
     public function oldestMarriageFemaleName(): string
     {
@@ -4324,6 +4509,7 @@ class Stats
      * @param bool $show_years
      *
      * @return string
+     * @throws \Exception
      */
     public function oldestMarriageFemaleAge($show_years = false): string
     {
@@ -4334,6 +4520,7 @@ class Stats
      * Find the youngest husband.
      *
      * @return string
+     * @throws \Exception
      */
     public function youngestMarriageMale(): string
     {
@@ -4344,6 +4531,7 @@ class Stats
      * Find the name of the youngest husband.
      *
      * @return string
+     * @throws \Exception
      */
     public function youngestMarriageMaleName(): string
     {
@@ -4356,6 +4544,7 @@ class Stats
      * @param bool $show_years
      *
      * @return string
+     * @throws \Exception
      */
     public function youngestMarriageMaleAge($show_years = false): string
     {
@@ -4366,6 +4555,7 @@ class Stats
      * Find the oldest husband.
      *
      * @return string
+     * @throws \Exception
      */
     public function oldestMarriageMale(): string
     {
@@ -4376,6 +4566,7 @@ class Stats
      * Find the name of the oldest husband.
      *
      * @return string
+     * @throws \Exception
      */
     public function oldestMarriageMaleName(): string
     {
@@ -4388,6 +4579,7 @@ class Stats
      * @param bool $show_years
      *
      * @return string
+     * @throws \Exception
      */
     public function oldestMarriageMaleAge($show_years = false): string
     {
@@ -4400,6 +4592,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function statsMarrAge($params = []): string
     {
@@ -4412,6 +4605,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function ageBetweenSpousesMF($params = []): string
     {
@@ -4424,6 +4618,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function ageBetweenSpousesMFList($params = []): string
     {
@@ -4436,6 +4631,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function ageBetweenSpousesFM($params = []): string
     {
@@ -4448,6 +4644,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function ageBetweenSpousesFMList($params = []): string
     {
@@ -4458,6 +4655,7 @@ class Stats
      * General query on marriage ages.
      *
      * @return string
+     * @throws \Exception
      */
     public function topAgeOfMarriageFamily(): string
     {
@@ -4468,6 +4666,7 @@ class Stats
      * General query on marriage ages.
      *
      * @return string
+     * @throws \Exception
      */
     public function topAgeOfMarriage(): string
     {
@@ -4480,6 +4679,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function topAgeOfMarriageFamilies($params = []): string
     {
@@ -4492,6 +4692,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function topAgeOfMarriageFamiliesList($params = []): string
     {
@@ -4502,6 +4703,7 @@ class Stats
      * General query on marriage ages.
      *
      * @return string
+     * @throws \Exception
      */
     public function minAgeOfMarriageFamily(): string
     {
@@ -4512,6 +4714,7 @@ class Stats
      * General query on marriage ages.
      *
      * @return string
+     * @throws \Exception
      */
     public function minAgeOfMarriage(): string
     {
@@ -4524,6 +4727,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function minAgeOfMarriageFamilies($params = []): string
     {
@@ -4536,6 +4740,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function minAgeOfMarriageFamiliesList($params = []): string
     {
@@ -4546,6 +4751,7 @@ class Stats
      * Find the youngest mother
      *
      * @return string
+     * @throws \Exception
      */
     public function youngestMother(): string
     {
@@ -4556,6 +4762,7 @@ class Stats
      * Find the name of the youngest mother.
      *
      * @return string
+     * @throws \Exception
      */
     public function youngestMotherName(): string
     {
@@ -4568,6 +4775,7 @@ class Stats
      * @param bool $show_years
      *
      * @return string
+     * @throws \Exception
      */
     public function youngestMotherAge($show_years = false): string
     {
@@ -4578,6 +4786,7 @@ class Stats
      * Find the oldest mother.
      *
      * @return string
+     * @throws \Exception
      */
     public function oldestMother(): string
     {
@@ -4588,6 +4797,7 @@ class Stats
      * Find the name of the oldest mother.
      *
      * @return string
+     * @throws \Exception
      */
     public function oldestMotherName(): string
     {
@@ -4600,6 +4810,7 @@ class Stats
      * @param bool $show_years
      *
      * @return string
+     * @throws \Exception
      */
     public function oldestMotherAge($show_years = false): string
     {
@@ -4610,6 +4821,7 @@ class Stats
      * Find the youngest father.
      *
      * @return string
+     * @throws \Exception
      */
     public function youngestFather(): string
     {
@@ -4620,6 +4832,7 @@ class Stats
      * Find the name of the youngest father.
      *
      * @return string
+     * @throws \Exception
      */
     public function youngestFatherName(): string
     {
@@ -4632,6 +4845,7 @@ class Stats
      * @param bool $show_years
      *
      * @return string
+     * @throws \Exception
      */
     public function youngestFatherAge($show_years = false): string
     {
@@ -4642,6 +4856,7 @@ class Stats
      * Find the oldest father.
      *
      * @return string
+     * @throws \Exception
      */
     public function oldestFather(): string
     {
@@ -4652,6 +4867,7 @@ class Stats
      * Find the name of the oldest father.
      *
      * @return string
+     * @throws \Exception
      */
     public function oldestFatherName(): string
     {
@@ -4664,6 +4880,7 @@ class Stats
      * @param bool $show_years
      *
      * @return string
+     * @throws \Exception
      */
     public function oldestFatherAge($show_years = false): string
     {
@@ -4674,6 +4891,7 @@ class Stats
      * Number of husbands.
      *
      * @return string
+     * @throws \Exception
      */
     public function totalMarriedMales(): string
     {
@@ -4690,6 +4908,7 @@ class Stats
      * Number of wives.
      *
      * @return string
+     * @throws \Exception
      */
     public function totalMarriedFemales(): string
     {
@@ -4708,6 +4927,7 @@ class Stats
      * @param string $type
      *
      * @return string
+     * @throws \Exception
      */
     private function familyQuery($type = 'full'): string
     {
@@ -4755,6 +4975,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     private function topTenFamilyQuery($type = 'list', $params = []): string
     {
@@ -4822,6 +5043,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     private function ageBetweenSiblingsQuery($type = 'list', $params = []): string
     {
@@ -4964,6 +5186,7 @@ class Stats
      * @param string[] $params
      *
      * @return string|string[][]
+     * @throws \Exception
      */
     public function monthFirstChildQuery($simple = true, $sex = false, $year1 = -1, $year2 = -1, $params = [])
     {
@@ -5097,6 +5320,7 @@ class Stats
      * Find the family with the most children.
      *
      * @return string
+     * @throws \Exception
      */
     public function largestFamily(): string
     {
@@ -5107,6 +5331,7 @@ class Stats
      * Find the number of children in the largest family.
      *
      * @return string
+     * @throws \Exception
      */
     public function largestFamilySize(): string
     {
@@ -5117,6 +5342,7 @@ class Stats
      * Find the family with the most children.
      *
      * @return string
+     * @throws \Exception
      */
     public function largestFamilyName(): string
     {
@@ -5129,6 +5355,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function topTenLargestFamily($params = []): string
     {
@@ -5141,6 +5368,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function topTenLargestFamilyList($params = []): string
     {
@@ -5153,6 +5381,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function chartLargestFamilies($params = []): string
     {
@@ -5220,6 +5449,7 @@ class Stats
      * Count the total children.
      *
      * @return string
+     * @throws \Exception
      */
     public function totalChildren(): string
     {
@@ -5232,6 +5462,7 @@ class Stats
      * Find the average number of children in families.
      *
      * @return string
+     * @throws \Exception
      */
     public function averageChildren(): string
     {
@@ -5250,6 +5481,7 @@ class Stats
      * @param string[] $params
      *
      * @return string|string[][]
+     * @throws \Exception
      */
     public function statsChildrenQuery($simple = true, $sex = 'BOTH', $year1 = -1, $year2 = -1, $params = [])
     {
@@ -5358,6 +5590,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function statsChildren($params = []): string
     {
@@ -5370,6 +5603,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function topAgeBetweenSiblingsName($params = []): string
     {
@@ -5382,6 +5616,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function topAgeBetweenSiblings($params = []): string
     {
@@ -5394,6 +5629,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function topAgeBetweenSiblingsFullName($params = []): string
     {
@@ -5406,6 +5642,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function topAgeBetweenSiblingsList($params = []): string
     {
@@ -5416,6 +5653,7 @@ class Stats
      * Find the families with no children.
      *
      * @return int
+     * @throws \Exception
      */
     private function noChildrenFamiliesQuery(): int
     {
@@ -5432,6 +5670,7 @@ class Stats
      * Find the families with no children.
      *
      * @return string
+     * @throws \Exception
      */
     public function noChildrenFamilies(): string
     {
@@ -5444,6 +5683,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function noChildrenFamiliesList($params = []): string
     {
@@ -5504,6 +5744,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function chartNoChildrenFamilies($params = []): string
     {
@@ -5604,6 +5845,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     private function topTenGrandFamilyQuery($type = 'list', $params = []): string
     {
@@ -5677,6 +5919,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function topTenLargestGrandFamily($params = []): string
     {
@@ -5689,6 +5932,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function topTenLargestGrandFamilyList($params = []): string
     {
@@ -5703,6 +5947,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     private function commonSurnamesQuery($type = 'list', $show_tot = false, $params = []): string
     {
@@ -5730,7 +5975,10 @@ class Stats
     /**
      * @param int $number_of_surnames
      *
+     * @param int $threshold
+     *
      * @return array
+     * @throws \Exception
      */
     private function topSurnames(int $number_of_surnames, int $threshold): array
     {
@@ -5768,6 +6016,7 @@ class Stats
      * Find common surnames.
      *
      * @return string
+     * @throws \Exception
      */
     public function getCommonSurname(): string
     {
@@ -5782,6 +6031,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function commonSurnames($params = ['', '', 'alpha']): string
     {
@@ -5794,6 +6044,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function commonSurnamesTotals($params = ['', '', 'rcount']): string
     {
@@ -5806,6 +6057,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function commonSurnamesList($params = ['', '', 'alpha']): string
     {
@@ -5818,6 +6070,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function commonSurnamesListTotals($params = ['', '', 'rcount']): string
     {
@@ -5830,6 +6083,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function chartCommonSurnames($params = []): string
     {
@@ -5913,6 +6167,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     private function commonGivenQuery($sex = 'B', $type = 'list', $show_tot = false, $params = [])
     {
@@ -6025,6 +6280,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function commonGiven($params = ['1', '10', 'alpha']): string
     {
@@ -6037,6 +6293,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function commonGivenTotals($params = ['1', '10', 'rcount']): string
     {
@@ -6049,6 +6306,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function commonGivenList($params = ['1', '10', 'alpha']): string
     {
@@ -6061,6 +6319,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function commonGivenListTotals($params = ['1', '10', 'rcount']): string
     {
@@ -6073,6 +6332,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function commonGivenTable($params = ['1', '10', 'rcount']): string
     {
@@ -6085,6 +6345,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function commonGivenFemale($params = ['1', '10', 'alpha']): string
     {
@@ -6097,6 +6358,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function commonGivenFemaleTotals($params = ['1', '10', 'rcount']): string
     {
@@ -6109,6 +6371,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function commonGivenFemaleList($params = ['1', '10', 'alpha']): string
     {
@@ -6121,6 +6384,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function commonGivenFemaleListTotals($params = ['1', '10', 'rcount']): string
     {
@@ -6133,6 +6397,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function commonGivenFemaleTable($params = ['1', '10', 'rcount']): string
     {
@@ -6145,6 +6410,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function commonGivenMale($params = ['1', '10', 'alpha']): string
     {
@@ -6157,6 +6423,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function commonGivenMaleTotals($params = ['1', '10', 'rcount']): string
     {
@@ -6169,6 +6436,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function commonGivenMaleList($params = ['1', '10', 'alpha']): string
     {
@@ -6181,6 +6449,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function commonGivenMaleListTotals($params = ['1', '10', 'rcount']): string
     {
@@ -6193,6 +6462,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function commonGivenMaleTable($params = ['1', '10', 'rcount']): string
     {
@@ -6205,6 +6475,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function commonGivenUnknown($params = ['1', '10', 'alpha']): string
     {
@@ -6217,6 +6488,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function commonGivenUnknownTotals($params = ['1', '10', 'rcount']): string
     {
@@ -6229,6 +6501,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function commonGivenUnknownList($params = ['1', '10', 'alpha']): string
     {
@@ -6241,6 +6514,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function commonGivenUnknownListTotals($params = ['1', '10', 'rcount']): string
     {
@@ -6253,6 +6527,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function commonGivenUnknownTable($params = ['1', '10', 'rcount']): string
     {
@@ -6265,6 +6540,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function chartCommonGiven($params = []): string
     {
@@ -6336,6 +6612,7 @@ class Stats
      * @param string $type
      *
      * @return string
+     * @throws \Exception
      */
     private function usersLoggedInQuery($type = 'nolist'): string
     {
@@ -6403,6 +6680,7 @@ class Stats
      * @param string $type
      *
      * @return int
+     * @throws \Exception
      */
     private function usersLoggedInTotalQuery($type = 'all')
     {
@@ -6428,6 +6706,7 @@ class Stats
      * Who is currently logged in?
      *
      * @return string
+     * @throws \Exception
      */
     public function usersLoggedIn(): string
     {
@@ -6438,6 +6717,7 @@ class Stats
      * Who is currently logged in?
      *
      * @return string
+     * @throws \Exception
      */
     public function usersLoggedInList(): string
     {
@@ -6448,6 +6728,7 @@ class Stats
      * Who is currently logged in?
      *
      * @return int
+     * @throws \Exception
      */
     public function usersLoggedInTotal(): int
     {
@@ -6458,6 +6739,7 @@ class Stats
      * Which visitors are currently logged in?
      *
      * @return int
+     * @throws \Exception
      */
     public function usersLoggedInTotalAnon(): int
     {
@@ -6468,6 +6750,7 @@ class Stats
      * Which visitors are currently logged in?
      *
      * @return int
+     * @throws \Exception
      */
     public function usersLoggedInTotalVisible(): int
     {
@@ -6490,6 +6773,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function userName($params = [])
     {
@@ -6507,6 +6791,7 @@ class Stats
      * Get the current user's full name.
      *
      * @return string
+     * @throws \Exception
      */
     public function userFullName(): string
     {
@@ -6520,6 +6805,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     private function getLatestUserData($type = 'userid', $params = [])
     {
@@ -6575,6 +6861,7 @@ class Stats
      * Get the newest registered user's ID.
      *
      * @return string
+     * @throws \Exception
      */
     public function latestUserId(): string
     {
@@ -6585,6 +6872,7 @@ class Stats
      * Get the newest registered user's username.
      *
      * @return string
+     * @throws \Exception
      */
     public function latestUserName(): string
     {
@@ -6595,6 +6883,7 @@ class Stats
      * Get the newest registered user's real name.
      *
      * @return string
+     * @throws \Exception
      */
     public function latestUserFullName(): string
     {
@@ -6607,6 +6896,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function latestUserRegDate($params = []): string
     {
@@ -6619,6 +6909,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function latestUserRegTime($params = []): string
     {
@@ -6631,6 +6922,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function latestUserLoggedin($params = []): string
     {
@@ -6641,6 +6933,7 @@ class Stats
      * Create a link to contact the webmaster.
      *
      * @return string
+     * @throws \Exception
      */
     public function contactWebmaster()
     {
@@ -6657,6 +6950,7 @@ class Stats
      * Create a link to contact the genealogy contact.
      *
      * @return string
+     * @throws \Exception
      */
     public function contactGedcom()
     {
@@ -6673,6 +6967,7 @@ class Stats
      * What is the current date on the server?
      *
      * @return string
+     * @throws \Exception
      */
     public function serverDate(): string
     {
@@ -6713,6 +7008,7 @@ class Stats
      * What is the client's date.
      *
      * @return string
+     * @throws \Exception
      */
     public function browserDate(): string
     {
@@ -6756,6 +7052,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     private function hitCountQuery($page_name, $params): string
     {
@@ -6786,6 +7083,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function hitCount($params = []): string
     {
@@ -6798,6 +7096,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function hitCountUser($params = []): string
     {
@@ -6810,6 +7109,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function hitCountIndi($params = []): string
     {
@@ -6822,6 +7122,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function hitCountFam($params = []): string
     {
@@ -6834,6 +7135,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function hitCountSour($params = []): string
     {
@@ -6846,6 +7148,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function hitCountRepo($params = []): string
     {
@@ -6858,6 +7161,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function hitCountNote($params = []): string
     {
@@ -6870,6 +7174,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function hitCountObje($params = []): string
     {
@@ -6908,6 +7213,7 @@ class Stats
      * @param string $sql
      *
      * @return stdClass[]
+     * @throws \Exception
      */
     private function runSql($sql): array
     {
@@ -6927,6 +7233,7 @@ class Stats
      * Find the favorites for the tree.
      *
      * @return string
+     * @throws \Exception
      */
     public function gedcomFavorites()
     {
@@ -6943,6 +7250,7 @@ class Stats
      * Find the favorites for the user.
      *
      * @return string
+     * @throws \Exception
      */
     public function userFavorites()
     {
@@ -6959,6 +7267,7 @@ class Stats
      * Find the number of favorites for the tree.
      *
      * @return int
+     * @throws \Exception
      */
     public function totalGedcomFavorites()
     {
@@ -6976,6 +7285,7 @@ class Stats
      * Find the number of favorites for the user.
      *
      * @return int
+     * @throws \Exception
      */
     public function totalUserFavorites()
     {
@@ -6997,6 +7307,7 @@ class Stats
      * @param string[] $params
      *
      * @return string
+     * @throws \Exception
      */
     public function callBlock($params = []): string
     {
@@ -7037,6 +7348,7 @@ class Stats
      * How many messages in the user's inbox.
      *
      * @return string
+     * @throws \Exception
      */
     public function totalUserMessages(): string
     {
@@ -7051,6 +7363,7 @@ class Stats
      * How many blog entries exist for this user.
      *
      * @return string
+     * @throws \Exception
      */
     public function totalUserJournal(): string
     {
@@ -7072,6 +7385,7 @@ class Stats
      * How many news items exist for this tree.
      *
      * @return string
+     * @throws \Exception
      */
     public function totalGedcomNews(): string
     {

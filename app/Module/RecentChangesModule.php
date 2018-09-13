@@ -141,6 +141,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
      * @param int     $block_id
      *
      * @return void
+     * @throws \Exception
      */
     public function saveBlockConfiguration(Request $request, int $block_id)
     {
@@ -157,6 +158,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
      * @param int  $block_id
      *
      * @return void
+     * @throws \Exception
      */
     public function editBlockConfiguration(Tree $tree, int $block_id)
     {
@@ -199,6 +201,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
      * @param int  $days Number of days
      *
      * @return GedcomRecord[] List of records with changes
+     * @throws \Exception
      */
     private function getRecentChanges(Tree $tree, int $days): array
     {
@@ -233,6 +236,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
      * @param GedcomRecord $b
      *
      * @return int
+     * @throws \Exception
      */
     private static function sortByChangeDateAndName(GedcomRecord $a, GedcomRecord $b): int
     {
@@ -246,6 +250,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
      * @param GedcomRecord $b
      *
      * @return int
+     * @throws \Exception
      */
     private static function sortByNameAndChangeDate(GedcomRecord $a, GedcomRecord $b): int
     {

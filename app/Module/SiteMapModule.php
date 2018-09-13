@@ -78,6 +78,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
      * @param Request $request
      *
      * @return Response
+     * @throws \Exception
      */
     public function getAdminAction(Request $request): Response
     {
@@ -106,6 +107,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
      * @param Request $request
      *
      * @return RedirectResponse
+     * @throws \Exception
      */
     public function postAdminAction(Request $request): RedirectResponse
     {
@@ -123,6 +125,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
      * @param Request $request
      *
      * @return Response
+     * @throws \Exception
      */
     public function getIndexAction(Request $request): Response
     {
@@ -174,6 +177,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
      * @param Request $request
      *
      * @return Response
+     * @throws \Exception
      */
     public function getFileAction(Request $request): Response
     {
@@ -213,6 +217,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
      * @param int    $offset
      *
      * @return array
+     * @throws \Exception
      */
     private function sitemapRecords(Tree $tree, string $type, int $limit, int $offset): array
     {
@@ -258,6 +263,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
      * @param int  $offset
      *
      * @return array
+     * @throws \Exception
      */
     private function sitemapIndividuals(Tree $tree, int $limit, int $offset): array
     {
@@ -288,6 +294,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
      * @param int  $offset
      *
      * @return array
+     * @throws \Exception
      */
     private function sitemapMedia(Tree $tree, int $limit, int $offset): array
     {
@@ -318,6 +325,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
      * @param int  $offset
      *
      * @return array
+     * @throws \Exception
      */
     private function sitemapNotes(Tree $tree, int $limit, int $offset): array
     {
@@ -348,6 +356,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
      * @param int  $offset
      *
      * @return array
+     * @throws \Exception
      */
     private function sitemapRepositories(Tree $tree, int $limit, int $offset): array
     {
@@ -378,6 +387,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
      * @param int  $offset
      *
      * @return array
+     * @throws \Exception
      */
     private function sitemapSources(Tree $tree, int $limit, int $offset): array
     {

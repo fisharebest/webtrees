@@ -76,6 +76,7 @@ class SourcesTabModule extends AbstractModule implements ModuleTabInterface
      * @param Individual $individual
      *
      * @return Fact[]
+     * @throws \Exception
      */
     private function getFactsWithSources(Individual $individual): array
     {

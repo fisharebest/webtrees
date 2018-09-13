@@ -59,6 +59,8 @@ class Tree
      * @param int    $tree_id
      * @param string $tree_name
      * @param string $tree_title
+     *
+     * @throws Exception
      */
     private function __construct($tree_id, $tree_name, $tree_title)
     {
@@ -161,6 +163,7 @@ class Tree
      * @param string $default
      *
      * @return string
+     * @throws Exception
      */
     public function getPreference(string $setting_name, string $default = ''): string
     {
@@ -184,6 +187,7 @@ class Tree
      * @param string $setting_value
      *
      * @return $this
+     * @throws Exception
      */
     public function setPreference(string $setting_name, string $setting_value): Tree
     {
@@ -213,6 +217,7 @@ class Tree
      * @param string $default
      *
      * @return string
+     * @throws Exception
      */
     public function getUserPreference(User $user, string $setting_name, string $default = ''): string
     {
@@ -242,6 +247,7 @@ class Tree
      * @param string $setting_value
      *
      * @return $this
+     * @throws Exception
      */
     public function setUserPreference(User $user, string $setting_name, string $setting_value): Tree
     {
@@ -280,6 +286,7 @@ class Tree
      * @param User $user
      *
      * @return bool
+     * @throws Exception
      */
     public function canAcceptChanges(User $user): bool
     {
@@ -290,6 +297,7 @@ class Tree
      * Fetch all the trees that we have permission to access.
      *
      * @return Tree[]
+     * @throws Exception
      */
     public static function getAll(): array
     {
@@ -329,8 +337,8 @@ class Tree
      *
      * @param int $tree_id
      *
-     * @throws \DomainException
      * @return Tree
+     * @throws Exception
      */
     public static function findById($tree_id): Tree
     {
@@ -348,6 +356,7 @@ class Tree
      * @param string $tree_name
      *
      * @return Tree|null
+     * @throws Exception
      */
     public static function findByName($tree_name)
     {
@@ -365,6 +374,7 @@ class Tree
      * Note - these will be escaped later
      *
      * @return string[]
+     * @throws Exception
      */
     public static function getIdList(): array
     {
@@ -381,6 +391,7 @@ class Tree
      * Note - these will be escaped later
      *
      * @return string[]
+     * @throws Exception
      */
     public static function getNameList(): array
     {
@@ -399,6 +410,7 @@ class Tree
      * @param string $tree_title
      *
      * @return Tree
+     * @throws Exception
      */
     public static function create(string $tree_name, string $tree_title): Tree
     {
@@ -496,6 +508,7 @@ class Tree
      * Are there any pending edits for this tree, than need reviewing by a moderator.
      *
      * @return bool
+     * @throws Exception
      */
     public function hasPendingEdit(): bool
     {
@@ -515,6 +528,7 @@ class Tree
      * @param bool $keep_media
      *
      * @return void
+     * @throws Exception
      */
     public function deleteGenealogyData(bool $keep_media)
     {
@@ -542,6 +556,7 @@ class Tree
      * Delete everything relating to a tree
      *
      * @return void
+     * @throws Exception
      */
     public function delete()
     {
@@ -573,6 +588,7 @@ class Tree
      * @param resource $stream
      *
      * @return void
+     * @throws Exception
      */
     public function exportGedcom($stream)
     {
@@ -666,6 +682,7 @@ class Tree
      * Generate a new XREF, unique across all family trees
      *
      * @return string
+     * @throws Exception
      */
     public function getNewXref(): string
     {
@@ -778,6 +795,7 @@ class Tree
      * @param User $user
      *
      * @return Individual
+     * @throws Exception
      */
     public function significantIndividual(User $user): Individual
     {
@@ -815,6 +833,7 @@ class Tree
      * charts and reports to initialise with the same records
      *
      * @return Individual
+     * @throws Exception
      */
     public function getSignificantIndividual(): Individual
     {

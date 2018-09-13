@@ -39,6 +39,7 @@ class VerifyEmailController extends AbstractBaseController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function verify(Request $request, Tree $tree): Response
     {

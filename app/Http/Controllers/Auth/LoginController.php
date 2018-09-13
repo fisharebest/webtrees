@@ -46,6 +46,7 @@ class LoginController extends AbstractBaseController
      * @param Tree|null $tree
      *
      * @return Response
+     * @throws Exception
      */
     public function loginPage(Request $request, Tree $tree = null): Response
     {
@@ -193,6 +194,7 @@ class LoginController extends AbstractBaseController
      * @param Tree|null $tree
      *
      * @return RedirectResponse
+     * @throws Exception
      */
     public function logoutAction(Tree $tree = null): RedirectResponse
     {

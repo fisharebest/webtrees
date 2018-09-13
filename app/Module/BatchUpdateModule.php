@@ -72,6 +72,7 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
      * @param Tree|null $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function getAdminAction(Request $request, User $user, Tree $tree = null): Response
     {
@@ -145,6 +146,7 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
      * @param Tree|null $tree
      *
      * @return RedirectResponse
+     * @throws \Exception
      */
     public function postAdminAction(Request $request, User $user, Tree $tree = null): RedirectResponse
     {
@@ -214,6 +216,7 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
      * @param Tree                  $tree
      *
      * @return string
+     * @throws \Exception
      */
     private function findNextXref(BatchUpdateBasePlugin $plugin, string $xref, array $all_data, Tree $tree): string
     {
@@ -238,6 +241,7 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
      * @param Tree                  $tree
      *
      * @return string
+     * @throws \Exception
      */
     private function findPrevXref(BatchUpdateBasePlugin $plugin, string $xref, array $all_data, Tree $tree): string
     {
@@ -260,6 +264,7 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
      * @param Tree                  $tree
      *
      * @return object[]
+     * @throws \Exception
      */
     private function allData(BatchUpdateBasePlugin $plugin, Tree $tree): array
     {
@@ -347,6 +352,7 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
      * @param Tree     $tree
      *
      * @return GedcomRecord
+     * @throws \Exception
      */
     public function getRecord(stdClass $record, Tree $tree): GedcomRecord
     {

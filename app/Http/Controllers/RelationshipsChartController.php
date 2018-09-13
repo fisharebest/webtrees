@@ -43,6 +43,7 @@ class RelationshipsChartController extends AbstractChartController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function page(Request $request, Tree $tree): Response
     {
@@ -91,6 +92,7 @@ class RelationshipsChartController extends AbstractChartController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function chart(Request $request, Tree $tree): Response
     {
@@ -228,6 +230,7 @@ class RelationshipsChartController extends AbstractChartController
      * @param bool       $ancestor  Restrict to relationships via a common ancestor
      *
      * @return string[][]
+     * @throws \Exception
      */
     private function calculateRelationships(Individual $individual1, Individual $individual2, $recursion, $ancestor = false): array
     {
@@ -314,6 +317,7 @@ class RelationshipsChartController extends AbstractChartController
      * @param string[] $path Alternately Individual / Family
      *
      * @return string[]
+     * @throws \Exception
      */
     private function oldStyleRelationshipPath(Tree $tree, array $path): array
     {
@@ -375,6 +379,7 @@ class RelationshipsChartController extends AbstractChartController
      * @param int    $tree_id
      *
      * @return string[]
+     * @throws \Exception
      */
     private function allAncestors($xref1, $xref2, $tree_id): array
     {
@@ -421,6 +426,7 @@ class RelationshipsChartController extends AbstractChartController
      * @param int    $tree_id
      *
      * @return string[]
+     * @throws \Exception
      */
     private function excludeFamilies($xref1, $xref2, $tree_id): array
     {

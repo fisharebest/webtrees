@@ -40,6 +40,7 @@ class ErrorController extends AbstractBaseController
      * @param Tree|null $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function noRouteFound(Request $request, Tree $tree = null): Response
     {

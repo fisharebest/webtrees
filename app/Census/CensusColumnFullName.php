@@ -31,6 +31,7 @@ class CensusColumnFullName extends AbstractCensusColumn implements CensusColumnI
      * @param Individual $head
      *
      * @return string
+     * @throws \Exception
      */
     public function generate(Individual $individual, Individual $head): string
     {
@@ -47,6 +48,7 @@ class CensusColumnFullName extends AbstractCensusColumn implements CensusColumnI
      * @param Date       $census_date
      *
      * @return string[]
+     * @throws \Exception
      */
     protected function nameAtCensusDate(Individual $individual, Date $census_date): array
     {

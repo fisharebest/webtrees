@@ -64,6 +64,7 @@ abstract class AbstractCensusColumnCondition extends AbstractCensusColumn implem
      * @param Individual $head
      *
      * @return string
+     * @throws \Exception
      */
     public function generate(Individual $individual, Individual $head): string
     {
@@ -94,6 +95,7 @@ abstract class AbstractCensusColumnCondition extends AbstractCensusColumn implem
      * @param Individual $individual
      *
      * @return bool
+     * @throws \Exception
      */
     private function isChild(Individual $individual): bool
     {
@@ -156,6 +158,7 @@ abstract class AbstractCensusColumnCondition extends AbstractCensusColumn implem
      * @param Individual $individual
      *
      * @return bool
+     * @throws \Exception
      */
     private function isDead(Individual $individual): bool
     {

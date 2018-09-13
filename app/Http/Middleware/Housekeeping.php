@@ -63,7 +63,7 @@ class Housekeeping implements MiddlewareInterface
      * @param Closure $next
      *
      * @return Response
-     * @throws AccessDeniedHttpException
+     * @throws \Exception
      */
     public function handle(Request $request, Closure $next): Response
     {

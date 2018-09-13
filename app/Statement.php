@@ -108,6 +108,7 @@ class Statement
      * Execute the query, if necessary. Typically when there are no parameters.
      *
      * @return stdClass|false
+     * @throws \Exception
      */
     public function fetch()
     {
@@ -124,6 +125,7 @@ class Statement
      * Execute the query, if necessary. Typically when there are no parameters.
      *
      * @return stdClass[]
+     * @throws \Exception
      */
     public function fetchAll(): array
     {
@@ -143,6 +145,7 @@ class Statement
      * Execute the query, if necessary. Typically when there are no parameters.
      *
      * @return stdClass|null
+     * @throws \Exception
      */
     public function fetchOneRow()
     {
@@ -162,6 +165,7 @@ class Statement
      * Execute the query, if necessary. Typically when there are no parameters.
      *
      * @return string|null
+     * @throws \Exception
      */
     public function fetchOne()
     {
@@ -181,6 +185,7 @@ class Statement
      * Execute the query, if necessary. Typically when there are no parameters.
      *
      * @return string[]
+     * @throws \Exception
      */
     public function fetchAssoc(): array
     {
@@ -203,6 +208,7 @@ class Statement
      * Execute the query, if necessary. Typically when there are no parameters.
      *
      * @return string[]
+     * @throws \Exception
      */
     public function fetchOneColumn(): array
     {

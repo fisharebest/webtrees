@@ -40,6 +40,7 @@ class GedcomFileController extends AbstractBaseController
      * @param Tree           $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function import(TimeoutService $timeout_service, Tree $tree): Response
     {

@@ -37,6 +37,7 @@ class EditFamilyController extends AbstractEditController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function reorderChildren(Request $request, Tree $tree): Response
     {
@@ -58,6 +59,7 @@ class EditFamilyController extends AbstractEditController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function reorderChildrenAction(Request $request, Tree $tree): Response
     {
@@ -99,6 +101,7 @@ class EditFamilyController extends AbstractEditController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function addChild(Request $request, Tree $tree): Response
     {
@@ -128,6 +131,7 @@ class EditFamilyController extends AbstractEditController
      * @param Tree    $tree
      *
      * @return RedirectResponse
+     * @throws \Exception
      */
     public function addChildAction(Request $request, Tree $tree): RedirectResponse
     {
@@ -192,6 +196,7 @@ class EditFamilyController extends AbstractEditController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function addSpouse(Request $request, Tree $tree): Response
     {
@@ -227,6 +232,7 @@ class EditFamilyController extends AbstractEditController
      * @param Tree    $tree
      *
      * @return RedirectResponse
+     * @throws \Exception
      */
     public function addSpouseAction(Request $request, Tree $tree): RedirectResponse
     {
@@ -292,6 +298,7 @@ class EditFamilyController extends AbstractEditController
      * @param Tree    $tree
      *
      * @return Response
+     * @throws \Exception
      */
     public function changeFamilyMembers(Request $request, Tree $tree): Response
     {
@@ -316,6 +323,7 @@ class EditFamilyController extends AbstractEditController
      * @param Tree    $tree
      *
      * @return RedirectResponse
+     * @throws \Exception
      */
     public function changeFamilyMembersAction(Request $request, Tree $tree): RedirectResponse
     {

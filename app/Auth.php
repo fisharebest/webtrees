@@ -44,6 +44,7 @@ class Auth
      * @param User|null $user
      *
      * @return bool
+     * @throws \Exception
      */
     public static function isAdmin(User $user = null): bool
     {
@@ -61,6 +62,7 @@ class Auth
      * @param User|null $user
      *
      * @return bool
+     * @throws \Exception
      */
     public static function isManager(Tree $tree, User $user = null): bool
     {
@@ -78,6 +80,7 @@ class Auth
      * @param User|null $user
      *
      * @return bool
+     * @throws \Exception
      */
     public static function isModerator(Tree $tree, User $user = null): bool
     {
@@ -95,6 +98,7 @@ class Auth
      * @param User|null $user
      *
      * @return bool
+     * @throws \Exception
      */
     public static function isEditor(Tree $tree, User $user = null): bool
     {
@@ -112,6 +116,7 @@ class Auth
      * @param User|null $user
      *
      * @return bool
+     * @throws \Exception
      */
     public static function isMember(Tree $tree, User $user = null): bool
     {
@@ -129,6 +134,7 @@ class Auth
      * @param User|null $user
      *
      * @return int
+     * @throws \Exception
      */
     public static function accessLevel(Tree $tree, User $user = null)
     {
@@ -159,6 +165,7 @@ class Auth
      * The authenticated user, from the current session.
      *
      * @return User
+     * @throws \Exception
      */
     public static function user()
     {
