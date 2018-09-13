@@ -601,7 +601,6 @@ class AdminLocationController extends AbstractBaseController
 
     /**
      * @param string $filename
-     *
      * @param array  $rows
      * @param int    $maxlevel
      *

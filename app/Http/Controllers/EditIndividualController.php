@@ -612,7 +612,6 @@ class EditIndividualController extends AbstractEditController
 
     /**
      * @param Request $request
-     *
      * @param Tree    $tree
      *
      * @return RedirectResponse

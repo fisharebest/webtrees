@@ -878,6 +878,7 @@ class I18N
      * echo I18N::translate('The %s sat on the mat', 'cat');
      *
      * @param array $args
+     *
      * @return string
      */
     public static function translate(...$args): string
@@ -893,6 +894,7 @@ class I18N
      * echo I18N::translateContext('GENITIVE', 'January');
      *
      * @param array $args
+     *
      * @return string
      */
     public static function translateContext(...$args): string

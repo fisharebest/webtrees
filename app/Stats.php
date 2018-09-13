@@ -5729,7 +5729,6 @@ class Stats
 
     /**
      * @param int $number_of_surnames
-     *
      * @param int $threshold
      *
      * @return array
