@@ -259,6 +259,7 @@ try {
     $resolver->bind(User::class, Auth::user());
     $resolver->bind(LocaleInterface::class, Locale::create(WT_LOCALE));
     $resolver->bind(TimeoutService::class, new TimeoutService(microtime(true)));
+    $resolver->bind(Filesystem::class, new Filesystem(new Local(WT_DATA_DIR)));
 
     $controller = $resolver->resolve($controller_class);
 

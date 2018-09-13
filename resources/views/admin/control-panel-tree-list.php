@@ -1,8 +1,4 @@
-<?php
-
-use Fisharebest\Webtrees\I18N;
-
-?>
+<?php use Fisharebest\Webtrees\I18N; ?>
 
 <?php foreach ($all_trees as $tree): ?>
     <tr class="<?= $changes[$tree->getTreeId()] ? 'danger' : '' ?>">

@@ -49,18 +49,16 @@
 				</tr>
 			</thead>
 			<tbody>
-                <?=
-                    view('admin/control-panel-tree-list', [
-                        'all_trees'    => $all_trees,
-                        'changes'      => $changes,
-                        'individuals'  => $individuals,
-                        'families'     => $families,
-                        'sources'      => $sources,
-                        'repositories' => $repositories,
-                        'media'        => $media,
-                        'notes'        => $notes,
-                    ]);
-                ?>
+                <?= view('admin/control-panel-tree-list', [
+                    'all_trees'    => $all_trees,
+                    'changes'      => $changes,
+                    'individuals'  => $individuals,
+                    'families'     => $families,
+                    'sources'      => $sources,
+                    'repositories' => $repositories,
+                    'media'        => $media,
+                    'notes'        => $notes,
+                ]); ?>
 			</tbody>
 		</table>
 	</div>
