@@ -4,15 +4,18 @@
  * Class ScriptEgyd - Representation of the Egyptian demotic script.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2015 Greg Roach
+ * @copyright (c) 2018 Greg Roach
  * @license   GPLv3+
  */
-class ScriptEgyd extends AbstractScript implements ScriptInterface {
-	public function code() {
-		return 'Egyd';
-	}
+class ScriptEgyd extends AbstractScript implements ScriptInterface
+{
+    public function code()
+    {
+        return 'Egyd';
+    }
 
-	public function number() {
-		return '070';
-	}
+    public function number()
+    {
+        return '070';
+    }
 }

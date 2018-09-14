@@ -7,19 +7,23 @@ use Fisharebest\Localization\Territory\TerritoryMg;
  * Class LanguageMg - Representation of the Malagasy language.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2015 Greg Roach
+ * @copyright (c) 2018 Greg Roach
  * @license   GPLv3+
  */
-class LanguageMg extends AbstractLanguage implements LanguageInterface {
-	public function code() {
-		return 'mg';
-	}
+class LanguageMg extends AbstractLanguage implements LanguageInterface
+{
+    public function code()
+    {
+        return 'mg';
+    }
 
-	public function defaultTerritory() {
-		return new TerritoryMg;
-	}
+    public function defaultTerritory()
+    {
+        return new TerritoryMg();
+    }
 
-	public function pluralRule() {
-		return new PluralRule2;
-	}
+    public function pluralRule()
+    {
+        return new PluralRule2();
+    }
 }

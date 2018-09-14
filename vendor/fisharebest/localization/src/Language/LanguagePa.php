@@ -8,23 +8,28 @@ use Fisharebest\Localization\Territory\TerritoryIn;
  * Class LanguagePa - Representation of the Panjabi language.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2015 Greg Roach
+ * @copyright (c) 2018 Greg Roach
  * @license   GPLv3+
  */
-class LanguagePa extends AbstractLanguage implements LanguageInterface {
-	public function code() {
-		return 'pa';
-	}
+class LanguagePa extends AbstractLanguage implements LanguageInterface
+{
+    public function code()
+    {
+        return 'pa';
+    }
 
-	public function defaultScript() {
-		return new ScriptGuru;
-	}
+    public function defaultScript()
+    {
+        return new ScriptGuru();
+    }
 
-	public function defaultTerritory() {
-		return new TerritoryIn;
-	}
+    public function defaultTerritory()
+    {
+        return new TerritoryIn();
+    }
 
-	public function pluralRule() {
-		return new PluralRule2;
-	}
+    public function pluralRule()
+    {
+        return new PluralRule2();
+    }
 }

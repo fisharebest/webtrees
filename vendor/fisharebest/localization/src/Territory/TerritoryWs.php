@@ -4,15 +4,18 @@
  * Class AbstractTerritory - Representation of the territory WS - Samoa.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2015 Greg Roach
+ * @copyright (c) 2018 Greg Roach
  * @license   GPLv3+
  */
-class TerritoryWs extends AbstractTerritory implements TerritoryInterface {
-	public function code() {
-		return 'WS';
-	}
+class TerritoryWs extends AbstractTerritory implements TerritoryInterface
+{
+    public function code()
+    {
+        return 'WS';
+    }
 
-	public function firstDay() {
-		return 0;
-	}
+    public function firstDay()
+    {
+        return 0;
+    }
 }

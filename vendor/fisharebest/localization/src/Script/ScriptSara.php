@@ -4,15 +4,18 @@
  * Class ScriptSara - Representation of the Sarati script.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2015 Greg Roach
+ * @copyright (c) 2018 Greg Roach
  * @license   GPLv3+
  */
-class ScriptSara extends AbstractScript implements ScriptInterface {
-	public function code() {
-		return 'Sara';
-	}
+class ScriptSara extends AbstractScript implements ScriptInterface
+{
+    public function code()
+    {
+        return 'Sara';
+    }
 
-	public function number() {
-		return '292';
-	}
+    public function number()
+    {
+        return '292';
+    }
 }

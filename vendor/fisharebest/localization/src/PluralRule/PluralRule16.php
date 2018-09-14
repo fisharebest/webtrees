@@ -2,12 +2,9 @@
 
 /**
  * Class PluralRule16 - Select a plural form for a specified number.
- *
  * Families:
  * Celtic (Breton)
- *
  * nplurals=2; plural=(n > 1);
- *
  * is 1: 1
  * ends in 1, excluding 1, 11, 71, 91: 21, 31, 41, 51, 61, 81, 101, 121, 131, 141, 151, 161, 181, 201, 221, 231, 241, 251, 261, 281, ...
  * ends in 2, excluding 12, 72, 92: 2, 22, 32, 42, 52, 62, 82, 102, 122, 132, 142, 152, 162, 182, 202, 222, 232, 242, 252, 262, 282, ...
@@ -16,21 +13,24 @@
  * everything else: 0, 5, 6, 7, 8, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 25, 26, 27, 28, 30, 35, 36, 37, 38, 40, ...
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2015 Greg Roach
+ * @copyright (c) 2018 Greg Roach
  * @license   GPLv3+
  */
-class PluralRule16 implements PluralRuleInterface {
-	public function plurals() {
-		return 5;
-	}
+class PluralRule16 implements PluralRuleInterface
+{
+    public function plurals()
+    {
+        return 5;
+    }
 
-	public function plural($number) {
-		$number = abs($number);
+    public function plural($number)
+    {
+        $number = abs($number);
 
-		if ($number > 1) {
-			return 1;
-		} else {
-			return 0;
-		}
-	}
+        if ($number > 1) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
 }

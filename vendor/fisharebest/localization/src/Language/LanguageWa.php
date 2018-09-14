@@ -7,19 +7,23 @@ use Fisharebest\Localization\Territory\TerritoryBe;
  * Class LanguageXh - Representation of the Walloon language.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2015 Greg Roach
+ * @copyright (c) 2018 Greg Roach
  * @license   GPLv3+
  */
-class LanguageWa extends AbstractLanguage implements LanguageInterface {
-	public function code() {
-		return 'wa';
-	}
+class LanguageWa extends AbstractLanguage implements LanguageInterface
+{
+    public function code()
+    {
+        return 'wa';
+    }
 
-	public function defaultTerritory() {
-		return new TerritoryBe;
-	}
+    public function defaultTerritory()
+    {
+        return new TerritoryBe();
+    }
 
-	public function pluralRule() {
-		return new PluralRule2;
-	}
+    public function pluralRule()
+    {
+        return new PluralRule2();
+    }
 }

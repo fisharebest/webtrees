@@ -8,23 +8,28 @@ use Fisharebest\Localization\Territory\TerritoryEt;
  * Class LanguageAm - Representation of the Amharic language.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2015 Greg Roach
+ * @copyright (c) 2018 Greg Roach
  * @license   GPLv3+
  */
-class LanguageAm extends AbstractLanguage implements LanguageInterface {
-	public function code() {
-		return 'am';
-	}
+class LanguageAm extends AbstractLanguage implements LanguageInterface
+{
+    public function code()
+    {
+        return 'am';
+    }
 
-	public function defaultScript() {
-		return new ScriptEthi;
-	}
+    public function defaultScript()
+    {
+        return new ScriptEthi();
+    }
 
-	public function defaultTerritory() {
-		return new TerritoryEt;
-	}
+    public function defaultTerritory()
+    {
+        return new TerritoryEt();
+    }
 
-	public function pluralRule() {
-		return new PluralRule2;
-	}
+    public function pluralRule()
+    {
+        return new PluralRule2();
+    }
 }

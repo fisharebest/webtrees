@@ -8,23 +8,28 @@ use Fisharebest\Localization\Territory\TerritoryTh;
  * Class LanguageTh - Representation of the Thai language.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2015 Greg Roach
+ * @copyright (c) 2018 Greg Roach
  * @license   GPLv3+
  */
-class LanguageTh extends AbstractLanguage implements LanguageInterface {
-	public function code() {
-		return 'th';
-	}
+class LanguageTh extends AbstractLanguage implements LanguageInterface
+{
+    public function code()
+    {
+        return 'th';
+    }
 
-	public function defaultScript() {
-		return new ScriptThai;
-	}
+    public function defaultScript()
+    {
+        return new ScriptThai();
+    }
 
-	public function defaultTerritory() {
-		return new TerritoryTh;
-	}
+    public function defaultTerritory()
+    {
+        return new TerritoryTh();
+    }
 
-	public function pluralRule() {
-		return new PluralRule0;
-	}
+    public function pluralRule()
+    {
+        return new PluralRule0();
+    }
 }

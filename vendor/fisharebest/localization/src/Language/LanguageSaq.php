@@ -7,19 +7,23 @@ use Fisharebest\Localization\Territory\TerritoryKe;
  * Class LanguageSaq - Representation of the Samburu language.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2015 Greg Roach
+ * @copyright (c) 2018 Greg Roach
  * @license   GPLv3+
  */
-class LanguageSaq extends AbstractLanguage implements LanguageInterface {
-	public function code() {
-		return 'saq';
-	}
+class LanguageSaq extends AbstractLanguage implements LanguageInterface
+{
+    public function code()
+    {
+        return 'saq';
+    }
 
-	public function defaultTerritory() {
-		return new TerritoryKe;
-	}
+    public function defaultTerritory()
+    {
+        return new TerritoryKe();
+    }
 
-	public function pluralRule() {
-		return new PluralRule1;
-	}
+    public function pluralRule()
+    {
+        return new PluralRule1();
+    }
 }

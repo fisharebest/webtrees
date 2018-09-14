@@ -4,11 +4,13 @@
  * Class AbstractTerritory - Representation of the territory PG - Papua New Guinea.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2015 Greg Roach
+ * @copyright (c) 2018 Greg Roach
  * @license   GPLv3+
  */
-class TerritoryPg extends AbstractTerritory implements TerritoryInterface {
-	public function code() {
-		return 'PG';
-	}
+class TerritoryPg extends AbstractTerritory implements TerritoryInterface
+{
+    public function code()
+    {
+        return 'PG';
+    }
 }

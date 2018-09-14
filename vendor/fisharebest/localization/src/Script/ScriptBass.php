@@ -4,19 +4,23 @@
  * Class ScriptBass - Representation of the Bassa Vah script.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2015 Greg Roach
+ * @copyright (c) 2018 Greg Roach
  * @license   GPLv3+
  */
-class ScriptBass extends AbstractScript implements ScriptInterface {
-	public function code() {
-		return 'Bass';
-	}
+class ScriptBass extends AbstractScript implements ScriptInterface
+{
+    public function code()
+    {
+        return 'Bass';
+    }
 
-	public function number() {
-		return '259';
-	}
+    public function number()
+    {
+        return '259';
+    }
 
-	public function unicodeName() {
-		return 'Bassa_Vah';
-	}
+    public function unicodeName()
+    {
+        return 'Bassa_Vah';
+    }
 }

@@ -1,8 +1,8 @@
 <?php
+
 namespace Fisharebest\Algorithm;
 
 /**
- * @package   fisharebest/algorithm
  * @author    Greg Roach <greg@subaqua.co.uk>
  * @copyright (c) 2015 Greg Roach <greg@subaqua.co.uk>
  * @license   GPL-3.0+
@@ -23,78 +23,83 @@ namespace Fisharebest\Algorithm;
  * Class ConnectedComponent - Use a depth-first search to find connected
  * components of an undirected graph.
  */
-class ConnectedComponent {
-	/** @var integer[][] The graph, where $graph[node1][node2]=cost */
-	protected $graph;
+class ConnectedComponent
+{
+    /** @var integer[][] The graph, where $graph[node1][node2]=cost */
+    protected $graph;
 
-	/** @var integer[] The component number for each node */
-	protected $nodes;
+    /** @var int[] The component number for each node */
+    protected $nodes;
 
-	/** @var int The next connected-component to find. */
-	protected $component;
+    /** @var int The next connected-component to find. */
+    protected $component;
 
-	/**
-	 * @param integer[][] $graph
-	 */
-	public function __construct($graph) {
-		$this->graph     = $graph;
-		$this->nodes     = array_fill_keys(array_keys($graph), 0);
-		$this->component = 0;
-	}
+    /**
+     * @param integer[][] $graph
+     */
+    public function __construct($graph)
+    {
+        $this->graph = $graph;
+        $this->nodes = array_fill_keys(array_keys($graph), 0);
+        $this->component = 0;
+    }
 
-	/**
-	 * An array of components (arrays).
-	 *
-	 * @return array
-	 */
-	public function findConnectedComponents() {
-		// Find the first unallocated node
-		$node = array_search(0, $this->nodes, true);
+    /**
+     * An array of components (arrays).
+     *
+     * @return array
+     */
+    public function findConnectedComponents()
+    {
+        // Find the first unallocated node
+        $node = array_search(0, $this->nodes, true);
 
-		while ($node !== false) {
-			// Find the next connected-component.
-			$this->component++;
-			$this->depthFirstSearch($node, $this->component);
+        while ($node !== false) {
+            // Find the next connected-component.
+            $this->component++;
+            $this->depthFirstSearch($node, $this->component);
 
-			// Find the next unallocated node.
-			$node = array_search(0, $this->nodes, true);
-		}
+            // Find the next unallocated node.
+            $node = array_search(0, $this->nodes, true);
+        }
 
-		return $this->groupResults();
-	}
+        return $this->groupResults();
+    }
 
-	/**
-	 * Group the nodes by component
-	 *
-	 * @return array
-	 */
-	private function groupResults() {
-		$result = array();
-		foreach ($this->nodes as $node => $component) {
-			if (array_key_exists($component, $result)) {
-				$result[$component][] = $node;
-			} else {
-				$result[$component] = array($node);
-			}
-		}
+    /**
+     * Group the nodes by component.
+     *
+     * @return array
+     */
+    private function groupResults()
+    {
+        $result = array();
+        foreach ($this->nodes as $node => $component) {
+            if (array_key_exists($component, $result)) {
+                $result[$component][] = $node;
+            } else {
+                $result[$component] = array($node);
+            }
+        }
 
-		return $result;
-	}
+        return $result;
+    }
 
-	/**
-	 * Find all nodes connected to $node and mark them as part of
-	 * component $component.
-	 *
-	 * @param $node
-	 * @param $component
-	 */
-	private function depthFirstSearch($node, $component) {
-		$this->nodes[$node] = $component;
+    /**
+     * Find all nodes connected to $node and mark them as part of
+     * component $component.
+     *
+     * @param $node
+     * @param $component
+     */
+    private function depthFirstSearch($node, $component)
+    {
+        $this->nodes[$node] = $component;
 
-		foreach (array_keys($this->graph[$node]) as $next) {
-			if ($this->nodes[$next] === 0) {
-				$this->depthFirstSearch($next, $component);
-			}
-		}
-	}
+        foreach (array_keys($this->graph[$node]) as $next) {
+            if ($this->nodes[$next] === 0) {
+                $this->depthFirstSearch($next, $component);
+            }
+        }
+    }
 }

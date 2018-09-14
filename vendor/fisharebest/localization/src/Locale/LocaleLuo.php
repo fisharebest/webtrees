@@ -5,20 +5,24 @@ use Fisharebest\Localization\Language\LanguageLuo;
 /**
  * Class LocaleLuo - Luo
  *
- * @author        Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2015 Greg Roach
- * @license       GPLv3+
+ * @author    Greg Roach <fisharebest@gmail.com>
+ * @copyright (c) 2018 Greg Roach
+ * @license   GPLv3+
  */
-class LocaleLuo extends AbstractLocale implements LocaleInterface {
-	public function endonym() {
-		return 'Dholuo';
-	}
+class LocaleLuo extends AbstractLocale implements LocaleInterface
+{
+    public function endonym()
+    {
+        return 'Dholuo';
+    }
 
-	public function endonymSortable() {
-		return 'DHOLUO';
-	}
+    public function endonymSortable()
+    {
+        return 'DHOLUO';
+    }
 
-	public function language() {
-		return new LanguageLuo;
-	}
+    public function language()
+    {
+        return new LanguageLuo();
+    }
 }

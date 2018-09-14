@@ -8,23 +8,28 @@ use Fisharebest\Localization\Territory\TerritoryGe;
  * Class LanguageKa - Representation of the Georgian language.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2015 Greg Roach
+ * @copyright (c) 2018 Greg Roach
  * @license   GPLv3+
  */
-class LanguageKa extends AbstractLanguage implements LanguageInterface {
-	public function code() {
-		return 'ka';
-	}
+class LanguageKa extends AbstractLanguage implements LanguageInterface
+{
+    public function code()
+    {
+        return 'ka';
+    }
 
-	public function defaultScript() {
-		return new ScriptGeor;
-	}
+    public function defaultScript()
+    {
+        return new ScriptGeor();
+    }
 
-	public function defaultTerritory() {
-		return new TerritoryGe;
-	}
+    public function defaultTerritory()
+    {
+        return new TerritoryGe();
+    }
 
-	public function pluralRule() {
-		return new PluralRule1;
-	}
+    public function pluralRule()
+    {
+        return new PluralRule1();
+    }
 }

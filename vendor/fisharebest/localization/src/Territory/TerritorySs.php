@@ -4,11 +4,13 @@
  * Class AbstractTerritory - Representation of the territory SS - South Sudan.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2015 Greg Roach
+ * @copyright (c) 2018 Greg Roach
  * @license   GPLv3+
  */
-class TerritorySs extends AbstractTerritory implements TerritoryInterface {
-	public function code() {
-		return 'SS';
-	}
+class TerritorySs extends AbstractTerritory implements TerritoryInterface
+{
+    public function code()
+    {
+        return 'SS';
+    }
 }

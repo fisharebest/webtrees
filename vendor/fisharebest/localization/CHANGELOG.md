@@ -1,6 +1,10 @@
 CHANGE LOG
 ==========
 
+## 1.11.0 (2018-09-05)
+ - Update to CLDR-33.1 and latest versions of ISO-15924 and iana-subtag-registry
+ - Adopt PSR-12 code style
+
 ## 1.10.3 (2018-01-15)
  - Use short type names in PHPdoc
 

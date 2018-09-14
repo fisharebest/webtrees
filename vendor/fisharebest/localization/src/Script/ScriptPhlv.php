@@ -4,15 +4,18 @@
  * Class ScriptPhlv - Representation of the Book Pahlavi script.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2015 Greg Roach
+ * @copyright (c) 2018 Greg Roach
  * @license   GPLv3+
  */
-class ScriptPhlv extends AbstractScript implements ScriptInterface {
-	public function code() {
-		return 'Phlv';
-	}
+class ScriptPhlv extends AbstractScript implements ScriptInterface
+{
+    public function code()
+    {
+        return 'Phlv';
+    }
 
-	public function number() {
-		return '133';
-	}
+    public function number()
+    {
+        return '133';
+    }
 }

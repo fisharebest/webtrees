@@ -5,12 +5,14 @@ use Fisharebest\Localization\Territory\TerritoryLk;
 /**
  * Class LocaleTaLk
  *
- * @author        Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2015 Greg Roach
- * @license       GPLv3+
+ * @author    Greg Roach <fisharebest@gmail.com>
+ * @copyright (c) 2018 Greg Roach
+ * @license   GPLv3+
  */
-class LocaleTaLk extends LocaleTa {
-	public function territory() {
-		return new TerritoryLk;
-	}
+class LocaleTaLk extends LocaleTa
+{
+    public function territory()
+    {
+        return new TerritoryLk();
+    }
 }

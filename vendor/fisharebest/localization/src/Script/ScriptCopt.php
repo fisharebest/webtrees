@@ -4,19 +4,23 @@
  * Class ScriptCopt - Representation of the Coptic script.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2015 Greg Roach
+ * @copyright (c) 2018 Greg Roach
  * @license   GPLv3+
  */
-class ScriptCopt extends AbstractScript implements ScriptInterface {
-	public function code() {
-		return 'Copt';
-	}
+class ScriptCopt extends AbstractScript implements ScriptInterface
+{
+    public function code()
+    {
+        return 'Copt';
+    }
 
-	public function number() {
-		return '204';
-	}
+    public function number()
+    {
+        return '204';
+    }
 
-	public function unicodeName() {
-		return 'Coptic';
-	}
+    public function unicodeName()
+    {
+        return 'Coptic';
+    }
 }

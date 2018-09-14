@@ -4,11 +4,13 @@
  * Class AbstractTerritory - Representation of the territory LI - Liechtenstein.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2015 Greg Roach
+ * @copyright (c) 2018 Greg Roach
  * @license   GPLv3+
  */
-class TerritoryLi extends AbstractTerritory implements TerritoryInterface {
-	public function code() {
-		return 'LI';
-	}
+class TerritoryLi extends AbstractTerritory implements TerritoryInterface
+{
+    public function code()
+    {
+        return 'LI';
+    }
 }

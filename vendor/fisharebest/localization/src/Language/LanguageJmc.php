@@ -7,19 +7,23 @@ use Fisharebest\Localization\Territory\TerritoryTz;
  * Class LanguageJmc - Representation of the Machame language.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2015 Greg Roach
+ * @copyright (c) 2018 Greg Roach
  * @license   GPLv3+
  */
-class LanguageJmc extends AbstractLanguage implements LanguageInterface {
-	public function code() {
-		return 'jmc';
-	}
+class LanguageJmc extends AbstractLanguage implements LanguageInterface
+{
+    public function code()
+    {
+        return 'jmc';
+    }
 
-	public function defaultTerritory() {
-		return new TerritoryTz;
-	}
+    public function defaultTerritory()
+    {
+        return new TerritoryTz();
+    }
 
-	public function pluralRule() {
-		return new PluralRule1;
-	}
+    public function pluralRule()
+    {
+        return new PluralRule1();
+    }
 }

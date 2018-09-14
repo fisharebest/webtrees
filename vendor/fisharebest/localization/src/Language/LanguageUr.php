@@ -8,23 +8,28 @@ use Fisharebest\Localization\Territory\TerritoryPk;
  * Class LanguageUr - Representation of the Urdu language.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2015 Greg Roach
+ * @copyright (c) 2018 Greg Roach
  * @license   GPLv3+
  */
-class LanguageUr extends AbstractLanguage implements LanguageInterface {
-	public function code() {
-		return 'ur';
-	}
+class LanguageUr extends AbstractLanguage implements LanguageInterface
+{
+    public function code()
+    {
+        return 'ur';
+    }
 
-	public function defaultScript() {
-		return new ScriptArab;
-	}
+    public function defaultScript()
+    {
+        return new ScriptArab();
+    }
 
-	public function defaultTerritory() {
-		return new TerritoryPk;
-	}
+    public function defaultTerritory()
+    {
+        return new TerritoryPk();
+    }
 
-	public function pluralRule() {
-		return new PluralRule1;
-	}
+    public function pluralRule()
+    {
+        return new PluralRule1();
+    }
 }

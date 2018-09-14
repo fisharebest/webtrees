@@ -5,20 +5,24 @@ use Fisharebest\Localization\Language\LanguageCy;
 /**
  * Class LocaleCy - Welsh
  *
- * @author        Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2015 Greg Roach
- * @license       GPLv3+
+ * @author    Greg Roach <fisharebest@gmail.com>
+ * @copyright (c) 2018 Greg Roach
+ * @license   GPLv3+
  */
-class LocaleCy extends AbstractLocale implements LocaleInterface {
-	public function endonym() {
-		return 'Cymraeg';
-	}
+class LocaleCy extends AbstractLocale implements LocaleInterface
+{
+    public function endonym()
+    {
+        return 'Cymraeg';
+    }
 
-	public function endonymSortable() {
-		return 'CYMRAEG';
-	}
+    public function endonymSortable()
+    {
+        return 'CYMRAEG';
+    }
 
-	public function language() {
-		return new LanguageCy;
-	}
+    public function language()
+    {
+        return new LanguageCy();
+    }
 }

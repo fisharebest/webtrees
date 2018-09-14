@@ -6,15 +6,18 @@ use Fisharebest\Localization\Territory\TerritorySn;
  * Class LanguageDyo - Representation of the Jola-Fonyi language.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2015 Greg Roach
+ * @copyright (c) 2018 Greg Roach
  * @license   GPLv3+
  */
-class LanguageDyo extends AbstractLanguage implements LanguageInterface {
-	public function code() {
-		return 'dyo';
-	}
+class LanguageDyo extends AbstractLanguage implements LanguageInterface
+{
+    public function code()
+    {
+        return 'dyo';
+    }
 
-	public function defaultTerritory() {
-		return new TerritorySn;
-	}
+    public function defaultTerritory()
+    {
+        return new TerritorySn();
+    }
 }

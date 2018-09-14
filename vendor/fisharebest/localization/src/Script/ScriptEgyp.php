@@ -4,19 +4,23 @@
  * Class ScriptEgyp - Representation of the Egyptian hieroglyphs script.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2015 Greg Roach
+ * @copyright (c) 2018 Greg Roach
  * @license   GPLv3+
  */
-class ScriptEgyp extends AbstractScript implements ScriptInterface {
-	public function code() {
-		return 'Egyp';
-	}
+class ScriptEgyp extends AbstractScript implements ScriptInterface
+{
+    public function code()
+    {
+        return 'Egyp';
+    }
 
-	public function number() {
-		return '050';
-	}
+    public function number()
+    {
+        return '050';
+    }
 
-	public function unicodeName() {
-		return 'Egyptian_Hieroglyphs';
-	}
+    public function unicodeName()
+    {
+        return 'Egyptian_Hieroglyphs';
+    }
 }

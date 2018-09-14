@@ -3,6 +3,7 @@
 [![Coverage Status](https://coveralls.io/repos/fisharebest/algorithm/badge.svg?branch=master)](https://coveralls.io/r/fisharebest/algorithm?branch=master)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/4997a2c6-fb22-433e-92c5-ae7285f1a5a0/mini.png)](https://insight.sensiolabs.com/projects/4997a2c6-fb22-433e-92c5-ae7285f1a5a0)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/fisharebest/algorithm/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/fisharebest/algorithm/?branch=master)
+[![StyleCI](https://github.styleci.io/repos/30823747/shield)](https://github.styleci.io/repos/30823747)
 [![Code Climate](https://codeclimate.com/github/fisharebest/algorithm/badges/gpa.svg)](https://codeclimate.com/github/fisharebest/algorithm)
 
 # fisharebest/algorithm
@@ -69,7 +70,7 @@ $path = $algorithm->shortestPaths('A', 'E'); // array(array('A', 'B', 'D', 'E'))
 // Multiple solutions with the same shortest path.
 $path = $algorithm->shortestPaths('E', 'F'); // array(array('E', 'D', 'B', 'F'), array('E', 'C', 'F'))
 
-// To find next-shortest paths, exclude one or intermediate nodes from the shortest path.
+// To find next-shortest paths, exclude one or more intermediate nodes from the shortest path.
 $path = $algorithm->shortestPaths('A', 'E'); // array(array('A', 'B', 'D', 'E'))
 $path = $algorithm->shortestPaths('A', 'E', array('B')); // array(array('A', 'B', 'D', 'E'))
 $path = $algorithm->shortestPaths('A', 'E', array('D')); // array(array('A', 'B', 'C', 'E'))
@@ -138,37 +139,3 @@ $components = $algorithm->findConnectedComponents());
 //  2 => array('C', 'E'),
 // );
 ```
-## Connected components
-
-A depth-first search of a graph to find isolated groups of nodes.
-
-```
-    D    E
-   / \    \
-  /   \    \
- A-----B   C
-  \   /
-   \ /
-    F
-```
-
-Sample code for the above graph
-
-```php
-$graph = array(
-	'A' => array('B' => 1, 'D' => 1, 'F' => 1),
-	'B' => array('A' => 1, 'D' => 1, 'F' => 1),
-	'C' => array('E' => 1),
-	'D' => array('A' => 1, 'B' => 1),
-	'E' => array('C' => 1),
-	'F' => array('A' => 1, 'B' => 1),
-);
-
-$algorithm  = new \Fisharebest\Algorithm\ConnectedComponent($graph);
-$components = $algorithm->findConnectedComponents());
-// array(
-//  1 => array('A', 'B', 'D', 'F'),
-//  2 => array('C', 'E'),
-// );
-```
-

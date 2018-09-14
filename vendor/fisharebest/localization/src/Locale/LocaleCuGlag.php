@@ -5,21 +5,24 @@ use Fisharebest\Localization\Script\ScriptGlag;
 /**
  * Class LocaleCuGlag - Old Church Slavonic
  *
- * @author        Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2015 Greg Roach
- * @license       GPLv3+
+ * @author    Greg Roach <fisharebest@gmail.com>
+ * @copyright (c) 2018 Greg Roach
+ * @license   GPLv3+
  */
+class LocaleCuGlag extends LocaleCu
+{
+    public function endonym()
+    {
+        return 'ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ';
+    }
 
-class LocaleCuGlag extends LocaleCu {
-	public function endonym() {
-		return 'ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ';
-	}
+    public function endonymSortable()
+    {
+        return 'ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ';
+    }
 
-	public function endonymSortable() {
-		return 'ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ';
-	}
-
-	public function script() {
-		return new ScriptGlag;
-	}
+    public function script()
+    {
+        return new ScriptGlag();
+    }
 }
