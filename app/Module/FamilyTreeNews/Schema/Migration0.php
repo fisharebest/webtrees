@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 /**
  * webtrees: online genealogy
  * Copyright (C) 2018 webtrees development team
