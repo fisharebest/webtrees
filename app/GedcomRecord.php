@@ -1152,7 +1152,7 @@ class GedcomRecord
      *
      * @param bool $sorting
      *
-     * @return string
+     * @return int|string
      */
     public function lastChangeTimestamp(bool $sorting = false)
     {

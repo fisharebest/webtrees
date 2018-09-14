@@ -27,7 +27,7 @@ class ReportPdfHtml extends ReportBaseHtml
      * @param      $renderer
      * @param bool $sub
      *
-     * @return void
+     * @return void|string
      */
     public function render($renderer, $sub = false)
     {

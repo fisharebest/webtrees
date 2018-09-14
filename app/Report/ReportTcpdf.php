@@ -390,7 +390,7 @@ class ReportTcpdf extends TCPDF
      *
      * @param object $footnote
      *
-     * @return bool false if not numbered befor | object if already numbered
+     * @return bool|object false if not numbered befor, object if already numbered
      */
     public function checkFootnote($footnote)
     {

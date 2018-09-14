@@ -29,7 +29,7 @@ class ReportBaseElement
      *
      * @param ReportHtml|ReportTcpdf $renderer
      *
-     * @return void
+     * @return void|string
      */
     public function render($renderer)
     {

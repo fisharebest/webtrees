@@ -28,7 +28,7 @@ class ReportHtmlHtml extends ReportBaseHtml
      * @param bool       $sub
      * @param bool       $inat
      *
-     * @return void
+     * @return void|string
      */
     public function render($renderer, $sub = false, $inat = true)
     {
