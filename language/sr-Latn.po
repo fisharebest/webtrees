@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2018-09-03 13:21+0000\n"
+"PO-Revision-Date: 2018-09-14 10:29+0000\n"
 "Last-Translator: Enes <enes_s@yahoo.com>\n"
 "Language-Team: Serbian (latin) <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/sr-Latn/>\n"
 "Language: sr-Latn\n"
@@ -94,7 +94,7 @@ msgstr "%1$s (%2$s)"
 #: admin_site_upgrade.php:255
 #, php-format
 msgid "%1$s KB were downloaded in %2$s seconds."
-msgstr "%1$sKB je skinuto u %2$s sekundi."
+msgstr "%1$sKB je skinuto za %2$s sekundi."
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: admin_site_merge.php:47 admin_site_merge.php:51 admin_trees_check.php:171
@@ -119,9 +119,9 @@ msgstr "%1$s nema vezu nazad na %2$s."
 #, php-format
 msgid "%1$s file was extracted in %2$s seconds."
 msgid_plural "%1$s files were extracted in %2$s seconds."
-msgstr[0] "Datoteka %1$s je raspakovana za %2$s sekund."
-msgstr[1] "Datoteke %1$s su raspakovane za %2$s sekundi."
-msgstr[2] "Datoteka %1$s je raspakovana za %2$s sekundi."
+msgstr[0] "%1$s datoteka je raspakovana za %2$s sekund."
+msgstr[1] "%1$s datoteke su raspakovane za %2$s sekundi."
+msgstr[2] "%1$s datoteka je raspakovano za %2$s sekundi."
 
 #: app/Module/GoogleMapsModule.php:838
 #, php-format
@@ -14086,7 +14086,7 @@ msgstr "Ne postoje beleške za ovu osobu."
 
 #: admin_site_upgrade.php:105
 msgid "There are no pending changes."
-msgstr ""
+msgstr "Nema izmena na čekanju."
 
 #: app/Module/ResearchTaskModule.php:151
 msgid "There are no research tasks in this family tree."
@@ -15296,9 +15296,7 @@ msgstr "Nekorišćene datoteke"
 #: admin_site_upgrade.php:273
 #, php-format
 msgid "Unzip %s to a temporary folder…"
-msgstr ""
-"Croatian\n"
-"Raspakujte %s u privremeni direktorijum…"
+msgstr "Raspakuj %s u privremeni direktorijum…"
 
 #. I18N: Name of a module
 #: app/Module/UpcomingAnniversariesModule.php:35
@@ -16167,7 +16165,7 @@ msgstr ""
 
 #: admin_site_upgrade.php:136
 msgid "You should consult the module’s author to confirm compatibility with this version of webtrees."
-msgstr ""
+msgstr "Kod autora modula proverite kompatibilnost sa ovom verzijom webtrees."
 
 #: admin_site_upgrade.php:200
 msgid "You should consult the theme’s author to confirm compatibility with this version of webtrees."
