@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-07-26 23:06+0100\n"
-"PO-Revision-Date: 2018-09-03 13:21+0000\n"
+"PO-Revision-Date: 2018-09-14 10:29+0000\n"
 "Last-Translator: Enes <enes_s@yahoo.com>\n"
 "Language-Team: Serbian (latin) <https://translate.webtrees.net/projects/webtrees/webtrees/sr-Latn/>\n"
 "Language: sr-Latn\n"
@@ -78,7 +78,7 @@ msgstr "%1$s (%2$s)"
 #: app/Http/Controllers/AdminUpgradeController.php:232
 #, php-format
 msgid "%1$s KB were downloaded in %2$s seconds."
-msgstr "%1$sKB je skinuto u %2$s sekundi."
+msgstr "%1$sKB je skinuto za %2$s sekundi."
 
 #: app/Http/Controllers/AdminPhpGedViewController.php:204
 #: app/Http/Controllers/AdminUsersController.php:399
@@ -111,9 +111,9 @@ msgstr "%1$s nema vezu nazad na %2$s."
 #, php-format
 msgid "%1$s file was extracted in %2$s seconds."
 msgid_plural "%1$s files were extracted in %2$s seconds."
-msgstr[0] "Datoteka %1$s je raspakovana za %2$s sekund."
-msgstr[1] "Datoteke %1$s su raspakovane za %2$s sekundi."
-msgstr[2] "Datoteka %1$s je raspakovana za %2$s sekundi."
+msgstr[0] "%1$s datoteka je raspakovana za %2$s sekund."
+msgstr[1] "%1$s datoteke su raspakovane za %2$s sekundi."
+msgstr[2] "%1$s datoteka je raspakovano za %2$s sekundi."
 
 #. I18N: %1$s is an internal ID number such as R123. %2$s and %3$s are record types, such as INDI or SOUR
 #: app/Http/Controllers/AdminTreesController.php:249
@@ -13981,7 +13981,7 @@ msgstr "Ne postoje beleške za ovu osobu."
 #: app/Http/Controllers/AdminUpgradeController.php:169
 #: resources/views/pending-changes-page.php:11
 msgid "There are no pending changes."
-msgstr ""
+msgstr "Nema izmena na čekanju."
 
 #: app/Module/ResearchTaskModule.php:96
 msgid "There are no research tasks in this family tree."
@@ -15139,9 +15139,7 @@ msgstr "Nekorišćene datoteke"
 #: app/Http/Controllers/AdminUpgradeController.php:136
 #, php-format
 msgid "Unzip %s to a temporary folder…"
-msgstr ""
-"Croatian\n"
-"Raspakujte %s u privremeni direktorijum…"
+msgstr "Raspakuj %s u privremeni direktorijum…"
 
 #. I18N: Name of a module
 #: app/Module/UpcomingAnniversariesModule.php:88
