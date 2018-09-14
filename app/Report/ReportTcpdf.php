@@ -392,7 +392,7 @@ class ReportTcpdf extends TCPDF
      *
      * @return bool false if not numbered befor | object if already numbered
      */
-    public function checkFootnote($footnote): bool
+    public function checkFootnote($footnote)
     {
         $ct  = count($this->printedfootnotes);
         $val = $footnote->getValue();

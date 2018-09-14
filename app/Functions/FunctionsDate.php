@@ -71,7 +71,7 @@ class FunctionsDate
      *
      * @return string
      */
-    public static function formatTimestamp($time): string
+    public static function formatTimestamp(int $time): string
     {
         $time_fmt = I18N::timeFormat();
         // PHP::date() doesn't do I18N. Do it ourselves....

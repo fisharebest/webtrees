@@ -59,7 +59,7 @@ abstract class AbstractModule
      *
      * @return string
      */
-    public function getBlockSetting($block_id, $setting_name, $default_value = ''): string
+    public function getBlockSetting(int $block_id, string $setting_name, string $default_value = ''): string
     {
         $setting_value = Database::prepare(
             "SELECT setting_value FROM `##block_setting` WHERE block_id = :block_id AND setting_name = :setting_name"

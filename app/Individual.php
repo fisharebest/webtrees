@@ -1170,6 +1170,11 @@ class Individual extends GedcomRecord
      */
     protected function addName(string $type, string $full, string $gedcom)
     {
+        // TODO Fix this
+        if ($gedcom === null || $gedcom === '') {
+            $gedcom = ' ';
+        }
+
         ////////////////////////////////////////////////////////////////////////////
         // Extract the structured name parts - use for "sortable" names and indexes
         ////////////////////////////////////////////////////////////////////////////

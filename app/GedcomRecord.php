@@ -58,10 +58,10 @@ class GedcomRecord
     /** @var string[][] All the names of this individual */
     protected $getAllNames;
 
-    /** @var int Cached result */
+    /** @var null|int Cached result */
     protected $getPrimaryName;
 
-    /** @var int Cached result */
+    /** @var null|int Cached result */
     protected $getSecondaryName;
 
     /** @var GedcomRecord[][] Allow getInstance() to return references to existing objects */
@@ -712,7 +712,7 @@ class GedcomRecord
      *
      * @return void
      */
-    public function setPrimaryName($n)
+    public function setPrimaryName(int $n = null)
     {
         $this->getPrimaryName   = $n;
         $this->getSecondaryName = null;

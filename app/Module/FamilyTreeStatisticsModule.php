@@ -62,7 +62,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
 
         $show_last_update     = $this->getBlockSetting($block_id, 'show_last_update', '1');
         $show_common_surnames = $this->getBlockSetting($block_id, 'show_common_surnames', '1');
-        $number_of_surnames   = (int) $this->getBlockSetting($block_id, 'number_of_surnames', self::DEFAULT_NUMBER_OF_SURNAMES);
+        $number_of_surnames   = (int) $this->getBlockSetting($block_id, 'number_of_surnames', (string) self::DEFAULT_NUMBER_OF_SURNAMES);
         $stat_indi            = $this->getBlockSetting($block_id, 'stat_indi', '1');
         $stat_fam             = $this->getBlockSetting($block_id, 'stat_fam', '1');
         $stat_sour            = $this->getBlockSetting($block_id, 'stat_sour', '1');
@@ -228,7 +228,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
     {
         $show_last_update     = $this->getBlockSetting($block_id, 'show_last_update', '1');
         $show_common_surnames = $this->getBlockSetting($block_id, 'show_common_surnames', '1');
-        $number_of_surnames   = $this->getBlockSetting($block_id, 'number_of_surnames', self::DEFAULT_NUMBER_OF_SURNAMES);
+        $number_of_surnames   = $this->getBlockSetting($block_id, 'number_of_surnames', (string) self::DEFAULT_NUMBER_OF_SURNAMES);
         $stat_indi            = $this->getBlockSetting($block_id, 'stat_indi', '1');
         $stat_fam             = $this->getBlockSetting($block_id, 'stat_fam', '1');
         $stat_sour            = $this->getBlockSetting($block_id, 'stat_sour', '1');

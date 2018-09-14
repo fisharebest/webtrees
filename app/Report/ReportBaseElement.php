@@ -67,7 +67,7 @@ class ReportBaseElement
      *
      * @return int
      */
-    public function addText($t): int
+    public function addText(string $t): int
     {
         $t          = trim($t, "\r\n\t");
         $t          = str_replace([
@@ -109,12 +109,12 @@ class ReportBaseElement
     /**
      * Set the width to wrap text.
      *
-     * @param $wrapwidth
-     * @param $cellwidth
+     * @param float $wrapwidth
+     * @param float $cellwidth
      *
-     * @return int
+     * @return float
      */
-    public function setWrapWidth($wrapwidth, $cellwidth): int
+    public function setWrapWidth(float $wrapwidth, float $cellwidth): float
     {
         return 0;
     }

@@ -2122,7 +2122,7 @@ class Stats
             $counts    = [];
             foreach ($rows as $values) {
                 $counts[] = round(100 * $values->total / $tot, 0);
-                $centuries .= $this->centuryName($values->century) . ' - ' . I18N::number($values->total) . '|';
+                $centuries .= $this->centuryName($values->century) . ' - ' . I18N::number((int) $values->total) . '|';
             }
             $chd = $this->arrayToExtendedEncoding($counts);
             $chl = rawurlencode(substr($centuries, 0, -1));
@@ -2215,8 +2215,8 @@ class Stats
             $centuries = '';
             $counts    = [];
             foreach ($rows as $values) {
-                $counts[] = round(100 * $values->total / $tot, 0);
-                $centuries .= $this->centuryName($values->century) . ' - ' . I18N::number($values->total) . '|';
+                $counts[]  = round(100 * $values->total / $tot, 0);
+                $centuries .= $this->centuryName($values->century) . ' - ' . I18N::number((int) $values->total) . '|';
             }
             $chd = $this->arrayToExtendedEncoding($counts);
             $chl = rawurlencode(substr($centuries, 0, -1));
@@ -3417,7 +3417,7 @@ class Stats
      *
      * @return string
      */
-    private function ageOfMarriageQuery($type = 'list', $age_dir = 'ASC', $params = []): string
+    private function ageOfMarriageQuery(string $type = 'list', string $age_dir = 'ASC', array $params = []): string
     {
         if (isset($params[0])) {
             $total = (int) $params[0];
@@ -3807,7 +3807,7 @@ class Stats
             $counts    = [];
             foreach ($rows as $values) {
                 $counts[] = round(100 * $values->total / $tot, 0);
-                $centuries .= $this->centuryName($values->century) . ' - ' . I18N::number($values->total) . '|';
+                $centuries .= $this->centuryName($values->century) . ' - ' . I18N::number((int) $values->total) . '|';
             }
             $chd = $this->arrayToExtendedEncoding($counts);
             $chl = substr($centuries, 0, -1);
@@ -3903,7 +3903,7 @@ class Stats
             $counts    = [];
             foreach ($rows as $values) {
                 $counts[] = round(100 * $values->total / $tot, 0);
-                $centuries .= $this->centuryName($values->century) . ' - ' . I18N::number($values->total) . '|';
+                $centuries .= $this->centuryName($values->century) . ' - ' . I18N::number((int) $values->total) . '|';
             }
             $chd = $this->arrayToExtendedEncoding($counts);
             $chl = substr($centuries, 0, -1);
@@ -4743,7 +4743,7 @@ class Stats
                 }
                 break;
             case 'size':
-                $result = I18N::number($row->tot);
+                $result = I18N::number((int) $row->tot);
                 break;
             case 'name':
                 $result = '<a href="' . e($family->url()) . '">' . $family->getFullName() . '</a>';
@@ -4787,9 +4787,9 @@ class Stats
             $family = Family::getInstance($rows[$c]->id, $this->tree);
             if ($family->canShow()) {
                 if ($type === 'list') {
-                    $top10[] = '<li><a href="' . e($family->url()) . '">' . $family->getFullName() . '</a> - ' . I18N::plural('%s child', '%s children', $rows[$c]->tot, I18N::number($rows[$c]->tot));
+                    $top10[] = '<li><a href="' . e($family->url()) . '">' . $family->getFullName() . '</a> - ' . I18N::plural('%s child', '%s children', $rows[$c]->tot, I18N::number((int) $rows[$c]->tot));
                 } else {
-                    $top10[] = '<a href="' . e($family->url()) . '">' . $family->getFullName() . '</a> - ' . I18N::plural('%s child', '%s children', $rows[$c]->tot, I18N::number($rows[$c]->tot));
+                    $top10[] = '<a href="' . e($family->url()) . '">' . $family->getFullName() . '</a> - ' . I18N::plural('%s child', '%s children', $rows[$c]->tot, I18N::number((int) $rows[$c]->tot));
                 }
             }
         }
@@ -5647,9 +5647,9 @@ class Stats
             $family = Family::getInstance($row->id, $this->tree);
             if ($family->canShow()) {
                 if ($type === 'list') {
-                    $top10[] = '<li><a href="' . e($family->url()) . '">' . $family->getFullName() . '</a> - ' . I18N::plural('%s grandchild', '%s grandchildren', $row->tot, I18N::number($row->tot));
+                    $top10[] = '<li><a href="' . e($family->url()) . '">' . $family->getFullName() . '</a> - ' . I18N::plural('%s grandchild', '%s grandchildren', $row->tot, I18N::number((int) $row->tot));
                 } else {
-                    $top10[] = '<a href="' . e($family->url()) . '">' . $family->getFullName() . '</a> - ' . I18N::plural('%s grandchild', '%s grandchildren', $row->tot, I18N::number($row->tot));
+                    $top10[] = '<a href="' . e($family->url()) . '">' . $family->getFullName() . '</a> - ' . I18N::plural('%s grandchild', '%s grandchildren', $row->tot, I18N::number((int) $row->tot));
                 }
             }
         }

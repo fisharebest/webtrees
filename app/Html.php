@@ -33,7 +33,7 @@ class Html
         $html = [];
         foreach ($attributes as $key => $value) {
             if (is_string($value) || is_int($value)) {
-                $html[] = e($key) . '="' . e($value) . '"';
+                $html[] = e($key) . '="' . e((string) $value) . '"';
             } elseif ($value !== false) {
                 $html[] = e($key);
             }

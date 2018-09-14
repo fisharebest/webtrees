@@ -74,7 +74,7 @@ class Place
             ])->fetchOne();
         }
 
-        return $place_id;
+        return (int) $place_id;
     }
 
     /**
