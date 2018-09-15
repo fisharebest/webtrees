@@ -5235,7 +5235,7 @@ class Stats
      */
     public function averageChildren(): string
     {
-        $rows = $this->runSql("SELECT AVG(f_numchil) AS tot FROM `##families` WHERE f_file={$this->tree->getTreeId()}");
+        $rows = (float) $this->runSql("SELECT AVG(f_numchil) AS tot FROM `##families` WHERE f_file={$this->tree->getTreeId()}");
 
         return I18N::number($rows[0]->tot, 2);
     }
