@@ -420,7 +420,7 @@ class AdminUsersController extends AbstractBaseController
             $can_edit    = $request->get('canedit' . $tree->getTreeId(), '');
 
             // Do not allow a path length to be set if the individual ID is not
-            if ($gedcom_id !== '') {
+            if ($gedcom_id === '') {
                 $path_length = 0;
             }
 
