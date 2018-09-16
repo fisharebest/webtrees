@@ -209,7 +209,7 @@ try {
     date_default_timezone_set('UTC');
 }
 
-define('WT_TIMESTAMP_OFFSET', date_offset_get(new DateTime('now')));
+define('WT_TIMESTAMP_OFFSET', (new DateTime('now'))->getOffset());
 
 define('WT_CLIENT_JD', 2440588 + (int) ((WT_TIMESTAMP + WT_TIMESTAMP_OFFSET) / 86400));
 
