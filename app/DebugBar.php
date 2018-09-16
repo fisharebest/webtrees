@@ -42,6 +42,8 @@ class DebugBar
      * Initialize the Debugbar.
      *
      * @param bool $enable
+     *
+     * @return void
      */
     public static function init(bool $enable = true)
     {
@@ -108,6 +110,8 @@ class DebugBar
 
     /**
      * For POST/redirect responses, we "stack" the data onto the next GET request.
+     *
+     * @return void
      */
     public static function stackData()
     {
@@ -118,6 +122,8 @@ class DebugBar
 
     /**
      * For JSON responses, we send the data in HTTP headers.
+     *
+     * @return void
      */
     public static function sendDataInHeaders()
     {
@@ -148,6 +154,8 @@ class DebugBar
      * @param string      $name
      * @param string|null $label
      * @param string|null $collector
+     *
+     * @return void
      */
     public static function startMeasure($name, $label = null, $collector = null)
     {
@@ -161,6 +169,8 @@ class DebugBar
      *
      * @param string $name
      * @param array  $params
+     *
+     * @return void
      */
     public static function stopMeasure($name, $params = [])
     {
@@ -175,6 +185,8 @@ class DebugBar
      * @param string      $label
      * @param Closure     $closure
      * @param string|null $collector
+     *
+     * @return void
      */
     public static function measure($label, Closure $closure, $collector = null)
     {
@@ -187,6 +199,8 @@ class DebugBar
      * Log an exception/throwable
      *
      * @param Throwable $throwable
+     *
+     * @return void
      */
     public static function addThrowable(Throwable $throwable)
     {
@@ -200,6 +214,8 @@ class DebugBar
      *
      * @param string  $view
      * @param mixed[] $data
+     *
+     * @return void
      */
     public static function addView(string $view, array $data)
     {
