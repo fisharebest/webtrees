@@ -31,7 +31,7 @@ class CensusColumnConditionEnglish extends AbstractCensusColumnCondition
     protected $bachelor = 'Unm';
 
     /** @var string Text to display for unmarried females */
-   protected $spinster = 'Unm';
+    protected $spinster = 'Unm';
 
     /** @var string Text to display for divorced males */
     protected $divorce  = 'Div';
