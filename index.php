@@ -238,9 +238,6 @@ try {
         $tree = $all_trees[Site::getPreference('DEFAULT_GEDCOM')] ?? array_values($all_trees)[0] ?? null;
     }
 
-    $request->attributes->set('tree', $tree);
-    $request->attributes->set('user', Auth::user());
-
     // Most layouts will require a tree for the page header/footer
     View::share('tree', $tree);
 
