@@ -92,7 +92,7 @@
 			I18N::translate('Default theme') ?>
 		</label>
 		<div class="col-sm-9">
-			<?= Bootstrap4::select($all_themes, Site::getPreference('THEME_DIR'), ['id' => 'THEME_DIR', 'name' => 'THEME_DIR']) ?>
+			<?= Bootstrap4::select($all_themes, Site::getPreference('THEME_DIR', 'webtrees'), ['id' => 'THEME_DIR', 'name' => 'THEME_DIR']) ?>
 			<p class="small text-muted">
 				<?= /* I18N: Help text for the "Default theme" site configuration setting */
 				I18N::translate('You can change the appearance of webtrees using “themes”. Each theme has a different style, layout, color scheme, etc.') ?>
