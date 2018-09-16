@@ -58,7 +58,7 @@ class Date
      *
      * @param string $date A date in GEDCOM format
      */
-    public function __construct($date)
+    public function __construct(string $date)
     {
         // Extract any explanatory text
         if (preg_match('/^(.*) ?[(](.*)[)]/', $date, $match)) {

@@ -64,7 +64,7 @@ class CensusTableParser extends AbstractBlockParser
 
         $head = $this->parseRow($first_line, TableCell::TYPE_HEAD);
 
-        $table = new Table(function (Cursor $cursor) use (&$table) {
+        $table = new Table(function (Cursor $cursor) use (&$table): bool {
             $row = $this->parseRow($cursor->getLine(), TableCell::TYPE_BODY);
             if ($row === null) {
                 return false;

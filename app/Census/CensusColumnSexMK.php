@@ -21,6 +21,6 @@ namespace Fisharebest\Webtrees\Census;
  */
 class CensusColumnSexMK extends CensusColumnSexMF
 {
-    /* Text to display for female individuals */
+    /** @var string Text to display for female individuals */
     protected $female = 'K';
 }

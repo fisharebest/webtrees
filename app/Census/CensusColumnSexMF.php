@@ -23,10 +23,10 @@ use Fisharebest\Webtrees\Individual;
  */
 class CensusColumnSexMF extends AbstractCensusColumn implements CensusColumnInterface
 {
-    /* Text to display for male individuals */
+    /** @var string Text to display for male individuals */
     protected $male = 'M';
 
-    /* Text to display for female individuals */
+    /** @var string Text to display for female individuals */
     protected $female = 'F';
 
     /**

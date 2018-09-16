@@ -66,6 +66,8 @@ class Database
 
     /**
      * Disconnect from the server, so we can connect to another one
+     *
+     * @return void
      */
     public static function disconnect()
     {
@@ -77,6 +79,7 @@ class Database
      *
      * @param string[] $config
      *
+     * @return void
      * @throws Exception
      */
     public static function createInstance(array $config)
@@ -183,7 +186,7 @@ class Database
      *
      * @return Statement
      */
-    public static function prepare($sql): Statement
+    public static function prepare(string $sql): Statement
     {
         if (self::$pdo === null) {
             throw new Exception('No Connection Established');
