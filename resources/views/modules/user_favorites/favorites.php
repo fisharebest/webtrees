@@ -12,7 +12,9 @@
 			<?= $favorite->record->formatList() ?>
 		<?php endif ?>
 
-		<?= e((string) $favorite->note) ?>
+		<div class="wt-favorites-block-note">
+            <?= e((string) $favorite->note) ?>
+        </div>
 	</div>
 
 	<form action="<?= e(route('module', ['module' => 'user_favorites', 'action' => 'DeleteFavorite', 'ged' => $tree->getName(), 'favorite_id' => $favorite->favorite_id])) ?>" method="post">
