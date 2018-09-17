@@ -135,7 +135,7 @@
     var headTd         = document.querySelector('#census-assistant-table td');
     var head           = headTd === null ? xref : headTd.innerHTML;
 
-    fetch('<?= route('module', ['module' => 'GEDFact_assistant', 'action' => 'CensusIndividual']) ?>&census=' + encodeURIComponent(census) + '&xref=' + encodeURIComponent(xref) + '&head=' + encodeURIComponent(head), {credentials: 'same-origin'})
+    fetch('<?= route('module', ['module' => 'GEDFact_assistant', 'action' => 'CensusIndividual', 'ged' => $individual->getTree()->getName()]) ?>&census=' + encodeURIComponent(census) + '&xref=' + encodeURIComponent(xref) + '&head=' + encodeURIComponent(head), {credentials: 'same-origin'})
       .then(function (response) {
         return response.text();
       })
