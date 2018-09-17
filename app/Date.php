@@ -15,6 +15,7 @@
  */
 namespace Fisharebest\Webtrees;
 
+use DomainException;
 use Fisharebest\ExtCalendar\GregorianCalendar;
 use Fisharebest\Webtrees\Date\CalendarDate;
 use Fisharebest\Webtrees\Date\FrenchDate;
@@ -97,11 +98,11 @@ class Date
      *
      * @param string $date
      *
-     * @throws \DomainException
+     * @throws DomainException
      *
      * @return CalendarDate
      */
-    private function parseDate($date)
+    private function parseDate($date): CalendarDate
     {
         // Valid calendar escape specified? - use it
         if (preg_match('/^(@#D(?:GREGORIAN|JULIAN|HEBREW|HIJRI|JALALI|FRENCH R|ROMAN)+@) ?(.*)/', $date, $match)) {
@@ -216,7 +217,7 @@ class Date
                     $d,
                 ]);
             default:
-                throw new \DomainException('Invalid calendar');
+                throw new DomainException('Invalid calendar');
         }
     }
 
@@ -255,6 +256,7 @@ class Date
     public function display($url = false, $date_format = null, $convert_calendars = true)
     {
         // @TODO, This is set in index.php - but it is not safe to rely on globals.
+        // We need a new DateFormatterService class
         global $tree;
 
         $CALENDAR_FORMAT = $tree->getPreference('CALENDAR_FORMAT');
