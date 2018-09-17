@@ -34,10 +34,10 @@ class CensusColumnRelationToHead extends AbstractCensusColumn implements CensusC
      */
     public function generate(Individual $individual, Individual $head): string
     {
-        if ($head === null || $individual === $head) {
+        if ($individual === $head) {
             return 'head';
-        } else {
-            return Functions::getCloseRelationshipName($head, $individual);
         }
+
+        return Functions::getCloseRelationshipName($head, $individual);
     }
 }

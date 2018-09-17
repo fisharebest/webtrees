@@ -36,8 +36,8 @@ class CensusColumnRelationToHeadGerman extends AbstractCensusColumn implements C
     {
         if ($individual === $head) {
             return 'Haushaltungsvorstand';
-        } else {
-            return Functions::getCloseRelationshipName($head, $individual);
         }
+
+        return Functions::getCloseRelationshipName($head, $individual);
     }
 }
