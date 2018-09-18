@@ -44,10 +44,10 @@ class Migration5 implements MigrationInterface
                 "UPDATE `##gedcom_setting`" .
                 " SET setting_value = :setting_value" .
                 " WHERE gedcom_id = :tree_id AND setting_name = 'SHOW_RELATIVES_EVENTS'"
-            )->execute([
+            )->execute(array(
                 'tree_id'       => $gedcom_id,
                 'setting_value' => implode(',', array_unique($match[0])),
-            ]);
+            ));
         }
     }
 }

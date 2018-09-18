@@ -17,15 +17,15 @@
 
 // https://github.com/FriendsOfPHP/PHP-CS-Fixer
 
-$finder = Symfony\CS\Finder\DefaultFinder::create()
+$finder = PhpCsFixer\Finder::create()
 	->in(__DIR__)
 	->exclude('packages')
 	->exclude('themes/_custom')
 	->exclude('vendor');
 
-return Symfony\CS\Config\Config::create()
-	->level(Symfony\CS\FixerInterface::PSR2_LEVEL)
-	->fixers(array(
+return PhpCsFixer\Config::create()
+	->setRules(array(
+		'@PSR2' => true,
 		// Exclude these PSR2 rules
 		'--indentation',
 		'--braces',
@@ -92,4 +92,4 @@ return Symfony\CS\Config\Config::create()
 		'--short_echo_tag',
 		'--strict',
 		'--strict_param',
-	))->finder($finder);
+	))->setFinder($finder);

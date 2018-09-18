@@ -41,9 +41,9 @@ class OpenStreetMap implements LeafletProviderInterface
      */
     public function options(): array
     {
-        return [
+        return array(
             'attribution' => '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
             'maxZoom'     => 19,
-        ];
+        );
     }
 }
