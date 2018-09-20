@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2017-02-11 11:13+0000\n"
-"PO-Revision-Date: 2018-09-14 10:29+0000\n"
+"PO-Revision-Date: 2018-09-20 12:43+0000\n"
 "Last-Translator: Enes <enes_s@yahoo.com>\n"
 "Language-Team: Serbian (latin) <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/sr-Latn/>\n"
 "Language: sr-Latn\n"
@@ -13061,7 +13061,7 @@ msgstr ""
 #. I18N: Label for search field
 #: find.php:257
 msgid "Source contains"
-msgstr ""
+msgstr "Izvor sadrži"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:2118 modules_v3/fact_sources/report.xml:6
