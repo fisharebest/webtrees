@@ -479,6 +479,51 @@ class CalendarDate
     }
 
     /**
+     * Calculate the years/months/days between this date and another date.
+     *
+     * Results assume you add the days first, then the months.
+     * 4 February -> 3 July is 27 days (3 March) and 4 months.
+     * It is not 4 months (4 June) and 29 days.
+     *
+     * @param CalendarDate $date
+     *
+     * @return int[] Age in years/months/days
+     */
+    public function ageDifference(CalendarDate $date): array
+    {
+        // Incomplete dates
+        if ($this->y === 0 || $date->y === 0) {
+            return [-1, -1, -1];
+        }
+
+        // Overlapping dates
+        if (self::compare($this, $date) === 0) {
+            return [0, 0, 0];
+        }
+
+        // Perform all calculations using the calendar of the first date
+        list($year1, $month1, $day1) = $this->calendar->jdToYmd($this->minJD);
+        list($year2, $month2, $day2) = $this->calendar->jdToYmd($date->minJD);
+
+        $years  = $year2 - $year1;
+        $months = $month2 - $month1;
+        $days   = $day2 - $day1;
+
+        if ($days < 0) {
+            $days += $this->calendar->daysInMonth($year1, $month1);
+            $months--;
+        }
+
+        if ($months < 0) {
+            $months += $this->calendar->monthsInYear($year2);
+            $years--;
+        }
+
+        return [$years, $months, $days];
+
+    }
+
+    /**
      * How long between an event and a given julian day
      * Return result as either a number of years or
      * a gedcom-style age string.
