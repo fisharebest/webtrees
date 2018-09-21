@@ -251,7 +251,7 @@ class CalendarController extends AbstractBaseController
             $view = 'month';
         }
 
-        /** @var Fact[] $found_facts */
+        /** @var Fact[]|Fact[][] $found_facts */
         $found_facts = [];
 
         switch ($view) {

@@ -25,19 +25,40 @@ use Symfony\Component\HttpFoundation\Request;
  */
 abstract class AbstractEditController extends AbstractBaseController
 {
+    /** @var string[] */
     protected $glevels = [];
+
+    /** @var string[] */
     protected $tag     = [];
+
+    /** @var string[] */
     protected $islink  = [];
+
+    /** @var string[] */
     protected $text    = [];
 
+    /** @var string[] */
     protected $glevelsSOUR = [];
+
+    /** @var string[] */
     protected $tagSOUR     = [];
+
+    /** @var string[] */
     protected $islinkSOUR  = [];
+
+    /** @var string[] */
     protected $textSOUR    = [];
 
+    /** @var string[] */
     protected $glevelsRest = [];
+
+    /** @var string[] */
     protected $tagRest     = [];
+
+    /** @var string[] */
     protected $islinkRest  = [];
+
+    /** @var string[] */
     protected $textRest    = [];
 
     /**

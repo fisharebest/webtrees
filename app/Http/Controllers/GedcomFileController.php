@@ -31,6 +31,7 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class GedcomFileController extends AbstractBaseController
 {
+    /** @var string */
     protected $layout = 'layouts/ajax';
 
     /**

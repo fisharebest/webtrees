@@ -241,7 +241,7 @@ class AdminLocationController extends AbstractBaseController
      */
     public function exportLocations(Request $request): Response
     {
-        $parent_id = (int)$request->get('parent_id');
+        $parent_id = (int) $request->get('parent_id');
         $format    = $request->get('format');
         $maxlevel  = (int) Database::prepare("SELECT max(pl_level) FROM `##placelocation`")->execute()->fetchOne();
         $startfqpn = [];
@@ -651,14 +651,14 @@ class AdminLocationController extends AbstractBaseController
     }
 
     /**
-     * @param $parent_id
-     * @param $placename
-     * @param $places
+     * @param int   $parent_id
+     * @param array $placename
+     * @param array $places
      *
      * @return void
      * @throws Exception
      */
-    private function buildLevel($parent_id, $placename, &$places)
+    private function buildLevel(int $parent_id, array $placename, array &$places)
     {
         $level = array_search('', $placename);
         $rows  = Database::prepare(
@@ -703,7 +703,7 @@ class AdminLocationController extends AbstractBaseController
      *
      * @return stdClass[]
      */
-    private function getPlaceListLocation($id): array
+    private function getPlaceListLocation(int $id): array
     {
         $child_qry = Database::prepare(
             "SELECT  COUNT(*) AS child_count, SUM(" .

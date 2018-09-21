@@ -194,7 +194,7 @@ class Location
     }
 
     /**
-     * @return void
+     * @return int
      * @throws Exception
      */
     public function add()

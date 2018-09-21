@@ -146,7 +146,7 @@ class PedigreeChartController extends AbstractChartController
         $this->treesize = (2 ** $this->generations) - 1;
 
         // sosaAncestors() starts array at index 1 we need to start at 0
-        $this->nodes = array_map(function ($item) {
+        $this->nodes = array_map(function (Individual $item): array {
             return [
                 'indi' => $item,
                 'x'    => 0,
@@ -283,10 +283,10 @@ class PedigreeChartController extends AbstractChartController
         // find the minimum x & y offsets and deduct that number from
         // each value in the array so that offsets start from zero
 
-        $min_xoffset = min(array_map(function ($item) {
+        $min_xoffset = min(array_map(function (array $item): int {
             return $item['x'];
         }, $this->nodes));
-        $min_yoffset = min(array_map(function ($item) {
+        $min_yoffset = min(array_map(function (array $item): int {
             return $item['y'];
         }, $this->nodes));
 

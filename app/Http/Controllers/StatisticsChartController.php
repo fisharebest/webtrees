@@ -784,6 +784,8 @@ class StatisticsChartController extends AbstractChartController
      * @param array      $x_axis
      * @param array      $z_axis
      * @param int[][]    $ydata
+     *
+     * @return void
      */
     private function fillYData($x, $z, $value, array $x_axis, array $z_axis, array &$ydata)
     {
@@ -898,7 +900,7 @@ class StatisticsChartController extends AbstractChartController
 
         if ($scale > 0) {
             $scalefactor = 100.0 / $scale;
-            array_walk_recursive($ydata, function (& $n) use ($scalefactor) {
+            array_walk_recursive($ydata, function (&$n) use ($scalefactor) {
                 $n *= $scalefactor;
             });
         }

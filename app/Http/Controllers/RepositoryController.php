@@ -63,7 +63,7 @@ class RepositoryController extends AbstractBaseController
 
         usort(
             $facts,
-            function (Fact $x, Fact $y) {
+            function (Fact $x, Fact $y): int {
                 static $order = [
                     'NAME' => 0,
                     'ADDR' => 1,

@@ -90,7 +90,7 @@ class AdminPhpGedViewController extends AbstractBaseController
         'themes/xenea/'       => 'xenea',
     ];
 
-
+    /** @var string */
     protected $layout = 'layouts/administration';
 
     /**

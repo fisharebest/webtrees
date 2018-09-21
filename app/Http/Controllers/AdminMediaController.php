@@ -44,6 +44,7 @@ class AdminMediaController extends AbstractBaseController
     // How many files to upload on one form.
     const MAX_UPLOAD_FILES = 10;
 
+    /** @var string */
     protected $layout = 'layouts/administration';
 
     /**

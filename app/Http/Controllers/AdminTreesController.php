@@ -1867,7 +1867,7 @@ class AdminTreesController extends AbstractBaseController
         ])->fetchAll();
 
         $repositories = array_map(function (stdClass $x) use ($tree): array {
-            return array_map(function ($y) use ($tree): Repository {
+            return array_map(function (string $y) use ($tree): Repository {
                 return Repository::getInstance($y, $tree);
             }, explode(',', $x->xrefs));
         }, $repositories);
@@ -1884,7 +1884,7 @@ class AdminTreesController extends AbstractBaseController
         ])->fetchAll();
 
         $sources = array_map(function (stdClass $x) use ($tree): array {
-            return array_map(function ($y) use ($tree): Source {
+            return array_map(function (string $y) use ($tree): Source {
                 return Source::getInstance($y, $tree);
             }, explode(',', $x->xrefs));
         }, $sources);
@@ -1901,7 +1901,7 @@ class AdminTreesController extends AbstractBaseController
         ])->fetchAll();
 
         $individuals = array_map(function (stdClass $x) use ($tree): array {
-            return array_map(function ($y) use ($tree): Individual {
+            return array_map(function (string $y) use ($tree): Individual {
                 return Individual::getInstance($y, $tree);
             }, explode(',', $x->xrefs));
         }, $individuals);
@@ -1917,7 +1917,7 @@ class AdminTreesController extends AbstractBaseController
         ])->fetchAll();
 
         $families = array_map(function (stdClass $x) use ($tree): array {
-            return array_map(function ($y) use ($tree): Family {
+            return array_map(function (string $y) use ($tree): Family {
                 return Family::getInstance($y, $tree);
             }, explode(',', $x->xrefs));
         }, $families);
@@ -1934,7 +1934,7 @@ class AdminTreesController extends AbstractBaseController
         ])->fetchAll();
 
         $media = array_map(function (stdClass $x) use ($tree): array {
-            return array_map(function ($y) use ($tree): Media {
+            return array_map(function (string $y) use ($tree): Media {
                 return Media::getInstance($y, $tree);
             }, explode(',', $x->xrefs));
         }, $media);

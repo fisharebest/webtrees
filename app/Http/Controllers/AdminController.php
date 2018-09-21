@@ -58,6 +58,7 @@ use const WT_DATA_DIR;
  */
 class AdminController extends AbstractBaseController
 {
+    /** @var string */
     protected $layout = 'layouts/administration';
 
     /**
@@ -403,21 +404,20 @@ class AdminController extends AbstractBaseController
         $obje_xref = $request->get('obje_xref');
         $tree_id   = $request->get('tree_id');
 
-        $tree = Tree::findById($tree_id);
-        if ($tree !== null) {
-            $individual = Individual::getInstance($indi_xref, $tree);
-            $media      = Media::getInstance($obje_xref, $tree);
-            if ($individual !== null && $media !== null) {
-                foreach ($individual->getFacts() as $fact1) {
-                    if ($fact1->getFactId() === $fact_id) {
-                        $individual->updateFact($fact_id, $fact1->getGedcom() . "\n2 OBJE @" . $obje_xref . '@', false);
-                        foreach ($individual->getFacts('OBJE') as $fact2) {
-                            if ($fact2->getTarget() === $media) {
-                                $individual->deleteFact($fact2->getFactId(), false);
-                            }
+        $tree       = Tree::findById($tree_id);
+        $individual = Individual::getInstance($indi_xref, $tree);
+        $media      = Media::getInstance($obje_xref, $tree);
+
+        if ($individual !== null && $media !== null) {
+            foreach ($individual->getFacts() as $fact1) {
+                if ($fact1->getFactId() === $fact_id) {
+                    $individual->updateFact($fact_id, $fact1->getGedcom() . "\n2 OBJE @" . $obje_xref . '@', false);
+                    foreach ($individual->getFacts('OBJE') as $fact2) {
+                        if ($fact2->getTarget() === $media) {
+                            $individual->deleteFact($fact2->getFactId(), false);
                         }
-                        break;
                     }
+                    break;
                 }
             }
         }
@@ -491,7 +491,7 @@ class AdminController extends AbstractBaseController
         $recordsTotal    = (int)Database::prepare($select2)->fetchOne();
 
         // Turn each row from the query into a row for the table
-        $data = array_map(function (stdClass $datum) use ($ignore_facts) {
+        $data = array_map(function (stdClass $datum) use ($ignore_facts): array {
             $tree       = Tree::findById($datum->m_file);
             $media      = Media::getInstance($datum->m_id, $tree, $datum->m_gedcom);
             $individual = Individual::getInstance($datum->i_id, $tree, $datum->i_gedcom);

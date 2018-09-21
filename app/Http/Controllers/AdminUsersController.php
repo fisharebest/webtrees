@@ -40,6 +40,7 @@ class AdminUsersController extends AbstractBaseController
 {
     const SECONDS_PER_DAY = 24 * 60 * 60;
 
+    /** @var string */
     protected $layout = 'layouts/administration';
 
     /**

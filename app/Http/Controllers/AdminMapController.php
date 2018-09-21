@@ -28,6 +28,7 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class AdminMapController extends AbstractBaseController
 {
+    /** @var string */
     protected $layout = 'layouts/administration';
 
     /**

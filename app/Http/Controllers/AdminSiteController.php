@@ -36,6 +36,7 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class AdminSiteController extends AbstractBaseController
 {
+    /** @var string */
     protected $layout = 'layouts/administration';
 
     /**

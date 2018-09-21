@@ -1356,6 +1356,8 @@ class GedcomRecord
 
     /**
      * Delete this record
+     *
+     * @return void
      */
     public function deleteRecord()
     {
