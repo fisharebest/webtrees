@@ -48,11 +48,11 @@ class Date
     /** @var string  Optional qualifier, such as TO, AND */
     public $qual2 = '';
 
-    /** @var CalendarDate Optional second date */
-    private $date2;
+    /** @var CalendarDate|null Optional second date */
+    private $date2 = null;
 
     /** @var string ptional text, as included with an INTerpreted date */
-    private $text;
+    private $text = '';
 
     /**
      * Create a date, from GEDCOM data.
@@ -86,7 +86,7 @@ class Date
     public function __clone()
     {
         $this->date1 = clone $this->date1;
-        if (is_object($this->date2)) {
+        if ($this->date2 !== null) {
             $this->date2 = clone $this->date2;
         }
     }
@@ -380,9 +380,6 @@ class Date
             default:
                 $tmp = I18N::translate('Invalid date');
                 break;
-        }
-        if ($this->text && !$q1) {
-            $tmp = I18N::translate('%1$s (%2$s)', $tmp, e($this->text));
         }
 
         if (strip_tags($tmp) === '') {

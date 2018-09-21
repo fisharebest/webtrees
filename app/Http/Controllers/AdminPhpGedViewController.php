@@ -1465,7 +1465,7 @@ class AdminPhpGedViewController extends AbstractBaseController
             glob('../*/config.php') ?: []
         );
 
-        return array_map(function (string $path) {
+        return array_map(function (string $path): string {
             return dirname($path) . DIRECTORY_SEPARATOR;
         }, $php_paths);
     }

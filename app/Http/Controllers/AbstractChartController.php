@@ -33,6 +33,9 @@ abstract class AbstractChartController extends AbstractBaseController
      *
      * @param Tree   $tree
      * @param string $module
+     *
+     * @throws NotFoundHttpException
+     * @return void
      */
     protected function checkModuleIsActive(Tree $tree, string $module)
     {

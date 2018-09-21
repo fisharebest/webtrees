@@ -234,6 +234,8 @@ class DescendantsChartController extends AbstractChartController
      * @param Family     $family
      * @param int        $depth the descendancy depth to show
      * @param int        $generations
+     *
+     * @return void
      */
     private function printFamilyDescendancy(Individual $person, Family $family, int $depth, int $generations)
     {
@@ -375,6 +377,8 @@ class DescendantsChartController extends AbstractChartController
      * @param int        $depth the descendancy depth to show
      * @param string     $label
      * @param string     $gpid
+     *
+     * @return void
      */
     private function printChildFamily(Individual $person, $depth, $label = '1.', $gpid = '')
     {

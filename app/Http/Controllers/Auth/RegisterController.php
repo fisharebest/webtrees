@@ -186,6 +186,7 @@ class RegisterController extends AbstractBaseController
      * @param string $password1
      * @param string $password2
      *
+     * @return void
      * @throws Exception
      */
     private function doValidateRegistration(string $username, string $email, string $realname, string $comments, string $password1, string $password2)

@@ -44,7 +44,7 @@ class FunctionsDate
                     [
                         '/(\d+)([ymwd])/',
                     ],
-                    function ($match) {
+                    function (array $match): string {
                         switch ($match[2]) {
                             case 'y':
                                 return I18N::plural('%s year', '%s years', $match[1], I18N::digits($match[1]));

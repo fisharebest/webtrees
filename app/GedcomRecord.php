@@ -15,6 +15,7 @@
  */
 namespace Fisharebest\Webtrees;
 
+use Exception;
 use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Functions\FunctionsDate;
 use Fisharebest\Webtrees\Functions\FunctionsImport;
@@ -89,6 +90,8 @@ class GedcomRecord
 
     /**
      * Split the record into facts
+     *
+     * @return void
      */
     private function parseFacts()
     {
@@ -133,7 +136,7 @@ class GedcomRecord
      * @param Tree        $tree
      * @param string|null $gedcom
      *
-     * @throws \Exception
+     * @throws Exception
      *
      * @return GedcomRecord|Individual|Family|Source|Repository|Media|Note|null
      */
@@ -190,7 +193,7 @@ class GedcomRecord
             $xref = $match[1];
             $type = $match[1];
         } elseif ($gedcom . $pending) {
-            throw new \Exception('Unrecognized GEDCOM record: ' . $gedcom);
+            throw new Exception('Unrecognized GEDCOM record: ' . $gedcom);
         } else {
             // A record with both pending creation and pending deletion
             $type = static::RECORD_TYPE;
@@ -550,12 +553,14 @@ class GedcomRecord
      * @param string $type
      * @param string $value
      * @param string $gedcom
+     *
+     * @return void
      */
     protected function addName($type, $value, $gedcom)
     {
         $this->getAllNames[] = [
             'type'   => $type,
-            'sort'   => preg_replace_callback('/([0-9]+)/', function ($matches) {
+            'sort'   => preg_replace_callback('/([0-9]+)/', function (array $matches): string {
                 return str_pad($matches[0], 10, '0', STR_PAD_LEFT);
             }, $value),
             'full'   => '<span dir="auto">' . e($value) . '</span>',
@@ -577,6 +582,8 @@ class GedcomRecord
      * @param int    $level
      * @param string $fact_type
      * @param Fact[] $facts
+     *
+     * @return void
      */
     protected function extractNamesFromFacts($level, $fact_type, $facts)
     {
@@ -703,6 +710,8 @@ class GedcomRecord
      * Allow the choice of primary name to be overidden, e.g. in a search result
      *
      * @param int $n
+     *
+     * @return void
      */
     public function setPrimaryName($n)
     {
@@ -1201,6 +1210,8 @@ class GedcomRecord
      *
      * @param string $gedcom
      * @param bool   $update_chan
+     *
+     * @return void
      */
     public function createFact($gedcom, $update_chan)
     {
@@ -1212,6 +1223,8 @@ class GedcomRecord
      *
      * @param string $fact_id
      * @param bool   $update_chan
+     *
+     * @return void
      */
     public function deleteFact($fact_id, $update_chan)
     {
@@ -1225,7 +1238,8 @@ class GedcomRecord
      * @param string $gedcom
      * @param bool   $update_chan
      *
-     * @throws \Exception
+     * @return void
+     * @throws Exception
      */
     public function updateFact($fact_id, $gedcom, $update_chan)
     {
@@ -1234,10 +1248,10 @@ class GedcomRecord
         $gedcom = trim($gedcom);
 
         if ($this->pending === '') {
-            throw new \Exception('Cannot edit a deleted record');
+            throw new Exception('Cannot edit a deleted record');
         }
         if ($gedcom && !preg_match('/^1 ' . WT_REGEX_TAG . '/', $gedcom)) {
-            throw new \Exception('Invalid GEDCOM data passed to GedcomRecord::updateFact(' . $gedcom . ')');
+            throw new Exception('Invalid GEDCOM data passed to GedcomRecord::updateFact(' . $gedcom . ')');
         }
 
         if ($this->pending) {
@@ -1299,6 +1313,8 @@ class GedcomRecord
      *
      * @param string $gedcom
      * @param bool   $update_chan
+     *
+     * @return void
      */
     public function updateRecord($gedcom, $update_chan)
     {
@@ -1372,6 +1388,8 @@ class GedcomRecord
      *
      * @param string $xref
      * @param bool   $update_chan
+     *
+     * @return void
      */
     public function removeLinks($xref, $update_chan)
     {

@@ -61,6 +61,8 @@ abstract class AbstractEditController extends AbstractBaseController
      * - $tagRest[] - an array of the tags for each gedcom line that was edited
      * - $islinkRest[] - an array of 1 or 0 values to indicate when the text is a link element
      * - $textRest[] - an array of the text data for each line
+     *
+     * @return void
      */
     protected function splitSource()
     {

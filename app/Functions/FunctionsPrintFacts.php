@@ -52,6 +52,8 @@ class FunctionsPrintFacts
      *
      * @param Fact         $fact
      * @param GedcomRecord $record
+     *
+     * @return void
      */
     public static function printFact(Fact $fact, GedcomRecord $record)
     {
@@ -646,6 +648,8 @@ class FunctionsPrintFacts
      * @param Tree   $tree
      * @param string $factrec
      * @param int    $level
+     *
+     * @return void
      */
     public static function printMediaLinks(Tree $tree, $factrec, $level)
     {
@@ -715,6 +719,8 @@ class FunctionsPrintFacts
      *
      * @param Fact $fact
      * @param int  $level
+     *
+     * @return void
      */
     public static function printMainSources(Fact $fact, $level)
     {
@@ -974,6 +980,8 @@ class FunctionsPrintFacts
      *
      * @param Fact $fact
      * @param int  $level
+     *
+     * @return void
      */
     public static function printMainNotes(Fact $fact, $level)
     {
@@ -1124,6 +1132,8 @@ class FunctionsPrintFacts
      *
      * @param Fact $fact
      * @param int  $level
+     *
+     * @return void
      */
     public static function printMainMedia(Fact $fact, $level)
     {

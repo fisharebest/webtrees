@@ -38,6 +38,7 @@ use Symfony\Component\HttpFoundation\StreamedResponse;
  */
 class AdminLocationController extends AbstractBaseController
 {
+    /** @var string */
     protected $layout = 'layouts/administration';
 
     /**
@@ -263,7 +264,7 @@ class AdminLocationController extends AbstractBaseController
         $this->buildLevel($parent_id, $startfqpn, $places);
 
         // Clean up co-ordinates
-        $places = array_map(function ($place) {
+        $places = array_map(function (array $place): array {
             $place['pl_long'] = (float) strtr($place['pl_long'] ?? '0', ['E' => '', 'W' => '-', ',' => '.']);
             $place['pl_lati'] = (float) strtr($place['pl_lati'] ?? '0', ['N' => '', 'S' => '-', ',' => '.']);
 
@@ -400,11 +401,11 @@ class AdminLocationController extends AbstractBaseController
             //sort places by level
             usort(
                 $places,
-                function (array $a, array $b) {
-                    if ((int)$a['pl_level'] === (int)$b['pl_level']) {
+                function (array $a, array $b): int {
+                    if ((int) $a['pl_level'] === (int) $b['pl_level']) {
                         return I18N::strcasecmp($a['fqpn'], $b['fqpn']);
                     } else {
-                        return (int)$a['pl_level'] - (int)$b['pl_level'];
+                        return (int) $a['pl_level'] - (int)$b['pl_level'];
                     }
                 }
             );
@@ -654,6 +655,7 @@ class AdminLocationController extends AbstractBaseController
      * @param $placename
      * @param $places
      *
+     * @return void
      * @throws Exception
      */
     private function buildLevel($parent_id, $placename, &$places)

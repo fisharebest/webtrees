@@ -147,6 +147,7 @@ class LoginController extends AbstractBaseController
      * @param string $username
      * @param string $password
      *
+     * @return void
      * @throws Exception
      */
     private function doLogin(string $username, string $password)

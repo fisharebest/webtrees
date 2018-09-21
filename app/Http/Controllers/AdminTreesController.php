@@ -60,6 +60,7 @@ class AdminTreesController extends AbstractBaseController
     // Show a reduced page when there are more than a certain number of trees
     const MULTIPLE_TREE_THRESHOLD = 500;
 
+    /** @var string */
     protected $layout = 'layouts/administration';
 
     /**
@@ -939,7 +940,7 @@ class AdminTreesController extends AbstractBaseController
                 $resn->tag_label = '';
             }
         }
-        usort($resns, function (stdClass $x, stdClass $y) {
+        usort($resns, function (stdClass $x, stdClass $y): int {
             return I18N::strcasecmp($x->tag_label, $y->tag_label);
         });
 
@@ -1865,8 +1866,8 @@ class AdminTreesController extends AbstractBaseController
             'tree_id' => $tree->getTreeId(),
         ])->fetchAll();
 
-        $repositories = array_map(function (stdClass $x) use ($tree) {
-            return array_map(function ($y) use ($tree) {
+        $repositories = array_map(function (stdClass $x) use ($tree): array {
+            return array_map(function ($y) use ($tree): Repository {
                 return Repository::getInstance($y, $tree);
             }, explode(',', $x->xrefs));
         }, $repositories);
@@ -1882,8 +1883,8 @@ class AdminTreesController extends AbstractBaseController
             'tree_id' => $tree->getTreeId(),
         ])->fetchAll();
 
-        $sources = array_map(function (stdClass $x) use ($tree) {
-            return array_map(function ($y) use ($tree) {
+        $sources = array_map(function (stdClass $x) use ($tree): array {
+            return array_map(function ($y) use ($tree): Source {
                 return Source::getInstance($y, $tree);
             }, explode(',', $x->xrefs));
         }, $sources);
@@ -1899,8 +1900,8 @@ class AdminTreesController extends AbstractBaseController
             'tree_id' => $tree->getTreeId(),
         ])->fetchAll();
 
-        $individuals = array_map(function (stdClass $x) use ($tree) {
-            return array_map(function ($y) use ($tree) {
+        $individuals = array_map(function (stdClass $x) use ($tree): array {
+            return array_map(function ($y) use ($tree): Individual {
                 return Individual::getInstance($y, $tree);
             }, explode(',', $x->xrefs));
         }, $individuals);
@@ -1915,8 +1916,8 @@ class AdminTreesController extends AbstractBaseController
             'tree_id' => $tree->getTreeId(),
         ])->fetchAll();
 
-        $families = array_map(function (stdClass $x) use ($tree) {
-            return array_map(function ($y) use ($tree) {
+        $families = array_map(function (stdClass $x) use ($tree): array {
+            return array_map(function ($y) use ($tree): Family {
                 return Family::getInstance($y, $tree);
             }, explode(',', $x->xrefs));
         }, $families);
@@ -1932,8 +1933,8 @@ class AdminTreesController extends AbstractBaseController
             'tree_id' => $tree->getTreeId(),
         ])->fetchAll();
 
-        $media = array_map(function (stdClass $x) use ($tree) {
-            return array_map(function ($y) use ($tree) {
+        $media = array_map(function (stdClass $x) use ($tree): array {
+            return array_map(function ($y) use ($tree): Media {
                 return Media::getInstance($y, $tree);
             }, explode(',', $x->xrefs));
         }, $media);

@@ -94,7 +94,7 @@ class CalendarDate
      *
      * @param array|int|CalendarDate $date
      */
-    public function __construct($date)
+    protected function __construct($date)
     {
         // Construct from an integer (a julian day number)
         if (is_int($date)) {
@@ -126,6 +126,7 @@ class CalendarDate
             return;
         }
 
+        // Contruct from a CalendarDate
         $this->minJD = $date->minJD;
         $this->maxJD = $date->maxJD;
 
@@ -525,8 +526,7 @@ class CalendarDate
 
     /**
      * How long between an event and a given julian day
-     * Return result as either a number of years or
-     * a gedcom-style age string.
+     * Return result as a number of years.
      *
      * @param int $jd date for calculation
      *
@@ -561,8 +561,7 @@ class CalendarDate
 
     /**
      * How long between an event and a given julian day
-     * Return result as either a number of years or
-     * a gedcom-style age string.
+     * Return result as a gedcom-style age string.
      *
      * @param int $jd date for calculation
      *

@@ -707,6 +707,8 @@ class HomePageController extends AbstractBaseController
      * @param int   $tree_id
      * @param array $main_blocks
      * @param array $side_blocks
+     *
+     * @return void
      */
     private function updateTreeBlocks(int $tree_id, array $main_blocks, array $side_blocks)
     {
@@ -772,6 +774,8 @@ class HomePageController extends AbstractBaseController
      * @param int   $user_id
      * @param array $main_blocks
      * @param array $side_blocks
+     *
+     * @return void
      */
     private function updateUserBlocks(int $user_id, array $main_blocks, array $side_blocks)
     {

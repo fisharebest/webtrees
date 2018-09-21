@@ -274,7 +274,7 @@ class AdminController extends AbstractBaseController
                 '<div class="gedcom-data" dir="ltr">' .
                 preg_replace_callback(
                     '/@(' . WT_REGEX_XREF . ')@/',
-                    function ($match) use ($tree) {
+                    function (array $match) use ($tree): string {
                         $record = GedcomRecord::getInstance($match[1], $tree);
 
                         return $record ? '<a href="' . e($record->url()) . '">' . $match[0] . '</a>' : $match[0];
@@ -310,7 +310,7 @@ class AdminController extends AbstractBaseController
         $rows = Database::prepare($select . $where)->execute($args)->fetchAll();
 
         // Convert to CSV
-        $rows = array_map(function (stdClass $row) {
+        $rows = array_map(function (stdClass $row): string {
             return implode(',', [
                 '"' . $row->change_time . '"',
                 '"' . $row->status . '"',
@@ -512,7 +512,7 @@ class AdminController extends AbstractBaseController
                 $facts = [];
             }
 
-            $facts = array_map(function (Fact $fact) use ($individual, $media) {
+            $facts = array_map(function (Fact $fact) use ($individual, $media): string {
                 return view('admin/fix-level-0-media-action', [
                     'fact'       => $fact,
                     'individual' => $individual,
@@ -648,7 +648,7 @@ class AdminController extends AbstractBaseController
         $thumbnails = array_slice($thumbnails, $start, $length);
 
         // Turn each filename into a row for the table
-        $data = array_map(function (string $thumbnail) {
+        $data = array_map(function (string $thumbnail): array {
             $original = $this->findOriginalFileFromThumbnail($thumbnail);
 
             $original_url  = route('unused-media-thumbnail', [
@@ -671,7 +671,7 @@ class AdminController extends AbstractBaseController
 
             $media = $this->findMediaObjectsForMediaFile($original_path);
 
-            $media_links = array_map(function (Media $media) {
+            $media_links = array_map(function (Media $media): string {
                 return '<a href="' . e($media->url()) . '">' . $media->getFullName() . '</a>';
             }, $media);
 
@@ -1509,7 +1509,7 @@ class AdminController extends AbstractBaseController
             }
         }
 
-        usort($restrictions, function (stdClass $x, stdClass $y) {
+        usort($restrictions, function (stdClass $x, stdClass $y): int {
             return I18N::strcasecmp($x->tag_label, $y->tag_label);
         });
 

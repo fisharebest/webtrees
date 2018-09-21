@@ -358,6 +358,8 @@ class Fact
      * Used to convert a real fact (e.g. BIRT) into a close-relative’s fact (e.g. _BIRT_CHIL)
      *
      * @param string $tag
+     *
+     * @return void
      */
     public function setTag($tag)
     {
@@ -391,6 +393,8 @@ class Fact
 
     /**
      * This is a newly deleted fact, pending approval.
+     *
+     * @return void
      */
     public function setPendingDeletion()
     {
@@ -410,6 +414,8 @@ class Fact
 
     /**
      * This is a newly added fact, pending approval.
+     *
+     * @return void
      */
     public function setPendingAddition()
     {

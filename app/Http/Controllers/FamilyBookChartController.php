@@ -265,6 +265,8 @@ class FamilyBookChartController extends AbstractChartController
      *
      * @param Individual $person
      * @param int        $count
+     *
+     * @return void
      */
     private function printPersonPedigree($person, $count)
     {
@@ -425,6 +427,8 @@ class FamilyBookChartController extends AbstractChartController
 
     /**
      * Print empty box
+     *
+     * @return void
      */
 
     private function printEmptyBox()
@@ -437,6 +441,8 @@ class FamilyBookChartController extends AbstractChartController
      *
      * @param Individual $person
      * @param int        $descent_steps
+     *
+     * @return void
      */
     private function printFamilyBook(Individual $person, $descent_steps)
     {

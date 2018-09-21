@@ -587,6 +587,8 @@ class FunctionsRtl
      * Insert <br> into current span
      *
      * @param string $result
+     *
+     * @return void
      */
     public static function breakCurrentSpan(&$result)
     {
@@ -602,6 +604,8 @@ class FunctionsRtl
      * Begin current span
      *
      * @param string $result
+     *
+     * @return void
      */
     public static function beginCurrentSpan(&$result)
     {
@@ -620,6 +624,8 @@ class FunctionsRtl
      *
      * @param string $result
      * @param bool   $theEnd
+     *
+     * @return void
      */
     public static function finishCurrentSpan(&$result, $theEnd = false)
     {

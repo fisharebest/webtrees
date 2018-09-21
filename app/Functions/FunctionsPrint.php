@@ -45,6 +45,8 @@ class FunctionsPrint
      * find and print a given individuals information for a pedigree chart
      *
      * @param Individual $person The person to print
+     *
+     * @return void
      */
     public static function printPedigreePerson(Individual $person = null)
     {
@@ -486,6 +488,8 @@ class FunctionsPrint
      * @param GedcomRecord $record    the person, family, source etc the fact will be added to
      * @param array        $usedfacts an array of facts already used in this record
      * @param string       $type      the type of record INDI, FAM, SOUR etc
+     *
+     * @return void
      */
     public static function printAddNewFact(GedcomRecord $record, $usedfacts, $type)
     {
@@ -564,7 +568,7 @@ class FunctionsPrint
         foreach ($addfacts as $addfact) {
             $translated_addfacts[$addfact] = GedcomTag::getLabel($addfact);
         }
-        uasort($translated_addfacts, function ($x, $y) {
+        uasort($translated_addfacts, function (string $x, string $y): int {
             return I18N::strcasecmp(I18N::translate($x), I18N::translate($y));
         });
         echo '<tr><th scope="row">';

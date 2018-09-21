@@ -595,6 +595,8 @@ class FunctionsImport
      * @param string $gedrec the raw gedcom record to parse
      * @param Tree   $tree   import the record into this tree
      * @param bool   $update whether or not this is an updated record that has been accepted
+     *
+     * @return void
      */
     public static function importRecord($gedrec, Tree $tree, $update)
     {
@@ -804,6 +806,8 @@ class FunctionsImport
      * @param string $gid
      * @param int    $ged_id
      * @param string $gedrec
+     *
+     * @return void
      */
     public static function updatePlaces($gid, $ged_id, $gedrec)
     {
@@ -904,6 +908,8 @@ class FunctionsImport
      * @param string $xref
      * @param int    $ged_id
      * @param string $gedrec
+     *
+     * @return void
      */
     public static function updateDates($xref, $ged_id, $gedrec)
     {
@@ -954,6 +960,8 @@ class FunctionsImport
      * @param string $xref
      * @param int    $ged_id
      * @param string $gedrec
+     *
+     * @return void
      */
     public static function updateLinks($xref, $ged_id, $gedrec)
     {
@@ -989,6 +997,8 @@ class FunctionsImport
      * @param string       $xref
      * @param int          $ged_id
      * @param GedcomRecord $record
+     *
+     * @return void
      */
     public static function updateNames($xref, $ged_id, GedcomRecord $record)
     {
@@ -1099,7 +1109,7 @@ class FunctionsImport
         if (!$xref) {
             $xref = $tree->getNewXref();
             // renumber the lines
-            $gedrec = preg_replace_callback('/\n(\d+)/', function ($m) use ($level) {
+            $gedrec = preg_replace_callback('/\n(\d+)/', function (array $m) use ($level): string {
                 return "\n" . ($m[1] - $level);
             }, $gedrec);
             // convert to an object
@@ -1141,6 +1151,8 @@ class FunctionsImport
      *
      * @param string $xref
      * @param Tree   $tree
+     *
+     * @return void
      */
     public static function acceptAllChanges($xref, Tree $tree)
     {
@@ -1176,6 +1188,8 @@ class FunctionsImport
      * Reject all pending changes for a specified record.
      *
      * @param GedcomRecord $record
+     *
+     * @return void
      */
     public static function rejectAllChanges(GedcomRecord $record)
     {
@@ -1195,6 +1209,8 @@ class FunctionsImport
      * @param string $gedrec
      * @param Tree   $tree
      * @param bool   $delete
+     *
+     * @return void
      */
     public static function updateRecord($gedrec, Tree $tree, bool $delete)
     {

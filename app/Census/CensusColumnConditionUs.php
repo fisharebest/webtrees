@@ -39,7 +39,7 @@ class CensusColumnConditionUs extends CensusColumnConditionEnglish
     /** @var string Text to display for female children */
     protected $girl = 'S';
 
-    /* Text to display for divorced individuals */
+    /* @var string Text to display for divorced individuals */
     protected $divorce  = 'D';
 
     /** @var string Text to display for divorced females */

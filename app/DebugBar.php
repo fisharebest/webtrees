@@ -32,8 +32,8 @@ use Throwable;
  */
 class DebugBar
 {
-    /** @var StandardDebugbar */
-    private static $debugbar;
+    /** @var StandardDebugbar|null  */
+    private static $debugbar = null;
 
     /** @var JavascriptRenderer */
     private static $renderer;

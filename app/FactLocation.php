@@ -18,6 +18,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Functions\FunctionsCharts;
+use stdClass;
 
 /**
  * Class FactLocation
@@ -159,6 +160,8 @@ class FactLocation extends Location
 
     /**
      * Populate this objects lat/lon values, if possible
+     *
+     * @return stdClass|null
      */
     private function getCoordsFromGedcom()
     {

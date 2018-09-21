@@ -163,6 +163,8 @@ class AncestorsChartController extends AbstractChartController
      * @param Individual $individual
      * @param int        $sosa
      * @param int        $generations
+     *
+     * @return void
      */
     private function printChildAscendancy(Individual $individual, $sosa, $generations)
     {
