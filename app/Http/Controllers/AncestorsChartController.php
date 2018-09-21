@@ -147,12 +147,11 @@ class AncestorsChartController extends AbstractChartController
     {
         ob_start();
 
-        echo
-            '<ul class="chart_common">' .
-            $this->printChildAscendancy($individual, 1, $generations - 1) .
-            '</ul>';
+        $this->printChildAscendancy($individual, 1, $generations - 1);
 
         $html = ob_get_clean();
+
+        $html = '<ul class="chart_common">' . $html . '</ul>';
 
         return new Response($html);
     }
