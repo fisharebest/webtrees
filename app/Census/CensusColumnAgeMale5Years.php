@@ -37,7 +37,7 @@ class CensusColumnAgeMale5Years extends AbstractCensusColumn implements CensusCo
         if ($individual->getSex() === 'F') {
             return '';
         } else {
-            $years = Date::getAge($individual->getEstimatedBirthDate(), $this->date(), 0);
+            $years = Date::getAgeYears($individual->getEstimatedBirthDate(), $this->date());
             if ($years > 15) {
                 $years -= $years % 5;
             }

@@ -97,7 +97,7 @@ abstract class AbstractCensusColumnCondition extends AbstractCensusColumn implem
      */
     private function isChild(Individual $individual): bool
     {
-        $age = (int)Date::getAge($individual->getEstimatedBirthDate(), $this->date(), 0);
+        $age = Date::getAgeYears($individual->getEstimatedBirthDate(), $this->date());
 
         return $age < $this->age_adult;
     }

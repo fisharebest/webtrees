@@ -186,7 +186,7 @@ class FunctionsPrint
             foreach ($family->getSpouses() as $parent) {
                 if ($parent->getBirthDate()->isOK()) {
                     $sex      = $parent->getSexImage();
-                    $age      = Date::getAge($parent->getBirthDate(), $birth_date, 2);
+                    $age      = Date::getAge($parent->getBirthDate(), $birth_date);
                     $deatdate = $parent->getDeathDate();
                     switch ($parent->getSex()) {
                         case 'F':

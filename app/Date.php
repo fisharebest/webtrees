@@ -479,19 +479,67 @@ class Date
     }
 
     /**
-     * Calculate the the age of a person, on a date.
+     * Calculate the the age of a person (n years), on a given date.
      *
      * @param Date $d1
      * @param Date $d2
-     * @param int  $format
      *
-     * @throws \InvalidArgumentException
-     *
-     * @return int|string
+     * @return int
      */
-    public static function getAge(Date $d1, Date $d2 = null, $format = 0)
+    public static function getAgeYears(Date $d1, Date $d2): int
     {
-        if ($d2) {
+        if ($d2->maximumJulianDay() >= $d1->minimumJulianDay() && $d2->minimumJulianDay() <= $d1->minimumJulianDay()) {
+            // Overlapping dates
+            $jd = $d1->minimumJulianDay();
+        } else {
+            // Non-overlapping dates
+            $jd = $d2->minimumJulianDay();
+        }
+
+        if ($jd && $d1->minimumJulianDay() && $d1->minimumJulianDay() <= $jd) {
+            return $d1->minimumDate()->getAge($jd);
+        } else {
+            return -1;
+        }
+    }
+
+    /**
+     * Calculate the the age of a person (n days), on a given date.
+     *
+     * @param Date $d1
+     * @param Date $d2
+     *
+     * @return int
+     */
+    public static function getAgeDays(Date $d1, Date $d2): int
+    {
+        if ($d2->maximumJulianDay() >= $d1->minimumJulianDay() && $d2->minimumJulianDay() <= $d1->minimumJulianDay()) {
+            // Overlapping dates
+            $jd = $d1->minimumJulianDay();
+        } else {
+            // Non-overlapping dates
+            $jd = $d2->minimumJulianDay();
+        }
+
+        // Days - integer only (for sorting, rather than for display)
+        if ($jd && $d1->minimumJulianDay()) {
+            return $jd - $d1->minimumJulianDay();
+        } else {
+            return -1;
+        }
+    }
+
+    /**
+     * Calculate the the age of a person, on a date.
+     *
+     * @param Date      $d1
+     * @param Date|null $d2
+     *
+     * @return string
+     */
+    public static function getAge(Date $d1, Date $d2 = null): string
+    {
+        if ($d2 !== null) {
             if ($d2->maximumJulianDay() >= $d1->minimumJulianDay() && $d2->minimumJulianDay() <= $d1->minimumJulianDay()) {
                 // Overlapping dates
                 $jd = $d1->minimumJulianDay();
@@ -504,36 +552,17 @@ class Date
             $jd = WT_CLIENT_JD;
         }
 
-        switch ($format) {
-            case 0:
-                // Years - integer only (for statistics, rather than for display)
-                if ($jd && $d1->minimumJulianDay() && $d1->minimumJulianDay() <= $jd) {
-                    return $d1->minimumDate()->getAge(false, $jd, false);
-                } else {
-                    return -1;
-                }
-            case 1:
-                // Days - integer only (for sorting, rather than for display)
-                if ($jd && $d1->minimumJulianDay()) {
-                    return $jd - $d1->minimumJulianDay();
-                } else {
-                    return -1;
-                }
-            case 2:
-                // Just years, in local digits, with warning for negative/
-                if ($jd && $d1->minimumJulianDay()) {
-                    if ($d1->minimumJulianDay() > $jd) {
-                        return '<i class="icon-warning"></i>';
-                    } else {
-                        $years = (int) $d1->minimumDate()->getAge(false, $jd, false);
+        // Just years, in local digits, with warning for negative/
+        if ($jd && $d1->minimumJulianDay()) {
+            if ($d1->minimumJulianDay() > $jd) {
+                return '<i class="icon-warning"></i>';
+            } else {
+                $years = $d1->minimumDate()->getAge($jd);
 
-                        return I18N::number($years);
-                    }
-                } else {
-                    return '';
-                }
-            default:
-                throw new \InvalidArgumentException('format: ' . $format);
+                return I18N::number($years);
+            }
+        } else {
+            return '';
         }
     }
 
@@ -549,11 +578,11 @@ class Date
     public static function getAgeGedcom(Date $d1, Date $d2 = null)
     {
         if ($d2 === null) {
-            return $d1->date1->getAge(true, WT_CLIENT_JD, true);
+            return $d1->date1->getAgeFull(WT_CLIENT_JD);
         } else {
             // If dates overlap, then can’t calculate age.
             if (self::compare($d1, $d2)) {
-                return $d1->date1->getAge(true, $d2->minimumJulianDay(), true);
+                return $d1->date1->getAgeFull($d2->minimumJulianDay());
             } elseif (self::compare($d1, $d2) == 0 && $d1->minimumJulianDay() == $d2->minimumJulianDay()) {
                 return '0d';
             } else {

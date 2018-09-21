@@ -528,27 +528,20 @@ class CalendarDate
      * Return result as either a number of years or
      * a gedcom-style age string.
      *
-     * @todo JewishDate needs to redefine this to cope with leap months
+     * @param int $jd date for calculation
      *
-     * @param bool $full             true=gedcom style, false=just years
-     * @param int  $jd               date for calculation
-     * @param bool $warn_on_negative show a warning triangle for negative ages
-     *
-     * @return string
+     * @return int
      */
-    public function getAge(bool $full, int $jd, bool $warn_on_negative): string
+    public function getAge(int $jd): int
     {
         if ($this->y == 0 || $jd == 0) {
-            return $full ? '' : '0';
+            return 0;
         }
         if ($this->minJD < $jd && $this->maxJD > $jd) {
-            return $full ? '' : '0';
+            return 0;
         }
         if ($this->minJD == $jd) {
-            return $full ? '' : '0';
-        }
-        if ($warn_on_negative && $jd < $this->minJD) {
-            return '<i class="icon-warning"></i>';
+            return 0;
         }
         list($y, $m, $d) = $this->calendar->jdToYmd($jd);
         $dy = $y - $this->y;
@@ -561,9 +554,44 @@ class CalendarDate
             $dm += $this->calendar->monthsInYear();
             $dy--;
         }
+
         // Not a full age? Then just the years
-        if (!$full) {
-            return (string) $dy;
+        return $dy;
+    }
+
+    /**
+     * How long between an event and a given julian day
+     * Return result as either a number of years or
+     * a gedcom-style age string.
+     *
+     * @param int $jd date for calculation
+     *
+     * @return string
+     */
+    public function getAgeFull(int $jd): string
+    {
+        if ($this->y == 0 || $jd == 0) {
+            return '';
+        }
+        if ($this->minJD < $jd && $this->maxJD > $jd) {
+            return '';
+        }
+        if ($this->minJD == $jd) {
+            return '';
+        }
+        if ($jd < $this->minJD) {
+            return '<i class="icon-warning"></i>';
+        }
+        list($y, $m, $d) = $this->calendar->jdToYmd($jd);
+        $dy = $y - $this->y;
+        $dm = $m - max($this->m, 1);
+        $dd = $d - max($this->d, 1);
+        if ($dd < 0) {
+            $dm--;
+        }
+        if ($dm < 0) {
+            $dm += $this->calendar->monthsInYear();
+            $dy--;
         }
         // Age in years?
         if ($dy > 1) {
