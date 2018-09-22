@@ -71,11 +71,13 @@ class JulianDate extends CalendarDate
             $this->new_old_style = true;
 
             return (int) $match[1] + 1;
-        } elseif (preg_match('/^(\d+) B\.C\.$/', $year, $match)) {
-            return - (int) $match[1];
-        } else {
-            return (int) $year;
         }
+
+        if (preg_match('/^(\d+) B\.C\.$/', $year, $match)) {
+            return - (int) $match[1];
+        }
+
+        return (int) $year;
     }
 
     /**
