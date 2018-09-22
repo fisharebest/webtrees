@@ -1593,6 +1593,8 @@ class AdminTreesController extends AbstractBaseController
      */
     public function synchronize(Tree $tree): RedirectResponse
     {
+        $url = route('admin-trees', ['ged' => $tree->getName()]);
+
         $gedcom_files = $this->gedcomFiles(WT_DATA_DIR);
 
         foreach ($gedcom_files as $gedcom_file) {
@@ -1615,8 +1617,6 @@ class AdminTreesController extends AbstractBaseController
                 $tree->delete();
             }
         }
-
-        $url = route('admin-trees', ['ged' => $tree->getName()]);
 
         return new RedirectResponse($url);
     }
