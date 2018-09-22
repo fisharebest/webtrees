@@ -61,8 +61,8 @@ class CensusColumnNationality extends AbstractCensusColumn implements CensusColu
 
         if (array_key_exists($place, $this->nationalities)) {
             return $this->nationalities[$place];
-        } else {
-            return $place;
         }
+
+        return $place;
     }
 }

@@ -44,9 +44,9 @@ class Media extends GedcomRecord
 
         if ($record instanceof Media) {
             return $record;
-        } else {
-            return null;
         }
+
+        return null;
     }
 
     /**
@@ -141,9 +141,9 @@ class Media extends GedcomRecord
             }
 
             return $text;
-        } else {
-            return '';
         }
+
+        return '';
     }
 
     /**

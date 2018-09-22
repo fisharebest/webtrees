@@ -79,9 +79,9 @@ class Soundex
 
         if ($soundex_array) {
             return implode(':', $soundex_array);
-        } else {
-            return '';
         }
+
+        return '';
     }
 
     /**
@@ -107,9 +107,9 @@ class Soundex
 
         if ($soundex_array) {
             return implode(':', $soundex_array);
-        } else {
-            return '';
         }
+
+        return '';
     }
 
     // Determine the Daitch–Mokotoff Soundex code for a word

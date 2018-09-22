@@ -89,13 +89,13 @@ class AdminUpgradeController extends AbstractBaseController
                 'steps' => $this->wizardSteps(),
                 'title' => $title,
             ]);
-        } else {
-            return $this->viewResponse('admin/upgrade/wizard', [
-                'current_version' => WT_VERSION,
-                'latest_version'  => $this->upgrade_service->latestVersion(),
-                'title'           => $title,
-            ]);
         }
+
+        return $this->viewResponse('admin/upgrade/wizard', [
+            'current_version' => WT_VERSION,
+            'latest_version'  => $this->upgrade_service->latestVersion(),
+            'title'           => $title,
+        ]);
     }
 
     /**
@@ -184,13 +184,13 @@ class AdminUpgradeController extends AbstractBaseController
 
         if (empty($changes)) {
             return $this->success(I18N::translate('There are no pending changes.'));
-        } else {
-            $route   = route('show-pending');
-            $message = I18N::translate('You should accept or reject all pending changes before upgrading.');
-            $message .= ' <a href="' . e($route) . '">' . I18N::translate('Pending changes') . '</a>';
-
-            return $this->failure($message);
         }
+
+        $route   = route('show-pending');
+        $message = I18N::translate('You should accept or reject all pending changes before upgrading.');
+        $message .= ' <a href="' . e($route) . '">' . I18N::translate('Pending changes') . '</a>';
+
+        return $this->failure($message);
     }
 
     /**
@@ -245,12 +245,14 @@ class AdminUpgradeController extends AbstractBaseController
 
                 /* I18N: %1$s is a number of KB, %2$s is a (fractional) number of seconds */
                 return $this->success(I18N::translate('%1$s KB were downloaded in %2$s seconds.', $kb, $seconds));
-            } elseif (!in_array('ssl', stream_get_transports())) {
+            }
+
+            if (!in_array('ssl', stream_get_transports())) {
                 // Guess why we might have failed...
                 return $this->failure(I18N::translate('This server does not support secure downloads using HTTPS.'));
-            } else {
-                return $this->failure('');
             }
+
+            return $this->failure('');
         } catch (Exception $ex) {
             return $this->failure($ex->getMessage());
         }

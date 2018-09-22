@@ -42,9 +42,9 @@ class Note extends GedcomRecord
 
         if ($record instanceof Note) {
             return $record;
-        } else {
-            return null;
         }
+
+        return null;
     }
 
     /**
@@ -56,9 +56,9 @@ class Note extends GedcomRecord
     {
         if (preg_match('/^0 @' . WT_REGEX_XREF . '@ NOTE ?(.*(?:\n1 CONT ?.*)*)/', $this->gedcom . $this->pending, $match)) {
             return preg_replace("/\n1 CONT ?/", "\n", $match[1]);
-        } else {
-            return null;
         }
+
+        return null;
     }
 
     /**

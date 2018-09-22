@@ -46,8 +46,8 @@ class CensusColumnYearsMarried extends AbstractCensusColumn implements CensusCol
 
         if ($marriage_date === null) {
             return '';
-        } else {
-            return (string) Date::getAgeYears($marriage_date, $this->date());
         }
+
+        return (string) Date::getAgeYears($marriage_date, $this->date());
     }
 }

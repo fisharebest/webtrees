@@ -109,12 +109,12 @@ class AdminPhpGedViewController extends AbstractBaseController
                 'steps' => $this->wizardSteps($pgv_path),
                 'title' => $title,
             ]);
-        } else {
-            return $this->viewResponse('admin/phpgedview/wizard', [
-                'pgv_paths' => $this->defaultPhpGedViewPaths(),
-                'title'     => $title,
-            ]);
         }
+
+        return $this->viewResponse('admin/phpgedview/wizard', [
+            'pgv_paths' => $this->defaultPhpGedViewPaths(),
+            'title'     => $title,
+        ]);
     }
 
     /**
@@ -220,7 +220,9 @@ class AdminPhpGedViewController extends AbstractBaseController
             )->fetchOne();
             if ($PGV_SCHEMA_VERSION < 10) {
                 return new Response(I18N::translate('The version of %s is too old.', 'PhpGedView'), Response::HTTP_INTERNAL_SERVER_ERROR);
-            } elseif ($PGV_SCHEMA_VERSION > 14) {
+            }
+
+            if ($PGV_SCHEMA_VERSION > 14) {
                 return new Response(I18N::translate('The version of %s is too new.', 'PhpGedView'), Response::HTTP_INTERNAL_SERVER_ERROR);
             }
         } catch (Exception $ex) {

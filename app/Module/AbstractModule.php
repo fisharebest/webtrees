@@ -158,9 +158,9 @@ abstract class AbstractModule
 
         if (array_key_exists($setting_name, $this->settings)) {
             return $this->settings[$setting_name];
-        } else {
-            return $default;
         }
+
+        return $default;
     }
 
     /**
@@ -225,9 +225,9 @@ abstract class AbstractModule
 
         if ($access_level === null) {
             return $this->defaultAccessLevel();
-        } else {
-            return (int)$access_level;
         }
+
+        return (int)$access_level;
     }
 
     /**

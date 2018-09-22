@@ -182,9 +182,9 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
                 'title'      => $this->getTitle(),
                 'content'    => $content,
             ]);
-        } else {
-            return $content;
         }
+
+        return $content;
     }
 
     /** {@inheritdoc} */

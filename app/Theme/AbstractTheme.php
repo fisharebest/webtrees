@@ -153,28 +153,28 @@ abstract class AbstractTheme
      */
     public function analytics()
     {
-        if ($this->themeId() === '_administration' || !empty($_SERVER['HTTP_DNT'])) {
+        if (!empty($_SERVER['HTTP_DNT'])) {
             return '';
-        } else {
-            return
-                $this->analyticsBingWebmaster(
-                    Site::getPreference('BING_WEBMASTER_ID')
-                ) .
-                $this->analyticsGoogleWebmaster(
-                    Site::getPreference('GOOGLE_WEBMASTER_ID')
-                ) .
-                $this->analyticsGoogleTracker(
-                    Site::getPreference('GOOGLE_ANALYTICS_ID')
-                ) .
-                $this->analyticsPiwikTracker(
-                    Site::getPreference('PIWIK_URL'),
-                    Site::getPreference('PIWIK_SITE_ID')
-                ) .
-                $this->analyticsStatcounterTracker(
-                    Site::getPreference('STATCOUNTER_PROJECT_ID'),
-                    Site::getPreference('STATCOUNTER_SECURITY_ID')
-                );
         }
+
+        return
+            $this->analyticsBingWebmaster(
+                Site::getPreference('BING_WEBMASTER_ID')
+            ) .
+            $this->analyticsGoogleWebmaster(
+                Site::getPreference('GOOGLE_WEBMASTER_ID')
+            ) .
+            $this->analyticsGoogleTracker(
+                Site::getPreference('GOOGLE_ANALYTICS_ID')
+            ) .
+            $this->analyticsPiwikTracker(
+                Site::getPreference('PIWIK_URL'),
+                Site::getPreference('PIWIK_SITE_ID')
+            ) .
+            $this->analyticsStatcounterTracker(
+                Site::getPreference('STATCOUNTER_PROJECT_ID'),
+                Site::getPreference('STATCOUNTER_SECURITY_ID')
+            );
     }
 
     /**
@@ -226,9 +226,9 @@ abstract class AbstractTheme
                 'ga("create","' . $analytics_id . '","auto");' .
                 'ga("send", "pageview", ' . json_encode($dimensions) . ');' .
                 '</script>';
-        } else {
-            return '';
         }
+
+        return '';
     }
 
     /**
@@ -258,9 +258,9 @@ abstract class AbstractTheme
                 'var d=document,g=d.createElement("script"),s=d.getElementsByTagName("script")[0];g.defer=true;g.async=true;g.src=u+"piwik.js";' .
                 's.parentNode.insertBefore(g,s);})();' .
                 '</script>';
-        } else {
-            return '';
         }
+
+        return '';
     }
 
     /**
@@ -280,9 +280,9 @@ abstract class AbstractTheme
                 '",scJsHost = (("https:"===document.location.protocol)?"https://secure.":"http://www.");' .
                 'document.write("<sc"+"ript src=\'"+scJsHost+"statcounter.com/counter/counter.js\'></"+"script>");' .
                 '</script>';
-        } else {
-            return '';
         }
+
+        return '';
     }
 
     /**
@@ -372,15 +372,21 @@ abstract class AbstractTheme
 
         if ($contact_user && $contact_user === $webmaster_user) {
             return $this->contactLinkEverything($contact_user);
-        } elseif ($contact_user && $webmaster_user) {
-            return $this->contactLinkGenealogy($contact_user) . '<br>' . $this->contactLinkTechnical($webmaster_user);
-        } elseif ($contact_user) {
-            return $this->contactLinkGenealogy($contact_user);
-        } elseif ($webmaster_user) {
-            return $this->contactLinkTechnical($webmaster_user);
-        } else {
-            return '';
         }
+
+        if ($contact_user && $webmaster_user) {
+            return $this->contactLinkGenealogy($contact_user) . '<br>' . $this->contactLinkTechnical($webmaster_user);
+        }
+
+        if ($contact_user) {
+            return $this->contactLinkGenealogy($contact_user);
+        }
+
+        if ($webmaster_user) {
+            return $this->contactLinkTechnical($webmaster_user);
+        }
+
+        return '';
     }
 
     /**
@@ -401,9 +407,9 @@ abstract class AbstractTheme
                 I18N::translate('This website uses cookies to learn about visitor behaviour.') . ' ' .
                 '<button onclick="document.cookie=\'cookie=1\'; this.parentNode.classList.add(\'hidden\');">' . I18N::translate('continue') . '</button>' .
                 '</div>';
-        } else {
-            return '';
         }
+
+        return '';
     }
 
     /**
@@ -459,9 +465,9 @@ abstract class AbstractTheme
 
         if ($html) {
             return '<div class="flash-messages">' . $html . '</div>';
-        } else {
-            return '';
         }
+
+        return '';
     }
 
     /**
@@ -473,9 +479,9 @@ abstract class AbstractTheme
     {
         if ($this->tree) {
             return '<div class="wt-contact-links">' . $this->contactLinks() . '</div>';
-        } else {
-            return '';
         }
+
+        return '';
     }
 
     /**
@@ -487,9 +493,9 @@ abstract class AbstractTheme
     {
         if ($this->pendingChangesExist()) {
             return '<div class="pending-changes-link">' . $this->pendingChangesLink() . '</div>';
-        } else {
-            return '';
         }
+
+        return '';
     }
 
     /**
@@ -508,9 +514,9 @@ abstract class AbstractTheme
                 $this->formQuickSearchFields() .
                 '</form>' .
                 '</div>';
-        } else {
-            return '';
         }
+
+        return '';
     }
 
     /**
@@ -539,9 +545,9 @@ abstract class AbstractTheme
     {
         if ($this->tree) {
             return '<h1 class="col wt-site-title">' . e($this->tree->getTitle()) . '</h1>';
-        } else {
-            return '';
         }
+
+        return '';
     }
 
     /**
@@ -637,12 +643,12 @@ abstract class AbstractTheme
                 '</button>' .
                 $html .
                 '</div>';
-        } else {
-            return
-                '<div class="alert alert-' . $level . '" role="alert">' .
-                $html .
-                '</div>';
         }
+
+        return
+            '<div class="alert alert-' . $level . '" role="alert">' .
+            $html .
+            '</div>';
     }
 
     /**
@@ -657,12 +663,14 @@ abstract class AbstractTheme
         $icon = 'images/facts/' . $fact->getTag() . '.png';
         if (file_exists(self::ASSET_DIR . $icon)) {
             return '<img src="' . self::ASSET_DIR . $icon . '" title="' . GedcomTag::getLabel($fact->getTag()) . '">';
-        } elseif (file_exists(self::ASSET_DIR . 'images/facts/NULL.png')) {
+        }
+
+        if (file_exists(self::ASSET_DIR . 'images/facts/NULL.png')) {
             // Spacer image - for alignment - until we move to a sprite.
             return '<img src="' . Theme::theme()->assetUrl() . 'images/facts/NULL.png">';
-        } else {
-            return '';
         }
+
+        return '';
     }
 
     /**
@@ -685,15 +693,15 @@ abstract class AbstractTheme
             if ($text === '') {
                 // Decorative icon.  Hiden from assistive technology.
                 return '<i class="' . self::ICONS[$icon] . '" aria-hidden="true"></i>';
-            } else {
-                // Semantic icon.  Label for assistive technology.
-                return
-                    '<i class="' . self::ICONS[$icon] . '" title="' . $text . '"></i>' .
-                    '<span class="sr-only">' . $text . '</span>';
             }
-        } else {
-            return $text;
+
+            // Semantic icon.  Label for assistive technology.
+            return
+                '<i class="' . self::ICONS[$icon] . '" title="' . $text . '"></i>' .
+                '<span class="sr-only">' . $text . '</span>';
         }
+
+        return $text;
     }
 
 
@@ -913,9 +921,9 @@ abstract class AbstractTheme
             }
 
             return $BAPL . $ENDL . $SLGS . $SLGC;
-        } else {
-            return '';
         }
+
+        return '';
     }
 
     /**
@@ -1058,11 +1066,13 @@ abstract class AbstractTheme
     {
         if (Auth::check() && $this->request->get('route') === 'user-page') {
             return new Menu(I18N::translate('Customize this page'), route('user-page-edit', ['ged' => $this->tree->getName()]), 'menu-change-blocks');
-        } elseif (Auth::isManager($this->tree) && $this->request->get('route') === 'tree-page') {
-            return new Menu(I18N::translate('Customize this page'), route('tree-page-edit', ['ged' => $this->tree->getName()]), 'menu-change-blocks');
-        } else {
-            return null;
         }
+
+        if (Auth::isManager($this->tree) && $this->request->get('route') === 'tree-page') {
+            return new Menu(I18N::translate('Customize this page'), route('tree-page-edit', ['ged' => $this->tree->getName()]), 'menu-change-blocks');
+        }
+
+        return null;
     }
 
     /**
@@ -1074,7 +1084,6 @@ abstract class AbstractTheme
      */
     public function menuChart(Individual $individual)
     {
-
         $submenus = [];
         foreach (Module::getActiveCharts($this->tree) as $chart) {
             $menu = $chart->getChartMenu($individual);
@@ -1085,13 +1094,13 @@ abstract class AbstractTheme
 
         if (empty($submenus)) {
             return null;
-        } else {
-            usort($submenus, function (Menu $x, Menu $y) {
-                return I18N::strcasecmp($x->getLabel(), $y->getLabel());
-            });
-
-            return new Menu(I18N::translate('Charts'), '#', 'menu-chart', ['rel' => 'nofollow'], $submenus);
         }
+
+        usort($submenus, function (Menu $x, Menu $y) {
+            return I18N::strcasecmp($x->getLabel(), $y->getLabel());
+        });
+
+        return new Menu(I18N::translate('Charts'), '#', 'menu-chart', ['rel' => 'nofollow'], $submenus);
     }
 
     /**
@@ -1309,11 +1318,13 @@ abstract class AbstractTheme
     {
         if (Auth::isAdmin()) {
             return new Menu(I18N::translate('Control panel'), route('admin-control-panel'), 'menu-admin');
-        } elseif (Auth::isManager($this->tree)) {
-            return new Menu(I18N::translate('Control panel'), route('admin-control-panel-manager'), 'menu-admin');
-        } else {
-            return null;
         }
+
+        if (Auth::isManager($this->tree)) {
+            return new Menu(I18N::translate('Control panel'), route('admin-control-panel-manager'), 'menu-admin');
+        }
+
+        return null;
     }
 
     /**
@@ -1381,9 +1392,9 @@ abstract class AbstractTheme
 
         if (empty($submenus)) {
             return null;
-        } else {
-            return new Menu(I18N::translate('Favorites'), '#', 'menu-favorites', [], $submenus);
         }
+
+        return new Menu(I18N::translate('Favorites'), '#', 'menu-favorites', [], $submenus);
     }
 
     /**
@@ -1395,19 +1406,19 @@ abstract class AbstractTheme
     {
         if (count(Tree::getAll()) === 1 || Site::getPreference('ALLOW_CHANGE_GEDCOM') !== '1') {
             return new Menu(I18N::translate('Family tree'), route('tree-page', ['ged' => $this->tree->getName()]), 'menu-tree');
-        } else {
-            $submenus = [];
-            foreach (Tree::getAll() as $tree) {
-                if ($tree == $this->tree) {
-                    $active = 'active ';
-                } else {
-                    $active = '';
-                }
-                $submenus[] = new Menu(e($tree->getTitle()), route('tree-page', ['ged' => $tree->getName()]), $active . 'menu-tree-' . $tree->getTreeId());
-            }
-
-            return new Menu(I18N::translate('Family trees'), '#', 'menu-tree', [], $submenus);
         }
+
+        $submenus = [];
+        foreach (Tree::getAll() as $tree) {
+            if ($tree == $this->tree) {
+                $active = 'active ';
+            } else {
+                $active = '';
+            }
+            $submenus[] = new Menu(e($tree->getTitle()), route('tree-page', ['ged' => $tree->getName()]), $active . 'menu-tree-' . $tree->getTreeId());
+        }
+
+        return new Menu(I18N::translate('Family trees'), '#', 'menu-tree', [], $submenus);
     }
 
     /**
@@ -1430,9 +1441,9 @@ abstract class AbstractTheme
 
         if (count($menu->getSubmenus()) > 1) {
             return $menu;
-        } else {
-            return null;
         }
+
+        return null;
     }
 
     /**
@@ -1588,14 +1599,14 @@ abstract class AbstractTheme
     {
         if (Auth::check()) {
             return null;
-        } else {
-            // Return to this page after login...
-            $url = Functions::getQueryUrl();
-            // ...but switch from the tree-page to the user-page
-            $url = str_replace('route=tree-page', 'route=user-page', $url);
-
-            return new Menu(I18N::translate('Sign in'), route('login', ['url' => $url]), 'menu-login', ['rel' => 'nofollow']);
         }
+
+        // Return to this page after login...
+        $url = Functions::getQueryUrl();
+        // ...but switch from the tree-page to the user-page
+        $url = str_replace('route=tree-page', 'route=user-page', $url);
+
+        return new Menu(I18N::translate('Sign in'), route('login', ['url' => $url]), 'menu-login', ['rel' => 'nofollow']);
     }
 
     /**
@@ -1607,9 +1618,9 @@ abstract class AbstractTheme
     {
         if (Auth::check()) {
             return new Menu(I18N::translate('Sign out'), route('logout'), 'menu-logout');
-        } else {
-            return null;
         }
+
+        return null;
     }
 
     /**
@@ -1636,9 +1647,9 @@ abstract class AbstractTheme
     {
         if (Auth::check()) {
             return new Menu(I18N::translate('My account'), route('my-account'));
-        } else {
-            return null;
         }
+
+        return null;
     }
 
     /**
@@ -1652,9 +1663,9 @@ abstract class AbstractTheme
 
         if ($record) {
             return new Menu(I18N::translate('My individual record'), $record->url(), 'menu-myrecord');
-        } else {
-            return null;
         }
+
+        return null;
     }
 
     /**
@@ -1683,9 +1694,9 @@ abstract class AbstractTheme
                 $this->menuControlPanel(),
                 $this->menuChangeBlocks(),
             ]));
-        } else {
-            return null;
         }
+
+        return null;
     }
 
     /**
@@ -1706,9 +1717,9 @@ abstract class AbstractTheme
                 ]),
                 'menu-mypedigree'
             );
-        } else {
-            return null;
         }
+
+        return null;
     }
 
     /**
@@ -1725,9 +1736,9 @@ abstract class AbstractTheme
             ]);
 
             return new Menu(I18N::translate('Pending changes'), $url, 'menu-pending');
-        } else {
-            return null;
         }
+
+        return null;
     }
 
     /**
@@ -1744,9 +1755,9 @@ abstract class AbstractTheme
 
         if (empty($submenus)) {
             return null;
-        } else {
-            return new Menu(I18N::translate('Reports'), '#', 'menu-report', ['rel' => 'nofollow'], $submenus);
         }
+
+        return new Menu(I18N::translate('Reports'), '#', 'menu-report', ['rel' => 'nofollow'], $submenus);
     }
 
     /**
@@ -1807,9 +1818,9 @@ abstract class AbstractTheme
                 'ged'    => $this->tree->getName(),
                 'action' => 'replace',
             ]), 'menu-search-replace');
-        } else {
-            return null;
         }
+
+        return null;
     }
 
     /**
@@ -1836,9 +1847,9 @@ abstract class AbstractTheme
             $menu = new Menu(I18N::translate('Theme'), '#', 'menu-theme', [], $submenus);
 
             return $menu;
-        } else {
-            return null;
         }
+
+        return null;
     }
 
     /**
@@ -1872,9 +1883,9 @@ abstract class AbstractTheme
     {
         if ($description) {
             return '<meta name="description" content="' . $description . '">';
-        } else {
-            return '';
         }
+
+        return '';
     }
 
     /**
@@ -1888,9 +1899,9 @@ abstract class AbstractTheme
     {
         if ($generator) {
             return '<meta name="generator" content="' . $generator . '">';
-        } else {
-            return '';
         }
+
+        return '';
     }
 
     /**
@@ -1904,9 +1915,9 @@ abstract class AbstractTheme
     {
         if ($robots) {
             return '<meta name="robots" content="' . $robots . '">';
-        } else {
-            return '';
         }
+
+        return '';
     }
 
     /**
@@ -1963,9 +1974,9 @@ abstract class AbstractTheme
 
         if (array_key_exists($parameter_name, $parameters)) {
             return $parameters[$parameter_name];
-        } else {
-            throw new \InvalidArgumentException($parameter_name);
         }
+
+        throw new \InvalidArgumentException($parameter_name);
     }
 
     /**

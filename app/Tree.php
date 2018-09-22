@@ -170,11 +170,7 @@ class Tree
             )->execute([$this->tree_id])->fetchAssoc();
         }
 
-        if (array_key_exists($setting_name, $this->preferences)) {
-            return $this->preferences[$setting_name];
-        } else {
-            return $default;
-        }
+        return $this->preferences[$setting_name] ?? $default;
     }
 
     /**
@@ -227,11 +223,7 @@ class Tree
             ])->fetchAssoc();
         }
 
-        if (array_key_exists($setting_name, $this->user_preferences[$user->getUserId()])) {
-            return $this->user_preferences[$user->getUserId()][$setting_name];
-        } else {
-            return $default;
-        }
+        return $this->user_preferences[$user->getUserId()][$setting_name] ?? $default;
     }
 
     /**

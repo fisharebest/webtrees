@@ -102,9 +102,9 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
                 'title'      => $this->getTitle(),
                 'content'    => $content,
             ]);
-        } else {
-            return $content;
         }
+
+        return $content;
     }
 
     /** {@inheritdoc} */

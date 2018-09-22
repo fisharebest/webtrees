@@ -538,9 +538,9 @@ class EditMediaController extends AbstractEditController
 
                 if (strpos($remote, '://') !== false) {
                     return $remote;
-                } else {
-                    return '';
                 }
+
+                return '';
 
             case 'unused':
                 $unused = $request->get('unused');

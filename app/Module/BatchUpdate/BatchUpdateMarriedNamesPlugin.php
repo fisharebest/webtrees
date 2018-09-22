@@ -155,9 +155,9 @@ class BatchUpdateMarriedNamesPlugin extends BatchUpdateBasePlugin
 
         if (preg_match_all('/^(?:1 NAME|2 _MARNM) .*\/(.+)\//m', $gedcom, $match)) {
             return $match[1];
-        } else {
-            return [];
         }
+
+        return [];
     }
 
     /**

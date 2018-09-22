@@ -75,9 +75,9 @@ class IcelandicSurnameTradition extends DefaultSurnameTradition implements Surna
                 'NAME' => $child_match['GIVN'],
                 'GIVN' => $child_match['GIVN'],
             ];
-        } else {
-            return [];
         }
+
+        return [];
     }
 
     /**

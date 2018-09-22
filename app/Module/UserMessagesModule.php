@@ -175,9 +175,9 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
                 'title'      => I18N::plural('%s message', '%s messages', $count, I18N::number($count)),
                 'content'    => $content,
             ]);
-        } else {
-            return $content;
         }
+
+        return $content;
     }
 
     /** {@inheritdoc} */

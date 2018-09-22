@@ -117,9 +117,13 @@ class ReportPdf extends ReportBase
     {
         if ($this->processing == 'B') {
             return $this->pdf->addBody($element);
-        } elseif ($this->processing == 'H') {
+        }
+
+        if ($this->processing == 'H') {
             return $this->pdf->addHeader($element);
-        } elseif ($this->processing == 'F') {
+        }
+
+        if ($this->processing == 'F') {
             return $this->pdf->addFooter($element);
         }
 

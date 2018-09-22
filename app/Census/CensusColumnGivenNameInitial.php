@@ -37,9 +37,9 @@ class CensusColumnGivenNameInitial extends AbstractCensusColumn implements Censu
             $given = $name['givn'];
             if (strpos($given, ' ') === false) {
                 return $given;
-            } else {
-                return substr($given, 0, strpos($given, ' ') + 2);
             }
+
+            return substr($given, 0, strpos($given, ' ') + 2);
         }
 
         return '';

@@ -255,10 +255,10 @@ class LifespansChartController extends AbstractChartController
     {
         if ($jd === 0) {
             return 0;
-        } else {
-            $gregorian = new GregorianCalendar();
-            list($y) = $gregorian->jdToYmd($jd);
         }
+
+        $gregorian = new GregorianCalendar();
+        list($y) = $gregorian->jdToYmd($jd);
 
         return $y;
     }
@@ -366,7 +366,9 @@ class LifespansChartController extends AbstractChartController
                 $start->display(false, '%Y'),
                 $end->display(false, '%Y')
             );
-        } elseif ($placename !== '') {
+        }
+
+        if ($placename !== '') {
             return I18N::plural(
                 '%s individual with events in %s',
                 '%s individuals with events in %s',
@@ -374,7 +376,9 @@ class LifespansChartController extends AbstractChartController
                 I18N::number($count),
                 $placename
             );
-        } elseif ($start->isOK() && $end->isOK()) {
+        }
+
+        if ($start->isOK() && $end->isOK()) {
             return I18N::plural(
                 '%s individual with events between %s and %s',
                 '%s individuals with events between %s and %s',
@@ -383,8 +387,8 @@ class LifespansChartController extends AbstractChartController
                 $start->display(false, '%Y'),
                 $end->display(false, '%Y')
             );
-        } else {
-            return I18N::plural('%s individual', '%s individuals', $count, I18N::number($count));
         }
+
+        return I18N::plural('%s individual', '%s individuals', $count, I18N::number($count));
     }
 }

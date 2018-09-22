@@ -89,9 +89,9 @@ class DebugBar
     {
         if (self::$debugbar !== null) {
             return self::$renderer->render();
-        } else {
-            return '';
         }
+
+        return '';
     }
 
     /**
@@ -103,9 +103,9 @@ class DebugBar
     {
         if (self::$debugbar !== null) {
             return self::$renderer->renderHead();
-        } else {
-            return '';
         }
+
+        return '';
     }
 
     /**

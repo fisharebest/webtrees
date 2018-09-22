@@ -551,16 +551,16 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
                 'ancestor_families' => I18N::translate('%s, her ancestors and their families', $name),
                 'descendants'       => I18N::translate('%s, her spouses and descendants', $name),
             ];
-        } else {
-            return [
-                'self'              => $name,
-                'parents'           => I18N::translate('%s, his parents and siblings', $name),
-                'spouses'           => I18N::translate('%s, his spouses and children', $name),
-                'ancestors'         => I18N::translate('%s and his ancestors', $name),
-                'ancestor_families' => I18N::translate('%s, his ancestors and their families', $name),
-                'descendants'       => I18N::translate('%s, his spouses and descendants', $name),
-            ];
         }
+
+        return [
+            'self'              => $name,
+            'parents'           => I18N::translate('%s, his parents and siblings', $name),
+            'spouses'           => I18N::translate('%s, his spouses and children', $name),
+            'ancestors'         => I18N::translate('%s and his ancestors', $name),
+            'ancestor_families' => I18N::translate('%s, his ancestors and their families', $name),
+            'descendants'       => I18N::translate('%s, his spouses and descendants', $name),
+        ];
     }
 
     /**

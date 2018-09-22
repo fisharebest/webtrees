@@ -469,9 +469,9 @@ class Module
         $modules = self::getActiveModules();
         if (array_key_exists($module_name, $modules)) {
             return $modules[$module_name];
-        } else {
-            return null;
         }
+
+        return null;
     }
 
     /**

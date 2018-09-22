@@ -92,9 +92,9 @@ class WelcomeBlockModule extends AbstractModule implements ModuleBlockInterface
                 'title'      => $individual->getTree()->getTitle(),
                 'content'    => $content,
             ]);
-        } else {
-            return $content;
         }
+
+        return $content;
     }
 
     /** {@inheritdoc} */

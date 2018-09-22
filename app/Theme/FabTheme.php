@@ -77,11 +77,7 @@ class FabTheme extends AbstractTheme implements ThemeInterface
             'distribution-chart-low-values'  => 'e5e6ef',
         ];
 
-        if (array_key_exists($parameter_name, $parameters)) {
-            return $parameters[$parameter_name];
-        } else {
-            return parent::parameter($parameter_name);
-        }
+        return $parameters[$parameter_name] ?? parent::parameter($parameter_name);
     }
 
     /**

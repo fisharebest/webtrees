@@ -79,9 +79,9 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
                 'title'      => $this->getTitle(),
                 'content'    => $content,
             ]);
-        } else {
-            return $content;
         }
+
+        return $content;
     }
 
     /**

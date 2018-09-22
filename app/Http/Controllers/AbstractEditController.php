@@ -295,18 +295,20 @@ abstract class AbstractEditController extends AbstractBaseController
             }
             if ((bool) $request->get('SOUR_' . $fact)) {
                 return $this->updateSource($gedrec, 2);
-            } else {
-                return $gedrec;
             }
-        } elseif ($FACT === 'Y') {
+
+            return $gedrec;
+        }
+
+        if ($FACT === 'Y') {
             if ((bool) $request->get('SOUR_' . $fact)) {
                 return $this->updateSource("\n1 " . $fact . ' Y', 2);
-            } else {
-                return "\n1 " . $fact . ' Y';
             }
-        } else {
-            return '';
+
+            return "\n1 " . $fact . ' Y';
         }
+
+        return '';
     }
 
     /**

@@ -43,8 +43,8 @@ class CensusColumnBirthPlace extends AbstractCensusColumn implements CensusColum
 
         if (substr($birth_place, -strlen($census_place) - 2) === ', ' . $census_place) {
             return substr($birth_place, 0, -strlen($census_place) - 2);
-        } else {
-            return $birth_place;
         }
+
+        return $birth_place;
     }
 }

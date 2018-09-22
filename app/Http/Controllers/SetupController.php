@@ -116,9 +116,9 @@ class SetupController extends AbstractBaseController
 
                 if ($error === '') {
                     return new RedirectResponse(route('admin-trees'));
-                } else {
-                    return $this->viewResponse('setup/step-6-failed', ['error' => $error]);
                 }
+
+                return $this->viewResponse('setup/step-6-failed', ['error' => $error]);
         }
     }
 
@@ -282,7 +282,6 @@ class SetupController extends AbstractBaseController
      */
     private function createConfigFile($dbhost, $dbport, $dbuser, $dbpass, $dbname, $tblpfx, $wtname, $wtuser, $wtpass, $wtemail): string
     {
-
         try {
             // Create/update the database tables.
             Database::createInstance([

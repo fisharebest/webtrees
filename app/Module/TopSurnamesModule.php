@@ -72,7 +72,7 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
 
         extract($cfg, EXTR_OVERWRITE);
 
-         // Use the count of base surnames.
+        // Use the count of base surnames.
         $top_surnames = Database::prepare(
             "SELECT n_surn FROM `##name`" .
             " WHERE n_file = :tree_id AND n_type != '_MARNM' AND n_surn NOT IN ('@N.N.', '')" .
@@ -151,9 +151,9 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
                 'title'      => $title,
                 'content'    => $content,
             ]);
-        } else {
-            return $content;
         }
+
+        return $content;
     }
 
     /** {@inheritdoc} */

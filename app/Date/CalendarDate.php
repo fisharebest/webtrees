@@ -472,11 +472,13 @@ class CalendarDate
     {
         if ($d1->maxJD < $d2->minJD) {
             return -1;
-        } elseif ($d2->maxJD < $d1->minJD) {
-            return 1;
-        } else {
-            return 0;
         }
+
+        if ($d2->maxJD < $d1->minJD) {
+            return 1;
+        }
+
+        return 0;
     }
 
     /**
@@ -822,9 +824,9 @@ class CalendarDate
     {
         if ($this->d > 9) {
             return I18N::digits($this->d);
-        } else {
-            return I18N::digits('0' . $this->d);
         }
+
+        return I18N::digits('0' . $this->d);
     }
 
     /**
@@ -906,9 +908,9 @@ class CalendarDate
     {
         if ($this->m > 9) {
             return I18N::digits($this->m);
-        } else {
-            return I18N::digits('0' . $this->m);
         }
+
+        return I18N::digits('0' . $this->m);
     }
 
     /**
@@ -965,9 +967,9 @@ class CalendarDate
     {
         if ($this->d == 0) {
             return '';
-        } else {
-            return sprintf('%02d', $this->d);
         }
+
+        return sprintf('%02d', $this->d);
     }
 
     /**
@@ -980,9 +982,9 @@ class CalendarDate
         // Our simple lookup table doesn't work correctly for Adar on leap years
         if ($this->m == 7 && $this->calendar instanceof JewishCalendar && !$this->calendar->isLeapYear($this->y)) {
             return 'ADR';
-        } else {
-            return array_search($this->m, static::$MONTH_ABBREV);
         }
+
+        return array_search($this->m, static::$MONTH_ABBREV);
     }
 
     /**
@@ -994,9 +996,9 @@ class CalendarDate
     {
         if ($this->y == 0) {
             return '';
-        } else {
-            return sprintf('%04d', $this->y);
         }
+
+        return sprintf('%04d', $this->y);
     }
 
     /**

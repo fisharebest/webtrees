@@ -303,9 +303,9 @@ class EditIndividualController extends AbstractEditController
 
         if ($request->get('goto') === 'new') {
             return new RedirectResponse($child->url());
-        } else {
-            return new RedirectResponse($individual->url());
         }
+
+        return new RedirectResponse($individual->url());
     }
 
     /**
@@ -400,9 +400,9 @@ class EditIndividualController extends AbstractEditController
 
         if ($request->get('goto') === 'new') {
             return new RedirectResponse($parent->url());
-        } else {
-            return new RedirectResponse($individual->url());
         }
+
+        return new RedirectResponse($individual->url());
     }
 
     /**
@@ -505,9 +505,9 @@ class EditIndividualController extends AbstractEditController
 
         if ($request->get('goto') === 'new') {
             return new RedirectResponse($spouse->url());
-        } else {
-            return new RedirectResponse($individual->url());
         }
+
+        return new RedirectResponse($individual->url());
     }
 
     /**
@@ -569,9 +569,9 @@ class EditIndividualController extends AbstractEditController
 
         if ($request->get('goto') === 'new') {
             return new RedirectResponse($new_indi->url());
-        } else {
-            return new RedirectResponse(route('admin-trees', ['ged' => $tree->getName()]));
         }
+
+        return new RedirectResponse(route('admin-trees', ['ged' => $tree->getName()]));
     }
 
     /**

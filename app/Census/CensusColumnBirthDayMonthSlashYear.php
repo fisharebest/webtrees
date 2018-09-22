@@ -37,8 +37,8 @@ class CensusColumnBirthDayMonthSlashYear extends AbstractCensusColumn implements
 
         if ($birth_date->minimumJulianDay() === $birth_date->maximumJulianDay()) {
             return $birth_date->minimumDate()->format('%j %M/%Y');
-        } else {
-            return '';
         }
+
+        return '';
     }
 }

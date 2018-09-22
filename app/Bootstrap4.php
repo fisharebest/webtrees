@@ -33,9 +33,9 @@ class Bootstrap4 extends Html
     {
         if (empty($items)) {
             return '';
-        } else {
-            return '<span class="badge badge-secondary">' . I18N::number(count($items)) . '</span>';
         }
+
+        return '<span class="badge badge-secondary">' . I18N::number(count($items)) . '</span>';
     }
 
     /**

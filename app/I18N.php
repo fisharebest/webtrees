@@ -414,17 +414,19 @@ class I18N
             if (!substr_compare($string, '<', 0, 1)) {
                 // I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (aged less than 21 years)
                 return self::translate('(aged less than %s)', $age);
-            } elseif (!substr_compare($string, '>', 0, 1)) {
+            }
+
+            if (!substr_compare($string, '>', 0, 1)) {
                 // I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (aged more than 21 years)
                 return self::translate('(aged more than %s)', $age);
-            } else {
-                // I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (aged 43 years)
-                return self::translate('(aged %s)', $age);
             }
-        } else {
-            // Not a valid string?
-            return self::translate('(aged %s)', $string);
+
+            // I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (aged 43 years)
+            return self::translate('(aged %s)', $age);
         }
+
+        // Not a valid string?
+        return self::translate('(aged %s)', $string);
     }
 
     /**
@@ -731,9 +733,9 @@ class I18N
     {
         if (self::$collator instanceof Collator) {
             return self::$collator->compare($string1, $string2);
-        } else {
-            return strcmp(self::strtolower($string1), self::strtolower($string2));
         }
+
+        return strcmp(self::strtolower($string1), self::strtolower($string2));
     }
 
     /**
@@ -839,25 +841,33 @@ class I18N
             $years = (int)($seconds / $year);
 
             return self::plural('%s year ago', '%s years ago', $years, self::number($years));
-        } elseif ($seconds > $month) {
+        }
+
+        if ($seconds > $month) {
             $months = (int)($seconds / $month);
 
             return self::plural('%s month ago', '%s months ago', $months, self::number($months));
-        } elseif ($seconds > $day) {
+        }
+
+        if ($seconds > $day) {
             $days = (int)($seconds / $day);
 
             return self::plural('%s day ago', '%s days ago', $days, self::number($days));
-        } elseif ($seconds > $hour) {
+        }
+
+        if ($seconds > $hour) {
             $hours = (int)($seconds / $hour);
 
             return self::plural('%s hour ago', '%s hours ago', $hours, self::number($hours));
-        } elseif ($seconds > $minute) {
+        }
+
+        if ($seconds > $minute) {
             $minutes = (int)($seconds / $minute);
 
             return self::plural('%s minute ago', '%s minutes ago', $minutes, self::number($minutes));
-        } else {
-            return self::plural('%s second ago', '%s seconds ago', $seconds, self::number($seconds));
         }
+
+        return self::plural('%s second ago', '%s seconds ago', $seconds, self::number($seconds));
     }
 
     /**

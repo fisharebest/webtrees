@@ -96,17 +96,17 @@ class RelationshipsChartModule extends AbstractModule implements ModuleConfigInt
                 'menu-chart-relationship',
                 ['rel' => 'nofollow']
             );
-        } else {
-            return new Menu(
-                I18N::translate('Relationships'),
-                route('relationships', [
-                    'xref1' => $individual->getXref(),
-                    'ged'   => $individual->getTree()->getName(),
-                ]),
-                'menu-chart-relationship',
-                ['rel' => 'nofollow']
-            );
         }
+
+        return new Menu(
+            I18N::translate('Relationships'),
+            route('relationships', [
+                'xref1' => $individual->getXref(),
+                'ged'   => $individual->getTree()->getName(),
+            ]),
+            'menu-chart-relationship',
+            ['rel' => 'nofollow']
+        );
     }
 
     /**

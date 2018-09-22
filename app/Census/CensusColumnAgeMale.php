@@ -36,8 +36,8 @@ class CensusColumnAgeMale extends AbstractCensusColumn implements CensusColumnIn
     {
         if ($individual->getSex() === 'F') {
             return '';
-        } else {
-            return (string) Date::getAgeYears($individual->getEstimatedBirthDate(), $this->date());
         }
+
+        return (string) Date::getAgeYears($individual->getEstimatedBirthDate(), $this->date());
     }
 }

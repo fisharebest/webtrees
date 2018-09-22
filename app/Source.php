@@ -42,9 +42,9 @@ class Source extends GedcomRecord
 
         if ($record instanceof Source) {
             return $record;
-        } else {
-            return null;
         }
+
+        return null;
     }
 
     /**

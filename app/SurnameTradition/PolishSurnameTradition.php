@@ -53,17 +53,17 @@ class PolishSurnameTradition extends PaternalSurnameTradition implements Surname
                     'NAME' => $this->inflect($match['NAME'], $this->inflect_female),
                     'SURN' => $this->inflect($match['SURN'], $this->inflect_male),
                 ]);
-            } else {
-                return array_filter([
-                    'NAME' => $this->inflect($match['NAME'], $this->inflect_male),
-                    'SURN' => $this->inflect($match['SURN'], $this->inflect_male),
-                ]);
             }
-        } else {
-            return [
-                'NAME' => '//',
-            ];
+
+            return array_filter([
+                'NAME' => $this->inflect($match['NAME'], $this->inflect_male),
+                'SURN' => $this->inflect($match['SURN'], $this->inflect_male),
+            ]);
         }
+
+        return [
+            'NAME' => '//',
+        ];
     }
 
     /**
@@ -81,11 +81,11 @@ class PolishSurnameTradition extends PaternalSurnameTradition implements Surname
                 'NAME' => $this->inflect($match['NAME'], $this->inflect_male),
                 'SURN' => $this->inflect($match['SURN'], $this->inflect_male),
             ]);
-        } else {
-            return [
-                'NAME' => '//',
-            ];
         }
+
+        return [
+            'NAME' => '//',
+        ];
     }
 
     /**
@@ -103,10 +103,10 @@ class PolishSurnameTradition extends PaternalSurnameTradition implements Surname
                 'NAME'   => '//',
                 '_MARNM' => $this->inflect($match['NAME'], $this->inflect_female),
             ];
-        } else {
-            return [
-                'NAME' => '//',
-            ];
         }
+
+        return [
+            'NAME' => '//',
+        ];
     }
 }

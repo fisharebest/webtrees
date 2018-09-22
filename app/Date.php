@@ -384,9 +384,9 @@ class Date
 
         if (strip_tags($tmp) === '') {
             return '';
-        } else {
-            return '<span class="date">' . $tmp . '</span>';
         }
+
+        return '<span class="date">' . $tmp . '</span>';
     }
 
     /**
@@ -412,9 +412,9 @@ class Date
     {
         if ($this->date2 === null) {
             return $this->date1;
-        } else {
-            return $this->date2;
         }
+
+        return $this->date2;
     }
 
     /**
@@ -635,15 +635,21 @@ class Date
         }
         if ($amax < $bmin) {
             return -1;
-        } elseif ($amin > $bmax && $bmax > 0) {
-            return 1;
-        } elseif ($amin < $bmin && $amax <= $bmax) {
-            return -1;
-        } elseif ($amin > $bmin && $amax >= $bmax && $bmax > 0) {
-            return 1;
-        } else {
-            return 0;
         }
+
+        if ($amin > $bmax && $bmax > 0) {
+            return 1;
+        }
+
+        if ($amin < $bmin && $amax <= $bmax) {
+            return -1;
+        }
+
+        if ($amin > $bmin && $amax >= $bmax && $bmax > 0) {
+            return 1;
+        }
+
+        return 0;
     }
 
     /**
@@ -674,8 +680,8 @@ class Date
             list($year) = $gregorian_calendar->jdToYmd($this->julianDay());
 
             return $year;
-        } else {
-            return 0;
         }
+
+        return 0;
     }
 }

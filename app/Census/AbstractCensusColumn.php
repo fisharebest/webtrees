@@ -71,9 +71,9 @@ class AbstractCensusColumn
 
         if ($family) {
             return $family->getHusband();
-        } else {
-            return null;
         }
+
+        return null;
     }
 
     /**
@@ -89,9 +89,9 @@ class AbstractCensusColumn
 
         if ($family) {
             return $family->getWife();
-        } else {
-            return null;
         }
+
+        return null;
     }
 
     /**
@@ -113,13 +113,13 @@ class AbstractCensusColumn
 
         if (empty($families)) {
             return null;
-        } else {
-            usort($families, function (Family $x, Family $y): int {
-                return Date::compare($x->getMarriageDate(), $y->getMarriageDate());
-            });
-
-            return end($families);
         }
+
+        usort($families, function (Family $x, Family $y): int {
+            return Date::compare($x->getMarriageDate(), $y->getMarriageDate());
+        });
+
+        return end($families);
     }
 
     /**
@@ -169,9 +169,9 @@ class AbstractCensusColumn
 
         if (end($parts) === $this->place()) {
             return implode(', ', array_slice($parts, 0, -1));
-        } else {
-            return $place;
         }
+
+        return $place;
     }
 
     /**

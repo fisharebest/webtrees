@@ -152,9 +152,9 @@ class ColorsTheme extends CloudsTheme implements ThemeInterface
             }
 
             return $menu;
-        } else {
-            return null;
         }
+
+        return null;
     }
 
     /**

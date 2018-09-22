@@ -64,12 +64,12 @@ class ThemeSelectModule extends AbstractModule implements ModuleBlockInterface
                     'title'      => $this->getTitle(),
                     'content'    => $content,
                 ]);
-            } else {
-                return $content;
             }
-        } else {
-            return '';
+
+            return $content;
         }
+
+        return '';
     }
 
     /** {@inheritdoc} */

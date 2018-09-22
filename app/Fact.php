@@ -189,9 +189,9 @@ class Fact
     {
         if (preg_match('/^1 (?:' . $this->tag . ') ?(.*(?:(?:\n2 CONT ?.*)*))/', $this->gedcom, $match)) {
             return preg_replace("/\n2 CONT ?/", "\n", $match[1]);
-        } else {
-            return '';
         }
+
+        return '';
     }
 
     /**
@@ -234,9 +234,9 @@ class Fact
     {
         if (preg_match('/\n2 (?:' . $tag . ') ?(.*(?:(?:\n3 CONT ?.*)*)*)/', $this->gedcom, $match)) {
             return preg_replace("/\n3 CONT ?/", "\n", $match[1]);
-        } else {
-            return '';
         }
+
+        return '';
     }
 
     /**
@@ -568,10 +568,10 @@ class Fact
             }
 
             return $ret;
-        } else {
-            // One or both events have no date - retain the initial order
-            return $a->sortOrder - $b->sortOrder;
         }
+
+        // One or both events have no date - retain the initial order
+        return $a->sortOrder - $b->sortOrder;
     }
 
     /**

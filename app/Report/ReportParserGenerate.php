@@ -1996,7 +1996,7 @@ class ReportParserGenerate extends ReportParserBase
                             $sql_join                    .= " JOIN `##placelinks` AS {$attr}b ON ({$attr}a.p_file={$attr}b.pl_file AND {$attr}b.pl_p_id={$attr}a.p_id AND {$attr}b.pl_gid=f_id)";
                             $sql_where                   .= " AND {$attr}a.p_place LIKE CONCAT('%', :{$attr}place, '%')";
                             $sql_params[$attr . 'place'] = $match[1];
-                            // Don't unset this filter. This is just initial filtering
+                        // Don't unset this filter. This is just initial filtering
                         } elseif (preg_match('/^(\w*):*(\w*) CONTAINS (.+)$/', $value, $match)) {
                             $sql_where                       .= " AND f_gedcom LIKE CONCAT('%', :{$attr}contains1, '%', :{$attr}contains2, '%', :{$attr}contains3, '%')";
                             $sql_params[$attr . 'contains1'] = $match[1];
@@ -2860,14 +2860,14 @@ class ReportParserGenerate extends ReportParserBase
                 if (isset($this->vars[$matches[1]]['id'])) {
                     if ($quote) {
                         return "'" . addcslashes($this->vars[$matches[1]]['id'], "'") . "'";
-                    } else {
-                        return $this->vars[$matches[1]]['id'];
                     }
-                } else {
-                    Log::addErrorLog(sprintf('Undefined variable $%s in report', $matches[1]));
 
-                    return '$' . $matches[1];
+                    return $this->vars[$matches[1]]['id'];
                 }
+
+                Log::addErrorLog(sprintf('Undefined variable $%s in report', $matches[1]));
+
+                return '$' . $matches[1];
             },
             $expression
         );

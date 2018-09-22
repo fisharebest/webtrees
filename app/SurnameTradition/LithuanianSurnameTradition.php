@@ -63,17 +63,17 @@ class LithuanianSurnameTradition extends PaternalSurnameTradition implements Sur
                     'NAME' => $this->inflect($match['NAME'], $this->inflect_daughter),
                     'SURN' => $this->inflect($match['SURN'], $this->inflect_male),
                 ]);
-            } else {
-                return array_filter([
-                    'NAME' => $match['NAME'],
-                    'SURN' => $match['SURN'],
-                ]);
             }
-        } else {
-            return [
-                'NAME' => '//',
-            ];
+
+            return array_filter([
+                'NAME' => $match['NAME'],
+                'SURN' => $match['SURN'],
+            ]);
         }
+
+        return [
+            'NAME' => '//',
+        ];
     }
 
     /**
@@ -91,11 +91,11 @@ class LithuanianSurnameTradition extends PaternalSurnameTradition implements Sur
                 'NAME' => $this->inflect($match['NAME'], $this->inflect_male),
                 'SURN' => $this->inflect($match['SURN'], $this->inflect_male),
             ]);
-        } else {
-            return [
-                'NAME' => '//',
-            ];
         }
+
+        return [
+            'NAME' => '//',
+        ];
     }
 
     /**
@@ -113,10 +113,10 @@ class LithuanianSurnameTradition extends PaternalSurnameTradition implements Sur
                 'NAME'   => '//',
                 '_MARNM' => $this->inflect($match['NAME'], $this->inflect_wife),
             ];
-        } else {
-            return [
-                'NAME' => '//',
-            ];
         }
+
+        return [
+            'NAME' => '//',
+        ];
     }
 }

@@ -126,11 +126,13 @@ class Auth
 
         if (self::isManager($tree, $user)) {
             return self::PRIV_NONE;
-        } elseif (self::isMember($tree, $user)) {
-            return self::PRIV_USER;
-        } else {
-            return self::PRIV_PRIVATE;
         }
+
+        if (self::isMember($tree, $user)) {
+            return self::PRIV_USER;
+        }
+
+        return self::PRIV_PRIVATE;
     }
 
     /**
@@ -160,9 +162,9 @@ class Auth
             $visitor->email     = '';
 
             return new User($visitor);
-        } else {
-            return $user;
         }
+
+        return $user;
     }
 
     /**
