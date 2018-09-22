@@ -32,11 +32,8 @@ class ReportParserBase
      * Create a parser for a report
      *
      * @param string $report The XML filename
-     * @param ReportBase $report_root
-     * @param string[][] $vars
-     * @param Tree $tree
      */
-    public function __construct($report, ReportBase $report_root, $vars, Tree $tree)
+    public function __construct(string $report)
     {
         $this->xml_parser = xml_parser_create();
         xml_parser_set_option($this->xml_parser, XML_OPTION_CASE_FOLDING, false);

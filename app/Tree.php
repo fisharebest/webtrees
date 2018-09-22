@@ -451,8 +451,8 @@ class Tree
         ]);
 
         // Gedcom and privacy settings
-        $tree->setPreference('CONTACT_USER_ID', Auth::id());
-        $tree->setPreference('WEBMASTER_USER_ID', Auth::id());
+        $tree->setPreference('CONTACT_USER_ID', (string) Auth::id());
+        $tree->setPreference('WEBMASTER_USER_ID', (string) Auth::id());
         $tree->setPreference('LANGUAGE', WT_LOCALE); // Default to the current admin’s language
         switch (WT_LOCALE) {
             case 'es':

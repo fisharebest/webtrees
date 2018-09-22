@@ -36,7 +36,7 @@ class Source extends GedcomRecord
      *
      * @return Source|null
      */
-    public static function getInstance($xref, Tree $tree, $gedcom = null)
+    public static function getInstance(string $xref, Tree $tree, string $gedcom = null)
     {
         $record = parent::getInstance($xref, $tree, $gedcom);
 
@@ -89,7 +89,7 @@ class Source extends GedcomRecord
      *
      * @return null|string
      */
-    protected static function fetchGedcomRecord($xref, $tree_id)
+    protected static function fetchGedcomRecord(string $xref, int $tree_id)
     {
         return Database::prepare(
             "SELECT s_gedcom FROM `##sources` WHERE s_id = :xref AND s_file = :tree_id"

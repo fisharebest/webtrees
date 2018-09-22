@@ -26,7 +26,6 @@ use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module;
-use Fisharebest\Webtrees\Report\ReportBase;
 use Fisharebest\Webtrees\Report\ReportHtml;
 use Fisharebest\Webtrees\Report\ReportParserGenerate;
 use Fisharebest\Webtrees\Report\ReportParserSetup;
@@ -80,7 +79,7 @@ class ReportEngineController extends AbstractBaseController
 
         $report_xml = WT_ROOT . WT_MODULES_DIR . $report . '/report.xml';
 
-        $report_array = (new ReportParserSetup($report_xml, new ReportBase(), [], $tree))->reportProperties();
+        $report_array = (new ReportParserSetup($report_xml))->reportProperties();
         $description  = $report_array['description'];
         $title        = $report_array['title'];
 

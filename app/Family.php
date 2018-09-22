@@ -38,7 +38,7 @@ class Family extends GedcomRecord
      *                             empty string for records with pending deletions
      * @param Tree        $tree
      */
-    public function __construct($xref, $gedcom, $pending, $tree)
+    public function __construct(string $xref, string $gedcom, $pending, Tree $tree)
     {
         parent::__construct($xref, $gedcom, $pending, $tree);
 
@@ -76,7 +76,7 @@ class Family extends GedcomRecord
      *
      * @return Family|null
      */
-    public static function getInstance($xref, Tree $tree, $gedcom = null)
+    public static function getInstance(string $xref, Tree $tree, string $gedcom = null)
     {
         $record = parent::getInstance($xref, $tree, $gedcom);
 
@@ -119,7 +119,7 @@ class Family extends GedcomRecord
      *
      * @return null|string
      */
-    protected static function fetchGedcomRecord($xref, $tree_id)
+    protected static function fetchGedcomRecord(string $xref, int $tree_id)
     {
         return Database::prepare(
             "SELECT f_gedcom FROM `##families` WHERE f_id = :xref AND f_file = :tree_id"

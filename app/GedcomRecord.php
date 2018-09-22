@@ -78,7 +78,7 @@ class GedcomRecord
      *                             empty string for records with pending deletions
      * @param Tree        $tree
      */
-    public function __construct($xref, $gedcom, $pending, $tree)
+    public function __construct(string $xref, string $gedcom, $pending, Tree $tree)
     {
         $this->xref    = $xref;
         $this->gedcom  = $gedcom;
@@ -140,7 +140,7 @@ class GedcomRecord
      *
      * @return GedcomRecord|Individual|Family|Source|Repository|Media|Note|null
      */
-    public static function getInstance($xref, Tree $tree, $gedcom = null)
+    public static function getInstance(string $xref, Tree $tree, string $gedcom = null)
     {
         $tree_id = $tree->getTreeId();
 
@@ -237,7 +237,7 @@ class GedcomRecord
      *
      * @return null|string
      */
-    protected static function fetchGedcomRecord($xref, $tree_id)
+    protected static function fetchGedcomRecord(string $xref, int $tree_id)
     {
         // We don't know what type of object this is. Try each one in turn.
         $data = Individual::fetchGedcomRecord($xref, $tree_id);
@@ -374,7 +374,7 @@ class GedcomRecord
      *
      * @return bool
      */
-    private function canShowRecord($access_level): bool
+    private function canShowRecord(int $access_level): bool
     {
         // This setting would better be called "$ENABLE_PRIVACY"
         if (!$this->tree->getPreference('HIDE_LIVE_PEOPLE')) {
@@ -419,7 +419,7 @@ class GedcomRecord
      *
      * @return bool
      */
-    protected function canShowByType($access_level)
+    protected function canShowByType(int $access_level)
     {
         $fact_privacy = $this->tree->getFactPrivacy();
 
@@ -439,7 +439,7 @@ class GedcomRecord
      *
      * @return bool
      */
-    public function canShow($access_level = null)
+    public function canShow(int $access_level = null)
     {
         if ($access_level === null) {
             $access_level = Auth::accessLevel($this->tree);
@@ -483,7 +483,7 @@ class GedcomRecord
      *
      * @return bool
      */
-    public function canShowName($access_level = null): bool
+    public function canShowName(int $access_level = null): bool
     {
         if ($access_level === null) {
             $access_level = Auth::accessLevel($this->tree);
@@ -510,7 +510,7 @@ class GedcomRecord
      *
      * @return string
      */
-    public function privatizeGedcom($access_level)
+    public function privatizeGedcom(int $access_level)
     {
         if ($access_level == Auth::PRIV_HIDE) {
             // We may need the original record, for example when downloading a GEDCOM or clippings cart
@@ -541,7 +541,7 @@ class GedcomRecord
      *
      * @return string
      */
-    protected function createPrivateGedcomRecord($access_level): string
+    protected function createPrivateGedcomRecord(int $access_level): string
     {
         return '0 @' . $this->xref . '@ ' . static::RECORD_TYPE . "\n1 NOTE " . I18N::translate('Private');
     }
@@ -556,7 +556,7 @@ class GedcomRecord
      *
      * @return void
      */
-    protected function addName($type, $value, $gedcom)
+    protected function addName(string $type, string $value, string $gedcom)
     {
         $this->getAllNames[] = [
             'type'   => $type,
@@ -585,7 +585,7 @@ class GedcomRecord
      *
      * @return void
      */
-    protected function extractNamesFromFacts($level, $fact_type, $facts)
+    protected function extractNamesFromFacts(int $level, string $fact_type, array $facts)
     {
         $sublevel    = $level + 1;
         $subsublevel = $sublevel + 1;
@@ -615,7 +615,7 @@ class GedcomRecord
      */
     public function extractNames()
     {
-        $this->addName(static::RECORD_TYPE, $this->getFallBackName(), null);
+        $this->addName(static::RECORD_TYPE, $this->getFallBackName(), '');
     }
 
     /**
@@ -709,7 +709,7 @@ class GedcomRecord
     /**
      * Allow the choice of primary name to be overidden, e.g. in a search result
      *
-     * @param int $n
+     * @param int|null $n
      *
      * @return void
      */
@@ -834,7 +834,7 @@ class GedcomRecord
      *
      * @return string
      */
-    public function formatFirstMajorFact($facts, $style): string
+    public function formatFirstMajorFact(string $facts, int $style): string
     {
         foreach ($this->getFacts($facts, true) as $event) {
             // Only display if it has a date or place (or both)
@@ -863,7 +863,7 @@ class GedcomRecord
      *
      * @return Individual[]
      */
-    public function linkedIndividuals($link): array
+    public function linkedIndividuals(string $link): array
     {
         $rows = Database::prepare(
             "SELECT i_id AS xref, i_gedcom AS gedcom" .
@@ -897,7 +897,7 @@ class GedcomRecord
      *
      * @return Family[]
      */
-    public function linkedFamilies($link): array
+    public function linkedFamilies(string $link): array
     {
         $rows = Database::prepare(
             "SELECT f_id AS xref, f_gedcom AS gedcom" .
@@ -929,7 +929,7 @@ class GedcomRecord
      *
      * @return Source[]
      */
-    public function linkedSources($link): array
+    public function linkedSources(string $link): array
     {
         $rows = Database::prepare(
             "SELECT s_id AS xref, s_gedcom AS gedcom" .
@@ -962,7 +962,7 @@ class GedcomRecord
      *
      * @return Media[]
      */
-    public function linkedMedia($link): array
+    public function linkedMedia(string $link): array
     {
         $rows = Database::prepare(
             "SELECT m_id AS xref, m_gedcom AS gedcom" .
@@ -993,7 +993,7 @@ class GedcomRecord
      *
      * @return Note[]
      */
-    public function linkedNotes($link): array
+    public function linkedNotes(string $link): array
     {
         $rows = Database::prepare(
             "SELECT o_id AS xref, o_gedcom AS gedcom" .
@@ -1027,7 +1027,7 @@ class GedcomRecord
      *
      * @return Repository[]
      */
-    public function linkedRepositories($link): array
+    public function linkedRepositories(string $link): array
     {
         $rows = Database::prepare(
             "SELECT o_id AS xref, o_gedcom AS gedcom" .
@@ -1065,7 +1065,7 @@ class GedcomRecord
      *
      * @return Date[]
      */
-    public function getAllEventDates($event_type): array
+    public function getAllEventDates(string $event_type): array
     {
         $dates = [];
         foreach ($this->getFacts($event_type) as $event) {
@@ -1084,7 +1084,7 @@ class GedcomRecord
      *
      * @return Place[]
      */
-    public function getAllEventPlaces($event_type): array
+    public function getAllEventPlaces(string $event_type): array
     {
         $places = [];
         foreach ($this->getFacts($event_type) as $event) {
@@ -1105,7 +1105,7 @@ class GedcomRecord
      *
      * @return Fact|null
      */
-    public function getFirstFact($tag)
+    public function getFirstFact(string $tag)
     {
         foreach ($this->getFacts() as $fact) {
             if ($fact->getTag() === $tag) {
@@ -1126,7 +1126,7 @@ class GedcomRecord
      *
      * @return Fact[]
      */
-    public function getFacts($filter = null, $sort = false, $access_level = null, $override = false): array
+    public function getFacts(string $filter = null, bool $sort = false, int $access_level = null, bool $override = false): array
     {
         if ($access_level === null) {
             $access_level = Auth::accessLevel($this->tree);
@@ -1155,7 +1155,7 @@ class GedcomRecord
      *
      * @return string
      */
-    public function lastChangeTimestamp($sorting = false)
+    public function lastChangeTimestamp(bool $sorting = false)
     {
         $chan = $this->getFirstFact('CHAN');
 
@@ -1213,7 +1213,7 @@ class GedcomRecord
      *
      * @return void
      */
-    public function createFact($gedcom, $update_chan)
+    public function createFact(string $gedcom, bool $update_chan)
     {
         $this->updateFact(null, $gedcom, $update_chan);
     }
@@ -1226,7 +1226,7 @@ class GedcomRecord
      *
      * @return void
      */
-    public function deleteFact($fact_id, $update_chan)
+    public function deleteFact(string $fact_id, bool $update_chan)
     {
         $this->updateFact($fact_id, null, $update_chan);
     }
@@ -1241,7 +1241,7 @@ class GedcomRecord
      * @return void
      * @throws Exception
      */
-    public function updateFact($fact_id, $gedcom, $update_chan)
+    public function updateFact(string $fact_id, string $gedcom, bool $update_chan)
     {
         // MSDOS line endings will break things in horrible ways
         $gedcom = preg_replace('/[\r\n]+/', "\n", $gedcom);
@@ -1316,7 +1316,7 @@ class GedcomRecord
      *
      * @return void
      */
-    public function updateRecord($gedcom, $update_chan)
+    public function updateRecord(string $gedcom, bool $update_chan)
     {
         // MSDOS line endings will break things in horrible ways
         $gedcom = preg_replace('/[\r\n]+/', "\n", $gedcom);
@@ -1393,7 +1393,7 @@ class GedcomRecord
      *
      * @return void
      */
-    public function removeLinks($xref, $update_chan)
+    public function removeLinks(string $xref, bool $update_chan)
     {
         $value = '@' . $xref . '@';
 

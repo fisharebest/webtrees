@@ -180,7 +180,7 @@ class Database
     /**
      * Prepare an SQL statement for execution.
      *
-     * @param $sql
+     * @param string $sql
      *
      * @throws Exception
      *
