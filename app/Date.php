@@ -576,16 +576,17 @@ class Date
     {
         if ($d2 === null) {
             return $d1->date1->getAgeFull(WT_CLIENT_JD);
-        } else {
-            // If dates overlap, then can’t calculate age.
-            if (self::compare($d1, $d2)) {
-                return $d1->date1->getAgeFull($d2->minimumJulianDay());
-            } elseif (self::compare($d1, $d2) == 0 && $d1->minimumJulianDay() == $d2->minimumJulianDay()) {
-                return '0d';
-            } else {
-                return '';
-            }
         }
+
+        if (self::compare($d1, $d2) !== 0) {
+            return $d1->date1->getAgeFull($d2->minimumJulianDay());
+        }
+
+        if ($d1->minimumJulianDay() == $d2->minimumJulianDay()) {
+            return '0d';
+        }
+
+        return '';
     }
 
     /**
