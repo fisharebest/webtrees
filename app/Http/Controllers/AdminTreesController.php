@@ -1609,10 +1609,17 @@ class AdminTreesController extends AbstractBaseController
             }
         }
 
-        foreach (Tree::getAll() as $tree) {
-            if (!in_array($tree->getName(), $gedcom_files)) {
-                FlashMessages::addMessage(I18N::translate('The family tree “%s” has been deleted.', e($tree->getTitle())), 'success');
-                $tree->delete();
+        foreach (Tree::getAll() as $tmp_tree) {
+            if (!in_array($tmp_tree->getName(), $gedcom_files)) {
+                FlashMessages::addMessage(
+                    I18N::translate(
+                        'The family tree “%s” has been deleted.', 
+                        e($tmp_tree->getTitle())
+                    ), 
+                    'success'
+                );
+                
+                $tmp_tree->delete();
             }
         }
 
