@@ -72,7 +72,7 @@ class JulianDate extends CalendarDate
 
             return (int) $match[1] + 1;
         }
-        
+
         if (preg_match('/^(\d+) B\.C\.$/', $year, $match)) {
             return - (int) $match[1];
         }
