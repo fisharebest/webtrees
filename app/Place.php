@@ -58,13 +58,13 @@ class Place
      * Get the identifier for a place.
      *
      * @return int
-     * @throws \Exception
      */
     public function getPlaceId(): int
     {
         $place_id = 0;
+
         foreach (array_reverse($this->gedcom_place) as $place) {
-            $place_id = Database::prepare(
+            $place_id = (int) Database::prepare(
                 "SELECT p_id FROM `##places` WHERE p_parent_id = :parent_id AND p_place = :place AND p_file = :tree_id"
             )->execute([
                 'parent_id' => $place_id,
@@ -90,7 +90,6 @@ class Place
      * Get the lower level places.
      *
      * @return Place[]
-     * @throws \Exception
      */
     public function getChildPlaces(): array
     {
@@ -231,7 +230,6 @@ class Place
      * @param Tree $tree
      *
      * @return Place[]
-     * @throws \Exception
      */
     public static function allPlaces(Tree $tree): array
     {
@@ -269,7 +267,6 @@ class Place
      * @param Tree   $tree
      *
      * @return Place[]
-     * @throws \Exception
      */
     public static function findPlaces($filter, Tree $tree): array
     {

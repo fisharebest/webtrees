@@ -632,10 +632,10 @@ class GedcomRecord
                 $this->extractNames();
                 // No name found? Use a fallback.
                 if (!$this->getAllNames) {
-                    $this->addName(static::RECORD_TYPE, $this->getFallBackName(), null);
+                    $this->addName(static::RECORD_TYPE, $this->getFallBackName(), '');
                 }
             } else {
-                $this->addName(static::RECORD_TYPE, I18N::translate('Private'), null);
+                $this->addName(static::RECORD_TYPE, I18N::translate('Private'), '');
             }
         }
 
@@ -1228,7 +1228,7 @@ class GedcomRecord
      */
     public function deleteFact(string $fact_id, bool $update_chan)
     {
-        $this->updateFact($fact_id, null, $update_chan);
+        $this->updateFact($fact_id, '', $update_chan);
     }
 
     /**
@@ -1250,7 +1250,7 @@ class GedcomRecord
         if ($this->pending === '') {
             throw new Exception('Cannot edit a deleted record');
         }
-        if ($gedcom && !preg_match('/^1 ' . WT_REGEX_TAG . '/', $gedcom)) {
+        if ($gedcom !== '' && !preg_match('/^1 ' . WT_REGEX_TAG . '/', $gedcom)) {
             throw new Exception('Invalid GEDCOM data passed to GedcomRecord::updateFact(' . $gedcom . ')');
         }
 
@@ -1267,7 +1267,7 @@ class GedcomRecord
         foreach ($this->getFacts(null, false, Auth::PRIV_HIDE) as $fact) {
             if (!$fact->isPendingDeletion()) {
                 if ($fact->getFactId() === $fact_id) {
-                    if ($gedcom) {
+                    if ($gedcom !== '') {
                         $new_gedcom .= "\n" . $gedcom;
                     }
                     $fact_id = true; // Only replace/delete one copy of a duplicate fact
