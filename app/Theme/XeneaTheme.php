@@ -47,11 +47,7 @@ class XeneaTheme extends AbstractTheme implements ThemeInterface
             'distribution-chart-low-values'  => 'c3dfff',
         ];
 
-        if (array_key_exists($parameter_name, $parameters)) {
-            return $parameters[$parameter_name];
-        }
-
-        return parent::parameter($parameter_name);
+        return $parameters[$parameter_name] ?? parent::parameter($parameter_name);
     }
 
     /**
