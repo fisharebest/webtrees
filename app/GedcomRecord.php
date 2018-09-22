@@ -303,11 +303,7 @@ class GedcomRecord
      */
     public function getGedcom()
     {
-        if ($this->pending === null) {
-            return $this->gedcom;
-        }
-
-        return $this->pending;
+        return $this->pending ?? $this->gedcom;
     }
 
     /**
