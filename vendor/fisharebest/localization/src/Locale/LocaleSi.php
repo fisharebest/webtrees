@@ -5,20 +5,24 @@ use Fisharebest\Localization\Language\LanguageSi;
 /**
  * Class LocaleSi - Sinhala
  *
- * @author        Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2015 Greg Roach
- * @license       GPLv3+
+ * @author    Greg Roach <fisharebest@gmail.com>
+ * @copyright (c) 2018 Greg Roach
+ * @license   GPLv3+
  */
-class LocaleSi extends AbstractLocale implements LocaleInterface {
-	public function collation() {
-		return 'sinhala_ci';
-	}
+class LocaleSi extends AbstractLocale implements LocaleInterface
+{
+    public function collation()
+    {
+        return 'sinhala_ci';
+    }
 
-	public function endonym() {
-		return 'සිංහල';
-	}
+    public function endonym()
+    {
+        return 'සිංහල';
+    }
 
-	public function language() {
-		return new LanguageSi;
-	}
+    public function language()
+    {
+        return new LanguageSi();
+    }
 }

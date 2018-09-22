@@ -246,10 +246,10 @@ class ReportPdf extends ReportBase
      * Create a new image object - ReportPdf
      *
      * @param string $file  Filename
-     * @param string $x
-     * @param string $y
-     * @param float  $w    Image width
-     * @param float  $h    Image height
+     * @param float  $x
+     * @param float  $y
+     * @param float  $w     Image width
+     * @param float  $h     Image height
      * @param string $align L:left, C:center, R:right or empty to use x/y
      * @param string $ln    T:same line, N:next line
      *

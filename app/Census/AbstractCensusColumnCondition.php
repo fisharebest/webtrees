@@ -24,37 +24,37 @@ use Fisharebest\Webtrees\Individual;
  */
 abstract class AbstractCensusColumnCondition extends AbstractCensusColumn implements CensusColumnInterface
 {
-    /* Text to display for married males */
+    /** @var string Text to display for married males */
     protected $husband = '';
 
-    /* Text to display for married females */
+    /** @var string Text to display for married females */
     protected $wife = '';
 
-    /* Text to display for unmarried males */
+    /** @var string Text to display for unmarried males */
     protected $bachelor = '';
 
-    /* Text to display for unmarried females */
+    /** @var string Text to display for unmarried females */
     protected $spinster = '';
 
-    /* Text to display for male children */
+    /** @var string Text to display for male children */
     protected $boy = '';
 
-    /* Text to display for female children */
+    /** @var string Text to display for female children */
     protected $girl = '';
 
-    /* Text to display for divorced males */
+    /** @var string Text to display for divorced males */
     protected $divorce = '';
 
-    /* Text to display for divorced females */
+    /** @var string Text to display for divorced females */
     protected $divorcee = '';
 
-    /* Text to display for widowed males */
+    /** @var string Text to display for widowed males */
     protected $widower = '';
 
-    /* Text to display for widowed females */
+    /** @var string Text to display for widowed females */
     protected $widow = '';
 
-    /* At what age is this individual recorded as an adult */
+    /** @var int At what age is this individual recorded as an adult */
     protected $age_adult = 15;
 
     /**
@@ -99,7 +99,7 @@ abstract class AbstractCensusColumnCondition extends AbstractCensusColumn implem
      */
     private function isChild(Individual $individual): bool
     {
-        $age = (int)Date::getAge($individual->getEstimatedBirthDate(), $this->date(), 0);
+        $age = Date::getAgeYears($individual->getEstimatedBirthDate(), $this->date());
 
         return $age < $this->age_adult;
     }

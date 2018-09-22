@@ -87,6 +87,8 @@ class Theme
             self::$theme = new WebtreesTheme();
         }
 
+        self::$theme = self::$theme ?? $theme ?? new WebtreesTheme();
+
         return self::$theme;
     }
 }

@@ -18,7 +18,7 @@
 			<div class="input-group" dir="ltr">
 				<div class="input-group-prepend">
 							<span class="input-group-text">
-								<?= WT_DATA_DIR . '/places/' ?>
+								<?= WT_DATA_DIR . 'places/' ?>
 							</span>
 				</div>
 				<select id="serverfile" name="serverfile" class="form-control">

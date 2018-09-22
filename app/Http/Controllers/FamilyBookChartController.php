@@ -154,12 +154,12 @@ class FamilyBookChartController extends AbstractChartController
     /**
      * Prints descendency of passed in person
      *
-     * @param Individual|null $person
      * @param int             $generation
+     * @param Individual|null $person
      *
      * @return float
      */
-    private function printDescendency(Individual $person = null, $generation): float
+    private function printDescendency($generation, Individual $person = null): float
     {
         if ($generation > $this->dgenerations) {
             return 0;
@@ -187,7 +187,7 @@ class FamilyBookChartController extends AbstractChartController
                 echo '<table cellspacing="0" cellpadding="0" border="0" >';
                 foreach ($children as $i => $child) {
                     echo '<tr><td>';
-                    $kids    = $this->printDescendency($child, $generation + 1);
+                    $kids    = $this->printDescendency($generation + 1, $child);
                     $numkids += $kids;
                     echo '</td>';
                     // Print the lines
@@ -221,7 +221,7 @@ class FamilyBookChartController extends AbstractChartController
             } else {
                 // Hidden/empty boxes - to preserve the layout
                 echo '<table cellspacing="0" cellpadding="0" border="0" ><tr><td>';
-                $numkids += $this->printDescendency(null, $generation + 1);
+                $numkids += $this->printDescendency($generation + 1, null);
                 echo '</td></tr></table>';
             }
             echo '</td>';
@@ -265,6 +265,8 @@ class FamilyBookChartController extends AbstractChartController
      *
      * @param Individual $person
      * @param int        $count
+     *
+     * @return void
      */
     private function printPersonPedigree($person, $count)
     {
@@ -425,6 +427,8 @@ class FamilyBookChartController extends AbstractChartController
 
     /**
      * Print empty box
+     *
+     * @return void
      */
 
     private function printEmptyBox()
@@ -437,6 +441,8 @@ class FamilyBookChartController extends AbstractChartController
      *
      * @param Individual $person
      * @param int        $descent_steps
+     *
+     * @return void
      */
     private function printFamilyBook(Individual $person, $descent_steps)
     {
@@ -453,7 +459,7 @@ class FamilyBookChartController extends AbstractChartController
             '</h3>',
             '<table cellspacing="0" cellpadding="0" border="0" ><tr><td class="align-middle">';
             $this->dgenerations = $this->generations;
-            $this->printDescendency($person, 1);
+            $this->printDescendency(1, $person);
             echo '</td><td class="align-middle">';
             $this->printPersonPedigree($person, 1);
             echo '</td></tr></table><br><br><hr class="family-break"><br><br>';

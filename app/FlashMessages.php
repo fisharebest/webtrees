@@ -30,6 +30,8 @@ class FlashMessages
      *
      * @param string $text
      * @param string $status "success", "info", "warning" or "danger"
+     *
+     * @return void
      */
     public static function addMessage($text, $status = 'info')
     {

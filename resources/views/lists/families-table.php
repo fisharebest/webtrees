@@ -250,14 +250,14 @@ for ($year = 1550; $year < 2030; $year += 10) {
 					if ($hdate->gregorianYear() >= 1550 && $hdate->gregorianYear() < 2030) {
 						$birt_by_decade[(int) ($hdate->gregorianYear() / 10) * 10] .= $husb->getSex();
 					}
-					$hage = Date::getAge($hdate, $mdate, 0);
+					$hage = Date::getAgeYears($hdate, $mdate);
 					if ($hage >= 0 && $hage <= $max_age) {
 						$marr_by_age[$hage] .= $husb->getSex();
 					}
 				}
 				?>
-				<td class="center" data-sort="<?= Date::getAge($hdate, $mdate, 1) ?>">
-					<?= Date::getAge($hdate, $mdate, 2) ?>
+				<td class="center" data-sort="<?= Date::getAgeDays($hdate, $mdate) ?>">
+					<?= Date::getAge($hdate, $mdate) ?>
 				</td>
 
 				<!-- Wife name -->
@@ -285,15 +285,15 @@ for ($year = 1550; $year < 2030; $year += 10) {
 					if ($wdate->gregorianYear() >= 1550 && $wdate->gregorianYear() < 2030) {
 						$birt_by_decade[(int) ($wdate->gregorianYear() / 10) * 10] .= $wife->getSex();
 					}
-					$wage = Date::getAge($wdate, $mdate, 0);
+					$wage = Date::getAgeYears($wdate, $mdate);
 					if ($wage >= 0 && $wage <= $max_age) {
 						$marr_by_age[$wage] .= $wife->getSex();
 					}
 				}
 				?>
 
-				<td class="center" data-sort="<?= Date::getAge($wdate, $mdate, 1) ?>">
-					<?= Date::getAge($wdate, $mdate, 2) ?>
+				<td class="center" data-sort="<?= Date::getAgeDays($wdate, $mdate) ?>">
+					<?= Date::getAge($wdate, $mdate) ?>
 				</td>
 
 				<!-- Marriage date -->
@@ -314,7 +314,7 @@ for ($year = 1550; $year < 2030; $year += 10) {
 
 				<!-- Marriage anniversary -->
 				<td class="center" data-sort="<?= -$family->getMarriageDate()->julianDay() ?>">
-					<?= Date::getAge($family->getMarriageDate(), null, 2) ?>
+					<?= Date::getAge($family->getMarriageDate(), null) ?>
 				</td>
 
 				<!-- Marriage place -->

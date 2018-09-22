@@ -4,23 +4,28 @@
  * Class ScriptTaml - Representation of the Tamil script.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2015 Greg Roach
+ * @copyright (c) 2018 Greg Roach
  * @license   GPLv3+
  */
-class ScriptTaml extends AbstractScript implements ScriptInterface {
-	public function code() {
-		return 'Taml';
-	}
+class ScriptTaml extends AbstractScript implements ScriptInterface
+{
+    public function code()
+    {
+        return 'Taml';
+    }
 
-	public function numerals() {
-		return array('௦', '௧', '௨', '௩', '௪', '௫', '௬', '௭', '௮', '௯');
-	}
+    public function numerals()
+    {
+        return array('௦', '௧', '௨', '௩', '௪', '௫', '௬', '௭', '௮', '௯');
+    }
 
-	public function number() {
-		return '346';
-	}
+    public function number()
+    {
+        return '346';
+    }
 
-	public function unicodeName() {
-		return 'Tamil';
-	}
+    public function unicodeName()
+    {
+        return 'Tamil';
+    }
 }

@@ -4,15 +4,18 @@
  * Class AbstractTerritory - Representation of the territory TT - Trinidad and Tobago.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2015 Greg Roach
+ * @copyright (c) 2018 Greg Roach
  * @license   GPLv3+
  */
-class TerritoryTt extends AbstractTerritory implements TerritoryInterface {
-	public function code() {
-		return 'TT';
-	}
+class TerritoryTt extends AbstractTerritory implements TerritoryInterface
+{
+    public function code()
+    {
+        return 'TT';
+    }
 
-	public function firstDay() {
-		return 0;
-	}
+    public function firstDay()
+    {
+        return 0;
+    }
 }

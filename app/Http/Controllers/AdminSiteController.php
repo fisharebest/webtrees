@@ -36,6 +36,7 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class AdminSiteController extends AbstractBaseController
 {
+    /** @var string */
     protected $layout = 'layouts/administration';
 
     /**
@@ -622,7 +623,7 @@ class AdminSiteController extends AbstractBaseController
     public function serverInformation(): Response
     {
         $mysql_variables = Database::prepare("SHOW VARIABLES")->fetchAssoc();
-        $mysql_variables = array_map(function ($text) {
+        $mysql_variables = array_map(function (string $text): string {
             return str_replace(',', ', ', $text);
         }, $mysql_variables);
 

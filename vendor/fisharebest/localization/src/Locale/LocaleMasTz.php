@@ -5,12 +5,14 @@ use Fisharebest\Localization\Territory\TerritoryTz;
 /**
  * Class LocaleMasTz
  *
- * @author        Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2015 Greg Roach
- * @license       GPLv3+
+ * @author    Greg Roach <fisharebest@gmail.com>
+ * @copyright (c) 2018 Greg Roach
+ * @license   GPLv3+
  */
-class LocaleMasTz extends LocaleMas {
-	public function territory() {
-		return new TerritoryTz;
-	}
+class LocaleMasTz extends LocaleMas
+{
+    public function territory()
+    {
+        return new TerritoryTz();
+    }
 }

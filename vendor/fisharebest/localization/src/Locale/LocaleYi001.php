@@ -3,9 +3,10 @@
 /**
  * Class LocaleYi001
  *
- * @author        Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2015 Greg Roach
- * @license       GPLv3+
+ * @author    Greg Roach <fisharebest@gmail.com>
+ * @copyright (c) 2018 Greg Roach
+ * @license   GPLv3+
  */
-class LocaleYi001 extends LocaleYi {
+class LocaleYi001 extends LocaleYi
+{
 }

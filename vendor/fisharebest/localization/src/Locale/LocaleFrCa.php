@@ -5,20 +5,24 @@ use Fisharebest\Localization\Territory\TerritoryCa;
 /**
  * Class LocaleFrCa - Canadian French
  *
- * @author        Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2015 Greg Roach
- * @license       GPLv3+
+ * @author    Greg Roach <fisharebest@gmail.com>
+ * @copyright (c) 2018 Greg Roach
+ * @license   GPLv3+
  */
-class LocaleFrCa extends LocaleFr {
-	public function endonym() {
-		return 'français canadien';
-	}
+class LocaleFrCa extends LocaleFr
+{
+    public function endonym()
+    {
+        return 'français canadien';
+    }
 
-	public function endonymSortable() {
-		return 'FRANCAIS CANADIEN';
-	}
+    public function endonymSortable()
+    {
+        return 'FRANCAIS CANADIEN';
+    }
 
-	public function territory() {
-		return new TerritoryCa;
-	}
+    public function territory()
+    {
+        return new TerritoryCa();
+    }
 }

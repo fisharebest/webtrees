@@ -90,7 +90,7 @@ class AdminPhpGedViewController extends AbstractBaseController
         'themes/xenea/'       => 'xenea',
     ];
 
-
+    /** @var string */
     protected $layout = 'layouts/administration';
 
     /**
@@ -1467,7 +1467,7 @@ class AdminPhpGedViewController extends AbstractBaseController
             glob('../*/config.php') ?: []
         );
 
-        return array_map(function (string $path) {
+        return array_map(function (string $path): string {
             return dirname($path) . DIRECTORY_SEPARATOR;
         }, $php_paths);
     }

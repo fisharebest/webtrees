@@ -920,7 +920,7 @@ class SearchController extends AbstractBaseController
                                 break;
                             case 'SDX_STD':
                                 $sdx = Soundex::russell($field_value);
-                                if ($sdx !== null) {
+                                if ($sdx !== '') {
                                     $sdx = explode(':', $sdx);
                                     foreach ($sdx as $k => $v) {
                                         $sdx[$k] = "i_n.n_soundex_givn_std LIKE CONCAT('%', ?, '%')";
@@ -967,7 +967,7 @@ class SearchController extends AbstractBaseController
                                 break;
                             case 'SDX_STD':
                                 $sdx = Soundex::russell($field_value);
-                                if ($sdx !== null) {
+                                if ($sdx !== '') {
                                     $sdx = explode(':', $sdx);
                                     foreach ($sdx as $k => $v) {
                                         $sdx[$k] = "i_n.n_soundex_surn_std LIKE CONCAT('%', ?, '%')";
@@ -1104,7 +1104,7 @@ class SearchController extends AbstractBaseController
                                 break;
                             case 'SDX_STD':
                                 $sdx = Soundex::russell($field_value);
-                                if ($sdx !== null) {
+                                if ($sdx !== '') {
                                     $sdx = explode(':', $sdx);
                                     foreach ($sdx as $k => $v) {
                                         $sdx[$k] = "{$table}.n_soundex_surn_std LIKE CONCAT('%', ?, '%')";

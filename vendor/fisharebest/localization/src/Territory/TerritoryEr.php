@@ -4,15 +4,18 @@
  * Class AbstractTerritory - Representation of the territory ER - Eritrea.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2015 Greg Roach
+ * @copyright (c) 2018 Greg Roach
  * @license   GPLv3+
  */
-class TerritoryEr extends AbstractTerritory implements TerritoryInterface {
-	public function code() {
-		return 'ER';
-	}
+class TerritoryEr extends AbstractTerritory implements TerritoryInterface
+{
+    public function code()
+    {
+        return 'ER';
+    }
 
-	public function firstDay() {
-		return 6;
-	}
+    public function firstDay()
+    {
+        return 6;
+    }
 }

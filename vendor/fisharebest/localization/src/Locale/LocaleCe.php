@@ -5,24 +5,29 @@ use Fisharebest\Localization\Language\LanguageCe;
 /**
  * Class LocaleCe - Chechen
  *
- * @author        Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2015 Greg Roach
- * @license       GPLv3+
+ * @author    Greg Roach <fisharebest@gmail.com>
+ * @copyright (c) 2018 Greg Roach
+ * @license   GPLv3+
  */
-class LocaleCe extends AbstractLocale implements LocaleInterface {
-	public function endonym() {
-		return 'нохчийн';
-	}
+class LocaleCe extends AbstractLocale implements LocaleInterface
+{
+    public function endonym()
+    {
+        return 'нохчийн';
+    }
 
-	public function endonymSortable() {
-		return 'НОХЧИЙН';
-	}
+    public function endonymSortable()
+    {
+        return 'НОХЧИЙН';
+    }
 
-	public function language() {
-		return new LanguageCe;
-	}
+    public function language()
+    {
+        return new LanguageCe();
+    }
 
-	protected function percentFormat() {
-		return '%s' . self::NBSP . self::PERCENT;
-	}
+    protected function percentFormat()
+    {
+        return self::PLACEHOLDER . self::NBSP . self::PERCENT;
+    }
 }

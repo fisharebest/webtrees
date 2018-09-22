@@ -175,6 +175,8 @@ class FunctionsExport
      *                                'toANSI':       should the output be produced in ISO-8859-1 instead of UTF-8? (yes, no)
      *                                'path':         what constant should prefix all media file paths? (eg: media/  or c:\my pictures\my family
      *                                'slashes':      what folder separators apply to media file paths? (forward, backward)
+     *
+     * @return void
      */
     public static function exportGedcom(Tree $tree, $gedout, $exportOptions)
     {

@@ -1675,7 +1675,7 @@ abstract class AbstractTheme
      */
     public function menuMyPage(): Menu
     {
-        return new Menu(I18N::translate('My page'), route('user-page'), 'menu-mypage');
+        return new Menu(I18N::translate('My page'), route('user-page', ['ged' => $this->tree->getName()]), 'menu-mypage');
     }
 
     /**

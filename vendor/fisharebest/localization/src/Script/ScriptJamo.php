@@ -4,15 +4,18 @@
  * Class ScriptJamo - Representation of the Jamo script.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2015 Greg Roach
+ * @copyright (c) 2018 Greg Roach
  * @license   GPLv3+
  */
-class ScriptJamo extends AbstractScript implements ScriptInterface {
-	public function code() {
-		return 'Jamo';
-	}
+class ScriptJamo extends AbstractScript implements ScriptInterface
+{
+    public function code()
+    {
+        return 'Jamo';
+    }
 
-	public function number() {
-		return '284';
-	}
+    public function number()
+    {
+        return '284';
+    }
 }

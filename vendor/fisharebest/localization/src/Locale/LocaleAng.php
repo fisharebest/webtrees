@@ -5,20 +5,24 @@ use Fisharebest\Localization\Language\LanguageAng;
 /**
  * Class LocaleAng - Anglo-Saxon / Old-English
  *
- * @author        Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2016 Greg Roach
- * @license       GPLv3+
+ * @author    Greg Roach <fisharebest@gmail.com>
+ * @copyright (c) 2018 Greg Roach
+ * @license   GPLv3+
  */
-class LocaleAng extends AbstractLocale implements LocaleInterface {
-	public function endonym() {
-		return 'Ænglisc';
-	}
+class LocaleAng extends AbstractLocale implements LocaleInterface
+{
+    public function endonym()
+    {
+        return 'Ænglisc';
+    }
 
-	public function endonymSortable() {
-		return 'ÆNGLISC';
-	}
+    public function endonymSortable()
+    {
+        return 'ÆNGLISC';
+    }
 
-	public function language() {
-		return new LanguageAng;
-	}
+    public function language()
+    {
+        return new LanguageAng();
+    }
 }

@@ -879,6 +879,8 @@ class FunctionsEdit
      *
      * @param Tree   $tree
      * @param string $fact
+     *
+     * @return void
      */
     public static function addSimpleTags(Tree $tree, $fact)
     {
@@ -913,6 +915,8 @@ class FunctionsEdit
      *
      * @param Tree   $tree
      * @param string $fact the new fact we are adding
+     *
+     * @return void
      */
     public static function createAddForm(Tree $tree, $fact)
     {
@@ -957,6 +961,8 @@ class FunctionsEdit
      * Create a form to edit a Fact object.
      *
      * @param Fact $fact
+     *
+     * @return void
      */
     public static function createEditForm(Fact $fact)
     {
@@ -1106,6 +1112,8 @@ class FunctionsEdit
      * @param Tree   $tree
      * @param string $level1tag the type of the level 1 gedcom record
      * @param bool   $add_date
+     *
+     * @return void
      */
     public static function insertMissingSubtags(Tree $tree, $level1tag, $add_date = false)
     {

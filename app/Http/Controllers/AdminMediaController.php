@@ -44,6 +44,7 @@ class AdminMediaController extends AbstractBaseController
     // How many files to upload on one form.
     const MAX_UPLOAD_FILES = 10;
 
+    /** @var string */
     protected $layout = 'layouts/administration';
 
     /**
@@ -223,7 +224,7 @@ class AdminMediaController extends AbstractBaseController
                 foreach ($rows as $row) {
                     $media       = Media::getInstance($row->xref, Tree::findById($row->gedcom_id), $row->gedcom);
                     $media_files = $media->mediaFiles();
-                    $media_files = array_map(function (MediaFile $media_file) {
+                    $media_files = array_map(function (MediaFile $media_file): string {
                         return $media_file->displayImage(150, 150, '', []);
                     }, $media_files);
                     $data[]      = [
@@ -320,7 +321,7 @@ class AdminMediaController extends AbstractBaseController
 
                 // Filter unused files
                 if ($search) {
-                    $unused_files = array_filter($unused_files, function ($x) use ($search): bool {
+                    $unused_files = array_filter($unused_files, function (string $x) use ($search): bool {
                         return strpos($x, $search) !== false;
                     });
                 }

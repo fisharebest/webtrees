@@ -36,7 +36,7 @@ class Repository extends GedcomRecord
      *
      * @return Repository|null
      */
-    public static function getInstance($xref, Tree $tree, $gedcom = null)
+    public static function getInstance(string $xref, Tree $tree, string $gedcom = null)
     {
         $record = parent::getInstance($xref, $tree, $gedcom);
 
@@ -55,7 +55,7 @@ class Repository extends GedcomRecord
      *
      * @return null|string
      */
-    protected static function fetchGedcomRecord($xref, $tree_id)
+    protected static function fetchGedcomRecord(string $xref, int $tree_id)
     {
         return Database::prepare(
             "SELECT o_gedcom FROM `##other` WHERE o_id = :xref AND o_file = :tree_id AND o_type = 'REPO'"

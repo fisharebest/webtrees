@@ -7,19 +7,23 @@ use Fisharebest\Localization\Territory\TerritoryTz;
  * Class LanguageRwk - Representation of the Rwa language.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2015 Greg Roach
+ * @copyright (c) 2018 Greg Roach
  * @license   GPLv3+
  */
-class LanguageRwk extends AbstractLanguage implements LanguageInterface {
-	public function code() {
-		return 'rwk';
-	}
+class LanguageRwk extends AbstractLanguage implements LanguageInterface
+{
+    public function code()
+    {
+        return 'rwk';
+    }
 
-	public function defaultTerritory() {
-		return new TerritoryTz;
-	}
+    public function defaultTerritory()
+    {
+        return new TerritoryTz();
+    }
 
-	public function pluralRule() {
-		return new PluralRule1;
-	}
+    public function pluralRule()
+    {
+        return new PluralRule1();
+    }
 }

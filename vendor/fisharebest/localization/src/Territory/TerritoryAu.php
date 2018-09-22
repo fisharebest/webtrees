@@ -4,15 +4,18 @@
  * Class AbstractTerritory - Representation of the territory AU - Australia.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2015 Greg Roach
+ * @copyright (c) 2018 Greg Roach
  * @license   GPLv3+
  */
-class TerritoryAu extends AbstractTerritory implements TerritoryInterface {
-	public function code() {
-		return 'AU';
-	}
+class TerritoryAu extends AbstractTerritory implements TerritoryInterface
+{
+    public function code()
+    {
+        return 'AU';
+    }
 
-	public function firstDay() {
-		return 0;
-	}
+    public function firstDay()
+    {
+        return 0;
+    }
 }

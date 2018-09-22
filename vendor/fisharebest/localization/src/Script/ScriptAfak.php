@@ -4,15 +4,18 @@
  * Class ScriptAraf - Representation of the Afaka script.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2015 Greg Roach
+ * @copyright (c) 2018 Greg Roach
  * @license   GPLv3+
  */
-class ScriptAfak extends AbstractScript implements ScriptInterface {
-	public function code() {
-		return 'Afak';
-	}
+class ScriptAfak extends AbstractScript implements ScriptInterface
+{
+    public function code()
+    {
+        return 'Afak';
+    }
 
-	public function number() {
-		return '439';
-	}
+    public function number()
+    {
+        return '439';
+    }
 }

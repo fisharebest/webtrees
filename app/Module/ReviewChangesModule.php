@@ -118,8 +118,9 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
                 $content .= '<a href="' . e(route('show-pending', ['ged' => $tree->getName()])) . '">' . I18N::translate('There are pending changes for you to moderate.') . '</a><br>';
             }
             if ($sendmail === '1') {
-                $content .= I18N::translate('Last email reminder was sent ') . FunctionsDate::formatTimestamp(Site::getPreference('LAST_CHANGE_EMAIL')) . '<br>';
-                $content .= I18N::translate('Next email reminder will be sent after ') . FunctionsDate::formatTimestamp((int)Site::getPreference('LAST_CHANGE_EMAIL') + (60 * 60 * 24 * $days)) . '<br><br>';
+                $last_email_timestamp = (int) Site::getPreference('LAST_CHANGE_EMAIL');
+                $content .= I18N::translate('Last email reminder was sent ') . FunctionsDate::formatTimestamp($last_email_timestamp) . '<br>';
+                $content .= I18N::translate('Next email reminder will be sent after ') . FunctionsDate::formatTimestamp($last_email_timestamp + 60 * 60 * 24 * $days) . '<br><br>';
             }
             $content .= '<ul>';
             $changes = Database::prepare(

@@ -66,7 +66,7 @@ class SourceController extends AbstractBaseController
 
         usort(
             $facts,
-            function (Fact $x, Fact $y) {
+            function (Fact $x, Fact $y): int {
                 static $order = [
                     'TITL' => 0,
                     'ABBR' => 1,

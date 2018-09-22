@@ -4,19 +4,23 @@
  * Class ScriptRunr - Representation of the Runic script.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2015 Greg Roach
+ * @copyright (c) 2018 Greg Roach
  * @license   GPLv3+
  */
-class ScriptRunr extends AbstractScript implements ScriptInterface {
-	public function code() {
-		return 'Runr';
-	}
+class ScriptRunr extends AbstractScript implements ScriptInterface
+{
+    public function code()
+    {
+        return 'Runr';
+    }
 
-	public function number() {
-		return '211';
-	}
+    public function number()
+    {
+        return '211';
+    }
 
-	public function unicodeName() {
-		return 'Runic';
-	}
+    public function unicodeName()
+    {
+        return 'Runic';
+    }
 }

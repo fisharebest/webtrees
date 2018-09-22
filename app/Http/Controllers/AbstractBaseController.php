@@ -45,6 +45,7 @@ use Symfony\Component\HttpFoundation\Response;
  */
 abstract class AbstractBaseController
 {
+    /** @var string */
     protected $layout = 'layouts/default';
 
     /**

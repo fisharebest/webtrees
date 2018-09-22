@@ -4,15 +4,18 @@
  * Class ScriptMaya - Representation of the Mayan hieroglyphs script.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2015 Greg Roach
+ * @copyright (c) 2018 Greg Roach
  * @license   GPLv3+
  */
-class ScriptMaya extends AbstractScript implements ScriptInterface {
-	public function code() {
-		return 'Maya';
-	}
+class ScriptMaya extends AbstractScript implements ScriptInterface
+{
+    public function code()
+    {
+        return 'Maya';
+    }
 
-	public function number() {
-		return '090';
-	}
+    public function number()
+    {
+        return '090';
+    }
 }

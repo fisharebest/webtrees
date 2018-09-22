@@ -358,6 +358,8 @@ class Fact
      * Used to convert a real fact (e.g. BIRT) into a close-relative’s fact (e.g. _BIRT_CHIL)
      *
      * @param string $tag
+     *
+     * @return void
      */
     public function setTag($tag)
     {
@@ -391,6 +393,8 @@ class Fact
 
     /**
      * This is a newly deleted fact, pending approval.
+     *
+     * @return void
      */
     public function setPendingDeletion()
     {
@@ -410,6 +414,8 @@ class Fact
 
     /**
      * This is a newly added fact, pending approval.
+     *
+     * @return void
      */
     public function setPendingAddition()
     {
@@ -438,7 +444,7 @@ class Fact
         $citations = [];
         foreach ($matches as $match) {
             $source = Source::getInstance($match[2], $this->getParent()->getTree());
-            if ($source->canShow()) {
+            if ($source && $source->canShow()) {
                 $citations[] = $match[1];
             }
         }
@@ -483,7 +489,7 @@ class Fact
         preg_match_all('/\n2 OBJE @(' . WT_REGEX_XREF . ')@/', $this->getGedcom(), $matches);
         foreach ($matches[1] as $match) {
             $obje = Media::getInstance($match, $this->getParent()->getTree());
-            if ($obje->canShow()) {
+            if ($obje && $obje->canShow()) {
                 $media[] = $obje;
             }
         }
@@ -500,7 +506,7 @@ class Fact
     {
         $attributes = [];
         $target     = $this->getTarget();
-        if ($target) {
+        if ($target instanceof GedcomRecord) {
             $attributes[] = $target->getFullName();
         } else {
             // Fact value

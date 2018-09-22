@@ -15,6 +15,7 @@
  */
 namespace Fisharebest\Webtrees;
 
+use DomainException;
 use Fisharebest\ExtCalendar\GregorianCalendar;
 use Fisharebest\Webtrees\Date\CalendarDate;
 use Fisharebest\Webtrees\Date\FrenchDate;
@@ -47,18 +48,18 @@ class Date
     /** @var string  Optional qualifier, such as TO, AND */
     public $qual2 = '';
 
-    /** @var CalendarDate Optional second date */
-    private $date2;
+    /** @var CalendarDate|null Optional second date */
+    private $date2 = null;
 
     /** @var string ptional text, as included with an INTerpreted date */
-    private $text;
+    private $text = '';
 
     /**
      * Create a date, from GEDCOM data.
      *
      * @param string $date A date in GEDCOM format
      */
-    public function __construct($date)
+    public function __construct(string $date)
     {
         // Extract any explanatory text
         if (preg_match('/^(.*) ?[(](.*)[)]/', $date, $match)) {
@@ -85,7 +86,7 @@ class Date
     public function __clone()
     {
         $this->date1 = clone $this->date1;
-        if (is_object($this->date2)) {
+        if ($this->date2 !== null) {
             $this->date2 = clone $this->date2;
         }
     }
@@ -97,11 +98,11 @@ class Date
      *
      * @param string $date
      *
-     * @throws \DomainException
+     * @throws DomainException
      *
      * @return CalendarDate
      */
-    private function parseDate($date)
+    private function parseDate($date): CalendarDate
     {
         // Valid calendar escape specified? - use it
         if (preg_match('/^(@#D(?:GREGORIAN|JULIAN|HEBREW|HIJRI|JALALI|FRENCH R|ROMAN)+@) ?(.*)/', $date, $match)) {
@@ -216,7 +217,7 @@ class Date
                     $d,
                 ]);
             default:
-                throw new \DomainException('Invalid calendar');
+                throw new DomainException('Invalid calendar');
         }
     }
 
@@ -255,6 +256,7 @@ class Date
     public function display($url = false, $date_format = null, $convert_calendars = true)
     {
         // @TODO, This is set in index.php - but it is not safe to rely on globals.
+        // We need a new DateFormatterService class
         global $tree;
 
         $CALENDAR_FORMAT = $tree->getPreference('CALENDAR_FORMAT');
@@ -379,9 +381,6 @@ class Date
                 $tmp = I18N::translate('Invalid date');
                 break;
         }
-        if ($this->text && !$q1) {
-            $tmp = I18N::translate('%1$s (%2$s)', $tmp, e($this->text));
-        }
 
         if (strip_tags($tmp) === '') {
             return '';
@@ -477,19 +476,67 @@ class Date
     }
 
     /**
-     * Calculate the the age of a person, on a date.
+     * Calculate the the age of a person (n years), on a given date.
      *
      * @param Date $d1
      * @param Date $d2
-     * @param int  $format
      *
-     * @throws \InvalidArgumentException
-     *
-     * @return int|string
+     * @return int
      */
-    public static function getAge(Date $d1, Date $d2 = null, $format = 0)
+    public static function getAgeYears(Date $d1, Date $d2): int
     {
-        if ($d2) {
+        if ($d2->maximumJulianDay() >= $d1->minimumJulianDay() && $d2->minimumJulianDay() <= $d1->minimumJulianDay()) {
+            // Overlapping dates
+            $jd = $d1->minimumJulianDay();
+        } else {
+            // Non-overlapping dates
+            $jd = $d2->minimumJulianDay();
+        }
+
+        if ($jd && $d1->minimumJulianDay() && $d1->minimumJulianDay() <= $jd) {
+            return $d1->minimumDate()->getAge($jd);
+        } else {
+            return -1;
+        }
+    }
+
+    /**
+     * Calculate the the age of a person (n days), on a given date.
+     *
+     * @param Date $d1
+     * @param Date $d2
+     *
+     * @return int
+     */
+    public static function getAgeDays(Date $d1, Date $d2): int
+    {
+        if ($d2->maximumJulianDay() >= $d1->minimumJulianDay() && $d2->minimumJulianDay() <= $d1->minimumJulianDay()) {
+            // Overlapping dates
+            $jd = $d1->minimumJulianDay();
+        } else {
+            // Non-overlapping dates
+            $jd = $d2->minimumJulianDay();
+        }
+
+        // Days - integer only (for sorting, rather than for display)
+        if ($jd && $d1->minimumJulianDay()) {
+            return $jd - $d1->minimumJulianDay();
+        } else {
+            return -1;
+        }
+    }
+
+    /**
+     * Calculate the the age of a person, on a date.
+     *
+     * @param Date      $d1
+     * @param Date|null $d2
+     *
+     * @return string
+     */
+    public static function getAge(Date $d1, Date $d2 = null): string
+    {
+        if ($d2 !== null) {
             if ($d2->maximumJulianDay() >= $d1->minimumJulianDay() && $d2->minimumJulianDay() <= $d1->minimumJulianDay()) {
                 // Overlapping dates
                 $jd = $d1->minimumJulianDay();
@@ -502,36 +549,17 @@ class Date
             $jd = WT_CLIENT_JD;
         }
 
-        switch ($format) {
-            case 0:
-                // Years - integer only (for statistics, rather than for display)
-                if ($jd && $d1->minimumJulianDay() && $d1->minimumJulianDay() <= $jd) {
-                    return $d1->minimumDate()->getAge(false, $jd, false);
-                }
+        // Just years, in local digits, with warning for negative/
+        if ($jd && $d1->minimumJulianDay()) {
+            if ($d1->minimumJulianDay() > $jd) {
+                return '<i class="icon-warning"></i>';
+            } else {
+                $years = $d1->minimumDate()->getAge($jd);
 
-                return -1;
-            case 1:
-                // Days - integer only (for sorting, rather than for display)
-                if ($jd && $d1->minimumJulianDay()) {
-                    return $jd - $d1->minimumJulianDay();
-                }
-
-                return -1;
-            case 2:
-                // Just years, in local digits, with warning for negative/
-                if ($jd && $d1->minimumJulianDay()) {
-                    if ($d1->minimumJulianDay() > $jd) {
-                        return '<i class="icon-warning"></i>';
-                    }
-
-                    $years = (int) $d1->minimumDate()->getAge(false, $jd, false);
-
-                    return I18N::number($years);
-                }
-
-                return '';
-            default:
-                throw new \InvalidArgumentException('format: ' . $format);
+                return I18N::number($years);
+            }
+        } else {
+            return '';
         }
     }
 
@@ -547,15 +575,14 @@ class Date
     public static function getAgeGedcom(Date $d1, Date $d2 = null)
     {
         if ($d2 === null) {
-            return $d1->date1->getAge(true, WT_CLIENT_JD, true);
+            return $d1->date1->getAgeFull(WT_CLIENT_JD);
         }
 
-        // If dates overlap, then can’t calculate age.
-        if (self::compare($d1, $d2)) {
-            return $d1->date1->getAge(true, $d2->minimumJulianDay(), true);
+        if (self::compare($d1, $d2) !== 0) {
+            return $d1->date1->getAgeFull($d2->minimumJulianDay());
         }
 
-        if (self::compare($d1, $d2) == 0 && $d1->minimumJulianDay() == $d2->minimumJulianDay()) {
+        if ($d1->minimumJulianDay() == $d2->minimumJulianDay()) {
             return '0d';
         }
 

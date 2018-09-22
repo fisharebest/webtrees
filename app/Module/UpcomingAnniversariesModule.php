@@ -28,7 +28,7 @@ use Symfony\Component\HttpFoundation\Request;
 class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockInterface
 {
     // Default values for new blocks.
-    const DEFAULT_DAYS   = 7;
+    const DEFAULT_DAYS   = '7';
     const DEFAULT_FILTER = '1';
     const DEFAULT_SORT   = 'alpha';
     const DEFAULT_STYLE  = 'table';
@@ -117,8 +117,8 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
 
         $default_events = implode(',', self::DEFAULT_EVENTS);
 
-        $days      = $this->getBlockSetting($block_id, 'days', self::DEFAULT_DAYS);
-        $filter    = (bool)$this->getBlockSetting($block_id, 'filter', self::DEFAULT_FILTER);
+        $days      = (int) $this->getBlockSetting($block_id, 'days', self::DEFAULT_DAYS);
+        $filter    = (bool) $this->getBlockSetting($block_id, 'filter', self::DEFAULT_FILTER);
         $infoStyle = $this->getBlockSetting($block_id, 'infoStyle', self::DEFAULT_STYLE);
         $sortStyle = $this->getBlockSetting($block_id, 'sortStyle', self::DEFAULT_SORT);
         $events    = $this->getBlockSetting($block_id, 'events', $default_events);
@@ -136,7 +136,7 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
         $events_filter = implode('|', $event_array);
 
         $startjd = WT_CLIENT_JD + 1;
-        $endjd   = WT_CLIENT_JD + (int)$days;
+        $endjd   = WT_CLIENT_JD + $days;
 
         $facts = $calendar_service->getEventsList($startjd, $endjd, $events_filter, $filter, $sortStyle, $tree);
 
@@ -234,7 +234,7 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
     {
         $default_events = implode(',', self::DEFAULT_EVENTS);
 
-        $days      = $this->getBlockSetting($block_id, 'days', self::DEFAULT_DAYS);
+        $days      = (int) $this->getBlockSetting($block_id, 'days', self::DEFAULT_DAYS);
         $filter    = $this->getBlockSetting($block_id, 'filter', self::DEFAULT_FILTER);
         $infoStyle = $this->getBlockSetting($block_id, 'infoStyle', self::DEFAULT_STYLE);
         $sortStyle = $this->getBlockSetting($block_id, 'sortStyle', self::DEFAULT_SORT);

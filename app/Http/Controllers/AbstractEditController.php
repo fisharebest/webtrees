@@ -25,19 +25,40 @@ use Symfony\Component\HttpFoundation\Request;
  */
 abstract class AbstractEditController extends AbstractBaseController
 {
+    /** @var string[] */
     protected $glevels = [];
+
+    /** @var string[] */
     protected $tag     = [];
+
+    /** @var string[] */
     protected $islink  = [];
+
+    /** @var string[] */
     protected $text    = [];
 
+    /** @var string[] */
     protected $glevelsSOUR = [];
+
+    /** @var string[] */
     protected $tagSOUR     = [];
+
+    /** @var string[] */
     protected $islinkSOUR  = [];
+
+    /** @var string[] */
     protected $textSOUR    = [];
 
+    /** @var string[] */
     protected $glevelsRest = [];
+
+    /** @var string[] */
     protected $tagRest     = [];
+
+    /** @var string[] */
     protected $islinkRest  = [];
+
+    /** @var string[] */
     protected $textRest    = [];
 
     /**
@@ -61,6 +82,8 @@ abstract class AbstractEditController extends AbstractBaseController
      * - $tagRest[] - an array of the tags for each gedcom line that was edited
      * - $islinkRest[] - an array of 1 or 0 values to indicate when the text is a link element
      * - $textRest[] - an array of the text data for each line
+     *
+     * @return void
      */
     protected function splitSource()
     {
@@ -233,8 +256,9 @@ abstract class AbstractEditController extends AbstractBaseController
     /**
      * Create a form to add a new fact.
      *
-     * @param Tree   $tree
-     * @param string $fact
+     * @param Request $request
+     * @param Tree    $tree
+     * @param string  $fact
      *
      * @return string
      */

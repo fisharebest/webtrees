@@ -4,11 +4,13 @@
  * Class AbstractTerritory - Representation of the territory NC - New Caledonia.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2015 Greg Roach
+ * @copyright (c) 2018 Greg Roach
  * @license   GPLv3+
  */
-class TerritoryNc extends AbstractTerritory implements TerritoryInterface {
-	public function code() {
-		return 'NC';
-	}
+class TerritoryNc extends AbstractTerritory implements TerritoryInterface
+{
+    public function code()
+    {
+        return 'NC';
+    }
 }

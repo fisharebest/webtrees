@@ -46,7 +46,10 @@ class DescendantsChartController extends AbstractChartController
     const DEFAULT_GENERATIONS         = '3';
     const DEFAULT_MAXIMUM_GENERATIONS = '9';
 
+    /** @var int[] */
     protected $dabo_num = [];
+
+    /** @var string[] */
     protected $dabo_sex = [];
 
     /**
@@ -164,6 +167,8 @@ class DescendantsChartController extends AbstractChartController
      * @param Individual $person
      * @param int        $depth the descendancy depth to show
      * @param int        $generations
+     *
+     * @return void
      */
     private function printChildDescendancy(Individual $person, $depth, int $generations)
     {
@@ -234,6 +239,8 @@ class DescendantsChartController extends AbstractChartController
      * @param Family     $family
      * @param int        $depth the descendancy depth to show
      * @param int        $generations
+     *
+     * @return void
      */
     private function printFamilyDescendancy(Individual $person, Family $family, int $depth, int $generations)
     {
@@ -375,6 +382,8 @@ class DescendantsChartController extends AbstractChartController
      * @param int        $depth the descendancy depth to show
      * @param string     $label
      * @param string     $gpid
+     *
+     * @return void
      */
     private function printChildFamily(Individual $person, $depth, $label = '1.', $gpid = '')
     {

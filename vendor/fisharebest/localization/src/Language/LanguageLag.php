@@ -7,19 +7,23 @@ use Fisharebest\Localization\Territory\TerritoryTz;
  * Class LanguageLag - Representation of the Langi language.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2015 Greg Roach
+ * @copyright (c) 2018 Greg Roach
  * @license   GPLv3+
  */
-class LanguageLag extends AbstractLanguage implements LanguageInterface {
-	public function code() {
-		return 'lag';
-	}
+class LanguageLag extends AbstractLanguage implements LanguageInterface
+{
+    public function code()
+    {
+        return 'lag';
+    }
 
-	public function defaultTerritory() {
-		return new TerritoryTz;
-	}
+    public function defaultTerritory()
+    {
+        return new TerritoryTz();
+    }
 
-	public function pluralRule() {
-		return new PluralRuleZeroOneOther;
-	}
+    public function pluralRule()
+    {
+        return new PluralRuleZeroOneOther();
+    }
 }

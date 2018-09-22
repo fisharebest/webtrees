@@ -24,6 +24,7 @@ use DebugBar\DataCollector\Renderable;
  */
 class ViewCollector extends DataCollector implements Renderable
 {
+    /** @var string[] */
     protected $views = [];
 
     /**
@@ -31,6 +32,8 @@ class ViewCollector extends DataCollector implements Renderable
      *
      * @param string $view
      * @param array  $data
+     *
+     * @return void
      */
     public function addView(string $view, array $data)
     {

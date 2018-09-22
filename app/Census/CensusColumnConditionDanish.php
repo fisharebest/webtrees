@@ -21,19 +21,27 @@ namespace Fisharebest\Webtrees\Census;
  */
 class CensusColumnConditionDanish extends CensusColumnConditionEnglish
 {
-    /* Text to display for married individuals */
+    /** @var string Text to display for married males */
     protected $husband = 'Gift';
+
+    /** @var string Text to display for married females */
     protected $wife    = 'Gift';
 
-    /* Text to display for unmarried individuals */
+    /** @var string Text to display for unmarried males */
     protected $bachelor = 'Ugift';
+
+    /** @var string Text to display for unmarried females */
     protected $spinster = 'Ugift';
 
-    /* Text to display for divorced individuals */
+    /** @var string Text to display for divorced males */
     protected $divorce  = 'Skilt';
+
+    /** @var string Text to display for divorced females */
     protected $divorcee = 'Skilt';
 
-    /* Text to display for widowed individuals */
+    /** @var string Text to display for widowed males */
     protected $widower = 'Gift';
+
+    /** @var string Text to display for widowed females */
     protected $widow   = 'Gift';
 }

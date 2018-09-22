@@ -5238,9 +5238,13 @@ class Stats
      */
     public function averageChildren(): string
     {
-        $rows = $this->runSql("SELECT AVG(f_numchil) AS tot FROM `##families` WHERE f_file={$this->tree->getTreeId()}");
+        $average = (float) Database::prepare(
+            "SELECT AVG(f_numchil) AS tot FROM `##families` WHERE f_file = :tree_id"
+        )->execute([
+            'tree_id' => $this->tree->getTreeId(),
+        ])->fetchOne();
 
-        return I18N::number($rows[0]->tot, 2);
+        return I18N::number($average, 2);
     }
 
     /**
@@ -5732,6 +5736,7 @@ class Stats
 
     /**
      * @param int $number_of_surnames
+     * @param int $threshold
      *
      * @return array
      */

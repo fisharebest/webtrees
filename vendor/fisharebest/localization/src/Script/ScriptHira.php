@@ -4,19 +4,23 @@
  * Class ScriptHira - Representation of the Hiragana script.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2015 Greg Roach
+ * @copyright (c) 2018 Greg Roach
  * @license   GPLv3+
  */
-class ScriptHira extends AbstractScript implements ScriptInterface {
-	public function code() {
-		return 'Hira';
-	}
+class ScriptHira extends AbstractScript implements ScriptInterface
+{
+    public function code()
+    {
+        return 'Hira';
+    }
 
-	public function number() {
-		return '410';
-	}
+    public function number()
+    {
+        return '410';
+    }
 
-	public function unicodeName() {
-		return 'Hiragana';
-	}
+    public function unicodeName()
+    {
+        return 'Hiragana';
+    }
 }

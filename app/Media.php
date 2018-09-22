@@ -38,7 +38,7 @@ class Media extends GedcomRecord
      *
      * @return Media|null
      */
-    public static function getInstance($xref, Tree $tree, $gedcom = null)
+    public static function getInstance(string $xref, Tree $tree, string $gedcom = null)
     {
         $record = parent::getInstance($xref, $tree, $gedcom);
 
@@ -84,7 +84,7 @@ class Media extends GedcomRecord
      *
      * @return null|string
      */
-    protected static function fetchGedcomRecord($xref, $tree_id)
+    protected static function fetchGedcomRecord(string $xref, int $tree_id)
     {
         return Database::prepare(
             "SELECT m_gedcom FROM `##media` WHERE m_id = :xref AND m_file = :tree_id"
@@ -167,7 +167,7 @@ class Media extends GedcomRecord
         }
 
         foreach ($names as $name) {
-            $this->addName(static::RECORD_TYPE, $name, null);
+            $this->addName(static::RECORD_TYPE, $name, '');
         }
     }
 

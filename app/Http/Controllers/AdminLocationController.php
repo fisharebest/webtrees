@@ -38,6 +38,7 @@ use Symfony\Component\HttpFoundation\StreamedResponse;
  */
 class AdminLocationController extends AbstractBaseController
 {
+    /** @var string */
     protected $layout = 'layouts/administration';
 
     /**
@@ -240,7 +241,7 @@ class AdminLocationController extends AbstractBaseController
      */
     public function exportLocations(Request $request): Response
     {
-        $parent_id = (int)$request->get('parent_id');
+        $parent_id = (int) $request->get('parent_id');
         $format    = $request->get('format');
         $maxlevel  = (int) Database::prepare("SELECT max(pl_level) FROM `##placelocation`")->execute()->fetchOne();
         $startfqpn = [];
@@ -263,7 +264,7 @@ class AdminLocationController extends AbstractBaseController
         $this->buildLevel($parent_id, $startfqpn, $places);
 
         // Clean up co-ordinates
-        $places = array_map(function ($place) {
+        $places = array_map(function (array $place): array {
             $place['pl_long'] = (float) strtr($place['pl_long'] ?? '0', ['E' => '', 'W' => '-', ',' => '.']);
             $place['pl_lati'] = (float) strtr($place['pl_lati'] ?? '0', ['N' => '', 'S' => '-', ',' => '.']);
 
@@ -400,12 +401,12 @@ class AdminLocationController extends AbstractBaseController
             //sort places by level
             usort(
                 $places,
-                function (array $a, array $b) {
-                    if ((int)$a['pl_level'] === (int)$b['pl_level']) {
+                function (array $a, array $b): int {
+                    if ((int) $a['pl_level'] === (int) $b['pl_level']) {
                         return I18N::strcasecmp($a['fqpn'], $b['fqpn']);
                     }
 
-                    return (int)$a['pl_level'] - (int)$b['pl_level'];
+                    return (int) $a['pl_level'] - (int)$b['pl_level'];
                 }
             );
 
@@ -463,7 +464,7 @@ class AdminLocationController extends AbstractBaseController
                 $added + $updated === 0 ? 'info' : 'success'
             );
         } else {
-            throw new Exception('Unable to open file: %s', $filename);
+            throw new Exception('Unable to open file: ' . $filename);
         }
 
         $url = route('map-data', ['parent_id' => $parent_id]);
@@ -601,6 +602,8 @@ class AdminLocationController extends AbstractBaseController
 
     /**
      * @param string $filename
+     * @param array  $rows
+     * @param int    $maxlevel
      *
      * @return Response
      */
@@ -648,13 +651,14 @@ class AdminLocationController extends AbstractBaseController
     }
 
     /**
-     * @param $parent_id
-     * @param $placename
-     * @param $places
+     * @param int   $parent_id
+     * @param array $placename
+     * @param array $places
      *
+     * @return void
      * @throws Exception
      */
-    private function buildLevel($parent_id, $placename, &$places)
+    private function buildLevel(int $parent_id, array $placename, array &$places)
     {
         $level = array_search('', $placename);
         $rows  = Database::prepare(
@@ -699,7 +703,7 @@ class AdminLocationController extends AbstractBaseController
      *
      * @return stdClass[]
      */
-    private function getPlaceListLocation($id): array
+    private function getPlaceListLocation(int $id): array
     {
         $child_qry = Database::prepare(
             "SELECT  COUNT(*) AS child_count, SUM(" .

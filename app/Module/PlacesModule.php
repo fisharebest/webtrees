@@ -89,7 +89,7 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
     }
 
     /**
-     * @param Request $request
+     * @param Individual $indi
      *
      * @return stdClass
      */

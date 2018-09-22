@@ -52,7 +52,7 @@ class MessageController extends AbstractBaseController
         $url     = $request->get('url', $referer);
 
         $to_users = $this->recipientUsers($to);
-        $to_names = array_map(function (User $user) {
+        $to_names = array_map(function (User $user): string {
             return $user->getRealName();
         }, $to_users);
 
@@ -395,7 +395,7 @@ class MessageController extends AbstractBaseController
 
         // Send via email
         if ($this->sendEmail($recipient)) {
-            $success = $success && Mail::send(
+            $success = Mail::send(
                 $from,
                 $recipient,
                 $sender,

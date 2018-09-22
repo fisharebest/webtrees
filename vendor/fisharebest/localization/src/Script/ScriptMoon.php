@@ -4,15 +4,18 @@
  * Class ScriptMoon - Representation of the Moon (Moon code, Moon script, Moon type) script.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2015 Greg Roach
+ * @copyright (c) 2018 Greg Roach
  * @license   GPLv3+
  */
-class ScriptMoon extends AbstractScript implements ScriptInterface {
-	public function code() {
-		return 'Moon';
-	}
+class ScriptMoon extends AbstractScript implements ScriptInterface
+{
+    public function code()
+    {
+        return 'Moon';
+    }
 
-	public function number() {
-		return '218';
-	}
+    public function number()
+    {
+        return '218';
+    }
 }

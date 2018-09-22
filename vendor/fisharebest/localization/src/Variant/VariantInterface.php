@@ -4,14 +4,15 @@
  * Interface VariantInterface - Representation of a locale variant.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2015 Greg Roach
+ * @copyright (c) 2018 Greg Roach
  * @license   GPLv3+
  */
-interface VariantInterface {
-	/**
-	 * The code for this variant.
-	 *
-	 * @return string
-	 */
-	public function code();
+interface VariantInterface
+{
+    /**
+     * The code for this variant.
+     *
+     * @return string
+     */
+    public function code();
 }

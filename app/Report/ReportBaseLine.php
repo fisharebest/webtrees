@@ -66,7 +66,7 @@ class ReportBaseLine extends ReportBaseElement
      *
      * @param $renderer
      *
-     * @return number
+     * @return float
      */
     public function getHeight($renderer): float
     {

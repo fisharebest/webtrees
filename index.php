@@ -209,7 +209,7 @@ try {
     date_default_timezone_set('UTC');
 }
 
-define('WT_TIMESTAMP_OFFSET', date_offset_get(new DateTime('now')));
+define('WT_TIMESTAMP_OFFSET', (new DateTime('now'))->getOffset());
 
 define('WT_CLIENT_JD', 2440588 + (int) ((WT_TIMESTAMP + WT_TIMESTAMP_OFFSET) / 86400));
 
@@ -237,9 +237,6 @@ try {
     if ($tree === null && $request->getMethod() === Request::METHOD_GET) {
         $tree = $all_trees[Site::getPreference('DEFAULT_GEDCOM')] ?? array_values($all_trees)[0] ?? null;
     }
-
-    $request->attributes->set('tree', $tree);
-    $request->attributes->set('user', Auth::user());
 
     // Most layouts will require a tree for the page header/footer
     View::share('tree', $tree);

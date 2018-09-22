@@ -42,7 +42,7 @@ class XrefParser extends AbstractInlineParser
     /**
      * We are only interested in text that begins with '@'.
      *
-     * @return array
+     * @return string[]
      */
     public function getCharacters(): array
     {

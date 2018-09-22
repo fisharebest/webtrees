@@ -17,6 +17,7 @@ namespace Fisharebest\Webtrees\CommonMark;
 
 use Fisharebest\Webtrees\Tree;
 use League\CommonMark\Extension\Extension;
+use League\CommonMark\Inline\Parser\InlineParserInterface;
 
 /**
  * Convert XREFs within markdown text to links
@@ -37,7 +38,7 @@ class XrefExtension extends Extension
     }
 
     /**
-     * @return array
+     * @return InlineParserInterface[]
      */
     public function getInlineParsers(): array
     {

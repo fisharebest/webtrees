@@ -4,15 +4,18 @@
  * Class ScriptRoro - Representation of the Rongorongo script.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2015 Greg Roach
+ * @copyright (c) 2018 Greg Roach
  * @license   GPLv3+
  */
-class ScriptRoro extends AbstractScript implements ScriptInterface {
-	public function code() {
-		return 'Roro';
-	}
+class ScriptRoro extends AbstractScript implements ScriptInterface
+{
+    public function code()
+    {
+        return 'Roro';
+    }
 
-	public function number() {
-		return '620';
-	}
+    public function number()
+    {
+        return '620';
+    }
 }

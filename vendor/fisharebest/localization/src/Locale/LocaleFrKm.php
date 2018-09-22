@@ -5,12 +5,14 @@ use Fisharebest\Localization\Territory\TerritoryKm;
 /**
  * Class LocaleFrKm
  *
- * @author        Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2015 Greg Roach
- * @license       GPLv3+
+ * @author    Greg Roach <fisharebest@gmail.com>
+ * @copyright (c) 2018 Greg Roach
+ * @license   GPLv3+
  */
-class LocaleFrKm extends LocaleFr {
-	public function territory() {
-		return new TerritoryKm;
-	}
+class LocaleFrKm extends LocaleFr
+{
+    public function territory()
+    {
+        return new TerritoryKm();
+    }
 }

@@ -47,11 +47,9 @@ class Auth
      */
     public static function isAdmin(User $user = null): bool
     {
-        if ($user === null) {
-            $user = self::user();
-        }
+        $user = $user ?? self::user();
 
-        return $user && $user->getPreference('canadmin') === '1';
+        return $user->getPreference('canadmin') === '1';
     }
 
     /**
@@ -64,11 +62,9 @@ class Auth
      */
     public static function isManager(Tree $tree, User $user = null): bool
     {
-        if ($user === null) {
-            $user = self::user();
-        }
+        $user = $user ?? self::user();
 
-        return self::isAdmin($user) || $user && $tree->getUserPreference($user, 'canedit') === 'admin';
+        return self::isAdmin($user) || $tree->getUserPreference($user, 'canedit') === 'admin';
     }
 
     /**
@@ -81,11 +77,9 @@ class Auth
      */
     public static function isModerator(Tree $tree, User $user = null): bool
     {
-        if ($user === null) {
-            $user = self::user();
-        }
+        $user = $user ?? self::user();
 
-        return self::isManager($tree, $user) || $user && $tree->getUserPreference($user, 'canedit') === 'accept';
+        return self::isManager($tree, $user) || $tree->getUserPreference($user, 'canedit') === 'accept';
     }
 
     /**
@@ -98,11 +92,9 @@ class Auth
      */
     public static function isEditor(Tree $tree, User $user = null): bool
     {
-        if ($user === null) {
-            $user = self::user();
-        }
+        $user = $user ?? self::user();
 
-        return self::isModerator($tree, $user) || $user && $tree->getUserPreference($user, 'canedit') === 'edit';
+        return self::isModerator($tree, $user) || $tree->getUserPreference($user, 'canedit') === 'edit';
     }
 
     /**
@@ -115,11 +107,9 @@ class Auth
      */
     public static function isMember(Tree $tree, User $user = null): bool
     {
-        if ($user === null) {
-            $user = self::user();
-        }
+        $user = $user ?? self::user();
 
-        return self::isEditor($tree, $user) || $user && $tree->getUserPreference($user, 'canedit') === 'access';
+        return self::isEditor($tree, $user) || $tree->getUserPreference($user, 'canedit') === 'access';
     }
 
     /**
@@ -132,9 +122,7 @@ class Auth
      */
     public static function accessLevel(Tree $tree, User $user = null)
     {
-        if ($user === null) {
-            $user = self::user();
-        }
+        $user = $user ?? self::user();
 
         if (self::isManager($tree, $user)) {
             return self::PRIV_NONE;
@@ -165,6 +153,7 @@ class Auth
     public static function user()
     {
         $user = User::find(self::id());
+
         if ($user === null) {
             $visitor            = new stdClass();
             $visitor->user_id   = '';
@@ -182,6 +171,8 @@ class Auth
      * Login directly as an explicit user - for masquerading.
      *
      * @param User $user
+     *
+     * @return void
      */
     public static function login(User $user)
     {
@@ -191,6 +182,8 @@ class Auth
 
     /**
      * End the session for the current user.
+     *
+     * @return void
      */
     public static function logout()
     {

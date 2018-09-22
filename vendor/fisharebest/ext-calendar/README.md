@@ -2,6 +2,7 @@
 [![Coverage Status](https://coveralls.io/repos/fisharebest/ext-calendar/badge.png)](https://coveralls.io/r/fisharebest/ext-calendar)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/952d6e11-6941-447b-9757-fc8dbc3d2a1f/mini.png)](https://insight.sensiolabs.com/projects/952d6e11-6941-447b-9757-fc8dbc3d2a1f)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/fisharebest/ext-calendar/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/fisharebest/ext-calendar/?branch=master)
+[![StyleCI](https://github.styleci.io/repos/25974036/shield)](https://github.styleci.io/repos/25974036)
 [![Code Climate](https://codeclimate.com/github/fisharebest/ext-calendar/badges/gpa.svg)](https://codeclimate.com/github/fisharebest/ext-calendar)
 
 PHP calendar functions
@@ -44,7 +45,7 @@ Add the package as a dependency in your `composer.json` file:
 
 ``` javascript
 require {
-    "fisharebest/ext-calendar": "2.*"
+    "fisharebest/ext-calendar": "~2.5"
 }
 ```
 
@@ -59,15 +60,15 @@ print_r(cal_info(CAL_GREGORIAN)); // Works in HHVM, or if ext-calendar is not in
 Alternatively, just use the calendar classes directly.
 
 ``` php
-use Fisharebest\ExtCalendar;
+require 'vendor/autoload.php';
 
-// Create a calendar
-$calendar = new ArabicCalendar;
-$calendar = new FrenchCalendar;
-$calendar = new GregorianCalendar;
-$calendar = new JewishCalendar;
-$calendar = new JulianCalendar;
-$calendar = new PersianCalendar;
+// Create calendars
+$calendar = new Fisharebest\ExtCalendar\ArabicCalendar;
+$calendar = new Fisharebest\ExtCalendar\FrenchCalendar;
+$calendar = new Fisharebest\ExtCalendar\GregorianCalendar;
+$calendar = new Fisharebest\ExtCalendar\JewishCalendar;
+$calendar = new Fisharebest\ExtCalendar\JulianCalendar;
+$calendar = new Fisharebest\ExtCalendar\PersianCalendar;
 
 // Date conversions
 $julian_day = $calendar->ymdToJd($year, $month, $day);
@@ -76,8 +77,9 @@ list($year, $month, $day) = $calendar->jdToYmd($julian_day);
 // Information about days, weeks and months
 $is_leap_year   = $calendar->isLeapYear($year);
 $days_in_month  = $calendar->daysInMonth($year, $month);
-$months_in_year = $calendar->monthsInYear();  // Includes leap-months
-$days_in_week   = $calendar->daysInWeek();    // Not all calendars have 7!
+$months_in_year = $calendar->monthsInYear();       // Not all calendars have 12
+$months_in_year = $calendar->monthsInYear($year);  // In a specific year
+$days_in_week   = $calendar->daysInWeek();         // Not all calendars have 7
 
 // Which dates are valid for this calendar?
 $jd = $calendar->jdStart();
@@ -113,12 +115,7 @@ Development and contributions
 
 Due to the known restrictions above, you may need to run unit tests using `TZ=UTC phpunit`.
 
-Pull requests are welcome.  Please ensure you include unit-tests where
-applicable, and follow the existing coding conventions.  These are to follow
-[PSR](http://www.php-fig.org/) standards, except for:
-
-* tabs are used for indentation
-* opening braces always go on the end of the previous line
+Pull requests are welcome.  Please ensure you include unit-tests where applicable.
 
 History
 =======

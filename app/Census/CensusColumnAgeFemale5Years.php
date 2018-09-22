@@ -38,11 +38,11 @@ class CensusColumnAgeFemale5Years extends AbstractCensusColumn implements Census
             return '';
         }
 
-        $years = Date::getAge($individual->getEstimatedBirthDate(), $this->date(), 0);
+        $years = Date::getAgeYears($individual->getEstimatedBirthDate(), $this->date());
         if ($years > 15) {
             $years -= $years % 5;
         }
 
-        return (string)$years;
+        return (string) $years;
     }
 }

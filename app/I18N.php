@@ -641,6 +641,8 @@ class I18N
      * echo self::plural('There is one error', 'There are %s errors', $num_errors);
      * echo self::plural('There is %1$s %2$s cat', 'There are %1$s %2$s cats', $num, $num, $colour);
      *
+     * @param array $args
+     *
      * @return string
      */
     public static function plural(...$args): string
@@ -885,6 +887,8 @@ class I18N
      * echo I18N::translate('Hello World!');
      * echo I18N::translate('The %s sat on the mat', 'cat');
      *
+     * @param array $args
+     *
      * @return string
      */
     public static function translate(...$args): string
@@ -898,6 +902,8 @@ class I18N
      * Context sensitive version of translate.
      * echo I18N::translateContext('NOMINATIVE', 'January');
      * echo I18N::translateContext('GENITIVE', 'January');
+     *
+     * @param array $args
      *
      * @return string
      */

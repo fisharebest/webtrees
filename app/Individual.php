@@ -48,7 +48,7 @@ class Individual extends GedcomRecord
      *
      * @return Individual|null
      */
-    public static function getInstance($xref, Tree $tree, $gedcom = null)
+    public static function getInstance(string $xref, Tree $tree, string $gedcom = null)
     {
         $record = parent::getInstance($xref, $tree, $gedcom);
 
@@ -1167,25 +1167,24 @@ class Individual extends GedcomRecord
      * @param string $full
      * @param string $gedcom
      */
-    protected function addName($type, $full, $gedcom)
+    protected function addName(string $type, string $full, string $gedcom)
     {
         ////////////////////////////////////////////////////////////////////////////
         // Extract the structured name parts - use for "sortable" names and indexes
         ////////////////////////////////////////////////////////////////////////////
 
-        $sublevel = 1 + (int)$gedcom[0];
-        $NPFX     = preg_match("/\n{$sublevel} NPFX (.+)/", $gedcom, $match) ? $match[1] : '';
-        $GIVN     = preg_match("/\n{$sublevel} GIVN (.+)/", $gedcom, $match) ? $match[1] : '';
-        $SURN     = preg_match("/\n{$sublevel} SURN (.+)/", $gedcom, $match) ? $match[1] : '';
-        $NSFX     = preg_match("/\n{$sublevel} NSFX (.+)/", $gedcom, $match) ? $match[1] : '';
-        $NICK     = preg_match("/\n{$sublevel} NICK (.+)/", $gedcom, $match) ? $match[1] : '';
+        $sublevel = 1 + (int) substr($gedcom, 0, 1);
+        $GIVN = preg_match("/\n{$sublevel} GIVN (.+)/", $gedcom, $match) ? $match[1] : '';
+        $SURN = preg_match("/\n{$sublevel} SURN (.+)/", $gedcom, $match) ? $match[1] : '';
+        $NICK = preg_match("/\n{$sublevel} NICK (.+)/", $gedcom, $match) ? $match[1] : '';
 
         // SURN is an comma-separated list of surnames...
-        if ($SURN) {
+        if ($SURN !== '') {
             $SURNS = preg_split('/ *, */', $SURN);
         } else {
             $SURNS = [];
         }
+
         // ...so is GIVN - but nobody uses it like that
         $GIVN = str_replace('/ *, */', ' ', $GIVN);
 
@@ -1194,7 +1193,7 @@ class Individual extends GedcomRecord
         ////////////////////////////////////////////////////////////////////////////
 
         // Fix bad slashes. e.g. 'John/Smith' => 'John/Smith/'
-        if (substr_count($full, '/') % 2 == 1) {
+        if (substr_count($full, '/') % 2 === 1) {
             $full = $full . '/';
         }
 

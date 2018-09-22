@@ -141,7 +141,7 @@ class ReportParserGenerate extends ReportParserBase
         $this->vars            = $vars;
         $this->tree            = $tree;
 
-        parent::__construct($report, $report_root, $vars, $tree);
+        parent::__construct($report);
     }
 
     /**
