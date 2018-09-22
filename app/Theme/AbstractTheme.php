@@ -153,7 +153,7 @@ abstract class AbstractTheme
      */
     public function analytics()
     {
-        if ($this->themeId() === '_administration' || !empty($_SERVER['HTTP_DNT'])) {
+        if (!empty($_SERVER['HTTP_DNT'])) {
             return '';
         }
 
