@@ -278,7 +278,7 @@ class Individual extends GedcomRecord
      *
      * @return null|string
      */
-    protected static function fetchGedcomRecord($xref, $tree_id)
+    protected static function fetchGedcomRecord(string $xref, int $tree_id)
     {
         return Database::prepare(
             "SELECT i_gedcom FROM `##individuals` WHERE i_id = :xref AND i_file = :tree_id"
