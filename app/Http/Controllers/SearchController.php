@@ -993,7 +993,7 @@ class SearchController extends AbstractBaseController
                                     break;
                                 }
 
-// No phonetic content? Use a substring match
+                            // No phonetic content? Use a substring match
                             $sql    .= " AND i_n.n_surn LIKE CONCAT('%', ?, '%')";
                             $bind[] = $field_value;
                         }
@@ -1083,7 +1083,7 @@ class SearchController extends AbstractBaseController
                                     break;
                                 }
 
-// No phonetic content? Use a substring match
+                            // No phonetic content? Use a substring match
                             $sql    .= " AND {$table}.n_givn LIKE CONCAT('%', ?, '%')";
                             $bind[] = $field_value;
                         }
