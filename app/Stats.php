@@ -4929,6 +4929,7 @@ class Stats
 
                     return $return;
                 }
+
                 return I18N::translate('This information is private and cannot be shown.');
             }
         }
