@@ -107,7 +107,7 @@ class AdminLocationController extends AbstractBaseController
             $breadcrumbs[] = I18N::translate('Add');
         } else {
             $breadcrumbs[] = I18N::translate('Edit');
-            $title         .= ' — ' . I18N::translate('Edit');
+            $title .= ' — ' . I18N::translate('Edit');
         }
 
         return $this->viewResponse('admin/location-edit', [
@@ -299,7 +299,7 @@ class AdminLocationController extends AbstractBaseController
      */
     public function importLocations(Request $request): Response
     {
-        $parent_id   = (int) $request->get('parent_id');
+        $parent_id = (int) $request->get('parent_id');
 
         $files = array_merge(
             glob(WT_DATA_DIR . 'places/*.csv'),
@@ -352,7 +352,7 @@ class AdminLocationController extends AbstractBaseController
         }
 
         if (is_file($filename)) {
-            $string   = file_get_contents($filename);
+            $string = file_get_contents($filename);
 
             // Check the filetype
             if (stripos($string, 'FeatureCollection') !== false) {
@@ -406,7 +406,7 @@ class AdminLocationController extends AbstractBaseController
                         return I18N::strcasecmp($a['fqpn'], $b['fqpn']);
                     }
 
-                    return (int) $a['pl_level'] - (int)$b['pl_level'];
+                    return (int) $a['pl_level'] - (int) $b['pl_level'];
                 }
             );
 
@@ -522,7 +522,7 @@ class AdminLocationController extends AbstractBaseController
                 "INSERT INTO `##placelocation` (pl_id, pl_parent_id, pl_level, pl_place)" .
                 " VALUES (:id, :parent, :level, :place)"
             );
-            $checkRecordQry  = Database::prepare(
+            $checkRecordQry = Database::prepare(
                 "SELECT pl1.pl_id" .
                 " FROM	  `##placelocation` AS pl1" .
                 " LEFT JOIN `##placelocation` AS pl2 ON (pl1.pl_parent_id = pl2.pl_id)" .

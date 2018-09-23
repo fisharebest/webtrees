@@ -1847,7 +1847,7 @@ class ReportParserGenerate extends ReportParserBase
         // Some filters/sorts can be applied using SQL, while others require PHP
         switch ($listname) {
             case 'pending':
-                $rows       = Database::prepare(
+                $rows = Database::prepare(
                     "SELECT xref, CASE new_gedcom WHEN '' THEN old_gedcom ELSE new_gedcom END AS gedcom" .
                     " FROM `##change`" . " WHERE (xref, change_id) IN (" .
                     "  SELECT xref, MAX(change_id)" .
@@ -1886,7 +1886,7 @@ class ReportParserGenerate extends ReportParserBase
                                 $sql_params[$attr . 'date'] = $date->minimumJulianDay();
                             }
                             if ($sortby == $match[1]) {
-                                $sortby       = "";
+                                $sortby = "";
                                 $sql_order_by .= ($sql_order_by ? ", " : " ORDER BY ") . "{$attr}.d_julianday1";
                             }
                             unset($attrs[$attr]); // This filter has been fully processed
@@ -1898,13 +1898,13 @@ class ReportParserGenerate extends ReportParserBase
                                 if ($match[1] != '') {
                                     $names = explode(' ', $match[1]);
                                     foreach ($names as $n => $name) {
-                                        $sql_where                       .= " AND {$attr}.n_full LIKE CONCAT('%', :{$attr}name{$n}, '%')";
+                                        $sql_where .= " AND {$attr}.n_full LIKE CONCAT('%', :{$attr}name{$n}, '%')";
                                         $sql_params[$attr . 'name' . $n] = $name;
                                     }
                                 }
                                 // Let the DB do the name sorting even when no name was entered
                                 if ($sortby == 'NAME') {
-                                    $sortby       = '';
+                                    $sortby = '';
                                     $sql_order_by .= ($sql_order_by ? ', ' : ' ORDER BY ') . "{$attr}.n_sort";
                                 }
                             }
@@ -1921,7 +1921,7 @@ class ReportParserGenerate extends ReportParserBase
                             $sql_params[$attr . 'place'] = $match[1];
                             // Don't unset this filter. This is just initial filtering
                         } elseif (preg_match('/^(\w*):*(\w*) CONTAINS (.+)$/', $value, $match)) {
-                            $sql_where                       .= " AND i_gedcom LIKE CONCAT('%', :{$attr}contains1, '%', :{$attr}contains2, '%', :{$attr}contains3, '%')";
+                            $sql_where .= " AND i_gedcom LIKE CONCAT('%', :{$attr}contains1, '%', :{$attr}contains2, '%', :{$attr}contains3, '%')";
                             $sql_params[$attr . 'contains1'] = $match[1];
                             $sql_params[$attr . 'contains2'] = $match[2];
                             $sql_params[$attr . 'contains3'] = $match[3];
@@ -1963,7 +1963,7 @@ class ReportParserGenerate extends ReportParserBase
                                 $sql_params[$attr . 'date'] = $date->minimumJulianDay();
                             }
                             if ($sortby == $match[1]) {
-                                $sortby       = '';
+                                $sortby = '';
                                 $sql_order_by .= ($sql_order_by ? ', ' : ' ORDER BY ') . "{$attr}.d_julianday1";
                             }
                             unset($attrs[$attr]); // This filter has been fully processed
@@ -1980,13 +1980,13 @@ class ReportParserGenerate extends ReportParserBase
                                 if ($match[1] != '') {
                                     $names = explode(' ', $match[1]);
                                     foreach ($names as $n => $name) {
-                                        $sql_where                       .= " AND {$attr}.n_full LIKE CONCAT('%', :{$attr}name{$n}, '%')";
+                                        $sql_where .= " AND {$attr}.n_full LIKE CONCAT('%', :{$attr}name{$n}, '%')";
                                         $sql_params[$attr . 'name' . $n] = $name;
                                     }
                                 }
                                 // Let the DB do the name sorting even when no name was entered
                                 if ($sortby == 'NAME') {
-                                    $sortby       = '';
+                                    $sortby = '';
                                     $sql_order_by .= ($sql_order_by ? ', ' : ' ORDER BY ') . "{$attr}.n_sort";
                                 }
                             }
@@ -1998,7 +1998,7 @@ class ReportParserGenerate extends ReportParserBase
                             $sql_params[$attr . 'place'] = $match[1];
                         // Don't unset this filter. This is just initial filtering
                         } elseif (preg_match('/^(\w*):*(\w*) CONTAINS (.+)$/', $value, $match)) {
-                            $sql_where                       .= " AND f_gedcom LIKE CONCAT('%', :{$attr}contains1, '%', :{$attr}contains2, '%', :{$attr}contains3, '%')";
+                            $sql_where .= " AND f_gedcom LIKE CONCAT('%', :{$attr}contains1, '%', :{$attr}contains2, '%', :{$attr}contains3, '%')";
                             $sql_params[$attr . 'contains1'] = $match[1];
                             $sql_params[$attr . 'contains2'] = $match[2];
                             $sql_params[$attr . 'contains3'] = $match[3];
