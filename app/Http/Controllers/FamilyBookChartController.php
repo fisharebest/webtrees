@@ -72,16 +72,16 @@ class FamilyBookChartController extends AbstractChartController
         $this->checkIndividualAccess($individual);
 
         $minimum_generations = 2;
-        $maximum_generations = (int)$tree->getPreference('MAX_DESCENDANCY_GENERATIONS', self::DEFAULT_MAXIMUM_GENERATIONS);
-        $default_generations = (int)$tree->getPreference('DEFAULT_PEDIGREE_GENERATIONS', self::DEFAULT_GENERATIONS);
+        $maximum_generations = (int) $tree->getPreference('MAX_DESCENDANCY_GENERATIONS', self::DEFAULT_MAXIMUM_GENERATIONS);
+        $default_generations = (int) $tree->getPreference('DEFAULT_PEDIGREE_GENERATIONS', self::DEFAULT_GENERATIONS);
 
-        $show_spouse = (bool)$request->get('show_spouse');
-        $generations = (int)$request->get('generations', $default_generations);
+        $show_spouse = (bool) $request->get('show_spouse');
+        $generations = (int) $request->get('generations', $default_generations);
         $generations = min($generations, $maximum_generations);
         $generations = max($generations, $minimum_generations);
 
         // Generations of ancestors/descendants in each mini-tree.
-        $book_size = (int)$request->get('book_size', 2);
+        $book_size = (int) $request->get('book_size', 2);
         $book_size = min($book_size, 5);
         $book_size = max($book_size, 2);
 
@@ -115,20 +115,20 @@ class FamilyBookChartController extends AbstractChartController
         $this->checkIndividualAccess($individual);
 
         $minimum_generations = 2;
-        $maximum_generations = (int)$tree->getPreference('MAX_PEDIGREE_GENERATIONS', self::DEFAULT_MAXIMUM_GENERATIONS);
-        $default_generations = (int)$tree->getPreference('DEFAULT_PEDIGREE_GENERATIONS', self::DEFAULT_GENERATIONS);
+        $maximum_generations = (int) $tree->getPreference('MAX_PEDIGREE_GENERATIONS', self::DEFAULT_MAXIMUM_GENERATIONS);
+        $default_generations = (int) $tree->getPreference('DEFAULT_PEDIGREE_GENERATIONS', self::DEFAULT_GENERATIONS);
 
-        $book_size   = (int)$request->get('book_size', 2);
-        $show_spouse = (bool)$request->get('show_spouse');
+        $book_size   = (int) $request->get('book_size', 2);
+        $show_spouse = (bool) $request->get('show_spouse');
 
-        $generations = (int)$request->get('generations', $default_generations);
+        $generations = (int) $request->get('generations', $default_generations);
         $generations = min($generations, $maximum_generations);
         $generations = max($generations, $minimum_generations);
         $descendants = $this->descendants($individual, $generations, []);
 
         // @TODO - this is just a wrapper around the old code.
         ob_start();
-        $this->box = (object)[
+        $this->box = (object) [
             'width'  => Theme::theme()->parameter('chart-box-x'),
             'height' => Theme::theme()->parameter('chart-box-y'),
         ];
@@ -187,7 +187,7 @@ class FamilyBookChartController extends AbstractChartController
                 echo '<table cellspacing="0" cellpadding="0" border="0" >';
                 foreach ($children as $i => $child) {
                     echo '<tr><td>';
-                    $kids    = $this->printDescendency($generation + 1, $child);
+                    $kids = $this->printDescendency($generation + 1, $child);
                     $numkids += $kids;
                     echo '</td>';
                     // Print the lines
