@@ -73,7 +73,7 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
 
         if ($changes === '1' && $sendmail === '1') {
             // There are pending changes - tell moderators/managers/administrators about them.
-            if (WT_TIMESTAMP - (int)Site::getPreference('LAST_CHANGE_EMAIL') > (60 * 60 * 24 * $days)) {
+            if (WT_TIMESTAMP - (int) Site::getPreference('LAST_CHANGE_EMAIL') > (60 * 60 * 24 * $days)) {
                 // Which users have pending changes?
                 foreach (User::all() as $user) {
                     if ($user->getPreference('contactmethod') !== 'none') {
@@ -82,7 +82,7 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
                                 I18N::init($user->getPreference('language'));
 
                                 $sender = new User(
-                                    (object)[
+                                    (object) [
                                         'user_id'   => null,
                                         'user_name' => '',
                                         'real_name' => $tmp_tree->getTitle(),
