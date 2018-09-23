@@ -164,7 +164,7 @@ class AdminController extends AbstractBaseController
             $user_list[$tmp_user->getUserName()] = $tmp_user->getUserName();
         }
 
-        $action   = $request->get('action');
+        $action = $request->get('action');
 
         // @TODO This ought to be a POST action
         if ($action === 'delete') {
@@ -230,7 +230,7 @@ class AdminController extends AbstractBaseController
      */
     public function changesLogData(Request $request): Response
     {
-        list($select, , $where, $args1) = $this->changesQuery($request);
+        list($select,, $where, $args1) = $this->changesQuery($request);
         list($order_by, $limit, $args2) = $this->dataTablesPagination($request);
 
         $rows = Database::prepare(
@@ -238,8 +238,8 @@ class AdminController extends AbstractBaseController
         )->execute(array_merge($args1, $args2))->fetchAll();
 
         // Total filtered/unfiltered rows
-        $recordsFiltered = (int)Database::prepare("SELECT FOUND_ROWS()")->fetchOne();
-        $recordsTotal    = (int)Database::prepare("SELECT COUNT(*) FROM `##change`")->fetchOne();
+        $recordsFiltered = (int) Database::prepare("SELECT FOUND_ROWS()")->fetchOne();
+        $recordsTotal    = (int) Database::prepare("SELECT COUNT(*) FROM `##change`")->fetchOne();
 
         $data      = [];
         $algorithm = new MyersDiff();
@@ -275,7 +275,7 @@ class AdminController extends AbstractBaseController
                 '<div class="gedcom-data" dir="ltr">' .
                 preg_replace_callback(
                     '/@(' . WT_REGEX_XREF . ')@/',
-                    function (array $match) use ($tree): string {
+                    function (array $match) use ($tree) : string {
                         $record = GedcomRecord::getInstance($match[1], $tree);
 
                         return $record ? '<a href="' . e($record->url()) . '">' . $match[0] . '</a>' : $match[0];
@@ -290,7 +290,7 @@ class AdminController extends AbstractBaseController
 
         // See http://www.datatables.net/usage/server-side
         return new JsonResponse([
-            'draw'            => (int)$request->get('draw'),
+            'draw'            => (int) $request->get('draw'),
             'recordsTotal'    => $recordsTotal,
             'recordsFiltered' => $recordsFiltered,
             'data'            => $data,
@@ -306,7 +306,7 @@ class AdminController extends AbstractBaseController
      */
     public function changesLogDownload(Request $request): Response
     {
-        list($select, , $where, $args) = $this->changesQuery($request);
+        list($select,, $where, $args) = $this->changesQuery($request);
 
         $rows = Database::prepare($select . $where)->execute($args)->fetchAll();
 
@@ -447,8 +447,8 @@ class AdminController extends AbstractBaseController
             'RESN',
         ];
 
-        $start  = (int)$request->get('start', 0);
-        $length = (int)$request->get('length', 20);
+        $start  = (int) $request->get('start', 0);
+        $length = (int) $request->get('length', 20);
         $search = $request->get('search', []);
         $search = $search['value'] ?? '';
 
@@ -468,7 +468,7 @@ class AdminController extends AbstractBaseController
         $args  = [];
 
         if ($search !== '') {
-            $where           .= " AND (multimedia_file_refn LIKE CONCAT('%', :search1, '%') OR multimedia_file_refn LIKE CONCAT('%', :search2, '%'))";
+            $where .= " AND (multimedia_file_refn LIKE CONCAT('%', :search1, '%') OR multimedia_file_refn LIKE CONCAT('%', :search2, '%'))";
             $args['search1'] = $search;
             $args['search2'] = $search;
         }
@@ -487,8 +487,8 @@ class AdminController extends AbstractBaseController
         )->fetchAll();
 
         // Total filtered/unfiltered rows
-        $recordsFiltered = (int)Database::prepare("SELECT FOUND_ROWS()")->fetchOne();
-        $recordsTotal    = (int)Database::prepare($select2)->fetchOne();
+        $recordsFiltered = (int) Database::prepare("SELECT FOUND_ROWS()")->fetchOne();
+        $recordsTotal    = (int) Database::prepare($select2)->fetchOne();
 
         // Turn each row from the query into a row for the table
         $data = array_map(function (stdClass $datum) use ($ignore_facts): array {
@@ -530,7 +530,7 @@ class AdminController extends AbstractBaseController
         }, $data);
 
         return new JsonResponse([
-            'draw'            => (int)$request->get('draw'),
+            'draw'            => (int) $request->get('draw'),
             'recordsTotal'    => $recordsTotal,
             'recordsFiltered' => $recordsFiltered,
             'data'            => $data,
@@ -619,8 +619,8 @@ class AdminController extends AbstractBaseController
      */
     public function webtrees1ThumbnailsData(Request $request): JsonResponse
     {
-        $start  = (int)$request->get('start', 0);
-        $length = (int)$request->get('length', 20);
+        $start  = (int) $request->get('start', 0);
+        $length = (int) $request->get('length', 20);
         $search = $request->get('search', []);
         $search = $search['value'] ?? '';
 
@@ -651,7 +651,7 @@ class AdminController extends AbstractBaseController
         $data = array_map(function (string $thumbnail): array {
             $original = $this->findOriginalFileFromThumbnail($thumbnail);
 
-            $original_url  = route('unused-media-thumbnail', [
+            $original_url = route('unused-media-thumbnail', [
                 'folder' => dirname($original),
                 'file'   => basename($original),
                 'w'      => 100,
@@ -693,7 +693,7 @@ class AdminController extends AbstractBaseController
         }, $thumbnails);
 
         return new JsonResponse([
-            'draw'            => (int)$request->get('draw'),
+            'draw'            => (int) $request->get('draw'),
             'recordsTotal'    => $recordsTotal,
             'recordsFiltered' => $recordsFiltered,
             'data'            => $data,
@@ -1019,7 +1019,7 @@ class AdminController extends AbstractBaseController
      */
     public function treePrivacyUpdate(Request $request, Tree $tree): RedirectResponse
     {
-        foreach ((array)$request->get('delete') as $default_resn_id) {
+        foreach ((array) $request->get('delete') as $default_resn_id) {
             Database::prepare(
                 "DELETE FROM `##default_resn` WHERE default_resn_id = :default_resn_id"
             )->execute([
@@ -1027,13 +1027,13 @@ class AdminController extends AbstractBaseController
             ]);
         }
 
-        $xrefs     = (array)$request->get('xref');
-        $tag_types = (array)$request->get('tag_type');
-        $resns     = (array)$request->get('resn');
+        $xrefs     = (array) $request->get('xref');
+        $tag_types = (array) $request->get('tag_type');
+        $resns     = (array) $request->get('resn');
 
         foreach ($xrefs as $n => $xref) {
-            $tag_type = (string)$tag_types[$n];
-            $resn     = (string)$resns[$n];
+            $tag_type = (string) $tag_types[$n];
+            $resn     = (string) $resns[$n];
 
             if ($tag_type !== '' || $xref !== '') {
                 // Delete any existing data
@@ -1079,10 +1079,10 @@ class AdminController extends AbstractBaseController
         FlashMessages::addMessage(I18N::translate('The preferences for the family tree “%s” have been updated.', e($tree->getTitle()), 'success'));
 
         // Coming soon...
-        if ((bool)$request->get('all_trees')) {
+        if ((bool) $request->get('all_trees')) {
             FlashMessages::addMessage(I18N::translate('The preferences for all family trees have been updated.', e($tree->getTitle())), 'success');
         }
-        if ((bool)$request->get('new_trees')) {
+        if ((bool) $request->get('new_trees')) {
             FlashMessages::addMessage(I18N::translate('The preferences for new family trees have been updated.', e($tree->getTitle())), 'success');
         }
 
@@ -1105,7 +1105,7 @@ class AdminController extends AbstractBaseController
         foreach ($modules as $module) {
             foreach (Tree::getAll() as $tree) {
                 $key          = 'access-' . $module->getName() . '-' . $tree->getTreeId();
-                $access_level = (int)$request->get($key, $module->defaultAccessLevel());
+                $access_level = (int) $request->get($key, $module->defaultAccessLevel());
 
                 Database::prepare("REPLACE INTO `##module_privacy` (module_name, gedcom_id, component, access_level) VALUES (:module_name, :tree_id, :component, :access_level)")->execute([
                     'module_name'  => $module->getName(),
@@ -1132,7 +1132,7 @@ class AdminController extends AbstractBaseController
         $module_status = Database::prepare("SELECT module_name, status FROM `##module`")->fetchAssoc();
 
         foreach ($modules as $module) {
-            $new_status = (bool)$request->get('status-' . $module->getName()) ? 'enabled' : 'disabled';
+            $new_status = (bool) $request->get('status-' . $module->getName()) ? 'enabled' : 'disabled';
             $old_status = $module_status[$module->getName()];
 
             if ($new_status !== $old_status) {
@@ -1195,36 +1195,36 @@ class AdminController extends AbstractBaseController
         $where = ' WHERE 1';
         $args  = [];
         if ($search !== '') {
-            $where            .= " AND (old_gedcom LIKE CONCAT('%', :search_1, '%') OR new_gedcom LIKE CONCAT('%', :search_2, '%'))";
+            $where .= " AND (old_gedcom LIKE CONCAT('%', :search_1, '%') OR new_gedcom LIKE CONCAT('%', :search_2, '%'))";
             $args['search_1'] = $search;
             $args['search_2'] = $search;
         }
         if ($from !== '') {
-            $where        .= " AND change_time >= :from";
+            $where .= " AND change_time >= :from";
             $args['from'] = $from;
         }
         if ($to !== '') {
-            $where      .= ' AND change_time < TIMESTAMPADD(DAY, 1 , :to)'; // before end of the day
+            $where .= ' AND change_time < TIMESTAMPADD(DAY, 1 , :to)'; // before end of the day
             $args['to'] = $to;
         }
         if ($type !== '') {
-            $where          .= ' AND status = :status';
+            $where .= ' AND status = :status';
             $args['status'] = $type;
         }
         if ($oldged !== '') {
-            $where           .= " AND old_gedcom LIKE CONCAT('%', :old_ged, '%')";
+            $where .= " AND old_gedcom LIKE CONCAT('%', :old_ged, '%')";
             $args['old_ged'] = $oldged;
         }
         if ($newged !== '') {
-            $where           .= " AND new_gedcom LIKE CONCAT('%', :new_ged, '%')";
+            $where .= " AND new_gedcom LIKE CONCAT('%', :new_ged, '%')";
             $args['new_ged'] = $newged;
         }
         if ($xref !== '') {
-            $where        .= " AND xref = :xref";
+            $where .= " AND xref = :xref";
             $args['xref'] = $xref;
         }
         if ($username !== '') {
-            $where        .= " AND user_name LIKE CONCAT('%', :user, '%')";
+            $where .= " AND user_name LIKE CONCAT('%', :user, '%')";
             $args['user'] = $username;
         }
         if ($ged !== '') {
@@ -1275,8 +1275,8 @@ class AdminController extends AbstractBaseController
      */
     private function dataTablesPagination(Request $request): array
     {
-        $start  = (int)$request->get('start', '0');
-        $length = (int)$request->get('length', '0');
+        $start  = (int) $request->get('start', '0');
+        $length = (int) $request->get('length', '0');
         $order  = $request->get('order', []);
         $args   = [];
 
@@ -1427,7 +1427,7 @@ class AdminController extends AbstractBaseController
         }
 
         // The maximum difference is 255 (black versus white).
-        return 100 - (int)($max_difference * 100 / 255);
+        return 100 - (int) ($max_difference * 100 / 255);
     }
 
     /**
@@ -1458,7 +1458,7 @@ class AdminController extends AbstractBaseController
             $pixels[$x] = [];
             for ($y = 0; $y < $size; ++$y) {
                 $pixel          = $image->pickColor($x, $y);
-                $pixels[$x][$y] = (int)(($pixel[0] + $pixel[1] + $pixel[2]) / 3);
+                $pixels[$x][$y] = (int) (($pixel[0] + $pixel[1] + $pixel[2]) / 3);
             }
         }
 
