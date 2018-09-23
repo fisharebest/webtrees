@@ -24,8 +24,10 @@
         "process-timeout": 3600
     },
     "require": {
+        "ext-curl": "*",
         "ext-gd": "*",
         "ext-iconv": "*",
+        "ext-intl": "*",
         "ext-json": "*",
         "ext-pcre": "*",
         "ext-pdo": "*",
@@ -33,6 +35,7 @@
         "ext-session": "*",
         "ext-simplexml": "*",
         "ext-xml": "*",
+        "ext-zip": "*",
         "filp/whoops": "~2.1",
         "fisharebest/algorithm": "~1.3",
         "fisharebest/ext-calendar": "~2.5",
