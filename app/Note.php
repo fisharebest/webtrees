@@ -95,7 +95,7 @@ class Note extends GedcomRecord
      *
      * @return string
      */
-    protected function createPrivateGedcomRecord($access_level): string
+    protected function createPrivateGedcomRecord(int $access_level): string
     {
         return '0 @' . $this->xref . '@ NOTE ' . I18N::translate('Private');
     }
