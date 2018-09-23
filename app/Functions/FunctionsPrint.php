@@ -319,7 +319,7 @@ class FunctionsPrint
                     }
                 }
             } elseif ($record instanceof Family) {
-                $indi = Individual::getInstance($pid, $record->getTree());
+                $indi = Individual::getInstance((string) $pid, $record->getTree());
                 if ($indi) {
                     $birth_date = $indi->getBirthDate();
                     $death_date = $indi->getDeathDate();

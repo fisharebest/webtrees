@@ -246,7 +246,7 @@ class Fact
      *
      * @return bool
      */
-    public function canShow($access_level = null): bool
+    public function canShow(int $access_level = null): bool
     {
         if ($access_level === null) {
             $access_level = Auth::accessLevel($this->getParent()->getTree());

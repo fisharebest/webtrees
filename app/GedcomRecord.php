@@ -415,7 +415,7 @@ class GedcomRecord
      *
      * @return bool
      */
-    protected function canShowByType(int $access_level)
+    protected function canShowByType(int $access_level): bool
     {
         $fact_privacy = $this->tree->getFactPrivacy();
 
@@ -435,7 +435,7 @@ class GedcomRecord
      *
      * @return bool
      */
-    public function canShow(int $access_level = null)
+    public function canShow(int $access_level = null): bool
     {
         if ($access_level === null) {
             $access_level = Auth::accessLevel($this->tree);

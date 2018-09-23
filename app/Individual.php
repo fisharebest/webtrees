@@ -102,7 +102,7 @@ class Individual extends GedcomRecord
      *
      * @return bool
      */
-    public function canShowName($access_level = null): bool
+    public function canShowName(int $access_level = null): bool
     {
         if ($access_level === null) {
             $access_level = Auth::accessLevel($this->tree);
@@ -118,7 +118,7 @@ class Individual extends GedcomRecord
      *
      * @return bool
      */
-    protected function canShowByType($access_level): bool
+    protected function canShowByType(int $access_level): bool
     {
         // Dead people...
         if ($this->tree->getPreference('SHOW_DEAD_PEOPLE') >= $access_level && $this->isDead()) {

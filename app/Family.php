@@ -172,7 +172,7 @@ class Family extends GedcomRecord
      *
      * @return bool
      */
-    protected function canShowByType($access_level): bool
+    protected function canShowByType(int $access_level): bool
     {
         // Hide a family if any member is private
         preg_match_all('/\n1 (?:CHIL|HUSB|WIFE) @(' . WT_REGEX_XREF . ')@/', $this->gedcom, $matches);
@@ -193,7 +193,7 @@ class Family extends GedcomRecord
      *
      * @return bool
      */
-    public function canShowName($access_level = null): bool
+    public function canShowName(int $access_level = null): bool
     {
         // We can always see the name (Husband-name + Wife-name), however,
         // the name will often be "private + private"

@@ -54,7 +54,7 @@ class Source extends GedcomRecord
      *
      * @return bool
      */
-    protected function canShowByType($access_level): bool
+    protected function canShowByType(int $access_level): bool
     {
         // Hide sources if they are attached to private repositories ...
         preg_match_all('/\n1 REPO @(.+)@/', $this->gedcom, $matches);
