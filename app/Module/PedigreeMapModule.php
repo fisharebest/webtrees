@@ -92,6 +92,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
                 'module' => $this->getName(),
                 'action' => 'PedigreeMap',
                 'xref'   => $individual->getXref(),
+                'ged'    => $individual->getTree()->getName(),
             ]),
             'menu-chart-pedigreemap',
             ['rel' => 'nofollow']
