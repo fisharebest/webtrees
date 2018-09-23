@@ -523,7 +523,6 @@ class CalendarDate
         }
 
         return [$years, $months, $days];
-
     }
 
     /**

@@ -77,7 +77,7 @@
             "### PHP-CODE-FIXER",
             "phpcf app/",
             "### PAHOUT",
-            "pahout --php-version 7.0.8 --ignore-paths=data .",
+            "pahout --php-version 7.0.0 --ignore-paths=data .",
             "### PHP-PARALLEL-LINT",
             "parallel-lint --no-progress --exclude vendor .",
             "### PHP-CODE-SNIFFER",

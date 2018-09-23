@@ -15,19 +15,6 @@
  */
 namespace Fisharebest\Webtrees;
 
-use DomainException;
-use Fisharebest\ExtCalendar\GregorianCalendar;
-use Fisharebest\Webtrees\Date\CalendarDate;
-use Fisharebest\Webtrees\Date\FrenchDate;
-use Fisharebest\Webtrees\Date\GregorianDate;
-use Fisharebest\Webtrees\Date\HijriDate;
-use Fisharebest\Webtrees\Date\JalaliDate;
-use Fisharebest\Webtrees\Date\JewishDate;
-use Fisharebest\Webtrees\Date\JulianDate;
-use Fisharebest\Webtrees\Date\RomanDate;
-use const WT_TIMESTAMP;
-use const WT_TIMESTAMP_OFFSET;
-
 /**
  * Timestamps
  */
@@ -53,7 +40,8 @@ class Timestamp
      *
      * @return Date
      */
-    public function toDate(int $tz_offset = WT_TIMESTAMP_OFFSET): Date{
+    public function toDate(int $tz_offset = WT_TIMESTAMP_OFFSET): Date
+    {
         return new Date(strtoupper(gmdate('j M Y', $this->time + $tz_offset)));
     }
 }
