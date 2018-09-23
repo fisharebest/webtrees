@@ -1500,12 +1500,16 @@ class AdminController extends AbstractBaseController
             'tree_id' => $tree->getTreeId(),
         ])->fetchAll();
 
-        foreach ($restrictions as $resn) {
-            $resn->record = GedcomRecord::getInstance($resn->xref, $tree);
-            if ($resn->tag_type) {
-                $resn->tag_label = GedcomTag::getLabel($resn->tag_type);
-            } else {
-                $resn->tag_label = '';
+        foreach ($restrictions as $restriction) {
+            $restriction->record = null;
+            $restriction->label  = '';
+
+            if ($restriction->xref !== null) {
+                $restriction->record = GedcomRecord::getInstance($restriction->xref, $tree);
+            }
+
+            if ($restriction->tag_type) {
+                $restriction->tag_label = GedcomTag::getLabel($restriction->tag_type);
             }
         }
 

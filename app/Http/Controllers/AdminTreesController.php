@@ -924,26 +924,6 @@ class AdminTreesController extends AbstractBaseController
 
         uasort($all_tags, '\Fisharebest\Webtrees\I18N::strcasecmp');
 
-        $resns = Database::prepare(
-            "SELECT default_resn_id, tag_type, xref, resn" .
-            " FROM `##default_resn`" .
-            " LEFT JOIN `##name` ON (gedcom_id=n_file AND xref=n_id AND n_num=0)" .
-            " WHERE gedcom_id=?" .
-            " ORDER BY xref IS NULL, n_sort, xref, tag_type"
-        )->execute([$tree->getTreeId()])->fetchAll();
-
-        foreach ($resns as $resn) {
-            $resn->record = GedcomRecord::getInstance($resn->xref, $tree);
-            if ($resn->tag_type) {
-                $resn->tag_label = GedcomTag::getLabel($resn->tag_type);
-            } else {
-                $resn->tag_label = '';
-            }
-        }
-        usort($resns, function (stdClass $x, stdClass $y): int {
-            return I18N::strcasecmp($x->tag_label, $y->tag_label);
-        });
-
         // For historical reasons, we have two fields in one
         $calendar_formats = explode('_and_', $tree->getPreference('CALENDAR_FORMAT') . '_and_');
 
