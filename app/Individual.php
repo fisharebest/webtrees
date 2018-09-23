@@ -123,7 +123,7 @@ class Individual extends GedcomRecord
         // Dead people...
         if ($this->tree->getPreference('SHOW_DEAD_PEOPLE') >= $access_level && $this->isDead()) {
             $keep_alive             = false;
-            $KEEP_ALIVE_YEARS_BIRTH = (int)$this->tree->getPreference('KEEP_ALIVE_YEARS_BIRTH');
+            $KEEP_ALIVE_YEARS_BIRTH = (int) $this->tree->getPreference('KEEP_ALIVE_YEARS_BIRTH');
             if ($KEEP_ALIVE_YEARS_BIRTH) {
                 preg_match_all('/\n1 (?:' . WT_EVENTS_BIRT . ').*(?:\n[2-9].*)*(?:\n2 DATE (.+))/', $this->gedcom, $matches, PREG_SET_ORDER);
                 foreach ($matches as $match) {
@@ -134,7 +134,7 @@ class Individual extends GedcomRecord
                     }
                 }
             }
-            $KEEP_ALIVE_YEARS_DEATH = (int)$this->tree->getPreference('KEEP_ALIVE_YEARS_DEATH');
+            $KEEP_ALIVE_YEARS_DEATH = (int) $this->tree->getPreference('KEEP_ALIVE_YEARS_DEATH');
             if ($KEEP_ALIVE_YEARS_DEATH) {
                 preg_match_all('/\n1 (?:' . WT_EVENTS_DEAT . ').*(?:\n[2-9].*)*(?:\n2 DATE (.+))/', $this->gedcom, $matches, PREG_SET_ORDER);
                 foreach ($matches as $match) {
@@ -150,7 +150,7 @@ class Individual extends GedcomRecord
             }
         }
         // Consider relationship privacy (unless an admin is applying download restrictions)
-        $user_path_length = (int)$this->tree->getUserPreference(Auth::user(), 'RELATIONSHIP_PATH_LENGTH');
+        $user_path_length = (int) $this->tree->getUserPreference(Auth::user(), 'RELATIONSHIP_PATH_LENGTH');
         $gedcomid         = $this->tree->getUserPreference(Auth::user(), 'gedcomid');
         if ($gedcomid !== '' && $user_path_length > 0) {
             return self::isRelated($this, $user_path_length);
@@ -322,7 +322,7 @@ class Individual extends GedcomRecord
      */
     public function isDead(): bool
     {
-        $MAX_ALIVE_AGE = (int)$this->tree->getPreference('MAX_ALIVE_AGE');
+        $MAX_ALIVE_AGE = (int) $this->tree->getPreference('MAX_ALIVE_AGE');
 
         // "1 DEAT Y" or "1 DEAT/2 DATE" or "1 DEAT/2 PLAC"
         if (preg_match('/\n1 (?:' . WT_EVENTS_DEAT . ')(?: Y|(?:\n[2-9].+)*\n2 (DATE|PLAC) )/', $this->gedcom)) {
@@ -711,7 +711,7 @@ class Individual extends GedcomRecord
                 if ($min && $max) {
                     $gregorian_calendar = new GregorianCalendar();
 
-                    list($year) = $gregorian_calendar->jdToYmd((int)((max($min) + min($max)) / 2));
+                    list($year) = $gregorian_calendar->jdToYmd((int) ((max($min) + min($max)) / 2));
                     $this->estimated_birth_date = new Date('EST ' . $year);
                 } else {
                     $this->estimated_birth_date = new Date(''); // always return a date object
@@ -738,7 +738,7 @@ class Individual extends GedcomRecord
             }
             if ($this->estimated_death_date === null) {
                 if ($this->getEstimatedBirthDate()->minimumJulianDay()) {
-                    $max_alive_age              = (int)$this->tree->getPreference('MAX_ALIVE_AGE');
+                    $max_alive_age              = (int) $this->tree->getPreference('MAX_ALIVE_AGE');
                     $this->estimated_death_date = $this->getEstimatedBirthDate()->addYears($max_alive_age, 'BEF');
                 } else {
                     $this->estimated_death_date = new Date(''); // always return a date object
@@ -1106,7 +1106,7 @@ class Individual extends GedcomRecord
         if ($display) {
             $txt .= ' style="display:' . $display . '"';
         }
-        $txt  .= '>';
+        $txt .= '>';
         $husb = $fam->getHusband();
         if ($husb) {
             // Temporarily reset the 'prefered' display name, as we always
