@@ -152,6 +152,7 @@
         reference:   reference,
         type:        mapType,
         generations: Generations,
+        ged:         <?= json_encode($tree->getName()) ?>
       })
         .done(function (data, textStatus, jqXHR) {
           if (jqXHR.status === 200 && data.features.length === 1) {
