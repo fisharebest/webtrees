@@ -838,31 +838,31 @@ class I18N
         $year   = 365 * $day;
 
         if ($seconds > $year) {
-            $years = (int)($seconds / $year);
+            $years = (int) ($seconds / $year);
 
             return self::plural('%s year ago', '%s years ago', $years, self::number($years));
         }
 
         if ($seconds > $month) {
-            $months = (int)($seconds / $month);
+            $months = (int) ($seconds / $month);
 
             return self::plural('%s month ago', '%s months ago', $months, self::number($months));
         }
 
         if ($seconds > $day) {
-            $days = (int)($seconds / $day);
+            $days = (int) ($seconds / $day);
 
             return self::plural('%s day ago', '%s days ago', $days, self::number($days));
         }
 
         if ($seconds > $hour) {
-            $hours = (int)($seconds / $hour);
+            $hours = (int) ($seconds / $hour);
 
             return self::plural('%s hour ago', '%s hours ago', $hours, self::number($hours));
         }
 
         if ($seconds > $minute) {
-            $minutes = (int)($seconds / $minute);
+            $minutes = (int) ($seconds / $minute);
 
             return self::plural('%s minute ago', '%s minutes ago', $minutes, self::number($minutes));
         }

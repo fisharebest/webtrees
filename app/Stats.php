@@ -156,7 +156,7 @@ class Stats
     private function getTags($text): array
     {
         // Extract all tags from the provided text
-        preg_match_all('/#([^#]+)(?=#)/', (string)$text, $match);
+        preg_match_all('/#([^#]+)(?=#)/', (string) $text, $match);
         $tags       = $match[1];
         $c          = count($tags);
         $new_tags   = []; // tag to replace
@@ -392,7 +392,7 @@ class Stats
      */
     private function totalIndividualsQuery(): int
     {
-        return (int)Database::prepare(
+        return (int) Database::prepare(
             "SELECT COUNT(*) FROM `##individuals` WHERE i_file = :tree_id"
         )->execute([
             'tree_id' => $this->tree->getTreeId(),
@@ -416,7 +416,7 @@ class Stats
      */
     private function totalIndisWithSourcesQuery(): int
     {
-        return (int)Database::prepare(
+        return (int) Database::prepare(
             "SELECT COUNT(DISTINCT i_id)" .
             " FROM `##individuals` JOIN `##link` ON i_id = l_from AND i_file = l_file" .
             " WHERE l_file = :tree_id AND l_type = 'SOUR'"
@@ -499,7 +499,7 @@ class Stats
      */
     private function totalFamiliesQuery(): int
     {
-        return (int)Database::prepare(
+        return (int) Database::prepare(
             "SELECT COUNT(*) FROM `##families` WHERE f_file = :tree_id"
         )->execute([
             'tree_id' => $this->tree->getTreeId(),
@@ -523,7 +523,7 @@ class Stats
      */
     private function totalFamsWithSourcesQuery(): int
     {
-        return (int)Database::prepare(
+        return (int) Database::prepare(
             "SELECT COUNT(DISTINCT f_id)" .
             " FROM `##families` JOIN `##link` ON f_id = l_from AND f_file = l_file" .
             " WHERE l_file = :tree_id AND l_type = 'SOUR'"
@@ -606,7 +606,7 @@ class Stats
      */
     private function totalSourcesQuery(): int
     {
-        return (int)Database::prepare(
+        return (int) Database::prepare(
             "SELECT COUNT(*) FROM `##sources` WHERE s_file = :tree_id"
         )->execute([
             'tree_id' => $this->tree->getTreeId(),
@@ -640,7 +640,7 @@ class Stats
      */
     private function totalNotesQuery(): int
     {
-        return (int)Database::prepare(
+        return (int) Database::prepare(
             "SELECT COUNT(*) FROM `##other` WHERE o_type='NOTE' AND o_file = :tree_id"
         )->execute([
             'tree_id' => $this->tree->getTreeId(),
@@ -674,7 +674,7 @@ class Stats
      */
     private function totalRepositoriesQuery(): int
     {
-        return (int)Database::prepare(
+        return (int) Database::prepare(
             "SELECT COUNT(*) FROM `##other` WHERE o_type='REPO' AND o_file = :tree_id"
         )->execute([
             'tree_id' => $this->tree->getTreeId(),
@@ -785,11 +785,11 @@ class Stats
                 }
             }
             if ($types) {
-                $sql  .= ' AND d_fact IN (' . implode(', ', array_fill(0, count($types), '?')) . ')';
+                $sql .= ' AND d_fact IN (' . implode(', ', array_fill(0, count($types), '?')) . ')';
                 $vars = array_merge($vars, $types);
             }
         }
-        $sql  .= ' AND d_fact NOT IN (' . implode(', ', array_fill(0, count($no_types), '?')) . ')';
+        $sql .= ' AND d_fact NOT IN (' . implode(', ', array_fill(0, count($no_types), '?')) . ')';
         $vars = array_merge($vars, $no_types);
 
         $n = (int) Database::prepare($sql)->execute($vars)->fetchOne();
@@ -901,7 +901,7 @@ class Stats
      */
     private function totalSexMalesQuery(): int
     {
-        return (int)Database::prepare(
+        return (int) Database::prepare(
             "SELECT COUNT(*) FROM `##individuals` WHERE i_file = :tree_id AND i_sex = 'M'"
         )->execute([
             'tree_id' => $this->tree->getTreeId(),
@@ -935,7 +935,7 @@ class Stats
      */
     private function totalSexFemalesQuery(): int
     {
-        return (int)Database::prepare(
+        return (int) Database::prepare(
             "SELECT COUNT(*) FROM `##individuals` WHERE i_file = :tree_id AND i_sex = 'F'"
         )->execute([
             'tree_id' => $this->tree->getTreeId(),
@@ -969,7 +969,7 @@ class Stats
      */
     private function totalSexUnknownQuery(): int
     {
-        return (int)Database::prepare(
+        return (int) Database::prepare(
             "SELECT COUNT(*) FROM `##individuals` WHERE i_file = :tree_id AND i_sex = 'U'"
         )->execute([
             'tree_id' => $this->tree->getTreeId(),
@@ -1043,12 +1043,12 @@ class Stats
         }
 
         if ($tot_u > 0) {
-            $chd         = $this->arrayToExtendedEncoding([
+            $chd = $this->arrayToExtendedEncoding([
                 4095 * $tot_u / $tot,
                 4095 * $tot_f / $tot,
                 4095 * $tot_m / $tot,
             ]);
-            $chl         =
+            $chl =
                 I18N::translateContext('unknown people', 'Unknown') . ' - ' . $per_u . '|' .
                 I18N::translate('Females') . ' - ' . $per_f . '|' .
                 I18N::translate('Males') . ' - ' . $per_m;
@@ -1060,7 +1060,7 @@ class Stats
             return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_unknown},{$color_female},{$color_male}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . $chart_title . '" title="' . $chart_title . '" />';
         }
 
-        $chd         = $this->arrayToExtendedEncoding([
+        $chd = $this->arrayToExtendedEncoding([
             4095 * $tot_f / $tot,
             4095 * $tot_m / $tot,
         ]);
@@ -1085,7 +1085,7 @@ class Stats
      */
     private function totalLivingQuery(): int
     {
-        return (int)Database::prepare(
+        return (int) Database::prepare(
             "SELECT COUNT(*) FROM `##individuals` WHERE i_file = :tree_id AND i_gedcom NOT REGEXP '\\n1 (" . WT_EVENTS_DEAT . ")'"
         )->execute([
             'tree_id' => $this->tree->getTreeId(),
@@ -1119,7 +1119,7 @@ class Stats
      */
     private function totalDeceasedQuery(): int
     {
-        return (int)Database::prepare(
+        return (int) Database::prepare(
             "SELECT COUNT(*) FROM `##individuals` WHERE i_file = :tree_id AND i_gedcom REGEXP '\\n1 (" . WT_EVENTS_DEAT . ")'"
         )->execute([
             'tree_id' => $this->tree->getTreeId(),
@@ -1185,7 +1185,7 @@ class Stats
             return '';
         }
 
-        $chd         = $this->arrayToExtendedEncoding([
+        $chd = $this->arrayToExtendedEncoding([
             4095 * $tot_l / $tot,
             4095 * $tot_d / $tot,
         ]);
@@ -1208,7 +1208,7 @@ class Stats
     public function totalUsers($params = []): string
     {
         if (isset($params[0])) {
-            $total = count(User::all()) + (int)$params[0];
+            $total = count(User::all()) + (int) $params[0];
         } else {
             $total = count(User::all());
         }
@@ -1255,18 +1255,18 @@ class Stats
             if ($type == 'unknown') {
                 // There has to be a better way then this :(
                 foreach ($this->media_types as $t) {
-                    $sql    .= " AND (m_gedcom NOT LIKE ? AND m_gedcom NOT LIKE ?)";
+                    $sql .= " AND (m_gedcom NOT LIKE ? AND m_gedcom NOT LIKE ?)";
                     $vars[] = "%3 TYPE {$t}%";
                     $vars[] = "%1 _TYPE {$t}%";
                 }
             } else {
-                $sql    .= " AND (m_gedcom LIKE ? OR m_gedcom LIKE ?)";
+                $sql .= " AND (m_gedcom LIKE ? OR m_gedcom LIKE ?)";
                 $vars[] = "%3 TYPE {$type}%";
                 $vars[] = "%1 _TYPE {$type}%";
             }
         }
 
-        return (int)Database::prepare($sql)->execute($vars)->fetchOne();
+        return (int) Database::prepare($sql)->execute($vars)->fetchOne();
     }
 
     /**
@@ -1729,7 +1729,7 @@ class Stats
     private function totalPlacesQuery(): int
     {
         return
-            (int)Database::prepare("SELECT COUNT(*) FROM `##places` WHERE p_file=?")
+            (int) Database::prepare("SELECT COUNT(*) FROM `##places` WHERE p_file=?")
                 ->execute([$this->tree->getTreeId()])
                 ->fetchOne();
     }
@@ -1899,7 +1899,7 @@ class Stats
         $chart_url .= '&amp;chs=' . $WT_STATS_MAP_X . 'x' . $WT_STATS_MAP_Y;
         $chart_url .= '&amp;chld=' . implode('', array_keys($surn_countries)) . '&amp;chd=s:';
         foreach ($surn_countries as $count) {
-            $chart_url .= substr(self::GOOGLE_CHART_ENCODING, (int)($count / max($surn_countries) * 61), 1);
+            $chart_url .= substr(self::GOOGLE_CHART_ENCODING, (int) ($count / max($surn_countries) * 61), 1);
         }
         $chart = '<div id="google_charts" class="center">';
         $chart .= '<p>' . $chart_title . '</p>';
@@ -1941,9 +1941,9 @@ class Stats
             $country = trim($place->country);
             if (array_key_exists($country, $country_names)) {
                 if (!isset($all_db_countries[$country_names[$country]][$country])) {
-                    $all_db_countries[$country_names[$country]][$country] = (int)$place->tot;
+                    $all_db_countries[$country_names[$country]][$country] = (int) $place->tot;
                 } else {
-                    $all_db_countries[$country_names[$country]][$country] += (int)$place->tot;
+                    $all_db_countries[$country_names[$country]][$country] += (int) $place->tot;
                 }
             }
         }
@@ -2120,7 +2120,7 @@ class Stats
             $centuries = '';
             $counts    = [];
             foreach ($rows as $values) {
-                $counts[]  = round(100 * $values->total / $tot, 0);
+                $counts[] = round(100 * $values->total / $tot, 0);
                 $centuries .= $this->centuryName($values->century) . ' - ' . I18N::number($values->total) . '|';
             }
             $chd = $this->arrayToExtendedEncoding($counts);
@@ -2214,7 +2214,7 @@ class Stats
             $centuries = '';
             $counts    = [];
             foreach ($rows as $values) {
-                $counts[]  = round(100 * $values->total / $tot, 0);
+                $counts[] = round(100 * $values->total / $tot, 0);
                 $centuries .= $this->centuryName($values->century) . ' - ' . I18N::number($values->total) . '|';
             }
             $chd = $this->arrayToExtendedEncoding($counts);
@@ -2464,7 +2464,7 @@ class Stats
                 }
                 break;
             case 'age':
-                $result = I18N::number((int)($row->age / 365.25));
+                $result = I18N::number((int) ($row->age / 365.25));
                 break;
             case 'name':
                 $result = '<a href="' . e($person->url()) . '">' . $person->getFullName() . '</a>';
@@ -2493,7 +2493,7 @@ class Stats
             $sex_search = '';
         }
         if (isset($params[0])) {
-            $total = (int)$params[0];
+            $total = (int) $params[0];
         } else {
             $total = 10;
         }
@@ -2527,10 +2527,10 @@ class Stats
         foreach ($rows as $row) {
             $person = Individual::getInstance($row->deathdate, $this->tree);
             $age    = $row->age;
-            if ((int)($age / 365.25) > 0) {
-                $age = (int)($age / 365.25) . 'y';
-            } elseif ((int)($age / 30.4375) > 0) {
-                $age = (int)($age / 30.4375) . 'm';
+            if ((int) ($age / 365.25) > 0) {
+                $age = (int) ($age / 365.25) . 'y';
+            } elseif ((int) ($age / 30.4375) > 0) {
+                $age = (int) ($age / 30.4375) . 'm';
             } else {
                 $age = $age . 'd';
             }
@@ -2592,11 +2592,11 @@ class Stats
             $sex_search = '';
         }
         if (isset($params[0])) {
-            $total = (int)$params[0];
+            $total = (int) $params[0];
         } else {
             $total = 10;
         }
-        $rows  = $this->runSql(
+        $rows = $this->runSql(
             "SELECT" .
             " birth.d_gid AS id," .
             " MIN(birth.d_julianday1) AS age" .
@@ -2619,10 +2619,10 @@ class Stats
         foreach ($rows as $row) {
             $person = Individual::getInstance($row->id, $this->tree);
             $age    = (WT_CLIENT_JD - $row->age);
-            if ((int)($age / 365.25) > 0) {
-                $age = (int)($age / 365.25) . 'y';
-            } elseif ((int)($age / 30.4375) > 0) {
-                $age = (int)($age / 30.4375) . 'm';
+            if ((int) ($age / 365.25) > 0) {
+                $age = (int) ($age / 365.25) . 'y';
+            } elseif ((int) ($age / 30.4375) > 0) {
+                $age = (int) ($age / 30.4375) . 'm';
             } else {
                 $age = $age . 'd';
             }
@@ -2699,10 +2699,10 @@ class Stats
 
         $age = $rows[0]->age;
         if ($show_years) {
-            if ((int)($age / 365.25) > 0) {
-                $age = (int)($age / 365.25) . 'y';
-            } elseif ((int)($age / 30.4375) > 0) {
-                $age = (int)($age / 30.4375) . 'm';
+            if ((int) ($age / 365.25) > 0) {
+                $age = (int) ($age / 365.25) . 'y';
+            } elseif ((int) ($age / 30.4375) > 0) {
+                $age = (int) ($age / 30.4375) . 'm';
             } elseif (!empty($age)) {
                 $age = $age . 'd';
             }
@@ -2772,7 +2772,7 @@ class Stats
                 if ($sizes[0] < 980) {
                     $sizes[0] += 50;
                 }
-                $chxl    .= $this->centuryName($century) . '|';
+                $chxl .= $this->centuryName($century) . '|';
                 $average = 0;
                 if (isset($values['F'])) {
                     $countsf .= $values['F'] . ',';
@@ -2814,7 +2814,7 @@ class Stats
                 while ($offset = strpos($title, ' ', $offset + 1)) {
                     $counter[] = $offset;
                 }
-                $half = (int)(count($counter) / 2);
+                $half = (int) (count($counter) / 2);
                 $chtt = substr_replace($title, '|', $counter[$half], 1);
             }
 
@@ -3390,16 +3390,16 @@ class Stats
             case 'age':
                 $age = $row->age;
                 if ($show_years) {
-                    if ((int)($age / 365.25) > 0) {
-                        $age = (int)($age / 365.25) . 'y';
-                    } elseif ((int)($age / 30.4375) > 0) {
-                        $age = (int)($age / 30.4375) . 'm';
+                    if ((int) ($age / 365.25) > 0) {
+                        $age = (int) ($age / 365.25) . 'y';
+                    } elseif ((int) ($age / 30.4375) > 0) {
+                        $age = (int) ($age / 30.4375) . 'm';
                     } else {
                         $age = $age . 'd';
                     }
                     $result = FunctionsDate::getAgeAtEvent($age);
                 } else {
-                    $result = I18N::number((int)($age / 365.25));
+                    $result = I18N::number((int) ($age / 365.25));
                 }
                 break;
         }
@@ -3419,7 +3419,7 @@ class Stats
     private function ageOfMarriageQuery($type = 'list', $age_dir = 'ASC', $params = []): string
     {
         if (isset($params[0])) {
-            $total = (int)$params[0];
+            $total = (int) $params[0];
         } else {
             $total = 10;
         }
@@ -3502,10 +3502,10 @@ class Stats
             if ($type === 'name') {
                 return $family->formatList();
             }
-            if ((int)($age / 365.25) > 0) {
-                $age = (int)($age / 365.25) . 'y';
-            } elseif ((int)($age / 30.4375) > 0) {
-                $age = (int)($age / 30.4375) . 'm';
+            if ((int) ($age / 365.25) > 0) {
+                $age = (int) ($age / 365.25) . 'y';
+            } elseif ((int) ($age / 30.4375) > 0) {
+                $age = (int) ($age / 30.4375) . 'm';
             } else {
                 $age = $age . 'd';
             }
@@ -3567,7 +3567,7 @@ class Stats
     private function ageBetweenSpousesQuery($type = 'list', $age_dir = 'DESC', $params = []): string
     {
         if (isset($params[0])) {
-            $total = (int)$params[0];
+            $total = (int) $params[0];
         } else {
             $total = 10;
         }
@@ -3612,10 +3612,10 @@ class Stats
                 break;
             }
             $age = $fam->age;
-            if ((int)($age / 365.25) > 0) {
-                $age = (int)($age / 365.25) . 'y';
-            } elseif ((int)($age / 30.4375) > 0) {
-                $age = (int)($age / 30.4375) . 'm';
+            if ((int) ($age / 365.25) > 0) {
+                $age = (int) ($age / 365.25) . 'y';
+            } elseif ((int) ($age / 30.4375) > 0) {
+                $age = (int) ($age / 30.4375) . 'm';
             } else {
                 $age = $age . 'd';
             }
@@ -3703,16 +3703,16 @@ class Stats
             case 'age':
                 $age = $row->age;
                 if ($show_years) {
-                    if ((int)($age / 365.25) > 0) {
-                        $age = (int)($age / 365.25) . 'y';
-                    } elseif ((int)($age / 30.4375) > 0) {
-                        $age = (int)($age / 30.4375) . 'm';
+                    if ((int) ($age / 365.25) > 0) {
+                        $age = (int) ($age / 365.25) . 'y';
+                    } elseif ((int) ($age / 30.4375) > 0) {
+                        $age = (int) ($age / 30.4375) . 'm';
                     } else {
                         $age = $age . 'd';
                     }
                     $result = FunctionsDate::getAgeAtEvent($age);
                 } else {
-                    $result = (int)($age / 365.25);
+                    $result = (int) ($age / 365.25);
                 }
                 break;
         }
@@ -3796,7 +3796,7 @@ class Stats
             $sizes = explode('x', $size);
             $tot   = 0;
             foreach ($rows as $values) {
-                $tot += (int)$values->total;
+                $tot += (int) $values->total;
             }
             // Beware divide by zero
             if ($tot === 0) {
@@ -3805,7 +3805,7 @@ class Stats
             $centuries = '';
             $counts    = [];
             foreach ($rows as $values) {
-                $counts[]  = round(100 * $values->total / $tot, 0);
+                $counts[] = round(100 * $values->total / $tot, 0);
                 $centuries .= $this->centuryName($values->century) . ' - ' . I18N::number($values->total) . '|';
             }
             $chd = $this->arrayToExtendedEncoding($counts);
@@ -3901,7 +3901,7 @@ class Stats
             $centuries = '';
             $counts    = [];
             foreach ($rows as $values) {
-                $counts[]  = round(100 * $values->total / $tot, 0);
+                $counts[] = round(100 * $values->total / $tot, 0);
                 $centuries .= $this->centuryName($values->century) . ' - ' . I18N::number($values->total) . '|';
             }
             $chd = $this->arrayToExtendedEncoding($counts);
@@ -4170,7 +4170,7 @@ class Stats
                 if ($sizes[0] < 1000) {
                     $sizes[0] += 50;
                 }
-                $chxl    .= $this->centuryName($century) . '|';
+                $chxl .= $this->centuryName($century) . '|';
                 $average = 0;
                 if (isset($values['F'])) {
                     if ($max <= 50) {
@@ -4227,7 +4227,7 @@ class Stats
                 while ($offset = strpos(I18N::translate('Average age in century of marriage'), ' ', $offset + 1)) {
                     $counter[] = $offset;
                 }
-                $half = (int)(count($counter) / 2);
+                $half = (int) (count($counter) / 2);
                 $chtt = substr_replace(I18N::translate('Average age in century of marriage'), '|', $counter[$half], 1);
             }
 
@@ -4763,7 +4763,7 @@ class Stats
     private function topTenFamilyQuery($type = 'list', $params = []): string
     {
         if (isset($params[0])) {
-            $total = (int)$params[0];
+            $total = (int) $params[0];
         } else {
             $total = 10;
         }
@@ -4830,7 +4830,7 @@ class Stats
     private function ageBetweenSiblingsQuery($type = 'list', $params = []): string
     {
         if (isset($params[0])) {
-            $total = (int)$params[0];
+            $total = (int) $params[0];
         } else {
             $total = 10;
         }
@@ -4886,10 +4886,10 @@ class Stats
                 return $return;
             }
             $age = $fam->age;
-            if ((int)($age / 365.25) > 0) {
-                $age = (int)($age / 365.25) . 'y';
-            } elseif ((int)($age / 30.4375) > 0) {
-                $age = (int)($age / 30.4375) . 'm';
+            if ((int) ($age / 365.25) > 0) {
+                $age = (int) ($age / 365.25) . 'y';
+            } elseif ((int) ($age / 30.4375) > 0) {
+                $age = (int) ($age / 30.4375) . 'm';
             } else {
                 $age = $age . 'd';
             }
@@ -4900,7 +4900,7 @@ class Stats
             if ($type == 'list') {
                 if ($one && !in_array($fam->family, $dist)) {
                     if ($child1->canShow() && $child2->canShow()) {
-                        $return  = '<li>';
+                        $return = '<li>';
                         $return  .= '<a href="' . e($child2->url()) . '">' . $child2->getFullName() . '</a> ';
                         $return  .= I18N::translate('and') . ' ';
                         $return  .= '<a href="' . e($child1->url()) . '">' . $child1->getFullName() . '</a>';
@@ -4911,7 +4911,7 @@ class Stats
                         $dist[]  = $fam->family;
                     }
                 } elseif (!$one && $child1->canShow() && $child2->canShow()) {
-                    $return  = '<li>';
+                    $return = '<li>';
                     $return  .= '<a href="' . e($child2->url()) . '">' . $child2->getFullName() . '</a> ';
                     $return  .= I18N::translate('and') . ' ';
                     $return  .= '<a href="' . e($child1->url()) . '">' . $child1->getFullName() . '</a>';
@@ -5186,7 +5186,7 @@ class Stats
             $total = 10;
         }
         $sizes = explode('x', $size);
-        $total = (int)$total;
+        $total = (int) $total;
         $rows  = $this->runSql(
             " SELECT f_numchil AS tot, f_id AS id" .
             " FROM `##families`" .
@@ -5199,7 +5199,7 @@ class Stats
         }
         $tot = 0;
         foreach ($rows as $row) {
-            $tot += (int)$row->tot;
+            $tot += (int) $row->tot;
         }
         $chd = '';
         $chl = [];
@@ -5211,7 +5211,7 @@ class Stats
                 } else {
                     $per = round(100 * $row->tot / $tot, 0);
                 }
-                $chd   .= $this->arrayToExtendedEncoding([$per]);
+                $chd .= $this->arrayToExtendedEncoding([$per]);
                 $chl[] = htmlspecialchars_decode(strip_tags($family->getFullName())) . ' - ' . I18N::number($row->tot);
             }
         }
@@ -5561,7 +5561,7 @@ class Stats
             if ($max < $values->count) {
                 $max = $values->count;
             }
-            $tot += (int)$values->count;
+            $tot += (int) $values->count;
         }
         $unknown = $this->noChildrenFamiliesQuery() - $tot;
         if ($unknown > $max) {
@@ -5585,13 +5585,13 @@ class Stats
         $chm      .= 't' . $unknown . ',000000,0,' . $i . ',11,1';
         $chxl     .= I18N::translateContext('unknown century', 'Unknown') . '|1:||' . I18N::translate('century') . '|2:|0|';
         $step     = $max + 1;
-        for ($d = (int)($max + 1); $d > 0; $d--) {
+        for ($d = (int) ($max + 1); $d > 0; $d--) {
             if (($max + 1) < ($d * 10 + 1) && fmod(($max + 1), $d) == 0) {
                 $step = $d;
             }
         }
-        if ($step == (int)($max + 1)) {
-            for ($d = (int)($max); $d > 0; $d--) {
+        if ($step == (int) ($max + 1)) {
+            for ($d = (int) ($max); $d > 0; $d--) {
                 if ($max < ($d * 10 + 1) && fmod($max, $d) == 0) {
                     $step = $d;
                 }
@@ -5616,7 +5616,7 @@ class Stats
     private function topTenGrandFamilyQuery($type = 'list', $params = []): string
     {
         if (isset($params[0])) {
-            $total = (int)$params[0];
+            $total = (int) $params[0];
         } else {
             $total = 10;
         }
@@ -5714,8 +5714,8 @@ class Stats
      */
     private function commonSurnamesQuery($type = 'list', $show_tot = false, $params = []): string
     {
-        $threshold          = empty($params[0]) ? 10 : (int)$params[0];
-        $number_of_surnames = empty($params[1]) ? 10 : (int)$params[1];
+        $threshold          = empty($params[0]) ? 10 : (int) $params[0];
+        $number_of_surnames = empty($params[1]) ? 10 : (int) $params[1];
         $sorting            = empty($params[2]) ? 'alpha' : $params[2];
 
         $surnames = $this->topSurnames($number_of_surnames, $threshold);
@@ -5876,7 +5876,7 @@ class Stats
             $max_name  = 0;
             $top_name  = '';
             foreach ($surns as $spfxsurn => $count) {
-                $per       = $count;
+                $per = $count;
                 $count_per += $per;
                 // select most common surname from all variants
                 if ($per > $max_name) {
@@ -5900,11 +5900,11 @@ class Stats
                     ], $top_name);
             }
             $per   = round(100 * $count_per / $tot_indi, 0);
-            $chd   .= $this->arrayToExtendedEncoding([$per]);
+            $chd .= $this->arrayToExtendedEncoding([$per]);
             $chl[] = $top_name . ' - ' . I18N::number($count_per);
         }
         $per   = round(100 * ($tot_indi - $tot) / $tot_indi, 0);
-        $chd   .= $this->arrayToExtendedEncoding([$per]);
+        $chd .= $this->arrayToExtendedEncoding([$per]);
         $chl[] = I18N::translate('Other') . ' - ' . I18N::number($tot_indi - $tot);
 
         $chart_title = implode(I18N::$list_separator, $chl);
@@ -5926,12 +5926,12 @@ class Stats
     private function commonGivenQuery($sex = 'B', $type = 'list', $show_tot = false, $params = [])
     {
         if (isset($params[0]) && $params[0] != '' && $params[0] >= 0) {
-            $threshold = (int)$params[0];
+            $threshold = (int) $params[0];
         } else {
             $threshold = 1;
         }
         if (isset($params[1]) && $params[1] != '' && $params[1] >= 0) {
-            $maxtoshow = (int)$params[1];
+            $maxtoshow = (int) $params[1];
         } else {
             $maxtoshow = 10;
         }
@@ -6324,11 +6324,11 @@ class Stats
             } else {
                 $per = round(100 * $count / $tot_indi, 0);
             }
-            $chd   .= $this->arrayToExtendedEncoding([$per]);
+            $chd .= $this->arrayToExtendedEncoding([$per]);
             $chl[] = $givn . ' - ' . I18N::number($count);
         }
         $per   = round(100 * ($tot_indi - $tot) / $tot_indi, 0);
-        $chd   .= $this->arrayToExtendedEncoding([$per]);
+        $chd .= $this->arrayToExtendedEncoding([$per]);
         $chl[] = I18N::translate('Other') . ' - ' . I18N::number($tot_indi - $tot);
 
         $chart_title = implode(I18N::$list_separator, $chl);
@@ -6559,7 +6559,7 @@ class Stats
                     $datestamp = I18N::dateFormat();
                 }
 
-                return FunctionsDate::timestampToGedcomDate((int)$user->getPreference('reg_timestamp'))->display(false, $datestamp);
+                return FunctionsDate::timestampToGedcomDate((int) $user->getPreference('reg_timestamp'))->display(false, $datestamp);
             case 'regtime':
                 if (is_array($params) && isset($params[0]) && $params[0] != '') {
                     $datestamp = $params[0];
@@ -6567,7 +6567,7 @@ class Stats
                     $datestamp = str_replace('%', '', I18N::timeFormat());
                 }
 
-                return date($datestamp, (int)$user->getPreference('reg_timestamp'));
+                return date($datestamp, (int) $user->getPreference('reg_timestamp'));
             case 'loggedin':
                 if (is_array($params) && isset($params[0]) && $params[0] != '') {
                     $yes = $params[0];
@@ -6907,9 +6907,9 @@ class Stats
             if ($value < 0) {
                 $value = 0;
             }
-            $first    = (int)($value / 64);
+            $first    = (int) ($value / 64);
             $second   = $value % 64;
-            $encoding .= $xencoding[(int)$first] . $xencoding[(int)$second];
+            $encoding .= $xencoding[(int) $first] . $xencoding[(int) $second];
         }
 
         return $encoding;
@@ -7053,7 +7053,7 @@ class Stats
      */
     public function totalUserMessages(): string
     {
-        $total = (int)Database::prepare("SELECT COUNT(*) FROM `##message` WHERE user_id = ?")
+        $total = (int) Database::prepare("SELECT COUNT(*) FROM `##message` WHERE user_id = ?")
             ->execute([Auth::id()])
             ->fetchOne();
 
@@ -7068,7 +7068,7 @@ class Stats
     public function totalUserJournal(): string
     {
         try {
-            $number = (int)Database::prepare("SELECT COUNT(*) FROM `##news` WHERE user_id = ?")
+            $number = (int) Database::prepare("SELECT COUNT(*) FROM `##news` WHERE user_id = ?")
                 ->execute([Auth::id()])
                 ->fetchOne();
         } catch (PDOException $ex) {
@@ -7089,7 +7089,7 @@ class Stats
     public function totalGedcomNews(): string
     {
         try {
-            $number = (int)Database::prepare("SELECT COUNT(*) FROM `##news` WHERE gedcom_id = ?")
+            $number = (int) Database::prepare("SELECT COUNT(*) FROM `##news` WHERE gedcom_id = ?")
                 ->execute([$this->tree->getTreeId()])
                 ->fetchOne();
         } catch (PDOException $ex) {

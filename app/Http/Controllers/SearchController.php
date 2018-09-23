@@ -163,11 +163,11 @@ class SearchController extends AbstractBaseController
         $query = $request->get('query', '');
 
         // What type of records to search?
-        $search_individuals  = (bool)$request->get('search_individuals');
-        $search_families     = (bool)$request->get('search_families');
-        $search_repositories = (bool)$request->get('search_repositories');
-        $search_sources      = (bool)$request->get('search_sources');
-        $search_notes        = (bool)$request->get('search_notes');
+        $search_individuals  = (bool) $request->get('search_individuals');
+        $search_families     = (bool) $request->get('search_families');
+        $search_repositories = (bool) $request->get('search_repositories');
+        $search_sources      = (bool) $request->get('search_sources');
+        $search_notes        = (bool) $request->get('search_notes');
 
         // Default to individuals only
         if (!$search_individuals && !$search_families && !$search_repositories && !$search_sources && !$search_notes) {
@@ -184,7 +184,7 @@ class SearchController extends AbstractBaseController
             $all_trees = [$tree];
         }
 
-        $search_tree_names = (array)$request->get('search_trees', []);
+        $search_tree_names = (array) $request->get('search_trees', []);
 
         $search_trees = array_filter($all_trees, function (Tree $tree) use ($search_tree_names): bool {
             return in_array($tree->getName(), $search_tree_names);
@@ -290,7 +290,7 @@ class SearchController extends AbstractBaseController
             $all_trees = [$tree];
         }
 
-        $search_tree_names = (array)$request->get('search_trees', []);
+        $search_tree_names = (array) $request->get('search_trees', []);
 
         $search_trees = array_filter($all_trees, function (Tree $tree) use ($search_tree_names): bool {
             return in_array($tree->getName(), $search_tree_names);
@@ -640,7 +640,7 @@ class SearchController extends AbstractBaseController
 
         foreach ($search_terms as $n => $q) {
             $queryregex[]          = preg_quote(I18N::strtoupper($q), '/');
-            $sql                   .= " AND f_gedcom COLLATE :collate_" . $n . " LIKE CONCAT('%', :query_" . $n . ", '%')";
+            $sql .= " AND f_gedcom COLLATE :collate_" . $n . " LIKE CONCAT('%', :query_" . $n . ", '%')";
             $args['collate_' . $n] = I18N::collation();
             $args['query_' . $n]   = Database::escapeLike($q);
         }
@@ -688,7 +688,7 @@ class SearchController extends AbstractBaseController
      */
     private function searchFamilyNames(array $search_terms, array $search_trees): array
     {
-        $sql  =
+        $sql =
             "SELECT DISTINCT f_id AS xref, f_file AS gedcom_id, f_gedcom AS gedcom" .
             " FROM `##families`" .
             " LEFT JOIN `##name` husb ON f_husb = husb.n_id AND f_file = husb.n_file" .
@@ -697,7 +697,7 @@ class SearchController extends AbstractBaseController
         $args = [];
 
         foreach ($search_terms as $n => $q) {
-            $sql                        .= " AND (husb.n_full COLLATE :husb_collate_" . $n . " LIKE CONCAT('%', :husb_query_" . $n . ", '%') OR wife.n_full COLLATE :wife_collate_" . $n . " LIKE CONCAT('%', :wife_query_" . $n . ", '%'))";
+            $sql .= " AND (husb.n_full COLLATE :husb_collate_" . $n . " LIKE CONCAT('%', :husb_query_" . $n . ", '%') OR wife.n_full COLLATE :wife_collate_" . $n . " LIKE CONCAT('%', :wife_query_" . $n . ", '%'))";
             $args['husb_collate_' . $n] = I18N::collation();
             $args['husb_query_' . $n]   = Database::escapeLike($q);
             $args['wife_collate_' . $n] = I18N::collation();
@@ -749,7 +749,7 @@ class SearchController extends AbstractBaseController
 
         foreach ($search_terms as $n => $q) {
             $queryregex[]          = preg_quote(I18N::strtoupper($q), '/');
-            $sql                   .= " AND i_gedcom COLLATE :collate_" . $n . " LIKE CONCAT('%', :query_" . $n . ", '%')";
+            $sql .= " AND i_gedcom COLLATE :collate_" . $n . " LIKE CONCAT('%', :query_" . $n . ", '%')";
             $args['collate_' . $n] = I18N::collation();
             $args['query_' . $n]   = Database::escapeLike($q);
         }
@@ -896,7 +896,7 @@ class SearchController extends AbstractBaseController
         }
 
         // Add the where clause
-        $sql    .= " WHERE ind.i_file=?";
+        $sql .= " WHERE ind.i_file=?";
         $bind[] = $tree->getTreeId();
 
         foreach ($fields as $field_name => $field_value) {
@@ -907,15 +907,15 @@ class SearchController extends AbstractBaseController
                     case 'GIVN':
                         switch ($modifiers[$field_name]) {
                             case 'EXACT':
-                                $sql    .= " AND i_n.n_givn=?";
+                                $sql .= " AND i_n.n_givn=?";
                                 $bind[] = $field_value;
                                 break;
                             case 'BEGINS':
-                                $sql    .= " AND i_n.n_givn LIKE CONCAT(?, '%')";
+                                $sql .= " AND i_n.n_givn LIKE CONCAT(?, '%')";
                                 $bind[] = $field_value;
                                 break;
                             case 'CONTAINS':
-                                $sql    .= " AND i_n.n_givn LIKE CONCAT('%', ?, '%')";
+                                $sql .= " AND i_n.n_givn LIKE CONCAT('%', ?, '%')";
                                 $bind[] = $field_value;
                                 break;
                             case 'SDX_STD':
@@ -929,7 +929,7 @@ class SearchController extends AbstractBaseController
                                     $sql .= ' AND (' . implode(' OR ', $sdx) . ')';
                                 } else {
                                     // No phonetic content? Use a substring match
-                                    $sql    .= " AND i_n.n_givn LIKE CONCAT('%', ?, '%')";
+                                    $sql .= " AND i_n.n_givn LIKE CONCAT('%', ?, '%')";
                                     $bind[] = $field_value;
                                 }
                                 break;
@@ -945,7 +945,7 @@ class SearchController extends AbstractBaseController
                                     $sql .= ' AND (' . implode(' OR ', $sdx) . ')';
                                 } else {
                                     // No phonetic content? Use a substring match
-                                    $sql    .= " AND i_n.n_givn LIKE CONCAT('%', ?, '%')";
+                                    $sql .= " AND i_n.n_givn LIKE CONCAT('%', ?, '%')";
                                     $bind[] = $field_value;
                                 }
                                 break;
@@ -954,15 +954,15 @@ class SearchController extends AbstractBaseController
                     case 'SURN':
                         switch ($modifiers[$field_name]) {
                             case 'EXACT':
-                                $sql    .= " AND i_n.n_surname=?";
+                                $sql .= " AND i_n.n_surname=?";
                                 $bind[] = $field_value;
                                 break;
                             case 'BEGINS':
-                                $sql    .= " AND i_n.n_surname LIKE CONCAT(?, '%')";
+                                $sql .= " AND i_n.n_surname LIKE CONCAT(?, '%')";
                                 $bind[] = $field_value;
                                 break;
                             case 'CONTAINS':
-                                $sql    .= " AND i_n.n_surname LIKE CONCAT('%', ?, '%')";
+                                $sql .= " AND i_n.n_surname LIKE CONCAT('%', ?, '%')";
                                 $bind[] = $field_value;
                                 break;
                             case 'SDX_STD':
@@ -976,7 +976,7 @@ class SearchController extends AbstractBaseController
                                     $sql .= " AND (" . implode(' OR ', $sdx) . ")";
                                 } else {
                                     // No phonetic content? Use a substring match
-                                    $sql    .= " AND i_n.n_surn LIKE CONCAT('%', ?, '%')";
+                                    $sql .= " AND i_n.n_surn LIKE CONCAT('%', ?, '%')";
                                     $bind[] = $field_value;
                                 }
                                 break;
@@ -994,7 +994,7 @@ class SearchController extends AbstractBaseController
                                 }
 
                             // No phonetic content? Use a substring match
-                            $sql    .= " AND i_n.n_surn LIKE CONCAT('%', ?, '%')";
+                            $sql .= " AND i_n.n_surn LIKE CONCAT('%', ?, '%')";
                             $bind[] = $field_value;
                         }
                         break;
@@ -1002,7 +1002,7 @@ class SearchController extends AbstractBaseController
                     case '_MARNM':
                     case '_HEB':
                     case '_AKA':
-                        $sql    .= " AND i_n.n_type=? AND i_n.n_full LIKE CONCAT('%', ?, '%')";
+                        $sql .= " AND i_n.n_type=? AND i_n.n_full LIKE CONCAT('%', ?, '%')";
                         $bind[] = $parts[1];
                         $bind[] = $field_value;
                         break;
@@ -1012,7 +1012,7 @@ class SearchController extends AbstractBaseController
                 $date = new Date($field_value);
                 if ($date->isOK()) {
                     $delta  = 365 * ($modifiers[$field_name] ?? 0);
-                    $sql    .= " AND i_d.d_fact=? AND i_d.d_julianday1>=? AND i_d.d_julianday2<=?";
+                    $sql .= " AND i_d.d_fact=? AND i_d.d_julianday1>=? AND i_d.d_julianday2<=?";
                     $bind[] = $parts[0];
                     $bind[] = $date->minimumJulianDay() - $delta;
                     $bind[] = $date->maximumJulianDay() + $delta;
@@ -1022,7 +1022,7 @@ class SearchController extends AbstractBaseController
                 $date = new Date($field_value);
                 if ($date->isOK()) {
                     $delta  = 365 * $modifiers[$field_name];
-                    $sql    .= " AND f_d.d_fact=? AND f_d.d_julianday1>=? AND f_d.d_julianday2<=?";
+                    $sql .= " AND f_d.d_fact=? AND f_d.d_julianday1>=? AND f_d.d_julianday2<=?";
                     $bind[] = $parts[1];
                     $bind[] = $date->minimumJulianDay() - $delta;
                     $bind[] = $date->maximumJulianDay() + $delta;
@@ -1030,12 +1030,12 @@ class SearchController extends AbstractBaseController
             } elseif ($parts[1] === 'PLAC') {
                 // *:PLAC
                 // SQL can only link a place to a person/family, not to an event.
-                $sql    .= " AND i_p.place LIKE CONCAT('%', ?, '%')";
+                $sql .= " AND i_p.place LIKE CONCAT('%', ?, '%')";
                 $bind[] = $field_value;
             } elseif ($parts[0] === 'FAMS' && $parts[2] === 'PLAC') {
                 // FAMS:*:PLAC
                 // SQL can only link a place to a person/family, not to an event.
-                $sql    .= " AND f_p.place LIKE CONCAT('%', ?, '%')";
+                $sql .= " AND f_p.place LIKE CONCAT('%', ?, '%')";
                 $bind[] = $field_value;
             } elseif ($parts[0] === 'FAMC' && $parts[2] === 'NAME') {
                 $table = $parts[1] === 'HUSB' ? 'f_n' : 'm_n';
@@ -1044,15 +1044,15 @@ class SearchController extends AbstractBaseController
                     case 'GIVN':
                         switch ($modifiers[$field_name]) {
                             case 'EXACT':
-                                $sql    .= " AND {$table}.n_givn=?";
+                                $sql .= " AND {$table}.n_givn=?";
                                 $bind[] = $field_value;
                                 break;
                             case 'BEGINS':
-                                $sql    .= " AND {$table}.n_givn LIKE CONCAT(?, '%')";
+                                $sql .= " AND {$table}.n_givn LIKE CONCAT(?, '%')";
                                 $bind[] = $field_value;
                                 break;
                             case 'CONTAINS':
-                                $sql    .= " AND {$table}.n_givn LIKE CONCAT('%', ?, '%')";
+                                $sql .= " AND {$table}.n_givn LIKE CONCAT('%', ?, '%')";
                                 $bind[] = $field_value;
                                 break;
                             case 'SDX_STD':
@@ -1066,7 +1066,7 @@ class SearchController extends AbstractBaseController
                                     $sql .= ' AND (' . implode(' OR ', $sdx) . ')';
                                 } else {
                                     // No phonetic content? Use a substring match
-                                    $sql    .= " AND {$table}.n_givn LIKE CONCAT('%', ?, '%')";
+                                    $sql .= " AND {$table}.n_givn LIKE CONCAT('%', ?, '%')";
                                     $bind[] = $field_value;
                                 }
                                 break;
@@ -1084,22 +1084,22 @@ class SearchController extends AbstractBaseController
                                 }
 
                             // No phonetic content? Use a substring match
-                            $sql    .= " AND {$table}.n_givn LIKE CONCAT('%', ?, '%')";
+                            $sql .= " AND {$table}.n_givn LIKE CONCAT('%', ?, '%')";
                             $bind[] = $field_value;
                         }
                         break;
                     case 'SURN':
                         switch ($modifiers[$field_name]) {
                             case 'EXACT':
-                                $sql    .= " AND {$table}.n_surname=?";
+                                $sql .= " AND {$table}.n_surname=?";
                                 $bind[] = $field_value;
                                 break;
                             case 'BEGINS':
-                                $sql    .= " AND {$table}.n_surname LIKE CONCAT(?, '%')";
+                                $sql .= " AND {$table}.n_surname LIKE CONCAT(?, '%')";
                                 $bind[] = $field_value;
                                 break;
                             case 'CONTAINS':
-                                $sql    .= " AND {$table}.n_surname LIKE CONCAT('%', ?, '%')";
+                                $sql .= " AND {$table}.n_surname LIKE CONCAT('%', ?, '%')";
                                 $bind[] = $field_value;
                                 break;
                             case 'SDX_STD':
@@ -1113,7 +1113,7 @@ class SearchController extends AbstractBaseController
                                     $sql .= ' AND (' . implode(' OR ', $sdx) . ')';
                                 } else {
                                     // No phonetic content? Use a substring match
-                                    $sql    .= " AND {$table}.n_surn LIKE CONCAT('%', ?, '%')";
+                                    $sql .= " AND {$table}.n_surn LIKE CONCAT('%', ?, '%')";
                                     $bind[] = $field_value;
                                 }
                                 break;
@@ -1129,7 +1129,7 @@ class SearchController extends AbstractBaseController
                                     $sql .= ' AND (' . implode(' OR ', $sdx) . ')';
                                 } else {
                                     // No phonetic content? Use a substring match
-                                    $sql    .= " AND {$table}.n_surn LIKE CONCAT('%', ?, '%')";
+                                    $sql .= " AND {$table}.n_surn LIKE CONCAT('%', ?, '%')";
                                     $bind[] = $field_value;
                                 }
                                 break;
@@ -1138,17 +1138,17 @@ class SearchController extends AbstractBaseController
                 }
             } elseif ($parts[0] === 'FAMS') {
                 // e.g. searches for occupation, religion, note, etc.
-                $sql    .= " AND fam.f_gedcom REGEXP CONCAT('\n[0-9] ', ?, '(.*\n[0-9] CONT)* [^\n]*', ?)";
+                $sql .= " AND fam.f_gedcom REGEXP CONCAT('\n[0-9] ', ?, '(.*\n[0-9] CONT)* [^\n]*', ?)";
                 $bind[] = $parts[1];
                 $bind[] = $field_value;
             } elseif ($parts[1] === 'TYPE') {
                 // e.g. FACT:TYPE or EVEN:TYPE
-                $sql    .= " AND ind.i_gedcom REGEXP CONCAT('\n1 ', ?, '.*(\n[2-9] .*)*\n2 TYPE .*', ?)";
+                $sql .= " AND ind.i_gedcom REGEXP CONCAT('\n1 ', ?, '.*(\n[2-9] .*)*\n2 TYPE .*', ?)";
                 $bind[] = $parts[0];
                 $bind[] = $field_value;
             } else {
                 // e.g. searches for occupation, religion, note, etc.
-                $sql    .= " AND ind.i_gedcom REGEXP CONCAT('\n[0-9] ', ?, '(.*\n[0-9] CONT)* [^\n]*', ?)";
+                $sql .= " AND ind.i_gedcom REGEXP CONCAT('\n[0-9] ', ?, '(.*\n[0-9] CONT)* [^\n]*', ?)";
                 $bind[] = $parts[0];
                 $bind[] = $field_value;
             }
@@ -1227,7 +1227,7 @@ class SearchController extends AbstractBaseController
         $sql .= ")";
 
         if ($givn_sdx !== '') {
-            $sql      .= " AND (";
+            $sql .= " AND (";
             $givn_sdx = explode(':', $givn_sdx);
             foreach ($givn_sdx as $n => $sdx) {
                 $sql .= $n > 0 ? " OR " : "";
@@ -1245,7 +1245,7 @@ class SearchController extends AbstractBaseController
         }
 
         if ($surn_sdx !== '') {
-            $sql      .= " AND (";
+            $sql .= " AND (";
             $surn_sdx = explode(':', $surn_sdx);
             foreach ($surn_sdx as $n => $sdx) {
                 $sql .= $n ? " OR " : "";
@@ -1263,7 +1263,7 @@ class SearchController extends AbstractBaseController
         }
 
         if ($plac_sdx !== '') {
-            $sql      .= " AND (";
+            $sql .= " AND (";
             $plac_sdx = explode(':', $plac_sdx);
             foreach ($plac_sdx as $n => $sdx) {
                 $sql .= $n ? " OR " : "";
@@ -1310,7 +1310,7 @@ class SearchController extends AbstractBaseController
 
         foreach ($search_terms as $n => $q) {
             $queryregex[]          = preg_quote(I18N::strtoupper($q), '/');
-            $sql                   .= " AND o_gedcom COLLATE :collate_" . $n . " LIKE CONCAT('%', :query_" . $n . ", '%')";
+            $sql .= " AND o_gedcom COLLATE :collate_" . $n . " LIKE CONCAT('%', :query_" . $n . ", '%')";
             $args['collate_' . $n] = I18N::collation();
             $args['query_' . $n]   = Database::escapeLike($q);
         }
@@ -1366,7 +1366,7 @@ class SearchController extends AbstractBaseController
 
         foreach ($search_terms as $n => $q) {
             $queryregex[]          = preg_quote(I18N::strtoupper($q), '/');
-            $sql                   .= " AND o_gedcom COLLATE :collate_" . $n . " LIKE CONCAT('%', :query_" . $n . ", '%')";
+            $sql .= " AND o_gedcom COLLATE :collate_" . $n . " LIKE CONCAT('%', :query_" . $n . ", '%')";
             $args['collate_' . $n] = I18N::collation();
             $args['query_' . $n]   = Database::escapeLike($q);
         }
@@ -1422,7 +1422,7 @@ class SearchController extends AbstractBaseController
 
         foreach ($search_terms as $n => $q) {
             $queryregex[]          = preg_quote(I18N::strtoupper($q), '/');
-            $sql                   .= " AND s_gedcom COLLATE :collate_" . $n . " LIKE CONCAT('%', :query_" . $n . ", '%')";
+            $sql .= " AND s_gedcom COLLATE :collate_" . $n . " LIKE CONCAT('%', :query_" . $n . ", '%')";
             $args['collate_' . $n] = I18N::collation();
             $args['query_' . $n]   = Database::escapeLike($q);
         }

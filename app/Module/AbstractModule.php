@@ -227,7 +227,7 @@ abstract class AbstractModule
             return $this->defaultAccessLevel();
         }
 
-        return (int)$access_level;
+        return (int) $access_level;
     }
 
     /**
