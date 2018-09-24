@@ -435,10 +435,10 @@ class FunctionsCharts
         Family $family,
         string $childid,
         int    $sosa,
-        string $label        = '',
-        string $parid        = '',
-        string $gparid       = '',
-        bool   $show_cousins = false
+        string $label,
+        string $parid,
+        string $gparid,
+        bool   $show_cousins
     ) {
         echo '<hr>';
         echo '<p class="family-break">';
