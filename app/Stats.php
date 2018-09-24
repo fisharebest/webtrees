@@ -1694,8 +1694,8 @@ class Stats
         $WT_STATS_MAP_X        = Theme::theme()->parameter('distribution-chart-x');
         $WT_STATS_MAP_Y        = Theme::theme()->parameter('distribution-chart-y');
 
-        $chart_shows = $params[0] ?? $chart_shows = 'world';
-        $chart_type  = $params[1] ?? $chart_type = '';
+        $chart_shows = $params[0] ?? 'world';
+        $chart_type  = $params[1] ?? '';
         $surname     = $params[2] ?? '';
 
         if ($this->totalPlacesQuery() == 0) {
@@ -5062,8 +5062,6 @@ class Stats
      */
     public function totalChildren(): string
     {
-        $rows = $this->runSql("SELECT SUM(f_numchil) AS tot FROM `##families` WHERE f_file={$this->tree->getTreeId()}");
-
         $total = (int) Database::prepare(
             "SELECT SUM(f_numchil) FROM `##families` WHERE f_file = :tree_id"
         )->execute([
@@ -6361,23 +6359,6 @@ class Stats
         }
 
         return $user;
-    }
-
-    /**
-     * Get the newest registered user.
-     *
-     * @param string   $type
-     * @param string[] $params
-     *
-     * @return string
-     */
-    private function getLatestUserData($type, $params = [])
-    {
-        $user = $this->latestUser();
-
-        switch ($type) {
-            case 'loggedin':
-        }
     }
 
     /**
