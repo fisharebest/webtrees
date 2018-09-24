@@ -48,9 +48,10 @@ class RelationshipsChartController extends AbstractChartController
     {
         $this->checkModuleIsActive($tree, 'relationships_chart');
 
-        $xref1       = $request->get('xref1');
+        $xref1       = $request->get('xref1', '');
+        $xref2       = $request->get('xref2', '');
+
         $individual1 = Individual::getInstance($xref1, $tree);
-        $xref2       = $request->get('xref2');
         $individual2 = Individual::getInstance($xref2, $tree);
 
         $recursion = (int) $request->get('recursion', '0');
