@@ -105,7 +105,7 @@ class UpgradeService
 
                 if ($response->getStatusCode() === Response::HTTP_OK) {
                     Site::setPreference('LATEST_WT_VERSION', $response->getBody()->getContents());
-                    Site::setPreference('LATEST_WT_VERSION_TIMESTAMP', WT_TIMESTAMP);
+                    Site::setPreference('LATEST_WT_VERSION_TIMESTAMP', (string)WT_TIMESTAMP);
                 }
             } catch (RequestException $ex) {
                 DebugBar::addThrowable($ex);

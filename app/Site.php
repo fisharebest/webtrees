@@ -50,7 +50,10 @@ class Site
         if (!array_key_exists($setting_name, self::$preferences)) {
             self::$preferences[$setting_name] = $default;
         }
-
+if (is_int(self::$preferences[$setting_name])) {
+    var_dump(debug_backtrace());
+    exit;
+}
         return self::$preferences[$setting_name];
     }
 
@@ -62,7 +65,7 @@ class Site
      *
      * @return void
      */
-    public static function setPreference($setting_name, $setting_value)
+    public static function setPreference(string $setting_name, string $setting_value)
     {
         if (self::getPreference($setting_name) !== $setting_value) {
             Database::prepare(

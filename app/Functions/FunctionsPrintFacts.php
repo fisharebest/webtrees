@@ -964,7 +964,10 @@ class FunctionsPrintFacts
                     if ($nextTag == 'CONT') {
                         $text .= "\n";
                     }
-                    $text .= rtrim(substr($subrecords[$i], 7));
+
+                    if (substr($subrecords[$i], 7) !== false) {
+                        $text .= rtrim(substr($subrecords[$i], 7));
+                    }
                 }
                 if ($tag == 'TEXT') {
                     $textSOUR[$tag][] = $text;
