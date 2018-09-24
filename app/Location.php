@@ -47,9 +47,9 @@ class Location
         if ($tmp !== null) {
             $this->record = $tmp;
         } elseif (!empty($record)) {
-            $this->record = (object)$record;
+            $this->record = (object) $record;
         } else {
-            $this->record = (object)[
+            $this->record = (object) [
                 'fqpn'         => '',
                 'pl_id'        => 0,
                 'pl_parent_id' => 0,
@@ -81,12 +81,11 @@ class Location
         switch ($format) {
             case 'signed':
                 return $this->record->pl_lati ?
-                    (float)strtr($this->record->pl_lati, [
+                    (float) strtr($this->record->pl_lati, [
                         'N' => '',
                         'S' => '-',
                         ',' => '.',
-                    ]) :
-                    $this->record->pl_lati;
+                    ]) : $this->record->pl_lati;
             default:
                 return $this->record->pl_lati;
         }
@@ -102,12 +101,11 @@ class Location
         switch ($format) {
             case 'signed':
                 return $this->record->pl_long ?
-                    (float)strtr($this->record->pl_long, [
+                    (float) strtr($this->record->pl_long, [
                         'E' => '',
                         'W' => '-',
                         ',' => '.',
-                    ]) :
-                    $this->record->pl_long;
+                    ]) : $this->record->pl_long;
             default:
                 return $this->record->pl_long;
         }

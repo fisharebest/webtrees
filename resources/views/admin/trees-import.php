@@ -46,7 +46,7 @@
 							<select name="tree_name" class="form-control" id="import-server-file">
 								<option value=""></option>
 								<?php foreach ($gedcom_files as $gedcom_file): ?>
-									<option value="<?= e($gedcom_file) ?>" <?= $gedcom_file === $default_gedcom_file? 'selected' : '' ?>>
+									<option value="<?= e($gedcom_file) ?>" <?= $gedcom_file === $default_gedcom_file ? 'selected' : '' ?>>
 										<?= e($gedcom_file) ?>
 									</option>
 								<?php endforeach ?>

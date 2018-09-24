@@ -41,7 +41,7 @@ class UserController extends AbstractBaseController
      */
     public function delete(Request $request): Response
     {
-        $user_id = (int)$request->get('user_id');
+        $user_id = (int) $request->get('user_id');
 
         $user = User::find($user_id);
 
@@ -80,7 +80,7 @@ class UserController extends AbstractBaseController
      */
     public function masquerade(Request $request): Response
     {
-        $user_id = (int)$request->get('user_id');
+        $user_id = (int) $request->get('user_id');
 
         $user = User::find($user_id);
 

@@ -35,7 +35,7 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
 {
-    const LINE_COLORS  = [
+    const LINE_COLORS = [
         '#FF0000',
         // Red
         '#00FF00',
@@ -141,7 +141,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
                     $color            = self::LINE_COLORS[log($id, 2) % $color_count];
                     $icon['color']    = $color; //make icon color the same as the line
                     $sosa_points[$id] = $event->getLatLonJSArray();
-                    $sosa_parent      = (int)floor($id / 2);
+                    $sosa_parent      = (int) floor($id / 2);
                     if (array_key_exists($sosa_parent, $sosa_points)) {
                         // Would like to use a GeometryCollection to hold LineStrings
                         // rather than generate polylines but the MarkerCluster library
@@ -169,7 +169,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
                             'icon'     => $icon,
                             'tooltip'  => $event->toolTip(),
                             'summary'  => view('modules/pedigree-map/event-sidebar', $event->shortSummary('pedigree', $id)),
-                            'zoom'     => (int)$event->getZoom(),
+                            'zoom'     => (int) $event->getZoom(),
                         ],
                     ];
                 }
@@ -189,7 +189,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
     {
         $xref        = $request->get('reference');
         $individual  = Individual::getInstance($xref, $tree);
-        $generations = (int)$request->get(
+        $generations = (int) $request->get(
             'generations',
             $tree->getPreference('DEFAULT_PEDIGREE_GENERATIONS')
         );
@@ -242,14 +242,14 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
                         function ($item) {
                             return preg_replace('/[^a-z\d]/i', '', strtolower($item));
                         },
-                        (array)$provider->styles
+                        (array) $provider->styles
                     );
 
-                    $key = preg_replace('/[^a-z\d]/i', '', strtolower((string)$provider->name));
+                    $key = preg_replace('/[^a-z\d]/i', '', strtolower((string) $provider->name));
 
                     self::$map_providers[$key] = [
-                        'name'   => (string)$provider->name,
-                        'styles' => array_combine($style_keys, (array)$provider->styles),
+                        'name'   => (string) $provider->name,
+                        'styles' => array_combine($style_keys, (array) $provider->styles),
                     ];
                 }
             } catch (Exception $ex) {
@@ -258,7 +258,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
                     'provider' => 'openstreetmap',
                     'style'    => 'mapnik',
                 ];
-                self::$map_providers  = [
+                self::$map_providers = [
                     'openstreetmap' => [
                         'name'   => 'OpenStreetMap',
                         'styles' => ['mapnik' => 'Mapnik'],

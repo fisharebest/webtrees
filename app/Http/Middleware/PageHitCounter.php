@@ -169,7 +169,7 @@ class PageHitCounter implements MiddlewareInterface
      */
     public function getCount(Tree $tree, $page, $parameter): int
     {
-        return (int)Database::prepare(
+        return (int) Database::prepare(
             "SELECT page_count FROM `##hit_counter` WHERE gedcom_id = :tree_id AND page_name = :page AND page_parameter = :parameter"
         )->execute([
             'tree_id'   => $tree->getTreeId(),

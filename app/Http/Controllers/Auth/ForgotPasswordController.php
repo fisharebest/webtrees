@@ -69,7 +69,7 @@ class ForgotPasswordController extends AbstractBaseController
 
             Log::addAuthenticationLog('Password request was sent to user: ' . $user->getUserName());
 
-            $sender = new User((object)[
+            $sender = new User((object) [
                 'user_id'   => null,
                 'user_name' => '',
                 'real_name' => $tree->getTitle(),
@@ -104,7 +104,7 @@ class ForgotPasswordController extends AbstractBaseController
         $max       = strlen($passchars) - 1;
 
         for ($i = 0; $i < 8; $i++) {
-            $index    = random_int(0, $max);
+            $index = random_int(0, $max);
             $password .= $passchars{$index};
         }
 

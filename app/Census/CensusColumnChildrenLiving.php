@@ -52,6 +52,6 @@ class CensusColumnChildrenLiving extends AbstractCensusColumn implements CensusC
             }
         }
 
-        return (string)$count;
+        return (string) $count;
     }
 }

@@ -47,7 +47,7 @@ class HomePageController extends AbstractBaseController
      */
     public function treePageBlockEdit(Request $request, Tree $tree, User $user): Response
     {
-        $block_id = (int)$request->get('block_id');
+        $block_id = (int) $request->get('block_id');
         $block    = $this->treeBlock($request, $user);
         $title    = $block->getTitle() . ' — ' . I18N::translate('Preferences');
 
@@ -89,7 +89,7 @@ class HomePageController extends AbstractBaseController
      */
     private function treeBlock(Request $request, User $user): ModuleBlockInterface
     {
-        $block_id = (int)$request->get('block_id');
+        $block_id = (int) $request->get('block_id');
 
         $block_info = Database::prepare(
             "SELECT module_Name, user_id FROM `##block` WHERE block_id = :block_id"
@@ -125,7 +125,7 @@ class HomePageController extends AbstractBaseController
      */
     public function userPageBlockEdit(Request $request, Tree $tree, User $user): Response
     {
-        $block_id = (int)$request->get('block_id');
+        $block_id = (int) $request->get('block_id');
         $block    = $this->userBlock($request, $user);
         $title    = $block->getTitle() . ' — ' . I18N::translate('Preferences');
 
@@ -167,7 +167,7 @@ class HomePageController extends AbstractBaseController
      */
     private function userBlock(Request $request, User $user): ModuleBlockInterface
     {
-        $block_id = (int)$request->get('block_id');
+        $block_id = (int) $request->get('block_id');
 
         $block_info = Database::prepare(
             "SELECT module_Name, user_id FROM `##block` WHERE block_id = :block_id"
@@ -185,7 +185,7 @@ class HomePageController extends AbstractBaseController
             throw new NotFoundHttpException($block_info->module_name . ' is not a block');
         }
 
-        $block_owner_id = (int)$block_info->user_id;
+        $block_owner_id = (int) $block_info->user_id;
 
         if ($block_owner_id !== $user->getUserId() && !Auth::isAdmin()) {
             throw new AccessDeniedHttpException('You are not allowed to edit this block');
@@ -231,7 +231,7 @@ class HomePageController extends AbstractBaseController
      */
     public function treePageBlock(Request $request, Tree $tree): Response
     {
-        $block_id = (int)$request->get('block_id');
+        $block_id = (int) $request->get('block_id');
 
         $block = Database::prepare(
             "SELECT * FROM `##block` WHERE block_id = :block_id AND gedcom_id = :tree_id AND user_id IS NULL"
@@ -297,8 +297,8 @@ class HomePageController extends AbstractBaseController
      */
     public function treePageDefaultUpdate(Request $request): RedirectResponse
     {
-        $main_blocks = (array)$request->get('main');
-        $side_blocks = (array)$request->get('side');
+        $main_blocks = (array) $request->get('main');
+        $side_blocks = (array) $request->get('side');
 
         $this->updateTreeBlocks(-1, $main_blocks, $side_blocks);
 
@@ -342,14 +342,14 @@ class HomePageController extends AbstractBaseController
      */
     public function treePageUpdate(Request $request, Tree $tree): RedirectResponse
     {
-        $defaults = (bool)$request->get('defaults');
+        $defaults = (bool) $request->get('defaults');
 
         if ($defaults) {
             $main_blocks = $this->getBlocksForTreePage(-1, AUth::PRIV_NONE, 'main');
             $side_blocks = $this->getBlocksForTreePage(-1, Auth::PRIV_NONE, 'side');
         } else {
-            $main_blocks = (array)$request->get('main');
-            $side_blocks = (array)$request->get('side');
+            $main_blocks = (array) $request->get('main');
+            $side_blocks = (array) $request->get('side');
         }
 
         $this->updateTreeBlocks($tree->getTreeId(), $main_blocks, $side_blocks);
@@ -396,7 +396,7 @@ class HomePageController extends AbstractBaseController
      */
     public function userPageBlock(Request $request, Tree $tree, User $user): Response
     {
-        $block_id = (int)$request->get('block_id');
+        $block_id = (int) $request->get('block_id');
 
         $block = Database::prepare(
             "SELECT * FROM `##block` WHERE block_id = :block_id AND gedcom_id IS NULL AND user_id = :user_id"
@@ -461,8 +461,8 @@ class HomePageController extends AbstractBaseController
      */
     public function userPageDefaultUpdate(Request $request): RedirectResponse
     {
-        $main_blocks = (array)$request->get('main');
-        $side_blocks = (array)$request->get('side');
+        $main_blocks = (array) $request->get('main');
+        $side_blocks = (array) $request->get('side');
 
         $this->updateUserBlocks(-1, $main_blocks, $side_blocks);
 
@@ -508,14 +508,14 @@ class HomePageController extends AbstractBaseController
      */
     public function userPageUpdate(Request $request, Tree $tree, User $user): RedirectResponse
     {
-        $defaults = (bool)$request->get('defaults');
+        $defaults = (bool) $request->get('defaults');
 
         if ($defaults) {
             $main_blocks = $this->getBlocksForUserPage(-1, -1, AUth::PRIV_NONE, 'main');
             $side_blocks = $this->getBlocksForUserPage(-1, -1, Auth::PRIV_NONE, 'side');
         } else {
-            $main_blocks = (array)$request->get('main');
-            $side_blocks = (array)$request->get('side');
+            $main_blocks = (array) $request->get('main');
+            $side_blocks = (array) $request->get('side');
         }
 
         $this->updateUserBlocks($user->getUserId(), $main_blocks, $side_blocks);
@@ -532,7 +532,7 @@ class HomePageController extends AbstractBaseController
      */
     public function userPageUserEdit(Request $request): Response
     {
-        $user_id     = (int)$request->get('user_id');
+        $user_id     = (int) $request->get('user_id');
         $user        = User::find($user_id);
         $main_blocks = $this->getBlocksForUserPage(-1, $user_id, Auth::PRIV_NONE, 'main');
         $side_blocks = $this->getBlocksForUserPage(-1, $user_id, Auth::PRIV_NONE, 'side');
@@ -561,9 +561,9 @@ class HomePageController extends AbstractBaseController
      */
     public function userPageUserUpdate(Request $request): RedirectResponse
     {
-        $user_id     = (int)$request->get('user_id');
-        $main_blocks = (array)$request->get('main');
-        $side_blocks = (array)$request->get('side');
+        $user_id     = (int) $request->get('user_id');
+        $main_blocks = (array) $request->get('main');
+        $side_blocks = (array) $request->get('side');
 
         $this->updateUserBlocks($user_id, $main_blocks, $side_blocks);
 

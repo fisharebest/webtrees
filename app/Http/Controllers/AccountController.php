@@ -47,7 +47,7 @@ class AccountController extends AbstractBaseController
      */
     public function edit(Tree $tree, User $user): Response
     {
-        $allow_user_themes    = (bool)Site::getPreference('ALLOW_USER_THEMES');
+        $allow_user_themes    = (bool) Site::getPreference('ALLOW_USER_THEMES');
         $my_individual_record = Individual::getInstance($tree->getUserPreference(Auth::user(), 'gedcomid'), $tree);
         $contact_methods      = FunctionsEdit::optionsContactMethods();
         $default_individual   = Individual::getInstance($tree->getUserPreference(Auth::user(), 'rootid'), $tree);
@@ -82,16 +82,16 @@ class AccountController extends AbstractBaseController
      */
     public function update(Request $request, Tree $tree, User $user): RedirectResponse
     {
-        $contact_method = (string)$request->get('contact_method');
-        $email          = (string)$request->get('email');
-        $language       = (string)$request->get('language');
-        $real_name      = (string)$request->get('real_name');
-        $password       = (string)$request->get('password');
-        $rootid         = (string)$request->get('root_id');
-        $theme          = (string)$request->get('theme');
-        $time_zone      = (string)$request->get('timezone');
-        $user_name      = (string)$request->get('user_name');
-        $visible_online = (string)$request->get('visible_online');
+        $contact_method = (string) $request->get('contact_method');
+        $email          = (string) $request->get('email');
+        $language       = (string) $request->get('language');
+        $real_name      = (string) $request->get('real_name');
+        $password       = (string) $request->get('password');
+        $rootid         = (string) $request->get('root_id');
+        $theme          = (string) $request->get('theme');
+        $time_zone      = (string) $request->get('timezone');
+        $user_name      = (string) $request->get('user_name');
+        $visible_online = (string) $request->get('visible_online');
 
         // Change the password
         if ($password !== '') {

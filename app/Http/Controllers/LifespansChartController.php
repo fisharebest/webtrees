@@ -52,9 +52,9 @@ class LifespansChartController extends AbstractChartController
     {
         $this->checkModuleIsActive($tree, 'lifespans_chart');
 
-        $xrefs     = (array)$request->get('xrefs', []);
+        $xrefs     = (array) $request->get('xrefs', []);
         $addxref   = $request->get('addxref', '');
-        $addfam    = (bool)$request->get('addfam', false);
+        $addfam    = (bool) $request->get('addfam', false);
         $placename = $request->get('placename', '');
         $start     = $request->get('start', '');
         $end       = $request->get('end', '');
@@ -111,7 +111,7 @@ class LifespansChartController extends AbstractChartController
     {
         $this->checkModuleIsActive($tree, 'lifespans_chart');
 
-        $xrefs = (array)$request->get('xrefs', []);
+        $xrefs = (array) $request->get('xrefs', []);
         $xrefs = array_unique($xrefs);
 
         /** @var Individual[] $individuals */
@@ -131,8 +131,8 @@ class LifespansChartController extends AbstractChartController
         $subtitle = $request->get('subtitle');
 
         // Round to whole decades
-        $start_year = (int)floor($this->minYear($individuals) / 10) * 10;
-        $end_year   = (int)ceil($this->maxYear($individuals) / 10) * 10;
+        $start_year = (int) floor($this->minYear($individuals) / 10) * 10;
+        $end_year   = (int) ceil($this->maxYear($individuals) / 10) * 10;
 
         $lifespans = $this->layoutIndividuals($individuals);
 
@@ -167,7 +167,7 @@ class LifespansChartController extends AbstractChartController
             'U' => new ColorGenerator(120, self::SATURATION, self::LIGHTNESS, self::ALPHA, self::RANGE),
         ];
 
-        $current_year = (int)date('Y');
+        $current_year = (int) date('Y');
 
         // Latest year used in each row
         $rows = [];
@@ -196,7 +196,7 @@ class LifespansChartController extends AbstractChartController
             // Fill the row up to the year (leaving a small gap)
             $rows[$next_row] = $death_year;
 
-            $lifespans[] = (object)[
+            $lifespans[] = (object) [
                 'background' => $colors[$individual->getSex()]->getNextColor(),
                 'birth_year' => $birth_year,
                 'death_year' => $death_year,
@@ -225,7 +225,7 @@ class LifespansChartController extends AbstractChartController
         $year = $this->jdToYear($jd);
 
         // Don't show future dates
-        return min($year, (int)date('Y'));
+        return min($year, (int) date('Y'));
     }
 
     /**

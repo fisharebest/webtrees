@@ -547,7 +547,7 @@ class CalendarController extends AbstractBaseController
         $html = '';
 
         foreach ($list as $id => $facts) {
-            $tmp  = GedcomRecord::getInstance($id, $tree);
+            $tmp = GedcomRecord::getInstance($id, $tree);
             $html .= $tag1 . '<a href="' . e($tmp->url()) . '">' . $tmp->getFullName() . '</a> ';
             $html .= '<div class="indent">' . $facts . '</div>' . $tag2;
         }

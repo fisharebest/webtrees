@@ -171,7 +171,7 @@ class FactLocation extends Location
             $f1     = preg_match("/\d LATI (.*)/", $gedcom, $match1);
             $f2     = preg_match("/\d LONG (.*)/", $gedcom, $match2);
             if ($f1 && $f2) {
-                $coords = (object)[
+                $coords = (object) [
                     'latitude'  => $match1[1],
                     'longitude' => $match2[1],
                 ];

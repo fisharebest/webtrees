@@ -56,7 +56,7 @@ class VerifyEmailController extends AbstractBaseController
 
             // Create a dummy user, so we can send messages from the tree.
             $sender = new User(
-                (object)[
+                (object) [
                     'user_id'   => null,
                     'user_name' => '',
                     'real_name' => $tree->getTitle(),
