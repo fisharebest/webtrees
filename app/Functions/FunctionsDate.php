@@ -126,7 +126,7 @@ class FunctionsDate
      *
      * @return Date
      */
-    public static function timestampToGedcomDate($time): Date
+    public static function timestampToGedcomDate(int $time): Date
     {
         return new Date(strtoupper(gmdate('j M Y', $time)));
     }
