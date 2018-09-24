@@ -42,7 +42,7 @@ function csrf_token()
 /**
  * Escape a string for inclusion within HTML.
  *
- * @param $text
+ * @param string $text
  *
  * @return string
  */

@@ -68,7 +68,7 @@ class FunctionsCharts
      *
      * @return void
      */
-    public static function printFamilyParents(Family $family, $sosa = 0, $label = '', $parid = '', $gparid = '')
+    public static function printFamilyParents(Family $family, int $sosa = 0, string $label = '', string $parid = '', string $gparid = '')
     {
         $pbheight = Theme::theme()->parameter('chart-box-y') + 14;
 
@@ -269,12 +269,17 @@ class FunctionsCharts
      * @param string $childid      child ID
      * @param int    $sosa         child sosa number
      * @param string $label        indi label (descendancy booklet)
-     * @param int    $show_cousins display cousins on chart
+     * @param bool   $show_cousins display cousins on chart
      *
      * @return void
      */
-    public static function printFamilyChildren(Family $family, $childid = '', $sosa = 0, $label = '', $show_cousins = 0)
-    {
+    public static function printFamilyChildren(
+        Family $family,
+        string $childid = '',
+        int $sosa = 0,
+        string $label = '',
+        bool $show_cousins = false
+    ) {
         $bheight = Theme::theme()->parameter('chart-box-y');
 
         $pbheight = $bheight + 14;
@@ -420,12 +425,19 @@ class FunctionsCharts
      * @param string $label        indi label (descendancy booklet)
      * @param string $parid        parent ID (descendancy booklet)
      * @param string $gparid       gd-parent ID (descendancy booklet)
-     * @param int    $show_cousins display cousins on chart
+     * @param bool   $show_cousins display cousins on chart
      *
      * @return void
      */
-    public static function printSosaFamily(Family $family, $childid, $sosa, $label = '', $parid = '', $gparid = '', $show_cousins = 0)
-    {
+    public static function printSosaFamily(
+        Family $family,
+        string $childid,
+        int $sosa,
+        string $label = '',
+        string $parid = '',
+        string $gparid = '',
+        bool $show_cousins = false
+    ) {
         echo '<hr>';
         echo '<p class="family-break">';
         echo '<a name="', e($family->getXref()), '"></a>';
