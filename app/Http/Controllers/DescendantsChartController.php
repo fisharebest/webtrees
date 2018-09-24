@@ -391,7 +391,7 @@ class DescendantsChartController extends AbstractChartController
             return;
         }
         foreach ($person->getSpouseFamilies() as $family) {
-            FunctionsCharts::printSosaFamily($family, '', -1, $label, $person->getXref(), $gpid, 0);
+            FunctionsCharts::printSosaFamily($family, '', -1, $label, $person->getXref(), $gpid, false);
             $i = 1;
             foreach ($family->getChildren() as $child) {
                 $this->printChildFamily($child, $depth - 1, $label . ($i++) . '.', $person->getXref());
