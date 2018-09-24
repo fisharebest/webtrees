@@ -449,21 +449,10 @@ class Stats
         $WT_STATS_S_CHART_X    = Theme::theme()->parameter('stats-small-chart-x');
         $WT_STATS_S_CHART_Y    = Theme::theme()->parameter('stats-small-chart-y');
 
-        if (isset($params[0]) && $params[0] != '') {
-            $size = strtolower($params[0]);
-        } else {
-            $size = $WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y;
-        }
-        if (isset($params[1]) && $params[1] != '') {
-            $color_from = strtolower($params[1]);
-        } else {
-            $color_from = $WT_STATS_CHART_COLOR1;
-        }
-        if (isset($params[2]) && $params[2] != '') {
-            $color_to = strtolower($params[2]);
-        } else {
-            $color_to = $WT_STATS_CHART_COLOR2;
-        }
+        $size       = $params[0] ?? $WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y;
+        $color_from = $params[1] ?? $WT_STATS_CHART_COLOR1;
+        $color_to   = $params[2] ?? $WT_STATS_CHART_COLOR2;
+
         $sizes    = explode('x', $size);
         $tot_indi = $this->totalIndividualsQuery();
         if ($tot_indi == 0) {
@@ -556,21 +545,10 @@ class Stats
         $WT_STATS_S_CHART_X    = Theme::theme()->parameter('stats-small-chart-x');
         $WT_STATS_S_CHART_Y    = Theme::theme()->parameter('stats-small-chart-y');
 
-        if (isset($params[0]) && $params[0] != '') {
-            $size = strtolower($params[0]);
-        } else {
-            $size = $WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y;
-        }
-        if (isset($params[1]) && $params[1] != '') {
-            $color_from = strtolower($params[1]);
-        } else {
-            $color_from = $WT_STATS_CHART_COLOR1;
-        }
-        if (isset($params[2]) && $params[2] != '') {
-            $color_to = strtolower($params[2]);
-        } else {
-            $color_to = $WT_STATS_CHART_COLOR2;
-        }
+        $size       = $params[0] ?? $WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y;
+        $color_from = $params[1] ?? $WT_STATS_CHART_COLOR1;
+        $color_to   = $params[2] ?? $WT_STATS_CHART_COLOR2;
+
         $sizes   = explode('x', $size);
         $tot_fam = $this->totalFamiliesQuery();
         if ($tot_fam == 0) {
@@ -1008,26 +986,11 @@ class Stats
         $WT_STATS_S_CHART_X = Theme::theme()->parameter('stats-small-chart-x');
         $WT_STATS_S_CHART_Y = Theme::theme()->parameter('stats-small-chart-y');
 
-        if (isset($params[0]) && $params[0] != '') {
-            $size = strtolower($params[0]);
-        } else {
-            $size = $WT_STATS_S_CHART_X . "x" . $WT_STATS_S_CHART_Y;
-        }
-        if (isset($params[1]) && $params[1] != '') {
-            $color_female = strtolower($params[1]);
-        } else {
-            $color_female = 'ffd1dc';
-        }
-        if (isset($params[2]) && $params[2] != '') {
-            $color_male = strtolower($params[2]);
-        } else {
-            $color_male = '84beff';
-        }
-        if (isset($params[3]) && $params[3] != '') {
-            $color_unknown = strtolower($params[3]);
-        } else {
-            $color_unknown = '777777';
-        }
+        $size          = $params[0] ?? $WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y;
+        $color_female  = $params[1] ?? 'ffd1dc';
+        $color_male    = $params[2] ?? '84beff';
+        $color_unknown = $params[3] ?? '777777';
+
         $sizes = explode('x', $size);
         // Raw data - for calculation
         $tot_f = $this->totalSexFemalesQuery();
@@ -1158,21 +1121,10 @@ class Stats
         $WT_STATS_S_CHART_X = Theme::theme()->parameter('stats-small-chart-x');
         $WT_STATS_S_CHART_Y = Theme::theme()->parameter('stats-small-chart-y');
 
-        if (isset($params[0]) && $params[0] != '') {
-            $size = strtolower($params[0]);
-        } else {
-            $size = $WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y;
-        }
-        if (isset($params[1]) && $params[1] != '') {
-            $color_living = strtolower($params[1]);
-        } else {
-            $color_living = 'ffffff';
-        }
-        if (isset($params[2]) && $params[2] != '') {
-            $color_dead = strtolower($params[2]);
-        } else {
-            $color_dead = 'cccccc';
-        }
+        $size         = $params[0] ?? $WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y;
+        $color_living = $params[1] ?? 'ffffff';
+        $color_dead   = $params[2] ?? 'cccccc';
+
         $sizes = explode('x', $size);
         // Raw data - for calculation
         $tot_l = $this->totalLivingQuery();
@@ -1201,17 +1153,11 @@ class Stats
     /**
      * Count the number of users.
      *
-     * @param string[] $params
-     *
      * @return string
      */
-    public function totalUsers($params = []): string
+    public function totalUsers(): string
     {
-        if (isset($params[0])) {
-            $total = count(User::all()) + (int) $params[0];
-        } else {
-            $total = count(User::all());
-        }
+        $total = count(User::all());
 
         return I18N::number($total);
     }
@@ -1483,21 +1429,10 @@ class Stats
         $WT_STATS_S_CHART_X    = Theme::theme()->parameter('stats-small-chart-x');
         $WT_STATS_S_CHART_Y    = Theme::theme()->parameter('stats-small-chart-y');
 
-        if (isset($params[0]) && $params[0] != '') {
-            $size = strtolower($params[0]);
-        } else {
-            $size = $WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y;
-        }
-        if (isset($params[1]) && $params[1] != '') {
-            $color_from = strtolower($params[1]);
-        } else {
-            $color_from = $WT_STATS_CHART_COLOR1;
-        }
-        if (isset($params[2]) && $params[2] != '') {
-            $color_to = strtolower($params[2]);
-        } else {
-            $color_to = $WT_STATS_CHART_COLOR2;
-        }
+        $size       = $params[0] ?? $WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y;
+        $color_from = $params[1] ?? $WT_STATS_CHART_COLOR1;
+        $color_to   = $params[2] ?? $WT_STATS_CHART_COLOR2;
+
         $sizes = explode('x', $size);
         $tot   = $this->totalMediaType('all');
         // Beware divide by zero
@@ -1759,21 +1694,9 @@ class Stats
         $WT_STATS_MAP_X        = Theme::theme()->parameter('distribution-chart-x');
         $WT_STATS_MAP_Y        = Theme::theme()->parameter('distribution-chart-y');
 
-        if (isset($params[0])) {
-            $chart_shows = $params[0];
-        } else {
-            $chart_shows = 'world';
-        }
-        if (isset($params[1])) {
-            $chart_type = $params[1];
-        } else {
-            $chart_type = '';
-        }
-        if (isset($params[2])) {
-            $surname = $params[2];
-        } else {
-            $surname = '';
-        }
+        $chart_shows = $params[0] ?? $chart_shows = 'world';
+        $chart_type  = $params[1] ?? $chart_type = '';
+        $surname     = $params[2] ?? '';
 
         if ($this->totalPlacesQuery() == 0) {
             return '';
@@ -2093,21 +2016,10 @@ class Stats
         }
         $rows = $this->runSql($sql);
         if ($simple) {
-            if (isset($params[0]) && $params[0] != '') {
-                $size = strtolower($params[0]);
-            } else {
-                $size = $WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y;
-            }
-            if (isset($params[1]) && $params[1] != '') {
-                $color_from = strtolower($params[1]);
-            } else {
-                $color_from = $WT_STATS_CHART_COLOR1;
-            }
-            if (isset($params[2]) && $params[2] != '') {
-                $color_to = strtolower($params[2]);
-            } else {
-                $color_to = $WT_STATS_CHART_COLOR2;
-            }
+            $size       = $params[0] ?? $WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y;
+            $color_from = $params[1] ?? $WT_STATS_CHART_COLOR1;
+            $color_to   = $params[2] ?? $WT_STATS_CHART_COLOR2;
+
             $sizes = explode('x', $size);
             $tot   = 0;
             foreach ($rows as $values) {
@@ -2187,21 +2099,10 @@ class Stats
         }
         $rows = $this->runSql($sql);
         if ($simple) {
-            if (isset($params[0]) && $params[0] != '') {
-                $size = strtolower($params[0]);
-            } else {
-                $size = $WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y;
-            }
-            if (isset($params[1]) && $params[1] != '') {
-                $color_from = strtolower($params[1]);
-            } else {
-                $color_from = $WT_STATS_CHART_COLOR1;
-            }
-            if (isset($params[2]) && $params[2] != '') {
-                $color_to = strtolower($params[2]);
-            } else {
-                $color_to = $WT_STATS_CHART_COLOR2;
-            }
+            $size       = $params[0] ?? $WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y;
+            $color_from = $params[1] ?? $WT_STATS_CHART_COLOR1;
+            $color_to   = $params[2] ?? $WT_STATS_CHART_COLOR2;
+
             $sizes = explode('x', $size);
             $tot   = 0;
             foreach ($rows as $values) {
@@ -2485,17 +2386,14 @@ class Stats
      */
     private function topTenOldestQuery($type = 'list', $sex = 'BOTH', $params = []): string
     {
+        $total = $params[0] ?? '10';
+
         if ($sex === 'F') {
             $sex_search = " AND i_sex='F' ";
         } elseif ($sex === 'M') {
             $sex_search = " AND i_sex='M' ";
         } else {
             $sex_search = '';
-        }
-        if (isset($params[0])) {
-            $total = (int) $params[0];
-        } else {
-            $total = 10;
         }
         $rows = $this->runSql(
             "SELECT " .
@@ -2581,6 +2479,8 @@ class Stats
      */
     private function topTenOldestAliveQuery($type = 'list', $sex = 'BOTH', $params = []): string
     {
+        $total = $params[0] ?? '10';
+
         if (!Auth::isMember($this->tree)) {
             return I18N::translate('This information is private and cannot be shown.');
         }
@@ -2591,11 +2491,7 @@ class Stats
         } else {
             $sex_search = '';
         }
-        if (isset($params[0])) {
-            $total = (int) $params[0];
-        } else {
-            $total = 10;
-        }
+
         $rows = $this->runSql(
             "SELECT" .
             " birth.d_gid AS id," .
@@ -2728,11 +2624,7 @@ class Stats
     public function statsAgeQuery($simple = true, $related = 'BIRT', $sex = 'BOTH', $year1 = -1, $year2 = -1, $params = [])
     {
         if ($simple) {
-            if (isset($params[0]) && $params[0] != '') {
-                $size = strtolower($params[0]);
-            } else {
-                $size = '230x250';
-            }
+            $size  = $params[0] ?? '230x250';
             $sizes = explode('x', $size);
             $rows  = $this->runSql(
                 "SELECT" .
@@ -3418,11 +3310,9 @@ class Stats
      */
     private function ageOfMarriageQuery($type = 'list', $age_dir = 'ASC', $params = []): string
     {
-        if (isset($params[0])) {
-            $total = (int) $params[0];
-        } else {
-            $total = 10;
-        }
+        $total = $params[0] ?? '10';
+        $total = (int) $total;
+
         if ($age_dir != 'ASC') {
             $age_dir = 'DESC';
         }
@@ -3566,11 +3456,9 @@ class Stats
      */
     private function ageBetweenSpousesQuery($type = 'list', $age_dir = 'DESC', $params = []): string
     {
-        if (isset($params[0])) {
-            $total = (int) $params[0];
-        } else {
-            $total = 10;
-        }
+        $total = $params[0] ?? '10';
+        $total = (int) $total;
+
         if ($age_dir === 'DESC') {
             $sql =
                 "SELECT f_id AS xref, MIN(wife.d_julianday2-husb.d_julianday1) AS age" .
@@ -3778,23 +3666,13 @@ class Stats
         $rows = $this->runSql($sql);
 
         if ($simple) {
-            if (isset($params[0]) && $params[0] != '') {
-                $size = strtolower($params[0]);
-            } else {
-                $size = $WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y;
-            }
-            if (isset($params[1]) && $params[1] != '') {
-                $color_from = strtolower($params[1]);
-            } else {
-                $color_from = $WT_STATS_CHART_COLOR1;
-            }
-            if (isset($params[2]) && $params[2] != '') {
-                $color_to = strtolower($params[2]);
-            } else {
-                $color_to = $WT_STATS_CHART_COLOR2;
-            }
+            $size       = $params[0] ?? $WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y;
+            $color_from = $params[1] ?? $WT_STATS_CHART_COLOR1;
+            $color_to   = $params[2] ?? $WT_STATS_CHART_COLOR2;
+
             $sizes = explode('x', $size);
             $tot   = 0;
+
             foreach ($rows as $values) {
                 $tot += (int) $values->total;
             }
@@ -3874,21 +3752,10 @@ class Stats
         $rows = $this->runSql($sql);
 
         if ($simple) {
-            if (isset($params[0]) && $params[0] != '') {
-                $size = strtolower($params[0]);
-            } else {
-                $size = $WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y;
-            }
-            if (isset($params[1]) && $params[1] != '') {
-                $color_from = strtolower($params[1]);
-            } else {
-                $color_from = $WT_STATS_CHART_COLOR1;
-            }
-            if (isset($params[2]) && $params[2] != '') {
-                $color_to = strtolower($params[2]);
-            } else {
-                $color_to = $WT_STATS_CHART_COLOR2;
-            }
+            $size       = $params[0] ?? $WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y;
+            $color_from = $params[1] ?? $WT_STATS_CHART_COLOR1;
+            $color_to   = $params[2] ?? $WT_STATS_CHART_COLOR2;
+
             $sizes = explode('x', $size);
             $tot   = 0;
             foreach ($rows as $values) {
@@ -4111,12 +3978,9 @@ class Stats
     public function statsMarrAgeQuery($simple = true, $sex = 'M', $year1 = -1, $year2 = -1, $params = [])
     {
         if ($simple) {
-            if (isset($params[0]) && $params[0] != '') {
-                $size = strtolower($params[0]);
-            } else {
-                $size = '200x250';
-            }
+            $size  = $params[0] ?? '200x250';
             $sizes = explode('x', $size);
+
             $rows  = $this->runSql(
                 "SELECT " .
                 " ROUND(AVG(married.d_julianday2-birth.d_julianday1-182.5)/365.25,1) AS age, " .
@@ -4762,11 +4626,9 @@ class Stats
      */
     private function topTenFamilyQuery($type = 'list', $params = []): string
     {
-        if (isset($params[0])) {
-            $total = (int) $params[0];
-        } else {
-            $total = 10;
-        }
+        $total = $params[0] ?? '10';
+        $total = (int) $total;
+
         $rows = $this->runSql(
             "SELECT f_numchil AS tot, f_id AS id" .
             " FROM `##families`" .
@@ -4829,11 +4691,9 @@ class Stats
      */
     private function ageBetweenSiblingsQuery($type = 'list', $params = []): string
     {
-        if (isset($params[0])) {
-            $total = (int) $params[0];
-        } else {
-            $total = 10;
-        }
+        $total = $params[0] ?? '10';
+        $total = (int) $total;
+
         if (isset($params[1])) {
             $one = $params[1];
         } else {
@@ -5019,21 +4879,10 @@ class Stats
         }
         $rows = $this->runSql($sql);
         if ($simple) {
-            if (isset($params[0]) && $params[0] != '') {
-                $size = strtolower($params[0]);
-            } else {
-                $size = $WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y;
-            }
-            if (isset($params[1]) && $params[1] != '') {
-                $color_from = strtolower($params[1]);
-            } else {
-                $color_from = $WT_STATS_CHART_COLOR1;
-            }
-            if (isset($params[2]) && $params[2] != '') {
-                $color_to = strtolower($params[2]);
-            } else {
-                $color_to = $WT_STATS_CHART_COLOR2;
-            }
+            $size       = $params[0] ?? $WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y;
+            $color_from = $params[1] ?? $WT_STATS_CHART_COLOR1;
+            $color_to   = $params[2] ?? $WT_STATS_CHART_COLOR2;
+
             $sizes = explode('x', $size);
             $tot   = 0;
             foreach ($rows as $values) {
@@ -5165,26 +5014,11 @@ class Stats
         $WT_STATS_L_CHART_X    = Theme::theme()->parameter('stats-large-chart-x');
         $WT_STATS_S_CHART_Y    = Theme::theme()->parameter('stats-small-chart-y');
 
-        if (isset($params[0]) && $params[0] != '') {
-            $size = strtolower($params[0]);
-        } else {
-            $size = $WT_STATS_L_CHART_X . 'x' . $WT_STATS_S_CHART_Y;
-        }
-        if (isset($params[1]) && $params[1] != '') {
-            $color_from = strtolower($params[1]);
-        } else {
-            $color_from = $WT_STATS_CHART_COLOR1;
-        }
-        if (isset($params[2]) && $params[2] != '') {
-            $color_to = strtolower($params[2]);
-        } else {
-            $color_to = $WT_STATS_CHART_COLOR2;
-        }
-        if (isset($params[3]) && $params[3] != '') {
-            $total = strtolower($params[3]);
-        } else {
-            $total = 10;
-        }
+        $size       = $params[0] ?? $WT_STATS_L_CHART_X . 'x' . $WT_STATS_S_CHART_Y;
+        $color_from = $params[1] ?? $WT_STATS_CHART_COLOR1;
+        $color_to   = $params[2] ?? $WT_STATS_CHART_COLOR2;
+        $total      = $params[3] ?? '10';
+
         $sizes = explode('x', $size);
         $total = (int) $total;
         $rows  = $this->runSql(
@@ -5269,11 +5103,7 @@ class Stats
     public function statsChildrenQuery($simple = true, $sex = 'BOTH', $year1 = -1, $year2 = -1, $params = [])
     {
         if ($simple) {
-            if (isset($params[0]) && $params[0] != '') {
-                $size = strtolower($params[0]);
-            } else {
-                $size = '220x200';
-            }
+            $size  = $params[0] ?? '220x200';
             $sizes = explode('x', $size);
             $max   = 0;
             $rows  = $this->runSql(
@@ -5462,11 +5292,8 @@ class Stats
      */
     public function noChildrenFamiliesList($params = []): string
     {
-        if (isset($params[0]) && $params[0] != '') {
-            $type = strtolower($params[0]);
-        } else {
-            $type = 'list';
-        }
+        $type = $params[0] ?? 'list';
+
         $rows = $this->runSql(
             " SELECT f_id AS family" .
             " FROM `##families` AS fam" .
@@ -5522,21 +5349,13 @@ class Stats
      */
     public function chartNoChildrenFamilies($params = []): string
     {
-        if (isset($params[0]) && $params[0] != '') {
-            $size = strtolower($params[0]);
-        } else {
-            $size = '220x200';
-        }
-        if (isset($params[1]) && $params[1] != '') {
-            $year1 = $params[1];
-        } else {
-            $year1 = -1;
-        }
-        if (isset($params[2]) && $params[2] != '') {
-            $year2 = $params[2];
-        } else {
-            $year2 = -1;
-        }
+        $size  = $params[0] ?? '220x200';
+        $year1 = $params[1] ?? '-1';
+        $year2 = $params[2] ?? '-1';
+
+        $year1 = (int) $year1;
+        $year2 = (int) $year2;
+
         $sizes = explode('x', $size);
         if ($year1 >= 0 && $year2 >= 0) {
             $years = " married.d_year BETWEEN '{$year1}' AND '{$year2}' AND";
@@ -5622,11 +5441,8 @@ class Stats
      */
     private function topTenGrandFamilyQuery($type = 'list', $params = []): string
     {
-        if (isset($params[0])) {
-            $total = (int) $params[0];
-        } else {
-            $total = 10;
-        }
+        $total = $params[0] ?? '10';
+
         $rows = $this->runSql(
             "SELECT COUNT(*) AS tot, f_id AS id" .
             " FROM `##families`" .
@@ -5721,9 +5537,12 @@ class Stats
      */
     private function commonSurnamesQuery($type = 'list', $show_tot = false, $params = []): string
     {
-        $threshold          = empty($params[0]) ? 10 : (int) $params[0];
-        $number_of_surnames = empty($params[1]) ? 10 : (int) $params[1];
-        $sorting            = empty($params[2]) ? 'alpha' : $params[2];
+        $threshold          = $params[0] ?? '10';
+        $number_of_surnames = $params[1] ?? '10';
+        $sorting            = $params[2] ?? 'alpha';
+
+        $number_of_surnames = (int) $number_of_surnames;
+        $threshold          = (int) $threshold;
 
         $surnames = $this->topSurnames($number_of_surnames, $threshold);
 
@@ -5854,10 +5673,12 @@ class Stats
         $WT_STATS_S_CHART_X    = Theme::theme()->parameter('stats-small-chart-x');
         $WT_STATS_S_CHART_Y    = Theme::theme()->parameter('stats-small-chart-y');
 
-        $size               = empty($params[0]) ? $WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y : strtolower($params[0]);
-        $color_from         = empty($params[1]) ? $WT_STATS_CHART_COLOR1 : strtolower($params[1]);
-        $color_to           = empty($params[2]) ? $WT_STATS_CHART_COLOR2 : strtolower($params[2]);
-        $number_of_surnames = empty($params[3]) ? 10 : (int) $params[3];
+        $size               = $params[0] ?? $WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y;
+        $color_from         = $params[1] ?? $WT_STATS_CHART_COLOR1;
+        $color_to           = $params[2] ?? $WT_STATS_CHART_COLOR2;
+        $number_of_surnames = $params[3] ?? '10';
+
+        $number_of_surnames = (int) $number_of_surnames;
 
         $sizes    = explode('x', $size);
         $tot_indi = $this->totalIndividualsQuery();
@@ -5932,16 +5753,11 @@ class Stats
      */
     private function commonGivenQuery($sex = 'B', $type = 'list', $show_tot = false, $params = [])
     {
-        if (isset($params[0]) && $params[0] != '' && $params[0] >= 0) {
-            $threshold = (int) $params[0];
-        } else {
-            $threshold = 1;
-        }
-        if (isset($params[1]) && $params[1] != '' && $params[1] >= 0) {
-            $maxtoshow = (int) $params[1];
-        } else {
-            $maxtoshow = 10;
-        }
+        $threshold = $params[0] ?? '1';
+        $maxtoshow = $params[1] ?? '10';
+
+        $threshold = (int) $threshold;
+        $maxtoshow = (int) $maxtoshow;
 
         switch ($sex) {
             case 'M':
@@ -6291,26 +6107,13 @@ class Stats
         $WT_STATS_S_CHART_X    = Theme::theme()->parameter('stats-small-chart-x');
         $WT_STATS_S_CHART_Y    = Theme::theme()->parameter('stats-small-chart-y');
 
-        if (isset($params[0]) && $params[0] != '') {
-            $size = strtolower($params[0]);
-        } else {
-            $size = $WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y;
-        }
-        if (isset($params[1]) && $params[1] != '') {
-            $color_from = strtolower($params[1]);
-        } else {
-            $color_from = $WT_STATS_CHART_COLOR1;
-        }
-        if (isset($params[2]) && $params[2] != '') {
-            $color_to = strtolower($params[2]);
-        } else {
-            $color_to = $WT_STATS_CHART_COLOR2;
-        }
-        if (isset($params[4]) && $params[4] != '') {
-            $maxtoshow = strtolower($params[4]);
-        } else {
-            $maxtoshow = 7;
-        }
+        $size       = $params[0] ?? $WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y;
+        $color_from = $params[1] ?? $WT_STATS_CHART_COLOR1;
+        $color_to   = $params[2] ?? $WT_STATS_CHART_COLOR2;
+        $maxtoshow  = $params[3] ?? '7';
+
+        $maxtoshow = (int) $maxtoshow;
+
         $sizes    = explode('x', $size);
         $tot_indi = $this->totalIndividualsQuery();
         $given    = $this->commonGivenQuery('B', 'chart');
@@ -6517,12 +6320,10 @@ class Stats
             return e(Auth::user()->getUserName());
         }
 
-        if (isset($params[0]) && $params[0] != '') {
-            // if #username:visitor# was specified, then "visitor" will be returned when the user is not logged in
-            return e($params[0]);
-        }
+        $visitor_text = $params[0] ?? '';
 
-        return '';
+        // if #username:visitor# was specified, then "visitor" will be returned when the user is not logged in
+        return e($visitor_text);
     }
 
     /**
@@ -6618,13 +6419,9 @@ class Stats
      */
     public function latestUserRegDate($params = []): string
     {
-        $user = $this->latestUser();
+        $datestamp = $params[0] ?? I18N::dateFormat();
 
-        if (is_array($params) && isset($params[0]) && $params[0] != '') {
-            $datestamp = $params[0];
-        } else {
-            $datestamp = I18N::dateFormat();
-        }
+        $user = $this->latestUser();
 
         return FunctionsDate::timestampToGedcomDate((int) $user->getPreference('reg_timestamp'))->display(false, $datestamp);
     }
@@ -6638,13 +6435,9 @@ class Stats
      */
     public function latestUserRegTime($params = []): string
     {
-        $user = $this->latestUser();
+        $datestamp = $params[0] ?? str_replace('%', '', I18N::timeFormat());
 
-        if (is_array($params) && isset($params[0]) && $params[0] != '') {
-            $datestamp = $params[0];
-        } else {
-            $datestamp = str_replace('%', '', I18N::timeFormat());
-        }
+        $user = $this->latestUser();
 
         return date($datestamp, (int) $user->getPreference('reg_timestamp'));
     }
@@ -6794,11 +6587,7 @@ class Stats
      */
     private function hitCountQuery($page_name, $params): string
     {
-        if (is_array($params) && isset($params[0]) && $params[0] != '') {
-            $page_parameter = $params[0];
-        } else {
-            $page_parameter = '';
-        }
+        $page_parameter = $params[0] ?? '';
 
         if ($page_name === '') {
             // index.php?ctype=gedcom
@@ -7037,11 +6826,8 @@ class Stats
     {
         global $ctype;
 
-        if (isset($params[0]) && $params[0] != '') {
-            $block = $params[0];
-        } else {
-            return '';
-        }
+        $block = $params[0] ?? '';
+
         $all_blocks = [];
         foreach (Module::getActiveBlocks($this->tree) as $name => $active_block) {
             if ($ctype == 'user' && $active_block->isUserBlock() || $ctype == 'gedcom' && $active_block->isGedcomBlock()) {
