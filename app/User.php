@@ -211,23 +211,6 @@ class User
     }
 
     /**
-     * Find the latest user to register.
-     *
-     * @return User|null
-     */
-    public static function findLatestToRegister()
-    {
-        $user_id = (int) Database::prepare(
-            "SELECT u.user_id" .
-            " FROM `##user` u" .
-            " LEFT JOIN `##user_setting` us ON (u.user_id=us.user_id AND us.setting_name='reg_timestamp') " .
-            " ORDER BY us.setting_value DESC LIMIT 1"
-        )->execute()->fetchOne();
-
-        return self::find($user_id);
-    }
-
-    /**
      * Get a list of all users.
      *
      * @return User[]

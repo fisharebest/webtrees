@@ -3712,7 +3712,7 @@ class Stats
                     }
                     $result = FunctionsDate::getAgeAtEvent($age);
                 } else {
-                    $result = (int) ($age / 365.25);
+                    $result = (string) floor($age / 365.25);
                 }
                 break;
         }
@@ -5199,7 +5199,8 @@ class Stats
         }
         $tot = 0;
         foreach ($rows as $row) {
-            $tot += (int) $row->tot;
+            $row->tot = (int) $row->tot;
+            $tot += $row->tot;
         }
         $chd = '';
         $chl = [];
@@ -5209,7 +5210,7 @@ class Stats
                 if ($tot == 0) {
                     $per = 0;
                 } else {
-                    $per = round(100 * $row->tot / $tot, 0);
+                    $per = (int) (100 * $row->tot / $tot);
                 }
                 $chd .= $this->arrayToExtendedEncoding([$per]);
                 $chl[] = htmlspecialchars_decode(strip_tags($family->getFullName())) . ' - ' . I18N::number($row->tot);
@@ -5229,7 +5230,13 @@ class Stats
     {
         $rows = $this->runSql("SELECT SUM(f_numchil) AS tot FROM `##families` WHERE f_file={$this->tree->getTreeId()}");
 
-        return I18N::number($rows[0]->tot);
+        $total = (int) Database::prepare(
+            "SELECT SUM(f_numchil) FROM `##families` WHERE f_file = :tree_id"
+        )->execute([
+            'tree_id' => $this->tree->getTreeId(),
+        ])->fetchOne();
+
+        return I18N::number($total);
     }
 
     /**
@@ -5957,6 +5964,8 @@ class Stats
             ->fetchAll();
         $nameList = [];
         foreach ($rows as $row) {
+            $row->num = (int) $row->num;
+
             // Split “John Thomas” into “John” and “Thomas” and count against both totals
             foreach (explode(' ', $row->n_givn) as $given) {
                 // Exclude initials and particles.
@@ -6527,6 +6536,33 @@ class Stats
     }
 
     /**
+     * Find the newest user on the site.
+     *
+     * If no user has registered (i.e. all created by the admin), then
+     * return the current user.
+     *
+     * @return User
+     */
+    private function latestUser(): User
+    {
+        static $user;
+
+        if (!$user instanceof User) {
+            $user_id = (int) Database::prepare(
+                "SELECT u.user_id" .
+                " FROM `##user` u" .
+                " LEFT JOIN `##user_setting` us ON (u.user_id=us.user_id AND us.setting_name='reg_timestamp') " .
+                " ORDER BY us.setting_value DESC LIMIT 1"
+            )->execute()->fetchOne();
+
+            $user = User::find($user_id) ?? Auth::user();
+
+        }
+
+        return $user;
+    }
+
+    /**
      * Get the newest registered user.
      *
      * @param string   $type
@@ -6534,53 +6570,12 @@ class Stats
      *
      * @return string
      */
-    private function getLatestUserData($type = 'userid', $params = [])
+    private function getLatestUserData($type, $params = [])
     {
-        static $user_id = null;
-
-        if ($user_id === null) {
-            $user = User::findLatestToRegister();
-        } else {
-            $user = User::find($user_id);
-        }
+        $user = $this->latestUser();
 
         switch ($type) {
-            default:
-            case 'userid':
-                return $user->getUserId();
-            case 'username':
-                return e($user->getUserName());
-            case 'fullname':
-                return e($user->getRealName());
-            case 'regdate':
-                if (is_array($params) && isset($params[0]) && $params[0] != '') {
-                    $datestamp = $params[0];
-                } else {
-                    $datestamp = I18N::dateFormat();
-                }
-
-                return FunctionsDate::timestampToGedcomDate((int) $user->getPreference('reg_timestamp'))->display(false, $datestamp);
-            case 'regtime':
-                if (is_array($params) && isset($params[0]) && $params[0] != '') {
-                    $datestamp = $params[0];
-                } else {
-                    $datestamp = str_replace('%', '', I18N::timeFormat());
-                }
-
-                return date($datestamp, (int) $user->getPreference('reg_timestamp'));
             case 'loggedin':
-                if (is_array($params) && isset($params[0]) && $params[0] != '') {
-                    $yes = $params[0];
-                } else {
-                    $yes = I18N::translate('yes');
-                }
-                if (is_array($params) && isset($params[1]) && $params[1] != '') {
-                    $no = $params[1];
-                } else {
-                    $no = I18N::translate('no');
-                }
-
-                return Database::prepare("SELECT 1 FROM `##session` WHERE user_id=? LIMIT 1")->execute([$user->getUserId()])->fetchOne() ? $yes : $no;
         }
     }
 
@@ -6591,7 +6586,7 @@ class Stats
      */
     public function latestUserId(): string
     {
-        return $this->getLatestUserData('userid');
+        return (string) $this->latestUser()->getUserId();
     }
 
     /**
@@ -6601,7 +6596,7 @@ class Stats
      */
     public function latestUserName(): string
     {
-        return $this->getLatestUserData('username');
+        return e($this->latestUser()->getUserName());
     }
 
     /**
@@ -6611,7 +6606,7 @@ class Stats
      */
     public function latestUserFullName(): string
     {
-        return $this->getLatestUserData('fullname');
+        return e($this->latestUser()->getRealName());
     }
 
     /**
@@ -6623,7 +6618,15 @@ class Stats
      */
     public function latestUserRegDate($params = []): string
     {
-        return $this->getLatestUserData('regdate', $params);
+        $user = $this->latestUser();
+
+        if (is_array($params) && isset($params[0]) && $params[0] != '') {
+            $datestamp = $params[0];
+        } else {
+            $datestamp = I18N::dateFormat();
+        }
+
+        return FunctionsDate::timestampToGedcomDate((int) $user->getPreference('reg_timestamp'))->display(false, $datestamp);
     }
 
     /**
@@ -6635,11 +6638,19 @@ class Stats
      */
     public function latestUserRegTime($params = []): string
     {
-        return $this->getLatestUserData('regtime', $params);
+        $user = $this->latestUser();
+
+        if (is_array($params) && isset($params[0]) && $params[0] != '') {
+            $datestamp = $params[0];
+        } else {
+            $datestamp = str_replace('%', '', I18N::timeFormat());
+        }
+
+        return date($datestamp, (int) $user->getPreference('reg_timestamp'));
     }
 
     /**
-     * Find the most recent user to log in.
+     * Is the most recently registered user logged in right now?
      *
      * @param string[] $params
      *
@@ -6647,7 +6658,18 @@ class Stats
      */
     public function latestUserLoggedin($params = []): string
     {
-        return $this->getLatestUserData('loggedin', $params);
+        $params[0] = $params[0] ?? I18N::translate('yes');
+        $params[1] = $params[1] ?? I18N::translate('no');
+
+        $user = $this->latestUser();
+
+        $is_logged_in = (bool) Database::prepare(
+            "SELECT 1 FROM `##session` WHERE user_id = :user_id LIMIT 1"
+        )->execute([
+            'user_id' => $user->getUserId()
+        ])->fetchOne();
+
+        return $is_logged_in ? $params[0] : $params[1];
     }
 
     /**
