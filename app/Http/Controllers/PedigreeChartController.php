@@ -146,7 +146,7 @@ class PedigreeChartController extends AbstractChartController
         $this->treesize = (2 ** $this->generations) - 1;
 
         // sosaAncestors() starts array at index 1 we need to start at 0
-        $this->nodes = array_map(function (Individual $item): array {
+        $this->nodes = array_map(function (Individual $item = null): array {
             return [
                 'indi' => $item,
                 'x'    => 0,
