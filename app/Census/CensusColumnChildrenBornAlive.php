@@ -51,6 +51,6 @@ class CensusColumnChildrenBornAlive extends AbstractCensusColumn implements Cens
             }
         }
 
-        return (string)$count;
+        return (string) $count;
     }
 }

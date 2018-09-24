@@ -442,7 +442,7 @@ class IndividualController extends AbstractBaseController
      */
     private function significant(Individual $individual): stdClass
     {
-        $significant = (object)[
+        $significant = (object) [
             'family'     => null,
             'individual' => $individual,
             'surname'    => '',

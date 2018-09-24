@@ -55,15 +55,15 @@ class HourglassChartController extends AbstractChartController
 
         $this->checkIndividualAccess($individual);
 
-        $maximum_generations = (int)$tree->getPreference('MAX_DESCENDANCY_GENERATIONS', self::DEFAULT_MAXIMUM_GENERATIONS);
-        $default_generations = (int)$tree->getPreference('DEFAULT_PEDIGREE_GENERATIONS', self::DEFAULT_GENERATIONS);
+        $maximum_generations = (int) $tree->getPreference('MAX_DESCENDANCY_GENERATIONS', self::DEFAULT_MAXIMUM_GENERATIONS);
+        $default_generations = (int) $tree->getPreference('DEFAULT_PEDIGREE_GENERATIONS', self::DEFAULT_GENERATIONS);
 
-        $generations = (int)$request->get('generations', $default_generations);
+        $generations = (int) $request->get('generations', $default_generations);
 
         $generations = min($generations, $maximum_generations);
         $generations = max($generations, self::MINIMUM_GENERATIONS);
 
-        $show_spouse = (bool)$request->get('show_spouse');
+        $show_spouse = (bool) $request->get('show_spouse');
 
         /* I18N: %s is an individual’s name */
         $title = I18N::translate('Hourglass chart of %s', $individual->getFullName());
@@ -95,14 +95,14 @@ class HourglassChartController extends AbstractChartController
 
         $this->checkIndividualAccess($individual);
 
-        $maximum_generations = (int)$tree->getPreference('MAX_DESCENDANCY_GENERATIONS', self::DEFAULT_MAXIMUM_GENERATIONS);
-        $default_generations = (int)$tree->getPreference('DEFAULT_PEDIGREE_GENERATIONS', self::DEFAULT_GENERATIONS);
+        $maximum_generations = (int) $tree->getPreference('MAX_DESCENDANCY_GENERATIONS', self::DEFAULT_MAXIMUM_GENERATIONS);
+        $default_generations = (int) $tree->getPreference('DEFAULT_PEDIGREE_GENERATIONS', self::DEFAULT_GENERATIONS);
 
-        $generations = (int)$request->get('generations', $default_generations);
+        $generations = (int) $request->get('generations', $default_generations);
         $generations = min($generations, $maximum_generations);
         $generations = max($generations, self::MINIMUM_GENERATIONS);
 
-        $show_spouse = (bool)$request->get('show_spouse');
+        $show_spouse = (bool) $request->get('show_spouse');
 
         ob_start();
         $this->printDescendency($individual, 1, $generations, $show_spouse, true);
@@ -115,7 +115,7 @@ class HourglassChartController extends AbstractChartController
         return new Response(view('hourglass-chart', [
             'descendants' => $descendants,
             'ancestors'   => $ancestors,
-            'bhalfheight' => (int)(Theme::theme()->parameter('chart-box-y') / 2),
+            'bhalfheight' => (int) (Theme::theme()->parameter('chart-box-y') / 2),
         ]));
     }
 
@@ -134,7 +134,7 @@ class HourglassChartController extends AbstractChartController
 
         $this->checkIndividualAccess($individual);
 
-        $show_spouse = (bool)$request->get('show_spouse');
+        $show_spouse = (bool) $request->get('show_spouse');
 
         ob_start();
         $this->printPersonPedigree($individual, 0, 1, $show_spouse);
@@ -156,7 +156,7 @@ class HourglassChartController extends AbstractChartController
         $xref       = $request->get('xref');
         $individual = Individual::getInstance($xref, $tree);
 
-        $show_spouse = (bool)$request->get('show_spouse');
+        $show_spouse = (bool) $request->get('show_spouse');
 
         ob_start();
         $this->printDescendency($individual, 1, 2, $show_spouse, false);
@@ -309,7 +309,7 @@ class HourglassChartController extends AbstractChartController
                     echo '<a href="' . e(route('hourglass', [
                             'xref'        => $spouse->getXref(),
                             'generations' => $generations,
-                            'show_spouse' => (int)$show_spouse,
+                            'show_spouse' => (int) $show_spouse,
                             'ged'         => $spouse->getTree()->getName(),
                         ])) . '" class="name1">' . $spouse->getFullName() . '</a>';
                 }
@@ -317,7 +317,7 @@ class HourglassChartController extends AbstractChartController
                     echo '<a href="' . e(route('hourglass', [
                             'xref'        => $child->getXref(),
                             'generations' => $generations,
-                            'show_spouse' => (int)$show_spouse,
+                            'show_spouse' => (int) $show_spouse,
                             'ged'         => $child->getTree()->getName(),
                         ])) . '" class="name1">' . $child->getFullName() . '</a>';
                 }
@@ -332,7 +332,7 @@ class HourglassChartController extends AbstractChartController
                         echo '<a href="' . e(route('hourglass', [
                                 'xref'        => $husb->getXref(),
                                 'generations' => $generations,
-                                'show_spouse' => (int)$show_spouse,
+                                'show_spouse' => (int) $show_spouse,
                                 'ged'         => $husb->getTree()->getName(),
                             ])) . '" class="name1">' . $husb->getFullName() . '</a>';
                     }
@@ -341,7 +341,7 @@ class HourglassChartController extends AbstractChartController
                         echo '<a href="' . e(route('hourglass', [
                                 'xref'        => $wife->getXref(),
                                 'generations' => $generations,
-                                'show_spouse' => (int)$show_spouse,
+                                'show_spouse' => (int) $show_spouse,
                                 'ged'         => $wife->getTree()->getName(),
                             ])) . '" class="name1">' . $wife->getFullName() . '</a>';
                     }
@@ -360,7 +360,7 @@ class HourglassChartController extends AbstractChartController
                         echo '<a href="' . e(route('hourglass', [
                                 'xref'        => $child->getXref(),
                                 'generations' => $generations,
-                                'show_spouse' => (int)$show_spouse,
+                                'show_spouse' => (int) $show_spouse,
                                 'ged'         => $child->getTree()->getName(),
                             ])) . '" class="name1">' . $child->getFullName() . '</a>';
                     }
@@ -425,7 +425,7 @@ class HourglassChartController extends AbstractChartController
                         'href'         => '#',
                         'data-route'   => 'hourglass-add-asc',
                         'data-xref'    => $ARID,
-                        'data-spouses' => (int)$show_spouse,
+                        'data-spouses' => (int) $show_spouse,
                         'data-tree'    => $family->getHusband()->getTree()->getName(),
                     ]);
                 }
@@ -462,7 +462,7 @@ class HourglassChartController extends AbstractChartController
                         'href'         => '#',
                         'data-route'   => 'hourglass-add-asc',
                         'data-xref'    => $ARID,
-                        'data-spouses' => (int)$show_spouse,
+                        'data-spouses' => (int) $show_spouse,
                         'data-tree'    => $family->getWife()->getTree()->getName(),
                     ]);
                 }

@@ -60,11 +60,11 @@ class TimelineChartController extends AbstractChartController
     {
         $this->checkModuleIsActive($tree, 'timeline_chart');
 
-        $scale = (int)$request->get('scale', self::SCALE_DEFAULT);
+        $scale = (int) $request->get('scale', self::SCALE_DEFAULT);
         $scale = min($scale, self::SCALE_MAX);
         $scale = max($scale, self::SCALE_MIN);
 
-        $xrefs = (array)$request->get('xrefs', []);
+        $xrefs = (array) $request->get('xrefs', []);
         $xrefs = array_unique($xrefs);
         $xrefs = array_filter($xrefs, function (string $xref) use ($tree): bool {
             $individual = Individual::getInstance($xref, $tree);
@@ -100,14 +100,14 @@ class TimelineChartController extends AbstractChartController
 
         $zoom_in_url = route('timeline', [
             'ged'   => $tree->getName(),
-            'scale' => min(self::SCALE_MAX, $scale + (int)($scale * 0.2 + 1)),
+            'scale' => min(self::SCALE_MAX, $scale + (int) ($scale * 0.2 + 1)),
             'xrefs' => $xrefs,
         ]);
 
         $zoom_out_url = route('timeline', [
             'route' => 'timeline',
             'ged'   => $tree->getName(),
-            'scale' => max(self::SCALE_MIN, $scale - (int)($scale * 0.2 + 1)),
+            'scale' => max(self::SCALE_MIN, $scale - (int) ($scale * 0.2 + 1)),
             'xrefs' => $xrefs,
         ]);
 
@@ -132,11 +132,11 @@ class TimelineChartController extends AbstractChartController
     {
         $this->checkModuleIsActive($tree, 'timeline_chart');
 
-        $scale = (int)$request->get('scale', self::SCALE_DEFAULT);
+        $scale = (int) $request->get('scale', self::SCALE_DEFAULT);
         $scale = min($scale, self::SCALE_MAX);
         $scale = max($scale, self::SCALE_MIN);
 
-        $xrefs = (array)$request->get('xrefs', []);
+        $xrefs = (array) $request->get('xrefs', []);
         $xrefs = array_unique($xrefs);
 
         /** @var Individual[] $individuals */
@@ -148,7 +148,7 @@ class TimelineChartController extends AbstractChartController
             return $individual !== null && $individual->canShow();
         });
 
-        $baseyear    = (int)date('Y');
+        $baseyear    = (int) date('Y');
         $topyear     = 0;
         $indifacts   = [];
         $birthyears  = [];
@@ -183,7 +183,7 @@ class TimelineChartController extends AbstractChartController
                         $topyear  = max($topyear, $date->y);
 
                         if (!$individual->isDead()) {
-                            $topyear = max($topyear, (int)date('Y'));
+                            $topyear = max($topyear, (int) date('Y'));
                         }
 
                         // do not add the same fact twice (prevents marriages from being added multiple times)
@@ -196,7 +196,7 @@ class TimelineChartController extends AbstractChartController
         }
 
         if ($scale === 0) {
-            $scale = (int)(($topyear - $baseyear) / 20 * count($indifacts) / 4);
+            $scale = (int) (($topyear - $baseyear) / 20 * count($indifacts) / 4);
             if ($scale < 6) {
                 $scale = 6;
             }

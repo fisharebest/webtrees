@@ -69,7 +69,7 @@ class Menu
                     $attrs .= ' ' . $key . '="' . e($value) . '"';
                 }
 
-                $class    = trim('dropdown-item ' . $submenu->class);
+                $class = trim('dropdown-item ' . $submenu->class);
                 $submenus .= '<a class="' . $class . '" href="' . e($submenu->link) . '"' . $attrs . '>' . $submenu->label . '</a>';
             }
 

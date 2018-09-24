@@ -62,12 +62,12 @@ class AncestorsChartController extends AbstractChartController
         $this->checkIndividualAccess($individual);
 
         $minimum_generations = 2;
-        $maximum_generations = (int)$tree->getPreference('MAX_PEDIGREE_GENERATIONS', self::DEFAULT_MAXIMUM_GENERATIONS);
-        $default_generations = (int)$tree->getPreference('DEFAULT_PEDIGREE_GENERATIONS', self::DEFAULT_GENERATIONS);
+        $maximum_generations = (int) $tree->getPreference('MAX_PEDIGREE_GENERATIONS', self::DEFAULT_MAXIMUM_GENERATIONS);
+        $default_generations = (int) $tree->getPreference('DEFAULT_PEDIGREE_GENERATIONS', self::DEFAULT_GENERATIONS);
 
-        $show_cousins = (bool)$request->get('show_cousins', self::DEFAULT_COUSINS);
-        $chart_style  = (int)$request->get('chart_style', self::DEFAULT_STYLE);
-        $generations  = (int)$request->get('generations', $default_generations);
+        $show_cousins = (bool) $request->get('show_cousins', self::DEFAULT_COUSINS);
+        $chart_style  = (int) $request->get('chart_style', self::DEFAULT_STYLE);
+        $generations  = (int) $request->get('generations', $default_generations);
 
         $generations = min($generations, $maximum_generations);
         $generations = max($generations, $minimum_generations);
@@ -108,12 +108,12 @@ class AncestorsChartController extends AbstractChartController
         $this->checkIndividualAccess($individual);
 
         $minimum_generations = 2;
-        $maximum_generations = (int)$tree->getPreference('MAX_PEDIGREE_GENERATIONS', self::DEFAULT_MAXIMUM_GENERATIONS);
-        $default_generations = (int)$tree->getPreference('DEFAULT_PEDIGREE_GENERATIONS', self::DEFAULT_GENERATIONS);
+        $maximum_generations = (int) $tree->getPreference('MAX_PEDIGREE_GENERATIONS', self::DEFAULT_MAXIMUM_GENERATIONS);
+        $default_generations = (int) $tree->getPreference('DEFAULT_PEDIGREE_GENERATIONS', self::DEFAULT_GENERATIONS);
 
-        $show_cousins = (bool)$request->get('show_cousins', self::DEFAULT_COUSINS);
-        $chart_style  = (int)$request->get('chart_style', self::DEFAULT_STYLE);
-        $generations  = (int)$request->get('generations', $default_generations);
+        $show_cousins = (bool) $request->get('show_cousins', self::DEFAULT_COUSINS);
+        $chart_style  = (int) $request->get('chart_style', self::DEFAULT_STYLE);
+        $generations  = (int) $request->get('generations', $default_generations);
 
         $generations = min($generations, $maximum_generations);
         $generations = max($generations, $minimum_generations);

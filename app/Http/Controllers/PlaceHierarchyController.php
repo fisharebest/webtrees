@@ -58,7 +58,7 @@ class PlaceHierarchyController extends AbstractBaseController
         $note       = false;
 
         if ($showmap) {
-            $note    = true;
+            $note = true;
             $content .= view('place-map', [
                 'module' => self::MAP_MODULE,
                 'ref'    => $fqpn,
@@ -70,13 +70,13 @@ class PlaceHierarchyController extends AbstractBaseController
         switch ($action) {
             case 'list':
                 $nextaction = ['hierarchy' => I18N::translate('Show place hierarchy')];
-                $content    .= view('place-list', $this->getList($tree));
+                $content .= view('place-list', $this->getList($tree));
                 break;
             case 'hierarchy':
             case 'hierarchy-e':
                 $nextaction = ['list' => I18N::translate('Show all places in a list')];
                 $data       = $this->getHierarchy($tree, $place, $parent);
-                $content    .= (null === $data || $showmap) ? '' : view('place-hierarchy', $data);
+                $content .= (null === $data || $showmap) ? '' : view('place-hierarchy', $data);
                 if (null === $data || $action === 'hierarchy-e') {
                     $content .= view('place-events', $this->getEvents($tree, $place));
                 }

@@ -336,7 +336,7 @@ class AdminPhpGedViewController extends AbstractBaseController
         $INDEX_DIRECTORY    = $config['INDEX_DIRECTORY'];
         $DBNAME             = $config['DBNAME'];
         $TBLPREFIX          = $config['TBLPREFIX'];
-        $PGV_SCHEMA_VERSION = (int)($config['PGV_SCHEMA_VERSION'] ?? '0');
+        $PGV_SCHEMA_VERSION = (int) ($config['PGV_SCHEMA_VERSION'] ?? '0');
 
         // Delete the existing user accounts, and any information associated with it
         Database::exec("UPDATE `##log` SET user_id=NULL");

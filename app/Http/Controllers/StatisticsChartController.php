@@ -576,7 +576,7 @@ class StatisticsChartController extends AbstractChartController
                         $z_axis = $this->axisAll();
                         // The stats query doesn't have an "all" function, so query M/F/U separately
                         foreach (['M', 'F', 'U'] as $sex) {
-                            $rows  = $stats->statsMarrAgeQuery(false, $sex);
+                            $rows = $stats->statsMarrAgeQuery(false, $sex);
                             $indi = [];
                             foreach ($rows as $row) {
                                 if (!in_array($row->d_gid, $indi)) {
@@ -589,7 +589,7 @@ class StatisticsChartController extends AbstractChartController
                     case self::Z_AXIS_SEX:
                         $z_axis = $this->axisSexes();
                         foreach (array_keys($z_axis) as $sex) {
-                            $rows  = $stats->statsMarrAgeQuery(false, $sex);
+                            $rows = $stats->statsMarrAgeQuery(false, $sex);
                             $indi = [];
                             foreach ($rows as $row) {
                                 if (!in_array($row->d_gid, $indi)) {
@@ -605,7 +605,7 @@ class StatisticsChartController extends AbstractChartController
                         // The stats query doesn't have an "all" function, so query M/F/U separately
                         foreach (['M', 'F', 'U'] as $sex) {
                             $prev_boundary = 0;
-                            $indi   = [];
+                            $indi = [];
                             foreach (array_keys($z_axis) as $boundary) {
                                 $rows = $stats->statsMarrAgeQuery(false, $sex, $prev_boundary, $boundary);
                                 foreach ($rows as $row) {

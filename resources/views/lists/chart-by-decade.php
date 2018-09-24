@@ -24,7 +24,7 @@ for ($y = 1600; $y < 2030; $y += 50) {
 }
 $chart_url .= '|1:||' . rawurlencode(I18N::percentage($vmax / $count)); // y axis
 $chart_url .= '|2:||';
-$step      = $vmax;
+$step = $vmax;
 for ($d = $vmax; $d > 0; $d--) {
 	if ($vmax < ($d * 10 + 1) && ($vmax % $d) == 0) {
 		$step = $d;

@@ -264,35 +264,35 @@ class AdminSiteController extends AbstractBaseController
 
         $args = [];
         if ($search) {
-            $sql            .= " AND log_message LIKE CONCAT('%', :search, '%')";
+            $sql .= " AND log_message LIKE CONCAT('%', :search, '%')";
             $args['search'] = $search;
         }
         if ($from) {
-            $sql          .= " AND log_time >= :from";
+            $sql .= " AND log_time >= :from";
             $args['from'] = $from;
         }
         if ($to) {
-            $sql        .= " AND log_time < TIMESTAMPADD(DAY, 1 , :to)"; // before end of the day
+            $sql .= " AND log_time < TIMESTAMPADD(DAY, 1 , :to)"; // before end of the day
             $args['to'] = $to;
         }
         if ($type) {
-            $sql          .= " AND log_type = :type";
+            $sql .= " AND log_type = :type";
             $args['type'] = $type;
         }
         if ($text) {
-            $sql          .= " AND log_message LIKE CONCAT('%', :text, '%')";
+            $sql .= " AND log_message LIKE CONCAT('%', :text, '%')";
             $args['text'] = $text;
         }
         if ($ip) {
-            $sql        .= " AND ip_address LIKE CONCAT('%', :ip, '%')";
+            $sql .= " AND ip_address LIKE CONCAT('%', :ip, '%')";
             $args['ip'] = $ip;
         }
         if ($username) {
-            $sql          .= " AND user_name LIKE CONCAT('%', :user, '%')";
+            $sql .= " AND user_name LIKE CONCAT('%', :user, '%')";
             $args['user'] = $username;
         }
         if ($gedc) {
-            $sql          .= " AND gedcom_name = :gedc";
+            $sql .= " AND gedcom_name = :gedc";
             $args['gedc'] = $gedc;
         }
 
@@ -318,7 +318,7 @@ class AdminSiteController extends AbstractBaseController
         }
 
         if ($length) {
-            $sql            .= " LIMIT :limit OFFSET :offset";
+            $sql .= " LIMIT :limit OFFSET :offset";
             $args['limit']  = $length;
             $args['offset'] = $start;
         }
@@ -376,35 +376,35 @@ class AdminSiteController extends AbstractBaseController
 
         $args = [];
         if ($search) {
-            $sql            .= " AND log_message LIKE CONCAT('%', :search, '%')";
+            $sql .= " AND log_message LIKE CONCAT('%', :search, '%')";
             $args['search'] = $search;
         }
         if ($from) {
-            $sql          .= " AND log_time >= :from";
+            $sql .= " AND log_time >= :from";
             $args['from'] = $from;
         }
         if ($to) {
-            $sql        .= " AND log_time < TIMESTAMPADD(DAY, 1 , :to)"; // before end of the day
+            $sql .= " AND log_time < TIMESTAMPADD(DAY, 1 , :to)"; // before end of the day
             $args['to'] = $to;
         }
         if ($type) {
-            $sql          .= " AND log_type = :type";
+            $sql .= " AND log_type = :type";
             $args['type'] = $type;
         }
         if ($text) {
-            $sql          .= " AND log_message LIKE CONCAT('%', :text, '%')";
+            $sql .= " AND log_message LIKE CONCAT('%', :text, '%')";
             $args['text'] = $text;
         }
         if ($ip) {
-            $sql        .= " AND ip_address LIKE CONCAT('%', :ip, '%')";
+            $sql .= " AND ip_address LIKE CONCAT('%', :ip, '%')";
             $args['ip'] = $ip;
         }
         if ($username) {
-            $sql          .= " AND user_name LIKE CONCAT('%', :user, '%')";
+            $sql .= " AND user_name LIKE CONCAT('%', :user, '%')";
             $args['user'] = $username;
         }
         if ($gedc) {
-            $sql          .= " AND gedcom_name = :gedc";
+            $sql .= " AND gedcom_name = :gedc";
             $args['gedc'] = $gedc;
         }
 
@@ -437,31 +437,31 @@ class AdminSiteController extends AbstractBaseController
 
         $args = [];
         if ($from) {
-            $sql          .= " AND log_time >= :from";
+            $sql .= " AND log_time >= :from";
             $args['from'] = $from;
         }
         if ($to) {
-            $sql        .= " AND log_time < TIMESTAMPADD(DAY, 1 , :to)"; // before end of the day
+            $sql .= " AND log_time < TIMESTAMPADD(DAY, 1 , :to)"; // before end of the day
             $args['to'] = $to;
         }
         if ($type) {
-            $sql          .= " AND log_type = :type";
+            $sql .= " AND log_type = :type";
             $args['type'] = $type;
         }
         if ($text) {
-            $sql          .= " AND log_message LIKE CONCAT('%', :text, '%')";
+            $sql .= " AND log_message LIKE CONCAT('%', :text, '%')";
             $args['text'] = $text;
         }
         if ($ip) {
-            $sql        .= " AND ip_address LIKE CONCAT('%', :ip, '%')";
+            $sql .= " AND ip_address LIKE CONCAT('%', :ip, '%')";
             $args['ip'] = $ip;
         }
         if ($username) {
-            $sql          .= " AND user_name LIKE CONCAT('%', :user, '%')";
+            $sql .= " AND user_name LIKE CONCAT('%', :user, '%')";
             $args['user'] = $username;
         }
         if ($gedc) {
-            $sql          .= " AND gedcom_name = :gedc";
+            $sql .= " AND gedcom_name = :gedc";
             $args['gedc'] = $gedc;
         }
 

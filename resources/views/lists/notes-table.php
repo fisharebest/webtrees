@@ -14,7 +14,7 @@ $count_families    = Database::prepare(
 $count_media       = Database::prepare(
 	"SELECT l_to, COUNT(*) FROM `##media` JOIN `##link` ON l_from = m_id AND l_file = m_file AND l_type = 'NOTE' AND l_file = :tree_id GROUP BY l_to"
 )->execute(['tree_id' => $tree->getTreeId()])->fetchAssoc();
-$count_sources       = Database::prepare(
+$count_sources = Database::prepare(
 	"SELECT l_to, COUNT(*) FROM `##sources` JOIN `##link` ON l_from = s_id AND l_file = s_file AND l_type = 'NOTE' AND l_file = :tree_id GROUP BY l_to"
 )->execute(['tree_id' => $tree->getTreeId()])->fetchAssoc();
 ?>

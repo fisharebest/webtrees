@@ -118,7 +118,7 @@ class RegisterController extends AbstractBaseController
             ->setPreference('sessiontime', '0');
 
         // Create a dummy user, so we can send messages from the tree.
-        $sender = new User((object)[
+        $sender = new User((object) [
             'user_id'   => null,
             'user_name' => '',
             'real_name' => $tree->getTitle(),
@@ -137,7 +137,7 @@ class RegisterController extends AbstractBaseController
         );
 
         // Tell the genealogy contact about the registration.
-        $webmaster = User::find((int)$tree->getPreference('WEBMASTER_USER_ID'));
+        $webmaster = User::find((int) $tree->getPreference('WEBMASTER_USER_ID'));
 
         if ($webmaster !== null) {
             I18N::init($webmaster->getPreference('language'));

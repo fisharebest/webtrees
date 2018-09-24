@@ -77,7 +77,7 @@
 <br>
 <br>
 
-<table class="table table-bordered table-sm" id="media-table-<?= e($table_id) ?>" data-ajax="<?= e(route('admin-media-data', ['files' => $files, 'media_folder' => $media_folder, 'media_path' => $media_path, 'subfolders' => $subfolders ])) ?>">
+<table class="table table-bordered table-sm" id="media-table-<?= e($table_id) ?>" data-ajax="<?= e(route('admin-media-data', ['files' => $files, 'media_folder' => $media_folder, 'media_path' => $media_path, 'subfolders' => $subfolders])) ?>">
 	<thead>
 		<tr>
 			<th><?= I18N::translate('Media file') ?></th>

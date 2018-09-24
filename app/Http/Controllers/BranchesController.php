@@ -43,8 +43,8 @@ class BranchesController extends AbstractBaseController
     public function page(Request $request): Response
     {
         $surname     = $request->get('surname', '');
-        $soundex_std = (bool)$request->get('soundex_std');
-        $soundex_dm  = (bool)$request->get('soundex_dm');
+        $soundex_std = (bool) $request->get('soundex_std');
+        $soundex_dm  = (bool) $request->get('soundex_dm');
 
         if ($surname !== '') {
             /* I18N: %s is a surname */
@@ -71,8 +71,8 @@ class BranchesController extends AbstractBaseController
      */
     public function list(Request $request, Tree $tree, User $user): Response
     {
-        $soundex_dm  = (bool)$request->get('soundex_dm');
-        $soundex_std = (bool)$request->get('soundex_std');
+        $soundex_dm  = (bool) $request->get('soundex_dm');
+        $soundex_std = (bool) $request->get('soundex_std');
         $surname     = $request->get('surname', '');
 
         // Highlight direct-line ancestors of this individual.
@@ -160,7 +160,7 @@ class BranchesController extends AbstractBaseController
             $sdx = Soundex::russell($surname);
             if ($sdx !== '') {
                 foreach (explode(':', $sdx) as $value) {
-                    $sql    .= " OR n_soundex_surn_std LIKE CONCAT('%', ?, '%')";
+                    $sql .= " OR n_soundex_surn_std LIKE CONCAT('%', ?, '%')";
                     $args[] = $value;
                 }
             }
@@ -170,7 +170,7 @@ class BranchesController extends AbstractBaseController
             $sdx = Soundex::daitchMokotoff($surname);
             if ($sdx !== '') {
                 foreach (explode(':', $sdx) as $value) {
-                    $sql    .= " OR n_soundex_surn_dm LIKE CONCAT('%', ?, '%')";
+                    $sql .= " OR n_soundex_surn_dm LIKE CONCAT('%', ?, '%')";
                     $args[] = $value;
                 }
             }
@@ -340,7 +340,7 @@ class BranchesController extends AbstractBaseController
      */
     private static function sosaGeneration($sosa): string
     {
-        $generation = (int)log($sosa, 2) + 1;
+        $generation = (int) log($sosa, 2) + 1;
 
         return '<sup title="' . I18N::translate('Generation') . '">' . $generation . '</sup>';
     }

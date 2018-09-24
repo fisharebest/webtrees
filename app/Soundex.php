@@ -3616,7 +3616,7 @@ class Soundex
             $soundTableEntry = self::$dmsounds[$thisEntry];
             $workingResult   = $partialResult;
             $partialResult   = [];
-            $currPos         += strlen($thisEntry);
+            $currPos += strlen($thisEntry);
 
             // Not at beginning of input string
             if ($state != 1) {

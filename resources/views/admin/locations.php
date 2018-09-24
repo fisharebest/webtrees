@@ -32,12 +32,10 @@
                 </a>
             </th>
 			<td>
-				<?= ($place->pl_lati === null) ? FontAwesome::decorativeIcon('warning') :
-                    strtr($place->pl_lati, ['N' => '', 'S' => '-', ',' => '.']) ?>
+				<?= ($place->pl_lati === null) ? FontAwesome::decorativeIcon('warning') : strtr($place->pl_lati, ['N' => '', 'S' => '-', ',' => '.']) ?>
 			</td>
 			<td>
-				<?= ($place->pl_long === null) ? FontAwesome::decorativeIcon('warning') :
-                    strtr($place->pl_long, ['E' => '', 'W' => '-', ',' => '.']) ?>
+				<?= ($place->pl_long === null) ? FontAwesome::decorativeIcon('warning') : strtr($place->pl_long, ['E' => '', 'W' => '-', ',' => '.']) ?>
 			</td>
 			<td>
 				<?= $place->pl_long === null ? FontAwesome::decorativeIcon('warning') : $place->pl_zoom ?>
