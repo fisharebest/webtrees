@@ -147,7 +147,7 @@ try {
         $content = view('errors/database-error', ['error' => $ex->getMessage()]);
     }
     $html     = view('layouts/error', ['content' => $content]);
-    $response = new Response($html, 503);
+    $response = new Response($html, Response::HTTP_SERVICE_UNAVAILABLE);
     $response->prepare($request)->send();
     return;
 } catch (Throwable $ex) {
@@ -157,7 +157,7 @@ try {
     I18N::init();
     $content  = view('errors/database-connection', ['error' => $ex->getMessage()]);
     $html     = view('layouts/error', ['content' => $content]);
-    $response = new Response($html, 503);
+    $response = new Response($html, Response::HTTP_SERVICE_UNAVAILABLE);
     $response->prepare($request)->send();
     return;
 }

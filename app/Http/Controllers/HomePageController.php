@@ -243,7 +243,7 @@ class HomePageController extends AbstractBaseController
         $module = $this->getBlockModule($tree, $block_id);
 
         if ($block === null || $module === null) {
-            return new Response('', 404);
+            return new Response('', Response::HTTP_NOT_FOUND);
         }
 
         // @TODO - ModuleBlockInterface::getBlock() currently relies on these globals
@@ -408,7 +408,7 @@ class HomePageController extends AbstractBaseController
         $module = $this->getBlockModule($tree, $block_id);
 
         if ($block === null || $module === null) {
-            return new Response('Block not found', 404);
+            return new Response('Block not found', Response::HTTP_NOT_FOUND);
         }
 
         // @TODO - ModuleBlockInterface::getBlock() relies on these globals :-(
