@@ -275,10 +275,10 @@ class FunctionsCharts
      */
     public static function printFamilyChildren(
         Family $family,
-        string $childid = '',
-        int $sosa = 0,
-        string $label = '',
-        bool $show_cousins = false
+        string $childid      = '',
+        int    $sosa         = 0,
+        string $label        = '',
+        bool   $show_cousins = false
     ) {
         $bheight = Theme::theme()->parameter('chart-box-y');
 
@@ -432,11 +432,11 @@ class FunctionsCharts
     public static function printSosaFamily(
         Family $family,
         string $childid,
-        int $sosa,
-        string $label = '',
-        string $parid = '',
-        string $gparid = '',
-        bool $show_cousins = false
+        int    $sosa,
+        string $label        = '',
+        string $parid        = '',
+        string $gparid       = '',
+        bool   $show_cousins = false
     ) {
         echo '<hr>';
         echo '<p class="family-break">';
