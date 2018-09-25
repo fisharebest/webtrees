@@ -1,6 +1,9 @@
 CHANGE LOG
 ==========
 
+## 1.12.0 (2018-09-25)
+ - Add Sundanese (su)
+
 ## 1.11.0 (2018-09-05)
  - Update to CLDR-33.1 and latest versions of ISO-15924 and iana-subtag-registry
  - Adopt PSR-12 code style

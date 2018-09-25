@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "79beb7814fd0317ea69b61ea6e24cacf",
+    "content-hash": "e12573824fd02b27b0e52e53af64f729",
     "packages": [
         {
             "name": "filp/whoops",
@@ -178,16 +178,16 @@
         },
         {
             "name": "fisharebest/localization",
-            "version": "1.11.0",
+            "version": "1.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fisharebest/localization.git",
-                "reference": "b3c3313b3508ec00ae40eb29fae00267fada7f22"
+                "reference": "df4684a211d5da48b1faba616a8db8953f9cbd1f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fisharebest/localization/zipball/b3c3313b3508ec00ae40eb29fae00267fada7f22",
-                "reference": "b3c3313b3508ec00ae40eb29fae00267fada7f22",
+                "url": "https://api.github.com/repos/fisharebest/localization/zipball/df4684a211d5da48b1faba616a8db8953f9cbd1f",
+                "reference": "df4684a211d5da48b1faba616a8db8953f9cbd1f",
                 "shasum": ""
             },
             "require": {
@@ -228,7 +228,7 @@
                 "translate",
                 "translation"
             ],
-            "time": "2018-09-05T20:04:04+00:00"
+            "time": "2018-09-25T10:40:27+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -4042,15 +4042,18 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
+        "ext-curl": "*",
         "ext-gd": "*",
         "ext-iconv": "*",
+        "ext-intl": "*",
         "ext-json": "*",
         "ext-pcre": "*",
         "ext-pdo": "*",
         "ext-pdo_mysql": "*",
         "ext-session": "*",
         "ext-simplexml": "*",
-        "ext-xml": "*"
+        "ext-xml": "*",
+        "ext-zip": "*"
     },
     "platform-dev": [],
     "platform-overrides": {

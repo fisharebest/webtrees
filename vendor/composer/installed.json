@@ -177,17 +177,17 @@
     },
     {
         "name": "fisharebest/localization",
-        "version": "1.11.0",
-        "version_normalized": "1.11.0.0",
+        "version": "1.12.0",
+        "version_normalized": "1.12.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/fisharebest/localization.git",
-            "reference": "b3c3313b3508ec00ae40eb29fae00267fada7f22"
+            "reference": "df4684a211d5da48b1faba616a8db8953f9cbd1f"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/fisharebest/localization/zipball/b3c3313b3508ec00ae40eb29fae00267fada7f22",
-            "reference": "b3c3313b3508ec00ae40eb29fae00267fada7f22",
+            "url": "https://api.github.com/repos/fisharebest/localization/zipball/df4684a211d5da48b1faba616a8db8953f9cbd1f",
+            "reference": "df4684a211d5da48b1faba616a8db8953f9cbd1f",
             "shasum": ""
         },
         "require": {
@@ -197,7 +197,7 @@
             "phpunit/phpunit": "4.*|5.*",
             "satooshi/php-coveralls": "*"
         },
-        "time": "2018-09-05T20:04:04+00:00",
+        "time": "2018-09-25T10:40:27+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {

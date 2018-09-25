@@ -39,7 +39,7 @@
         "filp/whoops": "~2.1",
         "fisharebest/algorithm": "~1.3",
         "fisharebest/ext-calendar": "~2.5",
-        "fisharebest/localization": "~1.10",
+        "fisharebest/localization": "~1.12",
         "guzzlehttp/guzzle": "~6.0",
         "league/commonmark": "~0.17",
         "league/flysystem": "~1.0",
