@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2018-01-14 10:58+0000\n"
-"Last-Translator: Michel <gustine@laposte.net>\n"
+"PO-Revision-Date: 2018-09-25 14:48+0000\n"
+"Last-Translator: Andreas Rauhut <andreas@rauhut.eu>\n"
 "Language-Team: French <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -14082,7 +14082,7 @@ msgstr "Il n’y a pas de compte avec le nom d’utilisateur ou le courriel «&n
 
 #: addmedia.php:185 admin_media_upload.php:145
 msgid "There was an error uploading your file."
-msgstr "Erreur lors de l’envoi de votre fichier GEDCOM sur le serveur."
+msgstr "Erreur lors de l’envoi de votre fichier sur le serveur."
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:98
