@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2017-02-11 11:13+0000\n"
+"POT-Creation-Date: 2018-09-25 11:42+0100\n"
 "PO-Revision-Date: 2018-05-10 16:10+0000\n"
 "Last-Translator: Josef Prause <josef.prause@gmail.com>\n"
 "Language-Team: Czech <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/cs/>\n"
@@ -210,31 +210,31 @@ msgid "%s KB"
 msgstr "%s KB"
 
 #. I18N: %s is a woman's name
-#: app/Module/ClippingsCartModule.php:203
+#: app/Module/ClippingsCartModule.php:216
 #, php-format
 msgid "%s and her ancestors"
 msgstr "%s a její předkové"
 
 #. I18N: %s is a man's name
-#: app/Module/ClippingsCartModule.php:206
+#: app/Module/ClippingsCartModule.php:219
 #, php-format
 msgid "%s and his ancestors"
 msgstr "%s a jeho předci"
 
 #. I18N: %s is the name of a source
-#: app/Module/ClippingsCartModule.php:292
+#: app/Module/ClippingsCartModule.php:305
 #, php-format
 msgid "%s and the individuals that reference it."
 msgstr "%s a osoby, které se na ni odkazují."
 
 #. I18N: %s is a family (husband + wife)
-#: app/Module/ClippingsCartModule.php:121
+#: app/Module/ClippingsCartModule.php:134
 #, php-format
 msgid "%s and their children"
 msgstr "%s a jejich děti"
 
 #. I18N: %s is a family (husband + wife)
-#: app/Module/ClippingsCartModule.php:128
+#: app/Module/ClippingsCartModule.php:141
 #, php-format
 msgid "%s and their descendants"
 msgstr "%s a jejich potomci"
@@ -280,7 +280,7 @@ msgstr[0] "%s rodina byla aktulizována."
 msgstr[1] "%s rodiny byly aktualizovány."
 msgstr[2] "%s rodin bylo aktualizováno."
 
-#: admin.php:861
+#: admin.php:853
 #, php-format
 msgid "%s family tree"
 msgid_plural "%s family trees"
@@ -304,7 +304,7 @@ msgstr[0] "před hodinou"
 msgstr[1] "před %s hodinami"
 msgstr[2] "před %s hodinami"
 
-#: admin_trees_unconnected.php:83 app/Controller/LifespanController.php:260
+#: admin_trees_unconnected.php:83 app/Controller/LifespanController.php:262
 #, php-format
 msgid "%s individual"
 msgid_plural "%s individuals"
@@ -328,7 +328,7 @@ msgstr[0] "%s osoba je soukromá."
 msgstr[1] "%s osoby jsou soukromé."
 msgstr[2] "%s osob je soukromých."
 
-#: app/Controller/LifespanController.php:253
+#: app/Controller/LifespanController.php:255
 #, php-format
 msgid "%s individual with events between %s and %s"
 msgid_plural "%s individuals with events between %s and %s"
@@ -336,7 +336,7 @@ msgstr[0] "%s osoba s událostmi mezi roky %s a %s"
 msgstr[1] "%s osoby s událostmi mezi roky %s a %s"
 msgstr[2] "%s osob s událostmi mezi roky %s a %s"
 
-#: app/Controller/LifespanController.php:246
+#: app/Controller/LifespanController.php:248
 #, php-format
 msgid "%s individual with events in %s"
 msgid_plural "%s individuals with events in %s"
@@ -344,7 +344,7 @@ msgstr[0] "%s osoba s událostmi v roce %s"
 msgstr[1] "%s osoby s událostmi v roce %s"
 msgstr[2] "%s osob s událostmi v roce %s"
 
-#: app/Controller/LifespanController.php:239
+#: app/Controller/LifespanController.php:241
 #, php-format
 msgid "%s individual with events in %s between %s and %s"
 msgid_plural "%s individuals with events in %s between %s and %s"
@@ -535,49 +535,49 @@ msgid "%s+"
 msgstr "%s 1+"
 
 #. I18N: %s is a woman's name
-#: app/Module/ClippingsCartModule.php:222
+#: app/Module/ClippingsCartModule.php:235
 #, php-format
 msgid "%s, her ancestors and their families"
 msgstr "%s, její předci a jejich rodiny"
 
 #. I18N: %s is a woman's name
-#: app/Module/ClippingsCartModule.php:171
+#: app/Module/ClippingsCartModule.php:184
 #, php-format
 msgid "%s, her parents and siblings"
 msgstr "%s, její rodiče a sourozenci"
 
 #. I18N: %s is a woman's name
-#: app/Module/ClippingsCartModule.php:187
+#: app/Module/ClippingsCartModule.php:200
 #, php-format
 msgid "%s, her spouses and children"
 msgstr "%s, její manželé a děti"
 
 #. I18N: %s is a woman's name
-#: app/Module/ClippingsCartModule.php:241
+#: app/Module/ClippingsCartModule.php:254
 #, php-format
 msgid "%s, her spouses and descendants"
 msgstr "%s, její manželé a potomci"
 
 #. I18N: %s is a man's name
-#: app/Module/ClippingsCartModule.php:225
+#: app/Module/ClippingsCartModule.php:238
 #, php-format
 msgid "%s, his ancestors and their families"
 msgstr "%s, jeho předci a jejich rodiny"
 
 #. I18N: %s is a man's name
-#: app/Module/ClippingsCartModule.php:174
+#: app/Module/ClippingsCartModule.php:187
 #, php-format
 msgid "%s, his parents and siblings"
 msgstr "%s, jeho rodiče a sourozenci"
 
 #. I18N: %s is a man's name
-#: app/Module/ClippingsCartModule.php:190
+#: app/Module/ClippingsCartModule.php:203
 #, php-format
 msgid "%s, his spouses and children"
 msgstr "%s, jeho manželky a děti"
 
 #. I18N: %s is a man's name
-#: app/Module/ClippingsCartModule.php:244
+#: app/Module/ClippingsCartModule.php:257
 #, php-format
 msgid "%s, his spouses and descendants"
 msgstr "%s, jeho manželky a potomci"
@@ -795,7 +795,7 @@ msgstr "Diagram potomků osoby."
 msgid "A chart of individuals’ lifespans."
 msgstr "Diagram doby života osoby."
 
-#: edit_interface.php:1011
+#: edit_interface.php:991
 msgid "A child may have more than one set of parents. The relationship between the child and the parents can be biological, legal, or based on local culture and tradition. If no pedigree is specified, then a biological relationship will be assumed."
 msgstr "Dítě může mít více párů rodičů. Vztah mezi dítětem a rodiči může být biologický, právní nebo založen na místních zvyklostech a tradicích. Pokud není původ zaznamenán, pak se odvozuje biologický vztah."
 
@@ -906,7 +906,7 @@ msgstr "Bylo zažádáno o nové heslo pro vaše uživatelské jméno."
 msgid "A new user (%1$s) has requested an account (%2$s) and verified an email address (%3$s)."
 msgstr "Nový uživatel (%1$s) požádal o vytvoření účtu (%2$s) a potvrdil svou emailovou adresu (%3$s)."
 
-#: admin.php:632 admin_site_upgrade.php:79 login.php:116
+#: admin.php:624 admin_site_upgrade.php:79 login.php:116
 msgid "A new version of webtrees is available."
 msgstr "Je dostupná nová verze webtrees."
 
@@ -1284,12 +1284,12 @@ msgctxt "NOMINATIVE"
 msgid "Adar II"
 msgstr "Adar II"
 
-#: edit_interface.php:2033 index_edit.php:329 index_edit.php:346
+#: edit_interface.php:2013 index_edit.php:329 index_edit.php:346
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:170
 msgid "Add"
 msgstr "Přidat"
 
-#: app/Module/ClippingsCartModule.php:724
+#: app/Module/ClippingsCartModule.php:737
 #, php-format
 msgid "Add %s to the clippings cart"
 msgstr "Přidat %s do schránky"
@@ -1302,11 +1302,11 @@ msgstr "Přidat prázdný řádek"
 msgid "Add a brother or sister"
 msgstr "Přidat bratra nebo sestru"
 
-#: edit_interface.php:516
+#: edit_interface.php:496
 msgid "Add a child"
 msgstr "Přidat dítě"
 
-#: app/Module/RelativesTabModule.php:398 edit_interface.php:595
+#: app/Module/RelativesTabModule.php:398 edit_interface.php:575
 msgid "Add a child to create a one-parent family"
 msgstr "Přidat dítě a vytvořit tak rodinu s jedním rodičem"
 
@@ -1318,7 +1318,7 @@ msgstr "Přidat dítě k této rodině"
 msgid "Add a fact"
 msgstr "Přidat údaj"
 
-#: app/Module/RelativesTabModule.php:326 edit_interface.php:675 family.php:92
+#: app/Module/RelativesTabModule.php:326 edit_interface.php:655 family.php:92
 msgid "Add a father"
 msgstr "Přidat otce"
 
@@ -1330,8 +1330,8 @@ msgstr "Přidat oblíbeného"
 msgid "Add a geographic location"
 msgstr "Přidat zeměpisné místo"
 
-#: app/Module/RelativesTabModule.php:387 edit_interface.php:810
-#: edit_interface.php:900
+#: app/Module/RelativesTabModule.php:387 edit_interface.php:790
+#: edit_interface.php:880
 msgid "Add a husband"
 msgstr "Přidat manžela"
 
@@ -1339,8 +1339,8 @@ msgstr "Přidat manžela"
 msgid "Add a husband to this family"
 msgstr "Přidat manžela k této rodině"
 
-#: app/Module/RelativesTabModule.php:392 edit_interface.php:1084
-#: edit_interface.php:1156
+#: app/Module/RelativesTabModule.php:392 edit_interface.php:1064
+#: edit_interface.php:1136
 msgid "Add a husband using an existing individual"
 msgstr "Přidat manžela použitím existující osoby"
 
@@ -1354,11 +1354,11 @@ msgstr "Přidat do deníku záznam"
 msgid "Add a media object"
 msgstr "Přidat objekt médií"
 
-#: app/Module/RelativesTabModule.php:329 edit_interface.php:672 family.php:96
+#: app/Module/RelativesTabModule.php:329 edit_interface.php:652 family.php:96
 msgid "Add a mother"
 msgstr "Přidat matku"
 
-#: app/Controller/IndividualController.php:276 edit_interface.php:1655
+#: app/Controller/IndividualController.php:276 edit_interface.php:1635
 msgid "Add a name"
 msgstr "Přidat jméno"
 
@@ -1398,7 +1398,7 @@ msgstr "Přidat syna nebo dceru"
 msgid "Add a source citation"
 msgstr "Přidat pramen citací"
 
-#: edit_interface.php:837
+#: edit_interface.php:817
 msgid "Add a spouse"
 msgstr "Přidat partnera"
 
@@ -1412,8 +1412,8 @@ msgstr "Přidat příběh"
 msgid "Add a user"
 msgstr "Přidat uživatele"
 
-#: app/Module/RelativesTabModule.php:375 edit_interface.php:807
-#: edit_interface.php:897
+#: app/Module/RelativesTabModule.php:375 edit_interface.php:787
+#: edit_interface.php:877
 msgid "Add a wife"
 msgstr "Přidat manželku"
 
@@ -1421,8 +1421,8 @@ msgstr "Přidat manželku"
 msgid "Add a wife to this family"
 msgstr "Přidat manželku k této rodině"
 
-#: app/Module/RelativesTabModule.php:380 edit_interface.php:1087
-#: edit_interface.php:1158
+#: app/Module/RelativesTabModule.php:380 edit_interface.php:1067
+#: edit_interface.php:1138
 msgid "Add a wife using an existing individual"
 msgstr "Přidat manželku použitím existující osoby"
 
@@ -1478,8 +1478,8 @@ msgid "Add spaces where long lines were wrapped"
 msgstr "Přidat mezery v místech zalomení dlouhých řádků"
 
 #. I18N: A media path (e.g. C:\aaa\bbb\ccc\) in a GEDCOM file
-#: admin_trees_download.php:160 app/Module/ClippingsCartModule.php:422
-#: app/Module/ClippingsCartModule.php:785
+#: admin_trees_download.php:160 app/Module/ClippingsCartModule.php:435
+#: app/Module/ClippingsCartModule.php:798
 msgid "Add the GEDCOM media path to filenames"
 msgstr "Přidat GEDCOM media cestu ke jménům souborů"
 
@@ -1493,12 +1493,12 @@ msgstr "Přidat do hlavičkového tagu TITLE (nadpis)"
 msgid "Add to favorites"
 msgstr "Přidat do oblíbených"
 
-#: app/Module/ClippingsCartModule.php:106
-#: app/Module/ClippingsCartModule.php:151
-#: app/Module/ClippingsCartModule.php:274
-#: app/Module/ClippingsCartModule.php:320
-#: app/Module/ClippingsCartModule.php:446
-#: app/Module/ClippingsCartModule.php:562
+#: app/Module/ClippingsCartModule.php:119
+#: app/Module/ClippingsCartModule.php:164
+#: app/Module/ClippingsCartModule.php:287
+#: app/Module/ClippingsCartModule.php:333
+#: app/Module/ClippingsCartModule.php:459
+#: app/Module/ClippingsCartModule.php:575
 msgid "Add to the clippings cart"
 msgstr "Přidat do schránky výstřižků"
 
@@ -1555,7 +1555,7 @@ msgstr "Správcovský účet"
 msgid "Administrator comments on user"
 msgstr "Správcův komentář k uživateli"
 
-#: admin.php:674
+#: admin.php:666
 msgid "Administrators"
 msgstr "Správci"
 
@@ -2096,10 +2096,10 @@ msgstr "Apia, Samoa"
 msgid "Apply automatic corrections to your genealogy data."
 msgstr "Použít automatické opravy na vaše rodokmenová data."
 
-#: admin_trees_download.php:172 app/Module/ClippingsCartModule.php:383
-#: app/Module/ClippingsCartModule.php:402
-#: app/Module/ClippingsCartModule.php:764
-#: app/Module/ClippingsCartModule.php:773
+#: admin_trees_download.php:172 app/Module/ClippingsCartModule.php:396
+#: app/Module/ClippingsCartModule.php:415
+#: app/Module/ClippingsCartModule.php:777
+#: app/Module/ClippingsCartModule.php:786
 msgid "Apply privacy settings"
 msgstr "Uplatnit nastavení soukromí"
 
@@ -2126,27 +2126,27 @@ msgstr "Schváleno"
 msgid "Approved by administrator"
 msgstr "Schváleno správcem"
 
-#: app/Date/CalendarDate.php:314
+#: app/Date/CalendarDate.php:324
 msgctxt "Abbreviation for April"
 msgid "Apr"
 msgstr "dub"
 
-#: app/Date/CalendarDate.php:214
+#: app/Date/CalendarDate.php:224
 msgctxt "GENITIVE"
 msgid "April"
 msgstr "dubna"
 
-#: app/Date/CalendarDate.php:282
+#: app/Date/CalendarDate.php:292
 msgctxt "INSTRUMENTAL"
 msgid "April"
 msgstr "dubnem"
 
-#: app/Date/CalendarDate.php:248
+#: app/Date/CalendarDate.php:258
 msgctxt "LOCATIVE"
 msgid "April"
 msgstr "dubnu"
 
-#: app/Date/CalendarDate.php:180 app/Functions/FunctionsPrint.php:648
+#: app/Date/CalendarDate.php:190 app/Functions/FunctionsPrint.php:648
 msgctxt "NOMINATIVE"
 msgid "April"
 msgstr "duben"
@@ -2250,7 +2250,7 @@ msgstr "Asie"
 msgid "Associate"
 msgstr "Společník"
 
-#: edit_interface.php:1241 help_text.php:292
+#: edit_interface.php:1221 help_text.php:292
 msgid "Associate events with this source"
 msgstr "Přiřadit události k tomuto prameni"
 
@@ -2306,27 +2306,27 @@ msgstr "Obsluhující"
 msgid "Audio"
 msgstr "Zvuk"
 
-#: app/Date/CalendarDate.php:318
+#: app/Date/CalendarDate.php:328
 msgctxt "Abbreviation for August"
 msgid "Aug"
 msgstr "srp"
 
-#: app/Date/CalendarDate.php:218
+#: app/Date/CalendarDate.php:228
 msgctxt "GENITIVE"
 msgid "August"
 msgstr "srpna"
 
-#: app/Date/CalendarDate.php:286
+#: app/Date/CalendarDate.php:296
 msgctxt "INSTRUMENTAL"
 msgid "August"
 msgstr "srpnem"
 
-#: app/Date/CalendarDate.php:252
+#: app/Date/CalendarDate.php:262
 msgctxt "LOCATIVE"
 msgid "August"
 msgstr "srpnu"
 
-#: app/Date/CalendarDate.php:184 app/Functions/FunctionsPrint.php:652
+#: app/Date/CalendarDate.php:194 app/Functions/FunctionsPrint.php:652
 msgctxt "NOMINATIVE"
 msgid "August"
 msgstr "srpen"
@@ -3480,12 +3480,12 @@ msgstr "Certifikát"
 msgid "Chad"
 msgstr "Čad"
 
-#: edit_interface.php:1953 edit_interface.php:1989 edit_interface.php:2016
+#: edit_interface.php:1933 edit_interface.php:1969 edit_interface.php:1996
 msgid "Change"
 msgstr "Změnit"
 
-#: app/Controller/FamilyController.php:77 edit_interface.php:1906
-#: edit_interface.php:2069
+#: app/Controller/FamilyController.php:77 edit_interface.php:1886
+#: edit_interface.php:2049
 msgid "Change family members"
 msgstr "Změnit členy rodiny"
 
@@ -3841,7 +3841,7 @@ msgid "Cleared but not yet completed"
 msgstr "Vyjasněno, ale ještě nedokončeno"
 
 #. I18N: Name of a module
-#: app/Module/ClippingsCartModule.php:37
+#: app/Module/ClippingsCartModule.php:38
 msgid "Clippings cart"
 msgstr "Schránka výstřižků"
 
@@ -4014,8 +4014,8 @@ msgstr "Pokračování"
 msgid "Control panel"
 msgstr "Panel správy"
 
-#: admin_trees_download.php:150 app/Module/ClippingsCartModule.php:413
-#: app/Module/ClippingsCartModule.php:781
+#: admin_trees_download.php:150 app/Module/ClippingsCartModule.php:426
+#: app/Module/ClippingsCartModule.php:794
 msgid "Convert from UTF-8 to ISO-8859-1"
 msgstr "Chcete změnit kódování v tomto GEDCOM souboru z UTF-8 na ISO-8859-1?"
 
@@ -4128,13 +4128,13 @@ msgstr "Vytvořit nový rodokmen"
 msgid "Create a media object"
 msgstr "Vytvořit nový mediální objekt"
 
-#: app/Functions/FunctionsEdit.php:428 edit_interface.php:1512
-#: edit_interface.php:1575
+#: app/Functions/FunctionsEdit.php:428 edit_interface.php:1492
+#: edit_interface.php:1555
 msgid "Create a repository"
 msgstr "Vytvořit repozitář"
 
-#: app/Functions/FunctionsEdit.php:439 edit_interface.php:1348
-#: edit_interface.php:1384
+#: app/Functions/FunctionsEdit.php:439 edit_interface.php:1328
+#: edit_interface.php:1364
 msgid "Create a shared note"
 msgstr "Vytvořit novou sdílenou poznámku"
 
@@ -4144,8 +4144,8 @@ msgstr "Vytvořit novou sdílenou poznámku"
 msgid "Create a shared note using the census assistant"
 msgstr "Vytvořit novou sdílenou poznámku použitím Asistenta"
 
-#: app/Functions/FunctionsEdit.php:461 edit_interface.php:1196
-#: edit_interface.php:1279
+#: app/Functions/FunctionsEdit.php:461 edit_interface.php:1176
+#: edit_interface.php:1259
 msgid "Create a source"
 msgstr "Vytvořit nový pramen"
 
@@ -4153,7 +4153,7 @@ msgstr "Vytvořit nový pramen"
 msgid "Create a website access rule"
 msgstr "Vytvořit pravidla přístupu k webové stránce"
 
-#: edit_interface.php:750
+#: edit_interface.php:730
 msgid "Create an individual"
 msgstr "Vytvořit novou osobu"
 
@@ -4891,7 +4891,7 @@ msgstr "Úmrtí"
 msgid "Deaths by century"
 msgstr "Úmrtí podle století"
 
-#: app/Date/CalendarDate.php:322
+#: app/Date/CalendarDate.php:332
 msgctxt "Abbreviation for December"
 msgid "Dec"
 msgstr "pro"
@@ -4909,22 +4909,22 @@ msgstr "Desetiletí úmrtí"
 msgid "Decade of marriage"
 msgstr "Desetiletí manželství"
 
-#: app/Date/CalendarDate.php:222
+#: app/Date/CalendarDate.php:232
 msgctxt "GENITIVE"
 msgid "December"
 msgstr "prosince"
 
-#: app/Date/CalendarDate.php:290
+#: app/Date/CalendarDate.php:300
 msgctxt "INSTRUMENTAL"
 msgid "December"
 msgstr "prosincem"
 
-#: app/Date/CalendarDate.php:256
+#: app/Date/CalendarDate.php:266
 msgctxt "LOCATIVE"
 msgid "December"
 msgstr "prosinci"
 
-#: app/Date/CalendarDate.php:188 app/Functions/FunctionsPrint.php:656
+#: app/Date/CalendarDate.php:198 app/Functions/FunctionsPrint.php:656
 msgctxt "NOMINATIVE"
 msgid "December"
 msgstr "prosinec"
@@ -5332,9 +5332,9 @@ msgstr "Dominika"
 msgid "Dominican Republic"
 msgstr "Dominikánská republika"
 
-#: app/Module/ClippingsCartModule.php:359
-#: app/Module/ClippingsCartModule.php:719
-#: app/Module/ClippingsCartModule.php:754
+#: app/Module/ClippingsCartModule.php:372
+#: app/Module/ClippingsCartModule.php:732
+#: app/Module/ClippingsCartModule.php:767
 msgid "Download"
 msgstr "Stáhnout"
 
@@ -5472,7 +5472,7 @@ msgid "Edit the media object"
 msgstr "Upravit objekt médií"
 
 #: app/Controller/IndividualController.php:168
-#: app/Functions/FunctionsEdit.php:699 edit_interface.php:1640
+#: app/Functions/FunctionsEdit.php:699 edit_interface.php:1620
 msgid "Edit the name"
 msgstr "Upravit jméno"
 
@@ -5487,7 +5487,7 @@ msgstr "Upravit poznámku"
 #: app/Controller/RepositoryController.php:63
 #: app/Controller/SourceController.php:60 edit_interface.php:51
 #: edit_interface.php:112 edit_interface.php:162 edit_interface.php:224
-#: edit_interface.php:319 edit_interface.php:2579 help_text.php:284
+#: edit_interface.php:319 edit_interface.php:2559 help_text.php:284
 msgid "Edit the raw GEDCOM"
 msgstr "Upravit přímo záznam GEDCOM"
 
@@ -5496,8 +5496,8 @@ msgstr "Upravit přímo záznam GEDCOM"
 msgid "Edit the repository"
 msgstr "Upravit repozitář"
 
-#: app/Functions/FunctionsEdit.php:450 edit_interface.php:1444
-#: edit_interface.php:1490
+#: app/Functions/FunctionsEdit.php:450 edit_interface.php:1424
+#: edit_interface.php:1470
 msgid "Edit the shared note"
 msgstr "Upravit sdílenou poznámku"
 
@@ -5635,8 +5635,8 @@ msgctxt "MALE"
 msgid "Employer"
 msgstr "Zaměstnavatel"
 
-#: app/Module/ClippingsCartModule.php:468
-#: app/Module/ClippingsCartModule.php:715
+#: app/Module/ClippingsCartModule.php:481
+#: app/Module/ClippingsCartModule.php:728
 msgid "Empty the clippings cart"
 msgstr "Vyprázdnit schránku"
 
@@ -5973,7 +5973,7 @@ msgid "Falkland Islands"
 msgstr "Falklandy"
 
 #. I18N: Name of a module
-#: admin.php:777 admin.php:817 admin_trees_duplicates.php:143 ancestry.php:87
+#: admin.php:769 admin.php:809 admin_trees_duplicates.php:143 ancestry.php:87
 #: app/Controller/SearchController.php:522
 #: app/Functions/FunctionsPrintLists.php:1043
 #: app/Functions/FunctionsPrintLists.php:1168
@@ -6000,7 +6000,7 @@ msgstr "Rodiny doplněné o prameny"
 #: app/Controller/PedigreeController.php:266
 #: app/Functions/FunctionsEdit.php:868 app/GedcomTag.php:444
 #: app/Module/FamilyGroupReportModule.php:29
-#: app/Module/FamilyNavigatorModule.php:263 edit_interface.php:997
+#: app/Module/FamilyNavigatorModule.php:263 edit_interface.php:977
 #: inverselink.php:107 modules_v3/family_group_report/report.xml:3
 #: modules_v3/family_group_report/report.xml:6
 #: modules_v3/family_group_report/report.xml:88
@@ -6045,7 +6045,7 @@ msgid "Family list"
 msgstr "Seznam rodin"
 
 #. I18N: Name of a module/sidebar
-#: app/Module/FamilyNavigatorModule.php:34 edit_interface.php:1417
+#: app/Module/FamilyNavigatorModule.php:34 edit_interface.php:1397
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:107
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:527
 msgid "Family navigator"
@@ -6062,7 +6062,7 @@ msgstr "Rodinné novinky a oznámení."
 msgid "Family of %s"
 msgstr "Rodina od %s"
 
-#: admin.php:774 admin_site_change.php:358 admin_site_change.php:392
+#: admin.php:766 admin_site_change.php:358 admin_site_change.php:392
 #: admin_site_logs.php:298 admin_site_logs.php:332 admin_trees_manage.php:380
 #: admin_users.php:575 app/Module/BatchUpdateModule.php:204
 #: app/Module/FrequentlyAskedQuestionsModule.php:217
@@ -6073,7 +6073,8 @@ msgstr "Rodina od %s"
 msgid "Family tree"
 msgstr "Rodokmen"
 
-#: app/Module/ClippingsCartModule.php:90 app/Module/ClippingsCartModule.php:479
+#: app/Module/ClippingsCartModule.php:103
+#: app/Module/ClippingsCartModule.php:492
 msgid "Family tree clippings cart"
 msgstr "Schránka výstřižků pro rodokmen"
 
@@ -6082,7 +6083,7 @@ msgid "Family tree title"
 msgstr "Název rodokmenu"
 
 #. I18N: Menu entry
-#: admin.php:762 admin.php:770 app/Theme/AbstractTheme.php:1398
+#: admin.php:754 admin.php:762 app/Theme/AbstractTheme.php:1398
 #: app/Theme/AdministrationTheme.php:114 search.php:127 search.php:284
 msgid "Family trees"
 msgstr "Rodokmeny"
@@ -6222,27 +6223,27 @@ msgstr "Oblíbené"
 msgid "Fax"
 msgstr "Fax"
 
-#: app/Date/CalendarDate.php:312
+#: app/Date/CalendarDate.php:322
 msgctxt "Abbreviation for February"
 msgid "Feb"
 msgstr "úno"
 
-#: app/Date/CalendarDate.php:212
+#: app/Date/CalendarDate.php:222
 msgctxt "GENITIVE"
 msgid "February"
 msgstr "února"
 
-#: app/Date/CalendarDate.php:280
+#: app/Date/CalendarDate.php:290
 msgctxt "INSTRUMENTAL"
 msgid "February"
 msgstr "únorem"
 
-#: app/Date/CalendarDate.php:246
+#: app/Date/CalendarDate.php:256
 msgctxt "LOCATIVE"
 msgid "February"
 msgstr "únoru"
 
-#: app/Date/CalendarDate.php:178 app/Functions/FunctionsPrint.php:646
+#: app/Date/CalendarDate.php:188 app/Functions/FunctionsPrint.php:646
 msgctxt "NOMINATIVE"
 msgid "February"
 msgstr "únor"
@@ -6299,7 +6300,7 @@ msgstr "Jména souborů nesmí obsahovat znak „%s“."
 msgid "Filenames are not allowed to have the extension “%s”."
 msgstr "Jména souborů nesměji mít příponu “%s”."
 
-#: admin.php:901
+#: admin.php:893
 msgid "Files have been found from a previous version of webtrees. Old files can sometimes be a security risk. You should delete them."
 msgstr "Byly nalezeny soubory s předchozí verze webtrees. Staré soubory mohou být bezpečnostním rizikem a měli byste je vymazat."
 
@@ -6594,11 +6595,11 @@ msgid "Fresno, California, United States"
 msgstr "Fresno, Kalifornie, USA"
 
 #. I18N: abbreviation for Friday
-#: app/Date/CalendarDate.php:370 app/Functions/FunctionsPrint.php:664
+#: app/Date/CalendarDate.php:380 app/Functions/FunctionsPrint.php:664
 msgid "Fri"
 msgstr "pá"
 
-#: app/Date/CalendarDate.php:345
+#: app/Date/CalendarDate.php:355
 msgid "Friday"
 msgstr "pátek"
 
@@ -7259,7 +7260,7 @@ msgid "Hungary"
 msgstr "Maďarsko"
 
 #. I18N: gedcom tag HUSB
-#: app/GedcomTag.php:516 edit_interface.php:1085
+#: app/GedcomTag.php:516 edit_interface.php:1065
 #: modules_v3/cemetery_report/report.xml:7
 #: modules_v3/death_report/report.xml:10
 #: modules_v3/family_group_report/report.xml:147
@@ -7495,8 +7496,8 @@ msgstr "Zahrnout místa, která plně vyhovují požadavkům"
 msgid "Include individuals with “%s” as a married name"
 msgstr "Odkrýt osoby s manželským příjmením „%s“"
 
-#: app/Module/ClippingsCartModule.php:373
-#: app/Module/ClippingsCartModule.php:758
+#: app/Module/ClippingsCartModule.php:386
+#: app/Module/ClippingsCartModule.php:771
 msgid "Include media (automatically zips files)"
 msgstr "Zahrnout média (automaticky se soubory zkomprimují do .zip)"
 
@@ -7576,7 +7577,7 @@ msgstr "Osobní záznam"
 msgid "Individual who lived the longest"
 msgstr "Člověk, který se dožil nejdéle"
 
-#: admin.php:776 admin.php:807 admin_trees_duplicates.php:142 ancestry.php:81
+#: admin.php:768 admin.php:799 admin_trees_duplicates.php:142 ancestry.php:81
 #: app/Controller/SearchController.php:519
 #: app/Functions/FunctionsPrintLists.php:1042
 #: app/Functions/FunctionsPrintLists.php:1167
@@ -7750,27 +7751,27 @@ msgstr "Jalali"
 msgid "Jamaica"
 msgstr "Jamajka"
 
-#: app/Date/CalendarDate.php:311
+#: app/Date/CalendarDate.php:321
 msgctxt "Abbreviation for January"
 msgid "Jan"
 msgstr "led"
 
-#: app/Date/CalendarDate.php:211
+#: app/Date/CalendarDate.php:221
 msgctxt "GENITIVE"
 msgid "January"
 msgstr "ledna"
 
-#: app/Date/CalendarDate.php:279
+#: app/Date/CalendarDate.php:289
 msgctxt "INSTRUMENTAL"
 msgid "January"
 msgstr "lednem"
 
-#: app/Date/CalendarDate.php:245
+#: app/Date/CalendarDate.php:255
 msgctxt "LOCATIVE"
 msgid "January"
 msgstr "lednu"
 
-#: app/Date/CalendarDate.php:177 app/Functions/FunctionsPrint.php:645
+#: app/Date/CalendarDate.php:187 app/Functions/FunctionsPrint.php:645
 msgctxt "NOMINATIVE"
 msgid "January"
 msgstr "leden"
@@ -7810,7 +7811,7 @@ msgstr "Jordan River, Utah, USA"
 msgid "Journal"
 msgstr "Deník"
 
-#: app/Date/CalendarDate.php:317
+#: app/Date/CalendarDate.php:327
 msgctxt "Abbreviation for July"
 msgid "Jul"
 msgstr "čvc"
@@ -7820,22 +7821,22 @@ msgstr "čvc"
 msgid "Julian"
 msgstr "Juliánský"
 
-#: app/Date/CalendarDate.php:217
+#: app/Date/CalendarDate.php:227
 msgctxt "GENITIVE"
 msgid "July"
 msgstr "července"
 
-#: app/Date/CalendarDate.php:285
+#: app/Date/CalendarDate.php:295
 msgctxt "INSTRUMENTAL"
 msgid "July"
 msgstr "červencem"
 
-#: app/Date/CalendarDate.php:251
+#: app/Date/CalendarDate.php:261
 msgctxt "LOCATIVE"
 msgid "July"
 msgstr "červenci"
 
-#: app/Date/CalendarDate.php:183 app/Functions/FunctionsPrint.php:651
+#: app/Date/CalendarDate.php:193 app/Functions/FunctionsPrint.php:651
 msgctxt "NOMINATIVE"
 msgid "July"
 msgstr "červenec"
@@ -7888,27 +7889,27 @@ msgctxt "NOMINATIVE"
 msgid "Jumada al-thani"
 msgstr "džumádá l-áchira"
 
-#: app/Date/CalendarDate.php:316
+#: app/Date/CalendarDate.php:326
 msgctxt "Abbreviation for June"
 msgid "Jun"
 msgstr "čer"
 
-#: app/Date/CalendarDate.php:216
+#: app/Date/CalendarDate.php:226
 msgctxt "GENITIVE"
 msgid "June"
 msgstr "června"
 
-#: app/Date/CalendarDate.php:284
+#: app/Date/CalendarDate.php:294
 msgctxt "INSTRUMENTAL"
 msgid "June"
 msgstr "červnem"
 
-#: app/Date/CalendarDate.php:250
+#: app/Date/CalendarDate.php:260
 msgctxt "LOCATIVE"
 msgid "June"
 msgstr "červnu"
 
-#: app/Date/CalendarDate.php:182 app/Functions/FunctionsPrint.php:650
+#: app/Date/CalendarDate.php:192 app/Functions/FunctionsPrint.php:650
 msgctxt "NOMINATIVE"
 msgid "June"
 msgstr "červen"
@@ -7938,7 +7939,7 @@ msgstr "Zachovat objekty médií"
 
 #. I18N: A configuration setting
 #: addmedia.php:705 admin_trees_config.php:2131
-#: app/Module/BatchUpdate/BatchUpdateBasePlugin.php:62 edit_interface.php:2276
+#: app/Module/BatchUpdate/BatchUpdateBasePlugin.php:62 edit_interface.php:2256
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:545
 msgid "Keep the existing “last change” information"
 msgstr "Zachovat existující informaci „poslední změna“"
@@ -8285,8 +8286,8 @@ msgstr "Lima, Peru"
 msgid "Link the user account to an individual."
 msgstr "Propojte tento uživatelský účet s nějakou osobou (jednotlivcem)."
 
-#: app/Module/RelativesTabModule.php:369 edit_interface.php:983
-#: edit_interface.php:1043
+#: app/Module/RelativesTabModule.php:369 edit_interface.php:963
+#: edit_interface.php:1023
 msgid "Link this individual to an existing family as a child"
 msgstr "Přiřadit tuto osobu k existující rodině jako dítě"
 
@@ -8543,12 +8544,12 @@ msgstr "Spravovat odkazy"
 
 #. I18N: Listbox entry; name of a role
 #: admin_trees_download.php:183 admin_users.php:43 admin_users.php:557
-#: app/Module/ClippingsCartModule.php:390
-#: app/Module/ClippingsCartModule.php:767
+#: app/Module/ClippingsCartModule.php:403
+#: app/Module/ClippingsCartModule.php:780
 msgid "Manager"
 msgstr "Správce"
 
-#: admin.php:687
+#: admin.php:679
 msgid "Managers"
 msgstr "Správci"
 
@@ -8594,27 +8595,27 @@ msgstr "Mnoho mail serverů požaduje, aby se odesílací server správně ident
 msgid "Map"
 msgstr "Mapa"
 
-#: app/Date/CalendarDate.php:313
+#: app/Date/CalendarDate.php:323
 msgctxt "Abbreviation for March"
 msgid "Mar"
 msgstr "bře"
 
-#: app/Date/CalendarDate.php:213
+#: app/Date/CalendarDate.php:223
 msgctxt "GENITIVE"
 msgid "March"
 msgstr "března"
 
-#: app/Date/CalendarDate.php:281
+#: app/Date/CalendarDate.php:291
 msgctxt "INSTRUMENTAL"
 msgid "March"
 msgstr "březnem"
 
-#: app/Date/CalendarDate.php:247
+#: app/Date/CalendarDate.php:257
 msgctxt "LOCATIVE"
 msgid "March"
 msgstr "březnu"
 
-#: app/Date/CalendarDate.php:179 app/Functions/FunctionsPrint.php:647
+#: app/Date/CalendarDate.php:189 app/Functions/FunctionsPrint.php:647
 msgctxt "NOMINATIVE"
 msgid "March"
 msgstr "březen"
@@ -8916,27 +8917,27 @@ msgstr "Maximum generací pro Vývod"
 msgid "Maximum upload size: "
 msgstr "Maximální velikost nahrávaných souborů: "
 
-#: app/Date/CalendarDate.php:315
+#: app/Date/CalendarDate.php:325
 msgctxt "Abbreviation for May"
 msgid "May"
 msgstr "kvě"
 
-#: app/Date/CalendarDate.php:215
+#: app/Date/CalendarDate.php:225
 msgctxt "GENITIVE"
 msgid "May"
 msgstr "května"
 
-#: app/Date/CalendarDate.php:283
+#: app/Date/CalendarDate.php:293
 msgctxt "INSTRUMENTAL"
 msgid "May"
 msgstr "květnem"
 
-#: app/Date/CalendarDate.php:249
+#: app/Date/CalendarDate.php:259
 msgctxt "LOCATIVE"
 msgid "May"
 msgstr "květnu"
 
-#: app/Date/CalendarDate.php:181 app/Functions/FunctionsPrint.php:649
+#: app/Date/CalendarDate.php:191 app/Functions/FunctionsPrint.php:649
 msgctxt "NOMINATIVE"
 msgid "May"
 msgstr "květen"
@@ -8953,7 +8954,7 @@ msgstr "Medford, Oregon, USA"
 
 #. I18N: Name of a module
 #. I18N: Menu entry
-#: admin.php:780 admin_media.php:692 app/Functions/FunctionsPrintLists.php:1348
+#: admin.php:772 admin_media.php:692 app/Functions/FunctionsPrintLists.php:1348
 #: app/Module/MediaTabModule.php:35 app/Theme/AdministrationTheme.php:177
 #: inverselink.php:70
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:74
@@ -8998,7 +8999,7 @@ msgstr "Složky médií"
 msgid "Media object"
 msgstr "Objekt médií"
 
-#: admin.php:847 admin_trees_duplicates.php:144
+#: admin.php:839 admin_trees_duplicates.php:144
 #: app/Functions/FunctionsPrintLists.php:1044
 #: app/Functions/FunctionsPrintLists.php:1169
 #: app/Module/FamilyTreeStatisticsModule.php:121
@@ -9079,10 +9080,10 @@ msgstr "Melbourne, Austrálie"
 
 #. I18N: Listbox entry; name of a role
 #: admin_trees_download.php:188 admin_users.php:40 admin_users.php:535
-#: app/Module/ClippingsCartModule.php:393
-#: app/Module/ClippingsCartModule.php:405
-#: app/Module/ClippingsCartModule.php:768
-#: app/Module/ClippingsCartModule.php:775
+#: app/Module/ClippingsCartModule.php:406
+#: app/Module/ClippingsCartModule.php:418
+#: app/Module/ClippingsCartModule.php:781
+#: app/Module/ClippingsCartModule.php:788
 msgid "Member"
 msgstr "Člen"
 
@@ -9232,7 +9233,7 @@ msgstr "Upravit dosud neschválené změny"
 msgid "Moderator"
 msgstr "Moderátor"
 
-#: admin.php:700
+#: admin.php:692
 msgid "Moderators"
 msgstr "Moderátoři"
 
@@ -9266,7 +9267,7 @@ msgid "Moldova"
 msgstr "Moldavsko"
 
 #. I18N: abbreviation for Monday
-#: app/Date/CalendarDate.php:366 app/Functions/FunctionsPrint.php:660
+#: app/Date/CalendarDate.php:376 app/Functions/FunctionsPrint.php:660
 msgid "Mon"
 msgstr "po"
 
@@ -9275,7 +9276,7 @@ msgstr "po"
 msgid "Monaco"
 msgstr "Monako"
 
-#: app/Date/CalendarDate.php:341
+#: app/Date/CalendarDate.php:351
 msgid "Monday"
 msgstr "pondělí"
 
@@ -9943,7 +9944,7 @@ msgstr "Žádný přihlášený ani anonymní uživatel"
 msgid "No temple - living ordinance"
 msgstr "Bez chrámu - obřad naživo"
 
-#: admin.php:630 admin_site_upgrade.php:61
+#: admin.php:622 admin_site_upgrade.php:61
 msgid "No upgrade information is available."
 msgstr "Není dostupná žádná aktualizace."
 
@@ -9956,8 +9957,8 @@ msgstr "Nikdo"
 msgid "Nocturnal"
 msgstr "Noční"
 
-#: admin_trees_download.php:178 app/Module/ClippingsCartModule.php:387
-#: app/Module/ClippingsCartModule.php:766
+#: admin_trees_download.php:178 app/Module/ClippingsCartModule.php:400
+#: app/Module/ClippingsCartModule.php:779
 #: app/Module/FamiliesSidebarModule.php:156
 #: app/Module/IndividualSidebarModule.php:157 app/Stats.php:1356
 #: famlist.php:113 famlist.php:143 indilist.php:113 indilist.php:143
@@ -10011,7 +10012,7 @@ msgstr "Norsko"
 msgid "Not a valid individual, family, or source ID"
 msgstr "Neplatný ID pro osobu, rodinu nebo pramen"
 
-#: admin.php:726
+#: admin.php:718
 msgid "Not approved by an administrator"
 msgstr "Neověřeno správcem"
 
@@ -10037,7 +10038,7 @@ msgctxt "MALE"
 msgid "Not married"
 msgstr "Nesezdaný"
 
-#: admin.php:713
+#: admin.php:705
 msgid "Not verified by the user"
 msgstr "Neověřeno uživatelem"
 
@@ -10078,27 +10079,27 @@ msgstr "Nebylo nalezeno nic k pročištění"
 msgid "Nothing found."
 msgstr "Nic nenalezeno."
 
-#: app/Date/CalendarDate.php:321
+#: app/Date/CalendarDate.php:331
 msgctxt "Abbreviation for November"
 msgid "Nov"
 msgstr "lis"
 
-#: app/Date/CalendarDate.php:221
+#: app/Date/CalendarDate.php:231
 msgctxt "GENITIVE"
 msgid "November"
 msgstr "listopadu"
 
-#: app/Date/CalendarDate.php:289
+#: app/Date/CalendarDate.php:299
 msgctxt "INSTRUMENTAL"
 msgid "November"
 msgstr "listopadem"
 
-#: app/Date/CalendarDate.php:255
+#: app/Date/CalendarDate.php:265
 msgctxt "LOCATIVE"
 msgid "November"
 msgstr "listopadu"
 
-#: app/Date/CalendarDate.php:187 app/Functions/FunctionsPrint.php:655
+#: app/Date/CalendarDate.php:197 app/Functions/FunctionsPrint.php:655
 msgctxt "NOMINATIVE"
 msgid "November"
 msgstr "listopad"
@@ -10124,9 +10125,9 @@ msgstr "Počet dnů pro zobrazení"
 msgid "Number of families without children"
 msgstr "Počet rodin bez dětí"
 
-#: app/Module/ClippingsCartModule.php:211
-#: app/Module/ClippingsCartModule.php:230
-#: app/Module/ClippingsCartModule.php:249
+#: app/Module/ClippingsCartModule.php:224
+#: app/Module/ClippingsCartModule.php:243
+#: app/Module/ClippingsCartModule.php:262
 msgid "Number of generations"
 msgstr "Počet generací"
 
@@ -10197,7 +10198,7 @@ msgstr "Zaměstnání"
 msgid "Occupied Palestinian Territory"
 msgstr "Palestina"
 
-#: app/Date/CalendarDate.php:320
+#: app/Date/CalendarDate.php:330
 msgctxt "Abbreviation for October"
 msgid "Oct"
 msgstr "říj"
@@ -10207,22 +10208,22 @@ msgstr "říj"
 msgid "Octidi"
 msgstr "Octidi"
 
-#: app/Date/CalendarDate.php:220
+#: app/Date/CalendarDate.php:230
 msgctxt "GENITIVE"
 msgid "October"
 msgstr "října"
 
-#: app/Date/CalendarDate.php:288
+#: app/Date/CalendarDate.php:298
 msgctxt "INSTRUMENTAL"
 msgid "October"
 msgstr "říjnem"
 
-#: app/Date/CalendarDate.php:254
+#: app/Date/CalendarDate.php:264
 msgctxt "LOCATIVE"
 msgid "October"
 msgstr "říjnu"
 
-#: app/Date/CalendarDate.php:186 app/Functions/FunctionsPrint.php:654
+#: app/Date/CalendarDate.php:196 app/Functions/FunctionsPrint.php:654
 msgctxt "NOMINATIVE"
 msgid "October"
 msgstr "říjen"
@@ -10241,7 +10242,7 @@ msgstr "Oklahoma City, Oklahoma, USA"
 msgid "Old data"
 msgstr "Stará data"
 
-#: admin.php:894
+#: admin.php:886
 msgid "Old files found"
 msgstr "Nalezeny staré soubory"
 
@@ -10616,7 +10617,7 @@ msgid "Pedigree tree of %s"
 msgstr "Vývod pro %s"
 
 #. I18N: Name of a module
-#: admin.php:775 admin.php:797 admin_site_upgrade.php:100
+#: admin.php:767 admin.php:789 admin_site_upgrade.php:100
 #: app/Module/ReviewChangesModule.php:37 app/Module/ReviewChangesModule.php:86
 #: app/Theme/AbstractTheme.php:1678 edit_changes.php:35 edit_changes.php:49
 #: help_text.php:302 modules_v3/change_report/report.xml:52
@@ -11114,8 +11115,8 @@ msgstr "Omezení soukromí"
 msgid "Privacy restrictions - these apply to records and facts that do not contain a GEDCOM RESN tag"
 msgstr "Omezení soukromí - aplikují se na záznamy a data, která neobsahují tag RESN"
 
-#: app/Controller/GedcomRecordController.php:92 app/GedcomRecord.php:532
-#: app/GedcomRecord.php:610 app/GedcomRecord.php:735 app/Individual.php:1309
+#: app/Controller/GedcomRecordController.php:92 app/GedcomRecord.php:531
+#: app/GedcomRecord.php:609 app/GedcomRecord.php:734 app/Individual.php:1309
 #: app/Module/GoogleMapsModule.php:784 app/Note.php:71
 #: app/Report/ReportParserGenerate.php:847 app/Repository.php:50
 #: app/Source.php:54 app/Stats.php:1467 app/Stats.php:2972 expand_view.php:33
@@ -11323,20 +11324,20 @@ msgid "Random images from the current family tree."
 msgstr "Náhodné obrázky ze současného rodokmenu."
 
 #: app/Controller/FamilyController.php:88 app/Module/RelativesTabModule.php:279
-#: edit_interface.php:1799 edit_interface.php:1869
+#: edit_interface.php:1779 edit_interface.php:1849
 msgid "Re-order children"
 msgstr "Seřadit děti"
 
 #: app/Controller/IndividualController.php:297
-#: app/Module/RelativesTabModule.php:363 edit_interface.php:2174
-#: edit_interface.php:2224
+#: app/Module/RelativesTabModule.php:363 edit_interface.php:2154
+#: edit_interface.php:2204
 msgid "Re-order families"
 msgstr "Přeřadit rodiny"
 
 #. I18N: gedcom tag _WT_OBJE_SORT
 #: app/GedcomTag.php:1767 app/Module/AlbumModule.php:110
-#: app/Module/AlbumModule.php:111 edit_interface.php:1671
-#: edit_interface.php:1718 edit_interface.php:1764
+#: app/Module/AlbumModule.php:111 edit_interface.php:1651
+#: edit_interface.php:1698 edit_interface.php:1744
 msgid "Re-order media"
 msgstr "Přeřadit média"
 
@@ -11361,7 +11362,7 @@ msgstr "Recife, Brazílie"
 
 #: admin_site_change.php:328 admin_site_change.php:389
 #: admin_trees_config.php:526 app/Functions/FunctionsPrintLists.php:1680
-#: app/Module/ClippingsCartModule.php:484
+#: app/Module/ClippingsCartModule.php:497
 #: app/Module/RecentChangesModule.php:322 app/Module/ResearchTaskModule.php:109
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:103
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:524
@@ -11519,11 +11520,11 @@ msgstr "Vzdálený server"
 
 #: app/Module/CensusAssistantModule.php:386
 #: app/Module/CensusAssistantModule.php:407
-#: app/Module/ClippingsCartModule.php:485
-#: app/Module/ClippingsCartModule.php:524
-#: app/Module/ClippingsCartModule.php:705
-#: app/Module/FamilyTreeFavoritesModule.php:156 edit_interface.php:1948
-#: edit_interface.php:1984 edit_interface.php:2011 edit_interface.php:2030
+#: app/Module/ClippingsCartModule.php:498
+#: app/Module/ClippingsCartModule.php:537
+#: app/Module/ClippingsCartModule.php:718
+#: app/Module/FamilyTreeFavoritesModule.php:156 edit_interface.php:1928
+#: edit_interface.php:1964 edit_interface.php:1991 edit_interface.php:2010
 #: index_edit.php:327 index_edit.php:344
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:106
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:526
@@ -11594,7 +11595,7 @@ msgstr "Zpráva"
 msgid "Reports"
 msgstr "Zprávy"
 
-#: admin.php:779 admin.php:837 admin_trees_duplicates.php:140
+#: admin.php:771 admin.php:829 admin_trees_duplicates.php:140
 #: app/Module/FamilyTreeStatisticsModule.php:124
 #: app/Module/FamilyTreeStatisticsModule.php:384
 #: app/Module/HtmlBlockModule.php:199 app/Theme/AbstractTheme.php:1540
@@ -11617,7 +11618,7 @@ msgstr "Repozitář"
 msgid "Repository contains"
 msgstr "Repozitář obsahuje"
 
-#: app/Functions/FunctionsPrintLists.php:1260 edit_interface.php:1537
+#: app/Functions/FunctionsPrintLists.php:1260 edit_interface.php:1517
 msgid "Repository name"
 msgstr "Název repozitáře"
 
@@ -11875,7 +11876,7 @@ msgid "Sao Tome and Principe"
 msgstr "Svatý Tomáš a Princův ostrov"
 
 #. I18N: abbreviation for Saturday
-#: app/Date/CalendarDate.php:371 app/Functions/FunctionsPrint.php:665
+#: app/Date/CalendarDate.php:381 app/Functions/FunctionsPrint.php:665
 msgid "Sat"
 msgstr "so"
 
@@ -11883,7 +11884,7 @@ msgstr "so"
 msgid "Satellite"
 msgstr "Družice"
 
-#: app/Date/CalendarDate.php:346
+#: app/Date/CalendarDate.php:356
 msgid "Saturday"
 msgstr "sobota"
 
@@ -11951,7 +11952,7 @@ msgstr "Hledat a nahradit"
 msgid "Search and replace text, using simple searches or advanced pattern matching."
 msgstr "Vyhledat a nahradit text použitím jednoduchého řetězce nebo regulárním výrazem."
 
-#: includes/session.php:504
+#: includes/session.php:491
 msgid "Search engine"
 msgstr "Vyhledávač"
 
@@ -12026,7 +12027,7 @@ msgstr "Označte jméno bloku a klikněte na šipku. Tímto přesunete blok ve s
 msgid "Select a date"
 msgstr "Vybrat datum"
 
-#: edit_interface.php:1245
+#: edit_interface.php:1225
 msgid "Select events"
 msgstr "Vybrat události"
 
@@ -12039,7 +12040,7 @@ msgid "Select individuals by place or date"
 msgstr "Vybrat osoby podle místa nebo data"
 
 #. I18N: Description of the “Clippings cart” module
-#: app/Module/ClippingsCartModule.php:43
+#: app/Module/ClippingsCartModule.php:44
 msgid "Select records from your family tree and save them as a GEDCOM file."
 msgstr "Vyberte záznamy ze svého rodokmenu, a uložte je jako soubor GEDCOM."
 
@@ -12134,7 +12135,7 @@ msgstr "Senegal"
 msgid "Seoul, Korea"
 msgstr "Soul, Jižní Korea"
 
-#: app/Date/CalendarDate.php:319
+#: app/Date/CalendarDate.php:329
 msgctxt "Abbreviation for September"
 msgid "Sep"
 msgstr "zář"
@@ -12144,22 +12145,22 @@ msgstr "zář"
 msgid "Separated"
 msgstr "Odloučení"
 
-#: app/Date/CalendarDate.php:219
+#: app/Date/CalendarDate.php:229
 msgctxt "GENITIVE"
 msgid "September"
 msgstr "září"
 
-#: app/Date/CalendarDate.php:287
+#: app/Date/CalendarDate.php:297
 msgctxt "INSTRUMENTAL"
 msgid "September"
 msgstr "zářím"
 
-#: app/Date/CalendarDate.php:253
+#: app/Date/CalendarDate.php:263
 msgctxt "LOCATIVE"
 msgid "September"
 msgstr "září"
 
-#: app/Date/CalendarDate.php:185 app/Functions/FunctionsPrint.php:653
+#: app/Date/CalendarDate.php:195 app/Functions/FunctionsPrint.php:653
 msgctxt "NOMINATIVE"
 msgid "September"
 msgstr "září"
@@ -12189,7 +12190,7 @@ msgid "Servant"
 msgstr "Sluha"
 
 #. I18N: Menu entry
-#: admin.php:597 admin_site_info.php:26 app/Theme/AdministrationTheme.php:103
+#: admin.php:589 admin_site_info.php:26 app/Theme/AdministrationTheme.php:103
 msgid "Server information"
 msgstr "Informace o serveru"
 
@@ -12296,7 +12297,7 @@ msgid "Shahrivar"
 msgstr "Shahrivar"
 
 #: admin_trees_manage.php:590 app/Controller/FamilyController.php:153
-#: app/GedcomTag.php:772 edit_interface.php:1364 edit_interface.php:1457
+#: app/GedcomTag.php:772 edit_interface.php:1344 edit_interface.php:1437
 #: inverselink.php:141 note.php:152 note.php:162
 msgid "Shared note"
 msgstr "Sdílená poznámka"
@@ -13071,7 +13072,7 @@ msgid "Source type"
 msgstr "Typ pramene"
 
 #. I18N: Name of a module
-#: admin.php:778 admin.php:827 admin_trees_duplicates.php:141
+#: admin.php:770 admin.php:819 admin_trees_duplicates.php:141
 #: app/Controller/SearchController.php:525
 #: app/Functions/FunctionsPrintLists.php:1170
 #: app/Functions/FunctionsPrintLists.php:1261
@@ -13310,16 +13311,16 @@ msgid "Suffixes"
 msgstr "Přípony"
 
 #. I18N: abbreviation for Sunday
-#: app/Date/CalendarDate.php:372 app/Functions/FunctionsPrint.php:659
+#: app/Date/CalendarDate.php:382 app/Functions/FunctionsPrint.php:659
 msgid "Sun"
 msgstr "ne"
 
-#: app/Date/CalendarDate.php:347
+#: app/Date/CalendarDate.php:357
 msgid "Sunday"
 msgstr "neděle"
 
 #. I18N: %s is a URL/link to the project website
-#: admin.php:625
+#: admin.php:617
 #, php-format
 msgid "Support and documentation can be found at %s."
 msgstr "Podporu a dokumentaci najdete na %s."
@@ -13586,7 +13587,7 @@ msgstr "Změny pro „%s“ byly přijaty."
 msgid "The changes to “%s” have been rejected."
 msgstr "Změny pro „%s“ byly odmítnuty."
 
-#: app/Module/ClippingsCartModule.php:311
+#: app/Module/ClippingsCartModule.php:324
 msgid "The clippings cart allows you to take extracts from this family tree and download them as a GEDCOM file."
 msgstr "Schránka výstřižků vám umožňuje vybírat úryvky z tohoto rodokmneu a stáhnout je jako soubor GEDCOM."
 
@@ -14149,7 +14150,7 @@ msgstr "Thermidor"
 msgid "These groups of individuals are not related to %s."
 msgstr "Tyto skupiny osob nejsou s %s 1 spřízněny."
 
-#: admin.php:586
+#: admin.php:578
 msgid "These pages provide access to all the preferences and management tools for this webtrees site."
 msgstr "Tyto stránky umožňují přístup ke všem konfiguračním volbám a nástroj pro správu tohoto webu webtrees."
 
@@ -14339,7 +14340,7 @@ msgstr "Rozlišujte malá a velká písmena. Pokud databáze s tímto jménem je
 msgid "This is the initial value for the “show details” option on the charts."
 msgstr "Toto je počáteční hodnota volby \"zobrazit podrobnosti\" u diagramů."
 
-#: admin.php:637 admin_site_upgrade.php:67
+#: admin.php:629 admin_site_upgrade.php:67
 msgid "This is the latest version of webtrees. No upgrade is available."
 msgstr "Toto je poslední verze webtrees. Neni dostupná žádná aktualizace."
 
@@ -14672,7 +14673,7 @@ msgstr "Tento text se připojí ke každému názvu stránky. Zobrazí se v zál
 msgid "This type of link is not allowed here."
 msgstr "Tento druh odkazu tady není povolený."
 
-#: includes/session.php:448
+#: includes/session.php:435
 msgid "This user account does not have access to any tree."
 msgstr "Tento uživatelský účet nemá přístup k žádnému rodokmenu."
 
@@ -14707,7 +14708,7 @@ msgid "This will update the highest-level part or parts of the place name. For e
 msgstr "Toto aktualizuje nejvyšší úroveň části jména místa. Například „Mexico“ bude odpovídat „Quintana Roo, Mexico“, ale ne „Santa Fe, New Mexico“."
 
 #. I18N: abbreviation for Thursday
-#: app/Date/CalendarDate.php:369 app/Functions/FunctionsPrint.php:663
+#: app/Date/CalendarDate.php:379 app/Functions/FunctionsPrint.php:663
 msgid "Thu"
 msgstr "čt"
 
@@ -14723,7 +14724,7 @@ msgstr "Náhledy obrázků"
 msgid "Thumbnail to upload"
 msgstr "Náhled pro nahrání"
 
-#: app/Date/CalendarDate.php:344
+#: app/Date/CalendarDate.php:354
 msgid "Thursday"
 msgstr "čtvrtek"
 
@@ -14852,7 +14853,7 @@ msgstr "Abyste zakázali návštěvníkům webu přístup uprostřed kopírován
 msgid "To protect this private data, webtrees uses an Apache configuration file (.htaccess) which blocks all access to this folder. If your web-server does not support .htaccess files, and you cannot restrict access to this folder, then you can select another folder, away from your web documents."
 msgstr "Pro ochranu těchto soukromých dat webtrees používá konfigurační soubor Apache (.htaccess), který blokuje všechen přístup do tohoto adresáře. Pokud váš webový server nepodporuje soubory .htaccess a tedy nemůžete omezit přístup do daného adresáře, pak vyberte jiný adresář, nejlépe mimo složku s webovými dokumenty."
 
-#: admin_trees_download.php:144 app/Module/ClippingsCartModule.php:364
+#: admin_trees_download.php:144 app/Module/ClippingsCartModule.php:377
 msgid "To reduce the size of the download, you can compress the data into a .ZIP file. You will need to uncompress the .ZIP file before you can use it."
 msgstr "Pro snížení velikosti stahování můžete data komprimovat do souboru .ZIP. Před použitím pak musíte soubor .ZIP dekomprimovat."
 
@@ -14946,7 +14947,7 @@ msgstr "Nejčastější příjmení"
 msgid "Toronto, Ontario, Canada"
 msgstr "Toronto, Ontario, Kanada"
 
-#: admin.php:859
+#: admin.php:851
 msgid "Total"
 msgstr "Celkem"
 
@@ -15028,7 +15029,7 @@ msgstr "Celkem mužů"
 msgid "Total marriages"
 msgstr "Celkem manželství"
 
-#: admin.php:664
+#: admin.php:656
 msgid "Total number of users"
 msgstr "Celkem uživatelů"
 
@@ -15091,11 +15092,11 @@ msgid "Trujillo, Peru"
 msgstr "Trujillo, Peru"
 
 #. I18N: abbreviation for Tuesday
-#: app/Date/CalendarDate.php:367 app/Functions/FunctionsPrint.php:661
+#: app/Date/CalendarDate.php:377 app/Functions/FunctionsPrint.php:661
 msgid "Tue"
 msgstr "út"
 
-#: app/Date/CalendarDate.php:342
+#: app/Date/CalendarDate.php:352
 msgid "Tuesday"
 msgstr "úterý"
 
@@ -15256,7 +15257,7 @@ msgid "United States"
 msgstr "Spojené státy"
 
 #. I18N: Name of a country or state
-#: app/GedcomRecord.php:1159 app/GedcomRecord.php:1163 app/Stats.php:6670
+#: app/GedcomRecord.php:1158 app/GedcomRecord.php:1162 app/Stats.php:6670
 msgid "Unknown"
 msgstr "Neznámé"
 
@@ -15329,7 +15330,7 @@ msgstr "Přesto aktualizovat"
 
 #. I18N: %s is a version number
 #. I18N: %s is a version number, such as 1.2.3
-#: admin.php:634 admin_site_upgrade.php:82 login.php:118
+#: admin.php:626 admin_site_upgrade.php:82 login.php:118
 #, php-format
 msgid "Upgrade to webtrees %s."
 msgstr "Upgradujte webtrees na verzi %s."
@@ -15481,11 +15482,11 @@ msgid "Usernames are case-insensitive and ignore accented letters, so that “ch
 msgstr "Pod uživatelským jménem se budete přihlašovat. V uživatelských jménech se nerozlišují velká a malá písmena a ignorují se háčky a čárky, takže „oldrich“, „oldřich“ nebo „Oldřich“ jsou stále to samé."
 
 #. I18N: Menu entry
-#: admin.php:651 admin.php:659 app/Theme/AdministrationTheme.php:162
+#: admin.php:643 admin.php:651 app/Theme/AdministrationTheme.php:162
 msgid "Users"
 msgstr "Uživatelé"
 
-#: admin.php:739
+#: admin.php:731
 msgid "Users who are signed in"
 msgstr "Přihlášení uživatelé"
 
@@ -15672,10 +15673,10 @@ msgstr "Viditelný pro jiné uživatele, když je online"
 
 #. I18N: Listbox entry; name of a role
 #: admin_trees_download.php:193 admin_users.php:39 admin_users.php:529
-#: app/Module/ClippingsCartModule.php:396
-#: app/Module/ClippingsCartModule.php:406
-#: app/Module/ClippingsCartModule.php:769
-#: app/Module/ClippingsCartModule.php:776
+#: app/Module/ClippingsCartModule.php:409
+#: app/Module/ClippingsCartModule.php:419
+#: app/Module/ClippingsCartModule.php:782
+#: app/Module/ClippingsCartModule.php:789
 msgid "Visitor"
 msgstr "Návštěvník"
 
@@ -15760,11 +15761,11 @@ msgid "Website preferences"
 msgstr "Předvolby webové stránky"
 
 #. I18N: abbreviation for Wednesday
-#: app/Date/CalendarDate.php:368 app/Functions/FunctionsPrint.php:662
+#: app/Date/CalendarDate.php:378 app/Functions/FunctionsPrint.php:662
 msgid "Wed"
 msgstr "st"
 
-#: app/Date/CalendarDate.php:343
+#: app/Date/CalendarDate.php:353
 msgid "Wednesday"
 msgstr "středa"
 
@@ -15869,7 +15870,7 @@ msgid "Width of generated thumbnails"
 msgstr "Šířka generovaných náhledů"
 
 #. I18N: gedcom tag WIFE
-#: app/GedcomTag.php:860 edit_interface.php:1088
+#: app/GedcomTag.php:860 edit_interface.php:1068
 #: modules_v3/family_group_report/report.xml:501
 #: modules_v3/family_group_report/report.xml:1078
 #: modules_v3/individual_ext_report/report.xml:199
@@ -16047,7 +16048,7 @@ msgstr "Nemůžete definovat pravidlo, které by vám samotným zabránilo v př
 msgid "You cannot sign in because your browser does not accept cookies."
 msgstr "Nemůžete se přihlásit, protože váš prohlížeč nepřijímá cookies."
 
-#: includes/session.php:506
+#: includes/session.php:493
 msgid "You do not have permission to view this page."
 msgstr "Nemáte oprávnění si prohlédnout tuto stránku."
 
@@ -16104,11 +16105,11 @@ msgstr "Musíte vložit uživatelské jméno."
 msgid "You must enter all the administrator account fields."
 msgstr "Musíte vložit všechny údaje o správcovském účtu."
 
-#: edit_interface.php:1522
+#: edit_interface.php:1502
 msgid "You must provide a repository name."
 msgstr "Musíte zadat jméno repozitáře."
 
-#: edit_interface.php:1203
+#: edit_interface.php:1183
 msgid "You must provide a source title"
 msgstr "Musíte zadat název pramene"
 
@@ -16144,7 +16145,7 @@ msgstr "Musíte posoudit podrobnosti tohoto účtu."
 msgid "You need to set up an administrator account. This account can control all aspects of this webtrees installation. Please choose a strong password."
 msgstr "Nastavte správcovský účet. Tento účet kontroluje celou instalaci webtrees. Prosím vyberte silné heslo."
 
-#: admin_pgv_to_wt.php:1153
+#: admin_pgv_to_wt.php:1151
 msgid "You need to sign in again, using your PhpGedView username and password."
 msgstr "Musíte se znovu přihlásit použitím jména a hesla z PhpGedView."
 
@@ -16207,8 +16208,8 @@ msgstr "Nejmladší muž"
 msgid "Youngest mother"
 msgstr "Nejmladší matka"
 
-#: app/Module/ClippingsCartModule.php:344
-#: app/Module/ClippingsCartModule.php:678
+#: app/Module/ClippingsCartModule.php:357
+#: app/Module/ClippingsCartModule.php:691
 msgid "Your clippings cart is empty."
 msgstr "Vaše Schránka výstřižků je prázdná."
 
@@ -16230,12 +16231,7 @@ msgstr "Správce vašeho serveru vám sdělí podrobnosti připojení."
 msgid "Your user account does not have “automatically accept changes” enabled. You will only be able to change one record at a time."
 msgstr "Váš uživatelský účet nemá povoleno „automaticky schvalovat změny“. Budete schopen měnit pouze jeden záznam najednou."
 
-#: admin.php:578
-#, php-format
-msgid "Your web server is using PHP version %s, which is no longer maintained. You should upgrade to a later version."
-msgstr "Váš webový server používá PHP verse %s, která už není udržovaná. Doporučeje se upgrade na vyšší versi."
-
-#: admin.php:570
+#: admin.php:571
 #, php-format
 msgid "Your web server is using PHP version %s, which is no longer receiving security updates. You should upgrade to a later version as soon as possible."
 msgstr "Váš webový server používá PHP verse %s, pro kterou se už nevydávají bezpečnostní aktualizace. Doporučuje se upgrade na vyšší versi co nejdříve."
@@ -16250,8 +16246,8 @@ msgstr "Zambie"
 msgid "Zimbabwe"
 msgstr "Zimbabwe"
 
-#: app/Module/ClippingsCartModule.php:368
-#: app/Module/ClippingsCartModule.php:755
+#: app/Module/ClippingsCartModule.php:381
+#: app/Module/ClippingsCartModule.php:768
 msgid "Zip file(s)"
 msgstr "Soubor(y) ZIP"
 
@@ -16311,8 +16307,8 @@ msgstr "přijata"
 
 #. I18N: A button label.
 #: admin_trees_config.php:537 app/Functions/FunctionsPrint.php:569
-#: app/Functions/FunctionsPrint.php:628 app/Module/ClippingsCartModule.php:334
-#: app/Module/ClippingsCartModule.php:460
+#: app/Functions/FunctionsPrint.php:628 app/Module/ClippingsCartModule.php:347
+#: app/Module/ClippingsCartModule.php:473
 #: app/Module/FamilyTreeFavoritesModule.php:228
 #: app/Module/GoogleMapsModule.php:4024 timeline.php:306
 msgid "add"
@@ -16582,7 +16578,7 @@ msgid "calculated %s"
 msgstr "dopočítáno %s"
 
 #. I18N: A button label.
-#: app/Module/ClippingsCartModule.php:796
+#: app/Module/ClippingsCartModule.php:809
 msgid "cancel"
 msgstr "zrušit"
 
@@ -16612,8 +16608,8 @@ msgctxt "MALE"
 msgid "change of name"
 msgstr "změněné jméno"
 
-#: app/Functions/Functions.php:751 edit_interface.php:2001
-#: edit_interface.php:2023
+#: app/Functions/Functions.php:751 edit_interface.php:1981
+#: edit_interface.php:2003
 msgid "child"
 msgstr "dítě"
 
@@ -16627,11 +16623,11 @@ msgstr "děti"
 #: app/Module/CensusAssistantModule.php:189 app/Module/GoogleMapsModule.php:685
 #: app/Module/GoogleMapsModule.php:3407 app/Theme/AbstractTheme.php:700
 #: edit_changes.php:245 edit_interface.php:89 edit_interface.php:184
-#: edit_interface.php:325 edit_interface.php:386 edit_interface.php:1019
-#: edit_interface.php:1127 edit_interface.php:1270 edit_interface.php:1375
-#: edit_interface.php:1468 edit_interface.php:1559 edit_interface.php:1743
-#: edit_interface.php:1848 edit_interface.php:2040 edit_interface.php:2203
-#: edit_interface.php:2588 find.php:760 inverselink.php:161 message.php:137
+#: edit_interface.php:325 edit_interface.php:386 edit_interface.php:999
+#: edit_interface.php:1107 edit_interface.php:1250 edit_interface.php:1355
+#: edit_interface.php:1448 edit_interface.php:1539 edit_interface.php:1723
+#: edit_interface.php:1828 edit_interface.php:2020 edit_interface.php:2183
+#: edit_interface.php:2568 find.php:760 inverselink.php:161 message.php:137
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:554
 msgid "close"
 msgstr "zavřít"
@@ -16651,13 +16647,13 @@ msgid "compact list"
 msgstr "kompaktní seznam"
 
 #. I18N: A button label.
-#: admin_pgv_to_wt.php:183 admin_pgv_to_wt.php:1154 admin_site_merge.php:391
+#: admin_pgv_to_wt.php:183 admin_pgv_to_wt.php:1152 admin_site_merge.php:391
 #: admin_trees_download.php:119 admin_trees_download.php:204
 #: admin_trees_manage.php:309 admin_trees_manage.php:764
 #: admin_trees_merge.php:202 admin_trees_renumber.php:281
-#: app/Module/ClippingsCartModule.php:134
-#: app/Module/ClippingsCartModule.php:257
-#: app/Module/ClippingsCartModule.php:300 app/Module/GoogleMapsModule.php:3709
+#: app/Module/ClippingsCartModule.php:147
+#: app/Module/ClippingsCartModule.php:270
+#: app/Module/ClippingsCartModule.php:313 app/Module/GoogleMapsModule.php:3709
 #: app/Module/LoginBlockModule.php:105 app/Theme/AbstractTheme.php:347
 #: login.php:228 login.php:498 reportengine.php:131 reportengine.php:265
 #: setup.php:190 setup.php:216 setup.php:298 setup.php:384 setup.php:449
@@ -16679,7 +16675,7 @@ msgid "date periods"
 msgstr "časové období"
 
 #: app/Functions/Functions.php:749 app/Functions/FunctionsCharts.php:312
-#: edit_interface.php:2000
+#: edit_interface.php:1980
 msgid "daughter"
 msgstr "dcera"
 
@@ -16746,8 +16742,8 @@ msgstr "zemřel"
 
 #. I18N: A button label.
 #: admin_site_change.php:370 admin_site_logs.php:310
-#: app/Module/ClippingsCartModule.php:432
-#: app/Module/ClippingsCartModule.php:797 app/Module/GoogleMapsModule.php:4083
+#: app/Module/ClippingsCartModule.php:445
+#: app/Module/ClippingsCartModule.php:810 app/Module/GoogleMapsModule.php:4083
 msgid "download"
 msgstr "stáhnout"
 
@@ -17241,7 +17237,7 @@ msgid "gender"
 msgstr "pohlaví"
 
 #. I18N: A button label.
-#: edit_interface.php:2586
+#: edit_interface.php:2566
 msgid "go to new individual"
 msgstr "přejít na novou osobu"
 
@@ -18779,8 +18775,8 @@ msgstr "skrýt"
 msgid "himself"
 msgstr "on sám"
 
-#: app/Functions/Functions.php:709 edit_interface.php:1928
-#: edit_interface.php:1963
+#: app/Functions/Functions.php:709 edit_interface.php:1908
+#: edit_interface.php:1943
 msgid "husband"
 msgstr "manžel"
 
@@ -19345,10 +19341,10 @@ msgstr "robot"
 #: app/Module/RelationshipsChartModule.php:200 app/Module/SiteMapModule.php:320
 #: app/Module/StoriesModule.php:270 block_edit.php:96 edit_interface.php:88
 #: edit_interface.php:183 edit_interface.php:324 edit_interface.php:385
-#: edit_interface.php:1018 edit_interface.php:1126 edit_interface.php:1269
-#: edit_interface.php:1374 edit_interface.php:1467 edit_interface.php:1558
-#: edit_interface.php:1742 edit_interface.php:1846 edit_interface.php:2039
-#: edit_interface.php:2201 edit_interface.php:2584 editnews.php:74
+#: edit_interface.php:998 edit_interface.php:1106 edit_interface.php:1249
+#: edit_interface.php:1354 edit_interface.php:1447 edit_interface.php:1538
+#: edit_interface.php:1722 edit_interface.php:1826 edit_interface.php:2019
+#: edit_interface.php:2181 edit_interface.php:2564 editnews.php:74
 #: edituser.php:317 find.php:537 index_edit.php:376
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:553
 #: modules_v3/GEDFact_assistant/census/census-edit.php:197
@@ -19648,7 +19644,7 @@ msgid "sixth cousin"
 msgstr "bratranec (z 6. kolena)"
 
 #: app/Functions/Functions.php:747 app/Functions/FunctionsCharts.php:311
-#: edit_interface.php:1999
+#: edit_interface.php:1979
 msgid "son"
 msgstr "syn"
 
@@ -19693,7 +19689,7 @@ msgstr "zeť/snacha"
 msgid "sort by date"
 msgstr "seřadit podle data"
 
-#: edit_interface.php:1847 modules_v3/bdm_report/report.xml:11
+#: edit_interface.php:1827 modules_v3/bdm_report/report.xml:11
 #: modules_v3/birth_report/report.xml:9 modules_v3/change_report/report.xml:7
 #: modules_v3/fact_sources/report.xml:7
 #: modules_v3/individual_ext_report/report.xml:8
@@ -19708,7 +19704,7 @@ msgstr "seřadit podle data narození"
 msgid "sort by date of death"
 msgstr "seřadit podle data úmrtí"
 
-#: edit_interface.php:2202 modules_v3/marriage_report/report.xml:9
+#: edit_interface.php:2182 modules_v3/marriage_report/report.xml:9
 msgid "sort by date of marriage"
 msgstr "seřadit podle data sňatku"
 
@@ -19750,8 +19746,8 @@ msgstr "seřadit podle názvu"
 msgid "south"
 msgstr "jih"
 
-#: app/Functions/Functions.php:745 edit_interface.php:1930
-#: edit_interface.php:1940 edit_interface.php:1965 edit_interface.php:1976
+#: app/Functions/Functions.php:745 edit_interface.php:1910
+#: edit_interface.php:1920 edit_interface.php:1945 edit_interface.php:1956
 msgid "spouse"
 msgstr "partner"
 
@@ -20143,8 +20139,8 @@ msgstr "Databáze webtrees musí být na stejném serveru jako od PhpGedView"
 msgid "west"
 msgstr "západ"
 
-#: app/Functions/Functions.php:727 edit_interface.php:1929
-#: edit_interface.php:1964
+#: app/Functions/Functions.php:727 edit_interface.php:1909
+#: edit_interface.php:1944
 msgid "wife"
 msgstr "manželka"
 
@@ -20541,6 +20537,9 @@ msgstr "…"
 
 #~ msgid "When new records are created, they are given an internal ID number. You can specify the prefix used for each type of record."
 #~ msgstr "Nově vytvářené záznamy dostávají interní identifikační číslo ID. Zde můžete určit jeho předponu pro každý typ záznamu."
+
+#~ msgid "Your web server is using PHP version %s, which is no longer maintained. You should upgrade to a later version."
+#~ msgstr "Váš webový server používá PHP verse %s, která už není udržovaná. Doporučeje se upgrade na vyšší versi."
 
 #~ msgid "Yugoslavia"
 #~ msgstr "Jugoslávie"

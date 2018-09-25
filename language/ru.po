@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2017-02-11 11:13+0000\n"
+"POT-Creation-Date: 2018-09-25 11:42+0100\n"
 "PO-Revision-Date: 2018-07-01 19:39+0000\n"
 "Last-Translator: Vitalii Oleshkevych <mar2008m@gmail.com>\n"
 "Language-Team: Russian <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/ru/>\n"
@@ -212,31 +212,31 @@ msgid "%s KB"
 msgstr "%s Кбайт"
 
 #. I18N: %s is a woman's name
-#: app/Module/ClippingsCartModule.php:203
+#: app/Module/ClippingsCartModule.php:216
 #, php-format
 msgid "%s and her ancestors"
 msgstr "%s и ее предки"
 
 #. I18N: %s is a man's name
-#: app/Module/ClippingsCartModule.php:206
+#: app/Module/ClippingsCartModule.php:219
 #, php-format
 msgid "%s and his ancestors"
 msgstr "%s и его предки"
 
 #. I18N: %s is the name of a source
-#: app/Module/ClippingsCartModule.php:292
+#: app/Module/ClippingsCartModule.php:305
 #, php-format
 msgid "%s and the individuals that reference it."
 msgstr "%s и лица, которые на нее ссылаются."
 
 #. I18N: %s is a family (husband + wife)
-#: app/Module/ClippingsCartModule.php:121
+#: app/Module/ClippingsCartModule.php:134
 #, php-format
 msgid "%s and their children"
 msgstr "%s и их дети"
 
 #. I18N: %s is a family (husband + wife)
-#: app/Module/ClippingsCartModule.php:128
+#: app/Module/ClippingsCartModule.php:141
 #, php-format
 msgid "%s and their descendants"
 msgstr "%s и их потомки"
@@ -282,7 +282,7 @@ msgstr[0] "%s семья была обновлена."
 msgstr[1] "%s семьи было обновлено."
 msgstr[2] "%s семей были обновлены."
 
-#: admin.php:861
+#: admin.php:853
 #, php-format
 msgid "%s family tree"
 msgid_plural "%s family trees"
@@ -306,7 +306,7 @@ msgstr[0] "%s час назад"
 msgstr[1] "%s часа назад"
 msgstr[2] "%s часов назад"
 
-#: admin_trees_unconnected.php:83 app/Controller/LifespanController.php:260
+#: admin_trees_unconnected.php:83 app/Controller/LifespanController.php:262
 #, php-format
 msgid "%s individual"
 msgid_plural "%s individuals"
@@ -330,7 +330,7 @@ msgstr[0] "%s частная персона."
 msgstr[1] "%s частные персоны."
 msgstr[2] "%s частных персон."
 
-#: app/Controller/LifespanController.php:253
+#: app/Controller/LifespanController.php:255
 #, php-format
 msgid "%s individual with events between %s and %s"
 msgid_plural "%s individuals with events between %s and %s"
@@ -338,7 +338,7 @@ msgstr[0] "%s отдельное событие между %s и %s"
 msgstr[1] "%s отдельных событий между %s и %s"
 msgstr[2] "%s отдельные события между %s и %s"
 
-#: app/Controller/LifespanController.php:246
+#: app/Controller/LifespanController.php:248
 #, php-format
 msgid "%s individual with events in %s"
 msgid_plural "%s individuals with events in %s"
@@ -346,7 +346,7 @@ msgstr[0] "%s отдельное событие в %s"
 msgstr[1] "%s отдельные события в %s"
 msgstr[2] "%s отдельных событий в in %s"
 
-#: app/Controller/LifespanController.php:239
+#: app/Controller/LifespanController.php:241
 #, php-format
 msgid "%s individual with events in %s between %s and %s"
 msgid_plural "%s individuals with events in %s between %s and %s"
@@ -537,49 +537,49 @@ msgid "%s+"
 msgstr "%s+"
 
 #. I18N: %s is a woman's name
-#: app/Module/ClippingsCartModule.php:222
+#: app/Module/ClippingsCartModule.php:235
 #, php-format
 msgid "%s, her ancestors and their families"
 msgstr "%s, ее предки и их семьи"
 
 #. I18N: %s is a woman's name
-#: app/Module/ClippingsCartModule.php:171
+#: app/Module/ClippingsCartModule.php:184
 #, php-format
 msgid "%s, her parents and siblings"
 msgstr "%s, ее родители, братья и сестры"
 
 #. I18N: %s is a woman's name
-#: app/Module/ClippingsCartModule.php:187
+#: app/Module/ClippingsCartModule.php:200
 #, php-format
 msgid "%s, her spouses and children"
 msgstr "%s, ее супруги и дети"
 
 #. I18N: %s is a woman's name
-#: app/Module/ClippingsCartModule.php:241
+#: app/Module/ClippingsCartModule.php:254
 #, php-format
 msgid "%s, her spouses and descendants"
 msgstr "%s, ее супруги и потомки"
 
 #. I18N: %s is a man's name
-#: app/Module/ClippingsCartModule.php:225
+#: app/Module/ClippingsCartModule.php:238
 #, php-format
 msgid "%s, his ancestors and their families"
 msgstr "%s, его предки и их семьи"
 
 #. I18N: %s is a man's name
-#: app/Module/ClippingsCartModule.php:174
+#: app/Module/ClippingsCartModule.php:187
 #, php-format
 msgid "%s, his parents and siblings"
 msgstr "%s, его родители, братья и сестры"
 
 #. I18N: %s is a man's name
-#: app/Module/ClippingsCartModule.php:190
+#: app/Module/ClippingsCartModule.php:203
 #, php-format
 msgid "%s, his spouses and children"
 msgstr "%s, его супруги и дети"
 
 #. I18N: %s is a man's name
-#: app/Module/ClippingsCartModule.php:244
+#: app/Module/ClippingsCartModule.php:257
 #, php-format
 msgid "%s, his spouses and descendants"
 msgstr "%s, его супруги и потомки"
@@ -797,7 +797,7 @@ msgstr "График потомков персоны."
 msgid "A chart of individuals’ lifespans."
 msgstr "График продолжительности жизни персон."
 
-#: edit_interface.php:1011
+#: edit_interface.php:991
 msgid "A child may have more than one set of parents. The relationship between the child and the parents can be biological, legal, or based on local culture and tradition. If no pedigree is specified, then a biological relationship will be assumed."
 msgstr "Ребенок может иметь более несколько родителей. Отношения между ребенком и родителями могут быть биологические, правовые, или на основе местной культуры и традиций. Если родословная не указана, то будет принято биологическое родство."
 
@@ -908,7 +908,7 @@ msgstr "Для Вашего имя пользователя сделан зап�
 msgid "A new user (%1$s) has requested an account (%2$s) and verified an email address (%3$s)."
 msgstr "Новый пользователь (%1$s) запросил доступ как (%2$s) и подтвердил адрес электронной почты (%3$s)."
 
-#: admin.php:632 admin_site_upgrade.php:79 login.php:116
+#: admin.php:624 admin_site_upgrade.php:79 login.php:116
 msgid "A new version of webtrees is available."
 msgstr "Доступна новая версия webtrees."
 
@@ -1286,12 +1286,12 @@ msgctxt "NOMINATIVE"
 msgid "Adar II"
 msgstr "адар II"
 
-#: edit_interface.php:2033 index_edit.php:329 index_edit.php:346
+#: edit_interface.php:2013 index_edit.php:329 index_edit.php:346
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:170
 msgid "Add"
 msgstr "Добавить"
 
-#: app/Module/ClippingsCartModule.php:724
+#: app/Module/ClippingsCartModule.php:737
 #, php-format
 msgid "Add %s to the clippings cart"
 msgstr "Добавить %s в корзину"
@@ -1304,11 +1304,11 @@ msgstr "Добавить пустую строку"
 msgid "Add a brother or sister"
 msgstr "Добавить нового брата или сестру"
 
-#: edit_interface.php:516
+#: edit_interface.php:496
 msgid "Add a child"
 msgstr "Добавить нового ребенка"
 
-#: app/Module/RelativesTabModule.php:398 edit_interface.php:595
+#: app/Module/RelativesTabModule.php:398 edit_interface.php:575
 msgid "Add a child to create a one-parent family"
 msgstr "Добавить ребенка создав неполную семью"
 
@@ -1320,7 +1320,7 @@ msgstr "Добавить ребёнка к этой семье"
 msgid "Add a fact"
 msgstr "Добавить факт"
 
-#: app/Module/RelativesTabModule.php:326 edit_interface.php:675 family.php:92
+#: app/Module/RelativesTabModule.php:326 edit_interface.php:655 family.php:92
 msgid "Add a father"
 msgstr "Добавить отца"
 
@@ -1332,8 +1332,8 @@ msgstr "Добавить в избранное"
 msgid "Add a geographic location"
 msgstr "Добавить новое географическое расположение"
 
-#: app/Module/RelativesTabModule.php:387 edit_interface.php:810
-#: edit_interface.php:900
+#: app/Module/RelativesTabModule.php:387 edit_interface.php:790
+#: edit_interface.php:880
 msgid "Add a husband"
 msgstr "Добавить нового мужа"
 
@@ -1341,8 +1341,8 @@ msgstr "Добавить нового мужа"
 msgid "Add a husband to this family"
 msgstr "Добавить супруга в эту семью"
 
-#: app/Module/RelativesTabModule.php:392 edit_interface.php:1084
-#: edit_interface.php:1156
+#: app/Module/RelativesTabModule.php:392 edit_interface.php:1064
+#: edit_interface.php:1136
 msgid "Add a husband using an existing individual"
 msgstr "Добавить мужа из уже имеющеихся персон"
 
@@ -1356,11 +1356,11 @@ msgstr "Добавить новую заметку в дневник"
 msgid "Add a media object"
 msgstr "Добавить новый медиаобъект"
 
-#: app/Module/RelativesTabModule.php:329 edit_interface.php:672 family.php:96
+#: app/Module/RelativesTabModule.php:329 edit_interface.php:652 family.php:96
 msgid "Add a mother"
 msgstr "Добавить мать"
 
-#: app/Controller/IndividualController.php:276 edit_interface.php:1655
+#: app/Controller/IndividualController.php:276 edit_interface.php:1635
 msgid "Add a name"
 msgstr "Добавить новое имя"
 
@@ -1400,7 +1400,7 @@ msgstr "Добавить нового сына или дочь"
 msgid "Add a source citation"
 msgstr "Добавить новую цитату из источника"
 
-#: edit_interface.php:837
+#: edit_interface.php:817
 msgid "Add a spouse"
 msgstr "Добавить нового супруга(у)"
 
@@ -1414,8 +1414,8 @@ msgstr "Добавить историю"
 msgid "Add a user"
 msgstr "Добавить нового пользователя"
 
-#: app/Module/RelativesTabModule.php:375 edit_interface.php:807
-#: edit_interface.php:897
+#: app/Module/RelativesTabModule.php:375 edit_interface.php:787
+#: edit_interface.php:877
 msgid "Add a wife"
 msgstr "Добавить жену"
 
@@ -1423,8 +1423,8 @@ msgstr "Добавить жену"
 msgid "Add a wife to this family"
 msgstr "Добавить супругу в эту семью"
 
-#: app/Module/RelativesTabModule.php:380 edit_interface.php:1087
-#: edit_interface.php:1158
+#: app/Module/RelativesTabModule.php:380 edit_interface.php:1067
+#: edit_interface.php:1138
 msgid "Add a wife using an existing individual"
 msgstr "Добавить жену из уже имеющеихся персон"
 
@@ -1480,8 +1480,8 @@ msgid "Add spaces where long lines were wrapped"
 msgstr "Добавить пространства, где были завернуты длинные строки"
 
 #. I18N: A media path (e.g. C:\aaa\bbb\ccc\) in a GEDCOM file
-#: admin_trees_download.php:160 app/Module/ClippingsCartModule.php:422
-#: app/Module/ClippingsCartModule.php:785
+#: admin_trees_download.php:160 app/Module/ClippingsCartModule.php:435
+#: app/Module/ClippingsCartModule.php:798
 msgid "Add the GEDCOM media path to filenames"
 msgstr "Добавить медиапуть в именах файлов GEDCOM"
 
@@ -1495,12 +1495,12 @@ msgstr "Добавить к TITLE-тегу"
 msgid "Add to favorites"
 msgstr "Добавить в избранное"
 
-#: app/Module/ClippingsCartModule.php:106
-#: app/Module/ClippingsCartModule.php:151
-#: app/Module/ClippingsCartModule.php:274
-#: app/Module/ClippingsCartModule.php:320
-#: app/Module/ClippingsCartModule.php:446
-#: app/Module/ClippingsCartModule.php:562
+#: app/Module/ClippingsCartModule.php:119
+#: app/Module/ClippingsCartModule.php:164
+#: app/Module/ClippingsCartModule.php:287
+#: app/Module/ClippingsCartModule.php:333
+#: app/Module/ClippingsCartModule.php:459
+#: app/Module/ClippingsCartModule.php:575
 msgid "Add to the clippings cart"
 msgstr "Добавить фрагмент в корзину"
 
@@ -1557,7 +1557,7 @@ msgstr "Аккаунт администратора"
 msgid "Administrator comments on user"
 msgstr "Комментарий администратора"
 
-#: admin.php:674
+#: admin.php:666
 msgid "Administrators"
 msgstr "Администраторы"
 
@@ -2098,10 +2098,10 @@ msgstr "Апиа, Самоа"
 msgid "Apply automatic corrections to your genealogy data."
 msgstr "Применить автоматические изменения в ваших генеалогических данных."
 
-#: admin_trees_download.php:172 app/Module/ClippingsCartModule.php:383
-#: app/Module/ClippingsCartModule.php:402
-#: app/Module/ClippingsCartModule.php:764
-#: app/Module/ClippingsCartModule.php:773
+#: admin_trees_download.php:172 app/Module/ClippingsCartModule.php:396
+#: app/Module/ClippingsCartModule.php:415
+#: app/Module/ClippingsCartModule.php:777
+#: app/Module/ClippingsCartModule.php:786
 msgid "Apply privacy settings"
 msgstr "Применить права доступа"
 
@@ -2128,27 +2128,27 @@ msgstr "Утверждено"
 msgid "Approved by administrator"
 msgstr "Одобрено администратором"
 
-#: app/Date/CalendarDate.php:314
+#: app/Date/CalendarDate.php:324
 msgctxt "Abbreviation for April"
 msgid "Apr"
 msgstr "Апр"
 
-#: app/Date/CalendarDate.php:214
+#: app/Date/CalendarDate.php:224
 msgctxt "GENITIVE"
 msgid "April"
 msgstr "апреля"
 
-#: app/Date/CalendarDate.php:282
+#: app/Date/CalendarDate.php:292
 msgctxt "INSTRUMENTAL"
 msgid "April"
 msgstr "апрелем"
 
-#: app/Date/CalendarDate.php:248
+#: app/Date/CalendarDate.php:258
 msgctxt "LOCATIVE"
 msgid "April"
 msgstr "апреля"
 
-#: app/Date/CalendarDate.php:180 app/Functions/FunctionsPrint.php:648
+#: app/Date/CalendarDate.php:190 app/Functions/FunctionsPrint.php:648
 msgctxt "NOMINATIVE"
 msgid "April"
 msgstr "апрель"
@@ -2252,7 +2252,7 @@ msgstr "Азия"
 msgid "Associate"
 msgstr "Знакомые"
 
-#: edit_interface.php:1241 help_text.php:292
+#: edit_interface.php:1221 help_text.php:292
 msgid "Associate events with this source"
 msgstr "Связать факты с этим источником"
 
@@ -2308,27 +2308,27 @@ msgstr "Прислуга"
 msgid "Audio"
 msgstr "Аудио"
 
-#: app/Date/CalendarDate.php:318
+#: app/Date/CalendarDate.php:328
 msgctxt "Abbreviation for August"
 msgid "Aug"
 msgstr "Авг"
 
-#: app/Date/CalendarDate.php:218
+#: app/Date/CalendarDate.php:228
 msgctxt "GENITIVE"
 msgid "August"
 msgstr "августа"
 
-#: app/Date/CalendarDate.php:286
+#: app/Date/CalendarDate.php:296
 msgctxt "INSTRUMENTAL"
 msgid "August"
 msgstr "августом"
 
-#: app/Date/CalendarDate.php:252
+#: app/Date/CalendarDate.php:262
 msgctxt "LOCATIVE"
 msgid "August"
 msgstr "августа"
 
-#: app/Date/CalendarDate.php:184 app/Functions/FunctionsPrint.php:652
+#: app/Date/CalendarDate.php:194 app/Functions/FunctionsPrint.php:652
 msgctxt "NOMINATIVE"
 msgid "August"
 msgstr "август"
@@ -3482,12 +3482,12 @@ msgstr "Удостоверение"
 msgid "Chad"
 msgstr "Чад"
 
-#: edit_interface.php:1953 edit_interface.php:1989 edit_interface.php:2016
+#: edit_interface.php:1933 edit_interface.php:1969 edit_interface.php:1996
 msgid "Change"
 msgstr "Изменить"
 
-#: app/Controller/FamilyController.php:77 edit_interface.php:1906
-#: edit_interface.php:2069
+#: app/Controller/FamilyController.php:77 edit_interface.php:1886
+#: edit_interface.php:2049
 msgid "Change family members"
 msgstr "Редактировать членов семьи"
 
@@ -3843,7 +3843,7 @@ msgid "Cleared but not yet completed"
 msgstr "Уточнено, но еще не завершена"
 
 #. I18N: Name of a module
-#: app/Module/ClippingsCartModule.php:37
+#: app/Module/ClippingsCartModule.php:38
 msgid "Clippings cart"
 msgstr "Корзина вырезок"
 
@@ -4016,8 +4016,8 @@ msgstr "Продолжение"
 msgid "Control panel"
 msgstr "Панель управления"
 
-#: admin_trees_download.php:150 app/Module/ClippingsCartModule.php:413
-#: app/Module/ClippingsCartModule.php:781
+#: admin_trees_download.php:150 app/Module/ClippingsCartModule.php:426
+#: app/Module/ClippingsCartModule.php:794
 msgid "Convert from UTF-8 to ISO-8859-1"
 msgstr "Преобразовать из UTF-8 в ISO-8859-1"
 
@@ -4130,13 +4130,13 @@ msgstr "Создать новое генеалогическое дерево"
 msgid "Create a media object"
 msgstr "Создать новый медиаобъект"
 
-#: app/Functions/FunctionsEdit.php:428 edit_interface.php:1512
-#: edit_interface.php:1575
+#: app/Functions/FunctionsEdit.php:428 edit_interface.php:1492
+#: edit_interface.php:1555
 msgid "Create a repository"
 msgstr "Создать архив"
 
-#: app/Functions/FunctionsEdit.php:439 edit_interface.php:1348
-#: edit_interface.php:1384
+#: app/Functions/FunctionsEdit.php:439 edit_interface.php:1328
+#: edit_interface.php:1364
 msgid "Create a shared note"
 msgstr "Создать новое Общее Примечание"
 
@@ -4146,8 +4146,8 @@ msgstr "Создать новое Общее Примечание"
 msgid "Create a shared note using the census assistant"
 msgstr "Создать новое Общее Примечание с использованием Ассистента"
 
-#: app/Functions/FunctionsEdit.php:461 edit_interface.php:1196
-#: edit_interface.php:1279
+#: app/Functions/FunctionsEdit.php:461 edit_interface.php:1176
+#: edit_interface.php:1259
 msgid "Create a source"
 msgstr "Создать новый источник"
 
@@ -4155,7 +4155,7 @@ msgstr "Создать новый источник"
 msgid "Create a website access rule"
 msgstr "Создать правила доступа к сайту"
 
-#: edit_interface.php:750
+#: edit_interface.php:730
 msgid "Create an individual"
 msgstr "Создать новую персону"
 
@@ -4893,7 +4893,7 @@ msgstr "Смерти"
 msgid "Deaths by century"
 msgstr "Смерти по столетиям"
 
-#: app/Date/CalendarDate.php:322
+#: app/Date/CalendarDate.php:332
 msgctxt "Abbreviation for December"
 msgid "Dec"
 msgstr "Дек"
@@ -4911,22 +4911,22 @@ msgstr "Кончины по десятилетиям"
 msgid "Decade of marriage"
 msgstr "Вступления в брак по десятилетиям"
 
-#: app/Date/CalendarDate.php:222
+#: app/Date/CalendarDate.php:232
 msgctxt "GENITIVE"
 msgid "December"
 msgstr "декабря"
 
-#: app/Date/CalendarDate.php:290
+#: app/Date/CalendarDate.php:300
 msgctxt "INSTRUMENTAL"
 msgid "December"
 msgstr "декабрём"
 
-#: app/Date/CalendarDate.php:256
+#: app/Date/CalendarDate.php:266
 msgctxt "LOCATIVE"
 msgid "December"
 msgstr "декабря"
 
-#: app/Date/CalendarDate.php:188 app/Functions/FunctionsPrint.php:656
+#: app/Date/CalendarDate.php:198 app/Functions/FunctionsPrint.php:656
 msgctxt "NOMINATIVE"
 msgid "December"
 msgstr "декабрь"
@@ -5334,9 +5334,9 @@ msgstr "Доминика"
 msgid "Dominican Republic"
 msgstr "Доминиканская республика"
 
-#: app/Module/ClippingsCartModule.php:359
-#: app/Module/ClippingsCartModule.php:719
-#: app/Module/ClippingsCartModule.php:754
+#: app/Module/ClippingsCartModule.php:372
+#: app/Module/ClippingsCartModule.php:732
+#: app/Module/ClippingsCartModule.php:767
 msgid "Download"
 msgstr "Скачать"
 
@@ -5474,7 +5474,7 @@ msgid "Edit the media object"
 msgstr "Редактировать медиаобъект"
 
 #: app/Controller/IndividualController.php:168
-#: app/Functions/FunctionsEdit.php:699 edit_interface.php:1640
+#: app/Functions/FunctionsEdit.php:699 edit_interface.php:1620
 msgid "Edit the name"
 msgstr "Редактировать имя"
 
@@ -5489,7 +5489,7 @@ msgstr "Редактировать примечание"
 #: app/Controller/RepositoryController.php:63
 #: app/Controller/SourceController.php:60 edit_interface.php:51
 #: edit_interface.php:112 edit_interface.php:162 edit_interface.php:224
-#: edit_interface.php:319 edit_interface.php:2579 help_text.php:284
+#: edit_interface.php:319 edit_interface.php:2559 help_text.php:284
 msgid "Edit the raw GEDCOM"
 msgstr "Редактировать запись в формате GEDCOM"
 
@@ -5498,8 +5498,8 @@ msgstr "Редактировать запись в формате GEDCOM"
 msgid "Edit the repository"
 msgstr "Редактировать архив"
 
-#: app/Functions/FunctionsEdit.php:450 edit_interface.php:1444
-#: edit_interface.php:1490
+#: app/Functions/FunctionsEdit.php:450 edit_interface.php:1424
+#: edit_interface.php:1470
 msgid "Edit the shared note"
 msgstr "Редактировать общее примечание"
 
@@ -5637,8 +5637,8 @@ msgctxt "MALE"
 msgid "Employer"
 msgstr "Работодатель"
 
-#: app/Module/ClippingsCartModule.php:468
-#: app/Module/ClippingsCartModule.php:715
+#: app/Module/ClippingsCartModule.php:481
+#: app/Module/ClippingsCartModule.php:728
 msgid "Empty the clippings cart"
 msgstr "Очистить корзину"
 
@@ -5975,7 +5975,7 @@ msgid "Falkland Islands"
 msgstr "Фолклендские острова"
 
 #. I18N: Name of a module
-#: admin.php:777 admin.php:817 admin_trees_duplicates.php:143 ancestry.php:87
+#: admin.php:769 admin.php:809 admin_trees_duplicates.php:143 ancestry.php:87
 #: app/Controller/SearchController.php:522
 #: app/Functions/FunctionsPrintLists.php:1043
 #: app/Functions/FunctionsPrintLists.php:1168
@@ -6002,7 +6002,7 @@ msgstr "Семьи с источниками"
 #: app/Controller/PedigreeController.php:266
 #: app/Functions/FunctionsEdit.php:868 app/GedcomTag.php:444
 #: app/Module/FamilyGroupReportModule.php:29
-#: app/Module/FamilyNavigatorModule.php:263 edit_interface.php:997
+#: app/Module/FamilyNavigatorModule.php:263 edit_interface.php:977
 #: inverselink.php:107 modules_v3/family_group_report/report.xml:3
 #: modules_v3/family_group_report/report.xml:6
 #: modules_v3/family_group_report/report.xml:88
@@ -6047,7 +6047,7 @@ msgid "Family list"
 msgstr "Список семей"
 
 #. I18N: Name of a module/sidebar
-#: app/Module/FamilyNavigatorModule.php:34 edit_interface.php:1417
+#: app/Module/FamilyNavigatorModule.php:34 edit_interface.php:1397
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:107
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:527
 msgid "Family navigator"
@@ -6064,7 +6064,7 @@ msgstr "Новости и объявления сайта."
 msgid "Family of %s"
 msgstr "Семья %s"
 
-#: admin.php:774 admin_site_change.php:358 admin_site_change.php:392
+#: admin.php:766 admin_site_change.php:358 admin_site_change.php:392
 #: admin_site_logs.php:298 admin_site_logs.php:332 admin_trees_manage.php:380
 #: admin_users.php:575 app/Module/BatchUpdateModule.php:204
 #: app/Module/FrequentlyAskedQuestionsModule.php:217
@@ -6075,7 +6075,8 @@ msgstr "Семья %s"
 msgid "Family tree"
 msgstr "Дерево"
 
-#: app/Module/ClippingsCartModule.php:90 app/Module/ClippingsCartModule.php:479
+#: app/Module/ClippingsCartModule.php:103
+#: app/Module/ClippingsCartModule.php:492
 msgid "Family tree clippings cart"
 msgstr "Корзина вырезок генеалогического дерева"
 
@@ -6084,7 +6085,7 @@ msgid "Family tree title"
 msgstr "Название генеалогического дерева"
 
 #. I18N: Menu entry
-#: admin.php:762 admin.php:770 app/Theme/AbstractTheme.php:1398
+#: admin.php:754 admin.php:762 app/Theme/AbstractTheme.php:1398
 #: app/Theme/AdministrationTheme.php:114 search.php:127 search.php:284
 msgid "Family trees"
 msgstr "Семейные деревья"
@@ -6224,27 +6225,27 @@ msgstr "Избранное"
 msgid "Fax"
 msgstr "Факс"
 
-#: app/Date/CalendarDate.php:312
+#: app/Date/CalendarDate.php:322
 msgctxt "Abbreviation for February"
 msgid "Feb"
 msgstr "Фев"
 
-#: app/Date/CalendarDate.php:212
+#: app/Date/CalendarDate.php:222
 msgctxt "GENITIVE"
 msgid "February"
 msgstr "февраля"
 
-#: app/Date/CalendarDate.php:280
+#: app/Date/CalendarDate.php:290
 msgctxt "INSTRUMENTAL"
 msgid "February"
 msgstr "февралём"
 
-#: app/Date/CalendarDate.php:246
+#: app/Date/CalendarDate.php:256
 msgctxt "LOCATIVE"
 msgid "February"
 msgstr "февраля"
 
-#: app/Date/CalendarDate.php:178 app/Functions/FunctionsPrint.php:646
+#: app/Date/CalendarDate.php:188 app/Functions/FunctionsPrint.php:646
 msgctxt "NOMINATIVE"
 msgid "February"
 msgstr "февраль"
@@ -6301,7 +6302,7 @@ msgstr "Имена файлов не могут содержать символ 
 msgid "Filenames are not allowed to have the extension “%s”."
 msgstr "Имена файлов не могут иметь расширение «%s»."
 
-#: admin.php:901
+#: admin.php:893
 msgid "Files have been found from a previous version of webtrees. Old files can sometimes be a security risk. You should delete them."
 msgstr "Были найдены файлы с предыдущей версии webtrees. Старые файлы иногда могут представлять угрозу безопасности. Вы должны удалить их."
 
@@ -6596,11 +6597,11 @@ msgid "Fresno, California, United States"
 msgstr "Фресно, Калифорния"
 
 #. I18N: abbreviation for Friday
-#: app/Date/CalendarDate.php:370 app/Functions/FunctionsPrint.php:664
+#: app/Date/CalendarDate.php:380 app/Functions/FunctionsPrint.php:664
 msgid "Fri"
 msgstr "Пт"
 
-#: app/Date/CalendarDate.php:345
+#: app/Date/CalendarDate.php:355
 msgid "Friday"
 msgstr "Пятница"
 
@@ -7261,7 +7262,7 @@ msgid "Hungary"
 msgstr "Венгрия"
 
 #. I18N: gedcom tag HUSB
-#: app/GedcomTag.php:516 edit_interface.php:1085
+#: app/GedcomTag.php:516 edit_interface.php:1065
 #: modules_v3/cemetery_report/report.xml:7
 #: modules_v3/death_report/report.xml:10
 #: modules_v3/family_group_report/report.xml:147
@@ -7497,8 +7498,8 @@ msgstr "Показать места с известными координата
 msgid "Include individuals with “%s” as a married name"
 msgstr "Включать персоны с фамилией «%s» после замужества"
 
-#: app/Module/ClippingsCartModule.php:373
-#: app/Module/ClippingsCartModule.php:758
+#: app/Module/ClippingsCartModule.php:386
+#: app/Module/ClippingsCartModule.php:771
 msgid "Include media (automatically zips files)"
 msgstr "Включая медиафайлы (автоматически архивирует файлы в ZIP)"
 
@@ -7578,7 +7579,7 @@ msgstr "Персональная запись"
 msgid "Individual who lived the longest"
 msgstr "Долгожитель"
 
-#: admin.php:776 admin.php:807 admin_trees_duplicates.php:142 ancestry.php:81
+#: admin.php:768 admin.php:799 admin_trees_duplicates.php:142 ancestry.php:81
 #: app/Controller/SearchController.php:519
 #: app/Functions/FunctionsPrintLists.php:1042
 #: app/Functions/FunctionsPrintLists.php:1167
@@ -7752,27 +7753,27 @@ msgstr "Джалали"
 msgid "Jamaica"
 msgstr "Ямайка"
 
-#: app/Date/CalendarDate.php:311
+#: app/Date/CalendarDate.php:321
 msgctxt "Abbreviation for January"
 msgid "Jan"
 msgstr "Янв"
 
-#: app/Date/CalendarDate.php:211
+#: app/Date/CalendarDate.php:221
 msgctxt "GENITIVE"
 msgid "January"
 msgstr "января"
 
-#: app/Date/CalendarDate.php:279
+#: app/Date/CalendarDate.php:289
 msgctxt "INSTRUMENTAL"
 msgid "January"
 msgstr "январём"
 
-#: app/Date/CalendarDate.php:245
+#: app/Date/CalendarDate.php:255
 msgctxt "LOCATIVE"
 msgid "January"
 msgstr "января"
 
-#: app/Date/CalendarDate.php:177 app/Functions/FunctionsPrint.php:645
+#: app/Date/CalendarDate.php:187 app/Functions/FunctionsPrint.php:645
 msgctxt "NOMINATIVE"
 msgid "January"
 msgstr "январь"
@@ -7812,7 +7813,7 @@ msgstr "Река Иордан, Юта"
 msgid "Journal"
 msgstr "Дневник"
 
-#: app/Date/CalendarDate.php:317
+#: app/Date/CalendarDate.php:327
 msgctxt "Abbreviation for July"
 msgid "Jul"
 msgstr "Июл"
@@ -7822,22 +7823,22 @@ msgstr "Июл"
 msgid "Julian"
 msgstr "Юлианский"
 
-#: app/Date/CalendarDate.php:217
+#: app/Date/CalendarDate.php:227
 msgctxt "GENITIVE"
 msgid "July"
 msgstr "июля"
 
-#: app/Date/CalendarDate.php:285
+#: app/Date/CalendarDate.php:295
 msgctxt "INSTRUMENTAL"
 msgid "July"
 msgstr "июлем"
 
-#: app/Date/CalendarDate.php:251
+#: app/Date/CalendarDate.php:261
 msgctxt "LOCATIVE"
 msgid "July"
 msgstr "июля"
 
-#: app/Date/CalendarDate.php:183 app/Functions/FunctionsPrint.php:651
+#: app/Date/CalendarDate.php:193 app/Functions/FunctionsPrint.php:651
 msgctxt "NOMINATIVE"
 msgid "July"
 msgstr "июль"
@@ -7890,27 +7891,27 @@ msgctxt "NOMINATIVE"
 msgid "Jumada al-thani"
 msgstr "Джумада ас-сани"
 
-#: app/Date/CalendarDate.php:316
+#: app/Date/CalendarDate.php:326
 msgctxt "Abbreviation for June"
 msgid "Jun"
 msgstr "Июн"
 
-#: app/Date/CalendarDate.php:216
+#: app/Date/CalendarDate.php:226
 msgctxt "GENITIVE"
 msgid "June"
 msgstr "июня"
 
-#: app/Date/CalendarDate.php:284
+#: app/Date/CalendarDate.php:294
 msgctxt "INSTRUMENTAL"
 msgid "June"
 msgstr "июнем"
 
-#: app/Date/CalendarDate.php:250
+#: app/Date/CalendarDate.php:260
 msgctxt "LOCATIVE"
 msgid "June"
 msgstr "июня"
 
-#: app/Date/CalendarDate.php:182 app/Functions/FunctionsPrint.php:650
+#: app/Date/CalendarDate.php:192 app/Functions/FunctionsPrint.php:650
 msgctxt "NOMINATIVE"
 msgid "June"
 msgstr "июнь"
@@ -7940,7 +7941,7 @@ msgstr "Сохранить медиаобъекты"
 
 #. I18N: A configuration setting
 #: addmedia.php:705 admin_trees_config.php:2131
-#: app/Module/BatchUpdate/BatchUpdateBasePlugin.php:62 edit_interface.php:2276
+#: app/Module/BatchUpdate/BatchUpdateBasePlugin.php:62 edit_interface.php:2256
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:545
 msgid "Keep the existing “last change” information"
 msgstr "Обновить «последние изменения» без подтверждения"
@@ -8287,8 +8288,8 @@ msgstr "Лима, Перу"
 msgid "Link the user account to an individual."
 msgstr "Связать учетную запись пользователя к человеку."
 
-#: app/Module/RelativesTabModule.php:369 edit_interface.php:983
-#: edit_interface.php:1043
+#: app/Module/RelativesTabModule.php:369 edit_interface.php:963
+#: edit_interface.php:1023
 msgid "Link this individual to an existing family as a child"
 msgstr "Присоединить к семье в качестве ребёнка"
 
@@ -8545,12 +8546,12 @@ msgstr "Редактировать связи"
 
 #. I18N: Listbox entry; name of a role
 #: admin_trees_download.php:183 admin_users.php:43 admin_users.php:557
-#: app/Module/ClippingsCartModule.php:390
-#: app/Module/ClippingsCartModule.php:767
+#: app/Module/ClippingsCartModule.php:403
+#: app/Module/ClippingsCartModule.php:780
 msgid "Manager"
 msgstr "Менеджер"
 
-#: admin.php:687
+#: admin.php:679
 msgid "Managers"
 msgstr "Менеджеры"
 
@@ -8596,27 +8597,27 @@ msgstr "Многие почтовые серверы требуют, чтобы 
 msgid "Map"
 msgstr "Карта"
 
-#: app/Date/CalendarDate.php:313
+#: app/Date/CalendarDate.php:323
 msgctxt "Abbreviation for March"
 msgid "Mar"
 msgstr "Мар"
 
-#: app/Date/CalendarDate.php:213
+#: app/Date/CalendarDate.php:223
 msgctxt "GENITIVE"
 msgid "March"
 msgstr "марта"
 
-#: app/Date/CalendarDate.php:281
+#: app/Date/CalendarDate.php:291
 msgctxt "INSTRUMENTAL"
 msgid "March"
 msgstr "мартом"
 
-#: app/Date/CalendarDate.php:247
+#: app/Date/CalendarDate.php:257
 msgctxt "LOCATIVE"
 msgid "March"
 msgstr "марта"
 
-#: app/Date/CalendarDate.php:179 app/Functions/FunctionsPrint.php:647
+#: app/Date/CalendarDate.php:189 app/Functions/FunctionsPrint.php:647
 msgctxt "NOMINATIVE"
 msgid "March"
 msgstr "март"
@@ -8918,27 +8919,27 @@ msgstr "Максимальное число генераций"
 msgid "Maximum upload size: "
 msgstr "Максимальный размер загужаемого файла: "
 
-#: app/Date/CalendarDate.php:315
+#: app/Date/CalendarDate.php:325
 msgctxt "Abbreviation for May"
 msgid "May"
 msgstr "Май"
 
-#: app/Date/CalendarDate.php:215
+#: app/Date/CalendarDate.php:225
 msgctxt "GENITIVE"
 msgid "May"
 msgstr "мая"
 
-#: app/Date/CalendarDate.php:283
+#: app/Date/CalendarDate.php:293
 msgctxt "INSTRUMENTAL"
 msgid "May"
 msgstr "маем"
 
-#: app/Date/CalendarDate.php:249
+#: app/Date/CalendarDate.php:259
 msgctxt "LOCATIVE"
 msgid "May"
 msgstr "мая"
 
-#: app/Date/CalendarDate.php:181 app/Functions/FunctionsPrint.php:649
+#: app/Date/CalendarDate.php:191 app/Functions/FunctionsPrint.php:649
 msgctxt "NOMINATIVE"
 msgid "May"
 msgstr "май"
@@ -8955,7 +8956,7 @@ msgstr "Медфорд, Орегон"
 
 #. I18N: Name of a module
 #. I18N: Menu entry
-#: admin.php:780 admin_media.php:692 app/Functions/FunctionsPrintLists.php:1348
+#: admin.php:772 admin_media.php:692 app/Functions/FunctionsPrintLists.php:1348
 #: app/Module/MediaTabModule.php:35 app/Theme/AdministrationTheme.php:177
 #: inverselink.php:70
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:74
@@ -9000,7 +9001,7 @@ msgstr "Медиапапки"
 msgid "Media object"
 msgstr "Медиаобъект"
 
-#: admin.php:847 admin_trees_duplicates.php:144
+#: admin.php:839 admin_trees_duplicates.php:144
 #: app/Functions/FunctionsPrintLists.php:1044
 #: app/Functions/FunctionsPrintLists.php:1169
 #: app/Module/FamilyTreeStatisticsModule.php:121
@@ -9081,10 +9082,10 @@ msgstr "Мельбурн, Австралия"
 
 #. I18N: Listbox entry; name of a role
 #: admin_trees_download.php:188 admin_users.php:40 admin_users.php:535
-#: app/Module/ClippingsCartModule.php:393
-#: app/Module/ClippingsCartModule.php:405
-#: app/Module/ClippingsCartModule.php:768
-#: app/Module/ClippingsCartModule.php:775
+#: app/Module/ClippingsCartModule.php:406
+#: app/Module/ClippingsCartModule.php:418
+#: app/Module/ClippingsCartModule.php:781
+#: app/Module/ClippingsCartModule.php:788
 msgid "Member"
 msgstr "Участник"
 
@@ -9234,7 +9235,7 @@ msgstr "Модерировать изменения"
 msgid "Moderator"
 msgstr "Модератор"
 
-#: admin.php:700
+#: admin.php:692
 msgid "Moderators"
 msgstr "Модераторы"
 
@@ -9268,7 +9269,7 @@ msgid "Moldova"
 msgstr "Молдавия"
 
 #. I18N: abbreviation for Monday
-#: app/Date/CalendarDate.php:366 app/Functions/FunctionsPrint.php:660
+#: app/Date/CalendarDate.php:376 app/Functions/FunctionsPrint.php:660
 msgid "Mon"
 msgstr "Пн"
 
@@ -9277,7 +9278,7 @@ msgstr "Пн"
 msgid "Monaco"
 msgstr "Монако"
 
-#: app/Date/CalendarDate.php:341
+#: app/Date/CalendarDate.php:351
 msgid "Monday"
 msgstr "Понедельник"
 
@@ -9945,7 +9946,7 @@ msgstr "Нет ни зарегистрированных, ни анонимны�
 msgid "No temple - living ordinance"
 msgstr "Храм мормонов не указан - живое руководство"
 
-#: admin.php:630 admin_site_upgrade.php:61
+#: admin.php:622 admin_site_upgrade.php:61
 msgid "No upgrade information is available."
 msgstr "Информация об обновлении недоступна."
 
@@ -9958,8 +9959,8 @@ msgstr "Нет никого"
 msgid "Nocturnal"
 msgstr "Ночной"
 
-#: admin_trees_download.php:178 app/Module/ClippingsCartModule.php:387
-#: app/Module/ClippingsCartModule.php:766
+#: admin_trees_download.php:178 app/Module/ClippingsCartModule.php:400
+#: app/Module/ClippingsCartModule.php:779
 #: app/Module/FamiliesSidebarModule.php:156
 #: app/Module/IndividualSidebarModule.php:157 app/Stats.php:1356
 #: famlist.php:113 famlist.php:143 indilist.php:113 indilist.php:143
@@ -10013,7 +10014,7 @@ msgstr "Норвегия"
 msgid "Not a valid individual, family, or source ID"
 msgstr "Несуществующий номер записи"
 
-#: admin.php:726
+#: admin.php:718
 msgid "Not approved by an administrator"
 msgstr "Не утверждено администратором"
 
@@ -10039,7 +10040,7 @@ msgctxt "MALE"
 msgid "Not married"
 msgstr "Холостой"
 
-#: admin.php:713
+#: admin.php:705
 msgid "Not verified by the user"
 msgstr "Не прошли самопроверку"
 
@@ -10080,27 +10081,27 @@ msgstr "Ничего не найдено для удаления"
 msgid "Nothing found."
 msgstr "Ничего не найдено."
 
-#: app/Date/CalendarDate.php:321
+#: app/Date/CalendarDate.php:331
 msgctxt "Abbreviation for November"
 msgid "Nov"
 msgstr "Ноя"
 
-#: app/Date/CalendarDate.php:221
+#: app/Date/CalendarDate.php:231
 msgctxt "GENITIVE"
 msgid "November"
 msgstr "ноября"
 
-#: app/Date/CalendarDate.php:289
+#: app/Date/CalendarDate.php:299
 msgctxt "INSTRUMENTAL"
 msgid "November"
 msgstr "ноябрём"
 
-#: app/Date/CalendarDate.php:255
+#: app/Date/CalendarDate.php:265
 msgctxt "LOCATIVE"
 msgid "November"
 msgstr "ноября"
 
-#: app/Date/CalendarDate.php:187 app/Functions/FunctionsPrint.php:655
+#: app/Date/CalendarDate.php:197 app/Functions/FunctionsPrint.php:655
 msgctxt "NOMINATIVE"
 msgid "November"
 msgstr "ноябрь"
@@ -10126,9 +10127,9 @@ msgstr "Количество дней"
 msgid "Number of families without children"
 msgstr "Число бездетных семей"
 
-#: app/Module/ClippingsCartModule.php:211
-#: app/Module/ClippingsCartModule.php:230
-#: app/Module/ClippingsCartModule.php:249
+#: app/Module/ClippingsCartModule.php:224
+#: app/Module/ClippingsCartModule.php:243
+#: app/Module/ClippingsCartModule.php:262
 msgid "Number of generations"
 msgstr "Число поколений"
 
@@ -10199,7 +10200,7 @@ msgstr "Профессии"
 msgid "Occupied Palestinian Territory"
 msgstr "Оккупированная Палестинская Территория"
 
-#: app/Date/CalendarDate.php:320
+#: app/Date/CalendarDate.php:330
 msgctxt "Abbreviation for October"
 msgid "Oct"
 msgstr "Окт"
@@ -10209,22 +10210,22 @@ msgstr "Окт"
 msgid "Octidi"
 msgstr "Октиди"
 
-#: app/Date/CalendarDate.php:220
+#: app/Date/CalendarDate.php:230
 msgctxt "GENITIVE"
 msgid "October"
 msgstr "октября"
 
-#: app/Date/CalendarDate.php:288
+#: app/Date/CalendarDate.php:298
 msgctxt "INSTRUMENTAL"
 msgid "October"
 msgstr "октябрём"
 
-#: app/Date/CalendarDate.php:254
+#: app/Date/CalendarDate.php:264
 msgctxt "LOCATIVE"
 msgid "October"
 msgstr "октября"
 
-#: app/Date/CalendarDate.php:186 app/Functions/FunctionsPrint.php:654
+#: app/Date/CalendarDate.php:196 app/Functions/FunctionsPrint.php:654
 msgctxt "NOMINATIVE"
 msgid "October"
 msgstr "октябрь"
@@ -10243,7 +10244,7 @@ msgstr "Оклахома-Сити, Оклахома"
 msgid "Old data"
 msgstr "Прежние данные"
 
-#: admin.php:894
+#: admin.php:886
 msgid "Old files found"
 msgstr "Найдены старые файлы"
 
@@ -10618,7 +10619,7 @@ msgid "Pedigree tree of %s"
 msgstr "Родословное дерево для %s"
 
 #. I18N: Name of a module
-#: admin.php:775 admin.php:797 admin_site_upgrade.php:100
+#: admin.php:767 admin.php:789 admin_site_upgrade.php:100
 #: app/Module/ReviewChangesModule.php:37 app/Module/ReviewChangesModule.php:86
 #: app/Theme/AbstractTheme.php:1678 edit_changes.php:35 edit_changes.php:49
 #: help_text.php:302 modules_v3/change_report/report.xml:52
@@ -11116,8 +11117,8 @@ msgstr "Ограничения доступа"
 msgid "Privacy restrictions - these apply to records and facts that do not contain a GEDCOM RESN tag"
 msgstr "Ограничения доступа - эти настройки влияют на записи и факты без GEDCOM-тега RESN"
 
-#: app/Controller/GedcomRecordController.php:92 app/GedcomRecord.php:532
-#: app/GedcomRecord.php:610 app/GedcomRecord.php:735 app/Individual.php:1309
+#: app/Controller/GedcomRecordController.php:92 app/GedcomRecord.php:531
+#: app/GedcomRecord.php:609 app/GedcomRecord.php:734 app/Individual.php:1309
 #: app/Module/GoogleMapsModule.php:784 app/Note.php:71
 #: app/Report/ReportParserGenerate.php:847 app/Repository.php:50
 #: app/Source.php:54 app/Stats.php:1467 app/Stats.php:2972 expand_view.php:33
@@ -11325,20 +11326,20 @@ msgid "Random images from the current family tree."
 msgstr "Произвольные изображения из текущего фамильного дерева."
 
 #: app/Controller/FamilyController.php:88 app/Module/RelativesTabModule.php:279
-#: edit_interface.php:1799 edit_interface.php:1869
+#: edit_interface.php:1779 edit_interface.php:1849
 msgid "Re-order children"
 msgstr "Пересортировать детей"
 
 #: app/Controller/IndividualController.php:297
-#: app/Module/RelativesTabModule.php:363 edit_interface.php:2174
-#: edit_interface.php:2224
+#: app/Module/RelativesTabModule.php:363 edit_interface.php:2154
+#: edit_interface.php:2204
 msgid "Re-order families"
 msgstr "Изменить порядок семей"
 
 #. I18N: gedcom tag _WT_OBJE_SORT
 #: app/GedcomTag.php:1767 app/Module/AlbumModule.php:110
-#: app/Module/AlbumModule.php:111 edit_interface.php:1671
-#: edit_interface.php:1718 edit_interface.php:1764
+#: app/Module/AlbumModule.php:111 edit_interface.php:1651
+#: edit_interface.php:1698 edit_interface.php:1744
 msgid "Re-order media"
 msgstr "Пересортировать медиаобъекты"
 
@@ -11363,7 +11364,7 @@ msgstr "Ресифе, Бразилия"
 
 #: admin_site_change.php:328 admin_site_change.php:389
 #: admin_trees_config.php:526 app/Functions/FunctionsPrintLists.php:1680
-#: app/Module/ClippingsCartModule.php:484
+#: app/Module/ClippingsCartModule.php:497
 #: app/Module/RecentChangesModule.php:322 app/Module/ResearchTaskModule.php:109
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:103
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:524
@@ -11521,11 +11522,11 @@ msgstr "Удалённый сервер"
 
 #: app/Module/CensusAssistantModule.php:386
 #: app/Module/CensusAssistantModule.php:407
-#: app/Module/ClippingsCartModule.php:485
-#: app/Module/ClippingsCartModule.php:524
-#: app/Module/ClippingsCartModule.php:705
-#: app/Module/FamilyTreeFavoritesModule.php:156 edit_interface.php:1948
-#: edit_interface.php:1984 edit_interface.php:2011 edit_interface.php:2030
+#: app/Module/ClippingsCartModule.php:498
+#: app/Module/ClippingsCartModule.php:537
+#: app/Module/ClippingsCartModule.php:718
+#: app/Module/FamilyTreeFavoritesModule.php:156 edit_interface.php:1928
+#: edit_interface.php:1964 edit_interface.php:1991 edit_interface.php:2010
 #: index_edit.php:327 index_edit.php:344
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:106
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:526
@@ -11596,7 +11597,7 @@ msgstr "Отчёт"
 msgid "Reports"
 msgstr "Отчёты"
 
-#: admin.php:779 admin.php:837 admin_trees_duplicates.php:140
+#: admin.php:771 admin.php:829 admin_trees_duplicates.php:140
 #: app/Module/FamilyTreeStatisticsModule.php:124
 #: app/Module/FamilyTreeStatisticsModule.php:384
 #: app/Module/HtmlBlockModule.php:199 app/Theme/AbstractTheme.php:1540
@@ -11619,7 +11620,7 @@ msgstr "Архив"
 msgid "Repository contains"
 msgstr "Архив содержит"
 
-#: app/Functions/FunctionsPrintLists.php:1260 edit_interface.php:1537
+#: app/Functions/FunctionsPrintLists.php:1260 edit_interface.php:1517
 msgid "Repository name"
 msgstr "Название архива"
 
@@ -11877,7 +11878,7 @@ msgid "Sao Tome and Principe"
 msgstr "Сан-Томе и Принсили"
 
 #. I18N: abbreviation for Saturday
-#: app/Date/CalendarDate.php:371 app/Functions/FunctionsPrint.php:665
+#: app/Date/CalendarDate.php:381 app/Functions/FunctionsPrint.php:665
 msgid "Sat"
 msgstr "Сб"
 
@@ -11885,7 +11886,7 @@ msgstr "Сб"
 msgid "Satellite"
 msgstr "Со спутника"
 
-#: app/Date/CalendarDate.php:346
+#: app/Date/CalendarDate.php:356
 msgid "Saturday"
 msgstr "Суббота"
 
@@ -11953,7 +11954,7 @@ msgstr "Найти и заменить"
 msgid "Search and replace text, using simple searches or advanced pattern matching."
 msgstr "Поиск и замена текста с использованием простого поиска и расширенный поиск по шаблону."
 
-#: includes/session.php:504
+#: includes/session.php:491
 msgid "Search engine"
 msgstr "Поисковая система"
 
@@ -12028,7 +12029,7 @@ msgstr "Выделите блок и нажмите на стрелочки дл
 msgid "Select a date"
 msgstr "Выбрать дату"
 
-#: edit_interface.php:1245
+#: edit_interface.php:1225
 msgid "Select events"
 msgstr "Выбрать факты"
 
@@ -12041,7 +12042,7 @@ msgid "Select individuals by place or date"
 msgstr "Выберите персон по месту или дате"
 
 #. I18N: Description of the “Clippings cart” module
-#: app/Module/ClippingsCartModule.php:43
+#: app/Module/ClippingsCartModule.php:44
 msgid "Select records from your family tree and save them as a GEDCOM file."
 msgstr "Выбор записей из Вашего семейного дерева и сохранения их в файле GEDCOM."
 
@@ -12136,7 +12137,7 @@ msgstr "Сенегал"
 msgid "Seoul, Korea"
 msgstr "Сеул, Карея"
 
-#: app/Date/CalendarDate.php:319
+#: app/Date/CalendarDate.php:329
 msgctxt "Abbreviation for September"
 msgid "Sep"
 msgstr "Сеп"
@@ -12146,22 +12147,22 @@ msgstr "Сеп"
 msgid "Separated"
 msgstr "В разводе"
 
-#: app/Date/CalendarDate.php:219
+#: app/Date/CalendarDate.php:229
 msgctxt "GENITIVE"
 msgid "September"
 msgstr "сентября"
 
-#: app/Date/CalendarDate.php:287
+#: app/Date/CalendarDate.php:297
 msgctxt "INSTRUMENTAL"
 msgid "September"
 msgstr "сентябрём"
 
-#: app/Date/CalendarDate.php:253
+#: app/Date/CalendarDate.php:263
 msgctxt "LOCATIVE"
 msgid "September"
 msgstr "сентября"
 
-#: app/Date/CalendarDate.php:185 app/Functions/FunctionsPrint.php:653
+#: app/Date/CalendarDate.php:195 app/Functions/FunctionsPrint.php:653
 msgctxt "NOMINATIVE"
 msgid "September"
 msgstr "сентябрь"
@@ -12191,7 +12192,7 @@ msgid "Servant"
 msgstr "Слуга"
 
 #. I18N: Menu entry
-#: admin.php:597 admin_site_info.php:26 app/Theme/AdministrationTheme.php:103
+#: admin.php:589 admin_site_info.php:26 app/Theme/AdministrationTheme.php:103
 msgid "Server information"
 msgstr "Информация о сервере"
 
@@ -12298,7 +12299,7 @@ msgid "Shahrivar"
 msgstr "Шахривар"
 
 #: admin_trees_manage.php:590 app/Controller/FamilyController.php:153
-#: app/GedcomTag.php:772 edit_interface.php:1364 edit_interface.php:1457
+#: app/GedcomTag.php:772 edit_interface.php:1344 edit_interface.php:1437
 #: inverselink.php:141 note.php:152 note.php:162
 msgid "Shared note"
 msgstr "Общее примечание"
@@ -13073,7 +13074,7 @@ msgid "Source type"
 msgstr "Тип источника"
 
 #. I18N: Name of a module
-#: admin.php:778 admin.php:827 admin_trees_duplicates.php:141
+#: admin.php:770 admin.php:819 admin_trees_duplicates.php:141
 #: app/Controller/SearchController.php:525
 #: app/Functions/FunctionsPrintLists.php:1170
 #: app/Functions/FunctionsPrintLists.php:1261
@@ -13312,16 +13313,16 @@ msgid "Suffixes"
 msgstr "Суффиксы"
 
 #. I18N: abbreviation for Sunday
-#: app/Date/CalendarDate.php:372 app/Functions/FunctionsPrint.php:659
+#: app/Date/CalendarDate.php:382 app/Functions/FunctionsPrint.php:659
 msgid "Sun"
 msgstr "Вс"
 
-#: app/Date/CalendarDate.php:347
+#: app/Date/CalendarDate.php:357
 msgid "Sunday"
 msgstr "Воскресенье"
 
 #. I18N: %s is a URL/link to the project website
-#: admin.php:625
+#: admin.php:617
 #, php-format
 msgid "Support and documentation can be found at %s."
 msgstr "Поддержка и документация может быть найдена на %s."
@@ -13588,7 +13589,7 @@ msgstr "Изменения для «%s» приняты."
 msgid "The changes to “%s” have been rejected."
 msgstr "Изменения для «%s» отклонены."
 
-#: app/Module/ClippingsCartModule.php:311
+#: app/Module/ClippingsCartModule.php:324
 msgid "The clippings cart allows you to take extracts from this family tree and download them as a GEDCOM file."
 msgstr "Корзина вырезок позволяет извлекать вырезки (выдержки) из этого генеалогического дерева и соединить их в один файл для загрузки и последующего импорта в Вашу собственную генеалогически программу. Загружаемый файл записывается в формате GEDCOM.<br><ul><li>Как сделать вырезку?<br> Это очень просто. Каждый раз, когда Вы видите имя (персон, семьи или источники), на которое можно нажать, перейдите на страницу с подробностями для этого имени. Там Вы увидите ссылки <b>Добавить в корзину вырезок</b>. Когда Вы перейдете по этой ссылке, Вам будет предложено несколько вариантов для загрузки.</li <li>Как загружать?<br>Когда в корзине будут все нужные Вам вырезки, Вы можете скачать их просто нажав на ссылку \"Скачать\". Затем следуйте инструкциям и ссылкам.</li></ul>"
 
@@ -14151,7 +14152,7 @@ msgstr "Термидор"
 msgid "These groups of individuals are not related to %s."
 msgstr "Эти группы персон не связаны с %s."
 
-#: admin.php:586
+#: admin.php:578
 msgid "These pages provide access to all the preferences and management tools for this webtrees site."
 msgstr "Эти страницы предоставляют доступ ко всем настройкам конфигурации и управления инструментов для этого webtrees сайта."
 
@@ -14343,7 +14344,7 @@ msgstr "С учетом регистра. Если база данных не с
 msgid "This is the initial value for the “show details” option on the charts."
 msgstr "Это начальная настройка для параметра «показать подробности» на диаграммах."
 
-#: admin.php:637 admin_site_upgrade.php:67
+#: admin.php:629 admin_site_upgrade.php:67
 msgid "This is the latest version of webtrees. No upgrade is available."
 msgstr "Это последняя версия webtrees. Обновление не требуется."
 
@@ -14676,7 +14677,7 @@ msgstr "Этот текст будет добавлен к каждому заг
 msgid "This type of link is not allowed here."
 msgstr "Этот тип ссылки не разрешен в этой записи."
 
-#: includes/session.php:448
+#: includes/session.php:435
 msgid "This user account does not have access to any tree."
 msgstr "Эта учетная запись пользователя не имеет доступа к какому-либо дереву."
 
@@ -14711,7 +14712,7 @@ msgid "This will update the highest-level part or parts of the place name. For e
 msgstr "Эта функция добавляет часть имени, места которой является страна. Например, «Mexico» будет соответствовать «Quintana Roo, Mexico», но не «Santa Fe, New Mexico»."
 
 #. I18N: abbreviation for Thursday
-#: app/Date/CalendarDate.php:369 app/Functions/FunctionsPrint.php:663
+#: app/Date/CalendarDate.php:379 app/Functions/FunctionsPrint.php:663
 msgid "Thu"
 msgstr "Чт"
 
@@ -14727,7 +14728,7 @@ msgstr "Миниатюры"
 msgid "Thumbnail to upload"
 msgstr "Загрузить миниатюру"
 
-#: app/Date/CalendarDate.php:344
+#: app/Date/CalendarDate.php:354
 msgid "Thursday"
 msgstr "Четверг"
 
@@ -14856,7 +14857,7 @@ msgstr "Для предотвращения доступа к сайту, в т�
 msgid "To protect this private data, webtrees uses an Apache configuration file (.htaccess) which blocks all access to this folder. If your web-server does not support .htaccess files, and you cannot restrict access to this folder, then you can select another folder, away from your web documents."
 msgstr "Чтобы защитить личные данные, webtrees использует файл конфигурации Apache (.htaccess), который блокирует весь доступ к этой папке. Если Ваш веб-сервер не поддерживает файлы .htaccess, и Вы не можете ограничить доступ к этой папке, то Вы можете выбрать другую папку, вдали от Ваших веб-документов."
 
-#: admin_trees_download.php:144 app/Module/ClippingsCartModule.php:364
+#: admin_trees_download.php:144 app/Module/ClippingsCartModule.php:377
 msgid "To reduce the size of the download, you can compress the data into a .ZIP file. You will need to uncompress the .ZIP file before you can use it."
 msgstr "Чтобы уменьшить размер файла для загрузки, Вы можете сжать файл в формат .ZIP (архив). Затем Вам будет нужно распаковать .ZIP-файл, прежде чем Вы сможете использовать его."
 
@@ -14950,7 +14951,7 @@ msgstr "Наиболее часто встречающиеся фамилии"
 msgid "Toronto, Ontario, Canada"
 msgstr "Торонто, Онтарио, Канада"
 
-#: admin.php:859
+#: admin.php:851
 msgid "Total"
 msgstr "Всего"
 
@@ -15032,7 +15033,7 @@ msgstr "Всего мужчин"
 msgid "Total marriages"
 msgstr "Всего браков"
 
-#: admin.php:664
+#: admin.php:656
 msgid "Total number of users"
 msgstr "Всего пользователей"
 
@@ -15095,11 +15096,11 @@ msgid "Trujillo, Peru"
 msgstr "Трухильо, Перу"
 
 #. I18N: abbreviation for Tuesday
-#: app/Date/CalendarDate.php:367 app/Functions/FunctionsPrint.php:661
+#: app/Date/CalendarDate.php:377 app/Functions/FunctionsPrint.php:661
 msgid "Tue"
 msgstr "Вт"
 
-#: app/Date/CalendarDate.php:342
+#: app/Date/CalendarDate.php:352
 msgid "Tuesday"
 msgstr "Вторник"
 
@@ -15260,7 +15261,7 @@ msgid "United States"
 msgstr "Соединенные Штаты"
 
 #. I18N: Name of a country or state
-#: app/GedcomRecord.php:1159 app/GedcomRecord.php:1163 app/Stats.php:6670
+#: app/GedcomRecord.php:1158 app/GedcomRecord.php:1162 app/Stats.php:6670
 msgid "Unknown"
 msgstr "Неизвестно"
 
@@ -15333,7 +15334,7 @@ msgstr "Обновление в любом случае"
 
 #. I18N: %s is a version number
 #. I18N: %s is a version number, such as 1.2.3
-#: admin.php:634 admin_site_upgrade.php:82 login.php:118
+#: admin.php:626 admin_site_upgrade.php:82 login.php:118
 #, php-format
 msgid "Upgrade to webtrees %s."
 msgstr "Обновить Webtrees на %s."
@@ -15485,11 +15486,11 @@ msgid "Usernames are case-insensitive and ignore accented letters, so that “ch
 msgstr "Имена не чувствительны к регистру и игнорируют буквы с диакритическими знаками, так что «chloe», «chloë» и «Chloe» считаются одинаковыми."
 
 #. I18N: Menu entry
-#: admin.php:651 admin.php:659 app/Theme/AdministrationTheme.php:162
+#: admin.php:643 admin.php:651 app/Theme/AdministrationTheme.php:162
 msgid "Users"
 msgstr "Пользователи"
 
-#: admin.php:739
+#: admin.php:731
 msgid "Users who are signed in"
 msgstr "Сейчас на сайте"
 
@@ -15676,10 +15677,10 @@ msgstr "Отображать онлайн статус"
 
 #. I18N: Listbox entry; name of a role
 #: admin_trees_download.php:193 admin_users.php:39 admin_users.php:529
-#: app/Module/ClippingsCartModule.php:396
-#: app/Module/ClippingsCartModule.php:406
-#: app/Module/ClippingsCartModule.php:769
-#: app/Module/ClippingsCartModule.php:776
+#: app/Module/ClippingsCartModule.php:409
+#: app/Module/ClippingsCartModule.php:419
+#: app/Module/ClippingsCartModule.php:782
+#: app/Module/ClippingsCartModule.php:789
 msgid "Visitor"
 msgstr "Посетитель"
 
@@ -15764,11 +15765,11 @@ msgid "Website preferences"
 msgstr "Настройки веб-сайта"
 
 #. I18N: abbreviation for Wednesday
-#: app/Date/CalendarDate.php:368 app/Functions/FunctionsPrint.php:662
+#: app/Date/CalendarDate.php:378 app/Functions/FunctionsPrint.php:662
 msgid "Wed"
 msgstr "Ср"
 
-#: app/Date/CalendarDate.php:343
+#: app/Date/CalendarDate.php:353
 msgid "Wednesday"
 msgstr "Среда"
 
@@ -15873,7 +15874,7 @@ msgid "Width of generated thumbnails"
 msgstr "Ширина генерируемых миниатюр"
 
 #. I18N: gedcom tag WIFE
-#: app/GedcomTag.php:860 edit_interface.php:1088
+#: app/GedcomTag.php:860 edit_interface.php:1068
 #: modules_v3/family_group_report/report.xml:501
 #: modules_v3/family_group_report/report.xml:1078
 #: modules_v3/individual_ext_report/report.xml:199
@@ -16051,7 +16052,7 @@ msgstr "Нельзя создавать правило, которое запр�
 msgid "You cannot sign in because your browser does not accept cookies."
 msgstr "Для работы с сайтом активируйте прием cookies в вашем браузере."
 
-#: includes/session.php:506
+#: includes/session.php:493
 msgid "You do not have permission to view this page."
 msgstr "У Вас нет разрешения для просмотра этой страницы."
 
@@ -16108,11 +16109,11 @@ msgstr "Введите имя пользователя."
 msgid "You must enter all the administrator account fields."
 msgstr "Вам нужно заполнить все поля в учётной записи администратора."
 
-#: edit_interface.php:1522
+#: edit_interface.php:1502
 msgid "You must provide a repository name."
 msgstr "Вы должны указать название архива."
 
-#: edit_interface.php:1203
+#: edit_interface.php:1183
 msgid "You must provide a source title"
 msgstr "Вы должны указать оглавление источника"
 
@@ -16148,7 +16149,7 @@ msgstr "Вы должны рассмотреть данные учетной з�
 msgid "You need to set up an administrator account. This account can control all aspects of this webtrees installation. Please choose a strong password."
 msgstr "Вам необходимо настроить учетную запись администратора. Эта учетная запись может контролировать весь ход установки webtrees. Пожалуйста, выберите надежный пароль."
 
-#: admin_pgv_to_wt.php:1153
+#: admin_pgv_to_wt.php:1151
 msgid "You need to sign in again, using your PhpGedView username and password."
 msgstr "Вы должны зайти снова. Используйте свои имя пользователя и пароль PhpGedView."
 
@@ -16211,8 +16212,8 @@ msgstr "Самый молодой новобрачный"
 msgid "Youngest mother"
 msgstr "Самая молодая мать"
 
-#: app/Module/ClippingsCartModule.php:344
-#: app/Module/ClippingsCartModule.php:678
+#: app/Module/ClippingsCartModule.php:357
+#: app/Module/ClippingsCartModule.php:691
 msgid "Your clippings cart is empty."
 msgstr "Ваша корзина пуста."
 
@@ -16234,12 +16235,7 @@ msgstr "Ваш администратор сервера (хостинг-про�
 msgid "Your user account does not have “automatically accept changes” enabled. You will only be able to change one record at a time."
 msgstr "В Вашей учетной записи не включен режим автоматического утверждения изменений. Вы сможете изменить только одну запись за раз."
 
-#: admin.php:578
-#, php-format
-msgid "Your web server is using PHP version %s, which is no longer maintained. You should upgrade to a later version."
-msgstr "Ваш веб-сервер использует PHP версии %s, который больше не поддерживается. Вам необходимо обновить PHP на более новую версию."
-
-#: admin.php:570
+#: admin.php:571
 #, php-format
 msgid "Your web server is using PHP version %s, which is no longer receiving security updates. You should upgrade to a later version as soon as possible."
 msgstr "Ваш веб-сервер использует PHP версии %s, которая больше не получает обновления безопасности. Вы должны, как можно скорее, обновить до более свежей версии."
@@ -16254,8 +16250,8 @@ msgstr "Замбия"
 msgid "Zimbabwe"
 msgstr "Зимбабве"
 
-#: app/Module/ClippingsCartModule.php:368
-#: app/Module/ClippingsCartModule.php:755
+#: app/Module/ClippingsCartModule.php:381
+#: app/Module/ClippingsCartModule.php:768
 msgid "Zip file(s)"
 msgstr "Zip файл(ы)"
 
@@ -16315,8 +16311,8 @@ msgstr "принято"
 
 #. I18N: A button label.
 #: admin_trees_config.php:537 app/Functions/FunctionsPrint.php:569
-#: app/Functions/FunctionsPrint.php:628 app/Module/ClippingsCartModule.php:334
-#: app/Module/ClippingsCartModule.php:460
+#: app/Functions/FunctionsPrint.php:628 app/Module/ClippingsCartModule.php:347
+#: app/Module/ClippingsCartModule.php:473
 #: app/Module/FamilyTreeFavoritesModule.php:228
 #: app/Module/GoogleMapsModule.php:4024 timeline.php:306
 msgid "add"
@@ -16586,7 +16582,7 @@ msgid "calculated %s"
 msgstr "вычислено %s"
 
 #. I18N: A button label.
-#: app/Module/ClippingsCartModule.php:796
+#: app/Module/ClippingsCartModule.php:809
 msgid "cancel"
 msgstr "Отмена"
 
@@ -16616,8 +16612,8 @@ msgctxt "MALE"
 msgid "change of name"
 msgstr "изменение имени"
 
-#: app/Functions/Functions.php:751 edit_interface.php:2001
-#: edit_interface.php:2023
+#: app/Functions/Functions.php:751 edit_interface.php:1981
+#: edit_interface.php:2003
 msgid "child"
 msgstr "ребенок"
 
@@ -16631,11 +16627,11 @@ msgstr "детей"
 #: app/Module/CensusAssistantModule.php:189 app/Module/GoogleMapsModule.php:685
 #: app/Module/GoogleMapsModule.php:3407 app/Theme/AbstractTheme.php:700
 #: edit_changes.php:245 edit_interface.php:89 edit_interface.php:184
-#: edit_interface.php:325 edit_interface.php:386 edit_interface.php:1019
-#: edit_interface.php:1127 edit_interface.php:1270 edit_interface.php:1375
-#: edit_interface.php:1468 edit_interface.php:1559 edit_interface.php:1743
-#: edit_interface.php:1848 edit_interface.php:2040 edit_interface.php:2203
-#: edit_interface.php:2588 find.php:760 inverselink.php:161 message.php:137
+#: edit_interface.php:325 edit_interface.php:386 edit_interface.php:999
+#: edit_interface.php:1107 edit_interface.php:1250 edit_interface.php:1355
+#: edit_interface.php:1448 edit_interface.php:1539 edit_interface.php:1723
+#: edit_interface.php:1828 edit_interface.php:2020 edit_interface.php:2183
+#: edit_interface.php:2568 find.php:760 inverselink.php:161 message.php:137
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:554
 msgid "close"
 msgstr "закрыть"
@@ -16655,13 +16651,13 @@ msgid "compact list"
 msgstr "компактный список"
 
 #. I18N: A button label.
-#: admin_pgv_to_wt.php:183 admin_pgv_to_wt.php:1154 admin_site_merge.php:391
+#: admin_pgv_to_wt.php:183 admin_pgv_to_wt.php:1152 admin_site_merge.php:391
 #: admin_trees_download.php:119 admin_trees_download.php:204
 #: admin_trees_manage.php:309 admin_trees_manage.php:764
 #: admin_trees_merge.php:202 admin_trees_renumber.php:281
-#: app/Module/ClippingsCartModule.php:134
-#: app/Module/ClippingsCartModule.php:257
-#: app/Module/ClippingsCartModule.php:300 app/Module/GoogleMapsModule.php:3709
+#: app/Module/ClippingsCartModule.php:147
+#: app/Module/ClippingsCartModule.php:270
+#: app/Module/ClippingsCartModule.php:313 app/Module/GoogleMapsModule.php:3709
 #: app/Module/LoginBlockModule.php:105 app/Theme/AbstractTheme.php:347
 #: login.php:228 login.php:498 reportengine.php:131 reportengine.php:265
 #: setup.php:190 setup.php:216 setup.php:298 setup.php:384 setup.php:449
@@ -16683,7 +16679,7 @@ msgid "date periods"
 msgstr "отрезок времени"
 
 #: app/Functions/Functions.php:749 app/Functions/FunctionsCharts.php:312
-#: edit_interface.php:2000
+#: edit_interface.php:1980
 msgid "daughter"
 msgstr "дочь"
 
@@ -16750,8 +16746,8 @@ msgstr "умер"
 
 #. I18N: A button label.
 #: admin_site_change.php:370 admin_site_logs.php:310
-#: app/Module/ClippingsCartModule.php:432
-#: app/Module/ClippingsCartModule.php:797 app/Module/GoogleMapsModule.php:4083
+#: app/Module/ClippingsCartModule.php:445
+#: app/Module/ClippingsCartModule.php:810 app/Module/GoogleMapsModule.php:4083
 msgid "download"
 msgstr "скачать"
 
@@ -17245,7 +17241,7 @@ msgid "gender"
 msgstr "пол"
 
 #. I18N: A button label.
-#: edit_interface.php:2586
+#: edit_interface.php:2566
 msgid "go to new individual"
 msgstr "перейти к новой персоне"
 
@@ -18783,8 +18779,8 @@ msgstr "Скрыть"
 msgid "himself"
 msgstr " "
 
-#: app/Functions/Functions.php:709 edit_interface.php:1928
-#: edit_interface.php:1963
+#: app/Functions/Functions.php:709 edit_interface.php:1908
+#: edit_interface.php:1943
 msgid "husband"
 msgstr "муж"
 
@@ -19349,10 +19345,10 @@ msgstr "робот"
 #: app/Module/RelationshipsChartModule.php:200 app/Module/SiteMapModule.php:320
 #: app/Module/StoriesModule.php:270 block_edit.php:96 edit_interface.php:88
 #: edit_interface.php:183 edit_interface.php:324 edit_interface.php:385
-#: edit_interface.php:1018 edit_interface.php:1126 edit_interface.php:1269
-#: edit_interface.php:1374 edit_interface.php:1467 edit_interface.php:1558
-#: edit_interface.php:1742 edit_interface.php:1846 edit_interface.php:2039
-#: edit_interface.php:2201 edit_interface.php:2584 editnews.php:74
+#: edit_interface.php:998 edit_interface.php:1106 edit_interface.php:1249
+#: edit_interface.php:1354 edit_interface.php:1447 edit_interface.php:1538
+#: edit_interface.php:1722 edit_interface.php:1826 edit_interface.php:2019
+#: edit_interface.php:2181 edit_interface.php:2564 editnews.php:74
 #: edituser.php:317 find.php:537 index_edit.php:376
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:553
 #: modules_v3/GEDFact_assistant/census/census-edit.php:197
@@ -19652,7 +19648,7 @@ msgid "sixth cousin"
 msgstr "7-миюродный брат"
 
 #: app/Functions/Functions.php:747 app/Functions/FunctionsCharts.php:311
-#: edit_interface.php:1999
+#: edit_interface.php:1979
 msgid "son"
 msgstr "сын"
 
@@ -19697,7 +19693,7 @@ msgstr "зять/невестка"
 msgid "sort by date"
 msgstr "сортировать по дате"
 
-#: edit_interface.php:1847 modules_v3/bdm_report/report.xml:11
+#: edit_interface.php:1827 modules_v3/bdm_report/report.xml:11
 #: modules_v3/birth_report/report.xml:9 modules_v3/change_report/report.xml:7
 #: modules_v3/fact_sources/report.xml:7
 #: modules_v3/individual_ext_report/report.xml:8
@@ -19712,7 +19708,7 @@ msgstr "сортировать по дате рождения"
 msgid "sort by date of death"
 msgstr "сортировать по дате смерти"
 
-#: edit_interface.php:2202 modules_v3/marriage_report/report.xml:9
+#: edit_interface.php:2182 modules_v3/marriage_report/report.xml:9
 msgid "sort by date of marriage"
 msgstr "сортировать по дате брака"
 
@@ -19754,8 +19750,8 @@ msgstr "сортировать по заголовку"
 msgid "south"
 msgstr "южная"
 
-#: app/Functions/Functions.php:745 edit_interface.php:1930
-#: edit_interface.php:1940 edit_interface.php:1965 edit_interface.php:1976
+#: app/Functions/Functions.php:745 edit_interface.php:1910
+#: edit_interface.php:1920 edit_interface.php:1945 edit_interface.php:1956
 msgid "spouse"
 msgstr "супруг(а)"
 
@@ -20147,8 +20143,8 @@ msgstr "база данных webtrees должна быть на том же с
 msgid "west"
 msgstr "западная"
 
-#: app/Functions/Functions.php:727 edit_interface.php:1929
-#: edit_interface.php:1964
+#: app/Functions/Functions.php:727 edit_interface.php:1909
+#: edit_interface.php:1944
 msgid "wife"
 msgstr "жена"
 
@@ -20544,6 +20540,9 @@ msgstr "…"
 
 #~ msgid "When new records are created, they are given an internal ID number. You can specify the prefix used for each type of record."
 #~ msgstr "При создании новых записей, они получают внутренний идентификационный номер. Можно указать префикс, используемый для каждого типа записи."
+
+#~ msgid "Your web server is using PHP version %s, which is no longer maintained. You should upgrade to a later version."
+#~ msgstr "Ваш веб-сервер использует PHP версии %s, который больше не поддерживается. Вам необходимо обновить PHP на более новую версию."
 
 #~ msgid "Yugoslavia"
 #~ msgstr "Югославия"

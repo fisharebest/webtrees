@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees vietnamese Version 1.5.3\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2017-02-11 11:13+0000\n"
+"POT-Creation-Date: 2018-09-25 11:42+0100\n"
 "PO-Revision-Date: 2017-10-31 14:28+0000\n"
 "Last-Translator: Cao Tien Nam <caotiennam@gmail.com>\n"
 "Language-Team: Vietnamese <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/vi/>\n"
@@ -201,31 +201,31 @@ msgid "%s KB"
 msgstr "%s KB"
 
 #. I18N: %s is a woman's name
-#: app/Module/ClippingsCartModule.php:203
+#: app/Module/ClippingsCartModule.php:216
 #, php-format
 msgid "%s and her ancestors"
 msgstr "%s và tổ tiên của bà"
 
 #. I18N: %s is a man's name
-#: app/Module/ClippingsCartModule.php:206
+#: app/Module/ClippingsCartModule.php:219
 #, php-format
 msgid "%s and his ancestors"
 msgstr "%s và tổ tiên của ông"
 
 #. I18N: %s is the name of a source
-#: app/Module/ClippingsCartModule.php:292
+#: app/Module/ClippingsCartModule.php:305
 #, php-format
 msgid "%s and the individuals that reference it."
 msgstr "%s và các cá nhân tham chiếu đến."
 
 #. I18N: %s is a family (husband + wife)
-#: app/Module/ClippingsCartModule.php:121
+#: app/Module/ClippingsCartModule.php:134
 #, php-format
 msgid "%s and their children"
 msgstr "%s và con cái của họ"
 
 #. I18N: %s is a family (husband + wife)
-#: app/Module/ClippingsCartModule.php:128
+#: app/Module/ClippingsCartModule.php:141
 #, php-format
 msgid "%s and their descendants"
 msgstr "%s các hậu duệ của họ"
@@ -261,7 +261,7 @@ msgid "%s family has been updated."
 msgid_plural "%s families have been updated."
 msgstr[0] "%s gia đình đã được cập nhật."
 
-#: admin.php:861
+#: admin.php:853
 #, php-format
 msgid "%s family tree"
 msgid_plural "%s family trees"
@@ -279,7 +279,7 @@ msgid "%s hour ago"
 msgid_plural "%s hours ago"
 msgstr[0] "%s giờ qua"
 
-#: admin_trees_unconnected.php:83 app/Controller/LifespanController.php:260
+#: admin_trees_unconnected.php:83 app/Controller/LifespanController.php:262
 #, php-format
 msgid "%s individual"
 msgid_plural "%s individuals"
@@ -297,19 +297,19 @@ msgid "%s individual is private."
 msgid_plural "%s individuals are private."
 msgstr[0] "%s cá nhân này muốn giữ thông tin riêng tư."
 
-#: app/Controller/LifespanController.php:253
+#: app/Controller/LifespanController.php:255
 #, php-format
 msgid "%s individual with events between %s and %s"
 msgid_plural "%s individuals with events between %s and %s"
 msgstr[0] "%s cá nhân với sự kiện giữa %s và %s"
 
-#: app/Controller/LifespanController.php:246
+#: app/Controller/LifespanController.php:248
 #, php-format
 msgid "%s individual with events in %s"
 msgid_plural "%s individuals with events in %s"
 msgstr[0] "%s cá nhân với các sự kiện vào %s"
 
-#: app/Controller/LifespanController.php:239
+#: app/Controller/LifespanController.php:241
 #, php-format
 msgid "%s individual with events in %s between %s and %s"
 msgid_plural "%s individuals with events in %s between %s and %s"
@@ -476,49 +476,49 @@ msgid "%s+"
 msgstr ""
 
 #. I18N: %s is a woman's name
-#: app/Module/ClippingsCartModule.php:222
+#: app/Module/ClippingsCartModule.php:235
 #, php-format
 msgid "%s, her ancestors and their families"
 msgstr "%s, các tổ tiên và gia đình của bà"
 
 #. I18N: %s is a woman's name
-#: app/Module/ClippingsCartModule.php:171
+#: app/Module/ClippingsCartModule.php:184
 #, php-format
 msgid "%s, her parents and siblings"
 msgstr "%s, cha mẹ và anh em của cha mẹ của bà"
 
 #. I18N: %s is a woman's name
-#: app/Module/ClippingsCartModule.php:187
+#: app/Module/ClippingsCartModule.php:200
 #, php-format
 msgid "%s, her spouses and children"
 msgstr "%s, chồng và con của bà"
 
 #. I18N: %s is a woman's name
-#: app/Module/ClippingsCartModule.php:241
+#: app/Module/ClippingsCartModule.php:254
 #, php-format
 msgid "%s, her spouses and descendants"
 msgstr "%s, các chồng, con của bà"
 
 #. I18N: %s is a man's name
-#: app/Module/ClippingsCartModule.php:225
+#: app/Module/ClippingsCartModule.php:238
 #, php-format
 msgid "%s, his ancestors and their families"
 msgstr "%s, tổ tiên và gia đình tổ tiên của ông"
 
 #. I18N: %s is a man's name
-#: app/Module/ClippingsCartModule.php:174
+#: app/Module/ClippingsCartModule.php:187
 #, php-format
 msgid "%s, his parents and siblings"
 msgstr "%s, cha mẹ và anh em của cha mẹ của ông"
 
 #. I18N: %s is a man's name
-#: app/Module/ClippingsCartModule.php:190
+#: app/Module/ClippingsCartModule.php:203
 #, php-format
 msgid "%s, his spouses and children"
 msgstr "%s, các hôn thê và con cái của các hôn thê của ông"
 
 #. I18N: %s is a man's name
-#: app/Module/ClippingsCartModule.php:244
+#: app/Module/ClippingsCartModule.php:257
 #, php-format
 msgid "%s, his spouses and descendants"
 msgstr "%s, các hôn thê và con cháu của hôn thể của ông"
@@ -736,7 +736,7 @@ msgstr ""
 msgid "A chart of individuals’ lifespans."
 msgstr ""
 
-#: edit_interface.php:1011
+#: edit_interface.php:991
 msgid "A child may have more than one set of parents. The relationship between the child and the parents can be biological, legal, or based on local culture and tradition. If no pedigree is specified, then a biological relationship will be assumed."
 msgstr "Con có thể có nhiều hơn cặp cha mẹ. Quan hệ giữa con và cha mẹ có thể là quan hệ sinh học, pháp lý, hoặc dựa trên văn hóa và truyền thống địa phương. Nếu không có tộc hệ nào được nêu, thì ta giả định đó là quan hệ sinh học."
 
@@ -848,7 +848,7 @@ msgstr "Có yêu cầu mật khẩu mới cho tên người dùng của bạn."
 msgid "A new user (%1$s) has requested an account (%2$s) and verified an email address (%3$s)."
 msgstr "Một người dùng mới (%1$s) đã yêu cầu tạo tài khoản (%2$s) và đã được xác minh bằng một địa chỉ email (%3$s)."
 
-#: admin.php:632 admin_site_upgrade.php:79 login.php:116
+#: admin.php:624 admin_site_upgrade.php:79 login.php:116
 msgid "A new version of webtrees is available."
 msgstr "Đang có một phiên bản webtrees mới hơn."
 
@@ -1230,12 +1230,12 @@ msgctxt "NOMINATIVE"
 msgid "Adar II"
 msgstr "Adar II"
 
-#: edit_interface.php:2033 index_edit.php:329 index_edit.php:346
+#: edit_interface.php:2013 index_edit.php:329 index_edit.php:346
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:170
 msgid "Add"
 msgstr "Thêm"
 
-#: app/Module/ClippingsCartModule.php:724
+#: app/Module/ClippingsCartModule.php:737
 #, php-format
 msgid "Add %s to the clippings cart"
 msgstr "Thêm %s vào giỏ"
@@ -1248,11 +1248,11 @@ msgstr "Thêm dòng trống"
 msgid "Add a brother or sister"
 msgstr "Thêm chị hay anh"
 
-#: edit_interface.php:516
+#: edit_interface.php:496
 msgid "Add a child"
 msgstr "Thêm con trai"
 
-#: app/Module/RelativesTabModule.php:398 edit_interface.php:595
+#: app/Module/RelativesTabModule.php:398 edit_interface.php:575
 msgid "Add a child to create a one-parent family"
 msgstr "Thêm con trai để tạo thành gia đình một cha"
 
@@ -1264,7 +1264,7 @@ msgstr "Thêm con cho gia đình này"
 msgid "Add a fact"
 msgstr "Thêm một sự kiện"
 
-#: app/Module/RelativesTabModule.php:326 edit_interface.php:675 family.php:92
+#: app/Module/RelativesTabModule.php:326 edit_interface.php:655 family.php:92
 msgid "Add a father"
 msgstr "Thêm bố mới"
 
@@ -1276,8 +1276,8 @@ msgstr "Thêm người ưa chuộng mới"
 msgid "Add a geographic location"
 msgstr "Thêm vào vị trí địa lý mới"
 
-#: app/Module/RelativesTabModule.php:387 edit_interface.php:810
-#: edit_interface.php:900
+#: app/Module/RelativesTabModule.php:387 edit_interface.php:790
+#: edit_interface.php:880
 msgid "Add a husband"
 msgstr "Thêm chồng mới"
 
@@ -1285,8 +1285,8 @@ msgstr "Thêm chồng mới"
 msgid "Add a husband to this family"
 msgstr "Thêm chồng mới cho gia đình này"
 
-#: app/Module/RelativesTabModule.php:392 edit_interface.php:1084
-#: edit_interface.php:1156
+#: app/Module/RelativesTabModule.php:392 edit_interface.php:1064
+#: edit_interface.php:1136
 msgid "Add a husband using an existing individual"
 msgstr "Thêm chồng bằng cách sử dụng người đang có"
 
@@ -1300,11 +1300,11 @@ msgstr "Cho vào mục Nhật ký mới"
 msgid "Add a media object"
 msgstr "Thêm đối tượng đa phương tiện mới"
 
-#: app/Module/RelativesTabModule.php:329 edit_interface.php:672 family.php:96
+#: app/Module/RelativesTabModule.php:329 edit_interface.php:652 family.php:96
 msgid "Add a mother"
 msgstr "Thêm mẹ mới"
 
-#: app/Controller/IndividualController.php:276 edit_interface.php:1655
+#: app/Controller/IndividualController.php:276 edit_interface.php:1635
 msgid "Add a name"
 msgstr "Thêm Tên mới"
 
@@ -1344,7 +1344,7 @@ msgstr "Thêm một con trai hay con gái"
 msgid "Add a source citation"
 msgstr "Thêm Nguồn Sự Dẫn mới"
 
-#: edit_interface.php:837
+#: edit_interface.php:817
 msgid "Add a spouse"
 msgstr "Thêm bạn đời"
 
@@ -1358,8 +1358,8 @@ msgstr "Thêm chuyện"
 msgid "Add a user"
 msgstr "Thêm vào một thành viên mới"
 
-#: app/Module/RelativesTabModule.php:375 edit_interface.php:807
-#: edit_interface.php:897
+#: app/Module/RelativesTabModule.php:375 edit_interface.php:787
+#: edit_interface.php:877
 msgid "Add a wife"
 msgstr "Thêm vợ mới"
 
@@ -1367,8 +1367,8 @@ msgstr "Thêm vợ mới"
 msgid "Add a wife to this family"
 msgstr "Thêm vợ mới cho gia đình này"
 
-#: app/Module/RelativesTabModule.php:380 edit_interface.php:1087
-#: edit_interface.php:1158
+#: app/Module/RelativesTabModule.php:380 edit_interface.php:1067
+#: edit_interface.php:1138
 msgid "Add a wife using an existing individual"
 msgstr "Thêm vợ bằng người đã có"
 
@@ -1425,8 +1425,8 @@ msgid "Add spaces where long lines were wrapped"
 msgstr "Thêm khoảng cách nơi câu dài bị cuốn"
 
 #. I18N: A media path (e.g. C:\aaa\bbb\ccc\) in a GEDCOM file
-#: admin_trees_download.php:160 app/Module/ClippingsCartModule.php:422
-#: app/Module/ClippingsCartModule.php:785
+#: admin_trees_download.php:160 app/Module/ClippingsCartModule.php:435
+#: app/Module/ClippingsCartModule.php:798
 msgid "Add the GEDCOM media path to filenames"
 msgstr "Thêm đường dẫn đa phương tiện vào tên tập tin GEDCOM"
 
@@ -1440,12 +1440,12 @@ msgstr "Thêm thẻ đầu TITLE"
 msgid "Add to favorites"
 msgstr "Thêm vào mục ưa thích"
 
-#: app/Module/ClippingsCartModule.php:106
-#: app/Module/ClippingsCartModule.php:151
-#: app/Module/ClippingsCartModule.php:274
-#: app/Module/ClippingsCartModule.php:320
-#: app/Module/ClippingsCartModule.php:446
-#: app/Module/ClippingsCartModule.php:562
+#: app/Module/ClippingsCartModule.php:119
+#: app/Module/ClippingsCartModule.php:164
+#: app/Module/ClippingsCartModule.php:287
+#: app/Module/ClippingsCartModule.php:333
+#: app/Module/ClippingsCartModule.php:459
+#: app/Module/ClippingsCartModule.php:575
 msgid "Add to the clippings cart"
 msgstr "Thêm các đoạn nhớ vào xe"
 
@@ -1503,7 +1503,7 @@ msgstr "Tài khoản quản trị"
 msgid "Administrator comments on user"
 msgstr "Ý kiến quản trị về người dùng"
 
-#: admin.php:674
+#: admin.php:666
 msgid "Administrators"
 msgstr "Các nhà quản trị"
 
@@ -2047,10 +2047,10 @@ msgstr "Apia, Samoa"
 msgid "Apply automatic corrections to your genealogy data."
 msgstr "Thực hiện tự động chỉnh sửa cho số liệu gia phả của bạn."
 
-#: admin_trees_download.php:172 app/Module/ClippingsCartModule.php:383
-#: app/Module/ClippingsCartModule.php:402
-#: app/Module/ClippingsCartModule.php:764
-#: app/Module/ClippingsCartModule.php:773
+#: admin_trees_download.php:172 app/Module/ClippingsCartModule.php:396
+#: app/Module/ClippingsCartModule.php:415
+#: app/Module/ClippingsCartModule.php:777
+#: app/Module/ClippingsCartModule.php:786
 msgid "Apply privacy settings"
 msgstr "Có áp dụng thiết đặt riêng tư không"
 
@@ -2077,27 +2077,27 @@ msgstr "Chấp thuận"
 msgid "Approved by administrator"
 msgstr "Được chấp thuận bởi quản trị"
 
-#: app/Date/CalendarDate.php:314
+#: app/Date/CalendarDate.php:324
 msgctxt "Abbreviation for April"
 msgid "Apr"
 msgstr "TH4"
 
-#: app/Date/CalendarDate.php:214
+#: app/Date/CalendarDate.php:224
 msgctxt "GENITIVE"
 msgid "April"
 msgstr "Tháng Tư"
 
-#: app/Date/CalendarDate.php:282
+#: app/Date/CalendarDate.php:292
 msgctxt "INSTRUMENTAL"
 msgid "April"
 msgstr "Tháng Tư"
 
-#: app/Date/CalendarDate.php:248
+#: app/Date/CalendarDate.php:258
 msgctxt "LOCATIVE"
 msgid "April"
 msgstr "Tháng Tư"
 
-#: app/Date/CalendarDate.php:180 app/Functions/FunctionsPrint.php:648
+#: app/Date/CalendarDate.php:190 app/Functions/FunctionsPrint.php:648
 msgctxt "NOMINATIVE"
 msgid "April"
 msgstr "Tháng Tư"
@@ -2202,7 +2202,7 @@ msgstr "Châu Á"
 msgid "Associate"
 msgstr "Bạn Hữu, Cộng tác viên"
 
-#: edit_interface.php:1241 help_text.php:292
+#: edit_interface.php:1221 help_text.php:292
 msgid "Associate events with this source"
 msgstr "Liên kết sự kiện với nguồn"
 
@@ -2258,27 +2258,27 @@ msgstr "Phục vụ"
 msgid "Audio"
 msgstr "File nghe"
 
-#: app/Date/CalendarDate.php:318
+#: app/Date/CalendarDate.php:328
 msgctxt "Abbreviation for August"
 msgid "Aug"
 msgstr "TH8"
 
-#: app/Date/CalendarDate.php:218
+#: app/Date/CalendarDate.php:228
 msgctxt "GENITIVE"
 msgid "August"
 msgstr "Tháng Tám"
 
-#: app/Date/CalendarDate.php:286
+#: app/Date/CalendarDate.php:296
 msgctxt "INSTRUMENTAL"
 msgid "August"
 msgstr "Tháng Tám"
 
-#: app/Date/CalendarDate.php:252
+#: app/Date/CalendarDate.php:262
 msgctxt "LOCATIVE"
 msgid "August"
 msgstr "Tháng Tám"
 
-#: app/Date/CalendarDate.php:184 app/Functions/FunctionsPrint.php:652
+#: app/Date/CalendarDate.php:194 app/Functions/FunctionsPrint.php:652
 msgctxt "NOMINATIVE"
 msgid "August"
 msgstr "Tháng Tám"
@@ -3431,12 +3431,12 @@ msgstr "Chứng chỉ"
 msgid "Chad"
 msgstr "Chad"
 
-#: edit_interface.php:1953 edit_interface.php:1989 edit_interface.php:2016
+#: edit_interface.php:1933 edit_interface.php:1969 edit_interface.php:1996
 msgid "Change"
 msgstr "Sửa đổi"
 
-#: app/Controller/FamilyController.php:77 edit_interface.php:1906
-#: edit_interface.php:2069
+#: app/Controller/FamilyController.php:77 edit_interface.php:1886
+#: edit_interface.php:2049
 msgid "Change family members"
 msgstr "Thay đổi thành viên gia đình"
 
@@ -3790,7 +3790,7 @@ msgid "Cleared but not yet completed"
 msgstr "Cleared but not yet completed"
 
 #. I18N: Name of a module
-#: app/Module/ClippingsCartModule.php:37
+#: app/Module/ClippingsCartModule.php:38
 msgid "Clippings cart"
 msgstr "Giỏ Dữ Liệu"
 
@@ -3963,8 +3963,8 @@ msgstr "Tiếp tục"
 msgid "Control panel"
 msgstr "Bảng điều khiển"
 
-#: admin_trees_download.php:150 app/Module/ClippingsCartModule.php:413
-#: app/Module/ClippingsCartModule.php:781
+#: admin_trees_download.php:150 app/Module/ClippingsCartModule.php:426
+#: app/Module/ClippingsCartModule.php:794
 msgid "Convert from UTF-8 to ISO-8859-1"
 msgstr "Đổi từ UTF-8 sang ISO-8859-1"
 
@@ -4077,13 +4077,13 @@ msgstr "Tạo một cây gia đình mới"
 msgid "Create a media object"
 msgstr "Tạo đối tượng đa phương tiện mới"
 
-#: app/Functions/FunctionsEdit.php:428 edit_interface.php:1512
-#: edit_interface.php:1575
+#: app/Functions/FunctionsEdit.php:428 edit_interface.php:1492
+#: edit_interface.php:1555
 msgid "Create a repository"
 msgstr "Tạo kho dữ liệu"
 
-#: app/Functions/FunctionsEdit.php:439 edit_interface.php:1348
-#: edit_interface.php:1384
+#: app/Functions/FunctionsEdit.php:439 edit_interface.php:1328
+#: edit_interface.php:1364
 msgid "Create a shared note"
 msgstr "Tạo ghi chú chung"
 
@@ -4093,8 +4093,8 @@ msgstr "Tạo ghi chú chung"
 msgid "Create a shared note using the census assistant"
 msgstr "Tạo ghi chú mới bằng cách dùng Hỗ trợ"
 
-#: app/Functions/FunctionsEdit.php:461 edit_interface.php:1196
-#: edit_interface.php:1279
+#: app/Functions/FunctionsEdit.php:461 edit_interface.php:1176
+#: edit_interface.php:1259
 msgid "Create a source"
 msgstr "Tạo nguồn mới"
 
@@ -4102,7 +4102,7 @@ msgstr "Tạo nguồn mới"
 msgid "Create a website access rule"
 msgstr "Tạo một qui luât truy cập website"
 
-#: edit_interface.php:750
+#: edit_interface.php:730
 msgid "Create an individual"
 msgstr "Tạo một cá nhân mới"
 
@@ -4840,7 +4840,7 @@ msgstr "Mất"
 msgid "Deaths by century"
 msgstr "Số chết theo thế kỷ"
 
-#: app/Date/CalendarDate.php:322
+#: app/Date/CalendarDate.php:332
 msgctxt "Abbreviation for December"
 msgid "Dec"
 msgstr "T12"
@@ -4858,22 +4858,22 @@ msgstr "Thập niên chết"
 msgid "Decade of marriage"
 msgstr "Một thập kỷ kết hôn"
 
-#: app/Date/CalendarDate.php:222
+#: app/Date/CalendarDate.php:232
 msgctxt "GENITIVE"
 msgid "December"
 msgstr "Tháng Mười Hai"
 
-#: app/Date/CalendarDate.php:290
+#: app/Date/CalendarDate.php:300
 msgctxt "INSTRUMENTAL"
 msgid "December"
 msgstr "Tháng Mười Hai"
 
-#: app/Date/CalendarDate.php:256
+#: app/Date/CalendarDate.php:266
 msgctxt "LOCATIVE"
 msgid "December"
 msgstr "Tháng Mười Hai"
 
-#: app/Date/CalendarDate.php:188 app/Functions/FunctionsPrint.php:656
+#: app/Date/CalendarDate.php:198 app/Functions/FunctionsPrint.php:656
 msgctxt "NOMINATIVE"
 msgid "December"
 msgstr "Tháng Mười Hai"
@@ -5281,9 +5281,9 @@ msgstr "Dominica"
 msgid "Dominican Republic"
 msgstr "Dominican Republic"
 
-#: app/Module/ClippingsCartModule.php:359
-#: app/Module/ClippingsCartModule.php:719
-#: app/Module/ClippingsCartModule.php:754
+#: app/Module/ClippingsCartModule.php:372
+#: app/Module/ClippingsCartModule.php:732
+#: app/Module/ClippingsCartModule.php:767
 msgid "Download"
 msgstr "Tải về"
 
@@ -5423,7 +5423,7 @@ msgid "Edit the media object"
 msgstr "Chỉnh sửa đối tượng nghe nhìn"
 
 #: app/Controller/IndividualController.php:168
-#: app/Functions/FunctionsEdit.php:699 edit_interface.php:1640
+#: app/Functions/FunctionsEdit.php:699 edit_interface.php:1620
 msgid "Edit the name"
 msgstr "Sửa Tên"
 
@@ -5438,7 +5438,7 @@ msgstr "Sửa ghi chú"
 #: app/Controller/RepositoryController.php:63
 #: app/Controller/SourceController.php:60 edit_interface.php:51
 #: edit_interface.php:112 edit_interface.php:162 edit_interface.php:224
-#: edit_interface.php:319 edit_interface.php:2579 help_text.php:284
+#: edit_interface.php:319 edit_interface.php:2559 help_text.php:284
 msgid "Edit the raw GEDCOM"
 msgstr "Sửa bản ghi GEDCOM thô"
 
@@ -5447,8 +5447,8 @@ msgstr "Sửa bản ghi GEDCOM thô"
 msgid "Edit the repository"
 msgstr "Chỉnh sửa kho lưu trữ"
 
-#: app/Functions/FunctionsEdit.php:450 edit_interface.php:1444
-#: edit_interface.php:1490
+#: app/Functions/FunctionsEdit.php:450 edit_interface.php:1424
+#: edit_interface.php:1470
 msgid "Edit the shared note"
 msgstr "Sửa ghi chú chung"
 
@@ -5586,8 +5586,8 @@ msgctxt "MALE"
 msgid "Employer"
 msgstr "Người chủ"
 
-#: app/Module/ClippingsCartModule.php:468
-#: app/Module/ClippingsCartModule.php:715
+#: app/Module/ClippingsCartModule.php:481
+#: app/Module/ClippingsCartModule.php:728
 msgid "Empty the clippings cart"
 msgstr "Giỏ không"
 
@@ -5925,7 +5925,7 @@ msgid "Falkland Islands"
 msgstr "Falkland Islands"
 
 #. I18N: Name of a module
-#: admin.php:777 admin.php:817 admin_trees_duplicates.php:143 ancestry.php:87
+#: admin.php:769 admin.php:809 admin_trees_duplicates.php:143 ancestry.php:87
 #: app/Controller/SearchController.php:522
 #: app/Functions/FunctionsPrintLists.php:1043
 #: app/Functions/FunctionsPrintLists.php:1168
@@ -5952,7 +5952,7 @@ msgstr "Gia đình và nguồn tài liệu"
 #: app/Controller/PedigreeController.php:266
 #: app/Functions/FunctionsEdit.php:868 app/GedcomTag.php:444
 #: app/Module/FamilyGroupReportModule.php:29
-#: app/Module/FamilyNavigatorModule.php:263 edit_interface.php:997
+#: app/Module/FamilyNavigatorModule.php:263 edit_interface.php:977
 #: inverselink.php:107 modules_v3/family_group_report/report.xml:3
 #: modules_v3/family_group_report/report.xml:6
 #: modules_v3/family_group_report/report.xml:88
@@ -5997,7 +5997,7 @@ msgid "Family list"
 msgstr "Danh sách gia đình"
 
 #. I18N: Name of a module/sidebar
-#: app/Module/FamilyNavigatorModule.php:34 edit_interface.php:1417
+#: app/Module/FamilyNavigatorModule.php:34 edit_interface.php:1397
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:107
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:527
 msgid "Family navigator"
@@ -6014,7 +6014,7 @@ msgstr "Thông tin gia đình và các thông báo của website."
 msgid "Family of %s"
 msgstr "Gia đình của %s"
 
-#: admin.php:774 admin_site_change.php:358 admin_site_change.php:392
+#: admin.php:766 admin_site_change.php:358 admin_site_change.php:392
 #: admin_site_logs.php:298 admin_site_logs.php:332 admin_trees_manage.php:380
 #: admin_users.php:575 app/Module/BatchUpdateModule.php:204
 #: app/Module/FrequentlyAskedQuestionsModule.php:217
@@ -6025,7 +6025,8 @@ msgstr "Gia đình của %s"
 msgid "Family tree"
 msgstr "Cây gia đình"
 
-#: app/Module/ClippingsCartModule.php:90 app/Module/ClippingsCartModule.php:479
+#: app/Module/ClippingsCartModule.php:103
+#: app/Module/ClippingsCartModule.php:492
 msgid "Family tree clippings cart"
 msgstr "Giỏ Lấy Dữ Liệu Dòng Họ"
 
@@ -6034,7 +6035,7 @@ msgid "Family tree title"
 msgstr "Tiêu đề cây gia đình"
 
 #. I18N: Menu entry
-#: admin.php:762 admin.php:770 app/Theme/AbstractTheme.php:1398
+#: admin.php:754 admin.php:762 app/Theme/AbstractTheme.php:1398
 #: app/Theme/AdministrationTheme.php:114 search.php:127 search.php:284
 msgid "Family trees"
 msgstr "Các cây gia đình"
@@ -6174,27 +6175,27 @@ msgstr "Mục yêu thích"
 msgid "Fax"
 msgstr "Số fax"
 
-#: app/Date/CalendarDate.php:312
+#: app/Date/CalendarDate.php:322
 msgctxt "Abbreviation for February"
 msgid "Feb"
 msgstr "TH2"
 
-#: app/Date/CalendarDate.php:212
+#: app/Date/CalendarDate.php:222
 msgctxt "GENITIVE"
 msgid "February"
 msgstr "Tháng Hai"
 
-#: app/Date/CalendarDate.php:280
+#: app/Date/CalendarDate.php:290
 msgctxt "INSTRUMENTAL"
 msgid "February"
 msgstr "Tháng Hai"
 
-#: app/Date/CalendarDate.php:246
+#: app/Date/CalendarDate.php:256
 msgctxt "LOCATIVE"
 msgid "February"
 msgstr "Tháng Hai"
 
-#: app/Date/CalendarDate.php:178 app/Functions/FunctionsPrint.php:646
+#: app/Date/CalendarDate.php:188 app/Functions/FunctionsPrint.php:646
 msgctxt "NOMINATIVE"
 msgid "February"
 msgstr "Tháng Hai"
@@ -6251,7 +6252,7 @@ msgstr "Tên tập tin không được có ký tự “%s”."
 msgid "Filenames are not allowed to have the extension “%s”."
 msgstr "Tên tập tin không được có đuôi “%s”."
 
-#: admin.php:901
+#: admin.php:893
 msgid "Files have been found from a previous version of webtrees. Old files can sometimes be a security risk. You should delete them."
 msgstr "Tập tin đã tìm thấy là của phiên bản webtrees trước. Tập tin cũ đôi khi có mối nguy bảo mật. Bạn phải xóa bỏ chúng."
 
@@ -6547,11 +6548,11 @@ msgid "Fresno, California, United States"
 msgstr "Fresno, California, United States"
 
 #. I18N: abbreviation for Friday
-#: app/Date/CalendarDate.php:370 app/Functions/FunctionsPrint.php:664
+#: app/Date/CalendarDate.php:380 app/Functions/FunctionsPrint.php:664
 msgid "Fri"
 msgstr "T6"
 
-#: app/Date/CalendarDate.php:345
+#: app/Date/CalendarDate.php:355
 msgid "Friday"
 msgstr "Thứ Sáu"
 
@@ -7212,7 +7213,7 @@ msgid "Hungary"
 msgstr "Hungary"
 
 #. I18N: gedcom tag HUSB
-#: app/GedcomTag.php:516 edit_interface.php:1085
+#: app/GedcomTag.php:516 edit_interface.php:1065
 #: modules_v3/cemetery_report/report.xml:7
 #: modules_v3/death_report/report.xml:10
 #: modules_v3/family_group_report/report.xml:147
@@ -7451,8 +7452,8 @@ msgstr "Gồm tất cả các nơi khớp"
 msgid "Include individuals with “%s” as a married name"
 msgstr "Gồm những cá nhân với “%s” là tên kết hôn"
 
-#: app/Module/ClippingsCartModule.php:373
-#: app/Module/ClippingsCartModule.php:758
+#: app/Module/ClippingsCartModule.php:386
+#: app/Module/ClippingsCartModule.php:771
 msgid "Include media (automatically zips files)"
 msgstr "Gồm các tập tin nghe nhìn (tự động nén thành file zip)"
 
@@ -7532,7 +7533,7 @@ msgstr "Bản ghi từng người"
 msgid "Individual who lived the longest"
 msgstr "Người sống lâu nhất"
 
-#: admin.php:776 admin.php:807 admin_trees_duplicates.php:142 ancestry.php:81
+#: admin.php:768 admin.php:799 admin_trees_duplicates.php:142 ancestry.php:81
 #: app/Controller/SearchController.php:519
 #: app/Functions/FunctionsPrintLists.php:1042
 #: app/Functions/FunctionsPrintLists.php:1167
@@ -7706,27 +7707,27 @@ msgstr "Tháng Jalali"
 msgid "Jamaica"
 msgstr "Jamaica"
 
-#: app/Date/CalendarDate.php:311
+#: app/Date/CalendarDate.php:321
 msgctxt "Abbreviation for January"
 msgid "Jan"
 msgstr "TH1"
 
-#: app/Date/CalendarDate.php:211
+#: app/Date/CalendarDate.php:221
 msgctxt "GENITIVE"
 msgid "January"
 msgstr "Tháng Giêng"
 
-#: app/Date/CalendarDate.php:279
+#: app/Date/CalendarDate.php:289
 msgctxt "INSTRUMENTAL"
 msgid "January"
 msgstr "Tháng Giêng"
 
-#: app/Date/CalendarDate.php:245
+#: app/Date/CalendarDate.php:255
 msgctxt "LOCATIVE"
 msgid "January"
 msgstr "Tháng Giêng"
 
-#: app/Date/CalendarDate.php:177 app/Functions/FunctionsPrint.php:645
+#: app/Date/CalendarDate.php:187 app/Functions/FunctionsPrint.php:645
 msgctxt "NOMINATIVE"
 msgid "January"
 msgstr "Tháng Giêng"
@@ -7766,7 +7767,7 @@ msgstr "Jordan River, Utah, United States"
 msgid "Journal"
 msgstr "Nhật ký"
 
-#: app/Date/CalendarDate.php:317
+#: app/Date/CalendarDate.php:327
 msgctxt "Abbreviation for July"
 msgid "Jul"
 msgstr "TH7"
@@ -7776,22 +7777,22 @@ msgstr "TH7"
 msgid "Julian"
 msgstr "Lịch Julian"
 
-#: app/Date/CalendarDate.php:217
+#: app/Date/CalendarDate.php:227
 msgctxt "GENITIVE"
 msgid "July"
 msgstr "Tháng Bảy"
 
-#: app/Date/CalendarDate.php:285
+#: app/Date/CalendarDate.php:295
 msgctxt "INSTRUMENTAL"
 msgid "July"
 msgstr "Tháng Bảy"
 
-#: app/Date/CalendarDate.php:251
+#: app/Date/CalendarDate.php:261
 msgctxt "LOCATIVE"
 msgid "July"
 msgstr "Tháng Bảy"
 
-#: app/Date/CalendarDate.php:183 app/Functions/FunctionsPrint.php:651
+#: app/Date/CalendarDate.php:193 app/Functions/FunctionsPrint.php:651
 msgctxt "NOMINATIVE"
 msgid "July"
 msgstr "Tháng Bảy"
@@ -7844,27 +7845,27 @@ msgctxt "NOMINATIVE"
 msgid "Jumada al-thani"
 msgstr "Jumada al-thani"
 
-#: app/Date/CalendarDate.php:316
+#: app/Date/CalendarDate.php:326
 msgctxt "Abbreviation for June"
 msgid "Jun"
 msgstr "TH6"
 
-#: app/Date/CalendarDate.php:216
+#: app/Date/CalendarDate.php:226
 msgctxt "GENITIVE"
 msgid "June"
 msgstr "Tháng Sáu"
 
-#: app/Date/CalendarDate.php:284
+#: app/Date/CalendarDate.php:294
 msgctxt "INSTRUMENTAL"
 msgid "June"
 msgstr "Tháng Sáu"
 
-#: app/Date/CalendarDate.php:250
+#: app/Date/CalendarDate.php:260
 msgctxt "LOCATIVE"
 msgid "June"
 msgstr "Tháng Sáu"
 
-#: app/Date/CalendarDate.php:182 app/Functions/FunctionsPrint.php:650
+#: app/Date/CalendarDate.php:192 app/Functions/FunctionsPrint.php:650
 msgctxt "NOMINATIVE"
 msgid "June"
 msgstr "Tháng Sáu"
@@ -7894,7 +7895,7 @@ msgstr "Giữ các đối tượng đa phương tiện"
 
 #. I18N: A configuration setting
 #: addmedia.php:705 admin_trees_config.php:2131
-#: app/Module/BatchUpdate/BatchUpdateBasePlugin.php:62 edit_interface.php:2276
+#: app/Module/BatchUpdate/BatchUpdateBasePlugin.php:62 edit_interface.php:2256
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:545
 msgid "Keep the existing “last change” information"
 msgstr "Giữ thông tin \"thay đổi lần cuối\" hiện có"
@@ -8241,8 +8242,8 @@ msgstr "Lima, Peru"
 msgid "Link the user account to an individual."
 msgstr ""
 
-#: app/Module/RelativesTabModule.php:369 edit_interface.php:983
-#: edit_interface.php:1043
+#: app/Module/RelativesTabModule.php:369 edit_interface.php:963
+#: edit_interface.php:1023
 msgid "Link this individual to an existing family as a child"
 msgstr "Kèm người này vào một gia đình hiện tại như là con"
 
@@ -8499,12 +8500,12 @@ msgstr "Quản lý liên kết"
 
 #. I18N: Listbox entry; name of a role
 #: admin_trees_download.php:183 admin_users.php:43 admin_users.php:557
-#: app/Module/ClippingsCartModule.php:390
-#: app/Module/ClippingsCartModule.php:767
+#: app/Module/ClippingsCartModule.php:403
+#: app/Module/ClippingsCartModule.php:780
 msgid "Manager"
 msgstr "Quản lý"
 
-#: admin.php:687
+#: admin.php:679
 msgid "Managers"
 msgstr "Những người quản lý"
 
@@ -8550,27 +8551,27 @@ msgstr "Nhiều máy chủ gửi thư yêu cầu là máy chủ gửi thư phả
 msgid "Map"
 msgstr "Bản Đồ"
 
-#: app/Date/CalendarDate.php:313
+#: app/Date/CalendarDate.php:323
 msgctxt "Abbreviation for March"
 msgid "Mar"
 msgstr "TH3"
 
-#: app/Date/CalendarDate.php:213
+#: app/Date/CalendarDate.php:223
 msgctxt "GENITIVE"
 msgid "March"
 msgstr "Tháng Ba"
 
-#: app/Date/CalendarDate.php:281
+#: app/Date/CalendarDate.php:291
 msgctxt "INSTRUMENTAL"
 msgid "March"
 msgstr "Tháng Ba"
 
-#: app/Date/CalendarDate.php:247
+#: app/Date/CalendarDate.php:257
 msgctxt "LOCATIVE"
 msgid "March"
 msgstr "Tháng Ba"
 
-#: app/Date/CalendarDate.php:179 app/Functions/FunctionsPrint.php:647
+#: app/Date/CalendarDate.php:189 app/Functions/FunctionsPrint.php:647
 msgctxt "NOMINATIVE"
 msgid "March"
 msgstr "Tháng Ba"
@@ -8873,27 +8874,27 @@ msgstr "Các thế hệ gia phả tối đa"
 msgid "Maximum upload size: "
 msgstr "Chỉ gửi lên được nhiều nhất là: "
 
-#: app/Date/CalendarDate.php:315
+#: app/Date/CalendarDate.php:325
 msgctxt "Abbreviation for May"
 msgid "May"
 msgstr "TH5"
 
-#: app/Date/CalendarDate.php:215
+#: app/Date/CalendarDate.php:225
 msgctxt "GENITIVE"
 msgid "May"
 msgstr "Tháng Nam"
 
-#: app/Date/CalendarDate.php:283
+#: app/Date/CalendarDate.php:293
 msgctxt "INSTRUMENTAL"
 msgid "May"
 msgstr "Tháng Nam"
 
-#: app/Date/CalendarDate.php:249
+#: app/Date/CalendarDate.php:259
 msgctxt "LOCATIVE"
 msgid "May"
 msgstr "Tháng Nam"
 
-#: app/Date/CalendarDate.php:181 app/Functions/FunctionsPrint.php:649
+#: app/Date/CalendarDate.php:191 app/Functions/FunctionsPrint.php:649
 msgctxt "NOMINATIVE"
 msgid "May"
 msgstr "Tháng Nam"
@@ -8910,7 +8911,7 @@ msgstr "Medford, Oregon, United States"
 
 #. I18N: Name of a module
 #. I18N: Menu entry
-#: admin.php:780 admin_media.php:692 app/Functions/FunctionsPrintLists.php:1348
+#: admin.php:772 admin_media.php:692 app/Functions/FunctionsPrintLists.php:1348
 #: app/Module/MediaTabModule.php:35 app/Theme/AdministrationTheme.php:177
 #: inverselink.php:70
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:74
@@ -8955,7 +8956,7 @@ msgstr "Các thư mục đa phương tiện"
 msgid "Media object"
 msgstr "Đối tượng đa phương tiện"
 
-#: admin.php:847 admin_trees_duplicates.php:144
+#: admin.php:839 admin_trees_duplicates.php:144
 #: app/Functions/FunctionsPrintLists.php:1044
 #: app/Functions/FunctionsPrintLists.php:1169
 #: app/Module/FamilyTreeStatisticsModule.php:121
@@ -9036,10 +9037,10 @@ msgstr "Melbourne, Australia"
 
 #. I18N: Listbox entry; name of a role
 #: admin_trees_download.php:188 admin_users.php:40 admin_users.php:535
-#: app/Module/ClippingsCartModule.php:393
-#: app/Module/ClippingsCartModule.php:405
-#: app/Module/ClippingsCartModule.php:768
-#: app/Module/ClippingsCartModule.php:775
+#: app/Module/ClippingsCartModule.php:406
+#: app/Module/ClippingsCartModule.php:418
+#: app/Module/ClippingsCartModule.php:781
+#: app/Module/ClippingsCartModule.php:788
 msgid "Member"
 msgstr "Thành viên"
 
@@ -9189,7 +9190,7 @@ msgstr "Biên tập các thay đổi đang chờ"
 msgid "Moderator"
 msgstr "Hiệu đính viên"
 
-#: admin.php:700
+#: admin.php:692
 msgid "Moderators"
 msgstr "Người biên tập"
 
@@ -9223,7 +9224,7 @@ msgid "Moldova"
 msgstr "Moldovya"
 
 #. I18N: abbreviation for Monday
-#: app/Date/CalendarDate.php:366 app/Functions/FunctionsPrint.php:660
+#: app/Date/CalendarDate.php:376 app/Functions/FunctionsPrint.php:660
 msgid "Mon"
 msgstr "T2"
 
@@ -9232,7 +9233,7 @@ msgstr "T2"
 msgid "Monaco"
 msgstr "Monaco"
 
-#: app/Date/CalendarDate.php:341
+#: app/Date/CalendarDate.php:351
 msgid "Monday"
 msgstr "Thứ Hai"
 
@@ -9896,7 +9897,7 @@ msgstr "Không ai trực tuyến và không có thành viên vô danh"
 msgid "No temple - living ordinance"
 msgstr "Không có Đền - Sắc lệnh ở chung"
 
-#: admin.php:630 admin_site_upgrade.php:61
+#: admin.php:622 admin_site_upgrade.php:61
 msgid "No upgrade information is available."
 msgstr "Không có thông tin nâng cấp nào."
 
@@ -9909,8 +9910,8 @@ msgstr "Không có ai"
 msgid "Nocturnal"
 msgstr "Màu đêm"
 
-#: admin_trees_download.php:178 app/Module/ClippingsCartModule.php:387
-#: app/Module/ClippingsCartModule.php:766
+#: admin_trees_download.php:178 app/Module/ClippingsCartModule.php:400
+#: app/Module/ClippingsCartModule.php:779
 #: app/Module/FamiliesSidebarModule.php:156
 #: app/Module/IndividualSidebarModule.php:157 app/Stats.php:1356
 #: famlist.php:113 famlist.php:143 indilist.php:113 indilist.php:143
@@ -9965,7 +9966,7 @@ msgstr "Na Uy"
 msgid "Not a valid individual, family, or source ID"
 msgstr "Cá nhân, gia đình hay ID không hợp lệ"
 
-#: admin.php:726
+#: admin.php:718
 msgid "Not approved by an administrator"
 msgstr "Không xác minh bởi quản trị"
 
@@ -9991,7 +9992,7 @@ msgctxt "MALE"
 msgid "Not married"
 msgstr "Không kết hôn"
 
-#: admin.php:713
+#: admin.php:705
 msgid "Not verified by the user"
 msgstr "Không xác minh bởi người dùng"
 
@@ -10032,27 +10033,27 @@ msgstr "Không phát hiện gì để làm gọn"
 msgid "Nothing found."
 msgstr "Không thấy gì cả."
 
-#: app/Date/CalendarDate.php:321
+#: app/Date/CalendarDate.php:331
 msgctxt "Abbreviation for November"
 msgid "Nov"
 msgstr "T11"
 
-#: app/Date/CalendarDate.php:221
+#: app/Date/CalendarDate.php:231
 msgctxt "GENITIVE"
 msgid "November"
 msgstr "Tháng Mười Một"
 
-#: app/Date/CalendarDate.php:289
+#: app/Date/CalendarDate.php:299
 msgctxt "INSTRUMENTAL"
 msgid "November"
 msgstr "Tháng Mười Một"
 
-#: app/Date/CalendarDate.php:255
+#: app/Date/CalendarDate.php:265
 msgctxt "LOCATIVE"
 msgid "November"
 msgstr "Tháng Mười Một"
 
-#: app/Date/CalendarDate.php:187 app/Functions/FunctionsPrint.php:655
+#: app/Date/CalendarDate.php:197 app/Functions/FunctionsPrint.php:655
 msgctxt "NOMINATIVE"
 msgid "November"
 msgstr "Tháng Mười Một"
@@ -10078,9 +10079,9 @@ msgstr "Số ngày hiển thị"
 msgid "Number of families without children"
 msgstr "Số gia đình không con"
 
-#: app/Module/ClippingsCartModule.php:211
-#: app/Module/ClippingsCartModule.php:230
-#: app/Module/ClippingsCartModule.php:249
+#: app/Module/ClippingsCartModule.php:224
+#: app/Module/ClippingsCartModule.php:243
+#: app/Module/ClippingsCartModule.php:262
 msgid "Number of generations"
 msgstr "Số thế hệ"
 
@@ -10151,7 +10152,7 @@ msgstr "Nghề nghiệp"
 msgid "Occupied Palestinian Territory"
 msgstr "Occupied Palestinian Territory"
 
-#: app/Date/CalendarDate.php:320
+#: app/Date/CalendarDate.php:330
 msgctxt "Abbreviation for October"
 msgid "Oct"
 msgstr "T10"
@@ -10161,22 +10162,22 @@ msgstr "T10"
 msgid "Octidi"
 msgstr "Octidi"
 
-#: app/Date/CalendarDate.php:220
+#: app/Date/CalendarDate.php:230
 msgctxt "GENITIVE"
 msgid "October"
 msgstr "Tháng Mười"
 
-#: app/Date/CalendarDate.php:288
+#: app/Date/CalendarDate.php:298
 msgctxt "INSTRUMENTAL"
 msgid "October"
 msgstr "Tháng Mười"
 
-#: app/Date/CalendarDate.php:254
+#: app/Date/CalendarDate.php:264
 msgctxt "LOCATIVE"
 msgid "October"
 msgstr "Tháng Mười"
 
-#: app/Date/CalendarDate.php:186 app/Functions/FunctionsPrint.php:654
+#: app/Date/CalendarDate.php:196 app/Functions/FunctionsPrint.php:654
 msgctxt "NOMINATIVE"
 msgid "October"
 msgstr "Tháng Mười"
@@ -10195,7 +10196,7 @@ msgstr "Oklahoma City, Oklahoma, United States"
 msgid "Old data"
 msgstr "Dữ liệu cũ"
 
-#: admin.php:894
+#: admin.php:886
 msgid "Old files found"
 msgstr "Tìm thấy file cũ"
 
@@ -10571,7 +10572,7 @@ msgid "Pedigree tree of %s"
 msgstr "Cây phả hệ cua %s"
 
 #. I18N: Name of a module
-#: admin.php:775 admin.php:797 admin_site_upgrade.php:100
+#: admin.php:767 admin.php:789 admin_site_upgrade.php:100
 #: app/Module/ReviewChangesModule.php:37 app/Module/ReviewChangesModule.php:86
 #: app/Theme/AbstractTheme.php:1678 edit_changes.php:35 edit_changes.php:49
 #: help_text.php:302 modules_v3/change_report/report.xml:52
@@ -11069,8 +11070,8 @@ msgstr "Hạn chế vì tính riêng tư"
 msgid "Privacy restrictions - these apply to records and facts that do not contain a GEDCOM RESN tag"
 msgstr "Hạn chế vì tính riêng tư- áp dụng cho bản ghi và sự kiện không có trong thẻ GEDCOM RESN"
 
-#: app/Controller/GedcomRecordController.php:92 app/GedcomRecord.php:532
-#: app/GedcomRecord.php:610 app/GedcomRecord.php:735 app/Individual.php:1309
+#: app/Controller/GedcomRecordController.php:92 app/GedcomRecord.php:531
+#: app/GedcomRecord.php:609 app/GedcomRecord.php:734 app/Individual.php:1309
 #: app/Module/GoogleMapsModule.php:784 app/Note.php:71
 #: app/Report/ReportParserGenerate.php:847 app/Repository.php:50
 #: app/Source.php:54 app/Stats.php:1467 app/Stats.php:2972 expand_view.php:33
@@ -11279,20 +11280,20 @@ msgid "Random images from the current family tree."
 msgstr "Các hình ảnh ngẫu nhiên từ cây gia đình hiện tại."
 
 #: app/Controller/FamilyController.php:88 app/Module/RelativesTabModule.php:279
-#: edit_interface.php:1799 edit_interface.php:1869
+#: edit_interface.php:1779 edit_interface.php:1849
 msgid "Re-order children"
 msgstr "Sắp xếp con cái theo thứ tự"
 
 #: app/Controller/IndividualController.php:297
-#: app/Module/RelativesTabModule.php:363 edit_interface.php:2174
-#: edit_interface.php:2224
+#: app/Module/RelativesTabModule.php:363 edit_interface.php:2154
+#: edit_interface.php:2204
 msgid "Re-order families"
 msgstr "Sắp xếp lại gia đình"
 
 #. I18N: gedcom tag _WT_OBJE_SORT
 #: app/GedcomTag.php:1767 app/Module/AlbumModule.php:110
-#: app/Module/AlbumModule.php:111 edit_interface.php:1671
-#: edit_interface.php:1718 edit_interface.php:1764
+#: app/Module/AlbumModule.php:111 edit_interface.php:1651
+#: edit_interface.php:1698 edit_interface.php:1744
 msgid "Re-order media"
 msgstr "Sắp xếp lại file nghe nhìn"
 
@@ -11317,7 +11318,7 @@ msgstr "Recife, Brazil"
 
 #: admin_site_change.php:328 admin_site_change.php:389
 #: admin_trees_config.php:526 app/Functions/FunctionsPrintLists.php:1680
-#: app/Module/ClippingsCartModule.php:484
+#: app/Module/ClippingsCartModule.php:497
 #: app/Module/RecentChangesModule.php:322 app/Module/ResearchTaskModule.php:109
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:103
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:524
@@ -11477,11 +11478,11 @@ msgstr "Server ở xa"
 
 #: app/Module/CensusAssistantModule.php:386
 #: app/Module/CensusAssistantModule.php:407
-#: app/Module/ClippingsCartModule.php:485
-#: app/Module/ClippingsCartModule.php:524
-#: app/Module/ClippingsCartModule.php:705
-#: app/Module/FamilyTreeFavoritesModule.php:156 edit_interface.php:1948
-#: edit_interface.php:1984 edit_interface.php:2011 edit_interface.php:2030
+#: app/Module/ClippingsCartModule.php:498
+#: app/Module/ClippingsCartModule.php:537
+#: app/Module/ClippingsCartModule.php:718
+#: app/Module/FamilyTreeFavoritesModule.php:156 edit_interface.php:1928
+#: edit_interface.php:1964 edit_interface.php:1991 edit_interface.php:2010
 #: index_edit.php:327 index_edit.php:344
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:106
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:526
@@ -11552,7 +11553,7 @@ msgstr "Báo cáo"
 msgid "Reports"
 msgstr "Các báo cáo"
 
-#: admin.php:779 admin.php:837 admin_trees_duplicates.php:140
+#: admin.php:771 admin.php:829 admin_trees_duplicates.php:140
 #: app/Module/FamilyTreeStatisticsModule.php:124
 #: app/Module/FamilyTreeStatisticsModule.php:384
 #: app/Module/HtmlBlockModule.php:199 app/Theme/AbstractTheme.php:1540
@@ -11575,7 +11576,7 @@ msgstr "Nơi Tàng Trữ"
 msgid "Repository contains"
 msgstr "Kho tư liệu chứa"
 
-#: app/Functions/FunctionsPrintLists.php:1260 edit_interface.php:1537
+#: app/Functions/FunctionsPrintLists.php:1260 edit_interface.php:1517
 msgid "Repository name"
 msgstr "Tên kho lưu trữ"
 
@@ -11833,7 +11834,7 @@ msgid "Sao Tome and Principe"
 msgstr "Sao Tome and Principe"
 
 #. I18N: abbreviation for Saturday
-#: app/Date/CalendarDate.php:371 app/Functions/FunctionsPrint.php:665
+#: app/Date/CalendarDate.php:381 app/Functions/FunctionsPrint.php:665
 msgid "Sat"
 msgstr "T7"
 
@@ -11841,7 +11842,7 @@ msgstr "T7"
 msgid "Satellite"
 msgstr "Vệ tinh"
 
-#: app/Date/CalendarDate.php:346
+#: app/Date/CalendarDate.php:356
 msgid "Saturday"
 msgstr "Thứ Bảy"
 
@@ -11910,7 +11911,7 @@ msgstr "Tìm và thay thế"
 msgid "Search and replace text, using simple searches or advanced pattern matching."
 msgstr "Truy tìm và thay đổi văn bản, sử dụng tìm kiềm đơn giản hay mẫu khớp phức tạp."
 
-#: includes/session.php:504
+#: includes/session.php:491
 msgid "Search engine"
 msgstr "Cơ chế truy tìm"
 
@@ -11986,7 +11987,7 @@ msgstr "Chiếu sáng một tên k hối rồi nhấp vào một mũi tên để
 msgid "Select a date"
 msgstr "Chọn một ngày"
 
-#: edit_interface.php:1245
+#: edit_interface.php:1225
 msgid "Select events"
 msgstr "Chọn sự kiện"
 
@@ -11999,7 +12000,7 @@ msgid "Select individuals by place or date"
 msgstr "Chọn các cá nhân bằng tiêu chí địa điểm hay ngày tháng"
 
 #. I18N: Description of the “Clippings cart” module
-#: app/Module/ClippingsCartModule.php:43
+#: app/Module/ClippingsCartModule.php:44
 msgid "Select records from your family tree and save them as a GEDCOM file."
 msgstr "Chọn file từ cây gia đình và lưu chúng thành file GEDCOM."
 
@@ -12094,7 +12095,7 @@ msgstr "Senegal"
 msgid "Seoul, Korea"
 msgstr "Seoul, Korea"
 
-#: app/Date/CalendarDate.php:319
+#: app/Date/CalendarDate.php:329
 msgctxt "Abbreviation for September"
 msgid "Sep"
 msgstr "TH9"
@@ -12104,22 +12105,22 @@ msgstr "TH9"
 msgid "Separated"
 msgstr "Ly Thân"
 
-#: app/Date/CalendarDate.php:219
+#: app/Date/CalendarDate.php:229
 msgctxt "GENITIVE"
 msgid "September"
 msgstr "Tháng Chín"
 
-#: app/Date/CalendarDate.php:287
+#: app/Date/CalendarDate.php:297
 msgctxt "INSTRUMENTAL"
 msgid "September"
 msgstr "Tháng Chín"
 
-#: app/Date/CalendarDate.php:253
+#: app/Date/CalendarDate.php:263
 msgctxt "LOCATIVE"
 msgid "September"
 msgstr "Tháng Chín"
 
-#: app/Date/CalendarDate.php:185 app/Functions/FunctionsPrint.php:653
+#: app/Date/CalendarDate.php:195 app/Functions/FunctionsPrint.php:653
 msgctxt "NOMINATIVE"
 msgid "September"
 msgstr "Tháng Chín"
@@ -12149,7 +12150,7 @@ msgid "Servant"
 msgstr "Người phục vụ"
 
 #. I18N: Menu entry
-#: admin.php:597 admin_site_info.php:26 app/Theme/AdministrationTheme.php:103
+#: admin.php:589 admin_site_info.php:26 app/Theme/AdministrationTheme.php:103
 msgid "Server information"
 msgstr "Thông tin máy chủ"
 
@@ -12256,7 +12257,7 @@ msgid "Shahrivar"
 msgstr "Tháng Shahrivar"
 
 #: admin_trees_manage.php:590 app/Controller/FamilyController.php:153
-#: app/GedcomTag.php:772 edit_interface.php:1364 edit_interface.php:1457
+#: app/GedcomTag.php:772 edit_interface.php:1344 edit_interface.php:1437
 #: inverselink.php:141 note.php:152 note.php:162
 msgid "Shared note"
 msgstr "Ghi chú chung"
@@ -13036,7 +13037,7 @@ msgid "Source type"
 msgstr "Kiểu nguồn"
 
 #. I18N: Name of a module
-#: admin.php:778 admin.php:827 admin_trees_duplicates.php:141
+#: admin.php:770 admin.php:819 admin_trees_duplicates.php:141
 #: app/Controller/SearchController.php:525
 #: app/Functions/FunctionsPrintLists.php:1170
 #: app/Functions/FunctionsPrintLists.php:1261
@@ -13275,16 +13276,16 @@ msgid "Suffixes"
 msgstr "Hậu tố"
 
 #. I18N: abbreviation for Sunday
-#: app/Date/CalendarDate.php:372 app/Functions/FunctionsPrint.php:659
+#: app/Date/CalendarDate.php:382 app/Functions/FunctionsPrint.php:659
 msgid "Sun"
 msgstr "CN"
 
-#: app/Date/CalendarDate.php:347
+#: app/Date/CalendarDate.php:357
 msgid "Sunday"
 msgstr "Chủ Nhật"
 
 #. I18N: %s is a URL/link to the project website
-#: admin.php:625
+#: admin.php:617
 #, php-format
 msgid "Support and documentation can be found at %s."
 msgstr "Hỗ trợ và tài liệu có thể tìm thấy tại %s."
@@ -13551,7 +13552,7 @@ msgstr "Các thay đổi cho “%s” được chấp thuận."
 msgid "The changes to “%s” have been rejected."
 msgstr "Thay đổi sang “%s” đã bị từ chối."
 
-#: app/Module/ClippingsCartModule.php:311
+#: app/Module/ClippingsCartModule.php:324
 #, fuzzy
 msgid "The clippings cart allows you to take extracts from this family tree and download them as a GEDCOM file."
 msgstr "Xe chứa đoạn chép cho phép bạn rút ra (“các đoạn chép”) từ cây gia đình này và kết hợp chúng lại thành một file để tải về cũng như nhập chúng vào chương trình gia phả của bạn. File tải về được ở dạng fiel GEDCOM.<br><ul><li>Làm cách nào chép đoạn cần?<br>Điều này thật đơn giản. Khi nào bạn thấy tên nhấp được (cá nhân, gia đình hay nguồn) bạn có thể chuyển đến mục xem trang chi tiết của tên đó. Tại đây có mục <b>Cho vào xe đoạn chép</b>. Khi bạn nhấp vào liên kết này bạn sẽ có được vài tùy chọn về tải về.</li><li>Làm thế nào tải về?<br>Khi bạn đã có mục chép trong xe, bạn có thể tải về bằng cách nhấp vào liên kết <b>Tải về</b>. Theo hướng dẫn và liên kết.</li></ul>"
@@ -14118,7 +14119,7 @@ msgstr "Thermidor"
 msgid "These groups of individuals are not related to %s."
 msgstr ""
 
-#: admin.php:586
+#: admin.php:578
 msgid "These pages provide access to all the preferences and management tools for this webtrees site."
 msgstr "Các trang này cho phép tiếp cận với việc thiết lập cấu hình và công cụ quản lý cho site webtrees này."
 
@@ -14307,7 +14308,7 @@ msgstr "Tên phân biệt chữ hoa chữ thường. Nếu CSDL với tên này 
 msgid "This is the initial value for the “show details” option on the charts."
 msgstr "Đây là cài đặt ban đầu cho mục chọn lực “hiện chi tiết” trên biểu đồ."
 
-#: admin.php:637 admin_site_upgrade.php:67
+#: admin.php:629 admin_site_upgrade.php:67
 #, fuzzy
 msgid "This is the latest version of webtrees. No upgrade is available."
 msgstr "Đây là phiên bản webtrees mới nhất. Chưa có bản nâng cấp nào khác."
@@ -14643,7 +14644,7 @@ msgstr "Văn bản này sẽ được thêm vào mỗi tiêu đề trang. Nó s�
 msgid "This type of link is not allowed here."
 msgstr "Loại liên kết này không cho phép tại đây."
 
-#: includes/session.php:448
+#: includes/session.php:435
 msgid "This user account does not have access to any tree."
 msgstr ""
 
@@ -14678,7 +14679,7 @@ msgid "This will update the highest-level part or parts of the place name. For e
 msgstr "Việc này sẽ nâng cấp phần cao nhất của địa danh. Thí dụ, “Mexico” sẽ khớp với “Quitana Roo, Mexico”, nhưng không khớp với “Santa Fe, New Mexcico”."
 
 #. I18N: abbreviation for Thursday
-#: app/Date/CalendarDate.php:369 app/Functions/FunctionsPrint.php:663
+#: app/Date/CalendarDate.php:379 app/Functions/FunctionsPrint.php:663
 msgid "Thu"
 msgstr "T5"
 
@@ -14694,7 +14695,7 @@ msgstr "Ảnh nhỏ"
 msgid "Thumbnail to upload"
 msgstr "Bức chân dung nhỏ"
 
-#: app/Date/CalendarDate.php:344
+#: app/Date/CalendarDate.php:354
 msgid "Thursday"
 msgstr "Thứ Năm"
 
@@ -14823,7 +14824,7 @@ msgstr "Nhằm ngăn chặn khách truy cập site khi bạn đang chép tận t
 msgid "To protect this private data, webtrees uses an Apache configuration file (.htaccess) which blocks all access to this folder. If your web-server does not support .htaccess files, and you cannot restrict access to this folder, then you can select another folder, away from your web documents."
 msgstr "Để bảo vệ số liệu riêng tư này, webtrees dùng tập tin cấu hình Apache (.htaccess) nhằm không cho tiếp cận thư mụdc này. Nếu máy chủ web của bạn không hỗ trợ tập tin .htacess, và bạn kh6ong thể hạn chế truy cập thư mục này, thì bạn có thể chọn một thư mục khác, ở xa các tài liệu web của bạn."
 
-#: admin_trees_download.php:144 app/Module/ClippingsCartModule.php:364
+#: admin_trees_download.php:144 app/Module/ClippingsCartModule.php:377
 msgid "To reduce the size of the download, you can compress the data into a .ZIP file. You will need to uncompress the .ZIP file before you can use it."
 msgstr "Để giảm dung lượng tải về, bạn có thể nén số liệu vào tập tin .ZIP. Bạn cần phải giải nén tập tin .ZIP này trước khi có thể dùng nó."
 
@@ -14913,7 +14914,7 @@ msgstr "Họ dùng nhiều nhất"
 msgid "Toronto, Ontario, Canada"
 msgstr "Toronto, Ontario, Canada"
 
-#: admin.php:859
+#: admin.php:851
 msgid "Total"
 msgstr "Tổng"
 
@@ -14995,7 +14996,7 @@ msgstr "Tổng số nam"
 msgid "Total marriages"
 msgstr "Tổng các hôn nhân"
 
-#: admin.php:664
+#: admin.php:656
 msgid "Total number of users"
 msgstr "Tổng số người dùng"
 
@@ -15058,11 +15059,11 @@ msgid "Trujillo, Peru"
 msgstr ""
 
 #. I18N: abbreviation for Tuesday
-#: app/Date/CalendarDate.php:367 app/Functions/FunctionsPrint.php:661
+#: app/Date/CalendarDate.php:377 app/Functions/FunctionsPrint.php:661
 msgid "Tue"
 msgstr "T3"
 
-#: app/Date/CalendarDate.php:342
+#: app/Date/CalendarDate.php:352
 msgid "Tuesday"
 msgstr "Thứ Ba"
 
@@ -15225,7 +15226,7 @@ msgid "United States"
 msgstr ""
 
 #. I18N: Name of a country or state
-#: app/GedcomRecord.php:1159 app/GedcomRecord.php:1163 app/Stats.php:6670
+#: app/GedcomRecord.php:1158 app/GedcomRecord.php:1162 app/Stats.php:6670
 msgid "Unknown"
 msgstr "Không biết"
 
@@ -15298,7 +15299,7 @@ msgstr "Vẫn cứ nâng cấp"
 
 #. I18N: %s is a version number
 #. I18N: %s is a version number, such as 1.2.3
-#: admin.php:634 admin_site_upgrade.php:82 login.php:118
+#: admin.php:626 admin_site_upgrade.php:82 login.php:118
 #, php-format
 msgid "Upgrade to webtrees %s."
 msgstr "Nâng cấp webtree %s."
@@ -15449,11 +15450,11 @@ msgid "Usernames are case-insensitive and ignore accented letters, so that “ch
 msgstr "Tên người dùng phân biệt chữ hoa và chữ thường, cho nên “chloe”, “chloë”, và “Chloe” được xem là khác nhau."
 
 #. I18N: Menu entry
-#: admin.php:651 admin.php:659 app/Theme/AdministrationTheme.php:162
+#: admin.php:643 admin.php:651 app/Theme/AdministrationTheme.php:162
 msgid "Users"
 msgstr "Người dùng"
 
-#: admin.php:739
+#: admin.php:731
 msgid "Users who are signed in"
 msgstr "Thành viên trực tuyến"
 
@@ -15646,10 +15647,10 @@ msgstr "Khi trực tuyến người khác có thể thấy được"
 
 #. I18N: Listbox entry; name of a role
 #: admin_trees_download.php:193 admin_users.php:39 admin_users.php:529
-#: app/Module/ClippingsCartModule.php:396
-#: app/Module/ClippingsCartModule.php:406
-#: app/Module/ClippingsCartModule.php:769
-#: app/Module/ClippingsCartModule.php:776
+#: app/Module/ClippingsCartModule.php:409
+#: app/Module/ClippingsCartModule.php:419
+#: app/Module/ClippingsCartModule.php:782
+#: app/Module/ClippingsCartModule.php:789
 msgid "Visitor"
 msgstr "Khách"
 
@@ -15734,11 +15735,11 @@ msgid "Website preferences"
 msgstr "Tùy chọn cho website"
 
 #. I18N: abbreviation for Wednesday
-#: app/Date/CalendarDate.php:368 app/Functions/FunctionsPrint.php:662
+#: app/Date/CalendarDate.php:378 app/Functions/FunctionsPrint.php:662
 msgid "Wed"
 msgstr "T4"
 
-#: app/Date/CalendarDate.php:343
+#: app/Date/CalendarDate.php:353
 msgid "Wednesday"
 msgstr "Thứ Tư"
 
@@ -15844,7 +15845,7 @@ msgid "Width of generated thumbnails"
 msgstr "Bề ngang hình nhỏ tạo ra"
 
 #. I18N: gedcom tag WIFE
-#: app/GedcomTag.php:860 edit_interface.php:1088
+#: app/GedcomTag.php:860 edit_interface.php:1068
 #: modules_v3/family_group_report/report.xml:501
 #: modules_v3/family_group_report/report.xml:1078
 #: modules_v3/individual_ext_report/report.xml:199
@@ -16024,7 +16025,7 @@ msgstr "Bạn không thể tạo một qui luật với mục tiêu ngăn chính
 msgid "You cannot sign in because your browser does not accept cookies."
 msgstr "Bạn không thể đăng nhập vì trình duyệt của bạn không chấp nhận cookies."
 
-#: includes/session.php:506
+#: includes/session.php:493
 msgid "You do not have permission to view this page."
 msgstr "Bạn không được xem trang này."
 
@@ -16081,11 +16082,11 @@ msgstr "Bạn phải nhập tên người dùng vào."
 msgid "You must enter all the administrator account fields."
 msgstr "Bạn phải nhập tất cả các trường của tài khoản quản trị."
 
-#: edit_interface.php:1522
+#: edit_interface.php:1502
 msgid "You must provide a repository name."
 msgstr "Bạn phải cung cấp một tên kho dữ liệu."
 
-#: edit_interface.php:1203
+#: edit_interface.php:1183
 msgid "You must provide a source title"
 msgstr "Bạn phải cung cấp tiêu đề nguồn"
 
@@ -16122,7 +16123,7 @@ msgstr ""
 msgid "You need to set up an administrator account. This account can control all aspects of this webtrees installation. Please choose a strong password."
 msgstr "Bạn cần thiết đặt một tài khoản quản trị. Tài khoản này kiểm soát tất cả mọi phương diện của cài đặt webtrees này. Vui lòng chọn một mật khẩu mạnh."
 
-#: admin_pgv_to_wt.php:1153
+#: admin_pgv_to_wt.php:1151
 msgid "You need to sign in again, using your PhpGedView username and password."
 msgstr "Bạn cần đăng nhập lại, dùng tên người dùng và mật khẩu PhpGedView."
 
@@ -16185,8 +16186,8 @@ msgstr "Nam trẻ nhất"
 msgid "Youngest mother"
 msgstr "Mẹ trẻ nhất"
 
-#: app/Module/ClippingsCartModule.php:344
-#: app/Module/ClippingsCartModule.php:678
+#: app/Module/ClippingsCartModule.php:357
+#: app/Module/ClippingsCartModule.php:691
 msgid "Your clippings cart is empty."
 msgstr "Giỏ dữ liệu của bạn trống."
 
@@ -16209,12 +16210,7 @@ msgstr "Quản trị máy chủ sẽ cung cấp cho bạn chi tiết về kết 
 msgid "Your user account does not have “automatically accept changes” enabled. You will only be able to change one record at a time."
 msgstr "Tài khoản của bạn không kích hoạt mục “thay đổi tự động được chấp thuận”. Bạn chỉ có thể thay đổi mỗi lần một bản ghi."
 
-#: admin.php:578
-#, php-format
-msgid "Your web server is using PHP version %s, which is no longer maintained. You should upgrade to a later version."
-msgstr "Máy phục vụ web của bạn dùng PHP phiên bản %s, là phiên bản không còn được duy trì. Bạn phải nâng cấp lên phiên bản mới hơn."
-
-#: admin.php:570
+#: admin.php:571
 #, php-format
 msgid "Your web server is using PHP version %s, which is no longer receiving security updates. You should upgrade to a later version as soon as possible."
 msgstr "Máy phục vụ của bạn dùng PHP phiên bản %s, là phiên bản không còn được cập nhật về bảo mật. Bạn phải cập nhật lên phiên bản mới hơn càng sớm càng tốt."
@@ -16229,8 +16225,8 @@ msgstr "Zambia"
 msgid "Zimbabwe"
 msgstr "Zimbabve"
 
-#: app/Module/ClippingsCartModule.php:368
-#: app/Module/ClippingsCartModule.php:755
+#: app/Module/ClippingsCartModule.php:381
+#: app/Module/ClippingsCartModule.php:768
 msgid "Zip file(s)"
 msgstr "File nén zip"
 
@@ -16290,8 +16286,8 @@ msgstr "chấp nhận"
 
 #. I18N: A button label.
 #: admin_trees_config.php:537 app/Functions/FunctionsPrint.php:569
-#: app/Functions/FunctionsPrint.php:628 app/Module/ClippingsCartModule.php:334
-#: app/Module/ClippingsCartModule.php:460
+#: app/Functions/FunctionsPrint.php:628 app/Module/ClippingsCartModule.php:347
+#: app/Module/ClippingsCartModule.php:473
 #: app/Module/FamilyTreeFavoritesModule.php:228
 #: app/Module/GoogleMapsModule.php:4024 timeline.php:306
 msgid "add"
@@ -16561,7 +16557,7 @@ msgid "calculated %s"
 msgstr "được tính %s"
 
 #. I18N: A button label.
-#: app/Module/ClippingsCartModule.php:796
+#: app/Module/ClippingsCartModule.php:809
 #, fuzzy
 msgid "cancel"
 msgstr "Hủy bỏ"
@@ -16592,8 +16588,8 @@ msgctxt "MALE"
 msgid "change of name"
 msgstr "đổi tên"
 
-#: app/Functions/Functions.php:751 edit_interface.php:2001
-#: edit_interface.php:2023
+#: app/Functions/Functions.php:751 edit_interface.php:1981
+#: edit_interface.php:2003
 msgid "child"
 msgstr "con cái"
 
@@ -16607,11 +16603,11 @@ msgstr "con cái"
 #: app/Module/CensusAssistantModule.php:189 app/Module/GoogleMapsModule.php:685
 #: app/Module/GoogleMapsModule.php:3407 app/Theme/AbstractTheme.php:700
 #: edit_changes.php:245 edit_interface.php:89 edit_interface.php:184
-#: edit_interface.php:325 edit_interface.php:386 edit_interface.php:1019
-#: edit_interface.php:1127 edit_interface.php:1270 edit_interface.php:1375
-#: edit_interface.php:1468 edit_interface.php:1559 edit_interface.php:1743
-#: edit_interface.php:1848 edit_interface.php:2040 edit_interface.php:2203
-#: edit_interface.php:2588 find.php:760 inverselink.php:161 message.php:137
+#: edit_interface.php:325 edit_interface.php:386 edit_interface.php:999
+#: edit_interface.php:1107 edit_interface.php:1250 edit_interface.php:1355
+#: edit_interface.php:1448 edit_interface.php:1539 edit_interface.php:1723
+#: edit_interface.php:1828 edit_interface.php:2020 edit_interface.php:2183
+#: edit_interface.php:2568 find.php:760 inverselink.php:161 message.php:137
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:554
 msgid "close"
 msgstr "đóng"
@@ -16631,13 +16627,13 @@ msgid "compact list"
 msgstr "danh sách gọn"
 
 #. I18N: A button label.
-#: admin_pgv_to_wt.php:183 admin_pgv_to_wt.php:1154 admin_site_merge.php:391
+#: admin_pgv_to_wt.php:183 admin_pgv_to_wt.php:1152 admin_site_merge.php:391
 #: admin_trees_download.php:119 admin_trees_download.php:204
 #: admin_trees_manage.php:309 admin_trees_manage.php:764
 #: admin_trees_merge.php:202 admin_trees_renumber.php:281
-#: app/Module/ClippingsCartModule.php:134
-#: app/Module/ClippingsCartModule.php:257
-#: app/Module/ClippingsCartModule.php:300 app/Module/GoogleMapsModule.php:3709
+#: app/Module/ClippingsCartModule.php:147
+#: app/Module/ClippingsCartModule.php:270
+#: app/Module/ClippingsCartModule.php:313 app/Module/GoogleMapsModule.php:3709
 #: app/Module/LoginBlockModule.php:105 app/Theme/AbstractTheme.php:347
 #: login.php:228 login.php:498 reportengine.php:131 reportengine.php:265
 #: setup.php:190 setup.php:216 setup.php:298 setup.php:384 setup.php:449
@@ -16659,7 +16655,7 @@ msgid "date periods"
 msgstr "thời kỳ. Lựa đơn vị cho thời kỳ trên trục z"
 
 #: app/Functions/Functions.php:749 app/Functions/FunctionsCharts.php:312
-#: edit_interface.php:2000
+#: edit_interface.php:1980
 msgid "daughter"
 msgstr "con gái"
 
@@ -16726,8 +16722,8 @@ msgstr "mất"
 
 #. I18N: A button label.
 #: admin_site_change.php:370 admin_site_logs.php:310
-#: app/Module/ClippingsCartModule.php:432
-#: app/Module/ClippingsCartModule.php:797 app/Module/GoogleMapsModule.php:4083
+#: app/Module/ClippingsCartModule.php:445
+#: app/Module/ClippingsCartModule.php:810 app/Module/GoogleMapsModule.php:4083
 #, fuzzy
 msgid "download"
 msgstr "tải về"
@@ -17220,7 +17216,7 @@ msgid "gender"
 msgstr "nam/nữ"
 
 #. I18N: A button label.
-#: edit_interface.php:2586
+#: edit_interface.php:2566
 msgid "go to new individual"
 msgstr "đến người mới"
 
@@ -18758,8 +18754,8 @@ msgstr "ẩn"
 msgid "himself"
 msgstr ""
 
-#: app/Functions/Functions.php:709 edit_interface.php:1928
-#: edit_interface.php:1963
+#: app/Functions/Functions.php:709 edit_interface.php:1908
+#: edit_interface.php:1943
 msgid "husband"
 msgstr "chồng"
 
@@ -19322,10 +19318,10 @@ msgstr "robot"
 #: app/Module/RelationshipsChartModule.php:200 app/Module/SiteMapModule.php:320
 #: app/Module/StoriesModule.php:270 block_edit.php:96 edit_interface.php:88
 #: edit_interface.php:183 edit_interface.php:324 edit_interface.php:385
-#: edit_interface.php:1018 edit_interface.php:1126 edit_interface.php:1269
-#: edit_interface.php:1374 edit_interface.php:1467 edit_interface.php:1558
-#: edit_interface.php:1742 edit_interface.php:1846 edit_interface.php:2039
-#: edit_interface.php:2201 edit_interface.php:2584 editnews.php:74
+#: edit_interface.php:998 edit_interface.php:1106 edit_interface.php:1249
+#: edit_interface.php:1354 edit_interface.php:1447 edit_interface.php:1538
+#: edit_interface.php:1722 edit_interface.php:1826 edit_interface.php:2019
+#: edit_interface.php:2181 edit_interface.php:2564 editnews.php:74
 #: edituser.php:317 find.php:537 index_edit.php:376
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:553
 #: modules_v3/GEDFact_assistant/census/census-edit.php:197
@@ -19626,7 +19622,7 @@ msgid "sixth cousin"
 msgstr "bà con họ 6 đời"
 
 #: app/Functions/Functions.php:747 app/Functions/FunctionsCharts.php:311
-#: edit_interface.php:1999
+#: edit_interface.php:1979
 msgid "son"
 msgstr "con trai"
 
@@ -19671,7 +19667,7 @@ msgstr "con rể/ con dâu"
 msgid "sort by date"
 msgstr "xếp theo ngày"
 
-#: edit_interface.php:1847 modules_v3/bdm_report/report.xml:11
+#: edit_interface.php:1827 modules_v3/bdm_report/report.xml:11
 #: modules_v3/birth_report/report.xml:9 modules_v3/change_report/report.xml:7
 #: modules_v3/fact_sources/report.xml:7
 #: modules_v3/individual_ext_report/report.xml:8
@@ -19686,7 +19682,7 @@ msgstr "sắp xếp theo ngày sinh"
 msgid "sort by date of death"
 msgstr "sắp xếp theo ngày mất"
 
-#: edit_interface.php:2202 modules_v3/marriage_report/report.xml:9
+#: edit_interface.php:2182 modules_v3/marriage_report/report.xml:9
 msgid "sort by date of marriage"
 msgstr "sắp xếp theo ngày kết hôn"
 
@@ -19728,8 +19724,8 @@ msgstr "sắp xếp theo tiêu đề"
 msgid "south"
 msgstr "nam"
 
-#: app/Functions/Functions.php:745 edit_interface.php:1930
-#: edit_interface.php:1940 edit_interface.php:1965 edit_interface.php:1976
+#: app/Functions/Functions.php:745 edit_interface.php:1910
+#: edit_interface.php:1920 edit_interface.php:1945 edit_interface.php:1956
 msgid "spouse"
 msgstr "bạn đời"
 
@@ -20123,8 +20119,8 @@ msgstr "CSDL webtrees phải có trên cùng máy chủ như của PhpGedView"
 msgid "west"
 msgstr "tây"
 
-#: app/Functions/Functions.php:727 edit_interface.php:1929
-#: edit_interface.php:1964
+#: app/Functions/Functions.php:727 edit_interface.php:1909
+#: edit_interface.php:1944
 msgid "wife"
 msgstr "Vợ"
 
@@ -20518,6 +20514,9 @@ msgstr "…"
 
 #~ msgid "When new records are created, they are given an internal ID number. You can specify the prefix used for each type of record."
 #~ msgstr "Khi có bản ghi mới được tạo, chúng được đặt cho một số nhận diện nội bộ. Bạn có thể đặt một tiền tố dùng cho mỗi kiểu bản ghi."
+
+#~ msgid "Your web server is using PHP version %s, which is no longer maintained. You should upgrade to a later version."
+#~ msgstr "Máy phục vụ web của bạn dùng PHP phiên bản %s, là phiên bản không còn được duy trì. Bạn phải nâng cấp lên phiên bản mới hơn."
 
 #~ msgid "Yugoslavia"
 #~ msgstr "Yugoslavya"
