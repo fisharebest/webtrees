@@ -2,6 +2,7 @@
 [![Coverage Status](https://coveralls.io/repos/fisharebest/localization/badge.svg?branch=master&service=github)](https://coveralls.io/github/fisharebest/localization?branch=master)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/a252b4b3-62c1-40bd-be44-43a7dc6e4a9b/mini.png)](https://insight.sensiolabs.com/projects/a252b4b3-62c1-40bd-be44-43a7dc6e4a9b)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/fisharebest/localization/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/fisharebest/localization/?branch=master)
+[![StyleCI](https://github.styleci.io/repos/23638409/shield)](https://github.styleci.io/repos/23638409)
 [![Code Climate](https://codeclimate.com/github/fisharebest/localization/badges/gpa.svg)](https://codeclimate.com/github/fisharebest/localization)
 
 Localization standards and data

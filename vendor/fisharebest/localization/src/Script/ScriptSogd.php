@@ -1,7 +1,7 @@
 <?php namespace Fisharebest\Localization\Script;
 
 /**
- * Class ScriptSyrc - Representation of the Sodgian script.
+ * Class ScriptSogd - Representation of the Sogdian script.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
  * @copyright (c) 2018 Greg Roach

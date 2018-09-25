@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "126ee95015fa084aab14caac22406c18",
+    "content-hash": "06898b32d4e8d4dd8b8e266e0175c9d6",
     "packages": [
         {
             "name": "ezyang/htmlpurifier",
@@ -164,16 +164,16 @@
         },
         {
             "name": "fisharebest/localization",
-            "version": "1.11.0",
+            "version": "1.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fisharebest/localization.git",
-                "reference": "b3c3313b3508ec00ae40eb29fae00267fada7f22"
+                "reference": "df4684a211d5da48b1faba616a8db8953f9cbd1f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fisharebest/localization/zipball/b3c3313b3508ec00ae40eb29fae00267fada7f22",
-                "reference": "b3c3313b3508ec00ae40eb29fae00267fada7f22",
+                "url": "https://api.github.com/repos/fisharebest/localization/zipball/df4684a211d5da48b1faba616a8db8953f9cbd1f",
+                "reference": "df4684a211d5da48b1faba616a8db8953f9cbd1f",
                 "shasum": ""
             },
             "require": {
@@ -214,7 +214,7 @@
                 "translate",
                 "translation"
             ],
-            "time": "2018-09-05T20:04:04+00:00"
+            "time": "2018-09-25T10:40:27+00:00"
         },
         {
             "name": "fisharebest/php-polyfill",
@@ -1436,17 +1436,6 @@
         {
             "name": "symfony/polyfill-xml",
             "version": "v1.9.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/polyfill-xml.git",
-                "reference": "a2ef9388bbcef094e06d8447145b2782861c87ef"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-xml/zipball/a2ef9388bbcef094e06d8447145b2782861c87ef",
-                "reference": "a2ef9388bbcef094e06d8447145b2782861c87ef",
-                "shasum": ""
-            },
             "require": {
                 "php": ">=5.3.3",
                 "symfony/polyfill-php72": "~1.4"
