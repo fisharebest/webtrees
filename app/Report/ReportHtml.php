@@ -149,7 +149,7 @@ class ReportHtml extends ReportBase
             $this->pageh = $tmpw;
         }
         // Store the pagewidth without margins
-        $this->noMarginWidth = (int)($this->pagew - $this->leftmargin - $this->rightmargin);
+        $this->noMarginWidth = (int) ($this->pagew - $this->leftmargin - $this->rightmargin);
         // If RTL
         if ($this->rtl) {
             $this->alignRTL  = 'right';
@@ -741,14 +741,14 @@ class ReportHtml extends ReportBase
     public function textWrap($str, $width): string
     {
         // Calculate the line width
-        $lw = (int)($width / ($this->getCurrentStyleHeight() / 2));
+        $lw = (int) ($width / ($this->getCurrentStyleHeight() / 2));
         // Wordwrap each line
         $lines = explode("\n", $str);
         // Line Feed counter
         $lfct     = count($lines);
         $wraptext = '';
         foreach ($lines as $line) {
-            $wtext    = FunctionsRtl::utf8WordWrap($line, $lw, "\n", true);
+            $wtext = FunctionsRtl::utf8WordWrap($line, $lw, "\n", true);
             $wraptext .= $wtext;
             // Add a new line as long as it’s not the last line
             if ($lfct > 1) {

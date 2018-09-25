@@ -62,9 +62,9 @@ class FanChartController extends AbstractChartController
 
         $this->checkIndividualAccess($individual);
 
-        $chart_style = (int)$request->get('chart_style', self::DEFAULT_STYLE);
-        $fan_width   = (int)$request->get('fan_width', self::DEFAULT_WIDTH);
-        $generations = (int)$request->get('generations', self::DEFAULT_GENERATIONS);
+        $chart_style = (int) $request->get('chart_style', self::DEFAULT_STYLE);
+        $fan_width   = (int) $request->get('fan_width', self::DEFAULT_WIDTH);
+        $generations = (int) $request->get('generations', self::DEFAULT_GENERATIONS);
 
         $fan_width = min($fan_width, self::MAXIMUM_WIDTH);
         $fan_width = max($fan_width, self::MINIMUM_WIDTH);
@@ -106,9 +106,9 @@ class FanChartController extends AbstractChartController
 
         $this->checkIndividualAccess($individual);
 
-        $chart_style = (int)$request->get('chart_style', self::DEFAULT_STYLE);
-        $fan_width   = (int)$request->get('fan_width', self::DEFAULT_WIDTH);
-        $generations = (int)$request->get('generations', self::DEFAULT_GENERATIONS);
+        $chart_style = (int) $request->get('chart_style', self::DEFAULT_STYLE);
+        $fan_width   = (int) $request->get('fan_width', self::DEFAULT_WIDTH);
+        $generations = (int) $request->get('generations', self::DEFAULT_GENERATIONS);
 
         $fan_width = min($fan_width, self::MAXIMUM_WIDTH);
         $fan_width = max($fan_width, self::MINIMUM_WIDTH);
@@ -137,7 +137,7 @@ class FanChartController extends AbstractChartController
         $scale = $fanw / 640;
 
         // Create the image
-        $image = imagecreate((int)$fanw, (int)$fanh);
+        $image = imagecreate((int) $fanw, (int) $fanh);
 
         // Create colors
         $transparent = imagecolorallocate($image, 0, 0, 0);
@@ -154,7 +154,7 @@ class FanChartController extends AbstractChartController
         ];
 
 
-        imagefilledrectangle($image, 0, 0, (int)$fanw, (int)$fanh, $transparent);
+        imagefilledrectangle($image, 0, 0, (int) $fanw, (int) $fanh, $transparent);
 
         $fandeg = 90 * $chart_style;
 
@@ -169,7 +169,7 @@ class FanChartController extends AbstractChartController
             // clean current generation area
             $deg2 = 360 + ($fandeg - 180) / 2;
             $deg1 = $deg2 - $fandeg;
-            imagefilledarc($image, (int)$cx, (int)$cy, (int)$rx, (int)$rx, (int)$deg1, (int)$deg2, $backgrounds['U'], IMG_ARC_PIE);
+            imagefilledarc($image, (int) $cx, (int) $cy, (int) $rx, (int) $rx, (int) $deg1, (int) $deg2, $backgrounds['U'], IMG_ARC_PIE);
             $rx -= 3;
 
             // calculate new angle
@@ -199,15 +199,15 @@ class FanChartController extends AbstractChartController
 
                     $background = $backgrounds[$person->getSex()];
 
-                    imagefilledarc($image, (int)$cx, (int)$cy, (int)$rx, (int)$rx, (int)$deg1, (int)$deg2, $background, IMG_ARC_PIE);
+                    imagefilledarc($image, (int) $cx, (int) $cy, (int) $rx, (int) $rx, (int) $deg1, (int) $deg2, $background, IMG_ARC_PIE);
 
                     // split and center text by lines
-                    $wmax = (int)($angle * 7 / 7 * $scale);
+                    $wmax = (int) ($angle * 7 / 7 * $scale);
                     $wmax = min($wmax, 35 * $scale);
                     if ($gen == 0) {
                         $wmax = min($wmax, 17 * $scale);
                     }
-                    $text = $this->splitAlignText($text, (int)$wmax);
+                    $text = $this->splitAlignText($text, (int) $wmax);
 
                     // text angle
                     $tangle = 270 - ($deg1 + $angle / 2);
@@ -376,7 +376,7 @@ class FanChartController extends AbstractChartController
                     }
                     $line .= "$word";
                 } else {
-                    $p = max(0, (int)(($maxlen - $len) / 2));
+                    $p = max(0, (int) (($maxlen - $len) / 2));
                     if (!empty($line)) {
                         $line = str_repeat(' ', $p) . $line; // center alignment using spaces
                         $text .= $line . "\n";
@@ -391,7 +391,7 @@ class FanChartController extends AbstractChartController
             if (in_array(ord($line{0}), $RTLOrd)) {
                 $len /= 2;
             }
-            $p    = max(0, (int)(($maxlen - $len) / 2));
+            $p    = max(0, (int) (($maxlen - $len) / 2));
             $line = str_repeat(' ', $p) . $line; // center alignment using spaces
             $text .= $line;
         }
@@ -411,9 +411,9 @@ class FanChartController extends AbstractChartController
     {
         return imagecolorallocate(
             $image,
-            (int)hexdec(substr($css_color, 0, 2)),
-            (int)hexdec(substr($css_color, 2, 2)),
-            (int)hexdec(substr($css_color, 4, 2))
+            (int) hexdec(substr($css_color, 0, 2)),
+            (int) hexdec(substr($css_color, 2, 2)),
+            (int) hexdec(substr($css_color, 4, 2))
         );
     }
 

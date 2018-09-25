@@ -6357,7 +6357,6 @@ class Stats
             )->execute()->fetchOne();
 
             $user = User::find($user_id) ?? Auth::user();
-
         }
 
         return $user;

@@ -161,7 +161,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $this->checkModuleAccess($tree);
 
         $privatize_export = $request->get('privatize_export');
-        $convert          = (bool)$request->get('convert');
+        $convert          = (bool) $request->get('convert');
 
         $cart = Session::get('cart', []);
 
@@ -274,7 +274,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
 
         // Create a source, to indicate the source of the data.
         $filetext .= "0 @WEBTREES@ SOUR\n1 TITL " . WT_BASE_URL . "\n";
-        $author   = User::find($tree->getPreference('CONTACT_EMAIL'));
+        $author = User::find($tree->getPreference('CONTACT_EMAIL'));
         if ($author !== null) {
             $filetext .= '1 AUTH ' . $author->getRealName() . "\n";
         }

@@ -9,14 +9,14 @@
     </a>
 <?php endif ?>
 
-<?php if($value): ?>
+<?php if ($value): ?>
     <span>
         <?= $value ?>
     </span>
 <?php endif ?>
 
 <div>
-    <?php if($addtag): ?>
+    <?php if ($addtag): ?>
         <?= GedcomTag::getLabel('BIRT') ?>:
     <?php endif ?>
     <?= $date ?>

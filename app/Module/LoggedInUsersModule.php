@@ -66,7 +66,7 @@ class LoggedInUsersModule extends AbstractModule implements ModuleBlockInterface
             }
         }
         $count_logged_in = count($logged_in);
-        $content         .= '<div class="logged_in_count">';
+        $content .= '<div class="logged_in_count">';
         if ($anonymous) {
             $content .= I18N::plural('%s anonymous signed-in user', '%s anonymous signed-in users', $anonymous, I18N::number($anonymous));
             if ($count_logged_in) {

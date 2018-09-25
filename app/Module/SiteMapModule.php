@@ -112,8 +112,8 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
     public function postAdminAction(Request $request): RedirectResponse
     {
         foreach (Tree::getAll() as $tree) {
-            $include_in_sitemap = (bool)$request->get('sitemap' . $tree->getTreeId());
-            $tree->setPreference('include_in_sitemap', (string)$include_in_sitemap);
+            $include_in_sitemap = (bool) $request->get('sitemap' . $tree->getTreeId());
+            $tree->setPreference('include_in_sitemap', (string) $include_in_sitemap);
         }
 
         FlashMessages::addMessage(I18N::translate('The preferences for the module “%s” have been updated.', $this->getTitle()), 'success');
@@ -128,7 +128,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
      */
     public function getIndexAction(Request $request): Response
     {
-        $timestamp = (int)$this->getPreference('sitemap.timestamp');
+        $timestamp = (int) $this->getPreference('sitemap.timestamp');
 
         if ($timestamp > WT_TIMESTAMP - self::CACHE_LIFE) {
             $content = $this->getPreference('sitemap.xml');
@@ -185,12 +185,12 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
             throw new NotFoundHttpException('Bad sitemap file');
         }
 
-        $timestamp = (int)$this->getPreference('sitemap-' . $file . '.timestamp');
+        $timestamp = (int) $this->getPreference('sitemap-' . $file . '.timestamp');
 
         if ($timestamp > WT_TIMESTAMP - self::CACHE_LIFE) {
             $content = $this->getPreference('sitemap-' . $file . '.xml');
         } else {
-            $tree = Tree::findById((int)$match[1]);
+            $tree = Tree::findById((int) $match[1]);
 
             if ($tree === null) {
                 throw new NotFoundHttpException('No such tree');

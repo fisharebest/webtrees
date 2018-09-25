@@ -139,7 +139,7 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
      */
     private function getPersonalFacts(Individual $individual): array
     {
-        $facts      = $individual->getFacts();
+        $facts = $individual->getFacts();
         foreach ($individual->getSpouseFamilies() as $family) {
             $facts = array_merge($facts, $family->getFacts());
             // Add birth of children from this family to the facts array
@@ -213,7 +213,7 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
                     'provider' => 'openstreetmap',
                     'style'    => 'mapnik',
                 ];
-                self::$map_providers  = [
+                self::$map_providers = [
                     'openstreetmap' => [
                         'name'   => 'OpenStreetMap',
                         'styles' => ['mapnik' => 'Mapnik'],

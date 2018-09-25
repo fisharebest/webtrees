@@ -528,7 +528,7 @@ class FunctionsEdit
         if ($islink) {
             $value = trim($value, '@');
         } else {
-            $value = (string)substr($tag, strlen($fact) + 3);
+            $value = (string) substr($tag, strlen($fact) + 3);
         }
         if ($fact === 'REPO' || $fact === 'SOUR' || $fact === 'OBJE' || $fact === 'FAMC') {
             $islink = true;
@@ -813,7 +813,7 @@ class FunctionsEdit
             $html .= '<p class="small text-muted">' . I18N::translate('Use this image for charts and on the individual’s page.') . '</p>';
         } elseif ($fact === 'TYPE' && $level === '3') {
             //-- Build the selector for the Media 'TYPE' Fact
-            $html          .= '<select name="text[]"><option selected value="" ></option>';
+            $html .= '<select name="text[]"><option selected value="" ></option>';
             $selectedValue = strtolower($value);
             if (!array_key_exists($selectedValue, GedcomTag::getFileFormTypes())) {
                 $html .= '<option selected value="' . e($value) . '" >' . e($value) . '</option>';

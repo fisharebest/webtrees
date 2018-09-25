@@ -62,7 +62,7 @@ class FamilyController extends AbstractBaseController
      */
     private function significant(Family $family): stdClass
     {
-        $significant = (object)[
+        $significant = (object) [
             'family'     => $family,
             'individual' => null,
             'surname'    => '',

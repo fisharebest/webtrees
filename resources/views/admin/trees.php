@@ -28,7 +28,7 @@
 				</div>
 				<div id="card-tree-content-<?= $managed_tree->getTreeId() ?>" class="collapse<?= $managed_tree == $tree || $managed_tree->getPreference('imported') === '0' ? ' show' : '' ?>" role="tabpanel" aria-labelledby="panel-tree-header-<?= $managed_tree->getTreeId() ?>">
 					<div class="card-body">
-						<?php $importing = Database::prepare("SELECT 1 FROM `##gedcom_chunk` WHERE gedcom_id = ? AND imported = '0' LIMIT 1" )->execute([$managed_tree->getTreeId()])->fetchOne() ?>
+						<?php $importing = Database::prepare("SELECT 1 FROM `##gedcom_chunk` WHERE gedcom_id = ? AND imported = '0' LIMIT 1")->execute([$managed_tree->getTreeId()])->fetchOne() ?>
 						<?php if ($importing): ?>
 							<div id="import<?= $managed_tree->getTreeId() ?>" class="col-xs-12">
 								<div class="progress">

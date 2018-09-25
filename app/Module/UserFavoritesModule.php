@@ -203,7 +203,7 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
      */
     public function postDeleteFavoriteAction(Request $request, Tree $tree, User $user): RedirectResponse
     {
-        $favorite_id = (int)$request->get('favorite_id');
+        $favorite_id = (int) $request->get('favorite_id');
 
         if (Auth::check()) {
             Database::prepare(

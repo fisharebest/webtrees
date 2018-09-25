@@ -247,7 +247,7 @@ class Individual extends GedcomRecord
      */
     protected function createPrivateGedcomRecord(int $access_level): string
     {
-        $SHOW_PRIVATE_RELATIONSHIPS = $this->tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS');
+        $SHOW_PRIVATE_RELATIONSHIPS = (bool) $this->tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS');
 
         $rec = '0 @' . $this->xref . '@ INDI';
         if ($this->tree->getPreference('SHOW_LIVING_NAMES') >= $access_level) {

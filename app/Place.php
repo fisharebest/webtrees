@@ -191,7 +191,7 @@ class Place
      */
     public function getShortName()
     {
-        $SHOW_PEDIGREE_PLACES = (int)$this->tree->getPreference('SHOW_PEDIGREE_PLACES');
+        $SHOW_PEDIGREE_PLACES = (int) $this->tree->getPreference('SHOW_PEDIGREE_PLACES');
 
         if ($SHOW_PEDIGREE_PLACES >= count($this->gedcom_place)) {
             // A short place name - no need to abbreviate

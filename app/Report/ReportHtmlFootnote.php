@@ -142,7 +142,7 @@ class ReportHtmlFootnote extends ReportBaseFootnote
                                     $newtext .= ' ';
                                 }
                             } else {
-                                $lw      = $html->getStringWidth($word . ' ');
+                                $lw = $html->getStringWidth($word . ' ');
                                 $newtext .= "\n$word";
                                 if ($addspace != 0) {
                                     $newtext .= ' ';

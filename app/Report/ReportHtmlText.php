@@ -63,7 +63,7 @@ class ReportHtmlText extends ReportBaseText
                     $lines = explode("\n", $temptext);
                     foreach ($lines as $line) {
                         echo '<div style="position:absolute;top:', $startY, 'pt;', $renderer->alignRTL, ':', $startX, 'pt;width:', $width, 'pt;">';
-                        $line   = $renderer->textWrap($line, $width);
+                        $line = $renderer->textWrap($line, $width);
                         $startY += $renderer->getTextCellHeight($line);
                         $renderer->setY($startY);
                         $renderer->write($line, $this->color);
@@ -150,7 +150,7 @@ class ReportHtmlText extends ReportBaseText
                                     $newtext .= ' ';
                                 }
                             } else {
-                                $lw      = $html->getStringWidth($word . ' ');
+                                $lw = $html->getStringWidth($word . ' ');
                                 $newtext .= "\n$word";
                                 if ($addspace != 0) {
                                     $newtext .= ' ';

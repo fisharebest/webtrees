@@ -23,7 +23,7 @@
 				</div>
 				<select id="serverfile" name="serverfile" class="form-control">
                     <option selected value=""></option>
-                    <?php foreach($files as $file): ?>
+                    <?php foreach ($files as $file): ?>
                         <option value="<?= e($file) ?>">
                             <?= e($file) ?>
                         </option>

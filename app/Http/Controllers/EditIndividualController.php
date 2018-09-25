@@ -62,7 +62,7 @@ class EditIndividualController extends AbstractEditController
     public function reorderMediaAction(Request $request, Tree $tree): Response
     {
         $xref       = $request->get('xref');
-        $order      = (array)$request->get('order', []);
+        $order      = (array) $request->get('order', []);
         $individual = Individual::getInstance($xref, $tree);
 
         $this->checkIndividualAccess($individual, true);
@@ -123,7 +123,7 @@ class EditIndividualController extends AbstractEditController
     public function reorderNamesAction(Request $request, Tree $tree): Response
     {
         $xref       = $request->get('xref');
-        $order      = (array)$request->get('order', []);
+        $order      = (array) $request->get('order', []);
         $individual = Individual::getInstance($xref, $tree);
 
         $this->checkIndividualAccess($individual, true);
@@ -184,7 +184,7 @@ class EditIndividualController extends AbstractEditController
     public function reorderSpousesAction(Request $request, Tree $tree): Response
     {
         $xref       = $request->get('xref');
-        $order      = (array)$request->get('order', []);
+        $order      = (array) $request->get('order', []);
         $individual = Individual::getInstance($xref, $tree);
 
         $this->checkIndividualAccess($individual, true);
@@ -290,7 +290,7 @@ class EditIndividualController extends AbstractEditController
                 $gedcom .= $this->addNewFact($request, $tree, $match);
             }
         }
-        if ((bool)$request->get('SOUR_INDI')) {
+        if ((bool) $request->get('SOUR_INDI')) {
             $gedcom = $this->handleUpdates($gedcom);
         } else {
             $gedcom = $this->updateRest($gedcom);
@@ -382,7 +382,7 @@ class EditIndividualController extends AbstractEditController
                 $gedcom .= $this->addNewFact($request, $tree, $match);
             }
         }
-        if ((bool)$request->get('SOUR_INDI')) {
+        if ((bool) $request->get('SOUR_INDI')) {
             $gedcom = $this->handleUpdates($gedcom);
         } else {
             $gedcom = $this->updateRest($gedcom);
@@ -415,7 +415,7 @@ class EditIndividualController extends AbstractEditController
      */
     public function addSpouse(Request $request, Tree $tree): Response
     {
-        $xref   = $request->get('xref', '');
+        $xref = $request->get('xref', '');
 
         $individual = Individual::getInstance($xref, $tree);
 
@@ -473,7 +473,7 @@ class EditIndividualController extends AbstractEditController
                 $indi_gedcom .= $this->addNewFact($request, $tree, $match);
             }
         }
-        if ((bool)$request->get('SOUR_INDI')) {
+        if ((bool) $request->get('SOUR_INDI')) {
             $indi_gedcom = $this->handleUpdates($indi_gedcom);
         } else {
             $indi_gedcom = $this->updateRest($indi_gedcom);
@@ -485,7 +485,7 @@ class EditIndividualController extends AbstractEditController
                 $fam_gedcom .= $this->addNewFact($request, $tree, $match);
             }
         }
-        if ((bool)$request->get('SOUR_FAM')) {
+        if ((bool) $request->get('SOUR_FAM')) {
             $fam_gedcom = $this->handleUpdates($fam_gedcom);
         } else {
             $fam_gedcom = $this->updateRest($fam_gedcom);
@@ -559,7 +559,7 @@ class EditIndividualController extends AbstractEditController
                 $gedrec .= $this->addNewFact($request, $tree, $match);
             }
         }
-        if ((bool)$request->get('SOUR_INDI')) {
+        if ((bool) $request->get('SOUR_INDI')) {
             $gedrec = $this->handleUpdates($gedrec);
         } else {
             $gedrec = $this->updateRest($gedrec);

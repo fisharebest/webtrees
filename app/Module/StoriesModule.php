@@ -119,7 +119,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
             // Only show this block for certain languages
             $languages = $this->getBlockSetting($block_id, 'languages', '');
             if ($languages === '' || in_array(WT_LOCALE, explode(',', $languages))) {
-                $stories[] = (object)[
+                $stories[] = (object) [
                     'block_id'   => $block_id,
                     'title'      => $this->getBlockSetting($block_id, 'title'),
                     'story_body' => $this->getBlockSetting($block_id, 'story_body'),
@@ -214,7 +214,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
     {
         $this->layout = 'layouts/administration';
 
-        $block_id = (int)$request->get('block_id');
+        $block_id = (int) $request->get('block_id');
 
         if ($block_id === 0) {
             // Creating a new story
@@ -259,7 +259,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
      */
     public function postAdminEditAction(Request $request, Tree $tree): RedirectResponse
     {
-        $block_id    = (int)$request->get('block_id');
+        $block_id    = (int) $request->get('block_id');
         $xref        = $request->get('xref', '');
         $story_body  = $request->get('story_body', '');
         $story_title = $request->get('story_title', '');
@@ -305,7 +305,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
      */
     public function postAdminDeleteAction(Request $request, Tree $tree): Response
     {
-        $block_id = (int)$request->get('block_id');
+        $block_id = (int) $request->get('block_id');
 
         Database::prepare(
             "DELETE FROM `##block_setting` WHERE block_id = :block_id"

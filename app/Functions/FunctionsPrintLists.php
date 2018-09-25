@@ -55,7 +55,7 @@ class FunctionsPrintLists
                 } else {
                     $size = 75.0 + 125.0 * ($count - $minimum) / ($maximum - $minimum);
                 }
-                $url  = route($route, [
+                $url = route($route, [
                     'surname' => $surn,
                     'ged'     => $tree->getName(),
                 ]);
@@ -132,13 +132,13 @@ class FunctionsPrintLists
                 }
                 $newcol = ceil($count / $col);
                 $html2  = '<table class="list_table"><tr>';
-                $html2  .= '<td class="list_value" style="padding: 14px;">';
+                $html2 .= '<td class="list_value" style="padding: 14px;">';
 
                 foreach ($html as $surns) {
                     $html2 .= $surns . '<br>';
                     $i++;
                     if ($i == $newcol && $i < $count) {
-                        $html2  .= '</td><td class="list_value" style="padding: 14px;">';
+                        $html2 .= '</td><td class="list_value" style="padding: 14px;">';
                         $newcol = $i + ceil($count / $col);
                     }
                 }

@@ -262,17 +262,17 @@ class Functions
             return false;
         }
 
-        $spouse_codes  = [
+        $spouse_codes = [
             'M' => 'hus',
             'F' => 'wif',
             'U' => 'spo',
         ];
-        $parent_codes  = [
+        $parent_codes = [
             'M' => 'fat',
             'F' => 'mot',
             'U' => 'par',
         ];
-        $child_codes   = [
+        $child_codes = [
             'M' => 'son',
             'F' => 'dau',
             'U' => 'chi',

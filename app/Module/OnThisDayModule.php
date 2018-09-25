@@ -109,7 +109,7 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface
 
         $default_events = implode(',', self::DEFAULT_EVENTS);
 
-        $filter    = (bool)$this->getBlockSetting($block_id, 'filter', '1');
+        $filter    = (bool) $this->getBlockSetting($block_id, 'filter', '1');
         $infoStyle = $this->getBlockSetting($block_id, 'infoStyle', 'table');
         $sortStyle = $this->getBlockSetting($block_id, 'sortStyle', 'alpha');
         $events    = $this->getBlockSetting($block_id, 'events', $default_events);

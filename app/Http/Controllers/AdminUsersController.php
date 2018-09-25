@@ -50,7 +50,7 @@ class AdminUsersController extends AbstractBaseController
      */
     public function cleanup(Request $request): Response
     {
-        $months = (int)$request->get('months', 6);
+        $months = (int) $request->get('months', 6);
 
         $inactive_threshold   = time() - $months * 30 * self::SECONDS_PER_DAY;
         $unverified_threshold = time() - 7 * self::SECONDS_PER_DAY;
@@ -59,9 +59,9 @@ class AdminUsersController extends AbstractBaseController
 
         $inactive_users = array_filter($users, function (User $user) use ($inactive_threshold): bool {
             if ($user->getPreference('sessiontime') === '0') {
-                $datelogin = (int)$user->getPreference('reg_timestamp');
+                $datelogin = (int) $user->getPreference('reg_timestamp');
             } else {
-                $datelogin = (int)$user->getPreference('sessiontime');
+                $datelogin = (int) $user->getPreference('sessiontime');
             }
 
             return $datelogin < $inactive_threshold && $user->getPreference('verified');
@@ -69,9 +69,9 @@ class AdminUsersController extends AbstractBaseController
 
         $unverified_users = array_filter($users, function (User $user) use ($unverified_threshold): bool {
             if ($user->getPreference('sessiontime') === '0') {
-                $datelogin = (int)$user->getPreference('reg_timestamp');
+                $datelogin = (int) $user->getPreference('reg_timestamp');
             } else {
-                $datelogin = (int)$user->getPreference('sessiontime');
+                $datelogin = (int) $user->getPreference('sessiontime');
             }
 
             return $datelogin < $unverified_threshold && !$user->getPreference('verified');
@@ -98,7 +98,7 @@ class AdminUsersController extends AbstractBaseController
     public function cleanupAction(Request $request): RedirectResponse
     {
         foreach (User::all() as $user) {
-            if ((bool)$request->get('del_' . $user->getUserId())) {
+            if ((bool) $request->get('del_' . $user->getUserId())) {
                 Log::addAuthenticationLog('Deleted user: ' . $user->getUserName());
                 $user->delete();
 
@@ -145,10 +145,10 @@ class AdminUsersController extends AbstractBaseController
     public function data(Request $request, User $user): JsonResponse
     {
         $search = $request->get('search')['value'];
-        $start  = (int)$request->get('start');
-        $length = (int)$request->get('length');
+        $start  = (int) $request->get('start');
+        $length = (int) $request->get('length');
         $order  = $request->get('order', []);
-        $draw   = (int)$request->get('draw');
+        $draw   = (int) $request->get('draw');
 
         $sql_select =
             "SELECT SQL_CALC_FOUND_ROWS u.user_id, user_name, real_name, email, us1.setting_value AS language, us2.setting_value AS registered_at, us3.setting_value AS active_at, us4.setting_value AS verified, us5.setting_value AS verified_by_admin" .
@@ -163,7 +163,7 @@ class AdminUsersController extends AbstractBaseController
         $args = [];
 
         if ($search) {
-            $sql_select       .= " AND (user_name LIKE CONCAT('%', :search_1, '%') OR real_name LIKE CONCAT('%', :search_2, '%') OR email LIKE CONCAT('%', :search_3, '%'))";
+            $sql_select .= " AND (user_name LIKE CONCAT('%', :search_1, '%') OR real_name LIKE CONCAT('%', :search_2, '%') OR email LIKE CONCAT('%', :search_3, '%'))";
             $args['search_1'] = $search;
             $args['search_2'] = $search;
             $args['search_3'] = $search;
@@ -192,7 +192,7 @@ class AdminUsersController extends AbstractBaseController
 
         if ($length) {
             $user->setPreference('admin_users_page_size', $length);
-            $sql_select     .= " LIMIT :limit OFFSET :offset";
+            $sql_select .= " LIMIT :limit OFFSET :offset";
             $args['limit']  = $length;
             $args['offset'] = $start;
         }
@@ -200,8 +200,8 @@ class AdminUsersController extends AbstractBaseController
         $rows = Database::prepare($sql_select)->execute($args)->fetchAll();
 
         // Total filtered/unfiltered rows
-        $recordsFiltered = (int)Database::prepare("SELECT FOUND_ROWS()")->fetchOne();
-        $recordsTotal    = (int)Database::prepare("SELECT COUNT(*) FROM `##user` WHERE user_id > 0")->fetchOne();
+        $recordsFiltered = (int) Database::prepare("SELECT FOUND_ROWS()")->fetchOne();
+        $recordsTotal    = (int) Database::prepare("SELECT COUNT(*) FROM `##user` WHERE user_id > 0")->fetchOne();
 
         $installed_languages = [];
         foreach (I18N::installedLocales() as $installed_locale) {
@@ -287,7 +287,7 @@ class AdminUsersController extends AbstractBaseController
      */
     public function edit(Request $request): Response
     {
-        $user_id = (int)$request->get('user_id');
+        $user_id = (int) $request->get('user_id');
         $user    = User::find($user_id);
 
         if ($user === null) {
@@ -370,7 +370,7 @@ class AdminUsersController extends AbstractBaseController
      */
     public function update(Request $request, User $user): RedirectResponse
     {
-        $user_id        = (int)$request->get('user_id');
+        $user_id        = (int) $request->get('user_id');
         $username       = $request->get('username');
         $real_name      = $request->get('real_name');
         $email          = $request->get('email');
@@ -380,11 +380,11 @@ class AdminUsersController extends AbstractBaseController
         $timezone       = $request->get('timezone');
         $contact_method = $request->get('contact_method');
         $comment        = $request->get('comment');
-        $auto_accept    = (bool)$request->get('auto_accept');
-        $canadmin       = (bool)$request->get('canadmin');
-        $visible_online = (bool)$request->get('visible_online');
-        $verified       = (bool)$request->get('verified');
-        $approved       = (bool)$request->get('approved');
+        $auto_accept    = (bool) $request->get('auto_accept');
+        $canadmin       = (bool) $request->get('canadmin');
+        $visible_online = (bool) $request->get('visible_online');
+        $verified       = (bool) $request->get('verified');
+        $approved       = (bool) $request->get('approved');
 
         $edit_user = User::find($user_id);
 
@@ -401,10 +401,10 @@ class AdminUsersController extends AbstractBaseController
             ->setPreference('TIMEZONE', $timezone)
             ->setPreference('contactmethod', $contact_method)
             ->setPreference('comment', $comment)
-            ->setPreference('auto_accept', (string)$auto_accept)
-            ->setPreference('visibleonline', (string)$visible_online)
-            ->setPreference('verified', (string)$verified)
-            ->setPreference('verified_by_admin', (string)$approved);
+            ->setPreference('auto_accept', (string) $auto_accept)
+            ->setPreference('visibleonline', (string) $visible_online)
+            ->setPreference('verified', (string) $verified)
+            ->setPreference('verified_by_admin', (string) $approved);
 
         if ($pass1 !== '') {
             $edit_user->setPassword($pass1);
@@ -416,7 +416,7 @@ class AdminUsersController extends AbstractBaseController
         }
 
         foreach (Tree::getAll() as $tree) {
-            $path_length = (int)$request->get('RELATIONSHIP_PATH_LENGTH' . $tree->getTreeId());
+            $path_length = (int) $request->get('RELATIONSHIP_PATH_LENGTH' . $tree->getTreeId());
             $gedcom_id   = $request->get('gedcomid' . $tree->getTreeId(), '');
             $can_edit    = $request->get('canedit' . $tree->getTreeId(), '');
 
@@ -427,7 +427,7 @@ class AdminUsersController extends AbstractBaseController
 
             $tree->setUserPreference($edit_user, 'gedcomid', $gedcom_id);
             $tree->setUserPreference($edit_user, 'canedit', $can_edit);
-            $tree->setUserPreference($edit_user, 'RELATIONSHIP_PATH_LENGTH', (string)$path_length);
+            $tree->setUserPreference($edit_user, 'RELATIONSHIP_PATH_LENGTH', (string) $path_length);
         }
 
         $url = route('admin-users');

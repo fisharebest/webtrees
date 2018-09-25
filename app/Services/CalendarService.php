@@ -225,7 +225,7 @@ class CalendarService
                 "SELECT DISTINCT f_id AS xref, f_gedcom AS gedcom, d_type, d_day, d_month, d_year, d_fact" .
                 " FROM `##dates` JOIN `##families` ON d_gid = f_id AND d_file = f_file" .
                 " WHERE d_type = :type AND d_file = :tree_id";
-            $args    = [
+            $args = [
                 'type'    => $anniv->format('%@'),
                 'tree_id' => $tree->getTreeId(),
             ];
@@ -255,7 +255,7 @@ class CalendarService
                     $where       .= " AND d_day = :day";
                     $args['day'] = $anniv->d;
                 }
-                $where         .= " AND d_mon = :month";
+                $where .= " AND d_mon = :month";
                 $args['month'] = $anniv->m;
             } else {
                 // SPECIAL CASES:
@@ -269,7 +269,7 @@ class CalendarService
                         } elseif ($anniv->d === 29 && $anniv->daysInMonth() === 29) {
                             $where .= " AND (d_day = 29 OR d_day > 30) AND d_mon = 2";
                         } else {
-                            $where       .= " AND d_day = :day AND d_mon = 2";
+                            $where .= " AND d_day = :day AND d_mon = 2";
                             $args['day'] = $anniv->d;
                         }
                         break;
@@ -292,7 +292,7 @@ class CalendarService
                         } elseif ($anniv->d == 29 && $anniv->daysInMonth() === 29) {
                             $where .= " AND (d_day = 29 OR d_day > 30) AND d_mon = 3";
                         } else {
-                            $where       .= " AND d_day = :day AND d_mon = 3";
+                            $where .= " AND d_day = :day AND d_mon = 3";
                             $args['day'] = $anniv->d;
                         }
                         break;
@@ -347,7 +347,7 @@ class CalendarService
                 }
             }
             // Only events in the past (includes dates without a year)
-            $where        .= " AND d_year <= :year";
+            $where .= " AND d_year <= :year";
             $args['year'] = $anniv->y;
 
             if ($facts) {

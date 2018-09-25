@@ -47,7 +47,7 @@ class ReportPdfCell extends ReportBaseCell
             '<u>',
             '</u>',
         ], $temptext);
-        $match    = [];
+        $match = [];
         // Indicates if the cell background must be painted (1) or transparent (0)
         if ($this->fill == 1) {
             if (!empty($this->bgcolor)) {

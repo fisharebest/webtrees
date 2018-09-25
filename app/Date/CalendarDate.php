@@ -109,7 +109,7 @@ class CalendarDate
 
         // Construct from an array (of three gedcom-style strings: "1900", "FEB", "4")
         if (is_array($date)) {
-            $this->d = (int)$date[2];
+            $this->d = (int) $date[2];
             if (array_key_exists($date[1], static::$MONTH_ABBREV)) {
                 $this->m = static::$MONTH_ABBREV[$date[1]];
             } else {
@@ -157,7 +157,7 @@ class CalendarDate
             $jd    = $date->calendar->ymdToJd($today[0], $date->m, $date->d == 0 ? $today[2] : $date->d);
         } else {
             // Complete date
-            $jd = (int)(($date->maxJD + $date->minJD) / 2);
+            $jd = (int) (($date->maxJD + $date->minJD) / 2);
         }
         list($this->y, $this->m, $this->d) = $this->calendar->jdToYmd($jd);
         // New date has same precision as original date
@@ -1036,7 +1036,7 @@ class CalendarDate
     {
         if ($number < 1) {
             // Cannot convert zero/negative numbers
-            return (string)$number;
+            return (string) $number;
         }
         $roman = '';
         foreach (self::$roman_numerals as $key => $value) {
@@ -1061,7 +1061,7 @@ class CalendarDate
         $num = 0;
         foreach (self::$roman_numerals as $key => $value) {
             if (strpos($roman, $value) === 0) {
-                $num   += $key;
+                $num += $key;
                 $roman = substr($roman, strlen($value));
             }
         }

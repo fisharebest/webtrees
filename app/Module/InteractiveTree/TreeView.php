@@ -256,7 +256,7 @@ class TreeView
         // Fixing the width for td to the box initial width when the person is the root person fix a rare bug that happen when a person without child and without known parents is the root person : an unwanted white rectangle appear at the right of the person’s boxes, otherwise.
         $html .= '<td' . ($isRoot ? ' style="width:1px"' : '') . '><div class="tv_box' . ($isRoot ? ' rootPerson' : '') . '" dir="' . I18N::direction() . '" style="text-align: ' . (I18N::direction() === 'rtl' ? 'right' : 'left') . '; direction: ' . I18N::direction() . '" abbr="' . $person->getXref() . '" onclick="' . $this->name . 'Handler.expandBox(this, event);">';
         $html .= $this->drawPersonName($person);
-        $fop  = []; // $fop is fathers of partners
+        $fop = []; // $fop is fathers of partners
         if ($partner !== null) {
             $dashed = '';
             foreach ($person->getSpouseFamilies() as $family) {
@@ -274,7 +274,7 @@ class TreeView
                             $spouse_parents,
                         ];
                     }
-                    $html   .= $this->drawPersonName($spouse, $dashed);
+                    $html .= $this->drawPersonName($spouse, $dashed);
                     $dashed = 'dashed';
                 }
             }
@@ -294,9 +294,9 @@ class TreeView
         /* draw the parents */
         if ($state >= 0 && (!empty($parent) || count($fop))) {
             $unique = (empty($parent) || count($fop) == 0);
-            $html   .= '<td align="left"><table class="tv_tree"><tbody>';
+            $html .= '<td align="left"><table class="tv_tree"><tbody>';
             if (!empty($parent)) {
-                $u    = $unique ? 'c' : 't';
+                $u = $unique ? 'c' : 't';
                 $html .= '<tr><td ' . ($gen == 0 ? ' abbr="p' . $primaryChildFamily->getXref() . '@' . $u . '"' : '') . '>';
                 $html .= $this->drawPerson($parent, $gen - 1, 1, $primaryChildFamily, $u);
                 $html .= '</td></tr>';
@@ -306,7 +306,7 @@ class TreeView
                 $nb = count($fop);
                 foreach ($fop as $p) {
                     $n++;
-                    $u    = $unique ? 'c' : ($n == $nb || empty($p[1]) ? 'b' : 'h');
+                    $u = $unique ? 'c' : ($n == $nb || empty($p[1]) ? 'b' : 'h');
                     $html .= '<tr><td ' . ($gen == 0 ? ' abbr="p' . $p[1]->getXref() . '@' . $u . '"' : '') . '>' . $this->drawPerson($p[0], $gen - 1, 1, $p[1], $u) . '</td></tr>';
                 }
             }

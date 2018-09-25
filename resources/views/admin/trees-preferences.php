@@ -134,7 +134,7 @@
 				<?= /* I18N: A configuration setting */ I18N::translate('Add unique identifiers') ?>
 			</legend>
 			<div class="col-sm-9">
-          <?= view('components/radios-no-yes',['name' => 'GENERATE_UIDS', 'value' => $tree->getPreference('GENERATE_UIDS')]) ?>
+          <?= view('components/radios-no-yes', ['name' => 'GENERATE_UIDS', 'value' => $tree->getPreference('GENERATE_UIDS')]) ?>
 				<p class="small text-muted">
 					<?= /* I18N: Help text for the “Add unique identifiers” configuration setting */ I18N::translate('Unique identifiers allow the same record to be found in different family trees and in different systems. They will be added whenever records are created or updated. If you do not want unique identifiers to be displayed, you can hide them using the privacy rules.') ?>
 				</p>
@@ -255,7 +255,7 @@
 				<?= /* I18N: A configuration setting */ I18N::translate('Theme menu') ?>
 			</legend>
 			<div class="col-sm-9">
-				<?= view('components/radios-hide-show',['name' => 'ALLOW_THEME_DROPDOWN', 'value' => $tree->getPreference('ALLOW_THEME_DROPDOWN')]) ?>
+				<?= view('components/radios-hide-show', ['name' => 'ALLOW_THEME_DROPDOWN', 'value' => $tree->getPreference('ALLOW_THEME_DROPDOWN')]) ?>
 				<p class="small text-muted">
 					<?= /* I18N: Help text for the “Theme dropdown selector for theme changes” configuration setting */ I18N::translate('The theme menu will only be shown if the website preferences allow users to select their own theme.') ?>
 				</p>
@@ -346,7 +346,7 @@
 				<?= I18N::translate('Thumbnail images') ?>
 			</legend>
 			<div class="col-sm-9">
-        <?= view('components/radios-hide-show',['name' => 'SHOW_HIGHLIGHT_IMAGES', 'value' => $tree->getPreference('SHOW_HIGHLIGHT_IMAGES')]) ?>
+        <?= view('components/radios-hide-show', ['name' => 'SHOW_HIGHLIGHT_IMAGES', 'value' => $tree->getPreference('SHOW_HIGHLIGHT_IMAGES')]) ?>
 				<p class="small text-muted">
 					<?= I18N::translate('Show thumbnail images in charts and family groups.') ?>
 				</p>
@@ -361,7 +361,7 @@
 				<?= /* I18N: A configuration setting */ I18N::translate('Use silhouettes') ?>
 			</legend>
 			<div class="col-sm-9">
-          <?= view('components/radios-no-yes',['name' => 'USE_SILHOUETTE', 'value' => $tree->getPreference('USE_SILHOUETTE')]) ?>
+          <?= view('components/radios-no-yes', ['name' => 'USE_SILHOUETTE', 'value' => $tree->getPreference('USE_SILHOUETTE')]) ?>
 				<p class="small text-muted">
 					<?= /* I18N: Help text for the “Use silhouettes” configuration setting */ I18N::translate('Use silhouette images when no highlighted image for that individual has been specified. The images used are specific to the gender of the individual in question.') ?>
 				</p>
@@ -426,7 +426,7 @@
 				<?= /* I18N: A configuration setting */ I18N::translate('Estimated dates for birth and death') ?>
 			</legend>
 			<div class="col-sm-9">
-        <?= view('components/radios-hide-show',['name' => 'SHOW_EST_LIST_DATES', 'value' => $tree->getPreference('SHOW_EST_LIST_DATES')]) ?>
+        <?= view('components/radios-hide-show', ['name' => 'SHOW_EST_LIST_DATES', 'value' => $tree->getPreference('SHOW_EST_LIST_DATES')]) ?>
 				<p class="small text-muted">
 					<?= /* I18N: Help text for the “Estimated dates for birth and death” configuration setting */ I18N::translate('This option controls whether or not to show estimated dates for birth and death instead of leaving blanks on individual lists and charts for individuals whose dates are not known.') ?>
 				</p>
@@ -441,7 +441,7 @@
 				<?= I18N::translate('The date and time of the last update') ?>
 			</legend>
 			<div class="col-sm-9">
-        <?= view('components/radios-hide-show',['name' => 'SHOW_LAST_CHANGE', 'value' => $tree->getPreference('SHOW_LAST_CHANGE')]) ?>
+        <?= view('components/radios-hide-show', ['name' => 'SHOW_LAST_CHANGE', 'value' => $tree->getPreference('SHOW_LAST_CHANGE')]) ?>
 				<p class="small text-muted">
 				</p>
 			</div>
@@ -533,7 +533,7 @@
 				<?= /* I18N: A configuration setting */ I18N::translate('Gender icon on charts') ?>
 			</legend>
 			<div class="col-sm-9">
-        <?= view('components/radios-hide-show',['name' => 'PEDIGREE_SHOW_GENDER', 'value' => $tree->getPreference('PEDIGREE_SHOW_GENDER')]) ?>
+        <?= view('components/radios-hide-show', ['name' => 'PEDIGREE_SHOW_GENDER', 'value' => $tree->getPreference('PEDIGREE_SHOW_GENDER')]) ?>
 				<p class="small text-muted">
 					<?= /* I18N: Help text for the “Gender icon on charts” configuration setting */ I18N::translate('This option controls whether or not to show the individual’s gender icon on charts.<br><br>Since the gender is also indicated by the color of the box, this option doesn’t conceal the gender. The option simply removes some duplicate information from the box.') ?>
 				</p>
@@ -548,7 +548,7 @@
 				<?= /* I18N: A configuration setting */ I18N::translate('Age of parents next to child’s birthdate') ?>
 			</legend>
 			<div class="col-sm-9">
-        <?= view('components/radios-hide-show',['name' => 'SHOW_PARENTS_AGE', 'value' => $tree->getPreference('SHOW_PARENTS_AGE')]) ?>
+        <?= view('components/radios-hide-show', ['name' => 'SHOW_PARENTS_AGE', 'value' => $tree->getPreference('SHOW_PARENTS_AGE')]) ?>
 				<p class="small text-muted">
 					<?= /* I18N: Help text for the “Age of parents next to child’s birthdate” configuration setting */ I18N::translate('This option controls whether or not to show age of father and mother next to child’s birthdate on charts.') ?>
 				</p>
@@ -563,7 +563,7 @@
 				<?= /* I18N: A configuration setting */ I18N::translate('LDS ordinance codes in chart boxes') ?>
 			</legend>
 			<div class="col-sm-9">
-        <?= view('components/radios-hide-show',['name' => 'SHOW_LDS_AT_GLANCE', 'value' => $tree->getPreference('SHOW_LDS_AT_GLANCE')]) ?>
+        <?= view('components/radios-hide-show', ['name' => 'SHOW_LDS_AT_GLANCE', 'value' => $tree->getPreference('SHOW_LDS_AT_GLANCE')]) ?>
 				<p class="small text-muted">
 					<?= /* I18N: Help text for the “LDS ordinance codes in chart boxes” configuration setting. "B", "E", "S" and "P" should not be translated. */ I18N::translate('This is a summary of the <abbr title="The Church of Jesus Christ of Latter-day Saints">LDS</abbr> ordinances for the individual. “B” indicates an LDS baptism. “E” indicates an LDS endowment. “S” indicates an LDS spouse sealing. “P” indicates an LDS child-to-parent sealing.') ?>
 				</p>
@@ -688,7 +688,7 @@
 				<?= /* I18N: A configuration setting */ I18N::translate('Fact icons') ?>
 			</legend>
 			<div class="col-sm-9">
-        <?= view('components/radios-hide-show',['name' => 'SHOW_FACT_ICONS', 'value' => $tree->getPreference('SHOW_FACT_ICONS')]) ?>
+        <?= view('components/radios-hide-show', ['name' => 'SHOW_FACT_ICONS', 'value' => $tree->getPreference('SHOW_FACT_ICONS')]) ?>
 				<p class="small text-muted">
 					<?= /* I18N: Help text for the “Fact icons” configuration setting */ I18N::translate('Some themes can display icons on the “Facts and events” tab.') ?>
 				</p>
@@ -703,7 +703,7 @@
 				<?= /* I18N: A configuration setting */ I18N::translate('Automatically expand notes') ?>
 			</legend>
 			<div class="col-sm-9">
-        <?= view('components/radios-no-yes',['name' => 'EXPAND_NOTES', 'value' => $tree->getPreference('EXPAND_NOTES')]) ?>
+        <?= view('components/radios-no-yes', ['name' => 'EXPAND_NOTES', 'value' => $tree->getPreference('EXPAND_NOTES')]) ?>
 				<p class="small text-muted">
 					<?= /* I18N: Help text for the “Automatically expand notes” configuration setting */
 					I18N::translate('This option controls whether or not to automatically display content of a <i>Note</i> record on the Individual page.') ?>
@@ -719,7 +719,7 @@
 				<?= /* I18N: A configuration setting */ I18N::translate('Automatically expand sources') ?>
 			</legend>
 			<div class="col-sm-9">
-        <?= view('components/radios-no-yes',['name' => 'EXPAND_SOURCES', 'value' => $tree->getPreference('EXPAND_SOURCES')]) ?>
+        <?= view('components/radios-no-yes', ['name' => 'EXPAND_SOURCES', 'value' => $tree->getPreference('EXPAND_SOURCES')]) ?>
 				<p class="small text-muted">
 					<?= /* I18N: Help text for the “Automatically expand sources” configuration setting */
 					I18N::translate('This option controls whether or not to automatically display content of a <i>Source</i> record on the Individual page.') ?>
@@ -809,7 +809,7 @@
 				<?= /* I18N: A configuration setting */ I18N::translate('Allow users to see raw GEDCOM records') ?>
 			</legend>
 			<div class="col-sm-9">
-        <?= view('components/radios-no-yes',['name' => 'SHOW_GEDCOM_RECORD', 'value' => $tree->getPreference('SHOW_GEDCOM_RECORD')]) ?>
+        <?= view('components/radios-no-yes', ['name' => 'SHOW_GEDCOM_RECORD', 'value' => $tree->getPreference('SHOW_GEDCOM_RECORD')]) ?>
 				<p class="small text-muted">
 					<?= /* I18N: Help text for the “Allow users to see raw GEDCOM records” configuration setting */ I18N::translate('Setting this to <b>Yes</b> will place links on individuals, sources, and families to let users bring up another window containing the raw data taken right out of the GEDCOM file.') ?>
 				</p>
@@ -824,7 +824,7 @@
 				<?= /* I18N: A configuration setting */ I18N::translate('GEDCOM errors') ?>
 			</legend>
 			<div class="col-sm-9">
-        <?= view('components/radios-hide-show',['name' => 'HIDE_GEDCOM_ERRORS', 'value' => $tree->getPreference('HIDE_GEDCOM_ERRORS')]) ?>
+        <?= view('components/radios-hide-show', ['name' => 'HIDE_GEDCOM_ERRORS', 'value' => $tree->getPreference('HIDE_GEDCOM_ERRORS')]) ?>
 				<p class="small text-muted">
 					<?= /* I18N: Help text for the “GEDCOM errors” configuration setting */ I18N::translate('Many genealogy programs create GEDCOM files with custom tags, and webtrees understands most of them. When unrecognized tags are found, this option lets you choose whether to ignore them or display a warning message.') ?>
 				</p>
@@ -839,7 +839,7 @@
 				<?= /* I18N: A configuration setting */ I18N::translate('Hit counters') ?>
 			</legend>
 			<div class="col-sm-9">
-        <?= view('components/radios-hide-show',['name' => 'SHOW_COUNTER', 'value' => $tree->getPreference('SHOW_COUNTER')]) ?>
+        <?= view('components/radios-hide-show', ['name' => 'SHOW_COUNTER', 'value' => $tree->getPreference('SHOW_COUNTER')]) ?>
 				<p class="small text-muted">
 					<?= /* I18N: Help text for the “Hit counters” configuration setting */ I18N::translate('Some pages can display the number of times that they have been visited.') ?>
 				</p>
@@ -1091,7 +1091,7 @@
 				<?= /* I18N: A configuration setting */ I18N::translate('Use full source citations') ?>
 			</legend>
 			<div class="col-sm-9">
-        <?= view('components/radios-no-yes',['name' => 'FULL_SOURCES', 'value' => $tree->getPreference('FULL_SOURCES')]) ?>
+        <?= view('components/radios-no-yes', ['name' => 'FULL_SOURCES', 'value' => $tree->getPreference('FULL_SOURCES')]) ?>
 				<p class="small text-muted">
 					<?= /* I18N: Help text for the “Use full source citations” configuration setting */ I18N::translate('Source citations can include fields to record the quality of the data (primary, secondary, etc.) and the date the event was recorded in the source. If you don’t use these fields, you can disable them when creating new source citations.') ?>
 				</p>
@@ -1121,7 +1121,7 @@
 				<?= /* I18N: A configuration setting */ I18N::translate('Keep the existing “last change” information') ?>
 			</legend>
 			<div class="col-sm-9">
-        <?= view('components/radios-no-yes',['name' => 'NO_UPDATE_CHAN', 'value' => $tree->getPreference('NO_UPDATE_CHAN')]) ?>
+        <?= view('components/radios-no-yes', ['name' => 'NO_UPDATE_CHAN', 'value' => $tree->getPreference('NO_UPDATE_CHAN')]) ?>
 				<p class="small text-muted">
 					<?= /* I18N: Help text for the “Keep the existing ‘last change’ information” configuration setting */ I18N::translate('When a record is edited, the user and timestamp are recorded. Sometimes it is desirable to keep the existing “last change” information, for example when making minor corrections to someone else’s data. This option controls whether this feature is selected by default.') ?>
 				</p>

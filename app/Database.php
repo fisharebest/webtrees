@@ -93,8 +93,7 @@ class Database
         self::$table_prefix = $config['tblpfx'];
 
         $dsn = (substr($config['dbhost'], 0, 1) === '/' ?
-            "mysql:unix_socket='{$config['dbhost']};dbname={$config['dbname']}" :
-            "mysql:host={$config['dbhost']};dbname={$config['dbname']};port={$config['dbport']}"
+            "mysql:unix_socket='{$config['dbhost']};dbname={$config['dbname']}" : "mysql:host={$config['dbhost']};dbname={$config['dbname']};port={$config['dbport']}"
         );
 
         // Create the underlying PDO object.
@@ -244,7 +243,7 @@ class Database
             $migration = new $class();
             $migration->upgrade();
             $current_version++;
-            Site::setPreference($schema_name, (string)$current_version);
+            Site::setPreference($schema_name, (string) $current_version);
             $updates_applied = true;
         }
 

@@ -73,7 +73,7 @@ class Statement
                     $this->pdo_statement->bindValue($key, $bind_variable, PDO::PARAM_NULL);
                     break;
                 case 'boolean':
-                    $this->pdo_statement->bindValue($key, (int)$bind_variable, PDO::PARAM_INT);
+                    $this->pdo_statement->bindValue($key, (int) $bind_variable, PDO::PARAM_INT);
                     break;
                 case 'integer':
                     $this->pdo_statement->bindValue($key, $bind_variable, PDO::PARAM_INT);

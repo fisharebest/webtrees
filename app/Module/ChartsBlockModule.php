@@ -86,7 +86,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
                         'generations' => 3,
                         'layout'      => PedigreeChartController::PORTRAIT,
                     ]);
-                    $content   = view('modules/charts/chart', [
+                    $content = view('modules/charts/chart', [
                         'block_id'  => $block_id,
                         'chart_url' => $chart_url,
                     ]);
@@ -99,7 +99,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
                         'generations' => 2,
                         'chart_style' => 0,
                     ]);
-                    $content   = view('modules/charts/chart', [
+                    $content = view('modules/charts/chart', [
                         'block_id'  => $block_id,
                         'chart_url' => $chart_url,
                     ]);
@@ -112,7 +112,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
                         'generations' => 2,
                         'layout'      => PedigreeChartController::PORTRAIT,
                     ]);
-                    $content   = view('modules/charts/chart', [
+                    $content = view('modules/charts/chart', [
                         'block_id'  => $block_id,
                         'chart_url' => $chart_url,
                     ]);

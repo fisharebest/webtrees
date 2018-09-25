@@ -288,7 +288,7 @@ class Tree
     public static function getAll(): array
     {
         if (empty(self::$trees)) {
-            $rows        = Database::prepare(
+            $rows = Database::prepare(
                 "SELECT g.gedcom_id AS tree_id, g.gedcom_name AS tree_name, gs1.setting_value AS tree_title" .
                 " FROM `##gedcom` g" .
                 " LEFT JOIN `##gedcom_setting`      gs1 ON (g.gedcom_id=gs1.gedcom_id AND gs1.setting_name='title')" .

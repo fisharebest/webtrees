@@ -145,7 +145,7 @@ class FunctionsPrint
                     if ($note->canShow()) {
                         $noterec = $note->getGedcom();
                         $nt      = preg_match("/0 @$nmatch[1]@ NOTE (.*)/", $noterec, $n1match);
-                        $data    .= self::printNoteRecord($tree, ($nt > 0) ? $n1match[1] : '', 1, $noterec);
+                        $data .= self::printNoteRecord($tree, ($nt > 0) ? $n1match[1] : '', 1, $noterec);
                     }
                 } else {
                     $data = '<div class="fact_NOTE"><span class="label">' . I18N::translate('Note') . '</span>: <span class="field error">' . $nmatch[1] . '</span></div>';
@@ -391,35 +391,35 @@ class FunctionsPrint
                 if (preg_match_all('/\n3 (?:_HEB|ROMN) (.+)/', $placerec, $matches)) {
                     foreach ($matches[1] as $match) {
                         $wt_place = new Place($match, $tree);
-                        $html     .= ' - ' . $wt_place->getFullName();
+                        $html .= ' - ' . $wt_place->getFullName();
                     }
                 }
                 $map_lati = '';
                 $cts      = preg_match('/\d LATI (.*)/', $placerec, $match);
                 if ($cts > 0) {
                     $map_lati = $match[1];
-                    $html     .= '<br><span class="label">' . I18N::translate('Latitude') . ': </span>' . $map_lati;
+                    $html .= '<br><span class="label">' . I18N::translate('Latitude') . ': </span>' . $map_lati;
                 }
                 $map_long = '';
                 $cts      = preg_match('/\d LONG (.*)/', $placerec, $match);
                 if ($cts > 0) {
                     $map_long = $match[1];
-                    $html     .= ' <span class="label">' . I18N::translate('Longitude') . ': </span>' . $map_long;
+                    $html .= ' <span class="label">' . I18N::translate('Longitude') . ': </span>' . $map_long;
                 }
                 if ($map_lati && $map_long) {
                     $map_lati = trim(strtr($map_lati, 'NSEW,�', ' - -. ')); // S5,6789 ==> -5.6789
                     $map_long = trim(strtr($map_long, 'NSEW,�', ' - -. ')); // E3.456� ==> 3.456
-                    $html     .= FontAwesome::linkIcon('google-maps', I18N::translate('Google Maps™'), [
+                    $html .= FontAwesome::linkIcon('google-maps', I18N::translate('Google Maps™'), [
                         'class' => 'btn btn-link',
                         'url'   => 'https://maps.google.com/maps?q=' . $map_lati . ',' . $map_long,
                         'rel'   => 'nofollow',
                     ]);
-                    $html     .= FontAwesome::linkIcon('bing-maps', I18N::translate('Bing Maps™'), [
+                    $html .= FontAwesome::linkIcon('bing-maps', I18N::translate('Bing Maps™'), [
                         'class' => 'btn btn-link',
                         'url'   => 'https://www.bing.com/maps/?lvl=15&cp=' . $map_lati . '~' . $map_long,
                         'rel'   => 'nofollow',
                     ]);
-                    $html     .= FontAwesome::linkIcon('openstreetmap', I18N::translate('OpenStreetMap™'), [
+                    $html .= FontAwesome::linkIcon('openstreetmap', I18N::translate('OpenStreetMap™'), [
                         'class' => 'btn btn-link',
                         'url'   => 'https://www.openstreetmap.org/#map=15/' . $map_lati . '/' . $map_long,
                         'rel'   => 'nofollow',

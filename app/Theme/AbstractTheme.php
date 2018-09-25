@@ -216,7 +216,7 @@ abstract class AbstractTheme
     {
         if ($analytics_id) {
             // Add extra dimensions (i.e. filtering categories)
-            $dimensions = (object)[
+            $dimensions = (object) [
                 'dimension1' => $this->tree ? $this->tree->getName() : '-',
                 'dimension2' => $this->tree ? Auth::accessLevel($this->tree) : '-',
             ];
@@ -278,7 +278,7 @@ abstract class AbstractTheme
         if ($project_id && $security_id) {
             return
                 '<script>' .
-                'var sc_project=' . (int)$project_id . ',sc_invisible=1,sc_security="' . $security_id .
+                'var sc_project=' . (int) $project_id . ',sc_invisible=1,sc_security="' . $security_id .
                 '",scJsHost = (("https:"===document.location.protocol)?"https://secure.":"http://www.");' .
                 'document.write("<sc"+"ript src=\'"+scJsHost+"statcounter.com/counter/counter.js\'></"+"script>");' .
                 '</script>';

@@ -1163,11 +1163,11 @@ class GedcomRecord
             // The record does have a CHAN event
             $d = $chan->getDate()->minimumDate();
             if (preg_match('/\n3 TIME (\d\d):(\d\d):(\d\d)/', $chan->getGedcom(), $match)) {
-                $t = mktime((int)$match[1], (int)$match[2], (int)$match[3], (int)$d->format('%n'), (int)$d->format('%j'), (int)$d->format('%Y'));
+                $t = mktime((int) $match[1], (int) $match[2], (int) $match[3], (int) $d->format('%n'), (int) $d->format('%j'), (int) $d->format('%Y'));
             } elseif (preg_match('/\n3 TIME (\d\d):(\d\d)/', $chan->getGedcom(), $match)) {
-                $t = mktime((int)$match[1], (int)$match[2], 0, (int)$d->format('%n'), (int)$d->format('%j'), (int)$d->format('%Y'));
+                $t = mktime((int) $match[1], (int) $match[2], 0, (int) $d->format('%n'), (int) $d->format('%j'), (int) $d->format('%Y'));
             } else {
-                $t = mktime(0, 0, 0, (int)$d->format('%n'), (int)$d->format('%j'), (int)$d->format('%Y'));
+                $t = mktime(0, 0, 0, (int) $d->format('%n'), (int) $d->format('%j'), (int) $d->format('%Y'));
             }
             if ($sorting) {
                 return $t;

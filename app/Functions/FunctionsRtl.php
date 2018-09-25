@@ -294,7 +294,7 @@ class FunctionsRtl
                         if ($openParIndex !== false) {
                             // Opening parentheses always inherit the following directionality
                             self::$waitingText .= $currentLetter;
-                            $workingText       = substr($workingText, $currentLen);
+                            $workingText = substr($workingText, $currentLen);
                             while (true) {
                                 if ($workingText === '') {
                                     break;
@@ -302,13 +302,13 @@ class FunctionsRtl
                                 if (substr($workingText, 0, 1) === ' ') {
                                     // Spaces following this left parenthesis inherit the following directionality too
                                     self::$waitingText .= ' ';
-                                    $workingText       = substr($workingText, 1);
+                                    $workingText = substr($workingText, 1);
                                     continue;
                                 }
                                 if (substr($workingText, 0, 6) === '&nbsp;') {
                                     // Spaces following this left parenthesis inherit the following directionality too
                                     self::$waitingText .= '&nbsp;';
-                                    $workingText       = substr($workingText, 6);
+                                    $workingText = substr($workingText, 6);
                                     continue;
                                 }
                                 break;
@@ -325,9 +325,9 @@ class FunctionsRtl
                         // Exceptions to this rule will be handled later during final clean-up.
                         //
                         self::$waitingText .= $currentLetter;
-                        $workingText       = substr($workingText, $currentLen);
+                        $workingText = substr($workingText, $currentLen);
                         if (self::$currentState != '') {
-                            $result            .= self::$waitingText;
+                            $result .= self::$waitingText;
                             self::$waitingText = '';
                         }
                         break 2; // double break because we're waiting for more information
@@ -458,7 +458,7 @@ class FunctionsRtl
                 }
                 if (substr($result . "\n", 0, self::LENGTH_START) != self::START_LTR && substr($result . "\n", 0, self::LENGTH_START) != self::START_RTL) {
                     $leadingText .= substr($result, 0, 1);
-                    $result      = substr($result, 1);
+                    $result = substr($result, 1);
                     continue;
                 }
                 $result = substr($result, 0, self::LENGTH_START) . $leadingText . substr($result, self::LENGTH_START);
@@ -595,11 +595,11 @@ class FunctionsRtl
     public static function breakCurrentSpan(&$result)
     {
         // Interrupt the current span, insert that <br>, and then continue the current span
-        $result            .= self::$waitingText;
+        $result .= self::$waitingText;
         self::$waitingText = '';
 
         $breakString = '<' . self::$currentState . 'br>';
-        $result      .= $breakString;
+        $result .= $breakString;
     }
 
     /**
@@ -656,7 +656,7 @@ class FunctionsRtl
                 break;
             } // No more numeric strings
 
-            $tempResult    .= substr($textSpan, 0, $posLRE + 3); // Copy everything preceding the numeric string
+            $tempResult .= substr($textSpan, 0, $posLRE + 3); // Copy everything preceding the numeric string
             $numericString = substr($textSpan, $posLRE + 3, $posPDF - $posLRE); // Separate the entire numeric string
             $textSpan      = substr($textSpan, $posPDF + 3);
             $posColon      = strpos($numericString, ':');
@@ -1148,7 +1148,7 @@ class FunctionsRtl
         while ($string) {
             if (mb_strlen($string) <= $width) {
                 // Do not wrap any text that is less than the output area.
-                $out    .= $string;
+                $out .= $string;
                 $string = '';
             } else {
                 $sub1 = mb_substr($string, 0, $width + 1);
@@ -1162,7 +1162,7 @@ class FunctionsRtl
                 if ($spacepos === false) {
                     // No space on line?
                     if ($cut) {
-                        $out    .= $sub . $sep;
+                        $out .= $sub . $sep;
                         $string = mb_substr($string, mb_strlen($sub));
                     } else {
                         $spacepos = strpos($string, ' ');
@@ -1176,7 +1176,7 @@ class FunctionsRtl
                     }
                 } else {
                     // Split at space;
-                    $out    .= substr($string, 0, $spacepos) . $sep;
+                    $out .= substr($string, 0, $spacepos) . $sep;
                     $string = substr($string, $spacepos + 1);
                 }
             }

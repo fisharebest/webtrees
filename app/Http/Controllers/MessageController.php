@@ -328,8 +328,8 @@ class MessageController extends AbstractBaseController
     private function validContacts(Tree $tree): array
     {
         $contacts = [
-            User::find((int)$tree->getPreference('CONTACT_USER_ID')),
-            User::find((int)$tree->getPreference('WEBMASTER_USER_ID')),
+            User::find((int) $tree->getPreference('CONTACT_USER_ID')),
+            User::find((int) $tree->getPreference('WEBMASTER_USER_ID')),
         ];
 
         return array_filter($contacts);
@@ -353,7 +353,7 @@ class MessageController extends AbstractBaseController
     {
         // Create a dummy user, so we can send messages from the tree.
         $from = new User(
-            (object)[
+            (object) [
                 'user_id'   => null,
                 'user_name' => '',
                 'real_name' => $tree->getTitle(),
@@ -363,7 +363,7 @@ class MessageController extends AbstractBaseController
 
         // Create a dummy user, so we can reply to visitors.
         $sender = new User(
-            (object)[
+            (object) [
                 'user_id'   => null,
                 'user_name' => '',
                 'real_name' => $sender_name,

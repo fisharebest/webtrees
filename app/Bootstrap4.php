@@ -102,7 +102,7 @@ class Bootstrap4 extends Html
                     'type'    => 'radio',
                     'name'    => $name,
                     'value'   => $value,
-                    'checked' => (string)$value === (string)$selected,
+                    'checked' => (string) $value === (string) $selected,
                 ] + $attributes);
 
             $html .=
@@ -131,7 +131,7 @@ class Bootstrap4 extends Html
         foreach ($options as $value => $option) {
             $option_attributes = self::attributes([
                 'value'    => $value,
-                'selected' => (string)$value === (string)$selected,
+                'selected' => (string) $value === (string) $selected,
             ]);
 
             $html .= '<option ' . $option_attributes . '>' . e($option) . '</option>';
@@ -163,7 +163,7 @@ class Bootstrap4 extends Html
         foreach ($options as $value => $option) {
             $option_attributes = self::attributes([
                 'value'    => $value,
-                'selected' => in_array((string)$value, $selected),
+                'selected' => in_array((string) $value, $selected),
             ]);
 
             $html .= '<option ' . $option_attributes . '>' . e($option) . '</option>';

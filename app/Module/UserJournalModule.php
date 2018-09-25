@@ -167,7 +167,7 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
                 'user_id' => Auth::id(),
             ])->fetchOneRow();
         } else {
-            $row = (object)[
+            $row = (object) [
                 'body'    => '',
                 'subject' => '',
             ];

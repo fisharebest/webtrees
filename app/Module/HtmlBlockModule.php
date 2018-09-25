@@ -76,7 +76,7 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface
         $content = $stats->embedTags($content);
 
         if ($show_timestamp === '1') {
-            $content .= '<br>' . FunctionsDate::formatTimestamp((int)$this->getBlockSetting($block_id, 'timestamp', (string) WT_TIMESTAMP) + WT_TIMESTAMP_OFFSET);
+            $content .= '<br>' . FunctionsDate::formatTimestamp((int) $this->getBlockSetting($block_id, 'timestamp', (string) WT_TIMESTAMP) + WT_TIMESTAMP_OFFSET);
         }
 
         if ($template) {

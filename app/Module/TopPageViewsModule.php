@@ -78,7 +78,7 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface
             " ORDER BY page_count DESC LIMIT :limit"
         )->execute([
             'tree_id' => $tree->getTreeId(),
-            'limit'   => (int)$num,
+            'limit'   => (int) $num,
         ])->fetchAssoc();
 
         $content = '<table>';

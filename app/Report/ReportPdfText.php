@@ -126,7 +126,7 @@ class ReportPdfText extends ReportBaseText
         if ($this->wrapWidthRemaining > 0) {
             // Check with line counter too!
             // but floor the $wrapWidthRemaining first to keep it bugfree!
-            $wrapWidthRemaining = (int)($this->wrapWidthRemaining);
+            $wrapWidthRemaining = (int) ($this->wrapWidthRemaining);
             if ($lw >= $wrapWidthRemaining || $lfct > 1) {
                 $newtext = '';
                 $lines   = explode("\n", $this->text);
@@ -148,7 +148,7 @@ class ReportPdfText extends ReportBaseText
                                     $newtext .= ' ';
                                 }
                             } else {
-                                $lw      = $pdf->GetStringWidth($word . ' ');
+                                $lw = $pdf->GetStringWidth($word . ' ');
                                 $newtext .= "\n$word";
                                 if ($addspace != 0) {
                                     $newtext .= ' ';

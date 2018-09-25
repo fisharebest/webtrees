@@ -66,7 +66,7 @@ class FunctionsExport
                         break;
                     }
                     $newrec .= mb_substr($line, 0, $pos) . Gedcom::EOL;
-                    $line   = $level . ' CONC ' . mb_substr($line, $pos);
+                    $line = $level . ' CONC ' . mb_substr($line, $pos);
                 } while (mb_strlen($line) > Gedcom::LINE_LENGTH);
             }
             $newrec .= $line . Gedcom::EOL;

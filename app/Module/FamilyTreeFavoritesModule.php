@@ -202,7 +202,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
      */
     public function postDeleteFavoriteAction(Request $request, Tree $tree, User $user): RedirectResponse
     {
-        $favorite_id = (int)$request->get('favorite_id');
+        $favorite_id = (int) $request->get('favorite_id');
 
         if (Auth::isManager($tree, $user)) {
             Database::prepare(

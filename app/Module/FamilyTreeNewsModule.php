@@ -173,7 +173,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
                 'tree_id' => $tree->getTreeId(),
             ])->fetchOneRow();
         } else {
-            $row = (object)[
+            $row = (object) [
                 'body'    => '',
                 'subject' => '',
             ];

@@ -114,7 +114,7 @@ class ReportEngineController extends AbstractBaseController
                     $input['control'] = FunctionsEdit::formControlSource($tree, $source, $attributes + ['required' => 'true']);
                     break;
                 case 'DATE':
-                    $attributes       += [
+                    $attributes += [
                         'type'  => 'text',
                         'value' => $input['default'],
                     ];
@@ -128,16 +128,16 @@ class ReportEngineController extends AbstractBaseController
                 default:
                     switch ($input['type']) {
                         case 'text':
-                            $attributes       += [
+                            $attributes += [
                                 'type'  => 'text',
                                 'value' => $input['default'],
                             ];
                             $input['control'] = '<input ' . Html::attributes($attributes) . '>';
                             break;
                         case 'checkbox':
-                            $attributes       += [
+                            $attributes += [
                                 'type'    => 'checkbox',
-                                'checked' => (bool)$input['default'],
+                                'checked' => (bool) $input['default'],
                             ];
                             $input['control'] = '<input ' . Html::attributes($attributes) . '>';
                             break;

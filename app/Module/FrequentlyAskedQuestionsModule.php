@@ -157,7 +157,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
      */
     public function postAdminDeleteAction(Request $request, Tree $tree): RedirectResponse
     {
-        $block_id = (int)$request->get('block_id');
+        $block_id = (int) $request->get('block_id');
 
         Database::prepare(
             "DELETE FROM `##block_setting` WHERE block_id = :block_id"
@@ -185,7 +185,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
      */
     public function postAdminMoveDownAction(Request $request, Tree $tree): RedirectResponse
     {
-        $block_id = (int)$request->get('block_id');
+        $block_id = (int) $request->get('block_id');
 
         $block_order = Database::prepare(
             "SELECT block_order FROM `##block` WHERE block_id = :block_id"
@@ -238,7 +238,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
      */
     public function postAdminMoveUpAction(Request $request, Tree $tree): RedirectResponse
     {
-        $block_id = (int)$request->get('block_id');
+        $block_id = (int) $request->get('block_id');
 
         $block_order = Database::prepare(
             "SELECT block_order FROM `##block` WHERE block_id = :block_id"
@@ -293,7 +293,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
     {
         $this->layout = 'layouts/administration';
 
-        $block_id = (int)$request->get('block_id');
+        $block_id = (int) $request->get('block_id');
 
         if ($block_id === 0) {
             // Creating a new faq
@@ -304,7 +304,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
             )->execute([
                 'module_name' => $this->getName(),
             ])->fetchOne();
-            $languages   = [];
+            $languages = [];
 
             $title = I18N::translate('Add an FAQ');
         } else {
@@ -341,7 +341,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
      */
     public function postAdminEditAction(Request $request, Tree $tree): RedirectResponse
     {
-        $block_id  = (int)$request->get('block_id');
+        $block_id  = (int) $request->get('block_id');
         $faqbody   = $request->get('faqbody', '');
         $header    = $request->get('header', '');
         $languages = $request->get('languages', []);

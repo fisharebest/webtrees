@@ -290,8 +290,8 @@ class EditGedcomRecordController extends AbstractEditController
     public function editRawRecordAction(Request $request, Tree $tree): Response
     {
         $xref     = $request->get('xref');
-        $facts    = (array)$request->get('fact');
-        $fact_ids = (array)$request->get('fact_id');
+        $facts    = (array) $request->get('fact');
+        $fact_ids = (array) $request->get('fact_id');
         $record   = GedcomRecord::getInstance($xref, $tree);
 
         $this->checkRecordAccess($record, true);
@@ -395,7 +395,7 @@ class EditGedcomRecordController extends AbstractEditController
         $record = GedcomRecord::getInstance($xref, $tree);
         $this->checkRecordAccess($record, true);
 
-        $keep_chan = (bool)$request->get('keep_chan');
+        $keep_chan = (bool) $request->get('keep_chan');
 
         $this->glevels = $request->get('glevels', []);
         $this->tag     = $request->get('tag', []);
@@ -414,7 +414,7 @@ class EditGedcomRecordController extends AbstractEditController
 
         $newged = '';
         if (!empty($_POST['NAME'])) {
-            $newged     .= "\n1 NAME " . $_POST['NAME'];
+            $newged .= "\n1 NAME " . $_POST['NAME'];
             $name_facts = [
                 'TYPE',
                 'NPFX',

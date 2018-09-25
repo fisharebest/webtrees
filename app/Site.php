@@ -47,14 +47,7 @@ class Site
             )->fetchAssoc();
         }
 
-        if (!array_key_exists($setting_name, self::$preferences)) {
-            self::$preferences[$setting_name] = $default;
-        }
-if (is_int(self::$preferences[$setting_name])) {
-    var_dump(debug_backtrace());
-    exit;
-}
-        return self::$preferences[$setting_name];
+        return self::$preferences[$setting_name] ?? $default;
     }
 
     /**

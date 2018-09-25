@@ -70,7 +70,7 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface
 
         $calendar_service = new CalendarService();
 
-        $days      = (int)$this->getBlockSetting($block_id, 'days', self::DEFAULT_DAYS);
+        $days      = (int) $this->getBlockSetting($block_id, 'days', self::DEFAULT_DAYS);
         $infoStyle = $this->getBlockSetting($block_id, 'infoStyle', self::DEFAULT_STYLE);
         $calendar  = $this->getBlockSetting($block_id, 'calendar', self::DEFAULT_CALENDAR);
 
@@ -124,7 +124,7 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface
                         }
                         $yahrzeit_date = new Date($yahrzeit_date->format('%@ %A %O %E'));
 
-                        $yahrzeits[] = (object)[
+                        $yahrzeits[] = (object) [
                             'individual'    => $fact->getParent(),
                             'fact_date'     => $fact->getDate(),
                             'fact'          => $fact,

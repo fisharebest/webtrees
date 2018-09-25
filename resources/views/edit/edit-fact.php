@@ -38,7 +38,7 @@
 						'level'          => 2,
 						'full_citations' => $tree->getPreference('FULL_SOURCES'),
 						'tree'           => $tree,
-					]);				}
+					]); }
 				if ($level1type !== 'OBJE') {
 					if ($tree->getPreference('MEDIA_UPLOAD') >= Auth::accessLevel($tree)) {
 						echo view('cards/add-media-object', [

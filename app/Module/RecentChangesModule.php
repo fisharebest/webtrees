@@ -59,7 +59,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
         $days      = (int) $this->getBlockSetting($block_id, 'days', self::DEFAULT_DAYS);
         $infoStyle = $this->getBlockSetting($block_id, 'infoStyle', self::DEFAULT_INFO_STYLE);
         $sortStyle = $this->getBlockSetting($block_id, 'sortStyle', self::DEFAULT_SORT_STYLE);
-        $show_user = (bool)$this->getBlockSetting($block_id, 'show_user', self::DEFAULT_SHOW_USER);
+        $show_user = (bool) $this->getBlockSetting($block_id, 'show_user', self::DEFAULT_SHOW_USER);
 
         extract($cfg, EXTR_OVERWRITE);
 

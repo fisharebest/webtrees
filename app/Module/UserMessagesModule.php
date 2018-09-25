@@ -57,7 +57,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
      */
     public function postDeleteMessageAction(Request $request, Tree $tree): Response
     {
-        $message_ids = (array)$request->get('message_id', []);
+        $message_ids = (array) $request->get('message_id', []);
 
         $stmt = Database::prepare("DELETE FROM `##message` WHERE user_id = :user_id AND message_id = :message_id");
 
@@ -102,7 +102,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
 
         $content = '';
         if (!empty($users)) {
-            $url     = route('user-page', ['ged' => $tree->getName()]);
+            $url = route('user-page', ['ged' => $tree->getName()]);
             $content .= '<form onsubmit="return $(&quot;#to&quot;).val() !== &quot;&quot;">';
             $content .= '<input type="hidden" name="route" value="message">';
             $content .= '<input type="hidden" name="ged" value="' . e($tree->getName()) . '">';
@@ -138,7 +138,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
                 $content .= '<td class="list_value_wrap"><a href="#" onclick="return expand_layer(\'message' . $message->message_id . '\');"><i id="message' . $message->message_id . '_img" class="icon-plus"></i> <b dir="auto">' . e($message->subject) . '</b></a></td>';
                 $content .= '<td class="list_value_wrap">' . FunctionsDate::formatTimestamp($message->created + WT_TIMESTAMP_OFFSET) . '</td>';
                 $content .= '<td class="list_value_wrap">';
-                $user    = User::findByIdentifier($message->sender);
+                $user = User::findByIdentifier($message->sender);
                 if ($user) {
                     $content .= '<span dir="auto">' . e($user->getRealName()) . '</span> - <span dir="auto">' . $user->getEmail() . '</span>';
                 } else {
@@ -160,7 +160,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
                         'subject' => $message->subject,
                         'ged'     => $tree->getName(),
                     ]);
-                    $content   .= '<a class="btn btn-primary" href="' . e($reply_url) . '" title="' . I18N::translate('Reply') . '">' . I18N::translate('Reply') . '</a> ';
+                    $content .= '<a class="btn btn-primary" href="' . e($reply_url) . '" title="' . I18N::translate('Reply') . '">' . I18N::translate('Reply') . '</a> ';
                 }
                 $content .= '<button type="button" class="btn btn-danger" data-confirm="' . I18N::translate('Are you sure you want to delete this message? It cannot be retrieved later.') . '" onclick="if (confirm(this.dataset.confirm)) {$(\'#messageform :checkbox\').prop(\'checked\', false); $(\'#cb_message' . $message->message_id . '\').prop(\'checked\', true); document.messageform.submit();}">' . I18N::translate('Delete') . '</button></div></td></tr>';
             }

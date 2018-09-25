@@ -64,7 +64,7 @@ class Migration22 implements MigrationInterface
                     $_tmp_dir   = $WT_DATA_DIR;
                     while (strpos($_mf_dir, $_tmp_dir) !== 0) {
                         $_media_dir .= '../';
-                        $_tmp_dir   = preg_replace('~[^/\\\\]+[/\\\\]$~', '', $_tmp_dir);
+                        $_tmp_dir = preg_replace('~[^/\\\\]+[/\\\\]$~', '', $_tmp_dir);
                         if ($_tmp_dir == '') {
                             // Shouldn't get here - but this script is not allowed to fail...
                             continue 2;

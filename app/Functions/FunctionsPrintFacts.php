@@ -180,14 +180,14 @@ class FunctionsPrintFacts
             case '_BIRT_CHIL':
                 $children[$fact->getParent()->getXref()] = true;
                 /* I18N: Abbreviation for "number %s" */
-                $label                                   .= '<br>' . I18N::translate('#%s', count($children));
+                $label .= '<br>' . I18N::translate('#%s', count($children));
                 break;
             case '_BIRT_GCHI':
             case '_BIRT_GCH1':
             case '_BIRT_GCH2':
                 $grandchildren[$fact->getParent()->getXref()] = true;
                 /* I18N: Abbreviation for "number %s" */
-                $label                                        .= '<br>' . I18N::translate('#%s', count($grandchildren));
+                $label .= '<br>' . I18N::translate('#%s', count($grandchildren));
                 break;
         }
 
@@ -581,7 +581,7 @@ class FunctionsPrintFacts
         for ($j = 0; $j < $ct; $j++) {
             if (strpos($match[$j][1], '@') === false) {
                 $source = e($match[$j][1] . preg_replace('/\n\d CONT ?/', "\n", $match[$j][2]));
-                $data   .= '<div class="fact_SOUR"><span class="label">' . I18N::translate('Source') . ':</span> <span class="field" dir="auto">' . Filter::formatText($source, $tree) . '</span></div>';
+                $data .= '<div class="fact_SOUR"><span class="label">' . I18N::translate('Source') . ':</span> <span class="field" dir="auto">' . Filter::formatText($source, $tree) . '</span></div>';
             }
         }
         // Find source for each fact
@@ -599,7 +599,7 @@ class FunctionsPrintFacts
                     }
                     $srec      = substr($factrec, $spos1, $spos2 - $spos1);
                     $lt        = preg_match_all("/$nlevel \w+/", $srec, $matches);
-                    $data      .= '<div class="fact_SOUR">';
+                    $data .= '<div class="fact_SOUR">';
                     $elementID = Uuid::uuid4()->toString();
                     if ($tree->getPreference('EXPAND_SOURCES')) {
                         $plusminus = 'icon-minus';
