@@ -35,7 +35,7 @@ class Site
      *
      * @return string
      */
-    public static function getPreference($setting_name, $default = ''): string
+    public static function getPreference(string $setting_name, string $default = ''): string
     {
         // There are lots of settings, and we need to fetch lots of them on every page
         // so it is quicker to fetch them all in one go.
@@ -45,11 +45,7 @@ class Site
             )->fetchAssoc();
         }
 
-        if (!array_key_exists($setting_name, self::$preferences)) {
-            self::$preferences[$setting_name] = $default;
-        }
-
-        return self::$preferences[$setting_name];
+        return self::$preferences[$setting_name] ?? $default;
     }
 
     /**

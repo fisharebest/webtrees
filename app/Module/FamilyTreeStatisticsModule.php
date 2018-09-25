@@ -29,7 +29,7 @@ use Symfony\Component\HttpFoundation\Request;
 class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockInterface
 {
     /** Show this number of surnames by default */
-    const DEFAULT_NUMBER_OF_SURNAMES = 10;
+    const DEFAULT_NUMBER_OF_SURNAMES = '10';
 
     /** {@inheritdoc} */
     public function getTitle(): string
