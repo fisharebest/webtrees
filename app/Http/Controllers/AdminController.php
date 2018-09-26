@@ -230,7 +230,7 @@ class AdminController extends AbstractBaseController
      */
     public function changesLogData(Request $request): Response
     {
-        list($select,, $where, $args1) = $this->changesQuery($request);
+        list($select, , $where, $args1) = $this->changesQuery($request);
         list($order_by, $limit, $args2) = $this->dataTablesPagination($request);
 
         $rows = Database::prepare(
@@ -306,7 +306,7 @@ class AdminController extends AbstractBaseController
      */
     public function changesLogDownload(Request $request): Response
     {
-        list($select,, $where, $args) = $this->changesQuery($request);
+        list($select, , $where, $args) = $this->changesQuery($request);
 
         $rows = Database::prepare($select . $where)->execute($args)->fetchAll();
 

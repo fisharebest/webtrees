@@ -17,7 +17,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-use Exception;
 use stdClass;
 
 /**
@@ -38,8 +37,6 @@ class Location
      *
      * @param string $gedcomName
      * @param array  $record
-     *
-     * @throws Exception
      */
     public function __construct($gedcomName, $record = [])
     {
@@ -193,7 +190,6 @@ class Location
 
     /**
      * @return int
-     * @throws Exception
      */
     public function add()
     {
@@ -203,72 +199,59 @@ class Location
 
         Database::prepare(
             "INSERT INTO `##placelocation` (pl_id, pl_parent_id, pl_level, pl_place, pl_long, pl_lati, pl_zoom, pl_icon) VALUES(:id, :parent_id, :level, :place, :long, :lati, :zoom, :icon)"
-        )->execute(
-            [
-                'id'        => $this->record->pl_id,
-                'parent_id' => $this->record->pl_parent_id,
-                'level'     => $this->record->pl_level,
-                'place'     => $this->record->pl_place,
-                'long'      => $this->record->pl_long ?? null,
-                'lati'      => $this->record->pl_lati ?? null,
-                'zoom'      => $this->record->pl_zoom ?? null,
-                'icon'      => $this->record->pl_icon ?? null,
-            ]
-        );
+        )->execute([
+            'id'        => $this->record->pl_id,
+            'parent_id' => $this->record->pl_parent_id,
+            'level'     => $this->record->pl_level,
+            'place'     => $this->record->pl_place,
+            'long'      => $this->record->pl_long ?? null,
+            'lati'      => $this->record->pl_lati ?? null,
+            'zoom'      => $this->record->pl_zoom ?? null,
+            'icon'      => $this->record->pl_icon ?? null,
+        ]);
 
         return $this->record->pl_id;
     }
 
     /**
      * @param stdClass $new_data
-     *
-     * @throws Exception
      */
     public function update(stdClass $new_data)
     {
         Database::prepare(
             "UPDATE `##placelocation` SET pl_lati=:lati, pl_long=:long, pl_zoom=:zoom, pl_icon=:icon WHERE pl_id=:id"
-        )
-            ->execute([
-                'lati' => $new_data->pl_lati ?? $this->record->pl_lati,
-                'long' => $new_data->pl_long ?? $this->record->pl_long,
-                'zoom' => $new_data->pl_zoom ?? $this->record->pl_zoom,
-                'icon' => $new_data->pl_icon ?? $this->record->pl_icon,
-                'id'   => $this->record->pl_id,
-            ]);
+        )->execute([
+            'lati' => $new_data->pl_lati ?? $this->record->pl_lati,
+            'long' => $new_data->pl_long ?? $this->record->pl_long,
+            'zoom' => $new_data->pl_zoom ?? $this->record->pl_zoom,
+            'icon' => $new_data->pl_icon ?? $this->record->pl_icon,
+            'id'   => $this->record->pl_id,
+        ]);
     }
 
     /**
      * @param string $gedcomName
      *
      * @return null|stdClass
-     * @throws Exception
      */
-    private function getRecordFromName($gedcomName)
+    private function getRecordFromName(string $gedcomName)
     {
-
-        return Database::prepare(
-            "
-				SELECT
-				  CONCAT_WS(:separator, t1.pl_place, t2.pl_place, t3.pl_place, t4.pl_place, t5.pl_place, t6.pl_place, t7.pl_place, t8.pl_place) AS fqpn,
-					t1.pl_level, t1.pl_place, t1.pl_id, t1.pl_parent_id, t1.pl_lati, t1.pl_long, t1.pl_zoom, t1.pl_icon
-				FROM `##placelocation` AS t1
-				LEFT JOIN `##placelocation` AS t2 ON t1.pl_parent_id = t2.pl_id
-				LEFT JOIN `##placelocation` AS t3 ON t2.pl_parent_id = t3.pl_id
-				LEFT JOIN `##placelocation` AS t4 ON t3.pl_parent_id = t4.pl_id
-				LEFT JOIN `##placelocation` AS t5 ON t4.pl_parent_id = t5.pl_id
-				LEFT JOIN `##placelocation` AS t6 ON t5.pl_parent_id = t6.pl_id
-				LEFT JOIN `##placelocation` AS t7 ON t6.pl_parent_id = t7.pl_id
-				LEFT JOIN `##placelocation` AS t8 ON t7.pl_parent_id = t8.pl_id
-				HAVING fqpn=:gedcomName;
-			   "
-        )
-            ->execute(
-                [
-                    'separator'  => Place::GEDCOM_SEPARATOR,
-                    'gedcomName' => $gedcomName,
-                ]
-            )
-            ->fetchOneRow();
+        return Database::prepare("
+            SELECT
+              CONCAT_WS(:separator, t1.pl_place, t2.pl_place, t3.pl_place, t4.pl_place, t5.pl_place, t6.pl_place, t7.pl_place, t8.pl_place) AS fqpn,
+                t1.pl_level, t1.pl_place, t1.pl_id, t1.pl_parent_id, t1.pl_lati, t1.pl_long, t1.pl_zoom, t1.pl_icon
+            FROM `##placelocation` AS t1
+            LEFT JOIN `##placelocation` AS t2 ON t1.pl_parent_id = t2.pl_id
+            LEFT JOIN `##placelocation` AS t3 ON t2.pl_parent_id = t3.pl_id
+            LEFT JOIN `##placelocation` AS t4 ON t3.pl_parent_id = t4.pl_id
+            LEFT JOIN `##placelocation` AS t5 ON t4.pl_parent_id = t5.pl_id
+            LEFT JOIN `##placelocation` AS t6 ON t5.pl_parent_id = t6.pl_id
+            LEFT JOIN `##placelocation` AS t7 ON t6.pl_parent_id = t7.pl_id
+            LEFT JOIN `##placelocation` AS t8 ON t7.pl_parent_id = t8.pl_id
+            HAVING fqpn = :gedcomName;
+        ")->execute([
+            'separator'  => Place::GEDCOM_SEPARATOR,
+            'gedcomName' => $gedcomName,
+        ])->fetchOneRow();
     }
 }

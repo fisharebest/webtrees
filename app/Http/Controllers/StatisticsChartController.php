@@ -159,7 +159,6 @@ class StatisticsChartController extends AbstractChartController
      */
     public function chartCustomChart(Request $request, Tree $tree): Response
     {
-
         $this->checkModuleIsActive($tree, 'statistics_chart');
 
         $x_axis_type = (int) $request->get('x-as');
