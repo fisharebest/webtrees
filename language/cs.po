@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:51+0100\n"
-"PO-Revision-Date: 2018-05-10 16:10+0000\n"
+"PO-Revision-Date: 2018-09-26 20:33+0000\n"
 "Last-Translator: Josef Prause <josef.prause@gmail.com>\n"
 "Language-Team: Czech <https://translate.webtrees.net/projects/webtrees/webtrees/cs/>\n"
 "Language: cs\n"
@@ -86,7 +86,7 @@ msgstr "Bylo staženo %1$sKB za %2$s sekund."
 #: app/Http/Controllers/AdminUsersController.php:392
 #, php-format
 msgid "%1$s does not exist"
-msgstr ""
+msgstr "%1$s neexistuje"
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: app/Http/Controllers/AdminTreesController.php:223
@@ -322,9 +322,9 @@ msgstr "%s není aktivován na tomto serveru. Dokud nebude aktivován, nebude mo
 #, php-format
 msgid "%s location has been imported."
 msgid_plural "%s locations have been imported."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s umístění je importováno."
+msgstr[1] "%s umístění jsou importována."
+msgstr[2] "%s umístění je importováno."
 
 #: app/Module/UserMessagesModule.php:177
 #, php-format
@@ -384,9 +384,9 @@ msgstr "%s o generaci níže"
 #, php-format
 msgid "%s repository has been updated."
 msgid_plural "%s repositories have been updated."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s repozitář je aktualizován."
+msgstr[1] "%s repozitáře jsou aktualizovány."
+msgstr[2] "%s repozitářů je aktualizováno."
 
 #: app/I18N.php:872
 #, php-format
@@ -736,7 +736,7 @@ msgstr "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2
 #. I18N: URL = web address
 #: resources/views/modals/media-file-fields.php:20
 msgid "A URL"
-msgstr ""
+msgstr "URL"
 
 #. I18N: Description of the “RelationshipsChart” module
 #: app/Module/RelationshipsChartModule.php:63
@@ -1435,7 +1435,7 @@ msgstr "Přidat vyprávěné příběhy jednotlivcům v rodokmenu."
 
 #: resources/views/admin/map-import-form.php:72
 msgid "Add new, and update existing records"
-msgstr ""
+msgstr "Přidat nové a aktualizovat existující záznamy"
 
 #: resources/views/admin/trees-import.php:83
 msgid "Add spaces where long lines were wrapped"
@@ -1744,7 +1744,7 @@ msgstr "Věk v roce sňatku"
 #: resources/views/statistics-chart-custom.php:196
 #: resources/views/statistics-chart-custom.php:209
 msgid "Age interval"
-msgstr ""
+msgstr "Interval věku"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.php:548
@@ -1962,7 +1962,7 @@ msgstr "Objevila se neočekávaná chyba databáze."
 #: resources/views/modules/pedigree-map/pedigree-map.php:82
 #: resources/views/place-map.php:85
 msgid "An unknown error occurred"
-msgstr ""
+msgstr "Vyskytla se neznámá chyba"
 
 #. I18N: Name of a module/report
 #. I18N: Name of a module/chart
@@ -6299,7 +6299,7 @@ msgstr "Příznak"
 #: resources/views/admin/locations.php:45
 #, php-format
 msgid "Flag of %s"
-msgstr ""
+msgstr "Vlajka %s"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:7312
@@ -7335,7 +7335,7 @@ msgstr "Importovat"
 
 #: resources/views/admin/map-import-form.php:67
 msgid "Import Options."
-msgstr ""
+msgstr "Možnosti importu."
 
 #: app/Http/Controllers/AdminTreesController.php:583
 msgid "Import a GEDCOM file"
@@ -7352,7 +7352,7 @@ msgstr "Importovat upravené náhledové obrázky z webtrees verse 1"
 
 #: app/Http/Controllers/AdminLocationController.php:312
 msgid "Import geographic data"
-msgstr ""
+msgstr "Importovat zeměpisná data"
 
 #: resources/views/admin/trees-import.php:71
 msgid "Import preferences"
@@ -8139,7 +8139,7 @@ msgstr "Pokud zanecháte toto nastavení prázdné, použije se výchozí hodnot
 
 #: resources/views/admin/media-upload.php:36
 msgid "Leave this entry blank to keep the original filename"
-msgstr ""
+msgstr "Pro zachování původního jména ponechte pole prázdné"
 
 #: resources/views/lists/families-table.php:138
 #: resources/views/lists/individuals-table.php:190
@@ -8495,7 +8495,7 @@ msgstr "Správa rodokmenů"
 #: resources/views/admin/trees-renumber.php:3
 #: resources/views/admin/trees-unconnected.php:4
 msgid "Manage family trees "
-msgstr ""
+msgstr "Správa rodokmenů "
 
 #: app/Http/Controllers/AdminMediaController.php:70
 #: resources/views/admin/control-panel.php:368
@@ -8566,7 +8566,7 @@ msgstr "Mapa"
 #: resources/views/admin/control-panel.php:417
 #: resources/views/admin/map-provider.php:12
 msgid "Map provider"
-msgstr ""
+msgstr "Poskytovatel mapy"
 
 #: app/Date/CalendarDate.php:366
 msgctxt "Abbreviation for March"
@@ -9883,7 +9883,7 @@ msgstr "Mezi těmito dvěma osobami nebyl nalezen žádný vztah."
 #: resources/views/modules/pedigree-map/pedigree-map.php:81
 #: resources/views/modules/places/tab.php:77 resources/views/place-map.php:84
 msgid "No mappable items"
-msgstr ""
+msgstr "Žádné mapovatelné položky"
 
 #: resources/views/admin/merge-records-step-2.php:51
 #: resources/views/admin/merge-records-step-2.php:98
@@ -10283,7 +10283,7 @@ msgstr "Tohoto dne v naší historii…"
 
 #: resources/views/admin/map-import-form.php:73
 msgid "Only add new records"
-msgstr ""
+msgstr "Jen přidat nové záznamy"
 
 #: app/Functions/FunctionsEdit.php:232
 #: app/Functions/FunctionsPrintFacts.php:270
@@ -10296,7 +10296,7 @@ msgstr "Upravovat mohou jen správci"
 
 #: resources/views/admin/map-import-form.php:74
 msgid "Only update existing records"
-msgstr ""
+msgstr "Jen aktualizovat existující záznamy"
 
 #: resources/views/errors/database-connection.php:5
 msgid "Oops! The webserver is unable to connect to the database server. It could be busy, undergoing maintenance, or simply broken. You should <a href=\"index.php\">try again</a> in a few minutes or contact the website administrator."
