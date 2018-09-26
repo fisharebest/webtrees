@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees vietnamese Version 1.5.3\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2017-10-31 14:28+0000\n"
-"Last-Translator: Cao Tien Nam <caotiennam@gmail.com>\n"
+"PO-Revision-Date: 2018-09-26 13:55+0000\n"
+"Last-Translator: Truong Van Phap <hotruongphuhoa@gmail.com>\n"
 "Language-Team: Vietnamese <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/vi/>\n"
 "Language: vi\n"
 "MIME-Version: 1.0\n"
@@ -373,9 +373,9 @@ msgstr[0] "%s giây qua"
 
 #. I18N: %s is a person's name
 #: message.php:300 message.php:303 message.php:305
-#, fuzzy, php-format
+#, php-format
 msgid "%s sent you the following message."
-msgstr "Thư này được gửi đến tài khoản thành viên webtrees của bạn từ %s"
+msgstr "%s thông tin sau đây đã gửi đến bạn"
 
 #: app/Module/LoggedInUsersModule.php:74 app/Stats.php:5914
 #, php-format
@@ -703,38 +703,45 @@ msgstr "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2
 
 #. I18N: Description of the “RelationshipsChart” module
 #: app/Module/RelationshipsChartModule.php:56
+#, fuzzy
 msgid "A chart displaying relationships between two individuals."
-msgstr ""
+msgstr "A chart displaying relationships between two individuals.biểu đố hiển thị mối quan hệ giũa hai người"
 
 #. I18N: Description of the “FamilyBookChart” module
 #: app/Module/FamilyBookChartModule.php:42
+#, fuzzy
 msgid "A chart of an individual’s ancestors and descendants, as a family book."
-msgstr ""
+msgstr "A chart of an individual’s ancestors and descendants, as a family book.Biểu đồ của tổ tiên và hậu duệ của một cá nhân xem như một gia đình"
 
 #. I18N: Description of the “CompactTreeChart” module
 #: app/Module/CompactTreeChartModule.php:42
+#, fuzzy
 msgid "A chart of an individual’s ancestors, as a compact tree."
-msgstr ""
+msgstr "A chart of an individual’s ancestors, as a compact tree. Biểu đồ tổ tiên của một cá nhân"
 
 #. I18N: Description of the “PedigreeChart” module
 #: app/Module/PedigreeChartModule.php:42
+#, fuzzy
 msgid "A chart of an individual’s ancestors, formatted as a tree."
-msgstr ""
+msgstr "A chart of an individual’s ancestors, formatted as a tree. Biểu đồ tổ tiên dưới dạng cây"
 
 #. I18N: Description of the “AncestorsChart” module
 #: app/Module/AncestorsChartModule.php:42
+#, fuzzy
 msgid "A chart of an individual’s ancestors."
-msgstr ""
+msgstr "A chart of an individual’s ancestors. Biểu đồ tổ tiên của một cá nhân"
 
 #. I18N: Description of the “DescendancyChart” module
 #: app/Module/DescendancyChartModule.php:42
+#, fuzzy
 msgid "A chart of an individual’s descendants."
-msgstr ""
+msgstr "A chart of an individual’s descendants. Biểu đồ con cháu của một cá nhân"
 
 #. I18N: Description of the “LifespansChart” module
 #: app/Module/LifespansChartModule.php:42
+#, fuzzy
 msgid "A chart of individuals’ lifespans."
-msgstr ""
+msgstr "A chart of individuals’ lifespans. Biểu đồ tuổi thọ của một cá nhân"
 
 #: edit_interface.php:991
 msgid "A child may have more than one set of parents. The relationship between the child and the parents can be biological, legal, or based on local culture and tradition. If no pedigree is specified, then a biological relationship will be assumed."
@@ -750,8 +757,9 @@ msgstr "Máy chủ CSDL có thể lưu trữ nhiề CSDL riêng biệt. Bạn c�
 
 #. I18N: Description of the “Fan Chart” module
 #: app/Module/FanChartModule.php:42
+#, fuzzy
 msgid "A fan chart of an individual’s ancestors."
-msgstr ""
+msgstr "A fan chart of an individual’s ancestors. Biểu đồ đơn giản của một cá nhân"
 
 #: admin_trees_download.php:115 admin_trees_manage.php:225
 #: app/Module/GoogleMapsModule.php:3651
@@ -1016,8 +1024,9 @@ msgstr "Một thẻ hiển thị nguồn liên kết đến một cá nhân."
 
 #. I18N: Description of the “TimelineChart” module
 #: app/Module/TimelineChartModule.php:42
+#, fuzzy
 msgid "A timeline displaying individual events."
-msgstr ""
+msgstr "Dòng thời gian hiển thị các sự kiện riêng lẻ"
 
 #: admin_users.php:397
 #, fuzzy
@@ -1377,7 +1386,7 @@ msgstr "Thêm vợ bằng người đã có"
 #: app/Module/FrequentlyAskedQuestionsModule.php:463
 #, fuzzy
 msgid "Add an FAQ"
-msgstr "Thêm mục FAQ"
+msgstr "Thêm mục Câu hỏi và trả lời FAQ"
 
 #: app/Functions/FunctionsEdit.php:1086 app/Functions/FunctionsEdit.php:1090
 msgid "Add an associate"
@@ -1451,8 +1460,9 @@ msgstr "Thêm các đoạn nhớ vào xe"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:720
+#, fuzzy
 msgid "Add unique identifiers"
-msgstr ""
+msgstr "thêm số nhận dạng"
 
 #: admin_trees_manage.php:540
 msgid "Add unlinked records"
@@ -1941,8 +1951,9 @@ msgstr "Có lỗi xảy ra khi giải nén tập tin."
 
 #. I18N: Description of the “HourglassChart” module
 #: app/Module/HourglassChartModule.php:42
+#, fuzzy
 msgid "An hourglass chart of an individual’s ancestors and descendants."
-msgstr ""
+msgstr "Biểu đồ đồng hồ cát"
 
 #. I18N: Description of the “Interactive tree” module
 #: app/Module/InteractiveTreeModule.php:38
@@ -2035,7 +2046,7 @@ msgstr "Antigua và Barbuda"
 
 #: login.php:170
 msgid "Anyone with a user account can access this website."
-msgstr ""
+msgstr "Bất kỳ ai có tài khoản người dùng đều có thể truy cập trang web này."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:93
@@ -2991,7 +3002,7 @@ msgstr "Dâu phụ"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:117
 msgid "Brigham City, Utah, United States"
-msgstr ""
+msgstr "Brigham City, Utah, United States"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:119
@@ -20189,7 +20200,7 @@ msgstr "“%s” đã được thêm vào mục ưa thích của bạn."
 #: action.php:47
 #, php-format
 msgid "“%s” has been deleted."
-msgstr ""
+msgstr "%s đã xóa"
 
 #: app/Functions/FunctionsPrint.php:120 app/Note.php:107
 msgid "…"
