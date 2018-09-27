@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:51+0100\n"
-"PO-Revision-Date: 2018-09-26 20:33+0000\n"
+"PO-Revision-Date: 2018-09-27 16:29+0000\n"
 "Last-Translator: Josef Prause <josef.prause@gmail.com>\n"
 "Language-Team: Czech <https://translate.webtrees.net/projects/webtrees/webtrees/cs/>\n"
 "Language: cs\n"
@@ -10887,7 +10887,7 @@ msgstr "Místa by měla být vkládána podle standardů pro rodokmeny. Nejurči
 
 #: resources/views/places-page.php:26
 msgid "Places without valid co-ordinates are not shown on the map and have a red border around the sidebar entry"
-msgstr ""
+msgstr "Místa s neplatnými souřadnicemi se na mapě neukáží a na postranním panelu jsou červeně orámována"
 
 #: resources/views/layouts/default.php:142
 #: resources/views/modules/random_media/slide-show.php:8
@@ -11066,7 +11066,7 @@ msgstr "Soukromí"
 
 #: app/Http/Controllers/StaticPageController.php:36
 msgid "Privacy policy"
-msgstr ""
+msgstr "Strategie soukromí"
 
 #. I18N: a restrction on viewing data
 #: resources/views/modals/restriction-fields.php:5
@@ -11318,7 +11318,7 @@ msgstr "Skutečné jméno"
 
 #: resources/views/admin/map-import-form.php:100
 msgid "Really delete all geographic data?"
-msgstr ""
+msgstr "Připraveni vymazat všechny zeměpisné údaje?"
 
 #. I18N: Name of a module
 #: app/Module/RecentChangesModule.php:44 modules_v3/change_report/report.xml:92
@@ -11646,7 +11646,7 @@ msgstr "Badatelské úkoly jsou uloženy s nestandardním GEDCOM tagem „_TODO�
 #: resources/views/modules/pedigree-map/pedigree-map.php:80
 #: resources/views/modules/places/tab.php:76 resources/views/place-map.php:83
 msgid "Reset to initial map state"
-msgstr ""
+msgstr "Obnovení počátečního stavu mapy"
 
 #. I18N: gedcom tag RESI
 #: app/GedcomTag.php:973
@@ -12568,7 +12568,7 @@ msgstr "Zobrazovat fotky"
 
 #: app/Http/Controllers/PlaceHierarchyController.php:72
 msgid "Show place hierarchy"
-msgstr ""
+msgstr "Ukázat hierarchii míst"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-privacy.php:146
@@ -12622,7 +12622,7 @@ msgstr "Zobrazit %1$s %2$s části jména místa."
 #. I18N: Description of the “OSM” module
 #: app/Module/PedigreeMapModule.php:71
 msgid "Show the birthplace of ancestors on a map."
-msgstr ""
+msgstr "Ukázat na mapě místa narození předků."
 
 #: resources/views/modules/html/config.php:41
 msgid "Show the date and time of update"
@@ -12648,7 +12648,7 @@ msgstr "Ukázat seznam příjmení"
 #. I18N: Description of the “OSM” module
 #: app/Module/PlacesModule.php:50
 msgid "Show the location of events on a map."
-msgstr ""
+msgstr "Ukázat na mapě místa událostí."
 
 #. I18N: label for a yes/no option
 #: resources/views/modules/recent_changes/config.php:35
@@ -12794,7 +12794,7 @@ msgstr "Členové webu si mohou navzájem posílat zprávy. Můžete si zvolit, 
 
 #: app/Http/Controllers/AdminPhpGedViewController.php:175
 msgid "Site preferences"
-msgstr ""
+msgstr "Předvolby webové stránky"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-analytics.php:20
@@ -13521,7 +13521,7 @@ msgstr "Schránka výstřižků vám umožňuje vybírat úryvky z tohoto rodokm
 
 #: resources/views/privacy-policy.php:8
 msgid "The data in this website has been collected for the purposes of genealogical research."
-msgstr ""
+msgstr "Údaje na této webové stránce byly shromážděny za účelem genealogického bádání."
 
 #: resources/views/admin/trees-preferences.php:441
 msgid "The date and time of the last update"
@@ -13530,7 +13530,7 @@ msgstr "Datum a čas poslední změny"
 #: app/Http/Controllers/AdminLocationController.php:178
 #, php-format
 msgid "The details for “%s” have been updated."
-msgstr ""
+msgstr "Podrobnosti o “%s” jsou aktualizovány."
 
 #. I18N: %s is a filename
 #: app/Http/Controllers/AdminTreesController.php:509
@@ -13840,7 +13840,7 @@ msgstr "Je vytvořen pramen"
 
 #: app/Http/Controllers/AdminPhpGedViewController.php:197
 msgid "The specified folder does not contain an installation of PhpGedView."
-msgstr ""
+msgstr "Zmíněná složka neobsahuje instalaci PhpGedView."
 
 #: app/Http/Controllers/EditSubmitterController.php:94
 msgid "The submitter has been created"
@@ -14401,7 +14401,7 @@ msgstr "Tento záznam buď neexistuje, nebo nejste oprávněn jej vidět."
 
 #: resources/views/admin/trees-privacy.php:238
 msgid "This record does not exist."
-msgstr ""
+msgstr "Tento záznam neexistuje."
 
 #: resources/views/gedcom-record-page.php:11
 msgid "This record has been deleted. The deletion will need to be reviewed by a moderator."
@@ -14484,11 +14484,11 @@ msgstr "Toto by měl být seznam čárkami nebo mezerami oddělených údajů, n
 
 #: resources/views/privacy-policy.php:25
 msgid "This site does not use any third-party tracking or analytics services."
-msgstr ""
+msgstr "Tato webová stránka nepoužívá žádné trasovací ani analytické služby třetích stran."
 
 #: resources/views/privacy-policy.php:16
 msgid "This site uses cookies to store your preferences on this site, such as the language you have selected."
-msgstr ""
+msgstr "Tato webová stránka používá cookies k uložení přednostních hodnot, např. zvoleného jazyka."
 
 #: app/Exceptions/SourceAccessDeniedException.php:33
 #: app/Exceptions/SourceNotFoundException.php:33
@@ -15438,7 +15438,7 @@ msgstr "Zobrazit"
 #: resources/views/places-page.php:33
 #, php-format
 msgid "View table of events occurring in %s"
-msgstr ""
+msgstr "Zobrazit tabulku událostí v %s"
 
 #: resources/views/calendar-page.php:149
 msgid "View this day"
@@ -16040,7 +16040,7 @@ msgstr "přidat"
 #. I18N: A button label.
 #: resources/views/admin/locations.php:76
 msgid "add place"
-msgstr ""
+msgstr "přidat místo"
 
 #. I18N: The name given to a child by its adoptive parents
 #: app/GedcomCode/GedcomCodeName.php:69
@@ -16608,7 +16608,7 @@ msgstr "ex-manželka"
 #. I18N: A button label.
 #: resources/views/admin/locations.php:82
 msgid "export file"
-msgstr ""
+msgstr "exportovat soubor"
 
 #: app/Http/Controllers/AdminTreesController.php:892
 #: modules_v3/fact_sources/report.xml:6
@@ -18568,7 +18568,7 @@ msgstr "importovat"
 #. I18N: A button label.
 #: resources/views/admin/locations.php:96
 msgid "import file"
-msgstr ""
+msgstr "importovat soubor"
 
 #. I18N: Gedcom INT dates
 #: app/Date.php:356
@@ -18631,7 +18631,7 @@ msgstr "seznam"
 #: app/Http/Controllers/AdminLocationController.php:464
 #, php-format
 msgid "locations updated: %s, locations added: %s"
-msgstr ""
+msgstr "aktualizovaná místa: %s, přidaná místa: %s"
 
 #. I18N: A woman’s name, before she marries (in cultures where women take their new husband’s name on marriage)
 #: app/GedcomCode/GedcomCodeName.php:135
@@ -18758,17 +18758,17 @@ msgstr "synovec"
 #: app/Functions/Functions.php:1161
 msgctxt "husband’s brother’s son"
 msgid "nephew"
-msgstr ""
+msgstr "synovec"
 
 #: app/Functions/Functions.php:1157
 msgctxt "husband’s sibling’s son"
 msgid "nephew"
-msgstr ""
+msgstr "synovec"
 
 #: app/Functions/Functions.php:1159
 msgctxt "husband’s sister’s son"
 msgid "nephew"
-msgstr ""
+msgstr "synovec"
 
 #: app/Functions/Functions.php:913
 msgctxt "sibling’s son"
@@ -18783,17 +18783,17 @@ msgstr "synovec"
 #: app/Functions/Functions.php:1401
 msgctxt "wife’s brother’s son"
 msgid "nephew"
-msgstr ""
+msgstr "synovec"
 
 #: app/Functions/Functions.php:1397
 msgctxt "wife’s sibling’s son"
 msgid "nephew"
-msgstr ""
+msgstr "synovec"
 
 #: app/Functions/Functions.php:1399
 msgctxt "wife’s sister’s son"
 msgid "nephew"
-msgstr ""
+msgstr "synovec"
 
 #: app/Functions/Functions.php:999
 msgctxt "brother’s daughter’s husband"
@@ -18818,17 +18818,17 @@ msgstr "synovec/neteř"
 #: app/Functions/Functions.php:1149
 msgctxt "husband’s brother’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "synovec/neteř"
 
 #: app/Functions/Functions.php:1145
 msgctxt "husband’s sibling’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "synovec/neteř"
 
 #: app/Functions/Functions.php:1147
 msgctxt "husband’s sister’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "synovec/neteř"
 
 #: app/Functions/Functions.php:909
 msgctxt "sibling’s child"
@@ -18843,17 +18843,17 @@ msgstr "synovec/neteř"
 #: app/Functions/Functions.php:1389
 msgctxt "wife’s brother’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "synovec/neteř"
 
 #: app/Functions/Functions.php:1385
 msgctxt "wife’s sibling’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "synovec/neteř"
 
 #: app/Functions/Functions.php:1387
 msgctxt "wife’s sister’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "synovec/neteř"
 
 #: app/Functions/FunctionsEdit.php:808
 msgid "never"
@@ -18882,17 +18882,17 @@ msgstr "neteř"
 #: app/Functions/Functions.php:1155
 msgctxt "husband’s brother’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "neteř"
 
 #: app/Functions/Functions.php:1151
 msgctxt "husband’s sibling’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "neteř"
 
 #: app/Functions/Functions.php:1153
 msgctxt "husband’s sister’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "neteř"
 
 #: app/Functions/Functions.php:911
 msgctxt "sibling’s daughter"
@@ -18907,17 +18907,17 @@ msgstr "neteř"
 #: app/Functions/Functions.php:1395
 msgctxt "wife’s brother’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "neteř"
 
 #: app/Functions/Functions.php:1391
 msgctxt "wife’s sibling’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "neteř"
 
 #: app/Functions/Functions.php:1393
 msgctxt "wife’s sister’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "neteř"
 
 #: app/Functions/Functions.php:1025
 msgctxt "brother’s son’s wife"
