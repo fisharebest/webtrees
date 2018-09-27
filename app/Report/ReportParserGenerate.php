@@ -1915,17 +1915,17 @@ class ReportParserGenerate extends ReportParserBase
                             $sql_params[$attr . 'gedcom'] = str_replace('\n', "\n", $match[1]);
                             unset($attrs[$attr]); // This filter has been fully processed
                         } elseif (preg_match('/^(?:\w+):PLAC CONTAINS (.+)$/', $value, $match)) {
+                            // Don't unset this filter. This is just initial filtering
                             $sql_join                    .= " JOIN `##places` AS {$attr}a ON ({$attr}a.p_file = i_file)";
                             $sql_join                    .= " JOIN `##placelinks` AS {$attr}b ON ({$attr}a.p_file = {$attr}b.pl_file AND {$attr}b.pl_p_id = {$attr}a.p_id AND {$attr}b.pl_gid = i_id)";
                             $sql_where                   .= " AND {$attr}a.p_place LIKE CONCAT('%', :{$attr}place, '%')";
                             $sql_params[$attr . 'place'] = $match[1];
-                            // Don't unset this filter. This is just initial filtering
                         } elseif (preg_match('/^(\w*):*(\w*) CONTAINS (.+)$/', $value, $match)) {
+                            // Don't unset this filter. This is just initial filtering
                             $sql_where .= " AND i_gedcom LIKE CONCAT('%', :{$attr}contains1, '%', :{$attr}contains2, '%', :{$attr}contains3, '%')";
                             $sql_params[$attr . 'contains1'] = $match[1];
                             $sql_params[$attr . 'contains2'] = $match[2];
                             $sql_params[$attr . 'contains3'] = $match[3];
-                            // Don't unset this filter. This is just initial filtering
                         }
                     }
                 }
