@@ -40,6 +40,10 @@ table {
 	border-collapse: separate;
 }
 
+.dropdown-menu {      /* Fix dropdown on Place Lists/Place Hierarchy */
+	z-index: 1010;
+}
+
 /*
  * Any element that is loaded dynamically has the class wt-ajax-load.
  * We can provide a "loading" placeholder for empty elements with this class.
