@@ -97,12 +97,12 @@ class FunctionsCharts
 
         if ($parid) {
             if ($husb->getXref() == $parid) {
-                self::printSosaNumber($label, '', 'arrow-up');
+                self::printSosaNumber($label, '', 'blank');
             } else {
-                self::printSosaNumber($label, '', 'arrow-up');
+                self::printSosaNumber($label, '', '');
             }
         } elseif ($sosa) {
-            self::printSosaNumber($sosa * 2, '', 'arrow-up');
+            self::printSosaNumber($sosa * 2, '', '');
         }
         if ($husb->isPendingAddition()) {
             echo '<td class="new">';
@@ -187,12 +187,12 @@ class FunctionsCharts
         echo '<table cellspacing="0" cellpadding="0" border="0"><tr>';
         if ($parid) {
             if ($wife->getXref() == $parid) {
-                self::printSosaNumber($label, '', 'arrow-up');
+                self::printSosaNumber($label, '', 'blank');
             } else {
-                self::printSosaNumber($label, '', 'arrow-up');
+                self::printSosaNumber($label, '', '');
             }
         } elseif ($sosa) {
-            self::printSosaNumber($sosa * 2 + 1, '', 'arrow-up');
+            self::printSosaNumber($sosa * 2 + 1, '', '');
         }
         if ($wife->isPendingAddition()) {
             echo '<td class="new">';
