@@ -669,7 +669,7 @@ class AdminLocationController extends AbstractBaseController
             ->fetchAll();
 
         foreach ($rows as $row) {
-            $index             = $row->pl_id;
+            $index             = (int) $row->pl_id;
             $placename[$level] = $row->pl_place;
             $places[]          = array_merge([$row->pl_level], $placename, [$row->pl_long, $row->pl_lati, $row->pl_zoom, $row->pl_icon]);
             $this->buildLevel($index, $placename, $places);
