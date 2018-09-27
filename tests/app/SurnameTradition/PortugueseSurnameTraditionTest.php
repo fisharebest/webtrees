@@ -28,6 +28,8 @@ class PortugueseSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
 
     /**
      * Prepare the environment for these tests
+     *
+     * @return void
      */
     public function setUp()
     {
@@ -38,6 +40,8 @@ class PortugueseSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      * Test whether married surnames are used
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\PortugueseSurnameTradition
+     *
+     * @return void
      */
     public function testMarriedSurnames()
     {
@@ -48,6 +52,8 @@ class PortugueseSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      * Test whether surnames are used
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\PortugueseSurnameTradition
+     *
+     * @return void
      */
     public function testSurnames()
     {
@@ -58,6 +64,8 @@ class PortugueseSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      * Test new son names
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\PortugueseSurnameTradition
+     *
+     * @return void
      */
     public function testNewSonNames()
     {
@@ -74,6 +82,8 @@ class PortugueseSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      * Test new daughter names
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\PortugueseSurnameTradition
+     *
+     * @return void
      */
     public function testNewDaughterNames()
     {
@@ -90,6 +100,8 @@ class PortugueseSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      * Test new child names
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\PortugueseSurnameTradition
+     *
+     * @return void
      */
     public function testNewChildNames()
     {
@@ -106,6 +118,8 @@ class PortugueseSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      * Test new child names
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\PortugueseSurnameTradition
+     *
+     * @return void
      */
     public function testNewChildNamesWithNoParentsNames()
     {
@@ -122,6 +136,8 @@ class PortugueseSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      * Test new child names
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\PortugueseSurnameTradition
+     *
+     * @return void
      */
     public function testNewChildNamesCompunds()
     {
@@ -145,6 +161,8 @@ class PortugueseSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      * Test new father names
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\PortugueseSurnameTradition
+     *
+     * @return void
      */
     public function testNewFatherNames()
     {
@@ -161,6 +179,8 @@ class PortugueseSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      * Test new mother names
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\PortugueseSurnameTradition
+     *
+     * @return void
      */
     public function testNewMotherNames()
     {
@@ -177,6 +197,8 @@ class PortugueseSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      * Test new parent names
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\PortugueseSurnameTradition
+     *
+     * @return void
      */
     public function testNewParentNames()
     {
@@ -190,6 +212,8 @@ class PortugueseSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      * Test new husband names
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\PortugueseSurnameTradition
+     *
+     * @return void
      */
     public function testNewHusbandNames()
     {
@@ -203,6 +227,8 @@ class PortugueseSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      * Test new wife names
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\PortugueseSurnameTradition
+     *
+     * @return void
      */
     public function testNewWifeNames()
     {
@@ -216,6 +242,8 @@ class PortugueseSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      * Test new spouse names
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\PortugueseSurnameTradition
+     *
+     * @return void
      */
     public function testNewSpouseNames()
     {

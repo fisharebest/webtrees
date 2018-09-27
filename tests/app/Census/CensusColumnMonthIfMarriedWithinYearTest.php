@@ -25,6 +25,8 @@ class CensusColumnMonthIfMarriedWithinYearTest extends \Fisharebest\Webtrees\Tes
 {
     /**
      * Delete mock objects
+     *
+     * @return void
      */
     public function tearDown()
     {
@@ -34,6 +36,8 @@ class CensusColumnMonthIfMarriedWithinYearTest extends \Fisharebest\Webtrees\Tes
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnMonthIfMarriedWithinYear
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
+     *
+     * @return void
      */
     public function testMarriedWithinYear()
     {
@@ -57,6 +61,8 @@ class CensusColumnMonthIfMarriedWithinYearTest extends \Fisharebest\Webtrees\Tes
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnMonthIfMarriedWithinYear
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
+     *
+     * @return void
      */
     public function testMarriedOverYearBeforeTheCensus()
     {
@@ -80,6 +86,8 @@ class CensusColumnMonthIfMarriedWithinYearTest extends \Fisharebest\Webtrees\Tes
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnMonthIfMarriedWithinYear
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
+     *
+     * @return void
      */
     public function testMarriedAfterTheCensus()
     {
@@ -103,6 +111,8 @@ class CensusColumnMonthIfMarriedWithinYearTest extends \Fisharebest\Webtrees\Tes
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnMonthIfMarriedWithinYear
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
+     *
+     * @return void
      */
     public function testNoMarriage()
     {
@@ -123,6 +133,8 @@ class CensusColumnMonthIfMarriedWithinYearTest extends \Fisharebest\Webtrees\Tes
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnMonthIfMarriedWithinYear
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
+     *
+     * @return void
      */
     public function testNoSpouseFamily()
     {

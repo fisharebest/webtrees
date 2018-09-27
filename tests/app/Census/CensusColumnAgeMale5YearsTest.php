@@ -25,6 +25,8 @@ class CensusColumnAgeMale5YearsTest extends \Fisharebest\Webtrees\TestCase
 {
     /**
      * Delete mock objects
+     *
+     * @return void
      */
     public function tearDown()
     {
@@ -34,6 +36,8 @@ class CensusColumnAgeMale5YearsTest extends \Fisharebest\Webtrees\TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnAgeMale5Years
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
+     *
+     * @return void
      */
     public function testMale()
     {
@@ -52,6 +56,8 @@ class CensusColumnAgeMale5YearsTest extends \Fisharebest\Webtrees\TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnAgeMale5Years
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
+     *
+     * @return void
      */
     public function testFemale()
     {
@@ -68,6 +74,8 @@ class CensusColumnAgeMale5YearsTest extends \Fisharebest\Webtrees\TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnAgeMale5Years
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
+     *
+     * @return void
      */
     public function testUnknownSex()
     {
@@ -86,6 +94,8 @@ class CensusColumnAgeMale5YearsTest extends \Fisharebest\Webtrees\TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnAgeMale5Years
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
+     *
+     * @return void
      */
     public function testLessThanOneYear()
     {
@@ -104,6 +114,8 @@ class CensusColumnAgeMale5YearsTest extends \Fisharebest\Webtrees\TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnAgeMale5Years
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
+     *
+     * @return void
      */
     public function testLessThanFifteenYears()
     {
@@ -122,6 +134,8 @@ class CensusColumnAgeMale5YearsTest extends \Fisharebest\Webtrees\TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnAgeMale5Years
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
+     *
+     * @return void
      */
     public function testRoundedDownToFiveYears()
     {

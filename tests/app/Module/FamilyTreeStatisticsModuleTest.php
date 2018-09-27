@@ -21,14 +21,9 @@ namespace Fisharebest\Webtrees\Module;
 class FamilyTreeStatisticsModuleTest extends \Fisharebest\Webtrees\TestCase
 {
     /**
-     * Prepare the environment for these tests
-     */
-    public function setUp()
-    {
-    }
-
-    /**
      * Test that the class exists
+     *
+     * @return void
      */
     public function testClassExists()
     {

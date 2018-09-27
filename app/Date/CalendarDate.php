@@ -34,8 +34,8 @@ use Fisharebest\Webtrees\I18N;
  */
 class CalendarDate
 {
-    /** @var int[] Convert GEDCOM month names to month numbers */
-    public static $MONTH_ABBREV = [
+    // Convert GEDCOM month names to month numbers
+    const MONTH_ABBREVIATIONS = [
         ''    => 0,
         'JAN' => 1,
         'FEB' => 2,
@@ -51,8 +51,8 @@ class CalendarDate
         'DEC' => 12,
     ];
 
-    /** @var string[] Convert numbers to/from roman numerals */
-    protected static $roman_numerals = [
+    // Convert numbers to/from roman numerals
+    const ROMAN_NUMERALS = [
         1000 => 'M',
         900  => 'CM',
         500  => 'D',
@@ -108,8 +108,8 @@ class CalendarDate
         // Construct from an array (of three gedcom-style strings: "1900", "FEB", "4")
         if (is_array($date)) {
             $this->d = (int) $date[2];
-            if (array_key_exists($date[1], static::$MONTH_ABBREV)) {
-                $this->m = static::$MONTH_ABBREV[$date[1]];
+            if (array_key_exists($date[1], static::MONTH_ABBREVIATIONS)) {
+                $this->m = static::MONTH_ABBREVIATIONS[$date[1]];
             } else {
                 $this->m = 0;
                 $this->d = 0;
@@ -983,7 +983,7 @@ class CalendarDate
             return 'ADR';
         }
 
-        return array_search($this->m, static::$MONTH_ABBREV);
+        return array_search($this->m, static::MONTH_ABBREVIATIONS);
     }
 
     /**
@@ -1030,14 +1030,14 @@ class CalendarDate
      *
      * @return string
      */
-    protected function numberToRomanNumerals($number): string
+    protected function numberToRomanNumerals(int $number): string
     {
         if ($number < 1) {
             // Cannot convert zero/negative numbers
             return (string) $number;
         }
         $roman = '';
-        foreach (self::$roman_numerals as $key => $value) {
+        foreach (self::ROMAN_NUMERALS as $key => $value) {
             while ($number >= $key) {
                 $roman  .= $value;
                 $number -= $key;
@@ -1054,10 +1054,10 @@ class CalendarDate
      *
      * @return int
      */
-    protected function romanNumeralsToNumber($roman): int
+    protected function romanNumeralsToNumber(string $roman): int
     {
         $num = 0;
-        foreach (self::$roman_numerals as $key => $value) {
+        foreach (self::ROMAN_NUMERALS as $key => $value) {
             if (strpos($roman, $value) === 0) {
                 $num += $key;
                 $roman = substr($roman, strlen($value));

@@ -24,6 +24,8 @@ class CensusColumnOccupationTest extends \Fisharebest\Webtrees\TestCase
 {
     /**
      * Delete mock objects
+     *
+     * @return void
      */
     public function tearDown()
     {
@@ -33,6 +35,8 @@ class CensusColumnOccupationTest extends \Fisharebest\Webtrees\TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnOccupation
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
+     *
+     * @return void
      */
     public function testNoOccupation()
     {
@@ -49,6 +53,8 @@ class CensusColumnOccupationTest extends \Fisharebest\Webtrees\TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnOccupation
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
+     *
+     * @return void
      */
     public function testOccupation()
     {

@@ -24,6 +24,8 @@ class CensusOfDeutschland1867Test extends \Fisharebest\Webtrees\TestCase
      * Test the census place and date
      *
      * @covers \Fisharebest\Webtrees\Census\CensusOfDeutschland1867
+     *
+     * @return void
      */
     public function testPlaceAndDate()
     {
@@ -38,7 +40,9 @@ class CensusOfDeutschland1867Test extends \Fisharebest\Webtrees\TestCase
      *
      * @covers \Fisharebest\Webtrees\Census\CensusOfDeutschland1867
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     */
+     *
+     * @return void
+    */
     public function testColumns()
     {
         $census  = new CensusOfDeutschland1867;

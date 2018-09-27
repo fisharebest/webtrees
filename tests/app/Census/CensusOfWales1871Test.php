@@ -24,6 +24,8 @@ class CensusOfWales1871Test extends \Fisharebest\Webtrees\TestCase
      * Test the census place and date
      *
      * @covers \Fisharebest\Webtrees\Census\CensusOfWales1871
+     *
+     * @return void
      */
     public function testPlaceAndDate()
     {
@@ -38,6 +40,8 @@ class CensusOfWales1871Test extends \Fisharebest\Webtrees\TestCase
      *
      * @covers \Fisharebest\Webtrees\Census\CensusOfWales1871
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
+     *
+     * @return void
      */
     public function testColumns()
     {

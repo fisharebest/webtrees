@@ -25,6 +25,8 @@ class CensusColumnAgeMaleTest extends \Fisharebest\Webtrees\TestCase
 {
     /**
      * Delete mock objects
+     *
+     * @return void
      */
     public function tearDown()
     {
@@ -34,6 +36,8 @@ class CensusColumnAgeMaleTest extends \Fisharebest\Webtrees\TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnAgeMale
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
+     *
+     * @return void
      */
     public function testMale()
     {
@@ -52,6 +56,8 @@ class CensusColumnAgeMaleTest extends \Fisharebest\Webtrees\TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnAgeMale
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
+     *
+     * @return void
      */
     public function testFemale()
     {
@@ -68,6 +74,8 @@ class CensusColumnAgeMaleTest extends \Fisharebest\Webtrees\TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnAgeMale
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
+     *
+     * @return void
      */
     public function testUnknownSex()
     {
@@ -86,6 +94,8 @@ class CensusColumnAgeMaleTest extends \Fisharebest\Webtrees\TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnAgeMale
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
+     *
+     * @return void
      */
     public function testLessThanOneYear()
     {

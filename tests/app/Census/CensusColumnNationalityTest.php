@@ -16,6 +16,7 @@
 namespace Fisharebest\Webtrees\Census;
 
 use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Place;
 use Mockery;
 
 /**
@@ -25,6 +26,8 @@ class CensusColumnNationalityTest extends \Fisharebest\Webtrees\TestCase
 {
     /**
      * Delete mock objects
+     *
+     * @return void
      */
     public function tearDown()
     {
@@ -36,9 +39,9 @@ class CensusColumnNationalityTest extends \Fisharebest\Webtrees\TestCase
      *
      * @param string $place Gedcom Place
      *
-     * @return \Fisharebest\Webtrees\Place
+     * @return Place
      */
-    private function getPlaceMock($place): \Fisharebest\Webtrees\Place
+    private function getPlaceMock($place): Place
     {
         $placeMock = Mockery::mock('\Fisharebest\Webtrees\Place');
         $placeMock->shouldReceive('getGedcomName')->andReturn($place);
@@ -49,6 +52,8 @@ class CensusColumnNationalityTest extends \Fisharebest\Webtrees\TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnNationality
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
+     *
+     * @return void
      */
     public function testNoBirthPlace()
     {
@@ -67,6 +72,8 @@ class CensusColumnNationalityTest extends \Fisharebest\Webtrees\TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnNationality
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
+     *
+     * @return void
      */
     public function testPlaceCountry()
     {
@@ -85,6 +92,8 @@ class CensusColumnNationalityTest extends \Fisharebest\Webtrees\TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnNationality
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
+     *
+     * @return void
      */
     public function testBritish()
     {
@@ -103,6 +112,8 @@ class CensusColumnNationalityTest extends \Fisharebest\Webtrees\TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnNationality
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
+     *
+     * @return void
      */
     public function testEmigrated()
     {

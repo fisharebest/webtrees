@@ -28,6 +28,8 @@ class LithuanianSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
 
     /**
      * Prepare the environment for these tests
+     *
+     * @return void
      */
     public function setUp()
     {
@@ -39,6 +41,8 @@ class LithuanianSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\LithuanianSurnameTradition
      * @covers \Fisharebest\Webtrees\SurnameTradition\PatrilinealSurnameTradition
+     *
+     * @return void
      */
     public function testMarriedSurnames()
     {
@@ -50,6 +54,8 @@ class LithuanianSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\LithuanianSurnameTradition
      * @covers \Fisharebest\Webtrees\SurnameTradition\PatrilinealSurnameTradition
+     *
+     * @return void
      */
     public function testSurnames()
     {
@@ -61,6 +67,8 @@ class LithuanianSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\LithuanianSurnameTradition
      * @covers \Fisharebest\Webtrees\SurnameTradition\PatrilinealSurnameTradition
+     *
+     * @return void
      */
     public function testNewSonNames()
     {
@@ -78,6 +86,8 @@ class LithuanianSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\LithuanianSurnameTradition
      * @covers \Fisharebest\Webtrees\SurnameTradition\PatrilinealSurnameTradition
+     *
+     * @return void
      */
     public function testNewDaughterNames()
     {
@@ -95,6 +105,8 @@ class LithuanianSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\LithuanianSurnameTradition
      * @covers \Fisharebest\Webtrees\SurnameTradition\PatrilinealSurnameTradition
+     *
+     * @return void
      */
     public function testNewDaughterNamesInflected()
     {
@@ -147,6 +159,8 @@ class LithuanianSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\LithuanianSurnameTradition
      * @covers \Fisharebest\Webtrees\SurnameTradition\PatrilinealSurnameTradition
+     *
+     * @return void
      */
     public function testNewChildNames()
     {
@@ -164,6 +178,8 @@ class LithuanianSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\LithuanianSurnameTradition
      * @covers \Fisharebest\Webtrees\SurnameTradition\PatrilinealSurnameTradition
+     *
+     * @return void
      */
     public function testNewChildNamesWithNoParentsNames()
     {
@@ -178,6 +194,8 @@ class LithuanianSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\LithuanianSurnameTradition
      * @covers \Fisharebest\Webtrees\SurnameTradition\PatrilinealSurnameTradition
+     *
+     * @return void
      */
     public function testNewFatherNames()
     {
@@ -195,6 +213,8 @@ class LithuanianSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\LithuanianSurnameTradition
      * @covers \Fisharebest\Webtrees\SurnameTradition\PatrilinealSurnameTradition
+     *
+     * @return void
      */
     public function testNewFatherNamesInflected()
     {
@@ -233,6 +253,8 @@ class LithuanianSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\LithuanianSurnameTradition
      * @covers \Fisharebest\Webtrees\SurnameTradition\PatrilinealSurnameTradition
+     *
+     * @return void
      */
     public function testNewMotherNames()
     {
@@ -247,6 +269,8 @@ class LithuanianSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\LithuanianSurnameTradition
      * @covers \Fisharebest\Webtrees\SurnameTradition\PatrilinealSurnameTradition
+     *
+     * @return void
      */
     public function testNewParentNames()
     {
@@ -261,6 +285,8 @@ class LithuanianSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\LithuanianSurnameTradition
      * @covers \Fisharebest\Webtrees\SurnameTradition\PatrilinealSurnameTradition
+     *
+     * @return void
      */
     public function testNewHusbandNames()
     {
@@ -275,6 +301,8 @@ class LithuanianSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\LithuanianSurnameTradition
      * @covers \Fisharebest\Webtrees\SurnameTradition\PatrilinealSurnameTradition
+     *
+     * @return void
      */
     public function testNewWifeNames()
     {
@@ -292,6 +320,8 @@ class LithuanianSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\LithuanianSurnameTradition
      * @covers \Fisharebest\Webtrees\SurnameTradition\PatrilinealSurnameTradition
+     *
+     * @return void
      */
     public function testNewSpouseNames()
     {

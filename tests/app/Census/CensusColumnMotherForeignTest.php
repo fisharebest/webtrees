@@ -15,6 +15,7 @@
  */
 namespace Fisharebest\Webtrees\Census;
 
+use Fisharebest\Webtrees\Place;
 use Mockery;
 
 /**
@@ -24,6 +25,8 @@ class CensusColumnMotherForeignTest extends \Fisharebest\Webtrees\TestCase
 {
     /**
      * Delete mock objects
+     *
+     * @return void
      */
     public function tearDown()
     {
@@ -35,9 +38,9 @@ class CensusColumnMotherForeignTest extends \Fisharebest\Webtrees\TestCase
      *
      * @param string $place Gedcom Place
      *
-     * @return \Fisharebest\Webtrees\Place
+     * @return Place
      */
-    private function getPlaceMock($place): \Fisharebest\Webtrees\Place
+    private function getPlaceMock($place): Place
     {
         $placeMock = Mockery::mock('\Fisharebest\Webtrees\Place');
         $placeMock->shouldReceive('getGedcomName')->andReturn($place);
@@ -48,6 +51,8 @@ class CensusColumnMotherForeignTest extends \Fisharebest\Webtrees\TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnMotherForeign
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
+     *
+     * @return void
      */
     public function testSameCountry()
     {
@@ -71,6 +76,8 @@ class CensusColumnMotherForeignTest extends \Fisharebest\Webtrees\TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnMotherForeign
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
+     *
+     * @return void
      */
     public function testDifferentCountry()
     {
@@ -94,6 +101,8 @@ class CensusColumnMotherForeignTest extends \Fisharebest\Webtrees\TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnMotherForeign
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
+     *
+     * @return void
      */
     public function testPlaceNoParent()
     {
@@ -114,6 +123,8 @@ class CensusColumnMotherForeignTest extends \Fisharebest\Webtrees\TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnMotherForeign
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
+     *
+     * @return void
      */
     public function testPlaceNoParentFamily()
     {

@@ -28,6 +28,8 @@ class PolishSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
 
     /**
      * Prepare the environment for these tests
+     *
+     * @return void
      */
     public function setUp()
     {
@@ -39,6 +41,8 @@ class PolishSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\PolishSurnameTradition
      * @covers \Fisharebest\Webtrees\SurnameTradition\PatrilinealSurnameTradition
+     *
+     * @return void
      */
     public function testMarriedSurnames()
     {
@@ -50,6 +54,8 @@ class PolishSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\PolishSurnameTradition
      * @covers \Fisharebest\Webtrees\SurnameTradition\PatrilinealSurnameTradition
+     *
+     * @return void
      */
     public function testSurnames()
     {
@@ -61,6 +67,8 @@ class PolishSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\PolishSurnameTradition
      * @covers \Fisharebest\Webtrees\SurnameTradition\PatrilinealSurnameTradition
+     *
+     * @return void
      */
     public function testNewSonNames()
     {
@@ -78,6 +86,8 @@ class PolishSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\PolishSurnameTradition
      * @covers \Fisharebest\Webtrees\SurnameTradition\PatrilinealSurnameTradition
+     *
+     * @return void
      */
     public function testNewDaughterNames()
     {
@@ -95,6 +105,8 @@ class PolishSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\PolishSurnameTradition
      * @covers \Fisharebest\Webtrees\SurnameTradition\PatrilinealSurnameTradition
+     *
+     * @return void
      */
     public function testNewDaughterNamesInflected()
     {
@@ -133,6 +145,8 @@ class PolishSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\PolishSurnameTradition
      * @covers \Fisharebest\Webtrees\SurnameTradition\PatrilinealSurnameTradition
+     *
+     * @return void
      */
     public function testNewChildNames()
     {
@@ -150,6 +164,8 @@ class PolishSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\PolishSurnameTradition
      * @covers \Fisharebest\Webtrees\SurnameTradition\PatrilinealSurnameTradition
+     *
+     * @return void
      */
     public function testNewChildNamesWithNoParentsNames()
     {
@@ -164,6 +180,8 @@ class PolishSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\PolishSurnameTradition
      * @covers \Fisharebest\Webtrees\SurnameTradition\PatrilinealSurnameTradition
+     *
+     * @return void
      */
     public function testNewFatherNames()
     {
@@ -181,6 +199,8 @@ class PolishSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\PolishSurnameTradition
      * @covers \Fisharebest\Webtrees\SurnameTradition\PatrilinealSurnameTradition
+     *
+     * @return void
      */
     public function testNewFatherNamesInflected()
     {
@@ -219,6 +239,8 @@ class PolishSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\PolishSurnameTradition
      * @covers \Fisharebest\Webtrees\SurnameTradition\PatrilinealSurnameTradition
+     *
+     * @return void
      */
     public function testNewMotherNames()
     {
@@ -233,6 +255,8 @@ class PolishSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\PolishSurnameTradition
      * @covers \Fisharebest\Webtrees\SurnameTradition\PatrilinealSurnameTradition
+     *
+     * @return void
      */
     public function testNewParentNames()
     {
@@ -247,6 +271,8 @@ class PolishSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\PolishSurnameTradition
      * @covers \Fisharebest\Webtrees\SurnameTradition\PatrilinealSurnameTradition
+     *
+     * @return void
      */
     public function testNewHusbandNames()
     {
@@ -261,6 +287,8 @@ class PolishSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\PolishSurnameTradition
      * @covers \Fisharebest\Webtrees\SurnameTradition\PatrilinealSurnameTradition
+     *
+     * @return void
      */
     public function testNewWifeNames()
     {
@@ -278,6 +306,8 @@ class PolishSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\PolishSurnameTradition
      * @covers \Fisharebest\Webtrees\SurnameTradition\PatrilinealSurnameTradition
+     *
+     * @return void
      */
     public function testNewSpouseNames()
     {

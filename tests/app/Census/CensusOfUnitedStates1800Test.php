@@ -24,6 +24,8 @@ class CensusOfUnitedStates1800Test extends \Fisharebest\Webtrees\TestCase
      * Test the census place and date
      *
      * @covers \Fisharebest\Webtrees\Census\CensusOfUnitedStates1800
+     *
+     * @return void
      */
     public function testPlaceAndDate()
     {
@@ -38,6 +40,8 @@ class CensusOfUnitedStates1800Test extends \Fisharebest\Webtrees\TestCase
      *
      * @covers \Fisharebest\Webtrees\Census\CensusOfUnitedStates1800
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
+     *
+     * @return void
      */
     public function testColumns()
     {

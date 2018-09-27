@@ -15,6 +15,7 @@
  */
 namespace Fisharebest\Webtrees\Census;
 
+use Fisharebest\Webtrees\Place;
 use Mockery;
 
 /**
@@ -24,6 +25,8 @@ class CensusColumnMotherBirthPlaceTest extends \Fisharebest\Webtrees\TestCase
 {
     /**
      * Delete mock objects
+     *
+     * @return void
      */
     public function tearDown()
     {
@@ -35,9 +38,9 @@ class CensusColumnMotherBirthPlaceTest extends \Fisharebest\Webtrees\TestCase
      *
      * @param string $place Gedcom Place
      *
-     * @return \Fisharebest\Webtrees\Place
+     * @return Place
      */
-    private function getPlaceMock($place): \Fisharebest\Webtrees\Place
+    private function getPlaceMock($place): Place
     {
         $placeParts = explode(', ', $place);
 
@@ -51,6 +54,8 @@ class CensusColumnMotherBirthPlaceTest extends \Fisharebest\Webtrees\TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnMotherBirthPlace
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
+     *
+     * @return void
      */
     public function testSameCountry()
     {
@@ -74,6 +79,8 @@ class CensusColumnMotherBirthPlaceTest extends \Fisharebest\Webtrees\TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnMotherBirthPlace
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
+     *
+     * @return void
      */
     public function testDifferentCountry()
     {
@@ -97,6 +104,8 @@ class CensusColumnMotherBirthPlaceTest extends \Fisharebest\Webtrees\TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnMotherBirthPlace
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
+     *
+     * @return void
      */
     public function testPlaceNoParent()
     {
@@ -117,6 +126,8 @@ class CensusColumnMotherBirthPlaceTest extends \Fisharebest\Webtrees\TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnMotherBirthPlace
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
+     *
+     * @return void
      */
     public function testPlaceNoParentFamily()
     {

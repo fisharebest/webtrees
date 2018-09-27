@@ -28,6 +28,8 @@ class MatrilinealSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
 
     /**
      * Prepare the environment for these tests
+     *
+     * @return void
      */
     public function setUp()
     {
@@ -38,6 +40,8 @@ class MatrilinealSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      * Test whether married surnames are used
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\MatrilinealSurnameTradition
+     *
+     * @return void
      */
     public function testMarriedSurnames()
     {
@@ -48,6 +52,8 @@ class MatrilinealSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      * Test whether surnames are used
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\MatrilinealSurnameTradition
+     *
+     * @return void
      */
     public function testSurnames()
     {
@@ -58,6 +64,8 @@ class MatrilinealSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      * Test new son names
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\MatrilinealSurnameTradition
+     *
+     * @return void
      */
     public function testNewSonNames()
     {
@@ -74,6 +82,8 @@ class MatrilinealSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      * Test new daughter names
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\MatrilinealSurnameTradition
+     *
+     * @return void
      */
     public function testNewDaughterNames()
     {
@@ -90,6 +100,8 @@ class MatrilinealSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      * Test new child names
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\MatrilinealSurnameTradition
+     *
+     * @return void
      */
     public function testNewChildNames()
     {
@@ -106,6 +118,8 @@ class MatrilinealSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      * Test new child names
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\MatrilinealSurnameTradition
+     *
+     * @return void
      */
     public function testNewChildNamesWithSpfx()
     {
@@ -123,6 +137,8 @@ class MatrilinealSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      * Test new child names
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\MatrilinealSurnameTradition
+     *
+     * @return void
      */
     public function testNewChildNamesWithNoParentsNames()
     {
@@ -136,6 +152,8 @@ class MatrilinealSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      * Test new father names
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\MatrilinealSurnameTradition
+     *
+     * @return void
      */
     public function testNewFatherNames()
     {
@@ -149,6 +167,8 @@ class MatrilinealSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      * Test new mother names
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\MatrilinealSurnameTradition
+     *
+     * @return void
      */
     public function testNewMotherNames()
     {
@@ -165,6 +185,8 @@ class MatrilinealSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      * Test new parent names
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\MatrilinealSurnameTradition
+     *
+     * @return void
      */
     public function testNewParentNames()
     {
@@ -178,6 +200,8 @@ class MatrilinealSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      * Test new husband names
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\MatrilinealSurnameTradition
+     *
+     * @return void
      */
     public function testNewHusbandNames()
     {
@@ -191,6 +215,8 @@ class MatrilinealSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      * Test new wife names
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\MatrilinealSurnameTradition
+     *
+     * @return void
      */
     public function testNewWifeNames()
     {
@@ -204,6 +230,8 @@ class MatrilinealSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      * Test new spouse names
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\MatrilinealSurnameTradition
+     *
+     * @return void
      */
     public function testNewSpouseNames()
     {

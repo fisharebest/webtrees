@@ -24,6 +24,8 @@ class CensusOfEnglandTest extends \Fisharebest\Webtrees\TestCase
      * Test the census place
      *
      * @covers \Fisharebest\Webtrees\Census\CensusOfEngland
+     *
+     * @return void
      */
     public function testPlace()
     {
@@ -36,6 +38,8 @@ class CensusOfEnglandTest extends \Fisharebest\Webtrees\TestCase
      * Test the census dates
      *
      * @covers \Fisharebest\Webtrees\Census\CensusOfEngland
+     *
+     * @return void
      */
     public function testAllDates()
     {

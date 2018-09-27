@@ -25,6 +25,8 @@ class CensusColumnConditionUsTest extends \Fisharebest\Webtrees\TestCase
 {
     /**
      * Delete mock objects
+     *
+     * @return void
      */
     public function tearDown()
     {
@@ -34,6 +36,8 @@ class CensusColumnConditionUsTest extends \Fisharebest\Webtrees\TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionUs
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
+     *
+     * @return void
      */
     public function testNoSpouseFamiliesMale()
     {
@@ -53,6 +57,8 @@ class CensusColumnConditionUsTest extends \Fisharebest\Webtrees\TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionUs
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
+     *
+     * @return void
      */
     public function testNoSpouseFamiliesFemale()
     {
@@ -72,6 +78,8 @@ class CensusColumnConditionUsTest extends \Fisharebest\Webtrees\TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionUs
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
+     *
+     * @return void
      */
     public function testNoFamilyFactsMale()
     {
@@ -95,6 +103,8 @@ class CensusColumnConditionUsTest extends \Fisharebest\Webtrees\TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionUs
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
+     *
+     * @return void
      */
     public function testNoFamilyFactsFemale()
     {
@@ -118,6 +128,8 @@ class CensusColumnConditionUsTest extends \Fisharebest\Webtrees\TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionUs
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
+     *
+     * @return void
      */
     public function testSpouseDeadMale()
     {
@@ -147,6 +159,8 @@ class CensusColumnConditionUsTest extends \Fisharebest\Webtrees\TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionUs
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
+     *
+     * @return void
      */
     public function testSpouseDeadFemale()
     {
@@ -176,6 +190,8 @@ class CensusColumnConditionUsTest extends \Fisharebest\Webtrees\TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionUs
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
+     *
+     * @return void
      */
     public function testNoFamilyUnmarriedMale()
     {
@@ -199,6 +215,8 @@ class CensusColumnConditionUsTest extends \Fisharebest\Webtrees\TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionUs
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
+     *
+     * @return void
      */
     public function testNoFamilyUnmarriedFemale()
     {
@@ -222,6 +240,8 @@ class CensusColumnConditionUsTest extends \Fisharebest\Webtrees\TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionUs
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
+     *
+     * @return void
      */
     public function testChildMale()
     {
@@ -245,6 +265,8 @@ class CensusColumnConditionUsTest extends \Fisharebest\Webtrees\TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionUs
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
+     *
+     * @return void
      */
     public function testChildFemale()
     {
@@ -268,6 +290,8 @@ class CensusColumnConditionUsTest extends \Fisharebest\Webtrees\TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionUs
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
+     *
+     * @return void
      */
     public function testDivorcedMale()
     {
@@ -293,6 +317,8 @@ class CensusColumnConditionUsTest extends \Fisharebest\Webtrees\TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionUs
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
+     *
+     * @return void
      */
     public function testDivorcedFemale()
     {

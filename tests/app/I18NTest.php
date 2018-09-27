@@ -24,6 +24,8 @@ class I18NTest extends \Fisharebest\Webtrees\TestCase
 {
     /**
      * Prepare the environment for these tests
+     *
+     * @return void
      */
     public function setUp()
     {

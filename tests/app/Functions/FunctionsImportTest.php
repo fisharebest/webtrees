@@ -22,6 +22,8 @@ class FunctionsImportTest extends \Fisharebest\Webtrees\TestCase
 {
     /**
      * Test that the class exists
+     *
+     * @return void
      */
     public function testClassExists()
     {

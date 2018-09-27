@@ -24,6 +24,8 @@ class CensusColumnSurnameGivenNameInitialTest extends \Fisharebest\Webtrees\Test
 {
     /**
      * Delete mock objects
+     *
+     * @return void
      */
     public function tearDown()
     {
@@ -33,6 +35,8 @@ class CensusColumnSurnameGivenNameInitialTest extends \Fisharebest\Webtrees\Test
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnSurnameGivenNameInitial
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
+     *
+     * @return void
      */
     public function testOneGivenName()
     {
@@ -56,6 +60,8 @@ class CensusColumnSurnameGivenNameInitialTest extends \Fisharebest\Webtrees\Test
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnSurnameGivenNameInitial
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
+     *
+     * @return void
      */
     public function testMultipleGivenNames()
     {

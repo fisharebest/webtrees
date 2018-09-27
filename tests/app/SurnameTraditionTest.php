@@ -32,14 +32,9 @@ use Fisharebest\Webtrees\SurnameTradition\SpanishSurnameTradition;
 class SurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
 {
     /**
-     * Prepare the environment for these tests
-     */
-    public function setUp()
-    {
-    }
-
-    /**
      * Test create()
+     *
+     * @return void
      */
     public function testCreate()
     {

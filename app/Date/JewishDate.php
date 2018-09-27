@@ -23,8 +23,8 @@ use Fisharebest\Webtrees\I18N;
  */
 class JewishDate extends CalendarDate
 {
-    /** @var int[] Convert GEDCOM month names to month numbers */
-    public static $MONTH_ABBREV = [
+    // Convert GEDCOM month names to month numbers
+    const MONTH_ABBREVIATIONS = [
         ''    => 0,
         'TSH' => 1,
         'CSH' => 2,

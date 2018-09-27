@@ -15,6 +15,7 @@
  */
 namespace Fisharebest\Webtrees\Census;
 
+use Fisharebest\Webtrees\Place;
 use Mockery;
 
 /**
@@ -24,6 +25,8 @@ class CensusColumnMotherBirthPlaceSimpleTest extends \Fisharebest\Webtrees\TestC
 {
     /**
      * Delete mock objects
+     *
+     * @return void
      */
     public function tearDown()
     {
@@ -35,9 +38,9 @@ class CensusColumnMotherBirthPlaceSimpleTest extends \Fisharebest\Webtrees\TestC
      *
      * @param string $place Gedcom Place
      *
-     * @return \Fisharebest\Webtrees\Place
+     * @return Place
      */
-    private function getPlaceMock($place): \Fisharebest\Webtrees\Place
+    private function getPlaceMock($place): Place
     {
         $placeParts = explode(', ', $place);
 
@@ -51,6 +54,8 @@ class CensusColumnMotherBirthPlaceSimpleTest extends \Fisharebest\Webtrees\TestC
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnMotherBirthPlaceSimple
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
+     *
+     * @return void
      */
     public function testKnownStateAndTown()
     {

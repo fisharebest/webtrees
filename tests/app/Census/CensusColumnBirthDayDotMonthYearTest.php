@@ -24,6 +24,8 @@ class CensusColumnBirthDayDotMonthYearTest extends \Fisharebest\Webtrees\TestCas
 {
     /**
      * Delete mock objects
+     *
+     * @return void
      */
     public function tearDown()
     {
@@ -33,6 +35,8 @@ class CensusColumnBirthDayDotMonthYearTest extends \Fisharebest\Webtrees\TestCas
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnBirthDayDotMonthYearTest
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
+     *
+     * @return void
      */
     public function testGenerateColumn()
     {

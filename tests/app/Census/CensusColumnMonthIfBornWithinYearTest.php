@@ -25,6 +25,8 @@ class CensusColumnMonthIfBornWithinYearTest extends \Fisharebest\Webtrees\TestCa
 {
     /**
      * Delete mock objects
+     *
+     * @return void
      */
     public function tearDown()
     {
@@ -34,6 +36,8 @@ class CensusColumnMonthIfBornWithinYearTest extends \Fisharebest\Webtrees\TestCa
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnMonthIfBornWithinYear
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
+     *
+     * @return void
      */
     public function testBornWithinYear()
     {
@@ -51,6 +55,8 @@ class CensusColumnMonthIfBornWithinYearTest extends \Fisharebest\Webtrees\TestCa
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnMonthIfBornWithinYear
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
+     *
+     * @return void
      */
     public function testBornOverYearBeforeTheCensus()
     {
@@ -68,6 +74,8 @@ class CensusColumnMonthIfBornWithinYearTest extends \Fisharebest\Webtrees\TestCa
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnMonthIfBornWithinYear
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
+     *
+     * @return void
      */
     public function testBornAfterTheCensus()
     {
@@ -87,6 +95,8 @@ class CensusColumnMonthIfBornWithinYearTest extends \Fisharebest\Webtrees\TestCa
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnMonthIfBornWithinYear
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
+     *
+     * @return void
      */
     public function testNoBirth()
     {

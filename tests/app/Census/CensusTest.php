@@ -22,6 +22,8 @@ class CensusTest extends \Fisharebest\Webtrees\TestCase
 {
     /**
      * @covers \Fisharebest\Webtrees\Census\Census
+     *
+     * @return void
      */
     public function testCensusPlaces()
     {

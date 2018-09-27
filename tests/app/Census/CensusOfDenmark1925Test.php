@@ -24,6 +24,8 @@ class CensusOfDenmark1925Test extends \Fisharebest\Webtrees\TestCase
      * Test the census place and date
      *
      * @covers \Fisharebest\Webtrees\Census\CensusOfDenmark1925
+     *
+     * @return void
      */
     public function testPlaceAndDate()
     {
@@ -38,6 +40,8 @@ class CensusOfDenmark1925Test extends \Fisharebest\Webtrees\TestCase
      *
      * @covers \Fisharebest\Webtrees\Census\CensusOfDenmark1925
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
+     *
+     * @return void
      */
     public function testColumns()
     {
