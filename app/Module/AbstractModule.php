@@ -134,6 +134,8 @@ abstract class AbstractModule
      *
      * Since modules may have many settings, and will probably want to use
      * lots of them, load them all at once and cache them.
+     *
+     * @return void
      */
     private function loadAllSettings()
     {

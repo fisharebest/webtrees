@@ -57,6 +57,8 @@ abstract class BatchUpdateBasePlugin
      * Default option is just the "don't update CHAN record"
      *
      * @param Request $request
+     *
+     * @return void
      */
     public function getOptions(Request $request)
     {

@@ -40,6 +40,8 @@ class ReportHtmlFootnote extends ReportBaseFootnote
      * Uses style name "footnote" by default
      *
      * @param ReportHtml $html
+     *
+     * @return void
      */
     public function renderFootnote($html)
     {

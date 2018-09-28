@@ -122,6 +122,8 @@ class ReportBaseElement
      * Render the footnotes.
      *
      * @param $renderer
+     *
+     * @return void
      */
     public function renderFootnote($renderer)
     {
@@ -131,6 +133,8 @@ class ReportBaseElement
      * Set the text.
      *
      * @param $text
+     *
+     * @return void
      */
     public function setText($text)
     {

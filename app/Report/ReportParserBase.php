@@ -69,6 +69,8 @@ class ReportParserBase
      * @param resource $parser The resource handler for the xml parser
      * @param string   $name   The name of the xml element parsed
      * @param string[] $attrs  An array of key value pairs for the attributes
+     *
+     * @return void
      */
     protected function startElement($parser, $name, $attrs)
     {
@@ -83,6 +85,8 @@ class ReportParserBase
      *
      * @param resource $parser the resource handler for the xml parser
      * @param string   $name   the name of the xml element parsed
+     *
+     * @return void
      */
     protected function endElement($parser, $name)
     {
@@ -97,6 +101,8 @@ class ReportParserBase
      *
      * @param resource $parser The resource handler for the xml parser
      * @param string   $data   The name of the xml element parsed
+     *
+     * @return void
      */
     protected function characterData($parser, $data)
     {

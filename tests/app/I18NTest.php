@@ -39,7 +39,7 @@ class I18NTest extends \Fisharebest\Webtrees\TestCase
     /**
      * Test I18N::strtoupper()
      *
-     * @todo test all locales
+     * @return void
      */
     public function testStrtoupper()
     {
@@ -50,7 +50,7 @@ class I18NTest extends \Fisharebest\Webtrees\TestCase
     /**
      * Test I18N::strtolower()
      *
-     * @todo test all locales
+     * @return void
      */
     public function testStrtolower()
     {
@@ -61,7 +61,7 @@ class I18NTest extends \Fisharebest\Webtrees\TestCase
     /**
      * Test I18N::strcasecmp()
      *
-     * @todo test all locales
+     * @return void
      */
     public function testStrcasecmp()
     {
@@ -75,6 +75,8 @@ class I18NTest extends \Fisharebest\Webtrees\TestCase
 
     /**
      * Test I18N::reverseText()
+     *
+     * @return void
      */
     public function testReverseText()
     {
@@ -98,6 +100,8 @@ class I18NTest extends \Fisharebest\Webtrees\TestCase
 
     /**
      * Test I18N::languageName()
+     *
+     * @return void
      */
     public function testKnownLanguageName()
     {
@@ -110,6 +114,8 @@ class I18NTest extends \Fisharebest\Webtrees\TestCase
 
     /**
      * Test I18N::languageScript()
+     *
+     * @return void
      */
     public function testLanguageScript()
     {

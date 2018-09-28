@@ -143,6 +143,8 @@ class ReportPdf extends ReportBase
 
     /**
      * Clear the Header - ReportPdf
+     *
+     * @return void
      */
     public function clearHeader()
     {

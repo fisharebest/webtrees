@@ -194,7 +194,7 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
                 // need to convert xml structure into arrays & strings
                 foreach ($xml as $provider) {
                     $style_keys = array_map(
-                        function ($item) {
+                        function (string $item): string {
                             return preg_replace('/[^a-z\d]/i', '', strtolower($item));
                         },
                         (array) $provider->styles

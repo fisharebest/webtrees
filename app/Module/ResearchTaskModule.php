@@ -76,7 +76,7 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
             'jd'      => $end_jd,
         ])->fetchOneColumn();
 
-        $records = array_map(function ($xref) use ($tree) {
+        $records = array_map(function ($xref) use ($tree): GedcomRecord {
             return GedcomRecord::getInstance($xref, $tree);
         }, $xrefs);
 

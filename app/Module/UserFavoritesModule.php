@@ -223,6 +223,8 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
      * @param string $url
      * @param string $title
      * @param string $note
+     *
+     * @return void
      */
     private function addUrlFavorite(Tree $tree, User $user, string $url, string $title, string $note)
     {
@@ -260,6 +262,8 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
      * @param User   $user
      * @param string $xref
      * @param string $note
+     *
+     * @return void
      */
     private function addRecordFavorite(Tree $tree, User $user, string $xref, string $note)
     {

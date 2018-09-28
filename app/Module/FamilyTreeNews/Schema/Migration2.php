@@ -25,7 +25,11 @@ use PDOException;
  */
 class Migration2 implements MigrationInterface
 {
-    /** {@inheritDoc} */
+    /**
+     * Upgrade to to the next version
+     *
+     * @return void
+     */
     public function upgrade()
     {
         // Delete any data that might violate the new constraints

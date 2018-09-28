@@ -23,7 +23,11 @@ use Fisharebest\Webtrees\Schema\MigrationInterface;
  */
 class Migration0 implements MigrationInterface
 {
-    /** {@inheritDoc} */
+    /**
+     * Upgrade to to the next version
+     *
+     * @return void
+     */
     public function upgrade()
     {
         Database::exec(

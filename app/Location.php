@@ -215,6 +215,8 @@ class Location
 
     /**
      * @param stdClass $new_data
+     *
+     * @return void
      */
     public function update(stdClass $new_data)
     {

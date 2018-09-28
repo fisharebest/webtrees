@@ -38,6 +38,8 @@ class ReportPdfFootnote extends ReportBaseFootnote
      * Uses style name "footnote" by default
      *
      * @param ReportTcpdf $pdf
+     *
+     * @return void
      */
     public function renderFootnote($pdf)
     {

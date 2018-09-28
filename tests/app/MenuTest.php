@@ -33,6 +33,8 @@ class MenuTest extends \Fisharebest\Webtrees\TestCase
 
     /**
      * Test the constructor with default parameters.
+     *
+     * @return void
      */
     public function testConstructorDefaults()
     {
@@ -47,6 +49,8 @@ class MenuTest extends \Fisharebest\Webtrees\TestCase
 
     /**
      * Test the constructor with non-default parameters.
+     *
+     * @return void
      */
     public function testConstructorNonDefaults()
     {
@@ -62,6 +66,8 @@ class MenuTest extends \Fisharebest\Webtrees\TestCase
 
     /**
      * Test the getter/setter for the label.
+     *
+     * @return void
      */
     public function testGetterSetterLabel()
     {
@@ -75,6 +81,8 @@ class MenuTest extends \Fisharebest\Webtrees\TestCase
 
     /**
      * Test the getter/setter for the link.
+     *
+     * @return void
      */
     public function testGetterSetterLink()
     {
@@ -88,6 +96,8 @@ class MenuTest extends \Fisharebest\Webtrees\TestCase
 
     /**
      * Test the getter/setter for the ID.
+     *
+     * @return void
      */
     public function testGetterSetterId()
     {
@@ -101,6 +111,8 @@ class MenuTest extends \Fisharebest\Webtrees\TestCase
 
     /**
      * Test the getter/setter for the Attrs event.
+     *
+     * @return void
      */
     public function testGetterSetterAttrs()
     {
@@ -114,6 +126,8 @@ class MenuTest extends \Fisharebest\Webtrees\TestCase
 
     /**
      * Test the getter/setter for the submenus.
+     *
+     * @return void
      */
     public function testGetterSetterSubmenus()
     {
@@ -131,6 +145,8 @@ class MenuTest extends \Fisharebest\Webtrees\TestCase
 
     /**
      * Test the list rendering for a simple link.
+     *
+     * @return void
      */
     public function testFormatAsList()
     {
@@ -141,6 +157,8 @@ class MenuTest extends \Fisharebest\Webtrees\TestCase
 
     /**
      * Test the list rendering for a simple link with a CSS ID.
+     *
+     * @return void
      */
     public function testFormatAsListWithClass()
     {
@@ -151,6 +169,8 @@ class MenuTest extends \Fisharebest\Webtrees\TestCase
 
     /**
      * Test the list rendering for an empty target.
+     *
+     * @return void
      */
     public function testFormatAsListWithNoTarget()
     {
@@ -161,6 +181,8 @@ class MenuTest extends \Fisharebest\Webtrees\TestCase
 
     /**
      * Test the list rendering for a default (hash) target.
+     *
+     * @return void
      */
     public function testFormatAsListWithHashTarget()
     {
@@ -171,6 +193,8 @@ class MenuTest extends \Fisharebest\Webtrees\TestCase
 
     /**
      * Test the list rendering for an onclick link.
+     *
+     * @return void
      */
     public function testFormatAsListWithAttrs()
     {
@@ -181,6 +205,8 @@ class MenuTest extends \Fisharebest\Webtrees\TestCase
 
     /**
      * Test the list rendering for an onclick link.
+     *
+     * @return void
      */
     public function testFormatAsListWithAttrsAndId()
     {

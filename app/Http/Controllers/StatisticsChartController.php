@@ -926,7 +926,7 @@ class StatisticsChartController extends AbstractChartController
             }
         }
 
-        $data = implode('|', array_map(function (array $x) {
+        $data = implode('|', array_map(function (array $x): string {
             return implode(',', $x);
         }, $ydata));
 

@@ -65,6 +65,8 @@ class Individual extends GedcomRecord
      *
      * @param Tree     $tree
      * @param string[] $xrefs
+     *
+     * @return void
      */
     public static function load(Tree $tree, array $xrefs)
     {
@@ -1271,7 +1273,7 @@ class Individual extends GedcomRecord
         // Format for display
         $full = '<span class="NAME" dir="auto" translate="no">' . preg_replace('/\/([^\/]*)\//', '<span class="SURN">$1</span>', e($full)) . '</span>';
         // Localise quotation marks around the nickname
-        $full = preg_replace_callback('/&quot;([^&]*)&quot;/', function ($matches) {
+        $full = preg_replace_callback('/&quot;([^&]*)&quot;/', function (array $matches): string {
             return I18N::translate('“%s”', $matches[1]);
         }, $full);
 

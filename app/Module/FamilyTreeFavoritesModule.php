@@ -221,6 +221,8 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
      * @param string $url
      * @param string $title
      * @param string $note
+     *
+     * @return void
      */
     private function addUrlFavorite(Tree $tree, string $url, string $title, string $note)
     {
@@ -255,6 +257,8 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
      * @param Tree   $tree
      * @param string $xref
      * @param string $note
+     *
+     * @return void
      */
     private function addRecordFavorite(Tree $tree, string $xref, string $note)
     {

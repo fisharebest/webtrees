@@ -173,8 +173,10 @@ class RelationshipsChartModule extends AbstractModule implements ModuleConfigInt
 
     /**
      * Possible options for the ancestors option
+     *
+     * @return string[]
      */
-    private function ancestorsOptions()
+    private function ancestorsOptions(): array
     {
         return [
             0 => I18N::translate('Find any relationship'),
@@ -184,8 +186,10 @@ class RelationshipsChartModule extends AbstractModule implements ModuleConfigInt
 
     /**
      * Possible options for the recursion option
+     *
+     * @return string[]
      */
-    private function recursionOptions()
+    private function recursionOptions(): array
     {
         return [
             0                         => I18N::translate('none'),

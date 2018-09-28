@@ -461,6 +461,8 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
 
     /**
      * @param Family $family
+     *
+     * @return void
      */
     private function addFamilyToCart(Family $family)
     {
@@ -473,6 +475,8 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
 
     /**
      * @param Family $family
+     *
+     * @return void
      */
     private function addFamilyAndChildrenToCart(Family $family)
     {
@@ -488,6 +492,8 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
 
     /**
      * @param Family $family
+     *
+     * @return void
      */
     private function addFamilyAndDescendantsToCart(Family $family)
     {
@@ -617,6 +623,8 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
 
     /**
      * @param Individual $individual
+     *
+     * @return void
      */
     private function addAncestorsToCart(Individual $individual)
     {
@@ -631,6 +639,8 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
 
     /**
      * @param Individual $individual
+     *
+     * @return void
      */
     private function addAncestorFamiliesToCart(Individual $individual)
     {
@@ -923,7 +933,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $xrefs = array_keys($cart[$tree->getName()] ?? []);
 
         // Fetch all the records in the cart.
-        $records = array_map(function (string $xref) use ($tree) {
+        $records = array_map(function (string $xref) use ($tree): GedcomRecord {
             return GedcomRecord::getInstance($xref, $tree);
         }, $xrefs);
 
@@ -931,7 +941,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $records = array_filter($records);
 
         // Group and sort.
-        uasort($records, function (GedcomRecord $x, GedcomRecord $y) {
+        uasort($records, function (GedcomRecord $x, GedcomRecord $y): int {
             return $x::RECORD_TYPE <=> $y::RECORD_TYPE ?: GedcomRecord::compare($x, $y);
         });
 
@@ -942,6 +952,8 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      * Add a record (and direclty linked sources, notes, etc. to the cart.
      *
      * @param GedcomRecord $record
+     *
+     * @return void
      */
     private function addRecordToCart(GedcomRecord $record)
     {
@@ -978,6 +990,10 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      * Only allow access to the routes/functions if the menu is active
      *
      * @param Tree $tree
+     *
+     * @return void
+     *
+     * @throws NoteNotFoundException
      */
     private function checkModuleAccess(Tree $tree)
     {

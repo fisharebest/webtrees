@@ -119,6 +119,8 @@ class BatchUpdateSearchReplacePlugin extends BatchUpdateBasePlugin
      * Process the user-supplied options.
      *
      * @param Request $request
+     *
+     * @return void
      */
     public function getOptions(Request $request)
     {

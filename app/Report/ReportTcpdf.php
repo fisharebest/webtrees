@@ -417,6 +417,8 @@ class ReportTcpdf extends TCPDF
     /**
      * Used this function instead of AddPage()
      * This function will make sure that images will not be overwritten
+     *
+     * @return void
      */
     public function newPage()
     {

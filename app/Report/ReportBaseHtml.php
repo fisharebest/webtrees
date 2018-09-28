@@ -71,6 +71,8 @@ class ReportBaseHtml extends ReportBaseElement
      * Add an element.
      *
      * @param ReportBaseElement $element
+     *
+     * @return void
      */
     public function addElement($element)
     {

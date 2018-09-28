@@ -294,7 +294,7 @@ class Module
 
         // The order of menus/sidebars/tabs is defined in the database. Others are sorted by name.
         if ($component !== 'menu' && $component !== 'sidebar' && $component !== 'tab') {
-            uasort($array, function (AbstractModule $x, AbstractModule $y) {
+            uasort($array, function (AbstractModule $x, AbstractModule $y): int {
                 return I18N::strcasecmp($x->getTitle(), $y->getTitle());
             });
         }
@@ -333,7 +333,7 @@ class Module
 
         // The order of menus/sidebars/tabs is defined in the database. Others are sorted by name.
         if ($component !== 'menu' && $component !== 'sidebar' && $component !== 'tab') {
-            uasort($array, function (AbstractModule $x, AbstractModule $y) {
+            uasort($array, function (AbstractModule $x, AbstractModule $y): int {
                 return I18N::strcasecmp($x->getTitle(), $y->getTitle());
             });
         }
@@ -589,6 +589,8 @@ class Module
      * rights for each module.
      *
      * @param int $tree_id
+     *
+     * @return void
      */
     public static function setDefaultAccess($tree_id)
     {

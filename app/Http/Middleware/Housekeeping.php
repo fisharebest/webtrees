@@ -79,6 +79,8 @@ class Housekeeping implements MiddlewareInterface
 
     /**
      * Run the various housekeeping services.
+     *
+     * @return void
      */
     private function runHousekeeping()
     {

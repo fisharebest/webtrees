@@ -47,6 +47,8 @@ class ReportBasePageheader extends ReportBaseElement
      * Add element - PageHeader
      *
      * @param ReportBaseElement $element
+     *
+     * @return void
      */
     public function addElement($element)
     {

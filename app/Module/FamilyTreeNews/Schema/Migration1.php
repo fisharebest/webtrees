@@ -25,7 +25,11 @@ use PDOException;
  */
 class Migration1 implements MigrationInterface
 {
-    /** {@inheritDoc} */
+    /**
+     * Upgrade to to the next version
+     *
+     * @return void
+     */
     public function upgrade()
     {
         // Add new columns

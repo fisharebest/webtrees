@@ -152,6 +152,8 @@ class ReportParserGenerate extends ReportParserBase
      * @param resource $parser the resource handler for the XML parser
      * @param string   $name   the name of the XML element parsed
      * @param array    $attrs  an array of key value pairs for the attributes
+     *
+     * @return void
      */
     protected function startElement($parser, $name, $attrs)
     {
@@ -184,6 +186,8 @@ class ReportParserGenerate extends ReportParserBase
      *
      * @param resource $parser the resource handler for the XML parser
      * @param string   $name   the name of the XML element parsed
+     *
+     * @return void
      */
     protected function endElement($parser, $name)
     {
@@ -203,6 +207,8 @@ class ReportParserGenerate extends ReportParserBase
      *
      * @param resource $parser the resource handler for the XML parser
      * @param string   $data   the name of the XML element parsed
+     *
+     * @return void
      */
     protected function characterData($parser, $data)
     {
@@ -2177,7 +2183,7 @@ class ReportParserGenerate extends ReportParserBase
                 uasort($this->list, '\Fisharebest\Webtrees\GedcomRecord::compare');
                 break;
             case 'CHAN':
-                uasort($this->list, function (GedcomRecord $x, GedcomRecord $y) {
+                uasort($this->list, function (GedcomRecord $x, GedcomRecord $y): int {
                     return $y->lastChangeTimestamp(true) - $x->lastChangeTimestamp(true);
                 });
                 break;
@@ -2856,7 +2862,7 @@ class ReportParserGenerate extends ReportParserBase
     {
         return preg_replace_callback(
             '/\$(\w+)/',
-            function ($matches) use ($quote) {
+            function (array $matches) use ($quote): string {
                 if (isset($this->vars[$matches[1]]['id'])) {
                     if ($quote) {
                         return "'" . addcslashes($this->vars[$matches[1]]['id'], "'") . "'";

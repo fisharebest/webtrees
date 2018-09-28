@@ -51,6 +51,8 @@ class SurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
 
     /**
      * Test create() with invalid input
+     *
+     * @return void
      */
     public function testCreateInvalid()
     {
@@ -59,6 +61,8 @@ class SurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
 
     /**
      * Test allDescriptions()
+     *
+     * @return void
      */
     public function testAllDescriptions()
     {

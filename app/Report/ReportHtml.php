@@ -169,6 +169,8 @@ class ReportHtml extends ReportBase
      * Add an element.
      *
      * @param $element
+     *
+     * @return void
      */
     public function addElement($element)
     {
@@ -183,6 +185,8 @@ class ReportHtml extends ReportBase
 
     /**
      * Generate the page header
+     *
+     * @return void
      */
     public function runPageHeader()
     {
@@ -455,6 +459,8 @@ class ReportHtml extends ReportBase
 
     /**
      * Update the Page Number and set a new Y if max Y is larger - ReportHtml
+     *
+     * @return void
      */
     public function addPage()
     {
@@ -477,6 +483,8 @@ class ReportHtml extends ReportBase
      * Uppdate max Y to keep track it incase of a pagebreak - ReportHtml
      *
      * @param float $y
+     *
+     * @return void
      */
     public function addMaxY($y)
     {
@@ -693,6 +701,8 @@ class ReportHtml extends ReportBase
      * Set the X position - ReportHtml
      *
      * @param float $x
+     *
+     * @return void
      */
     public function setX($x)
     {
@@ -705,6 +715,8 @@ class ReportHtml extends ReportBase
      * Also updates Max Y position
      *
      * @param float $y
+     *
+     * @return void
      */
     public function setY($y)
     {
@@ -721,6 +733,8 @@ class ReportHtml extends ReportBase
      *
      * @param float $x
      * @param float $y
+     *
+     * @return void
      */
     public function setXy($x, $y)
     {
@@ -764,6 +778,8 @@ class ReportHtml extends ReportBase
      * @param string $text  Text to print
      * @param string $color HTML RGB color code (Ex: #001122)
      * @param bool   $useclass
+     *
+     * @return void
      */
     public function write($text, $color = '', $useclass = true)
     {

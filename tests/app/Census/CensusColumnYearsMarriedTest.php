@@ -25,6 +25,8 @@ class CensusColumnYearsMarriedTest extends \Fisharebest\Webtrees\TestCase
 {
     /**
      * Delete mock objects
+     *
+     * @return void
      */
     public function tearDown()
     {

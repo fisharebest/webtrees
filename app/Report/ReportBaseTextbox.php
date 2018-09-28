@@ -149,6 +149,8 @@ class ReportBaseTextbox extends ReportBaseElement
      * Add an element to the TextBox
      *
      * @param object|string $element
+     *
+     * @return void
      */
     public function addElement($element)
     {
