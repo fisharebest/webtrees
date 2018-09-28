@@ -266,7 +266,7 @@ class PlaceHierarchyController extends AbstractBaseController
                         'name'  => 'globe',
                         'color' => '#1e90ff',
                     ],
-                    'tooltip' => strip_tags($place->getFullName()),
+                    'tooltip' => $place->getGedcomName(),
                     'summary' => view('place-sidebar', [
                         'showlink' => $showlink,
                         'flag'     => $flag,
