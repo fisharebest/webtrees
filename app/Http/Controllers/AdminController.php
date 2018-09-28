@@ -1301,8 +1301,7 @@ class AdminController extends AbstractBaseController
             $order_by = '';
         }
 
-        if ($length) {
-            Auth::user()->setPreference('admin_site_change_page_size', $length);
+        if ($length > 0) {
             $limit          = ' LIMIT :limit OFFSET :offset';
             $args['limit']  = $length;
             $args['offset'] = $start;

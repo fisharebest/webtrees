@@ -317,7 +317,7 @@ class AdminSiteController extends AbstractBaseController
             $sql .= " ORDER BY 1 ASC";
         }
 
-        if ($length) {
+        if ($length > 0) {
             $sql .= " LIMIT :limit OFFSET :offset";
             $args['limit']  = $length;
             $args['offset'] = $start;
