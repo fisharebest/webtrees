@@ -69,8 +69,8 @@ class ReportEngineController extends AbstractBaseController
      */
     public function reportSetup(Request $request, Tree $tree): Response
     {
-        $pid     = $request->get('pid');
-        $report  = $request->get('report');
+        $pid     = $request->get('xref', '');
+        $report  = $request->get('report', '');
         $reports = $this->allReports($tree);
 
         if (!array_key_exists($report, $reports)) {
