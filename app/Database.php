@@ -311,8 +311,8 @@ class Database {
 			}
 		} catch (PDOException $ex) {
 			// The schema update scripts should never fail. If they do, there is no clean recovery.
-			FlashMessages::addMessage($ex->getMessage(), 'danger');
-			header('Location: ' . WT_BASE_URL . 'site-unavailable.php');
+			$message = rawurlencode($ex->getMessage());
+			header('Location: ' . WT_BASE_URL . 'site-unavailable.php?message=' . $message);
 			throw $ex;
 		}
 

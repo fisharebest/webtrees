@@ -221,7 +221,7 @@ set_exception_handler(function ($ex) {
 		}
 	}
 
-	if (error_reporting() & $ex->getCode()) {
+	if ($ex instanceof PDOException || error_reporting() & $ex->getCode()) {
 		echo $message;
 	}
 

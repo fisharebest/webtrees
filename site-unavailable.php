@@ -44,14 +44,16 @@ if (Filter::get('message')) {
 }
 
 // If we can't connect to the database at all, give the reason why
-$config_ini_php = parse_ini_file('data/config.ini.php');
-if (is_array($config_ini_php) && array_key_exists('dbhost', $config_ini_php) && array_key_exists('dbport', $config_ini_php) && array_key_exists('dbuser', $config_ini_php) && array_key_exists('dbpass', $config_ini_php) && array_key_exists('dbname', $config_ini_php)) {
-	try {
-		new PDO('mysql:host=' . $config_ini_php['dbhost'] . ';port=' . $config_ini_php['dbport'] . ';dbname=' . $config_ini_php['dbname'], $config_ini_php['dbuser'], $config_ini_php['dbpass'], array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ, PDO::ATTR_CASE => PDO::CASE_LOWER, PDO::ATTR_AUTOCOMMIT => true));
-	} catch (PDOException $ex) {
-		$messages .= '<p>' . I18N::translate('The database reported the following error message:') . '</p>';
-		$messages .= '<blockquote>' . $ex->getMessage() . '</blockquote>';
-	}
+if (file_exists('data/config.ini.php')) {
+    $config_ini_php = parse_ini_file('data/config.ini.php');
+    if (is_array($config_ini_php) && array_key_exists('dbhost', $config_ini_php) && array_key_exists('dbport', $config_ini_php) && array_key_exists('dbuser', $config_ini_php) && array_key_exists('dbpass', $config_ini_php) && array_key_exists('dbname', $config_ini_php)) {
+        try {
+			new PDO('mysql:host=' . $config_ini_php['dbhost'] . ';port=' . $config_ini_php['dbport'] . ';dbname=' . $config_ini_php['dbname'], $config_ini_php['dbuser'], $config_ini_php['dbpass'], array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ, PDO::ATTR_CASE => PDO::CASE_LOWER, PDO::ATTR_AUTOCOMMIT => true));
+        } catch (PDOException $ex) {
+            $messages .= '<p>' . I18N::translate('The database reported the following error message:') . '</p>';
+            $messages .= '<blockquote>' . $ex->getMessage() . '</blockquote>';
+        }
+    }
 }
 
 ?>
