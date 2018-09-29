@@ -307,7 +307,7 @@ class AdminLocationController extends AbstractBaseController
         );
 
         $files = array_map(function(string $place): string {
-            return substr($place, strlen(WT_DATA_DIR . 'plcaes/'));
+            return substr($place, strlen(WT_DATA_DIR . 'places/'));
         }, $files);
 
         asort($files);
