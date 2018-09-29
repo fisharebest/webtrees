@@ -154,9 +154,11 @@ if ($tree1_id && $tree2_id != $tree1_id) {
 			"INSERT INTO `##other` (o_id, o_file, o_type, o_gedcom)" .
 			" SELECT o_id, ?, o_type, o_gedcom FROM `##other` AS other2 WHERE o_file = ? AND o_type NOT IN ('HEAD', 'TRLR')"
 		)->execute(array($tree2_id, $tree1_id));
+        // Old versions of webtrees (pre 1.4?) created entries for HEAD and TRLR.
+        // Ignore these, as they will break unique indexes
 		Database::prepare(
 			"INSERT INTO `##name` (n_file, n_id, n_num, n_type, n_sort, n_full, n_surname, n_surn, n_givn, n_soundex_givn_std, n_soundex_surn_std, n_soundex_givn_dm, n_soundex_surn_dm)" .
-			" SELECT ?, n_id, n_num, n_type, n_sort, n_full, n_surname, n_surn, n_givn, n_soundex_givn_std, n_soundex_surn_std, n_soundex_givn_dm, n_soundex_surn_dm FROM `##name` AS name2 WHERE n_file = ?"
+			" SELECT ?, n_id, n_num, n_type, n_sort, n_full, n_surname, n_surn, n_givn, n_soundex_givn_std, n_soundex_surn_std, n_soundex_givn_dm, n_soundex_surn_dm FROM `##name` AS name2 WHERE n_file = ? AND n_type NOT IN ('HEAD', 'TRLR')"
 		)->execute(array($tree2_id, $tree1_id));
 		Database::prepare(
 			"INSERT INTO `##placelinks` (pl_p_id, pl_gid, pl_file)" .
