@@ -249,7 +249,7 @@ try {
     // Find the controller and action for the selected route
     $controller_action = $routes[$request->getMethod() . ':' . $route] ?? 'ErrorController@noRouteFound';
     list($controller_name, $action) = explode('@', $controller_action);
-    $controller_class = __NAMESPACE__ . '\\Http\\Controllers\\' . $controller_name;
+    $controller_class = '\\Fisharebest\\Webtrees\\Http\\Controllers\\' . $controller_name;
 
     // Set up dependency injection for the controllers.
     $resolver = new Resolver();
