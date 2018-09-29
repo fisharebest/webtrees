@@ -15,14 +15,11 @@
  */
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees;
-
-use Closure;
-use DateTime;
-use ErrorException;
-use Exception;
 use Fisharebest\Localization\Locale;
 use Fisharebest\Localization\Locale\LocaleInterface;
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Database;
+use Fisharebest\Webtrees\DebugBar;
 use Fisharebest\Webtrees\Exceptions\Handler;
 use Fisharebest\Webtrees\Http\Controllers\SetupController;
 use Fisharebest\Webtrees\Http\Middleware\CheckCsrf;
@@ -30,50 +27,55 @@ use Fisharebest\Webtrees\Http\Middleware\CheckForMaintenanceMode;
 use Fisharebest\Webtrees\Http\Middleware\Housekeeping;
 use Fisharebest\Webtrees\Http\Middleware\PageHitCounter;
 use Fisharebest\Webtrees\Http\Middleware\UseTransaction;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Resolver;
 use Fisharebest\Webtrees\Services\TimeoutService;
+use Fisharebest\Webtrees\Session;
+use Fisharebest\Webtrees\Site;
+use Fisharebest\Webtrees\Theme;
+use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\User;
+use Fisharebest\Webtrees\View;
 use League\Flysystem\Adapter\Local;
 use League\Flysystem\Filesystem;
-use PDOException;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Throwable;
 
 // Identify ourself
-define('WT_WEBTREES', 'webtrees');
-define('WT_VERSION', '2.0.0-dev');
-define('WT_WEBTREES_URL', 'https://www.webtrees.net/');
+const WT_WEBTREES     = 'webtrees';
+const WT_VERSION      = '2.0.0-dev';
+const WT_WEBTREES_URL = 'https://www.webtrees.net/';
 
 // Location of our modules and themes. These are used as URLs and folder paths.
-define('WT_MODULES_DIR', 'modules_v3/');
-define('WT_THEMES_DIR', 'themes/');
-define('WT_ASSETS_URL', 'public/assets-2.0.0/'); // See also webpack.mix.js
-define('WT_CKEDITOR_BASE_URL', 'public/ckeditor-4.5.2-custom/');
+const WT_MODULES_DIR       = 'modules_v3/';
+const WT_THEMES_DIR        = 'themes/';
+const WT_ASSETS_URL        = 'public/assets-2.0.0/'; // See also webpack.mix.js
+const WT_CKEDITOR_BASE_URL = 'public/ckeditor-4.5.2-custom/';
 
 // Enable debugging output on development builds
 define('WT_DEBUG', strpos(WT_VERSION, 'dev') !== false);
 
 // Required version of database tables/columns/indexes/etc.
-define('WT_SCHEMA_VERSION', 40);
+const WT_SCHEMA_VERSION = 40;
 
 // Regular expressions for validating user input, etc.
-define('WT_MINIMUM_PASSWORD_LENGTH', 6);
-define('WT_REGEX_XREF', '[A-Za-z0-9:_-]+');
-define('WT_REGEX_TAG', '[_A-Z][_A-Z0-9]*');
-define('WT_REGEX_INTEGER', '-?\d+');
-define('WT_REGEX_BYTES', '[0-9]+[bBkKmMgG]?');
-define('WT_REGEX_PASSWORD', '.{' . WT_MINIMUM_PASSWORD_LENGTH . ',}');
-
-define('WT_UTF8_BOM', "\xEF\xBB\xBF"); // U+FEFF (Byte order mark)
+const WT_MINIMUM_PASSWORD_LENGTH = 6;
+const WT_REGEX_XREF              = '[A-Za-z0-9:_-]+';
+const WT_REGEX_TAG               = '[_A-Z][_A-Z0-9]*';
+const WT_REGEX_INTEGER           = '-?\d+';
+const WT_REGEX_BYTES             = '[0-9]+[bBkKmMgG]?';
+const WT_REGEX_PASSWORD          = '.{' . WT_MINIMUM_PASSWORD_LENGTH . ',}';
+const WT_UTF8_BOM                = "\xEF\xBB\xBF"; // U+FEFF (Byte order mark)
 
 // Alternatives to BMD events for lists, charts, etc.
-define('WT_EVENTS_BIRT', 'BIRT|CHR|BAPM|_BRTM|ADOP');
-define('WT_EVENTS_DEAT', 'DEAT|BURI|CREM');
-define('WT_EVENTS_MARR', 'MARR|_NMR');
-define('WT_EVENTS_DIV', 'DIV|ANUL|_SEPR');
+const WT_EVENTS_BIRT = 'BIRT|CHR|BAPM|_BRTM|ADOP';
+const WT_EVENTS_DEAT = 'DEAT|BURI|CREM';
+const WT_EVENTS_MARR = 'MARR|_NMR';
+const WT_EVENTS_DIV  = 'DIV|ANUL|_SEPR';
 
-define('WT_ROOT', __DIR__ . DIRECTORY_SEPARATOR);
+const WT_ROOT = __DIR__ . DIRECTORY_SEPARATOR;
 
 // We want to know about all PHP errors during development, and fewer in production.
 if (WT_DEBUG) {
@@ -116,7 +118,7 @@ set_error_handler(function (int $errno, string $errstr, string $errfile, int $er
 DebugBar::startMeasure('init database');
 
 // Load our configuration file, so we can connect to the database
-define('WT_CONFIG_FILE', 'data/config.ini.php');
+const WT_CONFIG_FILE = 'data/config.ini.php';
 if (!file_exists(WT_ROOT . WT_CONFIG_FILE)) {
     // No config file. Set one up.
     define('WT_DATA_DIR', 'data/');
