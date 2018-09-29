@@ -476,7 +476,6 @@ $_SERVER[$variable]))) {
 	public static function checkCsrf() {
 		if (self::post('csrf') !== self::getCsrfToken()) {
 			// Oops. Something is not quite right
-			Log::addAuthenticationLog('CSRF mismatch - session expired or malicious attack');
 			FlashMessages::addMessage(I18N::translate('This form has expired. Try again.'), 'error');
 
 			return false;
