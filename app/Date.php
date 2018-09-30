@@ -410,11 +410,7 @@ class Date
      */
     public function maximumDate()
     {
-        if ($this->date2 === null) {
-            return $this->date1;
-        }
-
-        return $this->date2;
+        return $this->date2 ?? $this->date1;
     }
 
     /**
@@ -424,7 +420,7 @@ class Date
      */
     public function minimumJulianDay(): int
     {
-        return $this->minimumDate()->minJD;
+        return $this->minimumDate()->minimumJulianDay();
     }
 
     /**
@@ -434,7 +430,7 @@ class Date
      */
     public function maximumJulianDay(): int
     {
-        return $this->maximumDate()->maxJD;
+        return $this->maximumDate()->maximumJulianDay();
     }
 
     /**

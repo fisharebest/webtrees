@@ -256,7 +256,7 @@ class CalendarController extends AbstractBaseController
 
         switch ($view) {
             case 'day':
-                $found_facts = $this->applyFilter($calendar_service->getAnniversaryEvents($cal_date->minJD, $filterev, $tree), $filterof, $filtersx);
+                $found_facts = $this->applyFilter($calendar_service->getAnniversaryEvents($cal_date->minimumJulianDay(), $filterev, $tree), $filterof, $filtersx);
                 break;
             case 'month':
                 $cal_date->d = 0;
@@ -266,13 +266,13 @@ class CalendarController extends AbstractBaseController
                     $found_facts[$d] = [];
                 }
                 // Fetch events for each day
-                for ($jd = $cal_date->minJD; $jd <= $cal_date->maxJD; ++$jd) {
+                for ($jd = $cal_date->minimumJulianDay(); $jd <= $cal_date->maximumJulianDay(); ++$jd) {
                     foreach ($this->applyFilter($calendar_service->getAnniversaryEvents($jd, $filterev, $tree), $filterof, $filtersx) as $fact) {
                         $tmp = $fact->getDate()->minimumDate();
                         if ($tmp->d >= 1 && $tmp->d <= $tmp->daysInMonth()) {
                             // If the day is valid (for its own calendar), display it in the
                             // anniversary day (for the display calendar).
-                            $found_facts[$jd - $cal_date->minJD + 1][] = $fact;
+                            $found_facts[$jd - $cal_date->minimumJulianDay() + 1][] = $fact;
                         } else {
                             // Otherwise, display it in the "Day not set" box.
                             $found_facts[0][] = $fact;
@@ -386,14 +386,14 @@ class CalendarController extends AbstractBaseController
                 echo '<tbody>';
                 // Print days 1 to n of the month, but extend to cover "empty" days before/after the month to make whole weeks.
                 // e.g. instead of 1 -> 30 (=30 days), we might have -1 -> 33 (=35 days)
-                $start_d = 1 - ($cal_date->minJD - $week_start) % $days_in_week;
-                $end_d   = $days_in_month + ($days_in_week - ($cal_date->maxJD - $week_start + 1) % $days_in_week) % $days_in_week;
+                $start_d = 1 - ($cal_date->minimumJulianDay() - $week_start) % $days_in_week;
+                $end_d   = $days_in_month + ($days_in_week - ($cal_date->maximumJulianDay() - $week_start + 1) % $days_in_week) % $days_in_week;
                 // Make sure that there is an empty box for any leap/missing days
                 if ($start_d === 1 && $end_d === $days_in_month && count($found_facts[0]) > 0) {
                     $end_d += $days_in_week;
                 }
                 for ($d = $start_d; $d <= $end_d; ++$d) {
-                    if (($d + $cal_date->minJD - $week_start) % $days_in_week === 1) {
+                    if (($d + $cal_date->minimumJulianDay() - $week_start) % $days_in_week === 1) {
                         echo '<tr>';
                     }
                     echo '<td class="optionbox wrap">';
@@ -418,22 +418,22 @@ class CalendarController extends AbstractBaseController
                         foreach (explode('_and_', $CALENDAR_FORMAT) as $convcal) {
                             switch ($convcal) {
                                 case 'french':
-                                    $alt_date = new FrenchDate($cal_date->minJD + $d - 1);
+                                    $alt_date = new FrenchDate($cal_date->minimumJulianDay() + $d - 1);
                                     break;
                                 case 'gregorian':
-                                    $alt_date = new GregorianDate($cal_date->minJD + $d - 1);
+                                    $alt_date = new GregorianDate($cal_date->minimumJulianDay() + $d - 1);
                                     break;
                                 case 'jewish':
-                                    $alt_date = new JewishDate($cal_date->minJD + $d - 1);
+                                    $alt_date = new JewishDate($cal_date->minimumJulianDay() + $d - 1);
                                     break;
                                 case 'julian':
-                                    $alt_date = new JulianDate($cal_date->minJD + $d - 1);
+                                    $alt_date = new JulianDate($cal_date->minimumJulianDay() + $d - 1);
                                     break;
                                 case 'hijri':
-                                    $alt_date = new HijriDate($cal_date->minJD + $d - 1);
+                                    $alt_date = new HijriDate($cal_date->minimumJulianDay() + $d - 1);
                                     break;
                                 case 'jalali':
-                                    $alt_date = new JalaliDate($cal_date->minJD + $d - 1);
+                                    $alt_date = new JalaliDate($cal_date->minimumJulianDay() + $d - 1);
                                     break;
                                 default:
                                     break 2;
@@ -449,7 +449,7 @@ class CalendarController extends AbstractBaseController
                         echo '</div>';
                     }
                     echo '</td>';
-                    if (($d + $cal_date->minJD - $week_start) % $days_in_week === 0) {
+                    if (($d + $cal_date->minimumJulianDay() - $week_start) % $days_in_week === 0) {
                         echo '</tr>';
                     }
                 }

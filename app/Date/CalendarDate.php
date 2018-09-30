@@ -81,10 +81,10 @@ class CalendarDate
     public $d;
 
     /** @var int Earliest Julian day number (start of month/year for imprecise dates) */
-    public $minJD;
+    private $minimum_julian_day;
 
     /** @var int Latest Julian day number (end of month/year for imprecise dates) */
-    public $maxJD;
+    private $maximum_julian_day;
 
     /**
      * Create a date from either:
@@ -98,8 +98,8 @@ class CalendarDate
     {
         // Construct from an integer (a julian day number)
         if (is_int($date)) {
-            $this->minJD = $date;
-            $this->maxJD = $date;
+            $this->minimum_julian_day = $date;
+            $this->maximum_julian_day = $date;
             list($this->y, $this->m, $this->d) = $this->calendar->jdToYmd($date);
 
             return;
@@ -127,8 +127,8 @@ class CalendarDate
         }
 
         // Contruct from a CalendarDate
-        $this->minJD = $date->minJD;
-        $this->maxJD = $date->maxJD;
+        $this->minimum_julian_day = $date->minimum_julian_day;
+        $this->maximum_julian_day = $date->maximum_julian_day;
 
         // Construct from an equivalent xxxxDate object
         if (get_class($this) == get_class($date)) {
@@ -155,7 +155,7 @@ class CalendarDate
             $jd    = $date->calendar->ymdToJd($today[0], $date->m, $date->d == 0 ? $today[2] : $date->d);
         } else {
             // Complete date
-            $jd = (int) (($date->maxJD + $date->minJD) / 2);
+            $jd = (int) (($date->maximum_julian_day + $date->minimum_julian_day) / 2);
         }
         list($this->y, $this->m, $this->d) = $this->calendar->jdToYmd($jd);
         // New date has same precision as original date
@@ -169,6 +169,22 @@ class CalendarDate
             $this->d = 0;
         }
         $this->setJdFromYmd();
+    }
+
+    /**
+     * @return int
+     */
+    public function maximumJulianDay(): int
+    {
+        return $this->maximum_julian_day;
+    }
+
+    /**
+     * @return int
+     */
+    public function minimumJulianDay(): int
+    {
+        return $this->minimum_julian_day;
     }
 
     /**
@@ -189,18 +205,18 @@ class CalendarDate
     public function setJdFromYmd()
     {
         if ($this->y == 0) {
-            $this->minJD = 0;
-            $this->maxJD = 0;
+            $this->minimum_julian_day = 0;
+            $this->maximum_julian_day = 0;
         } elseif ($this->m == 0) {
-            $this->minJD = $this->calendar->ymdToJd($this->y, 1, 1);
-            $this->maxJD = $this->calendar->ymdToJd($this->nextYear($this->y), 1, 1) - 1;
+            $this->minimum_julian_day = $this->calendar->ymdToJd($this->y, 1, 1);
+            $this->maximum_julian_day = $this->calendar->ymdToJd($this->nextYear($this->y), 1, 1) - 1;
         } elseif ($this->d == 0) {
             list($ny, $nm) = $this->nextMonth();
-            $this->minJD = $this->calendar->ymdToJd($this->y, $this->m, 1);
-            $this->maxJD = $this->calendar->ymdToJd($ny, $nm, 1) - 1;
+            $this->minimum_julian_day = $this->calendar->ymdToJd($this->y, $this->m, 1);
+            $this->maximum_julian_day = $this->calendar->ymdToJd($ny, $nm, 1) - 1;
         } else {
-            $this->minJD = $this->calendar->ymdToJd($this->y, $this->m, $this->d);
-            $this->maxJD = $this->minJD;
+            $this->minimum_julian_day = $this->calendar->ymdToJd($this->y, $this->m, $this->d);
+            $this->maximum_julian_day = $this->minimum_julian_day;
         }
     }
 
@@ -470,11 +486,11 @@ class CalendarDate
      */
     public static function compare(CalendarDate $d1, CalendarDate $d2): int
     {
-        if ($d1->maxJD < $d2->minJD) {
+        if ($d1->maximum_julian_day < $d2->minimum_julian_day) {
             return -1;
         }
 
-        if ($d2->maxJD < $d1->minJD) {
+        if ($d2->maximum_julian_day < $d1->minimum_julian_day) {
             return 1;
         }
 
@@ -505,8 +521,8 @@ class CalendarDate
         }
 
         // Perform all calculations using the calendar of the first date
-        list($year1, $month1, $day1) = $this->calendar->jdToYmd($this->minJD);
-        list($year2, $month2, $day2) = $this->calendar->jdToYmd($date->minJD);
+        list($year1, $month1, $day1) = $this->calendar->jdToYmd($this->minimum_julian_day);
+        list($year2, $month2, $day2) = $this->calendar->jdToYmd($date->minimum_julian_day);
 
         $years  = $year2 - $year1;
         $months = $month2 - $month1;
@@ -538,10 +554,10 @@ class CalendarDate
         if ($this->y == 0 || $jd == 0) {
             return 0;
         }
-        if ($this->minJD < $jd && $this->maxJD > $jd) {
+        if ($this->minimum_julian_day < $jd && $this->maximum_julian_day > $jd) {
             return 0;
         }
-        if ($this->minJD == $jd) {
+        if ($this->minimum_julian_day == $jd) {
             return 0;
         }
         list($y, $m, $d) = $this->calendar->jdToYmd($jd);
@@ -573,13 +589,13 @@ class CalendarDate
         if ($this->y == 0 || $jd == 0) {
             return '';
         }
-        if ($this->minJD < $jd && $this->maxJD > $jd) {
+        if ($this->minimum_julian_day < $jd && $this->maximum_julian_day > $jd) {
             return '';
         }
-        if ($this->minJD == $jd) {
+        if ($this->minimum_julian_day == $jd) {
             return '';
         }
-        if ($jd < $this->minJD) {
+        if ($jd < $this->minimum_julian_day) {
             return '<i class="icon-warning"></i>';
         }
         list($y, $m, $d) = $this->calendar->jdToYmd($jd);
@@ -604,7 +620,7 @@ class CalendarDate
         }
 
         // Age in days?
-        return ($jd - $this->minJD) . 'd';
+        return ($jd - $this->minimum_julian_day) . 'd';
     }
 
     /**
@@ -641,7 +657,7 @@ class CalendarDate
      */
     public function inValidRange(): bool
     {
-        return $this->minJD >= $this->calendar->jdStart() && $this->maxJD <= $this->calendar->jdEnd();
+        return $this->minimum_julian_day >= $this->calendar->jdStart() && $this->maximum_julian_day <= $this->calendar->jdEnd();
     }
 
     /**
@@ -845,7 +861,7 @@ class CalendarDate
      */
     protected function formatLongWeekday(): string
     {
-        return $this->dayNames($this->minJD % $this->calendar->daysInWeek());
+        return $this->dayNames($this->minimum_julian_day % $this->calendar->daysInWeek());
     }
 
     /**
@@ -855,7 +871,7 @@ class CalendarDate
      */
     protected function formatShortWeekday(): string
     {
-        return $this->dayNamesAbbreviated($this->minJD % $this->calendar->daysInWeek());
+        return $this->dayNamesAbbreviated($this->minimum_julian_day % $this->calendar->daysInWeek());
     }
 
     /**
@@ -865,7 +881,7 @@ class CalendarDate
      */
     protected function formatIsoWeekday(): string
     {
-        return I18N::digits($this->minJD % 7 + 1);
+        return I18N::digits($this->minimum_julian_day % 7 + 1);
     }
 
     /**
@@ -875,7 +891,7 @@ class CalendarDate
      */
     protected function formatNumericWeekday(): string
     {
-        return I18N::digits(($this->minJD + 1) % $this->calendar->daysInWeek());
+        return I18N::digits(($this->minimum_julian_day + 1) % $this->calendar->daysInWeek());
     }
 
     /**
@@ -885,7 +901,7 @@ class CalendarDate
      */
     protected function formatDayOfYear(): string
     {
-        return I18N::digits($this->minJD - $this->calendar->ymdToJd($this->y, 1, 1));
+        return I18N::digits($this->minimum_julian_day - $this->calendar->ymdToJd($this->y, 1, 1));
     }
 
     /**
