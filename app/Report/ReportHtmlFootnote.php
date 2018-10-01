@@ -13,6 +13,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+declare(strict_types=1);
+
 namespace Fisharebest\Webtrees\Report;
 
 /**
@@ -69,11 +71,11 @@ class ReportHtmlFootnote extends ReportBaseFootnote
      * Calculates the Footnotes height
      *
      * @param ReportHtml $html
-     * @param int        $cellWidth The width of the cell to use it for text wraping
+     * @param float      $cellWidth The width of the cell to use it for text wraping
      *
-     * @return int       Footnote height in points
+     * @return float Footnote height in points
      */
-    public function getFootnoteHeight($html, $cellWidth = 0): int
+    public function getFootnoteHeight(ReportHtml $html, float $cellWidth = 0): float
     {
         if ($html->getCurrentStyle() != $this->styleName) {
             $html->setCurrentStyle($this->styleName);

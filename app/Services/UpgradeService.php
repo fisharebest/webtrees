@@ -13,6 +13,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+declare(strict_types=1);
+
 namespace Fisharebest\Webtrees\Services;
 
 use Fisharebest\Webtrees\Database;
@@ -103,7 +105,7 @@ class UpgradeService
 
                 if ($response->getStatusCode() === Response::HTTP_OK) {
                     Site::setPreference('LATEST_WT_VERSION', $response->getBody()->getContents());
-                    Site::setPreference('LATEST_WT_VERSION_TIMESTAMP', WT_TIMESTAMP);
+                    Site::setPreference('LATEST_WT_VERSION_TIMESTAMP', (string)WT_TIMESTAMP);
                 }
             } catch (RequestException $ex) {
                 DebugBar::addThrowable($ex);

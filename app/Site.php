@@ -13,6 +13,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+declare(strict_types=1);
+
 namespace Fisharebest\Webtrees;
 
 /**
@@ -56,7 +58,7 @@ class Site
      *
      * @return void
      */
-    public static function setPreference($setting_name, $setting_value)
+    public static function setPreference(string $setting_name, string $setting_value)
     {
         if (self::getPreference($setting_name) !== $setting_value) {
             Database::prepare(

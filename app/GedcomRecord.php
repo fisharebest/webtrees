@@ -13,6 +13,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+declare(strict_types=1);
+
 namespace Fisharebest\Webtrees;
 
 use Exception;
@@ -57,10 +59,10 @@ class GedcomRecord
     /** @var string[][] All the names of this individual */
     protected $getAllNames;
 
-    /** @var int Cached result */
+    /** @var null|int Cached result */
     protected $getPrimaryName;
 
-    /** @var int Cached result */
+    /** @var null|int Cached result */
     protected $getSecondaryName;
 
     /** @var GedcomRecord[][] Allow getInstance() to return references to existing objects */
@@ -711,7 +713,7 @@ class GedcomRecord
      *
      * @return void
      */
-    public function setPrimaryName($n)
+    public function setPrimaryName(int $n = null)
     {
         $this->getPrimaryName   = $n;
         $this->getSecondaryName = null;
@@ -1151,7 +1153,7 @@ class GedcomRecord
      *
      * @param bool $sorting
      *
-     * @return string
+     * @return int|string
      */
     public function lastChangeTimestamp(bool $sorting = false)
     {

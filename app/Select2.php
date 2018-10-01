@@ -13,6 +13,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+declare(strict_types=1);
+
 
 namespace Fisharebest\Webtrees;
 
@@ -245,7 +247,7 @@ class Select2 extends Html
 
         while (is_object($row = $cursor->fetch())) {
             $individual = Individual::getInstance($row->xref, $tree, $row->gedcom);
-            $individual->setPrimaryName($row->n_num);
+            $individual->setPrimaryName((int) $row->n_num);
             // Filter for privacy
             if ($individual !== null && $individual->canShowName()) {
                 if ($offset > 0) {

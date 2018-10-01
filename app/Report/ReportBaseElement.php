@@ -13,6 +13,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+declare(strict_types=1);
+
 namespace Fisharebest\Webtrees\Report;
 
 /**
@@ -28,7 +30,7 @@ class ReportBaseElement
      *
      * @param ReportHtml|ReportTcpdf $renderer
      *
-     * @return void
+     * @return void|string
      */
     public function render($renderer)
     {
@@ -66,7 +68,7 @@ class ReportBaseElement
      *
      * @return int
      */
-    public function addText($t): int
+    public function addText(string $t): int
     {
         $t          = trim($t, "\r\n\t");
         $t          = str_replace([
@@ -108,12 +110,12 @@ class ReportBaseElement
     /**
      * Set the width to wrap text.
      *
-     * @param $wrapwidth
-     * @param $cellwidth
+     * @param float $wrapwidth
+     * @param float $cellwidth
      *
-     * @return int
+     * @return float
      */
-    public function setWrapWidth($wrapwidth, $cellwidth): int
+    public function setWrapWidth(float $wrapwidth, float $cellwidth): float
     {
         return 0;
     }

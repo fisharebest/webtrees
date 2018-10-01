@@ -13,6 +13,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+declare(strict_types=1);
+
 namespace Fisharebest\Webtrees\Report;
 
 use TCPDF;
@@ -389,9 +391,9 @@ class ReportTcpdf extends TCPDF
      *
      * @param object $footnote
      *
-     * @return bool false if not numbered befor | object if already numbered
+     * @return bool|object false if not numbered befor, object if already numbered
      */
-    public function checkFootnote($footnote): bool
+    public function checkFootnote($footnote)
     {
         $ct  = count($this->printedfootnotes);
         $val = $footnote->getValue();

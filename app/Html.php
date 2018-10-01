@@ -13,6 +13,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+declare(strict_types=1);
+
 namespace Fisharebest\Webtrees;
 
 /**
@@ -32,7 +34,7 @@ class Html
         $html = [];
         foreach ($attributes as $key => $value) {
             if (is_string($value) || is_int($value)) {
-                $html[] = e($key) . '="' . e($value) . '"';
+                $html[] = e($key) . '="' . e((string) $value) . '"';
             } elseif ($value !== false) {
                 $html[] = e($key);
             }

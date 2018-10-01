@@ -13,6 +13,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+declare(strict_types=1);
+
 namespace Fisharebest\Webtrees\Report;
 
 use Fisharebest\Webtrees\Auth;
@@ -1399,7 +1401,7 @@ class ReportParserGenerate extends ReportParserBase
      *
      * @return void
      */
-    private function setVarStartHandler($attrs)
+    private function setVarStartHandler(array $attrs)
     {
         if (empty($attrs['name'])) {
             throw new \DomainException('REPORT ERROR var: The attribute "name" is missing or not set in the XML file');
@@ -1418,7 +1420,7 @@ class ReportParserGenerate extends ReportParserBase
         } elseif ($value == '@desc') {
             $value = $this->desc;
         } elseif ($value == '@generation') {
-            $value = $this->generation;
+            $value = (string) $this->generation;
         } elseif (preg_match("/@(\w+)/", $value, $match)) {
             $gmatch = [];
             if (preg_match("/\d $match[1] (.+)/", $this->gedrec, $gmatch)) {
@@ -2301,7 +2303,7 @@ class ReportParserGenerate extends ReportParserBase
     private function listTotalStartHandler()
     {
         if ($this->list_private == 0) {
-            $this->current_element->addText($this->list_total);
+            $this->current_element->addText((string) $this->list_total);
         } else {
             $this->current_element->addText(($this->list_total - $this->list_private) . ' / ' . $this->list_total);
         }
@@ -2540,7 +2542,7 @@ class ReportParserGenerate extends ReportParserBase
      */
     private function generationStartHandler()
     {
-        $this->current_element->addText($this->generation);
+        $this->current_element->addText((string) $this->generation);
     }
 
     /**

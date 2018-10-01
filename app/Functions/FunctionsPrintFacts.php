@@ -13,6 +13,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+declare(strict_types=1);
+
 namespace Fisharebest\Webtrees\Functions;
 
 use Fisharebest\Webtrees\Auth;
@@ -962,7 +964,10 @@ class FunctionsPrintFacts
                     if ($nextTag == 'CONT') {
                         $text .= "\n";
                     }
-                    $text .= rtrim(substr($subrecords[$i], 7));
+
+                    if (substr($subrecords[$i], 7) !== false) {
+                        $text .= rtrim(substr($subrecords[$i], 7));
+                    }
                 }
                 if ($tag == 'TEXT') {
                     $textSOUR[$tag][] = $text;

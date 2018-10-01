@@ -13,6 +13,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+declare(strict_types=1);
+
 namespace Fisharebest\Webtrees\Report;
 
 use Fisharebest\Webtrees\Functions\FunctionsRtl;
@@ -512,9 +514,9 @@ class ReportHtml extends ReportBase
      *
      * @param object $footnote
      *
-     * @return bool false if not numbered before | object if already numbered
+     * @return object|bool false if not numbered before, object if already numbered
      */
-    public function checkFootnote($footnote): bool
+    public function checkFootnote($footnote)
     {
         $ct  = count($this->printedfootnotes);
         $i   = 0;
@@ -591,11 +593,11 @@ class ReportHtml extends ReportBase
     /**
      * Get the current footnotes height.
      *
-     * @param $cellWidth
+     * @param float $cellWidth
      *
-     * @return int
+     * @return float
      */
-    public function getFootnotesHeight($cellWidth): int
+    public function getFootnotesHeight(float $cellWidth): float
     {
         $h = 0;
         foreach ($this->printedfootnotes as $element) {
@@ -628,11 +630,11 @@ class ReportHtml extends ReportBase
     /**
      * Get the width of a string.
      *
-     * @param $text
+     * @param string $text
      *
-     * @return int
+     * @return float
      */
-    public function getStringWidth($text): int
+    public function getStringWidth(string $text): float
     {
         $style = $this->getStyle($this->currentStyle);
 
@@ -642,11 +644,11 @@ class ReportHtml extends ReportBase
     /**
      * Get a text height in points - ReportHtml
      *
-     * @param $str
+     * @param string $str
      *
-     * @return int
+     * @return float
      */
-    public function getTextCellHeight($str): int
+    public function getTextCellHeight(string $str): float
     {
         // Count the number of lines to calculate the height
         $nl = $this->countLines($str);

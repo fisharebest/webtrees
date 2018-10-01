@@ -13,6 +13,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+declare(strict_types=1);
+
 namespace Fisharebest\Webtrees\Functions;
 
 use Fisharebest\Webtrees\Auth;
@@ -30,15 +32,15 @@ class FunctionsCharts
     /**
      * print a table cell with sosa number
      *
-     * @param int    $sosa
-     * @param string $pid  optional pid
-     * @param string $icon which arrow to use
+     * @param int|string $sosa
+     * @param string     $pid  optional pid
+     * @param string     $icon which arrow to use
      *
      * @return void
      */
-    public static function printSosaNumber($sosa, $pid = '', $icon = '')
+    public static function printSosaNumber($sosa, string $pid = '', string $icon = '')
     {
-        if (substr($sosa, -1, 1) === '.') {
+        if (is_string($sosa) && substr($sosa, -1, 1) === '.') {
             $personLabel = substr($sosa, 0, -1);
         } else {
             $personLabel = $sosa;
