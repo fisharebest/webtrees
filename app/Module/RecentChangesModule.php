@@ -33,7 +33,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
     const DEFAULT_SHOW_USER  = '1';
     const DEFAULT_SORT_STYLE = 'date_desc';
     const DEFAULT_INFO_STYLE = 'table';
-    const MAX_DAYS           = '90';
+    const MAX_DAYS           = 90;
 
     /** {@inheritdoc} */
     public function getTitle(): string
@@ -144,7 +144,13 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
      */
     public function saveBlockConfiguration(Request $request, int $block_id)
     {
-        $this->setBlockSetting($block_id, 'days', $request->get('days', self::DEFAULT_DAYS));
+        $days = $request->get('days', self::DEFAULT_DAYS);
+
+        if ((int) $days > self::MAX_DAYS || (int) $days < 1) {
+            $days = self::DEFAULT_DAYS;
+        }
+
+        $this->setBlockSetting($block_id, 'days', $days);
         $this->setBlockSetting($block_id, 'infoStyle', $request->get('infoStyle', self::DEFAULT_INFO_STYLE));
         $this->setBlockSetting($block_id, 'sortStyle', $request->get('sortStyle', self::DEFAULT_SORT_STYLE));
         $this->setBlockSetting($block_id, 'show_user', $request->get('show_user', self::DEFAULT_SHOW_USER));

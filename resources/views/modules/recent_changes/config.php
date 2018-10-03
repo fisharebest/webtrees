@@ -8,7 +8,7 @@
 	</label>
 	<div class="col-sm-9">
 		<input class="form-control" id="days" name="days" type="text" value="<?= e($days) ?>">
-		<?= I18N::plural('maximum %s day', 'maximum %s days', I18N::number($max_days), I18N::number($max_days)) ?>
+		<?= I18N::plural('maximum %s day', 'maximum %s days', $max_days, I18N::number($max_days)) ?>
 	</div>
 </div>
 
