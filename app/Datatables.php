@@ -35,6 +35,8 @@ class Datatables
     {
         $length_menu = FunctionsEdit::numericOptions($lengths);
 
+        $zero = I18N::number(0);
+
         $language = [
             'paginate'       => [
                 /* I18N: A button label, first page */
@@ -49,7 +51,7 @@ class Datatables
             'emptyTable'     => I18N::translate('No records to display'),
             /* I18N: %s are placeholders for numbers */
             'info'           => I18N::translate('Showing %1$s to %2$s of %3$s', '_START_', '_END_', '_TOTAL_'),
-            'infoEmpty'      => I18N::translate('Showing %1$s to %2$s of %3$s', 0, 0, 0),
+            'infoEmpty'      => I18N::translate('Showing %1$s to %2$s of %3$s', $zero, $zero, $zero),
             /* I18N: %s is a number */
             'infoFiltered'   => I18N::translate('(filtered from %s total entries)', '_MAX_'),
             /* I18N: %s is a number of records per page */
