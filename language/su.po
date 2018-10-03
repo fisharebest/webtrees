@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:51+0100\n"
-"PO-Revision-Date: 2018-10-01 02:14+0000\n"
+"PO-Revision-Date: 2018-10-03 02:40+0000\n"
 "Last-Translator: Andi Ahmad Fachrudin <nugeonet@gmail.com>\n"
 "Language-Team: Sundanese <https://translate.webtrees.net/projects/webtrees/webtrees/su/>\n"
 "Language: su\n"
@@ -863,7 +863,7 @@ msgstr ""
 #: resources/views/admin/control-panel.php:28
 #: resources/views/admin/upgrade/wizard.php:17
 msgid "A new version of webtrees is available."
-msgstr ""
+msgstr "Tos aya versi enggal tina sistem webtrees."
 
 #. I18N: Description of the “Journal” module
 #: app/Module/UserJournalModule.php:66
@@ -1480,7 +1480,7 @@ msgstr ""
 
 #: resources/views/admin/control-panel.php:207
 msgid "Administrators"
-msgstr ""
+msgstr "Kuncén"
 
 #: app/GedcomCode/GedcomCodePedi.php:69
 msgctxt "Female pedigree"
@@ -3949,7 +3949,7 @@ msgstr ""
 #: resources/views/modules/stories/config.php:4
 #: resources/views/modules/stories/edit.php:4
 msgid "Control panel"
-msgstr ""
+msgstr "Pangbebenah"
 
 #: resources/views/admin/trees-export.php:65
 #: resources/views/modules/clippings/download.php:48
@@ -5851,7 +5851,7 @@ msgstr ""
 #: resources/views/search-results.php:20 resources/views/source-page.php:45
 #: resources/views/statistics-page.php:17
 msgid "Families"
-msgstr ""
+msgstr "Kulawargi"
 
 #: app/Stats.php:567 resources/views/statistics-chart-other.php:51
 msgid "Families with sources"
@@ -5938,7 +5938,7 @@ msgstr ""
 #: resources/views/modules/faq/edit.php:57
 #: resources/views/modules/stories/config.php:14
 msgid "Family tree"
-msgstr ""
+msgstr "Silsilah"
 
 #: app/Module/ClippingsCartModule.php:317
 #: app/Module/ClippingsCartModule.php:378
@@ -5959,7 +5959,7 @@ msgstr ""
 #: resources/views/search-general-page.php:69
 #: resources/views/search-phonetic-page.php:69
 msgid "Family trees"
-msgstr ""
+msgstr "Silsilah Kulawarga"
 
 #. I18N: %s is the spouse name
 #: app/Individual.php:1084
@@ -6180,7 +6180,7 @@ msgstr "Nami file teu diwenangkeun miboga ekstensi \"%s\"."
 
 #: resources/views/admin/control-panel.php:436
 msgid "Files have been found from a previous version of webtrees. Old files can sometimes be a security risk. You should delete them."
-msgstr ""
+msgstr "File tos kapanggih ti versi sateuacanna tina webtrees. file heubeul sakapeung tiasa janten resiko kaamanan. anjeun kedah ngahapus file heubeul."
 
 #: resources/views/admin/clean-data.php:8
 #, php-format
@@ -6302,7 +6302,7 @@ msgstr ""
 
 #: resources/views/admin/media-upload.php:43
 msgid "Folder name on server"
-msgstr ""
+msgstr "Nami polder dina server"
 
 #: resources/views/emails/register-user-html.php:11
 #: resources/views/emails/register-user-text.php:6
@@ -7249,7 +7249,7 @@ msgstr ""
 
 #: resources/views/modals/media-file-fields.php:64
 msgid "If you have a large number of media files, you can organize them into folders and subfolders."
-msgstr ""
+msgstr "Upami gaduh file media seueur, anjeun tiasa ngatur supados ringkes kana polder sareng subpolder."
 
 #: resources/views/admin/trees-import.php:79
 msgid "If you have created media objects in webtrees, and have subsequently edited this GEDCOM file using genealogy software that deletes media objects, then select this option to merge the current media objects with the new GEDCOM file."
@@ -7495,7 +7495,7 @@ msgstr ""
 #: resources/views/statistics-chart-custom.php:230
 #: resources/views/statistics-page.php:12
 msgid "Individuals"
-msgstr ""
+msgstr "Jalmi"
 
 #: app/Stats.php:471 resources/views/statistics-chart-other.php:50
 msgid "Individuals with sources"
@@ -7845,7 +7845,7 @@ msgstr ""
 #: resources/views/admin/trees-preferences.php:1121
 #: resources/views/edit/add-fact.php:67 resources/views/edit/edit-fact.php:93
 msgid "Keep the existing “last change” information"
-msgstr ""
+msgstr "Simpen informasi anu \"terakhir kali dirobih\""
 
 #. I18N: Name of a country or state
 #: app/Stats.php:7399
@@ -8482,7 +8482,7 @@ msgstr ""
 
 #: resources/views/admin/control-panel.php:207
 msgid "Managers"
-msgstr ""
+msgstr "Pangurus"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:445
@@ -8906,7 +8906,7 @@ msgstr ""
 #: resources/views/admin/media.php:84 resources/views/lists/media-table.php:37
 #: resources/views/modules/recent_changes/changes-table.php:35
 msgid "Media"
-msgstr ""
+msgstr "Gambar"
 
 #: resources/views/admin/media-upload.php:16 resources/views/admin/media.php:83
 #: resources/views/admin/webtrees1-thumbnails.php:23
@@ -8970,7 +8970,7 @@ msgstr ""
 #: resources/views/statistics-chart-other.php:35
 #: resources/views/statistics-chart-other.php:39
 msgid "Media objects"
-msgstr ""
+msgstr "Gambar"
 
 #: resources/views/media-list-page.php:74
 msgid "Media objects found"
@@ -9196,7 +9196,7 @@ msgstr ""
 
 #: resources/views/admin/control-panel.php:207
 msgid "Moderators"
-msgstr ""
+msgstr "Ki Demang"
 
 #: resources/views/admin/modules.php:40
 msgid "Module"
@@ -9892,7 +9892,7 @@ msgstr ""
 #: resources/views/admin/control-panel.php:26
 #: resources/views/admin/upgrade/wizard.php:9
 msgid "No upgrade information is available."
-msgstr ""
+msgstr "Teu aya informasi pamutahiran sistem."
 
 #: app/Stats.php:1835
 msgid "Nobody at all"
@@ -9955,7 +9955,7 @@ msgstr ""
 
 #: resources/views/admin/control-panel.php:207
 msgid "Not approved by an administrator"
-msgstr ""
+msgstr "Teu ditampi ku Kuncén"
 
 #. I18N: gedcom tag _NLIV
 #: app/GedcomTag.php:1857
@@ -9981,7 +9981,7 @@ msgstr ""
 
 #: resources/views/admin/control-panel.php:207
 msgid "Not verified by the user"
-msgstr ""
+msgstr "Teu diverifikasi ku pamaké"
 
 #. I18N: gedcom tag NOTE
 #: app/Functions/FunctionsPrint.php:151 app/GedcomTag.php:896
@@ -10195,7 +10195,7 @@ msgstr ""
 
 #: resources/views/admin/control-panel.php:431
 msgid "Old files found"
-msgstr ""
+msgstr "File heubeul kapanggih"
 
 #: app/Http/Controllers/PedigreeChartController.php:462
 msgid "Oldest at bottom"
@@ -10586,7 +10586,7 @@ msgstr ""
 #: resources/views/admin/control-panel.php:118
 #: resources/views/pending-changes-page.php:76
 msgid "Pending changes"
-msgstr ""
+msgstr "Ngantos widi"
 
 #: resources/views/help/pending-changes.php:12
 msgid "Pending changes are only shown when your account has permission to edit. When you sign out, you will no longer be able to see them. Also, pending changes are only shown on certain pages. For example, they are not shown in lists, reports, or search results."
@@ -11557,7 +11557,7 @@ msgstr ""
 #: resources/views/search-results.php:42
 #: resources/views/statistics-chart-other.php:12
 msgid "Repositories"
-msgstr ""
+msgstr "Repositori"
 
 #. I18N: gedcom tag REPO
 #: app/GedcomTag.php:970 resources/views/admin/trees-privacy.php:172
@@ -12122,7 +12122,7 @@ msgstr ""
 #: app/Http/Controllers/AdminSiteController.php:637
 #: resources/views/admin/control-panel.php:90
 msgid "Server information"
-msgstr ""
+msgstr "Informasi server"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.php:48
@@ -12991,7 +12991,7 @@ msgstr ""
 #: resources/views/statistics-chart-other.php:10
 #: resources/views/statistics-chart-other.php:46
 msgid "Sources"
-msgstr ""
+msgstr "Sumber"
 
 #: modules_v3/missing_facts_report/report.xml:14
 msgid "Sources to the events"
@@ -13202,7 +13202,7 @@ msgstr ""
 #: resources/views/admin/control-panel.php:22
 #, php-format
 msgid "Support and documentation can be found at %s."
-msgstr ""
+msgstr "Rojongan sareng dokuméntasi tiasa dipilari di %s."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:7584
@@ -14172,7 +14172,7 @@ msgstr ""
 #: resources/views/admin/control-panel.php:34
 #: resources/views/admin/upgrade/wizard.php:13
 msgid "This is the latest version of webtrees. No upgrade is available."
-msgstr ""
+msgstr "Ieu teh versi pangenggalna tina webtrees. Teu aya pamutahiran deui."
 
 #. I18N: Help text for the “All family facts” configuration setting
 #: resources/views/admin/trees-preferences.php:916
@@ -14765,7 +14765,7 @@ msgstr ""
 #: app/Http/Controllers/StatisticsChartController.php:681
 #: resources/views/admin/control-panel.php:142
 msgid "Total"
-msgstr ""
+msgstr "Jumlah"
 
 #: modules_v3/change_report/report.xml:127
 msgid "Total accepted changes: "
@@ -15116,7 +15116,7 @@ msgstr ""
 #: resources/views/admin/control-panel.php:31
 #, php-format
 msgid "Upgrade to webtrees %s."
-msgstr ""
+msgstr "Mutahirkeun sistem kana webtrees versi %s."
 
 #: app/Http/Controllers/AdminUpgradeController.php:85
 msgid "Upgrade wizard"
@@ -15274,7 +15274,7 @@ msgstr ""
 #: resources/views/modules/gedcom_stats/statistics.php:119
 #: resources/views/modules/html/template-statistics.php:50
 msgid "Users"
-msgstr ""
+msgstr "Pamaké"
 
 #: resources/views/admin/users-cleanup.php:40
 msgid "User’s account has been inactive too long: "
@@ -15911,7 +15911,7 @@ msgstr ""
 #: app/Http/Controllers/AdminController.php:1537
 #, php-format
 msgid "Your web server is using PHP version %s, which is no longer receiving security updates. You should upgrade to a later version as soon as possible."
-msgstr ""
+msgstr "Server web nu anjeun teh ngagunakeun PHP versi %s, anu tos teu tiasa narima kana apdet kaamanan. anjeun kedah ningkatkeun kana versi anu enggal, engke upami nuju nyalse."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:7665
@@ -19150,7 +19150,7 @@ msgstr ""
 #: resources/views/modules/stories/edit.php:51
 #: resources/views/modules/user_blog/edit.php:37
 msgid "save"
-msgstr ""
+msgstr "simpen"
 
 #. I18N: A button label.
 #: resources/views/admin/changes-log.php:76
