@@ -81,218 +81,270 @@ class GedcomCodeRela
 
         switch ($type) {
             case 'attendant':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translateContext('MALE', 'Attendant');
-                    case 'F':
-                        return I18N::translateContext('FEMALE', 'Attendant');
-                    default:
-                        return I18N::translate('Attendant');
+                if ($sex === 'M') {
+                    return I18N::translateContext('MALE', 'Attendant');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translateContext('FEMALE', 'Attendant');
+                }
+
+                return I18N::translate('Attendant');
+
             case 'attending':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translateContext('MALE', 'Attending');
-                    case 'F':
-                        return I18N::translateContext('FEMALE', 'Attending');
-                    default:
-                        return I18N::translate('Attending');
+                if ($sex === 'M') {
+                    return I18N::translateContext('MALE', 'Attending');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translateContext('FEMALE', 'Attending');
+                }
+
+                return I18N::translate('Attending');
+
             case 'best_man':
                 // always male
                 return I18N::translate('Best man');
+
             case 'bridesmaid':
                 // always female
                 return I18N::translate('Bridesmaid');
+
             case 'buyer':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translateContext('MALE', 'Buyer');
-                    case 'F':
-                        return I18N::translateContext('FEMALE', 'Buyer');
-                    default:
-                        return I18N::translate('Buyer');
+                if ($sex === 'M') {
+                    return I18N::translateContext('MALE', 'Buyer');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translateContext('FEMALE', 'Buyer');
+                }
+
+                return I18N::translate('Buyer');
+
             case 'circumciser':
                 // always male
                 return I18N::translate('Circumciser');
+
             case 'civil_registrar':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translateContext('MALE', 'Civil registrar');
-                    case 'F':
-                        return I18N::translateContext('FEMALE', 'Civil registrar');
-                    default:
-                        return I18N::translate('Civil registrar');
+                if ($sex === 'M') {
+                    return I18N::translateContext('MALE', 'Civil registrar');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translateContext('FEMALE', 'Civil registrar');
+                }
+
+                return I18N::translate('Civil registrar');
+
             case 'employee':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translateContext('MALE', 'Employee');
-                    case 'F':
-                        return I18N::translateContext('FEMALE', 'Employee');
-                    default:
-                        return I18N::translate('Employee');
+                if ($sex === 'M') {
+                    return I18N::translateContext('MALE', 'Employee');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translateContext('FEMALE', 'Employee');
+                }
+
+                return I18N::translate('Employee');
+
             case 'employer':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translateContext('MALE', 'Employer');
-                    case 'F':
-                        return I18N::translateContext('FEMALE', 'Employer');
-                    default:
-                        return I18N::translate('Employer');
+                if ($sex === 'M') {
+                    return I18N::translateContext('MALE', 'Employer');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translateContext('FEMALE', 'Employer');
+                }
+
+                return I18N::translate('Employer');
+
             case 'foster_child':
                 // no sex implied
                 return I18N::translate('Foster child');
+
             case 'foster_father':
                 // always male
                 return I18N::translate('Foster father');
+
             case 'foster_mother':
                 // always female
                 return I18N::translate('Foster mother');
+
             case 'friend':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translateContext('MALE', 'Friend');
-                    case 'F':
-                        return I18N::translateContext('FEMALE', 'Friend');
-                    default:
-                        return I18N::translate('Friend');
+                if ($sex === 'M') {
+                    return I18N::translateContext('MALE', 'Friend');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translateContext('FEMALE', 'Friend');
+                }
+
+                return I18N::translate('Friend');
+
             case 'godfather':
                 // always male
                 return I18N::translate('Godfather');
+
             case 'godmother':
                 // always female
                 return I18N::translate('Godmother');
+
             case 'godparent':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translate('Godfather');
-                    case 'F':
-                        return I18N::translate('Godmother');
-                    default:
-                        return I18N::translate('Godparent');
+                if ($sex === 'M') {
+                    return I18N::translate('Godfather');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translate('Godmother');
+                }
+
+                return I18N::translate('Godparent');
+
             case 'godson':
                 // always male
                 return I18N::translate('Godson');
+
             case 'goddaughter':
                 // always female
                 return I18N::translate('Goddaughter');
+
             case 'godchild':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translate('Godson');
-                    case 'F':
-                        return I18N::translate('Goddaughter');
-                    default:
-                        return I18N::translate('Godchild');
+                if ($sex === 'M') {
+                    return I18N::translate('Godson');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translate('Goddaughter');
+                }
+
+                return I18N::translate('Godchild');
+
             case 'guardian':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translateContext('MALE', 'Guardian');
-                    case 'F':
-                        return I18N::translateContext('FEMALE', 'Guardian');
-                    default:
-                        return I18N::translate('Guardian');
+                if ($sex === 'M') {
+                    return I18N::translateContext('MALE', 'Guardian');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translateContext('FEMALE', 'Guardian');
+                }
+
+                return I18N::translate('Guardian');
+
             case 'informant':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translateContext('MALE', 'Informant');
-                    case 'F':
-                        return I18N::translateContext('FEMALE', 'Informant');
-                    default:
-                        return I18N::translate('Informant');
+                if ($sex === 'M') {
+                    return I18N::translateContext('MALE', 'Informant');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translateContext('FEMALE', 'Informant');
+                }
+
+                return I18N::translate('Informant');
+
             case 'lodger':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translateContext('MALE', 'Lodger');
-                    case 'F':
-                        return I18N::translateContext('FEMALE', 'Lodger');
-                    default:
-                        return I18N::translate('Lodger');
+                if ($sex === 'M') {
+                    return I18N::translateContext('MALE', 'Lodger');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translateContext('FEMALE', 'Lodger');
+                }
+
+                return I18N::translate('Lodger');
+
             case 'nanny':
                 // no sex implied
                 return I18N::translate('Nanny');
+
             case 'nurse':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translateContext('MALE', 'Nurse');
-                    case 'F':
-                        return I18N::translateContext('FEMALE', 'Nurse');
-                    default:
-                        return I18N::translate('Nurse');
+                if ($sex === 'M') {
+                    return I18N::translateContext('MALE', 'Nurse');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translateContext('FEMALE', 'Nurse');
+                }
+
+                return I18N::translate('Nurse');
+
             case 'owner':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translateContext('MALE', 'Owner');
-                    case 'F':
-                        return I18N::translateContext('FEMALE', 'Owner');
-                    default:
-                        return I18N::translate('Owner');
+                if ($sex === 'M') {
+                    return I18N::translateContext('MALE', 'Owner');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translateContext('FEMALE', 'Owner');
+                }
+
+                return I18N::translate('Owner');
+
             case 'priest':
                 // no sex implied
                 return I18N::translate('Priest');
+
             case 'rabbi':
                 // always male
                 return I18N::translate('Rabbi');
+
             case 'registry_officer':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translateContext('MALE', 'Registry officer');
-                    case 'F':
-                        return I18N::translateContext('FEMALE', 'Registry officer');
-                    default:
-                        return I18N::translate('Registry officer');
+                if ($sex === 'M') {
+                    return I18N::translateContext('MALE', 'Registry officer');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translateContext('FEMALE', 'Registry officer');
+                }
+
+                return I18N::translate('Registry officer');
+
             case 'seller':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translateContext('MALE', 'Seller');
-                    case 'F':
-                        return I18N::translateContext('FEMALE', 'Seller');
-                    default:
-                        return I18N::translate('Seller');
+                if ($sex === 'M') {
+                    return I18N::translateContext('MALE', 'Seller');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translateContext('FEMALE', 'Seller');
+                }
+
+                return I18N::translate('Seller');
+
             case 'servant':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translateContext('MALE', 'Servant');
-                    case 'F':
-                        return I18N::translateContext('FEMALE', 'Servant');
-                    default:
-                        return I18N::translate('Servant');
+                if ($sex === 'M') {
+                    return I18N::translateContext('MALE', 'Servant');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translateContext('FEMALE', 'Servant');
+                }
+
+                return I18N::translate('Servant');
+
             case 'slave':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translateContext('MALE', 'Slave');
-                    case 'F':
-                        return I18N::translateContext('FEMALE', 'Slave');
-                    default:
-                        return I18N::translate('Slave');
+                if ($sex === 'M') {
+                    return I18N::translateContext('MALE', 'Slave');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translateContext('FEMALE', 'Slave');
+                }
+
+                return I18N::translate('Slave');
+
             case 'ward':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translateContext('MALE', 'Ward');
-                    case 'F':
-                        return I18N::translateContext('FEMALE', 'Ward');
-                    default:
-                        return I18N::translate('Ward');
+                if ($sex === 'M') {
+                    return I18N::translateContext('MALE', 'Ward');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translateContext('FEMALE', 'Ward');
+                }
+
+                return I18N::translate('Ward');
+
             case 'witness':
                 // Do we need separate male/female translations for this?
                 return I18N::translate('Witness');
+
             default:
                 return I18N::translate($type);
         }

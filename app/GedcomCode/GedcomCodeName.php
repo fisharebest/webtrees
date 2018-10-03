@@ -55,106 +55,122 @@ class GedcomCodeName
 
         switch ($type) {
             case 'adopted':
-                switch ($sex) {
-                    case 'M':
-                        /* I18N: The name given to a child by its adoptive parents */
-                        return I18N::translateContext('MALE', 'adopted name');
-                    case 'F':
-                        /* I18N: The name given to a child by its adoptive parents */
-                        return I18N::translateContext('FEMALE', 'adopted name');
-                    default:
-                        /* I18N: The name given to a child by its adoptive parents */
-                        return I18N::translate('adopted name');
+                if ($sex === 'M') {
+                    /* I18N: The name given to a child by its adoptive parents */
+                    return I18N::translateContext('MALE', 'adopted name');
                 }
+
+                if ($sex === 'F') {
+                    /* I18N: The name given to a child by its adoptive parents */
+                    return I18N::translateContext('FEMALE', 'adopted name');
+                }
+
+                /* I18N: The name given to a child by its adoptive parents */
+                return I18N::translate('adopted name');
+
             case 'aka':
-                switch ($sex) {
-                    case 'M':
-                        /* I18N: The name by which an individual is also known. e.g. a professional name or a stage name */
-                        return I18N::translateContext('MALE', 'also known as');
-                    case 'F':
-                        /* I18N: The name by which an individual is also known. e.g. a professional name or a stage name */
-                        return I18N::translateContext('FEMALE', 'also known as');
-                    default:
-                        /* I18N: The name by which an individual is also known. e.g. a professional name or a stage name */
-                        return I18N::translate('also known as');
+                if ($sex === 'M') {
+                    /* I18N: The name by which an individual is also known. e.g. a professional name or a stage name */
+                    return I18N::translateContext('MALE', 'also known as');
                 }
+
+                if ($sex === 'F') {
+                    /* I18N: The name by which an individual is also known. e.g. a professional name or a stage name */
+                    return I18N::translateContext('FEMALE', 'also known as');
+                }
+
+                /* I18N: The name by which an individual is also known. e.g. a professional name or a stage name */
+                return I18N::translate('also known as');
+
             case 'birth':
-                switch ($sex) {
-                    case 'M':
-                        /* I18N: The name given to an individual at their birth */
-                        return I18N::translateContext('MALE', 'birth name');
-                    case 'F':
-                        /* I18N: The name given to an individual at their birth */
-                        return I18N::translateContext('FEMALE', 'birth name');
-                    default:
-                        /* I18N: The name given to an individual at their birth */
-                        return I18N::translate('birth name');
+                if ($sex === 'M') {
+                    /* I18N: The name given to an individual at their birth */
+                    return I18N::translateContext('MALE', 'birth name');
                 }
+
+                if ($sex === 'F') {
+                    /* I18N: The name given to an individual at their birth */
+                    return I18N::translateContext('FEMALE', 'birth name');
+                }
+
+                /* I18N: The name given to an individual at their birth */
+                return I18N::translate('birth name');
+
             case 'change':
-                switch ($sex) {
-                    case 'M':
-                        /* I18N: A name chosen by an individual, to replace their existing name (whether legal or otherwise) */
-                        return I18N::translateContext('MALE', 'change of name');
-                    case 'F':
-                        /* I18N: A name chosen by an individual, to replace their existing name (whether legal or otherwise) */
-                        return I18N::translateContext('FEMALE', 'change of name');
-                    default:
-                        /* I18N: A name chosen by an individual, to replace their existing name (whether legal or otherwise) */
-                        return I18N::translate('change of name');
+                if ($sex === 'M') {
+                    /* I18N: A name chosen by an individual, to replace their existing name (whether legal or otherwise) */
+                    return I18N::translateContext('MALE', 'change of name');
                 }
+
+                if ($sex === 'F') {
+                    /* I18N: A name chosen by an individual, to replace their existing name (whether legal or otherwise) */
+                    return I18N::translateContext('FEMALE', 'change of name');
+                }
+
+                /* I18N: A name chosen by an individual, to replace their existing name (whether legal or otherwise) */
+                return I18N::translate('change of name');
+
             case 'estate':
-                switch ($sex) {
-                    case 'M':
-                        /* I18N: A name given to an individual, from the farm or estate on which they lived or worked */
-                        return I18N::translateContext('MALE', 'estate name');
-                    case 'F':
-                        /* I18N: A name given to an individual, from the farm or estate on which they lived or worked */
-                        return I18N::translateContext('FEMALE', 'estate name');
-                    default:
-                        /* I18N: A name given to an individual, from the farm or estate on which they lived or worked */
-                        return I18N::translate('estate name');
+                if ($sex === 'M') {
+                    /* I18N: A name given to an individual, from the farm or estate on which they lived or worked */
+                    return I18N::translateContext('MALE', 'estate name');
                 }
+
+                if ($sex === 'F') {
+                    /* I18N: A name given to an individual, from the farm or estate on which they lived or worked */
+                    return I18N::translateContext('FEMALE', 'estate name');
+                }
+
+                /* I18N: A name given to an individual, from the farm or estate on which they lived or worked */
+                return I18N::translate('estate name');
+
             case 'immigrant':
-                switch ($sex) {
-                    case 'M':
-                        /* I18N: A name taken on immigration - e.g. migrants to the USA frequently anglicized their names */
-                        return I18N::translateContext('MALE', 'immigration name');
-                    case 'F':
-                        /* I18N: A name taken on immigration - e.g. migrants to the USA frequently anglicized their names */
-                        return I18N::translateContext('FEMALE', 'immigration name');
-                    default:
-                        /* I18N: A name taken on immigration - e.g. migrants to the USA frequently anglicized their names */
-                        return I18N::translate('immigration name');
+                if ($sex === 'M') {
+                    /* I18N: A name taken on immigration - e.g. migrants to the USA frequently anglicized their names */
+                    return I18N::translateContext('MALE', 'immigration name');
                 }
+
+                if ($sex === 'F') {
+                    /* I18N: A name taken on immigration - e.g. migrants to the USA frequently anglicized their names */
+                    return I18N::translateContext('FEMALE', 'immigration name');
+                }
+
+                /* I18N: A name taken on immigration - e.g. migrants to the USA frequently anglicized their names */
+                return I18N::translate('immigration name');
+
             case 'maiden':
                 // Only women have “maiden” names!
-                return
-                    /* I18N: A woman’s name, before she marries (in cultures where women take their new husband’s name on marriage) */
-                    I18N::translate('maiden name');
+                /* I18N: A woman’s name, before she marries (in cultures where women take their new husband’s name on marriage) */
+                return I18N::translate('maiden name');
+
             case 'married':
-                switch ($sex) {
-                    case 'M':
-                        /* I18N: A name taken on marriage - usually the wife takes the husband’s surname */
-                        return I18N::translateContext('MALE', 'married name');
-                    case 'F':
-                        /* I18N: A name taken on marriage - usually the wife takes the husband’s surname */
-                        return I18N::translateContext('FEMALE', 'married name');
-                    default:
-                        /* I18N: A name taken on marriage - usually the wife takes the husband’s surname */
-                        return I18N::translate('married name');
+                if ($sex === 'M') {
+                    /* I18N: A name taken on marriage - usually the wife takes the husband’s surname */
+                    return I18N::translateContext('MALE', 'married name');
                 }
+
+                if ($sex === 'F') {
+                    /* I18N: A name taken on marriage - usually the wife takes the husband’s surname */
+                    return I18N::translateContext('FEMALE', 'married name');
+                }
+
+                /* I18N: A name taken on marriage - usually the wife takes the husband’s surname */
+                return I18N::translate('married name');
+
             case 'religious':
-                switch ($sex) {
-                    case 'M':
-                        /* I18N: A name taken when entering a religion or a religious order */
-                        return I18N::translateContext('MALE', 'religious name');
-                    case 'F':
-                        /* I18N: A name taken when entering a religion or a religious order */
-                        return I18N::translateContext('FEMALE', 'religious name');
-                    default:
-                        /* I18N: A name taken when entering a religion or a religious order */
-                        return I18N::translate('religious name');
+                if ($sex === 'M') {
+                    /* I18N: A name taken when entering a religion or a religious order */
+                    return I18N::translateContext('MALE', 'religious name');
                 }
+
+                if ($sex === 'F') {
+                    /* I18N: A name taken when entering a religion or a religious order */
+                    return I18N::translateContext('FEMALE', 'religious name');
+                }
+
+                /* I18N: A name taken when entering a religion or a religious order */
+                return I18N::translate('religious name');
+
             default:
                 return $type;
         }

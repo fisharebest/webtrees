@@ -51,44 +51,52 @@ class GedcomCodePedi
 
         switch ($type) {
             case 'birth':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translateContext('Male pedigree', 'Birth');
-                    case 'F':
-                        return I18N::translateContext('Female pedigree', 'Birth');
-                    default:
-                        return I18N::translateContext('Pedigree', 'Birth');
+                if ($sex === 'M') {
+                    return I18N::translateContext('Male pedigree', 'Birth');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translateContext('Female pedigree', 'Birth');
+                }
+
+                return I18N::translateContext('Pedigree', 'Birth');
+
             case 'adopted':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translateContext('Male pedigree', 'Adopted');
-                    case 'F':
-                        return I18N::translateContext('Female pedigree', 'Adopted');
-                    default:
-                        return I18N::translateContext('Pedigree', 'Adopted');
+                if ($sex === 'M') {
+                    return I18N::translateContext('Male pedigree', 'Adopted');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translateContext('Female pedigree', 'Adopted');
+                }
+
+                return I18N::translateContext('Pedigree', 'Adopted');
+
             case 'foster':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translateContext('Male pedigree', 'Foster');
-                    case 'F':
-                        return I18N::translateContext('Female pedigree', 'Foster');
-                    default:
-                        return I18N::translateContext('Pedigree', 'Foster');
+                if ($sex === 'M') {
+                    return I18N::translateContext('Male pedigree', 'Foster');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translateContext('Female pedigree', 'Foster');
+                }
+
+                return I18N::translateContext('Pedigree', 'Foster');
+
             case 'sealing':
-                switch ($sex) {
-                    case 'M':
-                        /* I18N: “sealing” is a ceremony in the Mormon church. */
-                        return I18N::translateContext('Male pedigree', 'Sealing');
-                    case 'F':
-                        /* I18N: “sealing” is a ceremony in the Mormon church. */
-                        return I18N::translateContext('Female pedigree', 'Sealing');
-                    default:
-                        /* I18N: “sealing” is a ceremony in the Mormon church. */
-                        return I18N::translateContext('Pedigree', 'Sealing');
+                if ($sex === 'M') {
+                    /* I18N: “sealing” is a ceremony in the Mormon church. */
+                    return I18N::translateContext('Male pedigree', 'Sealing');
                 }
+
+                if ($sex === 'F') {
+                    /* I18N: “sealing” is a ceremony in the Mormon church. */
+                    return I18N::translateContext('Female pedigree', 'Sealing');
+                }
+
+                /* I18N: “sealing” is a ceremony in the Mormon church. */
+                return I18N::translateContext('Pedigree', 'Sealing');
+
             case 'rada':
                 // Not standard GEDCOM - a webtrees extension
                 // This is an arabic word which does not exist in other languages.

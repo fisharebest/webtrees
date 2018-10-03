@@ -1085,96 +1085,114 @@ class GedcomTag
                 /* I18N: gedcom tag WWW (A web address / URL) */
                 return I18N::translate('URL');
             case '_ADOP_CHIL':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translate('Adoption of a son');
-                    case 'F':
-                        return I18N::translate('Adoption of a daughter');
-                    default:
-                        return I18N::translate('Adoption of a child');
+                if ($sex === 'M') {
+                    return I18N::translate('Adoption of a son');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translate('Adoption of a daughter');
+                }
+
+                return I18N::translate('Adoption of a child');
+
             case '_ADOP_GCHI':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translate('Adoption of a grandson');
-                    case 'F':
-                        return I18N::translate('Adoption of a granddaughter');
-                    default:
-                        return I18N::translate('Adoption of a grandchild');
+                if ($sex === 'M') {
+                    return I18N::translate('Adoption of a grandson');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translate('Adoption of a granddaughter');
+                }
+
+                return I18N::translate('Adoption of a grandchild');
+
             case '_ADOP_GCH1':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translateContext('daughter’s son', 'Adoption of a grandson');
-                    case 'F':
-                        return I18N::translateContext('daughter’s daughter', 'Adoption of a granddaughter');
-                    default:
-                        return I18N::translate('Adoption of a grandchild');
+                if ($sex === 'M') {
+                    return I18N::translateContext('daughter’s son', 'Adoption of a grandson');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translateContext('daughter’s daughter', 'Adoption of a granddaughter');
+                }
+
+                return I18N::translate('Adoption of a grandchild');
+
             case '_ADOP_GCH2':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translateContext('son’s son', 'Adoption of a grandson');
-                    case 'F':
-                        return I18N::translateContext('son’s daughter', 'Adoption of a granddaughter');
-                    default:
-                        return I18N::translate('Adoption of a grandchild');
+                if ($sex === 'M') {
+                    return I18N::translateContext('son’s son', 'Adoption of a grandson');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translateContext('son’s daughter', 'Adoption of a granddaughter');
+                }
+
+                return I18N::translate('Adoption of a grandchild');
+
             case '_ADOP_HSIB':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translate('Adoption of a half-brother');
-                    case 'F':
-                        return I18N::translate('Adoption of a half-sister');
-                    default:
-                        return I18N::translate('Adoption of a half-sibling');
+                if ($sex === 'M') {
+                    return I18N::translate('Adoption of a half-brother');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translate('Adoption of a half-sister');
+                }
+
+                return I18N::translate('Adoption of a half-sibling');
+
             case '_ADOP_SIBL':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translate('Adoption of a brother');
-                    case 'F':
-                        return I18N::translate('Adoption of a sister');
-                    default:
-                        return I18N::translate('Adoption of a sibling');
+                if ($sex === 'M') {
+                    return I18N::translate('Adoption of a brother');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translate('Adoption of a sister');
+                }
+
+                return I18N::translate('Adoption of a sibling');
+
             case '_ADPF':
-                switch ($sex) {
-                    case 'M':
-                        /* I18N: gedcom tag _ADPF */
-                        return I18N::translateContext('MALE', 'Adopted by father');
-                    case 'F':
-                        /* I18N: gedcom tag _ADPF */
-                        return I18N::translateContext('FEMALE', 'Adopted by father');
-                    default:
-                        /* I18N: gedcom tag _ADPF */
-                        return I18N::translate('Adopted by father');
+                if ($sex === 'M') {
+                    /* I18N: gedcom tag _ADPF */
+                    return I18N::translateContext('MALE', 'Adopted by father');
                 }
+
+                if ($sex === 'F') {
+                    /* I18N: gedcom tag _ADPF */
+                    return I18N::translateContext('FEMALE', 'Adopted by father');
+                }
+
+                /* I18N: gedcom tag _ADPF */
+                return I18N::translate('Adopted by father');
+
             case '_ADPM':
-                switch ($sex) {
-                    case 'M':
-                        /* I18N: gedcom tag _ADPM */
-                        return I18N::translateContext('MALE', 'Adopted by mother');
-                    case 'F':
-                        /* I18N: gedcom tag _ADPM */
-                        return I18N::translateContext('FEMALE', 'Adopted by mother');
-                    default:
-                        /* I18N: gedcom tag _ADPM */
-                        return I18N::translate('Adopted by mother');
+                if ($sex === 'M') {
+                    /* I18N: gedcom tag _ADPM */
+                    return I18N::translateContext('MALE', 'Adopted by mother');
                 }
+
+                if ($sex === 'F') {
+                    /* I18N: gedcom tag _ADPM */
+                    return I18N::translateContext('FEMALE', 'Adopted by mother');
+                }
+
+                /* I18N: gedcom tag _ADPM */
+                return I18N::translate('Adopted by mother');
+
             case '_AKA':
             case '_AKAN':
-                switch ($sex) {
-                    case 'M':
-                        /* I18N: gedcom tag _AKA */
-                        return I18N::translateContext('MALE', 'Also known as');
-                    case 'F':
-                        /* I18N: gedcom tag _AKA */
-                        return I18N::translateContext('FEMALE', 'Also known as');
-                    default:
-                        /* I18N: gedcom tag _AKA */
-                        return I18N::translate('Also known as');
+                if ($sex === 'M') {
+                    /* I18N: gedcom tag _AKA */
+                    return I18N::translateContext('MALE', 'Also known as');
                 }
+
+                if ($sex === 'F') {
+                    /* I18N: gedcom tag _AKA */
+                    return I18N::translateContext('FEMALE', 'Also known as');
+                }
+
+                /* I18N: gedcom tag _AKA */
+                return I18N::translate('Also known as');
+
             case '_ALBUM':
                 // Family Tree Builder uses OBJE:_ALBUM
                 /* I18N: gedcom tag _ALBUM */
@@ -1183,116 +1201,141 @@ class GedcomTag
                 /* I18N: gedcom tag _ASSO */
                 return I18N::translate('Associate');
             case '_BAPM_CHIL':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translate('Baptism of a son');
-                    case 'F':
-                        return I18N::translate('Baptism of a daughter');
-                    default:
-                        return I18N::translate('Baptism of a child');
+                if ($sex === 'M') {
+                    return I18N::translate('Baptism of a son');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translate('Baptism of a daughter');
+                }
+
+                return I18N::translate('Baptism of a child');
+
             case '_BAPM_GCHI':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translate('Baptism of a grandson');
-                    case 'F':
-                        return I18N::translate('Baptism of a granddaughter');
-                    default:
-                        return I18N::translate('Baptism of a grandchild');
+                if ($sex === 'M') {
+                    return I18N::translate('Baptism of a grandson');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translate('Baptism of a granddaughter');
+                }
+
+                return I18N::translate('Baptism of a grandchild');
+
             case '_BAPM_GCH1':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translateContext('daughter’s son', 'Baptism of a grandson');
-                    case 'F':
-                        return I18N::translateContext('daughter’s daughter', 'Baptism of a granddaughter');
-                    default:
-                        return I18N::translate('Baptism of a grandchild');
+                if ($sex === 'M') {
+                    return I18N::translateContext('daughter’s son', 'Baptism of a grandson');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translateContext('daughter’s daughter', 'Baptism of a granddaughter');
+                }
+
+                return I18N::translate('Baptism of a grandchild');
+
             case '_BAPM_GCH2':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translateContext('son’s son', 'Baptism of a grandson');
-                    case 'F':
-                        return I18N::translateContext('son’s daughter', 'Baptism of a granddaughter');
-                    default:
-                        return I18N::translate('Baptism of a grandchild');
+                if ($sex === 'M') {
+                    return I18N::translateContext('son’s son', 'Baptism of a grandson');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translateContext('son’s daughter', 'Baptism of a granddaughter');
+                }
+
+                return I18N::translate('Baptism of a grandchild');
+
             case '_BAPM_HSIB':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translate('Baptism of a half-brother');
-                    case 'F':
-                        return I18N::translate('Baptism of a half-sister');
-                    default:
-                        return I18N::translate('Baptism of a half-sibling');
+                if ($sex === 'M') {
+                    return I18N::translate('Baptism of a half-brother');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translate('Baptism of a half-sister');
+                }
+
+                return I18N::translate('Baptism of a half-sibling');
+
             case '_BAPM_SIBL':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translate('Baptism of a brother');
-                    case 'F':
-                        return I18N::translate('Baptism of a sister');
-                    default:
-                        return I18N::translate('Baptism of a sibling');
+                if ($sex === 'M') {
+                    return I18N::translate('Baptism of a brother');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translate('Baptism of a sister');
+                }
+
+                return I18N::translate('Baptism of a sibling');
+
             case '_BIBL':
                 /* I18N: gedcom tag _BIBL */
                 return I18N::translate('Bibliography');
+
             case '_BIRT_CHIL':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translate('Birth of a son');
-                    case 'F':
-                        return I18N::translate('Birth of a daughter');
-                    default:
-                        return I18N::translate('Birth of a child');
+                if ($sex === 'M') {
+                    return I18N::translate('Birth of a son');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translate('Birth of a daughter');
+                }
+
+                return I18N::translate('Birth of a child');
+
             case '_BIRT_GCHI':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translate('Birth of a grandson');
-                    case 'F':
-                        return I18N::translate('Birth of a granddaughter');
-                    default:
-                        return I18N::translate('Birth of a grandchild');
+                if ($sex === 'M') {
+                    return I18N::translate('Birth of a grandson');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translate('Birth of a granddaughter');
+                }
+
+                return I18N::translate('Birth of a grandchild');
+
             case '_BIRT_GCH1':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translateContext('daughter’s son', 'Birth of a grandson');
-                    case 'F':
-                        return I18N::translateContext('daughter’s daughter', 'Birth of a granddaughter');
-                    default:
-                        return I18N::translate('Birth of a grandchild');
+                if ($sex === 'M') {
+                    return I18N::translateContext('daughter’s son', 'Birth of a grandson');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translateContext('daughter’s daughter', 'Birth of a granddaughter');
+                }
+
+                return I18N::translate('Birth of a grandchild');
+
             case '_BIRT_GCH2':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translateContext('son’s son', 'Birth of a grandson');
-                    case 'F':
-                        return I18N::translateContext('son’s daughter', 'Birth of a granddaughter');
-                    default:
-                        return I18N::translate('Birth of a grandchild');
+                if ($sex === 'M') {
+                    return I18N::translateContext('son’s son', 'Birth of a grandson');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translateContext('son’s daughter', 'Birth of a granddaughter');
+                }
+
+                return I18N::translate('Birth of a grandchild');
+
             case '_BIRT_HSIB':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translate('Birth of a half-brother');
-                    case 'F':
-                        return I18N::translate('Birth of a half-sister');
-                    default:
-                        return I18N::translate('Birth of a half-sibling');
+                if ($sex === 'M') {
+                    return I18N::translate('Birth of a half-brother');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translate('Birth of a half-sister');
+                }
+
+                return I18N::translate('Birth of a half-sibling');
+
             case '_BIRT_SIBL':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translate('Birth of a brother');
-                    case 'F':
-                        return I18N::translate('Birth of a sister');
-                    default:
-                        return I18N::translate('Birth of a sibling');
+                if ($sex === 'M') {
+                    return I18N::translate('Birth of a brother');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translate('Birth of a sister');
+                }
+
+                return I18N::translate('Birth of a sibling');
+
             case '_BRTM':
                 /* I18N: gedcom tag _BRTM */
                 return I18N::translate('Brit milah');
@@ -1301,362 +1344,442 @@ class GedcomTag
             case '_BRTM:PLAC':
                 return I18N::translate('Place of brit milah');
             case '_BURI_CHIL':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translate('Burial of a son');
-                    case 'F':
-                        return I18N::translate('Burial of a daughter');
-                    default:
-                        return I18N::translate('Burial of a child');
+                if ($sex === 'M') {
+                    return I18N::translate('Burial of a son');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translate('Burial of a daughter');
+                }
+
+                return I18N::translate('Burial of a child');
+
             case '_BURI_GCHI':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translate('Burial of a grandson');
-                    case 'F':
-                        return I18N::translate('Burial of a granddaughter');
-                    default:
-                        return I18N::translate('Burial of a grandchild');
+                if ($sex === 'M') {
+                    return I18N::translate('Burial of a grandson');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translate('Burial of a granddaughter');
+                }
+
+                return I18N::translate('Burial of a grandchild');
+
             case '_BURI_GCH1':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translateContext('daughter’s son', 'Burial of a grandson');
-                    case 'F':
-                        return I18N::translateContext('daughter’s daughter', 'Burial of a granddaughter');
-                    default:
-                        return I18N::translate('Burial of a grandchild');
+                if ($sex === 'M') {
+                    return I18N::translateContext('daughter’s son', 'Burial of a grandson');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translateContext('daughter’s daughter', 'Burial of a granddaughter');
+                }
+
+                return I18N::translate('Burial of a grandchild');
+
             case '_BURI_GCH2':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translateContext('son’s son', 'Burial of a grandson');
-                    case 'F':
-                        return I18N::translateContext('son’s daughter', 'Burial of a granddaughter');
-                    default:
-                        return I18N::translate('Burial of a grandchild');
+                if ($sex === 'M') {
+                    return I18N::translateContext('son’s son', 'Burial of a grandson');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translateContext('son’s daughter', 'Burial of a granddaughter');
+                }
+
+                return I18N::translate('Burial of a grandchild');
+
             case '_BURI_GPAR':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translate('Burial of a grandfather');
-                    case 'F':
-                        return I18N::translate('Burial of a grandmother');
-                    default:
-                        return I18N::translate('Burial of a grandparent');
+                if ($sex === 'M') {
+                    return I18N::translate('Burial of a grandfather');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translate('Burial of a grandmother');
+                }
+
+                return I18N::translate('Burial of a grandparent');
+
             case '_BURI_GPA1':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translate('Burial of a paternal grandfather');
-                    case 'F':
-                        return I18N::translate('Burial of a paternal grandmother');
-                    default:
-                        return I18N::translate('Burial of a paternal grandparent');
+                if ($sex === 'M') {
+                    return I18N::translate('Burial of a paternal grandfather');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translate('Burial of a paternal grandmother');
+                }
+
+                return I18N::translate('Burial of a paternal grandparent');
+
             case '_BURI_GPA2':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translate('Burial of a maternal grandfather');
-                    case 'F':
-                        return I18N::translate('Burial of a maternal grandmother');
-                    default:
-                        return I18N::translate('Burial of a maternal grandparent');
+                if ($sex === 'M') {
+                    return I18N::translate('Burial of a maternal grandfather');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translate('Burial of a maternal grandmother');
+                }
+
+                return I18N::translate('Burial of a maternal grandparent');
+
             case '_BURI_HSIB':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translate('Burial of a half-brother');
-                    case 'F':
-                        return I18N::translate('Burial of a half-sister');
-                    default:
-                        return I18N::translate('Burial of a half-sibling');
+                if ($sex === 'M') {
+                    return I18N::translate('Burial of a half-brother');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translate('Burial of a half-sister');
+                }
+
+                return I18N::translate('Burial of a half-sibling');
+
             case '_BURI_PARE':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translate('Burial of a father');
-                    case 'F':
-                        return I18N::translate('Burial of a mother');
-                    default:
-                        return I18N::translate('Burial of a parent');
+                if ($sex === 'M') {
+                    return I18N::translate('Burial of a father');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translate('Burial of a mother');
+                }
+
+                return I18N::translate('Burial of a parent');
+
             case '_BURI_SIBL':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translate('Burial of a brother');
-                    case 'F':
-                        return I18N::translate('Burial of a sister');
-                    default:
-                        return I18N::translate('Burial of a sibling');
+                if ($sex === 'M') {
+                    return I18N::translate('Burial of a brother');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translate('Burial of a sister');
+                }
+
+                return I18N::translate('Burial of a sibling');
+
             case '_BURI_SPOU':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translate('Burial of a husband');
-                    case 'F':
-                        return I18N::translate('Burial of a wife');
-                    default:
-                        return I18N::translate('Burial of a spouse');
+                if ($sex === 'M') {
+                    return I18N::translate('Burial of a husband');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translate('Burial of a wife');
+                }
+
+                return I18N::translate('Burial of a spouse');
+
             case '_CHR_CHIL':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translate('Christening of a son');
-                    case 'F':
-                        return I18N::translate('Christening of a daughter');
-                    default:
-                        return I18N::translate('Christening of a child');
+                if ($sex === 'M') {
+                    return I18N::translate('Christening of a son');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translate('Christening of a daughter');
+                }
+
+                return I18N::translate('Christening of a child');
+
             case '_CHR_GCHI':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translate('Christening of a grandson');
-                    case 'F':
-                        return I18N::translate('Christening of a granddaughter');
-                    default:
-                        return I18N::translate('Christening of a grandchild');
+                if ($sex === 'M') {
+                    return I18N::translate('Christening of a grandson');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translate('Christening of a granddaughter');
+                }
+
+                return I18N::translate('Christening of a grandchild');
+
             case '_CHR_GCH1':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translateContext('daughter’s son', 'Christening of a grandson');
-                    case 'F':
-                        return I18N::translateContext('daughter’s daughter', 'Christening of a granddaughter');
-                    default:
-                        return I18N::translate('Christening of a grandchild');
+                if ($sex === 'M') {
+                    return I18N::translateContext('daughter’s son', 'Christening of a grandson');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translateContext('daughter’s daughter', 'Christening of a granddaughter');
+                }
+
+                return I18N::translate('Christening of a grandchild');
+
             case '_CHR_GCH2':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translateContext('son’s son', 'Christening of a grandson');
-                    case 'F':
-                        return I18N::translateContext('son’s daughter', 'Christening of a granddaughter');
-                    default:
-                        return I18N::translate('Christening of a grandchild');
+                if ($sex === 'M') {
+                    return I18N::translateContext('son’s son', 'Christening of a grandson');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translateContext('son’s daughter', 'Christening of a granddaughter');
+                }
+
+                return I18N::translate('Christening of a grandchild');
+
             case '_CHR_HSIB':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translate('Christening of a half-brother');
-                    case 'F':
-                        return I18N::translate('Christening of a half-sister');
-                    default:
-                        return I18N::translate('Christening of a half-sibling');
+                if ($sex === 'M') {
+                    return I18N::translate('Christening of a half-brother');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translate('Christening of a half-sister');
+                }
+
+                return I18N::translate('Christening of a half-sibling');
+
             case '_CHR_SIBL':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translate('Christening of a brother');
-                    case 'F':
-                        return I18N::translate('Christening of a sister');
-                    default:
-                        return I18N::translate('Christening of a sibling');
+                if ($sex === 'M') {
+                    return I18N::translate('Christening of a brother');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translate('Christening of a sister');
+                }
+
+                return I18N::translate('Christening of a sibling');
+
             case '_COML':
                 /* I18N: gedcom tag _COML */
                 return I18N::translate('Common law marriage');
+
             case '_CREM_CHIL':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translate('Cremation of a son');
-                    case 'F':
-                        return I18N::translate('Cremation of a daughter');
-                    default:
-                        return I18N::translate('Cremation of a child');
+                if ($sex === 'M') {
+                    return I18N::translate('Cremation of a son');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translate('Cremation of a daughter');
+                }
+
+                return I18N::translate('Cremation of a child');
+
             case '_CREM_GCHI':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translate('Cremation of a grandson');
-                    case 'F':
-                        return I18N::translate('Cremation of a granddaughter');
-                    default:
-                        return I18N::translate('Cremation of a grandchild');
+                if ($sex === 'M') {
+                    return I18N::translate('Cremation of a grandson');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translate('Cremation of a granddaughter');
+                }
+
+                return I18N::translate('Cremation of a grandchild');
+
             case '_CREM_GCH1':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translateContext('daughter’s son', 'Cremation of a grandson');
-                    case 'F':
-                        return I18N::translateContext('daughter’s daughter', 'Cremation of a granddaughter');
-                    default:
-                        return I18N::translate('Cremation of a grandchild');
+                if ($sex === 'M') {
+                    return I18N::translateContext('daughter’s son', 'Cremation of a grandson');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translateContext('daughter’s daughter', 'Cremation of a granddaughter');
+                }
+
+                return I18N::translate('Cremation of a grandchild');
+
             case '_CREM_GCH2':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translateContext('son’s son', 'Cremation of a grandson');
-                    case 'F':
-                        return I18N::translateContext('son’s daughter', 'Cremation of a granddaughter');
-                    default:
-                        return I18N::translate('Cremation of a grandchild');
+                if ($sex === 'M') {
+                    return I18N::translateContext('son’s son', 'Cremation of a grandson');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translateContext('son’s daughter', 'Cremation of a granddaughter');
+                }
+
+                return I18N::translate('Cremation of a grandchild');
+
             case '_CREM_GPAR':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translate('Cremation of a grandfather');
-                    case 'F':
-                        return I18N::translate('Cremation of a grandmother');
-                    default:
-                        return I18N::translate('Cremation of a grand-parent');
+                if ($sex === 'M') {
+                    return I18N::translate('Cremation of a grandfather');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translate('Cremation of a grandmother');
+                }
+
+                return I18N::translate('Cremation of a grand-parent');
+
             case '_CREM_GPA1':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translate('Cremation of a paternal grandfather');
-                    case 'F':
-                        return I18N::translate('Cremation of a paternal grandmother');
-                    default:
-                        return I18N::translate('Cremation of a grand-parent');
+                if ($sex === 'M') {
+                    return I18N::translate('Cremation of a paternal grandfather');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translate('Cremation of a paternal grandmother');
+                }
+
+                return I18N::translate('Cremation of a grand-parent');
+
             case '_CREM_GPA2':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translate('Cremation of a maternal grandfather');
-                    case 'F':
-                        return I18N::translate('Cremation of a maternal grandmother');
-                    default:
-                        return I18N::translate('Cremation of a grand-parent');
+                if ($sex === 'M') {
+                    return I18N::translate('Cremation of a maternal grandfather');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translate('Cremation of a maternal grandmother');
+                }
+
+                return I18N::translate('Cremation of a grand-parent');
+
             case '_CREM_HSIB':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translate('Cremation of a half-brother');
-                    case 'F':
-                        return I18N::translate('Cremation of a half-sister');
-                    default:
-                        return I18N::translate('Cremation of a half-sibling');
+                if ($sex === 'M') {
+                    return I18N::translate('Cremation of a half-brother');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translate('Cremation of a half-sister');
+                }
+
+                return I18N::translate('Cremation of a half-sibling');
+
             case '_CREM_PARE':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translate('Cremation of a father');
-                    case 'F':
-                        return I18N::translate('Cremation of a mother');
-                    default:
-                        return I18N::translate('Cremation of a parent');
+                if ($sex === 'M') {
+                    return I18N::translate('Cremation of a father');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translate('Cremation of a mother');
+                }
+
+                return I18N::translate('Cremation of a parent');
+
             case '_CREM_SIBL':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translate('Cremation of a brother');
-                    case 'F':
-                        return I18N::translate('Cremation of a sister');
-                    default:
-                        return I18N::translate('Cremation of a sibling');
+                if ($sex === 'M') {
+                    return I18N::translate('Cremation of a brother');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translate('Cremation of a sister');
+                }
+
+                return I18N::translate('Cremation of a sibling');
+
             case '_CREM_SPOU':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translate('Cremation of a husband');
-                    case 'F':
-                        return I18N::translate('Cremation of a wife');
-                    default:
-                        return I18N::translate('Cremation of a spouse');
+                if ($sex === 'M') {
+                    return I18N::translate('Cremation of a husband');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translate('Cremation of a wife');
+                }
+
+                return I18N::translate('Cremation of a spouse');
+
             case '_DBID':
                 /* I18N: gedcom tag _DBID */
                 return I18N::translate('Linked database ID');
+
             case '_DEAT_CHIL':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translate('Death of a son');
-                    case 'F':
-                        return I18N::translate('Death of a daughter');
-                    default:
-                        return I18N::translate('Death of a child');
+                if ($sex === 'M') {
+                    return I18N::translate('Death of a son');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translate('Death of a daughter');
+                }
+
+                return I18N::translate('Death of a child');
+
             case '_DEAT_GCHI':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translate('Death of a grandson');
-                    case 'F':
-                        return I18N::translate('Death of a granddaughter');
-                    default:
-                        return I18N::translate('Death of a grandchild');
+                if ($sex === 'M') {
+                    return I18N::translate('Death of a grandson');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translate('Death of a granddaughter');
+                }
+
+                return I18N::translate('Death of a grandchild');
+
             case '_DEAT_GCH1':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translateContext('daughter’s son', 'Death of a grandson');
-                    case 'F':
-                        return I18N::translateContext('daughter’s daughter', 'Death of a granddaughter');
-                    default:
-                        return I18N::translate('Death of a grandchild');
+                if ($sex === 'M') {
+                    return I18N::translateContext('daughter’s son', 'Death of a grandson');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translateContext('daughter’s daughter', 'Death of a granddaughter');
+                }
+
+                return I18N::translate('Death of a grandchild');
+
             case '_DEAT_GCH2':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translateContext('son’s son', 'Death of a grandson');
-                    case 'F':
-                        return I18N::translateContext('son’s daughter', 'Death of a granddaughter');
-                    default:
-                        return I18N::translate('Death of a grandchild');
+                if ($sex === 'M') {
+                    return I18N::translateContext('son’s son', 'Death of a grandson');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translateContext('son’s daughter', 'Death of a granddaughter');
+                }
+
+                return I18N::translate('Death of a grandchild');
+
             case '_DEAT_GPAR':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translate('Death of a grandfather');
-                    case 'F':
-                        return I18N::translate('Death of a grandmother');
-                    default:
-                        return I18N::translate('Death of a grand-parent');
+                if ($sex === 'M') {
+                    return I18N::translate('Death of a grandfather');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translate('Death of a grandmother');
+                }
+
+                return I18N::translate('Death of a grand-parent');
+
             case '_DEAT_GPA1':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translate('Death of a paternal grandfather');
-                    case 'F':
-                        return I18N::translate('Death of a paternal grandmother');
-                    default:
-                        return I18N::translate('Death of a grand-parent');
+                if ($sex === 'M') {
+                    return I18N::translate('Death of a paternal grandfather');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translate('Death of a paternal grandmother');
+                }
+
+                return I18N::translate('Death of a grand-parent');
+
             case '_DEAT_GPA2':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translate('Death of a maternal grandfather');
-                    case 'F':
-                        return I18N::translate('Death of a maternal grandmother');
-                    default:
-                        return I18N::translate('Death of a grand-parent');
+                if ($sex === 'M') {
+                    return I18N::translate('Death of a maternal grandfather');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translate('Death of a maternal grandmother');
+                }
+
+                return I18N::translate('Death of a grand-parent');
+
             case '_DEAT_HSIB':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translate('Death of a half-brother');
-                    case 'F':
-                        return I18N::translate('Death of a half-sister');
-                    default:
-                        return I18N::translate('Death of a half-sibling');
+                if ($sex === 'M') {
+                    return I18N::translate('Death of a half-brother');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translate('Death of a half-sister');
+                }
+
+                return I18N::translate('Death of a half-sibling');
+
             case '_DEAT_PARE':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translate('Death of a father');
-                    case 'F':
-                        return I18N::translate('Death of a mother');
-                    default:
-                        return I18N::translate('Death of a parent');
+                if ($sex === 'M') {
+                    return I18N::translate('Death of a father');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translate('Death of a mother');
+                }
+
+                return I18N::translate('Death of a parent');
+
             case '_DEAT_SIBL':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translate('Death of a brother');
-                    case 'F':
-                        return I18N::translate('Death of a sister');
-                    default:
-                        return I18N::translate('Death of a sibling');
+                if ($sex === 'M') {
+                    return I18N::translate('Death of a brother');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translate('Death of a sister');
+                }
+
+                return I18N::translate('Death of a sibling');
+
             case '_DEAT_SPOU':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translate('Death of a husband');
-                    case 'F':
-                        return I18N::translate('Death of a wife');
-                    default:
-                        return I18N::translate('Death of a spouse');
+                if ($sex === 'M') {
+                    return I18N::translate('Death of a husband');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translate('Death of a wife');
+                }
+
+                return I18N::translate('Death of a spouse');
+
             case '_DEG':
                 /* I18N: gedcom tag _DEG */
                 return I18N::translate('Degree');
@@ -1725,18 +1848,21 @@ class GedcomTag
             case '_HOL':
                 /* I18N: gedcom tag _HOL */
                 return I18N::translate('Holocaust');
+
             case '_INTE':
-                switch ($sex) {
-                    case 'M':
-                        /* I18N: gedcom tag _INTE */
-                        return I18N::translateContext('MALE', 'Interred');
-                    case 'F':
-                        /* I18N: gedcom tag _INTE */
-                        return I18N::translateContext('FEMALE', 'Interred');
-                    default:
-                        /* I18N: gedcom tag _INTE */
-                        return I18N::translate('Interred');
+                if ($sex === 'M') {
+                    /* I18N: gedcom tag _INTE */
+                    return I18N::translateContext('MALE', 'Interred');
                 }
+
+                if ($sex === 'F') {
+                    /* I18N: gedcom tag _INTE */
+                    return I18N::translateContext('FEMALE', 'Interred');
+                }
+
+                /* I18N: gedcom tag _INTE */
+                return I18N::translate('Interred');
+
             case '_LOC':
                 /* I18N: gedcom tag _LOC */
                 return I18N::translate('Location');
@@ -1751,75 +1877,91 @@ class GedcomTag
                 return I18N::translate('Highlighted image');
             case '_MARNM_SURN':
                 return I18N::translate('Married surname');
+
             case '_MARR_CHIL':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translate('Marriage of a son');
-                    case 'F':
-                        return I18N::translate('Marriage of a daughter');
-                    default:
-                        return I18N::translate('Marriage of a child');
+                if ($sex === 'M') {
+                    return I18N::translate('Marriage of a son');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translate('Marriage of a daughter');
+                }
+
+                return I18N::translate('Marriage of a child');
+
             case '_MARR_FAMC':
                 /* I18N: ...to each other */
                 return I18N::translate('Marriage of parents');
+
             case '_MARR_GCHI':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translate('Marriage of a grandson');
-                    case 'F':
-                        return I18N::translate('Marriage of a granddaughter');
-                    default:
-                        return I18N::translate('Marriage of a grandchild');
+                if ($sex === 'M') {
+                    return I18N::translate('Marriage of a grandson');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translate('Marriage of a granddaughter');
+                }
+
+                return I18N::translate('Marriage of a grandchild');
+
             case '_MARR_GCH1':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translateContext('daughter’s son', 'Marriage of a grandson');
-                    case 'F':
-                        return I18N::translateContext('daughter’s daughter', 'Marriage of a granddaughter');
-                    default:
-                        return I18N::translate('Marriage of a grandchild');
+                if ($sex === 'M') {
+                    return I18N::translateContext('daughter’s son', 'Marriage of a grandson');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translateContext('daughter’s daughter', 'Marriage of a granddaughter');
+                }
+
+                return I18N::translate('Marriage of a grandchild');
+
             case '_MARR_GCH2':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translateContext('son’s son', 'Marriage of a grandson');
-                    case 'F':
-                        return I18N::translateContext('son’s daughter', 'Marriage of a granddaughter');
-                    default:
-                        return I18N::translate('Marriage of a grandchild');
+                if ($sex === 'M') {
+                    return I18N::translateContext('son’s son', 'Marriage of a grandson');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translateContext('son’s daughter', 'Marriage of a granddaughter');
+                }
+
+                return I18N::translate('Marriage of a grandchild');
+
             case '_MARR_HSIB':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translate('Marriage of a half-brother');
-                    case 'F':
-                        return I18N::translate('Marriage of a half-sister');
-                    default:
-                        return I18N::translate('Marriage of a half-sibling');
+                if ($sex === 'M') {
+                    return I18N::translate('Marriage of a half-brother');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translate('Marriage of a half-sister');
+                }
+
+                return I18N::translate('Marriage of a half-sibling');
+
             case '_MARR_PARE':
-                switch ($sex) {
-                    case 'M':
-                        /* I18N: ...to another spouse */
-                        return I18N::translate('Marriage of a father');
-                    case 'F':
-                        /* I18N: ...to another spouse */
-                        return I18N::translate('Marriage of a mother');
-                    default:
-                        /* I18N: ...to another spouse */
-                        return I18N::translate('Marriage of a parent');
+                if ($sex === 'M') {
+                    /* I18N: ...to another spouse */
+                    return I18N::translate('Marriage of a father');
                 }
+
+                if ($sex ===  'F') {
+                    /* I18N: ...to another spouse */
+                    return I18N::translate('Marriage of a mother');
+                }
+
+                /* I18N: ...to another spouse */
+                return I18N::translate('Marriage of a parent');
+
             case '_MARR_SIBL':
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translate('Marriage of a brother');
-                    case 'F':
-                        return I18N::translate('Marriage of a sister');
-                    default:
-                        return I18N::translate('Marriage of a sibling');
+                if ($sex === 'M') {
+                    return I18N::translate('Marriage of a brother');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translate('Marriage of a sister');
+                }
+
+                return I18N::translate('Marriage of a sibling');
+
             case '_MBON':
                 /* I18N: gedcom tag _MBON */
                 return I18N::translate('Marriage bond');
@@ -1854,29 +1996,33 @@ class GedcomTag
                 /* I18N: gedcom tag _NLIV */
                 return I18N::translate('Not living');
             case '_NMAR':
-                switch ($sex) {
-                    case 'M':
-                        /* I18N: gedcom tag _NMAR */
-                        return I18N::translateContext('MALE', 'Never married');
-                    case 'F':
-                        /* I18N: gedcom tag _NMAR */
-                        return I18N::translateContext('FEMALE', 'Never married');
-                    default:
-                        /* I18N: gedcom tag _NMAR */
-                        return I18N::translate('Never married');
+                if ($sex === 'M') {
+                    /* I18N: gedcom tag _NMAR */
+                    return I18N::translateContext('MALE', 'Never married');
                 }
+
+                if ($sex === 'F') {
+                    /* I18N: gedcom tag _NMAR */
+                    return I18N::translateContext('FEMALE', 'Never married');
+                }
+
+                /* I18N: gedcom tag _NMAR */
+                return I18N::translate('Never married');
+
             case '_NMR':
-                switch ($sex) {
-                    case 'M':
-                        /* I18N: gedcom tag _NMR */
-                        return I18N::translateContext('MALE', 'Not married');
-                    case 'F':
-                        /* I18N: gedcom tag _NMR */
-                        return I18N::translateContext('FEMALE', 'Not married');
-                    default:
-                        /* I18N: gedcom tag _NMR */
-                        return I18N::translate('Not married');
+                if ($sex === 'M') {
+                    /* I18N: gedcom tag _NMR */
+                    return I18N::translateContext('MALE', 'Not married');
                 }
+
+                if ($sex === 'F') {
+                    /* I18N: gedcom tag _NMR */
+                    return I18N::translateContext('FEMALE', 'Not married');
+                }
+
+                /* I18N: gedcom tag _NMR */
+                return I18N::translate('Not married');
+
             case '_PHOTO':
                 // Family Tree Builder uses "0 _ALBUM/1_PHOTO"
                 return I18N::translate('Photo');
@@ -1887,14 +2033,16 @@ class GedcomTag
                 return I18N::translate('Permanent number');
             case '_RNAME':
                 // Family Tree Builder user "1 NAME / 2 _RNAME"
-                switch ($sex) {
-                    case 'M':
-                        return I18N::translateContext('MALE', 'Religious name');
-                    case 'F':
-                        return I18N::translateContext('FEMALE', 'Religious name');
-                    default:
-                        return I18N::translate('Religious name');
+                if ($sex === 'M') {
+                    return I18N::translateContext('MALE', 'Religious name');
                 }
+
+                if ($sex === 'F') {
+                    return I18N::translateContext('FEMALE', 'Religious name');
+                }
+
+                return I18N::translate('Religious name');
+
             case '_SCBK':
                 /* I18N: gedcom tag _SCBK */
                 return I18N::translate('Scrapbook');
