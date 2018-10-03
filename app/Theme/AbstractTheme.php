@@ -1809,7 +1809,7 @@ abstract class AbstractTheme
     /**
      * Create the advanced search sub-menu.
      *
-     * @return Menu
+     * @return Menu|null
      */
     public function menuSearchAndReplace()
     {

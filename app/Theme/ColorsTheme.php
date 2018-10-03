@@ -132,7 +132,7 @@ class ColorsTheme extends CloudsTheme implements ThemeInterface
     /**
      * Create a menu of palette options
      *
-     * @return Menu
+     * @return Menu|null
      */
     public function menuPalette()
     {

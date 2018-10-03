@@ -641,16 +641,18 @@ class I18N
      * echo self::plural('There is one error', 'There are %s errors', $num_errors);
      * echo self::plural('There is %1$s %2$s cat', 'There are %1$s %2$s cats', $num, $num, $colour);
      *
+     * @param string $singular
+     * @param string $plural
+     * @param int    $count
      * @param string ...$args
      *
      * @return string
      */
-    public static function plural(...$args): string
+    public static function plural(string $singular, string $plural, int $count, ...$args): string
     {
-        $args[0] = self::$translator->translatePlural($args[0], $args[1], (int) $args[2]);
-        unset($args[1], $args[2]);
+        $message = self::$translator->translatePlural($singular, $plural, $count);
 
-        return sprintf(...$args);
+        return sprintf($message, ...$args);
     }
 
     /**
@@ -887,15 +889,16 @@ class I18N
      * echo I18N::translate('Hello World!');
      * echo I18N::translate('The %s sat on the mat', 'cat');
      *
+     * @param string $message
      * @param string ...$args
      *
      * @return string
      */
-    public static function translate(...$args): string
+    public static function translate(string $message, ...$args): string
     {
-        $args[0] = self::$translator->translate($args[0]);
+        $message = self::$translator->translate($message);
 
-        return sprintf(...$args);
+        return sprintf($message, ...$args);
     }
 
     /**
@@ -903,15 +906,16 @@ class I18N
      * echo I18N::translateContext('NOMINATIVE', 'January');
      * echo I18N::translateContext('GENITIVE', 'January');
      *
+     * @param string $context
+     * @param string $message
      * @param string ...$args
      *
      * @return string
      */
-    public static function translateContext(...$args): string
+    public static function translateContext(string $context, string $message, ...$args): string
     {
-        $args[1] = self::$translator->translateContext($args[0], $args[1]);
-        unset($args[0]);
+        $message = self::$translator->translateContext($context, $message);
 
-        return sprintf(...$args);
+        return sprintf($message, ...$args);
     }
 }
