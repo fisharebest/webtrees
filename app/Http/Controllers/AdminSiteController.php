@@ -545,8 +545,9 @@ class AdminSiteController extends AbstractBaseController
         $title = I18N::translate('Website preferences');
 
         return $this->viewResponse('admin/site-preferences', [
-            'all_themes' => $all_themes,
-            'title'      => $title,
+            'all_themes'         => $all_themes,
+            'max_execution_time' => (int) get_cfg_var('max_execution_time'),
+            'title'              => $title,
         ]);
     }
 

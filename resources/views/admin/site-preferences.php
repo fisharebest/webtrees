@@ -61,11 +61,7 @@
 		<div class="col-sm-9">
 			<input type="text" class="form-control" id="MAX_EXECUTION_TIME" name="MAX_EXECUTION_TIME" value="<?= e(Site::getPreference('MAX_EXECUTION_TIME')) ?>" pattern="[0-9]*" placeholder="<?= get_cfg_var('max_execution_time') ?>" maxlength="255">
 			<p class="small text-muted">
-				<?= I18N::plural(
-					'By default, your server allows scripts to run for %s second.',
-					'By default, your server allows scripts to run for %s seconds.',
-					get_cfg_var('max_execution_time'), I18N::number((float) get_cfg_var('max_execution_time')));
-				?>
+				<?= I18N::plural('By default, your server allows scripts to run for %s second.', 'By default, your server allows scripts to run for %s seconds.', $max_execution_time, I18N::number($max_execution_time)); ?>
 				<?= I18N::translate('You can request a higher or lower limit, although the server may ignore this request.') ?>
 				<?= I18N::translate('Leave this blank to use the default value.') ?>
 			</p>
