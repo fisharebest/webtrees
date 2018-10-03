@@ -1426,7 +1426,7 @@ class AdminController extends AbstractBaseController
         }
 
         // The maximum difference is 255 (black versus white).
-        return 100 - (int) ($max_difference * 100 / 255);
+        return 100 - intdiv($max_difference * 100, 255);
     }
 
     /**

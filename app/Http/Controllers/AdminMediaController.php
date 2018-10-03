@@ -665,7 +665,7 @@ class AdminMediaController extends AbstractBaseController
         $full_path = WT_DATA_DIR . $media_folder . $media_path . $file;
         try {
             $size = filesize($full_path);
-            $size = (int) (($size + 1023) / 1024); // Round up to next KB
+            $size = intdiv($size + 1023, 1024); // Round up to next KB
             /* I18N: size of file in KB */
             $size = I18N::translate('%s KB', I18N::number($size));
             $html .= '<dt>' . I18N::translate('File size') . '</dt>';

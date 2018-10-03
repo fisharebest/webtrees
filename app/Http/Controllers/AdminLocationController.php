@@ -306,7 +306,7 @@ class AdminLocationController extends AbstractBaseController
             glob(WT_DATA_DIR . 'places/*.geojson')
         );
 
-        $files = array_map(function(string $place): string {
+        $files = array_map(function (string $place): string {
             return substr($place, strlen(WT_DATA_DIR . 'places/'));
         }, $files);
 

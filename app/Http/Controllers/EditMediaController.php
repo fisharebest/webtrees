@@ -498,7 +498,7 @@ class EditMediaController extends AbstractEditController
     private function maxUploadFilesize(): string
     {
         $bytes = UploadedFile::getMaxFilesize();
-        $kb    = (int) ($bytes / 1024);
+        $kb    = intdiv($bytes + 1023, 1024);
 
         return I18N::translate('%s KB', I18N::number($kb));
     }

@@ -155,7 +155,7 @@ class CalendarDate
             $jd    = $date->calendar->ymdToJd($today[0], $date->m, $date->d == 0 ? $today[2] : $date->d);
         } else {
             // Complete date
-            $jd = (int) (($date->maximum_julian_day + $date->minimum_julian_day) / 2);
+            $jd = intdiv($date->maximum_julian_day + $date->minimum_julian_day, 2);
         }
         list($this->y, $this->m, $this->d) = $this->calendar->jdToYmd($jd);
         // New date has same precision as original date

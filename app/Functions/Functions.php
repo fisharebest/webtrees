@@ -1615,7 +1615,7 @@ class Functions
         // Look for generic/pattern relationships.
         if (preg_match('/^((?:mot|fat|par)+)(bro|sis|sib)$/', $path, $match)) {
             // siblings of direct ancestors
-            $up       = strlen($match[1]) / 3;
+            $up       = intdiv(strlen($match[1]), 3);
             $bef_last = substr($path, -6, 3);
             switch ($up) {
                 case 3:
@@ -1770,7 +1770,7 @@ class Functions
         }
         if (preg_match('/^(?:bro|sis|sib)((?:son|dau|chi)+)$/', $path, $match)) {
             // direct descendants of siblings
-            $down  = strlen($match[1]) / 3 + 1; // Add one, as we count generations from the common ancestor
+            $down  = intdiv($match[1], 3) + 1; // Add one, as we count generations from the common ancestor
             $first = substr($path, 0, 3);
             switch ($down) {
                 case 4:
@@ -1971,7 +1971,7 @@ class Functions
         }
         if (preg_match('/^((?:mot|fat|par)*)$/', $path, $match)) {
             // direct ancestors
-            $up = strlen($match[1]) / 3;
+            $up = intdiv(strlen($match[1]), 3);
             switch ($up) {
                 case 4:
                     switch ($sex2) {
@@ -2089,7 +2089,7 @@ class Functions
         }
         if (preg_match('/^((?:son|dau|chi)*)$/', $path, $match)) {
             // direct descendants
-            $up = strlen($match[1]) / 3;
+            $up = intdiv(strlen($match[1]), 3);
             switch ($up) {
                 case 4:
                     switch ($sex2) {
@@ -2194,8 +2194,8 @@ class Functions
             // cousins in English
             $ascent  = $match[1];
             $descent = $match[2];
-            $up      = strlen($ascent) / 3;
-            $down    = strlen($descent) / 3;
+            $up      = intdiv($ascent, 3);
+            $down    = intdiv($descent, 3);
             $cousin  = min($up, $down); // Moved out of switch (en/default case) so that
             $removed = abs($down - $up); // Spanish (and other languages) can use it, too.
 

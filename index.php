@@ -213,7 +213,7 @@ try {
 
 define('WT_TIMESTAMP_OFFSET', (new DateTime('now'))->getOffset());
 
-define('WT_CLIENT_JD', 2440588 + (int) ((WT_TIMESTAMP + WT_TIMESTAMP_OFFSET) / 86400));
+define('WT_CLIENT_JD', 2440588 + intdiv(WT_TIMESTAMP + WT_TIMESTAMP_OFFSET, 86400));
 
 // Update the last-login time no more than once a minute
 if (WT_TIMESTAMP - Session::get('activity_time') >= 60) {

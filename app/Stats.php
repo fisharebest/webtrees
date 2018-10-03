@@ -1007,9 +1007,9 @@ class Stats
 
         if ($tot_u > 0) {
             $chd = $this->arrayToExtendedEncoding([
-                4095 * $tot_u / $tot,
-                4095 * $tot_f / $tot,
-                4095 * $tot_m / $tot,
+                intdiv(4095 * $tot_u, $tot),
+                intdiv(4095 * $tot_f, $tot),
+                intdiv(4095 * $tot_m, $tot),
             ]);
             $chl =
                 I18N::translateContext('unknown people', 'Unknown') . ' - ' . $per_u . '|' .
@@ -1024,8 +1024,8 @@ class Stats
         }
 
         $chd = $this->arrayToExtendedEncoding([
-            4095 * $tot_f / $tot,
-            4095 * $tot_m / $tot,
+            intdiv(4095 * $tot_f, $tot),
+            intdiv(4095 * $tot_m, $tot),
         ]);
         $chl         =
             I18N::translate('Females') . ' - ' . $per_f . '|' .
@@ -1138,8 +1138,8 @@ class Stats
         }
 
         $chd = $this->arrayToExtendedEncoding([
-            4095 * $tot_l / $tot,
-            4095 * $tot_d / $tot,
+            intdiv(4095 * $tot_l, $tot),
+            intdiv(4095 * $tot_d, $tot),
         ]);
         $chl         =
             I18N::translate('Living') . ' - ' . $per_l . '|' .
@@ -2706,7 +2706,7 @@ class Stats
                 while ($offset = strpos($title, ' ', $offset + 1)) {
                     $counter[] = $offset;
                 }
-                $half = (int) (count($counter) / 2);
+                $half = intdiv(count($counter), 2);
                 $chtt = substr_replace($title, '|', $counter[$half], 1);
             }
 
@@ -4091,7 +4091,7 @@ class Stats
                 while ($offset = strpos(I18N::translate('Average age in century of marriage'), ' ', $offset + 1)) {
                     $counter[] = $offset;
                 }
-                $half = (int) (count($counter) / 2);
+                $half = intdiv(count($counter), 2);
                 $chtt = substr_replace(I18N::translate('Average age in century of marriage'), '|', $counter[$half], 1);
             }
 
@@ -5044,7 +5044,7 @@ class Stats
                 if ($tot == 0) {
                     $per = 0;
                 } else {
-                    $per = (int) (100 * $row->tot / $tot);
+                    $per = intdiv(100 * $row->tot, $tot);
                 }
                 $chd .= $this->arrayToExtendedEncoding([$per]);
                 $chl[] = htmlspecialchars_decode(strip_tags($family->getFullName())) . ' - ' . I18N::number($row->tot);
@@ -6698,7 +6698,7 @@ class Stats
             if ($value < 0) {
                 $value = 0;
             }
-            $first    = (int) ($value / 64);
+            $first    = intdiv($value, 64);
             $second   = $value % 64;
             $encoding .= $xencoding[(int) $first] . $xencoding[(int) $second];
         }

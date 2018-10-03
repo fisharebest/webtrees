@@ -240,7 +240,7 @@ class AdminUpgradeController extends AbstractBaseController
             $end_time = microtime(true);
 
             if ($zip_size > 0) {
-                $kb      = I18N::number($zip_size / 1024);
+                $kb      = I18N::number(intdiv($zip_size + 1023, 1024));
                 $seconds = I18N::number($end_time - $start_time, 2);
 
                 /* I18N: %1$s is a number of KB, %2$s is a (fractional) number of seconds */

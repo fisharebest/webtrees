@@ -443,7 +443,7 @@ class Date
      */
     public function julianDay(): int
     {
-        return (int) (($this->minimumJulianDay() + $this->maximumJulianDay()) / 2);
+        return intdiv($this->minimumJulianDay() + $this->maximumJulianDay(), 2);
     }
 
     /**

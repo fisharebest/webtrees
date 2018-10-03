@@ -141,7 +141,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
                     $color            = self::LINE_COLORS[log($id, 2) % $color_count];
                     $icon['color']    = $color; //make icon color the same as the line
                     $sosa_points[$id] = $event->getLatLonJSArray();
-                    $sosa_parent      = (int) floor($id / 2);
+                    $sosa_parent      = intdiv($id, 2);
                     if (array_key_exists($sosa_parent, $sosa_points)) {
                         // Would like to use a GeometryCollection to hold LineStrings
                         // rather than generate polylines but the MarkerCluster library
