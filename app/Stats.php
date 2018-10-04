@@ -6494,7 +6494,6 @@ class Stats
      */
     private function hitCountQuery($page_name, string $page_parameter = ''): string
     {
-
         if ($page_name === '') {
             // index.php?ctype=gedcom
             $page_name      = 'index.php';

@@ -207,9 +207,7 @@ class ListController extends AbstractBaseController
             $title = I18N::translate('Families') . ' — ' . $legend;
         } else {
             $title = I18N::translate('Individuals') . ' — ' . $legend;
-        }
-
-        ?>
+        } ?>
         <div class="d-flex flex-column wt-page-options wt-page-options-individual-list d-print-none">
             <ul class="d-flex flex-wrap wt-initials-list">
 
@@ -227,47 +225,45 @@ class ListController extends AbstractBaseController
                     echo '</li>';
                 }
 
-                // Search spiders don't get the "show all" option as the other links give them everything.
-                if (Session::has('initiated')) {
-                    echo '<li class="wt-initials-list-item">';
-                    echo '<a class="wt-initial' . ($show_all === 'yes' ? ' active' : '') . '" href="' . e(route($route, ['show_all' => 'yes'] + $params)) . '">';
-                    echo I18N::translate('All');
-                    echo '</a>';
-                    echo '</li>';
-                }
-                echo '</ul>';
+        // Search spiders don't get the "show all" option as the other links give them everything.
+        if (Session::has('initiated')) {
+            echo '<li class="wt-initials-list-item">';
+            echo '<a class="wt-initial' . ($show_all === 'yes' ? ' active' : '') . '" href="' . e(route($route, ['show_all' => 'yes'] + $params)) . '">';
+            echo I18N::translate('All');
+            echo '</a>';
+            echo '</li>';
+        }
+        echo '</ul>';
 
-                // Search spiders don't get an option to show/hide the surname sublists,
-                // nor does it make sense on the all/unknown/surname views
-                if (Session::has('initiated') && $show !== 'none') {
-                    if ($show_marnm === 'yes') {
-                        echo '<p><a href="', e(route($route, [
+        // Search spiders don't get an option to show/hide the surname sublists,
+        // nor does it make sense on the all/unknown/surname views
+        if (Session::has('initiated') && $show !== 'none') {
+            if ($show_marnm === 'yes') {
+                echo '<p><a href="', e(route($route, [
                                 'show'       => $show,
                                 'show_marnm' => 'no',
                             ] + $params)), '">', I18N::translate('Exclude individuals with “%s” as a married name', $legend), '</a></p>';
-                    } else {
-                        echo '<p><a href="', e(route($route, [
+            } else {
+                echo '<p><a href="', e(route($route, [
                                 'show'       => $show,
                                 'show_marnm' => 'yes',
                             ] + $params)), '">', I18N::translate('Include individuals with “%s” as a married name', $legend), '</a></p>';
-                    }
+            }
 
-                    if ($alpha !== '@' && $alpha !== ',' && !$surname) {
-                        if ($show === 'surn') {
-                            echo '<p><a href="', e(route($route, [
+            if ($alpha !== '@' && $alpha !== ',' && !$surname) {
+                if ($show === 'surn') {
+                    echo '<p><a href="', e(route($route, [
                                     'show'       => 'indi',
                                     'show_marnm' => 'no',
                                 ] + $params)), '">', I18N::translate('Show the list of individuals'), '</a></p>';
-                        } else {
-                            echo '<p><a href="', e(route($route, [
+                } else {
+                    echo '<p><a href="', e(route($route, [
                                     'show'       => 'surn',
                                     'show_marnm' => 'no',
                                 ] + $params)), '">', I18N::translate('Show the list of surnames'), '</a></p>';
-                        }
-                    }
                 }
-
-                ?>
+            }
+        } ?>
         </div>
         <div class="wt-page-content">
             <?php
@@ -355,8 +351,7 @@ class ListController extends AbstractBaseController
                         }
                     }
                 }
-            }
-            ?>
+            } ?>
         </div>
         <?php
 
