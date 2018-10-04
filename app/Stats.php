@@ -13,6 +13,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+declare(strict_types=1);
+
 namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Functions\FunctionsDate;
@@ -23,6 +25,7 @@ use Fisharebest\Webtrees\Module\FamilyTreeFavoritesModule;
 use Fisharebest\Webtrees\Module\UserFavoritesModule;
 use PDOException;
 use stdClass;
+use const PREG_SET_ORDER;
 
 /**
  * A selection of pre-formatted statistical queries.
@@ -151,42 +154,24 @@ class Stats
      *
      * @param string $text
      *
-     * @return string[][]
+     * @return string[]
      */
     private function getTags($text): array
     {
-        // Extract all tags from the provided text
-        preg_match_all('/#([^#]+)(?=#)/', (string) $text, $match);
-        $tags       = $match[1];
-        $c          = count($tags);
-        $new_tags   = []; // tag to replace
-        $new_values = []; // value to replace it with
+        $tags = [];
 
-        // Parse block tags.
-        for ($i = 0; $i < $c; $i++) {
-            $full_tag = $tags[$i];
-            // Added for new parameter support
-            $params = explode(':', $tags[$i]);
-            if (count($params) > 1) {
-                $tags[$i] = array_shift($params);
-            } else {
-                $params = [];
-            }
+        preg_match_all('/#([^#]+)#/', (string) $text, $matches, PREG_SET_ORDER);
 
-            // Generate the replacement value for the tag
-            if (method_exists($this, $tags[$i])) {
-                $new_tags[]   = "#{$full_tag}#";
-                $new_values[] = call_user_func_array([
-                    $this,
-                    $tags[$i],
-                ], [$params]);
+        foreach ($matches as $match) {
+            $params = explode(':', $match[1]);
+            $method = array_shift($params);
+
+            if (method_exists($this, $method)) {
+                $tags[$match[0]] = $this->$method(...$params);
             }
         }
 
-        return [
-            $new_tags,
-            $new_values,
-        ];
+        return $tags;
     }
 
     /**
@@ -199,8 +184,7 @@ class Stats
     public function embedTags($text): string
     {
         if (strpos($text, '#') !== false) {
-            list($new_tags, $new_values) = $this->getTags($text);
-            $text = str_replace($new_tags, $new_values, $text);
+            $text = strtr($text, $this->getTags($text));
         }
 
         return $text;
@@ -319,7 +303,7 @@ class Stats
      *
      * @return string
      */
-    public function gedcomUpdated()
+    public function gedcomUpdated(): string
     {
         $row = Database::prepare(
             "SELECT d_year, d_month, d_day FROM `##dates` WHERE d_julianday1 = (SELECT MAX(d_julianday1) FROM `##dates` WHERE d_file =? AND d_fact='CHAN') LIMIT 1"
@@ -438,20 +422,22 @@ class Stats
     /**
      * Create a chart showing individuals with/without sources.
      *
-     * @param string[] $params
+     * @param string|null $size        // Optional parameter, set from tag
+     * @param string|null $color_from
+     * @param string|null $color_to
      *
      * @return string
      */
-    public function chartIndisWithSources($params = [])
+    public function chartIndisWithSources(string $size = null, string $color_from = null, string $color_to = null): string
     {
         $WT_STATS_CHART_COLOR1 = Theme::theme()->parameter('distribution-chart-no-values');
         $WT_STATS_CHART_COLOR2 = Theme::theme()->parameter('distribution-chart-high-values');
         $WT_STATS_S_CHART_X    = Theme::theme()->parameter('stats-small-chart-x');
         $WT_STATS_S_CHART_Y    = Theme::theme()->parameter('stats-small-chart-y');
 
-        $size       = $params[0] ?? $WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y;
-        $color_from = $params[1] ?? $WT_STATS_CHART_COLOR1;
-        $color_to   = $params[2] ?? $WT_STATS_CHART_COLOR2;
+        $size       = $size ?? ($WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y);
+        $color_from = $color_from ?? $WT_STATS_CHART_COLOR1;
+        $color_to   = $color_to ?? $WT_STATS_CHART_COLOR2;
 
         $sizes    = explode('x', $size);
         $tot_indi = $this->totalIndividualsQuery();
@@ -459,13 +445,10 @@ class Stats
             return '';
         }
 
-        $tot_sindi_per = round($this->totalIndisWithSourcesQuery() / $tot_indi, 3);
-        $chd           = $this->arrayToExtendedEncoding([
-            100 - 100 * $tot_sindi_per,
-            100 * $tot_sindi_per,
-        ]);
-        $chl           = I18N::translate('Without sources') . ' - ' . I18N::percentage(1 - $tot_sindi_per, 1) . '|' .
-                     I18N::translate('With sources') . ' - ' . I18N::percentage($tot_sindi_per, 1);
+        $tot_sindi_per = $this->totalIndisWithSourcesQuery() / $tot_indi;
+        $with          = (int) (100 * $tot_sindi_per);
+        $chd           = $this->arrayToExtendedEncoding([100 - $with, $with]);
+        $chl           = I18N::translate('Without sources') . ' - ' . I18N::percentage(1 - $tot_sindi_per, 1) . '|' . I18N::translate('With sources') . ' - ' . I18N::percentage($tot_sindi_per, 1);
         $chart_title   = I18N::translate('Individuals with sources');
 
         return '<img src="https://chart.googleapis.com/chart?cht=p3&amp;chd=e:' . $chd . '&amp;chs=' . $size . '&amp;chco=' . $color_from . ',' . $color_to . '&amp;chf=bg,s,ffffff00&amp;chl=' . rawurlencode($chl) . '" width="' . $sizes[0] . '" height="' . $sizes[1] . '" alt="' . $chart_title . '" title="' . $chart_title . '">';
@@ -534,20 +517,22 @@ class Stats
     /**
      * Create a chart of individuals with/without sources.
      *
-     * @param string[] $params
+     * @param string|null $size
+     * @param string|null $color_from
+     * @param string|null $color_to
      *
      * @return string
      */
-    public function chartFamsWithSources($params = [])
+    public function chartFamsWithSources(string $size = null, string $color_from = null, string $color_to = null): string
     {
         $WT_STATS_CHART_COLOR1 = Theme::theme()->parameter('distribution-chart-no-values');
         $WT_STATS_CHART_COLOR2 = Theme::theme()->parameter('distribution-chart-high-values');
         $WT_STATS_S_CHART_X    = Theme::theme()->parameter('stats-small-chart-x');
         $WT_STATS_S_CHART_Y    = Theme::theme()->parameter('stats-small-chart-y');
 
-        $size       = $params[0] ?? $WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y;
-        $color_from = $params[1] ?? $WT_STATS_CHART_COLOR1;
-        $color_to   = $params[2] ?? $WT_STATS_CHART_COLOR2;
+        $size       = $size ?? ($WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y);
+        $color_from = $color_from ?? $WT_STATS_CHART_COLOR1;
+        $color_to   = $color_to ?? $WT_STATS_CHART_COLOR2;
 
         $sizes   = explode('x', $size);
         $tot_fam = $this->totalFamiliesQuery();
@@ -555,14 +540,11 @@ class Stats
             return '';
         }
 
-        $tot_sfam_per = round($this->totalFamsWithSourcesQuery() / $tot_fam, 3);
-        $chd          = $this->arrayToExtendedEncoding([
-            100 - 100 * $tot_sfam_per,
-            100 * $tot_sfam_per,
-        ]);
-        $chl          = I18N::translate('Without sources') . ' - ' . I18N::percentage(1 - $tot_sfam_per, 1) . '|' .
-                    I18N::translate('With sources') . ' - ' . I18N::percentage($tot_sfam_per, 1);
-        $chart_title  = I18N::translate('Families with sources');
+        $tot_sfam_per = $this->totalFamsWithSourcesQuery() / $tot_fam;
+        $with          = (int) (100 * $tot_sfam_per);
+        $chd           = $this->arrayToExtendedEncoding([100 - $with, $with]);
+        $chl           = I18N::translate('Without sources') . ' - ' . I18N::percentage(1 - $tot_sfam_per, 1) . '|' . I18N::translate('With sources') . ' - ' . I18N::percentage($tot_sfam_per, 1);
+        $chart_title   = I18N::translate('Families with sources');
 
         return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . $chart_title . '" title="' . $chart_title . '" />';
     }
@@ -682,11 +664,11 @@ class Stats
     /**
      * Count the surnames.
      *
-     * @param string[] $params
+     * @param string ...$params
      *
      * @return string
      */
-    public function totalSurnames($params = []): string
+    public function totalSurnames(...$params): string
     {
         if ($params) {
             $opt      = 'IN (' . implode(',', array_fill(0, count($params), '?')) . ')';
@@ -712,11 +694,11 @@ class Stats
      * Count the number of distinct given names, or count the number of
      * occurrences of a specific name or names.
      *
-     * @param string[] $params
+     * @param string ...$params
      *
      * @return string
      */
-    public function totalGivennames($params = []): string
+    public function totalGivennames(...$params): string
     {
         if ($params) {
             $qs       = implode(',', array_fill(0, count($params), '?'));
@@ -740,11 +722,11 @@ class Stats
     /**
      * Count the number of events (with dates).
      *
-     * @param string[] $params
+     * @param string[] $events
      *
      * @return string
      */
-    public function totalEvents($params = []): string
+    public function totalEvents($events = []): string
     {
         $sql  = "SELECT COUNT(*) AS tot FROM `##dates` WHERE d_file=?";
         $vars = [$this->tree->getTreeId()];
@@ -753,9 +735,9 @@ class Stats
             'HEAD',
             'CHAN',
         ];
-        if ($params) {
+        if ($events) {
             $types = [];
-            foreach ($params as $type) {
+            foreach ($events as $type) {
                 if (substr($type, 0, 1) == '!') {
                     $no_types[] = substr($type, 1);
                 } else {
@@ -977,19 +959,22 @@ class Stats
     /**
      * Generate a chart showing sex distribution.
      *
-     * @param string[] $params
+     * @param string|null $size
+     * @param string|null $color_female
+     * @param string|null $color_male
+     * @param string|null $color_unknown
      *
      * @return string
      */
-    public function chartSex($params = [])
+    public function chartSex(string $size = null, string $color_female = null, string $color_male = null, string $color_unknown = null): string
     {
         $WT_STATS_S_CHART_X = Theme::theme()->parameter('stats-small-chart-x');
         $WT_STATS_S_CHART_Y = Theme::theme()->parameter('stats-small-chart-y');
 
-        $size          = $params[0] ?? $WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y;
-        $color_female  = $params[1] ?? 'ffd1dc';
-        $color_male    = $params[2] ?? '84beff';
-        $color_unknown = $params[3] ?? '777777';
+        $size          = $size ?? ($WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y);
+        $color_female  = $color_female ?? 'ffd1dc';
+        $color_male    = $color_male ?? '84beff';
+        $color_unknown = $color_unknown ?? '777777';
 
         $sizes = explode('x', $size);
         // Raw data - for calculation
@@ -1112,18 +1097,20 @@ class Stats
     /**
      * Create a chart showing mortality.
      *
-     * @param string[] $params
+     * @param string|null $size
+     * @param string|null $color_living
+     * @param string|null $color_dead
      *
      * @return string
      */
-    public function chartMortality($params = [])
+    public function chartMortality(string $size = null, string $color_living = null, string $color_dead = null): string
     {
         $WT_STATS_S_CHART_X = Theme::theme()->parameter('stats-small-chart-x');
         $WT_STATS_S_CHART_Y = Theme::theme()->parameter('stats-small-chart-y');
 
-        $size         = $params[0] ?? $WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y;
-        $color_living = $params[1] ?? 'ffffff';
-        $color_dead   = $params[2] ?? 'cccccc';
+        $size         = $size ?? ($WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y);
+        $color_living = $color_living ?? 'ffffff';
+        $color_dead   = $color_dead ?? 'cccccc';
 
         $sizes = explode('x', $size);
         // Raw data - for calculation
@@ -1189,7 +1176,7 @@ class Stats
      *
      * @return int
      */
-    private function totalMediaType($type = 'all'): int
+    private function totalMediaType($type): int
     {
         if (!in_array($type, $this->media_types) && $type != 'all' && $type != 'unknown') {
             return 0;
@@ -1418,20 +1405,22 @@ class Stats
     /**
      * Create a chart of media types.
      *
-     * @param string[] $params
+     * @param string|null $size
+     * @param string|null $color_from
+     * @param string|null $color_to
      *
      * @return string
      */
-    public function chartMedia($params = []): string
+    public function chartMedia(string $size = null, string $color_from = null, string $color_to = null): string
     {
         $WT_STATS_CHART_COLOR1 = Theme::theme()->parameter('distribution-chart-no-values');
         $WT_STATS_CHART_COLOR2 = Theme::theme()->parameter('distribution-chart-high-values');
         $WT_STATS_S_CHART_X    = Theme::theme()->parameter('stats-small-chart-x');
         $WT_STATS_S_CHART_Y    = Theme::theme()->parameter('stats-small-chart-y');
 
-        $size       = $params[0] ?? $WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y;
-        $color_from = $params[1] ?? $WT_STATS_CHART_COLOR1;
-        $color_to   = $params[2] ?? $WT_STATS_CHART_COLOR2;
+        $size       = $size ?? ($WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y);
+        $color_from = $color_from ?? $WT_STATS_CHART_COLOR1;
+        $color_to   = $color_to ?? $WT_STATS_CHART_COLOR2;
 
         $sizes = explode('x', $size);
         $tot   = $this->totalMediaType('all');
@@ -1478,7 +1467,7 @@ class Stats
         }
         asort($media);
         foreach ($media as $type => $count) {
-            $mediaCounts[] = round(100 * $count / $tot, 0);
+            $mediaCounts[] = intdiv(100 * $count, $tot);
             $mediaTypes    .= GedcomTag::getFileFormTypeValue($type) . ' - ' . I18N::number($count) . '|';
             $chart_title   .= GedcomTag::getFileFormTypeValue($type) . ' (' . $count . '), ';
         }
@@ -1498,7 +1487,7 @@ class Stats
      *
      * @return string
      */
-    private function mortalityQuery($type = 'full', $life_dir = 'ASC', $birth_death = 'BIRT'): string
+    private function mortalityQuery($type, $life_dir, $birth_death): string
     {
         if ($birth_death == 'MARR') {
             $query_field = "'MARR'";
@@ -1570,7 +1559,7 @@ class Stats
      *
      * @return int[]|stdClass[]
      */
-    public function statsPlaces($what = 'ALL', $fact = '', $parent = 0, $country = false)
+    public function statsPlaces($what = 'ALL', $fact = '', $parent = 0, $country = false): array
     {
         if ($fact) {
             if ($what == 'INDI') {
@@ -1682,21 +1671,19 @@ class Stats
     /**
      * Create a chart showing where events occurred.
      *
-     * @param string[] $params
+     * @param string $chart_shows
+     * @param string $chart_type
+     * @param string $surname
      *
      * @return string
      */
-    public function chartDistribution($params = []): string
+    public function chartDistribution(string $chart_shows = 'world', string $chart_type = '', string $surname = ''): string
     {
         $WT_STATS_CHART_COLOR1 = Theme::theme()->parameter('distribution-chart-no-values');
         $WT_STATS_CHART_COLOR2 = Theme::theme()->parameter('distribution-chart-high-values');
         $WT_STATS_CHART_COLOR3 = Theme::theme()->parameter('distribution-chart-low-values');
         $WT_STATS_MAP_X        = Theme::theme()->parameter('distribution-chart-x');
         $WT_STATS_MAP_Y        = Theme::theme()->parameter('distribution-chart-y');
-
-        $chart_shows = $params[0] ?? 'world';
-        $chart_type  = $params[1] ?? '';
-        $surname     = $params[2] ?? '';
 
         if ($this->totalPlacesQuery() == 0) {
             return '';
@@ -1964,15 +1951,17 @@ class Stats
     /**
      * Create a chart of birth places.
      *
-     * @param bool     $simple
-     * @param bool     $sex
-     * @param int      $year1
-     * @param int      $year2
-     * @param string[] $params
+     * @param bool        $simple
+     * @param bool        $sex
+     * @param int         $year1
+     * @param int         $year2
+     * @param string|null $size
+     * @param string|null $color_from
+     * @param string|null $color_to
      *
      * @return array|string
      */
-    public function statsBirthQuery($simple = true, $sex = false, $year1 = -1, $year2 = -1, $params = [])
+    public function statsBirthQuery($simple = true, $sex = false, $year1 = -1, $year2 = -1, string $size = null, string $color_from = null, string $color_to = null)
     {
         $WT_STATS_CHART_COLOR1 = Theme::theme()->parameter('distribution-chart-no-values');
         $WT_STATS_CHART_COLOR2 = Theme::theme()->parameter('distribution-chart-high-values');
@@ -2016,13 +2005,14 @@ class Stats
         }
         $rows = $this->runSql($sql);
         if ($simple) {
-            $size       = $params[0] ?? $WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y;
-            $color_from = $params[1] ?? $WT_STATS_CHART_COLOR1;
-            $color_to   = $params[2] ?? $WT_STATS_CHART_COLOR2;
+            $size       = $size ?? ($WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y);
+            $color_from = $color_from ?? $WT_STATS_CHART_COLOR1;
+            $color_to   = $color_to ?? $WT_STATS_CHART_COLOR2;
 
             $sizes = explode('x', $size);
             $tot   = 0;
             foreach ($rows as $values) {
+                $values->total = (int) $values->total;
                 $tot += $values->total;
             }
             // Beware divide by zero
@@ -2032,7 +2022,7 @@ class Stats
             $centuries = '';
             $counts    = [];
             foreach ($rows as $values) {
-                $counts[] = round(100 * $values->total / $tot, 0);
+                $counts[] = intdiv(100 * $values->total, $tot);
                 $centuries .= $this->centuryName($values->century) . ' - ' . I18N::number($values->total) . '|';
             }
             $chd = $this->arrayToExtendedEncoding($counts);
@@ -2047,15 +2037,17 @@ class Stats
     /**
      * Create a chart of death places.
      *
-     * @param bool     $simple
-     * @param bool     $sex
-     * @param int      $year1
-     * @param int      $year2
-     * @param string[] $params
+     * @param bool        $simple
+     * @param bool        $sex
+     * @param int         $year1
+     * @param int         $year2
+     * @param string|null $size
+     * @param string|null $color_from
+     * @param string|null $color_to
      *
      * @return array|string
      */
-    public function statsDeathQuery($simple = true, $sex = false, $year1 = -1, $year2 = -1, $params = [])
+    public function statsDeathQuery($simple = true, $sex = false, $year1 = -1, $year2 = -1, string $size = null, string $color_from = null, string $color_to = null)
     {
         $WT_STATS_CHART_COLOR1 = Theme::theme()->parameter('distribution-chart-no-values');
         $WT_STATS_CHART_COLOR2 = Theme::theme()->parameter('distribution-chart-high-values');
@@ -2099,13 +2091,14 @@ class Stats
         }
         $rows = $this->runSql($sql);
         if ($simple) {
-            $size       = $params[0] ?? $WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y;
-            $color_from = $params[1] ?? $WT_STATS_CHART_COLOR1;
-            $color_to   = $params[2] ?? $WT_STATS_CHART_COLOR2;
+            $size       = $size ?? ($WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y);
+            $color_from = $color_from ?? $WT_STATS_CHART_COLOR1;
+            $color_to   = $color_to ?? $WT_STATS_CHART_COLOR2;
 
             $sizes = explode('x', $size);
             $tot   = 0;
             foreach ($rows as $values) {
+                $values->total = (int) $values->total;
                 $tot += $values->total;
             }
             // Beware divide by zero
@@ -2115,7 +2108,7 @@ class Stats
             $centuries = '';
             $counts    = [];
             foreach ($rows as $values) {
-                $counts[] = round(100 * $values->total / $tot, 0);
+                $counts[] = intdiv(100 * $values->total, $tot);
                 $centuries .= $this->centuryName($values->century) . ' - ' . I18N::number($values->total) . '|';
             }
             $chd = $this->arrayToExtendedEncoding($counts);
@@ -2210,13 +2203,15 @@ class Stats
     /**
      * General query on births.
      *
-     * @param string[] $params
+     * @param string|null $size
+     * @param string|null $color_from
+     * @param string|null $color_to
      *
      * @return string
      */
-    public function statsBirth($params = []): string
+    public function statsBirth(string $size = null, string $color_from = null, string $color_to = null): string
     {
-        return $this->statsBirthQuery(true, false, -1, -1, $params);
+        return $this->statsBirthQuery(true, false, -1, -1, $size, $color_from, $color_to);
     }
 
     /**
@@ -2302,13 +2297,15 @@ class Stats
     /**
      * General query on deaths.
      *
-     * @param string[] $params
+     * @param string|null $size
+     * @param string|null $color_from
+     * @param string|null $color_to
      *
      * @return string
      */
-    public function statsDeath($params = []): string
+    public function statsDeath(string $size = null, string $color_from = null, string $color_to = null): string
     {
-        return $this->statsDeathQuery(true, false, -1, -1, $params);
+        return $this->statsDeathQuery(true, false, -1, -1, $size, $color_from, $color_to);
     }
 
     /**
@@ -2319,7 +2316,7 @@ class Stats
      *
      * @return string
      */
-    private function longlifeQuery($type = 'full', $sex = 'F'): string
+    private function longlifeQuery($type, $sex): string
     {
         $sex_search = ' 1=1';
         if ($sex == 'F') {
@@ -2378,16 +2375,14 @@ class Stats
     /**
      * Find the oldest individuals.
      *
-     * @param string   $type
-     * @param string   $sex
-     * @param string[] $params
+     * @param string $type
+     * @param string $sex
+     * @param int    $total
      *
      * @return string
      */
-    private function topTenOldestQuery($type = 'list', $sex = 'BOTH', $params = []): string
+    private function topTenOldestQuery(string $type, string $sex, int $total): string
     {
-        $total = $params[0] ?? '10';
-
         if ($sex === 'F') {
             $sex_search = " AND i_sex='F' ";
         } elseif ($sex === 'M') {
@@ -2471,15 +2466,15 @@ class Stats
     /**
      * Find the oldest living individuals.
      *
-     * @param string   $type
-     * @param string   $sex
-     * @param string[] $params
+     * @param string $type
+     * @param string $sex
+     * @param string $total
      *
      * @return string
      */
-    private function topTenOldestAliveQuery($type = 'list', $sex = 'BOTH', $params = []): string
+    private function topTenOldestAliveQuery($type = 'list', $sex = 'BOTH', $total = '10'): string
     {
-        $total = $params[0] ?? '10';
+        $total = (int) $total;
 
         if (!Auth::isMember($this->tree)) {
             return I18N::translate('This information is private and cannot be shown.');
@@ -2564,7 +2559,7 @@ class Stats
      *
      * @return string
      */
-    private function averageLifespanQuery($sex = 'BOTH', $show_years = false)
+    private function averageLifespanQuery($sex = 'BOTH', $show_years = false): string
     {
         if ($sex === 'F') {
             $sex_search = " AND i_sex='F' ";
@@ -2612,19 +2607,18 @@ class Stats
     /**
      * General query on ages.
      *
-     * @param bool     $simple
-     * @param string   $related
-     * @param string   $sex
-     * @param int      $year1
-     * @param int      $year2
-     * @param string[] $params
+     * @param bool   $simple
+     * @param string $related
+     * @param string $sex
+     * @param int    $year1
+     * @param int    $year2
+     * @param string $size
      *
      * @return array|string
      */
-    public function statsAgeQuery($simple = true, $related = 'BIRT', $sex = 'BOTH', $year1 = -1, $year2 = -1, $params = [])
+    public function statsAgeQuery($simple = true, $related = 'BIRT', $sex = 'BOTH', $year1 = -1, $year2 = -1, $size = '230x250')
     {
         if ($simple) {
-            $size  = $params[0] ?? '230x250';
             $sizes = explode('x', $size);
             $rows  = $this->runSql(
                 "SELECT" .
@@ -2665,29 +2659,20 @@ class Stats
                     $sizes[0] += 50;
                 }
                 $chxl .= $this->centuryName($century) . '|';
-                $average = 0;
-                if (isset($values['F'])) {
-                    $countsf .= $values['F'] . ',';
-                    $average = $values['F'];
-                } else {
-                    $countsf .= '0,';
+
+                $female_age  = $values['F'] ?? 0;
+                $male_age    = $values['M'] ?? 0;
+                $average_age = $female_age + $male_age;
+
+                if ($female_age > 0 && $male_age > 0) {
+                    $average_age = $average_age / 2.0;
                 }
-                if (isset($values['M'])) {
-                    $countsm .= $values['M'] . ',';
-                    if ($average == 0) {
-                        $countsa .= $values['M'] . ',';
-                    } else {
-                        $countsa .= (($values['M'] + $average) / 2) . ',';
-                    }
-                } else {
-                    $countsm .= '0,';
-                    if ($average == 0) {
-                        $countsa .= '0,';
-                    } else {
-                        $countsa .= $values['F'] . ',';
-                    }
-                }
+
+                $countsf .= (string) $female_age . ',';
+                $countsm .= (string) $male_age . ',';
+                $countsa .= (string) $average_age . ',';
             }
+
             $countsm = substr($countsm, 0, -1);
             $countsf = substr($countsf, 0, -1);
             $countsa = substr($countsa, 0, -1);
@@ -2757,13 +2742,13 @@ class Stats
     /**
      * General query on ages.
      *
-     * @param string[] $params
+     * @param string $size
      *
      * @return string
      */
-    public function statsAge($params = []): string
+    public function statsAge(string $size = '230x250'): string
     {
-        return $this->statsAgeQuery(true, 'BIRT', 'BOTH', -1, -1, $params);
+        return $this->statsAgeQuery(true, 'BIRT', 'BOTH', -1, -1, $size);
     }
 
     /**
@@ -2799,49 +2784,49 @@ class Stats
     /**
      * Find the oldest individuals.
      *
-     * @param string[] $params
+     * @param string $total
      *
      * @return string
      */
-    public function topTenOldest($params = []): string
+    public function topTenOldest(string $total = '10'): string
     {
-        return $this->topTenOldestQuery('nolist', 'BOTH', $params);
+        return $this->topTenOldestQuery('nolist', 'BOTH', (int) $total);
     }
 
     /**
      * Find the oldest living individuals.
      *
-     * @param string[] $params
+     * @param string $total
      *
      * @return string
      */
-    public function topTenOldestList($params = []): string
+    public function topTenOldestList(string $total = '10'): string
     {
-        return $this->topTenOldestQuery('list', 'BOTH', $params);
+        return $this->topTenOldestQuery('list', 'BOTH', (int) $total);
     }
 
     /**
      * Find the oldest living individuals.
      *
-     * @param string[] $params
+     * @param string|null $total
      *
      * @return string
      */
-    public function topTenOldestAlive($params = []): string
+    public function topTenOldestAlive(string $total = null): string
     {
-        return $this->topTenOldestAliveQuery('nolist', 'BOTH', $params);
+        return $this->topTenOldestAliveQuery('nolist', 'BOTH', $total);
     }
 
     /**
      * Find the oldest living individuals.
      *
-     * @param string[] $params
+     * @param string|null $total
      *
      * @return string
      */
-    public function topTenOldestListAlive($params = []): string
+    public function topTenOldestListAlive(string $total = null): string
     {
-        return $this->topTenOldestAliveQuery('list', 'BOTH', $params);
+        return $this->topTenOldestAliveQuery('list', 'BOTH', $total);
     }
 
     /**
@@ -2889,49 +2874,49 @@ class Stats
     /**
      * Find the oldest females.
      *
-     * @param string[] $params
+     * @param string $total
      *
      * @return string
      */
-    public function topTenOldestFemale($params = []): string
+    public function topTenOldestFemale(string $total = '10'): string
     {
-        return $this->topTenOldestQuery('nolist', 'F', $params);
+        return $this->topTenOldestQuery('nolist', 'F', (int) $total);
     }
 
     /**
      * Find the oldest living females.
      *
-     * @param string[] $params
+     * @param string $total
      *
      * @return string
      */
-    public function topTenOldestFemaleList($params = []): string
+    public function topTenOldestFemaleList(string $total = '10'): string
     {
-        return $this->topTenOldestQuery('list', 'F', $params);
+        return $this->topTenOldestQuery('list', 'F', (int) $total);
     }
 
     /**
      * Find the oldest living females.
      *
-     * @param string[] $params
+     * @param string|null $total
      *
      * @return string
      */
-    public function topTenOldestFemaleAlive($params = []): string
+    public function topTenOldestFemaleAlive(string $total = null): string
     {
-        return $this->topTenOldestAliveQuery('nolist', 'F', $params);
+        return $this->topTenOldestAliveQuery('nolist', 'F', $total);
     }
 
     /**
      * Find the oldest living females.
      *
-     * @param string[] $params
+     * @param string|null $total
      *
      * @return string
      */
-    public function topTenOldestFemaleListAlive($params = []): string
+    public function topTenOldestFemaleListAlive(string $total = null): string
     {
-        return $this->topTenOldestAliveQuery('list', 'F', $params);
+        return $this->topTenOldestAliveQuery('list', 'F', $total);
     }
 
     /**
@@ -2979,49 +2964,49 @@ class Stats
     /**
      * Find the longest lived males.
      *
-     * @param string[] $params
+     * @param string $total
      *
      * @return string
      */
-    public function topTenOldestMale($params = []): string
+    public function topTenOldestMale(string $total = '10'): string
     {
-        return $this->topTenOldestQuery('nolist', 'M', $params);
+        return $this->topTenOldestQuery('nolist', 'M', (int) $total);
     }
 
     /**
      * Find the longest lived males.
      *
-     * @param string[] $params
+     * @param string $total
      *
      * @return string
      */
-    public function topTenOldestMaleList($params = []): string
+    public function topTenOldestMaleList(string $total = '10'): string
     {
-        return $this->topTenOldestQuery('list', 'M', $params);
+        return $this->topTenOldestQuery('list', 'M', (int) $total);
     }
 
     /**
      * Find the longest lived living males.
      *
-     * @param string[] $params
+     * @param string|null $total
      *
      * @return string
      */
-    public function topTenOldestMaleAlive($params = []): string
+    public function topTenOldestMaleAlive(string $total = null): string
     {
-        return $this->topTenOldestAliveQuery('nolist', 'M', $params);
+        return $this->topTenOldestAliveQuery('nolist', 'M', $total);
     }
 
     /**
      * Find the longest lived living males.
      *
-     * @param string[] $params
+     * @param string|null $total
      *
      * @return string
      */
-    public function topTenOldestMaleListAlive($params = []): string
+    public function topTenOldestMaleListAlive(string $total = null): string
     {
-        return $this->topTenOldestAliveQuery('list', 'M', $params);
+        return $this->topTenOldestAliveQuery('list', 'M', $total);
     }
 
     /**
@@ -3228,7 +3213,7 @@ class Stats
      *
      * @return string
      */
-    private function marriageQuery($type = 'full', $age_dir = 'ASC', $sex = 'F', $show_years = false): string
+    private function marriageQuery(string $type, string $age_dir, string $sex, bool $show_years): string
     {
         if ($sex == 'F') {
             $sex_field = 'f_wife';
@@ -3302,15 +3287,14 @@ class Stats
     /**
      * General query on age at marriage.
      *
-     * @param string   $type
-     * @param string   $age_dir
-     * @param string[] $params
+     * @param string $type
+     * @param string $age_dir
+     * @param int    $total
      *
      * @return string
      */
-    private function ageOfMarriageQuery($type = 'list', $age_dir = 'ASC', $params = []): string
+    private function ageOfMarriageQuery($type, $age_dir, int $total): string
     {
-        $total = $params[0] ?? '10';
         $total = (int) $total;
 
         if ($age_dir != 'ASC') {
@@ -3448,15 +3432,14 @@ class Stats
     /**
      * Find the ages between spouses.
      *
-     * @param string   $type
-     * @param string   $age_dir
-     * @param string[] $params
+     * @param string $type
+     * @param string $age_dir
+     * @param int    $total
      *
      * @return string
      */
-    private function ageBetweenSpousesQuery($type = 'list', $age_dir = 'DESC', $params = []): string
+    private function ageBetweenSpousesQuery(string $type, string $age_dir, int $total): string
     {
-        $total = $params[0] ?? '10';
         $total = (int) $total;
 
         if ($age_dir === 'DESC') {
@@ -3538,7 +3521,7 @@ class Stats
      *
      * @return string
      */
-    private function parentsQuery($type = 'full', $age_dir = 'ASC', $sex = 'F', $show_years = false): string
+    private function parentsQuery(string $type, string $age_dir, string $sex, bool $show_years): string
     {
         if ($sex == 'F') {
             $sex_field = 'WIFE';
@@ -3611,15 +3594,17 @@ class Stats
     /**
      * General query on marriages.
      *
-     * @param bool     $simple
-     * @param bool     $first
-     * @param int      $year1
-     * @param int      $year2
-     * @param string[] $params
+     * @param bool        $simple
+     * @param bool        $first
+     * @param int         $year1
+     * @param int         $year2
+     * @param string|null $size
+     * @param string|null $color_from
+     * @param string|null $color_to
      *
      * @return string|array
      */
-    public function statsMarrQuery($simple = true, $first = false, $year1 = -1, $year2 = -1, $params = [])
+    public function statsMarrQuery($simple = true, $first = false, $year1 = -1, $year2 = -1, string $size = null, string $color_from = null, string $color_to = null)
     {
         $WT_STATS_CHART_COLOR1 = Theme::theme()->parameter('distribution-chart-no-values');
         $WT_STATS_CHART_COLOR2 = Theme::theme()->parameter('distribution-chart-high-values');
@@ -3666,14 +3651,15 @@ class Stats
         $rows = $this->runSql($sql);
 
         if ($simple) {
-            $size       = $params[0] ?? $WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y;
-            $color_from = $params[1] ?? $WT_STATS_CHART_COLOR1;
-            $color_to   = $params[2] ?? $WT_STATS_CHART_COLOR2;
+            $size       = $size ?? ($WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y);
+            $color_from = $color_from ?? $WT_STATS_CHART_COLOR1;
+            $color_to   = $color_to ?? $WT_STATS_CHART_COLOR2;
 
             $sizes = explode('x', $size);
             $tot   = 0;
 
             foreach ($rows as $values) {
+                $values->total = (int) $values->total;
                 $tot += (int) $values->total;
             }
             // Beware divide by zero
@@ -3683,7 +3669,7 @@ class Stats
             $centuries = '';
             $counts    = [];
             foreach ($rows as $values) {
-                $counts[] = round(100 * $values->total / $tot, 0);
+                $counts[] = intdiv(100 * $values->total, $tot);
                 $centuries .= $this->centuryName($values->century) . ' - ' . I18N::number($values->total) . '|';
             }
             $chd = $this->arrayToExtendedEncoding($counts);
@@ -3698,15 +3684,17 @@ class Stats
     /**
      * General query on divorces.
      *
-     * @param bool     $simple
-     * @param bool     $first
-     * @param int      $year1
-     * @param int      $year2
-     * @param string[] $params
+     * @param bool        $simple
+     * @param bool        $first
+     * @param int         $year1
+     * @param int         $year2
+     * @param string|null $size
+     * @param string|null $color_from
+     * @param string|null $color_to
      *
-     * @return string|array
+     * @return string|stdClass[]
      */
-    private function statsDivQuery($simple = true, $first = false, $year1 = -1, $year2 = -1, $params = [])
+    private function statsDivQuery($simple = true, $first = false, $year1 = -1, $year2 = -1, string $size = null, string $color_from = null, string $color_to = null)
     {
         $WT_STATS_CHART_COLOR1 = Theme::theme()->parameter('distribution-chart-no-values');
         $WT_STATS_CHART_COLOR2 = Theme::theme()->parameter('distribution-chart-high-values');
@@ -3752,14 +3740,15 @@ class Stats
         $rows = $this->runSql($sql);
 
         if ($simple) {
-            $size       = $params[0] ?? $WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y;
-            $color_from = $params[1] ?? $WT_STATS_CHART_COLOR1;
-            $color_to   = $params[2] ?? $WT_STATS_CHART_COLOR2;
+            $size       = $size ?? ($WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y);
+            $color_from = $color_from ?? $WT_STATS_CHART_COLOR1;
+            $color_to   = $color_to ?? $WT_STATS_CHART_COLOR2;
 
             $sizes = explode('x', $size);
             $tot   = 0;
             foreach ($rows as $values) {
-                $tot += (int) $values->total;
+                $values->total = (int) $values->total;
+                $tot += $values->total;
             }
             // Beware divide by zero
             if ($tot === 0) {
@@ -3768,7 +3757,7 @@ class Stats
             $centuries = '';
             $counts    = [];
             foreach ($rows as $values) {
-                $counts[] = round(100 * $values->total / $tot, 0);
+                $counts[] = intdiv(100 * $values->total, $tot);
                 $centuries .= $this->centuryName($values->century) . ' - ' . I18N::number($values->total) . '|';
             }
             $chd = $this->arrayToExtendedEncoding($counts);
@@ -3863,13 +3852,15 @@ class Stats
     /**
      * General query on marriages.
      *
-     * @param string[] $params
+     * @param string|null $size
+     * @param string|null $color_from
+     * @param string|null $color_to
      *
      * @return string
      */
-    public function statsMarr($params = []): string
+    public function statsMarr(string $size = null, string $color_from = null, string $color_to = null): string
     {
-        return $this->statsMarrQuery(true, false, -1, -1, $params);
+        return $this->statsMarrQuery(true, false, -1, -1, $size, $color_from, $color_to);
     }
 
     /**
@@ -3955,30 +3946,31 @@ class Stats
     /**
      * General divorce query.
      *
-     * @param string[] $params
+     * @param string|null $size
+     * @param string|null $color_from
+     * @param string|null $color_to
      *
      * @return string
      */
-    public function statsDiv($params = []): string
+    public function statsDiv(string $size = null, string $color_from = null, string $color_to = null): string
     {
-        return $this->statsDivQuery(true, false, -1, -1, $params);
+        return $this->statsDivQuery(true, false, -1, -1, $size, $color_from, $color_to);
     }
 
     /**
      * General query on ages at marriage.
      *
-     * @param bool     $simple
-     * @param string   $sex
-     * @param int      $year1
-     * @param int      $year2
-     * @param string[] $params
+     * @param bool   $simple
+     * @param string $sex
+     * @param int    $year1
+     * @param int    $year2
+     * @param string $size
      *
      * @return array|string
      */
-    public function statsMarrAgeQuery($simple = true, $sex = 'M', $year1 = -1, $year2 = -1, $params = [])
+    public function statsMarrAgeQuery($simple = true, $sex = 'M', $year1 = -1, $year2 = -1, $size = '200x250')
     {
         if ($simple) {
-            $size  = $params[0] ?? '200x250';
             $sizes = explode('x', $size);
 
             $rows  = $this->runSql(
@@ -4157,13 +4149,13 @@ class Stats
     /**
      * Find the age of the youngest wife.
      *
-     * @param bool $show_years
+     * @param string $show_years
      *
      * @return string
      */
-    public function youngestMarriageFemaleAge($show_years = false): string
+    public function youngestMarriageFemaleAge(string $show_years = ''): string
     {
-        return $this->marriageQuery('age', 'ASC', 'F', $show_years);
+        return $this->marriageQuery('age', 'ASC', 'F', (bool) $show_years);
     }
 
     /**
@@ -4189,13 +4181,13 @@ class Stats
     /**
      * Find the age of the oldest wife.
      *
-     * @param bool $show_years
+     * @param string $show_years
      *
      * @return string
      */
-    public function oldestMarriageFemaleAge($show_years = false): string
+    public function oldestMarriageFemaleAge(string $show_years = ''): string
     {
-        return $this->marriageQuery('age', 'DESC', 'F', $show_years);
+        return $this->marriageQuery('age', 'DESC', 'F', (bool) $show_years);
     }
 
     /**
@@ -4221,13 +4213,13 @@ class Stats
     /**
      * Find the age of the youngest husband.
      *
-     * @param bool $show_years
+     * @param string $show_years
      *
      * @return string
      */
-    public function youngestMarriageMaleAge($show_years = false): string
+    public function youngestMarriageMaleAge(string $show_years = ''): string
     {
-        return $this->marriageQuery('age', 'ASC', 'M', $show_years);
+        return $this->marriageQuery('age', 'ASC', 'M', (bool) $show_years);
     }
 
     /**
@@ -4253,73 +4245,73 @@ class Stats
     /**
      * Find the age of the oldest husband.
      *
-     * @param bool $show_years
+     * @param string $show_years
      *
      * @return string
      */
-    public function oldestMarriageMaleAge($show_years = false): string
+    public function oldestMarriageMaleAge(string $show_years = ''): string
     {
-        return $this->marriageQuery('age', 'DESC', 'M', $show_years);
+        return $this->marriageQuery('age', 'DESC', 'M', (bool) $show_years);
     }
 
     /**
      * General query on marriage ages.
      *
-     * @param string[] $params
+     * @param string $size
      *
      * @return string
      */
-    public function statsMarrAge($params = []): string
+    public function statsMarrAge(string $size = '200x250'): string
     {
-        return $this->statsMarrAgeQuery(true, 'BOTH', -1, -1, $params);
+        return $this->statsMarrAgeQuery(true, 'BOTH', -1, -1, $size);
     }
 
     /**
      * Find the age between husband and wife.
      *
-     * @param string[] $params
+     * @param string $total
      *
      * @return string
      */
-    public function ageBetweenSpousesMF($params = []): string
+    public function ageBetweenSpousesMF(string $total = '10'): string
     {
-        return $this->ageBetweenSpousesQuery('nolist', 'DESC', $params);
+        return $this->ageBetweenSpousesQuery('nolist', 'DESC', (int) $total);
     }
 
     /**
      * Find the age between husband and wife.
      *
-     * @param string[] $params
+     * @param string $total
      *
      * @return string
      */
-    public function ageBetweenSpousesMFList($params = []): string
+    public function ageBetweenSpousesMFList(string $total = '10'): string
     {
-        return $this->ageBetweenSpousesQuery('list', 'DESC', $params);
+        return $this->ageBetweenSpousesQuery('list', 'DESC', (int) $total);
     }
 
     /**
      * Find the age between wife and husband..
      *
-     * @param string[] $params
+     * @param string $total
      *
      * @return string
      */
-    public function ageBetweenSpousesFM($params = []): string
+    public function ageBetweenSpousesFM(string $total = '10'): string
     {
-        return $this->ageBetweenSpousesQuery('nolist', 'ASC', $params);
+        return $this->ageBetweenSpousesQuery('nolist', 'ASC', (int) $total);
     }
 
     /**
      * Find the age between wife and husband..
      *
-     * @param string[] $params
+     * @param string $total
      *
      * @return string
      */
-    public function ageBetweenSpousesFMList($params = []): string
+    public function ageBetweenSpousesFMList(string $total = '10'): string
     {
-        return $this->ageBetweenSpousesQuery('list', 'ASC', $params);
+        return $this->ageBetweenSpousesQuery('list', 'ASC', (int) $total);
     }
 
     /**
@@ -4329,7 +4321,7 @@ class Stats
      */
     public function topAgeOfMarriageFamily(): string
     {
-        return $this->ageOfMarriageQuery('name', 'DESC', ['1']);
+        return $this->ageOfMarriageQuery('name', 'DESC', 1);
     }
 
     /**
@@ -4339,31 +4331,31 @@ class Stats
      */
     public function topAgeOfMarriage(): string
     {
-        return $this->ageOfMarriageQuery('age', 'DESC', ['1']);
+        return $this->ageOfMarriageQuery('age', 'DESC', 1);
     }
 
     /**
      * General query on marriage ages.
      *
-     * @param string[] $params
+     * @param string $total
      *
      * @return string
      */
-    public function topAgeOfMarriageFamilies($params = []): string
+    public function topAgeOfMarriageFamilies(string $total = '10'): string
     {
-        return $this->ageOfMarriageQuery('nolist', 'DESC', $params);
+        return $this->ageOfMarriageQuery('nolist', 'DESC', (int) $total);
     }
 
     /**
      * General query on marriage ages.
      *
-     * @param string[] $params
+     * @param string $total
      *
      * @return string
      */
-    public function topAgeOfMarriageFamiliesList($params = []): string
+    public function topAgeOfMarriageFamiliesList(string $total = '10'): string
     {
-        return $this->ageOfMarriageQuery('list', 'DESC', $params);
+        return $this->ageOfMarriageQuery('list', 'DESC', (int) $total);
     }
 
     /**
@@ -4373,7 +4365,7 @@ class Stats
      */
     public function minAgeOfMarriageFamily(): string
     {
-        return $this->ageOfMarriageQuery('name', 'ASC', ['1']);
+        return $this->ageOfMarriageQuery('name', 'ASC', 1);
     }
 
     /**
@@ -4383,31 +4375,31 @@ class Stats
      */
     public function minAgeOfMarriage(): string
     {
-        return $this->ageOfMarriageQuery('age', 'ASC', ['1']);
+        return $this->ageOfMarriageQuery('age', 'ASC', 1);
     }
 
     /**
      * General query on marriage ages.
      *
-     * @param string[] $params
+     * @param string $total
      *
      * @return string
      */
-    public function minAgeOfMarriageFamilies($params = []): string
+    public function minAgeOfMarriageFamilies(string $total = '10'): string
     {
-        return $this->ageOfMarriageQuery('nolist', 'ASC', $params);
+        return $this->ageOfMarriageQuery('nolist', 'ASC', (int) $total);
     }
 
     /**
      * General query on marriage ages.
      *
-     * @param string[] $params
+     * @param string $total
      *
      * @return string
      */
-    public function minAgeOfMarriageFamiliesList($params = []): string
+    public function minAgeOfMarriageFamiliesList(string $total = '10'): string
     {
-        return $this->ageOfMarriageQuery('list', 'ASC', $params);
+        return $this->ageOfMarriageQuery('list', 'ASC', (int) $total);
     }
 
     /**
@@ -4417,7 +4409,7 @@ class Stats
      */
     public function youngestMother(): string
     {
-        return $this->parentsQuery('full', 'ASC', 'F');
+        return $this->parentsQuery('full', 'ASC', 'F', false);
     }
 
     /**
@@ -4427,19 +4419,19 @@ class Stats
      */
     public function youngestMotherName(): string
     {
-        return $this->parentsQuery('name', 'ASC', 'F');
+        return $this->parentsQuery('name', 'ASC', 'F', false);
     }
 
     /**
      * Find the age of the youngest mother.
      *
-     * @param bool $show_years
+     * @param string $show_years
      *
      * @return string
      */
-    public function youngestMotherAge($show_years = false): string
+    public function youngestMotherAge(string $show_years = ''): string
     {
-        return $this->parentsQuery('age', 'ASC', 'F', $show_years);
+        return $this->parentsQuery('age', 'ASC', 'F', (bool) $show_years);
     }
 
     /**
@@ -4449,7 +4441,7 @@ class Stats
      */
     public function oldestMother(): string
     {
-        return $this->parentsQuery('full', 'DESC', 'F');
+        return $this->parentsQuery('full', 'DESC', 'F', false);
     }
 
     /**
@@ -4459,19 +4451,19 @@ class Stats
      */
     public function oldestMotherName(): string
     {
-        return $this->parentsQuery('name', 'DESC', 'F');
+        return $this->parentsQuery('name', 'DESC', 'F', false);
     }
 
     /**
      * Find the age of the oldest mother.
      *
-     * @param bool $show_years
+     * @param string $show_years
      *
      * @return string
      */
-    public function oldestMotherAge($show_years = false): string
+    public function oldestMotherAge(string $show_years = ''): string
     {
-        return $this->parentsQuery('age', 'DESC', 'F', $show_years);
+        return $this->parentsQuery('age', 'DESC', 'F', (bool) $show_years);
     }
 
     /**
@@ -4481,7 +4473,7 @@ class Stats
      */
     public function youngestFather(): string
     {
-        return $this->parentsQuery('full', 'ASC', 'M');
+        return $this->parentsQuery('full', 'ASC', 'M', false);
     }
 
     /**
@@ -4491,19 +4483,19 @@ class Stats
      */
     public function youngestFatherName(): string
     {
-        return $this->parentsQuery('name', 'ASC', 'M');
+        return $this->parentsQuery('name', 'ASC', 'M', false);
     }
 
     /**
      * Find the age of the youngest father.
      *
-     * @param bool $show_years
+     * @param string $show_years
      *
      * @return string
      */
-    public function youngestFatherAge($show_years = false): string
+    public function youngestFatherAge(string $show_years = ''): string
     {
-        return $this->parentsQuery('age', 'ASC', 'M', $show_years);
+        return $this->parentsQuery('age', 'ASC', 'M', (bool) $show_years);
     }
 
     /**
@@ -4513,7 +4505,7 @@ class Stats
      */
     public function oldestFather(): string
     {
-        return $this->parentsQuery('full', 'DESC', 'M');
+        return $this->parentsQuery('full', 'DESC', 'M', false);
     }
 
     /**
@@ -4523,19 +4515,19 @@ class Stats
      */
     public function oldestFatherName(): string
     {
-        return $this->parentsQuery('name', 'DESC', 'M');
+        return $this->parentsQuery('name', 'DESC', 'M', false);
     }
 
     /**
      * Find the age of the oldest father.
      *
-     * @param bool $show_years
+     * @param string $show_years
      *
      * @return string
      */
-    public function oldestFatherAge($show_years = false): string
+    public function oldestFatherAge(string $show_years = ''): string
     {
-        return $this->parentsQuery('age', 'DESC', 'M', $show_years);
+        return $this->parentsQuery('age', 'DESC', 'M', (bool) $show_years);
     }
 
     /**
@@ -4577,7 +4569,7 @@ class Stats
      *
      * @return string
      */
-    private function familyQuery($type = 'full'): string
+    private function familyQuery($type): string
     {
         $rows = $this->runSql(
             " SELECT f_numchil AS tot, f_id AS id" .
@@ -4606,7 +4598,7 @@ class Stats
                 }
                 break;
             case 'size':
-                $result = I18N::number($row->tot);
+                $result = I18N::number((int) $row->tot);
                 break;
             case 'name':
                 $result = '<a href="' . e($family->url()) . '">' . $family->getFullName() . '</a>';
@@ -4619,14 +4611,13 @@ class Stats
     /**
      * General query on families.
      *
-     * @param string   $type
-     * @param string[] $params
+     * @param string $type
+     * @param int    $total
      *
      * @return string
      */
-    private function topTenFamilyQuery($type = 'list', $params = []): string
+    private function topTenFamilyQuery(string $type, int $total): string
     {
-        $total = $params[0] ?? '10';
         $total = (int) $total;
 
         $rows = $this->runSql(
@@ -4637,20 +4628,21 @@ class Stats
             " ORDER BY tot DESC" .
             " LIMIT " . $total
         );
-        if (!isset($rows[0])) {
+
+        if (empty($rows)) {
             return '';
         }
-        if (count($rows) < $total) {
-            $total = count($rows);
-        }
+
         $top10 = [];
-        for ($c = 0; $c < $total; $c++) {
-            $family = Family::getInstance($rows[$c]->id, $this->tree);
+        foreach ($rows as $row) {
+            $family = Family::getInstance($row->id, $this->tree);
             if ($family->canShow()) {
+                $total = (int) $row->tot;
+                
                 if ($type === 'list') {
-                    $top10[] = '<li><a href="' . e($family->url()) . '">' . $family->getFullName() . '</a> - ' . I18N::plural('%s child', '%s children', $rows[$c]->tot, I18N::number($rows[$c]->tot));
+                    $top10[] = '<li><a href="' . e($family->url()) . '">' . $family->getFullName() . '</a> - ' . I18N::plural('%s child', '%s children', $total, I18N::number($total));
                 } else {
-                    $top10[] = '<a href="' . e($family->url()) . '">' . $family->getFullName() . '</a> - ' . I18N::plural('%s child', '%s children', $rows[$c]->tot, I18N::number($rows[$c]->tot));
+                    $top10[] = '<a href="' . e($family->url()) . '">' . $family->getFullName() . '</a> - ' . I18N::plural('%s child', '%s children', $total, I18N::number($total));
                 }
             }
         }
@@ -4684,21 +4676,14 @@ class Stats
     /**
      * Find the ages between siblings.
      *
-     * @param string   $type
-     * @param string[] $params
+     * @param string $type
+     * @param int    $total
+     * @param bool   $one   Include each family only once if true
      *
      * @return string
      */
-    private function ageBetweenSiblingsQuery($type = 'list', $params = []): string
+    private function ageBetweenSiblingsQuery(string $type, int $total, bool $one): string
     {
-        $total = $params[0] ?? '10';
-        $total = (int) $total;
-
-        if (isset($params[1])) {
-            $one = $params[1];
-        } else {
-            $one = false;
-        } // each family only once if true
         $rows = $this->runSql(
             " SELECT DISTINCT" .
             " link1.l_from AS family," .
@@ -4821,21 +4806,14 @@ class Stats
     /**
      * Find the month in the year of the birth of the first child.
      *
-     * @param bool     $simple
-     * @param bool     $sex
-     * @param int      $year1
-     * @param int      $year2
-     * @param string[] $params
+     * @param bool $sex
+     * @param int  $year1
+     * @param int  $year2
      *
-     * @return string|string[][]
+     * @return stdClass[]
      */
-    public function monthFirstChildQuery($simple = true, $sex = false, $year1 = -1, $year2 = -1, $params = [])
+    public function monthFirstChildQuery($sex = false, $year1 = -1, $year2 = -1): array
     {
-        $WT_STATS_CHART_COLOR1 = Theme::theme()->parameter('distribution-chart-no-values');
-        $WT_STATS_CHART_COLOR2 = Theme::theme()->parameter('distribution-chart-high-values');
-        $WT_STATS_S_CHART_X    = Theme::theme()->parameter('stats-small-chart-x');
-        $WT_STATS_S_CHART_Y    = Theme::theme()->parameter('stats-small-chart-y');
-
         if ($year1 >= 0 && $year2 >= 0) {
             $sql_years = " AND (d_year BETWEEN '{$year1}' AND '{$year2}')";
         } else {
@@ -4878,70 +4856,6 @@ class Stats
             $sql .= ', i_sex';
         }
         $rows = $this->runSql($sql);
-        if ($simple) {
-            $size       = $params[0] ?? $WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y;
-            $color_from = $params[1] ?? $WT_STATS_CHART_COLOR1;
-            $color_to   = $params[2] ?? $WT_STATS_CHART_COLOR2;
-
-            $sizes = explode('x', $size);
-            $tot   = 0;
-            foreach ($rows as $values) {
-                $tot += $values->total;
-            }
-            // Beware divide by zero
-            if ($tot == 0) {
-                return '';
-            }
-            $text   = '';
-            $counts = [];
-            foreach ($rows as $values) {
-                $counts[] = round(100 * $values->total / $tot, 0);
-                switch ($values->d_month) {
-                    default:
-                    case 'JAN':
-                        $values->d_month = 1;
-                        break;
-                    case 'FEB':
-                        $values->d_month = 2;
-                        break;
-                    case 'MAR':
-                        $values->d_month = 3;
-                        break;
-                    case 'APR':
-                        $values->d_month = 4;
-                        break;
-                    case 'MAY':
-                        $values->d_month = 5;
-                        break;
-                    case 'JUN':
-                        $values->d_month = 6;
-                        break;
-                    case 'JUL':
-                        $values->d_month = 7;
-                        break;
-                    case 'AUG':
-                        $values->d_month = 8;
-                        break;
-                    case 'SEP':
-                        $values->d_month = 9;
-                        break;
-                    case 'OCT':
-                        $values->d_month = 10;
-                        break;
-                    case 'NOV':
-                        $values->d_month = 11;
-                        break;
-                    case 'DEC':
-                        $values->d_month = 12;
-                        break;
-                }
-                $text .= I18N::translate(ucfirst(strtolower(($values->d_month)))) . ' - ' . $values->total . '|';
-            }
-            $chd = $this->arrayToExtendedEncoding($counts);
-            $chl = substr($text, 0, -1);
-
-            return '<img src="https://chart.googleapis.com/chart?cht=p3&amp;chd=e:' . $chd . '&amp;chs=' . $size . '&amp;chco=' . $color_from . ',' . $color_to . '&amp;chf=bg,s,ffffff00&amp;chl=' . $chl . '" width="' . $sizes[0] . '" height="' . $sizes[1] . '" alt="' . I18N::translate('Month of birth of first child in a relation') . '" title="' . I18N::translate('Month of birth of first child in a relation') . '" />';
-        }
 
         return $rows;
     }
@@ -4979,45 +4893,48 @@ class Stats
     /**
      * The the families with the most children.
      *
-     * @param string[] $params
+     * @param string $total
      *
      * @return string
      */
-    public function topTenLargestFamily($params = []): string
+    public function topTenLargestFamily(string $total = '10'): string
     {
-        return $this->topTenFamilyQuery('nolist', $params);
+        return $this->topTenFamilyQuery('nolist', (int) $total);
     }
 
     /**
      * Find the families with the most children.
      *
-     * @param string[] $params
+     * @param string $total
      *
      * @return string
      */
-    public function topTenLargestFamilyList($params = []): string
+    public function topTenLargestFamilyList(string $total = '10'): string
     {
-        return $this->topTenFamilyQuery('list', $params);
+        return $this->topTenFamilyQuery('list', (int) $total);
     }
 
     /**
      * Create a chart of the largest families.
      *
-     * @param string[] $params
+     * @param string|null $size
+     * @param string|null $color_from
+     * @param string|null $color_to
+     * @param string      $total
      *
      * @return string
      */
-    public function chartLargestFamilies($params = []): string
+    public function chartLargestFamilies(string $size = null, string $color_from = null, string $color_to = null, string $total = '10'): string
     {
         $WT_STATS_CHART_COLOR1 = Theme::theme()->parameter('distribution-chart-no-values');
         $WT_STATS_CHART_COLOR2 = Theme::theme()->parameter('distribution-chart-high-values');
         $WT_STATS_L_CHART_X    = Theme::theme()->parameter('stats-large-chart-x');
         $WT_STATS_S_CHART_Y    = Theme::theme()->parameter('stats-small-chart-y');
 
-        $size       = $params[0] ?? $WT_STATS_L_CHART_X . 'x' . $WT_STATS_S_CHART_Y;
-        $color_from = $params[1] ?? $WT_STATS_CHART_COLOR1;
-        $color_to   = $params[2] ?? $WT_STATS_CHART_COLOR2;
-        $total      = $params[3] ?? '10';
+        $size       = $size ?? $WT_STATS_L_CHART_X . 'x' . $WT_STATS_S_CHART_Y;
+        $color_from = $color_from ?? $WT_STATS_CHART_COLOR1;
+        $color_to   = $color_to ?? $WT_STATS_CHART_COLOR2;
+        $total      = $total ?? '10';
 
         $sizes = explode('x', $size);
         $total = (int) $total;
@@ -5090,18 +5007,17 @@ class Stats
     /**
      * General query on familes/children.
      *
-     * @param bool     $simple
-     * @param string   $sex
-     * @param int      $year1
-     * @param int      $year2
-     * @param string[] $params
+     * @param bool   $simple
+     * @param string $sex
+     * @param int    $year1
+     * @param int    $year2
+     * @param string $size
      *
-     * @return string|string[][]
+     * @return string|stdClass[]
      */
-    public function statsChildrenQuery($simple = true, $sex = 'BOTH', $year1 = -1, $year2 = -1, $params = [])
+    public function statsChildrenQuery($simple = true, $sex = 'BOTH', $year1 = -1, $year2 = -1, $size = '220x200')
     {
         if ($simple) {
-            $size  = $params[0] ?? '220x200';
             $sizes = explode('x', $size);
             $max   = 0;
             $rows  = $this->runSql(
@@ -5128,16 +5044,13 @@ class Stats
             $i      = 0;
             $counts = [];
             foreach ($rows as $values) {
-                if ($sizes[0] < 980) {
-                    $sizes[0] += 38;
-                }
                 $chxl .= $this->centuryName($values->century) . '|';
                 if ($max <= 5) {
-                    $counts[] = round($values->num * 819.2 - 1, 1);
+                    $counts[] = (int) ($values->num * 819.2 - 1);
                 } elseif ($max <= 10) {
-                    $counts[] = round($values->num * 409.6, 1);
+                    $counts[] = (int) ($values->num * 409.6);
                 } else {
-                    $counts[] = round($values->num * 204.8, 1);
+                    $counts[] = (int) ($values->num * 204.8);
                 }
                 $chm .= 't' . $values->num . ',000000,0,' . $i . ',11,1|';
                 $i++;
@@ -5198,61 +5111,65 @@ class Stats
     /**
      * Genearl query on families/children.
      *
-     * @param string[] $params
+     * @param string $size
      *
      * @return string
      */
-    public function statsChildren($params = []): string
+    public function statsChildren(string $size = '220x200'): string
     {
-        return $this->statsChildrenQuery(true, 'BOTH', -1, -1, $params);
+        return $this->statsChildrenQuery(true, 'BOTH', -1, -1, $size);
     }
 
     /**
      * Find the names of siblings with the widest age gap.
      *
-     * @param string[] $params
+     * @param string $total
+     * @param string $one
      *
      * @return string
      */
-    public function topAgeBetweenSiblingsName($params = []): string
+    public function topAgeBetweenSiblingsName(string $total = '10', string $one = ''): string
     {
-        return $this->ageBetweenSiblingsQuery('name', $params);
+        return $this->ageBetweenSiblingsQuery('name', (int) $total, (bool) $one);
     }
 
     /**
      * Find the widest age gap between siblings.
      *
-     * @param string[] $params
+     * @param string $total
+     * @param string $one
      *
      * @return string
      */
-    public function topAgeBetweenSiblings($params = []): string
+    public function topAgeBetweenSiblings(string $total = '10', string $one = ''): string
     {
-        return $this->ageBetweenSiblingsQuery('age', $params);
+        return $this->ageBetweenSiblingsQuery('age', (int) $total, (bool) $one);
     }
 
     /**
      * Find the name of siblings with the widest age gap.
      *
-     * @param string[] $params
+     * @param string $total
+     * @param string $one
      *
      * @return string
      */
-    public function topAgeBetweenSiblingsFullName($params = []): string
+    public function topAgeBetweenSiblingsFullName(string $total = '10', string $one = ''): string
     {
-        return $this->ageBetweenSiblingsQuery('nolist', $params);
+        return $this->ageBetweenSiblingsQuery('nolist', (int) $total, (bool) $one);
     }
 
     /**
      * Find the siblings with the widest age gaps.
      *
-     * @param string[] $params
+     * @param string $total
+     * @param string $one
      *
      * @return string
      */
-    public function topAgeBetweenSiblingsList($params = []): string
+    public function topAgeBetweenSiblingsList(string $total = '10', string $one = ''): string
     {
-        return $this->ageBetweenSiblingsQuery('list', $params);
+        return $this->ageBetweenSiblingsQuery('list', (int) $total, (bool) $one);
     }
 
     /**
@@ -5284,14 +5201,12 @@ class Stats
     /**
      * Find the families with no children.
      *
-     * @param string[] $params
+     * @param string $type
      *
      * @return string
      */
-    public function noChildrenFamiliesList($params = []): string
+    public function noChildrenFamiliesList($type = 'list'): string
     {
-        $type = $params[0] ?? 'list';
-
         $rows = $this->runSql(
             " SELECT f_id AS family" .
             " FROM `##families` AS fam" .
@@ -5341,16 +5256,14 @@ class Stats
     /**
      * Create a chart of children with no families.
      *
-     * @param string[] $params
+     * @param string $size
+     * @param string $year1
+     * @param string $year2
      *
      * @return string
      */
-    public function chartNoChildrenFamilies($params = []): string
+    public function chartNoChildrenFamilies(string $size = '220x200', $year1 = '-1', $year2 = '-1'): string
     {
-        $size  = $params[0] ?? '220x200';
-        $year1 = $params[1] ?? '-1';
-        $year2 = $params[2] ?? '-1';
-
         $year1 = (int) $year1;
         $year2 = (int) $year2;
 
@@ -5396,15 +5309,12 @@ class Stats
         $i      = 0;
         $counts = [];
         foreach ($rows as $values) {
-            if ($sizes[0] < 980) {
-                $sizes[0] += 38;
-            }
             $chxl     .= $this->centuryName($values->century) . '|';
-            $counts[] = round(4095 * $values->count / ($max + 1));
+            $counts[] = intdiv(4095 * $values->count, $max + 1);
             $chm      .= 't' . $values->count . ',000000,0,' . $i . ',11,1|';
             $i++;
         }
-        $counts[] = round(4095 * $unknown / ($max + 1));
+        $counts[] = intdiv(4095 * $unknown, $max + 1);
         $chd      = $this->arrayToExtendedEncoding($counts);
         $chm      .= 't' . $unknown . ',000000,0,' . $i . ',11,1';
         $chxl     .= I18N::translateContext('unknown century', 'Unknown') . '|1:||' . I18N::translate('century') . '|2:|0|';
@@ -5432,15 +5342,13 @@ class Stats
     /**
      * Find the couple with the most grandchildren.
      *
-     * @param string   $type
-     * @param string[] $params
+     * @param string $type
+     * @param int    $total
      *
      * @return string
      */
-    private function topTenGrandFamilyQuery($type = 'list', $params = []): string
+    private function topTenGrandFamilyQuery(string $type, int $total): string
     {
-        $total = $params[0] ?? '10';
-
         $rows = $this->runSql(
             "SELECT COUNT(*) AS tot, f_id AS id" .
             " FROM `##families`" .
@@ -5466,10 +5374,12 @@ class Stats
         foreach ($rows as $row) {
             $family = Family::getInstance($row->id, $this->tree);
             if ($family->canShow()) {
+                $total  = (int) $row->tot;
+
                 if ($type === 'list') {
-                    $top10[] = '<li><a href="' . e($family->url()) . '">' . $family->getFullName() . '</a> - ' . I18N::plural('%s grandchild', '%s grandchildren', $row->tot, I18N::number($row->tot));
+                    $top10[] = '<li><a href="' . e($family->url()) . '">' . $family->getFullName() . '</a> - ' . I18N::plural('%s grandchild', '%s grandchildren', $total, I18N::number($total));
                 } else {
-                    $top10[] = '<a href="' . e($family->url()) . '">' . $family->getFullName() . '</a> - ' . I18N::plural('%s grandchild', '%s grandchildren', $row->tot, I18N::number($row->tot));
+                    $top10[] = '<a href="' . e($family->url()) . '">' . $family->getFullName() . '</a> - ' . I18N::plural('%s grandchild', '%s grandchildren', $total, I18N::number($total));
                 }
             }
         }
@@ -5503,45 +5413,40 @@ class Stats
     /**
      * Find the couple with the most grandchildren.
      *
-     * @param string[] $params
+     * @param string $total
      *
      * @return string
      */
-    public function topTenLargestGrandFamily($params = []): string
+    public function topTenLargestGrandFamily(string $total = '10'): string
     {
-        return $this->topTenGrandFamilyQuery('nolist', $params);
+        return $this->topTenGrandFamilyQuery('nolist', (int) $total);
     }
 
     /**
      * Find the couple with the most grandchildren.
      *
-     * @param string[] $params
+     * @param string $total
      *
      * @return string
      */
-    public function topTenLargestGrandFamilyList($params = []): string
+    public function topTenLargestGrandFamilyList(string $total = '10'): string
     {
-        return $this->topTenGrandFamilyQuery('list', $params);
+        return $this->topTenGrandFamilyQuery('list', (int) $total);
     }
 
     /**
      * Find common surnames.
      *
-     * @param string   $type
-     * @param bool     $show_tot
-     * @param string[] $params
+     * @param string $type
+     * @param bool   $show_tot
+     * @param int    $threshold
+     * @param int    $number_of_surnames
+     * @param string $sorting
      *
      * @return string
      */
-    private function commonSurnamesQuery($type = 'list', $show_tot = false, $params = []): string
+    private function commonSurnamesQuery($type, $show_tot, int $threshold, int $number_of_surnames, string $sorting): string
     {
-        $threshold          = $params[0] ?? '10';
-        $number_of_surnames = $params[1] ?? '10';
-        $sorting            = $params[2] ?? 'alpha';
-
-        $number_of_surnames = (int) $number_of_surnames;
-        $threshold          = (int) $threshold;
-
         $surnames = $this->topSurnames($number_of_surnames, $threshold);
 
         switch ($sorting) {
@@ -5612,70 +5517,79 @@ class Stats
     /**
      * Find common surnames.
      *
-     * @param string[] $params
+     * @param string $threshold
+     * @param string $number_of_surnames
+     * @param string $sorting
      *
      * @return string
      */
-    public function commonSurnames($params = ['', '', 'alpha']): string
+    public function commonSurnames(string $threshold = '1', string $number_of_surnames = '10', string $sorting = 'alpha'): string
     {
-        return $this->commonSurnamesQuery('nolist', false, $params);
+        return $this->commonSurnamesQuery('nolist', false, (int) $threshold, (int) $number_of_surnames, $sorting);
     }
 
     /**
      * Find common surnames.
      *
-     * @param string[] $params
+     * @param string $threshold
+     * @param string $number_of_surnames
+     * @param string $sorting
      *
      * @return string
      */
-    public function commonSurnamesTotals($params = ['', '', 'rcount']): string
+    public function commonSurnamesTotals(string $threshold = '1', string $number_of_surnames = '10', string $sorting = 'rcount'): string
     {
-        return $this->commonSurnamesQuery('nolist', true, $params);
+        return $this->commonSurnamesQuery('nolist', true, (int) $threshold, (int) $number_of_surnames, $sorting);
     }
 
     /**
      * Find common surnames.
      *
-     * @param string[] $params
+     * @param string $threshold
+     * @param string $number_of_surnames
+     * @param string $sorting
      *
      * @return string
      */
-    public function commonSurnamesList($params = ['', '', 'alpha']): string
+    public function commonSurnamesList(string $threshold = '1', string $number_of_surnames = '10', string $sorting = 'alpha'): string
     {
-        return $this->commonSurnamesQuery('list', false, $params);
+        return $this->commonSurnamesQuery('list', false, (int) $threshold, (int) $number_of_surnames, $sorting);
     }
 
     /**
      * Find common surnames.
      *
-     * @param string[] $params
+     * @param string $threshold
+     * @param string $number_of_surnames
+     * @param string $sorting
      *
      * @return string
      */
-    public function commonSurnamesListTotals($params = ['', '', 'rcount']): string
+    public function commonSurnamesListTotals(string $threshold = '1', string $number_of_surnames = '10', string $sorting = 'rcount'): string
     {
-        return $this->commonSurnamesQuery('list', true, $params);
+        return $this->commonSurnamesQuery('list', true, (int) $threshold, (int) $number_of_surnames, $sorting);
     }
 
     /**
      * Create a chart of common surnames.
      *
-     * @param string[] $params
+     * @param string|null $size
+     * @param string|null $color_from
+     * @param string|null $color_to
+     * @param string      $number_of_surnames
      *
      * @return string
      */
-    public function chartCommonSurnames($params = []): string
+    public function chartCommonSurnames(string $size = null, string $color_from = null, string $color_to = null, string $number_of_surnames = '10'): string
     {
         $WT_STATS_CHART_COLOR1 = Theme::theme()->parameter('distribution-chart-no-values');
         $WT_STATS_CHART_COLOR2 = Theme::theme()->parameter('distribution-chart-high-values');
         $WT_STATS_S_CHART_X    = Theme::theme()->parameter('stats-small-chart-x');
         $WT_STATS_S_CHART_Y    = Theme::theme()->parameter('stats-small-chart-y');
 
-        $size               = $params[0] ?? $WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y;
-        $color_from         = $params[1] ?? $WT_STATS_CHART_COLOR1;
-        $color_to           = $params[2] ?? $WT_STATS_CHART_COLOR2;
-        $number_of_surnames = $params[3] ?? '10';
-
+        $size               = $size ?? ($WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y);
+        $color_from         = $color_from ?? $WT_STATS_CHART_COLOR1;
+        $color_to           = $color_to ?? $WT_STATS_CHART_COLOR2;
         $number_of_surnames = (int) $number_of_surnames;
 
         $sizes    = explode('x', $size);
@@ -5725,11 +5639,11 @@ class Stats
                         'żki',
                     ], $top_name);
             }
-            $per   = round(100 * $count_per / $tot_indi, 0);
+            $per   = intdiv(100 * $count_per, $tot_indi);
             $chd .= $this->arrayToExtendedEncoding([$per]);
             $chl[] = $top_name . ' - ' . I18N::number($count_per);
         }
-        $per   = round(100 * ($tot_indi - $tot) / $tot_indi, 0);
+        $per   = intdiv(100 * ($tot_indi - $tot), $tot_indi);
         $chd .= $this->arrayToExtendedEncoding([$per]);
         $chl[] = I18N::translate('Other') . ' - ' . I18N::number($tot_indi - $tot);
 
@@ -5742,21 +5656,16 @@ class Stats
     /**
      * Find common given names.
      *
-     * @param string   $sex
-     * @param string   $type
-     * @param bool     $show_tot
-     * @param string[] $params
+     * @param string $sex
+     * @param string $type
+     * @param bool   $show_tot
+     * @param int    $threshold
+     * @param int    $maxtoshow
      *
-     * @return string
+     * @return string|int[]
      */
-    private function commonGivenQuery($sex = 'B', $type = 'list', $show_tot = false, $params = [])
+    private function commonGivenQuery(string $sex, string $type, bool $show_tot, int $threshold, int $maxtoshow)
     {
-        $threshold = $params[0] ?? '1';
-        $maxtoshow = $params[1] ?? '10';
-
-        $threshold = (int) $threshold;
-        $maxtoshow = (int) $maxtoshow;
-
         switch ($sex) {
             case 'M':
                 $sex_sql = "i_sex='M'";
@@ -5795,12 +5704,10 @@ class Stats
         arsort($nameList, SORT_NUMERIC);
         $nameList = array_slice($nameList, 0, $maxtoshow);
 
-        if (count($nameList) == 0) {
-            return '';
-        }
         if ($type == 'chart') {
             return $nameList;
         }
+
         $common = [];
         foreach ($nameList as $given => $total) {
             if ($maxtoshow !== -1) {
@@ -5854,274 +5761,293 @@ class Stats
     /**
      * Find common give names.
      *
-     * @param string[] $params
+     * @param string $threshold
+     * @param string $maxtoshow
      *
      * @return string
      */
-    public function commonGiven($params = ['1', '10', 'alpha']): string
+    public function commonGiven(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->commonGivenQuery('B', 'nolist', false, $params);
+        return $this->commonGivenQuery('B', 'nolist', false, (int) $threshold, (int) $maxtoshow);
     }
 
     /**
      * Find common give names.
      *
-     * @param string[] $params
+     * @param string $threshold
+     * @param string $maxtoshow
      *
      * @return string
      */
-    public function commonGivenTotals($params = ['1', '10', 'rcount']): string
+    public function commonGivenTotals(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->commonGivenQuery('B', 'nolist', true, $params);
+        return $this->commonGivenQuery('B', 'nolist', true, (int) $threshold, (int) $maxtoshow);
     }
 
     /**
      * Find common give names.
      *
-     * @param string[] $params
+     * @param string $threshold
+     * @param string $maxtoshow
      *
      * @return string
      */
-    public function commonGivenList($params = ['1', '10', 'alpha']): string
+    public function commonGivenList(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->commonGivenQuery('B', 'list', false, $params);
+        return $this->commonGivenQuery('B', 'list', false, (int) $threshold, (int) $maxtoshow);
     }
 
     /**
      * Find common give names.
      *
-     * @param string[] $params
+     * @param string $threshold
+     * @param string $maxtoshow
      *
      * @return string
      */
-    public function commonGivenListTotals($params = ['1', '10', 'rcount']): string
+    public function commonGivenListTotals(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->commonGivenQuery('B', 'list', true, $params);
+        return $this->commonGivenQuery('B', 'list', true, (int) $threshold, (int) $maxtoshow);
     }
 
     /**
      * Find common give names.
      *
-     * @param string[] $params
+     * @param string $threshold
+     * @param string $maxtoshow
      *
      * @return string
      */
-    public function commonGivenTable($params = ['1', '10', 'rcount']): string
+    public function commonGivenTable(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->commonGivenQuery('B', 'table', false, $params);
+        return $this->commonGivenQuery('B', 'table', false, (int) $threshold, (int) $maxtoshow);
     }
 
     /**
      * Find common give names of females.
      *
-     * @param string[] $params
+     * @param string $threshold
+     * @param string $maxtoshow
      *
      * @return string
      */
-    public function commonGivenFemale($params = ['1', '10', 'alpha']): string
+    public function commonGivenFemale(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->commonGivenQuery('F', 'nolist', false, $params);
+        return $this->commonGivenQuery('F', 'nolist', false, (int) $threshold, (int) $maxtoshow);
     }
 
     /**
      * Find common give names of females.
      *
-     * @param string[] $params
+     * @param string $threshold
+     * @param string $maxtoshow
      *
      * @return string
      */
-    public function commonGivenFemaleTotals($params = ['1', '10', 'rcount']): string
+    public function commonGivenFemaleTotals(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->commonGivenQuery('F', 'nolist', true, $params);
+        return $this->commonGivenQuery('F', 'nolist', true, (int) $threshold, (int) $maxtoshow);
     }
 
     /**
      * Find common give names of females.
      *
-     * @param string[] $params
+     * @param string $threshold
+     * @param string $maxtoshow
      *
      * @return string
      */
-    public function commonGivenFemaleList($params = ['1', '10', 'alpha']): string
+    public function commonGivenFemaleList(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->commonGivenQuery('F', 'list', false, $params);
+        return $this->commonGivenQuery('F', 'list', false, (int) $threshold, (int) $maxtoshow);
     }
 
     /**
      * Find common give names of females.
      *
-     * @param string[] $params
+     * @param string $threshold
+     * @param string $maxtoshow
      *
      * @return string
      */
-    public function commonGivenFemaleListTotals($params = ['1', '10', 'rcount']): string
+    public function commonGivenFemaleListTotals(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->commonGivenQuery('F', 'list', true, $params);
+        return $this->commonGivenQuery('F', 'list', true, (int) $threshold, (int) $maxtoshow);
     }
 
     /**
      * Find common give names of females.
      *
-     * @param string[] $params
+     * @param string $threshold
+     * @param string $maxtoshow
      *
      * @return string
      */
-    public function commonGivenFemaleTable($params = ['1', '10', 'rcount']): string
+    public function commonGivenFemaleTable(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->commonGivenQuery('F', 'table', false, $params);
+        return $this->commonGivenQuery('F', 'table', false, (int) $threshold, (int) $maxtoshow);
     }
 
     /**
      * Find common give names of males.
      *
-     * @param string[] $params
+     * @param string $threshold
+     * @param string $maxtoshow
      *
      * @return string
      */
-    public function commonGivenMale($params = ['1', '10', 'alpha']): string
+    public function commonGivenMale(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->commonGivenQuery('M', 'nolist', false, $params);
+        return $this->commonGivenQuery('M', 'nolist', false, (int) $threshold, (int) $maxtoshow);
     }
 
     /**
      * Find common give names of males.
      *
-     * @param string[] $params
+     * @param string $threshold
+     * @param string $maxtoshow
      *
      * @return string
      */
-    public function commonGivenMaleTotals($params = ['1', '10', 'rcount']): string
+    public function commonGivenMaleTotals(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->commonGivenQuery('M', 'nolist', true, $params);
+        return $this->commonGivenQuery('M', 'nolist', true, (int) $threshold, (int) $maxtoshow);
     }
 
     /**
      * Find common give names of males.
      *
-     * @param string[] $params
+     * @param string $threshold
+     * @param string $maxtoshow
      *
      * @return string
      */
-    public function commonGivenMaleList($params = ['1', '10', 'alpha']): string
+    public function commonGivenMaleList(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->commonGivenQuery('M', 'list', false, $params);
+        return $this->commonGivenQuery('M', 'list', false, (int) $threshold, (int) $maxtoshow);
     }
 
     /**
      * Find common give names of males.
      *
-     * @param string[] $params
+     * @param string $threshold
+     * @param string $maxtoshow
      *
      * @return string
      */
-    public function commonGivenMaleListTotals($params = ['1', '10', 'rcount']): string
+    public function commonGivenMaleListTotals(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->commonGivenQuery('M', 'list', true, $params);
+        return $this->commonGivenQuery('M', 'list', true, (int) $threshold, (int) $maxtoshow);
     }
 
     /**
      * Find common give names of males.
      *
-     * @param string[] $params
+     * @param string $threshold
+     * @param string $maxtoshow
      *
      * @return string
      */
-    public function commonGivenMaleTable($params = ['1', '10', 'rcount']): string
+    public function commonGivenMaleTable(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->commonGivenQuery('M', 'table', false, $params);
+        return $this->commonGivenQuery('M', 'table', false, (int) $threshold, (int) $maxtoshow);
     }
 
     /**
      * Find common give names of unknown sexes.
      *
-     * @param string[] $params
+     * @param string $threshold
+     * @param string $maxtoshow
      *
      * @return string
      */
-    public function commonGivenUnknown($params = ['1', '10', 'alpha']): string
+    public function commonGivenUnknown(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->commonGivenQuery('U', 'nolist', false, $params);
+        return $this->commonGivenQuery('U', 'nolist', false, (int) $threshold, (int) $maxtoshow);
     }
 
     /**
      * Find common give names of unknown sexes.
      *
-     * @param string[] $params
+     * @param string $threshold
+     * @param string $maxtoshow
      *
      * @return string
      */
-    public function commonGivenUnknownTotals($params = ['1', '10', 'rcount']): string
+    public function commonGivenUnknownTotals(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->commonGivenQuery('U', 'nolist', true, $params);
+        return $this->commonGivenQuery('U', 'nolist', true, (int) $threshold, (int) $maxtoshow);
     }
 
     /**
      * Find common give names of unknown sexes.
      *
-     * @param string[] $params
+     * @param string $threshold
+     * @param string $maxtoshow
      *
      * @return string
      */
-    public function commonGivenUnknownList($params = ['1', '10', 'alpha']): string
+    public function commonGivenUnknownList(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->commonGivenQuery('U', 'list', false, $params);
+        return $this->commonGivenQuery('U', 'list', false, (int) $threshold, (int) $maxtoshow);
     }
 
     /**
      * Find common give names of unknown sexes.
      *
-     * @param string[] $params
+     * @param string $threshold
+     * @param string $maxtoshow
      *
      * @return string
      */
-    public function commonGivenUnknownListTotals($params = ['1', '10', 'rcount']): string
+    public function commonGivenUnknownListTotals(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->commonGivenQuery('U', 'list', true, $params);
+        return $this->commonGivenQuery('U', 'list', true, (int) $threshold, (int) $maxtoshow);
     }
 
     /**
      * Find common give names of unknown sexes.
      *
-     * @param string[] $params
+     * @param string $threshold
+     * @param string $maxtoshow
      *
      * @return string
      */
-    public function commonGivenUnknownTable($params = ['1', '10', 'rcount']): string
+    public function commonGivenUnknownTable(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->commonGivenQuery('U', 'table', false, $params);
+        return $this->commonGivenQuery('U', 'table', false, (int) $threshold, (int) $maxtoshow);
     }
 
     /**
      * Create a chart of common given names.
      *
-     * @param string[] $params
+     * @param string|null $size
+     * @param string|null $color_from
+     * @param string|null $color_to
+     * @param string      $maxtoshow
      *
      * @return string
      */
-    public function chartCommonGiven($params = []): string
+    public function chartCommonGiven(string $size = null, string $color_from = null, string $color_to = null, string $maxtoshow = '7'): string
     {
         $WT_STATS_CHART_COLOR1 = Theme::theme()->parameter('distribution-chart-no-values');
         $WT_STATS_CHART_COLOR2 = Theme::theme()->parameter('distribution-chart-high-values');
         $WT_STATS_S_CHART_X    = Theme::theme()->parameter('stats-small-chart-x');
         $WT_STATS_S_CHART_Y    = Theme::theme()->parameter('stats-small-chart-y');
 
-        $size       = $params[0] ?? $WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y;
-        $color_from = $params[1] ?? $WT_STATS_CHART_COLOR1;
-        $color_to   = $params[2] ?? $WT_STATS_CHART_COLOR2;
-        $maxtoshow  = $params[3] ?? '7';
-
-        $maxtoshow = (int) $maxtoshow;
+        $size       = $size ?? ($WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y);
+        $color_from = $color_from ?? $WT_STATS_CHART_COLOR1;
+        $color_to   = $color_to ?? $WT_STATS_CHART_COLOR2;
+        $maxtoshow  = (int) $maxtoshow;
 
         $sizes    = explode('x', $size);
         $tot_indi = $this->totalIndividualsQuery();
-        $given    = $this->commonGivenQuery('B', 'chart');
-        if (!is_array($given)) {
+        $given    = $this->commonGivenQuery('B', 'chart', false, 1, (int) $maxtoshow);
+
+        if (empty($given)) {
             return '';
         }
-        $given = array_slice($given, 0, $maxtoshow);
-        if (count($given) <= 0) {
-            return '';
-        }
+
         $tot = 0;
         foreach ($given as $count) {
             $tot += $count;
@@ -6132,12 +6058,12 @@ class Stats
             if ($tot == 0) {
                 $per = 0;
             } else {
-                $per = round(100 * $count / $tot_indi, 0);
+                $per = intdiv(100 * $count, $tot_indi);
             }
             $chd .= $this->arrayToExtendedEncoding([$per]);
             $chl[] = $givn . ' - ' . I18N::number($count);
         }
-        $per   = round(100 * ($tot_indi - $tot) / $tot_indi, 0);
+        $per   = intdiv(100 * ($tot_indi - $tot), $tot_indi);
         $chd .= $this->arrayToExtendedEncoding([$per]);
         $chl[] = I18N::translate('Other') . ' - ' . I18N::number($tot_indi - $tot);
 
@@ -6223,7 +6149,7 @@ class Stats
      *
      * @return int
      */
-    private function usersLoggedInTotalQuery($type = 'all')
+    private function usersLoggedInTotalQuery($type = 'all'): int
     {
         $anon    = 0;
         $visible = 0;
@@ -6298,27 +6224,25 @@ class Stats
     /**
      * Get the current user's ID.
      *
-     * @return null|string
+     * @return string
      */
-    public function userId()
+    public function userId(): string
     {
-        return Auth::id();
+        return (string) Auth::id();
     }
 
     /**
      * Get the current user's username.
      *
-     * @param string[] $params
+     * @param string $visitor_text
      *
      * @return string
      */
-    public function userName($params = [])
+    public function userName(string $visitor_text = ''): string
     {
         if (Auth::check()) {
             return e(Auth::user()->getUserName());
         }
-
-        $visitor_text = $params[0] ?? '';
 
         // if #username:visitor# was specified, then "visitor" will be returned when the user is not logged in
         return e($visitor_text);
@@ -6393,46 +6317,47 @@ class Stats
     /**
      * Get the date of the newest user registration.
      *
-     * @param string[] $params
+     * @param string|null $format
      *
      * @return string
      */
-    public function latestUserRegDate($params = []): string
+    public function latestUserRegDate(string $format = null): string
     {
-        $datestamp = $params[0] ?? I18N::dateFormat();
+        $format = $format ?? I18N::dateFormat();
 
         $user = $this->latestUser();
 
-        return FunctionsDate::timestampToGedcomDate((int) $user->getPreference('reg_timestamp'))->display(false, $datestamp);
+        return FunctionsDate::timestampToGedcomDate((int) $user->getPreference('reg_timestamp'))->display(false, $format);
     }
 
     /**
      * Find the timestamp of the latest user to register.
      *
-     * @param string[] $params
+     * @param string|null $format
      *
      * @return string
      */
-    public function latestUserRegTime($params = []): string
+    public function latestUserRegTime(string $format = null): string
     {
-        $datestamp = $params[0] ?? str_replace('%', '', I18N::timeFormat());
+        $format = $format ?? str_replace('%', '', I18N::timeFormat());
 
         $user = $this->latestUser();
 
-        return date($datestamp, (int) $user->getPreference('reg_timestamp'));
+        return date($format, (int) $user->getPreference('reg_timestamp'));
     }
 
     /**
      * Is the most recently registered user logged in right now?
      *
-     * @param string[] $params
+     * @param string|null $yes
+     * @param string|null $no
      *
      * @return string
      */
-    public function latestUserLoggedin($params = []): string
+    public function latestUserLoggedin(string $yes = null, string $no = null): string
     {
-        $params[0] = $params[0] ?? I18N::translate('yes');
-        $params[1] = $params[1] ?? I18N::translate('no');
+        $yes = $yes ?? I18N::translate('yes');
+        $no  = $no ?? I18N::translate('no');
 
         $user = $this->latestUser();
 
@@ -6442,7 +6367,7 @@ class Stats
             'user_id' => $user->getUserId()
         ])->fetchOne();
 
-        return $is_logged_in ? $params[0] : $params[1];
+        return $is_logged_in ? $yes : $no;
     }
 
     /**
@@ -6453,8 +6378,9 @@ class Stats
     public function contactWebmaster()
     {
         $user_id = $this->tree->getPreference('WEBMASTER_USER_ID');
-        $user    = User::find($user_id);
-        if ($user) {
+        $user    = User::find((int) $user_id);
+
+        if ($user instanceof User) {
             return Theme::theme()->contactLink($user);
         }
 
@@ -6469,8 +6395,9 @@ class Stats
     public function contactGedcom()
     {
         $user_id = $this->tree->getPreference('CONTACT_USER_ID');
-        $user    = User::find($user_id);
-        if ($user) {
+        $user    = User::find((int) $user_id);
+
+        if ($user instanceof User) {
             return Theme::theme()->contactLink($user);
         }
 
@@ -6560,19 +6487,18 @@ class Stats
     /**
      * These functions provide access to hitcounter for use in the HTML block.
      *
-     * @param string   $page_name
-     * @param string[] $params
+     * @param string $page_name
+     * @param string $page_parameter
      *
      * @return string
      */
-    private function hitCountQuery($page_name, $params): string
+    private function hitCountQuery($page_name, string $page_parameter = ''): string
     {
-        $page_parameter = $params[0] ?? '';
 
         if ($page_name === '') {
             // index.php?ctype=gedcom
             $page_name      = 'index.php';
-            $page_parameter = 'gedcom:' . ($page_parameter ? Tree::findByName($page_parameter)->getTreeId() : $this->tree->getTreeId());
+            $page_parameter = 'gedcom:' . $this->tree->getTreeId();
         } elseif ($page_name == 'index.php') {
             // index.php?ctype=user
             $user           = User::findByIdentifier($page_parameter);
@@ -6587,97 +6513,97 @@ class Stats
     /**
      * How many times has a page been viewed.
      *
-     * @param string[] $params
+     * @param string $page_parameter
      *
      * @return string
      */
-    public function hitCount($params = []): string
+    public function hitCount(string $page_parameter = ''): string
     {
-        return $this->hitCountQuery('', $params);
+        return $this->hitCountQuery('', $page_parameter);
     }
 
     /**
      * How many times has a page been viewed.
      *
-     * @param string[] $params
+     * @param string $page_parameter
      *
      * @return string
      */
-    public function hitCountUser($params = []): string
+    public function hitCountUser(string $page_parameter = ''): string
     {
-        return $this->hitCountQuery('index.php', $params);
+        return $this->hitCountQuery('index.php', $page_parameter);
     }
 
     /**
      * How many times has a page been viewed.
      *
-     * @param string[] $params
+     * @param string $page_parameter
      *
      * @return string
      */
-    public function hitCountIndi($params = []): string
+    public function hitCountIndi(string $page_parameter = ''): string
     {
-        return $this->hitCountQuery('individual.php', $params);
+        return $this->hitCountQuery('individual.php', $page_parameter);
     }
 
     /**
      * How many times has a page been viewed.
      *
-     * @param string[] $params
+     * @param string $page_parameter
      *
      * @return string
      */
-    public function hitCountFam($params = []): string
+    public function hitCountFam(string $page_parameter = ''): string
     {
-        return $this->hitCountQuery('family.php', $params);
+        return $this->hitCountQuery('family.php', $page_parameter);
     }
 
     /**
      * How many times has a page been viewed.
      *
-     * @param string[] $params
+     * @param string $page_parameter
      *
      * @return string
      */
-    public function hitCountSour($params = []): string
+    public function hitCountSour(string $page_parameter = ''): string
     {
-        return $this->hitCountQuery('source.php', $params);
+        return $this->hitCountQuery('source.php', $page_parameter);
     }
 
     /**
      * How many times has a page been viewed.
      *
-     * @param string[] $params
+     * @param string $page_parameter
      *
      * @return string
      */
-    public function hitCountRepo($params = []): string
+    public function hitCountRepo(string $page_parameter = ''): string
     {
-        return $this->hitCountQuery('repo.php', $params);
+        return $this->hitCountQuery('repo.php', $page_parameter);
     }
 
     /**
      * How many times has a page been viewed.
      *
-     * @param string[] $params
+     * @param string $page_parameter
      *
      * @return string
      */
-    public function hitCountNote($params = []): string
+    public function hitCountNote(string $page_parameter = ''): string
     {
-        return $this->hitCountQuery('note.php', $params);
+        return $this->hitCountQuery('note.php', $page_parameter);
     }
 
     /**
      * How many times has a page been viewed.
      *
-     * @param string[] $params
+     * @param string $page_parameter
      *
      * @return string
      */
-    public function hitCountObje($params = []): string
+    public function hitCountObje(string $page_parameter = ''): string
     {
-        return $this->hitCountQuery('mediaviewer.php', $params);
+        return $this->hitCountQuery('mediaviewer.php', $page_parameter);
     }
 
     /**
@@ -6732,9 +6658,11 @@ class Stats
      *
      * @return string
      */
-    public function gedcomFavorites()
+    public function gedcomFavorites(): string
     {
-        if (Module::getModuleByName('gedcom_favorites')) {
+        $module = Module::getModuleByName('gedcom_favorites');
+
+        if ($module instanceof FamilyTreeFavoritesModule) {
             $block = new FamilyTreeFavoritesModule(WT_MODULES_DIR . 'gedcom_favorites');
 
             return $block->getBlock($this->tree, 0, false);
@@ -6748,7 +6676,7 @@ class Stats
      *
      * @return string
      */
-    public function userFavorites()
+    public function userFavorites(): string
     {
         if (Auth::check() && Module::getModuleByName('user_favorites')) {
             $block = new UserFavoritesModule(WT_MODULES_DIR . 'gedcom_favorites');
@@ -6762,51 +6690,51 @@ class Stats
     /**
      * Find the number of favorites for the tree.
      *
-     * @return int
+     * @return string
      */
-    public function totalGedcomFavorites()
+    public function totalGedcomFavorites(): string
     {
-        /** @var FamilyTreeFavoritesModule|null $module */
+        $count = 0;
+
         $module = Module::getModuleByName('gedcom_favorites');
 
-        if ($module !== null) {
-            return count($module->getFavorites($this->tree));
+        if ($module instanceof FamilyTreeFavoritesModule) {
+            $count = count($module->getFavorites($this->tree));
         }
 
-        return 0;
+        return I18N::number($count);
     }
 
     /**
      * Find the number of favorites for the user.
      *
-     * @return int
+     * @return string
      */
-    public function totalUserFavorites()
+    public function totalUserFavorites(): string
     {
-        /** @var UserFavoritesModule|null $module */
+        $count = 0;
+
         $module = Module::getModuleByName('user_favorites');
 
-        if ($module !== null) {
-            return count($module->getFavorites($this->tree, Auth::user()));
+        if ($module instanceof UserFavoritesModule) {
+            $count = count($module->getFavorites($this->tree, Auth::user()));
         }
 
-        return 0;
+        return I18N::number($count);
     }
 
     /**
      * Create any of the other blocks.
-     *
      * Use as #callBlock:block_name#
      *
-     * @param string[] $params
+     * @param string $block
+     * @param string ...$params
      *
      * @return string
      */
-    public function callBlock($params = []): string
+    public function callBlock(string $block = '', ...$params): string
     {
         global $ctype;
-
-        $block = $params[0] ?? '';
 
         $all_blocks = [];
         foreach (Module::getActiveBlocks($this->tree) as $name => $active_block) {
@@ -6818,7 +6746,6 @@ class Stats
             return '';
         }
         // Build the config array
-        array_shift($params);
         $cfg = [];
         foreach ($params as $config) {
             $bits = explode('=', $config);
@@ -7673,12 +7600,12 @@ class Stats
      *
      * @return string
      */
-    private function centuryName($century)
+    private function centuryName($century): string
     {
         if ($century < 0) {
-            /* I18N: BCE=Before the Common Era, for Julian years < 0. See http://en.wikipedia.org/wiki/Common_Era */
-            return str_replace(-$century, $this->centuryName(-$century), I18N::translate('%s BCE', I18N::number(-$century)));
+            return I18N::translate('%s BCE', $this->centuryName(-$century));
         }
+
         // The current chart engine (Google charts) can't handle <sup></sup> markup
         switch ($century) {
             case 21:

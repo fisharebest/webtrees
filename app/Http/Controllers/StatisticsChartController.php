@@ -352,14 +352,14 @@ class StatisticsChartController extends AbstractChartController
                 switch ($z_axis_type) {
                     case self::Z_AXIS_ALL:
                         $z_axis = $this->axisAll();
-                        $rows   = $stats->monthFirstChildQuery(false, false);
+                        $rows   = $stats->monthFirstChildQuery(false);
                         foreach ($rows as $row) {
                             $this->fillYData($row->d_month, 0, $row->total, $x_axis, $z_axis, $ydata);
                         }
                         break;
                     case self::Z_AXIS_SEX:
                         $z_axis = $this->axisSexes();
-                        $rows = $stats->monthFirstChildQuery(false, true);
+                        $rows = $stats->monthFirstChildQuery(true);
                         foreach ($rows as $row) {
                             $this->fillYData($row->d_month, $row->i_sex, $row->total, $x_axis, $z_axis, $ydata);
                         }
