@@ -58,14 +58,14 @@ class TopGivenNamesModule extends AbstractModule implements ModuleBlockInterface
     {
         global $ctype;
 
-        $num       = (int) $this->getBlockSetting($block_id, 'num', self::DEFAULT_NUMBER);
+        $num       = $this->getBlockSetting($block_id, 'num', self::DEFAULT_NUMBER);
         $infoStyle = $this->getBlockSetting($block_id, 'infoStyle', self::DEFAULT_STYLE);
 
         extract($cfg, EXTR_OVERWRITE);
 
         $stats   = new Stats($tree);
-        $males   = $stats->commonGivenMaleTable(['1', $num, 'rcount']);
-        $females = $stats->commonGivenFemaleTable(['1', $num, 'rcount']);
+        $males   = $stats->commonGivenMaleTable('1', $num);
+        $females = $stats->commonGivenFemaleTable('1', $num);
 
         switch ($infoStyle) {
             case 'list':
@@ -84,6 +84,8 @@ class TopGivenNamesModule extends AbstractModule implements ModuleBlockInterface
         }
 
         if ($template) {
+            $num = (int) $num;
+
             if ($num === 1) {
                 // I18N: i.e. most popular given name.
                 $title = I18N::translate('Top given name');

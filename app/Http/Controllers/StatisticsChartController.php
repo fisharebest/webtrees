@@ -19,7 +19,6 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Date;
-use Fisharebest\Webtrees\Date\GregorianDate;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Stats;
@@ -169,29 +168,29 @@ class StatisticsChartController extends AbstractChartController
 
         switch ($x_axis_type) {
             case self::X_AXIS_INDIVIDUAL_MAP:
-                return new Response($stats->chartDistribution([
+                return new Response($stats->chartDistribution(
                     $request->get('chart_shows'),
                     $request->get('chart_type'),
-                    $request->get('SURN'),
-                ]));
+                    $request->get('SURN')
+                ));
 
             case self::X_AXIS_BIRTH_MAP:
-                return new Response($stats->chartDistribution([
+                return new Response($stats->chartDistribution(
                     $request->get('chart_shows'),
-                    'birth_distribution_chart',
-                ]));
+                    'birth_distribution_chart'
+                ));
 
             case self::X_AXIS_DEATH_MAP:
-                return new Response($stats->chartDistribution([
+                return new Response($stats->chartDistribution(
                     $request->get('chart_shows'),
-                    'death_distribution_chart',
-                ]));
+                    'death_distribution_chart'
+                ));
 
             case self::X_AXIS_MARRIAGE_MAP:
-                return new Response($stats->chartDistribution([
+                return new Response($stats->chartDistribution(
                     $request->get('chart_shows'),
-                    'marriage_distribution_chart',
-                ]));
+                    'marriage_distribution_chart'
+                ));
 
             case self::X_AXIS_BIRTH_MONTH:
                 $chart_title  = I18N::translate('Month of birth');
