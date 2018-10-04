@@ -1,4 +1,4 @@
-<?php namespace Fisharebest\Webtrees; ?>
+<?php use Fisharebest\Webtrees\I18N; ?>
 <?= I18N::translate('Hello %s…', $sender->getRealName()) ?>
 
 <?= I18N::translate('You sent the following message to a webtrees user:') ?><?= $recipient->getRealName() ?>

@@ -1,4 +1,4 @@
-<?php namespace Fisharebest\Webtrees; ?>
+<?php use Fisharebest\Webtrees\I18N; ?>
 <?= I18N::translate('Hello %s…', e($user->getRealName())) ?>
 
 <?= /* I18N: %1$s is the site URL and %2$s is an email address */I18N::translate('You (or someone claiming to be you) has requested an account at %1$s using the email address %2$s.', e(WT_BASE_URL), e($user->getEmail())) ?>

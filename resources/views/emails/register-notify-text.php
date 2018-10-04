@@ -1,4 +1,4 @@
-<?php namespace Fisharebest\Webtrees; ?>
+<?php use Fisharebest\Webtrees\I18N; ?>
 <?= I18N::translate('Hello administrator…') ?>
 
 <?= /* I18N: %s is a server name/URL */I18N::translate('A prospective user has registered with webtrees at %s.', WT_BASE_URL . ' ' . e($tree->getTitle())) ?>
