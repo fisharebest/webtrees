@@ -120,7 +120,8 @@ class View
      */
     public function render(): string
     {
-        extract($this->data + self::$shared_data);
+        $variables_for_view = $this->data + self::$shared_data;
+        extract($variables_for_view);
 
         ob_start();
         // Do not use require, so we can catch errors for missing files

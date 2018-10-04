@@ -1343,27 +1343,20 @@ abstract class AbstractTheme
     {
         global $controller;
 
-        /** @var UserFavoritesModule|null $user_favorites */
-        $user_favorites = Module::getModuleByName('user_favorites');
+        $user_favorites_module = Module::getModuleByName('user_favorites');
+        $tree_favorites_module = Module::getModuleByName('gedcom_favorites');
 
-        /** @var FamilyTreeFavoritesModule|null $tree_favorites */
-        $tree_favorites = Module::getModuleByName('gedcom_favorites');
-
-        $show_user_favorites = $this->tree !== null && $user_favorites !== null && Auth::check();
-        $show_tree_favorites = $this->tree !== null && $tree_favorites !== null;
-
-        if ($show_user_favorites && $show_tree_favorites) {
-            $favorites = array_merge(
-                $tree_favorites->getFavorites($this->tree),
-                $user_favorites->getFavorites($this->tree, Auth::user())
-            );
-        } elseif ($show_user_favorites) {
-            $favorites = $user_favorites->getFavorites($this->tree, Auth::user());
-        } elseif ($show_tree_favorites) {
-            $favorites = $tree_favorites->getFavorites($this->tree);
-        } else {
-            $favorites = [];
+        $user_favorites = [];
+        if ($this->tree instanceof Tree && $user_favorites_module instanceof UserFavoritesModule && Auth::check()) {
+            $user_favorites = $user_favorites_module->getFavorites($this->tree, Auth::user());
         }
+
+        $tree_favorites = [];
+        if ($this->tree instanceof Tree && $tree_favorites_module instanceof FamilyTreeFavoritesModule) {
+            $tree_favorites = $tree_favorites_module->getFavorites($this->tree);
+        }
+
+        $favorites = array_merge($user_favorites, $tree_favorites);
 
         $submenus = [];
         $records  = [];
@@ -1383,7 +1376,7 @@ abstract class AbstractTheme
         }
 
         // @TODO we no longer have a global $controller
-        if ($show_user_favorites && isset($controller->record) && $controller->record instanceof GedcomRecord && !in_array($controller->record, $records)) {
+        if ($this->tree instanceof Tree && $user_favorites_module instanceof UserFavoritesModule && Auth::check() && isset($controller->record) && $controller->record instanceof GedcomRecord && !in_array($controller->record, $records)) {
             $url = route('module', [
                 'module' => 'user_favorites',
                 'action' => 'AddFavorite',

@@ -399,7 +399,8 @@ class Tree
             Database::prepare(
                 "INSERT INTO `##gedcom` (gedcom_name) VALUES (?)"
             )->execute([$tree_name]);
-            $tree_id = Database::prepare("SELECT LAST_INSERT_ID()")->fetchOne();
+
+            $tree_id = (int) Database::prepare("SELECT LAST_INSERT_ID()")->fetchOne();
         } catch (PDOException $ex) {
             DebugBar::addThrowable($ex);
 

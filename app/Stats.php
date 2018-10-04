@@ -4638,7 +4638,7 @@ class Stats
             $family = Family::getInstance($row->id, $this->tree);
             if ($family->canShow()) {
                 $total = (int) $row->tot;
-                
+
                 if ($type === 'list') {
                     $top10[] = '<li><a href="' . e($family->url()) . '">' . $family->getFullName() . '</a> - ' . I18N::plural('%s child', '%s children', $total, I18N::number($total));
                 } else {
