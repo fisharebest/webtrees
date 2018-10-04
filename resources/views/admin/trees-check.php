@@ -5,19 +5,19 @@
 <h1><?= $title ?></h1>
 
 <ul class="list-group">
-	<li class="list-group-item">
-		<strong><?= I18N::translate('GEDCOM errors') ?></strong>
-	</li>
+    <li class="list-group-item">
+        <strong><?= I18N::translate('GEDCOM errors') ?></strong>
+    </li>
 
-	<?php foreach ($errors as $error): ?>
-		<li class="list-group-item list-group-item-danger"><?= $error ?></li>
-	<?php endforeach ?>
+    <?php foreach ($errors as $error) : ?>
+        <li class="list-group-item list-group-item-danger"><?= $error ?></li>
+    <?php endforeach ?>
 
-	<?php foreach ($warnings as $warning): ?>
-		<li class="list-group-item list-group-item-warning"><?= $warning ?></li>
-	<?php endforeach ?>
+    <?php foreach ($warnings as $warning) : ?>
+        <li class="list-group-item list-group-item-warning"><?= $warning ?></li>
+    <?php endforeach ?>
 
-	<?php if (empty($errors) && empty($warnings)): ?>
-		<li class="list-group-item"><?= I18N::translate('No errors have been found.') ?></li>
-	<?php endif ?>
+    <?php if (empty($errors) && empty($warnings)) : ?>
+        <li class="list-group-item"><?= I18N::translate('No errors have been found.') ?></li>
+    <?php endif ?>
 </ul>

@@ -3,26 +3,26 @@
     <?= $tag ?>
 </div>
 
-<?php if ($url): ?>
+<?php if ($url) : ?>
     <a href="<?= e($url) ?>">
         <?= $name ?>
     </a>
 <?php endif ?>
 
-<?php if ($value): ?>
+<?php if ($value) : ?>
     <span>
         <?= $value ?>
     </span>
 <?php endif ?>
 
 <div>
-    <?php if ($addtag): ?>
+    <?php if ($addtag) : ?>
         <?= GedcomTag::getLabel('BIRT') ?>:
     <?php endif ?>
     <?= $date ?>
 </div>
 
-<?php if (!$place->isEmpty()): ?>
+<?php if (!$place->isEmpty()) : ?>
     <div>
         <a href="<?= e($place->getUrl()) ?>">
             <?= $place->getFullName() ?>

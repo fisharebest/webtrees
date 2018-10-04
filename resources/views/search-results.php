@@ -2,94 +2,94 @@
 <?php use Fisharebest\Webtrees\View; ?>
 
 <div class="wt-search-results">
-	<ul class="nav nav-tabs wt-search-results-tabs" role="tablist">
-		<?php if ($search_individuals): ?>
-			<li class="nav-item">
-				<a class="nav-link <?= empty($individuals) ? 'text-muted' : '' ?>" id="individuals-tab" data-toggle="tab" href="#individuals" role="tab" aria-controls="individuals">
-					<?= I18N::translate('Individuals') ?>
-					<span class="badge badge-secondary">
-						<?= I18N::number(count($individuals)) ?>
-					</span>
-				</a>
-			</li>
-		<?php endif ?>
+    <ul class="nav nav-tabs wt-search-results-tabs" role="tablist">
+        <?php if ($search_individuals) : ?>
+            <li class="nav-item">
+                <a class="nav-link <?= empty($individuals) ? 'text-muted' : '' ?>" id="individuals-tab" data-toggle="tab" href="#individuals" role="tab" aria-controls="individuals">
+                    <?= I18N::translate('Individuals') ?>
+                    <span class="badge badge-secondary">
+                        <?= I18N::number(count($individuals)) ?>
+                    </span>
+                </a>
+            </li>
+        <?php endif ?>
 
-		<?php if ($search_families): ?>
-			<li class="nav-item">
-				<a class="nav-link <?= empty($families) ? 'text-muted' : '' ?>" id="families-tab" data-toggle="tab" href="#families" role="tab" aria-controls="families">
-					<?= I18N::translate('Families') ?>
-					<span class="badge badge-secondary">
-						<?= I18N::number(count($families)) ?>
-					</span>
-				</a>
-			</li>
-		<?php endif ?>
+        <?php if ($search_families) : ?>
+            <li class="nav-item">
+                <a class="nav-link <?= empty($families) ? 'text-muted' : '' ?>" id="families-tab" data-toggle="tab" href="#families" role="tab" aria-controls="families">
+                    <?= I18N::translate('Families') ?>
+                    <span class="badge badge-secondary">
+                        <?= I18N::number(count($families)) ?>
+                    </span>
+                </a>
+            </li>
+        <?php endif ?>
 
-		<?php if ($search_sources): ?>
-			<li class="nav-item">
-				<a class="nav-link <?= empty($sources) ? 'text-muted' : '' ?>" id="sources-tab" data-toggle="tab" href="#sources" role="tab" aria-controls="sources">
-					<?= I18N::translate('Sources') ?>
-					<span class="badge badge-secondary">
-						<?= I18N::number(count($sources)) ?>
-					</span>
-				</a>
-			</li>
-		<?php endif ?>
+        <?php if ($search_sources) : ?>
+            <li class="nav-item">
+                <a class="nav-link <?= empty($sources) ? 'text-muted' : '' ?>" id="sources-tab" data-toggle="tab" href="#sources" role="tab" aria-controls="sources">
+                    <?= I18N::translate('Sources') ?>
+                    <span class="badge badge-secondary">
+                        <?= I18N::number(count($sources)) ?>
+                    </span>
+                </a>
+            </li>
+        <?php endif ?>
 
-		<?php if ($search_repositories): ?>
-			<li class="nav-item">
-				<a class="nav-link <?= empty($repositories) ? 'text-muted' : '' ?>" id="repositories-tab" data-toggle="tab" href="#repositories" role="tab" aria-controls="repositories">
-					<?= I18N::translate('Repositories') ?>
-					<span class="badge badge-secondary">
-						<?= I18N::number(count($repositories)) ?>
-					</span>
-				</a>
-			</li>
-		<?php endif ?>
+        <?php if ($search_repositories) : ?>
+            <li class="nav-item">
+                <a class="nav-link <?= empty($repositories) ? 'text-muted' : '' ?>" id="repositories-tab" data-toggle="tab" href="#repositories" role="tab" aria-controls="repositories">
+                    <?= I18N::translate('Repositories') ?>
+                    <span class="badge badge-secondary">
+                        <?= I18N::number(count($repositories)) ?>
+                    </span>
+                </a>
+            </li>
+        <?php endif ?>
 
-		<?php if ($search_notes): ?>
-			<li class="nav-item">
-				<a class="nav-link <?= empty($notes) ? 'text-muted' : '' ?>" id="notes-tab" data-toggle="tab" href="#notes" role="tab" aria-controls="notes">
-					<?= I18N::translate('Notes') ?>
-					<span class="badge badge-secondary">
-						<?= I18N::number(count($notes)) ?>
-					</span>
-				</a>
-			</li>
-		<?php endif ?>
-	</ul>
+        <?php if ($search_notes) : ?>
+            <li class="nav-item">
+                <a class="nav-link <?= empty($notes) ? 'text-muted' : '' ?>" id="notes-tab" data-toggle="tab" href="#notes" role="tab" aria-controls="notes">
+                    <?= I18N::translate('Notes') ?>
+                    <span class="badge badge-secondary">
+                        <?= I18N::number(count($notes)) ?>
+                    </span>
+                </a>
+            </li>
+        <?php endif ?>
+    </ul>
 
-	<div class="tab-content wt-search-results-content">
-		<?php if ($search_individuals): ?>
-			<div class="tab-pane fade" id="individuals" role="tabpanel" aria-labelledby="individuals-tab">
-				<?= view('lists/individuals-table', ['individuals' => $individuals, 'sosa' => false, 'tree' => $tree]) ?>
-			</div>
-		<?php endif ?>
+    <div class="tab-content wt-search-results-content">
+        <?php if ($search_individuals) : ?>
+            <div class="tab-pane fade" id="individuals" role="tabpanel" aria-labelledby="individuals-tab">
+                <?= view('lists/individuals-table', ['individuals' => $individuals, 'sosa' => false, 'tree' => $tree]) ?>
+            </div>
+        <?php endif ?>
 
-		<?php if ($search_families): ?>
-			<div class="tab-pane fade" id="families" role="tabpanel" aria-labelledby="families-tab">
-				<?= view('lists/families-table', ['families' => $families, 'tree' => $tree]) ?>
-			</div>
-		<?php endif ?>
+        <?php if ($search_families) : ?>
+            <div class="tab-pane fade" id="families" role="tabpanel" aria-labelledby="families-tab">
+                <?= view('lists/families-table', ['families' => $families, 'tree' => $tree]) ?>
+            </div>
+        <?php endif ?>
 
-		<?php if ($search_sources): ?>
-			<div class="tab-pane fade" id="sources" role="tabpanel" aria-labelledby="sources-tab">
-				<?= view('lists/sources-table', ['sources' => $sources, 'tree' => $tree]) ?>
-			</div>
-		<?php endif ?>
+        <?php if ($search_sources) : ?>
+            <div class="tab-pane fade" id="sources" role="tabpanel" aria-labelledby="sources-tab">
+                <?= view('lists/sources-table', ['sources' => $sources, 'tree' => $tree]) ?>
+            </div>
+        <?php endif ?>
 
-		<?php if ($search_repositories): ?>
-			<div class="tab-pane fade" id="repositories" role="tabpanel" aria-labelledby="repositories-tab">
-				<?= view('lists/repositories-table', ['repositories' => $repositories, 'tree' => $tree]) ?>
-			</div>
-		<?php endif ?>
+        <?php if ($search_repositories) : ?>
+            <div class="tab-pane fade" id="repositories" role="tabpanel" aria-labelledby="repositories-tab">
+                <?= view('lists/repositories-table', ['repositories' => $repositories, 'tree' => $tree]) ?>
+            </div>
+        <?php endif ?>
 
-		<?php if ($search_notes): ?>
-			<div class="tab-pane fade" id="notes" role="tabpanel" aria-labelledby="notes-tab">
-				<?= view('lists/notes-table', ['notes' => $notes, 'tree' => $tree]) ?>
-			</div>
-		<?php endif ?>
-	</div>
+        <?php if ($search_notes) : ?>
+            <div class="tab-pane fade" id="notes" role="tabpanel" aria-labelledby="notes-tab">
+                <?= view('lists/notes-table', ['notes' => $notes, 'tree' => $tree]) ?>
+            </div>
+        <?php endif ?>
+    </div>
 </div>
 
 <?php View::push('javascript') ?>

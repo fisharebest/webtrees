@@ -36,7 +36,7 @@
                     $location->getIcon(),
                     ['name' => 'icon', 'id' => 'icon', 'class' => 'form-control']
                 )
-                ?>
+?>
             </div>
         </div>
     </div>

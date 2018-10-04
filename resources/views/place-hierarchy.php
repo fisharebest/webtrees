@@ -8,9 +8,9 @@
         </span>
     </div>
     <div class="row">
-        <?php foreach ($columns as $column): ?>
+        <?php foreach ($columns as $column) : ?>
             <ul class="col list_value_wrap mr-1">
-                <?php foreach ($column as $item): ?>
+                <?php foreach ($column as $item) : ?>
                     <li>
                         <a href="<?= $item->getURL() ?>"><?= $item->getPlaceName() ?></a>
                     </li>

@@ -4,31 +4,30 @@
 
 <h1><?= $title ?></h1>
 
-<?php foreach ($duplicates as $category => $records): ?>
+<?php foreach ($duplicates as $category => $records) : ?>
+    <h2><?= $category ?></h2>
 
-	<h2><?= $category ?></h2>
-
-	<?php if (!empty($records)): ?>
-		<ul>
-			<?php foreach ($records as $duplicates): ?>
-				<li>
-					<?= $duplicates[0]->getFullName() ?>
-					<?php foreach ($duplicates as $record): ?>
-						—
-						<a href="<?= e($record->url()) ?>">
-							<?= $record->getXref() ?>
-						</a>
-					<?php endforeach ?>
-					<?php if (count($duplicates) === 2): ?>
-						—
-						<a href="<?= e(route('merge-records', ['ged' => $tree->getName(), 'xref1' => $duplicates[0]->getXref(), 'xref2' => $duplicates[1]->getXref()])) ?>">
-							<?= I18N::translate('Merge') ?>
-						</a>
-					<?php endif ?>
-				</li>
-			<?php endforeach ?>
-		</ul>
-	<?php else: ?>
-		<p><?= I18N::translate('No duplicates have been found.') ?></p>
-	<?php endif ?>
+    <?php if (!empty($records)) : ?>
+        <ul>
+            <?php foreach ($records as $duplicates) : ?>
+                <li>
+                    <?= $duplicates[0]->getFullName() ?>
+                    <?php foreach ($duplicates as $record) : ?>
+                        —
+                        <a href="<?= e($record->url()) ?>">
+                            <?= $record->getXref() ?>
+                        </a>
+                    <?php endforeach ?>
+                    <?php if (count($duplicates) === 2) : ?>
+                        —
+                        <a href="<?= e(route('merge-records', ['ged' => $tree->getName(), 'xref1' => $duplicates[0]->getXref(), 'xref2' => $duplicates[1]->getXref()])) ?>">
+                            <?= I18N::translate('Merge') ?>
+                        </a>
+                    <?php endif ?>
+                </li>
+            <?php endforeach ?>
+        </ul>
+    <?php else : ?>
+        <p><?= I18N::translate('No duplicates have been found.') ?></p>
+    <?php endif ?>
 <?php endforeach ?>

@@ -1,12 +1,12 @@
 <?php use Fisharebest\Webtrees\Module; ?>
 <?php use Fisharebest\Webtrees\View; ?>
 
-<?php if (Module::getModuleByName('ckeditor')): ?>
-	<?php View::push('javascript') ?>
-	<script src="<?= e(WT_CKEDITOR_BASE_URL) ?>ckeditor.js"></script>
-	<script src="<?= e(WT_CKEDITOR_BASE_URL) ?>adapters/jquery.js"></script>
+<?php if (Module::getModuleByName('ckeditor')) : ?>
+    <?php View::push('javascript') ?>
+    <script src="<?= e(WT_CKEDITOR_BASE_URL) ?>ckeditor.js"></script>
+    <script src="<?= e(WT_CKEDITOR_BASE_URL) ?>adapters/jquery.js"></script>
 
-	<script>
+    <script>
     var CKEDITOR_BASEPATH = <?= json_encode(WT_CKEDITOR_BASE_URL) ?>;
 
     // Enable for all browsers
@@ -20,6 +20,6 @@
     $("textarea.html-edit").ckeditor(function(config){config.removePlugins = "forms";}, {
       language: "<?= strtolower(WT_LOCALE) ?>"
     });
-	</script>
-	<?php View::endpush() ?>
+    </script>
+    <?php View::endpush() ?>
 <?php endif ?>

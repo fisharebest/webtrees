@@ -1,29 +1,29 @@
 <?php use Fisharebest\Webtrees\I18N; ?>
 
 <div class="content">
-	<p>
-		<?= I18N::translate('Oops! The webserver is unable to connect to the database server. It could be busy, undergoing maintenance, or simply broken. You should <a href="index.php">try again</a> in a few minutes or contact the website administrator.') ?>
-	</p>
+    <p>
+        <?= I18N::translate('Oops! The webserver is unable to connect to the database server. It could be busy, undergoing maintenance, or simply broken. You should <a href="index.php">try again</a> in a few minutes or contact the website administrator.') ?>
+    </p>
 
-	<blockquote>
-		<?= e($error) ?>
-	</blockquote>
+    <blockquote>
+        <?= e($error) ?>
+    </blockquote>
 
-	<?= I18N::translate('If you are the website administrator, you should check that:') ?>
+    <?= I18N::translate('If you are the website administrator, you should check that:') ?>
 
-	<ol>
-		<li>
-			<?= /* I18N: [you should check that:] ... */ I18N::translate('the database connection settings in the file “/data/config.ini.php” are still correct') ?>
-		</li>
-		<li>
-			<?= /* I18N: [you should check that:] ... */ I18N::translate('the folder “/data” and the file “/data/config.ini.php” have access permissions that allow the webserver to read them') ?>
-		</li>
-		<li>
-			<?= /* I18N: [you should check that:] ... */ I18N::translate('you can connect to the database using other applications, such as phpmyadmin') ?>
-		</li>
-	</ol>
+    <ol>
+        <li>
+            <?= /* I18N: [you should check that:] ... */ I18N::translate('the database connection settings in the file “/data/config.ini.php” are still correct') ?>
+        </li>
+        <li>
+            <?= /* I18N: [you should check that:] ... */ I18N::translate('the folder “/data” and the file “/data/config.ini.php” have access permissions that allow the webserver to read them') ?>
+        </li>
+        <li>
+            <?= /* I18N: [you should check that:] ... */ I18N::translate('you can connect to the database using other applications, such as phpmyadmin') ?>
+        </li>
+    </ol>
 
-	<p class="good">
-		<?= I18N::translate('If you cannot resolve the problem yourself, you can ask for help on the forums at <a href="https://webtrees.net">webtrees.net</a>.') ?>
-	</p>
+    <p class="good">
+        <?= I18N::translate('If you cannot resolve the problem yourself, you can ask for help on the forums at <a href="https://webtrees.net">webtrees.net</a>.') ?>
+    </p>
 </div>

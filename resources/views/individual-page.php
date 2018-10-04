@@ -3,22 +3,22 @@
 <?php use Fisharebest\Webtrees\I18N; ?>
 <?php use Fisharebest\Webtrees\View; ?>
 
-<?php if ($individual->isPendingDeletion()): ?>
-    <?php if (Auth::isModerator($individual->getTree())): ?>
+<?php if ($individual->isPendingDeletion()) : ?>
+    <?php if (Auth::isModerator($individual->getTree())) : ?>
         <?= view('components/alert-warning-dismissible', [
             'alert' => /* I18N: %1$s is “accept”, %2$s is “reject”. These are links. */
                 I18N::translate('This individual has been deleted. You should review the deletion and then %1$s or %2$s it.', '<a href="#" class="alert-link" onclick="accept_changes(\'' . e($individual->getXref()) . '\', \'' . e($individual->getTree()->getName()) . '\');">' . I18N::translateContext('You should review the deletion and then accept or reject it.', 'accept') . '</a>', '<a href="#" class="alert-link" onclick="reject_changes(\'' . e($individual->getXref()) . '\', \'' . e($individual->getTree()->getName()) . '\');">' . I18N::translateContext('You should review the deletion and then accept or reject it.', 'reject') . '</a>') . ' ' . FunctionsPrint::helpLink('pending_changes'),
         ]) ?>
-    <?php elseif (Auth::isEditor($individual->getTree())): ?>
+    <?php elseif (Auth::isEditor($individual->getTree())) : ?>
         <?= view('components/alert-warning-dismissible', ['alert' => I18N::translate('This individual has been deleted. The deletion will need to be reviewed by a moderator.') . ' ' . FunctionsPrint::helpLink('pending_changes')]) ?>
     <?php endif ?>
-<?php elseif ($individual->isPendingAddition()): ?>
-    <?php if (Auth::isModerator($individual->getTree())): ?>
+<?php elseif ($individual->isPendingAddition()) : ?>
+    <?php if (Auth::isModerator($individual->getTree())) : ?>
         <?= view('components/alert-warning-dismissible', [
             'alert' => /* I18N: %1$s is “accept”, %2$s is “reject”. These are links. */
                 I18N::translate('This individual has been edited. You should review the changes and then %1$s or %2$s them.', '<a href="#" class="alert-link" onclick="accept_changes(\'' . e($individual->getXref()) . '\', \'' . e($individual->getTree()->getName()) . '\');">' . I18N::translateContext('You should review the changes and then accept or reject them.', 'accept') . '</a>', '<a href="#" class="alert-link" onclick="reject_changes(\'' . e($individual->getXref()) . '\', \'' . e($individual->getTree()->getName()) . '\');">' . I18N::translateContext('You should review the changes and then accept or reject them.', 'reject') . '</a>') . ' ' . FunctionsPrint::helpLink('pending_changes'),
         ]) ?>
-    <?php elseif (Auth::isEditor($individual->getTree())): ?>
+    <?php elseif (Auth::isEditor($individual->getTree())) : ?>
         <?= view('components/alert-warning-dismissible', ['alert' => I18N::translate('This individual has been edited. The changes need to be reviewed by a moderator.') . ' ' . FunctionsPrint::helpLink('pending_changes')]) ?>
     <?php endif ?>
 <?php endif ?>
@@ -27,7 +27,7 @@
     <h2 class="wt-page-title mx-auto">
         <?= $individual->getFullName() ?><?= $user_link ?>, <?= $individual->getLifeSpan() ?> <?= $age ?>
     </h2>
-    <?php if ($individual->canEdit() && !$individual->isPendingDeletion()): ?>
+    <?php if ($individual->canEdit() && !$individual->isPendingDeletion()) : ?>
         <?= view('individual-page-menu', ['individual' => $individual, 'count_names' => $count_names, 'count_sex' => $count_sex]) ?>
     <?php endif ?>
 </div>
@@ -37,14 +37,14 @@
         <div class="row mb-4">
             <!-- Individual images -->
             <div class="col-sm-3">
-                <?php if (empty($individual_media)): ?>
+                <?php if (empty($individual_media)) : ?>
                     <i class="wt-silhouette wt-silhouette-<?= $individual->getSex() ?>"></i>
-                <?php elseif (count($individual_media) === 1): ?>
+                <?php elseif (count($individual_media) === 1) : ?>
                     <?= $individual_media[0]->displayImage(200, 260, 'crop', ['class' => 'img-thumbnail img-fluid w-100']) ?>
-                <?php else: ?>
+                <?php else : ?>
                     <div id="individual-images" class="carousel slide" data-ride="carousel" data-interval="false">
                         <div class="carousel-inner">
-                            <?php foreach ($individual_media as $n => $media_file): ?>
+                            <?php foreach ($individual_media as $n => $media_file) : ?>
                                 <div class="carousel-item <?= $n === 0 ? 'active' : '' ?>">
                                     <?= $media_file->displayImage(200, 260, 'crop', ['class' => 'img-thumbnail img-fluid w-100']) ?>
                                 </div>
@@ -62,8 +62,8 @@
 
                 <?php endif ?>
 
-                <?php if (Auth::isEditor($individual->getTree())): ?>
-                    <?php if (count($individual->getFacts('OBJE')) > 1): ?>
+                <?php if (Auth::isEditor($individual->getTree())) : ?>
+                    <?php if (count($individual->getFacts('OBJE')) > 1) : ?>
                         <div>
                             <a href="<?= e(route('reorder-media', ['ged' => $individual->getTree()->getName(), 'xref' => $individual->getXref()])) ?>">
                                 <?= I18N::translate('Re-order media') ?>
@@ -71,7 +71,7 @@
                         </div>
                     <?php endif ?>
 
-                    <?php if ($individual->getTree()->getPreference('MEDIA_UPLOAD') >= Auth::accessLevel($individual->getTree())): ?>
+                    <?php if ($individual->getTree()->getPreference('MEDIA_UPLOAD') >= Auth::accessLevel($individual->getTree())) : ?>
                         <div>
                             <a href="<?= e(route('add-fact', ['ged' => $individual->getTree()->getName(), 'xref' => $individual->getXref(), 'fact' => 'OBJE'])) ?>">
                                 <?= I18N::translate('Add a media object') ?>
@@ -83,11 +83,11 @@
 
             <!-- Name accordion -->
             <div class="col-sm-9" id="individual-names" role="tablist">
-                <?php foreach ($name_records as $name_record): ?>
+                <?php foreach ($name_records as $name_record) : ?>
                     <?= $name_record ?>
                 <?php endforeach ?>
 
-                <?php foreach ($sex_records as $sex_record): ?>
+                <?php foreach ($sex_records as $sex_record) : ?>
                     <?= $sex_record ?>
                 <?php endforeach ?>
             </div>
@@ -95,7 +95,7 @@
 
         <div id="individual-tabs">
             <ul class="nav nav-tabs flex-wrap">
-                <?php foreach ($tabs as $tab): ?>
+                <?php foreach ($tabs as $tab) : ?>
                     <li class="nav-item">
                         <a class="nav-link<?= $tab->isGrayedOut($individual) ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" data-href="<?= e(route('individual-tab', ['xref' => $individual->getXref(), 'ged' => $individual->getTree()->getName(), 'module' => $tab->getName()])) ?>" href="#<?= $tab->getName() ?>">
                             <?= $tab->getTitle() ?>
@@ -104,14 +104,16 @@
                 <?php endforeach ?>
             </ul>
             <div class="tab-content">
-                <?php foreach ($tabs as $tab): ?>
-                    <div id="<?= $tab->getName() ?>" class="tab-pane fade wt-ajax-load" role="tabpanel"><?php if (!$tab->canLoadAjax()): ?><?= $tab->getTabContent($individual) ?><?php endif ?></div>
+                <?php foreach ($tabs as $tab) : ?>
+                    <div id="<?= $tab->getName() ?>" class="tab-pane fade wt-ajax-load" role="tabpanel"><?php if (!$tab->canLoadAjax()) :
+                        ?><?= $tab->getTabContent($individual) ?><?php
+                             endif ?></div>
                 <?php endforeach ?>
             </div>
         </div>
     </div>
     <div class="col-sm-4" id="sidebar" role="tablist">
-        <?php foreach ($sidebars as $sidebar): ?>
+        <?php foreach ($sidebars as $sidebar) : ?>
             <div class="card">
                 <div class="card-header" role="tab" id="sidebar-header-<?= $sidebar->getName() ?>">
                     <div class="card-title mb-0">

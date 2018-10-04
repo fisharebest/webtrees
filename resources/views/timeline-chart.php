@@ -13,19 +13,19 @@
   var birthyears  = [];
   var birthmonths = [];
   var birthdays   = [];
-	<?php
-	foreach ($individuals as $c => $indi) {
-		if (!empty($birthyears[$indi->getXref()])) {
-			echo 'birthyears[' . $c . ']=' . $birthyears[$indi->getXref()] . ';';
-		}
-		if (!empty($birthmonths[$indi->getXref()])) {
-			echo 'birthmonths[' . $c . ']=' . $birthmonths[$indi->getXref()] . ';';
-		}
-		if (!empty($birthdays[$indi->getXref()])) {
-			echo 'birthdays[' . $c . ']=' . $birthdays[$indi->getXref()] . ';';
-		}
-	}
-	?>
+    <?php
+    foreach ($individuals as $c => $indi) {
+        if (!empty($birthyears[$indi->getXref()])) {
+            echo 'birthyears[' . $c . ']=' . $birthyears[$indi->getXref()] . ';';
+        }
+        if (!empty($birthmonths[$indi->getXref()])) {
+            echo 'birthmonths[' . $c . ']=' . $birthmonths[$indi->getXref()] . ';';
+        }
+        if (!empty($birthdays[$indi->getXref()])) {
+            echo 'birthdays[' . $c . ']=' . $birthdays[$indi->getXref()] . ';';
+        }
+    }
+    ?>
 
   var bheight = <?= $bheight ?>;
   var scale   = <?= $scale ?>;
@@ -245,186 +245,186 @@
 </script>
 
 <div id="timeline_chart">
-	<!-- print the timeline line image -->
-	<div id="line" style="position:absolute; <?= I18N::direction() === 'ltr' ? 'left:22px;' : 'right:22px;' ?> top:0;">
-		<img src="<?= Theme::theme()->parameter('image-vline') ?>" width="3" height="<?= 0 + ($topyear - $baseyear) * $scale ?>">
-	</div>
+    <!-- print the timeline line image -->
+    <div id="line" style="position:absolute; <?= I18N::direction() === 'ltr' ? 'left:22px;' : 'right:22px;' ?> top:0;">
+        <img src="<?= Theme::theme()->parameter('image-vline') ?>" width="3" height="<?= 0 + ($topyear - $baseyear) * $scale ?>">
+    </div>
 
-	<!-- print divs for the grid -->
-	<div id="scale<?= e($baseyear) ?>" style="position:absolute; <?= I18N::direction() === 'ltr' ? 'left' : 'right' ?>:0; top:-5px; font-size: 7pt; text-align: <?= I18N::direction() === 'ltr' ? 'left' : 'right' ?>;">
-		<?= $baseyear ?>
-	</div>
-	<?php
-	// at a scale of 25 or higher, show every year
-	$mod = 25 / $scale;
-	if ($mod < 1) {
-		$mod = 1;
-	}
-	for ($i = $baseyear + 1; $i < $topyear; $i++) {
-		if ($i % $mod === 0) {
-			echo '<div id="scale' . $i . '" style="position:absolute; ' . (I18N::direction() === 'ltr' ? 'left:0;' : 'right:0;') . ' top:' . ((($i - $baseyear) * $scale) - $scale / 2) . 'px; font-size: 7pt; text-align:' . (I18N::direction() === 'ltr' ? 'left' : 'right') . ';">';
-			echo $i;
-			echo '</div>';
-		}
-	}
-	echo '';
-	?>
-	<div id="scale<?= e($topyear) ?>" style="position:absolute; <?= I18N::direction() === 'ltr' ? 'left' : 'right' ?>:0; top:<?= ($topyear - $baseyear) * $scale ?>px; font-size: 7pt; text-align:<?= I18N::direction() === 'ltr' ? 'left' : 'right' ?>;">
-		<?= e($topyear) ?>
-	</div>
+    <!-- print divs for the grid -->
+    <div id="scale<?= e($baseyear) ?>" style="position:absolute; <?= I18N::direction() === 'ltr' ? 'left' : 'right' ?>:0; top:-5px; font-size: 7pt; text-align: <?= I18N::direction() === 'ltr' ? 'left' : 'right' ?>;">
+        <?= $baseyear ?>
+    </div>
+    <?php
+    // at a scale of 25 or higher, show every year
+    $mod = 25 / $scale;
+    if ($mod < 1) {
+        $mod = 1;
+    }
+    for ($i = $baseyear + 1; $i < $topyear; $i++) {
+        if ($i % $mod === 0) {
+            echo '<div id="scale' . $i . '" style="position:absolute; ' . (I18N::direction() === 'ltr' ? 'left:0;' : 'right:0;') . ' top:' . ((($i - $baseyear) * $scale) - $scale / 2) . 'px; font-size: 7pt; text-align:' . (I18N::direction() === 'ltr' ? 'left' : 'right') . ';">';
+            echo $i;
+            echo '</div>';
+        }
+    }
+    echo '';
+    ?>
+    <div id="scale<?= e($topyear) ?>" style="position:absolute; <?= I18N::direction() === 'ltr' ? 'left' : 'right' ?>:0; top:<?= ($topyear - $baseyear) * $scale ?>px; font-size: 7pt; text-align:<?= I18N::direction() === 'ltr' ? 'left' : 'right' ?>;">
+        <?= e($topyear) ?>
+    </div>
 
-	<?php foreach ($indifacts as $factcount => $event): ?>
-		<?php
-		$desc     = $event->getValue();
-		$gdate    = $event->getDate();
-		$date     = $gdate->minimumDate();
-		$date     = $date->convertToCalendar('gregorian');
-		$year     = $date->y;
-		$month    = max(1, $date->m);
-		$day      = max(1, $date->d);
-		$xoffset  = 0 + 22;
-		$yoffset  = 0 + (($year - $baseyear) * $scale) - ($scale);
-		$yoffset  = $yoffset + (($month / 12) * $scale);
-		$yoffset  = $yoffset + (($day / 30) * ($scale / 12));
-		$yoffset  = (int) ($yoffset);
-		$place    = (int) ($yoffset / $bheight);
-		$i        = 1;
-		$j        = 0;
-		$tyoffset = 0;
-		while (isset($placements[$place])) {
-			if ($i === $j) {
-				$tyoffset = $bheight * $i;
-				$i++;
-			} else {
-				$tyoffset = -1 * $bheight * $j;
-				$j++;
-			}
-			$place = (int) (($yoffset + $tyoffset) / $bheight);
-		}
-		$yoffset            += $tyoffset;
-		$xoffset            += abs($tyoffset);
-		$placements[$place] = $yoffset;
+    <?php foreach ($indifacts as $factcount => $event) : ?>
+        <?php
+        $desc     = $event->getValue();
+        $gdate    = $event->getDate();
+        $date     = $gdate->minimumDate();
+        $date     = $date->convertToCalendar('gregorian');
+        $year     = $date->y;
+        $month    = max(1, $date->m);
+        $day      = max(1, $date->d);
+        $xoffset  = 0 + 22;
+        $yoffset  = 0 + (($year - $baseyear) * $scale) - ($scale);
+        $yoffset  = $yoffset + (($month / 12) * $scale);
+        $yoffset  = $yoffset + (($day / 30) * ($scale / 12));
+        $yoffset  = (int) ($yoffset);
+        $place    = (int) ($yoffset / $bheight);
+        $i        = 1;
+        $j        = 0;
+        $tyoffset = 0;
+        while (isset($placements[$place])) {
+            if ($i === $j) {
+                $tyoffset = $bheight * $i;
+                $i++;
+            } else {
+                $tyoffset = -1 * $bheight * $j;
+                $j++;
+            }
+            $place = (int) (($yoffset + $tyoffset) / $bheight);
+        }
+        $yoffset            += $tyoffset;
+        $xoffset            += abs($tyoffset);
+        $placements[$place] = $yoffset;
 
-		echo "<div id=\"fact$factcount\" style=\"position:absolute; " . (I18N::direction() === 'ltr' ? 'left: ' . ($xoffset) : 'right: ' . ($xoffset)) . 'px; top:' . ($yoffset) . 'px; font-size: 8pt; height: ' . ($bheight) . "px;\" onmousedown=\"factMouseDown(this, '" . $factcount . "', " . ($yoffset - $tyoffset) . ');">';
-		echo '<table cellspacing="0" cellpadding="0" border="0" style="cursor: hand;"><tr><td>';
-		echo '<img src="' . Theme::theme()->parameter('image-hline') . '" name="boxline' . $factcount . '" id="boxline' . $factcount . '" height="3" width="10" style="padding-';
-		if (I18N::direction() === 'ltr') {
-			echo 'left: 3px;">';
-		} else {
-			echo 'right: 3px;">';
-		}
+        echo "<div id=\"fact$factcount\" style=\"position:absolute; " . (I18N::direction() === 'ltr' ? 'left: ' . ($xoffset) : 'right: ' . ($xoffset)) . 'px; top:' . ($yoffset) . 'px; font-size: 8pt; height: ' . ($bheight) . "px;\" onmousedown=\"factMouseDown(this, '" . $factcount . "', " . ($yoffset - $tyoffset) . ');">';
+        echo '<table cellspacing="0" cellpadding="0" border="0" style="cursor: hand;"><tr><td>';
+        echo '<img src="' . Theme::theme()->parameter('image-hline') . '" name="boxline' . $factcount . '" id="boxline' . $factcount . '" height="3" width="10" style="padding-';
+        if (I18N::direction() === 'ltr') {
+            echo 'left: 3px;">';
+        } else {
+            echo 'right: 3px;">';
+        }
 
-		$col = array_search($event->getParent(), $individuals);
-		if ($col === false) {
-			// Marriage event - use the color of the husband
-			$col = array_search($event->getParent()->getHusband(), $individuals);
-		}
-		if ($col === false) {
-			// Marriage event - use the color of the wife
-			$col = array_search($event->getParent()->getWife(), $individuals);
-		}
-		$col = $col % 6;
-		echo '</td><td class="person' . $col . '">';
-		if (count($individuals) > 6) {
-			// We only have six colours, so show naes if more than this number
-			echo $event->getParent()->getFullName() . ' — ';
-		}
-		$record = $event->getParent();
-		echo $event->getLabel();
-		echo ' — ';
-		if ($record instanceof Individual) {
-			echo FunctionsPrint::formatFactDate($event, $record, false, false);
-		} elseif ($record instanceof Family) {
-			echo $gdate->display();
-			if ($record->getHusband() && $record->getHusband()->getBirthDate()->isOK()) {
-				$ageh = FunctionsDate::getAgeAtEvent(Date::getAgeGedcom($record->getHusband()->getBirthDate(), $gdate));
-			} else {
-				$ageh = null;
-			}
-			if ($record->getWife() && $record->getWife()->getBirthDate()->isOK()) {
-				$agew = FunctionsDate::getAgeAtEvent(Date::getAgeGedcom($record->getWife()->getBirthDate(), $gdate));
-			} else {
-				$agew = null;
-			}
-			if ($ageh && $agew) {
-				echo '<span class="age"> ', I18N::translate('Husband’s age'), ' ', $ageh, ' ', I18N::translate('Wife’s age'), ' ', $agew, '</span>';
-			} elseif ($ageh) {
-				echo '<span class="age"> ', I18N::translate('Age'), ' ', $ageh, '</span>';
-			} elseif ($agew) {
-				echo '<span class="age"> ', I18N::translate('Age'), ' ', $ageh, '</span>';
-			}
-		}
-		echo ' ' . e($desc);
-		if (!$event->getPlace()->isEmpty()) {
-			echo ' — ' . $event->getPlace()->getShortName();
-		}
-		// Print spouses names for family events
-		if ($event->getParent() instanceof Family) {
-			echo ' — <a href="', e($event->getParent()->url()), '">', $event->getParent()->getFullName(), '</a>';
-		}
-		echo '</td></tr></table>';
-		echo '</div>';
-		if (I18N::direction() === 'ltr') {
-			$img  = 'image-dline2';
-			$ypos = '0%';
-		} else {
-			$img  = 'image-dline';
-			$ypos = '100%';
-		}
-		$dyoffset = ($yoffset - $tyoffset) + $bheight / 3;
-		if ($tyoffset < 0) {
-			$dyoffset = $yoffset + $bheight / 3;
-			if (I18N::direction() === 'ltr') {
-				$img  = 'image-dline';
-				$ypos = '100%';
-			} else {
-				$img  = 'image-dline2';
-				$ypos = '0%';
-			}
-		}
-		?>
+        $col = array_search($event->getParent(), $individuals);
+        if ($col === false) {
+            // Marriage event - use the color of the husband
+            $col = array_search($event->getParent()->getHusband(), $individuals);
+        }
+        if ($col === false) {
+            // Marriage event - use the color of the wife
+            $col = array_search($event->getParent()->getWife(), $individuals);
+        }
+        $col = $col % 6;
+        echo '</td><td class="person' . $col . '">';
+        if (count($individuals) > 6) {
+            // We only have six colours, so show naes if more than this number
+            echo $event->getParent()->getFullName() . ' — ';
+        }
+        $record = $event->getParent();
+        echo $event->getLabel();
+        echo ' — ';
+        if ($record instanceof Individual) {
+            echo FunctionsPrint::formatFactDate($event, $record, false, false);
+        } elseif ($record instanceof Family) {
+            echo $gdate->display();
+            if ($record->getHusband() && $record->getHusband()->getBirthDate()->isOK()) {
+                $ageh = FunctionsDate::getAgeAtEvent(Date::getAgeGedcom($record->getHusband()->getBirthDate(), $gdate));
+            } else {
+                $ageh = null;
+            }
+            if ($record->getWife() && $record->getWife()->getBirthDate()->isOK()) {
+                $agew = FunctionsDate::getAgeAtEvent(Date::getAgeGedcom($record->getWife()->getBirthDate(), $gdate));
+            } else {
+                $agew = null;
+            }
+            if ($ageh && $agew) {
+                echo '<span class="age"> ', I18N::translate('Husband’s age'), ' ', $ageh, ' ', I18N::translate('Wife’s age'), ' ', $agew, '</span>';
+            } elseif ($ageh) {
+                echo '<span class="age"> ', I18N::translate('Age'), ' ', $ageh, '</span>';
+            } elseif ($agew) {
+                echo '<span class="age"> ', I18N::translate('Age'), ' ', $ageh, '</span>';
+            }
+        }
+        echo ' ' . e($desc);
+        if (!$event->getPlace()->isEmpty()) {
+            echo ' — ' . $event->getPlace()->getShortName();
+        }
+        // Print spouses names for family events
+        if ($event->getParent() instanceof Family) {
+            echo ' — <a href="', e($event->getParent()->url()), '">', $event->getParent()->getFullName(), '</a>';
+        }
+        echo '</td></tr></table>';
+        echo '</div>';
+        if (I18N::direction() === 'ltr') {
+            $img  = 'image-dline2';
+            $ypos = '0%';
+        } else {
+            $img  = 'image-dline';
+            $ypos = '100%';
+        }
+        $dyoffset = ($yoffset - $tyoffset) + $bheight / 3;
+        if ($tyoffset < 0) {
+            $dyoffset = $yoffset + $bheight / 3;
+            if (I18N::direction() === 'ltr') {
+                $img  = 'image-dline';
+                $ypos = '100%';
+            } else {
+                $img  = 'image-dline2';
+                $ypos = '0%';
+            }
+        }
+        ?>
 
-		<!-- diagonal line -->
-		<div id="dbox<?= $factcount ?>" style="position:absolute; <?= (I18N::direction() === 'ltr' ? 'left: ' . (0 + 25) : 'right: ' . (0 + 25)) ?>px; top:<?= ($dyoffset) ?>px; font-size: 8pt; height: <?= abs($tyoffset) ?>px; width: <?= abs($tyoffset) ?>px; background-image: url('<?= Theme::theme()->parameter($img) ?>'); background-position: 0% <?= $ypos ?>;">
-		</div>
-	<?php endforeach ?>
+        <!-- diagonal line -->
+        <div id="dbox<?= $factcount ?>" style="position:absolute; <?= (I18N::direction() === 'ltr' ? 'left: ' . (0 + 25) : 'right: ' . (0 + 25)) ?>px; top:<?= ($dyoffset) ?>px; font-size: 8pt; height: <?= abs($tyoffset) ?>px; width: <?= abs($tyoffset) ?>px; background-image: url('<?= Theme::theme()->parameter($img) ?>'); background-position: 0% <?= $ypos ?>;">
+        </div>
+    <?php endforeach ?>
 
-	<!-- age cursors -->
-	<?php foreach ($individuals as $p => $indi): ?>
-		<?php $ageyoffset = 0 + ($bheight * $p); ?>
-		<div id="agebox<?= $p ?>" style="cursor:move; position:absolute; <?= I18N::direction() === 'ltr' ? 'left:20px;' : 'right:20px;' ?> top:<?= $ageyoffset ?>px; height:<?= $bheight ?>px; display:none;" onmousedown="ageCursorMouseDown(this, <?= $p ?>);">
-			<table cellspacing="0" cellpadding="0">
-				<tr>
-					<td>
-						<img src="<?= Theme::theme()->parameter('image-hline') ?>" name="ageline<?= $p ?>" id="ageline<?= $p ?>" width="25" height="3">
-					</td>
-					<td>
-						<?php if (!empty($birthyears[$indi->getXref()])): ?>
-							<?php $tyear = round(($ageyoffset + ($bheight / 2)) / $scale) + $baseyear; ?>
-							<table class="person<?= $p % 6 ?>" style="cursor: hand;">
-								<tr>
-									<td>
-										<?= I18N::translate('Year:') ?>
-										<span id="yearform<?= $p ?>" class="field">
-											<?= $tyear ?>
-										</span>
-									</td>
-									<td>
-										(<?= I18N::translate('Age') ?> <span id="ageform<?= $p ?>" class="field"><?= $tyear - $birthyears[$indi->getXref()] ?></span>)
-									</td>
-								</tr>
-							</table>
-						<?php endif ?>
-					</td>
-				</tr>
-			</table>
-			<br>
-			<br>
-			<br>
-		</div>
-		<br>
-		<br>
-		<br>
-		<br>
-	<?php endforeach ?>
+    <!-- age cursors -->
+    <?php foreach ($individuals as $p => $indi) : ?>
+        <?php $ageyoffset = 0 + ($bheight * $p); ?>
+        <div id="agebox<?= $p ?>" style="cursor:move; position:absolute; <?= I18N::direction() === 'ltr' ? 'left:20px;' : 'right:20px;' ?> top:<?= $ageyoffset ?>px; height:<?= $bheight ?>px; display:none;" onmousedown="ageCursorMouseDown(this, <?= $p ?>);">
+            <table cellspacing="0" cellpadding="0">
+                <tr>
+                    <td>
+                        <img src="<?= Theme::theme()->parameter('image-hline') ?>" name="ageline<?= $p ?>" id="ageline<?= $p ?>" width="25" height="3">
+                    </td>
+                    <td>
+                        <?php if (!empty($birthyears[$indi->getXref()])) : ?>
+                            <?php $tyear = round(($ageyoffset + ($bheight / 2)) / $scale) + $baseyear; ?>
+                            <table class="person<?= $p % 6 ?>" style="cursor: hand;">
+                                <tr>
+                                    <td>
+                                        <?= I18N::translate('Year:') ?>
+                                        <span id="yearform<?= $p ?>" class="field">
+                                            <?= $tyear ?>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        (<?= I18N::translate('Age') ?> <span id="ageform<?= $p ?>" class="field"><?= $tyear - $birthyears[$indi->getXref()] ?></span>)
+                                    </td>
+                                </tr>
+                            </table>
+                        <?php endif ?>
+                    </td>
+                </tr>
+            </table>
+            <br>
+            <br>
+            <br>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+    <?php endforeach ?>
 </div>

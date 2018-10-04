@@ -119,123 +119,123 @@
     }
   }
   var block_descr = { advice1: "&nbsp;"};
-	<?php foreach ($all_blocks as $block_name => $block): ?>
+    <?php foreach ($all_blocks as $block_name => $block) : ?>
   block_descr[<?= json_encode($block_name) ?>] = <?= json_encode($block->getDescription()) ?>;
-	<?php endforeach ?>
+    <?php endforeach ?>
 </script>
 
 <h2><?= $title ?></h2>
 
 <p>
-	<?= I18N::translate('Select a block and use the arrows to move it.') ?>
+    <?= I18N::translate('Select a block and use the arrows to move it.') ?>
 </p>
 
 <form name="config_setup" method="post" action="<?= e($url_save) ?>" onsubmit="select_options();" >
-	<?= csrf_field() ?>
-	<table border="1" id="change_blocks">
-		<thead>
-			<tr>
-				<th class="descriptionbox center vmiddle" colspan="2">
-					<label for="main_select">
-						<?= I18N::translate('Main section blocks') ?>
-					</label>
-				</th>
-				<th class="descriptionbox center vmiddle" colspan="3">
-					<label for="available_select">
-						<?= I18N::translate('Available blocks') ?>
-					</label>
-				</th>
-				<th class="descriptionbox center vmiddle" colspan="2">
-					<label for="side_select">
-						<?= I18N::translate('Right section blocks') ?>
-					</label>
-				</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td class="optionbox center vmiddle">
-					<?= FontAwesome::linkIcon('arrow-up', I18N::translate('Move up'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return move_up_block("main_select");']) ?>
-					<br>
-					<?= FontAwesome::linkIcon('arrow-end', I18N::translate('Move right'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return move_left_right_block("main_select", "side_select");']) ?>
-					<br>
-					<?= FontAwesome::linkIcon('delete', I18N::translate('Remove'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return move_left_right_block("main_select", "available_select");']) ?>
-					<br>
-					<?= FontAwesome::linkIcon('arrow-down', I18N::translate('Move down'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return move_down_block("main_select");']) ?>
-				</td>
-				<td class="optionbox center">
-					<select multiple="multiple" id="main_select" name="main[]" size="10" onchange="show_description('main_select');">
-						<?php foreach ($main_blocks as $block_id => $block): ?>
-							<option value="<?= $block_id ?>">
-								<?= $all_blocks[$block->getName()]->getTitle() ?>
-							</option>
-						<?php endforeach ?>
-					</select>
-				</td>
-				<td class="optionbox center vmiddle">
-					<?= FontAwesome::linkIcon('arrow-start', I18N::translate('Add'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return move_left_right_block("available_select", "main_select");']) ?>
-				</td>
-				<td class="optionbox center">
-					<select multiple id="available_select" size="10" onchange="show_description('available_select');">
-						<?php foreach ($all_blocks as $block_name => $block): ?>
-							<option value="<?= $block_name ?>">
-								<?= $block->getTitle() ?>
-							</option>
-						<?php endforeach ?>
-					</select>
-				</td>
-				<td class="optionbox center vmiddle">
-					<?= FontAwesome::linkIcon('arrow-end', I18N::translate('Add'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return move_left_right_block("available_select", "side_select");']) ?>
-				</td>
-				<td class="optionbox center">
-					<select multiple="multiple" id="side_select" name="side[]" size="10" onchange="show_description('side_select');">
-						<?php foreach ($side_blocks as $block_id => $block): ?>
-							<option value="<?= $block_id ?>">
-								<?= $all_blocks[$block->getName()]->getTitle() ?>
-							</option>
-						<?php endforeach ?>
-					</select>
-				</td>
-				<td class="optionbox center vmiddle">
-					<?= FontAwesome::linkIcon('arrow-up', I18N::translate('Move up'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return move_up_block("side_select");']) ?>
-					<br>
-					<?= FontAwesome::linkIcon('arrow-start', I18N::translate('Move left'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return move_left_right_block("side_select", "main_select");']) ?>
-					<br>
-					<?= FontAwesome::linkIcon('delete', I18N::translate('Remove'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return move_left_right_block("side_select", "available_select");']) ?>
-					<br>
-					<?= FontAwesome::linkIcon('arrow-down', I18N::translate('Move down'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return move_down_block("side_select");']) ?>
-				</td>
-			</tr>
-		</tbody>
-		<tfoot>
-			<tr>
-				<td class="descriptionbox wrap" colspan="7">
-					<div id="instructions">
-						&nbsp;
-					</div>
-				</td>
-			</tr>
-			<tr>
-				<td class="topbottombar" colspan="4">
-					<?php if ($can_reset): ?>
-						<label>
-							<input type="checkbox" name="default">
-							<?= I18N::translate('Restore the default block layout') ?>
-						</label>
-					<?php endif ?>
-				</td>
-				<td class="topbottombar" colspan="3">
-					<button type="submit" class="btn btn-primary">
-						<?= FontAwesome::decorativeIcon('save') ?>
-						<?= I18N::translate('save') ?>
-					</button>
-					<a class="btn btn-secondary" href="<?= e($url_cancel) ?>">
-						<?= FontAwesome::decorativeIcon('cancel') ?>
-						<?= I18N::translate('cancel') ?>
-					</a>
-				</td>
-			</tr>
-		</tfoot>
-	</table>
+    <?= csrf_field() ?>
+    <table border="1" id="change_blocks">
+        <thead>
+            <tr>
+                <th class="descriptionbox center vmiddle" colspan="2">
+                    <label for="main_select">
+                        <?= I18N::translate('Main section blocks') ?>
+                    </label>
+                </th>
+                <th class="descriptionbox center vmiddle" colspan="3">
+                    <label for="available_select">
+                        <?= I18N::translate('Available blocks') ?>
+                    </label>
+                </th>
+                <th class="descriptionbox center vmiddle" colspan="2">
+                    <label for="side_select">
+                        <?= I18N::translate('Right section blocks') ?>
+                    </label>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="optionbox center vmiddle">
+                    <?= FontAwesome::linkIcon('arrow-up', I18N::translate('Move up'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return move_up_block("main_select");']) ?>
+                    <br>
+                    <?= FontAwesome::linkIcon('arrow-end', I18N::translate('Move right'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return move_left_right_block("main_select", "side_select");']) ?>
+                    <br>
+                    <?= FontAwesome::linkIcon('delete', I18N::translate('Remove'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return move_left_right_block("main_select", "available_select");']) ?>
+                    <br>
+                    <?= FontAwesome::linkIcon('arrow-down', I18N::translate('Move down'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return move_down_block("main_select");']) ?>
+                </td>
+                <td class="optionbox center">
+                    <select multiple="multiple" id="main_select" name="main[]" size="10" onchange="show_description('main_select');">
+                        <?php foreach ($main_blocks as $block_id => $block) : ?>
+                            <option value="<?= $block_id ?>">
+                                <?= $all_blocks[$block->getName()]->getTitle() ?>
+                            </option>
+                        <?php endforeach ?>
+                    </select>
+                </td>
+                <td class="optionbox center vmiddle">
+                    <?= FontAwesome::linkIcon('arrow-start', I18N::translate('Add'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return move_left_right_block("available_select", "main_select");']) ?>
+                </td>
+                <td class="optionbox center">
+                    <select multiple id="available_select" size="10" onchange="show_description('available_select');">
+                        <?php foreach ($all_blocks as $block_name => $block) : ?>
+                            <option value="<?= $block_name ?>">
+                                <?= $block->getTitle() ?>
+                            </option>
+                        <?php endforeach ?>
+                    </select>
+                </td>
+                <td class="optionbox center vmiddle">
+                    <?= FontAwesome::linkIcon('arrow-end', I18N::translate('Add'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return move_left_right_block("available_select", "side_select");']) ?>
+                </td>
+                <td class="optionbox center">
+                    <select multiple="multiple" id="side_select" name="side[]" size="10" onchange="show_description('side_select');">
+                        <?php foreach ($side_blocks as $block_id => $block) : ?>
+                            <option value="<?= $block_id ?>">
+                                <?= $all_blocks[$block->getName()]->getTitle() ?>
+                            </option>
+                        <?php endforeach ?>
+                    </select>
+                </td>
+                <td class="optionbox center vmiddle">
+                    <?= FontAwesome::linkIcon('arrow-up', I18N::translate('Move up'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return move_up_block("side_select");']) ?>
+                    <br>
+                    <?= FontAwesome::linkIcon('arrow-start', I18N::translate('Move left'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return move_left_right_block("side_select", "main_select");']) ?>
+                    <br>
+                    <?= FontAwesome::linkIcon('delete', I18N::translate('Remove'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return move_left_right_block("side_select", "available_select");']) ?>
+                    <br>
+                    <?= FontAwesome::linkIcon('arrow-down', I18N::translate('Move down'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return move_down_block("side_select");']) ?>
+                </td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td class="descriptionbox wrap" colspan="7">
+                    <div id="instructions">
+                        &nbsp;
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="topbottombar" colspan="4">
+                    <?php if ($can_reset) : ?>
+                        <label>
+                            <input type="checkbox" name="default">
+                            <?= I18N::translate('Restore the default block layout') ?>
+                        </label>
+                    <?php endif ?>
+                </td>
+                <td class="topbottombar" colspan="3">
+                    <button type="submit" class="btn btn-primary">
+                        <?= FontAwesome::decorativeIcon('save') ?>
+                        <?= I18N::translate('save') ?>
+                    </button>
+                    <a class="btn btn-secondary" href="<?= e($url_cancel) ?>">
+                        <?= FontAwesome::decorativeIcon('cancel') ?>
+                        <?= I18N::translate('cancel') ?>
+                    </a>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
 </form>
 

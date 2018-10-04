@@ -7,82 +7,82 @@
 <h1><?= $title ?></h1>
 
 <form>
-	<input type="hidden" name="route" value="merge-records">
-	<input type="hidden" name="ged" value="<?= e($tree->getName()) ?>">
-	<div class="row form-group">
-		<label class="col-sm-3 col-form-label" for="record-type">
-			<?= I18N::translate('Select two records to merge.') ?>
-		</label>
-		<div class="col-sm-9">
-			<select class="form-control" id="record-type">
-				<option value="individual"><?= I18N::translate('Individuals') ?></option>
-				<option value="family"><?= I18N::translate('Families') ?></option>
-				<option value="source"><?= I18N::translate('Sources') ?></option>
-				<option value="repository"><?= I18N::translate('Repositories') ?></option>
-				<option value="note"><?= I18N::translate('Notes') ?></option>
-				<option value="media"><?= I18N::translate('Media objects') ?></option>
-			</select>
-		</div>
-	</div>
+    <input type="hidden" name="route" value="merge-records">
+    <input type="hidden" name="ged" value="<?= e($tree->getName()) ?>">
+    <div class="row form-group">
+        <label class="col-sm-3 col-form-label" for="record-type">
+            <?= I18N::translate('Select two records to merge.') ?>
+        </label>
+        <div class="col-sm-9">
+            <select class="form-control" id="record-type">
+                <option value="individual"><?= I18N::translate('Individuals') ?></option>
+                <option value="family"><?= I18N::translate('Families') ?></option>
+                <option value="source"><?= I18N::translate('Sources') ?></option>
+                <option value="repository"><?= I18N::translate('Repositories') ?></option>
+                <option value="note"><?= I18N::translate('Notes') ?></option>
+                <option value="media"><?= I18N::translate('Media objects') ?></option>
+            </select>
+        </div>
+    </div>
 
-	<label class="row form-group">
-		<span class="col-sm-3 col-form-label">
-			<?= I18N::translate('First record') ?>
-		</span>
-		<span class="col-sm-9 select-record select-individual">
-			<?= FunctionsEdit::formControlIndividual($tree, $individual1, ['name' => 'xref1', 'class' => 'form-control', 'style' => 'width:100%;']) ?>
-		</span>
-		<span class="col-sm-9 select-record select-family d-none">
-			<?= FunctionsEdit::formControlFamily($tree, $family1, ['name' => 'xref1', 'class' => 'form-control', 'style' => 'width:100%;', 'disabled' => true]) ?>
-		</span>
-		<span class="col-sm-9 select-record select-source d-none">
-			<?= FunctionsEdit::formControlSource($tree, $source1, ['name' => 'xref1', 'class' => 'form-control', 'style' => 'width:100%;', 'disabled' => true]) ?>
-		</span>
-		<span class="col-sm-9 select-record select-repository d-none">
-			<?= FunctionsEdit::formControlRepository($tree, $repository1, ['name' => 'xref1', 'class' => 'form-control', 'style' => 'width:100%;', 'disabled' => true]) ?>
-		</span>
-		<span class="col-sm-9 select-record select-note d-none">
-			<?= FunctionsEdit::formControlNote($tree, $note1, ['name' => 'xref1', 'class' => 'form-control', 'style' => 'width:100%;', 'disabled' => true]) ?>
-		</span>
-		<span class="col-sm-9 select-record select-media d-none">
-			<?= FunctionsEdit::formControlMediaObject($tree, $media2, ['name' => 'xref1', 'class' => 'form-control', 'style' => 'width:100%;', 'disabled' => true]) ?>
-		</span>
-	</label>
+    <label class="row form-group">
+        <span class="col-sm-3 col-form-label">
+            <?= I18N::translate('First record') ?>
+        </span>
+        <span class="col-sm-9 select-record select-individual">
+            <?= FunctionsEdit::formControlIndividual($tree, $individual1, ['name' => 'xref1', 'class' => 'form-control', 'style' => 'width:100%;']) ?>
+        </span>
+        <span class="col-sm-9 select-record select-family d-none">
+            <?= FunctionsEdit::formControlFamily($tree, $family1, ['name' => 'xref1', 'class' => 'form-control', 'style' => 'width:100%;', 'disabled' => true]) ?>
+        </span>
+        <span class="col-sm-9 select-record select-source d-none">
+            <?= FunctionsEdit::formControlSource($tree, $source1, ['name' => 'xref1', 'class' => 'form-control', 'style' => 'width:100%;', 'disabled' => true]) ?>
+        </span>
+        <span class="col-sm-9 select-record select-repository d-none">
+            <?= FunctionsEdit::formControlRepository($tree, $repository1, ['name' => 'xref1', 'class' => 'form-control', 'style' => 'width:100%;', 'disabled' => true]) ?>
+        </span>
+        <span class="col-sm-9 select-record select-note d-none">
+            <?= FunctionsEdit::formControlNote($tree, $note1, ['name' => 'xref1', 'class' => 'form-control', 'style' => 'width:100%;', 'disabled' => true]) ?>
+        </span>
+        <span class="col-sm-9 select-record select-media d-none">
+            <?= FunctionsEdit::formControlMediaObject($tree, $media2, ['name' => 'xref1', 'class' => 'form-control', 'style' => 'width:100%;', 'disabled' => true]) ?>
+        </span>
+    </label>
 
-	<label class="row form-group">
-		<span class="col-sm-3 col-form-label">
-			<?= I18N::translate('Second record') ?>
-		</span>
-		<span class="col-sm-9 select-record select-individual">
-			<?= FunctionsEdit::formControlIndividual($tree, $individual2, ['name' => 'xref2', 'class' => 'form-control', 'style' => 'width:100%;']) ?>
-		</span>
-		<span class="col-sm-9 select-record select-family d-none">
-			<?= FunctionsEdit::formControlFamily($tree, $family2, ['name' => 'xref2', 'class' => 'form-control', 'style' => 'width:100%;', 'disabled' => true]) ?>
-		</span>
-		<span class="col-sm-9 select-record select-source d-none">
-			<?= FunctionsEdit::formControlSource($tree, $source2, ['name' => 'xref2', 'class' => 'form-control', 'style' => 'width:100%;', 'disabled' => true]) ?>
-		</span>
-		<span class="col-sm-9 select-record select-repository d-none">
-			<?= FunctionsEdit::formControlRepository($tree, $repository2, ['name' => 'xref2', 'class' => 'form-control', 'style' => 'width:100%;', 'disabled' => true]) ?>
-		</span>
-		<span class="col-sm-9 select-record select-note d-none">
-			<?= FunctionsEdit::formControlNote($tree, $note2, ['name' => 'xref2', 'class' => 'form-control', 'style' => 'width:100%;', 'disabled' => true]) ?>
-		</span>
-		<span class="col-sm-9 select-record select-media d-none">
-			<?= FunctionsEdit::formControlMediaObject($tree, $media2, ['name' => 'xref2', 'class' => 'form-control', 'style' => 'width:100%;', 'disabled' => true]) ?>
-		</span>
-	</label>
+    <label class="row form-group">
+        <span class="col-sm-3 col-form-label">
+            <?= I18N::translate('Second record') ?>
+        </span>
+        <span class="col-sm-9 select-record select-individual">
+            <?= FunctionsEdit::formControlIndividual($tree, $individual2, ['name' => 'xref2', 'class' => 'form-control', 'style' => 'width:100%;']) ?>
+        </span>
+        <span class="col-sm-9 select-record select-family d-none">
+            <?= FunctionsEdit::formControlFamily($tree, $family2, ['name' => 'xref2', 'class' => 'form-control', 'style' => 'width:100%;', 'disabled' => true]) ?>
+        </span>
+        <span class="col-sm-9 select-record select-source d-none">
+            <?= FunctionsEdit::formControlSource($tree, $source2, ['name' => 'xref2', 'class' => 'form-control', 'style' => 'width:100%;', 'disabled' => true]) ?>
+        </span>
+        <span class="col-sm-9 select-record select-repository d-none">
+            <?= FunctionsEdit::formControlRepository($tree, $repository2, ['name' => 'xref2', 'class' => 'form-control', 'style' => 'width:100%;', 'disabled' => true]) ?>
+        </span>
+        <span class="col-sm-9 select-record select-note d-none">
+            <?= FunctionsEdit::formControlNote($tree, $note2, ['name' => 'xref2', 'class' => 'form-control', 'style' => 'width:100%;', 'disabled' => true]) ?>
+        </span>
+        <span class="col-sm-9 select-record select-media d-none">
+            <?= FunctionsEdit::formControlMediaObject($tree, $media2, ['name' => 'xref2', 'class' => 'form-control', 'style' => 'width:100%;', 'disabled' => true]) ?>
+        </span>
+    </label>
 
-	<div class="row form-group">
-		<div class="col-sm-3">
-		</div>
-		<div class="col-sm-9">
-			<button class="btn btn-primary" type="submit">
-          <?= view('icons/save') ?>
-				<?= I18N::translate('continue') ?>
-			</button>
-		</div>
-	</div>
+    <div class="row form-group">
+        <div class="col-sm-3">
+        </div>
+        <div class="col-sm-9">
+            <button class="btn btn-primary" type="submit">
+            <?= view('icons/save') ?>
+                <?= I18N::translate('continue') ?>
+            </button>
+        </div>
+    </div>
 </form>
 
 <?php View::push('javascript') ?>

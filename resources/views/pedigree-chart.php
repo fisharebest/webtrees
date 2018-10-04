@@ -3,35 +3,35 @@
 <?php use Fisharebest\Webtrees\Theme; ?>
 
 <div id="pedigree-page">
-	<div id="pedigree_chart" class="layout<?= e($orientation) ?>">
-		<?php foreach ($nodes as $i => $node): ?>
-			<div id="sosa_<?= ($i + 1) ?>" class="shadow d-flex align-items-center<?= e($flex_direction) ?>" style="<?= e($posn) ?>:<?= e($node['x']) ?>px; top:<?= e($node['y']) ?>px; position:absolute;">
-				<?php if ($orientation === $oldest_at_top): ?>
-					<?php if ($i >= $last_gen_start): ?>
-						<?= $node['previous_gen'] ?>
-					<?php endif ?>
-				<?php else: ?>
-					<?php if ($i === 0): ?>
-						<?= $child_menu ?>
-					<?php endif ?>
-				<?php endif ?>
+    <div id="pedigree_chart" class="layout<?= e($orientation) ?>">
+        <?php foreach ($nodes as $i => $node) : ?>
+            <div id="sosa_<?= ($i + 1) ?>" class="shadow d-flex align-items-center<?= e($flex_direction) ?>" style="<?= e($posn) ?>:<?= e($node['x']) ?>px; top:<?= e($node['y']) ?>px; position:absolute;">
+                <?php if ($orientation === $oldest_at_top) : ?>
+                    <?php if ($i >= $last_gen_start) : ?>
+                        <?= $node['previous_gen'] ?>
+                    <?php endif ?>
+                <?php else : ?>
+                    <?php if ($i === 0) : ?>
+                        <?= $child_menu ?>
+                    <?php endif ?>
+                <?php endif ?>
 
-				<?php FunctionsPrint::printPedigreePerson($nodes[$i]['indi']) ?>
+                <?php FunctionsPrint::printPedigreePerson($nodes[$i]['indi']) ?>
 
-				<?php if ($orientation === $oldest_at_top): ?>
-					<?php if ($i === 0): ?>
-						<?= $child_menu ?>
-					<?php endif ?>
-				<?php else: ?>
-					<?php if ($i >= $last_gen_start): ?>
-						<?= $node['previous_gen'] ?>
-					<?php endif ?>
-				<?php endif ?>
-			</div>
-		<?php endforeach ?>
-		<canvas id="pedigree_canvas" width="<?= e($canvas_width) ?>" height="<?= e($canvas_height) ?>">
-		</canvas>
-	</div>
+                <?php if ($orientation === $oldest_at_top) : ?>
+                    <?php if ($i === 0) : ?>
+                        <?= $child_menu ?>
+                    <?php endif ?>
+                <?php else : ?>
+                    <?php if ($i >= $last_gen_start) : ?>
+                        <?= $node['previous_gen'] ?>
+                    <?php endif ?>
+                <?php endif ?>
+            </div>
+        <?php endforeach ?>
+        <canvas id="pedigree_canvas" width="<?= e($canvas_width) ?>" height="<?= e($canvas_height) ?>">
+        </canvas>
+    </div>
 </div>
 
 <script>

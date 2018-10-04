@@ -396,20 +396,27 @@ abstract class AbstractTheme
      */
     public function cookieWarning()
     {
-        if (
-            empty($_SERVER['HTTP_DNT']) &&
-            empty($_COOKIE['cookie']) &&
-            (Site::getPreference('GOOGLE_ANALYTICS_ID') === '1' || Site::getPreference('PIWIK_SITE_ID') === '1' || Site::getPreference('STATCOUNTER_PROJECT_ID') === '1')
-        ) {
-            return
-                '<div class="wt-cookie-warning">' .
-                I18N::translate('Cookies') . ' - ' .
-                I18N::translate('This website uses cookies to learn about visitor behaviour.') . ' ' .
-                '<button onclick="document.cookie=\'cookie=1\'; this.parentNode.classList.add(\'hidden\');">' . I18N::translate('continue') . '</button>' .
-                '</div>';
+        // Do not track?
+        if ($this->request->server->get('HTTP_DNT', '')) {
+            return '';
         }
 
-        return '';
+        // Cookies accepted?
+        if ($this->request->cookies->get('cookie', '')) {
+            return '';
+        }
+
+        // Not using trackers or analytics?
+        if (Site::getPreference('GOOGLE_ANALYTICS_ID') !== '1' && Site::getPreference('PIWIK_SITE_ID') !== '1' && Site::getPreference('STATCOUNTER_PROJECT_ID') !== '1') {
+            return '';
+        }
+
+        return
+            '<div class="wt-cookie-warning">' .
+            I18N::translate('Cookies') . ' - ' .
+            I18N::translate('This website uses cookies to learn about visitor behaviour.') . ' ' .
+            '<button onclick="document.cookie=\'cookie=1\'; this.parentNode.classList.add(\'hidden\');">' . I18N::translate('continue') . '</button>' .
+            '</div>';
     }
 
     /**

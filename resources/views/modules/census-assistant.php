@@ -3,86 +3,86 @@
 <?php use Fisharebest\Webtrees\I18N; ?>
 
 <div id="census-assistant-link" hidden>
-	<a href="#">
-		<?= I18N::translate('Create a shared note using the census assistant') ?>
-	</a>
+    <a href="#">
+        <?= I18N::translate('Create a shared note using the census assistant') ?>
+    </a>
 </div>
 
 <div id="census-assistant" hidden>
-	<input type="hidden" name="ca_census" id="census-assistant-class">
-	<div class="form-group">
-		<div class="input-group">
-			<div class="input-group-prepend">
-				<label class="input-group-text" for="census-assistant-title">
-					<?= I18N::translate('Title') ?>
-				</label>
-			</div>
-			<input class="form-control" id="census-assistant-title" name="ca_title" value="">
-		</div>
-	</div>
+    <input type="hidden" name="ca_census" id="census-assistant-class">
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="census-assistant-title">
+                    <?= I18N::translate('Title') ?>
+                </label>
+            </div>
+            <input class="form-control" id="census-assistant-title" name="ca_title" value="">
+        </div>
+    </div>
 
-	<div class="row">
-		<div class="form-group col-sm-6">
-			<div class="input-group">
-				<div class="input-group-prepend">
-					<label class="input-group-addon" for="census-assistant-citation">
-						<?= I18N::translate('Citation') ?>
-					</label>
-				</div>
-				<input class="form-control" id="census-assistant-citation" name="ca_citation">
-			</div>
-		</div>
+    <div class="row">
+        <div class="form-group col-sm-6">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <label class="input-group-addon" for="census-assistant-citation">
+                        <?= I18N::translate('Citation') ?>
+                    </label>
+                </div>
+                <input class="form-control" id="census-assistant-citation" name="ca_citation">
+            </div>
+        </div>
 
-		<div class="form-group col-sm-6">
-			<div class="input-group">
-				<div class="input-group-prepend">
-					<label class="input-group-text" for="census-assistant-place">
-						<?= I18N::translate('Place') ?>
-					</label>
-				</div>
-				<input class="form-control" id="census-assistant-place" name="ca_place">
-			</div>
-		</div>
-	</div>
+        <div class="form-group col-sm-6">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="census-assistant-place">
+                        <?= I18N::translate('Place') ?>
+                    </label>
+                </div>
+                <input class="form-control" id="census-assistant-place" name="ca_place">
+            </div>
+        </div>
+    </div>
 
-	<div class="form-group">
-		<div class="input-group">
-			<div class="input-group-prepend">
-				<span class="input-group-text">
-					<?= I18N::translate('Individuals') ?>
-				</span>
-			</div>
-			<?= FunctionsEdit::formControlIndividual($individual->getTree(), $individual, ['id' => 'census-assistant-individual', 'style' => 'width:100%']) ?>
-			<span class="input-group-btn">
-						<button type="button" class="btn btn-primary" id="census-assistant-add">
-							<?= FontAwesome::semanticIcon('add', I18N::translate('Add')) ?>
-						</button>
-					</span>
-			<span class="input-group-btn">
-						<button type="button" class="btn btn-primary" id="census-assistant-head"
-						        title="<?= I18N::translate('Head of household') ?>">
-							<?= FontAwesome::semanticIcon('individual', I18N::translate('Head of household')) ?>
-						</button>
-					</span>
-		</div>
-	</div>
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">
+                    <?= I18N::translate('Individuals') ?>
+                </span>
+            </div>
+            <?= FunctionsEdit::formControlIndividual($individual->getTree(), $individual, ['id' => 'census-assistant-individual', 'style' => 'width:100%']) ?>
+            <span class="input-group-btn">
+                        <button type="button" class="btn btn-primary" id="census-assistant-add">
+                            <?= FontAwesome::semanticIcon('add', I18N::translate('Add')) ?>
+                        </button>
+                    </span>
+            <span class="input-group-btn">
+                        <button type="button" class="btn btn-primary" id="census-assistant-head"
+                                title="<?= I18N::translate('Head of household') ?>">
+                            <?= FontAwesome::semanticIcon('individual', I18N::translate('Head of household')) ?>
+                        </button>
+                    </span>
+        </div>
+    </div>
 
-	<table class="table table-bordered table-small table-responsive wt-census-assistant-table"
-	       id="census-assistant-table">
-		<thead class="wt-census-assistant-header"></thead>
-		<tbody class="wt-census-assistant-body"></tbody>
-	</table>
+    <table class="table table-bordered table-small table-responsive wt-census-assistant-table"
+           id="census-assistant-table">
+        <thead class="wt-census-assistant-header"></thead>
+        <tbody class="wt-census-assistant-body"></tbody>
+    </table>
 
-	<div class="form-group">
-		<div class="input-group">
-			<div class="input-group-prepend">
-				<label class="input-group-text" for="census-assistant-notes">
-					<?= I18N::translate('Notes') ?>
-				</label>
-			</div>
-			<input class="form-control" id="census-assistant-notes" name="ca_notes">
-		</div>
-	</div>
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="census-assistant-notes">
+                    <?= I18N::translate('Notes') ?>
+                </label>
+            </div>
+            <input class="form-control" id="census-assistant-notes" name="ca_notes">
+        </div>
+    </div>
 </div>
 
 <script>

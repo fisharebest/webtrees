@@ -2,13 +2,13 @@
 <?php use Fisharebest\Webtrees\View; ?>
 
 <form method="post" action="<?= e(route('module', ['module' => 'descendancy', 'action' => 'Descendants', 'ged' => $tree->getName()])) ?>" onsubmit="return false;">
-	<input type="search" name="sb_desc_name" id="sb_desc_name" placeholder="<?= I18N::translate('Search') ?>">
+    <input type="search" name="sb_desc_name" id="sb_desc_name" placeholder="<?= I18N::translate('Search') ?>">
 </form>
 
 <div id="sb_desc_content">
-	<ul>
-		<?= $individual_list ?>
-	</ul>
+    <ul>
+        <?= $individual_list ?>
+    </ul>
 </div>
 
 <?php View::push('javascript') ?>

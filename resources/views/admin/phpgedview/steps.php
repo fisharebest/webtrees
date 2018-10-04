@@ -6,10 +6,10 @@
 <h1><?= $title ?></h1>
 
 <dl>
-	<?php foreach ($steps as $url => $text): ?>
-	<dt><?= $text ?></dt>
-	<dd class="wt-ajax-load" data-url="<?= e($url) ?>"></dd>
-	<?php endforeach ?>
+    <?php foreach ($steps as $url => $text) : ?>
+    <dt><?= $text ?></dt>
+    <dd class="wt-ajax-load" data-url="<?= e($url) ?>"></dd>
+    <?php endforeach ?>
 </dl>
 
 <?php View::push('javascript') ?>

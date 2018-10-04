@@ -1,32 +1,32 @@
 <?php use Fisharebest\Webtrees\I18N; ?>
 
 <div class="form-group row">
-	<label class="col-form-label col-sm-2" for="privacy-restriction">
-		<?= /* I18N: a restrction on viewing data */ I18N::translate('Privacy restriction') ?>
-	</label>
-	<div class="col-sm-4">
-		<select class="form-control" id="privacy-restriction" name="privacy-restriction">
-			<option value=""></option>
-			<option value="none">
-				<?= I18N::translate('Show to visitors') ?>
-			</option>
-			<option value="privacy">
-				<?= I18N::translate('Show to members') ?>
-			</option>
-			<option value="confidential">
-				<?= I18N::translate('Show to managers') ?>
-			</option>
-		</select>
-	</div>
-	<label class="col-form-label col-sm-2" for="edit-restriction">
-		<?= /* I18N: A restriction on editing data */ I18N::translate('Editing restriction') ?>
-	</label>
-	<div class="col-sm-4">
-		<select class="form-control" id="edit-restriction" name="edit-restriction">
-			<option value=""></option>
-			<option value="locked">
-				<?= I18N::translate('Only managers can edit'); ?>
-			</option>
-		</select>
-	</div>
+    <label class="col-form-label col-sm-2" for="privacy-restriction">
+        <?= /* I18N: a restrction on viewing data */ I18N::translate('Privacy restriction') ?>
+    </label>
+    <div class="col-sm-4">
+        <select class="form-control" id="privacy-restriction" name="privacy-restriction">
+            <option value=""></option>
+            <option value="none">
+                <?= I18N::translate('Show to visitors') ?>
+            </option>
+            <option value="privacy">
+                <?= I18N::translate('Show to members') ?>
+            </option>
+            <option value="confidential">
+                <?= I18N::translate('Show to managers') ?>
+            </option>
+        </select>
+    </div>
+    <label class="col-form-label col-sm-2" for="edit-restriction">
+        <?= /* I18N: A restriction on editing data */ I18N::translate('Editing restriction') ?>
+    </label>
+    <div class="col-sm-4">
+        <select class="form-control" id="edit-restriction" name="edit-restriction">
+            <option value=""></option>
+            <option value="locked">
+                <?= I18N::translate('Only managers can edit'); ?>
+            </option>
+        </select>
+    </div>
 </div>

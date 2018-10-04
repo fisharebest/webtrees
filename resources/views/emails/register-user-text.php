@@ -7,4 +7,4 @@
 
 <?= route('verify', ['username' => $user->getUserName(), 'token' => $user->getPreference('reg_hashcode'), 'ged' => $tree->getName()], true) ?>
 
-<?= I18N::translate('If you didn’t request an account, you can just delete this message.') ?>
+<?= I18N::translate('If you didn’t request an account, you can just delete this message.');

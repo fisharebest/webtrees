@@ -1,21 +1,21 @@
 <?php use Fisharebest\Webtrees\I18N; ?>
 <!DOCTYPE html>
 <html <?= I18N::htmlAttributes() ?>>
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<title><?= I18N::translate('Setup wizard for webtrees') ?></title>
+        <title><?= I18N::translate('Setup wizard for webtrees') ?></title>
 
-		<link rel="icon" href="favicon.ico" type="image/x-icon">
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
-	</head>
+        <link rel="icon" href="favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+    </head>
 
-	<body class="container">
-		<h1 class="text-info">
-			<?= I18N::translate('Setup wizard for webtrees') ?>
-		</h1>
+    <body class="container">
+        <h1 class="text-info">
+            <?= I18N::translate('Setup wizard for webtrees') ?>
+        </h1>
 
-		<?= $content ?>
-	</body>
+        <?= $content ?>
+    </body>
 </html>

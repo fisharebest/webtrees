@@ -80,11 +80,7 @@ class Migration22 implements MigrationInterface
                 }
             } else {
                 // Not using the media firewall - just move the public folder to the new location (if we can).
-                if (
-                    file_exists(WT_ROOT . $_cfg->media_directory) &&
-                    is_dir(WT_ROOT . $_cfg->media_directory) &&
-                    !file_exists($WT_DATA_DIR . $_cfg->media_directory)
-                ) {
+                if (is_dir(WT_ROOT . $_cfg->media_directory) && !file_exists($WT_DATA_DIR . $_cfg->media_directory)) {
                     try {
                         rename(WT_ROOT . $_cfg->media_directory, $WT_DATA_DIR . $_cfg->media_directory);
                     } catch (Throwable $ex) {

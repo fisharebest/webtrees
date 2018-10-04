@@ -1,16 +1,16 @@
 <?php use Fisharebest\Webtrees\I18N; ?>
 
 <form action="<?= e(route('create-submitter')) ?>" id="wt-modal-form" method="POST">
-	<?= csrf_field() ?>
-	<input type="hidden" name="ged" value="<?= e($tree->getName()) ?>">
+    <?= csrf_field() ?>
+    <input type="hidden" name="ged" value="<?= e($tree->getName()) ?>">
 
-	<?= view('modals/header', ['title' => I18N::translate('Create a submitter')]) ?>
+    <?= view('modals/header', ['title' => I18N::translate('Create a submitter')]) ?>
 
-	<div class="modal-body">
-		<?= view('modals/submitter-fields') ?>
-	</div>
+    <div class="modal-body">
+        <?= view('modals/submitter-fields') ?>
+    </div>
 
-	<?= view('modals/footer-save-cancel') ?>
+    <?= view('modals/footer-save-cancel') ?>
 </form>
 
 <script>

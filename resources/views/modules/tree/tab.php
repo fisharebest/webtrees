@@ -1,7 +1,7 @@
 <?php use Fisharebest\Webtrees\View; ?>
 
 <div class="wt-tree-tab py-4">
-	<?= $html ?>
+    <?= $html ?>
 </div>
 
 <?php View::push('javascript') ?>
@@ -14,6 +14,6 @@
   newSheet.setAttribute("href","<?= $treeview_css ?>");
   document.head.appendChild(newSheet);
 
-  <?= $js ?>
+    <?= $js ?>
 </script>
 <?php View::endpush() ?>

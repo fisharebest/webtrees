@@ -4,14 +4,14 @@
 <?= view('components/breadcrumbs', ['links' => [route('admin-control-panel') => I18N::translate('Control panel'), $title]]) ?>
 
 <form method="POST">
-	<?= csrf_field() ?>
+    <?= csrf_field() ?>
 
-	<div class="form-group">
-		<div class="form-row">
-			<div class="col-form-label col-sm-3">
-				<?= I18N::translate('Map provider') ?>
-			</div>
-			<div class="col-sm-9">
+    <div class="form-group">
+        <div class="form-row">
+            <div class="col-form-label col-sm-3">
+                <?= I18N::translate('Map provider') ?>
+            </div>
+            <div class="col-sm-9">
                 <?= view('components/radio', ['name' => 'provider', 'value' => '', 'checked' => $provider === '', 'text' => 'Do not use maps']) ?>
                 <hr>
                 <?= view('components/radio', ['name' => 'provider', 'value' => 'OpenStreetMap.Mapnik', 'checked' => $provider === 'OpenStreetMap.Mapnik', 'text' => 'OpenStreetMap']) ?>
@@ -21,13 +21,13 @@
         </div>
     </div>
 
-	<!-- SAVE BUTTON -->
-	<div class="form-group row">
-		<div class="offset-sm-3 col-sm-9">
-			<button type="submit" class="btn btn-primary">
+    <!-- SAVE BUTTON -->
+    <div class="form-group row">
+        <div class="offset-sm-3 col-sm-9">
+            <button type="submit" class="btn btn-primary">
                 <?= view('icons/save') ?>
-				<?= I18N::translate('save') ?>
-			</button>
-		</div>
-	</div>
+                <?= I18N::translate('save') ?>
+            </button>
+        </div>
+    </div>
 </form>

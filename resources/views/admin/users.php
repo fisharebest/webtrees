@@ -6,24 +6,24 @@
 <h1><?= $title ?></h1>
 
 <table class="table table-sm table-bordered table-user-list">
-	<thead>
-		<tr>
-			<th><?= I18N::translate('Edit') ?></th>
-			<th><!-- user id --></th>
-			<th><?= I18N::translate('Username') ?></th>
-			<th><?= I18N::translate('Real name') ?></th>
-			<th><?= I18N::translate('Email address') ?></th>
-			<th><?= I18N::translate('Language') ?></th>
-			<th><!-- date registered --></th>
-			<th><?= I18N::translate('Date registered') ?></th>
-			<th><!-- last login --></th>
-			<th><?= I18N::translate('Last signed in') ?></th>
-			<th><?= I18N::translate('Verified') ?></th>
-			<th><?= I18N::translate('Approved') ?></th>
-		</tr>
-	</thead>
-	<tbody>
-	</tbody>
+    <thead>
+        <tr>
+            <th><?= I18N::translate('Edit') ?></th>
+            <th><!-- user id --></th>
+            <th><?= I18N::translate('Username') ?></th>
+            <th><?= I18N::translate('Real name') ?></th>
+            <th><?= I18N::translate('Email address') ?></th>
+            <th><?= I18N::translate('Language') ?></th>
+            <th><!-- date registered --></th>
+            <th><?= I18N::translate('Date registered') ?></th>
+            <th><!-- last login --></th>
+            <th><?= I18N::translate('Last signed in') ?></th>
+            <th><?= I18N::translate('Verified') ?></th>
+            <th><?= I18N::translate('Approved') ?></th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
 </table>
 
 <?php View::push('javascript') ?>
@@ -53,7 +53,7 @@
       /* verified          */ null,
       /* approved          */ null
     ],
-	  <?= I18N::datatablesI18N() ?>
+        <?= I18N::datatablesI18N() ?>
   }).fnFilter("<?= e($filter) ?>"); // Pre-fill the search box
 </script>
 <?php View::endpush() ?>

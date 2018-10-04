@@ -5,9 +5,9 @@
 </p>
 
 <form method="POST" action="<?= e(route('logout')) ?>">
-	<?= csrf_field() ?>
+    <?= csrf_field() ?>
 
-	<button type="submit" class="btn btn-primary">
-		<?= /* I18N: A button label. */ I18N::translate('sign out') ?>
-	</button>
+    <button type="submit" class="btn btn-primary">
+        <?= /* I18N: A button label. */ I18N::translate('sign out') ?>
+    </button>
 </form>

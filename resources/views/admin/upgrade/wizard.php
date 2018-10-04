@@ -4,28 +4,28 @@
 
 <h1><?= $title ?></h1>
 
-<?php if ($latest_version === ''): ?>
-	<div class="alert alert-warning">
-		<?= I18N::translate('No upgrade information is available.') ?>
-	</div>
-<?php elseif (version_compare($current_version, $latest_version) >= 0): ?>
-	<div class="alert alert-info">
-		<?= I18N::translate('This is the latest version of webtrees. No upgrade is available.') ?>
-	</div>
-<?php else: ?>
-	<p>
-		<?= I18N::translate('A new version of webtrees is available.') ?>
-	</p>
+<?php if ($latest_version === '') : ?>
+    <div class="alert alert-warning">
+        <?= I18N::translate('No upgrade information is available.') ?>
+    </div>
+<?php elseif (version_compare($current_version, $latest_version) >= 0) : ?>
+    <div class="alert alert-info">
+        <?= I18N::translate('This is the latest version of webtrees. No upgrade is available.') ?>
+    </div>
+<?php else : ?>
+    <p>
+        <?= I18N::translate('A new version of webtrees is available.') ?>
+    </p>
 
-	<p>
-		<?= I18N::translate('Depending on your server configuration, you may be able to upgrade automatically.') ?>
-	</p>
+    <p>
+        <?= I18N::translate('Depending on your server configuration, you may be able to upgrade automatically.') ?>
+    </p>
 
-	<form class="form-horizontal">
-		<input type="hidden" name="route" value="upgrade">
+    <form class="form-horizontal">
+        <input type="hidden" name="route" value="upgrade">
 
-		<button type="submit" class="btn btn-primary" name="continue" value="1">
-			<?= I18N::translate('continue') ?>
-		</button>
-	</form>
+        <button type="submit" class="btn btn-primary" name="continue" value="1">
+            <?= I18N::translate('continue') ?>
+        </button>
+    </form>
 <?php endif ?>

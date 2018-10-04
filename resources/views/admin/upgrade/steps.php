@@ -6,14 +6,14 @@
 <h1><?= $title ?></h1>
 
 <p>
-	<?= I18N::translate('It can take several minutes to download and install the upgrade. Be patient.') ?>
+    <?= I18N::translate('It can take several minutes to download and install the upgrade. Be patient.') ?>
 </p>
 
 <dl>
-	<?php foreach ($steps as $url => $text): ?>
-	<dt><?= $text ?></dt>
-	<dd class="wt-ajax-load" data-url="<?= e($url) ?>"></dd>
-	<?php endforeach ?>
+    <?php foreach ($steps as $url => $text) : ?>
+    <dt><?= $text ?></dt>
+    <dd class="wt-ajax-load" data-url="<?= e($url) ?>"></dd>
+    <?php endforeach ?>
 </dl>
 
 <?php View::push('javascript') ?>

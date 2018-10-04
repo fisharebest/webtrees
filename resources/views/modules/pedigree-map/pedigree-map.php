@@ -2,66 +2,66 @@
 <?php use Fisharebest\Webtrees\View; ?>
 
 <div class="py-4">
-	<div class="row gchart osm-wrapper">
-		<div id="osm-map" class="col-sm-9 wt-ajax-load osm-user-map"></div>
-		<ul class='col-sm-3 osm-sidebar wt-page-options-value'></ul>
-	</div>
+    <div class="row gchart osm-wrapper">
+        <div id="osm-map" class="col-sm-9 wt-ajax-load osm-user-map"></div>
+        <ul class='col-sm-3 osm-sidebar wt-page-options-value'></ul>
+    </div>
 </div>
 
 <?php View::push('styles') ?>
 <style>
-	.osm-wrapper, .osm-user-map {
-		height: 45vh
-	}
+    .osm-wrapper, .osm-user-map {
+        height: 45vh
+    }
 
-	.osm-admin-map {
-		height: 55vh;
-		border: 1px solid darkGrey
-	}
+    .osm-admin-map {
+        height: 55vh;
+        border: 1px solid darkGrey
+    }
 
-	.osm-sidebar {
-		height: 100%;
-		overflow-y: auto;
-		padding: 0;
-		margin: 0;
-		border: 0;
-		display: none;
-		font-size: small;
-	}
+    .osm-sidebar {
+        height: 100%;
+        overflow-y: auto;
+        padding: 0;
+        margin: 0;
+        border: 0;
+        display: none;
+        font-size: small;
+    }
 
-	.osm-sidebar .gchart {
-		margin: 1px;
-		padding: 2px
-	}
+    .osm-sidebar .gchart {
+        margin: 1px;
+        padding: 2px
+    }
 
-	.osm-sidebar .gchart img {
-		height: 15px;
-		width: 25px
-	}
+    .osm-sidebar .gchart img {
+        height: 15px;
+        width: 25px
+    }
 
-	.osm-sidebar .border-danger:hover {
-		cursor: not-allowed
-	}
+    .osm-sidebar .border-danger:hover {
+        cursor: not-allowed
+    }
 
-	[dir=rtl] .leaflet-right {
-		right: auto;
-		left: 0
-	}
+    [dir=rtl] .leaflet-right {
+        right: auto;
+        left: 0
+    }
 
-	[dir=rtl] .leaflet-right .leaflet-control {
-		margin-right: 0;
-		margin-left: 10px
-	}
+    [dir=rtl] .leaflet-right .leaflet-control {
+        margin-right: 0;
+        margin-left: 10px
+    }
 
-	[dir=rtl] .leaflet-left {
-		left: auto;
-		right: 0
-	}
+    [dir=rtl] .leaflet-left {
+        left: auto;
+        right: 0
+    }
 
-	[dir=rtl] .leaflet-left .leaflet-control {
-		margin-left: 0;
-		margin-right: 10px
-	}
+    [dir=rtl] .leaflet-left .leaflet-control {
+        margin-left: 0;
+        margin-right: 10px
+    }
 </style>
 <?php View::endpush() ?>
 
@@ -174,7 +174,7 @@
               })
                 .on('popupopen', function (e) {
                   let sidebar = $('.osm-sidebar');
-                  let item	= sidebar.children(".gchart[data-id=" + e.target.feature.id + "]");
+                  let item  = sidebar.children(".gchart[data-id=" + e.target.feature.id + "]");
                   item.addClass('messagebox');
                   sidebar.scrollTo(item);
                 })
@@ -289,6 +289,6 @@
     };
   })();
 
-	WT_OSM.drawMap(<?= json_encode($ref) ?>, <?= json_encode($type) ?>, <?= json_encode($generations ?? null) ?>);
+    WT_OSM.drawMap(<?= json_encode($ref) ?>, <?= json_encode($type) ?>, <?= json_encode($generations ?? null) ?>);
 </script>
 <?php View::endpush() ?>

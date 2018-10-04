@@ -2,4 +2,4 @@
 
 <?= $content ?>
 
-<?= View::stack('javascript') ?>
+<?= View::stack('javascript');
