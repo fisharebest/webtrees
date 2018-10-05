@@ -23,7 +23,7 @@ class Html
     /**
      * Convert an array of HTML attributes to an HTML string.
      *
-     * @param array $attributes
+     * @param mixed[] $attributes
      *
      * @return string
      */
@@ -31,8 +31,10 @@ class Html
     {
         $html = [];
         foreach ($attributes as $key => $value) {
-            if (is_string($value) || is_int($value)) {
+            if (is_string($value)) {
                 $html[] = e($key) . '="' . e($value) . '"';
+            } elseif (is_int($value)) {
+                $html[] = e($key) . '="' . (string) $value . '"';
             } elseif ($value !== false) {
                 $html[] = e($key);
             }

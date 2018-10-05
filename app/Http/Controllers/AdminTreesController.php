@@ -58,7 +58,7 @@ use Throwable;
 class AdminTreesController extends AbstractBaseController
 {
     // Show a reduced page when there are more than a certain number of trees
-    const MULTIPLE_TREE_THRESHOLD = 500;
+    const MULTIPLE_TREE_THRESHOLD = '500';
 
     /** @var string */
     protected $layout = 'layouts/administration';
@@ -597,7 +597,7 @@ class AdminTreesController extends AbstractBaseController
      */
     public function index(Tree $tree = null): Response
     {
-        $multiple_tree_threshold = (int) Site::getPreference('MULTIPLE_TREE_THRESHOLD', (string) self::MULTIPLE_TREE_THRESHOLD);
+        $multiple_tree_threshold = (int) Site::getPreference('MULTIPLE_TREE_THRESHOLD', self::MULTIPLE_TREE_THRESHOLD);
         $gedcom_files            = $this->gedcomFiles(WT_DATA_DIR);
 
         $all_trees = Tree::getAll();

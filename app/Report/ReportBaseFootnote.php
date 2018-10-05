@@ -78,9 +78,9 @@ class ReportBaseFootnote extends ReportBaseElement
      *
      * @param $t
      *
-     * @return int
+     * @return void
      */
-    public function addText($t): int
+    public function addText(string $t)
     {
         $t          = trim($t, "\r\n\t");
         $t          = str_replace([
@@ -93,8 +93,6 @@ class ReportBaseFootnote extends ReportBaseElement
         $t          = strip_tags($t);
         $t          = htmlspecialchars_decode($t);
         $this->text .= $t;
-
-        return 0;
     }
 
     /**
