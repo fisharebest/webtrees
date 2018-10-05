@@ -2380,6 +2380,8 @@ class Functions
      * Function to build an URL querystring from GET variables
      * Optionally, add/replace specified values
      *
+     * @deprecated Use the Http-Foundation class
+     *
      * @param null|string[] $overwrite
      * @param null|string   $separator
      *
@@ -2400,10 +2402,16 @@ class Functions
 
         $query_string = '';
         foreach ($get as $key => $value) {
+            // PHP casts numeric-looking array keys to integers.  We want strings.
+            $key = (string) $key;
+
             if (!is_array($value)) {
                 $query_string .= $separator . rawurlencode($key) . '=' . rawurlencode($value);
             } else {
                 foreach ($value as $k => $v) {
+                    // PHP casts numeric-looking array keys to integers.  We want strings.
+                    $k = (string) $k;
+                    
                     $query_string .= $separator . rawurlencode($key) . '%5B' . rawurlencode($k) . '%5D=' . rawurlencode($v);
                 }
             }
