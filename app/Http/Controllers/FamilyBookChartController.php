@@ -450,23 +450,20 @@ class FamilyBookChartController extends AbstractChartController
             return;
         }
 
-        $families = $person->getSpouseFamilies();
-        if (1 || !empty($families)) {
-            echo
-            '<h3>',
+        echo
+        '<h3>',
             /* I18N: %s is an individual’s name */
-            I18N::translate('Family of %s', $person->getFullName()),
-            '</h3>',
-            '<table cellspacing="0" cellpadding="0" border="0" ><tr><td class="align-middle">';
-            $this->dgenerations = $this->generations;
-            $this->printDescendency(1, $person);
-            echo '</td><td class="align-middle">';
-            $this->printPersonPedigree($person, 1);
-            echo '</td></tr></table><br><br><hr class="family-break"><br><br>';
-            foreach ($families as $family) {
-                foreach ($family->getChildren() as $child) {
-                    $this->printFamilyBook($child, $descent_steps - 1);
-                }
+        I18N::translate('Family of %s', $person->getFullName()),
+        '</h3>',
+        '<table cellspacing="0" cellpadding="0" border="0" ><tr><td class="align-middle">';
+        $this->dgenerations = $this->generations;
+        $this->printDescendency(1, $person);
+        echo '</td><td class="align-middle">';
+        $this->printPersonPedigree($person, 1);
+        echo '</td></tr></table><br><br><hr class="family-break"><br><br>';
+        foreach ($person->getSpouseFamilies() as $family) {
+            foreach ($family->getChildren() as $child) {
+                $this->printFamilyBook($child, $descent_steps - 1);
             }
         }
     }

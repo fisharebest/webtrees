@@ -277,10 +277,14 @@ class AdminLocationController extends AbstractBaseController
 
         if ($format === 'csv') {
             // Create the header line for the output file (always English)
-            $header[] = I18N::translate('Level');
+            $header =[
+                I18N::translate('Level')
+            ];
+
             for ($i = 0; $i <= $maxlevel; $i++) {
                 $header[] = 'Place' . $i;
             }
+
             $header[] = 'Longitude';
             $header[] = 'Latitude';
             $header[] = 'Zoom';
