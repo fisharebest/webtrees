@@ -34,6 +34,7 @@ use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
+use const PREG_SET_ORDER;
 use Ramsey\Uuid\Uuid;
 
 /**
@@ -932,43 +933,31 @@ class FunctionsPrintFacts
      *
      * @param string $srec
      *
-     * @return string[]
+     * @return string[]|string[][]
      */
-    public static function getSourceStructure($srec): array
+    public static function getSourceStructure(string $srec): array
     {
         // Set up the output array
         $textSOUR = [
             'PAGE' => '',
             'EVEN' => '',
             'ROLE' => '',
-            'DATA' => '',
             'DATE' => '',
             'TEXT' => [],
             'QUAY' => '',
         ];
 
-        if ($srec) {
-            $subrecords = explode("\n", $srec);
-            for ($i = 0; $i < count($subrecords); $i++) {
-                $tag  = substr($subrecords[$i], 2, 4);
-                $text = substr($subrecords[$i], 7);
-                $i++;
-                for (; $i < count($subrecords); $i++) {
-                    $nextTag = substr($subrecords[$i], 2, 4);
-                    if ($nextTag != 'CONT') {
-                        $i--;
-                        break;
-                    }
-                    if ($nextTag == 'CONT') {
-                        $text .= "\n";
-                    }
-                    $text .= rtrim(substr($subrecords[$i], 7));
-                }
-                if ($tag == 'TEXT') {
-                    $textSOUR[$tag][] = $text;
-                } else {
-                    $textSOUR[$tag] = $text;
-                }
+        preg_match_all('/^\d (PAGE|EVEN|ROLE|DATE|TEXT|QUAY) ?(.*(\n\d CONT.*)*)$/m', $srec, $matches, PREG_SET_ORDER);
+
+        foreach ($matches as $match) {
+            $tag   = $match[1];
+            $value = $match[2];
+            $value = preg_replace('/\n\d CONT ?/', "\n", $value);
+
+            if ($tag === 'TEXT') {
+                $textSOUR[$tag][] = $value;
+            } else {
+                $textSOUR[$tag] = $value;
             }
         }
 
