@@ -418,7 +418,7 @@ class ReportHtml extends ReportBase
      */
     public function createImageFromObject(MediaFile $media_file, float $x, float $y, float $w, float $h, string $align, string $ln): ReportHtmlImage
     {
-        return new ReportHtmlImage($media_file->imageUrl($w, $h, ''), $x, $y, $w, $h, $align, $ln);
+        return new ReportHtmlImage($media_file->imageUrl((int) $w, (int) $h, ''), $x, $y, $w, $h, $align, $ln);
     }
 
     /**
