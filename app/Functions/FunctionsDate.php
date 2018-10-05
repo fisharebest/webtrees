@@ -45,15 +45,17 @@ class FunctionsDate
                         '/(\d+)([ymwd])/',
                     ],
                     function (array $match): string {
+                        $num = (int) $match[1];
+
                         switch ($match[2]) {
                             case 'y':
-                                return I18N::plural('%s year', '%s years', $match[1], I18N::digits($match[1]));
+                                return I18N::plural('%s year', '%s years', $num, I18N::number($num));
                             case 'm':
-                                return I18N::plural('%s month', '%s months', $match[1], I18N::digits($match[1]));
+                                return I18N::plural('%s month', '%s months', $num, I18N::number($num));
                             case 'w':
-                                return I18N::plural('%s week', '%s weeks', $match[1], I18N::digits($match[1]));
+                                return I18N::plural('%s week', '%s weeks', $num, I18N::number($num));
                             case 'd':
-                                return I18N::plural('%s day', '%s days', $match[1], I18N::digits($match[1]));
+                                return I18N::plural('%s day', '%s days', $num, I18N::number($num));
                         }
                     },
                     $age_string
