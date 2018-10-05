@@ -211,60 +211,59 @@ class ListController extends AbstractBaseController
         <div class="d-flex flex-column wt-page-options wt-page-options-individual-list d-print-none">
             <ul class="d-flex flex-wrap wt-initials-list">
 
-                <?php
-                foreach ($this->surnameAlpha($tree, $show_marnm === 'yes', $families) as $letter => $count) {
-                    echo '<li class="wt-initials-list-item">';
-                    if ($count > 0) {
-                        echo '<a href="' . e(route($route, [
-                                'alpha' => $letter,
-                                'ged'   => $tree->getName(),
-                            ])) . '" class="wt-initial' . ($letter === $alpha ? ' active' : '') . '" title="' . I18N::number($count) . '">' . $this->surnameInitial((string) $letter) . '</a>';
-                    } else {
-                        echo '<span class="wt-initial text-muted">' . $this->surnameInitial((string) $letter) . '</span>';
-                    }
-                    echo '</li>';
-                }
+                <?php foreach ($this->surnameAlpha($tree, $show_marnm === 'yes', $families) as $letter => $count): ?>
+                    <li class="wt-initials-list-item">
+                        <?php if ($count > 0): ?>
+                            <a href="<?= e(route($route, ['alpha' => $letter, 'ged' => $tree->getName()])) ?>" class="wt-initial<?= $letter === $alpha ? ' active' : ''?> '" title="<?= I18N::number($count) ?>"><?= $this->surnameInitial((string) $letter) ?></a>
+                        <?php else: ?>
+                            <span class="wt-initial text-muted"><?= $this->surnameInitial((string) $letter) ?></span>
 
-                // Search spiders don't get the "show all" option as the other links give them everything.
-                if (Session::has('initiated')) {
-                    echo '<li class="wt-initials-list-item">';
-                    echo '<a class="wt-initial' . ($show_all === 'yes' ? ' active' : '') . '" href="' . e(route($route, ['show_all' => 'yes'] + $params)) . '">';
-                    echo I18N::translate('All');
-                    echo '</a>';
-                    echo '</li>';
-                }
-                echo '</ul>';
+                        <?php endif ?>
+                    </li>
+                <?php endforeach ?>
 
-                // Search spiders don't get an option to show/hide the surname sublists,
-                // nor does it make sense on the all/unknown/surname views
-                if (Session::has('initiated') && $show !== 'none') {
-                    if ($show_marnm === 'yes') {
-                        echo '<p><a href="', e(route($route, [
-                                'show'       => $show,
-                                'show_marnm' => 'no',
-                            ] + $params)), '">', I18N::translate('Exclude individuals with “%s” as a married name', $legend), '</a></p>';
-                    } else {
-                        echo '<p><a href="', e(route($route, [
-                                'show'       => $show,
-                                'show_marnm' => 'yes',
-                            ] + $params)), '">', I18N::translate('Include individuals with “%s” as a married name', $legend), '</a></p>';
-                    }
+                <?php if (Session::has('initiated')): ?>
+                    <!-- Search spiders don't get the "show all" option as the other links give them everything. -->
+                    <li class="wt-initials-list-item">
+                        <a class="wt-initial<?= $show_all === 'yes' ? ' active' : '' ?>" href="<?= e(route($route, ['show_all' => 'yes'] + $params)) ?>"><?= I18N::translate('All') ?></a>
+                    </li>
+                <?php endif ?>
+            </ul>
 
-                    if ($alpha !== '@' && $alpha !== ',' && !$surname) {
-                        if ($show === 'surn') {
-                            echo '<p><a href="', e(route($route, [
-                                    'show'       => 'indi',
-                                    'show_marnm' => 'no',
-                                ] + $params)), '">', I18N::translate('Show the list of individuals'), '</a></p>';
-                        } else {
-                            echo '<p><a href="', e(route($route, [
-                                    'show'       => 'surn',
-                                    'show_marnm' => 'no',
-                                ] + $params)), '">', I18N::translate('Show the list of surnames'), '</a></p>';
-                        }
-                    }
-                } ?>
+            <!-- Search spiders don't get an option to show/hide the surname sublists, nor does it make sense on the all/unknown/surname views -->
+            <?php if (Session::has('initiated') && $show !== 'none'): ?>
+                <?php if ($show_marnm === 'yes'): ?>
+                    <p>
+                        <a href="<?= e(route($route, ['show' => $show, 'show_marnm' => 'no'] + $params)) ?>">
+                            <?= I18N::translate('Exclude individuals with “%s” as a married name', $legend) ?>
+                        </a>
+                    </p>
+                <?php else: ?>
+                    <p>
+                        <a href="<?= e(route($route, ['show' => $show, 'show_marnm' => 'yes'] + $params)) ?>">
+                            <?= I18N::translate('Include individuals with “%s” as a married name', $legend)?>
+                        </a>
+                    </p>
+                <?php endif ?>
+
+                <?php if ($alpha !== '@' && $alpha !== ',' && !$surname): ?>
+                    <?php if ($show === 'surn'): ?>
+                        <p>
+                            <a href="<?= e(route($route, ['show' => 'indi', 'show_marnm' => 'no'] + $params)) ?>">
+                                <?= I18N::translate('Show the list of individuals') ?>
+                            </a>
+                        </p>
+                    <?php else: ?>
+                        <p>
+                            <a href="<?= e(route($route, ['show' => 'surn', 'show_marnm' => 'no'] + $params)) ?>">
+                               <?= I18N::translate('Show the list of surnames') ?>
+                            </a>
+                        </p>
+                    <?php endif ?>
+                <?php endif ?>
+            <?php endif ?>
         </div>
+
         <div class="wt-page-content">
             <?php
 
