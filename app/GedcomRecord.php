@@ -187,6 +187,11 @@ class GedcomRecord
             return null;
         }
 
+        // No such record, but a pending creation exists
+        if ($gedcom === null) {
+            $gedcom = '';
+        }
+
         // Create the object
         if (preg_match('/^0 @(' . WT_REGEX_XREF . ')@ (' . WT_REGEX_TAG . ')/', $gedcom . $pending, $match)) {
             $xref = $match[1]; // Collation - we may have requested I123 and found i123
@@ -1215,7 +1220,7 @@ class GedcomRecord
      */
     public function createFact(string $gedcom, bool $update_chan)
     {
-        $this->updateFact(null, $gedcom, $update_chan);
+        $this->updateFact('', $gedcom, $update_chan);
     }
 
     /**
@@ -1270,7 +1275,7 @@ class GedcomRecord
                     if ($gedcom !== '') {
                         $new_gedcom .= "\n" . $gedcom;
                     }
-                    $fact_id = true; // Only replace/delete one copy of a duplicate fact
+                    $fact_id = 'NOT A VALID FACT ID'; // Only replace/delete one copy of a duplicate fact
                 } elseif ($fact->getTag() != 'CHAN' || !$update_chan) {
                     $new_gedcom .= "\n" . $fact->getGedcom();
                 }
@@ -1281,7 +1286,7 @@ class GedcomRecord
         }
 
         // Adding a new fact
-        if (!$fact_id) {
+        if ($fact_id === '') {
             $new_gedcom .= "\n" . $gedcom;
         }
 

@@ -2411,7 +2411,7 @@ class Functions
                 foreach ($value as $k => $v) {
                     // PHP casts numeric-looking array keys to integers.  We want strings.
                     $k = (string) $k;
-                    
+
                     $query_string .= $separator . rawurlencode($key) . '%5B' . rawurlencode($k) . '%5D=' . rawurlencode($v);
                 }
             }
