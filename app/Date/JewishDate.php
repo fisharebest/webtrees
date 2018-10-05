@@ -324,7 +324,7 @@ class JewishDate extends CalendarDate
      */
     protected function monthNameAbbreviated(int $month_number, bool $leap_year): string
     {
-        return self::monthNameNominativeCase($month_number, $leap_year);
+        return $this->monthNameNominativeCase($month_number, $leap_year);
     }
 
     /**
