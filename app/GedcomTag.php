@@ -1945,7 +1945,7 @@ class GedcomTag
                     return I18N::translate('Marriage of a father');
                 }
 
-                if ($sex ===  'F') {
+                if ($sex === 'F') {
                     /* I18N: ...to another spouse */
                     return I18N::translate('Marriage of a mother');
                 }

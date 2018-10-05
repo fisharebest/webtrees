@@ -47,7 +47,7 @@ class SetupController extends AbstractBaseController
     {
         define('WT_LOCALE', I18N::init('en-US'));
 
-        $step     = (int)$request->get('step', '1');
+        $step     = (int) $request->get('step', '1');
         $errors   = $this->serverErrors();
         $warnings = $this->serverWarnings();
         $data     = $this->extractParameters($request);
@@ -363,7 +363,7 @@ class SetupController extends AbstractBaseController
      */
     private function maxExecutionTime(): int
     {
-        return (int)ini_get('max_execution_time');
+        return (int) ini_get('max_execution_time');
     }
 
     /**
@@ -396,7 +396,7 @@ class SetupController extends AbstractBaseController
                 $memory_limit = $memory_limit / 1024 / 1024;
         }
 
-        return (int)$memory_limit;
+        return (int) $memory_limit;
     }
 
     /**
@@ -453,11 +453,11 @@ class SetupController extends AbstractBaseController
             /* I18N: a program feature */
             'simplexml' => I18N::translate('reporting'),
         ];
-        $settings   = [
+        $settings = [
             /* I18N: a program feature */
             'file_uploads' => I18N::translate('file upload capability'),
         ];
-        $warnings   = [];
+        $warnings = [];
 
         foreach ($extensions as $extension => $features) {
             if (!extension_loaded($extension)) {

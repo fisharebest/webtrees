@@ -62,7 +62,7 @@ class EditFamilyController extends AbstractEditController
     public function reorderChildrenAction(Request $request, Tree $tree): Response
     {
         $xref   = $request->get('xref');
-        $order  = (array)$request->get('order', []);
+        $order  = (array) $request->get('order', []);
         $family = Family::getInstance($xref, $tree);
 
         $this->checkFamilyAccess($family, true);
@@ -138,7 +138,7 @@ class EditFamilyController extends AbstractEditController
         $this->checkFamilyAccess($family, true);
 
         $PEDI      = $request->get('PEDI', '');
-        $keep_chan = (bool)$request->get('keep_chan');
+        $keep_chan = (bool) $request->get('keep_chan');
 
         $this->glevels = $request->get('glevels', []);
         $this->tag     = $request->get('tag', []);
@@ -155,7 +155,7 @@ class EditFamilyController extends AbstractEditController
             }
         }
         $gedrec .= "\n" . GedcomCodePedi::createNewFamcPedi($PEDI, $xref);
-        if ((bool)$request->get('SOUR_INDI')) {
+        if ((bool) $request->get('SOUR_INDI')) {
             $gedrec = $this->handleUpdates($gedrec);
         } else {
             $gedrec = $this->updateRest($gedrec);
@@ -253,7 +253,7 @@ class EditFamilyController extends AbstractEditController
             }
         }
 
-        if ((bool)$request->get('SOUR_INDI')) {
+        if ((bool) $request->get('SOUR_INDI')) {
             $gedrec = $this->handleUpdates($gedrec);
         } else {
             $gedrec = $this->updateRest($gedrec);
@@ -273,7 +273,7 @@ class EditFamilyController extends AbstractEditController
                 $famrec .= $this->addNewFact($request, $tree, $match);
             }
         }
-        if ((bool)$request->get('SOUR_FAM')) {
+        if ((bool) $request->get('SOUR_FAM')) {
             $famrec = $this->handleUpdates($famrec);
         } else {
             $famrec = $this->updateRest($famrec);

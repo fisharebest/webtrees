@@ -243,7 +243,7 @@ class Config
             ],
             'CEME'     => [
                 // CEME is NOT a valid 5.5.1 tag
-               //'BURI',
+                //'BURI',
             ],
             'RELA'     => [
                 'ASSO',
