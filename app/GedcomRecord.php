@@ -711,7 +711,7 @@ class GedcomRecord
      *
      * @return void
      */
-    public function setPrimaryName($n)
+    public function setPrimaryName(int $n = null)
     {
         $this->getPrimaryName   = $n;
         $this->getSecondaryName = null;

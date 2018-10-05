@@ -245,7 +245,7 @@ class Select2 extends Html
 
         while (is_object($row = $cursor->fetch())) {
             $individual = Individual::getInstance($row->xref, $tree, $row->gedcom);
-            $individual->setPrimaryName($row->n_num);
+            $individual->setPrimaryName((int) $row->n_num);
             // Filter for privacy
             if ($individual !== null && $individual->canShowName()) {
                 if ($offset > 0) {
