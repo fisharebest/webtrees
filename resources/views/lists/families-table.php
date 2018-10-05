@@ -313,7 +313,7 @@ for ($year = 1550; $year < 2030; $year += 10) {
                 </td>
 
                 <!-- Marriage anniversary -->
-                <td class="center" data-sort="<?= - $family->getMarriageDate()->julianDay() ?>">
+                <td class="center" data-sort="<?= -$family->getMarriageDate()->julianDay() ?>">
                     <?= Date::getAge($family->getMarriageDate(), null) ?>
                 </td>
 

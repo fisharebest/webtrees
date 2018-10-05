@@ -321,7 +321,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
             throw new IndividualAccessDeniedException();
         }
 
-        return (object)[
+        return (object) [
             'name' => 'modules/pedigree-map/pedigree-map-page',
             'data' => [
                 'module'         => $this->getName(),

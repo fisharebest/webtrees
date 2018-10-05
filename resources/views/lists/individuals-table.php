@@ -273,7 +273,7 @@ for ($year = 1550; $year < 2030; $year += 10) {
                 </td>
 
                 <!-- Birth anniversary -->
-                <td class="center" data-sort="<?= - $individual->getEstimatedBirthDate()->julianDay() ?>">
+                <td class="center" data-sort="<?= -$individual->getEstimatedBirthDate()->julianDay() ?>">
                     <?php if (isset($birth_dates[0]) && $birth_dates[0]->gregorianYear() >= 1550 && $birth_dates[0]->gregorianYear() < 2030 && !isset($unique_indis[$individual->getXref()])) : ?>
                         <?php $birt_by_decade[(int) ($birth_dates[0]->gregorianYear() / 10) * 10] .= $individual->getSex() ?>
                         <?= Date::getAge($birth_dates[0], null) ?>
@@ -305,7 +305,7 @@ for ($year = 1550; $year < 2030; $year += 10) {
                 </td>
 
                 <!-- Death anniversary -->
-                <td class="center" data-sort="<?= - $individual->getEstimatedDeathDate()->julianDay() ?>">
+                <td class="center" data-sort="<?= -$individual->getEstimatedDeathDate()->julianDay() ?>">
                     <?php if (isset($death_dates[0]) && $death_dates[0]->gregorianYear() >= 1550 && $death_dates[0]->gregorianYear() < 2030 && !isset($unique_indis[$individual->getXref()])) : ?>
                         <?php $deat_by_decade[(int) ($death_dates[0]->gregorianYear() / 10) * 10] .= $individual->getSex() ?>
                         <?= Date::getAge($death_dates[0], null) ?>

@@ -1768,7 +1768,7 @@ class Functions
                                 return I18N::translateContext('great ×(%s-1) grandparent’s brother', 'great ×%s uncle', I18N::number($up - 2));
                             }
 
-                            if ($sex2  === 'F') {
+                            if ($sex2 === 'F') {
                                 return I18N::translate('great ×%s aunt', I18N::number($up - 2));
                             }
 

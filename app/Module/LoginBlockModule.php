@@ -62,7 +62,7 @@ class LoginBlockModule extends AbstractModule implements ModuleBlockInterface
         } else {
             $title   = I18N::translate('Sign in');
             $content = view('modules/login_block/sign-in', [
-                'allow_register' => (bool)Site::getPreference('USE_REGISTRATION_MODULE'),
+                'allow_register' => (bool) Site::getPreference('USE_REGISTRATION_MODULE'),
             ]);
         }
 
