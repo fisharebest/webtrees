@@ -30,6 +30,34 @@ class FunctionsCharts
     /**
      * print a table cell with sosa number
      *
+     * @param string $daboville
+     * @param string $pid  optional pid
+     * @param string $icon which arrow to use
+     *
+     * @return void
+     */
+    public static function printDabovilleNumber(string $daboville, $pid = '', $icon = '')
+    {
+        // Remove trailing "."
+        $personLabel = substr($daboville, 0, -1);
+
+        if ($icon == '') {
+            $visibility = 'hidden';
+        } else {
+            $visibility = 'normal';
+        }
+        echo '<td class="subheaders center" style="vertical-align: middle; text-indent: 0px; margin-top: 0px; white-space: nowrap; visibility: ', $visibility, ';">';
+        echo $personLabel;
+        if ($daboville != '1' && $pid !== '') {
+            echo '<br>';
+            echo FontAwesome::linkIcon($icon, $pid, ['href' => '#' . $pid]);
+        }
+        echo '</td>';
+    }
+
+    /**
+     * print a table cell with sosa number
+     *
      * @param int    $sosa
      * @param string $pid  optional pid
      * @param string $icon which arrow to use
@@ -38,11 +66,12 @@ class FunctionsCharts
      */
     public static function printSosaNumber($sosa, $pid = '', $icon = '')
     {
-        if (substr($sosa, -1, 1) === '.') {
+        if (is_string($sosa) && substr($sosa, -1, 1) === '.') {
             $personLabel = substr($sosa, 0, -1);
         } else {
             $personLabel = $sosa;
         }
+
         if ($icon == '') {
             $visibility = 'hidden';
         } else {
@@ -60,15 +89,15 @@ class FunctionsCharts
     /**
      * print the parents table for a family
      *
-     * @param Family $family family gedcom ID
-     * @param int    $sosa   child sosa number
-     * @param string $label  indi label (descendancy booklet)
-     * @param string $parid  parent ID (descendancy booklet)
-     * @param string $gparid gd-parent ID (descendancy booklet)
+     * @param Family $family    family gedcom ID
+     * @param int    $sosa      child sosa number
+     * @param string $daboville indi label (descendancy booklet)
+     * @param string $parid     parent ID (descendancy booklet)
+     * @param string $gparid    gd-parent ID (descendancy booklet)
      *
      * @return void
      */
-    public static function printFamilyParents(Family $family, int $sosa = 0, string $label = '', string $parid = '', string $gparid = '')
+    public static function printFamilyParents(Family $family, int $sosa = 0, string $daboville = '', string $parid = '', string $gparid = '')
     {
         $pbheight = Theme::theme()->parameter('chart-box-y') + 14;
 
@@ -97,9 +126,9 @@ class FunctionsCharts
 
         if ($parid) {
             if ($husb->getXref() == $parid) {
-                self::printSosaNumber($label, '', 'blank');
+                self::printDabovilleNumber($daboville, '', 'blank');
             } else {
-                self::printSosaNumber($label, '', '');
+                self::printDabovilleNumber($daboville, '', '');
             }
         } elseif ($sosa) {
             self::printSosaNumber($sosa * 2, '', '');
@@ -127,7 +156,7 @@ class FunctionsCharts
                     self::printSosaNumber($sosa * 4, $hfam->getHusband()->getXref(), 'arrow-down');
                 }
                 if (!empty($gparid) && $hfam->getHusband()->getXref() == $gparid) {
-                    self::printSosaNumber(trim(substr($label, 0, -3), '.') . '.', '', 'arrow-up');
+                    self::printDabovilleNumber(trim(substr($daboville, 0, -3), '.') . '.', '', 'arrow-up');
                 }
                 echo '<td>';
                 FunctionsPrint::printPedigreePerson($hfam->getHusband());
@@ -155,7 +184,7 @@ class FunctionsCharts
                     self::printSosaNumber($sosa * 4 + 1, $hfam->getWife()->getXref(), 'arrow-down');
                 }
                 if (!empty($gparid) && $hfam->getWife()->getXref() == $gparid) {
-                    self::printSosaNumber(trim(substr($label, 0, -3), '.') . '.', '', 'arrow-up');
+                    self::printDabovilleNumber(trim(substr($daboville, 0, -3), '.') . '.', '', 'arrow-up');
                 }
                 echo '<td>';
                 FunctionsPrint::printPedigreePerson($hfam->getWife());
@@ -187,9 +216,9 @@ class FunctionsCharts
         echo '<table cellspacing="0" cellpadding="0" border="0"><tr>';
         if ($parid) {
             if ($wife->getXref() == $parid) {
-                self::printSosaNumber($label, '', 'blank');
+                self::printDabovilleNumber($daboville, '', 'blank');
             } else {
-                self::printSosaNumber($label, '', '');
+                self::printDabovilleNumber($daboville, '', '');
             }
         } elseif ($sosa) {
             self::printSosaNumber($sosa * 2 + 1, '', '');
@@ -216,7 +245,7 @@ class FunctionsCharts
                     self::printSosaNumber($sosa * 4 + 2, $wfam->getHusband()->getXref(), 'arrow-down');
                 }
                 if (!empty($gparid) && $wfam->getHusband()->getXref() == $gparid) {
-                    self::printSosaNumber(trim(substr($label, 0, -3), '.') . '.', '', 'arrow-up');
+                    self::printDabovilleNumber(trim(substr($daboville, 0, -3), '.') . '.', '', 'arrow-up');
                 }
                 echo '<td>';
                 FunctionsPrint::printPedigreePerson($wfam->getHusband());
@@ -245,7 +274,7 @@ class FunctionsCharts
                     self::printSosaNumber($sosa * 4 + 3, $wfam->getWife()->getXref(), 'arrow-down');
                 }
                 if (!empty($gparid) && $wfam->getWife()->getXref() == $gparid) {
-                    self::printSosaNumber(trim(substr($label, 0, -3), '.') . '.', '', 'arrow-up');
+                    self::printDabovilleNumber(trim(substr($daboville, 0, -3), '.') . '.', '', 'arrow-up');
                 }
                 echo '<td>';
                 FunctionsPrint::printPedigreePerson($wfam->getWife());
@@ -332,9 +361,9 @@ class FunctionsCharts
                     if ($child->getXref() == $childid) {
                         self::printSosaNumber($sosa, $childid, 'arrow-up');
                     } elseif (empty($label)) {
-                        self::printSosaNumber('', '', 'arrow-up');
+                        self::printDabovilleNumber('', '', 'arrow-up');
                     } else {
-                        self::printSosaNumber($label . ($nchi++) . '.', '', 'arrow-up');
+                        self::printDabovilleNumber($label . ($nchi++) . '.', '', 'arrow-up');
                     }
                 }
                 if ($child->isPendingAddition()) {
@@ -421,8 +450,8 @@ class FunctionsCharts
      *
      * @param Family $family       family gedcom
      * @param string $childid      tree root ID
-     * @param int    $sosa         starting sosa number
-     * @param string $label        indi label (descendancy booklet)
+     * @param int    $sosa         Sosa-Stradonitz number
+     * @param string $daboville    d'Aboville number
      * @param string $parid        parent ID (descendancy booklet)
      * @param string $gparid       gd-parent ID (descendancy booklet)
      * @param bool   $show_cousins display cousins on chart
@@ -433,7 +462,7 @@ class FunctionsCharts
         Family $family,
         string $childid,
         int    $sosa,
-        string $label,
+        string $daboville,
         string $parid,
         string $gparid,
         bool   $show_cousins
@@ -441,10 +470,10 @@ class FunctionsCharts
         echo '<hr>';
         echo '<p class="family-break">';
         echo '<a name="', e($family->getXref()), '"></a>';
-        self::printFamilyParents($family, $sosa, $label, $parid, $gparid);
+        self::printFamilyParents($family, $sosa, $daboville, $parid, $gparid);
         echo '<br>';
         echo '<table cellspacing="0" cellpadding="0" border="0"><tr><td>';
-        self::printFamilyChildren($family, $childid, $sosa, $label, $show_cousins);
+        self::printFamilyChildren($family, $childid, $sosa, $daboville, $show_cousins);
         echo '</td></tr></table>';
         echo '<br>';
     }

@@ -378,23 +378,25 @@ class DescendantsChartController extends AbstractChartController
     /**
      * Print a child family
      *
-     * @param Individual $person
-     * @param int        $depth the descendancy depth to show
-     * @param string     $label
+     * @param Individual $individual
+     * @param int        $depth     - the descendancy depth to show
+     * @param string     $daboville - d'Aboville number
      * @param string     $gpid
      *
      * @return void
      */
-    private function printChildFamily(Individual $person, $depth, $label = '1.', $gpid = '')
+    private function printChildFamily(Individual $individual, $depth, $daboville = '1.', $gpid = '')
     {
         if ($depth < 2) {
             return;
         }
-        foreach ($person->getSpouseFamilies() as $family) {
-            FunctionsCharts::printSosaFamily($family, '', -1, $label, $person->getXref(), $gpid, false);
-            $i = 1;
+
+        $i = 1;
+
+        foreach ($individual->getSpouseFamilies() as $family) {
+            FunctionsCharts::printSosaFamily($family, '', -1, $daboville, $individual->getXref(), $gpid, false);
             foreach ($family->getChildren() as $child) {
-                $this->printChildFamily($child, $depth - 1, $label . ($i++) . '.', $person->getXref());
+                $this->printChildFamily($child, $depth - 1, $daboville . ($i++) . '.', $individual->getXref());
             }
         }
     }
