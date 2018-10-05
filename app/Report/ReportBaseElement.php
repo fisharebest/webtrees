@@ -86,13 +86,11 @@ class ReportBaseElement
     /**
      * Add an end-of-line.
      *
-     * @return int
+     * @return void
      */
-    public function addNewline(): int
+    public function addNewline()
     {
         $this->text .= "\n";
-
-        return 0;
     }
 
     /**
@@ -111,9 +109,9 @@ class ReportBaseElement
      * @param $wrapwidth
      * @param $cellwidth
      *
-     * @return int
+     * @return float
      */
-    public function setWrapWidth($wrapwidth, $cellwidth): int
+    public function setWrapWidth($wrapwidth, $cellwidth): float
     {
         return 0;
     }

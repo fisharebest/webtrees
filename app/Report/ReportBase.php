@@ -66,7 +66,7 @@ class ReportBase
     /** @var string The default Report font name */
     public $defaultFont = 'dejavusans';
 
-    /** @var int The default Report font size */
+    /** @var float The default Report font size */
     public $defaultFontSize = 12;
 
     /** @var string Header (H), Page header (PH), Body (B) or Footer (F) */
@@ -652,13 +652,11 @@ class ReportBase
      *
      * @param string $p Header (H), Page header (PH), Body (B) or Footer (F)
      *
-     * @return int
+     * @return void
      */
-    public function setProcessing($p): int
+    public function setProcessing($p)
     {
         $this->processing = $p;
-
-        return 0;
     }
 
     /**
@@ -666,13 +664,11 @@ class ReportBase
      *
      * @param string $data
      *
-     * @return int
+     * @return void
      */
-    public function addTitle($data): int
+    public function addTitle($data)
     {
         $this->title .= $data;
-
-        return 0;
     }
 
     /**
@@ -680,13 +676,11 @@ class ReportBase
      *
      * @param string $data
      *
-     * @return int
+     * @return void
      */
-    public function addDescription($data): int
+    public function addDescription($data)
     {
         $this->rsubject .= $data;
-
-        return 0;
     }
 
     /**
@@ -694,13 +688,11 @@ class ReportBase
      *
      * @param array $style
      *
-     * @return int
+     * @return void
      */
-    public function addStyle($style): int
+    public function addStyle($style)
     {
         $this->Styles[$style['name']] = $style;
-
-        return 0;
     }
 
     /**

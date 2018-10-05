@@ -71,11 +71,11 @@ class ReportHtmlFootnote extends ReportBaseFootnote
      * Calculates the Footnotes height
      *
      * @param ReportHtml $html
-     * @param int        $cellWidth The width of the cell to use it for text wraping
+     * @param float      $cellWidth The width of the cell to use it for text wraping
      *
-     * @return int       Footnote height in points
+     * @return float     Footnote height in points
      */
-    public function getFootnoteHeight($html, $cellWidth = 0): int
+    public function getFootnoteHeight($html, float $cellWidth = 0): float
     {
         if ($html->getCurrentStyle() != $this->styleName) {
             $html->setCurrentStyle($this->styleName);

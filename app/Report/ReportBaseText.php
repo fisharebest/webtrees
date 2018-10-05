@@ -37,13 +37,13 @@ class ReportBaseText extends ReportBaseElement
     /**
      * Remaining width of a cel
      *
-     * @var int User unit (points)
+     * @var float User unit (points)
      */
     public $wrapWidthRemaining;
     /**
      * Original width of a cell
      *
-     * @var int User unit (points)
+     * @var float User unit (points)
      */
     public $wrapWidthCell;
 
@@ -67,9 +67,9 @@ class ReportBaseText extends ReportBaseElement
      * @param $wrapwidth
      * @param $cellwidth
      *
-     * @return int
+     * @return float
      */
-    public function setWrapWidth($wrapwidth, $cellwidth): int
+    public function setWrapWidth($wrapwidth, $cellwidth): float
     {
         $this->wrapWidthCell = $cellwidth;
         if (strpos($this->text, "\n") !== false) {

@@ -169,13 +169,11 @@ class ReportBaseCell extends ReportBaseElement
      *
      * @param string $url The URL address to save
      *
-     * @return int
+     * @return void
      */
-    public function setUrl($url): int
+    public function setUrl($url)
     {
         $this->url = $url;
-
-        return 0;
     }
 
     /**

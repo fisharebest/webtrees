@@ -113,23 +113,27 @@ class ReportPdf extends ReportBase
      *
      * @param object|string $element Object or string
      *
-     * @return int
+     * @return void
      */
-    public function addElement($element): int
+    public function addElement($element)
     {
         if ($this->processing == 'B') {
-            return $this->pdf->addBody($element);
+            $this->pdf->addBody($element);
+
+            return;
         }
 
         if ($this->processing == 'H') {
-            return $this->pdf->addHeader($element);
+            $this->pdf->addHeader($element);
+
+            return;
         }
 
         if ($this->processing == 'F') {
-            return $this->pdf->addFooter($element);
-        }
+            $this->pdf->addFooter($element);
 
-        return 0;
+            return;
+        }
     }
 
     /**
@@ -268,16 +272,16 @@ class ReportPdf extends ReportBase
      * Create a new image object from Media Object - ReportPdf
      *
      * @param MediaFile $media_file
-     * @param int       $x
-     * @param int       $y
-     * @param int       $w     Image width
-     * @param int       $h     Image height
+     * @param float     $x
+     * @param float     $y
+     * @param float     $w     Image width
+     * @param float     $h     Image height
      * @param string    $align L:left, C:center, R:right or empty to use x/y
      * @param string    $ln    T:same line, N:next line
      *
      * @return ReportPdfImage
      */
-    public function createImageFromObject(MediaFile $media_file, int $x, int $y, int $w, int $h, string $align, string $ln): ReportPdfImage
+    public function createImageFromObject(MediaFile $media_file, float $x, float $y, float $w, float $h, string $align, string $ln): ReportPdfImage
     {
         return new ReportPdfImage($media_file->getServerFilename(), $x, $y, $w, $h, $align, $ln);
     }

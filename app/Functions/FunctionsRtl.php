@@ -1142,7 +1142,7 @@ class FunctionsRtl
      *
      * @return string
      */
-    public static function utf8WordWrap($string, $width = 75, $sep = "\n", $cut = false): string
+    public static function utf8WordWrap(string $string, int $width = 75, string $sep = "\n", bool $cut = false): string
     {
         $out = '';
         while ($string) {

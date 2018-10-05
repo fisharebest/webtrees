@@ -36,13 +36,11 @@ class ReportBasePageheader extends ReportBaseElement
     /**
      * Unknown?
      *
-     * @return int
+     * @return void
      */
-    public function textBox(): int
+    public function textBox()
     {
         $this->elements = [];
-
-        return 0;
     }
 
     /**

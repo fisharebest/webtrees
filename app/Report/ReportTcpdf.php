@@ -44,10 +44,10 @@ class ReportTcpdf extends TCPDF
     /** @var string Currently used style name */
     public $currentStyle = '';
 
-    /** @var int The last cell height */
+    /** @var float The last cell height */
     public $lastCellHeight = 0;
 
-    /** @var int The largest font size within a TextBox to calculate the height */
+    /** @var float The largest font size within a TextBox to calculate the height */
     public $largestFontHeight = 0;
 
     /** @var int The last pictures page number */
@@ -145,13 +145,11 @@ class ReportTcpdf extends TCPDF
      *
      * @param object|string $element
      *
-     * @return int The number of the Header elements
+     * @return void
      */
-    public function addHeader($element): int
+    public function addHeader($element)
     {
         $this->headerElements[] = $element;
-
-        return count($this->headerElements) - 1;
     }
 
     /**
@@ -159,13 +157,11 @@ class ReportTcpdf extends TCPDF
      *
      * @param object|string $element
      *
-     * @return int The number of the Page Header elements
+     * @return void
      */
-    public function addPageHeader($element): int
+    public function addPageHeader($element)
     {
         $this->pageHeaderElements[] = $element;
-
-        return count($this->pageHeaderElements) - 1;
     }
 
     /**
@@ -173,13 +169,11 @@ class ReportTcpdf extends TCPDF
      *
      * @param object|string $element
      *
-     * @return int The number of the Body elements
+     * @return void
      */
-    public function addBody($element): int
+    public function addBody($element)
     {
         $this->bodyElements[] = $element;
-
-        return count($this->bodyElements) - 1;
     }
 
     /**
@@ -187,13 +181,11 @@ class ReportTcpdf extends TCPDF
      *
      * @param object|string $element
      *
-     * @return int The number of the Footer elements
+     * @return void
      */
-    public function addFooter($element): int
+    public function addFooter($element)
     {
         $this->footerElements[] = $element;
-
-        return count($this->footerElements) - 1;
     }
 
     /**
@@ -359,9 +351,9 @@ class ReportTcpdf extends TCPDF
     /**
      * Get the height of the footnote.
      *
-     * @return int
+     * @return float
      */
-    public function getFootnotesHeight(): int
+    public function getFootnotesHeight(): float
     {
         $h = 0;
         foreach ($this->printedfootnotes as $element) {
@@ -374,9 +366,9 @@ class ReportTcpdf extends TCPDF
     /**
      * Returns the the current font size height -PDF
      *
-     * @return int
+     * @return float
      */
-    public function getCurrentStyleHeight(): int
+    public function getCurrentStyleHeight(): float
     {
         if (empty($this->currentStyle)) {
             return $this->wt_report->defaultFontSize;
@@ -391,9 +383,9 @@ class ReportTcpdf extends TCPDF
      *
      * @param object $footnote
      *
-     * @return bool false if not numbered befor | object if already numbered
+     * @return object|bool object if already numbered, false otherwise
      */
-    public function checkFootnote($footnote): bool
+    public function checkFootnote($footnote)
     {
         $ct  = count($this->printedfootnotes);
         $val = $footnote->getValue();
@@ -433,11 +425,11 @@ class ReportTcpdf extends TCPDF
     /**
      * Add a page if needed -PDF
      *
-     * @param int $height Cell height
+     * @param float $height Cell height
      *
      * @return bool true in case of page break, false otherwise
      */
-    public function checkPageBreakPDF($height): bool
+    public function checkPageBreakPDF(float $height): bool
     {
         return $this->checkPageBreak($height);
     }

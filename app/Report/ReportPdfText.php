@@ -125,8 +125,7 @@ class ReportPdfText extends ReportBaseText
         // If there is still remaining wrap width...
         if ($this->wrapWidthRemaining > 0) {
             // Check with line counter too!
-            // but floor the $wrapWidthRemaining first to keep it bugfree!
-            $wrapWidthRemaining = (int) ($this->wrapWidthRemaining);
+            $wrapWidthRemaining = $this->wrapWidthRemaining;
             if ($lw >= $wrapWidthRemaining || $lfct > 1) {
                 $newtext = '';
                 $lines   = explode("\n", $this->text);

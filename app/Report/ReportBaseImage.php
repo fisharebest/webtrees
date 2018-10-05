@@ -25,16 +25,16 @@ class ReportBaseImage extends ReportBaseElement
     /** @var string Filename of the image */
     public $file;
 
-    /** @var int Height of the image */
+    /** @var float Height of the image */
     public $height;
 
-    /** @var int Width of the image */
+    /** @var float Width of the image */
     public $width;
 
-    /** @var int X-position (left) of the image */
+    /** @var float X-position (left) of the image */
     public $x;
 
-    /** @var int Y-position (top) of the image */
+    /** @var float Y-position (top) of the image */
     public $y;
 
     /** @var string Placement fo the image. L: left, C:center, R:right (or empty for x/y) */
@@ -47,14 +47,14 @@ class ReportBaseImage extends ReportBaseElement
      * Image class function - Base
      *
      * @param string $file  Filename of the image
-     * @param int    $x     X-position (left) of the image
-     * @param int    $y     Y-position (top) of the image
-     * @param int    $w     Width of the image
-     * @param int    $h     Height of the image
+     * @param float  $x     X-position (left) of the image
+     * @param float  $y     Y-position (top) of the image
+     * @param float  $w     Width of the image
+     * @param float  $h     Height of the image
      * @param string $align Placement of the image. L: left, C:center, R:right
      * @param string $ln    T:same line, N:next line
      */
-    public function __construct(string $file, int $x, int $y, int $w, int $h, string $align, string $ln)
+    public function __construct(string $file, float $x, float $y, float $w, float $h, string $align, string $ln)
     {
         $this->file   = $file;
         $this->width  = $w;

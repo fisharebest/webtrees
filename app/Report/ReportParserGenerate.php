@@ -491,12 +491,12 @@ class ReportParserGenerate extends ReportParserBase
         // int Cell height (expressed in points) The starting height of this cell. If the text wraps the height will automatically be adjusted.
         $height = 0;
         if (!empty($attrs['height'])) {
-            $height = (int) $attrs['height'];
+            $height = $attrs['height'];
         }
         // int Cell width (expressed in points) Setting the width to 0 will make it the width from the current location to the right margin.
         $width = 0;
         if (!empty($attrs['width'])) {
-            $width = (int) $attrs['width'];
+            $width = $attrs['width'];
         }
 
         // int Stretch carachter mode
@@ -1420,7 +1420,7 @@ class ReportParserGenerate extends ReportParserBase
         } elseif ($value == '@desc') {
             $value = $this->desc;
         } elseif ($value == '@generation') {
-            $value = $this->generation;
+            $value = (string) $this->generation;
         } elseif (preg_match("/@(\w+)/", $value, $match)) {
             $gmatch = [];
             if (preg_match("/\d $match[1] (.+)/", $this->gedrec, $gmatch)) {
@@ -2303,7 +2303,7 @@ class ReportParserGenerate extends ReportParserBase
     private function listTotalStartHandler()
     {
         if ($this->list_private == 0) {
-            $this->current_element->addText($this->list_total);
+            $this->current_element->addText((string) $this->list_total);
         } else {
             $this->current_element->addText(($this->list_total - $this->list_private) . ' / ' . $this->list_total);
         }
@@ -2542,7 +2542,7 @@ class ReportParserGenerate extends ReportParserBase
      */
     private function generationStartHandler()
     {
-        $this->current_element->addText($this->generation);
+        $this->current_element->addText((string) $this->generation);
     }
 
     /**
