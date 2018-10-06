@@ -53,7 +53,7 @@ class ReportTcpdf extends TCPDF
     /** @var int The last pictures page number */
     public $lastpicpage = 0;
 
-    /** @var ReportBase The current report. */
+    /** @var AbstractReport The current report. */
     public $wt_report;
 
     /**
@@ -303,12 +303,12 @@ class ReportTcpdf extends TCPDF
      */
     public function getStyle($s): array
     {
-        if (!isset($this->wt_report->Styles[$s])) {
+        if (!isset($this->wt_report->styles[$s])) {
             $s                           = $this->getCurrentStyle();
-            $this->wt_report->Styles[$s] = $s;
+            $this->wt_report->styles[$s] = $s;
         }
 
-        return $this->wt_report->Styles[$s];
+        return $this->wt_report->styles[$s];
     }
 
     /**
@@ -371,7 +371,7 @@ class ReportTcpdf extends TCPDF
     public function getCurrentStyleHeight(): float
     {
         if (empty($this->currentStyle)) {
-            return $this->wt_report->defaultFontSize;
+            return $this->wt_report->default_font_size;
         }
         $style = $this->wt_report->getStyle($this->currentStyle);
 

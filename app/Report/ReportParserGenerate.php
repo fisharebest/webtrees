@@ -69,7 +69,7 @@ class ReportParserGenerate extends ReportParserBase
     /** @var array[] Nested repeating data */
     private $repeats_stack = [];
 
-    /** @var ReportBase[] Nested repeating data */
+    /** @var AbstractReport[] Nested repeating data */
     private $wt_report_stack = [];
 
     /** @var resource Nested repeating data */
@@ -114,10 +114,10 @@ class ReportParserGenerate extends ReportParserBase
     /** @var string The filename of the XML report */
     protected $report;
 
-    /** @var ReportBase A factory for creating report elements */
+    /** @var AbstractReport A factory for creating report elements */
     private $report_root;
 
-    /** @var ReportBaseElement Nested report elements */
+    /** @var AbstractReport Nested report elements */
     private $wt_report;
 
     /** @var string[][] Variables defined in the report at run-time */
@@ -129,12 +129,12 @@ class ReportParserGenerate extends ReportParserBase
     /**
      * Create a parser for a report
      *
-     * @param string     $report The XML filename
-     * @param ReportBase $report_root
-     * @param string[][] $vars
-     * @param Tree       $tree
+     * @param string         $report The XML filename
+     * @param AbstractReport $report_root
+     * @param string[][]     $vars
+     * @param Tree           $tree
      */
-    public function __construct($report, ReportBase $report_root, array $vars, Tree $tree)
+    public function __construct(string $report, AbstractReport $report_root, array $vars, Tree $tree)
     {
         $this->report          = $report;
         $this->report_root     = $report_root;
@@ -173,6 +173,7 @@ class ReportParserGenerate extends ReportParserBase
         if ($this->process_footnote && ($this->process_ifs === 0 || $name === 'if') && ($this->process_gedcoms === 0 || $name === 'Gedcom') && ($this->process_repeats === 0 || $name === 'Facts' || $name === 'RepeatTag')) {
             $start_method = $name . 'StartHandler';
             $end_method   = $name . 'EndHandler';
+
             if (method_exists($this, $start_method)) {
                 $this->$start_method($attrs);
             } elseif (!method_exists($this, $end_method)) {
@@ -239,13 +240,13 @@ class ReportParserGenerate extends ReportParserBase
         $s['name'] = $attrs['name'];
 
         // string Name of the DEFAULT font
-        $s['font'] = $this->wt_report->defaultFont;
+        $s['font'] = $this->wt_report->default_font;
         if (!empty($attrs['font'])) {
             $s['font'] = $attrs['font'];
         }
 
         // int The size of the font in points
-        $s['size'] = $this->wt_report->defaultFontSize;
+        $s['size'] = $this->wt_report->default_font_size;
         if (!empty($attrs['size'])) {
             $s['size'] = (int) $attrs['size'];
         } // Get it as int to ignore all decimal points or text (if any text then int(0))
@@ -273,59 +274,59 @@ class ReportParserGenerate extends ReportParserBase
 
         // Custom page width
         if (!empty($attrs['customwidth'])) {
-            $this->wt_report->pagew = (int) $attrs['customwidth'];
+            $this->wt_report->page_width = (int) $attrs['customwidth'];
         } // Get it as int to ignore all decimal points or text (if any text then int(0))
         // Custom Page height
         if (!empty($attrs['customheight'])) {
-            $this->wt_report->pageh = (int) $attrs['customheight'];
+            $this->wt_report->page_height = (int) $attrs['customheight'];
         } // Get it as int to ignore all decimal points or text (if any text then int(0))
 
         // Left Margin
         if (isset($attrs['leftmargin'])) {
             if ($attrs['leftmargin'] === '0') {
-                $this->wt_report->leftmargin = 0;
+                $this->wt_report->left_margin = 0;
             } elseif (!empty($attrs['leftmargin'])) {
-                $this->wt_report->leftmargin = (int) $attrs['leftmargin']; // Get it as int to ignore all decimal points or text (if any text then int(0))
+                $this->wt_report->left_margin = (int) $attrs['leftmargin']; // Get it as int to ignore all decimal points or text (if any text then int(0))
             }
         }
         // Right Margin
         if (isset($attrs['rightmargin'])) {
             if ($attrs['rightmargin'] === '0') {
-                $this->wt_report->rightmargin = 0;
+                $this->wt_report->right_margin = 0;
             } elseif (!empty($attrs['rightmargin'])) {
-                $this->wt_report->rightmargin = (int) $attrs['rightmargin']; // Get it as int to ignore all decimal points or text (if any text then int(0))
+                $this->wt_report->right_margin = (int) $attrs['rightmargin']; // Get it as int to ignore all decimal points or text (if any text then int(0))
             }
         }
         // Top Margin
         if (isset($attrs['topmargin'])) {
             if ($attrs['topmargin'] === '0') {
-                $this->wt_report->topmargin = 0;
+                $this->wt_report->top_margin = 0;
             } elseif (!empty($attrs['topmargin'])) {
-                $this->wt_report->topmargin = (int) $attrs['topmargin']; // Get it as int to ignore all decimal points or text (if any text then int(0))
+                $this->wt_report->top_margin = (int) $attrs['topmargin']; // Get it as int to ignore all decimal points or text (if any text then int(0))
             }
         }
         // Bottom Margin
         if (isset($attrs['bottommargin'])) {
             if ($attrs['bottommargin'] === '0') {
-                $this->wt_report->bottommargin = 0;
+                $this->wt_report->bottom_margin = 0;
             } elseif (!empty($attrs['bottommargin'])) {
-                $this->wt_report->bottommargin = (int) $attrs['bottommargin']; // Get it as int to ignore all decimal points or text (if any text then int(0))
+                $this->wt_report->bottom_margin = (int) $attrs['bottommargin']; // Get it as int to ignore all decimal points or text (if any text then int(0))
             }
         }
         // Header Margin
         if (isset($attrs['headermargin'])) {
             if ($attrs['headermargin'] === '0') {
-                $this->wt_report->headermargin = 0;
+                $this->wt_report->header_margin = 0;
             } elseif (!empty($attrs['headermargin'])) {
-                $this->wt_report->headermargin = (int) $attrs['headermargin']; // Get it as int to ignore all decimal points or text (if any text then int(0))
+                $this->wt_report->header_margin = (int) $attrs['headermargin']; // Get it as int to ignore all decimal points or text (if any text then int(0))
             }
         }
         // Footer Margin
         if (isset($attrs['footermargin'])) {
             if ($attrs['footermargin'] === '0') {
-                $this->wt_report->footermargin = 0;
+                $this->wt_report->footer_margin = 0;
             } elseif (!empty($attrs['footermargin'])) {
-                $this->wt_report->footermargin = (int) $attrs['footermargin']; // Get it as int to ignore all decimal points or text (if any text then int(0))
+                $this->wt_report->footer_margin = (int) $attrs['footermargin']; // Get it as int to ignore all decimal points or text (if any text then int(0))
             }
         }
 
@@ -339,15 +340,15 @@ class ReportParserGenerate extends ReportParserBase
         }
         // Page Size
         if (!empty($attrs['pageSize'])) {
-            $this->wt_report->pageFormat = strtoupper($attrs['pageSize']);
+            $this->wt_report->page_format = strtoupper($attrs['pageSize']);
         }
 
         // Show Generated By...
         if (isset($attrs['showGeneratedBy'])) {
             if ($attrs['showGeneratedBy'] === '0') {
-                $this->wt_report->showGenText = false;
+                $this->wt_report->show_generated_by = false;
             } elseif ($attrs['showGeneratedBy'] === '1') {
-                $this->wt_report->showGenText = true;
+                $this->wt_report->show_generated_by = true;
             }
         }
 

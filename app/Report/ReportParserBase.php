@@ -17,7 +17,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Report;
 
+use DomainException;
 use Fisharebest\Webtrees\Tree;
+use function method_exists;
 
 /**
  * Class ReportParserBase
@@ -54,7 +56,7 @@ class ReportParserBase
         $fp = fopen($report, 'r');
         while (($data = fread($fp, 4096))) {
             if (!xml_parse($this->xml_parser, $data, feof($fp))) {
-                throw new \DomainException(sprintf(
+                throw new DomainException(sprintf(
                     'XML error: %s at line %d',
                     xml_error_string(xml_get_error_code($this->xml_parser)),
                     xml_get_current_line_number($this->xml_parser)
@@ -74,12 +76,13 @@ class ReportParserBase
      *
      * @return void
      */
-    protected function startElement($parser, $name, $attrs)
+    protected function startElement($parser, string $name, array $attrs)
     {
         $method = $name . 'StartHandler';
+
         if (method_exists($this, $method)) {
             $this->$method($attrs);
-        }
+     }
     }
 
     /**
@@ -90,9 +93,10 @@ class ReportParserBase
      *
      * @return void
      */
-    protected function endElement($parser, $name)
+    protected function endElement($parser, string $name)
     {
         $method = $name . 'EndHandler';
+
         if (method_exists($this, $method)) {
             $this->$method();
         }
