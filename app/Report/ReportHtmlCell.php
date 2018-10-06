@@ -34,7 +34,7 @@ class ReportHtmlCell extends ReportBaseCell
         if (strpos($this->text, '{{:ptp:}}') !== false) {
             return;
         }
-        $temptext = str_replace('#PAGENUM#', $renderer->pageNo(), $this->text);
+        $temptext = str_replace('#PAGENUM#', (string) $renderer->pageNo(), $this->text);
         // underline «title» part of Source item
         $temptext = str_replace([
             '«',

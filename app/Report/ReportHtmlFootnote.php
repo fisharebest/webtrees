@@ -51,7 +51,7 @@ class ReportHtmlFootnote extends ReportBaseFootnote
             $html->setCurrentStyle($this->styleName);
         }
 
-        $temptext = str_replace('#PAGENUM#', $html->pageNo(), $this->text);
+        $temptext = str_replace('#PAGENUM#', (string) $html->pageNo(), $this->text);
         // underline «title» part of Source item
         $temptext = str_replace([
             '«',

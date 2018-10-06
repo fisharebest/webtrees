@@ -58,7 +58,7 @@ class ReportBaseCell extends ReportBaseElement
      * Cell height DEFAULT 0 (expressed in points)
      * The starting height of this cell. If the text wraps the height will automatically be adjusted.
      *
-     * @var int
+     * @var float
      */
     public $height;
     /**
@@ -107,11 +107,11 @@ class ReportBaseCell extends ReportBaseElement
      * Cell width DEFAULT 0 (expressed in points)
      * Setting the width to 0 will make it the width from the current location to the right margin.
      *
-     * @var int
+     * @var float
      */
     public $width;
 
-    /** @var int Unknown */
+    /** @var bool */
     public $reseth;
 
     /**
@@ -130,9 +130,9 @@ class ReportBaseCell extends ReportBaseElement
      * @param int    $stretch Stretch carachter mode
      * @param string $bocolor Border color
      * @param string $tcolor  Text color
-     * @param        $reseth
+     * @param bool   $reseth
      */
-    public function __construct($width, $height, $border, $align, $bgcolor, $style, $ln, $top, $left, $fill, $stretch, $bocolor, $tcolor, $reseth)
+    public function __construct($width, $height, $border, $align, $bgcolor, $style, $ln, $top, $left, int $fill, int $stretch, string $bocolor, string $tcolor, bool $reseth)
     {
         $this->align     = $align;
         $this->border    = $border;

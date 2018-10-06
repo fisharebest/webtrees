@@ -153,11 +153,11 @@ class ReportParserGenerate extends ReportParserBase
      *
      * @param resource $parser the resource handler for the XML parser
      * @param string   $name   the name of the XML element parsed
-     * @param array    $attrs  an array of key value pairs for the attributes
+     * @param string[] $attrs  an array of key value pairs for the attributes
      *
      * @return void
      */
-    protected function startElement($parser, $name, $attrs)
+    protected function startElement($parser, string $name, array $attrs)
     {
         $newattrs = [];
 
@@ -192,7 +192,7 @@ class ReportParserGenerate extends ReportParserBase
      *
      * @return void
      */
-    protected function endElement($parser, $name)
+    protected function endElement($parser, string $name)
     {
         if (($this->process_footnote || $name === 'Footnote') && ($this->process_ifs === 0 || $name === 'if') && ($this->process_gedcoms === 0 || $name === 'Gedcom') && ($this->process_repeats === 0 || $name === 'Facts' || $name === 'RepeatTag' || $name === 'List' || $name === 'Relatives')) {
             $start_method = $name . 'StartHandler';

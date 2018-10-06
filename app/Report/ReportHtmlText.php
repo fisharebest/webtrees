@@ -38,7 +38,7 @@ class ReportHtmlText extends ReportBaseText
         if ($renderer->getCurrentStyle() != $this->styleName) {
             $renderer->setCurrentStyle($this->styleName);
         }
-        $temptext = str_replace('#PAGENUM#', $renderer->pageNo(), $this->text);
+        $temptext = str_replace('#PAGENUM#', (string) $renderer->pageNo(), $this->text);
         // underline «title» part of Source item
         $temptext = str_replace([
             '«',

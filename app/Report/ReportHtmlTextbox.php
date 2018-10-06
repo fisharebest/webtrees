@@ -110,7 +110,7 @@ class ReportHtmlTextbox extends ReportBaseTextbox
             }
         }
         $this->elements = $newelements;
-        unset($footnote_element, $lastelement, $links, $newelements);
+        unset($footnote_element, $lastelement, $newelements);
 
         $cP = 0; // Class Padding
 

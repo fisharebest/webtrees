@@ -18,8 +18,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Report;
 
 use DomainException;
-use Fisharebest\Webtrees\Tree;
-use function method_exists;
 
 /**
  * Class ReportParserBase
@@ -40,20 +38,28 @@ class ReportParserBase
     public function __construct(string $report)
     {
         $this->xml_parser = xml_parser_create();
+
         xml_parser_set_option($this->xml_parser, XML_OPTION_CASE_FOLDING, false);
-        xml_set_element_handler($this->xml_parser, [
-            $this,
-            'startElement',
-        ], [
-            $this,
-            'endElement',
-        ]);
-        xml_set_character_data_handler($this->xml_parser, [
-            $this,
-            'characterData',
-        ]);
+
+        xml_set_element_handler(
+            $this->xml_parser,
+            function ($parser, string $name, array $attrs) {
+                $this->startElement($parser, $name, $attrs);
+            },
+            function ($parser, string $name) {
+                $this->endElement($parser, $name);
+            }
+        );
+
+        xml_set_character_data_handler(
+            $this->xml_parser,
+            function ($parser, $data) {
+                $this->characterData($parser, $data);
+            }
+        );
 
         $fp = fopen($report, 'r');
+
         while (($data = fread($fp, 4096))) {
             if (!xml_parse($this->xml_parser, $data, feof($fp))) {
                 throw new DomainException(sprintf(

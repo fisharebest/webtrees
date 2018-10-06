@@ -105,7 +105,7 @@ class ReportHtml extends AbstractReport
      * Use this to calculate a the text height.
      * This makes sure that the text fits into the cell/box when different font sizes are used
      *
-     * @var int
+     * @var float
      */
     public $largestFontHeight = 0;
 

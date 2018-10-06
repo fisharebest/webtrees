@@ -283,7 +283,7 @@ class FunctionsEdit
      *
      * @param Tree        $tree
      * @param Family|null $family
-     * @param string[]    $attributes
+     * @param mixed[]     $attributes
      *
      * @return string
      */
@@ -303,8 +303,8 @@ class FunctionsEdit
     /**
      * Create a form control to select a flag.
      *
-     * @param string   $flag
-     * @param string[] $attributes
+     * @param string  $flag
+     * @param mixed[] $attributes
      *
      * @return string
      */
@@ -326,7 +326,7 @@ class FunctionsEdit
      *
      * @param Tree            $tree
      * @param Individual|null $individual
-     * @param string[]        $attributes
+     * @param mixed[]         $attributes
      *
      * @return string
      */
@@ -348,7 +348,7 @@ class FunctionsEdit
      *
      * @param Tree       $tree
      * @param Media|null $media
-     * @param string[]   $attributes
+     * @param mixed[]    $attributes
      *
      * @return string
      */
@@ -370,7 +370,7 @@ class FunctionsEdit
      *
      * @param Tree      $tree
      * @param Note|null $note
-     * @param string[]  $attributes
+     * @param mixed[]   $attributes
      *
      * @return string
      */
@@ -390,9 +390,9 @@ class FunctionsEdit
     /**
      * Create a form control to select a place.
      *
-     * @param Tree     $tree
-     * @param string   $place
-     * @param string[] $attributes
+     * @param Tree    $tree
+     * @param string  $place
+     * @param mixed[] $attributes
      *
      * @return string
      */
@@ -413,7 +413,7 @@ class FunctionsEdit
      *
      * @param Tree            $tree
      * @param Repository|null $repository
-     * @param string[]        $attributes
+     * @param mixed[]         $attributes
      *
      * @return string
      */
@@ -435,7 +435,7 @@ class FunctionsEdit
      *
      * @param Tree        $tree
      * @param Source|null $source
-     * @param string[]    $attributes
+     * @param mixed[]     $attributes
      *
      * @return string
      */
@@ -457,7 +457,7 @@ class FunctionsEdit
      *
      * @param Tree              $tree
      * @param GedcomRecord|null $submitter
-     * @param string[]          $attributes
+     * @param mixed[]           $attributes
      *
      * @return string
      */
