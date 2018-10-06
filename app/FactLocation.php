@@ -25,22 +25,25 @@ use stdClass;
  */
 class FactLocation extends Location
 {
-    private $indi;
+    /** @var Individual */
+    private $individual;
+
+    /** @var Fact */
     private $fact;
 
     /**
      * FactLocation constructor.
      *
      * @param Fact       $fact
-     * @param Individual $indi
-     *
-     * @throws \Exception
+     * @param Individual $individual
      */
-    public function __construct(Fact $fact, Individual $indi)
+    public function __construct(Fact $fact, Individual $individual)
     {
-        $this->indi = $indi;
-        $this->fact = $fact;
+        $this->individual = $individual;
+        $this->fact       = $fact;
+
         parent::__construct($fact->getPlace()->getGedcomName());
+
         $coords = $this->getCoordsFromGedcom();
         if ($coords !== null) {
             // give priority to co-ordinates stored in gedcom
@@ -50,14 +53,14 @@ class FactLocation extends Location
     }
 
     /**
-     * @param $datatype
-     * @param $sosa
+     * @param string $datatype
+     * @param int    $sosa
      *
      * @return array
      */
-    public function shortSummary($datatype, $sosa): array
+    public function shortSummary(string $datatype, int $sosa): array
     {
-        $self        = $this->indi->getXref();
+        $self        = $this->individual->getXref();
         $parent      = $this->fact->getParent();
         $name        = '';
         $url         = '';
@@ -66,7 +69,7 @@ class FactLocation extends Location
 
         if ($parent instanceof Family) {
             //marriage
-            $spouse = $parent->getSpouse($this->indi);
+            $spouse = $parent->getSpouse($this->individual);
             if ($spouse) {
                 $url  = $spouse->url();
                 $name = $spouse->getFullName();
@@ -78,7 +81,7 @@ class FactLocation extends Location
             $name = $parent->getFullName();
             $tag  = GedcomTag::getLabel('_BIRT_CHIL', $parent);
         }
-        if ($datatype == 'pedigree' && $sosa > 1) {
+        if ($datatype === 'pedigree' && $sosa > 1) {
             $addbirthtag = true;
             $tag         = ucfirst(FunctionsCharts::getSosaName($sosa));
         }
@@ -151,7 +154,7 @@ class FactLocation extends Location
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function toolTip()
     {
