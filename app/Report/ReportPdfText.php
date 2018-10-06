@@ -60,8 +60,8 @@ class ReportPdfText extends ReportBaseText
         $temptext = FunctionsRtl::spanLtrRtl($temptext);
         $temptext = str_replace(
             [
-                '<br><span dir="rtl" >',
-                '<br><span dir="ltr" >',
+                '<br><span dir="rtl">',
+                '<br><span dir="ltr">',
                 '> ',
                 ' <',
             ],
