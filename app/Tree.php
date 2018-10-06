@@ -680,7 +680,7 @@ class Tree
             if ($statement->rowCount() === 0) {
                 // First time we've used this record type.
                 Site::setPreference('next_xref', '1');
-                $num = 1;
+                $num = '1';
             } else {
                 $num = Database::prepare("SELECT LAST_INSERT_ID()")->fetchOne();
             }
@@ -788,14 +788,13 @@ class Tree
             $individual = Individual::getInstance($this->getPreference('PEDIGREE_ROOT_ID'), $this);
         }
         if (!$individual) {
-            $individual = Individual::getInstance(
-                Database::prepare(
-                    "SELECT MIN(i_id) FROM `##individuals` WHERE i_file = :tree_id"
-                )->execute([
-                    'tree_id' => $this->getTreeId(),
-                ])->fetchOne(),
-                $this
-            );
+            $xref = (string) Database::prepare(
+                "SELECT MIN(i_id) FROM `##individuals` WHERE i_file = :tree_id"
+            )->execute([
+                'tree_id' => $this->getTreeId(),
+            ])->fetchOne();
+
+            $individual = Individual::getInstance($xref, $this);
         }
         if (!$individual) {
             // always return a record
@@ -825,12 +824,13 @@ class Tree
             $individual = Individual::getInstance($this->getPreference('PEDIGREE_ROOT_ID'), $this);
         }
         if (!$individual) {
-            $individual = Individual::getInstance(
-                Database::prepare(
-                    "SELECT MIN(i_id) FROM `##individuals` WHERE i_file = ?"
-                )->execute([$this->getTreeId()])->fetchOne(),
-                $this
-            );
+            $xref = (string) Database::prepare(
+                "SELECT MIN(i_id) FROM `##individuals` WHERE i_file = :tree_id"
+            )->execute([
+                'tree_id' => $this->getTreeId(),
+            ])->fetchOne();
+
+            $individual = Individual::getInstance($xref, $this);
         }
         if (!$individual) {
             // always return a record
