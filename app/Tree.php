@@ -678,11 +678,10 @@ class Tree
             ]);
 
             if ($statement->rowCount() === 0) {
-                // First time we've used this record type.
-                Site::setPreference('next_xref', '1');
                 $num = '1';
+                Site::setPreference('next_xref', $num);
             } else {
-                $num = Database::prepare("SELECT LAST_INSERT_ID()")->fetchOne();
+                $num = (string) Database::prepare("SELECT LAST_INSERT_ID()")->fetchOne();
             }
 
             $xref = $prefix . $num;

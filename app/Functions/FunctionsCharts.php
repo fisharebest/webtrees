@@ -326,7 +326,7 @@ class FunctionsCharts
         if ($numchil === 0) {
             echo I18N::translate('No children');
         } else {
-            echo I18N::plural('%s child', '%s children', $numchil, I18N::translate($numchil));
+            echo I18N::plural('%s child', '%s children', $numchil, I18N::number($numchil));
         }
         echo '</span>';
 

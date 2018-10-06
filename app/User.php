@@ -262,7 +262,7 @@ class User
             "SELECT password FROM `##user` WHERE user_id = ?"
         )->execute([$this->user_id])->fetchOne();
 
-        if (password_verify($password, $password_hash)) {
+        if ($password_hash !== null && password_verify($password, $password_hash)) {
             if (password_needs_rehash($password_hash, PASSWORD_DEFAULT)) {
                 $this->setPassword($password);
             }
