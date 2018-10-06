@@ -266,7 +266,7 @@ class ReportEngineController extends AbstractBaseController
                 $response = new Response($pdf);
 
                 $disposition = $response->headers->makeDisposition(
-                    ResponseHeaderBag::DISPOSITION_ATTACHMENT,
+                    ResponseHeaderBag::DISPOSITION_INLINE,
                     $report . '.pdf'
                 );
 
