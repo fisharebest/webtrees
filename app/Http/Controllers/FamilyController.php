@@ -44,7 +44,7 @@ class FamilyController extends AbstractBaseController
         $this->checkFamilyAccess($family, false);
 
         return $this->viewResponse('family-page', [
-            'facts'       => $family->getFacts(null, true),
+            'facts'       => $family->getFacts('', true),
             'meta_robots' => 'index,follow',
             'record'      => $family,
             'significant' => $this->significant($family),

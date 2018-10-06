@@ -496,7 +496,7 @@ class AdminController extends AbstractBaseController
             $media      = Media::getInstance($datum->m_id, $tree, $datum->m_gedcom);
             $individual = Individual::getInstance($datum->i_id, $tree, $datum->i_gedcom);
 
-            $facts = $individual->getFacts(null, true);
+            $facts = $individual->getFacts('', true);
             $facts = array_filter($facts, function (Fact $fact) use ($ignore_facts): bool {
                 return !$fact->isPendingDeletion() && !in_array($fact->getTag(), $ignore_facts);
             });

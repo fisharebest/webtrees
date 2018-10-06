@@ -523,7 +523,7 @@ class GedcomRecord
             list($gedrec) = explode("\n", $this->gedcom, 2);
 
             // Check each of the facts for access
-            foreach ($this->getFacts(null, false, $access_level) as $fact) {
+            foreach ($this->getFacts('', false, $access_level) as $fact) {
                 $gedrec .= "\n" . $fact->getGedcom();
             }
 
@@ -1266,7 +1266,7 @@ class GedcomRecord
         list($new_gedcom) = explode("\n", $old_gedcom, 2);
 
         // Replacing (or deleting) an existing fact
-        foreach ($this->getFacts(null, false, Auth::PRIV_HIDE) as $fact) {
+        foreach ($this->getFacts('', false, Auth::PRIV_HIDE) as $fact) {
             if (!$fact->isPendingDeletion()) {
                 if ($fact->getFactId() === $fact_id) {
                     if ($gedcom !== '') {

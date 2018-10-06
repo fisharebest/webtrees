@@ -299,7 +299,7 @@ class EditGedcomRecordController extends AbstractEditController
         $gedcom = '0 @' . $record->getXref() . '@ ' . $record::RECORD_TYPE;
 
         // Retain any private facts
-        foreach ($record->getFacts(null, false, Auth::PRIV_HIDE) as $fact) {
+        foreach ($record->getFacts('', false, Auth::PRIV_HIDE) as $fact) {
             if (!in_array($fact->getFactId(), $fact_ids) && !$fact->isPendingDeletion()) {
                 $gedcom .= "\n" . $fact->getGedcom();
             }
