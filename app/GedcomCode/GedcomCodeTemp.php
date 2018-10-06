@@ -215,7 +215,7 @@ class GedcomCodeTemp
      *
      * @return string
      */
-    public static function templeName($temple_code)
+    public static function templeName(string $temple_code): string
     {
         switch ($temple_code) {
             case 'ABA':

@@ -31,7 +31,7 @@ class GedcomCodeStat
      *
      * @return string[]
      */
-    public static function statusCodes($tag)
+    public static function statusCodes(string $tag): array
     {
         switch ($tag) {
             case 'BAPL':
@@ -94,7 +94,7 @@ class GedcomCodeStat
      *
      * @return string
      */
-    public static function statusName($status_code)
+    public static function statusName(string $status_code): string
     {
         switch ($status_code) {
             case 'BIC':
@@ -149,7 +149,7 @@ class GedcomCodeStat
      *
      * @return string[]
      */
-    public static function statusNames($tag): array
+    public static function statusNames(string $tag): array
     {
         $status_names = [];
         foreach (self::statusCodes($tag) as $status_code) {

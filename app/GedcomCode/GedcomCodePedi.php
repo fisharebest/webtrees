@@ -43,7 +43,7 @@ class GedcomCodePedi
      *
      * @return string
      */
-    public static function getValue($type, GedcomRecord $record = null)
+    public static function getValue($type, GedcomRecord $record = null): string
     {
         if ($record instanceof Individual) {
             $sex = $record->getSex();
@@ -135,7 +135,7 @@ class GedcomCodePedi
      *
      * @return string
      */
-    public static function getChildFamilyLabel($pedi)
+    public static function getChildFamilyLabel(string $pedi): string
     {
         switch ($pedi) {
             case '':
@@ -159,12 +159,12 @@ class GedcomCodePedi
     /**
      * Create GEDCOM for a new child-family pedigree
      *
-     * @param $pedi
-     * @param $xref
+     * @param string $pedi
+     * @param string $xref
      *
      * @return string
      */
-    public static function createNewFamcPedi($pedi, $xref)
+    public static function createNewFamcPedi(string $pedi, string $xref): string
     {
         switch ($pedi) {
             case '':

@@ -73,7 +73,7 @@ class GedcomCodeRela
      *
      * @return string
      */
-    public static function getValue($type, GedcomRecord $record = null)
+    public static function getValue(string $type, GedcomRecord $record = null): string
     {
         if ($record instanceof Individual) {
             $sex = $record->getSex();

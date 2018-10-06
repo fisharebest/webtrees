@@ -1171,17 +1171,24 @@ class ReportParserGenerate extends ReportParserBase
                 $repeat_parser = xml_parser_create();
                 $this->parser  = $repeat_parser;
                 xml_parser_set_option($repeat_parser, XML_OPTION_CASE_FOLDING, false);
-                xml_set_element_handler($repeat_parser, [
-                    $this,
-                    'startElement',
-                ], [
-                    $this,
-                    'endElement',
-                ]);
-                xml_set_character_data_handler($repeat_parser, [
-                    $this,
-                    'characterData',
-                ]);
+
+                xml_set_element_handler(
+                    $repeat_parser,
+                    function ($parser, string $name, array $attrs) {
+                        $this->startElement($parser, $name, $attrs);
+                    },
+                    function ($parser, string $name) {
+                        $this->endElement($parser, $name);
+                    }
+                );
+
+                xml_set_character_data_handler(
+                    $repeat_parser,
+                    function ($parser, $data) {
+                        $this->characterData($parser, $data);
+                    }
+                );
+
                 if (!xml_parse($repeat_parser, $reportxml, true)) {
                     throw new \DomainException(sprintf(
                         'RepeatTagEHandler XML error: %s at line %d',
@@ -1366,17 +1373,24 @@ class ReportParserGenerate extends ReportParserBase
                 $repeat_parser = xml_parser_create();
                 $this->parser  = $repeat_parser;
                 xml_parser_set_option($repeat_parser, XML_OPTION_CASE_FOLDING, false);
-                xml_set_element_handler($repeat_parser, [
-                    $this,
-                    'startElement',
-                ], [
-                    $this,
-                    'endElement',
-                ]);
-                xml_set_character_data_handler($repeat_parser, [
-                    $this,
-                    'characterData',
-                ]);
+
+                xml_set_element_handler(
+                    $repeat_parser,
+                    function ($parser, string $name, array $attrs) {
+                        $this->startElement($parser, $name, $attrs);
+                    },
+                    function ($parser, string $name) {
+                        $this->endElement($parser, $name);
+                    }
+                );
+
+                xml_set_character_data_handler(
+                    $repeat_parser,
+                    function ($parser, $data) {
+                        $this->characterData($parser, $data);
+                    }
+                );
+
                 if (!xml_parse($repeat_parser, $reportxml, true)) {
                     throw new \DomainException(sprintf(
                         'FactsEHandler XML error: %s at line %d',
@@ -2263,17 +2277,24 @@ class ReportParserGenerate extends ReportParserBase
                     $repeat_parser = xml_parser_create();
                     $this->parser  = $repeat_parser;
                     xml_parser_set_option($repeat_parser, XML_OPTION_CASE_FOLDING, false);
-                    xml_set_element_handler($repeat_parser, [
-                        $this,
-                        'startElement',
-                    ], [
-                        $this,
-                        'endElement',
-                    ]);
-                    xml_set_character_data_handler($repeat_parser, [
-                        $this,
-                        'characterData',
-                    ]);
+
+                    xml_set_element_handler(
+                        $repeat_parser,
+                        function ($parser, string $name, array $attrs) {
+                            $this->startElement($parser, $name, $attrs);
+                        },
+                        function ($parser, string $name) {
+                            $this->endElement($parser, $name);
+                        }
+                    );
+
+                    xml_set_character_data_handler(
+                        $repeat_parser,
+                        function ($parser, $data) {
+                            $this->characterData($parser, $data);
+                        }
+                    );
+
                     if (!xml_parse($repeat_parser, $reportxml, true)) {
                         throw new \DomainException(sprintf(
                             'ListEHandler XML error: %s at line %d',
@@ -2510,17 +2531,23 @@ class ReportParserGenerate extends ReportParserBase
                 $repeat_parser = xml_parser_create();
                 $this->parser  = $repeat_parser;
                 xml_parser_set_option($repeat_parser, XML_OPTION_CASE_FOLDING, false);
-                xml_set_element_handler($repeat_parser, [
-                    $this,
-                    'startElement',
-                ], [
-                    $this,
-                    'endElement',
-                ]);
-                xml_set_character_data_handler($repeat_parser, [
-                    $this,
-                    'characterData',
-                ]);
+
+                xml_set_element_handler(
+                    $repeat_parser,
+                    function ($parser, string $name, array $attrs) {
+                        $this->startElement($parser, $name, $attrs);
+                    },
+                    function ($parser, string $name) {
+                        $this->endElement($parser, $name);
+                    }
+                );
+
+                xml_set_character_data_handler(
+                    $repeat_parser,
+                    function ($parser, $data) {
+                        $this->characterData($parser, $data);
+                    }
+                );
 
                 if (!xml_parse($repeat_parser, $reportxml, true)) {
                     throw new \DomainException(sprintf('RelativesEHandler XML error: %s at line %d', xml_error_string(xml_get_error_code($repeat_parser)), xml_get_current_line_number($repeat_parser)));

@@ -39,7 +39,7 @@ class GedcomCodeQuay
      *
      * @return string
      */
-    public static function getValue($type)
+    public static function getValue(string $type): string
     {
         switch ($type) {
             case '3':
