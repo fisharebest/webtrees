@@ -50,19 +50,9 @@ class ReportParserSetup extends ReportParserBase
      */
     protected function reportStartHandler(array $attrs)
     {
-        $access = Auth::PRIV_PRIVATE;
-        if (isset($attrs['access'])) {
-            if (isset($$attrs['access'])) {
-                $access = $$attrs['access'];
-            }
-        }
-        $this->data['access'] = $access;
+        $this->data['access'] = $attrs['access'] ?? Auth::PRIV_PRIVATE;
 
-        if (isset($attrs['icon'])) {
-            $this->data['icon'] = $attrs['icon'];
-        } else {
-            $this->data['icon'] = '';
-        }
+        $this->data['icon'] = $attrs['icon'] ?? '';
     }
 
     /**
@@ -103,7 +93,8 @@ class ReportParserSetup extends ReportParserBase
     protected function titleEndHandler()
     {
         $this->data['title'] = $this->text;
-        $this->text          = '';
+
+        $this->text = '';
     }
 
     /**
@@ -114,7 +105,8 @@ class ReportParserSetup extends ReportParserBase
     protected function descriptionEndHandler()
     {
         $this->data['description'] = $this->text;
-        $this->text                = '';
+
+        $this->text = '';
     }
 
     /**
