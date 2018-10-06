@@ -4,7 +4,9 @@
 <?php use Fisharebest\Webtrees\Site; ?>
 <?php use Fisharebest\Webtrees\View; ?>
 
-<?= view('components/breadcrumbs', ['links' => [route('admin-control-panel') => I18N::translate('Control panel'), $title]]) ?>
+<?php if (!empty($all_trees)): ?>
+    <?= view('components/breadcrumbs', ['links' => [route('admin-control-panel') => I18N::translate('Control panel'), $title]]) ?>
+<?php endif ?>
 
 <h1><?= $title ?></h1>
 
