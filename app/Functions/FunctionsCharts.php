@@ -323,10 +323,10 @@ class FunctionsCharts
             echo '<td></td>';
         }
         echo '<td><span class="subheaders">';
-        if ($numchil == 0) {
+        if ($numchil === 0) {
             echo I18N::translate('No children');
         } else {
-            echo I18N::plural('%s child', '%s children', $numchil, $numchil);
+            echo I18N::plural('%s child', '%s children', $numchil, I18N::translate($numchil));
         }
         echo '</span>';
 

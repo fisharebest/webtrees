@@ -639,8 +639,8 @@ class Functions
      * Convert a relationship path into a relationship name.
      *
      * @param string     $path
-     * @param Individual $person1
-     * @param Individual $person2
+     * @param Individual|null $person1
+     * @param Individual|null $person2
      *
      * @return string
      */

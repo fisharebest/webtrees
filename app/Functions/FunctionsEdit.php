@@ -368,9 +368,9 @@ class FunctionsEdit
     /**
      * Create a form control to select a note.
      *
-     * @param Tree          $tree
-     * @param Note|null     $note
-     * @param string[]|null $attributes
+     * @param Tree      $tree
+     * @param Note|null $note
+     * @param string[]  $attributes
      *
      * @return string
      */
@@ -485,12 +485,12 @@ class FunctionsEdit
      *     tag[] : tag name
      *    text[] : tag value
      *
-     * @param Tree       $tree
-     * @param string     $tag        fact record to edit (eg 2 DATE xxxxx)
-     * @param string     $upperlevel optional upper level tag (eg BIRT)
-     * @param string     $label      An optional label to echo instead of the default
-     * @param string     $extra      optional text to display after the input field
-     * @param Individual $person     For male/female translations
+     * @param Tree            $tree
+     * @param string          $tag        fact record to edit (eg 2 DATE xxxxx)
+     * @param string          $upperlevel optional upper level tag (eg BIRT)
+     * @param string          $label      An optional label to echo instead of the default
+     * @param string          $extra      optional text to display after the input field
+     * @param Individual|null $person     For male/female translations
      *
      * @return string
      */

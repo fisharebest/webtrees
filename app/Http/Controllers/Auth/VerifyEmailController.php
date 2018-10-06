@@ -51,7 +51,7 @@ class VerifyEmailController extends AbstractBaseController
 
         if ($user !== null && $user->getPreference('reg_hashcode') === $token) {
             // switch language to webmaster settings
-            $webmaster = User::find($tree->getPreference('WEBMASTER_USER_ID'));
+            $webmaster = User::find((int) $tree->getPreference('WEBMASTER_USER_ID'));
             I18N::init($webmaster->getPreference('language'));
 
             // Create a dummy user, so we can send messages from the tree.

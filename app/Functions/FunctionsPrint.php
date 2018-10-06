@@ -46,13 +46,13 @@ class FunctionsPrint
      *
      * find and print a given individuals information for a pedigree chart
      *
-     * @param Individual $person The person to print
+     * @param Individual|null $person The person to print
      *
      * @return void
      */
     public static function printPedigreePerson(Individual $person = null)
     {
-        if ($person) {
+        if ($person instanceof Individual) {
             echo Theme::theme()->individualBox($person);
         } else {
             echo Theme::theme()->individualBoxEmpty();

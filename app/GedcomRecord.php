@@ -59,10 +59,10 @@ class GedcomRecord
     /** @var string[][] All the names of this individual */
     protected $getAllNames;
 
-    /** @var int Cached result */
+    /** @var int|null Cached result */
     protected $getPrimaryName;
 
-    /** @var int Cached result */
+    /** @var int|null Cached result */
     protected $getSecondaryName;
 
     /** @var GedcomRecord[][] Allow getInstance() to return references to existing objects */
@@ -166,17 +166,13 @@ class GedcomRecord
                 )->execute([
                     'tree_id' => $tree_id,
                 ])->fetchAll();
+
                 foreach ($rows as $row) {
                     self::$pending_record_cache[$tree_id][$row->xref] = $row->new_gedcom;
                 }
             }
 
-            if (isset(self::$pending_record_cache[$tree_id][$xref])) {
-                // A pending edit exists for this record
-                $pending = self::$pending_record_cache[$tree_id][$xref];
-            } else {
-                $pending = null;
-            }
+            $pending = self::$pending_record_cache[$tree_id][$xref] ?? null;
         } else {
             // There are no pending changes for this record
             $pending = null;
@@ -1131,7 +1127,7 @@ class GedcomRecord
      *
      * @return Fact[]
      */
-    public function getFacts(string $filter = null, bool $sort = false, int $access_level = null, bool $override = false): array
+    public function getFacts(string $filter = '', bool $sort = false, int $access_level = null, bool $override = false): array
     {
         if ($access_level === null) {
             $access_level = Auth::accessLevel($this->tree);
@@ -1140,11 +1136,12 @@ class GedcomRecord
         $facts = [];
         if ($this->canShow($access_level) || $override) {
             foreach ($this->facts as $fact) {
-                if (($filter === null || preg_match('/^' . $filter . '$/', $fact->getTag())) && $fact->canShow($access_level)) {
+                if (($filter === '' || preg_match('/^' . $filter . '$/', $fact->getTag())) && $fact->canShow($access_level)) {
                     $facts[] = $fact;
                 }
             }
         }
+
         if ($sort) {
             Functions::sortFacts($facts);
         }
@@ -1384,8 +1381,8 @@ class GedcomRecord
         }
 
         // Clear the cache
-        self::$gedcom_record_cache  = null;
-        self::$pending_record_cache = null;
+        self::$gedcom_record_cache  = [];
+        self::$pending_record_cache = [];
 
         Log::addEditLog('Delete: ' . static::RECORD_TYPE . ' ' . $this->xref, $this->tree);
     }

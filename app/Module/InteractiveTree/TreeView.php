@@ -126,8 +126,8 @@ class TreeView
     /**
      * Return the details for a person
      *
-     * @param Individual $individual
-     * @param Family     $family
+     * @param Individual  $individual
+     * @param Family|null $family
      *
      * @return string
      */
@@ -226,7 +226,7 @@ class TreeView
      * (for "life partner") here fits much better than "spouse" or "mate"
      * to translate properly the modern french meaning of "conjoint"
      */
-    private function drawPerson(Individual $person, $gen, $state, Family $pfamily = null, $order = null, $isRoot = false): string
+    private function drawPerson(Individual $person, $gen, $state, Family $pfamily = null, $order = '', $isRoot = false): string
     {
         if ($gen < 0) {
             return '';
@@ -293,7 +293,7 @@ class TreeView
         }
         /* draw the parents */
         if ($state >= 0 && (!empty($parent) || count($fop))) {
-            $unique = (empty($parent) || count($fop) == 0);
+            $unique = empty($parent) || count($fop) === 0;
             $html .= '<td align="left"><table class="tv_tree"><tbody>';
             if (!empty($parent)) {
                 $u = $unique ? 'c' : 't';
