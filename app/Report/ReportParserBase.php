@@ -82,7 +82,7 @@ class ReportParserBase
 
         if (method_exists($this, $method)) {
             $this->$method($attrs);
-     }
+        }
     }
 
     /**
