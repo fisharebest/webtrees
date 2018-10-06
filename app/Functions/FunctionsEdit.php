@@ -618,10 +618,10 @@ class FunctionsEdit
                     'census_places' => Census::censusPlaces(WT_LOCALE),
                 ]);
 
-                /** @var CensusAssistantModule|null $census_assistant */
                 $census_assistant = Module::getModuleByName('GEDFact_assistant');
                 $record           = Individual::getInstance($xref, $tree);
-                if ($census_assistant !== null && $record instanceof Individual) {
+
+                if ($census_assistant instanceof CensusAssistantModule && $record instanceof Individual) {
                     $html .= $census_assistant->createCensusAssistant($record);
                 }
             }
