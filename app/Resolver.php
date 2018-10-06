@@ -33,8 +33,8 @@ class Resolver
      * For some classes (e.g. Request, Tree, User), we inject a specific instance
      * of an object, rather than a newly instantiated object
      *
-     * @param string $class
-     * @param object $object
+     * @param string      $class
+     * @param object|null $object
      *
      * @return void
      */
