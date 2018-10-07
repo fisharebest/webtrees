@@ -356,8 +356,8 @@ class CalendarController extends AbstractBaseController
 
                 echo '</td>';
                 echo '</tr><tr>';
-                echo '<td class="descriptionbox">', I18N::translate('Total individuals: %s', count($indis)), '</td>';
-                echo '<td class="descriptionbox">', I18N::translate('Total families: %s', count($fams)), '</td>';
+                echo '<td class="descriptionbox">', I18N::translate('Total individuals: %s', I18N::number(count($indis))), '</td>';
+                echo '<td class="descriptionbox">', I18N::translate('Total families: %s', I18N::number(count($fams))), '</td>';
                 echo '</tr></table>';
 
                 break;
