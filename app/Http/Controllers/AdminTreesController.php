@@ -27,7 +27,6 @@ use Fisharebest\Webtrees\File;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Functions\FunctionsExport;
-use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
@@ -404,14 +403,18 @@ class AdminTreesController extends AbstractBaseController
         $convert          = (bool) $request->get('convert');
         $zip              = (bool) $request->get('zip');
         $media            = (bool) $request->get('media');
-        $media_path       = $request->get('media-path');
-        $privatize_export = $request->get('privatize_export');
+        $media_path       = $request->get('media-path', '');
+        $privatize_export = $request->get('privatize_export', '');
 
-        $exportOptions = [
-            'privatize' => $privatize_export,
-            'toANSI'    => $convert ? 'yes' : 'no',
-            'path'      => $media_path,
+        $access_levels = [
+            'gedadmin' => Auth::PRIV_NONE,
+            'user'     => Auth::PRIV_USER,
+            'visitor'  => Auth::PRIV_PRIVATE,
+            'none'     => Auth::PRIV_HIDE,
         ];
+
+        $access_level = $access_levels[$privatize_export];
+        $encoding     =  $convert ? 'ANSI' : 'UTF-8';
 
         // What to call the downloaded file
         $download_filename = $tree->getName();
@@ -422,7 +425,7 @@ class AdminTreesController extends AbstractBaseController
         if ($zip || $media) {
             // Export the GEDCOM to an in-memory stream.
             $tmp_stream = tmpfile();
-            FunctionsExport::exportGedcom($tree, $tmp_stream, $exportOptions);
+            FunctionsExport::exportGedcom($tree, $tmp_stream, $access_level, $media_path, $encoding);
             rewind($tmp_stream);
 
             // Create a new/empty .ZIP file
@@ -468,9 +471,9 @@ class AdminTreesController extends AbstractBaseController
                 $download_filename . '.zip'
             );
         } else {
-            $response = new StreamedResponse(function () use ($tree, $exportOptions) {
+            $response = new StreamedResponse(function () use ($tree, $access_level, $media_path, $encoding) {
                 $stream = fopen('php://output', 'w');
-                FunctionsExport::exportGedcom($tree, $stream, $exportOptions);
+                FunctionsExport::exportGedcom($tree, $stream, $access_level, $media_path, $encoding);
                 fclose($stream);
             });
 

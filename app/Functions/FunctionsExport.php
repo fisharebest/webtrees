@@ -17,7 +17,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Functions;
 
-use DomainException;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Fact;
@@ -171,37 +170,20 @@ class FunctionsExport
     /**
      * Export the database in GEDCOM format
      *
-     * @param Tree     $tree          Which tree to export
-     * @param resource $gedout        Handle to a writable stream
-     * @param string[] $exportOptions Export options are as follows:
-     *                                'privatize':    which Privacy rules apply? (none, visitor, user, manager)
-     *                                'toANSI':       should the output be produced in ISO-8859-1 instead of UTF-8? (yes, no)
-     *                                'path':         what constant should prefix all media file paths? (eg: media/  or c:\my pictures\my family
-     *                                'slashes':      what folder separators apply to media file paths? (forward, backward)
+     * @param Tree     $tree         Which tree to export
+     * @param resource $gedout       Handle to a writable stream
+     * @param int      $access_level Apply privacy filters
+     * @param string   $media_path   Add this prefix to media file names
+     * @param string   $encoding     UTF-8 or ANSI
      *
      * @return void
      */
-    public static function exportGedcom(Tree $tree, $gedout, $exportOptions)
+    public static function exportGedcom(Tree $tree, $gedout, int $access_level, string $media_path, string $encoding)
     {
-        switch ($exportOptions['privatize']) {
-            case 'gedadmin':
-                $access_level = Auth::PRIV_NONE;
-                break;
-            case 'user':
-                $access_level = Auth::PRIV_USER;
-                break;
-            case 'visitor':
-                $access_level = Auth::PRIV_PRIVATE;
-                break;
-            case 'none':
-                $access_level = Auth::PRIV_HIDE;
-                break;
-            default:
-                throw new DomainException('Invalid parameter: privatize=' .  $exportOptions['privatize']);
-        }
 
         $head = self::gedcomHeader($tree);
-        if ($exportOptions['toANSI'] == 'yes') {
+
+        if ($encoding === 'ANSI') {
             $head = str_replace('UTF-8', 'ANSI', $head);
             $head = utf8_decode($head);
         }
@@ -223,8 +205,8 @@ class FunctionsExport
 
         foreach ($rows as $row) {
             $rec = Media::getInstance($row->xref, $tree, $row->gedcom)->privatizeGedcom($access_level);
-            $rec = self::convertMediaPath($rec, $exportOptions['path']);
-            if ($exportOptions['toANSI'] === 'yes') {
+            $rec = self::convertMediaPath($rec, $media_path);
+            if ($encoding === 'ANSI') {
                 $rec = utf8_decode($rec);
             }
             $tmp_gedcom .= self::reformatRecord($rec);
@@ -239,7 +221,7 @@ class FunctionsExport
 
         foreach ($rows as $row) {
             $rec = Source::getInstance($row->xref, $tree, $row->gedcom)->privatizeGedcom($access_level);
-            if ($exportOptions['toANSI'] === 'yes') {
+            if ($encoding === 'ANSI') {
                 $rec = utf8_decode($rec);
             }
             $tmp_gedcom .= self::reformatRecord($rec);
@@ -266,7 +248,7 @@ class FunctionsExport
             }
 
             $rec = $record->privatizeGedcom($access_level);
-            if ($exportOptions['toANSI'] === 'yes') {
+            if ($encoding === 'ANSI') {
                 $rec = utf8_decode($rec);
             }
             $tmp_gedcom .= self::reformatRecord($rec);
@@ -281,7 +263,7 @@ class FunctionsExport
 
         foreach ($rows as $row) {
             $rec = Individual::getInstance($row->xref, $tree, $row->gedcom)->privatizeGedcom($access_level);
-            if ($exportOptions['toANSI'] === 'yes') {
+            if ($encoding === 'ANSI') {
                 $rec = utf8_decode($rec);
             }
             $buffer .= self::reformatRecord($rec);
@@ -300,7 +282,7 @@ class FunctionsExport
 
         foreach ($rows as $row) {
             $rec = Family::getInstance($row->xref, $tree, $row->gedcom)->privatizeGedcom($access_level);
-            if ($exportOptions['toANSI'] === 'yes') {
+            if ($encoding === 'ANSI') {
                 $rec = utf8_decode($rec);
             }
             $buffer .= self::reformatRecord($rec);
