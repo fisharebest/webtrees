@@ -37,7 +37,7 @@ class ColorGenerator
     /** @var int Initial lightness */
     private $baselightness;
 
-    /** @var int Alpha transparancy */
+    /** @var float Alpha transparancy */
     private $alpha;
 
     /** @var int Clockwise or anticlockwise color wheel */
@@ -46,13 +46,13 @@ class ColorGenerator
     /**
      * Create a color generator.
      *
-     * @param int $hue   (0Deg = Red, 120Deg = green, 240Deg = blue)
-     * @param int $saturation
-     * @param int $lightness
-     * @param int $alpha
-     * @param int $range (sign determines direction. positive = clockwise, negative = anticlockwise)
+     * @param int   $hue        0Deg = Red, 120Deg = green, 240Deg = blue)
+     * @param int   $saturation
+     * @param int   $lightness
+     * @param float $alpha
+     * @param int   $range      sign determines direction. positive = clockwise, negative = anticlockwise
      */
-    public function __construct($hue, $saturation, $lightness, $alpha, $range)
+    public function __construct(int $hue, int $saturation, int $lightness, float $alpha, int $range)
     {
         $this->hue           = $hue;
         $this->basehue       = $hue;
@@ -75,7 +75,7 @@ class ColorGenerator
      *
      * @return string
      */
-    public function getNextColor($lightnessStep = 10, $hueStep = 15): string
+    public function getNextColor(int $lightnessStep = 10, int $hueStep = 15): string
     {
         $lightness = $this->lightness + $lightnessStep;
         $hue       = $this->hue;
@@ -94,6 +94,6 @@ class ColorGenerator
         }
         $this->lightness = $lightness;
 
-        return sprintf('hsla(%s, %s%%, %s%%, %s)', $this->hue, $this->saturation, $this->lightness, $this->alpha);
+        return sprintf('hsla(%d, %d%%, %d%%, %0.2f)', $this->hue, $this->saturation, $this->lightness, $this->alpha);
     }
 }

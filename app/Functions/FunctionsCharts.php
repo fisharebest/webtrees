@@ -490,7 +490,7 @@ class FunctionsCharts
     public static function getSosaName(int $sosa): string
     {
         $path = '';
-        
+
         while ($sosa > 1) {
             if ($sosa % 2 == 1) {
                 $path = 'mot' . $path;
