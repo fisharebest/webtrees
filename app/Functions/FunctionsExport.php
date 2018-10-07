@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Functions;
 
+use DomainException;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Fact;
@@ -195,6 +196,8 @@ class FunctionsExport
             case 'none':
                 $access_level = Auth::PRIV_HIDE;
                 break;
+            default:
+                throw new DomainException('Invalid parameter: privatize=' .  $exportOptions['privatize']);
         }
 
         $head = self::gedcomHeader($tree);
