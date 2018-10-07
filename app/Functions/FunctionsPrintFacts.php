@@ -181,14 +181,14 @@ class FunctionsPrintFacts
             case '_BIRT_CHIL':
                 $children[$fact->getParent()->getXref()] = true;
                 /* I18N: Abbreviation for "number %s" */
-                $label .= '<br>' . I18N::translate('#%s', count($children));
+                $label .= '<br>' . I18N::translate('#%s', I18N::number(count($children)));
                 break;
             case '_BIRT_GCHI':
             case '_BIRT_GCH1':
             case '_BIRT_GCH2':
                 $grandchildren[$fact->getParent()->getXref()] = true;
                 /* I18N: Abbreviation for "number %s" */
-                $label .= '<br>' . I18N::translate('#%s', count($grandchildren));
+                $label .= '<br>' . I18N::translate('#%s', I18N::number(count($grandchildren)));
                 break;
         }
 
@@ -409,8 +409,8 @@ class FunctionsPrintFacts
                     $family = Family::getInstance(str_replace('@', '', $match[2]), $tree);
                     if ($family) {
                         echo GedcomTag::getLabelValue('FAM', '<a href="' . e($family->url()) . '">' . $family->getFullName() . '</a>');
-                        if (preg_match('/\n3 ADOP (HUSB|WIFE|BOTH)/', $fact->getGedcom(), $match)) {
-                            echo GedcomTag::getLabelValue('ADOP', GedcomCodeAdop::getValue($match[1], $label_person));
+                        if (preg_match('/\n3 ADOP (HUSB|WIFE|BOTH)/', $fact->getGedcom(), $adop_match)) {
+                            echo GedcomTag::getLabelValue('ADOP', GedcomCodeAdop::getValue($adop_match[1], $label_person));
                         }
                     } else {
                         echo GedcomTag::getLabelValue('FAM', '<span class="error">' . $match[2] . '</span>');
@@ -885,8 +885,8 @@ class FunctionsPrintFacts
      *  This function prints the input array of SOUR sub-records built by the
      *  getSourceStructure() function.
      *
-     * @param Tree     $tree
-     * @param string[] $textSOUR
+     * @param Tree                $tree
+     * @param string[]|string[][] $textSOUR
      *
      * @return string
      */
@@ -894,18 +894,18 @@ class FunctionsPrintFacts
     {
         $html = '';
 
-        if ($textSOUR['PAGE']) {
+        if ($textSOUR['PAGE'] !== '') {
             $html .= GedcomTag::getLabelValue('PAGE', Filter::expandUrls($textSOUR['PAGE'], $tree));
         }
 
-        if ($textSOUR['EVEN']) {
+        if ($textSOUR['EVEN'] !== '') {
             $html .= GedcomTag::getLabelValue('EVEN', e($textSOUR['EVEN']));
             if ($textSOUR['ROLE']) {
                 $html .= GedcomTag::getLabelValue('ROLE', e($textSOUR['ROLE']));
             }
         }
 
-        if ($textSOUR['DATE'] || count($textSOUR['TEXT'])) {
+        if ($textSOUR['DATE'] !== '' || !empty($textSOUR['TEXT'])) {
             if ($textSOUR['DATE']) {
                 $date = new Date($textSOUR['DATE']);
                 $html .= GedcomTag::getLabelValue('DATA:DATE', $date->display());
@@ -915,7 +915,7 @@ class FunctionsPrintFacts
             }
         }
 
-        if ($textSOUR['QUAY'] != '') {
+        if ($textSOUR['QUAY'] !== '') {
             $html .= GedcomTag::getLabelValue('QUAY', GedcomCodeQuay::getValue($textSOUR['QUAY']));
         }
 
