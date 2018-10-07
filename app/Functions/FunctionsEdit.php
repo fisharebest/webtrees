@@ -976,7 +976,7 @@ class FunctionsEdit
 
         $linenum = 0;
         $fields  = explode(' ', $gedlines[$linenum]);
-        $glevel  = $fields[0];
+        $glevel  = (int) $fields[0];
         $level   = $glevel;
 
         $type       = $fact->getTag();
@@ -1048,12 +1048,12 @@ class FunctionsEdit
 
             if ($type !== 'CONT') {
                 self::$tags[] = $type;
-                $subrecord    = $level . ' ' . $type . ' ' . $text;
+                $subrecord    = (string) $level . ' ' . $type . ' ' . $text;
                 if ($inSource && $type === 'DATE') {
                     echo self::addSimpleTag($tree, $subrecord, '', GedcomTag::getLabel($label, $record));
                 } elseif (!$inSource && $type === 'DATE') {
                     echo self::addSimpleTag($tree, $subrecord, $level1type, GedcomTag::getLabel($label, $record));
-                    if ($level === '2') {
+                    if ($level === 2) {
                         // We already have a date - no need to add one.
                         $add_date = false;
                     }
@@ -1076,10 +1076,10 @@ class FunctionsEdit
             if (!empty($expected_subtags[$type])) {
                 foreach ($expected_subtags[$type] as $subtag) {
                     if (!in_array($subtag, $subtags)) {
-                        echo self::addSimpleTag($tree, ($level + 1) . ' ' . $subtag, '', GedcomTag::getLabel($label . ':' . $subtag));
+                        echo self::addSimpleTag($tree, (string) ($level + 1) . ' ' . $subtag, '', GedcomTag::getLabel($label . ':' . $subtag));
                         if (!empty($expected_subtags[$subtag])) {
                             foreach ($expected_subtags[$subtag] as $subsubtag) {
-                                echo self::addSimpleTag($tree, ($level + 2) . ' ' . $subsubtag, '', GedcomTag::getLabel($label . ':' . $subtag . ':' . $subsubtag));
+                                echo self::addSimpleTag($tree, (string) ($level + 2) . ' ' . $subsubtag, '', GedcomTag::getLabel($label . ':' . $subtag . ':' . $subsubtag));
                             }
                         }
                     }
@@ -1089,7 +1089,7 @@ class FunctionsEdit
             $i++;
             if (isset($gedlines[$i])) {
                 $fields = explode(' ', $gedlines[$i]);
-                $level  = $fields[0];
+                $level  = (int) $fields[0];
                 if (isset($fields[1])) {
                     $type = trim($fields[1]);
                 } else {
