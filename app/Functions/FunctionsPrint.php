@@ -452,34 +452,17 @@ class FunctionsPrint
      *
      * @param string[] $uniquefacts
      * @param Fact[]   $recfacts
-     * @param string   $type
      *
      * @return string[]
      */
-    public static function checkFactUnique($uniquefacts, $recfacts, $type): array
+    public static function checkFactUnique(array $uniquefacts, array $recfacts): array
     {
         foreach ($recfacts as $factarray) {
-            $fact = false;
-            if (is_object($factarray)) {
-                $fact = $factarray->getTag();
-            } else {
-                if ($type === 'SOUR' || $type === 'REPO') {
-                    $factrec = $factarray[0];
-                }
-                if ($type === 'FAM' || $type === 'INDI') {
-                    $factrec = $factarray[1];
-                }
+            $fact = $factarray->getTag();
 
-                $ft = preg_match("/1 (\w+)(.*)/", $factrec, $match);
-                if ($ft > 0) {
-                    $fact = trim($match[1]);
-                }
-            }
-            if ($fact !== false) {
-                $key = array_search($fact, $uniquefacts);
-                if ($key !== false) {
-                    unset($uniquefacts[$key]);
-                }
+            $key = array_search($fact, $uniquefacts);
+            if ($key !== false) {
+                unset($uniquefacts[$key]);
             }
         }
 
@@ -490,7 +473,7 @@ class FunctionsPrint
      * Print a new fact box on details pages
      *
      * @param GedcomRecord $record    the person, family, source etc the fact will be added to
-     * @param array        $usedfacts an array of facts already used in this record
+     * @param Fact[]       $usedfacts an array of facts already used in this record
      * @param string       $type      the type of record INDI, FAM, SOUR etc
      *
      * @return void
@@ -566,7 +549,7 @@ class FunctionsPrint
             default:
                 return;
         }
-        $addfacts            = array_merge(self::checkFactUnique($uniquefacts, $usedfacts, $type), $addfacts);
+        $addfacts            = array_merge(self::checkFactUnique($uniquefacts, $usedfacts), $addfacts);
         $quickfacts          = array_intersect($quickfacts, $addfacts);
         $translated_addfacts = [];
         foreach ($addfacts as $addfact) {
