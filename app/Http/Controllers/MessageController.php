@@ -339,8 +339,8 @@ class MessageController extends AbstractBaseController
      * Add a message to a user's inbox, send it to them via email, or both.
      *
      * @param Tree   $tree
-     * @param string $sender_name
      * @param string $sender_email
+     * @param string $sender_name
      * @param User   $recipient
      * @param string $subject
      * @param string $body
