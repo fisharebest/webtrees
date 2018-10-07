@@ -483,21 +483,21 @@ class FunctionsCharts
     /**
      * builds and returns sosa relationship name in the active language
      *
-     * @param string $sosa sosa number
+     * @param int $sosa Sosa number
      *
      * @return string
      */
-    public static function getSosaName($sosa): string
+    public static function getSosaName(int $sosa): string
     {
         $path = '';
+        
         while ($sosa > 1) {
             if ($sosa % 2 == 1) {
-                $sosa -= 1;
                 $path = 'mot' . $path;
             } else {
                 $path = 'fat' . $path;
             }
-            $sosa /= 2;
+            $sosa = intdiv($sosa, 2);
         }
 
         return Functions::getRelationshipNameFromPath($path, null, null);
