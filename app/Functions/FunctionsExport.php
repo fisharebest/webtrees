@@ -180,7 +180,6 @@ class FunctionsExport
      */
     public static function exportGedcom(Tree $tree, $gedout, int $access_level, string $media_path, string $encoding)
     {
-
         $head = self::gedcomHeader($tree);
 
         if ($encoding === 'ANSI') {
