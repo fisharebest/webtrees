@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use DomainException;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Date\FrenchDate;
 use Fisharebest\Webtrees\Date\GregorianDate;
@@ -436,7 +437,7 @@ class CalendarController extends AbstractBaseController
                                     $alt_date = new JalaliDate($cal_date->minimumJulianDay() + $d - 1);
                                     break;
                                 default:
-                                    break 2;
+                                    throw new DomainException("Invalid calendar: " . $convcal);
                             }
                             if (get_class($alt_date) !== get_class($cal_date) && $alt_date->inValidRange()) {
                                 echo '<span class="rtl_cal_day">' . $alt_date->format('%j %M') . '</span>';
