@@ -329,7 +329,7 @@ class Date
         // Add URLs, if requested
         if ($url) {
             $d1 = '<a href="' . $this->date1->calendarUrl($date_format) . '" rel="nofollow">' . $d1 . '</a>';
-            if ($this->date2 !== null) {
+            if ($this->date2 instanceof CalendarDate) {
                 $d2 = '<a href="' . $this->date2->calendarUrl($date_format) . '" rel="nofollow">' . $d2 . '</a>';
             }
         }
@@ -534,7 +534,7 @@ class Date
      */
     public static function getAge(Date $d1, Date $d2 = null): string
     {
-        if ($d2 !== null) {
+        if ($d2 instanceof CalendarDate) {
             if ($d2->maximumJulianDay() >= $d1->minimumJulianDay() && $d2->minimumJulianDay() <= $d1->minimumJulianDay()) {
                 // Overlapping dates
                 $jd = $d1->minimumJulianDay();
