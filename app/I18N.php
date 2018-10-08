@@ -444,35 +444,31 @@ class I18N
     /**
      * Initialise the translation adapter with a locale setting.
      *
-     * @param string $code Use this locale/language code, or choose one automatically
+     * @param string    $code Use this locale/language code, or choose one automatically
+     * @param Tree|null $tree
      *
      * @return string $string
      */
-    public static function init(string $code = ''): string
+    public static function init(string $code = '', Tree $tree = null): string
     {
         mb_internal_encoding('UTF-8');
 
         if ($code !== '') {
             // Create the specified locale
             self::$locale = Locale::create($code);
+        } elseif (Session::has('locale') && file_exists(WT_ROOT . 'language/' . Session::get('locale') . '.mo')) {
+            // Select a previously used locale
+            self::$locale = Locale::create(Session::get('locale'));
         } else {
-            // Negotiate a locale, but if we can't then use a failsafe
-            self::$locale = new LocaleEnUs();
-            if (Session::has('locale') && file_exists(WT_ROOT . 'language/' . Session::get('locale') . '.mo')) {
-                // Previously used
-                self::$locale = Locale::create(Session::get('locale'));
+            if ($tree instanceof Tree) {
+                $default_locale = Locale::create($tree->getPreference('LANGUAGE', 'en-US'));
             } else {
-                // Browser negotiation
                 $default_locale = new LocaleEnUs();
-                try {
-                    // @TODO, when no language is requested by the user (e.g. search engines), we should use
-                    // the tree's default language.  However, we currently initialise languages before trees,
-                    //  so there is no tree available for us to use.
-                } catch (\Exception $ex) {
-                    DebugBar::addThrowable($ex);
-                }
-                self::$locale = Locale::httpAcceptLanguage($_SERVER, self::installedLocales(), $default_locale);
             }
+
+            // Negotiate with the browser.
+            // Search engines don't negotiate.  They get the default locale of the tree.
+            self::$locale = Locale::httpAcceptLanguage($_SERVER, self::installedLocales(), $default_locale);
         }
 
         $cache_dir  = WT_DATA_DIR . 'cache/';

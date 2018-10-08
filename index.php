@@ -188,14 +188,6 @@ if ($max_execution_time !== '' && strpos(ini_get('disable_functions'), 'set_time
 // Sessions
 Session::start();
 
-DebugBar::startMeasure('init i18n');
-
-// With no parameters, init() looks to the environment to choose a language
-define('WT_LOCALE', I18N::init());
-Session::put('locale', WT_LOCALE);
-
-DebugBar::stopMeasure('init i18n');
-
 // Note that the database/webservers may not be synchronised, so use DB time throughout.
 define('WT_TIMESTAMP', (int) Database::prepare("SELECT UNIX_TIMESTAMP()")->fetchOne());
 
@@ -239,6 +231,10 @@ try {
     if ($tree === null && $request->getMethod() === Request::METHOD_GET) {
         $tree = $all_trees[Site::getPreference('DEFAULT_GEDCOM')] ?? array_values($all_trees)[0] ?? null;
     }
+
+    // Select a locale
+    define('WT_LOCALE', I18N::init('', $tree));
+    Session::put('locale', WT_LOCALE);
 
     // Most layouts will require a tree for the page header/footer
     View::share('tree', $tree);
