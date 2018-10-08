@@ -19,7 +19,6 @@ namespace Fisharebest\Webtrees\Services;
 
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Date;
-use Fisharebest\Webtrees\Date\CalendarDate;
 use Fisharebest\Webtrees\Date\FrenchDate;
 use Fisharebest\Webtrees\Date\GregorianDate;
 use Fisharebest\Webtrees\Date\HijriDate;
