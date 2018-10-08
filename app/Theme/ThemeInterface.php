@@ -36,7 +36,7 @@ interface ThemeInterface
      */
     public function analytics();
 
-     /**
+    /**
      * Create a contact link for a user.
      *
      * @param User $user
@@ -51,7 +51,7 @@ interface ThemeInterface
      * @return string
      */
     public function cookieWarning();
-    
+
     /**
      * Add markup to the contact links.
      *
@@ -136,7 +136,7 @@ interface ThemeInterface
      */
     public function logoPoweredBy(): string;
 
-     /**
+    /**
      * Themes menu.
      *
      * @return Menu|null
