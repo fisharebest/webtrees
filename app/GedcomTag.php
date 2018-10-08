@@ -2439,7 +2439,7 @@ class GedcomTag
      */
     public static function createUid(): string
     {
-        $uid = str_replace('-', '', Uuid::uuid4());
+        $uid = str_replace('-', '', Uuid::uuid4()->toString());
 
         $checksum_a = 0; // a sum of the bytes
         $checksum_b = 0; // a sum of the incremental values of $checksum_a
