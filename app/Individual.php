@@ -486,9 +486,7 @@ class Individual extends GedcomRecord
     public function getBirthPlace(): Place
     {
         foreach ($this->getAllBirthPlaces() as $place) {
-            if ($place) {
-                return $place;
-            }
+            return $place;
         }
 
         return new Place('', $this->tree);
@@ -528,9 +526,7 @@ class Individual extends GedcomRecord
     public function getDeathPlace(): Place
     {
         foreach ($this->getAllDeathPlaces() as $place) {
-            if ($place) {
-                return $place;
-            }
+            return $place;
         }
 
         return new Place('', $this->tree);
