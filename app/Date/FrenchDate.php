@@ -19,6 +19,7 @@ namespace Fisharebest\Webtrees\Date;
 
 use Fisharebest\ExtCalendar\FrenchCalendar;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Services\RomanNumeralsService;
 
 /**
  * Definitions for the French Republican calendar
@@ -43,6 +44,9 @@ class FrenchDate extends CalendarDate
         'COMP' => 13,
     ];
 
+    /** @var RomanNumeralsService */
+    private $roman_numerals_service;
+
     /**
      * Create a date from either:
      * a Julian day number
@@ -53,7 +57,9 @@ class FrenchDate extends CalendarDate
      */
     public function __construct($date)
     {
-        $this->calendar = new FrenchCalendar();
+        $this->roman_numerals_service = new RomanNumeralsService();
+        $this->calendar               = new FrenchCalendar();
+
         parent::__construct($date);
     }
 
@@ -317,6 +323,6 @@ class FrenchDate extends CalendarDate
      */
     protected function formatLongYear(): string
     {
-        return $this->numberToRomanNumerals($this->y);
+        return $this->roman_numerals_service->numberToRomanNumerals($this->y);
     }
 }

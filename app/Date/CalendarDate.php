@@ -53,23 +53,6 @@ class CalendarDate
         'DEC' => 12,
     ];
 
-    // Convert numbers to/from roman numerals
-    const ROMAN_NUMERALS = [
-        1000 => 'M',
-        900  => 'CM',
-        500  => 'D',
-        400  => 'CD',
-        100  => 'C',
-        90   => 'XC',
-        50   => 'L',
-        40   => 'XL',
-        10   => 'X',
-        9    => 'IX',
-        5    => 'V',
-        4    => 'IV',
-        1    => 'I',
-    ];
-
     /** @var CalendarInterface The calendar system used to represent this date */
     protected $calendar;
 
@@ -1039,50 +1022,6 @@ class CalendarDate
             $this->m === $this->calendar->monthsInYear() ? $this->nextYear($this->y) : $this->y,
             ($this->m % $this->calendar->monthsInYear()) + 1,
         ];
-    }
-
-    /**
-     * Convert a decimal number to roman numerals
-     *
-     * @param int $number
-     *
-     * @return string
-     */
-    protected function numberToRomanNumerals(int $number): string
-    {
-        if ($number < 1) {
-            // Cannot convert zero/negative numbers
-            return (string) $number;
-        }
-        $roman = '';
-        foreach (self::ROMAN_NUMERALS as $key => $value) {
-            while ($number >= $key) {
-                $roman  .= $value;
-                $number -= $key;
-            }
-        }
-
-        return $roman;
-    }
-
-    /**
-     * Convert a roman numeral to decimal
-     *
-     * @param string $roman
-     *
-     * @return int
-     */
-    protected function romanNumeralsToNumber(string $roman): int
-    {
-        $num = 0;
-        foreach (self::ROMAN_NUMERALS as $key => $value) {
-            if (strpos($roman, $value) === 0) {
-                $num += $key;
-                $roman = substr($roman, strlen($value));
-            }
-        }
-
-        return $num;
     }
 
     /**
