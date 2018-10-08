@@ -23,7 +23,7 @@ use Fisharebest\Webtrees\Tree;
 /**
  * Interface ModuleMenuInterface - Classes and libraries for module system
  */
-interface ModuleMenuInterface
+interface ModuleMenuInterface extends ModuleInterface
 {
     /**
      * The user can re-order menus. Until they do, they are shown in this order.

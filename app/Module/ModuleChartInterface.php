@@ -23,7 +23,7 @@ use Fisharebest\Webtrees\Menu;
 /**
  * Interface ModuleChartInterface - Classes and libraries for module system
  */
-interface ModuleChartInterface
+interface ModuleChartInterface extends ModuleInterface
 {
     /**
      * Return a menu item for this chart.

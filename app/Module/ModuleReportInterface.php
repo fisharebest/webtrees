@@ -23,7 +23,7 @@ use Fisharebest\Webtrees\Tree;
 /**
  * Interface ModuleReportInterface - Classes and libraries for module system
  */
-interface ModuleReportInterface
+interface ModuleReportInterface extends ModuleInterface
 {
     /**
      * Return a menu item for this report.

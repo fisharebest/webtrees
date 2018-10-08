@@ -28,7 +28,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * Class CensusAssistantModule
  */
-class CensusAssistantModule extends AbstractModule
+class CensusAssistantModule extends AbstractModule implements ModuleInterface
 {
     /** {@inheritdoc} */
     public function getTitle(): string

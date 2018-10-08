@@ -22,7 +22,7 @@ use Fisharebest\Webtrees\I18N;
 /**
  * Class CkeditorModule
  */
-class CkeditorModule extends AbstractModule
+class CkeditorModule extends AbstractModule implements ModuleInterface
 {
     /** {@inheritdoc} */
     public function getTitle(): string

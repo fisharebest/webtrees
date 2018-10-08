@@ -17,10 +17,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-use Fisharebest\Webtrees\Module\AbstractModule;
 use Fisharebest\Webtrees\Module\ModuleBlockInterface;
 use Fisharebest\Webtrees\Module\ModuleChartInterface;
 use Fisharebest\Webtrees\Module\ModuleConfigInterface;
+use Fisharebest\Webtrees\Module\ModuleInterface;
 use Fisharebest\Webtrees\Module\ModuleMenuInterface;
 use Fisharebest\Webtrees\Module\ModuleReportInterface;
 use Fisharebest\Webtrees\Module\ModuleSidebarInterface;
@@ -106,7 +106,7 @@ class Module
         'yahrzeit',
     ];
 
-    /** @var AbstractModule[] */
+    /** @var ModuleInterface[] */
     private static $modules = [];
 
     /**
@@ -115,7 +115,7 @@ class Module
      *
      * @param string $file
      *
-     * @return AbstractModule|null
+     * @return ModuleInterface|null
      */
     private static function loadModule($file)
     {
@@ -123,7 +123,7 @@ class Module
             self::$modules[$file] = null;
             try {
                 $module = include $file;
-                if ($module instanceof AbstractModule) {
+                if ($module instanceof ModuleInterface) {
                     self::$modules[$file] = $module;
                 }
             } catch (Exception $ex) {
@@ -222,11 +222,11 @@ class Module
     /**
      * Get a list of all active (enabled) modules.
      *
-     * @return AbstractModule[]
+     * @return ModuleInterface[]
      */
     private static function getActiveModules(): array
     {
-        /** @var AbstractModule[] - Only query the database once. */
+        /** @var ModuleInterface[] - Only query the database once. */
         static $modules;
 
         if ($modules === null) {
@@ -238,7 +238,7 @@ class Module
             foreach ($module_names as $module_name) {
                 try {
                     $module = self::loadModule(WT_ROOT . WT_MODULES_DIR . $module_name . '/module.php');
-                    if ($module instanceof AbstractModule) {
+                    if ($module instanceof ModuleInterface) {
                         $modules[$module->getName()] = $module;
                     } else {
                         throw new \Exception();
@@ -296,7 +296,7 @@ class Module
 
         // The order of menus/sidebars/tabs is defined in the database. Others are sorted by name.
         if ($component !== 'menu' && $component !== 'sidebar' && $component !== 'tab') {
-            uasort($array, function (AbstractModule $x, AbstractModule $y): int {
+            uasort($array, function (ModuleInterface $x, ModuleInterface $y): int {
                 return I18N::strcasecmp($x->getTitle(), $y->getTitle());
             });
         }
@@ -312,7 +312,7 @@ class Module
      *
      * @param string $component The type of module, such as "tab", "report" or "menu"
      *
-     * @return AbstractModule[]
+     * @return ModuleInterface[]
      */
     public static function getAllModulesByComponent($component): array
     {
@@ -335,7 +335,7 @@ class Module
 
         // The order of menus/sidebars/tabs is defined in the database. Others are sorted by name.
         if ($component !== 'menu' && $component !== 'sidebar' && $component !== 'tab') {
-            uasort($array, function (AbstractModule $x, AbstractModule $y): int {
+            uasort($array, function (ModuleInterface $x, ModuleInterface $y): int {
                 return I18N::strcasecmp($x->getTitle(), $y->getTitle());
             });
         }
@@ -387,14 +387,14 @@ class Module
      */
     public static function configurableModules(): array
     {
-        $modules = array_filter(self::getInstalledModules('disabled'), function (AbstractModule $module): bool {
+        $modules = array_filter(self::getInstalledModules('disabled'), function (ModuleInterface $module): bool {
             return $module instanceof ModuleConfigInterface;
         });
 
         // Exclude disabled modules
         $enabled_modules = Database::prepare("SELECT module_name, status FROM `##module` WHERE status='enabled'")->fetchOneColumn();
 
-        return array_filter($modules, function (AbstractModule $module) use ($enabled_modules): bool {
+        return array_filter($modules, function (ModuleConfigInterface $module) use ($enabled_modules): bool {
             return in_array($module->getName(), $enabled_modules);
         });
     }
@@ -464,7 +464,7 @@ class Module
      *
      * @param string $module_name
      *
-     * @return AbstractModule|null
+     * @return ModuleInterface|null
      */
     public static function getModuleByName($module_name)
     {
@@ -484,7 +484,7 @@ class Module
      *
      * @param string $default_status
      *
-     * @return AbstractModule[]
+     * @return ModuleInterface[]
      */
     public static function getInstalledModules($default_status): array
     {
@@ -493,7 +493,7 @@ class Module
         foreach (glob(WT_ROOT . WT_MODULES_DIR . '*/module.php') as $file) {
             try {
                 $module = self::loadModule($file);
-                if ($module instanceof AbstractModule) {
+                if ($module instanceof ModuleInterface) {
                     $modules[$module->getName()] = $module;
                     Database::prepare("INSERT IGNORE INTO `##module` (module_name, status, menu_order, sidebar_order, tab_order) VALUES (?, ?, ?, ?, ?)")->execute([
                         $module->getName(),

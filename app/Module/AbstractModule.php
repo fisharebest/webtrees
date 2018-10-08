@@ -46,7 +46,7 @@ abstract class AbstractModule
      *
      * @param string $directory Where is this module installed
      */
-    public function __construct($directory)
+    public function __construct(string $directory)
     {
         $this->directory = $directory;
     }
@@ -93,20 +93,6 @@ abstract class AbstractModule
 
         return $this;
     }
-
-    /**
-     * How should this module be labelled on tabs, menus, etc.?
-     *
-     * @return string
-     */
-    abstract public function getTitle(): string;
-
-    /**
-     * A sentence describing what this module does.
-     *
-     * @return string
-     */
-    abstract public function getDescription(): string;
 
     /**
      * What is the default access level for this module?
@@ -202,8 +188,6 @@ abstract class AbstractModule
             ]);
 
             $this->settings[$setting_name] = $setting_value;
-        } else {
-            // Setting already exists, but with the same value - do nothing.
         }
 
         return $this;
