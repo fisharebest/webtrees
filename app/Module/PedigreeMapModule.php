@@ -29,6 +29,7 @@ use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Tree;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class PedigreeMapModule
@@ -129,52 +130,52 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
             'type'     => 'FeatureCollection',
             'features' => [],
         ];
-        if (empty($facts)) {
-            $code = 204;
-        } else {
-            $code = 200;
-            foreach ($facts as $id => $fact) {
-                $event = new FactLocation($fact, $indi);
-                $icon  = $event->getIconDetails();
-                if ($event->knownLatLon()) {
-                    $polyline         = null;
-                    $color            = self::LINE_COLORS[log($id, 2) % $color_count];
-                    $icon['color']    = $color; //make icon color the same as the line
-                    $sosa_points[$id] = $event->getLatLonJSArray();
-                    $sosa_parent      = intdiv($id, 2);
-                    if (array_key_exists($sosa_parent, $sosa_points)) {
-                        // Would like to use a GeometryCollection to hold LineStrings
-                        // rather than generate polylines but the MarkerCluster library
-                        // doesn't seem to like them
-                        $polyline = [
-                            'points'  => [
-                                $sosa_points[$sosa_parent],
-                                $event->getLatLonJSArray(),
-                            ],
-                            'options' => [
-                                'color' => $color,
-                            ],
-                        ];
-                    }
-                    $geojson['features'][] = [
-                        'type'       => 'Feature',
-                        'id'         => $id,
-                        'valid'      => true,
-                        'geometry'   => [
-                            'type'        => 'Point',
-                            'coordinates' => $event->getGeoJsonCoords(),
+
+        $sosa_points = [];
+
+        foreach ($facts as $id => $fact) {
+            $event = new FactLocation($fact, $indi);
+            $icon  = $event->getIconDetails();
+            if ($event->knownLatLon()) {
+                $polyline         = null;
+                $color            = self::LINE_COLORS[log($id, 2) % $color_count];
+                $icon['color']    = $color; //make icon color the same as the line
+                $sosa_points[$id] = $event->getLatLonJSArray();
+                $sosa_parent      = intdiv($id, 2);
+                if (array_key_exists($sosa_parent, $sosa_points)) {
+                    // Would like to use a GeometryCollection to hold LineStrings
+                    // rather than generate polylines but the MarkerCluster library
+                    // doesn't seem to like them
+                    $polyline = [
+                        'points'  => [
+                            $sosa_points[$sosa_parent],
+                            $event->getLatLonJSArray(),
                         ],
-                        'properties' => [
-                            'polyline' => $polyline,
-                            'icon'     => $icon,
-                            'tooltip'  => $event->toolTip(),
-                            'summary'  => view('modules/pedigree-map/event-sidebar', $event->shortSummary('pedigree', $id)),
-                            'zoom'     => (int) $event->getZoom(),
+                        'options' => [
+                            'color' => $color,
                         ],
                     ];
                 }
+                $geojson['features'][] = [
+                    'type'       => 'Feature',
+                    'id'         => $id,
+                    'valid'      => true,
+                    'geometry'   => [
+                        'type'        => 'Point',
+                        'coordinates' => $event->getGeoJsonCoords(),
+                    ],
+                    'properties' => [
+                        'polyline' => $polyline,
+                        'icon'     => $icon,
+                        'tooltip'  => $event->toolTip(),
+                        'summary'  => view('modules/pedigree-map/event-sidebar', $event->shortSummary('pedigree', $id)),
+                        'zoom'     => (int) $event->getZoom(),
+                    ],
+                ];
             }
         }
+
+        $code = empty($facts) ? Response::HTTP_NO_CONTENT : Response::HTTP_OK;
 
         return new JsonResponse($geojson, $code);
     }

@@ -111,7 +111,7 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
                         }
                     }
                 }
-                Site::setPreference('LAST_CHANGE_EMAIL', WT_TIMESTAMP);
+                Site::setPreference('LAST_CHANGE_EMAIL', (int) WT_TIMESTAMP);
             }
         }
         if (Auth::isEditor($tree) && $tree->hasPendingEdit()) {

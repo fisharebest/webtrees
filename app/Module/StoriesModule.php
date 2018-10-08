@@ -116,6 +116,8 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 
         $stories = [];
         foreach ($block_ids as $block_id) {
+            $block_id = (int) $block_id;
+
             // Only show this block for certain languages
             $languages = $this->getBlockSetting($block_id, 'languages', '');
             if ($languages === '' || in_array(WT_LOCALE, explode(',', $languages))) {
