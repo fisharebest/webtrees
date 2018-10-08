@@ -539,12 +539,6 @@ class EditIndividualController extends AbstractEditController
      */
     public function addUnlinkedAction(Request $request, Tree $tree): RedirectResponse
     {
-        //$xref = $request->get('xref', '');
-
-        //$individual = Individual::getInstance($xref, $tree);
-
-        //$this->checkIndividualAccess($individual, true);
-
         $this->glevels = $request->get('glevels', []);
         $this->tag     = $request->get('tag', []);
         $this->text    = $request->get('text', []);
