@@ -27,19 +27,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Module;
-use Fisharebest\Webtrees\Module\AncestorsChartModule;
-use Fisharebest\Webtrees\Module\CompactTreeChartModule;
-use Fisharebest\Webtrees\Module\DescendancyChartModule;
-use Fisharebest\Webtrees\Module\FamilyBookChartModule;
 use Fisharebest\Webtrees\Module\FamilyTreeFavoritesModule;
-use Fisharebest\Webtrees\Module\FanChartModule;
-use Fisharebest\Webtrees\Module\HourglassChartModule;
-use Fisharebest\Webtrees\Module\InteractiveTreeModule;
-use Fisharebest\Webtrees\Module\LifespansChartModule;
-use Fisharebest\Webtrees\Module\PedigreeChartModule;
-use Fisharebest\Webtrees\Module\RelationshipsChartModule;
-use Fisharebest\Webtrees\Module\StatisticsChartModule;
-use Fisharebest\Webtrees\Module\TimelineChartModule;
 use Fisharebest\Webtrees\Module\UserFavoritesModule;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Site;
@@ -1113,10 +1101,10 @@ abstract class AbstractTheme
     }
 
     /**
-      * Generate a menu item for the control panel.
-      *
-      * @return Menu|null
-      */
+     * Generate a menu item for the control panel.
+     *
+     * @return Menu|null
+     */
     public function menuControlPanel()
     {
         if (Auth::isAdmin()) {
@@ -1589,7 +1577,7 @@ abstract class AbstractTheme
     public function menuSearchPhonetic(): Menu
     {
         /* I18N: search using “sounds like”, rather than exact spelling */
-        return new Menu(I18N::translate('Phonetic search'), route('search-phonetic', ['ged'    => $this->tree->getName(), 'action' => 'soundex',]), 'menu-search-soundex', ['rel' => 'nofollow']);
+        return new Menu(I18N::translate('Phonetic search'), route('search-phonetic', ['ged' => $this->tree->getName(), 'action' => 'soundex',]), 'menu-search-soundex', ['rel' => 'nofollow']);
     }
 
     /**
