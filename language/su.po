@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2018-10-03 02:40+0000\n"
+"PO-Revision-Date: 2018-10-08 09:06+0000\n"
 "Last-Translator: Andi Ahmad Fachrudin <nugeonet@gmail.com>\n"
 "Language-Team: Sundanese <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/su/>\n"
 "Language: su\n"
@@ -20,7 +20,7 @@ msgstr ""
 #: modules_v3/ahnentafel_report/report.xml:334
 #: modules_v3/ahnentafel_report/report.xml:359
 msgid " but the details are unknown"
-msgstr ""
+msgstr " tapi sacara rinci mah teu aya anu terang"
 
 #: modules_v3/ahnentafel_report/report.xml:159
 #: modules_v3/ahnentafel_report/report.xml:187
@@ -37,7 +37,7 @@ msgstr ""
 #: modules_v3/descendancy_report/report.xml:423
 #: modules_v3/descendancy_report/report.xml:454
 msgid " in "
-msgstr ""
+msgstr " dina "
 
 #: statisticsplot.php:903 statisticsplot.php:953 statisticsplot.php:1007
 #: statisticsplot.php:1057 statisticsplot.php:1111 statisticsplot.php:1161
@@ -59,31 +59,31 @@ msgstr ""
 #: app/Module/FrequentlyAskedQuestionsModule.php:472
 #, php-format
 msgid "#%s"
-msgstr ""
+msgstr "#%s"
 
 #. I18N: The placeholders are GEDCOM XREFs and tags. e.g. “INDI I123 contains a FAMC link to F234.”
 #: admin_trees_check.php:228
 #, php-format
 msgid "%1$s %2$s has a %3$s link to %4$s."
-msgstr ""
+msgstr "%1$s %2$s ngagaduhan %3$s tutumbu kana %4$s."
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Functions/Functions.php:2132
 #, php-format
 msgid "%1$s %2$s times removed ascending"
-msgstr ""
+msgstr "%1$s %2$s kali dipupus karuhun"
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Functions/Functions.php:2135
 #, php-format
 msgid "%1$s %2$s times removed descending"
-msgstr ""
+msgstr "%1$s %2$s kali dipupus turunan"
 
 #: app/Controller/IndividualController.php:195 app/Date.php:332
 #: app/Functions/FunctionsPrintLists.php:1518
 #, php-format
 msgid "%1$s (%2$s)"
-msgstr ""
+msgstr "%1$s (%2$s)"
 
 #. I18N: %1$s is a number of KB, %2$s is a (fractional) number of seconds
 #: admin_site_upgrade.php:255
