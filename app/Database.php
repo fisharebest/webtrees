@@ -21,6 +21,7 @@ use Exception;
 use Fisharebest\Webtrees\Schema\MigrationInterface;
 use PDO;
 use PDOException;
+use PDOStatement;
 
 /**
  * Extend PHP's native PDO class.
@@ -195,14 +196,15 @@ class Database
         $sql = str_replace('##', self::$table_prefix, $sql);
 
         $hash = md5($sql);
+
         if (!array_key_exists($hash, self::$prepared)) {
             $prepared_statement = self::$pdo->prepare($sql);
             
-            if ($prepared_statement === false) {
+            if ($prepared_statement instanceof PDOStatement) {
+                self::$prepared[$hash] = new Statement($prepared_statement);
+            } else {
                 throw new PDOException("Unable to prepare statement " . $sql);
             }
-
-            self::$prepared[$hash] = new Statement($prepared_statement);
         }
 
         return self::$prepared[$hash];
