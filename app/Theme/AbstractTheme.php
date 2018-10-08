@@ -369,8 +369,8 @@ abstract class AbstractTheme
      */
     public function contactLinks()
     {
-        $contact_user   = User::find($this->tree->getPreference('CONTACT_USER_ID'));
-        $webmaster_user = User::find($this->tree->getPreference('WEBMASTER_USER_ID'));
+        $contact_user   = User::find((int) $this->tree->getPreference('CONTACT_USER_ID'));
+        $webmaster_user = User::find((int) $this->tree->getPreference('WEBMASTER_USER_ID'));
 
         if ($contact_user && $contact_user === $webmaster_user) {
             return $this->contactLinkEverything($contact_user);
