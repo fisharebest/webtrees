@@ -46,6 +46,7 @@ class AdminPhpGedViewController extends AbstractBaseController
 
     // PhpGedView language codes and the equivalent in webtrees.
     const PGV_LANGUAGES = [
+        ''           => 'en-US',
         'arabic'     => 'ar',
         'catalan'    => 'ca',
         'chinese'    => 'zh-Hans',
