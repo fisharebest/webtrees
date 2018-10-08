@@ -41,7 +41,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
      *
      * @param string $directory Where is this module installed
      */
-    public function __construct($directory)
+    public function __construct(string $directory)
     {
         parent::__construct($directory);
 

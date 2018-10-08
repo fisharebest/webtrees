@@ -36,7 +36,7 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
      *
      * @param string $directory Where is this module installed
      */
-    public function __construct($directory)
+    public function __construct(string $directory)
     {
         parent::__construct($directory);
 
