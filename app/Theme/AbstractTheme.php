@@ -1112,11 +1112,11 @@ abstract class AbstractTheme
         return new Menu(I18N::translate('Charts'), '#', 'menu-chart', ['rel' => 'nofollow'], $submenus);
     }
 
-   /**
-     * Generate a menu item for the control panel.
-     *
-     * @return Menu|null
-     */
+    /**
+      * Generate a menu item for the control panel.
+      *
+      * @return Menu|null
+      */
     public function menuControlPanel()
     {
         if (Auth::isAdmin()) {
