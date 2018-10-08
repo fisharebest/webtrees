@@ -174,7 +174,7 @@
             <select id="CONTACT_USER_ID" name="CONTACT_USER_ID" class="form-control">
                 <option value=""></option>
                 <?php foreach ($members as $member) : ?>
-                    <option value="<?= $member->getUserId() ?>" <?= $tree->getPreference('CONTACT_USER_ID') === $member->getUserId() ? 'selected' : '' ?>>
+                    <option value="<?= $member->getUserId() ?>" <?= (int) $tree->getPreference('CONTACT_USER_ID') === $member->getUserId() ? 'selected' : '' ?>>
                         <?= e($member->getRealName()) ?> - <?= e($member->getUserName()) ?>
                     </option>
                 <?php endforeach ?>
@@ -194,7 +194,7 @@
             <select id="WEBMASTER_USER_ID" name="WEBMASTER_USER_ID" class="form-control">
                 <option value=""></option>
                 <?php foreach ($members as $member) : ?>
-                    <option value="<?= $member->getUserId() ?>" <?= $tree->getPreference('WEBMASTER_USER_ID') === $member->getUserId() ? 'selected' : '' ?>>
+                    <option value="<?= $member->getUserId() ?>" <?= (int) $tree->getPreference('WEBMASTER_USER_ID') === $member->getUserId() ? 'selected' : '' ?>>
                         <?= e($member->getRealName()) ?> - <?= e($member->getUserName()) ?>
                     </option>
                 <?php endforeach ?>
