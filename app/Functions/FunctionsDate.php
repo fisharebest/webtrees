@@ -19,6 +19,7 @@ namespace Fisharebest\Webtrees\Functions;
 
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\I18N;
+use LogicException;
 
 /**
  * Class FunctionsDate - common functions
@@ -58,6 +59,8 @@ class FunctionsDate
                                 return I18N::plural('%s week', '%s weeks', $num, I18N::number($num));
                             case 'd':
                                 return I18N::plural('%s day', '%s days', $num, I18N::number($num));
+                            default:
+                                throw new LogicException('Should never get here');
                         }
                     },
                     $age_string
