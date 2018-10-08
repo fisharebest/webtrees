@@ -30,6 +30,13 @@ use Symfony\Component\HttpFoundation\Request;
 interface ThemeInterface
 {
     /**
+     * Create scripts for analytics and tracking.
+     *
+     * @return string
+     */
+    public function analytics();
+
+     /**
      * Create a contact link for a user.
      *
      * @param User $user
@@ -37,6 +44,20 @@ interface ThemeInterface
      * @return string
      */
     public function contactLink(User $user): string;
+
+    /**
+     * Create a cookie warning.
+     *
+     * @return string
+     */
+    public function cookieWarning();
+    
+    /**
+     * Add markup to the contact links.
+     *
+     * @return string
+     */
+    public function formatContactLinks();
 
     /**
      * Display an icon for this fact.
@@ -109,6 +130,13 @@ interface ThemeInterface
     public function individualBoxMenu(Individual $individual): array;
 
     /**
+     * A small "powered by webtrees" logo for the footer.
+     *
+     * @return string
+     */
+    public function logoPoweredBy(): string;
+
+     /**
      * Themes menu.
      *
      * @return Menu|null
@@ -123,6 +151,29 @@ interface ThemeInterface
      * @return string|int|float
      */
     public function parameter($parameter_name);
+
+    /**
+     * Generate a list of items for the main menu.
+     *
+     * @param Individual $individual
+     *
+     * @return Menu[]
+     */
+    public function primaryMenu(Individual $individual): array;
+
+    /**
+     * Generate a list of items for the user menu.
+     *
+     * @return Menu[]
+     */
+    public function secondaryMenu(): array;
+
+    /**
+     * A list of CSS files to include for this page.
+     *
+     * @return string[]
+     */
+    public function stylesheets(): array;
 
     /**
      * A fixed string to identify this theme, in settings, etc.
