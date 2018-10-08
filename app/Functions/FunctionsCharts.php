@@ -38,7 +38,7 @@ class FunctionsCharts
      *
      * @return void
      */
-    public static function printDabovilleNumber(string $daboville, $pid = '', $icon = '')
+    public static function printDabovilleNumber(string $daboville, string $pid = '', string $icon = '')
     {
         // Remove trailing "."
         $personLabel = substr($daboville, 0, -1);
@@ -66,7 +66,7 @@ class FunctionsCharts
      *
      * @return void
      */
-    public static function printSosaNumber($sosa, $pid = '', $icon = '')
+    public static function printSosaNumber(int $sosa, string $pid = '', string $icon = '')
     {
         if ($icon == '') {
             $visibility = 'hidden';
