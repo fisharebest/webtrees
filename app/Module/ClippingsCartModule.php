@@ -274,7 +274,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
 
         // Create a source, to indicate the source of the data.
         $filetext .= "0 @WEBTREES@ SOUR\n1 TITL " . WT_BASE_URL . "\n";
-        $author = User::find($tree->getPreference('CONTACT_EMAIL'));
+        $author = User::findB($tree->getPreference('CONTACT_USER_ID'));
         if ($author !== null) {
             $filetext .= '1 AUTH ' . $author->getRealName() . "\n";
         }
