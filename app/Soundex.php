@@ -79,11 +79,7 @@ class Soundex
         // A varchar(255) column can only hold 51 4-character codes (plus 50 delimiters)
         $soundex_array = array_slice(array_unique($soundex_array), 0, 51);
 
-        if ($soundex_array) {
-            return implode(':', $soundex_array);
-        }
-
-        return '';
+        return implode(':', $soundex_array);
     }
 
     /**
@@ -107,11 +103,7 @@ class Soundex
         // A varchar(255) column can only hold 36 6-character codes (plus 35 delimiters)
         $soundex_array = array_slice(array_unique($soundex_array), 0, 36);
 
-        if ($soundex_array) {
-            return implode(':', $soundex_array);
-        }
-
-        return '';
+        return implode(':', $soundex_array);
     }
 
     // Determine the Daitch–Mokotoff Soundex code for a word

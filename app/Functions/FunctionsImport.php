@@ -886,7 +886,7 @@ class FunctionsImport
                         $std_soundex,
                         $dm_soundex,
                     ]);
-                    $p_id = Database::getInstance()->lastInsertId();
+                    $p_id = Database::lastInsertId();
                 }
 
                 Database::prepare(

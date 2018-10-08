@@ -283,7 +283,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
                 'xref'    => $xref,
             ]);
 
-            $block_id = Database::getInstance()->lastInsertId();
+            $block_id = Database::lastInsertId();
         }
 
         $this->setBlockSetting($block_id, 'story_body', $story_body);

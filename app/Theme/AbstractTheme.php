@@ -360,19 +360,19 @@ abstract class AbstractTheme
         $contact_user   = User::find((int) $this->tree->getPreference('CONTACT_USER_ID'));
         $webmaster_user = User::find((int) $this->tree->getPreference('WEBMASTER_USER_ID'));
 
-        if ($contact_user && $contact_user === $webmaster_user) {
+        if ($contact_user instanceof User && $contact_user === $webmaster_user) {
             return $this->contactLinkEverything($contact_user);
         }
 
-        if ($contact_user && $webmaster_user) {
+        if ($contact_user instanceof User && $webmaster_user instanceof User) {
             return $this->contactLinkGenealogy($contact_user) . '<br>' . $this->contactLinkTechnical($webmaster_user);
         }
 
-        if ($contact_user) {
+        if ($contact_user instanceof User) {
             return $this->contactLinkGenealogy($contact_user);
         }
 
-        if ($webmaster_user) {
+        if ($webmaster_user instanceof User) {
             return $this->contactLinkTechnical($webmaster_user);
         }
 

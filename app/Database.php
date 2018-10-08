@@ -137,11 +137,11 @@ class Database
     /**
      * Determine the most recently created value of an AUTO_INCREMENT field.
      *
-     * @return string
+     * @return int
      */
-    public static function lastInsertId(): string
+    public static function lastInsertId(): int
     {
-        return self::$pdo->lastInsertId();
+        return (int) self::$pdo->lastInsertId();
     }
 
     /**

@@ -39,7 +39,7 @@ class User
     /** @var string[] Cached copy of the wt_user_setting table. */
     private $preferences = [];
 
-    /** @var  User[] Only fetch users from the database once. */
+    /** @var  User[]|null[] Only fetch users from the database once. */
     private static $cache = [];
 
     /**

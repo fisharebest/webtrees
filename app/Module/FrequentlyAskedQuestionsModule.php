@@ -89,7 +89,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
             'locale'      => WT_LOCALE,
         ])->fetchAll();
 
-        if ($faqs) {
+        if (!empty($faqs)) {
             return new Menu($this->getTitle(), route('module', [
                 'module' => 'faq',
                 'action' => 'Show',
@@ -363,7 +363,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
                 'block_order' => (int) $request->get('block_order'),
             ]);
 
-            $block_id = Database::getInstance()->lastInsertId();
+            $block_id = Database::lastInsertId();
         }
 
         $this->setBlockSetting($block_id, 'faqbody', $faqbody);

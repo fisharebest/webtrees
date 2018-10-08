@@ -29,7 +29,7 @@ class Theme
     private static $theme;
 
     /** @var ThemeInterface[] All currently installed themes */
-    private static $installed_themes;
+    private static $installed_themes = [];
 
     /**
      * Create a list of all themes available on the system, including
@@ -39,8 +39,7 @@ class Theme
      */
     public static function installedThemes(): array
     {
-        if (self::$installed_themes === null) {
-            self::$installed_themes = [];
+        if (empty(self::$installed_themes)) {
             foreach (glob(WT_ROOT . '/themes/*/theme.php') as $theme_path) {
                 try {
                     $theme = include $theme_path;
