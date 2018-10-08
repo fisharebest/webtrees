@@ -68,20 +68,15 @@ class FunctionsCharts
      */
     public static function printSosaNumber($sosa, $pid = '', $icon = '')
     {
-        if (is_string($sosa) && substr($sosa, -1, 1) === '.') {
-            $personLabel = substr($sosa, 0, -1);
-        } else {
-            $personLabel = $sosa;
-        }
-
         if ($icon == '') {
             $visibility = 'hidden';
         } else {
             $visibility = 'normal';
         }
+
         echo '<td class="subheaders center" style="vertical-align: middle; text-indent: 0px; margin-top: 0px; white-space: nowrap; visibility: ', $visibility, ';">';
-        echo $personLabel;
-        if ($sosa != '1' && $pid !== '') {
+        echo (string) $sosa;
+        if ($sosa !== 1 && $pid !== '') {
             echo '<br>';
             echo FontAwesome::linkIcon($icon, $pid, ['href' => '#' . $pid]);
         }
