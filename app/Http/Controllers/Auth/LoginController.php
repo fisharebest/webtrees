@@ -181,7 +181,7 @@ class LoginController extends AbstractBaseController
 
         Auth::login($user);
         Log::addAuthenticationLog('Login: ' . Auth::user()->getUserName() . '/' . Auth::user()->getRealName());
-        Auth::user()->setPreference('sessiontime', WT_TIMESTAMP);
+        Auth::user()->setPreference('sessiontime', (string) WT_TIMESTAMP);
 
         Session::put('locale', Auth::user()->getPreference('language'));
         Session::put('theme_id', Auth::user()->getPreference('theme'));

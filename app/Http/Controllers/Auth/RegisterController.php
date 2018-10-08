@@ -107,7 +107,7 @@ class RegisterController extends AbstractBaseController
         $user
             ->setPreference('language', WT_LOCALE)
             ->setPreference('verified', '0')
-            ->setPreference('verified_by_admin', 0)
+            ->setPreference('verified_by_admin', '0')
             ->setPreference('reg_timestamp', date('U'))
             ->setPreference('reg_hashcode', md5(Uuid::uuid4()->toString()))
             ->setPreference('contactmethod', 'messaging2')

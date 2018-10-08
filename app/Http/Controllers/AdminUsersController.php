@@ -191,7 +191,6 @@ class AdminUsersController extends AbstractBaseController
         }
 
         if ($length > 0) {
-            $user->setPreference('admin_users_page_size', $length);
             $sql_select .= " LIMIT :limit OFFSET :offset";
             $args['limit']  = $length;
             $args['offset'] = $start;

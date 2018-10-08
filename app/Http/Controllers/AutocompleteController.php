@@ -219,8 +219,8 @@ class AutocompleteController extends AbstractBaseController
      */
     public function select2Flag(Request $request): JsonResponse
     {
-        $page  = $request->get('page');
-        $query = (int) $request->get('q');
+        $page  = (int) $request->get('page');
+        $query = $request->get('q');
 
         return new JsonResponse(Select2::flagSearch($page, $query));
     }

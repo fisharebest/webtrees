@@ -169,7 +169,7 @@ class Select2 extends Html
      *
      * @return mixed[]
      */
-    public static function flagSearch($page, $query): array
+    public static function flagSearch(int $page, string $query): array
     {
         $offset    = $page * self::RESULTS_PER_PAGE;
         $more      = false;
@@ -232,7 +232,7 @@ class Select2 extends Html
      *
      * @return mixed[]
      */
-    public static function individualSearch(Tree $tree, $page, $query): array
+    public static function individualSearch(Tree $tree, int $page, string $query): array
     {
         $offset  = $page * self::RESULTS_PER_PAGE;
         $more    = false;
@@ -298,7 +298,7 @@ class Select2 extends Html
      *
      * @return mixed[]
      */
-    public static function mediaObjectSearch(Tree $tree, $page, $query): array
+    public static function mediaObjectSearch(Tree $tree, int $page, string $query): array
     {
         $offset  = $page * self::RESULTS_PER_PAGE;
         $more    = false;
@@ -363,7 +363,7 @@ class Select2 extends Html
      *
      * @return mixed[]
      */
-    public static function noteSearch(Tree $tree, $page, $query): array
+    public static function noteSearch(Tree $tree, int $page, string $query): array
     {
         $offset  = $page * self::RESULTS_PER_PAGE;
         $more    = false;
@@ -429,7 +429,7 @@ class Select2 extends Html
      *
      * @return mixed[]
      */
-    public static function placeSearch(Tree $tree, $page, $query, $create): array
+    public static function placeSearch(Tree $tree, int $page, string $query, bool $create): array
     {
         $offset  = $page * self::RESULTS_PER_PAGE;
         $results = [];
@@ -527,7 +527,7 @@ class Select2 extends Html
      *
      * @return mixed[]
      */
-    public static function repositorySearch(Tree $tree, $page, $query): array
+    public static function repositorySearch(Tree $tree, int $page, string $query): array
     {
         $offset  = $page * self::RESULTS_PER_PAGE;
         $more    = false;
@@ -592,7 +592,7 @@ class Select2 extends Html
      *
      * @return mixed[]
      */
-    public static function sourceSearch(Tree $tree, $page, $query): array
+    public static function sourceSearch(Tree $tree, int $page, string $query): array
     {
         $offset  = $page * self::RESULTS_PER_PAGE;
         $more    = false;
@@ -657,7 +657,7 @@ class Select2 extends Html
      *
      * @return mixed[]
      */
-    public static function submitterSearch(Tree $tree, $page, $query): array
+    public static function submitterSearch(Tree $tree, int $page, string $query): array
     {
         $offset  = $page * self::RESULTS_PER_PAGE;
         $more    = false;
