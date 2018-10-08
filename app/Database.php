@@ -196,7 +196,13 @@ class Database
 
         $hash = md5($sql);
         if (!array_key_exists($hash, self::$prepared)) {
-            self::$prepared[$hash] = new Statement(self::$pdo->prepare($sql));
+            $prepared_statement = self::$pdo->prepare($sql);
+            
+            if ($prepared_statement === false) {
+                throw new PDOException("Unable to prepare statement " . $sql);
+            }
+
+            self::$prepared[$hash] = new Statement($prepared_statement);
         }
 
         return self::$prepared[$hash];
