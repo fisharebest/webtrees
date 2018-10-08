@@ -31,11 +31,9 @@ class EditSubmitterController extends AbstractEditController
     /**
      * Show a form to create a new submitter.
      *
-     * @param Request $request
-     *
      * @return Response
      */
-    public function createSubmitter(Request $request): Response
+    public function createSubmitter(): Response
     {
         return new Response(view('modals/create-submitter'));
     }

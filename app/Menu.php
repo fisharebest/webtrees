@@ -63,7 +63,7 @@ class Menu
      */
     public function bootstrap4()
     {
-        if ($this->submenus) {
+        if (!empty($this->submenus)) {
             $submenus = '';
             foreach ($this->submenus as $submenu) {
                 $attrs = '';
@@ -225,7 +225,7 @@ class Menu
             $link = '';
         }
         $html = '<a' . $link . $attrs . '>' . $this->label . '</a>';
-        if ($this->submenus) {
+        if (!empty($this->submenus)) {
             $html .= '<ul>';
             foreach ($this->submenus as $submenu) {
                 $html .= $submenu->getMenuAsList();

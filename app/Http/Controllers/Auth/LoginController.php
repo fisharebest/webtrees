@@ -159,7 +159,7 @@ class LoginController extends AbstractBaseController
 
         $user = User::findByIdentifier($username);
 
-        if (!$user) {
+        if ($user === null) {
             Log::addAuthenticationLog('Login failed (no such user/email): ' . $username);
             throw new Exception(I18N::translate('The username or password is incorrect.'));
         }

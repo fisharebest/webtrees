@@ -428,6 +428,7 @@ class SetupController extends AbstractBaseController
         }
 
         $disable_functions = preg_split('/ *, */', ini_get('disable_functions'));
+
         foreach ($functions as $function) {
             if (in_array($function, $disable_functions)) {
                 /* I18N: %s is a PHP function/module/setting */

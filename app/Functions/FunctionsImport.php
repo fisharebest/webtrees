@@ -1253,14 +1253,14 @@ class FunctionsImport
 
         //-- delete any unlinked places
         foreach ($placeids as $p_id) {
-            $num = Database::prepare(
+            $num = (int) Database::prepare(
                 "SELECT count(pl_p_id) FROM `##placelinks` WHERE pl_p_id=? AND pl_file=?"
             )->execute([
                 $p_id,
                 $tree->getTreeId(),
             ])->fetchOne();
 
-            if ($num == 0) {
+            if ($num === 0) {
                 Database::prepare(
                     "DELETE FROM `##places` WHERE p_id=? AND p_file=?"
                 )->execute([

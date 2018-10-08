@@ -32,11 +32,9 @@ class AdminMapController extends AbstractBaseController
     protected $layout = 'layouts/administration';
 
     /**
-     * @param Request $request
-     *
      * @return Response
      */
-    public function mapProviderEdit(Request $request): Response
+    public function mapProviderEdit(): Response
     {
         return $this->viewResponse('admin/map-provider', [
             'title'    => I18N::translate('Map provider'),

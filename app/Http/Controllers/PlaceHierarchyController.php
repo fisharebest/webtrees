@@ -244,7 +244,7 @@ class PlaceHierarchyController extends AbstractBaseController
             //Stats
             $placeStats = [];
             foreach (['INDI', 'FAM'] as $type) {
-                $tmp               = $stats->statsPlaces($type, false, $place->getPlaceId());
+                $tmp               = $stats->statsPlaces($type, '', $place->getPlaceId());
                 $placeStats[$type] = empty($tmp) ? 0 : $tmp[0]->tot;
             }
             //Flag

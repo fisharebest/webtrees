@@ -257,7 +257,6 @@ class ReportEngineController extends AbstractBaseController
                     'title'   => I18N::translate('Report'),
                 ]);
 
-                break;
             case 'PDF':
                 ob_start();
                 new ReportParserGenerate($report_xml, new ReportPdf(), $vars, $tree);

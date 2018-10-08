@@ -264,11 +264,9 @@ class HomePageController extends AbstractBaseController
     /**
      * Show a form to edit the default blocks for new trees.
      *
-     * @param Request $request
-     *
      * @return Response
      */
-    public function treePageDefaultEdit(Request $request): Response
+    public function treePageDefaultEdit(): Response
     {
         $main_blocks = $this->getBlocksForTreePage(-1, Auth::PRIV_NONE, 'main');
         $side_blocks = $this->getBlocksForTreePage(-1, Auth::PRIV_NONE, 'side');
@@ -428,11 +426,9 @@ class HomePageController extends AbstractBaseController
     /**
      * Show a form to edit the default blocks for new uesrs.
      *
-     * @param Request $request
-     *
      * @return Response
      */
-    public function userPageDefaultEdit(Request $request): Response
+    public function userPageDefaultEdit(): Response
     {
         $main_blocks = $this->getBlocksForUserPage(-1, -1, Auth::PRIV_NONE, 'main');
         $side_blocks = $this->getBlocksForUserPage(-1, -1, Auth::PRIV_NONE, 'side');

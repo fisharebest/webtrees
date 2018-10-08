@@ -91,7 +91,7 @@ class Mail
             case 'external':
                 $transport = Swift_SmtpTransport::newInstance()
                     ->setHost(Site::getPreference('SMTP_HOST'))
-                    ->setPort(Site::getPreference('SMTP_PORT'))
+                    ->setPort((int) Site::getPreference('SMTP_PORT', '25'))
                     ->setLocalDomain(Site::getPreference('SMTP_HELO'));
 
                 if (Site::getPreference('SMTP_AUTH') === '1') {

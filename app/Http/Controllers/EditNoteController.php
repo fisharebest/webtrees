@@ -33,11 +33,9 @@ class EditNoteController extends AbstractEditController
     /**
      * Show a form to create a new note object.
      *
-     * @param Request $request
-     *
      * @return Response
      */
-    public function createNoteObject(Request $request): Response
+    public function createNoteObject(): Response
     {
         return new Response(view('modals/create-note-object'));
     }

@@ -40,11 +40,9 @@ class AdminSiteController extends AbstractBaseController
     protected $layout = 'layouts/administration';
 
     /**
-     * @param Request $request
-     *
      * @return Response
      */
-    public function analyticsForm(Request $request): Response
+    public function analyticsForm(): Response
     {
         /* I18N: e.g. http://www.google.com/analytics */
         $title = I18N::translate('Tracking and analytics');
@@ -151,11 +149,9 @@ class AdminSiteController extends AbstractBaseController
     }
 
     /**
-     * @param Request $request
-     *
      * @return Response
      */
-    public function languagesForm(Request $request): Response
+    public function languagesForm(): Response
     {
         $language_tags = [];
         foreach (I18N::activeLocales() as $active_locale) {
@@ -490,11 +486,9 @@ class AdminSiteController extends AbstractBaseController
     }
 
     /**
-     * @param Request $request
-     *
      * @return Response
      */
-    public function mailForm(Request $request): Response
+    public function mailForm(): Response
     {
         $mail_ssl_options       = $this->mailSslOptions();
         $mail_transport_options = $this->mailTransportOptions();
@@ -534,11 +528,9 @@ class AdminSiteController extends AbstractBaseController
     }
 
     /**
-     * @param Request $request
-     *
      * @return Response
      */
-    public function preferencesForm(Request $request): Response
+    public function preferencesForm(): Response
     {
         $all_themes = Theme::themeNames();
 
@@ -582,11 +574,9 @@ class AdminSiteController extends AbstractBaseController
     }
 
     /**
-     * @param Request $request
-     *
      * @return Response
      */
-    public function registrationForm(Request $request): Response
+    public function registrationForm(): Response
     {
         $title = I18N::translate('Sign-in and registration');
 

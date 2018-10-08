@@ -139,7 +139,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
                 $content .= '<td class="list_value_wrap">' . FunctionsDate::formatTimestamp($message->created + WT_TIMESTAMP_OFFSET) . '</td>';
                 $content .= '<td class="list_value_wrap">';
                 $user = User::findByIdentifier($message->sender);
-                if ($user) {
+                if ($user instanceof User) {
                     $content .= '<span dir="auto">' . e($user->getRealName()) . '</span> - <span dir="auto">' . $user->getEmail() . '</span>';
                 } else {
                     $content .= '<a href="mailto:' . e($message->sender) . '">' . e($message->sender) . '</a>';

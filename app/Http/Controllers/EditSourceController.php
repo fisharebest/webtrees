@@ -31,11 +31,9 @@ class EditSourceController extends AbstractEditController
     /**
      * Show a form to create a new source.
      *
-     * @param Request $request
-     *
      * @return Response
      */
-    public function createSource(Request $request): Response
+    public function createSource(): Response
     {
         return new Response(view('modals/create-source'));
     }

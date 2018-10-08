@@ -31,11 +31,9 @@ class EditRepositoryController extends AbstractEditController
     /**
      * Show a form to create a new repository.
      *
-     * @param Request $request
-     *
      * @return Response
      */
-    public function createRepository(Request $request): Response
+    public function createRepository(): Response
     {
         return new Response(view('modals/create-repository'));
     }
