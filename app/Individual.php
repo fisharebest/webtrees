@@ -863,7 +863,7 @@ class Individual extends GedcomRecord
     public function getNumberOfChildren()
     {
         if (preg_match('/\n1 NCHI (\d+)(?:\n|$)/', $this->getGedcom(), $match)) {
-            return $match[1];
+            return (int) $match[1];
         }
 
         $children = [];
