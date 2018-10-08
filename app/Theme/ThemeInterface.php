@@ -109,6 +109,13 @@ interface ThemeInterface
     public function individualBoxMenu(Individual $individual): array;
 
     /**
+     * Themes menu.
+     *
+     * @return Menu|null
+     */
+    public function menuThemes();
+
+    /**
      * Misecellaneous dimensions, fonts, styles, etc.
      *
      * @param string $parameter_name
