@@ -22,8 +22,6 @@ use Fisharebest\Webtrees\Http\Controllers\ErrorController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\HttpException;
-use Whoops\Handler\PrettyPageHandler;
-use Whoops\Run;
 
 /**
  * Convert an exception into an HTTP response
@@ -49,17 +47,8 @@ class Handler
                 $response   = $controller->errorResponse($exception);
             }
         } else {
-            // Show an error page for unexpected exceptions.
-            if (getenv('DEBUG')) {
-                // Local dev environment?  Show full debug.
-                $whoops = new Run();
-                $whoops->pushHandler(new PrettyPageHandler());
-                $whoops->handleException($exception);
-            } else {
-                // Running remotely?  Show a friendly error page.
-                $controller = new ErrorController();
-                $response   = $controller->unhandledExceptionResponse($request, $exception);
-            }
+            $controller = new ErrorController();
+            $response   = $controller->unhandledExceptionResponse($request, $exception);
         }
 
         return $response;
