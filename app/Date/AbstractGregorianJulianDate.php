@@ -17,9 +17,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Date;
 
-use Fisharebest\ExtCalendar\CalendarInterface;
-use Fisharebest\ExtCalendar\JewishCalendar;
-use Fisharebest\Webtrees\DebugBar;
 use Fisharebest\Webtrees\I18N;
 
 /**
@@ -49,12 +46,12 @@ abstract class AbstractGregorianJulianDate extends AbstractCalendarDate
      *
      * We put these in the base class, to save duplicating it in the Julian and Gregorian calendars.
      *
-     * @param int  $month_number
+     * @param int  $month
      * @param bool $leap_year Some calendars use leap months
      *
      * @return string
      */
-    protected function monthNameNominativeCase(int $month_number, bool $leap_year): string
+    protected function monthNameNominativeCase(int $month, bool $leap_year): string
     {
         static $translated_month_names;
 
@@ -76,7 +73,7 @@ abstract class AbstractGregorianJulianDate extends AbstractCalendarDate
             ];
         }
 
-        return $translated_month_names[$month_number];
+        return $translated_month_names[$month];
     }
 
     /**
@@ -84,12 +81,12 @@ abstract class AbstractGregorianJulianDate extends AbstractCalendarDate
      *
      * We put these in the base class, to save duplicating it in the Julian and Gregorian calendars.
      *
-     * @param int  $month_number
+     * @param int  $month
      * @param bool $leap_year Some calendars use leap months
      *
      * @return string
      */
-    protected function monthNameGenitiveCase(int $month_number, bool $leap_year): string
+    protected function monthNameGenitiveCase(int $month, bool $leap_year): string
     {
         static $translated_month_names;
 
@@ -111,7 +108,7 @@ abstract class AbstractGregorianJulianDate extends AbstractCalendarDate
             ];
         }
 
-        return $translated_month_names[$month_number];
+        return $translated_month_names[$month];
     }
 
     /**
@@ -119,12 +116,12 @@ abstract class AbstractGregorianJulianDate extends AbstractCalendarDate
      *
      * We put these in the base class, to save duplicating it in the Julian and Gregorian calendars.
      *
-     * @param int  $month_number
+     * @param int  $month
      * @param bool $leap_year Some calendars use leap months
      *
      * @return string
      */
-    protected function monthNameLocativeCase(int $month_number, bool $leap_year): string
+    protected function monthNameLocativeCase(int $month, bool $leap_year): string
     {
         static $translated_month_names;
 
@@ -146,7 +143,7 @@ abstract class AbstractGregorianJulianDate extends AbstractCalendarDate
             ];
         }
 
-        return $translated_month_names[$month_number];
+        return $translated_month_names[$month];
     }
 
     /**
@@ -154,12 +151,12 @@ abstract class AbstractGregorianJulianDate extends AbstractCalendarDate
      *
      * We put these in the base class, to save duplicating it in the Julian and Gregorian calendars.
      *
-     * @param int  $month_number
+     * @param int  $month
      * @param bool $leap_year Some calendars use leap months
      *
      * @return string
      */
-    protected function monthNameInstrumentalCase(int $month_number, bool $leap_year): string
+    protected function monthNameInstrumentalCase(int $month, bool $leap_year): string
     {
         static $translated_month_names;
 
@@ -181,18 +178,18 @@ abstract class AbstractGregorianJulianDate extends AbstractCalendarDate
             ];
         }
 
-        return $translated_month_names[$month_number];
+        return $translated_month_names[$month];
     }
 
     /**
      * Abbreviated month name
      *
-     * @param int  $month_number
+     * @param int  $month
      * @param bool $leap_year Some calendars use leap months
      *
      * @return string
      */
-    protected function monthNameAbbreviated(int $month_number, bool $leap_year): string
+    protected function monthNameAbbreviated(int $month, bool $leap_year): string
     {
         static $translated_month_names;
 
@@ -214,6 +211,6 @@ abstract class AbstractGregorianJulianDate extends AbstractCalendarDate
             ];
         }
 
-        return $translated_month_names[$month_number];
+        return $translated_month_names[$month];
     }
 }

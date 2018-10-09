@@ -65,12 +65,12 @@ class HijriDate extends AbstractCalendarDate
     /**
      * Full month name in nominative case.
      *
-     * @param int  $month_number
+     * @param int  $month
      * @param bool $leap_year Some calendars use leap months
      *
      * @return string
      */
-    protected function monthNameNominativeCase(int $month_number, bool $leap_year): string
+    protected function monthNameNominativeCase(int $month, bool $leap_year): string
     {
         static $translated_month_names;
 
@@ -104,18 +104,18 @@ class HijriDate extends AbstractCalendarDate
             ];
         }
 
-        return $translated_month_names[$month_number];
+        return $translated_month_names[$month];
     }
 
     /**
      * Full month name in genitive case.
      *
-     * @param int  $month_number
+     * @param int  $month
      * @param bool $leap_year Some calendars use leap months
      *
      * @return string
      */
-    protected function monthNameGenitiveCase(int $month_number, bool $leap_year): string
+    protected function monthNameGenitiveCase(int $month, bool $leap_year): string
     {
         static $translated_month_names;
 
@@ -149,18 +149,18 @@ class HijriDate extends AbstractCalendarDate
             ];
         }
 
-        return $translated_month_names[$month_number];
+        return $translated_month_names[$month];
     }
 
     /**
      * Full month name in locative case.
      *
-     * @param int  $month_number
+     * @param int  $month
      * @param bool $leap_year Some calendars use leap months
      *
      * @return string
      */
-    protected function monthNameLocativeCase(int $month_number, bool $leap_year): string
+    protected function monthNameLocativeCase(int $month, bool $leap_year): string
     {
         static $translated_month_names;
 
@@ -194,18 +194,18 @@ class HijriDate extends AbstractCalendarDate
             ];
         }
 
-        return $translated_month_names[$month_number];
+        return $translated_month_names[$month];
     }
 
     /**
      * Full month name in instrumental case.
      *
-     * @param int  $month_number
+     * @param int  $month
      * @param bool $leap_year Some calendars use leap months
      *
      * @return string
      */
-    protected function monthNameInstrumentalCase(int $month_number, bool $leap_year): string
+    protected function monthNameInstrumentalCase(int $month, bool $leap_year): string
     {
         static $translated_month_names;
 
@@ -239,19 +239,19 @@ class HijriDate extends AbstractCalendarDate
             ];
         }
 
-        return $translated_month_names[$month_number];
+        return $translated_month_names[$month];
     }
 
     /**
      * Abbreviated month name
      *
-     * @param int  $month_number
+     * @param int  $month
      * @param bool $leap_year Some calendars use leap months
      *
      * @return string
      */
-    protected function monthNameAbbreviated(int $month_number, bool $leap_year): string
+    protected function monthNameAbbreviated(int $month, bool $leap_year): string
     {
-        return $this->monthNameNominativeCase($month_number, $leap_year);
+        return $this->monthNameNominativeCase($month, $leap_year);
     }
 }

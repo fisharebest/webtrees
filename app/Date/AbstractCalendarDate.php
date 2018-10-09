@@ -34,7 +34,7 @@ use Fisharebest\Webtrees\I18N;
  * midnight, solar midnight, sunset, sunrise, etc.), we convert on the basis of
  * midday.
  */
-class AbstractCalendarDate
+abstract class AbstractCalendarDate
 {
     // GEDCOM calendar escape
     const ESCAPE = '@#DUNKNOWN@';
@@ -781,6 +781,56 @@ class AbstractCalendarDate
                 throw new \InvalidArgumentException($case);
         }
     }
+
+    /**
+     * Full month name in genitive case.
+     *
+     * @param int  $month
+     * @param bool $leap_year Some calendars use leap months
+     *
+     * @return string
+     */
+    abstract protected function monthNameGenitiveCase(int $month, bool $leap_year): string;
+
+    /**
+     * Full month name in nominative case.
+     *
+     * @param int  $month
+     * @param bool $leap_year Some calendars use leap months
+     *
+     * @return string
+     */
+    abstract protected function monthNameNominativeCase(int $month, bool $leap_year): string;
+
+    /**
+     * Full month name in locative case.
+     *
+     * @param int  $month
+     * @param bool $leap_year Some calendars use leap months
+     *
+     * @return string
+     */
+    abstract protected function monthNameLocativeCase(int $month, bool $leap_year): string;
+
+    /**
+     * Full month name in instrumental case.
+     *
+     * @param int  $month
+     * @param bool $leap_year Some calendars use leap months
+     *
+     * @return string
+     */
+    abstract protected function monthNameInstrumentalCase(int $month, bool $leap_year): string;
+
+    /**
+     * Abbreviated month name
+     *
+     * @param int  $month
+     * @param bool $leap_year Some calendars use leap months
+     *
+     * @return string
+     */
+    abstract protected function monthNameAbbreviated(int $month, bool $leap_year): string;
 
     /**
      * Generate the %M format for a date.
