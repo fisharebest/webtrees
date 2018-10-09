@@ -34,10 +34,10 @@ class ReportBaseHtml extends ReportBaseElement
     /**
      * Create an element.
      *
-     * @param $tag
-     * @param $attrs
+     * @param string   $tag
+     * @param string[] $attrs
      */
-    public function __construct($tag, $attrs)
+    public function __construct(string $tag, array $attrs)
     {
         $this->tag   = $tag;
         $this->attrs = $attrs;

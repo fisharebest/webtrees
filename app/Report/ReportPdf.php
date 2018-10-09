@@ -303,12 +303,12 @@ class ReportPdf extends AbstractReport
     /**
      * Create an HTML element.
      *
-     * @param $tag
-     * @param $attrs
+     * @param string   $tag
+     * @param string[] $attrs
      *
      * @return ReportPdfHtml
      */
-    public function createHTML($tag, $attrs): ReportPdfHtml
+    public function createHTML(string $tag, array $attrs): ReportPdfHtml
     {
         return new ReportPdfHtml($tag, $attrs);
     }
