@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use function is_int;
 use PDO;
 use PDOStatement;
 use stdClass;
@@ -61,7 +62,7 @@ class Statement
         // Named parameters may take any type. Positional parameters are always strings.
         // Queries should use one format or the other.
         foreach ($bind_variables as $key => $bind_variable) {
-            if (is_numeric($key)) {
+            if (is_int($key)) {
                 // Positional parameters are numeric (starting at 1)
                 $key = 1 + $key;
             } else {
