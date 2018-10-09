@@ -85,7 +85,7 @@
             "### PHAN",
             "phan --target-php-version=7.0 --processes=64 --directory . --exclude-directory-list data,resources,routes,tests,vendor",
             "### PHPSTAN",
-            "phpstan --level=7 analyze app",
+            "phpstan --level=7 analyze index.php app",
             "### PSALM",
             "psalm --threads=8"
         ],

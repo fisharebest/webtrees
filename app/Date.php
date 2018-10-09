@@ -532,7 +532,7 @@ class Date
      */
     public static function getAge(Date $d1, Date $d2 = null): string
     {
-        if ($d2 instanceof AbstractCalendarDate) {
+        if ($d2 instanceof Date) {
             if ($d2->maximumJulianDay() >= $d1->minimumJulianDay() && $d2->minimumJulianDay() <= $d1->minimumJulianDay()) {
                 // Overlapping dates
                 $jd = $d1->minimumJulianDay();
