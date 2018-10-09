@@ -84,7 +84,7 @@ class ReportPdfCell extends ReportBaseCell
         }
 
         // If current position (left)
-        if ($this->left == '.') {
+        if ($this->left === ReportBaseElement::CURRENT_POSITION) {
             $cX = $renderer->GetX();
         } else {
             // For static position add margin (also updates X)
@@ -96,7 +96,7 @@ class ReportPdfCell extends ReportBaseCell
             $this->width = $renderer->getRemainingWidthPDF();
         }
         // For current position
-        if ($this->top == '.') {
+        if ($this->top === ReportBaseElement::CURRENT_POSITION) {
             $this->top = $renderer->GetY();
         } else {
             $renderer->SetY($this->top);

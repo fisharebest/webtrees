@@ -118,14 +118,14 @@ class ReportHtmlTextbox extends ReportBaseTextbox
         $renderer->largestFontHeight = 0;
 
         // Current position
-        if ($this->left == '.') {
+        if ($this->left === ReportBaseElement::CURRENT_POSITION) {
             $cX = $renderer->getX();
         } else {
             $cX = $this->left;
             $renderer->setX($cX);
         }
         // Current position (top)
-        if ($this->top == '.') {
+        if ($this->top === ReportBaseElement::CURRENT_POSITION) {
             $this->top = $renderer->getY();
         } else {
             $renderer->setY($this->top);

@@ -34,10 +34,10 @@ class ReportHtmlImage extends ReportBaseImage
         global $lastpicbottom, $lastpicpage, $lastpicleft, $lastpicright;
 
         // Get the current positions
-        if ($this->x === -1) {
+        if ($this->x === ReportBaseElement::CURRENT_POSITION) {
             $this->x = $renderer->getX();
         }
-        if ($this->y === -1) {
+        if ($this->y === ReportBaseElement::CURRENT_POSITION) {
             //-- first check for a collision with the last picture
             if (isset($lastpicbottom)) {
                 if (($renderer->pageNo() == $lastpicpage) && ($lastpicbottom >= $renderer->getY()) && ($this->x >= $lastpicleft) && ($this->x <= $lastpicright)) {

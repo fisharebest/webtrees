@@ -25,27 +25,27 @@ class ReportBaseLine extends ReportBaseElement
     /**
      * Start horizontal position, current position (default)
      *
-     * @var mixed
+     * @var float
      */
-    public $x1 = '.';
+    public $x1 = ReportBaseElement::CURRENT_POSITION;
     /**
      * Start vertical position, current position (default)
      *
-     * @var mixed
+     * @var float
      */
-    public $y1 = '.';
+    public $y1 = ReportBaseElement::CURRENT_POSITION;
     /**
      * End horizontal position, maximum width (default)
      *
-     * @var mixed
+     * @var float
      */
-    public $x2 = '.';
+    public $x2 = ReportBaseElement::CURRENT_POSITION;
     /**
      * End vertical position
      *
-     * @var mixed
+     * @var float
      */
-    public $y2 = '.';
+    public $y2 = ReportBaseElement::CURRENT_POSITION;
 
     /**
      * Create a line class - Base

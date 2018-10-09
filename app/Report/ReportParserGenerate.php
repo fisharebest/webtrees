@@ -507,10 +507,10 @@ class ReportParserGenerate extends ReportParserBase
         }
 
         // mixed Position the left corner of this box on the page. The default is the current position.
-        $left = '.';
+        $left = ReportBaseElement::CURRENT_POSITION;
         if (isset($attrs['left'])) {
             if ($attrs['left'] === '.') {
-                $left = '.';
+                $left = ReportBaseElement::CURRENT_POSITION;
             } elseif (!empty($attrs['left'])) {
                 $left = (int) $attrs['left'];
             } elseif ($attrs['left'] === '0') {
@@ -518,10 +518,10 @@ class ReportParserGenerate extends ReportParserBase
             }
         }
         // mixed Position the top corner of this box on the page. the default is the current position
-        $top = '.';
+        $top = ReportBaseElement::CURRENT_POSITION;
         if (isset($attrs['top'])) {
             if ($attrs['top'] === '.') {
-                $top = '.';
+                $top = ReportBaseElement::CURRENT_POSITION;
             } elseif (!empty($attrs['top'])) {
                 $top = (int) $attrs['top'];
             } elseif ($attrs['top'] === '0') {
@@ -751,10 +751,10 @@ class ReportParserGenerate extends ReportParserBase
         }
 
         // mixed Position the left corner of this box on the page. The default is the current position.
-        $left = '.';
+        $left = ReportBaseElement::CURRENT_POSITION;
         if (isset($attrs['left'])) {
             if ($attrs['left'] === '.') {
-                $left = '.';
+                $left = ReportBaseElement::CURRENT_POSITION;
             } elseif (!empty($attrs['left'])) {
                 $left = (int) $attrs['left'];
             } elseif ($attrs['left'] === '0') {
@@ -762,10 +762,10 @@ class ReportParserGenerate extends ReportParserBase
             }
         }
         // mixed Position the top corner of this box on the page. the default is the current position
-        $top = '.';
+        $top = ReportBaseElement::CURRENT_POSITION;
         if (isset($attrs['top'])) {
             if ($attrs['top'] === '.') {
-                $top = '.';
+                $top = ReportBaseElement::CURRENT_POSITION;
             } elseif (!empty($attrs['top'])) {
                 $top = (int) $attrs['top'];
             } elseif ($attrs['top'] === '0') {
@@ -1669,11 +1669,11 @@ class ReportParserGenerate extends ReportParserBase
             $id = $match[1];
         }
 
-        // Position the top corner of this box on the page. the default is the current position
-        $top = (int) ($attrs['top'] ?? -1);
+        // Position the top corner of this box on the page
+        $top = (float) ($attrs['top'] ?? ReportBaseElement::CURRENT_POSITION);
 
-        // mixed Position the left corner of this box on the page. the default is the current position
-        $left = (int) ($attrs['left'] ?? -1);
+        // Position the left corner of this box on the page
+        $left = (float) ($attrs['left'] ?? ReportBaseElement::CURRENT_POSITION);
 
         // string Align the image in left, center, right (or empty to use x/y position).
         $align = $attrs['align'] ?? '';
@@ -1682,8 +1682,8 @@ class ReportParserGenerate extends ReportParserBase
         $ln = $attrs['ln'] ?? 'T';
 
         // Width, height (or both).
-        $width  = (int) ($attrs['width'] ?? 0);
-        $height = (int) ($attrs['height'] ?? 0);
+        $width  = (float) ($attrs['width'] ?? 0.0);
+        $height = (float) ($attrs['height'] ?? 0.0);
 
         $person     = Individual::getInstance($id, $this->tree);
         $media_file = $person->findHighlightedMediaFile();
@@ -1718,10 +1718,10 @@ class ReportParserGenerate extends ReportParserBase
     private function imageStartHandler($attrs)
     {
         // Position the top corner of this box on the page. the default is the current position
-        $top = (int) ($attrs['top'] ?? -1);
+        $top = (float) ($attrs['top'] ?? ReportBaseElement::CURRENT_POSITION);
 
         // mixed Position the left corner of this box on the page. the default is the current position
-        $left = (int) ($attrs['left'] ?? -1);
+        $left = (float) ($attrs['left'] ?? ReportBaseElement::CURRENT_POSITION);
 
         // string Align the image in left, center, right (or empty to use x/y position).
         $align = $attrs['align'] ?? '';
@@ -1730,8 +1730,8 @@ class ReportParserGenerate extends ReportParserBase
         $ln = $attrs['ln'] ?? 'T';
 
         // Width, height (or both).
-        $width  = (int) ($attrs['width'] ?? 0);
-        $height = (int) ($attrs['height'] ?? 0);
+        $width  = (float) ($attrs['width'] ?? 0.0);
+        $height = (float) ($attrs['height'] ?? 0.0);
 
         $file = $attrs['file'] ?? '';
 
@@ -1789,47 +1789,47 @@ class ReportParserGenerate extends ReportParserBase
     private function lineStartHandler($attrs)
     {
         // Start horizontal position, current position (default)
-        $x1 = '.';
+        $x1 = ReportBaseElement::CURRENT_POSITION;
         if (isset($attrs['x1'])) {
             if ($attrs['x1'] === '0') {
                 $x1 = 0;
             } elseif ($attrs['x1'] === '.') {
-                $x1 = '.';
+                $x1 = ReportBaseElement::CURRENT_POSITION;
             } elseif (!empty($attrs['x1'])) {
-                $x1 = (int) $attrs['x1'];
+                $x1 = (float) $attrs['x1'];
             }
         }
         // Start vertical position, current position (default)
-        $y1 = '.';
+        $y1 = ReportBaseElement::CURRENT_POSITION;
         if (isset($attrs['y1'])) {
             if ($attrs['y1'] === '0') {
                 $y1 = 0;
             } elseif ($attrs['y1'] === '.') {
-                $y1 = '.';
+                $y1 = ReportBaseElement::CURRENT_POSITION;
             } elseif (!empty($attrs['y1'])) {
-                $y1 = (int) $attrs['y1'];
+                $y1 = (float) $attrs['y1'];
             }
         }
         // End horizontal position, maximum width (default)
-        $x2 = '.';
+        $x2 = ReportBaseElement::CURRENT_POSITION;
         if (isset($attrs['x2'])) {
             if ($attrs['x2'] === '0') {
                 $x2 = 0;
             } elseif ($attrs['x2'] === '.') {
-                $x2 = '.';
+                $x2 = ReportBaseElement::CURRENT_POSITION;
             } elseif (!empty($attrs['x2'])) {
-                $x2 = (int) $attrs['x2'];
+                $x2 = (float) $attrs['x2'];
             }
         }
         // End vertical position
-        $y2 = '.';
+        $y2 = ReportBaseElement::CURRENT_POSITION;
         if (isset($attrs['y2'])) {
             if ($attrs['y2'] === '0') {
                 $y2 = 0;
             } elseif ($attrs['y2'] === '.') {
-                $y2 = '.';
+                $y2 = ReportBaseElement::CURRENT_POSITION;
             } elseif (!empty($attrs['y2'])) {
-                $y2 = (int) $attrs['y2'];
+                $y2 = (float) $attrs['y2'];
             }
         }
 

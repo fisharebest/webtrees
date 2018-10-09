@@ -22,6 +22,9 @@ namespace Fisharebest\Webtrees\Report;
  */
 class ReportBaseElement
 {
+    // Special value for X or Y position, to indicate the current position.
+    CONST CURRENT_POSITION = -1.0;
+
     /** @var string Text */
     public $text = '';
 
@@ -106,12 +109,12 @@ class ReportBaseElement
     /**
      * Set the width to wrap text.
      *
-     * @param $wrapwidth
-     * @param $cellwidth
+     * @param float $wrapwidth
+     * @param float $cellwidth
      *
      * @return float
      */
-    public function setWrapWidth($wrapwidth, $cellwidth): float
+    public function setWrapWidth(float $wrapwidth, float $cellwidth): float
     {
         return 0;
     }
@@ -130,11 +133,11 @@ class ReportBaseElement
     /**
      * Set the text.
      *
-     * @param $text
+     * @param string $text
      *
      * @return void
      */
-    public function setText($text)
+    public function setText(string $text)
     {
         $this->text = $text;
     }

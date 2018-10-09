@@ -78,7 +78,7 @@ class ReportBaseFootnote extends ReportBaseElement
     /**
      * Add text.
      *
-     * @param $t
+     * @param string $t
      *
      * @return void
      */
@@ -100,12 +100,12 @@ class ReportBaseFootnote extends ReportBaseElement
     /**
      * Set the width to wrap text.
      *
-     * @param $wrapwidth
-     * @param $cellwidth
+     * @param float $wrapwidth
+     * @param float $cellwidth
      *
      * @return float
      */
-    public function setWrapWidth($wrapwidth, $cellwidth): float
+    public function setWrapWidth(float $wrapwidth, float $cellwidth): float
     {
         $this->wrapWidthCell = $cellwidth;
         if (strpos($this->numText, "\n") !== false) {
@@ -120,24 +120,24 @@ class ReportBaseFootnote extends ReportBaseElement
     /**
      * Set the number.
      *
-     * @param $n
+     * @param int $n
      *
      * @return void
      */
-    public function setNum($n)
+    public function setNum(int $n)
     {
         $this->num     = $n;
-        $this->numText = "$n ";
+        $this->numText = (string) $n . ' ';
     }
 
     /**
      * Add a link.
      *
-     * @param $a
+     * @param string $a
      *
      * @return void
      */
-    public function setAddlink($a)
+    public function setAddlink(string $a)
     {
         $this->addlink = $a;
     }

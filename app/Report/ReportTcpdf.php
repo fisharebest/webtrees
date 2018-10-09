@@ -191,11 +191,11 @@ class ReportTcpdf extends TCPDF
     /**
      * Remove the header.
      *
-     * @param $index
+     * @param int $index
      *
      * @return void
      */
-    public function removeHeader($index)
+    public function removeHeader(int $index)
     {
         unset($this->headerElements[$index]);
     }
@@ -203,11 +203,11 @@ class ReportTcpdf extends TCPDF
     /**
      * Remove the page header.
      *
-     * @param $index
+     * @param int $index
      *
      * @return void
      */
-    public function removePageHeader($index)
+    public function removePageHeader(int $index)
     {
         unset($this->pageHeaderElements[$index]);
     }
@@ -215,11 +215,11 @@ class ReportTcpdf extends TCPDF
     /**
      * Remove the body.
      *
-     * @param $index
+     * @param int $index
      *
      * @return void
      */
-    public function removeBody($index)
+    public function removeBody(int $index)
     {
         unset($this->bodyElements[$index]);
     }
@@ -227,11 +227,11 @@ class ReportTcpdf extends TCPDF
     /**
      * Remove the footer.
      *
-     * @param $index
+     * @param int $index
      *
      * @return void
      */
-    public function removeFooter($index)
+    public function removeFooter(int $index)
     {
         unset($this->footerElements[$index]);
     }
@@ -261,13 +261,13 @@ class ReportTcpdf extends TCPDF
     /**
      * Set the report.
      *
-     * @param $r
+     * @param AbstractReport $report
      *
      * @return void
      */
-    public function setReport($r)
+    public function setReport(AbstractReport $report)
     {
-        $this->wt_report = $r;
+        $this->wt_report = $report;
     }
 
     /**
@@ -287,7 +287,7 @@ class ReportTcpdf extends TCPDF
      *
      * @return void
      */
-    public function setCurrentStyle($s)
+    public function setCurrentStyle(string $s)
     {
         $this->currentStyle = $s;
         $style              = $this->wt_report->getStyle($s);
@@ -301,7 +301,7 @@ class ReportTcpdf extends TCPDF
      *
      * @return array
      */
-    public function getStyle($s): array
+    public function getStyle(string $s): array
     {
         if (!isset($this->wt_report->styles[$s])) {
             $s                           = $this->getCurrentStyle();
@@ -319,7 +319,7 @@ class ReportTcpdf extends TCPDF
      *
      * @return float
      */
-    public function addMarginX($x): float
+    public function addMarginX(float $x): float
     {
         $m = $this->getMargins();
         if ($this->getRTL()) {

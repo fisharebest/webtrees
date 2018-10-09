@@ -64,12 +64,12 @@ class ReportBaseText extends ReportBaseElement
     /**
      * Set the width for word-wrapping.
      *
-     * @param $wrapwidth
-     * @param $cellwidth
+     * @param float $wrapwidth
+     * @param float $cellwidth
      *
      * @return float
      */
-    public function setWrapWidth($wrapwidth, $cellwidth): float
+    public function setWrapWidth(float $wrapwidth, float $cellwidth): float
     {
         $this->wrapWidthCell = $cellwidth;
         if (strpos($this->text, "\n") !== false) {

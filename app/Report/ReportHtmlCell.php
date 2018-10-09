@@ -53,13 +53,13 @@ class ReportHtmlCell extends ReportBaseCell
         $cP = $renderer->cPadding;
 
         // Adjust the positions
-        if ($this->left == '.') {
+        if ($this->left === ReportBaseElement::CURRENT_POSITION) {
             $this->left = $renderer->getX();
         } else {
             $renderer->setX($this->left);
         }
 
-        if ($this->top == '.') {
+        if ($this->top === ReportBaseElement::CURRENT_POSITION) {
             $this->top = $renderer->getY();
         } else {
             $renderer->setY($this->top);

@@ -31,16 +31,16 @@ class ReportHtmlLine extends ReportBaseLine
      */
     public function render($renderer)
     {
-        if ($this->x1 == '.') {
+        if ($this->x1 === ReportBaseElement::CURRENT_POSITION) {
             $this->x1 = $renderer->getX();
         }
-        if ($this->y1 == '.') {
+        if ($this->y1 === ReportBaseElement::CURRENT_POSITION) {
             $this->y1 = $renderer->getY();
         }
-        if ($this->x2 == '.') {
+        if ($this->x2 === ReportBaseElement::CURRENT_POSITION) {
             $this->x2 = $renderer->getRemainingWidth();
         }
-        if ($this->y2 == '.') {
+        if ($this->y2 === ReportBaseElement::CURRENT_POSITION) {
             $this->y2 = $renderer->getY();
         }
         // Vertical line

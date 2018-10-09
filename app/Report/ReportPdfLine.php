@@ -31,16 +31,16 @@ class ReportPdfLine extends ReportBaseLine
      */
     public function render($renderer)
     {
-        if ($this->x1 == '.') {
+        if ($this->x1 === ReportBaseElement::CURRENT_POSITION) {
             $this->x1 = $renderer->GetX();
         }
-        if ($this->y1 == '.') {
+        if ($this->y1 === ReportBaseElement::CURRENT_POSITION) {
             $this->y1 = $renderer->GetY();
         }
-        if ($this->x2 == '.') {
+        if ($this->x2 === ReportBaseElement::CURRENT_POSITION) {
             $this->x2 = $renderer->getMaxLineWidth();
         }
-        if ($this->y2 == '.') {
+        if ($this->y2 === ReportBaseElement::CURRENT_POSITION) {
             $this->y2 = $renderer->GetY();
         }
         if ($renderer->getRTL()) {

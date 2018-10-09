@@ -115,7 +115,7 @@ class ReportPdfTextbox extends ReportBaseTextbox
         $renderer->largestFontHeight = 0;
 
         // If current position (left)
-        if ($this->left == '.') {
+        if ($this->left === ReportBaseElement::CURRENT_POSITION) {
             $cX = $renderer->GetX();
         } else {
             // For static position add margin (returns and updates X)
@@ -123,7 +123,7 @@ class ReportPdfTextbox extends ReportBaseTextbox
         }
 
         // If current position (top)
-        if ($this->top == '.') {
+        if ($this->top === ReportBaseElement::CURRENT_POSITION) {
             $cY = $renderer->GetY();
         } else {
             $cY = $this->top;
