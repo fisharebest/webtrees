@@ -925,10 +925,10 @@ class FunctionsImport
                 Database::prepare(
                     "INSERT INTO `##dates` (d_day,d_month,d_mon,d_year,d_julianday1,d_julianday2,d_fact,d_gid,d_file,d_type) VALUES (?,?,?,?,?,?,?,?,?,?)"
                 )->execute([
-                    $date->minimumDate()->d,
+                    $date->minimumDate()->day,
                     $date->minimumDate()->format('%O'),
-                    $date->minimumDate()->m,
-                    $date->minimumDate()->y,
+                    $date->minimumDate()->month,
+                    $date->minimumDate()->year,
                     $date->minimumDate()->minimumJulianDay(),
                     $date->minimumDate()->maximumJulianDay(),
                     $fact,
@@ -940,10 +940,10 @@ class FunctionsImport
                     Database::prepare(
                         "INSERT INTO `##dates` (d_day,d_month,d_mon,d_year,d_julianday1,d_julianday2,d_fact,d_gid,d_file,d_type) VALUES (?,?,?,?,?,?,?,?,?,?)"
                     )->execute([
-                        $date->maximumDate()->d,
+                        $date->maximumDate()->day,
                         $date->maximumDate()->format('%O'),
-                        $date->maximumDate()->m,
-                        $date->maximumDate()->y,
+                        $date->maximumDate()->month,
+                        $date->maximumDate()->year,
                         $date->maximumDate()->minimumJulianDay(),
                         $date->maximumDate()->maximumJulianDay(),
                         $fact,

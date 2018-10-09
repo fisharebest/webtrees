@@ -25,8 +25,7 @@ use Fisharebest\Webtrees\TestCase;
 class CalendarDateTest extends TestCase
 {
     /**
-     * @covers \Fisharebest\Webtrees\Date\CalendarDate::ageDifference
-     *
+     * @covers \Fisharebest\Webtrees\Date\AbstractCalendarDate::ageDifference
      * @return void
      */
     public function testAgeDifference()
@@ -65,8 +64,7 @@ class CalendarDateTest extends TestCase
     }
 
     /**
-     * @covers \Fisharebest\Webtrees\Date\CalendarDate::ageDifference
-     *
+     * @covers \Fisharebest\Webtrees\Date\AbstractCalendarDate::ageDifference
      * @return void
      */
     public function testAgeDifferenceIncomplete()
@@ -109,8 +107,7 @@ class CalendarDateTest extends TestCase
     }
 
     /**
-     * @covers \Fisharebest\Webtrees\Date\CalendarDate::ageDifference
-     *
+     * @covers \Fisharebest\Webtrees\Date\AbstractCalendarDate::ageDifference
      * @return void
      */
     public function testAgeDifferenceOverlap()

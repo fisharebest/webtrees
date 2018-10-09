@@ -52,8 +52,8 @@ class CalendarService
         $month_names   = [];
 
         foreach ($month_numbers as $month_number) {
-            $calendar_date->d = 1;
-            $calendar_date->m = $month_number;
+            $calendar_date->day   = 1;
+            $calendar_date->month = $month_number;
             $calendar_date->setJdFromYmd();
 
             if ($month_number === 6 && $calendar_date instanceof JewishDate && !$calendar_date->isLeapYear()) {
@@ -233,7 +233,7 @@ class CalendarService
             // SIMPLE CASES:
             // a) Non-hebrew anniversaries
             // b) Hebrew months TVT, SHV, IYR, SVN, TMZ, AAV, ELL
-            if (!$anniv instanceof JewishDate || in_array($anniv->m, [
+            if (!$anniv instanceof JewishDate || in_array($anniv->month, [
                     1,
                     5,
                     6,
@@ -245,39 +245,39 @@ class CalendarService
                 ])) {
                 // Dates without days go on the first day of the month
                 // Dates with invalid days go on the last day of the month
-                if ($anniv->d === 1) {
+                if ($anniv->day === 1) {
                     $where .= " AND d_day <= 1";
-                } elseif ($anniv->d === $anniv->daysInMonth()) {
+                } elseif ($anniv->day === $anniv->daysInMonth()) {
                     $where       .= " AND d_day >= :day";
-                    $args['day'] = $anniv->d;
+                    $args['day'] = $anniv->day;
                 } else {
                     $where       .= " AND d_day = :day";
-                    $args['day'] = $anniv->d;
+                    $args['day'] = $anniv->day;
                 }
                 $where .= " AND d_mon = :month";
-                $args['month'] = $anniv->m;
+                $args['month'] = $anniv->month;
             } else {
                 // SPECIAL CASES:
-                switch ($anniv->m) {
+                switch ($anniv->month) {
                     case 2:
                         // 29 CSH does not include 30 CSH (but would include an invalid 31 CSH if there were no 30 CSH)
-                        if ($anniv->d === 1) {
+                        if ($anniv->day === 1) {
                             $where .= " AND d_day <= 1 AND d_mon = 2";
-                        } elseif ($anniv->d === 30) {
+                        } elseif ($anniv->day === 30) {
                             $where .= " AND d_day >= 30 AND d_mon = 2";
-                        } elseif ($anniv->d === 29 && $anniv->daysInMonth() === 29) {
+                        } elseif ($anniv->day === 29 && $anniv->daysInMonth() === 29) {
                             $where .= " AND (d_day = 29 OR d_day > 30) AND d_mon = 2";
                         } else {
                             $where .= " AND d_day = :day AND d_mon = 2";
-                            $args['day'] = $anniv->d;
+                            $args['day'] = $anniv->day;
                         }
                         break;
                     case 3:
                         // 1 KSL includes 30 CSH (if this year didn’t have 30 CSH)
                         // 29 KSL does not include 30 KSL (but would include an invalid 31 KSL if there were no 30 KSL)
-                        if ($anniv->d === 1) {
+                        if ($anniv->day === 1) {
                             $tmp = new JewishDate([
-                                $anniv->y,
+                                $anniv->year,
                                 'CSH',
                                 1,
                             ]);
@@ -286,20 +286,20 @@ class CalendarService
                             } else {
                                 $where .= " AND d_day <= 1 AND d_mon = 3";
                             }
-                        } elseif ($anniv->d === 30) {
+                        } elseif ($anniv->day === 30) {
                             $where .= " AND d_day >= 30 AND d_mon = 3";
-                        } elseif ($anniv->d == 29 && $anniv->daysInMonth() === 29) {
+                        } elseif ($anniv->day == 29 && $anniv->daysInMonth() === 29) {
                             $where .= " AND (d_day = 29 OR d_day > 30) AND d_mon = 3";
                         } else {
                             $where .= " AND d_day = :day AND d_mon = 3";
-                            $args['day'] = $anniv->d;
+                            $args['day'] = $anniv->day;
                         }
                         break;
                     case 4:
                         // 1 TVT includes 30 KSL (if this year didn’t have 30 KSL)
-                        if ($anniv->d === 1) {
+                        if ($anniv->day === 1) {
                             $tmp = new JewishDate([
-                                $anniv->y,
+                                $anniv->year,
                                 'KSL',
                                 1,
                             ]);
@@ -308,46 +308,46 @@ class CalendarService
                             } else {
                                 $where .= " AND d_day <= 1 AND d_mon = 4";
                             }
-                        } elseif ($anniv->d === $anniv->daysInMonth()) {
+                        } elseif ($anniv->day === $anniv->daysInMonth()) {
                             $where       .= " AND d_day >= :day AND d_mon=4";
-                            $args['day'] = $anniv->d;
+                            $args['day'] = $anniv->day;
                         } else {
                             $where       .= " AND d_day = :day AND d_mon=4";
-                            $args['day'] = $anniv->d;
+                            $args['day'] = $anniv->day;
                         }
                         break;
                     case 7: // ADS includes ADR (non-leap)
-                        if ($anniv->d === 1) {
+                        if ($anniv->day === 1) {
                             $where .= " AND d_day <= 1";
-                        } elseif ($anniv->d === $anniv->daysInMonth()) {
+                        } elseif ($anniv->day === $anniv->daysInMonth()) {
                             $where       .= " AND d_day >= :day";
-                            $args['day'] = $anniv->d;
+                            $args['day'] = $anniv->day;
                         } else {
                             $where       .= " AND d_day = :day";
-                            $args['day'] = $anniv->d;
+                            $args['day'] = $anniv->day;
                         }
                         $where .= " AND (d_mon = 6 AND MOD(7 * d_year + 1, 19) >= 7 OR d_mon = 7)";
                         break;
                     case 8: // 1 NSN includes 30 ADR, if this year is non-leap
-                        if ($anniv->d === 1) {
+                        if ($anniv->day === 1) {
                             if ($anniv->isLeapYear()) {
                                 $where .= " AND d_day <= 1 AND d_mon = 8";
                             } else {
                                 $where .= " AND (d_day <= 1 AND d_mon = 8 OR d_day = 30 AND d_mon = 6)";
                             }
-                        } elseif ($anniv->d === $anniv->daysInMonth()) {
+                        } elseif ($anniv->day === $anniv->daysInMonth()) {
                             $where       .= " AND d_day >= :day AND d_mon = 8";
-                            $args['day'] = $anniv->d;
+                            $args['day'] = $anniv->day;
                         } else {
                             $where       .= " AND d_day = :day AND d_mon = 8";
-                            $args['day'] = $anniv->d;
+                            $args['day'] = $anniv->day;
                         }
                         break;
                 }
             }
             // Only events in the past (includes dates without a year)
             $where .= " AND d_year <= :year";
-            $args['year'] = $anniv->y;
+            $args['year'] = $anniv->year;
 
             if ($facts) {
                 // Restrict to certain types of fact
@@ -381,7 +381,7 @@ class CalendarService
                     $anniv_date = new Date($row->d_type . ' ' . $row->d_day . ' ' . $row->d_month . ' ' . $row->d_year);
                     foreach ($record->getFacts() as $fact) {
                         if (($fact->getDate()->minimumJulianDay() === $anniv_date->minimumJulianDay() || $fact->getDate()->maximumJulianDay() === $anniv_date->maximumJulianDay()) && $fact->getTag() === $row->d_fact) {
-                            $fact->anniv   = $row->d_year === '0' ? 0 : $anniv->y - $row->d_year;
+                            $fact->anniv   = $row->d_year === '0' ? 0 : $anniv->year - $row->d_year;
                             $fact->jd      = $jd;
                             $found_facts[] = $fact;
                         }

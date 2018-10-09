@@ -18,7 +18,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Date;
 
 /**
- * Definitions for the Roman calendar
+ * Definitions for Roman dtes.
  *
  * The 5.5.1 gedcom spec mentions this calendar, but gives no details of
  * how it is to be represented.... This class is just a place holder so that
@@ -26,6 +26,9 @@ namespace Fisharebest\Webtrees\Date;
  */
 class RomanDate extends JulianDate
 {
+    // GEDCOM calendar escape
+    const ESCAPE = '@#DROMAN@';
+
     /**
      * Generate the %E format for a date.
      *
@@ -33,7 +36,7 @@ class RomanDate extends JulianDate
      */
     protected function formatGedcomYear(): string
     {
-        return sprintf('%04dAUC', $this->y);
+        return sprintf('%04dAUC', $this->year);
     }
 
     /**
@@ -43,6 +46,6 @@ class RomanDate extends JulianDate
      */
     protected function formatLongYear(): string
     {
-        return $this->y . 'AUC';
+        return $this->year . 'AUC';
     }
 }

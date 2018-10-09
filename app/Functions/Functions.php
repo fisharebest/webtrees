@@ -745,7 +745,7 @@ class Functions
                     $dob1 = $person1->getBirthDate();
                     $dob2 = $person2->getBirthDate();
                     if ($dob1->isOK() && $dob2->isOK()) {
-                        if (abs($dob1->julianDay() - $dob2->julianDay()) < 2 && $dob1->minimumDate()->d > 0 && $dob2->minimumDate()->d > 0) {
+                        if (abs($dob1->julianDay() - $dob2->julianDay()) < 2 && $dob1->minimumDate()->day > 0 && $dob2->minimumDate()->day > 0) {
                             // Exclude BEF, AFT, etc.
                             return I18N::translate('twin brother');
                         }
@@ -766,7 +766,7 @@ class Functions
                     $dob1 = $person1->getBirthDate();
                     $dob2 = $person2->getBirthDate();
                     if ($dob1->isOK() && $dob2->isOK()) {
-                        if (abs($dob1->julianDay() - $dob2->julianDay()) < 2 && $dob1->minimumDate()->d > 0 && $dob2->minimumDate()->d > 0) {
+                        if (abs($dob1->julianDay() - $dob2->julianDay()) < 2 && $dob1->minimumDate()->day > 0 && $dob2->minimumDate()->day > 0) {
                             // Exclude BEF, AFT, etc.
                             return I18N::translate('twin sister');
                         }
@@ -787,7 +787,7 @@ class Functions
                     $dob1 = $person1->getBirthDate();
                     $dob2 = $person2->getBirthDate();
                     if ($dob1->isOK() && $dob2->isOK()) {
-                        if (abs($dob1->julianDay() - $dob2->julianDay()) < 2 && $dob1->minimumDate()->d > 0 && $dob2->minimumDate()->d > 0) {
+                        if (abs($dob1->julianDay() - $dob2->julianDay()) < 2 && $dob1->minimumDate()->day > 0 && $dob2->minimumDate()->day > 0) {
                             // Exclude BEF, AFT, etc.
                             return I18N::translate('twin sibling');
                         }

@@ -320,7 +320,7 @@ class Family extends GedcomRecord
      */
     public function getMarriageYear(): int
     {
-        return $this->getMarriageDate()->minimumDate()->y;
+        return $this->getMarriageDate()->minimumDate()->year;
     }
 
     /**

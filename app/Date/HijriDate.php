@@ -21,13 +21,16 @@ use Fisharebest\ExtCalendar\ArabicCalendar;
 use Fisharebest\Webtrees\I18N;
 
 /**
- * Definitions for the Hijri calendar.
+ * Definitions for Hijri dates.
  *
  * Note that these are "theoretical" dates.
  * "True" dates are based on local lunar observations, and can be a +/- one day.
  */
-class HijriDate extends CalendarDate
+class HijriDate extends AbstractCalendarDate
 {
+    // GEDCOM calendar escape
+    const ESCAPE = '@#DHIJRI@';
+
     // Convert GEDCOM month names to month numbers
     const MONTH_ABBREVIATIONS = [
         ''      => 0,
@@ -51,7 +54,7 @@ class HijriDate extends CalendarDate
      * day/month/year strings from a GEDCOM date
      * another CalendarDate object
      *
-     * @param array|int|CalendarDate $date
+     * @param array|int|AbstractCalendarDate $date
      */
     public function __construct($date)
     {

@@ -19,7 +19,7 @@ namespace Fisharebest\Webtrees;
 
 use DomainException;
 use Fisharebest\ExtCalendar\GregorianCalendar;
-use Fisharebest\Webtrees\Date\CalendarDate;
+use Fisharebest\Webtrees\Date\AbstractCalendarDate;
 use Fisharebest\Webtrees\Date\FrenchDate;
 use Fisharebest\Webtrees\Date\GregorianDate;
 use Fisharebest\Webtrees\Date\HijriDate;
@@ -44,13 +44,13 @@ class Date
     /** @var string Optional qualifier, such as BEF, FROM, ABT */
     public $qual1 = '';
 
-    /** @var CalendarDate  The first (or only) date */
+    /** @var AbstractCalendarDate  The first (or only) date */
     private $date1;
 
     /** @var string  Optional qualifier, such as TO, AND */
     public $qual2 = '';
 
-    /** @var CalendarDate|null Optional second date */
+    /** @var AbstractCalendarDate|null Optional second date */
     private $date2 = null;
 
     /** @var string ptional text, as included with an INTerpreted date */
@@ -95,16 +95,14 @@ class Date
 
     /**
      * Convert a calendar date, such as "12 JUN 1943" into calendar date object.
-     *
      * A GEDCOM date range may have two calendar dates.
      *
      * @param string $date
      *
      * @throws DomainException
-     *
-     * @return CalendarDate
+     * @return AbstractCalendarDate
      */
-    private function parseDate($date): CalendarDate
+    private function parseDate($date): AbstractCalendarDate
     {
         // Valid calendar escape specified? - use it
         if (preg_match('/^(@#D(?:GREGORIAN|JULIAN|HEBREW|HIJRI|JALALI|FRENCH R|ROMAN)+@) ?(.*)/', $date, $match)) {
@@ -144,18 +142,18 @@ class Date
 
         // Unambiguous dates - override calendar escape
         if (preg_match('/^(TSH|CSH|KSL|TVT|SHV|ADR|ADS|NSN|IYR|SVN|TMZ|AAV|ELL)$/', $m)) {
-            $cal = '@#DHEBREW@';
+            $cal = JewishDate::ESCAPE;
         } else {
             if (preg_match('/^(VEND|BRUM|FRIM|NIVO|PLUV|VENT|GERM|FLOR|PRAI|MESS|THER|FRUC|COMP)$/', $m)) {
-                $cal = '@#DFRENCH R@';
+                $cal = FrenchDate::ESCAPE;
             } else {
                 if (preg_match('/^(MUHAR|SAFAR|RABI[AT]|JUMA[AT]|RAJAB|SHAAB|RAMAD|SHAWW|DHUAQ|DHUAH)$/', $m)) {
-                    $cal = '@#DHIJRI@'; // This is a WT extension
+                    $cal = HijriDate::ESCAPE; // This is a WT extension
                 } else {
                     if (preg_match('/^(FARVA|ORDIB|KHORD|TIR|MORDA|SHAHR|MEHR|ABAN|AZAR|DEY|BAHMA|ESFAN)$/', $m)) {
-                        $cal = '@#DJALALI@'; // This is a WT extension
+                        $cal = JalaliDate::ESCAPE; // This is a WT extension
                     } elseif (preg_match('/^\d{1,4}( B\.C\.)|\d\d\d\d\/\d\d$/', $y)) {
-                        $cal = '@#DJULIAN@';
+                        $cal = JulianDate::ESCAPE;
                     }
                 }
             }
@@ -164,55 +162,55 @@ class Date
         // Ambiguous dates - don't override calendar escape
         if ($cal == '') {
             if (preg_match('/^(JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)$/', $m)) {
-                $cal = '@#DGREGORIAN@';
+                $cal =  GregorianDate::ESCAPE;
             } else {
                 if (preg_match('/^[345]\d\d\d$/', $y)) {
                     // Year 3000-5999
-                    $cal = '@#DHEBREW@';
+                    $cal = JewishDate::ESCAPE;
                 } else {
-                    $cal = '@#DGREGORIAN@';
+                    $cal = GregorianDate::ESCAPE;
                 }
             }
         }
         // Now construct an object of the correct type
         switch ($cal) {
-            case '@#DGREGORIAN@':
+            case GregorianDate::ESCAPE:
                 return new GregorianDate([
                     $y,
                     $m,
                     $d,
                 ]);
-            case '@#DJULIAN@':
+            case JulianDate::ESCAPE:
                 return new JulianDate([
                     $y,
                     $m,
                     $d,
                 ]);
-            case '@#DHEBREW@':
+            case JewishDate::ESCAPE:
                 return new JewishDate([
                     $y,
                     $m,
                     $d,
                 ]);
-            case '@#DHIJRI@':
+            case HijriDate::ESCAPE:
                 return new HijriDate([
                     $y,
                     $m,
                     $d,
                 ]);
-            case '@#DFRENCH R@':
+            case FrenchDate::ESCAPE:
                 return new FrenchDate([
                     $y,
                     $m,
                     $d,
                 ]);
-            case '@#DJALALI@':
+            case JalaliDate::ESCAPE:
                 return new JalaliDate([
                     $y,
                     $m,
                     $d,
                 ]);
-            case '@#DROMAN@':
+            case RomanDate::ESCAPE:
                 return new RomanDate([
                     $y,
                     $m,
@@ -329,7 +327,7 @@ class Date
         // Add URLs, if requested
         if ($url) {
             $d1 = '<a href="' . $this->date1->calendarUrl($date_format) . '" rel="nofollow">' . $d1 . '</a>';
-            if ($this->date2 instanceof CalendarDate) {
+            if ($this->date2 instanceof AbstractCalendarDate) {
                 $d2 = '<a href="' . $this->date2->calendarUrl($date_format) . '" rel="nofollow">' . $d2 . '</a>';
             }
         }
@@ -396,9 +394,9 @@ class Date
      *
      * In the date “FROM 1900 TO 1910”, this would be 1900.
      *
-     * @return CalendarDate
+     * @return AbstractCalendarDate
      */
-    public function minimumDate(): CalendarDate
+    public function minimumDate(): AbstractCalendarDate
     {
         return $this->date1;
     }
@@ -408,7 +406,7 @@ class Date
      *
      * In the date “FROM 1900 TO 1910”, this would be 1910.
      *
-     * @return CalendarDate
+     * @return AbstractCalendarDate
      */
     public function maximumDate()
     {
@@ -461,10 +459,10 @@ class Date
      */
     public function addYears(int $years, string $qualifier = ''): Date
     {
-        $tmp           = clone $this;
-        $tmp->date1->y += $years;
-        $tmp->date1->m = 0;
-        $tmp->date1->d = 0;
+        $tmp               = clone $this;
+        $tmp->date1->year  += $years;
+        $tmp->date1->month = 0;
+        $tmp->date1->day   = 0;
         $tmp->date1->setJdFromYmd();
         $tmp->qual1 = $qualifier;
         $tmp->qual2 = '';
@@ -534,7 +532,7 @@ class Date
      */
     public static function getAge(Date $d1, Date $d2 = null): string
     {
-        if ($d2 instanceof CalendarDate) {
+        if ($d2 instanceof AbstractCalendarDate) {
             if ($d2->maximumJulianDay() >= $d1->minimumJulianDay() && $d2->minimumJulianDay() <= $d1->minimumJulianDay()) {
                 // Overlapping dates
                 $jd = $d1->minimumJulianDay();

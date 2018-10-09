@@ -22,10 +22,13 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\RomanNumeralsService;
 
 /**
- * Definitions for the French Republican calendar
+ * Definitions for French Republican dates.
  */
-class FrenchDate extends CalendarDate
+class FrenchDate extends AbstractCalendarDate
 {
+    // GEDCOM calendar escape
+    const ESCAPE = '@#DFRENCH R@';
+
     // Convert GEDCOM month names to month numbers
     const MONTH_ABBREVIATIONS = [
         ''     => 0,
@@ -53,7 +56,7 @@ class FrenchDate extends CalendarDate
      * day/month/year strings from a GEDCOM date
      * another CalendarDate object
      *
-     * @param array|int|CalendarDate $date
+     * @param array|int|AbstractCalendarDate $date
      */
     public function __construct($date)
     {
@@ -266,7 +269,7 @@ class FrenchDate extends CalendarDate
     }
 
     /**
-     * Full day of th eweek
+     * Full day of the week
      *
      * @param int $day_number
      *
@@ -323,6 +326,6 @@ class FrenchDate extends CalendarDate
      */
     protected function formatLongYear(): string
     {
-        return $this->roman_numerals_service->numberToRomanNumerals($this->y);
+        return $this->roman_numerals_service->numberToRomanNumerals($this->year);
     }
 }

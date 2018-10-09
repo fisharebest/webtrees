@@ -280,8 +280,8 @@
         $date     = $gdate->minimumDate();
         $date     = $date->convertToCalendar('gregorian');
         $year     = $date->y;
-        $month    = max(1, $date->m);
-        $day      = max(1, $date->d);
+        $month    = max(1, $date->month());
+        $day      = max(1, $date->day());
         $xoffset  = 0 + 22;
         $yoffset  = 0 + (($year - $baseyear) * $scale) - ($scale);
         $yoffset  = $yoffset + (($month / 12) * $scale);

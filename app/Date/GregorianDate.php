@@ -20,17 +20,20 @@ namespace Fisharebest\Webtrees\Date;
 use Fisharebest\ExtCalendar\GregorianCalendar;
 
 /**
- * Definitions for the Gregorian calendar
+ * Definitions for Gregorian dates.
  */
-class GregorianDate extends CalendarDate
+class GregorianDate extends AbstractGregorianJulianDate
 {
+    // GEDCOM calendar escape
+    const ESCAPE = '@#DGREGORIAN@';
+
     /**
      * Create a date from either:
      * a Julian day number
      * day/month/year strings from a GEDCOM date
      * another CalendarDate object
      *
-     * @param array|int|CalendarDate $date
+     * @param array|int|AbstractCalendarDate $date
      */
     public function __construct($date)
     {

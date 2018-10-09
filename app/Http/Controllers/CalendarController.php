@@ -106,27 +106,27 @@ class CalendarController extends AbstractBaseController
                     $year = (-$year) . ' B.C.';
                 } // need BC to parse date
                 $ged_date = new Date("{$cal} {$day} {$month} {$year}");
-                $year     = $ged_date->minimumDate()->y; // need negative year for year entry field.
+                $year     = $ged_date->minimumDate()->year; // need negative year for year entry field.
             }
         }
         $cal_date = $ged_date->minimumDate();
 
         // Fill in any missing bits with todays date
         $today = $cal_date->today();
-        if ($cal_date->d === 0) {
-            $cal_date->d = $today->d;
+        if ($cal_date->day === 0) {
+            $cal_date->day = $today->day;
         }
-        if ($cal_date->m === 0) {
-            $cal_date->m = $today->m;
+        if ($cal_date->month === 0) {
+            $cal_date->month = $today->month;
         }
-        if ($cal_date->y === 0) {
-            $cal_date->y = $today->y;
+        if ($cal_date->year === 0) {
+            $cal_date->year = $today->year;
         }
 
         $cal_date->setJdFromYmd();
 
         if ($year === 0) {
-            $year = $cal_date->y;
+            $year = $cal_date->year;
         }
 
         // Extract values from date
@@ -135,7 +135,7 @@ class CalendarController extends AbstractBaseController
         $today_month   = $today->format('%O');
 
         // Invalid dates? Go to monthly view, where they'll be found.
-        if ($cal_date->d > $days_in_month && $view === 'day') {
+        if ($cal_date->day > $days_in_month && $view === 'day') {
             $view = 'month';
         }
 
@@ -231,14 +231,14 @@ class CalendarController extends AbstractBaseController
 
         // Fill in any missing bits with todays date
         $today = $cal_date->today();
-        if ($cal_date->d === 0) {
-            $cal_date->d = $today->d;
+        if ($cal_date->day === 0) {
+            $cal_date->day = $today->day;
         }
-        if ($cal_date->m === 0) {
-            $cal_date->m = $today->m;
+        if ($cal_date->month === 0) {
+            $cal_date->month = $today->month;
         }
-        if ($cal_date->y === 0) {
-            $cal_date->y = $today->y;
+        if ($cal_date->year === 0) {
+            $cal_date->year = $today->year;
         }
 
         $cal_date->setJdFromYmd();
@@ -248,7 +248,7 @@ class CalendarController extends AbstractBaseController
         $days_in_week  = $cal_date->daysInWeek();
 
         // Invalid dates? Go to monthly view, where they'll be found.
-        if ($cal_date->d > $days_in_month && $view === 'day') {
+        if ($cal_date->day > $days_in_month && $view === 'day') {
             $view = 'month';
         }
 
@@ -260,7 +260,7 @@ class CalendarController extends AbstractBaseController
                 $found_facts = $this->applyFilter($calendar_service->getAnniversaryEvents($cal_date->minimumJulianDay(), $filterev, $tree), $filterof, $filtersx);
                 break;
             case 'month':
-                $cal_date->d = 0;
+                $cal_date->day = 0;
                 $cal_date->setJdFromYmd();
                 // Make a separate list for each day. Unspecified/invalid days go in day 0.
                 for ($d = 0; $d <= $days_in_month; ++$d) {
@@ -270,7 +270,7 @@ class CalendarController extends AbstractBaseController
                 for ($jd = $cal_date->minimumJulianDay(); $jd <= $cal_date->maximumJulianDay(); ++$jd) {
                     foreach ($this->applyFilter($calendar_service->getAnniversaryEvents($jd, $filterev, $tree), $filterof, $filtersx) as $fact) {
                         $tmp = $fact->getDate()->minimumDate();
-                        if ($tmp->d >= 1 && $tmp->d <= $tmp->daysInMonth()) {
+                        if ($tmp->day >= 1 && $tmp->day <= $tmp->daysInMonth()) {
                             // If the day is valid (for its own calendar), display it in the
                             // anniversary day (for the display calendar).
                             $found_facts[$jd - $cal_date->minimumJulianDay() + 1][] = $fact;
@@ -282,7 +282,7 @@ class CalendarController extends AbstractBaseController
                 }
                 break;
             case 'year':
-                $cal_date->m = 0;
+                $cal_date->month = 0;
                 $cal_date->setJdFromYmd();
                 $found_facts = $this->applyFilter($calendar_service->getCalendarEvents($ged_date->minimumJulianDay(), $ged_date->maximumJulianDay(), $filterev, $tree), $filterof, $filtersx);
                 // Eliminate duplicates (e.g. BET JUL 1900 AND SEP 1900 will appear twice in 1900)
@@ -410,7 +410,7 @@ class CalendarController extends AbstractBaseController
                         // Format the day number using the calendar
                         $tmp   = new Date($cal_date->format("%@ {$d} %O %E"));
                         $d_fmt = $tmp->minimumDate()->format('%j');
-                        if ($d === $today->d && $cal_date->m === $today->m) {
+                        if ($d === $today->day && $cal_date->month === $today->month) {
                             echo '<span class="cal_day current_day">', $d_fmt, '</span>';
                         } else {
                             echo '<span class="cal_day">', $d_fmt, '</span>';

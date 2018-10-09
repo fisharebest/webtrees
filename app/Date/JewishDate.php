@@ -23,8 +23,11 @@ use Fisharebest\Webtrees\I18N;
 /**
  * Definitions for the Jewish calendar
  */
-class JewishDate extends CalendarDate
+class JewishDate extends AbstractCalendarDate
 {
+    // GEDCOM calendar escape
+    const ESCAPE = '@#DHEBREW@';
+
     // Convert GEDCOM month names to month numbers
     const MONTH_ABBREVIATIONS = [
         ''    => 0,
@@ -49,7 +52,7 @@ class JewishDate extends CalendarDate
      * day/month/year strings from a GEDCOM date
      * another CalendarDate object
      *
-     * @param array|int|CalendarDate $date
+     * @param array|int|AbstractCalendarDate $date
      */
     public function __construct($date)
     {
@@ -65,7 +68,7 @@ class JewishDate extends CalendarDate
     protected function formatDay(): string
     {
         if (WT_LOCALE === 'he' || WT_LOCALE === 'yi') {
-            return (new JewishCalendar())->numberToHebrewNumerals($this->d, true);
+            return (new JewishCalendar())->numberToHebrewNumerals($this->day, true);
         }
 
         return parent::formatDay();
@@ -82,7 +85,7 @@ class JewishDate extends CalendarDate
     protected function formatShortYear(): string
     {
         if (WT_LOCALE === 'he' || WT_LOCALE === 'yi') {
-            return (new JewishCalendar())->numberToHebrewNumerals($this->y, false);
+            return (new JewishCalendar())->numberToHebrewNumerals($this->year, false);
         }
 
         return parent::formatLongYear();
@@ -96,7 +99,7 @@ class JewishDate extends CalendarDate
     protected function formatLongYear(): string
     {
         if (WT_LOCALE === 'he' || WT_LOCALE === 'yi') {
-            return (new JewishCalendar())->numberToHebrewNumerals($this->y, true);
+            return (new JewishCalendar())->numberToHebrewNumerals($this->year, true);
         }
 
         return parent::formatLongYear();
@@ -334,16 +337,16 @@ class JewishDate extends CalendarDate
      */
     protected function nextMonth(): array
     {
-        if ($this->m == 6 && !$this->isLeapYear()) {
+        if ($this->month == 6 && !$this->isLeapYear()) {
             return [
-                $this->y,
+                $this->year,
                 8,
             ];
         }
 
         return [
-            $this->y + ($this->m == 13 ? 1 : 0),
-            ($this->m % 13) + 1,
+            $this->year + ($this->month == 13 ? 1 : 0),
+            ($this->month % 13) + 1,
         ];
     }
 }

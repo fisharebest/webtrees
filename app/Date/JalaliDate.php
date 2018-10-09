@@ -21,10 +21,13 @@ use Fisharebest\ExtCalendar\PersianCalendar;
 use Fisharebest\Webtrees\I18N;
 
 /**
- * Definitions for the Jalali calendar
+ * Definitions for Jalali dates.
  */
-class JalaliDate extends CalendarDate
+class JalaliDate extends AbstractCalendarDate
 {
+    // GEDCOM calendar escape
+    const ESCAPE = '@#DJALALI@';
+
     // Convert GEDCOM month names to month numbers
     const MONTH_ABBREVIATIONS = [
         ''      => 0,
@@ -48,7 +51,7 @@ class JalaliDate extends CalendarDate
      * day/month/year strings from a GEDCOM date
      * another CalendarDate object
      *
-     * @param array|int|CalendarDate $date
+     * @param array|int|AbstractCalendarDate $date
      */
     public function __construct($date)
     {

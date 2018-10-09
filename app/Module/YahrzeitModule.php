@@ -91,22 +91,22 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface
                 if ($date->minimumDate() instanceof JewishDate && $date->minimumJulianDay() === $date->maximumJulianDay()) {
                     // ...then adjust DEAT dates (but not _YART)
                     if ($fact->getTag() === 'DEAT') {
-                        $today  = new JewishDate($jd);
-                        $hd     = $fact->getDate()->minimumDate();
-                        $hd1    = new JewishDate($hd);
-                        $hd1->y += 1;
+                        $today     = new JewishDate($jd);
+                        $hd        = $fact->getDate()->minimumDate();
+                        $hd1       = new JewishDate($hd);
+                        $hd1->year += 1;
                         $hd1->setJdFromYmd();
                         // Special rules. See http://www.hebcal.com/help/anniv.html
                         // Everything else is taken care of by our standard anniversary rules.
-                        if ($hd->d == 30 && $hd->m == 2 && $hd->y != 0 && $hd1->daysInMonth() < 30) {
+                        if ($hd->day == 30 && $hd->month == 2 && $hd->year != 0 && $hd1->daysInMonth() < 30) {
                             // 30 CSH - Last day in CSH
-                            $jd = $jewish_calendar->ymdToJd($today->y, 3, 1) - 1;
-                        } elseif ($hd->d == 30 && $hd->m == 3 && $hd->y != 0 && $hd1->daysInMonth() < 30) {
+                            $jd = $jewish_calendar->ymdToJd($today->year, 3, 1) - 1;
+                        } elseif ($hd->day == 30 && $hd->month == 3 && $hd->year != 0 && $hd1->daysInMonth() < 30) {
                             // 30 KSL - Last day in KSL
-                            $jd = $jewish_calendar->ymdToJd($today->y, 4, 1) - 1;
-                        } elseif ($hd->d == 30 && $hd->m == 6 && $hd->y != 0 && $today->daysInMonth() < 30 && !$today->isLeapYear()) {
+                            $jd = $jewish_calendar->ymdToJd($today->year, 4, 1) - 1;
+                        } elseif ($hd->day == 30 && $hd->month == 6 && $hd->year != 0 && $today->daysInMonth() < 30 && !$today->isLeapYear()) {
                             // 30 ADR - Last day in SHV
-                            $jd = $jewish_calendar->ymdToJd($today->y, 6, 1) - 1;
+                            $jd = $jewish_calendar->ymdToJd($today->year, 6, 1) - 1;
                         }
                     }
 
