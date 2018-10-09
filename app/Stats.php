@@ -156,11 +156,11 @@ class Stats
      *
      * @return string[]
      */
-    private function getTags($text): array
+    private function getTags(string $text): array
     {
         $tags = [];
 
-        preg_match_all('/#([^#]+)#/', (string) $text, $matches, PREG_SET_ORDER);
+        preg_match_all('/#([^#]+)#/', $text, $matches, PREG_SET_ORDER);
 
         foreach ($matches as $match) {
             $params = explode(':', $match[1]);
@@ -181,7 +181,7 @@ class Stats
      *
      * @return string
      */
-    public function embedTags($text): string
+    public function embedTags(string $text): string
     {
         if (strpos($text, '#') !== false) {
             $text = strtr($text, $this->getTags($text));
@@ -726,7 +726,7 @@ class Stats
      *
      * @return string
      */
-    public function totalEvents($events = []): string
+    public function totalEvents(array $events = []): string
     {
         $sql  = "SELECT COUNT(*) AS tot FROM `##dates` WHERE d_file=?";
         $vars = [$this->tree->getTreeId()];
