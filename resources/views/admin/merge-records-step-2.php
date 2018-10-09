@@ -1,3 +1,4 @@
+<?php use Fisharebest\Webtrees\GedcomRecord; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 
 <?= view('components/breadcrumbs', ['links' => [route('admin-control-panel') => I18N::translate('Control panel'), route('admin-trees') => I18N::translate('Manage family trees'), $title]]) ?>
@@ -36,7 +37,7 @@
                                 </td>
                                 <td>
                                     <div class="gedcom-data" dir="ltr"><?= e($fact->getGedcom()) ?></div>
-                                    <?php if ($fact->getTarget()) : ?>
+                                    <?php if ($fact->getTarget() instanceof GedcomRecord) : ?>
                                         <a href="<?= e($fact->getTarget()->url()) ?>">
                                             <?= $fact->getTarget()->getFullName() ?>
                                         </a>
@@ -83,7 +84,7 @@
                                         </td>
                                         <td>
                                             <div class="gedcom-data" dir="ltr"><?= e($fact->getGedcom()) ?></div>
-                                            <?php if ($fact->getTarget()) : ?>
+                                            <?php if ($fact->getTarget() instanceof GedcomRecord) : ?>
                                                 <a href="<?= e($fact->getTarget()->url()) ?>">
                                                     <?= $fact->getTarget()->getFullName() ?>
                                                 </a>
@@ -129,7 +130,7 @@
                                         </td>
                                         <td>
                                             <div class="gedcom-data" dir="ltr"><?= e($fact->getGedcom()) ?></div>
-                                            <?php if ($fact->getTarget()) : ?>
+                                            <?php if ($fact->getTarget() instanceof GedcomRecord) : ?>
                                                 <a href="<?= e($fact->getTarget()->url()) ?>">
                                                     <?= $fact->getTarget()->getFullName() ?>
                                                 </a>

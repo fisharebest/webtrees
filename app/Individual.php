@@ -185,7 +185,7 @@ class Individual extends GedcomRecord
                 ];
                 foreach ($user_individual->getFacts('FAM[CS]', false, Auth::PRIV_HIDE) as $fact) {
                     $family = $fact->getTarget();
-                    if ($family) {
+                    if ($family instanceof Family) {
                         $cache[1][] = $family;
                     }
                 }
@@ -214,7 +214,7 @@ class Individual extends GedcomRecord
                         foreach ($family->getFacts('HUSB|WIFE|CHIL', false, Auth::PRIV_HIDE) as $fact) {
                             $individual = $fact->getTarget();
                             // Don’t backtrack
-                            if ($individual && !in_array($individual, $cache[$n - 2], true)) {
+                            if ($individual instanceof Individual && !in_array($individual, $cache[$n - 2], true)) {
                                 $cache[$n][] = $individual;
                             }
                         }
@@ -228,7 +228,7 @@ class Individual extends GedcomRecord
                         foreach ($individual->getFacts('FAM[CS]', false, Auth::PRIV_HIDE) as $fact) {
                             $family = $fact->getTarget();
                             // Don’t backtrack
-                            if ($family && !in_array($family, $cache[$n - 2], true)) {
+                            if ($family instanceof Family && !in_array($family, $cache[$n - 2], true)) {
                                 $cache[$n][] = $family;
                             }
                         }
@@ -824,7 +824,7 @@ class Individual extends GedcomRecord
         $families = [];
         foreach ($this->getFacts('FAMS', false, $access_level, $SHOW_PRIVATE_RELATIONSHIPS) as $fact) {
             $family = $fact->getTarget();
-            if ($family && ($SHOW_PRIVATE_RELATIONSHIPS || $family->canShow($access_level))) {
+            if ($family instanceof Family && ($SHOW_PRIVATE_RELATIONSHIPS || $family->canShow($access_level))) {
                 $families[] = $family;
             }
         }
@@ -890,7 +890,7 @@ class Individual extends GedcomRecord
         $families = [];
         foreach ($this->getFacts('FAMC', false, $access_level, $SHOW_PRIVATE_RELATIONSHIPS) as $fact) {
             $family = $fact->getTarget();
-            if ($family && ($SHOW_PRIVATE_RELATIONSHIPS || $family->canShow($access_level))) {
+            if ($family instanceof Family && ($SHOW_PRIVATE_RELATIONSHIPS || $family->canShow($access_level))) {
                 $families[] = $family;
             }
         }

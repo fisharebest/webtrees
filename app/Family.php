@@ -252,7 +252,7 @@ class Family extends GedcomRecord
         $children = [];
         foreach ($this->getFacts('CHIL', false, $access_level, $SHOW_PRIVATE_RELATIONSHIPS) as $fact) {
             $child = $fact->getTarget();
-            if ($child && ($SHOW_PRIVATE_RELATIONSHIPS || $child->canShowName($access_level))) {
+            if ($child instanceof Individual && ($SHOW_PRIVATE_RELATIONSHIPS || $child->canShowName($access_level))) {
                 $children[] = $child;
             }
         }

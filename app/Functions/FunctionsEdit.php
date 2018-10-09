@@ -603,7 +603,7 @@ class FunctionsEdit
                 $spouse_link = $family->getFirstFact($fact);
                 if ($spouse_link) {
                     $spouse = $spouse_link->getTarget();
-                    if ($spouse) {
+                    if ($spouse instanceof Individual) {
                         $html .= $spouse->getFullName();
                     }
                 }

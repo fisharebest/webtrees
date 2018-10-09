@@ -32,6 +32,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Note;
+use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
@@ -281,7 +282,7 @@ class FunctionsPrintFacts
                 break;
             case 'REPO':
                 $repository = $fact->getTarget();
-                if ($repository !== null) {
+                if ($repository instanceof Repository) {
                     echo '<div><a class="field" href="', e($repository->url()), '">', $repository->getFullName(), '</a></div>';
                 } else {
                     echo '<div class="error">', e($fact->getValue()), '</div>';
