@@ -246,7 +246,6 @@ class AdminLocationController extends AbstractBaseController
         $maxlevel  = (int) Database::prepare("SELECT max(pl_level) FROM `##placelocation`")->execute()->fetchOne();
         $startfqpn = [];
         $hierarchy = $this->gethierarchy($parent_id);
-        $geojson   = [];
 
         // Create the file name
         $place_name = empty($hierarchy) ? 'Global' : $hierarchy[0]->fqpn; // $hierarchy[0] always holds the full placename
@@ -341,9 +340,6 @@ class AdminLocationController extends AbstractBaseController
 
         $filename    = '';
         $places      = [];
-        $input_array = [];
-        $fields      = 0;
-        $delimiter   = '';
         $field_names = [
             'pl_level',
             'pl_long',
@@ -530,19 +526,6 @@ class AdminLocationController extends AbstractBaseController
             $insertRecordQry = Database::prepare(
                 "INSERT INTO `##placelocation` (pl_id, pl_parent_id, pl_level, pl_place)" .
                 " VALUES (:id, :parent, :level, :place)"
-            );
-            $checkRecordQry = Database::prepare(
-                "SELECT pl1.pl_id" .
-                " FROM	  `##placelocation` AS pl1" .
-                " LEFT JOIN `##placelocation` AS pl2 ON (pl1.pl_parent_id = pl2.pl_id)" .
-                " LEFT JOIN `##placelocation` AS pl3 ON (pl2.pl_parent_id = pl3.pl_id)" .
-                " LEFT JOIN `##placelocation` AS pl4 ON (pl3.pl_parent_id = pl4.pl_id)" .
-                " LEFT JOIN `##placelocation` AS pl5 ON (pl4.pl_parent_id = pl5.pl_id)" .
-                " LEFT JOIN `##placelocation` AS pl6 ON (pl5.pl_parent_id = pl6.pl_id)" .
-                " LEFT JOIN `##placelocation` AS pl7 ON (pl6.pl_parent_id = pl7.pl_id)" .
-                " LEFT JOIN `##placelocation` AS pl8 ON (pl7.pl_parent_id = pl8.pl_id)" .
-                " LEFT JOIN `##placelocation` AS pl9 ON (pl8.pl_parent_id = pl9.pl_id)" .
-                " WHERE CONCAT_WS(',', pl1.pl_place, pl2.pl_place, pl3.pl_place, pl4.pl_place, pl5.pl_place, pl6.pl_place, pl7.pl_place, pl8.pl_place, pl9.pl_place) = :f1"
             );
 
             foreach ($diff as $place) {
