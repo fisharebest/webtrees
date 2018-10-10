@@ -55,14 +55,6 @@ class Family extends GedcomRecord
         if (preg_match('/^1 WIFE @(.+)@/m', $gedcom . $pending, $match)) {
             $this->wife = Individual::getInstance($match[1], $tree);
         }
-
-        // Make sure husb/wife are the right way round.
-        if ($this->husb && $this->husb->getSex() === 'F' || $this->wife && $this->wife->getSex() === 'M') {
-            list($this->husb, $this->wife) = [
-                $this->wife,
-                $this->husb,
-            ];
-        }
     }
 
     /**
