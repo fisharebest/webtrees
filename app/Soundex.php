@@ -63,19 +63,23 @@ class Soundex
      */
     public static function russell(string $text): string
     {
-        $words         = preg_split('/\s/', $text, -1, PREG_SPLIT_NO_EMPTY);
+        $words         = explode(' ', $text);
         $soundex_array = [];
+
         foreach ($words as $word) {
             $soundex = soundex($word);
+
             // Only return codes from recognisable sounds
             if ($soundex !== '0000') {
                 $soundex_array[] = $soundex;
             }
         }
+
         // Combine words, e.g. “New York” as “Newyork”
         if (count($words) > 1) {
             $soundex_array[] = soundex(strtr($text, ' ', ''));
         }
+
         // A varchar(255) column can only hold 51 4-character codes (plus 50 delimiters)
         $soundex_array = array_slice(array_unique($soundex_array), 0, 51);
 
@@ -91,8 +95,9 @@ class Soundex
      */
     public static function daitchMokotoff(string $text): string
     {
-        $words         = preg_split('/\s/', $text, -1, PREG_SPLIT_NO_EMPTY);
+        $words         = explode(' ', $text);
         $soundex_array = [];
+
         foreach ($words as $word) {
             $soundex_array = array_merge($soundex_array, self::daitchMokotoffWord($word));
         }
@@ -100,6 +105,7 @@ class Soundex
         if (count($words) > 1) {
             $soundex_array = array_merge($soundex_array, self::daitchMokotoffWord(strtr($text, ' ', '')));
         }
+
         // A varchar(255) column can only hold 36 6-character codes (plus 35 delimiters)
         $soundex_array = array_slice(array_unique($soundex_array), 0, 36);
 
