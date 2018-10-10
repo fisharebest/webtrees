@@ -241,7 +241,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
                     }
                 }
 
-                if  ($object instanceof Individual || $object instanceof Family) {
+                if ($object instanceof Individual || $object instanceof Family) {
                     $filetext .= $record . "\n";
                     $filetext .= "1 SOUR @WEBTREES@\n";
                     $filetext .= '2 PAGE ' . WT_BASE_URL . $object->url() . "\n";
