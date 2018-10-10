@@ -205,7 +205,7 @@ class DebugBar
             $collector = self::$debugbar->getCollector('exceptions');
 
             if ($collector instanceof ExceptionsCollector) {
-                self::$debugbar['exceptions']->addThrowable($throwable);
+                $collector->addThrowable($throwable);
             }
         }
     }
