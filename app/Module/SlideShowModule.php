@@ -22,6 +22,7 @@ use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Media;
+use Fisharebest\Webtrees\MediaFile;
 use Fisharebest\Webtrees\Tree;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -94,11 +95,11 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
 
         // Keep looking through the media until a suitable one is found.
         $random_media = null;
-        while ($all_media) {
+        while (!empty($all_media)) {
             $n          = array_rand($all_media);
             $media      = Media::getInstance($all_media[$n], $tree);
             $media_file = $media->firstImageFile();
-            if ($media->canShow() && $media_file !== null && !$media_file->isExternal()) {
+            if ($media->canShow() && $media_file instanceof MediaFile && !$media_file->isExternal()) {
                 // Check if it is linked to a suitable individual
                 foreach ($media->linkedIndividuals('OBJE') as $indi) {
                     if (
@@ -119,7 +120,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
             $content = view('modules/random_media/slide-show', [
                 'block_id'            => $block_id,
                 'media'               => $random_media,
-                'media_file'          => $media_file,
+                'media_file'          => $random_media->firstImageFile(),
                 'show_controls'       => $controls,
                 'start_automatically' => $start,
                 'tree'                => $tree,
