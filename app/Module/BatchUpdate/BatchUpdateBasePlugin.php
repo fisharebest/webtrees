@@ -94,8 +94,8 @@ abstract class BatchUpdateBasePlugin
      */
     public function getActionPreview(GedcomRecord $record): string
     {
-        $old_lines   = preg_split('/[\n]+/', $record->getGedcom());
-        $new_lines   = preg_split('/[\n]+/', $this->updateRecord($record));
+        $old_lines   = explode("\n", $record->getGedcom());
+        $new_lines   = explode("\n", $this->updateRecord($record));
         $algorithm   = new MyersDiff();
         $differences = $algorithm->calculate($old_lines, $new_lines);
         $diff_lines  = [];
