@@ -42,6 +42,7 @@ use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use League\Flysystem\Filesystem;
 use League\Flysystem\ZipArchive\ZipArchiveAdapter;
+use function str_replace;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -175,7 +176,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $path = $tree->getPreference('MEDIA_DIRECTORY');
 
         // GEDCOM file header
-        $filetext = FunctionsExport::gedcomHeader($tree);
+        $filetext = FunctionsExport::gedcomHeader($tree, $convert ? 'ANSI' : 'UTF-8');
 
         // Include SUBM/SUBN records, if they exist
         $subn =
@@ -240,10 +241,6 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
                     }
                 }
 
-                if ($convert) {
-                    $record = utf8_decode($record);
-                }
-
                 if  ($object instanceof Individual || $object instanceof Family) {
                     $filetext .= $record . "\n";
                     $filetext .= "1 SOUR @WEBTREES@\n";
@@ -276,10 +273,9 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $filetext .= "0 TRLR\n";
 
         // Make sure the preferred line endings are used
-        $filetext = preg_replace("/[\r\n]+/", Gedcom::EOL, $filetext);
+        $filetext = str_replace('\n', Gedcom::EOL, $filetext);
 
         if ($convert) {
-            $filetext = str_replace('UTF-8', 'ANSI', $filetext);
             $filetext = utf8_decode($filetext);
         }
 

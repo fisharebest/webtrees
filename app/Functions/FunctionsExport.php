@@ -78,11 +78,12 @@ class FunctionsExport
     /**
      * Create a header for a (newly-created or already-imported) gedcom file.
      *
-     * @param Tree $tree
+     * @param Tree   $tree
+     * @param string $char "UTF-8" or "ANSI"
      *
      * @return string
      */
-    public static function gedcomHeader(Tree $tree): string
+    public static function gedcomHeader(Tree $tree, string $char): string
     {
         // Default values for a new header
         $HEAD = '0 HEAD';
@@ -90,7 +91,7 @@ class FunctionsExport
         $DEST = "\n1 DEST DISKETTE";
         $DATE = "\n1 DATE " . strtoupper(date('d M Y')) . "\n2 TIME " . date('H:i:s');
         $GEDC = "\n1 GEDC\n2 VERS 5.5.1\n2 FORM Lineage-Linked";
-        $CHAR = "\n1 CHAR UTF-8";
+        $CHAR = "\n1 CHAR " . $char;
         $FILE = "\n1 FILE " . $tree->getName();
         $LANG = '';
         $COPR = '';
@@ -180,12 +181,12 @@ class FunctionsExport
      */
     public static function exportGedcom(Tree $tree, $gedout, int $access_level, string $media_path, string $encoding)
     {
-        $head = self::gedcomHeader($tree);
+        $head = self::gedcomHeader($tree, $encoding);
 
         if ($encoding === 'ANSI') {
-            $head = str_replace('UTF-8', 'ANSI', $head);
             $head = utf8_decode($head);
         }
+
         $head = self::reformatRecord($head);
         fwrite($gedout, $head);
 

@@ -590,7 +590,7 @@ class Tree
             'tree_id_5' => $this->tree_id,
         ]);
 
-        $buffer = FunctionsExport::reformatRecord(FunctionsExport::gedcomHeader($this));
+        $buffer = FunctionsExport::reformatRecord(FunctionsExport::gedcomHeader($this, 'UTF-8'));
         while (($row = $stmt->fetch()) !== false) {
             $buffer .= FunctionsExport::reformatRecord($row->gedcom);
             if (strlen($buffer) > 65535) {
