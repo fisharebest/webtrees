@@ -291,7 +291,7 @@ try {
 
     // Note that we can't stop this timer, as running the action will
     // generate the response - which includes (and stops) the timer
-    DebugBar::startMeasure('controller_action', $controller_action);
+    DebugBar::startMeasure('controller_action');
 
     $middleware_stack = [
         CheckForMaintenanceMode::class,
