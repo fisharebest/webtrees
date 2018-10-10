@@ -67,14 +67,21 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 
         switch ($sortStyle) {
             case 'name':
-                uasort($records, ['self', 'sortByNameAndChangeDate']);
+                uasort($records, function (GedcomRecord $a, GedcomRecord $b): int {
+                    return GedcomRecord::compare($a, $b) ?: $b->lastChangeTimestamp(true) - $a->lastChangeTimestamp(true);
+                });
                 break;
+
             case 'date_asc':
-                uasort($records, ['self', 'sortByChangeDateAndName']);
-                $records = array_reverse($records);
+                uasort($records, function (GedcomRecord $a, GedcomRecord $b): int {
+                    return $a->lastChangeTimestamp(true) - $b->lastChangeTimestamp(true) ?: GedcomRecord::compare($b, $a);
+                });
                 break;
+
             case 'date_desc':
-                uasort($records, ['self', 'sortByChangeDateAndName']);
+                uasort($records, function (GedcomRecord $a, GedcomRecord $b): int {
+                    return $b->lastChangeTimestamp(true) - $a->lastChangeTimestamp(true) ?: GedcomRecord::compare($a, $b);
+                });
         }
 
         if (empty($records)) {
@@ -232,31 +239,5 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
         }
 
         return $records;
-    }
-
-    /**
-     * Sort the records by (1) last change date and (2) name
-     *
-     * @param GedcomRecord $a
-     * @param GedcomRecord $b
-     *
-     * @return int
-     */
-    private static function sortByChangeDateAndName(GedcomRecord $a, GedcomRecord $b): int
-    {
-        return $b->lastChangeTimestamp(true) - $a->lastChangeTimestamp(true) ?: GedcomRecord::compare($a, $b);
-    }
-
-    /**
-     * Sort the records by (1) name and (2) last change date
-     *
-     * @param GedcomRecord $a
-     * @param GedcomRecord $b
-     *
-     * @return int
-     */
-    private static function sortByNameAndChangeDate(GedcomRecord $a, GedcomRecord $b): int
-    {
-        return GedcomRecord::compare($a, $b) ?: $b->lastChangeTimestamp(true) - $a->lastChangeTimestamp(true);
     }
 }
