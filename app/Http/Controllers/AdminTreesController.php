@@ -460,7 +460,7 @@ class AdminTreesController extends AbstractBaseController
             }
 
             // Need to force-close the filesystem
-            $zip_filesystem = null;
+            unset($zip_filesystem);
 
             $response = new BinaryFileResponse($temp_zip_file);
             $response->deleteFileAfterSend(true);
