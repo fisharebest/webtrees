@@ -18,8 +18,11 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Closure;
+use DebugBar\DataCollector\ExceptionsCollector;
+use DebugBar\DataCollector\MessagesCollector;
 use DebugBar\DataCollector\PDO\PDOCollector;
 use DebugBar\DataCollector\PDO\TraceablePDO;
+use DebugBar\DataCollector\TimeDataCollector;
 use DebugBar\JavascriptRenderer;
 use DebugBar\StandardDebugBar;
 use DebugBar\Storage\FileStorage;
@@ -74,7 +77,7 @@ class DebugBar
      */
     public static function initPDO(PDO $pdo): PDO
     {
-        if (self::$debugbar !== null) {
+        if (self::$debugbar instanceof StandardDebugBar) {
             $pdo = new TraceablePDO($pdo);
             self::$debugbar->addCollector(new PDOCollector($pdo));
         }
@@ -89,7 +92,7 @@ class DebugBar
      */
     public static function render(): string
     {
-        if (self::$debugbar !== null) {
+        if (self::$debugbar instanceof StandardDebugBar) {
             return self::$renderer->render();
         }
 
@@ -103,7 +106,7 @@ class DebugBar
      */
     public static function renderHead(): string
     {
-        if (self::$debugbar !== null) {
+        if (self::$debugbar instanceof StandardDebugBar) {
             return self::$renderer->renderHead();
         }
 
@@ -117,7 +120,7 @@ class DebugBar
      */
     public static function stackData()
     {
-        if (self::$debugbar !== null) {
+        if (self::$debugbar instanceof StandardDebugBar) {
             self::$debugbar->stackData();
         }
     }
@@ -129,7 +132,7 @@ class DebugBar
      */
     public static function sendDataInHeaders()
     {
-        if (self::$debugbar !== null) {
+        if (self::$debugbar instanceof StandardDebugBar) {
             self::$debugbar->sendDataInHeaders();
         }
     }
@@ -145,8 +148,12 @@ class DebugBar
      */
     public static function addMessage($message, $label = 'info', $isString = true)
     {
-        if (self::$debugbar !== null) {
-            self::$debugbar['messages']->addMessage($message, $label, $isString);
+        if (self::$debugbar instanceof StandardDebugBar) {
+            $collector = self::$debugbar->getCollector('messages');
+
+            if ($collector instanceof MessagesCollector) {
+                $collector->addMessage($message, $label, $isString);
+            }
         }
     }
 
@@ -161,8 +168,12 @@ class DebugBar
      */
     public static function startMeasure($name, $label = null, $collector = null)
     {
-        if (self::$debugbar !== null) {
-            self::$debugbar['time']->startMeasure($name, $label, $collector);
+        if (self::$debugbar instanceof StandardDebugBar) {
+            $collector = self::$debugbar->getCollector('time');
+
+            if ($collector instanceof TimeDataCollector) {
+                $collector->startMeasure($name, $label, $collector);
+            }
         }
     }
 
@@ -176,8 +187,12 @@ class DebugBar
      */
     public static function stopMeasure($name, $params = [])
     {
-        if (self::$debugbar !== null) {
-            self::$debugbar['time']->stopMeasure($name, $params);
+        if (self::$debugbar instanceof StandardDebugBar) {
+            $collector = self::$debugbar->getCollector('time');
+
+            if ($collector instanceof TimeDataCollector) {
+                $collector->stopMeasure($name, $params);
+            }
         }
     }
 
@@ -192,8 +207,12 @@ class DebugBar
      */
     public static function measure($label, Closure $closure, $collector = null)
     {
-        if (self::$debugbar !== null) {
-            self::$debugbar['time']->measure($label, $closure, $collector);
+        if (self::$debugbar instanceof StandardDebugBar) {
+            $collector = self::$debugbar->getCollector('time');
+
+            if ($collector instanceof TimeDataCollector) {
+                $collector->measure($label, $closure, $collector);
+            }
         }
     }
 
@@ -206,8 +225,12 @@ class DebugBar
      */
     public static function addThrowable(Throwable $throwable)
     {
-        if (self::$debugbar !== null) {
-            self::$debugbar['exceptions']->addThrowable($throwable);
+        if (self::$debugbar instanceof StandardDebugBar) {
+            $collector = self::$debugbar->getCollector('exceptions');
+
+            if ($collector instanceof ExceptionsCollector) {
+                self::$debugbar['exceptions']->addThrowable($throwable);
+            }
         }
     }
 
@@ -221,8 +244,12 @@ class DebugBar
      */
     public static function addView(string $view, array $data)
     {
-        if (self::$debugbar !== null) {
-            self::$debugbar['views']->addView($view, $data);
+        if (self::$debugbar instanceof StandardDebugBar) {
+            $collector = self::$debugbar->getCollector('views');
+
+            if ($collector instanceof ViewCollector) {
+                $collector->addView($view, $data);
+            }
         }
     }
 }
