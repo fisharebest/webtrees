@@ -243,31 +243,26 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
                 if ($convert) {
                     $record = utf8_decode($record);
                 }
-                switch ($object::RECORD_TYPE) {
-                    case 'INDI':
-                    case 'FAM':
-                        $filetext .= $record . "\n";
-                        $filetext .= "1 SOUR @WEBTREES@\n";
-                        $filetext .= '2 PAGE ' . WT_BASE_URL . $object->url() . "\n";
-                        break;
-                    case 'SOUR':
-                        $filetext .= $record . "\n";
-                        $filetext .= '1 NOTE ' . WT_BASE_URL . $object->url() . "\n";
-                        break;
-                    case 'OBJE':
-                        // Add the file to the archive
-                        foreach ($object->mediaFiles() as $media_file) {
-                            if (file_exists($media_file->getServerFilename())) {
-                                $fp = fopen($media_file->getServerFilename(), 'r');
-                                $zip_filesystem->writeStream($path . $media_file->filename(), $fp);
-                                fclose($fp);
-                            }
+
+                if  ($object instanceof Individual || $object instanceof Family) {
+                    $filetext .= $record . "\n";
+                    $filetext .= "1 SOUR @WEBTREES@\n";
+                    $filetext .= '2 PAGE ' . WT_BASE_URL . $object->url() . "\n";
+                } elseif ($object instanceof Source) {
+                    $filetext .= $record . "\n";
+                    $filetext .= '1 NOTE ' . WT_BASE_URL . $object->url() . "\n";
+                } elseif ($object instanceof Media) {
+                    // Add the media files to the archive
+                    foreach ($object->mediaFiles() as $media_file) {
+                        if (file_exists($media_file->getServerFilename())) {
+                            $fp = fopen($media_file->getServerFilename(), 'r');
+                            $zip_filesystem->writeStream($path . $media_file->filename(), $fp);
+                            fclose($fp);
                         }
-                        $filetext .= $record . "\n";
-                        break;
-                    default:
-                        $filetext .= $record . "\n";
-                        break;
+                    }
+                    $filetext .= $record . "\n";
+                } else {
+                    $filetext .= $record . "\n";
                 }
             }
         }
@@ -283,7 +278,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         // Make sure the preferred line endings are used
         $filetext = preg_replace("/[\r\n]+/", Gedcom::EOL, $filetext);
 
-        if ($convert === 'yes') {
+        if ($convert) {
             $filetext = str_replace('UTF-8', 'ANSI', $filetext);
             $filetext = utf8_decode($filetext);
         }
