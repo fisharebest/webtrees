@@ -553,11 +553,11 @@ class FunctionsRtl
      * Get the next character from an input string
      *
      * @param string $text
-     * @param string $offset
+     * @param int    $offset
      *
      * @return array
      */
-    public static function getChar($text, $offset): array
+    public static function getChar(string $text, int $offset): array
     {
         if ($text == '') {
             return [
