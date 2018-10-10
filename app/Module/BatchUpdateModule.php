@@ -331,15 +331,16 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
     private function getPluginList(): array
     {
         $plugins = [];
+        $files   = glob(__DIR__ . '/BatchUpdate/BatchUpdate*Plugin.php');
 
-        $dir_handle = opendir(__DIR__ . '/BatchUpdate');
-        while (($file = readdir($dir_handle)) !== false) {
-            if (substr($file, -10) == 'Plugin.php' && $file !== 'BatchUpdateBasePlugin.php') {
-                $class           = '\Fisharebest\Webtrees\Module\BatchUpdate\\' . basename($file, '.php');
+        foreach ($files as $file) {
+            $base_class = basename($file, '.php');
+
+            if ($base_class !== 'BatchUpdateBasePlugin') {
+                $class           = __NAMESPACE__ . '\\BatchUpdate\\' . basename($file, '.php');
                 $plugins[$class] = new $class();
             }
         }
-        closedir($dir_handle);
 
         return $plugins;
     }
