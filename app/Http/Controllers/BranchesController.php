@@ -256,7 +256,7 @@ class BranchesController extends AbstractBaseController
 
         // Is this individual one of our ancestors?
         $sosa = array_search($individual, $ancestors, true);
-        if ($sosa !== false) {
+        if (is_int($sosa)) {
             $sosa_class = 'search_hit';
             $sosa_html  = ' <a class="details1 ' . $individual->getBoxStyle() . '" title="' . I18N::translate('Sosa') . '" href="' . e(route('relationships', [
                     'xref1' => $individual->getXref(),
@@ -294,9 +294,9 @@ class BranchesController extends AbstractBaseController
                 $fam_html .= $indi_html; // Repeat the individual details for each spouse.
 
                 $spouse = $family->getSpouse($individual);
-                if ($spouse) {
+                if ($spouse instanceof Individual) {
                     $sosa = array_search($spouse, $ancestors, true);
-                    if ($sosa) {
+                    if (is_int($sosa)) {
                         $sosa_class = 'search_hit';
                         $sosa_html  = ' <a class="details1 ' . $spouse->getBoxStyle() . '" title="' . I18N::translate('Sosa') . '" href="' . e(route('relationships', [
                                 'xref2' => $ancestors[1]->getXref(),
