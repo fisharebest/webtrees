@@ -1147,17 +1147,17 @@
     },
     {
         "name": "symfony/cache",
-        "version": "v3.4.15",
-        "version_normalized": "3.4.15.0",
+        "version": "v3.4.17",
+        "version_normalized": "3.4.17.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/cache.git",
-            "reference": "caba4f9cfc77cef48ac88497ce8204368424d92c"
+            "reference": "4f29972d3fae5febec5c18db70e7dd2957e74ad6"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/cache/zipball/caba4f9cfc77cef48ac88497ce8204368424d92c",
-            "reference": "caba4f9cfc77cef48ac88497ce8204368424d92c",
+            "url": "https://api.github.com/repos/symfony/cache/zipball/4f29972d3fae5febec5c18db70e7dd2957e74ad6",
+            "reference": "4f29972d3fae5febec5c18db70e7dd2957e74ad6",
             "shasum": ""
         },
         "require": {
@@ -1180,7 +1180,7 @@
             "doctrine/dbal": "~2.4",
             "predis/predis": "~1.0"
         },
-        "time": "2018-08-24T09:47:29+00:00",
+        "time": "2018-09-25T07:13:51+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1219,17 +1219,17 @@
     },
     {
         "name": "symfony/debug",
-        "version": "v3.4.15",
-        "version_normalized": "3.4.15.0",
+        "version": "v3.4.17",
+        "version_normalized": "3.4.17.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/debug.git",
-            "reference": "c4625e75341e4fb309ce0c049cbf7fb84b8897cd"
+            "reference": "0a612e9dfbd2ccce03eb174365f31ecdca930ff6"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/debug/zipball/c4625e75341e4fb309ce0c049cbf7fb84b8897cd",
-            "reference": "c4625e75341e4fb309ce0c049cbf7fb84b8897cd",
+            "url": "https://api.github.com/repos/symfony/debug/zipball/0a612e9dfbd2ccce03eb174365f31ecdca930ff6",
+            "reference": "0a612e9dfbd2ccce03eb174365f31ecdca930ff6",
             "shasum": ""
         },
         "require": {
@@ -1242,7 +1242,7 @@
         "require-dev": {
             "symfony/http-kernel": "~2.8|~3.0|~4.0"
         },
-        "time": "2018-08-03T10:42:44+00:00",
+        "time": "2018-10-02T16:33:53+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1277,8 +1277,8 @@
     },
     {
         "name": "symfony/event-dispatcher",
-        "version": "v3.4.15",
-        "version_normalized": "3.4.15.0",
+        "version": "v3.4.17",
+        "version_normalized": "3.4.17.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/event-dispatcher.git",
@@ -1342,8 +1342,8 @@
     },
     {
         "name": "symfony/expression-language",
-        "version": "v3.4.15",
-        "version_normalized": "3.4.15.0",
+        "version": "v3.4.17",
+        "version_normalized": "3.4.17.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/expression-language.git",
@@ -1394,17 +1394,17 @@
     },
     {
         "name": "symfony/http-foundation",
-        "version": "v3.4.15",
-        "version_normalized": "3.4.15.0",
+        "version": "v3.4.17",
+        "version_normalized": "3.4.17.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/http-foundation.git",
-            "reference": "2fb33cb6eefe6e790e4023f7c534a9e4214252fc"
+            "reference": "3a4498236ade473c52b92d509303e5fd1b211ab1"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/http-foundation/zipball/2fb33cb6eefe6e790e4023f7c534a9e4214252fc",
-            "reference": "2fb33cb6eefe6e790e4023f7c534a9e4214252fc",
+            "url": "https://api.github.com/repos/symfony/http-foundation/zipball/3a4498236ade473c52b92d509303e5fd1b211ab1",
+            "reference": "3a4498236ade473c52b92d509303e5fd1b211ab1",
             "shasum": ""
         },
         "require": {
@@ -1415,7 +1415,7 @@
         "require-dev": {
             "symfony/expression-language": "~2.8|~3.0|~4.0"
         },
-        "time": "2018-08-27T17:45:33+00:00",
+        "time": "2018-10-03T08:48:18+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1450,17 +1450,17 @@
     },
     {
         "name": "symfony/http-kernel",
-        "version": "v3.4.15",
-        "version_normalized": "3.4.15.0",
+        "version": "v3.4.17",
+        "version_normalized": "3.4.17.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/http-kernel.git",
-            "reference": "2819693b25f480966cbfa13b651abccfed4871ca"
+            "reference": "a0944a9a1d8845da724236cde9a310964acadb1c"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/http-kernel/zipball/2819693b25f480966cbfa13b651abccfed4871ca",
-            "reference": "2819693b25f480966cbfa13b651abccfed4871ca",
+            "url": "https://api.github.com/repos/symfony/http-kernel/zipball/a0944a9a1d8845da724236cde9a310964acadb1c",
+            "reference": "a0944a9a1d8845da724236cde9a310964acadb1c",
             "shasum": ""
         },
         "require": {
@@ -1506,7 +1506,7 @@
             "symfony/finder": "",
             "symfony/var-dumper": ""
         },
-        "time": "2018-08-28T06:06:12+00:00",
+        "time": "2018-10-03T12:03:34+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
