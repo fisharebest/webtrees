@@ -18,6 +18,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Report;
 
 use DomainException;
+use Exception;
 
 /**
  * Class ReportParserBase
@@ -34,6 +35,8 @@ class ReportParserBase
      * Create a parser for a report
      *
      * @param string $report The XML filename
+     *
+     * @throws Exception
      */
     public function __construct(string $report)
     {
@@ -60,6 +63,10 @@ class ReportParserBase
 
         $fp = fopen($report, 'r');
 
+        if ($fp === false) {
+            throw new Exception('Cannot open ' . $report);
+        }
+
         while (($data = fread($fp, 4096))) {
             if (!xml_parse($this->xml_parser, $data, feof($fp))) {
                 throw new DomainException(sprintf(
@@ -69,6 +76,8 @@ class ReportParserBase
                 ));
             }
         }
+
+        fclose($fp);
 
         xml_parser_free($this->xml_parser);
     }
