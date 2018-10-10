@@ -214,10 +214,12 @@ class Functions
      */
     public static function getCloseRelationshipName(Individual $individual1, Individual $individual2): string
     {
-        if ($individual1 === $individual2) {
+        $relationship = self::getRelationship($individual1, $individual2);
+
+        if ($relationship === false) {
             $label = self::reflexivePronoun($individual1);
         } else {
-            $label = self::getRelationshipName(self::getRelationship($individual1, $individual2));
+            $label = self::getRelationshipName($relationship);
         }
 
         return $label;
@@ -383,11 +385,8 @@ class Functions
      *
      * @return string
      */
-    public static function getRelationshipName($nodes): string
+    public static function getRelationshipName(array $nodes): string
     {
-        if (!is_array($nodes)) {
-            return '';
-        }
         $person1 = $nodes['path'][0];
         $person2 = $nodes['path'][count($nodes['path']) - 1];
         $path    = array_slice($nodes['relations'], 1);
