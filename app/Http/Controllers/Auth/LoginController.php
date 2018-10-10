@@ -197,7 +197,7 @@ class LoginController extends AbstractBaseController
      */
     public function logoutAction(Tree $tree = null): RedirectResponse
     {
-        if (Auth::id()) {
+        if (Auth::check()) {
             Log::addAuthenticationLog('Logout: ' . Auth::user()->getUserName() . '/' . Auth::user()->getRealName());
             Auth::logout();
             FlashMessages::addMessage(I18N::translate('You have signed out.'), 'info');
