@@ -418,6 +418,9 @@ class CalendarController extends AbstractBaseController
                         // Show a converted date
                         foreach (explode('_and_', $CALENDAR_FORMAT) as $convcal) {
                             switch ($convcal) {
+                                case 'none':
+                                    $alt_date = $cal_date;
+                                    break;
                                 case 'french':
                                     $alt_date = new FrenchDate($cal_date->minimumJulianDay() + $d - 1);
                                     break;
