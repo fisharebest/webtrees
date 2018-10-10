@@ -142,7 +142,7 @@ class AdminPhpGedViewController extends AbstractBaseController
             case 'Site':
                 return $this->wizardStepSitePreferences($config);
             case 'Trees':
-                return $this->wizardStepTrees($config);
+                return $this->wizardStepTrees();
             case 'Users':
                 return $this->wizardStepUsers($config);
             default:
@@ -320,7 +320,7 @@ class AdminPhpGedViewController extends AbstractBaseController
      *
      * @return Response
      */
-    private function wizardStepTrees(array $config): Response
+    private function wizardStepTrees(): Response
     {
         return new Response(self::SUCCESS);
     }
