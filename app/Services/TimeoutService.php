@@ -50,16 +50,16 @@ class TimeoutService
      */
     public function isTimeNearlyUp(float $threshold = self::TIME_UP_THRESHOLD): bool
     {
-        $max_execution_time = (float) ini_get('max_execution_time');
+        $max_execution_time = (int) ini_get('max_execution_time');
 
         // If there's no time limit, then we can't run out of time.
-        if ($max_execution_time === 0.0) {
+        if ($max_execution_time === 0) {
             return false;
         }
 
         $now = microtime(true);
 
-        return $now + $threshold > $this->start_time + $max_execution_time;
+        return $now + $threshold > $this->start_time + (float) $max_execution_time;
     }
 
     /**
