@@ -17,7 +17,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-use Closure;
 use DebugBar\DataCollector\ExceptionsCollector;
 use DebugBar\DataCollector\MessagesCollector;
 use DebugBar\DataCollector\PDO\PDOCollector;
@@ -161,18 +160,16 @@ class DebugBar
      * Start a timer.
      *
      * @param string      $name
-     * @param string|null $label
-     * @param string|null $collector
      *
      * @return void
      */
-    public static function startMeasure($name, $label = null, $collector = null)
+    public static function startMeasure($name)
     {
         if (self::$debugbar instanceof StandardDebugBar) {
             $collector = self::$debugbar->getCollector('time');
 
             if ($collector instanceof TimeDataCollector) {
-                $collector->startMeasure($name, $label, $collector);
+                $collector->startMeasure($name);
             }
         }
     }
@@ -181,37 +178,16 @@ class DebugBar
      * Stop a timer.
      *
      * @param string $name
-     * @param array  $params
      *
      * @return void
      */
-    public static function stopMeasure($name, $params = [])
+    public static function stopMeasure($name)
     {
         if (self::$debugbar instanceof StandardDebugBar) {
             $collector = self::$debugbar->getCollector('time');
 
             if ($collector instanceof TimeDataCollector) {
-                $collector->stopMeasure($name, $params);
-            }
-        }
-    }
-
-    /**
-     * Time a closure.
-     *
-     * @param string      $label
-     * @param Closure     $closure
-     * @param string|null $collector
-     *
-     * @return void
-     */
-    public static function measure($label, Closure $closure, $collector = null)
-    {
-        if (self::$debugbar instanceof StandardDebugBar) {
-            $collector = self::$debugbar->getCollector('time');
-
-            if ($collector instanceof TimeDataCollector) {
-                $collector->measure($label, $closure, $collector);
+                $collector->stopMeasure($name);
             }
         }
     }
