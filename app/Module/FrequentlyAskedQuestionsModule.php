@@ -380,12 +380,11 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param Tree $tree
      *
      * @return Response
      */
-    public function getShowAction(Request $request, Tree $tree): Response
+    public function getShowAction(Tree $tree): Response
     {
         $faqs = Database::prepare(
             "SELECT block_id, bs1.setting_value AS header, bs2.setting_value AS body, bs3.setting_value AS languages" .
