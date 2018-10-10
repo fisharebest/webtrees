@@ -221,13 +221,13 @@ class BranchesController extends AbstractBaseController
      * Generate a recursive list of descendants of an individual.
      * If parents are specified, we can also show the pedigree (adopted, etc.).
      *
-     * @param array       $individuals
-     * @param array       $ancestors
-     * @param string      $surname
-     * @param bool        $soundex_dm
-     * @param bool        $soundex_std
-     * @param Individual  $individual
-     * @param Family|null $parents
+     * @param Individual[] $individuals
+     * @param Individual[] $ancestors
+     * @param string       $surname
+     * @param bool         $soundex_dm
+     * @param bool         $soundex_std
+     * @param Individual   $individual
+     * @param Family|null  $parents
      *
      * @return string
      */
