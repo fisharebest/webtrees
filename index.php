@@ -45,7 +45,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 // Identify ourself
 const WT_WEBTREES     = 'webtrees';
-const WT_VERSION      = '2.0.0-alpha.3';
+const WT_VERSION      = '2.0.0-dev';
 const WT_WEBTREES_URL = 'https://www.webtrees.net/';
 
 // Location of our modules and themes. These are used as URLs and folder paths.
