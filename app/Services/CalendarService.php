@@ -277,7 +277,7 @@ class CalendarService
                         // 29 KSL does not include 30 KSL (but would include an invalid 31 KSL if there were no 30 KSL)
                         if ($anniv->day === 1) {
                             $tmp = new JewishDate([
-                                $anniv->year,
+                                (string) $anniv->year,
                                 'CSH',
                                 1,
                             ]);
@@ -299,7 +299,7 @@ class CalendarService
                         // 1 TVT includes 30 KSL (if this year didn’t have 30 KSL)
                         if ($anniv->day === 1) {
                             $tmp = new JewishDate([
-                                $anniv->year,
+                                (string) $anniv->year,
                                 'KSL',
                                 1,
                             ]);
