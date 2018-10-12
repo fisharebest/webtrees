@@ -117,22 +117,29 @@ set_error_handler(function (int $errno, string $errstr, string $errfile, int $er
 
 DebugBar::startMeasure('init database');
 
-// Load our configuration file, so we can connect to the database
 const WT_CONFIG_FILE = 'data/config.ini.php';
-if (!file_exists(WT_ROOT . WT_CONFIG_FILE)) {
-    // No config file. Set one up.
-    define('WT_DATA_DIR', 'data/');
-    $request  = Request::createFromGlobals();
-    $response = (new SetupController())->setup($request);
-    $response->prepare($request)->send();
-
-    return;
-}
 
 // Connect to the database
 try {
+    // No config file? Run the setup wizard
+    if (!file_exists(WT_ROOT . WT_CONFIG_FILE)) {
+        define('WT_DATA_DIR', 'data/');
+        $request    = Request::createFromGlobals();
+        $controller = new SetupController();
+        $response   = $controller->setup($request);
+        $response->prepare($request)->send();
+
+        return;
+    }
+
+    $database_config = parse_ini_file(WT_ROOT . WT_CONFIG_FILE);
+
+    if ($database_config === false) {
+        throw new Exception('Invalid config file: ' . WT_CONFIG_FILE);
+    }
+
     // Read the connection settings and create the database
-    Database::createInstance(parse_ini_file(WT_ROOT . 'data/config.ini.php'));
+    Database::createInstance($database_config);
 
     // Update the database schema, if necessary.
     Database::updateSchema('\Fisharebest\Webtrees\Schema', 'WT_SCHEMA_VERSION', WT_SCHEMA_VERSION);
