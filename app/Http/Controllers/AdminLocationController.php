@@ -355,12 +355,14 @@ class AdminLocationController extends AbstractBaseController
             $filename = $_FILES['localfile']['tmp_name'];
         }
 
-        if (is_file($filename)) {
-            $string = file_get_contents($filename);
+        $fp = fopen($filename, 'r');
+        if ($fp !== false) {
+            $string = stream_get_contents($fp);
 
             // Check the filetype
             if (stripos($string, 'FeatureCollection') !== false) {
                 $input_array = json_decode($string);
+
                 foreach ($input_array->features as $feature) {
                     $places[] = array_combine($field_names, [
                         $feature->properties->level ?? substr_count($feature->properties->name, ','),
@@ -372,7 +374,7 @@ class AdminLocationController extends AbstractBaseController
                     ]);
                 }
             } else {
-                $fp = fopen($filename, 'r');
+                rewind($fp);
                 while (($row = fgetcsv($fp, 0, ';')) !== false) {
                     // Skip the header
                     if (!is_numeric($row[0])) {
@@ -394,6 +396,8 @@ class AdminLocationController extends AbstractBaseController
                     ];
                 }
             }
+
+            fclose($fp);
 
             if ((bool) $request->get('cleardatabase')) {
                 Database::exec("DELETE FROM `##placelocation`");
