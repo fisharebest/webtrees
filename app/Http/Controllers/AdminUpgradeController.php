@@ -116,7 +116,11 @@ class AdminUpgradeController extends AbstractBaseController
             case 'Pending':
                 return $this->wizardStepPending();
             case 'Export':
-                return $this->wizardStepExport($tree);
+                if ($tree instanceof Tree) {
+                    return $this->wizardStepExport($tree);
+                }
+
+                return $this->success('The tree no longer exists.');
             case 'Download':
                 return $this->wizardStepDownload();
             case 'Unzip':
@@ -204,15 +208,17 @@ class AdminUpgradeController extends AbstractBaseController
 
         try {
             $stream = fopen($filename, 'w');
-            $tree->exportGedcom($stream);
-            fclose($stream);
 
-            return $this->success(I18N::translate('The family tree has been exported to %s.', e($filename)));
+            if ($stream !== false) {
+                $tree->exportGedcom($stream);
+                fclose($stream);
+
+                return $this->success(I18N::translate('The family tree has been exported to %s.', e($filename)));
+            }
         } catch (Throwable $ex) {
-            DebugBar::addThrowable($ex);
-
-            return $this->failure(I18N::translate('The file %s could not be created.', e($filename)));
         }
+
+        return $this->failure(I18N::translate('The file %s could not be created.', e($filename)));
     }
 
     /**
@@ -220,13 +226,18 @@ class AdminUpgradeController extends AbstractBaseController
      */
     private function wizardStepDownload(): Response
     {
-        $download_url = $this->upgrade_service->downloadUrl();
-        $zip_file     = WT_DATA_DIR . basename($download_url);
-        $zip_stream   = fopen($zip_file, 'w');
-        $start_time   = microtime(true);
-        $client       = new Client();
-
         try {
+            $download_url = $this->upgrade_service->downloadUrl();
+            $zip_file     = WT_DATA_DIR . basename($download_url);
+            $zip_stream   = fopen($zip_file, 'w');
+            
+            if ($zip_stream === false) {
+                throw new Exception('Cannot read ZIP file: ' . $zip_file);
+            }
+
+            $start_time   = microtime(true);
+            $client       = new Client();
+
             $response = $client->get($download_url, self::GUZZLE_OPTIONS);
             $stream   = $response->getBody();
 
