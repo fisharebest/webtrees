@@ -623,8 +623,9 @@ class Tree
         $file_data = '';
         $fp        = fopen($path, 'rb');
 
-        // Don’t allow the user to cancel the request. We do not want to be left with an incomplete transaction.
-        ignore_user_abort(true);
+        if ($fp === false) {
+            throw new Exception('Cannot write file: ' . $path);
+        }
 
         $this->deleteGenealogyData((bool) $this->getPreference('keep_media'));
         $this->setPreference('gedcom_filename', $filename);
