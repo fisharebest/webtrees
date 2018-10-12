@@ -535,7 +535,7 @@ class ReportHtml extends AbstractReport
             if ($this->printedfootnotes[$i]->getValue() == $val) {
                 // If this footnote already exist then set up the numbers for this object
                 $footnote->setNum($i + 1);
-                $footnote->setAddlink($i + 1);
+                $footnote->setAddlink((string) ($i + 1));
 
                 return $this->printedfootnotes[$i];
             }
@@ -543,7 +543,7 @@ class ReportHtml extends AbstractReport
         }
         // If this Footnote has not been set up yet
         $footnote->setNum($ct + 1);
-        $footnote->setAddlink($ct + 1);
+        $footnote->setAddlink((string) ($ct + 1));
         $this->printedfootnotes[] = $footnote;
 
         return false;

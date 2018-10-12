@@ -394,7 +394,7 @@ class ReportTcpdf extends TCPDF
             if ($this->printedfootnotes[$i]->getValue() == $val) {
                 // If this footnote already exist then set up the numbers for this object
                 $footnote->setNum($i + 1);
-                $footnote->setAddlink($i + 1);
+                $footnote->setAddlink((string) ($i + 1));
 
                 return $this->printedfootnotes[$i];
             }
