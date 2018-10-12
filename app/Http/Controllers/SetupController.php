@@ -428,7 +428,9 @@ class SetupController extends AbstractBaseController
         }
 
         $disable_functions = explode(',', ini_get('disable_functions'));
-        $disable_functions = array_map(function(string $func): string { return trim($func); }, $disable_functions);
+        $disable_functions = array_map(function (string $func): string {
+            return trim($func);
+        }, $disable_functions);
 
         foreach ($functions as $function) {
             if (in_array($function, $disable_functions)) {
