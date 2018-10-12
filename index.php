@@ -15,7 +15,7 @@
  */
 declare(strict_types=1);
 
-use Fisharebest\Localization\Locale;
+use Fisharebest\Localization\Locale as WebtreesLocale;
 use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
@@ -252,7 +252,7 @@ try {
     $resolver->bind(Resolver::class, $resolver);
     $resolver->bind(Tree::class, $tree);
     $resolver->bind(User::class, Auth::user());
-    $resolver->bind(LocaleInterface::class, Locale::create(WT_LOCALE));
+    $resolver->bind(LocaleInterface::class, WebtreesLocale::create(WT_LOCALE));
     $resolver->bind(TimeoutService::class, new TimeoutService(microtime(true)));
     $resolver->bind(Filesystem::class, new Filesystem(new Local(WT_DATA_DIR)));
 
