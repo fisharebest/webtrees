@@ -24,6 +24,12 @@ use Exception;
  */
 class View
 {
+    // Where do our templates live
+    const TEMPLATE_PATH = 'resources/views/';
+
+    // File extension for our template files.
+    const TEMPLATE_EXTENSION = '.phtml';
+
     /**
      * @var string The (file) name of the view.
      */
@@ -143,7 +149,7 @@ class View
     public function getFilenameForView($view_name): string
     {
         foreach ($this->paths() as $path) {
-            $view_file = $path . '/' . $view_name . '.php';
+            $view_file = $path . $view_name . self::TEMPLATE_EXTENSION;
 
             if (is_file($view_file)) {
                 return $view_file;
@@ -180,11 +186,11 @@ class View
         if (empty($paths)) {
             // Module views
             // @TODO - this includes disabled modules.
-            $paths = glob(WT_ROOT . WT_MODULES_DIR . '*/resources/views');
+            $paths = glob(WT_ROOT . WT_MODULES_DIR . '*/' . self::TEMPLATE_PATH);
             // Theme views
-            $paths[] = WT_ROOT . WT_THEMES_DIR . Theme::theme()->themeId() . '/resources/views';
+            $paths[] = WT_ROOT . WT_THEMES_DIR . Theme::theme()->themeId() . self::TEMPLATE_PATH;
             // Core views
-            $paths[] = WT_ROOT . 'resources/views';
+            $paths[] = WT_ROOT . self::TEMPLATE_PATH;
 
             $paths = array_filter($paths, function (string $path): bool {
                 return is_dir($path);
