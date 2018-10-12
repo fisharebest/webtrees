@@ -2374,49 +2374,4 @@ class Functions
 
         return $relationship;
     }
-
-    /**
-     * Function to build an URL querystring from GET variables
-     * Optionally, add/replace specified values
-     *
-     * @deprecated Use the Http-Foundation class
-     *
-     * @param null|string[] $overwrite
-     * @param null|string   $separator
-     *
-     * @return string
-     */
-    public static function getQueryUrl($overwrite = null, $separator = '&'): string
-    {
-        if (empty($_GET)) {
-            $get = [];
-        } else {
-            $get = $_GET;
-        }
-        if (is_array($overwrite)) {
-            foreach ($overwrite as $key => $value) {
-                $get[$key] = $value;
-            }
-        }
-
-        $query_string = '';
-        foreach ($get as $key => $value) {
-            // PHP casts numeric-looking array keys to integers.  We want strings.
-            $key = (string) $key;
-
-            if (!is_array($value)) {
-                $query_string .= $separator . rawurlencode($key) . '=' . rawurlencode($value);
-            } else {
-                foreach ($value as $k => $v) {
-                    // PHP casts numeric-looking array keys to integers.  We want strings.
-                    $k = (string) $k;
-
-                    $query_string .= $separator . rawurlencode($key) . '%5B' . rawurlencode($k) . '%5D=' . rawurlencode($v);
-                }
-            }
-        }
-        $query_string = substr($query_string, strlen($separator)); // Remove leading “&amp;”
-
-        return 'index.php?' . $query_string;
-    }
 }

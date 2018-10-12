@@ -1386,7 +1386,8 @@ abstract class AbstractTheme
         }
 
         // Return to this page after login...
-        $url = Functions::getQueryUrl();
+        $url = $this->request->getRequestUri();
+
         // ...but switch from the tree-page to the user-page
         $url = str_replace('route=tree-page', 'route=user-page', $url);
 

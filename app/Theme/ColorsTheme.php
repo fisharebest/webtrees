@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Site;
+use function rawurldecode;
 
 /**
  * The colors theme.
@@ -143,12 +144,16 @@ class ColorsTheme extends CloudsTheme implements ThemeInterface
             $menu = new Menu(I18N::translate('Palette'), '#', 'menu-color');
 
             foreach ($this->palettes as $palette_id => $palette_name) {
+                $url  = $this->request->getRequestUri();
+                $url = preg_replace('/&themecolor=[a-z]+/', '', $url);
+                $url .= '&themecolor=' . $palette_id;
+
                 $menu->addSubmenu(new Menu(
                     $palette_name,
                     '#',
                     'menu-color-' . $palette_id . ($this->palette === $palette_id ? ' active' : ''),
                     [
-                        'onclick' => 'document.location=\'' . Functions::getQueryUrl(['themecolor' => $palette_id], '&') . '\'',
+                        'onclick' => 'document.location=\'' . $url . '\'',
                     ]
                 ));
             }
