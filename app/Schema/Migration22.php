@@ -85,15 +85,15 @@ class Migration22 implements MigrationInterface
                 if (is_dir(WT_ROOT . $_cfg->media_directory) && !file_exists($WT_DATA_DIR . $_cfg->media_directory)) {
                     try {
                         rename(WT_ROOT . $_cfg->media_directory, $WT_DATA_DIR . $_cfg->media_directory);
+                        unlink($WT_DATA_DIR . $_cfg->media_directory . '.htaccess');
+                        unlink($WT_DATA_DIR . $_cfg->media_directory . 'index.php');
+                        unlink($WT_DATA_DIR . $_cfg->media_directory . 'Mediainfo.txt');
+                        unlink($WT_DATA_DIR . $_cfg->media_directory . 'thumbs/Thumbsinfo.txt');
                     } catch (Throwable $ex) {
                         DebugBar::addThrowable($ex);
 
                         // Cannot move the folder?
                     }
-                    File::delete($WT_DATA_DIR . $_cfg->media_directory . '.htaccess');
-                    File::delete($WT_DATA_DIR . $_cfg->media_directory . 'index.php');
-                    File::delete($WT_DATA_DIR . $_cfg->media_directory . 'Mediainfo.txt');
-                    File::delete($WT_DATA_DIR . $_cfg->media_directory . 'thumbs/Thumbsinfo.txt');
                 }
             }
         }
