@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use DomainException;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -46,29 +47,28 @@ class PedigreeChartController extends AbstractChartController
     const OLDEST_AT_TOP    = 2;
     const OLDEST_AT_BOTTOM = 3;
 
+    const DEFAULT_ORIENTATION = self::LANDSCAPE;
+
     /** @var int Selected chart layout */
-    public $orientation;
+    private $orientation;
 
     /** @var int Number of generation to display */
-    public $generations;
+    private $generations;
 
     /** @var array data pertaining to each chart node */
-    public $nodes = [];
+    private $nodes = [];
 
     /** @var int Number of nodes in the chart */
-    public $treesize;
+    private $treesize;
 
     /** @var bool Are there ancestors beyond the bounds of this chart */
-    public $chartHasAncestors = false;
+    private $chartHasAncestors = false;
 
     /** @var stdClass Determine which arrows to use for each of the chart orientations */
-    public $arrows;
-
-    /** @var array Holds results of chart dimension calculations */
-    public $chartsize = [];
+    private $arrows;
 
     /** @var Individual */
-    public $root;
+    private $root;
 
     /**
      * Next and previous generation arrow size
@@ -92,7 +92,7 @@ class PedigreeChartController extends AbstractChartController
 
         $this->checkIndividualAccess($individual);
 
-        $orientation = (int) $request->get('orientation', self::LANDSCAPE);
+        $orientation = (int) $request->get('orientation', self::DEFAULT_ORIENTATION);
         $generations = (int) $request->get('generations', self::DEFAULT_GENERATIONS);
 
         $generations = min(self::MAX_GENERATIONS, $generations);
@@ -162,25 +162,29 @@ class PedigreeChartController extends AbstractChartController
         $this->arrows = new stdClass();
         switch ($this->orientation) {
             case self::PORTRAIT:
-                //drop through
             case self::LANDSCAPE:
                 $this->arrows->prevGen = 'fas fa-arrow-end wt-icon-arrow-end';
                 $this->arrows->menu    = 'fas fa-arrow-start wt-icon-arrow-start';
                 $addoffset['x']        = $this->chartHasAncestors ? self::ARROW_SIZE : 0;
                 $addoffset['y']        = 0;
                 break;
+
             case self::OLDEST_AT_TOP:
                 $this->arrows->prevGen = 'fas fa-arrow-up wt-icon-arrow-up';
                 $this->arrows->menu    = 'fas fa-arrow-down wt-icon-arrow-down';
                 $addoffset['x']        = 0;
                 $addoffset['y']        = $this->root->getSpouseFamilies() ? self::ARROW_SIZE : 0;
                 break;
+
             case self::OLDEST_AT_BOTTOM:
                 $this->arrows->prevGen = 'fas fa-arrow-down wt-icon-arrow-down';
                 $this->arrows->menu    = 'fas fa-arrow-up wt-icon-arrow-up';
                 $addoffset['x']        = 0;
                 $addoffset['y']        = $this->chartHasAncestors ? self::ARROW_SIZE : 0;
                 break;
+
+            default:
+                throw new DomainException('Invalid orientation: ' . $this->orientation);
         }
 
         // -- this next section will create and position the DIV layers for the pedigree tree
