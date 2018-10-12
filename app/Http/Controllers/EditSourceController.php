@@ -73,7 +73,7 @@ class EditSourceController extends AbstractEditController
             "\n",
         ], "\n1 CONT ", $text);
 
-        $gedcom = "0 @XREF@ SOUR\n\n1 TITL " . $title;
+        $gedcom = "0 @@ SOUR\n\n1 TITL " . $title;
 
         if ($abbreviation !== '') {
             $gedcom .= "\n1 ABBR " . $abbreviation;

@@ -303,7 +303,7 @@ class EditMediaController extends AbstractEditController
             $format = '';
         }
 
-        $gedcom = "0 @new@ OBJE\n1 FILE " . $file . "\n2 FORM " . $format;
+        $gedcom = "0 @@ OBJE\n1 FILE " . $file . "\n2 FORM " . $format;
 
         if ($type !== '') {
             $gedcom .= "\n3 TYPE " . $type;
@@ -357,7 +357,7 @@ class EditMediaController extends AbstractEditController
             return new JsonResponse(['error_message' => I18N::translate('There was an error uploading your file.')], 406);
         }
 
-        $gedcom = "0 @XREF@ OBJE\n" . $this->createMediaFileGedcom($file, $type, $title);
+        $gedcom = "0 @@ OBJE\n" . $this->createMediaFileGedcom($file, $type, $title);
 
         if ($note !== '') {
             $gedcom .= "\n1 NOTE " . preg_replace('/\r?\n/', "\n2 CONT ", $note);

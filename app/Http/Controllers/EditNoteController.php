@@ -118,7 +118,7 @@ class EditNoteController extends AbstractEditController
         // Convert line endings to GEDDCOM continuations
         $note = preg_replace('/\r|\r\n|\n|\r/', "\n1 CONT ", $note);
 
-        $gedcom = '0 @XREF@ NOTE ' . $note;
+        $gedcom = '0 @@ NOTE ' . $note;
 
         if (in_array($privacy_restriction, [
             'none',

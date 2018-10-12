@@ -63,7 +63,7 @@ class EditSubmitterController extends AbstractEditController
             "\n",
         ], "\n1 CONT ", $address);
 
-        $gedcom = "0 @XREF@ SUBM\n1 NAME " . $name;
+        $gedcom = "0 @@ SUBM\n1 NAME " . $name;
 
         if ($address !== '') {
             $gedcom .= "\n1 ADDR " . $address;

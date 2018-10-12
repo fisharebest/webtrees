@@ -269,11 +269,11 @@ class EditIndividualController extends AbstractEditController
 
         // Create a family
         if ($individual->getSex() === 'F') {
-            $gedcom = "0 @NEW@ FAM\n1 WIFE @" . $individual->getXref() . '@';
+            $gedcom = "0 @@ FAM\n1 WIFE @" . $individual->getXref() . '@';
         } else {
-            $gedcom = "0 @NEW@ FAM\n1 HUSB @" . $individual->getXref() . '@';
+            $gedcom = "0 @@ FAM\n1 HUSB @" . $individual->getXref() . '@';
         }
-        $family = $tree->createRecord($gedcom);
+        $family = $tree->createFamily($gedcom);
 
         // Link the parent to the family
         $individual->createFact('1 FAMS @' . $family->getXref() . '@', true);
@@ -281,7 +281,7 @@ class EditIndividualController extends AbstractEditController
         // Create a child
         $this->splitSource(); // separate SOUR record from the rest
 
-        $gedcom = '0 @NEW@ INDI';
+        $gedcom = '0 @@ INDI';
         $gedcom .= $this->addNewName($request, $tree);
         $gedcom .= $this->addNewSex($request);
         $gedcom .= "\n" . GedcomCodePedi::createNewFamcPedi($PEDI, $family->getXref());
@@ -296,7 +296,7 @@ class EditIndividualController extends AbstractEditController
             $gedcom = $this->updateRest($gedcom);
         }
 
-        $child = $tree->createRecord($gedcom);
+        $child = $tree->createIndividual($gedcom);
 
         // Link the family to the child
         $family->createFact('1 CHIL @' . $child->getXref() . '@', true);
@@ -365,8 +365,8 @@ class EditIndividualController extends AbstractEditController
         $this->islink  = $request->get('islink', []);
 
         // Create a new family
-        $gedcom = "0 @NEW@ FAM\n1 CHIL @" . $individual->getXref() . '@';
-        $family = $tree->createRecord($gedcom);
+        $gedcom = "0 @@ FAM\n1 CHIL @" . $individual->getXref() . '@';
+        $family = $tree->createFamily($gedcom);
 
         // Link the child to the family
         $individual->createFact('1 FAMC @' . $family->getXref() . '@', true);
@@ -374,7 +374,7 @@ class EditIndividualController extends AbstractEditController
         // Create a child
         $this->splitSource(); // separate SOUR record from the rest
 
-        $gedcom = '0 @NEW@ INDI';
+        $gedcom = '0 @@ INDI';
         $gedcom .= $this->addNewName($request, $tree);
         $gedcom .= $this->addNewSex($request);
         if (preg_match_all('/([A-Z0-9_]+)/', $tree->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
@@ -389,7 +389,7 @@ class EditIndividualController extends AbstractEditController
         }
         $gedcom .= "\n1 FAMS @" . $family->getXref() . '@';
 
-        $parent = $tree->createRecord($gedcom);
+        $parent = $tree->createIndividual($gedcom);
 
         // Link the family to the child
         if ($parent->getSex() === 'F') {
@@ -465,7 +465,7 @@ class EditIndividualController extends AbstractEditController
         $this->islink  = $request->get('islink', []);
 
         $this->splitSource();
-        $indi_gedcom = '0 @REF@ INDI';
+        $indi_gedcom = '0 @@ INDI';
         $indi_gedcom .= $this->addNewName($request, $tree);
         $indi_gedcom .= $this->addNewSex($request);
         if (preg_match_all('/([A-Z0-9_]+)/', $tree->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
@@ -492,12 +492,12 @@ class EditIndividualController extends AbstractEditController
         }
 
         // Create the new spouse
-        $spouse = $tree->createRecord($indi_gedcom);
+        $spouse = $tree->createIndividual($indi_gedcom);
         // Create a new family
         if ($sex === 'F') {
-            $family = $tree->createRecord("0 @NEW@ FAM\n1 WIFE @" . $spouse->getXref() . "@\n1 HUSB @" . $individual->getXref() . '@' . $fam_gedcom);
+            $family = $tree->createFamily("0 @@ FAM\n1 WIFE @" . $spouse->getXref() . "@\n1 HUSB @" . $individual->getXref() . '@' . $fam_gedcom);
         } else {
-            $family = $tree->createRecord("0 @NEW@ FAM\n1 HUSB @" . $spouse->getXref() . "@\n1 WIFE @" . $individual->getXref() . '@' . $fam_gedcom);
+            $family = $tree->createFamily("0 @@ FAM\n1 HUSB @" . $spouse->getXref() . "@\n1 WIFE @" . $individual->getXref() . '@' . $fam_gedcom);
         }
         // Link the spouses to the family
         $spouse->createFact('1 FAMS @' . $family->getXref() . '@', true);
@@ -545,7 +545,7 @@ class EditIndividualController extends AbstractEditController
         $this->islink  = $request->get('islink', []);
 
         $this->splitSource();
-        $gedrec = '0 @REF@ INDI';
+        $gedrec = '0 @@ INDI';
         $gedrec .= $this->addNewName($request, $tree);
         $gedrec .= $this->addNewSex($request);
         if (preg_match_all('/([A-Z0-9_]+)/', $tree->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
@@ -559,7 +559,7 @@ class EditIndividualController extends AbstractEditController
             $gedrec = $this->updateRest($gedrec);
         }
 
-        $new_indi = $tree->createRecord($gedrec);
+        $new_indi = $tree->createIndividual($gedrec);
 
         if ($request->get('goto') === 'new') {
             return new RedirectResponse($new_indi->url());
@@ -780,14 +780,14 @@ class EditIndividualController extends AbstractEditController
         $this->checkIndividualAccess($spouse, true);
 
         if ($individual->getSex() === 'M') {
-            $gedcom = "0 @new@ FAM\n1 HUSB @" . $individual->getXref() . "@\n1 WIFE @" . $spouse->getXref() . '@';
+            $gedcom = "0 @@ FAM\n1 HUSB @" . $individual->getXref() . "@\n1 WIFE @" . $spouse->getXref() . '@';
         } else {
-            $gedcom = "0 @new@ FAM\n1 WIFE @" . $individual->getXref() . "@\n1 HUSB @" . $spouse->getXref() . '@';
+            $gedcom = "0 @@ FAM\n1 WIFE @" . $individual->getXref() . "@\n1 HUSB @" . $spouse->getXref() . '@';
         }
 
         $gedcom .= $this->addNewFact($request, $tree, 'MARR');
 
-        $family = $tree->createRecord($gedcom);
+        $family = $tree->createFamily($gedcom);
 
         $individual->createFact('1 FAMS @' . $family->getXref() . '@', true);
         $spouse->createFact('1 FAMS @' . $family->getXref() . '@', true);

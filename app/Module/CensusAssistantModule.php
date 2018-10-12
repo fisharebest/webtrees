@@ -109,7 +109,7 @@ class CensusAssistantModule extends AbstractModule implements ModuleInterface
             $census = new $ca_census();
 
             $note_text   = $this->createNoteText($census, $ca_title, $ca_place, $ca_citation, $ca_individuals, $ca_notes);
-            $note_gedcom = '0 @new@ NOTE ' . str_replace("\n", "\n1 CONT ", $note_text);
+            $note_gedcom = '0 @@ NOTE ' . str_replace("\n", "\n1 CONT ", $note_text);
             $note        = $individual->getTree()->createRecord($note_gedcom);
 
             $newged .= "\n2 NOTE @" . $note->getXref() . '@';

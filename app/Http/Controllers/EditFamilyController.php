@@ -146,7 +146,7 @@ class EditFamilyController extends AbstractEditController
         $this->islink  = $request->get('islink', []);
 
         $this->splitSource();
-        $gedrec = '0 @REF@ INDI';
+        $gedrec = '0 @@ INDI';
         $gedrec .= $this->addNewName($request, $tree);
         $gedrec .= $this->addNewSex($request);
         if (preg_match_all('/([A-Z0-9_]+)/', $tree->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
@@ -162,7 +162,7 @@ class EditFamilyController extends AbstractEditController
         }
 
         // Create the new child
-        $new_child = $family->getTree()->createRecord($gedrec);
+        $new_child = $tree->createIndividual($gedrec);
 
         // Insert new child at the right place
         $done = false;
@@ -244,7 +244,7 @@ class EditFamilyController extends AbstractEditController
         // Create the new spouse
         $this->splitSource(); // separate SOUR record from the rest
 
-        $gedrec = '0 @REF@ INDI';
+        $gedrec = '0 @@ INDI';
         $gedrec .= $this->addNewName($request, $tree);
         $gedrec .= $this->addNewSex($request);
         if (preg_match_all('/([A-Z0-9_]+)/', $tree->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
@@ -259,7 +259,7 @@ class EditFamilyController extends AbstractEditController
             $gedrec = $this->updateRest($gedrec);
         }
         $gedrec .= "\n1 FAMS @" . $family->getXref() . '@';
-        $spouse = $tree->createRecord($gedrec);
+        $spouse = $tree->createIndividual($gedrec);
 
         // Update the existing family - add marriage, etc
         if ($family->getFirstFact('HUSB')) {

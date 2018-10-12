@@ -20,7 +20,9 @@ namespace Fisharebest\Webtrees;
 use Exception;
 use Fisharebest\Webtrees\Functions\FunctionsExport;
 use Fisharebest\Webtrees\Functions\FunctionsImport;
+use InvalidArgumentException;
 use PDOException;
+use function substr_compare;
 
 /**
  * Provide an interface to the wt_gedcom table.
@@ -718,31 +720,19 @@ class Tree
      * @param string $gedcom
      *
      * @return GedcomRecord|Individual|Family|Note|Source|Repository|Media
-     * @throws Exception
+     * @throws InvalidArgumentException
      */
     public function createRecord(string $gedcom): GedcomRecord
     {
-        if (preg_match('/^0 @(' . WT_REGEX_XREF . ')@ (' . WT_REGEX_TAG . ')/', $gedcom, $match)) {
-            $xref = $match[1];
-            $type = $match[2];
-        } else {
-            throw new Exception('Invalid argument to GedcomRecord::createRecord(' . $gedcom . ')');
-        }
-        if (strpos($gedcom, "\r") !== false) {
-            // MSDOS line endings will break things in horrible ways
-            throw new Exception('Evil line endings found in GedcomRecord::createRecord(' . $gedcom . ')');
+        if (substr_compare($gedcom, '0 @@', 0, 4) !== 0) {
+            throw new InvalidArgumentException('GedcomRecord::createRecord(' . $gedcom . ') does not begin 0 @@');
         }
 
-        // webtrees creates XREFs containing digits. Anything else (e.g. “new”) is just a placeholder.
-        if (!preg_match('/\d/', $xref)) {
-            $xref   = $this->getNewXref();
-            $gedcom = preg_replace('/^0 @(' . WT_REGEX_XREF . ')@/', '0 @' . $xref . '@', $gedcom);
-        }
+        $xref   = $this->getNewXref();
+        $gedcom = '0 @' . $xref . '@' . substr($gedcom, 4);
 
-        // Create a change record, if not already present
-        if (!preg_match('/\n1 CHAN/', $gedcom)) {
-            $gedcom .= "\n1 CHAN\n2 DATE " . date('d M Y') . "\n3 TIME " . date('H:i:s') . "\n2 _WT_USER " . Auth::user()->getUserName();
-        }
+        // Create a change record
+        $gedcom .= "\n1 CHAN\n2 DATE " . date('d M Y') . "\n3 TIME " . date('H:i:s') . "\n2 _WT_USER " . Auth::user()->getUserName();
 
         // Create a pending change
         Database::prepare(
@@ -754,16 +744,95 @@ class Tree
             Auth::id(),
         ]);
 
-        Log::addEditLog('Create: ' . $type . ' ' . $xref, $this);
+        // Accept this pending change
+        if (Auth::user()->getPreference('auto_accept')) {
+            FunctionsImport::acceptAllChanges($xref, $this);
+
+            return new GedcomRecord($xref, $gedcom, null, $this);
+        }
+
+
+        return new GedcomRecord($xref, '', $gedcom, $this);
+    }
+
+    /**
+     * Create a new family from GEDCOM data.
+     *
+     * @param string $gedcom
+     *
+     * @return Family
+     * @throws InvalidArgumentException
+     */
+    public function createFamily(string $gedcom): GedcomRecord
+    {
+        if (substr_compare($gedcom, '0 @@ FAM', 0, 8) !== 0) {
+            throw new InvalidArgumentException('GedcomRecord::createFamily(' . $gedcom . ') does not begin 0 @@ FAM');
+        }
+
+        $xref   = $this->getNewXref();
+        $gedcom = '0 @' . $xref . '@' . substr($gedcom, 4);
+
+        // Create a change record
+        $gedcom .= "\n1 CHAN\n2 DATE " . date('d M Y') . "\n3 TIME " . date('H:i:s') . "\n2 _WT_USER " . Auth::user()->getUserName();
+
+        // Create a pending change
+        Database::prepare(
+            "INSERT INTO `##change` (gedcom_id, xref, old_gedcom, new_gedcom, user_id) VALUES (?, ?, '', ?, ?)"
+        )->execute([
+            $this->tree_id,
+            $xref,
+            $gedcom,
+            Auth::id(),
+        ]);
 
         // Accept this pending change
         if (Auth::user()->getPreference('auto_accept')) {
             FunctionsImport::acceptAllChanges($xref, $this);
+
+            return new Family($xref, $gedcom, null, $this);
         }
-        // Return the newly created record. Note that since GedcomRecord
-        // has a cache of pending changes, we cannot use it to create a
-        // record with a newly created pending change.
-        return GedcomRecord::getInstance($xref, $this, $gedcom);
+
+        return new Family($xref, '', $gedcom, $this);
+    }
+
+    /**
+     * Create a new individual from GEDCOM data.
+     *
+     * @param string $gedcom
+     *
+     * @return Individual
+     * @throws InvalidArgumentException
+     */
+    public function createIndividual(string $gedcom): GedcomRecord
+    {
+        if (substr_compare($gedcom, '0 @@ INDI', 0, 9) !== 0) {
+            throw new InvalidArgumentException('GedcomRecord::createIndividual(' . $gedcom . ') does not begin 0 @@ INDI');
+        }
+
+        $xref   = $this->getNewXref();
+        $gedcom = '0 @' . $xref . '@' . substr($gedcom, 4);
+
+        // Create a change record
+        $gedcom .= "\n1 CHAN\n2 DATE " . date('d M Y') . "\n3 TIME " . date('H:i:s') . "\n2 _WT_USER " . Auth::user()->getUserName();
+
+        // Create a pending change
+        Database::prepare(
+            "INSERT INTO `##change` (gedcom_id, xref, old_gedcom, new_gedcom, user_id) VALUES (?, ?, '', ?, ?)"
+        )->execute([
+            $this->tree_id,
+            $xref,
+            $gedcom,
+            Auth::id(),
+        ]);
+
+        // Accept this pending change
+        if (Auth::user()->getPreference('auto_accept')) {
+            FunctionsImport::acceptAllChanges($xref, $this);
+
+            return new Individual($xref, $gedcom, null, $this);
+        }
+
+        return new Individual($xref, '', $gedcom, $this);
     }
 
     /**

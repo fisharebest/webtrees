@@ -55,7 +55,7 @@ class EditRepositoryController extends AbstractEditController
         // Fix whitespace
         $name = trim(preg_replace('/\s+/', ' ', $name));
 
-        $gedcom = "0 @XREF@ REPO\n1 NAME " . $name;
+        $gedcom = "0 @@ REPO\n1 NAME " . $name;
 
         if (in_array($privacy_restriction, [
             'none',
