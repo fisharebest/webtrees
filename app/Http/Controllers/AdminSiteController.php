@@ -17,7 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
-use DirectoryIterator;
+use Exception;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\File;
 use Fisharebest\Webtrees\FlashMessages;
@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
+use League\Flysystem\Filesystem;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -76,9 +77,11 @@ class AdminSiteController extends AbstractBaseController
     /**
      * Show old user files in the data folder.
      *
+     * @param Filesystem $filesystem
+     *
      * @return Response
      */
-    public function cleanData(): Response
+    public function cleanData(Filesystem $filesystem): Response
     {
         $protected = [
             '.htaccess',
@@ -87,25 +90,18 @@ class AdminSiteController extends AbstractBaseController
             'config.ini.php',
         ];
 
-        // If we are storing the media in the data folder (this is the default), then don’t delete it.
+        // Protect the media folders
         foreach (Tree::getAll() as $tree) {
-            $MEDIA_DIRECTORY = $tree->getPreference('MEDIA_DIRECTORY');
-            list($folder) = explode('/', $MEDIA_DIRECTORY);
+            $media_directory = $tree->getPreference('MEDIA_DIRECTORY');
+            list($folder) = explode('/', $media_directory);
 
-            if ($folder !== '..') {
-                $protected[] = $folder;
-            }
+            $protected[] = $folder;
         }
 
-        $entries = [];
-
-        foreach (new DirectoryIterator(WT_DATA_DIR) as $file) {
-            $entries[] = $file->getFilename();
-        }
-        $entries = array_diff($entries, [
-            '.',
-            '..',
-        ]);
+        // List the top-level contents of the data folder
+        $entries = array_map(function(array $content) {
+            return $content['path'];
+        }, $filesystem->listContents());
 
         return $this->viewResponse('admin/clean-data', [
             'title'     => I18N::translate('Clean up data folder'),
@@ -117,35 +113,46 @@ class AdminSiteController extends AbstractBaseController
     /**
      * Delete old user files in the data folder.
      *
-     * @param Request $request
+     * @param Request    $request
+     * @param Filesystem $filesystem
      *
      * @return RedirectResponse
      */
-    public function cleanDataAction(Request $request): RedirectResponse
+    public function cleanDataAction(Request $request, Filesystem $filesystem): RedirectResponse
     {
         $to_delete = (array) $request->get('to_delete');
         $to_delete = array_filter($to_delete);
 
         foreach ($to_delete as $path) {
-            // Show different feedback message for files and folders.
-            $is_dir = is_dir(WT_DATA_DIR . $path);
+            $metadata = $filesystem->getMetadata($path);
 
-            if (File::delete(WT_DATA_DIR . $path)) {
-                if ($is_dir) {
+            if ($metadata === false) {
+                // Already deleted?
+                continue;
+            }
+
+            if ($metadata['type'] === 'dir') {
+                try {
+                    $filesystem->deleteDir($path);
+
                     FlashMessages::addMessage(I18N::translate('The folder %s has been deleted.', e($path)), 'success');
-                } else {
-                    FlashMessages::addMessage(I18N::translate('The file %s has been deleted.', e($path)), 'success');
-                }
-            } else {
-                if ($is_dir) {
+                } catch (Exception $ex) {
                     FlashMessages::addMessage(I18N::translate('The folder %s could not be deleted.', e($path)), 'danger');
-                } else {
+                }
+            }
+
+            if ($metadata['type'] === 'file') {
+                try {
+                    $filesystem->delete($path);
+
+                    FlashMessages::addMessage(I18N::translate('The file %s has been deleted.', e($path)), 'success');
+                } catch (Exception $ex) {
                     FlashMessages::addMessage(I18N::translate('The file %s could not be deleted.', e($path)), 'danger');
                 }
             }
         }
 
-        return new RedirectResponse(route('admin-control-panel'));
+        return new RedirectResponse(route('admin-clean-data'));
     }
 
     /**

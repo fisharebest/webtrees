@@ -25,43 +25,6 @@ use Throwable;
 class File
 {
     /**
-     * Recursively delete a folder or file
-     *
-     * @param string $path
-     *
-     * @return bool Was the file deleted
-     */
-    public static function delete($path): bool
-    {
-        if (is_dir($path)) {
-            $dir = opendir($path);
-            while ($dir !== false && (($file = readdir($dir)) !== false)) {
-                if ($file !== '.' && $file !== '..') {
-                    self::delete($path . DIRECTORY_SEPARATOR . $file);
-                }
-            }
-            closedir($dir);
-            try {
-                rmdir($path);
-            } catch (Throwable $ex) {
-                DebugBar::addThrowable($ex);
-
-                // Continue, in case there are other files/folders that we can delete.
-            }
-        } else {
-            try {
-                unlink($path);
-            } catch (Throwable $ex) {
-                DebugBar::addThrowable($ex);
-
-                // Continue, in case there are other files/folders that we can delete.
-            }
-        }
-
-        return !file_exists($path);
-    }
-
-    /**
      * Create a folder, and sub-folders, if it does not already exist
      *
      * @param string $path
