@@ -38,7 +38,7 @@ class ReportTcpdf extends TCPDF
     /** @var ReportBaseElement[] Array of elements in the body */
     public $bodyElements = [];
 
-    /** @var ReportBaseFootnote[] Array of elements in the footer notes */
+    /** @var ReportPdfFootnote[] Array of elements in the footer notes */
     public $printedfootnotes = [];
 
     /** @var string Currently used style name */
@@ -53,7 +53,7 @@ class ReportTcpdf extends TCPDF
     /** @var int The last pictures page number */
     public $lastpicpage = 0;
 
-    /** @var AbstractReport The current report. */
+    /** @var ReportPdf The current report. */
     public $wt_report;
 
     /**
@@ -261,11 +261,11 @@ class ReportTcpdf extends TCPDF
     /**
      * Set the report.
      *
-     * @param AbstractReport $report
+     * @param ReportPdf $report
      *
      * @return void
      */
-    public function setReport(AbstractReport $report)
+    public function setReport(ReportPdf $report)
     {
         $this->wt_report = $report;
     }
@@ -381,11 +381,11 @@ class ReportTcpdf extends TCPDF
     /**
      * Checks the Footnote and numbers them
      *
-     * @param object $footnote
+     * @param ReportPdfFootnote $footnote
      *
      * @return object|bool object if already numbered, false otherwise
      */
-    public function checkFootnote($footnote)
+    public function checkFootnote(ReportPdfFootnote $footnote)
     {
         $ct  = count($this->printedfootnotes);
         $val = $footnote->getValue();

@@ -108,9 +108,9 @@ class ReportPdf extends AbstractReport
     }
 
     /**
-     * Add an element - ReportPdf
+     * Add an element.
      *
-     * @param object|string $element Object or string
+     * @param object|string $element
      *
      * @return void
      */
@@ -147,7 +147,7 @@ class ReportPdf extends AbstractReport
     }
 
     /**
-     * Clear the Header - ReportPdf
+     * Clear the Header.
      *
      * @return void
      */
@@ -167,7 +167,7 @@ class ReportPdf extends AbstractReport
     }
 
     /**
-     * Create a new Cell object - ReportPdf
+     * Create a new Cell object.
      *
      * @param int    $width   cell width (expressed in points)
      * @param int    $height  cell height (expressed in points)
@@ -184,73 +184,85 @@ class ReportPdf extends AbstractReport
      * @param string $tcolor  Text color
      * @param bool   $reseth
      *
-     * @return ReportPdfCell
+     * @return ReportBaseCell
      */
-    public function createCell($width, $height, $border, $align, $bgcolor, $style, $ln, $top, $left, $fill, $stretch, $bocolor, $tcolor, $reseth): ReportPdfCell
+    public function createCell($width, $height, $border, $align, $bgcolor, $style, $ln, $top, $left, $fill, $stretch, $bocolor, $tcolor, $reseth): ReportBaseCell
     {
         return new ReportPdfCell($width, $height, $border, $align, $bgcolor, $style, $ln, $top, $left, $fill, $stretch, $bocolor, $tcolor, $reseth);
     }
 
     /**
-     * Create a new TextBox object - ReportPdf
+     * Create a new TextBox object.
      *
      * @param float  $width   Text box width
      * @param float  $height  Text box height
      * @param bool   $border
      * @param string $bgcolor Background color code in HTML
      * @param bool   $newline
-     * @param mixed  $left
-     * @param mixed  $top
+     * @param float  $left
+     * @param float  $top
      * @param bool   $pagecheck
      * @param string $style
      * @param bool   $fill
      * @param bool   $padding
      * @param bool   $reseth
      *
-     * @return ReportPdfTextbox
+     * @return ReportBaseTextbox
      */
-    public function createTextBox($width, $height, $border, $bgcolor, $newline, $left, $top, $pagecheck, $style, $fill, $padding, $reseth): ReportPdfTextbox
-    {
+    public function createTextBox(
+        float $width,
+        float $height,
+        bool $border,
+        string $bgcolor,
+        bool $newline,
+        float $left,
+        float $top,
+        bool $pagecheck,
+        string $style,
+        bool $fill,
+        bool $padding,
+        bool $reseth
+    ): ReportBaseTextbox {
         return new ReportPdfTextbox($width, $height, $border, $bgcolor, $newline, $left, $top, $pagecheck, $style, $fill, $padding, $reseth);
     }
 
     /**
-     * Create a new Text object- ReportPdf
+     * Create a text element.
      *
-     * @param string $style The name of the text style
-     * @param string $color HTML color code
+     * @param string $style
+     * @param string $color
      *
-     * @return ReportPdfText
+     * @return ReportBaseText
      */
-    public function createText($style, $color): ReportPdfText
+    public function createText(string $style, string $color): ReportBaseText
     {
         return new ReportPdfText($style, $color);
     }
 
     /**
-     * Create a new Footnote object - ReportPdf
+     * Create a new Footnote object.
      *
      * @param string $style Style name
      *
-     * @return ReportPdfFootnote
+     * @return ReportBaseFootnote
      */
-    public function createFootnote($style): ReportPdfFootnote
+    public function createFootnote($style): ReportBaseFootnote
     {
         return new ReportPdfFootnote($style);
     }
 
     /**
-     * Create a new Page Header object - ReportPdf
+     * Create a new Page Header object
      *
-     * @return ReportPdfPageheader
+     * @return ReportBasePageheader
      */
-    public function createPageHeader(): ReportPdfPageheader
+    public function createPageHeader(): ReportBasePageheader
     {
         return new ReportPdfPageheader();
     }
 
     /**
-     * Create a new image object - ReportPdf
+     * Create a new image object.
      *
      * @param string $file  Filename
      * @param float  $x
@@ -260,15 +272,15 @@ class ReportPdf extends AbstractReport
      * @param string $align L:left, C:center, R:right or empty to use x/y
      * @param string $ln    T:same line, N:next line
      *
-     * @return ReportPdfImage
+     * @return ReportBaseImage
      */
-    public function createImage(string $file, float $x, float $y, float $w, float $h, string $align, string $ln): ReportPdfImage
+    public function createImage(string $file, float $x, float $y, float $w, float $h, string $align, string $ln): ReportBaseImage
     {
         return new ReportPdfImage($file, $x, $y, $w, $h, $align, $ln);
     }
 
     /**
-     * Create a new image object from Media Object - ReportPdf
+     * Create a new image object from Media Object.
      *
      * @param MediaFile $media_file
      * @param float     $x
@@ -278,24 +290,24 @@ class ReportPdf extends AbstractReport
      * @param string    $align L:left, C:center, R:right or empty to use x/y
      * @param string    $ln    T:same line, N:next line
      *
-     * @return ReportPdfImage
+     * @return ReportBaseImage
      */
-    public function createImageFromObject(MediaFile $media_file, float $x, float $y, float $w, float $h, string $align, string $ln): ReportPdfImage
+    public function createImageFromObject(MediaFile $media_file, float $x, float $y, float $w, float $h, string $align, string $ln): ReportBaseImage
     {
         return new ReportPdfImage($media_file->getServerFilename(), $x, $y, $w, $h, $align, $ln);
     }
 
     /**
-     * Create a new line object - ReportPdf
+     * Create a line.
      *
-     * @param mixed $x1
-     * @param mixed $y1
-     * @param mixed $x2
-     * @param mixed $y2
+     * @param float $x1
+     * @param float $y1
+     * @param float $x2
+     * @param float $y2
      *
-     * @return ReportPdfLine
+     * @return ReportBaseLine
      */
-    public function createLine($x1, $y1, $x2, $y2): ReportPdfLine
+    public function createLine(float $x1, float $y1, float $x2, float $y2): ReportBaseLine
     {
         return new ReportPdfLine($x1, $y1, $x2, $y2);
     }
@@ -306,9 +318,9 @@ class ReportPdf extends AbstractReport
      * @param string   $tag
      * @param string[] $attrs
      *
-     * @return ReportPdfHtml
+     * @return ReportBaseHtml
      */
-    public function createHTML(string $tag, array $attrs): ReportPdfHtml
+    public function createHTML(string $tag, array $attrs): ReportBaseHtml
     {
         return new ReportPdfHtml($tag, $attrs);
     }

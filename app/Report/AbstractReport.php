@@ -19,6 +19,7 @@ namespace Fisharebest\Webtrees\Report;
 
 use DomainException;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\MediaFile;
 
 /**
  * Class AbstractReport - base for PDF and HTML reports
@@ -95,6 +96,162 @@ abstract class AbstractReport
     public $rsubject = '';
 
     /**
+     * Clear the Header.
+     *
+     * @return void
+     */
+    abstract public function clearHeader();
+
+    /**
+     * Create a new Page Header object
+     *
+     * @return ReportBasePageheader
+     */
+    abstract public function createPageHeader(): ReportBasePageheader;
+
+    /**
+     * Add an element.
+     *
+     * @param object|string $element
+     *
+     * @return void
+     */
+    abstract public function addElement($element);
+
+    /**
+     * Run the report.
+     *
+     * @return void
+     */
+    abstract public function run();
+
+    /**
+     * Create a new Cell object.
+     *
+     * @param int    $width   cell width (expressed in points)
+     * @param int    $height  cell height (expressed in points)
+     * @param mixed  $border  Border style
+     * @param string $align   Text alignement
+     * @param string $bgcolor Background color code
+     * @param string $style   The name of the text style
+     * @param int    $ln      Indicates where the current position should go after the call
+     * @param mixed  $top     Y-position
+     * @param mixed  $left    X-position
+     * @param int    $fill    Indicates if the cell background must be painted (1) or transparent (0). Default value: 1
+     * @param int    $stretch Stretch carachter mode
+     * @param string $bocolor Border color
+     * @param string $tcolor  Text color
+     * @param bool   $reseth
+     *
+     * @return ReportBaseCell
+     */
+    abstract public function createCell($width, $height, $border, $align, $bgcolor, $style, $ln, $top, $left, $fill, $stretch, $bocolor, $tcolor, $reseth): ReportBaseCell;
+
+    /**
+     * Create a new TextBox object.
+     *
+     * @param float  $width   Text box width
+     * @param float  $height  Text box height
+     * @param bool   $border
+     * @param string $bgcolor Background color code in HTML
+     * @param bool   $newline
+     * @param float  $left
+     * @param float  $top
+     * @param bool   $pagecheck
+     * @param string $style
+     * @param bool   $fill
+     * @param bool   $padding
+     * @param bool   $reseth
+     *
+     * @return ReportBaseTextbox
+     */
+    abstract public function createTextBox(
+        float $width,
+        float $height,
+        bool $border,
+        string $bgcolor,
+        bool $newline,
+        float $left,
+        float $top,
+        bool $pagecheck,
+        string $style,
+        bool $fill,
+        bool $padding,
+        bool $reseth
+    ): ReportBaseTextbox;
+
+    /**
+     * Create a text element.
+     *
+     * @param string $style
+     * @param string $color
+     *
+     * @return ReportBaseText
+     */
+    abstract public function createText(string $style, string $color): ReportBaseText;
+
+    /**
+     * Create an HTML element.
+     *
+     * @param string   $tag
+     * @param string[] $attrs
+     *
+     * @return ReportBaseHtml
+     */
+    abstract public function createHTML(string $tag, array $attrs): ReportBaseHtml;
+
+    /**
+     * Create a line.
+     *
+     * @param float $x1
+     * @param float $y1
+     * @param float $x2
+     * @param float $y2
+     *
+     * @return ReportBaseLine
+     */
+    abstract public function createLine(float $x1, float $y1, float $x2, float $y2): ReportBaseLine;
+
+    /**
+     * Create a new image object.
+     *
+     * @param string $file  Filename
+     * @param float  $x
+     * @param float  $y
+     * @param float  $w     Image width
+     * @param float  $h     Image height
+     * @param string $align L:left, C:center, R:right or empty to use x/y
+     * @param string $ln    T:same line, N:next line
+     *
+     * @return ReportBaseImage
+     */
+    abstract public function createImage(string $file, float $x, float $y, float $w, float $h, string $align, string $ln): ReportBaseImage;
+
+    /**
+     * Create a new image object from Media Object.
+     *
+     * @param MediaFile $media_file
+     * @param float     $x
+     * @param float     $y
+     * @param float     $w     Image width
+     * @param float     $h     Image height
+     * @param string    $align L:left, C:center, R:right or empty to use x/y
+     * @param string    $ln    T:same line, N:next line
+     *
+     * @return ReportBaseImage
+     */
+    abstract public function createImageFromObject(MediaFile $media_file, float $x, float $y, float $w, float $h, string $align, string $ln): ReportBaseImage;
+
+    /**
+     * Create a new Footnote object.
+     *
+     * @param string $style Style name
+     *
+     * @return ReportBaseFootnote
+     */
+    abstract public function createFootnote($style): ReportBaseFootnote;
+
+     /**
      * Initial Setup
      *
      * Setting up document wide defaults that will be inherited of the report modules

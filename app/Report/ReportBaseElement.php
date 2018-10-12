@@ -122,7 +122,7 @@ class ReportBaseElement
     /**
      * Render the footnotes.
      *
-     * @param $renderer
+     * @param ReportHtml|ReportTcpdf $renderer
      *
      * @return void
      */

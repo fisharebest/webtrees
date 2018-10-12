@@ -37,7 +37,7 @@ class ReportPdfText extends ReportBaseText
         if ($renderer->getCurrentStyle() != $this->styleName) {
             $renderer->setCurrentStyle($this->styleName);
         }
-        $temptext = str_replace('#PAGENUM#', $renderer->PageNo(), $this->text);
+        $temptext = str_replace('#PAGENUM#', (string) $renderer->PageNo(), $this->text);
         // underline «title» part of Source item
         $temptext = str_replace([
             '«',

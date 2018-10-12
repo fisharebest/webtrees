@@ -155,7 +155,7 @@ class ReportBaseCell extends ReportBaseElement
     /**
      * Get the cell height
      *
-     * @param $renderer
+     * @param ReportHtml|ReportTcpdf $renderer
      *
      * @return float
      */
@@ -179,7 +179,7 @@ class ReportBaseCell extends ReportBaseElement
     /**
      * Get the cell width
      *
-     * @param $renderer
+     * @param ReportHtml|ReportTcpdf $renderer
      *
      * @return float|array
      */

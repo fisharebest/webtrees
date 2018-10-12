@@ -66,7 +66,7 @@ class ReportBaseLine extends ReportBaseElement
     /**
      * Get the height of the line.
      *
-     * @param $renderer
+     * @param ReportHtml|ReportTcpdf $renderer
      *
      * @return float
      */
@@ -78,7 +78,7 @@ class ReportBaseLine extends ReportBaseElement
     /**
      * Get the width of the line.
      *
-     * @param $renderer
+     * @param ReportHtml|ReportTcpdf $renderer
      *
      * @return float|array
      */

@@ -68,7 +68,7 @@ class ReportBaseImage extends ReportBaseElement
     /**
      * Get the height.
      *
-     * @param $renderer
+     * @param ReportHtml|ReportTcpdf $renderer
      *
      * @return float
      */
@@ -80,7 +80,7 @@ class ReportBaseImage extends ReportBaseElement
     /**
      * Get the width.
      *
-     * @param $renderer
+     * @param ReportHtml|ReportTcpdf $renderer
      *
      * @return float|array
      */

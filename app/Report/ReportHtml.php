@@ -170,7 +170,7 @@ class ReportHtml extends AbstractReport
     /**
      * Add an element.
      *
-     * @param $element
+     * @param object|string $element
      *
      * @return void
      */
@@ -190,7 +190,7 @@ class ReportHtml extends AbstractReport
      *
      * @return void
      */
-    public function runPageHeader()
+    private function runPageHeader()
     {
         foreach ($this->pageHeaderElements as $element) {
             if (is_object($element)) {
@@ -303,7 +303,7 @@ class ReportHtml extends AbstractReport
     }
 
     /**
-     * Create a new Cell object - ReportHtml
+     * Create a new Cell object.
      *
      * @param int    $width   cell width (expressed in points)
      * @param int    $height  cell height (expressed in points)
@@ -314,26 +314,26 @@ class ReportHtml extends AbstractReport
      * @param int    $ln      Indicates where the current position should go after the call
      * @param mixed  $top     Y-position
      * @param mixed  $left    X-position
-     * @param int    $fill    Indicates if the cell background must be painted (1) or transparent (0). Default value: 0.
+     * @param int    $fill    Indicates if the cell background must be painted (1) or transparent (0). Default value: 1
      * @param int    $stretch Stretch carachter mode
      * @param string $bocolor Border color
      * @param string $tcolor  Text color
      * @param bool   $reseth
      *
-     * @return object ReportHtmlCell
+     * @return ReportBaseCell
      */
-    public function createCell($width, $height, $border, $align, $bgcolor, $style, $ln, $top, $left, $fill, $stretch, $bocolor, $tcolor, $reseth)
+    public function createCell($width, $height, $border, $align, $bgcolor, $style, $ln, $top, $left, $fill, $stretch, $bocolor, $tcolor, $reseth): ReportBaseCell
     {
         return new ReportHtmlCell($width, $height, $border, $align, $bgcolor, $style, $ln, $top, $left, $fill, $stretch, $bocolor, $tcolor, $reseth);
     }
 
     /**
-     * Create a text box.
+     * Create a new TextBox object.
      *
-     * @param float  $width
-     * @param float  $height
+     * @param float  $width   Text box width
+     * @param float  $height  Text box height
      * @param bool   $border
-     * @param string $bgcolor
+     * @param string $bgcolor Background color code in HTML
      * @param bool   $newline
      * @param float  $left
      * @param float  $top
@@ -343,7 +343,7 @@ class ReportHtml extends AbstractReport
      * @param bool   $padding
      * @param bool   $reseth
      *
-     * @return ReportHtmlTextbox
+     * @return ReportBaseTextbox
      */
     public function createTextBox(
         float $width,
@@ -358,7 +358,7 @@ class ReportHtml extends AbstractReport
         bool $fill,
         bool $padding,
         bool $reseth
-    ): ReportHtmlTextbox {
+    ): ReportBaseTextbox {
         return new ReportHtmlTextbox($width, $height, $border, $bgcolor, $newline, $left, $top, $pagecheck, $style, $fill, $padding, $reseth);
     }
 
@@ -368,67 +368,67 @@ class ReportHtml extends AbstractReport
      * @param string $style
      * @param string $color
      *
-     * @return ReportHtmlText
+     * @return ReportBaseText
      */
-    public function createText(string $style, string $color): ReportHtmlText
+    public function createText(string $style, string $color): ReportBaseText
     {
         return new ReportHtmlText($style, $color);
     }
 
     /**
-     * Create a footnote.
+     * Create a new Footnote object.
      *
-     * @param string $style
+     * @param string $style Style name
      *
-     * @return ReportHtmlFootnote
+     * @return ReportBaseFootnote
      */
-    public function createFootnote($style = ''): ReportHtmlFootnote
+    public function createFootnote($style): ReportBaseFootnote
     {
         return new ReportHtmlFootnote($style);
     }
 
     /**
-     * Create a page header.
+     * Create a new Page Header object
      *
-     * @return ReportHtmlPageheader
+     * @return ReportBasePageheader
      */
-    public function createPageHeader(): ReportHtmlPageheader
+    public function createPageHeader(): ReportBasePageheader
     {
         return new ReportHtmlPageheader();
     }
 
     /**
-     * Create an image.
+     * Create a new image object.
      *
-     * @param string $file
+     * @param string $file  Filename
      * @param float  $x
      * @param float  $y
-     * @param float  $w
-     * @param float  $h
-     * @param string $align
-     * @param string $ln
+     * @param float  $w     Image width
+     * @param float  $h     Image height
+     * @param string $align L:left, C:center, R:right or empty to use x/y
+     * @param string $ln    T:same line, N:next line
      *
-     * @return ReportHtmlImage
+     * @return ReportBaseImage
      */
-    public function createImage(string $file, float $x, float $y, float $w, float $h, string $align, string $ln): ReportHtmlImage
+    public function createImage(string $file, float $x, float $y, float $w, float $h, string $align, string $ln): ReportBaseImage
     {
         return new ReportHtmlImage($file, $x, $y, $w, $h, $align, $ln);
     }
 
     /**
-     * Create an image.
+     * Create a new image object from Media Object.
      *
      * @param MediaFile $media_file
      * @param float     $x
      * @param float     $y
-     * @param float     $w
-     * @param float     $h
-     * @param string    $align
-     * @param string    $ln
+     * @param float     $w     Image width
+     * @param float     $h     Image height
+     * @param string    $align L:left, C:center, R:right or empty to use x/y
+     * @param string    $ln    T:same line, N:next line
      *
-     * @return ReportHtmlImage
+     * @return ReportBaseImage
      */
-    public function createImageFromObject(MediaFile $media_file, float $x, float $y, float $w, float $h, string $align, string $ln): ReportHtmlImage
+    public function createImageFromObject(MediaFile $media_file, float $x, float $y, float $w, float $h, string $align, string $ln): ReportBaseImage
     {
         return new ReportHtmlImage($media_file->imageUrl((int) $w, (int) $h, ''), $x, $y, $w, $h, $align, $ln);
     }
@@ -441,9 +441,9 @@ class ReportHtml extends AbstractReport
      * @param float $x2
      * @param float $y2
      *
-     * @return ReportHtmlLine
+     * @return ReportBaseLine
      */
-    public function createLine(float $x1, float $y1, float $x2, float $y2): ReportHtmlLine
+    public function createLine(float $x1, float $y1, float $x2, float $y2): ReportBaseLine
     {
         return new ReportHtmlLine($x1, $y1, $x2, $y2);
     }
@@ -454,15 +454,15 @@ class ReportHtml extends AbstractReport
      * @param string   $tag
      * @param string[] $attrs
      *
-     * @return ReportHtmlHtml
+     * @return ReportBaseHtml
      */
-    public function createHTML(string $tag, array $attrs): ReportHtmlHtml
+    public function createHTML(string $tag, array $attrs): ReportBaseHtml
     {
         return new ReportHtmlHtml($tag, $attrs);
     }
 
     /**
-     * Clear the Header - ReportHtml
+     * Clear the Header
      *
      * @return void
      */
