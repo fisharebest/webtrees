@@ -99,7 +99,7 @@ class PedigreeChartController extends AbstractChartController
         $generations = max(self::MIN_GENERATIONS, $generations);
 
         $orientations       = $this->orientations();
-        $generation_options = $this->generationOptions($tree);
+        $generation_options = $this->generationOptions();
 
         /* I18N: %s is an individual’s name */
         $title = I18N::translate('Pedigree tree of %s', $individual->getFullName());
@@ -438,16 +438,11 @@ class PedigreeChartController extends AbstractChartController
 
 
     /**
-     * @param Tree $tree
-     *
      * @return string[]
      */
-    private function generationOptions(Tree $tree): array
+    private function generationOptions(): array
     {
-        // @TODO - do we need this config setting, given that we cannot show more than 8 generations?
-        $max_generations = min(self::MAX_GENERATIONS, (int) $tree->getPreference('MAX_PEDIGREE_GENERATIONS'));
-
-        return FunctionsEdit::numericOptions(range(self::MIN_GENERATIONS, $max_generations));
+        return FunctionsEdit::numericOptions(range(self::MIN_GENERATIONS, self::MAX_GENERATIONS));
     }
 
     /**
