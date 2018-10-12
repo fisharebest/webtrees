@@ -19,6 +19,8 @@ namespace Fisharebest\Webtrees\Module\BatchUpdate;
 
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use const WT_EVENTS_DEAT;
 
 /**
  * Class BatchUpdateMissingDeathPlugin Batch Update plugin: add missing 1 BIRT/DEAT Y
@@ -54,9 +56,7 @@ class BatchUpdateMissingDeathPlugin extends BatchUpdateBasePlugin
      */
     public function doesRecordNeedUpdate(GedcomRecord $record): bool
     {
-        $gedcom = $record->getGedcom();
-
-        return !preg_match('/\n1 (' . WT_EVENTS_DEAT . ')/', $gedcom) && $record->isDead();
+        return $record instanceof Individual && $record->getFirstFact(WT_EVENTS_DEAT) === null && $record->isDead();
     }
 
     /**
