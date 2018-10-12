@@ -580,12 +580,15 @@ class AdminLocationController extends AbstractBaseController
         $response = new StreamedResponse(function () use ($columns, $places) {
             $stream = fopen('php://output', 'w');
 
-            fputcsv($stream, $columns);
-            foreach ($places as $place) {
-                fputcsv($stream, $place);
-            }
+            if ($stream !== false) {
+                fputcsv($stream, $columns);
+                
+                foreach ($places as $place) {
+                    fputcsv($stream, $place, ';');
+                }
 
-            fclose($stream);
+                fclose($stream);
+            }
         });
 
 
