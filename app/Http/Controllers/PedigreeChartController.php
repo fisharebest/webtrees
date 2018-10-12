@@ -279,6 +279,9 @@ class PedigreeChartController extends AbstractChartController
                         $yoffset += self::ARROW_SIZE;
                     }
                     break;
+
+                default:
+                    throw new DomainException('Invalid orientation: ' . $this->orientation);
             }
             $this->nodes[$i]['x'] = (int) $xoffset;
             $this->nodes[$i]['y'] = (int) $yoffset;
