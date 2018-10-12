@@ -146,26 +146,6 @@ class Database
     }
 
     /**
-     * Quote a string for embedding in a MySQL statement.
-     *
-     * The native quote() function does not convert PHP nulls to DB nulls
-     *
-     * @param  string|null $string
-     *
-     * @return string
-     *
-     * @deprecated We should use bind-variables instead.
-     */
-    public static function quote($string)
-    {
-        if ($string === null) {
-            return 'NULL';
-        }
-
-        return self::$pdo->quote($string, PDO::PARAM_STR);
-    }
-
-    /**
      * Execute an SQL statement, and log the result.
      *
      * @param string $sql The SQL statement to execute

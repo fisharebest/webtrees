@@ -31,6 +31,7 @@ use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
+use InvalidArgumentException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -212,7 +213,7 @@ class ListController extends AbstractBaseController
             <ul class="d-flex flex-wrap wt-initials-list">
 
                 <?php foreach ($this->surnameAlpha($tree, $show_marnm === 'yes', $families) as $letter => $count): ?>
-                    <li class="wt-initials-list-item">
+                    <li class="wt-initials-list-item d-flex">
                         <?php if ($count > 0): ?>
                             <a href="<?= e(route($route, ['alpha' => $letter, 'ged' => $tree->getName()])) ?>" class="wt-initial<?= $letter === $alpha ? ' active' : ''?> '" title="<?= I18N::number($count) ?>"><?= $this->surnameInitial((string) $letter) ?></a>
                         <?php else: ?>
@@ -224,7 +225,7 @@ class ListController extends AbstractBaseController
 
                 <?php if (Session::has('initiated')): ?>
                     <!-- Search spiders don't get the "show all" option as the other links give them everything. -->
-                    <li class="wt-initials-list-item">
+                    <li class="wt-initials-list-item d-flex">
                         <a class="wt-initial<?= $show_all === 'yes' ? ' active' : '' ?>" href="<?= e(route($route, ['show_all' => 'yes'] + $params)) ?>"><?= I18N::translate('All') ?></a>
                     </li>
                 <?php endif ?>
@@ -309,7 +310,7 @@ class ListController extends AbstractBaseController
                             $list = [];
                             echo '<ul class="d-flex flex-wrap justify-content-center wt-initials-list">';
                             foreach ($givn_initials as $givn_initial => $count) {
-                                echo '<li class="wt-initials-list-item">';
+                                echo '<li class="wt-initials-list-item d-flex">';
                                 if ($count > 0) {
                                     if ($show === 'indi' && $givn_initial === $falpha && $show_all_firstnames === 'no') {
                                         echo '<a class="wt-initial active" href="' . e(route($route, ['falpha' => $givn_initial] + $params)) . '" title="' . I18N::number($count) . '">' . $this->givenNameInitial((string) $givn_initial) . '</a>';
@@ -323,7 +324,7 @@ class ListController extends AbstractBaseController
                             }
                             // Search spiders don't get the "show all" option as the other links give them everything.
                             if (Session::has('initiated')) {
-                                echo '<li class="wt-initials-list-item">';
+                                echo '<li class="wt-initials-list-item d-flex">';
                                 if ($show_all_firstnames === 'yes') {
                                     echo '<span class="wt-initial warning">' . I18N::translate('All') . '</span>';
                                 } else {
@@ -669,15 +670,34 @@ class ListController extends AbstractBaseController
      * @param string $field
      * @param string $letter
      *
-     * @return string
+     * @return mixed[] Where clause and array of bind variables
      */
-    private function getInitialSql($field, $letter): string
+    private function getInitialSql($field, $letter): array
     {
+        $collate = 'COLLATE ' . I18N::collation();
+
+        switch ($field) {
+            case 'n_givn':
+                $where1 = " AND n_givn LIKE :n_givn1 " . $collate . " AND n_givn NOT LIKE :n_givn2 " . $collate;
+                $where2 = " AND (n_givn LIKE :n_givn1 " . $collate . " OR n_givn LIKE :n_givn2 " . $collate . ")";
+                $where3 = " AND n_givn LIKE CONCAT('@', :n_givn1, '%') " . $collate . " ESCAPE '@'";
+                break;
+
+            case 'n_surn':
+                $where1 = " AND n_surn LIKE :n_surn1 " . $collate . " AND n_surn NOT LIKE :n_surn2 " . $collate;
+                $where2 = " AND (n_surn LIKE :n_surn1 " . $collate . " OR n_surn LIKE :n_surn2 " . $collate . ")";
+                $where3 = " AND n_surn LIKE CONCAT('@', :n_surn1, '%') " . $collate . " ESCAPE '@'";
+                break;
+
+            default:
+                throw new InvalidArgumentException('ListController::getInitialSql(' . $field . ')');
+        }
+
         switch (WT_LOCALE) {
             case 'cs':
                 switch ($letter) {
                     case 'C':
-                        return $field . " LIKE 'C%' COLLATE " . I18N::collation() . " AND " . $field . " NOT LIKE 'CH%' COLLATE " . I18N::collation();
+                        return [$where1, [$field . '1' => 'C%', $field . '2' => 'CH%']];
                 }
                 break;
             case 'da':
@@ -686,43 +706,43 @@ class ListController extends AbstractBaseController
                 switch ($letter) {
                     // AA gets listed under Å
                     case 'A':
-                        return $field . " LIKE 'A%' COLLATE " . I18N::collation() . " AND " . $field . " NOT LIKE 'AA%' COLLATE " . I18N::collation();
+                        return [$where1, [$field . '1' => 'A%', $field . '2' => 'AA%']];
                     case 'Å':
-                        return "(" . $field . " LIKE 'Å%' COLLATE " . I18N::collation() . " OR " . $field . " LIKE 'AA%' COLLATE " . I18N::collation() . ")";
+                        return [$where2, [$field . '1' => 'Å%', $field . '2' => 'AA%']];
                 }
                 break;
             case 'hu':
                 switch ($letter) {
                     case 'C':
-                        return $field . " LIKE 'C%' COLLATE " . I18N::collation() . " AND " . $field . " NOT LIKE 'CS%' COLLATE " . I18N::collation();
+                        return [$where1, [$field . '1' => 'C%', $field . '2' => 'CS%']];
                     case 'D':
-                        return $field . " LIKE 'D%' COLLATE " . I18N::collation() . " AND " . $field . " NOT LIKE 'DZ%' COLLATE " . I18N::collation();
+                        return [$where1, [$field . '1' => 'D%', $field . '2' => 'DZ%']];
                     case 'DZ':
-                        return $field . " LIKE 'DZ%' COLLATE " . I18N::collation() . " AND " . $field . " NOT LIKE 'DZS%' COLLATE " . I18N::collation();
+                        return [$where1, [$field . '1' => 'DZ%', $field . '2' => 'DZS%']];
                     case 'G':
-                        return $field . " LIKE 'G%' COLLATE " . I18N::collation() . " AND " . $field . " NOT LIKE 'GY%' COLLATE " . I18N::collation();
+                        return [$where1, [$field . '1' => 'G%', $field . '2' => 'GY%']];
                     case 'L':
-                        return $field . " LIKE 'L%' COLLATE " . I18N::collation() . " AND " . $field . " NOT LIKE 'LY%' COLLATE " . I18N::collation();
+                        return [$where1, [$field . '1' => 'L%', $field . '2' => 'LY%']];
                     case 'N':
-                        return $field . " LIKE 'N%' COLLATE " . I18N::collation() . " AND " . $field . " NOT LIKE 'NY%' COLLATE " . I18N::collation();
+                        return [$where1, [$field . '1' => 'N%', $field . '2' => 'NY%']];
                     case 'S':
-                        return $field . " LIKE 'S%' COLLATE " . I18N::collation() . " AND " . $field . " NOT LIKE 'SZ%' COLLATE " . I18N::collation();
+                        return [$where1, [$field . '1' => 'S%', $field . '2' => 'SZ%']];
                     case 'T':
-                        return $field . " LIKE 'T%' COLLATE " . I18N::collation() . " AND " . $field . " NOT LIKE 'TY%' COLLATE " . I18N::collation();
+                        return [$where1, [$field . '1' => 'T%', $field . '2' => 'TY%']];
                     case 'Z':
-                        return $field . " LIKE 'Z%' COLLATE " . I18N::collation() . " AND " . $field . " NOT LIKE 'ZS%' COLLATE " . I18N::collation();
+                        return [$where1, [$field . '1' => 'Z%', $field . '2' => 'ZS%']];
                 }
                 break;
             case 'nl':
                 switch ($letter) {
                     case 'I':
-                        return $field . " LIKE 'I%' COLLATE " . I18N::collation() . " AND " . $field . " NOT LIKE 'IJ%' COLLATE " . I18N::collation();
+                        return [$where1, [$field . '1' => 'I%', $field . '2' => 'IJ%']];
                 }
                 break;
         }
 
         // Easy cases: the MySQL collation rules take care of it
-        return "$field LIKE CONCAT('@'," . Database::quote($letter) . ",'%') COLLATE " . I18N::collation() . " ESCAPE '@'";
+        return [$where3, [$field . '1' => $letter]];
     }
 
     /**
@@ -752,7 +772,8 @@ class ListController extends AbstractBaseController
         foreach ($this->localization_service->alphabet() as $letter) {
             $count = 1;
             if ($totals) {
-                $count = Database::prepare($sql . " AND " . $this->getInitialSql('n_surn', $letter))->fetchOne();
+                list($where, $args2) = $this->getInitialSql('n_surn', $letter);
+                $count = Database::prepare($sql . $where)->execute($args2)->fetchOne();
             }
             $alphas[$letter] = (int) $count;
         }
@@ -823,14 +844,19 @@ class ListController extends AbstractBaseController
             " WHERE n_file=" . $tree->getTreeId() . " " .
             ($marnm ? "" : " AND n_type!='_MARNM'");
 
+        $args = [];
+
         if ($surn) {
-            $sql .= " AND n_surn=" . Database::quote($surn) . " COLLATE '" . I18N::collation() . "'";
+            $sql .= " AND n_surn = :surn COLLATE '" . I18N::collation() . "'";
+            $args['surn'] = $surn;
         } elseif ($salpha == ',') {
             $sql .= " AND n_surn=''";
         } elseif ($salpha == '@') {
             $sql .= " AND n_surn='@N.N.'";
         } elseif ($salpha) {
-            $sql .= " AND " . $this->getInitialSql('n_surn', $salpha);
+            list($where, $args2) = $this->getInitialSql('n_surn', $salpha);
+            $sql .= $where;
+            $args += $args2;
         } else {
             // All surnames
             $sql .= " AND n_surn NOT IN ('', '@N.N.')";
@@ -840,7 +866,10 @@ class ListController extends AbstractBaseController
         // are any names beginning with that letter. It looks better to
         // show the full alphabet, rather than omitting rare letters such as X
         foreach ($this->localization_service->alphabet() as $letter) {
-            $count           = Database::prepare($sql . " AND " . $this->getInitialSql('n_givn', $letter))->fetchOne();
+            list($where, $args2) = $this->getInitialSql('n_surn', $salpha);
+
+            $count = Database::prepare($sql . $where)->execute($args + $args2)->fetchOne();
+
             $alphas[$letter] = (int) $count;
         }
 
@@ -866,7 +895,9 @@ class ListController extends AbstractBaseController
         } elseif ($salpha === '@') {
             $sql .= " AND n_surn = '@N.N.'";
         } elseif ($salpha) {
-            $sql .= " AND " . $this->getInitialSql('n_surn', $salpha);
+            list($where, $args2) = $this->getInitialSql('n_surn', $salpha);
+            $sql .= $where;
+            $args += $args2;
         } else {
             // All surnames
             $sql .= " AND n_surn NOT IN ('', '@N.N.')";
@@ -875,6 +906,7 @@ class ListController extends AbstractBaseController
         foreach ($this->localization_service->alphabet() as $letter) {
             $sql .= " AND n_givn NOT LIKE '" . $letter . "%' COLLATE " . I18N::collation();
         }
+
         $sql .= " GROUP BY UPPER(LEFT(n_givn, 1))) AS subquery ORDER BY initial = '@', initial = '', initial";
 
         foreach (Database::prepare($sql)->execute($args)->fetchAssoc() as $alpha => $count) {
@@ -918,7 +950,10 @@ class ListController extends AbstractBaseController
         } elseif ($salpha === '@') {
             $sql .= " AND n_surn = '@N.N.'";
         } elseif ($salpha) {
-            $sql .= " AND " . $this->getInitialSql('n_surn', $salpha);
+            list($where, $args2) = $this->getInitialSql('n_surn', $salpha);
+
+            $sql .= $where;
+            $args += $args2;
         } else {
             // All surnames
             $sql .= " AND n_surn NOT IN ('', '@N.N.')";
@@ -970,13 +1005,17 @@ class ListController extends AbstractBaseController
         } elseif ($salpha === '@') {
             $sql .= " AND n_surn = '@N.N.'";
         } elseif ($salpha) {
-            $sql .= " AND " . $this->getInitialSql('n_surn', $salpha);
+            list($where, $args2) = $this->getInitialSql('n_surn', $salpha);
+            $sql .= $where;
+            $args += $args2;
         } else {
             // All surnames
             $sql .= " AND n_surn NOT IN ('', '@N.N.')";
         }
         if ($galpha) {
-            $sql .= " AND " . $this->getInitialSql('n_givn', $galpha);
+            list($where, $args2) = $this->getInitialSql('n_givn', $galpha);
+            $sql .= $where;
+            $args += $args2;
         }
 
         $sql .= " ORDER BY CASE n_surn WHEN '@N.N.' THEN 1 ELSE 0 END, n_surn COLLATE :collate_2, CASE n_givn WHEN '@P.N.' THEN 1 ELSE 0 END, n_givn COLLATE :collate_3";
