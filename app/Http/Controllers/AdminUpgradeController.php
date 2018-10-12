@@ -216,6 +216,7 @@ class AdminUpgradeController extends AbstractBaseController
                 return $this->success(I18N::translate('The family tree has been exported to %s.', e($filename)));
             }
         } catch (Throwable $ex) {
+            // Can't write to the data folder.
         }
 
         return $this->failure(I18N::translate('The file %s could not be created.', e($filename)));
