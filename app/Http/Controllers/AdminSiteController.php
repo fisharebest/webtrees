@@ -99,7 +99,7 @@ class AdminSiteController extends AbstractBaseController
         }
 
         // List the top-level contents of the data folder
-        $entries = array_map(function(array $content) {
+        $entries = array_map(function (array $content) {
             return $content['path'];
         }, $filesystem->listContents());
 
