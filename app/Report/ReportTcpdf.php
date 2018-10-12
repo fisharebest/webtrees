@@ -402,7 +402,7 @@ class ReportTcpdf extends TCPDF
         }
         // If this Footnote has not been set up yet
         $footnote->setNum($ct + 1);
-        $footnote->setAddlink($this->AddLink());
+        $footnote->setAddlink((string) $this->AddLink());
         $this->printedfootnotes[] = $footnote;
 
         return false;
