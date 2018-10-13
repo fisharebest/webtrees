@@ -191,9 +191,9 @@ class Location
     /**
      * @return int
      */
-    public function add()
+    public function add(): int
     {
-        $this->record->pl_id = Database::prepare("SELECT IFNULL(MAX(pl_id)+1, 1) FROM `##placelocation`")
+        $this->record->pl_id = (int) Database::prepare("SELECT IFNULL(MAX(pl_id)+1, 1) FROM `##placelocation`")
             ->execute()
             ->fetchOne();
 
