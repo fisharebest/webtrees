@@ -364,11 +364,10 @@ class I18N
     /**
      * Convert a GEDCOM age string into translated_text
      *
-     * NB: The import function will have normalised this, so we don't need
-     * to worry about badly formatted strings
+     * NB: The import function will have normalised this, so we don't need to worry about badly formatted strings
      * NOTE: this function is not yet complete - eventually it will replace FunctionsDate::get_age_at_event()
      *
-     * @param $string
+     * @param string $string
      *
      * @return string
      */
@@ -385,7 +384,9 @@ class I18N
                 // I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (in childhood)
                 return self::translate('(in childhood)');
         }
+
         $age = [];
+
         if (preg_match('/(\d+)y/', $string, $match)) {
             $years = (int) $match[1];
             // I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
@@ -393,42 +394,49 @@ class I18N
         } else {
             $years = -1;
         }
+
         if (preg_match('/(\d+)m/', $string, $match)) {
             $months = (int) $match[1];
             // I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
             $age[] = self::plural('%s month', '%s months', $months, self::number($months));
         }
+
         if (preg_match('/(\d+)w/', $string, $match)) {
             $weeks = (int) $match[1];
             // I18N: Part of an age string. e.g. 7 weeks and 3 days
             $age[] = self::plural('%s week', '%s weeks', $weeks, self::number($weeks));
         }
+
         if (preg_match('/(\d+)d/', $string, $match)) {
             $days = (int) $match[1];
             // I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
             $age[] = self::plural('%s day', '%s days', $days, self::number($days));
         }
+
         // If an age is just a number of years, only show the number
         if (count($age) === 1 && $years >= 0) {
-            $age = $years;
-        }
-        if ($age) {
-            if (!substr_compare($string, '<', 0, 1)) {
-                // I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (aged less than 21 years)
-                return self::translate('(aged less than %s)', $age);
-            }
-
-            if (!substr_compare($string, '>', 0, 1)) {
-                // I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (aged more than 21 years)
-                return self::translate('(aged more than %s)', $age);
-            }
-
-            // I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (aged 43 years)
-            return self::translate('(aged %s)', $age);
+            $age = [self::number($years)];
         }
 
-        // Not a valid string?
-        return self::translate('(aged %s)', $string);
+        $age_string = implode(self::$list_separator, $age);
+
+        // No valid d/m/y values?  Show the original string.
+        if ($age_string === '') {
+            $age_string = $string;
+        }
+
+        if (!substr_compare($string, '<', 0, 1)) {
+            // I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (aged less than 21 years)
+            return self::translate('(aged less than %s)', $age);
+        }
+
+        if (!substr_compare($string, '>', 0, 1)) {
+            // I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (aged more than 21 years)
+            return self::translate('(aged more than %s)', $age);
+        }
+
+        // I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (aged 43 years)
+        return self::translate('(aged %s)', $age);
     }
 
     /**

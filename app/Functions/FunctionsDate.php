@@ -33,7 +33,7 @@ class FunctionsDate
      *
      * @return string
      */
-    public static function getAgeAtEvent($age_string)
+    public static function getAgeAtEvent(string $age_string): string
     {
         switch (strtoupper($age_string)) {
             case 'CHILD':
