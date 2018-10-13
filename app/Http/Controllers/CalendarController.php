@@ -267,7 +267,9 @@ class CalendarController extends AbstractBaseController
                     $found_facts[$d] = [];
                 }
                 // Fetch events for each day
-                for ($jd = $cal_date->minimumJulianDay(); $jd <= $cal_date->maximumJulianDay(); ++$jd) {
+                $jds = range($cal_date->minimumJulianDay(), $cal_date->maximumJulianDay());
+
+                foreach ($jds as $jd) {
                     foreach ($this->applyFilter($calendar_service->getAnniversaryEvents($jd, $filterev, $tree), $filterof, $filtersx) as $fact) {
                         $tmp = $fact->getDate()->minimumDate();
                         if ($tmp->day >= 1 && $tmp->day <= $tmp->daysInMonth()) {
