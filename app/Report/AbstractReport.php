@@ -251,7 +251,7 @@ abstract class AbstractReport
      */
     abstract public function createFootnote($style): ReportBaseFootnote;
 
-     /**
+    /**
      * Initial Setup
      *
      * Setting up document wide defaults that will be inherited of the report modules

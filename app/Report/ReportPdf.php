@@ -31,18 +31,21 @@ class ReportPdf extends AbstractReport
      * @var bool const
      */
     const COMPRESSION = true;
+
     /**
      * If true reduce the RAM memory usage by caching temporary data on filesystem (slower).
      *
      * @var bool const
      */
     const DISK_CACHE = false;
+
     /**
      * true means that the input text is unicode (PDF)
      *
      * @var bool const
      */
     const UNICODE = true;
+
     /**
      * false means that the full font is embedded, true means only the used chars
      * in TCPDF v5.9 font subsetting is a very slow process, this leads to larger files
@@ -50,6 +53,7 @@ class ReportPdf extends AbstractReport
      * @var bool const
      */
     const SUBSETTING = false;
+
     /**
      * A new object of the PDF class
      *
