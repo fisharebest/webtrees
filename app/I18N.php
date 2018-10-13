@@ -37,7 +37,7 @@ class I18N
     /** @var Translator An object that performs translation */
     private static $translator;
 
-    /** @var  Collator From the php-intl library */
+    /** @var  Collator|null From the php-intl library */
     private static $collator;
 
     // Digits are always rendered LTR, even in RTL text.
@@ -544,16 +544,15 @@ class I18N
 
         // Create a collator
         try {
-            // PHP 5.6 cannot catch errors, so test first
             if (class_exists('Collator')) {
+                // Symfony provides a very incomplete polyfill - which cannot be used.
                 self::$collator = new Collator(self::$locale->code());
                 // Ignore upper/lower case differences
                 self::$collator->setStrength(Collator::SECONDARY);
             }
         } catch (Exception $ex) {
-            DebugBar::addThrowable($ex);
-
             // PHP-INTL is not installed?  We'll use a fallback later.
+            self::$collator = null;
         }
 
         return self::$locale->languageTag();
@@ -741,9 +740,9 @@ class I18N
     {
         if (self::$collator instanceof Collator) {
             return self::$collator->compare($string1, $string2);
+        } else {
+            return strcmp(self::strtolower($string1), self::strtolower($string2));
         }
-
-        return strcmp(self::strtolower($string1), self::strtolower($string2));
     }
 
     /**
