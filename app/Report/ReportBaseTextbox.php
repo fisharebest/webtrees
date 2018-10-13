@@ -25,7 +25,7 @@ class ReportBaseTextbox extends ReportBaseElement
     /**
      * Array of elements in the TextBox
      *
-     * @var array
+     * @var ReportBaseElement[]|string[]
      */
     public $elements = [];
 
@@ -45,13 +45,13 @@ class ReportBaseTextbox extends ReportBaseElement
     /**
      * Position the left corner of this box on the page(expressed in points). The default is the current position.
      *
-     * @var mixed
+     * @var float
      */
     public $left;
     /**
      * Position the top corner of this box on the page(expressed in points). the default is the current position
      *
-     * @var mixed
+     * @var float
      */
     public $top;
     /**
@@ -123,8 +123,8 @@ class ReportBaseTextbox extends ReportBaseElement
      * @param bool   $border
      * @param string $bgcolor Background color code in HTML
      * @param bool   $newline
-     * @param mixed  $left
-     * @param mixed  $top
+     * @param float  $left
+     * @param float  $top
      * @param bool   $pagecheck
      * @param string $style
      * @param bool   $fill
@@ -150,7 +150,7 @@ class ReportBaseTextbox extends ReportBaseElement
     /**
      * Add an element to the TextBox
      *
-     * @param object|string $element
+     * @param ReportBaseElement|string $element
      *
      * @return void
      */
