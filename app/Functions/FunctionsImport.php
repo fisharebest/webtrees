@@ -665,7 +665,7 @@ class FunctionsImport
                     $gedrec,
                 ]);
                 // Update the cross-reference/index tables.
-                self::updatePlaces($xref, $tree_id, $gedrec);
+                self::updatePlaces($xref, $tree, $gedrec);
                 self::updateDates($xref, $tree_id, $gedrec);
                 self::updateLinks($xref, $tree_id, $gedrec);
                 self::updateNames($xref, $tree_id, $record);
@@ -699,7 +699,7 @@ class FunctionsImport
                     $nchi,
                 ]);
                 // Update the cross-reference/index tables.
-                self::updatePlaces($xref, $tree_id, $gedrec);
+                self::updatePlaces($xref, $tree, $gedrec);
                 self::updateDates($xref, $tree_id, $gedrec);
                 self::updateLinks($xref, $tree_id, $gedrec);
                 break;
@@ -803,105 +803,93 @@ class FunctionsImport
     }
 
     /**
-     * extract all places from the given record and insert them into the places table
+     * Extract all level 2 places from the given record and insert them into the places table
      *
-     * @param string $gid
-     * @param int    $ged_id
+     * @param string $xref
+     * @param Tree   $tree
      * @param string $gedrec
      *
      * @return void
      */
-    public static function updatePlaces($gid, $ged_id, $gedrec)
+    public static function updatePlaces(string $xref, Tree $tree,string $gedrec)
     {
-        static $placecache = [];
+        preg_match_all('/^[2-9] PLAC (.+)/m', $gedrec, $matches);
 
-        $personplace = [];
-        // import all place locations, but not control info such as
-        // 0 HEAD/1 PLAC or 0 _EVDEF/1 PLAC
-        $pt = preg_match_all('/^[2-9] PLAC (.+)/m', $gedrec, $match, PREG_SET_ORDER);
-        for ($i = 0; $i < $pt; $i++) {
-            $place    = trim($match[$i][1]);
-            $lowplace = I18N::strtolower($place);
-            //-- if we have already visited this place for this person then we don't need to again
-            if (isset($personplace[$lowplace])) {
-                continue;
-            }
-            $personplace[$lowplace] = 1;
-            $places                 = explode(',', $place);
-            //-- reverse the array to start at the highest level
-            $secalp    = array_reverse($places);
-            $parent_id = 0;
-            $search    = true;
+        $places = array_unique($matches[1]);
 
-            foreach ($secalp as $place) {
-                $place = trim($place);
-                $key   = strtolower(mb_substr($place, 0, 150) . '_' . $parent_id);
-                //-- if this place has already been added then we don't need to add it again
-                if (isset($placecache[$key])) {
-                    $parent_id = $placecache[$key];
-                    if (!isset($personplace[$key])) {
-                        $personplace[$key] = 1;
-                        // Use INSERT IGNORE as a (temporary) fix for https://bugs.launchpad.net/webtrees/+bug/582226
-                        // It ignores places that utf8_unicode_ci consider to be the same (i.e. accents).
-                        // For example Québec and Quebec
-                        // We need a better solution that attaches multiple names to single places
-                        Database::prepare(
-                            "INSERT IGNORE INTO `##placelinks` (pl_p_id, pl_gid, pl_file) VALUES (?, ?, ?)"
-                        )->execute([
-                            $parent_id,
-                            $gid,
-                            $ged_id,
-                        ]);
-                    }
-                    continue;
-                }
+        foreach ($places as $place) {
+            // Find (or create) the place ID.
+            $place_id = self::importPlace($place, $tree);
 
-                //-- only search the database while we are finding places in it
-                if ($search) {
-                    //-- check if this place and level has already been added
-                    $tmp = Database::prepare(
-                        "SELECT p_id FROM `##places` WHERE p_file = ? AND p_parent_id = ? AND p_place = LEFT(?, 150)"
-                    )->execute([
-                        $ged_id,
-                        $parent_id,
-                        $place,
-                    ])->fetchOne();
-                    if ($tmp) {
-                        $p_id = $tmp;
-                    } else {
-                        $search = false;
-                    }
-                }
-
-                //-- if we are not searching then we have to insert the place into the db
-                if (!$search) {
-                    $std_soundex = Soundex::russell($place);
-                    $dm_soundex  = Soundex::daitchMokotoff($place);
-                    Database::prepare(
-                        "INSERT INTO `##places` (p_place, p_parent_id, p_file, p_std_soundex, p_dm_soundex) VALUES (LEFT(?, 150), ?, ?, ?, ?)"
-                    )->execute([
-                        $place,
-                        $parent_id,
-                        $ged_id,
-                        $std_soundex,
-                        $dm_soundex,
-                    ]);
-                    $p_id = Database::lastInsertId();
-                }
-
-                Database::prepare(
-                    "INSERT IGNORE INTO `##placelinks` (pl_p_id, pl_gid, pl_file) VALUES (?, ?, ?)"
-                )->execute([
-                    $p_id,
-                    $gid,
-                    $ged_id,
-                ]);
-                //-- increment the level and assign the parent id for the next place level
-                $parent_id         = $p_id;
-                $placecache[$key]  = $p_id;
-                $personplace[$key] = 1;
-            }
+            // Link the place to the record
+            Database::prepare(
+                "INSERT INTO `##placelinks` (pl_p_id, pl_gid, pl_file) VALUES (:place_id, :xref, :tree_id)"
+            )->execute([
+                'place_id' => $place_id,
+                'xref'     => $xref,
+                'tree_id'  => $tree->getTreeId(),
+            ]);
         }
+    }
+
+    /**
+     * Find (or create) the place ID for a place name.
+     *
+     * @param string $place
+     * @param Tree   $tree
+     *
+     * @return int
+     */
+    private static function importPlace(string $place, Tree $tree): int {
+        /** @var int[] $cache */
+        static $cache;
+
+        // The global, top-level, place has an ID of zero.
+        if ($place === '') {
+            return 0;
+        }
+
+        // Already imported?
+        $cache_key = $tree->getTreeId() . '/' . $place;
+        if (isset($cache[$cache_key])) {
+            return $cache[$cache_key];
+        }
+
+        // Find the parent place ID first
+        if (preg_match('/([^,]*), (.+)/', $place, $match)) {
+            $place     = $match[1];
+            $parent_id = self::importPlace($match[2], $tree);
+        } else {
+            $parent_id = 0;
+        }
+
+        // Does the place already exist?
+        $place_id = (int) Database::prepare(
+            "SELECT p_id FROM `##places`" .
+            " WHERE p_file =:tree_id AND p_parent_id = :parent_id AND p_place = LEFT(:place, 150)"
+        )->execute([
+            'tree_id'   => $tree->getTreeId(),
+            'parent_id' => $parent_id,
+            'place'     => $place,
+        ])->fetchOne();
+
+        if ($place_id === 0) {
+            Database::prepare(
+                "INSERT INTO `##places` (p_place, p_parent_id, p_file, p_std_soundex, p_dm_soundex)" .
+                " VALUES (LEFT(:place, 150), :parent_id, :tree_id, :std_soundex, :dm_soundex)"
+            )->execute([
+                'place'       => $place,
+                'parent_id'   => $parent_id,
+                'tree_id'     => $tree->getTreeId(),
+                'std_soundex' => Soundex::russell($place),
+                'dm_soundex'  => Soundex::daitchMokotoff($place),
+            ]);
+            $place_id = Database::lastInsertId();
+        }
+
+        $cache[$cache_key] = $place_id;
+
+        return $place_id;
     }
 
     /**
