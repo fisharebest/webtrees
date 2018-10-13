@@ -427,16 +427,16 @@ class I18N
 
         if (!substr_compare($string, '<', 0, 1)) {
             // I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (aged less than 21 years)
-            return self::translate('(aged less than %s)', $age);
+            return self::translate('(aged less than %s)', $age_string);
         }
 
         if (!substr_compare($string, '>', 0, 1)) {
             // I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (aged more than 21 years)
-            return self::translate('(aged more than %s)', $age);
+            return self::translate('(aged more than %s)', $age_string);
         }
 
         // I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (aged 43 years)
-        return self::translate('(aged %s)', $age);
+        return self::translate('(aged %s)', $age_string);
     }
 
     /**
