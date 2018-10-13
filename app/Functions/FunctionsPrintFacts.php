@@ -1005,9 +1005,9 @@ class FunctionsPrintFacts
             }
 
             if ($level >= 2) {
-                echo '<tr class="row_note2"><th scope="row" class="rela ', $styleadd, ' width20">';
+                echo '<tr class="row_note2"><th scope="row" class="rela ', $styleadd, '">';
             } else {
-                echo '<tr><th scope="row" class="', $styleadd, ' width20">';
+                echo '<tr><th scope="row" class="', $styleadd, '">';
             }
             if ($can_edit) {
                 if ($level < 2) {

@@ -338,9 +338,9 @@ class CalendarController extends AbstractBaseController
         switch ($view) {
             case 'year':
             case 'day':
-                echo '<table class="width100"><tr>';
-                echo '<td class="descriptionbox center width50"><i class="icon-indis"></i>', I18N::translate('Individuals'), '</td>';
-                echo '<td class="descriptionbox center width50"><i class="icon-cfamily"></i>', I18N::translate('Families'), '</td>';
+                echo '<table class="w-100"><tr>';
+                echo '<td class="descriptionbox center"><i class="icon-indis"></i>', I18N::translate('Individuals'), '</td>';
+                echo '<td class="descriptionbox center"><i class="icon-cfamily"></i>', I18N::translate('Families'), '</td>';
                 echo '</tr><tr>';
                 echo '<td class="optionbox wrap">';
 
@@ -375,7 +375,7 @@ class CalendarController extends AbstractBaseController
                     $weekend_start = -1;
                     $weekend_end   = -1;
                 }
-                echo '<table class="width100"><thead><tr>';
+                echo '<table class="w-100"><thead><tr>';
                 for ($week_day = 0; $week_day < $days_in_week; ++$week_day) {
                     $day_name = $cal_date->dayNames(($week_day + $week_start) % $days_in_week);
                     if ($week_day == $weekend_start || $week_day == $weekend_end) {
