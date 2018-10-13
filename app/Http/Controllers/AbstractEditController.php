@@ -100,7 +100,10 @@ abstract class AbstractEditController extends AbstractBaseController
         $inSOUR    = false;
         $levelSOUR = 0;
 
-        for ($i = 0; $i < count($this->glevels); $i++) {
+        // Assume all arrays are the same size.
+        $count = count($this->glevels);
+
+        for ($i = 0; $i < $count; $i++) {
             if ($inSOUR) {
                 if ($levelSOUR < $this->glevels[$i]) {
                     $dest = 'S';
@@ -202,7 +205,10 @@ abstract class AbstractEditController extends AbstractBaseController
             $levelAdjust = $levelOverride - $this->glevels[0];
         }
 
-        for ($j = 0; $j < count($this->glevels); $j++) {
+        // Assume all arrays are the same size.
+        $count = count($this->glevels);
+
+        for ($j = 0; $j < $count; $j++) {
             // Look for empty SOUR reference with non-empty sub-records.
             // This can happen when the SOUR entry is deleted but its sub-records
             // were incorrectly left intact.
@@ -210,7 +216,7 @@ abstract class AbstractEditController extends AbstractBaseController
             if ($this->tag[$j] === 'SOUR' && ($this->text[$j] === '@@' || $this->text[$j] === '')) {
                 $this->text[$j] = '';
                 $k              = $j + 1;
-                while (($k < count($this->glevels)) && ($this->glevels[$k] > $this->glevels[$j])) {
+                while ($k < $count && $this->glevels[$k] > $this->glevels[$j]) {
                     $this->text[$k] = '';
                     $k++;
                 }
@@ -223,7 +229,7 @@ abstract class AbstractEditController extends AbstractBaseController
                 //-- this section checks if they have subrecords
                 $k    = $j + 1;
                 $pass = false;
-                while (($k < count($this->glevels)) && ($this->glevels[$k] > $this->glevels[$j])) {
+                while ($k < $count && $this->glevels[$k] > $this->glevels[$j]) {
                     if ($this->text[$k] !== '') {
                         if (($this->tag[$j] !== 'OBJE') || ($this->tag[$k] === 'FILE')) {
                             $pass = true;
@@ -238,7 +244,7 @@ abstract class AbstractEditController extends AbstractBaseController
             //--- then write the line to the gedcom record
             //-- we have to let some emtpy text lines pass through... (DEAT, BIRT, etc)
             if ($pass) {
-                $newline = $this->glevels[$j] + $levelAdjust . ' ' . $this->tag[$j];
+                $newline = (int) $this->glevels[$j] + $levelAdjust . ' ' . $this->tag[$j];
                 if ($this->text[$j] !== '') {
                     if ($this->islink[$j]) {
                         $newline .= ' @' . $this->text[$j] . '@';
