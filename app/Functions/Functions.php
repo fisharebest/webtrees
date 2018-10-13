@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Functions;
 
+use Exception;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\I18N;
@@ -214,15 +215,13 @@ class Functions
      */
     public static function getCloseRelationshipName(Individual $individual1, Individual $individual2): string
     {
-        $relationship = self::getRelationship($individual1, $individual2);
-
-        if ($relationship === false) {
-            $label = self::reflexivePronoun($individual1);
-        } else {
-            $label = self::getRelationshipName($relationship);
+        if ($individual1 === $individual2) {
+            return self::reflexivePronoun($individual1);
         }
 
-        return $label;
+        $relationship = self::getRelationship($individual1, $individual2);
+
+        return self::getRelationshipName($relationship);
     }
 
     /**
@@ -256,14 +255,11 @@ class Functions
      * @param Individual $individual2 The person to compute the relatiohip to
      * @param int        $maxlength   The maximum length of path
      *
-     * @return array|bool An array of nodes on the relationship path, or false if no path found
+     * @return array     An array of nodes on the relationship path, or false if no path found
+     * @throws Exception If no relationship exists
      */
     public static function getRelationship(Individual $individual1, Individual $individual2, $maxlength = 4)
     {
-        if ($individual1 === $individual2) {
-            return false;
-        }
-
         $spouse_codes = [
             'M' => 'hus',
             'F' => 'wif',
@@ -375,7 +371,7 @@ class Functions
             }
         }
 
-        return false;
+        throw new Exception('getCloseRelationshipName() called on unrelated individuals');
     }
 
     /**
@@ -1793,7 +1789,7 @@ class Functions
         }
         if (preg_match('/^(?:bro|sis|sib)((?:son|dau|chi)+)$/', $path, $match)) {
             // direct descendants of siblings
-            $down  = intdiv($match[1], 3) + 1; // Add one, as we count generations from the common ancestor
+            $down  = intdiv(strlen($match[1]), 3) + 1; // Add one, as we count generations from the common ancestor
             $first = substr($path, 0, 3);
             switch ($down) {
                 case 4:
@@ -2266,8 +2262,8 @@ class Functions
             // cousins in English
             $ascent  = $match[1];
             $descent = $match[2];
-            $up      = intdiv($ascent, 3);
-            $down    = intdiv($descent, 3);
+            $up      = intdiv(strlen($ascent), 3);
+            $down    = intdiv(strlen($descent), 3);
             $cousin  = min($up, $down); // Moved out of switch (en/default case) so that
             $removed = abs($down - $up); // Spanish (and other languages) can use it, too.
 
