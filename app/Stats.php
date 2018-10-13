@@ -109,25 +109,11 @@ class Stats
 
         $html = '';
         foreach ($examples as $tag => $value) {
-            $html .= '<tr>';
-            $html .= '<td class="list_value_wrap">' . $tag . '</td>';
-            $html .= '<td class="list_value_wrap">' . $value . '</td>';
-            $html .= '</tr>';
+            $html .= '<dt>#' . $tag . '#</dt>';
+            $html .= '<dd>' . $value . '</dd>';
         }
 
-        return
-            '<table id="keywords" style="width:100%; table-layout:fixed"><thead>' .
-            '<tr>' .
-            '<th class="list_label_wrap width25">' .
-            I18N::translate('Embedded variable') .
-            '</th>' .
-            '<th class="list_label_wrap width75">' .
-            I18N::translate('Resulting value') .
-            '</th>' .
-            '</tr>' .
-            '</thead><tbody>' .
-            $html .
-            '</tbody></table>';
+        return '<dl>' . $html . '</dl>';
     }
 
     /**
