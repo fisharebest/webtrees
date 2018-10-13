@@ -193,9 +193,11 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
         ])->fetchAll();
 
         foreach ($stories as $story) {
+            $block_id = (int) $story->block_id;
+
             $story->individual = Individual::getInstance($story->xref, $tree);
-            $story->title      = $this->getBlockSetting($story->block_id, 'title');
-            $story->languages  = $this->getBlockSetting($story->block_id, 'languages');
+            $story->title      = $this->getBlockSetting($block_id, 'title');
+            $story->languages  = $this->getBlockSetting($block_id, 'languages');
         }
 
         return $this->viewResponse('modules/stories/config', [
@@ -349,9 +351,11 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
         ])->fetchAll();
 
         foreach ($stories as $story) {
+            $block_id = (int) $story->block_id;
+
             $story->individual = Individual::getInstance($story->xref, $tree);
-            $story->title      = $this->getBlockSetting($story->block_id, 'title');
-            $story->languages  = $this->getBlockSetting($story->block_id, 'languages');
+            $story->title      = $this->getBlockSetting($block_id, 'title');
+            $story->languages  = $this->getBlockSetting($block_id, 'languages');
         }
 
         // Filter non-existant and private individuals.
