@@ -811,7 +811,7 @@ class FunctionsImport
      *
      * @return void
      */
-    public static function updatePlaces(string $xref, Tree $tree,string $gedrec)
+    public static function updatePlaces(string $xref, Tree $tree, string $gedrec)
     {
         preg_match_all('/^[2-9] PLAC (.+)/m', $gedrec, $matches);
 
@@ -840,7 +840,8 @@ class FunctionsImport
      *
      * @return int
      */
-    private static function importPlace(string $place, Tree $tree): int {
+    private static function importPlace(string $place, Tree $tree): int
+    {
         /** @var int[] $cache */
         static $cache;
 
