@@ -52,7 +52,7 @@ class Note extends GedcomRecord
     /**
      * Get the text contents of the note
      *
-     * @return string|null
+     * @return string
      */
     public function getNote()
     {
@@ -60,7 +60,7 @@ class Note extends GedcomRecord
             return preg_replace("/\n1 CONT ?/", "\n", $match[1]);
         }
 
-        return null;
+        return '';
     }
 
     /**

@@ -131,7 +131,7 @@ class Media extends GedcomRecord
     /**
      * Get the first note attached to this media object
      *
-     * @return null|string
+     * @return string
      */
     public function getNote()
     {

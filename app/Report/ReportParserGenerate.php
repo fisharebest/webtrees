@@ -2852,7 +2852,7 @@ class ReportParserGenerate extends ReportParserBase
             $value = trim($match[1]);
             if ($t === 'NOTE' && preg_match('/^@(.+)@$/', $value, $match)) {
                 $note = Note::getInstance($match[1], $this->tree);
-                if ($note) {
+                if ($note instanceof Note) {
                     $value = $note->getNote();
                 } else {
                     //-- set the value to the id without the @
