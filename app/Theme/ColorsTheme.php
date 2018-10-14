@@ -18,12 +18,10 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Theme;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Site;
-use function rawurldecode;
 
 /**
  * The colors theme.
