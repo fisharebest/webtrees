@@ -60,6 +60,10 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
     /** {@inheritdoc} */
     public function getTabContent(Individual $individual): string
     {
+        // Only include events of close relatives that are between birth and death
+        $min_date = $individual->getEstimatedBirthDate();
+        $max_date = $individual->getEstimatedDeathDate();
+
         $indifacts = [];
         // The individual’s own facts
         foreach ($individual->getFacts() as $fact) {
@@ -99,39 +103,47 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
                         break;
                 }
             }
+
             $spouse = $family->getSpouse($individual);
-            if ($spouse) {
-                foreach (self::spouseFacts($individual, $spouse) as $fact) {
-                    $indifacts[] = $fact;
-                }
+
+            if ($spouse instanceof Individual) {
+                $spouse_facts = self::spouseFacts($individual, $spouse, $min_date, $max_date);
+                $indifacts    = array_merge($indifacts, $spouse_facts);
             }
-            foreach (self::childFacts($individual, $family, '_CHIL', '') as $fact) {
-                $indifacts[] = $fact;
-            }
+
+            $child_facts = self::childFacts($individual, $family, '_CHIL', '', $min_date, $max_date);
+            $indifacts   = array_merge($indifacts, $child_facts);
         }
 
-        foreach (self::parentFacts($individual, 1) as $fact) {
-            $indifacts[] = $fact;
-        }
+        $parent_facts     = self::parentFacts($individual, 1, $min_date, $max_date);
+        $associate_facts  = self::associateFacts($individual);
+        $historical_facts = self::historicalFacts($individual, $min_date, $max_date);
 
-        foreach (self::associateFacts($individual) as $fact) {
-            $indifacts[] = $fact;
-        }
-
-        $has_historical_facts = false;
-        foreach (self::historicalFacts($individual) as $fact) {
-            $has_historical_facts = true;
-            $indifacts[]          = $fact;
-        }
+        $indifacts = array_merge($indifacts, $parent_facts, $associate_facts, $historical_facts);
 
         Functions::sortFacts($indifacts);
 
         return view('modules/personal_facts/tab', [
             'can_edit'             => $individual->canEdit(),
-            'has_historical_facts' => $has_historical_facts,
+            'has_historical_facts' => !empty($historical_facts),
             'individual'           => $individual,
             'facts'                => $indifacts,
         ]);
+    }
+
+    /**
+     * Does a relative event occur within a date range (i.e. the individual's lifetime)?
+     *
+     * @param Fact $fact
+     * @param Date $min_date
+     * @param Date $max_date
+     *
+     * @return bool
+     */
+    private static function includeFact(Fact $fact, Date $min_date, Date $max_date): bool {
+        $fact_date = $fact->getDate();
+
+        return $fact_date->isOK() && Date::compare($min_date, $fact_date) <= 0 && Date::compare($fact_date, $max_date) <= 0;
     }
 
     /** {@inheritdoc} */
@@ -151,22 +163,19 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
      *
      * @param Individual $individual Show events that occured during the lifetime of this individual
      * @param Individual $spouse     Show events of this individual
+     * @param Date       $min_date
+     * @param Date       $max_date
      *
      * @return Fact[]
      */
-    private static function spouseFacts(Individual $individual, Individual $spouse): array
+    private static function spouseFacts(Individual $individual, Individual $spouse, Date $min_date, Date $max_date): array
     {
         $SHOW_RELATIVES_EVENTS = $individual->getTree()->getPreference('SHOW_RELATIVES_EVENTS');
 
         $facts = [];
         if (strstr($SHOW_RELATIVES_EVENTS, '_DEAT_SPOU')) {
-            // Only include events between birth and death
-            $birt_date = $individual->getEstimatedBirthDate();
-            $deat_date = $individual->getEstimatedDeathDate();
-
             foreach ($spouse->getFacts(WT_EVENTS_DEAT) as $fact) {
-                $fact_date = $fact->getDate();
-                if ($fact_date->isOK() && Date::compare($birt_date, $fact_date) <= 0 && Date::compare($fact_date, $deat_date) <= 0) {
+                if (self::includeFact($fact, $min_date, $max_date)) {
                     // Convert the event to a close relatives event.
                     $rela_fact = clone($fact);
                     $rela_fact->setTag('_' . $fact->getTag() . '_SPOU');
@@ -185,18 +194,16 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
      * @param Family     $family
      * @param string     $option
      * @param string     $relation
+     * @param Date       $min_date
+     * @param Date       $max_date
      *
      * @return Fact[]
      */
-    private static function childFacts(Individual $person, Family $family, $option, $relation): array
+    private static function childFacts(Individual $person, Family $family, $option, $relation, Date $min_date, Date $max_date): array
     {
         $SHOW_RELATIVES_EVENTS = $person->getTree()->getPreference('SHOW_RELATIVES_EVENTS');
 
         $facts = [];
-
-        // Only include events between birth and death
-        $birt_date = $person->getEstimatedBirthDate();
-        $deat_date = $person->getEstimatedDeathDate();
 
         // Deal with recursion.
         switch ($option) {
@@ -206,17 +213,17 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
                     foreach ($child->getSpouseFamilies() as $cfamily) {
                         switch ($child->getSex()) {
                             case 'M':
-                                foreach (self::childFacts($person, $cfamily, '_GCHI', 'son') as $fact) {
+                                foreach (self::childFacts($person, $cfamily, '_GCHI', 'son', $min_date, $max_date) as $fact) {
                                     $facts[] = $fact;
                                 }
                                 break;
                             case 'F':
-                                foreach (self::childFacts($person, $cfamily, '_GCHI', 'dau') as $fact) {
+                                foreach (self::childFacts($person, $cfamily, '_GCHI', 'dau', $min_date, $max_date) as $fact) {
                                     $facts[] = $fact;
                                 }
                                 break;
                             default:
-                                foreach (self::childFacts($person, $cfamily, '_GCHI', 'chi') as $fact) {
+                                foreach (self::childFacts($person, $cfamily, '_GCHI', 'chi', $min_date, $max_date) as $fact) {
                                     $facts[] = $fact;
                                 }
                                 break;
@@ -235,9 +242,8 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
             // add child’s birth
             if (strpos($SHOW_RELATIVES_EVENTS, '_BIRT' . str_replace('_HSIB', '_SIBL', $option)) !== false) {
                 foreach ($child->getFacts(WT_EVENTS_BIRT) as $fact) {
-                    $sgdate = $fact->getDate();
                     // Always show _BIRT_CHIL, even if the dates are not known
-                    if ($option == '_CHIL' || $sgdate->isOK() && Date::compare($birt_date, $sgdate) <= 0 && Date::compare($sgdate, $deat_date) <= 0) {
+                    if ($option == '_CHIL' || self::includeFact($fact, $min_date, $max_date)) {
                         if ($option == '_GCHI' && $relation == 'dau') {
                             // Convert the event to a close relatives event.
                             $rela_fact = clone($fact);
@@ -260,8 +266,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
             // add child’s death
             if (strpos($SHOW_RELATIVES_EVENTS, '_DEAT' . str_replace('_HSIB', '_SIBL', $option)) !== false) {
                 foreach ($child->getFacts(WT_EVENTS_DEAT) as $fact) {
-                    $sgdate = $fact->getDate();
-                    if ($sgdate->isOK() && Date::compare($birt_date, $sgdate) <= 0 && Date::compare($sgdate, $deat_date) <= 0) {
+                    if (self::includeFact($fact, $min_date, $max_date)) {
                         if ($option == '_GCHI' && $relation == 'dau') {
                             // Convert the event to a close relatives event.
                             $rela_fact = clone($fact);
@@ -284,9 +289,8 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
             // add child’s marriage
             if (strstr($SHOW_RELATIVES_EVENTS, '_MARR' . str_replace('_HSIB', '_SIBL', $option))) {
                 foreach ($child->getSpouseFamilies() as $sfamily) {
-                    foreach ($sfamily->getFacts(WT_EVENTS_MARR) as $fact) {
-                        $sgdate = $fact->getDate();
-                        if ($sgdate->isOK() && Date::compare($birt_date, $sgdate) <= 0 && Date::compare($sgdate, $deat_date) <= 0) {
+                    foreach ($sfamily->getFacts('MARR') as $fact) {
+                        if (self::includeFact($fact, $min_date, $max_date)) {
                             if ($option == '_GCHI' && $relation == 'dau') {
                                 // Convert the event to a close relatives event.
                                 $rela_fact = clone($fact);
@@ -317,36 +321,34 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
      *
      * @param Individual $person
      * @param int        $sosa
+     * @param Date       $min_date
+     * @param Date       $max_date
      *
      * @return Fact[]
      */
-    private static function parentFacts(Individual $person, $sosa): array
+    private static function parentFacts(Individual $person, $sosa, Date $min_date, Date $max_date): array
     {
         $SHOW_RELATIVES_EVENTS = $person->getTree()->getPreference('SHOW_RELATIVES_EVENTS');
 
         $facts = [];
 
-        // Only include events between birth and death
-        $birt_date = $person->getEstimatedBirthDate();
-        $deat_date = $person->getEstimatedDeathDate();
-
         if ($sosa == 1) {
             foreach ($person->getChildFamilies() as $family) {
                 // Add siblings
-                foreach (self::childFacts($person, $family, '_SIBL', '') as $fact) {
+                foreach (self::childFacts($person, $family, '_SIBL', '', $min_date, $max_date) as $fact) {
                     $facts[] = $fact;
                 }
                 foreach ($family->getSpouses() as $spouse) {
                     foreach ($spouse->getSpouseFamilies() as $sfamily) {
                         if ($family !== $sfamily) {
                             // Add half-siblings
-                            foreach (self::childFacts($person, $sfamily, '_HSIB', '') as $fact) {
+                            foreach (self::childFacts($person, $sfamily, '_HSIB', '', $min_date, $max_date) as $fact) {
                                 $facts[] = $fact;
                             }
                         }
                     }
                     // Add grandparents
-                    foreach (self::parentFacts($spouse, $spouse->getSex() == 'F' ? 3 : 2) as $fact) {
+                    foreach (self::parentFacts($spouse, $spouse->getSex() == 'F' ? 3 : 2, $min_date, $max_date) as $fact) {
                         $facts[] = $fact;
                     }
                 }
@@ -355,8 +357,8 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
             if (strstr($SHOW_RELATIVES_EVENTS, '_MARR_PARE')) {
                 // add father/mother marriages
                 foreach ($person->getChildFamilies() as $sfamily) {
-                    foreach ($sfamily->getFacts(WT_EVENTS_MARR) as $fact) {
-                        if ($fact->getDate()->isOK() && Date::compare($birt_date, $fact->getDate()) <= 0 && Date::compare($fact->getDate(), $deat_date) <= 0) {
+                    foreach ($sfamily->getFacts('MARR') as $fact) {
+                        if (self::includeFact($fact, $min_date, $max_date)) {
                             // marriage of parents (to each other)
                             $rela_fact = clone($fact);
                             $rela_fact->setTag('_' . $fact->getTag() . '_FAMC');
@@ -365,8 +367,8 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
                     }
                 }
                 foreach ($person->getChildStepFamilies() as $sfamily) {
-                    foreach ($sfamily->getFacts(WT_EVENTS_MARR) as $fact) {
-                        if ($fact->getDate()->isOK() && Date::compare($birt_date, $fact->getDate()) <= 0 && Date::compare($fact->getDate(), $deat_date) <= 0) {
+                    foreach ($sfamily->getFacts('MARR') as $fact) {
+                        if (self::includeFact($fact, $min_date, $max_date)) {
                             // marriage of a parent (to another spouse)
                             // Convert the event to a close relatives event
                             $rela_fact = clone($fact);
@@ -382,7 +384,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
             foreach ($family->getSpouses() as $parent) {
                 if (strstr($SHOW_RELATIVES_EVENTS, '_DEAT' . ($sosa == 1 ? '_PARE' : '_GPAR'))) {
                     foreach ($parent->getFacts(WT_EVENTS_DEAT) as $fact) {
-                        if ($fact->getDate()->isOK() && Date::compare($birt_date, $fact->getDate()) <= 0 && Date::compare($fact->getDate(), $deat_date) <= 0) {
+                        if (self::includeFact($fact, $min_date, $max_date)) {
                             switch ($sosa) {
                                 case 1:
                                     // Convert the event to a close relatives event.
@@ -416,27 +418,25 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
      * Get any historical events.
      *
      * @param Individual $person
+     * @param Date       $min_date
+     * @param Date       $max_date
      *
      * @return Fact[]
      */
-    private static function historicalFacts(Individual $person): array
+    private static function historicalFacts(Individual $person, Date $min_date, Date $max_date): array
     {
         $SHOW_RELATIVES_EVENTS = $person->getTree()->getPreference('SHOW_RELATIVES_EVENTS');
 
         $facts = [];
 
         if ($SHOW_RELATIVES_EVENTS) {
-            // Only include events between birth and death
-            $birt_date = $person->getEstimatedBirthDate();
-            $deat_date = $person->getEstimatedDeathDate();
-
             if (file_exists(Site::getPreference('INDEX_DIRECTORY') . 'histo.' . WT_LOCALE . '.php')) {
                 $histo = [];
                 require Site::getPreference('INDEX_DIRECTORY') . 'histo.' . WT_LOCALE . '.php';
                 foreach ($histo as $hist) {
                     $fact  = new Fact($hist, $person, 'histo');
-                    $sdate = $fact->getDate();
-                    if ($sdate->isOK() && Date::compare($birt_date, $sdate) <= 0 && Date::compare($sdate, $deat_date) <= 0) {
+
+                    if (self::includeFact($fact, $min_date, $max_date)) {
                         $facts[] = $fact;
                     }
                 }
@@ -457,6 +457,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
     {
         $facts = [];
 
+        /** @var Individual[] $associates */
         $associates = array_merge(
             $person->linkedIndividuals('ASSO'),
             $person->linkedIndividuals('_ASSO'),
