@@ -140,7 +140,8 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
      *
      * @return bool
      */
-    private static function includeFact(Fact $fact, Date $min_date, Date $max_date): bool {
+    private static function includeFact(Fact $fact, Date $min_date, Date $max_date): bool
+    {
         $fact_date = $fact->getDate();
 
         return $fact_date->isOK() && Date::compare($min_date, $fact_date) <= 0 && Date::compare($fact_date, $max_date) <= 0;
