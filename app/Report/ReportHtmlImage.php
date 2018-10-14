@@ -31,7 +31,7 @@ class ReportHtmlImage extends ReportBaseImage
      */
     public function render($renderer)
     {
-        global $lastpicbottom, $lastpicpage, $lastpicleft, $lastpicright;
+        static $lastpicbottom, $lastpicpage, $lastpicleft, $lastpicright;
 
         // Get the current positions
         if ($this->x === ReportBaseElement::CURRENT_POSITION) {

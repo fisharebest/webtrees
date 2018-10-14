@@ -31,7 +31,7 @@ class ReportPdfImage extends ReportBaseImage
      */
     public function render($renderer)
     {
-        global $lastpicbottom, $lastpicpage, $lastpicleft, $lastpicright;
+        static $lastpicbottom, $lastpicpage, $lastpicleft, $lastpicright;
 
         // Check for a pagebreak first
         if ($renderer->checkPageBreakPDF($this->height + 5)) {
