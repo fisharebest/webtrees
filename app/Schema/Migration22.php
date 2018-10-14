@@ -19,7 +19,6 @@ namespace Fisharebest\Webtrees\Schema;
 
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\DebugBar;
-use Fisharebest\Webtrees\File;
 use Throwable;
 
 /**
