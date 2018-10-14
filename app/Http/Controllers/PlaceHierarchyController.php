@@ -105,10 +105,9 @@ class PlaceHierarchyController extends AbstractBaseController
     }
 
     /**
-     * @param $tree
+     * @param Tree $tree
      *
-     * @return array
-     * @throws \Exception
+     * @return Place[][]
      */
     private function getList(Tree $tree): array
     {
