@@ -3,15 +3,15 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:51+0100\n"
-"PO-Revision-Date: 2018-10-15 01:50+0100\n"
-"Last-Translator: Mic50 <mic@ergraf.eu>\n"
-"Language-Team: Croatian <https://translate.webtrees.net/projects/webtrees/webtrees/hr/>\n"
+"PO-Revision-Date: 2018-10-14 23:55+0000\n"
+"Last-Translator: Milivoj Bartoš <mic@mikrotakt.com>\n"
+"Language-Team: Croatian <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/hr/>\n"
 "Language: hr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Poedit 1.7.1\n"
+"X-Generator: Weblate 2.10\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
@@ -1144,35 +1144,31 @@ msgstr "Aba, Nigerija"
 #: app/Date/JalaliDate.php:190
 msgctxt "Abbreviation for Persian month: Aban"
 msgid "Aban"
-msgstr "Aban"
+msgstr ""
 
 #. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:94
-#, fuzzy
 msgctxt "GENITIVE"
 msgid "Aban"
-msgstr "Aban"
+msgstr ""
 
 #. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:158
-#, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Aban"
-msgstr "Aban"
+msgstr ""
 
 #. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:126
-#, fuzzy
 msgctxt "LOCATIVE"
 msgid "Aban"
-msgstr "Aban"
+msgstr ""
 
 #. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:62
-#, fuzzy
 msgctxt "NOMINATIVE"
 msgid "Aban"
-msgstr "Aban"
+msgstr ""
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1505 admin_trees_config.php:1507
@@ -19200,7 +19196,7 @@ msgstr "roditelj"
 
 #: app/Functions/Functions.php:736
 msgid "partner"
-msgstr "partner"
+msgstr ""
 
 #: app/Functions/Functions.php:718
 msgctxt "FEMALE"
@@ -19210,7 +19206,7 @@ msgstr "partnerica"
 #: app/Functions/Functions.php:700
 msgctxt "MALE"
 msgid "partner"
-msgstr "partner"
+msgstr ""
 
 #: app/SurnameTradition.php:71
 msgctxt "Surname tradition"
@@ -19760,9 +19756,8 @@ msgstr "supružnik"
 
 #. I18N: Secure Sockets Layer - a secure communications protocol
 #: admin_site_config.php:112
-#, fuzzy
 msgid "ssl"
-msgstr "ssl"
+msgstr ""
 
 #: app/Functions/Functions.php:1142
 msgctxt "father’s wife’s son"
@@ -19972,9 +19967,8 @@ msgstr "tri četvrtine kruga"
 
 #. I18N: Transport Layer Security - a secure communications protocol
 #: admin_site_config.php:113
-#, fuzzy
 msgid "tls"
-msgstr "tls"
+msgstr ""
 
 #. I18N: Gedcom TO dates
 #: app/Date.php:319
@@ -20100,9 +20094,8 @@ msgid "was born"
 msgstr "je rođen"
 
 #: app/Theme/WebtreesTheme.php:133
-#, fuzzy
 msgid "webtrees"
-msgstr "webtrees"
+msgstr ""
 
 #. I18N: %s is a database name/identifier
 #: admin_pgv_to_wt.php:110
