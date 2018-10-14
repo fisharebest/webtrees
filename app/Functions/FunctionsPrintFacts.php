@@ -211,9 +211,10 @@ class FunctionsPrintFacts
                     'onclick' => 'return copy_fact("' . e($tree->getName()) . '", "' . e($parent->getXref()) . '", "' . $fact->getFactId() . '");',
                 ]) ?>
                 <?= FontAwesome::linkIcon('delete', I18N::translate('Delete'), [
-                    'class'   => 'btn btn-link',
-                    'href'    => '#',
-                    'onclick' => 'return delete_fact("' . I18N::translate('Are you sure you want to delete this fact?') . '", "' . e($tree->getName()) . '", "' . e($parent->getXref()) . '", "' . $fact->getFactId() . '");',
+                    'class'        => 'btn btn-link',
+                    'data-confirm' =>  I18N::translate('Are you sure you want to delete this fact?'),
+                    'href'         => '#',
+                    'onclick'      => 'return delete_fact(this.dataset.confirm, "' . e($tree->getName()) . '", "' . e($parent->getXref()) . '", "' . $fact->getFactId() . '");',
                 ]) ?>
             </div>
             <?php
@@ -812,9 +813,10 @@ class FunctionsPrintFacts
                         ]);
                     }
                     echo FontAwesome::linkIcon('delete', I18N::translate('Delete'), [
-                        'class'   => 'btn btn-link',
-                        'href'    => '#',
-                        'onclick' => 'return delete_fact("' . I18N::translate('Are you sure you want to delete this fact?') . '", "' . e($tree->getName()) . '", "' . e($parent->getXref()) . '", "' . $fact->getFactId() . '");',
+                        'class'        => 'btn btn-link',
+                        'data-confirm' =>  I18N::translate('Are you sure you want to delete this fact?'),
+                        'href'         => '#',
+                        'onclick'      => 'return delete_fact(this.dataset.confirm, "' . e($tree->getName()) . '", "' . e($parent->getXref()) . '", "' . $fact->getFactId() . '");',
                     ]);
                 } else {
                     echo GedcomTag::getLabel($factname, $parent);
@@ -1035,9 +1037,10 @@ class FunctionsPrintFacts
                         'onclick' => 'return copy_fact("' . e($tree->getName()) . '", "' . e($parent->getXref()) . '", "' . $fact->getFactId() . '");',
                     ]);
                     echo FontAwesome::linkIcon('delete', I18N::translate('Delete'), [
-                        'class'   => 'btn btn-link',
-                        'href'    => '#',
-                        'onclick' => 'return delete_fact("' . I18N::translate('Are you sure you want to delete this fact?') . '", "' . e($tree->getName()) . '", "' . e($parent->getXref()) . '", "' . $fact->getFactId() . '");',
+                        'class'        => 'btn btn-link',
+                        'data-confirm' =>  I18N::translate('Are you sure you want to delete this fact?'),
+                        'href'         => '#',
+                        'onclick'      => 'return delete_fact(this.dataset.confirm, "' . e($tree->getName()) . '", "' . e($parent->getXref()) . '", "' . $fact->getFactId() . '");',
                     ]);
                     echo '</div>';
                 }
@@ -1178,9 +1181,10 @@ class FunctionsPrintFacts
                         'onclick' => 'return copy_fact("' . e($tree->getName()) . '", "' . e($parent->getXref()) . '", "' . $fact->getFactId() . '");',
                     ]);
                     echo FontAwesome::linkIcon('delete', I18N::translate('Delete'), [
-                        'class'   => 'btn btn-link',
-                        'href'    => '#',
-                        'onclick' => 'return delete_fact("' . I18N::translate('Are you sure you want to delete this fact?') . '", "' . e($tree->getName()) . '", "' . e($parent->getXref()) . '", "' . $fact->getFactId() . '");',
+                        'class'        => 'btn btn-link',
+                        'data-confirm' =>  I18N::translate('Are you sure you want to delete this fact?'),
+                        'href'         => '#',
+                        'onclick'      => 'return delete_fact(this.dataset.confirm", "' . e($tree->getName()) . '", "' . e($parent->getXref()) . '", "' . $fact->getFactId() . '");',
                     ]);
                     echo '</div>';
                 } else {
