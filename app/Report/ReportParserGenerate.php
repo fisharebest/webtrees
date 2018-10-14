@@ -34,6 +34,7 @@ use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Tree;
 use stdClass;
+use Symfony\Component\Cache\Adapter\NullAdapter;
 use Symfony\Component\ExpressionLanguage\ExpressionFunction;
 use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
 
@@ -223,11 +224,11 @@ class ReportParserGenerate extends ReportParserBase
     /**
      * XML <style>
      *
-     * @param array $attrs an array of key value pairs for the attributes
+     * @param string[]  $attrs an array of key value pairs for the attributes
      *
      * @return void
      */
-    private function styleStartHandler($attrs)
+    private function styleStartHandler(array $attrs)
     {
         if (empty($attrs['name'])) {
             throw new \DomainException('REPORT ERROR Style: The "name" of the style is missing or not set in the XML file.');
@@ -264,11 +265,11 @@ class ReportParserGenerate extends ReportParserBase
      * XML <Doc>
      * Sets up the basics of the document proparties
      *
-     * @param array $attrs an array of key value pairs for the attributes
+     * @param string[] $attrs an array of key value pairs for the attributes
      *
      * @return void
      */
-    private function docStartHandler($attrs)
+    private function docStartHandler(array $attrs)
     {
         $this->parser = $this->xml_parser;
 
@@ -426,11 +427,11 @@ class ReportParserGenerate extends ReportParserBase
     /**
      * XML <Cell>
      *
-     * @param array $attrs an array of key value pairs for the attributes
+     * @param string[] $attrs an array of key value pairs for the attributes
      *
      * @return void
      */
-    private function cellStartHandler($attrs)
+    private function cellStartHandler(array $attrs)
     {
         // string The text alignment of the text in this box.
         $align = '';
@@ -627,11 +628,11 @@ class ReportParserGenerate extends ReportParserBase
     /**
      * Called at the start of an element.
      *
-     * @param array $attrs an array of key value pairs for the attributes
+     * @param string[] $attrs an array of key value pairs for the attributes
      *
      * @return void
      */
-    private function gedcomStartHandler($attrs)
+    private function gedcomStartHandler(array $attrs)
     {
         if ($this->process_gedcoms > 0) {
             $this->process_gedcoms++;
@@ -707,11 +708,11 @@ class ReportParserGenerate extends ReportParserBase
     /**
      * XML <textBoxStartHandler>
      *
-     * @param array $attrs an array of key value pairs for the attributes
+     * @param string[] $attrs an array of key value pairs for the attributes
      *
      * @return void
      */
-    private function textBoxStartHandler($attrs)
+    private function textBoxStartHandler(array $attrs)
     {
         // string Background color code
         $bgcolor = '';
@@ -848,11 +849,11 @@ class ReportParserGenerate extends ReportParserBase
     /**
      * XLM <Text>.
      *
-     * @param array $attrs an array of key value pairs for the attributes
+     * @param string[] $attrs an array of key value pairs for the attributes
      *
      * @return void
      */
-    private function textStartHandler($attrs)
+    private function textStartHandler(array $attrs)
     {
         $this->print_data_stack[] = $this->print_data;
         $this->print_data         = true;
@@ -889,11 +890,11 @@ class ReportParserGenerate extends ReportParserBase
      * 1. id is empty - current GEDCOM record
      * 2. id is set with a record id
      *
-     * @param array $attrs an array of key value pairs for the attributes
+     * @param string[] $attrs an array of key value pairs for the attributes
      *
      * @return void
      */
-    private function getPersonNameStartHandler($attrs)
+    private function getPersonNameStartHandler(array $attrs)
     {
         $id    = '';
         $match = [];
@@ -972,11 +973,11 @@ class ReportParserGenerate extends ReportParserBase
     /**
      * XML <GedcomValue/>
      *
-     * @param array $attrs an array of key value pairs for the attributes
+     * @param string[] $attrs an array of key value pairs for the attributes
      *
      * @return void
      */
-    private function gedcomValueStartHandler($attrs)
+    private function gedcomValueStartHandler(array $attrs)
     {
         $id    = '';
         $match = [];
@@ -1047,11 +1048,11 @@ class ReportParserGenerate extends ReportParserBase
     /**
      * XML <RepeatTag>
      *
-     * @param array $attrs an array of key value pairs for the attributes
+     * @param string[] $attrs an array of key value pairs for the attributes
      *
      * @return void
      */
-    private function repeatTagStartHandler($attrs)
+    private function repeatTagStartHandler(array $attrs)
     {
         $this->process_repeats++;
         if ($this->process_repeats > 1) {
@@ -1214,11 +1215,11 @@ class ReportParserGenerate extends ReportParserBase
      * $ I18N::translate('....')
      * $ language_settings[]
      *
-     * @param array $attrs an array of key value pairs for the attributes
+     * @param string[] $attrs an array of key value pairs for the attributes
      *
      * @return void
      */
-    private function varStartHandler($attrs)
+    private function varStartHandler(array $attrs)
     {
         if (empty($attrs['var'])) {
             throw new \DomainException('REPORT ERROR var: The attribute "var=" is missing or not set in the XML file on line: ' . xml_get_current_line_number($this->parser));
@@ -1264,11 +1265,11 @@ class ReportParserGenerate extends ReportParserBase
     /**
      * XML <Facts>
      *
-     * @param array $attrs an array of key value pairs for the attributes
+     * @param string[] $attrs an array of key value pairs for the attributes
      *
      * @return void
      */
-    private function factsStartHandler($attrs)
+    private function factsStartHandler(array $attrs)
     {
         $this->process_repeats++;
         if ($this->process_repeats > 1) {
@@ -1412,11 +1413,11 @@ class ReportParserGenerate extends ReportParserBase
      * Setting upp or changing variables in the XML
      * The XML variable name and value is stored in $this->vars
      *
-     * @param array $attrs an array of key value pairs for the attributes
+     * @param string[] $attrs an array of key value pairs for the attributes
      *
      * @return void
      */
-    private function setVarStartHandler($attrs)
+    private function setVarStartHandler(array $attrs)
     {
         if (empty($attrs['name'])) {
             throw new \DomainException('REPORT ERROR var: The attribute "name" is missing or not set in the XML file');
@@ -1464,7 +1465,8 @@ class ReportParserGenerate extends ReportParserBase
         if (preg_match("/(\d+)\s*([\-\+\*\/])\s*(\d+)/", $value, $match)) {
             // Create an expression language with the functions used by our reports.
             $expression_provider  = new ReportExpressionLanguageProvider();
-            $expression_language  = new ExpressionLanguage(null, [$expression_provider]);
+            $expression_cache     = new NullAdapter();
+            $expression_language  = new ExpressionLanguage($expression_cache, [$expression_provider]);
 
             $value = (string) $expression_language->evaluate($value);
         }
@@ -1478,11 +1480,11 @@ class ReportParserGenerate extends ReportParserBase
     /**
      * XML <if > start element
      *
-     * @param array $attrs an array of key value pairs for the attributes
+     * @param string[] $attrs an array of key value pairs for the attributes
      *
      * @return void
      */
-    private function ifStartHandler($attrs)
+    private function ifStartHandler(array $attrs)
     {
         if ($this->process_ifs > 0) {
             $this->process_ifs++;
@@ -1537,7 +1539,8 @@ class ReportParserGenerate extends ReportParserBase
 
         // Create an expression language with the functions used by our reports.
         $expression_provider  = new ReportExpressionLanguageProvider();
-        $expression_language  = new ExpressionLanguage(null, [$expression_provider]);
+        $expression_cache     = new NullAdapter();
+        $expression_language  = new ExpressionLanguage($expression_cache, [$expression_provider]);
 
         $ret = $expression_language->evaluate($condition);
 
@@ -1563,11 +1566,11 @@ class ReportParserGenerate extends ReportParserBase
      * Collect the Footnote links
      * GEDCOM Records that are protected by Privacy setting will be ignore
      *
-     * @param array $attrs an array of key value pairs for the attributes
+     * @param string[] $attrs an array of key value pairs for the attributes
      *
      * @return void
      */
-    private function footnoteStartHandler($attrs)
+    private function footnoteStartHandler(array $attrs)
     {
         $id = '';
         if (preg_match('/[0-9] (.+) @(.+)@/', $this->gedrec, $match)) {
@@ -1647,11 +1650,11 @@ class ReportParserGenerate extends ReportParserBase
     /**
      * XML <HighlightedImage/>
      *
-     * @param array $attrs an array of key value pairs for the attributes
+     * @param string[] $attrs an array of key value pairs for the attributes
      *
      * @return void
      */
-    private function highlightedImageStartHandler($attrs)
+    private function highlightedImageStartHandler(array $attrs)
     {
         $id = '';
         if (preg_match('/0 @(.+)@/', $this->gedrec, $match)) {
@@ -1700,11 +1703,11 @@ class ReportParserGenerate extends ReportParserBase
     /**
      * XML <Image/>
      *
-     * @param array $attrs an array of key value pairs for the attributes
+     * @param string[] $attrs an array of key value pairs for the attributes
      *
      * @return void
      */
-    private function imageStartHandler($attrs)
+    private function imageStartHandler(array $attrs)
     {
         // Position the top corner of this box on the page. the default is the current position
         $top = (float) ($attrs['top'] ?? ReportBaseElement::CURRENT_POSITION);
@@ -1771,11 +1774,11 @@ class ReportParserGenerate extends ReportParserBase
     /**
      * XML <Line> element handler
      *
-     * @param array $attrs an array of key value pairs for the attributes
+     * @param string[] $attrs an array of key value pairs for the attributes
      *
      * @return void
      */
-    private function lineStartHandler($attrs)
+    private function lineStartHandler(array $attrs)
     {
         // Start horizontal position, current position (default)
         $x1 = ReportBaseElement::CURRENT_POSITION;
@@ -1829,11 +1832,11 @@ class ReportParserGenerate extends ReportParserBase
     /**
      * XML <List>
      *
-     * @param array $attrs an array of key value pairs for the attributes
+     * @param string[] $attrs an array of key value pairs for the attributes
      *
      * @return void
      */
-    private function listStartHandler($attrs)
+    private function listStartHandler(array $attrs)
     {
         $this->process_repeats++;
         if ($this->process_repeats > 1) {
@@ -2323,11 +2326,11 @@ class ReportParserGenerate extends ReportParserBase
     /**
      * XML <Relatives>
      *
-     * @param array $attrs an array of key value pairs for the attributes
+     * @param string[] $attrs an array of key value pairs for the attributes
      *
      * @return void
      */
-    private function relativesStartHandler($attrs)
+    private function relativesStartHandler(array $attrs)
     {
         $this->process_repeats++;
         if ($this->process_repeats > 1) {
@@ -2577,12 +2580,12 @@ class ReportParserGenerate extends ReportParserBase
     /**
      * XML <html>
      *
-     * @param string  $tag   HTML tag name
-     * @param array[] $attrs an array of key value pairs for the attributes
+     * @param string   $tag   HTML tag name
+     * @param string[] $attrs an array of key value pairs for the attributes
      *
      * @return void
      */
-    private function htmlStartHandler($tag, $attrs)
+    private function htmlStartHandler(string $tag, array $attrs)
     {
         if ($tag === 'tempdoc') {
             return;
