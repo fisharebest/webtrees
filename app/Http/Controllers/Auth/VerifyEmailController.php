@@ -49,11 +49,7 @@ class VerifyEmailController extends AbstractBaseController
 
         $user = User::findByUserName($username);
 
-        if ($user !== null && $user->getPreference('reg_hashcode') === $token) {
-            // switch language to webmaster settings
-            $webmaster = User::find((int) $tree->getPreference('WEBMASTER_USER_ID'));
-            I18N::init($webmaster->getPreference('language'));
-
+        if ($user instanceof User && $user->getPreference('reg_hashcode') === $token) {
             // Create a dummy user, so we can send messages from the tree.
             $sender = new User(
                 (object) [
@@ -64,30 +60,37 @@ class VerifyEmailController extends AbstractBaseController
                 ]
             );
 
-            Mail::send(
-                $sender,
-                $webmaster,
-                $sender,
-                /* I18N: %s is a server name/URL */
-                I18N::translate('New user at %s', WT_BASE_URL . ' ' . $tree->getTitle()),
-                view('emails/verify-notify-text', ['user' => $user]),
-                view('emails/verify-notify-html', ['user' => $user])
-            );
+            // switch language to webmaster settings
+            $webmaster = User::find((int) $tree->getPreference('WEBMASTER_USER_ID'));
 
-            $mail1_method = $webmaster->getPreference('CONTACT_METHOD');
-            if ($mail1_method !== 'messaging3' && $mail1_method !== 'mailto' && $mail1_method !== 'none') {
-                Database::prepare(
-                    "INSERT INTO `##message` (sender, ip_address, user_id, subject, body) VALUES (? ,? ,? ,? ,?)"
-                )->execute([
-                    $username,
-                    $request->getClientIp(),
-                    $webmaster->getUserId(),
+            if ($webmaster instanceof User) {
+                I18N::init($webmaster->getPreference('language'));
+
+                Mail::send(
+                    $sender,
+                    $webmaster,
+                    $sender,
                     /* I18N: %s is a server name/URL */
                     I18N::translate('New user at %s', WT_BASE_URL . ' ' . $tree->getTitle()),
                     view('emails/verify-notify-text', ['user' => $user]),
-                ]);
+                    view('emails/verify-notify-html', ['user' => $user])
+                );
+
+                $mail1_method = $webmaster->getPreference('CONTACT_METHOD');
+                if ($mail1_method !== 'messaging3' && $mail1_method !== 'mailto' && $mail1_method !== 'none') {
+                    Database::prepare(
+                        "INSERT INTO `##message` (sender, ip_address, user_id, subject, body) VALUES (? ,? ,? ,? ,?)"
+                    )->execute([
+                        $username,
+                        $request->getClientIp(),
+                        $webmaster->getUserId(),
+                        /* I18N: %s is a server name/URL */
+                        I18N::translate('New user at %s', WT_BASE_URL . ' ' . $tree->getTitle()),
+                        view('emails/verify-notify-text', ['user' => $user]),
+                    ]);
+                }
+                I18N::init(WT_LOCALE);
             }
-            I18N::init(WT_LOCALE);
 
             $user
                 ->setPreference('verified', '1')
