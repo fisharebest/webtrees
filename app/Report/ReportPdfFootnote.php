@@ -48,7 +48,7 @@ class ReportPdfFootnote extends ReportBaseFootnote
         if ($pdf->getCurrentStyle() != $this->styleName) {
             $pdf->setCurrentStyle($this->styleName);
         }
-        $temptext = str_replace('#PAGENUM#', $pdf->PageNo(), $this->text);
+        $temptext = str_replace('#PAGENUM#', (string) $pdf->PageNo(), $this->text);
         // Set the link to this y/page position
         $pdf->SetLink($this->addlink, -1, -1);
         // Print first the source number
