@@ -41,9 +41,9 @@ class ReportPdfHtml extends ReportBaseHtml
 
         $this->text = $this->getStart() . $this->text;
         foreach ($this->elements as $element) {
-            if (is_string($element) && $element == 'footnotetexts') {
+            if ($element === 'footnotetexts') {
                 $renderer->Footnotes();
-            } elseif (is_string($element) && $element == 'addpage') {
+            } elseif ($element === 'addpage') {
                 $renderer->newPage();
             } elseif ($element instanceof ReportBaseHtml) {
                 $element->render($renderer, true);

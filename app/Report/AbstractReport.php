@@ -112,7 +112,7 @@ abstract class AbstractReport
     /**
      * Add an element.
      *
-     * @param object|string $element
+     * @param ReportBaseElement|string $element
      *
      * @return void
      */

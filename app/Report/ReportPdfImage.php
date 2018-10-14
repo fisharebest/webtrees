@@ -95,7 +95,7 @@ class ReportPdfImage extends ReportBaseImage
         $lastpicright          = $this->x + $this->width;
         $lastpicbottom         = $this->y + $this->height;
         // Setup for the next line
-        if ($this->line == 'N') {
+        if ($this->line === 'N') {
             $renderer->SetY($lastpicbottom);
         }
     }

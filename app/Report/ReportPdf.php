@@ -114,25 +114,25 @@ class ReportPdf extends AbstractReport
     /**
      * Add an element.
      *
-     * @param object|string $element
+     * @param ReportBaseElement|string $element
      *
      * @return void
      */
     public function addElement($element)
     {
-        if ($this->processing == 'B') {
+        if ($this->processing === 'B') {
             $this->pdf->addBody($element);
 
             return;
         }
 
-        if ($this->processing == 'H') {
+        if ($this->processing === 'H') {
             $this->pdf->addHeader($element);
 
             return;
         }
 
-        if ($this->processing == 'F') {
+        if ($this->processing === 'F') {
             $this->pdf->addFooter($element);
 
             return;

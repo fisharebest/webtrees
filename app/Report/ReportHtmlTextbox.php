@@ -40,7 +40,7 @@ class ReportHtmlTextbox extends ReportBaseTextbox
         //-- collapse duplicate elements
         for ($i = 0; $i < $cE; $i++) {
             $element = $this->elements[$i];
-            if (is_object($element)) {
+            if ($element instanceof ReportBaseElement) {
                 if ($element instanceof ReportBaseText) {
                     if (!empty($footnote_element)) {
                         ksort($footnote_element);
@@ -248,11 +248,11 @@ class ReportHtmlTextbox extends ReportBaseTextbox
 
         // Print the text elements
         foreach ($this->elements as $element) {
-            if (is_object($element)) {
+            if ($element instanceof ReportBaseElement) {
                 $element->render($renderer, $cX, false);
-            } elseif (is_string($element) && $element == 'footnotetexts') {
+            } elseif ($element === 'footnotetexts') {
                 $renderer->footnotes();
-            } elseif (is_string($element) && $element == 'addpage') {
+            } elseif ($element === 'addpage') {
                 $renderer->addPage();
             }
         }

@@ -332,9 +332,9 @@ class ReportParserGenerate extends ReportParserBase
 
         // Page Orientation
         if (!empty($attrs['orientation'])) {
-            if ($attrs['orientation'] == 'landscape') {
+            if ($attrs['orientation'] === 'landscape') {
                 $this->wt_report->orientation = 'landscape';
-            } elseif ($attrs['orientation'] == 'portrait') {
+            } elseif ($attrs['orientation'] === 'portrait') {
                 $this->wt_report->orientation = 'portrait';
             }
         }
@@ -437,13 +437,13 @@ class ReportParserGenerate extends ReportParserBase
         if (!empty($attrs['align'])) {
             $align = $attrs['align'];
             // RTL supported left/right alignment
-            if ($align == 'rightrtl') {
+            if ($align === 'rightrtl') {
                 if ($this->wt_report->rtl) {
                     $align = 'left';
                 } else {
                     $align = 'right';
                 }
-            } elseif ($align == 'leftrtl') {
+            } elseif ($align === 'leftrtl') {
                 if ($this->wt_report->rtl) {
                     $align = 'right';
                 } else {
@@ -551,13 +551,13 @@ class ReportParserGenerate extends ReportParserBase
             }
         }
 
-        if ($align == 'left') {
+        if ($align === 'left') {
             $align = 'L';
-        } elseif ($align == 'right') {
+        } elseif ($align === 'right') {
             $align = 'R';
-        } elseif ($align == 'center') {
+        } elseif ($align === 'center') {
             $align = 'C';
-        } elseif ($align == 'justify') {
+        } elseif ($align === 'justify') {
             $align = 'J';
         }
 
@@ -984,7 +984,7 @@ class ReportParserGenerate extends ReportParserBase
             $id = $match[1];
         }
 
-        if (isset($attrs['newline']) && $attrs['newline'] == '1') {
+        if (isset($attrs['newline']) && $attrs['newline'] === '1') {
             $useBreak = '1';
         } else {
             $useBreak = '0';
@@ -992,12 +992,12 @@ class ReportParserGenerate extends ReportParserBase
 
         $tag = $attrs['tag'];
         if (!empty($tag)) {
-            if ($tag == '@desc') {
+            if ($tag === '@desc') {
                 $value = $this->desc;
                 $value = trim($value);
                 $this->current_element->addText($value);
             }
-            if ($tag == '@id') {
+            if ($tag === '@id') {
                 $this->current_element->addText($id);
             } else {
                 $tag = str_replace('@fact', $this->fact, $tag);
@@ -1022,13 +1022,13 @@ class ReportParserGenerate extends ReportParserBase
                         $value = $tmp->getShortName();
                         break;
                 }
-                if ($useBreak == '1') {
+                if ($useBreak === '1') {
                     // Insert <br> when multiple dates exist.
                     // This works around a TCPDF bug that incorrectly wraps RTL dates on LTR pages
                     $value = str_replace('(', '<br>(', $value);
                     $value = str_replace('<span dir="ltr"><br>', '<br><span dir="ltr">', $value);
                     $value = str_replace('<span dir="rtl"><br>', '<br><span dir="rtl">', $value);
-                    if (substr($value, 0, 6) == '<br>') {
+                    if (substr($value, 0, 6) === '<br>') {
                         $value = substr($value, 6);
                     }
                 }
@@ -1067,7 +1067,7 @@ class ReportParserGenerate extends ReportParserBase
             $tag = $attrs['tag'];
         }
         if (!empty($tag)) {
-            if ($tag == '@desc') {
+            if ($tag === '@desc') {
                 $value = $this->desc;
                 $value = trim($value);
                 $this->current_element->addText($value);
@@ -1426,15 +1426,15 @@ class ReportParserGenerate extends ReportParserBase
         $value = $attrs['value'];
         $match = [];
         // Current GEDCOM record strings
-        if ($value == '@ID') {
+        if ($value === '@ID') {
             if (preg_match('/0 @(.+)@/', $this->gedrec, $match)) {
                 $value = $match[1];
             }
-        } elseif ($value == '@fact') {
+        } elseif ($value === '@fact') {
             $value = $this->fact;
-        } elseif ($value == '@desc') {
+        } elseif ($value === '@desc') {
             $value = $this->desc;
-        } elseif ($value == '@generation') {
+        } elseif ($value === '@generation') {
             $value = (string) $this->generation;
         } elseif (preg_match("/@(\w+)/", $value, $match)) {
             $gmatch = [];
@@ -1518,7 +1518,7 @@ class ReportParserGenerate extends ReportParserBase
         while ($i < $count) {
             $id    = $match[$i][1];
             $value = '""';
-            if ($id == 'ID') {
+            if ($id === 'ID') {
                 if (preg_match('/0 @(.+)@/', $this->gedrec, $match)) {
                     $value = "'" . $match[1] . "'";
                 }
@@ -1735,7 +1735,7 @@ class ReportParserGenerate extends ReportParserBase
 
         $file = $attrs['file'] ?? '';
 
-        if ($file == '@FILE') {
+        if ($file === '@FILE') {
             $match = [];
             if (preg_match("/\d OBJE @(.+)@/", $this->gedrec, $match)) {
                 $mediaobject = Media::getInstance($match[1], $this->tree);
@@ -1901,7 +1901,7 @@ class ReportParserGenerate extends ReportParserBase
                             $sql_where                  .= " AND {$attr}.d_fact = :{$attr}fact";
                             $sql_params[$attr . 'fact'] = $match[1];
                             $date                       = new Date($match[3]);
-                            if ($match[2] == 'LTE') {
+                            if ($match[2] === 'LTE') {
                                 $sql_where                  .= " AND {$attr}.d_julianday2 <= :{$attr}date";
                                 $sql_params[$attr . 'date'] = $date->maximumJulianDay();
                             } else {
@@ -1915,7 +1915,7 @@ class ReportParserGenerate extends ReportParserBase
                             unset($attrs[$attr]); // This filter has been fully processed
                         } elseif (preg_match('/^NAME CONTAINS (.*)$/', $value, $match)) {
                             // Do nothing, unless you have to
-                            if ($match[1] != '' || $sortby == 'NAME') {
+                            if ($match[1] != '' || $sortby === 'NAME') {
                                 $sql_join .= " JOIN `##name` AS {$attr} ON (n_file=i_file AND n_id=i_id)";
                                 // Search the DB only if there is any name supplied
                                 if ($match[1] != '') {
@@ -1926,7 +1926,7 @@ class ReportParserGenerate extends ReportParserBase
                                     }
                                 }
                                 // Let the DB do the name sorting even when no name was entered
-                                if ($sortby == 'NAME') {
+                                if ($sortby === 'NAME') {
                                     $sortby = '';
                                     $sql_order_by .= ($sql_order_by ? ', ' : ' ORDER BY ') . "{$attr}.n_sort";
                                 }
@@ -1978,7 +1978,7 @@ class ReportParserGenerate extends ReportParserBase
                             $sql_where                  .= " AND {$attr}.d_fact = :{$attr}fact";
                             $sql_params[$attr . 'fact'] = $match[1];
                             $date                       = new Date($match[3]);
-                            if ($match[2] == 'LTE') {
+                            if ($match[2] === 'LTE') {
                                 $sql_where                  .= " AND {$attr}.d_julianday2 <= :{$attr}date";
                                 $sql_params[$attr . 'date'] = $date->maximumJulianDay();
                             } else {
@@ -1997,7 +1997,7 @@ class ReportParserGenerate extends ReportParserBase
                             unset($attrs[$attr]); // This filter has been fully processed
                         } elseif (preg_match('/^NAME CONTAINS (.+)$/', $value, $match)) {
                             // Do nothing, unless you have to
-                            if ($match[1] != '' || $sortby == 'NAME') {
+                            if ($match[1] != '' || $sortby === 'NAME') {
                                 $sql_join .= " JOIN `##name` AS {$attr} ON n_file = f_file AND n_id IN (f_husb, f_wife)";
                                 // Search the DB only if there is any name supplied
                                 if ($match[1] != '') {
@@ -2008,7 +2008,7 @@ class ReportParserGenerate extends ReportParserBase
                                     }
                                 }
                                 // Let the DB do the name sorting even when no name was entered
-                                if ($sortby == 'NAME') {
+                                if ($sortby === 'NAME') {
                                     $sortby = '';
                                     $sql_order_by .= ($sql_order_by ? ', ' : ' ORDER BY ') . "{$attr}.n_sort";
                                 }
@@ -2053,13 +2053,13 @@ class ReportParserGenerate extends ReportParserBase
                     if (preg_match("/@(\w+)/", $condition, $match)) {
                         $id    = $match[1];
                         $value = "''";
-                        if ($id == 'ID') {
+                        if ($id === 'ID') {
                             if (preg_match('/0 @(.+)@/', $this->gedrec, $match)) {
                                 $value = "'" . $match[1] . "'";
                             }
-                        } elseif ($id == 'fact') {
+                        } elseif ($id === 'fact') {
                             $value = "'" . $this->fact . "'";
-                        } elseif ($id == 'desc') {
+                        } elseif ($id === 'desc') {
                             $value = "'" . $this->desc . "'";
                         } else {
                             if (preg_match("/\d $id (.+)/", $this->gedrec, $match)) {
@@ -2088,14 +2088,14 @@ class ReportParserGenerate extends ReportParserBase
                                         $searchstr .= "[^\n]*(\n[2-9][^\n]*)*\n";
                                     }
                                     //-- search for both EMAIL and _EMAIL... silly double gedcom standard
-                                    if ($t == 'EMAIL' || $t == '_EMAIL') {
+                                    if ($t === 'EMAIL' || $t === '_EMAIL') {
                                         $t = '_?EMAIL';
                                     }
                                     $searchstr .= $level . ' ' . $t;
                                     $level++;
                                 }
                             } else {
-                                if ($tag == 'EMAIL' || $tag == '_EMAIL') {
+                                if ($tag === 'EMAIL' || $tag === '_EMAIL') {
                                     $tag = '_?EMAIL';
                                 }
                                 $t         = $tag;
@@ -2103,7 +2103,7 @@ class ReportParserGenerate extends ReportParserBase
                             }
                             switch ($expr) {
                                 case 'CONTAINS':
-                                    if ($t == 'PLAC') {
+                                    if ($t === 'PLAC') {
                                         $searchstr .= "[^\n]*[, ]*" . $val;
                                     } else {
                                         $searchstr .= "[^\n]*" . $val;
@@ -2152,7 +2152,7 @@ class ReportParserGenerate extends ReportParserBase
                         $t    = end($tags);
                         $v    = $this->getGedcomValue($tag, 1, $grec);
                         //-- check for EMAIL and _EMAIL (silly double gedcom standard :P)
-                        if ($t == 'EMAIL' && empty($v)) {
+                        if ($t === 'EMAIL' && empty($v)) {
                             $tag  = str_replace('EMAIL', '_EMAIL', $tag);
                             $tags = explode(':', $tag);
                             $t    = end($tags);
@@ -2161,7 +2161,7 @@ class ReportParserGenerate extends ReportParserBase
 
                         switch ($expr) {
                             case 'GTE':
-                                if ($t == 'DATE') {
+                                if ($t === 'DATE') {
                                     $date1 = new Date($v);
                                     $date2 = new Date($val);
                                     $keep  = (Date::compare($date1, $date2) >= 0);
@@ -2170,7 +2170,7 @@ class ReportParserGenerate extends ReportParserBase
                                 }
                                 break;
                             case 'LTE':
-                                if ($t == 'DATE') {
+                                if ($t === 'DATE') {
                                     $date1 = new Date($v);
                                     $date2 = new Date($val);
                                     $keep  = (Date::compare($date1, $date2) <= 0);
@@ -2359,7 +2359,7 @@ class ReportParserGenerate extends ReportParserBase
         if (isset($attrs['maxgen'])) {
             $maxgen = $attrs['maxgen'];
         }
-        if ($maxgen == '*') {
+        if ($maxgen === '*') {
             $maxgen = -1;
         }
 
@@ -2833,7 +2833,7 @@ class ReportParserGenerate extends ReportParserBase
                 $subrec = Functions::getSubRecord($level, "$level $t", $lastsubrec);
             }
             if (empty($subrec)) {
-                if ($t == 'TITL') {
+                if ($t === 'TITL') {
                     $subrec = Functions::getSubRecord($level, "$level ABBR", $lastsubrec);
                     if (!empty($subrec)) {
                         $t = 'ABBR';
@@ -2861,7 +2861,7 @@ class ReportParserGenerate extends ReportParserBase
         }
         if ($ct > 0) {
             $value = trim($match[1]);
-            if ($t == 'NOTE' && preg_match('/^@(.+)@$/', $value, $match)) {
+            if ($t === 'NOTE' && preg_match('/^@(.+)@$/', $value, $match)) {
                 $note = Note::getInstance($match[1], $this->tree);
                 if ($note) {
                     $value = $note->getNote();

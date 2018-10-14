@@ -130,7 +130,7 @@ class ReportHtml extends AbstractReport
     /** @var ReportBaseElement[] Array of elements in the body */
     public $bodyElements = [];
 
-    /** @var ReportBaseFootnote[] Array of elements in the footer notes */
+    /** @var ReportHtmlFootnote[] Array of elements in the footer notes */
     public $printedfootnotes = [];
 
     /**
@@ -143,7 +143,7 @@ class ReportHtml extends AbstractReport
         parent::setup();
 
         // Setting up the correct dimensions if Portrait (default) or Landscape
-        if ($this->orientation == 'landscape') {
+        if ($this->orientation === 'landscape') {
             $tmpw              = $this->page_width;
             $this->page_width  = $this->page_height;
             $this->page_height = $tmpw;
@@ -170,17 +170,17 @@ class ReportHtml extends AbstractReport
     /**
      * Add an element.
      *
-     * @param object|string $element
+     * @param ReportBaseElement|string $element
      *
      * @return void
      */
     public function addElement($element)
     {
-        if ($this->processing == 'B') {
+        if ($this->processing === 'B') {
             $this->bodyElements[] = $element;
-        } elseif ($this->processing == 'H') {
+        } elseif ($this->processing === 'H') {
             $this->headerElements[] = $element;
-        } elseif ($this->processing == 'F') {
+        } elseif ($this->processing === 'F') {
             $this->footerElements[] = $element;
         }
     }
@@ -193,11 +193,11 @@ class ReportHtml extends AbstractReport
     private function runPageHeader()
     {
         foreach ($this->pageHeaderElements as $element) {
-            if (is_object($element)) {
+            if ($element instanceof ReportBaseElement) {
                 $element->render($this);
-            } elseif (is_string($element) && $element == 'footnotetexts') {
+            } elseif ($element === 'footnotetexts') {
                 $this->footnotes();
-            } elseif (is_string($element) && $element == 'addpage') {
+            } elseif ($element === 'addpage') {
                 $this->addPage();
             }
         }
@@ -230,7 +230,7 @@ class ReportHtml extends AbstractReport
         echo '#bodydiv { font: 10px sans-serif;}';
         foreach ($this->styles as $class => $style) {
             echo '.', $class, ' { ';
-            if ($style['font'] == 'dejavusans') {
+            if ($style['font'] === 'dejavusans') {
                 $style['font'] = $this->default_font;
             }
             echo 'font-family: ', $style['font'], '; ';
@@ -256,11 +256,11 @@ class ReportHtml extends AbstractReport
         echo '<div id="headermargin" style="position: relative; top: auto; height: ', $this->header_margin, 'pt; width: ', $this->noMarginWidth, 'pt;"></div>';
         echo '<div id="headerdiv" style="position: relative; top: auto; width: ', $this->noMarginWidth, 'pt;">';
         foreach ($this->headerElements as $element) {
-            if (is_object($element)) {
+            if ($element instanceof ReportBaseElement) {
                 $element->render($this);
-            } elseif (is_string($element) && $element == 'footnotetexts') {
+            } elseif ($element === 'footnotetexts') {
                 $this->footnotes();
-            } elseif (is_string($element) && $element == 'addpage') {
+            } elseif ($element === 'addpage') {
                 $this->addPage();
             }
         }
@@ -272,11 +272,11 @@ class ReportHtml extends AbstractReport
         $this->maxY = 0;
         $this->runPageHeader();
         foreach ($this->bodyElements as $element) {
-            if (is_object($element)) {
+            if ($element instanceof ReportBaseElement) {
                 $element->render($this);
-            } elseif (is_string($element) && $element == 'footnotetexts') {
+            } elseif ($element === 'footnotetexts') {
                 $this->footnotes();
-            } elseif (is_string($element) && $element == 'addpage') {
+            } elseif ($element === 'addpage') {
                 $this->addPage();
             }
         }
@@ -289,11 +289,11 @@ class ReportHtml extends AbstractReport
         $this->X    = 0;
         $this->maxY = 0;
         foreach ($this->footerElements as $element) {
-            if (is_object($element)) {
+            if ($element instanceof ReportBaseElement) {
                 $element->render($this);
-            } elseif (is_string($element) && $element == 'footnotetexts') {
+            } elseif ($element === 'footnotetexts') {
                 $this->footnotes();
-            } elseif (is_string($element) && $element == 'addpage') {
+            } elseif ($element === 'addpage') {
                 $this->addPage();
             }
         }
@@ -522,11 +522,11 @@ class ReportHtml extends AbstractReport
     /**
      * Checks the Footnote and numbers them - ReportHtml
      *
-     * @param object $footnote
+     * @param ReportHtmlFootnote $footnote
      *
-     * @return object|bool object if already numbered, false otherwise
+     * @return ReportHtmlFootnote|bool object if already numbered, false otherwise
      */
-    public function checkFootnote($footnote)
+    public function checkFootnote(ReportHtmlFootnote $footnote)
     {
         $ct  = count($this->printedfootnotes);
         $i   = 0;
