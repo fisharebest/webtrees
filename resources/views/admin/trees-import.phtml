@@ -118,8 +118,8 @@
 <script>
   function checkGedcomImportForm (message) {
     var oldFile = $('#gedcom_filename').val();
-    var method = $('input[name=action]:checked').val();
-    var newFile = method === 'replace_import' ? $('#import-server-file').val() : $('#import-computer-file').val();
+    var method = $('input[name=source]:checked').val();
+    var newFile = method === 'server' ? $('#import-server-file').val() : $('#import-computer-file').val();
 
     // Some browsers include c:\fakepath\ in the filename.
     newFile = newFile.replace(/.*[/\\]/, '');
