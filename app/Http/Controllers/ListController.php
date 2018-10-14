@@ -925,7 +925,7 @@ class ListController extends AbstractBaseController
      * @param bool   $marnm  if set, include married names
      * @param bool   $fams   if set, only consider individuals with FAMS records
      *
-     * @return array
+     * @return int[][]
      */
     private function surnames(Tree $tree, $surn, $salpha, $marnm, $fams): array
     {
@@ -961,8 +961,9 @@ class ListController extends AbstractBaseController
         $sql .= " GROUP BY 1,2";
 
         $list = [];
+
         foreach (Database::prepare($sql)->execute($args)->fetchAll() as $row) {
-            $list[$row->n_surn][$row->n_surname] = $row->total;
+            $list[$row->n_surn][$row->n_surname] = (int) $row->total;
         }
 
         return $list;
