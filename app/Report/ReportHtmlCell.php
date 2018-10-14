@@ -44,8 +44,8 @@ class ReportHtmlCell extends ReportBaseCell
             '</u>',
         ], $temptext);
 
-        // Setup the style name
-        if ($renderer->getCurrentStyle() != $this->styleName) {
+        // Set up the text style
+        if ($renderer->getCurrentStyle() !== $this->styleName) {
             $renderer->setCurrentStyle($this->styleName);
         }
 
@@ -71,11 +71,13 @@ class ReportHtmlCell extends ReportBaseCell
         echo 'padding:', $cP, 'pt;';
         // LTR (left) or RTL (right)
         echo $renderer->alignRTL, ':', $this->left, 'pt;';
+
         // Background color
         if (!empty($this->bgcolor)) {
             echo 'background-color:', $this->bgcolor, ';';
         }
-        // Border setup
+
+        // Borders
         $bpixX = 0;
         $bpixY = 0;
         if (!empty($this->border)) {
@@ -151,7 +153,7 @@ class ReportHtmlCell extends ReportBaseCell
                 $this->height = $tmph;
             }
         }
-        // Check the last cell height and ajust with the current cell height
+        // Check the last cell height and adjust the current cell height if needed
         if ($renderer->lastCellHeight > $this->height) {
             $this->height = $renderer->lastCellHeight;
         }

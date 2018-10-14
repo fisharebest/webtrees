@@ -23,7 +23,7 @@ namespace Fisharebest\Webtrees\Report;
 class ReportHtmlPageheader extends ReportBasePageheader
 {
     /**
-     * Render elements.
+     * PageHeader element renderer
      *
      * @param ReportHtml $renderer
      *

@@ -33,8 +33,7 @@ class ReportHtmlText extends ReportBaseText
      */
     public function render($renderer, $curx = 0, $attrib = true)
     {
-
-        // Setup the style name
+        // Set up the style
         if ($renderer->getCurrentStyle() != $this->styleName) {
             $renderer->setCurrentStyle($this->styleName);
         }
@@ -86,56 +85,56 @@ class ReportHtmlText extends ReportBaseText
      * Returns the height in points of the text element
      * The height is already calculated in getWidth()
      *
-     * @param ReportHtml $html
+     * @param ReportHtml $renderer
      *
      * @return float
      */
-    public function getHeight($html): float
+    public function getHeight($renderer): float
     {
         $ct = substr_count($this->text, "\n");
         if ($ct > 0) {
             $ct += 1;
         }
-        $style = $html->getStyle($this->styleName);
+        $style = $renderer->getStyle($this->styleName);
 
-        return ($style['size'] * $ct) * $html->cellHeightRatio;
+        return ($style['size'] * $ct) * $renderer->cellHeightRatio;
     }
 
     /**
      * Get the width of text and wrap it too
      *
-     * @param ReportHtml $html
+     * @param ReportHtml $renderer
      *
      * @return float|array
      */
-    public function getWidth($html)
+    public function getWidth($renderer)
     {
-        // Setup the style name
-        if ($html->getCurrentStyle() != $this->styleName) {
-            $html->setCurrentStyle($this->styleName);
+        // Setup the style name, a font must be selected to calculate the width
+        if ($renderer->getCurrentStyle() != $this->styleName) {
+            $renderer->setCurrentStyle($this->styleName);
         }
 
         // Check for the largest font size in the box
-        $fsize = $html->getCurrentStyleHeight();
-        if ($fsize > $html->largestFontHeight) {
-            $html->largestFontHeight = $fsize;
+        $fsize = $renderer->getCurrentStyleHeight();
+        if ($fsize > $renderer->largestFontHeight) {
+            $renderer->largestFontHeight = $fsize;
         }
 
         // Get the line width for the text in points
-        $lw = $html->getStringWidth($this->text);
+        $lw = $renderer->getStringWidth($this->text);
         // Line Feed counter - Number of lines in the text
-        $lfct = $html->countLines($this->text);
+        $lfct = $renderer->countLines($this->text);
         // If there is still remaining wrap width...
-        if ($this->wrapWidthRemaining > 0) {
+        $wrapWidthRemaining = $this->wrapWidthRemaining;
+        if ($wrapWidthRemaining > 0) {
             // Check with line counter too!
-            if ($lw >= $this->wrapWidthRemaining || $lfct > 1) {
+            if ($lw >= $wrapWidthRemaining || $lfct > 1) {
                 $newtext            = '';
-                $wrapWidthRemaining = $this->wrapWidthRemaining;
                 $lines              = explode("\n", $this->text);
                 // Go throught the text line by line
                 foreach ($lines as $line) {
                     // Line width in points + a little margin
-                    $lw = $html->getStringWidth($line);
+                    $lw = $renderer->getStringWidth($line);
                     // If the line has to be wraped
                     if ($lw > $wrapWidthRemaining) {
                         $words    = explode(' ', $line);
@@ -143,14 +142,14 @@ class ReportHtmlText extends ReportBaseText
                         $lw       = 0;
                         foreach ($words as $word) {
                             $addspace--;
-                            $lw += $html->getStringWidth($word . ' ');
+                            $lw += $renderer->getStringWidth($word . ' ');
                             if ($lw <= $wrapWidthRemaining) {
                                 $newtext .= $word;
                                 if ($addspace != 0) {
                                     $newtext .= ' ';
                                 }
                             } else {
-                                $lw = $html->getStringWidth($word . ' ');
+                                $lw = $renderer->getStringWidth($word . ' ');
                                 $newtext .= "\n$word";
                                 if ($addspace != 0) {
                                     $newtext .= ' ';
@@ -164,7 +163,7 @@ class ReportHtmlText extends ReportBaseText
                     }
                     // Check the Line Feed counter
                     if ($lfct > 1) {
-                        // Add a new line feed as long as it’s not the last line
+                        // Add a new line as long as it’s not the last line
                         $newtext .= "\n";
                         // Reset the line width
                         $lw = 0;

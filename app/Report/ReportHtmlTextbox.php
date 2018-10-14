@@ -117,21 +117,21 @@ class ReportHtmlTextbox extends ReportBaseTextbox
         // Used with line breaks and cell height calculation within this box only
         $renderer->largestFontHeight = 0;
 
-        // Current position
+        // If current position (left)
         if ($this->left === ReportBaseElement::CURRENT_POSITION) {
             $cX = $renderer->getX();
         } else {
             $cX = $this->left;
             $renderer->setX($cX);
         }
-        // Current position (top)
+        // If current position (top)
         if ($this->top === ReportBaseElement::CURRENT_POSITION) {
             $this->top = $renderer->getY();
         } else {
             $renderer->setY($this->top);
         }
 
-        // Check the width if set to page wide OR set by xml to larger then page wide
+        // Check the width if set to page wide OR set by xml to larger then page width (margin)
         if ($this->width == 0 || $this->width > $renderer->getRemainingWidth()) {
             $this->width = $renderer->getRemainingWidth();
         }
@@ -183,6 +183,7 @@ class ReportHtmlTextbox extends ReportBaseTextbox
                 $fH += abs($renderer->getFootnotesHeight($cW));
             }
         }
+
         // Add up what’s the final height
         $cH = $this->height;
         // If any element exist

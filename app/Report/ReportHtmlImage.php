@@ -82,12 +82,12 @@ class ReportHtmlImage extends ReportBaseImage
      * This would be called from the TextBox only for multiple images
      * so we add a bit bottom space between the images
      *
-     * @param ReportHtml $html
+     * @param ReportHtml $renderer
      *
      * @return float
      */
-    public function getHeight($html): float
+    public function getHeight($renderer): float
     {
-        return $this->height + ($html->cPadding * 2);
+        return $this->height + ($renderer->cPadding * 2);
     }
 }

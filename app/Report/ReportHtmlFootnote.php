@@ -18,7 +18,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Report;
 
 /**
- * class ReportHtmlFootnote
+ * Class ReportHtmlFootnote
  */
 class ReportHtmlFootnote extends ReportBaseFootnote
 {
@@ -41,17 +41,17 @@ class ReportHtmlFootnote extends ReportBaseFootnote
      * Write the Footnote text
      * Uses style name "footnote" by default
      *
-     * @param ReportHtml $html
+     * @param ReportHtml $renderer
      *
      * @return void
      */
-    public function renderFootnote($html)
+    public function renderFootnote($renderer)
     {
-        if ($html->getCurrentStyle() != $this->styleName) {
-            $html->setCurrentStyle($this->styleName);
+        if ($renderer->getCurrentStyle() != $this->styleName) {
+            $renderer->setCurrentStyle($this->styleName);
         }
 
-        $temptext = str_replace('#PAGENUM#', (string) $html->pageNo(), $this->text);
+        $temptext = str_replace('#PAGENUM#', (string) $renderer->pageNo(), $this->text);
         // underline «title» part of Source item
         $temptext = str_replace([
             '«',
@@ -61,10 +61,10 @@ class ReportHtmlFootnote extends ReportBaseFootnote
             '</u>',
         ], $temptext);
         echo "\n<div><a name=\"footnote", $this->num, '"></a>';
-        $html->write($this->num . '. ' . $temptext);
+        $renderer->write($this->num . '. ' . $temptext);
         echo '</div>';
 
-        $html->setXy(0, $html->getY() + $this->getFootnoteHeight($html));
+        $renderer->setXy(0, $renderer->getY() + $this->getFootnoteHeight($renderer));
     }
 
     /**
@@ -95,30 +95,30 @@ class ReportHtmlFootnote extends ReportBaseFootnote
      * Get the width of text
      * Breaks up a text into lines if needed
      *
-     * @param ReportHtml $html
+     * @param ReportHtml $renderer
      *
      * @return float|array
      */
-    public function getWidth($html)
+    public function getWidth($renderer)
     {
         // Setup the style name
-        $html->setCurrentStyle('footnotenum');
+        $renderer->setCurrentStyle('footnotenum');
 
         // Check for the largest font size in the box
-        $fsize = $html->getCurrentStyleHeight();
-        if ($fsize > $html->largestFontHeight) {
-            $html->largestFontHeight = $fsize;
+        $fsize = $renderer->getCurrentStyleHeight();
+        if ($fsize > $renderer->largestFontHeight) {
+            $renderer->largestFontHeight = $fsize;
         }
 
         // Returns the Object if already numbered else false
         if (empty($this->num)) {
-            $html->checkFootnote($this);
+            $renderer->checkFootnote($this);
         }
 
         // Get the line width for the text in points + a little margin
-        $lw = $html->getStringWidth($this->numText);
+        $lw = $renderer->getStringWidth($this->numText);
         // Line Feed counter - Number of lines in the text
-        $lfct = $html->countLines($this->numText);
+        $lfct = $renderer->countLines($this->numText);
         // If there is still remaining wrap width...
         if ($this->wrapWidthRemaining > 0) {
             // Check with line counter too!
@@ -129,7 +129,7 @@ class ReportHtmlFootnote extends ReportBaseFootnote
                 // Go throught the text line by line
                 foreach ($lines as $line) {
                     // Line width in points + a little margin
-                    $lw = $html->getStringWidth($line);
+                    $lw = $renderer->getStringWidth($line);
                     // If the line has to be wraped
                     if ($lw > $wrapWidthRemaining) {
                         $words    = explode(' ', $line);
@@ -137,14 +137,14 @@ class ReportHtmlFootnote extends ReportBaseFootnote
                         $lw       = 0;
                         foreach ($words as $word) {
                             $addspace--;
-                            $lw += $html->getStringWidth($word . ' ');
+                            $lw += $renderer->getStringWidth($word . ' ');
                             if ($lw <= $wrapWidthRemaining) {
                                 $newtext .= $word;
                                 if ($addspace != 0) {
                                     $newtext .= ' ';
                                 }
                             } else {
-                                $lw = $html->getStringWidth($word . ' ');
+                                $lw = $renderer->getStringWidth($word . ' ');
                                 $newtext .= "\n$word";
                                 if ($addspace != 0) {
                                     $newtext .= ' ';

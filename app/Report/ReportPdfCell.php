@@ -33,11 +33,6 @@ class ReportPdfCell extends ReportBaseCell
      */
     public function render($renderer)
     {
-
-        // Set up the text style
-        if (($renderer->getCurrentStyle()) != ($this->styleName)) {
-            $renderer->setCurrentStyle($this->styleName);
-        }
         $temptext = str_replace('#PAGENUM#', (string) $renderer->PageNo(), $this->text);
         // underline «title» part of Source item
         $temptext = str_replace([
@@ -47,6 +42,13 @@ class ReportPdfCell extends ReportBaseCell
             '<u>',
             '</u>',
         ], $temptext);
+
+        // Set up the text style
+        if ($renderer->getCurrentStyle() !== $this->styleName) {
+            $renderer->setCurrentStyle($this->styleName);
+        }
+
+        // Background color
         $match = [];
         // Indicates if the cell background must be painted (1) or transparent (0)
         if ($this->fill == 1) {
@@ -63,7 +65,8 @@ class ReportPdfCell extends ReportBaseCell
                 $this->fill = 0;
             }
         }
-        // Paint the Border color if set
+
+        // Borders
         if (!empty($this->bocolor)) {
             // HTML color to RGB
             if (preg_match('/#?(..)(..)(..)/', $this->bocolor, $match)) {

@@ -87,14 +87,13 @@ class ReportPdfText extends ReportBaseText
 
     /**
      * Returns the height in points of the text element
-     *
      * The height is already calculated in getWidth()
      *
-     * @param ReportTcpdf $pdf
+     * @param ReportTcpdf $renderer
      *
-     * @return float 0
+     * @return float
      */
-    public function getHeight($pdf): float
+    public function getHeight($renderer): float
     {
         return 0;
     }
@@ -102,52 +101,53 @@ class ReportPdfText extends ReportBaseText
     /**
      * Splits the text into lines if necessary to fit into a giving cell
      *
-     * @param ReportTcpdf $pdf
+     * @param ReportTcpdf $renderer
      *
      * @return float|array
      */
-    public function getWidth($pdf)
+    public function getWidth($renderer)
     {
         // Setup the style name, a font must be selected to calculate the width
-        if ($pdf->getCurrentStyle() != $this->styleName) {
-            $pdf->setCurrentStyle($this->styleName);
-        }
-        // Check for the largest font size in the box
-        $fsize = $pdf->getCurrentStyleHeight();
-        if ($fsize > $pdf->largestFontHeight) {
-            $pdf->largestFontHeight = $fsize;
+        if ($renderer->getCurrentStyle() != $this->styleName) {
+            $renderer->setCurrentStyle($this->styleName);
         }
 
-        // Get the line width
-        $lw = $pdf->GetStringWidth($this->text);
+        // Check for the largest font size in the box
+        $fsize = $renderer->getCurrentStyleHeight();
+        if ($fsize > $renderer->largestFontHeight) {
+            $renderer->largestFontHeight = $fsize;
+        }
+
+        // Get the line width for the text in points
+        $lw = $renderer->getStringWidth($this->text);
         // Line Feed counter - Number of lines in the text
         $lfct = substr_count($this->text, "\n") + 1;
         // If there is still remaining wrap width...
-        if ($this->wrapWidthRemaining > 0) {
+        $wrapWidthRemaining = $this->wrapWidthRemaining;
+        if ($wrapWidthRemaining > 0) {
             // Check with line counter too!
-            $wrapWidthRemaining = $this->wrapWidthRemaining;
             if ($lw >= $wrapWidthRemaining || $lfct > 1) {
                 $newtext = '';
                 $lines   = explode("\n", $this->text);
                 // Go throught the text line by line
                 foreach ($lines as $line) {
                     // Line width in points + a little margin
-                    $lw = $pdf->GetStringWidth($line);
+                    $lw = $renderer->getStringWidth($line);
                     // If the line has to be wraped
-                    if ($lw >= $wrapWidthRemaining) {
+                    if ($lw > $wrapWidthRemaining) {
                         $words    = explode(' ', $line);
                         $addspace = count($words);
                         $lw       = 0;
                         foreach ($words as $word) {
                             $addspace--;
-                            $lw += $pdf->GetStringWidth($word . ' ');
+                            $lw += $renderer->getStringWidth($word . ' ');
                             if ($lw <= $wrapWidthRemaining) {
                                 $newtext .= $word;
                                 if ($addspace != 0) {
                                     $newtext .= ' ';
                                 }
                             } else {
-                                $lw = $pdf->GetStringWidth($word . ' ');
+                                $lw = $renderer->getStringWidth($word . ' ');
                                 $newtext .= "\n$word";
                                 if ($addspace != 0) {
                                     $newtext .= ' ';

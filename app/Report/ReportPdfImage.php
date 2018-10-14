@@ -103,11 +103,11 @@ class ReportPdfImage extends ReportBaseImage
     /**
      * Get the image height
      *
-     * @param ReportTcpdf $pdf
+     * @param ReportTcpdf $renderer
      *
      * @return float
      */
-    public function getHeight($pdf): float
+    public function getHeight($renderer): float
     {
         return $this->height;
     }
@@ -115,11 +115,11 @@ class ReportPdfImage extends ReportBaseImage
     /**
      * Get the image width.
      *
-     * @param $pdf
+     * @param $renderer
      *
      * @return float|array
      */
-    public function getWidth($pdf)
+    public function getWidth($renderer)
     {
         return $this->width;
     }
