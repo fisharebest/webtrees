@@ -64,20 +64,21 @@ class ReportTcpdf extends TCPDF
     public function header()
     {
         foreach ($this->headerElements as $element) {
-            if (is_object($element)) {
+            if ($element instanceof ReportBaseElement) {
                 $element->render($this);
-            } elseif (is_string($element) && $element == 'footnotetexts') {
+            } elseif ($element === 'footnotetexts') {
                 $this->footnotes();
-            } elseif (is_string($element) && $element == 'addpage') {
+            } elseif ($element === 'addpage') {
                 $this->newPage();
             }
         }
+
         foreach ($this->pageHeaderElements as $element) {
-            if (is_object($element)) {
+            if ($element instanceof ReportBaseElement) {
                 $element->render($this);
-            } elseif (is_string($element) && $element == 'footnotetexts') {
+            } elseif ($element === 'footnotetexts') {
                 $this->footnotes();
-            } elseif (is_string($element) && $element == 'addpage') {
+            } elseif ($element === 'addpage') {
                 $this->newPage();
             }
         }
@@ -91,16 +92,15 @@ class ReportTcpdf extends TCPDF
     public function body()
     {
         $this->AddPage();
+
         foreach ($this->bodyElements as $key => $element) {
-            if (is_object($element)) {
+            if ($element instanceof ReportBaseElement) {
                 $element->render($this);
-            } elseif (is_string($element) && $element == 'footnotetexts') {
+            } elseif ($element === 'footnotetexts') {
                 $this->footnotes();
-            } elseif (is_string($element) && $element == 'addpage') {
+            } elseif ($element === 'addpage') {
                 $this->newPage();
             }
-            // Delete used elements in hope to reduce 'some' memory usage
-            unset($this->bodyElements[$key]);
         }
     }
 
@@ -115,7 +115,9 @@ class ReportTcpdf extends TCPDF
             if (($this->GetY() + $element->getFootnoteHeight($this)) > $this->getPageHeight()) {
                 $this->AddPage();
             }
+
             $element->renderFootnote($this);
+
             if ($this->GetY() > $this->getPageHeight()) {
                 $this->AddPage();
             }
@@ -130,11 +132,11 @@ class ReportTcpdf extends TCPDF
     public function footer()
     {
         foreach ($this->footerElements as $element) {
-            if (is_object($element)) {
+            if ($element instanceof ReportBaseElement) {
                 $element->render($this);
-            } elseif (is_string($element) && $element == 'footnotetexts') {
+            } elseif ($element === 'footnotetexts') {
                 $this->footnotes();
-            } elseif (is_string($element) && $element == 'addpage') {
+            } elseif ($element === 'addpage') {
                 $this->newPage();
             }
         }
@@ -143,7 +145,7 @@ class ReportTcpdf extends TCPDF
     /**
      * Add an element to the Header -PDF
      *
-     * @param object|string $element
+     * @param ReportBaseElement|string $element
      *
      * @return void
      */
@@ -155,7 +157,7 @@ class ReportTcpdf extends TCPDF
     /**
      * Add an element to the Page Header -PDF
      *
-     * @param object|string $element
+     * @param ReportBaseElement|string $element
      *
      * @return void
      */
@@ -167,7 +169,7 @@ class ReportTcpdf extends TCPDF
     /**
      * Add an element to the Body -PDF
      *
-     * @param object|string $element
+     * @param ReportBaseElement|string $element
      *
      * @return void
      */
@@ -179,7 +181,7 @@ class ReportTcpdf extends TCPDF
     /**
      * Add an element to the Footer -PDF
      *
-     * @param object|string $element
+     * @param ReportBaseElement|string $element
      *
      * @return void
      */
@@ -383,7 +385,7 @@ class ReportTcpdf extends TCPDF
      *
      * @param ReportPdfFootnote $footnote
      *
-     * @return object|bool object if already numbered, false otherwise
+     * @return ReportPdfFootnote|bool object if already numbered, false otherwise
      */
     public function checkFootnote(ReportPdfFootnote $footnote)
     {
