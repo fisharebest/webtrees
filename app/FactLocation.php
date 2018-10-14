@@ -73,7 +73,6 @@ class FactLocation extends Location
             if ($spouse) {
                 $url  = $spouse->url();
                 $name = $spouse->getFullName();
-                $tag  = GedcomTag::getLabel('MARR');
             }
         } elseif ($parent->getXref() !== $self) {
             //birth of a child
@@ -81,6 +80,7 @@ class FactLocation extends Location
             $name = $parent->getFullName();
             $tag  = GedcomTag::getLabel('_BIRT_CHIL', $parent);
         }
+        
         if ($datatype === 'pedigree' && $sosa > 1) {
             $addbirthtag = true;
             $tag         = ucfirst(FunctionsCharts::getSosaName($sosa));
