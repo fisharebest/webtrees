@@ -57,7 +57,7 @@ class RelationshipsChartController extends AbstractChartController
         $recursion = (int) $request->get('recursion', '0');
         $ancestors = (int) $request->get('ancestors', '0');
 
-        if ($individual1 !== null && $individual2 !== null) {
+        if ($individual1 instanceof Individual && $individual2 instanceof Individual) {
             $this->checkIndividualAccess($individual1);
             $this->checkIndividualAccess($individual2);
         }
@@ -67,7 +67,7 @@ class RelationshipsChartController extends AbstractChartController
 
         $recursion = min($recursion, $max_recursion);
 
-        if ($individual1 && $individual2) {
+        if ($individual1 instanceof Individual && $individual2 instanceof Individual) {
             /* I18N: %s are individual’s names */
             $title = I18N::translate('Relationships between %1$s and %2$s', $individual1->getFullName(), $individual2->getFullName());
         } else {
