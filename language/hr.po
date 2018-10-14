@@ -3,15 +3,15 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:51+0100\n"
-"PO-Revision-Date: 2018-10-15 01:50+0100\n"
-"Last-Translator: Mic50 <mic@ergraf.eu>\n"
+"PO-Revision-Date: 2018-10-14 23:55+0000\n"
+"Last-Translator: Milivoj Bartoš <mic@mikrotakt.com>\n"
 "Language-Team: Croatian <https://translate.webtrees.net/projects/webtrees/webtrees/hr/>\n"
 "Language: hr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Poedit 1.7.1\n"
+"X-Generator: Weblate 2.10\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
@@ -1105,35 +1105,31 @@ msgstr "Aba, Nigerija"
 #: app/Date/JalaliDate.php:261
 msgctxt "Abbreviation for Persian month: Aban"
 msgid "Aban"
-msgstr "Aban"
+msgstr ""
 
 #. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:134
-#, fuzzy
 msgctxt "GENITIVE"
 msgid "Aban"
-msgstr "Aban"
+msgstr ""
 
 #. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:224
-#, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Aban"
-msgstr "Aban"
+msgstr ""
 
 #. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:179
-#, fuzzy
 msgctxt "LOCATIVE"
 msgid "Aban"
-msgstr "Aban"
+msgstr ""
 
 #. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:89
-#, fuzzy
 msgctxt "NOMINATIVE"
 msgid "Aban"
-msgstr "Aban"
+msgstr ""
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.php:737
@@ -7336,7 +7332,7 @@ msgstr "Uvoz"
 
 #: resources/views/admin/map-import-form.php:67
 msgid "Import Options."
-msgstr "Opcije uvoza"
+msgstr "Opcije uvoza."
 
 #: app/Http/Controllers/AdminTreesController.php:583
 msgid "Import a GEDCOM file"
@@ -10888,7 +10884,7 @@ msgstr "Mjesta trebaju biti unesena prema standardu genealogije. U genealogiji, 
 
 #: resources/views/places-page.php:26
 msgid "Places without valid co-ordinates are not shown on the map and have a red border around the sidebar entry"
-msgstr "Mjesta bez valjanih kordinata nisu vidljiva na karti i imaju crveni okvir oko polja za unos."
+msgstr "Mjesta bez valjanih koordinata nisu vidljiva na karti i imaju crveni okvir oko polja za unos"
 
 #: resources/views/layouts/default.php:142
 #: resources/views/modules/random_media/slide-show.php:8
@@ -13966,7 +13962,7 @@ msgstr "Nema činjenica za ovog pojedinca."
 
 #: app/Http/Controllers/AdminMediaController.php:731
 msgid "There are no links to this media object."
-msgstr "Nema veze na ovaj medijski objekt"
+msgstr "Ovaj medijski objekt nije povezan."
 
 #: resources/views/modules/media/tab.php:16
 msgid "There are no media objects for this individual."
@@ -19026,7 +19022,7 @@ msgstr "roditelj"
 
 #: app/Functions/Functions.php:732
 msgid "partner"
-msgstr "partner"
+msgstr ""
 
 #: app/Functions/Functions.php:712
 msgctxt "FEMALE"
@@ -19036,7 +19032,7 @@ msgstr "partnerica"
 #: app/Functions/Functions.php:692
 msgctxt "MALE"
 msgid "partner"
-msgstr "partner"
+msgstr ""
 
 #: app/SurnameTradition.php:75
 msgctxt "Surname tradition"
@@ -19601,9 +19597,8 @@ msgstr "supružnik"
 
 #. I18N: Secure Sockets Layer - a secure communications protocol
 #: app/Http/Controllers/AdminSiteController.php:653
-#, fuzzy
 msgid "ssl"
-msgstr "ssl"
+msgstr ""
 
 #: app/Functions/Functions.php:1139
 msgctxt "father’s wife’s son"
@@ -19814,9 +19809,8 @@ msgstr "tri četvrtine kruga"
 
 #. I18N: Transport Layer Security - a secure communications protocol
 #: app/Http/Controllers/AdminSiteController.php:655
-#, fuzzy
 msgid "tls"
-msgstr "tls"
+msgstr ""
 
 #. I18N: Gedcom TO dates
 #: app/Date.php:372
@@ -19945,9 +19939,8 @@ msgid "was born"
 msgstr "je rođen"
 
 #: app/Theme/WebtreesTheme.php:74
-#, fuzzy
 msgid "webtrees"
-msgstr "webtrees"
+msgstr ""
 
 #: app/Http/Controllers/AdminPhpGedViewController.php:231
 #, php-format
