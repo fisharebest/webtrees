@@ -1459,27 +1459,16 @@ class ReportParserGenerate extends ReportParserBase
         } elseif (preg_match('/^I18N::translateContext\(\'(.+)\', *\'(.+)\'\)$/', $value, $match)) {
             $value = I18N::translateContext($match[1], $match[2]);
         }
+
         // Arithmetic functions
         if (preg_match("/(\d+)\s*([\-\+\*\/])\s*(\d+)/", $value, $match)) {
-            switch ($match[2]) {
-                case '+':
-                    $t     = $match[1] + $match[3];
-                    $value = preg_replace('/' . $match[1] . "\s*([\-\+\*\/])\s*" . $match[3] . '/', $t, $value);
-                    break;
-                case '-':
-                    $t     = $match[1] - $match[3];
-                    $value = preg_replace('/' . $match[1] . "\s*([\-\+\*\/])\s*" . $match[3] . '/', $t, $value);
-                    break;
-                case '*':
-                    $t     = $match[1] * $match[3];
-                    $value = preg_replace('/' . $match[1] . "\s*([\-\+\*\/])\s*" . $match[3] . '/', $t, $value);
-                    break;
-                case '/':
-                    $t     = $match[1] / $match[3];
-                    $value = preg_replace('/' . $match[1] . "\s*([\-\+\*\/])\s*" . $match[3] . '/', $t, $value);
-                    break;
-            }
+            // Create an expression language with the functions used by our reports.
+            $expression_provider  = new ReportExpressionLanguageProvider();
+            $expression_language  = new ExpressionLanguage(null, [$expression_provider]);
+
+            $value = (string) $expression_language->evaluate($value);
         }
+
         if (strpos($value, '@') !== false) {
             $value = '';
         }
