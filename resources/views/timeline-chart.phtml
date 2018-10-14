@@ -279,7 +279,7 @@
         $gdate    = $event->getDate();
         $date     = $gdate->minimumDate();
         $date     = $date->convertToCalendar('gregorian');
-        $year     = $date->y;
+        $year     = $date->year();
         $month    = max(1, $date->month());
         $day      = max(1, $date->day());
         $xoffset  = 0 + 22;
