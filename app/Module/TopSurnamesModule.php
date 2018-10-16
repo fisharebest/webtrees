@@ -96,6 +96,10 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
                 'tree_id' => $tree->getTreeId(),
             ])->fetchAssoc();
 
+            $variants = array_map(function (string $count): int {
+                return (int) $count;
+            }, $variants);
+
             $all_surnames[$top_surname] = $variants;
         }
 
