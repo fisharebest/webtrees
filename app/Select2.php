@@ -23,6 +23,11 @@ use RecursiveIteratorIterator;
 /**
  * Generate markup and AJAX responses for SELECT2 queries.
  *
+ * Note that the single space in the title attributes is necessary to prevent
+ * select2 from copying the (raw HTML) of the value into the title.
+ *
+ * @link https://stackoverflow.com/questions/35500508/how-to-disable-the-title-in-select2
+ *
  * @link https://select2.github.io/
  */
 class Select2 extends Html
@@ -123,8 +128,9 @@ class Select2 extends Html
                 } else {
                     // Add to the results
                     $results[] = [
-                        'id'   => $row->xref,
-                        'text' => view('selects/family', ['family' => $family]),
+                        'id'    => $row->xref,
+                        'text'  => view('selects/family', ['family' => $family]),
+                        'title' => ' ',
                     ];
                 }
             }
@@ -196,8 +202,9 @@ class Select2 extends Html
 
         foreach ($flag_files as $flag_file) {
             $results[] = [
-                'id'   => $flag_file,
-                'text' => self::flagValue($flag_file),
+                'id'    => $flag_file,
+                'text'  => self::flagValue($flag_file),
+                'title' => ' ',
             ];
         }
 
@@ -259,8 +266,9 @@ class Select2 extends Html
                 } else {
                     // Add to the results
                     $results[] = [
-                        'id'   => $row->xref,
-                        'text' => view('selects/individual', ['individual' => $individual]),
+                        'id'    => $row->xref,
+                        'text'  => view('selects/individual', ['individual' => $individual]),
+                        'title' => ' ',
                     ];
                 }
             }
@@ -324,8 +332,9 @@ class Select2 extends Html
                 } else {
                     // Add to the results
                     $results[] = [
-                        'id'   => $row->xref,
-                        'text' => view('selects/media', ['media' => $media]),
+                        'id'    => $row->xref,
+                        'text'  => view('selects/media', ['media' => $media]),
+                        'title' => ' ',
                     ];
                 }
             }
@@ -389,8 +398,9 @@ class Select2 extends Html
                 } else {
                     // Add to the results
                     $results[] = [
-                        'id'   => $row->xref,
-                        'text' => view('selects/note', ['note' => $note]),
+                        'id'    => $row->xref,
+                        'text'  => view('selects/note', ['note' => $note]),
+                        'title' => ' ',
                     ];
                 }
             }
@@ -442,8 +452,9 @@ class Select2 extends Html
                 $found = true;
             }
             $results[] = [
-                'id'   => $place_name,
-                'text' => $place_name,
+                'id'    => $place_name,
+                'text'  => $place_name,
+                'title' => ' ',
             ];
         }
 
@@ -477,8 +488,9 @@ class Select2 extends Html
                         $found = true;
                     }
                     $results[] = [
-                        'id'   => $place_name,
-                        'text' => $place_name,
+                        'id'    => $place_name,
+                        'text'  => $place_name,
+                        'title' => ' ',
                     ];
                 }
             }
@@ -553,8 +565,9 @@ class Select2 extends Html
                 } else {
                     // Add to the results
                     $results[] = [
-                        'id'   => $row->xref,
-                        'text' => view('selects/repository', ['repository' => $repository]),
+                        'id'    => $row->xref,
+                        'text'  => view('selects/repository', ['repository' => $repository]),
+                        'title' => ' ',
                     ];
                 }
             }
@@ -618,8 +631,9 @@ class Select2 extends Html
                 } else {
                     // Add to the results
                     $results[] = [
-                        'id'   => $row->xref,
-                        'text' => view('selects/source', ['source' => $source]),
+                        'id'    => $row->xref,
+                        'text'  => view('selects/source', ['source' => $source]),
+                        'title' => ' ',
                     ];
                 }
             }
@@ -688,8 +702,9 @@ class Select2 extends Html
                 } else {
                     // Add to the results
                     $results[] = [
-                        'id'   => $row->xref,
-                        'text' => view('selects/submitter', ['submitter' => $submitter]),
+                        'id'    => $row->xref,
+                        'text'  => view('selects/submitter', ['submitter' => $submitter]),
+                        'title' => ' ',
                     ];
                 }
             }

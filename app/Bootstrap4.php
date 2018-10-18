@@ -119,6 +119,9 @@ class Bootstrap4 extends Html
     /**
      * Create a <select> control for a form.
      *
+     * Note that the (almost) empty title attribute is necessary to prevent
+     * select2 from copying the value into the title.
+     *
      * @param string[] $options
      * @param string   $selected
      * @param string[] $attributes
@@ -132,6 +135,7 @@ class Bootstrap4 extends Html
             $option_attributes = self::attributes([
                 'value'    => $value,
                 'selected' => (string) $value === (string) $selected,
+                'title'    => ' ',
             ]);
 
             $html .= '<option ' . $option_attributes . '>' . e($option) . '</option>';
