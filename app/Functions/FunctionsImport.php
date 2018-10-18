@@ -822,8 +822,10 @@ class FunctionsImport
             $place_id = self::importPlace($place, $tree);
 
             // Link the place to the record
+            // Insert IGNORE because collation differences (Quebec and Québec) can cause
+            // the same place name to be found twice.
             Database::prepare(
-                "INSERT INTO `##placelinks` (pl_p_id, pl_gid, pl_file) VALUES (:place_id, :xref, :tree_id)"
+                "INSERT IGNORE INTO `##placelinks` (pl_p_id, pl_gid, pl_file) VALUES (:place_id, :xref, :tree_id)"
             )->execute([
                 'place_id' => $place_id,
                 'xref'     => $xref,
