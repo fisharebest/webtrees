@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2018-07-01 19:39+0000\n"
+"PO-Revision-Date: 2018-10-19 18:52+0000\n"
 "Last-Translator: Vitalii Oleshkevych <mar2008m@gmail.com>\n"
 "Language-Team: Russian <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/ru/>\n"
 "Language: ru\n"
@@ -522,13 +522,13 @@ msgstr "(%s+1)-тиюродный брат"
 #: app/Date/JulianDate.php:85
 #, php-format
 msgid "%s&nbsp;BCE"
-msgstr "%s&nbsp;до н.э."
+msgstr "%s до н.э."
 
 #. I18N: CE=Common Era, for Julian years > 0. See http://en.wikipedia.org/wiki/Common_Era
 #: app/Date/JulianDate.php:88 app/Date/JulianDate.php:91
 #, php-format
 msgid "%s&nbsp;CE"
-msgstr "%s&nbsp;н. э."
+msgstr "%s н. э."
 
 #. I18N: Label on a graph; 40+ means 40 or more
 #: statisticsplot.php:788
@@ -921,7 +921,7 @@ msgstr "Место для личных записей или ведения дн
 #: login.php:322
 #, php-format
 msgid "A prospective user has registered with webtrees at %s."
-msgstr "Новый пользователь зарегистрировался в Webtrees на %s."
+msgstr "Новый пользователь зарегистрировался на Вашем сайте %s."
 
 #. I18N: Description of the “Pedigree” module
 #: app/Module/PedigreeReportModule.php:35
@@ -1017,7 +1017,7 @@ msgstr "Отчет об отсутствующей информации о че�
 #: app/Module/BirthDeathMarriageReportModule.php:43
 #: modules_v3/bdm_report/report.xml:4
 msgid "A report of vital records for a given date or place."
-msgstr "Отчёт записей актов гражданского состояния(ЗАГС) на указанную дату или место."
+msgstr "Отчёт записей актов гражданского состояния(ЗАГС) на указанную дату или местоположение."
 
 #: admin_users.php:523
 msgid "A role is a set of access rights, which give permission to view data, change preferences, etc. Access rights are assigned to roles, and roles are granted to users. Each family tree can assign different access to each role, and users can have a different role in each family tree."
@@ -1344,7 +1344,7 @@ msgstr "Добавить супруга в эту семью"
 #: app/Module/RelativesTabModule.php:392 edit_interface.php:1064
 #: edit_interface.php:1136
 msgid "Add a husband using an existing individual"
-msgstr "Добавить мужа из уже имеющеихся персон"
+msgstr "Добавить мужа из уже имеющихся персон"
 
 #: app/Module/UserJournalModule.php:110
 msgid "Add a journal entry"
@@ -1426,7 +1426,7 @@ msgstr "Добавить супругу в эту семью"
 #: app/Module/RelativesTabModule.php:380 edit_interface.php:1067
 #: edit_interface.php:1138
 msgid "Add a wife using an existing individual"
-msgstr "Добавить жену из уже имеющеихся персон"
+msgstr "Добавить жену из уже имеющихся персон"
 
 #. I18N: FAQ = “Frequently Asked Question”
 #: app/Module/FrequentlyAskedQuestionsModule.php:146
@@ -2086,7 +2086,7 @@ msgstr "Антигуа и Барбуда"
 
 #: login.php:170
 msgid "Anyone with a user account can access this website."
-msgstr "Любой зарегистрированный пользователь имеет к нему доступ."
+msgstr "Только зарегистрированный пользователь может воспользоваться всеми преимуществами этого сайта."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:93
@@ -2905,7 +2905,7 @@ msgstr "Рождение сына"
 
 #: statistics.php:411
 msgid "Birth places"
-msgstr "Места рождения"
+msgstr "Место рождения"
 
 #: modules_v3/birth_report/report.xml:6
 msgid "Birthplace contains"
@@ -4881,7 +4881,7 @@ msgstr "Место смерти"
 
 #: statistics.php:412
 msgid "Death places"
-msgstr "Места смерти"
+msgstr "Место смерти"
 
 #. I18N: Name of a module/report
 #: app/Module/DeathReportModule.php:29 modules_v3/death_report/report.xml:3
@@ -5370,11 +5370,11 @@ msgstr "Дубликат адреса электронной почты. Пол�
 
 #: admin_users.php:71 edituser.php:58 login.php:287
 msgid "Duplicate username. A user with that username already exists. Please choose another username."
-msgstr "Дубликат имя пользователя. Пользователь с таким именем уже существует. Пожалуйста, выберите другое имя пользователя."
+msgstr "Пользователь с таким именем уже существует. Пожалуйста, выберите другое имя пользователя."
 
 #: help_text.php:293
 msgid "Each source records specific events, generally for a given date range and for a place jurisdiction. For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
-msgstr "Каждый источник записывает конкретные события, как правило, для данного диапазона дат и административной области. Например, переписи населения, переписи события, церковные записи, запись о рождении, браке, и смерть.<br><br>Выберите события, которые записываются с помощью этого источника из списка событий. Даты должны быть указаны в формате диапазона, например, <i>с 1900 по 1910</i>. Административная область - это название маленького административной единицы, которая включает в себя все места в этом источнике. Например, «Онейда, штат Айдахо, США» будут использоваться в качестве источника административной области для событий, происходящих в разных городах в пределах Oneida County. «Штат Айдахо, США» будет административной области, если описанные события имели место не только в Oneida County, но и в других уездах в Айдахо."
+msgstr "Каждый источник записывает конкретные события, как правило, для данного диапазона дат и административной области. Например, переписи населения, переписи события, церковные записи, запись о рождении, браке, и смерть.<br><br>Выберите события, которые записываются с помощью этого источника из списка событий. Даты должны быть указаны в формате диапазона, например, <i>с 1900 по 1910</i>. Административная область - это название маленькой административной единицы, которая включает в себя все места в этом источнике. Например, «Онейда, штат Айдахо, США» будут использоваться в качестве источника административной области для событий, происходящих в разных городах в пределах Oneida County. «Штат Айдахо, США» будет административной области, если описанные события имели место не только в Oneida County, но и в других уездах в Айдахо."
 
 #: help_text.php:314
 msgid "Each user account has an option to “automatically accept changes”. When this is enabled, any changes made by that user are saved immediately. Many administrators enable this for their own user account."
@@ -5773,7 +5773,7 @@ msgstr "События"
 
 #: statistics.php:420
 msgid "Events in countries"
-msgstr "Места событий по странам"
+msgstr "События в странах"
 
 #: app/Module/IndividualFactsTabModule.php:134
 msgid "Events of close relatives"
@@ -6453,7 +6453,7 @@ msgstr "Имя папки на сервере"
 
 #: login.php:342
 msgid "Follow this link to verify your email address."
-msgstr "Нажмите на ссылку ниже для подтверждения электронной почты."
+msgstr "Для подтверждения адреса электронной почты, нажмите на ссылку ниже."
 
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
@@ -7109,7 +7109,7 @@ msgstr "Здравствуйте, %s…"
 #: login.php:389
 #, php-format
 msgid "Hello %s…<br>Thank you for your registration."
-msgstr "Здравствуйте, %s…<br>Спасибо за Ваше обращение на наш сайт."
+msgstr "Здравствуйте, %s !<br>Спасибо за регистрацию на нашем сайте."
 
 #: login.php:320 login.php:558
 msgid "Hello administrator…"
@@ -7380,7 +7380,7 @@ msgstr "Если Вы создали этот файл, используя ге�
 
 #: login.php:349
 msgid "If you didn’t request an account, you can just delete this message."
-msgstr "Если Вы эти данные не запрашивали, то удалите это сообщение."
+msgstr "<br><br>Если Вы не делали запрос на доступ, то удалите это сообщение."
 
 #: app/Module/GoogleMapsModule.php:3956
 msgid "If you have a large number of inactive places, it can be slow to generate the list."
@@ -8286,7 +8286,7 @@ msgstr "Лима, Перу"
 #. I18N: You need to:
 #: login.php:575
 msgid "Link the user account to an individual."
-msgstr "Связать учетную запись пользователя к человеку."
+msgstr "4. Связать учетную запись пользователя к человеку."
 
 #: app/Module/RelativesTabModule.php:369 edit_interface.php:963
 #: edit_interface.php:1023
@@ -8371,7 +8371,7 @@ msgstr "Расположение"
 
 #: app/Module/GoogleMapsModule.php:3896
 msgid "Location not removed: this location contains sub-locations"
-msgstr "Место не удалено: это место содержит нижние уровни"
+msgstr "Местоположение не удалено: это место содержит нижние уровни"
 
 #: app/GedcomCode/GedcomCodeRela.php:191
 msgid "Lodger"
@@ -8821,7 +8821,7 @@ msgstr "Место брака"
 
 #: statistics.php:419
 msgid "Marriage places"
-msgstr "Места вступления в брак"
+msgstr "Место вступления в брак"
 
 #. I18N: gedcom tag MARS
 #: app/GedcomTag.php:592
@@ -10755,7 +10755,7 @@ msgstr "Место содержит"
 #: app/Module/GoogleMapsModule.php:414 app/Theme/AbstractTheme.php:1531
 #: placelist.php:41 placelist.php:43 placelist.php:139
 msgid "Place hierarchy"
-msgstr "Места"
+msgstr "Иерархия мест"
 
 #: app/GedcomTag.php:692
 msgid "Place in Hebrew"
@@ -11795,7 +11795,7 @@ msgstr "Сафар"
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:89
 msgid "Sage"
-msgstr "Sage"
+msgstr "Шалфей (серо-зеленый)"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6874
@@ -12213,7 +12213,7 @@ msgstr "Установить по умолчанию"
 #. I18N: You need to:
 #: login.php:573
 msgid "Set the access level for each tree."
-msgstr "Установить уровень доступа для каждого дерева."
+msgstr "3. Установить права доступа для каждого дерева."
 
 #. I18N: Menu entry
 #: app/Theme/AdministrationTheme.php:150 index_edit.php:47
@@ -12248,7 +12248,7 @@ msgstr "Установить уровень доступа ко всем мер�
 #. I18N: You need to:
 #: login.php:571
 msgid "Set the status to “approved”."
-msgstr "Установить статус \"одобрен\"."
+msgstr "2. Установить статус \"Одобрено администратором\"."
 
 #. I18N: Help text for the “Allow users to see raw GEDCOM records” configuration setting
 #: admin_trees_config.php:1580
@@ -12482,7 +12482,7 @@ msgstr "Показать все метки"
 #. I18N: an age indicator, which can be dragged around the screen
 #: timeline.php:280
 msgid "Show an age cursor"
-msgstr "Показать курсор возраста?"
+msgstr "Показывать курсор возраста"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1285
@@ -12496,7 +12496,7 @@ msgstr "Показать детей предков"
 #. I18N: Label for a configuration option
 #: app/Module/TopPageViewsModule.php:165
 msgid "Show counts before or after name"
-msgstr "Поместить счетчик до или после имени?"
+msgstr "Показывать счетчики до или после имени"
 
 #: app/Functions/FunctionsPrintLists.php:711
 msgid "Show couples where either partner married more than once."
@@ -12626,7 +12626,7 @@ msgstr "Показать только персон, чей пол неизвес
 #. I18N: Label for a configuration option
 #: app/Module/SlideShowModule.php:262
 msgid "Show only individuals, events, or all"
-msgstr "Показывать только персоны, события или все?"
+msgstr "Показывать только персоны, события или все"
 
 #: app/Functions/FunctionsPrintLists.php:177
 msgid "Show only males."
@@ -12743,7 +12743,7 @@ msgstr "Показать пользователя, который внес из�
 #: app/Module/FrequentlyAskedQuestionsModule.php:197
 #: app/Module/HtmlBlockModule.php:332 app/Module/StoriesModule.php:259
 msgid "Show this block for which languages"
-msgstr "Для каких языков показывать этот блок?"
+msgstr "Для каких языков показывать этот блок"
 
 #: admin_trees_config.php:1051
 msgid "Show thumbnail images in charts and family groups."
@@ -13571,7 +13571,7 @@ msgstr "Мастер переноса PhpGedView в Webtrees представл�
 #: admin_users.php:101
 #, php-format
 msgid "The administrator at the webtrees site %s has approved your application for an account. You may now sign in by accessing the following link: %s"
-msgstr "Администратор webtrees сайта %s одобрил Вашу заявку на создание учетной записи. Теперь Вы можете войти, используя следующую ссылку: %s"
+msgstr "Администратор сайта %s одобрил Вашу заявку на регистрацию учетной записи. Теперь Вы можете войти, используя следующую ссылку: %s"
 
 #: login.php:616
 msgid "The administrator has been informed. As soon as they give you permission to sign in, you can sign in with your username and password."
@@ -13997,7 +13997,7 @@ msgstr "Пользователь %s был удален."
 
 #: login.php:327
 msgid "The user has been sent an email with the information necessary to confirm the access request."
-msgstr "Пользователю было отправлено сообщение на почтовый ящик с информацией необходимой для подтверждения регистрации."
+msgstr "Новому пользователю было отправлено сообщение на почтовый ящик с инструкцией для подтверждения регистрации."
 
 #: login.php:82 login.php:87
 msgid "The username or password is incorrect."
@@ -14168,7 +14168,7 @@ msgstr "Эта учетная запись не была утверждена. �
 
 #: login.php:92
 msgid "This account has not been verified. Please check your email for a verification message."
-msgstr "Эта учетная запись не была проверена. Пожалуйста, проверьте свою электронную почту для подтверждения сообщения."
+msgstr "Адрес электронной почты для этой учетной записи не был подтвержден. Пожалуйста, войдите в свою электронную почту и откройте письмо с заголовком \"Ваша регистрация на <em>(имя сайта)</em>\", затем перейдите по ссылке, указанной в теле письма."
 
 #: app/Module/ReviewChangesModule.php:179
 msgid "This block will show editors a list of records with pending changes that need to be reviewed by a moderator. It also generates daily emails to moderators whenever pending changes exist."
@@ -14308,12 +14308,12 @@ msgstr "Это разделенный запятыми список тегов G
 #. I18N: Help text for the “Facts for new families” configuration setting
 #: admin_trees_config.php:1815
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new family. For example, if MARR is in the list, then fields for marriage date and marriage place will be shown on the form."
-msgstr "Этот разделенный запятыми список тегов GEDCOM фактов, которые будет показаны при добавлении новой семьи. Например, если MARR находится в списке, то поля для даты вступления и места брака будут показаны в форме."
+msgstr "Этот разделенный запятыми список тегов GEDCOM фактов, которые будет показаны при добавлении новой семьи. Например, если MARR находится в списке, то поля для даты вступления и место брака будут показаны в форме."
 
 #. I18N: Help text for the “Facts for new individuals” configuration setting
 #: admin_trees_config.php:1697
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new individual. For example, if BIRT is in the list, fields for birth date and birth place will be shown on the form."
-msgstr "Это разделенный запятыми список тегов GEDCOM фактов, которые будут отражены при добавлении нового лица. Например, если BIRT находится в списке, то поля для даты и места рождения будут отображаться в форме."
+msgstr "Это разделенный запятыми список тегов GEDCOM фактов, которые будут отражены при добавлении нового лица. Например, если BIRT находится в списке, то поля для даты и место рождения будут отображаться в форме."
 
 #. I18N: Help text for the “Advanced place name facts” configuration setting
 #: admin_trees_config.php:2082
@@ -14400,7 +14400,7 @@ msgstr "Это ширина (в пикселях), которые програм
 
 #: admin_users.php:317 edituser.php:176 login.php:424 setup.php:430
 msgid "This is your real name, as you would like it displayed on screen."
-msgstr "Ваше настоящее имя, которое Вы желаете видеть на экране."
+msgstr "Ваше настоящее имя, которое будет отображаться на экране."
 
 #: admin_trees_check.php:135
 msgid "This may be a mistake in your data."
@@ -14709,7 +14709,7 @@ msgstr "Это удалит все генеалогические данные �
 
 #: admin_trees_places.php:98
 msgid "This will update the highest-level part or parts of the place name. For example, “Mexico” will match “Quintana Roo, Mexico”, but not “Santa Fe, New Mexico”."
-msgstr "Эта функция добавляет часть имени, места которой является страна. Например, «Mexico» будет соответствовать «Quintana Roo, Mexico», но не «Santa Fe, New Mexico»."
+msgstr "Эта функция добавляет часть имени или или части названия места. Например, «Mexico» будет соответствовать «Quintana Roo, Mexico», но не «Santa Fe, New Mexico»."
 
 #. I18N: abbreviation for Thursday
 #: app/Date/CalendarDate.php:379 app/Functions/FunctionsPrint.php:663
@@ -15427,7 +15427,7 @@ msgstr "Использовать базу данных GeoNames для авто�
 
 #: login.php:491
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site. You can also use this to enter any other comments you may have for the site administrator."
-msgstr "Используйте это поле, чтобы сообщить администратору сайта, почему Вы просите регистрацию аккаунта, и как Вы связаны с генеалогическими сведениями, представленными на этом сайте. Вы можете также ввести какие-либо другие комментарии, которые Вы можете сообщить администратору сайта."
+msgstr "Используйте это поле, чтобы сообщить администратору сайта, почему Вы просите регистрацию аккаунта, и как Вы связаны с генеалогическими сведениями, представленными на этом сайте. Вы также можете ввести другую информацию, которые Вы желаете сообщить администратору сайта."
 
 #: app/Functions/FunctionsEdit.php:665
 msgid "Use this image for charts and on the individual’s page."
@@ -15736,7 +15736,7 @@ msgstr "Добавление каждый раз водяного знака, м
 #: login.php:390
 #, php-format
 msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically. You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To sign in to this website, you will need to know your username and password."
-msgstr "В ближайшее время Вы получите письмо по электронной почте на адрес <b>%s</b>. Вы должны подтвердить свою заявку на создание учетной записи, следуя инструкциям в письме. Если Вы не подтвердите Вашу учетную запись в течение семи дней, Ваша заявка будет отклонена автоматически. Вам придется пройти процедуру регистрации повторно.<br><br>После того как Вы, следуя инструкцией подтвердили свою заявку, администратор должен одобрить Вашу заявку, прежде чем учетная запись может быть использована.<br><br>Чтобы воспользоваться всеми преимуществами этого сайта, пожалуйста, помните, ваше имя пользователя и пароль."
+msgstr "В ближайшее время Вы получите письмо по электронной почте на адрес <b>%s</b>. <br><br>Следуя инструкции в письме, Вы должны подтвердить свой адрес электронной почты на создание учетной записи. <br><br>Если Вы не подтвердите свой адрес электронной почты в течение семи дней, Ваша заявка будет автоматически отклонена. В этом случае, Вам придется пройти процедуру регистрации повторно.<br><br>После того как Вы, следуя инструкции в письме, подтвердили свой адрес электронной почты, администратор должен одобрить Вашу заявку и Вы получите подтверждение по электронной почте. <br>Только после этого, Вы сможете воспользоваться всеми преимуществами этого сайта.<br><br>Пожалуйста, запомните Ваше имя пользователя и пароль."
 
 #. I18N: Menu entry
 #: admin_trees_config.php:914 app/Theme/AdministrationTheme.php:94
@@ -15791,7 +15791,7 @@ msgstr "Текст приветствия на странице входа"
 
 #: login.php:166
 msgid "Welcome to this genealogy website"
-msgstr "Добро пожаловать в этот генеалогический сайт"
+msgstr "Добро пожаловать на семейный генеалогический сайт!"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6741
@@ -15840,12 +15840,12 @@ msgstr "Где Ваша установка PhpGedView?"
 #. I18N: Label for a configuration option
 #: app/Module/SiteMapModule.php:308
 msgid "Which family trees should be included in the sitemaps"
-msgstr "Какое дерево должно быть включено в карту сайта?"
+msgstr "Какие деревья должны быть включены в карту сайта"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1018
 msgid "Who can upload new media files"
-msgstr "Кто может загружать новые медиафайлы?"
+msgstr "Кто может загружать новые медиафайлы"
 
 #. I18N: Name of a module. (A list of users who are online now)
 #: app/Module/LoggedInUsersModule.php:32
@@ -15974,7 +15974,7 @@ msgstr "Йемен"
 #: login.php:340
 #, php-format
 msgid "You (or someone claiming to be you) has requested an account at %1$s using the email address %2$s."
-msgstr "Вы (или кто то, кто выдает себя за Вас) запросил доступ на %1$s используя адрес электронной почты %2$s."
+msgstr "Вы (или кто то, кто выдает себя за Вас) запросил доступ на %1$s, используя адрес электронной почты %2$s."
 
 #: login.php:292 message.php:57
 msgid "You are not allowed to send messages that contain external links."
@@ -15987,7 +15987,7 @@ msgstr "Вы вошли как %s."
 
 #: login.php:170 login.php:173 login.php:176
 msgid "You can apply for an account using the link below."
-msgstr "Вы можете подтвердить аккаунт по ссылке ниже."
+msgstr "<br>Вы можете войти или зарегистрировать аккаунт в форме ниже."
 
 #. I18N: Help text for the "Default theme" site configuration setting
 #. I18N: Help text for the “Default theme” configuration setting
@@ -16062,7 +16062,7 @@ msgstr "Вы ввели одинаковые идентификаторы. Вы 
 
 #: login.php:615
 msgid "You have confirmed your request to become a registered user."
-msgstr "Вы известны как зарегистрированный пользователь."
+msgstr "Поздравляем! Вы подтвердили адрес электронной почты."
 
 #: app/Module/UserJournalModule.php:93
 msgid "You have not created any journal items."
@@ -16143,7 +16143,7 @@ msgstr "Вам необходимо создать семейное дерево
 
 #: login.php:567
 msgid "You need to review the account details."
-msgstr "Вы должны рассмотреть данные учетной записи."
+msgstr "Вам необходимо: <br>1. Рассмотреть данные учетной записи по этой ссылке"
 
 #: setup.php:425
 msgid "You need to set up an administrator account. This account can control all aspects of this webtrees installation. Please choose a strong password."
@@ -16190,7 +16190,7 @@ msgstr "Вы не должны утверждать учётную запись,
 
 #: login.php:328
 msgid "You will be informed by email when this prospective user has confirmed the request. You can then complete the process by activating the username. The new user will not be able to sign in until you activate the account."
-msgstr "Вы будете проинформированы по электронной почте, когда этот потенциальный пользователь подтвердит запрос. Вы можете завершить процесс активации этого пользователя. Новый пользователь не сможет войти на сайт, пока учетная запись не будет активирована администратором."
+msgstr "Вы будете проинформированы по электронной почте, когда новый пользователь подтвердит регистрацию. Вы должны завершить процесс регистрации этого пользователя. <br><br>ВНИМАНИЕ: Новый пользователь не сможет войти на Ваш сайт, пока учетная запись не будет Вами активирована."
 
 #: setup.php:434
 msgid "You will use this to sign in to webtrees."
@@ -16639,12 +16639,12 @@ msgstr "закрыть"
 #. I18N: Name of a theme.
 #: app/Theme/CloudsTheme.php:180
 msgid "clouds"
-msgstr "clouds"
+msgstr "облака"
 
 #. I18N: Name of a theme.
 #: app/Theme/ColorsTheme.php:196
 msgid "colors"
-msgstr "colors"
+msgstr "цветная"
 
 #: app/Module/TopSurnamesModule.php:165
 msgid "compact list"
@@ -18974,7 +18974,7 @@ msgstr "полночь"
 #. I18N: Name of a theme.
 #: app/Theme/MinimalTheme.php:167
 msgid "minimal"
-msgstr "minimal"
+msgstr "минимум"
 
 #: app/Module/GoogleMapsModule.php:355
 msgid "minimum"
