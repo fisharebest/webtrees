@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:51+0100\n"
-"PO-Revision-Date: 2018-10-19 17:20+0000\n"
+"PO-Revision-Date: 2018-10-19 18:52+0000\n"
 "Last-Translator: Vitalii Oleshkevych <mar2008m@gmail.com>\n"
 "Language-Team: Russian <https://translate.webtrees.net/projects/webtrees/webtrees/ru/>\n"
 "Language: ru\n"
@@ -505,13 +505,13 @@ msgstr "(%s+1)-тиюродный брат"
 #: app/Date/JulianDate.php:94
 #, php-format
 msgid "%s&nbsp;BCE"
-msgstr "%s&nbsp;до н.э."
+msgstr "%s до н.э."
 
 #. I18N: CE=Common Era, for Julian years > 0. See http://en.wikipedia.org/wiki/Common_Era
 #: app/Date/JulianDate.php:98 app/Date/JulianDate.php:102
 #, php-format
 msgid "%s&nbsp;CE"
-msgstr "%s&nbsp;н. э."
+msgstr "%s н. э."
 
 #. I18N: Label on a graph; 40+ means 40 or more
 #: app/Http/Controllers/StatisticsChartController.php:773
@@ -1314,7 +1314,7 @@ msgstr "Добавить супруга в эту семью"
 #: app/Http/Controllers/EditIndividualController.php:757
 #: resources/views/modules/relatives/tab.php:122
 msgid "Add a husband using an existing individual"
-msgstr "Добавить мужа из уже имеющеихся персон"
+msgstr "Добавить мужа из уже имеющихся персон"
 
 #: app/Http/Controllers/EditMediaController.php:72
 #: resources/views/media-page.php:154
@@ -1394,7 +1394,7 @@ msgstr "Добавить супругу в эту семью"
 #: app/Http/Controllers/EditIndividualController.php:760
 #: resources/views/modules/relatives/tab.php:120
 msgid "Add a wife using an existing individual"
-msgstr "Добавить жену из уже имеющеихся персон"
+msgstr "Добавить жену из уже имеющихся персон"
 
 #. I18N: FAQ = “Frequently Asked Question”
 #: app/Module/FrequentlyAskedQuestionsModule.php:309
@@ -4072,7 +4072,7 @@ msgstr "Создать семью"
 
 #: resources/views/modals/create-family.php:12
 msgid "Create a family from existing individuals"
-msgstr "Создать семью из существующих персон"
+msgstr "Создать семью из имеющихся персон"
 
 #: resources/views/admin/trees.php:308
 msgid "Create a family tree"
@@ -8246,7 +8246,7 @@ msgstr "Связать медиаобъекты с фактами и событ�
 #: resources/views/emails/verify-notify-html.php:22
 #: resources/views/emails/verify-notify-text.php:13
 msgid "Link the user account to an individual."
-msgstr "Связать учетную запись пользователя к человеку."
+msgstr "4. Связать учетную запись пользователя к человеку."
 
 #: app/Http/Controllers/EditIndividualController.php:688
 #: resources/views/modules/relatives/tab.php:99
@@ -11780,7 +11780,7 @@ msgstr "Сафар"
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:79
 msgid "Sage"
-msgstr "Sage"
+msgstr "Шалфей (серо-зеленый)"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:7564
@@ -12428,7 +12428,7 @@ msgstr "Показать все источники"
 #. I18N: an age indicator, which can be dragged around the screen
 #: resources/views/timeline-page.php:67
 msgid "Show an age cursor"
-msgstr "Показать курсор возраста?"
+msgstr "Показывать курсор возраста"
 
 #: modules_v3/ahnentafel_report/report.xml:12
 msgid "Show children of ancestors"
@@ -12437,7 +12437,7 @@ msgstr "Показать детей предков"
 #. I18N: Label for a configuration option
 #: resources/views/modules/top10_pageviews/config.php:15
 msgid "Show counts before or after name"
-msgstr "Поместить счетчик до или после имени?"
+msgstr "Показывать счетчики до или после имени"
 
 #: resources/views/lists/families-table.php:178
 msgid "Show couples where either partner married more than once."
@@ -12547,7 +12547,7 @@ msgstr "Показать только персон, чей пол неизвес
 
 #: resources/views/modules/random_media/config.php:7
 msgid "Show only individuals, events, or all"
-msgstr "Показывать только персоны, события или все?"
+msgstr "Показывать только персоны, события или все"
 
 #: resources/views/lists/individuals-table.php:102
 msgid "Show only males."
@@ -12662,7 +12662,7 @@ msgstr "Показать пользователя, который внес из�
 #: resources/views/modules/html/config.php:52
 #: resources/views/modules/stories/edit.php:40
 msgid "Show this block for which languages"
-msgstr "Для каких языков показывать этот блок?"
+msgstr "Для каких языков показывать этот блок"
 
 #: resources/views/admin/trees-preferences.php:351
 msgid "Show thumbnail images in charts and family groups."
@@ -15543,7 +15543,7 @@ msgstr "Водяные знаки являются необязательным�
 #: resources/views/register-success-page.php:13
 #, php-format
 msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically. You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To sign in to this website, you will need to know your username and password."
-msgstr "В ближайшее время Вы получите письмо по электронной почте на адрес <b>%s</b>. <br><br>Следуя инструкции в письме, Вы должны подтвердить свой адрес электронной почты на создание учетной записи. <br><br>Если Вы не подтвердите свой адрес электронной почты в течение семи дней, Ваша заявка будет отклонена автоматически. В этом случае, Вам придется пройти процедуру регистрации повторно.<br><br>После того как Вы, следуя инструкции в письме, подтвердили свой адрес электронной почты, администратор должен одобрить Вашу заявку и Вы получите подтверждение по электронной почте. <br>Только после этого, Вы сможете воспользоваться всеми преимуществами этого сайта.<br><br>Пожалуйста, запомните Ваше имя пользователя и пароль."
+msgstr "В ближайшее время Вы получите письмо по электронной почте на адрес <b>%s</b>. <br><br>Следуя инструкции в письме, Вы должны подтвердить свой адрес электронной почты на создание учетной записи. <br><br>Если Вы не подтвердите свой адрес электронной почты в течение семи дней, Ваша заявка будет автоматически отклонена. В этом случае, Вам придется пройти процедуру регистрации повторно.<br><br>После того как Вы, следуя инструкции в письме, подтвердили свой адрес электронной почты, администратор должен одобрить Вашу заявку и Вы получите подтверждение по электронной почте. <br>Только после этого, Вы сможете воспользоваться всеми преимуществами этого сайта.<br><br>Пожалуйста, запомните Ваше имя пользователя и пароль."
 
 #: resources/views/admin/control-panel.php:9
 #: resources/views/admin/trees-preferences.php:208
@@ -15588,7 +15588,7 @@ msgstr "Текст приветствия на странице входа"
 
 #: resources/views/login-page.php:10
 msgid "Welcome to this genealogy website"
-msgstr "Добро пожаловать на семейный генеалогический сайт !"
+msgstr "Добро пожаловать на семейный генеалогический сайт!"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:7300
@@ -15629,12 +15629,12 @@ msgstr "Где Ваша установка PhpGedView?"
 #. I18N: Label for a configuration option
 #: resources/views/modules/sitemap/config.php:13
 msgid "Which family trees should be included in the sitemaps"
-msgstr "Какое дерево должно быть включено в карту сайта?"
+msgstr "Какие деревья должны быть включены в карту сайта"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.php:315
 msgid "Who can upload new media files"
-msgstr "Кто может загружать новые медиафайлы?"
+msgstr "Кто может загружать новые медиафайлы"
 
 #. I18N: Name of a module. (A list of users who are online now)
 #: app/Module/LoggedInUsersModule.php:36
@@ -15878,7 +15878,7 @@ msgstr "Вам необходимо создать семейное дерево
 #: resources/views/emails/verify-notify-html.php:12
 #: resources/views/emails/verify-notify-text.php:7
 msgid "You need to review the account details."
-msgstr "Вы должны: <br>1. Рассмотреть данные учетной записи по этой ссылке"
+msgstr "Вам необходимо: <br>1. Рассмотреть данные учетной записи по этой ссылке"
 
 #: resources/views/setup/step-5-administrator.php:16
 msgid "You need to set up an administrator account. This account can control all aspects of this webtrees installation. Please choose a strong password."
@@ -16389,12 +16389,12 @@ msgstr "закрыть"
 #. I18N: Name of a theme.
 #: app/Theme/CloudsTheme.php:102
 msgid "clouds"
-msgstr "clouds"
+msgstr "облака"
 
 #. I18N: Name of a theme.
 #: app/Theme/ColorsTheme.php:183
 msgid "colors"
-msgstr "colors"
+msgstr "цветная"
 
 #. I18N: An option in a list-box
 #: app/Module/TopSurnamesModule.php:210
@@ -18728,7 +18728,7 @@ msgstr "полночь"
 #. I18N: Name of a theme.
 #: app/Theme/MinimalTheme.php:75
 msgid "minimal"
-msgstr "minimal"
+msgstr "минимум"
 
 #: app/Functions/Functions.php:668
 msgid "mother"
