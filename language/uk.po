@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:51+0100\n"
-"PO-Revision-Date: 2018-06-14 19:42+0000\n"
-"Last-Translator: Oleh Prypin <oleh@pryp.in>\n"
+"PO-Revision-Date: 2018-10-19 17:57+0000\n"
+"Last-Translator: Vitalii Oleshkevych <mar2008m@gmail.com>\n"
 "Language-Team: Ukrainian <https://translate.webtrees.net/projects/webtrees/webtrees/uk/>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
@@ -79,7 +79,7 @@ msgstr "%1$sKB було завантажено за %2$s секунд."
 #: app/Http/Controllers/AdminUsersController.php:392
 #, php-format
 msgid "%1$s does not exist"
-msgstr ""
+msgstr "%1$s не існує"
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: app/Http/Controllers/AdminTreesController.php:223
@@ -315,9 +315,9 @@ msgstr "%s відключений(на) на цьому сервері. Ви н�
 #, php-format
 msgid "%s location has been imported."
 msgid_plural "%s locations have been imported."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s місцезнаходження було імпортовано."
+msgstr[1] "%s місцезнаходження були імпортовані."
+msgstr[2] "%s місцезнаходження було імпортовано."
 
 #: app/Module/UserMessagesModule.php:177
 #, php-format
@@ -377,9 +377,9 @@ msgstr "%s двоюрідних за спаданням"
 #, php-format
 msgid "%s repository has been updated."
 msgid_plural "%s repositories have been updated."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s репозиторій був оновлений."
+msgstr[1] "%s репозиторіі були оновлені."
+msgstr[2] "%s репозиторіі було оновлено."
 
 #: app/I18N.php:872
 #, php-format
@@ -729,7 +729,7 @@ msgstr "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2
 #. I18N: URL = web address
 #: resources/views/modals/media-file-fields.php:20
 msgid "A URL"
-msgstr ""
+msgstr "URL-адреса"
 
 #. I18N: Description of the “RelationshipsChart” module
 #: app/Module/RelationshipsChartModule.php:63
@@ -1428,7 +1428,7 @@ msgstr "Додати історію про персону з древа."
 
 #: resources/views/admin/map-import-form.php:72
 msgid "Add new, and update existing records"
-msgstr ""
+msgstr "Додайте нові та оновіть існуючі записи"
 
 #: resources/views/admin/trees-import.php:83
 msgid "Add spaces where long lines were wrapped"
@@ -1737,7 +1737,7 @@ msgstr "Вік вступу в шлюб"
 #: resources/views/statistics-chart-custom.php:196
 #: resources/views/statistics-chart-custom.php:209
 msgid "Age interval"
-msgstr ""
+msgstr "Віковий інтервал"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.php:548
@@ -1955,7 +1955,7 @@ msgstr "Виникла неочікувана помилка в базі дан�
 #: resources/views/modules/pedigree-map/pedigree-map.php:82
 #: resources/views/place-map.php:85
 msgid "An unknown error occurred"
-msgstr ""
+msgstr "Виникла невідома помилка"
 
 #. I18N: Name of a module/report
 #. I18N: Name of a module/chart
@@ -7330,7 +7330,7 @@ msgstr "Імпортувати"
 
 #: resources/views/admin/map-import-form.php:67
 msgid "Import Options."
-msgstr ""
+msgstr "Параметри імпорту."
 
 #: app/Http/Controllers/AdminTreesController.php:583
 msgid "Import a GEDCOM file"
@@ -7347,7 +7347,7 @@ msgstr "Імпортуйте власні ескізи з Webtrees версії 
 
 #: app/Http/Controllers/AdminLocationController.php:312
 msgid "Import geographic data"
-msgstr ""
+msgstr "Імпортувати географічні дані"
 
 #: resources/views/admin/trees-import.php:71
 msgid "Import preferences"
@@ -8134,7 +8134,7 @@ msgstr "Якщо тут нічого не вказано, то використ�
 
 #: resources/views/admin/media-upload.php:36
 msgid "Leave this entry blank to keep the original filename"
-msgstr ""
+msgstr "Залиште це повідомлення порожнім, щоб зберегти оригінальне ім'я файлу"
 
 #: resources/views/lists/families-table.php:138
 #: resources/views/lists/individuals-table.php:190
@@ -8490,7 +8490,7 @@ msgstr "Управління генеалогічними деревами"
 #: resources/views/admin/trees-renumber.php:3
 #: resources/views/admin/trees-unconnected.php:4
 msgid "Manage family trees "
-msgstr ""
+msgstr "Управління сімейними деревами "
 
 #: app/Http/Controllers/AdminMediaController.php:70
 #: resources/views/admin/control-panel.php:368
@@ -8561,7 +8561,7 @@ msgstr "Карта"
 #: resources/views/admin/control-panel.php:417
 #: resources/views/admin/map-provider.php:12
 msgid "Map provider"
-msgstr ""
+msgstr "Провайдер карти"
 
 #: app/Date/CalendarDate.php:366
 msgctxt "Abbreviation for March"
@@ -9878,7 +9878,7 @@ msgstr "Спорідненість між двома персонами не з�
 #: resources/views/modules/pedigree-map/pedigree-map.php:81
 #: resources/views/modules/places/tab.php:77 resources/views/place-map.php:84
 msgid "No mappable items"
-msgstr ""
+msgstr "Немає відображуваних елементів"
 
 #: resources/views/admin/merge-records-step-2.php:51
 #: resources/views/admin/merge-records-step-2.php:98
@@ -10279,7 +10279,7 @@ msgstr "В цей день, в минулому …"
 
 #: resources/views/admin/map-import-form.php:73
 msgid "Only add new records"
-msgstr ""
+msgstr "Додайте лише нові записи"
 
 #: app/Functions/FunctionsEdit.php:232
 #: app/Functions/FunctionsPrintFacts.php:270
@@ -10292,7 +10292,7 @@ msgstr "Тільки менеджери можуть редагувати"
 
 #: resources/views/admin/map-import-form.php:74
 msgid "Only update existing records"
-msgstr ""
+msgstr "Оновлювати лише наявні записи"
 
 #: resources/views/errors/database-connection.php:5
 msgid "Oops! The webserver is unable to connect to the database server. It could be busy, undergoing maintenance, or simply broken. You should <a href=\"index.php\">try again</a> in a few minutes or contact the website administrator."
@@ -10883,7 +10883,7 @@ msgstr "Місця мають вводитися у відповідності �
 
 #: resources/views/places-page.php:26
 msgid "Places without valid co-ordinates are not shown on the map and have a red border around the sidebar entry"
-msgstr ""
+msgstr "Місця без дійсних координат на карті не відображаються та мають червону межу навколо вхідної бічної панелі"
 
 #: resources/views/layouts/default.php:142
 #: resources/views/modules/random_media/slide-show.php:8
@@ -11062,7 +11062,7 @@ msgstr "Конфіденційність"
 
 #: app/Http/Controllers/StaticPageController.php:36
 msgid "Privacy policy"
-msgstr ""
+msgstr "Політика конфіденційності"
 
 #. I18N: a restrction on viewing data
 #: resources/views/modals/restriction-fields.php:5
@@ -11314,7 +11314,7 @@ msgstr "Справжнє ім’я"
 
 #: resources/views/admin/map-import-form.php:100
 msgid "Really delete all geographic data?"
-msgstr ""
+msgstr "Дійсно видалити всі географічні дані?"
 
 #. I18N: Name of a module
 #: app/Module/RecentChangesModule.php:44 modules_v3/change_report/report.xml:92
@@ -11642,7 +11642,7 @@ msgstr "Завдання дослідження зберігаються у не
 #: resources/views/modules/pedigree-map/pedigree-map.php:80
 #: resources/views/modules/places/tab.php:76 resources/views/place-map.php:83
 msgid "Reset to initial map state"
-msgstr ""
+msgstr "Скидання до початкового стану карти"
 
 #. I18N: gedcom tag RESI
 #: app/GedcomTag.php:973
@@ -12565,7 +12565,7 @@ msgstr "Показувати фото"
 
 #: app/Http/Controllers/PlaceHierarchyController.php:72
 msgid "Show place hierarchy"
-msgstr ""
+msgstr "Показати ієрархію місця"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-privacy.php:146
@@ -12619,7 +12619,7 @@ msgstr "Показувати %1$s %2$s частин назви місця."
 #. I18N: Description of the “OSM” module
 #: app/Module/PedigreeMapModule.php:71
 msgid "Show the birthplace of ancestors on a map."
-msgstr ""
+msgstr "Покажіть місце народження предків на карті."
 
 #: resources/views/modules/html/config.php:41
 msgid "Show the date and time of update"
@@ -12645,7 +12645,7 @@ msgstr "Показати список прізвищ"
 #. I18N: Description of the “OSM” module
 #: app/Module/PlacesModule.php:50
 msgid "Show the location of events on a map."
-msgstr ""
+msgstr "Покажіть розташування подій на карті."
 
 #. I18N: label for a yes/no option
 #: resources/views/modules/recent_changes/config.php:35
@@ -12791,7 +12791,7 @@ msgstr "Зареєстровані користувачі сайту можут�
 
 #: app/Http/Controllers/AdminPhpGedViewController.php:175
 msgid "Site preferences"
-msgstr ""
+msgstr "Налаштування сайту"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-analytics.php:20
@@ -13520,7 +13520,7 @@ msgstr "Кошик вирізок дозволяє вам робити витя�
 
 #: resources/views/privacy-policy.php:8
 msgid "The data in this website has been collected for the purposes of genealogical research."
-msgstr ""
+msgstr "Дані на цьому веб-сайті зібрані для цілей генеалогічних досліджень."
 
 #: resources/views/admin/trees-preferences.php:441
 msgid "The date and time of the last update"
@@ -13529,7 +13529,7 @@ msgstr "Дата і час останнього оновлення"
 #: app/Http/Controllers/AdminLocationController.php:178
 #, php-format
 msgid "The details for “%s” have been updated."
-msgstr ""
+msgstr "Деталі для “%s” були оновлені."
 
 #. I18N: %s is a filename
 #: app/Http/Controllers/AdminTreesController.php:509
@@ -13843,7 +13843,7 @@ msgstr "Джерело створено"
 
 #: app/Http/Controllers/AdminPhpGedViewController.php:197
 msgid "The specified folder does not contain an installation of PhpGedView."
-msgstr ""
+msgstr "Вказана папка не містить установки PhpGedView."
 
 #: app/Http/Controllers/EditSubmitterController.php:94
 msgid "The submitter has been created"
@@ -14406,7 +14406,7 @@ msgstr "Цей запис не існує, або у вас немає дозв�
 
 #: resources/views/admin/trees-privacy.php:238
 msgid "This record does not exist."
-msgstr ""
+msgstr "Цей запис не існує."
 
 #: resources/views/gedcom-record-page.php:11
 msgid "This record has been deleted. The deletion will need to be reviewed by a moderator."
@@ -14489,11 +14489,11 @@ msgstr "Це має бути розділений комами чи пробіл
 
 #: resources/views/privacy-policy.php:25
 msgid "This site does not use any third-party tracking or analytics services."
-msgstr ""
+msgstr "Цей сайт не використовує сторонні служби відстеження чи аналітики."
 
 #: resources/views/privacy-policy.php:16
 msgid "This site uses cookies to store your preferences on this site, such as the language you have selected."
-msgstr ""
+msgstr "Цей сайт використовує файли cookie для збереження ваших уподобань на цьому сайті, наприклад, мову яку ви вибрали."
 
 #: app/Exceptions/SourceAccessDeniedException.php:33
 #: app/Exceptions/SourceNotFoundException.php:33
@@ -15443,7 +15443,7 @@ msgstr "Вигляд"
 #: resources/views/places-page.php:33
 #, php-format
 msgid "View table of events occurring in %s"
-msgstr ""
+msgstr "Переглянути таблицю подій, що відбуваються в %s"
 
 #: resources/views/calendar-page.php:149
 msgid "View this day"
@@ -16047,7 +16047,7 @@ msgstr "додати"
 #. I18N: A button label.
 #: resources/views/admin/locations.php:76
 msgid "add place"
-msgstr ""
+msgstr "додати місце"
 
 #. I18N: The name given to a child by its adoptive parents
 #: app/GedcomCode/GedcomCodeName.php:69
@@ -16615,7 +16615,7 @@ msgstr "колишня дружина"
 #. I18N: A button label.
 #: resources/views/admin/locations.php:82
 msgid "export file"
-msgstr ""
+msgstr "експортувати файл"
 
 #: app/Http/Controllers/AdminTreesController.php:892
 #: modules_v3/fact_sources/report.xml:6
@@ -18575,7 +18575,7 @@ msgstr "імпортувати"
 #. I18N: A button label.
 #: resources/views/admin/locations.php:96
 msgid "import file"
-msgstr ""
+msgstr "імпортувати файл"
 
 #. I18N: Gedcom INT dates
 #: app/Date.php:356
@@ -18638,7 +18638,7 @@ msgstr "список"
 #: app/Http/Controllers/AdminLocationController.php:464
 #, php-format
 msgid "locations updated: %s, locations added: %s"
-msgstr ""
+msgstr "оновлені місцеположення: %s, місцеположення додано: %s"
 
 #. I18N: A woman’s name, before she marries (in cultures where women take their new husband’s name on marriage)
 #: app/GedcomCode/GedcomCodeName.php:135
@@ -18765,17 +18765,17 @@ msgstr "племінник"
 #: app/Functions/Functions.php:1161
 msgctxt "husband’s brother’s son"
 msgid "nephew"
-msgstr ""
+msgstr "племінник"
 
 #: app/Functions/Functions.php:1157
 msgctxt "husband’s sibling’s son"
 msgid "nephew"
-msgstr ""
+msgstr "племінник"
 
 #: app/Functions/Functions.php:1159
 msgctxt "husband’s sister’s son"
 msgid "nephew"
-msgstr ""
+msgstr "племінник"
 
 #: app/Functions/Functions.php:913
 msgctxt "sibling’s son"
@@ -18790,17 +18790,17 @@ msgstr "племінник"
 #: app/Functions/Functions.php:1401
 msgctxt "wife’s brother’s son"
 msgid "nephew"
-msgstr ""
+msgstr "племінник"
 
 #: app/Functions/Functions.php:1397
 msgctxt "wife’s sibling’s son"
 msgid "nephew"
-msgstr ""
+msgstr "племінник"
 
 #: app/Functions/Functions.php:1399
 msgctxt "wife’s sister’s son"
 msgid "nephew"
-msgstr ""
+msgstr "племінник"
 
 #: app/Functions/Functions.php:999
 msgctxt "brother’s daughter’s husband"
@@ -18825,17 +18825,17 @@ msgstr "племінник/племінниця"
 #: app/Functions/Functions.php:1149
 msgctxt "husband’s brother’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "племінник/племінниця"
 
 #: app/Functions/Functions.php:1145
 msgctxt "husband’s sibling’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "племінник/племінниця"
 
 #: app/Functions/Functions.php:1147
 msgctxt "husband’s sister’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "племінник/племінниця"
 
 #: app/Functions/Functions.php:909
 msgctxt "sibling’s child"
@@ -18850,17 +18850,17 @@ msgstr "племінник/племінниця"
 #: app/Functions/Functions.php:1389
 msgctxt "wife’s brother’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "племінник/племінниця"
 
 #: app/Functions/Functions.php:1385
 msgctxt "wife’s sibling’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "племінник/племінниця"
 
 #: app/Functions/Functions.php:1387
 msgctxt "wife’s sister’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "племінник/племінниця"
 
 #: app/Functions/FunctionsEdit.php:808
 msgid "never"
@@ -18889,17 +18889,17 @@ msgstr "племінниця"
 #: app/Functions/Functions.php:1155
 msgctxt "husband’s brother’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "племінниця"
 
 #: app/Functions/Functions.php:1151
 msgctxt "husband’s sibling’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "племінниця"
 
 #: app/Functions/Functions.php:1153
 msgctxt "husband’s sister’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "племінниця"
 
 #: app/Functions/Functions.php:911
 msgctxt "sibling’s daughter"
@@ -18914,17 +18914,17 @@ msgstr "племінниця"
 #: app/Functions/Functions.php:1395
 msgctxt "wife’s brother’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "племінниця"
 
 #: app/Functions/Functions.php:1391
 msgctxt "wife’s sibling’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "племінниця"
 
 #: app/Functions/Functions.php:1393
 msgctxt "wife’s sister’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "племінниця"
 
 #: app/Functions/Functions.php:1025
 msgctxt "brother’s son’s wife"
