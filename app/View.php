@@ -18,6 +18,8 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Exception;
+use function ob_end_clean;
+use Throwable;
 
 /**
  * Simple view/template class.
@@ -125,17 +127,23 @@ class View
      * Render a view.
      *
      * @return string
+     * @throws Throwable
      */
     public function render(): string
     {
         $variables_for_view = $this->data + self::$shared_data;
         extract($variables_for_view);
 
-        ob_start();
-        // Do not use require, so we can catch errors for missing files
-        include $this->getFilenameForView($this->name);
+        try {
+            ob_start();
+            // Do not use require, so we can catch errors for missing files
+            include $this->getFilenameForView($this->name);
 
-        return ob_get_clean();
+            return ob_get_clean();
+        } catch (Throwable $ex) {
+            ob_end_clean();
+            throw $ex;
+        }
     }
 
     /**
