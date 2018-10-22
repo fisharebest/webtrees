@@ -16,7 +16,7 @@
     "laravel-mix": "^2.1.14"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^5.2.0",
+    "@fortawesome/fontawesome-free": "^5.4.0",
     "beautifymarker": "^1.0.7",
     "bootstrap": "^4.1.3",
     "corejs-typeahead": "^1.2.1",
@@ -28,12 +28,12 @@
     "leaflet": "^1.3.4",
     "leaflet-geosearch": "^2.7.0",
     "leaflet-providers": "^1.4.0",
-    "leaflet.markercluster": "^1.3.0",
+    "leaflet.markercluster": "^1.4.0",
     "moment": "^2.22.2",
     "popper.js": "^1.14.4",
     "select2": "^4.0.5",
     "sortablejs": "^1.7.0",
     "typeahead.js-bootstrap4-css": "^1.0.0",
-    "wheelzoom": "^3.1.3"
+    "wheelzoom": "^4.0.0"
   }
 }
