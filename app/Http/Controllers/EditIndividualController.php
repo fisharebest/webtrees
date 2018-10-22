@@ -612,6 +612,12 @@ class EditIndividualController extends AbstractEditController
      */
     public function editNameAction(Request $request, Tree $tree): RedirectResponse
     {
+        $xref = $request->get('xref', '');
+
+        $individual = Individual::getInstance($xref, $tree);
+
+        $this->checkIndividualAccess($individual, true);
+
         // @TODO - Move the name-specific code to this function?
         return (new EditGedcomRecordController())->updateFact($request, $tree);
     }
@@ -660,9 +666,9 @@ class EditIndividualController extends AbstractEditController
 
         $this->checkIndividualAccess($individual, true);
 
-        // @TODO move edit_interface.php code here
+        // @TODO - Move the name-specific code to this function?
 
-        return new RedirectResponse($individual->url());
+        return (new EditGedcomRecordController())->updateFact($request, $tree);
     }
 
     /**
