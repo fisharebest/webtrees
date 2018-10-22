@@ -529,7 +529,7 @@ class FunctionsPrintFacts
                 $values = ['<a href="' . e($person->url()) . '">' . $person->getFullName() . '</a>'];
                 foreach ($associates as $associate) {
                     $relationship_name = Functions::getCloseRelationshipName($associate, $person);
-                    if (!$relationship_name) {
+                    if ($relationship_name === '') {
                         $relationship_name = GedcomTag::getLabel('RELA');
                     }
 

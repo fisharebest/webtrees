@@ -219,9 +219,13 @@ class Functions
             return self::reflexivePronoun($individual1);
         }
 
-        $relationship = self::getRelationship($individual1, $individual2);
+        try {
+            $relationship = self::getRelationship($individual1, $individual2);
 
-        return self::getRelationshipName($relationship);
+            return self::getRelationshipName($relationship);
+        } catch (Exception $ex) {
+            return '';
+        }
     }
 
     /**
