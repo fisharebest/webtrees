@@ -712,7 +712,7 @@ class EditIndividualController extends AbstractEditController
         $this->checkFamilyAccess($family, true);
 
         // Replace any existing child->family link (we may be changing the PEDI);
-        $fact_id = null;
+        $fact_id = '';
         foreach ($individual->getFacts('FAMC') as $fact) {
             if ($family === $fact->getTarget()) {
                 $fact_id = $fact->getFactId();
