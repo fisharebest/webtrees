@@ -129,6 +129,10 @@
 .wt-page-content {
 }
 
+.wt-page-content .form-control {
+	width: 100%!important;
+}
+
 .wt-page-options-label {
 	text-align: center;
 }
