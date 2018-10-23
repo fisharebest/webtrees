@@ -393,7 +393,7 @@
 	display: none;
 	text-align: start;
 	white-space: nowrap;
-	left: 0;
+	left: auto;
 	z-index: 9999;
 }
 
