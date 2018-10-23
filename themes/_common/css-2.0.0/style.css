@@ -522,6 +522,9 @@
 	list-style-type: none;
 }
 
+.d-table-cell {
+	padding-right: 5px;
+}
 
 /*
  * Calendar
