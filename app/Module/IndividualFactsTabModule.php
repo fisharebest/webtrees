@@ -323,7 +323,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
 			// add child’s marriage
 			if (strstr($SHOW_RELATIVES_EVENTS, '_MARR' . str_replace('_HSIB', '_SIBL', $option))) {
 				foreach ($child->getSpouseFamilies() as $sfamily) {
-					foreach ($sfamily->getFacts(WT_EVENTS_MARR) as $fact) {
+					foreach ($sfamily->getFacts('MARR') as $fact) {
 						$sgdate = $fact->getDate();
 						if ($sgdate->isOK() && Date::compare($birt_date, $sgdate) <= 0 && Date::compare($sgdate, $deat_date) <= 0) {
 							if ($option == '_GCHI' && $relation == 'dau') {
@@ -395,7 +395,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
 			if (strstr($SHOW_RELATIVES_EVENTS, '_MARR_PARE')) {
 				// add father/mother marriages
 				foreach ($person->getChildFamilies() as $sfamily) {
-					foreach ($sfamily->getFacts(WT_EVENTS_MARR) as $fact) {
+					foreach ($sfamily->getFacts('MARR') as $fact) {
 						if ($fact->getDate()->isOK() && Date::compare($birt_date, $fact->getDate()) <= 0 && Date::compare($fact->getDate(), $deat_date) <= 0) {
 							// marriage of parents (to each other)
 							$rela_fact = clone($fact);
@@ -405,7 +405,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
 					}
 				}
 				foreach ($person->getChildStepFamilies() as $sfamily) {
-					foreach ($sfamily->getFacts(WT_EVENTS_MARR) as $fact) {
+					foreach ($sfamily->getFacts('MARR') as $fact) {
 						if ($fact->getDate()->isOK() && Date::compare($birt_date, $fact->getDate()) <= 0 && Date::compare($fact->getDate(), $deat_date) <= 0) {
 							// marriage of a parent (to another spouse)
 							// Convert the event to a close relatives event
