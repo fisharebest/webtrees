@@ -2555,13 +2555,9 @@ class Stats
             $sex_search = '';
         }
         $rows = $this->runSql(
-            "SELECT " .
-            " AVG(death.d_julianday2-birth.d_julianday1) AS age " .
-            "FROM " .
-            " `##dates` AS death, " .
-            " `##dates` AS birth, " .
-            " `##individuals` AS indi " .
-            "WHERE " .
+            "SELECT IFNULL(AVG(death.d_julianday2-birth.d_julianday1), 0) AS age" .
+            " FROM `##dates` AS death, `##dates` AS birth, `##individuals` AS indi" .
+            " WHERE " .
             " indi.i_id=birth.d_gid AND " .
             " birth.d_gid=death.d_gid AND " .
             " death.d_file=" . $this->tree->getTreeId() . " AND " .
