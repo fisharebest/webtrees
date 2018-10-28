@@ -56,7 +56,7 @@ class AncestorsChartController extends AbstractChartController
     {
         $this->checkModuleIsActive($tree, 'ancestors_chart');
 
-        $xref       = $request->get('xref');
+        $xref       = $request->get('xref', '');
         $individual = Individual::getInstance($xref, $tree);
 
         $this->checkIndividualAccess($individual);
@@ -102,7 +102,7 @@ class AncestorsChartController extends AbstractChartController
     {
         $this->checkModuleIsActive($tree, 'ancestors_chart');
 
-        $xref       = $request->get('xref');
+        $xref       = $request->get('xref', '');
         $individual = Individual::getInstance($xref, $tree);
 
         $this->checkIndividualAccess($individual);

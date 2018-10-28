@@ -40,7 +40,7 @@ class CompactTreeChartController extends AbstractChartController
     {
         $this->checkModuleIsActive($tree, 'compact_tree_chart');
 
-        $xref       = $request->get('xref');
+        $xref       = $request->get('xref', '');
         $individual = Individual::getInstance($xref, $tree);
 
         $this->checkIndividualAccess($individual);
@@ -64,7 +64,7 @@ class CompactTreeChartController extends AbstractChartController
     {
         $this->checkModuleIsActive($tree, 'compact_tree_chart');
 
-        $xref       = $request->get('xref');
+        $xref       = $request->get('xref', '');
         $individual = Individual::getInstance($xref, $tree);
 
         $this->checkIndividualAccess($individual);

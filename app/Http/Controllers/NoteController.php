@@ -38,7 +38,7 @@ class NoteController extends AbstractBaseController
      */
     public function show(Request $request, Tree $tree): Response
     {
-        $xref   = $request->get('xref');
+        $xref   = $request->get('xref', '');
         $record = Note::getInstance($xref, $tree);
 
         $this->checkNoteAccess($record, false);

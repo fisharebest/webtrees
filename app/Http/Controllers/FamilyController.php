@@ -38,7 +38,7 @@ class FamilyController extends AbstractBaseController
      */
     public function show(Request $request, Tree $tree): Response
     {
-        $xref   = $request->get('xref');
+        $xref   = $request->get('xref', '');
         $family = Family::getInstance($xref, $tree);
 
         $this->checkFamilyAccess($family, false);

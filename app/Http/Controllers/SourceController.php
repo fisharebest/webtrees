@@ -38,7 +38,7 @@ class SourceController extends AbstractBaseController
      */
     public function show(Request $request, Tree $tree): Response
     {
-        $xref   = $request->get('xref');
+        $xref   = $request->get('xref', '');
         $record = Source::getInstance($xref, $tree);
 
         $this->checkSourceAccess($record, false);

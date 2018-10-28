@@ -62,7 +62,7 @@ class UserController extends AbstractBaseController
      */
     public function language(Request $request): Response
     {
-        $language = $request->get('language');
+        $language = $request->get('language', '');
 
         I18N::init($language);
         Session::put('locale', $language);

@@ -55,7 +55,7 @@ class MediaFileController extends AbstractBaseController
      */
     public function mediaDownload(Request $request, Tree $tree): Response
     {
-        $xref    = $request->get('xref');
+        $xref    = $request->get('xref', '');
         $fact_id = $request->get('fact_id');
         $media   = Media::getInstance($xref, $tree);
 

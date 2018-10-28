@@ -40,7 +40,7 @@ class EditIndividualController extends AbstractEditController
      */
     public function reorderMedia(Request $request, Tree $tree): Response
     {
-        $xref       = $request->get('xref');
+        $xref       = $request->get('xref', '');
         $individual = Individual::getInstance($xref, $tree);
 
         $this->checkIndividualAccess($individual, true);
@@ -61,7 +61,7 @@ class EditIndividualController extends AbstractEditController
      */
     public function reorderMediaAction(Request $request, Tree $tree): Response
     {
-        $xref       = $request->get('xref');
+        $xref       = $request->get('xref', '');
         $order      = (array) $request->get('order', []);
         $individual = Individual::getInstance($xref, $tree);
 
@@ -101,7 +101,7 @@ class EditIndividualController extends AbstractEditController
      */
     public function reorderNames(Request $request, Tree $tree): Response
     {
-        $xref       = $request->get('xref');
+        $xref       = $request->get('xref', '');
         $individual = Individual::getInstance($xref, $tree);
 
         $this->checkIndividualAccess($individual, true);
@@ -122,7 +122,7 @@ class EditIndividualController extends AbstractEditController
      */
     public function reorderNamesAction(Request $request, Tree $tree): Response
     {
-        $xref       = $request->get('xref');
+        $xref       = $request->get('xref', '');
         $order      = (array) $request->get('order', []);
         $individual = Individual::getInstance($xref, $tree);
 
@@ -162,7 +162,7 @@ class EditIndividualController extends AbstractEditController
      */
     public function reorderSpouses(Request $request, Tree $tree): Response
     {
-        $xref       = $request->get('xref');
+        $xref       = $request->get('xref', '');
         $individual = Individual::getInstance($xref, $tree);
 
         $this->checkIndividualAccess($individual, true);
@@ -183,7 +183,7 @@ class EditIndividualController extends AbstractEditController
      */
     public function reorderSpousesAction(Request $request, Tree $tree): Response
     {
-        $xref       = $request->get('xref');
+        $xref       = $request->get('xref', '');
         $order      = (array) $request->get('order', []);
         $individual = Individual::getInstance($xref, $tree);
 

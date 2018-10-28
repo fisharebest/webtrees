@@ -38,7 +38,7 @@ class MediaController extends AbstractBaseController
      */
     public function show(Request $request, Tree $tree): Response
     {
-        $xref  = $request->get('xref');
+        $xref  = $request->get('xref', '');
         $media = Media::getInstance($xref, $tree);
 
         $this->checkMediaAccess($media);

@@ -50,7 +50,7 @@ class HourglassChartController extends AbstractChartController
     {
         $this->checkModuleIsActive($tree, 'hourglass_chart');
 
-        $xref       = $request->get('xref');
+        $xref       = $request->get('xref', '');
         $individual = Individual::getInstance($xref, $tree);
 
         $this->checkIndividualAccess($individual);
@@ -90,7 +90,7 @@ class HourglassChartController extends AbstractChartController
     {
         $this->checkModuleIsActive($tree, 'hourglass_chart');
 
-        $xref       = $request->get('xref');
+        $xref       = $request->get('xref', '');
         $individual = Individual::getInstance($xref, $tree);
 
         $this->checkIndividualAccess($individual);
@@ -129,7 +129,7 @@ class HourglassChartController extends AbstractChartController
     {
         $this->checkModuleIsActive($tree, 'hourglass_chart');
 
-        $xref       = $request->get('xref');
+        $xref       = $request->get('xref', '');
         $individual = Individual::getInstance($xref, $tree);
 
         $this->checkIndividualAccess($individual);
@@ -153,7 +153,7 @@ class HourglassChartController extends AbstractChartController
     {
         $this->checkModuleIsActive($tree, 'hourglass_chart');
 
-        $xref       = $request->get('xref');
+        $xref       = $request->get('xref', '');
         $individual = Individual::getInstance($xref, $tree);
 
         $show_spouse = (bool) $request->get('show_spouse');

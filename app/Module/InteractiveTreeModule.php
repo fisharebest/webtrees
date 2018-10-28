@@ -143,7 +143,7 @@ class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface
      */
     public function getTreeviewAction(Request $request, Tree $tree): Response
     {
-        $xref = $request->get('xref');
+        $xref = $request->get('xref', '');
 
         $individual = Individual::getInstance($xref, $tree);
 
@@ -189,7 +189,7 @@ class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface
             throw new IndividualAccessDeniedException();
         }
 
-        $instance = $request->get('instance');
+        $instance = $request->get('instance', '');
         $treeview = new TreeView($instance);
 
         return new Response($treeview->getDetails($individual));
@@ -203,8 +203,8 @@ class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface
      */
     public function getPersonsAction(Request $request, Tree $tree): Response
     {
-        $q        = $request->get('q');
-        $instance = $request->get('instance');
+        $q        = $request->get('q', '');
+        $instance = $request->get('instance', '');
         $treeview = new TreeView($instance);
 
         return new Response($treeview->getPersons($tree, $q));

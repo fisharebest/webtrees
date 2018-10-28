@@ -62,7 +62,7 @@ class EditMediaController extends AbstractEditController
      */
     public function addMediaFile(Request $request, Tree $tree): Response
     {
-        $xref  = $request->get('xref');
+        $xref  = $request->get('xref', '');
         $media = Media::getInstance($xref, $tree);
 
         try {
@@ -92,7 +92,7 @@ class EditMediaController extends AbstractEditController
      */
     public function addMediaFileAction(Request $request, Tree $tree): RedirectResponse
     {
-        $xref  = $request->get('xref');
+        $xref  = $request->get('xref', '');
         $media = Media::getInstance($xref, $tree);
         $title = $request->get('title');
         $type  = $request->get('type');
@@ -397,7 +397,7 @@ class EditMediaController extends AbstractEditController
      */
     public function linkMediaToIndividual(Request $request, Tree $tree): Response
     {
-        $xref = $request->get('xref');
+        $xref = $request->get('xref', '');
 
         $media = Media::getInstance($xref, $tree);
 
@@ -415,7 +415,7 @@ class EditMediaController extends AbstractEditController
      */
     public function linkMediaToFamily(Request $request, Tree $tree): Response
     {
-        $xref = $request->get('xref');
+        $xref = $request->get('xref', '');
 
         $media = Media::getInstance($xref, $tree);
 
@@ -433,7 +433,7 @@ class EditMediaController extends AbstractEditController
      */
     public function linkMediaToSource(Request $request, Tree $tree): Response
     {
-        $xref = $request->get('xref');
+        $xref = $request->get('xref', '');
 
         $media = Media::getInstance($xref, $tree);
 
@@ -451,7 +451,7 @@ class EditMediaController extends AbstractEditController
      */
     public function linkMediaToRecordAction(Request $request, Tree $tree): RedirectResponse
     {
-        $xref = $request->get('xref');
+        $xref = $request->get('xref', '');
         $link = $request->get('link');
 
         $media  = Media::getInstance($xref, $tree);

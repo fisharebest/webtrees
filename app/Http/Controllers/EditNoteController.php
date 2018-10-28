@@ -50,7 +50,7 @@ class EditNoteController extends AbstractEditController
      */
     public function editNoteObject(Request $request, Tree $tree): Response
     {
-        $xref = $request->get('xref');
+        $xref = $request->get('xref', '');
 
         $note = Note::getInstance($xref, $tree);
 
@@ -73,7 +73,7 @@ class EditNoteController extends AbstractEditController
      */
     public function updateNoteObject(Request $request, Tree $tree): RedirectResponse
     {
-        $xref = $request->get('xref');
+        $xref = $request->get('xref', '');
 
         $note = Note::getInstance($xref, $tree);
 

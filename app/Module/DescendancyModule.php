@@ -92,7 +92,7 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
      */
     public function getDescendantsAction(Request $request, Tree $tree): Response
     {
-        $xref = $request->get('xref');
+        $xref = $request->get('xref', '');
 
         $individual = Individual::getInstance($xref, $tree);
 

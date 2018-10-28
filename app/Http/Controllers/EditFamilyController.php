@@ -40,7 +40,7 @@ class EditFamilyController extends AbstractEditController
      */
     public function reorderChildren(Request $request, Tree $tree): Response
     {
-        $xref   = $request->get('xref');
+        $xref   = $request->get('xref', '');
         $family = Family::getInstance($xref, $tree);
 
         $this->checkFamilyAccess($family, true);
@@ -61,7 +61,7 @@ class EditFamilyController extends AbstractEditController
      */
     public function reorderChildrenAction(Request $request, Tree $tree): Response
     {
-        $xref   = $request->get('xref');
+        $xref   = $request->get('xref', '');
         $order  = (array) $request->get('order', []);
         $family = Family::getInstance($xref, $tree);
 

@@ -66,7 +66,7 @@ class FamilyBookChartController extends AbstractChartController
     {
         $this->checkModuleIsActive($tree, 'family_book_chart');
 
-        $xref       = $request->get('xref');
+        $xref       = $request->get('xref', '');
         $individual = Individual::getInstance($xref, $tree);
 
         $this->checkIndividualAccess($individual);
@@ -109,7 +109,7 @@ class FamilyBookChartController extends AbstractChartController
     {
         $this->checkModuleIsActive($tree, 'family_book_chart');
 
-        $xref       = $request->get('xref');
+        $xref       = $request->get('xref', '');
         $individual = Individual::getInstance($xref, $tree);
 
         $this->checkIndividualAccess($individual);

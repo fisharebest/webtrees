@@ -169,26 +169,26 @@ class StatisticsChartController extends AbstractChartController
         switch ($x_axis_type) {
             case self::X_AXIS_INDIVIDUAL_MAP:
                 return new Response($stats->chartDistribution(
-                    $request->get('chart_shows'),
-                    $request->get('chart_type'),
-                    $request->get('SURN')
+                    $request->get('chart_shows', ''),
+                    $request->get('chart_type', ''),
+                    $request->get('SURN', '')
                 ));
 
             case self::X_AXIS_BIRTH_MAP:
                 return new Response($stats->chartDistribution(
-                    $request->get('chart_shows'),
+                    $request->get('chart_shows', ''),
                     'birth_distribution_chart'
                 ));
 
             case self::X_AXIS_DEATH_MAP:
                 return new Response($stats->chartDistribution(
-                    $request->get('chart_shows'),
+                    $request->get('chart_shows', ''),
                     'death_distribution_chart'
                 ));
 
             case self::X_AXIS_MARRIAGE_MAP:
                 return new Response($stats->chartDistribution(
-                    $request->get('chart_shows'),
+                    $request->get('chart_shows', ''),
                     'marriage_distribution_chart'
                 ));
 
@@ -224,7 +224,7 @@ class StatisticsChartController extends AbstractChartController
                         }
                         break;
                     case self::Z_AXIS_TIME:
-                        $boundaries_csv = $request->get('z-axis-boundaries-periods');
+                        $boundaries_csv = $request->get('z-axis-boundaries-periods', '');
                         $z_axis         = $this->axisYears($boundaries_csv);
                         $prev_boundary  = 0;
                         foreach (array_keys($z_axis) as $boundary) {
@@ -273,7 +273,7 @@ class StatisticsChartController extends AbstractChartController
                         }
                         break;
                     case self::Z_AXIS_TIME:
-                        $boundaries_csv = $request->get('z-axis-boundaries-periods');
+                        $boundaries_csv = $request->get('z-axis-boundaries-periods', '');
                         $z_axis         = $this->axisYears($boundaries_csv);
                         $prev_boundary  = 0;
                         foreach (array_keys($z_axis) as $boundary) {
@@ -315,7 +315,7 @@ class StatisticsChartController extends AbstractChartController
                         }
                         break;
                     case self::Z_AXIS_TIME:
-                        $boundaries_csv = $request->get('z-axis-boundaries-periods');
+                        $boundaries_csv = $request->get('z-axis-boundaries-periods', '');
                         $z_axis         = $this->axisYears($boundaries_csv);
                         $prev_boundary  = 0;
                         foreach (array_keys($z_axis) as $boundary) {
@@ -364,7 +364,7 @@ class StatisticsChartController extends AbstractChartController
                         }
                         break;
                     case self::Z_AXIS_TIME:
-                        $boundaries_csv = $request->get('z-axis-boundaries-periods');
+                        $boundaries_csv = $request->get('z-axis-boundaries-periods', '');
                         $z_axis         = $this->axisYears($boundaries_csv);
                         $prev_boundary  = 0;
                         foreach (array_keys($z_axis) as $boundary) {
@@ -412,7 +412,7 @@ class StatisticsChartController extends AbstractChartController
                         }
                         break;
                     case self::Z_AXIS_TIME:
-                        $boundaries_csv = $request->get('z-axis-boundaries-periods');
+                        $boundaries_csv = $request->get('z-axis-boundaries-periods', '');
                         $z_axis         = $this->axisYears($boundaries_csv);
                         $prev_boundary  = 0;
                         $indi           = [];
@@ -438,7 +438,7 @@ class StatisticsChartController extends AbstractChartController
             case self::X_AXIS_AGE_AT_DEATH:
                 $chart_title    = I18N::translate('Average age at death');
                 $x_axis_title   = I18N::translate('age');
-                $boundaries_csv = $request->get('x-axis-boundaries-ages');
+                $boundaries_csv = $request->get('x-axis-boundaries-ages', '');
                 $x_axis         = $this->axisNumbers($boundaries_csv);
 
                 switch ($y_axis_type) {
@@ -474,7 +474,7 @@ class StatisticsChartController extends AbstractChartController
                         }
                         break;
                     case self::Z_AXIS_TIME:
-                        $boundaries_csv = $request->get('z-axis-boundaries-periods');
+                        $boundaries_csv = $request->get('z-axis-boundaries-periods', '');
                         $z_axis         = $this->axisYears($boundaries_csv);
                         $prev_boundary  = 0;
                         foreach (array_keys($z_axis) as $boundary) {
@@ -497,7 +497,7 @@ class StatisticsChartController extends AbstractChartController
             case self::X_AXIS_AGE_AT_MARRIAGE:
                 $chart_title    = I18N::translate('Age in year of marriage');
                 $x_axis_title   = I18N::translate('age');
-                $boundaries_csv = $request->get('x-axis-boundaries-ages_m');
+                $boundaries_csv = $request->get('x-axis-boundaries-ages_m', '');
                 $x_axis         = $this->axisNumbers($boundaries_csv);
 
                 switch ($y_axis_type) {
@@ -532,7 +532,7 @@ class StatisticsChartController extends AbstractChartController
                         }
                         break;
                     case self::Z_AXIS_TIME:
-                        $boundaries_csv = $request->get('z-axis-boundaries-periods');
+                        $boundaries_csv = $request->get('z-axis-boundaries-periods', '');
                         $z_axis         = $this->axisYears($boundaries_csv);
                         // The stats query doesn't have an "all" function, so query M/F/U separately
                         foreach (['M', 'F', 'U'] as $sex) {
@@ -555,7 +555,7 @@ class StatisticsChartController extends AbstractChartController
             case self::X_AXIS_AGE_AT_FIRST_MARRIAGE:
                 $chart_title    = I18N::translate('Age in year of first marriage');
                 $x_axis_title   = I18N::translate('age');
-                $boundaries_csv = $request->get('x-axis-boundaries-ages_m');
+                $boundaries_csv = $request->get('x-axis-boundaries-ages_m', '');
                 $x_axis         = $this->axisNumbers($boundaries_csv);
 
                 switch ($y_axis_type) {
@@ -598,7 +598,7 @@ class StatisticsChartController extends AbstractChartController
                         }
                         break;
                     case self::Z_AXIS_TIME:
-                        $boundaries_csv = $request->get('z-axis-boundaries-periods');
+                        $boundaries_csv = $request->get('z-axis-boundaries-periods', '');
                         $z_axis         = $this->axisYears($boundaries_csv);
                         // The stats query doesn't have an "all" function, so query M/F/U separately
                         foreach (['M', 'F', 'U'] as $sex) {
@@ -647,7 +647,7 @@ class StatisticsChartController extends AbstractChartController
                         }
                         break;
                     case self::Z_AXIS_TIME:
-                        $boundaries_csv = $request->get('z-axis-boundaries-periods');
+                        $boundaries_csv = $request->get('z-axis-boundaries-periods', '');
                         $z_axis         = $this->axisYears($boundaries_csv);
                         $prev_boundary = 0;
                         foreach (array_keys($z_axis) as $boundary) {
@@ -721,7 +721,7 @@ class StatisticsChartController extends AbstractChartController
      *
      * @return string[]
      */
-    private function axisYears($boundaries_csv): array
+    private function axisYears(string $boundaries_csv): array
     {
         $boundaries = explode(',', $boundaries_csv);
 

@@ -112,7 +112,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
     {
         $request = Request::createFromGlobals();
 
-        $route = $request->get('route');
+        $route = $request->get('route', '');
 
         $submenus = [
             new Menu($this->getTitle(), route('module', [
@@ -123,7 +123,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         ];
 
         if (in_array($route, self::ROUTES_WITH_RECORDS)) {
-            $xref      = $request->get('xref');
+            $xref      = $request->get('xref', '');
             $action    = 'Add' . ucfirst($route);
             $add_route = route('module', [
                 'module' => 'clippings',
@@ -161,7 +161,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
     {
         $this->checkModuleAccess($tree);
 
-        $privatize_export = $request->get('privatize_export');
+        $privatize_export = $request->get('privatize_export', '');
         $convert          = (bool) $request->get('convert');
 
         $cart = Session::get('cart', []);
@@ -342,7 +342,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     public function postRemoveAction(Request $request, Tree $tree): RedirectResponse
     {
-        $xref = $request->get('xref');
+        $xref = $request->get('xref', '');
 
         $cart = Session::get('cart', []);
         unset($cart[$tree->getName()][$xref]);
@@ -379,7 +379,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     public function getAddFamilyAction(Request $request, Tree $tree): Response
     {
-        $xref = $request->get('xref');
+        $xref = $request->get('xref', '');
 
         $family = Family::getInstance($xref, $tree);
 
@@ -426,8 +426,8 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     public function postAddFamilyAction(Request $request, Tree $tree): RedirectResponse
     {
-        $xref   = $request->get('xref');
-        $option = $request->get('option');
+        $xref   = $request->get('xref', '');
+        $option = $request->get('option', '');
 
         $family = Family::getInstance($xref, $tree);
 
@@ -511,7 +511,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     public function getAddIndividualAction(Request $request, Tree $tree): Response
     {
-        $xref = $request->get('xref');
+        $xref = $request->get('xref', '');
 
         $individual = Individual::getInstance($xref, $tree);
 
@@ -570,8 +570,8 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     public function postAddIndividualAction(Request $request, Tree $tree): RedirectResponse
     {
-        $xref   = $request->get('xref');
-        $option = $request->get('option');
+        $xref   = $request->get('xref', '');
+        $option = $request->get('option', '');
 
         $individual = Individual::getInstance($xref, $tree);
 
@@ -653,7 +653,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     public function getAddMediaAction(Request $request, Tree $tree): Response
     {
-        $xref = $request->get('xref');
+        $xref = $request->get('xref', '');
 
         $media = Media::getInstance($xref, $tree);
 
@@ -696,7 +696,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     public function postAddMediaAction(Request $request, Tree $tree): RedirectResponse
     {
-        $xref = $request->get('xref');
+        $xref = $request->get('xref', '');
 
         $media = Media::getInstance($xref, $tree);
 
@@ -717,7 +717,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     public function getAddNoteAction(Request $request, Tree $tree): Response
     {
-        $xref = $request->get('xref');
+        $xref = $request->get('xref', '');
 
         $note = Note::getInstance($xref, $tree);
 
@@ -760,7 +760,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     public function postAddNoteAction(Request $request, Tree $tree): RedirectResponse
     {
-        $xref = $request->get('xref');
+        $xref = $request->get('xref', '');
 
         $note = Note::getInstance($xref, $tree);
 
@@ -781,7 +781,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     public function getAddRepositoryAction(Request $request, Tree $tree): Response
     {
-        $xref = $request->get('xref');
+        $xref = $request->get('xref', '');
 
         $repository = Repository::getInstance($xref, $tree);
 
@@ -824,7 +824,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     public function postAddRepositoryAction(Request $request, Tree $tree): RedirectResponse
     {
-        $xref = $request->get('xref');
+        $xref = $request->get('xref', '');
 
         $repository = Repository::getInstance($xref, $tree);
 
@@ -845,7 +845,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     public function getAddSourceAction(Request $request, Tree $tree): Response
     {
-        $xref = $request->get('xref');
+        $xref = $request->get('xref', '');
 
         $source = Source::getInstance($xref, $tree);
 
@@ -889,8 +889,8 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     public function postAddSourceAction(Request $request, Tree $tree): RedirectResponse
     {
-        $xref   = $request->get('xref');
-        $option = $request->get('option');
+        $xref   = $request->get('xref', '');
+        $option = $request->get('option', '');
 
         $source = Source::getInstance($xref, $tree);
 

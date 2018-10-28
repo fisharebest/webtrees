@@ -38,7 +38,7 @@ class RepositoryController extends AbstractBaseController
      */
     public function show(Request $request, Tree $tree): Response
     {
-        $xref   = $request->get('xref');
+        $xref   = $request->get('xref', '');
         $record = Repository::getInstance($xref, $tree);
 
         $this->checkRepositoryAccess($record, false);
