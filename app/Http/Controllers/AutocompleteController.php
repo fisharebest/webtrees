@@ -207,7 +207,7 @@ class AutocompleteController extends AbstractBaseController
     public function select2Family(Request $request, Tree $tree): JsonResponse
     {
         $page  = (int) $request->get('page');
-        $query = $request->get('q');
+        $query = $request->get('q', '');
 
         return new JsonResponse(Select2::familySearch($tree, $page, $query));
     }
@@ -220,7 +220,7 @@ class AutocompleteController extends AbstractBaseController
     public function select2Flag(Request $request): JsonResponse
     {
         $page  = (int) $request->get('page');
-        $query = $request->get('q');
+        $query = $request->get('q', '');
 
         return new JsonResponse(Select2::flagSearch($page, $query));
     }
@@ -234,7 +234,7 @@ class AutocompleteController extends AbstractBaseController
     public function select2Individual(Request $request, Tree $tree): JsonResponse
     {
         $page  = (int) $request->get('page');
-        $query = $request->get('q');
+        $query = $request->get('q', '');
 
         return new JsonResponse(Select2::individualSearch($tree, $page, $query));
     }
@@ -248,7 +248,7 @@ class AutocompleteController extends AbstractBaseController
     public function select2MediaObject(Request $request, Tree $tree): JsonResponse
     {
         $page  = (int) $request->get('page');
-        $query = $request->get('q');
+        $query = $request->get('q', '');
 
         return new JsonResponse(Select2::mediaObjectSearch($tree, $page, $query));
     }
@@ -262,7 +262,7 @@ class AutocompleteController extends AbstractBaseController
     public function select2Note(Request $request, Tree $tree): JsonResponse
     {
         $page  = (int) $request->get('page');
-        $query = $request->get('q');
+        $query = $request->get('q', '');
 
         return new JsonResponse(Select2::noteSearch($tree, $page, $query));
     }
@@ -276,7 +276,7 @@ class AutocompleteController extends AbstractBaseController
     public function select2Place(Request $request, Tree $tree): JsonResponse
     {
         $page  = (int) $request->get('page');
-        $query = $request->get('q');
+        $query = $request->get('q', '');
 
         return new JsonResponse(Select2::placeSearch($tree, $page, $query, true));
     }
@@ -290,7 +290,7 @@ class AutocompleteController extends AbstractBaseController
     public function select2Repository(Request $request, Tree $tree): JsonResponse
     {
         $page  = (int) $request->get('page');
-        $query = $request->get('q');
+        $query = $request->get('q', '');
 
         return new JsonResponse(Select2::repositorySearch($tree, $page, $query));
     }
@@ -304,7 +304,7 @@ class AutocompleteController extends AbstractBaseController
     public function select2Source(Request $request, Tree $tree): JsonResponse
     {
         $page  = (int) $request->get('page');
-        $query = $request->get('q');
+        $query = $request->get('q', '');
 
         return new JsonResponse(Select2::sourceSearch($tree, $page, $query));
     }
@@ -318,7 +318,7 @@ class AutocompleteController extends AbstractBaseController
     public function select2Submitter(Request $request, Tree $tree): JsonResponse
     {
         $page  = (int) $request->get('page');
-        $query = $request->get('q');
+        $query = $request->get('q', '');
 
         return new JsonResponse(Select2::submitterSearch($tree, $page, $query));
     }
