@@ -675,11 +675,11 @@ class AdminLocationController extends AbstractBaseController
     }
 
     /**
-     * @param $id
+     * @param int $id
      *
      * @return array
      */
-    private function gethierarchy($id): array
+    private function gethierarchy(int $id): array
     {
         $statement = Database::prepare("SELECT pl_id, pl_parent_id, pl_place FROM `##placelocation` WHERE pl_id=:id");
         $arr       = [];

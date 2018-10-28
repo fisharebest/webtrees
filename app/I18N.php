@@ -780,7 +780,7 @@ class I18N
     /**
      * Identify the script used for a piece of text
      *
-     * @param $string
+     * @param string $string
      *
      * @return string
      */

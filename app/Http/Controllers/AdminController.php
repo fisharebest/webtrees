@@ -1269,7 +1269,7 @@ class AdminController extends AbstractBaseController
     /**
      * Conver request parameters into paging/sorting for datatables
      *
-     * @param $request
+     * @param Request $request
      *
      * @return array
      */

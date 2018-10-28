@@ -457,7 +457,7 @@ class MessageController extends AbstractBaseController
     /**
      * Convert a username (or mailing list name) into an array of recipients.
      *
-     * @param $to
+     * @param string $to
      *
      * @return User[]
      */
