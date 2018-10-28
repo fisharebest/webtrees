@@ -66,7 +66,7 @@ class FamilyBookChartController extends AbstractChartController
     {
         $this->checkModuleIsActive($tree, 'family_book_chart');
 
-        $xref       = $request->get('xref', '');
+        $xref       = $request->get('xref');
         $individual = Individual::getInstance($xref, $tree);
 
         $this->checkIndividualAccess($individual);
@@ -109,7 +109,7 @@ class FamilyBookChartController extends AbstractChartController
     {
         $this->checkModuleIsActive($tree, 'family_book_chart');
 
-        $xref       = $request->get('xref', '');
+        $xref       = $request->get('xref');
         $individual = Individual::getInstance($xref, $tree);
 
         $this->checkIndividualAccess($individual);
@@ -170,7 +170,7 @@ class FamilyBookChartController extends AbstractChartController
 
         // Load children
         $children = [];
-        if ($person) {
+        if ($person instanceof Individual) {
             // Count is position from center to left, dgenerations is number of generations
             if ($generation < $this->dgenerations) {
                 // All children, from all partners
@@ -232,7 +232,7 @@ class FamilyBookChartController extends AbstractChartController
             $numkids = 1;
         }
         echo '<table cellspacing="0" cellpadding="0" border="0" ><tr><td>';
-        if ($person) {
+        if ($person instanceof Individual) {
             FunctionsPrint::printPedigreePerson($person);
             echo '</td><td>',
             '<img class="linef1" src="', Theme::theme()->parameter('image-hline'), '" width="8" height="3">';
@@ -242,7 +242,7 @@ class FamilyBookChartController extends AbstractChartController
         }
 
         // Print the spouse
-        if ($generation === 1) {
+        if ($generation === 1 && $person instanceof Individual) {
             if ($this->show_spouse) {
                 foreach ($person->getSpouseFamilies() as $family) {
                     $spouse = $family->getSpouse($person);
