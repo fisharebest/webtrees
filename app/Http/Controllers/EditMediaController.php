@@ -452,7 +452,7 @@ class EditMediaController extends AbstractEditController
     public function linkMediaToRecordAction(Request $request, Tree $tree): RedirectResponse
     {
         $xref = $request->get('xref', '');
-        $link = $request->get('link');
+        $link = $request->get('link', '');
 
         $media  = Media::getInstance($xref, $tree);
         $record = GedcomRecord::getInstance($link, $tree);

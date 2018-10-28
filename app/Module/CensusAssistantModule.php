@@ -66,10 +66,10 @@ class CensusAssistantModule extends AbstractModule implements ModuleInterface
      */
     public function getCensusIndividualAction(Request $request, Tree $tree): Response
     {
-        $census = $request->get('census');
+        $census = $request->get('census', '');
 
-        $individual = Individual::getInstance($request->get('xref'), $tree);
-        $head       = Individual::getInstance($request->get('head'), $tree);
+        $individual = Individual::getInstance($request->get('xref', ''), $tree);
+        $head       = Individual::getInstance($request->get('head', ''), $tree);
         $html       = $this->censusTableRow(new $census(), $individual, $head);
 
         return new Response($html);

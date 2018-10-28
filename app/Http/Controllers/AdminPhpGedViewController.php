@@ -127,8 +127,8 @@ class AdminPhpGedViewController extends AbstractBaseController
      */
     public function step(Request $request): Response
     {
-        $step     = $request->get('step');
-        $pgv_path = $request->get('pgv_path');
+        $step     = $request->get('step', '');
+        $pgv_path = $request->get('pgv_path', '');
 
         $config = $this->readPhpGedViewConfig($pgv_path);
 

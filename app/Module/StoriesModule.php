@@ -230,7 +230,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
             $title = I18N::translate('Add a story') . ' — ' . e($tree->getTitle());
         } else {
             // Editing an existing story
-            $xref = Database::prepare(
+            $xref = (string) Database::prepare(
                 "SELECT xref FROM `##block` WHERE block_id = :block_id"
             )->execute([
                 'block_id' => $block_id,

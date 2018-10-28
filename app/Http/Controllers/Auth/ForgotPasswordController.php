@@ -59,7 +59,7 @@ class ForgotPasswordController extends AbstractBaseController
      */
     public function forgotPasswordAction(Request $request, Tree $tree): RedirectResponse
     {
-        $identifier = $request->get('identifier');
+        $identifier = $request->get('identifier', '');
 
         $user = User::findByIdentifier($identifier);
 

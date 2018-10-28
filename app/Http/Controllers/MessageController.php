@@ -88,7 +88,7 @@ class MessageController extends AbstractBaseController
         $to      = $request->get('to', '');
         $url     = $request->get('url', '');
 
-        $ip       = $request->getClientIp();
+        $ip       = (string) $request->getClientIp();
         $to_users = $this->recipientUsers($to);
 
         if ($body === '' || $subject === '') {
