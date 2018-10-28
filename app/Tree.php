@@ -752,8 +752,7 @@ class Tree
             return new GedcomRecord($xref, $gedcom, null, $this);
         }
 
-
-        return new GedcomRecord($xref, '', $gedcom, $this);
+        return GedcomRecord::getInstance($xref, $this, $gedcom);
     }
 
     /**
