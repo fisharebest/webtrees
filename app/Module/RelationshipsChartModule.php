@@ -164,8 +164,11 @@ class RelationshipsChartModule extends AbstractModule implements ModuleConfigInt
     public function postAdminAction(Request $request): RedirectResponse
     {
         foreach (Tree::getAll() as $tree) {
-            $tree->setPreference('RELATIONSHIP_RECURSION', $request->get('relationship-recursion-' . $tree->getTreeId()));
-            $tree->setPreference('RELATIONSHIP_ANCESTORS', $request->get('relationship-ancestors-' . $tree->getTreeId()));
+            $recursion = $request->get('relationship-recursion-' . $tree->getTreeId(), '');
+            $ancestors = $request->get('relationship-ancestors-' . $tree->getTreeId(), '');
+
+            $tree->setPreference('RELATIONSHIP_RECURSION', $recursion);
+            $tree->setPreference('RELATIONSHIP_ANCESTORS', $ancestors);
         }
 
         FlashMessages::addMessage(I18N::translate('The preferences for the module “%s” have been updated.', $this->getTitle()), 'success');
