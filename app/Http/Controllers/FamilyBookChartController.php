@@ -166,7 +166,7 @@ class FamilyBookChartController extends AbstractChartController
         }
 
         echo '<table cellspacing="0" cellpadding="0" border="0" ><tr><td>';
-        $numkids = 0;
+        $numkids = 0.0;
 
         // Load children
         $children = [];
@@ -228,7 +228,7 @@ class FamilyBookChartController extends AbstractChartController
             echo '<td>';
         }
 
-        if ($numkids === 0) {
+        if ($numkids === 0.0) {
             $numkids = 1;
         }
         echo '<table cellspacing="0" cellpadding="0" border="0" ><tr><td>';
