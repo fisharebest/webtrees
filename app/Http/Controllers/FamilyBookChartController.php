@@ -124,10 +124,7 @@ class FamilyBookChartController extends AbstractChartController
         $generations = (int) $request->get('generations', $default_generations);
         $generations = min($generations, $maximum_generations);
         $generations = max($generations, $minimum_generations);
-        $descendants = $this->descendants($individual, $generations, []);
 
-        // @TODO - this is just a wrapper around the old code.
-        ob_start();
         $this->box = (object) [
             'width'  => Theme::theme()->parameter('chart-box-x'),
             'height' => Theme::theme()->parameter('chart-box-y'),
@@ -144,8 +141,9 @@ class FamilyBookChartController extends AbstractChartController
             $this->dgenerations = 1;
         }
 
+        // @TODO - this is just a wrapper around the old code.
+        ob_start();
         $this->printFamilyBook($individual, $generations);
-
         $html = ob_get_clean();
 
         return new Response($html);
