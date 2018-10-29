@@ -202,12 +202,10 @@ class HourglassChartController extends AbstractChartController
         echo '<tr>';
         echo '<td style="text-align:' . $tablealign . '">';
         $families = $individual->getSpouseFamilies();
-        $famNum   = 0;
         $children = [];
         if ($generation < $generations) {
             // Put all of the children in a common array
             foreach ($families as $family) {
-                $famNum++;
                 foreach ($family->getChildren() as $child) {
                     $children[] = $child;
                 }
