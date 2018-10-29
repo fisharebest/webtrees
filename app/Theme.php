@@ -82,11 +82,7 @@ class Theme
      */
     public static function theme(ThemeInterface $theme = null): ThemeInterface
     {
-        if ($theme instanceof ThemeInterface) {
-            self::$theme = $theme;
-        } elseif (!self::$theme instanceof ThemeInterface) {
-            self::$theme = new WebtreesTheme();
-        }
+        self::$theme = $theme ?? self::$theme ?? new WebtreesTheme();
 
         return self::$theme;
     }
