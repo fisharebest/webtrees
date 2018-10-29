@@ -137,7 +137,7 @@ class FunctionsCharts
         } else {
             echo '<td>';
         }
-        FunctionsPrint::printPedigreePerson($husb);
+        echo FunctionsPrint::printPedigreePerson($husb);
         echo '</td></tr></table>';
         echo '</td>';
         // husband’s parents
@@ -156,13 +156,13 @@ class FunctionsCharts
                     self::printDabovilleNumber(trim(substr($daboville, 0, -3), '.') . '.', '', 'arrow-up');
                 }
                 echo '<td>';
-                FunctionsPrint::printPedigreePerson($hfam->getHusband());
+                echo FunctionsPrint::printPedigreePerson($hfam->getHusband());
                 echo '</td></tr></table>';
             } elseif ($hfam && !$hfam->getHusband()) {
                 // Empty box for grandfather
                 echo '<table cellspacing="0" cellpadding="0" border="0"><tr>';
                 echo '<td>';
-                FunctionsPrint::printPedigreePerson($hfam->getHusband());
+                echo FunctionsPrint::printPedigreePerson($hfam->getHusband());
                 echo '</td></tr></table>';
             }
             echo '</td>';
@@ -184,13 +184,13 @@ class FunctionsCharts
                     self::printDabovilleNumber(trim(substr($daboville, 0, -3), '.') . '.', '', 'arrow-up');
                 }
                 echo '<td>';
-                FunctionsPrint::printPedigreePerson($hfam->getWife());
+                echo FunctionsPrint::printPedigreePerson($hfam->getWife());
                 echo '</td></tr></table>';
             } elseif ($hfam && !$hfam->getWife()) {
                 // Empty box for grandmother
                 echo '<table cellspacing="0" cellpadding="0" border="0"><tr>';
                 echo '<td>';
-                FunctionsPrint::printPedigreePerson($hfam->getWife());
+                echo FunctionsPrint::printPedigreePerson($hfam->getWife());
                 echo '</td></tr></table>';
             }
             echo '</td>';
@@ -227,7 +227,7 @@ class FunctionsCharts
         } else {
             echo '<td>';
         }
-        FunctionsPrint::printPedigreePerson($wife);
+        echo FunctionsPrint::printPedigreePerson($wife);
         echo '</td></tr></table>';
         echo '</td>';
         // wife’s parents
@@ -245,13 +245,13 @@ class FunctionsCharts
                     self::printDabovilleNumber(trim(substr($daboville, 0, -3), '.') . '.', '', 'arrow-up');
                 }
                 echo '<td>';
-                FunctionsPrint::printPedigreePerson($wfam->getHusband());
+                echo FunctionsPrint::printPedigreePerson($wfam->getHusband());
                 echo '</td></tr></table>';
             } elseif ($wfam && !$wfam->getHusband()) {
                 // Empty box for grandfather
                 echo '<table cellspacing="0" cellpadding="0" border="0"><tr>';
                 echo '<td>';
-                FunctionsPrint::printPedigreePerson($wfam->getHusband());
+                echo FunctionsPrint::printPedigreePerson($wfam->getHusband());
                 echo '</td></tr></table>';
             }
             echo '</td>';
@@ -274,13 +274,13 @@ class FunctionsCharts
                     self::printDabovilleNumber(trim(substr($daboville, 0, -3), '.') . '.', '', 'arrow-up');
                 }
                 echo '<td>';
-                FunctionsPrint::printPedigreePerson($wfam->getWife());
+                echo FunctionsPrint::printPedigreePerson($wfam->getWife());
                 echo '</td></tr></table>';
             } elseif ($wfam && !$wfam->getWife()) {
                 // Empty box for grandmother
                 echo '<table cellspacing="0" cellpadding="0" border="0"><tr>';
                 echo '<td>';
-                FunctionsPrint::printPedigreePerson($wfam->getWife());
+                echo FunctionsPrint::printPedigreePerson($wfam->getWife());
                 echo '</td></tr></table>';
             }
             echo '</td>';
@@ -370,7 +370,7 @@ class FunctionsCharts
                 } else {
                     echo '<td>';
                 }
-                FunctionsPrint::printPedigreePerson($child);
+                echo FunctionsPrint::printPedigreePerson($child);
                 echo '</td>';
                 if ($sosa != 0) {
                     // loop for all families where current child is a spouse
@@ -422,7 +422,7 @@ class FunctionsCharts
                         echo '</td>';
                         // spouse information
                         echo '<td style="vertical-align: center;">';
-                        FunctionsPrint::printPedigreePerson($spouse);
+                        echo FunctionsPrint::printPedigreePerson($spouse);
                         echo '</td>';
                         // cousins
                         if ($show_cousins) {
@@ -531,7 +531,7 @@ class FunctionsCharts
                     echo ' style="padding-left: 2px;"';
                 }
                 echo ' src="', Theme::theme()->parameter('image-hline'), '"></td><td>';
-                FunctionsPrint::printPedigreePerson($fchil);
+                echo FunctionsPrint::printPedigreePerson($fchil);
                 echo '</td></tr>';
                 if ($i < $ctkids) {
                     echo '<tr>';

@@ -48,14 +48,14 @@ class FunctionsPrint
      *
      * @param Individual|null $person The person to print
      *
-     * @return void
+     * @return string
      */
-    public static function printPedigreePerson(Individual $person = null)
+    public static function printPedigreePerson(Individual $person = null): string
     {
         if ($person instanceof Individual) {
-            echo Theme::theme()->individualBox($person);
+            return Theme::theme()->individualBox($person);
         } else {
-            echo Theme::theme()->individualBoxEmpty();
+            return Theme::theme()->individualBoxEmpty();
         }
     }
 

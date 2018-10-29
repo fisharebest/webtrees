@@ -275,14 +275,14 @@ class HourglassChartController extends AbstractChartController
         }
 
         echo '<table cellspacing="0" cellpadding="0" border="0" id="table2_' . $pid . '"><tr><td> ';
-        FunctionsPrint::printPedigreePerson($individual);
+        echo FunctionsPrint::printPedigreePerson($individual);
         echo '</td><td> <img class="lineh1" src="' . Theme::theme()->parameter('image-hline') . '" width="7" height="3">';
 
         //----- Print the spouse
         if ($show_spouse) {
             foreach ($families as $family) {
                 echo "</td></tr><tr><td style='text-align:$otablealign'>";
-                FunctionsPrint::printPedigreePerson($family->getSpouse($individual));
+                echo FunctionsPrint::printPedigreePerson($family->getSpouse($individual));
                 echo '</td><td> </td>';
             }
             //-- add offset divs to make things line up better
@@ -414,7 +414,7 @@ class HourglassChartController extends AbstractChartController
             echo '<td> <img class="lineh2" src="' . Theme::theme()->parameter('image-hline') . '" width="7" height="3"></td>';
             echo '<td class="myCharts"> ';
             //-- print the father box
-            FunctionsPrint::printPedigreePerson($family->getHusband());
+            echo FunctionsPrint::printPedigreePerson($family->getHusband());
             echo '</td>';
             if ($family->getHusband()) {
                 $ARID = $family->getHusband()->getXref();
@@ -451,7 +451,7 @@ class HourglassChartController extends AbstractChartController
                 '<td> <img class="lineh3" src="' . Theme::theme()->parameter('image-hline') . '" width="7" height="3"></td>',
             '<td class="myCharts"> ';
 
-            FunctionsPrint::printPedigreePerson($family->getWife());
+            echo FunctionsPrint::printPedigreePerson($family->getWife());
             echo '</td>';
             if ($family->getWife()) {
                 $ARID = $family->getWife()->getXref();

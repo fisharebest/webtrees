@@ -175,7 +175,7 @@ class AncestorsChartController extends AbstractChartController
             echo '<img src="', Theme::theme()->parameter('image-spacer'), '" height="3" width="2">';
             echo '<img src="', Theme::theme()->parameter('image-hline'), '" height="3" width="13"></td><td>';
         }
-        FunctionsPrint::printPedigreePerson($individual);
+        echo FunctionsPrint::printPedigreePerson($individual);
         echo '</td><td>';
         if ($sosa > 1) {
             echo FontAwesome::linkIcon('arrow-down', I18N::translate('Ancestors of %s', $individual->getFullName()), ['href' => route('ancestors', ['xref'        => $individual->getXref(),
@@ -276,7 +276,7 @@ class AncestorsChartController extends AbstractChartController
 
         ob_start();
 
-        FunctionsPrint::printPedigreePerson($ancestors[1]);
+        echo FunctionsPrint::printPedigreePerson($ancestors[1]);
         foreach ($ancestors as $sosa => $individual) {
             foreach ($individual->getChildFamilies() as $family) {
                 FunctionsCharts::printSosaFamily($family, $individual->getXref(), $sosa, '', '', '', $show_cousins);

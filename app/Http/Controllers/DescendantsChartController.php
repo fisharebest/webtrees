@@ -180,7 +180,7 @@ class DescendantsChartController extends AbstractChartController
             echo '<img src="' . Theme::theme()->parameter('image-spacer') . '" height="3" width="3">';
             echo '<img src="' . Theme::theme()->parameter('image-hline') . '" height="3" width="', 12, '"></td><td>';
         }
-        FunctionsPrint::printPedigreePerson($person);
+        echo FunctionsPrint::printPedigreePerson($person);
         echo '</td>';
 
         // check if child has parents and add an arrow
@@ -262,7 +262,7 @@ class DescendantsChartController extends AbstractChartController
         echo '<ul class="generations" id="' . $uid . '">';
         echo '<li>';
         echo '<table><tr><td>';
-        FunctionsPrint::printPedigreePerson($spouse);
+        echo FunctionsPrint::printPedigreePerson($spouse);
         echo '</td>';
 
         // check if spouse has parents and add an arrow

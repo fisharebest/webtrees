@@ -231,7 +231,7 @@ class FamilyBookChartController extends AbstractChartController
         }
         echo '<table cellspacing="0" cellpadding="0" border="0" ><tr><td>';
         if ($person instanceof Individual) {
-            FunctionsPrint::printPedigreePerson($person);
+            echo FunctionsPrint::printPedigreePerson($person);
             echo '</td><td>',
             '<img class="linef1" src="', Theme::theme()->parameter('image-hline'), '" width="8" height="3">';
         } else {
@@ -245,7 +245,7 @@ class FamilyBookChartController extends AbstractChartController
                 foreach ($person->getSpouseFamilies() as $family) {
                     $spouse = $family->getSpouse($person);
                     echo '</td></tr><tr><td>';
-                    FunctionsPrint::printPedigreePerson($spouse);
+                    echo FunctionsPrint::printPedigreePerson($spouse);
                     $numkids += 0.95;
                     echo '</td><td>';
                 }
@@ -341,7 +341,7 @@ class FamilyBookChartController extends AbstractChartController
             '<td>';
             $lh = $savlh; // restore original line height
             //-- print the father box
-            FunctionsPrint::printPedigreePerson($family->getHusband());
+            echo FunctionsPrint::printPedigreePerson($family->getHusband());
             echo '</td>';
             if ($family->getHusband()) {
                 echo '<td>';
@@ -364,7 +364,7 @@ class FamilyBookChartController extends AbstractChartController
             '<td><img class="linef3" src="', Theme::theme()->parameter('image-hline'), '" height="3"></td>',
             '<td>';
             //-- print the mother box
-            FunctionsPrint::printPedigreePerson($family->getWife());
+            echo FunctionsPrint::printPedigreePerson($family->getWife());
             echo '</td>';
             if ($family->getWife()) {
                 echo '<td>';

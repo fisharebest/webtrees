@@ -186,10 +186,8 @@ class RelationshipsChartController extends AbstractChartController
                     $min_y = min($min_y, $y);
                     $max_y = max($max_y, $y);
                 } else {
-                    $individual = Individual::getInstance($xref, $tree);
-                    ob_start();
-                    FunctionsPrint::printPedigreePerson($individual);
-                    $table[$x][$y] = ob_get_clean();
+                    $individual    = Individual::getInstance($xref, $tree);
+                    $table[$x][$y] = FunctionsPrint::printPedigreePerson($individual);
                 }
             }
             echo '<div class="wt-chart wt-relationship-chart">';
