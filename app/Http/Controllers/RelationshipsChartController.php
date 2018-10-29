@@ -116,103 +116,101 @@ class RelationshipsChartController extends AbstractChartController
 
         // @TODO - convert to views
         ob_start();
-        if ($individual1 && $individual2) {
-            if (I18N::direction() === 'ltr') {
-                $diagonal1 = Theme::theme()->parameter('image-dline');
-                $diagonal2 = Theme::theme()->parameter('image-dline2');
-            } else {
-                $diagonal1 = Theme::theme()->parameter('image-dline2');
-                $diagonal2 = Theme::theme()->parameter('image-dline');
+        if (I18N::direction() === 'ltr') {
+            $diagonal1 = Theme::theme()->parameter('image-dline');
+            $diagonal2 = Theme::theme()->parameter('image-dline2');
+        } else {
+            $diagonal1 = Theme::theme()->parameter('image-dline2');
+            $diagonal2 = Theme::theme()->parameter('image-dline');
+        }
+
+        $num_paths = 0;
+        foreach ($paths as $path) {
+            // Extract the relationship names between pairs of individuals
+            $relationships = $this->oldStyleRelationshipPath($tree, $path);
+            if (empty($relationships)) {
+                // Cannot see one of the families/individuals, due to privacy;
+                continue;
             }
+            echo '<h3>', I18N::translate('Relationship: %s', Functions::getRelationshipNameFromPath(implode('', $relationships), $individual1, $individual2)), '</h3>';
+            $num_paths++;
 
-            $num_paths = 0;
-            foreach ($paths as $path) {
-                // Extract the relationship names between pairs of individuals
-                $relationships = $this->oldStyleRelationshipPath($tree, $path);
-                if (empty($relationships)) {
-                    // Cannot see one of the families/individuals, due to privacy;
-                    continue;
-                }
-                echo '<h3>', I18N::translate('Relationship: %s', Functions::getRelationshipNameFromPath(implode('', $relationships), $individual1, $individual2)), '</h3>';
-                $num_paths++;
-
-                // Use a table/grid for layout.
-                $table = [];
-                // Current position in the grid.
-                $x = 0;
-                $y = 0;
-                // Extent of the grid.
-                $min_y = 0;
-                $max_y = 0;
-                $max_x = 0;
-                // For each node in the path.
-                foreach ($path as $n => $xref) {
-                    if ($n % 2 === 1) {
-                        switch ($relationships[$n]) {
-                            case 'hus':
-                            case 'wif':
-                            case 'spo':
-                            case 'bro':
-                            case 'sis':
-                            case 'sib':
-                                $table[$x + 1][$y] = '<div style="background:url(' . Theme::theme()->parameter('image-hline') . ') repeat-x center;  width: 94px; text-align: center"><div class="hline-text" style="height: 32px;">' . Functions::getRelationshipNameFromPath($relationships[$n], Individual::getInstance($path[$n - 1], $tree), Individual::getInstance($path[$n + 1], $tree)) . '</div><div style="height: 32px;">' . FontAwesome::decorativeIcon('arrow-end') . '</div></div>';
+            // Use a table/grid for layout.
+            $table = [];
+            // Current position in the grid.
+            $x = 0;
+            $y = 0;
+            // Extent of the grid.
+            $min_y = 0;
+            $max_y = 0;
+            $max_x = 0;
+            // For each node in the path.
+            foreach ($path as $n => $xref) {
+                if ($n % 2 === 1) {
+                    switch ($relationships[$n]) {
+                        case 'hus':
+                        case 'wif':
+                        case 'spo':
+                        case 'bro':
+                        case 'sis':
+                        case 'sib':
+                            $table[$x + 1][$y] = '<div style="background:url(' . Theme::theme()->parameter('image-hline') . ') repeat-x center;  width: 94px; text-align: center"><div class="hline-text" style="height: 32px;">' . Functions::getRelationshipNameFromPath($relationships[$n], Individual::getInstance($path[$n - 1], $tree), Individual::getInstance($path[$n + 1], $tree)) . '</div><div style="height: 32px;">' . FontAwesome::decorativeIcon('arrow-end') . '</div></div>';
+                            $x += 2;
+                            break;
+                        case 'son':
+                        case 'dau':
+                        case 'chi':
+                            if ($n > 2 && preg_match('/fat|mot|par/', $relationships[$n - 2])) {
+                                $table[$x + 1][$y - 1] = '<div style="background:url(' . $diagonal2 . '); width: 64px; height: 64px; text-align: center;"><div style="height: 32px; text-align: end;">' . Functions::getRelationshipNameFromPath($relationships[$n], Individual::getInstance($path[$n - 1], $tree), Individual::getInstance($path[$n + 1], $tree)) . '</div><div style="height: 32px; text-align: start;">' . FontAwesome::decorativeIcon('arrow-down') . '</div></div>';
                                 $x += 2;
-                                break;
-                            case 'son':
-                            case 'dau':
-                            case 'chi':
-                                if ($n > 2 && preg_match('/fat|mot|par/', $relationships[$n - 2])) {
-                                    $table[$x + 1][$y - 1] = '<div style="background:url(' . $diagonal2 . '); width: 64px; height: 64px; text-align: center;"><div style="height: 32px; text-align: end;">' . Functions::getRelationshipNameFromPath($relationships[$n], Individual::getInstance($path[$n - 1], $tree), Individual::getInstance($path[$n + 1], $tree)) . '</div><div style="height: 32px; text-align: start;">' . FontAwesome::decorativeIcon('arrow-down') . '</div></div>';
-                                    $x += 2;
-                                } else {
-                                    $table[$x][$y - 1] = '<div style="background:url(' . Theme::theme()
-                                            ->parameter('image-vline') . ') repeat-y center; height: 64px; text-align: center;"><div class="vline-text" style="display: inline-block; width:50%; line-height: 64px;">' . Functions::getRelationshipNameFromPath($relationships[$n], Individual::getInstance($path[$n - 1], $tree), Individual::getInstance($path[$n + 1], $tree)) . '</div><div style="display: inline-block; width:50%; line-height: 64px;">' . FontAwesome::decorativeIcon('arrow-down') . '</div></div>';
-                                }
-                                $y -= 2;
-                                break;
-                            case 'fat':
-                            case 'mot':
-                            case 'par':
-                                if ($n > 2 && preg_match('/son|dau|chi/', $relationships[$n - 2])) {
-                                    $table[$x + 1][$y + 1] = '<div style="background:url(' . $diagonal1 . '); background-position: top right; width: 64px; height: 64px; text-align: center;"><div style="height: 32px; text-align: start;">' . Functions::getRelationshipNameFromPath($relationships[$n], Individual::getInstance($path[$n - 1], $tree), Individual::getInstance($path[$n + 1], $tree)) . '</div><div style="height: 32px; text-align: end;">' . FontAwesome::decorativeIcon('arrow-down') . '</div></div>';
-                                    $x += 2;
-                                } else {
-                                    $table[$x][$y + 1] = '<div style="background:url(' . Theme::theme()
-                                            ->parameter('image-vline') . ') repeat-y center; height: 64px; text-align:center; "><div class="vline-text" style="display: inline-block; width: 50%; line-height: 32px;">' . Functions::getRelationshipNameFromPath($relationships[$n], Individual::getInstance($path[$n - 1], $tree), Individual::getInstance($path[$n + 1], $tree)) . '</div><div style="display: inline-block; width: 50%; line-height: 32px">' . FontAwesome::decorativeIcon('arrow-up') . '</div></div>';
-                                }
-                                $y += 2;
-                                break;
-                        }
-                        $max_x = max($max_x, $x);
-                        $min_y = min($min_y, $y);
-                        $max_y = max($max_y, $y);
-                    } else {
-                        $individual = Individual::getInstance($xref, $tree);
-                        ob_start();
-                        FunctionsPrint::printPedigreePerson($individual);
-                        $table[$x][$y] = ob_get_clean();
+                            } else {
+                                $table[$x][$y - 1] = '<div style="background:url(' . Theme::theme()
+                                        ->parameter('image-vline') . ') repeat-y center; height: 64px; text-align: center;"><div class="vline-text" style="display: inline-block; width:50%; line-height: 64px;">' . Functions::getRelationshipNameFromPath($relationships[$n], Individual::getInstance($path[$n - 1], $tree), Individual::getInstance($path[$n + 1], $tree)) . '</div><div style="display: inline-block; width:50%; line-height: 64px;">' . FontAwesome::decorativeIcon('arrow-down') . '</div></div>';
+                            }
+                            $y -= 2;
+                            break;
+                        case 'fat':
+                        case 'mot':
+                        case 'par':
+                            if ($n > 2 && preg_match('/son|dau|chi/', $relationships[$n - 2])) {
+                                $table[$x + 1][$y + 1] = '<div style="background:url(' . $diagonal1 . '); background-position: top right; width: 64px; height: 64px; text-align: center;"><div style="height: 32px; text-align: start;">' . Functions::getRelationshipNameFromPath($relationships[$n], Individual::getInstance($path[$n - 1], $tree), Individual::getInstance($path[$n + 1], $tree)) . '</div><div style="height: 32px; text-align: end;">' . FontAwesome::decorativeIcon('arrow-down') . '</div></div>';
+                                $x += 2;
+                            } else {
+                                $table[$x][$y + 1] = '<div style="background:url(' . Theme::theme()
+                                        ->parameter('image-vline') . ') repeat-y center; height: 64px; text-align:center; "><div class="vline-text" style="display: inline-block; width: 50%; line-height: 32px;">' . Functions::getRelationshipNameFromPath($relationships[$n], Individual::getInstance($path[$n - 1], $tree), Individual::getInstance($path[$n + 1], $tree)) . '</div><div style="display: inline-block; width: 50%; line-height: 32px">' . FontAwesome::decorativeIcon('arrow-up') . '</div></div>';
+                            }
+                            $y += 2;
+                            break;
                     }
+                    $max_x = max($max_x, $x);
+                    $min_y = min($min_y, $y);
+                    $max_y = max($max_y, $y);
+                } else {
+                    $individual = Individual::getInstance($xref, $tree);
+                    ob_start();
+                    FunctionsPrint::printPedigreePerson($individual);
+                    $table[$x][$y] = ob_get_clean();
                 }
-                echo '<div class="wt-chart wt-relationship-chart">';
-                echo '<table style="border-collapse: collapse; margin: 20px 50px;">';
-                for ($y = $max_y; $y >= $min_y; --$y) {
-                    echo '<tr>';
-                    for ($x = 0; $x <= $max_x; ++$x) {
-                        echo '<td style="padding: 0;">';
-                        if (isset($table[$x][$y])) {
-                            echo $table[$x][$y];
-                        }
-                        echo '</td>';
-                    }
-                    echo '</tr>';
-                }
-                echo '</table>';
-                echo '</div>';
             }
+            echo '<div class="wt-chart wt-relationship-chart">';
+            echo '<table style="border-collapse: collapse; margin: 20px 50px;">';
+            for ($y = $max_y; $y >= $min_y; --$y) {
+                echo '<tr>';
+                for ($x = 0; $x <= $max_x; ++$x) {
+                    echo '<td style="padding: 0;">';
+                    if (isset($table[$x][$y])) {
+                        echo $table[$x][$y];
+                    }
+                    echo '</td>';
+                }
+                echo '</tr>';
+            }
+            echo '</table>';
+            echo '</div>';
+        }
 
-            if (!$num_paths) {
-                echo '<p>', I18N::translate('No link between the two individuals could be found.'), '</p>';
-            }
+        if (!$num_paths) {
+            echo '<p>', I18N::translate('No link between the two individuals could be found.'), '</p>';
         }
 
         $html = ob_get_clean();
