@@ -384,8 +384,6 @@ class FunctionsCharts
                             //find out how many cousins there are to establish vertical line on second families
                             $fchildren = $famids[$f]->getChildren();
                             $kids      = count($fchildren);
-                            $Pheader   = ($bheight - 1) * $kids;
-                            $PBadj     = 6; // default
 
                             if ($show_cousins) {
                                 if ($kids > 0) {
