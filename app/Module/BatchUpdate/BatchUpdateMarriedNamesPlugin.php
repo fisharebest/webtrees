@@ -126,15 +126,20 @@ class BatchUpdateMarriedNamesPlugin extends BatchUpdateBasePlugin
         $missing_surnames = [];
 
         preg_match_all('/^1 FAMS @(.+)@/m', $gedcom, $fmatch);
+
         foreach ($fmatch[1] as $famid) {
             $family = Family::getInstance($famid, $tree);
             $famrec = $family->getGedcom();
 
             if (preg_match('/^1 MARR/m', $famrec) && preg_match('/^1 HUSB @(.+)@/m', $famrec, $hmatch)) {
-                $spouse        = Individual::getInstance($hmatch[1], $tree);
-                $husb_surnames = array_unique(array_merge($husb_surnames, $this->surnames($spouse)));
+                $spouse = Individual::getInstance($hmatch[1], $tree);
+
+                if ($spouse instanceof Individual) {
+                    $husb_surnames = array_unique(array_merge($husb_surnames, $this->surnames($spouse)));
+                }
             }
         }
+
         foreach ($husb_surnames as $husb_surname) {
             if (!in_array($husb_surname, $wife_surnames)) {
                 $missing_surnames[] = $husb_surname;
