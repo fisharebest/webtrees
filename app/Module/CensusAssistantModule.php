@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Tree;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * Class CensusAssistantModule
@@ -70,9 +71,14 @@ class CensusAssistantModule extends AbstractModule implements ModuleInterface
 
         $individual = Individual::getInstance($request->get('xref', ''), $tree);
         $head       = Individual::getInstance($request->get('head', ''), $tree);
-        $html       = $this->censusTableRow(new $census(), $individual, $head);
 
-        return new Response($html);
+        if ($individual instanceof Individual && $head instanceof Individual) {
+            $html = $this->censusTableRow(new $census(), $individual, $head);
+
+            return new Response($html);
+        } else {
+            throw new NotFoundHttpException();
+        }
     }
 
     /**
