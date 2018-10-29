@@ -177,7 +177,7 @@ class MessageController extends AbstractBaseController
         $url        = $request->get('url', '');
 
         $to_user = User::findByUserName($to);
-        $ip      = $request->getClientIp();
+        $ip      = $request->getClientIp() ?? '127.0.0.1';
 
         if (!in_array($to_user, $this->validContacts($tree))) {
             throw new AccessDeniedHttpException('Invalid contact user id');
