@@ -88,7 +88,7 @@ class MessageController extends AbstractBaseController
         $to      = $request->get('to', '');
         $url     = $request->get('url', '');
 
-        $ip       = (string) $request->getClientIp();
+        $ip       = $request->getClientIp() ?? '127.0.0.1';
         $to_users = $this->recipientUsers($to);
 
         if ($body === '' || $subject === '') {
@@ -282,7 +282,7 @@ class MessageController extends AbstractBaseController
         $url     = $request->get('url', '');
 
         $to_user = User::findByUserName($to);
-        $ip      = $request->getClientIp();
+        $ip      = $request->getClientIp() ?? '127.0.0.1';
 
         if ($to_user === null || $to_user->getPreference('contactmethod') === 'none') {
             throw new AccessDeniedHttpException('Invalid contact user id');
