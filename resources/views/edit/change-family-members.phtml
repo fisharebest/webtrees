@@ -52,7 +52,7 @@
                 <?php endif ?>
             </label>
             <div class="col-sm-9 wt-page-options-value">
-                <?= FunctionsEdit::formControlIndividual($tree, $child, ['id' => 'CHIL' . $n, 'name' => 'CHIL' . $n]) ?>
+                <?= FunctionsEdit::formControlIndividual($tree, $child, ['id' => 'CHIL' . $n, 'name' => 'CHIL[]']) ?>
             </div>
         </div>
     <?php endforeach ?>
@@ -62,7 +62,7 @@
             <?= I18N::translate('Child') ?>
         </label>
         <div class="col-sm-9 wt-page-options-value">
-            <?= FunctionsEdit::formControlIndividual($tree, null, ['id' => 'CHIL' . (count($children) + 1), 'name' => 'CHIL' . (count($children) + 1)]) ?>
+            <?= FunctionsEdit::formControlIndividual($tree, null, ['id' => 'CHIL[]' . (count($children) + 1), 'name' => 'CHIL[]']) ?>
         </div>
     </div>
 
