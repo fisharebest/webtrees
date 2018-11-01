@@ -244,12 +244,12 @@
                         <?php endif ?>
                     </td>
                     <td>
-                        <?php if ($privacy_restriction->tag_label) : ?>
-                            <?= $privacy_restriction->tag_label ?>
-                        <?php else : ?>
+                        <?php if ($privacy_restriction->tag_label === '') : ?>
                             <div class="text-muted">
                                 <?= I18N::translate('All facts and events') ?>
                             </div>
+                        <?php else : ?>
+                            <?= $privacy_restriction->tag_label ?>
                         <?php endif ?>
                     </td>
                     <td>

@@ -1509,6 +1509,8 @@ class AdminController extends AbstractBaseController
 
             if ($restriction->tag_type) {
                 $restriction->tag_label = GedcomTag::getLabel($restriction->tag_type);
+            } else {
+                $restriction->tag_label = '';
             }
         }
 
