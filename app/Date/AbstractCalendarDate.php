@@ -21,6 +21,7 @@ use Fisharebest\ExtCalendar\CalendarInterface;
 use Fisharebest\ExtCalendar\JewishCalendar;
 use Fisharebest\Webtrees\DebugBar;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Tree;
 
 /**
  * Classes for Gedcom Date/Calendar functionality.
@@ -961,10 +962,11 @@ abstract class AbstractCalendarDate
      * Create a URL that links this date to the WT calendar
      *
      * @param string $date_format
+     * @param Tree   $tree
      *
      * @return string
      */
-    public function calendarUrl(string $date_format): string
+    public function calendarUrl(string $date_format, Tree $tree): string
     {
         if (strpbrk($date_format, 'dDj') && $this->day) {
             // If the format includes a day, and the date also includes a day, then use the day view
@@ -983,6 +985,7 @@ abstract class AbstractCalendarDate
             'month' => $this->formatGedcomMonth(),
             'day'   => $this->formatGedcomDay(),
             'view'  => $view,
+            'ged'   => $tree->getName(),
         ]);
     }
 }

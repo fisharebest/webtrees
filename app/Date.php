@@ -306,9 +306,9 @@ class Date
                 if ($d1 != $d1tmp && $d1tmp !== '') {
                     if ($url) {
                         if ($CALENDAR_FORMAT !== 'none') {
-                            $conv1 .= ' <span dir="' . I18N::direction() . '">(<a href="' . $d1conv->calendarUrl($date_format) . '" rel="nofollow">' . $d1tmp . '</a>)</span>';
+                            $conv1 .= ' <span dir="' . I18N::direction() . '">(<a href="' . $d1conv->calendarUrl($date_format, $tree) . '" rel="nofollow">' . $d1tmp . '</a>)</span>';
                         } else {
-                            $conv1 .= ' <span dir="' . I18N::direction() . '"><br><a href="' . $d1conv->calendarUrl($date_format) . '" rel="nofollow">' . $d1tmp . '</a></span>';
+                            $conv1 .= ' <span dir="' . I18N::direction() . '"><br><a href="' . $d1conv->calendarUrl($date_format, $tree) . '" rel="nofollow">' . $d1tmp . '</a></span>';
                         }
                     } else {
                         $conv1 .= ' <span dir="' . I18N::direction() . '">(' . $d1tmp . ')</span>';
@@ -316,7 +316,7 @@ class Date
                 }
                 if ($this->date2 !== null && $d2 != $d2tmp && $d1tmp != '') {
                     if ($url) {
-                        $conv2 .= ' <span dir="' . I18N::direction() . '">(<a href="' . $d2conv->calendarUrl($date_format) . '" rel="nofollow">' . $d2tmp . '</a>)</span>';
+                        $conv2 .= ' <span dir="' . I18N::direction() . '">(<a href="' . $d2conv->calendarUrl($date_format, $tree) . '" rel="nofollow">' . $d2tmp . '</a>)</span>';
                     } else {
                         $conv2 .= ' <span dir="' . I18N::direction() . '">(' . $d2tmp . ')</span>';
                     }
@@ -326,9 +326,9 @@ class Date
 
         // Add URLs, if requested
         if ($url) {
-            $d1 = '<a href="' . $this->date1->calendarUrl($date_format) . '" rel="nofollow">' . $d1 . '</a>';
+            $d1 = '<a href="' . $this->date1->calendarUrl($date_format, $tree) . '" rel="nofollow">' . $d1 . '</a>';
             if ($this->date2 instanceof AbstractCalendarDate) {
-                $d2 = '<a href="' . $this->date2->calendarUrl($date_format) . '" rel="nofollow">' . $d2 . '</a>';
+                $d2 = '<a href="' . $this->date2->calendarUrl($date_format, $tree) . '" rel="nofollow">' . $d2 . '</a>';
             }
         }
 
