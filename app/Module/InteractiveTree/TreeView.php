@@ -235,7 +235,7 @@ class TreeView
             return '';
         }
 
-        if (!empty($pfamily)) {
+        if ($pfamily instanceof Family) {
             $partner = $pfamily->getSpouse($person);
         } else {
             $partner = $person->getCurrentSpouse();
@@ -261,7 +261,9 @@ class TreeView
         // Fixing the width for td to the box initial width when the person is the root person fix a rare bug that happen when a person without child and without known parents is the root person : an unwanted white rectangle appear at the right of the person’s boxes, otherwise.
         $html .= '<td' . ($isRoot ? ' style="width:1px"' : '') . '><div class="tv_box' . ($isRoot ? ' rootPerson' : '') . '" dir="' . I18N::direction() . '" style="text-align: ' . (I18N::direction() === 'rtl' ? 'right' : 'left') . '; direction: ' . I18N::direction() . '" abbr="' . $person->getXref() . '" onclick="' . $this->name . 'Handler.expandBox(this, event);">';
         $html .= $this->drawPersonName($person, '');
+
         $fop = []; // $fop is fathers of partners
+
         if ($partner !== null) {
             $dashed = '';
             foreach ($person->getSpouseFamilies() as $family) {
@@ -269,44 +271,37 @@ class TreeView
                 if ($spouse instanceof Individual) {
                     $spouse_parents = $spouse->getPrimaryChildFamily();
                     if ($spouse_parents instanceof Family) {
-                        // Prefer the paternal line
-                        $parent = $spouse_parents->getHusband() ?? $spouse_parents->getWife();
+                        $spouse_parent = $spouse_parents->getHusband() ?? $spouse_parents->getWife();
 
-                        // The family may have no parents (just children).
-                        if ($parent instanceof Individual) {
-                            $fop[] = [
-                                $parent,
-                                $spouse_parents,
-                            ];
+                        if ($spouse_parent instanceof Individual) {
+                            $fop[] = [$spouse_parent, $spouse_parents];
                         }
-                        $html .= $this->drawPersonName($spouse, $dashed);
-                        $dashed = 'dashed';
                     }
+
+                    $html .= $this->drawPersonName($spouse, $dashed);
+                    $dashed = 'dashed';
                 }
             }
         }
         $html .= '</div></td>';
 
         $primaryChildFamily = $person->getPrimaryChildFamily();
-
         if ($primaryChildFamily instanceof Family) {
-            // Prefer the paternal line
             $parent = $primaryChildFamily->getHusband() ?? $primaryChildFamily->getWife();
         } else {
             $parent = null;
         }
 
-        // The family may have no parents (just children).
         if ($parent instanceof Individual || !empty($fop) || $state < 0) {
             $html .= $this->drawHorizontalLine();
         }
 
         /* draw the parents */
-        if ($primaryChildFamily instanceof Family && $state >= 0 && ($parent instanceof Individual || !empty($fop))) {
+        if ($state >= 0 && ($parent instanceof Individual || !empty($fop))) {
             $unique = $parent === null || empty($fop);
             $html .= '<td align="left"><table class="tv_tree"><tbody>';
 
-            if (!empty($parent)) {
+            if ($parent instanceof Individual) {
                 $u = $unique ? 'c' : 't';
                 $html .= '<tr><td ' . ($gen == 0 ? ' abbr="p' . $primaryChildFamily->getXref() . '@' . $u . '"' : '') . '>';
                 $html .= $this->drawPerson($parent, $gen - 1, 1, $primaryChildFamily, $u, false);
