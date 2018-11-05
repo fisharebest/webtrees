@@ -1249,7 +1249,7 @@ class Individual extends GedcomRecord
         // Add placeholder for unknown given name
         if (!$GIVN) {
             $GIVN = '@P.N.';
-            $pos  = strpos($full, '/');
+            $pos  = (int) strpos($full, '/');
             $full = substr($full, 0, $pos) . '@P.N. ' . substr($full, $pos);
         }
 
