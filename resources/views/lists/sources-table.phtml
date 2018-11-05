@@ -21,6 +21,7 @@ $count_notes       = Database::prepare(
 
 <table
     class="table table-bordered table-sm wt-table-source datatables d-none"
+    <?= view('lists/datatables-attributes') ?>
     data-columns="<?= e(json_encode([
         null,
         null,
@@ -30,7 +31,6 @@ $count_notes       = Database::prepare(
         ['visible' => array_sum($count_notes) > 0],
         ['visible' => (bool) $tree->getPreference('SHOW_LAST_CHANGE'), 'searchable' => false],
     ])) ?>"
-    data-state-save="true"
 >
     <caption class="sr-only">
         <?= $caption ?? I18N::translate('Sources') ?>
