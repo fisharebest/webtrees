@@ -152,7 +152,7 @@ class FunctionsPrintFacts
                     $type  = ''; // Do not print this again
                 } else {
                     // An unspecified fact/event
-                    $label = $fact->getLabel();
+                    $label = $fact->label();
                 }
                 break;
             case 'MARR':
@@ -162,12 +162,12 @@ class FunctionsPrintFacts
                     $label = GedcomTag::getLabel('MARR_' . $utype, $label_person);
                     $type  = ''; // Do not print this again
                 } else {
-                    $label = $fact->getLabel();
+                    $label = $fact->label();
                 }
                 break;
             default:
                 // Normal fact/event
-                $label = $fact->getLabel();
+                $label = $fact->label();
                 break;
         }
 

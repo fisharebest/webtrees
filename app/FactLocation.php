@@ -64,7 +64,7 @@ class FactLocation extends Location
         $parent      = $this->fact->record();
         $name        = '';
         $url         = '';
-        $tag         = $this->fact->getLabel();
+        $tag         = $this->fact->label();
         $addbirthtag = false;
 
         if ($parent instanceof Family) {

@@ -10,7 +10,7 @@
         <?= $record->getSexImage() ?>
     <?php endif ?>
     <div class="indent">
-        <?= $fact->getLabel() . ' — ' . $fact->date()->display(true); ?>
+        <?= $fact->label() . ' — ' . $fact->date()->display(true); ?>
         <?= ' (' . I18N::timeAgo($fact->anniv * 365 * 24 * 60 * 60) . ')'; ?>
         <?php if (!$fact->place()->isEmpty()) : ?>
             <?= ' — <a href="' . $fact->place()->getURL() . '">' . $fact->place()->getFullName() . '</a>'; ?>

@@ -330,7 +330,7 @@
             echo $event->record()->getFullName() . ' — ';
         }
         $record = $event->record();
-        echo $event->getLabel();
+        echo $event->label();
         echo ' — ';
         if ($record instanceof Individual) {
             echo FunctionsPrint::formatFactDate($event, $record, false, false);

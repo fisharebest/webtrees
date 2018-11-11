@@ -527,7 +527,7 @@ class CalendarController extends AbstractBaseController
      */
     private function calendarFactText(Fact $fact, bool $show_places): string
     {
-        $text = $fact->getLabel() . ' — ' . $fact->date()->display(true, null, false);
+        $text = $fact->label() . ' — ' . $fact->date()->display(true, null, false);
         if ($fact->anniv) {
             $text .= ' (' . I18N::translate('%s year anniversary', $fact->anniv) . ')';
         }
