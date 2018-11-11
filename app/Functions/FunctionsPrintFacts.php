@@ -633,11 +633,6 @@ class FunctionsPrintFacts
                     $data .= FunctionsPrint::printFactNotes($tree, $srec, $nlevel);
                     $data .= '</div>';
                     $data .= '</div>';
-                } else {
-                    // Here we could show that we do actually have sources for this data,
-                    // but not the details. For example “Sources: ”.
-                    // But not by default, based on user feedback.
-                    // https://webtrees.net/index.php/en/forum/3-help-for-beta-and-svn-versions/27002-source-media-privacy-issue
                 }
             } else {
                 $data .= GedcomTag::getLabelValue('SOUR', '<span class="error">' . $sid . '</span>');
