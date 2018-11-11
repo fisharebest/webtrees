@@ -106,7 +106,7 @@
                 <th scope="row">
                 </th>
                 <td>
-                    <?= GedcomTag::getLabelValue($fact->getTag(), $fact->getDate()->display() . ' — ' . $fact->getPlace()->getFullName()) ?>
+                    <?= GedcomTag::getLabelValue($fact->getTag(), $fact->getDate()->display() . ' — ' . $fact->place()->getFullName()) ?>
                 </td>
             </tr>
 

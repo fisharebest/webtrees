@@ -199,7 +199,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
         foreach ($ancestors as $sosa => $person) {
             if ($person !== null && $person->canShow()) {
                 $birth = $person->getFirstFact('BIRT');
-                if ($birth instanceof Fact && !$birth->getPlace()->isEmpty()) {
+                if ($birth instanceof Fact && !$birth->place()->isEmpty()) {
                     $facts[$sosa] = $birth;
                 }
             }

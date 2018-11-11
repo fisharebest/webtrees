@@ -301,7 +301,7 @@ class Fact
      *
      * @return Place
      */
-    public function getPlace(): Place
+    public function place(): Place
     {
         if ($this->place === null) {
             $this->place = new Place($this->attribute('PLAC'), $this->record()->getTree());
@@ -526,8 +526,8 @@ class Fact
                 }
             }
             // Fact place
-            if (!$this->getPlace()->isEmpty()) {
-                $attributes[] = $this->getPlace()->getShortName();
+            if (!$this->place()->isEmpty()) {
+                $attributes[] = $this->place()->getShortName();
             }
         }
 

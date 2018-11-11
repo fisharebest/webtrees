@@ -324,7 +324,7 @@ class Family extends GedcomRecord
     {
         $marriage = $this->getMarriage();
 
-        return $marriage->getPlace();
+        return $marriage->place();
     }
 
     /**

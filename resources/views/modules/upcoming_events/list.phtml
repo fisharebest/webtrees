@@ -12,8 +12,8 @@
     <div class="indent">
         <?= $fact->getLabel() . ' — ' . $fact->getDate()->display(true); ?>
         <?= ' (' . I18N::timeAgo($fact->anniv * 365 * 24 * 60 * 60) . ')'; ?>
-        <?php if (!$fact->getPlace()->isEmpty()) : ?>
-            <?= ' — <a href="' . $fact->getPlace()->getURL() . '">' . $fact->getPlace()->getFullName() . '</a>'; ?>
+        <?php if (!$fact->place()->isEmpty()) : ?>
+            <?= ' — <a href="' . $fact->place()->getURL() . '">' . $fact->place()->getFullName() . '</a>'; ?>
         <?php endif ?>
     </div>
 <?php endforeach ?>

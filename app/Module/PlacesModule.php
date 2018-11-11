@@ -145,7 +145,7 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
             // Add birth of children from this family to the facts array
             foreach ($family->getChildren() as $child) {
                 $childsBirth = $child->getFirstFact('BIRT');
-                if ($childsBirth && !$childsBirth->getPlace()->isEmpty()) {
+                if ($childsBirth && !$childsBirth->place()->isEmpty()) {
                     $facts[] = $childsBirth;
                 }
             }
@@ -156,7 +156,7 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
         $useable_facts = array_filter(
             $facts,
             function (Fact $item): bool {
-                return !$item->getPlace()->isEmpty();
+                return !$item->place()->isEmpty();
             }
         );
 

@@ -379,10 +379,10 @@ class FunctionsPrint
 
         if ($anchor) {
             // Show the full place name, for facts/events tab
-            $html = '<a href="' . $event->getPlace()->getURL() . '">' . $event->getPlace()->getFullName() . '</a>';
+            $html = '<a href="' . $event->place()->getURL() . '">' . $event->place()->getFullName() . '</a>';
         } else {
             // Abbreviate the place name, for chart boxes
-            return $event->getPlace()->getShortName();
+            return $event->place()->getShortName();
         }
 
         if ($sub_records) {
