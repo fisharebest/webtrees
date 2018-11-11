@@ -22,7 +22,7 @@
     </thead>
     <tbody>
         <?php foreach ($facts as $fact) : ?>
-            <?php $record = $fact->getParent(); ?>
+            <?php $record = $fact->record(); ?>
             <tr>
                 <td data-sort="<?= e($record->getSortName()) ?>">
                     <a href="<?= e($record->url()) ?>">

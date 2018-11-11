@@ -314,22 +314,22 @@
             echo 'right: 3px;">';
         }
 
-        $col = array_search($event->getParent(), $individuals);
+        $col = array_search($event->record(), $individuals);
         if ($col === false) {
             // Marriage event - use the color of the husband
-            $col = array_search($event->getParent()->getHusband(), $individuals);
+            $col = array_search($event->record()->getHusband(), $individuals);
         }
         if ($col === false) {
             // Marriage event - use the color of the wife
-            $col = array_search($event->getParent()->getWife(), $individuals);
+            $col = array_search($event->record()->getWife(), $individuals);
         }
         $col = $col % 6;
         echo '</td><td class="person' . $col . '">';
         if (count($individuals) > 6) {
             // We only have six colours, so show naes if more than this number
-            echo $event->getParent()->getFullName() . ' — ';
+            echo $event->record()->getFullName() . ' — ';
         }
-        $record = $event->getParent();
+        $record = $event->record();
         echo $event->getLabel();
         echo ' — ';
         if ($record instanceof Individual) {
@@ -359,8 +359,8 @@
             echo ' — ' . $event->getPlace()->getShortName();
         }
         // Print spouses names for family events
-        if ($event->getParent() instanceof Family) {
-            echo ' — <a href="', e($event->getParent()->url()), '">', $event->getParent()->getFullName(), '</a>';
+        if ($event->record() instanceof Family) {
+            echo ' — <a href="', e($event->record()->url()), '">', $event->record()->getFullName(), '</a>';
         }
         echo '</td></tr></table>';
         echo '</div>';

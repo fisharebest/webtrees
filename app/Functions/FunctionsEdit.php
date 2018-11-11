@@ -968,7 +968,7 @@ class FunctionsEdit
      */
     public static function createEditForm(Fact $fact)
     {
-        $record = $fact->getParent();
+        $record = $fact->record();
         $tree   = $record->getTree();
 
         self::$tags = [];

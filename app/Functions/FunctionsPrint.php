@@ -310,7 +310,7 @@ class FunctionsPrint
                             } else {
                                 $ageText = '(' . $age . ' ' . I18N::translate('after death') . ')';
                                 // Family events which occur after death are probably errors
-                                if ($event->getParent() instanceof Family) {
+                                if ($event->record() instanceof Family) {
                                     $ageText .= '<i class="icon-warning"></i>';
                                 }
                             }
@@ -375,7 +375,7 @@ class FunctionsPrint
      */
     public static function formatFactPlace(Fact $event, $anchor = false, $sub_records = false, $lds = false): string
     {
-        $tree = $event->getParent()->getTree();
+        $tree = $event->record()->getTree();
 
         if ($anchor) {
             // Show the full place name, for facts/events tab

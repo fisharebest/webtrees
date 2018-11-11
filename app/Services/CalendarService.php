@@ -155,7 +155,7 @@ class CalendarService
         }
 
         foreach ($found_facts as $fact) {
-            $record = $fact->getParent();
+            $record = $fact->record();
             // only living people ?
             if ($only_living) {
                 if ($record instanceof Individual && $record->isDead()) {
@@ -183,7 +183,7 @@ class CalendarService
                 break;
             case 'alpha':
                 uasort($facts, function (Fact $x, Fact $y): int {
-                    return GedcomRecord::compare($x->getParent(), $y->getParent());
+                    return GedcomRecord::compare($x->record(), $y->record());
                 });
                 break;
         }

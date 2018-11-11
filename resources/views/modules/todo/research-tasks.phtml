@@ -24,9 +24,9 @@
                 <td data-sort="<?= $task->getDate()->julianDay() ?>" class="d-none d-md-table-cell wt-side-block-optional">
                     <?= $task->getDate()->display() ?>
                 </td>
-                <td data-sort="<?= e($task->getParent()->getSortName()) ?>">
-                    <a href="<?= e($task->getParent()->url()) ?>">
-                        <?= $task->getParent()->getFullName() ?>
+                <td data-sort="<?= e($task->record()->getSortName()) ?>">
+                    <a href="<?= e($task->record()->url()) ?>">
+                        <?= $task->record()->getFullName() ?>
                     </a>
                 </td>
                 <td class="d-none d-md-table-cell wt-side-block-optional">

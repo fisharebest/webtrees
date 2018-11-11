@@ -61,7 +61,7 @@ class FactLocation extends Location
     public function shortSummary(string $datatype, int $sosa): array
     {
         $self        = $this->individual->getXref();
-        $parent      = $this->fact->getParent();
+        $parent      = $this->fact->record();
         $name        = '';
         $url         = '';
         $tag         = $this->fact->getLabel();

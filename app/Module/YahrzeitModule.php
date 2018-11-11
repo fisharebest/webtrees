@@ -125,7 +125,7 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface
                         $yahrzeit_date = new Date($yahrzeit_date->format('%@ %A %O %E'));
 
                         $yahrzeits[] = (object) [
-                            'individual'    => $fact->getParent(),
+                            'individual'    => $fact->record(),
                             'fact_date'     => $fact->getDate(),
                             'fact'          => $fact,
                             'jd'            => $jd,

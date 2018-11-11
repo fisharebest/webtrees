@@ -301,7 +301,7 @@ class CalendarController extends AbstractBaseController
             case 'year':
             case 'day':
                 foreach ($found_facts as $fact) {
-                    $record = $fact->getParent();
+                    $record = $fact->record();
                     $xref   = $record->getXref();
                     if ($record instanceof Individual) {
                         if (empty($indis[$xref])) {
@@ -322,7 +322,7 @@ class CalendarController extends AbstractBaseController
                 foreach ($found_facts as $d => $facts) {
                     $cal_facts[$d] = [];
                     foreach ($facts as $fact) {
-                        $xref = $fact->getParent()->getXref();
+                        $xref = $fact->record()->getXref();
                         if (empty($cal_facts[$d][$xref])) {
                             $cal_facts[$d][$xref] = $this->calendarFactText($fact, false);
                         } else {
@@ -483,7 +483,7 @@ class CalendarController extends AbstractBaseController
         $filtered      = [];
         $hundred_years = WT_CLIENT_JD - 36525;
         foreach ($facts as $fact) {
-            $record = $fact->getParent();
+            $record = $fact->record();
             if ($filtersx) {
                 // Filter on sex
                 if ($record instanceof Individual && $filtersx !== $record->getSex()) {

@@ -64,7 +64,7 @@ class FunctionsPrintFacts
         // Keep a track of children and grandchildren, so we can display their birth order "#1", "#2", etc.
         static $children = [], $grandchildren = [];
 
-        $parent = $fact->getParent();
+        $parent = $fact->record();
         $tree   = $parent->getTree();
 
         // Some facts don't get printed here ...
@@ -102,7 +102,7 @@ class FunctionsPrintFacts
         // Who is this fact about? Need it to translate fact label correctly
         if ($parent instanceof Family && $record instanceof Individual) {
             // Family event
-            $label_person = $fact->getParent()->getSpouse($record);
+            $label_person = $fact->record()->getSpouse($record);
         } else {
             // Individual event
             $label_person = $parent;
@@ -180,14 +180,14 @@ class FunctionsPrintFacts
 
         switch ($fact->getTag()) {
             case '_BIRT_CHIL':
-                $children[$fact->getParent()->getXref()] = true;
+                $children[$fact->record()->getXref()] = true;
                 /* I18N: Abbreviation for "number %s" */
                 $label .= '<br>' . I18N::translate('#%s', I18N::number(count($children)));
                 break;
             case '_BIRT_GCHI':
             case '_BIRT_GCH1':
             case '_BIRT_GCH2':
-                $grandchildren[$fact->getParent()->getXref()] = true;
+                $grandchildren[$fact->record()->getXref()] = true;
                 /* I18N: Abbreviation for "number %s" */
                 $label .= '<br>' . I18N::translate('#%s', I18N::number(count($grandchildren)));
                 break;
@@ -496,7 +496,7 @@ class FunctionsPrintFacts
      */
     private static function formatAssociateRelationship(Fact $event): string
     {
-        $parent = $event->getParent();
+        $parent = $event->record();
         // To whom is this record an assocate?
         if ($parent instanceof Individual) {
             // On an individual page, we just show links to the person
@@ -515,7 +515,7 @@ class FunctionsPrintFacts
         $html = '';
         // For each ASSO record
         foreach (array_merge($amatches1, $amatches2) as $amatch) {
-            $person = Individual::getInstance($amatch[1], $event->getParent()->getTree());
+            $person = Individual::getInstance($amatch[1], $event->record()->getTree());
             if ($person && $person->canShowName()) {
                 // Is there a "RELA" tag
                 if (preg_match('/\n[23] RELA (.+)/', $amatch[2], $rmatch)) {
@@ -548,7 +548,7 @@ class FunctionsPrintFacts
 
                 // Use same markup as GedcomTag::getLabelValue()
                 $asso = I18N::translate('<span class="label">%1$s:</span> <span class="field" dir="auto">%2$s</span>', $label, $value);
-            } elseif (!$person && Auth::isEditor($event->getParent()->getTree())) {
+            } elseif (!$person && Auth::isEditor($event->record()->getTree())) {
                 $asso = GedcomTag::getLabelValue('ASSO', '<span class="error">' . $amatch[1] . '</span>');
             } else {
                 $asso = '';
@@ -730,8 +730,8 @@ class FunctionsPrintFacts
     public static function printMainSources(Fact $fact, $level)
     {
         $factrec = $fact->getGedcom();
-        $parent  = $fact->getParent();
-        $tree    = $fact->getParent()->getTree();
+        $parent  = $fact->record();
+        $tree    = $fact->record()->getTree();
 
         $nlevel = $level + 1;
         if ($fact->isPendingAddition()) {
@@ -980,7 +980,7 @@ class FunctionsPrintFacts
     public static function printMainNotes(Fact $fact, $level)
     {
         $factrec = $fact->getGedcom();
-        $parent  = $fact->getParent();
+        $parent  = $fact->record();
         $tree    = $parent->getTree();
 
         if ($fact->isPendingAddition()) {
@@ -1133,7 +1133,7 @@ class FunctionsPrintFacts
     public static function printMainMedia(Fact $fact, $level)
     {
         $factrec = $fact->getGedcom();
-        $parent  = $fact->getParent();
+        $parent  = $fact->record();
         $tree    = $parent->getTree();
 
         if ($fact->isPendingAddition()) {

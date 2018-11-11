@@ -135,7 +135,7 @@ class Fact
     private $fact_id;
 
     /** @var GedcomRecord The GEDCOM record from which this fact is taken */
-    private $parent;
+    private $record;
 
     /** @var string The raw GEDCOM data for this fact */
     private $gedcom;
@@ -173,7 +173,7 @@ class Fact
     {
         if (preg_match('/^1 (' . WT_REGEX_TAG . ')/', $gedcom, $match)) {
             $this->gedcom  = $gedcom;
-            $this->parent  = $parent;
+            $this->record  = $parent;
             $this->fact_id = $fact_id;
             $this->tag     = $match[1];
         } else {
@@ -207,21 +207,21 @@ class Fact
         switch ($this->tag) {
             case 'FAMC':
             case 'FAMS':
-                return Family::getInstance($xref, $this->getParent()->getTree());
+                return Family::getInstance($xref, $this->record()->getTree());
             case 'HUSB':
             case 'WIFE':
             case 'CHIL':
-                return Individual::getInstance($xref, $this->getParent()->getTree());
+                return Individual::getInstance($xref, $this->record()->getTree());
             case 'SOUR':
-                return Source::getInstance($xref, $this->getParent()->getTree());
+                return Source::getInstance($xref, $this->record()->getTree());
             case 'OBJE':
-                return Media::getInstance($xref, $this->getParent()->getTree());
+                return Media::getInstance($xref, $this->record()->getTree());
             case 'REPO':
-                return Repository::getInstance($xref, $this->getParent()->getTree());
+                return Repository::getInstance($xref, $this->record()->getTree());
             case 'NOTE':
-                return Note::getInstance($xref, $this->getParent()->getTree());
+                return Note::getInstance($xref, $this->record()->getTree());
             default:
-                return GedcomRecord::getInstance($xref, $this->getParent()->getTree());
+                return GedcomRecord::getInstance($xref, $this->record()->getTree());
         }
     }
 
@@ -251,7 +251,7 @@ class Fact
     public function canShow(int $access_level = null): bool
     {
         if ($access_level === null) {
-            $access_level = Auth::accessLevel($this->getParent()->getTree());
+            $access_level = Auth::accessLevel($this->record()->getTree());
         }
 
         // Does this record have an explicit RESN?
@@ -266,9 +266,9 @@ class Fact
         }
 
         // Does this record have a default RESN?
-        $xref                    = $this->parent->getXref();
-        $fact_privacy            = $this->parent->getTree()->getFactPrivacy();
-        $individual_fact_privacy = $this->parent->getTree()->getIndividualFactPrivacy();
+        $xref                    = $this->record->getXref();
+        $fact_privacy            = $this->record->getTree()->getFactPrivacy();
+        $individual_fact_privacy = $this->record->getTree()->getIndividualFactPrivacy();
         if (isset($individual_fact_privacy[$xref][$this->tag])) {
             return $individual_fact_privacy[$xref][$this->tag] >= $access_level;
         }
@@ -290,9 +290,9 @@ class Fact
         // Managers can edit anything
         // Members cannot edit RESN, CHAN and locked records
         return
-            $this->parent->canEdit() && !$this->isPendingDeletion() && (
-                Auth::isManager($this->parent->getTree()) ||
-                Auth::isEditor($this->parent->getTree()) && strpos($this->gedcom, "\n2 RESN locked") === false && $this->getTag() != 'RESN' && $this->getTag() != 'CHAN'
+            $this->record->canEdit() && !$this->isPendingDeletion() && (
+                Auth::isManager($this->record->getTree()) ||
+                Auth::isEditor($this->record->getTree()) && strpos($this->gedcom, "\n2 RESN locked") === false && $this->getTag() != 'RESN' && $this->getTag() != 'CHAN'
             );
     }
 
@@ -304,7 +304,7 @@ class Fact
     public function getPlace(): Place
     {
         if ($this->place === null) {
-            $this->place = new Place($this->getAttribute('PLAC'), $this->getParent()->getTree());
+            $this->place = new Place($this->getAttribute('PLAC'), $this->record()->getTree());
         }
 
         return $this->place;
@@ -373,9 +373,9 @@ class Fact
      *
      * @return Individual|Family|Source|Repository|Media|Note|GedcomRecord
      */
-    public function getParent()
+    public function record()
     {
-        return $this->parent;
+        return $this->record;
     }
 
     /**
@@ -390,7 +390,7 @@ class Fact
             return I18N::translate(e($this->getAttribute('TYPE')));
         }
 
-        return GedcomTag::getLabel($this->tag, $this->parent);
+        return GedcomTag::getLabel($this->tag, $this->record);
     }
 
     /**
@@ -445,7 +445,7 @@ class Fact
         preg_match_all('/\n(2 SOUR @(' . WT_REGEX_XREF . ')@(?:\n[3-9] .*)*)/', $this->getGedcom(), $matches, PREG_SET_ORDER);
         $citations = [];
         foreach ($matches as $match) {
-            $source = Source::getInstance($match[2], $this->getParent()->getTree());
+            $source = Source::getInstance($match[2], $this->record()->getTree());
             if ($source && $source->canShow()) {
                 $citations[] = $match[1];
             }
@@ -466,7 +466,7 @@ class Fact
         foreach ($matches[1] as $match) {
             $note = preg_replace("/\n3 CONT ?/", "\n", $match);
             if (preg_match('/@(' . WT_REGEX_XREF . ')@/', $note, $nmatch)) {
-                $note = Note::getInstance($nmatch[1], $this->getParent()->getTree());
+                $note = Note::getInstance($nmatch[1], $this->record()->getTree());
                 if ($note && $note->canShow()) {
                     // A note object
                     $notes[] = $note;
@@ -490,7 +490,7 @@ class Fact
         $media = [];
         preg_match_all('/\n2 OBJE @(' . WT_REGEX_XREF . ')@/', $this->getGedcom(), $matches);
         foreach ($matches[1] as $match) {
-            $obje = Media::getInstance($match, $this->getParent()->getTree());
+            $obje = Media::getInstance($match, $this->record()->getTree());
             if ($obje && $obje->canShow()) {
                 $media[] = $obje;
             }
@@ -519,8 +519,8 @@ class Fact
             // Fact date
             $date = $this->getDate();
             if ($date->isOK()) {
-                if (in_array($this->getTag(), explode('|', WT_EVENTS_BIRT)) && $this->getParent() instanceof Individual && $this->getParent()->getTree()->getPreference('SHOW_PARENTS_AGE')) {
-                    $attributes[] = $date->display() . FunctionsPrint::formatParentsAges($this->getParent(), $date);
+                if (in_array($this->getTag(), explode('|', WT_EVENTS_BIRT)) && $this->record() instanceof Individual && $this->record()->getTree()->getPreference('SHOW_PARENTS_AGE')) {
+                    $attributes[] = $date->display() . FunctionsPrint::formatParentsAges($this->record(), $date);
                 } else {
                     $attributes[] = $date->display();
                 }
@@ -595,7 +595,7 @@ class Fact
         // Facts from same families stay grouped together
         // Keep MARR and DIV from the same families from mixing with events from other FAMs
         // Use the original order in which the facts were added
-        if ($a->parent instanceof Family && $b->parent instanceof Family && $a->parent !== $b->parent) {
+        if ($a->record instanceof Family && $b->record instanceof Family && $a->record !== $b->record) {
             return $a->sortOrder - $b->sortOrder;
         }
 
@@ -655,6 +655,6 @@ class Fact
      */
     public function __toString()
     {
-        return $this->fact_id . '@' . $this->parent->getXref();
+        return $this->fact_id . '@' . $this->record->getXref();
     }
 }

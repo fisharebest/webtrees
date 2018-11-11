@@ -246,7 +246,7 @@ class IndividualController extends AbstractBaseController
      */
     private function formatNameRecord(Tree $tree, $n, Fact $fact): string
     {
-        $individual = $fact->getParent();
+        $individual = $fact->record();
 
         // Create a dummy record, so we can extract the formatted NAME value from it.
         $dummy = new Individual(
@@ -353,7 +353,7 @@ class IndividualController extends AbstractBaseController
      */
     private function formatSexRecord(Fact $fact): string
     {
-        $individual = $fact->getParent();
+        $individual = $fact->record();
 
         switch ($fact->getValue()) {
             case 'M':

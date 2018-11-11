@@ -2,7 +2,7 @@
 <?php use Fisharebest\Webtrees\Individual; ?>
 
 <?php foreach ($facts as $fact) : ?>
-    <?php $record = $fact->getParent(); ?>
+    <?php $record = $fact->record(); ?>
     <a href="<?= e($record->url()) ?>" class="list_item name2">
         <?= $record->getFullName() ?>
     </a>

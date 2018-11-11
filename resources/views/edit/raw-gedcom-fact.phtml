@@ -5,8 +5,8 @@
 
 <form class="wt-page-content" method="post">
     <?= csrf_field() ?>
-    <input type="hidden" name="ged" value="<?= e($fact->getParent()->getTree()->getName()) ?>">
-    <input type="hidden" name="xref" value="<?= e($fact->getParent()->getXref()) ?>">
+    <input type="hidden" name="ged" value="<?= e($fact->record()->getTree()->getName()) ?>">
+    <input type="hidden" name="xref" value="<?= e($fact->record()->getXref()) ?>">
     <input type="hidden" name="fact_id" value="<?= e($fact->getFactId()) ?>">
 
 
@@ -30,7 +30,7 @@
                 <?= FontAwesome::decorativeIcon('save') ?>
                 <?= /* I18N: A button label. */ I18N::translate('save') ?>
             </button>
-            <a class="btn btn-secondary" href="<?= e($fact->getParent()->url()) ?>">
+            <a class="btn btn-secondary" href="<?= e($fact->record()->url()) ?>">
                 <?= FontAwesome::decorativeIcon('cancel') ?>
                 <?= /* I18N: A button label. */ I18N::translate('cancel') ?>
             </a>
