@@ -104,7 +104,7 @@ class CalendarService
             $where      .= " AND d_fact IN ({$incl_facts})";
         }
         // Only get events from the current gedcom
-        $where .= " AND d_file=" . $tree->getTreeId();
+        $where .= " AND d_file=" . $tree->id();
 
         // Now fetch these events
         $ind_sql = "SELECT d_gid AS xref, i_gedcom AS gedcom, d_type, d_day, d_month, d_year, d_fact, d_type FROM `##dates`, `##individuals` {$where} AND d_gid=i_id AND d_file=i_file ORDER BY d_julianday1";
@@ -226,7 +226,7 @@ class CalendarService
                 " WHERE d_type = :type AND d_file = :tree_id";
             $args = [
                 'type'    => $anniv->format('%@'),
-                'tree_id' => $tree->getTreeId(),
+                'tree_id' => $tree->id(),
             ];
 
             $where = "";

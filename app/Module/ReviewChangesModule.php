@@ -131,7 +131,7 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
                 " WHERE status='pending'" .
                 " AND   gedcom_id=?" .
                 " GROUP BY xref"
-            )->execute([$tree->getTreeId()])->fetchAll();
+            )->execute([$tree->id()])->fetchAll();
             foreach ($changes as $change) {
                 $record = GedcomRecord::getInstance($change->xref, $tree);
                 if ($record->canShow()) {

@@ -87,7 +87,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
             "SELECT news_id, user_id, gedcom_id, UNIX_TIMESTAMP(updated) + :offset AS updated, subject, body FROM `##news` WHERE gedcom_id = :tree_id ORDER BY updated DESC"
         )->execute([
             'offset'  => WT_TIMESTAMP_OFFSET,
-            'tree_id' => $tree->getTreeId(),
+            'tree_id' => $tree->id(),
         ])->fetchAll();
 
         $content = view('modules/gedcom_news/list', [
@@ -170,7 +170,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
                 "SELECT subject, body FROM `##news` WHERE news_id = :news_id AND gedcom_id = :tree_id"
             )->execute([
                 'news_id' => $news_id,
-                'tree_id' => $tree->getTreeId(),
+                'tree_id' => $tree->id(),
             ])->fetchOneRow();
         } else {
             $row = (object) [
@@ -213,7 +213,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
                 'subject' => $subject,
                 'body'    => $body,
                 'news_id' => $news_id,
-                'tree_id' => $tree->getTreeId(),
+                'tree_id' => $tree->id(),
             ]);
         } else {
             Database::prepare(
@@ -221,7 +221,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
             )->execute([
                 'body'    => $body,
                 'subject' => $subject,
-                'tree_id' => $tree->getTreeId(),
+                'tree_id' => $tree->id(),
             ]);
         }
 
@@ -250,7 +250,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
             "DELETE FROM `##news` WHERE news_id = :news_id AND gedcom_id = :tree_id"
         )->execute([
             'news_id' => $news_id,
-            'tree_id' => $tree->getTreeId(),
+            'tree_id' => $tree->id(),
         ]);
 
         $url = route('tree-page', [

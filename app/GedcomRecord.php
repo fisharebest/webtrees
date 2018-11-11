@@ -144,7 +144,7 @@ class GedcomRecord
      */
     public static function getInstance(string $xref, Tree $tree, string $gedcom = null)
     {
-        $tree_id = $tree->getTreeId();
+        $tree_id = $tree->id();
 
         // Is this record already in the cache?
         if (isset(self::$gedcom_record_cache[$xref][$tree_id])) {
@@ -727,7 +727,7 @@ class GedcomRecord
      */
     public function __toString()
     {
-        return $this->xref . '@' . $this->tree->getTreeId();
+        return $this->xref . '@' . $this->tree->id();
     }
 
     /**
@@ -874,7 +874,7 @@ class GedcomRecord
             " WHERE i_file = :tree_id AND l_type = :link AND l_to = :xref" .
             " ORDER BY n_sort COLLATE :collation"
         )->execute([
-            'tree_id'   => $this->tree->getTreeId(),
+            'tree_id'   => $this->tree->id(),
             'link'      => $link,
             'xref'      => $this->xref,
             'collation' => I18N::collation(),
@@ -907,7 +907,7 @@ class GedcomRecord
             " LEFT JOIN `##name` ON f_file = n_file AND f_id = n_id AND n_num = 0" .
             " WHERE f_file = :tree_id AND l_type = :link AND l_to = :xref"
         )->execute([
-            'tree_id' => $this->tree->getTreeId(),
+            'tree_id' => $this->tree->id(),
             'link'    => $link,
             'xref'    => $this->xref,
         ])->fetchAll();
@@ -939,7 +939,7 @@ class GedcomRecord
             " WHERE s_file = :tree_id AND l_type = :link AND l_to = :xref" .
             " ORDER BY s_name COLLATE :collation"
         )->execute([
-            'tree_id'   => $this->tree->getTreeId(),
+            'tree_id'   => $this->tree->id(),
             'link'      => $link,
             'xref'      => $this->xref,
             'collation' => I18N::collation(),
@@ -971,7 +971,7 @@ class GedcomRecord
             " JOIN `##link` ON m_file = l_file AND m_id = l_from" .
             " WHERE m_file = :tree_id AND l_type = :link AND l_to = :xref"
         )->execute([
-            'tree_id' => $this->tree->getTreeId(),
+            'tree_id' => $this->tree->id(),
             'link'    => $link,
             'xref'    => $this->xref,
         ])->fetchAll();
@@ -1004,7 +1004,7 @@ class GedcomRecord
             " WHERE o_file = :tree_id AND o_type = 'NOTE' AND l_type = :link AND l_to = :xref" .
             " ORDER BY n_sort COLLATE :collation"
         )->execute([
-            'tree_id'   => $this->tree->getTreeId(),
+            'tree_id'   => $this->tree->id(),
             'link'      => $link,
             'xref'      => $this->xref,
             'collation' => I18N::collation(),
@@ -1038,7 +1038,7 @@ class GedcomRecord
             " WHERE o_file = :tree_id AND o_type = 'REPO' AND l_type = :link AND l_to = :xref" .
             " ORDER BY n_sort COLLATE :collation"
         )->execute([
-            'tree_id'   => $this->tree->getTreeId(),
+            'tree_id'   => $this->tree->id(),
             'link'      => $link,
             'xref'      => $this->xref,
             'collation' => I18N::collation(),
@@ -1292,7 +1292,7 @@ class GedcomRecord
             Database::prepare(
                 "INSERT INTO `##change` (gedcom_id, xref, old_gedcom, new_gedcom, user_id) VALUES (?, ?, ?, ?, ?)"
             )->execute([
-                $this->tree->getTreeId(),
+                $this->tree->id(),
                 $this->xref,
                 $old_gedcom,
                 $new_gedcom,
@@ -1334,7 +1334,7 @@ class GedcomRecord
         Database::prepare(
             "INSERT INTO `##change` (gedcom_id, xref, old_gedcom, new_gedcom, user_id) VALUES (?, ?, ?, ?, ?)"
         )->execute([
-            $this->tree->getTreeId(),
+            $this->tree->id(),
             $this->xref,
             $this->getGedcom(),
             $gedcom,
@@ -1368,7 +1368,7 @@ class GedcomRecord
             Database::prepare(
                 "INSERT INTO `##change` (gedcom_id, xref, old_gedcom, new_gedcom, user_id) VALUES (?, ?, ?, '', ?)"
             )->execute([
-                $this->tree->getTreeId(),
+                $this->tree->id(),
                 $this->xref,
                 $this->getGedcom(),
                 Auth::id(),

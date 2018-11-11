@@ -73,12 +73,12 @@ class Individual extends GedcomRecord
     public static function load(Tree $tree, array $xrefs)
     {
         $args         = [
-            'tree_id' => $tree->getTreeId(),
+            'tree_id' => $tree->id(),
         ];
         $placeholders = [];
 
         foreach (array_unique($xrefs) as $n => $xref) {
-            if (!isset(self::$gedcom_record_cache[$tree->getTreeId()][$xref])) {
+            if (!isset(self::$gedcom_record_cache[$tree->id()][$xref])) {
                 $placeholders[] = ':x' . $n;
                 $args['x' . $n] = $xref;
             }

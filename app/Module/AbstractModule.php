@@ -206,7 +206,7 @@ abstract class AbstractModule
         $access_level = Database::prepare(
             "SELECT access_level FROM `##module_privacy` WHERE gedcom_id = :gedcom_id AND module_name = :module_name AND component = :component"
         )->execute([
-            'gedcom_id'   => $tree->getTreeId(),
+            'gedcom_id'   => $tree->id(),
             'module_name' => $this->getName(),
             'component'   => $component,
         ])->fetchOne();

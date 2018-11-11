@@ -17,7 +17,7 @@
     <?= csrf_field() ?>
 
     <?php foreach ($all_trees as $tree) : ?>
-        <?= Bootstrap4::checkbox($tree->getTitle(), false, ['name' => 'sitemap' . $tree->getTreeId(), 'checked' => (bool) $tree->getPreference('include_in_sitemap')]) ?>
+        <?= Bootstrap4::checkbox($tree->getTitle(), false, ['name' => 'sitemap' . $tree->id(), 'checked' => (bool) $tree->getPreference('include_in_sitemap')]) ?>
     <?php endforeach ?>
 
 <button type="submit" class="btn btn-primary">

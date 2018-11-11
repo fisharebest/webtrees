@@ -59,7 +59,7 @@ class PendingChangesController extends AbstractBaseController
             " WHERE c.status = 'pending' AND gedcom_id = :tree_id" .
             " ORDER BY change_id"
         )->execute([
-            'tree_id' => $tree->getTreeId(),
+            'tree_id' => $tree->id(),
         ])->fetchAll();
 
         foreach ($changes as $change) {
@@ -110,7 +110,7 @@ class PendingChangesController extends AbstractBaseController
             " AND   change_id <= :change_id" .
             " ORDER BY change_id"
         )->execute([
-            'tree_id'   => $tree->getTreeId(),
+            'tree_id'   => $tree->id(),
             'xref'      => $xref,
             'change_id' => $change_id,
         ])->fetchAll();
@@ -183,7 +183,7 @@ class PendingChangesController extends AbstractBaseController
         Database::prepare(
             "UPDATE `##change` SET status = 'rejected' WHERE status = 'pending' AND gedcom_id = :tree_id"
         )->execute([
-            'tree_id' => $tree->getTreeId(),
+            'tree_id' => $tree->id(),
         ]);
 
         return new RedirectResponse(route('show-pending', [
@@ -215,7 +215,7 @@ class PendingChangesController extends AbstractBaseController
             " AND   xref       = :xref" .
             " AND   change_id >= :change_id"
         )->execute([
-            'tree_id'   => $tree->getTreeId(),
+            'tree_id'   => $tree->id(),
             'xref'      => $xref,
             'change_id' => $change_id,
         ]);
@@ -310,11 +310,11 @@ class PendingChangesController extends AbstractBaseController
         $title = I18N::translate('Pending changes');
 
         // If the current tree has changes, activate that tab.  Otherwise activate the first tab.
-        if (empty($changes[$tree->getTreeId()])) {
+        if (empty($changes[$tree->id()])) {
             reset($changes);
             $active_tree_id = key($changes);
         } else {
-            $active_tree_id = $tree->getTreeId();
+            $active_tree_id = $tree->id();
         }
 
         return $this->viewResponse('pending-changes-page', [

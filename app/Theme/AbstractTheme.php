@@ -1198,7 +1198,7 @@ abstract class AbstractTheme
             } else {
                 $active = '';
             }
-            $submenus[] = new Menu(e($tree->getTitle()), route('tree-page', ['ged' => $tree->getName()]), $active . 'menu-tree-' . $tree->getTreeId());
+            $submenus[] = new Menu(e($tree->getTitle()), route('tree-page', ['ged' => $tree->getName()]), $active . 'menu-tree-' . $tree->id());
         }
 
         return new Menu(I18N::translate('Family trees'), '#', 'menu-tree', [], $submenus);
@@ -1246,10 +1246,10 @@ abstract class AbstractTheme
             " EXISTS(SELECT 1 FROM `##other` WHERE o_file = ? AND o_type='NOTE') AS note," .
             " EXISTS(SELECT 1 FROM `##media` WHERE m_file = ?) AS obje"
         )->execute([
-            $this->tree->getTreeId(),
-            $this->tree->getTreeId(),
-            $this->tree->getTreeId(),
-            $this->tree->getTreeId(),
+            $this->tree->id(),
+            $this->tree->id(),
+            $this->tree->id(),
+            $this->tree->id(),
         ])->fetchOneRow();
 
         $submenus = [

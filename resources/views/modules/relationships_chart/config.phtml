@@ -13,12 +13,12 @@
     <?php foreach ($all_trees as $tree) : ?>
         <h2><?= e($tree->getTitle()) ?></h2>
         <div class="row form-group">
-            <label class="col-sm-3 col-form-label" for="relationship-ancestors-<?= $tree->getTreeId() ?>">
+            <label class="col-sm-3 col-form-label" for="relationship-ancestors-<?= $tree->id() ?>">
                 <?= /* I18N: Configuration option */
                 I18N::translate('Relationships') ?>
             </label>
             <div class="col-sm-9">
-                <?= Bootstrap4::select($ancestors_options, $tree->getPreference('RELATIONSHIP_ANCESTORS', $default_ancestors), ['id' => 'relationship-ancestors-' . $tree->getTreeId(), 'name' => 'relationship-ancestors-' . $tree->getTreeId()]) ?>
+                <?= Bootstrap4::select($ancestors_options, $tree->getPreference('RELATIONSHIP_ANCESTORS', $default_ancestors), ['id' => 'relationship-ancestors-' . $tree->id(), 'name' => 'relationship-ancestors-' . $tree->id()]) ?>
             </div>
         </div>
 
@@ -29,7 +29,7 @@
                     I18N::translate('How much recursion to use when searching for relationships') ?>
                 </legend>
                 <div class="col-sm-9">
-                    <?= Bootstrap4::radioButtons('relationship-recursion-' . $tree->getTreeId(), $recursion_options, $tree->getPreference('RELATIONSHIP_RECURSION', $default_recursion), true) ?>
+                    <?= Bootstrap4::radioButtons('relationship-recursion-' . $tree->id(), $recursion_options, $tree->getPreference('RELATIONSHIP_RECURSION', $default_recursion), true) ?>
                 </div>
             </div>
         </fieldset>

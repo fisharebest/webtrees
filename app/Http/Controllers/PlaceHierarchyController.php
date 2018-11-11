@@ -171,7 +171,7 @@ class PlaceHierarchyController extends AbstractBaseController
             "SELECT DISTINCT pl_gid FROM `##placelinks` WHERE pl_p_id=:id AND pl_file=:gedcom"
         )->execute([
             'id'     => $place->getPlaceId(),
-            'gedcom' => $tree->getTreeId(),
+            'gedcom' => $tree->id(),
         ])->fetchOneColumn();
 
         foreach ($xrefs as $xref) {

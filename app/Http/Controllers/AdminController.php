@@ -832,7 +832,7 @@ class AdminController extends AbstractBaseController
         }
 
         // Update records that link to the one we will be removing.
-        $ids = FunctionsDb::fetchAllLinks($xref2, $tree->getTreeId());
+        $ids = FunctionsDb::fetchAllLinks($xref2, $tree->id());
 
         foreach ($ids as $id) {
             $record = GedcomRecord::getInstance($id, $tree);
@@ -860,7 +860,7 @@ class AdminController extends AbstractBaseController
             " WHERE gedcom_id=? AND setting_name='gedcomid' AND setting_value=?"
         )->execute([
             $xref2,
-            $tree->getTreeId(),
+            $tree->id(),
             $xref1,
         ]);
 
@@ -871,7 +871,7 @@ class AdminController extends AbstractBaseController
             " WHERE gedcom_id=? AND page_parameter IN (?, ?)" .
             " GROUP BY page_name"
         )->execute([
-            $tree->getTreeId(),
+            $tree->id(),
             $xref1,
             $xref2,
         ])->fetchAssoc();
@@ -882,7 +882,7 @@ class AdminController extends AbstractBaseController
                 " WHERE gedcom_id=? AND page_name=? AND page_parameter=?"
             )->execute([
                 $page_count,
-                $tree->getTreeId(),
+                $tree->id(),
                 $page_name,
                 $xref1,
             ]);
@@ -892,7 +892,7 @@ class AdminController extends AbstractBaseController
             "DELETE FROM `##hit_counter`" .
             " WHERE gedcom_id=? AND page_parameter=?"
         )->execute([
-            $tree->getTreeId(),
+            $tree->id(),
             $xref2,
         ]);
 
@@ -916,7 +916,7 @@ class AdminController extends AbstractBaseController
         )->execute([
             'old_xref' => $xref1,
             'new_xref' => $xref2,
-            'tree_id' => $tree->getTreeId(),
+            'tree_id' => $tree->id(),
         ]);
 
         $record1->updateRecord($gedcom, true);
@@ -1041,7 +1041,7 @@ class AdminController extends AbstractBaseController
                     Database::prepare(
                         "DELETE FROM `##default_resn` WHERE gedcom_id = :tree_id AND tag_type = :tag_type AND xref IS NULL"
                     )->execute([
-                        'tree_id'  => $tree->getTreeId(),
+                        'tree_id'  => $tree->id(),
                         'tag_type' => $tag_type,
                     ]);
                 }
@@ -1049,7 +1049,7 @@ class AdminController extends AbstractBaseController
                     Database::prepare(
                         "DELETE FROM `##default_resn` WHERE gedcom_id = ? AND xref = ? AND tag_type IS NULL"
                     )->execute([
-                        'tree_id' => $tree->getTreeId(),
+                        'tree_id' => $tree->id(),
                         'xref'    => $xref,
                     ]);
                 }
@@ -1059,7 +1059,7 @@ class AdminController extends AbstractBaseController
                     "REPLACE INTO `##default_resn` (gedcom_id, xref, tag_type, resn)" .
                     " VALUES (:tree_id, NULLIF(:xref, ''), NULLIF(:tag_type, ''), :resn)"
                 )->execute([
-                    'tree_id'  => $tree->getTreeId(),
+                    'tree_id'  => $tree->id(),
                     'xref'     => $xref,
                     'tag_type' => $tag_type,
                     'resn'     => $resn,
@@ -1104,12 +1104,12 @@ class AdminController extends AbstractBaseController
 
         foreach ($modules as $module) {
             foreach (Tree::getAll() as $tree) {
-                $key          = 'access-' . $module->getName() . '-' . $tree->getTreeId();
+                $key          = 'access-' . $module->getName() . '-' . $tree->id();
                 $access_level = (int) $request->get($key, $module->defaultAccessLevel());
 
                 Database::prepare("REPLACE INTO `##module_privacy` (module_name, gedcom_id, component, access_level) VALUES (:module_name, :tree_id, :component, :access_level)")->execute([
                     'module_name'  => $module->getName(),
-                    'tree_id'      => $tree->getTreeId(),
+                    'tree_id'      => $tree->id(),
                     'component'    => $component,
                     'access_level' => $access_level,
                 ]);
@@ -1496,7 +1496,7 @@ class AdminController extends AbstractBaseController
             " LEFT JOIN `##name` ON (gedcom_id = n_file AND xref = n_id AND n_num = 0)" .
             " WHERE gedcom_id = :tree_id"
         )->execute([
-            'tree_id' => $tree->getTreeId(),
+            'tree_id' => $tree->id(),
         ])->fetchAll();
 
         foreach ($restrictions as $restriction) {

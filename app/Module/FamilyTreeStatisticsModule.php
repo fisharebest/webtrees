@@ -92,7 +92,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
                 " ORDER BY COUNT(n_surn) DESC" .
                 " LIMIT :limit"
             )->execute([
-                'tree_id' => $tree->getTreeId(),
+                'tree_id' => $tree->id(),
                 'limit'   => $number_of_surnames,
             ])->fetchOneColumn();
 
@@ -103,7 +103,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
                 )->execute([
                     'collate' => I18N::collation(),
                     'surname' => $top_surname,
-                    'tree_id' => $tree->getTreeId(),
+                    'tree_id' => $tree->id(),
                 ])->fetchAssoc();
 
                 $all_surnames[$top_surname] = $variants;

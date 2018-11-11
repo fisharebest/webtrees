@@ -52,7 +52,7 @@ class Log
             $message,
             $request->getClientIp(),
             Auth::id(),
-            $tree ? $tree->getTreeId() : null,
+            $tree ? $tree->id() : null,
         ]);
     }
 

@@ -273,7 +273,7 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
                     $tmp += Database::prepare(
                         "SELECT i_id AS xref, 'INDI' AS type, i_gedcom AS gedcom  FROM `##individuals` WHERE i_file = :tree_id"
                     )->execute([
-                        'tree_id' => $tree->getTreeId(),
+                        'tree_id' => $tree->id(),
                     ])->fetchAll();
                     break;
 
@@ -281,7 +281,7 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
                     $tmp += Database::prepare(
                         "SELECT f_id AS xref, 'FAM' AS type, f_gedcom AS gedcom  FROM `##families` WHERE f_file = :tree_id"
                     )->execute([
-                        'tree_id' => $tree->getTreeId(),
+                        'tree_id' => $tree->id(),
                     ])->fetchAll();
                     break;
 
@@ -289,7 +289,7 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
                     $tmp += Database::prepare(
                         "SELECT s_id AS xref, 'SOUR' AS type, s_gedcom AS gedcom  FROM `##sources` WHERE s_file = :tree_id"
                     )->execute([
-                        'tree_id' => $tree->getTreeId(),
+                        'tree_id' => $tree->id(),
                     ])->fetchAll();
                     break;
 
@@ -297,7 +297,7 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
                     $tmp += Database::prepare(
                         "SELECT m_id AS xref, 'OBJE' AS type, m_gedcom AS gedcom  FROM `##media` WHERE m_file = :tree_id"
                     )->execute([
-                        'tree_id' => $tree->getTreeId(),
+                        'tree_id' => $tree->id(),
                     ])->fetchAll();
                     break;
 
@@ -305,7 +305,7 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
                     $tmp += Database::prepare(
                         "SELECT o_id AS xref, 'OBJE' AS type, o_gedcom AS gedcom  FROM `##other` WHERE o_file = :tree_id AND o_type = :type"
                     )->execute([
-                        'tree_id' => $tree->getTreeId(),
+                        'tree_id' => $tree->id(),
                         'type'    => $type,
                     ])->fetchAll();
                     break;

@@ -280,7 +280,7 @@ class Module
             " WHERE gedcom_id = :tree_id AND component = :component AND status = 'enabled' AND access_level >= :access_level" .
             " ORDER BY CASE component WHEN 'menu' THEN menu_order WHEN 'sidebar' THEN sidebar_order WHEN 'tab' THEN tab_order ELSE 0 END, module_name"
         )->execute([
-            'tree_id'      => $tree->getTreeId(),
+            'tree_id'      => $tree->id(),
             'component'    => $component,
             'access_level' => Auth::accessLevel($tree),
         ])->fetchOneColumn();

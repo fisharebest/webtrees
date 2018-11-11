@@ -313,7 +313,7 @@
                         <?= e($tree->getTitle()) ?>
                     </td>
                     <td>
-                        <select class="form-control" name="canedit<?= $tree->getTreeId() ?>">
+                        <select class="form-control" name="canedit<?= $tree->id() ?>">
                             <?php foreach ($roles as $role => $description) : ?>
                                 <option value="<?= $role ?>"
                                     <?= $role === $tree->getUserPreference($user, 'canedit') ? 'selected' : '' ?>>
@@ -323,10 +323,10 @@
                         </select>
                     </td>
                     <td>
-                        <?= FunctionsEdit::formControlIndividual($tree, Individual::getInstance($tree->getUserPreference($user, 'gedcomid'), $tree), ['id' => 'gedcomid' . $tree->getTreeId(), 'name' => 'gedcomid' . $tree->getTreeId()]) ?>
+                        <?= FunctionsEdit::formControlIndividual($tree, Individual::getInstance($tree->getUserPreference($user, 'gedcomid'), $tree), ['id' => 'gedcomid' . $tree->id(), 'name' => 'gedcomid' . $tree->id()]) ?>
                     </td>
                     <td>
-                        <select class="form-control" name="RELATIONSHIP_PATH_LENGTH<?= $tree->getTreeId() ?>" id="RELATIONSHIP_PATH_LENGTH<?= $tree->getTreeId() ?>" class="relpath">
+                        <select class="form-control" name="RELATIONSHIP_PATH_LENGTH<?= $tree->id() ?>" id="RELATIONSHIP_PATH_LENGTH<?= $tree->id() ?>" class="relpath">
                             <?php for ($n = 0; $n <= 10; ++$n) : ?>
                                 <option value="<?= $n ?>" <?= $tree->getUserPreference($user, 'RELATIONSHIP_PATH_LENGTH') == $n ? 'selected' : '' ?>>
                                     <?= $n ?: I18N::translate('No') ?>

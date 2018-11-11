@@ -117,7 +117,7 @@ class FunctionsExport
             Database::prepare("SELECT o_id FROM `##other` WHERE o_type=? AND o_file=?")
                 ->execute([
                     'SUBN',
-                    $tree->getTreeId(),
+                    $tree->id(),
                 ])
                 ->fetchOne();
         if ($subn) {
@@ -127,7 +127,7 @@ class FunctionsExport
             Database::prepare("SELECT o_id FROM `##other` WHERE o_type=? AND o_file=?")
                 ->execute([
                     'SUBM',
-                    $tree->getTreeId(),
+                    $tree->id(),
                 ])
                 ->fetchOne();
         if ($subm) {
@@ -200,7 +200,7 @@ class FunctionsExport
             "SELECT m_id AS xref, m_gedcom AS gedcom" .
             " FROM `##media` WHERE m_file = :tree_id ORDER BY m_id"
         )->execute([
-            'tree_id' => $tree->getTreeId(),
+            'tree_id' => $tree->id(),
         ])->fetchAll();
 
         foreach ($rows as $row) {
@@ -216,7 +216,7 @@ class FunctionsExport
             "SELECT s_id AS xref, s_file AS gedcom_id, s_gedcom AS gedcom" .
             " FROM `##sources` WHERE s_file = :tree_id ORDER BY s_id"
         )->execute([
-            'tree_id' => $tree->getTreeId(),
+            'tree_id' => $tree->id(),
         ])->fetchAll();
 
         foreach ($rows as $row) {
@@ -231,7 +231,7 @@ class FunctionsExport
             "SELECT o_type AS type, o_id AS xref, o_gedcom AS gedcom" .
             " FROM `##other` WHERE o_file = :tree_id AND o_type NOT IN ('HEAD', 'TRLR') ORDER BY o_id"
         )->execute([
-            'tree_id' => $tree->getTreeId(),
+            'tree_id' => $tree->id(),
         ])->fetchAll();
 
         foreach ($rows as $row) {
@@ -258,7 +258,7 @@ class FunctionsExport
             "SELECT i_id AS xref, i_gedcom AS gedcom" .
             " FROM `##individuals` WHERE i_file = :tree_id ORDER BY i_id"
         )->execute([
-            'tree_id' => $tree->getTreeId(),
+            'tree_id' => $tree->id(),
         ])->fetchAll();
 
         foreach ($rows as $row) {
@@ -277,7 +277,7 @@ class FunctionsExport
             "SELECT f_id AS xref, f_gedcom AS gedcom" .
             " FROM `##families` WHERE f_file = :tree_id ORDER BY f_id"
         )->execute([
-            'tree_id' => $tree->getTreeId(),
+            'tree_id' => $tree->id(),
         ])->fetchAll();
 
         foreach ($rows as $row) {

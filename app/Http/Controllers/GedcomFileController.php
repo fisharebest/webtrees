@@ -48,7 +48,7 @@ class GedcomFileController extends AbstractBaseController
         Database::prepare(
             "SELECT imported FROM `##gedcom_chunk` WHERE gedcom_id = :tree_id FOR UPDATE"
         )->execute([
-            'tree_id' => $tree->getTreeId(),
+            'tree_id' => $tree->id(),
         ]);
 
         // What is the current import status?
@@ -58,7 +58,7 @@ class GedcomFileController extends AbstractBaseController
             " SUM(LENGTH(chunk_data))                  AS import_total" .
             " FROM `##gedcom_chunk` WHERE gedcom_id = :tree_id"
         )->execute([
-            'tree_id' => $tree->getTreeId(),
+            'tree_id' => $tree->id(),
         ])->fetchOneRow();
 
         // Finished?
@@ -84,7 +84,7 @@ class GedcomFileController extends AbstractBaseController
                 " ORDER BY gedcom_chunk_id" .
                 " LIMIT 1"
             )->execute([
-                'tree_id' => $tree->getTreeId(),
+                'tree_id' => $tree->id(),
             ])->fetchOneRow();
 
             // If we are loading the first (header) record, make sure the encoding is UTF-8.
@@ -127,7 +127,7 @@ class GedcomFileController extends AbstractBaseController
                             " SET chunk_data=CONVERT(CONVERT(chunk_data USING ascii) USING utf8)" .
                             " WHERE gedcom_id = :tree_id"
                         )->execute([
-                            'tree_id' => $tree->getTreeId(),
+                            'tree_id' => $tree->id(),
                         ]);
                         break;
                     case 'IBMPC':   // IBMPC, IBM WINDOWS and MS-DOS could be anything. Mostly it means CP850.
@@ -141,7 +141,7 @@ class GedcomFileController extends AbstractBaseController
                             " SET chunk_data=CONVERT(CONVERT(chunk_data USING cp850) USING utf8)" .
                             " WHERE gedcom_id = :tree_id"
                         )->execute([
-                            'tree_id' => $tree->getTreeId(),
+                            'tree_id' => $tree->id(),
                         ]);
                         break;
                     case 'ANSI': // ANSI could be anything. Most applications seem to treat it as latin1.
@@ -157,7 +157,7 @@ class GedcomFileController extends AbstractBaseController
                             " SET chunk_data=CONVERT(CONVERT(chunk_data USING latin1) USING utf8)" .
                             " WHERE gedcom_id= = :tree_id"
                         )->execute([
-                            'tree_id' => $tree->getTreeId(),
+                            'tree_id' => $tree->id(),
                         ]);
                         break;
                     case 'CP1250':
@@ -171,7 +171,7 @@ class GedcomFileController extends AbstractBaseController
                             " SET chunk_data=CONVERT(CONVERT(chunk_data USING latin2) USING utf8)" .
                             " WHERE gedcom_id = :tree_id"
                         )->execute([
-                            'tree_id' => $tree->getTreeId(),
+                            'tree_id' => $tree->id(),
                         ]);
                         break;
                     case 'MACINTOSH':
@@ -181,7 +181,7 @@ class GedcomFileController extends AbstractBaseController
                             " SET chunk_data=CONVERT(CONVERT(chunk_data USING macroman) USING utf8)" .
                             " WHERE gedcom_id = :tree_id"
                         )->execute([
-                            'tree_id' => $tree->getTreeId(),
+                            'tree_id' => $tree->id(),
                         ]);
                         break;
                     case 'UTF8':

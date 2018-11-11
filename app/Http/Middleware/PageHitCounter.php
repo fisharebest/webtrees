@@ -91,7 +91,7 @@ class PageHitCounter implements MiddlewareInterface
                     break;
 
                 case 'tree-page':
-                    $page_hits = $this->countHit($this->tree, $page_name, 'gedcom:' . $this->tree->getTreeId());
+                    $page_hits = $this->countHit($this->tree, $page_name, 'gedcom:' . $this->tree->id());
                     break;
 
                 case 'user-page':
@@ -117,7 +117,7 @@ class PageHitCounter implements MiddlewareInterface
      */
     private function countHit(Tree $tree, $page, $parameter): int
     {
-        $gedcom_id = $tree->getTreeId();
+        $gedcom_id = $tree->id();
 
         // Don't increment the counter while we stay on the same page.
         if (
@@ -172,7 +172,7 @@ class PageHitCounter implements MiddlewareInterface
         return (int) Database::prepare(
             "SELECT page_count FROM `##hit_counter` WHERE gedcom_id = :tree_id AND page_name = :page AND page_parameter = :parameter"
         )->execute([
-            'tree_id'   => $tree->getTreeId(),
+            'tree_id'   => $tree->id(),
             'page'      => $page,
             'parameter' => $parameter,
         ])->fetchOne();

@@ -649,7 +649,7 @@ class SearchController extends AbstractBaseController
         foreach ($search_trees as $n => $tree) {
             $sql                   .= $n ? ', ' : '';
             $sql                   .= ':tree_id_' . $n;
-            $args['tree_id_' . $n] = $tree->getTreeId();
+            $args['tree_id_' . $n] = $tree->id();
         }
         $sql .= ")";
 
@@ -709,7 +709,7 @@ class SearchController extends AbstractBaseController
         foreach ($search_trees as $n => $tree) {
             $sql                   .= $n ? ", " : "";
             $sql                   .= ":tree_id_" . $n;
-            $args['tree_id_' . $n] = $tree->getTreeId();
+            $args['tree_id_' . $n] = $tree->id();
         }
         $sql .= ")";
 
@@ -758,7 +758,7 @@ class SearchController extends AbstractBaseController
         foreach ($search_trees as $n => $tree) {
             $sql                   .= $n ? ", " : "";
             $sql                   .= ":tree_id_" . $n;
-            $args['tree_id_' . $n] = $tree->getTreeId();
+            $args['tree_id_' . $n] = $tree->id();
         }
         $sql .= ")";
 
@@ -897,7 +897,7 @@ class SearchController extends AbstractBaseController
 
         // Add the where clause
         $sql .= " WHERE ind.i_file=?";
-        $bind[] = $tree->getTreeId();
+        $bind[] = $tree->id();
 
         foreach ($fields as $field_name => $field_value) {
             $parts = preg_split('/:/', $field_name . '::::');
@@ -1222,7 +1222,7 @@ class SearchController extends AbstractBaseController
         foreach ($search_trees as $n => $tree) {
             $sql                   .= $n ? ", " : "";
             $sql                   .= ":tree_id_" . $n;
-            $args['tree_id_' . $n] = $tree->getTreeId();
+            $args['tree_id_' . $n] = $tree->id();
         }
         $sql .= ")";
 
@@ -1319,7 +1319,7 @@ class SearchController extends AbstractBaseController
         foreach ($search_trees as $n => $tree) {
             $sql                   .= $n ? ", " : "";
             $sql                   .= ":tree_id_" . $n;
-            $args['tree_id_' . $n] = $tree->getTreeId();
+            $args['tree_id_' . $n] = $tree->id();
         }
         $sql .= ")";
 
@@ -1375,7 +1375,7 @@ class SearchController extends AbstractBaseController
         foreach ($search_trees as $n => $tree) {
             $sql                   .= $n ? ", " : "";
             $sql                   .= ":tree_id_" . $n;
-            $args['tree_id_' . $n] = $tree->getTreeId();
+            $args['tree_id_' . $n] = $tree->id();
         }
         $sql .= ")";
 
@@ -1431,7 +1431,7 @@ class SearchController extends AbstractBaseController
         foreach ($search_trees as $n => $tree) {
             $sql                   .= $n ? ", " : "";
             $sql                   .= ":tree_id_" . $n;
-            $args['tree_id_' . $n] = $tree->getTreeId();
+            $args['tree_id_' . $n] = $tree->id();
         }
         $sql .= ")";
 

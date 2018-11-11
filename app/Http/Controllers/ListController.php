@@ -491,7 +491,7 @@ class ListController extends AbstractBaseController
             " GROUP BY 1" .
             " ORDER BY 1"
         )->execute([
-            $tree->getTreeId(),
+            $tree->id(),
         ])->fetchOneColumn();
 
         // Ensure we have an empty (top level) folder.
@@ -524,7 +524,7 @@ class ListController extends AbstractBaseController
             " JOIN `##media_file` USING (m_id, m_file)" .
             " WHERE m_file = ?";
         $args = [
-            $tree->getTreeId(),
+            $tree->id(),
         ];
 
         // Only show external files when we are looking at the root folder
@@ -592,7 +592,7 @@ class ListController extends AbstractBaseController
         $rows = Database::prepare(
             "SELECT o_id AS xref, o_gedcom AS gedcom FROM `##other` WHERE o_type = 'NOTE' AND o_file = :tree_id"
         )->execute([
-            'tree_id' => $tree->getTreeId(),
+            'tree_id' => $tree->id(),
         ])->fetchAll();
 
         $list = [];
@@ -617,7 +617,7 @@ class ListController extends AbstractBaseController
         $rows = Database::prepare(
             "SELECT o_id AS xref, o_gedcom AS gedcom FROM `##other` WHERE o_type = 'REPO' AND o_file = ?"
         )->execute([
-            $tree->getTreeId(),
+            $tree->id(),
         ])->fetchAll();
 
         $list = [];
@@ -642,7 +642,7 @@ class ListController extends AbstractBaseController
         $rows = Database::prepare(
             "SELECT s_id AS xref, s_gedcom AS gedcom FROM `##sources` WHERE s_file = :tree_id"
         )->execute([
-            'tree_id' => $tree->getTreeId(),
+            'tree_id' => $tree->id(),
         ])->fetchAll();
 
         $list = [];
@@ -763,7 +763,7 @@ class ListController extends AbstractBaseController
             "SELECT COUNT(n_id)" .
             " FROM `##name` " .
             ($fams ? " JOIN `##link` ON (n_id=l_from AND n_file=l_file AND l_type='FAMS') " : "") .
-            " WHERE n_file=" . $tree->getTreeId() .
+            " WHERE n_file=" . $tree->id() .
             ($marnm ? "" : " AND n_type!='_MARNM'");
 
         // Fetch all the letters in our alphabet, whether or not there
@@ -788,7 +788,7 @@ class ListController extends AbstractBaseController
             ($marnm ? "" : " AND n_type != '_MARNM'");
 
         $args = [
-            'tree_id' => $tree->getTreeId(),
+            'tree_id' => $tree->id(),
         ];
 
         foreach ($this->localization_service->alphabet() as $n => $letter) {
@@ -810,7 +810,7 @@ class ListController extends AbstractBaseController
             ($marnm ? "" : " AND n_type != '_MARNM'");
 
         $args = [
-            'tree_id' => $tree->getTreeId(),
+            'tree_id' => $tree->id(),
         ];
 
         $count_no_surname = (int) Database::prepare($sql)->execute($args)->fetchOne();
@@ -841,7 +841,7 @@ class ListController extends AbstractBaseController
             "SELECT COUNT(DISTINCT n_id)" .
             " FROM `##name`" .
             ($fams ? " JOIN `##link` ON (n_id=l_from AND n_file=l_file AND l_type='FAMS') " : "") .
-            " WHERE n_file=" . $tree->getTreeId() . " " .
+            " WHERE n_file=" . $tree->id() . " " .
             ($marnm ? "" : " AND n_type!='_MARNM'");
 
         $args = [];
@@ -883,7 +883,7 @@ class ListController extends AbstractBaseController
             ($marnm ? "" : " AND n_type != '_MARNM'");
 
         $args = [
-            'tree_id' => $tree->getTreeId(),
+            'tree_id' => $tree->id(),
         ];
 
         if ($surn) {
@@ -937,7 +937,7 @@ class ListController extends AbstractBaseController
             ($marnm ? "" : " AND n_type != '_MARNM'");
 
         $args = [
-            'tree_id' => $tree->getTreeId(),
+            'tree_id' => $tree->id(),
             'collate' => I18N::collation(),
         ];
 
@@ -994,7 +994,7 @@ class ListController extends AbstractBaseController
             ($marnm ? "" : "AND n_type != '_MARNM'");
 
         $args = [
-            'tree_id' => $tree->getTreeId(),
+            'tree_id' => $tree->id(),
         ];
 
         if ($surn) {

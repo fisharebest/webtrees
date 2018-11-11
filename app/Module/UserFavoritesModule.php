@@ -156,7 +156,7 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
             "SELECT favorite_id, user_id, gedcom_id, xref, favorite_type, title, note, url" .
             " FROM `##favorite` WHERE gedcom_id = :tree_id AND user_id = :user_id"
         )->execute([
-            'tree_id' => $tree->getTreeId(),
+            'tree_id' => $tree->id(),
             'user_id' => $user->getUserId(),
         ])->fetchAll();
 
@@ -233,7 +233,7 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
         $favorite = Database::prepare(
             "SELECT * FROM `##favorite` WHERE gedcom_id = :gedcom_id AND user_id = :user_id AND url = :url"
         )->execute([
-            'gedcom_id' => $tree->getTreeId(),
+            'gedcom_id' => $tree->id(),
             'user_id'   => $user->getUserId(),
             'url'       => $url,
         ])->fetchOneRow();
@@ -242,7 +242,7 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
             Database::prepare(
                 "INSERT INTO `##favorite` (gedcom_id, user_id, url, note, title) VALUES (:gedcom_id, :user_id, :url, :note, :title)"
             )->execute([
-                'gedcom_id' => $tree->getTreeId(),
+                'gedcom_id' => $tree->id(),
                 'user_id'   => $user->getUserId(),
                 'url'       => $url,
                 'note'      => $note,
@@ -272,7 +272,7 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
         $favorite = Database::prepare(
             "SELECT * FROM `##favorite` WHERE gedcom_id = :gedcom_id AND user_id = :user_id AND xref = :xref"
         )->execute([
-            'gedcom_id' => $tree->getTreeId(),
+            'gedcom_id' => $tree->id(),
             'user_id'   => $user->getUserId(),
             'xref'      => $xref,
         ])->fetchOneRow();
@@ -281,7 +281,7 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
             Database::prepare(
                 "INSERT INTO `##favorite` (gedcom_id, user_id, xref, note) VALUES (:gedcom_id, :user_id, :xref, :note)"
             )->execute([
-                'gedcom_id' => $tree->getTreeId(),
+                'gedcom_id' => $tree->id(),
                 'user_id'   => $user->getUserId(),
                 'xref'      => $xref,
                 'note'      => $note,

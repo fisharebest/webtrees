@@ -684,7 +684,7 @@ class AdminPhpGedViewController extends AbstractBaseController
                                 "INSERT IGNORE INTO `##user_gedcom_setting` (user_id, gedcom_id, setting_name, setting_value) VALUES (?, ?, ?, ?)"
                             )->execute([
                                 $setting->user_id,
-                                $tree->getTreeId(),
+                                $tree->id(),
                                 'gedcomid',
                                 $value,
                             ]);
@@ -705,7 +705,7 @@ class AdminPhpGedViewController extends AbstractBaseController
                                 "INSERT IGNORE INTO `##user_gedcom_setting` (user_id, gedcom_id, setting_name, setting_value) VALUES (?, ?, ?, ?)"
                             )->execute([
                                 $setting->user_id,
-                                $tree->getTreeId(),
+                                $tree->id(),
                                 'rootid',
                                 $value,
                             ]);
@@ -726,7 +726,7 @@ class AdminPhpGedViewController extends AbstractBaseController
                                 "INSERT IGNORE INTO `##user_gedcom_setting` (user_id, gedcom_id, setting_name, setting_value) VALUES (?, ?, ?, ?)"
                             )->execute([
                                 $setting->user_id,
-                                $tree->getTreeId(),
+                                $tree->id(),
                                 'canedit',
                                 $value,
                             ]);

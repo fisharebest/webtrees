@@ -65,7 +65,7 @@ class Media extends GedcomRecord
             "SELECT l_from FROM `##link` WHERE l_to = ? AND l_file = ?"
         )->execute([
             $this->xref,
-            $this->tree->getTreeId(),
+            $this->tree->id(),
         ])->fetchOneColumn();
         foreach ($linked_ids as $linked_id) {
             $linked_record = GedcomRecord::getInstance($linked_id, $this->tree);

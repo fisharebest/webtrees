@@ -82,7 +82,7 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
             " ORDER BY COUNT(n_surn) DESC" .
             " LIMIT :limit"
         )->execute([
-            'tree_id' => $tree->getTreeId(),
+            'tree_id' => $tree->id(),
             'limit'   => $num,
         ])->fetchOneColumn();
 
@@ -93,7 +93,7 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
             )->execute([
                 'collate' => I18N::collation(),
                 'surname' => $top_surname,
-                'tree_id' => $tree->getTreeId(),
+                'tree_id' => $tree->id(),
             ])->fetchAssoc();
 
             $variants = array_map(function (string $count): int {

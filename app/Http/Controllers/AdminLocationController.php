@@ -503,7 +503,7 @@ class AdminLocationController extends AbstractBaseController
             LEFT JOIN `##places` t9 ON t8.p_parent_id = t9.p_id
             WHERE t1.p_file = :gedcom"
         )->execute([
-            'gedcom' => $tree->getTreeId(),
+            'gedcom' => $tree->id(),
         ])->fetchOneColumn();
 
         // ... and the placelocation table

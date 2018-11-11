@@ -110,7 +110,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
     public function postAdminAction(Request $request): RedirectResponse
     {
         foreach (Tree::getAll() as $tree) {
-            $include_in_sitemap = (bool) $request->get('sitemap' . $tree->getTreeId());
+            $include_in_sitemap = (bool) $request->get('sitemap' . $tree->id());
             $tree->setPreference('include_in_sitemap', (string) $include_in_sitemap);
         }
 
@@ -266,7 +266,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
             " ORDER BY i_id" .
             " LIMIT :limit OFFSET :offset"
         )->execute([
-            'tree_id' => $tree->getTreeId(),
+            'tree_id' => $tree->id(),
             'limit'   => $limit,
             'offset'  => $offset,
         ])->fetchAll();
@@ -296,7 +296,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
             " ORDER BY m_id" .
             " LIMIT :limit OFFSET :offset"
         )->execute([
-            'tree_id' => $tree->getTreeId(),
+            'tree_id' => $tree->id(),
             'limit'   => $limit,
             'offset'  => $offset,
         ])->fetchAll();
@@ -326,7 +326,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
             " ORDER BY o_id" .
             " LIMIT :limit OFFSET :offset"
         )->execute([
-            'tree_id' => $tree->getTreeId(),
+            'tree_id' => $tree->id(),
             'limit'   => $limit,
             'offset'  => $offset,
         ])->fetchAll();
@@ -356,7 +356,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
             " ORDER BY o_id" .
             " LIMIT :limit OFFSET :offset"
         )->execute([
-            'tree_id' => $tree->getTreeId(),
+            'tree_id' => $tree->id(),
             'limit'   => $limit,
             'offset'  => $offset,
         ])->fetchAll();
@@ -386,7 +386,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
             " ORDER BY s_id" .
             " LIMIT :limit OFFSET :offset"
         )->execute([
-            'tree_id' => $tree->getTreeId(),
+            'tree_id' => $tree->id(),
             'limit'   => $limit,
             'offset'  => $offset,
         ])->fetchAll();

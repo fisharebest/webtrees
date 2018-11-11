@@ -111,7 +111,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
             )->execute([
                 'module_name' => $this->getName(),
                 'xref'        => $individual->getXref(),
-                'tree_id'     => $individual->getTree()->getTreeId(),
+                'tree_id'     => $individual->getTree()->id(),
             ])->fetchOneColumn();
 
         $stories = [];
@@ -188,7 +188,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
             " AND gedcom_id = :tree_id" .
             " ORDER BY gedcom_id, xref"
         )->execute([
-            'tree_id'     => $tree->getTreeId(),
+            'tree_id'     => $tree->id(),
             'module_name' => $this->getName(),
         ])->fetchAll();
 
@@ -273,7 +273,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
             Database::prepare(
                 "UPDATE `##block` SET gedcom_id = :tree_id, xref = :xref WHERE block_id = :block_id"
             )->execute([
-                'tree_id'  => $tree->getTreeId(),
+                'tree_id'  => $tree->id(),
                 'xref'     => $xref,
                 'block_id' => $block_id,
             ]);
@@ -281,7 +281,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
             Database::prepare(
                 "INSERT INTO `##block` (gedcom_id, xref, module_name, block_order) VALUES (:tree_id, :xref, 'stories', 0)"
             )->execute([
-                'tree_id' => $tree->getTreeId(),
+                'tree_id' => $tree->id(),
                 'xref'    => $xref,
             ]);
 
@@ -347,7 +347,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
             " ORDER BY xref"
         )->execute([
             'module_name' => $this->getName(),
-            'tree_id'     => $tree->getTreeId(),
+            'tree_id'     => $tree->id(),
         ])->fetchAll();
 
         foreach ($stories as $story) {

@@ -20,30 +20,30 @@
     <?php foreach ($all_trees as $managed_tree) : ?>
         <?php if (Auth::isManager($managed_tree)) : ?>
             <div class="card">
-                <div class="card-header" role="tab" id="card-tree-header-<?= $managed_tree->getTreeId() ?>">
+                <div class="card-header" role="tab" id="card-tree-header-<?= $managed_tree->id() ?>">
                     <h2 class="mb-0">
                         <?= view('icons/tree') ?>
-                        <a data-toggle="collapse" data-parent="#accordion" href="#card-tree-content-<?= $managed_tree->getTreeId() ?>" <?= $managed_tree == $tree || $managed_tree->getPreference('imported') === '0' ? 'aria-expanded="true"' : '' ?> aria-controls="card-tree-content-<?= $managed_tree->getTreeId() ?>">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#card-tree-content-<?= $managed_tree->id() ?>" <?= $managed_tree == $tree || $managed_tree->getPreference('imported') === '0' ? 'aria-expanded="true"' : '' ?> aria-controls="card-tree-content-<?= $managed_tree->id() ?>">
                             <?= e($managed_tree->getName()) ?> — <?= e($managed_tree->getTitle()) ?>
                         </a>
                     </h2>
                 </div>
-                <div id="card-tree-content-<?= $managed_tree->getTreeId() ?>" class="collapse<?= $managed_tree == $tree || $managed_tree->getPreference('imported') === '0' ? ' show' : '' ?>" role="tabpanel" aria-labelledby="panel-tree-header-<?= $managed_tree->getTreeId() ?>">
+                <div id="card-tree-content-<?= $managed_tree->id() ?>" class="collapse<?= $managed_tree == $tree || $managed_tree->getPreference('imported') === '0' ? ' show' : '' ?>" role="tabpanel" aria-labelledby="panel-tree-header-<?= $managed_tree->id() ?>">
                     <div class="card-body">
-                        <?php $importing = Database::prepare("SELECT 1 FROM `##gedcom_chunk` WHERE gedcom_id = ? AND imported = '0' LIMIT 1")->execute([$managed_tree->getTreeId()])->fetchOne() ?>
+                        <?php $importing = Database::prepare("SELECT 1 FROM `##gedcom_chunk` WHERE gedcom_id = ? AND imported = '0' LIMIT 1")->execute([$managed_tree->id()])->fetchOne() ?>
                         <?php if ($importing) : ?>
-                            <div id="import<?= $managed_tree->getTreeId() ?>" class="col-xs-12">
+                            <div id="import<?= $managed_tree->id() ?>" class="col-xs-12">
                                 <div class="progress">
                                     <?= I18N::translate('Calculating…') ?>
                                 </div>
                             </div>
                             <?php View::push('javascript'); ?>
                             <script>
-                $("#import<?= $managed_tree->getTreeId() ?>").load("<?= route('import', ['ged' => $managed_tree->getName()]) ?>", {});
+                $("#import<?= $managed_tree->id() ?>").load("<?= route('import', ['ged' => $managed_tree->getName()]) ?>", {});
                             </script>
                             <?php View::endpush() ?>
                         <?php endif ?>
-                        <div class="row<?= $importing ? ' d-none' : '' ?>" id="actions<?= $managed_tree->getTreeId() ?>">
+                        <div class="row<?= $importing ? ' d-none' : '' ?>" id="actions<?= $managed_tree->id() ?>">
                             <div class="col-sm-6 col-md-3">
                                 <h3>
                                     <a href="<?= e(route('tree-page', ['ged' => $managed_tree->getName()])) ?>">
@@ -84,13 +84,13 @@
                                     <!-- DELETE -->
                                     <li>
                                         <span class="fa-li"><?= view('icons/delete') ?></span>
-                                        <a href="#" data-confirm="<?= I18N::translate('Are you sure you want to delete “%s”?', e($managed_tree->getTitle())) ?>" onclick="if (confirm(this.dataset.confirm)) { document.delete_form<?= $managed_tree->getTreeId() ?>.submit(); } return false;">
+                                        <a href="#" data-confirm="<?= I18N::translate('Are you sure you want to delete “%s”?', e($managed_tree->getTitle())) ?>" onclick="if (confirm(this.dataset.confirm)) { document.delete_form<?= $managed_tree->id() ?>.submit(); } return false;">
                                             <?= I18N::translate('Delete') ?>
                                             <span class="sr-only">
                                                 <?= e($managed_tree->getTitle()) ?>
                                             </span>
                                         </a>
-                                        <form name="delete_form<?= $managed_tree->getTreeId() ?>" method="post" action="<?= route('admin-trees-delete', ['ged' => $managed_tree->getName()]) ?>">
+                                        <form name="delete_form<?= $managed_tree->id() ?>" method="post" action="<?= route('admin-trees-delete', ['ged' => $managed_tree->getName()]) ?>">
                                             <?= csrf_field() ?>
                                             <!-- A11Y - forms need submit buttons, but they look ugly here -->
                                             <button class="sr-only" data-confirm="<?= I18N::translate('Are you sure you want to delete “%s”?', e($managed_tree->getTitle())) ?>" onclick="return confirm(this.dataset.confirm)" type="submit">
@@ -105,11 +105,11 @@
                                             <?php if ($managed_tree->getName() === Site::getPreference('DEFAULT_GEDCOM')) : ?>
                                                 <?= I18N::translate('Default family tree') ?>
                                             <?php else : ?>
-                                                <a href="#" onclick="document.defaultform<?= $managed_tree->getTreeId() ?>.submit();">
+                                                <a href="#" onclick="document.defaultform<?= $managed_tree->id() ?>.submit();">
                                                     <?= I18N::translate('Set as default') ?>
                                                     <span class="sr-only"><?= e($managed_tree->getTitle()) ?></span>
                                                 </a>
-                                                <form name="defaultform<?= $managed_tree->getTreeId() ?>" method="post" action="<?= route('admin-trees-default', ['ged' => $managed_tree->getName()]) ?>">
+                                                <form name="defaultform<?= $managed_tree->id() ?>" method="post" action="<?= route('admin-trees-default', ['ged' => $managed_tree->getName()]) ?>">
                                                     <?= csrf_field() ?>
                                                     <!-- A11Y - forms need submit buttons, but they look ugly here -->
                                                     <button class="sr-only" type="submit">

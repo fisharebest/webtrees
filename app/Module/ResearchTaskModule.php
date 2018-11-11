@@ -74,7 +74,7 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
             "SELECT DISTINCT d_gid FROM `##dates`" .
             " WHERE d_file = :tree_id AND d_fact = '_TODO' AND d_julianday1 < :jd"
         )->execute([
-            'tree_id' => $tree->getTreeId(),
+            'tree_id' => $tree->id(),
             'jd'      => $end_jd,
         ])->fetchOneColumn();
 

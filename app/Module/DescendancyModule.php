@@ -66,7 +66,7 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
                 " ORDER BY n_sort"
             )->execute([
                 'query'   => $search,
-                'tree_id' => $tree->getTreeId(),
+                'tree_id' => $tree->id(),
             ])->fetchAll();
 
             foreach ($rows as $row) {

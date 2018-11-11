@@ -71,7 +71,7 @@ class Place
             )->execute([
                 'parent_id' => $place_id,
                 'place'     => $place,
-                'tree_id'   => $this->tree->getTreeId(),
+                'tree_id'   => $this->tree->id(),
             ])->fetchOne();
         }
 
@@ -108,7 +108,7 @@ class Place
             " ORDER BY p_place COLLATE :collation"
         )->execute([
             'parent_id' => $this->getPlaceId(),
-            'tree_id'   => $this->tree->getTreeId(),
+            'tree_id'   => $this->tree->id(),
             'collation' => I18N::collation(),
         ])->fetchOneColumn();
         foreach ($rows as $row) {
@@ -252,7 +252,7 @@ class Place
                 " ORDER BY CONCAT_WS(', ', p9.p_place, p8.p_place, p7.p_place, p6.p_place, p5.p_place, p4.p_place, p3.p_place, p2.p_place, p1.p_place) COLLATE :collate"
             )
                 ->execute([
-                    'tree_id' => $tree->getTreeId(),
+                    'tree_id' => $tree->id(),
                     'collate' => I18N::collation(),
                 ])->fetchOneColumn();
         foreach ($rows as $row) {
@@ -290,7 +290,7 @@ class Place
             )->execute([
                 'filter_1' => preg_quote($filter),
                 'filter_2' => preg_quote($filter),
-                'tree_id' => $tree->getTreeId(),
+                'tree_id' => $tree->id(),
                 'collation' => I18N::collation(),
             ])->fetchOneColumn();
         foreach ($rows as $row) {

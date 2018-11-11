@@ -602,7 +602,7 @@ class FunctionsImport
      */
     public static function importRecord($gedrec, Tree $tree, $update)
     {
-        $tree_id = $tree->getTreeId();
+        $tree_id = $tree->id();
 
         // Escaped @ signs (only if importing from file)
         if (!$update) {
@@ -829,7 +829,7 @@ class FunctionsImport
             )->execute([
                 'place_id' => $place_id,
                 'xref'     => $xref,
-                'tree_id'  => $tree->getTreeId(),
+                'tree_id'  => $tree->id(),
             ]);
         }
     }
@@ -853,7 +853,7 @@ class FunctionsImport
         }
 
         // Already imported?
-        $cache_key = $tree->getTreeId() . '/' . $place;
+        $cache_key = $tree->id() . '/' . $place;
         if (isset($cache[$cache_key])) {
             return $cache[$cache_key];
         }
@@ -871,7 +871,7 @@ class FunctionsImport
             "SELECT p_id FROM `##places`" .
             " WHERE p_file =:tree_id AND p_parent_id = :parent_id AND p_place = LEFT(:place, 150)"
         )->execute([
-            'tree_id'   => $tree->getTreeId(),
+            'tree_id'   => $tree->id(),
             'parent_id' => $parent_id,
             'place'     => $place,
         ])->fetchOne();
@@ -883,7 +883,7 @@ class FunctionsImport
             )->execute([
                 'place'       => $place,
                 'parent_id'   => $parent_id,
-                'tree_id'     => $tree->getTreeId(),
+                'tree_id'     => $tree->id(),
                 'std_soundex' => Soundex::russell($place),
                 'dm_soundex'  => Soundex::daitchMokotoff($place),
             ]);
@@ -1096,7 +1096,7 @@ class FunctionsImport
         )->execute([
             'filename' => $file,
             'title'    => $titl,
-            'tree_id'  => $tree->getTreeId(),
+            'tree_id'  => $tree->id(),
         ])->fetchOne();
 
         if (!$xref) {
@@ -1118,7 +1118,7 @@ class FunctionsImport
                 "INSERT INTO `##media` (m_id, m_file, m_gedcom) VALUES (:m_id, :m_file, :m_gedcom)"
             )->execute([
                 'm_id'     => $xref,
-                'm_file'   => $tree->getTreeId(),
+                'm_file'   => $tree->id(),
                 'm_gedcom' => $gedrec,
             ]);
 
@@ -1127,7 +1127,7 @@ class FunctionsImport
                     "INSERT INTO `##media_file` (m_id, m_file, multimedia_file_refn, multimedia_format, source_media_type, descriptive_title) VALUES (:m_id, :m_file, LEFT(:multimedia_file_refn, 512), LEFT(:multimedia_format, 4), LEFT(:source_media_type, 15), LEFT(:descriptive_title, 248))"
                 )->execute([
                     'm_id'                 => $xref,
-                    'm_file'               => $tree->getTreeId(),
+                    'm_file'               => $tree->id(),
                     'multimedia_file_refn' => $media_file->filename(),
                     'multimedia_format'    => $media_file->format(),
                     'source_media_type'    => $media_file->type(),
@@ -1157,7 +1157,7 @@ class FunctionsImport
             " ORDER BY change_id"
         )->execute([
             'xref'    => $xref,
-            'tree_id' => $tree->getTreeId(),
+            'tree_id' => $tree->id(),
         ])->fetchAll();
         foreach ($changes as $change) {
             if (empty($change->new_gedcom)) {
@@ -1171,7 +1171,7 @@ class FunctionsImport
                 "UPDATE `##change` SET status='accepted' WHERE status='pending' AND xref=? AND gedcom_id=?"
             )->execute([
                 $xref,
-                $tree->getTreeId(),
+                $tree->id(),
             ]);
             Log::addEditLog("Accepted change {$change->change_id} for {$xref} / {$change->gedcom_name} into database", $tree);
         }
@@ -1192,7 +1192,7 @@ class FunctionsImport
             " WHERE status = 'pending' AND xref = :xref AND gedcom_id = :tree_id"
         )->execute([
             'xref'    => $record->getXref(),
-            'tree_id' => $record->getTree()->getTreeId(),
+            'tree_id' => $record->getTree()->id(),
         ]);
     }
 
@@ -1225,21 +1225,21 @@ class FunctionsImport
                 "SELECT pl_p_id FROM `##placelinks` WHERE pl_gid=? AND pl_file=?"
             )->execute([
                 $gid,
-                $tree->getTreeId(),
+                $tree->id(),
             ])->fetchOneColumn();
 
         Database::prepare(
             "DELETE FROM `##placelinks` WHERE pl_gid = ? AND pl_file = ?"
         )->execute([
             $gid,
-            $tree->getTreeId(),
+            $tree->id(),
         ]);
 
         Database::prepare(
             "DELETE FROM `##dates` WHERE d_gid =? AND d_file = ?"
         )->execute([
             $gid,
-            $tree->getTreeId(),
+            $tree->id(),
         ]);
 
         //-- delete any unlinked places
@@ -1248,7 +1248,7 @@ class FunctionsImport
                 "SELECT count(pl_p_id) FROM `##placelinks` WHERE pl_p_id=? AND pl_file=?"
             )->execute([
                 $p_id,
-                $tree->getTreeId(),
+                $tree->id(),
             ])->fetchOne();
 
             if ($num === 0) {
@@ -1256,7 +1256,7 @@ class FunctionsImport
                     "DELETE FROM `##places` WHERE p_id=? AND p_file=?"
                 )->execute([
                     $p_id,
-                    $tree->getTreeId(),
+                    $tree->id(),
                 ]);
             }
         }
@@ -1265,14 +1265,14 @@ class FunctionsImport
             "DELETE FROM `##name` WHERE n_id=? AND n_file=?"
         )->execute([
             $gid,
-            $tree->getTreeId(),
+            $tree->id(),
         ]);
 
         Database::prepare(
             "DELETE FROM `##link` WHERE l_from=? AND l_file=?"
         )->execute([
             $gid,
-            $tree->getTreeId(),
+            $tree->id(),
         ]);
 
         switch ($type) {
@@ -1281,7 +1281,7 @@ class FunctionsImport
                     "DELETE FROM `##individuals` WHERE i_id=? AND i_file=?"
                 )->execute([
                     $gid,
-                    $tree->getTreeId(),
+                    $tree->id(),
                 ]);
                 break;
 
@@ -1290,7 +1290,7 @@ class FunctionsImport
                     "DELETE FROM `##families` WHERE f_id=? AND f_file=?"
                 )->execute([
                     $gid,
-                    $tree->getTreeId(),
+                    $tree->id(),
                 ]);
                 break;
 
@@ -1299,7 +1299,7 @@ class FunctionsImport
                     "DELETE FROM `##sources` WHERE s_id=? AND s_file=?"
                 )->execute([
                     $gid,
-                    $tree->getTreeId(),
+                    $tree->id(),
                 ]);
                 break;
 
@@ -1308,14 +1308,14 @@ class FunctionsImport
                     "DELETE FROM `##media` WHERE m_id=? AND m_file=?"
                 )->execute([
                     $gid,
-                    $tree->getTreeId(),
+                    $tree->id(),
                 ]);
 
                 Database::prepare(
                     "DELETE FROM `##media_file` WHERE m_id=? AND m_file=?"
                 )->execute([
                     $gid,
-                    $tree->getTreeId(),
+                    $tree->id(),
                 ]);
                 break;
 
@@ -1324,7 +1324,7 @@ class FunctionsImport
                     "DELETE FROM `##other` WHERE o_id=? AND o_file=?"
                 )->execute([
                     $gid,
-                    $tree->getTreeId(),
+                    $tree->id(),
                 ]);
                 break;
         }

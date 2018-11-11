@@ -151,7 +151,7 @@ class BranchesController extends AbstractBaseController
             " AND (n_surn = ? OR n_surname = ?";
 
         $args = [
-            $tree->getTreeId(),
+            $tree->id(),
             '_MARNM',
             $surname,
             $surname,

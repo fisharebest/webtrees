@@ -156,7 +156,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
             "SELECT favorite_id, user_id, gedcom_id, xref, favorite_type, title, note, url" .
             " FROM `##favorite` WHERE gedcom_id = :tree_id AND user_id IS NULL"
         )->execute([
-            'tree_id' => $tree->getTreeId(),
+            'tree_id' => $tree->id(),
         ])->fetchAll();
 
         foreach ($favorites as $favorite) {
@@ -209,7 +209,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
                 "DELETE FROM `##favorite` WHERE favorite_id = :favorite_id AND gedcom_id = :tree_id"
             )->execute([
                 'favorite_id' => $favorite_id,
-                'tree_id'     => $tree->getTreeId(),
+                'tree_id'     => $tree->id(),
             ]);
         }
 
@@ -231,7 +231,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
         $favorite = Database::prepare(
             "SELECT * FROM `##favorite` WHERE gedcom_id = :gedcom_id AND user_id IS NULL AND url = :url"
         )->execute([
-            'gedcom_id' => $tree->getTreeId(),
+            'gedcom_id' => $tree->id(),
             'url'       => $url,
         ])->fetchOneRow();
 
@@ -239,7 +239,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
             Database::prepare(
                 "INSERT INTO `##favorite` (gedcom_id, url, note, title) VALUES (:gedcom_id, :user_id, :url, :note, :title)"
             )->execute([
-                'gedcom_id' => $tree->getTreeId(),
+                'gedcom_id' => $tree->id(),
                 'url'       => $url,
                 'note'      => $note,
                 'title'     => $title,
@@ -267,7 +267,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
         $favorite = Database::prepare(
             "SELECT * FROM `##favorite` WHERE gedcom_id = :gedcom_id AND user_id IS NULL AND xref = :xref"
         )->execute([
-            'gedcom_id' => $tree->getTreeId(),
+            'gedcom_id' => $tree->id(),
             'xref'      => $xref,
         ])->fetchOneRow();
 
@@ -275,7 +275,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
             Database::prepare(
                 "INSERT INTO `##favorite` (gedcom_id, xref, note) VALUES (:gedcom_id, :xref, :note)"
             )->execute([
-                'gedcom_id' => $tree->getTreeId(),
+                'gedcom_id' => $tree->id(),
                 'xref'      => $xref,
                 'note'      => $note,
             ]);

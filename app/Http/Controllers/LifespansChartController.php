@@ -280,7 +280,7 @@ class LifespansChartController extends AbstractChartController
             " AND d_julianday2 >= :min_jd" .
             " AND d_fact NOT IN ('BAPL', 'ENDL', 'SLGC', 'SLGS', '_TODO', 'CHAN')"
         )->execute([
-            'tree_id' => $tree->getTreeId(),
+            'tree_id' => $tree->id(),
             'max_jd'  => $end->maximumJulianDay(),
             'min_jd'  => $start->minimumJulianDay(),
         ])->fetchOneColumn();
@@ -305,7 +305,7 @@ class LifespansChartController extends AbstractChartController
             " WHERE `f_file`=:tree_id" .
             " AND `pl_p_id`=:place_id"
         )->execute([
-            'tree_id'  => $tree->getTreeId(),
+            'tree_id'  => $tree->id(),
             'place_id' => $place->getPlaceId(),
         ])->fetchOneColumn();
     }

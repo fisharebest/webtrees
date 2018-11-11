@@ -77,7 +77,7 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface
             " WHERE gedcom_id = :tree_id AND page_name IN ('individual.php','family.php','source.php','repo.php','note.php','mediaviewer.php')" .
             " ORDER BY page_count DESC LIMIT :limit"
         )->execute([
-            'tree_id' => $tree->getTreeId(),
+            'tree_id' => $tree->id(),
             'limit'   => (int) $num,
         ])->fetchAssoc();
 

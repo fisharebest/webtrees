@@ -1,6 +1,6 @@
 <?php use Fisharebest\Webtrees\I18N; ?>
 
-<div class="progress" id="progress<?= e($tree->getTreeId()) ?>">
+<div class="progress" id="progress<?= e($tree->id()) ?>">
     <div
         class="progress-bar"
         role="progressbar"
@@ -14,6 +14,6 @@
 </div>
 
 <script>
-  $("#import<?= e($tree->getTreeId()) ?>")
+  $("#import<?= e($tree->id()) ?>")
       .load("<?= route('import', ['ged' => $tree->getName()]) ?>", {});
 </script>

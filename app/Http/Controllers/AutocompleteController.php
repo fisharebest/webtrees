@@ -103,7 +103,7 @@ class AutocompleteController extends AbstractBaseController
         )->execute([
             'xref'    => $xref,
             'term'    => $like_query,
-            'tree_id' => $tree->getTreeId(),
+            'tree_id' => $tree->id(),
         ])->fetchAll();
 
         // Filter for privacy
@@ -124,7 +124,7 @@ class AutocompleteController extends AbstractBaseController
         )->execute([
             'xref'    => $xref,
             'term'    => $query,
-            'tree_id' => $tree->getTreeId(),
+            'tree_id' => $tree->id(),
         ])->fetchAll();
         // Filter for privacy
         foreach ($rows as $row) {

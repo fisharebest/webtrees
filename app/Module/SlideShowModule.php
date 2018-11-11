@@ -72,7 +72,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
             " AND multimedia_format  IN ('jpg', 'jpeg', 'png', 'gif', 'tiff', 'bmp')" .
             " AND source_media_type IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, '')"
         )->execute([
-            $tree->getTreeId(),
+            $tree->id(),
             $this->getBlockSetting($block_id, 'filter_audio', '0') ? 'audio' : null,
             $this->getBlockSetting($block_id, 'filter_book', '1') ? 'book' : null,
             $this->getBlockSetting($block_id, 'filter_card', '1') ? 'card' : null,

@@ -30,7 +30,7 @@ use function substr_compare;
 class Tree
 {
     /** @var int The tree's ID number */
-    private $tree_id;
+    private $id;
 
     /** @var string The tree's name */
     private $name;
@@ -60,13 +60,13 @@ class Tree
      * Create a tree object. This is a private constructor - it can only
      * be called from Tree::getAll() to ensure proper initialisation.
      *
-     * @param int    $tree_id
+     * @param int    $id
      * @param string $tree_name
      * @param string $tree_title
      */
-    private function __construct($tree_id, $tree_name, $tree_title)
+    private function __construct($id, $tree_name, $tree_title)
     {
-        $this->tree_id                 = $tree_id;
+        $this->id                      = $id;
         $this->name                    = $tree_name;
         $this->title                   = $tree_title;
         $this->fact_privacy            = [];
@@ -82,7 +82,7 @@ class Tree
             'priv_user'   => Auth::PRIV_USER,
             'priv_none'   => Auth::PRIV_NONE,
             'priv_hide'   => Auth::PRIV_HIDE,
-            'tree_id'     => $this->tree_id,
+            'tree_id'     => $this->id,
         ])->fetchAll();
 
         foreach ($rows as $row) {
@@ -103,9 +103,9 @@ class Tree
      *
      * @return int
      */
-    public function getTreeId(): int
+    public function id(): int
     {
-        return $this->tree_id;
+        return $this->id;
     }
 
     /**
@@ -171,7 +171,7 @@ class Tree
         if (empty($this->preferences)) {
             $this->preferences = Database::prepare(
                 "SELECT setting_name, setting_value FROM `##gedcom_setting` WHERE gedcom_id = ?"
-            )->execute([$this->tree_id])->fetchAssoc();
+            )->execute([$this->id])->fetchAssoc();
         }
 
         return $this->preferences[$setting_name] ?? $default;
@@ -192,7 +192,7 @@ class Tree
                 "REPLACE INTO `##gedcom_setting` (gedcom_id, setting_name, setting_value)" .
                 " VALUES (:tree_id, :setting_name, LEFT(:setting_value, 255))"
             )->execute([
-                'tree_id'       => $this->tree_id,
+                'tree_id'       => $this->id,
                 'setting_name'  => $setting_name,
                 'setting_value' => $setting_value,
             ]);
@@ -223,7 +223,7 @@ class Tree
                 "SELECT setting_name, setting_value FROM `##user_gedcom_setting` WHERE user_id = ? AND gedcom_id = ?"
             )->execute([
                 $user->getUserId(),
-                $this->tree_id,
+                $this->id,
             ])->fetchAssoc();
         }
 
@@ -247,7 +247,7 @@ class Tree
                 Database::prepare(
                     "DELETE FROM `##user_gedcom_setting` WHERE gedcom_id = :tree_id AND user_id = :user_id AND setting_name = :setting_name"
                 )->execute([
-                    'tree_id'      => $this->tree_id,
+                    'tree_id'      => $this->id,
                     'user_id'      => $user->getUserId(),
                     'setting_name' => $setting_name,
                 ]);
@@ -256,7 +256,7 @@ class Tree
                     "REPLACE INTO `##user_gedcom_setting` (user_id, gedcom_id, setting_name, setting_value) VALUES (:user_id, :tree_id, :setting_name, LEFT(:setting_value, 255))"
                 )->execute([
                     'user_id'       => $user->getUserId(),
-                    'tree_id'       => $this->tree_id,
+                    'tree_id'       => $this->id,
                     'setting_name'  => $setting_name,
                     'setting_value' => $setting_value,
                 ]);
@@ -331,7 +331,7 @@ class Tree
     public static function findById($tree_id): Tree
     {
         foreach (self::getAll() as $tree) {
-            if ($tree->tree_id == $tree_id) {
+            if ($tree->id == $tree_id) {
                 return $tree;
             }
         }
@@ -366,7 +366,7 @@ class Tree
     {
         $list = [];
         foreach (self::getAll() as $tree) {
-            $list[$tree->tree_id] = $tree->title;
+            $list[$tree->id] = $tree->title;
         }
 
         return $list;
@@ -484,7 +484,7 @@ class Tree
         ]);
 
         // Update our cache
-        self::$trees[$tree->tree_id] = $tree;
+        self::$trees[$tree->id] = $tree;
 
         return $tree;
     }
@@ -499,7 +499,7 @@ class Tree
         return (bool) Database::prepare(
             "SELECT 1 FROM `##change` WHERE status = 'pending' AND gedcom_id = :tree_id"
         )->execute([
-            'tree_id' => $this->tree_id,
+            'tree_id' => $this->id,
         ])->fetchOne();
     }
 
@@ -515,23 +515,23 @@ class Tree
      */
     public function deleteGenealogyData(bool $keep_media)
     {
-        Database::prepare("DELETE FROM `##gedcom_chunk` WHERE gedcom_id = ?")->execute([$this->tree_id]);
-        Database::prepare("DELETE FROM `##individuals`  WHERE i_file    = ?")->execute([$this->tree_id]);
-        Database::prepare("DELETE FROM `##families`     WHERE f_file    = ?")->execute([$this->tree_id]);
-        Database::prepare("DELETE FROM `##sources`      WHERE s_file    = ?")->execute([$this->tree_id]);
-        Database::prepare("DELETE FROM `##other`        WHERE o_file    = ?")->execute([$this->tree_id]);
-        Database::prepare("DELETE FROM `##places`       WHERE p_file    = ?")->execute([$this->tree_id]);
-        Database::prepare("DELETE FROM `##placelinks`   WHERE pl_file   = ?")->execute([$this->tree_id]);
-        Database::prepare("DELETE FROM `##name`         WHERE n_file    = ?")->execute([$this->tree_id]);
-        Database::prepare("DELETE FROM `##dates`        WHERE d_file    = ?")->execute([$this->tree_id]);
-        Database::prepare("DELETE FROM `##change`       WHERE gedcom_id = ?")->execute([$this->tree_id]);
+        Database::prepare("DELETE FROM `##gedcom_chunk` WHERE gedcom_id = ?")->execute([$this->id]);
+        Database::prepare("DELETE FROM `##individuals`  WHERE i_file    = ?")->execute([$this->id]);
+        Database::prepare("DELETE FROM `##families`     WHERE f_file    = ?")->execute([$this->id]);
+        Database::prepare("DELETE FROM `##sources`      WHERE s_file    = ?")->execute([$this->id]);
+        Database::prepare("DELETE FROM `##other`        WHERE o_file    = ?")->execute([$this->id]);
+        Database::prepare("DELETE FROM `##places`       WHERE p_file    = ?")->execute([$this->id]);
+        Database::prepare("DELETE FROM `##placelinks`   WHERE pl_file   = ?")->execute([$this->id]);
+        Database::prepare("DELETE FROM `##name`         WHERE n_file    = ?")->execute([$this->id]);
+        Database::prepare("DELETE FROM `##dates`        WHERE d_file    = ?")->execute([$this->id]);
+        Database::prepare("DELETE FROM `##change`       WHERE gedcom_id = ?")->execute([$this->id]);
 
         if ($keep_media) {
-            Database::prepare("DELETE FROM `##link` WHERE l_file =? AND l_type<>'OBJE'")->execute([$this->tree_id]);
+            Database::prepare("DELETE FROM `##link` WHERE l_file =? AND l_type<>'OBJE'")->execute([$this->id]);
         } else {
-            Database::prepare("DELETE FROM `##link`  WHERE l_file =?")->execute([$this->tree_id]);
-            Database::prepare("DELETE FROM `##media` WHERE m_file =?")->execute([$this->tree_id]);
-            Database::prepare("DELETE FROM `##media_file` WHERE m_file =?")->execute([$this->tree_id]);
+            Database::prepare("DELETE FROM `##link`  WHERE l_file =?")->execute([$this->id]);
+            Database::prepare("DELETE FROM `##media` WHERE m_file =?")->execute([$this->id]);
+            Database::prepare("DELETE FROM `##media_file` WHERE m_file =?")->execute([$this->id]);
         }
     }
 
@@ -549,16 +549,16 @@ class Tree
 
         $this->deleteGenealogyData(false);
 
-        Database::prepare("DELETE `##block_setting` FROM `##block_setting` JOIN `##block` USING (block_id) WHERE gedcom_id=?")->execute([$this->tree_id]);
-        Database::prepare("DELETE FROM `##block`               WHERE gedcom_id = ?")->execute([$this->tree_id]);
-        Database::prepare("DELETE FROM `##user_gedcom_setting` WHERE gedcom_id = ?")->execute([$this->tree_id]);
-        Database::prepare("DELETE FROM `##gedcom_setting`      WHERE gedcom_id = ?")->execute([$this->tree_id]);
-        Database::prepare("DELETE FROM `##module_privacy`      WHERE gedcom_id = ?")->execute([$this->tree_id]);
-        Database::prepare("DELETE FROM `##hit_counter`         WHERE gedcom_id = ?")->execute([$this->tree_id]);
-        Database::prepare("DELETE FROM `##default_resn`        WHERE gedcom_id = ?")->execute([$this->tree_id]);
-        Database::prepare("DELETE FROM `##gedcom_chunk`        WHERE gedcom_id = ?")->execute([$this->tree_id]);
-        Database::prepare("DELETE FROM `##log`                 WHERE gedcom_id = ?")->execute([$this->tree_id]);
-        Database::prepare("DELETE FROM `##gedcom`              WHERE gedcom_id = ?")->execute([$this->tree_id]);
+        Database::prepare("DELETE `##block_setting` FROM `##block_setting` JOIN `##block` USING (block_id) WHERE gedcom_id=?")->execute([$this->id]);
+        Database::prepare("DELETE FROM `##block`               WHERE gedcom_id = ?")->execute([$this->id]);
+        Database::prepare("DELETE FROM `##user_gedcom_setting` WHERE gedcom_id = ?")->execute([$this->id]);
+        Database::prepare("DELETE FROM `##gedcom_setting`      WHERE gedcom_id = ?")->execute([$this->id]);
+        Database::prepare("DELETE FROM `##module_privacy`      WHERE gedcom_id = ?")->execute([$this->id]);
+        Database::prepare("DELETE FROM `##hit_counter`         WHERE gedcom_id = ?")->execute([$this->id]);
+        Database::prepare("DELETE FROM `##default_resn`        WHERE gedcom_id = ?")->execute([$this->id]);
+        Database::prepare("DELETE FROM `##gedcom_chunk`        WHERE gedcom_id = ?")->execute([$this->id]);
+        Database::prepare("DELETE FROM `##log`                 WHERE gedcom_id = ?")->execute([$this->id]);
+        Database::prepare("DELETE FROM `##gedcom`              WHERE gedcom_id = ?")->execute([$this->id]);
 
         // After updating the database, we need to fetch a new (sorted) copy
         self::$trees = [];
@@ -585,11 +585,11 @@ class Tree
             "SELECT m_gedcom AS gedcom, m_id AS xref, 5 AS n FROM `##media`       WHERE m_file = :tree_id_5" .
             " ORDER BY n, LENGTH(xref), xref"
         )->execute([
-            'tree_id_1' => $this->tree_id,
-            'tree_id_2' => $this->tree_id,
-            'tree_id_3' => $this->tree_id,
-            'tree_id_4' => $this->tree_id,
-            'tree_id_5' => $this->tree_id,
+            'tree_id_1' => $this->id,
+            'tree_id_2' => $this->id,
+            'tree_id_3' => $this->id,
+            'tree_id_4' => $this->id,
+            'tree_id_5' => $this->id,
         ]);
 
         $buffer = FunctionsExport::reformatRecord(FunctionsExport::gedcomHeader($this, 'UTF-8'));
@@ -644,7 +644,7 @@ class Tree
                 Database::prepare(
                     "INSERT INTO `##gedcom_chunk` (gedcom_id, chunk_data) VALUES (?, ?)"
                 )->execute([
-                    $this->tree_id,
+                    $this->id,
                     substr($file_data, 0, $pos),
                 ]);
                 $file_data = substr($file_data, $pos);
@@ -653,7 +653,7 @@ class Tree
         Database::prepare(
             "INSERT INTO `##gedcom_chunk` (gedcom_id, chunk_data) VALUES (?, ?)"
         )->execute([
-            $this->tree_id,
+            $this->id,
             $file_data,
         ]);
 
@@ -739,7 +739,7 @@ class Tree
         Database::prepare(
             "INSERT INTO `##change` (gedcom_id, xref, old_gedcom, new_gedcom, user_id) VALUES (?, ?, '', ?, ?)"
         )->execute([
-            $this->tree_id,
+            $this->id,
             $xref,
             $gedcom,
             Auth::id(),
@@ -779,7 +779,7 @@ class Tree
         Database::prepare(
             "INSERT INTO `##change` (gedcom_id, xref, old_gedcom, new_gedcom, user_id) VALUES (?, ?, '', ?, ?)"
         )->execute([
-            $this->tree_id,
+            $this->id,
             $xref,
             $gedcom,
             Auth::id(),
@@ -819,7 +819,7 @@ class Tree
         Database::prepare(
             "INSERT INTO `##change` (gedcom_id, xref, old_gedcom, new_gedcom, user_id) VALUES (?, ?, '', ?, ?)"
         )->execute([
-            $this->tree_id,
+            $this->id,
             $xref,
             $gedcom,
             Auth::id(),
@@ -859,7 +859,7 @@ class Tree
             $xref = (string) Database::prepare(
                 "SELECT MIN(i_id) FROM `##individuals` WHERE i_file = :tree_id"
             )->execute([
-                'tree_id' => $this->getTreeId(),
+                'tree_id' => $this->id(),
             ])->fetchOne();
 
             $individual = Individual::getInstance($xref, $this);
@@ -895,7 +895,7 @@ class Tree
             $xref = (string) Database::prepare(
                 "SELECT MIN(i_id) FROM `##individuals` WHERE i_file = :tree_id"
             )->execute([
-                'tree_id' => $this->getTreeId(),
+                'tree_id' => $this->id(),
             ])->fetchOne();
 
             $individual = Individual::getInstance($xref, $this);

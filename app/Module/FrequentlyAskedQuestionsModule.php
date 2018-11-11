@@ -84,8 +84,8 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
             " AND setting_name='languages' AND (setting_value LIKE CONCAT('%', :locale, '%') OR setting_value='')"
         )->execute([
             'module_name' => $this->getName(),
-            'tree_id_1'   => $tree->getTreeId(),
-            'tree_id_2'   => $tree->getTreeId(),
+            'tree_id_1'   => $tree->id(),
+            'tree_id_2'   => $tree->id(),
             'locale'      => WT_LOCALE,
         ])->fetchAll();
 
@@ -121,20 +121,20 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
             " ORDER BY block_order"
         )->execute([
             'module_name' => $this->getName(),
-            'tree_id_1'   => $tree->getTreeId(),
-            'tree_id_2'   => $tree->getTreeId(),
+            'tree_id_1'   => $tree->id(),
+            'tree_id_2'   => $tree->id(),
         ])->fetchAll();
 
         $min_block_order = Database::prepare(
             "SELECT MIN(block_order) FROM `##block` WHERE module_name = 'faq' AND (gedcom_id = :tree_id OR gedcom_id IS NULL)"
         )->execute([
-            'tree_id' => $tree->getTreeId(),
+            'tree_id' => $tree->id(),
         ])->fetchOne();
 
         $max_block_order = Database::prepare(
             "SELECT MAX(block_order) FROM `##block` WHERE module_name = 'faq' AND (gedcom_id = :tree_id OR gedcom_id IS NULL)"
         )->execute([
-            'tree_id' => $tree->getTreeId(),
+            'tree_id' => $tree->id(),
         ])->fetchOne();
 
         $title = I18N::translate('Frequently asked questions') . ' — ' . $tree->getTitle();
@@ -400,8 +400,8 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
             " ORDER BY block_order"
         )->execute([
             'module_name' => $this->getName(),
-            'tree_id_1'   => $tree->getTreeId(),
-            'tree_id_2'   => $tree->getTreeId(),
+            'tree_id_1'   => $tree->id(),
+            'tree_id_2'   => $tree->id(),
         ])->fetchAll();
 
         // Filter foreign languages.

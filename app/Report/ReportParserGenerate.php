@@ -1871,7 +1871,7 @@ class ReportParserGenerate extends ReportParserBase
                     "  GROUP BY xref" .
                     " )"
                 )->execute([
-                    'tree_id' => $this->tree->getTreeId(),
+                    'tree_id' => $this->tree->id(),
                 ])->fetchAll();
                 $this->list = [];
                 foreach ($rows as $row) {
@@ -1883,7 +1883,7 @@ class ReportParserGenerate extends ReportParserBase
                 $sql_join     = "";
                 $sql_where    = " WHERE i_file = :tree_id";
                 $sql_order_by = "";
-                $sql_params   = ['tree_id' => $this->tree->getTreeId()];
+                $sql_params   = ['tree_id' => $this->tree->id()];
                 foreach ($attrs as $attr => $value) {
                     if (strpos($attr, 'filter') === 0 && $value) {
                         $value = $this->substituteVars($value, false);
@@ -1960,7 +1960,7 @@ class ReportParserGenerate extends ReportParserBase
                 $sql_join     = "";
                 $sql_where    = " WHERE f_file = :tree_id";
                 $sql_order_by = "";
-                $sql_params   = ['tree_id' => $this->tree->getTreeId()];
+                $sql_params   = ['tree_id' => $this->tree->id()];
                 foreach ($attrs as $attr => $value) {
                     if (strpos($attr, 'filter') === 0 && $value) {
                         $value = $this->substituteVars($value, false);

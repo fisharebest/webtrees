@@ -620,7 +620,7 @@ class EditMediaController extends AbstractEditController
             " WHERE m_file = :tree_id" .
             " AND multimedia_file_refn NOT LIKE 'http://%' AND multimedia_file_refn NOT LIKE 'https://%'"
         )->execute([
-            'tree_id' => $tree->getTreeId(),
+            'tree_id' => $tree->id(),
         ])->fetchOneColumn();
 
         $disk_files = [];

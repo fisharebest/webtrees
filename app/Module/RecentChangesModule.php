@@ -225,7 +225,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 
         $vars = [
             'days'    => $days,
-            'tree_id' => $tree->getTreeId(),
+            'tree_id' => $tree->id(),
         ];
 
         $xrefs = Database::prepare($sql)->execute($vars)->fetchOneColumn();
