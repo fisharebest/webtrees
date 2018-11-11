@@ -330,30 +330,6 @@ class GedcomRecord
     }
 
     /**
-     * Generate a URL to this record, suitable for use in HTML, etc.
-     *
-     * @deprecated
-     *
-     * @return string
-     */
-    public function getHtmlUrl(): string
-    {
-        return e($this->url());
-    }
-
-    /**
-     * Generate a URL to this record.
-     *
-     * @deprecated
-     *
-     * @return string
-     */
-    public function getRawUrl(): string
-    {
-        return $this->url();
-    }
-
-    /**
      * Generate a URL to this record.
      *
      * @return string
