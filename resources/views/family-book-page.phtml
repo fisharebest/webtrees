@@ -8,14 +8,14 @@
 
 <form class="wt-page-options wt-page-options-family-book-chart d-print-none">
     <input type="hidden" name="route" value="family-book">
-    <input type="hidden" name="ged" value="<?= e($individual->getTree()->name()) ?>">
+    <input type="hidden" name="ged" value="<?= e($individual->tree()->name()) ?>">
 
     <div class="row form-group">
         <label class="col-sm-3 col-form-label wt-page-options-label" for="xref">
             <?= I18N::translate('Individual') ?>
         </label>
         <div class="col-sm-9 wt-page-options-value">
-            <?= FunctionsEdit::formControlIndividual($individual->getTree(), $individual, ['id' => 'xref', 'name' => 'xref']) ?>
+            <?= FunctionsEdit::formControlIndividual($individual->tree(), $individual, ['id' => 'xref', 'name' => 'xref']) ?>
         </div>
     </div>
 
@@ -56,4 +56,4 @@
     </div>
 </form>
 
-<div class="wt-ajax-load wt-page-content wt-chart wt-family-book-chart" data-ajax-url="<?= e(route('family-book-chart', ['xref' => $individual->xref(), 'ged' => $individual->getTree()->name(), 'book_size' => $book_size, 'generations' => $generations, 'show_spouse' => (int) $show_spouse])) ?>"></div>
+<div class="wt-ajax-load wt-page-content wt-chart wt-family-book-chart" data-ajax-url="<?= e(route('family-book-chart', ['xref' => $individual->xref(), 'ged' => $individual->tree()->name(), 'book_size' => $book_size, 'generations' => $generations, 'show_spouse' => (int) $show_spouse])) ?>"></div>

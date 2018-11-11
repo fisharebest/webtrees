@@ -231,13 +231,13 @@ class RelationshipsChartController extends AbstractChartController
         $rows = Database::prepare(
             "SELECT l_from, l_to FROM `##link` WHERE l_file = :tree_id AND l_type IN ('FAMS', 'FAMC')"
         )->execute([
-            'tree_id' => $individual1->getTree()->id(),
+            'tree_id' => $individual1->tree()->id(),
         ])->fetchAll();
 
         // Optionally restrict the graph to the ancestors of the individuals.
         if ($ancestor) {
-            $ancestors = $this->allAncestors($individual1->xref(), $individual2->xref(), $individual1->getTree()->id());
-            $exclude   = $this->excludeFamilies($individual1->xref(), $individual2->xref(), $individual1->getTree()->id());
+            $ancestors = $this->allAncestors($individual1->xref(), $individual2->xref(), $individual1->tree()->id());
+            $exclude   = $this->excludeFamilies($individual1->xref(), $individual2->xref(), $individual1->tree()->id());
         } else {
             $ancestors = [];
             $exclude   = [];

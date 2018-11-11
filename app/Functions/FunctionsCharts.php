@@ -102,13 +102,13 @@ class FunctionsCharts
         if ($husb) {
             echo '<a name="', $husb->xref(), '"></a>';
         } else {
-            $husb = new Individual('M', "0 @M@ INDI\n1 SEX M", null, $family->getTree());
+            $husb = new Individual('M', "0 @M@ INDI\n1 SEX M", null, $family->tree());
         }
         $wife = $family->getWife();
         if ($wife) {
             echo '<a name="', $wife->xref(), '"></a>';
         } else {
-            $wife = new Individual('F', "0 @F@ INDI\n1 SEX F", null, $family->getTree());
+            $wife = new Individual('F', "0 @F@ INDI\n1 SEX F", null, $family->tree());
         }
 
         if ($sosa) {
@@ -325,21 +325,21 @@ class FunctionsCharts
         }
         echo '</span>';
 
-        if ($sosa == 0 && Auth::isEditor($family->getTree())) {
+        if ($sosa == 0 && Auth::isEditor($family->tree())) {
             echo '<br>';
             echo '<a href="' . e(route('add-child-to-family', [
                     'gender' => 'U',
-                    'ged'    => $family->getTree()->name(),
+                    'ged'    => $family->tree()->name(),
                     'xref'   => $family->xref(),
                 ])) . '">' . I18N::translate('Add a child to this family') . '</a>';
             echo ' <a class="icon-sex_m_15x15" href="' . e(route('add-child-to-family', [
                     'gender' => 'M',
-                    'ged'    => $family->getTree()->name(),
+                    'ged'    => $family->tree()->name(),
                     'xref'   => $family->xref(),
                 ])) . '" title="', I18N::translate('son'), '"></a>';
             echo ' <a class="icon-sex_f_15x15" href="' . e(route('add-child-to-family', [
                     'gender' => 'F',
-                    'ged'    => $family->getTree()->name(),
+                    'ged'    => $family->tree()->name(),
                     'xref'   => $family->xref(),
                 ])) . '" title="', I18N::translate('daughter'), '"></a>';
             echo '<br><br>';

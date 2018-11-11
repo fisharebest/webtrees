@@ -134,9 +134,9 @@ class EditGedcomRecordController extends AbstractEditController
 
         $this->checkRecordAccess($record, true);
 
-        if ($record && Auth::isEditor($record->getTree()) && $record->canShow() && $record->canEdit()) {
+        if ($record && Auth::isEditor($record->tree()) && $record->canShow() && $record->canEdit()) {
             // Delete links to this record
-            foreach (FunctionsDb::fetchAllLinks($record->xref(), $record->getTree()->id()) as $xref) {
+            foreach (FunctionsDb::fetchAllLinks($record->xref(), $record->tree()->id()) as $xref) {
                 $linker     = GedcomRecord::getInstance($xref, $tree);
                 $old_gedcom = $linker->getGedcom();
                 $new_gedcom = $this->removeLinks($old_gedcom, $record->xref());

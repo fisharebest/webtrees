@@ -207,21 +207,21 @@ class Fact
         switch ($this->tag) {
             case 'FAMC':
             case 'FAMS':
-                return Family::getInstance($xref, $this->record()->getTree());
+                return Family::getInstance($xref, $this->record()->tree());
             case 'HUSB':
             case 'WIFE':
             case 'CHIL':
-                return Individual::getInstance($xref, $this->record()->getTree());
+                return Individual::getInstance($xref, $this->record()->tree());
             case 'SOUR':
-                return Source::getInstance($xref, $this->record()->getTree());
+                return Source::getInstance($xref, $this->record()->tree());
             case 'OBJE':
-                return Media::getInstance($xref, $this->record()->getTree());
+                return Media::getInstance($xref, $this->record()->tree());
             case 'REPO':
-                return Repository::getInstance($xref, $this->record()->getTree());
+                return Repository::getInstance($xref, $this->record()->tree());
             case 'NOTE':
-                return Note::getInstance($xref, $this->record()->getTree());
+                return Note::getInstance($xref, $this->record()->tree());
             default:
-                return GedcomRecord::getInstance($xref, $this->record()->getTree());
+                return GedcomRecord::getInstance($xref, $this->record()->tree());
         }
     }
 
@@ -251,7 +251,7 @@ class Fact
     public function canShow(int $access_level = null): bool
     {
         if ($access_level === null) {
-            $access_level = Auth::accessLevel($this->record()->getTree());
+            $access_level = Auth::accessLevel($this->record()->tree());
         }
 
         // Does this record have an explicit RESN?
@@ -267,8 +267,8 @@ class Fact
 
         // Does this record have a default RESN?
         $xref                    = $this->record->xref();
-        $fact_privacy            = $this->record->getTree()->getFactPrivacy();
-        $individual_fact_privacy = $this->record->getTree()->getIndividualFactPrivacy();
+        $fact_privacy            = $this->record->tree()->getFactPrivacy();
+        $individual_fact_privacy = $this->record->tree()->getIndividualFactPrivacy();
         if (isset($individual_fact_privacy[$xref][$this->tag])) {
             return $individual_fact_privacy[$xref][$this->tag] >= $access_level;
         }
@@ -291,8 +291,8 @@ class Fact
         // Members cannot edit RESN, CHAN and locked records
         return
             $this->record->canEdit() && !$this->isPendingDeletion() && (
-                Auth::isManager($this->record->getTree()) ||
-                Auth::isEditor($this->record->getTree()) && strpos($this->gedcom, "\n2 RESN locked") === false && $this->getTag() != 'RESN' && $this->getTag() != 'CHAN'
+                Auth::isManager($this->record->tree()) ||
+                Auth::isEditor($this->record->tree()) && strpos($this->gedcom, "\n2 RESN locked") === false && $this->getTag() != 'RESN' && $this->getTag() != 'CHAN'
             );
     }
 
@@ -304,7 +304,7 @@ class Fact
     public function place(): Place
     {
         if ($this->place === null) {
-            $this->place = new Place($this->attribute('PLAC'), $this->record()->getTree());
+            $this->place = new Place($this->attribute('PLAC'), $this->record()->tree());
         }
 
         return $this->place;
@@ -445,7 +445,7 @@ class Fact
         preg_match_all('/\n(2 SOUR @(' . WT_REGEX_XREF . ')@(?:\n[3-9] .*)*)/', $this->gedcom(), $matches, PREG_SET_ORDER);
         $citations = [];
         foreach ($matches as $match) {
-            $source = Source::getInstance($match[2], $this->record()->getTree());
+            $source = Source::getInstance($match[2], $this->record()->tree());
             if ($source && $source->canShow()) {
                 $citations[] = $match[1];
             }
@@ -466,7 +466,7 @@ class Fact
         foreach ($matches[1] as $match) {
             $note = preg_replace("/\n3 CONT ?/", "\n", $match);
             if (preg_match('/@(' . WT_REGEX_XREF . ')@/', $note, $nmatch)) {
-                $note = Note::getInstance($nmatch[1], $this->record()->getTree());
+                $note = Note::getInstance($nmatch[1], $this->record()->tree());
                 if ($note && $note->canShow()) {
                     // A note object
                     $notes[] = $note;
@@ -490,7 +490,7 @@ class Fact
         $media = [];
         preg_match_all('/\n2 OBJE @(' . WT_REGEX_XREF . ')@/', $this->gedcom(), $matches);
         foreach ($matches[1] as $match) {
-            $obje = Media::getInstance($match, $this->record()->getTree());
+            $obje = Media::getInstance($match, $this->record()->tree());
             if ($obje && $obje->canShow()) {
                 $media[] = $obje;
             }
@@ -519,7 +519,7 @@ class Fact
             // Fact date
             $date = $this->date();
             if ($date->isOK()) {
-                if (in_array($this->getTag(), explode('|', WT_EVENTS_BIRT)) && $this->record() instanceof Individual && $this->record()->getTree()->getPreference('SHOW_PARENTS_AGE')) {
+                if (in_array($this->getTag(), explode('|', WT_EVENTS_BIRT)) && $this->record() instanceof Individual && $this->record()->tree()->getPreference('SHOW_PARENTS_AGE')) {
                     $attributes[] = $date->display() . FunctionsPrint::formatParentsAges($this->record(), $date);
                 } else {
                     $attributes[] = $date->display();

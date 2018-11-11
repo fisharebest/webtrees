@@ -229,7 +229,7 @@ class EditMediaController extends AbstractEditController
             $file = $media_file->filename();
         }
 
-        $MEDIA_DIRECTORY = $media->getTree()->getPreference('MEDIA_DIRECTORY');
+        $MEDIA_DIRECTORY = $media->tree()->getPreference('MEDIA_DIRECTORY');
         $old             = $MEDIA_DIRECTORY . $media_file->filename();
         $new             = $MEDIA_DIRECTORY . $file;
 
@@ -374,7 +374,7 @@ class EditMediaController extends AbstractEditController
         $record = $tree->createRecord($gedcom);
 
         // Accept the new record to keep the filesystem synchronized with the genealogy.
-        FunctionsImport::acceptAllChanges($record->xref(), $record->getTree());
+        FunctionsImport::acceptAllChanges($record->xref(), $record->tree());
 
         return new JsonResponse([
             'id'   => $record->xref(),

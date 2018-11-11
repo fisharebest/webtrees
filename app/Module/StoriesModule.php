@@ -79,7 +79,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
     /** {@inheritdoc} */
     public function hasTabContent(Individual $individual): bool
     {
-        return Auth::isManager($individual->getTree()) || !empty($this->getStoriesForIndividual($individual));
+        return Auth::isManager($individual->tree()) || !empty($this->getStoriesForIndividual($individual));
     }
 
     /** {@inheritdoc} */
@@ -111,7 +111,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
             )->execute([
                 'module_name' => $this->getName(),
                 'xref'        => $individual->xref(),
-                'tree_id'     => $individual->getTree()->id(),
+                'tree_id'     => $individual->tree()->id(),
             ])->fetchOneColumn();
 
         $stories = [];

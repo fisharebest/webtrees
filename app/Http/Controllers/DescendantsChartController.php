@@ -188,7 +188,7 @@ class DescendantsChartController extends AbstractChartController
         echo '<td>';
         foreach ($person->getChildFamilies() as $cfamily) {
             foreach ($cfamily->getSpouses() as $parent) {
-                echo FontAwesome::linkIcon('arrow-up', I18N::translate('Start at parents'), ['href' => route('descendants', ['ged'         => $parent->getTree()->name(),
+                echo FontAwesome::linkIcon('arrow-up', I18N::translate('Start at parents'), ['href' => route('descendants', ['ged'         => $parent->tree()->name(),
                                                                                                                              'xref'        => $parent->xref(),
                                                                                                                              'generations' => $generations,
                 ]),
@@ -271,7 +271,7 @@ class DescendantsChartController extends AbstractChartController
         if ($spouse) {
             foreach ($spouse->getChildFamilies() as $cfamily) {
                 foreach ($cfamily->getSpouses() as $parent) {
-                    echo FontAwesome::linkIcon('arrow-up', I18N::translate('Start at parents'), ['href' => route('descendants', ['ged'         => $parent->getTree()->name(),
+                    echo FontAwesome::linkIcon('arrow-up', I18N::translate('Start at parents'), ['href' => route('descendants', ['ged'         => $parent->tree()->name(),
                                                                                                                                  'xref'        => $parent->xref(),
                                                                                                                                  'generations' => $generations,
                     ]),

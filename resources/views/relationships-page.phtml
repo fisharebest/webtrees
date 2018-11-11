@@ -82,7 +82,7 @@
     <div class="wt-ajax-load wt-page-content wt-chart wt-relationships-chart" data-ajax-url="<?= e(route('relationships-chart', [
         'xref1'     => $individual1->xref(),
         'xref2'     => $individual2->xref(),
-        'ged'       => $individual2->getTree()->name(),
+        'ged'       => $individual2->tree()->name(),
         'recursion' => $recursion,
         'ancestors' => $ancestors,
     ])) ?>"></div>

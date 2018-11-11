@@ -952,7 +952,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
     {
         $cart = Session::get('cart', []);
 
-        $tree_name = $record->getTree()->name();
+        $tree_name = $record->tree()->name();
 
         // Add this record
         $cart[$tree_name][$record->xref()] = true;

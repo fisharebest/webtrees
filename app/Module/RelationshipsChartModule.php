@@ -84,7 +84,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleConfigInt
      */
     public function getChartMenu(Individual $individual)
     {
-        $tree     = $individual->getTree();
+        $tree     = $individual->tree();
         $gedcomid = $tree->getUserPreference(Auth::user(), 'gedcomid');
 
         if ($gedcomid !== '') {
@@ -93,7 +93,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleConfigInt
                 route('relationships', [
                     'xref1' => $gedcomid,
                     'xref2' => $individual->xref(),
-                    'ged'   => $individual->getTree()->name(),
+                    'ged'   => $individual->tree()->name(),
                 ]),
                 'menu-chart-relationship',
                 ['rel' => 'nofollow']
@@ -104,7 +104,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleConfigInt
             I18N::translate('Relationships'),
             route('relationships', [
                 'xref1' => $individual->xref(),
-                'ged'   => $individual->getTree()->name(),
+                'ged'   => $individual->tree()->name(),
             ]),
             'menu-chart-relationship',
             ['rel' => 'nofollow']

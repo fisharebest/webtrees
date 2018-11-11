@@ -317,7 +317,7 @@ class MediaFile
      */
     public function folder(): string
     {
-        return WT_DATA_DIR . $this->media->getTree()->getPreference('MEDIA_DIRECTORY');
+        return WT_DATA_DIR . $this->media->tree()->getPreference('MEDIA_DIRECTORY');
     }
 
     /**
@@ -358,7 +358,7 @@ class MediaFile
      */
     public function getServerFilename()
     {
-        $MEDIA_DIRECTORY = $this->media->getTree()->getPreference('MEDIA_DIRECTORY');
+        $MEDIA_DIRECTORY = $this->media->tree()->getPreference('MEDIA_DIRECTORY');
 
         if ($this->isExternal() || !$this->multimedia_file_refn) {
             // External image, or (in the case of corrupt GEDCOM data) no image at all
@@ -378,7 +378,7 @@ class MediaFile
     {
         return route('media-download', [
             'xref'    => $this->media->xref(),
-            'ged'     => $this->media->getTree()->name(),
+            'ged'     => $this->media->tree()->name(),
             'fact_id' => $this->fact_id,
         ]);
     }
@@ -401,7 +401,7 @@ class MediaFile
             Site::setPreference('glide-key', $glide_key);
         }
 
-        if (Auth::accessLevel($this->media->getTree()) > $this->media->getTree()->getPreference('SHOW_NO_WATERMARK')) {
+        if (Auth::accessLevel($this->media->tree()) > $this->media->tree()->getPreference('SHOW_NO_WATERMARK')) {
             $mark = 'watermark.png';
         } else {
             $mark = '';
@@ -412,7 +412,7 @@ class MediaFile
         $url = $url_builder->getUrl('index.php', [
             'route'     => 'media-thumbnail',
             'xref'      => $this->media->xref(),
-            'ged'       => $this->media->getTree()->name(),
+            'ged'       => $this->media->tree()->name(),
             'fact_id'   => $this->fact_id,
             'w'         => $width,
             'h'         => $height,

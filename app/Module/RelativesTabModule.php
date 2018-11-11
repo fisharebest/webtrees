@@ -62,7 +62,7 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface
     /** {@inheritdoc} */
     public function getTabContent(Individual $individual): string
     {
-        $tree = $individual->getTree();
+        $tree = $individual->tree();
         if ($tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS')) {
             $fam_access_level = Auth::PRIV_HIDE;
         } else {

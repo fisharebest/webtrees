@@ -969,7 +969,7 @@ class FunctionsEdit
     public static function createEditForm(Fact $fact)
     {
         $record = $fact->record();
-        $tree   = $record->getTree();
+        $tree   = $record->tree();
 
         self::$tags = [];
 
@@ -993,7 +993,7 @@ class FunctionsEdit
             ],
         ];
 
-        if ($record->getTree()->getPreference('FULL_SOURCES')) {
+        if ($record->tree()->getPreference('FULL_SOURCES')) {
             $expected_subtags['SOUR'][] = 'QUAY';
             $expected_subtags['DATA'][] = 'DATE';
         }
@@ -1007,7 +1007,7 @@ class FunctionsEdit
             $expected_subtags['DATE'] = ['TIME'];
         }
 
-        if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $record->getTree()->getPreference('ADVANCED_PLAC_FACTS'), $match)) {
+        if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $record->tree()->getPreference('ADVANCED_PLAC_FACTS'), $match)) {
             $expected_subtags['PLAC'] = array_merge($match[1], $expected_subtags['PLAC']);
         }
 

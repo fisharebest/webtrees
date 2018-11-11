@@ -61,4 +61,4 @@
     </div>
 </form>
 
-<div class="wt-ajax-load wt-page-content wt-chart wt-fan-chart" data-ajax-url="<?= e(route('fan-chart', ['xref' => $individual->xref(), 'ged' => $individual->getTree()->name(), 'generations' => $generations, 'chart_style' => $chart_style, 'fan_width' => $fan_width])) ?>"></div>
+<div class="wt-ajax-load wt-page-content wt-chart wt-fan-chart" data-ajax-url="<?= e(route('fan-chart', ['xref' => $individual->xref(), 'ged' => $individual->tree()->name(), 'generations' => $generations, 'chart_style' => $chart_style, 'fan_width' => $fan_width])) ?>"></div>

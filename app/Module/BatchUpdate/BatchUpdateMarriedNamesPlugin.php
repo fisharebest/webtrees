@@ -75,7 +75,7 @@ class BatchUpdateMarriedNamesPlugin extends BatchUpdateBasePlugin
     public function updateRecord(GedcomRecord $record): string
     {
         $old_gedcom = $record->getGedcom();
-        $tree       = $record->getTree();
+        $tree       = $record->tree();
 
         $SURNAME_TRADITION = $tree->getPreference('SURNAME_TRADITION');
 
@@ -119,7 +119,7 @@ class BatchUpdateMarriedNamesPlugin extends BatchUpdateBasePlugin
     private function surnamesToAdd(GedcomRecord $record): array
     {
         $gedcom = $record->getGedcom();
-        $tree   = $record->getTree();
+        $tree   = $record->tree();
 
         $wife_surnames    = $this->surnames($record);
         $husb_surnames    = [];

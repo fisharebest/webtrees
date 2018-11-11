@@ -1192,7 +1192,7 @@ class FunctionsImport
             " WHERE status = 'pending' AND xref = :xref AND gedcom_id = :tree_id"
         )->execute([
             'xref'    => $record->xref(),
-            'tree_id' => $record->getTree()->id(),
+            'tree_id' => $record->tree()->id(),
         ]);
     }
 

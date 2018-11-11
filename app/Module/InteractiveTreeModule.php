@@ -116,7 +116,7 @@ class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface
                 'module' => $this->getName(),
                 'action' => 'Treeview',
                 'xref'   => $individual->xref(),
-                'ged'    => $individual->getTree()->name(),
+                'ged'    => $individual->tree()->name(),
             ]),
             'menu-chart-tree',
             ['rel' => 'nofollow']

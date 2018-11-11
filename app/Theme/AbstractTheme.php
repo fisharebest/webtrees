@@ -712,7 +712,7 @@ abstract class AbstractTheme
     {
         $person_box_class = self::PERSON_BOX_CLASSES[$individual->getSex()];
 
-        if ($individual->canShow() && $individual->getTree()->getPreference('SHOW_HIGHLIGHT_IMAGES')) {
+        if ($individual->canShow() && $individual->tree()->getPreference('SHOW_HIGHLIGHT_IMAGES')) {
             $thumbnail = $individual->displayImage(40, 50, 'crop', []);
         } else {
             $thumbnail = '';
@@ -735,7 +735,7 @@ abstract class AbstractTheme
         }
 
         return
-            '<div data-xref="' . e($individual->xref()) . '" data-tree="' . e($individual->getTree()->name()) . '" class="person_box_template ' . $person_box_class . ' box-style1" style="width: ' . $this->parameter('chart-box-x') . 'px; height: ' . $this->parameter('chart-box-y') . 'px">' .
+            '<div data-xref="' . e($individual->xref()) . '" data-tree="' . e($individual->tree()->name()) . '" class="person_box_template ' . $person_box_class . ' box-style1" style="width: ' . $this->parameter('chart-box-x') . 'px; height: ' . $this->parameter('chart-box-y') . 'px">' .
             $icons .
             '<div class="chart_textbox" style="max-height:' . $this->parameter('chart-box-y') . 'px;">' .
             $thumbnail .
@@ -767,7 +767,7 @@ abstract class AbstractTheme
     {
         $person_box_class = self::PERSON_BOX_CLASSES[$individual->getSex()];
 
-        if ($individual->getTree()->getPreference('SHOW_HIGHLIGHT_IMAGES')) {
+        if ($individual->tree()->getPreference('SHOW_HIGHLIGHT_IMAGES')) {
             $thumbnail = $individual->displayImage(40, 50, 'crop', []);
         } else {
             $thumbnail = '';
@@ -790,7 +790,7 @@ abstract class AbstractTheme
         }
 
         return
-            '<div data-xref="' . e($individual->xref()) . '" data-tree="' . e($individual->getTree()->name()) . '" class="person_box_template ' . $person_box_class . ' box-style2">' .
+            '<div data-xref="' . e($individual->xref()) . '" data-tree="' . e($individual->tree()->name()) . '" class="person_box_template ' . $person_box_class . ' box-style2">' .
             $icons .
             '<div class="chart_textbox" style="max-height:' . $this->parameter('chart-box-y') . 'px;">' .
             $thumbnail .
@@ -812,7 +812,7 @@ abstract class AbstractTheme
     {
         $person_box_class = self::PERSON_BOX_CLASSES[$individual->getSex()];
 
-        if ($individual->getTree()->getPreference('SHOW_HIGHLIGHT_IMAGES')) {
+        if ($individual->tree()->getPreference('SHOW_HIGHLIGHT_IMAGES')) {
             $thumbnail = $individual->displayImage(40, 50, 'crop', []);
         } else {
             $thumbnail = '';
@@ -852,7 +852,7 @@ abstract class AbstractTheme
     {
         $html = '';
 
-        $opt_tags = preg_split('/\W/', $individual->getTree()->getPreference('CHART_BOX_TAGS'), 0, PREG_SPLIT_NO_EMPTY);
+        $opt_tags = preg_split('/\W/', $individual->tree()->getPreference('CHART_BOX_TAGS'), 0, PREG_SPLIT_NO_EMPTY);
         // Show BIRT or equivalent event
         foreach (explode('|', WT_EVENTS_BIRT) as $birttag) {
             if (!in_array($birttag, $opt_tags)) {
@@ -904,7 +904,7 @@ abstract class AbstractTheme
      */
     public function individualBoxLdsSummary(Individual $individual)
     {
-        if ($individual->getTree()->getPreference('SHOW_LDS_AT_GLANCE')) {
+        if ($individual->tree()->getPreference('SHOW_LDS_AT_GLANCE')) {
             $BAPL = $individual->getFacts('BAPL') ? 'B' : '_';
             $ENDL = $individual->getFacts('ENDL') ? 'E' : '_';
             $SLGC = $individual->getFacts('SLGC') ? 'C' : '_';

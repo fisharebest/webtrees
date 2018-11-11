@@ -72,7 +72,7 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
     {
         return new Menu(
             $this->getTitle(),
-            route('descendants', ['ged'  => $individual->getTree()->name(),
+            route('descendants', ['ged'  => $individual->tree()->name(),
                                   'xref' => $individual->xref(),
             ]),
             'menu-chart-descendants',

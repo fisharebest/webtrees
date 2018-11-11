@@ -116,14 +116,14 @@ class CensusAssistantModule extends AbstractModule implements ModuleInterface
 
             $note_text   = $this->createNoteText($census, $ca_title, $ca_place, $ca_citation, $ca_individuals, $ca_notes);
             $note_gedcom = '0 @@ NOTE ' . str_replace("\n", "\n1 CONT ", $note_text);
-            $note        = $individual->getTree()->createRecord($note_gedcom);
+            $note        = $individual->tree()->createRecord($note_gedcom);
 
             $newged .= "\n2 NOTE @" . $note->xref() . '@';
 
             // Add the census fact to the rest of the household
             foreach (array_keys($ca_individuals) as $xref) {
                 if ($xref !== $individual->xref()) {
-                    Individual::getInstance($xref, $individual->getTree())
+                    Individual::getInstance($xref, $individual->tree())
                         ->updateFact($fact_id, $newged, !$keep_chan);
                 }
             }

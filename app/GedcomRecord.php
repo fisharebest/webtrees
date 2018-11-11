@@ -293,7 +293,7 @@ class GedcomRecord
      *
      * @return Tree
      */
-    public function getTree(): Tree
+    public function tree(): Tree
     {
         return $this->tree;
     }

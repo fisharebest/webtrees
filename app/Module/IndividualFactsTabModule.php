@@ -77,7 +77,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
                 case 'FAMS':
                     break;
                 default:
-                    if (!array_key_exists('extra_info', Module::getActiveSidebars($individual->getTree())) || !ExtraInformationModule::showFact($fact)) {
+                    if (!array_key_exists('extra_info', Module::getActiveSidebars($individual->tree())) || !ExtraInformationModule::showFact($fact)) {
                         $indifacts[] = $fact;
                     }
                     break;
@@ -171,7 +171,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
      */
     private static function spouseFacts(Individual $individual, Individual $spouse, Date $min_date, Date $max_date): array
     {
-        $SHOW_RELATIVES_EVENTS = $individual->getTree()->getPreference('SHOW_RELATIVES_EVENTS');
+        $SHOW_RELATIVES_EVENTS = $individual->tree()->getPreference('SHOW_RELATIVES_EVENTS');
 
         $facts = [];
         if (strstr($SHOW_RELATIVES_EVENTS, '_DEAT_SPOU')) {
@@ -202,7 +202,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
      */
     private static function childFacts(Individual $person, Family $family, $option, $relation, Date $min_date, Date $max_date): array
     {
-        $SHOW_RELATIVES_EVENTS = $person->getTree()->getPreference('SHOW_RELATIVES_EVENTS');
+        $SHOW_RELATIVES_EVENTS = $person->tree()->getPreference('SHOW_RELATIVES_EVENTS');
 
         $facts = [];
 
@@ -329,7 +329,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
      */
     private static function parentFacts(Individual $person, $sosa, Date $min_date, Date $max_date): array
     {
-        $SHOW_RELATIVES_EVENTS = $person->getTree()->getPreference('SHOW_RELATIVES_EVENTS');
+        $SHOW_RELATIVES_EVENTS = $person->tree()->getPreference('SHOW_RELATIVES_EVENTS');
 
         $facts = [];
 
@@ -426,7 +426,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
      */
     private static function historicalFacts(Individual $person, Date $min_date, Date $max_date): array
     {
-        $SHOW_RELATIVES_EVENTS = $person->getTree()->getPreference('SHOW_RELATIVES_EVENTS');
+        $SHOW_RELATIVES_EVENTS = $person->tree()->getPreference('SHOW_RELATIVES_EVENTS');
 
         $facts = [];
 

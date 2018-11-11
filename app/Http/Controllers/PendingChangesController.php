@@ -162,7 +162,7 @@ class PendingChangesController extends AbstractBaseController
                 /* I18N: %s is the name of a genealogy record */
                 FlashMessages::addMessage(I18N::translate('The changes to “%s” have been accepted.', $record->getFullName()));
             }
-            FunctionsImport::acceptAllChanges($record->xref(), $record->getTree());
+            FunctionsImport::acceptAllChanges($record->xref(), $record->tree());
         }
 
         return new Response();

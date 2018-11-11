@@ -185,7 +185,7 @@ class User
             " FROM `##user_gedcom_setting`" .
             " WHERE gedcom_id = :tree_id AND setting_name = 'gedcomid' AND setting_value = :xref"
         )->execute([
-            'tree_id' => $individual->getTree()->id(),
+            'tree_id' => $individual->tree()->id(),
             'xref'    => $individual->xref(),
         ])->fetchOne();
 

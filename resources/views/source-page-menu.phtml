@@ -8,14 +8,14 @@
         <?= I18N::translate('edit') ?>
     </button>
     <div class="dropdown-menu dropdown-menu-right wt-page-menu-items" aria-labelledby="page-menu">
-        <a class="dropdown-item menu-sour-del" href="#" data-confirm="<?= I18N::translate('Are you sure you want to delete “%s”?', strip_tags($record->getFullName())) ?>" onclick="return confirm(this.dataset.confirm) && delete_record('<?= e($record->xref()) ?>', '<?= e($record->getTree()->name()) ?>');">
+        <a class="dropdown-item menu-sour-del" href="#" data-confirm="<?= I18N::translate('Are you sure you want to delete “%s”?', strip_tags($record->getFullName())) ?>" onclick="return confirm(this.dataset.confirm) && delete_record('<?= e($record->xref()) ?>', '<?= e($record->tree()->name()) ?>');">
             <?= I18N::translate('Delete') ?>
         </a>
 
-        <?php if (Auth::isAdmin() || $record->getTree()->getPreference('SHOW_GEDCOM_RECORD')) : ?>
+        <?php if (Auth::isAdmin() || $record->tree()->getPreference('SHOW_GEDCOM_RECORD')) : ?>
             <div class="dropdown-divider"></div>
 
-            <a class="dropdown-item menu-sour-editraw" href="<?= e(route('edit-raw-record', ['ged' => $record->getTree()->name(), 'xref' => $record->xref()])) ?>">
+            <a class="dropdown-item menu-sour-editraw" href="<?= e(route('edit-raw-record', ['ged' => $record->tree()->name(), 'xref' => $record->xref()])) ?>">
                 <?= I18N::translate('Edit the raw GEDCOM') ?>
             </a>
         <?php endif ?>

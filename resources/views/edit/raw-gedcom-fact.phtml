@@ -5,7 +5,7 @@
 
 <form class="wt-page-content" method="post">
     <?= csrf_field() ?>
-    <input type="hidden" name="ged" value="<?= e($fact->record()->getTree()->name()) ?>">
+    <input type="hidden" name="ged" value="<?= e($fact->record()->tree()->name()) ?>">
     <input type="hidden" name="xref" value="<?= e($fact->record()->xref()) ?>">
     <input type="hidden" name="fact_id" value="<?= e($fact->getFactId()) ?>">
 

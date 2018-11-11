@@ -3,7 +3,7 @@
 <form action="<?= e(route('admin-webtrees1-thumbs-action')) ?>" method="POST">
     <input type="hidden" name="thumbnail" value="<?= e($thumbnail) ?>">
     <?php foreach ($media as $medium) : ?>
-        <input type="hidden" name="ged[]" value="<?= e($medium->getTree()->name()) ?>">
+        <input type="hidden" name="ged[]" value="<?= e($medium->tree()->name()) ?>">
         <input type="hidden" name="xref[]" value="<?= e($medium->xref()) ?>">
     <?php endforeach ?>
     <div class="btn-group">

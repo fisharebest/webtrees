@@ -59,11 +59,11 @@ class WelcomeBlockModule extends AbstractModule implements ModuleBlockInterface
 
         $links = [];
 
-        if (Module::isActiveChart($individual->getTree(), 'pedigree_chart')) {
+        if (Module::isActiveChart($individual->tree(), 'pedigree_chart')) {
             $links[] = [
                 'url'   => route('pedigree', [
                     'xref' => $individual->xref(),
-                    'ged'  => $individual->getTree()->name(),
+                    'ged'  => $individual->tree()->name(),
                 ]),
                 'title' => I18N::translate('Default chart'),
                 'icon'  => 'icon-pedigree',
@@ -91,7 +91,7 @@ class WelcomeBlockModule extends AbstractModule implements ModuleBlockInterface
                 'block'      => str_replace('_', '-', $this->getName()),
                 'id'         => $block_id,
                 'config_url' => '',
-                'title'      => $individual->getTree()->title(),
+                'title'      => $individual->tree()->title(),
                 'content'    => $content,
             ]);
         }

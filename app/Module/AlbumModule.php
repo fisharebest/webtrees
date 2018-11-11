@@ -125,7 +125,7 @@ class AlbumModule extends AbstractModule implements ModuleTabInterface
                 if (!$fact->isPendingDeletion()) {
                     preg_match_all('/(?:^1|\n\d) OBJE @(' . WT_REGEX_XREF . ')@/', $fact->gedcom(), $matches);
                     foreach ($matches[1] as $match) {
-                        $media = Media::getInstance($match, $individual->getTree());
+                        $media = Media::getInstance($match, $individual->tree());
                         if ($media && $media->canShow()) {
                             $this->media_list[] = $media;
                         }

@@ -82,7 +82,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
                     $title     = I18N::translate('Pedigree of %s', $person->getFullName());
                     $chart_url = route('pedigree-chart', [
                         'xref'        => $person->xref(),
-                        'ged'         => $person->getTree()->name(),
+                        'ged'         => $person->tree()->name(),
                         'generations' => 3,
                         'layout'      => PedigreeChartController::PORTRAIT,
                     ]);
@@ -95,7 +95,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
                     $title     = I18N::translate('Descendants of %s', $person->getFullName());
                     $chart_url = route('descendants-chart', [
                         'xref'        => $person->xref(),
-                        'ged'         => $person->getTree()->name(),
+                        'ged'         => $person->tree()->name(),
                         'generations' => 2,
                         'chart_style' => 0,
                     ]);
@@ -108,7 +108,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
                     $title     = I18N::translate('Hourglass chart of %s', $person->getFullName());
                     $chart_url = route('hourglass-chart', [
                         'xref'        => $person->xref(),
-                        'ged'         => $person->getTree()->name(),
+                        'ged'         => $person->tree()->name(),
                         'generations' => 2,
                         'layout'      => PedigreeChartController::PORTRAIT,
                     ]);

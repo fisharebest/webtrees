@@ -74,7 +74,7 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
             $this->getTitle(),
             route('lifespans', [
                 'xrefs[]' => $individual->xref(),
-                'ged'     => $individual->getTree()->name(),
+                'ged'     => $individual->tree()->name(),
             ]),
             'menu-chart-lifespan',
             ['rel' => 'nofollow']

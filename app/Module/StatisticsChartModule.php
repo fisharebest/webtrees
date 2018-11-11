@@ -72,7 +72,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
     {
         return new Menu(
             $this->getTitle(),
-            route('statistics', ['ged' => $individual->getTree()->name()]),
+            route('statistics', ['ged' => $individual->tree()->name()]),
             'menu-chart-statistics',
             ['rel' => 'nofollow']
         );

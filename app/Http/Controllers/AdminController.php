@@ -586,7 +586,7 @@ class AdminController extends AbstractBaseController
                 rename($thumbnail, $move_to);
 
                 foreach ($media_objects as $media_object) {
-                    $prefix = WT_DATA_DIR . $media_object->getTree()->getPreference('MEDIA_DIRECTORY');
+                    $prefix = WT_DATA_DIR . $media_object->tree()->getPreference('MEDIA_DIRECTORY');
                     $gedcom = "1 FILE " . substr($move_to, strlen($prefix)) . "\n2 FORM " . $extension;
 
                     if ($media_object->firstImageFile() === null) {
@@ -602,7 +602,7 @@ class AdminController extends AbstractBaseController
                     }
 
                     // Accept the changes, to keep the filesystem in sync with the GEDCOM data.
-                    FunctionsImport::acceptAllChanges($media_object->getxref(), $media_object->getTree());
+                    FunctionsImport::acceptAllChanges($media_object->getxref(), $media_object->tree());
                 }
                 break;
         }

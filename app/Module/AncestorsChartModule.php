@@ -72,7 +72,7 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
     {
         return new Menu(
             $this->getTitle(),
-            route('ancestors', ['ged'  => $individual->getTree()->name(),
+            route('ancestors', ['ged'  => $individual->tree()->name(),
                                 'xref' => $individual->xref(),
             ]),
             'menu-chart-ancestry',

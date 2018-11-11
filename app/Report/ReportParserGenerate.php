@@ -2264,7 +2264,7 @@ class ReportParserGenerate extends ReportParserBase
             $this->list_private = 0;
             foreach ($this->list as $record) {
                 if ($record->canShow()) {
-                    $this->gedrec = $record->privatizeGedcom(Auth::accessLevel($record->getTree()));
+                    $this->gedrec = $record->privatizeGedcom(Auth::accessLevel($record->tree()));
                     //-- start the sax parser
                     $repeat_parser = xml_parser_create();
                     $this->parser  = $repeat_parser;

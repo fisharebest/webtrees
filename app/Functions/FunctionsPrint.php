@@ -268,7 +268,7 @@ class FunctionsPrint
                 $html .= ' – <span class="date">' . $match[1] . '</span>';
             }
             if ($record instanceof Individual) {
-                if ($fact === 'BIRT' && $record->getTree()->getPreference('SHOW_PARENTS_AGE')) {
+                if ($fact === 'BIRT' && $record->tree()->getPreference('SHOW_PARENTS_AGE')) {
                     // age of parents at child birth
                     $html .= self::formatParentsAges($record, $date);
                 } elseif ($fact !== 'BIRT' && $fact !== 'CHAN' && $fact !== '_TODO') {
@@ -321,7 +321,7 @@ class FunctionsPrint
                     }
                 }
             } elseif ($record instanceof Family) {
-                $indi = Individual::getInstance((string) $pid, $record->getTree());
+                $indi = Individual::getInstance((string) $pid, $record->tree());
                 if ($indi) {
                     $birth_date = $indi->getBirthDate();
                     $death_date = $indi->getDeathDate();
@@ -375,7 +375,7 @@ class FunctionsPrint
      */
     public static function formatFactPlace(Fact $event, $anchor = false, $sub_records = false, $lds = false): string
     {
-        $tree = $event->record()->getTree();
+        $tree = $event->record()->tree();
 
         if ($anchor) {
             // Show the full place name, for facts/events tab
@@ -480,7 +480,7 @@ class FunctionsPrint
      */
     public static function printAddNewFact(GedcomRecord $record, $usedfacts, $type)
     {
-        $tree = $record->getTree();
+        $tree = $record->tree();
 
         // -- Add from clipboard
         if (is_array(Session::get('clipboard'))) {

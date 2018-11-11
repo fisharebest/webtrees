@@ -58,7 +58,7 @@ class TreeView
 
         return [
             $html,
-            'var ' . $this->name . 'Handler = new TreeViewHandler("' . $this->name . '", "' . e($individual->getTree()->name()) . '");',
+            'var ' . $this->name . 'Handler = new TreeViewHandler("' . $this->name . '", "' . e($individual->tree()->name()) . '");',
         ];
     }
 
@@ -147,7 +147,7 @@ class TreeView
             'module' => 'tree',
             'action' => 'Treeview',
             'xref'   => $individual->xref(),
-            'ged'    => $individual->getTree()->name(),
+            'ged'    => $individual->tree()->name(),
         ]);
 
         $hmtl = $this->getThumbnail($individual);
@@ -377,7 +377,7 @@ class TreeView
      */
     private function getThumbnail(Individual $individual): string
     {
-        if ($individual->getTree()->getPreference('SHOW_HIGHLIGHT_IMAGES')) {
+        if ($individual->tree()->getPreference('SHOW_HIGHLIGHT_IMAGES')) {
             return $individual->displayImage(40, 50, 'crop', []);
         }
 

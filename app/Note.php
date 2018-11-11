@@ -131,9 +131,9 @@ class Note extends GedcomRecord
         $text = $this->getNote();
 
         if ($text) {
-            switch ($this->getTree()->getPreference('FORMAT_TEXT')) {
+            switch ($this->tree()->getPreference('FORMAT_TEXT')) {
                 case 'markdown':
-                    $text = Filter::markdown($text, $this->getTree());
+                    $text = Filter::markdown($text, $this->tree());
                     $text = strip_tags($text);
                     $text = html_entity_decode($text, ENT_QUOTES, 'UTF-8');
                     break;

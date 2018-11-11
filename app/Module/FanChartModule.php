@@ -77,7 +77,7 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface
                 $this->getTitle(),
                 route('fan', [
                     'xref' => $individual->xref(),
-                    'ged'  => $individual->getTree()->name(),
+                    'ged'  => $individual->tree()->name(),
                 ]),
                 'menu-chart-fanchart',
                 ['rel' => 'nofollow']

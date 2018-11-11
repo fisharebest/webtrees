@@ -179,7 +179,7 @@ class AncestorsChartController extends AbstractChartController
         echo '</td><td>';
         if ($sosa > 1) {
             echo FontAwesome::linkIcon('arrow-down', I18N::translate('Ancestors of %s', $individual->getFullName()), ['href' => route('ancestors', ['xref'        => $individual->xref(),
-                                                                                                                                                    'ged'         => $individual->getTree()->name(),
+                                                                                                                                                    'ged'         => $individual->tree()->name(),
                                                                                                                                                     'generations' => $generations,
                                                                                                                                                     'chart_style' => self::CHART_STYLE_LIST,
             ]),

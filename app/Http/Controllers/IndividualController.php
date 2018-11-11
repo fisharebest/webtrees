@@ -253,7 +253,7 @@ class IndividualController extends AbstractBaseController
             'xref',
             "0 @xref@ INDI\n1 DEAT Y\n" . $fact->gedcom(),
             null,
-            $individual->getTree()
+            $individual->tree()
         );
         $dummy->setPrimaryName(0); // Make sure we use the name from "1 NAME"
 
@@ -322,11 +322,11 @@ class IndividualController extends AbstractBaseController
                     'class'        => 'btn btn-link',
                     'data-confirm' =>  I18N::translate('Are you sure you want to delete this fact?'),
                     'href'         => '#',
-                    'onclick'      => 'return delete_fact(this.dataset.confirm", "' . e($individual->getTree()->name()) . '", "' . e($individual->xref()) . '", "' . $fact->id() . '");',
+                    'onclick'      => 'return delete_fact(this.dataset.confirm", "' . e($individual->tree()->name()) . '", "' . e($individual->xref()) . '", "' . $fact->id() . '");',
                 ]) .
                 FontAwesome::linkIcon('edit', I18N::translate('Edit the name'), [
                     'class' => 'btn btn-link',
-                    'href'  => route('edit-name', ['xref' => $individual->xref(), 'fact_id' => $fact->id(), 'ged' => $individual->getTree()->name()]),
+                    'href'  => route('edit-name', ['xref' => $individual->xref(), 'fact_id' => $fact->id(), 'ged' => $individual->tree()->name()]),
                 ]);
         } else {
             $edit_links = '';
@@ -379,7 +379,7 @@ class IndividualController extends AbstractBaseController
                 'class' => 'btn btn-link',
                 'href'  => route('edit-fact', ['xref'    => $individual->xref(),
                                                'fact_id' => $fact->id(),
-                                               'ged'     => $individual->getTree()->name(),
+                                               'ged'     => $individual->tree()->name(),
                 ]),
             ]);
         } else {
@@ -406,7 +406,7 @@ class IndividualController extends AbstractBaseController
      */
     public function getSidebars(Individual $individual): array
     {
-        $sidebars = Module::getActiveSidebars($individual->getTree());
+        $sidebars = Module::getActiveSidebars($individual->tree());
 
         return array_filter($sidebars, function (ModuleSidebarInterface $sidebar) use ($individual): bool {
             return $sidebar->hasSidebarContent($individual);
@@ -423,7 +423,7 @@ class IndividualController extends AbstractBaseController
      */
     public function getTabs(Individual $individual): array
     {
-        $tabs = Module::getActiveTabs($individual->getTree());
+        $tabs = Module::getActiveTabs($individual->tree());
 
         return array_filter($tabs, function (ModuleTabInterface $tab) use ($individual): bool {
             return $tab->hasTabContent($individual);
