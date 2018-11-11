@@ -67,7 +67,7 @@ class EditIndividualController extends AbstractEditController
 
         $this->checkIndividualAccess($individual, true);
 
-        $dummy_facts = ['0 @' . $individual->getXref() . '@ INDI'];
+        $dummy_facts = ['0 @' . $individual->xref() . '@ INDI'];
         $sort_facts  = [];
         $keep_facts  = [];
 
@@ -128,7 +128,7 @@ class EditIndividualController extends AbstractEditController
 
         $this->checkIndividualAccess($individual, true);
 
-        $dummy_facts = ['0 @' . $individual->getXref() . '@ INDI'];
+        $dummy_facts = ['0 @' . $individual->xref() . '@ INDI'];
         $sort_facts  = [];
         $keep_facts  = [];
 
@@ -189,7 +189,7 @@ class EditIndividualController extends AbstractEditController
 
         $this->checkIndividualAccess($individual, true);
 
-        $dummy_facts = ['0 @' . $individual->getXref() . '@ INDI'];
+        $dummy_facts = ['0 @' . $individual->xref() . '@ INDI'];
         $sort_facts  = [];
         $keep_facts  = [];
 
@@ -269,14 +269,14 @@ class EditIndividualController extends AbstractEditController
 
         // Create a family
         if ($individual->getSex() === 'F') {
-            $gedcom = "0 @@ FAM\n1 WIFE @" . $individual->getXref() . '@';
+            $gedcom = "0 @@ FAM\n1 WIFE @" . $individual->xref() . '@';
         } else {
-            $gedcom = "0 @@ FAM\n1 HUSB @" . $individual->getXref() . '@';
+            $gedcom = "0 @@ FAM\n1 HUSB @" . $individual->xref() . '@';
         }
         $family = $tree->createFamily($gedcom);
 
         // Link the parent to the family
-        $individual->createFact('1 FAMS @' . $family->getXref() . '@', true);
+        $individual->createFact('1 FAMS @' . $family->xref() . '@', true);
 
         // Create a child
         $this->splitSource(); // separate SOUR record from the rest
@@ -284,7 +284,7 @@ class EditIndividualController extends AbstractEditController
         $gedcom = '0 @@ INDI';
         $gedcom .= $this->addNewName($request, $tree);
         $gedcom .= $this->addNewSex($request);
-        $gedcom .= "\n" . GedcomCodePedi::createNewFamcPedi($PEDI, $family->getXref());
+        $gedcom .= "\n" . GedcomCodePedi::createNewFamcPedi($PEDI, $family->xref());
         if (preg_match_all('/([A-Z0-9_]+)/', $tree->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
             foreach ($matches[1] as $match) {
                 $gedcom .= $this->addNewFact($request, $tree, $match);
@@ -299,7 +299,7 @@ class EditIndividualController extends AbstractEditController
         $child = $tree->createIndividual($gedcom);
 
         // Link the family to the child
-        $family->createFact('1 CHIL @' . $child->getXref() . '@', true);
+        $family->createFact('1 CHIL @' . $child->xref() . '@', true);
 
         if ($request->get('goto') === 'new') {
             return new RedirectResponse($child->url());
@@ -365,11 +365,11 @@ class EditIndividualController extends AbstractEditController
         $this->islink  = $request->get('islink', []);
 
         // Create a new family
-        $gedcom = "0 @@ FAM\n1 CHIL @" . $individual->getXref() . '@';
+        $gedcom = "0 @@ FAM\n1 CHIL @" . $individual->xref() . '@';
         $family = $tree->createFamily($gedcom);
 
         // Link the child to the family
-        $individual->createFact('1 FAMC @' . $family->getXref() . '@', true);
+        $individual->createFact('1 FAMC @' . $family->xref() . '@', true);
 
         // Create a child
         $this->splitSource(); // separate SOUR record from the rest
@@ -387,15 +387,15 @@ class EditIndividualController extends AbstractEditController
         } else {
             $gedcom = $this->updateRest($gedcom);
         }
-        $gedcom .= "\n1 FAMS @" . $family->getXref() . '@';
+        $gedcom .= "\n1 FAMS @" . $family->xref() . '@';
 
         $parent = $tree->createIndividual($gedcom);
 
         // Link the family to the child
         if ($parent->getSex() === 'F') {
-            $family->createFact('1 WIFE @' . $parent->getXref() . '@', true);
+            $family->createFact('1 WIFE @' . $parent->xref() . '@', true);
         } else {
-            $family->createFact('1 HUSB @' . $parent->getXref() . '@', true);
+            $family->createFact('1 HUSB @' . $parent->xref() . '@', true);
         }
 
         if ($request->get('goto') === 'new') {
@@ -495,13 +495,13 @@ class EditIndividualController extends AbstractEditController
         $spouse = $tree->createIndividual($indi_gedcom);
         // Create a new family
         if ($sex === 'F') {
-            $family = $tree->createFamily("0 @@ FAM\n1 WIFE @" . $spouse->getXref() . "@\n1 HUSB @" . $individual->getXref() . '@' . $fam_gedcom);
+            $family = $tree->createFamily("0 @@ FAM\n1 WIFE @" . $spouse->xref() . "@\n1 HUSB @" . $individual->xref() . '@' . $fam_gedcom);
         } else {
-            $family = $tree->createFamily("0 @@ FAM\n1 HUSB @" . $spouse->getXref() . "@\n1 WIFE @" . $individual->getXref() . '@' . $fam_gedcom);
+            $family = $tree->createFamily("0 @@ FAM\n1 HUSB @" . $spouse->xref() . "@\n1 WIFE @" . $individual->xref() . '@' . $fam_gedcom);
         }
         // Link the spouses to the family
-        $spouse->createFact('1 FAMS @' . $family->getXref() . '@', true);
-        $individual->createFact('1 FAMS @' . $family->getXref() . '@', true);
+        $spouse->createFact('1 FAMS @' . $family->xref() . '@', true);
+        $individual->createFact('1 FAMS @' . $family->xref() . '@', true);
 
         if ($request->get('goto') === 'new') {
             return new RedirectResponse($spouse->url());
@@ -733,7 +733,7 @@ class EditIndividualController extends AbstractEditController
         }
 
         if (!$chil_link_exists) {
-            $family->createFact('1 CHIL @' . $individual->getXref() . '@', true);
+            $family->createFact('1 CHIL @' . $individual->xref() . '@', true);
         }
 
         return new RedirectResponse($individual->url());
@@ -786,17 +786,17 @@ class EditIndividualController extends AbstractEditController
         $this->checkIndividualAccess($spouse, true);
 
         if ($individual->getSex() === 'M') {
-            $gedcom = "0 @@ FAM\n1 HUSB @" . $individual->getXref() . "@\n1 WIFE @" . $spouse->getXref() . '@';
+            $gedcom = "0 @@ FAM\n1 HUSB @" . $individual->xref() . "@\n1 WIFE @" . $spouse->xref() . '@';
         } else {
-            $gedcom = "0 @@ FAM\n1 WIFE @" . $individual->getXref() . "@\n1 HUSB @" . $spouse->getXref() . '@';
+            $gedcom = "0 @@ FAM\n1 WIFE @" . $individual->xref() . "@\n1 HUSB @" . $spouse->xref() . '@';
         }
 
         $gedcom .= $this->addNewFact($request, $tree, 'MARR');
 
         $family = $tree->createFamily($gedcom);
 
-        $individual->createFact('1 FAMS @' . $family->getXref() . '@', true);
-        $spouse->createFact('1 FAMS @' . $family->getXref() . '@', true);
+        $individual->createFact('1 FAMS @' . $family->xref() . '@', true);
+        $spouse->createFact('1 FAMS @' . $family->xref() . '@', true);
 
         return new RedirectResponse($family->url());
     }

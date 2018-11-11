@@ -183,7 +183,7 @@ class HourglassChartController extends AbstractChartController
         if ($generation > $generations) {
             return;
         }
-        $pid         = $individual->getXref();
+        $pid         = $individual->xref();
         $tablealign  = 'right';
         $otablealign = 'left';
         if (I18N::direction() === 'rtl') {
@@ -216,7 +216,7 @@ class HourglassChartController extends AbstractChartController
                 echo '<table cellspacing="0" cellpadding="0" border="0" style="position: relative; top: auto; float: ' . $tablealign . ';">';
                 for ($i = 0; $i < $ct; $i++) {
                     $individual2 = $children[$i];
-                    $chil        = $individual2->getXref();
+                    $chil        = $individual2->xref();
                     echo '<tr>';
                     echo '<td id="td_', e($chil), '" class="', I18N::direction(), '" style="text-align:', $otablealign, '">';
                     $this->printDescendency($individual2, $generation + 1, $generations, $show_spouse, false);
@@ -305,7 +305,7 @@ class HourglassChartController extends AbstractChartController
                 $spouse = $family->getSpouse($individual);
                 if ($spouse !== null) {
                     echo '<a href="' . e(route('hourglass', [
-                            'xref'        => $spouse->getXref(),
+                            'xref'        => $spouse->xref(),
                             'generations' => $generations,
                             'show_spouse' => (int) $show_spouse,
                             'ged'         => $spouse->getTree()->name(),
@@ -313,7 +313,7 @@ class HourglassChartController extends AbstractChartController
                 }
                 foreach ($family->getChildren() as $child) {
                     echo '<a href="' . e(route('hourglass', [
-                            'xref'        => $child->getXref(),
+                            'xref'        => $child->xref(),
                             'generations' => $generations,
                             'show_spouse' => (int) $show_spouse,
                             'ged'         => $child->getTree()->name(),
@@ -328,7 +328,7 @@ class HourglassChartController extends AbstractChartController
                     $husb = $family->getHusband();
                     if ($husb) {
                         echo '<a href="' . e(route('hourglass', [
-                                'xref'        => $husb->getXref(),
+                                'xref'        => $husb->xref(),
                                 'generations' => $generations,
                                 'show_spouse' => (int) $show_spouse,
                                 'ged'         => $husb->getTree()->name(),
@@ -337,7 +337,7 @@ class HourglassChartController extends AbstractChartController
                     $wife = $family->getWife();
                     if ($wife) {
                         echo '<a href="' . e(route('hourglass', [
-                                'xref'        => $wife->getXref(),
+                                'xref'        => $wife->xref(),
                                 'generations' => $generations,
                                 'show_spouse' => (int) $show_spouse,
                                 'ged'         => $wife->getTree()->name(),
@@ -356,7 +356,7 @@ class HourglassChartController extends AbstractChartController
                     echo '</span>';
                     foreach ($siblings as $child) {
                         echo '<a href="' . e(route('hourglass', [
-                                'xref'        => $child->getXref(),
+                                'xref'        => $child->xref(),
                                 'generations' => $generations,
                                 'show_spouse' => (int) $show_spouse,
                                 'ged'         => $child->getTree()->name(),
@@ -415,7 +415,7 @@ class HourglassChartController extends AbstractChartController
             echo FunctionsPrint::printPedigreePerson($family->getHusband());
             echo '</td>';
             if ($family->getHusband()) {
-                $ARID = $family->getHusband()->getXref();
+                $ARID = $family->getHusband()->xref();
                 echo '<td id="td_' . e($ARID) . '">';
 
                 if ($generation == $generations - 1 && $family->getHusband()->getChildFamilies()) {
@@ -452,7 +452,7 @@ class HourglassChartController extends AbstractChartController
             echo FunctionsPrint::printPedigreePerson($family->getWife());
             echo '</td>';
             if ($family->getWife()) {
-                $ARID = $family->getWife()->getXref();
+                $ARID = $family->getWife()->xref();
                 echo '<td id="td_' . e($ARID) . '">';
 
                 if ($generation == $generations - 1 && $family->getWife()->getChildFamilies()) {

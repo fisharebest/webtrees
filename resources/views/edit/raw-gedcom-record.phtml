@@ -7,7 +7,7 @@
 <form class="wt-page-content" method="post">
     <?= csrf_field() ?>
     <input type="hidden" name="ged" value="<?= e($tree->name()) ?>">
-    <input type="hidden" name="xref" value="<?= e($record->getXref()) ?>">
+    <input type="hidden" name="xref" value="<?= e($record->xref()) ?>">
 
     <p class="text-muted small">
         <?= I18N::translate('This page allows you to bypass the usual forms, and edit the underlying data directly. It is an advanced option, and you should not use it unless you understand the GEDCOM format. If you make a mistake here, it can be difficult to fix.') ?>
@@ -21,7 +21,7 @@
             <?= $record->getFullName() ?>
         </label>
         <div class="card-body form-control py-1 px-2">
-            <textarea class="card-body form-control py-1 px-2" dir="ltr" id="fact0" rows="1">0 @<?= e($record->getXref()) ?>@ <?= e($record::RECORD_TYPE) ?></textarea>
+            <textarea class="card-body form-control py-1 px-2" dir="ltr" id="fact0" rows="1">0 @<?= e($record->xref()) ?>@ <?= e($record::RECORD_TYPE) ?></textarea>
         </div>
     </div>
 

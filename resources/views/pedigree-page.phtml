@@ -45,4 +45,4 @@
     </div>
 </form>
 
-<div class="wt-ajax-load wt-page-content wt-chart wt-pedigree-chart" data-ajax-url="<?= e(route('pedigree-chart', ['xref' => $individual->getXref(), 'ged' => $individual->getTree()->name(), 'generations' => $generations, 'orientation' => $orientation])) ?>"></div>
+<div class="wt-ajax-load wt-page-content wt-chart wt-pedigree-chart" data-ajax-url="<?= e(route('pedigree-chart', ['xref' => $individual->xref(), 'ged' => $individual->getTree()->name(), 'generations' => $generations, 'orientation' => $orientation])) ?>"></div>

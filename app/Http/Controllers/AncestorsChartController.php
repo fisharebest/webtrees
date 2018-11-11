@@ -178,7 +178,7 @@ class AncestorsChartController extends AbstractChartController
         echo FunctionsPrint::printPedigreePerson($individual);
         echo '</td><td>';
         if ($sosa > 1) {
-            echo FontAwesome::linkIcon('arrow-down', I18N::translate('Ancestors of %s', $individual->getFullName()), ['href' => route('ancestors', ['xref'        => $individual->getXref(),
+            echo FontAwesome::linkIcon('arrow-down', I18N::translate('Ancestors of %s', $individual->getFullName()), ['href' => route('ancestors', ['xref'        => $individual->xref(),
                                                                                                                                                     'ged'         => $individual->getTree()->name(),
                                                                                                                                                     'generations' => $generations,
                                                                                                                                                     'chart_style' => self::CHART_STYLE_LIST,
@@ -250,7 +250,7 @@ class AncestorsChartController extends AbstractChartController
         $families  = [];
         foreach ($ancestors as $individual) {
             foreach ($individual->getChildFamilies() as $family) {
-                $families[$family->getXref()] = $family;
+                $families[$family->xref()] = $family;
             }
         }
 
@@ -279,7 +279,7 @@ class AncestorsChartController extends AbstractChartController
         echo FunctionsPrint::printPedigreePerson($ancestors[1]);
         foreach ($ancestors as $sosa => $individual) {
             foreach ($individual->getChildFamilies() as $family) {
-                FunctionsCharts::printSosaFamily($family, $individual->getXref(), $sosa, '', '', '', $show_cousins);
+                FunctionsCharts::printSosaFamily($family, $individual->xref(), $sosa, '', '', '', $show_cousins);
             }
         }
 

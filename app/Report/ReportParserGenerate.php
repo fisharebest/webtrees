@@ -2129,7 +2129,7 @@ class ReportParserGenerate extends ReportParserBase
         if ($filters2) {
             $mylist = [];
             foreach ($this->list as $indi) {
-                $key  = $indi->getXref();
+                $key  = $indi->xref();
                 $grec = $indi->privatizeGedcom(Auth::accessLevel($this->tree));
                 $keep = true;
                 foreach ($filters2 as $filter) {
@@ -2383,15 +2383,15 @@ class ReportParserGenerate extends ReportParserBase
                         $husband = $family->getHusband();
                         $wife    = $family->getWife();
                         if (!empty($husband)) {
-                            $this->list[$husband->getXref()] = $husband;
+                            $this->list[$husband->xref()] = $husband;
                         }
                         if (!empty($wife)) {
-                            $this->list[$wife->getXref()] = $wife;
+                            $this->list[$wife->xref()] = $wife;
                         }
                         $children = $family->getChildren();
                         foreach ($children as $child) {
                             if (!empty($child)) {
-                                $this->list[$child->getXref()] = $child;
+                                $this->list[$child->xref()] = $child;
                             }
                         }
                     }
@@ -2401,15 +2401,15 @@ class ReportParserGenerate extends ReportParserBase
                         $husband = $family->getHusband();
                         $wife    = $family->getWife();
                         if (!empty($husband)) {
-                            $this->list[$husband->getXref()] = $husband;
+                            $this->list[$husband->xref()] = $husband;
                         }
                         if (!empty($wife)) {
-                            $this->list[$wife->getXref()] = $wife;
+                            $this->list[$wife->xref()] = $wife;
                         }
                         $children = $family->getChildren();
                         foreach ($children as $child) {
                             if (!empty($child)) {
-                                $this->list[$child->getXref()] = $child;
+                                $this->list[$child->xref()] = $child;
                             }
                         }
                     }
@@ -2708,36 +2708,36 @@ class ReportParserGenerate extends ReportParserBase
                 $husband = $family->getHusband();
                 $wife    = $family->getWife();
                 if ($husband) {
-                    $list[$husband->getXref()] = $husband;
+                    $list[$husband->xref()] = $husband;
                     if (isset($list[$pid]->generation)) {
-                        $list[$husband->getXref()]->generation = $list[$pid]->generation - 1;
+                        $list[$husband->xref()]->generation = $list[$pid]->generation - 1;
                     } else {
-                        $list[$husband->getXref()]->generation = 1;
+                        $list[$husband->xref()]->generation = 1;
                     }
                 }
                 if ($wife) {
-                    $list[$wife->getXref()] = $wife;
+                    $list[$wife->xref()] = $wife;
                     if (isset($list[$pid]->generation)) {
-                        $list[$wife->getXref()]->generation = $list[$pid]->generation - 1;
+                        $list[$wife->xref()]->generation = $list[$pid]->generation - 1;
                     } else {
-                        $list[$wife->getXref()]->generation = 1;
+                        $list[$wife->xref()]->generation = 1;
                     }
                 }
             }
             $children = $family->getChildren();
             foreach ($children as $child) {
                 if ($child) {
-                    $list[$child->getXref()] = $child;
+                    $list[$child->xref()] = $child;
                     if (isset($list[$pid]->generation)) {
-                        $list[$child->getXref()]->generation = $list[$pid]->generation + 1;
+                        $list[$child->xref()]->generation = $list[$pid]->generation + 1;
                     } else {
-                        $list[$child->getXref()]->generation = 2;
+                        $list[$child->xref()]->generation = 2;
                     }
                 }
             }
             if ($generations == -1 || $list[$pid]->generation + 1 < $generations) {
                 foreach ($children as $child) {
-                    $this->addDescendancy($list, $child->getXref(), $parents, $generations); // recurse on the childs family
+                    $this->addDescendancy($list, $child->xref(), $parents, $generations); // recurse on the childs family
                 }
             }
         }
@@ -2767,28 +2767,28 @@ class ReportParserGenerate extends ReportParserBase
                 $husband = $family->getHusband();
                 $wife    = $family->getWife();
                 if ($husband) {
-                    $list[$husband->getXref()]             = $husband;
-                    $list[$husband->getXref()]->generation = $list[$id]->generation + 1;
+                    $list[$husband->xref()]             = $husband;
+                    $list[$husband->xref()]->generation = $list[$id]->generation + 1;
                 }
                 if ($wife) {
-                    $list[$wife->getXref()]             = $wife;
-                    $list[$wife->getXref()]->generation = $list[$id]->generation + 1;
+                    $list[$wife->xref()]             = $wife;
+                    $list[$wife->xref()]->generation = $list[$id]->generation + 1;
                 }
                 if ($generations == -1 || $list[$id]->generation + 1 < $generations) {
                     if ($husband) {
-                        $genlist[] = $husband->getXref();
+                        $genlist[] = $husband->xref();
                     }
                     if ($wife) {
-                        $genlist[] = $wife->getXref();
+                        $genlist[] = $wife->xref();
                     }
                 }
                 if ($children) {
                     foreach ($family->getChildren() as $child) {
-                        $list[$child->getXref()] = $child;
+                        $list[$child->xref()] = $child;
                         if (isset($list[$id]->generation)) {
-                            $list[$child->getXref()]->generation = $list[$id]->generation;
+                            $list[$child->xref()]->generation = $list[$id]->generation;
                         } else {
-                            $list[$child->getXref()]->generation = 1;
+                            $list[$child->xref()]->generation = 1;
                         }
                     }
                 }

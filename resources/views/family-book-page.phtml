@@ -56,4 +56,4 @@
     </div>
 </form>
 
-<div class="wt-ajax-load wt-page-content wt-chart wt-family-book-chart" data-ajax-url="<?= e(route('family-book-chart', ['xref' => $individual->getXref(), 'ged' => $individual->getTree()->name(), 'book_size' => $book_size, 'generations' => $generations, 'show_spouse' => (int) $show_spouse])) ?>"></div>
+<div class="wt-ajax-load wt-page-content wt-chart wt-family-book-chart" data-ajax-url="<?= e(route('family-book-chart', ['xref' => $individual->xref(), 'ged' => $individual->getTree()->name(), 'book_size' => $book_size, 'generations' => $generations, 'show_spouse' => (int) $show_spouse])) ?>"></div>

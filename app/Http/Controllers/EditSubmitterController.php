@@ -84,7 +84,7 @@ class EditSubmitterController extends AbstractEditController
         $record = $tree->createRecord($gedcom);
 
         return new JsonResponse([
-            'id'   => $record->getXref(),
+            'id'   => $record->xref(),
             'text' => view('selects/submitter', [
                 'submitter' => $record,
             ]),

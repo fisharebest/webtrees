@@ -7,13 +7,13 @@
 
 <?php if ($record->isPendingDeletion()) : ?>
     <?php if (Auth::isModerator($record->getTree())) : ?>
-        <?= view('components/alert-warning-dismissible', ['alert' => /* I18N: %1$s is “accept”, %2$s is “reject”. These are links. */ I18N::translate('This family has been deleted. You should review the deletion and then %1$s or %2$s it.', '<a href="#" class="alert-link" onclick="accept_changes(\'' . e($record->getXref()) . '\', \'' . e($record->getTree()->name()) . '\');">' . I18N::translateContext('You should review the deletion and then accept or reject it.', 'accept') . '</a>', '<a href="#" class="alert-link" onclick="reject_changes(\'' . e($record->getXref()) . '\', \'' . e($record->getTree()->name()) . '\');">' . I18N::translateContext('You should review the deletion and then accept or reject it.', 'reject') . '</a>') . ' ' . FunctionsPrint::helpLink('pending_changes')]) ?>
+        <?= view('components/alert-warning-dismissible', ['alert' => /* I18N: %1$s is “accept”, %2$s is “reject”. These are links. */ I18N::translate('This family has been deleted. You should review the deletion and then %1$s or %2$s it.', '<a href="#" class="alert-link" onclick="accept_changes(\'' . e($record->xref()) . '\', \'' . e($record->getTree()->name()) . '\');">' . I18N::translateContext('You should review the deletion and then accept or reject it.', 'accept') . '</a>', '<a href="#" class="alert-link" onclick="reject_changes(\'' . e($record->xref()) . '\', \'' . e($record->getTree()->name()) . '\');">' . I18N::translateContext('You should review the deletion and then accept or reject it.', 'reject') . '</a>') . ' ' . FunctionsPrint::helpLink('pending_changes')]) ?>
     <?php elseif (Auth::isEditor($record->getTree())) : ?>
         <?= view('components/alert-warning-dismissible', ['alert' => I18N::translate('This family has been deleted. The deletion will need to be reviewed by a moderator.') . ' ' . FunctionsPrint::helpLink('pending_changes')]) ?>
     <?php endif ?>
 <?php elseif ($record->isPendingAddition()) : ?>
     <?php if (Auth::isModerator($record->getTree())) : ?>
-        <?= view('components/alert-warning-dismissible', ['alert' => /* I18N: %1$s is “accept”, %2$s is “reject”. These are links. */ I18N::translate('This family has been edited. You should review the changes and then %1$s or %2$s them.', '<a href="#" class="alert-link" onclick="accept_changes(\'' . e($record->getXref()) . '\', \'' . e($record->getTree()->name()) . '\');">' . I18N::translateContext('You should review the changes and then accept or reject them.', 'accept') . '</a>', '<a href="#" class="alert-link" onclick="reject_changes(\'' . e($record->getXref()) . '\', \'' . e($record->getTree()->name()) . '\');">' . I18N::translateContext('You should review the changes and then accept or reject them.', 'reject') . '</a>') . ' ' . FunctionsPrint::helpLink('pending_changes')]) ?>
+        <?= view('components/alert-warning-dismissible', ['alert' => /* I18N: %1$s is “accept”, %2$s is “reject”. These are links. */ I18N::translate('This family has been edited. You should review the changes and then %1$s or %2$s them.', '<a href="#" class="alert-link" onclick="accept_changes(\'' . e($record->xref()) . '\', \'' . e($record->getTree()->name()) . '\');">' . I18N::translateContext('You should review the changes and then accept or reject them.', 'accept') . '</a>', '<a href="#" class="alert-link" onclick="reject_changes(\'' . e($record->xref()) . '\', \'' . e($record->getTree()->name()) . '\');">' . I18N::translateContext('You should review the changes and then accept or reject them.', 'reject') . '</a>') . ' ' . FunctionsPrint::helpLink('pending_changes')]) ?>
     <?php elseif (Auth::isEditor($record->getTree())) : ?>
         <?= view('components/alert-warning-dismissible', ['alert' => I18N::translate('This family has been edited. The changes need to be reviewed by a moderator.') . ' ' . FunctionsPrint::helpLink('pending_changes')]) ?>
     <?php endif ?>
@@ -45,13 +45,13 @@
                             <?php FunctionsCharts::printFamilyParents($record) ?>
                             <?php if (Auth::isEditor($record->getTree())) : ?>
                                 <?php if ($record->getHusband() === null) : ?>
-                                    <a href="<?= e(route('add-spouse-to-family', ['ged=' => $record->getTree()->name(), 'xref' => $record->getXref(), 'famtag' => 'HUSB'])) ?>">
+                                    <a href="<?= e(route('add-spouse-to-family', ['ged=' => $record->getTree()->name(), 'xref' => $record->xref(), 'famtag' => 'HUSB'])) ?>">
                                         <?= I18N::translate('Add a father') ?>
                                     </a>
                                     <br>
                                 <?php endif ?>
                                 <?php if ($record->getWife() === null) : ?>
-                                    <a href="<?= e(route('add-spouse-to-family', ['ged=' => $record->getTree()->name(), 'xref' => $record->getXref(), 'famtag' => 'WIFE'])) ?>">
+                                    <a href="<?= e(route('add-spouse-to-family', ['ged=' => $record->getTree()->name(), 'xref' => $record->xref(), 'famtag' => 'WIFE'])) ?>">
                                         <?= I18N::translate('Add a mother') ?>
                                     </a>
                                     <br>
@@ -84,7 +84,7 @@
                     <?= I18N::translate('Note') ?>
                 </th>
                 <td>
-                    <a href="<?= e(route('add-fact', ['ged' => $record->getTree()->name(), 'xref' => $record->getXref(), 'fact' => 'NOTE'])) ?>">
+                    <a href="<?= e(route('add-fact', ['ged' => $record->getTree()->name(), 'xref' => $record->xref(), 'fact' => 'NOTE'])) ?>">
                         <?= I18N::translate('Add a note') ?>
                     </a>
                 </td>
@@ -95,7 +95,7 @@
                     <?= I18N::translate('Shared note') ?>
                 </th>
                 <td class="optionbox">
-                    <a href="<?= e(route('add-fact', ['ged' => $record->getTree()->name(), 'xref' => $record->getXref(), 'fact' => 'SHARED_NOTE'])) ?>">
+                    <a href="<?= e(route('add-fact', ['ged' => $record->getTree()->name(), 'xref' => $record->xref(), 'fact' => 'SHARED_NOTE'])) ?>">
                         <?= I18N::translate('Add a shared note') ?>
                     </a>
                 </td>
@@ -107,7 +107,7 @@
                         <?= I18N::translate('Media object') ?>
                     </th>
                     <td class="optionbox">
-                        <a href="<?= e(route('add-fact', ['ged' => $record->getTree()->name(), 'xref' => $record->getXref(), 'fact' => 'OBJE']))  ?>">
+                        <a href="<?= e(route('add-fact', ['ged' => $record->getTree()->name(), 'xref' => $record->xref(), 'fact' => 'OBJE']))  ?>">
                             <?= I18N::translate('Add a media object') ?>
                         </a>
                     </td>
@@ -119,7 +119,7 @@
                     <?= I18N::translate('Source') ?>
                 </th>
                 <td>
-                    <a href="<?= e(route('add-fact', ['ged' => $record->getTree()->name(), 'xref' => $record->getXref(), 'fact' => 'SOUR'])) ?>">
+                    <a href="<?= e(route('add-fact', ['ged' => $record->getTree()->name(), 'xref' => $record->xref(), 'fact' => 'SOUR'])) ?>">
                         <?= I18N::translate('Add a source citation') ?>
                     </a>
                 </td>

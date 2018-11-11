@@ -865,7 +865,7 @@ class Individual extends GedcomRecord
         $children = [];
         foreach ($this->getSpouseFamilies() as $fam) {
             foreach ($fam->getChildren() as $child) {
-                $children[$child->getXref()] = true;
+                $children[$child->xref()] = true;
             }
         }
 
@@ -922,21 +922,21 @@ class Individual extends GedcomRecord
                 // If there is more than one FAMC record, choose the preferred parents:
                 // a) records with '2 _PRIMARY'
                 foreach ($families as $fam) {
-                    $famid = $fam->getXref();
+                    $famid = $fam->xref();
                     if (preg_match("/\n1 FAMC @{$famid}@\n(?:[2-9].*\n)*(?:2 _PRIMARY Y)/", $this->getGedcom())) {
                         return $fam;
                     }
                 }
                 // b) records with '2 PEDI birt'
                 foreach ($families as $fam) {
-                    $famid = $fam->getXref();
+                    $famid = $fam->xref();
                     if (preg_match("/\n1 FAMC @{$famid}@\n(?:[2-9].*\n)*(?:2 PEDI birth)/", $this->getGedcom())) {
                         return $fam;
                     }
                 }
                 // c) records with no '2 PEDI'
                 foreach ($families as $fam) {
-                    $famid = $fam->getXref();
+                    $famid = $fam->xref();
                     if (!preg_match("/\n1 FAMC @{$famid}@\n(?:[2-9].*\n)*(?:2 PEDI)/", $this->getGedcom())) {
                         return $fam;
                     }
@@ -1010,7 +1010,7 @@ class Individual extends GedcomRecord
      */
     public function getChildFamilyLabel(Family $family)
     {
-        if (preg_match('/\n1 FAMC @' . $family->getXref() . '@(?:\n[2-9].*)*\n2 PEDI (.+)/', $this->getGedcom(), $match)) {
+        if (preg_match('/\n1 FAMC @' . $family->xref() . '@(?:\n[2-9].*)*\n2 PEDI (.+)/', $this->getGedcom(), $match)) {
             // A specified pedigree
             return GedcomCodePedi::getChildFamilyLabel($match[1]);
         }

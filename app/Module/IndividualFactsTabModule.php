@@ -236,7 +236,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
 
         // For each child in the family
         foreach ($family->getChildren() as $child) {
-            if ($child->getXref() == $person->getXref()) {
+            if ($child->xref() == $person->xref()) {
                 // We are not our own sibling!
                 continue;
             }
@@ -471,7 +471,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
                 if (!$arec) {
                     $arec = $fact->attribute('ASSO');
                 }
-                if ($arec && trim($arec, '@') === $person->getXref()) {
+                if ($arec && trim($arec, '@') === $person->xref()) {
                     // Extract the important details from the fact
                     $factrec = '1 ' . $fact->getTag();
                     if (preg_match('/\n2 DATE .*/', $fact->gedcom(), $match)) {
@@ -482,10 +482,10 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
                     }
                     if ($associate instanceof Family) {
                         foreach ($associate->getSpouses() as $spouse) {
-                            $factrec .= "\n2 _ASSO @" . $spouse->getXref() . '@';
+                            $factrec .= "\n2 _ASSO @" . $spouse->xref() . '@';
                         }
                     } else {
-                        $factrec .= "\n2 _ASSO @" . $associate->getXref() . '@';
+                        $factrec .= "\n2 _ASSO @" . $associate->xref() . '@';
                     }
                     $facts[] = new Fact($factrec, $associate, 'asso');
                 }

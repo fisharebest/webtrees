@@ -287,7 +287,7 @@ class Functions
 
         // Only examine each individual once
         $visited = [
-            $individual1->getXref() => true,
+            $individual1->xref() => true,
         ];
 
         // Build paths out from the first individual
@@ -308,9 +308,9 @@ class Functions
 
                 // Parents and siblings
                 foreach ($indi->getChildFamilies(Auth::PRIV_HIDE) as $family) {
-                    $visited[$family->getXref()] = true;
+                    $visited[$family->xref()] = true;
                     foreach ($family->getSpouses(Auth::PRIV_HIDE) as $spouse) {
-                        if (!isset($visited[$spouse->getXref()])) {
+                        if (!isset($visited[$spouse->xref()])) {
                             $new_path                = $path;
                             $new_path['path'][]      = $family;
                             $new_path['path'][]      = $spouse;
@@ -320,11 +320,11 @@ class Functions
                             }
 
                             $paths[]                     = $new_path;
-                            $visited[$spouse->getXref()] = true;
+                            $visited[$spouse->xref()] = true;
                         }
                     }
                     foreach ($family->getChildren(Auth::PRIV_HIDE) as $child) {
-                        if (!isset($visited[$child->getXref()])) {
+                        if (!isset($visited[$child->xref()])) {
                             $new_path                = $path;
                             $new_path['path'][]      = $family;
                             $new_path['path'][]      = $child;
@@ -334,16 +334,16 @@ class Functions
                             }
 
                             $paths[]                    = $new_path;
-                            $visited[$child->getXref()] = true;
+                            $visited[$child->xref()] = true;
                         }
                     }
                 }
 
                 // Spouses and children
                 foreach ($indi->getSpouseFamilies(Auth::PRIV_HIDE) as $family) {
-                    $visited[$family->getXref()] = true;
+                    $visited[$family->xref()] = true;
                     foreach ($family->getSpouses(Auth::PRIV_HIDE) as $spouse) {
-                        if (!isset($visited[$spouse->getXref()])) {
+                        if (!isset($visited[$spouse->xref()])) {
                             $new_path                = $path;
                             $new_path['path'][]      = $family;
                             $new_path['path'][]      = $spouse;
@@ -353,11 +353,11 @@ class Functions
                             }
 
                             $paths[]                     = $new_path;
-                            $visited[$spouse->getXref()] = true;
+                            $visited[$spouse->xref()] = true;
                         }
                     }
                     foreach ($family->getChildren(Auth::PRIV_HIDE) as $child) {
-                        if (!isset($visited[$child->getXref()])) {
+                        if (!isset($visited[$child->xref()])) {
                             $new_path                = $path;
                             $new_path['path'][]      = $family;
                             $new_path['path'][]      = $child;
@@ -367,7 +367,7 @@ class Functions
                             }
 
                             $paths[]                    = $new_path;
-                            $visited[$child->getXref()] = true;
+                            $visited[$child->xref()] = true;
                         }
                     }
                 }

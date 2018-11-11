@@ -5,8 +5,8 @@
     data-confirm="<?= I18N::translate('Move the media object?') ?>"
     data-fact-id="<?= e($fact->getFactId()) ?>"
     data-tree-id="<?= e($tree->id()) ?>"
-    data-individual-xref="<?= e($individual->getXref()) ?>"
-    data-media-xref="<?= e($media->getXref()) ?>"
+    data-individual-xref="<?= e($individual->xref()) ?>"
+    data-media-xref="<?= e($media->xref()) ?>"
     type="button"
 >
     <?= $fact->label() ?>

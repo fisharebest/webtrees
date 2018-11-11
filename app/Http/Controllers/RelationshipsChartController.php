@@ -236,8 +236,8 @@ class RelationshipsChartController extends AbstractChartController
 
         // Optionally restrict the graph to the ancestors of the individuals.
         if ($ancestor) {
-            $ancestors = $this->allAncestors($individual1->getXref(), $individual2->getXref(), $individual1->getTree()->id());
-            $exclude   = $this->excludeFamilies($individual1->getXref(), $individual2->getXref(), $individual1->getTree()->id());
+            $ancestors = $this->allAncestors($individual1->xref(), $individual2->xref(), $individual1->getTree()->id());
+            $exclude   = $this->excludeFamilies($individual1->xref(), $individual2->xref(), $individual1->getTree()->id());
         } else {
             $ancestors = [];
             $exclude   = [];
@@ -252,8 +252,8 @@ class RelationshipsChartController extends AbstractChartController
             }
         }
 
-        $xref1    = $individual1->getXref();
-        $xref2    = $individual2->getXref();
+        $xref1    = $individual1->xref();
+        $xref2    = $individual2->xref();
         $dijkstra = new Dijkstra($graph);
         $paths    = $dijkstra->shortestPaths($xref1, $xref2);
 
@@ -340,12 +340,12 @@ class RelationshipsChartController extends AbstractChartController
             $family = Family::getInstance($path[$i], $tree);
             $prev   = Individual::getInstance($path[$i - 1], $tree);
             $next   = Individual::getInstance($path[$i + 1], $tree);
-            if (preg_match('/\n\d (HUSB|WIFE|CHIL) @' . $prev->getXref() . '@/', $family->getGedcom(), $match)) {
+            if (preg_match('/\n\d (HUSB|WIFE|CHIL) @' . $prev->xref() . '@/', $family->getGedcom(), $match)) {
                 $rel1 = $match[1];
             } else {
                 return [];
             }
-            if (preg_match('/\n\d (HUSB|WIFE|CHIL) @' . $next->getXref() . '@/', $family->getGedcom(), $match)) {
+            if (preg_match('/\n\d (HUSB|WIFE|CHIL) @' . $next->xref() . '@/', $family->getGedcom(), $match)) {
                 $rel2 = $match[1];
             } else {
                 return [];

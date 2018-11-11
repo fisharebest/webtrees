@@ -8,13 +8,13 @@
 
 <?php if ($media->isPendingDeletion()) : ?>
     <?php if (Auth::isModerator($media->getTree())) : ?>
-        <?= view('components/alert-warning-dismissible', ['alert' => /* I18N: %1$s is “accept”, %2$s is “reject”. These are links. */ I18N::translate('This media object has been deleted. You should review the deletion and then %1$s or %2$s it.', '<a href="#" class="alert-link" onclick="accept_changes(\'' . e($media->getXref()) . '\', \'' . e($media->getTree()->name()) . '\');">' . I18N::translateContext('You should review the deletion and then accept or reject it.', 'accept') . '</a>', '<a href="#" class="alert-link" onclick="reject_changes(\'' . e($media->getXref()) . '\', \'' . e($media->getTree()->name()) . '\');">' . I18N::translateContext('You should review the deletion and then accept or reject it.', 'reject') . '</a>') . ' ' . FunctionsPrint::helpLink('pending_changes')]) ?>
+        <?= view('components/alert-warning-dismissible', ['alert' => /* I18N: %1$s is “accept”, %2$s is “reject”. These are links. */ I18N::translate('This media object has been deleted. You should review the deletion and then %1$s or %2$s it.', '<a href="#" class="alert-link" onclick="accept_changes(\'' . e($media->xref()) . '\', \'' . e($media->getTree()->name()) . '\');">' . I18N::translateContext('You should review the deletion and then accept or reject it.', 'accept') . '</a>', '<a href="#" class="alert-link" onclick="reject_changes(\'' . e($media->xref()) . '\', \'' . e($media->getTree()->name()) . '\');">' . I18N::translateContext('You should review the deletion and then accept or reject it.', 'reject') . '</a>') . ' ' . FunctionsPrint::helpLink('pending_changes')]) ?>
     <?php elseif (Auth::isEditor($media->getTree())) : ?>
         <?= view('components/alert-warning-dismissible', ['alert' => I18N::translate('This media object has been deleted. The deletion will need to be reviewed by a moderator.') . ' ' . FunctionsPrint::helpLink('pending_changes')]) ?>
     <?php endif ?>
 <?php elseif ($media->isPendingAddition()) : ?>
     <?php if (Auth::isModerator($media->getTree())) : ?>
-        <?= view('components/alert-warning-dismissible', ['alert' => /* I18N: %1$s is “accept”, %2$s is “reject”. These are links. */ I18N::translate('This media object has been edited. You should review the changes and then %1$s or %2$s them.', '<a href="#" class="alert-link" onclick="accept_changes(\'' . e($media->getXref()) . '\', \'' . e($media->getTree()->name()) . '\');">' . I18N::translateContext('You should review the changes and then accept or reject them.', 'accept') . '</a>', '<a href="#" class="alert-link" onclick="reject_changes(\'' . e($media->getXref()) . '\', \'' . e($media->getTree()->name()) . '\');">' . I18N::translateContext('You should review the changes and then accept or reject them.', 'reject') . '</a>') . ' ' . FunctionsPrint::helpLink('pending_changes')]) ?>
+        <?= view('components/alert-warning-dismissible', ['alert' => /* I18N: %1$s is “accept”, %2$s is “reject”. These are links. */ I18N::translate('This media object has been edited. You should review the changes and then %1$s or %2$s them.', '<a href="#" class="alert-link" onclick="accept_changes(\'' . e($media->xref()) . '\', \'' . e($media->getTree()->name()) . '\');">' . I18N::translateContext('You should review the changes and then accept or reject them.', 'accept') . '</a>', '<a href="#" class="alert-link" onclick="reject_changes(\'' . e($media->xref()) . '\', \'' . e($media->getTree()->name()) . '\');">' . I18N::translateContext('You should review the changes and then accept or reject them.', 'reject') . '</a>') . ' ' . FunctionsPrint::helpLink('pending_changes')]) ?>
     <?php elseif (Auth::isEditor($media->getTree())) : ?>
         <?= view('components/alert-warning-dismissible', ['alert' => I18N::translate('This media object has been edited. The changes need to be reviewed by a moderator.') . ' ' . FunctionsPrint::helpLink('pending_changes')]) ?>
     <?php endif ?>
@@ -71,9 +71,9 @@
                         <?= I18N::translate('Media file') ?>
                         <?php if ($media->canEdit()) : ?>
                             <div class="editfacts">
-                                <?= FontAwesome::linkIcon('edit', I18N::translate('Edit'), ['class' => 'btn btn-link', 'href' => '#', 'data-toggle' => 'modal', 'data-target' => '#wt-ajax-modal', 'data-href' => route('edit-media-file', ['ged' => $media->getTree()->name(), 'xref' => $media->getXref(), 'fact_id' => $media_file->factId()])]) ?>
+                                <?= FontAwesome::linkIcon('edit', I18N::translate('Edit'), ['class' => 'btn btn-link', 'href' => '#', 'data-toggle' => 'modal', 'data-target' => '#wt-ajax-modal', 'data-href' => route('edit-media-file', ['ged' => $media->getTree()->name(), 'xref' => $media->xref(), 'fact_id' => $media_file->factId()])]) ?>
                                 <?php if (count($media->mediaFiles()) > 1) : ?>
-                                    <?= FontAwesome::linkIcon('delete', I18N::translate('Delete'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return delete_fact("' . I18N::translate('Are you sure you want to delete this fact?') . '", "' . e($media->getTree()->name()) . '", , "' . e($media->getXref()) . '", "' . $media_file->factId() . '");']) ?>
+                                    <?= FontAwesome::linkIcon('delete', I18N::translate('Delete'), ['class' => 'btn btn-link', 'href' => '#', 'onclick' => 'return delete_fact("' . I18N::translate('Are you sure you want to delete this fact?') . '", "' . e($media->getTree()->name()) . '", , "' . e($media->xref()) . '", "' . $media_file->factId() . '");']) ?>
                                 <?php endif ?>
                             </div>
                         <?php endif ?>
@@ -120,7 +120,7 @@
                             <?= I18N::translate('Source') ?>
                         </th>
                         <td>
-                            <a href="<?= e(route('add-fact', ['ged' => $media->getTree()->name(), 'xref' => $media->getXref(), 'fact' => 'SOUR'])) ?>">
+                            <a href="<?= e(route('add-fact', ['ged' => $media->getTree()->name(), 'xref' => $media->xref(), 'fact' => 'SOUR'])) ?>">
                                 <?= I18N::translate('Add a source citation') ?>
                             </a>
                         </td>
@@ -130,7 +130,7 @@
                             <?= I18N::translate('Shared note') ?>
                         </th>
                         <td>
-                            <a href="<?= e(route('add-fact', ['ged' => $media->getTree()->name(), 'xref' => $media->getXref(), 'fact' => 'SHARED_NOTE'])) ?>">
+                            <a href="<?= e(route('add-fact', ['ged' => $media->getTree()->name(), 'xref' => $media->xref(), 'fact' => 'SHARED_NOTE'])) ?>">
                                 <?= I18N::translate('Add a shared note') ?>
                             </a>
                         </td>
@@ -140,7 +140,7 @@
                             <?= I18N::translate('Restriction') ?>
                         </th>
                         <td>
-                            <a href="<?= e(route('add-fact', ['ged' => $media->getTree()->name(), 'xref' => $media->getXref(), 'fact' => 'RESN'])) ?>">
+                            <a href="<?= e(route('add-fact', ['ged' => $media->getTree()->name(), 'xref' => $media->xref(), 'fact' => 'RESN'])) ?>">
                                 <?= I18N::translate('Add a restriction') ?>
                             </a>
                         </td>
@@ -150,7 +150,7 @@
                             <?= I18N::translate('Media file') ?>
                         </th>
                         <td>
-                            <a href="#" data-href="<?= e(route('add-media-file', ['ged' => $media->getTree()->name(), 'xref' => $media->getXref()])) ?>" data-target="#wt-ajax-modal" data-toggle="modal">
+                            <a href="#" data-href="<?= e(route('add-media-file', ['ged' => $media->getTree()->name(), 'xref' => $media->xref()])) ?>" data-target="#wt-ajax-modal" data-toggle="modal">
                                 <?= I18N::translate('Add a media file') ?>
                             </a>
                         </td>

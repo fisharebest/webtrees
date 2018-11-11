@@ -1191,7 +1191,7 @@ class FunctionsImport
             " SET status = 'rejected'" .
             " WHERE status = 'pending' AND xref = :xref AND gedcom_id = :tree_id"
         )->execute([
-            'xref'    => $record->getXref(),
+            'xref'    => $record->xref(),
             'tree_id' => $record->getTree()->id(),
         ]);
     }

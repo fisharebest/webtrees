@@ -47,4 +47,4 @@
     </div>
 </form>
 
-<div class="wt-ajax-load wt-page-content wt-chart wt-hourglass-chart" data-ajax-url="<?= e(route('hourglass-chart', ['xref' => $individual->getXref(), 'generations' => $generations, 'show_spouse' => $show_spouse, 'ged' => $individual->getTree()->name()])) ?>"></div>
+<div class="wt-ajax-load wt-page-content wt-chart wt-hourglass-chart" data-ajax-url="<?= e(route('hourglass-chart', ['xref' => $individual->xref(), 'generations' => $generations, 'show_spouse' => $show_spouse, 'ged' => $individual->getTree()->name()])) ?>"></div>

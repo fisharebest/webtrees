@@ -110,7 +110,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
                 " AND gedcom_id     = :tree_id"
             )->execute([
                 'module_name' => $this->getName(),
-                'xref'        => $individual->getXref(),
+                'xref'        => $individual->xref(),
                 'tree_id'     => $individual->getTree()->id(),
             ])->fetchOneColumn();
 

@@ -189,7 +189,7 @@ class DescendantsChartController extends AbstractChartController
         foreach ($person->getChildFamilies() as $cfamily) {
             foreach ($cfamily->getSpouses() as $parent) {
                 echo FontAwesome::linkIcon('arrow-up', I18N::translate('Start at parents'), ['href' => route('descendants', ['ged'         => $parent->getTree()->name(),
-                                                                                                                             'xref'        => $parent->getXref(),
+                                                                                                                             'xref'        => $parent->xref(),
                                                                                                                              'generations' => $generations,
                 ]),
                 ]);
@@ -272,7 +272,7 @@ class DescendantsChartController extends AbstractChartController
             foreach ($spouse->getChildFamilies() as $cfamily) {
                 foreach ($cfamily->getSpouses() as $parent) {
                     echo FontAwesome::linkIcon('arrow-up', I18N::translate('Start at parents'), ['href' => route('descendants', ['ged'         => $parent->getTree()->name(),
-                                                                                                                                 'xref'        => $parent->getXref(),
+                                                                                                                                 'xref'        => $parent->xref(),
                                                                                                                                  'generations' => $generations,
                     ]),
                     ]);
@@ -341,7 +341,7 @@ class DescendantsChartController extends AbstractChartController
         $families = [];
         foreach ($descendants as $individual) {
             foreach ($individual->getChildFamilies() as $family) {
-                $families[$family->getXref()] = $family;
+                $families[$family->xref()] = $family;
             }
         }
 
@@ -394,9 +394,9 @@ class DescendantsChartController extends AbstractChartController
         $i = 1;
 
         foreach ($individual->getSpouseFamilies() as $family) {
-            FunctionsCharts::printSosaFamily($family, '', -1, $daboville, $individual->getXref(), $gpid, false);
+            FunctionsCharts::printSosaFamily($family, '', -1, $daboville, $individual->xref(), $gpid, false);
             foreach ($family->getChildren() as $child) {
-                $this->printChildFamily($child, $depth - 1, $daboville . ($i++) . '.', $individual->getXref());
+                $this->printChildFamily($child, $depth - 1, $daboville . ($i++) . '.', $individual->xref());
             }
         }
     }

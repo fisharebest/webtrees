@@ -735,7 +735,7 @@ abstract class AbstractTheme
         }
 
         return
-            '<div data-xref="' . e($individual->getXref()) . '" data-tree="' . e($individual->getTree()->name()) . '" class="person_box_template ' . $person_box_class . ' box-style1" style="width: ' . $this->parameter('chart-box-x') . 'px; height: ' . $this->parameter('chart-box-y') . 'px">' .
+            '<div data-xref="' . e($individual->xref()) . '" data-tree="' . e($individual->getTree()->name()) . '" class="person_box_template ' . $person_box_class . ' box-style1" style="width: ' . $this->parameter('chart-box-x') . 'px; height: ' . $this->parameter('chart-box-y') . 'px">' .
             $icons .
             '<div class="chart_textbox" style="max-height:' . $this->parameter('chart-box-y') . 'px;">' .
             $thumbnail .
@@ -790,7 +790,7 @@ abstract class AbstractTheme
         }
 
         return
-            '<div data-xref="' . e($individual->getXref()) . '" data-tree="' . e($individual->getTree()->name()) . '" class="person_box_template ' . $person_box_class . ' box-style2">' .
+            '<div data-xref="' . e($individual->xref()) . '" data-tree="' . e($individual->getTree()->name()) . '" class="person_box_template ' . $person_box_class . ' box-style2">' .
             $icons .
             '<div class="chart_textbox" style="max-height:' . $this->parameter('chart-box-y') . 'px;">' .
             $thumbnail .
@@ -819,7 +819,7 @@ abstract class AbstractTheme
         }
 
         return
-            '<div data-xref="' . $individual->getXref() . '" class="person_box_template ' . $person_box_class . ' iconz box-style0" style="width: ' . $this->parameter('compact-chart-box-x') . 'px; min-height: ' . $this->parameter('compact-chart-box-y') . 'px">' .
+            '<div data-xref="' . $individual->xref() . '" class="person_box_template ' . $person_box_class . ' iconz box-style0" style="width: ' . $this->parameter('compact-chart-box-x') . 'px; min-height: ' . $this->parameter('compact-chart-box-y') . 'px">' .
             '<div class="compact_view">' .
             $thumbnail .
             '<a href="' . e($individual->url()) . '">' .
@@ -1164,7 +1164,7 @@ abstract class AbstractTheme
                 'module' => 'user_favorites',
                 'action' => 'AddFavorite',
                 'ged'    => $this->tree->name(),
-                'xref'   => $controller->record->getXref(),
+                'xref'   => $controller->record->xref(),
             ]);
 
             $submenus[] = new Menu(I18N::translate('Add to favorites'), '#', '', [

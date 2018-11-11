@@ -15,12 +15,12 @@
                     <?php foreach ($duplicates as $record) : ?>
                         —
                         <a href="<?= e($record->url()) ?>">
-                            <?= $record->getXref() ?>
+                            <?= $record->xref() ?>
                         </a>
                     <?php endforeach ?>
                     <?php if (count($duplicates) === 2) : ?>
                         —
-                        <a href="<?= e(route('merge-records', ['ged' => $tree->name(), 'xref1' => $duplicates[0]->getXref(), 'xref2' => $duplicates[1]->getXref()])) ?>">
+                        <a href="<?= e(route('merge-records', ['ged' => $tree->name(), 'xref1' => $duplicates[0]->xref(), 'xref2' => $duplicates[1]->xref()])) ?>">
                             <?= I18N::translate('Merge') ?>
                         </a>
                     <?php endif ?>

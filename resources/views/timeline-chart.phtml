@@ -15,14 +15,14 @@
   var birthdays   = [];
     <?php
     foreach ($individuals as $c => $indi) {
-        if (!empty($birthyears[$indi->getXref()])) {
-            echo 'birthyears[' . $c . ']=' . $birthyears[$indi->getXref()] . ';';
+        if (!empty($birthyears[$indi->xref()])) {
+            echo 'birthyears[' . $c . ']=' . $birthyears[$indi->xref()] . ';';
         }
-        if (!empty($birthmonths[$indi->getXref()])) {
-            echo 'birthmonths[' . $c . ']=' . $birthmonths[$indi->getXref()] . ';';
+        if (!empty($birthmonths[$indi->xref()])) {
+            echo 'birthmonths[' . $c . ']=' . $birthmonths[$indi->xref()] . ';';
         }
-        if (!empty($birthdays[$indi->getXref()])) {
-            echo 'birthdays[' . $c . ']=' . $birthdays[$indi->getXref()] . ';';
+        if (!empty($birthdays[$indi->xref()])) {
+            echo 'birthdays[' . $c . ']=' . $birthdays[$indi->xref()] . ';';
         }
     }
     ?>
@@ -399,7 +399,7 @@
                         <img src="<?= Theme::theme()->parameter('image-hline') ?>" name="ageline<?= $p ?>" id="ageline<?= $p ?>" width="25" height="3">
                     </td>
                     <td>
-                        <?php if (!empty($birthyears[$indi->getXref()])) : ?>
+                        <?php if (!empty($birthyears[$indi->xref()])) : ?>
                             <?php $tyear = round(($ageyoffset + ($bheight / 2)) / $scale) + $baseyear; ?>
                             <table class="person<?= $p % 6 ?>" style="cursor: hand;">
                                 <tr>
@@ -410,7 +410,7 @@
                                         </span>
                                     </td>
                                     <td>
-                                        (<?= I18N::translate('Age') ?> <span id="ageform<?= $p ?>" class="field"><?= $tyear - $birthyears[$indi->getXref()] ?></span>)
+                                        (<?= I18N::translate('Age') ?> <span id="ageform<?= $p ?>" class="field"><?= $tyear - $birthyears[$indi->xref()] ?></span>)
                                     </td>
                                 </tr>
                             </table>

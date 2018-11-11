@@ -1634,7 +1634,7 @@ class AdminTreesController extends AbstractBaseController
         $algorithm  = new ConnectedComponent($graph);
         $components = $algorithm->findConnectedComponents();
         $root       = $tree->significantIndividual($user);
-        $xref       = $root->getXref();
+        $xref       = $root->xref();
 
         /** @var Individual[][] */
         $individual_groups = [];

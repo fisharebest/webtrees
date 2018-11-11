@@ -1061,7 +1061,7 @@ class ListController extends AbstractBaseController
         $list = [];
         foreach ($this->individuals($tree, $surn, $salpha, $galpha, $marnm, true) as $indi) {
             foreach ($indi->getSpouseFamilies() as $family) {
-                $list[$family->getXref()] = $family;
+                $list[$family->xref()] = $family;
             }
         }
         usort($list, '\Fisharebest\Webtrees\GedcomRecord::compare');

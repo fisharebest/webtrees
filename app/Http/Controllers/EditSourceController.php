@@ -116,7 +116,7 @@ class EditSourceController extends AbstractEditController
         // id and text are for select2 / autocomplete
         // html is for interactive modals
         return new JsonResponse([
-            'id'   => $record->getXref(),
+            'id'   => $record->xref(),
             'text' => view('selects/source', [
                 'source' => $record,
             ]),

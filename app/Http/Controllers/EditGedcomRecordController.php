@@ -136,10 +136,10 @@ class EditGedcomRecordController extends AbstractEditController
 
         if ($record && Auth::isEditor($record->getTree()) && $record->canShow() && $record->canEdit()) {
             // Delete links to this record
-            foreach (FunctionsDb::fetchAllLinks($record->getXref(), $record->getTree()->id()) as $xref) {
+            foreach (FunctionsDb::fetchAllLinks($record->xref(), $record->getTree()->id()) as $xref) {
                 $linker     = GedcomRecord::getInstance($xref, $tree);
                 $old_gedcom = $linker->getGedcom();
-                $new_gedcom = $this->removeLinks($old_gedcom, $record->getXref());
+                $new_gedcom = $this->removeLinks($old_gedcom, $record->xref());
                 // FunctionsDb::fetch_all_links() does not take account of pending changes. The links (or even the
                 // record itself) may have already been deleted.
                 if ($old_gedcom !== $new_gedcom) {
@@ -154,7 +154,7 @@ class EditGedcomRecordController extends AbstractEditController
                         if ($match) {
                             $relict     = GedcomRecord::getInstance($match[2][0], $tree);
                             $new_gedcom = $relict->getGedcom();
-                            $new_gedcom = $this->removeLinks($new_gedcom, $linker->getXref());
+                            $new_gedcom = $this->removeLinks($new_gedcom, $linker->xref());
                             $relict->updateRecord($new_gedcom, false);
                             /* I18N: %s are names of records, such as sources, repositories or individuals */
                             FlashMessages::addMessage(I18N::translate('The link from “%1$s” to “%2$s” has been deleted.', $relict->getFullName(), $family->getFullName()));
@@ -296,7 +296,7 @@ class EditGedcomRecordController extends AbstractEditController
 
         $this->checkRecordAccess($record, true);
 
-        $gedcom = '0 @' . $record->getXref() . '@ ' . $record::RECORD_TYPE;
+        $gedcom = '0 @' . $record->xref() . '@ ' . $record::RECORD_TYPE;
 
         // Retain any private facts
         foreach ($record->getFacts('', false, Auth::PRIV_HIDE) as $fact) {

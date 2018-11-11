@@ -281,8 +281,8 @@ class FanChartController extends AbstractChartController
                     $ty    = round($cy + $mr * sin($rad));
                     $areas .= "$tx,$ty";
                     // add action url
-                    $areas .= '" href="#' . $person->getXref() . '"';
-                    $html  .= '<div id="' . $person->getXref() . '" class="fan_chart_menu">';
+                    $areas .= '" href="#' . $person->xref() . '"';
+                    $html  .= '<div id="' . $person->xref() . '" class="fan_chart_menu">';
                     $html  .= '<div class="person_box"><div class="details1">';
                     $html  .= '<a href="' . e($person->url()) . '" class="name1">' . $name;
                     if ($addname) {

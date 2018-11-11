@@ -19,7 +19,7 @@
 
     <?php if ($is_admin && empty($stories)) : ?>
         <div>
-            <a href="<?= e(route('module', ['module' => 'stories', 'action' => 'AdminEdit', 'xref' => $individual->getXref(), 'ged' => $tree->name()])) ?>">
+            <a href="<?= e(route('module', ['module' => 'stories', 'action' => 'AdminEdit', 'xref' => $individual->xref(), 'ged' => $tree->name()])) ?>">
                 <?= I18N::translate('Add a story') ?>
             </a>
         </div>

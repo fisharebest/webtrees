@@ -92,7 +92,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
             route('module', [
                 'module' => $this->getName(),
                 'action' => 'PedigreeMap',
-                'xref'   => $individual->getXref(),
+                'xref'   => $individual->xref(),
                 'ged'    => $individual->getTree()->name(),
             ]),
             'menu-chart-pedigreemap',
@@ -335,7 +335,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
                     'modules/pedigree-map/pedigree-map',
                     [
                         'module'      => $this->getName(),
-                        'ref'         => $individual->getXref(),
+                        'ref'         => $individual->xref(),
                         'type'        => 'pedigree',
                         'generations' => $generations,
                     ]

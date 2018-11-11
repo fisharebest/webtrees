@@ -16,7 +16,7 @@
                         <i class="icon-selected"></i>
                     <?php elseif ($spouse->getPrimaryChildFamily() !== null) : ?>
                     <div class="dropdown">
-                        <a class="dropdown-toggle" href="#" role="button" id="dropdown-<?= e($spouse->getXref()) ?>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="dropdown-toggle" href="#" role="button" id="dropdown-<?= e($spouse->xref()) ?>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <?= Functions::getCloseRelationshipName($individual, $spouse) ?>
                         </a>
 
@@ -59,7 +59,7 @@
                         <i class="icon-selected"></i>
                     <?php elseif ($child->getSpouseFamilies() !== []) : ?>
                         <div class="dropdown">
-                            <a class="dropdown-toggle" href="#" role="button" id="dropdown-<?= e($child->getXref()) ?>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="dropdown-toggle" href="#" role="button" id="dropdown-<?= e($child->xref()) ?>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <?= Functions::getCloseRelationshipName($individual, $child) ?>
                             </a>
 

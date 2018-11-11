@@ -4,7 +4,7 @@
     <input type="hidden" name="thumbnail" value="<?= e($thumbnail) ?>">
     <?php foreach ($media as $medium) : ?>
         <input type="hidden" name="ged[]" value="<?= e($medium->getTree()->name()) ?>">
-        <input type="hidden" name="xref[]" value="<?= e($medium->getXref()) ?>">
+        <input type="hidden" name="xref[]" value="<?= e($medium->xref()) ?>">
     <?php endforeach ?>
     <div class="btn-group">
         <?php if (!empty($media)) : ?>

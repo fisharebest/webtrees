@@ -10,10 +10,10 @@
 
 <?php
 if ($individual !== null) {
-    $xref       = $individual->getXref();
+    $xref       = $individual->xref();
     $cancel_url = $individual->url();
 } elseif ($family !== null) {
-    $xref       = $family->getXref();
+    $xref       = $family->xref();
     $cancel_url = $family->url();
 } else {
     $cancel_url = route('admin-trees');

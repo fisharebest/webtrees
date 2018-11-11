@@ -91,8 +91,8 @@ class EditNoteController extends AbstractEditController
         ], $NOTE);
 
         $gedrec = preg_replace(
-            '/^0 @' . $note->getXref() . '@ NOTE.*(\n1 CONT.*)*/',
-            '0 @' . $note->getXref() . '@ NOTE ' . preg_replace("/\r?\n/", "\n1 CONT ", $NOTE),
+            '/^0 @' . $note->xref() . '@ NOTE.*(\n1 CONT.*)*/',
+            '0 @' . $note->xref() . '@ NOTE ' . preg_replace("/\r?\n/", "\n1 CONT ", $NOTE),
             $note->getGedcom()
         );
 
@@ -135,7 +135,7 @@ class EditNoteController extends AbstractEditController
         $record = $tree->createRecord($gedcom);
 
         return new JsonResponse([
-            'id'   => $record->getXref(),
+            'id'   => $record->xref(),
             'text' => view('selects/note', [
                 'note' => $record,
             ]),

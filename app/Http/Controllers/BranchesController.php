@@ -259,8 +259,8 @@ class BranchesController extends AbstractBaseController
         if (is_int($sosa)) {
             $sosa_class = 'search_hit';
             $sosa_html  = ' <a class="details1 ' . $individual->getBoxStyle() . '" title="' . I18N::translate('Sosa') . '" href="' . e(route('relationships', [
-                    'xref1' => $individual->getXref(),
-                    'xref2' => $ancestors[1]->getXref(),
+                    'xref1' => $individual->xref(),
+                    'xref2' => $ancestors[1]->xref(),
                     'ged'   => $individual->getTree()->name(),
                 ])) . '" rel="nofollow">' . $sosa . '</a>' . self::sosaGeneration($sosa);
         } else {
@@ -299,7 +299,7 @@ class BranchesController extends AbstractBaseController
                     if (is_int($sosa)) {
                         $sosa_class = 'search_hit';
                         $sosa_html  = ' <a class="details1 ' . $spouse->getBoxStyle() . '" title="' . I18N::translate('Sosa') . '" href="' . e(route('relationships', [
-                                'xref2' => $ancestors[1]->getXref(),
+                                'xref2' => $ancestors[1]->xref(),
                                 'ged'   => $individual->getTree()->name(),
                             ])) . '" rel="nofollow"> ' . $sosa . ' </a>' . self::sosaGeneration($sosa);
                     } else {

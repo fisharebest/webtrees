@@ -366,7 +366,7 @@ class PedigreeChartController extends AbstractChartController
                 $spouse = $family->getSpouse($this->root);
                 if ($spouse) {
                     $html .= '<a class="name1" href="' . e(route('pedigree', [
-                            'xref'        => $spouse->getXref(),
+                            'xref'        => $spouse->xref(),
                             'ged'         => $spouse->getTree()->name(),
                             'generations' => $this->generations,
                             'orientation' => $this->orientation,
@@ -375,7 +375,7 @@ class PedigreeChartController extends AbstractChartController
                 $children = $family->getChildren();
                 foreach ($children as $sibling) {
                     $html .= '<a class="name1" href="' . e(route('pedigree', [
-                            'xref'        => $sibling->getXref(),
+                            'xref'        => $sibling->xref(),
                             'ged'         => $sibling->getTree()->name(),
                             'generations' => $this->generations,
                             'orientation' => $this->orientation,
@@ -385,7 +385,7 @@ class PedigreeChartController extends AbstractChartController
             //-- echo the siblings
             foreach ($this->root->getChildFamilies() as $family) {
                 $siblings = array_filter($family->getChildren(), function (Individual $item): bool {
-                    return $this->root->getXref() !== $item->getXref();
+                    return $this->root->xref() !== $item->xref();
                 });
                 if (!empty($siblings)) {
                     $html .= '<span class="name1">';
@@ -393,7 +393,7 @@ class PedigreeChartController extends AbstractChartController
                     $html .= '</span>';
                     foreach ($siblings as $sibling) {
                         $html .= '<a class="name1" href="' . e(route('pedigree', [
-                                'xref'        => $sibling->getXref(),
+                                'xref'        => $sibling->xref(),
                                 'ged'         => $sibling->getTree()->name(),
                                 'generations' => $this->generations,
                                 'orientation' => $this->orientation,
@@ -429,7 +429,7 @@ class PedigreeChartController extends AbstractChartController
                     $rootParentId++;
                 }
                 $html .= '<a class="' . $this->arrows->prevGen . '" href="' . e(route('pedigree', [
-                        'xref'        => $this->nodes[$rootParentId]['indi']->getXref(),
+                        'xref'        => $this->nodes[$rootParentId]['indi']->xref(),
                         'ged'         => $this->nodes[$rootParentId]['indi']->getTree()->name(),
                         'generations' => $this->generations,
                         'orientation' => $this->orientation,

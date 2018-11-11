@@ -8,7 +8,7 @@
     <?= csrf_field() ?>
 
     <input type="hidden" name="ged" value="<?= e($tree->name()) ?>">
-    <input type="hidden" name="xref" value="<?= e($family->getXref()) ?>">
+    <input type="hidden" name="xref" value="<?= e($family->xref()) ?>">
 
     <div class="form-group row">
         <label class="col-sm-3 col-form-label wt-page-options-label" for="HUSB">

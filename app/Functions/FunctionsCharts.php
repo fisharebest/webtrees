@@ -100,13 +100,13 @@ class FunctionsCharts
 
         $husb = $family->getHusband();
         if ($husb) {
-            echo '<a name="', $husb->getXref(), '"></a>';
+            echo '<a name="', $husb->xref(), '"></a>';
         } else {
             $husb = new Individual('M', "0 @M@ INDI\n1 SEX M", null, $family->getTree());
         }
         $wife = $family->getWife();
         if ($wife) {
-            echo '<a name="', $wife->getXref(), '"></a>';
+            echo '<a name="', $wife->xref(), '"></a>';
         } else {
             $wife = new Individual('F', "0 @F@ INDI\n1 SEX F", null, $family->getTree());
         }
@@ -122,7 +122,7 @@ class FunctionsCharts
         echo '<table cellspacing="0" cellpadding="0" border="0"><tr>';
 
         if ($parid) {
-            if ($husb->getXref() == $parid) {
+            if ($husb->xref() == $parid) {
                 self::printDabovilleNumber($daboville, '', 'blank');
             } else {
                 self::printDabovilleNumber($daboville, '', '');
@@ -150,9 +150,9 @@ class FunctionsCharts
             if ($hfam && $hfam->getHusband()) {
                 echo '<table cellspacing="0" cellpadding="0" border="0"><tr>';
                 if ($sosa > 0) {
-                    self::printSosaNumber($sosa * 4, $hfam->getHusband()->getXref(), 'arrow-down');
+                    self::printSosaNumber($sosa * 4, $hfam->getHusband()->xref(), 'arrow-down');
                 }
-                if (!empty($gparid) && $hfam->getHusband()->getXref() == $gparid) {
+                if (!empty($gparid) && $hfam->getHusband()->xref() == $gparid) {
                     self::printDabovilleNumber(trim(substr($daboville, 0, -3), '.') . '.', '', 'arrow-up');
                 }
                 echo '<td>';
@@ -169,7 +169,7 @@ class FunctionsCharts
         }
         if ($hfam && ($sosa != -1)) {
             echo '<td rowspan="2">';
-            echo FontAwesome::linkIcon('arrow-end', $hfam->getFullName(), ['href' => ($sosa == 0 ? $hfam->url() : '#' . $hfam->getXref())]);
+            echo FontAwesome::linkIcon('arrow-end', $hfam->getFullName(), ['href' => ($sosa == 0 ? $hfam->url() : '#' . $hfam->xref())]);
             echo '</td>';
         }
         if ($hfam) {
@@ -178,9 +178,9 @@ class FunctionsCharts
             if ($hfam && $hfam->getWife()) {
                 echo '<table cellspacing="0" cellpadding="0" border="0"><tr>';
                 if ($sosa > 0) {
-                    self::printSosaNumber($sosa * 4 + 1, $hfam->getWife()->getXref(), 'arrow-down');
+                    self::printSosaNumber($sosa * 4 + 1, $hfam->getWife()->xref(), 'arrow-down');
                 }
-                if (!empty($gparid) && $hfam->getWife()->getXref() == $gparid) {
+                if (!empty($gparid) && $hfam->getWife()->xref() == $gparid) {
                     self::printDabovilleNumber(trim(substr($daboville, 0, -3), '.') . '.', '', 'arrow-up');
                 }
                 echo '<td>';
@@ -212,7 +212,7 @@ class FunctionsCharts
         echo '<table cellspacing="0" cellpadding="0" border="0"><tr><td rowspan="2">';
         echo '<table cellspacing="0" cellpadding="0" border="0"><tr>';
         if ($parid) {
-            if ($wife->getXref() == $parid) {
+            if ($wife->xref() == $parid) {
                 self::printDabovilleNumber($daboville, '', 'blank');
             } else {
                 self::printDabovilleNumber($daboville, '', '');
@@ -239,9 +239,9 @@ class FunctionsCharts
             if ($wfam && $wfam->getHusband()) {
                 echo '<table cellspacing="0" cellpadding="0" border="0"><tr>';
                 if ($sosa > 0) {
-                    self::printSosaNumber($sosa * 4 + 2, $wfam->getHusband()->getXref(), 'arrow-down');
+                    self::printSosaNumber($sosa * 4 + 2, $wfam->getHusband()->xref(), 'arrow-down');
                 }
-                if (!empty($gparid) && $wfam->getHusband()->getXref() == $gparid) {
+                if (!empty($gparid) && $wfam->getHusband()->xref() == $gparid) {
                     self::printDabovilleNumber(trim(substr($daboville, 0, -3), '.') . '.', '', 'arrow-up');
                 }
                 echo '<td>';
@@ -258,7 +258,7 @@ class FunctionsCharts
         }
         if ($wfam && ($sosa != -1)) {
             echo '<td rowspan="2">';
-            echo FontAwesome::linkIcon('arrow-end', $wfam->getFullName(), ['href' => ($sosa == 0 ? $wfam->url() : '#' . $wfam->getXref())]);
+            echo FontAwesome::linkIcon('arrow-end', $wfam->getFullName(), ['href' => ($sosa == 0 ? $wfam->url() : '#' . $wfam->xref())]);
 
             echo '</td>';
         }
@@ -268,9 +268,9 @@ class FunctionsCharts
             if ($wfam && $wfam->getWife()) {
                 echo '<table cellspacing="0" cellpadding="0" border="0"><tr>';
                 if ($sosa > 0) {
-                    self::printSosaNumber($sosa * 4 + 3, $wfam->getWife()->getXref(), 'arrow-down');
+                    self::printSosaNumber($sosa * 4 + 3, $wfam->getWife()->xref(), 'arrow-down');
                 }
-                if (!empty($gparid) && $wfam->getWife()->getXref() == $gparid) {
+                if (!empty($gparid) && $wfam->getWife()->xref() == $gparid) {
                     self::printDabovilleNumber(trim(substr($daboville, 0, -3), '.') . '.', '', 'arrow-up');
                 }
                 echo '<td>';
@@ -330,17 +330,17 @@ class FunctionsCharts
             echo '<a href="' . e(route('add-child-to-family', [
                     'gender' => 'U',
                     'ged'    => $family->getTree()->name(),
-                    'xref'   => $family->getXref(),
+                    'xref'   => $family->xref(),
                 ])) . '">' . I18N::translate('Add a child to this family') . '</a>';
             echo ' <a class="icon-sex_m_15x15" href="' . e(route('add-child-to-family', [
                     'gender' => 'M',
                     'ged'    => $family->getTree()->name(),
-                    'xref'   => $family->getXref(),
+                    'xref'   => $family->xref(),
                 ])) . '" title="', I18N::translate('son'), '"></a>';
             echo ' <a class="icon-sex_f_15x15" href="' . e(route('add-child-to-family', [
                     'gender' => 'F',
                     'ged'    => $family->getTree()->name(),
-                    'xref'   => $family->getXref(),
+                    'xref'   => $family->xref(),
                 ])) . '" title="', I18N::translate('daughter'), '"></a>';
             echo '<br><br>';
         }
@@ -355,7 +355,7 @@ class FunctionsCharts
             foreach ($children as $child) {
                 echo '<tr>';
                 if ($sosa != 0) {
-                    if ($child->getXref() == $childid) {
+                    if ($child->xref() == $childid) {
                         self::printSosaNumber($sosa, $childid, 'arrow-up');
                     } elseif (empty($label)) {
                         self::printDabovilleNumber('', '', 'arrow-up');
@@ -464,7 +464,7 @@ class FunctionsCharts
     ) {
         echo '<hr>';
         echo '<p class="family-break">';
-        echo '<a name="', e($family->getXref()), '"></a>';
+        echo '<a name="', e($family->xref()), '"></a>';
         self::printFamilyParents($family, $sosa, $daboville, $parid, $gparid);
         echo '<br>';
         echo '<table cellspacing="0" cellpadding="0" border="0"><tr><td>';

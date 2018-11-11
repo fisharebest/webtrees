@@ -293,7 +293,7 @@ class FunctionsEdit
         $options = ['' => ''];
 
         if ($family !== null) {
-            $value   = $family->getXref();
+            $value   = $family->xref();
             $options = [$value => view('selects/family', ['family' => $family])];
         }
 
@@ -336,7 +336,7 @@ class FunctionsEdit
         $options = ['' => ''];
 
         if ($individual !== null) {
-            $value   = $individual->getXref();
+            $value   = $individual->xref();
             $options = [$value => view('selects/individual', ['individual' => $individual])];
         }
 
@@ -358,7 +358,7 @@ class FunctionsEdit
         $options = ['' => ''];
 
         if ($media !== null) {
-            $value   = $media->getXref();
+            $value   = $media->xref();
             $options = [$value => view('selects/media', ['media' => $media])];
         }
 
@@ -380,7 +380,7 @@ class FunctionsEdit
         $options = ['' => ''];
 
         if ($note !== null) {
-            $value   = $note->getXref();
+            $value   = $note->xref();
             $options = [$value => view('selects/note', ['note' => $note])];
         }
 
@@ -423,7 +423,7 @@ class FunctionsEdit
         $options = ['' => ''];
 
         if ($repository !== null) {
-            $value   = $repository->getXref();
+            $value   = $repository->xref();
             $options = [$value => view('selects/repository', ['repository' => $repository])];
         }
 
@@ -445,7 +445,7 @@ class FunctionsEdit
         $options = ['' => ''];
 
         if ($source !== null) {
-            $value   = $source->getXref();
+            $value   = $source->xref();
             $options = [$value => view('selects/source', ['source' => $source])];
         }
 
@@ -467,7 +467,7 @@ class FunctionsEdit
         $options = ['' => ''];
 
         if ($submitter !== null) {
-            $value   = $submitter->getXref();
+            $value   = $submitter->xref();
             $options = [$value => view('selects/submitter', ['submitter' => $submitter])];
         }
 

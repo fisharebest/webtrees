@@ -283,7 +283,7 @@ class GedcomRecord
      *
      * @return string
      */
-    public function getXref(): string
+    public function xref(): string
     {
         return $this->xref;
     }
@@ -361,7 +361,7 @@ class GedcomRecord
     public function url(): string
     {
         return route(static::ROUTE_NAME, [
-            'xref' => $this->getXref(),
+            'xref' => $this->xref(),
             'ged'  => $this->tree->name(),
         ]);
     }
@@ -381,7 +381,7 @@ class GedcomRecord
         }
 
         // We should always be able to see our own record (unless an admin is applying download restrictions)
-        if ($this->getXref() === $this->tree->getUserPreference(Auth::user(), 'gedcomid') && $access_level === Auth::accessLevel($this->tree)) {
+        if ($this->xref() === $this->tree->getUserPreference(Auth::user(), 'gedcomid') && $access_level === Auth::accessLevel($this->tree)) {
             return true;
         }
 
@@ -398,8 +398,8 @@ class GedcomRecord
 
         // Does this record have a default RESN?
         $individual_privacy = $this->tree->getIndividualPrivacy();
-        if (isset($individual_privacy[$this->getXref()])) {
-            return $individual_privacy[$this->getXref()] >= $access_level;
+        if (isset($individual_privacy[$this->xref()])) {
+            return $individual_privacy[$this->xref()] >= $access_level;
         }
 
         // Privacy rules do not apply to admins
@@ -650,7 +650,7 @@ class GedcomRecord
      */
     public function getFallBackName(): string
     {
-        return e($this->getXref());
+        return e($this->xref());
     }
 
     /**

@@ -302,7 +302,7 @@ class CalendarController extends AbstractBaseController
             case 'day':
                 foreach ($found_facts as $fact) {
                     $record = $fact->record();
-                    $xref   = $record->getXref();
+                    $xref   = $record->xref();
                     if ($record instanceof Individual) {
                         if (empty($indis[$xref])) {
                             $indis[$xref] = $this->calendarFactText($fact, true);
@@ -322,7 +322,7 @@ class CalendarController extends AbstractBaseController
                 foreach ($found_facts as $d => $facts) {
                     $cal_facts[$d] = [];
                     foreach ($facts as $fact) {
-                        $xref = $fact->record()->getXref();
+                        $xref = $fact->record()->xref();
                         if (empty($cal_facts[$d][$xref])) {
                             $cal_facts[$d][$xref] = $this->calendarFactText($fact, false);
                         } else {

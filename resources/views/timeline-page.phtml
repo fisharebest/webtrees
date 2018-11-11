@@ -11,7 +11,7 @@
     <input type="hidden" name="scale" value="<?= e($scale) ?>">
 
     <?php foreach ($individuals as $individual) : ?>
-    <input name="xrefs[]" type="hidden" value="<?= e($individual->getXref()) ?>">
+    <input name="xrefs[]" type="hidden" value="<?= e($individual->xref()) ?>">
     <?php endforeach ?>
 
     <div class="row form-group">
@@ -57,7 +57,7 @@
                 <?= $individual->getAddName() ?>
             <?php endif ?>
         </a>
-        <a href="<?= e($remove_urls[$individual->getXref()]) ?>">
+        <a href="<?= e($remove_urls[$individual->xref()]) ?>">
             <?= I18N::translate('Remove individual') ?>
         </a>
         <?php if ($individual->getBirthDate()->isOK()) : ?>

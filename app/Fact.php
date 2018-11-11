@@ -266,7 +266,7 @@ class Fact
         }
 
         // Does this record have a default RESN?
-        $xref                    = $this->record->getXref();
+        $xref                    = $this->record->xref();
         $fact_privacy            = $this->record->getTree()->getFactPrivacy();
         $individual_fact_privacy = $this->record->getTree()->getIndividualFactPrivacy();
         if (isset($individual_fact_privacy[$xref][$this->tag])) {
@@ -655,6 +655,6 @@ class Fact
      */
     public function __toString()
     {
-        return $this->id . '@' . $this->record->getXref();
+        return $this->id . '@' . $this->record->xref();
     }
 }

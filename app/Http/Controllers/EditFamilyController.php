@@ -67,7 +67,7 @@ class EditFamilyController extends AbstractEditController
 
         $this->checkFamilyAccess($family, true);
 
-        $dummy_facts = ['0 @' . $family->getXref() . '@ FAM'];
+        $dummy_facts = ['0 @' . $family->xref() . '@ FAM'];
         $sort_facts  = [];
         $keep_facts  = [];
 
@@ -170,14 +170,14 @@ class EditFamilyController extends AbstractEditController
             $old_child = $fact->target();
             if ($old_child  instanceof Individual && Date::compare($new_child->getEstimatedBirthDate(), $old_child->getEstimatedBirthDate()) < 0) {
                 // Insert before this child
-                $family->updateFact($fact->id(), '1 CHIL @' . $new_child->getXref() . "@\n" . $fact->gedcom(), !$keep_chan);
+                $family->updateFact($fact->id(), '1 CHIL @' . $new_child->xref() . "@\n" . $fact->gedcom(), !$keep_chan);
                 $done = true;
                 break;
             }
         }
         if (!$done) {
             // Append child at end
-            $family->createFact('1 CHIL @' . $new_child->getXref() . '@', !$keep_chan);
+            $family->createFact('1 CHIL @' . $new_child->xref() . '@', !$keep_chan);
         }
 
         if ($request->get('goto') === 'new') {
@@ -258,14 +258,14 @@ class EditFamilyController extends AbstractEditController
         } else {
             $gedrec = $this->updateRest($gedrec);
         }
-        $gedrec .= "\n1 FAMS @" . $family->getXref() . '@';
+        $gedrec .= "\n1 FAMS @" . $family->xref() . '@';
         $spouse = $tree->createIndividual($gedrec);
 
         // Update the existing family - add marriage, etc
         if ($family->getFirstFact('HUSB')) {
-            $family->createFact('1 WIFE @' . $spouse->getXref() . '@', true);
+            $family->createFact('1 WIFE @' . $spouse->xref() . '@', true);
         } else {
-            $family->createFact('1 HUSB @' . $spouse->getXref() . '@', true);
+            $family->createFact('1 HUSB @' . $spouse->xref() . '@', true);
         }
         $famrec = '';
         if (preg_match_all('/([A-Z0-9_]+)/', $tree->getPreference('QUICK_REQUIRED_FAMFACTS'), $matches)) {
@@ -357,9 +357,9 @@ class EditFamilyController extends AbstractEditController
             }
             if ($new_father) {
                 // Add new FAMS link
-                $new_father->createFact('1 FAMS @' . $family->getXref() . '@', true);
+                $new_father->createFact('1 FAMS @' . $family->xref() . '@', true);
                 // Add new HUSB link
-                $family->createFact('1 HUSB @' . $new_father->getXref() . '@', true);
+                $family->createFact('1 HUSB @' . $new_father->xref() . '@', true);
             }
         }
 
@@ -380,9 +380,9 @@ class EditFamilyController extends AbstractEditController
             }
             if ($new_mother) {
                 // Add new FAMS link
-                $new_mother->createFact('1 FAMS @' . $family->getXref() . '@', true);
+                $new_mother->createFact('1 FAMS @' . $family->xref() . '@', true);
                 // Add new WIFE link
-                $family->createFact('1 WIFE @' . $new_mother->getXref() . '@', true);
+                $family->createFact('1 WIFE @' . $new_mother->xref() . '@', true);
             }
         }
 
@@ -406,9 +406,9 @@ class EditFamilyController extends AbstractEditController
         foreach ($new_children as $new_child) {
             if ($new_child && !in_array($new_child, $old_children)) {
                 // Add new FAMC link
-                $new_child->createFact('1 FAMC @' . $family->getXref() . '@', true);
+                $new_child->createFact('1 FAMC @' . $family->xref() . '@', true);
                 // Add new CHIL link
-                $family->createFact('1 CHIL @' . $new_child->getXref() . '@', true);
+                $family->createFact('1 CHIL @' . $new_child->xref() . '@', true);
             }
         }
 

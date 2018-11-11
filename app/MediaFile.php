@@ -377,7 +377,7 @@ class MediaFile
     public function downloadUrl(): string
     {
         return route('media-download', [
-            'xref'    => $this->media->getXref(),
+            'xref'    => $this->media->xref(),
             'ged'     => $this->media->getTree()->name(),
             'fact_id' => $this->fact_id,
         ]);
@@ -411,7 +411,7 @@ class MediaFile
 
         $url = $url_builder->getUrl('index.php', [
             'route'     => 'media-thumbnail',
-            'xref'      => $this->media->getXref(),
+            'xref'      => $this->media->xref(),
             'ged'       => $this->media->getTree()->name(),
             'fact_id'   => $this->fact_id,
             'w'         => $width,

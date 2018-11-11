@@ -200,7 +200,7 @@ class LifespansChartController extends AbstractChartController
                 'background' => $colors[$individual->getSex()]->getNextColor(),
                 'birth_year' => $birth_year,
                 'death_year' => $death_year,
-                'id'         => 'individual-' . md5($individual->getXref()),
+                'id'         => 'individual-' . md5($individual->xref()),
                 'individual' => $individual,
                 'row'        => $next_row,
             ];
@@ -323,21 +323,21 @@ class LifespansChartController extends AbstractChartController
 
         foreach ($individual->getSpouseFamilies() as $family) {
             foreach ($family->getChildren() as $child) {
-                $xrefs[] = $child->getXref();
+                $xrefs[] = $child->xref();
             }
 
             foreach ($family->getSpouses() as $spouse) {
-                $xrefs[] = $spouse->getXref();
+                $xrefs[] = $spouse->xref();
             }
         }
 
         foreach ($individual->getChildFamilies() as $family) {
             foreach ($family->getChildren() as $child) {
-                $xrefs[] = $child->getXref();
+                $xrefs[] = $child->xref();
             }
 
             foreach ($family->getSpouses() as $spouse) {
-                $xrefs[] = $spouse->getXref();
+                $xrefs[] = $spouse->xref();
             }
         }
 

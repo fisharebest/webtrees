@@ -509,7 +509,7 @@ class FunctionsPrint
             if (!$newRow) {
                 echo '</select>';
                 /* I18N: A button label. */
-                echo '&nbsp;&nbsp;<input type="button" value="', I18N::translate('add'), '" onclick="return paste_fact(\'' . e($tree->name()) . '\',\'' . e($record->getXref()) . '\', \'#newClipboardFact\');"> ';
+                echo '&nbsp;&nbsp;<input type="button" value="', I18N::translate('add'), '" onclick="return paste_fact(\'' . e($tree->name()) . '\',\'' . e($record->xref()) . '\', \'#newClipboardFact\');"> ';
                 echo '</form></td></tr>', "\n";
             }
         }
@@ -564,7 +564,7 @@ class FunctionsPrint
         echo '<td>';
         echo '<form onsubmit="if ($(&quot;#add-fact&quot;).val() === null) {event.preventDefault();}">';
         echo '<input type="hidden" name="route" value="add-fact">';
-        echo '<input type="hidden" name="xref" value="' . e($record->getXref()) . '">';
+        echo '<input type="hidden" name="xref" value="' . e($record->xref()) . '">';
         echo '<input type="hidden" name="ged" value="' . e($tree->name()) . '">';
         echo '<select id="add-fact" name="fact">';
         echo '<option value="" disabled selected>' . I18N::translate('&lt;select&gt;') . '</option>';
@@ -583,7 +583,7 @@ class FunctionsPrint
         foreach ($quickfacts as $fact) {
             echo '<a href="' . e(route('add-fact', [
                     'fact' => $fact,
-                    'xref' => $record->getXref(),
+                    'xref' => $record->xref(),
                     'ged'  => $tree->name(),
                 ])) . '">', GedcomTag::getLabel($fact), '</a>';
         }

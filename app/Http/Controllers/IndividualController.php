@@ -322,11 +322,11 @@ class IndividualController extends AbstractBaseController
                     'class'        => 'btn btn-link',
                     'data-confirm' =>  I18N::translate('Are you sure you want to delete this fact?'),
                     'href'         => '#',
-                    'onclick'      => 'return delete_fact(this.dataset.confirm", "' . e($individual->getTree()->name()) . '", "' . e($individual->getXref()) . '", "' . $fact->id() . '");',
+                    'onclick'      => 'return delete_fact(this.dataset.confirm", "' . e($individual->getTree()->name()) . '", "' . e($individual->xref()) . '", "' . $fact->id() . '");',
                 ]) .
                 FontAwesome::linkIcon('edit', I18N::translate('Edit the name'), [
                     'class' => 'btn btn-link',
-                    'href'  => route('edit-name', ['xref' => $individual->getXref(), 'fact_id' => $fact->id(), 'ged' => $individual->getTree()->name()]),
+                    'href'  => route('edit-name', ['xref' => $individual->xref(), 'fact_id' => $fact->id(), 'ged' => $individual->getTree()->name()]),
                 ]);
         } else {
             $edit_links = '';
@@ -377,7 +377,7 @@ class IndividualController extends AbstractBaseController
         if ($individual->canEdit() && !$fact->isPendingDeletion()) {
             $edit_links = FontAwesome::linkIcon('edit', I18N::translate('Edit the gender'), [
                 'class' => 'btn btn-link',
-                'href'  => route('edit-fact', ['xref'    => $individual->getXref(),
+                'href'  => route('edit-fact', ['xref'    => $individual->xref(),
                                                'fact_id' => $fact->id(),
                                                'ged'     => $individual->getTree()->name(),
                 ]),

@@ -7,7 +7,7 @@
     <?php if (Auth::isModerator($individual->getTree())) : ?>
         <?= view('components/alert-warning-dismissible', [
             'alert' => /* I18N: %1$s is “accept”, %2$s is “reject”. These are links. */
-                I18N::translate('This individual has been deleted. You should review the deletion and then %1$s or %2$s it.', '<a href="#" class="alert-link" onclick="accept_changes(\'' . e($individual->getXref()) . '\', \'' . e($individual->getTree()->name()) . '\');">' . I18N::translateContext('You should review the deletion and then accept or reject it.', 'accept') . '</a>', '<a href="#" class="alert-link" onclick="reject_changes(\'' . e($individual->getXref()) . '\', \'' . e($individual->getTree()->name()) . '\');">' . I18N::translateContext('You should review the deletion and then accept or reject it.', 'reject') . '</a>') . ' ' . FunctionsPrint::helpLink('pending_changes'),
+                I18N::translate('This individual has been deleted. You should review the deletion and then %1$s or %2$s it.', '<a href="#" class="alert-link" onclick="accept_changes(\'' . e($individual->xref()) . '\', \'' . e($individual->getTree()->name()) . '\');">' . I18N::translateContext('You should review the deletion and then accept or reject it.', 'accept') . '</a>', '<a href="#" class="alert-link" onclick="reject_changes(\'' . e($individual->xref()) . '\', \'' . e($individual->getTree()->name()) . '\');">' . I18N::translateContext('You should review the deletion and then accept or reject it.', 'reject') . '</a>') . ' ' . FunctionsPrint::helpLink('pending_changes'),
         ]) ?>
     <?php elseif (Auth::isEditor($individual->getTree())) : ?>
         <?= view('components/alert-warning-dismissible', ['alert' => I18N::translate('This individual has been deleted. The deletion will need to be reviewed by a moderator.') . ' ' . FunctionsPrint::helpLink('pending_changes')]) ?>
@@ -16,7 +16,7 @@
     <?php if (Auth::isModerator($individual->getTree())) : ?>
         <?= view('components/alert-warning-dismissible', [
             'alert' => /* I18N: %1$s is “accept”, %2$s is “reject”. These are links. */
-                I18N::translate('This individual has been edited. You should review the changes and then %1$s or %2$s them.', '<a href="#" class="alert-link" onclick="accept_changes(\'' . e($individual->getXref()) . '\', \'' . e($individual->getTree()->name()) . '\');">' . I18N::translateContext('You should review the changes and then accept or reject them.', 'accept') . '</a>', '<a href="#" class="alert-link" onclick="reject_changes(\'' . e($individual->getXref()) . '\', \'' . e($individual->getTree()->name()) . '\');">' . I18N::translateContext('You should review the changes and then accept or reject them.', 'reject') . '</a>') . ' ' . FunctionsPrint::helpLink('pending_changes'),
+                I18N::translate('This individual has been edited. You should review the changes and then %1$s or %2$s them.', '<a href="#" class="alert-link" onclick="accept_changes(\'' . e($individual->xref()) . '\', \'' . e($individual->getTree()->name()) . '\');">' . I18N::translateContext('You should review the changes and then accept or reject them.', 'accept') . '</a>', '<a href="#" class="alert-link" onclick="reject_changes(\'' . e($individual->xref()) . '\', \'' . e($individual->getTree()->name()) . '\');">' . I18N::translateContext('You should review the changes and then accept or reject them.', 'reject') . '</a>') . ' ' . FunctionsPrint::helpLink('pending_changes'),
         ]) ?>
     <?php elseif (Auth::isEditor($individual->getTree())) : ?>
         <?= view('components/alert-warning-dismissible', ['alert' => I18N::translate('This individual has been edited. The changes need to be reviewed by a moderator.') . ' ' . FunctionsPrint::helpLink('pending_changes')]) ?>
@@ -65,7 +65,7 @@
                 <?php if (Auth::isEditor($individual->getTree())) : ?>
                     <?php if (count($individual->getFacts('OBJE')) > 1) : ?>
                         <div>
-                            <a href="<?= e(route('reorder-media', ['ged' => $individual->getTree()->name(), 'xref' => $individual->getXref()])) ?>">
+                            <a href="<?= e(route('reorder-media', ['ged' => $individual->getTree()->name(), 'xref' => $individual->xref()])) ?>">
                                 <?= I18N::translate('Re-order media') ?>
                             </a>
                         </div>
@@ -73,7 +73,7 @@
 
                     <?php if ($individual->getTree()->getPreference('MEDIA_UPLOAD') >= Auth::accessLevel($individual->getTree())) : ?>
                         <div>
-                            <a href="<?= e(route('add-fact', ['ged' => $individual->getTree()->name(), 'xref' => $individual->getXref(), 'fact' => 'OBJE'])) ?>">
+                            <a href="<?= e(route('add-fact', ['ged' => $individual->getTree()->name(), 'xref' => $individual->xref(), 'fact' => 'OBJE'])) ?>">
                                 <?= I18N::translate('Add a media object') ?>
                             </a>
                         </div>
@@ -97,7 +97,7 @@
             <ul class="nav nav-tabs flex-wrap">
                 <?php foreach ($tabs as $tab) : ?>
                     <li class="nav-item">
-                        <a class="nav-link<?= $tab->isGrayedOut($individual) ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" data-href="<?= e(route('individual-tab', ['xref' => $individual->getXref(), 'ged' => $individual->getTree()->name(), 'module' => $tab->getName()])) ?>" href="#<?= $tab->getName() ?>">
+                        <a class="nav-link<?= $tab->isGrayedOut($individual) ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" data-href="<?= e(route('individual-tab', ['xref' => $individual->xref(), 'ged' => $individual->getTree()->name(), 'module' => $tab->getName()])) ?>" href="#<?= $tab->getName() ?>">
                             <?= $tab->getTitle() ?>
                         </a>
                     </li>

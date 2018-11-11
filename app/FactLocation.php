@@ -60,7 +60,7 @@ class FactLocation extends Location
      */
     public function shortSummary(string $datatype, int $sosa): array
     {
-        $self        = $this->individual->getXref();
+        $self        = $this->individual->xref();
         $parent      = $this->fact->record();
         $name        = '';
         $url         = '';
@@ -74,7 +74,7 @@ class FactLocation extends Location
                 $url  = $spouse->url();
                 $name = $spouse->getFullName();
             }
-        } elseif ($parent->getXref() !== $self) {
+        } elseif ($parent->xref() !== $self) {
             //birth of a child
             $url  = $parent->url();
             $name = $parent->getFullName();

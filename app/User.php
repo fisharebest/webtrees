@@ -186,7 +186,7 @@ class User
             " WHERE gedcom_id = :tree_id AND setting_name = 'gedcomid' AND setting_value = :xref"
         )->execute([
             'tree_id' => $individual->getTree()->id(),
-            'xref'    => $individual->getXref(),
+            'xref'    => $individual->xref(),
         ])->fetchOne();
 
         return self::find($user_id);

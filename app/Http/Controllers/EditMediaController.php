@@ -124,7 +124,7 @@ class EditMediaController extends AbstractEditController
         $media->createFact($gedcom, true);
 
         // Accept the changes, to keep the filesystem in sync with the GEDCOM data.
-        FunctionsImport::acceptAllChanges($media->getXref(), $tree);
+        FunctionsImport::acceptAllChanges($media->xref(), $tree);
 
         return new RedirectResponse($media->url());
     }
@@ -262,7 +262,7 @@ class EditMediaController extends AbstractEditController
 
         // Accept the changes, to keep the filesystem in sync with the GEDCOM data.
         if ($old !== $new && !$media_file->isExternal()) {
-            FunctionsImport::acceptAllChanges($media->getXref(), $tree);
+            FunctionsImport::acceptAllChanges($media->xref(), $tree);
         }
 
         return new RedirectResponse($media->url());
@@ -319,7 +319,7 @@ class EditMediaController extends AbstractEditController
 
         $media_object = $tree->createRecord($gedcom);
         // Accept the new record.  Rejecting it would leave the filesystem out-of-sync with the genealogy
-        FunctionsImport::acceptAllChanges($media_object->getXref(), $tree);
+        FunctionsImport::acceptAllChanges($media_object->xref(), $tree);
 
         return new RedirectResponse($media_object->url());
     }
@@ -374,10 +374,10 @@ class EditMediaController extends AbstractEditController
         $record = $tree->createRecord($gedcom);
 
         // Accept the new record to keep the filesystem synchronized with the genealogy.
-        FunctionsImport::acceptAllChanges($record->getXref(), $record->getTree());
+        FunctionsImport::acceptAllChanges($record->xref(), $record->getTree());
 
         return new JsonResponse([
-            'id'   => $record->getXref(),
+            'id'   => $record->xref(),
             'text' => view('selects/media', [
                 'media' => $record,
             ]),

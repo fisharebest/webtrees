@@ -118,11 +118,11 @@ class CensusAssistantModule extends AbstractModule implements ModuleInterface
             $note_gedcom = '0 @@ NOTE ' . str_replace("\n", "\n1 CONT ", $note_text);
             $note        = $individual->getTree()->createRecord($note_gedcom);
 
-            $newged .= "\n2 NOTE @" . $note->getXref() . '@';
+            $newged .= "\n2 NOTE @" . $note->xref() . '@';
 
             // Add the census fact to the rest of the household
             foreach (array_keys($ca_individuals) as $xref) {
-                if ($xref !== $individual->getXref()) {
+                if ($xref !== $individual->xref()) {
                     Individual::getInstance($xref, $individual->getTree())
                         ->updateFact($fact_id, $newged, !$keep_chan);
                 }
@@ -219,9 +219,9 @@ class CensusAssistantModule extends AbstractModule implements ModuleInterface
     {
         $html = '';
         foreach ($census->columns() as $column) {
-            $html .= '<td class="wt-census-assistant-field"><input class="form-control wt-census-assistant-form-control" type="text" value="' . $column->generate($individual, $head) . '" name="ca_individuals[' . $individual->getXref() . '][]"></td>';
+            $html .= '<td class="wt-census-assistant-field"><input class="form-control wt-census-assistant-form-control" type="text" value="' . $column->generate($individual, $head) . '" name="ca_individuals[' . $individual->xref() . '][]"></td>';
         }
 
-        return '<tr class="wt-census-assistant-row"><td class="wt-census-assistant-field" hidden>' . $individual->getXref() . '</td>' . $html . '<td class="wt-census-assistant-field"><a class="icon-remove" href="#" title="' . I18N::translate('Remove') . '"></a></td></tr>';
+        return '<tr class="wt-census-assistant-row"><td class="wt-census-assistant-field" hidden>' . $individual->xref() . '</td>' . $html . '<td class="wt-census-assistant-field"><a class="icon-remove" href="#" title="' . I18N::translate('Remove') . '"></a></td></tr>';
     }
 }

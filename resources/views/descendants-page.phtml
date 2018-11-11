@@ -48,4 +48,4 @@
     </div>
 </form>
 
-<div class="wt-ajax-load wt-page-content wt-chart wt-descendants-chart" data-ajax-url="<?= e(route('descendants-chart', ['xref' => $individual->getXref(), 'ged' => $individual->getTree()->name(), 'generations' => $generations, 'chart_style' => $chart_style])) ?>"></div>
+<div class="wt-ajax-load wt-page-content wt-chart wt-descendants-chart" data-ajax-url="<?= e(route('descendants-chart', ['xref' => $individual->xref(), 'ged' => $individual->getTree()->name(), 'generations' => $generations, 'chart_style' => $chart_style])) ?>"></div>

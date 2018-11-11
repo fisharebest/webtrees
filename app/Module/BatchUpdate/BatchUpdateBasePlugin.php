@@ -154,7 +154,7 @@ abstract class BatchUpdateBasePlugin
             "/@([^#@\n]+)@/m",
             '<a href="' . e(route('edit-raw-record', [
                 'ged'  => $record->getTree()->name(),
-                'xref' => $record->getXref(),
+                'xref' => $record->xref(),
             ])) . '">@\\1@</a>',
             $gedrec
         );

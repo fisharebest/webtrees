@@ -271,7 +271,7 @@ class AdminController extends AbstractBaseController
                 $row->change_id,
                 $row->change_time,
                 I18N::translate($row->status),
-                $record ? '<a href="' . e($record->url()) . '">' . $record->getXref() . '</a>' : $row->xref,
+                $record ? '<a href="' . e($record->url()) . '">' . $record->xref() . '</a>' : $row->xref,
                 '<div class="gedcom-data" dir="ltr">' .
                 preg_replace_callback(
                     '/@(' . WT_REGEX_XREF . ')@/',
@@ -594,7 +594,7 @@ class AdminController extends AbstractBaseController
                         $media_object->createFact($gedcom, true);
                     } else {
                         // The media object already has an image.  Show this custom one in preference.
-                        $gedcom = '0 @' . $media_object->getXref() . "@ OBJE\n" . $gedcom;
+                        $gedcom = '0 @' . $media_object->xref() . "@ OBJE\n" . $gedcom;
                         foreach ($media_object->getFacts() as $fact) {
                             $gedcom .= "\n" . $fact->getGedcom();
                         }
@@ -896,7 +896,7 @@ class AdminController extends AbstractBaseController
             $xref2,
         ]);
 
-        $gedcom = '0 @' . $record1->getXref() . '@ ' . $record1::RECORD_TYPE;
+        $gedcom = '0 @' . $record1->xref() . '@ ' . $record1::RECORD_TYPE;
         foreach ($facts as $fact_id => $fact) {
             $gedcom .= "\n" . $fact->getGedcom();
         }

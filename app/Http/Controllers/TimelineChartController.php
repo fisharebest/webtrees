@@ -160,9 +160,9 @@ class TimelineChartController extends AbstractChartController
             if ($bdate->isOK()) {
                 $date = new GregorianDate($bdate->minimumJulianDay());
 
-                $birthyears [$individual->getXref()] = $date->year;
-                $birthmonths[$individual->getXref()] = max(1, $date->month);
-                $birthdays  [$individual->getXref()] = max(1, $date->day);
+                $birthyears [$individual->xref()] = $date->year;
+                $birthmonths[$individual->xref()] = max(1, $date->month);
+                $birthdays  [$individual->xref()] = max(1, $date->day);
             }
             // find all the fact information
             $facts = $individual->getFacts();

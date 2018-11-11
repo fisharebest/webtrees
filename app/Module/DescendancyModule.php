@@ -151,7 +151,7 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
                 'module' => 'descendancy',
                 'action' => 'Descendants',
                 'ged'    => $person->getTree()->name(),
-                'xref'   => $person->getXref(),
+                'xref'   => $person->xref(),
             ])) . '">' .
             '<i class="plusminus ' . $icon . '"></i>' .
             $person->getSexImage() . $person->getFullName() . $lifespan .

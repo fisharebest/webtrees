@@ -92,7 +92,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleConfigInt
                 I18N::translate('Relationship to me'),
                 route('relationships', [
                     'xref1' => $gedcomid,
-                    'xref2' => $individual->getXref(),
+                    'xref2' => $individual->xref(),
                     'ged'   => $individual->getTree()->name(),
                 ]),
                 'menu-chart-relationship',
@@ -103,7 +103,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleConfigInt
         return new Menu(
             I18N::translate('Relationships'),
             route('relationships', [
-                'xref1' => $individual->getXref(),
+                'xref1' => $individual->xref(),
                 'ged'   => $individual->getTree()->name(),
             ]),
             'menu-chart-relationship',
