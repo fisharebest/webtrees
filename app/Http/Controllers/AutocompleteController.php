@@ -109,10 +109,10 @@ class AutocompleteController extends AbstractBaseController
         // Filter for privacy
         foreach ($rows as $row) {
             $individual = Individual::getInstance($row->xref, $tree, $row->gedcom);
-            if (preg_match('/\n1 SOUR @' . $regex_xref . '@(?:\n[2-9].*)*\n2 PAGE (.*' . $regex_query . '.*)/i', $individual->getGedcom(), $match)) {
+            if (preg_match('/\n1 SOUR @' . $regex_xref . '@(?:\n[2-9].*)*\n2 PAGE (.*' . $regex_query . '.*)/i', $individual->gedcom(), $match)) {
                 $pages[] = $match[1];
             }
-            if (preg_match('/\n2 SOUR @' . $xref . '@(?:\n[3-9].*)*\n3 PAGE (.*' . $regex_query . '.*)/i', $individual->getGedcom(), $match)) {
+            if (preg_match('/\n2 SOUR @' . $xref . '@(?:\n[3-9].*)*\n3 PAGE (.*' . $regex_query . '.*)/i', $individual->gedcom(), $match)) {
                 $pages[] = $match[1];
             }
         }
@@ -129,10 +129,10 @@ class AutocompleteController extends AbstractBaseController
         // Filter for privacy
         foreach ($rows as $row) {
             $family = Family::getInstance($row->xref, $tree, $row->gedcom);
-            if (preg_match('/\n1 SOUR @' . $xref . '@(?:\n[2-9].*)*\n2 PAGE (.*' . str_replace(' ', '.+', preg_quote($query, '/')) . '.*)/i', $family->getGedcom(), $match)) {
+            if (preg_match('/\n1 SOUR @' . $xref . '@(?:\n[2-9].*)*\n2 PAGE (.*' . str_replace(' ', '.+', preg_quote($query, '/')) . '.*)/i', $family->gedcom(), $match)) {
                 $pages[] = $match[1];
             }
-            if (preg_match('/\n2 SOUR @' . $xref . '@(?:\n[3-9].*)*\n3 PAGE (.*' . str_replace(' ', '.+', preg_quote($query, '/')) . '.*)/i', $family->getGedcom(), $match)) {
+            if (preg_match('/\n2 SOUR @' . $xref . '@(?:\n[3-9].*)*\n3 PAGE (.*' . str_replace(' ', '.+', preg_quote($query, '/')) . '.*)/i', $family->gedcom(), $match)) {
                 $pages[] = $match[1];
             }
         }

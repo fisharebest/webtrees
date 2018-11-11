@@ -304,7 +304,7 @@ class GedcomRecord
      *
      * @return string
      */
-    public function getGedcom()
+    public function gedcom()
     {
         return $this->pending ?? $this->gedcom;
     }
@@ -1336,7 +1336,7 @@ class GedcomRecord
         )->execute([
             $this->tree->id(),
             $this->xref,
-            $this->getGedcom(),
+            $this->gedcom(),
             $gedcom,
             Auth::id(),
         ]);
@@ -1370,7 +1370,7 @@ class GedcomRecord
             )->execute([
                 $this->tree->id(),
                 $this->xref,
-                $this->getGedcom(),
+                $this->gedcom(),
                 Auth::id(),
             ]);
         }

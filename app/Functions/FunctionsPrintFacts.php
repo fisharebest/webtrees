@@ -675,8 +675,8 @@ class FunctionsPrintFacts
                     echo '<a href="', e($media->url()), '">', $media->getFullName(), '</a>';
                     // NOTE: echo the notes of the media
                     echo '<p>';
-                    echo FunctionsPrint::printFactNotes($tree, $media->getGedcom(), 1);
-                    $ttype = preg_match('/' . ($nlevel + 1) . ' TYPE (.*)/', $media->getGedcom(), $match);
+                    echo FunctionsPrint::printFactNotes($tree, $media->gedcom(), 1);
+                    $ttype = preg_match('/' . ($nlevel + 1) . ' TYPE (.*)/', $media->gedcom(), $match);
                     if ($ttype > 0) {
                         $mediaType = GedcomTag::getFileFormTypeValue($match[1]);
                         echo '<span class="label">', I18N::translate('Type'), ': </span> <span class="field">', $mediaType, '</span>';
@@ -702,8 +702,8 @@ class FunctionsPrintFacts
                             }
                         }
                     }
-                    echo FunctionsPrint::printFactNotes($tree, $media->getGedcom(), $nlevel);
-                    echo self::printFactSources($tree, $media->getGedcom(), $nlevel);
+                    echo FunctionsPrint::printFactNotes($tree, $media->gedcom(), $nlevel);
+                    echo self::printFactSources($tree, $media->gedcom(), $nlevel);
                     echo '</div>'; //close div "media-display-title"
                     echo '</div>'; //close div "media-display"
                 }
@@ -863,11 +863,11 @@ class FunctionsPrintFacts
                     echo '<div class="indent">';
                     self::printMediaLinks($tree, $srec, $nlevel);
                     if ($nlevel == 2) {
-                        self::printMediaLinks($tree, $source->getGedcom(), 1);
+                        self::printMediaLinks($tree, $source->gedcom(), 1);
                     }
                     echo FunctionsPrint::printFactNotes($tree, $srec, $nlevel);
                     if ($nlevel == 2) {
-                        echo FunctionsPrint::printFactNotes($tree, $source->getGedcom(), 1);
+                        echo FunctionsPrint::printFactNotes($tree, $source->gedcom(), 1);
                     }
                     echo '</div>';
                 } else {
@@ -1204,8 +1204,8 @@ class FunctionsPrintFacts
                     echo '</a>';
                     echo '</span>';
 
-                    echo FunctionsPrint::printFactNotes($tree, $media->getGedcom(), 1);
-                    echo self::printFactSources($tree, $media->getGedcom(), 1);
+                    echo FunctionsPrint::printFactNotes($tree, $media->gedcom(), 1);
+                    echo self::printFactSources($tree, $media->gedcom(), 1);
                 } else {
                     echo $xref;
                 }

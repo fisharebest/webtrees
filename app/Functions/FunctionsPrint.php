@@ -143,7 +143,7 @@ class FunctionsPrint
                 $note = Note::getInstance($nmatch[1], $tree);
                 if ($note) {
                     if ($note->canShow()) {
-                        $noterec = $note->getGedcom();
+                        $noterec = $note->gedcom();
                         $nt      = preg_match("/0 @$nmatch[1]@ NOTE (.*)/", $noterec, $n1match);
                         $data .= self::printNoteRecord($tree, ($nt > 0) ? $n1match[1] : '', 1, $noterec);
                     }

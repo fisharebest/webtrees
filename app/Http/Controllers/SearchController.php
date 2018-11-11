@@ -485,7 +485,7 @@ class SearchController extends AbstractBaseController
         $count       = 0;
 
         foreach ($records as $record) {
-            $old_gedcom = $record->getGedcom();
+            $old_gedcom = $record->gedcom();
             $new_gedcom = preg_replace($pattern, $replacement, $old_gedcom);
 
             if ($new_gedcom !== $old_gedcom) {
@@ -511,7 +511,7 @@ class SearchController extends AbstractBaseController
         $count       = 0;
 
         foreach ($records as $record) {
-            $old_gedcom = $record->getGedcom();
+            $old_gedcom = $record->gedcom();
             $new_gedcom = preg_replace($pattern, $replacement, $old_gedcom);
 
             if ($new_gedcom !== $old_gedcom) {
@@ -536,7 +536,7 @@ class SearchController extends AbstractBaseController
         $query = preg_quote($search, '/');
 
         foreach ($records as $record) {
-            $old_record = $record->getGedcom();
+            $old_record = $record->gedcom();
             $new_record = preg_replace('/(\n\d [A-Z0-9_]+ )' . $query . '/i', '$1' . $replace, $old_record);
 
             if ($new_record !== $old_record) {
@@ -659,7 +659,7 @@ class SearchController extends AbstractBaseController
             // SQL may have matched on private data or gedcom tags, so check again against privatized data.
             $record = Family::getInstance($row->xref, Tree::findById($row->gedcom_id), $row->gedcom);
             // Ignore non-genealogy data
-            $gedrec = preg_replace('/\n\d (_UID|_WT_USER|FILE|FORM|TYPE|CHAN|RESN) .*/', '', $record->getGedcom());
+            $gedrec = preg_replace('/\n\d (_UID|_WT_USER|FILE|FORM|TYPE|CHAN|RESN) .*/', '', $record->gedcom());
             // Ignore links and tags
             $gedrec = preg_replace('/\n\d ' . WT_REGEX_TAG . '( @' . WT_REGEX_XREF . '@)?/', '', $gedrec);
             // Ignore tags
@@ -768,7 +768,7 @@ class SearchController extends AbstractBaseController
             // SQL may have matched on private data or gedcom tags, so check again against privatized data.
             $record = Individual::getInstance($row->xref, Tree::findById($row->gedcom_id), $row->gedcom);
             // Ignore non-genealogy data
-            $gedrec = preg_replace('/\n\d (_UID|_WT_USER|FILE|FORM|TYPE|CHAN|RESN) .*/', '', $record->getGedcom());
+            $gedrec = preg_replace('/\n\d (_UID|_WT_USER|FILE|FORM|TYPE|CHAN|RESN) .*/', '', $record->gedcom());
             // Ignore links and tags
             $gedrec = preg_replace('/\n\d ' . WT_REGEX_TAG . '( @' . WT_REGEX_XREF . '@)?/', '', $gedrec);
             // Re-apply the filtering
@@ -1163,7 +1163,7 @@ class SearchController extends AbstractBaseController
             // Check for XXXX:PLAC fields, which were only partially matched by SQL
             foreach ($fields as $field_name => $field_value) {
                 if (preg_match('/^(' . WT_REGEX_TAG . '):PLAC$/', $field_name, $match)) {
-                    if (!preg_match('/\n1 ' . $match[1] . '(\n[2-9].*)*\n2 PLAC .*' . preg_quote($field_value, '/') . '/i', $person->getGedcom())) {
+                    if (!preg_match('/\n1 ' . $match[1] . '(\n[2-9].*)*\n2 PLAC .*' . preg_quote($field_value, '/') . '/i', $person->gedcom())) {
                         continue 2;
                     }
                 }
@@ -1329,7 +1329,7 @@ class SearchController extends AbstractBaseController
             // SQL may have matched on private data or gedcom tags, so check again against privatized data.
             $record = Note::getInstance($row->xref, Tree::findById($row->gedcom_id), $row->gedcom);
             // Ignore non-genealogy data
-            $gedrec = preg_replace('/\n\d (_UID|_WT_USER|FILE|FORM|TYPE|CHAN|RESN) .*/', '', $record->getGedcom());
+            $gedrec = preg_replace('/\n\d (_UID|_WT_USER|FILE|FORM|TYPE|CHAN|RESN) .*/', '', $record->gedcom());
             // Ignore links and tags
             $gedrec = preg_replace('/\n\d ' . WT_REGEX_TAG . '( @' . WT_REGEX_XREF . '@)?/', '', $gedrec);
             // Ignore tags
@@ -1385,7 +1385,7 @@ class SearchController extends AbstractBaseController
             // SQL may have matched on private data or gedcom tags, so check again against privatized data.
             $record = Repository::getInstance($row->xref, Tree::findById($row->gedcom_id), $row->gedcom);
             // Ignore non-genealogy data
-            $gedrec = preg_replace('/\n\d (_UID|_WT_USER|FILE|FORM|TYPE|CHAN|RESN) .*/', '', $record->getGedcom());
+            $gedrec = preg_replace('/\n\d (_UID|_WT_USER|FILE|FORM|TYPE|CHAN|RESN) .*/', '', $record->gedcom());
             // Ignore links and tags
             $gedrec = preg_replace('/\n\d ' . WT_REGEX_TAG . '( @' . WT_REGEX_XREF . '@)?/', '', $gedrec);
             // Ignore tags
@@ -1441,7 +1441,7 @@ class SearchController extends AbstractBaseController
             // SQL may have matched on private data or gedcom tags, so check again against privatized data.
             $record = Source::getInstance($row->xref, Tree::findById($row->gedcom_id), $row->gedcom);
             // Ignore non-genealogy data
-            $gedrec = preg_replace('/\n\d (_UID|_WT_USER|FILE|FORM|TYPE|CHAN|RESN) .*/', '', $record->getGedcom());
+            $gedrec = preg_replace('/\n\d (_UID|_WT_USER|FILE|FORM|TYPE|CHAN|RESN) .*/', '', $record->gedcom());
             // Ignore links and tags
             $gedrec = preg_replace('/\n\d ' . WT_REGEX_TAG . '( @' . WT_REGEX_XREF . '@)?/', '', $gedrec);
             // Ignore tags

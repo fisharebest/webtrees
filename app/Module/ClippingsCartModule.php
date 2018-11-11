@@ -958,7 +958,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $cart[$tree_name][$record->xref()] = true;
 
         // Add directly linked media, notes, repositories and sources.
-        preg_match_all('/\n\d (?:OBJE|NOTE|SOUR|REPO) @(' . WT_REGEX_XREF . ')@/', $record->getGedcom(), $matches);
+        preg_match_all('/\n\d (?:OBJE|NOTE|SOUR|REPO) @(' . WT_REGEX_XREF . ')@/', $record->gedcom(), $matches);
 
         foreach ($matches[1] as $match) {
             $cart[$tree_name][$match] = true;

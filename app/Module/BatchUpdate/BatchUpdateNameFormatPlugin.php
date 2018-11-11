@@ -54,7 +54,7 @@ class BatchUpdateNameFormatPlugin extends BatchUpdateBasePlugin
      */
     public function doesRecordNeedUpdate(GedcomRecord $record): bool
     {
-        $gedcom = $record->getGedcom();
+        $gedcom = $record->gedcom();
 
         return
             preg_match('/^(?:1 NAME|2 (?:FONE|ROMN|_MARNM|_AKA|_HEB)) [^\/\n]*\/[^\/\n]*$/m', $gedcom) ||
@@ -70,7 +70,7 @@ class BatchUpdateNameFormatPlugin extends BatchUpdateBasePlugin
      */
     public function updateRecord(GedcomRecord $record): string
     {
-        $old_gedcom = $record->getGedcom();
+        $old_gedcom = $record->gedcom();
         $new_gedcom = preg_replace([
             '/^((?:1 NAME|2 (?:FONE|ROMN|_MARNM|_AKA|_HEB)) [^\/\n]*\/[^\/\n]*)$/m',
             '/^((?:1 NAME|2 (?:FONE|ROMN|_MARNM|_AKA|_HEB)) [^\/\n]*[^\/ ])(\/)/m',

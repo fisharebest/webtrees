@@ -94,7 +94,7 @@ class BatchUpdateSearchReplacePlugin extends BatchUpdateBasePlugin
      */
     public function doesRecordNeedUpdate(GedcomRecord $record): bool
     {
-        $gedcom = $record->getGedcom();
+        $gedcom = $record->gedcom();
 
         return !$this->error && preg_match('/(?:' . $this->regex . ')/mu' . $this->case, $gedcom);
     }
@@ -108,7 +108,7 @@ class BatchUpdateSearchReplacePlugin extends BatchUpdateBasePlugin
      */
     public function updateRecord(GedcomRecord $record): string
     {
-        $old_gedcom = $record->getGedcom();
+        $old_gedcom = $record->gedcom();
 
         // Allow "\n" to indicate a line-feed in replacement text.
         // Back-references such as $1, $2 are handled automatically.

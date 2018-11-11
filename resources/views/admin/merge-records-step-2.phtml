@@ -36,7 +36,7 @@
                                     <input type="checkbox" name="keep1[]" value="<?= $fact->id() ?>" checked>
                                 </td>
                                 <td>
-                                    <div class="gedcom-data" dir="ltr"><?= e($fact->getGedcom()) ?></div>
+                                    <div class="gedcom-data" dir="ltr"><?= e($fact->gedcom()) ?></div>
                                     <?php if ($fact->target() instanceof GedcomRecord) : ?>
                                         <a href="<?= e($fact->target()->url()) ?>">
                                             <?= $fact->target()->getFullName() ?>
@@ -83,7 +83,7 @@
                                             <input type="checkbox" name="keep1[]" value="<?= $fact->id() ?>" checked>
                                         </td>
                                         <td>
-                                            <div class="gedcom-data" dir="ltr"><?= e($fact->getGedcom()) ?></div>
+                                            <div class="gedcom-data" dir="ltr"><?= e($fact->gedcom()) ?></div>
                                             <?php if ($fact->target() instanceof GedcomRecord) : ?>
                                                 <a href="<?= e($fact->target()->url()) ?>">
                                                     <?= $fact->target()->getFullName() ?>
@@ -129,7 +129,7 @@
                                             <input type="checkbox" name="keep2[]" value="<?= $fact->id() ?>" checked>
                                         </td>
                                         <td>
-                                            <div class="gedcom-data" dir="ltr"><?= e($fact->getGedcom()) ?></div>
+                                            <div class="gedcom-data" dir="ltr"><?= e($fact->gedcom()) ?></div>
                                             <?php if ($fact->target() instanceof GedcomRecord) : ?>
                                                 <a href="<?= e($fact->target()->url()) ?>">
                                                     <?= $fact->target()->getFullName() ?>

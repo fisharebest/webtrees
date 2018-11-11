@@ -71,7 +71,7 @@ class BatchUpdateDuplicateLinksPlugin extends BatchUpdateBasePlugin
      */
     public function doesRecordNeedUpdate(GedcomRecord $record): bool
     {
-        $gedcom = $record->getGedcom();
+        $gedcom = $record->gedcom();
 
         return
             preg_match('/(\n1.*@.+@.*(?:(?:\n[2-9].*)*))(?:\n1.*(?:\n[2-9].*)*)*\1/', $gedcom) ||
@@ -88,7 +88,7 @@ class BatchUpdateDuplicateLinksPlugin extends BatchUpdateBasePlugin
      */
     public function updateRecord(GedcomRecord $record): string
     {
-        $old_gedcom = $record->getGedcom();
+        $old_gedcom = $record->gedcom();
 
         $new_gedcom = preg_replace([
             '/(\n1.*@.+@.*(?:(?:\n[2-9].*)*))((?:\n1.*(?:\n[2-9].*)*)*\1)/',

@@ -596,7 +596,7 @@ class AdminController extends AbstractBaseController
                         // The media object already has an image.  Show this custom one in preference.
                         $gedcom = '0 @' . $media_object->xref() . "@ OBJE\n" . $gedcom;
                         foreach ($media_object->getFacts() as $fact) {
-                            $gedcom .= "\n" . $fact->getGedcom();
+                            $gedcom .= "\n" . $fact->gedcom();
                         }
                         $media_object->updateRecord($gedcom, true);
                     }
@@ -843,7 +843,7 @@ class AdminController extends AbstractBaseController
                     '<a class="alert-link" href="' . e($record->url()) . '">' . $record->getFullName() . '</a>',
                     $record2_name
                 ), 'info');
-                $gedcom = str_replace('@' . $xref2 . '@', '@' . $xref1 . '@', $record->getGedcom());
+                $gedcom = str_replace('@' . $xref2 . '@', '@' . $xref1 . '@', $record->gedcom());
                 $gedcom = preg_replace(
                     '/(\n1.*@.+@.*(?:(?:\n[2-9].*)*))((?:\n1.*(?:\n[2-9].*)*)*\1)/',
                     '$2',
@@ -898,16 +898,16 @@ class AdminController extends AbstractBaseController
 
         $gedcom = '0 @' . $record1->xref() . '@ ' . $record1::RECORD_TYPE;
         foreach ($facts as $fact_id => $fact) {
-            $gedcom .= "\n" . $fact->getGedcom();
+            $gedcom .= "\n" . $fact->gedcom();
         }
         foreach ($facts1 as $fact_id => $fact) {
             if (in_array($fact_id, $keep1)) {
-                $gedcom .= "\n" . $fact->getGedcom();
+                $gedcom .= "\n" . $fact->gedcom();
             }
         }
         foreach ($facts2 as $fact_id => $fact) {
             if (in_array($fact_id, $keep2)) {
-                $gedcom .= "\n" . $fact->getGedcom();
+                $gedcom .= "\n" . $fact->gedcom();
             }
         }
 

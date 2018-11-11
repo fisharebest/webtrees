@@ -858,7 +858,7 @@ class Individual extends GedcomRecord
      */
     public function getNumberOfChildren()
     {
-        if (preg_match('/\n1 NCHI (\d+)(?:\n|$)/', $this->getGedcom(), $match)) {
+        if (preg_match('/\n1 NCHI (\d+)(?:\n|$)/', $this->gedcom(), $match)) {
             return (int) $match[1];
         }
 
@@ -923,21 +923,21 @@ class Individual extends GedcomRecord
                 // a) records with '2 _PRIMARY'
                 foreach ($families as $fam) {
                     $famid = $fam->xref();
-                    if (preg_match("/\n1 FAMC @{$famid}@\n(?:[2-9].*\n)*(?:2 _PRIMARY Y)/", $this->getGedcom())) {
+                    if (preg_match("/\n1 FAMC @{$famid}@\n(?:[2-9].*\n)*(?:2 _PRIMARY Y)/", $this->gedcom())) {
                         return $fam;
                     }
                 }
                 // b) records with '2 PEDI birt'
                 foreach ($families as $fam) {
                     $famid = $fam->xref();
-                    if (preg_match("/\n1 FAMC @{$famid}@\n(?:[2-9].*\n)*(?:2 PEDI birth)/", $this->getGedcom())) {
+                    if (preg_match("/\n1 FAMC @{$famid}@\n(?:[2-9].*\n)*(?:2 PEDI birth)/", $this->gedcom())) {
                         return $fam;
                     }
                 }
                 // c) records with no '2 PEDI'
                 foreach ($families as $fam) {
                     $famid = $fam->xref();
-                    if (!preg_match("/\n1 FAMC @{$famid}@\n(?:[2-9].*\n)*(?:2 PEDI)/", $this->getGedcom())) {
+                    if (!preg_match("/\n1 FAMC @{$famid}@\n(?:[2-9].*\n)*(?:2 PEDI)/", $this->gedcom())) {
                         return $fam;
                     }
                 }
@@ -1010,7 +1010,7 @@ class Individual extends GedcomRecord
      */
     public function getChildFamilyLabel(Family $family)
     {
-        if (preg_match('/\n1 FAMC @' . $family->xref() . '@(?:\n[2-9].*)*\n2 PEDI (.+)/', $this->getGedcom(), $match)) {
+        if (preg_match('/\n1 FAMC @' . $family->xref() . '@(?:\n[2-9].*)*\n2 PEDI (.+)/', $this->gedcom(), $match)) {
             // A specified pedigree
             return GedcomCodePedi::getChildFamilyLabel($match[1]);
         }

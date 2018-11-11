@@ -340,12 +340,12 @@ class RelationshipsChartController extends AbstractChartController
             $family = Family::getInstance($path[$i], $tree);
             $prev   = Individual::getInstance($path[$i - 1], $tree);
             $next   = Individual::getInstance($path[$i + 1], $tree);
-            if (preg_match('/\n\d (HUSB|WIFE|CHIL) @' . $prev->xref() . '@/', $family->getGedcom(), $match)) {
+            if (preg_match('/\n\d (HUSB|WIFE|CHIL) @' . $prev->xref() . '@/', $family->gedcom(), $match)) {
                 $rel1 = $match[1];
             } else {
                 return [];
             }
-            if (preg_match('/\n\d (HUSB|WIFE|CHIL) @' . $next->xref() . '@/', $family->getGedcom(), $match)) {
+            if (preg_match('/\n\d (HUSB|WIFE|CHIL) @' . $next->xref() . '@/', $family->gedcom(), $match)) {
                 $rel2 = $match[1];
             } else {
                 return [];

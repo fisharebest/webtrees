@@ -138,7 +138,7 @@ class EditGedcomRecordController extends AbstractEditController
             // Delete links to this record
             foreach (FunctionsDb::fetchAllLinks($record->xref(), $record->tree()->id()) as $xref) {
                 $linker     = GedcomRecord::getInstance($xref, $tree);
-                $old_gedcom = $linker->getGedcom();
+                $old_gedcom = $linker->gedcom();
                 $new_gedcom = $this->removeLinks($old_gedcom, $record->xref());
                 // FunctionsDb::fetch_all_links() does not take account of pending changes. The links (or even the
                 // record itself) may have already been deleted.
@@ -153,7 +153,7 @@ class EditGedcomRecordController extends AbstractEditController
                         // Delete any remaining link to this family
                         if ($match) {
                             $relict     = GedcomRecord::getInstance($match[2][0], $tree);
-                            $new_gedcom = $relict->getGedcom();
+                            $new_gedcom = $relict->gedcom();
                             $new_gedcom = $this->removeLinks($new_gedcom, $linker->xref());
                             $relict->updateRecord($new_gedcom, false);
                             /* I18N: %s are names of records, such as sources, repositories or individuals */

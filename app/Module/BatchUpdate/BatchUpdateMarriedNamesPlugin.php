@@ -60,7 +60,7 @@ class BatchUpdateMarriedNamesPlugin extends BatchUpdateBasePlugin
      */
     public function doesRecordNeedUpdate(GedcomRecord $record): bool
     {
-        $gedcom = $record->getGedcom();
+        $gedcom = $record->gedcom();
 
         return preg_match('/^1 SEX F/m', $gedcom) && preg_match('/^1 NAME /m', $gedcom) && $this->surnamesToAdd($record);
     }
@@ -74,7 +74,7 @@ class BatchUpdateMarriedNamesPlugin extends BatchUpdateBasePlugin
      */
     public function updateRecord(GedcomRecord $record): string
     {
-        $old_gedcom = $record->getGedcom();
+        $old_gedcom = $record->gedcom();
         $tree       = $record->tree();
 
         $SURNAME_TRADITION = $tree->getPreference('SURNAME_TRADITION');
@@ -118,7 +118,7 @@ class BatchUpdateMarriedNamesPlugin extends BatchUpdateBasePlugin
      */
     private function surnamesToAdd(GedcomRecord $record): array
     {
-        $gedcom = $record->getGedcom();
+        $gedcom = $record->gedcom();
         $tree   = $record->tree();
 
         $wife_surnames    = $this->surnames($record);
@@ -129,7 +129,7 @@ class BatchUpdateMarriedNamesPlugin extends BatchUpdateBasePlugin
 
         foreach ($fmatch[1] as $famid) {
             $family = Family::getInstance($famid, $tree);
-            $famrec = $family->getGedcom();
+            $famrec = $family->gedcom();
 
             if (preg_match('/^1 MARR/m', $famrec) && preg_match('/^1 HUSB @(.+)@/m', $famrec, $hmatch)) {
                 $spouse = Individual::getInstance($hmatch[1], $tree);
@@ -158,7 +158,7 @@ class BatchUpdateMarriedNamesPlugin extends BatchUpdateBasePlugin
      */
     private function surnames(GedcomRecord $record): array
     {
-        $gedcom = $record->getGedcom();
+        $gedcom = $record->gedcom();
 
         if (preg_match_all('/^(?:1 NAME|2 _MARNM) .*\/(.+)\//m', $gedcom, $match)) {
             return $match[1];

@@ -93,7 +93,7 @@ class EditNoteController extends AbstractEditController
         $gedrec = preg_replace(
             '/^0 @' . $note->xref() . '@ NOTE.*(\n1 CONT.*)*/',
             '0 @' . $note->xref() . '@ NOTE ' . preg_replace("/\r?\n/", "\n1 CONT ", $NOTE),
-            $note->getGedcom()
+            $note->gedcom()
         );
 
         $note->updateRecord($gedrec, true);

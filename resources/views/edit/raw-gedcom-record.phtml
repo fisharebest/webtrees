@@ -34,7 +34,7 @@
                         <?= $fact->summary() ?>
                     </label>
                     <input type="hidden" name="fact_id[]" value="<?= e($fact->getFactId()) ?>">
-                    <textarea class="card-body form-control py-1 px-2" dir="ltr" id="fact-<?= e($fact->getFactId()) ?>" name="fact[]" pattern="<?= e($pattern) ?>" rows="<?= 1 + preg_match_all('/\n/', $fact->getGedcom()) ?>"><?= e($fact->getGedcom()) ?></textarea>
+                    <textarea class="card-body form-control py-1 px-2" dir="ltr" id="fact-<?= e($fact->getFactId()) ?>" name="fact[]" pattern="<?= e($pattern) ?>" rows="<?= 1 + preg_match_all('/\n/', $fact->gedcom()) ?>"><?= e($fact->gedcom()) ?></textarea>
                 </div>
             <?php endif ?>
         <?php endforeach ?>

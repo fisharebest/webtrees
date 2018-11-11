@@ -432,7 +432,7 @@ class FunctionsCharts
             }
         } elseif ($sosa < 1) {
             // message 'no children' except for sosa
-            if (preg_match('/\n1 NCHI (\d+)/', $family->getGedcom(), $match) && $match[1] == 0) {
+            if (preg_match('/\n1 NCHI (\d+)/', $family->gedcom(), $match) && $match[1] == 0) {
                 echo '<tr><td><i class="icon-childless"></i> ' . I18N::translate('This family remained childless') . '</td></tr>';
             }
         }
@@ -539,7 +539,7 @@ class FunctionsCharts
             echo '</table>';
         } else {
             // If there is known that there are no children (as opposed to no known children)
-            if (preg_match('/\n1 NCHI (\d+)/', $family->getGedcom(), $match) && $match[1] == 0) {
+            if (preg_match('/\n1 NCHI (\d+)/', $family->gedcom(), $match) && $match[1] == 0) {
                 echo ' <i class="icon-childless" title="', I18N::translate('This family remained childless'), '"></i>';
             }
         }
