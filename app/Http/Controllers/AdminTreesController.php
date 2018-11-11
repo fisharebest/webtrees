@@ -1686,7 +1686,7 @@ class AdminTreesController extends AbstractBaseController
         foreach ($rows as $row) {
             $record = Individual::getInstance($row->xref, $tree, $row->gedcom);
             foreach ($record->getFacts() as $fact) {
-                $old_place = $fact->getAttribute('PLAC');
+                $old_place = $fact->attribute('PLAC');
                 if (preg_match('/(^|, )' . preg_quote($search, '/') . '$/i', $old_place)) {
                     $new_place           = preg_replace('/(^|, )' . preg_quote($search, '/') . '$/i', '$1' . $replace, $old_place);
                     $changes[$old_place] = $new_place;
@@ -1706,7 +1706,7 @@ class AdminTreesController extends AbstractBaseController
         foreach ($rows as $row) {
             $record = Family::getInstance($row->xref, $tree, $row->gedcom);
             foreach ($record->getFacts() as $fact) {
-                $old_place = $fact->getAttribute('PLAC');
+                $old_place = $fact->attribute('PLAC');
                 if (preg_match('/(^|, )' . preg_quote($search, '/') . '$/i', $old_place)) {
                     $new_place           = preg_replace('/(^|, )' . preg_quote($search, '/') . '$/i', '$1' . $replace, $old_place);
                     $changes[$old_place] = $new_place;
@@ -1745,7 +1745,7 @@ class AdminTreesController extends AbstractBaseController
         foreach ($rows as $row) {
             $record = Individual::getInstance($row->xref, $tree, $row->gedcom);
             foreach ($record->getFacts() as $fact) {
-                $old_place = $fact->getAttribute('PLAC');
+                $old_place = $fact->attribute('PLAC');
                 if (preg_match('/(^|, )' . preg_quote($search, '/') . '$/i', $old_place)) {
                     $new_place           = preg_replace('/(^|, )' . preg_quote($search, '/') . '$/i', '$1' . $replace, $old_place);
                     $changes[$old_place] = $new_place;
@@ -1767,7 +1767,7 @@ class AdminTreesController extends AbstractBaseController
         foreach ($rows as $row) {
             $record = Family::getInstance($row->xref, $tree, $row->gedcom);
             foreach ($record->getFacts() as $fact) {
-                $old_place = $fact->getAttribute('PLAC');
+                $old_place = $fact->attribute('PLAC');
                 if (preg_match('/(^|, )' . preg_quote($search, '/') . '$/i', $old_place)) {
                     $new_place           = preg_replace('/(^|, )' . preg_quote($search, '/') . '$/i', '$1' . $replace, $old_place);
                     $changes[$old_place] = $new_place;

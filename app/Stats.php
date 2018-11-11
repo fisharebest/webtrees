@@ -221,8 +221,8 @@ class Stats
         $sour = $head->getFirstFact('SOUR');
         if ($sour !== null) {
             $source  = $sour->value();
-            $title   = $sour->getAttribute('NAME');
-            $version = $sour->getAttribute('VERS');
+            $title   = $sour->attribute('NAME');
+            $version = $sour->attribute('VERS');
         }
 
         return [

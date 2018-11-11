@@ -531,8 +531,8 @@ class CalendarController extends AbstractBaseController
         if ($fact->anniv) {
             $text .= ' (' . I18N::translate('%s year anniversary', $fact->anniv) . ')';
         }
-        if ($show_places && $fact->getAttribute('PLAC')) {
-            $text .= ' — ' . $fact->getAttribute('PLAC');
+        if ($show_places && $fact->attribute('PLAC')) {
+            $text .= ' — ' . $fact->attribute('PLAC');
         }
 
         return $text;

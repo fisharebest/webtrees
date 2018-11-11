@@ -467,9 +467,9 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
         );
         foreach ($associates as $associate) {
             foreach ($associate->getFacts() as $fact) {
-                $arec = $fact->getAttribute('_ASSO');
+                $arec = $fact->attribute('_ASSO');
                 if (!$arec) {
-                    $arec = $fact->getAttribute('ASSO');
+                    $arec = $fact->attribute('ASSO');
                 }
                 if ($arec && trim($arec, '@') === $person->getXref()) {
                     // Extract the important details from the fact

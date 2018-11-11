@@ -242,10 +242,10 @@ class FunctionsPrintFacts
         // Print the value of this fact/event
         switch ($fact->getTag()) {
             case 'ADDR':
-                echo $fact->getValue();
+                echo $fact->value();
                 break;
             case 'AFN':
-                echo '<div class="field"><a href="https://familysearch.org/search/tree/results#count=20&query=afn:', rawurlencode($fact->getValue()), '">', e($fact->getValue()), '</a></div>';
+                echo '<div class="field"><a href="https://familysearch.org/search/tree/results#count=20&query=afn:', rawurlencode($fact->value()), '">', e($fact->value()), '</a></div>';
                 break;
             case 'ASSO':
                 // we handle this later, in format_asso_rela_record()
@@ -253,11 +253,11 @@ class FunctionsPrintFacts
             case 'EMAIL':
             case 'EMAI':
             case '_EMAIL':
-                echo '<div class="field"><a href="mailto:', e($fact->getValue()), '">', e($fact->getValue()), '</a></div>';
+                echo '<div class="field"><a href="mailto:', e($fact->value()), '">', e($fact->value()), '</a></div>';
                 break;
             case 'RESN':
                 echo '<div class="field">';
-                switch ($fact->getValue()) {
+                switch ($fact->value()) {
                     case 'none':
                         // Note: "1 RESN none" is not valid gedcom.
                         // However, webtrees privacy rules will interpret it as "show an otherwise private record to public".
@@ -273,33 +273,33 @@ class FunctionsPrintFacts
                         echo '<i class="icon-locked-none"></i> ', I18N::translate('Only managers can edit');
                         break;
                     default:
-                        echo e($fact->getValue());
+                        echo e($fact->value());
                         break;
                 }
                 echo '</div>';
                 break;
             case 'PUBL': // Publication details might contain URLs.
-                echo '<div class="field">', Filter::expandUrls($fact->getValue(), $tree), '</div>';
+                echo '<div class="field">', Filter::expandUrls($fact->value(), $tree), '</div>';
                 break;
             case 'REPO':
                 $repository = $fact->getTarget();
                 if ($repository instanceof Repository) {
                     echo '<div><a class="field" href="', e($repository->url()), '">', $repository->getFullName(), '</a></div>';
                 } else {
-                    echo '<div class="error">', e($fact->getValue()), '</div>';
+                    echo '<div class="error">', e($fact->value()), '</div>';
                 }
                 break;
             case 'URL':
             case '_URL':
             case 'WWW':
-                echo '<div class="field"><a href="', e($fact->getValue()), '">', e($fact->getValue()), '</a></div>';
+                echo '<div class="field"><a href="', e($fact->value()), '">', e($fact->value()), '</a></div>';
                 break;
             case 'TEXT': // 0 SOUR / 1 TEXT
-                echo '<div class="field">', nl2br(e($fact->getValue()), false), '</div>';
+                echo '<div class="field">', nl2br(e($fact->value()), false), '</div>';
                 break;
             default:
                 // Display the value for all other facts/events
-                switch ($fact->getValue()) {
+                switch ($fact->value()) {
                     case '':
                         // Nothing to display
                         break;
@@ -311,15 +311,15 @@ class FunctionsPrintFacts
                         // Do not display "Yes".
                         break;
                     default:
-                        if (preg_match('/^@(' . WT_REGEX_XREF . ')@$/', $fact->getValue(), $match)) {
+                        if (preg_match('/^@(' . WT_REGEX_XREF . ')@$/', $fact->value(), $match)) {
                             $target = GedcomRecord::getInstance($match[1], $tree);
                             if ($target) {
                                 echo '<div><a href="', e($target->url()), '">', $target->getFullName(), '</a></div>';
                             } else {
-                                echo '<div class="error">', e($fact->getValue()), '</div>';
+                                echo '<div class="error">', e($fact->value()), '</div>';
                             }
                         } else {
-                            echo '<div class="field"><span dir="auto">', e($fact->getValue()), '</span></div>';
+                            echo '<div class="field"><span dir="auto">', e($fact->value()), '</span></div>';
                         }
                         break;
                 }
@@ -348,7 +348,7 @@ class FunctionsPrintFacts
         // A blank line between the primary attributes (value, date, place) and the secondary ones
         echo '<br>';
 
-        $addr = $fact->getAttribute('ADDR');
+        $addr = $fact->attribute('ADDR');
         if ($addr !== '') {
             echo GedcomTag::getLabelValue('ADDR', $addr);
         }
@@ -623,7 +623,7 @@ class FunctionsPrintFacts
                     // PUBL
                     $publ = $source->getFirstFact('PUBL');
                     if ($publ) {
-                        $data .= GedcomTag::getLabelValue('PUBL', $publ->getValue());
+                        $data .= GedcomTag::getLabelValue('PUBL', $publ->value());
                     }
                     $data .= self::printSourceStructure($tree, self::getSourceStructure($srec));
                     $data .= '<div class="indent">';
@@ -828,7 +828,7 @@ class FunctionsPrintFacts
                     // PUBL
                     $publ = $source->getFirstFact('PUBL');
                     if ($publ) {
-                        echo GedcomTag::getLabelValue('PUBL', $publ->getValue());
+                        echo GedcomTag::getLabelValue('PUBL', $publ->value());
                     }
                     // 2 RESN tags. Note, there can be more than one, such as "privacy" and "locked"
                     if (preg_match_all("/\n2 RESN (.+)/", $factrec, $rmatches)) {

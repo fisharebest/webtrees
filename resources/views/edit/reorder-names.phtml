@@ -17,7 +17,7 @@
                     <?= $fact->value() ?>
                 </h3>
                 <div class="card-body">
-                    <?= GedcomTag::getLabelValue('TYPE', GedcomCodeName::getValue($fact->getAttribute('TYPE'), $fact->record())) ?>
+                    <?= GedcomTag::getLabelValue('TYPE', GedcomCodeName::getValue($fact->attribute('TYPE'), $fact->record())) ?>
                 </div>
             </div>
         <?php endforeach ?>

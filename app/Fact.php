@@ -232,7 +232,7 @@ class Fact
      *
      * @return string
      */
-    public function getAttribute($tag)
+    public function attribute($tag)
     {
         if (preg_match('/\n2 (?:' . $tag . ') ?(.*(?:(?:\n3 CONT ?.*)*)*)/', $this->gedcom, $match)) {
             return preg_replace("/\n3 CONT ?/", "\n", $match[1]);
@@ -304,7 +304,7 @@ class Fact
     public function getPlace(): Place
     {
         if ($this->place === null) {
-            $this->place = new Place($this->getAttribute('PLAC'), $this->record()->getTree());
+            $this->place = new Place($this->attribute('PLAC'), $this->record()->getTree());
         }
 
         return $this->place;
@@ -320,7 +320,7 @@ class Fact
     public function getDate(): Date
     {
         if ($this->date === null) {
-            $this->date = new Date($this->getAttribute('DATE'));
+            $this->date = new Date($this->attribute('DATE'));
         }
 
         return $this->date;
@@ -386,8 +386,8 @@ class Fact
     public function getLabel(): string
     {
         // Custom FACT/EVEN - with a TYPE
-        if (($this->tag === 'FACT' || $this->tag === 'EVEN') && $this->getAttribute('TYPE') !== '') {
-            return I18N::translate(e($this->getAttribute('TYPE')));
+        if (($this->tag === 'FACT' || $this->tag === 'EVEN') && $this->attribute('TYPE') !== '') {
+            return I18N::translate(e($this->attribute('TYPE')));
         }
 
         return GedcomTag::getLabel($this->tag, $this->record);
@@ -621,11 +621,11 @@ class Fact
 
         // - Don't let dated after DEAT/BURI facts sort non-dated facts before DEAT/BURI
         // - Treat dated after BURI facts as BURI instead
-        if ($a->getAttribute('DATE') !== '' && $factsort[$atag] > $factsort['BURI'] && $factsort[$atag] < $factsort['CHAN']) {
+        if ($a->attribute('DATE') !== '' && $factsort[$atag] > $factsort['BURI'] && $factsort[$atag] < $factsort['CHAN']) {
             $atag = 'BURI';
         }
 
-        if ($b->getAttribute('DATE') !== '' && $factsort[$btag] > $factsort['BURI'] && $factsort[$btag] < $factsort['CHAN']) {
+        if ($b->attribute('DATE') !== '' && $factsort[$btag] > $factsort['BURI'] && $factsort[$btag] < $factsort['CHAN']) {
             $btag = 'BURI';
         }
 
@@ -633,11 +633,11 @@ class Fact
 
         // If facts are the same then put dated facts before non-dated facts
         if ($ret == 0) {
-            if ($a->getAttribute('DATE') !== '' && $b->getAttribute('DATE') === '') {
+            if ($a->attribute('DATE') !== '' && $b->attribute('DATE') === '') {
                 return -1;
             }
 
-            if ($b->getAttribute('DATE') !== '' && $a->getAttribute('DATE') === '') {
+            if ($b->attribute('DATE') !== '' && $a->attribute('DATE') === '') {
                 return 1;
             }
 

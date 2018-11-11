@@ -276,7 +276,7 @@ class BranchesController extends AbstractBaseController
             $pedi = '';
             foreach ($individual->getFacts('FAMC') as $fact) {
                 if ($fact->getTarget() === $parents) {
-                    $pedi = $fact->getAttribute('PEDI');
+                    $pedi = $fact->attribute('PEDI');
                     break;
                 }
             }

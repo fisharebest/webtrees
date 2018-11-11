@@ -1199,7 +1199,7 @@ class GedcomRecord
             return I18N::translate('Unknown');
         }
 
-        $chan_user = $chan->getAttribute('_WT_USER');
+        $chan_user = $chan->attribute('_WT_USER');
         if ($chan_user === '') {
             return I18N::translate('Unknown');
         }

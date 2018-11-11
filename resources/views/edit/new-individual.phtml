@@ -29,13 +29,13 @@ if ($name_fact !== null) {
     $namerec      = $name_fact->getGedcom();
     $name_fields  = [
         'NAME' => $name_fact->value(),
-        'TYPE' => $name_fact->getAttribute('TYPE'),
-        'NPFX' => $name_fact->getAttribute('NPFX'),
-        'GIVN' => $name_fact->getAttribute('GIVN'),
-        'NICK' => $name_fact->getAttribute('NICK'),
-        'SPFX' => $name_fact->getAttribute('SPFX'),
-        'SURN' => $name_fact->getAttribute('SURN'),
-        'NSFX' => $name_fact->getAttribute('NSFX'),
+        'TYPE' => $name_fact->attribute('TYPE'),
+        'NPFX' => $name_fact->attribute('NPFX'),
+        'GIVN' => $name_fact->attribute('GIVN'),
+        'NICK' => $name_fact->attribute('NICK'),
+        'SPFX' => $name_fact->attribute('SPFX'),
+        'SURN' => $name_fact->attribute('SURN'),
+        'NSFX' => $name_fact->attribute('NSFX'),
     ];
 
     // Populate any missing subfields from the NAME field
