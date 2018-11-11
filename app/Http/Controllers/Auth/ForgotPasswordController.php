@@ -72,7 +72,7 @@ class ForgotPasswordController extends AbstractBaseController
             $sender = new User((object) [
                 'user_id'   => null,
                 'user_name' => '',
-                'real_name' => $tree->getTitle(),
+                'real_name' => $tree->title(),
                 'email'     => $tree->getPreference('WEBTREES_EMAIL'),
             ]);
 

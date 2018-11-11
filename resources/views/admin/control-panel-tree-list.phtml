@@ -6,7 +6,7 @@
             <a href="<?= e(route('tree-page', ['ged' => $tree->name()])) ?>">
                 <?= e($tree->name()) ?>
                 -
-                <?= e($tree->getTitle()) ?>
+                <?= e($tree->title()) ?>
             </a>
         </th>
         <td>
@@ -18,7 +18,7 @@
             <?php if ($changes[$tree->id()]) : ?>
                 <a href="<?= e(route('show-pending', ['ged' => $tree->name(), 'url' => route('admin-control-panel')])) ?>">
                     <?= I18N::number($changes[$tree->id()]) ?>
-                    <span class="sr-only"><?= I18N::translate('Pending changes') ?> <?= e($tree->getTitle()) ?></span>
+                    <span class="sr-only"><?= I18N::translate('Pending changes') ?> <?= e($tree->title()) ?></span>
                 </a>
             <?php else : ?>
                 -

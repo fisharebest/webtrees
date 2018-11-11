@@ -202,7 +202,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 
         return $this->viewResponse('modules/stories/config', [
             'stories'    => $stories,
-            'title'      => $this->getTitle() . ' — ' . $tree->getTitle(),
+            'title'      => $this->getTitle() . ' — ' . $tree->title(),
             'tree'       => $tree,
             'tree_names' => Tree::getNameList(),
         ]);
@@ -227,7 +227,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
             $story_body  = '';
             $languages   = [];
 
-            $title = I18N::translate('Add a story') . ' — ' . e($tree->getTitle());
+            $title = I18N::translate('Add a story') . ' — ' . e($tree->title());
         } else {
             // Editing an existing story
             $xref = (string) Database::prepare(
@@ -241,7 +241,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
             $story_body  = $this->getBlockSetting($block_id, 'story_body', '');
             $languages   = explode(',', $this->getBlockSetting($block_id, 'languages'));
 
-            $title = I18N::translate('Edit the story') . ' — ' . e($tree->getTitle());
+            $title = I18N::translate('Edit the story') . ' — ' . e($tree->title());
         }
 
         return $this->viewResponse('modules/stories/edit', [

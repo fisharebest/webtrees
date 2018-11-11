@@ -6,7 +6,7 @@
 <h1><?= $title ?></h1>
 
 <div class="alert alert-warning">
-    <?= /* I18N: %s is the name of a family tree */ I18N::translate('This will delete all the genealogy data from “%s” and replace it with data from a GEDCOM file.', e($tree->getTitle())) ?>
+    <?= /* I18N: %s is the name of a family tree */ I18N::translate('This will delete all the genealogy data from “%s” and replace it with data from a GEDCOM file.', e($tree->title())) ?>
 </div>
 
 <form class="form form-horizontal" method="post" enctype="multipart/form-data" onsubmit="return checkGedcomImportForm('<?= e(I18N::translate('You have selected a GEDCOM file with a different name. Is this correct?')) ?>');">

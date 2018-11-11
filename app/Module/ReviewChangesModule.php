@@ -87,7 +87,7 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
                                     (object) [
                                         'user_id'   => null,
                                         'user_name' => '',
-                                        'real_name' => $tmp_tree->getTitle(),
+                                        'real_name' => $tmp_tree->title(),
                                         'email'     => $tmp_tree->getPreference('WEBTREES_EMAIL'),
                                     ]
                                 );

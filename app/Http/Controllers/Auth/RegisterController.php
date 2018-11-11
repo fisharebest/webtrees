@@ -121,7 +121,7 @@ class RegisterController extends AbstractBaseController
         $sender = new User((object) [
             'user_id'   => null,
             'user_name' => '',
-            'real_name' => $tree->getTitle(),
+            'real_name' => $tree->title(),
             'email'     => $tree->getPreference('WEBTREES_EMAIL'),
         ]);
 
@@ -147,7 +147,7 @@ class RegisterController extends AbstractBaseController
                 $sender,
                 $webmaster,
                 $user,
-                I18N::translate('New registration at %s', WT_BASE_URL . ' ' . $tree->getTitle()),
+                I18N::translate('New registration at %s', WT_BASE_URL . ' ' . $tree->title()),
                 view('emails/register-notify-text', ['user' => $user, 'comments' => $comments]),
                 view('emails/register-notify-html', ['user' => $user, 'comments' => $comments])
             );
@@ -159,7 +159,7 @@ class RegisterController extends AbstractBaseController
                     $request->getClientIp(),
                     $webmaster->getUserId(),
                     /* I18N: %s is a server name/URL */
-                    I18N::translate('New registration at %s', $tree->getTitle()),
+                    I18N::translate('New registration at %s', $tree->title()),
                     view('emails/register-notify-text', [
                         'user'     => $user,
                         'comments' => $comments,

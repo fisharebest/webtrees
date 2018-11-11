@@ -147,7 +147,7 @@ class AdminUpgradeController extends AbstractBaseController
                 'ged'  => $tree->name(),
             ]);
 
-            $export_steps[$route] = I18N::translate('Export all the family trees to GEDCOM files…') . ' ' . e($tree->getTitle());
+            $export_steps[$route] = I18N::translate('Export all the family trees to GEDCOM files…') . ' ' . e($tree->title());
         }
 
         return [

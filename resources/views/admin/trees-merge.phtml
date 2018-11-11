@@ -17,12 +17,12 @@
     </p>
     <p>
         <a class="current" href="<?= e(route('admin-trees-renumber', ['ged' => $tree1->getName()])) ?>">
-            <?= I18N::translate('Renumber family tree') ?> — <?= e($tree1->getTitle()) ?>
+            <?= I18N::translate('Renumber family tree') ?> — <?= e($tree1->title()) ?>
         </a>
     </p>
     <p>
         <a class="current" href="<?= e(route('admin-trees-renumber', ['ged' => $tree2->getName()])) ?>">
-            <?= I18N::translate('Renumber family tree') ?> — <?= e($tree2->getTitle()) ?>
+            <?= I18N::translate('Renumber family tree') ?> — <?= e($tree2->title()) ?>
         </a>
     </p>
 <?php endif ?>

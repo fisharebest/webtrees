@@ -24,7 +24,7 @@
                     <h2 class="mb-0">
                         <?= view('icons/tree') ?>
                         <a data-toggle="collapse" data-parent="#accordion" href="#card-tree-content-<?= $managed_tree->id() ?>" <?= $managed_tree == $tree || $managed_tree->getPreference('imported') === '0' ? 'aria-expanded="true"' : '' ?> aria-controls="card-tree-content-<?= $managed_tree->id() ?>">
-                            <?= e($managed_tree->name()) ?> — <?= e($managed_tree->getTitle()) ?>
+                            <?= e($managed_tree->name()) ?> — <?= e($managed_tree->title()) ?>
                         </a>
                     </h2>
                 </div>
@@ -57,7 +57,7 @@
                                         <a href="<?= e(route('admin-trees-preferences', ['ged' => $managed_tree->name()])) ?>">
                                             <?= I18N::translate('Preferences') ?>
                                             <span class="sr-only">
-                                        <?= e($managed_tree->getTitle()) ?>
+                                        <?= e($managed_tree->title()) ?>
                                     </span>
                                         </a>
                                     </li>
@@ -67,7 +67,7 @@
                                         <a href="<?= e(route('tree-privacy', ['ged' => $managed_tree->name()])) ?>">
                                             <?= I18N::translate('Privacy') ?>
                                             <span class="sr-only">
-                                        <?= e($managed_tree->getTitle()) ?>
+                                        <?= e($managed_tree->title()) ?>
                                     </span>
                                         </a>
                                     </li>
@@ -77,23 +77,23 @@
                                         <a href="<?= e(route('tree-page-edit', ['ged' => $managed_tree->name()])) ?>">
                                             <?= I18N::translate('Change the “Home page” blocks') ?>
                                             <span class="sr-only">
-                                        <?= e($managed_tree->getTitle()) ?>
+                                        <?= e($managed_tree->title()) ?>
                                     </span>
                                         </a>
                                     </li>
                                     <!-- DELETE -->
                                     <li>
                                         <span class="fa-li"><?= view('icons/delete') ?></span>
-                                        <a href="#" data-confirm="<?= I18N::translate('Are you sure you want to delete “%s”?', e($managed_tree->getTitle())) ?>" onclick="if (confirm(this.dataset.confirm)) { document.delete_form<?= $managed_tree->id() ?>.submit(); } return false;">
+                                        <a href="#" data-confirm="<?= I18N::translate('Are you sure you want to delete “%s”?', e($managed_tree->title())) ?>" onclick="if (confirm(this.dataset.confirm)) { document.delete_form<?= $managed_tree->id() ?>.submit(); } return false;">
                                             <?= I18N::translate('Delete') ?>
                                             <span class="sr-only">
-                                                <?= e($managed_tree->getTitle()) ?>
+                                                <?= e($managed_tree->title()) ?>
                                             </span>
                                         </a>
                                         <form name="delete_form<?= $managed_tree->id() ?>" method="post" action="<?= route('admin-trees-delete', ['ged' => $managed_tree->name()]) ?>">
                                             <?= csrf_field() ?>
                                             <!-- A11Y - forms need submit buttons, but they look ugly here -->
-                                            <button class="sr-only" data-confirm="<?= I18N::translate('Are you sure you want to delete “%s”?', e($managed_tree->getTitle())) ?>" onclick="return confirm(this.dataset.confirm)" type="submit">
+                                            <button class="sr-only" data-confirm="<?= I18N::translate('Are you sure you want to delete “%s”?', e($managed_tree->title())) ?>" onclick="return confirm(this.dataset.confirm)" type="submit">
                                                 <?= I18N::translate('Delete') ?>
                                             </button>
                                         </form>
@@ -107,7 +107,7 @@
                                             <?php else : ?>
                                                 <a href="#" onclick="document.defaultform<?= $managed_tree->id() ?>.submit();">
                                                     <?= I18N::translate('Set as default') ?>
-                                                    <span class="sr-only"><?= e($managed_tree->getTitle()) ?></span>
+                                                    <span class="sr-only"><?= e($managed_tree->title()) ?></span>
                                                 </a>
                                                 <form name="defaultform<?= $managed_tree->id() ?>" method="post" action="<?= route('admin-trees-default', ['ged' => $managed_tree->name()]) ?>">
                                                     <?= csrf_field() ?>
@@ -132,7 +132,7 @@
                                         <a href="<?= e(route('admin-trees-duplicates', ['ged' => $managed_tree->name()])) ?>">
                                             <?= I18N::translate('Find duplicates') ?>
                                             <span class="sr-only">
-                                              <?= e($managed_tree->getTitle()) ?>
+                                              <?= e($managed_tree->title()) ?>
                                             </span>
                                         </a>
                                     </li>
@@ -142,7 +142,7 @@
                                         <a href="<?= e(route('merge-records', ['ged' => $managed_tree->name()])) ?>">
                                             <?= I18N::translate('Merge records') ?>
                                             <span class="sr-only">
-                                                <?= e($managed_tree->getTitle()) ?>
+                                                <?= e($managed_tree->title()) ?>
                                           </span>
                                         </a>
                                     </li>
@@ -152,7 +152,7 @@
                                         <a href="<?= e(route('admin-trees-places', ['ged' => $managed_tree->name()])) ?>">
                                             <?= I18N::translate('Update place names') ?>
                                             <span class="sr-only">
-                                                <?= e($managed_tree->getTitle()) ?>
+                                                <?= e($managed_tree->title()) ?>
                                             </span>
                                         </a>
                                     </li>
@@ -162,7 +162,7 @@
                                         <a href="<?= e(route('admin-trees-check', ['ged' => $managed_tree->name()])) ?>">
                                             <?= I18N::translate('Check for errors') ?>
                                             <span class="sr-only">
-                                                <?= e($managed_tree->getTitle()) ?>
+                                                <?= e($managed_tree->title()) ?>
                                             </span>
                                         </a>
                                     </li>
@@ -172,7 +172,7 @@
                                         <a href="<?= e(route('admin-trees-unconnected', ['ged' => $managed_tree->name()])) ?>">
                                             <?= I18N::translate('Find unrelated individuals') ?>
                                             <span class="sr-only">
-                                                <?= e($managed_tree->getTitle()) ?>
+                                                <?= e($managed_tree->title()) ?>
                                             </span>
                                         </a>
                                     </li>
@@ -182,7 +182,7 @@
                                         <a href="<?= e(route('admin-trees-renumber', ['ged' => $managed_tree->name()])) ?>">
                                             <?= I18N::translate('Renumber') ?>
                                             <span class="sr-only">
-                                        <?= e($managed_tree->getTitle()) ?>
+                                        <?= e($managed_tree->title()) ?>
                                     </span>
                                         </a>
                                     </li>
@@ -192,7 +192,7 @@
                                         <a href="<?= route('admin-changes-log', ['ged' => $managed_tree->name()]) ?>">
                                             <?= I18N::translate('Changes log') ?>
                                             <span class="sr-only">
-                                                <?= e($managed_tree->getTitle()) ?>
+                                                <?= e($managed_tree->title()) ?>
                                             </span>
                                         </a>
                                     </li>
@@ -210,7 +210,7 @@
                                         <a href="<?= e(route('add-unlinked-individual', ['ged' => $managed_tree->name()])) ?>">
                                             <?= I18N::translate('Individual') ?>
                                             <span class="sr-only">
-                                                <?= e($managed_tree->getTitle()) ?>
+                                                <?= e($managed_tree->title()) ?>
                                             </span>
                                         </a>
                                     </li>
@@ -220,7 +220,7 @@
                                         <a href="#" data-href="<?= e(route('create-source', ['ged' => $managed_tree->name()])) ?>" data-target="#wt-ajax-modal" data-toggle="modal">
                                             <?= I18N::translate('Source') ?>
                                             <span class="sr-only">
-                                                <?= e($managed_tree->getTitle()) ?>
+                                                <?= e($managed_tree->title()) ?>
                                             </span>
                                         </a>
                                     </li>
@@ -230,7 +230,7 @@
                                         <a href="#" data-href="<?= e(route('create-repository', ['ged' => $managed_tree->name()])) ?>" data-target="#wt-ajax-modal" data-toggle="modal">
                                             <?= I18N::translate('Repository') ?>
                                             <span class="sr-only">
-                                                <?= e($managed_tree->getTitle()) ?>
+                                                <?= e($managed_tree->title()) ?>
                                             </span>
                                         </a>
                                     </li>
@@ -241,7 +241,7 @@
 
                                             <?= I18N::translate('Media object') ?>
                                             <span class="sr-only">
-                                                <?= e($managed_tree->getTitle()) ?>
+                                                <?= e($managed_tree->title()) ?>
                                             </span>
                                         </a>
                                     </li>
@@ -250,7 +250,7 @@
                                         <span class="fa-li"><?= view('icons/note') ?></span>
                                         <a href="#" data-href="<?= e(route('create-note-object', ['ged' => $managed_tree->name()])) ?>" data-target="#wt-ajax-modal" data-toggle="modal">
                                             <span class="sr-only">
-                                                <?= e($managed_tree->getTitle()) ?>
+                                                <?= e($managed_tree->title()) ?>
                                             </span>
                                             <?= I18N::translate('Shared note') ?>
                                         </a>
@@ -260,7 +260,7 @@
                                         <span class="fa-li"><?= view('icons/submitter') ?></span>
                                         <a href="#" data-href="<?= e(route('create-submitter', ['ged' => $managed_tree->name()])) ?>" data-target="#wt-ajax-modal" data-toggle="modal">
                                             <span class="sr-only">
-                                                <?= e($managed_tree->getTitle()) ?>
+                                                <?= e($managed_tree->title()) ?>
                                             </span>
                                             <?= I18N::translate('Submitter') ?>
                                         </a>
@@ -278,7 +278,7 @@
                                         <a href="<?= e(route('admin-trees-export', ['ged' => $managed_tree->name()])) ?>">
                                             <?= I18N::translate('Export') ?>
                                             <span class="sr-only">
-                                        <?= e($managed_tree->getTitle()) ?>
+                                        <?= e($managed_tree->title()) ?>
                                     </span>
                                         </a>
                                     </li>
@@ -288,7 +288,7 @@
                                         <a href="<?= e(route('admin-trees-import', ['ged' => $managed_tree->name()])) ?>">
                                             <?= I18N::translate('Import') ?>
                                             <span class="sr-only">
-                                        <?= e($managed_tree->getTitle()) ?>
+                                        <?= e($managed_tree->title()) ?>
                                     </span>
                                         </a>
                                     </li>

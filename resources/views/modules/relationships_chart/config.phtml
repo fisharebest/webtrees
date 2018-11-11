@@ -11,7 +11,7 @@
 <form method="post">
     <?= csrf_field() ?>
     <?php foreach ($all_trees as $tree) : ?>
-        <h2><?= e($tree->getTitle()) ?></h2>
+        <h2><?= e($tree->title()) ?></h2>
         <div class="row form-group">
             <label class="col-sm-3 col-form-label" for="relationship-ancestors-<?= $tree->id() ?>">
                 <?= /* I18N: Configuration option */

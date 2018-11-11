@@ -21,7 +21,7 @@
     <?php foreach ($changes as $tree_id => $gedcom_changes) : ?>
         <li class="nav-item">
             <a class="nav-link <?= $tree_id === $active_tree_id ? 'active' : '' ?>" data-toggle="tab" href="#tree-<?= e($tree_id) ?>" aria-controls="tree-<?= e($tree_id) ?>" id="tree-<?= e($tree_id) ?>-tab">
-                <?= e(Tree::findById($tree_id)->getTitle()) ?>
+                <?= e(Tree::findById($tree_id)->title()) ?>
                 <span class="badge badge-secondary">
                 <?= I18N::number(count($gedcom_changes)) ?>
             </span>

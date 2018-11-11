@@ -540,7 +540,7 @@ abstract class AbstractTheme
     protected function formatTreeTitle()
     {
         if ($this->tree) {
-            return '<h1 class="col wt-site-title">' . e($this->tree->getTitle()) . '</h1>';
+            return '<h1 class="col wt-site-title">' . e($this->tree->title()) . '</h1>';
         }
 
         return '';
@@ -1198,7 +1198,7 @@ abstract class AbstractTheme
             } else {
                 $active = '';
             }
-            $submenus[] = new Menu(e($tree->getTitle()), route('tree-page', ['ged' => $tree->name()]), $active . 'menu-tree-' . $tree->id());
+            $submenus[] = new Menu(e($tree->title()), route('tree-page', ['ged' => $tree->name()]), $active . 'menu-tree-' . $tree->id());
         }
 
         return new Menu(I18N::translate('Family trees'), '#', 'menu-tree', [], $submenus);

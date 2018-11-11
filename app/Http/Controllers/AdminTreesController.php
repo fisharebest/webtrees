@@ -254,7 +254,7 @@ class AdminTreesController extends AbstractBaseController
             }
         }
 
-        $title = I18N::translate('Check for errors') . ' — ' . e($tree->getTitle());
+        $title = I18N::translate('Check for errors') . ' — ' . e($tree->title());
 
         return $this->viewResponse('admin/trees-check', [
             'errors'   => $errors,
@@ -349,7 +349,7 @@ class AdminTreesController extends AbstractBaseController
     public function delete(Tree $tree): RedirectResponse
     {
         /* I18N: %s is the name of a family tree */
-        FlashMessages::addMessage(I18N::translate('The family tree “%s” has been deleted.', e($tree->getTitle())), 'success');
+        FlashMessages::addMessage(I18N::translate('The family tree “%s” has been deleted.', e($tree->title())), 'success');
 
         $tree->delete();
 
@@ -367,7 +367,7 @@ class AdminTreesController extends AbstractBaseController
     {
         $duplicates = $this->duplicateRecords($tree);
 
-        $title = I18N::translate('Find duplicates') . ' — ' . e($tree->getTitle());
+        $title = I18N::translate('Find duplicates') . ' — ' . e($tree->title());
 
         return $this->viewResponse('admin/trees-duplicates', [
             'duplicates' => $duplicates,
@@ -383,7 +383,7 @@ class AdminTreesController extends AbstractBaseController
      */
     public function export(Tree $tree): Response
     {
-        $title = I18N::translate('Export a GEDCOM file') . ' — ' . e($tree->getTitle());
+        $title = I18N::translate('Export a GEDCOM file') . ' — ' . e($tree->title());
 
         return $this->viewResponse('admin/trees-export', [
             'title' => $title,
@@ -583,7 +583,7 @@ class AdminTreesController extends AbstractBaseController
         $gedcom_media_path   = $tree->getPreference('GEDCOM_MEDIA_PATH');
         $gedcom_files        = $this->gedcomFiles(WT_DATA_DIR);
 
-        $title = I18N::translate('Import a GEDCOM file') . ' — ' . e($tree->getTitle());
+        $title = I18N::translate('Import a GEDCOM file') . ' — ' . e($tree->title());
 
         return $this->viewResponse('admin/trees-import', [
             'default_gedcom_file' => $default_gedcom_file,
@@ -816,7 +816,7 @@ class AdminTreesController extends AbstractBaseController
         }
 
         /* I18N: Renumber the records in a family tree */
-        $title = I18N::translate('Renumber family tree') . ' — ' . e($tree->getTitle());
+        $title = I18N::translate('Renumber family tree') . ' — ' . e($tree->title());
 
         return $this->viewResponse('admin/trees-places', [
             'changes' => $changes,
@@ -950,7 +950,7 @@ class AdminTreesController extends AbstractBaseController
 
         $tree_count = count(Tree::getAll());
 
-        $title = I18N::translate('Preferences') . ' — ' . e($tree->getTitle());
+        $title = I18N::translate('Preferences') . ' — ' . e($tree->title());
 
         return $this->viewResponse('admin/trees-preferences', [
             'all_fam_facts'            => $all_fam_facts,
@@ -989,7 +989,7 @@ class AdminTreesController extends AbstractBaseController
         $xrefs = $this->duplicateXrefs($tree);
 
         /* I18N: Renumber the records in a family tree */
-        $title = I18N::translate('Renumber family tree') . ' — ' . e($tree->getTitle());
+        $title = I18N::translate('Renumber family tree') . ' — ' . e($tree->title());
 
         return $this->viewResponse('admin/trees-renumber', [
             'title' => $title,
@@ -1114,7 +1114,7 @@ class AdminTreesController extends AbstractBaseController
             }
         }
 
-        FlashMessages::addMessage(I18N::translate('The preferences for the family tree “%s” have been updated.', e($tree->getTitle())), 'success');
+        FlashMessages::addMessage(I18N::translate('The preferences for the family tree “%s” have been updated.', e($tree->title())), 'success');
 
         $url = route('admin-trees', ['ged' => $tree->name()]);
 
@@ -1562,7 +1562,7 @@ class AdminTreesController extends AbstractBaseController
         Site::setPreference('DEFAULT_GEDCOM', $tree->name());
 
         /* I18N: %s is the name of a family tree */
-        FlashMessages::addMessage(I18N::translate('The family tree “%s” will be shown to visitors when they first arrive at this website.', e($tree->getTitle())), 'success');
+        FlashMessages::addMessage(I18N::translate('The family tree “%s” will be shown to visitors when they first arrive at this website.', e($tree->title())), 'success');
 
         $url = route('admin-trees');
 
@@ -1596,7 +1596,7 @@ class AdminTreesController extends AbstractBaseController
 
         foreach (Tree::getAll() as $tree) {
             if (!in_array($tree->name(), $gedcom_files)) {
-                FlashMessages::addMessage(I18N::translate('The family tree “%s” has been deleted.', e($tree->getTitle())), 'success');
+                FlashMessages::addMessage(I18N::translate('The family tree “%s” has been deleted.', e($tree->title())), 'success');
                 $tree->delete();
             }
         }
@@ -1650,7 +1650,7 @@ class AdminTreesController extends AbstractBaseController
             }
         }
 
-        $title = I18N::translate('Find unrelated individuals') . ' — ' . e($tree->getTitle());
+        $title = I18N::translate('Find unrelated individuals') . ' — ' . e($tree->title());
 
         return $this->viewResponse('admin/trees-unconnected', [
             'associates'        => $associates,

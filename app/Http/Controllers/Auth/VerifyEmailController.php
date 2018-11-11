@@ -55,7 +55,7 @@ class VerifyEmailController extends AbstractBaseController
                 (object) [
                     'user_id'   => null,
                     'user_name' => '',
-                    'real_name' => $tree->getTitle(),
+                    'real_name' => $tree->title(),
                     'email'     => $tree->getPreference('WEBTREES_EMAIL'),
                 ]
             );
@@ -71,7 +71,7 @@ class VerifyEmailController extends AbstractBaseController
                     $webmaster,
                     $sender,
                     /* I18N: %s is a server name/URL */
-                    I18N::translate('New user at %s', WT_BASE_URL . ' ' . $tree->getTitle()),
+                    I18N::translate('New user at %s', WT_BASE_URL . ' ' . $tree->title()),
                     view('emails/verify-notify-text', ['user' => $user]),
                     view('emails/verify-notify-html', ['user' => $user])
                 );
@@ -85,7 +85,7 @@ class VerifyEmailController extends AbstractBaseController
                         $request->getClientIp(),
                         $webmaster->getUserId(),
                         /* I18N: %s is a server name/URL */
-                        I18N::translate('New user at %s', WT_BASE_URL . ' ' . $tree->getTitle()),
+                        I18N::translate('New user at %s', WT_BASE_URL . ' ' . $tree->title()),
                         view('emails/verify-notify-text', ['user' => $user]),
                     ]);
                 }

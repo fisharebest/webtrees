@@ -62,13 +62,13 @@ class Tree
      *
      * @param int    $id
      * @param string $name
-     * @param string $tree_title
+     * @param string $title
      */
-    private function __construct($id, $name, $tree_title)
+    private function __construct($id, $name, $title)
     {
         $this->id                      = $id;
         $this->name                    = $name;
-        $this->title                   = $tree_title;
+        $this->title                   = $title;
         $this->fact_privacy            = [];
         $this->individual_privacy      = [];
         $this->individual_fact_privacy = [];
@@ -123,7 +123,7 @@ class Tree
      *
      * @return string
      */
-    public function getTitle(): string
+    public function title(): string
     {
         return $this->title;
     }

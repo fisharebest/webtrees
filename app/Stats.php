@@ -203,7 +203,7 @@ class Stats
      */
     public function gedcomTitle(): string
     {
-        return e($this->tree->getTitle());
+        return e($this->tree->title());
     }
 
     /**

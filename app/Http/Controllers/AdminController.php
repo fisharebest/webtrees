@@ -155,7 +155,7 @@ class AdminController extends AbstractBaseController
         $tree_list = [];
         foreach (Tree::getAll() as $tree) {
             if (Auth::isManager($tree)) {
-                $tree_list[$tree->name()] = $tree->getTitle();
+                $tree_list[$tree->name()] = $tree->title();
             }
         }
 
@@ -710,7 +710,7 @@ class AdminController extends AbstractBaseController
      */
     public function mergeRecords(Request $request, Tree $tree): Response
     {
-        $title = I18N::translate('Merge records') . ' — ' . e($tree->getTitle());
+        $title = I18N::translate('Merge records') . ' — ' . e($tree->title());
 
         $xref1 = $request->get('xref1', '');
         $xref2 = $request->get('xref2', '');
@@ -1076,14 +1076,14 @@ class AdminController extends AbstractBaseController
         $tree->setPreference('SHOW_LIVING_NAMES', $request->get('SHOW_LIVING_NAMES'));
         $tree->setPreference('SHOW_PRIVATE_RELATIONSHIPS', $request->get('SHOW_PRIVATE_RELATIONSHIPS'));
 
-        FlashMessages::addMessage(I18N::translate('The preferences for the family tree “%s” have been updated.', e($tree->getTitle()), 'success'));
+        FlashMessages::addMessage(I18N::translate('The preferences for the family tree “%s” have been updated.', e($tree->title()), 'success'));
 
         // Coming soon...
         if ((bool) $request->get('all_trees')) {
-            FlashMessages::addMessage(I18N::translate('The preferences for all family trees have been updated.', e($tree->getTitle())), 'success');
+            FlashMessages::addMessage(I18N::translate('The preferences for all family trees have been updated.', e($tree->title())), 'success');
         }
         if ((bool) $request->get('new_trees')) {
-            FlashMessages::addMessage(I18N::translate('The preferences for new family trees have been updated.', e($tree->getTitle())), 'success');
+            FlashMessages::addMessage(I18N::translate('The preferences for new family trees have been updated.', e($tree->title())), 'success');
         }
 
 

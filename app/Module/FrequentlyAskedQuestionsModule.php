@@ -137,7 +137,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
             'tree_id' => $tree->id(),
         ])->fetchOne();
 
-        $title = I18N::translate('Frequently asked questions') . ' — ' . $tree->getTitle();
+        $title = I18N::translate('Frequently asked questions') . ' — ' . $tree->title();
 
         return $this->viewResponse('modules/faq/config', [
             'faqs'            => $faqs,

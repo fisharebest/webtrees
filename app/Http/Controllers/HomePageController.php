@@ -49,7 +49,7 @@ class HomePageController extends AbstractBaseController
     {
         $block_id = (int) $request->get('block_id');
         $block    = $this->treeBlock($request, $user);
-        $title    = $block->getTitle() . ' — ' . I18N::translate('Preferences');
+        $title    = $block->title() . ' — ' . I18N::translate('Preferences');
 
         return $this->viewResponse('modules/edit-block-config', [
             'block'      => $block,
@@ -207,7 +207,7 @@ class HomePageController extends AbstractBaseController
         $access_level = Auth::accessLevel($tree);
         $main_blocks  = $this->getBlocksForTreePage($tree_id, $access_level, 'main');
         $side_blocks  = $this->getBlocksForTreePage($tree_id, $access_level, 'side');
-        $title        = e($tree->getTitle());
+        $title        = e($tree->title());
 
         // @TODO - ModuleBlockInterface::getBlock() currently relies on these globals
         global $ctype;

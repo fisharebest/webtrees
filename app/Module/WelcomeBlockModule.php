@@ -91,7 +91,7 @@ class WelcomeBlockModule extends AbstractModule implements ModuleBlockInterface
                 'block'      => str_replace('_', '-', $this->getName()),
                 'id'         => $block_id,
                 'config_url' => '',
-                'title'      => $individual->getTree()->getTitle(),
+                'title'      => $individual->getTree()->title(),
                 'content'    => $content,
             ]);
         }
