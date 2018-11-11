@@ -28,7 +28,7 @@ if ($name_fact !== null) {
     $name_fact_id = $name_fact->getFactId();
     $namerec      = $name_fact->getGedcom();
     $name_fields  = [
-        'NAME' => $name_fact->getValue(),
+        'NAME' => $name_fact->value(),
         'TYPE' => $name_fact->getAttribute('TYPE'),
         'NPFX' => $name_fact->getAttribute('NPFX'),
         'GIVN' => $name_fact->getAttribute('GIVN'),
@@ -67,13 +67,13 @@ if ($name_fact !== null) {
     if ($family) {
         $father = $family->getHusband();
         if ($father && $father->getFirstFact('NAME')) {
-            $father_name = $father->getFirstFact('NAME')->getValue();
+            $father_name = $father->getFirstFact('NAME')->value();
         } else {
             $father_name = '';
         }
         $mother = $family->getWife();
         if ($mother && $mother->getFirstFact('NAME')) {
-            $mother_name = $mother->getFirstFact('NAME')->getValue();
+            $mother_name = $mother->getFirstFact('NAME')->value();
         } else {
             $mother_name = '';
         }
@@ -84,7 +84,7 @@ if ($name_fact !== null) {
         $mother_name = '';
     }
     if ($individual && $individual->getFirstFact('NAME')) {
-        $indi_name = $individual->getFirstFact('NAME')->getValue();
+        $indi_name = $individual->getFirstFact('NAME')->value();
     } else {
         $indi_name = '';
     }

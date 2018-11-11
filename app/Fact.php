@@ -187,7 +187,7 @@ class Fact
      *
      * @return string
      */
-    public function getValue()
+    public function value()
     {
         if (preg_match('/^1 (?:' . $this->tag . ') ?(.*(?:(?:\n2 CONT ?.*)*))/', $this->gedcom, $match)) {
             return preg_replace("/\n2 CONT ?/", "\n", $match[1]);
@@ -203,7 +203,7 @@ class Fact
      */
     public function getTarget()
     {
-        $xref = trim($this->getValue(), '@');
+        $xref = trim($this->value(), '@');
         switch ($this->tag) {
             case 'FAMC':
             case 'FAMS':
@@ -512,7 +512,7 @@ class Fact
             $attributes[] = $target->getFullName();
         } else {
             // Fact value
-            $value = $this->getValue();
+            $value = $this->value();
             if ($value !== '' && $value !== 'Y') {
                 $attributes[] = '<span dir="auto">' . e($value) . '</span>';
             }

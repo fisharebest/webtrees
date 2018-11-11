@@ -60,7 +60,7 @@ $count_notes       = Database::prepare(
 
                 <!-- Author -->
                 <td>
-                    <?= e($source->getFirstFact('AUTH') ? $source->getFirstFact('AUTH')->getValue() : '') ?>
+                    <?= e($source->getFirstFact('AUTH') ? $source->getFirstFact('AUTH')->value() : '') ?>
                 </td>
 
                 <!-- Count of linked individuals -->

@@ -144,7 +144,7 @@ class Media extends GedcomRecord
             }
 
             // Inline note
-            return $fact->getValue();
+            return $fact->value();
         }
 
         return '';

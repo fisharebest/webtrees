@@ -275,7 +275,7 @@
 
     <?php foreach ($indifacts as $factcount => $event) : ?>
         <?php
-        $desc     = $event->getValue();
+        $desc     = $event->value();
         $gdate    = $event->getDate();
         $date     = $gdate->minimumDate();
         $date     = $date->convertToCalendar('gregorian');

@@ -102,15 +102,15 @@ class FunctionsExport
         $record = GedcomRecord::getInstance('HEAD', $tree);
         $fact   = $record->getFirstFact('LANG');
         if ($fact instanceof Fact) {
-            $LANG = $fact->getValue();
+            $LANG = $fact->value();
         }
         $fact = $record->getFirstFact('SUBN');
         if ($fact instanceof Fact) {
-            $SUBN = $fact->getValue();
+            $SUBN = $fact->value();
         }
         $fact = $record->getFirstFact('COPR');
         if ($fact instanceof Fact) {
-            $COPR = $fact->getValue();
+            $COPR = $fact->value();
         }
         // Link to actual SUBM/SUBN records, if they exist
         $subn =

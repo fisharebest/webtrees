@@ -355,7 +355,7 @@ class IndividualController extends AbstractBaseController
     {
         $individual = $fact->record();
 
-        switch ($fact->getValue()) {
+        switch ($fact->value()) {
             case 'M':
                 $sex = I18N::translate('Male');
                 break;

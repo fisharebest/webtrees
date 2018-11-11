@@ -14,7 +14,7 @@
                 <input type="hidden" name="order[]" value="<?= $fact->getFactId() ?>">
                 <h3 class="card-header">
                     <?= FontAwesome::semanticIcon('drag-handle', '') ?>
-                    <?= $fact->getValue() ?>
+                    <?= $fact->value() ?>
                 </h3>
                 <div class="card-body">
                     <?= GedcomTag::getLabelValue('TYPE', GedcomCodeName::getValue($fact->getAttribute('TYPE'), $fact->record())) ?>

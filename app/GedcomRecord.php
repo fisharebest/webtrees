@@ -1400,7 +1400,7 @@ class GedcomRecord
         $value = '@' . $xref . '@';
 
         foreach ($this->getFacts() as $fact) {
-            if ($fact->getValue() === $value) {
+            if ($fact->value() === $value) {
                 $this->deleteFact($fact->getFactId(), $update_chan);
             } elseif (preg_match_all('/\n(\d) ' . WT_REGEX_TAG . ' ' . $value . '/', $fact->getGedcom(), $matches, PREG_SET_ORDER)) {
                 $gedcom = $fact->getGedcom();

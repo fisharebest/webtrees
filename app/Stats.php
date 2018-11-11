@@ -220,7 +220,7 @@ class Stats
         $head = GedcomRecord::getInstance('HEAD', $this->tree);
         $sour = $head->getFirstFact('SOUR');
         if ($sour !== null) {
-            $source  = $sour->getValue();
+            $source  = $sour->value();
             $title   = $sour->getAttribute('NAME');
             $version = $sour->getAttribute('VERS');
         }
@@ -276,7 +276,7 @@ class Stats
         $head = GedcomRecord::getInstance('HEAD', $this->tree);
         $fact = $head->getFirstFact('DATE');
         if ($fact) {
-            $date = new Date($fact->getValue());
+            $date = new Date($fact->value());
 
             return $date->display();
         }

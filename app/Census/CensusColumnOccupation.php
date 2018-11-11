@@ -35,7 +35,7 @@ class CensusColumnOccupation extends AbstractCensusColumn implements CensusColum
     public function generate(Individual $individual, Individual $head): string
     {
         foreach ($individual->getFacts('OCCU') as $fact) {
-            return $fact->getValue();
+            return $fact->value();
         }
 
         return '';
