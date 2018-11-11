@@ -150,7 +150,7 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
             '<a class="sb_desc_indi" href="' . e(route('module', [
                 'module' => 'descendancy',
                 'action' => 'Descendants',
-                'ged'    => $person->getTree()->getName(),
+                'ged'    => $person->getTree()->name(),
                 'xref'   => $person->getXref(),
             ])) . '">' .
             '<i class="plusminus ' . $icon . '"></i>' .

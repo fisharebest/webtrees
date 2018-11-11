@@ -74,7 +74,7 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
             $this->getTitle(),
             route('hourglass', [
                 'xref' => $individual->getXref(),
-                'ged'  => $individual->getTree()->getName(),
+                'ged'  => $individual->getTree()->name(),
             ]),
             'menu-chart-hourglass',
             ['rel' => 'nofollow']

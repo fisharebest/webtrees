@@ -10,7 +10,7 @@
 </div>
 
 <form class="form form-horizontal" method="post" enctype="multipart/form-data" onsubmit="return checkGedcomImportForm('<?= e(I18N::translate('You have selected a GEDCOM file with a different name. Is this correct?')) ?>');">
-    <input type="hidden" name="ged" value="<?= $tree->getName() ?>">
+    <input type="hidden" name="ged" value="<?= $tree->name() ?>">
     <input type="hidden" id="gedcom_filename" value="<?= e($default_gedcom_file) ?>">
     <?= csrf_field() ?>
 

@@ -10,7 +10,7 @@
 
 <form method="POST">
     <input type="hidden" name="route" value="tree-privacy">
-    <input type="hidden" name="ged" value="<?= e($tree->getName()) ?>">
+    <input type="hidden" name="ged" value="<?= e($tree->name()) ?>">
     <?= csrf_field() ?>
 
     <!-- REQUIRE_AUTHENTICATION -->
@@ -272,7 +272,7 @@
                 <?= view('icons/save') ?>
                 <?= I18N::translate('save') ?>
             </button>
-            <a class="btn btn-secondary" href="<?= route('admin-trees', ['ged' => $tree->getName()]) ?>">
+            <a class="btn btn-secondary" href="<?= route('admin-trees', ['ged' => $tree->name()]) ?>">
                 <?= view('icons/cancel') ?>
                 <?= I18N::translate('cancel') ?>
             </a>

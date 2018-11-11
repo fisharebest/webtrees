@@ -8,22 +8,22 @@
 <div class="wt-page-content wt-chart wt-statistics-chart" id="statistics-tabs">
     <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item">
-            <a class="nav-link" href="#individual-statistics" data-toggle="tab" data-href="<?= e(route('statistics-individuals', ['ged' => $tree->getName()])) ?>" role="tab">
+            <a class="nav-link" href="#individual-statistics" data-toggle="tab" data-href="<?= e(route('statistics-individuals', ['ged' => $tree->name()])) ?>" role="tab">
                 <?= I18N::translate('Individuals') ?>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#family-statistics" data-toggle="tab" data-href="<?= e(route('statistics-families', ['ged' => $tree->getName()])) ?>" role="tab">
+            <a class="nav-link" href="#family-statistics" data-toggle="tab" data-href="<?= e(route('statistics-families', ['ged' => $tree->name()])) ?>" role="tab">
                 <?= I18N::translate('Families') ?>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#other-statistics" data-toggle="tab" data-href="<?= e(route('statistics-other', ['ged' => $tree->getName()])) ?>" role="tab">
+            <a class="nav-link" href="#other-statistics" data-toggle="tab" data-href="<?= e(route('statistics-other', ['ged' => $tree->name()])) ?>" role="tab">
                 <?= I18N::translate('Others') ?>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#custom-statistics" data-toggle="tab" data-href="<?= e(route('statistics-options', ['ged' => $tree->getName()])) ?>" role="tab">
+            <a class="nav-link" href="#custom-statistics" data-toggle="tab" data-href="<?= e(route('statistics-options', ['ged' => $tree->name()])) ?>" role="tab">
                 <?= I18N::translate('Custom') ?>
             </a>
         </li>

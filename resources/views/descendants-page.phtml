@@ -8,7 +8,7 @@
 
 <form class="wt-page-options wt-page-options-descendants-chart d-print-none">
     <input type="hidden" name="route" value="descendants">
-    <input type="hidden" name="ged" value="<?= e($tree->getName()) ?>">
+    <input type="hidden" name="ged" value="<?= e($tree->name()) ?>">
 
     <div class="row form-group">
         <label class="col-sm-3 col-form-label wt-page-options-label" for="xref">
@@ -48,4 +48,4 @@
     </div>
 </form>
 
-<div class="wt-ajax-load wt-page-content wt-chart wt-descendants-chart" data-ajax-url="<?= e(route('descendants-chart', ['xref' => $individual->getXref(), 'ged' => $individual->getTree()->getName(), 'generations' => $generations, 'chart_style' => $chart_style])) ?>"></div>
+<div class="wt-ajax-load wt-page-content wt-chart wt-descendants-chart" data-ajax-url="<?= e(route('descendants-chart', ['xref' => $individual->getXref(), 'ged' => $individual->getTree()->name(), 'generations' => $generations, 'chart_style' => $chart_style])) ?>"></div>

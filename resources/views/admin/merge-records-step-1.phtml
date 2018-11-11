@@ -8,7 +8,7 @@
 
 <form>
     <input type="hidden" name="route" value="merge-records">
-    <input type="hidden" name="ged" value="<?= e($tree->getName()) ?>">
+    <input type="hidden" name="ged" value="<?= e($tree->name()) ?>">
     <div class="row form-group">
         <label class="col-sm-3 col-form-label" for="record-type">
             <?= I18N::translate('Select two records to merge.') ?>

@@ -166,7 +166,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
         $menu = new Menu($this->getTitle(), route('module', [
             'module' => $this->getName(),
             'action' => 'ShowList',
-            'ged'    => $tree->getName(),
+            'ged'    => $tree->name(),
         ]), 'menu-story');
 
         return $menu;
@@ -295,7 +295,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
         $url = route('module', [
             'module' => 'stories',
             'action' => 'Admin',
-            'ged'    => $tree->getName(),
+            'ged'    => $tree->name(),
         ]);
 
         return new RedirectResponse($url);
@@ -326,7 +326,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
         $url = route('module', [
             'module' => 'stories',
             'action' => 'Admin',
-            'ged'    => $tree->getName(),
+            'ged'    => $tree->name(),
         ]);
 
         return new RedirectResponse($url);

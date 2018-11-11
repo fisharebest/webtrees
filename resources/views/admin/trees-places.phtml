@@ -1,6 +1,6 @@
 <?php use Fisharebest\Webtrees\I18N; ?>
 
-<?= view('components/breadcrumbs', ['links' => [route('admin-control-panel') => I18N::translate('Control panel'), route('admin-trees', ['ged' => $tree->getName()]) => I18N::translate('Manage family trees '), $title]]) ?>
+<?= view('components/breadcrumbs', ['links' => [route('admin-control-panel') => I18N::translate('Control panel'), route('admin-trees', ['ged' => $tree->name()]) => I18N::translate('Manage family trees '), $title]]) ?>
 
 <h1><?= $title ?></h1>
 
@@ -10,7 +10,7 @@
 
 <form>
     <input type="hidden" name="route" value="admin-trees-places">
-    <input type="hidden" name="ged" value="<?= e($tree->getName()) ?>">
+    <input type="hidden" name="ged" value="<?= e($tree->name()) ?>">
 
     <dl>
         <dt>
@@ -49,7 +49,7 @@
             <?php } ?>
         </ul>
 
-        <form method="post" action="<?= e(route('admin-trees-places', ['ged' => $tree->getName(), 'search' => $search, 'replace' => $replace])) ?>">
+        <form method="post" action="<?= e(route('admin-trees-places', ['ged' => $tree->name(), 'search' => $search, 'replace' => $replace])) ?>">
             <?= csrf_field() ?>
             <button class="btn btn-primary" type="submit" value="update" name="confirm"><?= /* I18N: A button label. */
                 I18N::translate('update') ?></button>

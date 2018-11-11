@@ -329,17 +329,17 @@ class FunctionsCharts
             echo '<br>';
             echo '<a href="' . e(route('add-child-to-family', [
                     'gender' => 'U',
-                    'ged'    => $family->getTree()->getName(),
+                    'ged'    => $family->getTree()->name(),
                     'xref'   => $family->getXref(),
                 ])) . '">' . I18N::translate('Add a child to this family') . '</a>';
             echo ' <a class="icon-sex_m_15x15" href="' . e(route('add-child-to-family', [
                     'gender' => 'M',
-                    'ged'    => $family->getTree()->getName(),
+                    'ged'    => $family->getTree()->name(),
                     'xref'   => $family->getXref(),
                 ])) . '" title="', I18N::translate('son'), '"></a>';
             echo ' <a class="icon-sex_f_15x15" href="' . e(route('add-child-to-family', [
                     'gender' => 'F',
-                    'ged'    => $family->getTree()->getName(),
+                    'ged'    => $family->getTree()->name(),
                     'xref'   => $family->getXref(),
                 ])) . '" title="', I18N::translate('daughter'), '"></a>';
             echo '<br><br>';

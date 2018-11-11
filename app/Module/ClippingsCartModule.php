@@ -118,7 +118,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
             new Menu($this->getTitle(), route('module', [
                 'module' => 'clippings',
                 'action' => 'Show',
-                'ged'    => $tree->getName(),
+                'ged'    => $tree->name(),
             ]), 'menu-clippings-cart', ['rel' => 'nofollow']),
         ];
 
@@ -129,7 +129,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
                 'module' => 'clippings',
                 'action' => $action,
                 'xref'   => $xref,
-                'ged'    => $tree->getName(),
+                'ged'    => $tree->name(),
             ]);
 
             $submenus[] = new Menu(I18N::translate('Add to the clippings cart'), $add_route, 'menu-clippings-add', ['rel' => 'nofollow']);
@@ -139,12 +139,12 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
             $submenus[] = new Menu(I18N::translate('Empty the clippings cart'), route('module', [
                 'module' => 'clippings',
                 'action' => 'Empty',
-                'ged'    => $tree->getName(),
+                'ged'    => $tree->name(),
             ]), 'menu-clippings-empty', ['rel' => 'nofollow']);
             $submenus[] = new Menu(I18N::translate('Download'), route('module', [
                 'module' => 'clippings',
                 'action' => 'DownloadForm',
-                'ged'    => $tree->getName(),
+                'ged'    => $tree->name(),
             ]), 'menu-clippings-download', ['rel' => 'nofollow']);
         }
 
@@ -166,7 +166,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
 
         $cart = Session::get('cart', []);
 
-        $xrefs = array_keys($cart[$tree->getName()] ?? []);
+        $xrefs = array_keys($cart[$tree->name()] ?? []);
 
         // Create a new/empty .ZIP file
         $temp_zip_file  = tempnam(sys_get_temp_dir(), 'webtrees-zip-');
@@ -183,7 +183,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
             Database::prepare("SELECT o_gedcom FROM `##other` WHERE o_type=? AND o_file=?")
                 ->execute([
                     'SUBN',
-                    $tree->getName(),
+                    $tree->name(),
                 ])
                 ->fetchOne();
         if ($subn) {
@@ -193,7 +193,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
             Database::prepare("SELECT o_gedcom FROM `##other` WHERE o_type=? AND o_file=?")
                 ->execute([
                     'SUBM',
-                    $tree->getName(),
+                    $tree->name(),
                 ])
                 ->fetchOne();
         if ($subm) {
@@ -321,14 +321,14 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     public function getEmptyAction(Tree $tree): RedirectResponse
     {
-        $cart                   = Session::get('cart', []);
-        $cart[$tree->getName()] = [];
+        $cart                = Session::get('cart', []);
+        $cart[$tree->name()] = [];
         Session::put('cart', $cart);
 
         $url = route('module', [
             'module' => 'clippings',
             'action' => 'Show',
-            'ged'    => $tree->getName(),
+            'ged'    => $tree->name(),
         ]);
 
         return new RedirectResponse($url);
@@ -345,13 +345,13 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $xref = $request->get('xref', '');
 
         $cart = Session::get('cart', []);
-        unset($cart[$tree->getName()][$xref]);
+        unset($cart[$tree->name()][$xref]);
         Session::put('cart', $cart);
 
         $url = route('module', [
             'module' => 'clippings',
             'action' => 'Show',
-            'ged'    => $tree->getName(),
+            'ged'    => $tree->name(),
         ]);
 
         return new RedirectResponse($url);
@@ -923,7 +923,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
     {
         $cart = Session::get('cart', []);
 
-        $xrefs = array_keys($cart[$tree->getName()] ?? []);
+        $xrefs = array_keys($cart[$tree->name()] ?? []);
 
         // Fetch all the records in the cart.
         $records = array_map(function (string $xref) use ($tree): GedcomRecord {
@@ -952,7 +952,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
     {
         $cart = Session::get('cart', []);
 
-        $tree_name = $record->getTree()->getName();
+        $tree_name = $record->getTree()->name();
 
         // Add this record
         $cart[$tree_name][$record->getXref()] = true;
@@ -976,7 +976,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
     {
         $cart = Session::get('cart', []);
 
-        return empty($cart[$tree->getName()]);
+        return empty($cart[$tree->name()]);
     }
 
     /**

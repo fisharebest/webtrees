@@ -2,7 +2,7 @@
 <?php use Fisharebest\Webtrees\Functions\FunctionsEdit; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 
-<?= view('components/breadcrumbs', ['links' => [route('admin-control-panel') => I18N::translate('Control panel'), route('admin-modules') => I18N::translate('Modules'), route('module', ['module' => 'faq', 'action' => 'Admin', 'ged' => $tree->getName()]) => I18N::translate('Frequently asked questions'), $title]]) ?>
+<?= view('components/breadcrumbs', ['links' => [route('admin-control-panel') => I18N::translate('Control panel'), route('admin-modules') => I18N::translate('Modules'), route('module', ['module' => 'faq', 'action' => 'Admin', 'ged' => $tree->name()]) => I18N::translate('Frequently asked questions'), $title]]) ?>
 
 <h1><?= $title ?></h1>
 
@@ -58,7 +58,7 @@
         </label>
 
         <div class="col-sm-9">
-            <?= Bootstrap4::select(['' => I18N::translate('All')] + $tree_names, $tree->getName(), ['id' => 'gedcom_id', 'name' => 'gedcom_id']) ?>
+            <?= Bootstrap4::select(['' => I18N::translate('All')] + $tree_names, $tree->name(), ['id' => 'gedcom_id', 'name' => 'gedcom_id']) ?>
             <p class="small text-muted">
                 <?= /* I18N: FAQ = “Frequently Asked Question” */
                 I18N::translate('An FAQ can be displayed on just one of the family trees, or on all the family trees.') ?>

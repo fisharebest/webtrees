@@ -45,7 +45,7 @@ class ErrorController extends AbstractBaseController
     {
         // The tree exists, we have access to it, and it is fully imported.
         if ($tree instanceof Tree && $tree->getPreference('imported') === '1') {
-            return new RedirectResponse(route('tree-page', ['ged' => $tree->getName()]));
+            return new RedirectResponse(route('tree-page', ['ged' => $tree->name()]));
         }
 
         // Not logged in?

@@ -58,7 +58,7 @@ class TreeView
 
         return [
             $html,
-            'var ' . $this->name . 'Handler = new TreeViewHandler("' . $this->name . '", "' . e($individual->getTree()->getName()) . '");',
+            'var ' . $this->name . 'Handler = new TreeViewHandler("' . $this->name . '", "' . e($individual->getTree()->name()) . '");',
         ];
     }
 
@@ -147,7 +147,7 @@ class TreeView
             'module' => 'tree',
             'action' => 'Treeview',
             'xref'   => $individual->getXref(),
-            'ged'    => $individual->getTree()->getName(),
+            'ged'    => $individual->getTree()->name(),
         ]);
 
         $hmtl = $this->getThumbnail($individual);

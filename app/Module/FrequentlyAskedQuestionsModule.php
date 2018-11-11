@@ -93,7 +93,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
             return new Menu($this->getTitle(), route('module', [
                 'module' => 'faq',
                 'action' => 'Show',
-                'ged'    => $tree->getName(),
+                'ged'    => $tree->name(),
             ]), 'menu-help');
         }
 
@@ -171,7 +171,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
         $url = route('module', [
             'module' => 'faq',
             'action' => 'Admin',
-            'ged'    => $tree->getName(),
+            'ged'    => $tree->name(),
         ]);
 
         return new RedirectResponse($url);
@@ -224,7 +224,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
         $url = route('module', [
             'module' => 'faq',
             'action' => 'Admin',
-            'ged'    => $tree->getName(),
+            'ged'    => $tree->name(),
         ]);
 
         return new RedirectResponse($url);
@@ -277,7 +277,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
         $url = route('module', [
             'module' => 'faq',
             'action' => 'Admin',
-            'ged'    => $tree->getName(),
+            'ged'    => $tree->name(),
         ]);
 
         return new RedirectResponse($url);
@@ -373,7 +373,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
         $url = route('module', [
             'module' => 'faq',
             'action' => 'Admin',
-            'ged'    => $tree->getName(),
+            'ged'    => $tree->name(),
         ]);
 
         return new RedirectResponse($url);

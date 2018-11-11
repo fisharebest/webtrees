@@ -6,7 +6,7 @@
 
 <form class="wt-page-content" method="post">
     <?= csrf_field() ?>
-    <input type="hidden" name="ged" value="<?= e($tree->getName()) ?>">
+    <input type="hidden" name="ged" value="<?= e($tree->name()) ?>">
     <input type="hidden" name="xref" value="<?= e($record->getXref()) ?>">
 
     <p class="text-muted small">

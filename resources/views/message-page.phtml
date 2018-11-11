@@ -5,7 +5,7 @@
 <form method="post" action="<?= e(route('message')) ?>">
     <?= csrf_field() ?>
     <input type="hidden" name="url" value="<?= e($url) ?>">
-    <input type="hidden" name="ged" value="<?= e($tree->getName()) ?>">
+    <input type="hidden" name="ged" value="<?= e($tree->name()) ?>">
 
     <div class="form-group row">
         <label class="col-sm-3 col-form-label" for="from">

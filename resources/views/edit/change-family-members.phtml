@@ -7,7 +7,7 @@
 <form class="wt-page-content" name="changefamform" method="post">
     <?= csrf_field() ?>
 
-    <input type="hidden" name="ged" value="<?= e($tree->getName()) ?>">
+    <input type="hidden" name="ged" value="<?= e($tree->name()) ?>">
     <input type="hidden" name="xref" value="<?= e($family->getXref()) ?>">
 
     <div class="form-group row">

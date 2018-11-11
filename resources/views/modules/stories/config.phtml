@@ -14,14 +14,14 @@
         <?= I18N::translate('Family tree') ?>
     </label>
 
-    <?= Bootstrap4::select($tree_names, $tree->getName(), ['id' => 'ged', 'name' => 'ged']) ?>
+    <?= Bootstrap4::select($tree_names, $tree->name(), ['id' => 'ged', 'name' => 'ged']) ?>
     <button type="submit" class="btn btn-primary">
         <?= I18N::translate('show') ?>
     </button>
 </form>
 
 <p>
-    <a href="<?= e(route('module', ['module' => 'stories', 'action' => 'AdminEdit', 'ged' => $tree->getName()])) ?>" class="btn btn-link">
+    <a href="<?= e(route('module', ['module' => 'stories', 'action' => 'AdminEdit', 'ged' => $tree->name()])) ?>" class="btn btn-link">
         <?= view('icons/add') ?>
         <?= I18N::translate('Add a story') ?>
     </a>
@@ -52,13 +52,13 @@
                     <?= e($story->title) ?>
                 </td>
                 <td>
-                    <a class="btn btn-primary" href="<?= e(route('module', ['module' => 'stories', 'action' => 'AdminEdit', 'ged' => $tree->getName(), 'block_id' => $story->block_id])) ?>">
+                    <a class="btn btn-primary" href="<?= e(route('module', ['module' => 'stories', 'action' => 'AdminEdit', 'ged' => $tree->name(), 'block_id' => $story->block_id])) ?>">
                         <?= view('icons/edit') ?>
                         <?= I18N::translate('Edit') ?>
                     </a>
                 </td>
                 <td>
-                    <form action="<?= e(route('module', ['module' => 'stories', 'action' => 'AdminDelete', 'ged' => $tree->getName(), 'block_id' => $story->block_id])) ?>" method="post">
+                    <form action="<?= e(route('module', ['module' => 'stories', 'action' => 'AdminDelete', 'ged' => $tree->name(), 'block_id' => $story->block_id])) ?>" method="post">
                         <?= csrf_field() ?>
                         <button type="submit" class="btn btn-danger" data-confirm="<?= I18N::translate('Are you sure you want to delete “%s”?', e($story->title)) ?>" onclick="return confirm(this.dataset.confirm);">
                             <?= view('icons/delete') ?>

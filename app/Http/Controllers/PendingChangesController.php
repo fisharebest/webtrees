@@ -77,11 +77,11 @@ class PendingChangesController extends AbstractBaseController
                 'change_id' => $change->change_id,
             ]);
 
-            Log::addEditLog('Accepted change ' . $change->change_id . ' for ' . $change->xref . ' / ' . $tree->getName(), $tree);
+            Log::addEditLog('Accepted change ' . $change->change_id . ' for ' . $change->xref . ' / ' . $tree->name(), $tree);
         }
 
         return new RedirectResponse(route('show-pending', [
-            'ged' => $tree->getName(),
+            'ged' => $tree->name(),
             'url' => $url,
         ]));
     }
@@ -129,11 +129,11 @@ class PendingChangesController extends AbstractBaseController
                 'change_id' => $change->change_id,
             ]);
 
-            Log::addEditLog('Accepted change ' . $change->change_id . ' for ' . $change->xref . ' / ' . $tree->getName(), $tree);
+            Log::addEditLog('Accepted change ' . $change->change_id . ' for ' . $change->xref . ' / ' . $tree->name(), $tree);
         }
 
         return new RedirectResponse(route('show-pending', [
-            'ged' => $tree->getName(),
+            'ged' => $tree->name(),
             'url' => $url,
         ]));
     }
@@ -187,7 +187,7 @@ class PendingChangesController extends AbstractBaseController
         ]);
 
         return new RedirectResponse(route('show-pending', [
-            'ged' => $tree->getName(),
+            'ged' => $tree->name(),
             'url' => $url,
         ]));
     }
@@ -221,7 +221,7 @@ class PendingChangesController extends AbstractBaseController
         ]);
 
         return new RedirectResponse(route('show-pending', [
-            'ged' => $tree->getName(),
+            'ged' => $tree->name(),
             'url' => $url,
         ]));
     }
@@ -261,7 +261,7 @@ class PendingChangesController extends AbstractBaseController
      */
     public function showChanges(Request $request, Tree $tree): Response
     {
-        $url = $request->get('url', route('tree-page', ['ged' => $tree->getName()]));
+        $url = $request->get('url', route('tree-page', ['ged' => $tree->name()]));
 
         $rows = Database::prepare(
             "SELECT c.*, UNIX_TIMESTAMP(c.change_time) + :offset AS change_timestamp, u.user_name, u.real_name, g.gedcom_name, new_gedcom, old_gedcom" .

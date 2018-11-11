@@ -204,7 +204,7 @@ abstract class AbstractTheme
         if ($analytics_id) {
             // Add extra dimensions (i.e. filtering categories)
             $dimensions = (object) [
-                'dimension1' => $this->tree ? $this->tree->getName() : '-',
+                'dimension1' => $this->tree ? $this->tree->name() : '-',
                 'dimension2' => $this->tree ? Auth::accessLevel($this->tree) : '-',
             ];
 
@@ -304,7 +304,7 @@ abstract class AbstractTheme
                 return '<a href="mailto:' . e($user->getEmail()) . '">' . e($user->getRealName()) . '</a>';
             default:
                 $url = route(Auth::check() ? 'message' : 'contact', [
-                    'ged' => $this->tree->getName(),
+                    'ged' => $this->tree->name(),
                     'to'  => $user->getUserName(),
                     'url' => $this->request->getRequestUri(),
                 ]);
@@ -506,7 +506,7 @@ abstract class AbstractTheme
                 '<div class="col wt-header-search">' .
                 '<form class="wt-header-search-form" role="search">' .
                 '<input type="hidden" name="route" value="search-quick">' .
-                '<input type="hidden" name="ged" value="' . e($this->tree->getName()) . '">' .
+                '<input type="hidden" name="ged" value="' . e($this->tree->name()) . '">' .
                 $this->formQuickSearchFields() .
                 '</form>' .
                 '</div>';
@@ -735,7 +735,7 @@ abstract class AbstractTheme
         }
 
         return
-            '<div data-xref="' . e($individual->getXref()) . '" data-tree="' . e($individual->getTree()->getName()) . '" class="person_box_template ' . $person_box_class . ' box-style1" style="width: ' . $this->parameter('chart-box-x') . 'px; height: ' . $this->parameter('chart-box-y') . 'px">' .
+            '<div data-xref="' . e($individual->getXref()) . '" data-tree="' . e($individual->getTree()->name()) . '" class="person_box_template ' . $person_box_class . ' box-style1" style="width: ' . $this->parameter('chart-box-x') . 'px; height: ' . $this->parameter('chart-box-y') . 'px">' .
             $icons .
             '<div class="chart_textbox" style="max-height:' . $this->parameter('chart-box-y') . 'px;">' .
             $thumbnail .
@@ -790,7 +790,7 @@ abstract class AbstractTheme
         }
 
         return
-            '<div data-xref="' . e($individual->getXref()) . '" data-tree="' . e($individual->getTree()->getName()) . '" class="person_box_template ' . $person_box_class . ' box-style2">' .
+            '<div data-xref="' . e($individual->getXref()) . '" data-tree="' . e($individual->getTree()->name()) . '" class="person_box_template ' . $person_box_class . ' box-style2">' .
             $icons .
             '<div class="chart_textbox" style="max-height:' . $this->parameter('chart-box-y') . 'px;">' .
             $thumbnail .
@@ -1038,17 +1038,17 @@ abstract class AbstractTheme
             // Day view
             new Menu(I18N::translate('Day'), route('calendar', [
                 'view' => 'day',
-                'ged'  => $this->tree->getName(),
+                'ged'  => $this->tree->name(),
             ]), 'menu-calendar-day', ['rel' => 'nofollow']),
             // Month view
             new Menu(I18N::translate('Month'), route('calendar', [
                 'view' => 'month',
-                'ged'  => $this->tree->getName(),
+                'ged'  => $this->tree->name(),
             ]), 'menu-calendar-month', ['rel' => 'nofollow']),
             //Year view
             new Menu(I18N::translate('Year'), route('calendar', [
                 'view' => 'year',
-                'ged'  => $this->tree->getName(),
+                'ged'  => $this->tree->name(),
             ]), 'menu-calendar-year', ['rel' => 'nofollow']),
         ]);
     }
@@ -1061,11 +1061,11 @@ abstract class AbstractTheme
     public function menuChangeBlocks()
     {
         if (Auth::check() && $this->request->get('route') === 'user-page') {
-            return new Menu(I18N::translate('Customize this page'), route('user-page-edit', ['ged' => $this->tree->getName()]), 'menu-change-blocks');
+            return new Menu(I18N::translate('Customize this page'), route('user-page-edit', ['ged' => $this->tree->name()]), 'menu-change-blocks');
         }
 
         if (Auth::isManager($this->tree) && $this->request->get('route') === 'tree-page') {
-            return new Menu(I18N::translate('Customize this page'), route('tree-page-edit', ['ged' => $this->tree->getName()]), 'menu-change-blocks');
+            return new Menu(I18N::translate('Customize this page'), route('tree-page-edit', ['ged' => $this->tree->name()]), 'menu-change-blocks');
         }
 
         return null;
@@ -1163,7 +1163,7 @@ abstract class AbstractTheme
             $url = route('module', [
                 'module' => 'user_favorites',
                 'action' => 'AddFavorite',
-                'ged'    => $this->tree->getName(),
+                'ged'    => $this->tree->name(),
                 'xref'   => $controller->record->getXref(),
             ]);
 
@@ -1188,7 +1188,7 @@ abstract class AbstractTheme
     public function menuHomePage()
     {
         if (count(Tree::getAll()) === 1 || Site::getPreference('ALLOW_CHANGE_GEDCOM') !== '1') {
-            return new Menu(I18N::translate('Family tree'), route('tree-page', ['ged' => $this->tree->getName()]), 'menu-tree');
+            return new Menu(I18N::translate('Family tree'), route('tree-page', ['ged' => $this->tree->name()]), 'menu-tree');
         }
 
         $submenus = [];
@@ -1198,7 +1198,7 @@ abstract class AbstractTheme
             } else {
                 $active = '';
             }
-            $submenus[] = new Menu(e($tree->getTitle()), route('tree-page', ['ged' => $tree->getName()]), $active . 'menu-tree-' . $tree->id());
+            $submenus[] = new Menu(e($tree->getTitle()), route('tree-page', ['ged' => $tree->name()]), $active . 'menu-tree-' . $tree->id());
         }
 
         return new Menu(I18N::translate('Family trees'), '#', 'menu-tree', [], $submenus);
@@ -1288,7 +1288,7 @@ abstract class AbstractTheme
     public function menuListsBranches($surname): Menu
     {
         return new Menu(I18N::translate('Branches'), route('branches', [
-            'ged'     => $this->tree->getName(),
+            'ged'     => $this->tree->name(),
             'surname' => $surname,
         ]), 'menu-branches', ['rel' => 'nofollow']);
     }
@@ -1303,7 +1303,7 @@ abstract class AbstractTheme
     public function menuListsFamilies($surname): Menu
     {
         return new Menu(I18N::translate('Families'), route('family-list', [
-            'ged'     => $this->tree->getName(),
+            'ged'     => $this->tree->name(),
             'surname' => $surname,
         ]), 'menu-list-indi');
     }
@@ -1318,7 +1318,7 @@ abstract class AbstractTheme
     public function menuListsIndividuals($surname): Menu
     {
         return new Menu(I18N::translate('Individuals'), route('individual-list', [
-            'ged'     => $this->tree->getName(),
+            'ged'     => $this->tree->name(),
             'surname' => $surname,
         ]), 'menu-list-indi');
     }
@@ -1330,7 +1330,7 @@ abstract class AbstractTheme
      */
     public function menuListsMedia(): Menu
     {
-        return new Menu(I18N::translate('Media objects'), route('media-list', ['ged' => $this->tree->getName()]), 'menu-list-obje', ['rel' => 'nofollow']);
+        return new Menu(I18N::translate('Media objects'), route('media-list', ['ged' => $this->tree->name()]), 'menu-list-obje', ['rel' => 'nofollow']);
     }
 
     /**
@@ -1340,7 +1340,7 @@ abstract class AbstractTheme
      */
     public function menuListsNotes(): Menu
     {
-        return new Menu(I18N::translate('Shared notes'), route('note-list', ['ged' => $this->tree->getName()]), 'menu-list-note', ['rel' => 'nofollow']);
+        return new Menu(I18N::translate('Shared notes'), route('note-list', ['ged' => $this->tree->name()]), 'menu-list-note', ['rel' => 'nofollow']);
     }
 
     /**
@@ -1350,7 +1350,7 @@ abstract class AbstractTheme
      */
     protected function menuListsPlaces(): Menu
     {
-        return new Menu(I18N::translate('Place hierarchy'), route('place-hierarchy', ['ged' => $this->tree->getName()]), 'menu-list-plac', ['rel' => 'nofollow']);
+        return new Menu(I18N::translate('Place hierarchy'), route('place-hierarchy', ['ged' => $this->tree->name()]), 'menu-list-plac', ['rel' => 'nofollow']);
     }
 
     /**
@@ -1360,7 +1360,7 @@ abstract class AbstractTheme
      */
     public function menuListsRepositories(): Menu
     {
-        return new Menu(I18N::translate('Repositories'), route('repository-list', ['ged' => $this->tree->getName()]), 'menu-list-repo', ['rel' => 'nofollow']);
+        return new Menu(I18N::translate('Repositories'), route('repository-list', ['ged' => $this->tree->name()]), 'menu-list-repo', ['rel' => 'nofollow']);
     }
 
     /**
@@ -1370,7 +1370,7 @@ abstract class AbstractTheme
      */
     public function menuListsSources(): Menu
     {
-        return new Menu(I18N::translate('Sources'), route('source-list', ['ged' => $this->tree->getName()]), 'menu-list-sour', ['rel' => 'nofollow']);
+        return new Menu(I18N::translate('Sources'), route('source-list', ['ged' => $this->tree->name()]), 'menu-list-sour', ['rel' => 'nofollow']);
     }
 
     /**
@@ -1459,7 +1459,7 @@ abstract class AbstractTheme
      */
     public function menuMyPage(): Menu
     {
-        return new Menu(I18N::translate('My page'), route('user-page', ['ged' => $this->tree->getName()]), 'menu-mypage');
+        return new Menu(I18N::translate('My page'), route('user-page', ['ged' => $this->tree->name()]), 'menu-mypage');
     }
 
     /**
@@ -1497,7 +1497,7 @@ abstract class AbstractTheme
                 I18N::translate('My pedigree'),
                 route('pedigree', [
                     'xref' => $gedcomid,
-                    'ged'  => $this->tree->getName(),
+                    'ged'  => $this->tree->name(),
                 ]),
                 'menu-mypedigree'
             );
@@ -1515,7 +1515,7 @@ abstract class AbstractTheme
     {
         if ($this->pendingChangesExist()) {
             $url = route('show-pending', [
-                'ged' => $this->tree ? $this->tree->getName() : '',
+                'ged' => $this->tree ? $this->tree->name() : '',
                 'url' => $this->request->getRequestUri(),
             ]);
 
@@ -1566,7 +1566,7 @@ abstract class AbstractTheme
      */
     public function menuSearchGeneral(): Menu
     {
-        return new Menu(I18N::translate('General search'), route('search-general', ['ged' => $this->tree->getName()]), 'menu-search-general', ['rel' => 'nofollow']);
+        return new Menu(I18N::translate('General search'), route('search-general', ['ged' => $this->tree->name()]), 'menu-search-general', ['rel' => 'nofollow']);
     }
 
     /**
@@ -1577,7 +1577,7 @@ abstract class AbstractTheme
     public function menuSearchPhonetic(): Menu
     {
         /* I18N: search using “sounds like”, rather than exact spelling */
-        return new Menu(I18N::translate('Phonetic search'), route('search-phonetic', ['ged' => $this->tree->getName(), 'action' => 'soundex',]), 'menu-search-soundex', ['rel' => 'nofollow']);
+        return new Menu(I18N::translate('Phonetic search'), route('search-phonetic', ['ged' => $this->tree->name(), 'action' => 'soundex',]), 'menu-search-soundex', ['rel' => 'nofollow']);
     }
 
     /**
@@ -1587,7 +1587,7 @@ abstract class AbstractTheme
      */
     public function menuSearchAdvanced(): Menu
     {
-        return new Menu(I18N::translate('Advanced search'), route('search-advanced', ['ged' => $this->tree->getName()]), 'menu-search-advanced', ['rel' => 'nofollow']);
+        return new Menu(I18N::translate('Advanced search'), route('search-advanced', ['ged' => $this->tree->name()]), 'menu-search-advanced', ['rel' => 'nofollow']);
     }
 
     /**
@@ -1599,7 +1599,7 @@ abstract class AbstractTheme
     {
         if (Auth::isEditor($this->tree)) {
             return new Menu(I18N::translate('Search and replace'), route('search-replace', [
-                'ged'    => $this->tree->getName(),
+                'ged'    => $this->tree->name(),
                 'action' => 'replace',
             ]), 'menu-search-replace');
         }
@@ -1780,7 +1780,7 @@ abstract class AbstractTheme
      */
     public function pendingChangesLink(): string
     {
-        return '<a href="' . e(route('show-pending', ['ged' => $this->tree->getName()])) . '">' . $this->pendingChangesLinkText() . '</a>';
+        return '<a href="' . e(route('show-pending', ['ged' => $this->tree->name()])) . '">' . $this->pendingChangesLinkText() . '</a>';
     }
 
     /**

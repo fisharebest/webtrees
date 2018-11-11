@@ -8,7 +8,7 @@
 
 <form class="form-horizontal" method="post">
     <?= csrf_field() ?>
-    <input type="hidden" name="ged" value="<?= e($tree->getName()) ?>">
+    <input type="hidden" name="ged" value="<?= e($tree->name()) ?>">
 
     <input type="hidden" name="action" value="general">
 
@@ -52,7 +52,7 @@
                     name="gedcom"
                     required
                     type="text"
-                    value="<?= e($tree->getName()) ?>"
+                    value="<?= e($tree->name()) ?>"
                 >
             </div>
             <p class="small text-muted">
@@ -1135,7 +1135,7 @@
                 <?= view('icons/save') ?>
                 <?= I18N::translate('save') ?>
             </button>
-            <a class="btn btn-secondary" href="<?= e(route('admin-trees', ['ged' => $tree->getName()])) ?>">
+            <a class="btn btn-secondary" href="<?= e(route('admin-trees', ['ged' => $tree->name()])) ?>">
         <?= view('icons/cancel') ?>
                 <?= I18N::translate('cancel') ?>
             </a>

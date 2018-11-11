@@ -985,7 +985,7 @@ abstract class AbstractCalendarDate
             'month' => $this->formatGedcomMonth(),
             'day'   => $this->formatGedcomDay(),
             'view'  => $view,
-            'ged'   => $tree->getName(),
+            'ged'   => $tree->name(),
         ]);
     }
 }

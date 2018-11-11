@@ -79,7 +79,7 @@ class Select2 extends Html
      */
     public static function familyConfig(Tree $tree): array
     {
-        $url = route('select2-family', ['ged' => $tree->getName()]);
+        $url = route('select2-family', ['ged' => $tree->name()]);
 
         return self::commonConfig() + ['data-ajax--url' => $url];
     }
@@ -225,7 +225,7 @@ class Select2 extends Html
      */
     public static function individualConfig(Tree $tree): array
     {
-        $url = route('select2-individual', ['ged' => $tree->getName()]);
+        $url = route('select2-individual', ['ged' => $tree->name()]);
 
         return self::commonConfig() + ['data-ajax--url' => $url];
     }
@@ -292,7 +292,7 @@ class Select2 extends Html
      */
     public static function mediaObjectConfig(Tree $tree): array
     {
-        $url = route('select2-media', ['ged' => $tree->getName()]);
+        $url = route('select2-media', ['ged' => $tree->name()]);
 
         return self::commonConfig() + ['data-ajax--url' => $url];
     }
@@ -358,7 +358,7 @@ class Select2 extends Html
      */
     public static function noteConfig(Tree $tree): array
     {
-        $url = route('select2-note', ['ged' => $tree->getName()]);
+        $url = route('select2-note', ['ged' => $tree->name()]);
 
         return self::commonConfig() + ['data-ajax--url' => $url];
     }
@@ -424,7 +424,7 @@ class Select2 extends Html
      */
     public static function placeConfig(Tree $tree): array
     {
-        $url = route('select2-place', ['ged' => $tree->getName()]);
+        $url = route('select2-place', ['ged' => $tree->name()]);
 
         return self::commonConfig() + ['data-ajax--url' => $url];
     }
@@ -525,7 +525,7 @@ class Select2 extends Html
      */
     public static function repositoryConfig(Tree $tree): array
     {
-        $url = route('select2-repository', ['ged' => $tree->getName()]);
+        $url = route('select2-repository', ['ged' => $tree->name()]);
 
         return self::commonConfig() + ['data-ajax--url' => $url];
     }
@@ -591,7 +591,7 @@ class Select2 extends Html
      */
     public static function sourceConfig(Tree $tree): array
     {
-        $url = route('select2-source', ['ged' => $tree->getName()]);
+        $url = route('select2-source', ['ged' => $tree->name()]);
 
         return self::commonConfig() + ['data-ajax--url' => $url];
     }
@@ -657,7 +657,7 @@ class Select2 extends Html
      */
     public static function submitterConfig(Tree $tree): array
     {
-        $url = route('select2-submitter', ['ged' => $tree->getName()]);
+        $url = route('select2-submitter', ['ged' => $tree->name()]);
 
         return self::commonConfig() + ['data-ajax--url' => $url];
     }

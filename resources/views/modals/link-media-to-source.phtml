@@ -3,7 +3,7 @@
 
 <form action="<?= e(route('link-media-to-record')) ?>" id="wt-modal-form" method="POST">
     <?= csrf_field() ?>
-    <input type="hidden" name="ged" value="<?= e($tree->getName()) ?>">
+    <input type="hidden" name="ged" value="<?= e($tree->name()) ?>">
     <input type="hidden" name="xref" value="<?= e($media->getXref()) ?>">
 
     <?= view('modals/header', ['title' => I18N::translate('Link this media object to a source')]) ?>

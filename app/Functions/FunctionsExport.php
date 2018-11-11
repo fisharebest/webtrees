@@ -92,7 +92,7 @@ class FunctionsExport
         $DATE = "\n1 DATE " . strtoupper(date('d M Y')) . "\n2 TIME " . date('H:i:s');
         $GEDC = "\n1 GEDC\n2 VERS 5.5.1\n2 FORM Lineage-Linked";
         $CHAR = "\n1 CHAR " . $char;
-        $FILE = "\n1 FILE " . $tree->getName();
+        $FILE = "\n1 FILE " . $tree->name();
         $LANG = '';
         $COPR = '';
         $SUBN = '';

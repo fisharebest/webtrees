@@ -15,5 +15,5 @@
 
 <script>
   $("#import<?= e($tree->id()) ?>")
-      .load("<?= route('import', ['ged' => $tree->getName()]) ?>", {});
+      .load("<?= route('import', ['ged' => $tree->name()]) ?>", {});
 </script>

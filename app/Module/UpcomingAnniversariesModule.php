@@ -166,12 +166,12 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
             if ($ctype === 'gedcom' && Auth::isManager($tree)) {
                 $config_url = route('tree-page-block-edit', [
                     'block_id' => $block_id,
-                    'ged'      => $tree->getName(),
+                    'ged'      => $tree->name(),
                 ]);
             } elseif ($ctype === 'user' && Auth::check()) {
                 $config_url = route('user-page-block-edit', [
                     'block_id' => $block_id,
-                    'ged'      => $tree->getName(),
+                    'ged'      => $tree->name(),
                 ]);
             } else {
                 $config_url = '';

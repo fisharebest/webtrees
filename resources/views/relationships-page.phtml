@@ -9,7 +9,7 @@
 
 <form class="wt-page-options wt-page-options-relationships-chart d-print-none">
     <input type="hidden" name="route" value="relationships">
-    <input type="hidden" name="ged" value="<?= e($tree->getName()) ?>">
+    <input type="hidden" name="ged" value="<?= e($tree->name()) ?>">
 
     <div class="row form-group">
         <label class="col-sm-3 col-form-label wt-page-options-label" for="xref1">
@@ -82,7 +82,7 @@
     <div class="wt-ajax-load wt-page-content wt-chart wt-relationships-chart" data-ajax-url="<?= e(route('relationships-chart', [
         'xref1'     => $individual1->getXref(),
         'xref2'     => $individual2->getXref(),
-        'ged'       => $individual2->getTree()->getName(),
+        'ged'       => $individual2->getTree()->name(),
         'recursion' => $recursion,
         'ancestors' => $ancestors,
     ])) ?>"></div>

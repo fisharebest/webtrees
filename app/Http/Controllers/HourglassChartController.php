@@ -261,7 +261,7 @@ class HourglassChartController extends AbstractChartController
                     'data-route'   => 'hourglass-add-desc',
                     'data-xref'    => $pid,
                     'data-spouses' => $show_spouse,
-                    'data-tree'    => $individual->getTree()->getName(),
+                    'data-tree'    => $individual->getTree()->name(),
                 ]);
 
                 //-- move the arrow up to line up with the correct box
@@ -308,7 +308,7 @@ class HourglassChartController extends AbstractChartController
                             'xref'        => $spouse->getXref(),
                             'generations' => $generations,
                             'show_spouse' => (int) $show_spouse,
-                            'ged'         => $spouse->getTree()->getName(),
+                            'ged'         => $spouse->getTree()->name(),
                         ])) . '" class="name1">' . $spouse->getFullName() . '</a>';
                 }
                 foreach ($family->getChildren() as $child) {
@@ -316,7 +316,7 @@ class HourglassChartController extends AbstractChartController
                             'xref'        => $child->getXref(),
                             'generations' => $generations,
                             'show_spouse' => (int) $show_spouse,
-                            'ged'         => $child->getTree()->getName(),
+                            'ged'         => $child->getTree()->name(),
                         ])) . '" class="name1">' . $child->getFullName() . '</a>';
                 }
             }
@@ -331,7 +331,7 @@ class HourglassChartController extends AbstractChartController
                                 'xref'        => $husb->getXref(),
                                 'generations' => $generations,
                                 'show_spouse' => (int) $show_spouse,
-                                'ged'         => $husb->getTree()->getName(),
+                                'ged'         => $husb->getTree()->name(),
                             ])) . '" class="name1">' . $husb->getFullName() . '</a>';
                     }
                     $wife = $family->getWife();
@@ -340,7 +340,7 @@ class HourglassChartController extends AbstractChartController
                                 'xref'        => $wife->getXref(),
                                 'generations' => $generations,
                                 'show_spouse' => (int) $show_spouse,
-                                'ged'         => $wife->getTree()->getName(),
+                                'ged'         => $wife->getTree()->name(),
                             ])) . '" class="name1">' . $wife->getFullName() . '</a>';
                     }
                 }
@@ -359,7 +359,7 @@ class HourglassChartController extends AbstractChartController
                                 'xref'        => $child->getXref(),
                                 'generations' => $generations,
                                 'show_spouse' => (int) $show_spouse,
-                                'ged'         => $child->getTree()->getName(),
+                                'ged'         => $child->getTree()->name(),
                             ])) . '" class="name1">' . $child->getFullName() . '</a>';
                     }
                 }
@@ -424,7 +424,7 @@ class HourglassChartController extends AbstractChartController
                         'data-route'   => 'hourglass-add-asc',
                         'data-xref'    => $ARID,
                         'data-spouses' => (int) $show_spouse,
-                        'data-tree'    => $family->getHusband()->getTree()->getName(),
+                        'data-tree'    => $family->getHusband()->getTree()->name(),
                     ]);
                 }
 
@@ -461,7 +461,7 @@ class HourglassChartController extends AbstractChartController
                         'data-route'   => 'hourglass-add-asc',
                         'data-xref'    => $ARID,
                         'data-spouses' => (int) $show_spouse,
-                        'data-tree'    => $family->getWife()->getTree()->getName(),
+                        'data-tree'    => $family->getWife()->getTree()->name(),
                     ]);
                 }
 

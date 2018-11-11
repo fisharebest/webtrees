@@ -63,7 +63,7 @@ class WelcomeBlockModule extends AbstractModule implements ModuleBlockInterface
             $links[] = [
                 'url'   => route('pedigree', [
                     'xref' => $individual->getXref(),
-                    'ged'  => $individual->getTree()->getName(),
+                    'ged'  => $individual->getTree()->name(),
                 ]),
                 'title' => I18N::translate('Default chart'),
                 'icon'  => 'icon-pedigree',

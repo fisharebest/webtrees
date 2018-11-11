@@ -74,7 +74,7 @@ class AhnentafelReportModule extends AbstractModule implements ModuleReportInter
     {
         return new Menu(
             $this->getTitle(),
-            route('report-setup', ['ged'    => $tree->getName(),
+            route('report-setup', ['ged'    => $tree->name(),
                                    'report' => $this->getName(),
             ]),
             'menu-report-' . $this->getName(),

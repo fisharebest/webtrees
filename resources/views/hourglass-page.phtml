@@ -8,7 +8,7 @@
 
 <form class="wt-page-options wt-page-options-hourglass-chart d-print-none">
     <input type="hidden" name="route" value="hourglass">
-    <input type="hidden" name="ged" value="<?= e($individual->getTree()->getName()) ?>">
+    <input type="hidden" name="ged" value="<?= e($individual->getTree()->name()) ?>">
 
     <div class="row form-group">
         <label class="col-sm-3 col-form-label wt-page-options-label" for="xref">
@@ -47,4 +47,4 @@
     </div>
 </form>
 
-<div class="wt-ajax-load wt-page-content wt-chart wt-hourglass-chart" data-ajax-url="<?= e(route('hourglass-chart', ['xref' => $individual->getXref(), 'generations' => $generations, 'show_spouse' => $show_spouse, 'ged' => $individual->getTree()->getName()])) ?>"></div>
+<div class="wt-ajax-load wt-page-content wt-chart wt-hourglass-chart" data-ajax-url="<?= e(route('hourglass-chart', ['xref' => $individual->getXref(), 'generations' => $generations, 'show_spouse' => $show_spouse, 'ged' => $individual->getTree()->name()])) ?>"></div>

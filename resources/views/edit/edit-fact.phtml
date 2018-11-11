@@ -9,7 +9,7 @@
 
 <h2 class="wt-page-title"><?= $title ?></h2>
 
-<form class="wt-page-content" action="<?= e(route('update-fact', ['ged' => $tree->getName(), 'xref' => $record->getXref(), 'fact_id' => $edit_fact->id()])) ?>" method="post">   <?= csrf_field() ?>
+<form class="wt-page-content" action="<?= e(route('update-fact', ['ged' => $tree->name(), 'xref' => $record->getXref(), 'fact_id' => $edit_fact->id()])) ?>" method="post">   <?= csrf_field() ?>
 
     <?php FunctionsEdit::createEditForm($edit_fact) ?>
 
@@ -112,7 +112,7 @@
                 I18N::translate('cancel') ?>
             </a>
             <?php if ($can_edit_raw) : ?>
-                <a class="btn btn-link" href="<?= e(route('edit-raw-fact', ['xref' => $record->getXref(), 'fact_id' => $edit_fact->id(), 'ged' => $tree->getName()])) ?>">
+                <a class="btn btn-link" href="<?= e(route('edit-raw-fact', ['xref' => $record->getXref(), 'fact_id' => $edit_fact->id(), 'ged' => $tree->name()])) ?>">
                     <?= I18N::translate('Edit the raw GEDCOM') ?>
                 </a>
             <?php endif; ?>

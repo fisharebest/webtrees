@@ -155,7 +155,7 @@ class AdminController extends AbstractBaseController
         $tree_list = [];
         foreach (Tree::getAll() as $tree) {
             if (Auth::isManager($tree)) {
-                $tree_list[$tree->getName()] = $tree->getTitle();
+                $tree_list[$tree->name()] = $tree->getTitle();
             }
         }
 
@@ -521,7 +521,7 @@ class AdminController extends AbstractBaseController
             }, $facts);
 
             return [
-                $tree->getName(),
+                $tree->name(),
                 $media->displayImage(100, 100, 'fit', ['class' => 'img-thumbnail']),
                 '<a href="' . e($media->url()) . '">' . $media->getFullName() . '</a>',
                 '<a href="' . e($individual->url()) . '">' . $individual->getFullName() . '</a>',
@@ -929,7 +929,7 @@ class AdminController extends AbstractBaseController
             $record2_name
         ), 'success');
 
-        return new RedirectResponse(route('merge-records', ['ged' => $tree->getName()]));
+        return new RedirectResponse(route('merge-records', ['ged' => $tree->name()]));
     }
 
     /**
@@ -997,7 +997,7 @@ class AdminController extends AbstractBaseController
      */
     public function treePrivacyEdit(Tree $tree): Response
     {
-        $title                = e($tree->getName()) . ' — ' . I18N::translate('Privacy');
+        $title                = e($tree->name()) . ' — ' . I18N::translate('Privacy');
         $all_tags             = $this->tagsForPrivacy($tree);
         $privacy_constants    = $this->privacyConstants();
         $privacy_restrictions = $this->privacyRestrictions($tree);
@@ -1087,7 +1087,7 @@ class AdminController extends AbstractBaseController
         }
 
 
-        return new RedirectResponse(route('admin-trees', ['ged' => $tree->getName()]));
+        return new RedirectResponse(route('admin-trees', ['ged' => $tree->name()]));
     }
 
     /**

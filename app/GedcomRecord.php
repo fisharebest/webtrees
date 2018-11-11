@@ -362,7 +362,7 @@ class GedcomRecord
     {
         return route(static::ROUTE_NAME, [
             'xref' => $this->getXref(),
-            'ged'  => $this->tree->getName(),
+            'ged'  => $this->tree->name(),
         ]);
     }
 

@@ -10,7 +10,7 @@
         </div>
         <?php if ($is_admin) : ?>
             <div class="story_edit">
-                <a href="<?= e(route('module', ['module' => 'stories', 'action' => 'AdminEdit', 'block_id' => $story->block_id, 'ged' => $tree->getName()])) ?>">
+                <a href="<?= e(route('module', ['module' => 'stories', 'action' => 'AdminEdit', 'block_id' => $story->block_id, 'ged' => $tree->name()])) ?>">
                     <?= I18N::translate('Edit the story') ?>
                 </a>
             </div>
@@ -19,7 +19,7 @@
 
     <?php if ($is_admin && empty($stories)) : ?>
         <div>
-            <a href="<?= e(route('module', ['module' => 'stories', 'action' => 'AdminEdit', 'xref' => $individual->getXref(), 'ged' => $tree->getName()])) ?>">
+            <a href="<?= e(route('module', ['module' => 'stories', 'action' => 'AdminEdit', 'xref' => $individual->getXref(), 'ged' => $tree->name()])) ?>">
                 <?= I18N::translate('Add a story') ?>
             </a>
         </div>

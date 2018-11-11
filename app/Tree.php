@@ -61,13 +61,13 @@ class Tree
      * be called from Tree::getAll() to ensure proper initialisation.
      *
      * @param int    $id
-     * @param string $tree_name
+     * @param string $name
      * @param string $tree_title
      */
-    private function __construct($id, $tree_name, $tree_title)
+    private function __construct($id, $name, $tree_title)
     {
         $this->id                      = $id;
-        $this->name                    = $tree_name;
+        $this->name                    = $name;
         $this->title                   = $tree_title;
         $this->fact_privacy            = [];
         $this->individual_privacy      = [];
@@ -113,7 +113,7 @@ class Tree
      *
      * @return string
      */
-    public function getName(): string
+    public function name(): string
     {
         return $this->name;
     }

@@ -189,7 +189,7 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
             }
         }
 
-        $url = route('user-page', ['ged' => $tree->getName()]);
+        $url = route('user-page', ['ged' => $tree->name()]);
 
         return new RedirectResponse($url);
     }
@@ -214,7 +214,7 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
             ]);
         }
 
-        $url = route('user-page', ['ged' => $tree->getName()]);
+        $url = route('user-page', ['ged' => $tree->name()]);
 
         return new RedirectResponse($url);
     }

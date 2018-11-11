@@ -7,7 +7,7 @@
     <input type="hidden" name="route" value="module">
     <input type="hidden" name="module" value="clippings">
     <input type="hidden" name="action" value="Download">
-    <input type="hidden" name="ged" value="<?= e($tree->getName()) ?>">
+    <input type="hidden" name="ged" value="<?= e($tree->name()) ?>">
 
     <?php if ($is_manager) : ?>
         <div class="row form-group">
@@ -60,7 +60,7 @@
                 <?= FontAwesome::decorativeIcon('download') ?>
                 <?= I18N::translate('download') ?>
             </button>
-            <a href="<?= e(route('module', ['module' => 'clippings', 'action' => 'Show', 'ged' => $tree->getName()])) ?>" class="btn btn-secondary">
+            <a href="<?= e(route('module', ['module' => 'clippings', 'action' => 'Show', 'ged' => $tree->name()])) ?>" class="btn btn-secondary">
                 <?= FontAwesome::decorativeIcon('cancel') ?>
                 <?= I18N::translate('cancel') ?>
             </a>

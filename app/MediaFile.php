@@ -378,7 +378,7 @@ class MediaFile
     {
         return route('media-download', [
             'xref'    => $this->media->getXref(),
-            'ged'     => $this->media->getTree()->getName(),
+            'ged'     => $this->media->getTree()->name(),
             'fact_id' => $this->fact_id,
         ]);
     }
@@ -412,7 +412,7 @@ class MediaFile
         $url = $url_builder->getUrl('index.php', [
             'route'     => 'media-thumbnail',
             'xref'      => $this->media->getXref(),
-            'ged'       => $this->media->getTree()->getName(),
+            'ged'       => $this->media->getTree()->name(),
             'fact_id'   => $this->fact_id,
             'w'         => $width,
             'h'         => $height,

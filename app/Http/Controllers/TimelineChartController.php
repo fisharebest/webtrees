@@ -80,7 +80,7 @@ class TimelineChartController extends AbstractChartController
             });
 
             $remove_urls[$xref] = route('timeline', [
-                'ged'   => $tree->getName(),
+                'ged'   => $tree->name(),
                 'scale' => $scale,
                 'xrefs' => $tmp,
             ]);
@@ -93,20 +93,20 @@ class TimelineChartController extends AbstractChartController
         $title = I18N::translate('Timeline');
 
         $chart_url = route('timeline-chart', [
-            'ged'   => $tree->getName(),
+            'ged'   => $tree->name(),
             'scale' => $scale,
             'xrefs' => $xrefs,
         ]);
 
         $zoom_in_url = route('timeline', [
-            'ged'   => $tree->getName(),
+            'ged'   => $tree->name(),
             'scale' => min(self::SCALE_MAX, $scale + (int) ($scale * 0.2 + 1)),
             'xrefs' => $xrefs,
         ]);
 
         $zoom_out_url = route('timeline', [
             'route' => 'timeline',
-            'ged'   => $tree->getName(),
+            'ged'   => $tree->name(),
             'scale' => max(self::SCALE_MIN, $scale - (int) ($scale * 0.2 + 1)),
             'xrefs' => $xrefs,
         ]);

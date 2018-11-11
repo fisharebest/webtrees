@@ -9,7 +9,7 @@
 
 <h2 class="wt-page-title"><?= $title ?></h2>
 
-<form class="wt-page-content" action="<?= e(route('update-fact', ['ged' => $tree->getName(), 'xref' => $record->getXref()])) ?>" method="post">
+<form class="wt-page-content" action="<?= e(route('update-fact', ['ged' => $tree->name(), 'xref' => $record->getXref()])) ?>" method="post">
     <?= csrf_field() ?>
 
     <?php FunctionsEdit::createAddForm($tree, $fact) ?>

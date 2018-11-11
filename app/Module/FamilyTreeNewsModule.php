@@ -226,7 +226,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
         }
 
         $url = route('tree-page', [
-            'ged' => $tree->getName(),
+            'ged' => $tree->name(),
         ]);
 
         return new RedirectResponse($url);
@@ -254,7 +254,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
         ]);
 
         $url = route('tree-page', [
-            'ged' => $tree->getName(),
+            'ged' => $tree->name(),
         ]);
 
         return new RedirectResponse($url);

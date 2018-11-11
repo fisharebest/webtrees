@@ -117,7 +117,7 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
         if (Auth::isEditor($tree) && $tree->hasPendingEdit()) {
             $content = '';
             if (Auth::isModerator($tree)) {
-                $content .= '<a href="' . e(route('show-pending', ['ged' => $tree->getName()])) . '">' . I18N::translate('There are pending changes for you to moderate.') . '</a><br>';
+                $content .= '<a href="' . e(route('show-pending', ['ged' => $tree->name()])) . '">' . I18N::translate('There are pending changes for you to moderate.') . '</a><br>';
             }
             if ($sendmail === '1') {
                 $last_email_timestamp = (int) Site::getPreference('LAST_CHANGE_EMAIL');
@@ -144,12 +144,12 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
                 if ($ctype === 'gedcom' && Auth::isManager($tree)) {
                     $config_url = route('tree-page-block-edit', [
                         'block_id' => $block_id,
-                        'ged'      => $tree->getName(),
+                        'ged'      => $tree->name(),
                     ]);
                 } elseif ($ctype === 'user' && Auth::check()) {
                     $config_url = route('user-page-block-edit', [
                         'block_id' => $block_id,
-                        'ged'      => $tree->getName(),
+                        'ged'      => $tree->name(),
                     ]);
                 } else {
                     $config_url = '';

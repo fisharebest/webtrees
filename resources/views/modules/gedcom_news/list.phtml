@@ -22,9 +22,9 @@
 
         <?php if (Auth::isManager($tree)) : ?>
             <hr>
-            <form action="<?= e(route('module', ['module' => 'gedcom_news', 'action' => 'DeleteNews', 'news_id' => $article->news_id, 'ged' => $tree->getName()])) ?>" method="post">
+            <form action="<?= e(route('module', ['module' => 'gedcom_news', 'action' => 'DeleteNews', 'news_id' => $article->news_id, 'ged' => $tree->name()])) ?>" method="post">
                 <?= csrf_field() ?>
-                <a class="btn btn-link" href="<?= e(route('module', ['module' => 'gedcom_news', 'action' => 'EditNews', 'news_id' => $article->news_id, 'ged' => $tree->getName()])) ?>">
+                <a class="btn btn-link" href="<?= e(route('module', ['module' => 'gedcom_news', 'action' => 'EditNews', 'news_id' => $article->news_id, 'ged' => $tree->name()])) ?>">
                     <?= I18N::translate('Edit') ?>
                 </a>
                 |
@@ -42,7 +42,7 @@
 
 <?php if (Auth::isManager($tree)) : ?>
     <p>
-        <a href="<?= e(route('module', ['module' => 'gedcom_news', 'action' => 'EditNews', 'ged' => $tree->getName()])) ?>">
+        <a href="<?= e(route('module', ['module' => 'gedcom_news', 'action' => 'EditNews', 'ged' => $tree->name()])) ?>">
             <?= I18N::translate('Add a news article') ?>
         </a>
     </p>

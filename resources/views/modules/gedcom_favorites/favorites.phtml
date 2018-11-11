@@ -18,7 +18,7 @@
     </div>
 
     <?php if ($is_manager) : ?>
-        <form action="<?= e(route('module', ['module' => 'gedcom_favorites', 'action' => 'DeleteFavorite', 'ged' => $tree->getName(), 'favorite_id' => $favorite->favorite_id])) ?>" method="post">
+        <form action="<?= e(route('module', ['module' => 'gedcom_favorites', 'action' => 'DeleteFavorite', 'ged' => $tree->name(), 'favorite_id' => $favorite->favorite_id])) ?>" method="post">
             <?= csrf_field() ?>
             <button type="submit" class="btn btn-link btn-sm" data-confirm="<?= I18N::translate('Are you sure you want to remove this item from your list of favorites?') ?>" onclick="return confirm(this.dataset.confirm);">
                 <?= I18N::translate('Remove') ?>
@@ -35,7 +35,7 @@
         </a>
     </div>
     <div id="add_fav<?= e($block_id) ?>" style="display: none;">
-        <form action="<?= e(route('module', ['module' => 'gedcom_favorites', 'action' => 'AddFavorite', 'ged' => $tree->getName()])) ?>" method="post">
+        <form action="<?= e(route('module', ['module' => 'gedcom_favorites', 'action' => 'AddFavorite', 'ged' => $tree->name()])) ?>" method="post">
             <?= csrf_field() ?>
             <div class="add_fav_ref">
                 <input type="radio" name="fav_category" value="record" checked onclick="$('#xref<?= e($block_id) ?>').removeAttr('disabled'); $('#url, #title').attr('disabled','disabled').val('');">

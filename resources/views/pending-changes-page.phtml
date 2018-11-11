@@ -95,14 +95,14 @@
             <?php endforeach ?>
 
             <div class="d-flex justify-content-between">
-                <form action="<?= e(route('accept-all-changes', ['ged' => $tree->getName(), 'url' => $url])) ?>" method="POST">
+                <form action="<?= e(route('accept-all-changes', ['ged' => $tree->name(), 'url' => $url])) ?>" method="POST">
                     <?= csrf_field() ?>
                     <button class="btn btn-primary" type="submit">
                         <?= I18N::translate('Accept all changes') ?>
                     </button>
                 </form>
 
-                <form action="<?= e(route('reject-all-changes', ['ged' => $tree->getName(), 'url' => $url])) ?>" method="POST">
+                <form action="<?= e(route('reject-all-changes', ['ged' => $tree->name(), 'url' => $url])) ?>" method="POST">
                     <?= csrf_field() ?>
                     <button class="btn btn-secondary" type="submit" data-confirm="<?= I18N::translate('Are you sure you want to reject all the changes to this family tree?') ?>" onclick="return confirm(this.dataset.confirm);">
                         <?= I18N::translate('Reject all changes') ?>

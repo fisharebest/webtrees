@@ -72,7 +72,7 @@ class FamilyBookChartModule extends AbstractModule implements ModuleChartInterfa
     {
         return new Menu(
             $this->getTitle(),
-            route('family-book', ['ged'  => $individual->getTree()->getName(),
+            route('family-book', ['ged'  => $individual->getTree()->name(),
                                   'xref' => $individual->getXref(),
             ]),
             'menu-chart-familybook',

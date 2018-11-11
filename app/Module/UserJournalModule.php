@@ -220,7 +220,7 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
         }
 
         $url = route('user-page', [
-            'ged' => $tree->getName(),
+            'ged' => $tree->name(),
         ]);
 
         return new RedirectResponse($url);
@@ -248,7 +248,7 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
         ]);
 
         $url = route('user-page', [
-            'ged' => $tree->getName(),
+            'ged' => $tree->name(),
         ]);
 
         return new RedirectResponse($url);

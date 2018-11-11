@@ -15,7 +15,7 @@
     <div class="row form-group">
         <label class="col-sm-3 col-form-label"><?= I18N::translate('Family tree') ?></label>
         <div class="col-sm-9">
-            <?= Bootstrap4::select($trees, $tree->getName(), ['id' => 'ged', 'name' => 'ged', 'onchange' => 'this.form.submit();']) ?>
+            <?= Bootstrap4::select($trees, $tree->name(), ['id' => 'ged', 'name' => 'ged', 'onchange' => 'this.form.submit();']) ?>
         </div>
     </div>
     <div class="row form-group">

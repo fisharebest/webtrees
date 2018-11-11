@@ -43,7 +43,7 @@
                         </a>
                     </td>
                     <td>
-                        <form method="post" action="<?= e(route('module', ['module' => 'clippings', 'action' => 'Remove', 'ged' => $tree->getName(), 'xref' => $record->getXref()])) ?>">
+                        <form method="post" action="<?= e(route('module', ['module' => 'clippings', 'action' => 'Remove', 'ged' => $tree->name(), 'xref' => $record->getXref()])) ?>">
                             <?= csrf_field() ?>
                             <button type="submit" class="btn btn-link" title="<?= I18N::translate('Remove') ?>">
                                 <i class="icon-remove"></i>

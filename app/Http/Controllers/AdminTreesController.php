@@ -300,7 +300,7 @@ class AdminTreesController extends AbstractBaseController
     {
         return '<b><a href="' . e(route('record', [
                 'xref' => $xref,
-                'ged'  => $tree->getName(),
+                'ged'  => $tree->name(),
             ])) . '">' . $xref . '</a></b>';
     }
 
@@ -333,10 +333,10 @@ class AdminTreesController extends AbstractBaseController
             FlashMessages::addMessage(I18N::translate('The family tree “%s” already exists.', e($tree_name)), 'danger');
         } else {
             $tree = Tree::create($tree_name, $tree_title);
-            FlashMessages::addMessage(I18N::translate('The family tree “%s” has been created.', e($tree->getName())), 'success');
+            FlashMessages::addMessage(I18N::translate('The family tree “%s” has been created.', e($tree->name())), 'success');
         }
 
-        $url = route('admin-trees', ['ged' => $tree->getName()]);
+        $url = route('admin-trees', ['ged' => $tree->name()]);
 
         return new RedirectResponse($url);
     }
@@ -417,7 +417,7 @@ class AdminTreesController extends AbstractBaseController
         $encoding     =  $convert ? 'ANSI' : 'UTF-8';
 
         // What to call the downloaded file
-        $download_filename = $tree->getName();
+        $download_filename = $tree->name();
         if (strtolower(substr($download_filename, -4, 4)) != '.ged') {
             $download_filename .= '.ged';
         }
@@ -494,7 +494,7 @@ class AdminTreesController extends AbstractBaseController
      */
     public function exportServer(Tree $tree): RedirectResponse
     {
-        $filename = WT_DATA_DIR . $tree->getName();
+        $filename = WT_DATA_DIR . $tree->name();
 
         // Force a ".ged" suffix
         if (strtolower(substr($filename, -4)) != '.ged') {
@@ -520,7 +520,7 @@ class AdminTreesController extends AbstractBaseController
         }
 
         $url = route('admin-trees', [
-            'ged' => $tree->getName(),
+            'ged' => $tree->name(),
         ]);
 
         return new RedirectResponse($url);
@@ -567,7 +567,7 @@ class AdminTreesController extends AbstractBaseController
             }
         }
 
-        $url = route('admin-trees', ['ged' => $tree->getName()]);
+        $url = route('admin-trees', ['ged' => $tree->name()]);
 
         return new RedirectResponse($url);
     }
@@ -609,7 +609,7 @@ class AdminTreesController extends AbstractBaseController
         // Just show the current tree, the default tree, and unimported trees
         if (count($all_trees) >= $multiple_tree_threshold) {
             $all_trees = array_filter($all_trees, function (Tree $x) use ($tree): bool {
-                return $x->getPreference('imported') === '0' || $tree->id() === $x->id() || $x->getName() === Site::getPreference('DEFAULT_GEDCOM');
+                return $x->getPreference('imported') === '0' || $tree->id() === $x->id() || $x->name() === Site::getPreference('DEFAULT_GEDCOM');
             });
         }
 
@@ -786,12 +786,12 @@ class AdminTreesController extends AbstractBaseController
             FlashMessages::addMessage(I18N::translate('The family trees have been merged successfully.'), 'success');
 
             $url = route('admin-trees', [
-                'ged' => $tree2->getName(),
+                'ged' => $tree2->name(),
             ]);
         } else {
             $url = route('admin-trees-merge', [
-                'tree1_name' => $tree1->getName(),
-                'tree2_name' => $tree2->getName(),
+                'tree1_name' => $tree1->name(),
+                'tree2_name' => $tree2->name(),
             ]);
         }
 
@@ -848,7 +848,7 @@ class AdminTreesController extends AbstractBaseController
         FlashMessages::addMessage($feedback, 'success');
 
         $url = route('admin-trees-places', [
-            'ged'     => $tree->getName(),
+            'ged'     => $tree->name(),
             'replace' => $replace,
             'search'  => $search,
         ]);
@@ -1097,7 +1097,7 @@ class AdminTreesController extends AbstractBaseController
         }
 
         $gedcom = $request->get('gedcom');
-        if ($gedcom && $gedcom !== $tree->getName()) {
+        if ($gedcom && $gedcom !== $tree->name()) {
             try {
                 Database::prepare("UPDATE `##gedcom` SET gedcom_name = ? WHERE gedcom_id = ?")->execute([
                     $gedcom,
@@ -1105,7 +1105,7 @@ class AdminTreesController extends AbstractBaseController
                 ]);
                 Database::prepare("UPDATE `##site_setting` SET setting_value = ? WHERE setting_name='DEFAULT_GEDCOM' AND setting_value = ?")->execute([
                     $gedcom,
-                    $tree->getName(),
+                    $tree->name(),
                 ]);
             } catch (\Exception $ex) {
                 DebugBar::addThrowable($ex);
@@ -1116,7 +1116,7 @@ class AdminTreesController extends AbstractBaseController
 
         FlashMessages::addMessage(I18N::translate('The preferences for the family tree “%s” have been updated.', e($tree->getTitle())), 'success');
 
-        $url = route('admin-trees', ['ged' => $tree->getName()]);
+        $url = route('admin-trees', ['ged' => $tree->name()]);
 
         return new RedirectResponse($url);
     }
@@ -1547,7 +1547,7 @@ class AdminTreesController extends AbstractBaseController
             }
         }
 
-        $url = route('admin-trees-renumber', ['ged' => $tree->getName()]);
+        $url = route('admin-trees-renumber', ['ged' => $tree->name()]);
 
         return new RedirectResponse($url);
     }
@@ -1559,7 +1559,7 @@ class AdminTreesController extends AbstractBaseController
      */
     public function setDefault(Tree $tree): RedirectResponse
     {
-        Site::setPreference('DEFAULT_GEDCOM', $tree->getName());
+        Site::setPreference('DEFAULT_GEDCOM', $tree->name());
 
         /* I18N: %s is the name of a family tree */
         FlashMessages::addMessage(I18N::translate('The family tree “%s” will be shown to visitors when they first arrive at this website.', e($tree->getTitle())), 'success');
@@ -1576,7 +1576,7 @@ class AdminTreesController extends AbstractBaseController
      */
     public function synchronize(Tree $tree): RedirectResponse
     {
-        $url = route('admin-trees', ['ged' => $tree->getName()]);
+        $url = route('admin-trees', ['ged' => $tree->name()]);
 
         $gedcom_files = $this->gedcomFiles(WT_DATA_DIR);
 
@@ -1595,7 +1595,7 @@ class AdminTreesController extends AbstractBaseController
         }
 
         foreach (Tree::getAll() as $tree) {
-            if (!in_array($tree->getName(), $gedcom_files)) {
+            if (!in_array($tree->name(), $gedcom_files)) {
                 FlashMessages::addMessage(I18N::translate('The family tree “%s” has been deleted.', e($tree->getTitle())), 'success');
                 $tree->delete();
             }

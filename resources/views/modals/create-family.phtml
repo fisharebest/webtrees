@@ -5,7 +5,7 @@
 <div class="modal wt-modal-create-record" id="modal-create-family">
     <form action="<?= e(route('create-family')) ?>" id="form-create-family">
         <?= csrf_field() ?>
-        <input type="hidden" name="ged" value="<?= e($tree->getName()) ?>">
+        <input type="hidden" name="ged" value="<?= e($tree->name()) ?>">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">

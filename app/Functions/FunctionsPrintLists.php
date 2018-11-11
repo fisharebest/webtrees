@@ -57,7 +57,7 @@ class FunctionsPrintLists
                 }
                 $url = route($route, [
                     'surname' => $surn,
-                    'ged'     => $tree->getName(),
+                    'ged'     => $tree->name(),
                 ]);
                 $html .= '<a style="font-size:' . $size . '%" href="' . e($url) . '">';
                 if ($totals) {
@@ -91,12 +91,12 @@ class FunctionsPrintLists
             if ($surn) {
                 $url = route($route, [
                     'surname' => $surn,
-                    'ged'     => $tree->getName(),
+                    'ged'     => $tree->name(),
                 ]);
             } else {
                 $url = route($route, [
                     'alpha' => ',',
-                    'ged'   => $tree->getName(),
+                    'ged'   => $tree->name(),
                 ]);
             }
             // If all the surnames are just case variants, then merge them into one

@@ -54,7 +54,7 @@ class HomePageController extends AbstractBaseController
         return $this->viewResponse('modules/edit-block-config', [
             'block'      => $block,
             'block_id'   => $block_id,
-            'cancel_url' => route('tree-page', ['ged' => $tree->getName()]),
+            'cancel_url' => route('tree-page', ['ged' => $tree->name()]),
             'title'      => $title,
             'tree'       => $tree,
         ]);
@@ -76,7 +76,7 @@ class HomePageController extends AbstractBaseController
 
         $block->saveBlockConfiguration($request, $block_id);
 
-        return new RedirectResponse(route('tree-page', ['ged' => $tree->getName()]));
+        return new RedirectResponse(route('tree-page', ['ged' => $tree->name()]));
     }
 
     /**
@@ -132,7 +132,7 @@ class HomePageController extends AbstractBaseController
         return $this->viewResponse('modules/edit-block-config', [
             'block'      => $block,
             'block_id'   => $block_id,
-            'cancel_url' => route('user-page', ['ged' => $tree->getName()]),
+            'cancel_url' => route('user-page', ['ged' => $tree->name()]),
             'title'      => $title,
             'tree'       => $tree,
         ]);
@@ -154,7 +154,7 @@ class HomePageController extends AbstractBaseController
 
         $block->saveBlockConfiguration($request, $block_id);
 
-        return new RedirectResponse(route('user-page', ['ged' => $tree->getName()]));
+        return new RedirectResponse(route('user-page', ['ged' => $tree->name()]));
     }
 
     /**
@@ -316,8 +316,8 @@ class HomePageController extends AbstractBaseController
         $side_blocks = $this->getBlocksForTreePage($tree->id(), Auth::accessLevel($tree), 'side');
         $all_blocks  = $this->getAvailableTreeBlocks();
         $title       = I18N::translate('Change the “Home page” blocks');
-        $url_cancel  = route('tree-page', ['ged' => $tree->getName()]);
-        $url_save    = route('tree-page-update', ['ged' => $tree->getName()]);
+        $url_cancel  = route('tree-page', ['ged' => $tree->name()]);
+        $url_save    = route('tree-page-update', ['ged' => $tree->name()]);
 
         return $this->viewResponse('edit-blocks-page', [
             'all_blocks'  => $all_blocks,
@@ -352,7 +352,7 @@ class HomePageController extends AbstractBaseController
 
         $this->updateTreeBlocks($tree->id(), $main_blocks, $side_blocks);
 
-        return new RedirectResponse(route('tree-page', ['ged' => $tree->getName()]));
+        return new RedirectResponse(route('tree-page', ['ged' => $tree->name()]));
     }
 
     /**
@@ -479,8 +479,8 @@ class HomePageController extends AbstractBaseController
         $side_blocks = $this->getBlocksForUserPage($tree->id(), $user->getUserId(), Auth::accessLevel($tree, $user), 'side');
         $all_blocks  = $this->getAvailableUserBlocks();
         $title       = I18N::translate('Change the “My page” blocks');
-        $url_cancel  = route('user-page', ['ged' => $tree->getName()]);
-        $url_save    = route('user-page-update', ['ged' => $tree->getName()]);
+        $url_cancel  = route('user-page', ['ged' => $tree->name()]);
+        $url_save    = route('user-page-update', ['ged' => $tree->name()]);
 
         return $this->viewResponse('edit-blocks-page', [
             'all_blocks'  => $all_blocks,
@@ -516,7 +516,7 @@ class HomePageController extends AbstractBaseController
 
         $this->updateUserBlocks($user->getUserId(), $main_blocks, $side_blocks);
 
-        return new RedirectResponse(route('user-page', ['ged' => $tree->getName()]));
+        return new RedirectResponse(route('user-page', ['ged' => $tree->name()]));
     }
 
     /**

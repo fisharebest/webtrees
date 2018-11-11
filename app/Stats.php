@@ -183,7 +183,7 @@ class Stats
      */
     public function gedcomFilename(): string
     {
-        return $this->tree->getName();
+        return $this->tree->name();
     }
 
     /**
@@ -6110,7 +6110,7 @@ class Stats
                     if ($type == 'list') {
                         $content .= '<br>';
                     }
-                    $content .= '<a href="' . e(route('message', ['to'  => $user->getUserName(), 'ged' => $this->tree->getName()])) . '" class="btn btn-link" title="' . I18N::translate('Send a message') . '">' . view('icons/email') . '</a>';
+                    $content .= '<a href="' . e(route('message', ['to'  => $user->getUserName(), 'ged' => $this->tree->name()])) . '" class="btn btn-link" title="' . I18N::translate('Send a message') . '">' . view('icons/email') . '</a>';
                 }
                 if ($type == 'list') {
                     $content .= '</li>';

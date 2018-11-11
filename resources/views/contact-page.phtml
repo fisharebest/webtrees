@@ -4,7 +4,7 @@
 
 <form method="post" action="<?= e(route('contact')) ?>">
     <?= csrf_field() ?>
-    <input type="hidden" name="ged" value="<?= e($tree->getName()) ?>">
+    <input type="hidden" name="ged" value="<?= e($tree->name()) ?>">
     <input type="hidden" name="url" value="<?= e($url) ?>">
 
     <div class="form-group row">

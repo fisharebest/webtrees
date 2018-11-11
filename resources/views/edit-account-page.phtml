@@ -24,7 +24,7 @@
 
 <form class="wt-page-options wt-page-options-my-account" method="post" onsubmit="return checkform(this);">
     <?= csrf_field() ?>
-    <input type="hidden" name="ged" value="<?= e($tree->getName()) ?>">
+    <input type="hidden" name="ged" value="<?= e($tree->name()) ?>">
 
     <div class="row form-group">
         <label class="col-sm-3 col-form-label wt-page-options-label" for="user-name">
@@ -190,7 +190,7 @@
 </form>
 
 <?php if ($show_delete_option) : ?>
-    <form action="<?= e(route('delete-account', ['ged' => $tree->getName()])) ?>" method="post">
+    <form action="<?= e(route('delete-account', ['ged' => $tree->name()])) ?>" method="post">
         <?= csrf_field() ?>
         <div class="row form-group">
             <div class="col-sm-3 wt-page-options-label"></div>

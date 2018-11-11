@@ -144,7 +144,7 @@ class AdminUpgradeController extends AbstractBaseController
         foreach (Tree::getAll() as $tree) {
             $route = route('upgrade', [
                 'step' => 'Export',
-                'ged'  => $tree->getName(),
+                'ged'  => $tree->name(),
             ]);
 
             $export_steps[$route] = I18N::translate('Export all the family trees to GEDCOM files…') . ' ' . e($tree->getTitle());
@@ -204,7 +204,7 @@ class AdminUpgradeController extends AbstractBaseController
      */
     private function wizardStepExport(Tree $tree): Response
     {
-        $filename = WT_DATA_DIR . $tree->getName() . date('-Y-m-d') . '.ged';
+        $filename = WT_DATA_DIR . $tree->name() . date('-Y-m-d') . '.ged';
 
         try {
             $stream = fopen($filename, 'w');

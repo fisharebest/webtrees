@@ -66,7 +66,7 @@ class MissingFactsReportModule extends AbstractModule implements ModuleReportInt
     {
         return new Menu(
             $this->getTitle(),
-            route('report-setup', ['ged'    => $tree->getName(),
+            route('report-setup', ['ged'    => $tree->name(),
                                    'report' => $this->getName(),
             ]),
             'menu-report-' . $this->getName(),

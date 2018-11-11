@@ -82,7 +82,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
                     $title     = I18N::translate('Pedigree of %s', $person->getFullName());
                     $chart_url = route('pedigree-chart', [
                         'xref'        => $person->getXref(),
-                        'ged'         => $person->getTree()->getName(),
+                        'ged'         => $person->getTree()->name(),
                         'generations' => 3,
                         'layout'      => PedigreeChartController::PORTRAIT,
                     ]);
@@ -95,7 +95,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
                     $title     = I18N::translate('Descendants of %s', $person->getFullName());
                     $chart_url = route('descendants-chart', [
                         'xref'        => $person->getXref(),
-                        'ged'         => $person->getTree()->getName(),
+                        'ged'         => $person->getTree()->name(),
                         'generations' => 2,
                         'chart_style' => 0,
                     ]);
@@ -108,7 +108,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
                     $title     = I18N::translate('Hourglass chart of %s', $person->getFullName());
                     $chart_url = route('hourglass-chart', [
                         'xref'        => $person->getXref(),
-                        'ged'         => $person->getTree()->getName(),
+                        'ged'         => $person->getTree()->name(),
                         'generations' => 2,
                         'layout'      => PedigreeChartController::PORTRAIT,
                     ]);
@@ -135,12 +135,12 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
             if ($ctype === 'gedcom' && Auth::isManager($tree)) {
                 $config_url = route('tree-page-block-edit', [
                     'block_id' => $block_id,
-                    'ged'      => $tree->getName(),
+                    'ged'      => $tree->name(),
                 ]);
             } elseif ($ctype === 'user' && Auth::check()) {
                 $config_url = route('user-page-block-edit', [
                     'block_id' => $block_id,
-                    'ged'      => $tree->getName(),
+                    'ged'      => $tree->name(),
                 ]);
             } else {
                 $config_url = '';

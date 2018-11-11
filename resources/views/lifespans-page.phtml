@@ -8,7 +8,7 @@
 
 <form class="wt-page-options wt-page-options-lifespans-chart d-print-none">
     <input type="hidden" name="route" value="lifespans">
-    <input type="hidden" name="ged" value="<?= e($tree->getName()) ?>">
+    <input type="hidden" name="ged" value="<?= e($tree->name()) ?>">
 
     <?php foreach ($xrefs as $xref) : ?>
     <input name="xrefs[]" type="hidden" value="<?= e($xref) ?>">
@@ -67,7 +67,7 @@
             <button type="submit" class="btn btn-primary" type="submit">
                 <?= /* I18N: A button label. */ I18N::translate('add') ?>
             </button>
-            <a class="btn btn-secondary" href="<?= e(route('lifespans', ['ged' => $tree->getName()])) ?>">
+            <a class="btn btn-secondary" href="<?= e(route('lifespans', ['ged' => $tree->name()])) ?>">
                 <?= /* I18N: A button label. */ I18N::translate('reset') ?>
             </a>
         </div>
@@ -75,4 +75,4 @@
 
 </form>
 
-<div class="wt-ajax-load wt-page-content wt-chart wt-timeline-chart" data-ajax-url="<?= e(route('lifespans-chart', ['ged' => $tree->getName(), 'xrefs' => $xrefs, 'subtitle' => $subtitle])) ?>"></div>
+<div class="wt-ajax-load wt-page-content wt-chart wt-timeline-chart" data-ajax-url="<?= e(route('lifespans-chart', ['ged' => $tree->name(), 'xrefs' => $xrefs, 'subtitle' => $subtitle])) ?>"></div>

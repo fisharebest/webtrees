@@ -188,7 +188,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
             }
         }
 
-        $url = route('tree-page', ['ged' => $tree->getName()]);
+        $url = route('tree-page', ['ged' => $tree->name()]);
 
         return new RedirectResponse($url);
     }
@@ -213,7 +213,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
             ]);
         }
 
-        $url = route('tree-page', ['ged' => $tree->getName()]);
+        $url = route('tree-page', ['ged' => $tree->name()]);
 
         return new RedirectResponse($url);
     }

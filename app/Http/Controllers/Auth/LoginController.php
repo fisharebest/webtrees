@@ -51,7 +51,7 @@ class LoginController extends AbstractBaseController
     {
         // Already logged in?
         if (Auth::check()) {
-            $ged = $tree !== null ? $tree->getName() : '';
+            $ged = $tree !== null ? $tree->name() : '';
 
             return new RedirectResponse(route('user-page', ['ged' => $ged]));
         }
@@ -207,6 +207,6 @@ class LoginController extends AbstractBaseController
             return new RedirectResponse(route('tree-page'));
         }
 
-        return new RedirectResponse(route('tree-page', ['ged' => $tree->getName()]));
+        return new RedirectResponse(route('tree-page', ['ged' => $tree->name()]));
     }
 }

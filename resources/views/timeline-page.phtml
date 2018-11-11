@@ -7,7 +7,7 @@
 
 <form class="wt-page-options wt-page-options-timeline-chart d-print-none">
     <input type="hidden" name="route" value="timeline">
-    <input type="hidden" name="ged" value="<?= e($tree->getName()) ?>">
+    <input type="hidden" name="ged" value="<?= e($tree->name()) ?>">
     <input type="hidden" name="scale" value="<?= e($scale) ?>">
 
     <?php foreach ($individuals as $individual) : ?>
@@ -31,7 +31,7 @@
         <div class="col-sm-9 wt-page-options-value">
             <input class="btn btn-primary" type="submit" value="<?= /* I18N: A button label. */
             I18N::translate('add') ?>">
-            <a class="btn btn-secondary" href="<?= e(route('timeline', ['ged' => $tree->getName()])) ?>">
+            <a class="btn btn-secondary" href="<?= e(route('timeline', ['ged' => $tree->name()])) ?>">
                 <?= /* I18N: A button label. */ I18N::translate('reset') ?>
             </a>
         </div>

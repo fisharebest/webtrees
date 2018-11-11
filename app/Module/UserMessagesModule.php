@@ -69,9 +69,9 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
         }
 
         if ($request->get('ctype') === 'user') {
-            $url = route('user-page', ['ged' => $tree->getName()]);
+            $url = route('user-page', ['ged' => $tree->name()]);
         } else {
-            $url = route('tree-page', ['ged' => $tree->getName()]);
+            $url = route('tree-page', ['ged' => $tree->name()]);
         }
 
         return new RedirectResponse($url);
@@ -102,10 +102,10 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
 
         $content = '';
         if (!empty($users)) {
-            $url = route('user-page', ['ged' => $tree->getName()]);
+            $url = route('user-page', ['ged' => $tree->name()]);
             $content .= '<form onsubmit="return $(&quot;#to&quot;).val() !== &quot;&quot;">';
             $content .= '<input type="hidden" name="route" value="message">';
-            $content .= '<input type="hidden" name="ged" value="' . e($tree->getName()) . '">';
+            $content .= '<input type="hidden" name="ged" value="' . e($tree->name()) . '">';
             $content .= '<input type="hidden" name="url" value="' . e($url) . '">';
             $content .= '<label for="to">' . I18N::translate('Send a message') . '</label>';
             $content .= '<select id="to" name="to">';
@@ -121,7 +121,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
                 'action' => 'DeleteMessage',
                 'module' => $this->getName(),
                 'ctype'  => $ctype,
-                'ged'    => $tree->getName(),
+                'ged'    => $tree->name(),
             ])) . '" data-confirm="' . I18N::translate('Are you sure you want to delete this message? It cannot be retrieved later.') . '" onsubmit="return confirm(this.dataset.confirm);">';
         $content .= csrf_field();
 
@@ -158,7 +158,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
                     $reply_url = route('message', [
                         'to'      => $user->getUserName(),
                         'subject' => $message->subject,
-                        'ged'     => $tree->getName(),
+                        'ged'     => $tree->name(),
                     ]);
                     $content .= '<a class="btn btn-primary" href="' . e($reply_url) . '" title="' . I18N::translate('Reply') . '">' . I18N::translate('Reply') . '</a> ';
                 }
