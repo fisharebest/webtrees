@@ -184,7 +184,7 @@ class Individual extends GedcomRecord
                     1 => [],
                 ];
                 foreach ($user_individual->getFacts('FAM[CS]', false, Auth::PRIV_HIDE) as $fact) {
-                    $family = $fact->getTarget();
+                    $family = $fact->target();
                     if ($family instanceof Family) {
                         $cache[1][] = $family;
                     }
@@ -212,7 +212,7 @@ class Individual extends GedcomRecord
                     // Add FAM->INDI links
                     foreach ($cache[$n - 1] as $family) {
                         foreach ($family->getFacts('HUSB|WIFE|CHIL', false, Auth::PRIV_HIDE) as $fact) {
-                            $individual = $fact->getTarget();
+                            $individual = $fact->target();
                             // Don’t backtrack
                             if ($individual instanceof Individual && !in_array($individual, $cache[$n - 2], true)) {
                                 $cache[$n][] = $individual;
@@ -226,7 +226,7 @@ class Individual extends GedcomRecord
                     // Add INDI->FAM links
                     foreach ($cache[$n - 1] as $individual) {
                         foreach ($individual->getFacts('FAM[CS]', false, Auth::PRIV_HIDE) as $fact) {
-                            $family = $fact->getTarget();
+                            $family = $fact->target();
                             // Don’t backtrack
                             if ($family instanceof Family && !in_array($family, $cache[$n - 2], true)) {
                                 $cache[$n][] = $family;
@@ -423,7 +423,7 @@ class Individual extends GedcomRecord
     public function findHighlightedMediaFile()
     {
         foreach ($this->getFacts('OBJE') as $fact) {
-            $media = $fact->getTarget();
+            $media = $fact->target();
             if ($media instanceof Media) {
                 foreach ($media->mediaFiles() as $media_file) {
                     if ($media_file->isImage() && !$media_file->isExternal()) {
@@ -823,7 +823,7 @@ class Individual extends GedcomRecord
 
         $families = [];
         foreach ($this->getFacts('FAMS', false, $access_level, $SHOW_PRIVATE_RELATIONSHIPS) as $fact) {
-            $family = $fact->getTarget();
+            $family = $fact->target();
             if ($family instanceof Family && ($SHOW_PRIVATE_RELATIONSHIPS || $family->canShow($access_level))) {
                 $families[] = $family;
             }
@@ -889,7 +889,7 @@ class Individual extends GedcomRecord
 
         $families = [];
         foreach ($this->getFacts('FAMC', false, $access_level, $SHOW_PRIVATE_RELATIONSHIPS) as $fact) {
-            $family = $fact->getTarget();
+            $family = $fact->target();
             if ($family instanceof Family && ($SHOW_PRIVATE_RELATIONSHIPS || $family->canShow($access_level))) {
                 $families[] = $family;
             }

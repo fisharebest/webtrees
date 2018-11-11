@@ -201,7 +201,7 @@ class Fact
      *
      * @return Individual|Family|Source|Repository|Media|Note|null
      */
-    public function getTarget()
+    public function target()
     {
         $xref = trim($this->value(), '@');
         switch ($this->tag) {
@@ -507,7 +507,7 @@ class Fact
     public function summary(): string
     {
         $attributes = [];
-        $target     = $this->getTarget();
+        $target     = $this->target();
         if ($target instanceof GedcomRecord) {
             $attributes[] = $target->getFullName();
         } else {

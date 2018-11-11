@@ -12,10 +12,10 @@
                 <input type="hidden" name="order[]" value="<?= $fact->getFactId() ?>">
                 <h3 class="card-header">
                     <?= FontAwesome::semanticIcon('drag-handle', '') ?>
-                    <?= $fact->getTarget()->getFullName() ?>
+                    <?= $fact->target()->getFullName() ?>
                 </h3>
                 <div class="card-body">
-                    <?= $fact->getTarget()->displayImage(100, 100, "contain") ?>
+                    <?= $fact->target()->displayImage(100, 100, "contain") ?>
                 </div>
             </div>
         <?php endforeach ?>

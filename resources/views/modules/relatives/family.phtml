@@ -16,7 +16,7 @@
         $found = false;
         foreach ($family->getFacts('HUSB', false, $fam_access_level) as $fact) {
             $found |= !$fact->isPendingDeletion();
-            $person = $fact->getTarget();
+            $person = $fact->target();
             if ($person instanceof Individual) {
                 $row_class = 'wt-gender-' . $person->getSex();
                 if ($fact->isPendingAddition()) {
@@ -52,7 +52,7 @@
 
         $found = false;
         foreach ($family->getFacts('WIFE', false, $fam_access_level) as $fact) {
-            $person = $fact->getTarget();
+            $person = $fact->target();
             if ($person instanceof Individual) {
                 $found |= !$fact->isPendingDeletion();
                 $row_class = 'wt-gender-' . $person->getSex();
@@ -133,7 +133,7 @@
         ///// CHIL /////
         $child_number = 0;
         foreach ($family->getFacts('CHIL', false, $fam_access_level) as $fact) {
-            $person = $fact->getTarget();
+            $person = $fact->target();
             if ($person instanceof Individual) {
                 $row_class = 'wt-gender-' . $person->getSex();
                 if ($fact->isPendingAddition()) {

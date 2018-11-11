@@ -106,7 +106,7 @@ class IndividualController extends AbstractBaseController
         // What images are linked to this individual
         $individual_media = [];
         foreach ($individual->getFacts() as $fact) {
-            $media_object = $fact->getTarget();
+            $media_object = $fact->target();
             if ($media_object instanceof Media) {
                 $individual_media[] = $media_object->firstImageFile();
             }

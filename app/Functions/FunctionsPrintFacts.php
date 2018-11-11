@@ -282,7 +282,7 @@ class FunctionsPrintFacts
                 echo '<div class="field">', Filter::expandUrls($fact->value(), $tree), '</div>';
                 break;
             case 'REPO':
-                $repository = $fact->getTarget();
+                $repository = $fact->target();
                 if ($repository instanceof Repository) {
                     echo '<div><a class="field" href="', e($repository->url()), '">', $repository->getFullName(), '</a></div>';
                 } else {

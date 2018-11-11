@@ -413,7 +413,7 @@ class AdminController extends AbstractBaseController
                 if ($fact1->getFactId() === $fact_id) {
                     $individual->updateFact($fact_id, $fact1->getGedcom() . "\n2 OBJE @" . $obje_xref . '@', false);
                     foreach ($individual->getFacts('OBJE') as $fact2) {
-                        if ($fact2->getTarget() === $media) {
+                        if ($fact2->target() === $media) {
                             $individual->deleteFact($fact2->getFactId(), false);
                         }
                     }
@@ -504,7 +504,7 @@ class AdminController extends AbstractBaseController
             // The link to the media object may have been deleted in a pending change.
             $deleted = true;
             foreach ($individual->getFacts('OBJE') as $fact) {
-                if ($fact->getTarget() === $media && !$fact->isPendingDeletion()) {
+                if ($fact->target() === $media && !$fact->isPendingDeletion()) {
                     $deleted = false;
                 }
             }

@@ -167,7 +167,7 @@ class EditFamilyController extends AbstractEditController
         // Insert new child at the right place
         $done = false;
         foreach ($family->getFacts('CHIL') as $fact) {
-            $old_child = $fact->getTarget();
+            $old_child = $fact->target();
             if ($old_child  instanceof Individual && Date::compare($new_child->getEstimatedBirthDate(), $old_child->getEstimatedBirthDate()) < 0) {
                 // Insert before this child
                 $family->updateFact($fact->getFactId(), '1 CHIL @' . $new_child->getXref() . "@\n" . $fact->getGedcom(), !$keep_chan);
@@ -344,13 +344,13 @@ class EditFamilyController extends AbstractEditController
             if ($old_father) {
                 // Remove old FAMS link
                 foreach ($old_father->getFacts('FAMS') as $fact) {
-                    if ($fact->getTarget() === $family) {
+                    if ($fact->target() === $family) {
                         $old_father->deleteFact($fact->getFactId(), true);
                     }
                 }
                 // Remove old HUSB link
                 foreach ($family->getFacts('HUSB|WIFE') as $fact) {
-                    if ($fact->getTarget() === $old_father) {
+                    if ($fact->target() === $old_father) {
                         $family->deleteFact($fact->getFactId(), true);
                     }
                 }
@@ -367,13 +367,13 @@ class EditFamilyController extends AbstractEditController
             if ($old_mother) {
                 // Remove old FAMS link
                 foreach ($old_mother->getFacts('FAMS') as $fact) {
-                    if ($fact->getTarget() === $family) {
+                    if ($fact->target() === $family) {
                         $old_mother->deleteFact($fact->getFactId(), true);
                     }
                 }
                 // Remove old WIFE link
                 foreach ($family->getFacts('HUSB|WIFE') as $fact) {
-                    if ($fact->getTarget() === $old_mother) {
+                    if ($fact->target() === $old_mother) {
                         $family->deleteFact($fact->getFactId(), true);
                     }
                 }
@@ -390,13 +390,13 @@ class EditFamilyController extends AbstractEditController
             if ($old_child && !in_array($old_child, $new_children)) {
                 // Remove old FAMC link
                 foreach ($old_child->getFacts('FAMC') as $fact) {
-                    if ($fact->getTarget() === $family) {
+                    if ($fact->target() === $family) {
                         $old_child->deleteFact($fact->getFactId(), true);
                     }
                 }
                 // Remove old CHIL link
                 foreach ($family->getFacts('CHIL') as $fact) {
-                    if ($fact->getTarget() === $old_child) {
+                    if ($fact->target() === $old_child) {
                         $family->deleteFact($fact->getFactId(), true);
                     }
                 }

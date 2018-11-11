@@ -37,9 +37,9 @@
                                 </td>
                                 <td>
                                     <div class="gedcom-data" dir="ltr"><?= e($fact->getGedcom()) ?></div>
-                                    <?php if ($fact->getTarget() instanceof GedcomRecord) : ?>
-                                        <a href="<?= e($fact->getTarget()->url()) ?>">
-                                            <?= $fact->getTarget()->getFullName() ?>
+                                    <?php if ($fact->target() instanceof GedcomRecord) : ?>
+                                        <a href="<?= e($fact->target()->url()) ?>">
+                                            <?= $fact->target()->getFullName() ?>
                                         </a>
                                     <?php endif ?>
                                 </td>
@@ -84,9 +84,9 @@
                                         </td>
                                         <td>
                                             <div class="gedcom-data" dir="ltr"><?= e($fact->getGedcom()) ?></div>
-                                            <?php if ($fact->getTarget() instanceof GedcomRecord) : ?>
-                                                <a href="<?= e($fact->getTarget()->url()) ?>">
-                                                    <?= $fact->getTarget()->getFullName() ?>
+                                            <?php if ($fact->target() instanceof GedcomRecord) : ?>
+                                                <a href="<?= e($fact->target()->url()) ?>">
+                                                    <?= $fact->target()->getFullName() ?>
                                                 </a>
                                             <?php endif ?>
                                         </td>
@@ -130,9 +130,9 @@
                                         </td>
                                         <td>
                                             <div class="gedcom-data" dir="ltr"><?= e($fact->getGedcom()) ?></div>
-                                            <?php if ($fact->getTarget() instanceof GedcomRecord) : ?>
-                                                <a href="<?= e($fact->getTarget()->url()) ?>">
-                                                    <?= $fact->getTarget()->getFullName() ?>
+                                            <?php if ($fact->target() instanceof GedcomRecord) : ?>
+                                                <a href="<?= e($fact->target()->url()) ?>">
+                                                    <?= $fact->target()->getFullName() ?>
                                                 </a>
                                             <?php endif ?>
                                         </td>

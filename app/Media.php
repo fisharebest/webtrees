@@ -138,7 +138,7 @@ class Media extends GedcomRecord
         $fact = $this->getFirstFact('NOTE');
         if ($fact instanceof Fact) {
             // Link to note object
-            $note = $fact->getTarget();
+            $note = $fact->target();
             if ($note instanceof Note) {
                 return $note->getNote();
             }
