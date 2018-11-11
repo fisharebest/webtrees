@@ -33,7 +33,7 @@
                         <?php foreach ($facts as $fact_id => $fact) : ?>
                             <tr>
                                 <td>
-                                    <input type="checkbox" name="keep1[]" value="<?= $fact->getFactId() ?>" checked>
+                                    <input type="checkbox" name="keep1[]" value="<?= $fact->id() ?>" checked>
                                 </td>
                                 <td>
                                     <div class="gedcom-data" dir="ltr"><?= e($fact->getGedcom()) ?></div>
@@ -80,7 +80,7 @@
                                 <?php foreach ($facts1 as $fact_id => $fact) : ?>
                                     <tr>
                                         <td>
-                                            <input type="checkbox" name="keep1[]" value="<?= $fact->getFactId() ?>" checked>
+                                            <input type="checkbox" name="keep1[]" value="<?= $fact->id() ?>" checked>
                                         </td>
                                         <td>
                                             <div class="gedcom-data" dir="ltr"><?= e($fact->getGedcom()) ?></div>
@@ -126,7 +126,7 @@
                                 <?php foreach ($facts2 as $fact_id => $fact) : ?>
                                     <tr>
                                         <td>
-                                            <input type="checkbox" name="keep2[]" value="<?= $fact->getFactId() ?>" checked>
+                                            <input type="checkbox" name="keep2[]" value="<?= $fact->id() ?>" checked>
                                         </td>
                                         <td>
                                             <div class="gedcom-data" dir="ltr"><?= e($fact->getGedcom()) ?></div>

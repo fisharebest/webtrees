@@ -74,7 +74,7 @@ class EditIndividualController extends AbstractEditController
         // Split facts into OBJE and other
         foreach ($individual->getFacts() as $fact) {
             if ($fact->getTag() === 'OBJE') {
-                $sort_facts[$fact->getFactId()] = $fact->getGedcom();
+                $sort_facts[$fact->id()] = $fact->getGedcom();
             } else {
                 $keep_facts[] = $fact->getGedcom();
             }
@@ -135,7 +135,7 @@ class EditIndividualController extends AbstractEditController
         // Split facts into NAME and other
         foreach ($individual->getFacts() as $fact) {
             if ($fact->getTag() === 'NAME') {
-                $sort_facts[$fact->getFactId()] = $fact->getGedcom();
+                $sort_facts[$fact->id()] = $fact->getGedcom();
             } else {
                 $keep_facts[] = $fact->getGedcom();
             }
@@ -196,7 +196,7 @@ class EditIndividualController extends AbstractEditController
         // Split facts into FAMS and other
         foreach ($individual->getFacts() as $fact) {
             if ($fact->getTag() === 'FAMS') {
-                $sort_facts[$fact->getFactId()] = $fact->getGedcom();
+                $sort_facts[$fact->id()] = $fact->getGedcom();
             } else {
                 $keep_facts[] = $fact->getGedcom();
             }
@@ -587,7 +587,7 @@ class EditIndividualController extends AbstractEditController
 
         // Find the fact to edit
         foreach ($individual->getFacts() as $fact) {
-            if ($fact->getFactId() === $fact_id && $fact->canEdit()) {
+            if ($fact->id() === $fact_id && $fact->canEdit()) {
                 return $this->viewResponse('edit/new-individual', [
                     'tree'       => $tree,
                     'title'      => I18N::translate('Edit the name'),
@@ -715,7 +715,7 @@ class EditIndividualController extends AbstractEditController
         $fact_id = '';
         foreach ($individual->getFacts('FAMC') as $fact) {
             if ($family === $fact->target()) {
-                $fact_id = $fact->getFactId();
+                $fact_id = $fact->id();
                 break;
             }
         }

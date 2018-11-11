@@ -9,7 +9,7 @@
     <div class="wt-sortable-list">
         <?php foreach ($individual->getFacts('OBJE') as $fact) : ?>
             <div class="card mb-2 wt-sortable-item">
-                <input type="hidden" name="order[]" value="<?= $fact->getFactId() ?>">
+                <input type="hidden" name="order[]" value="<?= $fact->id() ?>">
                 <h3 class="card-header">
                     <?= FontAwesome::semanticIcon('drag-handle', '') ?>
                     <?= $fact->target()->getFullName() ?>

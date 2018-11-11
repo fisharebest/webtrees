@@ -410,11 +410,11 @@ class AdminController extends AbstractBaseController
 
         if ($individual !== null && $media !== null) {
             foreach ($individual->getFacts() as $fact1) {
-                if ($fact1->getFactId() === $fact_id) {
+                if ($fact1->id() === $fact_id) {
                     $individual->updateFact($fact_id, $fact1->getGedcom() . "\n2 OBJE @" . $obje_xref . '@', false);
                     foreach ($individual->getFacts('OBJE') as $fact2) {
                         if ($fact2->target() === $media) {
-                            $individual->deleteFact($fact2->getFactId(), false);
+                            $individual->deleteFact($fact2->id(), false);
                         }
                     }
                     break;
@@ -760,19 +760,19 @@ class AdminController extends AbstractBaseController
 
         foreach ($record1->getFacts() as $fact) {
             if (!$fact->isPendingDeletion() && $fact->getTag() !== 'CHAN') {
-                $facts1[$fact->getFactId()] = $fact;
+                $facts1[$fact->id()] = $fact;
             }
         }
 
         foreach ($record2->getFacts() as $fact) {
             if (!$fact->isPendingDeletion() && $fact->getTag() !== 'CHAN') {
-                $facts2[$fact->getFactId()] = $fact;
+                $facts2[$fact->id()] = $fact;
             }
         }
 
         foreach ($facts1 as $id1 => $fact1) {
             foreach ($facts2 as $id2 => $fact2) {
-                if ($fact1->getFactId() === $fact2->getFactId()) {
+                if ($fact1->id() === $fact2->getFactId()) {
                     $facts[] = $fact1;
                     unset($facts1[$id1]);
                     unset($facts2[$id2]);
@@ -814,13 +814,13 @@ class AdminController extends AbstractBaseController
 
         foreach ($record1->getFacts() as $fact) {
             if (!$fact->isPendingDeletion() && $fact->getTag() !== 'CHAN') {
-                $facts1[$fact->getFactId()] = $fact;
+                $facts1[$fact->id()] = $fact;
             }
         }
 
         foreach ($record2->getFacts() as $fact) {
             if (!$fact->isPendingDeletion() && $fact->getTag() !== 'CHAN') {
-                $facts2[$fact->getFactId()] = $fact;
+                $facts2[$fact->id()] = $fact;
             }
         }
 

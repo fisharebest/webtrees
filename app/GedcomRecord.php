@@ -1268,7 +1268,7 @@ class GedcomRecord
         // Replacing (or deleting) an existing fact
         foreach ($this->getFacts('', false, Auth::PRIV_HIDE) as $fact) {
             if (!$fact->isPendingDeletion()) {
-                if ($fact->getFactId() === $fact_id) {
+                if ($fact->id() === $fact_id) {
                     if ($gedcom !== '') {
                         $new_gedcom .= "\n" . $gedcom;
                     }
@@ -1401,7 +1401,7 @@ class GedcomRecord
 
         foreach ($this->getFacts() as $fact) {
             if ($fact->value() === $value) {
-                $this->deleteFact($fact->getFactId(), $update_chan);
+                $this->deleteFact($fact->id(), $update_chan);
             } elseif (preg_match_all('/\n(\d) ' . WT_REGEX_TAG . ' ' . $value . '/', $fact->getGedcom(), $matches, PREG_SET_ORDER)) {
                 $gedcom = $fact->getGedcom();
                 foreach ($matches as $match) {
@@ -1409,7 +1409,7 @@ class GedcomRecord
                     $next_levels = '[' . $next_level . '-9]';
                     $gedcom      = preg_replace('/' . $match[0] . '(\n' . $next_levels . '.*)*/', '', $gedcom);
                 }
-                $this->updateFact($fact->getFactId(), $gedcom, $update_chan);
+                $this->updateFact($fact->id(), $gedcom, $update_chan);
             }
         }
     }

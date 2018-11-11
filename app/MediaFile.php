@@ -184,7 +184,7 @@ class MediaFile
     public function isPendingAddition(): bool
     {
         foreach ($this->media->getFacts() as $fact) {
-            if ($fact->getFactId() === $this->fact_id) {
+            if ($fact->id() === $this->fact_id) {
                 return $fact->isPendingAddition();
             }
         }
@@ -198,7 +198,7 @@ class MediaFile
     public function isPendingDeletion(): bool
     {
         foreach ($this->media->getFacts() as $fact) {
-            if ($fact->getFactId() === $this->fact_id) {
+            if ($fact->id() === $this->fact_id) {
                 return $fact->isPendingDeletion();
             }
         }

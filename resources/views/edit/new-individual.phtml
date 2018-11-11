@@ -25,7 +25,7 @@ $surname_tradition = SurnameTradition::create($tree->getPreference('SURNAME_TRAD
 
 if ($name_fact !== null) {
     // Editing an existing name
-    $name_fact_id = $name_fact->getFactId();
+    $name_fact_id = $name_fact->id();
     $namerec      = $name_fact->getGedcom();
     $name_fields  = [
         'NAME' => $name_fact->value(),
@@ -333,7 +333,7 @@ $bdm = ''; // used to copy '1 SOUR' to '2 SOUR' for BIRT DEAT MARR
             </a>
 
             <?php if ($name_fact instanceof Fact && (Auth::isAdmin() || $tree->getPreference('SHOW_GEDCOM_RECORD'))) : ?>
-                <a class="btn btn-link" href="<?= e(route('edit-raw-fact', ['xref' => $xref, 'fact_id' => $name_fact->getFactId(), 'ged' => $tree->getName()])) ?>">
+                <a class="btn btn-link" href="<?= e(route('edit-raw-fact', ['xref' => $xref, 'fact_id' => $name_fact->id(), 'ged' => $tree->getName()])) ?>">
                     <?= I18N::translate('Edit the raw GEDCOM') ?>
                 </a>
             <?php endif ?>

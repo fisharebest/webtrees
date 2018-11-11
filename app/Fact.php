@@ -132,7 +132,7 @@ class Fact
     ];
 
     /** @var string Unique identifier for this fact (currently implemented as a hash of the raw data). */
-    private $fact_id;
+    private $id;
 
     /** @var GedcomRecord The GEDCOM record from which this fact is taken */
     private $record;
@@ -165,17 +165,17 @@ class Fact
      *
      * @param string       $gedcom
      * @param GedcomRecord $parent
-     * @param string       $fact_id
+     * @param string       $id
      *
      * @throws InvalidArgumentException
      */
-    public function __construct($gedcom, GedcomRecord $parent, $fact_id)
+    public function __construct($gedcom, GedcomRecord $parent, $id)
     {
         if (preg_match('/^1 (' . WT_REGEX_TAG . ')/', $gedcom, $match)) {
-            $this->gedcom  = $gedcom;
-            $this->record  = $parent;
-            $this->fact_id = $fact_id;
-            $this->tag     = $match[1];
+            $this->gedcom = $gedcom;
+            $this->record = $parent;
+            $this->id     = $id;
+            $this->tag    = $match[1];
         } else {
             throw new InvalidArgumentException('Invalid GEDCOM data passed to Fact::_construct(' . $gedcom . ')');
         }
@@ -341,9 +341,9 @@ class Fact
      *
      * @return string
      */
-    public function getFactId(): string
+    public function id(): string
     {
-        return $this->fact_id;
+        return $this->id;
     }
 
     /**
@@ -655,6 +655,6 @@ class Fact
      */
     public function __toString()
     {
-        return $this->fact_id . '@' . $this->record->getXref();
+        return $this->id . '@' . $this->record->getXref();
     }
 }

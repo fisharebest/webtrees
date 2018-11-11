@@ -1750,7 +1750,7 @@ class AdminTreesController extends AbstractBaseController
                     $new_place           = preg_replace('/(^|, )' . preg_quote($search, '/') . '$/i', '$1' . $replace, $old_place);
                     $changes[$old_place] = $new_place;
                     $gedcom              = preg_replace('/(\n2 PLAC (?:.*, )*)' . preg_quote($search, '/') . '(\n|$)/i', '$1' . $replace . '$2', $fact->getGedcom());
-                    $record->updateFact($fact->getFactId(), $gedcom, false);
+                    $record->updateFact($fact->id(), $gedcom, false);
                 }
             }
         }
@@ -1772,7 +1772,7 @@ class AdminTreesController extends AbstractBaseController
                     $new_place           = preg_replace('/(^|, )' . preg_quote($search, '/') . '$/i', '$1' . $replace, $old_place);
                     $changes[$old_place] = $new_place;
                     $gedcom              = preg_replace('/(\n2 PLAC (?:.*, )*)' . preg_quote($search, '/') . '(\n|$)/i', '$1' . $replace . '$2', $fact->getGedcom());
-                    $record->updateFact($fact->getFactId(), $gedcom, false);
+                    $record->updateFact($fact->id(), $gedcom, false);
                 }
             }
         }

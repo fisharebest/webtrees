@@ -123,12 +123,12 @@ class FunctionsPrintFacts
         }
 
         // Event of close associates
-        if ($fact->getFactId() == 'asso') {
+        if ($fact->id() == 'asso') {
             $styleadd = trim($styleadd . ' wt-relation-fact collapse');
         }
 
         // historical facts
-        if ($fact->getFactId() == 'histo') {
+        if ($fact->id() == 'histo') {
             $styleadd = trim($styleadd . ' wt-historic-fact collapse');
         }
 
@@ -193,7 +193,7 @@ class FunctionsPrintFacts
                 break;
         }
 
-        if ($fact->getFactId() != 'histo' && $fact->canEdit()) {
+        if ($fact->id() != 'histo' && $fact->canEdit()) {
             ?>
             <?= $label ?>
             <div class="editfacts">
@@ -201,20 +201,20 @@ class FunctionsPrintFacts
                     'class' => 'btn btn-link',
                     'href'  => route('edit-fact', [
                         'xref'    => $parent->getXref(),
-                        'fact_id' => $fact->getFactId(),
+                        'fact_id' => $fact->id(),
                         'ged'     => $tree->getName(),
                     ]),
                 ]) ?>
                 <?= FontAwesome::linkIcon('copy', I18N::translate('Copy'), [
                     'class'   => 'btn btn-link',
                     'href'    => '#',
-                    'onclick' => 'return copy_fact("' . e($tree->getName()) . '", "' . e($parent->getXref()) . '", "' . $fact->getFactId() . '");',
+                    'onclick' => 'return copy_fact("' . e($tree->getName()) . '", "' . e($parent->getXref()) . '", "' . $fact->id() . '");',
                 ]) ?>
                 <?= FontAwesome::linkIcon('delete', I18N::translate('Delete'), [
                     'class'        => 'btn btn-link',
                     'data-confirm' =>  I18N::translate('Are you sure you want to delete this fact?'),
                     'href'         => '#',
-                    'onclick'      => 'return delete_fact(this.dataset.confirm, "' . e($tree->getName()) . '", "' . e($parent->getXref()) . '", "' . $fact->getFactId() . '");',
+                    'onclick'      => 'return delete_fact(this.dataset.confirm, "' . e($tree->getName()) . '", "' . e($parent->getXref()) . '", "' . $fact->id() . '");',
                 ]) ?>
             </div>
             <?php
@@ -354,7 +354,7 @@ class FunctionsPrintFacts
         }
 
         // Print the associates of this fact/event
-        if ($fact->getFactId() !== 'asso') {
+        if ($fact->id() !== 'asso') {
             echo self::formatAssociateRelationship($fact);
         }
 
@@ -784,7 +784,7 @@ class FunctionsPrintFacts
                 } elseif ($can_edit) {
                     echo '<a href="' . e(route('edit-fact', [
                             'xref'    => $parent->getXref(),
-                            'fact_id' => $fact->getFactId(),
+                            'fact_id' => $fact->id(),
                             'ged'     => $tree->getName(),
                         ])) . '" title="', I18N::translate('Edit'), '">';
                     if ($tree->getPreference('SHOW_FACT_ICONS')) {
@@ -802,21 +802,21 @@ class FunctionsPrintFacts
                             'class' => 'btn btn-link',
                             'href'  => route('edit-fact', [
                                 'xref'    => $parent->getXref(),
-                                'fact_id' => $fact->getFactId(),
+                                'fact_id' => $fact->id(),
                                 'ged'     => $tree->getName(),
                             ]),
                         ]);
                         echo FontAwesome::linkIcon('copy', I18N::translate('Copy'), [
                             'class'   => 'btn btn-link',
                             'href'    => '#',
-                            'onclick' => 'return copy_fact("' . e($tree->getName()) . '", "' . e($parent->getXref()) . '", "' . $fact->getFactId() . '");',
+                            'onclick' => 'return copy_fact("' . e($tree->getName()) . '", "' . e($parent->getXref()) . '", "' . $fact->id() . '");',
                         ]);
                     }
                     echo FontAwesome::linkIcon('delete', I18N::translate('Delete'), [
                         'class'        => 'btn btn-link',
                         'data-confirm' =>  I18N::translate('Are you sure you want to delete this fact?'),
                         'href'         => '#',
-                        'onclick'      => 'return delete_fact(this.dataset.confirm, "' . e($tree->getName()) . '", "' . e($parent->getXref()) . '", "' . $fact->getFactId() . '");',
+                        'onclick'      => 'return delete_fact(this.dataset.confirm, "' . e($tree->getName()) . '", "' . e($parent->getXref()) . '", "' . $fact->id() . '");',
                     ]);
                 } else {
                     echo GedcomTag::getLabel($factname, $parent);
@@ -1027,20 +1027,20 @@ class FunctionsPrintFacts
                         'class' => 'btn btn-link',
                         'href'  => route('edit-fact', [
                             'xref'    => $parent->getXref(),
-                            'fact_id' => $fact->getFactId(),
+                            'fact_id' => $fact->id(),
                             'ged'     => $tree->getName(),
                         ]),
                     ]);
                     echo FontAwesome::linkIcon('copy', I18N::translate('Copy'), [
                         'class'   => 'btn btn-link',
                         'href'    => '#',
-                        'onclick' => 'return copy_fact("' . e($tree->getName()) . '", "' . e($parent->getXref()) . '", "' . $fact->getFactId() . '");',
+                        'onclick' => 'return copy_fact("' . e($tree->getName()) . '", "' . e($parent->getXref()) . '", "' . $fact->id() . '");',
                     ]);
                     echo FontAwesome::linkIcon('delete', I18N::translate('Delete'), [
                         'class'        => 'btn btn-link',
                         'data-confirm' =>  I18N::translate('Are you sure you want to delete this fact?'),
                         'href'         => '#',
-                        'onclick'      => 'return delete_fact(this.dataset.confirm, "' . e($tree->getName()) . '", "' . e($parent->getXref()) . '", "' . $fact->getFactId() . '");',
+                        'onclick'      => 'return delete_fact(this.dataset.confirm, "' . e($tree->getName()) . '", "' . e($parent->getXref()) . '", "' . $fact->id() . '");',
                     ]);
                     echo '</div>';
                 }
@@ -1178,13 +1178,13 @@ class FunctionsPrintFacts
                     echo FontAwesome::linkIcon('copy', I18N::translate('Copy'), [
                         'class'   => 'btn btn-link',
                         'href'    => '#',
-                        'onclick' => 'return copy_fact("' . e($tree->getName()) . '", "' . e($parent->getXref()) . '", "' . $fact->getFactId() . '");',
+                        'onclick' => 'return copy_fact("' . e($tree->getName()) . '", "' . e($parent->getXref()) . '", "' . $fact->id() . '");',
                     ]);
                     echo FontAwesome::linkIcon('delete', I18N::translate('Delete'), [
                         'class'        => 'btn btn-link',
                         'data-confirm' =>  I18N::translate('Are you sure you want to delete this fact?'),
                         'href'         => '#',
-                        'onclick'      => 'return delete_fact(this.dataset.confirm", "' . e($tree->getName()) . '", "' . e($parent->getXref()) . '", "' . $fact->getFactId() . '");',
+                        'onclick'      => 'return delete_fact(this.dataset.confirm", "' . e($tree->getName()) . '", "' . e($parent->getXref()) . '", "' . $fact->id() . '");',
                     ]);
                     echo '</div>';
                 } else {
