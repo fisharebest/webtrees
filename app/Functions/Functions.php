@@ -166,7 +166,7 @@ class Functions
         foreach ($arr as $event) {
             $event->sortOrder = $order;
             $order++;
-            if ($event->getDate()->isOK()) {
+            if ($event->date()->isOK()) {
                 $dated[] = $event;
             } else {
                 $nondated[] = $event;

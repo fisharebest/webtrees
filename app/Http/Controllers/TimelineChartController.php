@@ -176,7 +176,7 @@ class TimelineChartController extends AbstractChartController
                 $fact = $event->getTag();
                 if (!in_array($fact, self::NON_FACTS)) {
                     // check for a date
-                    $date = $event->getDate();
+                    $date = $event->date();
                     if ($date->isOK()) {
                         $date     = new GregorianDate($date->minimumJulianDay());
                         $baseyear = min($baseyear, $date->year);

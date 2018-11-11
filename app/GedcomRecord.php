@@ -839,12 +839,12 @@ class GedcomRecord
     {
         foreach ($this->getFacts($facts, true) as $event) {
             // Only display if it has a date or place (or both)
-            if ($event->getDate()->isOK() && !$event->place()->isEmpty()) {
+            if ($event->date()->isOK() && !$event->place()->isEmpty()) {
                 $joiner = ' — ';
             } else {
                 $joiner = '';
             }
-            if ($event->getDate()->isOK() || !$event->place()->isEmpty()) {
+            if ($event->date()->isOK() || !$event->place()->isEmpty()) {
                 switch ($style) {
                     case 1:
                         return '<br><em>' . $event->getLabel() . ' ' . FunctionsPrint::formatFactDate($event, $this, false, false) . $joiner . FunctionsPrint::formatFactPlace($event) . '</em>';
@@ -1070,8 +1070,8 @@ class GedcomRecord
     {
         $dates = [];
         foreach ($this->getFacts($event_type) as $event) {
-            if ($event->getDate()->isOK()) {
-                $dates[] = $event->getDate();
+            if ($event->date()->isOK()) {
+                $dates[] = $event->date();
             }
         }
 
@@ -1163,7 +1163,7 @@ class GedcomRecord
 
         if ($chan) {
             // The record does have a CHAN event
-            $d = $chan->getDate()->minimumDate();
+            $d = $chan->date()->minimumDate();
             if (preg_match('/\n3 TIME (\d\d):(\d\d):(\d\d)/', $chan->getGedcom(), $match)) {
                 $t = mktime((int) $match[1], (int) $match[2], (int) $match[3], (int) $d->format('%n'), (int) $d->format('%j'), (int) $d->format('%Y'));
             } elseif (preg_match('/\n3 TIME (\d\d):(\d\d)/', $chan->getGedcom(), $match)) {

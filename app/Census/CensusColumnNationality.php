@@ -53,7 +53,7 @@ class CensusColumnNationality extends AbstractCensusColumn implements CensusColu
 
         // Did we emigrate or naturalise?
         foreach ($individual->getFacts('IMMI|EMIG|NATU', true) as $fact) {
-            if (Date::compare($fact->getDate(), $this->date()) <= 0) {
+            if (Date::compare($fact->date(), $this->date()) <= 0) {
                 $place = $fact->place()->getGedcomName();
             }
         }

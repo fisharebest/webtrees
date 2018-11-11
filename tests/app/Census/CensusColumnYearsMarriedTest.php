@@ -85,7 +85,7 @@ class CensusColumnYearsMarriedTest extends \Fisharebest\Webtrees\TestCase
     public function testUndatedMarriage()
     {
         $fact = Mockery::mock('Fisharebest\Webtrees\Fact');
-        $fact->shouldReceive('getDate')->andReturn(new Date(''));
+        $fact->shouldReceive('date')->andReturn(new Date(''));
 
         $family = Mockery::mock('Fisharebest\Webtrees\Family');
         $family->shouldReceive('getFacts')->with('MARR', true)->andReturn([$fact]);
@@ -110,7 +110,7 @@ class CensusColumnYearsMarriedTest extends \Fisharebest\Webtrees\TestCase
     public function testMarriageAfterCensus()
     {
         $fact = Mockery::mock('Fisharebest\Webtrees\Fact');
-        $fact->shouldReceive('getDate')->andReturn(new Date('1861'));
+        $fact->shouldReceive('date')->andReturn(new Date('1861'));
 
         $family = Mockery::mock('Fisharebest\Webtrees\Family');
         $family->shouldReceive('getFacts')->with('MARR', true)->andReturn([$fact]);
@@ -135,7 +135,7 @@ class CensusColumnYearsMarriedTest extends \Fisharebest\Webtrees\TestCase
     public function testMarriageBeforeCensus()
     {
         $fact = Mockery::mock('Fisharebest\Webtrees\Fact');
-        $fact->shouldReceive('getDate')->andReturn(new Date('OCT 1851'));
+        $fact->shouldReceive('date')->andReturn(new Date('OCT 1851'));
 
         $family = Mockery::mock('Fisharebest\Webtrees\Family');
         $family->shouldReceive('getFacts')->with('MARR', true)->andReturn([$fact]);

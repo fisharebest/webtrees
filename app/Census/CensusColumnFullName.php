@@ -56,7 +56,7 @@ class CensusColumnFullName extends AbstractCensusColumn implements CensusColumnI
 
         foreach ($individual->getSpouseFamilies() as $family) {
             foreach ($family->getFacts('MARR') as $marriage) {
-                if ($marriage->getDate()->isOK() && Date::compare($marriage->getDate(), $census_date) < 0) {
+                if ($marriage->date()->isOK() && Date::compare($marriage->date(), $census_date) < 0) {
                     $spouse = $family->getSpouse($individual);
                     foreach ($names as $individual_name) {
                         foreach ($spouse->getAllNames() as $spouse_name) {

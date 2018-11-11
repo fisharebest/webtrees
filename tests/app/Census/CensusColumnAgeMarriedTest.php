@@ -44,7 +44,7 @@ class CensusColumnAgeMarriedTest extends \Fisharebest\Webtrees\TestCase
     public function testAgeMarried()
     {
         $fact = Mockery::mock('Fisharebest\Webtrees\Fact');
-        $fact->shouldReceive('getDate')->andReturn(new Date('01 DEC 1859'));
+        $fact->shouldReceive('date')->andReturn(new Date('01 DEC 1859'));
 
         $family = Mockery::mock('Fisharebest\Webtrees\Family');
         $family->shouldReceive('getFacts')->with('MARR', true)->andReturn([$fact]);

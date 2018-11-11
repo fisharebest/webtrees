@@ -87,12 +87,12 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface
         for ($jd = $startjd - 1; $jd <= $endjd + $days; ++$jd) {
             foreach ($calendar_service->getAnniversaryEvents($jd, 'DEAT _YART', $tree) as $fact) {
                 // Exact hebrew dates only
-                $date = $fact->getDate();
+                $date = $fact->date();
                 if ($date->minimumDate() instanceof JewishDate && $date->minimumJulianDay() === $date->maximumJulianDay()) {
                     // ...then adjust DEAT dates (but not _YART)
                     if ($fact->getTag() === 'DEAT') {
                         $today     = new JewishDate($jd);
-                        $hd        = $fact->getDate()->minimumDate();
+                        $hd        = $fact->date()->minimumDate();
                         $hd1       = new JewishDate($hd);
                         $hd1->year += 1;
                         $hd1->setJdFromYmd();
@@ -126,7 +126,7 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface
 
                         $yahrzeits[] = (object) [
                             'individual'    => $fact->record(),
-                            'fact_date'     => $fact->getDate(),
+                            'fact_date'     => $fact->date(),
                             'fact'          => $fact,
                             'jd'            => $jd,
                             'yahrzeit_date' => $yahrzeit_date,

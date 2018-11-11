@@ -4,7 +4,7 @@
         <url>
             <loc><?= e($record->url()) ?></loc>
             <?php if ($record->getFirstFact('CHAN') !== null) : ?>
-                <lastmod><?= $record->getFirstFact('CHAN')->getDate()->minimumDate()->Format('%Y-%m-%d') ?></lastmod>
+                <lastmod><?= $record->getFirstFact('CHAN')->date()->minimumDate()->Format('%Y-%m-%d') ?></lastmod>
             <?php endif ?>
         </url>
     <?php endforeach ?>

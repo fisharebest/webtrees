@@ -299,7 +299,7 @@ class Family extends GedcomRecord
     {
         $marriage = $this->getMarriage();
         if ($marriage) {
-            return $marriage->getDate();
+            return $marriage->date();
         }
 
         return new Date('');

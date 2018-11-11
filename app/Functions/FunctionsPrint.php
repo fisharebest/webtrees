@@ -279,7 +279,7 @@ class FunctionsPrint
                     // no DEAT.
                     $death_event = $record->getFirstFact('DEAT');
                     if ($death_event) {
-                        $death_date = $death_event->getDate();
+                        $death_date = $death_event->date();
                     } else {
                         $death_date = new Date('');
                     }

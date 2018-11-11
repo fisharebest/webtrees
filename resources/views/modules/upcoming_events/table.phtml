@@ -32,8 +32,8 @@
                         <?= $record->getSexImage() ?>
                     <?php endif ?>
                 </td>
-                <td data-sort="<?= $fact->getDate()->julianDay() ?>">
-                    <?= $fact->getDate()->display(true); ?>
+                <td data-sort="<?= $fact->date()->julianDay() ?>">
+                    <?= $fact->date()->display(true); ?>
                 </td>
                 <td data-sort="<?= $fact->anniv ?>">
                     <?= $fact->anniv ?>

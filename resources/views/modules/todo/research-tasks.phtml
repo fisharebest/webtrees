@@ -21,8 +21,8 @@
     <tbody>
         <?php foreach ($tasks as $task) : ?>
             <tr>
-                <td data-sort="<?= $task->getDate()->julianDay() ?>" class="d-none d-md-table-cell wt-side-block-optional">
-                    <?= $task->getDate()->display() ?>
+                <td data-sort="<?= $task->date()->julianDay() ?>" class="d-none d-md-table-cell wt-side-block-optional">
+                    <?= $task->date()->display() ?>
                 </td>
                 <td data-sort="<?= e($task->record()->getSortName()) ?>">
                     <a href="<?= e($task->record()->url()) ?>">

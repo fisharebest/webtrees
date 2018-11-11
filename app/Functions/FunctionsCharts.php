@@ -408,10 +408,10 @@ class FunctionsCharts
                         $div  = $famids[$f]->getFirstFact('DIV');
                         if ($marr) {
                             // marriage date
-                            echo $marr->getDate()->minimumDate()->format('%Y');
+                            echo $marr->date()->minimumDate()->format('%Y');
                             // divorce date
                             if ($div) {
-                                echo '–', $div->getDate()->minimumDate()->format('%Y');
+                                echo '–', $div->date()->minimumDate()->format('%Y');
                             }
                             echo '<img class="linea5 lined5 " width="100%" height="3" src="' . Theme::theme()->parameter('image-hline') . '">';
                         } else {

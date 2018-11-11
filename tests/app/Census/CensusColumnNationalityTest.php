@@ -124,14 +124,14 @@ class CensusColumnNationalityTest extends \Fisharebest\Webtrees\TestCase
 
         $fact1 = Mockery::mock('Fisharebest\Webtrees\Fact');
         $fact1->shouldReceive('place')->andReturn($place1);
-        $fact1->shouldReceive('getDate')->andReturn(new Date('1855'));
+        $fact1->shouldReceive('date')->andReturn(new Date('1855'));
 
         $place2 = Mockery::mock('Fisharebest\Webtrees\Place');
         $place2->shouldReceive('getGedcomName')->andReturn('Australia');
 
         $fact2 = Mockery::mock('Fisharebest\Webtrees\Fact');
         $fact2->shouldReceive('place')->andReturn($place2);
-        $fact2->shouldReceive('getDate')->andReturn(new Date('1865'));
+        $fact2->shouldReceive('date')->andReturn(new Date('1865'));
 
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
         $individual->shouldReceive('getBirthPlace')->andReturn($this->getPlaceMock('London, England'));

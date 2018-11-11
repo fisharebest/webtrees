@@ -317,7 +317,7 @@ class Fact
      *
      * @return Date
      */
-    public function getDate(): Date
+    public function date(): Date
     {
         if ($this->date === null) {
             $this->date = new Date($this->attribute('DATE'));
@@ -517,7 +517,7 @@ class Fact
                 $attributes[] = '<span dir="auto">' . e($value) . '</span>';
             }
             // Fact date
-            $date = $this->getDate();
+            $date = $this->date();
             if ($date->isOK()) {
                 if (in_array($this->getTag(), explode('|', WT_EVENTS_BIRT)) && $this->record() instanceof Individual && $this->record()->getTree()->getPreference('SHOW_PARENTS_AGE')) {
                     $attributes[] = $date->display() . FunctionsPrint::formatParentsAges($this->record(), $date);
@@ -555,9 +555,9 @@ class Fact
      */
     public static function compareDate(Fact $a, Fact $b)
     {
-        if ($a->getDate()->isOK() && $b->getDate()->isOK()) {
+        if ($a->date()->isOK() && $b->date()->isOK()) {
             // If both events have dates, compare by date
-            $ret = Date::compare($a->getDate(), $b->getDate());
+            $ret = Date::compare($a->date(), $b->date());
 
             if ($ret == 0) {
                 // If dates are the same, compare by fact type

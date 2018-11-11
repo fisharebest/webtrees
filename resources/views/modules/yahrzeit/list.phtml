@@ -6,7 +6,7 @@
     </a>
     <?= $yahrzeit->individual->getSexImage() ?>
     <div class="indent">
-        <?= $yahrzeit->fact->getDate()->display(true) ?>,
+        <?= $yahrzeit->fact->date()->display(true) ?>,
         <?= I18N::translate('%s year anniversary', $yahrzeit->fact->anniv) ?>
     </div>
 <?php endforeach ?>

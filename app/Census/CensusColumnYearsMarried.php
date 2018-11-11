@@ -39,8 +39,8 @@ class CensusColumnYearsMarried extends AbstractCensusColumn implements CensusCol
 
         foreach ($individual->getSpouseFamilies() as $family) {
             foreach ($family->getFacts('MARR', true) as $fact) {
-                if ($fact->getDate()->isOK() && Date::compare($fact->getDate(), $this->date()) <= 0) {
-                    $marriage_date = $fact->getDate();
+                if ($fact->date()->isOK() && Date::compare($fact->date(), $this->date()) <= 0) {
+                    $marriage_date = $fact->date();
                 }
             }
         }

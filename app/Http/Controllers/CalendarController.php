@@ -271,7 +271,7 @@ class CalendarController extends AbstractBaseController
 
                 foreach ($jds as $jd) {
                     foreach ($this->applyFilter($calendar_service->getAnniversaryEvents($jd, $filterev, $tree), $filterof, $filtersx) as $fact) {
-                        $tmp = $fact->getDate()->minimumDate();
+                        $tmp = $fact->date()->minimumDate();
                         if ($tmp->day >= 1 && $tmp->day <= $tmp->daysInMonth()) {
                             // If the day is valid (for its own calendar), display it in the
                             // anniversary day (for the display calendar).
@@ -508,7 +508,7 @@ class CalendarController extends AbstractBaseController
                 }
             }
             // Filter on recent events
-            if ($filterof === 'recent' && $fact->getDate()->maximumJulianDay() < $hundred_years) {
+            if ($filterof === 'recent' && $fact->date()->maximumJulianDay() < $hundred_years) {
                 continue;
             }
             $filtered[] = $fact;
@@ -527,7 +527,7 @@ class CalendarController extends AbstractBaseController
      */
     private function calendarFactText(Fact $fact, bool $show_places): string
     {
-        $text = $fact->getLabel() . ' — ' . $fact->getDate()->display(true, null, false);
+        $text = $fact->getLabel() . ' — ' . $fact->date()->display(true, null, false);
         if ($fact->anniv) {
             $text .= ' (' . I18N::translate('%s year anniversary', $fact->anniv) . ')';
         }

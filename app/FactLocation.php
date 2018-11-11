@@ -91,7 +91,7 @@ class FactLocation extends Location
             'url'    => $url,
             'name'   => $name,
             'value'  => $this->fact->value(),
-            'date'   => $this->fact->getDate()->display(true),
+            'date'   => $this->fact->date()->display(true),
             'place'  => $this->fact->place(),
             'addtag' => $addbirthtag,
         ];

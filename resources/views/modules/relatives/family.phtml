@@ -106,13 +106,13 @@
                 <th scope="row">
                 </th>
                 <td>
-                    <?= GedcomTag::getLabelValue($fact->getTag(), $fact->getDate()->display() . ' — ' . $fact->place()->getFullName()) ?>
+                    <?= GedcomTag::getLabelValue($fact->getTag(), $fact->date()->display() . ' — ' . $fact->place()->getFullName()) ?>
                 </td>
             </tr>
 
             <?php
-            if (!$prev->isOK() && $fact->getDate()->isOK()) {
-                $prev = $fact->getDate();
+            if (!$prev->isOK() && $fact->date()->isOK()) {
+                $prev = $fact->date();
             }
         }
 
@@ -146,8 +146,8 @@
                 }
                 $next = new Date('');
                 foreach ($person->getFacts(WT_EVENTS_BIRT, true) as $bfact) {
-                    if ($bfact->getDate()->isOK()) {
-                        $next = $bfact->getDate();
+                    if ($bfact->date()->isOK()) {
+                        $next = $bfact->date();
                         break;
                     }
                 }
