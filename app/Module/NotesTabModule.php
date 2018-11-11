@@ -92,7 +92,7 @@ class NotesTabModule extends AbstractModule implements ModuleTabInterface
             }
             $this->facts = [];
             foreach ($facts as $fact) {
-                if (preg_match('/(?:^1|\n\d) NOTE/', $fact->getGedcom())) {
+                if (preg_match('/(?:^1|\n\d) NOTE/', $fact->gedcom())) {
                     $this->facts[] = $fact;
                 }
             }

@@ -75,7 +75,7 @@ class EditGedcomRecordController extends AbstractEditController
                 }
                 $clipboard[$fact_id] = [
                     'type'    => $type,
-                    'factrec' => $fact->getGedcom(),
+                    'factrec' => $fact->gedcom(),
                     'fact'    => $fact->getTag(),
                 ];
 
@@ -301,7 +301,7 @@ class EditGedcomRecordController extends AbstractEditController
         // Retain any private facts
         foreach ($record->getFacts('', false, Auth::PRIV_HIDE) as $fact) {
             if (!in_array($fact->id(), $fact_ids) && !$fact->isPendingDeletion()) {
-                $gedcom .= "\n" . $fact->getGedcom();
+                $gedcom .= "\n" . $fact->gedcom();
             }
         }
         // Append the updated facts

@@ -331,7 +331,7 @@ class Fact
      *
      * @return string
      */
-    public function getGedcom(): string
+    public function gedcom(): string
     {
         return $this->gedcom;
     }
@@ -442,7 +442,7 @@ class Fact
      */
     public function getCitations(): array
     {
-        preg_match_all('/\n(2 SOUR @(' . WT_REGEX_XREF . ')@(?:\n[3-9] .*)*)/', $this->getGedcom(), $matches, PREG_SET_ORDER);
+        preg_match_all('/\n(2 SOUR @(' . WT_REGEX_XREF . ')@(?:\n[3-9] .*)*)/', $this->gedcom(), $matches, PREG_SET_ORDER);
         $citations = [];
         foreach ($matches as $match) {
             $source = Source::getInstance($match[2], $this->record()->getTree());
@@ -462,7 +462,7 @@ class Fact
     public function getNotes(): array
     {
         $notes = [];
-        preg_match_all('/\n2 NOTE ?(.*(?:\n3.*)*)/', $this->getGedcom(), $matches);
+        preg_match_all('/\n2 NOTE ?(.*(?:\n3.*)*)/', $this->gedcom(), $matches);
         foreach ($matches[1] as $match) {
             $note = preg_replace("/\n3 CONT ?/", "\n", $match);
             if (preg_match('/@(' . WT_REGEX_XREF . ')@/', $note, $nmatch)) {
@@ -488,7 +488,7 @@ class Fact
     public function getMedia(): array
     {
         $media = [];
-        preg_match_all('/\n2 OBJE @(' . WT_REGEX_XREF . ')@/', $this->getGedcom(), $matches);
+        preg_match_all('/\n2 OBJE @(' . WT_REGEX_XREF . ')@/', $this->gedcom(), $matches);
         foreach ($matches[1] as $match) {
             $obje = Media::getInstance($match, $this->record()->getTree());
             if ($obje && $obje->canShow()) {

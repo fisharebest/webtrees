@@ -170,7 +170,7 @@ class FactLocation extends Location
     {
         $coords = null;
         if (!$this->fact->place()->isEmpty()) {
-            $gedcom = $this->fact->getGedcom();
+            $gedcom = $this->fact->gedcom();
             $f1     = preg_match("/\d LATI (.*)/", $gedcom, $match1);
             $f2     = preg_match("/\d LONG (.*)/", $gedcom, $match2);
             if ($f1 && $f2) {

@@ -133,7 +133,7 @@ class FunctionsPrintFacts
         }
 
         // Does this fact have a type?
-        if (preg_match('/\n2 TYPE (.+)/', $fact->getGedcom(), $match)) {
+        if (preg_match('/\n2 TYPE (.+)/', $fact->gedcom(), $match)) {
             $type = $match[1];
         } else {
             $type = '';
@@ -359,7 +359,7 @@ class FunctionsPrintFacts
         }
 
         // Print any other "2 XXXX" attributes, in the order in which they appear.
-        preg_match_all('/\n2 (' . WT_REGEX_TAG . ') (.+)/', $fact->getGedcom(), $matches, PREG_SET_ORDER);
+        preg_match_all('/\n2 (' . WT_REGEX_TAG . ') (.+)/', $fact->gedcom(), $matches, PREG_SET_ORDER);
         foreach ($matches as $match) {
             switch ($match[1]) {
                 case 'DATE':
@@ -399,11 +399,11 @@ class FunctionsPrintFacts
                     } else {
                         echo GedcomTag::getLabelValue('EVEN', implode(I18N::$list_separator, $events));
                     }
-                    if (preg_match('/\n3 DATE (.+)/', $fact->getGedcom(), $date_match)) {
+                    if (preg_match('/\n3 DATE (.+)/', $fact->gedcom(), $date_match)) {
                         $date = new Date($date_match[1]);
                         echo GedcomTag::getLabelValue('DATE', $date->display());
                     }
-                    if (preg_match('/\n3 PLAC (.+)/', $fact->getGedcom(), $plac_match)) {
+                    if (preg_match('/\n3 PLAC (.+)/', $fact->gedcom(), $plac_match)) {
                         echo GedcomTag::getLabelValue('PLAC', $plac_match[1]);
                     }
                     break;
@@ -411,7 +411,7 @@ class FunctionsPrintFacts
                     $family = Family::getInstance(str_replace('@', '', $match[2]), $tree);
                     if ($family) {
                         echo GedcomTag::getLabelValue('FAM', '<a href="' . e($family->url()) . '">' . $family->getFullName() . '</a>');
-                        if (preg_match('/\n3 ADOP (HUSB|WIFE|BOTH)/', $fact->getGedcom(), $adop_match)) {
+                        if (preg_match('/\n3 ADOP (HUSB|WIFE|BOTH)/', $fact->gedcom(), $adop_match)) {
                             echo GedcomTag::getLabelValue('ADOP', GedcomCodeAdop::getValue($adop_match[1], $label_person));
                         }
                     } else {
@@ -452,7 +452,7 @@ class FunctionsPrintFacts
                     break;
                 case 'FORM': // 0 OBJE / 1 FILE / 2 FORM / 3 TYPE
                     echo GedcomTag::getLabelValue('FORM', $match[2]);
-                    if (preg_match('/\n3 TYPE (.+)/', $fact->getGedcom(), $type_match)) {
+                    if (preg_match('/\n3 TYPE (.+)/', $fact->gedcom(), $type_match)) {
                         echo GedcomTag::getLabelValue('TYPE', GedcomTag::getFileFormTypeValue($type_match[1]));
                     }
                     break;
@@ -481,9 +481,9 @@ class FunctionsPrintFacts
                     break;
             }
         }
-        echo self::printFactSources($tree, $fact->getGedcom(), 2);
-        echo FunctionsPrint::printFactNotes($tree, $fact->getGedcom(), 2);
-        self::printMediaLinks($tree, $fact->getGedcom(), 2);
+        echo self::printFactSources($tree, $fact->gedcom(), 2);
+        echo FunctionsPrint::printFactNotes($tree, $fact->gedcom(), 2);
+        self::printMediaLinks($tree, $fact->gedcom(), 2);
         echo '</td></tr>';
     }
 
@@ -509,8 +509,8 @@ class FunctionsPrintFacts
             return '';
         }
 
-        preg_match_all('/^1 ASSO @(' . WT_REGEX_XREF . ')@((\n[2-9].*)*)/', $event->getGedcom(), $amatches1, PREG_SET_ORDER);
-        preg_match_all('/\n2 _?ASSO @(' . WT_REGEX_XREF . ')@((\n[3-9].*)*)/', $event->getGedcom(), $amatches2, PREG_SET_ORDER);
+        preg_match_all('/^1 ASSO @(' . WT_REGEX_XREF . ')@((\n[2-9].*)*)/', $event->gedcom(), $amatches1, PREG_SET_ORDER);
+        preg_match_all('/\n2 _?ASSO @(' . WT_REGEX_XREF . ')@((\n[3-9].*)*)/', $event->gedcom(), $amatches2, PREG_SET_ORDER);
 
         $html = '';
         // For each ASSO record
@@ -729,7 +729,7 @@ class FunctionsPrintFacts
      */
     public static function printMainSources(Fact $fact, $level)
     {
-        $factrec = $fact->getGedcom();
+        $factrec = $fact->gedcom();
         $parent  = $fact->record();
         $tree    = $fact->record()->getTree();
 
@@ -979,7 +979,7 @@ class FunctionsPrintFacts
      */
     public static function printMainNotes(Fact $fact, $level)
     {
-        $factrec = $fact->getGedcom();
+        $factrec = $fact->gedcom();
         $parent  = $fact->record();
         $tree    = $parent->getTree();
 
@@ -1132,7 +1132,7 @@ class FunctionsPrintFacts
      */
     public static function printMainMedia(Fact $fact, $level)
     {
-        $factrec = $fact->getGedcom();
+        $factrec = $fact->gedcom();
         $parent  = $fact->record();
         $tree    = $parent->getTree();
 

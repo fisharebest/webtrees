@@ -123,7 +123,7 @@ class AlbumModule extends AbstractModule implements ModuleTabInterface
             foreach ($facts as $fact) {
                 // Don't show pending edits, as the user just sees duplicates
                 if (!$fact->isPendingDeletion()) {
-                    preg_match_all('/(?:^1|\n\d) OBJE @(' . WT_REGEX_XREF . ')@/', $fact->getGedcom(), $matches);
+                    preg_match_all('/(?:^1|\n\d) OBJE @(' . WT_REGEX_XREF . ')@/', $fact->gedcom(), $matches);
                     foreach ($matches[1] as $match) {
                         $media = Media::getInstance($match, $individual->getTree());
                         if ($media && $media->canShow()) {

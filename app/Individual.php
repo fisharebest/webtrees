@@ -255,7 +255,7 @@ class Individual extends GedcomRecord
         if ($this->tree->getPreference('SHOW_LIVING_NAMES') >= $access_level) {
             // Show all the NAME tags, including subtags
             foreach ($this->getFacts('NAME') as $fact) {
-                $rec .= "\n" . $fact->getGedcom();
+                $rec .= "\n" . $fact->gedcom();
             }
         }
         // Just show the 1 FAMC/FAMS tag, not any subtags, which may contain private data

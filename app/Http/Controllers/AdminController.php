@@ -411,7 +411,7 @@ class AdminController extends AbstractBaseController
         if ($individual !== null && $media !== null) {
             foreach ($individual->getFacts() as $fact1) {
                 if ($fact1->id() === $fact_id) {
-                    $individual->updateFact($fact_id, $fact1->getGedcom() . "\n2 OBJE @" . $obje_xref . '@', false);
+                    $individual->updateFact($fact_id, $fact1->gedcom() . "\n2 OBJE @" . $obje_xref . '@', false);
                     foreach ($individual->getFacts('OBJE') as $fact2) {
                         if ($fact2->target() === $media) {
                             $individual->deleteFact($fact2->id(), false);

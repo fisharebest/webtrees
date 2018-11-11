@@ -26,7 +26,7 @@ $surname_tradition = SurnameTradition::create($tree->getPreference('SURNAME_TRAD
 if ($name_fact !== null) {
     // Editing an existing name
     $name_fact_id = $name_fact->id();
-    $namerec      = $name_fact->getGedcom();
+    $namerec      = $name_fact->gedcom();
     $name_fields  = [
         'NAME' => $name_fact->value(),
         'TYPE' => $name_fact->attribute('TYPE'),

@@ -92,7 +92,7 @@ class SourcesTabModule extends AbstractModule implements ModuleTabInterface
             }
             $this->facts = [];
             foreach ($facts as $fact) {
-                if (preg_match('/(?:^1|\n\d) SOUR/', $fact->getGedcom())) {
+                if (preg_match('/(?:^1|\n\d) SOUR/', $fact->gedcom())) {
                     $this->facts[] = $fact;
                 }
             }

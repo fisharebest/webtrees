@@ -239,7 +239,7 @@ class FunctionsPrint
     {
         global $pid;
 
-        $factrec = $event->getGedcom();
+        $factrec = $event->gedcom();
         $html    = '';
         // Recorded age
         if (preg_match('/\n2 AGE (.+)/', $factrec, $match)) {
@@ -386,7 +386,7 @@ class FunctionsPrint
         }
 
         if ($sub_records) {
-            $placerec = Functions::getSubRecord(2, '2 PLAC', $event->getGedcom());
+            $placerec = Functions::getSubRecord(2, '2 PLAC', $event->gedcom());
             if (!empty($placerec)) {
                 if (preg_match_all('/\n3 (?:_HEB|ROMN) (.+)/', $placerec, $matches)) {
                     foreach ($matches[1] as $match) {
@@ -431,12 +431,12 @@ class FunctionsPrint
             }
         }
         if ($lds) {
-            if (preg_match('/2 TEMP (.*)/', $event->getGedcom(), $match)) {
+            if (preg_match('/2 TEMP (.*)/', $event->gedcom(), $match)) {
                 $html .= '<br>' . I18N::translate('LDS temple') . ': ' . GedcomCodeTemp::templeName($match[1]);
             }
-            if (preg_match('/2 STAT (.*)/', $event->getGedcom(), $match)) {
+            if (preg_match('/2 STAT (.*)/', $event->gedcom(), $match)) {
                 $html .= '<br>' . I18N::translate('Status') . ': ' . GedcomCodeStat::statusName($match[1]);
-                if (preg_match('/3 DATE (.*)/', $event->getGedcom(), $match)) {
+                if (preg_match('/3 DATE (.*)/', $event->gedcom(), $match)) {
                     $date = new Date($match[1]);
                     $html .= ', ' . GedcomTag::getLabel('STAT:DATE') . ': ' . $date->display();
                 }

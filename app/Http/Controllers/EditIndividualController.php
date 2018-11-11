@@ -74,9 +74,9 @@ class EditIndividualController extends AbstractEditController
         // Split facts into OBJE and other
         foreach ($individual->getFacts() as $fact) {
             if ($fact->getTag() === 'OBJE') {
-                $sort_facts[$fact->id()] = $fact->getGedcom();
+                $sort_facts[$fact->id()] = $fact->gedcom();
             } else {
-                $keep_facts[] = $fact->getGedcom();
+                $keep_facts[] = $fact->gedcom();
             }
         }
 
@@ -135,9 +135,9 @@ class EditIndividualController extends AbstractEditController
         // Split facts into NAME and other
         foreach ($individual->getFacts() as $fact) {
             if ($fact->getTag() === 'NAME') {
-                $sort_facts[$fact->id()] = $fact->getGedcom();
+                $sort_facts[$fact->id()] = $fact->gedcom();
             } else {
-                $keep_facts[] = $fact->getGedcom();
+                $keep_facts[] = $fact->gedcom();
             }
         }
 
@@ -196,9 +196,9 @@ class EditIndividualController extends AbstractEditController
         // Split facts into FAMS and other
         foreach ($individual->getFacts() as $fact) {
             if ($fact->getTag() === 'FAMS') {
-                $sort_facts[$fact->id()] = $fact->getGedcom();
+                $sort_facts[$fact->id()] = $fact->gedcom();
             } else {
-                $keep_facts[] = $fact->getGedcom();
+                $keep_facts[] = $fact->gedcom();
             }
         }
 

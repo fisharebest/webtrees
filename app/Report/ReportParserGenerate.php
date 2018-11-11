@@ -1301,13 +1301,13 @@ class ReportParserGenerate extends ReportParserBase
             $nonfacts      = explode(',', $tag);
             foreach ($facts as $event) {
                 if (!in_array($event->getTag(), $nonfacts)) {
-                    $this->repeats[] = $event->getGedcom();
+                    $this->repeats[] = $event->gedcom();
                 }
             }
         } else {
             foreach ($record->getFacts() as $fact) {
                 if ($fact->isPendingAddition() && $fact->getTag() !== 'CHAN') {
-                    $this->repeats[] = $fact->getGedcom();
+                    $this->repeats[] = $fact->gedcom();
                 }
             }
         }

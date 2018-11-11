@@ -1012,7 +1012,7 @@ class FunctionsEdit
         }
 
         $stack       = [];
-        $gedlines    = explode("\n", $fact->getGedcom());
+        $gedlines    = explode("\n", $fact->gedcom());
         $count       = count($gedlines);
         $i           = 0;
         $inSource    = false;

@@ -474,10 +474,10 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
                 if ($arec && trim($arec, '@') === $person->getXref()) {
                     // Extract the important details from the fact
                     $factrec = '1 ' . $fact->getTag();
-                    if (preg_match('/\n2 DATE .*/', $fact->getGedcom(), $match)) {
+                    if (preg_match('/\n2 DATE .*/', $fact->gedcom(), $match)) {
                         $factrec .= $match[0];
                     }
-                    if (preg_match('/\n2 PLAC .*/', $fact->getGedcom(), $match)) {
+                    if (preg_match('/\n2 PLAC .*/', $fact->gedcom(), $match)) {
                         $factrec .= $match[0];
                     }
                     if ($associate instanceof Family) {

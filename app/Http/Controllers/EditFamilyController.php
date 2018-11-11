@@ -74,9 +74,9 @@ class EditFamilyController extends AbstractEditController
         // Split facts into FAMS and other
         foreach ($family->getFacts() as $fact) {
             if ($fact->getTag() === 'CHIL') {
-                $sort_facts[$fact->id()] = $fact->getGedcom();
+                $sort_facts[$fact->id()] = $fact->gedcom();
             } else {
-                $keep_facts[] = $fact->getGedcom();
+                $keep_facts[] = $fact->gedcom();
             }
         }
 
@@ -170,7 +170,7 @@ class EditFamilyController extends AbstractEditController
             $old_child = $fact->target();
             if ($old_child  instanceof Individual && Date::compare($new_child->getEstimatedBirthDate(), $old_child->getEstimatedBirthDate()) < 0) {
                 // Insert before this child
-                $family->updateFact($fact->id(), '1 CHIL @' . $new_child->getXref() . "@\n" . $fact->getGedcom(), !$keep_chan);
+                $family->updateFact($fact->id(), '1 CHIL @' . $new_child->getXref() . "@\n" . $fact->gedcom(), !$keep_chan);
                 $done = true;
                 break;
             }

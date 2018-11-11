@@ -251,7 +251,7 @@ class IndividualController extends AbstractBaseController
         // Create a dummy record, so we can extract the formatted NAME value from it.
         $dummy = new Individual(
             'xref',
-            "0 @xref@ INDI\n1 DEAT Y\n" . $fact->getGedcom(),
+            "0 @xref@ INDI\n1 DEAT Y\n" . $fact->gedcom(),
             null,
             $individual->getTree()
         );
@@ -274,7 +274,7 @@ class IndividualController extends AbstractBaseController
         ob_start();
         echo '<dl><dt class="label">', I18N::translate('Name'), '</dt>';
         echo '<dd class="field">', $dummy->getFullName(), '</dd>';
-        $ct = preg_match_all('/\n2 (\w+) (.*)/', $fact->getGedcom(), $nmatch, PREG_SET_ORDER);
+        $ct = preg_match_all('/\n2 (\w+) (.*)/', $fact->gedcom(), $nmatch, PREG_SET_ORDER);
         for ($i = 0; $i < $ct; $i++) {
             $tag = $nmatch[$i][1];
             if ($tag != 'SOUR' && $tag != 'NOTE' && $tag != 'SPFX') {
@@ -308,11 +308,11 @@ class IndividualController extends AbstractBaseController
                 echo '</dl>';
             }
         }
-        if (strpos($fact->getGedcom(), "\n2 SOUR") !== false) {
-            echo '<div id="indi_sour" class="clearfloat">', FunctionsPrintFacts::printFactSources($tree, $fact->getGedcom(), 2), '</div>';
+        if (strpos($fact->gedcom(), "\n2 SOUR") !== false) {
+            echo '<div id="indi_sour" class="clearfloat">', FunctionsPrintFacts::printFactSources($tree, $fact->gedcom(), 2), '</div>';
         }
-        if (strpos($fact->getGedcom(), "\n2 NOTE") !== false) {
-            echo '<div id="indi_note" class="clearfloat">', FunctionsPrint::printFactNotes($tree, $fact->getGedcom(), 2), '</div>';
+        if (strpos($fact->gedcom(), "\n2 NOTE") !== false) {
+            echo '<div id="indi_note" class="clearfloat">', FunctionsPrint::printFactNotes($tree, $fact->gedcom(), 2), '</div>';
         }
         $content = ob_get_clean();
 

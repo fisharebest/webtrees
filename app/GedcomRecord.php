@@ -524,7 +524,7 @@ class GedcomRecord
 
             // Check each of the facts for access
             foreach ($this->getFacts('', false, $access_level) as $fact) {
-                $gedrec .= "\n" . $fact->getGedcom();
+                $gedrec .= "\n" . $fact->gedcom();
             }
 
             return $gedrec;
@@ -591,13 +591,13 @@ class GedcomRecord
         $sublevel    = $level + 1;
         $subsublevel = $sublevel + 1;
         foreach ($facts as $fact) {
-            if (preg_match_all("/^{$level} ({$fact_type}) (.+)((\n[{$sublevel}-9].+)*)/m", $fact->getGedcom(), $matches, PREG_SET_ORDER)) {
+            if (preg_match_all("/^{$level} ({$fact_type}) (.+)((\n[{$sublevel}-9].+)*)/m", $fact->gedcom(), $matches, PREG_SET_ORDER)) {
                 foreach ($matches as $match) {
                     // Treat 1 NAME / 2 TYPE married the same as _MARNM
                     if ($match[1] == 'NAME' && strpos($match[3], "\n2 TYPE married") !== false) {
-                        $this->addName('_MARNM', $match[2], $fact->getGedcom());
+                        $this->addName('_MARNM', $match[2], $fact->gedcom());
                     } else {
-                        $this->addName($match[1], $match[2], $fact->getGedcom());
+                        $this->addName($match[1], $match[2], $fact->gedcom());
                     }
                     if ($match[3] && preg_match_all("/^{$sublevel} (ROMN|FONE|_\w+) (.+)((\n[{$subsublevel}-9].+)*)/m", $match[3], $submatches, PREG_SET_ORDER)) {
                         foreach ($submatches as $submatch) {
@@ -1089,7 +1089,7 @@ class GedcomRecord
     {
         $places = [];
         foreach ($this->getFacts($event_type) as $event) {
-            if (preg_match_all('/\n(?:2 PLAC|3 (?:ROMN|FONE|_HEB)) +(.+)/', $event->getGedcom(), $ged_places)) {
+            if (preg_match_all('/\n(?:2 PLAC|3 (?:ROMN|FONE|_HEB)) +(.+)/', $event->gedcom(), $ged_places)) {
                 foreach ($ged_places[1] as $ged_place) {
                     $places[] = new Place($ged_place, $this->tree);
                 }
@@ -1164,9 +1164,9 @@ class GedcomRecord
         if ($chan) {
             // The record does have a CHAN event
             $d = $chan->date()->minimumDate();
-            if (preg_match('/\n3 TIME (\d\d):(\d\d):(\d\d)/', $chan->getGedcom(), $match)) {
+            if (preg_match('/\n3 TIME (\d\d):(\d\d):(\d\d)/', $chan->gedcom(), $match)) {
                 $t = mktime((int) $match[1], (int) $match[2], (int) $match[3], (int) $d->format('%n'), (int) $d->format('%j'), (int) $d->format('%Y'));
-            } elseif (preg_match('/\n3 TIME (\d\d):(\d\d)/', $chan->getGedcom(), $match)) {
+            } elseif (preg_match('/\n3 TIME (\d\d):(\d\d)/', $chan->gedcom(), $match)) {
                 $t = mktime((int) $match[1], (int) $match[2], 0, (int) $d->format('%n'), (int) $d->format('%j'), (int) $d->format('%Y'));
             } else {
                 $t = mktime(0, 0, 0, (int) $d->format('%n'), (int) $d->format('%j'), (int) $d->format('%Y'));
@@ -1274,7 +1274,7 @@ class GedcomRecord
                     }
                     $fact_id = 'NOT A VALID FACT ID'; // Only replace/delete one copy of a duplicate fact
                 } elseif ($fact->getTag() != 'CHAN' || !$update_chan) {
-                    $new_gedcom .= "\n" . $fact->getGedcom();
+                    $new_gedcom .= "\n" . $fact->gedcom();
                 }
             }
         }
@@ -1402,8 +1402,8 @@ class GedcomRecord
         foreach ($this->getFacts() as $fact) {
             if ($fact->value() === $value) {
                 $this->deleteFact($fact->id(), $update_chan);
-            } elseif (preg_match_all('/\n(\d) ' . WT_REGEX_TAG . ' ' . $value . '/', $fact->getGedcom(), $matches, PREG_SET_ORDER)) {
-                $gedcom = $fact->getGedcom();
+            } elseif (preg_match_all('/\n(\d) ' . WT_REGEX_TAG . ' ' . $value . '/', $fact->gedcom(), $matches, PREG_SET_ORDER)) {
+                $gedcom = $fact->gedcom();
                 foreach ($matches as $match) {
                     $next_level  = $match[1] + 1;
                     $next_levels = '[' . $next_level . '-9]';
