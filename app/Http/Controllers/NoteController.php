@@ -65,7 +65,7 @@ class NoteController extends AbstractBaseController
     private function facts(Note $record): array
     {
         $facts = [];
-        foreach ($record->getFacts() as $fact) {
+        foreach ($record->facts() as $fact) {
             if ($fact->getTag() != 'CONT') {
                 $facts[] = $fact;
             }

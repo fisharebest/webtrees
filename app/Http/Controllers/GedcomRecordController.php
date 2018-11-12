@@ -54,7 +54,7 @@ class GedcomRecordController extends AbstractBaseController
         }
 
         return $this->viewResponse('gedcom-record-page', [
-            'facts'         => $record->getFacts(),
+            'facts'         => $record->facts(),
             'families'      => $record->linkedFamilies($record::RECORD_TYPE),
             'individuals'   => $record->linkedIndividuals($record::RECORD_TYPE),
             'meta_robots'   => 'index,follow',

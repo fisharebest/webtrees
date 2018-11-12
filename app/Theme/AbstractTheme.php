@@ -905,13 +905,13 @@ abstract class AbstractTheme
     public function individualBoxLdsSummary(Individual $individual)
     {
         if ($individual->tree()->getPreference('SHOW_LDS_AT_GLANCE')) {
-            $BAPL = $individual->getFacts('BAPL') ? 'B' : '_';
-            $ENDL = $individual->getFacts('ENDL') ? 'E' : '_';
-            $SLGC = $individual->getFacts('SLGC') ? 'C' : '_';
+            $BAPL = $individual->facts('BAPL') ? 'B' : '_';
+            $ENDL = $individual->facts('ENDL') ? 'E' : '_';
+            $SLGC = $individual->facts('SLGC') ? 'C' : '_';
             $SLGS = '_';
 
             foreach ($individual->getSpouseFamilies() as $family) {
-                if ($family->getFacts('SLGS')) {
+                if ($family->facts('SLGS')) {
                     $SLGS = '';
                 }
             }

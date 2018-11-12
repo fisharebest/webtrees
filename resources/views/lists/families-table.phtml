@@ -305,9 +305,9 @@ for ($year = 1550; $year < 2030; $year += 10) {
                         <?php if ($marriage_dates[0]->gregorianYear() >= 1550 && $marriage_dates[0]->gregorianYear() < 2030) : ?>
                             <?php $marr_by_decade[(int) ($marriage_dates[0]->gregorianYear() / 10) * 10] .= $husb->getSex() . $wife->getSex() ?>
                         <?php endif ?>
-                    <?php elseif ($family->getFacts('_NMR')) : ?>
+                    <?php elseif ($family->facts('_NMR')) : ?>
                         <?= I18N::translate('no') ?>
-                    <?php elseif ($family->getFacts('MARR')) : ?>
+                    <?php elseif ($family->facts('MARR')) : ?>
                             <?= I18N::translate('yes') ?>
                     <?php endif ?>
                 </td>
@@ -346,7 +346,7 @@ for ($year = 1550; $year < 2030; $year += 10) {
                     <?php else : ?>
                         YES
                     <?php endif ?>
-                    <?php if ($family->getFacts(WT_EVENTS_DIV)) : ?>
+                    <?php if ($family->facts(WT_EVENTS_DIV)) : ?>
                         D
                     <?php endif ?>
                     <?php if (count($husb->getSpouseFamilies()) > 1 || count($wife->getSpouseFamilies()) > 1) : ?>

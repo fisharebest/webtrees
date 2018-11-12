@@ -274,7 +274,7 @@ class BranchesController extends AbstractBaseController
         // If this is not a birth pedigree (e.g. an adoption), highlight it
         if ($parents) {
             $pedi = '';
-            foreach ($individual->getFacts('FAMC') as $fact) {
+            foreach ($individual->facts('FAMC') as $fact) {
                 if ($fact->target() === $parents) {
                     $pedi = $fact->attribute('PEDI');
                     break;

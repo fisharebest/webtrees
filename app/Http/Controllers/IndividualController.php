@@ -105,7 +105,7 @@ class IndividualController extends AbstractBaseController
 
         // What images are linked to this individual
         $individual_media = [];
-        foreach ($individual->getFacts() as $fact) {
+        foreach ($individual->facts() as $fact) {
             $media_object = $fact->target();
             if ($media_object instanceof Media) {
                 $individual_media[] = $media_object->firstImageFile();
@@ -114,12 +114,12 @@ class IndividualController extends AbstractBaseController
         $individual_media = array_filter($individual_media);
 
         $name_records = [];
-        foreach ($individual->getFacts('NAME') as $n => $name_fact) {
+        foreach ($individual->facts('NAME') as $n => $name_fact) {
             $name_records[] = $this->formatNameRecord($tree, $n, $name_fact);
         }
 
         $sex_records = [];
-        foreach ($individual->getFacts('SEX') as $n => $sex_fact) {
+        foreach ($individual->facts('SEX') as $n => $sex_fact) {
             $sex_records[] = $this->formatSexRecord($sex_fact);
         }
 
@@ -195,9 +195,9 @@ class IndividualController extends AbstractBaseController
 
         $this->checkIndividualAccess($individual, false);
 
-        $facts = $individual->getFacts();
+        $facts = $individual->facts();
         foreach ($individual->getSpouseFamilies() as $family) {
-            foreach ($family->getFacts() as $fact) {
+            foreach ($family->facts() as $fact) {
                 $facts[] = $fact;
             }
         }
@@ -226,7 +226,7 @@ class IndividualController extends AbstractBaseController
     {
         $count = 0;
 
-        foreach ($individual->getFacts($fact_name) as $fact) {
+        foreach ($individual->facts($fact_name) as $fact) {
             if (!$fact->isPendingDeletion()) {
                 $count++;
             }

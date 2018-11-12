@@ -59,7 +59,7 @@ class RepositoryController extends AbstractBaseController
      */
     private function facts(Repository $record): array
     {
-        $facts = $record->getFacts();
+        $facts = $record->facts();
 
         usort(
             $facts,

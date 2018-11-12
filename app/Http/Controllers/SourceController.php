@@ -62,7 +62,7 @@ class SourceController extends AbstractBaseController
      */
     private function facts(Source $record): array
     {
-        $facts = $record->getFacts();
+        $facts = $record->facts();
 
         usort(
             $facts,

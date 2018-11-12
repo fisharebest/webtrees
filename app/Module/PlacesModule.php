@@ -139,9 +139,9 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
      */
     private function getPersonalFacts(Individual $individual): array
     {
-        $facts = $individual->getFacts();
+        $facts = $individual->facts();
         foreach ($individual->getSpouseFamilies() as $family) {
-            $facts = array_merge($facts, $family->getFacts());
+            $facts = array_merge($facts, $family->facts());
             // Add birth of children from this family to the facts array
             foreach ($family->getChildren() as $child) {
                 $childsBirth = $child->getFirstFact('BIRT');

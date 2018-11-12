@@ -677,15 +677,15 @@ class Functions
                 if ($person1 && $person2) {
                     foreach ($person1->getSpouseFamilies() as $family) {
                         if ($person2 === $family->getSpouse($person1)) {
-                            if ($family->getFacts('MARR')) {
-                                if ($family->getFacts(WT_EVENTS_DIV)) {
+                            if ($family->facts('MARR')) {
+                                if ($family->facts(WT_EVENTS_DIV)) {
                                     return I18N::translate('ex-husband');
                                 }
 
                                 return I18N::translate('husband');
                             }
 
-                            if ($family->getFacts(WT_EVENTS_DIV)) {
+                            if ($family->facts(WT_EVENTS_DIV)) {
                                 return I18N::translateContext('MALE', 'ex-partner');
                             }
                         }
@@ -697,15 +697,15 @@ class Functions
                 if ($person1 && $person2) {
                     foreach ($person1->getSpouseFamilies() as $family) {
                         if ($person2 === $family->getSpouse($person1)) {
-                            if ($family->getFacts('MARR')) {
-                                if ($family->getFacts(WT_EVENTS_DIV)) {
+                            if ($family->facts('MARR')) {
+                                if ($family->facts(WT_EVENTS_DIV)) {
                                     return I18N::translate('ex-wife');
                                 }
 
                                 return I18N::translate('wife');
                             }
 
-                            if ($family->getFacts(WT_EVENTS_DIV)) {
+                            if ($family->facts(WT_EVENTS_DIV)) {
                                 return I18N::translateContext('FEMALE', 'ex-partner');
                             }
                         }
@@ -717,15 +717,15 @@ class Functions
                 if ($person1 && $person2) {
                     foreach ($person1->getSpouseFamilies() as $family) {
                         if ($person2 === $family->getSpouse($person1)) {
-                            if ($family->getFacts('MARR')) {
-                                if ($family->getFacts(WT_EVENTS_DIV)) {
+                            if ($family->facts('MARR')) {
+                                if ($family->facts(WT_EVENTS_DIV)) {
                                     return I18N::translate('ex-spouse');
                                 }
 
                                 return I18N::translate('spouse');
                             }
 
-                            if ($family->getFacts(WT_EVENTS_DIV)) {
+                            if ($family->facts(WT_EVENTS_DIV)) {
                                 return I18N::translate('ex-partner');
                             }
                         }

@@ -242,7 +242,7 @@ class Family extends GedcomRecord
         $SHOW_PRIVATE_RELATIONSHIPS = (bool) $this->tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS');
 
         $children = [];
-        foreach ($this->getFacts('CHIL', false, $access_level, $SHOW_PRIVATE_RELATIONSHIPS) as $fact) {
+        foreach ($this->facts('CHIL', false, $access_level, $SHOW_PRIVATE_RELATIONSHIPS) as $fact) {
             $child = $fact->target();
             if ($child instanceof Individual && ($SHOW_PRIVATE_RELATIONSHIPS || $child->canShowName($access_level))) {
                 $children[] = $child;
@@ -273,7 +273,7 @@ class Family extends GedcomRecord
     public function getNumberOfChildren(): int
     {
         $nchi = count($this->getChildren());
-        foreach ($this->getFacts('NCHI') as $fact) {
+        foreach ($this->facts('NCHI') as $fact) {
             $nchi = max($nchi, (int) $fact->value());
         }
 

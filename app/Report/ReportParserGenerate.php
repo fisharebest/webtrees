@@ -1295,7 +1295,7 @@ class ReportParserGenerate extends ReportParserBase
 
         $record = GedcomRecord::getInstance($id, $this->tree);
         if (empty($attrs['diff']) && !empty($id)) {
-            $facts = $record->getFacts();
+            $facts = $record->facts();
             Functions::sortFacts($facts);
             $this->repeats = [];
             $nonfacts      = explode(',', $tag);
@@ -1305,7 +1305,7 @@ class ReportParserGenerate extends ReportParserBase
                 }
             }
         } else {
-            foreach ($record->getFacts() as $fact) {
+            foreach ($record->facts() as $fact) {
                 if ($fact->isPendingAddition() && $fact->getTag() !== 'CHAN') {
                     $this->repeats[] = $fact->gedcom();
                 }

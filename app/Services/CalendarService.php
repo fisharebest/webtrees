@@ -120,7 +120,7 @@ class CalendarService
                     $record = Family::getInstance($row->xref, $tree, $row->gedcom);
                 }
                 $anniv_date = new Date($row->d_type . ' ' . $row->d_day . ' ' . $row->d_month . ' ' . $row->d_year);
-                foreach ($record->getFacts() as $fact) {
+                foreach ($record->facts() as $fact) {
                     // For date ranges, we need a match on either the start/end.
                     if (($fact->date()->minimumJulianDay() === $anniv_date->minimumJulianDay() || $fact->date()->maximumJulianDay() == $anniv_date->maximumJulianDay()) && $fact->getTag() === $row->d_fact) {
                         $fact->anniv   = 0;
@@ -379,7 +379,7 @@ class CalendarService
                         $record = Family::getInstance($row->xref, $tree, $row->gedcom);
                     }
                     $anniv_date = new Date($row->d_type . ' ' . $row->d_day . ' ' . $row->d_month . ' ' . $row->d_year);
-                    foreach ($record->getFacts() as $fact) {
+                    foreach ($record->facts() as $fact) {
                         if (($fact->date()->minimumJulianDay() === $anniv_date->minimumJulianDay() || $fact->date()->maximumJulianDay() === $anniv_date->maximumJulianDay()) && $fact->getTag() === $row->d_fact) {
                             $fact->anniv   = $row->d_year === '0' ? 0 : $anniv->year - $row->d_year;
                             $fact->jd      = $jd;

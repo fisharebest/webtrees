@@ -26,7 +26,7 @@
     </div>
 
     <div id="raw-gedcom-list">
-        <?php foreach ($record->getFacts() as $fact) : ?>
+        <?php foreach ($record->facts() as $fact) : ?>
             <?php if (!$fact->isPendingDeletion()) : ?>
                 <div class="card my-2">
                     <label class="card-header py-1 px-2 d-flex" for="fact-<?= e($fact->getFactId()) ?>">

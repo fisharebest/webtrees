@@ -499,7 +499,7 @@ class GedcomRecord
             list($gedrec) = explode("\n", $this->gedcom, 2);
 
             // Check each of the facts for access
-            foreach ($this->getFacts('', false, $access_level) as $fact) {
+            foreach ($this->facts('', false, $access_level) as $fact) {
                 $gedrec .= "\n" . $fact->gedcom();
             }
 
@@ -813,7 +813,7 @@ class GedcomRecord
      */
     public function formatFirstMajorFact(string $facts, int $style): string
     {
-        foreach ($this->getFacts($facts, true) as $event) {
+        foreach ($this->facts($facts, true) as $event) {
             // Only display if it has a date or place (or both)
             if ($event->date()->isOK() && !$event->place()->isEmpty()) {
                 $joiner = ' — ';
@@ -1045,7 +1045,7 @@ class GedcomRecord
     public function getAllEventDates(string $event_type): array
     {
         $dates = [];
-        foreach ($this->getFacts($event_type) as $event) {
+        foreach ($this->facts($event_type) as $event) {
             if ($event->date()->isOK()) {
                 $dates[] = $event->date();
             }
@@ -1064,7 +1064,7 @@ class GedcomRecord
     public function getAllEventPlaces(string $event_type): array
     {
         $places = [];
-        foreach ($this->getFacts($event_type) as $event) {
+        foreach ($this->facts($event_type) as $event) {
             if (preg_match_all('/\n(?:2 PLAC|3 (?:ROMN|FONE|_HEB)) +(.+)/', $event->gedcom(), $ged_places)) {
                 foreach ($ged_places[1] as $ged_place) {
                     $places[] = new Place($ged_place, $this->tree);
@@ -1084,7 +1084,7 @@ class GedcomRecord
      */
     public function getFirstFact(string $tag)
     {
-        foreach ($this->getFacts() as $fact) {
+        foreach ($this->facts() as $fact) {
             if ($fact->getTag() === $tag) {
                 return $fact;
             }
@@ -1103,7 +1103,7 @@ class GedcomRecord
      *
      * @return Fact[]
      */
-    public function getFacts(string $filter = '', bool $sort = false, int $access_level = null, bool $override = false): array
+    public function facts(string $filter = '', bool $sort = false, int $access_level = null, bool $override = false): array
     {
         if ($access_level === null) {
             $access_level = Auth::accessLevel($this->tree);
@@ -1242,7 +1242,7 @@ class GedcomRecord
         list($new_gedcom) = explode("\n", $old_gedcom, 2);
 
         // Replacing (or deleting) an existing fact
-        foreach ($this->getFacts('', false, Auth::PRIV_HIDE) as $fact) {
+        foreach ($this->facts('', false, Auth::PRIV_HIDE) as $fact) {
             if (!$fact->isPendingDeletion()) {
                 if ($fact->id() === $fact_id) {
                     if ($gedcom !== '') {
@@ -1375,7 +1375,7 @@ class GedcomRecord
     {
         $value = '@' . $xref . '@';
 
-        foreach ($this->getFacts() as $fact) {
+        foreach ($this->facts() as $fact) {
             if ($fact->value() === $value) {
                 $this->deleteFact($fact->id(), $update_chan);
             } elseif (preg_match_all('/\n(\d) ' . WT_REGEX_TAG . ' ' . $value . '/', $fact->gedcom(), $matches, PREG_SET_ORDER)) {

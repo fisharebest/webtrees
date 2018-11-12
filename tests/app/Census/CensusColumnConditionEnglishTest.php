@@ -87,7 +87,7 @@ class CensusColumnConditionEnglishTest extends \Fisharebest\Webtrees\TestCase
     {
         $family = Mockery::mock('Fisharebest\Webtrees\Family');
         $family->shouldReceive('getMarriageDate')->andReturn(new Date(''));
-        $family->shouldReceive('getFacts')->with('MARR')->andReturn([]);
+        $family->shouldReceive('facts')->with('MARR')->andReturn([]);
 
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
         $individual->shouldReceive('getSpouseFamilies')->andReturn([$family]);
@@ -112,7 +112,7 @@ class CensusColumnConditionEnglishTest extends \Fisharebest\Webtrees\TestCase
     {
         $family = Mockery::mock('Fisharebest\Webtrees\Family');
         $family->shouldReceive('getMarriageDate')->andReturn(new Date(''));
-        $family->shouldReceive('getFacts')->with('MARR')->andReturn([]);
+        $family->shouldReceive('facts')->with('MARR')->andReturn([]);
 
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
         $individual->shouldReceive('getSpouseFamilies')->andReturn([$family]);
@@ -142,8 +142,8 @@ class CensusColumnConditionEnglishTest extends \Fisharebest\Webtrees\TestCase
 
         $family = Mockery::mock('Fisharebest\Webtrees\Family');
         $family->shouldReceive('getMarriageDate')->andReturn(new Date(''));
-        $family->shouldReceive('getFacts')->with('MARR')->andReturn([$fact]);
-        $family->shouldReceive('getFacts')->with('DIV')->andReturn([]);
+        $family->shouldReceive('facts')->with('MARR')->andReturn([$fact]);
+        $family->shouldReceive('facts')->with('DIV')->andReturn([]);
         $family->shouldReceive('getSpouse')->andReturn($spouse);
 
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
@@ -173,8 +173,8 @@ class CensusColumnConditionEnglishTest extends \Fisharebest\Webtrees\TestCase
 
         $family = Mockery::mock('Fisharebest\Webtrees\Family');
         $family->shouldReceive('getMarriageDate')->andReturn(new Date(''));
-        $family->shouldReceive('getFacts')->with('MARR')->andReturn([$fact]);
-        $family->shouldReceive('getFacts')->with('DIV')->andReturn([]);
+        $family->shouldReceive('facts')->with('MARR')->andReturn([$fact]);
+        $family->shouldReceive('facts')->with('DIV')->andReturn([]);
         $family->shouldReceive('getSpouse')->andReturn($spouse);
 
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
@@ -199,7 +199,7 @@ class CensusColumnConditionEnglishTest extends \Fisharebest\Webtrees\TestCase
     {
         $family = Mockery::mock('Fisharebest\Webtrees\Family');
         $family->shouldReceive('getMarriageDate')->andReturn(new Date(''));
-        $family->shouldReceive('getFacts')->with('MARR')->andReturn([]);
+        $family->shouldReceive('facts')->with('MARR')->andReturn([]);
 
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
         $individual->shouldReceive('getSex')->andReturn('M');
@@ -224,7 +224,7 @@ class CensusColumnConditionEnglishTest extends \Fisharebest\Webtrees\TestCase
     {
         $family = Mockery::mock('Fisharebest\Webtrees\Family');
         $family->shouldReceive('getMarriageDate')->andReturn(new Date(''));
-        $family->shouldReceive('getFacts')->with('MARR')->andReturn([]);
+        $family->shouldReceive('facts')->with('MARR')->andReturn([]);
 
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
         $individual->shouldReceive('getSex')->andReturn('F');
@@ -249,7 +249,7 @@ class CensusColumnConditionEnglishTest extends \Fisharebest\Webtrees\TestCase
     {
         $family = Mockery::mock('Fisharebest\Webtrees\Family');
         $family->shouldReceive('getMarriageDate')->andReturn(new Date(''));
-        $family->shouldReceive('getFacts')->with('MARR')->andReturn([]);
+        $family->shouldReceive('facts')->with('MARR')->andReturn([]);
 
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
         $individual->shouldReceive('getSex')->andReturn('M');
@@ -274,7 +274,7 @@ class CensusColumnConditionEnglishTest extends \Fisharebest\Webtrees\TestCase
     {
         $family = Mockery::mock('Fisharebest\Webtrees\Family');
         $family->shouldReceive('getMarriageDate')->andReturn(new Date(''));
-        $family->shouldReceive('getFacts')->with('MARR')->andReturn([]);
+        $family->shouldReceive('facts')->with('MARR')->andReturn([]);
 
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
         $individual->shouldReceive('getSex')->andReturn('F');
@@ -301,8 +301,8 @@ class CensusColumnConditionEnglishTest extends \Fisharebest\Webtrees\TestCase
 
         $family = Mockery::mock('Fisharebest\Webtrees\Family');
         $family->shouldReceive('getMarriageDate')->andReturn(new Date(''));
-        $family->shouldReceive('getFacts')->with('MARR')->andReturn([$fact]);
-        $family->shouldReceive('getFacts')->with('DIV')->andReturn([$fact]);
+        $family->shouldReceive('facts')->with('MARR')->andReturn([$fact]);
+        $family->shouldReceive('facts')->with('DIV')->andReturn([$fact]);
 
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
         $individual->shouldReceive('getSex')->andReturn('M');
@@ -328,8 +328,8 @@ class CensusColumnConditionEnglishTest extends \Fisharebest\Webtrees\TestCase
 
         $family = Mockery::mock('Fisharebest\Webtrees\Family');
         $family->shouldReceive('getMarriageDate')->andReturn(new Date(''));
-        $family->shouldReceive('getFacts')->with('MARR')->andReturn([$fact]);
-        $family->shouldReceive('getFacts')->with('DIV')->andReturn([$fact]);
+        $family->shouldReceive('facts')->with('MARR')->andReturn([$fact]);
+        $family->shouldReceive('facts')->with('DIV')->andReturn([$fact]);
 
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
         $individual->shouldReceive('getSex')->andReturn('F');

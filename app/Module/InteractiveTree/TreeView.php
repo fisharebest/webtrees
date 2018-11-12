@@ -152,15 +152,15 @@ class TreeView
 
         $hmtl = $this->getThumbnail($individual);
         $hmtl .= '<a class="tv_link" href="' . e($individual->url()) . '">' . $individual->getFullName() . '</a> <a href="' . e($chart_url) . '" title="' . I18N::translate('Interactive tree of %s', strip_tags($individual->getFullName())) . '" class="wt-icon-individual tv_link tv_treelink"></a>';
-        foreach ($individual->getFacts(WT_EVENTS_BIRT, true) as $fact) {
+        foreach ($individual->facts(WT_EVENTS_BIRT, true) as $fact) {
             $hmtl .= $fact->summary();
         }
         if ($family) {
-            foreach ($family->getFacts(WT_EVENTS_MARR, true) as $fact) {
+            foreach ($family->facts(WT_EVENTS_MARR, true) as $fact) {
                 $hmtl .= $fact->summary();
             }
         }
-        foreach ($individual->getFacts(WT_EVENTS_DEAT, true) as $fact) {
+        foreach ($individual->facts(WT_EVENTS_DEAT, true) as $fact) {
             $hmtl .= $fact->summary();
         }
 

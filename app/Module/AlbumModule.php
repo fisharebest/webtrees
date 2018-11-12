@@ -112,9 +112,9 @@ class AlbumModule extends AbstractModule implements ModuleTabInterface
     {
         if ($this->media_list === null) {
             // Use facts from this individual and all their spouses
-            $facts = $individual->getFacts();
+            $facts = $individual->facts();
             foreach ($individual->getSpouseFamilies() as $family) {
-                foreach ($family->getFacts() as $fact) {
+                foreach ($family->facts() as $fact) {
                     $facts[] = $fact;
                 }
             }
@@ -136,7 +136,7 @@ class AlbumModule extends AbstractModule implements ModuleTabInterface
             $this->media_list = array_unique($this->media_list);
             // Sort these using _WT_OBJE_SORT
             $wt_obje_sort = [];
-            foreach ($individual->getFacts('_WT_OBJE_SORT') as $fact) {
+            foreach ($individual->facts('_WT_OBJE_SORT') as $fact) {
                 $wt_obje_sort[] = trim($fact->value(), '@');
             }
             usort($this->media_list, function (Media $x, Media $y) use ($wt_obje_sort): int {

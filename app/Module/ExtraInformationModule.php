@@ -65,7 +65,7 @@ class ExtraInformationModule extends AbstractModule implements ModuleSidebarInte
     {
         $indifacts = [];
         // The individual’s own facts
-        foreach ($individual->getFacts() as $fact) {
+        foreach ($individual->facts() as $fact) {
             if (self::showFact($fact)) {
                 $indifacts[] = $fact;
             }

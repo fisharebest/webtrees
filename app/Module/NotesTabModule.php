@@ -82,10 +82,10 @@ class NotesTabModule extends AbstractModule implements ModuleTabInterface
     private function getFactsWithNotes(Individual $individual): array
     {
         if ($this->facts === null) {
-            $facts = $individual->getFacts();
+            $facts = $individual->facts();
             foreach ($individual->getSpouseFamilies() as $family) {
                 if ($family->canShow()) {
-                    foreach ($family->getFacts() as $fact) {
+                    foreach ($family->facts() as $fact) {
                         $facts[] = $fact;
                     }
                 }

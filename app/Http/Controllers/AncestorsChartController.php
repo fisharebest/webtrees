@@ -198,7 +198,7 @@ class AncestorsChartController extends AbstractChartController
             echo ' <span class="person_box">', I18N::number($sosa * 2), '</span> ', I18N::translate('and');
             echo ' <span class="person_boxF">', I18N::number($sosa * 2 + 1), '</span>';
             if ($family->canShow()) {
-                foreach ($family->getFacts(WT_EVENTS_MARR) as $fact) {
+                foreach ($family->facts(WT_EVENTS_MARR) as $fact) {
                     echo ' <a href="', e($family->url()), '" class="details1">', $fact->summary(), '</a>';
                 }
             }

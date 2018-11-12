@@ -183,7 +183,7 @@ class Individual extends GedcomRecord
                     0 => [$user_individual],
                     1 => [],
                 ];
-                foreach ($user_individual->getFacts('FAM[CS]', false, Auth::PRIV_HIDE) as $fact) {
+                foreach ($user_individual->facts('FAM[CS]', false, Auth::PRIV_HIDE) as $fact) {
                     $family = $fact->target();
                     if ($family instanceof Family) {
                         $cache[1][] = $family;
@@ -211,7 +211,7 @@ class Individual extends GedcomRecord
                 if ($n % 2 == 0) {
                     // Add FAM->INDI links
                     foreach ($cache[$n - 1] as $family) {
-                        foreach ($family->getFacts('HUSB|WIFE|CHIL', false, Auth::PRIV_HIDE) as $fact) {
+                        foreach ($family->facts('HUSB|WIFE|CHIL', false, Auth::PRIV_HIDE) as $fact) {
                             $individual = $fact->target();
                             // Don’t backtrack
                             if ($individual instanceof Individual && !in_array($individual, $cache[$n - 2], true)) {
@@ -225,7 +225,7 @@ class Individual extends GedcomRecord
                 } else {
                     // Add INDI->FAM links
                     foreach ($cache[$n - 1] as $individual) {
-                        foreach ($individual->getFacts('FAM[CS]', false, Auth::PRIV_HIDE) as $fact) {
+                        foreach ($individual->facts('FAM[CS]', false, Auth::PRIV_HIDE) as $fact) {
                             $family = $fact->target();
                             // Don’t backtrack
                             if ($family instanceof Family && !in_array($family, $cache[$n - 2], true)) {
@@ -254,7 +254,7 @@ class Individual extends GedcomRecord
         $rec = '0 @' . $this->xref . '@ INDI';
         if ($this->tree->getPreference('SHOW_LIVING_NAMES') >= $access_level) {
             // Show all the NAME tags, including subtags
-            foreach ($this->getFacts('NAME') as $fact) {
+            foreach ($this->facts('NAME') as $fact) {
                 $rec .= "\n" . $fact->gedcom();
             }
         }
@@ -422,7 +422,7 @@ class Individual extends GedcomRecord
      */
     public function findHighlightedMediaFile()
     {
-        foreach ($this->getFacts('OBJE') as $fact) {
+        foreach ($this->facts('OBJE') as $fact) {
             $media = $fact->target();
             if ($media instanceof Media) {
                 foreach ($media->mediaFiles() as $media_file) {
@@ -822,7 +822,7 @@ class Individual extends GedcomRecord
         $SHOW_PRIVATE_RELATIONSHIPS = (bool) $this->tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS');
 
         $families = [];
-        foreach ($this->getFacts('FAMS', false, $access_level, $SHOW_PRIVATE_RELATIONSHIPS) as $fact) {
+        foreach ($this->facts('FAMS', false, $access_level, $SHOW_PRIVATE_RELATIONSHIPS) as $fact) {
             $family = $fact->target();
             if ($family instanceof Family && ($SHOW_PRIVATE_RELATIONSHIPS || $family->canShow($access_level))) {
                 $families[] = $family;
@@ -888,7 +888,7 @@ class Individual extends GedcomRecord
         $SHOW_PRIVATE_RELATIONSHIPS = (bool) $this->tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS');
 
         $families = [];
-        foreach ($this->getFacts('FAMC', false, $access_level, $SHOW_PRIVATE_RELATIONSHIPS) as $fact) {
+        foreach ($this->facts('FAMC', false, $access_level, $SHOW_PRIVATE_RELATIONSHIPS) as $fact) {
             $family = $fact->target();
             if ($family instanceof Family && ($SHOW_PRIVATE_RELATIONSHIPS || $family->canShow($access_level))) {
                 $families[] = $family;
@@ -1317,7 +1317,7 @@ class Individual extends GedcomRecord
         $this->extractNamesFromFacts(
             1,
             'NAME',
-            $this->getFacts(
+            $this->facts(
                 'NAME',
                 false,
                 Auth::accessLevel($this->tree),

@@ -72,7 +72,7 @@ class EditIndividualController extends AbstractEditController
         $keep_facts  = [];
 
         // Split facts into OBJE and other
-        foreach ($individual->getFacts() as $fact) {
+        foreach ($individual->facts() as $fact) {
             if ($fact->getTag() === 'OBJE') {
                 $sort_facts[$fact->id()] = $fact->gedcom();
             } else {
@@ -133,7 +133,7 @@ class EditIndividualController extends AbstractEditController
         $keep_facts  = [];
 
         // Split facts into NAME and other
-        foreach ($individual->getFacts() as $fact) {
+        foreach ($individual->facts() as $fact) {
             if ($fact->getTag() === 'NAME') {
                 $sort_facts[$fact->id()] = $fact->gedcom();
             } else {
@@ -194,7 +194,7 @@ class EditIndividualController extends AbstractEditController
         $keep_facts  = [];
 
         // Split facts into FAMS and other
-        foreach ($individual->getFacts() as $fact) {
+        foreach ($individual->facts() as $fact) {
             if ($fact->getTag() === 'FAMS') {
                 $sort_facts[$fact->id()] = $fact->gedcom();
             } else {
@@ -586,7 +586,7 @@ class EditIndividualController extends AbstractEditController
         $this->checkIndividualAccess($individual, true);
 
         // Find the fact to edit
-        foreach ($individual->getFacts() as $fact) {
+        foreach ($individual->facts() as $fact) {
             if ($fact->id() === $fact_id && $fact->canEdit()) {
                 return $this->viewResponse('edit/new-individual', [
                     'tree'       => $tree,
@@ -713,7 +713,7 @@ class EditIndividualController extends AbstractEditController
 
         // Replace any existing child->family link (we may be changing the PEDI);
         $fact_id = '';
-        foreach ($individual->getFacts('FAMC') as $fact) {
+        foreach ($individual->facts('FAMC') as $fact) {
             if ($family === $fact->target()) {
                 $fact_id = $fact->id();
                 break;
@@ -725,7 +725,7 @@ class EditIndividualController extends AbstractEditController
 
         // Only set the family->child link if it does not already exist
         $chil_link_exists = false;
-        foreach ($family->getFacts('CHIL') as $fact) {
+        foreach ($family->facts('CHIL') as $fact) {
             if ($individual === $fact->target()) {
                 $chil_link_exists = true;
                 break;

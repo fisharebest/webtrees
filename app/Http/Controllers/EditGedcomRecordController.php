@@ -57,7 +57,7 @@ class EditGedcomRecordController extends AbstractEditController
 
         $this->checkRecordAccess($record, true);
 
-        foreach ($record->getFacts() as $fact) {
+        foreach ($record->facts() as $fact) {
             if ($fact->id() == $fact_id) {
                 switch ($fact->getTag()) {
                     case 'NOTE':
@@ -108,7 +108,7 @@ class EditGedcomRecordController extends AbstractEditController
 
         $this->checkRecordAccess($record, true);
 
-        foreach ($record->getFacts() as $fact) {
+        foreach ($record->facts() as $fact) {
             if ($fact->id() == $fact_id && $fact->canShow() && $fact->canEdit()) {
                 $record->deleteFact($fact_id, true);
                 break;
@@ -216,7 +216,7 @@ class EditGedcomRecordController extends AbstractEditController
 
         $title = I18N::translate('Edit the raw GEDCOM') . ' - ' . $record->getFullName();
 
-        foreach ($record->getFacts() as $fact) {
+        foreach ($record->facts() as $fact) {
             if (!$fact->isPendingDeletion() && $fact->id() === $fact_id) {
                 return $this->viewResponse('edit/raw-gedcom-fact', [
                     'pattern' => self::GEDCOM_FACT_REGEX,
@@ -249,7 +249,7 @@ class EditGedcomRecordController extends AbstractEditController
 
         $this->checkRecordAccess($record, true);
 
-        foreach ($record->getFacts() as $fact) {
+        foreach ($record->facts() as $fact) {
             if (!$fact->isPendingDeletion() && $fact->id() === $fact_id && $fact->canEdit()) {
                 $record->updateFact($fact_id, $gedcom, false);
                 break;
@@ -299,7 +299,7 @@ class EditGedcomRecordController extends AbstractEditController
         $gedcom = '0 @' . $record->xref() . '@ ' . $record::RECORD_TYPE;
 
         // Retain any private facts
-        foreach ($record->getFacts('', false, Auth::PRIV_HIDE) as $fact) {
+        foreach ($record->facts('', false, Auth::PRIV_HIDE) as $fact) {
             if (!in_array($fact->id(), $fact_ids) && !$fact->isPendingDeletion()) {
                 $gedcom .= "\n" . $fact->gedcom();
             }
@@ -358,7 +358,7 @@ class EditGedcomRecordController extends AbstractEditController
 
         // Find the fact to edit
         $edit_fact = null;
-        foreach ($record->getFacts() as $fact) {
+        foreach ($record->facts() as $fact) {
             if ($fact->id() === $fact_id && $fact->canEdit()) {
                 $edit_fact = $fact;
                 break;

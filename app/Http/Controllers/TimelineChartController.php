@@ -165,9 +165,9 @@ class TimelineChartController extends AbstractChartController
                 $birthdays  [$individual->xref()] = max(1, $date->day);
             }
             // find all the fact information
-            $facts = $individual->getFacts();
+            $facts = $individual->facts();
             foreach ($individual->getSpouseFamilies() as $family) {
-                foreach ($family->getFacts() as $fact) {
+                foreach ($family->facts() as $fact) {
                     $facts[] = $fact;
                 }
             }

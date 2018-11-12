@@ -409,10 +409,10 @@ class AdminController extends AbstractBaseController
         $media      = Media::getInstance($obje_xref, $tree);
 
         if ($individual !== null && $media !== null) {
-            foreach ($individual->getFacts() as $fact1) {
+            foreach ($individual->facts() as $fact1) {
                 if ($fact1->id() === $fact_id) {
                     $individual->updateFact($fact_id, $fact1->gedcom() . "\n2 OBJE @" . $obje_xref . '@', false);
-                    foreach ($individual->getFacts('OBJE') as $fact2) {
+                    foreach ($individual->facts('OBJE') as $fact2) {
                         if ($fact2->target() === $media) {
                             $individual->deleteFact($fact2->id(), false);
                         }
@@ -496,14 +496,14 @@ class AdminController extends AbstractBaseController
             $media      = Media::getInstance($datum->m_id, $tree, $datum->m_gedcom);
             $individual = Individual::getInstance($datum->i_id, $tree, $datum->i_gedcom);
 
-            $facts = $individual->getFacts('', true);
+            $facts = $individual->facts('', true);
             $facts = array_filter($facts, function (Fact $fact) use ($ignore_facts): bool {
                 return !$fact->isPendingDeletion() && !in_array($fact->getTag(), $ignore_facts);
             });
 
             // The link to the media object may have been deleted in a pending change.
             $deleted = true;
-            foreach ($individual->getFacts('OBJE') as $fact) {
+            foreach ($individual->facts('OBJE') as $fact) {
                 if ($fact->target() === $media && !$fact->isPendingDeletion()) {
                     $deleted = false;
                 }
@@ -595,7 +595,7 @@ class AdminController extends AbstractBaseController
                     } else {
                         // The media object already has an image.  Show this custom one in preference.
                         $gedcom = '0 @' . $media_object->xref() . "@ OBJE\n" . $gedcom;
-                        foreach ($media_object->getFacts() as $fact) {
+                        foreach ($media_object->facts() as $fact) {
                             $gedcom .= "\n" . $fact->gedcom();
                         }
                         $media_object->updateRecord($gedcom, true);
@@ -758,13 +758,13 @@ class AdminController extends AbstractBaseController
         $facts1 = [];
         $facts2 = [];
 
-        foreach ($record1->getFacts() as $fact) {
+        foreach ($record1->facts() as $fact) {
             if (!$fact->isPendingDeletion() && $fact->getTag() !== 'CHAN') {
                 $facts1[$fact->id()] = $fact;
             }
         }
 
-        foreach ($record2->getFacts() as $fact) {
+        foreach ($record2->facts() as $fact) {
             if (!$fact->isPendingDeletion() && $fact->getTag() !== 'CHAN') {
                 $facts2[$fact->id()] = $fact;
             }
@@ -812,13 +812,13 @@ class AdminController extends AbstractBaseController
         $facts1 = [];
         $facts2 = [];
 
-        foreach ($record1->getFacts() as $fact) {
+        foreach ($record1->facts() as $fact) {
             if (!$fact->isPendingDeletion() && $fact->getTag() !== 'CHAN') {
                 $facts1[$fact->id()] = $fact;
             }
         }
 
-        foreach ($record2->getFacts() as $fact) {
+        foreach ($record2->facts() as $fact) {
             if (!$fact->isPendingDeletion() && $fact->getTag() !== 'CHAN') {
                 $facts2[$fact->id()] = $fact;
             }

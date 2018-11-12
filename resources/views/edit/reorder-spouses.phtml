@@ -7,7 +7,7 @@
 <form class="wt-page-content" method="post">
     <?= csrf_field() ?>
     <div class="wt-sortable-list">
-        <?php foreach ($individual->getFacts('FAMS') as $fact) : ?>
+        <?php foreach ($individual->facts('FAMS') as $fact) : ?>
             <div class="card mb-2 wt-sortable-item" data-sortbydate="<?= $fact->target()->getMarriageDate()->julianDay() ?>">
                 <input type="hidden" name="order[]" value="<?= $fact->id() ?>">
                 <h3 class="card-header">

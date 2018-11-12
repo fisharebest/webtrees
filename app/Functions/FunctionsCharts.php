@@ -198,7 +198,7 @@ class FunctionsCharts
         echo '</tr></table>';
         echo '<br>';
         if ($sosa && $family->canShow()) {
-            foreach ($family->getFacts(WT_EVENTS_MARR) as $fact) {
+            foreach ($family->facts(WT_EVENTS_MARR) as $fact) {
                 echo '<a href="', e($family->url()), '" class="details1">';
                 echo $fact->summary();
                 echo '</a>';

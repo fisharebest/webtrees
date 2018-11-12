@@ -63,7 +63,7 @@
                 <?php endif ?>
 
                 <?php if (Auth::isEditor($individual->tree())) : ?>
-                    <?php if (count($individual->getFacts('OBJE')) > 1) : ?>
+                    <?php if (count($individual->facts('OBJE')) > 1) : ?>
                         <div>
                             <a href="<?= e(route('reorder-media', ['ged' => $individual->tree()->name(), 'xref' => $individual->xref()])) ?>">
                                 <?= I18N::translate('Re-order media') ?>

@@ -60,7 +60,7 @@
                                     </form>
                                 </td>
                                 <td>
-                                    <?php foreach ($record_change->record->getFacts() as $fact) : ?>
+                                    <?php foreach ($record_change->record->facts() as $fact) : ?>
                                         <?php if ($fact->getTag() !== 'CHAN' && $fact->isPendingAddition()) : ?>
                                             <div class="new">
                                                 <?= strip_tags($fact->summary()) ?>

@@ -43,7 +43,7 @@ class CensusColumnOccupationTest extends \Fisharebest\Webtrees\TestCase
     public function testNoOccupation()
     {
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
-        $individual->shouldReceive('getFacts')->withArgs(['OCCU'])->andReturn([]);
+        $individual->shouldReceive('facts')->withArgs(['OCCU'])->andReturn([]);
 
         $census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
 
@@ -64,7 +64,7 @@ class CensusColumnOccupationTest extends \Fisharebest\Webtrees\TestCase
         $fact->shouldReceive('value')->andReturn('Farmer');
 
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
-        $individual->shouldReceive('getFacts')->withArgs(['OCCU'])->andReturn([$fact]);
+        $individual->shouldReceive('facts')->withArgs(['OCCU'])->andReturn([$fact]);
 
         $census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
 

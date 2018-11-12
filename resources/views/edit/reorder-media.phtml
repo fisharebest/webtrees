@@ -7,7 +7,7 @@
 <form class="wt-page-content" method="post">
     <?= csrf_field() ?>
     <div class="wt-sortable-list">
-        <?php foreach ($individual->getFacts('OBJE') as $fact) : ?>
+        <?php foreach ($individual->facts('OBJE') as $fact) : ?>
             <div class="card mb-2 wt-sortable-item">
                 <input type="hidden" name="order[]" value="<?= $fact->id() ?>">
                 <h3 class="card-header">
