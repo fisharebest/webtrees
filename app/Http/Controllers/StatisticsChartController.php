@@ -836,7 +836,7 @@ class StatisticsChartController extends AbstractChartController
      * Plot the data.
      *
      * @param string   $chart_title
-     * @param int[]    $x_axis
+     * @param string[] $x_axis
      * @param string   $x_axis_title
      * @param int[][]  $ydata
      * @param string   $y_axis_title

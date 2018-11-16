@@ -199,7 +199,7 @@ class Fact
     /**
      * Get the record to which this fact links
      *
-     * @return Individual|Family|Source|Repository|Media|Note|null
+     * @return Individual|Family|Source|Repository|Media|Note|GedcomRecord|null
      */
     public function target()
     {
