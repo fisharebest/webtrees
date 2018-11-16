@@ -63,7 +63,7 @@
         "php-coveralls/php-coveralls": "*"
     },
     "scripts": {
-       "webtrees-build": [
+       "webtrees:build": [
            "@composer webtrees-mo",
            "git checkout language/en-US.mo",
            "rm -Rf webtrees/",
@@ -71,7 +71,7 @@
            "cp language/*.mo webtrees/language/",
            "zip --quiet --recurse-paths --move -9 webtrees.zip webtrees"
        ],
-       "webtrees-check": [
+       "webtrees:check": [
             "### PHP-CODE-ANALYZER",
             "phpca --since-version=7.0 app/",
             "### PHP-CODE-FIXER",
@@ -83,13 +83,13 @@
             "### PHP-CODE-SNIFFER",
             "phpcs --standard=PSR12 -s --exclude=Generic.Files.LineLength,PSR2.ControlStructures.ControlStructureSpacing app routes",
             "### PHAN",
-            "phan --target-php-version=7.0 --processes=32 --progress-bar --directory . --exclude-directory-list data,resources,routes,tests,vendor",
+            "PHAN_DISABLE_XDEBUG_WARN=1 phan --target-php-version=7.0 --processes=32 --progress-bar --directory . --exclude-directory-list data,resources,routes,tests,vendor",
             "### PHPSTAN",
             "phpstan --level=7 analyze index.php app",
             "### PSALM",
             "psalm --threads=8"
         ],
-        "webtrees-tools": [
+        "webtrees:tools": [
             "### PAHOUT",
             "@composer global require wata727/pahout=*",
             "### PHAN",
@@ -103,11 +103,11 @@
             "### PSALM",
             "@composer global require vimeo/psalm=*"
         ],
-        "webtrees-mo": [
+        "webtrees:mo": [
             "for FILE in language/*.po; do msgfmt --output=$(dirname $FILE)/$(basename $FILE .po).mo $FILE; done",
             "rm -Rf data/cache/language*"
         ],
-        "webtrees-po": [
+        "webtrees:po": [
             "sed -i.bak -e 's/\\(I18N::[^)]*[)]\\)/<?php echo \\1; ?>/g' modules*/*/*.xml",
             "git grep -I --name-only --fixed-strings -e I18N:: -- '*.php' '*.xml' | xargs xgettext --package-name=webtrees --package-version=1.0 --msgid-bugs-address=i18n@webtrees.net --output=language/webtrees.pot --no-wrap --language=PHP --add-comments=I18N --from-code=utf-8 --keyword --keyword=translate:1 --keyword=translateContext:1c,2 --keyword=plural:1,2",
             "find modules*/ -name '*.xml' -exec mv {}.bak {} \\;",
@@ -115,11 +115,11 @@
         ]
     },
     "scripts-descriptions": {
-        "webtrees-build": "Create a distribution file (webtrees.zip)",
-        "webtrees-check": "Run various static analysis tools",
-        "webtrees-mo": "Compile the language files (*.mo)",
-        "webtrees-po": "Update the language (webtrees.pot, *.po)",
-        "webtrees-tools": "Install the tools needed to run webtrees-check"
+        "webtrees:build": "Create a distribution file (webtrees.zip)",
+        "webtrees:check": "Run various static analysis tools",
+        "webtrees:mo": "Compile the language files (*.mo)",
+        "webtrees:po": "Update the language (webtrees.pot, *.po)",
+        "webtrees:tools": "Install the tools needed to run webtrees-check"
     },
     "extra": {
         "branch-alias": {
