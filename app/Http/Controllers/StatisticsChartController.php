@@ -458,7 +458,8 @@ class StatisticsChartController extends AbstractChartController
                         $rows = $stats->statsAgeQuery(false, 'DEAT');
                         foreach ($rows as $row) {
                             foreach ($row as $age) {
-                                $this->fillYData($age / self::DAYS_IN_YEAR, 0, 1, $x_axis, $z_axis, $ydata);
+                                $years = intdiv($age, self::DAYS_IN_YEAR);
+                                $this->fillYData($years, 0, 1, $x_axis, $z_axis, $ydata);
                             }
                         }
                         break;
@@ -468,7 +469,8 @@ class StatisticsChartController extends AbstractChartController
                             $rows = $stats->statsAgeQuery(false, 'DEAT', $sex);
                             foreach ($rows as $row) {
                                 foreach ($row as $age) {
-                                    $this->fillYData($age / self::DAYS_IN_YEAR, $sex, 1, $x_axis, $z_axis, $ydata);
+                                    $years = intdiv($age, self::DAYS_IN_YEAR);
+                                    $this->fillYData($years, $sex, 1, $x_axis, $z_axis, $ydata);
                                 }
                             }
                         }
@@ -480,8 +482,9 @@ class StatisticsChartController extends AbstractChartController
                         foreach (array_keys($z_axis) as $boundary) {
                             $rows = $stats->statsAgeQuery(false, 'DEAT', 'BOTH', $prev_boundary, $boundary);
                             foreach ($rows as $row) {
-                                foreach ($row as $age_value) {
-                                    $this->fillYData($age_value / self::DAYS_IN_YEAR, $boundary, 1, $x_axis, $z_axis, $ydata);
+                                foreach ($row as $age) {
+                                    $years = intdiv($age, self::DAYS_IN_YEAR);
+                                    $this->fillYData($years, $boundary, 1, $x_axis, $z_axis, $ydata);
                                 }
                             }
                             $prev_boundary = $boundary + 1;
@@ -518,7 +521,8 @@ class StatisticsChartController extends AbstractChartController
                         foreach (['M', 'F', 'U'] as $sex) {
                             $rows = $stats->statsMarrAgeQuery(false, $sex);
                             foreach ($rows as $row) {
-                                $this->fillYData($row->age / self::DAYS_IN_YEAR, 0, 1, $x_axis, $z_axis, $ydata);
+                                $years = intdiv($row->age, self::DAYS_IN_YEAR);
+                                $this->fillYData($years, 0, 1, $x_axis, $z_axis, $ydata);
                             }
                         }
                         break;
@@ -527,7 +531,8 @@ class StatisticsChartController extends AbstractChartController
                         foreach (array_keys($z_axis) as $sex) {
                             $rows = $stats->statsMarrAgeQuery(false, $sex);
                             foreach ($rows as $row) {
-                                $this->fillYData($row->age / self::DAYS_IN_YEAR, $sex, 1, $x_axis, $z_axis, $ydata);
+                                $years = intdiv($row->age, self::DAYS_IN_YEAR);
+                                $this->fillYData($years, $sex, 1, $x_axis, $z_axis, $ydata);
                             }
                         }
                         break;
@@ -540,7 +545,8 @@ class StatisticsChartController extends AbstractChartController
                             foreach (array_keys($z_axis) as $boundary) {
                                 $rows = $stats->statsMarrAgeQuery(false, $sex, $prev_boundary, $boundary);
                                 foreach ($rows as $row) {
-                                    $this->fillYData($row->age / self::DAYS_IN_YEAR, $boundary, 1, $x_axis, $z_axis, $ydata);
+                                    $years = intdiv($row->age, self::DAYS_IN_YEAR);
+                                    $this->fillYData($years, $boundary, 1, $x_axis, $z_axis, $ydata);
                                 }
                                 $prev_boundary = $boundary + 1;
                             }
@@ -578,7 +584,8 @@ class StatisticsChartController extends AbstractChartController
                             $indi = [];
                             foreach ($rows as $row) {
                                 if (!in_array($row->d_gid, $indi)) {
-                                    $this->fillYData($row->age / self::DAYS_IN_YEAR, 0, 1, $x_axis, $z_axis, $ydata);
+                                    $years = intdiv($row->age, self::DAYS_IN_YEAR);
+                                    $this->fillYData($years, 0, 1, $x_axis, $z_axis, $ydata);
                                     $indi[] = $row->d_gid;
                                 }
                             }
@@ -591,7 +598,8 @@ class StatisticsChartController extends AbstractChartController
                             $indi = [];
                             foreach ($rows as $row) {
                                 if (!in_array($row->d_gid, $indi)) {
-                                    $this->fillYData($row->age / self::DAYS_IN_YEAR, $sex, 1, $x_axis, $z_axis, $ydata);
+                                    $years = intdiv($row->age, self::DAYS_IN_YEAR);
+                                    $this->fillYData($years, $sex, 1, $x_axis, $z_axis, $ydata);
                                     $indi[] = $row->d_gid;
                                 }
                             }
@@ -608,7 +616,8 @@ class StatisticsChartController extends AbstractChartController
                                 $rows = $stats->statsMarrAgeQuery(false, $sex, $prev_boundary, $boundary);
                                 foreach ($rows as $row) {
                                     if (!in_array($row->d_gid, $indi)) {
-                                        $this->fillYData($row->age / self::DAYS_IN_YEAR, $boundary, 1, $x_axis, $z_axis, $ydata);
+                                        $years = intdiv($row->age, self::DAYS_IN_YEAR);
+                                        $this->fillYData($years, $boundary, 1, $x_axis, $z_axis, $ydata);
                                         $indi[] = $row->d_gid;
                                     }
                                 }

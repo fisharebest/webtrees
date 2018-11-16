@@ -187,7 +187,7 @@ class Fact
      *
      * @return string
      */
-    public function value()
+    public function value(): string
     {
         if (preg_match('/^1 (?:' . $this->tag . ') ?(.*(?:(?:\n2 CONT ?.*)*))/', $this->gedcom, $match)) {
             return preg_replace("/\n2 CONT ?/", "\n", $match[1]);
@@ -232,7 +232,7 @@ class Fact
      *
      * @return string
      */
-    public function attribute($tag)
+    public function attribute($tag): string
     {
         if (preg_match('/\n2 (?:' . $tag . ') ?(.*(?:(?:\n3 CONT ?.*)*)*)/', $this->gedcom, $match)) {
             return preg_replace("/\n3 CONT ?/", "\n", $match[1]);
@@ -553,18 +553,18 @@ class Fact
      *
      * @return int
      */
-    public static function compareDate(Fact $a, Fact $b)
+    public static function compareDate(Fact $a, Fact $b): int
     {
         if ($a->date()->isOK() && $b->date()->isOK()) {
             // If both events have dates, compare by date
             $ret = Date::compare($a->date(), $b->date());
 
-            if ($ret == 0) {
+            if ($ret === 0) {
                 // If dates are the same, compare by fact type
                 $ret = self::compareType($a, $b);
 
                 // If the fact type is also the same, retain the initial order
-                if ($ret == 0) {
+                if ($ret === 0) {
                     $ret = $a->sortOrder - $b->sortOrder;
                 }
             }
@@ -653,7 +653,7 @@ class Fact
      *
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         return $this->id . '@' . $this->record->xref();
     }
