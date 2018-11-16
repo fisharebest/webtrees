@@ -212,18 +212,18 @@ class ListController extends AbstractBaseController
         <div class="d-flex flex-column wt-page-options wt-page-options-individual-list d-print-none">
             <ul class="d-flex flex-wrap wt-initials-list">
 
-                <?php foreach ($this->surnameAlpha($tree, $show_marnm === 'yes', $families) as $letter => $count): ?>
+                <?php foreach ($this->surnameAlpha($tree, $show_marnm === 'yes', $families) as $letter => $count) : ?>
                     <li class="wt-initials-list-item d-flex">
-                        <?php if ($count > 0): ?>
+                        <?php if ($count > 0) : ?>
                             <a href="<?= e(route($route, ['alpha' => $letter, 'ged' => $tree->name()])) ?>" class="wt-initial<?= $letter === $alpha ? ' active' : ''?> '" title="<?= I18N::number($count) ?>"><?= $this->surnameInitial((string) $letter) ?></a>
-                        <?php else: ?>
+                        <?php else : ?>
                             <span class="wt-initial text-muted"><?= $this->surnameInitial((string) $letter) ?></span>
 
                         <?php endif ?>
                     </li>
                 <?php endforeach ?>
 
-                <?php if (Session::has('initiated')): ?>
+                <?php if (Session::has('initiated')) : ?>
                     <!-- Search spiders don't get the "show all" option as the other links give them everything. -->
                     <li class="wt-initials-list-item d-flex">
                         <a class="wt-initial<?= $show_all === 'yes' ? ' active' : '' ?>" href="<?= e(route($route, ['show_all' => 'yes'] + $params)) ?>"><?= I18N::translate('All') ?></a>
@@ -232,14 +232,14 @@ class ListController extends AbstractBaseController
             </ul>
 
             <!-- Search spiders don't get an option to show/hide the surname sublists, nor does it make sense on the all/unknown/surname views -->
-            <?php if (Session::has('initiated') && $show !== 'none'): ?>
-                <?php if ($show_marnm === 'yes'): ?>
+            <?php if (Session::has('initiated') && $show !== 'none') : ?>
+                <?php if ($show_marnm === 'yes') : ?>
                     <p>
                         <a href="<?= e(route($route, ['show' => $show, 'show_marnm' => 'no'] + $params)) ?>">
                             <?= I18N::translate('Exclude individuals with “%s” as a married name', $legend) ?>
                         </a>
                     </p>
-                <?php else: ?>
+                <?php else : ?>
                     <p>
                         <a href="<?= e(route($route, ['show' => $show, 'show_marnm' => 'yes'] + $params)) ?>">
                             <?= I18N::translate('Include individuals with “%s” as a married name', $legend)?>
@@ -247,14 +247,14 @@ class ListController extends AbstractBaseController
                     </p>
                 <?php endif ?>
 
-                <?php if ($alpha !== '@' && $alpha !== ',' && !$surname): ?>
-                    <?php if ($show === 'surn'): ?>
+                <?php if ($alpha !== '@' && $alpha !== ',' && !$surname) : ?>
+                    <?php if ($show === 'surn') : ?>
                         <p>
                             <a href="<?= e(route($route, ['show' => 'indi', 'show_marnm' => 'no'] + $params)) ?>">
                                 <?= I18N::translate('Show the list of individuals') ?>
                             </a>
                         </p>
-                    <?php else: ?>
+                    <?php else : ?>
                         <p>
                             <a href="<?= e(route($route, ['show' => 'surn', 'show_marnm' => 'no'] + $params)) ?>">
                                <?= I18N::translate('Show the list of surnames') ?>
