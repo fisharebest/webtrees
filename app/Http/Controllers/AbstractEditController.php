@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\Tree;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -285,7 +286,7 @@ abstract class AbstractEditController extends AbstractBaseController
             if ($PLAC) {
                 $gedrec .= "\n2 PLAC " . $PLAC;
 
-                if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $tree->getPreference('ADVANCED_PLAC_FACTS'), $match)) {
+                if (preg_match_all('/(' . Gedcom::REGEX_TAG . ')/', $tree->getPreference('ADVANCED_PLAC_FACTS'), $match)) {
                     foreach ($match[1] as $tag) {
                         $TAG = $request->get($fact . '_' . $tag, '');
                         if ($TAG !== '') {
@@ -394,7 +395,7 @@ abstract class AbstractEditController extends AbstractBaseController
             'NSFX',
         ];
 
-        if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $tree->getPreference('ADVANCED_NAME_FACTS'), $match)) {
+        if (preg_match_all('/(' . Gedcom::REGEX_TAG . ')/', $tree->getPreference('ADVANCED_NAME_FACTS'), $match)) {
             $tags = array_merge($tags, $match[1]);
         }
 

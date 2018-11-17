@@ -164,7 +164,7 @@ class Select2 extends Html
      */
     public static function flagValue($flag): string
     {
-        return '<img src="' . WT_MODULES_DIR . 'googlemap/places/flags/' . $flag . '"> ' . $flag;
+        return '<img src="' . Webtrees::MODULES_PATH . 'googlemap/places/flags/' . $flag . '"> ' . $flag;
     }
 
     /**
@@ -180,7 +180,7 @@ class Select2 extends Html
         $offset    = $page * self::RESULTS_PER_PAGE;
         $more      = false;
         $results   = [];
-        $directory = WT_ROOT . WT_MODULES_DIR . 'googlemap/places/flags/';
+        $directory = WT_ROOT . Webtrees::MODULES_PATH . 'googlemap/places/flags/';
         $di        = new RecursiveDirectoryIterator($directory);
         $it        = new RecursiveIteratorIterator($di);
 

@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Functions\FunctionsDb;
 use Fisharebest\Webtrees\Functions\FunctionsImport;
+use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
@@ -274,7 +275,7 @@ class AdminController extends AbstractBaseController
                 $record ? '<a href="' . e($record->url()) . '">' . $record->xref() . '</a>' : $row->xref,
                 '<div class="gedcom-data" dir="ltr">' .
                 preg_replace_callback(
-                    '/@(' . WT_REGEX_XREF . ')@/',
+                    '/@(' . Gedcom::REGEX_XREF . ')@/',
                     function (array $match) use ($tree) : string {
                         $record = GedcomRecord::getInstance($match[1], $tree);
 
@@ -412,7 +413,7 @@ class AdminController extends AbstractBaseController
             foreach ($individual->facts() as $fact1) {
                 if ($fact1->id() === $fact_id) {
                     $individual->updateFact($fact_id, $fact1->gedcom() . "\n2 OBJE @" . $obje_xref . '@', false);
-                    foreach ($individual->facts('OBJE') as $fact2) {
+                    foreach ($individual->facts(['OBJE']) as $fact2) {
                         if ($fact2->target() === $media) {
                             $individual->deleteFact($fact2->id(), false);
                         }
@@ -496,14 +497,14 @@ class AdminController extends AbstractBaseController
             $media      = Media::getInstance($datum->m_id, $tree, $datum->m_gedcom);
             $individual = Individual::getInstance($datum->i_id, $tree, $datum->i_gedcom);
 
-            $facts = $individual->facts('', true);
+            $facts = $individual->facts([], true);
             $facts = array_filter($facts, function (Fact $fact) use ($ignore_facts): bool {
                 return !$fact->isPendingDeletion() && !in_array($fact->getTag(), $ignore_facts);
             });
 
             // The link to the media object may have been deleted in a pending change.
             $deleted = true;
-            foreach ($individual->facts('OBJE') as $fact) {
+            foreach ($individual->facts(['OBJE']) as $fact) {
                 if ($fact->target() === $media && !$fact->isPendingDeletion()) {
                     $deleted = false;
                 }

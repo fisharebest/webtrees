@@ -19,6 +19,7 @@ namespace Fisharebest\Webtrees\Schema;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
+use Fisharebest\Webtrees\Webtrees;
 
 /**
  * Upgrade the database schema from version 30 to version 31.
@@ -124,7 +125,7 @@ class Migration30 implements MigrationInterface
             "(-1, 'WORD_WRAPPED_NOTES', '0')"
         )->execute([
             'MEDIA_UPLOAD'      => Auth::PRIV_USER,
-            'META_TITLE'        => WT_WEBTREES,
+            'META_TITLE'        => Webtrees::NAME,
             'SHOW_DEAD_PEOPLE'  => Auth::PRIV_PRIVATE,
             'SHOW_LIVING_NAMES' => Auth::PRIV_USER,
             'SHOW_NO_WATERMARK' => Auth::PRIV_USER,

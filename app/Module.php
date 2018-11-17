@@ -237,7 +237,7 @@ class Module
             $modules = [];
             foreach ($module_names as $module_name) {
                 try {
-                    $module = self::loadModule(WT_ROOT . WT_MODULES_DIR . $module_name . '/module.php');
+                    $module = self::loadModule(WT_ROOT . Webtrees::MODULES_PATH . $module_name . '/module.php');
                     if ($module instanceof ModuleInterface) {
                         $modules[$module->getName()] = $module;
                     } else {
@@ -490,7 +490,7 @@ class Module
     {
         $modules = [];
 
-        foreach (glob(WT_ROOT . WT_MODULES_DIR . '*/module.php') as $file) {
+        foreach (glob(WT_ROOT . Webtrees::MODULES_PATH . '*/module.php') as $file) {
             try {
                 $module = self::loadModule($file);
                 if ($module instanceof ModuleInterface) {

@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\CommonMark;
 
+use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Tree;
 use League\CommonMark\Inline\Element\Link;
@@ -64,7 +65,7 @@ class XrefParser extends AbstractInlineParser
         // If this isn't the start of an XREF, we'll need to rewind.
         $previous_state = $cursor->saveState();
 
-        $handle = $cursor->match('/@' . WT_REGEX_XREF . '@/');
+        $handle = $cursor->match('/@' . Gedcom::REGEX_XREF . '@/');
         if (empty($handle)) {
             // Not an XREF?
             $cursor->restoreState($previous_state);

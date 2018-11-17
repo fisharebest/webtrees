@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\FontAwesome;
+use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodeStat;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodeTemp;
 use Fisharebest\Webtrees\GedcomRecord;
@@ -74,7 +75,7 @@ class FunctionsPrint
         $text .= Functions::getCont($nlevel, $nrec);
 
         // Check if shared note (we have already checked that it exists)
-        if (preg_match('/^0 @(' . WT_REGEX_XREF . ')@ NOTE/', $nrec, $match)) {
+        if (preg_match('/^0 @(' . Gedcom::REGEX_XREF . ')@ NOTE/', $nrec, $match)) {
             $note  = Note::getInstance($match[1], $tree);
             $label = 'SHARED_NOTE';
             $html  = Filter::formatText($note->getNote(), $tree);
@@ -137,7 +138,7 @@ class FunctionsPrint
             if (!isset($match[$j][1])) {
                 $match[$j][1] = '';
             }
-            if (!preg_match('/^@(' . WT_REGEX_XREF . ')@$/', $match[$j][1], $nmatch)) {
+            if (!preg_match('/^@(' . Gedcom::REGEX_XREF . ')@$/', $match[$j][1], $nmatch)) {
                 $data .= self::printNoteRecord($tree, $match[$j][1], $nlevel, $nrec);
             } else {
                 $note = Note::getInstance($nmatch[1], $tree);
@@ -600,13 +601,13 @@ class FunctionsPrint
      */
     public static function getLdsSummary(Individual $individual): string
     {
-        $BAPL = $individual->facts('BAPL') ? 'B' : '_';
-        $ENDL = $individual->facts('ENDL') ? 'E' : '_';
-        $SLGC = $individual->facts('SLGC') ? 'C' : '_';
+        $BAPL = $individual->facts(['BAPL']) ? 'B' : '_';
+        $ENDL = $individual->facts(['ENDL']) ? 'E' : '_';
+        $SLGC = $individual->facts(['SLGC']) ? 'C' : '_';
         $SLGS = '_';
 
         foreach ($individual->getSpouseFamilies() as $family) {
-            if ($family->facts('SLGS')) {
+            if ($family->facts(['SLGS'])) {
                 $SLGS = '';
             }
         }

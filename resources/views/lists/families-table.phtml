@@ -1,4 +1,5 @@
 <?php use Fisharebest\Webtrees\Date; ?>
+<?php use Fisharebest\Webtrees\Gedcom; ?>
 <?php use Fisharebest\Webtrees\GedcomTag; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 <?php use Fisharebest\Webtrees\Individual; ?>
@@ -305,9 +306,9 @@ for ($year = 1550; $year < 2030; $year += 10) {
                         <?php if ($marriage_dates[0]->gregorianYear() >= 1550 && $marriage_dates[0]->gregorianYear() < 2030) : ?>
                             <?php $marr_by_decade[(int) ($marriage_dates[0]->gregorianYear() / 10) * 10] .= $husb->getSex() . $wife->getSex() ?>
                         <?php endif ?>
-                    <?php elseif ($family->facts('_NMR')) : ?>
+                    <?php elseif ($family->facts(['_NMR'])) : ?>
                         <?= I18N::translate('no') ?>
-                    <?php elseif ($family->facts('MARR')) : ?>
+                    <?php elseif ($family->facts(['MARR'])) : ?>
                             <?= I18N::translate('yes') ?>
                     <?php endif ?>
                 </td>
@@ -346,7 +347,7 @@ for ($year = 1550; $year < 2030; $year += 10) {
                     <?php else : ?>
                         YES
                     <?php endif ?>
-                    <?php if ($family->facts(WT_EVENTS_DIV)) : ?>
+                    <?php if ($family->facts(Gedcom::DIVORCE_EVENTS)) : ?>
                         D
                     <?php endif ?>
                     <?php if (count($husb->getSpouseFamilies()) > 1 || count($wife->getSpouseFamilies()) > 1) : ?>

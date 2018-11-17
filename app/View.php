@@ -194,9 +194,9 @@ class View
         if (empty($paths)) {
             // Module views
             // @TODO - this includes disabled modules.
-            $paths = glob(WT_ROOT . WT_MODULES_DIR . '*/' . self::TEMPLATE_PATH);
+            $paths = glob(WT_ROOT . Webtrees::MODULES_PATH . '*/' . self::TEMPLATE_PATH);
             // Theme views
-            $paths[] = WT_ROOT . WT_THEMES_DIR . Theme::theme()->themeId() . self::TEMPLATE_PATH;
+            $paths[] = WT_ROOT . Webtrees::THEMES_PATH . Theme::theme()->themeId() . self::TEMPLATE_PATH;
             // Core views
             $paths[] = WT_ROOT . self::TEMPLATE_PATH;
 

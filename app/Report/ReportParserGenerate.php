@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Functions\FunctionsDate;
+use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
@@ -35,7 +36,6 @@ use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Tree;
 use stdClass;
 use Symfony\Component\Cache\Adapter\NullAdapter;
-use Symfony\Component\ExpressionLanguage\ExpressionFunction;
 use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
 
 /**
@@ -1108,7 +1108,7 @@ class ReportParserGenerate extends ReportParserBase
                     $i++;
                     // Privacy check - is this a link, and are we allowed to view the linked object?
                     $subrecord = Functions::getSubRecord($level, "$level $t", $subrec, $i);
-                    if (preg_match('/^\d ' . WT_REGEX_TAG . ' @(' . WT_REGEX_XREF . ')@/', $subrecord, $xref_match)) {
+                    if (preg_match('/^\d ' . Gedcom::REGEX_TAG . ' @(' . Gedcom::REGEX_XREF . ')@/', $subrecord, $xref_match)) {
                         $linked_object = GedcomRecord::getInstance($xref_match[1], $this->tree);
                         if ($linked_object && !$linked_object->canShow()) {
                             continue;
@@ -1530,7 +1530,7 @@ class ReportParserGenerate extends ReportParserBase
                     $level++;
                     $value = $this->getGedcomValue($id, $level, $this->gedrec);
                 }
-                $value = preg_replace('/^@(' . WT_REGEX_XREF . ')@$/', '$1', $value);
+                $value = preg_replace('/^@(' . Gedcom::REGEX_XREF . ')@$/', '$1', $value);
                 $value = '"' . addslashes($value) . '"';
             }
             $condition = str_replace("@$id", $value, $condition);

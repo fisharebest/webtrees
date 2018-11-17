@@ -4,6 +4,7 @@
 <?php use Fisharebest\Webtrees\I18N; ?>
 <?php use Fisharebest\Webtrees\Theme; ?>
 <?php use Fisharebest\Webtrees\View; ?>
+<?php use Fisharebest\Webtrees\Webtrees; ?>
 
 <!DOCTYPE html>
 <html <?= I18N::htmlAttributes() ?>>
@@ -12,7 +13,7 @@
         <meta name="csrf" content="<?= e(csrf_token()) ?>">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="<?= e($meta_robots ?? 'noindex,nofollow') ?>">
-        <meta name="generator" content="<?= e(WT_WEBTREES) ?>">
+        <meta name="generator" content="<?= e(Webtrees::NAME) ?> <?= e(Webtrees::VERSION) ?>">
         <?php if ($tree !== null) : ?>
             <meta name="description" content="<?= e($tree->getPreference('META_DESCRIPTION')) ?>">
         <?php endif ?>
@@ -29,9 +30,9 @@
         <link rel="apple-touch-icon" sizes="180x180" href="<?= Theme::theme()::ASSET_DIR ?>favicon180.png">
 
         <?php if (I18N::direction() === 'rtl') : ?>
-            <link rel="stylesheet" type="text/css" href="<?= e(WT_ASSETS_URL . 'css/vendor-rtl.css') ?>">
+            <link rel="stylesheet" type="text/css" href="<?= e(Webtrees::ASSETS_PATH . 'css/vendor-rtl.css') ?>">
         <?php else : ?>
-            <link rel="stylesheet" type="text/css" href="<?= e(WT_ASSETS_URL . 'css/vendor.css') ?>">
+            <link rel="stylesheet" type="text/css" href="<?= e(Webtrees::ASSETS_PATH . 'css/vendor.css') ?>">
         <?php endif ?>
 
         <?php foreach (Theme::theme()->stylesheets() as $stylesheet) : ?>
@@ -134,8 +135,8 @@
             </div>
         </footer>
 
-        <script src="<?= e(WT_ASSETS_URL . 'js/vendor.js') ?>?<?= filemtime(WT_ROOT . WT_ASSETS_URL . 'js/vendor.js') ?>"></script>
-        <script src="<?= e(WT_ASSETS_URL . 'js/webtrees.js') ?>?<?= filemtime(WT_ROOT . WT_ASSETS_URL . 'js/webtrees.js') ?>"></script>
+        <script src="<?= e(Webtrees::ASSETS_PATH . 'js/vendor.js') ?>?<?= filemtime(WT_ROOT . Webtrees::ASSETS_PATH . 'js/vendor.js') ?>"></script>
+        <script src="<?= e(Webtrees::ASSETS_PATH . 'js/webtrees.js') ?>?<?= filemtime(WT_ROOT . Webtrees::ASSETS_PATH . 'js/webtrees.js') ?>"></script>
 
         <script>
       activate_colorbox();

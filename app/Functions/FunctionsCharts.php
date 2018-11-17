@@ -20,6 +20,7 @@ namespace Fisharebest\Webtrees\Functions;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\FontAwesome;
+use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Theme;
@@ -198,7 +199,7 @@ class FunctionsCharts
         echo '</tr></table>';
         echo '<br>';
         if ($sosa && $family->canShow()) {
-            foreach ($family->facts(WT_EVENTS_MARR) as $fact) {
+            foreach ($family->facts(Gedcom::MARRIAGE_EVENTS) as $fact) {
                 echo '<a href="', e($family->url()), '" class="details1">';
                 echo $fact->summary();
                 echo '</a>';

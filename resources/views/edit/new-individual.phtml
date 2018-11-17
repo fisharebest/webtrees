@@ -3,6 +3,7 @@
 <?php use Fisharebest\Webtrees\Fact; ?>
 <?php use Fisharebest\Webtrees\FontAwesome; ?>
 <?php use Fisharebest\Webtrees\Functions\FunctionsEdit; ?>
+<?php use Fisharebest\Webtrees\Gedcom; ?>
 <?php use Fisharebest\Webtrees\GedcomTag; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 <?php use Fisharebest\Webtrees\SurnameTradition; ?>
@@ -154,7 +155,7 @@ $bdm = ''; // used to copy '1 SOUR' to '2 SOUR' for BIRT DEAT MARR
     } else {
         $adv_name_fields = [];
     }
-    if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $tree->getPreference('ADVANCED_NAME_FACTS'), $match)) {
+    if (preg_match_all('/(' . Gedcom::REGEX_TAG . ')/', $tree->getPreference('ADVANCED_NAME_FACTS'), $match)) {
         foreach ($match[1] as $tag) {
             // Ignore advanced facts that duplicate standard facts
             if (!in_array($tag, ['TYPE', 'NPFX', 'GIVN', 'NICK', 'SPFX', 'SURN', 'NSFX'])) {
@@ -242,9 +243,9 @@ $bdm = ''; // used to copy '1 SOUR' to '2 SOUR' for BIRT DEAT MARR
             echo FunctionsEdit::addSimpleTag($tree, '0 SEX U');
         }
         $bdm = 'BD';
-        if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $tree->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
+        if (preg_match_all('/(' . Gedcom::REGEX_TAG . ')/', $tree->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
             foreach ($matches[1] as $match) {
-                if (!in_array($match, explode('|', WT_EVENTS_DEAT))) {
+                if (!in_array($match, Gedcom::DEATH_EVENTS)) {
                     FunctionsEdit::addSimpleTags($tree, $match);
                 }
             }
@@ -252,15 +253,15 @@ $bdm = ''; // used to copy '1 SOUR' to '2 SOUR' for BIRT DEAT MARR
         //-- if adding a spouse add the option to add a marriage fact to the new family
         if ($nextaction === 'add_spouse_to_individual_action' || $nextaction === 'add_spouse_to_family_action') {
             $bdm .= 'M';
-            if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $tree->getPreference('QUICK_REQUIRED_FAMFACTS'), $matches)) {
+            if (preg_match_all('/(' . Gedcom::REGEX_TAG . ')/', $tree->getPreference('QUICK_REQUIRED_FAMFACTS'), $matches)) {
                 foreach ($matches[1] as $match) {
                     FunctionsEdit::addSimpleTags($tree, $match);
                 }
             }
         }
-        if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $tree->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
+        if (preg_match_all('/(' . Gedcom::REGEX_TAG . ')/', $tree->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
             foreach ($matches[1] as $match) {
-                if (in_array($match, explode('|', WT_EVENTS_DEAT))) {
+                if (in_array($match, Gedcom::DEATH_EVENTS)) {
                     FunctionsEdit::addSimpleTags($tree, $match);
                 }
             }

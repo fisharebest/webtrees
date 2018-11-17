@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module\InteractiveTree\TreeView;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Webtrees;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -119,7 +120,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
                     break;
                 case 'treenav':
                     $title   = I18N::translate('Interactive tree of %s', $person->getFullName());
-                    $mod     = new InteractiveTreeModule(WT_MODULES_DIR . 'tree');
+                    $mod     = new InteractiveTreeModule(Webtrees::MODULES_PATH . 'tree');
                     $tv      = new TreeView();
                     $content .= '<script>$("head").append(\'<link rel="stylesheet" href="' . $mod->css() . '" type="text/css" />\');</script>';
                     $content .= '<script src="' . $mod->js() . '"></script>';

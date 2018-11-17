@@ -36,6 +36,7 @@ use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Fisharebest\Webtrees\View;
+use Fisharebest\Webtrees\Webtrees;
 use League\Flysystem\Adapter\Local;
 use League\Flysystem\Filesystem;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -43,48 +44,15 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-// Identify ourself
-const WT_WEBTREES     = 'webtrees';
-const WT_VERSION      = '2.0.0-dev';
-const WT_WEBTREES_URL = 'https://www.webtrees.net/';
-
-// Location of our modules and themes. These are used as URLs and folder paths.
-const WT_MODULES_DIR       = 'modules_v3/';
-const WT_THEMES_DIR        = 'themes/';
-const WT_ASSETS_URL        = 'public/assets-2.0.0/'; // See also webpack.mix.js
-const WT_CKEDITOR_BASE_URL = 'public/ckeditor-4.5.2-custom/';
-
-// Enable debugging output on development builds
-define('WT_DEBUG', strpos(WT_VERSION, 'dev') !== false);
-
-// Required version of database tables/columns/indexes/etc.
-const WT_SCHEMA_VERSION = 40;
+require __DIR__ . '/vendor/autoload.php';
 
 // Regular expressions for validating user input, etc.
 const WT_MINIMUM_PASSWORD_LENGTH = 6;
-const WT_REGEX_XREF              = '[A-Za-z0-9:_-]+';
-const WT_REGEX_TAG               = '[_A-Z][_A-Z0-9]*';
-const WT_REGEX_INTEGER           = '-?\d+';
-const WT_REGEX_BYTES             = '[0-9]+[bBkKmMgG]?';
 const WT_REGEX_PASSWORD          = '.{' . WT_MINIMUM_PASSWORD_LENGTH . ',}';
-const WT_UTF8_BOM                = "\xEF\xBB\xBF"; // U+FEFF (Byte order mark)
-
-// Alternatives to BMD events for lists, charts, etc.
-const WT_EVENTS_BIRT = 'BIRT|CHR|BAPM|_BRTM|ADOP';
-const WT_EVENTS_DEAT = 'DEAT|BURI|CREM';
-const WT_EVENTS_MARR = 'MARR|_NMR';
-const WT_EVENTS_DIV  = 'DIV|ANUL|_SEPR';
 
 const WT_ROOT = __DIR__ . DIRECTORY_SEPARATOR;
 
-// We want to know about all PHP errors during development, and fewer in production.
-if (WT_DEBUG) {
-    error_reporting(E_ALL | E_STRICT | E_NOTICE | E_DEPRECATED);
-} else {
-    error_reporting(E_ALL);
-}
-
-require WT_ROOT . 'vendor/autoload.php';
+Webtrees::init();
 
 // Initialise the DebugBar for development.
 // Use `composer install --dev` on a development build to enable.
@@ -92,10 +60,7 @@ require WT_ROOT . 'vendor/autoload.php';
 // e.g. add these lines to your fastcgi_params file:
 // fastcgi_buffers 16 16m;
 // fastcgi_buffer_size 32m;
-DebugBar::init(WT_DEBUG && class_exists('\\DebugBar\\StandardDebugBar'));
-
-// PHP requires a time zone to be set. We'll set a better one later on.
-date_default_timezone_set('UTC');
+DebugBar::init(Webtrees::DEBUG && class_exists('\\DebugBar\\StandardDebugBar'));
 
 // Calculate the base URL, so we can generate absolute URLs.
 $request     = Request::createFromGlobals();
@@ -105,24 +70,12 @@ $request_uri = $request->getSchemeAndHttpHost() . $request->getRequestUri();
 $base_uri = preg_replace('/[^\/]+\.php(\?.*)?$/', '', $request_uri);
 define('WT_BASE_URL', $base_uri);
 
-// Convert PHP warnings/notices into exceptions
-set_error_handler(function (int $errno, string $errstr, string $errfile, int $errline): bool {
-    // Ignore errors that are silenced with '@'
-    if (error_reporting() & $errno) {
-        throw new ErrorException($errstr, 0, $errno, $errfile, $errline);
-    }
-
-    return true;
-});
-
 DebugBar::startMeasure('init database');
-
-const WT_CONFIG_FILE = 'data/config.ini.php';
 
 // Connect to the database
 try {
     // No config file? Run the setup wizard
-    if (!file_exists(WT_ROOT . WT_CONFIG_FILE)) {
+    if (!file_exists(Webtrees::CONFIG_FILE)) {
         define('WT_DATA_DIR', 'data/');
         $request    = Request::createFromGlobals();
         $controller = new SetupController();
@@ -132,17 +85,17 @@ try {
         return;
     }
 
-    $database_config = parse_ini_file(WT_ROOT . WT_CONFIG_FILE);
+    $database_config = parse_ini_file(Webtrees::CONFIG_FILE);
 
     if ($database_config === false) {
-        throw new Exception('Invalid config file: ' . WT_CONFIG_FILE);
+        throw new Exception('Invalid config file: ' . Webtrees::CONFIG_FILE);
     }
 
     // Read the connection settings and create the database
     Database::createInstance($database_config);
 
     // Update the database schema, if necessary.
-    Database::updateSchema('\Fisharebest\Webtrees\Schema', 'WT_SCHEMA_VERSION', WT_SCHEMA_VERSION);
+    Database::updateSchema('\Fisharebest\Webtrees\Schema', 'WT_SCHEMA_VERSION', Webtrees::SCHEMA_VERSION);
 } catch (PDOException $ex) {
     DebugBar::addThrowable($ex);
 

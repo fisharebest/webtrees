@@ -17,7 +17,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-use Fisharebest\Webtrees\SurnameTradition;
 use Fisharebest\Webtrees\SurnameTradition\DefaultSurnameTradition;
 use Fisharebest\Webtrees\SurnameTradition\IcelandicSurnameTradition;
 use Fisharebest\Webtrees\SurnameTradition\LithuanianSurnameTradition;

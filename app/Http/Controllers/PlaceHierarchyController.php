@@ -27,6 +27,7 @@ use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Stats;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Webtrees;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -231,7 +232,7 @@ class PlaceHierarchyController extends AbstractBaseController
         $placeObj  = new Place($reference, $tree);
         $places    = $placeObj->getChildPlaces();
         $features  = [];
-        $flag_path = WT_MODULES_DIR . 'openstreetmap/';
+        $flag_path = Webtrees::MODULES_PATH . 'openstreetmap/';
         $stats     = new Stats($tree);
         $showlink  = true;
         if (empty($places)) {

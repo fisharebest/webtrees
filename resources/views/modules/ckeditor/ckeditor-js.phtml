@@ -1,13 +1,14 @@
 <?php use Fisharebest\Webtrees\Module; ?>
 <?php use Fisharebest\Webtrees\View; ?>
+<?php use Fisharebest\Webtrees\Webtrees; ?>
 
 <?php if (Module::getModuleByName('ckeditor')) : ?>
     <?php View::push('javascript') ?>
-    <script src="<?= e(WT_CKEDITOR_BASE_URL) ?>ckeditor.js"></script>
-    <script src="<?= e(WT_CKEDITOR_BASE_URL) ?>adapters/jquery.js"></script>
+    <script src="<?= e(Webtrees::CKEDITOR_PATH) ?>ckeditor.js"></script>
+    <script src="<?= e(Webtrees::CKEDITOR_PATH) ?>adapters/jquery.js"></script>
 
     <script>
-    var CKEDITOR_BASEPATH = <?= json_encode(WT_CKEDITOR_BASE_URL) ?>;
+    var CKEDITOR_BASEPATH = <?= json_encode(Webtrees::CKEDITOR_PATH) ?>;
 
     // Enable for all browsers
     CKEDITOR.env.isCompatible = true;

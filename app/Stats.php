@@ -750,7 +750,7 @@ class Stats
      */
     public function totalEventsBirth(): string
     {
-        return $this->totalEvents(explode('|', WT_EVENTS_BIRT));
+        return $this->totalEvents(Gedcom::BIRTH_EVENTS);
     }
 
     /**
@@ -770,7 +770,7 @@ class Stats
      */
     public function totalEventsDeath(): string
     {
-        return $this->totalEvents(explode('|', WT_EVENTS_DEAT));
+        return $this->totalEvents(Gedcom::DEATH_EVENTS);
     }
 
     /**
@@ -790,7 +790,7 @@ class Stats
      */
     public function totalEventsMarriage(): string
     {
-        return $this->totalEvents(explode('|', WT_EVENTS_MARR));
+        return $this->totalEvents(Gedcom::MARRIAGE_EVENTS);
     }
 
     /**
@@ -810,7 +810,7 @@ class Stats
      */
     public function totalEventsDivorce(): string
     {
-        return $this->totalEvents(explode('|', WT_EVENTS_DIV));
+        return $this->totalEvents(Gedcom::DIVORCE_EVENTS);
     }
 
     /**
@@ -830,7 +830,7 @@ class Stats
      */
     public function totalEventsOther(): string
     {
-        $facts    = array_merge(explode('|', WT_EVENTS_BIRT . '|' . WT_EVENTS_MARR . '|' . WT_EVENTS_DIV . '|' . WT_EVENTS_DEAT));
+        $facts    = array_merge(Gedcom::BIRTH_EVENTS, Gedcom::MARRIAGE_EVENTS, Gedcom::DIVORCE_EVENTS, Gedcom::DEATH_EVENTS);
         $no_facts = [];
         foreach ($facts as $fact) {
             $fact       = '!' . str_replace('\'', '', $fact);
@@ -1020,7 +1020,7 @@ class Stats
     private function totalLivingQuery(): int
     {
         return (int) Database::prepare(
-            "SELECT COUNT(*) FROM `##individuals` WHERE i_file = :tree_id AND i_gedcom NOT REGEXP '\\n1 (" . WT_EVENTS_DEAT . ")'"
+            "SELECT COUNT(*) FROM `##individuals` WHERE i_file = :tree_id AND i_gedcom NOT REGEXP '\\n1 (" . implode('|', Gedcom::DEATH_EVENTS) . ")'"
         )->execute([
             'tree_id' => $this->tree->id(),
         ])->fetchOne();
@@ -1054,7 +1054,7 @@ class Stats
     private function totalDeceasedQuery(): int
     {
         return (int) Database::prepare(
-            "SELECT COUNT(*) FROM `##individuals` WHERE i_file = :tree_id AND i_gedcom REGEXP '\\n1 (" . WT_EVENTS_DEAT . ")'"
+            "SELECT COUNT(*) FROM `##individuals` WHERE i_file = :tree_id AND i_gedcom REGEXP '\\n1 (" . implode('|', Gedcom::DEATH_EVENTS) . ")'"
         )->execute([
             'tree_id' => $this->tree->id(),
         ])->fetchOne();
@@ -2482,7 +2482,7 @@ class Stats
             " `##individuals` AS indi" .
             " WHERE" .
             " indi.i_id=birth.d_gid AND" .
-            " indi.i_gedcom NOT REGEXP '\\n1 (" . WT_EVENTS_DEAT . ")' AND" .
+            " indi.i_gedcom NOT REGEXP '\\n1 (" . implode('|', Gedcom::DEATH_EVENTS) . ")' AND" .
             " birth.d_file={$this->tree->id()} AND" .
             " birth.d_fact='BIRT' AND" .
             " birth.d_file=indi.i_file AND" .
@@ -3006,13 +3006,13 @@ class Stats
     /**
      * Events
      *
-     * @param string $type
-     * @param string $direction
-     * @param string $facts
+     * @param string   $type
+     * @param string   $direction
+     * @param string[] $facts
      *
      * @return string
      */
-    private function eventQuery($type, $direction, $facts): string
+    private function eventQuery(string $type, string $direction, array $facts): string
     {
         $eventTypes = [
             'BIRT' => I18N::translate('birth'),
@@ -3023,7 +3023,7 @@ class Stats
             'CENS' => I18N::translate('census added'),
         ];
 
-        $fact_query = "IN ('" . str_replace('|', "','", $facts) . "')";
+        $fact_query = "IN ('" . implode(',', $facts) . "')";
 
         if ($direction != 'ASC') {
             $direction = 'DESC';
@@ -3092,7 +3092,7 @@ class Stats
      */
     public function firstEvent(): string
     {
-        return $this->eventQuery('full', 'ASC', WT_EVENTS_BIRT . '|' . WT_EVENTS_MARR . '|' . WT_EVENTS_DIV . '|' . WT_EVENTS_DEAT);
+        return $this->eventQuery('full', 'ASC', array_merge(Gedcom::BIRTH_EVENTS, Gedcom::MARRIAGE_EVENTS, Gedcom::DIVORCE_EVENTS, Gedcom::DEATH_EVENTS));
     }
 
     /**
@@ -3102,7 +3102,7 @@ class Stats
      */
     public function firstEventYear(): string
     {
-        return $this->eventQuery('year', 'ASC', WT_EVENTS_BIRT . '|' . WT_EVENTS_MARR . '|' . WT_EVENTS_DIV . '|' . WT_EVENTS_DEAT);
+        return $this->eventQuery('year', 'ASC', array_merge(Gedcom::BIRTH_EVENTS, Gedcom::MARRIAGE_EVENTS, Gedcom::DIVORCE_EVENTS, Gedcom::DEATH_EVENTS));
     }
 
     /**
@@ -3112,7 +3112,7 @@ class Stats
      */
     public function firstEventType(): string
     {
-        return $this->eventQuery('type', 'ASC', WT_EVENTS_BIRT . '|' . WT_EVENTS_MARR . '|' . WT_EVENTS_DIV . '|' . WT_EVENTS_DEAT);
+        return $this->eventQuery('type', 'ASC', array_merge(Gedcom::BIRTH_EVENTS, Gedcom::MARRIAGE_EVENTS, Gedcom::DIVORCE_EVENTS, Gedcom::DEATH_EVENTS));
     }
 
     /**
@@ -3122,7 +3122,7 @@ class Stats
      */
     public function firstEventName(): string
     {
-        return $this->eventQuery('name', 'ASC', WT_EVENTS_BIRT . '|' . WT_EVENTS_MARR . '|' . WT_EVENTS_DIV . '|' . WT_EVENTS_DEAT);
+        return $this->eventQuery('name', 'ASC', array_merge(Gedcom::BIRTH_EVENTS, Gedcom::MARRIAGE_EVENTS, Gedcom::DIVORCE_EVENTS, Gedcom::DEATH_EVENTS));
     }
 
     /**
@@ -3132,7 +3132,7 @@ class Stats
      */
     public function firstEventPlace(): string
     {
-        return $this->eventQuery('place', 'ASC', WT_EVENTS_BIRT . '|' . WT_EVENTS_MARR . '|' . WT_EVENTS_DIV . '|' . WT_EVENTS_DEAT);
+        return $this->eventQuery('place', 'ASC', array_merge(Gedcom::BIRTH_EVENTS, Gedcom::MARRIAGE_EVENTS, Gedcom::DIVORCE_EVENTS, Gedcom::DEATH_EVENTS));
     }
 
     /**
@@ -3142,7 +3142,7 @@ class Stats
      */
     public function lastEvent(): string
     {
-        return $this->eventQuery('full', 'DESC', WT_EVENTS_BIRT . '|' . WT_EVENTS_MARR . '|' . WT_EVENTS_DIV . '|' . WT_EVENTS_DEAT);
+        return $this->eventQuery('full', 'DESC', array_merge(Gedcom::BIRTH_EVENTS, Gedcom::MARRIAGE_EVENTS, Gedcom::DIVORCE_EVENTS, Gedcom::DEATH_EVENTS));
     }
 
     /**
@@ -3152,7 +3152,7 @@ class Stats
      */
     public function lastEventYear(): string
     {
-        return $this->eventQuery('year', 'DESC', WT_EVENTS_BIRT . '|' . WT_EVENTS_MARR . '|' . WT_EVENTS_DIV . '|' . WT_EVENTS_DEAT);
+        return $this->eventQuery('year', 'DESC', array_merge(Gedcom::BIRTH_EVENTS, Gedcom::MARRIAGE_EVENTS, Gedcom::DIVORCE_EVENTS, Gedcom::DEATH_EVENTS));
     }
 
     /**
@@ -3162,7 +3162,7 @@ class Stats
      */
     public function lastEventType(): string
     {
-        return $this->eventQuery('type', 'DESC', WT_EVENTS_BIRT . '|' . WT_EVENTS_MARR . '|' . WT_EVENTS_DIV . '|' . WT_EVENTS_DEAT);
+        return $this->eventQuery('type', 'DESC', array_merge(Gedcom::BIRTH_EVENTS, Gedcom::MARRIAGE_EVENTS, Gedcom::DIVORCE_EVENTS, Gedcom::DEATH_EVENTS));
     }
 
     /**
@@ -3172,7 +3172,7 @@ class Stats
      */
     public function lastEventName(): string
     {
-        return $this->eventQuery('name', 'DESC', WT_EVENTS_BIRT . '|' . WT_EVENTS_MARR . '|' . WT_EVENTS_DIV . '|' . WT_EVENTS_DEAT);
+        return $this->eventQuery('name', 'DESC', array_merge(Gedcom::BIRTH_EVENTS, Gedcom::MARRIAGE_EVENTS, Gedcom::DIVORCE_EVENTS, Gedcom::DEATH_EVENTS));
     }
 
     /**
@@ -3182,7 +3182,7 @@ class Stats
      */
     public function lastEventPlace(): string
     {
-        return $this->eventQuery('place', 'DESC', WT_EVENTS_BIRT . '|' . WT_EVENTS_MARR . '|' . WT_EVENTS_DIV . '|' . WT_EVENTS_DEAT);
+        return $this->eventQuery('place', 'DESC', array_merge(Gedcom::BIRTH_EVENTS, Gedcom::MARRIAGE_EVENTS, Gedcom::DIVORCE_EVENTS, Gedcom::DEATH_EVENTS));
     }
 
     /**
@@ -6463,7 +6463,7 @@ class Stats
      */
     public function webtreesVersion(): string
     {
-        return WT_VERSION;
+        return Webtrees::VERSION;
     }
 
     /**
@@ -6644,7 +6644,7 @@ class Stats
         $module = Module::getModuleByName('gedcom_favorites');
 
         if ($module instanceof FamilyTreeFavoritesModule) {
-            $block = new FamilyTreeFavoritesModule(WT_MODULES_DIR . 'gedcom_favorites');
+            $block = new FamilyTreeFavoritesModule(Webtrees::MODULES_PATH . 'gedcom_favorites');
 
             return $block->getBlock($this->tree, 0, false);
         }
@@ -6660,7 +6660,7 @@ class Stats
     public function userFavorites(): string
     {
         if (Auth::check() && Module::getModuleByName('user_favorites')) {
-            $block = new UserFavoritesModule(WT_MODULES_DIR . 'gedcom_favorites');
+            $block = new UserFavoritesModule(Webtrees::MODULES_PATH . 'gedcom_favorites');
 
             return $block->getBlock($this->tree, 0, false);
         }

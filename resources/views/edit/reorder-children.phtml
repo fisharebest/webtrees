@@ -1,4 +1,5 @@
 <?php use Fisharebest\Webtrees\FontAwesome; ?>
+<?php use Fisharebest\Webtrees\Gedcom; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 <?php use Fisharebest\Webtrees\View; ?>
 
@@ -7,7 +8,7 @@
 <form class="wt-page-content" method="post">
     <?= csrf_field() ?>
     <div class="wt-sortable-list">
-        <?php foreach ($family->facts('CHIL') as $fact) : ?>
+        <?php foreach ($family->facts(['CHIL']) as $fact) : ?>
             <div class="card mb-2 wt-sortable-item" data-sortbydate="<?= $fact->target()->getBirthDate()->julianDay() ?>">
                 <input type="hidden" name="order[]" value="<?= $fact->id() ?>">
                 <h3 class="card-header">
@@ -15,8 +16,8 @@
                     <?= $fact->target()->getFullName() ?>
                 </h3>
                 <div class="card-body">
-                    <?= $fact->target()->formatFirstMajorFact(WT_EVENTS_BIRT, 2) ?>
-                    <?= $fact->target()->formatFirstMajorFact(WT_EVENTS_DEAT, 2) ?>
+                    <?= $fact->target()->formatFirstMajorFact(Gedcom::BIRTH_EVENTS, 2) ?>
+                    <?= $fact->target()->formatFirstMajorFact(Gedcom::DEATH_EVENTS, 2) ?>
                 </div>
             </div>
         <?php endforeach ?>

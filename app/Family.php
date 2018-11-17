@@ -94,7 +94,7 @@ class Family extends GedcomRecord
 
         $rec = '0 @' . $this->xref . '@ FAM';
         // Just show the 1 CHIL/HUSB/WIFE tag, not any subtags, which may contain private data
-        preg_match_all('/\n1 (?:CHIL|HUSB|WIFE) @(' . WT_REGEX_XREF . ')@/', $this->gedcom, $matches, PREG_SET_ORDER);
+        preg_match_all('/\n1 (?:CHIL|HUSB|WIFE) @(' . Gedcom::REGEX_XREF . ')@/', $this->gedcom, $matches, PREG_SET_ORDER);
         foreach ($matches as $match) {
             $rela = Individual::getInstance($match[1], $this->tree);
             if ($rela && ($SHOW_PRIVATE_RELATIONSHIPS || $rela->canShow($access_level))) {
@@ -169,7 +169,7 @@ class Family extends GedcomRecord
     protected function canShowByType(int $access_level): bool
     {
         // Hide a family if any member is private
-        preg_match_all('/\n1 (?:CHIL|HUSB|WIFE) @(' . WT_REGEX_XREF . ')@/', $this->gedcom, $matches);
+        preg_match_all('/\n1 (?:CHIL|HUSB|WIFE) @(' . Gedcom::REGEX_XREF . ')@/', $this->gedcom, $matches);
         foreach ($matches[1] as $match) {
             $person = Individual::getInstance($match, $this->tree);
             if ($person && !$person->canShow($access_level)) {
@@ -242,7 +242,7 @@ class Family extends GedcomRecord
         $SHOW_PRIVATE_RELATIONSHIPS = (bool) $this->tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS');
 
         $children = [];
-        foreach ($this->facts('CHIL', false, $access_level, $SHOW_PRIVATE_RELATIONSHIPS) as $fact) {
+        foreach ($this->facts(['CHIL'], false, $access_level, $SHOW_PRIVATE_RELATIONSHIPS) as $fact) {
             $child = $fact->target();
             if ($child instanceof Individual && ($SHOW_PRIVATE_RELATIONSHIPS || $child->canShowName($access_level))) {
                 $children[] = $child;
@@ -273,7 +273,7 @@ class Family extends GedcomRecord
     public function getNumberOfChildren(): int
     {
         $nchi = count($this->getChildren());
-        foreach ($this->facts('NCHI') as $fact) {
+        foreach ($this->facts(['NCHI']) as $fact) {
             $nchi = max($nchi, (int) $fact->value());
         }
 
@@ -334,8 +334,8 @@ class Family extends GedcomRecord
      */
     public function getAllMarriageDates(): array
     {
-        foreach (explode('|', WT_EVENTS_MARR) as $event) {
-            if ($array = $this->getAllEventDates($event)) {
+        foreach (Gedcom::MARRIAGE_EVENTS as $event) {
+            if ($array = $this->getAllEventDates([$event])) {
                 return $array;
             }
         }
@@ -350,7 +350,7 @@ class Family extends GedcomRecord
      */
     public function getAllMarriagePlaces(): array
     {
-        foreach (explode('|', WT_EVENTS_MARR) as $event) {
+        foreach (Gedcom::MARRIAGE_EVENTS as $event) {
             $places = $this->getAllEventPlaces($event);
             if (!empty($places)) {
                 return $places;
@@ -446,7 +446,7 @@ class Family extends GedcomRecord
     public function formatListDetails(): string
     {
         return
-            $this->formatFirstMajorFact(WT_EVENTS_MARR, 1) .
-            $this->formatFirstMajorFact(WT_EVENTS_DIV, 1);
+            $this->formatFirstMajorFact(Gedcom::MARRIAGE_EVENTS, 1) .
+            $this->formatFirstMajorFact(Gedcom::DIVORCE_EVENTS, 1);
     }
 }

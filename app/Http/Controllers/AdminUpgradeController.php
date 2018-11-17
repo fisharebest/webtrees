@@ -19,11 +19,11 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Exception;
 use Fisharebest\Webtrees\Database;
-use Fisharebest\Webtrees\DebugBar;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\TimeoutService;
 use Fisharebest\Webtrees\Services\UpgradeService;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Webtrees;
 use GuzzleHttp\Client;
 use League\Flysystem\Adapter\Local;
 use League\Flysystem\Filesystem;
@@ -92,7 +92,7 @@ class AdminUpgradeController extends AbstractBaseController
         }
 
         return $this->viewResponse('admin/upgrade/wizard', [
-            'current_version' => WT_VERSION,
+            'current_version' => Webtrees::VERSION,
             'latest_version'  => $this->upgrade_service->latestVersion(),
             'title'           => $title,
         ]);
@@ -171,7 +171,7 @@ class AdminUpgradeController extends AbstractBaseController
             return $this->failure(I18N::translate('No upgrade information is available.'));
         }
 
-        if (version_compare(WT_VERSION, $latest_version) >= 0) {
+        if (version_compare(Webtrees::VERSION, $latest_version) >= 0) {
             return $this->failure(I18N::translate('This is the latest version of webtrees. No upgrade is available.'));
         }
 

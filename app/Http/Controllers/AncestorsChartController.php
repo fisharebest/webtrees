@@ -20,6 +20,7 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 use Fisharebest\Webtrees\FontAwesome;
 use Fisharebest\Webtrees\Functions\FunctionsCharts;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
+use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Theme;
@@ -198,7 +199,7 @@ class AncestorsChartController extends AbstractChartController
             echo ' <span class="person_box">', I18N::number($sosa * 2), '</span> ', I18N::translate('and');
             echo ' <span class="person_boxF">', I18N::number($sosa * 2 + 1), '</span>';
             if ($family->canShow()) {
-                foreach ($family->facts(WT_EVENTS_MARR) as $fact) {
+                foreach ($family->facts(Gedcom::MARRIAGE_EVENTS) as $fact) {
                     echo ' <a href="', e($family->url()), '" class="details1">', $fact->summary(), '</a>';
                 }
             }

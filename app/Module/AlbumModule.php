@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
@@ -123,7 +124,7 @@ class AlbumModule extends AbstractModule implements ModuleTabInterface
             foreach ($facts as $fact) {
                 // Don't show pending edits, as the user just sees duplicates
                 if (!$fact->isPendingDeletion()) {
-                    preg_match_all('/(?:^1|\n\d) OBJE @(' . WT_REGEX_XREF . ')@/', $fact->gedcom(), $matches);
+                    preg_match_all('/(?:^1|\n\d) OBJE @(' . Gedcom::REGEX_XREF . ')@/', $fact->gedcom(), $matches);
                     foreach ($matches[1] as $match) {
                         $media = Media::getInstance($match, $individual->tree());
                         if ($media && $media->canShow()) {
@@ -136,7 +137,7 @@ class AlbumModule extends AbstractModule implements ModuleTabInterface
             $this->media_list = array_unique($this->media_list);
             // Sort these using _WT_OBJE_SORT
             $wt_obje_sort = [];
-            foreach ($individual->facts('_WT_OBJE_SORT') as $fact) {
+            foreach ($individual->facts(['_WT_OBJE_SORT']) as $fact) {
                 $wt_obje_sort[] = trim($fact->value(), '@');
             }
             usort($this->media_list, function (Media $x, Media $y) use ($wt_obje_sort): int {

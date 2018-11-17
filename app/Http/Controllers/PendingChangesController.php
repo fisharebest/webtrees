@@ -22,6 +22,7 @@ use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Functions\FunctionsImport;
+use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -278,7 +279,7 @@ class PendingChangesController extends AbstractBaseController
         foreach ($rows as $row) {
             $change_tree = Tree::findById($row->gedcom_id);
 
-            preg_match('/^0 (?:@' . WT_REGEX_XREF . '@ )?(' . WT_REGEX_TAG . ')/', $row->old_gedcom . $row->new_gedcom, $match);
+            preg_match('/^0 (?:@' . Gedcom::REGEX_XREF . '@ )?(' . Gedcom::REGEX_TAG . ')/', $row->old_gedcom . $row->new_gedcom, $match);
 
             switch ($match[1]) {
                 case 'INDI':

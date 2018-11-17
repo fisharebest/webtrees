@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\DebugBar;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\User;
+use Fisharebest\Webtrees\Webtrees;
 use PDOException;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -34,8 +35,6 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class SetupController extends AbstractBaseController
 {
-    const WT_CONFIG_FILE = 'config.ini.php';
-
     /**
      * Installation wizard - check user input and proceed to the next step.
      *
@@ -292,7 +291,7 @@ class SetupController extends AbstractBaseController
                 'dbpass' => $dbpass,
                 'tblpfx' => $tblpfx,
             ]);
-            Database::updateSchema('\Fisharebest\Webtrees\Schema', 'WT_SCHEMA_VERSION', 30);
+            Database::updateSchema('\Fisharebest\Webtrees\Schema', 'WT_SCHEMA_VERSION', Webtrees::SCHEMA_VERSION);
 
             // If we are re-installing, then this user may already exist.
             $admin = User::findByIdentifier($wtemail);
@@ -323,7 +322,7 @@ class SetupController extends AbstractBaseController
                 'dbname="' . addcslashes($dbname, '"') . '"' . PHP_EOL .
                 'tblpfx="' . addcslashes($tblpfx, '"') . '"' . PHP_EOL;
 
-            file_put_contents(WT_DATA_DIR . 'config.ini.php', $config_ini_php);
+            file_put_contents(Webtrees::CONFIG_FILE, $config_ini_php);
 
             // Done - start using webtrees!
             return '';

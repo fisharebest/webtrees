@@ -47,7 +47,7 @@ class CensusColumnMarriedWithinYearTest extends \Fisharebest\Webtrees\TestCase
         $fact->shouldReceive('date')->andReturn(new Date('01 DEC 1859'));
 
         $family = Mockery::mock('Fisharebest\Webtrees\Family');
-        $family->shouldReceive('facts')->with('MARR')->andReturn([$fact]);
+        $family->shouldReceive('facts')->with(['MARR'])->andReturn([$fact]);
 
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
         $individual->shouldReceive('getSpouseFamilies')->andReturn([$family]);
@@ -72,7 +72,7 @@ class CensusColumnMarriedWithinYearTest extends \Fisharebest\Webtrees\TestCase
         $fact->shouldReceive('date')->andReturn(new Date('01 JAN 1859'));
 
         $family = Mockery::mock('Fisharebest\Webtrees\Family');
-        $family->shouldReceive('facts')->with('MARR')->andReturn([$fact]);
+        $family->shouldReceive('facts')->with(['MARR'])->andReturn([$fact]);
 
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
         $individual->shouldReceive('getSpouseFamilies')->andReturn([$family]);
@@ -97,7 +97,7 @@ class CensusColumnMarriedWithinYearTest extends \Fisharebest\Webtrees\TestCase
         $fact->shouldReceive('date')->andReturn(new Date('02 JUN 1860'));
 
         $family = Mockery::mock('Fisharebest\Webtrees\Family');
-        $family->shouldReceive('facts')->with('MARR')->andReturn([$fact]);
+        $family->shouldReceive('facts')->with(['MARR'])->andReturn([$fact]);
 
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
         $individual->shouldReceive('getSpouseFamilies')->andReturn([$family]);
@@ -119,7 +119,7 @@ class CensusColumnMarriedWithinYearTest extends \Fisharebest\Webtrees\TestCase
     public function testNoMarriage()
     {
         $family = Mockery::mock('Fisharebest\Webtrees\Family');
-        $family->shouldReceive('facts')->with('MARR')->andReturn([]);
+        $family->shouldReceive('facts')->with(['MARR'])->andReturn([]);
 
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
         $individual->shouldReceive('getSpouseFamilies')->andReturn([$family]);

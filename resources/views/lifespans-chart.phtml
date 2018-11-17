@@ -1,3 +1,5 @@
+<?php use Fisharebest\Webtrees\Gedcom; ?>
+
 <p class="wt-lifespans-subtitle">
     <?= $subtitle ?>
 </p>
@@ -22,7 +24,7 @@
             <?= $lifespan->individual->getFullName() ?>
         </a>
 
-        <?php foreach ($lifespan->individual->facts(WT_EVENTS_BIRT . '|' . WT_EVENTS_DEAT, true) as $fact) : ?>
+        <?php foreach ($lifespan->individual->facts(array_merge(Gedcom::BIRTH_EVENTS, Gedcom::DEATH_EVENTS), true) as $fact) : ?>
             <?= $fact->summary() ?>
         <?php endforeach ?>
     </div>

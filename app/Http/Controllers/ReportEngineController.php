@@ -32,6 +32,7 @@ use Fisharebest\Webtrees\Report\ReportParserSetup;
 use Fisharebest\Webtrees\Report\ReportPdf;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Webtrees;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
@@ -77,7 +78,7 @@ class ReportEngineController extends AbstractBaseController
             return $this->reportList($tree);
         }
 
-        $report_xml = WT_ROOT . WT_MODULES_DIR . $report . '/report.xml';
+        $report_xml = WT_ROOT . Webtrees::MODULES_PATH . $report . '/report.xml';
 
         $report_array = (new ReportParserSetup($report_xml))->reportProperties();
         $description  = $report_array['description'];
@@ -240,7 +241,7 @@ class ReportEngineController extends AbstractBaseController
             }
         }
 
-        $report_xml = WT_ROOT . WT_MODULES_DIR . $report . '/report.xml';
+        $report_xml = WT_ROOT . Webtrees::MODULES_PATH . $report . '/report.xml';
 
 
         switch ($output) {

@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\FontAwesome;
+use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodeAdop;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodeQuay;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodeRela;
@@ -311,7 +312,7 @@ class FunctionsPrintFacts
                         // Do not display "Yes".
                         break;
                     default:
-                        if (preg_match('/^@(' . WT_REGEX_XREF . ')@$/', $fact->value(), $match)) {
+                        if (preg_match('/^@(' . Gedcom::REGEX_XREF . ')@$/', $fact->value(), $match)) {
                             $target = GedcomRecord::getInstance($match[1], $tree);
                             if ($target) {
                                 echo '<div><a href="', e($target->url()), '">', $target->getFullName(), '</a></div>';
@@ -359,7 +360,7 @@ class FunctionsPrintFacts
         }
 
         // Print any other "2 XXXX" attributes, in the order in which they appear.
-        preg_match_all('/\n2 (' . WT_REGEX_TAG . ') (.+)/', $fact->gedcom(), $matches, PREG_SET_ORDER);
+        preg_match_all('/\n2 (' . Gedcom::REGEX_TAG . ') (.+)/', $fact->gedcom(), $matches, PREG_SET_ORDER);
         foreach ($matches as $match) {
             switch ($match[1]) {
                 case 'DATE':
@@ -464,7 +465,7 @@ class FunctionsPrintFacts
                     break;
                 default:
                     if ($tree->getPreference('HIDE_GEDCOM_ERRORS') === '1' || GedcomTag::isTag($match[1])) {
-                        if (preg_match('/^@(' . WT_REGEX_XREF . ')@$/', $match[2], $xmatch)) {
+                        if (preg_match('/^@(' . Gedcom::REGEX_XREF . ')@$/', $match[2], $xmatch)) {
                             // Links
                             $linked_record = GedcomRecord::getInstance($xmatch[1], $tree);
                             if ($linked_record) {
@@ -509,8 +510,8 @@ class FunctionsPrintFacts
             return '';
         }
 
-        preg_match_all('/^1 ASSO @(' . WT_REGEX_XREF . ')@((\n[2-9].*)*)/', $event->gedcom(), $amatches1, PREG_SET_ORDER);
-        preg_match_all('/\n2 _?ASSO @(' . WT_REGEX_XREF . ')@((\n[3-9].*)*)/', $event->gedcom(), $amatches2, PREG_SET_ORDER);
+        preg_match_all('/^1 ASSO @(' . Gedcom::REGEX_XREF . ')@((\n[2-9].*)*)/', $event->gedcom(), $amatches1, PREG_SET_ORDER);
+        preg_match_all('/\n2 _?ASSO @(' . Gedcom::REGEX_XREF . ')@((\n[3-9].*)*)/', $event->gedcom(), $amatches2, PREG_SET_ORDER);
 
         $html = '';
         // For each ASSO record

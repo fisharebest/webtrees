@@ -129,7 +129,7 @@ class Individual extends GedcomRecord
             $keep_alive             = false;
             $KEEP_ALIVE_YEARS_BIRTH = (int) $this->tree->getPreference('KEEP_ALIVE_YEARS_BIRTH');
             if ($KEEP_ALIVE_YEARS_BIRTH) {
-                preg_match_all('/\n1 (?:' . WT_EVENTS_BIRT . ').*(?:\n[2-9].*)*(?:\n2 DATE (.+))/', $this->gedcom, $matches, PREG_SET_ORDER);
+                preg_match_all('/\n1 (?:' . implode('|', Gedcom::BIRTH_EVENTS) . ').*(?:\n[2-9].*)*(?:\n2 DATE (.+))/', $this->gedcom, $matches, PREG_SET_ORDER);
                 foreach ($matches as $match) {
                     $date = new Date($match[1]);
                     if ($date->isOK() && $date->gregorianYear() + $KEEP_ALIVE_YEARS_BIRTH > date('Y')) {
@@ -140,7 +140,7 @@ class Individual extends GedcomRecord
             }
             $KEEP_ALIVE_YEARS_DEATH = (int) $this->tree->getPreference('KEEP_ALIVE_YEARS_DEATH');
             if ($KEEP_ALIVE_YEARS_DEATH) {
-                preg_match_all('/\n1 (?:' . WT_EVENTS_DEAT . ').*(?:\n[2-9].*)*(?:\n2 DATE (.+))/', $this->gedcom, $matches, PREG_SET_ORDER);
+                preg_match_all('/\n1 (?:' . implode('|', Gedcom::DEATH_EVENTS) . ').*(?:\n[2-9].*)*(?:\n2 DATE (.+))/', $this->gedcom, $matches, PREG_SET_ORDER);
                 foreach ($matches as $match) {
                     $date = new Date($match[1]);
                     if ($date->isOK() && $date->gregorianYear() + $KEEP_ALIVE_YEARS_DEATH > date('Y')) {
@@ -183,7 +183,7 @@ class Individual extends GedcomRecord
                     0 => [$user_individual],
                     1 => [],
                 ];
-                foreach ($user_individual->facts('FAM[CS]', false, Auth::PRIV_HIDE) as $fact) {
+                foreach ($user_individual->facts(['FAMC', 'FAMS'], false, Auth::PRIV_HIDE) as $fact) {
                     $family = $fact->target();
                     if ($family instanceof Family) {
                         $cache[1][] = $family;
@@ -211,7 +211,7 @@ class Individual extends GedcomRecord
                 if ($n % 2 == 0) {
                     // Add FAM->INDI links
                     foreach ($cache[$n - 1] as $family) {
-                        foreach ($family->facts('HUSB|WIFE|CHIL', false, Auth::PRIV_HIDE) as $fact) {
+                        foreach ($family->facts(['HUSB', 'WIFE', 'CHIL'], false, Auth::PRIV_HIDE) as $fact) {
                             $individual = $fact->target();
                             // Don’t backtrack
                             if ($individual instanceof Individual && !in_array($individual, $cache[$n - 2], true)) {
@@ -225,7 +225,7 @@ class Individual extends GedcomRecord
                 } else {
                     // Add INDI->FAM links
                     foreach ($cache[$n - 1] as $individual) {
-                        foreach ($individual->facts('FAM[CS]', false, Auth::PRIV_HIDE) as $fact) {
+                        foreach ($individual->facts(['FAMC', 'FAMS'], false, Auth::PRIV_HIDE) as $fact) {
                             $family = $fact->target();
                             // Don’t backtrack
                             if ($family instanceof Family && !in_array($family, $cache[$n - 2], true)) {
@@ -254,12 +254,12 @@ class Individual extends GedcomRecord
         $rec = '0 @' . $this->xref . '@ INDI';
         if ($this->tree->getPreference('SHOW_LIVING_NAMES') >= $access_level) {
             // Show all the NAME tags, including subtags
-            foreach ($this->facts('NAME') as $fact) {
+            foreach ($this->facts(['NAME']) as $fact) {
                 $rec .= "\n" . $fact->gedcom();
             }
         }
         // Just show the 1 FAMC/FAMS tag, not any subtags, which may contain private data
-        preg_match_all('/\n1 (?:FAMC|FAMS) @(' . WT_REGEX_XREF . ')@/', $this->gedcom, $matches, PREG_SET_ORDER);
+        preg_match_all('/\n1 (?:FAMC|FAMS) @(' . Gedcom::REGEX_XREF . ')@/', $this->gedcom, $matches, PREG_SET_ORDER);
         foreach ($matches as $match) {
             $rela = Family::getInstance($match[1], $this->tree);
             if ($rela && ($SHOW_PRIVATE_RELATIONSHIPS || $rela->canShow($access_level))) {
@@ -329,7 +329,7 @@ class Individual extends GedcomRecord
         $MAX_ALIVE_AGE = (int) $this->tree->getPreference('MAX_ALIVE_AGE');
 
         // "1 DEAT Y" or "1 DEAT/2 DATE" or "1 DEAT/2 PLAC"
-        if (preg_match('/\n1 (?:' . WT_EVENTS_DEAT . ')(?: Y|(?:\n[2-9].+)*\n2 (DATE|PLAC) )/', $this->gedcom)) {
+        if (preg_match('/\n1 (?:' . implode('|', Gedcom::DEATH_EVENTS) . ')(?: Y|(?:\n[2-9].+)*\n2 (DATE|PLAC) )/', $this->gedcom)) {
             return true;
         }
 
@@ -422,7 +422,7 @@ class Individual extends GedcomRecord
      */
     public function findHighlightedMediaFile()
     {
-        foreach ($this->facts('OBJE') as $fact) {
+        foreach ($this->facts(['OBJE']) as $fact) {
             $media = $fact->target();
             if ($media instanceof Media) {
                 foreach ($media->mediaFiles() as $media_file) {
@@ -575,8 +575,8 @@ class Individual extends GedcomRecord
      */
     public function getAllBirthDates(): array
     {
-        foreach (explode('|', WT_EVENTS_BIRT) as $event) {
-            $tmp = $this->getAllEventDates($event);
+        foreach (Gedcom::BIRTH_EVENTS as $event) {
+            $tmp = $this->getAllEventDates([$event]);
             if ($tmp) {
                 return $tmp;
             }
@@ -592,8 +592,8 @@ class Individual extends GedcomRecord
      */
     public function getAllBirthPlaces(): array
     {
-        foreach (explode('|', WT_EVENTS_BIRT) as $event) {
-            $places = $this->getAllEventPlaces($event);
+        foreach (Gedcom::BIRTH_EVENTS as $event) {
+            $places = $this->getAllEventPlaces([$event]);
             if (!empty($places)) {
                 return $places;
             }
@@ -609,8 +609,8 @@ class Individual extends GedcomRecord
      */
     public function getAllDeathDates(): array
     {
-        foreach (explode('|', WT_EVENTS_DEAT) as $event) {
-            $tmp = $this->getAllEventDates($event);
+        foreach (Gedcom::DEATH_EVENTS as $event) {
+            $tmp = $this->getAllEventDates([$event]);
             if ($tmp) {
                 return $tmp;
             }
@@ -626,8 +626,8 @@ class Individual extends GedcomRecord
      */
     public function getAllDeathPlaces(): array
     {
-        foreach (explode('|', WT_EVENTS_DEAT) as $event) {
-            $places = $this->getAllEventPlaces($event);
+        foreach (Gedcom::DEATH_EVENTS as $event) {
+            $places = $this->getAllEventPlaces([$event]);
             if (!empty($places)) {
                 return $places;
             }
@@ -822,7 +822,7 @@ class Individual extends GedcomRecord
         $SHOW_PRIVATE_RELATIONSHIPS = (bool) $this->tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS');
 
         $families = [];
-        foreach ($this->facts('FAMS', false, $access_level, $SHOW_PRIVATE_RELATIONSHIPS) as $fact) {
+        foreach ($this->facts(['FAMS'], false, $access_level, $SHOW_PRIVATE_RELATIONSHIPS) as $fact) {
             $family = $fact->target();
             if ($family instanceof Family && ($SHOW_PRIVATE_RELATIONSHIPS || $family->canShow($access_level))) {
                 $families[] = $family;
@@ -888,7 +888,7 @@ class Individual extends GedcomRecord
         $SHOW_PRIVATE_RELATIONSHIPS = (bool) $this->tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS');
 
         $families = [];
-        foreach ($this->facts('FAMC', false, $access_level, $SHOW_PRIVATE_RELATIONSHIPS) as $fact) {
+        foreach ($this->facts(['FAMC'], false, $access_level, $SHOW_PRIVATE_RELATIONSHIPS) as $fact) {
             $family = $fact->target();
             if ($family instanceof Family && ($SHOW_PRIVATE_RELATIONSHIPS || $family->canShow($access_level))) {
                 $families[] = $family;
@@ -1318,7 +1318,7 @@ class Individual extends GedcomRecord
             1,
             'NAME',
             $this->facts(
-                'NAME',
+                ['NAME'],
                 false,
                 Auth::accessLevel($this->tree),
                 $this->canShowName()
@@ -1335,7 +1335,7 @@ class Individual extends GedcomRecord
     public function formatListDetails(): string
     {
         return
-            $this->formatFirstMajorFact(WT_EVENTS_BIRT, 1) .
-            $this->formatFirstMajorFact(WT_EVENTS_DEAT, 1);
+            $this->formatFirstMajorFact(Gedcom::BIRTH_EVENTS, 1) .
+            $this->formatFirstMajorFact(Gedcom::DEATH_EVENTS, 1);
     }
 }

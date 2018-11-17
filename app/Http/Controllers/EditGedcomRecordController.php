@@ -20,6 +20,7 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Functions\FunctionsDb;
+use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
@@ -144,7 +145,7 @@ class EditGedcomRecordController extends AbstractEditController
                 // record itself) may have already been deleted.
                 if ($old_gedcom !== $new_gedcom) {
                     // If we have removed a link from a family to an individual, and it has only one member
-                    if (preg_match('/^0 @' . WT_REGEX_XREF . '@ FAM/', $new_gedcom) && preg_match_all('/\n1 (HUSB|WIFE|CHIL) @(' . WT_REGEX_XREF . ')@/', $new_gedcom, $match) == 1) {
+                    if (preg_match('/^0 @' . Gedcom::REGEX_XREF . '@ FAM/', $new_gedcom) && preg_match_all('/\n1 (HUSB|WIFE|CHIL) @(' . Gedcom::REGEX_XREF . ')@/', $new_gedcom, $match) == 1) {
                         // Delete the family
                         $family = GedcomRecord::getInstance($xref, $tree);
                         /* I18N: %s is the name of a family group, e.g. “Husband name + Wife name” */
@@ -299,7 +300,7 @@ class EditGedcomRecordController extends AbstractEditController
         $gedcom = '0 @' . $record->xref() . '@ ' . $record::RECORD_TYPE;
 
         // Retain any private facts
-        foreach ($record->facts('', false, Auth::PRIV_HIDE) as $fact) {
+        foreach ($record->facts([], false, Auth::PRIV_HIDE) as $fact) {
             if (!in_array($fact->id(), $fact_ids) && !$fact->isPendingDeletion()) {
                 $gedcom .= "\n" . $fact->gedcom();
             }
@@ -502,11 +503,11 @@ class EditGedcomRecordController extends AbstractEditController
      */
     private function removeLinks($gedrec, $xref): string
     {
-        $gedrec = preg_replace('/\n1 ' . WT_REGEX_TAG . ' @' . $xref . '@(\n[2-9].*)*/', '', $gedrec);
-        $gedrec = preg_replace('/\n2 ' . WT_REGEX_TAG . ' @' . $xref . '@(\n[3-9].*)*/', '', $gedrec);
-        $gedrec = preg_replace('/\n3 ' . WT_REGEX_TAG . ' @' . $xref . '@(\n[4-9].*)*/', '', $gedrec);
-        $gedrec = preg_replace('/\n4 ' . WT_REGEX_TAG . ' @' . $xref . '@(\n[5-9].*)*/', '', $gedrec);
-        $gedrec = preg_replace('/\n5 ' . WT_REGEX_TAG . ' @' . $xref . '@(\n[6-9].*)*/', '', $gedrec);
+        $gedrec = preg_replace('/\n1 ' . Gedcom::REGEX_TAG . ' @' . $xref . '@(\n[2-9].*)*/', '', $gedrec);
+        $gedrec = preg_replace('/\n2 ' . Gedcom::REGEX_TAG . ' @' . $xref . '@(\n[3-9].*)*/', '', $gedrec);
+        $gedrec = preg_replace('/\n3 ' . Gedcom::REGEX_TAG . ' @' . $xref . '@(\n[4-9].*)*/', '', $gedrec);
+        $gedrec = preg_replace('/\n4 ' . Gedcom::REGEX_TAG . ' @' . $xref . '@(\n[5-9].*)*/', '', $gedrec);
+        $gedrec = preg_replace('/\n5 ' . Gedcom::REGEX_TAG . ' @' . $xref . '@(\n[6-9].*)*/', '', $gedrec);
 
         return $gedrec;
     }

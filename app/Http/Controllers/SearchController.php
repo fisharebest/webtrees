@@ -21,6 +21,7 @@ use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\FlashMessages;
+use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
@@ -661,9 +662,9 @@ class SearchController extends AbstractBaseController
             // Ignore non-genealogy data
             $gedrec = preg_replace('/\n\d (_UID|_WT_USER|FILE|FORM|TYPE|CHAN|RESN) .*/', '', $record->gedcom());
             // Ignore links and tags
-            $gedrec = preg_replace('/\n\d ' . WT_REGEX_TAG . '( @' . WT_REGEX_XREF . '@)?/', '', $gedrec);
+            $gedrec = preg_replace('/\n\d ' . Gedcom::REGEX_TAG . '( @' . Gedcom::REGEX_XREF . '@)?/', '', $gedrec);
             // Ignore tags
-            $gedrec = preg_replace('/\n\d ' . WT_REGEX_TAG . ' ?/', '', $gedrec);
+            $gedrec = preg_replace('/\n\d ' . Gedcom::REGEX_TAG . ' ?/', '', $gedrec);
             // Re-apply the filtering
             $gedrec = I18N::strtoupper($gedrec);
             foreach ($queryregex as $regex) {
@@ -770,7 +771,7 @@ class SearchController extends AbstractBaseController
             // Ignore non-genealogy data
             $gedrec = preg_replace('/\n\d (_UID|_WT_USER|FILE|FORM|TYPE|CHAN|RESN) .*/', '', $record->gedcom());
             // Ignore links and tags
-            $gedrec = preg_replace('/\n\d ' . WT_REGEX_TAG . '( @' . WT_REGEX_XREF . '@)?/', '', $gedrec);
+            $gedrec = preg_replace('/\n\d ' . Gedcom::REGEX_TAG . '( @' . Gedcom::REGEX_XREF . '@)?/', '', $gedrec);
             // Re-apply the filtering
             $gedrec = I18N::strtoupper($gedrec);
             foreach ($queryregex as $regex) {
@@ -1162,7 +1163,7 @@ class SearchController extends AbstractBaseController
             $person = Individual::getInstance($row->xref, $tree, $row->gedcom);
             // Check for XXXX:PLAC fields, which were only partially matched by SQL
             foreach ($fields as $field_name => $field_value) {
-                if (preg_match('/^(' . WT_REGEX_TAG . '):PLAC$/', $field_name, $match)) {
+                if (preg_match('/^(' . Gedcom::REGEX_TAG . '):PLAC$/', $field_name, $match)) {
                     if (!preg_match('/\n1 ' . $match[1] . '(\n[2-9].*)*\n2 PLAC .*' . preg_quote($field_value, '/') . '/i', $person->gedcom())) {
                         continue 2;
                     }
@@ -1331,9 +1332,9 @@ class SearchController extends AbstractBaseController
             // Ignore non-genealogy data
             $gedrec = preg_replace('/\n\d (_UID|_WT_USER|FILE|FORM|TYPE|CHAN|RESN) .*/', '', $record->gedcom());
             // Ignore links and tags
-            $gedrec = preg_replace('/\n\d ' . WT_REGEX_TAG . '( @' . WT_REGEX_XREF . '@)?/', '', $gedrec);
+            $gedrec = preg_replace('/\n\d ' . Gedcom::REGEX_TAG . '( @' . Gedcom::REGEX_XREF . '@)?/', '', $gedrec);
             // Ignore tags
-            $gedrec = preg_replace('/\n\d ' . WT_REGEX_TAG . ' ?/', '', $gedrec);
+            $gedrec = preg_replace('/\n\d ' . Gedcom::REGEX_TAG . ' ?/', '', $gedrec);
             // Re-apply the filtering
             $gedrec = I18N::strtoupper($gedrec);
             foreach ($queryregex as $regex) {
@@ -1387,9 +1388,9 @@ class SearchController extends AbstractBaseController
             // Ignore non-genealogy data
             $gedrec = preg_replace('/\n\d (_UID|_WT_USER|FILE|FORM|TYPE|CHAN|RESN) .*/', '', $record->gedcom());
             // Ignore links and tags
-            $gedrec = preg_replace('/\n\d ' . WT_REGEX_TAG . '( @' . WT_REGEX_XREF . '@)?/', '', $gedrec);
+            $gedrec = preg_replace('/\n\d ' . Gedcom::REGEX_TAG . '( @' . Gedcom::REGEX_XREF . '@)?/', '', $gedrec);
             // Ignore tags
-            $gedrec = preg_replace('/\n\d ' . WT_REGEX_TAG . ' ?/', '', $gedrec);
+            $gedrec = preg_replace('/\n\d ' . Gedcom::REGEX_TAG . ' ?/', '', $gedrec);
             // Re-apply the filtering
             $gedrec = I18N::strtoupper($gedrec);
             foreach ($queryregex as $regex) {
@@ -1443,9 +1444,9 @@ class SearchController extends AbstractBaseController
             // Ignore non-genealogy data
             $gedrec = preg_replace('/\n\d (_UID|_WT_USER|FILE|FORM|TYPE|CHAN|RESN) .*/', '', $record->gedcom());
             // Ignore links and tags
-            $gedrec = preg_replace('/\n\d ' . WT_REGEX_TAG . '( @' . WT_REGEX_XREF . '@)?/', '', $gedrec);
+            $gedrec = preg_replace('/\n\d ' . Gedcom::REGEX_TAG . '( @' . Gedcom::REGEX_XREF . '@)?/', '', $gedrec);
             // Ignore tags
-            $gedrec = preg_replace('/\n\d ' . WT_REGEX_TAG . ' ?/', '', $gedrec);
+            $gedrec = preg_replace('/\n\d ' . Gedcom::REGEX_TAG . ' ?/', '', $gedrec);
             // Re-apply the filtering
             $gedrec = I18N::strtoupper($gedrec);
             foreach ($queryregex as $regex) {

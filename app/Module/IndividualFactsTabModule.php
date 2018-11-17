@@ -21,6 +21,7 @@ use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Functions\Functions;
+use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module;
@@ -175,7 +176,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
 
         $facts = [];
         if (strstr($SHOW_RELATIVES_EVENTS, '_DEAT_SPOU')) {
-            foreach ($spouse->facts(WT_EVENTS_DEAT) as $fact) {
+            foreach ($spouse->facts(Gedcom::DEATH_EVENTS) as $fact) {
                 if (self::includeFact($fact, $min_date, $max_date)) {
                     // Convert the event to a close relatives event.
                     $rela_fact = clone($fact);
@@ -242,7 +243,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
             }
             // add child’s birth
             if (strpos($SHOW_RELATIVES_EVENTS, '_BIRT' . str_replace('_HSIB', '_SIBL', $option)) !== false) {
-                foreach ($child->facts(WT_EVENTS_BIRT) as $fact) {
+                foreach ($child->facts(Gedcom::BIRTH_EVENTS) as $fact) {
                     // Always show _BIRT_CHIL, even if the dates are not known
                     if ($option == '_CHIL' || self::includeFact($fact, $min_date, $max_date)) {
                         if ($option == '_GCHI' && $relation == 'dau') {
@@ -266,7 +267,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
             }
             // add child’s death
             if (strpos($SHOW_RELATIVES_EVENTS, '_DEAT' . str_replace('_HSIB', '_SIBL', $option)) !== false) {
-                foreach ($child->facts(WT_EVENTS_DEAT) as $fact) {
+                foreach ($child->facts(Gedcom::DEATH_EVENTS) as $fact) {
                     if (self::includeFact($fact, $min_date, $max_date)) {
                         if ($option == '_GCHI' && $relation == 'dau') {
                             // Convert the event to a close relatives event.
@@ -290,7 +291,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
             // add child’s marriage
             if (strstr($SHOW_RELATIVES_EVENTS, '_MARR' . str_replace('_HSIB', '_SIBL', $option))) {
                 foreach ($child->getSpouseFamilies() as $sfamily) {
-                    foreach ($sfamily->facts('MARR') as $fact) {
+                    foreach ($sfamily->facts(['MARR']) as $fact) {
                         if (self::includeFact($fact, $min_date, $max_date)) {
                             if ($option == '_GCHI' && $relation == 'dau') {
                                 // Convert the event to a close relatives event.
@@ -358,7 +359,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
             if (strstr($SHOW_RELATIVES_EVENTS, '_MARR_PARE')) {
                 // add father/mother marriages
                 foreach ($person->getChildFamilies() as $sfamily) {
-                    foreach ($sfamily->facts('MARR') as $fact) {
+                    foreach ($sfamily->facts(['MARR']) as $fact) {
                         if (self::includeFact($fact, $min_date, $max_date)) {
                             // marriage of parents (to each other)
                             $rela_fact = clone($fact);
@@ -368,7 +369,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
                     }
                 }
                 foreach ($person->getChildStepFamilies() as $sfamily) {
-                    foreach ($sfamily->facts('MARR') as $fact) {
+                    foreach ($sfamily->facts(['MARR']) as $fact) {
                         if (self::includeFact($fact, $min_date, $max_date)) {
                             // marriage of a parent (to another spouse)
                             // Convert the event to a close relatives event
@@ -384,7 +385,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
         foreach ($person->getChildFamilies() as $family) {
             foreach ($family->getSpouses() as $parent) {
                 if (strstr($SHOW_RELATIVES_EVENTS, '_DEAT' . ($sosa == 1 ? '_PARE' : '_GPAR'))) {
-                    foreach ($parent->facts(WT_EVENTS_DEAT) as $fact) {
+                    foreach ($parent->facts(Gedcom::DEATH_EVENTS) as $fact) {
                         if (self::includeFact($fact, $min_date, $max_date)) {
                             switch ($sosa) {
                                 case 1:

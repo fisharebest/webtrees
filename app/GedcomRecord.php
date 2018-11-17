@@ -189,7 +189,7 @@ class GedcomRecord
         }
 
         // Create the object
-        if (preg_match('/^0 @(' . WT_REGEX_XREF . ')@ (' . WT_REGEX_TAG . ')/', $gedcom . $pending, $match)) {
+        if (preg_match('/^0 @(' . Gedcom::REGEX_XREF . ')@ (' . Gedcom::REGEX_TAG . ')/', $gedcom . $pending, $match)) {
             $xref = $match[1]; // Collation - we may have requested I123 and found i123
             $type = $match[2];
         } elseif (preg_match('/^0 (HEAD|TRLR)/', $gedcom . $pending, $match)) {
@@ -499,7 +499,7 @@ class GedcomRecord
             list($gedrec) = explode("\n", $this->gedcom, 2);
 
             // Check each of the facts for access
-            foreach ($this->facts('', false, $access_level) as $fact) {
+            foreach ($this->facts([], false, $access_level) as $fact) {
                 $gedrec .= "\n" . $fact->gedcom();
             }
 
@@ -806,12 +806,12 @@ class GedcomRecord
     /**
      * Extract/format the first fact from a list of facts.
      *
-     * @param string $facts
-     * @param int    $style
+     * @param string[] $facts
+     * @param int      $style
      *
      * @return string
      */
-    public function formatFirstMajorFact(string $facts, int $style): string
+    public function formatFirstMajorFact(array $facts, int $style): string
     {
         foreach ($this->facts($facts, true) as $event) {
             // Only display if it has a date or place (or both)
@@ -1038,14 +1038,14 @@ class GedcomRecord
      * calendars, place-names in both latin and hebrew character sets, etc.
      * It also allows us to combine dates/places from different events in the summaries.
      *
-     * @param string $event_type
+     * @param string[] $events
      *
      * @return Date[]
      */
-    public function getAllEventDates(string $event_type): array
+    public function getAllEventDates(array $events): array
     {
         $dates = [];
-        foreach ($this->facts($event_type) as $event) {
+        foreach ($this->facts($events) as $event) {
             if ($event->date()->isOK()) {
                 $dates[] = $event->date();
             }
@@ -1057,14 +1057,14 @@ class GedcomRecord
     /**
      * Get all the places for a particular type of event
      *
-     * @param string $event_type
+     * @param string[] $events
      *
      * @return Place[]
      */
-    public function getAllEventPlaces(string $event_type): array
+    public function getAllEventPlaces(array $events): array
     {
         $places = [];
-        foreach ($this->facts($event_type) as $event) {
+        foreach ($this->facts($events) as $event) {
             if (preg_match_all('/\n(?:2 PLAC|3 (?:ROMN|FONE|_HEB)) +(.+)/', $event->gedcom(), $ged_places)) {
                 foreach ($ged_places[1] as $ged_place) {
                     $places[] = new Place($ged_place, $this->tree);
@@ -1096,14 +1096,14 @@ class GedcomRecord
     /**
      * The facts and events for this record.
      *
-     * @param string   $filter
+     * @param string[] $filter
      * @param bool     $sort
      * @param int|null $access_level
      * @param bool     $override Include private records, to allow us to implement $SHOW_PRIVATE_RELATIONSHIPS and $SHOW_LIVING_NAMES.
      *
      * @return Fact[]
      */
-    public function facts(string $filter = '', bool $sort = false, int $access_level = null, bool $override = false): array
+    public function facts(array $filter = [], bool $sort = false, int $access_level = null, bool $override = false): array
     {
         if ($access_level === null) {
             $access_level = Auth::accessLevel($this->tree);
@@ -1112,7 +1112,7 @@ class GedcomRecord
         $facts = [];
         if ($this->canShow($access_level) || $override) {
             foreach ($this->facts as $fact) {
-                if (($filter === '' || preg_match('/^' . $filter . '$/', $fact->getTag())) && $fact->canShow($access_level)) {
+                if (($filter === [] || in_array($fact->getTag(), $filter)) && $fact->canShow($access_level)) {
                     $facts[] = $fact;
                 }
             }
@@ -1228,7 +1228,7 @@ class GedcomRecord
         if ($this->pending === '') {
             throw new Exception('Cannot edit a deleted record');
         }
-        if ($gedcom !== '' && !preg_match('/^1 ' . WT_REGEX_TAG . '/', $gedcom)) {
+        if ($gedcom !== '' && !preg_match('/^1 ' . Gedcom::REGEX_TAG . '/', $gedcom)) {
             throw new Exception('Invalid GEDCOM data passed to GedcomRecord::updateFact(' . $gedcom . ')');
         }
 
@@ -1242,7 +1242,7 @@ class GedcomRecord
         list($new_gedcom) = explode("\n", $old_gedcom, 2);
 
         // Replacing (or deleting) an existing fact
-        foreach ($this->facts('', false, Auth::PRIV_HIDE) as $fact) {
+        foreach ($this->facts([], false, Auth::PRIV_HIDE) as $fact) {
             if (!$fact->isPendingDeletion()) {
                 if ($fact->id() === $fact_id) {
                     if ($gedcom !== '') {
@@ -1378,7 +1378,7 @@ class GedcomRecord
         foreach ($this->facts() as $fact) {
             if ($fact->value() === $value) {
                 $this->deleteFact($fact->id(), $update_chan);
-            } elseif (preg_match_all('/\n(\d) ' . WT_REGEX_TAG . ' ' . $value . '/', $fact->gedcom(), $matches, PREG_SET_ORDER)) {
+            } elseif (preg_match_all('/\n(\d) ' . Gedcom::REGEX_TAG . ' ' . $value . '/', $fact->gedcom(), $matches, PREG_SET_ORDER)) {
                 $gedcom = $fact->gedcom();
                 foreach ($matches as $match) {
                     $next_level  = $match[1] + 1;

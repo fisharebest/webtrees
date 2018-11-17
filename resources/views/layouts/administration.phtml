@@ -2,6 +2,8 @@
 <?php use Fisharebest\Webtrees\FlashMessages; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 <?php use Fisharebest\Webtrees\View; ?>
+<?php use Fisharebest\Webtrees\Webtrees; ?>
+
 <!DOCTYPE html>
 <html <?= I18N::htmlAttributes() ?>>
     <head>
@@ -14,11 +16,11 @@
         <link rel="icon" href="favicon.ico" type="image/x-icon">
 
         <?php if (I18N::direction() === 'rtl') : ?>
-            <link rel="stylesheet" type="text/css" href="<?= e(WT_ASSETS_URL . 'css/vendor-rtl.css') ?>">
+            <link rel="stylesheet" type="text/css" href="<?= e(Webtrees::ASSETS_PATH . 'css/vendor-rtl.css') ?>">
         <?php else : ?>
-            <link rel="stylesheet" type="text/css" href="<?= e(WT_ASSETS_URL . 'css/vendor.css') ?>">
+            <link rel="stylesheet" type="text/css" href="<?= e(Webtrees::ASSETS_PATH . 'css/vendor.css') ?>">
         <?php endif ?>
-        <link rel="stylesheet" type="text/css" href="<?= e(WT_ASSETS_URL . 'css/administration.css') ?>">
+        <link rel="stylesheet" type="text/css" href="<?= e(Webtrees::ASSETS_PATH . 'css/administration.css') ?>">
 
         <?= View::stack('styles') ?>
 
@@ -65,8 +67,8 @@
 
         <?= $content ?>
 
-        <script src="<?= e(WT_ASSETS_URL . 'js/vendor.js') ?>?<?= filemtime(WT_ROOT . WT_ASSETS_URL . 'js/vendor.js') ?>"></script>
-        <script src="<?= e(WT_ASSETS_URL . 'js/webtrees.js') ?>?<?= filemtime(WT_ROOT . WT_ASSETS_URL . 'js/webtrees.js') ?>"></script>
+        <script src="<?= e(Webtrees::ASSETS_PATH . 'js/vendor.js') ?>?<?= filemtime(WT_ROOT . Webtrees::ASSETS_PATH . 'js/vendor.js') ?>"></script>
+        <script src="<?= e(Webtrees::ASSETS_PATH . 'js/webtrees.js') ?>?<?= filemtime(WT_ROOT . Webtrees::ASSETS_PATH . 'js/webtrees.js') ?>"></script>
 
         <?= View::stack('javascript') ?>
 

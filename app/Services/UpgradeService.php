@@ -20,6 +20,7 @@ namespace Fisharebest\Webtrees\Services;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\DebugBar;
 use Fisharebest\Webtrees\Site;
+use Fisharebest\Webtrees\Webtrees;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 use Symfony\Component\HttpFoundation\Response;
@@ -49,7 +50,7 @@ class UpgradeService
     {
         // If the latest version is unavailable, we will have an empty sting which equates to version 0.
 
-        return version_compare(WT_VERSION, $this->fetchLatestVersion()) < 0;
+        return version_compare(Webtrees::VERSION, $this->fetchLatestVersion()) < 0;
     }
 
     /**
@@ -125,7 +126,7 @@ class UpgradeService
         $operating_system = DIRECTORY_SEPARATOR === '/' ? 'u' : 'w';
 
         return [
-            'w' => WT_VERSION,
+            'w' => Webtrees::VERSION,
             'p' => PHP_VERSION,
             'm' => $mysql_version->value,
             'o' => $operating_system,

@@ -27,6 +27,7 @@ use Fisharebest\Webtrees\File;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Functions\FunctionsExport;
+use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
@@ -201,7 +202,7 @@ class AdminTreesController extends AbstractBaseController
         foreach ($records as $record) {
             $all_links[$record->xref]               = [];
             $upper_links[strtoupper($record->xref)] = $record->xref;
-            preg_match_all('/\n\d (' . WT_REGEX_TAG . ') @([^#@\n][^\n@]*)@/', $record->gedrec, $matches, PREG_SET_ORDER);
+            preg_match_all('/\n\d (' . Gedcom::REGEX_TAG . ') @([^#@\n][^\n@]*)@/', $record->gedrec, $matches, PREG_SET_ORDER);
             foreach ($matches as $match) {
                 $all_links[$record->xref][$match[2]] = $match[1];
             }
@@ -1046,7 +1047,7 @@ class AdminTreesController extends AbstractBaseController
         $tree->setPreference('META_TITLE', $request->get('META_TITLE'));
         $tree->setPreference('NO_UPDATE_CHAN', (string) (bool) $request->get('NO_UPDATE_CHAN'));
         $tree->setPreference('PEDIGREE_LAYOUT', (string) (bool) $request->get('PEDIGREE_LAYOUT'));
-        $tree->setPreference('PEDIGREE_ROOT_ID', $request->get('PEDIGREE_ROOT_ID', WT_REGEX_XREF));
+        $tree->setPreference('PEDIGREE_ROOT_ID', $request->get('PEDIGREE_ROOT_ID'));
         $tree->setPreference('PEDIGREE_SHOW_GENDER', (string) (bool) $request->get('PEDIGREE_SHOW_GENDER'));
         $tree->setPreference('PREFER_LEVEL2_SOURCES', $request->get('PREFER_LEVEL2_SOURCES'));
         $tree->setPreference('QUICK_REQUIRED_FACTS', implode(',', $request->get('QUICK_REQUIRED_FACTS', [])));
@@ -1995,7 +1996,7 @@ class AdminTreesController extends AbstractBaseController
                 $fp     = fopen(WT_DATA_DIR . $f, 'rb');
                 $header = fread($fp, 64);
                 fclose($fp);
-                if (preg_match('/^(' . WT_UTF8_BOM . ')?0 *HEAD/', $header)) {
+                if (preg_match('/^(' . Gedcom::UTF8_BOM . ')?0 *HEAD/', $header)) {
                     $files[] = $f;
                 }
             }

@@ -17,8 +17,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-use Fisharebest\Webtrees\I18N;
-
 /**
  * Test harness for the class I18N
  */
@@ -33,7 +31,6 @@ class I18NTest extends \Fisharebest\Webtrees\TestCase
     {
         defined('WT_BASE_URL') || define('WT_BASE_URL', 'http://localhost/');
         defined('WT_DATA_DIR') || define('WT_DATA_DIR', 'data/');
-        defined('WT_MODULES_DIR') || define('WT_MODULES_DIR', 'modules_v3/');
         defined('WT_ROOT') || define('WT_ROOT', '');
         I18N::init('en-US');
     }

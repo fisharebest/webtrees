@@ -108,6 +108,6 @@ class Source extends GedcomRecord
      */
     public function extractNames()
     {
-        parent::extractNamesFromFacts(1, 'TITL', $this->facts('TITL'));
+        parent::extractNamesFromFacts(1, 'TITL', $this->facts(['TITL']));
     }
 }

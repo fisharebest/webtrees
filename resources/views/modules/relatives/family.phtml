@@ -1,5 +1,6 @@
 <?php use Fisharebest\Webtrees\Date; ?>
 <?php use Fisharebest\Webtrees\Functions\Functions; ?>
+<?php use Fisharebest\Webtrees\Gedcom; ?>
 <?php use Fisharebest\Webtrees\GedcomTag; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 <?php use Fisharebest\Webtrees\Individual; ?>
@@ -14,7 +15,7 @@
     <tbody>
         <?php
         $found = false;
-        foreach ($family->facts('HUSB', false, $fam_access_level) as $fact) {
+        foreach ($family->facts(['HUSB'], false, $fam_access_level) as $fact) {
             $found |= !$fact->isPendingDeletion();
             $person = $fact->target();
             if ($person instanceof Individual) {
@@ -51,7 +52,7 @@
         }
 
         $found = false;
-        foreach ($family->facts('WIFE', false, $fam_access_level) as $fact) {
+        foreach ($family->facts(['WIFE'], false, $fam_access_level) as $fact) {
             $person = $fact->target();
             if ($person instanceof Individual) {
                 $found |= !$fact->isPendingDeletion();
@@ -91,7 +92,7 @@
         ///// MARR /////
         $found = false;
         $prev  = new Date('');
-        foreach ($family->facts(WT_EVENTS_MARR . '|' . WT_EVENTS_DIV, true) as $fact) {
+        foreach ($family->facts(array_merge(Gedcom::MARRIAGE_EVENTS, Gedcom::DIVORCE_EVENTS), true) as $fact) {
             $found |= !$fact->isPendingDeletion();
             if ($fact->isPendingAddition()) {
                 $row_class = 'new';
@@ -132,7 +133,7 @@
 
         ///// CHIL /////
         $child_number = 0;
-        foreach ($family->facts('CHIL', false, $fam_access_level) as $fact) {
+        foreach ($family->facts(['CHIL'], false, $fam_access_level) as $fact) {
             $person = $fact->target();
             if ($person instanceof Individual) {
                 $row_class = 'wt-gender-' . $person->getSex();
@@ -145,7 +146,7 @@
                     $child_number++;
                 }
                 $next = new Date('');
-                foreach ($person->facts(WT_EVENTS_BIRT, true) as $bfact) {
+                foreach ($person->facts(Gedcom::BIRTH_EVENTS, true) as $bfact) {
                     if ($bfact->date()->isOK()) {
                         $next = $bfact->date();
                         break;

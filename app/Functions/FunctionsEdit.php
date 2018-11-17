@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\Config;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodeAdop;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodeName;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodePedi;
@@ -506,7 +507,7 @@ class FunctionsEdit
             'PLAC' => '',
         ];
 
-        preg_match('/^(?:(\d+) (' . WT_REGEX_TAG . ') ?(.*))/', $tag, $match);
+        preg_match('/^(?:(\d+) (' . Gedcom::REGEX_TAG . ') ?(.*))/', $tag, $match);
         list(, $level, $fact, $value) = $match;
 
         if ($level === '0') {
@@ -901,7 +902,7 @@ class FunctionsEdit
         if (!in_array($fact, Config::nonPlaceFacts())) {
             echo self::addSimpleTag($tree, '0 PLAC', $fact, GedcomTag::getLabel($fact . ':PLAC'));
 
-            if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $tree->getPreference('ADVANCED_PLAC_FACTS'), $match)) {
+            if (preg_match_all('/(' . Gedcom::REGEX_TAG . ')/', $tree->getPreference('ADVANCED_PLAC_FACTS'), $match)) {
                 foreach ($match[1] as $tag) {
                     echo self::addSimpleTag($tree, '0 ' . $tag, $fact, GedcomTag::getLabel($fact . ':PLAC:' . $tag));
                 }
@@ -1007,7 +1008,7 @@ class FunctionsEdit
             $expected_subtags['DATE'] = ['TIME'];
         }
 
-        if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $record->tree()->getPreference('ADVANCED_PLAC_FACTS'), $match)) {
+        if (preg_match_all('/(' . Gedcom::REGEX_TAG . ')/', $record->tree()->getPreference('ADVANCED_PLAC_FACTS'), $match)) {
             $expected_subtags['PLAC'] = array_merge($match[1], $expected_subtags['PLAC']);
         }
 
@@ -1129,7 +1130,7 @@ class FunctionsEdit
                 // Add level 3/4 tags as appropriate
                 switch ($key) {
                     case 'PLAC':
-                        if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $tree->getPreference('ADVANCED_PLAC_FACTS'), $match)) {
+                        if (preg_match_all('/(' . Gedcom::REGEX_TAG . ')/', $tree->getPreference('ADVANCED_PLAC_FACTS'), $match)) {
                             foreach ($match[1] as $tag) {
                                 echo self::addSimpleTag($tree, '3 ' . $tag, '', GedcomTag::getLabel($level1tag . ':PLAC:' . $tag));
                             }
@@ -1173,7 +1174,7 @@ class FunctionsEdit
                 if (!in_array($tag, self::$tags)) {
                     echo self::addSimpleTag($tree, '2 ' . $tag);
                     if ($tag === 'PLAC') {
-                        if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $tree->getPreference('ADVANCED_PLAC_FACTS'), $match)) {
+                        if (preg_match_all('/(' . Gedcom::REGEX_TAG . ')/', $tree->getPreference('ADVANCED_PLAC_FACTS'), $match)) {
                             foreach ($match[1] as $ptag) {
                                 echo self::addSimpleTag($tree, '3 ' . $ptag, '', GedcomTag::getLabel($level1tag . ':PLAC:' . $ptag));
                             }

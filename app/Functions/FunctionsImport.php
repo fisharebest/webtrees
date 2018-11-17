@@ -20,6 +20,7 @@ namespace Fisharebest\Webtrees\Functions;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\DebugBar;
+use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
@@ -613,7 +614,7 @@ class FunctionsImport
         $gedrec = self::reformatRecord($gedrec, $tree);
 
         // import different types of records
-        if (preg_match('/^0 @(' . WT_REGEX_XREF . ')@ (' . WT_REGEX_TAG . ')/', $gedrec, $match)) {
+        if (preg_match('/^0 @(' . Gedcom::REGEX_XREF . ')@ (' . Gedcom::REGEX_TAG . ')/', $gedrec, $match)) {
             list(, $xref, $type) = $match;
             // check for a _UID, if the record doesn't have one, add one
             if ($tree->getPreference('GENERATE_UIDS') && !strpos($gedrec, "\n1 _UID ")) {
@@ -674,17 +675,17 @@ class FunctionsImport
                 // Convert inline media into media objects
                 $gedrec = self::convertInlineMedia($tree, $gedrec);
 
-                if (preg_match('/\n1 HUSB @(' . WT_REGEX_XREF . ')@/', $gedrec, $match)) {
+                if (preg_match('/\n1 HUSB @(' . Gedcom::REGEX_XREF . ')@/', $gedrec, $match)) {
                     $husb = $match[1];
                 } else {
                     $husb = '';
                 }
-                if (preg_match('/\n1 WIFE @(' . WT_REGEX_XREF . ')@/', $gedrec, $match)) {
+                if (preg_match('/\n1 WIFE @(' . Gedcom::REGEX_XREF . ')@/', $gedrec, $match)) {
                     $wife = $match[1];
                 } else {
                     $wife = '';
                 }
-                $nchi = preg_match_all('/\n1 CHIL @(' . WT_REGEX_XREF . ')@/', $gedrec, $match);
+                $nchi = preg_match_all('/\n1 CHIL @(' . Gedcom::REGEX_XREF . ')@/', $gedrec, $match);
                 if (preg_match('/\n1 NCHI (\d+)/', $gedrec, $match)) {
                     $nchi = max($nchi, $match[1]);
                 }
@@ -958,7 +959,7 @@ class FunctionsImport
      */
     public static function updateLinks($xref, $ged_id, $gedrec)
     {
-        if (preg_match_all('/^\d+ (' . WT_REGEX_TAG . ') @(' . WT_REGEX_XREF . ')@/m', $gedrec, $matches, PREG_SET_ORDER)) {
+        if (preg_match_all('/^\d+ (' . Gedcom::REGEX_TAG . ') @(' . Gedcom::REGEX_XREF . ')@/m', $gedrec, $matches, PREG_SET_ORDER)) {
             $data = [];
             foreach ($matches as $match) {
                 // Include each link once only.
@@ -1207,7 +1208,7 @@ class FunctionsImport
      */
     public static function updateRecord($gedrec, Tree $tree, bool $delete)
     {
-        if (preg_match('/^0 @(' . WT_REGEX_XREF . ')@ (' . WT_REGEX_TAG . ')/', $gedrec, $match)) {
+        if (preg_match('/^0 @(' . Gedcom::REGEX_XREF . ')@ (' . Gedcom::REGEX_TAG . ')/', $gedrec, $match)) {
             list(, $gid, $type) = $match;
         } elseif (preg_match('/^0 (HEAD)(?:\n|$)/', $gedrec, $match)) {
             // The HEAD record has no XREF.  Any others?

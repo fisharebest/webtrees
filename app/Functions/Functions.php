@@ -20,6 +20,7 @@ namespace Fisharebest\Webtrees\Functions;
 use Exception;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 
@@ -677,15 +678,15 @@ class Functions
                 if ($person1 && $person2) {
                     foreach ($person1->getSpouseFamilies() as $family) {
                         if ($person2 === $family->getSpouse($person1)) {
-                            if ($family->facts('MARR')) {
-                                if ($family->facts(WT_EVENTS_DIV)) {
+                            if ($family->facts(['MARR'])) {
+                                if ($family->facts(Gedcom::DIVORCE_EVENTS)) {
                                     return I18N::translate('ex-husband');
                                 }
 
                                 return I18N::translate('husband');
                             }
 
-                            if ($family->facts(WT_EVENTS_DIV)) {
+                            if ($family->facts(Gedcom::DIVORCE_EVENTS)) {
                                 return I18N::translateContext('MALE', 'ex-partner');
                             }
                         }
@@ -697,15 +698,15 @@ class Functions
                 if ($person1 && $person2) {
                     foreach ($person1->getSpouseFamilies() as $family) {
                         if ($person2 === $family->getSpouse($person1)) {
-                            if ($family->facts('MARR')) {
-                                if ($family->facts(WT_EVENTS_DIV)) {
+                            if ($family->facts(['MARR'])) {
+                                if ($family->facts(Gedcom::DIVORCE_EVENTS)) {
                                     return I18N::translate('ex-wife');
                                 }
 
                                 return I18N::translate('wife');
                             }
 
-                            if ($family->facts(WT_EVENTS_DIV)) {
+                            if ($family->facts(Gedcom::DIVORCE_EVENTS)) {
                                 return I18N::translateContext('FEMALE', 'ex-partner');
                             }
                         }
@@ -717,15 +718,15 @@ class Functions
                 if ($person1 && $person2) {
                     foreach ($person1->getSpouseFamilies() as $family) {
                         if ($person2 === $family->getSpouse($person1)) {
-                            if ($family->facts('MARR')) {
-                                if ($family->facts(WT_EVENTS_DIV)) {
+                            if ($family->facts(['MARR'])) {
+                                if ($family->facts(Gedcom::DIVORCE_EVENTS)) {
                                     return I18N::translate('ex-spouse');
                                 }
 
                                 return I18N::translate('spouse');
                             }
 
-                            if ($family->facts(WT_EVENTS_DIV)) {
+                            if ($family->facts(Gedcom::DIVORCE_EVENTS)) {
                                 return I18N::translate('ex-partner');
                             }
                         }

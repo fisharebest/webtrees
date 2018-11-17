@@ -27,4 +27,26 @@ class Gedcom
 
     // 255 less the EOL character.
     const LINE_LENGTH = 253;
+
+    // Gedcom tags which indicate the start of life.
+    const BIRTH_EVENTS = ['BIRT', 'CHR', 'BAPM', 'ADOP'];
+
+    // Gedcom tags which indicate the end of life.
+    const DEATH_EVENTS = ['DEAT', 'BURI', 'CREM'];
+
+    // Gedcom tags which indicate the start of a relationship.
+    const MARRIAGE_EVENTS = ['MARR', '_NMR'];
+
+    // Gedcom tags which indicate the end of a relationship.
+    const DIVORCE_EVENTS = ['DIV', 'ANUL', '_SEPR'];
+
+    // Regular expression to match a GEDCOM tag.
+    const REGEX_TAG = '[_A-Z][_A-Z0-9]*';
+
+    // Regular expression to match a GEDCOM XREF.
+    const REGEX_XREF = '[A-Za-z0-9:_-]+';
+
+    // UTF-8 encoded files may begin with an optional byte-order-mark (U+FEFF).
+    const UTF8_BOM = "\xEF\xBB\xBF";
+
 }

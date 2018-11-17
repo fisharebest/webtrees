@@ -222,19 +222,19 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
             if ($object) {
                 $record = $object->privatizeGedcom($access_level);
                 // Remove links to objects that aren't in the cart
-                preg_match_all('/\n1 ' . WT_REGEX_TAG . ' @(' . WT_REGEX_XREF . ')@(\n[2-9].*)*/', $record, $matches, PREG_SET_ORDER);
+                preg_match_all('/\n1 ' . Gedcom::REGEX_TAG . ' @(' . Gedcom::REGEX_XREF . ')@(\n[2-9].*)*/', $record, $matches, PREG_SET_ORDER);
                 foreach ($matches as $match) {
                     if (!array_key_exists($match[1], $xrefs)) {
                         $record = str_replace($match[0], '', $record);
                     }
                 }
-                preg_match_all('/\n2 ' . WT_REGEX_TAG . ' @(' . WT_REGEX_XREF . ')@(\n[3-9].*)*/', $record, $matches, PREG_SET_ORDER);
+                preg_match_all('/\n2 ' . Gedcom::REGEX_TAG . ' @(' . Gedcom::REGEX_XREF . ')@(\n[3-9].*)*/', $record, $matches, PREG_SET_ORDER);
                 foreach ($matches as $match) {
                     if (!array_key_exists($match[1], $xrefs)) {
                         $record = str_replace($match[0], '', $record);
                     }
                 }
-                preg_match_all('/\n3 ' . WT_REGEX_TAG . ' @(' . WT_REGEX_XREF . ')@(\n[4-9].*)*/', $record, $matches, PREG_SET_ORDER);
+                preg_match_all('/\n3 ' . Gedcom::REGEX_TAG . ' @(' . Gedcom::REGEX_XREF . ')@(\n[4-9].*)*/', $record, $matches, PREG_SET_ORDER);
                 foreach ($matches as $match) {
                     if (!array_key_exists($match[1], $xrefs)) {
                         $record = str_replace($match[0], '', $record);
@@ -958,7 +958,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $cart[$tree_name][$record->xref()] = true;
 
         // Add directly linked media, notes, repositories and sources.
-        preg_match_all('/\n\d (?:OBJE|NOTE|SOUR|REPO) @(' . WT_REGEX_XREF . ')@/', $record->gedcom(), $matches);
+        preg_match_all('/\n\d (?:OBJE|NOTE|SOUR|REPO) @(' . Gedcom::REGEX_XREF . ')@/', $record->gedcom(), $matches);
 
         foreach ($matches[1] as $match) {
             $cart[$tree_name][$match] = true;

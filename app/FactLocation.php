@@ -103,42 +103,42 @@ class FactLocation extends Location
     public function getIconDetails(): array
     {
         $tag = $this->fact->getTag();
-        if (false !== stripos(WT_EVENTS_BIRT, $tag)) {
+        if (in_array($tag, Gedcom::BIRTH_EVENTS)) {
             $icon = [
                 'color' => 'Crimson',
                 'name'  => 'birthday-cake',
             ];
-        } elseif (false !== stripos(WT_EVENTS_MARR, $tag)) {
+        } elseif (in_array($tag, Gedcom::MARRIAGE_EVENTS)) {
             $icon = [
                 'color' => 'Green',
                 'name'  => 'venus-mars',
             ];
-        } elseif (false !== stripos(WT_EVENTS_DEAT, $tag)) {
+        } elseif (in_array($tag, Gedcom::DEATH_EVENTS)) {
             $icon = [
                 'color' => 'Black',
                 'name'  => 'plus',
             ];
-        } elseif (false !== stripos('CENS', $tag)) {
+        } elseif ($tag === 'CENS') {
             $icon = [
                 'color' => 'MediumBlue',
                 'name'  => 'users',
             ];
-        } elseif (false !== stripos('RESI', $tag)) {
+        } elseif ($tag === 'RESI') {
             $icon = [
                 'color' => 'MediumBlue',
                 'name'  => 'home',
             ];
-        } elseif (false !== stripos('OCCU', $tag)) {
+        } elseif ($tag === 'OCCU') {
             $icon = [
                 'color' => 'MediumBlue',
                 'name'  => 'briefcase',
             ];
-        } elseif (false !== stripos('GRAD', $tag)) {
+        } elseif ($tag === 'GRAD') {
             $icon = [
                 'color' => 'MediumBlue',
                 'name'  => 'graduation-cap',
             ];
-        } elseif (false !== stripos('EDUC', $tag)) {
+        } elseif ($tag === 'EDUC') {
             $icon = [
                 'color' => 'MediumBlue',
                 'name'  => 'university',

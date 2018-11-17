@@ -20,6 +20,7 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\DebugBar;
 use Fisharebest\Webtrees\Functions\FunctionsImport;
+use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\TimeoutService;
 use Fisharebest\Webtrees\Tree;
@@ -95,7 +96,7 @@ class GedcomFileController extends AbstractBaseController
                     " SET chunk_data=TRIM(LEADING :bom FROM chunk_data)" .
                     " WHERE gedcom_chunk_id = :chunk_id"
                 )->execute([
-                    'bom'      => WT_UTF8_BOM,
+                    'bom'      => Gedcom::UTF8_BOM,
                     'chunk_id' => $data->gedcom_chunk_id,
                 ]);
                 // Re-fetch the data, now that we have removed the BOM

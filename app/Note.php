@@ -56,7 +56,7 @@ class Note extends GedcomRecord
      */
     public function getNote()
     {
-        if (preg_match('/^0 @' . WT_REGEX_XREF . '@ NOTE ?(.*(?:\n1 CONT ?.*)*)/', $this->gedcom . $this->pending, $match)) {
+        if (preg_match('/^0 @' . Gedcom::REGEX_XREF . '@ NOTE ?(.*(?:\n1 CONT ?.*)*)/', $this->gedcom . $this->pending, $match)) {
             return preg_replace("/\n1 CONT ?/", "\n", $match[1]);
         }
 

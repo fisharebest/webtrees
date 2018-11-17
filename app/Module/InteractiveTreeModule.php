@@ -19,11 +19,13 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Exceptions\IndividualAccessDeniedException;
 use Fisharebest\Webtrees\Exceptions\IndividualNotFoundException;
+use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Module\InteractiveTree\TreeView;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Webtrees;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -72,7 +74,7 @@ class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface
      */
     public function css(): string
     {
-        return WT_MODULES_DIR . $this->getName() . '/css/treeview.css';
+        return Webtrees::MODULES_PATH . $this->getName() . '/css/treeview.css';
     }
 
     /**
@@ -80,7 +82,7 @@ class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface
      */
     public function js(): string
     {
-        return WT_MODULES_DIR . $this->getName() . '/js/treeview.js';
+        return Webtrees::MODULES_PATH . $this->getName() . '/js/treeview.js';
     }
 
     /** {@inheritdoc} */
@@ -178,7 +180,7 @@ class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface
      */
     public function getDetailsAction(Request $request, Tree $tree): Response
     {
-        $pid        = $request->get('pid', WT_REGEX_XREF);
+        $pid        = $request->get('pid', Gedcom::REGEX_XREF);
         $individual = Individual::getInstance($pid, $tree);
 
         if ($individual === null) {

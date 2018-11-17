@@ -105,7 +105,7 @@ class Media extends GedcomRecord
     {
         $media_files = [];
 
-        foreach ($this->facts('FILE') as $fact) {
+        foreach ($this->facts(['FILE']) as $fact) {
             $media_files[] = new MediaFile($fact->gedcom(), $this);
         }
 

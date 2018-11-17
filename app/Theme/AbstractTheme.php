@@ -20,6 +20,7 @@ namespace Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
@@ -33,6 +34,7 @@ use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
+use Fisharebest\Webtrees\Webtrees;
 use stdClass;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -854,7 +856,7 @@ abstract class AbstractTheme
 
         $opt_tags = preg_split('/\W/', $individual->tree()->getPreference('CHART_BOX_TAGS'), 0, PREG_SPLIT_NO_EMPTY);
         // Show BIRT or equivalent event
-        foreach (explode('|', WT_EVENTS_BIRT) as $birttag) {
+        foreach (Gedcom::BIRTH_EVENTS as $birttag) {
             if (!in_array($birttag, $opt_tags)) {
                 $event = $individual->getFirstFact($birttag);
                 if ($event) {
@@ -865,7 +867,7 @@ abstract class AbstractTheme
         }
         // Show optional events (before death)
         foreach ($opt_tags as $key => $tag) {
-            if (!preg_match('/^(' . WT_EVENTS_DEAT . ')$/', $tag)) {
+            if (!in_array($tag, Gedcom::DEATH_EVENTS)) {
                 $event = $individual->getFirstFact($tag);
                 if ($event !== null) {
                     $html .= $event->summary();
@@ -874,7 +876,7 @@ abstract class AbstractTheme
             }
         }
         // Show DEAT or equivalent event
-        foreach (explode('|', WT_EVENTS_DEAT) as $deattag) {
+        foreach (Gedcom::DEATH_EVENTS as $deattag) {
             $event = $individual->getFirstFact($deattag);
             if ($event) {
                 $html .= $event->summary();
@@ -905,13 +907,13 @@ abstract class AbstractTheme
     public function individualBoxLdsSummary(Individual $individual)
     {
         if ($individual->tree()->getPreference('SHOW_LDS_AT_GLANCE')) {
-            $BAPL = $individual->facts('BAPL') ? 'B' : '_';
-            $ENDL = $individual->facts('ENDL') ? 'E' : '_';
-            $SLGC = $individual->facts('SLGC') ? 'C' : '_';
+            $BAPL = $individual->facts(['BAPL']) ? 'B' : '_';
+            $ENDL = $individual->facts(['ENDL']) ? 'E' : '_';
+            $SLGC = $individual->facts(['SLGC']) ? 'C' : '_';
             $SLGS = '_';
 
             foreach ($individual->getSpouseFamilies() as $family) {
-                if ($family->facts('SLGS')) {
+                if ($family->facts(['SLGS'])) {
                     $SLGS = '';
                 }
             }
@@ -1024,7 +1026,7 @@ abstract class AbstractTheme
      */
     public function logoPoweredBy(): string
     {
-        return '<a href="' . WT_WEBTREES_URL . '" class="wt-powered-by-webtrees" title="' . WT_WEBTREES_URL . '" dir="ltr">' . WT_WEBTREES_URL . '</a>';
+        return '<a href="' . e(Webtrees::URL) . '" class="wt-powered-by-webtrees" dir="ltr">' . e(Webtrees::NAME) . '</a>';
     }
 
     /**

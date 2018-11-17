@@ -21,6 +21,7 @@ use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\FontAwesome;
 use Fisharebest\Webtrees\Functions\FunctionsCharts;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
+use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -251,7 +252,7 @@ class DescendantsChartController extends AbstractChartController
         echo '<span class="details1">';
         echo '<a href="#" onclick="expand_layer(\'' . $uid . '\'); return false;" class="top"><i id="' . $uid . '_img" class="icon-minus" title="' . I18N::translate('View this family') . '"></i></a>';
         if ($family->canShow()) {
-            foreach ($family->facts(WT_EVENTS_MARR) as $fact) {
+            foreach ($family->facts(Gedcom::MARRIAGE_EVENTS) as $fact) {
                 echo ' <a href="', e($family->url()), '" class="details1">', $fact->summary(), '</a>';
             }
         }

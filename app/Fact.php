@@ -171,7 +171,7 @@ class Fact
      */
     public function __construct($gedcom, GedcomRecord $parent, $id)
     {
-        if (preg_match('/^1 (' . WT_REGEX_TAG . ')/', $gedcom, $match)) {
+        if (preg_match('/^1 (' . Gedcom::REGEX_TAG . ')/', $gedcom, $match)) {
             $this->gedcom = $gedcom;
             $this->record = $parent;
             $this->id     = $id;
@@ -442,7 +442,7 @@ class Fact
      */
     public function getCitations(): array
     {
-        preg_match_all('/\n(2 SOUR @(' . WT_REGEX_XREF . ')@(?:\n[3-9] .*)*)/', $this->gedcom(), $matches, PREG_SET_ORDER);
+        preg_match_all('/\n(2 SOUR @(' . Gedcom::REGEX_XREF . ')@(?:\n[3-9] .*)*)/', $this->gedcom(), $matches, PREG_SET_ORDER);
         $citations = [];
         foreach ($matches as $match) {
             $source = Source::getInstance($match[2], $this->record()->tree());
@@ -465,7 +465,7 @@ class Fact
         preg_match_all('/\n2 NOTE ?(.*(?:\n3.*)*)/', $this->gedcom(), $matches);
         foreach ($matches[1] as $match) {
             $note = preg_replace("/\n3 CONT ?/", "\n", $match);
-            if (preg_match('/@(' . WT_REGEX_XREF . ')@/', $note, $nmatch)) {
+            if (preg_match('/@(' . Gedcom::REGEX_XREF . ')@/', $note, $nmatch)) {
                 $note = Note::getInstance($nmatch[1], $this->record()->tree());
                 if ($note && $note->canShow()) {
                     // A note object
@@ -488,7 +488,7 @@ class Fact
     public function getMedia(): array
     {
         $media = [];
-        preg_match_all('/\n2 OBJE @(' . WT_REGEX_XREF . ')@/', $this->gedcom(), $matches);
+        preg_match_all('/\n2 OBJE @(' . Gedcom::REGEX_XREF . ')@/', $this->gedcom(), $matches);
         foreach ($matches[1] as $match) {
             $obje = Media::getInstance($match, $this->record()->tree());
             if ($obje && $obje->canShow()) {
@@ -519,7 +519,7 @@ class Fact
             // Fact date
             $date = $this->date();
             if ($date->isOK()) {
-                if (in_array($this->getTag(), explode('|', WT_EVENTS_BIRT)) && $this->record() instanceof Individual && $this->record()->tree()->getPreference('SHOW_PARENTS_AGE')) {
+                if (in_array($this->getTag(), Gedcom::BIRTH_EVENTS) && $this->record() instanceof Individual && $this->record()->tree()->getPreference('SHOW_PARENTS_AGE')) {
                     $attributes[] = $date->display() . FunctionsPrint::formatParentsAges($this->record(), $date);
                 } else {
                     $attributes[] = $date->display();

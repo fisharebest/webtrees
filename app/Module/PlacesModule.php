@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\FactLocation;
 use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Webtrees;
 use stdClass;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -183,7 +184,7 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
     private function getMapProviderData(Request $request)
     {
         if (self::$map_providers === null) {
-            $providersFile        = WT_ROOT . WT_MODULES_DIR . 'openstreetmap/providers/providers.xml';
+            $providersFile        = WT_ROOT . Webtrees::MODULES_PATH . 'openstreetmap/providers/providers.xml';
             self::$map_selections = [
                 'provider' => $this->getPreference('provider', 'openstreetmap'),
                 'style'    => $this->getPreference('provider_style', 'mapnik'),

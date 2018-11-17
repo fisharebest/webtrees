@@ -114,12 +114,12 @@ class IndividualController extends AbstractBaseController
         $individual_media = array_filter($individual_media);
 
         $name_records = [];
-        foreach ($individual->facts('NAME') as $n => $name_fact) {
+        foreach ($individual->facts(['NAME']) as $n => $name_fact) {
             $name_records[] = $this->formatNameRecord($tree, $n, $name_fact);
         }
 
         $sex_records = [];
-        foreach ($individual->facts('SEX') as $n => $sex_fact) {
+        foreach ($individual->facts(['SEX']) as $n => $sex_fact) {
             $sex_records[] = $this->formatSexRecord($sex_fact);
         }
 
@@ -134,9 +134,9 @@ class IndividualController extends AbstractBaseController
 
         return $this->viewResponse('individual-page', [
             'age'              => $age,
-            'count_media'      => $this->countFacts($individual, 'OBJE'),
-            'count_names'      => $this->countFacts($individual, 'NAME'),
-            'count_sex'        => $this->countFacts($individual, 'SEX'),
+            'count_media'      => $this->countFacts($individual, ['OBJE']),
+            'count_names'      => $this->countFacts($individual, ['NAME']),
+            'count_sex'        => $this->countFacts($individual, ['SEX']),
             'individual'       => $individual,
             'individual_media' => $individual_media,
             'meta_robots'      => 'index,follow',
@@ -218,15 +218,15 @@ class IndividualController extends AbstractBaseController
      * Count the (non-pending-delete) name records for an individual.
      *
      * @param Individual $individual
-     * @param string     $fact_name
+     * @param string[]   $tags
      *
      * @return int
      */
-    private function countFacts(Individual $individual, $fact_name): int
+    private function countFacts(Individual $individual, array $tags): int
     {
         $count = 0;
 
-        foreach ($individual->facts($fact_name) as $fact) {
+        foreach ($individual->facts($tags) as $fact) {
             if (!$fact->isPendingDeletion()) {
                 $count++;
             }

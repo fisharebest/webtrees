@@ -713,7 +713,7 @@ class EditIndividualController extends AbstractEditController
 
         // Replace any existing child->family link (we may be changing the PEDI);
         $fact_id = '';
-        foreach ($individual->facts('FAMC') as $fact) {
+        foreach ($individual->facts(['FAMC']) as $fact) {
             if ($family === $fact->target()) {
                 $fact_id = $fact->id();
                 break;
@@ -725,7 +725,7 @@ class EditIndividualController extends AbstractEditController
 
         // Only set the family->child link if it does not already exist
         $chil_link_exists = false;
-        foreach ($family->facts('CHIL') as $fact) {
+        foreach ($family->facts(['CHIL']) as $fact) {
             if ($individual === $fact->target()) {
                 $chil_link_exists = true;
                 break;

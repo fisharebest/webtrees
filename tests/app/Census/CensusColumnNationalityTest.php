@@ -61,7 +61,7 @@ class CensusColumnNationalityTest extends \Fisharebest\Webtrees\TestCase
     {
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
         $individual->shouldReceive('getBirthPlace')->andReturn($this->getPlaceMock(''));
-        $individual->shouldReceive('facts')->with('IMMI|EMIG|NATU', true)->andReturn([]);
+        $individual->shouldReceive('facts')->with(['IMMI', 'EMIG', 'NATU'], true)->andReturn([]);
 
         $census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
         $census->shouldReceive('censusPlace')->andReturn('Deutschland');
@@ -81,7 +81,7 @@ class CensusColumnNationalityTest extends \Fisharebest\Webtrees\TestCase
     {
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
         $individual->shouldReceive('getBirthPlace')->andReturn($this->getPlaceMock('Australia'));
-        $individual->shouldReceive('facts')->with('IMMI|EMIG|NATU', true)->andReturn([]);
+        $individual->shouldReceive('facts')->with(['IMMI', 'EMIG', 'NATU'], true)->andReturn([]);
 
         $census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
         $census->shouldReceive('censusPlace')->andReturn('England');
@@ -101,7 +101,7 @@ class CensusColumnNationalityTest extends \Fisharebest\Webtrees\TestCase
     {
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
         $individual->shouldReceive('getBirthPlace')->andReturn($this->getPlaceMock('London, England'));
-        $individual->shouldReceive('facts')->with('IMMI|EMIG|NATU', true)->andReturn([]);
+        $individual->shouldReceive('facts')->with(['IMMI', 'EMIG', 'NATU'], true)->andReturn([]);
 
         $census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
         $census->shouldReceive('censusPlace')->andReturn('England');
@@ -135,7 +135,7 @@ class CensusColumnNationalityTest extends \Fisharebest\Webtrees\TestCase
 
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
         $individual->shouldReceive('getBirthPlace')->andReturn($this->getPlaceMock('London, England'));
-        $individual->shouldReceive('facts')->with('IMMI|EMIG|NATU', true)->andReturn([
+        $individual->shouldReceive('facts')->with(['IMMI', 'EMIG', 'NATU'], true)->andReturn([
             $fact1,
             $fact2,
         ]);

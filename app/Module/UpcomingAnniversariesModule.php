@@ -18,6 +18,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\CalendarService;
@@ -131,8 +132,7 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
 
         // If we are only showing living individuals, then we don't need to search for DEAT events.
         if ($filter) {
-            $death_events = explode('|', WT_EVENTS_DEAT);
-            $event_array  = array_diff($event_array, $death_events);
+            $event_array  = array_diff($event_array, Gedcom::DEATH_EVENTS);
         }
 
         $events_filter = implode('|', $event_array);

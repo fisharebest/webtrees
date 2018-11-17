@@ -17,9 +17,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\SurnameTradition;
 
-use Fisharebest\Webtrees\SurnameTradition\SpanishSurnameTradition;
-use Fisharebest\Webtrees\SurnameTradition\SurnameTraditionInterface;
-
 /**
  * Test harness for the class SpanishSurnameTradition
  */

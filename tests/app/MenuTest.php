@@ -17,8 +17,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-use Fisharebest\Webtrees\Menu;
-
 /**
  * Test harness for the class Menu
  */

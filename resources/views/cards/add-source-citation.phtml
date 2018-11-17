@@ -1,3 +1,4 @@
+<?php use Fisharebest\Webtrees\Gedcom; ?>
 <?php use Fisharebest\Webtrees\GedcomTag; ?>
 <?php use Fisharebest\Webtrees\Functions\FunctionsEdit; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
@@ -21,9 +22,9 @@
                             <input type="checkbox" name="SOUR_INDI" <?= $prefer_level2_sources === '2' ? 'checked' : '' ?> value="1">
                             <?= I18N::translate('Individual') ?>
                         </label>
-                        <?php if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $quick_required_facts, $matches)) : ?>
+                        <?php if (preg_match_all('/(' . Gedcom::REGEX_TAG . ')/', $quick_required_facts, $matches)) : ?>
                             <?php foreach ($matches[1] as $match) : ?>
-                                <?php if (!in_array($match, explode('|', WT_EVENTS_DEAT))) : ?>
+                                <?php if (!in_array($match, Gedcom::DEATH_EVENTS)) : ?>
                                     <label>
                                         <input type="checkbox" name="SOUR_<?= $match ?>" <?= $prefer_level2_sources === '1' ? 'checked' : '' ?> value="1">
                                         <?= GedcomTag::getLabel($match) ?>
@@ -34,9 +35,9 @@
                     <?php endif ?>
 
                     <?php if (strpos($bdm, 'D') !== false) : ?>
-                        <?php if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $quick_required_facts, $matches)) : ?>
+                        <?php if (preg_match_all('/(' . Gedcom::REGEX_TAG . ')/', $quick_required_facts, $matches)) : ?>
                             <?php foreach ($matches[1] as $match) : ?>
-                                <?php if (in_array($match, explode('|', WT_EVENTS_DEAT))) : ?>
+                                <?php if (in_array($match,Gedcom::DEATH_EVENTS)) : ?>
                                     <label>
                                         <input type="checkbox" name="SOUR_<?= $match ?>" <?= $prefer_level2_sources === '1' ? 'checked' : '' ?> value="1">
                                         <?= GedcomTag::getLabel($match) ?>
@@ -51,7 +52,7 @@
                             <input type="checkbox" name="SOUR_FAM" <?= $prefer_level2_sources === '2' ? 'checked' : '' ?> value="1">
                             <?= I18N::translate('Family') ?>
                         </label>
-                        <?php if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $quick_required_famfacts, $matches)) : ?>
+                        <?php if (preg_match_all('/(' . Gedcom::REGEX_TAG . ')/', $quick_required_famfacts, $matches)) : ?>
                             <?php foreach ($matches[1] as $match) : ?>
                                 <label>
                                     <input type="checkbox" name="SOUR_<?= $match ?>" <?= $prefer_level2_sources === '1' ? 'checked' : '' ?> value="1">

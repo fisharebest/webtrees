@@ -415,16 +415,16 @@ class I18N
         if (defined('GLOB_BRACE')) {
             $translation_files = array_merge(
                 [WT_ROOT . 'language/' . self::$locale->languageTag() . '.mo'],
-                glob(WT_MODULES_DIR . '*/language/' . self::$locale->languageTag() . '.{csv,php,mo}', GLOB_BRACE) ?: [],
+                glob(Webtrees::MODULES_PATH . '*/language/' . self::$locale->languageTag() . '.{csv,php,mo}', GLOB_BRACE) ?: [],
                 glob(WT_DATA_DIR . 'language/' . self::$locale->languageTag() . '.{csv,php,mo}', GLOB_BRACE) ?: []
             );
         } else {
             // Some servers do not have GLOB_BRACE - see http://php.net/manual/en/function.glob.php
             $translation_files = array_merge(
                 [WT_ROOT . 'language/' . self::$locale->languageTag() . '.mo'],
-                glob(WT_MODULES_DIR . '*/language/' . self::$locale->languageTag() . '.csv') ?: [],
-                glob(WT_MODULES_DIR . '*/language/' . self::$locale->languageTag() . '.php') ?: [],
-                glob(WT_MODULES_DIR . '*/language/' . self::$locale->languageTag() . '.mo') ?: [],
+                glob(Webtrees::MODULES_PATH . '*/language/' . self::$locale->languageTag() . '.csv') ?: [],
+                glob(Webtrees::MODULES_PATH . '*/language/' . self::$locale->languageTag() . '.php') ?: [],
+                glob(Webtrees::MODULES_PATH . '*/language/' . self::$locale->languageTag() . '.mo') ?: [],
                 glob(WT_DATA_DIR . 'language/' . self::$locale->languageTag() . '.csv') ?: [],
                 glob(WT_DATA_DIR . 'language/' . self::$locale->languageTag() . '.php') ?: [],
                 glob(WT_DATA_DIR . 'language/' . self::$locale->languageTag() . '.mo') ?: []

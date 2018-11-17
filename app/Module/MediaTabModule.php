@@ -19,6 +19,7 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Functions\Functions;
+use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 
@@ -92,7 +93,7 @@ class MediaTabModule extends AbstractModule implements ModuleTabInterface
             }
             $this->facts = [];
             foreach ($facts as $fact) {
-                if (preg_match('/(?:^1|\n\d) OBJE @' . WT_REGEX_XREF . '@/', $fact->gedcom())) {
+                if (preg_match('/(?:^1|\n\d) OBJE @' . Gedcom::REGEX_XREF . '@/', $fact->gedcom())) {
                     $this->facts[] = $fact;
                 }
             }

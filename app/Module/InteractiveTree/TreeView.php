@@ -18,6 +18,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module\InteractiveTree;
 
 use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Tree;
@@ -152,15 +153,15 @@ class TreeView
 
         $hmtl = $this->getThumbnail($individual);
         $hmtl .= '<a class="tv_link" href="' . e($individual->url()) . '">' . $individual->getFullName() . '</a> <a href="' . e($chart_url) . '" title="' . I18N::translate('Interactive tree of %s', strip_tags($individual->getFullName())) . '" class="wt-icon-individual tv_link tv_treelink"></a>';
-        foreach ($individual->facts(WT_EVENTS_BIRT, true) as $fact) {
+        foreach ($individual->facts(Gedcom::BIRTH_EVENTS, true) as $fact) {
             $hmtl .= $fact->summary();
         }
         if ($family) {
-            foreach ($family->facts(WT_EVENTS_MARR, true) as $fact) {
+            foreach ($family->facts(Gedcom::MARRIAGE_EVENTS, true) as $fact) {
                 $hmtl .= $fact->summary();
             }
         }
-        foreach ($individual->facts(WT_EVENTS_DEAT, true) as $fact) {
+        foreach ($individual->facts(Gedcom::DEATH_EVENTS, true) as $fact) {
             $hmtl .= $fact->summary();
         }
 
