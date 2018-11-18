@@ -48,5 +48,4 @@ class Gedcom
 
     // UTF-8 encoded files may begin with an optional byte-order-mark (U+FEFF).
     const UTF8_BOM = "\xEF\xBB\xBF";
-
 }
