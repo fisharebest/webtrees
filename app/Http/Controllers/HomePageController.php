@@ -49,7 +49,7 @@ class HomePageController extends AbstractBaseController
     {
         $block_id = (int) $request->get('block_id');
         $block    = $this->treeBlock($request, $user);
-        $title    = $block->title() . ' — ' . I18N::translate('Preferences');
+        $title    = $block->getTitle() . ' — ' . I18N::translate('!Preferences');
 
         return $this->viewResponse('modules/edit-block-config', [
             'block'      => $block,
