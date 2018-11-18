@@ -85,6 +85,5 @@ class Webtrees
 
             return true;
         });
-
     }
 }
