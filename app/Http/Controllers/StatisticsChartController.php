@@ -458,7 +458,7 @@ class StatisticsChartController extends AbstractChartController
                         $rows = $stats->statsAgeQuery(false, 'DEAT');
                         foreach ($rows as $row) {
                             foreach ($row as $age) {
-                                $years = intdiv($age, self::DAYS_IN_YEAR);
+                                $years = (int) ($age / self::DAYS_IN_YEAR);
                                 $this->fillYData($years, 0, 1, $x_axis, $z_axis, $ydata);
                             }
                         }
@@ -469,7 +469,7 @@ class StatisticsChartController extends AbstractChartController
                             $rows = $stats->statsAgeQuery(false, 'DEAT', $sex);
                             foreach ($rows as $row) {
                                 foreach ($row as $age) {
-                                    $years = intdiv($age, self::DAYS_IN_YEAR);
+                                    $years = (int) ($age / self::DAYS_IN_YEAR);
                                     $this->fillYData($years, $sex, 1, $x_axis, $z_axis, $ydata);
                                 }
                             }
@@ -483,7 +483,7 @@ class StatisticsChartController extends AbstractChartController
                             $rows = $stats->statsAgeQuery(false, 'DEAT', 'BOTH', $prev_boundary, $boundary);
                             foreach ($rows as $row) {
                                 foreach ($row as $age) {
-                                    $years = intdiv($age, self::DAYS_IN_YEAR);
+                                    $years = (int) ($age / self::DAYS_IN_YEAR);
                                     $this->fillYData($years, $boundary, 1, $x_axis, $z_axis, $ydata);
                                 }
                             }
