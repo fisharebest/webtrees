@@ -53,7 +53,7 @@ class Place
      */
     public function lastPart(): string
     {
-        return end($this->gedcom_place);
+        return $this->gedcom_place[count($this->gedcom_place) - 1] ?? '';
     }
 
     /**
@@ -148,9 +148,11 @@ class Place
      */
     public function getPlaceName(): string
     {
-        $place = reset($this->gedcom_place);
+        if (empty($this->gedcom_place)) {
+            return  I18N::translate('unknown');
+        }
 
-        return $place ? '<span dir="auto">' . e($place) . '</span>' : I18N::translate('unknown');
+        return '<span dir="auto">' . e($this->gedcom_place[0]) . '</span>';
     }
 
     /**
