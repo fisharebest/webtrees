@@ -1,6 +1,7 @@
 <?php use Fisharebest\Webtrees\Functions\FunctionsEdit; ?>
 <?php use Fisharebest\Webtrees\FontAwesome; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
+<?php use Fisharebest\Webtrees\View; ?>
 
 <div id="census-assistant-link" hidden>
     <a href="#">
@@ -85,6 +86,7 @@
     </div>
 </div>
 
+<?php View::push('javascript') ?>
 <script>
   // When a census date/place is selected, activate the census-assistant
   function censusAssistantSelect() {
@@ -164,8 +166,15 @@
     return false;
   }
 
-  document.querySelector('#census-selector').addEventListener('change', censusAssistantSelect);
-  document.querySelector('#census-assistant-link').addEventListener('click', censusAssistantLink);
-  document.querySelector('#census-assistant-add').addEventListener('click', censusAssistantAdd);
-  document.querySelector('#census-assistant-head').addEventListener('click', censusAssistantHead);
+  $('#census-selector').on('change', censusAssistantSelect);
+  $('#census-assistant-link').on('click', censusAssistantLink);
+  $('#census-assistant-add').on('click', censusAssistantAdd);
+  $('#census-assistant-head').on('click', censusAssistantHead);
+
+  $('#census-assistant-table').on('click', 'a.icon-remove', function() {
+    $(this).closest('tr').remove();
+
+    return false;
+  })
 </script>
+<?php View::endpush() ?>
