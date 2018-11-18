@@ -274,6 +274,9 @@ class HelpTextController extends AbstractBaseController
         $dates = [];
 
         foreach ($gedcom_dates as $gedcom_date) {
+            // PHP converts numeric array keys ('1900') to integers (1900), so reverse this.
+            $gedcom_date = (string) $gedcom_date;
+
             $date                = new Date($gedcom_date);
             $dates[$gedcom_date] = strip_tags($date->display(false, null, false));
         }
