@@ -60,12 +60,13 @@ class Resolver
 
         $constructor = $reflector->getConstructor();
 
-        // No constructor?  Nothing to inject.
         if ($constructor === null) {
-            return new $class();
+            // No constructor?  Nothing to inject.
+            $parameters = [];
+        } else {
+            // Recursively resolve the parameters.
+            $parameters = $this->resolveParameters($constructor->getParameters());
         }
-
-        $parameters = $this->resolveParameters($constructor->getParameters());
 
         return $reflector->newInstanceArgs($parameters);
     }
