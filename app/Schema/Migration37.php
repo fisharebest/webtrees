@@ -68,7 +68,7 @@ class Migration37 implements MigrationInterface
             "KEY `##media_file_ix4` (m_file, multimedia_format)," .
             "KEY `##media_file_ix5` (m_file, source_media_type)," .
             "KEY `##media_file_ix6` (m_file, descriptive_title)" .
-            ") ENGINE=InnoDB COLLATE=utf8_unicode_ci"
+            ") ENGINE=InnoDB ROW_FORMAT=COMPRESSED COLLATE=utf8_unicode_ci"
         )->execute();
 
         try {
