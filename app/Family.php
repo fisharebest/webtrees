@@ -351,7 +351,7 @@ class Family extends GedcomRecord
     public function getAllMarriagePlaces(): array
     {
         foreach (Gedcom::MARRIAGE_EVENTS as $event) {
-            $places = $this->getAllEventPlaces($event);
+            $places = $this->getAllEventPlaces([$event]);
             if (!empty($places)) {
                 return $places;
             }
