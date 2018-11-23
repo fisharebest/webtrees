@@ -161,7 +161,11 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
         ])->fetchAll();
 
         foreach ($favorites as $favorite) {
-            $favorite->record = GedcomRecord::getInstance($favorite->xref, $tree);
+            if ($favorite->xref !== null) {
+                $favorite->record = GedcomRecord::getInstance($favorite->xref, $tree);
+            } else {
+                $favorite->record = null;
+            }
         }
 
         return $favorites;
@@ -181,11 +185,13 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
         $url   = $request->get('url', '');
         $xref  = $request->get('xref', '');
 
+        $record = GedcomRecord::getInstance($xref, $tree);
+
         if (Auth::check()) {
             if ($url !== '') {
                 $this->addUrlFavorite($tree, $user, $url, $title ?: $url, $note);
             } else {
-                $this->addRecordFavorite($tree, $user, $xref, $note);
+                $this->addRecordFavorite($tree, $user, $record, $note);
             }
         }
 
@@ -240,7 +246,7 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
 
         if ($favorite === null) {
             Database::prepare(
-                "INSERT INTO `##favorite` (gedcom_id, user_id, url, note, title) VALUES (:gedcom_id, :user_id, :url, :note, :title)"
+                "INSERT INTO `##favorite` (gedcom_id, favorite_type, user_id, url, note, title) VALUES (:gedcom_id, 'URL', :user_id, :url, :note, :title)"
             )->execute([
                 'gedcom_id' => $tree->id(),
                 'user_id'   => $user->getUserId(),
@@ -260,31 +266,32 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
     }
 
     /**
-     * @param Tree   $tree
-     * @param User   $user
-     * @param string $xref
-     * @param string $note
+     * @param Tree         $tree
+     * @param User         $user
+     * @param GedcomRecord $record
+     * @param string       $note
      *
      * @return void
      */
-    private function addRecordFavorite(Tree $tree, User $user, string $xref, string $note)
+    private function addRecordFavorite(Tree $tree, User $user, GedcomRecord $record, string $note)
     {
         $favorite = Database::prepare(
             "SELECT * FROM `##favorite` WHERE gedcom_id = :gedcom_id AND user_id = :user_id AND xref = :xref"
         )->execute([
             'gedcom_id' => $tree->id(),
             'user_id'   => $user->getUserId(),
-            'xref'      => $xref,
+            'xref'      => $record->xref(),
         ])->fetchOneRow();
 
         if ($favorite === null) {
             Database::prepare(
-                "INSERT INTO `##favorite` (gedcom_id, user_id, xref, note) VALUES (:gedcom_id, :user_id, :xref, :note)"
+                "INSERT INTO `##favorite` (gedcom_id, user_id, favorite_type, xref, note) VALUES (:gedcom_id, :user_id, :favorite_type, :xref, :note)"
             )->execute([
-                'gedcom_id' => $tree->id(),
-                'user_id'   => $user->getUserId(),
-                'xref'      => $xref,
-                'note'      => $note,
+                'gedcom_id'     => $tree->id(),
+                'user_id'       => $user->getUserId(),
+                'favorite_type' => $record::RECORD_TYPE,
+                'xref'          => $record->xref(),
+                'note'          => $note,
             ]);
         } else {
             Database::prepare(
