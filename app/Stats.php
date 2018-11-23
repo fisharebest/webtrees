@@ -1849,7 +1849,7 @@ class Stats
             $top10[] = '<li>';
             foreach ($country as $country_name => $tot) {
                 $tmp     = new Place($country_name, $this->tree);
-                $place   = '<a href="' . $tmp->getURL() . '" class="list_item">' . $all_countries[$country_code] . '</a>';
+                $place   = '<a href="' . e($tmp->url()) . '" class="list_item">' . $all_countries[$country_code] . '</a>';
                 $top10[] .= $place . ' - ' . I18N::number($tot);
             }
             $top10[] .= '</li>';
@@ -1875,7 +1875,7 @@ class Stats
         arsort($places);
         foreach ($places as $place => $count) {
             $tmp     = new Place($place, $this->tree);
-            $place   = '<a href="' . $tmp->getURL() . '" class="list_item">' . $tmp->getFullName() . '</a>';
+            $place   = '<a href="' . e($tmp->url()) . '" class="list_item">' . $tmp->getFullName() . '</a>';
             $top10[] = '<li>' . $place . ' - ' . I18N::number($count) . '</li>';
             if ($i++ == 10) {
                 break;
@@ -1899,7 +1899,7 @@ class Stats
         arsort($places);
         foreach ($places as $place => $count) {
             $tmp     = new Place($place, $this->tree);
-            $place   = '<a href="' . $tmp->getURL() . '" class="list_item">' . $tmp->getFullName() . '</a>';
+            $place   = '<a href="' . e($tmp->url()) . '" class="list_item">' . $tmp->getFullName() . '</a>';
             $top10[] = '<li>' . $place . ' - ' . I18N::number($count) . '</li>';
             if ($i++ == 10) {
                 break;
@@ -1923,7 +1923,7 @@ class Stats
         arsort($places);
         foreach ($places as $place => $count) {
             $tmp     = new Place($place, $this->tree);
-            $place   = '<a href="' . $tmp->getURL() . '" class="list_item">' . $tmp->getFullName() . '</a>';
+            $place   = '<a href="' . e($tmp->url()) . '" class="list_item">' . $tmp->getFullName() . '</a>';
             $top10[] = '<li>' . $place . ' - ' . I18N::number($count) . '</li>';
             if ($i++ == 10) {
                 break;

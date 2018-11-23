@@ -123,12 +123,12 @@ class Place
      *
      * @return string
      */
-    public function getURL(): string
+    public function url(): string
     {
-        return e(route('place-hierarchy', [
+        return route('place-hierarchy', [
             'parent' => array_reverse($this->gedcom_place),
             'ged'    => $this->tree->name(),
-        ]));
+        ]);
     }
 
     /**

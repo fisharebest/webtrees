@@ -14,7 +14,7 @@
 
             <?php foreach ($breadcrumbs as $item) : ?>
                 -
-                <a href="<?= $item->getURL() ?>" dir="auto"><?= $item->getPlaceName() ?></a>
+                <a href="<?= e($item->url()) ?>" dir="auto"><?= $item->getPlaceName() ?></a>
             <?php endforeach ?>
 
             <?php if ($current) : ?>

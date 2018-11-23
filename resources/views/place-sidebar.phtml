@@ -4,7 +4,7 @@
     <div class="d-table-row">
         <div class="d-table-cell label">
             <?php if ($showlink) : ?>
-                <a href="<?= $place->getURL() ?>">
+                <a href="<?= e($place->url()) ?>">
                     <?= $place->getPlaceName() ?>
                 </a>
             <?php else : ?>
