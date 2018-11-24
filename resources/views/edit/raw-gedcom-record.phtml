@@ -29,12 +29,12 @@
         <?php foreach ($record->facts() as $fact) : ?>
             <?php if (!$fact->isPendingDeletion()) : ?>
                 <div class="card my-2">
-                    <label class="card-header py-1 px-2 d-flex" for="fact-<?= e($fact->getFactId()) ?>">
+                    <label class="card-header py-1 px-2 d-flex" for="fact-<?= e($fact->id()) ?>">
                         <?= view('icons/drag-handle') ?>
                         <?= $fact->summary() ?>
                     </label>
-                    <input type="hidden" name="fact_id[]" value="<?= e($fact->getFactId()) ?>">
-                    <textarea class="card-body form-control py-1 px-2" dir="ltr" id="fact-<?= e($fact->getFactId()) ?>" name="fact[]" pattern="<?= e($pattern) ?>" rows="<?= 1 + preg_match_all('/\n/', $fact->gedcom()) ?>"><?= e($fact->gedcom()) ?></textarea>
+                    <input type="hidden" name="fact_id[]" value="<?= e($fact->id()) ?>">
+                    <textarea class="card-body form-control py-1 px-2" dir="ltr" id="fact-<?= e($fact->id()) ?>" name="fact[]" pattern="<?= e($pattern) ?>" rows="<?= 1 + preg_match_all('/\n/', $fact->gedcom()) ?>"><?= e($fact->gedcom()) ?></textarea>
                 </div>
             <?php endif ?>
         <?php endforeach ?>
@@ -43,7 +43,7 @@
             <label class="card-header py-1 px-2" for="fact-add">
                 <?= I18N::translate('Add a fact') ?>
             </label>
-            <input type="hidden" name="fact_id[]" value="<?= e($fact->getFactId()) ?>">
+            <input type="hidden" name="fact_id[]" value="<?= e($fact->id()) ?>">
             <textarea class="card-body form-control py-1 px-2" dir="ltr" id="fact-add" name="fact[]" pattern="<?= e($pattern) ?>" rows="2"></textarea>
         </div>
     </div>

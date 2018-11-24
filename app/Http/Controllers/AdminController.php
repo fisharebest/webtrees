@@ -773,7 +773,7 @@ class AdminController extends AbstractBaseController
 
         foreach ($facts1 as $id1 => $fact1) {
             foreach ($facts2 as $id2 => $fact2) {
-                if ($fact1->id() === $fact2->getFactId()) {
+                if ($fact1->id() === $fact2->id()) {
                     $facts[] = $fact1;
                     unset($facts1[$id1]);
                     unset($facts2[$id2]);
