@@ -85,7 +85,7 @@ class IndividualController extends AbstractBaseController
      */
     public function show(Request $request, Tree $tree): Response
     {
-        $xref       = $request->get('xref');
+        $xref       = $request->get('xref', '');
         $individual = Individual::getInstance($xref, $tree);
 
         $this->checkIndividualAccess($individual, false);
@@ -158,7 +158,7 @@ class IndividualController extends AbstractBaseController
      */
     public function tab(Request $request, Tree $tree): Response
     {
-        $xref   = $request->get('xref');
+        $xref   = $request->get('xref', '');
         $record = Individual::getInstance($xref, $tree);
         $tab    = $request->get('module');
         $tabs   = Module::getActiveTabs($tree);
@@ -190,7 +190,7 @@ class IndividualController extends AbstractBaseController
      */
     public function expandChartBox(Request $request, Tree $tree): Response
     {
-        $xref       = $request->get('xref');
+        $xref       = $request->get('xref', '');
         $individual = Individual::getInstance($xref, $tree);
 
         $this->checkIndividualAccess($individual, false);

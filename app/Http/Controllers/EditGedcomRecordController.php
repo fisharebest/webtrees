@@ -209,7 +209,7 @@ class EditGedcomRecordController extends AbstractEditController
      */
     public function editRawFact(Request $request, Tree $tree): Response
     {
-        $xref    = $request->get('xref');
+        $xref    = $request->get('xref', '');
         $fact_id = $request->get('fact_id');
         $record  = GedcomRecord::getInstance($xref, $tree);
 
@@ -238,7 +238,7 @@ class EditGedcomRecordController extends AbstractEditController
      */
     public function editRawFactAction(Request $request, Tree $tree): Response
     {
-        $xref    = $request->get('xref');
+        $xref    = $request->get('xref', '');
         $fact_id = $request->get('fact_id');
         $gedcom  = $request->get('gedcom');
 
@@ -268,7 +268,7 @@ class EditGedcomRecordController extends AbstractEditController
      */
     public function editRawRecord(Request $request, Tree $tree): Response
     {
-        $xref   = $request->get('xref');
+        $xref   = $request->get('xref', '');
         $record = GedcomRecord::getInstance($xref, $tree);
 
         $this->checkRecordAccess($record, true);
@@ -290,7 +290,7 @@ class EditGedcomRecordController extends AbstractEditController
      */
     public function editRawRecordAction(Request $request, Tree $tree): Response
     {
-        $xref     = $request->get('xref');
+        $xref     = $request->get('xref', '');
         $facts    = (array) $request->get('fact');
         $fact_ids = (array) $request->get('fact_id');
         $record   = GedcomRecord::getInstance($xref, $tree);

@@ -499,7 +499,7 @@ class FunctionsEdit
     {
         // @TODO $xref is no longer set (from edit_interface).
         global $request;
-        $xref = $request->get('xref');
+        $xref = $request->get('xref', '');
 
         // Some form fields need access to previous form fields.
         static $previous_ids = [

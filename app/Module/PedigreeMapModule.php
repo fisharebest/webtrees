@@ -309,7 +309,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
      */
     public function getPedigreeMapAction(Request $request, Tree $tree)
     {
-        $xref           = $request->get('xref');
+        $xref           = $request->get('xref', '');
         $individual     = Individual::getInstance($xref, $tree);
         $maxgenerations = $tree->getPreference('MAX_PEDIGREE_GENERATIONS');
         $generations    = $request->get('generations', $tree->getPreference('DEFAULT_PEDIGREE_GENERATIONS'));
