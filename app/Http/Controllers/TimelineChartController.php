@@ -65,21 +65,22 @@ class TimelineChartController extends AbstractChartController
         $scale = max($scale, self::SCALE_MIN);
 
         $xrefs = (array) $request->get('xrefs', []);
-        $xrefs = array_unique($xrefs);
-        $xrefs = array_filter($xrefs, function (string $xref) use ($tree): bool {
-            $individual = Individual::getInstance($xref, $tree);
 
-            return $individual !== null && $individual->canShow();
+        // Find the requested individuals.
+        $individuals = array_map(function (string $xref) use ($tree) {
+            return Individual::getInstance($xref, $tree);
+        }, $xrefs);
+
+        $individuals = array_filter($individuals, function(Individual $individual = null) {
+            return $individual instanceof Individual && $individual->canShow();
         });
 
         // Generate URLs omitting each xref.
         $remove_urls = [];
-        foreach ($xrefs as $xref) {
-            $tmp = array_filter($xrefs, function ($x) use ($xref): bool {
-                return $x !== $xref;
-            });
+        foreach ($individuals as $individual) {
+            $tmp = $this->allXrefsExceptOne($individual, $individuals);
 
-            $remove_urls[$xref] = route('timeline', [
+            $remove_urls[$individual->xref()] = route('timeline', [
                 'ged'   => $tree->name(),
                 'scale' => $scale,
                 'xrefs' => $tmp,
@@ -223,5 +224,27 @@ class TimelineChartController extends AbstractChartController
         ]);
 
         return new Response($html);
+    }
+
+    /**
+     * Take a list of individuals, and generate a list of XREFs that includes all
+     * except a specified one.
+     *
+     * @param Individual   $individual
+     * @param Individual[] $individuals
+     *
+     * @return array
+     */
+    private function allXrefsExceptOne(Individual $individual, array $individuals): array
+    {
+        $xrefs = array_map(function (Individual $individual) {
+            return $individual->xref();
+        }, $individuals);
+
+        $xrefs = array_filter($xrefs, function(string $xref) use ($individual) {
+            return $xref !== $individual->xref();
+        });
+
+        return $xrefs;
     }
 }
