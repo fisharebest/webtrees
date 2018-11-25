@@ -71,7 +71,7 @@ class TimelineChartController extends AbstractChartController
             return Individual::getInstance($xref, $tree);
         }, $xrefs);
 
-        $individuals = array_filter($individuals, function(Individual $individual = null) {
+        $individuals = array_filter($individuals, function (Individual $individual = null) {
             return $individual instanceof Individual && $individual->canShow();
         });
 
@@ -241,7 +241,7 @@ class TimelineChartController extends AbstractChartController
             return $individual->xref();
         }, $individuals);
 
-        $xrefs = array_filter($xrefs, function(string $xref) use ($individual) {
+        $xrefs = array_filter($xrefs, function (string $xref) use ($individual) {
             return $xref !== $individual->xref();
         });
 
