@@ -180,17 +180,20 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
      */
     public function postAddFavoriteAction(Request $request, Tree $tree, User $user): RedirectResponse
     {
-        $note  = $request->get('note', '');
-        $title = $request->get('title', '');
-        $url   = $request->get('url', '');
-        $xref  = $request->get('xref', '');
+        $note         = $request->get('note', '');
+        $title        = $request->get('title', '');
+        $url          = $request->get('url', '');
+        $xref         = $request->get('xref', '');
+        $fav_category = $request->get('fav_category', '');
 
         $record = GedcomRecord::getInstance($xref, $tree);
 
         if (Auth::check()) {
-            if ($url !== '') {
+            if ($fav_category === 'url' && $url !== '') {
                 $this->addUrlFavorite($tree, $user, $url, $title ?: $url, $note);
-            } else {
+            }
+
+            if ($fav_category === 'record' && $record instanceof GedcomRecord && $record->canShow()) {
                 $this->addRecordFavorite($tree, $user, $record, $note);
             }
         }
