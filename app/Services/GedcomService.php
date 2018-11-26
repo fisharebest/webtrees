@@ -206,7 +206,7 @@ class GedcomService
     {
         $tag = strtoupper($tag);
 
-        $tag = self::TAG_NAMES[$tag] ?? $tag;
+        $tag = self::TAG_NAMES[$tag] ?? self::TAG_SYNONYMS[$tag] ?? $tag;
 
         return $tag;
     }
@@ -218,7 +218,7 @@ class GedcomService
      */
     public function isUserDefinedTag(string $tag): bool
     {
-        return substr($tag, 0, 1) === self::USER_DEFINED_TAG_PREFIX;
+        return substr_compare($tag, self::USER_DEFINED_TAG_PREFIX0, 0, 1) === 0;
     }
 
     /**
