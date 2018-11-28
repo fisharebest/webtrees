@@ -37,10 +37,6 @@ $controller = new AjaxController;
 $controller
 	->pageHeader();
 
-// Don't allow the user to cancel the request. We do not want to be left
-// with an incomplete transaction.
-ignore_user_abort(true);
-
 // Run in a transaction
 Database::beginTransaction();
 
