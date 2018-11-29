@@ -1,6 +1,7 @@
 <?php use Fisharebest\Webtrees\Auth; ?>
 <?php use Fisharebest\Webtrees\Bootstrap4; ?>
 <?php use Fisharebest\Webtrees\Functions\FunctionsEdit; ?>
+<?php use Fisharebest\Webtrees\Functions\FunctionsPrint; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 <?php use Fisharebest\Webtrees\Individual; ?>
 <?php use Fisharebest\Webtrees\View; ?>
@@ -285,6 +286,7 @@
                 </th>
                 <th>
                     <?= I18N::translate('Restrict to immediate family') ?>
+                    <?= FunctionsPrint::helpLink('relationship-privacy') ?>
                 </th>
             </tr>
             <tr>
@@ -298,11 +300,6 @@
                     </p>
                 </td>
                 <td>
-                    <p class="small text-muted">
-                        <?= I18N::translate('Where a user is associated to an individual record in a family tree and has a role of member, editor, or moderator, you can prevent them from accessing the details of distant, living relations. You specify the number of relationship steps that the user is allowed to see.') ?>
-                        <?= I18N::translate('For example, if you specify a path length of 2, the individual will be able to see their grandson (child, child), their aunt (parent, sibling), their step-daughter (spouse, child), but not their first cousin (parent, sibling, child).') ?>
-                        <?= I18N::translate('Note: longer path lengths require a lot of calculation, which can make your website run slowly for these users.') ?>
-                    </p>
                 </td>
             </tr>
         </thead>
@@ -347,6 +344,8 @@
         </div>
     </div>
 </form>
+
+<?= view('modals/ajax') ?>
 
 <?php View::push('javascript') ?>
 <script>

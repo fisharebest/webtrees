@@ -248,6 +248,11 @@ class HelpTextController extends AbstractBaseController
                 ]);
                 break;
 
+            case 'relationship-privacy':
+                $title = I18N::translate('Restrict to immediate family');
+                $text  = view('help/relationship-privacy');
+                break;
+
             default:
                 $title = I18N::translate('Help');
                 $text  = I18N::translate('The help text has not been written for this item.');

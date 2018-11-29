@@ -1,0 +1,13 @@
+<?php use Fisharebest\Webtrees\I18N; ?>
+
+<p>
+    <?= I18N::translate('Where a user is associated to an individual record in a family tree and has a role of member, editor, or moderator, you can prevent them from accessing the details of distant, living relations. You specify the number of relationship steps that the user is allowed to see.') ?>
+</p>
+
+<p>
+<?= I18N::translate('For example, if you specify a path length of 2, the individual will be able to see their grandson (child, child), their aunt (parent, sibling), their step-daughter (spouse, child), but not their first cousin (parent, sibling, child).') ?>
+</p>
+
+<p>
+<?= I18N::translate('Note: longer path lengths require a lot of calculation, which can make your website run slowly for these users.') ?>
+</p>
