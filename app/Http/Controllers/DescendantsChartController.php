@@ -107,6 +107,8 @@ class DescendantsChartController extends AbstractChartController
      */
     public function chart(Request $request, Tree $tree): Response
     {
+        $this->layout = 'layouts/ajax';
+
         $this->checkModuleIsActive($tree, 'descendancy_chart');
 
         $xref       = $request->get('xref', '');
@@ -320,13 +322,13 @@ class DescendantsChartController extends AbstractChartController
      */
     private function descendantsIndividuals(Tree $tree, array $descendants): Response
     {
-        $html = view('lists/individuals-table', [
+        $this->layout = 'layouts/ajax';
+
+        return $this->viewResponse('lists/individuals-table', [
             'individuals' => $descendants,
             'sosa'        => false,
             'tree'        => $tree,
         ]);
-
-        return new Response($html);
     }
 
     /**
@@ -339,6 +341,8 @@ class DescendantsChartController extends AbstractChartController
      */
     private function descendantsFamilies(Tree $tree, array $descendants): Response
     {
+        $this->layout = 'layouts/ajax';
+
         $families = [];
         foreach ($descendants as $individual) {
             foreach ($individual->getChildFamilies() as $family) {
@@ -346,12 +350,10 @@ class DescendantsChartController extends AbstractChartController
             }
         }
 
-        $html = view('lists/families-table', [
+        return $this->viewResponse('lists/families-table', [
             'families' => $families,
             'tree'     => $tree,
         ]);
-
-        return new Response($html);
     }
 
     /**
