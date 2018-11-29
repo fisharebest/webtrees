@@ -957,11 +957,6 @@ table {
 	float: left;
 }
 
-.small_inner_block {
-	max-height: 200px;
-	overflow: auto;
-}
-
 .block {
 	background-color: #fff;
 	color: #555;
