@@ -19,8 +19,8 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
-use Fisharebest\Webtrees\Tree;
 
 /**
  * Class RelatedIndividualsReportModule
@@ -45,7 +45,6 @@ class RelatedIndividualsReportModule extends AbstractModule implements ModuleRep
 
     /**
      * What is the default access level for this module?
-     *
      * Some modules are aimed at admins or managers, and are not generally shown to users.
      *
      * @return int
@@ -58,16 +57,18 @@ class RelatedIndividualsReportModule extends AbstractModule implements ModuleRep
     /**
      * Return a menu item for this report.
      *
-     * @param Tree $tree
+     * @param Individual $individual
      *
      * @return Menu
      */
-    public function getReportMenu(Tree $tree): Menu
+    public function getReportMenu(Individual $individual): Menu
     {
         return new Menu(
             $this->getTitle(),
-            route('report-setup', ['ged'    => $tree->name(),
-                                   'report' => $this->getName(),
+            route('report-setup', [
+                'xref'   => $individual->xref(),
+                'ged'    => $individual->tree()->name(),
+                'report' => $this->getName(),
             ]),
             'menu-report-' . $this->getName(),
             ['rel' => 'nofollow']

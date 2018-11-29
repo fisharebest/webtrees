@@ -1530,13 +1530,15 @@ abstract class AbstractTheme
     /**
      * A menu with a list of reports.
      *
+     * @param Individual $individual
+     *
      * @return Menu|null
      */
-    public function menuReports()
+    public function menuReports(Individual $individual)
     {
         $submenus = [];
         foreach (Module::getActiveReports($this->tree) as $report) {
-            $submenus[] = $report->getReportMenu($this->tree);
+            $submenus[] = $report->getReportMenu($individual);
         }
 
         if (empty($submenus)) {
@@ -1811,7 +1813,7 @@ abstract class AbstractTheme
             $this->menuChart($individual),
             $this->menuLists($surname),
             $this->menuCalendar(),
-            $this->menuReports(),
+            $this->menuReports($individual),
             $this->menuSearch(),
         ], $this->menuModules()));
     }

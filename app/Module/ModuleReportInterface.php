@@ -17,8 +17,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
-use Fisharebest\Webtrees\Tree;
 
 /**
  * Interface ModuleReportInterface - Classes and libraries for module system
@@ -28,9 +28,9 @@ interface ModuleReportInterface extends ModuleInterface
     /**
      * Return a menu item for this report.
      *
-     * @param Tree $tree
+     * @param Individual $individual
      *
      * @return Menu
      */
-    public function getReportMenu(Tree $tree): Menu;
+    public function getReportMenu(Individual $individual): Menu;
 }
