@@ -30,12 +30,15 @@ class ConfigDataCollector extends DataCollector implements LateDataCollectorInte
     private $version;
     private $hasVarDumper;
 
-    /**
-     * @param string $name    The name of the application using the web profiler
-     * @param string $version The version of the application using the web profiler
-     */
-    public function __construct($name = null, $version = null)
+    public function __construct(string $name = null, string $version = null)
     {
+        if (1 <= \func_num_args()) {
+            @trigger_error(sprintf('The "$name" argument in method "%s()" is deprecated since Symfony 4.2.', __METHOD__), E_USER_DEPRECATED);
+        }
+        if (2 <= \func_num_args()) {
+            @trigger_error(sprintf('The "$version" argument in method "%s()" is deprecated since Symfony 4.2.', __METHOD__), E_USER_DEPRECATED);
+        }
+
         $this->name = $name;
         $this->version = $version;
         $this->hasVarDumper = class_exists(LinkStub::class);
@@ -60,7 +63,6 @@ class ConfigDataCollector extends DataCollector implements LateDataCollectorInte
             'token' => $response->headers->get('X-Debug-Token'),
             'symfony_version' => Kernel::VERSION,
             'symfony_state' => 'unknown',
-            'name' => isset($this->kernel) ? $this->kernel->getName() : 'n/a',
             'env' => isset($this->kernel) ? $this->kernel->getEnvironment() : 'n/a',
             'debug' => isset($this->kernel) ? $this->kernel->isDebug() : 'n/a',
             'php_version' => PHP_VERSION,
@@ -106,13 +108,23 @@ class ConfigDataCollector extends DataCollector implements LateDataCollectorInte
         $this->data = $this->cloneVar($this->data);
     }
 
+    /**
+     * @deprecated since Symfony 4.2
+     */
     public function getApplicationName()
     {
+        @trigger_error(sprintf('The method "%s()" is deprecated since Symfony 4.2.', __METHOD__), E_USER_DEPRECATED);
+
         return $this->data['app_name'];
     }
 
+    /**
+     * @deprecated since Symfony 4.2
+     */
     public function getApplicationVersion()
     {
+        @trigger_error(sprintf('The method "%s()" is deprecated since Symfony 4.2.', __METHOD__), E_USER_DEPRECATED);
+
         return $this->data['app_version'];
     }
 
@@ -227,10 +239,14 @@ class ConfigDataCollector extends DataCollector implements LateDataCollectorInte
      * Gets the application name.
      *
      * @return string The application name
+     *
+     * @deprecated since Symfony 4.2
      */
     public function getAppName()
     {
-        return $this->data['name'];
+        @trigger_error(sprintf('The "%s()" method is deprecated since Symfony 4.2.', __METHOD__), E_USER_DEPRECATED);
+
+        return 'n/a';
     }
 
     /**

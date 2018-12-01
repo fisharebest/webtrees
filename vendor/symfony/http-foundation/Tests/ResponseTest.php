@@ -11,6 +11,7 @@
 
 namespace Symfony\Component\HttpFoundation\Tests;
 
+use Symfony\Component\HttpFoundation\Cookie;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -305,7 +306,7 @@ class ResponseTest extends ResponseTestCase
         $response = new Response();
         $response->headers->set('Cache-Control', 'must-revalidate');
         $response->headers->set('Expires', -1);
-        $this->assertEquals('Sat, 01 Jan 00 00:00:00 +0000', $response->getExpires()->format(DATE_RFC822));
+        $this->assertLessThanOrEqual(time() - 2 * 86400, $response->getExpires()->format('U'));
 
         $response = new Response();
         $this->assertNull($response->getMaxAge(), '->getMaxAge() returns null if no freshness information available');
@@ -573,6 +574,24 @@ class ResponseTest extends ResponseTestCase
         $this->assertFalse($response->headers->has('expires'));
     }
 
+    public function testPrepareSetsCookiesSecure()
+    {
+        $cookie = Cookie::create('foo', 'bar');
+
+        $response = new Response('foo');
+        $response->headers->setCookie($cookie);
+
+        $request = Request::create('/', 'GET');
+        $response->prepare($request);
+
+        $this->assertFalse($cookie->isSecure());
+
+        $request = Request::create('https://localhost/', 'GET');
+        $response->prepare($request);
+
+        $this->assertTrue($cookie->isSecure());
+    }
+
     public function testSetCache()
     {
         $response = new Response();
@@ -663,6 +682,22 @@ class ResponseTest extends ResponseTestCase
         $this->assertTrue($response->isImmutable());
     }
 
+    public function testSetDate()
+    {
+        $response = new Response();
+        $response->setDate(\DateTime::createFromFormat(\DateTime::ATOM, '2013-01-26T09:21:56+0100', new \DateTimeZone('Europe/Berlin')));
+
+        $this->assertEquals('2013-01-26T08:21:56+00:00', $response->getDate()->format(\DateTime::ATOM));
+    }
+
+    public function testSetDateWithImmutable()
+    {
+        $response = new Response();
+        $response->setDate(\DateTimeImmutable::createFromFormat(\DateTime::ATOM, '2013-01-26T09:21:56+0100', new \DateTimeZone('Europe/Berlin')));
+
+        $this->assertEquals('2013-01-26T08:21:56+00:00', $response->getDate()->format(\DateTime::ATOM));
+    }
+
     public function testSetExpires()
     {
         $response = new Response();
@@ -676,10 +711,30 @@ class ResponseTest extends ResponseTestCase
         $this->assertEquals($response->getExpires()->getTimestamp(), $now->getTimestamp());
     }
 
+    public function testSetExpiresWithImmutable()
+    {
+        $response = new Response();
+
+        $now = $this->createDateTimeImmutableNow();
+        $response->setExpires($now);
+
+        $this->assertEquals($response->getExpires()->getTimestamp(), $now->getTimestamp());
+    }
+
     public function testSetLastModified()
     {
         $response = new Response();
         $response->setLastModified($this->createDateTimeNow());
+        $this->assertNotNull($response->getLastModified());
+
+        $response->setLastModified(null);
+        $this->assertNull($response->getLastModified());
+    }
+
+    public function testSetLastModifiedWithImmutable()
+    {
+        $response = new Response();
+        $response->setLastModified($this->createDateTimeImmutableNow());
         $this->assertNotNull($response->getLastModified());
 
         $response->setLastModified(null);
@@ -922,6 +977,13 @@ class ResponseTest extends ResponseTestCase
         return $date->setTimestamp(time());
     }
 
+    protected function createDateTimeImmutableNow()
+    {
+        $date = new \DateTimeImmutable();
+
+        return $date->setTimestamp(time());
+    }
+
     protected function provideResponse()
     {
         return new Response();
@@ -999,15 +1061,4 @@ class StringableObject
 
 class DefaultResponse extends Response
 {
-}
-
-class ExtendedResponse extends Response
-{
-    public function setLastModified(\DateTime $date = null)
-    {
-    }
-
-    public function getDate()
-    {
-    }
 }

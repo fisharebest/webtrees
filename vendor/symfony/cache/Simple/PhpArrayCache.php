@@ -32,17 +32,14 @@ class PhpArrayCache implements CacheInterface, PruneableInterface, ResettableInt
      * @param string         $file         The PHP file were values are cached
      * @param CacheInterface $fallbackPool A pool to fallback on when an item is not hit
      */
-    public function __construct($file, CacheInterface $fallbackPool)
+    public function __construct(string $file, CacheInterface $fallbackPool)
     {
         $this->file = $file;
         $this->pool = $fallbackPool;
-        $this->zendDetectUnicode = ini_get('zend.detect_unicode');
     }
 
     /**
-     * This adapter should only be used on PHP 7.0+ to take advantage of how PHP
-     * stores arrays in its latest versions. This factory method decorates the given
-     * fallback pool with this adapter only if the current PHP version is supported.
+     * This adapter takes advantage of how PHP stores arrays in its latest versions.
      *
      * @param string $file The PHP file were values are cached
      *
@@ -50,8 +47,8 @@ class PhpArrayCache implements CacheInterface, PruneableInterface, ResettableInt
      */
     public static function create($file, CacheInterface $fallbackPool)
     {
-        // Shared memory is available in PHP 7.0+ with OPCache enabled and in HHVM
-        if ((\PHP_VERSION_ID >= 70000 && ini_get('opcache.enable')) || \defined('HHVM_VERSION')) {
+        // Shared memory is available in PHP 7.0+ with OPCache enabled
+        if (filter_var(ini_get('opcache.enable'), FILTER_VALIDATE_BOOLEAN)) {
             return new static($file, $fallbackPool);
         }
 
@@ -69,22 +66,18 @@ class PhpArrayCache implements CacheInterface, PruneableInterface, ResettableInt
         if (null === $this->values) {
             $this->initialize();
         }
-        if (!isset($this->values[$key])) {
+        if (!isset($this->keys[$key])) {
             return $this->pool->get($key, $default);
         }
-
-        $value = $this->values[$key];
+        $value = $this->values[$this->keys[$key]];
 
         if ('N;' === $value) {
-            $value = null;
-        } elseif (\is_string($value) && isset($value[2]) && ':' === $value[1]) {
+            return null;
+        }
+        if ($value instanceof \Closure) {
             try {
-                $e = null;
-                $value = unserialize($value);
-            } catch (\Error $e) {
-            } catch (\Exception $e) {
-            }
-            if (null !== $e) {
+                return $value();
+            } catch (\Throwable $e) {
                 return $default;
             }
         }
@@ -126,7 +119,7 @@ class PhpArrayCache implements CacheInterface, PruneableInterface, ResettableInt
             $this->initialize();
         }
 
-        return isset($this->values[$key]) || $this->pool->has($key);
+        return isset($this->keys[$key]) || $this->pool->has($key);
     }
 
     /**
@@ -141,7 +134,7 @@ class PhpArrayCache implements CacheInterface, PruneableInterface, ResettableInt
             $this->initialize();
         }
 
-        return !isset($this->values[$key]) && $this->pool->delete($key);
+        return !isset($this->keys[$key]) && $this->pool->delete($key);
     }
 
     /**
@@ -161,7 +154,7 @@ class PhpArrayCache implements CacheInterface, PruneableInterface, ResettableInt
                 throw new InvalidArgumentException(sprintf('Cache key must be string, "%s" given.', \is_object($key) ? \get_class($key) : \gettype($key)));
             }
 
-            if (isset($this->values[$key])) {
+            if (isset($this->keys[$key])) {
                 $deleted = false;
             } else {
                 $fallbackKeys[] = $key;
@@ -190,7 +183,7 @@ class PhpArrayCache implements CacheInterface, PruneableInterface, ResettableInt
             $this->initialize();
         }
 
-        return !isset($this->values[$key]) && $this->pool->set($key, $value, $ttl);
+        return !isset($this->keys[$key]) && $this->pool->set($key, $value, $ttl);
     }
 
     /**
@@ -210,7 +203,7 @@ class PhpArrayCache implements CacheInterface, PruneableInterface, ResettableInt
                 throw new InvalidArgumentException(sprintf('Cache key must be string, "%s" given.', \is_object($key) ? \get_class($key) : \gettype($key)));
             }
 
-            if (isset($this->values[$key])) {
+            if (isset($this->keys[$key])) {
                 $saved = false;
             } else {
                 $fallbackValues[$key] = $value;
@@ -229,17 +222,15 @@ class PhpArrayCache implements CacheInterface, PruneableInterface, ResettableInt
         $fallbackKeys = array();
 
         foreach ($keys as $key) {
-            if (isset($this->values[$key])) {
-                $value = $this->values[$key];
+            if (isset($this->keys[$key])) {
+                $value = $this->values[$this->keys[$key]];
 
                 if ('N;' === $value) {
                     yield $key => null;
-                } elseif (\is_string($value) && isset($value[2]) && ':' === $value[1]) {
+                } elseif ($value instanceof \Closure) {
                     try {
-                        yield $key => unserialize($value);
-                    } catch (\Error $e) {
-                        yield $key => $default;
-                    } catch (\Exception $e) {
+                        yield $key => $value();
+                    } catch (\Throwable $e) {
                         yield $key => $default;
                     }
                 } else {
@@ -251,9 +242,7 @@ class PhpArrayCache implements CacheInterface, PruneableInterface, ResettableInt
         }
 
         if ($fallbackKeys) {
-            foreach ($this->pool->getMultiple($fallbackKeys, $default) as $key => $item) {
-                yield $key => $item;
-            }
+            yield from $this->pool->getMultiple($fallbackKeys, $default);
         }
     }
 }

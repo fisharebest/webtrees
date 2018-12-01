@@ -36,7 +36,7 @@ class ExceptionHandler
     private $caughtLength;
     private $fileLinkFormat;
 
-    public function __construct($debug = true, $charset = null, $fileLinkFormat = null)
+    public function __construct(bool $debug = true, string $charset = null, $fileLinkFormat = null)
     {
         $this->debug = $debug;
         $this->charset = $charset ?: ini_get('default_charset') ?: 'UTF-8';
@@ -253,7 +253,8 @@ EOF
         } catch (\Exception $e) {
             // something nasty happened and we cannot throw an exception anymore
             if ($this->debug) {
-                $title = sprintf('Exception thrown when handling an exception (%s: %s)', \get_class($e), $this->escapeHtml($e->getMessage()));
+                $e = FlattenException::create($e);
+                $title = sprintf('Exception thrown when handling an exception (%s: %s)', $e->getClass(), $this->escapeHtml($e->getMessage()));
             } else {
                 $title = 'Whoops, looks like something went wrong.';
             }

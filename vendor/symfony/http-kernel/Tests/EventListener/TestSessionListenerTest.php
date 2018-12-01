@@ -12,7 +12,6 @@
 namespace Symfony\Component\HttpKernel\Tests\EventListener;
 
 use PHPUnit\Framework\TestCase;
-use Symfony\Component\DependencyInjection\ServiceSubscriberInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -144,13 +143,14 @@ class TestSessionListenerTest extends TestCase
         $this->filterResponse(new Request());
     }
 
-    public function testDoesNotImplementServiceSubscriberInterface()
+    public function testDoesNotThrowIfRequestDoesNotHaveASession()
     {
-        $this->assertTrue(interface_exists(ServiceSubscriberInterface::class));
-        $this->assertTrue(class_exists(SessionListener::class));
-        $this->assertTrue(class_exists(TestSessionListener::class));
-        $this->assertFalse(is_subclass_of(SessionListener::class, ServiceSubscriberInterface::class), 'Implementing ServiceSubscriberInterface would create a dep on the DI component, which eg Silex cannot afford');
-        $this->assertFalse(is_subclass_of(TestSessionListener::class, ServiceSubscriberInterface::class, 'Implementing ServiceSubscriberInterface would create a dep on the DI component, which eg Silex cannot afford'));
+        $kernel = $this->getMockBuilder('Symfony\Component\HttpKernel\HttpKernelInterface')->getMock();
+        $event = new FilterResponseEvent($kernel, new Request(), HttpKernelInterface::MASTER_REQUEST, new Response());
+
+        $this->listener->onKernelResponse($event);
+
+        $this->assertTrue(true);
     }
 
     private function filterResponse(Request $request, $type = HttpKernelInterface::MASTER_REQUEST, Response $response = null)

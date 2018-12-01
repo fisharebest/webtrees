@@ -15,6 +15,7 @@ use Psr\SimpleCache\CacheInterface;
 use Symfony\Component\Cache\Exception\InvalidArgumentException;
 use Symfony\Component\Cache\PruneableInterface;
 use Symfony\Component\Cache\ResettableInterface;
+use Symfony\Contracts\Service\ResetInterface;
 
 /**
  * Chains several caches together.
@@ -35,7 +36,7 @@ class ChainCache implements CacheInterface, PruneableInterface, ResettableInterf
      * @param CacheInterface[] $caches          The ordered list of caches used to fetch cached items
      * @param int              $defaultLifetime The lifetime of items propagated from lower caches to upper ones
      */
-    public function __construct(array $caches, $defaultLifetime = 0)
+    public function __construct(array $caches, int $defaultLifetime = 0)
     {
         if (!$caches) {
             throw new InvalidArgumentException('At least one cache must be specified.');
@@ -50,7 +51,7 @@ class ChainCache implements CacheInterface, PruneableInterface, ResettableInterf
         $this->miss = new \stdClass();
         $this->caches = array_values($caches);
         $this->cacheCount = \count($this->caches);
-        $this->defaultLifetime = 0 < $defaultLifetime ? (int) $defaultLifetime : null;
+        $this->defaultLifetime = 0 < $defaultLifetime ? $defaultLifetime : null;
     }
 
     /**
@@ -244,7 +245,7 @@ class ChainCache implements CacheInterface, PruneableInterface, ResettableInterf
     public function reset()
     {
         foreach ($this->caches as $cache) {
-            if ($cache instanceof ResettableInterface) {
+            if ($cache instanceof ResetInterface) {
                 $cache->reset();
             }
         }

@@ -16,25 +16,31 @@ namespace Symfony\Component\HttpKernel\CacheWarmer;
  *
  * @author Fabien Potencier <fabien@symfony.com>
  *
- * @final since version 3.4
+ * @final
  */
 class CacheWarmerAggregate implements CacheWarmerInterface
 {
-    protected $warmers = array();
-    protected $optionalsEnabled = false;
-    private $triggerDeprecation = false;
+    private $warmers;
+    private $debug;
+    private $deprecationLogsFilepath;
+    private $optionalsEnabled = false;
+    private $onlyOptionalsEnabled = false;
 
-    public function __construct($warmers = array())
+    public function __construct(iterable $warmers = array(), bool $debug = false, string $deprecationLogsFilepath = null)
     {
-        foreach ($warmers as $warmer) {
-            $this->add($warmer);
-        }
-        $this->triggerDeprecation = true;
+        $this->warmers = $warmers;
+        $this->debug = $debug;
+        $this->deprecationLogsFilepath = $deprecationLogsFilepath;
     }
 
     public function enableOptionalWarmers()
     {
         $this->optionalsEnabled = true;
+    }
+
+    public function enableOnlyOptionalWarmers()
+    {
+        $this->onlyOptionalsEnabled = $this->optionalsEnabled = true;
     }
 
     /**
@@ -44,12 +50,62 @@ class CacheWarmerAggregate implements CacheWarmerInterface
      */
     public function warmUp($cacheDir)
     {
-        foreach ($this->warmers as $warmer) {
-            if (!$this->optionalsEnabled && $warmer->isOptional()) {
-                continue;
-            }
+        if ($this->debug) {
+            $collectedLogs = array();
+            $previousHandler = \defined('PHPUNIT_COMPOSER_INSTALL');
+            $previousHandler = $previousHandler ?: set_error_handler(function ($type, $message, $file, $line) use (&$collectedLogs, &$previousHandler) {
+                if (E_USER_DEPRECATED !== $type && E_DEPRECATED !== $type) {
+                    return $previousHandler ? $previousHandler($type, $message, $file, $line) : false;
+                }
 
-            $warmer->warmUp($cacheDir);
+                if (isset($collectedLogs[$message])) {
+                    ++$collectedLogs[$message]['count'];
+
+                    return;
+                }
+
+                $backtrace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 3);
+                // Clean the trace by removing first frames added by the error handler itself.
+                for ($i = 0; isset($backtrace[$i]); ++$i) {
+                    if (isset($backtrace[$i]['file'], $backtrace[$i]['line']) && $backtrace[$i]['line'] === $line && $backtrace[$i]['file'] === $file) {
+                        $backtrace = \array_slice($backtrace, 1 + $i);
+                        break;
+                    }
+                }
+
+                $collectedLogs[$message] = array(
+                    'type' => $type,
+                    'message' => $message,
+                    'file' => $file,
+                    'line' => $line,
+                    'trace' => $backtrace,
+                    'count' => 1,
+                );
+            });
+        }
+
+        try {
+            foreach ($this->warmers as $warmer) {
+                if (!$this->optionalsEnabled && $warmer->isOptional()) {
+                    continue;
+                }
+                if ($this->onlyOptionalsEnabled && !$warmer->isOptional()) {
+                    continue;
+                }
+
+                $warmer->warmUp($cacheDir);
+            }
+        } finally {
+            if ($this->debug && true !== $previousHandler) {
+                restore_error_handler();
+
+                if (file_exists($this->deprecationLogsFilepath)) {
+                    $previousLogs = unserialize(file_get_contents($this->deprecationLogsFilepath));
+                    $collectedLogs = array_merge($previousLogs, $collectedLogs);
+                }
+
+                file_put_contents($this->deprecationLogsFilepath, serialize(array_values($collectedLogs)));
+            }
         }
     }
 
@@ -61,30 +117,5 @@ class CacheWarmerAggregate implements CacheWarmerInterface
     public function isOptional()
     {
         return false;
-    }
-
-    /**
-     * @deprecated since version 3.4, to be removed in 4.0, inject the list of clearers as a constructor argument instead.
-     */
-    public function setWarmers(array $warmers)
-    {
-        @trigger_error(sprintf('The "%s()" method is deprecated since Symfony 3.4 and will be removed in 4.0, inject the list of clearers as a constructor argument instead.', __METHOD__), E_USER_DEPRECATED);
-
-        $this->warmers = array();
-        foreach ($warmers as $warmer) {
-            $this->add($warmer);
-        }
-    }
-
-    /**
-     * @deprecated since version 3.4, to be removed in 4.0, inject the list of clearers as a constructor argument instead.
-     */
-    public function add(CacheWarmerInterface $warmer)
-    {
-        if ($this->triggerDeprecation) {
-            @trigger_error(sprintf('The "%s()" method is deprecated since Symfony 3.4 and will be removed in 4.0, inject the list of clearers as a constructor argument instead.', __METHOD__), E_USER_DEPRECATED);
-        }
-
-        $this->warmers[] = $warmer;
     }
 }

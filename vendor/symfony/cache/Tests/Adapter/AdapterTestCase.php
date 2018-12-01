@@ -13,6 +13,7 @@ namespace Symfony\Component\Cache\Tests\Adapter;
 
 use Cache\IntegrationTests\CachePoolTest;
 use Psr\Cache\CacheItemPoolInterface;
+use Symfony\Component\Cache\CacheItem;
 use Symfony\Component\Cache\PruneableInterface;
 
 abstract class AdapterTestCase extends CachePoolTest
@@ -21,13 +22,65 @@ abstract class AdapterTestCase extends CachePoolTest
     {
         parent::setUp();
 
-        if (!array_key_exists('testDeferredSaveWithoutCommit', $this->skippedTests) && \defined('HHVM_VERSION')) {
-            $this->skippedTests['testDeferredSaveWithoutCommit'] = 'Destructors are called late on HHVM.';
-        }
-
         if (!array_key_exists('testPrune', $this->skippedTests) && !$this->createCachePool() instanceof PruneableInterface) {
             $this->skippedTests['testPrune'] = 'Not a pruneable cache pool.';
         }
+    }
+
+    public function testGet()
+    {
+        if (isset($this->skippedTests[__FUNCTION__])) {
+            $this->markTestSkipped($this->skippedTests[__FUNCTION__]);
+        }
+
+        $cache = $this->createCachePool();
+
+        $value = mt_rand();
+
+        $this->assertSame($value, $cache->get('foo', function (CacheItem $item) use ($value) {
+            $this->assertSame('foo', $item->getKey());
+
+            return $value;
+        }));
+
+        $item = $cache->getItem('foo');
+        $this->assertSame($value, $item->get());
+
+        $isHit = true;
+        $this->assertSame($value, $cache->get('foo', function (CacheItem $item) use (&$isHit) { $isHit = false; }, 0));
+        $this->assertTrue($isHit);
+
+        $this->assertNull($cache->get('foo', function (CacheItem $item) use (&$isHit, $value) {
+            $isHit = false;
+            $this->assertTrue($item->isHit());
+            $this->assertSame($value, $item->get());
+        }, INF));
+        $this->assertFalse($isHit);
+    }
+
+    public function testGetMetadata()
+    {
+        if (isset($this->skippedTests[__FUNCTION__])) {
+            $this->markTestSkipped($this->skippedTests[__FUNCTION__]);
+        }
+
+        $cache = $this->createCachePool(0, __FUNCTION__);
+
+        $cache->deleteItem('foo');
+        $cache->get('foo', function ($item) {
+            $item->expiresAfter(10);
+            sleep(1);
+
+            return 'bar';
+        });
+
+        $item = $cache->getItem('foo');
+
+        $expected = array(
+            CacheItem::METADATA_EXPIRY => 9.5 + time(),
+            CacheItem::METADATA_CTIME => 1000,
+        );
+        $this->assertEquals($expected, $item->getMetadata(), 'Item metadata should embed expiry and ctime.', .6);
     }
 
     public function testDefaultLifeTime()

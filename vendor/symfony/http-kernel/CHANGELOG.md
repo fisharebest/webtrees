@@ -1,6 +1,48 @@
 CHANGELOG
 =========
 
+4.2.0
+-----
+
+ * deprecated `KernelInterface::getRootDir()` and the `kernel.root_dir` parameter
+ * deprecated `KernelInterface::getName()` and the `kernel.name` parameter
+ * deprecated the first and second constructor argument of `ConfigDataCollector` 
+ * deprecated `ConfigDataCollector::getApplicationName()` 
+ * deprecated `ConfigDataCollector::getApplicationVersion()`
+
+4.1.0
+-----
+
+ * added orphaned events support to `EventDataCollector`
+ * `ExceptionListener` now logs exceptions at priority `0` (previously logged at `-128`)
+ * Added support for using `service::method` to reference controllers, making it consistent with other cases. It is recommended over the `service:action` syntax with a single colon, which will be deprecated in the future.
+ * Added the ability to profile individual argument value resolvers via the
+   `Symfony\Component\HttpKernel\Controller\ArgumentResolver\TraceableValueResolver`
+
+4.0.0
+-----
+
+ * removed the `DataCollector::varToString()` method, use `DataCollector::cloneVar()`
+   instead
+ * using the `DataCollector::cloneVar()` method requires the VarDumper component
+ * removed the `ValueExporter` class
+ * removed `ControllerResolverInterface::getArguments()`
+ * removed `TraceableControllerResolver::getArguments()`
+ * removed `ControllerResolver::getArguments()` and the ability to resolve arguments
+ * removed the `argument_resolver` service dependency from the `debug.controller_resolver`
+ * removed `LazyLoadingFragmentHandler::addRendererService()`
+ * removed `Psr6CacheClearer::addPool()`
+ * removed `Extension::addClassesToCompile()` and `Extension::getClassesToCompile()`
+ * removed `Kernel::loadClassCache()`, `Kernel::doLoadClassCache()`, `Kernel::setClassCache()`,
+   and `Kernel::getEnvParameters()`
+ * support for the `X-Status-Code` when handling exceptions in the `HttpKernel`
+   has been dropped, use the `HttpKernel::allowCustomResponseCode()` method
+   instead
+ * removed convention-based commands registration
+ * removed the `ChainCacheClearer::add()` method
+ * removed the `CacheaWarmerAggregate::add()` and `setWarmers()` methods
+ * made `CacheWarmerAggregate` and `ChainCacheClearer` classes final
+
 3.4.0
 -----
 

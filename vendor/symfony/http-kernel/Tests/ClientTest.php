@@ -61,13 +61,13 @@ class ClientTest extends TestCase
         $m->setAccessible(true);
 
         $response = new Response();
-        $response->headers->setCookie($cookie1 = new Cookie('foo', 'bar', \DateTime::createFromFormat('j-M-Y H:i:s T', '15-Feb-2009 20:00:00 GMT')->format('U'), '/foo', 'http://example.com', true, true));
+        $response->headers->setCookie($cookie1 = new Cookie('foo', 'bar', \DateTime::createFromFormat('j-M-Y H:i:s T', '15-Feb-2009 20:00:00 GMT')->format('U'), '/foo', 'http://example.com', true, true, false, null));
         $domResponse = $m->invoke($client, $response);
         $this->assertSame((string) $cookie1, $domResponse->getHeader('Set-Cookie'));
 
         $response = new Response();
-        $response->headers->setCookie($cookie1 = new Cookie('foo', 'bar', \DateTime::createFromFormat('j-M-Y H:i:s T', '15-Feb-2009 20:00:00 GMT')->format('U'), '/foo', 'http://example.com', true, true));
-        $response->headers->setCookie($cookie2 = new Cookie('foo1', 'bar1', \DateTime::createFromFormat('j-M-Y H:i:s T', '15-Feb-2009 20:00:00 GMT')->format('U'), '/foo', 'http://example.com', true, true));
+        $response->headers->setCookie($cookie1 = new Cookie('foo', 'bar', \DateTime::createFromFormat('j-M-Y H:i:s T', '15-Feb-2009 20:00:00 GMT')->format('U'), '/foo', 'http://example.com', true, true, false, null));
+        $response->headers->setCookie($cookie2 = new Cookie('foo1', 'bar1', \DateTime::createFromFormat('j-M-Y H:i:s T', '15-Feb-2009 20:00:00 GMT')->format('U'), '/foo', 'http://example.com', true, true, false, null));
         $domResponse = $m->invoke($client, $response);
         $this->assertSame((string) $cookie1, $domResponse->getHeader('Set-Cookie'));
         $this->assertSame(array((string) $cookie1, (string) $cookie2), $domResponse->getHeader('Set-Cookie', false));
@@ -100,8 +100,8 @@ class ClientTest extends TestCase
         $client = new Client($kernel);
 
         $files = array(
-            array('tmp_name' => $source, 'name' => 'original', 'type' => 'mime/original', 'size' => 1, 'error' => UPLOAD_ERR_OK),
-            new UploadedFile($source, 'original', 'mime/original', 1, UPLOAD_ERR_OK, true),
+            array('tmp_name' => $source, 'name' => 'original', 'type' => 'mime/original', 'size' => null, 'error' => UPLOAD_ERR_OK),
+            new UploadedFile($source, 'original', 'mime/original', UPLOAD_ERR_OK, true),
         );
 
         $file = null;
@@ -116,8 +116,7 @@ class ClientTest extends TestCase
 
             $this->assertEquals('original', $file->getClientOriginalName());
             $this->assertEquals('mime/original', $file->getClientMimeType());
-            $this->assertSame(1, $file->getClientSize());
-            $this->assertTrue($file->isValid());
+            $this->assertEquals(1, $file->getSize());
         }
 
         $file->move(\dirname($target), basename($target));
@@ -150,13 +149,17 @@ class ClientTest extends TestCase
 
         $file = $this
             ->getMockBuilder('Symfony\Component\HttpFoundation\File\UploadedFile')
-            ->setConstructorArgs(array($source, 'original', 'mime/original', 123, UPLOAD_ERR_OK, true))
-            ->setMethods(array('getSize'))
+            ->setConstructorArgs(array($source, 'original', 'mime/original', UPLOAD_ERR_OK, true))
+            ->setMethods(array('getSize', 'getClientSize'))
             ->getMock()
         ;
-
-        $file->expects($this->once())
+        /* should be modified when the getClientSize will be removed */
+        $file->expects($this->any())
             ->method('getSize')
+            ->will($this->returnValue(INF))
+        ;
+        $file->expects($this->any())
+            ->method('getClientSize')
             ->will($this->returnValue(INF))
         ;
 
@@ -172,7 +175,7 @@ class ClientTest extends TestCase
         $this->assertEquals(UPLOAD_ERR_INI_SIZE, $file->getError());
         $this->assertEquals('mime/original', $file->getClientMimeType());
         $this->assertEquals('original', $file->getClientOriginalName());
-        $this->assertEquals(0, $file->getClientSize());
+        $this->assertEquals(0, $file->getSize());
 
         unlink($source);
     }

@@ -23,6 +23,7 @@ use Symfony\Component\HttpKernel\Controller\ControllerResolverInterface;
 use Symfony\Component\HttpKernel\Event\FilterControllerArgumentsEvent;
 use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
+use Symfony\Component\HttpKernel\Exception\ControllerDoesNotReturnResponseException;
 use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 use Symfony\Component\HttpKernel\HttpKernel;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
@@ -109,24 +110,6 @@ class HttpKernelTest extends TestCase
 
         $this->assertEquals('405', $response->getStatusCode());
         $this->assertEquals('POST', $response->headers->get('Allow'));
-    }
-
-    /**
-     * @group legacy
-     * @dataProvider getStatusCodes
-     */
-    public function testLegacyHandleWhenAnExceptionIsHandledWithASpecificStatusCode($responseStatusCode, $expectedStatusCode)
-    {
-        $dispatcher = new EventDispatcher();
-        $dispatcher->addListener(KernelEvents::EXCEPTION, function ($event) use ($responseStatusCode, $expectedStatusCode) {
-            $event->setResponse(new Response('', $responseStatusCode, array('X-Status-Code' => $expectedStatusCode)));
-        });
-
-        $kernel = $this->getHttpKernel($dispatcher, function () { throw new \RuntimeException(); });
-        $response = $kernel->handle(new Request());
-
-        $this->assertEquals($expectedStatusCode, $response->getStatusCode());
-        $this->assertFalse($response->headers->has('X-Status-Code'));
     }
 
     public function getStatusCodes()
@@ -229,15 +212,23 @@ class HttpKernelTest extends TestCase
         $this->assertResponseEquals(new Response('foo'), $kernel->handle(new Request()));
     }
 
-    /**
-     * @expectedException \LogicException
-     */
     public function testHandleWhenTheControllerDoesNotReturnAResponse()
     {
         $dispatcher = new EventDispatcher();
         $kernel = $this->getHttpKernel($dispatcher, function () { return 'foo'; });
 
-        $kernel->handle(new Request());
+        try {
+            $kernel->handle(new Request());
+
+            $this->fail('The kernel should throw an exception.');
+        } catch (ControllerDoesNotReturnResponseException $e) {
+        }
+
+        $first = $e->getTrace()[0];
+
+        // `file` index the array starting at 0, and __FILE__ starts at 1
+        $line = file($first['file'])[$first['line'] - 2];
+        $this->assertContains('// call controller', $line);
     }
 
     public function testHandleWhenTheControllerDoesNotReturnAResponseButAViewIsRegistered()
@@ -283,7 +274,7 @@ class HttpKernelTest extends TestCase
             $oldArguments = $event->getArguments();
 
             $newController = function ($id) use ($oldController, $oldArguments) {
-                $response = \call_user_func_array($oldController, $oldArguments);
+                $response = $oldController(...$oldArguments);
 
                 $response->headers->set('X-Id', $id);
 
