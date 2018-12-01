@@ -75,6 +75,10 @@ class ComposerStaticInit3da29173c262c589b273f6106eae3544
             'Fisharebest\\ExtCalendar\\' => 24,
             'Fisharebest\\Algorithm\\' => 22,
         ),
+        'E' => 
+        array (
+            'Egulias\\EmailValidator\\' => 23,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
@@ -202,6 +206,20 @@ class ComposerStaticInit3da29173c262c589b273f6106eae3544
         array (
             0 => __DIR__ . '/..' . '/fisharebest/algorithm/src',
         ),
+        'Egulias\\EmailValidator\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/egulias/email-validator/EmailValidator',
+        ),
+    );
+
+    public static $prefixesPsr0 = array (
+        'D' => 
+        array (
+            'Doctrine\\Common\\Lexer\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/doctrine/lexer/lib',
+            ),
+        ),
     );
 
     public static $classMap = array (
@@ -226,6 +244,7 @@ class ComposerStaticInit3da29173c262c589b273f6106eae3544
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit3da29173c262c589b273f6106eae3544::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit3da29173c262c589b273f6106eae3544::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit3da29173c262c589b273f6106eae3544::$prefixesPsr0;
             $loader->classMap = ComposerStaticInit3da29173c262c589b273f6106eae3544::$classMap;
 
         }, null, ClassLoader::class);

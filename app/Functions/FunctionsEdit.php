@@ -241,19 +241,6 @@ class FunctionsEdit
     }
 
     /**
-     * A list mail transport options (e.g. for an edit control).
-     *
-     * @return string[]
-     */
-    public static function optionsMailTransports(): array
-    {
-        return [
-            'internal' => I18N::translate('Use PHP mail to send messages'),
-            'external' => I18N::translate('Use SMTP to send messages'),
-        ];
-    }
-
-    /**
      * A list of temple options (e.g. for an edit control).
      *
      * @return string[]

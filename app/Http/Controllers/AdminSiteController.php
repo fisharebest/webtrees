@@ -662,7 +662,6 @@ class AdminSiteController extends AbstractBaseController
     private function mailTransportOptions(): array
     {
         $options = [
-            'internal' => I18N::translate('Use PHP mail to send messages'),
             /* I18N: "sendmail" is the name of some mail software */
             'sendmail' => I18N::translate('Use sendmail to send messages'),
             'external' => I18N::translate('Use SMTP to send messages'),

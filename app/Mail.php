@@ -19,7 +19,6 @@ namespace Fisharebest\Webtrees;
 
 use Exception;
 use Swift_Mailer;
-use Swift_MailTransport;
 use Swift_Message;
 use Swift_NullTransport;
 use Swift_Preferences;
@@ -56,15 +55,15 @@ class Mail
             $message_text = preg_replace('/\r?\n/', "\r\n", $message_text);
             $message_html = preg_replace('/\r?\n/', "\r\n", $message_html);
 
-            $message = Swift_Message::newInstance()
-                ->setSubject($subject)
+            $message = (new Swift_Message($subject))
                 ->setFrom($from->getEmail(), $from->getRealName())
                 ->setTo($to->getEmail(), $to->getRealName())
                 ->setReplyTo($reply_to->getEmail(), $reply_to->getRealName())
                 ->setBody($message_html, 'text/html')
                 ->addPart($message_text, 'text/plain');
 
-            Swift_Mailer::newInstance(self::transport())->send($message);
+            $mailer = new Swift_Mailer(self::transport());
+            $mailer->send($message);
         } catch (Exception $ex) {
             DebugBar::addThrowable($ex);
 
@@ -84,30 +83,34 @@ class Mail
     public static function transport()
     {
         switch (Site::getPreference('SMTP_ACTIVE')) {
-            case 'internal':
-                return Swift_MailTransport::newInstance();
             case 'sendmail':
-                return Swift_SendmailTransport::newInstance();
+                // Local sendmail (requires PHP proc_* functions)
+                return new Swift_SendmailTransport();
+
             case 'external':
-                $transport = Swift_SmtpTransport::newInstance()
-                    ->setHost(Site::getPreference('SMTP_HOST'))
-                    ->setPort((int) Site::getPreference('SMTP_PORT', '25'))
-                    ->setLocalDomain(Site::getPreference('SMTP_HELO'));
+                // SMTP
+                $smtp_host = Site::getPreference('SMTP_HOST');
+                $smtp_port = (int) Site::getPreference('SMTP_PORT', '25');
+                $smtp_auth = Site::getPreference('SMTP_AUTH');
+                $smtp_user = Site::getPreference('SMTP_AUTH_USER');
+                $smtp_pass = Site::getPreference('SMTP_AUTH_PASS');
+                $smtp_encr = Site::getPreference('SMTP_SSL');
 
-                if (Site::getPreference('SMTP_AUTH') === '1') {
+                $transport =(new Swift_SmtpTransport($smtp_host, $smtp_port, $smtp_encr));
+
+                $transport->setLocalDomain(Site::getPreference('SMTP_HELO'));
+
+                if ($smtp_auth) {
                     $transport
-                        ->setUsername(Site::getPreference('SMTP_AUTH_USER'))
-                        ->setPassword(Site::getPreference('SMTP_AUTH_PASS'));
-                }
-
-                if (Site::getPreference('SMTP_SSL') !== 'none') {
-                    $transport->setEncryption(Site::getPreference('SMTP_SSL'));
+                        ->setUsername($smtp_user)
+                        ->setPassword($smtp_pass);
                 }
 
                 return $transport;
+
             default:
                 // For testing
-                return Swift_NullTransport::newInstance();
+                return new Swift_NullTransport();
         }
     }
 }

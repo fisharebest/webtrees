@@ -183,7 +183,7 @@ class MessageController extends AbstractBaseController
             throw new AccessDeniedHttpException('Invalid contact user id');
         }
 
-        $errors = $body !== '' && $subject !== '' && $from_email !== '' && $from_name !== '';
+        $errors = $body === '' || $subject === '' || $from_email === '' || $from_name === '';
 
         if (!preg_match('/^[^@]+@([^@]+)$/', $from_email, $match) || !checkdnsrr($match[1])) {
             FlashMessages::addMessage(I18N::translate('Please enter a valid email address.'), 'danger');
