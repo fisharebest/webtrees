@@ -158,9 +158,7 @@ class MediaFileController extends AbstractBaseController
             ]);
         } catch (FileNotFoundException $ex) {
             return $this->httpStatusAsImage(Response::HTTP_NOT_FOUND);
-        } catch (NotReadableException $ex) {
-            return $this->httpStatusAsImage(Response::HTTP_INTERNAL_SERVER_ERROR);
-        } catch (Throwable $ex) {
+        } catch (NotReadableException | Throwable $ex) {
             return $this->httpStatusAsImage(Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
