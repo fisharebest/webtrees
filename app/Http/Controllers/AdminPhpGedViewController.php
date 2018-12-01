@@ -316,8 +316,6 @@ class AdminPhpGedViewController extends AbstractBaseController
      * @TODO Most of the migration happens in the "Users" step.  This needs to
      *       be broken down into smaller functions.
      *
-     * @param mixed[] $config
-     *
      * @return Response
      */
     private function wizardStepTrees(): Response
