@@ -95,7 +95,7 @@ class TreeView
                     break;
 
                 case 'p':
-                    list($xref, $order) = explode('@', $jsonRequest);
+                    [$xref, $order] = explode('@', $jsonRequest);
 
                     $family = Family::getInstance($xref, $tree);
                     if ($family instanceof Family) {

@@ -169,7 +169,7 @@ class AdminController extends AbstractBaseController
 
         // @TODO This ought to be a POST action
         if ($action === 'delete') {
-            list(, $delete, $where, $args) = $this->changesQuery($request);
+            [, $delete, $where, $args] = $this->changesQuery($request);
             Database::prepare($delete . $where)->execute($args);
         }
 
@@ -231,8 +231,8 @@ class AdminController extends AbstractBaseController
      */
     public function changesLogData(Request $request): Response
     {
-        list($select, , $where, $args1) = $this->changesQuery($request);
-        list($order_by, $limit, $args2) = $this->dataTablesPagination($request);
+        [$select, , $where, $args1] = $this->changesQuery($request);
+        [$order_by, $limit, $args2] = $this->dataTablesPagination($request);
 
         $rows = Database::prepare(
             $select . $where . $order_by . $limit
@@ -307,7 +307,7 @@ class AdminController extends AbstractBaseController
      */
     public function changesLogDownload(Request $request): Response
     {
-        list($select, , $where, $args) = $this->changesQuery($request);
+        [$select, , $where, $args] = $this->changesQuery($request);
 
         $rows = Database::prepare($select . $where)->execute($args)->fetchAll();
 
@@ -582,7 +582,7 @@ class AdminController extends AbstractBaseController
 
             case 'add':
                 $image_size = getimagesize($thumbnail);
-                list(, $extension) = explode('/', $image_size['mime']);
+                [, $extension] = explode('/', $image_size['mime']);
                 $move_to = dirname($thumbnail, 2) . '/' . sha1_file($thumbnail) . '.' . $extension;
                 rename($thumbnail, $move_to);
 

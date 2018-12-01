@@ -701,7 +701,7 @@ class ReportParserGenerate extends ReportParserBase
         if ($this->process_gedcoms > 0) {
             $this->process_gedcoms--;
         } else {
-            list($this->gedrec, $this->fact, $this->desc) = array_pop($this->gedrec_stack);
+            [$this->gedrec, $this->fact, $this->desc] = array_pop($this->gedrec_stack);
         }
     }
 
@@ -1203,7 +1203,7 @@ class ReportParserGenerate extends ReportParserBase
             $this->gedrec = $oldgedrec;
             $this->parser = array_pop($this->parser_stack);
         }
-        list($this->repeats, $this->repeat_bytes) = array_pop($this->repeats_stack);
+        [$this->repeats, $this->repeat_bytes] = array_pop($this->repeats_stack);
     }
 
     /**
@@ -1406,7 +1406,7 @@ class ReportParserGenerate extends ReportParserBase
             $this->parser = array_pop($this->parser_stack);
             $this->gedrec = $oldgedrec;
         }
-        list($this->repeats, $this->repeat_bytes) = array_pop($this->repeats_stack);
+        [$this->repeats, $this->repeat_bytes] = array_pop($this->repeats_stack);
     }
 
     /**
@@ -2303,7 +2303,7 @@ class ReportParserGenerate extends ReportParserBase
             $this->parser = array_pop($this->parser_stack);
             $this->gedrec = $oldgedrec;
         }
-        list($this->repeats, $this->repeat_bytes) = array_pop($this->repeats_stack);
+        [$this->repeats, $this->repeat_bytes] = array_pop($this->repeats_stack);
     }
 
     /**
@@ -2551,7 +2551,7 @@ class ReportParserGenerate extends ReportParserBase
             $this->parser = array_pop($this->parser_stack);
             $this->gedrec = $oldgedrec;
         }
-        list($this->repeats, $this->repeat_bytes) = array_pop($this->repeats_stack);
+        [$this->repeats, $this->repeat_bytes] = array_pop($this->repeats_stack);
     }
 
     /**

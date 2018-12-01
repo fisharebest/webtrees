@@ -236,7 +236,7 @@ class BranchesController extends AbstractBaseController
         // A person has many names. Select the one that matches the searched surname
         $person_name = '';
         foreach ($individual->getAllNames() as $name) {
-            list($surn1) = explode(',', $name['sort']);
+            [$surn1] = explode(',', $name['sort']);
             if (// one name is a substring of the other
                 stripos($surn1, $surname) !== false ||
                 stripos($surname, $surn1) !== false ||

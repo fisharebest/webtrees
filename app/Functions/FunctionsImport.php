@@ -58,7 +58,7 @@ class FunctionsImport
         // Process the record line-by-line
         $newrec = '';
         foreach ($matches as $n => $match) {
-            list(, $level, $xref, $tag, $data) = $match;
+            [, $level, $xref, $tag, $data] = $match;
             $tag = strtoupper($tag); // Tags should always be upper case
             switch ($tag) {
                 // Convert PhpGedView tags to WT
@@ -190,7 +190,7 @@ class FunctionsImport
                 case 'DATE':
                     // Preserve text from INT dates
                     if (strpos($data, '(') !== false) {
-                        list($date, $text) = explode('(', $data, 2);
+                        [$date, $text] = explode('(', $data, 2);
                         $text = ' (' . $text;
                     } else {
                         $date = $data;
@@ -615,7 +615,7 @@ class FunctionsImport
 
         // import different types of records
         if (preg_match('/^0 @(' . Gedcom::REGEX_XREF . ')@ (' . Gedcom::REGEX_TAG . ')/', $gedrec, $match)) {
-            list(, $xref, $type) = $match;
+            [, $xref, $type] = $match;
             // check for a _UID, if the record doesn't have one, add one
             if ($tree->getPreference('GENERATE_UIDS') && !strpos($gedrec, "\n1 _UID ")) {
                 $gedrec .= "\n1 _UID " . GedcomTag::createUid();
@@ -1215,7 +1215,7 @@ class FunctionsImport
     public static function updateRecord($gedrec, Tree $tree, bool $delete)
     {
         if (preg_match('/^0 @(' . Gedcom::REGEX_XREF . ')@ (' . Gedcom::REGEX_TAG . ')/', $gedrec, $match)) {
-            list(, $gid, $type) = $match;
+            [, $gid, $type] = $match;
         } elseif (preg_match('/^0 (HEAD)(?:\n|$)/', $gedrec, $match)) {
             // The HEAD record has no XREF.  Any others?
             $gid  = $match[1];

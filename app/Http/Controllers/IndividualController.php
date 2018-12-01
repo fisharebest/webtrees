@@ -446,7 +446,7 @@ class IndividualController extends AbstractBaseController
             'surname'    => '',
         ];
 
-        list($significant->surname) = explode(',', $individual->getSortName());
+        [$significant->surname] = explode(',', $individual->getSortName());
 
         foreach ($individual->getChildFamilies() + $individual->getSpouseFamilies() as $family) {
             $significant->family = $family;

@@ -508,7 +508,7 @@ class FunctionsEdit
         ];
 
         preg_match('/^(?:(\d+) (' . Gedcom::REGEX_TAG . ') ?(.*))/', $tag, $match);
-        list(, $level, $fact, $value) = $match;
+        [, $level, $fact, $value] = $match;
 
         if ($level === '0') {
             if ($upperlevel) {

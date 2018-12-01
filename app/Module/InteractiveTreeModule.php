@@ -59,7 +59,7 @@ class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface
     public function getTabContent(Individual $individual): string
     {
         $treeview = new TreeView('tvTab');
-        list($html, $js) = $treeview->drawViewport($individual, 3);
+        [$html, $js] = $treeview->drawViewport($individual, 3);
 
         return view('modules/tree/tab', [
             'html'         => $html,
@@ -159,7 +159,7 @@ class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface
 
         $tv = new TreeView('tv');
 
-        list($html, $js) = $tv->drawViewport($individual, 4);
+        [$html, $js] = $tv->drawViewport($individual, 4);
 
         $title = I18N::translate('Interactive tree of %s', $individual->getFullName());
 

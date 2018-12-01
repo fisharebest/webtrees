@@ -70,7 +70,7 @@ class FamilyController extends AbstractBaseController
 
         foreach ($family->getSpouses() + $family->getChildren() as $individual) {
             $significant->individual = $individual;
-            list($significant->surname) = explode(',', $individual->getSortName());
+            [$significant->surname] = explode(',', $individual->getSortName());
             break;
         }
 

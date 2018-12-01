@@ -124,7 +124,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
                     $tv      = new TreeView();
                     $content .= '<script>$("head").append(\'<link rel="stylesheet" href="' . $mod->css() . '" type="text/css" />\');</script>';
                     $content .= '<script src="' . $mod->js() . '"></script>';
-                    list($html, $js) = $tv->drawViewport($person, 2);
+                    [$html, $js] = $tv->drawViewport($person, 2);
                     $content .= $html . '<script>' . $js . '</script>';
                     break;
             }

@@ -93,7 +93,7 @@ class AdminSiteController extends AbstractBaseController
         // Protect the media folders
         foreach (Tree::getAll() as $tree) {
             $media_directory = $tree->getPreference('MEDIA_DIRECTORY');
-            list($folder) = explode('/', $media_directory);
+            [$folder] = explode('/', $media_directory);
 
             $protected[] = $folder;
         }

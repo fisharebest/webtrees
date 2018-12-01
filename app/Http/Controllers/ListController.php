@@ -772,7 +772,7 @@ class ListController extends AbstractBaseController
         foreach ($this->localization_service->alphabet() as $letter) {
             $count = 1;
             if ($totals) {
-                list($where, $args2) = $this->getInitialSql('n_surn', $letter);
+                [$where, $args2] = $this->getInitialSql('n_surn', $letter);
                 $count = Database::prepare($sql . $where)->execute($args2)->fetchOne();
             }
             $alphas[$letter] = (int) $count;
@@ -854,7 +854,7 @@ class ListController extends AbstractBaseController
         } elseif ($salpha == '@') {
             $sql .= " AND n_surn='@N.N.'";
         } elseif ($salpha) {
-            list($where, $args2) = $this->getInitialSql('n_surn', $salpha);
+            [$where, $args2] = $this->getInitialSql('n_surn', $salpha);
             $sql .= $where;
             $args += $args2;
         } else {
@@ -866,7 +866,7 @@ class ListController extends AbstractBaseController
         // are any names beginning with that letter. It looks better to
         // show the full alphabet, rather than omitting rare letters such as X
         foreach ($this->localization_service->alphabet() as $letter) {
-            list($where, $args2) = $this->getInitialSql('n_surn', $salpha);
+            [$where, $args2] = $this->getInitialSql('n_surn', $salpha);
 
             $count = Database::prepare($sql . $where)->execute($args + $args2)->fetchOne();
 
@@ -895,7 +895,7 @@ class ListController extends AbstractBaseController
         } elseif ($salpha === '@') {
             $sql .= " AND n_surn = '@N.N.'";
         } elseif ($salpha) {
-            list($where, $args2) = $this->getInitialSql('n_surn', $salpha);
+            [$where, $args2] = $this->getInitialSql('n_surn', $salpha);
             $sql .= $where;
             $args += $args2;
         } else {
@@ -950,7 +950,7 @@ class ListController extends AbstractBaseController
         } elseif ($salpha === '@') {
             $sql .= " AND n_surn = '@N.N.'";
         } elseif ($salpha) {
-            list($where, $args2) = $this->getInitialSql('n_surn', $salpha);
+            [$where, $args2] = $this->getInitialSql('n_surn', $salpha);
 
             $sql .= $where;
             $args += $args2;
@@ -1006,7 +1006,7 @@ class ListController extends AbstractBaseController
         } elseif ($salpha === '@') {
             $sql .= " AND n_surn = '@N.N.'";
         } elseif ($salpha) {
-            list($where, $args2) = $this->getInitialSql('n_surn', $salpha);
+            [$where, $args2] = $this->getInitialSql('n_surn', $salpha);
             $sql .= $where;
             $args += $args2;
         } else {
@@ -1014,7 +1014,7 @@ class ListController extends AbstractBaseController
             $sql .= " AND n_surn NOT IN ('', '@N.N.')";
         }
         if ($galpha) {
-            list($where, $args2) = $this->getInitialSql('n_givn', $galpha);
+            [$where, $args2] = $this->getInitialSql('n_givn', $galpha);
             $sql .= $where;
             $args += $args2;
         }

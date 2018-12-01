@@ -51,7 +51,7 @@ class FunctionsExport
             // The total length of a GEDCOM line, including level number, cross-reference number,
             // tag, value, delimiters, and terminator, must not exceed 255 (wide) characters.
             if (mb_strlen($line) > Gedcom::LINE_LENGTH) {
-                list($level, $tag) = explode(' ', $line, 3);
+                [$level, $tag] = explode(' ', $line, 3);
                 if ($tag !== 'CONT' && $tag !== 'CONC') {
                     $level++;
                 }

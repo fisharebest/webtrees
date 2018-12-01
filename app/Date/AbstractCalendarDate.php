@@ -75,7 +75,7 @@ abstract class AbstractCalendarDate
         if (is_int($date)) {
             $this->minimum_julian_day = $date;
             $this->maximum_julian_day = $date;
-            list($this->year, $this->month, $this->day) = $this->calendar->jdToYmd($date);
+            [$this->year, $this->month, $this->day] = $this->calendar->jdToYmd($date);
 
             return;
         }
@@ -132,7 +132,7 @@ abstract class AbstractCalendarDate
             // Complete date
             $jd = intdiv($date->maximum_julian_day + $date->minimum_julian_day, 2);
         }
-        list($this->year, $this->month, $this->day) = $this->calendar->jdToYmd($jd);
+        [$this->year, $this->month, $this->day] = $this->calendar->jdToYmd($jd);
         // New date has same precision as original date
         if ($date->year == 0) {
             $this->year = 0;
@@ -218,7 +218,7 @@ abstract class AbstractCalendarDate
             $this->minimum_julian_day = $this->calendar->ymdToJd($this->year, 1, 1);
             $this->maximum_julian_day = $this->calendar->ymdToJd($this->nextYear($this->year), 1, 1) - 1;
         } elseif ($this->day == 0) {
-            list($ny, $nm) = $this->nextMonth();
+            [$ny, $nm] = $this->nextMonth();
             $this->minimum_julian_day = $this->calendar->ymdToJd($this->year, $this->month, 1);
             $this->maximum_julian_day = $this->calendar->ymdToJd($ny, $nm, 1) - 1;
         } else {
@@ -354,8 +354,8 @@ abstract class AbstractCalendarDate
         }
 
         // Perform all calculations using the calendar of the first date
-        list($year1, $month1, $day1) = $this->calendar->jdToYmd($this->minimum_julian_day);
-        list($year2, $month2, $day2) = $this->calendar->jdToYmd($date->minimum_julian_day);
+        [$year1, $month1, $day1] = $this->calendar->jdToYmd($this->minimum_julian_day);
+        [$year2, $month2, $day2] = $this->calendar->jdToYmd($date->minimum_julian_day);
 
         $years  = $year2 - $year1;
         $months = $month2 - $month1;
@@ -393,7 +393,7 @@ abstract class AbstractCalendarDate
         if ($this->minimum_julian_day == $jd) {
             return 0;
         }
-        list($y, $m, $d) = $this->calendar->jdToYmd($jd);
+        [$y, $m, $d] = $this->calendar->jdToYmd($jd);
         $dy = $y - $this->year;
         $dm = $m - max($this->month, 1);
         $dd = $d - max($this->day, 1);
@@ -430,7 +430,7 @@ abstract class AbstractCalendarDate
         if ($jd < $this->minimum_julian_day) {
             return '<i class="icon-warning"></i>';
         }
-        list($y, $m, $d) = $this->calendar->jdToYmd($jd);
+        [$y, $m, $d] = $this->calendar->jdToYmd($jd);
         $dy = $y - $this->year;
         $dm = $m - max($this->month, 1);
         $dd = $d - max($this->day, 1);

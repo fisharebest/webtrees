@@ -258,7 +258,7 @@ class LifespansChartController extends AbstractChartController
         }
 
         $gregorian = new GregorianCalendar();
-        list($y) = $gregorian->jdToYmd($jd);
+        [$y] = $gregorian->jdToYmd($jd);
 
         return $y;
     }

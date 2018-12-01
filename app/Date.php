@@ -673,7 +673,7 @@ class Date
     {
         if ($this->isOK()) {
             $gregorian_calendar = new GregorianCalendar();
-            list($year) = $gregorian_calendar->jdToYmd($this->julianDay());
+            [$year] = $gregorian_calendar->jdToYmd($this->julianDay());
 
             return $year;
         }

@@ -496,7 +496,7 @@ class GedcomRecord
             // The record is not private, but the individual facts may be.
 
             // Include the entire first line (for NOTE records)
-            list($gedrec) = explode("\n", $this->gedcom, 2);
+            [$gedrec] = explode("\n", $this->gedcom, 2);
 
             // Check each of the facts for access
             foreach ($this->facts([], false, $access_level) as $fact) {
@@ -1239,7 +1239,7 @@ class GedcomRecord
         }
 
         // First line of record may contain data - e.g. NOTE records.
-        list($new_gedcom) = explode("\n", $old_gedcom, 2);
+        [$new_gedcom] = explode("\n", $old_gedcom, 2);
 
         // Replacing (or deleting) an existing fact
         foreach ($this->facts([], false, Auth::PRIV_HIDE) as $fact) {

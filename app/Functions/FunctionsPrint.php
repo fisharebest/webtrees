@@ -101,7 +101,7 @@ class FunctionsPrint
         if ($note) {
             $first_line = '<a href="' . e($note->url()) . '">' . $note->getFullName() . '</a>';
         } else {
-            list($text) = explode("\n", strip_tags($html));
+            [$text] = explode("\n", strip_tags($html));
             $first_line = strlen($text) > 100 ? mb_substr($text, 0, 100) . I18N::translate('…') : $text;
         }
 

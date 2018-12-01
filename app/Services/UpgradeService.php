@@ -62,7 +62,7 @@ class UpgradeService
     {
         $latest_version = $this->fetchLatestVersion();
 
-        list($version) = explode('|', $latest_version);
+        [$version] = explode('|', $latest_version);
 
         return $version;
     }
@@ -76,7 +76,7 @@ class UpgradeService
     {
         $latest_version = $this->fetchLatestVersion();
 
-        list(, , $url) = explode('|', $latest_version . '||');
+        [, , $url] = explode('|', $latest_version . '||');
 
         return $url;
     }

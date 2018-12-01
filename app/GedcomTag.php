@@ -2102,7 +2102,7 @@ class GedcomTag
             default:
                 // If no specialisation exists (e.g. DEAT:CAUS), then look for the general (CAUS)
                 if (strpos($tag, ':') !== false) {
-                    list(, $tag) = explode(':', $tag, 2);
+                    [, $tag] = explode(':', $tag, 2);
 
                     return self::getLabel($tag, $record);
                 }
