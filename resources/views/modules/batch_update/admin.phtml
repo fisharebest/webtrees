@@ -27,7 +27,7 @@
                 <?php endif ?>
 
                 <?php foreach ($plugins as $key => $value) : ?>
-                    <option value="<?= $key ?>" <?= ($plugin ? '\\' . get_class($plugin) : null) === $key ? 'selected' : '' ?>>
+                    <option value="<?= $key ?>" <?= ($plugin ? get_class($plugin) : null) === $key ? 'selected' : '' ?>>
                         <?= $value->getName() ?>
                     </option>
                 <?php endforeach ?>
