@@ -836,6 +836,46 @@ class Tree
     }
 
     /**
+     * Create a new media object from GEDCOM data.
+     *
+     * @param string $gedcom
+     *
+     * @return Media
+     * @throws InvalidArgumentException
+     */
+    public function createMediaObject(string $gedcom): Media
+    {
+        if (substr_compare($gedcom, '0 @@ OBJE', 0, 9) !== 0) {
+            throw new InvalidArgumentException('GedcomRecord::createIndividual(' . $gedcom . ') does not begin 0 @@ OBJE');
+        }
+
+        $xref   = $this->getNewXref();
+        $gedcom = '0 @' . $xref . '@' . substr($gedcom, 4);
+
+        // Create a change record
+        $gedcom .= "\n1 CHAN\n2 DATE " . date('d M Y') . "\n3 TIME " . date('H:i:s') . "\n2 _WT_USER " . Auth::user()->getUserName();
+
+        // Create a pending change
+        Database::prepare(
+            "INSERT INTO `##change` (gedcom_id, xref, old_gedcom, new_gedcom, user_id) VALUES (?, ?, '', ?, ?)"
+        )->execute([
+            $this->id,
+            $xref,
+            $gedcom,
+            Auth::id(),
+        ]);
+
+        // Accept this pending change
+        if (Auth::user()->getPreference('auto_accept')) {
+            FunctionsImport::acceptAllChanges($xref, $this);
+
+            return new Media($xref, $gedcom, null, $this);
+        }
+
+        return new Media($xref, '', $gedcom, $this);
+    }
+
+    /**
      * What is the most significant individual in this tree.
      *
      * @param User $user

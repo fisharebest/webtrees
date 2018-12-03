@@ -371,7 +371,7 @@ class EditMediaController extends AbstractEditController
             $gedcom .= "\n1 RESN " . $edit_restriction;
         }
 
-        $record = $tree->createRecord($gedcom);
+        $record = $tree->createMediaObject($gedcom);
 
         // Accept the new record to keep the filesystem synchronized with the genealogy.
         FunctionsImport::acceptAllChanges($record->xref(), $record->tree());
