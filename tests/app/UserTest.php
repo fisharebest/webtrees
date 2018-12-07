@@ -18,17 +18,20 @@
 /**
  * Test harness for the class WT_User
  */
-class UserTest extends \PHPUnit_Framework_TestCase {
+class UserTest extends \PHPUnit_Framework_TestCase
+{
     /**
      * Prepare the environment for these tests
      */
-    public function setUp() {
+    public function setUp()
+    {
     }
 
     /**
      * Test that the class exists
      */
-    public function testClassExists() {
+    public function testClassExists()
+    {
         $this->assertTrue(class_exists('\Fisharebest\Webtrees\User'));
     }
 }

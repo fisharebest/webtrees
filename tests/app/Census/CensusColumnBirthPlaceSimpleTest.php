@@ -21,11 +21,13 @@ use Mockery;
 /**
  * Test harness for the class CensusColumnBirthPlaceSimple
  */
-class CensusColumnBirthPlaceSimpleTest extends \PHPUnit_Framework_TestCase {
+class CensusColumnBirthPlaceSimpleTest extends \PHPUnit_Framework_TestCase
+{
     /**
      * Delete mock objects
      */
-    public function tearDown() {
+    public function tearDown()
+    {
         Mockery::close();
     }
 
@@ -33,7 +35,8 @@ class CensusColumnBirthPlaceSimpleTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusColumnBirthPlaceSimple
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testForeignCountry() {
+    public function testForeignCountry()
+    {
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
         $individual->shouldReceive('getBirthPlace')->andReturn('Westminster, London, England');
 
@@ -49,7 +52,8 @@ class CensusColumnBirthPlaceSimpleTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusColumnBirthPlaceSimple
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testJustCountry() {
+    public function testJustCountry()
+    {
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
         $individual->shouldReceive('getBirthPlace')->andReturn('United States');
 
@@ -65,7 +69,8 @@ class CensusColumnBirthPlaceSimpleTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusColumnBirthPlaceSimple
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testKnownState() {
+    public function testKnownState()
+    {
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
         $individual->shouldReceive('getBirthPlace')->andReturn('Maryland, United States');
 
@@ -81,7 +86,8 @@ class CensusColumnBirthPlaceSimpleTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusColumnBirthPlaceSimple
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testKnownStateAndTown() {
+    public function testKnownStateAndTown()
+    {
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
         $individual->shouldReceive('getBirthPlace')->andReturn('Miami, Florida, United States');
 

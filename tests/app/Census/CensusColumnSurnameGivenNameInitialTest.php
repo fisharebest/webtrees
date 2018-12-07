@@ -21,11 +21,13 @@ use Mockery;
 /**
  * Test harness for the class CensusColumnSurnameGivenNameInitial
  */
-class CensusColumnSurnameGivenNameInitialTest extends \PHPUnit_Framework_TestCase {
+class CensusColumnSurnameGivenNameInitialTest extends \PHPUnit_Framework_TestCase
+{
     /**
      * Delete mock objects
      */
-    public function tearDown() {
+    public function tearDown()
+    {
         Mockery::close();
     }
 
@@ -33,7 +35,8 @@ class CensusColumnSurnameGivenNameInitialTest extends \PHPUnit_Framework_TestCas
      * @covers Fisharebest\Webtrees\Census\CensusColumnSurnameGivenNameInitial
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testOneGivenName() {
+    public function testOneGivenName()
+    {
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
         $individual->shouldReceive('getAllNames')->andReturn(array(array('givn' => 'Joe', 'surname' => 'Sixpack')));
         $individual->shouldReceive('getSpouseFamilies')->andReturn(array());
@@ -50,7 +53,8 @@ class CensusColumnSurnameGivenNameInitialTest extends \PHPUnit_Framework_TestCas
      * @covers Fisharebest\Webtrees\Census\CensusColumnSurnameGivenNameInitial
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testMultipleGivenNames() {
+    public function testMultipleGivenNames()
+    {
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
         $individual->shouldReceive('getAllNames')->andReturn(array(array('givn' => 'Joe Fred', 'surname' => 'Sixpack')));
         $individual->shouldReceive('getSpouseFamilies')->andReturn(array());

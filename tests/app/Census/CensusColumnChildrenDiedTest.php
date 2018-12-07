@@ -22,11 +22,13 @@ use Mockery;
 /**
  * Test harness for the class CensusColumnChildrenDied
  */
-class CensusColumnChildrenDiedTest extends \PHPUnit_Framework_TestCase {
+class CensusColumnChildrenDiedTest extends \PHPUnit_Framework_TestCase
+{
     /**
      * Delete mock objects
      */
-    public function tearDown() {
+    public function tearDown()
+    {
         Mockery::close();
     }
 
@@ -34,7 +36,8 @@ class CensusColumnChildrenDiedTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusColumnChildrenDied
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testMale() {
+    public function testMale()
+    {
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
         $individual->shouldReceive('getSex')->andReturn('M');
 
@@ -49,7 +52,8 @@ class CensusColumnChildrenDiedTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusColumnChildrenDied
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testCountChildren() {
+    public function testCountChildren()
+    {
         // Stillborn
         $child1 = Mockery::mock('Fisharebest\Webtrees\Individual');
         $child1->shouldReceive('getBirthDate')->andReturn(new Date('01 FEB 1904'));

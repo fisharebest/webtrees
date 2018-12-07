@@ -20,15 +20,17 @@ use Fisharebest\Webtrees\SurnameTradition\SurnameTraditionInterface;
 /**
  * Test harness for the class SpanishSurnameTradition
  */
-class PolishSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
+class PolishSurnameTraditionTest extends \PHPUnit_Framework_TestCase
+{
     /** @var SurnameTraditionInterface */
     private $surname_tradition;
 
     /**
      * Prepare the environment for these tests
      */
-    public function setUp() {
-        $this->surname_tradition = new PolishSurnameTradition;
+    public function setUp()
+    {
+        $this->surname_tradition = new PolishSurnameTradition();
     }
 
     /**
@@ -37,7 +39,8 @@ class PolishSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\SurnameTradition\PolishSurnameTradition
      * @covers Fisharebest\Webtrees\SurnameTradition\PatrilinealSurnameTradition
      */
-    public function testMarriedSurnames() {
+    public function testMarriedSurnames()
+    {
         $this->assertSame(true, $this->surname_tradition->hasMarriedNames());
     }
 
@@ -47,7 +50,8 @@ class PolishSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\SurnameTradition\PolishSurnameTradition
      * @covers Fisharebest\Webtrees\SurnameTradition\PatrilinealSurnameTradition
      */
-    public function testSurnames() {
+    public function testSurnames()
+    {
         $this->assertSame(true, $this->surname_tradition->hasSurnames());
     }
 
@@ -57,7 +61,8 @@ class PolishSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\SurnameTradition\PolishSurnameTradition
      * @covers Fisharebest\Webtrees\SurnameTradition\PatrilinealSurnameTradition
      */
-    public function testNewSonNames() {
+    public function testNewSonNames()
+    {
         $this->assertSame(
             array('NAME' => '/White/', 'SURN' => 'White'),
             $this->surname_tradition->newChildNames('John /White/', 'Mary /Black/', 'M')
@@ -70,7 +75,8 @@ class PolishSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\SurnameTradition\PolishSurnameTradition
      * @covers Fisharebest\Webtrees\SurnameTradition\PatrilinealSurnameTradition
      */
-    public function testNewDaughterNames() {
+    public function testNewDaughterNames()
+    {
         $this->assertSame(
             array('NAME' => '/White/', 'SURN' => 'White'),
             $this->surname_tradition->newChildNames('John /White/', 'Mary /Black/', 'F')
@@ -83,7 +89,8 @@ class PolishSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\SurnameTradition\PolishSurnameTradition
      * @covers Fisharebest\Webtrees\SurnameTradition\PatrilinealSurnameTradition
      */
-    public function testNewDaughterNamesInflected() {
+    public function testNewDaughterNamesInflected()
+    {
         $this->assertSame(
             array('NAME' => '/Whitecka/', 'SURN' => 'Whitecki'),
             $this->surname_tradition->newChildNames('John /Whitecki/', 'Mary /Black/', 'F')
@@ -108,7 +115,8 @@ class PolishSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\SurnameTradition\PolishSurnameTradition
      * @covers Fisharebest\Webtrees\SurnameTradition\PatrilinealSurnameTradition
      */
-    public function testNewChildNames() {
+    public function testNewChildNames()
+    {
         $this->assertSame(
             array('NAME' => '/White/', 'SURN' => 'White'),
             $this->surname_tradition->newChildNames('John /White/', 'Mary /Black/', 'U')
@@ -121,7 +129,8 @@ class PolishSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\SurnameTradition\PolishSurnameTradition
      * @covers Fisharebest\Webtrees\SurnameTradition\PatrilinealSurnameTradition
      */
-    public function testNewChildNamesWithNoParentsNames() {
+    public function testNewChildNamesWithNoParentsNames()
+    {
         $this->assertSame(
             array('NAME' => '//'),
             $this->surname_tradition->newChildNames('', '', 'U')
@@ -134,7 +143,8 @@ class PolishSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\SurnameTradition\PolishSurnameTradition
      * @covers Fisharebest\Webtrees\SurnameTradition\PatrilinealSurnameTradition
      */
-    public function testNewFatherNames() {
+    public function testNewFatherNames()
+    {
         $this->assertSame(
             array('NAME' => '/White/', 'SURN' => 'White'),
             $this->surname_tradition->newParentNames('John /White/', 'M')
@@ -147,7 +157,8 @@ class PolishSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\SurnameTradition\PolishSurnameTradition
      * @covers Fisharebest\Webtrees\SurnameTradition\PatrilinealSurnameTradition
      */
-    public function testNewFatherNamesInflected() {
+    public function testNewFatherNamesInflected()
+    {
         $this->assertSame(
             array('NAME' => '/Whitecki/', 'SURN' => 'Whitecki'),
             $this->surname_tradition->newParentNames('Mary /Whitecka/', 'M')
@@ -172,7 +183,8 @@ class PolishSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\SurnameTradition\PolishSurnameTradition
      * @covers Fisharebest\Webtrees\SurnameTradition\PatrilinealSurnameTradition
      */
-    public function testNewMotherNames() {
+    public function testNewMotherNames()
+    {
         $this->assertSame(
             array('NAME' => '//'),
             $this->surname_tradition->newParentNames('John /White/', 'F')
@@ -185,7 +197,8 @@ class PolishSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\SurnameTradition\PolishSurnameTradition
      * @covers Fisharebest\Webtrees\SurnameTradition\PatrilinealSurnameTradition
      */
-    public function testNewParentNames() {
+    public function testNewParentNames()
+    {
         $this->assertSame(
             array('NAME' => '//'),
             $this->surname_tradition->newParentNames('John /White/', 'U')
@@ -198,7 +211,8 @@ class PolishSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\SurnameTradition\PolishSurnameTradition
      * @covers Fisharebest\Webtrees\SurnameTradition\PatrilinealSurnameTradition
      */
-    public function testNewHusbandNames() {
+    public function testNewHusbandNames()
+    {
         $this->assertSame(
             array('NAME' => '//'),
             $this->surname_tradition->newSpouseNames('Mary /Black/', 'M')
@@ -211,7 +225,8 @@ class PolishSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\SurnameTradition\PolishSurnameTradition
      * @covers Fisharebest\Webtrees\SurnameTradition\PatrilinealSurnameTradition
      */
-    public function testNewWifeNames() {
+    public function testNewWifeNames()
+    {
         $this->assertSame(
             array('NAME' => '//', '_MARNM' => '/White/'),
             $this->surname_tradition->newSpouseNames('John /White/', 'F')
@@ -224,7 +239,8 @@ class PolishSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\SurnameTradition\PolishSurnameTradition
      * @covers Fisharebest\Webtrees\SurnameTradition\PatrilinealSurnameTradition
      */
-    public function testNewSpouseNames() {
+    public function testNewSpouseNames()
+    {
         $this->assertSame(
             array('NAME' => '//'),
             $this->surname_tradition->newSpouseNames('Chris /Green/', 'U')

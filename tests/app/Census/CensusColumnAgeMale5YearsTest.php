@@ -22,11 +22,13 @@ use Mockery;
 /**
  * Test harness for the class CensusColumnAgeMale5Years5Years
  */
-class CensusColumnAgeMale5YearsTest extends \PHPUnit_Framework_TestCase {
+class CensusColumnAgeMale5YearsTest extends \PHPUnit_Framework_TestCase
+{
     /**
      * Delete mock objects
      */
-    public function tearDown() {
+    public function tearDown()
+    {
         Mockery::close();
     }
 
@@ -34,7 +36,8 @@ class CensusColumnAgeMale5YearsTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusColumnAgeMale5Years
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testMale() {
+    public function testMale()
+    {
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
         $individual->shouldReceive('getSex')->andReturn('M');
         $individual->shouldReceive('getEstimatedBirthDate')->andReturn(new Date('01 JAN 1800'));
@@ -51,7 +54,8 @@ class CensusColumnAgeMale5YearsTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusColumnAgeMale5Years
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testFemale() {
+    public function testFemale()
+    {
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
         $individual->shouldReceive('getSex')->andReturn('F');
 
@@ -66,7 +70,8 @@ class CensusColumnAgeMale5YearsTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusColumnAgeMale5Years
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testUnknownSex() {
+    public function testUnknownSex()
+    {
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
         $individual->shouldReceive('getSex')->andReturn('U');
         $individual->shouldReceive('getEstimatedBirthDate')->andReturn(new Date('01 JAN 1800'));
@@ -83,7 +88,8 @@ class CensusColumnAgeMale5YearsTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusColumnAgeMale5Years
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testLessThanOneYear() {
+    public function testLessThanOneYear()
+    {
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
         $individual->shouldReceive('getSex')->andReturn('M');
         $individual->shouldReceive('getEstimatedBirthDate')->andReturn(new Date('01 JAN 1800'));
@@ -100,7 +106,8 @@ class CensusColumnAgeMale5YearsTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusColumnAgeMale5Years
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testLessThanFifteenYears() {
+    public function testLessThanFifteenYears()
+    {
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
         $individual->shouldReceive('getSex')->andReturn('M');
         $individual->shouldReceive('getEstimatedBirthDate')->andReturn(new Date('01 JAN 1800'));
@@ -117,7 +124,8 @@ class CensusColumnAgeMale5YearsTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusColumnAgeMale5Years
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testRoundedDownToFiveYears() {
+    public function testRoundedDownToFiveYears()
+    {
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
         $individual->shouldReceive('getSex')->andReturn('M');
         $individual->shouldReceive('getEstimatedBirthDate')->andReturn(new Date('01 JAN 1800'));

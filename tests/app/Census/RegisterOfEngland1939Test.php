@@ -19,14 +19,16 @@ namespace Fisharebest\Webtrees\Census;
 /**
  * Test harness for the class RegisterOfEngland1939
  */
-class RegisterOfEngland1939Test extends \PHPUnit_Framework_TestCase {
+class RegisterOfEngland1939Test extends \PHPUnit_Framework_TestCase
+{
     /**
      * Test the census place and date
      *
      * @covers Fisharebest\Webtrees\Census\RegisterOfEngland1939
      */
-    public function testPlaceAndDate() {
-        $census = new RegisterOfEngland1939;
+    public function testPlaceAndDate()
+    {
+        $census = new RegisterOfEngland1939();
 
         $this->assertSame('England', $census->censusPlace());
         $this->assertSame('29 SEP 1939', $census->censusDate());
@@ -38,8 +40,9 @@ class RegisterOfEngland1939Test extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\RegisterOfEngland1939
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testColumns() {
-        $census  = new RegisterOfEngland1939;
+    public function testColumns()
+    {
+        $census  = new RegisterOfEngland1939();
         $columns = $census->columns();
 
         $this->assertCount(8, $columns);

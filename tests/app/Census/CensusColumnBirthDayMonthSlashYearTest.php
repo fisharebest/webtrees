@@ -21,11 +21,13 @@ use Mockery;
 /**
  * Test harness for the class CensusColumnBirthDayMonthSlashYearTest
  */
-class CensusColumnBirthDayMonthSlashYearTest extends \PHPUnit_Framework_TestCase {
+class CensusColumnBirthDayMonthSlashYearTest extends \PHPUnit_Framework_TestCase
+{
     /**
      * Delete mock objects
      */
-    public function tearDown() {
+    public function tearDown()
+    {
         Mockery::close();
     }
 
@@ -33,7 +35,8 @@ class CensusColumnBirthDayMonthSlashYearTest extends \PHPUnit_Framework_TestCase
      * @covers Fisharebest\Webtrees\Census\CensusColumnBirthDayMonthSlashYearTest
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testGenerateColumn() {
+    public function testGenerateColumn()
+    {
         $cal_date = Mockery::mock('Fisharebest\Webtrees\Date\CalendarDate');
         $cal_date->shouldReceive('format')->andReturn('30 Jun/1832');
 

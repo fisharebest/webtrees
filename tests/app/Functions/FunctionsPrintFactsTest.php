@@ -18,11 +18,13 @@
 /**
  * Unit tests for the global functions in the file includes/functions/functions_print_facts.php
  */
-class FunctionsPrintFactsTest extends \PHPUnit_Framework_TestCase {
+class FunctionsPrintFactsTest extends \PHPUnit_Framework_TestCase
+{
     /**
      * Test that the class exists
      */
-    public function testClassExists() {
+    public function testClassExists()
+    {
         $this->assertTrue(class_exists('\Fisharebest\Webtrees\Functions\FunctionsPrintFacts'));
     }
 }

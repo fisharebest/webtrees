@@ -21,11 +21,13 @@ use Mockery;
 /**
  * Test harness for the class CensusColumnOccupation
  */
-class CensusColumnOccupationTest extends \PHPUnit_Framework_TestCase {
+class CensusColumnOccupationTest extends \PHPUnit_Framework_TestCase
+{
     /**
      * Delete mock objects
      */
-    public function tearDown() {
+    public function tearDown()
+    {
         Mockery::close();
     }
 
@@ -33,7 +35,8 @@ class CensusColumnOccupationTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusColumnOccupation
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testNoOccupation() {
+    public function testNoOccupation()
+    {
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
         $individual->shouldReceive('getFacts')->withArgs(array('OCCU'))->andReturn(array());
 
@@ -48,7 +51,8 @@ class CensusColumnOccupationTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusColumnOccupation
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testOccupation() {
+    public function testOccupation()
+    {
         $fact = Mockery::mock('Fisharebest\Webtrees\Fact');
         $fact->shouldReceive('getValue')->andReturn('Farmer');
 

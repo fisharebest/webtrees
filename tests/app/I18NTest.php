@@ -20,11 +20,13 @@ use Fisharebest\Webtrees\I18N;
 /**
  * Test harness for the class I18N
  */
-class I18NTest extends \PHPUnit_Framework_TestCase {
+class I18NTest extends \PHPUnit_Framework_TestCase
+{
     /**
      * Prepare the environment for these tests
      */
-    public function setUp() {
+    public function setUp()
+    {
         defined('WT_BASE_URL') || define('WT_BASE_URL', 'http://localhost/');
         defined('WT_DATA_DIR') || define('WT_DATA_DIR', 'data/');
         defined('WT_MODULES_DIR') || define('WT_MODULES_DIR', 'modules_v3/');
@@ -36,7 +38,8 @@ class I18NTest extends \PHPUnit_Framework_TestCase {
      *
      * @todo test all locales
      */
-    public function testStrtoupper() {
+    public function testStrtoupper()
+    {
         $this->assertSame(I18N::strtoupper(''), '');
         $this->assertSame(I18N::strtoupper('Abc'), 'ABC');
     }
@@ -46,7 +49,8 @@ class I18NTest extends \PHPUnit_Framework_TestCase {
      *
      * @todo test all locales
      */
-    public function testStrtolower() {
+    public function testStrtolower()
+    {
         $this->assertSame(I18N::strtolower(''), '');
         $this->assertSame(I18N::strtolower('Abc'), 'abc');
     }
@@ -56,7 +60,8 @@ class I18NTest extends \PHPUnit_Framework_TestCase {
      *
      * @todo test all locales
      */
-    public function testStrcasecmp() {
+    public function testStrcasecmp()
+    {
         $this->assertSame(I18N::strcasecmp('', ''), 0);
         $this->assertSame(I18N::strcasecmp('Abc', 'abc'), 0);
         $this->assertTrue(I18N::strcasecmp('Abc', 'bcd') < 0);
@@ -68,7 +73,8 @@ class I18NTest extends \PHPUnit_Framework_TestCase {
     /**
      * Test I18N::reverseText()
      */
-    public function testReverseText() {
+    public function testReverseText()
+    {
         // Create these strings carefully, as text editors can display them in confusing ways.
         $rtl_abc = 'א' . 'ב' . 'ג';
         $rtl_cba = 'ג' . 'ב' . 'א';
@@ -90,7 +96,8 @@ class I18NTest extends \PHPUnit_Framework_TestCase {
     /**
      * Test I18N::languageName()
      */
-    public function testKnownLanguageName() {
+    public function testKnownLanguageName()
+    {
         $this->assertSame('العربية', I18N::languageName('ar'));
         $this->assertSame('Deutsch', I18N::languageName('de'));
         $this->assertSame('Ελληνικά', I18N::languageName('el'));
@@ -101,7 +108,8 @@ class I18NTest extends \PHPUnit_Framework_TestCase {
     /**
      * Test I18N::languageScript()
      */
-    public function testLanguageScript() {
+    public function testLanguageScript()
+    {
         $this->assertSame('Arab', I18N::languageScript('ar'));
         $this->assertSame('Latn', I18N::languageScript('de'));
         $this->assertSame('Grek', I18N::languageScript('el'));

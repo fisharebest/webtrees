@@ -22,11 +22,13 @@ use Mockery;
 /**
  * Test harness for the class CensusColumnConditionFrenchFemme
  */
-class CensusColumnConditionFrenchFemmeTest extends \PHPUnit_Framework_TestCase {
+class CensusColumnConditionFrenchFemmeTest extends \PHPUnit_Framework_TestCase
+{
     /**
      * Delete mock objects
      */
-    public function tearDown() {
+    public function tearDown()
+    {
         Mockery::close();
     }
 
@@ -34,7 +36,8 @@ class CensusColumnConditionFrenchFemmeTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusColumnConditionFrenchFemme
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
      */
-    public function testNoSpouseFamiliesMale() {
+    public function testNoSpouseFamiliesMale()
+    {
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
         $individual->shouldReceive('getSex')->andReturn('M');
         $individual->shouldReceive('getSpouseFamilies')->andReturn(array());
@@ -52,7 +55,8 @@ class CensusColumnConditionFrenchFemmeTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusColumnConditionFrenchFemme
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
      */
-    public function testNoSpouseFamiliesFemale() {
+    public function testNoSpouseFamiliesFemale()
+    {
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
         $individual->shouldReceive('getSex')->andReturn('F');
         $individual->shouldReceive('getSpouseFamilies')->andReturn(array());
@@ -70,7 +74,8 @@ class CensusColumnConditionFrenchFemmeTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusColumnConditionFrenchFemme
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
      */
-    public function testNoFamilyFactsMale() {
+    public function testNoFamilyFactsMale()
+    {
         $spouse = Mockery::mock('Fisharebest\Webtrees\Individual');
         $spouse->shouldReceive('getDeathDate')->andReturn(new Date('1850'));
 
@@ -95,7 +100,8 @@ class CensusColumnConditionFrenchFemmeTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusColumnConditionFrenchFemme
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
      */
-    public function testNoFamilyFactsFemale() {
+    public function testNoFamilyFactsFemale()
+    {
         $spouse = Mockery::mock('Fisharebest\Webtrees\Individual');
         $spouse->shouldReceive('getDeathDate')->andReturn(new Date('1850'));
 
@@ -120,7 +126,8 @@ class CensusColumnConditionFrenchFemmeTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusColumnConditionFrenchFemme
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
      */
-    public function testSpouseDeadMale() {
+    public function testSpouseDeadMale()
+    {
         $spouse = Mockery::mock('Fisharebest\Webtrees\Individual');
         $spouse->shouldReceive('getDeathDate')->andReturn(new Date('1820'));
 
@@ -145,7 +152,8 @@ class CensusColumnConditionFrenchFemmeTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusColumnConditionFrenchFemme
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
      */
-    public function testSpouseDeadFemale() {
+    public function testSpouseDeadFemale()
+    {
         $spouse = Mockery::mock('Fisharebest\Webtrees\Individual');
         $spouse->shouldReceive('getDeathDate')->andReturn(new Date('1820'));
 
@@ -170,7 +178,8 @@ class CensusColumnConditionFrenchFemmeTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusColumnConditionFrenchFemme
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
      */
-    public function testNoFamilyUnmarriedMale() {
+    public function testNoFamilyUnmarriedMale()
+    {
         $fact = Mockery::mock('Fisharebest\Webtrees\Fact');
 
         $family = Mockery::mock('Fisharebest\Webtrees\Family');
@@ -194,7 +203,8 @@ class CensusColumnConditionFrenchFemmeTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusColumnConditionFrenchFemme
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
      */
-    public function testNoFamilyUnmarriedFemale() {
+    public function testNoFamilyUnmarriedFemale()
+    {
         $fact = Mockery::mock('Fisharebest\Webtrees\Fact');
 
         $family = Mockery::mock('Fisharebest\Webtrees\Family');
@@ -218,7 +228,8 @@ class CensusColumnConditionFrenchFemmeTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusColumnConditionFrenchFemme
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
      */
-    public function testChildMale() {
+    public function testChildMale()
+    {
         $fact = Mockery::mock('Fisharebest\Webtrees\Fact');
 
         $family = Mockery::mock('Fisharebest\Webtrees\Family');
@@ -242,7 +253,8 @@ class CensusColumnConditionFrenchFemmeTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusColumnConditionFrenchFemme
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
      */
-    public function testChildFemale() {
+    public function testChildFemale()
+    {
         $fact = Mockery::mock('Fisharebest\Webtrees\Fact');
 
         $family = Mockery::mock('Fisharebest\Webtrees\Family');
@@ -266,7 +278,8 @@ class CensusColumnConditionFrenchFemmeTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusColumnConditionFrenchFemme
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
      */
-    public function testDivorcedMale() {
+    public function testDivorcedMale()
+    {
         $fact = Mockery::mock('Fisharebest\Webtrees\Fact');
 
         $family = Mockery::mock('Fisharebest\Webtrees\Family');
@@ -290,7 +303,8 @@ class CensusColumnConditionFrenchFemmeTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusColumnConditionFrenchFemme
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
      */
-    public function testDivorcedFemale() {
+    public function testDivorcedFemale()
+    {
         $fact = Mockery::mock('Fisharebest\Webtrees\Fact');
 
         $family = Mockery::mock('Fisharebest\Webtrees\Family');

@@ -19,14 +19,16 @@ namespace Fisharebest\Webtrees\Census;
 /**
  * Test harness for the class CensusOfFrance1841
  */
-class CensusOfFrance1841Test extends \PHPUnit_Framework_TestCase {
+class CensusOfFrance1841Test extends \PHPUnit_Framework_TestCase
+{
     /**
      * Test the census place and date
      *
      * @covers Fisharebest\Webtrees\Census\CensusOfFrance1841
      */
-    public function testPlaceAndDate() {
-        $census = new CensusOfFrance1841;
+    public function testPlaceAndDate()
+    {
+        $census = new CensusOfFrance1841();
 
         $this->assertSame('France', $census->censusPlace());
         $this->assertSame('21 JAN 1841', $census->censusDate());
@@ -38,8 +40,9 @@ class CensusOfFrance1841Test extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusOfFrance1841
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testColumns() {
-        $census  = new CensusOfFrance1841;
+    public function testColumns()
+    {
+        $census  = new CensusOfFrance1841();
         $columns = $census->columns();
 
         $this->assertCount(9, $columns);

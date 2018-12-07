@@ -22,11 +22,13 @@ use Mockery;
 /**
  * Test harness for the class CensusColumnAgeMarried
  */
-class CensusColumnAgeMarriedTest extends \PHPUnit_Framework_TestCase {
+class CensusColumnAgeMarriedTest extends \PHPUnit_Framework_TestCase
+{
     /**
      * Delete mock objects
      */
-    public function tearDown() {
+    public function tearDown()
+    {
         Mockery::close();
     }
 
@@ -34,7 +36,8 @@ class CensusColumnAgeMarriedTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusColumnAgeMarried
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testAgeMarried() {
+    public function testAgeMarried()
+    {
         $fact = Mockery::mock('Fisharebest\Webtrees\Fact');
         $fact->shouldReceive('getDate')->andReturn(new Date('01 DEC 1859'));
 
@@ -57,14 +60,16 @@ class CensusColumnAgeMarriedTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusColumnAgeMarried
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testNoBirthDate() {
+    public function testNoBirthDate()
+    {
     }
 
     /**
      * @covers Fisharebest\Webtrees\Census\CensusColumnAgeMarried
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testNoMarriage() {
+    public function testNoMarriage()
+    {
         $family = Mockery::mock('Fisharebest\Webtrees\Family');
         $family->shouldReceive('getFacts')->with('MARR')->andReturn(array());
 
@@ -84,7 +89,8 @@ class CensusColumnAgeMarriedTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusColumnAgeMarried
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testNoSpouseFamily() {
+    public function testNoSpouseFamily()
+    {
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
         $individual->shouldReceive('getBirthDate')->andReturn(new Date('15 MAR 1840'));
         $individual->shouldReceive('getSpouseFamilies')->andReturn(array());

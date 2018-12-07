@@ -22,11 +22,13 @@ use Mockery;
 /**
  * Test harness for the class CensusColumnAge
  */
-class CensusColumnAgeTest extends \PHPUnit_Framework_TestCase {
+class CensusColumnAgeTest extends \PHPUnit_Framework_TestCase
+{
     /**
      * Delete mock objects
      */
-    public function tearDown() {
+    public function tearDown()
+    {
         Mockery::close();
     }
 
@@ -34,7 +36,8 @@ class CensusColumnAgeTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusColumnAge
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testGenerateColumn() {
+    public function testGenerateColumn()
+    {
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
         $individual->shouldReceive('getEstimatedBirthDate')->andReturn(new Date('01 JAN 1800'));
 

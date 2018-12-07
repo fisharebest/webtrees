@@ -31,14 +31,16 @@ use Fisharebest\Webtrees\Theme\WebtreesTheme;
  * Only the first two functions are required: themeId() and themeName().
  * The rest are just examples, and should be removed in actual themes.
  */
-class MyTheme extends WebtreesTheme {
+class MyTheme extends WebtreesTheme
+{
     /**
      * Give your theme a unique identifier. Themes beginning with an underscore
      * are reserved for internal use.
      *
      * {@inheritdoc}
      */
-    public function themeId() {
+    public function themeId()
+    {
         return '_custom';
     }
 
@@ -51,7 +53,8 @@ class MyTheme extends WebtreesTheme {
      *
      * {@inheritdoc}
      */
-    public function themeName() {
+    public function themeName()
+    {
         return 'Custom theme';
     }
 
@@ -60,8 +63,9 @@ class MyTheme extends WebtreesTheme {
      *
      * {@inheritdoc}
      */
-    public function stylesheets() {
-        $css_files   = parent::stylesheets();
+    public function stylesheets()
+    {
+        $css_files = parent::stylesheets();
         // Put a version number in the URL, to prevent browsers from caching old versions.
         $css_files[] = WT_BASE_URL . 'themes/_custom/custom-v1.0.css';
 
@@ -75,7 +79,8 @@ class MyTheme extends WebtreesTheme {
      *
      * {@inheritdoc}
      */
-    public function menuLists($surname) {
+    public function menuLists($surname)
+    {
         // Start with the default "Lists" menu.
         $menu = parent::menuLists($surname);
         // Remove the "notes" sub-menu.

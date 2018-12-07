@@ -19,11 +19,13 @@ namespace Fisharebest\Webtrees\Census;
 /**
  * Test harness for the class CensusColumnAgeFemale5Years
  */
-class CensusTest extends \PHPUnit_Framework_TestCase {
+class CensusTest extends \PHPUnit_Framework_TestCase
+{
     /**
      * @covers Fisharebest\Webtrees\Census\Census
      */
-    public function testAllCensus() {
+    public function testAllCensus()
+    {
         $censuses = Census::allCensusPlaces();
 
         $this->assertCount(8, $censuses);

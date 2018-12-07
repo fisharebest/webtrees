@@ -21,11 +21,13 @@ use Mockery;
 /**
  * Test harness for the class CensusColumnFatherBirthPlaceSimple
  */
-class CensusColumnFatherBirthPlaceSimpleTest extends \PHPUnit_Framework_TestCase {
+class CensusColumnFatherBirthPlaceSimpleTest extends \PHPUnit_Framework_TestCase
+{
     /**
      * Delete mock objects
      */
-    public function tearDown() {
+    public function tearDown()
+    {
         Mockery::close();
     }
 
@@ -33,7 +35,8 @@ class CensusColumnFatherBirthPlaceSimpleTest extends \PHPUnit_Framework_TestCase
      * @covers Fisharebest\Webtrees\Census\CensusColumnFatherBirthPlaceSimple
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testKnownStateAndTown() {
+    public function testKnownStateAndTown()
+    {
         $father = Mockery::mock('Fisharebest\Webtrees\Individual');
         $father->shouldReceive('getBirthPlace')->andReturn('Miami, Florida, United States');
 

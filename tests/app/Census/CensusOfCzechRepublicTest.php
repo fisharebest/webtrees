@@ -19,14 +19,16 @@ namespace Fisharebest\Webtrees\Census;
 /**
  * Test harness for the class CensusOfCzechRepublic
  */
-class CensusOfCzechRepublicTest extends \PHPUnit_Framework_TestCase {
+class CensusOfCzechRepublicTest extends \PHPUnit_Framework_TestCase
+{
     /**
      * Test the census place
      *
      * @covers Fisharebest\Webtrees\Census\CensusOfCzechRepublic
      */
-    public function testPlace() {
-        $census = new CensusOfCzechRepublic;
+    public function testPlace()
+    {
+        $census = new CensusOfCzechRepublic();
 
         $this->assertSame('Česko', $census->censusPlace());
     }
@@ -36,8 +38,9 @@ class CensusOfCzechRepublicTest extends \PHPUnit_Framework_TestCase {
      *
      * @covers Fisharebest\Webtrees\Census\CensusOfCzechRepublic
      */
-    public function testAllDates() {
-        $census  = new CensusOfCzechRepublic;
+    public function testAllDates()
+    {
+        $census  = new CensusOfCzechRepublic();
 
         $census_dates = $census->allCensusDates();
 

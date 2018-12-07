@@ -22,11 +22,13 @@ use Mockery;
 /**
  * Test harness for the class CensusColumnMonthIfMarriedWithinYear
  */
-class CensusColumnMonthIfMarriedWithinYearTest extends \PHPUnit_Framework_TestCase {
+class CensusColumnMonthIfMarriedWithinYearTest extends \PHPUnit_Framework_TestCase
+{
     /**
      * Delete mock objects
      */
-    public function tearDown() {
+    public function tearDown()
+    {
         Mockery::close();
     }
 
@@ -34,7 +36,8 @@ class CensusColumnMonthIfMarriedWithinYearTest extends \PHPUnit_Framework_TestCa
      * @covers Fisharebest\Webtrees\Census\CensusColumnMonthIfMarriedWithinYear
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testMarriedWithinYear() {
+    public function testMarriedWithinYear()
+    {
         $fact = Mockery::mock('Fisharebest\Webtrees\Fact');
         $fact->shouldReceive('getDate')->andReturn(new Date('01 DEC 1859'));
 
@@ -56,7 +59,8 @@ class CensusColumnMonthIfMarriedWithinYearTest extends \PHPUnit_Framework_TestCa
      * @covers Fisharebest\Webtrees\Census\CensusColumnMonthIfMarriedWithinYear
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testMarriedOverYearBeforeTheCensus() {
+    public function testMarriedOverYearBeforeTheCensus()
+    {
         $fact = Mockery::mock('Fisharebest\Webtrees\Fact');
         $fact->shouldReceive('getDate')->andReturn(new Date('01 JAN 1859'));
 
@@ -78,7 +82,8 @@ class CensusColumnMonthIfMarriedWithinYearTest extends \PHPUnit_Framework_TestCa
      * @covers Fisharebest\Webtrees\Census\CensusColumnMonthIfMarriedWithinYear
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testMarriedAfterTheCensus() {
+    public function testMarriedAfterTheCensus()
+    {
         $fact = Mockery::mock('Fisharebest\Webtrees\Fact');
         $fact->shouldReceive('getDate')->andReturn(new Date('02 JUN 1860'));
 
@@ -100,7 +105,8 @@ class CensusColumnMonthIfMarriedWithinYearTest extends \PHPUnit_Framework_TestCa
      * @covers Fisharebest\Webtrees\Census\CensusColumnMonthIfMarriedWithinYear
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testNoMarriage() {
+    public function testNoMarriage()
+    {
         $family = Mockery::mock('Fisharebest\Webtrees\Family');
         $family->shouldReceive('getFacts')->with('MARR')->andReturn(array());
 
@@ -119,7 +125,8 @@ class CensusColumnMonthIfMarriedWithinYearTest extends \PHPUnit_Framework_TestCa
      * @covers Fisharebest\Webtrees\Census\CensusColumnMonthIfMarriedWithinYear
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testNoSpouseFamily() {
+    public function testNoSpouseFamily()
+    {
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
         $individual->shouldReceive('getSpouseFamilies')->andReturn(array());
 

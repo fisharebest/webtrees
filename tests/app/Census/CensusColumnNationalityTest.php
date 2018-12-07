@@ -22,11 +22,13 @@ use Mockery;
 /**
  * Test harness for the class CensusColumnNationality
  */
-class CensusColumnNationalityTest extends \PHPUnit_Framework_TestCase {
+class CensusColumnNationalityTest extends \PHPUnit_Framework_TestCase
+{
     /**
      * Delete mock objects
      */
-    public function tearDown() {
+    public function tearDown()
+    {
         Mockery::close();
     }
 
@@ -34,7 +36,8 @@ class CensusColumnNationalityTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusColumnNationality
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testNoBirthPlace() {
+    public function testNoBirthPlace()
+    {
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
         $individual->shouldReceive('getBirthPlace')->andReturn('');
         $individual->shouldReceive('getFacts')->andReturn(array());
@@ -51,7 +54,8 @@ class CensusColumnNationalityTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusColumnNationality
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testPlaceCountry() {
+    public function testPlaceCountry()
+    {
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
         $individual->shouldReceive('getBirthPlace')->andReturn('Australia');
         $individual->shouldReceive('getFacts')->andReturn(array());
@@ -68,7 +72,8 @@ class CensusColumnNationalityTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusColumnNationality
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testBritish() {
+    public function testBritish()
+    {
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
         $individual->shouldReceive('getBirthPlace')->andReturn('London, England');
         $individual->shouldReceive('getFacts')->andReturn(array());
@@ -85,7 +90,8 @@ class CensusColumnNationalityTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusColumnNationality
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testEmigrated() {
+    public function testEmigrated()
+    {
         $place1 = Mockery::mock('Fisharebest\Webtrees\Place');
         $place1->shouldReceive('getGedcomName')->andReturn('United States');
 

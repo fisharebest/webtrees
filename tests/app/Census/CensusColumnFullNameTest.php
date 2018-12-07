@@ -21,11 +21,13 @@ use Mockery;
 /**
  * Test harness for the class CensusColumnFullName
  */
-class CensusColumnFullNameTest extends \PHPUnit_Framework_TestCase {
+class CensusColumnFullNameTest extends \PHPUnit_Framework_TestCase
+{
     /**
      * Delete mock objects
      */
-    public function tearDown() {
+    public function tearDown()
+    {
         Mockery::close();
     }
 
@@ -33,7 +35,8 @@ class CensusColumnFullNameTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusColumnFullName
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testFullName() {
+    public function testFullName()
+    {
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
         $individual->shouldReceive('getAllNames')->andReturn(array(array('full' => 'Joe Bloggs')));
         $individual->shouldReceive('getSpouseFamilies')->andReturn(array());

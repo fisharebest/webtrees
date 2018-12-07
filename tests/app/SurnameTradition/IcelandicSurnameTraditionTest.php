@@ -20,15 +20,17 @@ use Fisharebest\Webtrees\SurnameTradition\SurnameTraditionInterface;
 /**
  * Test harness for the class SpanishSurnameTradition
  */
-class IcelandicSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
+class IcelandicSurnameTraditionTest extends \PHPUnit_Framework_TestCase
+{
     /** @var SurnameTraditionInterface */
     private $surname_tradition;
 
     /**
      * Prepare the environment for these tests
      */
-    public function setUp() {
-        $this->surname_tradition = new IcelandicSurnameTradition;
+    public function setUp()
+    {
+        $this->surname_tradition = new IcelandicSurnameTradition();
     }
 
     /**
@@ -36,7 +38,8 @@ class IcelandicSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
      *
      * @covers Fisharebest\Webtrees\SurnameTradition\IcelandicSurnameTradition
      */
-    public function testMarriedSurnames() {
+    public function testMarriedSurnames()
+    {
         $this->assertSame(false, $this->surname_tradition->hasMarriedNames());
     }
 
@@ -45,7 +48,8 @@ class IcelandicSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
      *
      * @covers Fisharebest\Webtrees\SurnameTradition\IcelandicSurnameTradition
      */
-    public function testSurnames() {
+    public function testSurnames()
+    {
         $this->assertSame(false, $this->surname_tradition->hasSurnames());
     }
 
@@ -54,7 +58,8 @@ class IcelandicSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
      *
      * @covers Fisharebest\Webtrees\SurnameTradition\IcelandicSurnameTradition
      */
-    public function testNewSonNames() {
+    public function testNewSonNames()
+    {
         $this->assertSame(
             array('NAME' => 'Jonsson'),
             $this->surname_tradition->newChildNames('Jon Einarsson', 'Eva Stefansdottir', 'M')
@@ -66,7 +71,8 @@ class IcelandicSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
      *
      * @covers Fisharebest\Webtrees\SurnameTradition\IcelandicSurnameTradition
      */
-    public function testNewDaughterNames() {
+    public function testNewDaughterNames()
+    {
         $this->assertSame(
             array('NAME' => 'Jonsdottir'),
             $this->surname_tradition->newChildNames('Jon Einarsson', 'Eva Stefansdottir', 'F')
@@ -78,7 +84,8 @@ class IcelandicSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
      *
      * @covers Fisharebest\Webtrees\SurnameTradition\IcelandicSurnameTradition
      */
-    public function testNewChildNames() {
+    public function testNewChildNames()
+    {
         $this->assertSame(
             array(),
             $this->surname_tradition->newChildNames('Jon Einarsson', 'Eva Stefansdottir', 'U')
@@ -90,7 +97,8 @@ class IcelandicSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
      *
      * @covers Fisharebest\Webtrees\SurnameTradition\IcelandicSurnameTradition
      */
-    public function testNewFatherNames() {
+    public function testNewFatherNames()
+    {
         $this->assertSame(
             array('NAME' => 'Einar', 'GIVN' => 'Einar'),
             $this->surname_tradition->newParentNames('Jon Einarsson', 'M')
@@ -102,7 +110,8 @@ class IcelandicSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
      *
      * @covers Fisharebest\Webtrees\SurnameTradition\IcelandicSurnameTradition
      */
-    public function testNewMotherNames() {
+    public function testNewMotherNames()
+    {
         $this->assertSame(
             array(),
             $this->surname_tradition->newParentNames('Jon Einarsson', 'F')
@@ -114,7 +123,8 @@ class IcelandicSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
      *
      * @covers Fisharebest\Webtrees\SurnameTradition\IcelandicSurnameTradition
      */
-    public function testNewParentNames() {
+    public function testNewParentNames()
+    {
         $this->assertSame(
             array(),
             $this->surname_tradition->newParentNames('Jon Einarsson', 'U')
@@ -126,7 +136,8 @@ class IcelandicSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
      *
      * @covers Fisharebest\Webtrees\SurnameTradition\IcelandicSurnameTradition
      */
-    public function testNewHusbandNames() {
+    public function testNewHusbandNames()
+    {
         $this->assertSame(
             array(),
             $this->surname_tradition->newSpouseNames('Eva Stefansdottir', 'M')
@@ -138,7 +149,8 @@ class IcelandicSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
      *
      * @covers Fisharebest\Webtrees\SurnameTradition\IcelandicSurnameTradition
      */
-    public function testNewWifeNames() {
+    public function testNewWifeNames()
+    {
         $this->assertSame(
             array(),
             $this->surname_tradition->newSpouseNames('Jon Einarsson', 'F')
@@ -150,7 +162,8 @@ class IcelandicSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
      *
      * @covers Fisharebest\Webtrees\SurnameTradition\IcelandicSurnameTradition
      */
-    public function testNewSpouseNames() {
+    public function testNewSpouseNames()
+    {
         $this->assertSame(
             array(),
             $this->surname_tradition->newSpouseNames('Jon Einarsson', 'U')

@@ -21,11 +21,13 @@ use Mockery;
 /**
  * Test harness for the class CensusColumnBirthPlace
  */
-class CensusColumnBirthPlaceTest extends \PHPUnit_Framework_TestCase {
+class CensusColumnBirthPlaceTest extends \PHPUnit_Framework_TestCase
+{
     /**
      * Delete mock objects
      */
-    public function tearDown() {
+    public function tearDown()
+    {
         Mockery::close();
     }
 
@@ -33,7 +35,8 @@ class CensusColumnBirthPlaceTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusColumnBirthPlace
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testPlaceCountry() {
+    public function testPlaceCountry()
+    {
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
         $individual->shouldReceive('getBirthPlace')->andReturn('Westminster, London, England');
 
@@ -49,7 +52,8 @@ class CensusColumnBirthPlaceTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusColumnBirthPlace
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testPlaceAndCountry() {
+    public function testPlaceAndCountry()
+    {
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
         $individual->shouldReceive('getBirthPlace')->andReturn('England');
 
@@ -65,7 +69,8 @@ class CensusColumnBirthPlaceTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusColumnBirthPlace
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testDifferentCountry() {
+    public function testDifferentCountry()
+    {
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
         $individual->shouldReceive('getBirthPlace')->andReturn('Paris, France');
 

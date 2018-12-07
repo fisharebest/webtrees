@@ -21,11 +21,13 @@ use Mockery;
 /**
  * Test harness for the class CensusColumnBornForeignParts
  */
-class CensusColumnBornForeignPartsTest extends \PHPUnit_Framework_TestCase {
+class CensusColumnBornForeignPartsTest extends \PHPUnit_Framework_TestCase
+{
     /**
      * Delete mock objects
      */
-    public function tearDown() {
+    public function tearDown()
+    {
         Mockery::close();
     }
 
@@ -33,7 +35,8 @@ class CensusColumnBornForeignPartsTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusColumnBornForeignParts
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testBornEnglandCensusEngland() {
+    public function testBornEnglandCensusEngland()
+    {
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
         $individual->shouldReceive('getBirthPlace')->andReturn('London, England');
 
@@ -49,7 +52,8 @@ class CensusColumnBornForeignPartsTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusColumnBornForeignParts
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testBornWalesCensusEngland() {
+    public function testBornWalesCensusEngland()
+    {
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
         $individual->shouldReceive('getBirthPlace')->andReturn('Cardiff, Wales');
 
@@ -65,7 +69,8 @@ class CensusColumnBornForeignPartsTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusColumnBornForeignParts
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testBornScotlandCensusEngland() {
+    public function testBornScotlandCensusEngland()
+    {
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
         $individual->shouldReceive('getBirthPlace')->andReturn('Edinburgh, Scotland');
 
@@ -81,7 +86,8 @@ class CensusColumnBornForeignPartsTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusColumnBornForeignParts
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testBornIrelandCensusEngland() {
+    public function testBornIrelandCensusEngland()
+    {
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
         $individual->shouldReceive('getBirthPlace')->andReturn('Dublin, Ireland');
 
@@ -97,7 +103,8 @@ class CensusColumnBornForeignPartsTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusColumnBornForeignParts
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testBornForeignCensusEngland() {
+    public function testBornForeignCensusEngland()
+    {
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
         $individual->shouldReceive('getBirthPlace')->andReturn('Elbonia');
 
@@ -113,7 +120,8 @@ class CensusColumnBornForeignPartsTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusColumnBornForeignParts
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testBornEnglandCensusIreland() {
+    public function testBornEnglandCensusIreland()
+    {
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
         $individual->shouldReceive('getBirthPlace')->andReturn('London, England');
 
@@ -129,7 +137,8 @@ class CensusColumnBornForeignPartsTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusColumnBornForeignParts
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testBornWalesCensusIreland() {
+    public function testBornWalesCensusIreland()
+    {
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
         $individual->shouldReceive('getBirthPlace')->andReturn('Cardiff, Wales');
 
@@ -145,7 +154,8 @@ class CensusColumnBornForeignPartsTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusColumnBornForeignParts
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testBornScotlandCensusIreland() {
+    public function testBornScotlandCensusIreland()
+    {
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
         $individual->shouldReceive('getBirthPlace')->andReturn('Edinburgh, Scotland');
 
@@ -161,7 +171,8 @@ class CensusColumnBornForeignPartsTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusColumnBornForeignParts
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testBornIrelandCensusIreland() {
+    public function testBornIrelandCensusIreland()
+    {
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
         $individual->shouldReceive('getBirthPlace')->andReturn('Dublin, Ireland');
 
@@ -177,7 +188,8 @@ class CensusColumnBornForeignPartsTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusColumnBornForeignParts
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testBornForeignCensusIreland() {
+    public function testBornForeignCensusIreland()
+    {
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
         $individual->shouldReceive('getBirthPlace')->andReturn('Elbonia');
 
@@ -193,7 +205,8 @@ class CensusColumnBornForeignPartsTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusColumnBornForeignParts
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testBornEnglandCensusScotland() {
+    public function testBornEnglandCensusScotland()
+    {
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
         $individual->shouldReceive('getBirthPlace')->andReturn('London, England');
 
@@ -209,7 +222,8 @@ class CensusColumnBornForeignPartsTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusColumnBornForeignParts
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testBornWalesCensusScotland() {
+    public function testBornWalesCensusScotland()
+    {
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
         $individual->shouldReceive('getBirthPlace')->andReturn('Cardiff, Wales');
 
@@ -225,7 +239,8 @@ class CensusColumnBornForeignPartsTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusColumnBornForeignParts
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testBornScotlandCensusScotland() {
+    public function testBornScotlandCensusScotland()
+    {
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
         $individual->shouldReceive('getBirthPlace')->andReturn('Edinburgh, Scotland');
 
@@ -241,7 +256,8 @@ class CensusColumnBornForeignPartsTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusColumnBornForeignParts
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testBornIrelandCensusScotland() {
+    public function testBornIrelandCensusScotland()
+    {
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
         $individual->shouldReceive('getBirthPlace')->andReturn('Dublin, Ireland');
 
@@ -257,7 +273,8 @@ class CensusColumnBornForeignPartsTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusColumnBornForeignParts
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testBornForeignCensusScotland() {
+    public function testBornForeignCensusScotland()
+    {
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
         $individual->shouldReceive('getBirthPlace')->andReturn('Elbonia');
 
@@ -273,7 +290,8 @@ class CensusColumnBornForeignPartsTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusColumnBornForeignParts
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testBornEnglandCensusWales() {
+    public function testBornEnglandCensusWales()
+    {
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
         $individual->shouldReceive('getBirthPlace')->andReturn('London, England');
 
@@ -289,7 +307,8 @@ class CensusColumnBornForeignPartsTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusColumnBornForeignParts
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testBornWalesCensusWales() {
+    public function testBornWalesCensusWales()
+    {
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
         $individual->shouldReceive('getBirthPlace')->andReturn('Cardiff, Wales');
 
@@ -305,7 +324,8 @@ class CensusColumnBornForeignPartsTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusColumnBornForeignParts
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testBornScotlandCensusWales() {
+    public function testBornScotlandCensusWales()
+    {
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
         $individual->shouldReceive('getBirthPlace')->andReturn('Edinburgh, Scotland');
 
@@ -321,7 +341,8 @@ class CensusColumnBornForeignPartsTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusColumnBornForeignParts
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testBornIrelandCensusWales() {
+    public function testBornIrelandCensusWales()
+    {
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
         $individual->shouldReceive('getBirthPlace')->andReturn('Dublin, Ireland');
 
@@ -337,7 +358,8 @@ class CensusColumnBornForeignPartsTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusColumnBornForeignParts
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testBornForeignCensusWales() {
+    public function testBornForeignCensusWales()
+    {
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
         $individual->shouldReceive('getBirthPlace')->andReturn('Elbonia');
 
@@ -353,7 +375,8 @@ class CensusColumnBornForeignPartsTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusColumnBornForeignParts
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testBornNowhereCensusEngland() {
+    public function testBornNowhereCensusEngland()
+    {
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
         $individual->shouldReceive('getBirthPlace')->andReturn('');
 
@@ -369,7 +392,8 @@ class CensusColumnBornForeignPartsTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusColumnBornForeignParts
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testBornNowhereCensusWales() {
+    public function testBornNowhereCensusWales()
+    {
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
         $individual->shouldReceive('getBirthPlace')->andReturn('');
 
@@ -385,7 +409,8 @@ class CensusColumnBornForeignPartsTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusColumnBornForeignParts
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testBornNowhereCensusScotland() {
+    public function testBornNowhereCensusScotland()
+    {
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
         $individual->shouldReceive('getBirthPlace')->andReturn('');
 

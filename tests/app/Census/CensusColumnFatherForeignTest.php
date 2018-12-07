@@ -21,11 +21,13 @@ use Mockery;
 /**
  * Test harness for the class CensusColumnFatherForeign
  */
-class CensusColumnFatherForeignTest extends \PHPUnit_Framework_TestCase {
+class CensusColumnFatherForeignTest extends \PHPUnit_Framework_TestCase
+{
     /**
      * Delete mock objects
      */
-    public function tearDown() {
+    public function tearDown()
+    {
         Mockery::close();
     }
 
@@ -33,7 +35,8 @@ class CensusColumnFatherForeignTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusColumnFatherForeign
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testSameCountry() {
+    public function testSameCountry()
+    {
         $father = Mockery::mock('Fisharebest\Webtrees\Individual');
         $father->shouldReceive('getBirthPlace')->andReturn('London, England');
 
@@ -55,7 +58,8 @@ class CensusColumnFatherForeignTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusColumnFatherForeign
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testDifferentCountry() {
+    public function testDifferentCountry()
+    {
         $father = Mockery::mock('Fisharebest\Webtrees\Individual');
         $father->shouldReceive('getBirthPlace')->andReturn('London, England');
 
@@ -77,7 +81,8 @@ class CensusColumnFatherForeignTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusColumnFatherForeign
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testPlaceNoParent() {
+    public function testPlaceNoParent()
+    {
         $family = Mockery::mock('Fisharebest\Webtrees\Family');
         $family->shouldReceive('getHusband')->andReturn(null);
 
@@ -96,7 +101,8 @@ class CensusColumnFatherForeignTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusColumnFatherForeign
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testPlaceNoParentFamily() {
+    public function testPlaceNoParentFamily()
+    {
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
         $individual->shouldReceive('getPrimaryChildFamily')->andReturn(null);
 

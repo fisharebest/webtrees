@@ -21,11 +21,13 @@ use Mockery;
 /**
  * Test harness for the class CensusColumnSexMF
  */
-class CensusColumnSexMFTest extends \PHPUnit_Framework_TestCase {
+class CensusColumnSexMFTest extends \PHPUnit_Framework_TestCase
+{
     /**
      * Delete mock objects
      */
-    public function tearDown() {
+    public function tearDown()
+    {
         Mockery::close();
     }
 
@@ -33,7 +35,8 @@ class CensusColumnSexMFTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusColumnSexMF
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testMale() {
+    public function testMale()
+    {
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
         $individual->shouldReceive('getSex')->andReturn('M');
 
@@ -48,7 +51,8 @@ class CensusColumnSexMFTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusColumnSexMF
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testFeale() {
+    public function testFeale()
+    {
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
         $individual->shouldReceive('getSex')->andReturn('F');
 
@@ -63,7 +67,8 @@ class CensusColumnSexMFTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusColumnSexMF
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testUnknownSex() {
+    public function testUnknownSex()
+    {
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
         $individual->shouldReceive('getSex')->andReturn('U');
 

@@ -21,11 +21,13 @@ use Mockery;
 /**
  * Test harness for the class CensusColumnRelationToHead
  */
-class CensusColumnRelationToHeadGermanTest extends \PHPUnit_Framework_TestCase {
+class CensusColumnRelationToHeadGermanTest extends \PHPUnit_Framework_TestCase
+{
     /**
      * Delete mock objects
      */
-    public function tearDown() {
+    public function tearDown()
+    {
         Mockery::close();
     }
 
@@ -33,7 +35,8 @@ class CensusColumnRelationToHeadGermanTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusColumnRelationToHead
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testNull() {
+    public function testNull()
+    {
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
 
         $census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');

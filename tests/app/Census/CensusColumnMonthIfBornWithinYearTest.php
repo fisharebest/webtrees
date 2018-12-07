@@ -22,11 +22,13 @@ use Mockery;
 /**
  * Test harness for the class CensusColumnMonthIfBornWithinYear
  */
-class CensusColumnMonthIfBornWithinYearTest extends \PHPUnit_Framework_TestCase {
+class CensusColumnMonthIfBornWithinYearTest extends \PHPUnit_Framework_TestCase
+{
     /**
      * Delete mock objects
      */
-    public function tearDown() {
+    public function tearDown()
+    {
         Mockery::close();
     }
 
@@ -34,7 +36,8 @@ class CensusColumnMonthIfBornWithinYearTest extends \PHPUnit_Framework_TestCase 
      * @covers Fisharebest\Webtrees\Census\CensusColumnMonthIfBornWithinYear
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testBornWithinYear() {
+    public function testBornWithinYear()
+    {
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
         $individual->shouldReceive('getBirthDate')->andReturn(new Date('01 JAN 1860'));
 
@@ -50,7 +53,8 @@ class CensusColumnMonthIfBornWithinYearTest extends \PHPUnit_Framework_TestCase 
      * @covers Fisharebest\Webtrees\Census\CensusColumnMonthIfBornWithinYear
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testBornOverYearBeforeTheCensus() {
+    public function testBornOverYearBeforeTheCensus()
+    {
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
         $individual->shouldReceive('getBirthDate')->andReturn(new Date('01 JAN 1859'));
 
@@ -66,7 +70,8 @@ class CensusColumnMonthIfBornWithinYearTest extends \PHPUnit_Framework_TestCase 
      * @covers Fisharebest\Webtrees\Census\CensusColumnMonthIfBornWithinYear
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testBornAfterTheCensus() {
+    public function testBornAfterTheCensus()
+    {
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
         $individual->shouldReceive('getBirthDate')->andReturn(new Date('02 JUN 1860'));
 
@@ -84,7 +89,8 @@ class CensusColumnMonthIfBornWithinYearTest extends \PHPUnit_Framework_TestCase 
      * @covers Fisharebest\Webtrees\Census\CensusColumnMonthIfBornWithinYear
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testNoBirth() {
+    public function testNoBirth()
+    {
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
         $individual->shouldReceive('getBirthDate')->andReturn(new Date(''));
 

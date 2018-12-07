@@ -21,11 +21,13 @@ use Mockery;
 /**
  * Test harness for the class CensusColumnReligion
  */
-class CensusColumnReligionTest extends \PHPUnit_Framework_TestCase {
+class CensusColumnReligionTest extends \PHPUnit_Framework_TestCase
+{
     /**
      * Delete mock objects
      */
-    public function tearDown() {
+    public function tearDown()
+    {
         Mockery::close();
     }
 
@@ -33,7 +35,8 @@ class CensusColumnReligionTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusColumnReligion
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testReligion() {
+    public function testReligion()
+    {
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
 
         $census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');

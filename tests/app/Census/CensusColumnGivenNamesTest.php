@@ -21,11 +21,13 @@ use Mockery;
 /**
  * Test harness for the class CensusColumnGivenNames
  */
-class CensusColumnGivenNamesTest extends \PHPUnit_Framework_TestCase {
+class CensusColumnGivenNamesTest extends \PHPUnit_Framework_TestCase
+{
     /**
      * Delete mock objects
      */
-    public function tearDown() {
+    public function tearDown()
+    {
         Mockery::close();
     }
 
@@ -33,7 +35,8 @@ class CensusColumnGivenNamesTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusColumnGivenNames
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testGivenNames() {
+    public function testGivenNames()
+    {
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
         $individual->shouldReceive('getAllNames')->andReturn(array(array('givn' => 'Joe')));
 
@@ -48,7 +51,8 @@ class CensusColumnGivenNamesTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusColumnGivenNames
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testNoName() {
+    public function testNoName()
+    {
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
         $individual->shouldReceive('getAllNames')->andReturn(array());
 

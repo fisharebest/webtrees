@@ -22,11 +22,13 @@ use Mockery;
 /**
  * Test harness for the class CensusColumnYearsMarried
  */
-class CensusColumnYearsMarriedTest extends \PHPUnit_Framework_TestCase {
+class CensusColumnYearsMarriedTest extends \PHPUnit_Framework_TestCase
+{
     /**
      * Delete mock objects
      */
-    public function tearDown() {
+    public function tearDown()
+    {
         Mockery::close();
     }
 
@@ -34,7 +36,8 @@ class CensusColumnYearsMarriedTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusColumnYearsMarried
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testNoSpouseFamily() {
+    public function testNoSpouseFamily()
+    {
         $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
         $individual->shouldReceive('getSpouseFamilies')->andReturn(array());
 
@@ -50,7 +53,8 @@ class CensusColumnYearsMarriedTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusColumnYearsMarried
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testNoMarriage() {
+    public function testNoMarriage()
+    {
         $family = Mockery::mock('Fisharebest\Webtrees\Family');
         $family->shouldReceive('getFacts')->with('MARR', true)->andReturn(array());
 
@@ -69,7 +73,8 @@ class CensusColumnYearsMarriedTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusColumnYearsMarried
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testUndatedMarriage() {
+    public function testUndatedMarriage()
+    {
         $fact = Mockery::mock('Fisharebest\Webtrees\Fact');
         $fact->shouldReceive('getDate')->andReturn(new Date(''));
 
@@ -91,7 +96,8 @@ class CensusColumnYearsMarriedTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusColumnYearsMarried
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testMarriageAfterCensus() {
+    public function testMarriageAfterCensus()
+    {
         $fact = Mockery::mock('Fisharebest\Webtrees\Fact');
         $fact->shouldReceive('getDate')->andReturn(new Date('1861'));
 
@@ -113,7 +119,8 @@ class CensusColumnYearsMarriedTest extends \PHPUnit_Framework_TestCase {
      * @covers Fisharebest\Webtrees\Census\CensusColumnYearsMarried
      * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
-    public function testMarriageBeforeCensus() {
+    public function testMarriageBeforeCensus()
+    {
         $fact = Mockery::mock('Fisharebest\Webtrees\Fact');
         $fact->shouldReceive('getDate')->andReturn(new Date('OCT 1851'));
 

@@ -20,15 +20,17 @@ use Fisharebest\Webtrees\SurnameTradition\SurnameTraditionInterface;
 /**
  * Test harness for the class SpanishSurnameTradition
  */
-class SpanishSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
+class SpanishSurnameTraditionTest extends \PHPUnit_Framework_TestCase
+{
     /** @var SurnameTraditionInterface */
     private $surname_tradition;
 
     /**
      * Prepare the environment for these tests
      */
-    public function setUp() {
-        $this->surname_tradition = new SpanishSurnameTradition;
+    public function setUp()
+    {
+        $this->surname_tradition = new SpanishSurnameTradition();
     }
 
     /**
@@ -36,7 +38,8 @@ class SpanishSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
      *
      * @covers Fisharebest\Webtrees\SurnameTradition\SpanishSurnameTradition
      */
-    public function testMarriedSurnames() {
+    public function testMarriedSurnames()
+    {
         $this->assertSame(false, $this->surname_tradition->hasMarriedNames());
     }
 
@@ -45,7 +48,8 @@ class SpanishSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
      *
      * @covers Fisharebest\Webtrees\SurnameTradition\SpanishSurnameTradition
      */
-    public function testSurnames() {
+    public function testSurnames()
+    {
         $this->assertSame(true, $this->surname_tradition->hasSurnames());
     }
 
@@ -54,7 +58,8 @@ class SpanishSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
      *
      * @covers Fisharebest\Webtrees\SurnameTradition\SpanishSurnameTradition
      */
-    public function testNewSonNames() {
+    public function testNewSonNames()
+    {
         $this->assertSame(
             array('NAME' => '/Garcia/ /Ruiz/', 'SURN' => 'Garcia,Ruiz'),
             $this->surname_tradition->newChildNames('Gabriel /Garcia/ /Iglesias/', 'Maria /Ruiz/ /Lorca/', 'M')
@@ -66,7 +71,8 @@ class SpanishSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
      *
      * @covers Fisharebest\Webtrees\SurnameTradition\SpanishSurnameTradition
      */
-    public function testNewDaughterNames() {
+    public function testNewDaughterNames()
+    {
         $this->assertSame(
             array('NAME' => '/Garcia/ /Ruiz/', 'SURN' => 'Garcia,Ruiz'),
             $this->surname_tradition->newChildNames('Gabriel /Garcia/ /Iglesias/', 'Maria /Ruiz/ /Lorca/', 'M')
@@ -78,7 +84,8 @@ class SpanishSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
      *
      * @covers Fisharebest\Webtrees\SurnameTradition\SpanishSurnameTradition
      */
-    public function testNewChildNames() {
+    public function testNewChildNames()
+    {
         $this->assertSame(
             array('NAME' => '/Garcia/ /Ruiz/', 'SURN' => 'Garcia,Ruiz'),
             $this->surname_tradition->newChildNames('Gabriel /Garcia/ /Iglesias/', 'Maria /Ruiz/ /Lorca/', 'M')
@@ -90,7 +97,8 @@ class SpanishSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
      *
      * @covers Fisharebest\Webtrees\SurnameTradition\SpanishSurnameTradition
      */
-    public function testNewChildNamesWithNoParentsNames() {
+    public function testNewChildNamesWithNoParentsNames()
+    {
         $this->assertSame(
             array('NAME' => '// //', 'SURN' => ''),
             $this->surname_tradition->newChildNames('', '', 'U')
@@ -102,7 +110,8 @@ class SpanishSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
      *
      * @covers Fisharebest\Webtrees\SurnameTradition\SpanishSurnameTradition
      */
-    public function testNewChildNamesCompunds() {
+    public function testNewChildNamesCompunds()
+    {
         $this->assertSame(
             array('NAME' => '/Garcia/ /Ruiz/', 'SURN' => 'Garcia,Ruiz'),
             $this->surname_tradition->newChildNames('Gabriel /Garcia Iglesias/', 'Maria /Ruiz Lorca/', 'M')
@@ -118,7 +127,8 @@ class SpanishSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
      *
      * @covers Fisharebest\Webtrees\SurnameTradition\SpanishSurnameTradition
      */
-    public function testNewFatherNames() {
+    public function testNewFatherNames()
+    {
         $this->assertSame(
             array('NAME' => '/Garcia/ //', 'SURN' => 'Garcia'),
             $this->surname_tradition->newParentNames('Gabriel /Garcia/ /Iglesias/', 'M')
@@ -130,7 +140,8 @@ class SpanishSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
      *
      * @covers Fisharebest\Webtrees\SurnameTradition\SpanishSurnameTradition
      */
-    public function testNewMotherNames() {
+    public function testNewMotherNames()
+    {
         $this->assertSame(
             array('NAME' => '/Iglesias/ //', 'SURN' => 'Iglesias'),
             $this->surname_tradition->newParentNames('Gabriel /Garcia/ /Iglesias/', 'F')
@@ -142,7 +153,8 @@ class SpanishSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
      *
      * @covers Fisharebest\Webtrees\SurnameTradition\SpanishSurnameTradition
      */
-    public function testNewParentNames() {
+    public function testNewParentNames()
+    {
         $this->assertSame(
             array('NAME' => '// //'),
             $this->surname_tradition->newParentNames('Gabriel /Garcia/ /Iglesias/', 'U')
@@ -154,7 +166,8 @@ class SpanishSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
      *
      * @covers Fisharebest\Webtrees\SurnameTradition\SpanishSurnameTradition
      */
-    public function testNewHusbandNames() {
+    public function testNewHusbandNames()
+    {
         $this->assertSame(
             array('NAME' => '// //'),
             $this->surname_tradition->newSpouseNames('Maria /Ruiz/ /Lorca/', 'M')
@@ -166,7 +179,8 @@ class SpanishSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
      *
      * @covers Fisharebest\Webtrees\SurnameTradition\SpanishSurnameTradition
      */
-    public function testNewWifeNames() {
+    public function testNewWifeNames()
+    {
         $this->assertSame(
             array('NAME' => '// //'),
             $this->surname_tradition->newSpouseNames('Gabriel /Garcia/ /Iglesias/', 'F')
@@ -178,7 +192,8 @@ class SpanishSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
      *
      * @covers Fisharebest\Webtrees\SurnameTradition\SpanishSurnameTradition
      */
-    public function testNewSpouseNames() {
+    public function testNewSpouseNames()
+    {
         $this->assertSame(
             array('NAME' => '// //'),
             $this->surname_tradition->newSpouseNames('Gabriel /Garcia/ /Iglesias/', 'U')
