@@ -185,10 +185,10 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
 
         // HTML common to all pages
         $controller = new PageController;
-            $controller
-                ->setPageTitle(I18N::translate('Batch update'))
-                ->restrictAccess(Auth::isAdmin())
-                ->pageHeader();
+        $controller
+            ->setPageTitle(I18N::translate('Batch update'))
+            ->restrictAccess(Auth::isAdmin())
+            ->pageHeader();
 
         echo $this->getJavascript();
         ?>

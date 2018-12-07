@@ -551,7 +551,6 @@ class FunctionsRtl
      */
     public static function getChar($text, $offset)
     {
-
         if ($text == '') {
             return array('letter' => '', 'length' => 0);
         }

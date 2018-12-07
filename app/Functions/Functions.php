@@ -230,7 +230,6 @@ class Functions
             $j++;
             $k++;
         }
-
     }
 
     /**

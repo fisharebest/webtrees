@@ -127,10 +127,10 @@ switch ($action) {
                 );
 
                 if ($subfolders == 'exclude') {
-                        $SELECT1 .= " AND m_filename NOT LIKE CONCAT(:media_path_4, '%/%')";
-                        $ARGS1['media_path_4'] = Filter::escapeLike($media_path);
-                        $SELECT2 .= " AND m_filename NOT LIKE CONCAT(:media_path_4, '%/%')";
-                        $ARGS2['media_path_4'] = Filter::escapeLike($media_path);
+                    $SELECT1 .= " AND m_filename NOT LIKE CONCAT(:media_path_4, '%/%')";
+                    $ARGS1['media_path_4'] = Filter::escapeLike($media_path);
+                    $SELECT2 .= " AND m_filename NOT LIKE CONCAT(:media_path_4, '%/%')";
+                    $ARGS2['media_path_4'] = Filter::escapeLike($media_path);
                 }
 
                 $order = Filter::getArray('order');

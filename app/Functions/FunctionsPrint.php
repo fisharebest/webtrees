@@ -51,7 +51,6 @@ class FunctionsPrint
      */
     public static function printPedigreePerson(Individual $person = null, $show_full = 1)
     {
-
         switch ($show_full) {
             case 0:
                 if ($person) {

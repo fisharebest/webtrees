@@ -654,7 +654,6 @@ class FunctionsEdit
                         '</a></div>';
                 }
             }
-
         } elseif ($fact === 'TEMP') {
             echo self::selectEditControl($element_name, GedcomCodeTemp::templeNames(), I18N::translate('No temple - living ordinance'), $value);
         } elseif ($fact === 'ADOP') {

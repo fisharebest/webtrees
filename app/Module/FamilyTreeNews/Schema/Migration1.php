@@ -41,7 +41,7 @@ class Migration1 implements MigrationInterface
             // Already updated?
         }
 
-// Migrate data from the old columns to the new ones
+        // Migrate data from the old columns to the new ones
         try {
             Database::exec(
                 "UPDATE `##news` n" .
@@ -53,7 +53,7 @@ class Migration1 implements MigrationInterface
             // Already updated?
         }
 
-// Delete orphaned rows
+        // Delete orphaned rows
         try {
             Database::exec(
                 "DELETE FROM `##news` WHERE user_id IS NULL AND gedcom_id IS NULL"
@@ -62,7 +62,7 @@ class Migration1 implements MigrationInterface
             // Already updated?
         }
 
-// Delete/rename old columns
+        // Delete/rename old columns
         try {
             Database::exec(
                 "ALTER TABLE `##news`" .

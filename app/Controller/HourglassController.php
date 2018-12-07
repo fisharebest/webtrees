@@ -97,7 +97,6 @@ class HourglassController extends ChartController
      */
     public function printPersonPedigree(Individual $person, $count)
     {
-
         if ($count >= $this->generations) {
             return;
         }

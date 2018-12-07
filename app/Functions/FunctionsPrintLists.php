@@ -1575,7 +1575,6 @@ class FunctionsPrintLists
                 $subhtml .= '&nbsp;(' . I18N::number($subtotal) . ')';
             }
             $html[] = $subhtml;
-
         }
         switch ($style) {
             case 1:

@@ -387,7 +387,6 @@ class Media extends GedcomRecord
         }
         $imgsize = array();
         if ($this->fileExists($which)) {
-
             try {
                 $imgsize = getimagesize($this->getServerFilename($which));
                 if (is_array($imgsize) && !empty($imgsize['0'])) {

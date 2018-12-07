@@ -110,8 +110,9 @@ if ($PGV_PATH) {
                     I18N::translate('webtrees cannot connect to the PhpGedView database: %s.', $DBNAME . '@' . $DBHOST) .
                     '<br>' .
                     /* I18N: %s is an error message */
-                    I18N::translate('MySQL gave the error: %s', $ex->getMessage()), 'danger');
-                    $PGV_PATH = null;
+                    I18N::translate('MySQL gave the error: %s', $ex->getMessage()), 'danger'
+                );
+                $PGV_PATH = null;
             }
         }
     }

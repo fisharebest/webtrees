@@ -75,7 +75,6 @@ class FunctionsCharts
      */
     public static function printFamilyParents(Family $family, $sosa = 0, $label = '', $parid = '', $gparid = '', $show_full = 1)
     {
-
         if ($show_full) {
             $pbheight = Theme::theme()->parameter('chart-box-y') + 14;
         } else {
@@ -285,7 +284,6 @@ class FunctionsCharts
      */
     public static function printFamilyChildren(Family $family, $childid = '', $sosa = 0, $label = '', $show_cousins = 0, $show_full = 1)
     {
-
         if ($show_full) {
             $bheight = Theme::theme()->parameter('chart-box-y');
         } else {

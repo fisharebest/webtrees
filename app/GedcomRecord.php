@@ -451,7 +451,7 @@ class GedcomRecord
             $access_level = Auth::accessLevel($this->tree);
         }
 
-// CACHING: this function can take three different parameters,
+        // CACHING: this function can take three different parameters,
         // and therefore needs three different caches for the result.
         switch ($access_level) {
             case Auth::PRIV_PRIVATE: // visitor
@@ -1144,7 +1144,8 @@ class GedcomRecord
             $access_level = Auth::accessLevel($this->tree);
         }
 
-            $facts = array();
+        $facts = array();
+
         if ($this->canShow($access_level) || $override) {
             foreach ($this->facts as $fact) {
                 if (($filter === null || preg_match('/^' . $filter . '$/', $fact->getTag())) && $fact->canShow($access_level)) {
