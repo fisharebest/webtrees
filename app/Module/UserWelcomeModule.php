@@ -23,7 +23,8 @@ use Fisharebest\Webtrees\Theme;
 /**
  * Class UserWelcomeModule
  */
-class UserWelcomeModule extends AbstractModule implements ModuleBlockInterface {
+class UserWelcomeModule extends AbstractModule implements ModuleBlockInterface
+{
     /** {@inheritdoc} */
     public function getTitle()
     {

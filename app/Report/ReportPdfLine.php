@@ -18,7 +18,8 @@ namespace Fisharebest\Webtrees\Report;
 /**
  * Class ReportPdfLine
  */
-class ReportPdfLine extends ReportBaseLine {
+class ReportPdfLine extends ReportBaseLine
+{
     /**
      * PDF line renderer
      *

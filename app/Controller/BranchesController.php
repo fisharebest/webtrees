@@ -28,7 +28,8 @@ use Fisharebest\Webtrees\Soundex;
 /**
  * Controller for the branches list
  */
-class BranchesController extends PageController {
+class BranchesController extends PageController
+{
     /** @var string Generate the branches for this surname */
     private $surname;
 

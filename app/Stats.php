@@ -33,7 +33,8 @@ use Rhumsaa\Uuid\Uuid;
  * These are primarily used for embedded keywords on HTML blocks, but
  * are also used elsewhere in the code.
  */
-class Stats {
+class Stats
+{
     /** @var Tree Generate statistics for a specified tree. */
     private $tree;
 

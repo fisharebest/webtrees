@@ -21,7 +21,8 @@ use Fisharebest\Webtrees\Individual;
 /**
  * Class BatchUpdateMissingDeathPlugin Batch Update plugin: add missing 1 BIRT/DEAT Y
  */
-class BatchUpdateMissingDeathPlugin extends BatchUpdateBasePlugin {
+class BatchUpdateMissingDeathPlugin extends BatchUpdateBasePlugin
+{
     /**
      * User-friendly name for this plugin.
      *

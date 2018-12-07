@@ -22,7 +22,8 @@ use Fisharebest\Webtrees\Filter;
 /**
  * Upgrade the database schema from version 30 to version 31.
  */
-class Migration30 implements MigrationInterface {
+class Migration30 implements MigrationInterface
+{
     /**
      * Upgrade to to the next version
      */

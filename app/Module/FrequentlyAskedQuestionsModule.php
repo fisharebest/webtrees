@@ -28,7 +28,8 @@ use Fisharebest\Webtrees\Tree;
 /**
  * Class FrequentlyAskedQuestionsModule
  */
-class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMenuInterface, ModuleConfigInterface {
+class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMenuInterface, ModuleConfigInterface
+{
     /** {@inheritdoc} */
     public function getTitle()
     {

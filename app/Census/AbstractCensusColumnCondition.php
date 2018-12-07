@@ -21,7 +21,8 @@ use Fisharebest\Webtrees\Individual;
 /**
  * Marital status.
  */
-abstract class AbstractCensusColumnCondition extends AbstractCensusColumn implements CensusColumnInterface {
+abstract class AbstractCensusColumnCondition extends AbstractCensusColumn implements CensusColumnInterface
+{
     /* Text to display for married males */
     protected $husband = '';
 

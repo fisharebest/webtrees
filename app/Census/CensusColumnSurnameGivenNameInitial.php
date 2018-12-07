@@ -20,7 +20,8 @@ use Fisharebest\Webtrees\Individual;
 /**
  * The individual's full name.
  */
-class CensusColumnSurnameGivenNameInitial extends CensusColumnFullName {
+class CensusColumnSurnameGivenNameInitial extends CensusColumnFullName
+{
     /**
      * Generate the likely value of this census column, based on available information.
      *

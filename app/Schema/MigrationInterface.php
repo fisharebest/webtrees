@@ -18,7 +18,8 @@ namespace Fisharebest\Webtrees\Schema;
 /**
  * Upgrade the database schema.
  */
-interface MigrationInterface {
+interface MigrationInterface
+{
     /**
      * Upgrade to to the next version
      */

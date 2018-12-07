@@ -23,7 +23,8 @@ use Fisharebest\Webtrees\Menu;
 /**
  * Class StatisticsChartModule
  */
-class StatisticsChartModule extends AbstractModule implements ModuleChartInterface {
+class StatisticsChartModule extends AbstractModule implements ModuleChartInterface
+{
     /**
      * How should this module be labelled on tabs, menus, etc.?
      *

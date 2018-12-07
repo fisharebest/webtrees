@@ -18,7 +18,8 @@ namespace Fisharebest\Webtrees\Report;
 /**
  * Class ReportParserBase
  */
-class ReportParserBase {
+class ReportParserBase
+{
     /** @var resource The XML parser */
     protected $xml_parser;
 

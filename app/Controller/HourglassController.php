@@ -24,7 +24,8 @@ use Fisharebest\Webtrees\Theme;
 /**
  * Controller for the hourglass chart
  */
-class HourglassController extends ChartController {
+class HourglassController extends ChartController
+{
     /** @var int Whether to show spouse details. */
     public $show_spouse;
 

@@ -18,7 +18,8 @@ namespace Fisharebest\Webtrees\Report;
 /**
  * Class ReportBaseElement
  */
-class ReportBaseElement {
+class ReportBaseElement
+{
     /** @var string Text*/
     public $text = '';
 

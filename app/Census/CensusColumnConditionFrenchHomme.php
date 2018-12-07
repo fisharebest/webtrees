@@ -18,7 +18,8 @@ namespace Fisharebest\Webtrees\Census;
 /**
  * Marital status.
  */
-class CensusColumnConditionFrenchHomme extends AbstractCensusColumnCondition {
+class CensusColumnConditionFrenchHomme extends AbstractCensusColumnCondition
+{
     /* Text to display for married individuals */
     protected $husband = '1';
     protected $wife    = '';

@@ -36,7 +36,8 @@ use Fisharebest\Webtrees\Date\RomanDate;
  * this is not the case (e.g. England prior to 1752), we need to use modified
  * years or the OS/NS notation "4 FEB 1750/51".
  */
-class Date {
+class Date
+{
     /** @var string Optional qualifier, such as BEF, FROM, ABT */
     public $qual1;
 

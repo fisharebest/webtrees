@@ -18,7 +18,8 @@ namespace Fisharebest\Webtrees\SurnameTradition;
 /**
  * Children take their father’s surname. Wives take their husband’s surname.
  */
-class PaternalSurnameTradition extends PatrilinealSurnameTradition implements SurnameTraditionInterface {
+class PaternalSurnameTradition extends PatrilinealSurnameTradition implements SurnameTraditionInterface
+{
     /**
      * Does this surname tradition change surname at marriage?
      *

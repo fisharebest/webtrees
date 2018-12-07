@@ -18,7 +18,8 @@ namespace Fisharebest\Webtrees\Report;
 /**
  * Class ReportHtmlLine
  */
-class ReportHtmlLine extends ReportBaseLine {
+class ReportHtmlLine extends ReportBaseLine
+{
     /**
      * HTML line renderer
      *

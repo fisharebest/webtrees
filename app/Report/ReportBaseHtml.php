@@ -18,7 +18,8 @@ namespace Fisharebest\Webtrees\Report;
 /**
  * Class ReportBaseHtml
  */
-class ReportBaseHtml extends ReportBaseElement {
+class ReportBaseHtml extends ReportBaseElement
+{
     /** @var string The XML tag. */
     public $tag;
 

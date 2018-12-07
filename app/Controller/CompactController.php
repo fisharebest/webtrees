@@ -21,7 +21,8 @@ use Fisharebest\Webtrees\I18N;
 /**
  * Controller for the compact chart
  */
-class CompactController extends ChartController {
+class CompactController extends ChartController
+{
     /** @var bool Data for the view .*/
     public $show_thumbs = false;
 

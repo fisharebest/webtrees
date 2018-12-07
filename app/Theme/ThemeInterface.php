@@ -25,7 +25,8 @@ use Fisharebest\Webtrees\User;
 /**
  * Specification for a theme.
  */
-interface ThemeInterface {
+interface ThemeInterface
+{
     /**
      * Where are our CSS, JS and other assets?
      *

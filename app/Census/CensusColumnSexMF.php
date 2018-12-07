@@ -20,7 +20,8 @@ use Fisharebest\Webtrees\Individual;
 /**
  * The individual's sex.
  */
-class CensusColumnSexMF extends AbstractCensusColumn implements CensusColumnInterface {
+class CensusColumnSexMF extends AbstractCensusColumn implements CensusColumnInterface
+{
     /* Text to display for male individuals */
     protected $male = 'M';
 

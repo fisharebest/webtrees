@@ -31,7 +31,8 @@ use Fisharebest\Webtrees\Module\BatchUpdateModule;
  * bool doesRecordNeedUpdate($xref, $gedrec)
  * string updateRecord($xref, $gedrec)
  */
-class BatchUpdateBasePlugin {
+class BatchUpdateBasePlugin
+{
     /** @var bool User option; update change record */
     public $chan = false;
 

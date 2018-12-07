@@ -24,7 +24,8 @@ use Fisharebest\Webtrees\Theme;
 /**
  * Class WelcomeBlockModule
  */
-class WelcomeBlockModule extends AbstractModule implements ModuleBlockInterface {
+class WelcomeBlockModule extends AbstractModule implements ModuleBlockInterface
+{
     /** {@inheritdoc} */
     public function getTitle()
     {

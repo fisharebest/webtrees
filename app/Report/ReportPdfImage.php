@@ -18,7 +18,8 @@ namespace Fisharebest\Webtrees\Report;
 /**
  * Class ReportPdfImage
  */
-class ReportPdfImage extends ReportBaseImage {
+class ReportPdfImage extends ReportBaseImage
+{
     /**
      * PDF image renderer
      *

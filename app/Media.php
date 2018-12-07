@@ -22,7 +22,8 @@ use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
 /**
  * A GEDCOM media (OBJE) object.
  */
-class Media extends GedcomRecord {
+class Media extends GedcomRecord
+{
     const RECORD_TYPE = 'OBJE';
     const URL_PREFIX  = 'mediaviewer.php?mid=';
 

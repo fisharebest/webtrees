@@ -23,7 +23,8 @@ use Fisharebest\Webtrees\Menu;
 /**
  * Class AncestorsChartModule
  */
-class AncestorsChartModule extends AbstractModule implements ModuleChartInterface {
+class AncestorsChartModule extends AbstractModule implements ModuleChartInterface
+{
     /**
      * How should this module be labelled on tabs, menus, etc.?
      *

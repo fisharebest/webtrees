@@ -27,7 +27,8 @@ use Fisharebest\Webtrees\Theme;
 /**
  * Controller for full-page, themed HTML responses
  */
-class PageController extends BaseController {
+class PageController extends BaseController
+{
     /** @var string Most pages are not intended for robots */
     private $meta_robots = 'noindex,nofollow';
 

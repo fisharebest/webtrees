@@ -20,7 +20,8 @@ use Fisharebest\Webtrees\I18N;
 /**
  * Class GedcomCodeTemp - Functions and logic for GEDCOM "TEMP" codes
  */
-class GedcomCodeTemp {
+class GedcomCodeTemp
+{
     /**
      * A list of GEDCOM tags that require a TEMP subtag
      *

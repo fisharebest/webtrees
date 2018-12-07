@@ -52,7 +52,8 @@ use Rhumsaa\Uuid\Uuid;
 /**
  * Class FunctionsEdit - common functions
  */
-class FunctionsEdit {
+class FunctionsEdit
+{
     /**
      * Create a <select> control for a form.
      *

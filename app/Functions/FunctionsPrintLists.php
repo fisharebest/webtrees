@@ -36,7 +36,8 @@ use Rhumsaa\Uuid\Uuid;
 /**
  * Class FunctionsPrintLists - create sortable lists using datatables.net
  */
-class FunctionsPrintLists {
+class FunctionsPrintLists
+{
     /**
      * Generate a SURN,GIVN and GIVN,SURN sortable name for an individual.
      * This allows table data to sort by surname or given names.

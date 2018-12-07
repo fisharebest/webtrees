@@ -33,7 +33,8 @@ use Fisharebest\Webtrees\User;
 /**
  * Controller for the individual page
  */
-class IndividualController extends GedcomRecordController {
+class IndividualController extends GedcomRecordController
+{
     /** @var int Count of names */
     public $name_count  = 0;
 

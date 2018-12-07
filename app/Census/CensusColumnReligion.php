@@ -20,7 +20,8 @@ use Fisharebest\Webtrees\Individual;
 /**
  * The individual's religion.
  */
-class CensusColumnReligion extends AbstractCensusColumn implements CensusColumnInterface {
+class CensusColumnReligion extends AbstractCensusColumn implements CensusColumnInterface
+{
     /**
      * Generate the likely value of this census column, based on available information.
      *

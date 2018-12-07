@@ -34,7 +34,8 @@ use Fisharebest\Webtrees\Place;
 /**
  * Class ReportParserGenerate - parse a report.xml file and generate the report.
  */
-class ReportParserGenerate extends ReportParserBase {
+class ReportParserGenerate extends ReportParserBase
+{
     /** @var bool Are we collecting data from <Footnote> elements  */
     private $process_footnote = true;
 

@@ -18,7 +18,8 @@ namespace Fisharebest\Webtrees\Module;
 /**
  * Interface ModuleBlockInterface - Classes and libraries for module system
  */
-interface ModuleBlockInterface {
+interface ModuleBlockInterface
+{
     /**
      * Generate the HTML content of this block.
      *

@@ -18,7 +18,8 @@ namespace Fisharebest\Webtrees\Census;
 /**
  * Definitions for a census
  */
-class CensusOfCzechRepublic extends Census implements CensusPlaceInterface {
+class CensusOfCzechRepublic extends Census implements CensusPlaceInterface
+{
     /**
      * All available censuses for this census place.
      *

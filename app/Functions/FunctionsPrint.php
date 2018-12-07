@@ -39,7 +39,8 @@ use Rhumsaa\Uuid\Uuid;
 /**
  * Class FunctionsPrint - common functions
  */
-class FunctionsPrint {
+class FunctionsPrint
+{
     /**
      * print the information for an individual chart box
      *

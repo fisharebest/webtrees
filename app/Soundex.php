@@ -18,7 +18,8 @@ namespace Fisharebest\Webtrees;
 /**
  * Phonetic matching of strings.
  */
-class Soundex {
+class Soundex
+{
     /**
      * Which algorithms are supported.
      *

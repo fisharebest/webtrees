@@ -20,7 +20,8 @@ use Fisharebest\Webtrees\I18N;
 /**
  * Class GedcomCodeQuay - Functions and logic for GEDCOM "QUAY" codes
  */
-class GedcomCodeQuay {
+class GedcomCodeQuay
+{
     /** @var string[] Valid values for a QUAY tag. */
     private static $TYPES = array('3', '2', '1', '0');
 

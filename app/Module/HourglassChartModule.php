@@ -23,7 +23,8 @@ use Fisharebest\Webtrees\Menu;
 /**
  * Class HourglassChartModule
  */
-class HourglassChartModule extends AbstractModule implements ModuleChartInterface {
+class HourglassChartModule extends AbstractModule implements ModuleChartInterface
+{
     /**
      * How should this module be labelled on tabs, menus, etc.?
      *

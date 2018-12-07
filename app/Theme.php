@@ -20,7 +20,8 @@ use Fisharebest\Webtrees\Theme\ThemeInterface;
 /**
  * Provide access to the current theme.
  */
-class Theme {
+class Theme
+{
     /**
      * PHP 5.3.2 requires a constructor when there is also a method
      * called theme()

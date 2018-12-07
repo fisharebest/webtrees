@@ -18,7 +18,8 @@ namespace Fisharebest\Webtrees\Controller;
 /**
  * Controller for all popup pages
  */
-class SimpleController extends PageController {
+class SimpleController extends PageController
+{
     /**
      * Create content for a popup window.
      * The page title is not used by all browsers.

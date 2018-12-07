@@ -22,7 +22,8 @@ use Fisharebest\Webtrees\I18N;
 /**
  * Class BatchUpdateSearchReplacePlugin Batch Update plugin: search/replace
  */
-class BatchUpdateSearchReplacePlugin extends BatchUpdateBasePlugin {
+class BatchUpdateSearchReplacePlugin extends BatchUpdateBasePlugin
+{
     /** @var string Search string */
     private $search;
 

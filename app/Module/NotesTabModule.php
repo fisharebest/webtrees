@@ -25,7 +25,8 @@ use Fisharebest\Webtrees\I18N;
 /**
  * Class NotesTabModule
  */
-class NotesTabModule extends AbstractModule implements ModuleTabInterface {
+class NotesTabModule extends AbstractModule implements ModuleTabInterface
+{
     /** @var Fact[] A list facts for this note. */
     private $facts;
 

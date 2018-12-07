@@ -18,7 +18,8 @@ namespace Fisharebest\Webtrees;
 /**
  * Record webtrees events in the database
  */
-class Log {
+class Log
+{
     // We can log the following types of message in the wt_log table.
     const TYPE_AUTHENTICATION = 'auth';
     const TYPE_CONFIGURATION  = 'config';

@@ -21,7 +21,8 @@ use PDOException;
 /**
  * Upgrade the database schema from version 27 to version 28.
  */
-class Migration27 implements MigrationInterface {
+class Migration27 implements MigrationInterface
+{
     /**
      * Upgrade to to the next version
      */

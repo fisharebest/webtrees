@@ -21,7 +21,8 @@ use Fisharebest\Webtrees\Individual;
 /**
  * The number of children born alive.
  */
-class CensusColumnChildrenBornAlive extends AbstractCensusColumn implements CensusColumnInterface {
+class CensusColumnChildrenBornAlive extends AbstractCensusColumn implements CensusColumnInterface
+{
     /**
      * Generate the likely value of this census column, based on available information.
      *

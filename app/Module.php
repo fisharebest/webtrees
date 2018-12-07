@@ -27,7 +27,8 @@ use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 /**
  * Functions for managing and maintaining modules.
  */
-class Module {
+class Module
+{
     /**
      * Get a list of all core modules.  We need to identify
      * third-party during upgrade and on the module admin page.

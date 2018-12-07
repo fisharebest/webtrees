@@ -18,7 +18,8 @@ namespace Fisharebest\Webtrees;
 /**
  * Generate messages in one request and display them in the next.
  */
-class FlashMessages {
+class FlashMessages
+{
     // Session storage key
     const FLASH_KEY = 'flash_messages';
 

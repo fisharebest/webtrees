@@ -21,7 +21,8 @@ use PDOStatement;
 /**
  * Extend PHP's native PDOStatement class.
  */
-class Statement {
+class Statement
+{
     /** @var PDOStatement A prepared statement. */
     private $pdo_statement;
 

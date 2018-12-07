@@ -20,7 +20,8 @@ use Fisharebest\Webtrees\Log;
 /**
  * Class FunctionsMedia - common functions
  */
-class FunctionsMedia {
+class FunctionsMedia
+{
     /**
      * Convert raw values from php.ini file into bytes
      *

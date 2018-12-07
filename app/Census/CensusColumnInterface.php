@@ -21,7 +21,8 @@ use Fisharebest\Webtrees\Individual;
 /**
  * Definitions for a census column
  */
-interface CensusColumnInterface {
+interface CensusColumnInterface
+{
     /**
      * A short version of the column's name.
      *

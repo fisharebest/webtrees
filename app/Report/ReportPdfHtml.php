@@ -18,7 +18,8 @@ namespace Fisharebest\Webtrees\Report;
 /**
  * Class ReportPdfHtml
  */
-class ReportPdfHtml extends ReportBaseHtml {
+class ReportPdfHtml extends ReportBaseHtml
+{
     /**
      * Render the output.
      *

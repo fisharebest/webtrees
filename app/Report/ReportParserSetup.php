@@ -21,7 +21,8 @@ use Fisharebest\Webtrees\I18N;
 /**
  * Class ReportParserSetup - parse a report.xml file and extract the setup options.
  */
-class ReportParserSetup extends ReportParserBase {
+class ReportParserSetup extends ReportParserBase
+{
     /** @var array An array of report options/parameters */
     private $data = array();
 

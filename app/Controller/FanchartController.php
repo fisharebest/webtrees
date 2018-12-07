@@ -22,7 +22,8 @@ use Fisharebest\Webtrees\Theme;
 /**
  * Controller for the fan chart
  */
-class FanchartController extends ChartController {
+class FanchartController extends ChartController
+{
     /** @var int Style of fanchart */
     public $fan_style;
 

@@ -30,7 +30,8 @@ use Fisharebest\Localization\Translator;
 /**
  * Internationalization (i18n) and localization (l10n).
  */
-class I18N {
+class I18N
+{
     /** @var LocaleInterface The current locale (e.g. LocaleEnGb) */
     private static $locale;
 

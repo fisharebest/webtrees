@@ -20,7 +20,8 @@ use Fisharebest\Webtrees\I18N;
 /**
  * Class BatchUpdateNameFormatPlugin Batch Update plugin: fix spacing in names, particularly that before/after the surname slashes
  */
-class BatchUpdateNameFormatPlugin extends BatchUpdateBasePlugin {
+class BatchUpdateNameFormatPlugin extends BatchUpdateBasePlugin
+{
     /**
      * User-friendly name for this plugin.
      *

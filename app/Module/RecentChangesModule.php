@@ -30,7 +30,8 @@ use Rhumsaa\Uuid\Uuid;
 /**
  * Class RecentChangesModule
  */
-class RecentChangesModule extends AbstractModule implements ModuleBlockInterface {
+class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
+{
     const DEFAULT_BLOCK      = '1';
     const DEFAULT_DAYS       = 7;
     const DEFAULT_HIDE_EMPTY = '0';

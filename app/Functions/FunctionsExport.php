@@ -30,7 +30,8 @@ use Fisharebest\Webtrees\Tree;
 /**
  * Class FunctionsExport - common functions
  */
-class FunctionsExport {
+class FunctionsExport
+{
     /**
      * Tidy up a gedcom record on export, for compatibility/portability.
      *

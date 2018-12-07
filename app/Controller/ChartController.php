@@ -23,7 +23,8 @@ use Fisharebest\Webtrees\Theme;
 /**
  * Base controller for all chart pages
  */
-class ChartController extends PageController {
+class ChartController extends PageController
+{
     /** @var Individual Who is chart about? */
     public $root;
 

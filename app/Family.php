@@ -18,7 +18,8 @@ namespace Fisharebest\Webtrees;
 /**
  * A GEDCOM family (FAM) object.
  */
-class Family extends GedcomRecord {
+class Family extends GedcomRecord
+{
     const RECORD_TYPE = 'FAM';
     const URL_PREFIX  = 'family.php?famid=';
 

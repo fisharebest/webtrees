@@ -31,7 +31,8 @@ use Fisharebest\Webtrees\Session;
 /**
  * Class ClippingsCartModule
  */
-class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface, ModuleSidebarInterface {
+class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface, ModuleSidebarInterface
+{
     /** {@inheritdoc} */
     public function getTitle()
     {

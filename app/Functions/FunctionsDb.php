@@ -38,7 +38,8 @@ use Fisharebest\Webtrees\Tree;
 /**
  * Class FunctionsDb - common functions
  */
-class FunctionsDb {
+class FunctionsDb
+{
     /**
      * Fetch all records linked to a record - when deleting an object, we must
      * also delete all links to it.

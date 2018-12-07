@@ -21,7 +21,8 @@ use Fisharebest\Webtrees\Theme;
 /**
  * The webtrees (default) theme.
  */
-class WebtreesTheme extends AbstractTheme implements ThemeInterface {
+class WebtreesTheme extends AbstractTheme implements ThemeInterface
+{
     /**
      * Where are our CSS, JS and other assets?
      *

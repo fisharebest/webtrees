@@ -20,7 +20,8 @@ use Fisharebest\Webtrees\Individual;
 /**
  * Was the individual born in "foreign parts".
  */
-class CensusColumnBornForeignParts extends AbstractCensusColumn implements CensusColumnInterface {
+class CensusColumnBornForeignParts extends AbstractCensusColumn implements CensusColumnInterface
+{
     /**
      * Generate the likely value of this census column, based on available information.
      *

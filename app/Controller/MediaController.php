@@ -27,7 +27,8 @@ use Fisharebest\Webtrees\Module;
 /**
  * Controller for the media page
  */
-class MediaController extends GedcomRecordController {
+class MediaController extends GedcomRecordController
+{
     /**
      * get edit menu
      */

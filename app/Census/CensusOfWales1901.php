@@ -18,7 +18,8 @@ namespace Fisharebest\Webtrees\Census;
 /**
  * Definitions for a census
  */
-class CensusOfWales1901 extends CensusOfWales implements CensusInterface {
+class CensusOfWales1901 extends CensusOfWales implements CensusInterface
+{
     /**
      * When did this census occur.
      *

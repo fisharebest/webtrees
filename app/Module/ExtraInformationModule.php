@@ -23,7 +23,8 @@ use Fisharebest\Webtrees\I18N;
  * Class ExtraInformationModule
  * A sidebar to show non-genealogy information about an individual
  */
-class ExtraInformationModule extends AbstractModule implements ModuleSidebarInterface {
+class ExtraInformationModule extends AbstractModule implements ModuleSidebarInterface
+{
     /** {@inheritdoc} */
     public function getTitle()
     {

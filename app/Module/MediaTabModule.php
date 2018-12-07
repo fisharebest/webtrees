@@ -26,7 +26,8 @@ use Fisharebest\Webtrees\I18N;
 /**
  * Class MediaTabModule
  */
-class MediaTabModule extends AbstractModule implements ModuleTabInterface {
+class MediaTabModule extends AbstractModule implements ModuleTabInterface
+{
     /** @var  Fact[] A list of facts with media objects. */
     private $facts;
 

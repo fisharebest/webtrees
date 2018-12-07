@@ -22,7 +22,8 @@ use Fisharebest\Webtrees\Site;
 /**
  * Upgrade the database schema from version 0 (empty database) to version 1.
  */
-class Migration0 implements MigrationInterface {
+class Migration0 implements MigrationInterface
+{
     /**
      * Upgrade to to the next version
      */

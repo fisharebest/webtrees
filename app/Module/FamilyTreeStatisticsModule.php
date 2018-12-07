@@ -28,7 +28,8 @@ use Fisharebest\Webtrees\Theme;
 /**
  * Class FamilyTreeStatisticsModule
  */
-class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockInterface {
+class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockInterface
+{
     /** Show this number of surnames by default */
     const DEFAULT_NUMBER_OF_SURNAMES = 10;
 

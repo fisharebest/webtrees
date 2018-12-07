@@ -23,7 +23,8 @@ use Fisharebest\Webtrees\Tree;
 /**
  * The theme for the control panel.
  */
-class AdministrationTheme extends AbstractTheme implements ThemeInterface {
+class AdministrationTheme extends AbstractTheme implements ThemeInterface
+{
     /**
      * A list of CSS files to include for this page.
      *

@@ -32,7 +32,8 @@ use Fisharebest\Webtrees\Source;
 /**
  * Base controller for all GedcomRecord controllers
  */
-class GedcomRecordController extends PageController {
+class GedcomRecordController extends PageController
+{
     /**
      * A genealogy record
      *

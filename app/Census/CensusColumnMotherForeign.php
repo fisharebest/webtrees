@@ -20,7 +20,8 @@ use Fisharebest\Webtrees\Individual;
 /**
  * Is the individual's mother a foreigner.
  */
-class CensusColumnMotherForeign extends AbstractCensusColumn implements CensusColumnInterface {
+class CensusColumnMotherForeign extends AbstractCensusColumn implements CensusColumnInterface
+{
     /**
      * Generate the likely value of this census column, based on available information.
      *

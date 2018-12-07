@@ -23,7 +23,8 @@ use Fisharebest\Webtrees\Menu;
 /**
  * Class LifespansChartModule
  */
-class LifespansChartModule extends AbstractModule implements ModuleChartInterface {
+class LifespansChartModule extends AbstractModule implements ModuleChartInterface
+{
     /**
      * How should this module be labelled on tabs, menus, etc.?
      *

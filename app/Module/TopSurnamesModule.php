@@ -27,7 +27,8 @@ use Fisharebest\Webtrees\Theme;
 /**
  * Class TopSurnamesModule
  */
-class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface {
+class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
+{
     /**
      * How should this module be labelled on tabs, menus, etc.?
      *

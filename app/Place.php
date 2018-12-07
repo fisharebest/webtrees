@@ -18,7 +18,8 @@ namespace Fisharebest\Webtrees;
 /**
  * A GEDCOM place (PLAC) object.
  */
-class Place {
+class Place
+{
     const GEDCOM_SEPARATOR = ', ';
 
     /** @var string[] e.g. array('Westminster', 'London', 'England') */

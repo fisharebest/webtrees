@@ -22,7 +22,8 @@ use PDOException;
 /**
  * Extend PHP's native PDO class.
  */
-class Database {
+class Database
+{
     /** @var Database Implement the singleton pattern */
     private static $instance;
 

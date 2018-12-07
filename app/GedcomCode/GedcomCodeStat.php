@@ -20,7 +20,8 @@ use Fisharebest\Webtrees\I18N;
 /**
  * Class GedcomCodeStat - Functions and logic for GEDCOM "STAT" codes
  */
-class GedcomCodeStat {
+class GedcomCodeStat
+{
     /**
      * Get a list of status codes that can be used on a given LDS tag
      *

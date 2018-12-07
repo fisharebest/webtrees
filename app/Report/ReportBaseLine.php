@@ -18,7 +18,8 @@ namespace Fisharebest\Webtrees\Report;
 /**
  * Class ReportBaseLine
  */
-class ReportBaseLine extends ReportBaseElement {
+class ReportBaseLine extends ReportBaseElement
+{
     /**
      * Start horizontal position, current position (default)
      *

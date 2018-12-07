@@ -18,7 +18,8 @@ namespace Fisharebest\Webtrees\Report;
 /**
  * Class ReportBaseFootnote
  */
-class ReportBaseFootnote extends ReportBaseElement {
+class ReportBaseFootnote extends ReportBaseElement
+{
     /**
      * The name of the style for this element
      *

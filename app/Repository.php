@@ -18,7 +18,8 @@ namespace Fisharebest\Webtrees;
 /**
  * A GEDCOM repository (REPO) object.
  */
-class Repository extends GedcomRecord {
+class Repository extends GedcomRecord
+{
     const RECORD_TYPE = 'REPO';
     const URL_PREFIX  = 'repo.php?rid=';
 

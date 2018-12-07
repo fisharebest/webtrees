@@ -18,7 +18,8 @@ namespace Fisharebest\Webtrees\Module;
 /**
  * Interface ModuleConfigInterface - Classes and libraries for module system
  */
-interface ModuleConfigInterface {
+interface ModuleConfigInterface
+{
     /**
      * The URL to a page where the user can modify the configuration of this module.
      *

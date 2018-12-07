@@ -28,7 +28,8 @@ use Swift_Transport;
 /**
  * Send mail messages.
  */
-class Mail {
+class Mail
+{
     const EOL = "<br>\r\n"; // End-of-line that works for both TEXT and HTML messages
 
     /**

@@ -33,7 +33,8 @@ use PDOException;
 /**
  * Class FunctionsImport - common functions
  */
-class FunctionsImport {
+class FunctionsImport
+{
     /**
      * Tidy up a gedcom record on import, so that we can access it consistently/efficiently.
      *

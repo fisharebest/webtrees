@@ -18,7 +18,8 @@ namespace Fisharebest\Webtrees\Report;
 /**
  * Class ReportBaseText
  */
-class ReportBaseText extends ReportBaseElement {
+class ReportBaseText extends ReportBaseElement
+{
     /**
      * Text color in HTML code
      *

@@ -18,7 +18,8 @@ namespace Fisharebest\Webtrees\Module;
 /**
  * Interface ModuleTabInterface - Classes and libraries for module system
  */
-interface ModuleTabInterface {
+interface ModuleTabInterface
+{
     /**
      * The user can re-arrange the tab order, but until they do, this
      * is the order in which tabs are shown.

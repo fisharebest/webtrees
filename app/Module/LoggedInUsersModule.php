@@ -26,7 +26,8 @@ use Fisharebest\Webtrees\User;
 /**
  * Class LoggedInUsersModule
  */
-class LoggedInUsersModule extends AbstractModule implements ModuleBlockInterface {
+class LoggedInUsersModule extends AbstractModule implements ModuleBlockInterface
+{
     /** {@inheritdoc} */
     public function getTitle()
     {

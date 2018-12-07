@@ -18,7 +18,8 @@ namespace Fisharebest\Webtrees\Module;
 /**
  * Interface ModuleSidebarInterface - Classes and libraries for module system
  */
-interface ModuleSidebarInterface {
+interface ModuleSidebarInterface
+{
     /**
      * The user can change the order of sidebars. Until they do this, they are shown in this order.
      *

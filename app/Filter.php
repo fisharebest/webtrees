@@ -22,7 +22,8 @@ use Michelf\MarkdownExtra;
 /**
  * Filter input and escape output.
  */
-class Filter {
+class Filter
+{
     // REGEX to match a URL
     // Some versions of RFC3987 have an appendix B which gives the following regex
     // (([^:/?#]+):)?(//([^/?#]*))?([^?#]*)(\?([^#]*))?(#(.*))?

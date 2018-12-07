@@ -18,7 +18,8 @@ namespace Fisharebest\Webtrees;
 /**
  * A GEDCOM source (SOUR) object.
  */
-class Source extends GedcomRecord {
+class Source extends GedcomRecord
+{
     const RECORD_TYPE = 'SOUR';
     const URL_PREFIX  = 'source.php?sid=';
 

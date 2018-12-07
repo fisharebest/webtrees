@@ -21,7 +21,8 @@ use Fisharebest\Webtrees\Theme;
 /**
  * Class ThemeSelectModule
  */
-class ThemeSelectModule extends AbstractModule implements ModuleBlockInterface {
+class ThemeSelectModule extends AbstractModule implements ModuleBlockInterface
+{
     /** {@inheritdoc} */
     public function getTitle()
     {

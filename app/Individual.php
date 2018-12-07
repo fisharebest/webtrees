@@ -21,7 +21,8 @@ use Fisharebest\Webtrees\GedcomCode\GedcomCodePedi;
 /**
  * A GEDCOM individual (INDI) object.
  */
-class Individual extends GedcomRecord {
+class Individual extends GedcomRecord
+{
     const RECORD_TYPE = 'INDI';
     const URL_PREFIX  = 'individual.php?pid=';
 

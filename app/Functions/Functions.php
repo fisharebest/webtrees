@@ -26,7 +26,8 @@ use Fisharebest\Webtrees\Site;
 /**
  * Class Functions - common functions
  */
-class Functions {
+class Functions
+{
     /**
      * Check with the webtrees.net server for the latest version of webtrees.
      * Fetching the remote file can be slow, so check infrequently, and cache the result.

@@ -29,7 +29,8 @@ use Fisharebest\Webtrees\SurnameTradition\SurnameTraditionInterface;
 /**
  *
  */
-class SurnameTradition {
+class SurnameTradition
+{
     /**
      * Create a surname tradition object for a given surname tradition name.
      *

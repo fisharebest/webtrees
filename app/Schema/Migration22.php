@@ -21,7 +21,8 @@ use Fisharebest\Webtrees\File;
 /**
  * Upgrade the database schema from version 22 to version 23.
  */
-class Migration22 implements MigrationInterface {
+class Migration22 implements MigrationInterface
+{
     /**
      * Upgrade to to the next version
      */

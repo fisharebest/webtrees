@@ -19,7 +19,8 @@ namespace Fisharebest\Webtrees\SurnameTradition;
  * Various cultures have different traditions for the use of surnames within families.
  * By providing defaults for new individuals, we can speed up data entry and reduce errors.
  */
-interface SurnameTraditionInterface {
+interface SurnameTraditionInterface
+{
     /**
      * Does this surname tradition change surname at marriage?
      *

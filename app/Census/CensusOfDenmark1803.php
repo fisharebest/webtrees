@@ -18,7 +18,8 @@ namespace Fisharebest\Webtrees\Census;
 /**
  * Definitions for a census
  */
-class CensusOfDenmark1803 extends CensusOfDenmark implements CensusInterface {
+class CensusOfDenmark1803 extends CensusOfDenmark implements CensusInterface
+{
     /**
      * When did this census occur.
      *

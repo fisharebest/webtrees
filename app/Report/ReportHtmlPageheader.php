@@ -18,7 +18,8 @@ namespace Fisharebest\Webtrees\Report;
 /**
  * Class ReportHtmlPageheader
  */
-class ReportHtmlPageheader extends ReportBasePageheader {
+class ReportHtmlPageheader extends ReportBasePageheader
+{
     /**
      * Render elements.
      *

@@ -25,7 +25,8 @@ use Fisharebest\Webtrees\Theme;
 /**
  * Class OnThisDayModule
  */
-class OnThisDayModule extends AbstractModule implements ModuleBlockInterface {
+class OnThisDayModule extends AbstractModule implements ModuleBlockInterface
+{
     /** {@inheritdoc} */
     public function getTitle()
     {

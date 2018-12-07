@@ -26,7 +26,8 @@ use Fisharebest\Webtrees\Theme;
 /**
  * Class TopPageViewsModule
  */
-class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface {
+class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface
+{
     /**
      * How should this module be labelled on tabs, menus, etc.?
      *

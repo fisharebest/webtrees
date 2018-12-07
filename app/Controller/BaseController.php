@@ -20,7 +20,8 @@ use Fisharebest\Webtrees\Database;
 /**
  * Base controller for all other controllers
  */
-class BaseController {
+class BaseController
+{
     // The controller accumulates Javascript (inline and external), and renders it in the footer
     const JS_PRIORITY_HIGH   = 0;
     const JS_PRIORITY_NORMAL = 1;

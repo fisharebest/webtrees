@@ -31,7 +31,8 @@ use Rhumsaa\Uuid\Uuid;
 /**
  * Class YahrzeitModule
  */
-class YahrzeitModule extends AbstractModule implements ModuleBlockInterface {
+class YahrzeitModule extends AbstractModule implements ModuleBlockInterface
+{
     /** {@inheritdoc} */
     public function getTitle()
     {

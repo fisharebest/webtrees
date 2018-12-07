@@ -30,7 +30,8 @@ use Fisharebest\Webtrees\Site;
 /**
  * Class IndividualFactsTabModule
  */
-class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterface {
+class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterface
+{
     /** {@inheritdoc} */
     public function getTitle()
     {

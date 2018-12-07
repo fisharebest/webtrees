@@ -23,7 +23,8 @@ use Fisharebest\Webtrees\Menu;
 /**
  * Class CompactTreeChartModule
  */
-class CompactTreeChartModule extends AbstractModule implements ModuleChartInterface {
+class CompactTreeChartModule extends AbstractModule implements ModuleChartInterface
+{
     /**
      * How should this module be labelled on tabs, menus, etc.?
      *

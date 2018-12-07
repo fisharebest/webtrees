@@ -22,7 +22,8 @@ use Fisharebest\Webtrees\Media;
 /**
  * Generate lists of files for admin_media.php
  */
-class QueryMedia {
+class QueryMedia
+{
     /**
      * Generate a list of all the folders in the current tree - for the media list.
      *

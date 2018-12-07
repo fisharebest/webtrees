@@ -18,7 +18,8 @@ namespace Fisharebest\Webtrees;
 /**
  * Authentication.
  */
-class Auth {
+class Auth
+{
     // Privacy constants
     const PRIV_PRIVATE = 2; // Allows visitors to view the item
     const PRIV_USER    = 1; // Allows members to access the item

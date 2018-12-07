@@ -18,7 +18,8 @@ namespace Fisharebest\Webtrees\Census;
 /**
  * Definitions for a census
  */
-interface CensusPlaceInterface {
+interface CensusPlaceInterface
+{
     /**
      * All available censuses for this census place.
      *

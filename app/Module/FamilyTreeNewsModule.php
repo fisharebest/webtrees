@@ -25,7 +25,8 @@ use Fisharebest\Webtrees\Theme;
 /**
  * Class FamilyTreeNewsModule
  */
-class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterface {
+class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterface
+{
     // How to update the database schema for this module
     const SCHEMA_TARGET_VERSION   = 3;
     const SCHEMA_SETTING_NAME     = 'NB_SCHEMA_VERSION';

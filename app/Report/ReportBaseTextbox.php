@@ -18,7 +18,8 @@ namespace Fisharebest\Webtrees\Report;
 /**
  * Class ReportBaseTextbox
  */
-class ReportBaseTextbox extends ReportBaseElement {
+class ReportBaseTextbox extends ReportBaseElement
+{
     /**
      * Array of elements in the TextBox
      *

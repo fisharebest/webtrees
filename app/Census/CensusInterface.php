@@ -18,7 +18,8 @@ namespace Fisharebest\Webtrees\Census;
 /**
  * Definitions for a census
  */
-interface CensusInterface extends CensusPlaceInterface {
+interface CensusInterface extends CensusPlaceInterface
+{
     /**
      * When did this census occur, in GEDCOM format.
      *

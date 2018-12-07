@@ -21,7 +21,8 @@ use Fisharebest\Webtrees\Menu;
 /**
  * The F.A.B. theme.
  */
-class FabTheme extends AbstractTheme implements ThemeInterface {
+class FabTheme extends AbstractTheme implements ThemeInterface
+{
     /**
      * Where are our CSS, JS and other assets?
      *

@@ -23,7 +23,8 @@ use Fisharebest\Webtrees\Media;
 /**
  * Class ReportHtml
  */
-class ReportHtml extends ReportBase {
+class ReportHtml extends ReportBase
+{
     /**
      * Cell padding
      *
@@ -773,5 +774,4 @@ class ReportHtml extends ReportBase {
         $htmlcode = str_replace(array("\n", '> ', ' <'), array('<br>', '>&nbsp;', '&nbsp;<'), $htmlcode);
         echo $htmlcode;
     }
-
 }

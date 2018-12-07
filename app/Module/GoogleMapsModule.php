@@ -55,7 +55,8 @@ use PDO;
  *
  * Hence, use "Google Maps™ mapping service" where appropriate.
  */
-class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, ModuleTabInterface, ModuleChartInterface {
+class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, ModuleTabInterface, ModuleChartInterface
+{
     // How to update the database schema for this module
     const SCHEMA_TARGET_VERSION   = 6;
     const SCHEMA_SETTING_NAME     = 'GM_SCHEMA_VERSION';

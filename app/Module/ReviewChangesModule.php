@@ -31,7 +31,8 @@ use Fisharebest\Webtrees\User;
 /**
  * Class ReviewChangesModule
  */
-class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface {
+class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
+{
     /** {@inheritdoc} */
     public function getTitle()
     {

@@ -18,7 +18,8 @@ namespace Fisharebest\Webtrees\Report;
 /**
  * Class ReportHtmlImage
  */
-class ReportHtmlImage extends ReportBaseImage {
+class ReportHtmlImage extends ReportBaseImage
+{
     /**
      * Image renderer
      *
@@ -85,5 +86,4 @@ class ReportHtmlImage extends ReportBaseImage {
     {
         return $this->height + ($html->cPadding * 2);
     }
-
 }

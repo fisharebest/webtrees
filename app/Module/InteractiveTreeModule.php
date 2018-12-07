@@ -27,7 +27,8 @@ use Fisharebest\Webtrees\Module\InteractiveTree\TreeView;
  * Class InteractiveTreeModule
  * Tip : you could change the number of generations loaded before ajax calls both in individual page and in treeview page to optimize speed and server load
  */
-class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface, ModuleChartInterface {
+class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface, ModuleChartInterface
+{
     /** {@inheritdoc} */
     public function getTitle()
     {

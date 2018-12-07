@@ -34,7 +34,8 @@ use Rhumsaa\Uuid\Uuid;
  * Note that the user favorites module simply extends this module, so ensure that the
  * logic works for both.
  */
-class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInterface {
+class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInterface
+{
     // How to update the database schema for this module
     const SCHEMA_TARGET_VERSION   = 4;
     const SCHEMA_SETTING_NAME     = 'FV_SCHEMA_VERSION';

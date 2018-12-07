@@ -33,7 +33,8 @@ use Fisharebest\Webtrees\Soundex;
 /**
  * Class CensusAssistantModule
  */
-class CensusAssistantModule extends AbstractModule {
+class CensusAssistantModule extends AbstractModule
+{
     /** {@inheritdoc} */
     public function getTitle()
     {

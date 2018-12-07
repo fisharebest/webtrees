@@ -20,7 +20,8 @@ use Fisharebest\Webtrees\I18N;
 /**
  * RTL Functions for use in the PDF/HTML reports
  */
-class FunctionsRtl {
+class FunctionsRtl
+{
     const OPEN_PARENTHESES = '([{';
 
     const CLOSE_PARENTHESES = ')]}';

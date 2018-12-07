@@ -20,7 +20,8 @@ use Fisharebest\Webtrees\Menu;
 /**
  * Interface ModuleReportInterface - Classes and libraries for module system
  */
-interface ModuleReportInterface {
+interface ModuleReportInterface
+{
     /**
      * Return a menu item for this report.
      *

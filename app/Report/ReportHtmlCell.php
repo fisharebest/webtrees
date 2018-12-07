@@ -18,7 +18,8 @@ namespace Fisharebest\Webtrees\Report;
 /**
  * Class ReportHtmlCell
  */
-class ReportHtmlCell extends ReportBaseCell {
+class ReportHtmlCell extends ReportBaseCell
+{
     /**
      * HTML Cell renderer
      *

@@ -52,7 +52,8 @@ use Fisharebest\Webtrees\User;
 /**
  * Common functions for all themes.
  */
-abstract class AbstractTheme {
+abstract class AbstractTheme
+{
     /** @var Tree The current tree */
     protected $tree;
 

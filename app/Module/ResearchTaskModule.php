@@ -28,7 +28,8 @@ use Rhumsaa\Uuid\Uuid;
 /**
  * Class ResearchTaskModule
  */
-class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface {
+class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
+{
     const DEFAULT_SHOW_OTHER      = '1';
     const DEFAULT_SHOW_UNASSIGNED = '1';
     const DEFAULT_SHOW_FUTURE     = '1';

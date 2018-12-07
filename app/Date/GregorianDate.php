@@ -20,7 +20,8 @@ use Fisharebest\ExtCalendar\GregorianCalendar;
 /**
  * Definitions for the Gregorian calendar
  */
-class GregorianDate extends CalendarDate {
+class GregorianDate extends CalendarDate
+{
     /**
      * Create a date from either:
      * a Julian day number

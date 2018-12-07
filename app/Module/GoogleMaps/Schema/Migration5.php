@@ -21,7 +21,8 @@ use Fisharebest\Webtrees\Schema\MigrationInterface;
 /**
  * Upgrade the database schema from version 5 to version 6.
  */
-class Migration5 implements MigrationInterface {
+class Migration5 implements MigrationInterface
+{
     /** {@inheritDoc} */
     public function upgrade()
     {

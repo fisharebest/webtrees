@@ -18,7 +18,8 @@ namespace Fisharebest\Webtrees\Census;
 /**
  * Definitions for a census
  */
-class CensusOfDeutschland1900 extends CensusOfDeutschland implements CensusInterface {
+class CensusOfDeutschland1900 extends CensusOfDeutschland implements CensusInterface
+{
     /**
      * When did this census occur.
      *

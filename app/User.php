@@ -18,7 +18,8 @@ namespace Fisharebest\Webtrees;
 /**
  * Provide an interface to the wt_user table.
  */
-class User {
+class User
+{
     /** @var  string The primary key of this user. */
     private $user_id;
 

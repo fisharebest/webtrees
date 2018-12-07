@@ -18,7 +18,8 @@ namespace Fisharebest\Webtrees\SurnameTradition;
 /**
  * All family members keep their original surname
  */
-class DefaultSurnameTradition implements SurnameTraditionInterface {
+class DefaultSurnameTradition implements SurnameTraditionInterface
+{
     /** Extract a GIVN from a NAME */
     const REGEX_GIVN = '~^(?<GIVN>[^/ ]+)~';
 

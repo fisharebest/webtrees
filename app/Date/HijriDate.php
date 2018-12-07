@@ -24,7 +24,8 @@ use Fisharebest\Webtrees\I18N;
  * Note that these are "theoretical" dates.
  * "True" dates are based on local lunar observations, and can be a +/- one day.
  */
-class HijriDate extends CalendarDate {
+class HijriDate extends CalendarDate
+{
     /** @var int[] Convert GEDCOM month names to month numbers  */
     public static $MONTH_ABBREV = array('' => 0, 'MUHAR' => 1, 'SAFAR' => 2, 'RABIA' => 3, 'RABIT' => 4, 'JUMAA' => 5, 'JUMAT' => 6, 'RAJAB' => 7, 'SHAAB' => 8, 'RAMAD' => 9, 'SHAWW' => 10, 'DHUAQ' => 11, 'DHUAH' => 12);
 

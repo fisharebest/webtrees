@@ -18,7 +18,8 @@ namespace Fisharebest\Webtrees\Census;
 /**
  * Definitions for a census
  */
-class CensusOfScotland1861 extends CensusOfScotland implements CensusInterface {
+class CensusOfScotland1861 extends CensusOfScotland implements CensusInterface
+{
     /**
      * When did this census occur.
      *

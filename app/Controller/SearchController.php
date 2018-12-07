@@ -34,7 +34,8 @@ use Fisharebest\Webtrees\Tree;
 /**
  * Controller for the search page
  */
-class SearchController extends PageController {
+class SearchController extends PageController
+{
     /** @var string The type of search to perform */
     public $action;
 

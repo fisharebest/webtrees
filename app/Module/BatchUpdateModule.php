@@ -34,7 +34,8 @@ use Fisharebest\Webtrees\Tree;
 /**
  * Class BatchUpdateModule
  */
-class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface {
+class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
+{
     /** @var string  Form parameter: chosen plugin*/
     private $plugin;
 
@@ -449,5 +450,4 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface 
     {
         return 'module.php?mod=' . $this->getName() . '&amp;mod_action=admin_batch_update';
     }
-
 }

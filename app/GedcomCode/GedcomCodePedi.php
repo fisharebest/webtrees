@@ -22,7 +22,8 @@ use Fisharebest\Webtrees\Individual;
 /**
  * Class GedcomCodePedi - Functions and logic for GEDCOM "PEDI" codes
  */
-class GedcomCodePedi {
+class GedcomCodePedi
+{
     /** @var string[] Possible values for pedigree field */
     private static $TYPES = array('adopted', 'birth', 'foster', 'rada', 'sealing');
 

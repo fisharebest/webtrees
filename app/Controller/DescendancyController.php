@@ -28,7 +28,8 @@ use Rhumsaa\Uuid\Uuid;
 /**
  * Controller for the descendancy chart
  */
-class DescendancyController extends ChartController {
+class DescendancyController extends ChartController
+{
     /** @var int Show boxes for cousins */
     public $show_cousins;
 

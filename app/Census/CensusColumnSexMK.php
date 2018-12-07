@@ -18,7 +18,8 @@ namespace Fisharebest\Webtrees\Census;
 /**
  * The individual's sex.
  */
-class CensusColumnSexMK extends CensusColumnSexMF {
+class CensusColumnSexMK extends CensusColumnSexMF
+{
     /* Text to display for female individuals */
     protected $female = 'K';
 }

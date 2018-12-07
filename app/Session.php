@@ -18,7 +18,8 @@ namespace Fisharebest\Webtrees;
 /**
  * Temporary class to migrate to Symfony-based sessions, which need PHP 5.4.
  */
-class Session {
+class Session
+{
     /**
      * Start a session
      *

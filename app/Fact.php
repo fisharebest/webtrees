@@ -20,7 +20,8 @@ use Fisharebest\Webtrees\Functions\FunctionsPrint;
 /**
  * A GEDCOM fact or event object.
  */
-class Fact {
+class Fact
+{
     /** @var string Unique identifier for this fact (currently implemented as a hash of the raw data). */
     private $fact_id;
 

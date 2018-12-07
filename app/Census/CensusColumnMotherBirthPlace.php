@@ -20,7 +20,8 @@ use Fisharebest\Webtrees\Individual;
 /**
  * Birth place of the individual's mother.
  */
-class CensusColumnMotherBirthPlace extends AbstractCensusColumn implements CensusColumnInterface {
+class CensusColumnMotherBirthPlace extends AbstractCensusColumn implements CensusColumnInterface
+{
     /**
      * Generate the likely value of this census column, based on available information.
      *

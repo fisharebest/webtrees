@@ -20,7 +20,8 @@ use Fisharebest\Webtrees\I18N;
 /**
  * The xenea theme.
  */
-class XeneaTheme extends AbstractTheme implements ThemeInterface {
+class XeneaTheme extends AbstractTheme implements ThemeInterface
+{
     /**
      * Where are our CSS, JS and other assets?
      *

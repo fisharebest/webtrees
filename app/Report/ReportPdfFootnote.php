@@ -18,7 +18,8 @@ namespace Fisharebest\Webtrees\Report;
 /**
  * Class ReportPdfFootnote
  */
-class ReportPdfFootnote extends ReportBaseFootnote {
+class ReportPdfFootnote extends ReportBaseFootnote
+{
     /**
      * PDF Footnotes number renderer
      *

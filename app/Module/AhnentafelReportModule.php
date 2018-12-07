@@ -22,7 +22,8 @@ use Fisharebest\Webtrees\Menu;
 /**
  * Class AhnentafelReportModule
  */
-class AhnentafelReportModule extends AbstractModule implements ModuleReportInterface {
+class AhnentafelReportModule extends AbstractModule implements ModuleReportInterface
+{
     /**
      * How should this module be labelled on tabs, menus, etc.?
      *

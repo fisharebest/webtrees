@@ -25,7 +25,8 @@ use Fisharebest\Webtrees\I18N;
 /**
  * Class SourcesTabModule
  */
-class SourcesTabModule extends AbstractModule implements ModuleTabInterface {
+class SourcesTabModule extends AbstractModule implements ModuleTabInterface
+{
     /** @var Fact[] All facts belonging to this source. */
     private $facts;
 

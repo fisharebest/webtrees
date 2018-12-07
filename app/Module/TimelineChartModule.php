@@ -23,7 +23,8 @@ use Fisharebest\Webtrees\Menu;
 /**
  * Class TimelineChartModule
  */
-class TimelineChartModule extends AbstractModule implements ModuleChartInterface {
+class TimelineChartModule extends AbstractModule implements ModuleChartInterface
+{
     /**
      * How should this module be labelled on tabs, menus, etc.?
      *

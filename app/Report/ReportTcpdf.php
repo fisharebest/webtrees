@@ -22,7 +22,8 @@ use TCPDF;
  *
  * This class inherits from the TCPDF class and is used to generate the PDF document
  */
-class ReportTcpdf extends TCPDF {
+class ReportTcpdf extends TCPDF
+{
     /** @var ReportBaseElement[] Array of elements in the header */
     public $headerElements = array();
 

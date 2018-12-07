@@ -23,7 +23,8 @@ use Fisharebest\Webtrees\Theme;
 /**
  * Controller for the pedigree chart
  */
-class PedigreeController extends ChartController {
+class PedigreeController extends ChartController
+{
     /**
      * Chart orientation codes
      * Dont change them! the offset calculations rely on this order

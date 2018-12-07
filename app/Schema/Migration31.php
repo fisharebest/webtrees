@@ -22,7 +22,8 @@ use PDOException;
 /**
  * Upgrade the database schema from version 31 to version 32.
  */
-class Migration31 implements MigrationInterface {
+class Migration31 implements MigrationInterface
+{
     /** @var string[] Updated language codes */
     private $languages = array(
         'en_AU' => 'en-AU',

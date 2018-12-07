@@ -27,7 +27,8 @@ use Fisharebest\Webtrees\Menu;
 /**
  * Controller for the family page
  */
-class FamilyController extends GedcomRecordController {
+class FamilyController extends GedcomRecordController
+{
     /**
      * Get significant information from this page, to allow other pages such as
      * charts and reports to initialise with the same records

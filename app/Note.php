@@ -18,7 +18,8 @@ namespace Fisharebest\Webtrees;
 /**
  * A GEDCOM note (NOTE) object.
  */
-class Note extends GedcomRecord {
+class Note extends GedcomRecord
+{
     const RECORD_TYPE = 'NOTE';
     const URL_PREFIX  = 'note.php?nid=';
 

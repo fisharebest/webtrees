@@ -18,7 +18,8 @@ namespace Fisharebest\Webtrees\Census;
 /**
  * Definitions for a census
  */
-class CensusOfFrance1921 extends CensusOfFrance implements CensusInterface {
+class CensusOfFrance1921 extends CensusOfFrance implements CensusInterface
+{
     /**
      * When did this census occur.
      *

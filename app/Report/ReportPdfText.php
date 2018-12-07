@@ -20,7 +20,8 @@ use Fisharebest\Webtrees\Functions\FunctionsRtl;
 /**
  * Class ReportPdfText
  */
-class ReportPdfText extends ReportBaseText {
+class ReportPdfText extends ReportBaseText
+{
     /**
      * PDF Text renderer
      *

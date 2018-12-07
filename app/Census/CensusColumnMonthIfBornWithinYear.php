@@ -20,7 +20,8 @@ use Fisharebest\Webtrees\Individual;
 /**
  * The month of birth, if within the last year.
  */
-class CensusColumnMonthIfBornWithinYear extends AbstractCensusColumn implements CensusColumnInterface {
+class CensusColumnMonthIfBornWithinYear extends AbstractCensusColumn implements CensusColumnInterface
+{
     /**
      * Generate the likely value of this census column, based on available information.
      *

@@ -21,7 +21,8 @@ use Fisharebest\Webtrees\Individual;
 /**
  * At what age did the individual marry.
  */
-class CensusColumnAgeMarried extends AbstractCensusColumn implements CensusColumnInterface {
+class CensusColumnAgeMarried extends AbstractCensusColumn implements CensusColumnInterface
+{
     /**
      * Generate the likely value of this census column, based on available information.
      *

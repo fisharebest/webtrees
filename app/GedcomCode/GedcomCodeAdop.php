@@ -22,7 +22,8 @@ use Fisharebest\Webtrees\Individual;
 /**
  * Class GedcomCodeAdop - Functions and logic for GEDCOM "ADOP" codes
  */
-class GedcomCodeAdop {
+class GedcomCodeAdop
+{
     /** @var string[] A list of possible adoption codes */
     private static $TYPES = array('BOTH', 'HUSB', 'WIFE');
 

@@ -21,7 +21,8 @@ use Fisharebest\Webtrees\I18N;
 /**
  * Class FunctionsDate - common functions
  */
-class FunctionsDate {
+class FunctionsDate
+{
     /**
      * Convert a GEDCOM age string to localized text.
      *

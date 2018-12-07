@@ -27,7 +27,8 @@ use Fisharebest\Webtrees\Theme;
 /**
  * Class RelativesTabModule
  */
-class RelativesTabModule extends AbstractModule implements ModuleTabInterface {
+class RelativesTabModule extends AbstractModule implements ModuleTabInterface
+{
     /**
      * How should this module be labelled on tabs, menus, etc.?
      *

@@ -21,7 +21,8 @@ use Fisharebest\Webtrees\Individual;
 /**
  * The nationality of the individual.
  */
-class CensusColumnNationality extends AbstractCensusColumn implements CensusColumnInterface {
+class CensusColumnNationality extends AbstractCensusColumn implements CensusColumnInterface
+{
     /** @var array Convert a country name to a nationality */
     private $nationalities = array(
         'England'     => 'British',

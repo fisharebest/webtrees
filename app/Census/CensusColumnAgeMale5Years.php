@@ -21,7 +21,8 @@ use Fisharebest\Webtrees\Individual;
 /**
  * The age of a male individual (rounded down to the nearest 5 years).
  */
-class CensusColumnAgeMale5Years extends AbstractCensusColumn implements CensusColumnInterface {
+class CensusColumnAgeMale5Years extends AbstractCensusColumn implements CensusColumnInterface
+{
     /**
      * Generate the likely value of this census column, based on available information.
      *

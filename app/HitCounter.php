@@ -18,7 +18,8 @@ namespace Fisharebest\Webtrees;
 /**
  * Measure page popularity.
  */
-class HitCounter {
+class HitCounter
+{
     /**
      * Count the number of times this page has been viewed.
      *

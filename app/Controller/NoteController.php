@@ -23,7 +23,8 @@ use Fisharebest\Webtrees\Menu;
 /**
  * Controller for the shared note page
  */
-class NoteController extends GedcomRecordController {
+class NoteController extends GedcomRecordController
+{
     /**
      * get edit menu
      */

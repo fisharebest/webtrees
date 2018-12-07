@@ -18,7 +18,8 @@ namespace Fisharebest\Webtrees\Report;
 /**
  * Class ReportPdfTextbox
  */
-class ReportPdfTextbox extends ReportBaseTextbox {
+class ReportPdfTextbox extends ReportBaseTextbox
+{
     /**
      * PDF Text Box renderer
      *

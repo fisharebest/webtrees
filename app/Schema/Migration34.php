@@ -21,7 +21,8 @@ use Fisharebest\Webtrees\Module;
 /**
  * Upgrade the database schema from version 34 to version 35.
  */
-class Migration34 implements MigrationInterface {
+class Migration34 implements MigrationInterface
+{
     /**
      * Upgrade to to the next version
      */

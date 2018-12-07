@@ -18,7 +18,8 @@ namespace Fisharebest\Webtrees\Controller;
 /**
  * Base controller for all popup pages
  */
-class AjaxController extends BaseController {
+class AjaxController extends BaseController
+{
     /**
      * Print the page header, using the theme
      *

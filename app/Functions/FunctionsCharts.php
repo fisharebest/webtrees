@@ -24,7 +24,8 @@ use Fisharebest\Webtrees\Theme;
 /**
  * Class FunctionsCharts - common functions
  */
-class FunctionsCharts {
+class FunctionsCharts
+{
     /**
      * print a table cell with sosa number
      *

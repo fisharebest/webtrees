@@ -20,7 +20,8 @@ use Fisharebest\Webtrees\Individual;
 /**
  * A column that we cannot generate.
  */
-class CensusColumnNull extends AbstractCensusColumn implements CensusColumnInterface {
+class CensusColumnNull extends AbstractCensusColumn implements CensusColumnInterface
+{
     /**
      * Generate the likely value of this census column, based on available information.
      *

@@ -26,7 +26,8 @@ use Fisharebest\Webtrees\Soundex;
 /**
  * Controller for the advanced search page
  */
-class AdvancedSearchController extends SearchController {
+class AdvancedSearchController extends SearchController
+{
     /** @var string[] Fields to search */
     public $fields    = array();
 

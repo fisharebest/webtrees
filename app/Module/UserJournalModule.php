@@ -25,7 +25,8 @@ use Fisharebest\Webtrees\Theme;
 /**
  * Class UserJournalModule
  */
-class UserJournalModule extends AbstractModule implements ModuleBlockInterface {
+class UserJournalModule extends AbstractModule implements ModuleBlockInterface
+{
     /**
      * Create a new module.
      *

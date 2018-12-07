@@ -28,7 +28,8 @@ use Fisharebest\Webtrees\Tree;
 /**
  * Class RelationshipsChartModule
  */
-class RelationshipsChartModule extends AbstractModule implements ModuleConfigInterface, ModuleChartInterface {
+class RelationshipsChartModule extends AbstractModule implements ModuleConfigInterface, ModuleChartInterface
+{
     /** It would be more correct to use PHP_INT_MAX, but this isn't friendly in URLs */
     const UNLIMITED_RECURSION = 99;
 

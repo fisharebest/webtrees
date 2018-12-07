@@ -24,7 +24,8 @@ use Fisharebest\Webtrees\Menu;
 /**
  * Class FamilyNavigatorModule
  */
-class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInterface {
+class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInterface
+{
     const TTL = "<div class='flyout2'>%s</div>";
     const LNK = "<div class='flyout3' data-href='%s'>%s</div>";
     const MSG = "<div class='flyout4'>(%s)</div>"; // class flyout4 not used in standard themes
@@ -272,5 +273,4 @@ class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInter
 
         return sprintf(self::TTL, I18N::translate('Family')) . $html;
     }
-
 }

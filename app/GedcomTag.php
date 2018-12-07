@@ -20,7 +20,8 @@ use Rhumsaa\Uuid\Uuid;
 /**
  * Static GEDCOM data for tags
  */
-class GedcomTag {
+class GedcomTag
+{
     /** @var string[] All tags that webtrees knows how to translate - including special/internal tags */
     private static $ALL_TAGS = array(
         'ABBR', 'ADDR', 'ADR1', 'ADR2', 'ADOP', 'ADOP:DATE', 'ADOP:PLAC',

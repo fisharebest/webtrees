@@ -18,7 +18,8 @@ namespace Fisharebest\Webtrees\Report;
 /**
  * Class ReportBaseCell
  */
-class ReportBaseCell extends ReportBaseElement {
+class ReportBaseCell extends ReportBaseElement
+{
     /**
      * Allows to center or align the text. Possible values are:<ul><li>left or empty string: left align</li><li>center: center align</li><li>right: right align</li><li>justify: justification (default value when $ishtml=false)</li></ul>
      *

@@ -22,7 +22,8 @@ use Fisharebest\Webtrees\Tree;
 /**
  * Class AbstractModule - common functions for blocks
  */
-abstract class AbstractModule {
+abstract class AbstractModule
+{
     /** @var string The directory where the module is installed */
     private $directory;
 

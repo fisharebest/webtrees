@@ -30,7 +30,8 @@ use Fisharebest\Webtrees\Tree;
 /**
  * Class HtmlBlockModule
  */
-class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface {
+class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface
+{
     /** {@inheritdoc} */
     public function getTitle()
     {

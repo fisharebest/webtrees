@@ -24,7 +24,8 @@ use Fisharebest\Webtrees\Tree;
 /**
  * Generate lists for indilist.php and famlist.php
  */
-class QueryName {
+class QueryName
+{
     /**
      * Get a list of initial letters, for lists of names.
      *

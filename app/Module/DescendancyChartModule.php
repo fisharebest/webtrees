@@ -23,7 +23,8 @@ use Fisharebest\Webtrees\Menu;
 /**
  * Class DescendancyChartModule
  */
-class DescendancyChartModule extends AbstractModule implements ModuleChartInterface {
+class DescendancyChartModule extends AbstractModule implements ModuleChartInterface
+{
     /**
      * How should this module be labelled on tabs, menus, etc.?
      *

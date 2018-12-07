@@ -28,7 +28,8 @@ use Fisharebest\Webtrees\Theme;
 /**
  * Class ChartsBlockModule
  */
-class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
+class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
+{
     /** {@inheritdoc} */
     public function getTitle()
     {

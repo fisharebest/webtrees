@@ -20,7 +20,8 @@ use Fisharebest\Webtrees\I18N;
 /**
  * Class ReportBase
  */
-class ReportBase {
+class ReportBase
+{
     /** User measure unit. */
     const UNITS = 'pt';
 

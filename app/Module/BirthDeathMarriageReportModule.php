@@ -22,7 +22,8 @@ use Fisharebest\Webtrees\Menu;
 /**
  * Class BirthDeathMarriageReportModule
  */
-class BirthDeathMarriageReportModule extends AbstractModule implements ModuleReportInterface {
+class BirthDeathMarriageReportModule extends AbstractModule implements ModuleReportInterface
+{
     /**
      * How should this module be labelled on tabs, menus, etc.?
      *

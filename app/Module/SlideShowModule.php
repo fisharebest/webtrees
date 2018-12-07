@@ -28,7 +28,8 @@ use Fisharebest\Webtrees\Theme;
 /**
  * Class SlideShowModule
  */
-class SlideShowModule extends AbstractModule implements ModuleBlockInterface {
+class SlideShowModule extends AbstractModule implements ModuleBlockInterface
+{
     /** {@inheritdoc} */
     public function getTitle()
     {

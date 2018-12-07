@@ -21,7 +21,8 @@ use Fisharebest\Webtrees\SpecialChars\SpecialCharsInterface;
 /**
  * Class SpecialChars - exemplar and difficult-to-type characters.
  */
-class SpecialChars {
+class SpecialChars
+{
     /** @var string[] A list of supported language-tags. */
     private static $languages = array(
         'af', 'ar', 'cs', 'da', 'de', 'el', 'en', 'es', 'eu', 'fi', 'fr', 'gd', 'haw', 'he',

@@ -20,7 +20,8 @@ use Fisharebest\Webtrees\Individual;
 /**
  * Did the individual marry within the last year.
  */
-class CensusColumnMarriedWithinYear extends AbstractCensusColumn implements CensusColumnInterface {
+class CensusColumnMarriedWithinYear extends AbstractCensusColumn implements CensusColumnInterface
+{
     /**
      * Generate the likely value of this census column, based on available information.
      *

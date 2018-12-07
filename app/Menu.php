@@ -20,7 +20,8 @@ use Rhumsaa\Uuid\Uuid;
 /**
  * System for generating menus.
  */
-class Menu {
+class Menu
+{
     /** @var string The text to be displayed in the mneu */
     private $label;
 

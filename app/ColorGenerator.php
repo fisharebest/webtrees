@@ -18,7 +18,8 @@ namespace Fisharebest\Webtrees;
 /**
  * Generate a range of colurs for the lifespan chart.
  */
-class ColorGenerator {
+class ColorGenerator
+{
     /** @var int Current hue */
     private $hue;
 
@@ -93,5 +94,4 @@ class ColorGenerator {
             $this->lightness,
             $this->alpha);
     }
-
 }

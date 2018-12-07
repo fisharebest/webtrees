@@ -25,7 +25,8 @@ use Fisharebest\Webtrees\Theme;
 /**
  * Class UpcomingAnniversariesModule
  */
-class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockInterface {
+class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockInterface
+{
     /**
      * How should this module be labelled on tabs, menus, etc.?
      *

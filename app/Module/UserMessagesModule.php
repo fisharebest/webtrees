@@ -27,7 +27,8 @@ use Fisharebest\Webtrees\User;
 /**
  * Class UserMessagesModule
  */
-class UserMessagesModule extends AbstractModule implements ModuleBlockInterface {
+class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
+{
     /** {@inheritdoc} */
     public function getTitle()
     {

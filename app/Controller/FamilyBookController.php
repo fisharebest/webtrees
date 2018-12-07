@@ -24,7 +24,8 @@ use Fisharebest\Webtrees\Theme;
 /**
  * Controller for the familybook chart
  */
-class FamilyBookController extends ChartController {
+class FamilyBookController extends ChartController
+{
     /** @var int Whether to show spouse details */
     public $show_spouse;
 

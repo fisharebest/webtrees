@@ -23,7 +23,8 @@ use Fisharebest\Webtrees\Individual;
 /**
  * Class TreeView
  */
-class TreeView {
+class TreeView
+{
     /** @var string HTML element name */
     private $name;
 

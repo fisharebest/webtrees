@@ -29,7 +29,8 @@ use Fisharebest\Webtrees\Theme;
 /**
  * Controller for the timeline chart
  */
-class TimelineController extends PageController {
+class TimelineController extends PageController
+{
     /** @var int Height of the age box */
     public $bheight = 30;
 

@@ -20,7 +20,8 @@ use Fisharebest\Webtrees\I18N;
 /**
  * Class BatchUpdateDuplicateLinksPlugin Batch Update plugin: remove duplicate links in records
  */
-class BatchUpdateDuplicateLinksPlugin extends BatchUpdateBasePlugin {
+class BatchUpdateDuplicateLinksPlugin extends BatchUpdateBasePlugin
+{
     /**
      * User-friendly name for this plugin.
      *

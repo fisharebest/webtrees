@@ -22,7 +22,8 @@ use Fisharebest\Webtrees\Menu;
 /**
  * Class PageMenuModule
  */
-class PageMenuModule extends AbstractModule implements ModuleMenuInterface {
+class PageMenuModule extends AbstractModule implements ModuleMenuInterface
+{
     /** {@inheritdoc} */
     public function getTitle()
     {

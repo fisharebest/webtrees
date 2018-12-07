@@ -21,7 +21,8 @@ namespace Fisharebest\Webtrees\SpecialChars;
  * For each language, list the symbols, puncutation and letters with diacritics
  * that may be difficult to type.
  */
-class SpecialCharsAr extends AbstractSpecialChars {
+class SpecialCharsAr extends AbstractSpecialChars
+{
     /**
      * A list of magiscule letters.
      *

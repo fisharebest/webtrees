@@ -18,7 +18,8 @@ namespace Fisharebest\Webtrees;
 /**
  * File manipulation utilities.
  */
-class File {
+class File
+{
     /**
      * Fetch a remote file
      * Note that fopen() and file_get_contents() are often unvailable, as they

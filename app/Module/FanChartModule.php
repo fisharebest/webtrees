@@ -23,7 +23,8 @@ use Fisharebest\Webtrees\Menu;
 /**
  * Class FanChartModule
  */
-class FanChartModule extends AbstractModule implements ModuleChartInterface {
+class FanChartModule extends AbstractModule implements ModuleChartInterface
+{
     /**
      * How should this module be labelled on tabs, menus, etc.?
      *

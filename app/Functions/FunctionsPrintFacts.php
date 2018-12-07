@@ -40,7 +40,8 @@ use Rhumsaa\Uuid\Uuid;
 /**
  * Class FunctionsPrintFacts - common functions
  */
-class FunctionsPrintFacts {
+class FunctionsPrintFacts
+{
     /**
      * Print a fact record, for the individual/family/source/repository/etc. pages.
      *

@@ -30,7 +30,8 @@ use PclZip;
 /**
  * The clippings cart.
  */
-class ClippingsCartController {
+class ClippingsCartController
+{
     /** @var string Data to be downloaded. */
     private $download_data;
 

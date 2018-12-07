@@ -23,7 +23,8 @@ use Fisharebest\Webtrees\Functions\FunctionsPrint;
 /**
  * A GEDCOM object.
  */
-class GedcomRecord {
+class GedcomRecord
+{
     const RECORD_TYPE = 'UNKNOWN';
     const URL_PREFIX  = 'gedrecord.php?pid=';
 

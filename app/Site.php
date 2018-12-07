@@ -18,7 +18,8 @@ namespace Fisharebest\Webtrees;
 /**
  * Provide an interface to the wt_site_setting table.
  */
-class Site {
+class Site
+{
     /**
      * Everything from the wt_site_setting table.
      *

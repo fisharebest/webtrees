@@ -30,7 +30,8 @@ use Fisharebest\Webtrees\Tree;
 /**
  * Class StoriesModule
  */
-class StoriesModule extends AbstractModule implements ModuleTabInterface, ModuleConfigInterface, ModuleMenuInterface {
+class StoriesModule extends AbstractModule implements ModuleTabInterface, ModuleConfigInterface, ModuleMenuInterface
+{
     /** {@inheritdoc} */
     public function getTitle()
     {

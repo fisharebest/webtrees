@@ -22,7 +22,8 @@ use PDOException;
 /**
  * Upgrade the database schema from version 1 to version 2.
  */
-class Migration1 implements MigrationInterface {
+class Migration1 implements MigrationInterface
+{
     /** {@inheritDoc} */
     public function upgrade()
     {

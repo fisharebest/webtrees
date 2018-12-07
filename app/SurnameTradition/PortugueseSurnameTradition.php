@@ -22,7 +22,8 @@ namespace Fisharebest\Webtrees\SurnameTradition;
  * Father: Jose  /CCCC/ /DDDD/
  * Child:  Pablo /DDDD/ /BBBB/
  */
-class PortugueseSurnameTradition extends DefaultSurnameTradition implements SurnameTraditionInterface {
+class PortugueseSurnameTradition extends DefaultSurnameTradition implements SurnameTraditionInterface
+{
     /**
      * What names are given to a new child
      *

@@ -19,7 +19,8 @@ namespace Fisharebest\Webtrees;
  * Application configuration data. Data here has no GUI to edit it,
  * although most of it can be altered to customise local installations.
  */
-class Config {
+class Config
+{
     /** Font used to watermark images */
     const FONT_DEJAVU_SANS_TTF = 'packages/dejavu-fonts-ttf-2.35/ttf/DejaVuSans.ttf';
 

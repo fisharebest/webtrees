@@ -18,7 +18,8 @@ namespace Fisharebest\Webtrees;
 /**
  * Class Html - Add HTML markup to elements consistently.
  */
-class Html {
+class Html
+{
     /**
      * Filenames are (almost?) always LTR, even on RTL systems.
      *

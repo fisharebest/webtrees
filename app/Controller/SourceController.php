@@ -23,7 +23,8 @@ use Fisharebest\Webtrees\Menu;
 /**
  * Controller for the source page
  */
-class SourceController extends GedcomRecordController {
+class SourceController extends GedcomRecordController
+{
     /**
      * get edit menu
      */

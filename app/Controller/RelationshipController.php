@@ -24,7 +24,8 @@ use Fisharebest\Webtrees\Individual;
 /**
  * Controller for the relationships calculations
  */
-class RelationshipController extends PageController {
+class RelationshipController extends PageController
+{
     /**
      * Calculate the shortest paths - or all paths - between two individuals.
      *

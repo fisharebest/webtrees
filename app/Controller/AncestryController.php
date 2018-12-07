@@ -25,7 +25,8 @@ use Fisharebest\Webtrees\Theme;
 /**
  * Controller for the ancestry chart
  */
-class AncestryController extends ChartController {
+class AncestryController extends ChartController
+{
     /** @var int Show boxes for cousins */
     public $show_cousins;
 

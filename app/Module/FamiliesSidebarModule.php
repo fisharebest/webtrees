@@ -26,7 +26,8 @@ use Fisharebest\Webtrees\Tree;
 /**
  * Class FamiliesSidebarModule
  */
-class FamiliesSidebarModule extends AbstractModule implements ModuleSidebarInterface {
+class FamiliesSidebarModule extends AbstractModule implements ModuleSidebarInterface
+{
     /** {@inheritdoc} */
     public function getTitle()
     {

@@ -18,7 +18,8 @@ namespace Fisharebest\Webtrees\Report;
 /**
  * Class ReportBasePageheader
  */
-class ReportBasePageheader extends ReportBaseElement {
+class ReportBasePageheader extends ReportBaseElement
+{
     /** @var ReportBaseElement[] Elements */
     public $elements = array();
 

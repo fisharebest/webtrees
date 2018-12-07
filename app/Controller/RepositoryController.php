@@ -24,7 +24,8 @@ use Fisharebest\Webtrees\Module;
 /**
  * Controller for the repository page
  */
-class RepositoryController extends GedcomRecordController {
+class RepositoryController extends GedcomRecordController
+{
     /**
      * get edit menu
      */

@@ -22,7 +22,8 @@ use PDOException;
 /**
  * Provide an interface to the wt_gedcom table.
  */
-class Tree {
+class Tree
+{
     /** @var int The tree's ID number */
     private $tree_id;
 

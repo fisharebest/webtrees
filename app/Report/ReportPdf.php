@@ -21,7 +21,8 @@ use Fisharebest\Webtrees\Media;
 /**
  * Class ReportPdf
  */
-class ReportPdf extends ReportBase {
+class ReportPdf extends ReportBase
+{
     /**
      * PDF compression - Zlib extension is required
      *

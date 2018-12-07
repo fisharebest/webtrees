@@ -37,7 +37,8 @@ use Fisharebest\Webtrees\Session;
 /**
  * Controller for the timeline chart
  */
-class LifespanController extends PageController {
+class LifespanController extends PageController
+{
     // Base color parameters
     const RANGE           = 120; // degrees
     const SATURATION      = 100; // percent

@@ -28,7 +28,8 @@ use PDO;
  *
  * The "user favorites" module is almost identical to the "family tree favorites" module
  */
-class UserFavoritesModule extends FamilyTreeFavoritesModule {
+class UserFavoritesModule extends FamilyTreeFavoritesModule
+{
     /** {@inheritdoc} */
     public function getDescription()
     {

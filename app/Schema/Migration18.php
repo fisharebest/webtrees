@@ -21,7 +21,8 @@ use PDOException;
 /**
  * Upgrade the database schema from version 18 to version 19.
  */
-class Migration18 implements MigrationInterface {
+class Migration18 implements MigrationInterface
+{
     /**
      * Upgrade to to the next version
      */

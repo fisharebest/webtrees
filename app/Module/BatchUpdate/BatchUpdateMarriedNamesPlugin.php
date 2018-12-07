@@ -22,7 +22,8 @@ use Fisharebest\Webtrees\Module\BatchUpdateModule;
 /**
  * Class BatchUpdateMarriedNamesPlugin Batch Update plugin: add missing 2 _MARNM records
  */
-class BatchUpdateMarriedNamesPlugin extends BatchUpdateBasePlugin {
+class BatchUpdateMarriedNamesPlugin extends BatchUpdateBasePlugin
+{
     /** @var string User option: add or replace husband’s surname */
     private $surname;
 

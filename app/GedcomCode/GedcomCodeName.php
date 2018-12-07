@@ -22,7 +22,8 @@ use Fisharebest\Webtrees\Individual;
 /**
  * Class GedcomCodeName - Functions and logic for GEDCOM "NAME" codes
  */
-class GedcomCodeName {
+class GedcomCodeName
+{
     /** @var string[] A list of possible types of name */
     private static $TYPES = array('adopted', 'aka', 'birth', 'change', 'estate', 'immigrant', 'maiden', 'married', 'religious');
 

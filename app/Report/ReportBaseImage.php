@@ -18,7 +18,8 @@ namespace Fisharebest\Webtrees\Report;
 /**
  * Class ReportBaseImage
  */
-class ReportBaseImage extends ReportBaseElement {
+class ReportBaseImage extends ReportBaseElement
+{
     /**
      * Filename of the image
      *

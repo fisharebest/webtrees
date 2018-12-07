@@ -25,7 +25,8 @@ use Fisharebest\Webtrees\Site;
 /**
  * The colors theme.
  */
-class ColorsTheme extends CloudsTheme implements ThemeInterface {
+class ColorsTheme extends CloudsTheme implements ThemeInterface
+{
     /** @var string[] A list of color palettes */
     protected $palettes;
 

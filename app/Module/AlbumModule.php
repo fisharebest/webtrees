@@ -27,7 +27,8 @@ use Fisharebest\Webtrees\Theme;
 /**
  * Class AlbumModule
  */
-class AlbumModule extends AbstractModule implements ModuleTabInterface {
+class AlbumModule extends AbstractModule implements ModuleTabInterface
+{
     /** @var Media[] List of media objects. */
     private $media_list;
 

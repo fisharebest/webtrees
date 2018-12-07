@@ -22,7 +22,8 @@ use Fisharebest\Webtrees\Menu;
 /**
  * Class CemeteryReportModule
  */
-class CemeteryReportModule extends AbstractModule implements ModuleReportInterface {
+class CemeteryReportModule extends AbstractModule implements ModuleReportInterface
+{
     /** {@inheritdoc} */
     public function getTitle()
     {

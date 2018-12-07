@@ -21,7 +21,8 @@ use Fisharebest\Webtrees\I18N;
 /**
  * Class CkeditorModule
  */
-class CkeditorModule extends AbstractModule {
+class CkeditorModule extends AbstractModule
+{
     /** {@inheritdoc} */
     public function getTitle()
     {

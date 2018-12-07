@@ -30,7 +30,8 @@ use Fisharebest\Webtrees\Tree;
 /**
  * Class SiteMapModule
  */
-class SiteMapModule extends AbstractModule implements ModuleConfigInterface {
+class SiteMapModule extends AbstractModule implements ModuleConfigInterface
+{
     const RECORDS_PER_VOLUME = 500; // Keep sitemap files small, for memory, CPU and max_allowed_packet limits.
     const CACHE_LIFE         = 1209600; // Two weeks
 

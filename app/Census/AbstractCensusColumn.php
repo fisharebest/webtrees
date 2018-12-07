@@ -22,7 +22,8 @@ use Fisharebest\Webtrees\Individual;
 /**
  * Definitions for a census column
  */
-class AbstractCensusColumn {
+class AbstractCensusColumn
+{
     /** @var CensusInterface */
     private $census;
 

@@ -22,7 +22,8 @@ use Fisharebest\Webtrees\Menu;
 /**
  * Class IndividualReportModule
  */
-class IndividualReportModule extends AbstractModule implements ModuleReportInterface {
+class IndividualReportModule extends AbstractModule implements ModuleReportInterface
+{
     /** {@inheritdoc} */
     public function getTitle()
     {

@@ -20,7 +20,8 @@ use Fisharebest\Webtrees\Database;
 /**
  * Upgrade the database schema from version 25 to version 26.
  */
-class Migration25 implements MigrationInterface {
+class Migration25 implements MigrationInterface
+{
     /**
      * Upgrade to to the next version
      */
