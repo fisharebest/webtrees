@@ -490,20 +490,20 @@ class CalendarDate {
      */
     public function convertToCalendar($calendar) {
         switch ($calendar) {
-        case 'gregorian':
-            return new GregorianDate($this);
-        case 'julian':
-            return new JulianDate($this);
-        case 'jewish':
-            return new JewishDate($this);
-        case 'french':
-            return new FrenchDate($this);
-        case 'hijri':
-            return new HijriDate($this);
-        case 'jalali':
-            return new JalaliDate($this);
-        default:
-            return $this;
+            case 'gregorian':
+                return new GregorianDate($this);
+            case 'julian':
+                return new JulianDate($this);
+            case 'jewish':
+                return new JewishDate($this);
+            case 'french':
+                return new FrenchDate($this);
+            case 'hijri':
+                return new HijriDate($this);
+            case 'jalali':
+                return new JalaliDate($this);
+            default:
+                return $this;
         }
     }
 
@@ -578,90 +578,90 @@ class CalendarDate {
             $case = 'GENITIVE';
         } else {
             switch ($qualifier) {
-            case 'TO':
-            case 'ABT':
-            case 'FROM':
-                $case = 'GENITIVE';
-                break;
-            case 'AFT':
-                $case = 'LOCATIVE';
-                break;
-            case 'BEF':
-            case 'BET':
-            case 'AND':
-                $case = 'INSTRUMENTAL';
-                break;
-            case '':
-            case 'INT':
-            case 'EST':
-            case 'CAL':
-            default: // There shouldn't be any other options...
-                $case = 'NOMINATIVE';
-                break;
+                case 'TO':
+                case 'ABT':
+                case 'FROM':
+                    $case = 'GENITIVE';
+                    break;
+                case 'AFT':
+                    $case = 'LOCATIVE';
+                    break;
+                case 'BEF':
+                case 'BET':
+                case 'AND':
+                    $case = 'INSTRUMENTAL';
+                    break;
+                case '':
+                case 'INT':
+                case 'EST':
+                case 'CAL':
+                default: // There shouldn't be any other options...
+                    $case = 'NOMINATIVE';
+                    break;
             }
         }
         // Build up the formatted date, character at a time
         preg_match_all('/%[^%]/', $format, $matches);
         foreach ($matches[0] as $match) {
             switch ($match) {
-            case '%d':
-                $format = str_replace($match, $this->formatDayZeros(), $format);
-                break;
-            case '%j':
-                $format = str_replace($match, $this->formatDay(), $format);
-                break;
-            case '%l':
-                $format = str_replace($match, $this->formatLongWeekday(), $format);
-                break;
-            case '%D':
-                $format = str_replace($match, $this->formatShortWeekday(), $format);
-                break;
-            case '%N':
-                $format = str_replace($match, $this->formatIsoWeekday(), $format);
-                break;
-            case '%w':
-                $format = str_replace($match, $this->formatNumericWeekday(), $format);
-                break;
-            case '%z':
-                $format = str_replace($match, $this->formatDayOfYear(), $format);
-                break;
-            case '%F':
-                $format = str_replace($match, $this->formatLongMonth($case), $format);
-                break;
-            case '%m':
-                $format = str_replace($match, $this->formatMonthZeros(), $format);
-                break;
-            case '%M':
-                $format = str_replace($match, $this->formatShortMonth(), $format);
-                break;
-            case '%n':
-                $format = str_replace($match, $this->formatMonth(), $format);
-                break;
-            case '%t':
-                $format = str_replace($match, $this->daysInMonth(), $format);
-                break;
-            case '%L':
-                $format = str_replace($match, (int) $this->isLeapYear(), $format);
-                break;
-            case '%Y':
-                $format = str_replace($match, $this->formatLongYear(), $format);
-                break;
-            case '%y':
-                $format = str_replace($match, $this->formatShortYear(), $format);
-                break;
+                case '%d':
+                    $format = str_replace($match, $this->formatDayZeros(), $format);
+                    break;
+                case '%j':
+                    $format = str_replace($match, $this->formatDay(), $format);
+                    break;
+                case '%l':
+                    $format = str_replace($match, $this->formatLongWeekday(), $format);
+                    break;
+                case '%D':
+                    $format = str_replace($match, $this->formatShortWeekday(), $format);
+                    break;
+                case '%N':
+                    $format = str_replace($match, $this->formatIsoWeekday(), $format);
+                    break;
+                case '%w':
+                    $format = str_replace($match, $this->formatNumericWeekday(), $format);
+                    break;
+                case '%z':
+                    $format = str_replace($match, $this->formatDayOfYear(), $format);
+                    break;
+                case '%F':
+                    $format = str_replace($match, $this->formatLongMonth($case), $format);
+                    break;
+                case '%m':
+                    $format = str_replace($match, $this->formatMonthZeros(), $format);
+                    break;
+                case '%M':
+                    $format = str_replace($match, $this->formatShortMonth(), $format);
+                    break;
+                case '%n':
+                    $format = str_replace($match, $this->formatMonth(), $format);
+                    break;
+                case '%t':
+                    $format = str_replace($match, $this->daysInMonth(), $format);
+                    break;
+                case '%L':
+                    $format = str_replace($match, (int) $this->isLeapYear(), $format);
+                    break;
+                case '%Y':
+                    $format = str_replace($match, $this->formatLongYear(), $format);
+                    break;
+                case '%y':
+                    $format = str_replace($match, $this->formatShortYear(), $format);
+                    break;
                 // These 4 extensions are useful for re-formatting gedcom dates.
-            case '%@':
-                $format = str_replace($match, $this->calendar->gedcomCalendarEscape(), $format);
-                break;
-            case '%A':
-                $format = str_replace($match, $this->formatGedcomDay(), $format);
-                break;
-            case '%O':
-                $format = str_replace($match, $this->formatGedcomMonth(), $format);
-                break;
-            case '%E':
-                $format = str_replace($match, $this->formatGedcomYear(), $format);
-                break;
+                case '%@':
+                    $format = str_replace($match, $this->calendar->gedcomCalendarEscape(), $format);
+                    break;
+                case '%A':
+                    $format = str_replace($match, $this->formatGedcomDay(), $format);
+                    break;
+                case '%O':
+                    $format = str_replace($match, $this->formatGedcomMonth(), $format);
+                    break;
+                case '%E':
+                    $format = str_replace($match, $this->formatGedcomYear(), $format);
+                    break;
             }
         }
 
@@ -766,16 +766,16 @@ class CalendarDate {
      */
     protected function formatLongMonth($case = 'NOMINATIVE') {
         switch ($case) {
-        case 'GENITIVE':
-            return $this->monthNameGenitiveCase($this->m, $this->isLeapYear());
-        case 'NOMINATIVE':
-            return $this->monthNameNominativeCase($this->m, $this->isLeapYear());
-        case 'LOCATIVE':
-            return $this->monthNameLocativeCase($this->m, $this->isLeapYear());
-        case 'INSTRUMENTAL':
-            return $this->monthNameInstrumentalCase($this->m, $this->isLeapYear());
-        default:
-            throw new \InvalidArgumentException($case);
+            case 'GENITIVE':
+                return $this->monthNameGenitiveCase($this->m, $this->isLeapYear());
+            case 'NOMINATIVE':
+                return $this->monthNameNominativeCase($this->m, $this->isLeapYear());
+            case 'LOCATIVE':
+                return $this->monthNameLocativeCase($this->m, $this->isLeapYear());
+            case 'INSTRUMENTAL':
+                return $this->monthNameInstrumentalCase($this->m, $this->isLeapYear());
+            default:
+                throw new \InvalidArgumentException($case);
         }
     }
 

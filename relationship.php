@@ -179,39 +179,39 @@ if ($person1 && $person2) {
         foreach ($path as $n => $xref) {
             if ($n % 2 === 1) {
                 switch ($relationships[$n]) {
-                case 'hus':
-                case 'wif':
-                case 'spo':
-                case 'bro':
-                case 'sis':
-                case 'sib':
-                    $table[$x + 1][$y] = '<div style="background:url(' . Theme::theme()->parameter('image-hline') . ') repeat-x center;  width: 94px; text-align: center"><div class="hline-text" style="height: 32px;">' . Functions::getRelationshipNameFromPath($relationships[$n], Individual::getInstance($path[$n - 1], $WT_TREE), Individual::getInstance($path[$n + 1], $WT_TREE)) . '</div><div style="height: 32px;">' . $horizontal_arrow . '</div></div>';
-                    $x += 2;
-                    break;
-                case 'son':
-                case 'dau':
-                case 'chi':
-                    if ($n > 2 && preg_match('/fat|mot|par/', $relationships[$n - 2])) {
-                        $table[$x + 1][$y - 1] = '<div style="background:url(' . $diagonal2 . '); width: 64px; height: 64px; text-align: center;"><div style="height: 32px; text-align: end;">' . Functions::getRelationshipNameFromPath($relationships[$n], Individual::getInstance($path[$n - 1], $WT_TREE), Individual::getInstance($path[$n + 1], $WT_TREE)) . '</div><div style="height: 32px; text-align: start;">' . $down_arrow . '</div></div>';
+                    case 'hus':
+                    case 'wif':
+                    case 'spo':
+                    case 'bro':
+                    case 'sis':
+                    case 'sib':
+                        $table[$x + 1][$y] = '<div style="background:url(' . Theme::theme()->parameter('image-hline') . ') repeat-x center;  width: 94px; text-align: center"><div class="hline-text" style="height: 32px;">' . Functions::getRelationshipNameFromPath($relationships[$n], Individual::getInstance($path[$n - 1], $WT_TREE), Individual::getInstance($path[$n + 1], $WT_TREE)) . '</div><div style="height: 32px;">' . $horizontal_arrow . '</div></div>';
                         $x += 2;
-                    } else {
-                        $table[$x][$y - 1] = '<div style="background:url(' . Theme::theme()
+                        break;
+                    case 'son':
+                    case 'dau':
+                    case 'chi':
+                        if ($n > 2 && preg_match('/fat|mot|par/', $relationships[$n - 2])) {
+                            $table[$x + 1][$y - 1] = '<div style="background:url(' . $diagonal2 . '); width: 64px; height: 64px; text-align: center;"><div style="height: 32px; text-align: end;">' . Functions::getRelationshipNameFromPath($relationships[$n], Individual::getInstance($path[$n - 1], $WT_TREE), Individual::getInstance($path[$n + 1], $WT_TREE)) . '</div><div style="height: 32px; text-align: start;">' . $down_arrow . '</div></div>';
+                            $x += 2;
+                        } else {
+                            $table[$x][$y - 1] = '<div style="background:url(' . Theme::theme()
                                 ->parameter('image-vline') . ') repeat-y center; height: 64px; text-align: center;"><div class="vline-text" style="display: inline-block; width:50%; line-height: 64px;">' . Functions::getRelationshipNameFromPath($relationships[$n], Individual::getInstance($path[$n - 1], $WT_TREE), Individual::getInstance($path[$n + 1], $WT_TREE)) . '</div><div style="display: inline-block; width:50%; line-height: 64px;">' . $down_arrow . '</div></div>';
-                    }
-                    $y -= 2;
-                    break;
-                case 'fat':
-                case 'mot':
-                case 'par':
-                    if ($n > 2 && preg_match('/son|dau|chi/', $relationships[$n - 2])) {
-                        $table[$x + 1][$y + 1] = '<div style="background:url(' . $diagonal1 . '); background-position: top right; width: 64px; height: 64px; text-align: center;"><div style="height: 32px; text-align: start;">' . Functions::getRelationshipNameFromPath($relationships[$n], Individual::getInstance($path[$n - 1], $WT_TREE), Individual::getInstance($path[$n + 1], $WT_TREE)) . '</div><div style="height: 32px; text-align: end;">' . $up_arrow . '</div></div>';
-                        $x += 2;
-                    } else {
-                        $table[$x][$y + 1] = '<div style="background:url(' . Theme::theme()
+                        }
+                        $y -= 2;
+                        break;
+                    case 'fat':
+                    case 'mot':
+                    case 'par':
+                        if ($n > 2 && preg_match('/son|dau|chi/', $relationships[$n - 2])) {
+                            $table[$x + 1][$y + 1] = '<div style="background:url(' . $diagonal1 . '); background-position: top right; width: 64px; height: 64px; text-align: center;"><div style="height: 32px; text-align: start;">' . Functions::getRelationshipNameFromPath($relationships[$n], Individual::getInstance($path[$n - 1], $WT_TREE), Individual::getInstance($path[$n + 1], $WT_TREE)) . '</div><div style="height: 32px; text-align: end;">' . $up_arrow . '</div></div>';
+                            $x += 2;
+                        } else {
+                            $table[$x][$y + 1] = '<div style="background:url(' . Theme::theme()
                                 ->parameter('image-vline') . ') repeat-y center; height: 64px; text-align:center; "><div class="vline-text" style="display: inline-block; width: 50%; line-height: 32px;">' . Functions::getRelationshipNameFromPath($relationships[$n], Individual::getInstance($path[$n - 1], $WT_TREE), Individual::getInstance($path[$n + 1], $WT_TREE)) . '</div><div style="display: inline-block; width: 50%; line-height: 32px">' . $up_arrow . '</div></div>';
-                    }
-                    $y += 2;
-                    break;
+                        }
+                        $y += 2;
+                        break;
                 }
                 $max_x = max($max_x, $x);
                 $min_y = min($min_y, $y);

@@ -176,7 +176,7 @@ if ($action == 'choose' && $paramok) {
     echo '<br><br>';
     echo '<input type="hidden" name="idName" id="idName" size="36" value="Name of ID">';
 
-?>
+    ?>
 <script>
 
     function addlinks(iname) {
@@ -554,7 +554,7 @@ function shiftlinks() {
         <input type="button" class="cancel" value="<?php echo I18N::translate('close'); ?>" onclick="window.close();">
     </p>
 </form>
-<?php
+    <?php
 } elseif ($action == "update" && $paramok) {
     // Unlink records indicated by radio button =========
     if ($exist_links) {

@@ -34,17 +34,17 @@ class FunctionsMedia {
             $val = -1;
         }
         switch (substr($val, -1)) {
-        case 'g':
-        case 'G':
-            return (int) $val * 1024 * 1024 * 1024;
-        case 'm':
-        case 'M':
-            return (int) $val * 1024 * 1024;
-        case 'k':
-        case 'K':
-            return (int) $val * 1024;
-        default:
-            return (int) $val;
+            case 'g':
+            case 'G':
+                return (int) $val * 1024 * 1024 * 1024;
+            case 'm':
+            case 'M':
+                return (int) $val * 1024 * 1024;
+            case 'k':
+            case 'K':
+                return (int) $val * 1024;
+            default:
+                return (int) $val;
         }
     }
 

@@ -75,37 +75,37 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
         }
 
         switch ($mod_action) {
-        case 'ajax':
-            $html = $this->getSidebarAjaxContent();
-            header('Content-Type: text/html; charset=UTF-8');
-            echo $html;
-            break;
-        case 'index':
-            global $controller, $WT_TREE;
+            case 'ajax':
+                $html = $this->getSidebarAjaxContent();
+                header('Content-Type: text/html; charset=UTF-8');
+                echo $html;
+                break;
+            case 'index':
+                global $controller, $WT_TREE;
 
-            $MAX_PEDIGREE_GENERATIONS = $WT_TREE->getPreference('MAX_PEDIGREE_GENERATIONS');
+                $MAX_PEDIGREE_GENERATIONS = $WT_TREE->getPreference('MAX_PEDIGREE_GENERATIONS');
 
-            $clip_ctrl = new ClippingsCartController;
-            $cart      = Session::get('cart');
+                $clip_ctrl = new ClippingsCartController;
+                $cart      = Session::get('cart');
 
-            $controller = new PageController;
-            $controller
+                $controller = new PageController;
+                $controller
                 ->setPageTitle($this->getTitle())
                 ->pageHeader()
                 ->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
                 ->addInlineJavascript('autocomplete();');
 
-            echo '<script>';
-            echo 'function radAncestors(elementid) {var radFamilies=document.getElementById(elementid);radFamilies.checked=true;}';
-            echo '</script>';
+                echo '<script>';
+                echo 'function radAncestors(elementid) {var radFamilies=document.getElementById(elementid);radFamilies.checked=true;}';
+                echo '</script>';
 
-            if (!$cart[$WT_TREE->getTreeId()]) {
-                echo '<h2>', I18N::translate('Family tree clippings cart'), '</h2>';
-            }
+                if (!$cart[$WT_TREE->getTreeId()]) {
+                    echo '<h2>', I18N::translate('Family tree clippings cart'), '</h2>';
+                }
 
-            if ($clip_ctrl->action == 'add') {
-                $record = GedcomRecord::getInstance($clip_ctrl->id, $WT_TREE);
-                if ($clip_ctrl->type === 'FAM') { ?>
+                if ($clip_ctrl->action == 'add') {
+                    $record = GedcomRecord::getInstance($clip_ctrl->id, $WT_TREE);
+                    if ($clip_ctrl->type === 'FAM') { ?>
                     <form action="module.php" method="get">
                         <input type="hidden" name="mod" value="clippings">
                         <input type="hidden" name="mod_action" value="index">
@@ -116,7 +116,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
                             <thead>
                                 <tr>
                                     <td class="topbottombar">
-                                        <?php echo I18N::translate('Add to the clippings cart'); ?>
+                                            <?php echo I18N::translate('Add to the clippings cart'); ?>
                                     </td>
                                 </tr>
                             </thead>
@@ -124,21 +124,21 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
                                 <tr>
                                     <td class="optionbox">
                                         <input type="radio" name="others" value="parents">
-                                        <?php echo $record->getFullName(); ?>
+                                            <?php echo $record->getFullName(); ?>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="optionbox">
                                         <input type="radio" name="others" value="members" checked>
-                                        <?php echo /* I18N: %s is a family (husband + wife) */
-                                        I18N::translate('%s and their children', $record->getFullName()); ?>
+                                            <?php echo /* I18N: %s is a family (husband + wife) */
+                                            I18N::translate('%s and their children', $record->getFullName()); ?>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="optionbox">
                                         <input type="radio" name="others" value="descendants">
-                                        <?php echo /* I18N: %s is a family (husband + wife) */
-                                        I18N::translate('%s and their descendants', $record->getFullName()); ?>
+                                            <?php echo /* I18N: %s is a family (husband + wife) */
+                                            I18N::translate('%s and their descendants', $record->getFullName()); ?>
                                     </td>
                                 </tr>
                             </tbody>
@@ -150,7 +150,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
                             </tfoot>
                         </table>
                     </form>
-                <?php } elseif ($clip_ctrl->type === 'INDI') { ?>
+                    <?php } elseif ($clip_ctrl->type === 'INDI') { ?>
                     <form action="module.php" method="get">
                         <input type="hidden" name="mod" value="clippings">
                         <input type="hidden" name="mod_action" value="index">
@@ -317,12 +317,12 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
                         </table>
                     </form>
                 <?php }
-            }
+                }
 
-            if (!$cart[$WT_TREE->getTreeId()]) {
-                if ($clip_ctrl->action != 'add') {
-                    echo I18N::translate('The clippings cart allows you to take extracts from this family tree and download them as a GEDCOM file.');
-                    ?>
+                if (!$cart[$WT_TREE->getTreeId()]) {
+                    if ($clip_ctrl->action != 'add') {
+                        echo I18N::translate('The clippings cart allows you to take extracts from this family tree and download them as a GEDCOM file.');
+                        ?>
                     <form method="get" name="addin" action="module.php">
                         <input type="hidden" name="mod" value="clippings">
                         <input type="hidden" name="mod_action" value="index">
@@ -350,17 +350,17 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
                             </tbody>
                         </table>
                     </form>
-                    <?php
-                }
+                        <?php
+                    }
 
-                // -- end new lines
-                echo I18N::translate('Your clippings cart is empty.');
-            } else {
-                // Keep track of the INDI from the parent page, otherwise it will
-                // get lost after ajax updates
-                $pid = Filter::get('pid', WT_REGEX_XREF);
+                    // -- end new lines
+                    echo I18N::translate('Your clippings cart is empty.');
+                } else {
+                    // Keep track of the INDI from the parent page, otherwise it will
+                    // get lost after ajax updates
+                    $pid = Filter::get('pid', WT_REGEX_XREF);
 
-                if ($clip_ctrl->action !== 'download' && $clip_ctrl->action !== 'add') { ?>
+                    if ($clip_ctrl->action !== 'download' && $clip_ctrl->action !== 'add') { ?>
                     <form method="get" action="module.php">
                         <input type="hidden" name="mod" value="clippings">
                         <input type="hidden" name="mod_action" value="index">
@@ -374,23 +374,23 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
                             </tr>
                             <tr>
                                 <td class="descriptionbox width50 wrap">
-                                    <?php echo I18N::translate('To reduce the size of the download, you can compress the data into a .ZIP file. You will need to uncompress the .ZIP file before you can use it.'); ?>
+                                        <?php echo I18N::translate('To reduce the size of the download, you can compress the data into a .ZIP file. You will need to uncompress the .ZIP file before you can use it.'); ?>
                                 </td>
                                 <td class="optionbox wrap">
                                     <input type="checkbox" name="Zip" value="yes">
-                                    <?php echo I18N::translate('Zip file(s)'); ?>
+                                        <?php echo I18N::translate('Zip file(s)'); ?>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="descriptionbox width50 wrap">
-                                    <?php echo I18N::translate('Include media (automatically zips files)'); ?>
+                                        <?php echo I18N::translate('Include media (automatically zips files)'); ?>
                                 </td>
                                 <td class="optionbox">
                                     <input type="checkbox" name="IncludeMedia" value="yes">
                                 </td>
                             </tr>
 
-                            <?php if (Auth::isManager($WT_TREE)) { ?>
+                                <?php if (Auth::isManager($WT_TREE)) { ?>
                                 <tr>
                                     <td class="descriptionbox width50 wrap">
                                         <?php echo I18N::translate('Apply privacy settings'); ?>
@@ -423,7 +423,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 
                             <tr>
                                 <td class="descriptionbox width50 wrap">
-                                    <?php echo I18N::translate('Convert from UTF-8 to ISO-8859-1'); ?>
+                                        <?php echo I18N::translate('Convert from UTF-8 to ISO-8859-1'); ?>
                                 </td>
                                 <td class="optionbox">
                                     <input type="checkbox" name="convert" value="yes">
@@ -432,7 +432,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 
                             <tr>
                                 <td class="descriptionbox width50 wrap">
-                                    <?php echo I18N::translate('Add the GEDCOM media path to filenames'); ?>
+                                        <?php echo I18N::translate('Add the GEDCOM media path to filenames'); ?>
                                 </td>
                                 <td class="optionbox">
                                     <input type="checkbox" name="conv_path" value="<?php echo Filter::escapeHtml($WT_TREE->getPreference('GEDCOM_MEDIA_PATH')); ?>">
@@ -456,7 +456,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
                             <thead>
                                 <tr>
                                     <td colspan="2" class="topbottombar" style="text-align:center; ">
-                                        <?php echo I18N::translate('Add to the clippings cart'); ?>
+                                            <?php echo I18N::translate('Add to the clippings cart'); ?>
                                     </td>
                                 </tr>
                             </thead>
@@ -467,9 +467,9 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
                                         <input type="text" data-autocomplete-type="IFSRO" name="id" id="cart_item_id" size="8">
                                     </td>
                                     <td class="optionbox">
-                                        <?php echo FunctionsPrint::printFindIndividualLink('cart_item_id'); ?>
-                                        <?php echo FunctionsPrint::printFindFamilyLink('cart_item_id'); ?>
-                                        <?php echo FunctionsPrint::printFindSourceLink('cart_item_id'); ?>
+                                            <?php echo FunctionsPrint::printFindIndividualLink('cart_item_id'); ?>
+                                            <?php echo FunctionsPrint::printFindFamilyLink('cart_item_id'); ?>
+                                            <?php echo FunctionsPrint::printFindSourceLink('cart_item_id'); ?>
                                         <input type="submit" value="<?php echo /* I18N: A button label. */ I18N::translate('add'); ?>">
                                     </td>
                                 </tr>
@@ -478,7 +478,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
                                 <tr>
                                     <th colspan="2">
                                         <a href="module.php?mod=clippings&amp;mod_action=index&amp;action=empty">
-                                            <?php echo I18N::translate('Empty the clippings cart'); ?>
+                                                <?php echo I18N::translate('Empty the clippings cart'); ?>
                                         </a>
                                     </th>
                                 </tr>
@@ -486,10 +486,10 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
                         </table>
                     </form>
 
-                <?php } ?>
+                    <?php } ?>
 
                 <h2>
-                    <?php echo I18N::translate('Family tree clippings cart'); ?>
+                        <?php echo I18N::translate('Family tree clippings cart'); ?>
                 </h2>
                 <table id="mycart" class="sortable list_table width100">
                     <thead>
@@ -499,34 +499,34 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
                         </tr>
                     </thead>
                     <tbody>
-                        <?php
-                        foreach (array_keys($cart[$WT_TREE->getTreeId()]) as $xref) {
-                            $record = GedcomRecord::getInstance($xref, $WT_TREE);
-                            if ($record) {
-                                switch ($record::RECORD_TYPE) {
-                                case 'INDI':
-                                    $icon = 'icon-indis';
-                                    break;
-                                case 'FAM':
-                                    $icon = 'icon-sfamily';
-                                    break;
-                                case 'SOUR':
-                                    $icon = 'icon-source';
-                                    break;
-                                case 'REPO':
-                                    $icon = 'icon-repository';
-                                    break;
-                                case 'NOTE':
-                                    $icon = 'icon-note';
-                                    break;
-                                case 'OBJE':
-                                    $icon = 'icon-media';
-                                    break;
-                                default:
-                                    $icon = 'icon-clippings';
-                                    break;
-                                }
-                                ?>
+                            <?php
+                            foreach (array_keys($cart[$WT_TREE->getTreeId()]) as $xref) {
+                                $record = GedcomRecord::getInstance($xref, $WT_TREE);
+                                if ($record) {
+                                    switch ($record::RECORD_TYPE) {
+                                        case 'INDI':
+                                            $icon = 'icon-indis';
+                                            break;
+                                        case 'FAM':
+                                            $icon = 'icon-sfamily';
+                                        break;
+                                        case 'SOUR':
+                                            $icon = 'icon-source';
+                                        break;
+                                        case 'REPO':
+                                            $icon = 'icon-repository';
+                                        break;
+                                        case 'NOTE':
+                                            $icon = 'icon-note';
+                                        break;
+                                        case 'OBJE':
+                                            $icon = 'icon-media';
+                                        break;
+                                        default:
+                                            $icon = 'icon-clippings';
+                                        break;
+                                    }
+                                    ?>
                                 <tr>
                                     <td class="list_value">
                                         <i class="<?php echo $icon; ?>"></i>
@@ -536,17 +536,17 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
                                     </td>
                                     <td class="list_value center vmiddle"><a href="module.php?mod=clippings&amp;mod_action=index&amp;action=remove&amp;id=<?php echo $xref; ?>" class="icon-remove" title="<?php echo I18N::translate('Remove'); ?>"></a></td>
                                 </tr>
-                                <?php
+                                    <?php
+                                }
                             }
-                        }
-                        ?>
+                            ?>
                 </table>
-                <?php
-            }
-            break;
-        default:
-            http_response_code(404);
-            break;
+                    <?php
+                }
+                break;
+            default:
+                http_response_code(404);
+                break;
         }
     }
 
@@ -695,12 +695,12 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
                 $record = GedcomRecord::getInstance($xref, $WT_TREE);
                 if ($record instanceof Individual || $record instanceof Family) {
                     switch ($record::RECORD_TYPE) {
-                    case 'INDI':
-                        $icon = 'icon-indis';
-                        break;
-                    case 'FAM':
-                        $icon = 'icon-sfamily';
-                        break;
+                        case 'INDI':
+                            $icon = 'icon-indis';
+                            break;
+                        case 'FAM':
+                            $icon = 'icon-sfamily';
+                            break;
                     }
                     $out .= '<li>';
                     if (!empty($icon)) {

@@ -275,15 +275,15 @@ $controller
 	');
 
     // Load Block Description array for use by javascript
-    foreach ($all_blocks as $block_name => $block) {
-        $controller->addInlineJavascript(
-            'block_descr["' . $block_name . '"] = "' . Filter::escapeJs($block->getDescription()) . '";'
-        );
-    }
+foreach ($all_blocks as $block_name => $block) {
+    $controller->addInlineJavascript(
+        'block_descr["' . $block_name . '"] = "' . Filter::escapeJs($block->getDescription()) . '";'
+    );
+}
     $controller->addInlineJavascript(
         'block_descr["advice1"] = "' . I18N::translate('Select a block and use the arrows to move it.') . '";'
     );
-?>
+    ?>
 
 <h2><?php echo $controller->getPageTitle(); ?></h2>
 
@@ -315,9 +315,9 @@ $controller
     // NOTE: Row 2 column 2: Left (Main) block list
     echo '<td class="optionbox center">';
         echo '<select multiple="multiple" id="main_select" name="main[]" size="10" onchange="show_description(\'main_select\');">';
-        foreach ($blocks['main'] as $block_id => $block_name) {
-            echo '<option value="', $block_id, '">', $all_blocks[$block_name]->getTitle(), '</option>';
-        }
+    foreach ($blocks['main'] as $block_id => $block_name) {
+        echo '<option value="', $block_id, '">', $all_blocks[$block_name]->getTitle(), '</option>';
+    }
         echo '</select>';
     echo '</td>';
     // NOTE: Row 2 column 3: Left/Right buttons for left (main) block list
@@ -332,9 +332,9 @@ $controller
     // Row 2 column 4: Middle (Available) block list
     echo '<td class="optionbox center">';
         echo '<select id="available_select" name="available[]" size="10" onchange="show_description(\'available_select\');">';
-        foreach ($all_blocks as $block_name => $block) {
-            echo '<option value="', $block_name, '">', $block->getTitle(), '</option>';
-        }
+    foreach ($all_blocks as $block_name => $block) {
+        echo '<option value="', $block_name, '">', $block->getTitle(), '</option>';
+    }
         echo '</select>';
     echo '</td>';
     // NOTE: Row 2 column 5: Left/Right buttons for right block list
@@ -349,9 +349,9 @@ $controller
     // NOTE: Row 2 column 6: Right block list
     echo '<td class="optionbox center">';
         echo '<select multiple="multiple" id="right_select" name="right[]" size="10" onchange="show_description(\'right_select\');">';
-        foreach ($blocks['side'] as $block_id => $block_name) {
-            echo '<option value="', $block_id, '">', $all_blocks[$block_name]->getTitle(), '</option>';
-        }
+    foreach ($blocks['side'] as $block_id => $block_name) {
+        echo '<option value="', $block_id, '">', $all_blocks[$block_name]->getTitle(), '</option>';
+    }
         echo '</select>';
     echo '</td>';
     // NOTE: Row 2 column 7: Up/Down buttons for right block list

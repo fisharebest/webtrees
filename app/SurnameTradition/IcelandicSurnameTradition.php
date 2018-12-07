@@ -43,12 +43,12 @@ class IcelandicSurnameTradition extends DefaultSurnameTradition implements Surna
     public function newChildNames($father_name, $mother_name, $child_sex) {
         if (preg_match(self::REGEX_GIVN, $father_name, $father_match)) {
             switch ($child_sex) {
-            case 'M':
-                return array(
+                case 'M':
+                    return array(
                     'NAME' => $father_match['GIVN'] . 'sson',
                 );
-            case 'F':
-                return array(
+                case 'F':
+                    return array(
                     'NAME' => $father_match['GIVN'] . 'sdottir',
                 );
             }

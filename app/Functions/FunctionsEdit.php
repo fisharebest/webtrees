@@ -559,19 +559,19 @@ class FunctionsEdit {
         } else {
             // Not all facts have help text.
             switch ($fact) {
-            case 'NAME':
-                if ($upperlevel !== 'REPO' && $upperlevel !== 'UNKNOWN') {
+                case 'NAME':
+                    if ($upperlevel !== 'REPO' && $upperlevel !== 'UNKNOWN') {
+                        echo FunctionsPrint::helpLink($fact);
+                    }
+                    break;
+                case 'DATE':
+                case 'PLAC':
+                case 'RESN':
+                case 'ROMN':
+                case 'SURN':
+                case '_HEB':
                     echo FunctionsPrint::helpLink($fact);
-                }
-                break;
-            case 'DATE':
-            case 'PLAC':
-            case 'RESN':
-            case 'ROMN':
-            case 'SURN':
-            case '_HEB':
-                echo FunctionsPrint::helpLink($fact);
-                break;
+                    break;
             }
         }
         // tag level
@@ -716,51 +716,51 @@ class FunctionsEdit {
 
                 // Extra markup for specific fact types
                 switch ($fact) {
-                case 'ALIA':
-                case 'ASSO':
-                case '_ASSO':
-                    echo ' data-autocomplete-type="ASSO" data-autocomplete-extra="input.DATE"';
-                    break;
-                case 'DATE':
-                    echo ' onblur="valid_date(this);" onmouseout="valid_date(this);"';
-                    break;
-                case 'GIVN':
-                    echo ' autofocus data-autocomplete-type="GIVN"';
-                    break;
-                case 'LATI':
-                    echo ' onblur="valid_lati_long(this, \'N\', \'S\');" onmouseout="valid_lati_long(this, \'N\', \'S\');"';
-                    break;
-                case 'LONG':
-                    echo ' onblur="valid_lati_long(this, \'E\', \'W\');" onmouseout="valid_lati_long(this, \'E\', \'W\');"';
-                    break;
-                case 'NOTE':
-                    // Shared notes. Inline notes are handled elsewhere.
-                    echo ' data-autocomplete-type="NOTE"';
-                    break;
-                case 'OBJE':
-                    echo ' data-autocomplete-type="OBJE"';
-                    break;
-                case 'PAGE':
-                    echo ' data-autocomplete-type="PAGE" data-autocomplete-extra="#' . $source_element_id . '"';
-                    break;
-                case 'PLAC':
-                    echo ' data-autocomplete-type="PLAC"';
-                    break;
-                case 'REPO':
-                    echo ' data-autocomplete-type="REPO"';
-                    break;
-                case 'SOUR':
-                    $source_element_id = $element_id;
-                    echo ' data-autocomplete-type="SOUR"';
-                    break;
-                case 'SURN':
-                case '_MARNM_SURN':
-                    echo ' data-autocomplete-type="SURN"';
-                    break;
-                case 'TIME':
-                    echo ' pattern="([0-1][0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?" dir="ltr" placeholder="' . /* I18N: Examples of valid time formats (hours:minutes:seconds) */
+                    case 'ALIA':
+                    case 'ASSO':
+                    case '_ASSO':
+                        echo ' data-autocomplete-type="ASSO" data-autocomplete-extra="input.DATE"';
+                        break;
+                    case 'DATE':
+                        echo ' onblur="valid_date(this);" onmouseout="valid_date(this);"';
+                        break;
+                    case 'GIVN':
+                        echo ' autofocus data-autocomplete-type="GIVN"';
+                        break;
+                    case 'LATI':
+                        echo ' onblur="valid_lati_long(this, \'N\', \'S\');" onmouseout="valid_lati_long(this, \'N\', \'S\');"';
+                        break;
+                    case 'LONG':
+                        echo ' onblur="valid_lati_long(this, \'E\', \'W\');" onmouseout="valid_lati_long(this, \'E\', \'W\');"';
+                        break;
+                    case 'NOTE':
+                        // Shared notes. Inline notes are handled elsewhere.
+                        echo ' data-autocomplete-type="NOTE"';
+                        break;
+                    case 'OBJE':
+                        echo ' data-autocomplete-type="OBJE"';
+                        break;
+                    case 'PAGE':
+                        echo ' data-autocomplete-type="PAGE" data-autocomplete-extra="#' . $source_element_id . '"';
+                        break;
+                    case 'PLAC':
+                        echo ' data-autocomplete-type="PLAC"';
+                        break;
+                    case 'REPO':
+                        echo ' data-autocomplete-type="REPO"';
+                        break;
+                    case 'SOUR':
+                        $source_element_id = $element_id;
+                        echo ' data-autocomplete-type="SOUR"';
+                        break;
+                    case 'SURN':
+                    case '_MARNM_SURN':
+                        echo ' data-autocomplete-type="SURN"';
+                        break;
+                    case 'TIME':
+                        echo ' pattern="([0-1][0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?" dir="ltr" placeholder="' . /* I18N: Examples of valid time formats (hours:minutes:seconds) */
                         I18N::translate('hh:mm or hh:mm:ss') . '"';
-                    break;
+                        break;
                 }
                 echo '>';
             }
@@ -810,41 +810,41 @@ class FunctionsEdit {
 
         // popup links
         switch ($fact) {
-        case 'DATE':
-            echo self::printCalendarPopup($element_id);
-            break;
-        case 'FAMC':
-        case 'FAMS':
-            echo FunctionsPrint::printFindFamilyLink($element_id);
-            break;
-        case 'ALIA':
-        case 'ASSO':
-        case '_ASSO':
-            echo FunctionsPrint::printFindIndividualLink($element_id, $element_id . '_description');
-            break;
-        case 'FILE':
-            FunctionsPrint::printFindMediaLink($element_id, '0file');
-            break;
-        case 'SOUR':
-            echo FunctionsPrint::printFindSourceLink($element_id, $element_id . '_description'), ' ', self::printAddNewSourceLink($element_id);
-            //-- checkboxes to apply '1 SOUR' to BIRT/MARR/DEAT as '2 SOUR'
-            if ($level === 1) {
-                echo '<br>';
-                switch ($WT_TREE->getPreference('PREFER_LEVEL2_SOURCES')) {
-                case '2': // records
-                $level1_checked = 'checked';
-                $level2_checked = '';
+            case 'DATE':
+                echo self::printCalendarPopup($element_id);
                 break;
-                case '1': // facts
-                $level1_checked = '';
-                $level2_checked = 'checked';
+            case 'FAMC':
+            case 'FAMS':
+                echo FunctionsPrint::printFindFamilyLink($element_id);
                 break;
-                case '0': // none
-                default:
-                $level1_checked = '';
-                $level2_checked = '';
+            case 'ALIA':
+            case 'ASSO':
+            case '_ASSO':
+                echo FunctionsPrint::printFindIndividualLink($element_id, $element_id . '_description');
                 break;
-                }
+            case 'FILE':
+                FunctionsPrint::printFindMediaLink($element_id, '0file');
+                break;
+            case 'SOUR':
+                echo FunctionsPrint::printFindSourceLink($element_id, $element_id . '_description'), ' ', self::printAddNewSourceLink($element_id);
+                //-- checkboxes to apply '1 SOUR' to BIRT/MARR/DEAT as '2 SOUR'
+                if ($level === 1) {
+                    echo '<br>';
+                    switch ($WT_TREE->getPreference('PREFER_LEVEL2_SOURCES')) {
+                        case '2': // records
+                            $level1_checked = 'checked';
+                            $level2_checked = '';
+                            break;
+                        case '1': // facts
+                            $level1_checked = '';
+                            $level2_checked = 'checked';
+                        break;
+                        case '0': // none
+                        default:
+                            $level1_checked = '';
+                            $level2_checked = '';
+                        break;
+                    }
                     if (strpos($bdm, 'B') !== false) {
                         echo ' <label><input type="checkbox" name="SOUR_INDI" ', $level1_checked, ' value="1">', I18N::translate('Individual'), '</label>';
                         if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $WT_TREE->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
@@ -874,26 +874,26 @@ class FunctionsEdit {
                     }
                 }
                 break;
-        case 'REPO':
-            echo FunctionsPrint::printFindRepositoryLink($element_id), ' ', self::printAddNewRepositoryLink($element_id);
-            break;
-        case 'NOTE':
-            // Shared Notes Icons ========================================
-            if ($islink) {
-                // Print regular Shared Note icons ---------------------------
-                echo ' ', FunctionsPrint::printFindNoteLink($element_id, $element_id . '_description'), ' ', self::printAddNewNoteLink($element_id);
-                if ($value) {
-                    echo ' ', self::printEditNoteLink($value);
+            case 'REPO':
+                echo FunctionsPrint::printFindRepositoryLink($element_id), ' ', self::printAddNewRepositoryLink($element_id);
+                break;
+            case 'NOTE':
+                // Shared Notes Icons ========================================
+                if ($islink) {
+                    // Print regular Shared Note icons ---------------------------
+                    echo ' ', FunctionsPrint::printFindNoteLink($element_id, $element_id . '_description'), ' ', self::printAddNewNoteLink($element_id);
+                    if ($value) {
+                        echo ' ', self::printEditNoteLink($value);
+                    }
                 }
-            }
-            break;
-        case 'OBJE':
-            echo FunctionsPrint::printFindMediaLink($element_id, '1media');
-            if (!$value) {
-                echo ' ', self::printAddNewMediaLink($element_id);
-                $value = 'new';
-            }
-            break;
+                break;
+            case 'OBJE':
+                echo FunctionsPrint::printFindMediaLink($element_id, '1media');
+                if (!$value) {
+                    echo ' ', self::printAddNewMediaLink($element_id);
+                    $value = 'new';
+                }
+                break;
         }
 
         echo '<div id="' . $element_id . '_description">';
@@ -913,38 +913,38 @@ class FunctionsEdit {
 
         if ($value && $value !== 'new' && $islink) {
             switch ($fact) {
-            case 'ALIA':
-            case 'ASSO':
-            case '_ASSO':
-                $tmp = Individual::getInstance($value, $WT_TREE);
-                if ($tmp) {
-                    echo ' ', $tmp->getFullName();
-                }
-                break;
-            case 'SOUR':
-                $tmp = Source::getInstance($value, $WT_TREE);
-                if ($tmp) {
-                    echo ' ', $tmp->getFullName();
-                }
-                break;
-            case 'NOTE':
-                $tmp = Note::getInstance($value, $WT_TREE);
-                if ($tmp) {
-                    echo ' ', $tmp->getFullName();
-                }
-                break;
-            case 'OBJE':
-                $tmp = Media::getInstance($value, $WT_TREE);
-                if ($tmp) {
-                    echo ' ', $tmp->getFullName();
-                }
-                break;
-            case 'REPO':
-                $tmp = Repository::getInstance($value, $WT_TREE);
-                if ($tmp) {
-                    echo ' ', $tmp->getFullName();
-                }
-                break;
+                case 'ALIA':
+                case 'ASSO':
+                case '_ASSO':
+                    $tmp = Individual::getInstance($value, $WT_TREE);
+                    if ($tmp) {
+                        echo ' ', $tmp->getFullName();
+                    }
+                    break;
+                case 'SOUR':
+                    $tmp = Source::getInstance($value, $WT_TREE);
+                    if ($tmp) {
+                        echo ' ', $tmp->getFullName();
+                    }
+                    break;
+                case 'NOTE':
+                    $tmp = Note::getInstance($value, $WT_TREE);
+                    if ($tmp) {
+                        echo ' ', $tmp->getFullName();
+                    }
+                    break;
+                case 'OBJE':
+                    $tmp = Media::getInstance($value, $WT_TREE);
+                    if ($tmp) {
+                        echo ' ', $tmp->getFullName();
+                    }
+                    break;
+                case 'REPO':
+                    $tmp = Repository::getInstance($value, $WT_TREE);
+                    if ($tmp) {
+                        echo ' ', $tmp->getFullName();
+                    }
+                    break;
             }
         }
 
@@ -969,29 +969,29 @@ class FunctionsEdit {
 
         // Show more likely census details at the top of the list.
         switch (WT_LOCALE) {
-        case 'cs':
-            $census_places = array(new CensusOfCzechRepublic);
-            break;
-        case 'en-AU':
-        case 'en-GB':
-            $census_places = array(new CensusOfEngland, new CensusOfWales, new CensusOfScotland);
-            break;
-        case 'en-US':
-            $census_places = array(new CensusOfUnitedStates);
-            break;
-        case 'fr':
-        case 'fr-CA':
-            $census_places = array(new CensusOfFrance);
-            break;
-        case 'da':
-            $census_places = array(new CensusOfDenmark);
-            break;
-        case 'de':
-            $census_places = array(new CensusOfDeutschland);
-            break;
-        default:
-            $census_places = array();
-            break;
+            case 'cs':
+                $census_places = array(new CensusOfCzechRepublic);
+                break;
+            case 'en-AU':
+            case 'en-GB':
+                $census_places = array(new CensusOfEngland, new CensusOfWales, new CensusOfScotland);
+                break;
+            case 'en-US':
+                $census_places = array(new CensusOfUnitedStates);
+                break;
+            case 'fr':
+            case 'fr-CA':
+                $census_places = array(new CensusOfFrance);
+                break;
+            case 'da':
+                $census_places = array(new CensusOfDenmark);
+                break;
+            case 'de':
+                $census_places = array(new CensusOfDeutschland);
+                break;
+            default:
+                $census_places = array();
+                break;
         }
         foreach (Census::allCensusPlaces() as $census_place) {
             if (!in_array($census_place, $census_places)) {
@@ -1053,97 +1053,97 @@ class FunctionsEdit {
         global $WT_TREE;
 
         switch ($tag) {
-        case 'SOUR':
-            echo '<a href="#" onclick="return expand_layer(\'newsource\');"><i id="newsource_img" class="icon-plus"></i> ', I18N::translate('Add a source citation'), '</a>';
-            echo '<br>';
-            echo '<div id="newsource" style="display: none;">';
-            echo '<table class="facts_table">';
-            // 2 SOUR
-            self::addSimpleTag($level . ' SOUR @');
-            // 3 PAGE
-            self::addSimpleTag(($level + 1) . ' PAGE');
-            // 3 DATA
-            self::addSimpleTag(($level + 1) . ' DATA');
-            // 4 TEXT
-            self::addSimpleTag(($level + 2) . ' TEXT');
-            if ($WT_TREE->getPreference('FULL_SOURCES')) {
-                // 4 DATE
-                self::addSimpleTag(($level + 2) . ' DATE', '', GedcomTag::getLabel('DATA:DATE'));
-                // 3 QUAY
-                self::addSimpleTag(($level + 1) . ' QUAY');
-            }
-            // 3 OBJE
-            self::addSimpleTag(($level + 1) . ' OBJE');
-            // 3 SHARED_NOTE
-            self::addSimpleTag(($level + 1) . ' SHARED_NOTE');
-            echo '</table></div>';
-            break;
-
-        case 'ASSO':
-        case 'ASSO2':
-            //-- Add a new ASSOciate
-            if ($tag === 'ASSO') {
-                echo "<a href=\"#\" onclick=\"return expand_layer('newasso');\"><i id=\"newasso_img\" class=\"icon-plus\"></i> ", I18N::translate('Add an associate'), '</a>';
+            case 'SOUR':
+                echo '<a href="#" onclick="return expand_layer(\'newsource\');"><i id="newsource_img" class="icon-plus"></i> ', I18N::translate('Add a source citation'), '</a>';
                 echo '<br>';
-                echo '<div id="newasso" style="display: none;">';
-            } else {
-                echo "<a href=\"#\" onclick=\"return expand_layer('newasso2');\"><i id=\"newasso2_img\" class=\"icon-plus\"></i> ", I18N::translate('Add an associate'), '</a>';
-                echo '<br>';
-                echo '<div id="newasso2" style="display: none;">';
-            }
-            echo '<table class="facts_table">';
-            // 2 ASSO
-            self::addSimpleTag($level . ' _ASSO @');
-            // 3 RELA
-            self::addSimpleTag(($level + 1) . ' RELA');
-            // 3 NOTE
-            self::addSimpleTag(($level + 1) . ' NOTE');
-            // 3 SHARED_NOTE
-            self::addSimpleTag(($level + 1) . ' SHARED_NOTE');
-            echo '</table></div>';
-            break;
-
-        case 'NOTE':
-            //-- Retrieve existing note or add new note to fact
-            echo "<a href=\"#\" onclick=\"return expand_layer('newnote');\"><i id=\"newnote_img\" class=\"icon-plus\"></i> ", I18N::translate('Add a note'), '</a>';
-            echo '<br>';
-            echo '<div id="newnote" style="display: none;">';
-            echo '<table class="facts_table">';
-            // 2 NOTE
-            self::addSimpleTag($level . ' NOTE');
-            echo '</table></div>';
-            break;
-
-        case 'SHARED_NOTE':
-            echo "<a href=\"#\" onclick=\"return expand_layer('newshared_note');\"><i id=\"newshared_note_img\" class=\"icon-plus\"></i> ", I18N::translate('Add a shared note'), '</a>';
-            echo '<br>';
-            echo '<div id="newshared_note" style="display: none;">';
-            echo '<table class="facts_table">';
-            // 2 SHARED NOTE
-            self::addSimpleTag($level . ' SHARED_NOTE', $parent_tag);
-            echo '</table></div>';
-            break;
-
-        case 'OBJE':
-            if ($WT_TREE->getPreference('MEDIA_UPLOAD') >= Auth::accessLevel($WT_TREE)) {
-                echo "<a href=\"#\" onclick=\"return expand_layer('newobje');\"><i id=\"newobje_img\" class=\"icon-plus\"></i> ", I18N::translate('Add a media object'), '</a>';
-                echo '<br>';
-                echo '<div id="newobje" style="display: none;">';
+                echo '<div id="newsource" style="display: none;">';
                 echo '<table class="facts_table">';
-                self::addSimpleTag($level . ' OBJE');
+                // 2 SOUR
+                self::addSimpleTag($level . ' SOUR @');
+                // 3 PAGE
+                self::addSimpleTag(($level + 1) . ' PAGE');
+                // 3 DATA
+                self::addSimpleTag(($level + 1) . ' DATA');
+                // 4 TEXT
+                self::addSimpleTag(($level + 2) . ' TEXT');
+                if ($WT_TREE->getPreference('FULL_SOURCES')) {
+                    // 4 DATE
+                    self::addSimpleTag(($level + 2) . ' DATE', '', GedcomTag::getLabel('DATA:DATE'));
+                    // 3 QUAY
+                    self::addSimpleTag(($level + 1) . ' QUAY');
+                }
+                // 3 OBJE
+                self::addSimpleTag(($level + 1) . ' OBJE');
+                // 3 SHARED_NOTE
+                self::addSimpleTag(($level + 1) . ' SHARED_NOTE');
                 echo '</table></div>';
-            }
-            break;
+                break;
 
-        case 'RESN':
-            echo "<a href=\"#\" onclick=\"return expand_layer('newresn');\"><i id=\"newresn_img\" class=\"icon-plus\"></i> ", I18N::translate('Add a restriction'), '</a>';
-            echo '<br>';
-            echo '<div id="newresn" style="display: none;">';
-            echo '<table class="facts_table">';
-            // 2 RESN
-            self::addSimpleTag($level . ' RESN');
-            echo '</table></div>';
-            break;
+            case 'ASSO':
+            case 'ASSO2':
+                //-- Add a new ASSOciate
+                if ($tag === 'ASSO') {
+                    echo "<a href=\"#\" onclick=\"return expand_layer('newasso');\"><i id=\"newasso_img\" class=\"icon-plus\"></i> ", I18N::translate('Add an associate'), '</a>';
+                    echo '<br>';
+                    echo '<div id="newasso" style="display: none;">';
+                } else {
+                    echo "<a href=\"#\" onclick=\"return expand_layer('newasso2');\"><i id=\"newasso2_img\" class=\"icon-plus\"></i> ", I18N::translate('Add an associate'), '</a>';
+                    echo '<br>';
+                    echo '<div id="newasso2" style="display: none;">';
+                }
+                echo '<table class="facts_table">';
+                // 2 ASSO
+                self::addSimpleTag($level . ' _ASSO @');
+                // 3 RELA
+                self::addSimpleTag(($level + 1) . ' RELA');
+                // 3 NOTE
+                self::addSimpleTag(($level + 1) . ' NOTE');
+                // 3 SHARED_NOTE
+                self::addSimpleTag(($level + 1) . ' SHARED_NOTE');
+                echo '</table></div>';
+                break;
+
+            case 'NOTE':
+                //-- Retrieve existing note or add new note to fact
+                echo "<a href=\"#\" onclick=\"return expand_layer('newnote');\"><i id=\"newnote_img\" class=\"icon-plus\"></i> ", I18N::translate('Add a note'), '</a>';
+                echo '<br>';
+                echo '<div id="newnote" style="display: none;">';
+                echo '<table class="facts_table">';
+                // 2 NOTE
+                self::addSimpleTag($level . ' NOTE');
+                echo '</table></div>';
+                break;
+
+            case 'SHARED_NOTE':
+                echo "<a href=\"#\" onclick=\"return expand_layer('newshared_note');\"><i id=\"newshared_note_img\" class=\"icon-plus\"></i> ", I18N::translate('Add a shared note'), '</a>';
+                echo '<br>';
+                echo '<div id="newshared_note" style="display: none;">';
+                echo '<table class="facts_table">';
+                // 2 SHARED NOTE
+                self::addSimpleTag($level . ' SHARED_NOTE', $parent_tag);
+                echo '</table></div>';
+                break;
+
+            case 'OBJE':
+                if ($WT_TREE->getPreference('MEDIA_UPLOAD') >= Auth::accessLevel($WT_TREE)) {
+                    echo "<a href=\"#\" onclick=\"return expand_layer('newobje');\"><i id=\"newobje_img\" class=\"icon-plus\"></i> ", I18N::translate('Add a media object'), '</a>';
+                    echo '<br>';
+                    echo '<div id="newobje" style="display: none;">';
+                    echo '<table class="facts_table">';
+                    self::addSimpleTag($level . ' OBJE');
+                    echo '</table></div>';
+                }
+                break;
+
+            case 'RESN':
+                echo "<a href=\"#\" onclick=\"return expand_layer('newresn');\"><i id=\"newresn_img\" class=\"icon-plus\"></i> ", I18N::translate('Add a restriction'), '</a>';
+                echo '<br>';
+                echo '<div id="newresn" style="display: none;">';
+                echo '<table class="facts_table">';
+                // 2 RESN
+                self::addSimpleTag($level . ' RESN');
+                echo '</table></div>';
+                break;
         }
     }
 
@@ -1219,12 +1219,12 @@ class FunctionsEdit {
      */
     public static function addNewSex() {
         switch (Filter::post('SEX', '[MF]', 'U')) {
-        case 'M':
-            return "\n1 SEX M";
-        case 'F':
-            return "\n1 SEX F";
-        default:
-            return "\n1 SEX U";
+            case 'M':
+                return "\n1 SEX M";
+            case 'F':
+                return "\n1 SEX F";
+            default:
+                return "\n1 SEX U";
         }
     }
 
@@ -1750,43 +1750,43 @@ class FunctionsEdit {
                 }
                 // Add level 3/4 tags as appropriate
                 switch ($key) {
-                case 'PLAC':
-                    if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $WT_TREE->getPreference('ADVANCED_PLAC_FACTS'), $match)) {
-                        foreach ($match[1] as $tag) {
-                            self::addSimpleTag('3 ' . $tag, '', GedcomTag::getLabel($level1tag . ':PLAC:' . $tag));
+                    case 'PLAC':
+                        if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $WT_TREE->getPreference('ADVANCED_PLAC_FACTS'), $match)) {
+                            foreach ($match[1] as $tag) {
+                                self::addSimpleTag('3 ' . $tag, '', GedcomTag::getLabel($level1tag . ':PLAC:' . $tag));
+                            }
                         }
-                    }
-                    self::addSimpleTag('3 MAP');
-                    self::addSimpleTag('4 LATI');
-                    self::addSimpleTag('4 LONG');
-                    break;
-                case 'FILE':
-                    self::addSimpleTag('3 FORM');
-                    break;
-                case 'EVEN':
-                    self::addSimpleTag('3 DATE');
-                    self::addSimpleTag('3 PLAC');
-                    break;
-                case 'STAT':
-                    if (GedcomCodeTemp::isTagLDS($level1tag)) {
-                        self::addSimpleTag('3 DATE', '', GedcomTag::getLabel('STAT:DATE'));
-                    }
-                    break;
-                case 'DATE':
-                    // TIME is NOT a valid 5.5.1 tag
-                    if (in_array($level1tag, Config::dateAndTime())) {
-                        self::addSimpleTag('3 TIME');
-                    }
-                    break;
-                case 'HUSB':
-                case 'WIFE':
-                    self::addSimpleTag('3 AGE');
-                    break;
-                case 'FAMC':
-                    if ($level1tag === 'ADOP') {
-                        self::addSimpleTag('3 ADOP BOTH');
-                    }
-                    break;
+                        self::addSimpleTag('3 MAP');
+                        self::addSimpleTag('4 LATI');
+                        self::addSimpleTag('4 LONG');
+                        break;
+                    case 'FILE':
+                        self::addSimpleTag('3 FORM');
+                        break;
+                    case 'EVEN':
+                        self::addSimpleTag('3 DATE');
+                        self::addSimpleTag('3 PLAC');
+                        break;
+                    case 'STAT':
+                        if (GedcomCodeTemp::isTagLDS($level1tag)) {
+                            self::addSimpleTag('3 DATE', '', GedcomTag::getLabel('STAT:DATE'));
+                        }
+                        break;
+                    case 'DATE':
+                        // TIME is NOT a valid 5.5.1 tag
+                        if (in_array($level1tag, Config::dateAndTime())) {
+                            self::addSimpleTag('3 TIME');
+                        }
+                        break;
+                    case 'HUSB':
+                    case 'WIFE':
+                        self::addSimpleTag('3 AGE');
+                        break;
+                    case 'FAMC':
+                        if ($level1tag === 'ADOP') {
+                            self::addSimpleTag('3 ADOP BOTH');
+                        }
+                        break;
                 }
             } elseif ($key === 'DATE' && $add_date) {
                 self::addSimpleTag('2 DATE', $level1tag, GedcomTag::getLabel($level1tag . ':DATE'));

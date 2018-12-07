@@ -354,9 +354,9 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface {
         }
 
         if ($controller->record->canEdit()) {
-        ?>
+            ?>
         <br><table class="facts_table noprint">
-        <?php
+            <?php
             if (count($families) > 1) { ?>
             <tr>
                 <td class="facts_value">
@@ -381,7 +381,7 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface {
                 </td>
             </tr>
             <?php }
-            if ($controller->record->getSex() != "M") { ?>
+if ($controller->record->getSex() != "M") { ?>
             <tr>
                 <td class="facts_value">
                 <a href="#" onclick="return add_spouse_to_individual('<?php echo $controller->record->getXref(); ?>','HUSB');"><?php echo I18N::translate('Add a husband'); ?></a>

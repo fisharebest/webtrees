@@ -99,13 +99,13 @@ $controller
                     <td class="optionbox">
                         <select name="PEDIGREE_GENERATIONS">
                             <?php
-                                for ($i = 2; $i <= $MAX_PEDIGREE_GENERATIONS; $i++) {
-                                    echo '<option value="', $i, '" ';
-                                    if ($i == $controller->generations) {
-                                        echo 'selected';
-                                    }
-                                    echo '>', I18N::number($i), '</option>';
+                            for ($i = 2; $i <= $MAX_PEDIGREE_GENERATIONS; $i++) {
+                                echo '<option value="', $i, '" ';
+                                if ($i == $controller->generations) {
+                                    echo 'selected';
                                 }
+                                echo '>', I18N::number($i), '</option>';
+                            }
                             ?>
                         </select>
                     </td>
@@ -129,46 +129,46 @@ if ($controller->error_message) {
     return;
 }
 switch ($controller->chart_style) {
-case 0:
-    // List
-    echo '<ul id="ancestry_chart" class="chart_common">';
-    $controller->printChildAscendancy($controller->root, 1, $controller->generations - 1);
-    echo '</ul>';
-    echo '<br>';
-    break;
-case 1:
-    echo '<div id="ancestry_booklet">';
-    // Booklet
-    // first page : show indi facts
-    FunctionsPrint::printPedigreePerson($controller->root, $controller->showFull());
-    // process the tree
-    $ancestors = $controller->sosaAncestors($controller->generations - 1);
-    $ancestors = array_filter($ancestors); // The SOSA array includes empty placeholders
+    case 0:
+        // List
+        echo '<ul id="ancestry_chart" class="chart_common">';
+        $controller->printChildAscendancy($controller->root, 1, $controller->generations - 1);
+        echo '</ul>';
+        echo '<br>';
+        break;
+    case 1:
+        echo '<div id="ancestry_booklet">';
+        // Booklet
+        // first page : show indi facts
+        FunctionsPrint::printPedigreePerson($controller->root, $controller->showFull());
+        // process the tree
+        $ancestors = $controller->sosaAncestors($controller->generations - 1);
+        $ancestors = array_filter($ancestors); // The SOSA array includes empty placeholders
 
-    foreach ($ancestors as $sosa => $individual) {
-        foreach ($individual->getChildFamilies() as $family) {
-            FunctionsCharts::printSosaFamily($family->getXref(), $individual->getXref(), $sosa, '', '', '', $controller->show_cousins, $controller->showFull());
+        foreach ($ancestors as $sosa => $individual) {
+            foreach ($individual->getChildFamilies() as $family) {
+                FunctionsCharts::printSosaFamily($family->getXref(), $individual->getXref(), $sosa, '', '', '', $controller->show_cousins, $controller->showFull());
+            }
         }
-    }
-    echo '</div>';
-    break;
-case 2:
-    // Individual list
-    $ancestors = $controller->sosaAncestors($controller->generations);
-    $ancestors = array_filter($ancestors); // The SOSA array includes empty placeholders
-    echo '<div id="ancestry-list">', FunctionsPrintLists::individualTable($ancestors, 'sosa'), '</div>';
-    break;
-case 3:
-    // Family list
-    $ancestors = $controller->sosaAncestors($controller->generations - 1);
-    $ancestors = array_filter($ancestors); // The SOSA array includes empty placeholders
-    $families  = array();
-    foreach ($ancestors as $individual) {
-        foreach ($individual->getChildFamilies() as $family) {
-            $families[$family->getXref()] = $family;
+        echo '</div>';
+        break;
+    case 2:
+        // Individual list
+        $ancestors = $controller->sosaAncestors($controller->generations);
+        $ancestors = array_filter($ancestors); // The SOSA array includes empty placeholders
+        echo '<div id="ancestry-list">', FunctionsPrintLists::individualTable($ancestors, 'sosa'), '</div>';
+        break;
+    case 3:
+        // Family list
+        $ancestors = $controller->sosaAncestors($controller->generations - 1);
+        $ancestors = array_filter($ancestors); // The SOSA array includes empty placeholders
+        $families  = array();
+        foreach ($ancestors as $individual) {
+            foreach ($individual->getChildFamilies() as $family) {
+                $families[$family->getXref()] = $family;
+            }
         }
-    }
-    echo '<div id="ancestry-list">', FunctionsPrintLists::familyTable($families), '</div>';
-    break;
+        echo '<div id="ancestry-list">', FunctionsPrintLists::familyTable($families), '</div>';
+        break;
 }
 echo '</div>';

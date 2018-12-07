@@ -147,15 +147,15 @@ class ReportHtmlCell extends ReportBaseCell {
 
         // Text alignment
         switch ($this->align) {
-        case "C":
-            echo " text-align:center;";
-            break;
-        case "L":
-            echo " text-align:left;";
-            break;
-        case "R":
-            echo " text-align:right;";
-            break;
+            case "C":
+                echo " text-align:center;";
+                break;
+            case "L":
+                echo " text-align:left;";
+                break;
+            case "R":
+                echo " text-align:right;";
+                break;
         }
 
         // Print the collected HTML code

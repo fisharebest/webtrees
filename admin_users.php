@@ -45,64 +45,64 @@ $ALL_EDIT_OPTIONS = array(
 
 // Form actions
 switch (Filter::post('action')) {
-case 'save':
-    if (Filter::checkCsrf()) {
-        $user_id        = Filter::postInteger('user_id');
-        $user           = User::find($user_id);
-        $username       = Filter::post('username');
-        $real_name      = Filter::post('real_name');
-        $email          = Filter::postEmail('email');
-        $pass1          = Filter::post('pass1', WT_REGEX_PASSWORD);
-        $pass2          = Filter::post('pass2', WT_REGEX_PASSWORD);
-        $theme          = Filter::post('theme', implode('|', array_keys(Theme::themeNames())), '');
-        $language       = Filter::post('language');
-        $timezone       = Filter::post('timezone');
-        $contact_method = Filter::post('contact_method');
-        $comment        = Filter::post('comment');
-        $auto_accept    = Filter::postBool('auto_accept');
-        $canadmin       = Filter::postBool('canadmin');
-        $visible_online = Filter::postBool('visible_online');
-        $verified       = Filter::postBool('verified');
-        $approved       = Filter::postBool('approved');
+    case 'save':
+        if (Filter::checkCsrf()) {
+            $user_id        = Filter::postInteger('user_id');
+            $user           = User::find($user_id);
+            $username       = Filter::post('username');
+            $real_name      = Filter::post('real_name');
+            $email          = Filter::postEmail('email');
+            $pass1          = Filter::post('pass1', WT_REGEX_PASSWORD);
+            $pass2          = Filter::post('pass2', WT_REGEX_PASSWORD);
+            $theme          = Filter::post('theme', implode('|', array_keys(Theme::themeNames())), '');
+            $language       = Filter::post('language');
+            $timezone       = Filter::post('timezone');
+            $contact_method = Filter::post('contact_method');
+            $comment        = Filter::post('comment');
+            $auto_accept    = Filter::postBool('auto_accept');
+            $canadmin       = Filter::postBool('canadmin');
+            $visible_online = Filter::postBool('visible_online');
+            $verified       = Filter::postBool('verified');
+            $approved       = Filter::postBool('approved');
 
-        if ($user_id === 0) {
-            // Create a new user
-            if (User::findByUserName($username)) {
-                FlashMessages::addMessage(I18N::translate('Duplicate username. A user with that username already exists. Please choose another username.'));
-            } elseif (User::findByEmail($email)) {
-                FlashMessages::addMessage(I18N::translate('Duplicate email address. A user with that email already exists.'));
-            } elseif ($pass1 !== $pass2) {
-                FlashMessages::addMessage(I18N::translate('The passwords do not match.'));
+            if ($user_id === 0) {
+                // Create a new user
+                if (User::findByUserName($username)) {
+                    FlashMessages::addMessage(I18N::translate('Duplicate username. A user with that username already exists. Please choose another username.'));
+                } elseif (User::findByEmail($email)) {
+                    FlashMessages::addMessage(I18N::translate('Duplicate email address. A user with that email already exists.'));
+                } elseif ($pass1 !== $pass2) {
+                    FlashMessages::addMessage(I18N::translate('The passwords do not match.'));
+                } else {
+                    $user = User::create($username, $real_name, $email, $pass1);
+                    $user->setPreference('reg_timestamp', date('U'))->setPreference('sessiontime', '0');
+                    Log::addAuthenticationLog('User ->' . $username . '<- created');
+                }
             } else {
-                $user = User::create($username, $real_name, $email, $pass1);
-                $user->setPreference('reg_timestamp', date('U'))->setPreference('sessiontime', '0');
-                Log::addAuthenticationLog('User ->' . $username . '<- created');
-            }
-        } else {
-            $user = User::find($user_id);
-            if ($user && $username && $real_name) {
-                $user->setEmail($email);
-                $user->setUserName($username);
-                $user->setRealName($real_name);
-                if ($pass1 !== null && $pass1 === $pass2) {
-                    $user->setPassword($pass1);
+                $user = User::find($user_id);
+                if ($user && $username && $real_name) {
+                    $user->setEmail($email);
+                    $user->setUserName($username);
+                    $user->setRealName($real_name);
+                    if ($pass1 !== null && $pass1 === $pass2) {
+                        $user->setPassword($pass1);
+                    }
                 }
             }
-        }
 
-        if ($user) {
-            // Approving for the first time? Send a confirmation email
-            if ($approved && !$user->getPreference('verified_by_admin') && $user->getPreference('sessiontime') == 0) {
-                I18N::init($user->getPreference('language'));
-                Mail::systemMessage(
+            if ($user) {
+                // Approving for the first time? Send a confirmation email
+                if ($approved && !$user->getPreference('verified_by_admin') && $user->getPreference('sessiontime') == 0) {
+                    I18N::init($user->getPreference('language'));
+                    Mail::systemMessage(
                     $WT_TREE,
                     $user,
                     I18N::translate('Approval of account at %s', WT_BASE_URL),
                     I18N::translate('The administrator at the webtrees site %s has approved your application for an account. You may now sign in by accessing the following link: %s', WT_BASE_URL, WT_BASE_URL)
-                );
-            }
+                    );
+                }
 
-            $user
+                $user
                 ->setPreference('theme', $theme)
                 ->setPreference('language', $language)
                 ->setPreference('TIMEZONE', $timezone)
@@ -113,39 +113,39 @@ case 'save':
                 ->setPreference('verified', $verified ? '1' : '0')
                 ->setPreference('verified_by_admin', $approved ? '1' : '0');
 
-            // We cannot change our own admin status. Another admin will need to do it.
-            if ($user->getUserId() !== Auth::id()) {
-                $user->setPreference('canadmin', $canadmin ? '1' : '0');
-            }
+                // We cannot change our own admin status. Another admin will need to do it.
+                if ($user->getUserId() !== Auth::id()) {
+                    $user->setPreference('canadmin', $canadmin ? '1' : '0');
+                }
 
-            foreach (Tree::getAll() as $tree) {
-                $tree->setUserPreference($user, 'gedcomid', Filter::post('gedcomid' . $tree->getTreeId(), WT_REGEX_XREF));
-                $tree->setUserPreference($user, 'canedit', Filter::post('canedit' . $tree->getTreeId(), implode('|', array_keys($ALL_EDIT_OPTIONS))));
-                if (Filter::post('gedcomid' . $tree->getTreeId(), WT_REGEX_XREF)) {
-                    $tree->setUserPreference($user, 'RELATIONSHIP_PATH_LENGTH', Filter::postInteger('RELATIONSHIP_PATH_LENGTH' . $tree->getTreeId(), 0, 10, 0));
-                } else {
-                    // Do not allow a path length to be set if the individual ID is not
-                    $tree->setUserPreference($user, 'RELATIONSHIP_PATH_LENGTH', null);
+                foreach (Tree::getAll() as $tree) {
+                    $tree->setUserPreference($user, 'gedcomid', Filter::post('gedcomid' . $tree->getTreeId(), WT_REGEX_XREF));
+                    $tree->setUserPreference($user, 'canedit', Filter::post('canedit' . $tree->getTreeId(), implode('|', array_keys($ALL_EDIT_OPTIONS))));
+                    if (Filter::post('gedcomid' . $tree->getTreeId(), WT_REGEX_XREF)) {
+                        $tree->setUserPreference($user, 'RELATIONSHIP_PATH_LENGTH', Filter::postInteger('RELATIONSHIP_PATH_LENGTH' . $tree->getTreeId(), 0, 10, 0));
+                    } else {
+                        // Do not allow a path length to be set if the individual ID is not
+                        $tree->setUserPreference($user, 'RELATIONSHIP_PATH_LENGTH', null);
+                    }
                 }
             }
         }
-    }
 
-    header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME);
+        header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME);
 
-    return;
+        return;
 }
 
 switch (Filter::get('action')) {
-case 'load_json':
-    // Generate an AJAX/JSON response for datatables to load a block of rows
-    $search = Filter::postArray('search');
-    $search = $search['value'];
-    $start  = Filter::postInteger('start');
-    $length = Filter::postInteger('length');
-    $order  = Filter::postArray('order');
+    case 'load_json':
+        // Generate an AJAX/JSON response for datatables to load a block of rows
+        $search = Filter::postArray('search');
+        $search = $search['value'];
+        $start  = Filter::postInteger('start');
+        $length = Filter::postInteger('length');
+        $order  = Filter::postArray('order');
 
-    $sql_select =
+        $sql_select =
         "SELECT SQL_CALC_FOUND_ROWS '', u.user_id, user_name, real_name, email, us1.setting_value, us2.setting_value, NULL, us3.setting_value, NULL, us4.setting_value, us5.setting_value" .
         " FROM `##user` u" .
         " LEFT JOIN `##user_setting` us1 ON (u.user_id=us1.user_id AND us1.setting_name='language')" .
@@ -155,125 +155,125 @@ case 'load_json':
         " LEFT JOIN `##user_setting` us5 ON (u.user_id=us5.user_id AND us5.setting_name='verified_by_admin')" .
         " WHERE u.user_id > 0";
 
-    $args = array();
+        $args = array();
 
-    if ($search) {
-        $sql_select .= " AND (user_name LIKE CONCAT('%', :search_1, '%') OR real_name LIKE CONCAT('%', :search_2, '%') OR email LIKE CONCAT('%', :search_3, '%'))";
-        $args['search_1'] = $search;
-        $args['search_2'] = $search;
-        $args['search_3'] = $search;
-    }
-
-    if ($order) {
-        $sql_select .= " ORDER BY ";
-        foreach ($order as $key => $value) {
-            if ($key > 0) {
-                $sql_select .= ',';
-            }
-            // Datatables numbers columns 0, 1, 2
-            // MySQL numbers columns 1, 2, 3
-            switch ($value['dir']) {
-            case 'asc':
-                $sql_select .= (1 + $value['column']) . " ASC ";
-                break;
-            case 'desc':
-                $sql_select .= (1 + $value['column']) . " DESC ";
-                break;
-            }
+        if ($search) {
+            $sql_select .= " AND (user_name LIKE CONCAT('%', :search_1, '%') OR real_name LIKE CONCAT('%', :search_2, '%') OR email LIKE CONCAT('%', :search_3, '%'))";
+            $args['search_1'] = $search;
+            $args['search_2'] = $search;
+            $args['search_3'] = $search;
         }
-    } else {
-        $sql_select = " ORDER BY 1 ASC";
-    }
 
-    if ($length) {
-        Auth::user()->setPreference('admin_users_page_size', $length);
-        $sql_select .= " LIMIT :limit OFFSET :offset";
-        $args['limit']  = $length;
-        $args['offset'] = $start;
-    }
+        if ($order) {
+            $sql_select .= " ORDER BY ";
+            foreach ($order as $key => $value) {
+                if ($key > 0) {
+                    $sql_select .= ',';
+                }
+                // Datatables numbers columns 0, 1, 2
+                // MySQL numbers columns 1, 2, 3
+                switch ($value['dir']) {
+                    case 'asc':
+                        $sql_select .= (1 + $value['column']) . " ASC ";
+                        break;
+                    case 'desc':
+                        $sql_select .= (1 + $value['column']) . " DESC ";
+                    break;
+                }
+            }
+        } else {
+            $sql_select = " ORDER BY 1 ASC";
+        }
 
-    // This becomes a JSON list, not array, so need to fetch with numeric keys.
-    $data = Database::prepare($sql_select)->execute($args)->fetchAll(PDO::FETCH_NUM);
+        if ($length) {
+            Auth::user()->setPreference('admin_users_page_size', $length);
+            $sql_select .= " LIMIT :limit OFFSET :offset";
+            $args['limit']  = $length;
+            $args['offset'] = $start;
+        }
 
-    $installed_languages = array();
-    foreach (I18N::installedLocales() as $installed_locale) {
-        $installed_languages[$installed_locale->languageTag()] = $installed_locale->endonym();
-    }
+        // This becomes a JSON list, not array, so need to fetch with numeric keys.
+        $data = Database::prepare($sql_select)->execute($args)->fetchAll(PDO::FETCH_NUM);
 
-    // Reformat various columns for display
-    foreach ($data as &$datum) {
-        $user_id   = $datum[1];
-        $user_name = $datum[2];
+        $installed_languages = array();
+        foreach (I18N::installedLocales() as $installed_locale) {
+            $installed_languages[$installed_locale->languageTag()] = $installed_locale->endonym();
+        }
 
-        if ($user_id != Auth::id()) {
-            $admin_options = '<li><a href="#" onclick="return masquerade(' . $user_id . ')"><i class="fa fa-fw fa-user"></i> ' . /* I18N: Pretend to be another user, by logging in as them */
+        // Reformat various columns for display
+        foreach ($data as &$datum) {
+            $user_id   = $datum[1];
+            $user_name = $datum[2];
+
+            if ($user_id != Auth::id()) {
+                $admin_options = '<li><a href="#" onclick="return masquerade(' . $user_id . ')"><i class="fa fa-fw fa-user"></i> ' . /* I18N: Pretend to be another user, by logging in as them */
                 I18N::translate('Masquerade as this user') . '</a></li>' . '<li><a href="#" onclick="delete_user(\'' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs($user_name)) . '\', \'' . Filter::escapeJs($user_id) . '\');"><i class="fa fa-fw fa-trash-o"></i> ' . I18N::translate('Delete') . '</a></li>';
-        } else {
-            // Do not delete ourself!
-            $admin_options = '';
+            } else {
+                // Do not delete ourself!
+                $admin_options = '';
+            }
+
+            $datum[0] = '<div class="btn-group"><button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-pencil"></i> <span class="caret"></span></button><ul class="dropdown-menu" role="menu"><li><a href="?action=edit&amp;user_id=' . $user_id . '"><i class="fa fa-fw fa-pencil"></i> ' . I18N::translate('Edit') . '</a></li><li class="divider"><li><a href="index_edit.php?user_id=' . $user_id . '"><i class="fa fa-fw fa-th-large"></i> ' . I18N::translate('Change the blocks on this user’s “My page”') . '</a></li>' . $admin_options . '</ul></div>';
+            // $datum[1] is the user ID
+            // $datum[3] is the real name
+            $datum[3] = '<span dir="auto">' . Filter::escapeHtml($datum[3]) . '</span>';
+            // $datum[4] is the email address
+            if ($user_id != Auth::id()) {
+                $datum[4] = '<a href="#" onclick="return message(\'' . Filter::escapeHtml($datum[2]) . '\', \'\', \'\');">' . Filter::escapeHtml($datum[4]) . '</i></a>';
+            }
+            // $datum[2] is the username
+            $datum[2] = '<span dir="auto">' . Filter::escapeHtml($datum[2]) . '</span>';
+            // $datum[5] is the langauge
+            if (array_key_exists($datum[5], $installed_languages)) {
+                $datum[5] = $installed_languages[$datum[5]];
+            }
+            // $datum[6] is the sortable registration timestamp
+            $datum[7] = $datum[6] ? FunctionsDate::formatTimestamp($datum[6] + WT_TIMESTAMP_OFFSET) : '';
+            if (date("U") - $datum[6] > 604800 && !$datum[10]) {
+                $datum[7] = '<span class="red">' . $datum[7] . '</span>';
+            }
+            // $datum[8] is the sortable last-login timestamp
+            if ($datum[8]) {
+                $datum[9] = FunctionsDate::formatTimestamp($datum[8] + WT_TIMESTAMP_OFFSET) . '<br>' . I18N::timeAgo(WT_TIMESTAMP - $datum[8]);
+            } else {
+                $datum[9] = I18N::translate('Never');
+            }
+            $datum[10] = $datum[10] ? I18N::translate('yes') : I18N::translate('no');
+            $datum[11] = $datum[11] ? I18N::translate('yes') : I18N::translate('no');
         }
 
-        $datum[0] = '<div class="btn-group"><button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-pencil"></i> <span class="caret"></span></button><ul class="dropdown-menu" role="menu"><li><a href="?action=edit&amp;user_id=' . $user_id . '"><i class="fa fa-fw fa-pencil"></i> ' . I18N::translate('Edit') . '</a></li><li class="divider"><li><a href="index_edit.php?user_id=' . $user_id . '"><i class="fa fa-fw fa-th-large"></i> ' . I18N::translate('Change the blocks on this user’s “My page”') . '</a></li>' . $admin_options . '</ul></div>';
-        // $datum[1] is the user ID
-        // $datum[3] is the real name
-        $datum[3] = '<span dir="auto">' . Filter::escapeHtml($datum[3]) . '</span>';
-        // $datum[4] is the email address
-        if ($user_id != Auth::id()) {
-            $datum[4] = '<a href="#" onclick="return message(\'' . Filter::escapeHtml($datum[2]) . '\', \'\', \'\');">' . Filter::escapeHtml($datum[4]) . '</i></a>';
-        }
-        // $datum[2] is the username
-        $datum[2] = '<span dir="auto">' . Filter::escapeHtml($datum[2]) . '</span>';
-        // $datum[5] is the langauge
-        if (array_key_exists($datum[5], $installed_languages)) {
-            $datum[5] = $installed_languages[$datum[5]];
-        }
-        // $datum[6] is the sortable registration timestamp
-        $datum[7] = $datum[6] ? FunctionsDate::formatTimestamp($datum[6] + WT_TIMESTAMP_OFFSET) : '';
-        if (date("U") - $datum[6] > 604800 && !$datum[10]) {
-            $datum[7] = '<span class="red">' . $datum[7] . '</span>';
-        }
-        // $datum[8] is the sortable last-login timestamp
-        if ($datum[8]) {
-            $datum[9] = FunctionsDate::formatTimestamp($datum[8] + WT_TIMESTAMP_OFFSET) . '<br>' . I18N::timeAgo(WT_TIMESTAMP - $datum[8]);
-        } else {
-            $datum[9] = I18N::translate('Never');
-        }
-        $datum[10] = $datum[10] ? I18N::translate('yes') : I18N::translate('no');
-        $datum[11] = $datum[11] ? I18N::translate('yes') : I18N::translate('no');
-    }
+        // Total filtered/unfiltered rows
+        $recordsFiltered = (int) Database::prepare("SELECT FOUND_ROWS()")->fetchOne();
+        $recordsTotal    = User::count();
 
-    // Total filtered/unfiltered rows
-    $recordsFiltered = (int) Database::prepare("SELECT FOUND_ROWS()")->fetchOne();
-    $recordsTotal    = User::count();
-
-    header('Content-type: application/json');
-    // See http://www.datatables.net/usage/server-side
-    echo json_encode(array(
+        header('Content-type: application/json');
+        // See http://www.datatables.net/usage/server-side
+        echo json_encode(array(
         'draw'            => Filter::getInteger('draw'),
         'recordsTotal'    => $recordsTotal,
         'recordsFiltered' => $recordsFiltered,
         'data'            => $data,
-    ));
+        ));
 
-    return;
+        return;
 
-case 'edit':
-    $user_id = Filter::getInteger('user_id');
+    case 'edit':
+        $user_id = Filter::getInteger('user_id');
 
-    if ($user_id === 0) {
-        $controller->setPageTitle(I18N::translate('Add a user'));
-        $tmp            = new \stdClass;
-        $tmp->user_id   = '';
-        $tmp->user_name = '';
-        $tmp->real_name = '';
-        $tmp->email     = '';
-        $user           = new User($tmp);
-    } else {
-        $controller->setPageTitle(I18N::translate('Edit the user'));
-        $user = User::find($user_id);
-    }
+        if ($user_id === 0) {
+            $controller->setPageTitle(I18N::translate('Add a user'));
+            $tmp            = new \stdClass;
+            $tmp->user_id   = '';
+            $tmp->user_name = '';
+            $tmp->real_name = '';
+            $tmp->email     = '';
+            $user           = new User($tmp);
+        } else {
+            $controller->setPageTitle(I18N::translate('Edit the user'));
+            $user = User::find($user_id);
+        }
 
-    $controller
+        $controller
         ->pageHeader()
         ->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
         ->addInlineJavascript('autocomplete();')
@@ -292,7 +292,7 @@ case 'edit':
 			}
 		');
 
-    ?>
+        ?>
     <ol class="breadcrumb small">
         <li><a href="admin.php"><?php echo I18N::translate('Control panel'); ?></a></li>
         <li><a href="admin_users.php"><?php echo I18N::translate('User administration'); ?></a></li>
@@ -482,17 +482,17 @@ case 'edit':
         <!-- THEME -->
         <div class="form-group">
             <label class="control-label col-sm-3" for="theme">
-                <?php echo I18N::translate('Theme'); ?>
+                    <?php echo I18N::translate('Theme'); ?>
             </label>
             <div class="col-sm-9">
-                <?php echo FunctionsEdit::selectEditControl('theme', Theme::themeNames(), I18N::translate('<default theme>'), $user->getPreference('theme'), 'class="form-control"'); ?>
+                    <?php echo FunctionsEdit::selectEditControl('theme', Theme::themeNames(), I18N::translate('<default theme>'), $user->getPreference('theme'), 'class="form-control"'); ?>
             </div>
         </div>
 
         <!-- COMMENTS -->
         <div class="form-group">
             <label class="control-label col-sm-3" for="comment">
-                <?php echo I18N::translate('Administrator comments on user'); ?>
+                    <?php echo I18N::translate('Administrator comments on user'); ?>
             </label>
             <div class="col-sm-9">
                 <textarea class="form-control" id="comment" name="comment" rows="5" maxlength="255"><?php echo Filter::escapeHtml($user->getPreference('comment')); ?></textarea>
@@ -508,10 +508,10 @@ case 'edit':
                     <label>
                         <input
                             type="checkbox" id="admin" name="canadmin" value="1"
-                            <?php echo $user->getPreference('canadmin') ? 'checked' : ''; ?>
-                            <?php echo $user->getUserId() === Auth::id() ? 'disabled' : ''; ?>
+                                <?php echo $user->getPreference('canadmin') ? 'checked' : ''; ?>
+                                <?php echo $user->getUserId() === Auth::id() ? 'disabled' : ''; ?>
                         >
-                        <?php echo I18N::translate('Administrator'); ?>
+                            <?php echo I18N::translate('Administrator'); ?>
                     </label>
                 </div>
             </div>
@@ -520,50 +520,50 @@ case 'edit':
         <h3><?php echo I18N::translate('Access to family trees'); ?></h3>
 
         <p>
-            <?php echo I18N::translate('A role is a set of access rights, which give permission to view data, change preferences, etc. Access rights are assigned to roles, and roles are granted to users. Each family tree can assign different access to each role, and users can have a different role in each family tree.'); ?>
+                <?php echo I18N::translate('A role is a set of access rights, which give permission to view data, change preferences, etc. Access rights are assigned to roles, and roles are granted to users. Each family tree can assign different access to each role, and users can have a different role in each family tree.'); ?>
         </p>
 
         <div class="row">
             <div class="col-xs-4">
                 <h4>
-                    <?php echo I18N::translate('Visitor'); ?>
+                        <?php echo I18N::translate('Visitor'); ?>
                 </h4>
                 <p class="small text-muted">
-                    <?php echo I18N::translate('Everybody has this role, including visitors to the website and search engines.'); ?>
+                        <?php echo I18N::translate('Everybody has this role, including visitors to the website and search engines.'); ?>
                 </p>
                 <h4>
-                    <?php echo I18N::translate('Member'); ?>
+                        <?php echo I18N::translate('Member'); ?>
                 </h4>
                 <p class="small text-muted">
-                    <?php echo I18N::translate('This role has all the permissions of the visitor role, plus any additional access granted by the family tree configuration.'); ?>
-                </p>
-            </div>
-            <div class="col-xs-4">
-                <h4>
-                    <?php echo I18N::translate('Editor'); ?>
-                </h4>
-                <p class="small text-muted">
-                    <?php echo I18N::translate('This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be reviewed by a moderator, unless the user has the “automatically accept changes” option enabled.'); ?>
-                </p>
-                <h4>
-                    <?php echo I18N::translate('Moderator'); ?>
-                </h4>
-                <p class="small text-muted">
-                    <?php echo I18N::translate('This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users.'); ?>
+                        <?php echo I18N::translate('This role has all the permissions of the visitor role, plus any additional access granted by the family tree configuration.'); ?>
                 </p>
             </div>
             <div class="col-xs-4">
                 <h4>
-                    <?php echo I18N::translate('Manager'); ?>
+                        <?php echo I18N::translate('Editor'); ?>
                 </h4>
                 <p class="small text-muted">
-                    <?php echo I18N::translate('This role has all the permissions of the moderator role, plus any additional access granted by the family tree configuration, plus permission to change the settings/configuration of a family tree.'); ?>
+                        <?php echo I18N::translate('This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be reviewed by a moderator, unless the user has the “automatically accept changes” option enabled.'); ?>
                 </p>
                 <h4>
-                    <?php echo I18N::translate('Administrator'); ?>
+                        <?php echo I18N::translate('Moderator'); ?>
                 </h4>
                 <p class="small text-muted">
-                    <?php echo I18N::translate('This role has all the permissions of the manager role in all family trees, plus permission to change the settings/configuration of the website, users, and modules.'); ?>
+                        <?php echo I18N::translate('This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users.'); ?>
+                </p>
+            </div>
+            <div class="col-xs-4">
+                <h4>
+                        <?php echo I18N::translate('Manager'); ?>
+                </h4>
+                <p class="small text-muted">
+                        <?php echo I18N::translate('This role has all the permissions of the moderator role, plus any additional access granted by the family tree configuration, plus permission to change the settings/configuration of a family tree.'); ?>
+                </p>
+                <h4>
+                        <?php echo I18N::translate('Administrator'); ?>
+                </h4>
+                <p class="small text-muted">
+                        <?php echo I18N::translate('This role has all the permissions of the manager role in all family trees, plus permission to change the settings/configuration of the website, users, and modules.'); ?>
                 </p>
             </div>
         </div>
@@ -572,16 +572,16 @@ case 'edit':
             <thead>
                 <tr>
                     <th>
-                        <?php echo I18N::translate('Family tree'); ?>
+                            <?php echo I18N::translate('Family tree'); ?>
                     </th>
                     <th>
-                        <?php echo I18N::translate('Role'); ?>
+                            <?php echo I18N::translate('Role'); ?>
                     </th>
                     <th>
-                        <?php echo I18N::translate('Individual record'); ?>
+                            <?php echo I18N::translate('Individual record'); ?>
                         </th>
                     <th>
-                        <?php echo I18N::translate('Restrict to immediate family'); ?>
+                            <?php echo I18N::translate('Restrict to immediate family'); ?>
                     </th>
                 </tr>
                 <tr>
@@ -591,20 +591,20 @@ case 'edit':
                     </td>
                     <td>
                         <p class="small text-muted">
-                            <?php echo I18N::translate('Link this user to an individual in the family tree.'); ?>
+                                <?php echo I18N::translate('Link this user to an individual in the family tree.'); ?>
                         </p>
                     </td>
                     <td>
                         <p class="small text-muted">
-                                <?php echo I18N::translate('Where a user is associated to an individual record in a family tree and has a role of member, editor, or moderator, you can prevent them from accessing the details of distant, living relations. You specify the number of relationship steps that the user is allowed to see.'); ?>
-                            <?php echo I18N::translate('For example, if you specify a path length of 2, the individual will be able to see their grandson (child, child), their aunt (parent, sibling), their step-daughter (spouse, child), but not their first cousin (parent, sibling, child).'); ?>
-                            <?php echo I18N::translate('Note: longer path lengths require a lot of calculation, which can make your website run slowly for these users.'); ?>
+                                    <?php echo I18N::translate('Where a user is associated to an individual record in a family tree and has a role of member, editor, or moderator, you can prevent them from accessing the details of distant, living relations. You specify the number of relationship steps that the user is allowed to see.'); ?>
+                                <?php echo I18N::translate('For example, if you specify a path length of 2, the individual will be able to see their grandson (child, child), their aunt (parent, sibling), their step-daughter (spouse, child), but not their first cousin (parent, sibling, child).'); ?>
+                                <?php echo I18N::translate('Note: longer path lengths require a lot of calculation, which can make your website run slowly for these users.'); ?>
                         </p>
                     </td>
                 </tr>
             </thead>
             <tbody>
-                <?php foreach (Tree::getAll() as $tree): ?>
+                    <?php foreach (Tree::getAll() as $tree): ?>
                 <tr>
                     <td>
                         <?php echo $tree->getTitleHtml(); ?>
@@ -649,22 +649,21 @@ case 'edit':
         <div class="form-group">
             <div class="col-sm-offset-3 col-sm-9">
                 <button type="submit" class="btn btn-primary">
-                    <?php echo I18N::translate('save'); ?>
+                        <?php echo I18N::translate('save'); ?>
                 </button>
             </div>
         </div>
     </form>
-    <?php
+        <?php
 
-    return;
+        return;
 
-case 'cleanup':
-
-    $controller
+    case 'cleanup':
+        $controller
         ->setPageTitle(I18N::translate('Delete inactive users'))
         ->pageHeader();
 
-    ?>
+        ?>
     <ol class="breadcrumb small">
         <li><a href="admin.php"><?php echo I18N::translate('Control panel'); ?></a></li>
         <li><a href="admin_users.php"><?php echo I18N::translate('User administration'); ?></a></li>
@@ -674,31 +673,31 @@ case 'cleanup':
 
     <form method="post" action="?action=cleanup2">
     <table class="table table-bordered">
-    <?php
-    // Check for idle users
-    $month = Filter::getInteger('month', 1, 12, 6);
-    echo '<tr><th colspan="2">', I18N::translate('Number of months since the last sign-in for a user’s account to be considered inactive: '), '</th>';
-    echo '<td><select onchange="document.location=options[selectedIndex].value;">';
-    for ($i = 1; $i <= 12; $i++) {
-        echo '<option value="admin_users.php?action=cleanup&amp;month=' . $i . '" ';
-        if ($i === $month) {
-            echo 'selected';
+        <?php
+        // Check for idle users
+        $month = Filter::getInteger('month', 1, 12, 6);
+        echo '<tr><th colspan="2">', I18N::translate('Number of months since the last sign-in for a user’s account to be considered inactive: '), '</th>';
+        echo '<td><select onchange="document.location=options[selectedIndex].value;">';
+        for ($i = 1; $i <= 12; $i++) {
+            echo '<option value="admin_users.php?action=cleanup&amp;month=' . $i . '" ';
+            if ($i === $month) {
+                echo 'selected';
+            }
+            echo '>', $i, '</option>';
         }
-        echo '>', $i, '</option>';
-    }
-    echo '</select></td></tr>';
+        echo '</select></td></tr>';
 
-    // Check users not logged in too long
-    $ucnt = 0;
-    foreach (User::all() as $user) {
-        if ($user->getPreference('sessiontime') === '0') {
-            $datelogin = (int) $user->getPreference('reg_timestamp');
-        } else {
-            $datelogin = (int) $user->getPreference('sessiontime');
-        }
-        if (mktime(0, 0, 0, (int) date('m') - $month, (int) date('d'), (int) date('Y')) > $datelogin && $user->getPreference('verified') && $user->getPreference('verified_by_admin')) {
-            $ucnt++;
-            ?>
+        // Check users not logged in too long
+        $ucnt = 0;
+        foreach (User::all() as $user) {
+            if ($user->getPreference('sessiontime') === '0') {
+                $datelogin = (int) $user->getPreference('reg_timestamp');
+            } else {
+                $datelogin = (int) $user->getPreference('sessiontime');
+            }
+            if (mktime(0, 0, 0, (int) date('m') - $month, (int) date('d'), (int) date('Y')) > $datelogin && $user->getPreference('verified') && $user->getPreference('verified_by_admin')) {
+                $ucnt++;
+                ?>
             <tr>
                 <td>
                     <a href="?action=edit&amp;user_id=<?php echo $user->getUserId(); ?>">
@@ -714,15 +713,15 @@ case 'cleanup':
                     <input type="checkbox" name="del_<?php echo $user->getUserId(); ?>" value="1">
                 </td>
             </tr>
-        <?php
+                <?php
+            }
         }
-    }
 
-    // Check unverified users
-    foreach (User::all() as $user) {
-        if (((date('U') - (int) $user->getPreference('reg_timestamp')) > 604800) && !$user->getPreference('verified')) {
-            $ucnt++;
-            ?>
+        // Check unverified users
+        foreach (User::all() as $user) {
+            if (((date('U') - (int) $user->getPreference('reg_timestamp')) > 604800) && !$user->getPreference('verified')) {
+                $ucnt++;
+                ?>
             <tr>
                 <td>
                     <a href="?action=edit&amp;user_id=<?php echo $user->getUserId(); ?>">
@@ -738,15 +737,15 @@ case 'cleanup':
                     <input type="checkbox" checked name="del_<?php echo $user->getUserId(); ?>" value="1">
                 </td>
             </tr>
-            <?php
+                <?php
+            }
         }
-    }
 
-    // Check users not verified by admin
-    foreach (User::all() as $user) {
-        if ($user->getUserId() !== Auth::id() && !$user->getPreference('verified_by_admin') && $user->getPreference('verified')) {
-            $ucnt++;
-            ?>
+        // Check users not verified by admin
+        foreach (User::all() as $user) {
+            if ($user->getUserId() !== Auth::id() && !$user->getPreference('verified_by_admin') && $user->getPreference('verified')) {
+                $ucnt++;
+                ?>
             <tr>
                 <td>
                     <a href="?action=edit&amp;user_id=<?php echo $user->getUserId(); ?>">
@@ -762,9 +761,9 @@ case 'cleanup':
                     <input type="checkbox" name="del_<?php echo $user->getUserId(); ?>" value="1">
                 </td>
             </tr>
-            <?php
+                <?php
+            }
         }
-    }
         ?>
         </table>
         <p>
@@ -775,22 +774,22 @@ case 'cleanup':
             <?php endif; ?>
         </p>
     </form>
-    <?php
-    break;
+        <?php
+        break;
 
-case 'cleanup2':
-    foreach (User::all() as $user) {
-        if (Filter::post('del_' . $user->getUserId()) == '1') {
-            Log::addAuthenticationLog('Deleted user: ' . $user->getUserName());
-            $user->delete();
-            I18N::translate('The user %s has been deleted.', Filter::escapeHtml($user->getUserName()));
+    case 'cleanup2':
+        foreach (User::all() as $user) {
+            if (Filter::post('del_' . $user->getUserId()) == '1') {
+                Log::addAuthenticationLog('Deleted user: ' . $user->getUserName());
+                $user->delete();
+                I18N::translate('The user %s has been deleted.', Filter::escapeHtml($user->getUserName()));
+            }
         }
-    }
 
-    header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME);
-    break;
-default:
-    $controller
+        header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME);
+        break;
+    default:
+        $controller
         ->setPageTitle(I18N::translate('User administration'))
         ->addExternalJavascript(WT_JQUERY_DATATABLES_JS_URL)
         ->addExternalJavascript(WT_DATATABLES_BOOTSTRAP_JS_URL)
@@ -828,9 +827,9 @@ default:
 			})
 			.fnFilter("' . Filter::get('filter') . '"); // View the details of a newly created user
 		')
-        ->pageHeader();
+            ->pageHeader();
 
-    ?>
+        ?>
     <ol class="breadcrumb small">
         <li><a href="admin.php"><?php echo I18N::translate('Control panel'); ?></a></li>
         <li class="active"><?php echo $controller->getPageTitle(); ?></li>
@@ -857,6 +856,6 @@ default:
         <tbody>
         </tbody>
     </table>
-    <?php
-    break;
+        <?php
+        break;
 }

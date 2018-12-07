@@ -75,12 +75,12 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
         global $ctype, $WT_TREE;
 
         switch (Filter::get('action')) {
-        case 'deletenews':
-            $news_id = Filter::get('news_id');
-            if ($news_id) {
-                Database::prepare("DELETE FROM `##news` WHERE news_id = ?")->execute(array($news_id));
-            }
-            break;
+            case 'deletenews':
+                $news_id = Filter::get('news_id');
+                if ($news_id) {
+                    Database::prepare("DELETE FROM `##news` WHERE news_id = ?")->execute(array($news_id));
+                }
+                break;
         }
 
         $more_news = Filter::getInteger('more_news');

@@ -117,10 +117,10 @@ class Filter {
      */
     public static function formatText($text, Tree $WT_TREE) {
         switch ($WT_TREE->getPreference('FORMAT_TEXT')) {
-        case 'markdown':
-            return '<div class="markdown" dir="auto">' . self::markdown($text) . '</div>';
-        default:
-            return '<div style="white-space: pre-wrap;" dir="auto">' . self::expandUrls($text) . '</div>';
+            case 'markdown':
+                return '<div class="markdown" dir="auto">' . self::markdown($text) . '</div>';
+            default:
+                return '<div style="white-space: pre-wrap;" dir="auto">' . self::expandUrls($text) . '</div>';
         }
     }
 
@@ -433,7 +433,7 @@ class Filter {
         // filter_input(INPUT_ENV). Since we cannot rely on filter_input(),
         // we must use the superglobal directly.
         if (array_key_exists($variable, $_SERVER) && ($regexp === null || preg_match('/^(' . $regexp . ')$/',
-$_SERVER[$variable]))) {
+        $_SERVER[$variable]))) {
             return $_SERVER[$variable];
         } else {
             return $default;

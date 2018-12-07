@@ -265,12 +265,12 @@ abstract class AbstractTheme {
         $method = $user->getPreference('contactmethod');
 
         switch ($method) {
-        case 'none':
-            return '';
-        case 'mailto':
-            return '<a href="mailto:' . Filter::escapeHtml($user->getEmail()) . '">' . $user->getRealNameHtml() . '</a>';
-        default:
-            return "<a href='#' onclick='message(\"" . Filter::escapeHtml($user->getUserName()) . "\", \"" . $method . "\", \"" . WT_BASE_URL . Filter::escapeHtml(Functions::getQueryUrl()) . "\", \"\");return false;'>" . $user->getRealNameHtml() . '</a>';
+            case 'none':
+                return '';
+            case 'mailto':
+                return '<a href="mailto:' . Filter::escapeHtml($user->getEmail()) . '">' . $user->getRealNameHtml() . '</a>';
+            default:
+                return "<a href='#' onclick='message(\"" . Filter::escapeHtml($user->getUserName()) . "\", \"" . $method . "\", \"" . WT_BASE_URL . Filter::escapeHtml(Functions::getQueryUrl()) . "\", \"\");return false;'>" . $user->getRealNameHtml() . '</a>';
         }
     }
 
@@ -1346,20 +1346,20 @@ abstract class AbstractTheme {
         $records  = array();
         foreach ($favorites as $favorite) {
             switch ($favorite['type']) {
-            case 'URL':
-                $submenus[] = new Menu($favorite['title'], $favorite['url']);
-                break;
-            case 'INDI':
-            case 'FAM':
-            case 'SOUR':
-            case 'OBJE':
-            case 'NOTE':
-                $record = GedcomRecord::getInstance($favorite['gid'], $this->tree);
-                if ($record && $record->canShowName()) {
-                    $submenus[] = new Menu($record->getFullName(), $record->getHtmlUrl());
-                    $records[]  = $record;
-                }
-                break;
+                case 'URL':
+                    $submenus[] = new Menu($favorite['title'], $favorite['url']);
+                    break;
+                case 'INDI':
+                case 'FAM':
+                case 'SOUR':
+                case 'OBJE':
+                case 'NOTE':
+                    $record = GedcomRecord::getInstance($favorite['gid'], $this->tree);
+                    if ($record && $record->canShowName()) {
+                        $submenus[] = new Menu($record->getFullName(), $record->getHtmlUrl());
+                        $records[]  = $record;
+                    }
+                    break;
             }
         }
 

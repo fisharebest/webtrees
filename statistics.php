@@ -768,6 +768,6 @@ if (!$ajax) {
                 </form>
             </div>
         </fieldset>
-    <?php
+        <?php
     }
 }

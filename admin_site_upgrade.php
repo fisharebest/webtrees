@@ -117,18 +117,18 @@ $custom_modules = false;
 foreach (Module::getInstalledModules('disabled') as $module) {
     if (!in_array($module->getName(), Module::getCoreModuleNames())) {
         switch ($modules_action) {
-        case 'disable':
-            Database::prepare(
+            case 'disable':
+                Database::prepare(
                 "UPDATE `##module` SET status = 'disabled' WHERE module_name = ?"
-            )->execute(array($module->getName()));
-            break;
-        case 'ignore':
-            echo '<br>', I18N::translate('Custom module'), ' — ', WT_MODULES_DIR, $module->getName(), ' — ', $module->getTitle(), $icon_success;
-            break;
-        default:
-            echo '<br>', I18N::translate('Custom module'), ' — ', WT_MODULES_DIR, $module->getName(), ' — ', $module->getTitle(), $icon_failure;
-            $custom_modules = true;
-            break;
+                )->execute(array($module->getName()));
+                break;
+            case 'ignore':
+                echo '<br>', I18N::translate('Custom module'), ' — ', WT_MODULES_DIR, $module->getName(), ' — ', $module->getTitle(), $icon_success;
+                break;
+            default:
+                echo '<br>', I18N::translate('Custom module'), ' — ', WT_MODULES_DIR, $module->getName(), ' — ', $module->getTitle(), $icon_failure;
+                $custom_modules = true;
+                break;
         }
     }
 }
@@ -157,42 +157,42 @@ echo '<li>', /* I18N: The system is about to… */ I18N::translate('Check for cu
 $custom_themes = false;
 foreach (Theme::themeNames() as $theme_id => $theme_name) {
     switch ($theme_id) {
-    case 'clouds':
-    case 'colors':
-    case 'fab':
-    case 'minimal':
-    case 'webtrees':
-    case 'xenea':
-        break;
-    default:
-        $theme_used = Database::prepare(
+        case 'clouds':
+        case 'colors':
+        case 'fab':
+        case 'minimal':
+        case 'webtrees':
+        case 'xenea':
+            break;
+        default:
+            $theme_used = Database::prepare(
             "SELECT EXISTS (SELECT 1 FROM `##site_setting`   WHERE setting_name='THEME_DIR' AND setting_value=?)" .
             " OR    EXISTS (SELECT 1 FROM `##gedcom_setting` WHERE setting_name='THEME_DIR' AND setting_value=?)" .
             " OR    EXISTS (SELECT 1 FROM `##user_setting`   WHERE setting_name='theme'     AND setting_value=?)"
-        )->execute(array($theme_id, $theme_id, $theme_id))->fetchOne();
-        if ($theme_used) {
-            switch ($themes_action) {
-            case 'disable':
-                Database::prepare(
-                    "DELETE FROM `##site_setting`   WHERE setting_name = 'THEME_DIR' AND setting_value = ?"
-                )->execute(array($theme_id));
-                Database::prepare(
-                    "DELETE FROM `##gedcom_setting` WHERE setting_name = 'THEME_DIR' AND setting_value = ?"
-                )->execute(array($theme_id));
-                Database::prepare(
-                    "DELETE FROM `##user_setting`   WHERE setting_name = 'theme'     AND setting_value = ?"
-                )->execute(array($theme_id));
-                break;
-            case 'ignore':
-                echo '<br>', I18N::translate('Custom theme'), ' — ', $theme_id, ' — ', $theme_name, $icon_success;
-                break;
-            default:
-                echo '<br>', I18N::translate('Custom theme'), ' — ', $theme_id, ' — ', $theme_name, $icon_failure;
-                $custom_themes = true;
-                break;
+            )->execute(array($theme_id, $theme_id, $theme_id))->fetchOne();
+            if ($theme_used) {
+                switch ($themes_action) {
+                    case 'disable':
+                        Database::prepare(
+                            "DELETE FROM `##site_setting`   WHERE setting_name = 'THEME_DIR' AND setting_value = ?"
+                            )->execute(array($theme_id));
+                            Database::prepare(
+                            "DELETE FROM `##gedcom_setting` WHERE setting_name = 'THEME_DIR' AND setting_value = ?"
+                            )->execute(array($theme_id));
+                            Database::prepare(
+                            "DELETE FROM `##user_setting`   WHERE setting_name = 'theme'     AND setting_value = ?"
+                            )->execute(array($theme_id));
+                        break;
+                    case 'ignore':
+                        echo '<br>', I18N::translate('Custom theme'), ' — ', $theme_id, ' — ', $theme_name, $icon_success;
+                        break;
+                    default:
+                        echo '<br>', I18N::translate('Custom theme'), ' — ', $theme_id, ' — ', $theme_name, $icon_failure;
+                        $custom_themes = true;
+                    break;
+                }
             }
-        }
-        break;
+            break;
     }
 }
 

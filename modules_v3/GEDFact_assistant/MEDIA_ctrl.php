@@ -150,7 +150,7 @@ function print_navigator_family(Family $family, Individual $individual) {
                 <?php endif; ?>
             </td>
         <tr>
-    <?php
+        <?php
     }
 
     foreach ($family->getChildren() as $child) {
@@ -171,6 +171,6 @@ function print_navigator_family(Family $family, Individual $individual) {
                 <?php endif; ?>
             </td>
         </tr>
-    <?php
+        <?php
     }
 }

@@ -121,75 +121,75 @@ for ($end_time = microtime(true) + 1.0; microtime(true) < $end_time;) {
         // MySQL supports a wide range of collation conversions. These are ones that
         // have been encountered "in the wild".
         switch ($charset) {
-        case 'ASCII':
-            Database::prepare(
+            case 'ASCII':
+                Database::prepare(
                 "UPDATE `##gedcom_chunk`" .
                 " SET chunk_data=CONVERT(CONVERT(chunk_data USING ascii) USING utf8)" .
                 " WHERE gedcom_id=?"
-            )->execute(array($gedcom_id));
-            break;
-        case 'IBMPC':   // IBMPC, IBM WINDOWS and MS-DOS could be anything. Mostly it means CP850.
-        case 'IBM WINDOWS':
-        case 'MS-DOS':
-        case 'CP437':
-        case 'CP850':
-            // CP850 has extra letters with diacritics to replace box-drawing chars in CP437.
-            Database::prepare(
+                )->execute(array($gedcom_id));
+                break;
+            case 'IBMPC':   // IBMPC, IBM WINDOWS and MS-DOS could be anything. Mostly it means CP850.
+            case 'IBM WINDOWS':
+            case 'MS-DOS':
+            case 'CP437':
+            case 'CP850':
+                // CP850 has extra letters with diacritics to replace box-drawing chars in CP437.
+                Database::prepare(
                 "UPDATE `##gedcom_chunk`" .
                 " SET chunk_data=CONVERT(CONVERT(chunk_data USING cp850) USING utf8)" .
                 " WHERE gedcom_id=?"
-            )->execute(array($gedcom_id));
-            break;
-        case 'ANSI': // ANSI could be anything. Most applications seem to treat it as latin1.
-            $controller->addInlineJavascript(
+                )->execute(array($gedcom_id));
+                break;
+            case 'ANSI': // ANSI could be anything. Most applications seem to treat it as latin1.
+                $controller->addInlineJavascript(
                 'jQuery("#import' . $gedcom_id . '").parent().prepend("<div class=\"bg-info\">' . /* I18N: %1$s and %2$s are the names of character encodings, such as ISO-8859-1 or ASCII */
                     I18N::translate('This GEDCOM file is encoded using %1$s. Assume this to mean %2$s.', $charset, 'ISO-8859-1') . '</div>");'
-                );
-            // no break;
-        case 'WINDOWS':
-        case 'CP1252':
-        case 'ISO8859-1':
-        case 'ISO-8859-1':
-        case 'LATIN1':
-        case 'LATIN-1':
-            // Convert from ISO-8859-1 (western european) to UTF8.
-            Database::prepare(
-                "UPDATE `##gedcom_chunk`" .
-                " SET chunk_data=CONVERT(CONVERT(chunk_data USING latin1) USING utf8)" .
-                " WHERE gedcom_id=?"
-            )->execute(array($gedcom_id));
-            break;
-        case 'CP1250':
-        case 'ISO8859-2':
-        case 'ISO-8859-2':
-        case 'LATIN2':
-        case 'LATIN-2':
-            // Convert from ISO-8859-2 (eastern european) to UTF8.
-            Database::prepare(
+                    );
+                // no break;
+            case 'WINDOWS':
+            case 'CP1252':
+            case 'ISO8859-1':
+            case 'ISO-8859-1':
+            case 'LATIN1':
+            case 'LATIN-1':
+                // Convert from ISO-8859-1 (western european) to UTF8.
+                Database::prepare(
+                    "UPDATE `##gedcom_chunk`" .
+                    " SET chunk_data=CONVERT(CONVERT(chunk_data USING latin1) USING utf8)" .
+                    " WHERE gedcom_id=?"
+                )->execute(array($gedcom_id));
+                break;
+            case 'CP1250':
+            case 'ISO8859-2':
+            case 'ISO-8859-2':
+            case 'LATIN2':
+            case 'LATIN-2':
+                // Convert from ISO-8859-2 (eastern european) to UTF8.
+                Database::prepare(
                 "UPDATE `##gedcom_chunk`" .
                 " SET chunk_data=CONVERT(CONVERT(chunk_data USING latin2) USING utf8)" .
                 " WHERE gedcom_id=?"
-            )->execute(array($gedcom_id));
-            break;
-        case 'MACINTOSH':
-            // Convert from MAC Roman to UTF8.
-            Database::prepare(
+                )->execute(array($gedcom_id));
+                break;
+            case 'MACINTOSH':
+                // Convert from MAC Roman to UTF8.
+                Database::prepare(
                 "UPDATE `##gedcom_chunk`" .
                 " SET chunk_data=CONVERT(CONVERT(chunk_data USING macroman) USING utf8)" .
                 " WHERE gedcom_id=?"
-            )->execute(array($gedcom_id));
-            break;
-        case 'UTF8':
-        case 'UTF-8':
-            // Already UTF-8 so nothing to do!
-            break;
-        case 'ANSEL':
-        default:
-            Database::rollBack();
-            echo '<span class="error">', I18N::translate('Error: converting GEDCOM files from %s encoding to UTF-8 encoding not currently supported.', $charset), '</span>';
-            $controller->addInlineJavascript('jQuery("#actions' . $gedcom_id . '").removeClass("hidden");');
+                )->execute(array($gedcom_id));
+                break;
+            case 'UTF8':
+            case 'UTF-8':
+                // Already UTF-8 so nothing to do!
+                break;
+            case 'ANSEL':
+            default:
+                Database::rollBack();
+                echo '<span class="error">', I18N::translate('Error: converting GEDCOM files from %s encoding to UTF-8 encoding not currently supported.', $charset), '</span>';
+                $controller->addInlineJavascript('jQuery("#actions' . $gedcom_id . '").removeClass("hidden");');
 
-            return;
+                return;
         }
         $first_time = false;
 

@@ -30,21 +30,21 @@ class GedcomCodeStat {
      */
     public static function statusCodes($tag) {
         switch ($tag) {
-        case 'BAPL':
-        case 'CONL':
-            // LDS_BAPTISM_DATE_STATUS
-            return array('CHILD', 'COMPLETED', 'EXCLUDED', 'INFANT', 'PRE-1970', 'STILLBORN', 'SUBMITTED', 'UNCLEARED');
-        case 'ENDL':
-            // LDS_ENDOWMENT_DATE_STATUS
-            return array('CHILD', 'COMPLETED', 'EXCLUDED', 'INFANT', 'PRE-1970', 'STILLBORN', 'SUBMITTED', 'UNCLEARED');
-        case 'SLGC':
-            // LDS_CHILD_SEALING_DATE_STATUS
-            return array('BIC', 'COMPLETED', 'EXCLUDED', 'PRE-1970', 'STILLBORN', 'SUBMITTED', 'UNCLEARED');
-        case 'SLGS':
-            // LDS_SPOUSE_SEALING_DATE_STATUS
-            return array('CANCELED', 'COMPLETED', 'DNS', 'DNS/CAN', 'EXCLUDED', 'PRE-1970', 'SUBMITTED', 'UNCLEARED');
-        default:
-            throw new \InvalidArgumentException('Internal error - bad argument to GedcomCodeStat::statusCodes("' . $tag . '")');
+            case 'BAPL':
+            case 'CONL':
+                // LDS_BAPTISM_DATE_STATUS
+                return array('CHILD', 'COMPLETED', 'EXCLUDED', 'INFANT', 'PRE-1970', 'STILLBORN', 'SUBMITTED', 'UNCLEARED');
+            case 'ENDL':
+                // LDS_ENDOWMENT_DATE_STATUS
+                return array('CHILD', 'COMPLETED', 'EXCLUDED', 'INFANT', 'PRE-1970', 'STILLBORN', 'SUBMITTED', 'UNCLEARED');
+            case 'SLGC':
+                // LDS_CHILD_SEALING_DATE_STATUS
+                return array('BIC', 'COMPLETED', 'EXCLUDED', 'PRE-1970', 'STILLBORN', 'SUBMITTED', 'UNCLEARED');
+            case 'SLGS':
+                // LDS_SPOUSE_SEALING_DATE_STATUS
+                return array('CANCELED', 'COMPLETED', 'DNS', 'DNS/CAN', 'EXCLUDED', 'PRE-1970', 'SUBMITTED', 'UNCLEARED');
+            default:
+                throw new \InvalidArgumentException('Internal error - bad argument to GedcomCodeStat::statusCodes("' . $tag . '")');
         }
     }
 
@@ -57,61 +57,61 @@ class GedcomCodeStat {
      */
     public static function statusName($status_code) {
         switch ($status_code) {
-        case 'BIC':
-            return
+            case 'BIC':
+                return
                 /* I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints) */
                 I18N::translate('Born in the covenant');
-        case 'CANCELED':
-            return
+            case 'CANCELED':
+                return
                 /* I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints) */
                 I18N::translate('Sealing canceled (divorce)');
-        case 'CHILD':
-            return
+            case 'CHILD':
+                return
                 /* I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints) */
                 I18N::translate('Died as a child: exempt');
-        case 'CLEARED':
-            // This status appears in PhpGedView, but not in the GEDCOM 5.5.1 specification.
-            return
+            case 'CLEARED':
+                // This status appears in PhpGedView, but not in the GEDCOM 5.5.1 specification.
+                return
                 /* I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints) */
                 I18N::translate('Cleared but not yet completed');
-        case 'COMPLETED':
-            return
+            case 'COMPLETED':
+                return
                 /* I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints) */
                 I18N::translate('Completed; date unknown');
-        case 'DNS':
-            return
+            case 'DNS':
+                return
                 /* I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints) */
                 I18N::translate('Do not seal: unauthorized');
-        case 'DNS/CAN':
-            return
+            case 'DNS/CAN':
+                return
                 /* I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints) */
                 I18N::translate('Do not seal, previous sealing canceled');
-        case 'EXCLUDED':
-            return
+            case 'EXCLUDED':
+                return
                 /* I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints) */
                 I18N::translate('Excluded from this submission');
-        case 'INFANT':
-            return
+            case 'INFANT':
+                return
                 /* I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints) */
                 I18N::translate('Died as an infant: exempt');
-        case 'PRE-1970':
-            return
+            case 'PRE-1970':
+                return
                 /* I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints) */
                 I18N::translate('Completed before 1970; date not available');
-        case 'STILLBORN':
-            return
+            case 'STILLBORN':
+                return
                 /* I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints) */
                 I18N::translate('Stillborn: exempt');
-        case 'SUBMITTED':
-            return
+            case 'SUBMITTED':
+                return
                 /* I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints) */
                 I18N::translate('Submitted but not yet cleared');
-        case 'UNCLEARED':
-            return
+            case 'UNCLEARED':
+                return
                 /* I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints) */
                 I18N::translate('Uncleared: insufficient data');
-        default:
-            return $status_code;
+            default:
+                return $status_code;
         }
     }
 

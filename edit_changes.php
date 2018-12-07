@@ -49,24 +49,24 @@ $ged       = Filter::getInteger('ged');
 echo '<div id="pending"><h2>', I18N::translate('Pending changes'), '</h2>';
 
 switch ($action) {
-case 'undo':
-    $gedcom_id = Database::prepare("SELECT gedcom_id FROM `##change` WHERE change_id=?")->execute(array($change_id))->fetchOne();
-    $xref      = Database::prepare("SELECT xref      FROM `##change` WHERE change_id=?")->execute(array($change_id))->fetchOne();
-    // Undo a change, and subsequent changes to the same record
-    Database::prepare(
+    case 'undo':
+        $gedcom_id = Database::prepare("SELECT gedcom_id FROM `##change` WHERE change_id=?")->execute(array($change_id))->fetchOne();
+        $xref      = Database::prepare("SELECT xref      FROM `##change` WHERE change_id=?")->execute(array($change_id))->fetchOne();
+        // Undo a change, and subsequent changes to the same record
+        Database::prepare(
         "UPDATE `##change`" .
         " SET   status     = 'rejected'" .
         " WHERE status     = 'pending'" .
         " AND   gedcom_id  = ?" .
         " AND   xref       = ?" .
         " AND   change_id >= ?"
-    )->execute(array($gedcom_id, $xref, $change_id));
-    break;
-case 'accept':
-    $gedcom_id = Database::prepare("SELECT gedcom_id FROM `##change` WHERE change_id=?")->execute(array($change_id))->fetchOne();
-    $xref      = Database::prepare("SELECT xref      FROM `##change` WHERE change_id=?")->execute(array($change_id))->fetchOne();
-    // Accept a change, and all previous changes to the same record
-    $changes = Database::prepare(
+        )->execute(array($gedcom_id, $xref, $change_id));
+        break;
+    case 'accept':
+        $gedcom_id = Database::prepare("SELECT gedcom_id FROM `##change` WHERE change_id=?")->execute(array($change_id))->fetchOne();
+        $xref      = Database::prepare("SELECT xref      FROM `##change` WHERE change_id=?")->execute(array($change_id))->fetchOne();
+        // Accept a change, and all previous changes to the same record
+        $changes = Database::prepare(
         "SELECT change_id, gedcom_id, gedcom_name, xref, old_gedcom, new_gedcom" .
         " FROM  `##change` c" .
         " JOIN  `##gedcom` g USING (gedcom_id)" .
@@ -75,46 +75,46 @@ case 'accept':
         " AND   xref       = ?" .
         " AND   change_id <= ?" .
         " ORDER BY change_id"
-    )->execute(array($gedcom_id, $xref, $change_id))->fetchAll();
-    foreach ($changes as $change) {
-        if (empty($change->new_gedcom)) {
-            // delete
-            FunctionsImport::updateRecord($change->old_gedcom, $gedcom_id, true);
-        } else {
-            // add/update
-            FunctionsImport::updateRecord($change->new_gedcom, $gedcom_id, false);
+        )->execute(array($gedcom_id, $xref, $change_id))->fetchAll();
+        foreach ($changes as $change) {
+            if (empty($change->new_gedcom)) {
+                // delete
+                FunctionsImport::updateRecord($change->old_gedcom, $gedcom_id, true);
+            } else {
+                // add/update
+                FunctionsImport::updateRecord($change->new_gedcom, $gedcom_id, false);
+            }
+            Database::prepare("UPDATE `##change` SET status='accepted' WHERE change_id=?")->execute(array($change->change_id));
+            Log::addEditLog("Accepted change {$change->change_id} for {$change->xref} / {$change->gedcom_name} into database");
         }
-        Database::prepare("UPDATE `##change` SET status='accepted' WHERE change_id=?")->execute(array($change->change_id));
-        Log::addEditLog("Accepted change {$change->change_id} for {$change->xref} / {$change->gedcom_name} into database");
-    }
-    break;
-case 'undoall':
-    Database::prepare(
+        break;
+    case 'undoall':
+        Database::prepare(
         "UPDATE `##change`" .
         " SET status='rejected'" .
         " WHERE status='pending' AND gedcom_id=?"
-    )->execute(array($WT_TREE->getTreeId()));
-    break;
-case 'acceptall':
-    $changes = Database::prepare(
+        )->execute(array($WT_TREE->getTreeId()));
+        break;
+    case 'acceptall':
+        $changes = Database::prepare(
         "SELECT change_id, gedcom_id, gedcom_name, xref, old_gedcom, new_gedcom" .
         " FROM `##change` c" .
         " JOIN `##gedcom` g USING (gedcom_id)" .
         " WHERE c.status='pending' AND gedcom_id=?" .
         " ORDER BY change_id"
-    )->execute(array($WT_TREE->getTreeId()))->fetchAll();
-    foreach ($changes as $change) {
-        if (empty($change->new_gedcom)) {
-            // delete
-            FunctionsImport::updateRecord($change->old_gedcom, $change->gedcom_id, true);
-        } else {
-            // add/update
-            FunctionsImport::updateRecord($change->new_gedcom, $change->gedcom_id, false);
+        )->execute(array($WT_TREE->getTreeId()))->fetchAll();
+        foreach ($changes as $change) {
+            if (empty($change->new_gedcom)) {
+                // delete
+                FunctionsImport::updateRecord($change->old_gedcom, $change->gedcom_id, true);
+            } else {
+                // add/update
+                FunctionsImport::updateRecord($change->new_gedcom, $change->gedcom_id, false);
+            }
+            Database::prepare("UPDATE `##change` SET status='accepted' WHERE change_id=?")->execute(array($change->change_id));
+            Log::addEditLog("Accepted change {$change->change_id} for {$change->xref} / {$change->gedcom_name} into database");
         }
-        Database::prepare("UPDATE `##change` SET status='accepted' WHERE change_id=?")->execute(array($change->change_id));
-        Log::addEditLog("Accepted change {$change->change_id} for {$change->xref} / {$change->gedcom_name} into database");
-    }
-    break;
+        break;
 }
 
 $changed_gedcoms = Database::prepare(
@@ -146,27 +146,27 @@ if ($changed_gedcoms) {
 
 
         switch ($match[1]) {
-        case 'INDI':
-            $record = new Individual($change->xref, $change->old_gedcom, $change->new_gedcom, $tree);
-            break;
-        case 'FAM':
-            $record = new Family($change->xref, $change->old_gedcom, $change->new_gedcom, $tree);
-            break;
-        case 'SOUR':
-            $record = new Source($change->xref, $change->old_gedcom, $change->new_gedcom, $tree);
-            break;
-        case 'REPO':
-            $record = new Repository($change->xref, $change->old_gedcom, $change->new_gedcom, $tree);
-            break;
-        case 'OBJE':
-            $record = new Media($change->xref, $change->old_gedcom, $change->new_gedcom, $tree);
-            break;
-        case 'NOTE':
-            $record = new Note($change->xref, $change->old_gedcom, $change->new_gedcom, $tree);
-            break;
-        default:
-            $record = new GedcomRecord($change->xref, $change->old_gedcom, $change->new_gedcom, $tree);
-            break;
+            case 'INDI':
+                $record = new Individual($change->xref, $change->old_gedcom, $change->new_gedcom, $tree);
+                break;
+            case 'FAM':
+                $record = new Family($change->xref, $change->old_gedcom, $change->new_gedcom, $tree);
+                break;
+            case 'SOUR':
+                $record = new Source($change->xref, $change->old_gedcom, $change->new_gedcom, $tree);
+                break;
+            case 'REPO':
+                $record = new Repository($change->xref, $change->old_gedcom, $change->new_gedcom, $tree);
+                break;
+            case 'OBJE':
+                $record = new Media($change->xref, $change->old_gedcom, $change->new_gedcom, $tree);
+                break;
+            case 'NOTE':
+                $record = new Note($change->xref, $change->old_gedcom, $change->new_gedcom, $tree);
+                break;
+            default:
+                $record = new GedcomRecord($change->xref, $change->old_gedcom, $change->new_gedcom, $tree);
+                break;
         }
         if ($change->xref != $prev_xref || $change->gedcom_id != $prev_gedcom_id) {
             if ($prev_xref) {

@@ -62,13 +62,13 @@ class SpanishSurnameTradition extends DefaultSurnameTradition implements Surname
     public function newParentNames($child_name, $parent_sex) {
         if (preg_match(self::REGEX_SURNS, $child_name, $match)) {
             switch ($parent_sex) {
-            case 'M':
-                return array(
+                case 'M':
+                    return array(
                     'NAME' => '/' . $match['SURN1'] . '/ //',
                     'SURN' => $match['SURN1'],
                 );
-            case 'F':
-                return array(
+                case 'F':
+                    return array(
                     'NAME' => '/' . $match['SURN2'] . '/ //',
                     'SURN' => $match['SURN2'],
                 );

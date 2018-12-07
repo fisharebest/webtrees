@@ -227,10 +227,10 @@ function add_name(xref) {
 // Accept the changes to a record - and reload the page
 function accept_changes(xref) {
     jQuery.post('action.php', {
-            action: 'accept-changes',
-            xref:   xref,
-            ged:    WT_GEDCOM,
-            csrf:   WT_CSRF_TOKEN
+        action: 'accept-changes',
+        xref:   xref,
+        ged:    WT_GEDCOM,
+        csrf:   WT_CSRF_TOKEN
         },
         function () {
             location.reload();
@@ -241,10 +241,10 @@ function accept_changes(xref) {
 // Reject the changes to a record - and reload the page
 function reject_changes(xref) {
     jQuery.post('action.php', {
-            action: 'reject-changes',
-            xref:   xref,
-            ged:    WT_GEDCOM,
-            csrf:   WT_CSRF_TOKEN
+        action: 'reject-changes',
+        xref:   xref,
+        ged:    WT_GEDCOM,
+        csrf:   WT_CSRF_TOKEN
         },
         function () {
             location.reload();
@@ -256,10 +256,10 @@ function reject_changes(xref) {
 function delete_record(message, xref, gedcom) {
     if (confirm(message)) {
         jQuery.post('action.php', {
-                action: 'delete-record',
-                xref:   xref,
-                ged:    typeof gedcom === 'undefined' ? WT_GEDCOM : gedcom,
-                csrf:   WT_CSRF_TOKEN
+            action: 'delete-record',
+            xref:   xref,
+            ged:    typeof gedcom === 'undefined' ? WT_GEDCOM : gedcom,
+            csrf:   WT_CSRF_TOKEN
             },
             function () {
                 location.reload();
@@ -272,11 +272,11 @@ function delete_record(message, xref, gedcom) {
 function delete_fact(message, xref, fact_id) {
     if (confirm(message)) {
         jQuery.post('action.php', {
-                action:  'delete-fact',
-                xref:    xref,
-                fact_id: fact_id,
-                ged:     WT_GEDCOM,
-                csrf:    WT_CSRF_TOKEN
+            action:  'delete-fact',
+            xref:    xref,
+            fact_id: fact_id,
+            ged:     WT_GEDCOM,
+            csrf:    WT_CSRF_TOKEN
             },
             function () {
                 location.reload();
@@ -289,11 +289,11 @@ function delete_fact(message, xref, fact_id) {
 function unlink_media(message, source, target) {
     if (confirm(message)) {
         jQuery.post('action.php', {
-                action: 'unlink-media',
-                source: source,
-                target: target,
-                ged:    WT_GEDCOM,
-                csrf:   WT_CSRF_TOKEN
+            action: 'unlink-media',
+            source: source,
+            target: target,
+            ged:    WT_GEDCOM,
+            csrf:   WT_CSRF_TOKEN
             },
             function () {
                 location.reload();
@@ -305,11 +305,11 @@ function unlink_media(message, source, target) {
 // Copy a fact to the clipboard
 function copy_fact(xref, fact_id) {
     jQuery.post('action.php', {
-            action:  'copy-fact',
-            xref:    xref,
-            fact_id: fact_id,
-            ged:     WT_GEDCOM,
-            csrf:    WT_CSRF_TOKEN
+        action:  'copy-fact',
+        xref:    xref,
+        fact_id: fact_id,
+        ged:     WT_GEDCOM,
+        csrf:    WT_CSRF_TOKEN
         },
         function () {
             location.reload();
@@ -320,11 +320,11 @@ function copy_fact(xref, fact_id) {
 // Paste a fact from the clipboard
 function paste_fact(xref, element) {
     jQuery.post('action.php', {
-            action:  'paste-fact',
-            xref:    xref,
-            fact_id: jQuery(element).val(), // element is the <select> containing the option
-            ged:     WT_GEDCOM,
-            csrf:    WT_CSRF_TOKEN
+        action:  'paste-fact',
+        xref:    xref,
+        fact_id: jQuery(element).val(), // element is the <select> containing the option
+        ged:     WT_GEDCOM,
+        csrf:    WT_CSRF_TOKEN
         },
         function () {
             location.reload();
@@ -336,9 +336,9 @@ function paste_fact(xref, element) {
 function delete_user(message, user_id) {
     if (confirm(message)) {
         jQuery.post('action.php', {
-                action:  'delete-user',
-                user_id: user_id,
-                csrf:    WT_CSRF_TOKEN
+            action:  'delete-user',
+            user_id: user_id,
+            csrf:    WT_CSRF_TOKEN
             },
             function () {
                 location.reload();
@@ -350,9 +350,9 @@ function delete_user(message, user_id) {
 // Masquerade as another user - and reload the page.
 function masquerade(user_id) {
     jQuery.post('action.php', {
-            action:  'masquerade',
-            user_id: user_id,
-            csrf:    WT_CSRF_TOKEN
+        action:  'masquerade',
+        user_id: user_id,
+        csrf:    WT_CSRF_TOKEN
         },
         function () {
             location.reload();

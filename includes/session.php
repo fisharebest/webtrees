@@ -187,29 +187,29 @@ set_exception_handler(function ($ex) {
         $frame += array('args' => array(), 'file' => 'unknown', 'line' => 'unknown');
         array_walk($frame['args'], function (&$arg) {
             switch (gettype($arg)) {
-            case 'boolean':
-            case 'integer':
-            case 'double':
-            case 'null':
-                $arg = var_export($arg, true);
-                break;
-            case 'string':
-                if (mb_strlen($arg) > 30) {
-                    $arg = substr($arg, 0, 30) . '…';
-                }
-                $arg = var_export($arg, true);
-                break;
-            case 'object':
-                $reflection = new \ReflectionClass($arg);
-                if (is_object($arg) && method_exists($arg, '__toString')) {
-                    $arg = '[' . $reflection->getShortName() . ' ' . (string) $arg . ']';
-                } else {
-                    $arg = '[' . $reflection->getShortName() . ']';
-                }
-                break;
-            default:
-                $arg = '[' . gettype($arg) . ']';
-                break;
+                case 'boolean':
+                case 'integer':
+                case 'double':
+                case 'null':
+                    $arg = var_export($arg, true);
+                    break;
+                case 'string':
+                    if (mb_strlen($arg) > 30) {
+                        $arg = substr($arg, 0, 30) . '…';
+                    }
+                    $arg = var_export($arg, true);
+                    break;
+                case 'object':
+                    $reflection = new \ReflectionClass($arg);
+                    if (is_object($arg) && method_exists($arg, '__toString')) {
+                        $arg = '[' . $reflection->getShortName() . ' ' . (string) $arg . ']';
+                    } else {
+                        $arg = '[' . $reflection->getShortName() . ']';
+                    }
+                    break;
+                default:
+                    $arg = '[' . gettype($arg) . ']';
+                    break;
             }
         });
         $frame['file'] = str_replace(dirname(__DIR__), '', $frame['file']);
@@ -306,25 +306,25 @@ $rule = Database::prepare(
 )->execute(array(WT_CLIENT_IP, Filter::server('HTTP_USER_AGENT', null, '')))->fetchOne();
 
 switch ($rule) {
-case 'allow':
-    $SEARCH_SPIDER = false;
-    break;
-case 'deny':
-    http_response_code(403);
-    exit;
-case 'robot':
-case 'unknown':
-    // Search engines don’t send cookies, and so create a new session with every visit.
-    // Make sure they always use the same one
-    Session::setId('search-engine-' . str_replace('.', '-', WT_CLIENT_IP));
-    $SEARCH_SPIDER = true;
-    break;
-case '':
-    Database::prepare(
+    case 'allow':
+        $SEARCH_SPIDER = false;
+        break;
+    case 'deny':
+        http_response_code(403);
+        exit;
+    case 'robot':
+    case 'unknown':
+        // Search engines don’t send cookies, and so create a new session with every visit.
+        // Make sure they always use the same one
+        Session::setId('search-engine-' . str_replace('.', '-', WT_CLIENT_IP));
+        $SEARCH_SPIDER = true;
+        break;
+    case '':
+        Database::prepare(
         "INSERT INTO `##site_access_rule` (ip_address_start, ip_address_end, user_agent_pattern, comment) VALUES (IFNULL(INET_ATON(?), 0), IFNULL(INET_ATON(?), 4294967295), ?, '')"
-    )->execute(array(WT_CLIENT_IP, WT_CLIENT_IP, Filter::server('HTTP_USER_AGENT', null, '')));
-    $SEARCH_SPIDER = true;
-    break;
+        )->execute(array(WT_CLIENT_IP, WT_CLIENT_IP, Filter::server('HTTP_USER_AGENT', null, '')));
+        $SEARCH_SPIDER = true;
+        break;
 }
 
 // Store our session data in the database.

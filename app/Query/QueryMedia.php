@@ -104,17 +104,17 @@ class QueryMedia {
 
         // Include / exclude subfolders (but always include external)
         switch ($subfolders) {
-        case 'include':
-            $sql .= " AND (m_filename LIKE CONCAT(?, '%') $sql_external)";
-            $args[] = Filter::escapeLike($folder);
-            break;
-        case 'exclude':
-            $sql .= " AND (m_filename LIKE CONCAT(?, '%')  AND m_filename NOT LIKE CONCAT(?, '%/%') $sql_external)";
-            $args[] = Filter::escapeLike($folder);
-            $args[] = Filter::escapeLike($folder);
-            break;
-        default:
-            throw new \Exception('Bad argument (subfolders=' . $subfolders . ') in QueryMedia::mediaList()');
+            case 'include':
+                $sql .= " AND (m_filename LIKE CONCAT(?, '%') $sql_external)";
+                $args[] = Filter::escapeLike($folder);
+                break;
+            case 'exclude':
+                $sql .= " AND (m_filename LIKE CONCAT(?, '%')  AND m_filename NOT LIKE CONCAT(?, '%/%') $sql_external)";
+                $args[] = Filter::escapeLike($folder);
+                $args[] = Filter::escapeLike($folder);
+                break;
+            default:
+                throw new \Exception('Bad argument (subfolders=' . $subfolders . ') in QueryMedia::mediaList()');
         }
 
         // Apply search terms
@@ -130,14 +130,14 @@ class QueryMedia {
         }
 
         switch ($sort) {
-        case 'file':
-            $sql .= " ORDER BY m_filename";
-            break;
-        case 'title':
-            $sql .= " ORDER BY m_titl";
-            break;
-        default:
-            throw new \Exception('Bad argument (sort=' . $sort . ') in QueryMedia::mediaList()');
+            case 'file':
+                $sql .= " ORDER BY m_filename";
+                break;
+            case 'title':
+                $sql .= " ORDER BY m_titl";
+                break;
+            default:
+                throw new \Exception('Bad argument (sort=' . $sort . ') in QueryMedia::mediaList()');
         }
 
         $rows = Database::prepare($sql)->execute($args)->fetchAll();

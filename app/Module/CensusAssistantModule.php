@@ -52,17 +52,17 @@ class CensusAssistantModule extends AbstractModule {
      */
     public function modAction($mod_action) {
         switch ($mod_action) {
-        case 'census_find':
-            self::censusFind();
-            break;
-        case 'media_find':
-            self::mediaFind();
-            break;
-        case 'media_query_3a':
-            self::mediaQuery();
-            break;
-        default:
-            http_response_code(404);
+            case 'census_find':
+                self::censusFind();
+                break;
+            case 'media_find':
+                self::mediaFind();
+                break;
+            case 'media_query_3a':
+                self::mediaQuery();
+                break;
+            default:
+                http_response_code(404);
         }
     }
 

@@ -124,227 +124,227 @@ class FunctionsRtl {
             $closeParIndex = strpos(self::CLOSE_PARENTHESES, $currentLetter); // Which closing parenthesis is this?
 
             switch ($currentLetter) {
-            case '<':
-                // Assume this '<' starts an HTML element
-                $endPos = strpos($workingText, '>'); // look for the terminating '>'
-                if ($endPos === false) {
-                    $endPos = 0;
-                }
-                $currentLen += $endPos;
-                $element = substr($workingText, 0, $currentLen);
-                $temp    = strtolower(substr($element, 0, 3));
-                if (strlen($element) < 7 && $temp == '<br') {
-                    if ($numberState) {
-                        $numberState = false;
-                        if (self::$currentState == 'RTL') {
-                            self::$waitingText .= WT_UTF8_PDF;
-                        }
-                    }
-                    self::breakCurrentSpan($result);
-                } elseif (self::$waitingText == '') {
-                    $result .= $element;
-                } else {
-                    self::$waitingText .= $element;
-                }
-                $workingText = substr($workingText, $currentLen);
-                break;
-            case '&':
-                // Assume this '&' starts an HTML entity
-                $endPos = strpos($workingText, ';'); // look for the terminating ';'
-                if ($endPos === false) {
-                    $endPos = 0;
-                }
-                $currentLen += $endPos;
-                $entity = substr($workingText, 0, $currentLen);
-                if (strtolower($entity) == '&nbsp;') {
-                    $entity .= '&nbsp;'; // Ensure consistent case for this entity
-                }
-                if (self::$waitingText == '') {
-                    $result .= $entity;
-                } else {
-                    self::$waitingText .= $entity;
-                }
-                $workingText = substr($workingText, $currentLen);
-                break;
-            case '{':
-                if (substr($workingText, 1, 1) == '{') {
-                    // Assume this '{{' starts a TCPDF directive
-                    $endPos = strpos($workingText, '}}'); // look for the terminating '}}'
+                case '<':
+                    // Assume this '<' starts an HTML element
+                    $endPos = strpos($workingText, '>'); // look for the terminating '>'
                     if ($endPos === false) {
                         $endPos = 0;
                     }
-                    $currentLen        = $endPos + 2;
-                    $directive         = substr($workingText, 0, $currentLen);
-                    $workingText       = substr($workingText, $currentLen);
-                    $result            = $result . self::$waitingText . $directive;
-                    self::$waitingText = '';
-                    break;
-                }
-            default:
-                // Look for strings of numbers with optional leading or trailing + or -
-                // and with optional embedded numeric punctuation
-                if ($numberState) {
-                    // If we're inside a numeric string, look for reasons to end it
-                    $offset    = 0; // Be sure to look at the current character first
-                    $charArray = self::getChar($workingText . "\n", $offset);
-                    if (strpos(self::NUMBERS, $charArray['letter']) === false) {
-                        // This is not a digit. Is it numeric punctuation?
-                        if (substr($workingText . "\n", $offset, 6) == '&nbsp;') {
-                            $offset += 6; // This could be numeric punctuation
-                        } elseif (strpos(self::NUMBER_PUNCTUATION, $charArray['letter']) !== false) {
-                            $offset += $charArray['length']; // This could be numeric punctuation
-                        }
-                        // If the next character is a digit, the current character is numeric punctuation
-                        $charArray = self::getChar($workingText . "\n", $offset);
-                        if (strpos(self::NUMBERS, $charArray['letter']) === false) {
-                            // This is not a digit. End the run of digits and punctuation.
+                    $currentLen += $endPos;
+                    $element = substr($workingText, 0, $currentLen);
+                    $temp    = strtolower(substr($element, 0, 3));
+                    if (strlen($element) < 7 && $temp == '<br') {
+                        if ($numberState) {
                             $numberState = false;
                             if (self::$currentState == 'RTL') {
-                                if (strpos(self::NUMBER_PREFIX, $currentLetter) === false) {
-                                    $currentLetter = WT_UTF8_PDF . $currentLetter;
-                                } else {
-                                    $currentLetter = $currentLetter . WT_UTF8_PDF; // Include a trailing + or - in the run
+                                self::$waitingText .= WT_UTF8_PDF;
+                            }
+                        }
+                        self::breakCurrentSpan($result);
+                    } elseif (self::$waitingText == '') {
+                        $result .= $element;
+                    } else {
+                        self::$waitingText .= $element;
+                    }
+                    $workingText = substr($workingText, $currentLen);
+                    break;
+                case '&':
+                    // Assume this '&' starts an HTML entity
+                    $endPos = strpos($workingText, ';'); // look for the terminating ';'
+                    if ($endPos === false) {
+                        $endPos = 0;
+                    }
+                    $currentLen += $endPos;
+                    $entity = substr($workingText, 0, $currentLen);
+                    if (strtolower($entity) == '&nbsp;') {
+                        $entity .= '&nbsp;'; // Ensure consistent case for this entity
+                    }
+                    if (self::$waitingText == '') {
+                        $result .= $entity;
+                    } else {
+                        self::$waitingText .= $entity;
+                    }
+                    $workingText = substr($workingText, $currentLen);
+                    break;
+                case '{':
+                    if (substr($workingText, 1, 1) == '{') {
+                        // Assume this '{{' starts a TCPDF directive
+                        $endPos = strpos($workingText, '}}'); // look for the terminating '}}'
+                        if ($endPos === false) {
+                            $endPos = 0;
+                        }
+                        $currentLen        = $endPos + 2;
+                        $directive         = substr($workingText, 0, $currentLen);
+                        $workingText       = substr($workingText, $currentLen);
+                        $result            = $result . self::$waitingText . $directive;
+                        self::$waitingText = '';
+                        break;
+                    }
+                default:
+                    // Look for strings of numbers with optional leading or trailing + or -
+                    // and with optional embedded numeric punctuation
+                    if ($numberState) {
+                        // If we're inside a numeric string, look for reasons to end it
+                        $offset    = 0; // Be sure to look at the current character first
+                        $charArray = self::getChar($workingText . "\n", $offset);
+                        if (strpos(self::NUMBERS, $charArray['letter']) === false) {
+                            // This is not a digit. Is it numeric punctuation?
+                            if (substr($workingText . "\n", $offset, 6) == '&nbsp;') {
+                                $offset += 6; // This could be numeric punctuation
+                            } elseif (strpos(self::NUMBER_PUNCTUATION, $charArray['letter']) !== false) {
+                                $offset += $charArray['length']; // This could be numeric punctuation
+                            }
+                            // If the next character is a digit, the current character is numeric punctuation
+                            $charArray = self::getChar($workingText . "\n", $offset);
+                            if (strpos(self::NUMBERS, $charArray['letter']) === false) {
+                                // This is not a digit. End the run of digits and punctuation.
+                                $numberState = false;
+                                if (self::$currentState == 'RTL') {
+                                    if (strpos(self::NUMBER_PREFIX, $currentLetter) === false) {
+                                        $currentLetter = WT_UTF8_PDF . $currentLetter;
+                                    } else {
+                                        $currentLetter = $currentLetter . WT_UTF8_PDF; // Include a trailing + or - in the run
+                                    }
                                 }
                             }
                         }
-                    }
-                } else {
-                    // If we're outside a numeric string, look for reasons to start it
-                    if (strpos(self::NUMBER_PREFIX, $currentLetter) !== false) {
-                        // This might be a number lead-in
-                        $offset   = $currentLen;
-                        $nextChar = substr($workingText . "\n", $offset, 1);
-                        if (strpos(self::NUMBERS, $nextChar) !== false) {
-                            $numberState = true; // We found a digit: the lead-in is therefore numeric
+                    } else {
+                        // If we're outside a numeric string, look for reasons to start it
+                        if (strpos(self::NUMBER_PREFIX, $currentLetter) !== false) {
+                            // This might be a number lead-in
+                            $offset   = $currentLen;
+                            $nextChar = substr($workingText . "\n", $offset, 1);
+                            if (strpos(self::NUMBERS, $nextChar) !== false) {
+                                $numberState = true; // We found a digit: the lead-in is therefore numeric
+                                if (self::$currentState == 'RTL') {
+                                    $currentLetter = WT_UTF8_LRE . $currentLetter;
+                                }
+                            }
+                        } elseif (strpos(self::NUMBERS, $currentLetter) !== false) {
+                            $numberState = true; // The current letter is a digit
                             if (self::$currentState == 'RTL') {
                                 $currentLetter = WT_UTF8_LRE . $currentLetter;
                             }
                         }
-                    } elseif (strpos(self::NUMBERS, $currentLetter) !== false) {
-                        $numberState = true; // The current letter is a digit
-                        if (self::$currentState == 'RTL') {
-                            $currentLetter = WT_UTF8_LRE . $currentLetter;
-                        }
                     }
-                }
 
-                // Determine the directionality of the current UTF-8 character
-                $newState = self::$currentState;
-                while (true) {
-                    if (I18N::scriptDirection(I18N::textScript($currentLetter)) === 'rtl') {
-                        if (self::$currentState == '') {
-                            $newState = 'RTL';
-                            break;
-                        }
-
-                        if (self::$currentState == 'RTL') {
-                            break;
-                        }
-                        // Switch to RTL only if this isn't a solitary RTL letter
-                        $tempText = substr($workingText, $currentLen);
-                        while ($tempText != '') {
-                            $nextCharArray = self::getChar($tempText, 0);
-                            $nextLetter    = $nextCharArray['letter'];
-                            $nextLen       = $nextCharArray['length'];
-                            $tempText      = substr($tempText, $nextLen);
-
-                            if (I18N::scriptDirection(I18N::textScript($nextLetter)) === 'rtl') {
+                    // Determine the directionality of the current UTF-8 character
+                    $newState = self::$currentState;
+                    while (true) {
+                        if (I18N::scriptDirection(I18N::textScript($currentLetter)) === 'rtl') {
+                            if (self::$currentState == '') {
                                 $newState = 'RTL';
-                                break 2;
-                            }
-
-                            if (strpos(self::PUNCTUATION, $nextLetter) !== false || strpos(self::OPEN_PARENTHESES, $nextLetter) !== false) {
-                                $newState = 'RTL';
-                                break 2;
-                            }
-
-                            if ($nextLetter === ' ') {
                                 break;
                             }
-                            $nextLetter .= substr($tempText . "\n", 0, 5);
-                            if ($nextLetter === '&nbsp;') {
+
+                            if (self::$currentState == 'RTL') {
                                 break;
                             }
+                            // Switch to RTL only if this isn't a solitary RTL letter
+                            $tempText = substr($workingText, $currentLen);
+                            while ($tempText != '') {
+                                $nextCharArray = self::getChar($tempText, 0);
+                                $nextLetter    = $nextCharArray['letter'];
+                                $nextLen       = $nextCharArray['length'];
+                                $tempText      = substr($tempText, $nextLen);
+
+                                if (I18N::scriptDirection(I18N::textScript($nextLetter)) === 'rtl') {
+                                    $newState = 'RTL';
+                                    break 2;
+                                }
+
+                                if (strpos(self::PUNCTUATION, $nextLetter) !== false || strpos(self::OPEN_PARENTHESES, $nextLetter) !== false) {
+                                    $newState = 'RTL';
+                                    break 2;
+                                }
+
+                                if ($nextLetter === ' ') {
+                                    break;
+                                }
+                                $nextLetter .= substr($tempText . "\n", 0, 5);
+                                if ($nextLetter === '&nbsp;') {
+                                    break;
+                                }
+                            }
+                            // This is a solitary RTL letter : wrap it in UTF8 control codes to force LTR directionality
+                            $currentLetter = WT_UTF8_LRO . $currentLetter . WT_UTF8_PDF;
+                            $newState      = 'LTR';
+                            break;
                         }
-                        // This is a solitary RTL letter : wrap it in UTF8 control codes to force LTR directionality
-                        $currentLetter = WT_UTF8_LRO . $currentLetter . WT_UTF8_PDF;
-                        $newState      = 'LTR';
-                        break;
-                    }
-                    if (($currentLen != 1) || ($currentLetter >= 'A' && $currentLetter <= 'Z') || ($currentLetter >= 'a' && $currentLetter <= 'z')) {
-                        // Since it’s neither Hebrew nor Arabic, this UTF-8 character or ASCII letter must be LTR
-                        $newState = 'LTR';
-                        break;
-                    }
-                    if ($closeParIndex !== false) {
-                        // This closing parenthesis has to inherit the matching opening parenthesis' directionality
-                        if (!empty($openParDirection[$closeParIndex]) && $openParDirection[$closeParIndex] != '?') {
-                            $newState = $openParDirection[$closeParIndex];
+                        if (($currentLen != 1) || ($currentLetter >= 'A' && $currentLetter <= 'Z') || ($currentLetter >= 'a' && $currentLetter <= 'z')) {
+                            // Since it’s neither Hebrew nor Arabic, this UTF-8 character or ASCII letter must be LTR
+                            $newState = 'LTR';
+                            break;
                         }
-                        $openParDirection[$closeParIndex] = '';
-                        break;
-                    }
-                    if ($openParIndex !== false) {
-                        // Opening parentheses always inherit the following directionality
+                        if ($closeParIndex !== false) {
+                            // This closing parenthesis has to inherit the matching opening parenthesis' directionality
+                            if (!empty($openParDirection[$closeParIndex]) && $openParDirection[$closeParIndex] != '?') {
+                                $newState = $openParDirection[$closeParIndex];
+                            }
+                            $openParDirection[$closeParIndex] = '';
+                            break;
+                        }
+                        if ($openParIndex !== false) {
+                            // Opening parentheses always inherit the following directionality
+                            self::$waitingText .= $currentLetter;
+                            $workingText = substr($workingText, $currentLen);
+                            while (true) {
+                                if ($workingText === '') {
+                                    break;
+                                }
+                                if (substr($workingText, 0, 1) === ' ') {
+                                    // Spaces following this left parenthesis inherit the following directionality too
+                                    self::$waitingText .= ' ';
+                                    $workingText = substr($workingText, 1);
+                                    continue;
+                                }
+                                if (substr($workingText, 0, 6) === '&nbsp;') {
+                                    // Spaces following this left parenthesis inherit the following directionality too
+                                    self::$waitingText .= '&nbsp;';
+                                    $workingText = substr($workingText, 6);
+                                    continue;
+                                }
+                                break;
+                            }
+                            $openParDirection[$openParIndex] = '?';
+                            break 2; // double break because we're waiting for more information
+                        }
+
+                        // We have a digit or a "normal" special character.
+                        //
+                        // When this character is not at the start of the input string, it inherits the preceding directionality;
+                        // at the start of the input string, it assumes the following directionality.
+                        //
+                        // Exceptions to this rule will be handled later during final clean-up.
+                        //
                         self::$waitingText .= $currentLetter;
                         $workingText = substr($workingText, $currentLen);
-                        while (true) {
-                            if ($workingText === '') {
-                                break;
-                            }
-                            if (substr($workingText, 0, 1) === ' ') {
-                                // Spaces following this left parenthesis inherit the following directionality too
-                                self::$waitingText .= ' ';
-                                $workingText = substr($workingText, 1);
-                                continue;
-                            }
-                            if (substr($workingText, 0, 6) === '&nbsp;') {
-                                // Spaces following this left parenthesis inherit the following directionality too
-                                self::$waitingText .= '&nbsp;';
-                                $workingText = substr($workingText, 6);
-                                continue;
-                            }
-                            break;
+                        if (self::$currentState != '') {
+                            $result .= self::$waitingText;
+                            self::$waitingText = '';
                         }
-                        $openParDirection[$openParIndex] = '?';
                         break 2; // double break because we're waiting for more information
                     }
-
-                    // We have a digit or a "normal" special character.
-                    //
-                    // When this character is not at the start of the input string, it inherits the preceding directionality;
-                    // at the start of the input string, it assumes the following directionality.
-                    //
-                    // Exceptions to this rule will be handled later during final clean-up.
-                    //
+                    if ($newState != self::$currentState) {
+                        // A direction change has occurred
+                        self::finishCurrentSpan($result, false);
+                        self::$previousState = self::$currentState;
+                        self::$currentState  = $newState;
+                        self::beginCurrentSpan($result);
+                    }
                     self::$waitingText .= $currentLetter;
                     $workingText = substr($workingText, $currentLen);
-                    if (self::$currentState != '') {
-                        $result .= self::$waitingText;
-                        self::$waitingText = '';
-                    }
-                    break 2; // double break because we're waiting for more information
-                }
-                if ($newState != self::$currentState) {
-                    // A direction change has occurred
-                    self::finishCurrentSpan($result, false);
-                    self::$previousState = self::$currentState;
-                    self::$currentState  = $newState;
-                    self::beginCurrentSpan($result);
-                }
-                self::$waitingText .= $currentLetter;
-                $workingText = substr($workingText, $currentLen);
-                $result .= self::$waitingText;
-                self::$waitingText = '';
+                    $result .= self::$waitingText;
+                    self::$waitingText = '';
 
-                foreach ($openParDirection as $index => $value) {
-                    // Since we now know the proper direction, remember it for all waiting opening parentheses
-                    if ($value === '?') {
-                        $openParDirection[$index] = self::$currentState;
+                    foreach ($openParDirection as $index => $value) {
+                        // Since we now know the proper direction, remember it for all waiting opening parentheses
+                        if ($value === '?') {
+                            $openParDirection[$index] = self::$currentState;
+                        }
                     }
-                }
 
-                break;
+                    break;
             }
         }
 
@@ -461,34 +461,34 @@ class FunctionsRtl {
 
         // Finally, correct '<LTR>', '</LTR>', '<RTL>', and '</RTL>'
         switch ($direction) {
-        case 'BOTH':
-        case 'both':
-            // LTR text: <span dir="ltr"> text </span>
-            // RTL text: <span dir="rtl"> text </span>
-            $sLTR = '<span dir="ltr" ' . $class . '>' . $nothing;
-            $eLTR = $nothing . '</span>';
-            $sRTL = '<span dir="rtl" ' . $class . '>' . $nothing;
-            $eRTL = $nothing . '</span>';
-            break;
-        case 'LTR':
-        case 'ltr':
-            // LTR text: <span dir="ltr"> text </span>
-            // RTL text: text
-            $sLTR = '<span dir="ltr" ' . $class . '>' . $nothing;
-            $eLTR = $nothing . '</span>';
-            $sRTL = '';
-            $eRTL = '';
-            break;
-        case 'RTL':
-        case 'rtl':
-        default:
-            // LTR text: text
-            // RTL text: <span dir="rtl"> text </span>
-            $sLTR = '';
-            $eLTR = '';
-            $sRTL = '<span dir="rtl" ' . $class . '>' . $nothing;
-            $eRTL = $nothing . '</span>';
-            break;
+            case 'BOTH':
+            case 'both':
+                // LTR text: <span dir="ltr"> text </span>
+                // RTL text: <span dir="rtl"> text </span>
+                $sLTR = '<span dir="ltr" ' . $class . '>' . $nothing;
+                $eLTR = $nothing . '</span>';
+                $sRTL = '<span dir="rtl" ' . $class . '>' . $nothing;
+                $eRTL = $nothing . '</span>';
+                break;
+            case 'LTR':
+            case 'ltr':
+                // LTR text: <span dir="ltr"> text </span>
+                // RTL text: text
+                $sLTR = '<span dir="ltr" ' . $class . '>' . $nothing;
+                $eLTR = $nothing . '</span>';
+                $sRTL = '';
+                $eRTL = '';
+                break;
+            case 'RTL':
+            case 'rtl':
+            default:
+                // LTR text: text
+                // RTL text: <span dir="rtl"> text </span>
+                $sLTR = '';
+                $eLTR = '';
+                $sRTL = '<span dir="rtl" ' . $class . '>' . $nothing;
+                $eRTL = $nothing . '</span>';
+                break;
         }
         $result = str_replace(array(self::$startLTR, self::$endLTR, self::$startRTL, self::$endRTL), array($sLTR, $eLTR, $sRTL, $eRTL), $result);
 

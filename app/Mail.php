@@ -98,30 +98,30 @@ class Mail {
      */
     public static function transport() {
         switch (Site::getPreference('SMTP_ACTIVE')) {
-        case 'internal':
-            return Swift_MailTransport::newInstance();
-        case 'sendmail':
-            return Swift_SendmailTransport::newInstance();
-        case 'external':
-            $transport = Swift_SmtpTransport::newInstance()
+            case 'internal':
+                return Swift_MailTransport::newInstance();
+            case 'sendmail':
+                return Swift_SendmailTransport::newInstance();
+            case 'external':
+                $transport = Swift_SmtpTransport::newInstance()
                 ->setHost(Site::getPreference('SMTP_HOST'))
                 ->setPort(Site::getPreference('SMTP_PORT'))
                 ->setLocalDomain(Site::getPreference('SMTP_HELO'));
 
-            if (Site::getPreference('SMTP_AUTH')) {
-                $transport
+                if (Site::getPreference('SMTP_AUTH')) {
+                    $transport
                     ->setUsername(Site::getPreference('SMTP_AUTH_USER'))
                     ->setPassword(Site::getPreference('SMTP_AUTH_PASS'));
-            }
+                }
 
-            if (Site::getPreference('SMTP_SSL') !== 'none') {
-                $transport->setEncryption(Site::getPreference('SMTP_SSL'));
-            }
+                if (Site::getPreference('SMTP_SSL') !== 'none') {
+                    $transport->setEncryption(Site::getPreference('SMTP_SSL'));
+                }
 
-            return $transport;
-        default:
-            // For testing
-            return Swift_NullTransport::newInstance();
+                return $transport;
+            default:
+                // For testing
+                return Swift_NullTransport::newInstance();
         }
     }
 }

@@ -58,32 +58,32 @@ foreach ($vars as $name => $var) {
     $newvars[$name]['id'] = $var;
     if (!empty($type[$name])) {
         switch ($type[$name]) {
-        case 'INDI':
-            $record = Individual::getInstance($var, $WT_TREE);
-            if ($record && $record->canShowName()) {
-                $newvars[$name]['gedcom'] = $record->privatizeGedcom(Auth::accessLevel($WT_TREE));
-            } else {
-                $action = 'setup';
-            }
-            break;
-        case 'FAM':
-            $record = Family::getInstance($var, $WT_TREE);
-            if ($record && $record->canShowName()) {
-                $newvars[$name]['gedcom'] = $record->privatizeGedcom(Auth::accessLevel($WT_TREE));
-            } else {
-                $action = 'setup';
-            }
-            break;
-        case 'SOUR':
-            $record = Source::getInstance($var, $WT_TREE);
-            if ($record && $record->canShowName()) {
-                $newvars[$name]['gedcom'] = $record->privatizeGedcom(Auth::accessLevel($WT_TREE));
-            } else {
-                $action = 'setup';
-            }
-            break;
-        default:
-            break;
+            case 'INDI':
+                $record = Individual::getInstance($var, $WT_TREE);
+                if ($record && $record->canShowName()) {
+                    $newvars[$name]['gedcom'] = $record->privatizeGedcom(Auth::accessLevel($WT_TREE));
+                } else {
+                    $action = 'setup';
+                }
+                break;
+            case 'FAM':
+                $record = Family::getInstance($var, $WT_TREE);
+                if ($record && $record->canShowName()) {
+                    $newvars[$name]['gedcom'] = $record->privatizeGedcom(Auth::accessLevel($WT_TREE));
+                } else {
+                    $action = 'setup';
+                }
+                break;
+            case 'SOUR':
+                $record = Source::getInstance($var, $WT_TREE);
+                if ($record && $record->canShowName()) {
+                    $newvars[$name]['gedcom'] = $record->privatizeGedcom(Auth::accessLevel($WT_TREE));
+                } else {
+                    $action = 'setup';
+                }
+                break;
+            default:
+                break;
         }
     }
 }
@@ -111,12 +111,12 @@ if (!empty($report)) {
 
 //-- choose a report to run
 switch ($action) {
-case 'choose':
-    $controller
+    case 'choose':
+        $controller
         ->setPageTitle(I18N::translate('Choose a report to run'))
         ->pageHeader();
 
-    echo '<div id="reportengine-page">
+        echo '<div id="reportengine-page">
 		<h2 class="center">', I18N::translate('Choose a report to run'), '</h2>
 		<form name="choosereport" method="get" action="reportengine.php">
 		<input type="hidden" name="action" value="setup">
@@ -124,27 +124,27 @@ case 'choose':
 		<table class="facts_table width40">
 		<tr><td class="descriptionbox wrap width33 vmiddle">', I18N::translate('Report'), '</td>
 		<td class="optionbox"><select name="report">';
-    foreach ($reports as $file => $report) {
-        echo '<option value="', Filter::escapeHtml($file), '">', Filter::escapeHtml($report), '</option>';
-    }
-    echo '</select></td></tr>
+        foreach ($reports as $file => $report) {
+            echo '<option value="', Filter::escapeHtml($file), '">', Filter::escapeHtml($report), '</option>';
+        }
+        echo '</select></td></tr>
 		<tr><td class="topbottombar" colspan="2"><input type="submit" value="', I18N::translate('continue'), '"></td></tr>
 		</table></form></div>';
-    break;
+        break;
 
-case 'setup':
-    $report_setup = new ReportParserSetup($report);
-    $report_array = $report_setup->reportProperties();
+    case 'setup':
+        $report_setup = new ReportParserSetup($report);
+        $report_array = $report_setup->reportProperties();
 
-    $controller
+        $controller
         ->setPageTitle($report_array['title'])
         ->pageHeader()
         ->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
         ->addInlineJavascript('autocomplete();');
 
-    FunctionsPrint::initializeCalendarPopup();
+        FunctionsPrint::initializeCalendarPopup();
 
-    echo '<div id="reportengine-page">
+        echo '<div id="reportengine-page">
 		<h2 class="center">', $report_array['title'], '</h2>
 		<form name="setupreport" method="get" action="reportengine.php">
 		<input type="hidden" name="action" value="run">
@@ -152,102 +152,102 @@ case 'setup':
 		<table class="facts_table width50">
 		<tr><td class="descriptionbox width30 wrap">', I18N::translate('Report'), '</td><td class="optionbox">', $report_array['description'], '</td></tr>';
 
-    if (!isset($report_array['inputs'])) {
-        $report_array['inputs'] = array();
-    }
-    foreach ($report_array['inputs'] as $input) {
-        echo '<tr><td class="descriptionbox wrap">';
-        echo '<input type="hidden" name="varnames[]" value="', Filter::escapeHtml($input["name"]), '">';
-        echo I18N::translate($input['value']), '</td><td class="optionbox">';
-        if (!isset($input['type'])) {
-            $input['type'] = 'text';
+        if (!isset($report_array['inputs'])) {
+            $report_array['inputs'] = array();
         }
-        if (!isset($input['default'])) {
-            $input['default'] = '';
-        }
-        if (!isset($input['lookup'])) {
-            $input['lookup'] = '';
-        }
-
-        if ($input['type'] == 'text') {
-            echo '<input';
-
-            switch ($input['lookup']) {
-            case 'INDI':
-                echo ' data-autocomplete-type="INDI"';
-                if (!empty($pid)) {
-                    $input['default'] = $pid;
-                } else {
-                    $input['default'] = $controller->getSignificantIndividual()->getXref();
-                }
-                break;
-            case 'FAM':
-                echo ' data-autocomplete-type="FAM"';
-                if (!empty($famid)) {
-                    $input['default'] = $famid;
-                } else {
-                    $input['default'] = $controller->getSignificantFamily()->getXref();
-                }
-                break;
-            case 'SOUR':
-                echo ' data-autocomplete-type="SOUR"';
-                if (!empty($sid)) {
-                    $input['default'] = $sid;
-                }
-                break;
-            case 'DATE':
-                if (isset($input['default'])) {
-                    $input['default'] = strtoupper($input['default']);
-                }
-                break;
+        foreach ($report_array['inputs'] as $input) {
+            echo '<tr><td class="descriptionbox wrap">';
+            echo '<input type="hidden" name="varnames[]" value="', Filter::escapeHtml($input["name"]), '">';
+            echo I18N::translate($input['value']), '</td><td class="optionbox">';
+            if (!isset($input['type'])) {
+                $input['type'] = 'text';
+            }
+            if (!isset($input['default'])) {
+                $input['default'] = '';
+            }
+            if (!isset($input['lookup'])) {
+                $input['lookup'] = '';
             }
 
-            echo ' type="text" name="vars[', Filter::escapeHtml($input['name']), ']" id="', Filter::escapeHtml($input['name']), '" value="', Filter::escapeHtml($input['default']), '" style="direction: ltr;">';
-        }
-        if ($input['type'] == 'checkbox') {
-            echo '<input type="checkbox" name="vars[', Filter::escapeHtml($input['name']), ']" id="', Filter::escapeHtml($input['name']), '" value="1" ';
-            echo $input['default'] == '1' ? 'checked' : '';
-            echo '>';
-        }
-        if ($input['type'] == 'select') {
-            echo '<select name="vars[', Filter::escapeHtml($input['name']), ']" id="', Filter::escapeHtml($input['name']), '_var">';
-            $options = preg_split('/[|]+/', $input['options']);
-            foreach ($options as $option) {
-                $opt                   = explode('=>', $option);
-                list($value, $display) = $opt;
-                if (preg_match('/^I18N::number\((.+?)(,([\d+]))?\)$/', $display, $match)) {
-                    $display = I18N::number($match[1], isset($match[3]) ? $match[3] : 0);
-                } elseif (preg_match('/^I18N::translate\(\'(.+)\'\)$/', $display, $match)) {
-                    $display = I18N::translate($match[1]);
-                } elseif (preg_match('/^I18N::translateContext\(\'(.+)\', *\'(.+)\'\)$/', $display, $match)) {
-                    $display = I18N::translateContext($match[1], $match[2]);
+            if ($input['type'] == 'text') {
+                echo '<input';
+
+                switch ($input['lookup']) {
+                    case 'INDI':
+                        echo ' data-autocomplete-type="INDI"';
+                        if (!empty($pid)) {
+                            $input['default'] = $pid;
+                        } else {
+                            $input['default'] = $controller->getSignificantIndividual()->getXref();
+                        }
+                    break;
+                    case 'FAM':
+                        echo ' data-autocomplete-type="FAM"';
+                        if (!empty($famid)) {
+                            $input['default'] = $famid;
+                        } else {
+                            $input['default'] = $controller->getSignificantFamily()->getXref();
+                        }
+                    break;
+                    case 'SOUR':
+                        echo ' data-autocomplete-type="SOUR"';
+                        if (!empty($sid)) {
+                            $input['default'] = $sid;
+                        }
+                    break;
+                    case 'DATE':
+                        if (isset($input['default'])) {
+                            $input['default'] = strtoupper($input['default']);
+                        }
+                    break;
                 }
-                echo '<option value="', Filter::escapeHtml($value), '" ';
-                if ($opt[0] == $input['default']) {
-                    echo 'selected';
+
+                echo ' type="text" name="vars[', Filter::escapeHtml($input['name']), ']" id="', Filter::escapeHtml($input['name']), '" value="', Filter::escapeHtml($input['default']), '" style="direction: ltr;">';
+            }
+            if ($input['type'] == 'checkbox') {
+                echo '<input type="checkbox" name="vars[', Filter::escapeHtml($input['name']), ']" id="', Filter::escapeHtml($input['name']), '" value="1" ';
+                echo $input['default'] == '1' ? 'checked' : '';
+                echo '>';
+            }
+            if ($input['type'] == 'select') {
+                echo '<select name="vars[', Filter::escapeHtml($input['name']), ']" id="', Filter::escapeHtml($input['name']), '_var">';
+                $options = preg_split('/[|]+/', $input['options']);
+                foreach ($options as $option) {
+                    $opt                   = explode('=>', $option);
+                    list($value, $display) = $opt;
+                    if (preg_match('/^I18N::number\((.+?)(,([\d+]))?\)$/', $display, $match)) {
+                        $display = I18N::number($match[1], isset($match[3]) ? $match[3] : 0);
+                    } elseif (preg_match('/^I18N::translate\(\'(.+)\'\)$/', $display, $match)) {
+                        $display = I18N::translate($match[1]);
+                    } elseif (preg_match('/^I18N::translateContext\(\'(.+)\', *\'(.+)\'\)$/', $display, $match)) {
+                        $display = I18N::translateContext($match[1], $match[2]);
+                    }
+                    echo '<option value="', Filter::escapeHtml($value), '" ';
+                    if ($opt[0] == $input['default']) {
+                        echo 'selected';
+                    }
+                    echo '>', Filter::escapeHtml($display), '</option>';
                 }
-                echo '>', Filter::escapeHtml($display), '</option>';
+                echo '</select>';
             }
-            echo '</select>';
-        }
-        if (isset($input['lookup'])) {
-            echo '<input type="hidden" name="type[', Filter::escapeHtml($input['name']), ']" value="', Filter::escapeHtml($input['lookup']), '">';
-            if ($input['lookup'] == 'INDI') {
-                echo FunctionsPrint::printFindIndividualLink('pid');
-            } elseif ($input['lookup'] == 'PLAC') {
-                echo FunctionsPrint::printFindPlaceLink($input['name']);
-            } elseif ($input['lookup'] == 'FAM') {
-                echo FunctionsPrint::printFindFamilyLink('famid');
-            } elseif ($input['lookup'] == 'SOUR') {
-                echo FunctionsPrint::printFindSourceLink($input['name']);
-            } elseif ($input['lookup'] == 'DATE') {
-                echo ' <a href="#" onclick="cal_toggleDate(\'div_', Filter::escapeJs($input['name']), '\', \'', Filter::escapeJs($input['name']), '\'); return false;" class="icon-button_calendar" title="', I18N::translate('Select a date'), '"></a>';
-                echo '<div id="div_', Filter::escapeHtml($input['name']), '" style="position:absolute;visibility:hidden;background-color:white;"></div>';
+            if (isset($input['lookup'])) {
+                echo '<input type="hidden" name="type[', Filter::escapeHtml($input['name']), ']" value="', Filter::escapeHtml($input['lookup']), '">';
+                if ($input['lookup'] == 'INDI') {
+                    echo FunctionsPrint::printFindIndividualLink('pid');
+                } elseif ($input['lookup'] == 'PLAC') {
+                    echo FunctionsPrint::printFindPlaceLink($input['name']);
+                } elseif ($input['lookup'] == 'FAM') {
+                    echo FunctionsPrint::printFindFamilyLink('famid');
+                } elseif ($input['lookup'] == 'SOUR') {
+                    echo FunctionsPrint::printFindSourceLink($input['name']);
+                } elseif ($input['lookup'] == 'DATE') {
+                    echo ' <a href="#" onclick="cal_toggleDate(\'div_', Filter::escapeJs($input['name']), '\', \'', Filter::escapeJs($input['name']), '\'); return false;" class="icon-button_calendar" title="', I18N::translate('Select a date'), '"></a>';
+                    echo '<div id="div_', Filter::escapeHtml($input['name']), '" style="position:absolute;visibility:hidden;background-color:white;"></div>';
+                }
             }
+            echo '</td></tr>';
         }
-        echo '</td></tr>';
-    }
-    echo '<tr>
+        echo '<tr>
 		<td colspan="2" class="optionbox">
 		<div class="report-type">
 		<div>
@@ -264,22 +264,22 @@ case 'setup':
 		<tr><td class="topbottombar" colspan="2">
 		<input type="submit" value="', I18N::translate('continue'), '">
 		</td></tr></table></form></div>';
-    break;
+        break;
 
-case 'run':
-    if (strstr($report, 'report_singlepage.xml') !== false) {
-        // This is a custom module?
-        new \ReportPedigree;
-        break;
-    }
+    case 'run':
+        if (strstr($report, 'report_singlepage.xml') !== false) {
+            // This is a custom module?
+            new \ReportPedigree;
+            break;
+        }
 
-    switch ($output) {
-    case 'HTML':
-        header('Content-type: text/html; charset=UTF-8');
-        new ReportParserGenerate($report, new ReportHtml, $vars);
-        break;
-    case 'PDF':
-        new ReportParserGenerate($report, new ReportPdf, $vars);
-        break;
-    }
+        switch ($output) {
+            case 'HTML':
+                header('Content-type: text/html; charset=UTF-8');
+                new ReportParserGenerate($report, new ReportHtml, $vars);
+                break;
+            case 'PDF':
+                new ReportParserGenerate($report, new ReportPdf, $vars);
+            break;
+        }
 }

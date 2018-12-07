@@ -92,25 +92,25 @@ class TreeView {
             $firstLetter = substr($jsonRequest, 0, 1);
             $jsonRequest = substr($jsonRequest, 1);
             switch ($firstLetter) {
-            case 'c':
-                $fidlist = explode(',', $jsonRequest);
-                $flist   = array();
-                foreach ($fidlist as $fid) {
-                    $flist[] = Family::getInstance($fid, $WT_TREE);
-                }
-                $r[] = $this->drawChildren($flist, 1, true);
-                break;
-            case 'p':
-                $params = explode('@', $jsonRequest);
-                $fid    = $params[0];
-                $order  = $params[1];
-                $f      = Family::getInstance($fid, $WT_TREE);
-                if ($f->getHusband()) {
-                    $r[] = $this->drawPerson($f->getHusband(), 0, 1, $f, $order);
-                } elseif ($f->getWife()) {
-                    $r[] = $this->drawPerson($f->getWife(), 0, 1, $f, $order);
-                }
-                break;
+                case 'c':
+                    $fidlist = explode(',', $jsonRequest);
+                    $flist   = array();
+                    foreach ($fidlist as $fid) {
+                        $flist[] = Family::getInstance($fid, $WT_TREE);
+                    }
+                    $r[] = $this->drawChildren($flist, 1, true);
+                    break;
+                case 'p':
+                    $params = explode('@', $jsonRequest);
+                    $fid    = $params[0];
+                    $order  = $params[1];
+                    $f      = Family::getInstance($fid, $WT_TREE);
+                    if ($f->getHusband()) {
+                        $r[] = $this->drawPerson($f->getHusband(), 0, 1, $f, $order);
+                    } elseif ($f->getWife()) {
+                        $r[] = $this->drawPerson($f->getWife(), 0, 1, $f, $order);
+                    }
+                    break;
             }
         }
 
@@ -342,15 +342,15 @@ class TreeView {
                 $family_name = I18N::translateContext('unknown family', 'unknown');
             }
             switch ($individual->getSex()) {
-            case 'M':
-                $title = ' title="' . /* I18N: e.g. “Son of [father name & mother name]” */ I18N::translate('Son of %s', $family_name) . '"';
-                break;
-            case 'F':
-                $title = ' title="' . /* I18N: e.g. “Daughter of [father name & mother name]” */ I18N::translate('Daughter of %s', $family_name) . '"';
-                break;
-            default:
-                $title = ' title="' . /* I18N: e.g. “Child of [father name & mother name]” */ I18N::translate('Child of %s', $family_name) . '"';
-                break;
+                case 'M':
+                    $title = ' title="' . /* I18N: e.g. “Son of [father name & mother name]” */ I18N::translate('Son of %s', $family_name) . '"';
+                    break;
+                case 'F':
+                    $title = ' title="' . /* I18N: e.g. “Daughter of [father name & mother name]” */ I18N::translate('Daughter of %s', $family_name) . '"';
+                    break;
+                default:
+                    $title = ' title="' . /* I18N: e.g. “Child of [father name & mother name]” */ I18N::translate('Child of %s', $family_name) . '"';
+                    break;
             }
         } else {
             $title = '';

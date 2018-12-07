@@ -231,7 +231,7 @@ foreach ($controller->tabs as $tab) {
 echo
     '</div>', // close #tabs
     '</div>'; //close indi_left
-    if ($sidebar_html) {
-        echo '<div id="separator" style="cursor:pointer;"></div>' . $sidebar_html;
-    }
+if ($sidebar_html) {
+    echo '<div id="separator" style="cursor:pointer;"></div>' . $sidebar_html;
+}
     echo '</div>'; // close #main

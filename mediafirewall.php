@@ -126,54 +126,54 @@ function embedText($im, $text, $maxsize, $color, $font, $vpos, $hpos) {
 
     // vertical and horizontal position of the text
     switch ($vpos) {
-    default:
-    case 'top':
-        $taille   = textlength($maxsize, $width, $text);
-        $pos_y    = $height * 0.15 + $taille;
-        $pos_x    = $width * 0.15;
-        $rotation = 0;
-        break;
-    case 'middle':
-        $taille   = textlength($maxsize, $width, $text);
-        $pos_y    = ($height + $taille) / 2;
-        $pos_x    = $width * 0.15;
-        $rotation = 0;
-        break;
-    case 'bottom':
-        $taille   = textlength($maxsize, $width, $text);
-        $pos_y    = ($height * .85 - $taille);
-        $pos_x    = $width * 0.15;
-        $rotation = 0;
-        break;
-    case 'across':
-        switch ($hpos) {
         default:
-        case 'left':
-            $taille   = textlength($maxsize, $hypoth, $text);
+        case 'top':
+            $taille   = textlength($maxsize, $width, $text);
+            $pos_y    = $height * 0.15 + $taille;
+            $pos_x    = $width * 0.15;
+            $rotation = 0;
+            break;
+        case 'middle':
+            $taille   = textlength($maxsize, $width, $text);
+            $pos_y    = ($height + $taille) / 2;
+            $pos_x    = $width * 0.15;
+            $rotation = 0;
+            break;
+        case 'bottom':
+            $taille   = textlength($maxsize, $width, $text);
             $pos_y    = ($height * .85 - $taille);
             $pos_x    = $width * 0.15;
-            $rotation = $calc_angle;
+            $rotation = 0;
             break;
-        case 'right':
-            $taille   = textlength($maxsize, $hypoth, $text);
-            $pos_y    = ($height * .15 - $taille);
-            $pos_x    = $width * 0.85;
-            $rotation = $calc_angle + 180;
+        case 'across':
+            switch ($hpos) {
+                default:
+                case 'left':
+                    $taille   = textlength($maxsize, $hypoth, $text);
+                    $pos_y    = ($height * .85 - $taille);
+                    $pos_x    = $width * 0.15;
+                    $rotation = $calc_angle;
+                    break;
+                case 'right':
+                    $taille   = textlength($maxsize, $hypoth, $text);
+                    $pos_y    = ($height * .15 - $taille);
+                    $pos_x    = $width * 0.85;
+                    $rotation = $calc_angle + 180;
+                break;
+                case 'top2bottom':
+                    $taille   = textlength($maxsize, $height, $text);
+                    $pos_y    = ($height * .15 - $taille);
+                    $pos_x    = ($width * .90 - $taille);
+                    $rotation = -90;
+                break;
+                case 'bottom2top':
+                    $taille   = textlength($maxsize, $height, $text);
+                    $pos_y    = $height * 0.85;
+                    $pos_x    = $width * 0.15;
+                    $rotation = 90;
+                break;
+            }
             break;
-        case 'top2bottom':
-            $taille   = textlength($maxsize, $height, $text);
-            $pos_y    = ($height * .15 - $taille);
-            $pos_x    = ($width * .90 - $taille);
-            $rotation = -90;
-            break;
-        case 'bottom2top':
-            $taille   = textlength($maxsize, $height, $text);
-            $pos_y    = $height * 0.85;
-            $pos_x    = $width * 0.15;
-            $rotation = 90;
-            break;
-        }
-        break;
     }
 
     // apply the text

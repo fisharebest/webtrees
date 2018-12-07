@@ -144,7 +144,7 @@ class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInter
                     <?php endif; ?>
                 </td>
             </tr>
-        <?php
+            <?php
         }
 
         foreach ($family->getChildren() as $child) {
@@ -169,7 +169,7 @@ class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInter
                     <?php endif; ?>
                 </td>
             </tr>
-        <?php
+            <?php
         }
     }
 

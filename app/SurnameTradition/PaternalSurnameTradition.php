@@ -39,14 +39,14 @@ class PaternalSurnameTradition extends PatrilinealSurnameTradition implements Su
     public function newParentNames($child_name, $parent_sex) {
         if (preg_match(self::REGEX_SPFX_SURN, $child_name, $match)) {
             switch ($parent_sex) {
-            case 'M':
-                return array_filter(array(
+                case 'M':
+                    return array_filter(array(
                     'NAME' => $match['NAME'],
                     'SPFX' => $match['SPFX'],
                     'SURN' => $match['SURN'],
-                ));
-            case 'F':
-                return array(
+                    ));
+                case 'F':
+                    return array(
                     'NAME'   => '//',
                     '_MARNM' => '/' . trim($match['SPFX'] . ' ' . $match['SURN']) . '/',
                 );

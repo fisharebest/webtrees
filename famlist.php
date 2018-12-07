@@ -46,12 +46,12 @@ if ($show_all_firstnames === 'yes') {
 
 $show_marnm = Filter::get('show_marnm', 'no|yes');
 switch ($show_marnm) {
-case 'no':
-case 'yes':
-    Auth::user()->setPreference(WT_SCRIPT_NAME . '_show_marnm', $show_marnm);
-    break;
-default:
-    $show_marnm = Auth::user()->getPreference(WT_SCRIPT_NAME . '_show_marnm');
+    case 'no':
+    case 'yes':
+        Auth::user()->setPreference(WT_SCRIPT_NAME . '_show_marnm', $show_marnm);
+        break;
+    default:
+        $show_marnm = Auth::user()->getPreference(WT_SCRIPT_NAME . '_show_marnm');
 }
 
 // Make sure selections are consistent.
@@ -91,16 +91,16 @@ if ($show_all === 'yes') {
     }
     $url = WT_SCRIPT_NAME . '?surname=' . rawurlencode($surname) . '&amp;ged=' . $WT_TREE->getNameUrl();
     switch ($falpha) {
-    case '':
-        break;
-    case '@':
-        $legend .= ', ' . I18N::translateContext('Unknown given name', '…');
-        $url .= '&amp;falpha=' . rawurlencode($falpha) . '&amp;ged=' . $WT_TREE->getNameUrl();
-        break;
-    default:
-        $legend .= ', ' . Filter::escapeHtml($falpha) . '…';
-        $url .= '&amp;falpha=' . rawurlencode($falpha) . '&amp;ged=' . $WT_TREE->getNameUrl();
-        break;
+        case '':
+            break;
+        case '@':
+            $legend .= ', ' . I18N::translateContext('Unknown given name', '…');
+            $url .= '&amp;falpha=' . rawurlencode($falpha) . '&amp;ged=' . $WT_TREE->getNameUrl();
+            break;
+        default:
+            $legend .= ', ' . Filter::escapeHtml($falpha) . '…';
+            $url .= '&amp;falpha=' . rawurlencode($falpha) . '&amp;ged=' . $WT_TREE->getNameUrl();
+            break;
     }
     $show = 'indi'; // SURN list makes no sense here
 } elseif ($alpha === '@') {
@@ -136,15 +136,15 @@ echo '<h2 class="center">', I18N::translate('Families'), '</h2>';
 $list = array();
 foreach (QueryName::surnameAlpha($WT_TREE, $show_marnm === 'yes', true) as $letter => $count) {
     switch ($letter) {
-    case '@':
-        $html = I18N::translateContext('Unknown surname', '…');
-        break;
-    case ',':
-        $html = I18N::translate('None');
-        break;
-    default:
-        $html = Filter::escapeHtml($letter);
-        break;
+        case '@':
+            $html = I18N::translateContext('Unknown surname', '…');
+            break;
+        case ',':
+            $html = I18N::translate('None');
+            break;
+        default:
+            $html = Filter::escapeHtml($letter);
+            break;
     }
     if ($count) {
         if ($letter == $alpha) {
@@ -194,16 +194,16 @@ if ($show === 'indi' || $show === 'surn') {
     if ($show === 'surn') {
         // Show the surname list
         switch ($WT_TREE->getPreference('SURNAME_LIST_STYLE')) {
-        case 'style1':
-            echo FunctionsPrintLists::surnameList($surns, 3, true, WT_SCRIPT_NAME, $WT_TREE);
-            break;
-        case 'style3':
-            echo FunctionsPrintLists::surnameTagCloud($surns, WT_SCRIPT_NAME, true, $WT_TREE);
-            break;
-        case 'style2':
-        default:
-            echo FunctionsPrintLists::surnameTable($surns, WT_SCRIPT_NAME, $WT_TREE);
-            break;
+            case 'style1':
+                echo FunctionsPrintLists::surnameList($surns, 3, true, WT_SCRIPT_NAME, $WT_TREE);
+                break;
+            case 'style3':
+                echo FunctionsPrintLists::surnameTagCloud($surns, WT_SCRIPT_NAME, true, $WT_TREE);
+                break;
+            case 'style2':
+            default:
+                echo FunctionsPrintLists::surnameTable($surns, WT_SCRIPT_NAME, $WT_TREE);
+                break;
         }
     } else {
         // Show the list
@@ -226,12 +226,12 @@ if ($show === 'indi' || $show === 'surn') {
                 $list = array();
                 foreach ($givn_initials as $givn_initial => $count) {
                     switch ($givn_initial) {
-                    case '@':
-                        $html = I18N::translateContext('Unknown given name', '…');
-                        break;
-                    default:
-                        $html = Filter::escapeHtml($givn_initial);
-                        break;
+                        case '@':
+                            $html = I18N::translateContext('Unknown given name', '…');
+                            break;
+                        default:
+                            $html = Filter::escapeHtml($givn_initial);
+                            break;
                     }
                     if ($count) {
                         if ($show === 'indi' && $givn_initial === $falpha && $show_all_firstnames === 'no') {

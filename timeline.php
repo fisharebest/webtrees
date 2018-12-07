@@ -282,7 +282,7 @@ document.onmouseup = function () {
                             </span>
                         <?php } ?>
                         <br>
-                    <?php
+                        <?php
                     } else {
                         echo '<div class="error">', I18N::translate('This information is private and cannot be shown.'), '</div>';
                         ?>

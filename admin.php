@@ -619,7 +619,7 @@ if (
                 <?php if (Auth::isAdmin()): ?>
                 <p>
                     <?php if ($latest_version === ''): ?>
-                    <?php echo I18N::translate('No upgrade information is available.'); ?>
+                        <?php echo I18N::translate('No upgrade information is available.'); ?>
                     <?php elseif ($update_available): ?>
                     <?php echo I18N::translate('A new version of webtrees is available.'); ?>
                     <a href="admin_site_upgrade.php" class="error">
@@ -732,7 +732,7 @@ if (
                             </th>
                             <td>
                                 <?php foreach ($logged_in as $n => $user): ?>
-                                <?php echo $n ? I18N::$list_separator : ''; ?>
+                                    <?php echo $n ? I18N::$list_separator : ''; ?>
                                     <a href="admin_users.php?action=edit&user_id=<?php echo $user->user_id; ?>" dir="auto">
                                         <?php echo Filter::escapeHtml($user->real_name); ?>
                                     </a>

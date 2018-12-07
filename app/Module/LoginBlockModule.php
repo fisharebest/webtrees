@@ -89,10 +89,10 @@ class LoginBlockModule extends AbstractModule implements ModuleBlockInterface {
             if (Site::getPreference('USE_REGISTRATION_MODULE')) {
                 $content .= '<div id="register-link"><a href="' . WT_LOGIN_URL . '?action=register">' . I18N::translate('Request a new user account') . '</a></div>';
             }
-        $content .= '</form>'; // close "login-form"
+            $content .= '</form>'; // close "login-form"
 
         // hidden New Password block
-        $content .= '<div id="new_passwd">
+            $content .= '<div id="new_passwd">
 			<form id="new_passwd_form" name="new_passwd_form" action="' . WT_LOGIN_URL . '" method="post">
 			<input type="hidden" name="time" value="">
 			<input type="hidden" name="action" value="requestpw">
@@ -105,7 +105,7 @@ class LoginBlockModule extends AbstractModule implements ModuleBlockInterface {
 			<div><input type="submit" value="' . I18N::translate('continue') . '"></div>
 			</form>
 		</div>'; //"new_passwd"
-        $content .= '</div>'; //"login-box"
+            $content .= '</div>'; //"login-box"
         }
 
         if ($template) {

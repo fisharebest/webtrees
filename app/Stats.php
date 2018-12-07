@@ -303,22 +303,22 @@ class Stats {
      */
     private function getPercentage($total, $type) {
         switch ($type) {
-        case 'individual':
-            $type = $this->totalIndividualsQuery();
-            break;
-        case 'family':
-            $type = $this->totalFamiliesQuery();
-            break;
-        case 'source':
-            $type = $this->totalSourcesQuery();
-            break;
-        case 'note':
-            $type = $this->totalNotesQuery();
-            break;
-        case 'all':
-        default:
-            $type = $this->totalIndividualsQuery() + $this->totalFamiliesQuery() + $this->totalSourcesQuery();
-            break;
+            case 'individual':
+                $type = $this->totalIndividualsQuery();
+                break;
+            case 'family':
+                $type = $this->totalFamiliesQuery();
+                break;
+            case 'source':
+                $type = $this->totalSourcesQuery();
+                break;
+            case 'note':
+                $type = $this->totalNotesQuery();
+                break;
+            case 'all':
+            default:
+                $type = $this->totalIndividualsQuery() + $this->totalFamiliesQuery() + $this->totalSourcesQuery();
+                break;
         }
         if ($type == 0) {
             return I18N::percentage(0, 1);
@@ -1444,29 +1444,29 @@ class Stats {
         $row    = $rows[0];
         $record = GedcomRecord::getInstance($row['d_gid'], $this->tree);
         switch ($type) {
-        default:
-        case 'full':
-            if ($record->canShow()) {
-                $result = $record->formatList('span', false, $record->getFullName());
-            } else {
-                $result = I18N::translate('This information is private and cannot be shown.');
-            }
-            break;
-        case 'year':
-            $date   = new Date($row['d_type'] . ' ' . $row['d_year']);
-            $result = $date->display();
-            break;
-        case 'name':
-            $result = "<a href=\"" . $record->getHtmlUrl() . "\">" . $record->getFullName() . "</a>";
-            break;
-        case 'place':
-            $fact = GedcomRecord::getInstance($row['d_gid'], $this->tree)->getFirstFact($row['d_fact']);
-            if ($fact) {
-                $result = FunctionsPrint::formatFactPlace($fact, true, true, true);
-            } else {
-                $result = I18N::translate('Private');
-            }
-            break;
+            default:
+            case 'full':
+                if ($record->canShow()) {
+                    $result = $record->formatList('span', false, $record->getFullName());
+                } else {
+                    $result = I18N::translate('This information is private and cannot be shown.');
+                }
+                break;
+            case 'year':
+                $date   = new Date($row['d_type'] . ' ' . $row['d_year']);
+                $result = $date->display();
+                break;
+            case 'name':
+                $result = "<a href=\"" . $record->getHtmlUrl() . "\">" . $record->getFullName() . "</a>";
+                break;
+            case 'place':
+                $fact = GedcomRecord::getInstance($row['d_gid'], $this->tree)->getFirstFact($row['d_fact']);
+                if ($fact) {
+                    $result = FunctionsPrint::formatFactPlace($fact, true, true, true);
+                } else {
+                    $result = I18N::translate('Private');
+                }
+                break;
         }
 
         return $result;
@@ -1631,96 +1631,96 @@ class Stats {
         }
         I18N::init(WT_LOCALE);
         switch ($chart_type) {
-        case 'surname_distribution_chart':
-            if ($surname == "") {
-                $surname = $this->getCommonSurname();
-            }
-            $chart_title = I18N::translate('Surname distribution chart') . ': ' . $surname;
-            // Count how many people are events in each country
-            $surn_countries = array();
-            $indis          = QueryName::individuals($this->tree, I18N::strtoupper($surname), '', '', false, false);
-            foreach ($indis as $person) {
-                if (preg_match_all('/^2 PLAC (?:.*, *)*(.*)/m', $person->getGedcom(), $matches)) {
-                    // webtrees uses 3 letter country codes and localised country names, but google uses 2 letter codes.
-                    foreach ($matches[1] as $country) {
-                        if (array_key_exists($country, $country_to_iso3166)) {
-                            if (array_key_exists($country_to_iso3166[$country], $surn_countries)) {
-                                $surn_countries[$country_to_iso3166[$country]]++;
-                            } else {
-                                $surn_countries[$country_to_iso3166[$country]] = 1;
+            case 'surname_distribution_chart':
+                if ($surname == "") {
+                    $surname = $this->getCommonSurname();
+                }
+                $chart_title = I18N::translate('Surname distribution chart') . ': ' . $surname;
+                // Count how many people are events in each country
+                $surn_countries = array();
+                $indis          = QueryName::individuals($this->tree, I18N::strtoupper($surname), '', '', false, false);
+                foreach ($indis as $person) {
+                    if (preg_match_all('/^2 PLAC (?:.*, *)*(.*)/m', $person->getGedcom(), $matches)) {
+                        // webtrees uses 3 letter country codes and localised country names, but google uses 2 letter codes.
+                        foreach ($matches[1] as $country) {
+                            if (array_key_exists($country, $country_to_iso3166)) {
+                                if (array_key_exists($country_to_iso3166[$country], $surn_countries)) {
+                                    $surn_countries[$country_to_iso3166[$country]]++;
+                                } else {
+                                    $surn_countries[$country_to_iso3166[$country]] = 1;
+                                }
                             }
                         }
                     }
-                }
-            };
-            break;
-        case 'birth_distribution_chart':
-            $chart_title = I18N::translate('Birth by country');
-            // Count how many people were born in each country
-            $surn_countries = array();
-            $b_countries    = $this->statsPlaces('INDI', 'BIRT', 0, true);
-            foreach ($b_countries as $place => $count) {
-                $country = $place;
-                if (array_key_exists($country, $country_to_iso3166)) {
-                    if (!isset($surn_countries[$country_to_iso3166[$country]])) {
-                        $surn_countries[$country_to_iso3166[$country]] = $count;
-                    } else {
-                        $surn_countries[$country_to_iso3166[$country]] += $count;
+                };
+                break;
+            case 'birth_distribution_chart':
+                $chart_title = I18N::translate('Birth by country');
+                // Count how many people were born in each country
+                $surn_countries = array();
+                $b_countries    = $this->statsPlaces('INDI', 'BIRT', 0, true);
+                foreach ($b_countries as $place => $count) {
+                    $country = $place;
+                    if (array_key_exists($country, $country_to_iso3166)) {
+                        if (!isset($surn_countries[$country_to_iso3166[$country]])) {
+                            $surn_countries[$country_to_iso3166[$country]] = $count;
+                        } else {
+                            $surn_countries[$country_to_iso3166[$country]] += $count;
+                        }
                     }
                 }
-            }
-            break;
-        case 'death_distribution_chart':
-            $chart_title = I18N::translate('Death by country');
-            // Count how many people were death in each country
-            $surn_countries = array();
-            $d_countries    = $this->statsPlaces('INDI', 'DEAT', 0, true);
-            foreach ($d_countries as $place => $count) {
-                $country = $place;
-                if (array_key_exists($country, $country_to_iso3166)) {
-                    if (!isset($surn_countries[$country_to_iso3166[$country]])) {
-                        $surn_countries[$country_to_iso3166[$country]] = $count;
-                    } else {
-                        $surn_countries[$country_to_iso3166[$country]] += $count;
+                break;
+            case 'death_distribution_chart':
+                $chart_title = I18N::translate('Death by country');
+                // Count how many people were death in each country
+                $surn_countries = array();
+                $d_countries    = $this->statsPlaces('INDI', 'DEAT', 0, true);
+                foreach ($d_countries as $place => $count) {
+                    $country = $place;
+                    if (array_key_exists($country, $country_to_iso3166)) {
+                        if (!isset($surn_countries[$country_to_iso3166[$country]])) {
+                            $surn_countries[$country_to_iso3166[$country]] = $count;
+                        } else {
+                            $surn_countries[$country_to_iso3166[$country]] += $count;
+                        }
                     }
                 }
-            }
-            break;
-        case 'marriage_distribution_chart':
-            $chart_title = I18N::translate('Marriage by country');
-            // Count how many families got marriage in each country
-            $surn_countries = array();
-            $m_countries    = $this->statsPlaces('FAM');
-            // webtrees uses 3 letter country codes and localised country names, but google uses 2 letter codes.
-            foreach ($m_countries as $place) {
-                $country = $place['country'];
-                if (array_key_exists($country, $country_to_iso3166)) {
-                    if (!isset($surn_countries[$country_to_iso3166[$country]])) {
-                        $surn_countries[$country_to_iso3166[$country]] = $place['tot'];
-                    } else {
-                        $surn_countries[$country_to_iso3166[$country]] += $place['tot'];
+                break;
+            case 'marriage_distribution_chart':
+                $chart_title = I18N::translate('Marriage by country');
+                // Count how many families got marriage in each country
+                $surn_countries = array();
+                $m_countries    = $this->statsPlaces('FAM');
+                // webtrees uses 3 letter country codes and localised country names, but google uses 2 letter codes.
+                foreach ($m_countries as $place) {
+                    $country = $place['country'];
+                    if (array_key_exists($country, $country_to_iso3166)) {
+                        if (!isset($surn_countries[$country_to_iso3166[$country]])) {
+                            $surn_countries[$country_to_iso3166[$country]] = $place['tot'];
+                        } else {
+                            $surn_countries[$country_to_iso3166[$country]] += $place['tot'];
+                        }
                     }
                 }
-            }
-            break;
-        case 'indi_distribution_chart':
-        default:
-            $chart_title = I18N::translate('Individual distribution chart');
-            // Count how many people have events in each country
-            $surn_countries = array();
-            $a_countries    = $this->statsPlaces('INDI');
-            // webtrees uses 3 letter country codes and localised country names, but google uses 2 letter codes.
-            foreach ($a_countries as $place) {
-                $country = $place['country'];
-                if (array_key_exists($country, $country_to_iso3166)) {
-                    if (!isset($surn_countries[$country_to_iso3166[$country]])) {
-                        $surn_countries[$country_to_iso3166[$country]] = $place['tot'];
-                    } else {
-                        $surn_countries[$country_to_iso3166[$country]] += $place['tot'];
+                break;
+            case 'indi_distribution_chart':
+            default:
+                $chart_title = I18N::translate('Individual distribution chart');
+                // Count how many people have events in each country
+                $surn_countries = array();
+                $a_countries    = $this->statsPlaces('INDI');
+                // webtrees uses 3 letter country codes and localised country names, but google uses 2 letter codes.
+                foreach ($a_countries as $place) {
+                    $country = $place['country'];
+                    if (array_key_exists($country, $country_to_iso3166)) {
+                        if (!isset($surn_countries[$country_to_iso3166[$country]])) {
+                            $surn_countries[$country_to_iso3166[$country]] = $place['tot'];
+                        } else {
+                            $surn_countries[$country_to_iso3166[$country]] += $place['tot'];
+                        }
                     }
                 }
-            }
-            break;
+                break;
         }
         $chart_url = "https://chart.googleapis.com/chart?cht=t&amp;chtm=" . $chart_shows;
         $chart_url .= "&amp;chco=" . $WT_STATS_CHART_COLOR1 . "," . $WT_STATS_CHART_COLOR3 . "," . $WT_STATS_CHART_COLOR2; // country colours
@@ -2259,20 +2259,20 @@ class Stats {
         $row    = $rows[0];
         $person = Individual::getInstance($row['id'], $this->tree);
         switch ($type) {
-        default:
-        case 'full':
-            if ($person->canShowName()) {
-                $result = $person->formatList('span', false, $person->getFullName());
-            } else {
-                $result = I18N::translate('This information is private and cannot be shown.');
-            }
-            break;
-        case 'age':
-            $result = I18N::number((int) ($row['age'] / 365.25));
-            break;
-        case 'name':
-            $result = "<a href=\"" . $person->getHtmlUrl() . "\">" . $person->getFullName() . "</a>";
-            break;
+            default:
+            case 'full':
+                if ($person->canShowName()) {
+                    $result = $person->formatList('span', false, $person->getFullName());
+                } else {
+                    $result = I18N::translate('This information is private and cannot be shown.');
+                }
+                break;
+            case 'age':
+                $result = I18N::number((int) ($row['age'] / 365.25));
+                break;
+            case 'name':
+                $result = "<a href=\"" . $person->getHtmlUrl() . "\">" . $person->getFullName() . "</a>";
+                break;
         }
 
         return $result;
@@ -2942,36 +2942,36 @@ class Stats {
         $row    = $rows[0];
         $record = GedcomRecord::getInstance($row['id'], $this->tree);
         switch ($type) {
-        default:
-        case 'full':
-            if ($record->canShow()) {
-                $result = $record->formatList('span', false, $record->getFullName());
-            } else {
-                $result = I18N::translate('This information is private and cannot be shown.');
-            }
-            break;
-        case 'year':
-            $date   = new Date($row['type'] . ' ' . $row['year']);
-            $result = $date->display();
-            break;
-        case 'type':
-            if (isset($eventTypes[$row['fact']])) {
-                $result = $eventTypes[$row['fact']];
-            } else {
-                $result = GedcomTag::getLabel($row['fact']);
-            }
-            break;
-        case 'name':
-            $result = "<a href=\"" . $record->getHtmlUrl() . "\">" . $record->getFullName() . "</a>";
-            break;
-        case 'place':
-            $fact = $record->getFirstFact($row['fact']);
-            if ($fact) {
-                $result = FunctionsPrint::formatFactPlace($fact, true, true, true);
-            } else {
-                $result = I18N::translate('Private');
-            }
-            break;
+            default:
+            case 'full':
+                if ($record->canShow()) {
+                    $result = $record->formatList('span', false, $record->getFullName());
+                } else {
+                    $result = I18N::translate('This information is private and cannot be shown.');
+                }
+                break;
+            case 'year':
+                $date   = new Date($row['type'] . ' ' . $row['year']);
+                $result = $date->display();
+                break;
+            case 'type':
+                if (isset($eventTypes[$row['fact']])) {
+                    $result = $eventTypes[$row['fact']];
+                } else {
+                    $result = GedcomTag::getLabel($row['fact']);
+                }
+                break;
+            case 'name':
+                $result = "<a href=\"" . $record->getHtmlUrl() . "\">" . $record->getFullName() . "</a>";
+                break;
+            case 'place':
+                $fact = $record->getFirstFact($row['fact']);
+                if ($fact) {
+                    $result = FunctionsPrint::formatFactPlace($fact, true, true, true);
+                } else {
+                    $result = I18N::translate('Private');
+                }
+                break;
         }
 
         return $result;
@@ -3116,32 +3116,32 @@ class Stats {
             $person = Individual::getInstance($row['i_id'], $this->tree);
         }
         switch ($type) {
-        default:
-        case 'full':
-            if ($family->canShow()) {
-                $result = $family->formatList('span', false, $person->getFullName());
-            } else {
-                $result = I18N::translate('This information is private and cannot be shown.');
-            }
-            break;
-        case 'name':
-            $result = '<a href="' . $family->getHtmlUrl() . '">' . $person->getFullName() . '</a>';
-            break;
-        case 'age':
-            $age = $row['age'];
-            if ($show_years) {
-                if ((int) ($age / 365.25) > 0) {
-                    $age = (int) ($age / 365.25) . 'y';
-                } elseif ((int) ($age / 30.4375) > 0) {
-                    $age = (int) ($age / 30.4375) . 'm';
+            default:
+            case 'full':
+                if ($family->canShow()) {
+                    $result = $family->formatList('span', false, $person->getFullName());
                 } else {
-                    $age = $age . 'd';
+                    $result = I18N::translate('This information is private and cannot be shown.');
                 }
-                $result = FunctionsDate::getAgeAtEvent($age);
-            } else {
-                $result = I18N::number((int) ($age / 365.25));
-            }
-            break;
+                break;
+            case 'name':
+                $result = '<a href="' . $family->getHtmlUrl() . '">' . $person->getFullName() . '</a>';
+                break;
+            case 'age':
+                $age = $row['age'];
+                if ($show_years) {
+                    if ((int) ($age / 365.25) > 0) {
+                        $age = (int) ($age / 365.25) . 'y';
+                    } elseif ((int) ($age / 30.4375) > 0) {
+                        $age = (int) ($age / 30.4375) . 'm';
+                    } else {
+                        $age = $age . 'd';
+                    }
+                    $result = FunctionsDate::getAgeAtEvent($age);
+                } else {
+                    $result = I18N::number((int) ($age / 365.25));
+                }
+                break;
         }
 
         return $result;
@@ -3414,32 +3414,32 @@ class Stats {
             $person = Individual::getInstance($row['id'], $this->tree);
         }
         switch ($type) {
-        default:
-        case 'full':
-            if ($person->canShow()) {
-                $result = $person->formatList('span', false, $person->getFullName());
-            } else {
-                $result = I18N::translate('This information is private and cannot be shown.');
-            }
-            break;
-        case 'name':
-            $result = '<a href="' . $person->getHtmlUrl() . '">' . $person->getFullName() . '</a>';
-            break;
-        case 'age':
-            $age = $row['age'];
-            if ($show_years) {
-                if ((int) ($age / 365.25) > 0) {
-                    $age = (int) ($age / 365.25) . 'y';
-                } elseif ((int) ($age / 30.4375) > 0) {
-                    $age = (int) ($age / 30.4375) . 'm';
+            default:
+            case 'full':
+                if ($person->canShow()) {
+                    $result = $person->formatList('span', false, $person->getFullName());
                 } else {
-                    $age = $age . 'd';
+                    $result = I18N::translate('This information is private and cannot be shown.');
                 }
-                $result = FunctionsDate::getAgeAtEvent($age);
-            } else {
-                $result = (int) ($age / 365.25);
-            }
-            break;
+                break;
+            case 'name':
+                $result = '<a href="' . $person->getHtmlUrl() . '">' . $person->getFullName() . '</a>';
+                break;
+            case 'age':
+                $age = $row['age'];
+                if ($show_years) {
+                    if ((int) ($age / 365.25) > 0) {
+                        $age = (int) ($age / 365.25) . 'y';
+                    } elseif ((int) ($age / 30.4375) > 0) {
+                        $age = (int) ($age / 30.4375) . 'm';
+                    } else {
+                        $age = $age . 'd';
+                    }
+                    $result = FunctionsDate::getAgeAtEvent($age);
+                } else {
+                    $result = (int) ($age / 365.25);
+                }
+                break;
         }
 
         return $result;
@@ -4397,20 +4397,20 @@ class Stats {
         $row    = $rows[0];
         $family = Family::getInstance($row['id'], $this->tree);
         switch ($type) {
-        default:
-        case 'full':
-            if ($family->canShow()) {
-                $result = $family->formatList('span', false, $family->getFullName());
-            } else {
-                $result = I18N::translate('This information is private and cannot be shown.');
-            }
-            break;
-        case 'size':
-            $result = I18N::number($row['tot']);
-            break;
-        case 'name':
-            $result = "<a href=\"" . $family->getHtmlUrl() . "\">" . $family->getFullName() . '</a>';
-            break;
+            default:
+            case 'full':
+                if ($family->canShow()) {
+                    $result = $family->formatList('span', false, $family->getFullName());
+                } else {
+                    $result = I18N::translate('This information is private and cannot be shown.');
+                }
+                break;
+            case 'size':
+                $result = I18N::number($row['tot']);
+                break;
+            case 'name':
+                $result = "<a href=\"" . $family->getHtmlUrl() . "\">" . $family->getFullName() . '</a>';
+                break;
         }
 
         return $result;
@@ -4689,43 +4689,43 @@ class Stats {
             foreach ($rows as $values) {
                 $counts[] = round(100 * $values['total'] / $tot, 0);
                 switch ($values['d_month']) {
-                default:
-                case 'JAN':
-                    $values['d_month'] = 1;
-                    break;
-                case 'FEB':
-                    $values['d_month'] = 2;
-                    break;
-                case 'MAR':
-                    $values['d_month'] = 3;
-                    break;
-                case 'APR':
-                    $values['d_month'] = 4;
-                    break;
-                case 'MAY':
-                    $values['d_month'] = 5;
-                    break;
-                case 'JUN':
-                    $values['d_month'] = 6;
-                    break;
-                case 'JUL':
-                    $values['d_month'] = 7;
-                    break;
-                case 'AUG':
-                    $values['d_month'] = 8;
-                    break;
-                case 'SEP':
-                    $values['d_month'] = 9;
-                    break;
-                case 'OCT':
-                    $values['d_month'] = 10;
-                    break;
-                case 'NOV':
-                    $values['d_month'] = 11;
-                    break;
-                case 'DEC':
-                    $values['d_month'] = 12;
-                    break;
+                    default:
+                    case 'JAN':
+                        $values['d_month'] = 1;
+                        break;
+                    case 'FEB':
+                        $values['d_month'] = 2;
+                        break;
+                    case 'MAR':
+                        $values['d_month'] = 3;
+                        break;
+                    case 'APR':
+                        $values['d_month'] = 4;
+                        break;
+                    case 'MAY':
+                        $values['d_month'] = 5;
+                        break;
+                    case 'JUN':
+                        $values['d_month'] = 6;
+                        break;
+                    case 'JUL':
+                        $values['d_month'] = 7;
+                        break;
+                    case 'AUG':
+                        $values['d_month'] = 8;
+                        break;
+                    case 'SEP':
+                        $values['d_month'] = 9;
+                        break;
+                    case 'OCT':
+                        $values['d_month'] = 10;
+                        break;
+                    case 'NOV':
+                        $values['d_month'] = 11;
+                        break;
+                    case 'DEC':
+                        $values['d_month'] = 12;
+                        break;
                 }
                 $text .= I18N::translate(ucfirst(strtolower(($values['d_month'])))) . ' - ' . $values['total'] . '|';
             }
@@ -5316,16 +5316,16 @@ class Stats {
         }
 
         switch ($sorting) {
-        default:
-        case 'alpha':
-            uksort($surname_list, '\Fisharebest\Webtrees\I18N::strcasecmp');
-            break;
-        case 'count':
-            asort($surname_list);
-            break;
-        case 'rcount':
-            arsort($surname_list);
-            break;
+            default:
+            case 'alpha':
+                uksort($surname_list, '\Fisharebest\Webtrees\I18N::strcasecmp');
+                break;
+            case 'count':
+                asort($surname_list);
+                break;
+            case 'rcount':
+                arsort($surname_list);
+                break;
         }
 
         // Note that we count/display SPFX SURN, but sort/group under just SURN
@@ -5439,9 +5439,9 @@ class Stats {
                 }
             }
             switch ($SURNAME_TRADITION) {
-            case 'polish':
-                // most common surname should be in male variant (Kowalski, not Kowalska)
-                $top_name = preg_replace(array('/ska$/', '/cka$/', '/dzka$/', '/żka$/'), array('ski', 'cki', 'dzki', 'żki'), $top_name);
+                case 'polish':
+                    // most common surname should be in male variant (Kowalski, not Kowalska)
+                    $top_name = preg_replace(array('/ska$/', '/cka$/', '/dzka$/', '/żka$/'), array('ski', 'cki', 'dzki', 'żki'), $top_name);
             }
             $per = round(100 * $count_per / $tot_indi, 0);
             $chd .= $this->arrayToExtendedEncoding(array($per));
@@ -5481,19 +5481,19 @@ class Stats {
         }
 
         switch ($sex) {
-        case 'M':
-            $sex_sql = "i_sex='M'";
-            break;
-        case 'F':
-            $sex_sql = "i_sex='F'";
-            break;
-        case 'U':
-            $sex_sql = "i_sex='U'";
-            break;
-        case 'B':
-        default:
-            $sex_sql = "i_sex<>'U'";
-            break;
+            case 'M':
+                $sex_sql = "i_sex='M'";
+                break;
+            case 'F':
+                $sex_sql = "i_sex='F'";
+                break;
+            case 'U':
+                $sex_sql = "i_sex='U'";
+                break;
+            case 'B':
+            default:
+                $sex_sql = "i_sex<>'U'";
+                break;
         }
         $ged_id = $this->tree->getTreeId();
 
@@ -5538,23 +5538,23 @@ class Stats {
                 $tot = '';
             }
             switch ($type) {
-            case 'table':
-                $common[] = '<tr><td>' . $given . '</td><td>' . I18N::number($total) . '</td><td>' . $total . '</td></tr>';
-                break;
-            case 'list':
-                $common[] = '<li><span dir="auto">' . $given . '</span>' . $tot . '</li>';
-                break;
-            case 'nolist':
-                $common[] = '<span dir="auto">' . $given . '</span>' . $tot;
-                break;
+                case 'table':
+                    $common[] = '<tr><td>' . $given . '</td><td>' . I18N::number($total) . '</td><td>' . $total . '</td></tr>';
+                    break;
+                case 'list':
+                    $common[] = '<li><span dir="auto">' . $given . '</span>' . $tot . '</li>';
+                    break;
+                case 'nolist':
+                    $common[] = '<span dir="auto">' . $given . '</span>' . $tot;
+                    break;
             }
         }
         if ($common) {
             switch ($type) {
-            case 'table':
-                global $controller;
-                $table_id = Uuid::uuid4(); // lists requires a unique ID in case there are multiple lists per page
-                $controller
+                case 'table':
+                    global $controller;
+                    $table_id = Uuid::uuid4(); // lists requires a unique ID in case there are multiple lists per page
+                    $controller
                     ->addExternalJavascript(WT_JQUERY_DATATABLES_JS_URL)
                     ->addInlineJavascript('
 					jQuery("#' . $table_id . '").dataTable({
@@ -5574,15 +5574,15 @@ class Stats {
 					});
 					jQuery("#' . $table_id . '").css("visibility", "visible");
 				');
-                $lookup = array('M' => I18N::translate('Male'), 'F' => I18N::translate('Female'), 'U' => I18N::translateContext('unknown gender', 'Unknown'), 'B' => I18N::translate('All'));
+                    $lookup = array('M' => I18N::translate('Male'), 'F' => I18N::translate('Female'), 'U' => I18N::translateContext('unknown gender', 'Unknown'), 'B' => I18N::translate('All'));
 
-                return '<table id="' . $table_id . '" class="givn-list"><thead><tr><th class="ui-state-default" colspan="3">' . $lookup[$sex] . '</th></tr><tr><th>' . I18N::translate('Name') . '</th><th>' . I18N::translate('Count') . '</th><th>COUNT</th></tr></thead><tbody>' . implode('', $common) . '</tbody></table>';
-            case 'list':
-                return '<ul>' . implode('', $common) . '</ul>';
-            case 'nolist':
-                return implode(I18N::$list_separator, $common);
-            default:
-                return '';
+                    return '<table id="' . $table_id . '" class="givn-list"><thead><tr><th class="ui-state-default" colspan="3">' . $lookup[$sex] . '</th></tr><tr><th>' . I18N::translate('Name') . '</th><th>' . I18N::translate('Count') . '</th><th>COUNT</th></tr></thead><tbody>' . implode('', $common) . '</tbody></table>';
+                case 'list':
+                    return '<ul>' . implode('', $common) . '</ul>';
+                case 'nolist':
+                    return implode(I18N::$list_separator, $common);
+                default:
+                    return '';
             }
         } else {
             return '';
@@ -6069,42 +6069,42 @@ class Stats {
         }
 
         switch ($type) {
-        default:
-        case 'userid':
-            return $user->getUserId();
-        case 'username':
-            return Filter::escapeHtml($user->getUserName());
-        case 'fullname':
-            return $user->getRealNameHtml();
-        case 'regdate':
-            if (is_array($params) && isset($params[0]) && $params[0] != '') {
-                $datestamp = $params[0];
-            } else {
-                $datestamp = I18N::dateFormat();
-            }
+            default:
+            case 'userid':
+                return $user->getUserId();
+            case 'username':
+                return Filter::escapeHtml($user->getUserName());
+            case 'fullname':
+                return $user->getRealNameHtml();
+            case 'regdate':
+                if (is_array($params) && isset($params[0]) && $params[0] != '') {
+                    $datestamp = $params[0];
+                } else {
+                    $datestamp = I18N::dateFormat();
+                }
 
-            return FunctionsDate::timestampToGedcomDate($user->getPreference('reg_timestamp'))->display(false, $datestamp);
-        case 'regtime':
-            if (is_array($params) && isset($params[0]) && $params[0] != '') {
-                $datestamp = $params[0];
-            } else {
-                $datestamp = str_replace('%', '', I18N::timeFormat());
-            }
+                return FunctionsDate::timestampToGedcomDate($user->getPreference('reg_timestamp'))->display(false, $datestamp);
+            case 'regtime':
+                if (is_array($params) && isset($params[0]) && $params[0] != '') {
+                    $datestamp = $params[0];
+                } else {
+                    $datestamp = str_replace('%', '', I18N::timeFormat());
+                }
 
-            return date($datestamp, $user->getPreference('reg_timestamp'));
-        case 'loggedin':
-            if (is_array($params) && isset($params[0]) && $params[0] != '') {
-                $yes = $params[0];
-            } else {
-                $yes = I18N::translate('yes');
-            }
-            if (is_array($params) && isset($params[1]) && $params[1] != '') {
-                $no = $params[1];
-            } else {
-                $no = I18N::translate('no');
-            }
+                return date($datestamp, $user->getPreference('reg_timestamp'));
+            case 'loggedin':
+                if (is_array($params) && isset($params[0]) && $params[0] != '') {
+                    $yes = $params[0];
+                } else {
+                    $yes = I18N::translate('yes');
+                }
+                if (is_array($params) && isset($params[1]) && $params[1] != '') {
+                    $no = $params[1];
+                } else {
+                    $no = I18N::translate('no');
+                }
 
-            return Database::prepare("SELECT 1 FROM `##session` WHERE user_id=? LIMIT 1")->execute(array($user->getUserId()))->fetchOne() ? $yes : $no;
+                return Database::prepare("SELECT 1 FROM `##session` WHERE user_id=? LIMIT 1")->execute(array($user->getUserId()))->fetchOne() ? $yes : $no;
         }
     }
 
@@ -6941,50 +6941,50 @@ class Stats {
         }
         // The current chart engine (Google charts) can't handle <sup></sup> markup
         switch ($century) {
-        case 21:
-            return strip_tags(I18N::translateContext('CENTURY', '21st'));
-        case 20:
-            return strip_tags(I18N::translateContext('CENTURY', '20th'));
-        case 19:
-            return strip_tags(I18N::translateContext('CENTURY', '19th'));
-        case 18:
-            return strip_tags(I18N::translateContext('CENTURY', '18th'));
-        case 17:
-            return strip_tags(I18N::translateContext('CENTURY', '17th'));
-        case 16:
-            return strip_tags(I18N::translateContext('CENTURY', '16th'));
-        case 15:
-            return strip_tags(I18N::translateContext('CENTURY', '15th'));
-        case 14:
-            return strip_tags(I18N::translateContext('CENTURY', '14th'));
-        case 13:
-            return strip_tags(I18N::translateContext('CENTURY', '13th'));
-        case 12:
-            return strip_tags(I18N::translateContext('CENTURY', '12th'));
-        case 11:
-            return strip_tags(I18N::translateContext('CENTURY', '11th'));
-        case 10:
-            return strip_tags(I18N::translateContext('CENTURY', '10th'));
-        case  9:
-            return strip_tags(I18N::translateContext('CENTURY', '9th'));
-        case  8:
-            return strip_tags(I18N::translateContext('CENTURY', '8th'));
-        case  7:
-            return strip_tags(I18N::translateContext('CENTURY', '7th'));
-        case  6:
-            return strip_tags(I18N::translateContext('CENTURY', '6th'));
-        case  5:
-            return strip_tags(I18N::translateContext('CENTURY', '5th'));
-        case  4:
-            return strip_tags(I18N::translateContext('CENTURY', '4th'));
-        case  3:
-            return strip_tags(I18N::translateContext('CENTURY', '3rd'));
-        case  2:
-            return strip_tags(I18N::translateContext('CENTURY', '2nd'));
-        case  1:
-            return strip_tags(I18N::translateContext('CENTURY', '1st'));
-        default:
-            return ($century - 1) . '01-' . $century . '00';
+            case 21:
+                return strip_tags(I18N::translateContext('CENTURY', '21st'));
+            case 20:
+                return strip_tags(I18N::translateContext('CENTURY', '20th'));
+            case 19:
+                return strip_tags(I18N::translateContext('CENTURY', '19th'));
+            case 18:
+                return strip_tags(I18N::translateContext('CENTURY', '18th'));
+            case 17:
+                return strip_tags(I18N::translateContext('CENTURY', '17th'));
+            case 16:
+                return strip_tags(I18N::translateContext('CENTURY', '16th'));
+            case 15:
+                return strip_tags(I18N::translateContext('CENTURY', '15th'));
+            case 14:
+                return strip_tags(I18N::translateContext('CENTURY', '14th'));
+            case 13:
+                return strip_tags(I18N::translateContext('CENTURY', '13th'));
+            case 12:
+                return strip_tags(I18N::translateContext('CENTURY', '12th'));
+            case 11:
+                return strip_tags(I18N::translateContext('CENTURY', '11th'));
+            case 10:
+                return strip_tags(I18N::translateContext('CENTURY', '10th'));
+            case 9:
+                return strip_tags(I18N::translateContext('CENTURY', '9th'));
+            case 8:
+                return strip_tags(I18N::translateContext('CENTURY', '8th'));
+            case 7:
+                return strip_tags(I18N::translateContext('CENTURY', '7th'));
+            case 6:
+                return strip_tags(I18N::translateContext('CENTURY', '6th'));
+            case 5:
+                return strip_tags(I18N::translateContext('CENTURY', '5th'));
+            case 4:
+                return strip_tags(I18N::translateContext('CENTURY', '4th'));
+            case 3:
+                return strip_tags(I18N::translateContext('CENTURY', '3rd'));
+            case 2:
+                return strip_tags(I18N::translateContext('CENTURY', '2nd'));
+            case 1:
+                return strip_tags(I18N::translateContext('CENTURY', '1st'));
+            default:
+                return ($century - 1) . '01-' . $century . '00';
         }
     }
 }

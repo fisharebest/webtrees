@@ -157,21 +157,21 @@ $all_duplicates = array(
 
 <h2><?php echo $title; ?></h2>
 
-<?php if ($duplicate_list): ?>
+    <?php if ($duplicate_list): ?>
 <ul>
-    <?php foreach ($duplicate_list as $duplicates): ?>
+        <?php foreach ($duplicate_list as $duplicates): ?>
     <li>
-        <?php echo $duplicates[0]->getFullName(); ?>
-        <?php foreach ($duplicates as $record): ?>
+            <?php echo $duplicates[0]->getFullName(); ?>
+            <?php foreach ($duplicates as $record): ?>
         —
         <a href="<?php echo $record->getHtmlUrl(); ?>">
-            <?php echo $record->getXref(); ?>
+                <?php echo $record->getXref(); ?>
         </a>
         <?php endforeach; ?>
-        <?php if (count($duplicates) === 2): ?>
+            <?php if (count($duplicates) === 2): ?>
         —
         <a href="admin_site_merge.php?ged=<?php echo $WT_TREE->getNameHtml(); ?>&amp;gid1=<?php echo $duplicates[0]->getXref(); ?>&amp;gid2=<?php echo $duplicates[1]->getXref(); ?>&amp;url=admin_trees_duplicates.php">
-            <?php echo I18N::translate('Merge'); ?>
+                <?php echo I18N::translate('Merge'); ?>
         </a>
         <?php endif; ?>
     </li>

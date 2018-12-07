@@ -85,262 +85,262 @@ if ($delete_file) {
 ////////////////////////////////////////////////////////////////////////////////
 
 switch ($action) {
-case 'load_json':
-    $search = Filter::get('search');
-    $search = $search['value'];
-    $start  = Filter::getInteger('start');
-    $length = Filter::getInteger('length');
+    case 'load_json':
+        $search = Filter::get('search');
+        $search = $search['value'];
+        $start  = Filter::getInteger('start');
+        $length = Filter::getInteger('length');
 
-    switch ($files) {
-    case 'local':
-        // Filtered rows
-        $SELECT1 =
-            "SELECT SQL_CALC_FOUND_ROWS TRIM(LEADING :media_path_1 FROM m_filename) AS media_path, m_id AS xref, m_titl, m_file AS gedcom_id, m_gedcom AS gedcom" .
-            " FROM  `##media`" .
-            " JOIN  `##gedcom_setting` ON (m_file = gedcom_id AND setting_name = 'MEDIA_DIRECTORY')" .
-            " JOIN  `##gedcom` USING (gedcom_id)" .
-            " WHERE setting_value = :media_folder" .
-            " AND   m_filename LIKE CONCAT(:media_path_2, '%')" .
-            " AND   (SUBSTRING_INDEX(m_filename, '/', -1) LIKE CONCAT('%', :search_1, '%')" .
-            "  OR   m_titl LIKE CONCAT('%', :search_2, '%'))" .
-            " AND   m_filename NOT LIKE 'http://%'" .
-            " AND   m_filename NOT LIKE 'https://%'";
-        $ARGS1 = array(
-            'media_path_1' => $media_path,
-            'media_folder' => $media_folder,
-            'media_path_2' => Filter::escapeLike($media_path),
-            'search_1'     => Filter::escapeLike($search),
-            'search_2'     => Filter::escapeLike($search),
-        );
-        // Unfiltered rows
-        $SELECT2 =
-            "SELECT COUNT(*)" .
-            " FROM  `##media`" .
-            " JOIN  `##gedcom_setting` ON (m_file = gedcom_id AND setting_name = 'MEDIA_DIRECTORY')" .
-            " WHERE setting_value = :media_folder" .
-            " AND   m_filename LIKE CONCAT(:media_path_3, '%')" .
-            " AND   m_filename NOT LIKE 'http://%'" .
-            " AND   m_filename NOT LIKE 'https://%'";
-        $ARGS2 = array(
-            'media_folder' => $media_folder,
-            'media_path_3' => $media_path,
-        );
+        switch ($files) {
+            case 'local':
+                // Filtered rows
+                $SELECT1 =
+                "SELECT SQL_CALC_FOUND_ROWS TRIM(LEADING :media_path_1 FROM m_filename) AS media_path, m_id AS xref, m_titl, m_file AS gedcom_id, m_gedcom AS gedcom" .
+                " FROM  `##media`" .
+                " JOIN  `##gedcom_setting` ON (m_file = gedcom_id AND setting_name = 'MEDIA_DIRECTORY')" .
+                " JOIN  `##gedcom` USING (gedcom_id)" .
+                " WHERE setting_value = :media_folder" .
+                " AND   m_filename LIKE CONCAT(:media_path_2, '%')" .
+                " AND   (SUBSTRING_INDEX(m_filename, '/', -1) LIKE CONCAT('%', :search_1, '%')" .
+                "  OR   m_titl LIKE CONCAT('%', :search_2, '%'))" .
+                " AND   m_filename NOT LIKE 'http://%'" .
+                " AND   m_filename NOT LIKE 'https://%'";
+                $ARGS1 = array(
+                'media_path_1' => $media_path,
+                'media_folder' => $media_folder,
+                'media_path_2' => Filter::escapeLike($media_path),
+                'search_1'     => Filter::escapeLike($search),
+                'search_2'     => Filter::escapeLike($search),
+                );
+                // Unfiltered rows
+                $SELECT2 =
+                    "SELECT COUNT(*)" .
+                    " FROM  `##media`" .
+                    " JOIN  `##gedcom_setting` ON (m_file = gedcom_id AND setting_name = 'MEDIA_DIRECTORY')" .
+                    " WHERE setting_value = :media_folder" .
+                    " AND   m_filename LIKE CONCAT(:media_path_3, '%')" .
+                    " AND   m_filename NOT LIKE 'http://%'" .
+                    " AND   m_filename NOT LIKE 'https://%'";
+                $ARGS2 = array(
+                    'media_folder' => $media_folder,
+                    'media_path_3' => $media_path,
+                );
 
-        if ($subfolders == 'exclude') {
-            $SELECT1 .= " AND m_filename NOT LIKE CONCAT(:media_path_4, '%/%')";
-            $ARGS1['media_path_4'] = Filter::escapeLike($media_path);
-            $SELECT2 .= " AND m_filename NOT LIKE CONCAT(:media_path_4, '%/%')";
-            $ARGS2['media_path_4'] = Filter::escapeLike($media_path);
-        }
-
-        $order = Filter::getArray('order');
-        $SELECT1 .= " ORDER BY ";
-        if ($order) {
-            foreach ($order as $key => $value) {
-                if ($key > 0) {
-                    $SELECT1 .= ',';
+                if ($subfolders == 'exclude') {
+                        $SELECT1 .= " AND m_filename NOT LIKE CONCAT(:media_path_4, '%/%')";
+                        $ARGS1['media_path_4'] = Filter::escapeLike($media_path);
+                        $SELECT2 .= " AND m_filename NOT LIKE CONCAT(:media_path_4, '%/%')";
+                        $ARGS2['media_path_4'] = Filter::escapeLike($media_path);
                 }
-                // Datatables numbers columns 0, 1, 2
-                // MySQL numbers columns 1, 2, 3
-                switch ($value['dir']) {
-                case 'asc':
-                    $SELECT1 .= ":col_" . $key . " ASC";
-                    break;
-                case 'desc':
-                    $SELECT1 .= ":col_" . $key . " DESC";
-                    break;
-                }
-                $ARGS1['col_' . $key] = 1 + $value['column'];
-            }
-        } else {
-            $SELECT1 = " 1 ASC";
-        }
 
-        if ($length > 0) {
-            $SELECT1 .= " LIMIT :length OFFSET :start";
-            $ARGS1['length'] = $length;
-            $ARGS1['start']  = $start;
-        }
-
-        $rows = Database::prepare($SELECT1)->execute($ARGS1)->fetchAll();
-        // Total filtered/unfiltered rows
-        $recordsFiltered = Database::prepare("SELECT FOUND_ROWS()")->fetchOne();
-        $recordsTotal    = Database::prepare($SELECT2)->execute($ARGS2)->fetchOne();
-
-        $data = array();
-        foreach ($rows as $row) {
-            $media  = Media::getInstance($row->xref, Tree::findById($row->gedcom_id), $row->gedcom);
-            $data[] = array(
-                mediaFileInfo($media_folder, $media_path, $row->media_path),
-                $media->displayImage(),
-                mediaObjectInfo($media),
-            );
-        }
-        break;
-
-    case 'external':
-        // Filtered rows
-        $SELECT1 =
-            "SELECT SQL_CALC_FOUND_ROWS m_filename, m_id AS xref, m_titl, m_file AS gedcom_id, m_gedcom AS gedcom" .
-            " FROM  `##media`" .
-            " WHERE (m_filename LIKE 'http://%' OR m_filename LIKE 'https://%')" .
-            " AND   (m_filename LIKE CONCAT('%', :search_1, '%') OR m_titl LIKE CONCAT('%', :search_2, '%'))";
-        $ARGS1 = array(
-            'search_1' => Filter::escapeLike($search),
-            'search_2' => Filter::escapeLike($search),
-        );
-        // Unfiltered rows
-        $SELECT2 =
-            "SELECT COUNT(*)" .
-            " FROM  `##media`" .
-            " WHERE (m_filename LIKE 'http://%' OR m_filename LIKE 'https://%')";
-        $ARGS2 = array();
-
-        $order = Filter::getArray('order');
-        $SELECT1 .= " ORDER BY ";
-        if ($order) {
-            foreach ($order as $key => $value) {
-                if ($key > 0) {
-                    $SELECT1 .= ',';
-                }
-                // Datatables numbers columns 0, 1, 2
-                // MySQL numbers columns 1, 2, 3
-                switch ($value['dir']) {
-                case 'asc':
-                    $SELECT1 .= ":col_" . $key . " ASC";
-                    break;
-                case 'desc':
-                    $SELECT1 .= ":col_" . $key . " DESC";
-                    break;
-                }
-                $ARGS1['col_' . $key] = 1 + $value['column'];
-            }
-        } else {
-            $SELECT1 = " 1 ASC";
-        }
-
-        if ($length > 0) {
-            $SELECT1 .= " LIMIT :length OFFSET :start";
-            $ARGS1['length'] = $length;
-            $ARGS1['start']  = $start;
-        }
-
-        $rows = Database::prepare($SELECT1)->execute($ARGS1)->fetchAll();
-
-        // Total filtered/unfiltered rows
-        $recordsFiltered = Database::prepare("SELECT FOUND_ROWS()")->fetchOne();
-        $recordsTotal    = Database::prepare($SELECT2)->execute($ARGS2)->fetchOne();
-
-        $data = array();
-        foreach ($rows as $row) {
-            $media  = Media::getInstance($row->xref, Tree::findById($row->gedcom_id), $row->gedcom);
-            $data[] = array(
-                GedcomTag::getLabelValue('URL', $row->m_filename),
-                $media->displayImage(),
-                mediaObjectInfo($media),
-            );
-        }
-        break;
-
-    case 'unused':
-        // Which trees use this media folder?
-        $media_trees = Database::prepare(
-            "SELECT gedcom_name, gedcom_name" .
-            " FROM `##gedcom`" .
-            " JOIN `##gedcom_setting` USING (gedcom_id)" .
-            " WHERE setting_name='MEDIA_DIRECTORY' AND setting_value = :media_folder AND gedcom_id > 0"
-        )->execute(array(
-            'media_folder' => $media_folder,
-        ))->fetchAssoc();
-
-        $disk_files = all_disk_files($media_folder, $media_path, $subfolders, $search);
-        $db_files   = all_media_files($media_folder, $media_path, $subfolders, $search);
-
-        // All unused files
-        $unused_files = array_diff($disk_files, $db_files);
-        $recordsTotal = count($unused_files);
-
-        // Filter unused files
-        if ($search) {
-            $unused_files = array_filter($unused_files, function ($x) use ($search) { return strpos($x, $search) !== false; });
-        }
-        $recordsFiltered = count($unused_files);
-
-        // Sort files - only option is column 0
-        sort($unused_files);
-        $order = Filter::get('order');
-        if ($order && $order[0]['dir'] === 'desc') {
-            $unused_files = array_reverse($unused_files);
-        }
-
-        // Paginate unused files
-        $unused_files = array_slice($unused_files, $start, $length);
-
-        $data = array();
-        foreach ($unused_files as $unused_file) {
-            $full_path  = WT_DATA_DIR . $media_folder . $media_path . $unused_file;
-            $thumb_path = WT_DATA_DIR . $media_folder . 'thumbs/' . $media_path . $unused_file;
-            if (!file_exists($thumb_path)) {
-                $thumb_path = $full_path;
-            }
-
-            try {
-                $imgsize = getimagesize($thumb_path);
-                // We can’t create a URL (not in public_html) or use the media firewall (no such object)
-                // so just the base64-encoded image inline.
-                if ($imgsize === false) {
-                    // not an image
-                    $img = '-';
+                $order = Filter::getArray('order');
+                $SELECT1 .= " ORDER BY ";
+                if ($order) {
+                    foreach ($order as $key => $value) {
+                        if ($key > 0) {
+                            $SELECT1 .= ',';
+                        }
+                        // Datatables numbers columns 0, 1, 2
+                        // MySQL numbers columns 1, 2, 3
+                        switch ($value['dir']) {
+                            case 'asc':
+                                $SELECT1 .= ":col_" . $key . " ASC";
+                                break;
+                            case 'desc':
+                                $SELECT1 .= ":col_" . $key . " DESC";
+                            break;
+                        }
+                        $ARGS1['col_' . $key] = 1 + $value['column'];
+                    }
                 } else {
-                    $img = '<img src="data:' . $imgsize['mime'] . ';base64,' . base64_encode(file_get_contents($thumb_path)) . '" class="thumbnail" ' . $imgsize[3] . '" style="max-width:100px;height:auto;">';
+                    $SELECT1 = " 1 ASC";
                 }
-            } catch (\ErrorException $ex) {
-                // Not an image, or not a valid image?
-                $img = '-';
-            }
 
-            // Is there a pending record for this file?
-            $exists_pending = Database::prepare(
-                "SELECT 1 FROM `##change` WHERE status='pending' AND new_gedcom LIKE CONCAT('%\n1 FILE ', :unused_file, '\n%')"
-            )->execute(array(
-                'unused_file' => Filter::escapeLike($unused_file),
-            ))->fetchOne();
-
-            // Form to create new media object in each tree
-            $create_form = '';
-            if (!$exists_pending) {
-                foreach ($media_trees as $media_tree) {
-                    $create_form .=
-                        '<p><a href="" onclick="window.open(\'addmedia.php?action=showmediaform&amp;ged=' . rawurlencode($media_tree) . '&amp;filename=' . rawurlencode($unused_file) . '\', \'_blank\', edit_window_specs); return false;">' . I18N::translate('Create') . '</a> — ' . Filter::escapeHtml($media_tree) . '<p>';
+                if ($length > 0) {
+                    $SELECT1 .= " LIMIT :length OFFSET :start";
+                    $ARGS1['length'] = $length;
+                    $ARGS1['start']  = $start;
                 }
-            }
 
-            $conf        = I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs($unused_file));
-            $delete_link =
-                '<p><a onclick="if (confirm(\'' . Filter::escapeJs($conf) . '\')) jQuery.post(\'admin_media.php\',{delete:\'' . Filter::escapeJs($media_path . $unused_file) . '\',media_folder:\'' . Filter::escapeJs($media_folder) . '\'},function(){location.reload();})" href="#">' . I18N::translate('Delete') . '</a></p>';
+                $rows = Database::prepare($SELECT1)->execute($ARGS1)->fetchAll();
+                // Total filtered/unfiltered rows
+                $recordsFiltered = Database::prepare("SELECT FOUND_ROWS()")->fetchOne();
+                $recordsTotal    = Database::prepare($SELECT2)->execute($ARGS2)->fetchOne();
 
-            $data[] = array(
-                mediaFileInfo($media_folder, $media_path, $unused_file) . $delete_link,
-                $img,
-                $create_form,
-            );
+                $data = array();
+                foreach ($rows as $row) {
+                    $media  = Media::getInstance($row->xref, Tree::findById($row->gedcom_id), $row->gedcom);
+                    $data[] = array(
+                    mediaFileInfo($media_folder, $media_path, $row->media_path),
+                    $media->displayImage(),
+                    mediaObjectInfo($media),
+                    );
+                }
+            break;
+
+            case 'external':
+                // Filtered rows
+                $SELECT1 =
+                "SELECT SQL_CALC_FOUND_ROWS m_filename, m_id AS xref, m_titl, m_file AS gedcom_id, m_gedcom AS gedcom" .
+                " FROM  `##media`" .
+                " WHERE (m_filename LIKE 'http://%' OR m_filename LIKE 'https://%')" .
+                " AND   (m_filename LIKE CONCAT('%', :search_1, '%') OR m_titl LIKE CONCAT('%', :search_2, '%'))";
+                $ARGS1 = array(
+                'search_1' => Filter::escapeLike($search),
+                'search_2' => Filter::escapeLike($search),
+                );
+                // Unfiltered rows
+                $SELECT2 =
+                    "SELECT COUNT(*)" .
+                    " FROM  `##media`" .
+                    " WHERE (m_filename LIKE 'http://%' OR m_filename LIKE 'https://%')";
+                $ARGS2 = array();
+
+                $order = Filter::getArray('order');
+                $SELECT1 .= " ORDER BY ";
+                if ($order) {
+                    foreach ($order as $key => $value) {
+                        if ($key > 0) {
+                            $SELECT1 .= ',';
+                        }
+                        // Datatables numbers columns 0, 1, 2
+                        // MySQL numbers columns 1, 2, 3
+                        switch ($value['dir']) {
+                            case 'asc':
+                                $SELECT1 .= ":col_" . $key . " ASC";
+                                break;
+                            case 'desc':
+                                $SELECT1 .= ":col_" . $key . " DESC";
+                            break;
+                        }
+                        $ARGS1['col_' . $key] = 1 + $value['column'];
+                    }
+                } else {
+                    $SELECT1 = " 1 ASC";
+                }
+
+                if ($length > 0) {
+                    $SELECT1 .= " LIMIT :length OFFSET :start";
+                    $ARGS1['length'] = $length;
+                    $ARGS1['start']  = $start;
+                }
+
+                $rows = Database::prepare($SELECT1)->execute($ARGS1)->fetchAll();
+
+                // Total filtered/unfiltered rows
+                $recordsFiltered = Database::prepare("SELECT FOUND_ROWS()")->fetchOne();
+                $recordsTotal    = Database::prepare($SELECT2)->execute($ARGS2)->fetchOne();
+
+                $data = array();
+                foreach ($rows as $row) {
+                    $media  = Media::getInstance($row->xref, Tree::findById($row->gedcom_id), $row->gedcom);
+                    $data[] = array(
+                    GedcomTag::getLabelValue('URL', $row->m_filename),
+                    $media->displayImage(),
+                    mediaObjectInfo($media),
+                    );
+                }
+            break;
+
+            case 'unused':
+                // Which trees use this media folder?
+                $media_trees = Database::prepare(
+                "SELECT gedcom_name, gedcom_name" .
+                " FROM `##gedcom`" .
+                " JOIN `##gedcom_setting` USING (gedcom_id)" .
+                " WHERE setting_name='MEDIA_DIRECTORY' AND setting_value = :media_folder AND gedcom_id > 0"
+                )->execute(array(
+                    'media_folder' => $media_folder,
+                ))->fetchAssoc();
+
+                $disk_files = all_disk_files($media_folder, $media_path, $subfolders, $search);
+                $db_files   = all_media_files($media_folder, $media_path, $subfolders, $search);
+
+                // All unused files
+                $unused_files = array_diff($disk_files, $db_files);
+                $recordsTotal = count($unused_files);
+
+                // Filter unused files
+                if ($search) {
+                    $unused_files = array_filter($unused_files, function ($x) use ($search) { return strpos($x, $search) !== false; });
+                }
+                $recordsFiltered = count($unused_files);
+
+                // Sort files - only option is column 0
+                sort($unused_files);
+                $order = Filter::get('order');
+                if ($order && $order[0]['dir'] === 'desc') {
+                    $unused_files = array_reverse($unused_files);
+                }
+
+                // Paginate unused files
+                $unused_files = array_slice($unused_files, $start, $length);
+
+                $data = array();
+                foreach ($unused_files as $unused_file) {
+                    $full_path  = WT_DATA_DIR . $media_folder . $media_path . $unused_file;
+                    $thumb_path = WT_DATA_DIR . $media_folder . 'thumbs/' . $media_path . $unused_file;
+                    if (!file_exists($thumb_path)) {
+                        $thumb_path = $full_path;
+                    }
+
+                    try {
+                        $imgsize = getimagesize($thumb_path);
+                        // We can’t create a URL (not in public_html) or use the media firewall (no such object)
+                        // so just the base64-encoded image inline.
+                        if ($imgsize === false) {
+                            // not an image
+                            $img = '-';
+                        } else {
+                            $img = '<img src="data:' . $imgsize['mime'] . ';base64,' . base64_encode(file_get_contents($thumb_path)) . '" class="thumbnail" ' . $imgsize[3] . '" style="max-width:100px;height:auto;">';
+                        }
+                    } catch (\ErrorException $ex) {
+                        // Not an image, or not a valid image?
+                        $img = '-';
+                    }
+
+                    // Is there a pending record for this file?
+                    $exists_pending = Database::prepare(
+                    "SELECT 1 FROM `##change` WHERE status='pending' AND new_gedcom LIKE CONCAT('%\n1 FILE ', :unused_file, '\n%')"
+                    )->execute(array(
+                        'unused_file' => Filter::escapeLike($unused_file),
+                    ))->fetchOne();
+
+                    // Form to create new media object in each tree
+                    $create_form = '';
+                    if (!$exists_pending) {
+                        foreach ($media_trees as $media_tree) {
+                            $create_form .=
+                                '<p><a href="" onclick="window.open(\'addmedia.php?action=showmediaform&amp;ged=' . rawurlencode($media_tree) . '&amp;filename=' . rawurlencode($unused_file) . '\', \'_blank\', edit_window_specs); return false;">' . I18N::translate('Create') . '</a> — ' . Filter::escapeHtml($media_tree) . '<p>';
+                        }
+                    }
+
+                    $conf        = I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs($unused_file));
+                    $delete_link =
+                    '<p><a onclick="if (confirm(\'' . Filter::escapeJs($conf) . '\')) jQuery.post(\'admin_media.php\',{delete:\'' . Filter::escapeJs($media_path . $unused_file) . '\',media_folder:\'' . Filter::escapeJs($media_folder) . '\'},function(){location.reload();})" href="#">' . I18N::translate('Delete') . '</a></p>';
+
+                    $data[] = array(
+                    mediaFileInfo($media_folder, $media_path, $unused_file) . $delete_link,
+                    $img,
+                    $create_form,
+                    );
+                }
+            break;
+
+            default:
+            throw new \DomainException('Invalid action');
         }
-        break;
 
-    default:
-        throw new \DomainException('Invalid action');
-    }
-
-    header('Content-type: application/json');
-    // See http://www.datatables.net/usage/server-side
-    echo json_encode(array(
+        header('Content-type: application/json');
+        // See http://www.datatables.net/usage/server-side
+        echo json_encode(array(
         'draw'            => Filter::getInteger('draw'), // String, but always an integer
         'recordsTotal'    => $recordsTotal,
         'recordsFiltered' => $recordsFiltered,
         'data'            => $data,
-    ));
+        ));
 
-    return;
+        return;
 }
 
 /**
@@ -647,15 +647,15 @@ $controller
 
                     <div dir="ltr">
                         <?php if (count($media_folders) > 1): ?>
-                        <?php echo WT_DATA_DIR, FunctionsEdit::selectEditControl('media_folder', $media_folders, null, $media_folder, 'onchange="this.form.submit();"'); ?>
+                            <?php echo WT_DATA_DIR, FunctionsEdit::selectEditControl('media_folder', $media_folders, null, $media_folder, 'onchange="this.form.submit();"'); ?>
                         <?php else: ?>
                         <?php echo WT_DATA_DIR, Filter::escapeHtml($media_folder); ?>
                         <input type="hidden" name="media_folder" value="<?php echo Filter::escapeHtml($media_folder); ?>">
                         <?php endif; ?>
                     </div>
 
-                    <?php if (count($media_paths) > 1): ?>
-                    <?php echo FunctionsEdit::selectEditControl('media_path', $media_paths, null, $media_path, 'onchange="this.form.submit();"'); ?>
+                        <?php if (count($media_paths) > 1): ?>
+                            <?php echo FunctionsEdit::selectEditControl('media_path', $media_paths, null, $media_path, 'onchange="this.form.submit();"'); ?>
                     <?php else: ?>
                     <?php echo Filter::escapeHtml($media_path); ?>
                     <input type="hidden" name="media_path" value="<?php echo Filter::escapeHtml($media_path); ?>">

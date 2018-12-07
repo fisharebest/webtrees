@@ -40,10 +40,10 @@ class XeneaTheme extends AbstractTheme implements ThemeInterface {
     protected function flashMessageContainer(\stdClass $message) {
         // This theme uses jQueryUI markup.
         switch ($message->status) {
-        case 'danger':
-            return '<p class="ui-state-error">' . $message->text . '</p>';
-        default:
-            return '<p class="ui-state-highlight">' . $message->text . '</p>';
+            case 'danger':
+                return '<p class="ui-state-error">' . $message->text . '</p>';
+            default:
+                return '<p class="ui-state-highlight">' . $message->text . '</p>';
         }
     }
 

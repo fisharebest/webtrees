@@ -114,15 +114,15 @@ class RelationshipsChartModule extends AbstractModule implements ModuleConfigInt
      */
     public function modAction($mod_action) {
         switch ($mod_action) {
-        case 'admin':
-            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                $this->saveConfig();
-            } else {
-                $this->editConfig();
-            }
-            break;
-        default:
-            http_response_code(404);
+            case 'admin':
+                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                    $this->saveConfig();
+                } else {
+                    $this->editConfig();
+                }
+                break;
+            default:
+                http_response_code(404);
         }
     }
 

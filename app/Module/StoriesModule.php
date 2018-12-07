@@ -49,21 +49,21 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
      */
     public function modAction($mod_action) {
         switch ($mod_action) {
-        case 'admin_edit':
-            $this->edit();
-            break;
-        case 'admin_delete':
-            $this->delete();
-            $this->config();
-            break;
-        case 'admin_config':
-            $this->config();
-            break;
-        case 'show_list':
-            $this->showList();
-            break;
-        default:
-            http_response_code(404);
+            case 'admin_edit':
+                $this->edit();
+                break;
+            case 'admin_delete':
+                $this->delete();
+                $this->config();
+                break;
+            case 'admin_config':
+                $this->config();
+                break;
+            case 'show_list':
+                $this->showList();
+                break;
+            default:
+                http_response_code(404);
         }
     }
 

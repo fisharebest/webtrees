@@ -113,12 +113,12 @@ function checknames(frm) {
                 </label>
             </div>
             <?php if (count(Tree::getAll()) > 1 && Site::getPreference('ALLOW_CHANGE_GEDCOM')): ?>
-            <?php if (count(Tree::getAll()) > 3): ?>
+                <?php if (count(Tree::getAll()) > 3): ?>
             <div class="label"></div>
             <div class="value">
                 <input type="button" value="<?php echo /* I18N: select all (of the family trees) */ I18N::translate('select all'); ?>" onclick="jQuery('#search_trees :checkbox').each(function(){jQuery(this).attr('checked', true);});return false;">
                 <input type="button" value="<?php echo /* I18N: select none (of the family trees) */ I18N::translate('select none'); ?>" onclick="jQuery('#search_trees :checkbox').each(function(){jQuery(this).attr('checked', false);});return false;">
-                <?php if (count(Tree::getAll()) > 10): ?>
+                    <?php if (count(Tree::getAll()) > 10): ?>
                 <input type="button" value="<?php echo I18N::translate('invert selection'); ?>" onclick="jQuery('#search_trees :checkbox').each(function(){jQuery(this).attr('checked', !jQuery(this).attr('checked'));});return false;">
                 <?php endif; ?>
                 </div>

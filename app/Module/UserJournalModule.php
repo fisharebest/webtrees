@@ -69,12 +69,12 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface {
         global $ctype, $WT_TREE;
 
         switch (Filter::get('action')) {
-        case 'deletenews':
-            $news_id = Filter::getInteger('news_id');
-            if ($news_id) {
-                Database::prepare("DELETE FROM `##news` WHERE news_id = ?")->execute(array($news_id));
-            }
-            break;
+            case 'deletenews':
+                $news_id = Filter::getInteger('news_id');
+                if ($news_id) {
+                    Database::prepare("DELETE FROM `##news` WHERE news_id = ?")->execute(array($news_id));
+                }
+                break;
         }
 
         $articles = Database::prepare(

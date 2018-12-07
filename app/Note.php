@@ -97,10 +97,10 @@ class Note extends GedcomRecord {
 
         if ($text) {
             switch ($this->getTree()->getPreference('FORMAT_TEXT')) {
-            case 'markdown':
-                $text = Filter::markdown($text);
-                $text = Filter::unescapeHtml($text);
-                break;
+                case 'markdown':
+                    $text = Filter::markdown($text);
+                    $text = Filter::unescapeHtml($text);
+                    break;
             }
 
             list($text) = explode("\n", $text);

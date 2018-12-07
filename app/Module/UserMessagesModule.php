@@ -46,15 +46,15 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface 
      */
     public function modAction($mod_action) {
         switch ($mod_action) {
-        case 'delete':
-            $stmt = Database::prepare("DELETE FROM `##message` WHERE user_id = :user_id AND message_id = :message_id");
+            case 'delete':
+                $stmt = Database::prepare("DELETE FROM `##message` WHERE user_id = :user_id AND message_id = :message_id");
 
-            foreach (Filter::postArray('message_id') as $id) {
-                $stmt->execute(array(
+                foreach (Filter::postArray('message_id') as $id) {
+                    $stmt->execute(array(
                     'message_id' => $id,
                     'user_id'    => Auth::id(),
-                ));
-            }
+                    ));
+                }
         }
 
         $ged   = Filter::post('ged');

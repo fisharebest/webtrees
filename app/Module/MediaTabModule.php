@@ -93,7 +93,7 @@ class MediaTabModule extends AbstractModule implements ModuleTabInterface {
                     </a>
                 </td>
             </tr>
-        <?php
+            <?php
         }
         ?>
         </table>

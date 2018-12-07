@@ -31,27 +31,27 @@ class FunctionsDate {
      */
     public static function getAgeAtEvent($age_string) {
         switch (strtoupper($age_string)) {
-        case 'CHILD':
-            return I18N::translate('Child');
-        case 'INFANT':
-            return I18N::translate('Infant');
-        case 'STILLBORN':
-            return I18N::translate('Stillborn');
-        default:
-            return preg_replace_callback(
+            case 'CHILD':
+                return I18N::translate('Child');
+            case 'INFANT':
+                return I18N::translate('Infant');
+            case 'STILLBORN':
+                return I18N::translate('Stillborn');
+            default:
+                return preg_replace_callback(
                 array(
                     '/(\d+)([ymwd])/',
                 ),
                 function ($match) {
                     switch ($match[2]) {
-                    case 'y':
-                        return I18N::plural('%s year', '%s years', $match[1], I18N::digits($match[1]));
-                    case 'm':
-                        return I18N::plural('%s month', '%s months', $match[1], I18N::digits($match[1]));
-                    case 'w':
-                        return I18N::plural('%s week', '%s weeks', $match[1], I18N::digits($match[1]));
-                    case 'd':
-                        return I18N::plural('%s day', '%s days', $match[1], I18N::digits($match[1]));
+                        case 'y':
+                            return I18N::plural('%s year', '%s years', $match[1], I18N::digits($match[1]));
+                        case 'm':
+                            return I18N::plural('%s month', '%s months', $match[1], I18N::digits($match[1]));
+                        case 'w':
+                            return I18N::plural('%s week', '%s weeks', $match[1], I18N::digits($match[1]));
+                        case 'd':
+                            return I18N::plural('%s day', '%s days', $match[1], I18N::digits($match[1]));
                     }
                 },
                 $age_string
@@ -74,40 +74,40 @@ class FunctionsDate {
         preg_match_all('/%[^%]/', $time_fmt, $matches);
         foreach ($matches[0] as $match) {
             switch ($match) {
-            case '%a':
-                $t = gmdate('His', $time);
-                if ($t == '000000') {
-                    $time_fmt = str_replace($match, /* I18N: time format “%a” - exactly 00:00:00 */
+                case '%a':
+                    $t = gmdate('His', $time);
+                    if ($t == '000000') {
+                        $time_fmt = str_replace($match, /* I18N: time format “%a” - exactly 00:00:00 */
                         I18N::translate('midnight'), $time_fmt);
-                } elseif ($t < '120000') {
-                    $time_fmt = str_replace($match, /* I18N: time format “%a” - between 00:00:01 and 11:59:59 */
+                    } elseif ($t < '120000') {
+                        $time_fmt = str_replace($match, /* I18N: time format “%a” - between 00:00:01 and 11:59:59 */
                         I18N::translate('a.m.'), $time_fmt);
-                } elseif ($t == '120000') {
-                    $time_fmt = str_replace($match, /* I18N: time format “%a” - exactly 12:00:00 */
+                    } elseif ($t == '120000') {
+                        $time_fmt = str_replace($match, /* I18N: time format “%a” - exactly 12:00:00 */
                         I18N::translate('noon'), $time_fmt);
-                } else {
-                    $time_fmt = str_replace($match, /* I18N: time format “%a” - between 12:00:01 and 23:59:59 */
+                    } else {
+                        $time_fmt = str_replace($match, /* I18N: time format “%a” - between 12:00:01 and 23:59:59 */
                         I18N::translate('p.m.'), $time_fmt);
-                }
-                break;
-            case '%A':
-                $t = gmdate('His', $time);
-                if ($t == '000000') {
-                    $time_fmt = str_replace($match, /* I18N: time format “%A” - exactly 00:00:00 */
+                    }
+                    break;
+                case '%A':
+                    $t = gmdate('His', $time);
+                    if ($t == '000000') {
+                        $time_fmt = str_replace($match, /* I18N: time format “%A” - exactly 00:00:00 */
                         I18N::translate('Midnight'), $time_fmt);
-                } elseif ($t < '120000') {
-                    $time_fmt = str_replace($match, /* I18N: time format “%A” - between 00:00:01 and 11:59:59 */
+                    } elseif ($t < '120000') {
+                        $time_fmt = str_replace($match, /* I18N: time format “%A” - between 00:00:01 and 11:59:59 */
                         I18N::translate('A.M.'), $time_fmt);
-                } elseif ($t == '120000') {
-                    $time_fmt = str_replace($match, /* I18N: time format “%A” - exactly 12:00:00 */
+                    } elseif ($t == '120000') {
+                        $time_fmt = str_replace($match, /* I18N: time format “%A” - exactly 12:00:00 */
                         I18N::translate('Noon'), $time_fmt);
-                } else {
-                    $time_fmt = str_replace($match, /* I18N: time format “%A” - between 12:00:01 and 23:59:59 */
+                    } else {
+                        $time_fmt = str_replace($match, /* I18N: time format “%A” - between 12:00:01 and 23:59:59 */
                         I18N::translate('P.M.'), $time_fmt);
-                }
-                break;
-            default:
-                $time_fmt = str_replace($match, I18N::digits(gmdate(substr($match, -1), $time)), $time_fmt);
+                    }
+                    break;
+                default:
+                    $time_fmt = str_replace($match, I18N::digits(gmdate(substr($match, -1), $time)), $time_fmt);
             }
         }
 

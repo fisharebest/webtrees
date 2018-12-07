@@ -141,7 +141,7 @@ echo '</script>';
         if (strpos($controller->getField($i), "FAMC:WIFE:NAME") === 0) {
             continue;
         }
-    ?>
+        ?>
     <tr>
         <td class="list_label">
             <?php echo $controller->getLabel($controller->getField($i)); ?>
@@ -162,8 +162,8 @@ echo '</script>';
             <?php } else { ?>
             <input type="hidden" name="fields[<?php echo $i; ?>]" value="<?php echo $controller->getField($i); ?>">
             <?php }
-            if (preg_match("/:DATE$/", $currentFieldSearch) > 0) {
-                ?>
+if (preg_match("/:DATE$/", $currentFieldSearch) > 0) {
+    ?>
                 <select name="plusminus[<?php echo $i; ?>]">
                     <option value=""><?php echo I18N::translate('Exact date'); ?></option>
                     <option value="2" <?php if (!empty($controller->plusminus[$i]) && $controller->plusminus[$i] == 2) echo 'selected'; ?>><?php echo I18N::plural('±%s year', '±%s years', 2, I18N::number(2)); ?></option>
@@ -185,18 +185,18 @@ echo '</script>';
                 $searchField  = $controller->getField($k);
                 $searchOption = substr($searchField, 20); // Assume we have something like "FAMC:HUSB:NAME:GIVN:foo"
                 switch (substr($searchField, 0, 20)) {
-                case 'FAMC:HUSB:NAME:GIVN:':
-                    $fatherGivnOption = $searchOption;
-                    break;
-                case 'FAMC:HUSB:NAME:SURN:':
-                    $fatherSurnOption = $searchOption;
-                    break;
-                case 'FAMC:WIFE:NAME:GIVN:':
-                    $motherGivnOption = $searchOption;
-                    break;
-                case 'FAMC:WIFE:NAME:SURN:':
-                    $motherSurnOption = $searchOption;
-                    break;
+                    case 'FAMC:HUSB:NAME:GIVN:':
+                        $fatherGivnOption = $searchOption;
+                        break;
+                    case 'FAMC:HUSB:NAME:SURN:':
+                        $fatherSurnOption = $searchOption;
+                        break;
+                    case 'FAMC:WIFE:NAME:GIVN:':
+                        $motherGivnOption = $searchOption;
+                        break;
+                    case 'FAMC:WIFE:NAME:SURN:':
+                        $motherSurnOption = $searchOption;
+                        break;
                 }
             }
             ?>

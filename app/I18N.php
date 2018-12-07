@@ -141,13 +141,13 @@ class I18N {
     public static function collation() {
         $collation = self::$locale->collation();
         switch ($collation) {
-        case 'croatian_ci':
-        case 'german2_ci':
-        case 'vietnamese_ci':
-            // Only available in MySQL 5.6
-            return 'utf8_unicode_ci';
-        default:
-            return 'utf8_' . $collation;
+            case 'croatian_ci':
+            case 'german2_ci':
+            case 'vietnamese_ci':
+                // Only available in MySQL 5.6
+                return 'utf8_unicode_ci';
+            default:
+                return 'utf8_' . $collation;
         }
     }
 
@@ -283,15 +283,15 @@ class I18N {
      */
     public static function gedcomAge($string) {
         switch ($string) {
-        case 'STILLBORN':
-            // I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (stillborn)
-            return self::translate('(stillborn)');
-        case 'INFANT':
-            // I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (in infancy)
-            return self::translate('(in infancy)');
-        case 'CHILD':
-            // I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (in childhood)
-            return self::translate('(in childhood)');
+            case 'STILLBORN':
+                // I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (stillborn)
+                return self::translate('(stillborn)');
+            case 'INFANT':
+                // I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (in infancy)
+                return self::translate('(in infancy)');
+            case 'CHILD':
+                // I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (in childhood)
+                return self::translate('(in childhood)');
         }
         $age = array();
         if (preg_match('/(\d+)y/', $string, $match)) {
@@ -591,13 +591,13 @@ class I18N {
      */
     public static function scriptDirection($script) {
         switch ($script) {
-        case 'Arab':
-        case 'Hebr':
-        case 'Mong':
-        case 'Thaa':
-            return 'rtl';
-        default:
-            return 'ltr';
+            case 'Arab':
+            case 'Hebr':
+            case 'Mong':
+            case 'Thaa':
+                return 'rtl';
+            default:
+                return 'ltr';
         }
     }
 
@@ -878,15 +878,15 @@ class I18N {
      */
     public static function defaultCalendar() {
         switch (self::$locale->languageTag()) {
-        case 'ar':
-            return new ArabicCalendar;
-        case 'fa':
-            return new PersianCalendar;
-        case 'he':
-        case 'yi':
-            return new JewishCalendar;
-        default:
-            return new GregorianCalendar;
+            case 'ar':
+                return new ArabicCalendar;
+            case 'fa':
+                return new PersianCalendar;
+            case 'he':
+            case 'yi':
+                return new JewishCalendar;
+            default:
+                return new GregorianCalendar;
         }
     }
 }

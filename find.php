@@ -47,60 +47,60 @@ if ($subclick === 'all') {
 $embed = substr($choose, 0, 1) === '1';
 
 switch ($type) {
-case 'indi':
-    $controller->setPageTitle(I18N::translate('Find an individual'));
-    break;
-case 'fam':
-    $controller->setPageTitle(I18N::translate('Find a family'));
-    break;
-case 'media':
-    $controller->setPageTitle(I18N::translate('Find a media object'));
-    break;
-case 'place':
-    $controller->setPageTitle(I18N::translate('Find a place'));
-    break;
-case 'repo':
-    $controller->setPageTitle(I18N::translate('Find a repository'));
-    break;
-case 'note':
-    $controller->setPageTitle(I18N::translate('Find a shared note'));
-    break;
-case 'source':
-    $controller->setPageTitle(I18N::translate('Find a source'));
-    break;
-case 'specialchar':
-    $controller->setPageTitle(I18N::translate('Find a special character'));
-    break;
-case 'factINDI':
-    $controller
+    case 'indi':
+        $controller->setPageTitle(I18N::translate('Find an individual'));
+        break;
+    case 'fam':
+        $controller->setPageTitle(I18N::translate('Find a family'));
+        break;
+    case 'media':
+        $controller->setPageTitle(I18N::translate('Find a media object'));
+        break;
+    case 'place':
+        $controller->setPageTitle(I18N::translate('Find a place'));
+        break;
+    case 'repo':
+        $controller->setPageTitle(I18N::translate('Find a repository'));
+        break;
+    case 'note':
+        $controller->setPageTitle(I18N::translate('Find a shared note'));
+        break;
+    case 'source':
+        $controller->setPageTitle(I18N::translate('Find a source'));
+        break;
+    case 'specialchar':
+        $controller->setPageTitle(I18N::translate('Find a special character'));
+        break;
+    case 'factINDI':
+        $controller
         ->setPageTitle(I18N::translate('Find a fact or event'))
         ->addInlineJavascript('initPickFact("INDI");');
-    break;
-case 'factFAM':
-    $controller
+        break;
+    case 'factFAM':
+        $controller
         ->setPageTitle(I18N::translate('Find a fact or event'))
         ->addInlineJavascript('initPickFact("FAM");');
-    break;
-case 'factSOUR':
-    $controller
+        break;
+    case 'factSOUR':
+        $controller
         ->setPageTitle(I18N::translate('Find a fact or event'))
         ->addInlineJavascript('initPickFact("SOUR");');
-    break;
-case 'factREPO':
-    $controller
+        break;
+    case 'factREPO':
+        $controller
         ->setPageTitle(I18N::translate('Find a fact or event'))
         ->addInlineJavascript('initPickFact("REPO");');
-    break;
-case 'factNAME':
-    $controller
+        break;
+    case 'factNAME':
+        $controller
         ->setPageTitle(I18N::translate('Find a fact or event'))
         ->addInlineJavascript('initPickFact("NAME");');
-    break;
-case 'factPLAC':
-    $controller
+        break;
+    case 'factPLAC':
+        $controller
         ->setPageTitle(I18N::translate('Find a fact or event'))
         ->addInlineJavascript('initPickFact("PLAC");');
-    break;
+        break;
 }
 $controller->pageHeader();
 

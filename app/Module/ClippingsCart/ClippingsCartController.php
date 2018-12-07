@@ -190,18 +190,18 @@ class ClippingsCartController {
             }
 
             switch ($this->privatize_export) {
-            case 'gedadmin':
-                $access_level = Auth::PRIV_NONE;
-                break;
-            case 'user':
-                $access_level = Auth::PRIV_USER;
-                break;
-            case 'visitor':
-                $access_level = Auth::PRIV_PRIVATE;
-                break;
-            case 'none':
-                $access_level = Auth::PRIV_HIDE;
-                break;
+                case 'gedadmin':
+                    $access_level = Auth::PRIV_NONE;
+                    break;
+                case 'user':
+                    $access_level = Auth::PRIV_USER;
+                    break;
+                case 'visitor':
+                    $access_level = Auth::PRIV_PRIVATE;
+                    break;
+                case 'none':
+                    $access_level = Auth::PRIV_HIDE;
+                    break;
             }
 
             foreach (array_keys($this->cart[$WT_TREE->getTreeId()]) as $xref) {
@@ -234,38 +234,38 @@ class ClippingsCartController {
                         $record = utf8_decode($record);
                     }
                     switch ($object::RECORD_TYPE) {
-                    case 'INDI':
-                        $filetext .= $record . "\n";
-                        $filetext .= "1 SOUR @WEBTREES@\n";
-                        $filetext .= "2 PAGE " . WT_BASE_URL . $object->getRawUrl() . "\n";
-                        break;
-                    case 'FAM':
-                        $filetext .= $record . "\n";
-                        $filetext .= "1 SOUR @WEBTREES@\n";
-                        $filetext .= "2 PAGE " . WT_BASE_URL . $object->getRawUrl() . "\n";
-                        break;
-                    case 'SOUR':
-                        $filetext .= $record . "\n";
-                        $filetext .= "1 NOTE " . WT_BASE_URL . $object->getRawUrl() . "\n";
-                        break;
-                    default:
-                        // This autoloads the PclZip library, so we can use its constants.
-                        new PclZip('');
+                        case 'INDI':
+                            $filetext .= $record . "\n";
+                            $filetext .= "1 SOUR @WEBTREES@\n";
+                            $filetext .= "2 PAGE " . WT_BASE_URL . $object->getRawUrl() . "\n";
+                            break;
+                        case 'FAM':
+                            $filetext .= $record . "\n";
+                            $filetext .= "1 SOUR @WEBTREES@\n";
+                            $filetext .= "2 PAGE " . WT_BASE_URL . $object->getRawUrl() . "\n";
+                            break;
+                        case 'SOUR':
+                            $filetext .= $record . "\n";
+                            $filetext .= "1 NOTE " . WT_BASE_URL . $object->getRawUrl() . "\n";
+                            break;
+                        default:
+                            // This autoloads the PclZip library, so we can use its constants.
+                            new PclZip('');
 
-                        $ft              = preg_match_all("/\n\d FILE (.+)/", $savedRecord, $match, PREG_SET_ORDER);
-                        $MEDIA_DIRECTORY = $WT_TREE->getPreference('MEDIA_DIRECTORY');
-                        for ($k = 0; $k < $ft; $k++) {
-                            // Skip external files and non-existant files
-                            if (file_exists(WT_DATA_DIR . $MEDIA_DIRECTORY . $match[$k][1])) {
-                                $media[$mediacount] = array(
+                            $ft              = preg_match_all("/\n\d FILE (.+)/", $savedRecord, $match, PREG_SET_ORDER);
+                            $MEDIA_DIRECTORY = $WT_TREE->getPreference('MEDIA_DIRECTORY');
+                            for ($k = 0; $k < $ft; $k++) {
+                                // Skip external files and non-existant files
+                                if (file_exists(WT_DATA_DIR . $MEDIA_DIRECTORY . $match[$k][1])) {
+                                    $media[$mediacount] = array(
                                     \PCLZIP_ATT_FILE_NAME          => WT_DATA_DIR . $MEDIA_DIRECTORY . $match[$k][1],
                                     \PCLZIP_ATT_FILE_NEW_FULL_NAME => $match[$k][1],
-                                );
-                                $mediacount++;
+                                    );
+                                    $mediacount++;
+                                }
                             }
-                        }
-                        $filetext .= trim($record) . "\n";
-                        break;
+                            $filetext .= trim($record) . "\n";
+                            break;
                     }
                 }
             }
@@ -452,22 +452,50 @@ class ClippingsCartController {
         $b = GedcomRecord::getInstance($b, $WT_TREE);
         if ($a && $b) {
             switch ($a::RECORD_TYPE) {
-            case 'INDI': $t1 = 1; break;
-            case 'FAM':  $t1 = 2; break;
-            case 'SOUR': $t1 = 3; break;
-            case 'REPO': $t1 = 4; break;
-            case 'OBJE': $t1 = 5; break;
-            case 'NOTE': $t1 = 6; break;
-            default:     $t1 = 7; break;
+                case 'INDI': 
+                    $t1 = 1;
+                    break;
+                case 'FAM':  
+                    $t1 = 2;
+                    break;
+                case 'SOUR': 
+                    $t1 = 3;
+                    break;
+                case 'REPO': 
+                    $t1 = 4;
+                    break;
+                case 'OBJE': 
+                    $t1 = 5;
+                    break;
+                case 'NOTE': 
+                    $t1 = 6;
+                    break;
+                default:     
+                    $t1 = 7;
+                    break;
             }
             switch ($b::RECORD_TYPE) {
-            case 'INDI': $t2 = 1; break;
-            case 'FAM':  $t2 = 2; break;
-            case 'SOUR': $t2 = 3; break;
-            case 'REPO': $t2 = 4; break;
-            case 'OBJE': $t2 = 5; break;
-            case 'NOTE': $t2 = 6; break;
-            default:     $t2 = 7; break;
+                case 'INDI': 
+                    $t2 = 1;
+                    break;
+                case 'FAM':  
+                    $t2 = 2;
+                    break;
+                case 'SOUR': 
+                    $t2 = 3;
+                    break;
+                case 'REPO': 
+                    $t2 = 4;
+                    break;
+                case 'OBJE': 
+                    $t2 = 5;
+                    break;
+                case 'NOTE': 
+                    $t2 = 6;
+                    break;
+                default:     
+                    $t2 = 7;
+                    break;
             }
             if ($t1 != $t2) {
                 return $t1 - $t2;

@@ -247,15 +247,15 @@ class FanchartController extends ChartController {
                     $text .= "\n" . I18N::reverseText($person->getLifeSpan());
 
                     switch ($person->getSex()) {
-                    case 'M':
-                        $bg = $bgcolorM;
-                        break;
-                    case 'F':
-                        $bg = $bgcolorF;
-                        break;
-                    default:
-                        $bg = $bgcolor;
-                        break;
+                        case 'M':
+                            $bg = $bgcolorM;
+                            break;
+                        case 'F':
+                            $bg = $bgcolorF;
+                            break;
+                        default:
+                            $bg = $bgcolor;
+                            break;
                     }
 
                     imagefilledarc($image, $cx, $cy, $rx, $rx, $deg1, $deg2, $bg, IMG_ARC_PIE);
@@ -366,19 +366,19 @@ class FanchartController extends ChartController {
         $imagemap .= '</map>';
 
         switch ($what) {
-        case 'html':
-            return $html . $imagemap . '<div id="fan_chart_img"><img src="' . WT_SCRIPT_NAME . '?rootid=' . $this->root->getXref() . '&amp;fan_style=' . $this->fan_style . '&amp;generations=' . $this->generations . '&amp;fan_width=' . $this->fan_width . '&amp;img=1" width="' . $fanw . '" height="' . $fanh . '" alt="' . strip_tags($this->getPageTitle()) . '" usemap="#fanmap"></div>';
+            case 'html':
+                return $html . $imagemap . '<div id="fan_chart_img"><img src="' . WT_SCRIPT_NAME . '?rootid=' . $this->root->getXref() . '&amp;fan_style=' . $this->fan_style . '&amp;generations=' . $this->generations . '&amp;fan_width=' . $this->fan_width . '&amp;img=1" width="' . $fanw . '" height="' . $fanh . '" alt="' . strip_tags($this->getPageTitle()) . '" usemap="#fanmap"></div>';
 
-        case 'png':
-            imagestringup($image, 1, $fanw - 10, $fanh / 3, WT_BASE_URL, $color);
-            ob_start();
-            imagepng($image);
-            imagedestroy($image);
+            case 'png':
+                imagestringup($image, 1, $fanw - 10, $fanh / 3, WT_BASE_URL, $color);
+                ob_start();
+                imagepng($image);
+                imagedestroy($image);
 
-            return ob_get_clean();
+                return ob_get_clean();
 
-        default:
-            throw new \InvalidArgumentException(__METHOD__ . ' ' . $what);
+            default:
+                throw new \InvalidArgumentException(__METHOD__ . ' ' . $what);
         }
     }
 }

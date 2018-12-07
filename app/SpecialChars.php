@@ -26,7 +26,7 @@ class SpecialChars {
     private static $languages = array(
         'af', 'ar', 'cs', 'da', 'de', 'el', 'en', 'es', 'eu', 'fi', 'fr', 'gd', 'haw', 'he',
         'hu', 'is', 'it', 'lt', 'nl', 'nn', 'pl', 'pt', 'ru', 'sk', 'sl', 'sv', 'tr', 'vi',
-);
+    );
     /**
      * A list of languages for which special characters are available.
      *

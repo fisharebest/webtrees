@@ -111,21 +111,21 @@ if ($gedc) {
 }
 
 switch ($action) {
-case 'delete':
-    $sql_delete =
+    case 'delete':
+        $sql_delete =
         "DELETE `##change` FROM `##change`" .
         " LEFT JOIN `##user` USING (user_id)" . // user may be deleted
         " LEFT JOIN `##gedcom` USING (gedcom_id)"; // gedcom may be deleted
 
-    Database::prepare($sql_delete . $where)->execute($args);
-    break;
+        Database::prepare($sql_delete . $where)->execute($args);
+        break;
 
-case 'export':
-    header('Content-Type: text/csv');
-    header('Content-Disposition: attachment; filename="webtrees-changes.csv"');
-    $rows = Database::prepare($sql_select . $where . ' ORDER BY change_id')->execute($args)->fetchAll();
-    foreach ($rows as $row) {
-        echo
+    case 'export':
+        header('Content-Type: text/csv');
+        header('Content-Disposition: attachment; filename="webtrees-changes.csv"');
+        $rows = Database::prepare($sql_select . $where . ' ORDER BY change_id')->execute($args)->fetchAll();
+        foreach ($rows as $row) {
+            echo
             '"', $row->change_time, '",',
             '"', $row->status, '",',
             '"', $row->xref, '",',
@@ -134,76 +134,76 @@ case 'export':
             '"', str_replace('"', '""', $row->user_name), '",',
             '"', str_replace('"', '""', $row->gedcom_name), '"',
             "\n";
-    }
-
-    return;
-case 'load_json':
-    $start  = Filter::getInteger('start');
-    $length = Filter::getInteger('length');
-    $order  = Filter::getArray('order');
-
-    if ($order) {
-        $order_by = " ORDER BY ";
-        foreach ($order as $key => $value) {
-            if ($key > 0) {
-                $order_by .= ',';
-            }
-            // Datatables numbers columns 0, 1, 2
-            // MySQL numbers columns 1, 2, 3
-            switch ($value['dir']) {
-            case 'asc':
-                $order_by .= (1 + $value['column']) . " ASC ";
-                break;
-            case 'desc':
-                $order_by .= (1 + $value['column']) . " DESC ";
-                break;
-            }
-        }
-    } else {
-        $order_by = " ORDER BY 1 DESC";
-    }
-
-    if ($length) {
-        Auth::user()->setPreference('admin_site_change_page_size', $length);
-        $limit          = " LIMIT :limit OFFSET :offset";
-        $args['limit']  = $length;
-        $args['offset'] = $start;
-    } else {
-        $limit = "";
-    }
-
-    // This becomes a JSON list, not array, so need to fetch with numeric keys.
-    $rows = Database::prepare($sql_select . $where . $order_by . $limit)->execute($args)->fetchAll(PDO::FETCH_OBJ);
-    // Total filtered/unfiltered rows
-    $recordsFiltered = (int) Database::prepare("SELECT FOUND_ROWS()")->fetchOne();
-    $recordsTotal    = (int) Database::prepare("SELECT COUNT(*) FROM `##change`")->fetchOne();
-
-    $data      = array();
-    $algorithm = new MyersDiff;
-
-    foreach ($rows as $row) {
-        $old_lines = preg_split('/[\n]+/', $row->old_gedcom, -1, PREG_SPLIT_NO_EMPTY);
-        $new_lines = preg_split('/[\n]+/', $row->new_gedcom, -1, PREG_SPLIT_NO_EMPTY);
-
-        $differences = $algorithm->calculate($old_lines, $new_lines);
-        $diff_lines  = array();
-
-        foreach ($differences as $difference) {
-            switch ($difference[1]) {
-            case MyersDiff::DELETE:
-                $diff_lines[] = '<del>' . $difference[0] . '</del>';
-                break;
-            case MyersDiff::INSERT:
-                $diff_lines[] = '<ins>' . $difference[0] . '</ins>';
-                break;
-            default:
-                $diff_lines[] = $difference[0];
-            }
         }
 
-        // Only convert valid xrefs to links
-        $record = GedcomRecord::getInstance($row->xref, Tree::findByName($gedc));
-        $data[] = array(
+        return;
+    case 'load_json':
+        $start  = Filter::getInteger('start');
+        $length = Filter::getInteger('length');
+        $order  = Filter::getArray('order');
+
+        if ($order) {
+            $order_by = " ORDER BY ";
+            foreach ($order as $key => $value) {
+                if ($key > 0) {
+                    $order_by .= ',';
+                }
+                // Datatables numbers columns 0, 1, 2
+                // MySQL numbers columns 1, 2, 3
+                switch ($value['dir']) {
+                    case 'asc':
+                        $order_by .= (1 + $value['column']) . " ASC ";
+                        break;
+                    case 'desc':
+                        $order_by .= (1 + $value['column']) . " DESC ";
+                    break;
+                }
+            }
+        } else {
+            $order_by = " ORDER BY 1 DESC";
+        }
+
+        if ($length) {
+            Auth::user()->setPreference('admin_site_change_page_size', $length);
+            $limit          = " LIMIT :limit OFFSET :offset";
+            $args['limit']  = $length;
+            $args['offset'] = $start;
+        } else {
+            $limit = "";
+        }
+
+        // This becomes a JSON list, not array, so need to fetch with numeric keys.
+        $rows = Database::prepare($sql_select . $where . $order_by . $limit)->execute($args)->fetchAll(PDO::FETCH_OBJ);
+        // Total filtered/unfiltered rows
+        $recordsFiltered = (int) Database::prepare("SELECT FOUND_ROWS()")->fetchOne();
+        $recordsTotal    = (int) Database::prepare("SELECT COUNT(*) FROM `##change`")->fetchOne();
+
+        $data      = array();
+        $algorithm = new MyersDiff;
+
+        foreach ($rows as $row) {
+            $old_lines = preg_split('/[\n]+/', $row->old_gedcom, -1, PREG_SPLIT_NO_EMPTY);
+            $new_lines = preg_split('/[\n]+/', $row->new_gedcom, -1, PREG_SPLIT_NO_EMPTY);
+
+            $differences = $algorithm->calculate($old_lines, $new_lines);
+            $diff_lines  = array();
+
+            foreach ($differences as $difference) {
+                switch ($difference[1]) {
+                    case MyersDiff::DELETE:
+                        $diff_lines[] = '<del>' . $difference[0] . '</del>';
+                        break;
+                    case MyersDiff::INSERT:
+                        $diff_lines[] = '<ins>' . $difference[0] . '</ins>';
+                    break;
+                    default:
+                        $diff_lines[] = $difference[0];
+                }
+            }
+
+            // Only convert valid xrefs to links
+            $record = GedcomRecord::getInstance($row->xref, Tree::findByName($gedc));
+            $data[] = array(
             $row->change_id,
             $row->change_time,
             I18N::translate($row->status),
@@ -220,19 +220,19 @@ case 'load_json':
             '</div>',
             $row->user_name,
             $row->gedcom_name,
-        );
-    }
+            );
+        }
 
-    header('Content-type: application/json');
-    // See http://www.datatables.net/usage/server-side
-    echo json_encode(array(
+        header('Content-type: application/json');
+        // See http://www.datatables.net/usage/server-side
+        echo json_encode(array(
         'draw'            => Filter::getInteger('draw'),
         'recordsTotal'    => $recordsTotal,
         'recordsFiltered' => $recordsFiltered,
         'data'            => $data,
-    ));
+        ));
 
-    return;
+        return;
 }
 
 $controller

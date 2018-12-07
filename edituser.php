@@ -53,25 +53,25 @@ $form_visible_online = Filter::postBool('form_visible_online');
 // Respond to form action
 if ($form_action && Filter::checkCsrf()) {
     switch ($form_action) {
-    case 'update':
-        if ($form_username !== Auth::user()->getUserName() && User::findByUserName($form_username)) {
-            FlashMessages::addMessage(I18N::translate('Duplicate username. A user with that username already exists. Please choose another username.'));
-        } elseif ($form_email !== Auth::user()->getEmail() && User::findByEmail($form_email)) {
-            FlashMessages::addMessage(I18N::translate('Duplicate email address. A user with that email already exists.'));
-        } else {
-            // Change username
-            if ($form_username !== Auth::user()->getUserName()) {
-                Log::addAuthenticationLog('User ' . Auth::user()->getUserName() . ' renamed to ' . $form_username);
-                Auth::user()->setUserName($form_username);
-            }
+        case 'update':
+            if ($form_username !== Auth::user()->getUserName() && User::findByUserName($form_username)) {
+                FlashMessages::addMessage(I18N::translate('Duplicate username. A user with that username already exists. Please choose another username.'));
+            } elseif ($form_email !== Auth::user()->getEmail() && User::findByEmail($form_email)) {
+                FlashMessages::addMessage(I18N::translate('Duplicate email address. A user with that email already exists.'));
+            } else {
+                // Change username
+                if ($form_username !== Auth::user()->getUserName()) {
+                    Log::addAuthenticationLog('User ' . Auth::user()->getUserName() . ' renamed to ' . $form_username);
+                    Auth::user()->setUserName($form_username);
+                }
 
-            // Change password
-            if ($form_pass1 && $form_pass1 === $form_pass2) {
-                Auth::user()->setPassword($form_pass1);
-            }
+                // Change password
+                if ($form_pass1 && $form_pass1 === $form_pass2) {
+                    Auth::user()->setPassword($form_pass1);
+                }
 
-            // Change other settings
-            Auth::user()
+                // Change other settings
+                Auth::user()
                 ->setRealName($form_realname)
                 ->setEmail($form_email)
                 ->setPreference('language', $form_language)
@@ -79,26 +79,26 @@ if ($form_action && Filter::checkCsrf()) {
                 ->setPreference('contactmethod', $form_contact_method)
                 ->setPreference('visibleonline', $form_visible_online ? '1' : '0');
 
-            if ($form_theme === null) {
-                Auth::user()->deletePreference('theme');
-            } else {
-                Auth::user()->setPreference('theme', $form_theme);
+                if ($form_theme === null) {
+                    Auth::user()->deletePreference('theme');
+                } else {
+                    Auth::user()->setPreference('theme', $form_theme);
+                }
+
+                $WT_TREE->setUserPreference(Auth::user(), 'rootid', $form_rootid);
             }
+            break;
 
-            $WT_TREE->setUserPreference(Auth::user(), 'rootid', $form_rootid);
-        }
-        break;
-
-    case 'delete':
-        // An administrator can only be deleted by another administrator
-        if (!Auth::user()->getPreference('canadmin')) {
-            // Keep a reference to the currently logged in user because after logging out this user,
-            // a call to Auth::user() will not return this user anymore
-            $currentUser = Auth::user();
-            Auth::logout();
-            $currentUser->delete();
-        }
-        break;
+        case 'delete':
+            // An administrator can only be deleted by another administrator
+            if (!Auth::user()->getPreference('canadmin')) {
+                // Keep a reference to the currently logged in user because after logging out this user,
+                // a call to Auth::user() will not return this user anymore
+                $currentUser = Auth::user();
+                Auth::logout();
+                $currentUser->delete();
+            }
+            break;
     }
 
     header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME);
@@ -182,7 +182,7 @@ function checkform(frm) {
             </div>
             <div class="value">
                 <?php if ($my_individual_record): ?>
-                <?php echo $my_individual_record->formatList('span'); ?>
+                    <?php echo $my_individual_record->formatList('span'); ?>
                 <?php else: ?>
                     <?php echo I18N::translateContext('unknown people', 'Unknown'); ?>
                 <?php endif; ?>
@@ -201,7 +201,7 @@ function checkform(frm) {
                 <?php echo FunctionsPrint::printFindIndividualLink('form_rootid'); ?>
                 <br>
                 <?php if ($default_individual): ?>
-                <?php echo $default_individual->formatList('span'); ?>
+                    <?php echo $default_individual->formatList('span'); ?>
                 <?php endif; ?>
                 <p class="small text-muted">
                     <?php echo I18N::translate('This individual will be selected by default when viewing charts and reports.'); ?>

@@ -74,15 +74,15 @@ class BatchUpdateMarriedNamesPlugin extends BatchUpdateBasePlugin {
         $married_names = array();
         foreach (self::surnamesToAdd($xref, $gedrec) as $surname) {
             switch ($this->surname) {
-            case 'add':
-                $married_names[] = "\n2 _MARNM " . str_replace('/', '', $wife_name) . ' /' . $surname . '/';
-                break;
-            case 'replace':
-                if ($SURNAME_TRADITION === 'polish') {
-                    $surname = preg_replace(array('/ski$/', '/cki$/', '/dzki$/'), array('ska', 'cka', 'dzka'), $surname);
-                }
-                $married_names[] = "\n2 _MARNM " . preg_replace('!/.*/!', '/' . $surname . '/', $wife_name);
-                break;
+                case 'add':
+                    $married_names[] = "\n2 _MARNM " . str_replace('/', '', $wife_name) . ' /' . $surname . '/';
+                    break;
+                case 'replace':
+                    if ($SURNAME_TRADITION === 'polish') {
+                        $surname = preg_replace(array('/ski$/', '/cki$/', '/dzki$/'), array('ska', 'cka', 'dzka'), $surname);
+                    }
+                    $married_names[] = "\n2 _MARNM " . preg_replace('!/.*/!', '/' . $surname . '/', $wife_name);
+                    break;
             }
         }
 

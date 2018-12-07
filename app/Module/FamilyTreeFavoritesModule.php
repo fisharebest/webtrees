@@ -85,22 +85,22 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 
         $action = Filter::get('action');
         switch ($action) {
-        case 'deletefav':
-            $favorite_id = Filter::getInteger('favorite_id');
-            if ($favorite_id) {
-                self::deleteFavorite($favorite_id);
-            }
-            break;
-        case 'addfav':
-            $gid      = Filter::get('gid', WT_REGEX_XREF);
-            $favnote  = Filter::get('favnote');
-            $url      = Filter::getUrl('url');
-            $favtitle = Filter::get('favtitle');
+            case 'deletefav':
+                $favorite_id = Filter::getInteger('favorite_id');
+                if ($favorite_id) {
+                    self::deleteFavorite($favorite_id);
+                }
+                break;
+            case 'addfav':
+                $gid      = Filter::get('gid', WT_REGEX_XREF);
+                $favnote  = Filter::get('favnote');
+                $url      = Filter::getUrl('url');
+                $favtitle = Filter::get('favtitle');
 
-            if ($gid) {
-                $record = GedcomRecord::getInstance($gid, $WT_TREE);
-                if ($record && $record->canShow()) {
-                    self::addFavorite(array(
+                if ($gid) {
+                    $record = GedcomRecord::getInstance($gid, $WT_TREE);
+                    if ($record && $record->canShow()) {
+                        self::addFavorite(array(
                         'user_id'   => $ctype === 'user' ? Auth::id() : null,
                         'gedcom_id' => $WT_TREE->getTreeId(),
                         'gid'       => $record->getXref(),
@@ -108,10 +108,10 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
                         'url'       => null,
                         'note'      => $favnote,
                         'title'     => $favtitle,
-                    ));
-                }
-            } elseif ($url) {
-                self::addFavorite(array(
+                        ));
+                    }
+                } elseif ($url) {
+                    self::addFavorite(array(
                     'user_id'   => $ctype === 'user' ? Auth::id() : null,
                     'gedcom_id' => $WT_TREE->getTreeId(),
                     'gid'       => null,
@@ -119,9 +119,9 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
                     'url'       => $url,
                     'note'      => $favnote,
                     'title'     => $favtitle ? $favtitle : $url,
-                ));
-            }
-            break;
+                    ));
+                }
+                break;
         }
 
         $block = $this->getBlockSetting($block_id, 'block', '0');
@@ -168,14 +168,14 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
                         if ($record instanceof Individual) {
                             $content .= '<div id="box' . $favorite["gid"] . '.0" class="person_box action_header';
                             switch ($record->getSex()) {
-                            case 'M':
-                                break;
-                            case 'F':
-                                $content .= 'F';
-                                break;
-                            default:
-                                $content .= 'NN';
-                                break;
+                                case 'M':
+                                    break;
+                                case 'F':
+                                    $content .= 'F';
+                                    break;
+                                default:
+                                    $content .= 'NN';
+                                    break;
                             }
                             $content .= '">';
                             if ($ctype == "user" || Auth::isManager($WT_TREE)) {

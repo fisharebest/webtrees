@@ -113,7 +113,7 @@ class NotesTabModule extends AbstractModule implements ModuleTabInterface {
                     </a>
                 </td>
             </tr>
-        <?php
+            <?php
         }
         ?>
         </table>

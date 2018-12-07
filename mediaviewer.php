@@ -137,15 +137,15 @@ $facts = $controller->getFacts();
                     // Perhaps check both, and use RED/BLUE boxes.
                     $tmp = Media::getInstance($controller->record->getXref(), $WT_TREE);
                     echo $tmp->displayImage();
-                    if (!$tmp->isExternal()) {
-                        if ($tmp->fileExists('main')) {
-                            if ($WT_TREE->getPreference('SHOW_MEDIA_DOWNLOAD') >= Auth::accessLevel($WT_TREE)) {
-                                echo '<p><a href="' . $tmp->getHtmlUrlDirect('main', true) . '">' . I18N::translate('Download file') . '</a></p>';
-                            }
-                        } else {
-                            echo '<p class="ui-state-error">' . I18N::translate('The file “%s” does not exist.', $tmp->getFilename()) . '</p>';
+                if (!$tmp->isExternal()) {
+                    if ($tmp->fileExists('main')) {
+                        if ($WT_TREE->getPreference('SHOW_MEDIA_DOWNLOAD') >= Auth::accessLevel($WT_TREE)) {
+                            echo '<p><a href="' . $tmp->getHtmlUrlDirect('main', true) . '">' . I18N::translate('Download file') . '</a></p>';
                         }
+                    } else {
+                        echo '<p class="ui-state-error">' . I18N::translate('The file “%s” does not exist.', $tmp->getFilename()) . '</p>';
                     }
+                }
                 ?>
                     </td>
                     <td>

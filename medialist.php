@@ -288,7 +288,7 @@ if ($action === 'submit') {
                         echo GedcomTag::getLabelValue('FILE', $mediaobject->getFilename());
                         $mediatype = $mediaobject->getMediaType();
                         if ($mediatype) {
-                        echo GedcomTag::getLabelValue('TYPE', GedcomTag::getFileFormTypeValue($mediatype));
+                            echo GedcomTag::getLabelValue('TYPE', GedcomTag::getFileFormTypeValue($mediatype));
                         }
                     }
                     echo GedcomTag::getLabelValue('FORM', $mediaobject->mimeType());

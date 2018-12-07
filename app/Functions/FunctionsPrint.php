@@ -51,20 +51,20 @@ class FunctionsPrint {
     public static function printPedigreePerson(Individual $person = null, $show_full = 1) {
 
         switch ($show_full) {
-        case 0:
-            if ($person) {
-                echo Theme::theme()->individualBoxSmall($person);
-            } else {
-                echo Theme::theme()->individualBoxSmallEmpty();
-            }
-            break;
-        case 1:
-            if ($person) {
-                echo Theme::theme()->individualBox($person);
-            } else {
-                echo Theme::theme()->individualBoxEmpty();
-            }
-            break;
+            case 0:
+                if ($person) {
+                    echo Theme::theme()->individualBoxSmall($person);
+                } else {
+                    echo Theme::theme()->individualBoxSmallEmpty();
+                }
+                break;
+            case 1:
+                if ($person) {
+                    echo Theme::theme()->individualBox($person);
+                } else {
+                    echo Theme::theme()->individualBoxEmpty();
+                }
+                break;
         }
     }
 
@@ -260,25 +260,25 @@ class FunctionsPrint {
                     $age      = Date::getAge($parent->getBirthDate(), $birth_date, 2);
                     $deatdate = $parent->getDeathDate();
                     switch ($parent->getSex()) {
-                    case 'F':
-                        // Highlight mothers who die in childbirth or shortly afterwards
-                        if ($deatdate->isOK() && $deatdate->maximumJulianDay() < $birth_date->minimumJulianDay() + 90) {
-                            $html .= ' <span title="' . GedcomTag::getLabel('_DEAT_PARE', $parent) . '" class="parentdeath">' . $sex . $age . '</span>';
-                        } else {
-                            $html .= ' <span title="' . I18N::translate('Mother’s age') . '">' . $sex . $age . '</span>';
-                        }
-                        break;
-                    case 'M':
-                        // Highlight fathers who die before the birth
-                        if ($deatdate->isOK() && $deatdate->maximumJulianDay() < $birth_date->minimumJulianDay()) {
-                            $html .= ' <span title="' . GedcomTag::getLabel('_DEAT_PARE', $parent) . '" class="parentdeath">' . $sex . $age . '</span>';
-                        } else {
-                            $html .= ' <span title="' . I18N::translate('Father’s age') . '">' . $sex . $age . '</span>';
-                        }
-                        break;
-                    default:
-                        $html .= ' <span title="' . I18N::translate('Parent’s age') . '">' . $sex . $age . '</span>';
-                        break;
+                        case 'F':
+                            // Highlight mothers who die in childbirth or shortly afterwards
+                            if ($deatdate->isOK() && $deatdate->maximumJulianDay() < $birth_date->minimumJulianDay() + 90) {
+                                $html .= ' <span title="' . GedcomTag::getLabel('_DEAT_PARE', $parent) . '" class="parentdeath">' . $sex . $age . '</span>';
+                            } else {
+                                $html .= ' <span title="' . I18N::translate('Mother’s age') . '">' . $sex . $age . '</span>';
+                            }
+                            break;
+                        case 'M':
+                            // Highlight fathers who die before the birth
+                            if ($deatdate->isOK() && $deatdate->maximumJulianDay() < $birth_date->minimumJulianDay()) {
+                                $html .= ' <span title="' . GedcomTag::getLabel('_DEAT_PARE', $parent) . '" class="parentdeath">' . $sex . $age . '</span>';
+                            } else {
+                                $html .= ' <span title="' . I18N::translate('Father’s age') . '">' . $sex . $age . '</span>';
+                            }
+                            break;
+                        default:
+                            $html .= ' <span title="' . I18N::translate('Parent’s age') . '">' . $sex . $age . '</span>';
+                            break;
                     }
                 }
             }
@@ -573,33 +573,33 @@ class FunctionsPrint {
 
         // -- Add from pick list
         switch ($type) {
-        case "INDI":
-            $addfacts    = preg_split("/[, ;:]+/", $WT_TREE->getPreference('INDI_FACTS_ADD'), -1, PREG_SPLIT_NO_EMPTY);
-            $uniquefacts = preg_split("/[, ;:]+/", $WT_TREE->getPreference('INDI_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
-            $quickfacts  = preg_split("/[, ;:]+/", $WT_TREE->getPreference('INDI_FACTS_QUICK'), -1, PREG_SPLIT_NO_EMPTY);
-            break;
-        case "FAM":
-            $addfacts    = preg_split("/[, ;:]+/", $WT_TREE->getPreference('FAM_FACTS_ADD'), -1, PREG_SPLIT_NO_EMPTY);
-            $uniquefacts = preg_split("/[, ;:]+/", $WT_TREE->getPreference('FAM_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
-            $quickfacts  = preg_split("/[, ;:]+/", $WT_TREE->getPreference('FAM_FACTS_QUICK'), -1, PREG_SPLIT_NO_EMPTY);
-            break;
-        case "SOUR":
-            $addfacts    = preg_split("/[, ;:]+/", $WT_TREE->getPreference('SOUR_FACTS_ADD'), -1, PREG_SPLIT_NO_EMPTY);
-            $uniquefacts = preg_split("/[, ;:]+/", $WT_TREE->getPreference('SOUR_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
-            $quickfacts  = preg_split("/[, ;:]+/", $WT_TREE->getPreference('SOUR_FACTS_QUICK'), -1, PREG_SPLIT_NO_EMPTY);
-            break;
-        case "NOTE":
-            $addfacts    = preg_split("/[, ;:]+/", $WT_TREE->getPreference('NOTE_FACTS_ADD'), -1, PREG_SPLIT_NO_EMPTY);
-            $uniquefacts = preg_split("/[, ;:]+/", $WT_TREE->getPreference('NOTE_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
-            $quickfacts  = preg_split("/[, ;:]+/", $WT_TREE->getPreference('NOTE_FACTS_QUICK'), -1, PREG_SPLIT_NO_EMPTY);
-            break;
-        case "REPO":
-            $addfacts    = preg_split("/[, ;:]+/", $WT_TREE->getPreference('REPO_FACTS_ADD'), -1, PREG_SPLIT_NO_EMPTY);
-            $uniquefacts = preg_split("/[, ;:]+/", $WT_TREE->getPreference('REPO_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
-            $quickfacts  = preg_split("/[, ;:]+/", $WT_TREE->getPreference('REPO_FACTS_QUICK'), -1, PREG_SPLIT_NO_EMPTY);
-            break;
-        default:
-            return;
+            case "INDI":
+                $addfacts    = preg_split("/[, ;:]+/", $WT_TREE->getPreference('INDI_FACTS_ADD'), -1, PREG_SPLIT_NO_EMPTY);
+                $uniquefacts = preg_split("/[, ;:]+/", $WT_TREE->getPreference('INDI_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
+                $quickfacts  = preg_split("/[, ;:]+/", $WT_TREE->getPreference('INDI_FACTS_QUICK'), -1, PREG_SPLIT_NO_EMPTY);
+                break;
+            case "FAM":
+                $addfacts    = preg_split("/[, ;:]+/", $WT_TREE->getPreference('FAM_FACTS_ADD'), -1, PREG_SPLIT_NO_EMPTY);
+                $uniquefacts = preg_split("/[, ;:]+/", $WT_TREE->getPreference('FAM_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
+                $quickfacts  = preg_split("/[, ;:]+/", $WT_TREE->getPreference('FAM_FACTS_QUICK'), -1, PREG_SPLIT_NO_EMPTY);
+                break;
+            case "SOUR":
+                $addfacts    = preg_split("/[, ;:]+/", $WT_TREE->getPreference('SOUR_FACTS_ADD'), -1, PREG_SPLIT_NO_EMPTY);
+                $uniquefacts = preg_split("/[, ;:]+/", $WT_TREE->getPreference('SOUR_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
+                $quickfacts  = preg_split("/[, ;:]+/", $WT_TREE->getPreference('SOUR_FACTS_QUICK'), -1, PREG_SPLIT_NO_EMPTY);
+                break;
+            case "NOTE":
+                $addfacts    = preg_split("/[, ;:]+/", $WT_TREE->getPreference('NOTE_FACTS_ADD'), -1, PREG_SPLIT_NO_EMPTY);
+                $uniquefacts = preg_split("/[, ;:]+/", $WT_TREE->getPreference('NOTE_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
+                $quickfacts  = preg_split("/[, ;:]+/", $WT_TREE->getPreference('NOTE_FACTS_QUICK'), -1, PREG_SPLIT_NO_EMPTY);
+                break;
+            case "REPO":
+                $addfacts    = preg_split("/[, ;:]+/", $WT_TREE->getPreference('REPO_FACTS_ADD'), -1, PREG_SPLIT_NO_EMPTY);
+                $uniquefacts = preg_split("/[, ;:]+/", $WT_TREE->getPreference('REPO_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
+                $quickfacts  = preg_split("/[, ;:]+/", $WT_TREE->getPreference('REPO_FACTS_QUICK'), -1, PREG_SPLIT_NO_EMPTY);
+                break;
+            default:
+                return;
         }
         $addfacts            = array_merge(self::checkFactUnique($uniquefacts, $usedfacts, $type), $addfacts);
         $quickfacts          = array_intersect($quickfacts, $addfacts);

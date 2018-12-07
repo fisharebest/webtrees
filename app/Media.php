@@ -190,17 +190,17 @@ class Media extends GedcomRecord {
                     if (FunctionsMedia::hasMemoryForImage($main_file)) {
                         try {
                             switch ($imgsize['mime']) {
-                            case 'image/png':
-                                $main_image = imagecreatefrompng($main_file);
-                                break;
-                            case 'image/gif':
-                                $main_image = imagecreatefromgif($main_file);
-                                break;
-                            case 'image/jpeg':
-                                $main_image = imagecreatefromjpeg($main_file);
-                                break;
-                            default:
-                                return $file; // Nothing else we can do :-(
+                                case 'image/png':
+                                    $main_image = imagecreatefrompng($main_file);
+                                    break;
+                                case 'image/gif':
+                                    $main_image = imagecreatefromgif($main_file);
+                                    break;
+                                case 'image/jpeg':
+                                    $main_image = imagecreatefromjpeg($main_file);
+                                    break;
+                                default:
+                                    return $file; // Nothing else we can do :-(
                             }
                             if ($main_image) {
                                 // How big should the thumbnail be?
@@ -213,15 +213,15 @@ class Media extends GedcomRecord {
                                 // Shrink the image
                                 imagecopyresampled($thumb_image, $main_image, 0, 0, 0, 0, $width, $height, $imgsize[0], $imgsize[1]);
                                 switch ($imgsize['mime']) {
-                                case 'image/png':
-                                    imagepng($thumb_image, $file);
-                                    break;
-                                case 'image/gif':
-                                    imagegif($thumb_image, $file);
-                                    break;
-                                case 'image/jpeg':
-                                    imagejpeg($thumb_image, $file);
-                                    break;
+                                    case 'image/png':
+                                        imagepng($thumb_image, $file);
+                                        break;
+                                    case 'image/gif':
+                                        imagegif($thumb_image, $file);
+                                        break;
+                                    case 'image/jpeg':
+                                        imagejpeg($thumb_image, $file);
+                                        break;
                                 }
                                 imagedestroy($main_image);
                                 imagedestroy($thumb_image);
@@ -490,54 +490,54 @@ class Media extends GedcomRecord {
     public function mimeType() {
         // Themes contain icon definitions for some/all of these mime-types
         switch ($this->extension()) {
-        case 'bmp':
-            return 'image/bmp';
-        case 'doc':
-            return 'application/msword';
-        case 'docx':
-            return 'application/msword';
-        case 'ged':
-            return 'text/x-gedcom';
-        case 'gif':
-            return 'image/gif';
-        case 'htm':
-            return 'text/html';
-        case 'html':
-            return 'text/html';
-        case 'jpeg':
-            return 'image/jpeg';
-        case 'jpg':
-            return 'image/jpeg';
-        case 'mov':
-            return 'video/quicktime';
-        case 'mp3':
-            return 'audio/mpeg';
-        case 'ogv':
-            return 'video/ogg';
-        case 'pdf':
-            return 'application/pdf';
-        case 'png':
-            return 'image/png';
-        case 'rar':
-            return 'application/x-rar-compressed';
-        case 'swf':
-            return 'application/x-shockwave-flash';
-        case 'svg':
-            return 'image/svg';
-        case 'tif':
-            return 'image/tiff';
-        case 'tiff':
-            return 'image/tiff';
-        case 'xls':
-            return 'application/vnd-ms-excel';
-        case 'xlsx':
-            return 'application/vnd-ms-excel';
-        case 'wmv':
-            return 'video/x-ms-wmv';
-        case 'zip':
-            return 'application/zip';
-        default:
-            return 'application/octet-stream';
+            case 'bmp':
+                return 'image/bmp';
+            case 'doc':
+                return 'application/msword';
+            case 'docx':
+                return 'application/msword';
+            case 'ged':
+                return 'text/x-gedcom';
+            case 'gif':
+                return 'image/gif';
+            case 'htm':
+                return 'text/html';
+            case 'html':
+                return 'text/html';
+            case 'jpeg':
+                return 'image/jpeg';
+            case 'jpg':
+                return 'image/jpeg';
+            case 'mov':
+                return 'video/quicktime';
+            case 'mp3':
+                return 'audio/mpeg';
+            case 'ogv':
+                return 'video/ogg';
+            case 'pdf':
+                return 'application/pdf';
+            case 'png':
+                return 'image/png';
+            case 'rar':
+                return 'application/x-rar-compressed';
+            case 'swf':
+                return 'application/x-shockwave-flash';
+            case 'svg':
+                return 'image/svg';
+            case 'tif':
+                return 'image/tiff';
+            case 'tiff':
+                return 'image/tiff';
+            case 'xls':
+                return 'application/vnd-ms-excel';
+            case 'xlsx':
+                return 'application/vnd-ms-excel';
+            case 'wmv':
+                return 'video/x-ms-wmv';
+            case 'zip':
+                return 'application/zip';
+            default:
+                return 'application/octet-stream';
         }
     }
 

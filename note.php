@@ -170,7 +170,7 @@ if (Module::getModuleByName('GEDFact_assistant')) {
                 }
 
                 if ($controller->record->canEdit()) {
-                FunctionsPrint::printAddNewFact($controller->record->getXref(), $facts, 'NOTE');
+                    FunctionsPrint::printAddNewFact($controller->record->getXref(), $facts, 'NOTE');
                 }
                 ?>
             </table>

@@ -249,18 +249,18 @@ class FunctionsDb {
      */
     public static function searchIndividualsPhonetic($soundex, $lastname, $firstname, $place, array $trees) {
         switch ($soundex) {
-        case 'Russell':
-            $givn_sdx = Soundex::russell($firstname);
-            $surn_sdx = Soundex::russell($lastname);
-            $plac_sdx = Soundex::russell($place);
-            break;
-        case 'DaitchM':
-            $givn_sdx = Soundex::daitchMokotoff($firstname);
-            $surn_sdx = Soundex::daitchMokotoff($lastname);
-            $plac_sdx = Soundex::daitchMokotoff($place);
-            break;
-        default:
-            throw new \DomainException('soundex: ' . $soundex);
+            case 'Russell':
+                $givn_sdx = Soundex::russell($firstname);
+                $surn_sdx = Soundex::russell($lastname);
+                $plac_sdx = Soundex::russell($place);
+                break;
+            case 'DaitchM':
+                $givn_sdx = Soundex::daitchMokotoff($firstname);
+                $surn_sdx = Soundex::daitchMokotoff($lastname);
+                $plac_sdx = Soundex::daitchMokotoff($place);
+                break;
+            default:
+                throw new \DomainException('soundex: ' . $soundex);
         }
 
         // Nothing to search for? Return nothing.
@@ -292,12 +292,12 @@ class FunctionsDb {
             foreach ($givn_sdx as $n => $sdx) {
                 $sql .= $n ? " OR " : "";
                 switch ($soundex) {
-                case 'Russell':
-                    $sql .= "n_soundex_givn_std LIKE CONCAT('%', :given_name_" . $n . ", '%')";
-                    break;
-                case 'DaitchM':
-                    $sql .= "n_soundex_givn_dm LIKE CONCAT('%', :given_name_" . $n . ", '%')";
-                    break;
+                    case 'Russell':
+                        $sql .= "n_soundex_givn_std LIKE CONCAT('%', :given_name_" . $n . ", '%')";
+                        break;
+                    case 'DaitchM':
+                        $sql .= "n_soundex_givn_dm LIKE CONCAT('%', :given_name_" . $n . ", '%')";
+                        break;
                 }
                 $args['given_name_' . $n] = $sdx;
             }
@@ -310,12 +310,12 @@ class FunctionsDb {
             foreach ($surn_sdx as $n => $sdx) {
                 $sql .= $n ? " OR " : "";
                 switch ($soundex) {
-                case 'Russell':
-                    $sql .= "n_soundex_surn_std LIKE CONCAT('%', :surname_" . $n . ", '%')";
-                    break;
-                case 'DaitchM':
-                    $sql .= "n_soundex_surn_dm LIKE CONCAT('%', :surname_" . $n . ", '%')";
-                    break;
+                    case 'Russell':
+                        $sql .= "n_soundex_surn_std LIKE CONCAT('%', :surname_" . $n . ", '%')";
+                        break;
+                    case 'DaitchM':
+                        $sql .= "n_soundex_surn_dm LIKE CONCAT('%', :surname_" . $n . ", '%')";
+                        break;
                 }
                 $args['surname_' . $n] = $sdx;
             }
@@ -328,12 +328,12 @@ class FunctionsDb {
             foreach ($plac_sdx as $n => $sdx) {
                 $sql .= $n ? " OR " : "";
                 switch ($soundex) {
-                case 'Russell':
-                    $sql .= "p_std_soundex LIKE CONCAT('%', :place_" . $n . ", '%')";
-                    break;
-                case 'DaitchM':
-                    $sql .= "p_dm_soundex LIKE CONCAT('%', :place_" . $n . ", '%')";
-                    break;
+                    case 'Russell':
+                        $sql .= "p_std_soundex LIKE CONCAT('%', :place_" . $n . ", '%')";
+                        break;
+                    case 'DaitchM':
+                        $sql .= "p_dm_soundex LIKE CONCAT('%', :place_" . $n . ", '%')";
+                        break;
                 }
                 $args['place_' . $n] = $sdx;
             }
@@ -758,82 +758,82 @@ class FunctionsDb {
             } else {
                 // SPECIAL CASES:
                 switch ($anniv->m) {
-                case 2:
-                    // 29 CSH does not include 30 CSH (but would include an invalid 31 CSH if there were no 30 CSH)
-                    if ($anniv->d === 1) {
-                        $where .= " AND d_day <= 1 AND d_mon = 2";
-                    } elseif ($anniv->d === 30) {
-                        $where .= " AND d_day >= 30 AND d_mon = 2";
-                    } elseif ($anniv->d === 29 && $anniv->daysInMonth() === 29) {
-                        $where .= " AND (d_day = 29 OR d_day > 30) AND d_mon = 2";
-                    } else {
-                        $where .= " AND d_day = :day AND d_mon = 2";
-                        $args['day'] = $anniv->d;
-                    }
-                    break;
-                case 3:
-                    // 1 KSL includes 30 CSH (if this year didn’t have 30 CSH)
-                    // 29 KSL does not include 30 KSL (but would include an invalid 31 KSL if there were no 30 KSL)
-                    if ($anniv->d === 1) {
-                        $tmp = new JewishDate(array($anniv->y, 'CSH', 1));
-                        if ($tmp->daysInMonth() === 29) {
-                            $where .= " AND (d_day <= 1 AND d_mon = 3 OR d_day = 30 AND d_mon = 2)";
+                    case 2:
+                        // 29 CSH does not include 30 CSH (but would include an invalid 31 CSH if there were no 30 CSH)
+                        if ($anniv->d === 1) {
+                            $where .= " AND d_day <= 1 AND d_mon = 2";
+                        } elseif ($anniv->d === 30) {
+                            $where .= " AND d_day >= 30 AND d_mon = 2";
+                        } elseif ($anniv->d === 29 && $anniv->daysInMonth() === 29) {
+                            $where .= " AND (d_day = 29 OR d_day > 30) AND d_mon = 2";
                         } else {
-                            $where .= " AND d_day <= 1 AND d_mon = 3";
+                            $where .= " AND d_day = :day AND d_mon = 2";
+                            $args['day'] = $anniv->d;
                         }
-                    } elseif ($anniv->d === 30) {
-                        $where .= " AND d_day >= 30 AND d_mon = 3";
-                    } elseif ($anniv->d == 29 && $anniv->daysInMonth() === 29) {
-                        $where .= " AND (d_day = 29 OR d_day > 30) AND d_mon = 3";
-                    } else {
-                        $where .= " AND d_day = :day AND d_mon = 3";
-                        $args['day'] = $anniv->d;
-                    }
-                    break;
-                case 4:
-                    // 1 TVT includes 30 KSL (if this year didn’t have 30 KSL)
-                    if ($anniv->d === 1) {
-                        $tmp = new JewishDate(array($anniv->y, 'KSL', 1));
-                        if ($tmp->daysInMonth() === 29) {
-                            $where .= " AND (d_day <=1 AND d_mon = 4 OR d_day = 30 AND d_mon = 3)";
+                        break;
+                    case 3:
+                        // 1 KSL includes 30 CSH (if this year didn’t have 30 CSH)
+                        // 29 KSL does not include 30 KSL (but would include an invalid 31 KSL if there were no 30 KSL)
+                        if ($anniv->d === 1) {
+                            $tmp = new JewishDate(array($anniv->y, 'CSH', 1));
+                            if ($tmp->daysInMonth() === 29) {
+                                $where .= " AND (d_day <= 1 AND d_mon = 3 OR d_day = 30 AND d_mon = 2)";
+                            } else {
+                                $where .= " AND d_day <= 1 AND d_mon = 3";
+                            }
+                        } elseif ($anniv->d === 30) {
+                            $where .= " AND d_day >= 30 AND d_mon = 3";
+                        } elseif ($anniv->d == 29 && $anniv->daysInMonth() === 29) {
+                            $where .= " AND (d_day = 29 OR d_day > 30) AND d_mon = 3";
                         } else {
-                            $where .= " AND d_day <= 1 AND d_mon = 4";
+                            $where .= " AND d_day = :day AND d_mon = 3";
+                            $args['day'] = $anniv->d;
                         }
-                    } elseif ($anniv->d === $anniv->daysInMonth()) {
-                        $where .= " AND d_day >= :day AND d_mon=4";
-                        $args['day'] = $anniv->d;
-                    } else {
-                        $where .= " AND d_day = :day AND d_mon=4";
-                        $args['day'] = $anniv->d;
-                    }
-                    break;
-                case 7: // ADS includes ADR (non-leap)
-                    if ($anniv->d === 1) {
-                        $where .= " AND d_day <= 1";
-                    } elseif ($anniv->d === $anniv->daysInMonth()) {
-                        $where .= " AND d_day >= :day";
-                        $args['day'] = $anniv->d;
-                    } else {
-                        $where .= " AND d_day = :day";
-                        $args['day'] = $anniv->d;
-                    }
-                    $where .= " AND (d_mon = 6 AND MOD(7 * d_year + 1, 19) >= 7 OR d_mon = 7)";
-                    break;
-                case 8: // 1 NSN includes 30 ADR, if this year is non-leap
-                    if ($anniv->d === 1) {
-                        if ($anniv->isLeapYear()) {
-                            $where .= " AND d_day <= 1 AND d_mon = 8";
+                        break;
+                    case 4:
+                        // 1 TVT includes 30 KSL (if this year didn’t have 30 KSL)
+                        if ($anniv->d === 1) {
+                            $tmp = new JewishDate(array($anniv->y, 'KSL', 1));
+                            if ($tmp->daysInMonth() === 29) {
+                                $where .= " AND (d_day <=1 AND d_mon = 4 OR d_day = 30 AND d_mon = 3)";
+                            } else {
+                                $where .= " AND d_day <= 1 AND d_mon = 4";
+                            }
+                        } elseif ($anniv->d === $anniv->daysInMonth()) {
+                            $where .= " AND d_day >= :day AND d_mon=4";
+                            $args['day'] = $anniv->d;
                         } else {
-                            $where .= " AND (d_day <= 1 AND d_mon = 8 OR d_day = 30 AND d_mon = 6)";
+                            $where .= " AND d_day = :day AND d_mon=4";
+                            $args['day'] = $anniv->d;
                         }
-                    } elseif ($anniv->d === $anniv->daysInMonth()) {
-                        $where .= " AND d_day >= :day AND d_mon = 8";
-                        $args['day'] = $anniv->d;
-                    } else {
-                        $where .= " AND d_day = :day AND d_mon = 8";
-                        $args['day'] = $anniv->d;
-                    }
-                    break;
+                        break;
+                    case 7: // ADS includes ADR (non-leap)
+                        if ($anniv->d === 1) {
+                            $where .= " AND d_day <= 1";
+                        } elseif ($anniv->d === $anniv->daysInMonth()) {
+                            $where .= " AND d_day >= :day";
+                            $args['day'] = $anniv->d;
+                        } else {
+                            $where .= " AND d_day = :day";
+                            $args['day'] = $anniv->d;
+                        }
+                        $where .= " AND (d_mon = 6 AND MOD(7 * d_year + 1, 19) >= 7 OR d_mon = 7)";
+                        break;
+                    case 8: // 1 NSN includes 30 ADR, if this year is non-leap
+                        if ($anniv->d === 1) {
+                            if ($anniv->isLeapYear()) {
+                                $where .= " AND d_day <= 1 AND d_mon = 8";
+                            } else {
+                                $where .= " AND (d_day <= 1 AND d_mon = 8 OR d_day = 30 AND d_mon = 6)";
+                            }
+                        } elseif ($anniv->d === $anniv->daysInMonth()) {
+                            $where .= " AND d_day >= :day AND d_mon = 8";
+                            $args['day'] = $anniv->d;
+                        } else {
+                            $where .= " AND d_day = :day AND d_mon = 8";
+                            $args['day'] = $anniv->d;
+                        }
+                        break;
                 }
             }
             // Only events in the past (includes dates without a year)

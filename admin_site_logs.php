@@ -98,21 +98,21 @@ if ($gedc) {
 }
 
 switch ($action) {
-case 'delete':
-    $sql_delete =
+    case 'delete':
+        $sql_delete =
         "DELETE `##log` FROM `##log`" .
         " LEFT JOIN `##user` USING (user_id)" . // user may be deleted
         " LEFT JOIN `##gedcom` USING (gedcom_id)"; // gedcom may be deleted
 
-    Database::prepare($sql_delete . $where)->execute($args);
-    break;
+        Database::prepare($sql_delete . $where)->execute($args);
+        break;
 
-case 'export':
-    header('Content-Type: text/csv');
-    header('Content-Disposition: attachment; filename="webtrees-logs.csv"');
-    $rows = Database::prepare($sql_select . $where . ' ORDER BY log_id')->execute($args)->fetchAll();
-    foreach ($rows as $row) {
-        echo
+    case 'export':
+        header('Content-Type: text/csv');
+        header('Content-Disposition: attachment; filename="webtrees-logs.csv"');
+        $rows = Database::prepare($sql_select . $where . ' ORDER BY log_id')->execute($args)->fetchAll();
+        foreach ($rows as $row) {
+            echo
             '"', $row->log_time, '",',
             '"', $row->log_type, '",',
             '"', str_replace('"', '""', $row->log_message), '",',
@@ -120,68 +120,68 @@ case 'export':
             '"', str_replace('"', '""', $row->user_name), '",',
             '"', str_replace('"', '""', $row->gedcom_name), '"',
             "\n";
-    }
-
-    return;
-case 'load_json':
-    $start  = Filter::getInteger('start');
-    $length = Filter::getInteger('length');
-    $order  = Filter::getArray('order');
-
-    if ($order) {
-        $order_by = " ORDER BY ";
-        foreach ($order as $key => $value) {
-            if ($key > 0) {
-                $order_by .= ',';
-            }
-            // Datatables numbers columns 0, 1, 2
-            // MySQL numbers columns 1, 2, 3
-            switch ($value['dir']) {
-            case 'asc':
-                $order_by .= (1 + $value['column']) . " ASC ";
-                break;
-            case 'desc':
-                $order_by .= (1 + $value['column']) . " DESC ";
-                break;
-            }
         }
-    } else {
-        $order_by = " ORDER BY 1 ASC";
-    }
 
-    if ($length) {
-        Auth::user()->setPreference('admin_site_log_page_size', $length);
-        $limit          = " LIMIT :limit OFFSET :offset";
-        $args['limit']  = $length;
-        $args['offset'] = $start;
-    } else {
-        $limit = "";
-    }
+        return;
+    case 'load_json':
+        $start  = Filter::getInteger('start');
+        $length = Filter::getInteger('length');
+        $order  = Filter::getArray('order');
 
-    // This becomes a JSON list, not array, so need to fetch with numeric keys.
-    $data = Database::prepare($sql_select . $where . $order_by . $limit)->execute($args)->fetchAll(PDO::FETCH_NUM);
-    foreach ($data as &$datum) {
-        $datum[2] = Filter::escapeHtml($datum[2]);
-        $datum[3] = '<span dir="auto">' . Filter::escapeHtml($datum[3]) . '</span>';
-        $datum[4] = '<span dir="auto">' . Filter::escapeHtml($datum[4]) . '</span>';
-        $datum[5] = '<span dir="auto">' . Filter::escapeHtml($datum[5]) . '</span>';
-        $datum[6] = '<span dir="auto">' . Filter::escapeHtml($datum[6]) . '</span>';
-    }
+        if ($order) {
+            $order_by = " ORDER BY ";
+            foreach ($order as $key => $value) {
+                if ($key > 0) {
+                    $order_by .= ',';
+                }
+                // Datatables numbers columns 0, 1, 2
+                // MySQL numbers columns 1, 2, 3
+                switch ($value['dir']) {
+                    case 'asc':
+                        $order_by .= (1 + $value['column']) . " ASC ";
+                        break;
+                    case 'desc':
+                        $order_by .= (1 + $value['column']) . " DESC ";
+                    break;
+                }
+            }
+        } else {
+            $order_by = " ORDER BY 1 ASC";
+        }
 
-    // Total filtered/unfiltered rows
-    $recordsFiltered = (int) Database::prepare("SELECT FOUND_ROWS()")->fetchOne();
-    $recordsTotal    = (int) Database::prepare("SELECT COUNT(*) FROM `##log`")->fetchOne();
+        if ($length) {
+            Auth::user()->setPreference('admin_site_log_page_size', $length);
+            $limit          = " LIMIT :limit OFFSET :offset";
+            $args['limit']  = $length;
+            $args['offset'] = $start;
+        } else {
+            $limit = "";
+        }
 
-    header('Content-type: application/json');
-    // See http://www.datatables.net/usage/server-side
-    echo json_encode(array(
+        // This becomes a JSON list, not array, so need to fetch with numeric keys.
+        $data = Database::prepare($sql_select . $where . $order_by . $limit)->execute($args)->fetchAll(PDO::FETCH_NUM);
+        foreach ($data as &$datum) {
+            $datum[2] = Filter::escapeHtml($datum[2]);
+            $datum[3] = '<span dir="auto">' . Filter::escapeHtml($datum[3]) . '</span>';
+            $datum[4] = '<span dir="auto">' . Filter::escapeHtml($datum[4]) . '</span>';
+            $datum[5] = '<span dir="auto">' . Filter::escapeHtml($datum[5]) . '</span>';
+            $datum[6] = '<span dir="auto">' . Filter::escapeHtml($datum[6]) . '</span>';
+        }
+
+        // Total filtered/unfiltered rows
+        $recordsFiltered = (int) Database::prepare("SELECT FOUND_ROWS()")->fetchOne();
+        $recordsTotal    = (int) Database::prepare("SELECT COUNT(*) FROM `##log`")->fetchOne();
+
+        header('Content-type: application/json');
+        // See http://www.datatables.net/usage/server-side
+        echo json_encode(array(
         'draw'            => Filter::getInteger('draw'),
         'recordsTotal'    => $recordsTotal,
         'recordsFiltered' => $recordsFiltered,
         'data'            => $data,
-    ));
+        ));
 
-    return;
+        return;
 }
 
 $controller

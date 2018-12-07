@@ -377,108 +377,108 @@ class AdvancedSearchController extends SearchController {
             if ($parts[0] == 'NAME') {
                 // NAME:*
                 switch ($parts[1]) {
-                case 'GIVN':
-                    switch ($parts[2]) {
-                    case 'EXACT':
-                        $sql .= " AND i_n.n_givn=?";
-                        $bind[] = $value;
-                        break;
-                    case 'BEGINS':
-                        $sql .= " AND i_n.n_givn LIKE CONCAT(?, '%')";
-                        $bind[] = $value;
-                        break;
-                    case 'CONTAINS':
-                        $sql .= " AND i_n.n_givn LIKE CONCAT('%', ?, '%')";
-                        $bind[] = $value;
-                        break;
-                    case 'SDX_STD':
-                        $sdx = Soundex::russell($value);
-                        if ($sdx !== null) {
-                            $sdx = explode(':', $sdx);
-                            foreach ($sdx as $k => $v) {
-                                $sdx[$k] = "i_n.n_soundex_givn_std LIKE CONCAT('%', ?, '%')";
-                                $bind[]  = $v;
-                            }
-                            $sql .= ' AND (' . implode(' OR ', $sdx) . ')';
-                        } else {
-                            // No phonetic content? Use a substring match
-                            $sql .= " AND i_n.n_givn LIKE CONCAT('%', ?, '%')";
-                            $bind[] = $value;
-                        }
-                        break;
-                    case 'SDX': // SDX uses DM by default.
-                    case 'SDX_DM':
-                        $sdx = Soundex::daitchMokotoff($value);
-                        if ($sdx !== null) {
-                            $sdx = explode(':', $sdx);
-                            foreach ($sdx as $k => $v) {
-                                $sdx[$k] = "i_n.n_soundex_givn_dm LIKE CONCAT('%', ?, '%')";
-                                $bind[]  = $v;
-                            }
-                            $sql .= ' AND (' . implode(' OR ', $sdx) . ')';
-                        } else {
-                            // No phonetic content? Use a substring match
-                            $sql .= " AND i_n.n_givn LIKE CONCAT('%', ?, '%')";
-                            $bind[] = $value;
-                        }
-                        break;
-                    }
-                    break;
-                case 'SURN':
-                    switch ($parts[2]) {
-                    case 'EXACT':
-                        $sql .= " AND i_n.n_surname=?";
-                        $bind[] = $value;
-                        break;
-                    case 'BEGINS':
-                        $sql .= " AND i_n.n_surname LIKE CONCAT(?, '%')";
-                        $bind[] = $value;
-                        break;
-                    case 'CONTAINS':
-                        $sql .= " AND i_n.n_surname LIKE CONCAT('%', ?, '%')";
-                        $bind[] = $value;
-                        break;
-                    case 'SDX_STD':
-                        $sdx = Soundex::russell($value);
-                        if ($sdx !== null) {
-                            $sdx = explode(':', $sdx);
-                            foreach ($sdx as $k => $v) {
-                                $sdx[$k] = "i_n.n_soundex_surn_std LIKE CONCAT('%', ?, '%')";
-                                $bind[]  = $v;
-                            }
-                            $sql .= " AND (" . implode(' OR ', $sdx) . ")";
-                        } else {
-                            // No phonetic content? Use a substring match
-                            $sql .= " AND i_n.n_surn LIKE CONCAT('%', ?, '%')";
-                            $bind[] = $value;
-                        }
-                        break;
-                    case 'SDX': // SDX uses DM by default.
-                    case 'SDX_DM':
-                        $sdx = Soundex::daitchMokotoff($value);
-                        if ($sdx !== null) {
-                            $sdx = explode(':', $sdx);
-                            foreach ($sdx as $k => $v) {
-                                $sdx[$k] = "i_n.n_soundex_surn_dm LIKE CONCAT('%', ?, '%')";
-                                $bind[]  = $v;
-                            }
-                            $sql .= " AND (" . implode(' OR ', $sdx) . ")";
+                    case 'GIVN':
+                        switch ($parts[2]) {
+                            case 'EXACT':
+                                $sql .= " AND i_n.n_givn=?";
+                                $bind[] = $value;
+                                break;
+                            case 'BEGINS':
+                                $sql .= " AND i_n.n_givn LIKE CONCAT(?, '%')";
+                                $bind[] = $value;
                             break;
-                        } else {
-                            // No phonetic content? Use a substring match
-                            $sql .= " AND i_n.n_surn LIKE CONCAT('%', ?, '%')";
-                            $bind[] = $value;
+                            case 'CONTAINS':
+                                $sql .= " AND i_n.n_givn LIKE CONCAT('%', ?, '%')";
+                                $bind[] = $value;
+                            break;
+                            case 'SDX_STD':
+                                $sdx = Soundex::russell($value);
+                                if ($sdx !== null) {
+                                    $sdx = explode(':', $sdx);
+                                    foreach ($sdx as $k => $v) {
+                                        $sdx[$k] = "i_n.n_soundex_givn_std LIKE CONCAT('%', ?, '%')";
+                                        $bind[]  = $v;
+                                    }
+                                    $sql .= ' AND (' . implode(' OR ', $sdx) . ')';
+                                } else {
+                                    // No phonetic content? Use a substring match
+                                    $sql .= " AND i_n.n_givn LIKE CONCAT('%', ?, '%')";
+                                    $bind[] = $value;
+                                }
+                            break;
+                            case 'SDX': // SDX uses DM by default.
+                            case 'SDX_DM':
+                                $sdx = Soundex::daitchMokotoff($value);
+                                if ($sdx !== null) {
+                                    $sdx = explode(':', $sdx);
+                                    foreach ($sdx as $k => $v) {
+                                        $sdx[$k] = "i_n.n_soundex_givn_dm LIKE CONCAT('%', ?, '%')";
+                                        $bind[]  = $v;
+                                    }
+                                    $sql .= ' AND (' . implode(' OR ', $sdx) . ')';
+                                } else {
+                                    // No phonetic content? Use a substring match
+                                    $sql .= " AND i_n.n_givn LIKE CONCAT('%', ?, '%')";
+                                    $bind[] = $value;
+                                }
+                            break;
                         }
-                    }
-                    break;
-                case 'NICK':
-                case '_MARNM':
-                case '_HEB':
-                case '_AKA':
-                    $sql .= " AND i_n.n_type=? AND i_n.n_full LIKE CONCAT('%', ?, '%')";
-                    $bind[] = $parts[1];
-                    $bind[] = $value;
-                    break;
+                        break;
+                    case 'SURN':
+                        switch ($parts[2]) {
+                            case 'EXACT':
+                                $sql .= " AND i_n.n_surname=?";
+                                $bind[] = $value;
+                                break;
+                            case 'BEGINS':
+                                $sql .= " AND i_n.n_surname LIKE CONCAT(?, '%')";
+                                $bind[] = $value;
+                            break;
+                            case 'CONTAINS':
+                                $sql .= " AND i_n.n_surname LIKE CONCAT('%', ?, '%')";
+                                $bind[] = $value;
+                            break;
+                            case 'SDX_STD':
+                                $sdx = Soundex::russell($value);
+                                if ($sdx !== null) {
+                                    $sdx = explode(':', $sdx);
+                                    foreach ($sdx as $k => $v) {
+                                        $sdx[$k] = "i_n.n_soundex_surn_std LIKE CONCAT('%', ?, '%')";
+                                        $bind[]  = $v;
+                                    }
+                                    $sql .= " AND (" . implode(' OR ', $sdx) . ")";
+                                } else {
+                                    // No phonetic content? Use a substring match
+                                    $sql .= " AND i_n.n_surn LIKE CONCAT('%', ?, '%')";
+                                    $bind[] = $value;
+                                }
+                            break;
+                            case 'SDX': // SDX uses DM by default.
+                            case 'SDX_DM':
+                                $sdx = Soundex::daitchMokotoff($value);
+                                if ($sdx !== null) {
+                                    $sdx = explode(':', $sdx);
+                                    foreach ($sdx as $k => $v) {
+                                        $sdx[$k] = "i_n.n_soundex_surn_dm LIKE CONCAT('%', ?, '%')";
+                                        $bind[]  = $v;
+                                    }
+                                    $sql .= " AND (" . implode(' OR ', $sdx) . ")";
+                                    break;
+                                } else {
+                                    // No phonetic content? Use a substring match
+                                    $sql .= " AND i_n.n_surn LIKE CONCAT('%', ?, '%')";
+                                    $bind[] = $value;
+                                }
+                        }
+                        break;
+                    case 'NICK':
+                    case '_MARNM':
+                    case '_HEB':
+                    case '_AKA':
+                        $sql .= " AND i_n.n_type=? AND i_n.n_full LIKE CONCAT('%', ?, '%')";
+                        $bind[] = $parts[1];
+                        $bind[] = $value;
+                        break;
                 }
             } elseif ($parts[1] == 'DATE') {
                 // *:DATE
@@ -526,100 +526,100 @@ class AdvancedSearchController extends SearchController {
                 $table = $parts[1] == 'HUSB' ? 'f_n' : 'm_n';
                 // NAME:*
                 switch ($parts[3]) {
-                case 'GIVN':
-                    switch ($parts[4]) {
-                    case 'EXACT':
-                        $sql .= " AND {$table}.n_givn=?";
-                        $bind[] = $value;
-                        break;
-                    case 'BEGINS':
-                        $sql .= " AND {$table}.n_givn LIKE CONCAT(?, '%')";
-                        $bind[] = $value;
-                        break;
-                    case 'CONTAINS':
-                        $sql .= " AND {$table}.n_givn LIKE CONCAT('%', ?, '%')";
-                        $bind[] = $value;
-                        break;
-                    case 'SDX_STD':
-                        $sdx = Soundex::russell($value);
-                        if ($sdx !== null) {
-                            $sdx = explode(':', $sdx);
-                            foreach ($sdx as $k => $v) {
-                                $sdx[$k] = "{$table}.n_soundex_givn_std LIKE CONCAT('%', ?, '%')";
-                                $bind[]  = $v;
-                            }
-                            $sql .= ' AND (' . implode(' OR ', $sdx) . ')';
-                        } else {
-                            // No phonetic content? Use a substring match
-                            $sql .= " AND {$table}.n_givn = LIKE CONCAT('%', ?, '%')";
-                            $bind[] = $value;
-                        }
-                        break;
-                    case 'SDX': // SDX uses DM by default.
-                    case 'SDX_DM':
-                        $sdx = Soundex::daitchMokotoff($value);
-                        if ($sdx !== null) {
-                            $sdx = explode(':', $sdx);
-                            foreach ($sdx as $k => $v) {
-                                $sdx[$k] = "{$table}.n_soundex_givn_dm LIKE CONCAT('%', ?, '%')";
-                                $bind[]  = $v;
-                            }
-                            $sql .= ' AND (' . implode(' OR ', $sdx) . ')';
+                    case 'GIVN':
+                        switch ($parts[4]) {
+                            case 'EXACT':
+                                $sql .= " AND {$table}.n_givn=?";
+                                $bind[] = $value;
+                                break;
+                            case 'BEGINS':
+                                $sql .= " AND {$table}.n_givn LIKE CONCAT(?, '%')";
+                                $bind[] = $value;
                             break;
-                        } else {
-                            // No phonetic content? Use a substring match
-                            $sql .= " AND {$table}.n_givn = LIKE CONCAT('%', ?, '%')";
-                            $bind[] = $value;
-                        }
-                    }
-                    break;
-                case 'SURN':
-                    switch ($parts[4]) {
-                    case 'EXACT':
-                        $sql .= " AND {$table}.n_surname=?";
-                        $bind[] = $value;
-                        break;
-                    case 'BEGINS':
-                        $sql .= " AND {$table}.n_surname LIKE CONCAT(?, '%')";
-                        $bind[] = $value;
-                        break;
-                    case 'CONTAINS':
-                        $sql .= " AND {$table}.n_surname LIKE CONCAT('%', ?, '%')";
-                        $bind[] = $value;
-                        break;
-                    case 'SDX_STD':
-                        $sdx = Soundex::russell($value);
-                        if ($sdx !== null) {
-                            $sdx = explode(':', $sdx);
-                            foreach ($sdx as $k => $v) {
-                                $sdx[$k] = "{$table}.n_soundex_surn_std LIKE CONCAT('%', ?, '%')";
-                                $bind[]  = $v;
-                            }
-                            $sql .= ' AND (' . implode(' OR ', $sdx) . ')';
-                        } else {
-                            // No phonetic content? Use a substring match
-                            $sql .= " AND {$table}.n_surn = LIKE CONCAT('%', ?, '%')";
-                            $bind[] = $value;
-                        }
-                        break;
-                    case 'SDX': // SDX uses DM by default.
-                    case 'SDX_DM':
-                        $sdx = Soundex::daitchMokotoff($value);
-                        if ($sdx !== null) {
-                            $sdx = explode(':', $sdx);
-                            foreach ($sdx as $k => $v) {
-                                $sdx[$k] = "{$table}.n_soundex_surn_dm LIKE CONCAT('%', ?, '%')";
-                                $bind[]  = $v;
-                            }
-                            $sql .= ' AND (' . implode(' OR ', $sdx) . ')';
-                        } else {
-                            // No phonetic content? Use a substring match
-                            $sql .= " AND {$table}.n_surn = LIKE CONCAT('%', ?, '%')";
-                            $bind[] = $value;
+                            case 'CONTAINS':
+                                $sql .= " AND {$table}.n_givn LIKE CONCAT('%', ?, '%')";
+                                $bind[] = $value;
+                            break;
+                            case 'SDX_STD':
+                                $sdx = Soundex::russell($value);
+                                if ($sdx !== null) {
+                                    $sdx = explode(':', $sdx);
+                                    foreach ($sdx as $k => $v) {
+                                        $sdx[$k] = "{$table}.n_soundex_givn_std LIKE CONCAT('%', ?, '%')";
+                                        $bind[]  = $v;
+                                    }
+                                    $sql .= ' AND (' . implode(' OR ', $sdx) . ')';
+                                } else {
+                                    // No phonetic content? Use a substring match
+                                    $sql .= " AND {$table}.n_givn = LIKE CONCAT('%', ?, '%')";
+                                    $bind[] = $value;
+                                }
+                            break;
+                            case 'SDX': // SDX uses DM by default.
+                            case 'SDX_DM':
+                                $sdx = Soundex::daitchMokotoff($value);
+                                if ($sdx !== null) {
+                                    $sdx = explode(':', $sdx);
+                                    foreach ($sdx as $k => $v) {
+                                        $sdx[$k] = "{$table}.n_soundex_givn_dm LIKE CONCAT('%', ?, '%')";
+                                        $bind[]  = $v;
+                                    }
+                                    $sql .= ' AND (' . implode(' OR ', $sdx) . ')';
+                                    break;
+                                } else {
+                                    // No phonetic content? Use a substring match
+                                    $sql .= " AND {$table}.n_givn = LIKE CONCAT('%', ?, '%')";
+                                    $bind[] = $value;
+                                }
                         }
                         break;
-                    }
-                    break;
+                    case 'SURN':
+                        switch ($parts[4]) {
+                            case 'EXACT':
+                                $sql .= " AND {$table}.n_surname=?";
+                                $bind[] = $value;
+                                break;
+                            case 'BEGINS':
+                                $sql .= " AND {$table}.n_surname LIKE CONCAT(?, '%')";
+                                $bind[] = $value;
+                            break;
+                            case 'CONTAINS':
+                                $sql .= " AND {$table}.n_surname LIKE CONCAT('%', ?, '%')";
+                                $bind[] = $value;
+                            break;
+                            case 'SDX_STD':
+                                $sdx = Soundex::russell($value);
+                                if ($sdx !== null) {
+                                    $sdx = explode(':', $sdx);
+                                    foreach ($sdx as $k => $v) {
+                                        $sdx[$k] = "{$table}.n_soundex_surn_std LIKE CONCAT('%', ?, '%')";
+                                        $bind[]  = $v;
+                                    }
+                                    $sql .= ' AND (' . implode(' OR ', $sdx) . ')';
+                                } else {
+                                    // No phonetic content? Use a substring match
+                                    $sql .= " AND {$table}.n_surn = LIKE CONCAT('%', ?, '%')";
+                                    $bind[] = $value;
+                                }
+                            break;
+                            case 'SDX': // SDX uses DM by default.
+                            case 'SDX_DM':
+                                $sdx = Soundex::daitchMokotoff($value);
+                                if ($sdx !== null) {
+                                    $sdx = explode(':', $sdx);
+                                    foreach ($sdx as $k => $v) {
+                                        $sdx[$k] = "{$table}.n_soundex_surn_dm LIKE CONCAT('%', ?, '%')";
+                                        $bind[]  = $v;
+                                    }
+                                    $sql .= ' AND (' . implode(' OR ', $sdx) . ')';
+                                } else {
+                                    // No phonetic content? Use a substring match
+                                    $sql .= " AND {$table}.n_surn = LIKE CONCAT('%', ?, '%')";
+                                    $bind[] = $value;
+                                }
+                            break;
+                        }
+                        break;
                 }
             } elseif ($parts[0] === 'FAMS') {
                 // e.g. searches for occupation, religion, note, etc.
@@ -646,7 +646,7 @@ class AdvancedSearchController extends SearchController {
                 if ($this->values[$n] && preg_match('/^(' . WT_REGEX_TAG . '):PLAC$/', $field, $match)) {
                     if (!preg_match('/\n1 ' . $match[1] . '(\n[2-9].*)*\n2 PLAC .*' . preg_quote($this->values[$n], '/') . '/i', $person->getGedcom())) {
                         continue 2;
-                 }
+                    }
                 }
             }
             $this->myindilist[] = $person;

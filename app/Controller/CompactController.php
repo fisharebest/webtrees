@@ -41,7 +41,7 @@ class CompactController extends ChartController {
             $this->setPageTitle(
                 /* I18N: %s is an individual’s name */
             I18N::translate('Compact tree of %s', $this->root->getFullName())
-        );
+            );
         } else {
             $this->setPageTitle(I18N::translate('Compact tree'));
         }

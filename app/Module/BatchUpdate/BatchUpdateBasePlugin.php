@@ -101,14 +101,14 @@ class BatchUpdateBasePlugin {
 
         foreach ($differences as $difference) {
             switch ($difference[1]) {
-            case MyersDiff::DELETE:
-                $diff_lines[] = self::decorateDeletedText($difference[0]);
-                break;
-            case MyersDiff::INSERT:
-                $diff_lines[] = self::decorateInsertedText($difference[0]);
-                break;
-            default:
-                $diff_lines[] = $difference[0];
+                case MyersDiff::DELETE:
+                    $diff_lines[] = self::decorateDeletedText($difference[0]);
+                    break;
+                case MyersDiff::INSERT:
+                    $diff_lines[] = self::decorateInsertedText($difference[0]);
+                    break;
+                default:
+                    $diff_lines[] = $difference[0];
             }
         }
 

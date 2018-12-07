@@ -403,7 +403,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface {
         </td>
     </tr>
 
-    <?php
+        <?php
 
         echo '<tr><td class="descriptionbox wrap width33">';
         echo /* I18N: Label for a configuration option */ I18N::translate('Show slide show controls');

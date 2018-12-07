@@ -60,19 +60,19 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
         // The individual’s own facts
         foreach ($controller->record->getFacts() as $fact) {
             switch ($fact->getTag()) {
-            case 'SEX':
-            case 'NAME':
-            case 'SOUR':
-            case 'OBJE':
-            case 'NOTE':
-            case 'FAMC':
-            case 'FAMS':
-                break;
-            default:
-                if (!array_key_exists('extra_info', Module::getActiveSidebars($controller->record->getTree())) || !ExtraInformationModule::showFact($fact)) {
-                    $indifacts[] = $fact;
-                }
-                break;
+                case 'SEX':
+                case 'NAME':
+                case 'SOUR':
+                case 'OBJE':
+                case 'NOTE':
+                case 'FAMC':
+                case 'FAMS':
+                    break;
+                default:
+                    if (!array_key_exists('extra_info', Module::getActiveSidebars($controller->record->getTree())) || !ExtraInformationModule::showFact($fact)) {
+                        $indifacts[] = $fact;
+                    }
+                    break;
             }
         }
 
@@ -80,19 +80,19 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
         foreach ($controller->record->getSpouseFamilies() as $family) {
             foreach ($family->getFacts() as $fact) {
                 switch ($fact->getTag()) {
-                case 'SOUR':
-                case 'NOTE':
-                case 'OBJE':
-                case 'CHAN':
-                case '_UID':
-                case 'RIN':
-                case 'HUSB':
-                case 'WIFE':
-                case 'CHIL':
-                    break;
-                default:
-                    $indifacts[] = $fact;
-                    break;
+                    case 'SOUR':
+                    case 'NOTE':
+                    case 'OBJE':
+                    case 'CHAN':
+                    case '_UID':
+                    case 'RIN':
+                    case 'HUSB':
+                    case 'WIFE':
+                    case 'CHIL':
+                        break;
+                    default:
+                        $indifacts[] = $fact;
+                        break;
                 }
             }
             $spouse = $family->getSpouse($controller->record);
@@ -144,20 +144,20 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
                 </tr>
                 <?php
 
-        if (!$indifacts) {
-            echo '<tr><td colspan="2" class="facts_value">', I18N::translate('There are no facts for this individual.'), '</td></tr>';
-        }
+                if (!$indifacts) {
+                    echo '<tr><td colspan="2" class="facts_value">', I18N::translate('There are no facts for this individual.'), '</td></tr>';
+                }
 
-        foreach ($indifacts as $fact) {
-            FunctionsPrintFacts::printFact($fact, $controller->record);
-        }
+                foreach ($indifacts as $fact) {
+                    FunctionsPrintFacts::printFact($fact, $controller->record);
+                }
 
         //-- new fact link
-        if ($controller->record->canEdit()) {
-            FunctionsPrint::printAddNewFact($controller->record->getXref(), $indifacts, 'INDI');
-        }
+                if ($controller->record->canEdit()) {
+                    FunctionsPrint::printAddNewFact($controller->record->getXref(), $indifacts, 'INDI');
+                }
 
-        ?>
+                ?>
             </tbody>
         </table>
         <script>
@@ -239,30 +239,30 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
 
         // Deal with recursion.
         switch ($option) {
-        case '_CHIL':
-            // Add grandchildren
-            foreach ($family->getChildren() as $child) {
-                foreach ($child->getSpouseFamilies() as $cfamily) {
-                    switch ($child->getSex()) {
-                    case 'M':
-                        foreach (self::childFacts($person, $cfamily, '_GCHI', 'son') as $fact) {
-                            $facts[] = $fact;
+            case '_CHIL':
+                // Add grandchildren
+                foreach ($family->getChildren() as $child) {
+                    foreach ($child->getSpouseFamilies() as $cfamily) {
+                        switch ($child->getSex()) {
+                            case 'M':
+                                foreach (self::childFacts($person, $cfamily, '_GCHI', 'son') as $fact) {
+                                    $facts[] = $fact;
+                                }
+                            break;
+                            case 'F':
+                                foreach (self::childFacts($person, $cfamily, '_GCHI', 'dau') as $fact) {
+                                    $facts[] = $fact;
+                                }
+                            break;
+                            default:
+                                foreach (self::childFacts($person, $cfamily, '_GCHI', 'chi') as $fact) {
+                                    $facts[] = $fact;
+                                }
+                            break;
                         }
-                        break;
-                    case 'F':
-                        foreach (self::childFacts($person, $cfamily, '_GCHI', 'dau') as $fact) {
-                            $facts[] = $fact;
-                        }
-                        break;
-                    default:
-                        foreach (self::childFacts($person, $cfamily, '_GCHI', 'chi') as $fact) {
-                            $facts[] = $fact;
-                        }
-                        break;
                     }
                 }
-            }
-            break;
+                break;
         }
 
         // For each child in the family
@@ -424,24 +424,24 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
                     foreach ($parent->getFacts(WT_EVENTS_DEAT) as $fact) {
                         if ($fact->getDate()->isOK() && Date::compare($birt_date, $fact->getDate()) <= 0 && Date::compare($fact->getDate(), $deat_date) <= 0) {
                             switch ($sosa) {
-                            case 1:
-                                // Convert the event to a close relatives event.
-                                $rela_fact = clone($fact);
-                                $rela_fact->setTag('_' . $fact->getTag() . '_PARE');
-                                $facts[] = $rela_fact;
-                                break;
-                            case 2:
-                                // Convert the event to a close relatives event
-                                $rela_fact = clone($fact);
-                                $rela_fact->setTag('_' . $fact->getTag() . '_GPA1');
-                                $facts[] = $rela_fact;
-                                break;
-                            case 3:
-                                // Convert the event to a close relatives event
-                                $rela_fact = clone($fact);
-                                $rela_fact->setTag('_' . $fact->getTag() . '_GPA2');
-                                $facts[] = $rela_fact;
-                                break;
+                                case 1:
+                                    // Convert the event to a close relatives event.
+                                    $rela_fact = clone($fact);
+                                    $rela_fact->setTag('_' . $fact->getTag() . '_PARE');
+                                    $facts[] = $rela_fact;
+                                    break;
+                                case 2:
+                                    // Convert the event to a close relatives event
+                                    $rela_fact = clone($fact);
+                                    $rela_fact->setTag('_' . $fact->getTag() . '_GPA1');
+                                    $facts[] = $rela_fact;
+                                    break;
+                                case 3:
+                                    // Convert the event to a close relatives event
+                                    $rela_fact = clone($fact);
+                                    $rela_fact->setTag('_' . $fact->getTag() . '_GPA2');
+                                    $facts[] = $rela_fact;
+                                    break;
                             }
                         }
                     }

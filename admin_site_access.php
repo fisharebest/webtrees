@@ -38,75 +38,75 @@ $rules_edit = array(
 
 // Form actions
 switch (Filter::post('action')) {
-case 'save':
-    if (Filter::checkCsrf()) {
-        $site_access_rule_id = Filter::postInteger('site_access_rule_id');
-        $ip_address_start    = Filter::post('ip_address_start', WT_REGEX_IPV4);
-        $ip_address_end      = Filter::post('ip_address_end', WT_REGEX_IPV4);
-        $user_agent_pattern  = Filter::post('user_agent_pattern');
-        $rule                = Filter::post('rule', 'allow|deny|robot');
-        $comment             = Filter::post('comment');
-        $user_agent_string   = Filter::server('HTTP_USER_AGENT');
-        $ip_address          = WT_CLIENT_IP;
+    case 'save':
+        if (Filter::checkCsrf()) {
+            $site_access_rule_id = Filter::postInteger('site_access_rule_id');
+            $ip_address_start    = Filter::post('ip_address_start', WT_REGEX_IPV4);
+            $ip_address_end      = Filter::post('ip_address_end', WT_REGEX_IPV4);
+            $user_agent_pattern  = Filter::post('user_agent_pattern');
+            $rule                = Filter::post('rule', 'allow|deny|robot');
+            $comment             = Filter::post('comment');
+            $user_agent_string   = Filter::server('HTTP_USER_AGENT');
+            $ip_address          = WT_CLIENT_IP;
 
-        if ($ip_address_start !== null && $ip_address_end !== null && $user_agent_pattern !== null && $rule !== null) {
-            // This doesn't work with named placeholders. The :user_agent_string parameter is not recognised.
-            $oops = $rule !== 'allow' && Database::prepare(
+            if ($ip_address_start !== null && $ip_address_end !== null && $user_agent_pattern !== null && $rule !== null) {
+                // This doesn't work with named placeholders. The :user_agent_string parameter is not recognised.
+                $oops = $rule !== 'allow' && Database::prepare(
                 "SELECT INET_ATON(:ip_address) BETWEEN INET_ATON(:ip_address_start) AND INET_ATON(:ip_address_end)" .
                 " AND :user_agent_string LIKE :user_agent_pattern"
-            )->execute(array(
-                'ip_address'         => $ip_address,
-                'ip_address_start'   => $ip_address_start,
-                'ip_address_end'     => $ip_address_end,
-                'user_agent_string'  => $user_agent_string,
-                'user_agent_pattern' => $user_agent_pattern,
-            ))->fetchOne();
-
-            if ($oops) {
-                FlashMessages::addMessage(I18N::translate('You cannot create a rule which would prevent yourself from accessing the website.'), 'danger');
-            } elseif ($site_access_rule_id === null) {
-                Database::prepare(
-                    "INSERT INTO `##site_access_rule` (ip_address_start, ip_address_end, user_agent_pattern, rule, comment) VALUES (INET_ATON(:ip_address_start), INET_ATON(:ip_address_end), :user_agent_pattern, :rule, :comment)"
                 )->execute(array(
+                    'ip_address'         => $ip_address,
+                    'ip_address_start'   => $ip_address_start,
+                    'ip_address_end'     => $ip_address_end,
+                    'user_agent_string'  => $user_agent_string,
+                    'user_agent_pattern' => $user_agent_pattern,
+                ))->fetchOne();
+
+                if ($oops) {
+                    FlashMessages::addMessage(I18N::translate('You cannot create a rule which would prevent yourself from accessing the website.'), 'danger');
+                } elseif ($site_access_rule_id === null) {
+                    Database::prepare(
+                    "INSERT INTO `##site_access_rule` (ip_address_start, ip_address_end, user_agent_pattern, rule, comment) VALUES (INET_ATON(:ip_address_start), INET_ATON(:ip_address_end), :user_agent_pattern, :rule, :comment)"
+                    )->execute(array(
                     'ip_address_start'    => $ip_address_start,
                     'ip_address_end'      => $ip_address_end,
                     'user_agent_pattern'  => $user_agent_pattern,
                     'rule'                => $rule,
                     'comment'             => $comment,
-                ));
-                FlashMessages::addMessage(I18N::translate('The website access rule has been created.'), 'success');
-            } else {
-                Database::prepare(
+                    ));
+                    FlashMessages::addMessage(I18N::translate('The website access rule has been created.'), 'success');
+                } else {
+                    Database::prepare(
                     "UPDATE `##site_access_rule` SET ip_address_start = INET_ATON(:ip_address_start), ip_address_end = INET_ATON(:ip_address_end), user_agent_pattern = :user_agent_pattern, rule = :rule, comment = :comment WHERE site_access_rule_id = :site_access_rule_id"
-                )->execute(array(
+                    )->execute(array(
                     'ip_address_start'    => $ip_address_start,
                     'ip_address_end'      => $ip_address_end,
                     'user_agent_pattern'  => $user_agent_pattern,
                     'rule'                => $rule,
                     'comment'             => $comment,
                     'site_access_rule_id' => $site_access_rule_id,
-                ));
-                FlashMessages::addMessage(I18N::translate('The website access rule has been updated.'), 'success');
+                    ));
+                    FlashMessages::addMessage(I18N::translate('The website access rule has been updated.'), 'success');
+                }
             }
         }
-    }
-    header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME);
+        header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME);
 
-    return;
+        return;
 
-case 'delete':
-    if (Filter::checkCsrf()) {
-        $site_access_rule_id = Filter::postInteger('site_access_rule_id');
-        Database::prepare(
+    case 'delete':
+        if (Filter::checkCsrf()) {
+            $site_access_rule_id = Filter::postInteger('site_access_rule_id');
+            Database::prepare(
             "DELETE FROM `##site_access_rule` WHERE site_access_rule_id = :site_access_rule_id"
-        )->execute(array(
-            'site_access_rule_id' => $site_access_rule_id,
-        ));
-        FlashMessages::addMessage(I18N::translate('The website access rule has been deleted.'), 'success');
-    }
-    header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME);
+            )->execute(array(
+                'site_access_rule_id' => $site_access_rule_id,
+            ));
+            FlashMessages::addMessage(I18N::translate('The website access rule has been deleted.'), 'success');
+        }
+        header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME);
 
-    return;
+        return;
 }
 
 // Delete any "unknown" visitors that are now "known".
@@ -128,113 +128,113 @@ $controller
 
 $action = Filter::get('action');
 switch ($action) {
-case 'load':
-    // AJAX callback for datatables
-    $search = Filter::get('search');
-    $search = $search['value'];
-    $start  = Filter::getInteger('start');
-    $length = Filter::getInteger('length');
+    case 'load':
+        // AJAX callback for datatables
+        $search = Filter::get('search');
+        $search = $search['value'];
+        $start  = Filter::getInteger('start');
+        $length = Filter::getInteger('length');
 
-    $sql =
+        $sql =
         "SELECT SQL_CALC_FOUND_ROWS" .
         " '', INET_NTOA(ip_address_start), ip_address_start, INET_NTOA(ip_address_end), ip_address_end, user_agent_pattern, rule, comment, site_access_rule_id" .
         " FROM `##site_access_rule`";
-    $args = array();
+        $args = array();
 
-    if ($search) {
-        $sql .=
+        if ($search) {
+            $sql .=
             " WHERE (INET_ATON(:search_1) BETWEEN ip_address_start AND ip_address_end" .
             " OR INET_NTOA(ip_address_start) LIKE CONCAT('%', :search_2, '%')" .
             " OR INET_NTOA(ip_address_end) LIKE CONCAT('%', :search_3, '%')" .
             " OR user_agent_pattern LIKE CONCAT('%', :search_4, '%')" .
             " OR comment LIKE CONCAT('%', :search_5, '%'))";
-        $args['search_1'] = Filter::escapeLike($search);
-        $args['search_2'] = Filter::escapeLike($search);
-        $args['search_3'] = Filter::escapeLike($search);
-        $args['search_4'] = Filter::escapeLike($search);
-        $args['search_5'] = Filter::escapeLike($search);
-    }
-
-    $order = Filter::getArray('order');
-    $sql .= ' ORDER BY';
-    if ($order) {
-        foreach ($order as $key => $value) {
-            if ($key > 0) {
-                $sql .= ',';
-            }
-            // Datatables numbers columns 0, 1, 2
-            // MySQL numbers columns 1, 2, 3
-            switch ($value['dir']) {
-            case 'asc':
-                $sql .= " :col_" . $key . " ASC";
-                break;
-            case 'desc':
-                $sql .= " :col_" . $key . " DESC";
-                break;
-            }
-            $args['col_' . $key] = 1 + $value['column'];
+            $args['search_1'] = Filter::escapeLike($search);
+            $args['search_2'] = Filter::escapeLike($search);
+            $args['search_3'] = Filter::escapeLike($search);
+            $args['search_4'] = Filter::escapeLike($search);
+            $args['search_5'] = Filter::escapeLike($search);
         }
-    } else {
-        $sql .= ' 1 ASC';
-    }
 
-    if ($length > 0) {
-        $sql .= " LIMIT :length OFFSET :start";
-        $args['length'] = $length;
-        $args['start']  = $start;
-    }
+        $order = Filter::getArray('order');
+        $sql .= ' ORDER BY';
+        if ($order) {
+            foreach ($order as $key => $value) {
+                if ($key > 0) {
+                    $sql .= ',';
+                }
+                // Datatables numbers columns 0, 1, 2
+                // MySQL numbers columns 1, 2, 3
+                switch ($value['dir']) {
+                    case 'asc':
+                        $sql .= " :col_" . $key . " ASC";
+                        break;
+                    case 'desc':
+                        $sql .= " :col_" . $key . " DESC";
+                    break;
+                }
+                $args['col_' . $key] = 1 + $value['column'];
+            }
+        } else {
+            $sql .= ' 1 ASC';
+        }
 
-    // This becomes a JSON list, not a JSON array, so we need numeric keys.
-    $data = Database::prepare($sql)->execute($args)->fetchAll(PDO::FETCH_NUM);
-    // Reformat the data for display
-    foreach ($data as &$datum) {
-        $site_access_rule_id = $datum[8];
+        if ($length > 0) {
+            $sql .= " LIMIT :length OFFSET :start";
+            $args['length'] = $length;
+            $args['start']  = $start;
+        }
 
-        $datum[0] = '<div class="btn-group"><button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-pencil"></i> <span class="caret"></span></button><ul class="dropdown-menu" role="menu"><li><a href="?action=edit&amp;site_access_rule_id=' . $site_access_rule_id . '"><i class="fa fa-fw fa-pencil"></i> ' . I18N::translate('Edit') . '</a></li><li class="divider"><li><a href="#" onclick="if (confirm(\'' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs($datum[5])) . '\')) delete_site_access_rule(' . $site_access_rule_id . '); return false;"><i class="fa fa-fw fa-trash-o"></i> ' . I18N::translate('Delete') . '</a></li></ul></div>';
-        $datum[5] = '<span dir="ltr">' . $datum[5] . '</span>';
-        $datum[6] = $rules_display[$datum[6]];
-        $datum[7] = '<span dir="auto">' . $datum[7] . '</span>';
-    }
+        // This becomes a JSON list, not a JSON array, so we need numeric keys.
+        $data = Database::prepare($sql)->execute($args)->fetchAll(PDO::FETCH_NUM);
+        // Reformat the data for display
+        foreach ($data as &$datum) {
+            $site_access_rule_id = $datum[8];
 
-    // Total filtered/unfiltered rows
-    $recordsFiltered = Database::prepare("SELECT FOUND_ROWS()")->fetchOne();
-    $recordsTotal    = Database::prepare("SELECT COUNT(*) FROM `##site_access_rule`")->fetchOne();
+            $datum[0] = '<div class="btn-group"><button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-pencil"></i> <span class="caret"></span></button><ul class="dropdown-menu" role="menu"><li><a href="?action=edit&amp;site_access_rule_id=' . $site_access_rule_id . '"><i class="fa fa-fw fa-pencil"></i> ' . I18N::translate('Edit') . '</a></li><li class="divider"><li><a href="#" onclick="if (confirm(\'' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs($datum[5])) . '\')) delete_site_access_rule(' . $site_access_rule_id . '); return false;"><i class="fa fa-fw fa-trash-o"></i> ' . I18N::translate('Delete') . '</a></li></ul></div>';
+            $datum[5] = '<span dir="ltr">' . $datum[5] . '</span>';
+            $datum[6] = $rules_display[$datum[6]];
+            $datum[7] = '<span dir="auto">' . $datum[7] . '</span>';
+        }
 
-    header('Content-type: application/json');
-    // See http://www.datatables.net/usage/server-side
-    echo json_encode(array(
+        // Total filtered/unfiltered rows
+        $recordsFiltered = Database::prepare("SELECT FOUND_ROWS()")->fetchOne();
+        $recordsTotal    = Database::prepare("SELECT COUNT(*) FROM `##site_access_rule`")->fetchOne();
+
+        header('Content-type: application/json');
+        // See http://www.datatables.net/usage/server-side
+        echo json_encode(array(
         'draw'            => Filter::getInteger('draw'),
         'recordsTotal'    => $recordsTotal,
         'recordsFiltered' => $recordsFiltered,
         'data'            => $data,
-    ));
-    break;
+        ));
+        break;
 
-case 'edit':
-case 'create':
-    if (Filter::get('action') === 'edit') {
-        $controller->setPageTitle(I18N::translate('Edit a website access rule'));
-    } else {
-        $controller->setPageTitle(I18N::translate('Create a website access rule'));
-    }
+    case 'edit':
+    case 'create':
+        if (Filter::get('action') === 'edit') {
+            $controller->setPageTitle(I18N::translate('Edit a website access rule'));
+        } else {
+            $controller->setPageTitle(I18N::translate('Create a website access rule'));
+        }
 
-    $controller->pageHeader();
+        $controller->pageHeader();
 
-    $site_access_rule = Database::prepare(
+        $site_access_rule = Database::prepare(
         "SELECT site_access_rule_id, INET_NTOA(ip_address_start) AS ip_address_start, INET_NTOA(ip_address_end) AS ip_address_end, user_agent_pattern, rule, comment" .
         " FROM `##site_access_rule` WHERE site_access_rule_id = :site_access_rule_id"
-    )->execute(array(
-        'site_access_rule_id' => Filter::getInteger('site_access_rule_id'),
-    ))->fetchOneRow();
+        )->execute(array(
+            'site_access_rule_id' => Filter::getInteger('site_access_rule_id'),
+        ))->fetchOneRow();
 
-    $site_access_rule_id = $site_access_rule ? $site_access_rule->site_access_rule_id : null;
-    $ip_address_start    = $site_access_rule ? $site_access_rule->ip_address_start : '0.0.0.0';
-    $ip_address_end      = $site_access_rule ? $site_access_rule->ip_address_end : '255.255.255.255';
-    $user_agent_pattern  = $site_access_rule ? $site_access_rule->user_agent_pattern : '%';
-    $rule                = $site_access_rule ? $site_access_rule->rule : 'allow';
-    $comment             = $site_access_rule ? $site_access_rule->comment : '';
+        $site_access_rule_id = $site_access_rule ? $site_access_rule->site_access_rule_id : null;
+        $ip_address_start    = $site_access_rule ? $site_access_rule->ip_address_start : '0.0.0.0';
+        $ip_address_end      = $site_access_rule ? $site_access_rule->ip_address_end : '255.255.255.255';
+        $user_agent_pattern  = $site_access_rule ? $site_access_rule->user_agent_pattern : '%';
+        $rule                = $site_access_rule ? $site_access_rule->rule : 'allow';
+        $comment             = $site_access_rule ? $site_access_rule->comment : '';
 
-    ?>
+        ?>
     <ol class="breadcrumb small">
         <li><a href="admin.php"><?php echo I18N::translate('Control panel'); ?></a></li>
         <li><a href="admin_site_access.php"><?php echo I18N::translate('Website access rules'); ?></a></li>
@@ -310,11 +310,11 @@ case 'create':
         </div>
     </form>
 
-    <?php
-    break;
+        <?php
+        break;
 
-default:
-    $controller
+    default:
+        $controller
         ->pageHeader()
         ->addInlineJavascript('
 			jQuery.fn.dataTableExt.oSort["unicode-asc" ]=function(a,b) {return a.replace(/<[^<]*>/, "").localeCompare(b.replace(/<[^<]*>/, ""))};
@@ -340,7 +340,7 @@ default:
 			});
 		');
 
-    ?>
+        ?>
     <ol class="breadcrumb small">
         <li><a href="admin.php"><?php echo I18N::translate('Control panel'); ?></a></li>
         <li class="active"><?php echo $controller->getPageTitle(); ?></li>
@@ -380,6 +380,6 @@ default:
             document.getElementById("delete-form").submit();
         }
     </script>
-    <?php
-    break;
+        <?php
+        break;
 }

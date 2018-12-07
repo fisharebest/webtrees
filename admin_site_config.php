@@ -25,85 +25,85 @@ $controller = new PageController;
 $controller->restrictAccess(Auth::isAdmin());
 
 switch (Filter::post('action')) {
-case 'site':
-    if (Filter::checkCsrf()) {
-        $INDEX_DIRECTORY = Filter::post('INDEX_DIRECTORY');
-        if (substr($INDEX_DIRECTORY, -1) !== '/') {
-            $INDEX_DIRECTORY .= '/';
+    case 'site':
+        if (Filter::checkCsrf()) {
+            $INDEX_DIRECTORY = Filter::post('INDEX_DIRECTORY');
+            if (substr($INDEX_DIRECTORY, -1) !== '/') {
+                $INDEX_DIRECTORY .= '/';
+            }
+            if (File::mkdir($INDEX_DIRECTORY)) {
+                Site::setPreference('INDEX_DIRECTORY', $INDEX_DIRECTORY);
+            } else {
+                FlashMessages::addMessage(I18N::translate('The folder %s does not exist, and it could not be created.', Filter::escapeHtml($INDEX_DIRECTORY)), 'danger');
+            }
+            Site::setPreference('MEMORY_LIMIT', Filter::post('MEMORY_LIMIT'));
+            Site::setPreference('MAX_EXECUTION_TIME', Filter::post('MAX_EXECUTION_TIME'));
+            Site::setPreference('ALLOW_USER_THEMES', Filter::postBool('ALLOW_USER_THEMES'));
+            Site::setPreference('THEME_DIR', Filter::post('THEME_DIR'));
+            Site::setPreference('ALLOW_CHANGE_GEDCOM', Filter::postBool('ALLOW_CHANGE_GEDCOM'));
+            Site::setPreference('SESSION_TIME', Filter::post('SESSION_TIME'));
+            Site::setPreference('SERVER_URL', Filter::post('SERVER_URL'));
+            Site::setPreference('TIMEZONE', Filter::post('TIMEZONE'));
+            FlashMessages::addMessage(I18N::translate('The website preferences have been updated.'), 'success');
         }
-        if (File::mkdir($INDEX_DIRECTORY)) {
-            Site::setPreference('INDEX_DIRECTORY', $INDEX_DIRECTORY);
-        } else {
-            FlashMessages::addMessage(I18N::translate('The folder %s does not exist, and it could not be created.', Filter::escapeHtml($INDEX_DIRECTORY)), 'danger');
+        header('Location: ' . WT_BASE_URL . 'admin.php');
+
+        return;
+
+    case 'email':
+        if (Filter::checkCsrf()) {
+            Site::setPreference('SMTP_ACTIVE', Filter::post('SMTP_ACTIVE'));
+            Site::setPreference('SMTP_FROM_NAME', Filter::post('SMTP_FROM_NAME'));
+            Site::setPreference('SMTP_HOST', Filter::post('SMTP_HOST'));
+            Site::setPreference('SMTP_PORT', Filter::post('SMTP_PORT'));
+            Site::setPreference('SMTP_AUTH', Filter::post('SMTP_AUTH'));
+            Site::setPreference('SMTP_AUTH_USER', Filter::post('SMTP_AUTH_USER'));
+            Site::setPreference('SMTP_SSL', Filter::post('SMTP_SSL'));
+            Site::setPreference('SMTP_HELO', Filter::post('SMTP_HELO'));
+            if (Filter::post('SMTP_AUTH_PASS')) {
+                Site::setPreference('SMTP_AUTH_PASS', Filter::post('SMTP_AUTH_PASS'));
+            }
+            FlashMessages::addMessage(I18N::translate('The website preferences have been updated.'), 'success');
         }
-        Site::setPreference('MEMORY_LIMIT', Filter::post('MEMORY_LIMIT'));
-        Site::setPreference('MAX_EXECUTION_TIME', Filter::post('MAX_EXECUTION_TIME'));
-        Site::setPreference('ALLOW_USER_THEMES', Filter::postBool('ALLOW_USER_THEMES'));
-        Site::setPreference('THEME_DIR', Filter::post('THEME_DIR'));
-        Site::setPreference('ALLOW_CHANGE_GEDCOM', Filter::postBool('ALLOW_CHANGE_GEDCOM'));
-        Site::setPreference('SESSION_TIME', Filter::post('SESSION_TIME'));
-        Site::setPreference('SERVER_URL', Filter::post('SERVER_URL'));
-        Site::setPreference('TIMEZONE', Filter::post('TIMEZONE'));
-        FlashMessages::addMessage(I18N::translate('The website preferences have been updated.'), 'success');
-    }
-    header('Location: ' . WT_BASE_URL . 'admin.php');
+        header('Location: ' . WT_BASE_URL . 'admin.php');
 
-    return;
-
-case 'email':
-    if (Filter::checkCsrf()) {
-        Site::setPreference('SMTP_ACTIVE', Filter::post('SMTP_ACTIVE'));
-        Site::setPreference('SMTP_FROM_NAME', Filter::post('SMTP_FROM_NAME'));
-        Site::setPreference('SMTP_HOST', Filter::post('SMTP_HOST'));
-        Site::setPreference('SMTP_PORT', Filter::post('SMTP_PORT'));
-        Site::setPreference('SMTP_AUTH', Filter::post('SMTP_AUTH'));
-        Site::setPreference('SMTP_AUTH_USER', Filter::post('SMTP_AUTH_USER'));
-        Site::setPreference('SMTP_SSL', Filter::post('SMTP_SSL'));
-        Site::setPreference('SMTP_HELO', Filter::post('SMTP_HELO'));
-        if (Filter::post('SMTP_AUTH_PASS')) {
-            Site::setPreference('SMTP_AUTH_PASS', Filter::post('SMTP_AUTH_PASS'));
+        return;
+    case 'login':
+        if (Filter::checkCsrf()) {
+            Site::setPreference('LOGIN_URL', Filter::post('LOGIN_URL'));
+            Site::setPreference('WELCOME_TEXT_AUTH_MODE', Filter::post('WELCOME_TEXT_AUTH_MODE'));
+            Site::setPreference('WELCOME_TEXT_AUTH_MODE_' . WT_LOCALE, Filter::post('WELCOME_TEXT_AUTH_MODE_4'));
+            Site::setPreference('USE_REGISTRATION_MODULE', Filter::post('USE_REGISTRATION_MODULE'));
+            Site::setPreference('SHOW_REGISTER_CAUTION', Filter::post('SHOW_REGISTER_CAUTION'));
+            FlashMessages::addMessage(I18N::translate('The website preferences have been updated.'), 'success');
         }
-        FlashMessages::addMessage(I18N::translate('The website preferences have been updated.'), 'success');
-    }
-    header('Location: ' . WT_BASE_URL . 'admin.php');
+        header('Location: ' . WT_BASE_URL . 'admin.php');
 
-    return;
-case 'login':
-    if (Filter::checkCsrf()) {
-        Site::setPreference('LOGIN_URL', Filter::post('LOGIN_URL'));
-        Site::setPreference('WELCOME_TEXT_AUTH_MODE', Filter::post('WELCOME_TEXT_AUTH_MODE'));
-        Site::setPreference('WELCOME_TEXT_AUTH_MODE_' . WT_LOCALE, Filter::post('WELCOME_TEXT_AUTH_MODE_4'));
-        Site::setPreference('USE_REGISTRATION_MODULE', Filter::post('USE_REGISTRATION_MODULE'));
-        Site::setPreference('SHOW_REGISTER_CAUTION', Filter::post('SHOW_REGISTER_CAUTION'));
-        FlashMessages::addMessage(I18N::translate('The website preferences have been updated.'), 'success');
-    }
-    header('Location: ' . WT_BASE_URL . 'admin.php');
+        return;
 
-    return;
+    case 'tracking':
+        if (Filter::checkCsrf()) {
+            Site::setPreference('BING_WEBMASTER_ID', Filter::post('BING_WEBMASTER_ID'));
+            Site::setPreference('GOOGLE_WEBMASTER_ID', Filter::post('GOOGLE_WEBMASTER_ID'));
+            Site::setPreference('GOOGLE_ANALYTICS_ID', Filter::post('GOOGLE_ANALYTICS_ID'));
+            Site::setPreference('PIWIK_URL', Filter::post('PIWIK_URL'));
+            Site::setPreference('PIWIK_SITE_ID', Filter::post('PIWIK_SITE_ID'));
+            Site::setPreference('STATCOUNTER_PROJECT_ID', Filter::post('STATCOUNTER_PROJECT_ID'));
+            Site::setPreference('STATCOUNTER_SECURITY_ID', Filter::post('STATCOUNTER_SECURITY_ID'));
+            FlashMessages::addMessage(I18N::translate('The website preferences have been updated.'), 'success');
+        }
+        header('Location: ' . WT_BASE_URL . 'admin.php');
 
-case 'tracking':
-    if (Filter::checkCsrf()) {
-        Site::setPreference('BING_WEBMASTER_ID', Filter::post('BING_WEBMASTER_ID'));
-        Site::setPreference('GOOGLE_WEBMASTER_ID', Filter::post('GOOGLE_WEBMASTER_ID'));
-        Site::setPreference('GOOGLE_ANALYTICS_ID', Filter::post('GOOGLE_ANALYTICS_ID'));
-        Site::setPreference('PIWIK_URL', Filter::post('PIWIK_URL'));
-        Site::setPreference('PIWIK_SITE_ID', Filter::post('PIWIK_SITE_ID'));
-        Site::setPreference('STATCOUNTER_PROJECT_ID', Filter::post('STATCOUNTER_PROJECT_ID'));
-        Site::setPreference('STATCOUNTER_SECURITY_ID', Filter::post('STATCOUNTER_SECURITY_ID'));
-        FlashMessages::addMessage(I18N::translate('The website preferences have been updated.'), 'success');
-    }
-    header('Location: ' . WT_BASE_URL . 'admin.php');
+        return;
 
-    return;
+    case 'languages':
+        if (Filter::checkCsrf()) {
+            Site::setPreference('LANGUAGES', implode(',', Filter::postArray('LANGUAGES')));
+            FlashMessages::addMessage(I18N::translate('The website preferences have been updated.'), 'success');
+        }
+        header('Location: ' . WT_BASE_URL . 'admin.php');
 
-case 'languages':
-    if (Filter::checkCsrf()) {
-        Site::setPreference('LANGUAGES', implode(',', Filter::postArray('LANGUAGES')));
-        FlashMessages::addMessage(I18N::translate('The website preferences have been updated.'), 'success');
-    }
-    header('Location: ' . WT_BASE_URL . 'admin.php');
-
-    return;
+        return;
 }
 
 // Lists of options for <select> controls.
@@ -137,25 +137,25 @@ foreach (I18N::activeLocales() as $active_locale) {
 }
 
 switch (Filter::get('action')) {
-case 'site':
-    $controller->setPageTitle(I18N::translate('Website preferences'));
-    break;
-case 'email':
-    $controller->setPageTitle(I18N::translate('Sending email'));
-    break;
-case 'login':
-    $controller->setPageTitle(I18N::translate('Sign-in and registration'));
-    break;
-case 'tracking':
-    $controller->setPageTitle(/* I18N: e.g. http://www.google.com/analytics */ I18N::translate('Tracking and analytics'));
-    break;
-case 'languages':
-    $controller->setPageTitle(I18N::translate('Languages'));
-    break;
-default:
-    header('Location: ' . WT_BASE_URL . 'admin.php');
+    case 'site':
+        $controller->setPageTitle(I18N::translate('Website preferences'));
+        break;
+    case 'email':
+        $controller->setPageTitle(I18N::translate('Sending email'));
+        break;
+    case 'login':
+        $controller->setPageTitle(I18N::translate('Sign-in and registration'));
+        break;
+    case 'tracking':
+        $controller->setPageTitle(/* I18N: e.g. http://www.google.com/analytics */ I18N::translate('Tracking and analytics'));
+        break;
+    case 'languages':
+        $controller->setPageTitle(I18N::translate('Languages'));
+        break;
+    default:
+        header('Location: ' . WT_BASE_URL . 'admin.php');
 
-    return;
+        return;
 }
 
 $controller->pageHeader();

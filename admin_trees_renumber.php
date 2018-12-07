@@ -86,143 +86,143 @@ if (Filter::get('action') === 'renumber') {
         );
         $new_xref = $WT_TREE->getNewXref($type);
         switch ($type) {
-        case 'INDI':
-            Database::prepare(
+            case 'INDI':
+                Database::prepare(
                 "UPDATE `##individuals` SET i_id = ?, i_gedcom = REPLACE(i_gedcom, ?, ?) WHERE i_id = ? AND i_file = ?"
-            )->execute(array($new_xref, "0 @$old_xref@ INDI\n", "0 @$new_xref@ INDI\n", $old_xref, $WT_TREE->getTreeId()));
-            Database::prepare(
-                "UPDATE `##families` JOIN `##link` ON (l_file = f_file AND l_to = ? AND l_type = 'HUSB') SET f_gedcom = REPLACE(f_gedcom, ?, ?) WHERE f_file = ?"
-            )->execute(array($old_xref, " HUSB @$old_xref@", " HUSB @$new_xref@", $WT_TREE->getTreeId()));
-            Database::prepare(
-                "UPDATE `##families` JOIN `##link` ON (l_file = f_file AND l_to = ? AND l_type = 'WIFE') SET f_gedcom = REPLACE(f_gedcom, ?, ?) WHERE f_file = ?"
-            )->execute(array($old_xref, " WIFE @$old_xref@", " WIFE @$new_xref@", $WT_TREE->getTreeId()));
-            Database::prepare(
-                "UPDATE `##families` JOIN `##link` ON (l_file = f_file AND l_to = ? AND l_type = 'CHIL') SET f_gedcom = REPLACE(f_gedcom, ?, ?) WHERE f_file = ?"
-            )->execute(array($old_xref, " CHIL @$old_xref@", " CHIL @$new_xref@", $WT_TREE->getTreeId()));
-            Database::prepare(
-                "UPDATE `##families` JOIN `##link` ON (l_file = f_file AND l_to = ? AND l_type = 'ASSO') SET f_gedcom = REPLACE(f_gedcom, ?, ?) WHERE f_file = ?"
-            )->execute(array($old_xref, " ASSO @$old_xref@", " ASSO @$new_xref@", $WT_TREE->getTreeId()));
-            Database::prepare(
-                "UPDATE `##families` JOIN `##link` ON (l_file = f_file AND l_to = ? AND l_type = '_ASSO') SET f_gedcom = REPLACE(f_gedcom, ?, ?) WHERE f_file = ?"
-            )->execute(array($old_xref, " _ASSO @$old_xref@", " _ASSO @$new_xref@", $WT_TREE->getTreeId()));
-            Database::prepare(
-                "UPDATE `##individuals` JOIN `##link` ON (l_file = i_file AND l_to = ? AND l_type = 'ASSO') SET i_gedcom = REPLACE(i_gedcom, ?, ?) WHERE i_file = ?"
-            )->execute(array($old_xref, " ASSO @$old_xref@", " ASSO @$new_xref@", $WT_TREE->getTreeId()));
-            Database::prepare(
-                "UPDATE `##individuals` JOIN `##link` ON (l_file = i_file AND l_to = ? AND l_type = '_ASSO') SET i_gedcom = REPLACE(i_gedcom, ?, ?) WHERE i_file = ?"
-            )->execute(array($old_xref, " _ASSO @$old_xref@", " _ASSO @$new_xref@", $WT_TREE->getTreeId()));
-            Database::prepare(
-                "UPDATE `##placelinks` SET pl_gid = ? WHERE pl_gid = ? AND pl_file = ?"
-            )->execute(array($new_xref, $old_xref, $WT_TREE->getTreeId()));
-            Database::prepare(
-                "UPDATE `##dates` SET d_gid = ? WHERE d_gid = ? AND d_file = ?"
-            )->execute(array($new_xref, $old_xref, $WT_TREE->getTreeId()));
-            Database::prepare(
-                "UPDATE `##user_gedcom_setting` SET setting_value = ? WHERE setting_value = ? AND gedcom_id = ? AND setting_name IN ('gedcomid', 'rootid')"
-            )->execute(array($new_xref, $old_xref, $WT_TREE->getTreeId()));
-            break;
-        case 'FAM':
-            Database::prepare(
+                )->execute(array($new_xref, "0 @$old_xref@ INDI\n", "0 @$new_xref@ INDI\n", $old_xref, $WT_TREE->getTreeId()));
+                Database::prepare(
+                    "UPDATE `##families` JOIN `##link` ON (l_file = f_file AND l_to = ? AND l_type = 'HUSB') SET f_gedcom = REPLACE(f_gedcom, ?, ?) WHERE f_file = ?"
+                )->execute(array($old_xref, " HUSB @$old_xref@", " HUSB @$new_xref@", $WT_TREE->getTreeId()));
+                Database::prepare(
+                    "UPDATE `##families` JOIN `##link` ON (l_file = f_file AND l_to = ? AND l_type = 'WIFE') SET f_gedcom = REPLACE(f_gedcom, ?, ?) WHERE f_file = ?"
+                )->execute(array($old_xref, " WIFE @$old_xref@", " WIFE @$new_xref@", $WT_TREE->getTreeId()));
+                Database::prepare(
+                    "UPDATE `##families` JOIN `##link` ON (l_file = f_file AND l_to = ? AND l_type = 'CHIL') SET f_gedcom = REPLACE(f_gedcom, ?, ?) WHERE f_file = ?"
+                )->execute(array($old_xref, " CHIL @$old_xref@", " CHIL @$new_xref@", $WT_TREE->getTreeId()));
+                Database::prepare(
+                    "UPDATE `##families` JOIN `##link` ON (l_file = f_file AND l_to = ? AND l_type = 'ASSO') SET f_gedcom = REPLACE(f_gedcom, ?, ?) WHERE f_file = ?"
+                )->execute(array($old_xref, " ASSO @$old_xref@", " ASSO @$new_xref@", $WT_TREE->getTreeId()));
+                Database::prepare(
+                    "UPDATE `##families` JOIN `##link` ON (l_file = f_file AND l_to = ? AND l_type = '_ASSO') SET f_gedcom = REPLACE(f_gedcom, ?, ?) WHERE f_file = ?"
+                )->execute(array($old_xref, " _ASSO @$old_xref@", " _ASSO @$new_xref@", $WT_TREE->getTreeId()));
+                Database::prepare(
+                    "UPDATE `##individuals` JOIN `##link` ON (l_file = i_file AND l_to = ? AND l_type = 'ASSO') SET i_gedcom = REPLACE(i_gedcom, ?, ?) WHERE i_file = ?"
+                )->execute(array($old_xref, " ASSO @$old_xref@", " ASSO @$new_xref@", $WT_TREE->getTreeId()));
+                Database::prepare(
+                    "UPDATE `##individuals` JOIN `##link` ON (l_file = i_file AND l_to = ? AND l_type = '_ASSO') SET i_gedcom = REPLACE(i_gedcom, ?, ?) WHERE i_file = ?"
+                )->execute(array($old_xref, " _ASSO @$old_xref@", " _ASSO @$new_xref@", $WT_TREE->getTreeId()));
+                Database::prepare(
+                    "UPDATE `##placelinks` SET pl_gid = ? WHERE pl_gid = ? AND pl_file = ?"
+                )->execute(array($new_xref, $old_xref, $WT_TREE->getTreeId()));
+                Database::prepare(
+                    "UPDATE `##dates` SET d_gid = ? WHERE d_gid = ? AND d_file = ?"
+                )->execute(array($new_xref, $old_xref, $WT_TREE->getTreeId()));
+                Database::prepare(
+                    "UPDATE `##user_gedcom_setting` SET setting_value = ? WHERE setting_value = ? AND gedcom_id = ? AND setting_name IN ('gedcomid', 'rootid')"
+                )->execute(array($new_xref, $old_xref, $WT_TREE->getTreeId()));
+                break;
+            case 'FAM':
+                Database::prepare(
                 "UPDATE `##families` SET f_id = ?, f_gedcom = REPLACE(f_gedcom, ?, ?) WHERE f_id = ? AND f_file = ?"
-            )->execute(array($new_xref, "0 @$old_xref@ FAM\n", "0 @$new_xref@ FAM\n", $old_xref, $WT_TREE->getTreeId()));
-            Database::prepare(
-                "UPDATE `##individuals` JOIN `##link` ON (l_file = i_file AND l_to = ? AND l_type = 'FAMC') SET i_gedcom = REPLACE(i_gedcom, ?, ?) WHERE i_file = ?"
-            )->execute(array($old_xref, " FAMC @$old_xref@", " FAMC @$new_xref@", $WT_TREE->getTreeId()));
-            Database::prepare(
-                "UPDATE `##individuals` JOIN `##link` ON (l_file = i_file AND l_to = ? AND l_type = 'FAMS') SET i_gedcom = REPLACE(i_gedcom, ?, ?) WHERE i_file = ?"
-            )->execute(array($old_xref, " FAMS @$old_xref@", " FAMS @$new_xref@", $WT_TREE->getTreeId()));
-            Database::prepare(
-                "UPDATE `##placelinks` SET pl_gid = ? WHERE pl_gid = ? AND pl_file = ?"
-            )->execute(array($new_xref, $old_xref, $WT_TREE->getTreeId()));
-            Database::prepare(
-                "UPDATE `##dates` SET d_gid = ? WHERE d_gid = ? AND d_file = ?"
-            )->execute(array($new_xref, $old_xref, $WT_TREE->getTreeId()));
-            break;
-        case 'SOUR':
-            Database::prepare(
+                )->execute(array($new_xref, "0 @$old_xref@ FAM\n", "0 @$new_xref@ FAM\n", $old_xref, $WT_TREE->getTreeId()));
+                Database::prepare(
+                    "UPDATE `##individuals` JOIN `##link` ON (l_file = i_file AND l_to = ? AND l_type = 'FAMC') SET i_gedcom = REPLACE(i_gedcom, ?, ?) WHERE i_file = ?"
+                )->execute(array($old_xref, " FAMC @$old_xref@", " FAMC @$new_xref@", $WT_TREE->getTreeId()));
+                Database::prepare(
+                    "UPDATE `##individuals` JOIN `##link` ON (l_file = i_file AND l_to = ? AND l_type = 'FAMS') SET i_gedcom = REPLACE(i_gedcom, ?, ?) WHERE i_file = ?"
+                )->execute(array($old_xref, " FAMS @$old_xref@", " FAMS @$new_xref@", $WT_TREE->getTreeId()));
+                Database::prepare(
+                    "UPDATE `##placelinks` SET pl_gid = ? WHERE pl_gid = ? AND pl_file = ?"
+                )->execute(array($new_xref, $old_xref, $WT_TREE->getTreeId()));
+                Database::prepare(
+                    "UPDATE `##dates` SET d_gid = ? WHERE d_gid = ? AND d_file = ?"
+                )->execute(array($new_xref, $old_xref, $WT_TREE->getTreeId()));
+                break;
+            case 'SOUR':
+                Database::prepare(
                 "UPDATE `##sources` SET s_id = ?, s_gedcom = REPLACE(s_gedcom, ?, ?) WHERE s_id = ? AND s_file = ?"
-            )->execute(array($new_xref, "0 @$old_xref@ SOUR\n", "0 @$new_xref@ SOUR\n", $old_xref, $WT_TREE->getTreeId()));
-            Database::prepare(
-                "UPDATE `##individuals` JOIN `##link` ON (l_file = i_file AND l_to = ? AND l_type = 'SOUR') SET i_gedcom = REPLACE(i_gedcom, ?, ?) WHERE i_file = ?"
-            )->execute(array($old_xref, " SOUR @$old_xref@", " SOUR @$new_xref@", $WT_TREE->getTreeId()));
-            Database::prepare(
-                "UPDATE `##families` JOIN `##link` ON (l_file = f_file AND l_to = ? AND l_type = 'SOUR') SET f_gedcom = REPLACE(f_gedcom, ?, ?) WHERE f_file = ?"
-            )->execute(array($old_xref, " SOUR @$old_xref@", " SOUR @$new_xref@", $WT_TREE->getTreeId()));
-            Database::prepare(
-                "UPDATE `##media` JOIN `##link` ON (l_file = m_file AND l_to = ? AND l_type = 'SOUR') SET m_gedcom = REPLACE(m_gedcom, ?, ?) WHERE m_file = ?"
-            )->execute(array($old_xref, " SOUR @$old_xref@", " SOUR @$new_xref@", $WT_TREE->getTreeId()));
-            Database::prepare(
-                "UPDATE `##other` JOIN `##link` ON (l_file = o_file AND l_to = ? AND l_type = 'SOUR') SET o_gedcom = REPLACE(o_gedcom, ?, ?) WHERE o_file = ?"
-            )->execute(array($old_xref, " SOUR @$old_xref@", " SOUR @$new_xref@", $WT_TREE->getTreeId()));
-            break;
-        case 'REPO':
-            Database::prepare(
+                )->execute(array($new_xref, "0 @$old_xref@ SOUR\n", "0 @$new_xref@ SOUR\n", $old_xref, $WT_TREE->getTreeId()));
+                Database::prepare(
+                    "UPDATE `##individuals` JOIN `##link` ON (l_file = i_file AND l_to = ? AND l_type = 'SOUR') SET i_gedcom = REPLACE(i_gedcom, ?, ?) WHERE i_file = ?"
+                )->execute(array($old_xref, " SOUR @$old_xref@", " SOUR @$new_xref@", $WT_TREE->getTreeId()));
+                Database::prepare(
+                    "UPDATE `##families` JOIN `##link` ON (l_file = f_file AND l_to = ? AND l_type = 'SOUR') SET f_gedcom = REPLACE(f_gedcom, ?, ?) WHERE f_file = ?"
+                )->execute(array($old_xref, " SOUR @$old_xref@", " SOUR @$new_xref@", $WT_TREE->getTreeId()));
+                Database::prepare(
+                    "UPDATE `##media` JOIN `##link` ON (l_file = m_file AND l_to = ? AND l_type = 'SOUR') SET m_gedcom = REPLACE(m_gedcom, ?, ?) WHERE m_file = ?"
+                )->execute(array($old_xref, " SOUR @$old_xref@", " SOUR @$new_xref@", $WT_TREE->getTreeId()));
+                Database::prepare(
+                    "UPDATE `##other` JOIN `##link` ON (l_file = o_file AND l_to = ? AND l_type = 'SOUR') SET o_gedcom = REPLACE(o_gedcom, ?, ?) WHERE o_file = ?"
+                )->execute(array($old_xref, " SOUR @$old_xref@", " SOUR @$new_xref@", $WT_TREE->getTreeId()));
+                break;
+            case 'REPO':
+                Database::prepare(
                 "UPDATE `##other` SET o_id = ?, o_gedcom = REPLACE(o_gedcom, ?, ?) WHERE o_id = ? AND o_file = ?"
-            )->execute(array($new_xref, "0 @$old_xref@ REPO\n", "0 @$new_xref@ REPO\n", $old_xref, $WT_TREE->getTreeId()));
-            Database::prepare(
-                "UPDATE `##sources` JOIN `##link` ON (l_file = s_file AND l_to = ? AND l_type = 'REPO') SET s_gedcom = REPLACE(s_gedcom, ?, ?) WHERE s_file = ?"
-            )->execute(array($old_xref, " REPO @$old_xref@", " REPO @$new_xref@", $WT_TREE->getTreeId()));
-            break;
-        case 'NOTE':
-            Database::prepare(
+                )->execute(array($new_xref, "0 @$old_xref@ REPO\n", "0 @$new_xref@ REPO\n", $old_xref, $WT_TREE->getTreeId()));
+                Database::prepare(
+                    "UPDATE `##sources` JOIN `##link` ON (l_file = s_file AND l_to = ? AND l_type = 'REPO') SET s_gedcom = REPLACE(s_gedcom, ?, ?) WHERE s_file = ?"
+                )->execute(array($old_xref, " REPO @$old_xref@", " REPO @$new_xref@", $WT_TREE->getTreeId()));
+                break;
+            case 'NOTE':
+                Database::prepare(
                 "UPDATE `##other` SET o_id = ?, o_gedcom = REPLACE(REPLACE(o_gedcom, ?, ?), ?, ?) WHERE o_id = ? AND o_file = ?"
-            )->execute(array($new_xref, "0 @$old_xref@ NOTE\n", "0 @$new_xref@ NOTE\n", "0 @$old_xref@ NOTE ", "0 @$new_xref@ NOTE ", $old_xref, $WT_TREE->getTreeId()));
-            Database::prepare(
-                "UPDATE `##individuals` JOIN `##link` ON (l_file = i_file AND l_to = ? AND l_type = 'NOTE') SET i_gedcom = REPLACE(i_gedcom, ?, ?) WHERE i_file = ?"
-            )->execute(array($old_xref, " NOTE @$old_xref@", " NOTE @$new_xref@", $WT_TREE->getTreeId()));
-            Database::prepare(
-                "UPDATE `##families` JOIN `##link` ON (l_file = f_file AND l_to = ? AND l_type = 'NOTE') SET f_gedcom = REPLACE(f_gedcom, ?, ?) WHERE f_file = ?"
-            )->execute(array($old_xref, " NOTE @$old_xref@", " NOTE @$new_xref@", $WT_TREE->getTreeId()));
-            Database::prepare(
-                "UPDATE `##media` JOIN `##link` ON (l_file = m_file AND l_to = ? AND l_type = 'NOTE') SET m_gedcom = REPLACE(m_gedcom, ?, ?) WHERE m_file = ?"
-            )->execute(array($old_xref, " NOTE @$old_xref@", " NOTE @$new_xref@", $WT_TREE->getTreeId()));
-            Database::prepare(
-                "UPDATE `##sources` JOIN `##link` ON (l_file = s_file AND l_to = ? AND l_type = 'NOTE') SET s_gedcom = REPLACE(s_gedcom, ?, ?) WHERE s_file = ?"
-            )->execute(array($old_xref, " NOTE @$old_xref@", " NOTE @$new_xref@", $WT_TREE->getTreeId()));
-            Database::prepare(
-                "UPDATE `##other` JOIN `##link` ON (l_file = o_file AND l_to = ? AND l_type = 'NOTE') SET o_gedcom = REPLACE(o_gedcom, ?, ?) WHERE o_file = ?"
-            )->execute(array($old_xref, " NOTE @$old_xref@", " NOTE @$new_xref@", $WT_TREE->getTreeId()));
-            break;
-        case 'OBJE':
-            Database::prepare(
+                )->execute(array($new_xref, "0 @$old_xref@ NOTE\n", "0 @$new_xref@ NOTE\n", "0 @$old_xref@ NOTE ", "0 @$new_xref@ NOTE ", $old_xref, $WT_TREE->getTreeId()));
+                Database::prepare(
+                    "UPDATE `##individuals` JOIN `##link` ON (l_file = i_file AND l_to = ? AND l_type = 'NOTE') SET i_gedcom = REPLACE(i_gedcom, ?, ?) WHERE i_file = ?"
+                )->execute(array($old_xref, " NOTE @$old_xref@", " NOTE @$new_xref@", $WT_TREE->getTreeId()));
+                Database::prepare(
+                    "UPDATE `##families` JOIN `##link` ON (l_file = f_file AND l_to = ? AND l_type = 'NOTE') SET f_gedcom = REPLACE(f_gedcom, ?, ?) WHERE f_file = ?"
+                )->execute(array($old_xref, " NOTE @$old_xref@", " NOTE @$new_xref@", $WT_TREE->getTreeId()));
+                Database::prepare(
+                    "UPDATE `##media` JOIN `##link` ON (l_file = m_file AND l_to = ? AND l_type = 'NOTE') SET m_gedcom = REPLACE(m_gedcom, ?, ?) WHERE m_file = ?"
+                )->execute(array($old_xref, " NOTE @$old_xref@", " NOTE @$new_xref@", $WT_TREE->getTreeId()));
+                Database::prepare(
+                    "UPDATE `##sources` JOIN `##link` ON (l_file = s_file AND l_to = ? AND l_type = 'NOTE') SET s_gedcom = REPLACE(s_gedcom, ?, ?) WHERE s_file = ?"
+                )->execute(array($old_xref, " NOTE @$old_xref@", " NOTE @$new_xref@", $WT_TREE->getTreeId()));
+                Database::prepare(
+                    "UPDATE `##other` JOIN `##link` ON (l_file = o_file AND l_to = ? AND l_type = 'NOTE') SET o_gedcom = REPLACE(o_gedcom, ?, ?) WHERE o_file = ?"
+                )->execute(array($old_xref, " NOTE @$old_xref@", " NOTE @$new_xref@", $WT_TREE->getTreeId()));
+                break;
+            case 'OBJE':
+                Database::prepare(
                 "UPDATE `##media` SET m_id = ?, m_gedcom = REPLACE(m_gedcom, ?, ?) WHERE m_id = ? AND m_file = ?"
-            )->execute(array($new_xref, "0 @$old_xref@ OBJE\n", "0 @$new_xref@ OBJE\n", $old_xref, $WT_TREE->getTreeId()));
-            Database::prepare(
-                "UPDATE `##individuals` JOIN `##link` ON (l_file = i_file AND l_to = ? AND l_type = 'OBJE') SET i_gedcom = REPLACE(i_gedcom, ?, ?) WHERE i_file = ?"
-            )->execute(array($old_xref, " OBJE @$old_xref@", " OBJE @$new_xref@", $WT_TREE->getTreeId()));
-            Database::prepare(
-                "UPDATE `##families` JOIN `##link` ON (l_file = f_file AND l_to = ? AND l_type = 'OBJE') SET f_gedcom = REPLACE(f_gedcom, ?, ?) WHERE f_file = ?"
-            )->execute(array($old_xref, " OBJE @$old_xref@", " OBJE @$new_xref@", $WT_TREE->getTreeId()));
-            Database::prepare(
-                "UPDATE `##media` JOIN `##link` ON (l_file = m_file AND l_to = ? AND l_type = 'OBJE') SET m_gedcom = REPLACE(m_gedcom, ?, ?) WHERE m_file = ?"
-            )->execute(array($old_xref, " OBJE @$old_xref@", " OBJE @$new_xref@", $WT_TREE->getTreeId()));
-            Database::prepare(
-                "UPDATE `##sources` JOIN `##link` ON (l_file = s_file AND l_to = ? AND l_type = 'OBJE') SET s_gedcom = REPLACE(s_gedcom, ?, ?) WHERE s_file = ?"
-            )->execute(array($old_xref, " OBJE @$old_xref@", " OBJE @$new_xref@", $WT_TREE->getTreeId()));
-            Database::prepare(
-                "UPDATE `##other` JOIN `##link` ON (l_file = o_file AND l_to = ? AND l_type = 'OBJE') SET o_gedcom = REPLACE(o_gedcom, ?, ?) WHERE o_file = ?"
-            )->execute(array($old_xref, " OBJE @$old_xref@", " OBJE @$new_xref@", $WT_TREE->getTreeId()));
-            break;
-        default:
-            Database::prepare(
+                )->execute(array($new_xref, "0 @$old_xref@ OBJE\n", "0 @$new_xref@ OBJE\n", $old_xref, $WT_TREE->getTreeId()));
+                Database::prepare(
+                    "UPDATE `##individuals` JOIN `##link` ON (l_file = i_file AND l_to = ? AND l_type = 'OBJE') SET i_gedcom = REPLACE(i_gedcom, ?, ?) WHERE i_file = ?"
+                )->execute(array($old_xref, " OBJE @$old_xref@", " OBJE @$new_xref@", $WT_TREE->getTreeId()));
+                Database::prepare(
+                    "UPDATE `##families` JOIN `##link` ON (l_file = f_file AND l_to = ? AND l_type = 'OBJE') SET f_gedcom = REPLACE(f_gedcom, ?, ?) WHERE f_file = ?"
+                )->execute(array($old_xref, " OBJE @$old_xref@", " OBJE @$new_xref@", $WT_TREE->getTreeId()));
+                Database::prepare(
+                    "UPDATE `##media` JOIN `##link` ON (l_file = m_file AND l_to = ? AND l_type = 'OBJE') SET m_gedcom = REPLACE(m_gedcom, ?, ?) WHERE m_file = ?"
+                )->execute(array($old_xref, " OBJE @$old_xref@", " OBJE @$new_xref@", $WT_TREE->getTreeId()));
+                Database::prepare(
+                    "UPDATE `##sources` JOIN `##link` ON (l_file = s_file AND l_to = ? AND l_type = 'OBJE') SET s_gedcom = REPLACE(s_gedcom, ?, ?) WHERE s_file = ?"
+                )->execute(array($old_xref, " OBJE @$old_xref@", " OBJE @$new_xref@", $WT_TREE->getTreeId()));
+                Database::prepare(
+                    "UPDATE `##other` JOIN `##link` ON (l_file = o_file AND l_to = ? AND l_type = 'OBJE') SET o_gedcom = REPLACE(o_gedcom, ?, ?) WHERE o_file = ?"
+                )->execute(array($old_xref, " OBJE @$old_xref@", " OBJE @$new_xref@", $WT_TREE->getTreeId()));
+                break;
+            default:
+                Database::prepare(
                 "UPDATE `##other` SET o_id = ?, o_gedcom = REPLACE(o_gedcom, ?, ?) WHERE o_id = ? AND o_file = ?"
-            )->execute(array($new_xref, "0 @$old_xref@ $type\n", "0 @$new_xref@ $type\n", $old_xref, $WT_TREE->getTreeId()));
-            Database::prepare(
-                "UPDATE `##individuals` JOIN `##link` ON (l_file = i_file AND l_to = ?) SET i_gedcom = REPLACE(i_gedcom, ?, ?) WHERE i_file = ?"
-            )->execute(array($old_xref, " @$old_xref@", " @$new_xref@", $WT_TREE->getTreeId()));
-            Database::prepare(
-                "UPDATE `##families` JOIN `##link` ON (l_file = f_file AND l_to = ?) SET f_gedcom = REPLACE(f_gedcom, ?, ?) WHERE f_file = ?"
-            )->execute(array($old_xref, " @$old_xref@", " @$new_xref@", $WT_TREE->getTreeId()));
-            Database::prepare(
-                "UPDATE `##media` JOIN `##link` ON (l_file = m_file AND l_to = ?) SET m_gedcom = REPLACE(m_gedcom, ?, ?) WHERE m_file = ?"
-            )->execute(array($old_xref, " @$old_xref@", " @$new_xref@", $WT_TREE->getTreeId()));
-            Database::prepare(
-                "UPDATE `##sources` JOIN `##link` ON (l_file = s_file AND l_to = ?) SET s_gedcom = REPLACE(s_gedcom, ?, ?) WHERE s_file = ?"
-            )->execute(array($old_xref, " @$old_xref@", " @$new_xref@", $WT_TREE->getTreeId()));
-            Database::prepare(
-                "UPDATE `##other` JOIN `##link` ON (l_file = o_file AND l_to = ?) SET o_gedcom = REPLACE(o_gedcom, ?, ?) WHERE o_file = ?"
-            )->execute(array($old_xref, " @$old_xref@", " @$new_xref@", $WT_TREE->getTreeId()));
-            break;
+                )->execute(array($new_xref, "0 @$old_xref@ $type\n", "0 @$new_xref@ $type\n", $old_xref, $WT_TREE->getTreeId()));
+                Database::prepare(
+                    "UPDATE `##individuals` JOIN `##link` ON (l_file = i_file AND l_to = ?) SET i_gedcom = REPLACE(i_gedcom, ?, ?) WHERE i_file = ?"
+                )->execute(array($old_xref, " @$old_xref@", " @$new_xref@", $WT_TREE->getTreeId()));
+                Database::prepare(
+                    "UPDATE `##families` JOIN `##link` ON (l_file = f_file AND l_to = ?) SET f_gedcom = REPLACE(f_gedcom, ?, ?) WHERE f_file = ?"
+                )->execute(array($old_xref, " @$old_xref@", " @$new_xref@", $WT_TREE->getTreeId()));
+                Database::prepare(
+                    "UPDATE `##media` JOIN `##link` ON (l_file = m_file AND l_to = ?) SET m_gedcom = REPLACE(m_gedcom, ?, ?) WHERE m_file = ?"
+                )->execute(array($old_xref, " @$old_xref@", " @$new_xref@", $WT_TREE->getTreeId()));
+                Database::prepare(
+                    "UPDATE `##sources` JOIN `##link` ON (l_file = s_file AND l_to = ?) SET s_gedcom = REPLACE(s_gedcom, ?, ?) WHERE s_file = ?"
+                )->execute(array($old_xref, " @$old_xref@", " @$new_xref@", $WT_TREE->getTreeId()));
+                Database::prepare(
+                    "UPDATE `##other` JOIN `##link` ON (l_file = o_file AND l_to = ?) SET o_gedcom = REPLACE(o_gedcom, ?, ?) WHERE o_file = ?"
+                )->execute(array($old_xref, " @$old_xref@", " @$new_xref@", $WT_TREE->getTreeId()));
+                break;
         }
         Database::prepare(
             "UPDATE `##name` SET n_id = ? WHERE n_id = ? AND n_file = ?"

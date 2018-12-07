@@ -170,46 +170,46 @@ class SearchController extends PageController {
 
         // If we want to show associated persons, build the list
         switch ($this->action) {
-        case 'header':
-            // We can type in an XREF into the header search, and jump straight to it.
-            // Otherwise, the header search is the same as the general search
-            if (preg_match('/' . WT_REGEX_XREF . '/', $this->query)) {
-                $record = GedcomRecord::getInstance($this->query, $WT_TREE);
-                if ($record && $record->canShowName()) {
-                    header('Location: ' . WT_BASE_URL . $record->getRawUrl());
+            case 'header':
+                // We can type in an XREF into the header search, and jump straight to it.
+                // Otherwise, the header search is the same as the general search
+                if (preg_match('/' . WT_REGEX_XREF . '/', $this->query)) {
+                    $record = GedcomRecord::getInstance($this->query, $WT_TREE);
+                    if ($record && $record->canShowName()) {
+                        header('Location: ' . WT_BASE_URL . $record->getRawUrl());
+                        exit;
+                    }
+                }
+                $this->action = 'general';
+                $this->srindi = 'checked';
+                $this->srfams = 'checked';
+                $this->srsour = 'checked';
+                $this->srnote = 'checked';
+                $this->setPageTitle(I18N::translate('General search'));
+                $this->generalSearch();
+                break;
+            case 'general':
+                $this->setPageTitle(I18N::translate('General search'));
+                $this->generalSearch();
+                break;
+            case 'soundex':
+                // Create a dummy search query to use as a title to the results list
+                $this->query = trim($this->firstname . ' ' . $this->lastname . ' ' . $this->place);
+                $this->setPageTitle(I18N::translate('Phonetic search'));
+                $this->soundexSearch();
+                break;
+            case 'replace':
+                $this->setPageTitle(I18N::translate('Search and replace'));
+                $this->search_trees = array($WT_TREE);
+                $this->srindi       = 'checked';
+                $this->srfams       = 'checked';
+                $this->srsour       = 'checked';
+                $this->srnote       = 'checked';
+                if (Filter::post('query')) {
+                    $this->searchAndReplace($WT_TREE);
+                    header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME . '?action=replace&query=' . Filter::escapeUrl($this->query) . '&replace=' . Filter::escapeUrl($this->replace) . '&replaceAll=' . $this->replaceAll . '&replaceNames=' . $this->replaceNames . '&replacePlaces=' . $this->replacePlaces . '&replacePlacesWord=' . $this->replacePlacesWord);
                     exit;
                 }
-            }
-            $this->action = 'general';
-            $this->srindi = 'checked';
-            $this->srfams = 'checked';
-            $this->srsour = 'checked';
-            $this->srnote = 'checked';
-            $this->setPageTitle(I18N::translate('General search'));
-            $this->generalSearch();
-            break;
-        case 'general':
-            $this->setPageTitle(I18N::translate('General search'));
-            $this->generalSearch();
-            break;
-        case 'soundex':
-            // Create a dummy search query to use as a title to the results list
-            $this->query = trim($this->firstname . ' ' . $this->lastname . ' ' . $this->place);
-            $this->setPageTitle(I18N::translate('Phonetic search'));
-            $this->soundexSearch();
-            break;
-        case 'replace':
-            $this->setPageTitle(I18N::translate('Search and replace'));
-            $this->search_trees = array($WT_TREE);
-            $this->srindi       = 'checked';
-            $this->srfams       = 'checked';
-            $this->srsour       = 'checked';
-            $this->srnote       = 'checked';
-            if (Filter::post('query')) {
-                $this->searchAndReplace($WT_TREE);
-                header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME . '?action=replace&query=' . Filter::escapeUrl($this->query) . '&replace=' . Filter::escapeUrl($this->replace) . '&replaceAll=' . $this->replaceAll . '&replaceNames=' . $this->replaceNames . '&replacePlaces=' . $this->replacePlaces . '&replacePlacesWord=' . $this->replacePlacesWord);
-                exit;
-            }
         }
     }
 

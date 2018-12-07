@@ -173,14 +173,14 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
         $days     = $this->getBlockSetting($block_id, 'days', '1');
         $block    = $this->getBlockSetting($block_id, 'block', '1');
 
-    ?>
+        ?>
     <tr>
         <td colspan="2">
             <?php echo I18N::translate('This block will show editors a list of records with pending changes that need to be reviewed by a moderator. It also generates daily emails to moderators whenever pending changes exist.'); ?>
         </td>
     </tr>
 
-    <?php
+        <?php
         echo '<tr><td class="descriptionbox wrap width33">';
         echo /* I18N: Label for a configuration option */ I18N::translate('Send out reminder emails');
         echo '</td><td class="optionbox">';
