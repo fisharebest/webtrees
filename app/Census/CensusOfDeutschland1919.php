@@ -38,7 +38,7 @@ class CensusOfDeutschland1919 extends CensusOfDeutschland implements CensusInter
     public function censusPlace()
     {
         return 'Mecklenburg-Schwerin, Deutschland';
-    }   
+    }
 
     /**
      * The columns of the census.

@@ -462,48 +462,48 @@ class ClippingsCartController
         $b = GedcomRecord::getInstance($b, $WT_TREE);
         if ($a && $b) {
             switch ($a::RECORD_TYPE) {
-                case 'INDI': 
+                case 'INDI':
                     $t1 = 1;
                     break;
-                case 'FAM':  
+                case 'FAM':
                     $t1 = 2;
                     break;
-                case 'SOUR': 
+                case 'SOUR':
                     $t1 = 3;
                     break;
-                case 'REPO': 
+                case 'REPO':
                     $t1 = 4;
                     break;
-                case 'OBJE': 
+                case 'OBJE':
                     $t1 = 5;
                     break;
-                case 'NOTE': 
+                case 'NOTE':
                     $t1 = 6;
                     break;
-                default:     
+                default:
                     $t1 = 7;
                     break;
             }
             switch ($b::RECORD_TYPE) {
-                case 'INDI': 
+                case 'INDI':
                     $t2 = 1;
                     break;
-                case 'FAM':  
+                case 'FAM':
                     $t2 = 2;
                     break;
-                case 'SOUR': 
+                case 'SOUR':
                     $t2 = 3;
                     break;
-                case 'REPO': 
+                case 'REPO':
                     $t2 = 4;
                     break;
-                case 'OBJE': 
+                case 'OBJE':
                     $t2 = 5;
                     break;
-                case 'NOTE': 
+                case 'NOTE':
                     $t2 = 6;
                     break;
-                default:     
+                default:
                     $t2 = 7;
                     break;
             }

@@ -1426,7 +1426,7 @@ class FunctionsPrintLists
 					sorting: [[0, "asc"]],
 					columns: [
 						/* Surname */ { type: "text" },
-						/* Count   */ { type: "num" } 
+						/* Count   */ { type: "num" }
 					]
 				});
 			');

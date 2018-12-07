@@ -29,7 +29,7 @@ class CensusOfDeutschlandNL1867 extends CensusOfDeutschland implements CensusInt
     {
         return '03 DEC 1867';
     }
-    
+
     /**
      * Where did this census occur, in GEDCOM format.
      *
@@ -38,7 +38,7 @@ class CensusOfDeutschlandNL1867 extends CensusOfDeutschland implements CensusInt
     public function censusPlace()
     {
         return 'Mecklenburg-Schwerin (Nachtragsliste), Deutschland';
-    }   
+    }
 
     /**
      * The columns of the census.

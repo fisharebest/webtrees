@@ -1904,13 +1904,13 @@ switch ($action) {
                             <b>
                                 <?php
                                 switch ($father->getSex()) {
-                                    case 'M': 
+                                    case 'M':
                                         echo I18N::translate('husband');
                                         break;
-                                    case 'F': 
+                                    case 'F':
                                         echo I18N::translate('wife');
                                         break;
-                                    default:  
+                                    default:
                                         echo I18N::translate('spouse');
                                         break;
                                 }
@@ -1945,13 +1945,13 @@ switch ($action) {
                             <b>
                                 <?php
                                 switch ($mother->getSex()) {
-                                    case 'M': 
+                                    case 'M':
                                         echo I18N::translate('husband');
                                         break;
-                                    case 'F': 
+                                    case 'F':
                                         echo I18N::translate('wife');
                                         break;
-                                    default:  
+                                    default:
                                         echo I18N::translate('spouse');
                                         break;
                                 }
@@ -1987,13 +1987,13 @@ switch ($action) {
                             <b>
                                 <?php
                                 switch ($child->getSex()) {
-                                    case 'M': 
+                                    case 'M':
                                         echo I18N::translate('son');
                                         break;
-                                    case 'F': 
+                                    case 'F':
                                         echo I18N::translate('daughter');
                                         break;
-                                    default:  
+                                    default:
                                         echo I18N::translate('child');
                                         break;
                                 }
