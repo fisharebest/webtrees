@@ -116,10 +116,10 @@ class Date
             $m = $match[2];
             $y = $match[3];
         } elseif (preg_match('/^(\d{1,4}(?: B\.C\.)?|\d\d\d\d\/\d\d)$/', $date, $match)) {
-                // A date with just a year
-                $d = '';
-                $m = '';
-                $y = $match[1];
+            // A date with just a year
+            $d = '';
+            $m = '';
+            $y = $match[1];
         } else {
             // An invalid date - do the best we can.
             $d = '';

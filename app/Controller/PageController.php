@@ -181,7 +181,6 @@ class PageController extends BaseController
             echo Theme::theme()->bodyHeaderPopupWindow();
             // We've displayed the header - display the footer automatically
             register_shutdown_function(array($this, 'pageFooterPopupWindow'), $this->popup);
-
         } else {
             echo Theme::theme()->bodyHeader();
             // We've displayed the header - display the footer automatically

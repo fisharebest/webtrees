@@ -361,7 +361,6 @@ class LifespanController extends PageController
         }
 
         foreach ($this->people as $person) {
-
             $bdate     = $this->getCalendarDate($person->getEstimatedBirthDate()->minimumJulianDay());
             $ddate     = $this->getCalendarDate($person->getEstimatedDeathDate()->maximumJulianDay());
             $birthYear = $bdate->y;

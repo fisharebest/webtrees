@@ -38,7 +38,6 @@ class RelationshipController extends PageController
      */
     public function calculateRelationships(Individual $individual1, Individual $individual2, $recursion, $ancestor = false)
     {
-
         $rows = Database::prepare(
             "SELECT l_from, l_to FROM `##link` WHERE l_file = :tree_id AND l_type IN ('FAMS', 'FAMC')"
         )->execute(array(

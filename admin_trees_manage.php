@@ -155,7 +155,6 @@ switch (Filter::post('action')) {
                     $tree->delete();
                 }
             }
-
         }
         header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME);
 
