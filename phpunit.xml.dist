@@ -1,16 +1,9 @@
 <phpunit
-	xmlns=""
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/4.5/phpunit.xsd"
-	backupGlobals="false"
-	backupStaticAttributes="false"
-	bootstrap="vendor/autoload.php"
-	colors="true"
-	convertErrorsToExceptions="true"
-	convertNoticesToExceptions="true"
-	convertWarningsToExceptions="true"
-	processIsolation="false"
-	stopOnFailure="false"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/7.4/phpunit.xsd"
+		bootstrap="vendor/autoload.php"
+		colors="true"
+		forceCoversAnnotation="true"
 >
 	<testsuites>
 		<testsuite name="Application Test Suite">
