@@ -23,42 +23,42 @@ use Fisharebest\Webtrees\Menu;
  * Class PageMenuModule
  */
 class PageMenuModule extends AbstractModule implements ModuleMenuInterface {
-	/** {@inheritdoc} */
-	public function getTitle() {
-		return /* I18N: Name of a module/menu */ I18N::translate('Edit');
-	}
+    /** {@inheritdoc} */
+    public function getTitle() {
+        return /* I18N: Name of a module/menu */ I18N::translate('Edit');
+    }
 
-	/** {@inheritdoc} */
-	public function getDescription() {
-		return /* I18N: Description of the “Edit” module */ I18N::translate('An edit menu for individuals, families, sources, etc.');
-	}
+    /** {@inheritdoc} */
+    public function getDescription() {
+        return /* I18N: Description of the “Edit” module */ I18N::translate('An edit menu for individuals, families, sources, etc.');
+    }
 
-	/**
-	 * The user can re-order menus. Until they do, they are shown in this order.
-	 *
-	 * @return int
-	 */
-	public function defaultMenuOrder() {
-		return 10;
-	}
+    /**
+     * The user can re-order menus. Until they do, they are shown in this order.
+     *
+     * @return int
+     */
+    public function defaultMenuOrder() {
+        return 10;
+    }
 
-	/**
-	 * A menu, to be added to the main application menu.
-	 *
-	 * @return Menu|null
-	 */
-	public function getMenu() {
-		global $controller, $WT_TREE;
+    /**
+     * A menu, to be added to the main application menu.
+     *
+     * @return Menu|null
+     */
+    public function getMenu() {
+        global $controller, $WT_TREE;
 
-		$menu = null;
-		if (empty($controller)) {
-			return null;
-		}
+        $menu = null;
+        if (empty($controller)) {
+            return null;
+        }
 
-		if (Auth::isEditor($WT_TREE) && method_exists($controller, 'getEditMenu')) {
-			$menu = $controller->getEditMenu();
-		}
+        if (Auth::isEditor($WT_TREE) && method_exists($controller, 'getEditMenu')) {
+            $menu = $controller->getEditMenu();
+        }
 
-		return $menu;
-	}
+        return $menu;
+    }
 }

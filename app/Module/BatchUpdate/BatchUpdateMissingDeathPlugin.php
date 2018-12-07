@@ -22,47 +22,47 @@ use Fisharebest\Webtrees\Individual;
  * Class BatchUpdateMissingDeathPlugin Batch Update plugin: add missing 1 BIRT/DEAT Y
  */
 class BatchUpdateMissingDeathPlugin extends BatchUpdateBasePlugin {
-	/**
-	 * User-friendly name for this plugin.
-	 *
-	 * @return string
-	 */
-	public function getName() {
-		return I18N::translate('Add missing death records');
-	}
+    /**
+     * User-friendly name for this plugin.
+     *
+     * @return string
+     */
+    public function getName() {
+        return I18N::translate('Add missing death records');
+    }
 
-	/**
-	 * Description / help-text for this plugin.
-	 *
-	 * @return string
-	 */
-	public function getDescription() {
-		return I18N::translate('You can speed up the privacy calculations by adding a death record to individuals whose death can be inferred from other dates, but who do not have a record of death, burial, cremation, etc.');
-	}
+    /**
+     * Description / help-text for this plugin.
+     *
+     * @return string
+     */
+    public function getDescription() {
+        return I18N::translate('You can speed up the privacy calculations by adding a death record to individuals whose death can be inferred from other dates, but who do not have a record of death, burial, cremation, etc.');
+    }
 
-	/**
-	 * Does this record need updating?
-	 *
-	 * @param string $xref
-	 * @param string $gedrec
-	 *
-	 * @return bool
-	 */
-	public function doesRecordNeedUpdate($xref, $gedrec) {
-		global $WT_TREE;
+    /**
+     * Does this record need updating?
+     *
+     * @param string $xref
+     * @param string $gedrec
+     *
+     * @return bool
+     */
+    public function doesRecordNeedUpdate($xref, $gedrec) {
+        global $WT_TREE;
 
-		return !preg_match('/\n1 (' . WT_EVENTS_DEAT . ')/', $gedrec) && Individual::getInstance($xref, $WT_TREE)->isDead();
-	}
+        return !preg_match('/\n1 (' . WT_EVENTS_DEAT . ')/', $gedrec) && Individual::getInstance($xref, $WT_TREE)->isDead();
+    }
 
-	/**
-	 * Apply any updates to this record
-	 *
-	 * @param string $xref
-	 * @param string $gedrec
-	 *
-	 * @return string
-	 */
-	public function updateRecord($xref, $gedrec) {
-		return $gedrec . "\n1 DEAT Y";
-	}
+    /**
+     * Apply any updates to this record
+     *
+     * @param string $xref
+     * @param string $gedrec
+     *
+     * @return string
+     */
+    public function updateRecord($xref, $gedrec) {
+        return $gedrec . "\n1 DEAT Y";
+    }
 }

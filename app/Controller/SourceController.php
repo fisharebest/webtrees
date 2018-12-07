@@ -24,44 +24,44 @@ use Fisharebest\Webtrees\Menu;
  * Controller for the source page
  */
 class SourceController extends GedcomRecordController {
-	/**
-	 * get edit menu
-	 */
-	public function getEditMenu() {
-		if (!$this->record || $this->record->isPendingDeletion()) {
-			return null;
-		}
+    /**
+     * get edit menu
+     */
+    public function getEditMenu() {
+        if (!$this->record || $this->record->isPendingDeletion()) {
+            return null;
+        }
 
-		// edit menu
-		$menu = new Menu(I18N::translate('Edit'), '#', 'menu-sour');
+        // edit menu
+        $menu = new Menu(I18N::translate('Edit'), '#', 'menu-sour');
 
-		if (Auth::isEditor($this->record->getTree())) {
-			$fact = $this->record->getFirstFact('TITL');
-			if ($fact) {
-				// Edit existing name
-				$menu->addSubmenu(new Menu(I18N::translate('Edit the source'), '#', 'menu-sour-edit', array(
-					'onclick' => 'return edit_record("' . $this->record->getXref() . '", "' . $fact->getFactId() . '");',
-				)));
-			} else {
-				// Add new name
-				$menu->addSubmenu(new Menu(I18N::translate('Edit the source'), '#', 'menu-sour-edit', array(
-					'onclick' => 'return add_fact("' . $this->record->getXref() . '", "TITL");',
-				)));
-			}
+        if (Auth::isEditor($this->record->getTree())) {
+            $fact = $this->record->getFirstFact('TITL');
+            if ($fact) {
+                // Edit existing name
+                $menu->addSubmenu(new Menu(I18N::translate('Edit the source'), '#', 'menu-sour-edit', array(
+                    'onclick' => 'return edit_record("' . $this->record->getXref() . '", "' . $fact->getFactId() . '");',
+                )));
+            } else {
+                // Add new name
+                $menu->addSubmenu(new Menu(I18N::translate('Edit the source'), '#', 'menu-sour-edit', array(
+                    'onclick' => 'return add_fact("' . $this->record->getXref() . '", "TITL");',
+                )));
+            }
 
-			// delete
-			$menu->addSubmenu(new Menu(I18N::translate('Delete'), '#', 'menu-sour-del', array(
-				'onclick' => "return delete_record('" . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Filter::unescapeHtml($this->record->getFullName()))) . "', '" . $this->record->getXref() . "');",
-			)));
-		}
+            // delete
+            $menu->addSubmenu(new Menu(I18N::translate('Delete'), '#', 'menu-sour-del', array(
+                'onclick' => "return delete_record('" . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Filter::unescapeHtml($this->record->getFullName()))) . "', '" . $this->record->getXref() . "');",
+            )));
+        }
 
-		// edit raw
-		if (Auth::isAdmin() || Auth::isEditor($this->record->getTree()) && $this->record->getTree()->getPreference('SHOW_GEDCOM_RECORD')) {
-			$menu->addSubmenu(new Menu(I18N::translate('Edit the raw GEDCOM'), '#', 'menu-sour-editraw', array(
-				'onclick' => 'return edit_raw("' . $this->record->getXref() . '");',
-			)));
-		}
+        // edit raw
+        if (Auth::isAdmin() || Auth::isEditor($this->record->getTree()) && $this->record->getTree()->getPreference('SHOW_GEDCOM_RECORD')) {
+            $menu->addSubmenu(new Menu(I18N::translate('Edit the raw GEDCOM'), '#', 'menu-sour-editraw', array(
+                'onclick' => 'return edit_raw("' . $this->record->getXref() . '");',
+            )));
+        }
 
-		return $menu;
-	}
+        return $menu;
+    }
 }

@@ -34,6 +34,6 @@ $controller->setPageTitle(I18N::translate('Sources'));
 $controller->pageHeader();
 
 echo '<div id="sourcelist-page">',
-	'<h2>', I18N::translate('Sources'), '</h2>';
-	echo FunctionsPrintLists::sourceTable(FunctionsDb::getSourceList($WT_TREE));
+    '<h2>', I18N::translate('Sources'), '</h2>';
+    echo FunctionsPrintLists::sourceTable(FunctionsDb::getSourceList($WT_TREE));
 echo '</div>';

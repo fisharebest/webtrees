@@ -29,58 +29,58 @@ use Rhumsaa\Uuid\Uuid;
  * Class ResearchTaskModule
  */
 class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface {
-	const DEFAULT_SHOW_OTHER      = '1';
-	const DEFAULT_SHOW_UNASSIGNED = '1';
-	const DEFAULT_SHOW_FUTURE     = '1';
-	const DEFAULT_BLOCK           = '1';
+    const DEFAULT_SHOW_OTHER      = '1';
+    const DEFAULT_SHOW_UNASSIGNED = '1';
+    const DEFAULT_SHOW_FUTURE     = '1';
+    const DEFAULT_BLOCK           = '1';
 
-	/** {@inheritdoc} */
-	public function getTitle() {
-		return /* I18N: Name of a module. Tasks that need further research. */ I18N::translate('Research tasks');
-	}
+    /** {@inheritdoc} */
+    public function getTitle() {
+        return /* I18N: Name of a module. Tasks that need further research. */ I18N::translate('Research tasks');
+    }
 
-	/** {@inheritdoc} */
-	public function getDescription() {
-		return /* I18N: Description of “Research tasks” module */ I18N::translate('A list of tasks and activities that are linked to the family tree.');
-	}
+    /** {@inheritdoc} */
+    public function getDescription() {
+        return /* I18N: Description of “Research tasks” module */ I18N::translate('A list of tasks and activities that are linked to the family tree.');
+    }
 
-	/**
-	 * Generate the HTML content of this block.
-	 *
-	 * @param int      $block_id
-	 * @param bool     $template
-	 * @param string[] $cfg
-	 *
-	 * @return string
-	 */
-	public function getBlock($block_id, $template = true, $cfg = array()) {
-		global $ctype, $controller, $WT_TREE;
+    /**
+     * Generate the HTML content of this block.
+     *
+     * @param int      $block_id
+     * @param bool     $template
+     * @param string[] $cfg
+     *
+     * @return string
+     */
+    public function getBlock($block_id, $template = true, $cfg = array()) {
+        global $ctype, $controller, $WT_TREE;
 
-		$show_other      = $this->getBlockSetting($block_id, 'show_other', self::DEFAULT_SHOW_OTHER);
-		$show_unassigned = $this->getBlockSetting($block_id, 'show_unassigned', self::DEFAULT_SHOW_UNASSIGNED);
-		$show_future     = $this->getBlockSetting($block_id, 'show_future', self::DEFAULT_SHOW_FUTURE);
-		$block           = $this->getBlockSetting($block_id, 'block', self::DEFAULT_BLOCK);
+        $show_other      = $this->getBlockSetting($block_id, 'show_other', self::DEFAULT_SHOW_OTHER);
+        $show_unassigned = $this->getBlockSetting($block_id, 'show_unassigned', self::DEFAULT_SHOW_UNASSIGNED);
+        $show_future     = $this->getBlockSetting($block_id, 'show_future', self::DEFAULT_SHOW_FUTURE);
+        $block           = $this->getBlockSetting($block_id, 'block', self::DEFAULT_BLOCK);
 
-		foreach (array('show_unassigned', 'show_other', 'show_future', 'block') as $name) {
-			if (array_key_exists($name, $cfg)) {
-				$$name = $cfg[$name];
-			}
-		}
+        foreach (array('show_unassigned', 'show_other', 'show_future', 'block') as $name) {
+            if (array_key_exists($name, $cfg)) {
+                $$name = $cfg[$name];
+            }
+        }
 
-		$id    = $this->getName() . $block_id;
-		$class = $this->getName() . '_block';
-		if ($ctype === 'gedcom' && Auth::isManager($WT_TREE) || $ctype === 'user' && Auth::check()) {
-			$title = '<a class="icon-admin" title="' . I18N::translate('Preferences') . '" href="block_edit.php?block_id=' . $block_id . '&amp;ged=' . $WT_TREE->getNameHtml() . '&amp;ctype=' . $ctype . '"></a>';
-		} else {
-			$title = '';
-		}
-		$title .= $this->getTitle();
+        $id    = $this->getName() . $block_id;
+        $class = $this->getName() . '_block';
+        if ($ctype === 'gedcom' && Auth::isManager($WT_TREE) || $ctype === 'user' && Auth::check()) {
+            $title = '<a class="icon-admin" title="' . I18N::translate('Preferences') . '" href="block_edit.php?block_id=' . $block_id . '&amp;ged=' . $WT_TREE->getNameHtml() . '&amp;ctype=' . $ctype . '"></a>';
+        } else {
+            $title = '';
+        }
+        $title .= $this->getTitle();
 
-		$table_id = Uuid::uuid4(); // create a unique ID
+        $table_id = Uuid::uuid4(); // create a unique ID
 
-		$controller
-			->addExternalJavascript(WT_JQUERY_DATATABLES_JS_URL)
-			->addInlineJavascript('
+        $controller
+            ->addExternalJavascript(WT_JQUERY_DATATABLES_JS_URL)
+            ->addInlineJavascript('
 			jQuery("#' . $table_id . '").dataTable({
 				dom: \'t\',
 				' . I18N::datatablesI18N() . ',
@@ -101,132 +101,132 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface 
 			jQuery(".loading-image").css("display", "none");
 		');
 
-		$content = '';
-		$content .= '<div class="loading-image">&nbsp;</div>';
-		$content .= '<table id="' . $table_id . '" style="visibility:hidden;">';
-		$content .= '<thead><tr>';
-		$content .= '<th>' . GedcomTag::getLabel('DATE') . '</th>';
-		$content .= '<th>' . I18N::translate('Record') . '</th>';
-		$content .= '<th>' . I18N::translate('Username') . '</th>';
-		$content .= '<th>' . GedcomTag::getLabel('TEXT') . '</th>';
-		$content .= '</tr></thead><tbody>';
+        $content = '';
+        $content .= '<div class="loading-image">&nbsp;</div>';
+        $content .= '<table id="' . $table_id . '" style="visibility:hidden;">';
+        $content .= '<thead><tr>';
+        $content .= '<th>' . GedcomTag::getLabel('DATE') . '</th>';
+        $content .= '<th>' . I18N::translate('Record') . '</th>';
+        $content .= '<th>' . I18N::translate('Username') . '</th>';
+        $content .= '<th>' . GedcomTag::getLabel('TEXT') . '</th>';
+        $content .= '</tr></thead><tbody>';
 
-		$found  = false;
-		$end_jd = $show_future ? 99999999 : WT_CLIENT_JD;
+        $found  = false;
+        $end_jd = $show_future ? 99999999 : WT_CLIENT_JD;
 
-		$xrefs = Database::prepare(
-			"SELECT DISTINCT d_gid FROM `##dates`" .
-			" WHERE d_file = :tree_id AND d_fact = '_TODO' AND d_julianday1 < :jd"
-		)->execute(array(
-			'tree_id' => $WT_TREE->getTreeId(),
-			'jd'      => $end_jd,
-		))->fetchOneColumn();
+        $xrefs = Database::prepare(
+            "SELECT DISTINCT d_gid FROM `##dates`" .
+            " WHERE d_file = :tree_id AND d_fact = '_TODO' AND d_julianday1 < :jd"
+        )->execute(array(
+            'tree_id' => $WT_TREE->getTreeId(),
+            'jd'      => $end_jd,
+        ))->fetchOneColumn();
 
-		$facts = array();
-		foreach ($xrefs as $xref) {
-			$record = GedcomRecord::getInstance($xref, $WT_TREE);
-			if ($record->canShow()) {
-				foreach ($record->getFacts('_TODO') as $fact) {
-					$facts[] = $fact;
-				}
-			}
-		}
+        $facts = array();
+        foreach ($xrefs as $xref) {
+            $record = GedcomRecord::getInstance($xref, $WT_TREE);
+            if ($record->canShow()) {
+                foreach ($record->getFacts('_TODO') as $fact) {
+                    $facts[] = $fact;
+                }
+            }
+        }
 
-		foreach ($facts as $fact) {
-			$record    = $fact->getParent();
-			$user_name = $fact->getAttribute('_WT_USER');
-			if ($user_name === Auth::user()->getUserName() || !$user_name && $show_unassigned || $user_name && $show_other) {
-				$content .= '<tr>';
-				$content .= '<td data-sort="' . $fact->getDate()->julianDay() . '">' . $fact->getDate()->display() . '</td>';
-				$content .= '<td data-sort="' . Filter::escapeHtml($record->getSortName()) . '"><a href="' . $record->getHtmlUrl() . '">' . $record->getFullName() . '</a></td>';
-				$content .= '<td>' . $user_name . '</td>';
-				$content .= '<td dir="auto">' . $fact->getValue() . '</td>';
-				$content .= '</tr>';
-				$found = true;
-			}
-		}
+        foreach ($facts as $fact) {
+            $record    = $fact->getParent();
+            $user_name = $fact->getAttribute('_WT_USER');
+            if ($user_name === Auth::user()->getUserName() || !$user_name && $show_unassigned || $user_name && $show_other) {
+                $content .= '<tr>';
+                $content .= '<td data-sort="' . $fact->getDate()->julianDay() . '">' . $fact->getDate()->display() . '</td>';
+                $content .= '<td data-sort="' . Filter::escapeHtml($record->getSortName()) . '"><a href="' . $record->getHtmlUrl() . '">' . $record->getFullName() . '</a></td>';
+                $content .= '<td>' . $user_name . '</td>';
+                $content .= '<td dir="auto">' . $fact->getValue() . '</td>';
+                $content .= '</tr>';
+                $found = true;
+            }
+        }
 
-		$content .= '</tbody></table>';
-		if (!$found) {
-			$content .= '<p>' . I18N::translate('There are no research tasks in this family tree.') . '</p>';
-		}
+        $content .= '</tbody></table>';
+        if (!$found) {
+            $content .= '<p>' . I18N::translate('There are no research tasks in this family tree.') . '</p>';
+        }
 
-		if ($template) {
-			if ($block) {
-				$class .= ' small_inner_block';
-			}
+        if ($template) {
+            if ($block) {
+                $class .= ' small_inner_block';
+            }
 
-			return Theme::theme()->formatBlock($id, $title, $class, $content);
-		} else {
-			return $content;
-		}
-	}
+            return Theme::theme()->formatBlock($id, $title, $class, $content);
+        } else {
+            return $content;
+        }
+    }
 
-	/** {@inheritdoc} */
-	public function loadAjax() {
-		return false;
-	}
+    /** {@inheritdoc} */
+    public function loadAjax() {
+        return false;
+    }
 
-	/** {@inheritdoc} */
-	public function isUserBlock() {
-		return true;
-	}
+    /** {@inheritdoc} */
+    public function isUserBlock() {
+        return true;
+    }
 
-	/** {@inheritdoc} */
-	public function isGedcomBlock() {
-		return true;
-	}
+    /** {@inheritdoc} */
+    public function isGedcomBlock() {
+        return true;
+    }
 
-	/**
-	 * An HTML form to edit block settings
-	 *
-	 * @param int $block_id
-	 */
-	public function configureBlock($block_id) {
-		if (Filter::postBool('save') && Filter::checkCsrf()) {
-			$this->setBlockSetting($block_id, 'show_other', Filter::postBool('show_other'));
-			$this->setBlockSetting($block_id, 'show_unassigned', Filter::postBool('show_unassigned'));
-			$this->setBlockSetting($block_id, 'show_future', Filter::postBool('show_future'));
-			$this->setBlockSetting($block_id, 'block', Filter::postBool('block'));
-		}
+    /**
+     * An HTML form to edit block settings
+     *
+     * @param int $block_id
+     */
+    public function configureBlock($block_id) {
+        if (Filter::postBool('save') && Filter::checkCsrf()) {
+            $this->setBlockSetting($block_id, 'show_other', Filter::postBool('show_other'));
+            $this->setBlockSetting($block_id, 'show_unassigned', Filter::postBool('show_unassigned'));
+            $this->setBlockSetting($block_id, 'show_future', Filter::postBool('show_future'));
+            $this->setBlockSetting($block_id, 'block', Filter::postBool('block'));
+        }
 
-		$show_other      = $this->getBlockSetting($block_id, 'show_other', self::DEFAULT_SHOW_OTHER);
-		$show_unassigned = $this->getBlockSetting($block_id, 'show_unassigned', self::DEFAULT_SHOW_UNASSIGNED);
-		$show_future     = $this->getBlockSetting($block_id, 'show_future', self::DEFAULT_SHOW_FUTURE);
-		$block           = $this->getBlockSetting($block_id, 'block', self::DEFAULT_BLOCK);
+        $show_other      = $this->getBlockSetting($block_id, 'show_other', self::DEFAULT_SHOW_OTHER);
+        $show_unassigned = $this->getBlockSetting($block_id, 'show_unassigned', self::DEFAULT_SHOW_UNASSIGNED);
+        $show_future     = $this->getBlockSetting($block_id, 'show_future', self::DEFAULT_SHOW_FUTURE);
+        $block           = $this->getBlockSetting($block_id, 'block', self::DEFAULT_BLOCK);
 
-		?>
-		<tr>
-			<td colspan="2">
-				<?php echo I18N::translate('Research tasks are special events, added to individuals in your family tree, which identify the need for further research. You can use them as a reminder to check facts against more reliable sources, to obtain documents or photographs, to resolve conflicting information, etc.'); ?>
-				<?php echo I18N::translate('To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences.'); ?>
-				<?php echo I18N::translate('Research tasks are stored using the custom GEDCOM tag “_TODO”. Other genealogy applications may not recognize this tag.'); ?>
-			</td>
-		</tr>
-		<?php
+        ?>
+        <tr>
+            <td colspan="2">
+                <?php echo I18N::translate('Research tasks are special events, added to individuals in your family tree, which identify the need for further research. You can use them as a reminder to check facts against more reliable sources, to obtain documents or photographs, to resolve conflicting information, etc.'); ?>
+                <?php echo I18N::translate('To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences.'); ?>
+                <?php echo I18N::translate('Research tasks are stored using the custom GEDCOM tag “_TODO”. Other genealogy applications may not recognize this tag.'); ?>
+            </td>
+        </tr>
+        <?php
 
-		echo '<tr><td class="descriptionbox wrap width33">';
-		echo I18N::translate('Show research tasks that are assigned to other users');
-		echo '</td><td class="optionbox">';
-		echo FunctionsEdit::editFieldYesNo('show_other', $show_other);
-		echo '</td></tr>';
+        echo '<tr><td class="descriptionbox wrap width33">';
+        echo I18N::translate('Show research tasks that are assigned to other users');
+        echo '</td><td class="optionbox">';
+        echo FunctionsEdit::editFieldYesNo('show_other', $show_other);
+        echo '</td></tr>';
 
-		echo '<tr><td class="descriptionbox wrap width33">';
-		echo I18N::translate('Show research tasks that are not assigned to any user');
-		echo '</td><td class="optionbox">';
-		echo FunctionsEdit::editFieldYesNo('show_unassigned', $show_unassigned);
-		echo '</td></tr>';
+        echo '<tr><td class="descriptionbox wrap width33">';
+        echo I18N::translate('Show research tasks that are not assigned to any user');
+        echo '</td><td class="optionbox">';
+        echo FunctionsEdit::editFieldYesNo('show_unassigned', $show_unassigned);
+        echo '</td></tr>';
 
-		echo '<tr><td class="descriptionbox wrap width33">';
-		echo I18N::translate('Show research tasks that have a date in the future');
-		echo '</td><td class="optionbox">';
-		echo FunctionsEdit::editFieldYesNo('show_future', $show_future);
-		echo '</td></tr>';
+        echo '<tr><td class="descriptionbox wrap width33">';
+        echo I18N::translate('Show research tasks that have a date in the future');
+        echo '</td><td class="optionbox">';
+        echo FunctionsEdit::editFieldYesNo('show_future', $show_future);
+        echo '</td></tr>';
 
-		echo '<tr><td class="descriptionbox wrap width33">';
-		echo /* I18N: label for a yes/no option */ I18N::translate('Add a scrollbar when block contents grow');
-		echo '</td><td class="optionbox">';
-		echo FunctionsEdit::editFieldYesNo('block', $block);
-		echo '</td></tr>';
-	}
+        echo '<tr><td class="descriptionbox wrap width33">';
+        echo /* I18N: label for a yes/no option */ I18N::translate('Add a scrollbar when block contents grow');
+        echo '</td><td class="optionbox">';
+        echo FunctionsEdit::editFieldYesNo('block', $block);
+        echo '</td></tr>';
+    }
 }

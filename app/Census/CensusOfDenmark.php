@@ -19,44 +19,44 @@ namespace Fisharebest\Webtrees\Census;
  * Definitions for a census
  */
 class CensusOfDenmark extends Census implements CensusPlaceInterface {
-	/**
-	 * All available censuses for this census place.
-	 *
-	 * @return CensusInterface[]
-	 */
-	public function allCensusDates() {
-		return array(
-			new CensusOfDenmark1787(),
-			new CensusOfDenmark1801(),
-			new CensusOfDenmark1803(),
-			new CensusOfDenmark1834(),
-			new CensusOfDenmark1835(),
-			new CensusOfDenmark1840(),
-			new CensusOfDenmark1845(),
-			new CensusOfDenmark1850(),
-			new CensusOfDenmark1855(),
-			new CensusOfDenmark1860(),
-			new CensusOfDenmark1870(),
-			new CensusOfDenmark1880(),
-			new CensusOfDenmark1885(),
-			new CensusOfDenmark1890(),
-			new CensusOfDenmark1901(),
-			new CensusOfDenmark1906(),
-			new CensusOfDenmark1911(),
-			new CensusOfDenmark1916(),
-			new CensusOfDenmark1921(),
-			new CensusOfDenmark1925(),
-			new CensusOfDenmark1930(),
-			new CensusOfDenmark1940(),
-		);
-	}
+    /**
+     * All available censuses for this census place.
+     *
+     * @return CensusInterface[]
+     */
+    public function allCensusDates() {
+        return array(
+            new CensusOfDenmark1787(),
+            new CensusOfDenmark1801(),
+            new CensusOfDenmark1803(),
+            new CensusOfDenmark1834(),
+            new CensusOfDenmark1835(),
+            new CensusOfDenmark1840(),
+            new CensusOfDenmark1845(),
+            new CensusOfDenmark1850(),
+            new CensusOfDenmark1855(),
+            new CensusOfDenmark1860(),
+            new CensusOfDenmark1870(),
+            new CensusOfDenmark1880(),
+            new CensusOfDenmark1885(),
+            new CensusOfDenmark1890(),
+            new CensusOfDenmark1901(),
+            new CensusOfDenmark1906(),
+            new CensusOfDenmark1911(),
+            new CensusOfDenmark1916(),
+            new CensusOfDenmark1921(),
+            new CensusOfDenmark1925(),
+            new CensusOfDenmark1930(),
+            new CensusOfDenmark1940(),
+        );
+    }
 
-	/**
-	 * Where did this census occur, in GEDCOM format.
-	 *
-	 * @return string
-	 */
-	public function censusPlace() {
-		return 'Danmark';
-	}
+    /**
+     * Where did this census occur, in GEDCOM format.
+     *
+     * @return string
+     */
+    public function censusPlace() {
+        return 'Danmark';
+    }
 }

@@ -19,23 +19,23 @@ namespace Fisharebest\Webtrees\Census;
  * Marital status.
  */
 class CensusColumnConditionFrenchHomme extends AbstractCensusColumnCondition {
-	/* Text to display for married individuals */
-	protected $husband = '1';
-	protected $wife    = '';
+    /* Text to display for married individuals */
+    protected $husband = '1';
+    protected $wife    = '';
 
-	/* Text to display for unmarried individuals */
-	protected $bachelor = '';
-	protected $spinster = '';
+    /* Text to display for unmarried individuals */
+    protected $bachelor = '';
+    protected $spinster = '';
 
-	/* Text to display for children */
-	protected $boy  = '';
-	protected $girl = '';
+    /* Text to display for children */
+    protected $boy  = '';
+    protected $girl = '';
 
-	/* Text to display for divorced individuals */
-	protected $divorce  = '1';
-	protected $divorcee = '';
+    /* Text to display for divorced individuals */
+    protected $divorce  = '1';
+    protected $divorcee = '';
 
-	/* Text to display for widowed individuals (not yet implemented) */
-	protected $widower = '';
-	protected $widow   = '';
+    /* Text to display for widowed individuals (not yet implemented) */
+    protected $widower = '';
+    protected $widow   = '';
 }

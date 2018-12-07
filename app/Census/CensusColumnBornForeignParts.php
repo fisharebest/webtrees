@@ -21,33 +21,33 @@ use Fisharebest\Webtrees\Individual;
  * Was the individual born in "foreign parts".
  */
 class CensusColumnBornForeignParts extends AbstractCensusColumn implements CensusColumnInterface {
-	/**
-	 * Generate the likely value of this census column, based on available information.
-	 *
-	 * @param Individual      $individual
-	 * @param Individual|null $head
-	 *
-	 * @return string
-	 */
-	public function generate(Individual $individual, Individual $head = null) {
-		$birth_place  = explode(', ', $individual->getBirthPlace());
-		$birth_place  = end($birth_place);
-		$census_place = $this->place();
+    /**
+     * Generate the likely value of this census column, based on available information.
+     *
+     * @param Individual      $individual
+     * @param Individual|null $head
+     *
+     * @return string
+     */
+    public function generate(Individual $individual, Individual $head = null) {
+        $birth_place  = explode(', ', $individual->getBirthPlace());
+        $birth_place  = end($birth_place);
+        $census_place = $this->place();
 
-		if ($birth_place === 'Wales') {
-			$birth_place = 'England';
-		}
+        if ($birth_place === 'Wales') {
+            $birth_place = 'England';
+        }
 
-		if ($census_place === 'Wales') {
-			$census_place = 'England';
-		}
+        if ($census_place === 'Wales') {
+            $census_place = 'England';
+        }
 
-		if ($birth_place === $census_place || $birth_place === '') {
-			return '';
-		} elseif ($birth_place === 'England' || $birth_place === 'Scotland' || $birth_place === 'Ireland') {
-			return substr($birth_place, 0, 1);
-		} else {
-			return 'F';
-		}
-	}
+        if ($birth_place === $census_place || $birth_place === '') {
+            return '';
+        } elseif ($birth_place === 'England' || $birth_place === 'Scotland' || $birth_place === 'Ireland') {
+            return substr($birth_place, 0, 1);
+        } else {
+            return 'F';
+        }
+    }
 }

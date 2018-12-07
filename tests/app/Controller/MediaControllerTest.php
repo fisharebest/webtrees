@@ -19,17 +19,17 @@
  * Test harness for the class MediaController
  */
 class MediaControllerTest extends \PHPUnit_Framework_TestCase {
-	/**
-	 * Prepare the environment for these tests
-	 */
-	public function setUp() {
-		defined('WT_ROOT') || define('WT_ROOT', '');
-	}
+    /**
+     * Prepare the environment for these tests
+     */
+    public function setUp() {
+        defined('WT_ROOT') || define('WT_ROOT', '');
+    }
 
-	/**
-	 * Test that the class exists
-	 */
-	public function testClassExists() {
-		$this->assertTrue(class_exists('\Fisharebest\Webtrees\Controller\MediaController'));
-	}
+    /**
+     * Test that the class exists
+     */
+    public function testClassExists() {
+        $this->assertTrue(class_exists('\Fisharebest\Webtrees\Controller\MediaController'));
+    }
 }

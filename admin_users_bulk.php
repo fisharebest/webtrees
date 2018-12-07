@@ -22,32 +22,32 @@ require './includes/session.php';
 
 $controller = new PageController;
 $controller
-	->restrictAccess(Auth::isAdmin())
-	->setPageTitle(I18N::translate('Send broadcast messages'))
-	->pageHeader();
+    ->restrictAccess(Auth::isAdmin())
+    ->setPageTitle(I18N::translate('Send broadcast messages'))
+    ->pageHeader();
 
 ?>
 
 <ol class="breadcrumb small">
-	<li><a href="admin.php"><?php echo I18N::translate('Control panel'); ?></a></li>
-	<li><a href="admin_users.php"><?php echo I18N::translate('User administration'); ?></a></li>
-	<li class="active"><?php echo $controller->getPageTitle(); ?></li>
+    <li><a href="admin.php"><?php echo I18N::translate('Control panel'); ?></a></li>
+    <li><a href="admin_users.php"><?php echo I18N::translate('User administration'); ?></a></li>
+    <li class="active"><?php echo $controller->getPageTitle(); ?></li>
 </ol>
 
 <h1><?php echo $controller->getPageTitle(); ?></h1>
 
 <p>
-	<a href="#" onclick="return message('all', 'messaging2', '');">
-		<?php echo I18N::translate('Send a message to all users'); ?>
-	</a>
+    <a href="#" onclick="return message('all', 'messaging2', '');">
+        <?php echo I18N::translate('Send a message to all users'); ?>
+    </a>
 </p>
 <p>
-	<a href="#" onclick="return message('never_logged', 'messaging2', '');">
-		<?php echo I18N::translate('Send a message to users who have never signed in'); ?>
-	</a>
+    <a href="#" onclick="return message('never_logged', 'messaging2', '');">
+        <?php echo I18N::translate('Send a message to users who have never signed in'); ?>
+    </a>
 </p>
 <p>
-	<a href="#" onclick="return message('last_6mo', 'messaging2', '');">
-		<?php echo I18N::translate('Send a message to users who have not signed in for 6 months'); ?>
-	</a>
+    <a href="#" onclick="return message('last_6mo', 'messaging2', '');">
+        <?php echo I18N::translate('Send a message to users who have not signed in for 6 months'); ?>
+    </a>
 </p>

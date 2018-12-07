@@ -22,22 +22,22 @@ use Fisharebest\Webtrees\Schema\MigrationInterface;
  * Upgrade the database schema from version 0 (empty database) to version 1.
  */
 class Migration0 implements MigrationInterface {
-	/** {@inheritDoc} */
-	public function upgrade() {
-		// Create the tables, as per PhpGedView 4.2.1
-		Database::exec(
-			"CREATE TABLE IF NOT EXISTS `##favorites` (" .
-			" fv_id       INTEGER AUTO_INCREMENT NOT NULL," .
-			" fv_username VARCHAR(32)            NOT NULL," .
-			" fv_gid      VARCHAR(20)                NULL," .
-			" fv_type     VARCHAR(15)                NULL," .
-			" fv_file     VARCHAR(100)               NULL," .
-			" fv_url      VARCHAR(255)               NULL," .
-			" fv_title    VARCHAR(255)               NULL," .
-			" fv_note     TEXT                       NULL," .
-			" PRIMARY KEY (fv_id)," .
-			"         KEY ix1 (fv_username)" .
-			") COLLATE utf8_unicode_ci ENGINE=InnoDB"
-		);
-	}
+    /** {@inheritDoc} */
+    public function upgrade() {
+        // Create the tables, as per PhpGedView 4.2.1
+        Database::exec(
+            "CREATE TABLE IF NOT EXISTS `##favorites` (" .
+            " fv_id       INTEGER AUTO_INCREMENT NOT NULL," .
+            " fv_username VARCHAR(32)            NOT NULL," .
+            " fv_gid      VARCHAR(20)                NULL," .
+            " fv_type     VARCHAR(15)                NULL," .
+            " fv_file     VARCHAR(100)               NULL," .
+            " fv_url      VARCHAR(255)               NULL," .
+            " fv_title    VARCHAR(255)               NULL," .
+            " fv_note     TEXT                       NULL," .
+            " PRIMARY KEY (fv_id)," .
+            "         KEY ix1 (fv_username)" .
+            ") COLLATE utf8_unicode_ci ENGINE=InnoDB"
+        );
+    }
 }

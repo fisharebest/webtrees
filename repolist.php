@@ -34,6 +34,6 @@ $controller->setPageTitle(I18N::translate('Repositories'));
 $controller->pageHeader();
 
 echo '<div id="repolist-page">',
-	'<h2>', I18N::translate('Repositories'), '</h2>';
-	echo FunctionsPrintLists::repositoryTable(FunctionsDb::getRepositoryList($WT_TREE));
+    '<h2>', I18N::translate('Repositories'), '</h2>';
+    echo FunctionsPrintLists::repositoryTable(FunctionsDb::getRepositoryList($WT_TREE));
 echo '</div>';

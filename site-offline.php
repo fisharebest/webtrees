@@ -33,25 +33,25 @@ Session::start();
 define('WT_LOCALE', I18N::init());
 
 if (file_exists(WT_DATA_DIR . 'offline.txt')) {
-	$offline_txt = file_get_contents(WT_DATA_DIR . 'offline.txt');
+    $offline_txt = file_get_contents(WT_DATA_DIR . 'offline.txt');
 } else {
-	// offline.txt has gone - we're back online!
-	header('Location: index.php');
+    // offline.txt has gone - we're back online!
+    header('Location: index.php');
 
-	return;
+    return;
 }
 
 http_response_code(503);
 header('Content-Type: text/html; charset=UTF-8');
 
 echo
-	'<!DOCTYPE html>',
-	'<html ', I18N::htmlAttributes(), '>',
-	'<head>',
-	'<meta charset="UTF-8">',
-	'<title>', WT_WEBTREES, '</title>',
-	'<meta name="robots" content="noindex,follow">',
-	'<style type="text/css">
+    '<!DOCTYPE html>',
+    '<html ', I18N::htmlAttributes(), '>',
+    '<head>',
+    '<meta charset="UTF-8">',
+    '<title>', WT_WEBTREES, '</title>',
+    '<meta name="robots" content="noindex,follow">',
+    '<style type="text/css">
 		body {color: gray; background-color: white; font: 14px tahoma, arial, helvetica, sans-serif; padding:10px; }
 		a {color: #81A9CB; font-weight: bold; text-decoration: none;}
 		a:hover {text-decoration: underline;}
@@ -61,14 +61,14 @@ echo
 		.content { /*margin:auto; width:800px;*/ border:1px solid gray; padding:15px; border-radius:15px;}
 		.good {color: green;}
 	</style>',
-	'</head><body>',
-	'<h1>', I18N::translate('This website is temporarily unavailable'), '</h1>',
-	'<div class="content"><p>';
+    '</head><body>',
+    '<h1>', I18N::translate('This website is temporarily unavailable'), '</h1>',
+    '<div class="content"><p>';
 
 if ($offline_txt) {
-	echo $offline_txt;
+    echo $offline_txt;
 } else {
-	echo I18N::translate('This website is down for maintenance. You should <a href="index.php">try again</a> in a few minutes.');
+    echo I18N::translate('This website is down for maintenance. You should <a href="index.php">try again</a> in a few minutes.');
 }
 echo '</p>';
 echo '</div>';

@@ -19,103 +19,103 @@ namespace Fisharebest\Webtrees\Report;
  * Class ReportBaseElement
  */
 class ReportBaseElement {
-	/** @var string Text*/
-	public $text = '';
+    /** @var string Text*/
+    public $text = '';
 
-	/**
-	 * Element renderer
-	 *
-	 * @param ReportHtml|ReportTcpdf $renderer
-	 */
-	public function render($renderer) {
-		//-- to be implemented in inherited classes
-	}
+    /**
+     * Element renderer
+     *
+     * @param ReportHtml|ReportTcpdf $renderer
+     */
+    public function render($renderer) {
+        //-- to be implemented in inherited classes
+    }
 
-	/**
-	 * Get the height.
-	 *
-	 * @param ReportHtml|ReportTcpdf $renderer
-	 *
-	 * @return float
-	 */
-	public function getHeight($renderer) {
-		return 0.0;
-	}
+    /**
+     * Get the height.
+     *
+     * @param ReportHtml|ReportTcpdf $renderer
+     *
+     * @return float
+     */
+    public function getHeight($renderer) {
+        return 0.0;
+    }
 
-	/**
-	 * Get the width.
-	 *
-	 * @param ReportHtml|ReportTcpdf $renderer
-	 *
-	 * @return float
-	 */
-	public function getWidth($renderer) {
-		return 0.0;
-	}
+    /**
+     * Get the width.
+     *
+     * @param ReportHtml|ReportTcpdf $renderer
+     *
+     * @return float
+     */
+    public function getWidth($renderer) {
+        return 0.0;
+    }
 
-	/**
-	 * Add text.
-	 *
-	 * @param string $t
-	 *
-	 * @return int
-	 */
-	public function addText($t) {
-		$t = trim($t, "\r\n\t");
-		$t = str_replace(array("<br>", "&nbsp;"), array("\n", " "), $t);
-		$t = strip_tags($t);
-		$t = htmlspecialchars_decode($t);
-		$this->text .= $t;
+    /**
+     * Add text.
+     *
+     * @param string $t
+     *
+     * @return int
+     */
+    public function addText($t) {
+        $t = trim($t, "\r\n\t");
+        $t = str_replace(array("<br>", "&nbsp;"), array("\n", " "), $t);
+        $t = strip_tags($t);
+        $t = htmlspecialchars_decode($t);
+        $this->text .= $t;
 
-		return 0;
-	}
+        return 0;
+    }
 
-	/**
-	 * Add an end-of-line.
-	 *
-	 * @return int
-	 */
-	public function addNewline() {
-		$this->text .= "\n";
+    /**
+     * Add an end-of-line.
+     *
+     * @return int
+     */
+    public function addNewline() {
+        $this->text .= "\n";
 
-		return 0;
-	}
+        return 0;
+    }
 
-	/**
-	 * Get the current text.
-	 *
-	 * @return string
-	 */
-	public function getValue() {
-		return $this->text;
-	}
+    /**
+     * Get the current text.
+     *
+     * @return string
+     */
+    public function getValue() {
+        return $this->text;
+    }
 
-	/**
-	 * Set the width to wrap text.
-	 *
-	 * @param $wrapwidth
-	 * @param $cellwidth
-	 *
-	 * @return int
-	 */
-	public function setWrapWidth($wrapwidth, $cellwidth) {
-		return 0;
-	}
+    /**
+     * Set the width to wrap text.
+     *
+     * @param $wrapwidth
+     * @param $cellwidth
+     *
+     * @return int
+     */
+    public function setWrapWidth($wrapwidth, $cellwidth) {
+        return 0;
+    }
 
-	/**
-	 * Render the footnotes.
-	 *
-	 * @param $renderer
-	 */
-	public function renderFootnote($renderer) {
-	}
+    /**
+     * Render the footnotes.
+     *
+     * @param $renderer
+     */
+    public function renderFootnote($renderer) {
+    }
 
-	/**
-	 * Set the text.
-	 *
-	 * @param $text
-	 */
-	public function setText($text) {
-		$this->text = $text;
-	}
+    /**
+     * Set the text.
+     *
+     * @param $text
+     */
+    public function setText($text) {
+        $this->text = $text;
+    }
 }

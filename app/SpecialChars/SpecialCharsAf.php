@@ -22,25 +22,25 @@ namespace Fisharebest\Webtrees\SpecialChars;
  * that may be difficult to type.
  */
 class SpecialCharsAf extends AbstractSpecialChars {
-	/**
-	 * A list of magiscule letters.
-	 *
-	 * @return string[]
-	 */
-	public function upper() {
-		return array(
-			'È', 'É', 'Ê', 'Ë', 'Î', 'Ï', 'Ô', 'Û',
-		);
-	}
+    /**
+     * A list of magiscule letters.
+     *
+     * @return string[]
+     */
+    public function upper() {
+        return array(
+            'È', 'É', 'Ê', 'Ë', 'Î', 'Ï', 'Ô', 'Û',
+        );
+    }
 
-	/**
-	 * A list of miniscule letters.
-	 *
-	 * @return string[]
-	 */
-	public function lower() {
-		return array(
-			'è', 'é', 'ê', 'ë', 'î', 'ï', 'ô', 'û', 'ŉ',
-		);
-	}
+    /**
+     * A list of miniscule letters.
+     *
+     * @return string[]
+     */
+    public function lower() {
+        return array(
+            'è', 'é', 'ê', 'ë', 'î', 'ï', 'ô', 'û', 'ŉ',
+        );
+    }
 }

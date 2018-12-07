@@ -19,73 +19,73 @@ namespace Fisharebest\Webtrees\Report;
  * Class ReportParserBase
  */
 class ReportParserBase {
-	/** @var resource The XML parser */
-	protected $xml_parser;
+    /** @var resource The XML parser */
+    protected $xml_parser;
 
-	/** @var string Text contents of tags */
-	protected $text = '';
+    /** @var string Text contents of tags */
+    protected $text = '';
 
-	/**
-	 * Create a parser for a report
-	 *
-	 * @param string     $report     The XML filename
-	 * @param ReportBase $report_root
-	 * @param string[][] $vars
-	 */
-	public function __construct($report, ReportBase $report_root = null, $vars = array()) {
-		$this->xml_parser = xml_parser_create();
-		xml_parser_set_option($this->xml_parser, XML_OPTION_CASE_FOLDING, false);
-		xml_set_element_handler($this->xml_parser, array($this, 'startElement'), array($this, 'endElement'));
-		xml_set_character_data_handler($this->xml_parser, array($this, 'characterData'));
+    /**
+     * Create a parser for a report
+     *
+     * @param string     $report     The XML filename
+     * @param ReportBase $report_root
+     * @param string[][] $vars
+     */
+    public function __construct($report, ReportBase $report_root = null, $vars = array()) {
+        $this->xml_parser = xml_parser_create();
+        xml_parser_set_option($this->xml_parser, XML_OPTION_CASE_FOLDING, false);
+        xml_set_element_handler($this->xml_parser, array($this, 'startElement'), array($this, 'endElement'));
+        xml_set_character_data_handler($this->xml_parser, array($this, 'characterData'));
 
-		$fp = fopen($report, 'r');
-		while (($data = fread($fp, 4096))) {
-			if (!xml_parse($this->xml_parser, $data, feof($fp))) {
-				throw new \DomainException(sprintf(
-					'XML error: %s at line %d',
-					xml_error_string(xml_get_error_code($this->xml_parser)),
-					xml_get_current_line_number($this->xml_parser)
-				));
-			}
-		}
+        $fp = fopen($report, 'r');
+        while (($data = fread($fp, 4096))) {
+            if (!xml_parse($this->xml_parser, $data, feof($fp))) {
+                throw new \DomainException(sprintf(
+                    'XML error: %s at line %d',
+                    xml_error_string(xml_get_error_code($this->xml_parser)),
+                    xml_get_current_line_number($this->xml_parser)
+                ));
+            }
+        }
 
-		xml_parser_free($this->xml_parser);
-	}
+        xml_parser_free($this->xml_parser);
+    }
 
-	/**
-	 * XML handler for an opening (or self-closing) tag.
-	 *
-	 * @param resource $parser The resource handler for the xml parser
-	 * @param string   $name   The name of the xml element parsed
-	 * @param string[] $attrs  An array of key value pairs for the attributes
-	 */
-	protected function startElement($parser, $name, $attrs) {
-		$method = $name . 'StartHandler';
-		if (method_exists($this, $method)) {
-			$this->$method($attrs);
-		}
-	}
+    /**
+     * XML handler for an opening (or self-closing) tag.
+     *
+     * @param resource $parser The resource handler for the xml parser
+     * @param string   $name   The name of the xml element parsed
+     * @param string[] $attrs  An array of key value pairs for the attributes
+     */
+    protected function startElement($parser, $name, $attrs) {
+        $method = $name . 'StartHandler';
+        if (method_exists($this, $method)) {
+            $this->$method($attrs);
+        }
+    }
 
-	/**
-	 * XML handler for a closing tag.
-	 *
-	 * @param resource $parser the resource handler for the xml parser
-	 * @param string $name the name of the xml element parsed
-	 */
-	protected function endElement($parser, $name) {
-		$method = $name . 'EndHandler';
-		if (method_exists($this, $method)) {
-			$this->$method();
-		}
-	}
+    /**
+     * XML handler for a closing tag.
+     *
+     * @param resource $parser the resource handler for the xml parser
+     * @param string $name the name of the xml element parsed
+     */
+    protected function endElement($parser, $name) {
+        $method = $name . 'EndHandler';
+        if (method_exists($this, $method)) {
+            $this->$method();
+        }
+    }
 
-	/**
-	 * XML handler for character data.
-	 *
-	 * @param resource $parser The resource handler for the xml parser
-	 * @param string   $data   The name of the xml element parsed
-	 */
-	protected function characterData($parser, $data) {
-		$this->text .= $data;
-	}
+    /**
+     * XML handler for character data.
+     *
+     * @param resource $parser The resource handler for the xml parser
+     * @param string   $data   The name of the xml element parsed
+     */
+    protected function characterData($parser, $data) {
+        $this->text .= $data;
+    }
 }

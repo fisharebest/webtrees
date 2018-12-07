@@ -35,16 +35,16 @@ $action = Filter::get('action');
 
 // The default view depends on whether we are logged in
 if (Auth::check()) {
-	$ctype = Filter::get('ctype', 'gedcom|user', 'user');
+    $ctype = Filter::get('ctype', 'gedcom|user', 'user');
 } else {
-	$ctype = 'gedcom';
+    $ctype = 'gedcom';
 }
 
 // Get the blocks list
 if ($ctype === 'user') {
-	$blocks = FunctionsDb::getUserBlocks(Auth::id());
+    $blocks = FunctionsDb::getUserBlocks(Auth::id());
 } else {
-	$blocks = FunctionsDb::getTreeBlocks($WT_TREE->getTreeId());
+    $blocks = FunctionsDb::getTreeBlocks($WT_TREE->getTreeId());
 }
 
 $active_blocks = Module::getActiveBlocks($WT_TREE);
@@ -54,91 +54,91 @@ Functions::fetchLatestVersion();
 
 // We generate individual blocks using AJAX
 if ($action === 'ajax') {
-	$controller = new AjaxController;
-	$controller->pageHeader();
+    $controller = new AjaxController;
+    $controller->pageHeader();
 
-	// Check we’re displaying an allowable block.
-	$block_id = Filter::getInteger('block_id');
-	if (array_key_exists($block_id, $blocks['main'])) {
-		$module_name = $blocks['main'][$block_id];
-	} elseif (array_key_exists($block_id, $blocks['side'])) {
-		$module_name = $blocks['side'][$block_id];
-	} else {
-		return;
-	}
-	if (array_key_exists($module_name, $active_blocks)) {
-		echo $active_blocks[$module_name]->getBlock($block_id);
-	}
+    // Check we’re displaying an allowable block.
+    $block_id = Filter::getInteger('block_id');
+    if (array_key_exists($block_id, $blocks['main'])) {
+        $module_name = $blocks['main'][$block_id];
+    } elseif (array_key_exists($block_id, $blocks['side'])) {
+        $module_name = $blocks['side'][$block_id];
+    } else {
+        return;
+    }
+    if (array_key_exists($module_name, $active_blocks)) {
+        echo $active_blocks[$module_name]->getBlock($block_id);
+    }
 
-	return;
+    return;
 }
 
 // Redirect search engines to the full URL
 if (Filter::get('ctype') !== $ctype || Filter::get('ged') !== $WT_TREE->getName()) {
-	header('Location: ' . WT_BASE_URL . 'index.php?ctype=' . $ctype . '&ged=' . $WT_TREE->getNameUrl());
+    header('Location: ' . WT_BASE_URL . 'index.php?ctype=' . $ctype . '&ged=' . $WT_TREE->getNameUrl());
 
-	return;
+    return;
 }
 
 $controller = new PageController;
 if ($ctype === 'user') {
-	$controller->restrictAccess(Auth::check());
+    $controller->restrictAccess(Auth::check());
 }
 $controller
-	->setPageTitle($ctype === 'user' ? I18N::translate('My page') : $WT_TREE->getTitle())
-	->setMetaRobots('index,follow')
-	->pageHeader()
-	// By default jQuery modifies AJAX URLs to disable caching, causing JS libraries to be loaded many times.
-	->addInlineJavascript('jQuery.ajaxSetup({cache:true});');
+    ->setPageTitle($ctype === 'user' ? I18N::translate('My page') : $WT_TREE->getTitle())
+    ->setMetaRobots('index,follow')
+    ->pageHeader()
+    // By default jQuery modifies AJAX URLs to disable caching, causing JS libraries to be loaded many times.
+    ->addInlineJavascript('jQuery.ajaxSetup({cache:true});');
 
 if ($ctype === 'user') {
-	echo '<div id="my-page">';
-	echo '<h2 class="center">', I18N::translate('My page'), '</h2>';
+    echo '<div id="my-page">';
+    echo '<h2 class="center">', I18N::translate('My page'), '</h2>';
 } else {
-	echo '<div id="home-page">';
+    echo '<div id="home-page">';
 }
 if ($blocks['main']) {
-	if ($blocks['side']) {
-		echo '<div id="index_main_blocks">';
-	} else {
-		echo '<div id="index_full_blocks">';
-	}
-	foreach ($blocks['main'] as $block_id => $module_name) {
-		if (array_key_exists($module_name, $active_blocks)) {
-			if (Auth::isSearchEngine() || !$active_blocks[$module_name]->loadAjax()) {
-				// Load the block directly
-				echo $active_blocks[$module_name]->getBlock($block_id);
-			} else {
-				// Load the block asynchronously
-				echo '<div id="block_', $block_id, '"><div class="loading-image"></div></div>';
-				$controller->addInlineJavascript(
-					'jQuery("#block_' . $block_id . '").load("index.php?ctype=' . $ctype . '&action=ajax&block_id=' . $block_id . '");'
-				);
-			}
-		}
-	}
-	echo '</div>';
+    if ($blocks['side']) {
+        echo '<div id="index_main_blocks">';
+    } else {
+        echo '<div id="index_full_blocks">';
+    }
+    foreach ($blocks['main'] as $block_id => $module_name) {
+        if (array_key_exists($module_name, $active_blocks)) {
+            if (Auth::isSearchEngine() || !$active_blocks[$module_name]->loadAjax()) {
+                // Load the block directly
+                echo $active_blocks[$module_name]->getBlock($block_id);
+            } else {
+                // Load the block asynchronously
+                echo '<div id="block_', $block_id, '"><div class="loading-image"></div></div>';
+                $controller->addInlineJavascript(
+                    'jQuery("#block_' . $block_id . '").load("index.php?ctype=' . $ctype . '&action=ajax&block_id=' . $block_id . '");'
+                );
+            }
+        }
+    }
+    echo '</div>';
 }
 if ($blocks['side']) {
-	if ($blocks['main']) {
-		echo '<div id="index_small_blocks">';
-	} else {
-		echo '<div id="index_full_blocks">';
-	}
-	foreach ($blocks['side'] as $block_id => $module_name) {
-		if (array_key_exists($module_name, $active_blocks)) {
-			if (Auth::isSearchEngine() || !$active_blocks[$module_name]->loadAjax()) {
-				// Load the block directly
-				echo $active_blocks[$module_name]->getBlock($block_id);
-			} else {
-				// Load the block asynchronously
-				echo '<div id="block_', $block_id, '"><div class="loading-image"></div></div>';
-				$controller->addInlineJavascript(
-					'jQuery("#block_' . $block_id . '").load("index.php?ctype=' . $ctype . '&action=ajax&block_id=' . $block_id . '");'
-				);
-			}
-		}
-	}
-	echo '</div>';
+    if ($blocks['main']) {
+        echo '<div id="index_small_blocks">';
+    } else {
+        echo '<div id="index_full_blocks">';
+    }
+    foreach ($blocks['side'] as $block_id => $module_name) {
+        if (array_key_exists($module_name, $active_blocks)) {
+            if (Auth::isSearchEngine() || !$active_blocks[$module_name]->loadAjax()) {
+                // Load the block directly
+                echo $active_blocks[$module_name]->getBlock($block_id);
+            } else {
+                // Load the block asynchronously
+                echo '<div id="block_', $block_id, '"><div class="loading-image"></div></div>';
+                $controller->addInlineJavascript(
+                    'jQuery("#block_' . $block_id . '").load("index.php?ctype=' . $ctype . '&action=ajax&block_id=' . $block_id . '");'
+                );
+            }
+        }
+    }
+    echo '</div>';
 }
 echo '</div>';

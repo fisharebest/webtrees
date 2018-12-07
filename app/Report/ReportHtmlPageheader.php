@@ -19,15 +19,15 @@ namespace Fisharebest\Webtrees\Report;
  * Class ReportHtmlPageheader
  */
 class ReportHtmlPageheader extends ReportBasePageheader {
-	/**
-	 * Render elements.
-	 *
-	 * @param ReportHtml $renderer
-	 */
-	public function render($renderer) {
-		$renderer->clearPageHeader();
-		foreach ($this->elements as $element) {
-			$renderer->addPageHeader($element);
-		}
-	}
+    /**
+     * Render elements.
+     *
+     * @param ReportHtml $renderer
+     */
+    public function render($renderer) {
+        $renderer->clearPageHeader();
+        foreach ($this->elements as $element) {
+            $renderer->addPageHeader($element);
+        }
+    }
 }

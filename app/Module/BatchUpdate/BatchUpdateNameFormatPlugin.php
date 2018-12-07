@@ -21,57 +21,57 @@ use Fisharebest\Webtrees\I18N;
  * Class BatchUpdateNameFormatPlugin Batch Update plugin: fix spacing in names, particularly that before/after the surname slashes
  */
 class BatchUpdateNameFormatPlugin extends BatchUpdateBasePlugin {
-	/**
-	 * User-friendly name for this plugin.
-	 *
-	 * @return string
-	 */
-	public function getName() {
-		return I18N::translate('Fix name slashes and spaces');
-	}
+    /**
+     * User-friendly name for this plugin.
+     *
+     * @return string
+     */
+    public function getName() {
+        return I18N::translate('Fix name slashes and spaces');
+    }
 
-	/**
-	 * Description / help-text for this plugin.
-	 *
-	 * @return string
-	 */
-	public function getDescription() {
-		return I18N::translate('Correct NAME records of the form “John/DOE/” or “John /DOE”, as produced by older genealogy programs.');
-	}
+    /**
+     * Description / help-text for this plugin.
+     *
+     * @return string
+     */
+    public function getDescription() {
+        return I18N::translate('Correct NAME records of the form “John/DOE/” or “John /DOE”, as produced by older genealogy programs.');
+    }
 
-	/**
-	 * Does this record need updating?
-	 *
-	 * @param string $xref
-	 * @param string $gedrec
-	 *
-	 * @return bool
-	 */
-	public function doesRecordNeedUpdate($xref, $gedrec) {
-		return
-			preg_match('/^(?:1 NAME|2 (?:FONE|ROMN|_MARNM|_AKA|_HEB)) [^\/\n]*\/[^\/\n]*$/m', $gedrec) ||
-			preg_match('/^(?:1 NAME|2 (?:FONE|ROMN|_MARNM|_AKA|_HEB)) [^\/\n]*[^\/ ]\//m', $gedrec);
-	}
+    /**
+     * Does this record need updating?
+     *
+     * @param string $xref
+     * @param string $gedrec
+     *
+     * @return bool
+     */
+    public function doesRecordNeedUpdate($xref, $gedrec) {
+        return
+            preg_match('/^(?:1 NAME|2 (?:FONE|ROMN|_MARNM|_AKA|_HEB)) [^\/\n]*\/[^\/\n]*$/m', $gedrec) ||
+            preg_match('/^(?:1 NAME|2 (?:FONE|ROMN|_MARNM|_AKA|_HEB)) [^\/\n]*[^\/ ]\//m', $gedrec);
+    }
 
-	/**
-	 * Apply any updates to this record
-	 *
-	 * @param string $xref
-	 * @param string $gedrec
-	 *
-	 * @return string
-	 */
-	public function updateRecord($xref, $gedrec) {
-		return preg_replace(
-			array(
-				'/^((?:1 NAME|2 (?:FONE|ROMN|_MARNM|_AKA|_HEB)) [^\/\n]*\/[^\/\n]*)$/m',
-				'/^((?:1 NAME|2 (?:FONE|ROMN|_MARNM|_AKA|_HEB)) [^\/\n]*[^\/ ])(\/)/m',
-			),
-			array(
-				'$1/',
-				'$1 $2',
-			),
-			$gedrec
-		);
-	}
+    /**
+     * Apply any updates to this record
+     *
+     * @param string $xref
+     * @param string $gedrec
+     *
+     * @return string
+     */
+    public function updateRecord($xref, $gedrec) {
+        return preg_replace(
+            array(
+                '/^((?:1 NAME|2 (?:FONE|ROMN|_MARNM|_AKA|_HEB)) [^\/\n]*\/[^\/\n]*)$/m',
+                '/^((?:1 NAME|2 (?:FONE|ROMN|_MARNM|_AKA|_HEB)) [^\/\n]*[^\/ ])(\/)/m',
+            ),
+            array(
+                '$1/',
+                '$1 $2',
+            ),
+            $gedrec
+        );
+    }
 }

@@ -22,9 +22,9 @@ require './includes/session.php';
 $gedcom = Session::get('GEDCOM', '');
 
 if (Auth::id()) {
-	Log::addAuthenticationLog('Logout: ' . Auth::user()->getUserName() . '/' . Auth::user()->getRealName());
-	Auth::logout();
-	FlashMessages::addMessage(I18N::translate('You have signed out.'), 'info');
+    Log::addAuthenticationLog('Logout: ' . Auth::user()->getUserName() . '/' . Auth::user()->getRealName());
+    Auth::logout();
+    FlashMessages::addMessage(I18N::translate('You have signed out.'), 'info');
 }
 
 header('Location: ' . WT_BASE_URL . 'index.php?ged=' . rawurlencode($gedcom));

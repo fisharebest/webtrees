@@ -25,70 +25,70 @@ use Fisharebest\Webtrees\Theme;
  * Class WelcomeBlockModule
  */
 class WelcomeBlockModule extends AbstractModule implements ModuleBlockInterface {
-	/** {@inheritdoc} */
-	public function getTitle() {
-		return /* I18N: Name of a module */ I18N::translate('Home page');
-	}
+    /** {@inheritdoc} */
+    public function getTitle() {
+        return /* I18N: Name of a module */ I18N::translate('Home page');
+    }
 
-	/** {@inheritdoc} */
-	public function getDescription() {
-		return /* I18N: Description of the “Home page” module */ I18N::translate('A greeting message for site visitors.');
-	}
+    /** {@inheritdoc} */
+    public function getDescription() {
+        return /* I18N: Description of the “Home page” module */ I18N::translate('A greeting message for site visitors.');
+    }
 
-	/**
-	 * Generate the HTML content of this block.
-	 *
-	 * @param int      $block_id
-	 * @param bool     $template
-	 * @param string[] $cfg
-	 *
-	 * @return string
-	 */
-	public function getBlock($block_id, $template = true, $cfg = array()) {
-		global $controller, $WT_TREE;
+    /**
+     * Generate the HTML content of this block.
+     *
+     * @param int      $block_id
+     * @param bool     $template
+     * @param string[] $cfg
+     *
+     * @return string
+     */
+    public function getBlock($block_id, $template = true, $cfg = array()) {
+        global $controller, $WT_TREE;
 
-		$indi_xref = $controller->getSignificantIndividual()->getXref();
-		$id        = $this->getName() . $block_id;
-		$class     = $this->getName() . '_block';
-		$title     = $WT_TREE->getTitleHtml();
-		$content   = '<table><tr>';
-		if (Module::isActiveChart($WT_TREE, 'pedigree_chart')) {
-			$content .= '<td><a href="pedigree.php?rootid=' . $indi_xref . '&amp;ged=' . $WT_TREE->getNameUrl() . '"><i class="icon-pedigree"></i><br>' . I18N::translate('Default chart') . '</a></td>';
-		}
-		$content .= '<td><a href="individual.php?pid=' . $indi_xref . '&amp;ged=' . $WT_TREE->getNameUrl() . '"><i class="icon-indis"></i><br>' . I18N::translate('Default individual') . '</a></td>';
-		if (Site::getPreference('USE_REGISTRATION_MODULE') && !Auth::check()) {
-			$content .= '<td><a href="' . WT_LOGIN_URL . '?action=register"><i class="icon-user_add"></i><br>' . I18N::translate('Request a new user account') . '</a></td>';
-		}
-		$content .= "</tr>";
-		$content .= "</table>";
+        $indi_xref = $controller->getSignificantIndividual()->getXref();
+        $id        = $this->getName() . $block_id;
+        $class     = $this->getName() . '_block';
+        $title     = $WT_TREE->getTitleHtml();
+        $content   = '<table><tr>';
+        if (Module::isActiveChart($WT_TREE, 'pedigree_chart')) {
+            $content .= '<td><a href="pedigree.php?rootid=' . $indi_xref . '&amp;ged=' . $WT_TREE->getNameUrl() . '"><i class="icon-pedigree"></i><br>' . I18N::translate('Default chart') . '</a></td>';
+        }
+        $content .= '<td><a href="individual.php?pid=' . $indi_xref . '&amp;ged=' . $WT_TREE->getNameUrl() . '"><i class="icon-indis"></i><br>' . I18N::translate('Default individual') . '</a></td>';
+        if (Site::getPreference('USE_REGISTRATION_MODULE') && !Auth::check()) {
+            $content .= '<td><a href="' . WT_LOGIN_URL . '?action=register"><i class="icon-user_add"></i><br>' . I18N::translate('Request a new user account') . '</a></td>';
+        }
+        $content .= "</tr>";
+        $content .= "</table>";
 
-		if ($template) {
-			return Theme::theme()->formatBlock($id, $title, $class, $content);
-		} else {
-			return $content;
-		}
-	}
+        if ($template) {
+            return Theme::theme()->formatBlock($id, $title, $class, $content);
+        } else {
+            return $content;
+        }
+    }
 
-	/** {@inheritdoc} */
-	public function loadAjax() {
-		return false;
-	}
+    /** {@inheritdoc} */
+    public function loadAjax() {
+        return false;
+    }
 
-	/** {@inheritdoc} */
-	public function isUserBlock() {
-		return false;
-	}
+    /** {@inheritdoc} */
+    public function isUserBlock() {
+        return false;
+    }
 
-	/** {@inheritdoc} */
-	public function isGedcomBlock() {
-		return true;
-	}
+    /** {@inheritdoc} */
+    public function isGedcomBlock() {
+        return true;
+    }
 
-	/**
-	 * An HTML form to edit block settings
-	 *
-	 * @param int $block_id
-	 */
-	public function configureBlock($block_id) {
-	}
+    /**
+     * An HTML form to edit block settings
+     *
+     * @param int $block_id
+     */
+    public function configureBlock($block_id) {
+    }
 }

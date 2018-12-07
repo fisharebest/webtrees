@@ -19,30 +19,30 @@ namespace Fisharebest\Webtrees\Census;
  * Definitions for a census
  */
 class CensusOfScotland1851 extends CensusOfScotland implements CensusInterface {
-	/**
-	 * When did this census occur.
-	 *
-	 * @return string
-	 */
-	public function censusDate() {
-		return '30 MAR 1851';
-	}
+    /**
+     * When did this census occur.
+     *
+     * @return string
+     */
+    public function censusDate() {
+        return '30 MAR 1851';
+    }
 
-	/**
-	 * The columns of the census.
-	 *
-	 * @return CensusColumnInterface[]
-	 */
-	public function columns() {
-		return array(
-			new CensusColumnFullName($this, 'Name', 'Name and surname'),
-			new CensusColumnRelationToHead($this, 'Relation', 'Relation to head of household'),
-			new CensusColumnConditionEnglish($this, 'Condition', 'Condition'),
-			new CensusColumnAgeMale($this, 'AgeM', 'Age (males)'),
-			new CensusColumnAgeFemale($this, 'AgeF', 'Age (females)'),
-			new CensusColumnOccupation($this, 'Occupation', 'Rank, profession or occupation'),
-			new CensusColumnBirthPlace($this, 'Birthplace', 'Where born'),
-			new CensusColumnNull($this, 'Infirm', 'Whether blind or deaf-and-dumb'),
-		);
-	}
+    /**
+     * The columns of the census.
+     *
+     * @return CensusColumnInterface[]
+     */
+    public function columns() {
+        return array(
+            new CensusColumnFullName($this, 'Name', 'Name and surname'),
+            new CensusColumnRelationToHead($this, 'Relation', 'Relation to head of household'),
+            new CensusColumnConditionEnglish($this, 'Condition', 'Condition'),
+            new CensusColumnAgeMale($this, 'AgeM', 'Age (males)'),
+            new CensusColumnAgeFemale($this, 'AgeF', 'Age (females)'),
+            new CensusColumnOccupation($this, 'Occupation', 'Rank, profession or occupation'),
+            new CensusColumnBirthPlace($this, 'Birthplace', 'Where born'),
+            new CensusColumnNull($this, 'Infirm', 'Whether blind or deaf-and-dumb'),
+        );
+    }
 }

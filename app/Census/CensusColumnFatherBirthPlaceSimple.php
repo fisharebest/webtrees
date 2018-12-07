@@ -21,15 +21,15 @@ use Fisharebest\Webtrees\Individual;
  * The individual's father's birth place.
  */
 class CensusColumnFatherBirthPlaceSimple extends CensusColumnFatherBirthPlace implements CensusColumnInterface {
-	/**
-	 * Generate the likely value of this census column, based on available information.
-	 *
-	 * @param Individual      $individual
-	 * @param Individual|null $head
-	 *
-	 * @return string
-	 */
-	public function generate(Individual $individual, Individual $head = null) {
-		return $this->lastPartOfPlace(parent::generate($individual, $head));
-	}
+    /**
+     * Generate the likely value of this census column, based on available information.
+     *
+     * @param Individual      $individual
+     * @param Individual|null $head
+     *
+     * @return string
+     */
+    public function generate(Individual $individual, Individual $head = null) {
+        return $this->lastPartOfPlace(parent::generate($individual, $head));
+    }
 }

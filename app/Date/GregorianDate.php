@@ -21,16 +21,16 @@ use Fisharebest\ExtCalendar\GregorianCalendar;
  * Definitions for the Gregorian calendar
  */
 class GregorianDate extends CalendarDate {
-	/**
-	 * Create a date from either:
-	 * a Julian day number
-	 * day/month/year strings from a GEDCOM date
-	 * another CalendarDate object
-	 *
-	 * @param array|int|CalendarDate $date
-	 */
-	public function __construct($date) {
-		$this->calendar = new GregorianCalendar;
-		parent::__construct($date);
-	}
+    /**
+     * Create a date from either:
+     * a Julian day number
+     * day/month/year strings from a GEDCOM date
+     * another CalendarDate object
+     *
+     * @param array|int|CalendarDate $date
+     */
+    public function __construct($date) {
+        $this->calendar = new GregorianCalendar;
+        parent::__construct($date);
+    }
 }

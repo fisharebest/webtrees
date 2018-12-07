@@ -31,86 +31,86 @@ require './includes/session.php';
 
 $controller = new FamilyBookController;
 $controller
-	->restrictAccess(Module::isActiveChart($WT_TREE, 'family_book_chart'))
-	->pageHeader()
-	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
-	->addInlineJavascript('autocomplete();');
+    ->restrictAccess(Module::isActiveChart($WT_TREE, 'family_book_chart'))
+    ->pageHeader()
+    ->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
+    ->addInlineJavascript('autocomplete();');
 
 ?>
 <div id="familybook-page">
-	<h2><?php echo $controller->getPageTitle(); ?></h2>
-	<form method="get" name="people" action="?">
-		<input type="hidden" name="ged" value="<?php echo $WT_TREE->getNameHtml(); ?>">
-		<table class="list_table">
-			<tbody>
-				<tr>
-					<td class="descriptionbox">
-						<?php echo I18N::translate('Individual'); ?>
-					</td>
-					<td class="optionbox">
-						<input class="pedigree_form" data-autocomplete-type="INDI" type="text" name="rootid" id="rootid" size="3" value="<?php echo $controller->root->getXref(); ?>">
-						<?php echo FunctionsPrint::printFindIndividualLink('rootid'); ?>
-					</td>
-					<td class="descriptionbox">
-						<?php echo I18N::translate('Show details'); ?>
-					</td>
-					<td class="optionbox">
-						<?php echo FunctionsEdit::twoStateCheckbox('show_full', $controller->showFull()); ?>
-					</td>
-					<td rowspan="3" class="topbottombar vmiddle">
-						<input type="submit" value="<?php echo /* I18N: A button label. */ I18N::translate('view'); ?>">
-					</td>
-				</tr>
-				<tr>
-					<td class="descriptionbox">
-						<?php echo I18N::translate('Generations'); ?>
-					</td>
-					<td class="optionbox">
-						<select name="generations">
-							<?php
-							for ($i = 2; $i <= $WT_TREE->getPreference('MAX_DESCENDANCY_GENERATIONS'); $i++) {
-								echo '<option value="' . $i . '" ';
-								if ($i == $controller->generations) {
-									echo 'selected';
-								}
-								echo '>' . I18N::number($i) . '</option>';
-							}
-							?>
-						</select>
-					</td>
-					<td rowspan="2" class="descriptionbox">
-						<?php echo I18N::translate('Show spouses'); ?>
-					</td>
-					<td rowspan="2" class="optionbox">
-						<input type="checkbox" value="1" name="show_spouse" <?php echo $controller->show_spouse ? 'checked' : ''; ?>>
-					</td>
-				</tr>
-				<tr>
-					<td class="descriptionbox">
-						<?php echo I18N::translate('Descendant generations'); ?>
-					</td>
-					<td class="optionbox">
-						<select name="descent">
-							<?php
-							for ($i = 0; $i <= 9; $i++) {
-								echo '<option value="' . $i . '" ';
-								if ($i === $controller->descent) {
-									echo 'selected';
-								}
-								echo '>' . I18N::number($i) . '</option>';
-							}
-							?>
-						</select>
-					</td>
-				</tr>
-			</tbody>
-		</table>
-	</form>
-	<div id="familybook_chart" style="z-index:1;">
-	<?php
-	if ($controller->root) {
-		$controller->printFamilyBook($controller->root, $controller->descent);
-	}
-	?>
-	</div>
+    <h2><?php echo $controller->getPageTitle(); ?></h2>
+    <form method="get" name="people" action="?">
+        <input type="hidden" name="ged" value="<?php echo $WT_TREE->getNameHtml(); ?>">
+        <table class="list_table">
+            <tbody>
+                <tr>
+                    <td class="descriptionbox">
+                        <?php echo I18N::translate('Individual'); ?>
+                    </td>
+                    <td class="optionbox">
+                        <input class="pedigree_form" data-autocomplete-type="INDI" type="text" name="rootid" id="rootid" size="3" value="<?php echo $controller->root->getXref(); ?>">
+                        <?php echo FunctionsPrint::printFindIndividualLink('rootid'); ?>
+                    </td>
+                    <td class="descriptionbox">
+                        <?php echo I18N::translate('Show details'); ?>
+                    </td>
+                    <td class="optionbox">
+                        <?php echo FunctionsEdit::twoStateCheckbox('show_full', $controller->showFull()); ?>
+                    </td>
+                    <td rowspan="3" class="topbottombar vmiddle">
+                        <input type="submit" value="<?php echo /* I18N: A button label. */ I18N::translate('view'); ?>">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="descriptionbox">
+                        <?php echo I18N::translate('Generations'); ?>
+                    </td>
+                    <td class="optionbox">
+                        <select name="generations">
+                            <?php
+                            for ($i = 2; $i <= $WT_TREE->getPreference('MAX_DESCENDANCY_GENERATIONS'); $i++) {
+                                echo '<option value="' . $i . '" ';
+                                if ($i == $controller->generations) {
+                                    echo 'selected';
+                                }
+                                echo '>' . I18N::number($i) . '</option>';
+                            }
+                            ?>
+                        </select>
+                    </td>
+                    <td rowspan="2" class="descriptionbox">
+                        <?php echo I18N::translate('Show spouses'); ?>
+                    </td>
+                    <td rowspan="2" class="optionbox">
+                        <input type="checkbox" value="1" name="show_spouse" <?php echo $controller->show_spouse ? 'checked' : ''; ?>>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="descriptionbox">
+                        <?php echo I18N::translate('Descendant generations'); ?>
+                    </td>
+                    <td class="optionbox">
+                        <select name="descent">
+                            <?php
+                            for ($i = 0; $i <= 9; $i++) {
+                                echo '<option value="' . $i . '" ';
+                                if ($i === $controller->descent) {
+                                    echo 'selected';
+                                }
+                                echo '>' . I18N::number($i) . '</option>';
+                            }
+                            ?>
+                        </select>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+    <div id="familybook_chart" style="z-index:1;">
+    <?php
+    if ($controller->root) {
+        $controller->printFamilyBook($controller->root, $controller->descent);
+    }
+    ?>
+    </div>
 </div>

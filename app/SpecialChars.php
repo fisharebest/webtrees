@@ -22,36 +22,36 @@ use Fisharebest\Webtrees\SpecialChars\SpecialCharsInterface;
  * Class SpecialChars - exemplar and difficult-to-type characters.
  */
 class SpecialChars {
-	/** @var string[] A list of supported language-tags. */
-	private static $languages = array(
-		'af', 'ar', 'cs', 'da', 'de', 'el', 'en', 'es', 'eu', 'fi', 'fr', 'gd', 'haw', 'he',
-		'hu', 'is', 'it', 'lt', 'nl', 'nn', 'pl', 'pt', 'ru', 'sk', 'sl', 'sv', 'tr', 'vi',
+    /** @var string[] A list of supported language-tags. */
+    private static $languages = array(
+        'af', 'ar', 'cs', 'da', 'de', 'el', 'en', 'es', 'eu', 'fi', 'fr', 'gd', 'haw', 'he',
+        'hu', 'is', 'it', 'lt', 'nl', 'nn', 'pl', 'pt', 'ru', 'sk', 'sl', 'sv', 'tr', 'vi',
 );
-	/**
-	 * A list of languages for which special characters are available.
-	 *
-	 * @return string[]
-	 */
-	public static function allLanguages() {
-		$array = array();
-		foreach (self::$languages as $language) {
-			$array[$language] = Locale::create($language)->endonym();
-		}
-		uasort($array, '\Fisharebest\Webtrees\I18N::strCaseCmp');
+    /**
+     * A list of languages for which special characters are available.
+     *
+     * @return string[]
+     */
+    public static function allLanguages() {
+        $array = array();
+        foreach (self::$languages as $language) {
+            $array[$language] = Locale::create($language)->endonym();
+        }
+        uasort($array, '\Fisharebest\Webtrees\I18N::strCaseCmp');
 
-		return $array;
-	}
+        return $array;
+    }
 
-	/**
-	 * Create a SpecialChars object for the specified language
-	 *
-	 * @param string $language
-	 *
-	 * @return SpecialCharsInterface
-	 */
-	public static function create($language) {
-		$class = '\Fisharebest\Webtrees\SpecialChars\SpecialChars' . ucfirst($language);
+    /**
+     * Create a SpecialChars object for the specified language
+     *
+     * @param string $language
+     *
+     * @return SpecialCharsInterface
+     */
+    public static function create($language) {
+        $class = '\Fisharebest\Webtrees\SpecialChars\SpecialChars' . ucfirst($language);
 
-		return new $class;
-	}
+        return new $class;
+    }
 }

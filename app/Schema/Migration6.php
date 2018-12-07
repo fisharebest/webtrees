@@ -22,34 +22,34 @@ use PDOException;
  * Upgrade the database schema from version 6 to version 7.
  */
 class Migration6 implements MigrationInterface {
-	/**
-	 * Upgrade to to the next version
-	 */
-	public function upgrade() {
-		// Remove tables/columns relating to remote linking
+    /**
+     * Upgrade to to the next version
+     */
+    public function upgrade() {
+        // Remove tables/columns relating to remote linking
 
-		try {
-			Database::exec(
-				"DROP TABLE `##remotelinks`"
-			);
-		} catch (PDOException $ex) {
-			// already been done?
-		}
+        try {
+            Database::exec(
+                "DROP TABLE `##remotelinks`"
+            );
+        } catch (PDOException $ex) {
+            // already been done?
+        }
 
-		try {
-			Database::exec(
-				"ALTER TABLE `##sources` DROP INDEX ix2"
-			);
-		} catch (PDOException $ex) {
-			// already been done?
-		}
+        try {
+            Database::exec(
+                "ALTER TABLE `##sources` DROP INDEX ix2"
+            );
+        } catch (PDOException $ex) {
+            // already been done?
+        }
 
-		try {
-			Database::exec(
-				"ALTER TABLE `##sources` DROP COLUMN s_dbid"
-			);
-		} catch (PDOException $ex) {
-			// already been done?
-		}
-	}
+        try {
+            Database::exec(
+                "ALTER TABLE `##sources` DROP COLUMN s_dbid"
+            );
+        } catch (PDOException $ex) {
+            // already been done?
+        }
+    }
 }

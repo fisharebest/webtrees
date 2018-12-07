@@ -23,290 +23,290 @@ use Mockery;
  * Test harness for the class CensusColumnConditionFrenchFemme
  */
 class CensusColumnConditionFrenchFemmeTest extends \PHPUnit_Framework_TestCase {
-	/**
-	 * Delete mock objects
-	 */
-	public function tearDown() {
-		Mockery::close();
-	}
-
-	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnConditionFrenchFemme
-	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
-	 */
-	public function testNoSpouseFamiliesMale() {
-		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
-		$individual->shouldReceive('getSex')->andReturn('M');
-		$individual->shouldReceive('getSpouseFamilies')->andReturn(array());
-		$individual->shouldReceive('getEstimatedBirthDate')->andReturn(new Date('1800'));
-
-		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
-		$census->shouldReceive('censusDate')->andReturn('30 JUN 1830');
-
-		$column = new CensusColumnConditionFrenchFemme($census, '', '');
-
-		$this->assertSame('', $column->generate($individual));
-	}
-
-	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnConditionFrenchFemme
-	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
-	 */
-	public function testNoSpouseFamiliesFemale() {
-		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
-		$individual->shouldReceive('getSex')->andReturn('F');
-		$individual->shouldReceive('getSpouseFamilies')->andReturn(array());
-		$individual->shouldReceive('getEstimatedBirthDate')->andReturn(new Date('1800'));
-
-		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
-		$census->shouldReceive('censusDate')->andReturn('30 JUN 1830');
-
-		$column = new CensusColumnConditionFrenchFemme($census, '', '');
-
-		$this->assertSame('', $column->generate($individual));
-	}
-
-	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnConditionFrenchFemme
-	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
-	 */
-	public function testNoFamilyFactsMale() {
-		$spouse = Mockery::mock('Fisharebest\Webtrees\Individual');
-		$spouse->shouldReceive('getDeathDate')->andReturn(new Date('1850'));
-
-		$family = Mockery::mock('Fisharebest\Webtrees\Family');
-		$family->shouldReceive('getMarriageDate')->andReturn(new Date(''));
-		$family->shouldReceive('getFacts')->andReturn(array());
-		$family->shouldReceive('getSpouse')->andReturn($spouse);
-
-		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
-		$individual->shouldReceive('getSex')->andReturn('M');
-		$individual->shouldReceive('getSpouseFamilies')->andReturn(array($family));
-
-		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
-
-		$column = new CensusColumnConditionFrenchFemme($census, '', '');
-		$census->shouldReceive('censusDate')->andReturn('30 JUN 1830');
-
-		$this->assertSame('', $column->generate($individual));
-	}
-
-	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnConditionFrenchFemme
-	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
-	 */
-	public function testNoFamilyFactsFemale() {
-		$spouse = Mockery::mock('Fisharebest\Webtrees\Individual');
-		$spouse->shouldReceive('getDeathDate')->andReturn(new Date('1850'));
-
-		$family = Mockery::mock('Fisharebest\Webtrees\Family');
-		$family->shouldReceive('getMarriageDate')->andReturn(new Date(''));
-		$family->shouldReceive('getFacts')->andReturn(array());
-		$family->shouldReceive('getSpouse')->andReturn($spouse);
-
-		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
-		$individual->shouldReceive('getSex')->andReturn('F');
-		$individual->shouldReceive('getSpouseFamilies')->andReturn(array($family));
-
-		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
-
-		$column = new CensusColumnConditionFrenchFemme($census, '', '');
-		$census->shouldReceive('censusDate')->andReturn('30 JUN 1830');
-
-		$this->assertSame('1', $column->generate($individual));
-	}
-
-	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnConditionFrenchFemme
-	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
-	 */
-	public function testSpouseDeadMale() {
-		$spouse = Mockery::mock('Fisharebest\Webtrees\Individual');
-		$spouse->shouldReceive('getDeathDate')->andReturn(new Date('1820'));
-
-		$family = Mockery::mock('Fisharebest\Webtrees\Family');
-		$family->shouldReceive('getMarriageDate')->andReturn(new Date(''));
-		$family->shouldReceive('getFacts')->andReturn(array());
-		$family->shouldReceive('getSpouse')->andReturn($spouse);
-
-		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
-		$individual->shouldReceive('getSex')->andReturn('M');
-		$individual->shouldReceive('getSpouseFamilies')->andReturn(array($family));
-
-		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
+    /**
+     * Delete mock objects
+     */
+    public function tearDown() {
+        Mockery::close();
+    }
+
+    /**
+     * @covers Fisharebest\Webtrees\Census\CensusColumnConditionFrenchFemme
+     * @covers Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
+     */
+    public function testNoSpouseFamiliesMale() {
+        $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
+        $individual->shouldReceive('getSex')->andReturn('M');
+        $individual->shouldReceive('getSpouseFamilies')->andReturn(array());
+        $individual->shouldReceive('getEstimatedBirthDate')->andReturn(new Date('1800'));
+
+        $census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
+        $census->shouldReceive('censusDate')->andReturn('30 JUN 1830');
+
+        $column = new CensusColumnConditionFrenchFemme($census, '', '');
+
+        $this->assertSame('', $column->generate($individual));
+    }
+
+    /**
+     * @covers Fisharebest\Webtrees\Census\CensusColumnConditionFrenchFemme
+     * @covers Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
+     */
+    public function testNoSpouseFamiliesFemale() {
+        $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
+        $individual->shouldReceive('getSex')->andReturn('F');
+        $individual->shouldReceive('getSpouseFamilies')->andReturn(array());
+        $individual->shouldReceive('getEstimatedBirthDate')->andReturn(new Date('1800'));
+
+        $census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
+        $census->shouldReceive('censusDate')->andReturn('30 JUN 1830');
+
+        $column = new CensusColumnConditionFrenchFemme($census, '', '');
+
+        $this->assertSame('', $column->generate($individual));
+    }
+
+    /**
+     * @covers Fisharebest\Webtrees\Census\CensusColumnConditionFrenchFemme
+     * @covers Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
+     */
+    public function testNoFamilyFactsMale() {
+        $spouse = Mockery::mock('Fisharebest\Webtrees\Individual');
+        $spouse->shouldReceive('getDeathDate')->andReturn(new Date('1850'));
+
+        $family = Mockery::mock('Fisharebest\Webtrees\Family');
+        $family->shouldReceive('getMarriageDate')->andReturn(new Date(''));
+        $family->shouldReceive('getFacts')->andReturn(array());
+        $family->shouldReceive('getSpouse')->andReturn($spouse);
+
+        $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
+        $individual->shouldReceive('getSex')->andReturn('M');
+        $individual->shouldReceive('getSpouseFamilies')->andReturn(array($family));
+
+        $census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
+
+        $column = new CensusColumnConditionFrenchFemme($census, '', '');
+        $census->shouldReceive('censusDate')->andReturn('30 JUN 1830');
+
+        $this->assertSame('', $column->generate($individual));
+    }
+
+    /**
+     * @covers Fisharebest\Webtrees\Census\CensusColumnConditionFrenchFemme
+     * @covers Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
+     */
+    public function testNoFamilyFactsFemale() {
+        $spouse = Mockery::mock('Fisharebest\Webtrees\Individual');
+        $spouse->shouldReceive('getDeathDate')->andReturn(new Date('1850'));
+
+        $family = Mockery::mock('Fisharebest\Webtrees\Family');
+        $family->shouldReceive('getMarriageDate')->andReturn(new Date(''));
+        $family->shouldReceive('getFacts')->andReturn(array());
+        $family->shouldReceive('getSpouse')->andReturn($spouse);
+
+        $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
+        $individual->shouldReceive('getSex')->andReturn('F');
+        $individual->shouldReceive('getSpouseFamilies')->andReturn(array($family));
+
+        $census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
+
+        $column = new CensusColumnConditionFrenchFemme($census, '', '');
+        $census->shouldReceive('censusDate')->andReturn('30 JUN 1830');
+
+        $this->assertSame('1', $column->generate($individual));
+    }
+
+    /**
+     * @covers Fisharebest\Webtrees\Census\CensusColumnConditionFrenchFemme
+     * @covers Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
+     */
+    public function testSpouseDeadMale() {
+        $spouse = Mockery::mock('Fisharebest\Webtrees\Individual');
+        $spouse->shouldReceive('getDeathDate')->andReturn(new Date('1820'));
+
+        $family = Mockery::mock('Fisharebest\Webtrees\Family');
+        $family->shouldReceive('getMarriageDate')->andReturn(new Date(''));
+        $family->shouldReceive('getFacts')->andReturn(array());
+        $family->shouldReceive('getSpouse')->andReturn($spouse);
+
+        $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
+        $individual->shouldReceive('getSex')->andReturn('M');
+        $individual->shouldReceive('getSpouseFamilies')->andReturn(array($family));
+
+        $census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
 
-		$column = new CensusColumnConditionFrenchFemme($census, '', '');
-		$census->shouldReceive('censusDate')->andReturn('30 JUN 1830');
+        $column = new CensusColumnConditionFrenchFemme($census, '', '');
+        $census->shouldReceive('censusDate')->andReturn('30 JUN 1830');
 
-		$this->assertSame('', $column->generate($individual));
-	}
+        $this->assertSame('', $column->generate($individual));
+    }
 
-	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnConditionFrenchFemme
-	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
-	 */
-	public function testSpouseDeadFemale() {
-		$spouse = Mockery::mock('Fisharebest\Webtrees\Individual');
-		$spouse->shouldReceive('getDeathDate')->andReturn(new Date('1820'));
-
-		$family = Mockery::mock('Fisharebest\Webtrees\Family');
-		$family->shouldReceive('getMarriageDate')->andReturn(new Date(''));
-		$family->shouldReceive('getFacts')->andReturn(array());
-		$family->shouldReceive('getSpouse')->andReturn($spouse);
-
-		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
-		$individual->shouldReceive('getSex')->andReturn('F');
-		$individual->shouldReceive('getSpouseFamilies')->andReturn(array($family));
+    /**
+     * @covers Fisharebest\Webtrees\Census\CensusColumnConditionFrenchFemme
+     * @covers Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
+     */
+    public function testSpouseDeadFemale() {
+        $spouse = Mockery::mock('Fisharebest\Webtrees\Individual');
+        $spouse->shouldReceive('getDeathDate')->andReturn(new Date('1820'));
+
+        $family = Mockery::mock('Fisharebest\Webtrees\Family');
+        $family->shouldReceive('getMarriageDate')->andReturn(new Date(''));
+        $family->shouldReceive('getFacts')->andReturn(array());
+        $family->shouldReceive('getSpouse')->andReturn($spouse);
+
+        $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
+        $individual->shouldReceive('getSex')->andReturn('F');
+        $individual->shouldReceive('getSpouseFamilies')->andReturn(array($family));
 
-		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
+        $census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
 
-		$column = new CensusColumnConditionFrenchFemme($census, '', '');
-		$census->shouldReceive('censusDate')->andReturn('30 JUN 1830');
+        $column = new CensusColumnConditionFrenchFemme($census, '', '');
+        $census->shouldReceive('censusDate')->andReturn('30 JUN 1830');
 
-		$this->assertSame('', $column->generate($individual));
-	}
+        $this->assertSame('', $column->generate($individual));
+    }
 
-	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnConditionFrenchFemme
-	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
-	 */
-	public function testNoFamilyUnmarriedMale() {
-		$fact = Mockery::mock('Fisharebest\Webtrees\Fact');
-
-		$family = Mockery::mock('Fisharebest\Webtrees\Family');
-		$family->shouldReceive('getMarriageDate')->andReturn(new Date(''));
-		$family->shouldReceive('getFacts')->with('_NMR')->andReturn(array($fact));
-
-		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
-		$individual->shouldReceive('getSex')->andReturn('M');
-		$individual->shouldReceive('getSpouseFamilies')->andReturn(array($family));
-		$individual->shouldReceive('getEstimatedBirthDate')->andReturn(new Date('1800'));
+    /**
+     * @covers Fisharebest\Webtrees\Census\CensusColumnConditionFrenchFemme
+     * @covers Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
+     */
+    public function testNoFamilyUnmarriedMale() {
+        $fact = Mockery::mock('Fisharebest\Webtrees\Fact');
+
+        $family = Mockery::mock('Fisharebest\Webtrees\Family');
+        $family->shouldReceive('getMarriageDate')->andReturn(new Date(''));
+        $family->shouldReceive('getFacts')->with('_NMR')->andReturn(array($fact));
+
+        $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
+        $individual->shouldReceive('getSex')->andReturn('M');
+        $individual->shouldReceive('getSpouseFamilies')->andReturn(array($family));
+        $individual->shouldReceive('getEstimatedBirthDate')->andReturn(new Date('1800'));
 
-		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
-		$census->shouldReceive('censusDate')->andReturn('30 JUN 1830');
+        $census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
+        $census->shouldReceive('censusDate')->andReturn('30 JUN 1830');
 
-		$column = new CensusColumnConditionFrenchFemme($census, '', '');
+        $column = new CensusColumnConditionFrenchFemme($census, '', '');
 
-		$this->assertSame('', $column->generate($individual));
-	}
+        $this->assertSame('', $column->generate($individual));
+    }
 
-	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnConditionFrenchFemme
-	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
-	 */
-	public function testNoFamilyUnmarriedFemale() {
-		$fact = Mockery::mock('Fisharebest\Webtrees\Fact');
-
-		$family = Mockery::mock('Fisharebest\Webtrees\Family');
-		$family->shouldReceive('getMarriageDate')->andReturn(new Date(''));
-		$family->shouldReceive('getFacts')->with('_NMR')->andReturn(array($fact));
-
-		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
-		$individual->shouldReceive('getSex')->andReturn('F');
-		$individual->shouldReceive('getSpouseFamilies')->andReturn(array($family));
-		$individual->shouldReceive('getEstimatedBirthDate')->andReturn(new Date('1800'));
+    /**
+     * @covers Fisharebest\Webtrees\Census\CensusColumnConditionFrenchFemme
+     * @covers Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
+     */
+    public function testNoFamilyUnmarriedFemale() {
+        $fact = Mockery::mock('Fisharebest\Webtrees\Fact');
+
+        $family = Mockery::mock('Fisharebest\Webtrees\Family');
+        $family->shouldReceive('getMarriageDate')->andReturn(new Date(''));
+        $family->shouldReceive('getFacts')->with('_NMR')->andReturn(array($fact));
+
+        $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
+        $individual->shouldReceive('getSex')->andReturn('F');
+        $individual->shouldReceive('getSpouseFamilies')->andReturn(array($family));
+        $individual->shouldReceive('getEstimatedBirthDate')->andReturn(new Date('1800'));
 
-		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
-		$census->shouldReceive('censusDate')->andReturn('30 JUN 1830');
+        $census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
+        $census->shouldReceive('censusDate')->andReturn('30 JUN 1830');
 
-		$column = new CensusColumnConditionFrenchFemme($census, '', '');
+        $column = new CensusColumnConditionFrenchFemme($census, '', '');
 
-		$this->assertSame('', $column->generate($individual));
-	}
+        $this->assertSame('', $column->generate($individual));
+    }
 
-	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnConditionFrenchFemme
-	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
-	 */
-	public function testChildMale() {
-		$fact = Mockery::mock('Fisharebest\Webtrees\Fact');
+    /**
+     * @covers Fisharebest\Webtrees\Census\CensusColumnConditionFrenchFemme
+     * @covers Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
+     */
+    public function testChildMale() {
+        $fact = Mockery::mock('Fisharebest\Webtrees\Fact');
 
-		$family = Mockery::mock('Fisharebest\Webtrees\Family');
-		$family->shouldReceive('getMarriageDate')->andReturn(new Date(''));
-		$family->shouldReceive('getFacts')->with('_NMR')->andReturn(array($fact));
+        $family = Mockery::mock('Fisharebest\Webtrees\Family');
+        $family->shouldReceive('getMarriageDate')->andReturn(new Date(''));
+        $family->shouldReceive('getFacts')->with('_NMR')->andReturn(array($fact));
 
-		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
-		$individual->shouldReceive('getSex')->andReturn('M');
-		$individual->shouldReceive('getSpouseFamilies')->andReturn(array($family));
-		$individual->shouldReceive('getEstimatedBirthDate')->andReturn(new Date('1820'));
+        $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
+        $individual->shouldReceive('getSex')->andReturn('M');
+        $individual->shouldReceive('getSpouseFamilies')->andReturn(array($family));
+        $individual->shouldReceive('getEstimatedBirthDate')->andReturn(new Date('1820'));
 
-		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
-		$census->shouldReceive('censusDate')->andReturn('30 JUN 1830');
+        $census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
+        $census->shouldReceive('censusDate')->andReturn('30 JUN 1830');
 
-		$column = new CensusColumnConditionFrenchFemme($census, '', '');
+        $column = new CensusColumnConditionFrenchFemme($census, '', '');
 
-		$this->assertSame('', $column->generate($individual));
-	}
+        $this->assertSame('', $column->generate($individual));
+    }
 
-	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnConditionFrenchFemme
-	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
-	 */
-	public function testChildFemale() {
-		$fact = Mockery::mock('Fisharebest\Webtrees\Fact');
+    /**
+     * @covers Fisharebest\Webtrees\Census\CensusColumnConditionFrenchFemme
+     * @covers Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
+     */
+    public function testChildFemale() {
+        $fact = Mockery::mock('Fisharebest\Webtrees\Fact');
 
-		$family = Mockery::mock('Fisharebest\Webtrees\Family');
-		$family->shouldReceive('getMarriageDate')->andReturn(new Date(''));
-		$family->shouldReceive('getFacts')->with('_NMR')->andReturn(array($fact));
+        $family = Mockery::mock('Fisharebest\Webtrees\Family');
+        $family->shouldReceive('getMarriageDate')->andReturn(new Date(''));
+        $family->shouldReceive('getFacts')->with('_NMR')->andReturn(array($fact));
 
-		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
-		$individual->shouldReceive('getSex')->andReturn('F');
-		$individual->shouldReceive('getSpouseFamilies')->andReturn(array($family));
-		$individual->shouldReceive('getEstimatedBirthDate')->andReturn(new Date('1820'));
+        $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
+        $individual->shouldReceive('getSex')->andReturn('F');
+        $individual->shouldReceive('getSpouseFamilies')->andReturn(array($family));
+        $individual->shouldReceive('getEstimatedBirthDate')->andReturn(new Date('1820'));
 
-		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
-		$census->shouldReceive('censusDate')->andReturn('30 JUN 1830');
+        $census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
+        $census->shouldReceive('censusDate')->andReturn('30 JUN 1830');
 
-		$column = new CensusColumnConditionFrenchFemme($census, '', '');
+        $column = new CensusColumnConditionFrenchFemme($census, '', '');
 
-		$this->assertSame('', $column->generate($individual));
-	}
+        $this->assertSame('', $column->generate($individual));
+    }
 
-	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnConditionFrenchFemme
-	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
-	 */
-	public function testDivorcedMale() {
-		$fact = Mockery::mock('Fisharebest\Webtrees\Fact');
+    /**
+     * @covers Fisharebest\Webtrees\Census\CensusColumnConditionFrenchFemme
+     * @covers Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
+     */
+    public function testDivorcedMale() {
+        $fact = Mockery::mock('Fisharebest\Webtrees\Fact');
 
-		$family = Mockery::mock('Fisharebest\Webtrees\Family');
-		$family->shouldReceive('getMarriageDate')->andReturn(new Date(''));
-		$family->shouldReceive('getFacts')->with('_NMR')->andReturn(array());
-		$family->shouldReceive('getFacts')->with('DIV')->andReturn(array($fact));
+        $family = Mockery::mock('Fisharebest\Webtrees\Family');
+        $family->shouldReceive('getMarriageDate')->andReturn(new Date(''));
+        $family->shouldReceive('getFacts')->with('_NMR')->andReturn(array());
+        $family->shouldReceive('getFacts')->with('DIV')->andReturn(array($fact));
 
-		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
-		$individual->shouldReceive('getSex')->andReturn('M');
-		$individual->shouldReceive('getSpouseFamilies')->andReturn(array($family));
+        $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
+        $individual->shouldReceive('getSex')->andReturn('M');
+        $individual->shouldReceive('getSpouseFamilies')->andReturn(array($family));
 
-		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
+        $census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
 
-		$column = new CensusColumnConditionFrenchFemme($census, '', '');
-		$census->shouldReceive('censusDate')->andReturn('30 JUN 1830');
+        $column = new CensusColumnConditionFrenchFemme($census, '', '');
+        $census->shouldReceive('censusDate')->andReturn('30 JUN 1830');
 
-		$this->assertSame('', $column->generate($individual));
-	}
+        $this->assertSame('', $column->generate($individual));
+    }
 
-	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnConditionFrenchFemme
-	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
-	 */
-	public function testDivorcedFemale() {
-		$fact = Mockery::mock('Fisharebest\Webtrees\Fact');
+    /**
+     * @covers Fisharebest\Webtrees\Census\CensusColumnConditionFrenchFemme
+     * @covers Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
+     */
+    public function testDivorcedFemale() {
+        $fact = Mockery::mock('Fisharebest\Webtrees\Fact');
 
-		$family = Mockery::mock('Fisharebest\Webtrees\Family');
-		$family->shouldReceive('getMarriageDate')->andReturn(new Date(''));
-		$family->shouldReceive('getFacts')->with('_NMR')->andReturn(array());
-		$family->shouldReceive('getFacts')->with('DIV')->andReturn(array($fact));
+        $family = Mockery::mock('Fisharebest\Webtrees\Family');
+        $family->shouldReceive('getMarriageDate')->andReturn(new Date(''));
+        $family->shouldReceive('getFacts')->with('_NMR')->andReturn(array());
+        $family->shouldReceive('getFacts')->with('DIV')->andReturn(array($fact));
 
-		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
-		$individual->shouldReceive('getSex')->andReturn('F');
-		$individual->shouldReceive('getSpouseFamilies')->andReturn(array($family));
+        $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
+        $individual->shouldReceive('getSex')->andReturn('F');
+        $individual->shouldReceive('getSpouseFamilies')->andReturn(array($family));
 
-		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
+        $census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
 
-		$column = new CensusColumnConditionFrenchFemme($census, '', '');
-		$census->shouldReceive('censusDate')->andReturn('30 JUN 1830');
+        $column = new CensusColumnConditionFrenchFemme($census, '', '');
+        $census->shouldReceive('censusDate')->andReturn('30 JUN 1830');
 
-		$this->assertSame('1', $column->generate($individual));
-	}
+        $this->assertSame('1', $column->generate($individual));
+    }
 }

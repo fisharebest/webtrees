@@ -19,34 +19,34 @@ namespace Fisharebest\Webtrees\Census;
  * Definitions for a census
  */
 class CensusOfUnitedStates1860 extends CensusOfUnitedStates implements CensusInterface {
-	/**
-	 * When did this census occur.
-	 *
-	 * @return string
-	 */
-	public function censusDate() {
-		return 'BET JUN 1860 AND OCT 1860';
-	}
+    /**
+     * When did this census occur.
+     *
+     * @return string
+     */
+    public function censusDate() {
+        return 'BET JUN 1860 AND OCT 1860';
+    }
 
-	/**
-	 * The columns of the census.
-	 *
-	 * @return CensusColumnInterface[]
-	 */
-	public function columns() {
-		return array(
-			new CensusColumnFullName($this, 'Name', 'Name'),
-			new CensusColumnAge($this, 'Age', 'Age'),
-			new CensusColumnSexMF($this, 'Sex', 'Sex'),
-			new CensusColumnNull($this, 'Color', 'White, black, or mulatto'),
-			new CensusColumnOccupation($this, 'Occupation', 'Profession, occupation, or trade'),
-			new CensusColumnNull($this, 'RE', 'Value of real estate owned'),
-			new CensusColumnNull($this, 'PE', 'Value of personal estate owned'),
-			new CensusColumnBirthPlaceSimple($this, 'Birthplace', 'Place of birth, naming the state, territory, or country'),
-			new CensusColumnMarriedWithinYear($this, 'Mar', 'Married within the year'),
-			new CensusColumnNull($this, 'School', 'Attended school within the year'),
-			new CensusColumnNull($this, 'R+W', 'Persons over 20 years of age who cannot read and write'),
-			new CensusColumnNull($this, 'Infirm', 'Whether deaf and dumb, blind, insane, idiotic, pauper or convict'),
-		);
-	}
+    /**
+     * The columns of the census.
+     *
+     * @return CensusColumnInterface[]
+     */
+    public function columns() {
+        return array(
+            new CensusColumnFullName($this, 'Name', 'Name'),
+            new CensusColumnAge($this, 'Age', 'Age'),
+            new CensusColumnSexMF($this, 'Sex', 'Sex'),
+            new CensusColumnNull($this, 'Color', 'White, black, or mulatto'),
+            new CensusColumnOccupation($this, 'Occupation', 'Profession, occupation, or trade'),
+            new CensusColumnNull($this, 'RE', 'Value of real estate owned'),
+            new CensusColumnNull($this, 'PE', 'Value of personal estate owned'),
+            new CensusColumnBirthPlaceSimple($this, 'Birthplace', 'Place of birth, naming the state, territory, or country'),
+            new CensusColumnMarriedWithinYear($this, 'Mar', 'Married within the year'),
+            new CensusColumnNull($this, 'School', 'Attended school within the year'),
+            new CensusColumnNull($this, 'R+W', 'Persons over 20 years of age who cannot read and write'),
+            new CensusColumnNull($this, 'Infirm', 'Whether deaf and dumb, blind, insane, idiotic, pauper or convict'),
+        );
+    }
 }

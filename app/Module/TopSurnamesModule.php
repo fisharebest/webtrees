@@ -28,162 +28,162 @@ use Fisharebest\Webtrees\Theme;
  * Class TopSurnamesModule
  */
 class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface {
-	/**
-	 * How should this module be labelled on tabs, menus, etc.?
-	 *
-	 * @return string
-	 */
-	public function getTitle() {
-		return /* I18N: Name of a module. Top=Most common */ I18N::translate('Top surnames');
-	}
+    /**
+     * How should this module be labelled on tabs, menus, etc.?
+     *
+     * @return string
+     */
+    public function getTitle() {
+        return /* I18N: Name of a module. Top=Most common */ I18N::translate('Top surnames');
+    }
 
-	/**
-	 * A sentence describing what this module does.
-	 *
-	 * @return string
-	 */
-	public function getDescription() {
-		return /* I18N: Description of the “Top surnames” module */ I18N::translate('A list of the most popular surnames.');
-	}
+    /**
+     * A sentence describing what this module does.
+     *
+     * @return string
+     */
+    public function getDescription() {
+        return /* I18N: Description of the “Top surnames” module */ I18N::translate('A list of the most popular surnames.');
+    }
 
-	/**
-	 * Generate the HTML content of this block.
-	 *
-	 * @param int      $block_id
-	 * @param bool     $template
-	 * @param string[] $cfg
-	 *
-	 * @return string
-	 */
-	public function getBlock($block_id, $template = true, $cfg = array()) {
-		global $WT_TREE, $ctype;
+    /**
+     * Generate the HTML content of this block.
+     *
+     * @param int      $block_id
+     * @param bool     $template
+     * @param string[] $cfg
+     *
+     * @return string
+     */
+    public function getBlock($block_id, $template = true, $cfg = array()) {
+        global $WT_TREE, $ctype;
 
-		$num       = $this->getBlockSetting($block_id, 'num', '10');
-		$infoStyle = $this->getBlockSetting($block_id, 'infoStyle', 'table');
+        $num       = $this->getBlockSetting($block_id, 'num', '10');
+        $infoStyle = $this->getBlockSetting($block_id, 'infoStyle', 'table');
 
-		foreach (array('num', 'infoStyle') as $name) {
-			if (array_key_exists($name, $cfg)) {
-				$$name = $cfg[$name];
-			}
-		}
+        foreach (array('num', 'infoStyle') as $name) {
+            if (array_key_exists($name, $cfg)) {
+                $$name = $cfg[$name];
+            }
+        }
 
-		// This next function is a bit out of date, and doesn't cope well with surname variants
-		$top_surnames = FunctionsDb::getTopSurnames($WT_TREE->getTreeId(), 0, $num);
+        // This next function is a bit out of date, and doesn't cope well with surname variants
+        $top_surnames = FunctionsDb::getTopSurnames($WT_TREE->getTreeId(), 0, $num);
 
-		$all_surnames = array();
-		$i            = 0;
-		foreach (array_keys($top_surnames) as $top_surname) {
-			$all_surnames = array_merge($all_surnames, QueryName::surnames($WT_TREE, $top_surname, '', false, false));
-			if (++$i == $num) {
-				break;
-			}
-		}
-		if ($i < $num) {
-			$num = $i;
-		}
-		$id    = $this->getName() . $block_id;
-		$class = $this->getName() . '_block';
-		if ($ctype === 'gedcom' && Auth::isManager($WT_TREE) || $ctype === 'user' && Auth::check()) {
-			$title = '<a class="icon-admin" title="' . I18N::translate('Preferences') . '" href="block_edit.php?block_id=' . $block_id . '&amp;ged=' . $WT_TREE->getNameHtml() . '&amp;ctype=' . $ctype . '"></a>';
-		} else {
-			$title = '';
-		}
+        $all_surnames = array();
+        $i            = 0;
+        foreach (array_keys($top_surnames) as $top_surname) {
+            $all_surnames = array_merge($all_surnames, QueryName::surnames($WT_TREE, $top_surname, '', false, false));
+            if (++$i == $num) {
+                break;
+            }
+        }
+        if ($i < $num) {
+            $num = $i;
+        }
+        $id    = $this->getName() . $block_id;
+        $class = $this->getName() . '_block';
+        if ($ctype === 'gedcom' && Auth::isManager($WT_TREE) || $ctype === 'user' && Auth::check()) {
+            $title = '<a class="icon-admin" title="' . I18N::translate('Preferences') . '" href="block_edit.php?block_id=' . $block_id . '&amp;ged=' . $WT_TREE->getNameHtml() . '&amp;ctype=' . $ctype . '"></a>';
+        } else {
+            $title = '';
+        }
 
-		if ($num == 1) {
-			// I18N: i.e. most popular surname.
-			$title .= I18N::translate('Top surname');
-		} else {
-			// I18N: Title for a list of the most common surnames, %s is a number. Note that a separate translation exists when %s is 1
-			$title .= I18N::plural('Top %s surname', 'Top %s surnames', $num, I18N::number($num));
-		}
+        if ($num == 1) {
+            // I18N: i.e. most popular surname.
+            $title .= I18N::translate('Top surname');
+        } else {
+            // I18N: Title for a list of the most common surnames, %s is a number. Note that a separate translation exists when %s is 1
+            $title .= I18N::plural('Top %s surname', 'Top %s surnames', $num, I18N::number($num));
+        }
 
-		switch ($infoStyle) {
-		case 'tagcloud':
-			uksort($all_surnames, '\Fisharebest\Webtrees\I18N::strcasecmp');
-			$content = FunctionsPrintLists::surnameTagCloud($all_surnames, 'indilist.php', true, $WT_TREE);
-			break;
-		case 'list':
-			uasort($all_surnames, '\Fisharebest\Webtrees\Module\TopSurnamesModule::surnameCountSort');
-			$content = FunctionsPrintLists::surnameList($all_surnames, 1, true, 'indilist.php', $WT_TREE);
-			break;
-		case 'array':
-			uasort($all_surnames, '\Fisharebest\Webtrees\Module\TopSurnamesModule::surnameCountSort');
-			$content = FunctionsPrintLists::surnameList($all_surnames, 2, true, 'indilist.php', $WT_TREE);
-			break;
-		case 'table':
-		default:
-			uasort($all_surnames, '\Fisharebest\Webtrees\Module\TopSurnamesModule::surnameCountSort');
-			$content = FunctionsPrintLists::surnameTable($all_surnames, 'indilist.php', $WT_TREE);
-			break;
-		}
+        switch ($infoStyle) {
+        case 'tagcloud':
+            uksort($all_surnames, '\Fisharebest\Webtrees\I18N::strcasecmp');
+            $content = FunctionsPrintLists::surnameTagCloud($all_surnames, 'indilist.php', true, $WT_TREE);
+            break;
+        case 'list':
+            uasort($all_surnames, '\Fisharebest\Webtrees\Module\TopSurnamesModule::surnameCountSort');
+            $content = FunctionsPrintLists::surnameList($all_surnames, 1, true, 'indilist.php', $WT_TREE);
+            break;
+        case 'array':
+            uasort($all_surnames, '\Fisharebest\Webtrees\Module\TopSurnamesModule::surnameCountSort');
+            $content = FunctionsPrintLists::surnameList($all_surnames, 2, true, 'indilist.php', $WT_TREE);
+            break;
+        case 'table':
+        default:
+            uasort($all_surnames, '\Fisharebest\Webtrees\Module\TopSurnamesModule::surnameCountSort');
+            $content = FunctionsPrintLists::surnameTable($all_surnames, 'indilist.php', $WT_TREE);
+            break;
+        }
 
-		if ($template) {
-			return Theme::theme()->formatBlock($id, $title, $class, $content);
-		} else {
-			return $content;
-		}
-	}
+        if ($template) {
+            return Theme::theme()->formatBlock($id, $title, $class, $content);
+        } else {
+            return $content;
+        }
+    }
 
-	/** {@inheritdoc} */
-	public function loadAjax() {
-		return true;
-	}
+    /** {@inheritdoc} */
+    public function loadAjax() {
+        return true;
+    }
 
-	/** {@inheritdoc} */
-	public function isUserBlock() {
-		return true;
-	}
+    /** {@inheritdoc} */
+    public function isUserBlock() {
+        return true;
+    }
 
-	/** {@inheritdoc} */
-	public function isGedcomBlock() {
-		return true;
-	}
+    /** {@inheritdoc} */
+    public function isGedcomBlock() {
+        return true;
+    }
 
-	/**
-	 * An HTML form to edit block settings
-	 *
-	 * @param int $block_id
-	 */
-	public function configureBlock($block_id) {
-		if (Filter::postBool('save') && Filter::checkCsrf()) {
-			$this->setBlockSetting($block_id, 'num', Filter::postInteger('num', 1, 10000, 10));
-			$this->setBlockSetting($block_id, 'infoStyle', Filter::post('infoStyle', 'list|array|table|tagcloud', 'table'));
-		}
+    /**
+     * An HTML form to edit block settings
+     *
+     * @param int $block_id
+     */
+    public function configureBlock($block_id) {
+        if (Filter::postBool('save') && Filter::checkCsrf()) {
+            $this->setBlockSetting($block_id, 'num', Filter::postInteger('num', 1, 10000, 10));
+            $this->setBlockSetting($block_id, 'infoStyle', Filter::post('infoStyle', 'list|array|table|tagcloud', 'table'));
+        }
 
-		$num       = $this->getBlockSetting($block_id, 'num', '10');
-		$infoStyle = $this->getBlockSetting($block_id, 'infoStyle', 'table');
+        $num       = $this->getBlockSetting($block_id, 'num', '10');
+        $infoStyle = $this->getBlockSetting($block_id, 'infoStyle', 'table');
 
-		echo '<tr><td class="descriptionbox wrap width33">';
-		echo /* I18N: ... to show in a list */ I18N::translate('Number of surnames');
-		echo '</td><td class="optionbox">';
-		echo '<input type="text" name="num" size="2" value="', $num, '">';
-		echo '</td></tr>';
+        echo '<tr><td class="descriptionbox wrap width33">';
+        echo /* I18N: ... to show in a list */ I18N::translate('Number of surnames');
+        echo '</td><td class="optionbox">';
+        echo '<input type="text" name="num" size="2" value="', $num, '">';
+        echo '</td></tr>';
 
-		echo '<tr><td class="descriptionbox wrap width33">';
-		echo I18N::translate('Presentation style');
-		echo '</td><td class="optionbox">';
-		echo FunctionsEdit::selectEditControl('infoStyle', array('list' => I18N::translate('bullet list'), 'array' => I18N::translate('compact list'), 'table' => I18N::translate('table'), 'tagcloud' => I18N::translate('tag cloud')), null, $infoStyle, '');
-		echo '</td></tr>';
-	}
+        echo '<tr><td class="descriptionbox wrap width33">';
+        echo I18N::translate('Presentation style');
+        echo '</td><td class="optionbox">';
+        echo FunctionsEdit::selectEditControl('infoStyle', array('list' => I18N::translate('bullet list'), 'array' => I18N::translate('compact list'), 'table' => I18N::translate('table'), 'tagcloud' => I18N::translate('tag cloud')), null, $infoStyle, '');
+        echo '</td></tr>';
+    }
 
-	/**
-	 * Sort (lists of counts of similar) surname by total count.
-	 *
-	 * @param string[] $a
-	 * @param string[] $b
-	 *
-	 * @return int
-	 */
-	private static function surnameCountSort($a, $b) {
-		$counta = 0;
-		foreach ($a as $x) {
-			$counta += count($x);
-		}
-		$countb = 0;
-		foreach ($b as $x) {
-			$countb += count($x);
-		}
+    /**
+     * Sort (lists of counts of similar) surname by total count.
+     *
+     * @param string[] $a
+     * @param string[] $b
+     *
+     * @return int
+     */
+    private static function surnameCountSort($a, $b) {
+        $counta = 0;
+        foreach ($a as $x) {
+            $counta += count($x);
+        }
+        $countb = 0;
+        foreach ($b as $x) {
+            $countb += count($x);
+        }
 
-		return $countb - $counta;
-	}
+        return $countb - $counta;
+    }
 }

@@ -30,51 +30,51 @@ require './includes/session.php';
 header('Content-Type: text/html; charset=UTF-8');
 $individual = Individual::getInstance(Filter::get('pid', WT_REGEX_XREF), $WT_TREE);
 if (!$individual || !$individual->canShow()) {
-	return I18N::translate('Private');
+    return I18N::translate('Private');
 }
 
 $facts = $individual->getFacts();
 foreach ($individual->getSpouseFamilies() as $family) {
-	foreach ($family->getFacts() as $fact) {
-		$facts[] = $fact;
-	}
+    foreach ($family->getFacts() as $fact) {
+        $facts[] = $fact;
+    }
 }
 Functions::sortFacts($facts);
 
 foreach ($facts as $fact) {
-	switch ($fact->getTag()) {
-	case 'ADDR':
-	case 'ALIA':
-	case 'ASSO':
-	case 'CHAN':
-	case 'CHIL':
-	case 'EMAIL':
-	case 'FAMC':
-	case 'FAMS':
-	case 'HUSB':
-	case 'NAME':
-	case 'NOTE':
-	case 'OBJE':
-	case 'PHON':
-	case 'RESI':
-	case 'RESN':
-	case 'SEX':
-	case 'SOUR':
-	case 'SSN':
-	case 'SUBM':
-	case 'TITL':
-	case 'URL':
-	case 'WIFE':
-	case 'WWW':
-	case '_EMAIL':
-	case '_TODO':
-	case '_UID':
-	case '_WT_OBJE_SORT':
-		// Do not show these
-		break;
-	default:
-		// Simple version of FunctionsPrintFacts::print_fact()
-		echo $fact->summary();
-		break;
-	}
+    switch ($fact->getTag()) {
+    case 'ADDR':
+    case 'ALIA':
+    case 'ASSO':
+    case 'CHAN':
+    case 'CHIL':
+    case 'EMAIL':
+    case 'FAMC':
+    case 'FAMS':
+    case 'HUSB':
+    case 'NAME':
+    case 'NOTE':
+    case 'OBJE':
+    case 'PHON':
+    case 'RESI':
+    case 'RESN':
+    case 'SEX':
+    case 'SOUR':
+    case 'SSN':
+    case 'SUBM':
+    case 'TITL':
+    case 'URL':
+    case 'WIFE':
+    case 'WWW':
+    case '_EMAIL':
+    case '_TODO':
+    case '_UID':
+    case '_WT_OBJE_SORT':
+        // Do not show these
+        break;
+    default:
+        // Simple version of FunctionsPrintFacts::print_fact()
+        echo $fact->summary();
+        break;
+    }
 }

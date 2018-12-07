@@ -19,40 +19,40 @@ namespace Fisharebest\Webtrees\Census;
  * Definitions for a census
  */
 class CensusOfUnitedStates1870 extends CensusOfUnitedStates implements CensusInterface {
-	/**
-	 * When did this census occur.
-	 *
-	 * @return string
-	 */
-	public function censusDate() {
-		return 'JUN 1870';
-	}
+    /**
+     * When did this census occur.
+     *
+     * @return string
+     */
+    public function censusDate() {
+        return 'JUN 1870';
+    }
 
-	/**
-	 * The columns of the census.
-	 *
-	 * @return CensusColumnInterface[]
-	 */
-	public function columns() {
-		return array(
-			new CensusColumnFullName($this, 'Name', 'Name'),
-			new CensusColumnAge($this, 'Age', 'Age'),
-			new CensusColumnSexMF($this, 'Sex', 'Sex'),
-			new CensusColumnNull($this, 'Color', 'White, Black, Mulatto, Chinese, Indian'),
-			new CensusColumnOccupation($this, 'Occupation', 'Profession, occupation, or trade'),
-			new CensusColumnNull($this, 'RE', 'Value of real estate owned'),
-			new CensusColumnNull($this, 'PE', 'Value of personal estate owned'),
-			new CensusColumnBirthPlaceSimple($this, 'Birthplace', 'Place of birth, naming the state, territory, or country'),
-			new CensusColumnFatherForeign($this, 'FFB', 'Father of foreign birth'),
-			new CensusColumnMotherForeign($this, 'MFB', 'Mother of foreign birth'),
-			new CensusColumnMonthIfBornWithinYear($this, 'Born', 'If born within the year, state month'),
-			new CensusColumnMonthIfMarriedWithinYear($this, 'Mar', 'If married within the year, state month'),
-			new CensusColumnNull($this, 'School', 'Attended school within the year'),
-			new CensusColumnNull($this, 'Read', 'Cannot read'),
-			new CensusColumnNull($this, 'Write', 'Cannot write'),
-			new CensusColumnNull($this, 'Infirm', 'Whether deaf and dumb, blind, insane, or idiotic'),
-			new CensusColumnNull($this, 'Cit', 'Male citizen of US'),
-			new CensusColumnNull($this, 'Dis', 'Male citizen of US, where right to vote is denied or abridged'),
-		);
-	}
+    /**
+     * The columns of the census.
+     *
+     * @return CensusColumnInterface[]
+     */
+    public function columns() {
+        return array(
+            new CensusColumnFullName($this, 'Name', 'Name'),
+            new CensusColumnAge($this, 'Age', 'Age'),
+            new CensusColumnSexMF($this, 'Sex', 'Sex'),
+            new CensusColumnNull($this, 'Color', 'White, Black, Mulatto, Chinese, Indian'),
+            new CensusColumnOccupation($this, 'Occupation', 'Profession, occupation, or trade'),
+            new CensusColumnNull($this, 'RE', 'Value of real estate owned'),
+            new CensusColumnNull($this, 'PE', 'Value of personal estate owned'),
+            new CensusColumnBirthPlaceSimple($this, 'Birthplace', 'Place of birth, naming the state, territory, or country'),
+            new CensusColumnFatherForeign($this, 'FFB', 'Father of foreign birth'),
+            new CensusColumnMotherForeign($this, 'MFB', 'Mother of foreign birth'),
+            new CensusColumnMonthIfBornWithinYear($this, 'Born', 'If born within the year, state month'),
+            new CensusColumnMonthIfMarriedWithinYear($this, 'Mar', 'If married within the year, state month'),
+            new CensusColumnNull($this, 'School', 'Attended school within the year'),
+            new CensusColumnNull($this, 'Read', 'Cannot read'),
+            new CensusColumnNull($this, 'Write', 'Cannot write'),
+            new CensusColumnNull($this, 'Infirm', 'Whether deaf and dumb, blind, insane, or idiotic'),
+            new CensusColumnNull($this, 'Cit', 'Male citizen of US'),
+            new CensusColumnNull($this, 'Dis', 'Male citizen of US, where right to vote is denied or abridged'),
+        );
+    }
 }

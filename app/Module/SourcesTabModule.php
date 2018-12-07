@@ -26,124 +26,124 @@ use Fisharebest\Webtrees\I18N;
  * Class SourcesTabModule
  */
 class SourcesTabModule extends AbstractModule implements ModuleTabInterface {
-	/** @var Fact[] All facts belonging to this source. */
-	private $facts;
+    /** @var Fact[] All facts belonging to this source. */
+    private $facts;
 
-	/** {@inheritdoc} */
-	public function getTitle() {
-		return /* I18N: Name of a module */ I18N::translate('Sources');
-	}
+    /** {@inheritdoc} */
+    public function getTitle() {
+        return /* I18N: Name of a module */ I18N::translate('Sources');
+    }
 
-	/** {@inheritdoc} */
-	public function getDescription() {
-		return /* I18N: Description of the “Sources” module */ I18N::translate('A tab showing the sources linked to an individual.');
-	}
+    /** {@inheritdoc} */
+    public function getDescription() {
+        return /* I18N: Description of the “Sources” module */ I18N::translate('A tab showing the sources linked to an individual.');
+    }
 
-	/** {@inheritdoc} */
-	public function defaultTabOrder() {
-		return 30;
-	}
+    /** {@inheritdoc} */
+    public function defaultTabOrder() {
+        return 30;
+    }
 
-	/** {@inheritdoc} */
-	public function hasTabContent() {
-		global $WT_TREE;
+    /** {@inheritdoc} */
+    public function hasTabContent() {
+        global $WT_TREE;
 
-		return Auth::isEditor($WT_TREE) || $this->getFactsWithSources();
-	}
+        return Auth::isEditor($WT_TREE) || $this->getFactsWithSources();
+    }
 
-	/** {@inheritdoc} */
-	public function isGrayedOut() {
-		return !$this->getFactsWithSources();
-	}
+    /** {@inheritdoc} */
+    public function isGrayedOut() {
+        return !$this->getFactsWithSources();
+    }
 
-	/** {@inheritdoc} */
-	public function getTabContent() {
-		global $controller;
+    /** {@inheritdoc} */
+    public function getTabContent() {
+        global $controller;
 
-		ob_start();
-		?>
-		<table class="facts_table">
-			<tr class="noprint">
-				<td colspan="2" class="descriptionbox rela">
-					<label>
-						<input id="show-level-2-sources" type="checkbox">
-						<?php echo I18N::translate('Show all sources'); ?>
-					</label>
-				</td>
-			</tr>
-			<?php
-			foreach ($this->getFactsWithSources() as $fact) {
-				if ($fact->getTag() == 'SOUR') {
-					FunctionsPrintFacts::printMainSources($fact, 1);
-				} else {
-					FunctionsPrintFacts::printMainSources($fact, 2);
-				}
-			}
-			if (!$this->getFactsWithSources()) {
-				echo '<tr><td id="no_tab4" colspan="2" class="facts_value">', I18N::translate('There are no source citations for this individual.'), '</td></tr>';
-			}
+        ob_start();
+        ?>
+        <table class="facts_table">
+            <tr class="noprint">
+                <td colspan="2" class="descriptionbox rela">
+                    <label>
+                        <input id="show-level-2-sources" type="checkbox">
+                        <?php echo I18N::translate('Show all sources'); ?>
+                    </label>
+                </td>
+            </tr>
+            <?php
+            foreach ($this->getFactsWithSources() as $fact) {
+                if ($fact->getTag() == 'SOUR') {
+                    FunctionsPrintFacts::printMainSources($fact, 1);
+                } else {
+                    FunctionsPrintFacts::printMainSources($fact, 2);
+                }
+            }
+            if (!$this->getFactsWithSources()) {
+                echo '<tr><td id="no_tab4" colspan="2" class="facts_value">', I18N::translate('There are no source citations for this individual.'), '</td></tr>';
+            }
 
-			// New Source Link
-			if ($controller->record->canEdit()) {
-				?>
-				<tr class="noprint">
-					<td class="facts_label">
-						<?php echo GedcomTag::getLabel('SOUR'); ?>
-					</td>
-					<td class="facts_value">
-						<a href="#" onclick="add_new_record('<?php echo $controller->record->getXref(); ?>','SOUR'); return false;">
-							<?php echo I18N::translate('Add a source citation'); ?>
-						</a>
-					</td>
-				</tr>
-			<?php
-			}
-			?>
-		</table>
-		<script>
-			persistent_toggle("show-level-2-sources", ".row_sour2");
-		</script>
-		<?php
+            // New Source Link
+            if ($controller->record->canEdit()) {
+                ?>
+                <tr class="noprint">
+                    <td class="facts_label">
+                        <?php echo GedcomTag::getLabel('SOUR'); ?>
+                    </td>
+                    <td class="facts_value">
+                        <a href="#" onclick="add_new_record('<?php echo $controller->record->getXref(); ?>','SOUR'); return false;">
+                            <?php echo I18N::translate('Add a source citation'); ?>
+                        </a>
+                    </td>
+                </tr>
+            <?php
+            }
+            ?>
+        </table>
+        <script>
+            persistent_toggle("show-level-2-sources", ".row_sour2");
+        </script>
+        <?php
 
-		return '<div id="' . $this->getName() . '_content">' . ob_get_clean() . '</div>';
-	}
+        return '<div id="' . $this->getName() . '_content">' . ob_get_clean() . '</div>';
+    }
 
-	/**
-	 * Get all the facts for an individual which contain sources.
-	 *
-	 * @return Fact[]
-	 */
-	private function getFactsWithSources() {
-		global $controller;
+    /**
+     * Get all the facts for an individual which contain sources.
+     *
+     * @return Fact[]
+     */
+    private function getFactsWithSources() {
+        global $controller;
 
-		if ($this->facts === null) {
-			$facts = $controller->record->getFacts();
-			foreach ($controller->record->getSpouseFamilies() as $family) {
-				if ($family->canShow()) {
-					foreach ($family->getFacts() as $fact) {
-						$facts[] = $fact;
-					}
-				}
-			}
-			$this->facts = array();
-			foreach ($facts as $fact) {
-				if (preg_match('/(?:^1|\n\d) SOUR/', $fact->getGedcom())) {
-					$this->facts[] = $fact;
-				}
-			}
-			Functions::sortFacts($this->facts);
-		}
+        if ($this->facts === null) {
+            $facts = $controller->record->getFacts();
+            foreach ($controller->record->getSpouseFamilies() as $family) {
+                if ($family->canShow()) {
+                    foreach ($family->getFacts() as $fact) {
+                        $facts[] = $fact;
+                    }
+                }
+            }
+            $this->facts = array();
+            foreach ($facts as $fact) {
+                if (preg_match('/(?:^1|\n\d) SOUR/', $fact->getGedcom())) {
+                    $this->facts[] = $fact;
+                }
+            }
+            Functions::sortFacts($this->facts);
+        }
 
-		return $this->facts;
-	}
+        return $this->facts;
+    }
 
-	/** {@inheritdoc} */
-	public function canLoadAjax() {
-		return !Auth::isSearchEngine(); // Search engines cannot use AJAX
-	}
+    /** {@inheritdoc} */
+    public function canLoadAjax() {
+        return !Auth::isSearchEngine(); // Search engines cannot use AJAX
+    }
 
-	/** {@inheritdoc} */
-	public function getPreLoadContent() {
-		return '';
-	}
+    /** {@inheritdoc} */
+    public function getPreLoadContent() {
+        return '';
+    }
 }

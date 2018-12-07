@@ -19,16 +19,16 @@
  * Test harness for the class ModuleChartInterface
  */
 class ModuleChartInterfaceTest extends \PHPUnit_Framework_TestCase {
-	/**
-	 * Prepare the environment for these tests
-	 */
-	public function setUp() {
-	}
+    /**
+     * Prepare the environment for these tests
+     */
+    public function setUp() {
+    }
 
-	/**
-	 * Test that the class exists
-	 */
-	public function testClassExists() {
-		$this->assertTrue(interface_exists('\Fisharebest\Webtrees\Module\ModuleChartInterface'));
-	}
+    /**
+     * Test that the class exists
+     */
+    public function testClassExists() {
+        $this->assertTrue(interface_exists('\Fisharebest\Webtrees\Module\ModuleChartInterface'));
+    }
 }

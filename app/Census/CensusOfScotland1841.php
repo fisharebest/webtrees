@@ -19,28 +19,28 @@ namespace Fisharebest\Webtrees\Census;
  * Definitions for a census
  */
 class CensusOfScotland1841 extends CensusOfScotland implements CensusInterface {
-	/**
-	 * When did this census occur.
-	 *
-	 * @return string
-	 */
-	public function censusDate() {
-		return '06 JUN 1841';
-	}
+    /**
+     * When did this census occur.
+     *
+     * @return string
+     */
+    public function censusDate() {
+        return '06 JUN 1841';
+    }
 
-	/**
-	 * The columns of the census.
-	 *
-	 * @return CensusColumnInterface[]
-	 */
-	public function columns() {
-		return array(
-			new CensusColumnFullName($this, 'Name', 'Name'),
-			new CensusColumnAgeMale5Years($this, 'AgeM', 'Age (males)'),
-			new CensusColumnAgeFemale5Years($this, 'AgeF', 'Age (females)'),
-			new CensusColumnOccupation($this, 'Occupation', 'Profession, trade, employment or of independent means'),
-			new CensusColumnNull($this, 'BiC', 'Born in same county'),
-			new CensusColumnBornForeignParts($this, 'EIF', 'Born in England, Ireland or foreign parts'),
-		);
-	}
+    /**
+     * The columns of the census.
+     *
+     * @return CensusColumnInterface[]
+     */
+    public function columns() {
+        return array(
+            new CensusColumnFullName($this, 'Name', 'Name'),
+            new CensusColumnAgeMale5Years($this, 'AgeM', 'Age (males)'),
+            new CensusColumnAgeFemale5Years($this, 'AgeF', 'Age (females)'),
+            new CensusColumnOccupation($this, 'Occupation', 'Profession, trade, employment or of independent means'),
+            new CensusColumnNull($this, 'BiC', 'Born in same county'),
+            new CensusColumnBornForeignParts($this, 'EIF', 'Born in England, Ireland or foreign parts'),
+        );
+    }
 }

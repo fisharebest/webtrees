@@ -21,21 +21,21 @@ use Fisharebest\Webtrees\Individual;
  * Is the individual's mother a foreigner.
  */
 class CensusColumnMotherForeign extends AbstractCensusColumn implements CensusColumnInterface {
-	/**
-	 * Generate the likely value of this census column, based on available information.
-	 *
-	 * @param Individual      $individual
-	 * @param Individual|null $head
-	 *
-	 * @return string
-	 */
-	public function generate(Individual $individual, Individual $head = null) {
-		$mother = $this->mother($individual);
+    /**
+     * Generate the likely value of this census column, based on available information.
+     *
+     * @param Individual      $individual
+     * @param Individual|null $head
+     *
+     * @return string
+     */
+    public function generate(Individual $individual, Individual $head = null) {
+        $mother = $this->mother($individual);
 
-		if ($mother && $this->lastPartOfPlace($mother->getBirthPlace()) !== $this->place()) {
-			return 'Y';
-		} else {
-			return '';
-		}
-	}
+        if ($mother && $this->lastPartOfPlace($mother->getBirthPlace()) !== $this->place()) {
+            return 'Y';
+        } else {
+            return '';
+        }
+    }
 }

@@ -22,32 +22,32 @@ use Mockery;
  * Test harness for the class CensusColumnFatherBirthPlaceSimple
  */
 class CensusColumnFatherBirthPlaceSimpleTest extends \PHPUnit_Framework_TestCase {
-	/**
-	 * Delete mock objects
-	 */
-	public function tearDown() {
-		Mockery::close();
-	}
+    /**
+     * Delete mock objects
+     */
+    public function tearDown() {
+        Mockery::close();
+    }
 
-	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnFatherBirthPlaceSimple
-	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
-	 */
-	public function testKnownStateAndTown() {
-		$father = Mockery::mock('Fisharebest\Webtrees\Individual');
-		$father->shouldReceive('getBirthPlace')->andReturn('Miami, Florida, United States');
+    /**
+     * @covers Fisharebest\Webtrees\Census\CensusColumnFatherBirthPlaceSimple
+     * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
+     */
+    public function testKnownStateAndTown() {
+        $father = Mockery::mock('Fisharebest\Webtrees\Individual');
+        $father->shouldReceive('getBirthPlace')->andReturn('Miami, Florida, United States');
 
-		$family = Mockery::mock('Fisharebest\Webtrees\Family');
-		$family->shouldReceive('getHusband')->andReturn($father);
+        $family = Mockery::mock('Fisharebest\Webtrees\Family');
+        $family->shouldReceive('getHusband')->andReturn($father);
 
-		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
-		$individual->shouldReceive('getPrimaryChildFamily')->andReturn($family);
+        $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
+        $individual->shouldReceive('getPrimaryChildFamily')->andReturn($family);
 
-		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
-		$census->shouldReceive('censusPlace')->andReturn('United States');
+        $census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
+        $census->shouldReceive('censusPlace')->andReturn('United States');
 
-		$column = new CensusColumnFatherBirthPlaceSimple($census, '', '');
+        $column = new CensusColumnFatherBirthPlaceSimple($census, '', '');
 
-		$this->assertSame('Florida', $column->generate($individual));
-	}
+        $this->assertSame('Florida', $column->generate($individual));
+    }
 }

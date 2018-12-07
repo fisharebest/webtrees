@@ -24,55 +24,55 @@ use Fisharebest\Webtrees\Menu;
  * Class TimelineChartModule
  */
 class TimelineChartModule extends AbstractModule implements ModuleChartInterface {
-	/**
-	 * How should this module be labelled on tabs, menus, etc.?
-	 *
-	 * @return string
-	 */
-	public function getTitle() {
-		return /* I18N: Name of a module/chart */ I18N::translate('Timeline');
-	}
+    /**
+     * How should this module be labelled on tabs, menus, etc.?
+     *
+     * @return string
+     */
+    public function getTitle() {
+        return /* I18N: Name of a module/chart */ I18N::translate('Timeline');
+    }
 
-	/**
-	 * A sentence describing what this module does.
-	 *
-	 * @return string
-	 */
-	public function getDescription() {
-		return /* I18N: Description of the “TimelineChart” module */ I18N::translate('A timeline displaying individual events.');
-	}
+    /**
+     * A sentence describing what this module does.
+     *
+     * @return string
+     */
+    public function getDescription() {
+        return /* I18N: Description of the “TimelineChart” module */ I18N::translate('A timeline displaying individual events.');
+    }
 
-	/**
-	 * What is the default access level for this module?
-	 *
-	 * Some modules are aimed at admins or managers, and are not generally shown to users.
-	 *
-	 * @return int
-	 */
-	public function defaultAccessLevel() {
-		return Auth::PRIV_PRIVATE;
-	}
+    /**
+     * What is the default access level for this module?
+     *
+     * Some modules are aimed at admins or managers, and are not generally shown to users.
+     *
+     * @return int
+     */
+    public function defaultAccessLevel() {
+        return Auth::PRIV_PRIVATE;
+    }
 
-	/**
-	 * Return a menu item for this chart.
-	 *
-	 * @return Menu|null
-	 */
-	public function getChartMenu(Individual $individual) {
-		return new Menu(
-			$this->getTitle(),
-			'timeline.php?pids%5B%5D=' . $individual->getXref() . '&amp;ged=' . $individual->getTree()->getNameUrl(),
-			'menu-chart-timeline',
-			array('rel' => 'nofollow')
-		);
-	}
+    /**
+     * Return a menu item for this chart.
+     *
+     * @return Menu|null
+     */
+    public function getChartMenu(Individual $individual) {
+        return new Menu(
+            $this->getTitle(),
+            'timeline.php?pids%5B%5D=' . $individual->getXref() . '&amp;ged=' . $individual->getTree()->getNameUrl(),
+            'menu-chart-timeline',
+            array('rel' => 'nofollow')
+        );
+    }
 
-	/**
-	 * Return a menu item for this chart - for use in individual boxes.
-	 *
-	 * @return Menu|null
-	 */
-	public function getBoxChartMenu(Individual $individual) {
-		return null;
-	}
+    /**
+     * Return a menu item for this chart - for use in individual boxes.
+     *
+     * @return Menu|null
+     */
+    public function getBoxChartMenu(Individual $individual) {
+        return null;
+    }
 }

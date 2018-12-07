@@ -22,55 +22,55 @@ use Mockery;
  * Test harness for the class CensusColumnSexMK
  */
 class CensusColumnSexMKTest extends \PHPUnit_Framework_TestCase {
-	/**
-	 * Delete mock objects
-	 */
-	public function tearDown() {
-		Mockery::close();
-	}
+    /**
+     * Delete mock objects
+     */
+    public function tearDown() {
+        Mockery::close();
+    }
 
-	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnSexMK
-	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
-	 */
-	public function testMale() {
-		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
-		$individual->shouldReceive('getSex')->andReturn('M');
+    /**
+     * @covers Fisharebest\Webtrees\Census\CensusColumnSexMK
+     * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
+     */
+    public function testMale() {
+        $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
+        $individual->shouldReceive('getSex')->andReturn('M');
 
-		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
+        $census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
 
-		$column = new CensusColumnSexMK($census, '', '');
+        $column = new CensusColumnSexMK($census, '', '');
 
-		$this->assertSame('M', $column->generate($individual));
-	}
+        $this->assertSame('M', $column->generate($individual));
+    }
 
-	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnSexMK
-	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
-	 */
-	public function testFeale() {
-		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
-		$individual->shouldReceive('getSex')->andReturn('F');
+    /**
+     * @covers Fisharebest\Webtrees\Census\CensusColumnSexMK
+     * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
+     */
+    public function testFeale() {
+        $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
+        $individual->shouldReceive('getSex')->andReturn('F');
 
-		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
+        $census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
 
-		$column = new CensusColumnSexMK($census, '', '');
+        $column = new CensusColumnSexMK($census, '', '');
 
-		$this->assertSame('K', $column->generate($individual));
-	}
+        $this->assertSame('K', $column->generate($individual));
+    }
 
-	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnSexMK
-	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
-	 */
-	public function testUnknownSex() {
-		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
-		$individual->shouldReceive('getSex')->andReturn('U');
+    /**
+     * @covers Fisharebest\Webtrees\Census\CensusColumnSexMK
+     * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
+     */
+    public function testUnknownSex() {
+        $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
+        $individual->shouldReceive('getSex')->andReturn('U');
 
-		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
+        $census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
 
-		$column = new CensusColumnSexMK($census, '', '');
+        $column = new CensusColumnSexMK($census, '', '');
 
-		$this->assertSame('', $column->generate($individual));
-	}
+        $this->assertSame('', $column->generate($individual));
+    }
 }

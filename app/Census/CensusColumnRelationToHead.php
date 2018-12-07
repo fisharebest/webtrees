@@ -22,21 +22,21 @@ use Fisharebest\Webtrees\Individual;
  * Relationshiop to head of household.
  */
 class CensusColumnRelationToHead extends AbstractCensusColumn implements CensusColumnInterface {
-	/**
-	 * Generate the likely value of this census column, based on available information.
-	 *
-	 * @param Individual      $individual
-	 * @param Individual|null $head
-	 *
-	 * @return string
-	 */
-	public function generate(Individual $individual, Individual $head = null) {
-		if ($head === null) {
-			return '';
-		} elseif ($individual == $head) {
-			return 'head';
-		} else {
-			return Functions::getCloseRelationshipName($head, $individual);
-		}
-	}
+    /**
+     * Generate the likely value of this census column, based on available information.
+     *
+     * @param Individual      $individual
+     * @param Individual|null $head
+     *
+     * @return string
+     */
+    public function generate(Individual $individual, Individual $head = null) {
+        if ($head === null) {
+            return '';
+        } elseif ($individual == $head) {
+            return 'head';
+        } else {
+            return Functions::getCloseRelationshipName($head, $individual);
+        }
+    }
 }

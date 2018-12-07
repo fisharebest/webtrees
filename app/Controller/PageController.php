@@ -28,132 +28,132 @@ use Fisharebest\Webtrees\Theme;
  * Controller for full-page, themed HTML responses
  */
 class PageController extends BaseController {
-	/** @var string Most pages are not intended for robots */
-	private $meta_robots = 'noindex,nofollow';
+    /** @var string Most pages are not intended for robots */
+    private $meta_robots = 'noindex,nofollow';
 
-	/** @var string <head><title> $page_title </title></head> */
-	private $page_title = WT_WEBTREES;
+    /** @var string <head><title> $page_title </title></head> */
+    private $page_title = WT_WEBTREES;
 
-	/** @var bool Is this a popup window? */
-	private $popup;
+    /** @var bool Is this a popup window? */
+    private $popup;
 
-	/**
-	 * What should this page show in the browser’s title bar?
-	 *
-	 * @param string  $page_title
-	 *
-	 * @return $this
-	 */
-	public function setPageTitle($page_title) {
-		$this->page_title = $page_title;
+    /**
+     * What should this page show in the browser’s title bar?
+     *
+     * @param string  $page_title
+     *
+     * @return $this
+     */
+    public function setPageTitle($page_title) {
+        $this->page_title = $page_title;
 
-		return $this;
-	}
+        return $this;
+    }
 
-	/**
-	 * Some pages will want to display this as <h1> $page_title </h1>
-	 *
-	 * @return string
-	 */
-	public function getPageTitle() {
-		return $this->page_title;
-	}
+    /**
+     * Some pages will want to display this as <h1> $page_title </h1>
+     *
+     * @return string
+     */
+    public function getPageTitle() {
+        return $this->page_title;
+    }
 
-	/**
-	 * Should robots index this page?
-	 *
-	 * @param string $meta_robots
-	 *
-	 * @return $this
-	 */
-	public function setMetaRobots($meta_robots) {
-		$this->meta_robots = $meta_robots;
+    /**
+     * Should robots index this page?
+     *
+     * @param string $meta_robots
+     *
+     * @return $this
+     */
+    public function setMetaRobots($meta_robots) {
+        $this->meta_robots = $meta_robots;
 
-		return $this;
-	}
+        return $this;
+    }
 
-	/**
-	 * Should robots index this page?
-	 *
-	 * @return string
-	 */
-	public function getMetaRobots() {
-		return $this->meta_robots;
-	}
+    /**
+     * Should robots index this page?
+     *
+     * @return string
+     */
+    public function getMetaRobots() {
+        return $this->meta_robots;
+    }
 
-	/**
-	 * Restrict access
-	 *
-	 * @param bool $condition
-	 *
-	 * @return $this
-	 */
-	public function restrictAccess($condition) {
-		if ($condition !== true) {
-			header('Location: ' . WT_LOGIN_URL . '?url=' . rawurlencode(Functions::getQueryUrl()));
-			exit;
-		}
+    /**
+     * Restrict access
+     *
+     * @param bool $condition
+     *
+     * @return $this
+     */
+    public function restrictAccess($condition) {
+        if ($condition !== true) {
+            header('Location: ' . WT_LOGIN_URL . '?url=' . rawurlencode(Functions::getQueryUrl()));
+            exit;
+        }
 
-		return $this;
-	}
+        return $this;
+    }
 
-	/**
-	 * Print the page footer, using the theme
-	 */
-	public function pageFooter() {
-		echo
-			Theme::theme()->footerContainer() .
-			'<!--[if lt IE 9]><script src="' . WT_JQUERY_JS_URL . '"></script><![endif]-->' .
-			'<!--[if gte IE 9]><!--><script src="' . WT_JQUERY2_JS_URL . '"></script><!--<![endif]-->' .
-			'<script src="' . WT_JQUERYUI_JS_URL . '"></script>' .
-			'<script src="' . WT_WEBTREES_JS_URL . '"></script>' .
-			$this->getJavascript() .
-			Theme::theme()->hookFooterExtraJavascript() .
-			(WT_DEBUG_SQL ? Database::getQueryLog() : '') .
-			'</body>' .
-			'</html>' . PHP_EOL .
-			'<!-- webtrees: ' . WT_VERSION . ' -->' .
-			'<!-- Execution time: ' . I18N::number(microtime(true) - WT_START_TIME, 3) . ' seconds -->' .
-			'<!-- Memory: ' . I18N::number(memory_get_peak_usage(true) / 1024) . ' KB -->' .
-			'<!-- SQL queries: ' . I18N::number(Database::getQueryCount()) . ' -->';
-	}
+    /**
+     * Print the page footer, using the theme
+     */
+    public function pageFooter() {
+        echo
+            Theme::theme()->footerContainer() .
+            '<!--[if lt IE 9]><script src="' . WT_JQUERY_JS_URL . '"></script><![endif]-->' .
+            '<!--[if gte IE 9]><!--><script src="' . WT_JQUERY2_JS_URL . '"></script><!--<![endif]-->' .
+            '<script src="' . WT_JQUERYUI_JS_URL . '"></script>' .
+            '<script src="' . WT_WEBTREES_JS_URL . '"></script>' .
+            $this->getJavascript() .
+            Theme::theme()->hookFooterExtraJavascript() .
+            (WT_DEBUG_SQL ? Database::getQueryLog() : '') .
+            '</body>' .
+            '</html>' . PHP_EOL .
+            '<!-- webtrees: ' . WT_VERSION . ' -->' .
+            '<!-- Execution time: ' . I18N::number(microtime(true) - WT_START_TIME, 3) . ' seconds -->' .
+            '<!-- Memory: ' . I18N::number(memory_get_peak_usage(true) / 1024) . ' KB -->' .
+            '<!-- SQL queries: ' . I18N::number(Database::getQueryCount()) . ' -->';
+    }
 
-	/**
-	 * Print the page footer, using the theme
-	 * Note that popup windows are deprecated
-	 */
-	public function pageFooterPopupWindow() {
-		echo
-			Theme::theme()->footerContainerPopupWindow() .
-			'<!--[if lt IE 9]><script src="' . WT_JQUERY_JS_URL . '"></script><![endif]-->' .
-			'<!--[if gte IE 9]><!--><script src="' . WT_JQUERY2_JS_URL . '"></script><!--<![endif]-->' .
-			'<script src="' . WT_JQUERYUI_JS_URL . '"></script>' .
-			'<script src="' . WT_WEBTREES_JS_URL . '"></script>' .
-			$this->getJavascript() .
-			Theme::theme()->hookFooterExtraJavascript() .
-			(WT_DEBUG_SQL ? Database::getQueryLog() : '') .
-			'</body>' .
-			'</html>' . PHP_EOL .
-			'<!-- webtrees: ' . WT_VERSION . ' -->' .
-			'<!-- Execution time: ' . I18N::number(microtime(true) - WT_START_TIME, 3) . ' seconds -->' .
-			'<!-- Memory: ' . I18N::number(memory_get_peak_usage(true) / 1024) . ' KB -->' .
-			'<!-- SQL queries: ' . I18N::number(Database::getQueryCount()) . ' -->';
-	}
+    /**
+     * Print the page footer, using the theme
+     * Note that popup windows are deprecated
+     */
+    public function pageFooterPopupWindow() {
+        echo
+            Theme::theme()->footerContainerPopupWindow() .
+            '<!--[if lt IE 9]><script src="' . WT_JQUERY_JS_URL . '"></script><![endif]-->' .
+            '<!--[if gte IE 9]><!--><script src="' . WT_JQUERY2_JS_URL . '"></script><!--<![endif]-->' .
+            '<script src="' . WT_JQUERYUI_JS_URL . '"></script>' .
+            '<script src="' . WT_WEBTREES_JS_URL . '"></script>' .
+            $this->getJavascript() .
+            Theme::theme()->hookFooterExtraJavascript() .
+            (WT_DEBUG_SQL ? Database::getQueryLog() : '') .
+            '</body>' .
+            '</html>' . PHP_EOL .
+            '<!-- webtrees: ' . WT_VERSION . ' -->' .
+            '<!-- Execution time: ' . I18N::number(microtime(true) - WT_START_TIME, 3) . ' seconds -->' .
+            '<!-- Memory: ' . I18N::number(memory_get_peak_usage(true) / 1024) . ' KB -->' .
+            '<!-- SQL queries: ' . I18N::number(Database::getQueryCount()) . ' -->';
+    }
 
-	/**
-	 * Print the page header, using the theme
-	 *
-	 * @param bool $popup Is this a popup window
-	 *
-	 * @return $this
-	 */
-	public function pageHeader($popup = false) {
-		global $WT_TREE;
+    /**
+     * Print the page header, using the theme
+     *
+     * @param bool $popup Is this a popup window
+     *
+     * @return $this
+     */
+    public function pageHeader($popup = false) {
+        global $WT_TREE;
 
-		$this->popup = $popup;
+        $this->popup = $popup;
 
-		// Give Javascript access to some PHP constants
-		$this->addInlineJavascript('
+        // Give Javascript access to some PHP constants
+        $this->addInlineJavascript('
 			var WT_STATIC_URL  = "' . Filter::escapeJs(WT_STATIC_URL) . '";
 			var WT_MODULES_DIR = "' . Filter::escapeJs(WT_MODULES_DIR) . '";
 			var WT_GEDCOM      = "' . Filter::escapeJs($WT_TREE ? $WT_TREE->getName() : '') . '";
@@ -163,89 +163,89 @@ class PageController extends BaseController {
 			var WT_CSRF_TOKEN  = "' . Filter::escapeJs(Filter::getCsrfToken()) . '";
 		', self::JS_PRIORITY_HIGH);
 
-		Theme::theme()->sendHeaders();
-		echo Theme::theme()->doctype();
-		echo Theme::theme()->html();
-		echo Theme::theme()->head($this);
+        Theme::theme()->sendHeaders();
+        echo Theme::theme()->doctype();
+        echo Theme::theme()->html();
+        echo Theme::theme()->head($this);
 
-		if ($this->popup) {
-			echo Theme::theme()->bodyHeaderPopupWindow();
-			// We've displayed the header - display the footer automatically
-			register_shutdown_function(array($this, 'pageFooterPopupWindow'), $this->popup);
+        if ($this->popup) {
+            echo Theme::theme()->bodyHeaderPopupWindow();
+            // We've displayed the header - display the footer automatically
+            register_shutdown_function(array($this, 'pageFooterPopupWindow'), $this->popup);
 
-		} else {
-			echo Theme::theme()->bodyHeader();
-			// We've displayed the header - display the footer automatically
-			register_shutdown_function(array($this, 'pageFooter'), $this->popup);
-		}
+        } else {
+            echo Theme::theme()->bodyHeader();
+            // We've displayed the header - display the footer automatically
+            register_shutdown_function(array($this, 'pageFooter'), $this->popup);
+        }
 
-		return $this;
-	}
+        return $this;
+    }
 
-	/**
-	 * Get significant information from this page, to allow other pages such as
-	 * charts and reports to initialise with the same records
-	 *
-	 * @return Individual
-	 */
-	public function getSignificantIndividual() {
-		global $WT_TREE;
+    /**
+     * Get significant information from this page, to allow other pages such as
+     * charts and reports to initialise with the same records
+     *
+     * @return Individual
+     */
+    public function getSignificantIndividual() {
+        global $WT_TREE;
 
-		static $individual; // Only query the DB once.
+        static $individual; // Only query the DB once.
 
-		if (!$individual && $WT_TREE->getUserPreference(Auth::user(), 'rootid')) {
-			$individual = Individual::getInstance($WT_TREE->getUserPreference(Auth::user(), 'rootid'), $WT_TREE);
-		}
-		if (!$individual && $WT_TREE->getUserPreference(Auth::user(), 'gedcomid')) {
-			$individual = Individual::getInstance($WT_TREE->getUserPreference(Auth::user(), 'gedcomid'), $WT_TREE);
-		}
-		if (!$individual) {
-			$individual = Individual::getInstance($WT_TREE->getPreference('PEDIGREE_ROOT_ID'), $WT_TREE);
-		}
-		if (!$individual) {
-			$individual = Individual::getInstance(
-				Database::prepare(
-					"SELECT MIN(i_id) FROM `##individuals` WHERE i_file=?"
-				)->execute(array($WT_TREE->getTreeId()))->fetchOne(),
-				$WT_TREE
-			);
-		}
-		if (!$individual) {
-			// always return a record
-			$individual = new Individual('I', '0 @I@ INDI', null, $WT_TREE);
-		}
+        if (!$individual && $WT_TREE->getUserPreference(Auth::user(), 'rootid')) {
+            $individual = Individual::getInstance($WT_TREE->getUserPreference(Auth::user(), 'rootid'), $WT_TREE);
+        }
+        if (!$individual && $WT_TREE->getUserPreference(Auth::user(), 'gedcomid')) {
+            $individual = Individual::getInstance($WT_TREE->getUserPreference(Auth::user(), 'gedcomid'), $WT_TREE);
+        }
+        if (!$individual) {
+            $individual = Individual::getInstance($WT_TREE->getPreference('PEDIGREE_ROOT_ID'), $WT_TREE);
+        }
+        if (!$individual) {
+            $individual = Individual::getInstance(
+                Database::prepare(
+                    "SELECT MIN(i_id) FROM `##individuals` WHERE i_file=?"
+                )->execute(array($WT_TREE->getTreeId()))->fetchOne(),
+                $WT_TREE
+            );
+        }
+        if (!$individual) {
+            // always return a record
+            $individual = new Individual('I', '0 @I@ INDI', null, $WT_TREE);
+        }
 
-		return $individual;
-	}
+        return $individual;
+    }
 
-	/**
-	 * Get significant information from this page, to allow other pages such as
-	 * charts and reports to initialise with the same records
-	 *
-	 * @return Family
-	 */
-	public function getSignificantFamily() {
-		$individual = $this->getSignificantIndividual();
-		if ($individual) {
-			foreach ($individual->getChildFamilies() as $family) {
-				return $family;
-			}
-			foreach ($individual->getSpouseFamilies() as $family) {
-				return $family;
-			}
-		}
+    /**
+     * Get significant information from this page, to allow other pages such as
+     * charts and reports to initialise with the same records
+     *
+     * @return Family
+     */
+    public function getSignificantFamily() {
+        $individual = $this->getSignificantIndividual();
+        if ($individual) {
+            foreach ($individual->getChildFamilies() as $family) {
+                return $family;
+            }
+            foreach ($individual->getSpouseFamilies() as $family) {
+                return $family;
+            }
+        }
 
-		// always return a record
-		return new Family('F', '0 @F@ FAM', null, $individual->getTree());
-	}
+        // always return a record
+        return new Family('F', '0 @F@ FAM', null, $individual->getTree());
+    }
 
-	/**
-	 * Get significant information from this page, to allow other pages such as
-	 * charts and reports to initialise with the same records
-	 *
-	 * @return string
-	 */
-	public function getSignificantSurname() {
-		return '';
-	}
+    /**
+     * Get significant information from this page, to allow other pages such as
+     * charts and reports to initialise with the same records
+     *
+     * @return string
+     */
+    public function getSignificantSurname() {
+        return '';
+    }
 }

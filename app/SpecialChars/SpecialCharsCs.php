@@ -22,25 +22,25 @@ namespace Fisharebest\Webtrees\SpecialChars;
  * that may be difficult to type.
  */
 class SpecialCharsCs extends AbstractSpecialChars {
-	/**
-	 * A list of magiscule letters.
-	 *
-	 * @return string[]
-	 */
-	public function upper() {
-		return array(
-			'Á', 'Ą', 'Ä', 'É', 'Ę', 'Ě', 'Í', 'Ó', 'Ô', 'Ú', 'Ů', 'Ý', 'Č', 'Ĺ', 'Ň', 'Ŕ', 'Ř', 'Š', 'Ž',
-		);
-	}
+    /**
+     * A list of magiscule letters.
+     *
+     * @return string[]
+     */
+    public function upper() {
+        return array(
+            'Á', 'Ą', 'Ä', 'É', 'Ę', 'Ě', 'Í', 'Ó', 'Ô', 'Ú', 'Ů', 'Ý', 'Č', 'Ĺ', 'Ň', 'Ŕ', 'Ř', 'Š', 'Ž',
+        );
+    }
 
-	/**
-	 * A list of miniscule letters.
-	 *
-	 * @return string[]
-	 */
-	public function lower() {
-		return array(
-			'á', 'ą', 'ä', 'é', 'ę', 'ě', 'í', 'ó', 'ô', 'ú', 'ů', 'ý', 'č', 'ď', 'ť', 'ĺ', 'ň', 'ŕ', 'ř', 'š', 'ž',
-		);
-	}
+    /**
+     * A list of miniscule letters.
+     *
+     * @return string[]
+     */
+    public function lower() {
+        return array(
+            'á', 'ą', 'ä', 'é', 'ę', 'ě', 'í', 'ó', 'ô', 'ú', 'ů', 'ý', 'č', 'ď', 'ť', 'ĺ', 'ň', 'ŕ', 'ř', 'š', 'ž',
+        );
+    }
 }

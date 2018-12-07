@@ -25,44 +25,44 @@ use Fisharebest\Webtrees\Menu;
  * Class FamilyNavigatorModule
  */
 class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInterface {
-	const TTL = "<div class='flyout2'>%s</div>";
-	const LNK = "<div class='flyout3' data-href='%s'>%s</div>";
-	const MSG = "<div class='flyout4'>(%s)</div>"; // class flyout4 not used in standard themes
+    const TTL = "<div class='flyout2'>%s</div>";
+    const LNK = "<div class='flyout3' data-href='%s'>%s</div>";
+    const MSG = "<div class='flyout4'>(%s)</div>"; // class flyout4 not used in standard themes
 
-	/** {@inheritdoc} */
-	public function getTitle() {
-		return /* I18N: Name of a module/sidebar */ I18N::translate('Family navigator');
-	}
+    /** {@inheritdoc} */
+    public function getTitle() {
+        return /* I18N: Name of a module/sidebar */ I18N::translate('Family navigator');
+    }
 
-	/** {@inheritdoc} */
-	public function getDescription() {
-		return /* I18N: Description of the “Family navigator” module */ I18N::translate('A sidebar showing an individual’s close families and relatives.');
-	}
+    /** {@inheritdoc} */
+    public function getDescription() {
+        return /* I18N: Description of the “Family navigator” module */ I18N::translate('A sidebar showing an individual’s close families and relatives.');
+    }
 
-	/** {@inheritdoc} */
-	public function defaultSidebarOrder() {
-		return 20;
-	}
+    /** {@inheritdoc} */
+    public function defaultSidebarOrder() {
+        return 20;
+    }
 
-	/** {@inheritdoc} */
-	public function hasSidebarContent() {
-		return true;
-	}
+    /** {@inheritdoc} */
+    public function hasSidebarContent() {
+        return true;
+    }
 
-	/** {@inheritdoc} */
-	public function getSidebarAjaxContent() {
-		return '';
-	}
+    /** {@inheritdoc} */
+    public function getSidebarAjaxContent() {
+        return '';
+    }
 
-	/**
-	 * Load this sidebar synchronously.
-	 *
-	 * @return string
-	 */
-	public function getSidebarContent() {
-		global $controller;
+    /**
+     * Load this sidebar synchronously.
+     *
+     * @return string
+     */
+    public function getSidebarContent() {
+        global $controller;
 
-		$controller->addInlineJavascript('
+        $controller->addInlineJavascript('
 			jQuery("#sb_family_nav_content")
 				.on("click", ".flyout a", function() {
 					return false;
@@ -73,194 +73,194 @@ class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInter
 				});
 		');
 
-		ob_start();
+        ob_start();
 
-		?>
-		<div id="sb_family_nav_content">
-			<table class="nav_content">
+        ?>
+        <div id="sb_family_nav_content">
+            <table class="nav_content">
 
-		<?php
-		//-- parent families -------------------------------------------------------------
-		foreach ($controller->record->getChildFamilies() as $family) {
-			$this->drawFamily($family, $controller->record->getChildFamilyLabel($family));
-		}
-		//-- step parents ----------------------------------------------------------------
-		foreach ($controller->record->getChildStepFamilies() as $family) {
-			$this->drawFamily($family, $controller->record->getStepFamilyLabel($family));
-		}
-		//-- spouse and children --------------------------------------------------
-		foreach ($controller->record->getSpouseFamilies() as $family) {
-			$this->drawFamily($family, $controller->getSpouseFamilyLabel($family, $controller->record));
-		}
-		//-- step children ----------------------------------------------------------------
-		foreach ($controller->record->getSpouseStepFamilies() as $family) {
-			$this->drawFamily($family, $family->getFullName());
-		}
-		?>
-			</table>
-		</div>
-		<?php
+        <?php
+        //-- parent families -------------------------------------------------------------
+        foreach ($controller->record->getChildFamilies() as $family) {
+            $this->drawFamily($family, $controller->record->getChildFamilyLabel($family));
+        }
+        //-- step parents ----------------------------------------------------------------
+        foreach ($controller->record->getChildStepFamilies() as $family) {
+            $this->drawFamily($family, $controller->record->getStepFamilyLabel($family));
+        }
+        //-- spouse and children --------------------------------------------------
+        foreach ($controller->record->getSpouseFamilies() as $family) {
+            $this->drawFamily($family, $controller->getSpouseFamilyLabel($family, $controller->record));
+        }
+        //-- step children ----------------------------------------------------------------
+        foreach ($controller->record->getSpouseStepFamilies() as $family) {
+            $this->drawFamily($family, $family->getFullName());
+        }
+        ?>
+            </table>
+        </div>
+        <?php
 
-		return ob_get_clean();
-	}
+        return ob_get_clean();
+    }
 
-	/**
-	 * Format a family.
-	 *
-	 * @param Family $family
-	 * @param string $title
-	 */
-	private function drawFamily(Family $family, $title) {
-		global $controller;
+    /**
+     * Format a family.
+     *
+     * @param Family $family
+     * @param string $title
+     */
+    private function drawFamily(Family $family, $title) {
+        global $controller;
 
-		?>
-		<tr>
-			<td class="center" colspan="2">
-				<a class="famnav_title" href="<?php echo $family->getHtmlUrl(); ?>">
-					<?php echo $title; ?>
-				</a>
-			</td>
-		</tr>
-		<?php
-		foreach ($family->getSpouses() as $spouse) {
-			$menu = new Menu(Functions::getCloseRelationshipName($controller->record, $spouse));
-			$menu->addClass('', 'submenu flyout');
-			$menu->addSubmenu(new Menu($this->getParents($spouse)));
-			?>
-			<tr>
-				<td class="facts_label">
-					<?php echo $menu->getMenu(); ?>
-				</td>
-				<td class="center <?php echo $controller->getPersonStyle($spouse); ?> nam">
-					<?php if ($spouse->canShow()): ?>
-					<a class="famnav_link" href="<?php echo $spouse->getHtmlUrl(); ?>">
-						<?php echo $spouse->getFullName(); ?>
-					</a>
-					<div class="font9">
-						<?php echo $spouse->getLifeSpan(); ?>
-					</div>
-					<?php else: ?>
-						<?php echo $spouse->getFullName(); ?>
-					<?php endif; ?>
-				</td>
-			</tr>
-		<?php
-		}
+        ?>
+        <tr>
+            <td class="center" colspan="2">
+                <a class="famnav_title" href="<?php echo $family->getHtmlUrl(); ?>">
+                    <?php echo $title; ?>
+                </a>
+            </td>
+        </tr>
+        <?php
+        foreach ($family->getSpouses() as $spouse) {
+            $menu = new Menu(Functions::getCloseRelationshipName($controller->record, $spouse));
+            $menu->addClass('', 'submenu flyout');
+            $menu->addSubmenu(new Menu($this->getParents($spouse)));
+            ?>
+            <tr>
+                <td class="facts_label">
+                    <?php echo $menu->getMenu(); ?>
+                </td>
+                <td class="center <?php echo $controller->getPersonStyle($spouse); ?> nam">
+                    <?php if ($spouse->canShow()): ?>
+                    <a class="famnav_link" href="<?php echo $spouse->getHtmlUrl(); ?>">
+                        <?php echo $spouse->getFullName(); ?>
+                    </a>
+                    <div class="font9">
+                        <?php echo $spouse->getLifeSpan(); ?>
+                    </div>
+                    <?php else: ?>
+                        <?php echo $spouse->getFullName(); ?>
+                    <?php endif; ?>
+                </td>
+            </tr>
+        <?php
+        }
 
-		foreach ($family->getChildren() as $child) {
-			$menu = new Menu(Functions::getCloseRelationshipName($controller->record, $child));
-			$menu->addClass('', 'submenu flyout');
-			$menu->addSubmenu(new Menu($this->getFamily($child)));
-			?>
-			<tr>
-				<td class="facts_label">
-					<?php echo $menu->getMenu(); ?>
-				</td>
-				<td class="center <?php echo $controller->getPersonStyle($child); ?> nam">
-					<?php if ($child->canShow()): ?>
-					<a class="famnav_link" href="<?php echo $child->getHtmlUrl(); ?>">
-						<?php echo $child->getFullName(); ?>
-					</a>
-					<div class="font9">
-						<?php echo $child->getLifeSpan(); ?>
-					</div>
-					<?php else: ?>
-						<?php echo $child->getFullName(); ?>
-					<?php endif; ?>
-				</td>
-			</tr>
-		<?php
-		}
-	}
+        foreach ($family->getChildren() as $child) {
+            $menu = new Menu(Functions::getCloseRelationshipName($controller->record, $child));
+            $menu->addClass('', 'submenu flyout');
+            $menu->addSubmenu(new Menu($this->getFamily($child)));
+            ?>
+            <tr>
+                <td class="facts_label">
+                    <?php echo $menu->getMenu(); ?>
+                </td>
+                <td class="center <?php echo $controller->getPersonStyle($child); ?> nam">
+                    <?php if ($child->canShow()): ?>
+                    <a class="famnav_link" href="<?php echo $child->getHtmlUrl(); ?>">
+                        <?php echo $child->getFullName(); ?>
+                    </a>
+                    <div class="font9">
+                        <?php echo $child->getLifeSpan(); ?>
+                    </div>
+                    <?php else: ?>
+                        <?php echo $child->getFullName(); ?>
+                    <?php endif; ?>
+                </td>
+            </tr>
+        <?php
+        }
+    }
 
-	/**
-	 * Format an individual.
-	 *
-	 * @param      $person
-	 * @param bool $showUnknown
-	 *
-	 * @return string
-	 */
-	private function getHTML($person, $showUnknown = false) {
-		if ($person instanceof Individual) {
-			return sprintf(self::LNK, $person->getHtmlUrl(), $person->getFullName());
-		} elseif ($showUnknown) {
-			return sprintf(self::MSG, I18N::translate('unknown'));
-		} else {
-			return '';
-		}
-	}
+    /**
+     * Format an individual.
+     *
+     * @param      $person
+     * @param bool $showUnknown
+     *
+     * @return string
+     */
+    private function getHTML($person, $showUnknown = false) {
+        if ($person instanceof Individual) {
+            return sprintf(self::LNK, $person->getHtmlUrl(), $person->getFullName());
+        } elseif ($showUnknown) {
+            return sprintf(self::MSG, I18N::translate('unknown'));
+        } else {
+            return '';
+        }
+    }
 
-	/**
-	 * Forat the parents of an individual.
-	 *
-	 * @param Individual $person
-	 *
-	 * @return string
-	 */
-	private function getParents(Individual $person) {
-		$father = null;
-		$mother = null;
-		$html   = sprintf(self::TTL, I18N::translate('Parents'));
-		$family = $person->getPrimaryChildFamily();
-		if ($person->canShowName() && $family !== null) {
-			$father = $family->getHusband();
-			$mother = $family->getWife();
-			$html .= $this->getHTML($father) .
-					 $this->getHTML($mother);
+    /**
+     * Forat the parents of an individual.
+     *
+     * @param Individual $person
+     *
+     * @return string
+     */
+    private function getParents(Individual $person) {
+        $father = null;
+        $mother = null;
+        $html   = sprintf(self::TTL, I18N::translate('Parents'));
+        $family = $person->getPrimaryChildFamily();
+        if ($person->canShowName() && $family !== null) {
+            $father = $family->getHusband();
+            $mother = $family->getWife();
+            $html .= $this->getHTML($father) .
+                     $this->getHTML($mother);
 
-			// Can only have a step parent if one & only one parent found at this point
-			if ($father instanceof Individual xor $mother instanceof Individual) {
-				$stepParents = '';
-				foreach ($person->getChildStepFamilies() as $family) {
-					if (!$father instanceof Individual) {
-						$stepParents .= $this->getHTML($family->getHusband());
-					} else {
-						$stepParents .= $this->getHTML($family->getWife());
-					}
-				}
-				if ($stepParents) {
-					$relationship = $father instanceof Individual ?
-						I18N::translateContext("father’s wife", "step-mother") : I18N::translateContext("mother’s husband", "step-father");
-					$html .= sprintf(self::TTL, $relationship) . $stepParents;
-				}
-			}
-		}
-		if (!($father instanceof Individual || $mother instanceof Individual)) {
-			$html .= sprintf(self::MSG, I18N::translateContext('unknown family', 'unknown'));
-		}
+            // Can only have a step parent if one & only one parent found at this point
+            if ($father instanceof Individual xor $mother instanceof Individual) {
+                $stepParents = '';
+                foreach ($person->getChildStepFamilies() as $family) {
+                    if (!$father instanceof Individual) {
+                        $stepParents .= $this->getHTML($family->getHusband());
+                    } else {
+                        $stepParents .= $this->getHTML($family->getWife());
+                    }
+                }
+                if ($stepParents) {
+                    $relationship = $father instanceof Individual ?
+                        I18N::translateContext("father’s wife", "step-mother") : I18N::translateContext("mother’s husband", "step-father");
+                    $html .= sprintf(self::TTL, $relationship) . $stepParents;
+                }
+            }
+        }
+        if (!($father instanceof Individual || $mother instanceof Individual)) {
+            $html .= sprintf(self::MSG, I18N::translateContext('unknown family', 'unknown'));
+        }
 
-		return $html;
-	}
+        return $html;
+    }
 
-	/**
-	 * Format a family.
-	 *
-	 * @param Individual $person
-	 *
-	 * @return string
-	 */
-	private function getFamily(Individual $person) {
-		$html = '';
-		if ($person->canShowName()) {
-			foreach ($person->getSpouseFamilies() as $family) {
-				$spouse = $family->getSpouse($person);
-				$html .= $this->getHTML($spouse, true);
-				$children = $family->getChildren();
-				if (count($children) > 0) {
-					$html .= "<ul class='clist'>";
-					foreach ($children as $child) {
-						$html .= '<li>' . $this->getHTML($child) . '</li>';
-					}
-					$html .= '</ul>';
-				}
-			}
-		}
-		if (!$html) {
-			$html = sprintf(self::MSG, I18N::translate('none'));
-		}
+    /**
+     * Format a family.
+     *
+     * @param Individual $person
+     *
+     * @return string
+     */
+    private function getFamily(Individual $person) {
+        $html = '';
+        if ($person->canShowName()) {
+            foreach ($person->getSpouseFamilies() as $family) {
+                $spouse = $family->getSpouse($person);
+                $html .= $this->getHTML($spouse, true);
+                $children = $family->getChildren();
+                if (count($children) > 0) {
+                    $html .= "<ul class='clist'>";
+                    foreach ($children as $child) {
+                        $html .= '<li>' . $this->getHTML($child) . '</li>';
+                    }
+                    $html .= '</ul>';
+                }
+            }
+        }
+        if (!$html) {
+            $html = sprintf(self::MSG, I18N::translate('none'));
+        }
 
-		return sprintf(self::TTL, I18N::translate('Family')) . $html;
-	}
+        return sprintf(self::TTL, I18N::translate('Family')) . $html;
+    }
 
 }

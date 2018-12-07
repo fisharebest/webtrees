@@ -21,15 +21,15 @@ use Fisharebest\Webtrees\Individual;
  * The individual's date of birth.
  */
 class CensusColumnBirthDay extends AbstractCensusColumn implements CensusColumnInterface {
-	/**
-	 * Generate the likely value of this census column, based on available information.
-	 *
-	 * @param Individual      $individual
-	 * @param Individual|null $head
-	 *
-	 * @return string
-	 */
-	public function generate(Individual $individual, Individual $head = null) {
-		return $individual->getEstimatedBirthDate()->minimumDate()->format('%j');
-	}
+    /**
+     * Generate the likely value of this census column, based on available information.
+     *
+     * @param Individual      $individual
+     * @param Individual|null $head
+     *
+     * @return string
+     */
+    public function generate(Individual $individual, Individual $head = null) {
+        return $individual->getEstimatedBirthDate()->minimumDate()->format('%j');
+    }
 }

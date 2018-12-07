@@ -23,50 +23,50 @@ use Fisharebest\Webtrees\Menu;
  * Class BirthDeathMarriageReportModule
  */
 class BirthDeathMarriageReportModule extends AbstractModule implements ModuleReportInterface {
-	/**
-	 * How should this module be labelled on tabs, menus, etc.?
-	 *
-	 * @return string
-	 */
-	public function getTitle() {
-		// This text also appears in the .XML file - update both together
-		return /* I18N: Name of a module/report. “Vital records” are life events - birth/marriage/death */ I18N::translate('Vital records');
-	}
+    /**
+     * How should this module be labelled on tabs, menus, etc.?
+     *
+     * @return string
+     */
+    public function getTitle() {
+        // This text also appears in the .XML file - update both together
+        return /* I18N: Name of a module/report. “Vital records” are life events - birth/marriage/death */ I18N::translate('Vital records');
+    }
 
-	/**
-	 * A sentence describing what this module does.
-	 *
-	 * @return string
-	 */
-	public function getDescription() {
-		// This text also appears in the .XML file - update both together
-		return /* I18N: Description of the “Vital records” module. “Vital records” are life events - birth/marriage/death */ I18N::translate('A report of vital records for a given date or place.');
-	}
+    /**
+     * A sentence describing what this module does.
+     *
+     * @return string
+     */
+    public function getDescription() {
+        // This text also appears in the .XML file - update both together
+        return /* I18N: Description of the “Vital records” module. “Vital records” are life events - birth/marriage/death */ I18N::translate('A report of vital records for a given date or place.');
+    }
 
-	/**
-	 * What is the default access level for this module?
-	 *
-	 * Some modules are aimed at admins or managers, and are not generally shown to users.
-	 *
-	 * @return int
-	 */
-	public function defaultAccessLevel() {
-		return Auth::PRIV_PRIVATE;
-	}
+    /**
+     * What is the default access level for this module?
+     *
+     * Some modules are aimed at admins or managers, and are not generally shown to users.
+     *
+     * @return int
+     */
+    public function defaultAccessLevel() {
+        return Auth::PRIV_PRIVATE;
+    }
 
-	/**
-	 * Return a menu item for this report.
-	 *
-	 * @return Menu
-	 */
-	public function getReportMenu() {
-		global $WT_TREE;
+    /**
+     * Return a menu item for this report.
+     *
+     * @return Menu
+     */
+    public function getReportMenu() {
+        global $WT_TREE;
 
-		return new Menu(
-			$this->getTitle(),
-			'reportengine.php?ged=' . $WT_TREE->getNameUrl() . '&amp;action=setup&amp;report=' . WT_MODULES_DIR . $this->getName() . '/report.xml',
-			'menu-report-' . $this->getName(),
-			array('rel' => 'nofollow')
-		);
-	}
+        return new Menu(
+            $this->getTitle(),
+            'reportengine.php?ged=' . $WT_TREE->getNameUrl() . '&amp;action=setup&amp;report=' . WT_MODULES_DIR . $this->getName() . '/report.xml',
+            'menu-report-' . $this->getName(),
+            array('rel' => 'nofollow')
+        );
+    }
 }

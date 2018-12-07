@@ -23,22 +23,22 @@ use PDOException;
  * Upgrade the database schema from version 1 to version 2.
  */
 class Migration1 implements MigrationInterface {
-	/** {@inheritDoc} */
-	public function upgrade() {
-		// Update the tables to support streetview
-		try {
-			Database::exec(
-				"ALTER TABLE `##placelocation` ADD (" .
-				" pl_media      VARCHAR(60)     NULL," .
-				" sv_long       FLOAT           NOT NULL DEFAULT 0," .
-				" sv_lati       FLOAT           NOT NULL DEFAULT 0," .
-				" sv_bearing    FLOAT           NOT NULL DEFAULT 0," .
-				" sv_elevation  FLOAT           NOT NULL DEFAULT 0," .
-				" sv_zoom       FLOAT           NOT NULL DEFAULT 1" .
-				")"
-			);
-		} catch (PDOException $ex) {
-			// Already done this?
-		}
-	}
+    /** {@inheritDoc} */
+    public function upgrade() {
+        // Update the tables to support streetview
+        try {
+            Database::exec(
+                "ALTER TABLE `##placelocation` ADD (" .
+                " pl_media      VARCHAR(60)     NULL," .
+                " sv_long       FLOAT           NOT NULL DEFAULT 0," .
+                " sv_lati       FLOAT           NOT NULL DEFAULT 0," .
+                " sv_bearing    FLOAT           NOT NULL DEFAULT 0," .
+                " sv_elevation  FLOAT           NOT NULL DEFAULT 0," .
+                " sv_zoom       FLOAT           NOT NULL DEFAULT 1" .
+                ")"
+            );
+        } catch (PDOException $ex) {
+            // Already done this?
+        }
+    }
 }

@@ -21,19 +21,19 @@ use Fisharebest\Webtrees\Database;
  * Upgrade the database schema from version 25 to version 26.
  */
 class Migration25 implements MigrationInterface {
-	/**
-	 * Upgrade to to the next version
-	 */
-	public function upgrade() {
-		// - delete unused settings and update indexes
-		Database::exec(
-			"DELETE FROM `##site_setting` WHERE setting_name IN ('WELCOME_TEXT_CUST_HEAD')"
-		);
+    /**
+     * Upgrade to to the next version
+     */
+    public function upgrade() {
+        // - delete unused settings and update indexes
+        Database::exec(
+            "DELETE FROM `##site_setting` WHERE setting_name IN ('WELCOME_TEXT_CUST_HEAD')"
+        );
 
-		// Modern versions of Internet Explorer use a different user-agent string
-		Database::exec(
-			"INSERT IGNORE INTO `##site_access_rule` (user_agent_pattern, rule, comment) VALUES" .
-			" ('Mozilla/% (Windows%; Trident%; rv:%) like Gecko', 'allow', 'Modern Internet Explorer')"
-		);
-	}
+        // Modern versions of Internet Explorer use a different user-agent string
+        Database::exec(
+            "INSERT IGNORE INTO `##site_access_rule` (user_agent_pattern, rule, comment) VALUES" .
+            " ('Mozilla/% (Windows%; Trident%; rv:%) like Gecko', 'allow', 'Modern Internet Explorer')"
+        );
+    }
 }

@@ -22,64 +22,64 @@ use Fisharebest\Webtrees\Theme;
  * Class ThemeSelectModule
  */
 class ThemeSelectModule extends AbstractModule implements ModuleBlockInterface {
-	/** {@inheritdoc} */
-	public function getTitle() {
-		return /* I18N: Name of a module */ I18N::translate('Theme change');
-	}
+    /** {@inheritdoc} */
+    public function getTitle() {
+        return /* I18N: Name of a module */ I18N::translate('Theme change');
+    }
 
-	/** {@inheritdoc} */
-	public function getDescription() {
-		return /* I18N: Description of the “Theme change” module */ I18N::translate('An alternative way to select a new theme.');
-	}
+    /** {@inheritdoc} */
+    public function getDescription() {
+        return /* I18N: Description of the “Theme change” module */ I18N::translate('An alternative way to select a new theme.');
+    }
 
-	/**
-	 * Generate the HTML content of this block.
-	 *
-	 * @param int      $block_id
-	 * @param bool     $template
-	 * @param string[] $cfg
-	 *
-	 * @return string
-	 */
-	public function getBlock($block_id, $template = true, $cfg = array()) {
-		$id    = $this->getName() . $block_id;
-		$class = $this->getName() . '_block';
-		$title = $this->getTitle();
-		$menu  = Theme::theme()->menuThemes();
+    /**
+     * Generate the HTML content of this block.
+     *
+     * @param int      $block_id
+     * @param bool     $template
+     * @param string[] $cfg
+     *
+     * @return string
+     */
+    public function getBlock($block_id, $template = true, $cfg = array()) {
+        $id    = $this->getName() . $block_id;
+        $class = $this->getName() . '_block';
+        $title = $this->getTitle();
+        $menu  = Theme::theme()->menuThemes();
 
-		if ($menu) {
-			$content = '<div class="center theme_form">' . $menu . '</div><br>';
+        if ($menu) {
+            $content = '<div class="center theme_form">' . $menu . '</div><br>';
 
-			if ($template) {
-				return Theme::theme()->formatBlock($id, $title, $class, $content);
-			} else {
-				return $content;
-			}
-		} else {
-			return '';
-		}
-	}
+            if ($template) {
+                return Theme::theme()->formatBlock($id, $title, $class, $content);
+            } else {
+                return $content;
+            }
+        } else {
+            return '';
+        }
+    }
 
-	/** {@inheritdoc} */
-	public function loadAjax() {
-		return false;
-	}
+    /** {@inheritdoc} */
+    public function loadAjax() {
+        return false;
+    }
 
-	/** {@inheritdoc} */
-	public function isUserBlock() {
-		return true;
-	}
+    /** {@inheritdoc} */
+    public function isUserBlock() {
+        return true;
+    }
 
-	/** {@inheritdoc} */
-	public function isGedcomBlock() {
-		return true;
-	}
+    /** {@inheritdoc} */
+    public function isGedcomBlock() {
+        return true;
+    }
 
-	/**
-	 * An HTML form to edit block settings
-	 *
-	 * @param int $block_id
-	 */
-	public function configureBlock($block_id) {
-	}
+    /**
+     * An HTML form to edit block settings
+     *
+     * @param int $block_id
+     */
+    public function configureBlock($block_id) {
+    }
 }

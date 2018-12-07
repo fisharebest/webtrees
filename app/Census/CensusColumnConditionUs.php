@@ -19,23 +19,23 @@ namespace Fisharebest\Webtrees\Census;
  * Marital status.
  */
 class CensusColumnConditionUs extends CensusColumnConditionEnglish {
-	/* Text to display for married individuals */
-	protected $husband = 'M';
-	protected $wife    = 'M';
+    /* Text to display for married individuals */
+    protected $husband = 'M';
+    protected $wife    = 'M';
 
-	/* Text to display for unmarried individuals */
-	protected $bachelor = 'S';
-	protected $spinster = 'S';
+    /* Text to display for unmarried individuals */
+    protected $bachelor = 'S';
+    protected $spinster = 'S';
 
-	/* Text to display for children */
-	protected $boy  = 'S';
-	protected $girl = 'S';
+    /* Text to display for children */
+    protected $boy  = 'S';
+    protected $girl = 'S';
 
-	/* Text to display for divorced individuals */
-	protected $divorce  = 'D';
-	protected $divorcee = 'D';
+    /* Text to display for divorced individuals */
+    protected $divorce  = 'D';
+    protected $divorcee = 'D';
 
-	/* Text to display for widowed individuals (not yet implemented) */
-	protected $widower = 'W';
-	protected $widow   = 'W';
+    /* Text to display for widowed individuals (not yet implemented) */
+    protected $widower = 'W';
+    protected $widow   = 'W';
 }

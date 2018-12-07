@@ -22,25 +22,25 @@ use Mockery;
  * Test harness for the class CensusColumnReligion
  */
 class CensusColumnReligionTest extends \PHPUnit_Framework_TestCase {
-	/**
-	 * Delete mock objects
-	 */
-	public function tearDown() {
-		Mockery::close();
-	}
+    /**
+     * Delete mock objects
+     */
+    public function tearDown() {
+        Mockery::close();
+    }
 
-	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnReligion
-	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
-	 */
-	public function testReligion() {
-		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
+    /**
+     * @covers Fisharebest\Webtrees\Census\CensusColumnReligion
+     * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
+     */
+    public function testReligion() {
+        $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
 
-		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
-		$census->shouldReceive('censusDate')->andReturn('01 JUN 1860');
+        $census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
+        $census->shouldReceive('censusDate')->andReturn('01 JUN 1860');
 
-		$column = new CensusColumnReligion($census, '', '');
+        $column = new CensusColumnReligion($census, '', '');
 
-		$this->assertSame('', $column->generate($individual));
-	}
+        $this->assertSame('', $column->generate($individual));
+    }
 }

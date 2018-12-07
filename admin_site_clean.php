@@ -23,45 +23,45 @@ require './includes/session.php';
 
 $to_delete = Filter::postArray('to_delete');
 if ($to_delete && Filter::checkCsrf()) {
-	foreach ($to_delete as $path) {
-		$is_dir = is_dir(WT_DATA_DIR . $path);
-		if (File::delete(WT_DATA_DIR . $path)) {
-			if ($is_dir) {
-				FlashMessages::addMessage(I18N::translate('The folder %s has been deleted.', Filter::escapeHtml($path)), 'success');
-			} else {
-				FlashMessages::addMessage(I18N::translate('The file %s has been deleted.', Filter::escapeHtml($path)), 'success');
-			}
-		} else {
-			if ($is_dir) {
-				FlashMessages::addMessage(I18N::translate('The folder %s could not be deleted.', Filter::escapeHtml($path)), 'danger');
-			} else {
-				FlashMessages::addMessage(I18N::translate('The file %s could not be deleted.', Filter::escapeHtml($path)), 'danger');
-			}
-		}
-	}
+    foreach ($to_delete as $path) {
+        $is_dir = is_dir(WT_DATA_DIR . $path);
+        if (File::delete(WT_DATA_DIR . $path)) {
+            if ($is_dir) {
+                FlashMessages::addMessage(I18N::translate('The folder %s has been deleted.', Filter::escapeHtml($path)), 'success');
+            } else {
+                FlashMessages::addMessage(I18N::translate('The file %s has been deleted.', Filter::escapeHtml($path)), 'success');
+            }
+        } else {
+            if ($is_dir) {
+                FlashMessages::addMessage(I18N::translate('The folder %s could not be deleted.', Filter::escapeHtml($path)), 'danger');
+            } else {
+                FlashMessages::addMessage(I18N::translate('The file %s could not be deleted.', Filter::escapeHtml($path)), 'danger');
+            }
+        }
+    }
 
-	header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME);
+    header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME);
 
-	return;
+    return;
 }
 
 $controller = new PageController;
 $controller
-	->restrictAccess(Auth::isAdmin())
-	->setPageTitle(/* I18N: The “Data folder” is a configuration setting */ I18N::translate('Clean up data folder'))
-	->pageHeader();
+    ->restrictAccess(Auth::isAdmin())
+    ->setPageTitle(/* I18N: The “Data folder” is a configuration setting */ I18N::translate('Clean up data folder'))
+    ->pageHeader();
 
 $do_not_delete = array('index.php', 'config.ini.php', 'language');
 
 // If we are storing the media in the data folder (this is the default), then don’t delete it.
 foreach (Tree::getAll() as $tree) {
-	$MEDIA_DIRECTORY = $tree->getPreference('MEDIA_DIRECTORY');
+    $MEDIA_DIRECTORY = $tree->getPreference('MEDIA_DIRECTORY');
 
-	if (substr($MEDIA_DIRECTORY, 0, 3) != '../') {
-		// Just need to add the first part of the path
-		$tmp             = explode('/', $MEDIA_DIRECTORY);
-		$do_not_delete[] = $tmp[0];
-	}
+    if (substr($MEDIA_DIRECTORY, 0, 3) != '../') {
+        // Just need to add the first part of the path
+        $tmp             = explode('/', $MEDIA_DIRECTORY);
+        $do_not_delete[] = $tmp[0];
+    }
 }
 
 $locked_icon = '<i class="fa fa-ban text-danger"></i>';
@@ -69,49 +69,49 @@ $locked_icon = '<i class="fa fa-ban text-danger"></i>';
 $dir     = dir(WT_DATA_DIR);
 $entries = array();
 while (false !== ($entry = $dir->read())) {
-	if ($entry[0] != '.') {
-		$entries[] = $entry;
-	}
+    if ($entry[0] != '.') {
+        $entries[] = $entry;
+    }
 }
 
 sort($entries);
 
 ?>
 <ol class="breadcrumb small">
-	<li><a href="admin.php"><?php echo I18N::translate('Control panel'); ?></a></li>
-	<li class="active"><?php echo $controller->getPageTitle(); ?></li>
+    <li><a href="admin.php"><?php echo I18N::translate('Control panel'); ?></a></li>
+    <li class="active"><?php echo $controller->getPageTitle(); ?></li>
 </ol>
 
 <h1><?php echo $controller->getPageTitle(); ?></h1>
 
 <p>
-	<?php echo I18N::translate('Files marked with %s are required for proper operation and cannot be removed.', $locked_icon); ?>
+    <?php echo I18N::translate('Files marked with %s are required for proper operation and cannot be removed.', $locked_icon); ?>
 </p>
 
 <form method="post">
-	<?php echo Filter::getCsrf(); ?>
-	<fieldset>
-		<legend class="sr-only"><?php echo $controller->getPageTitle(); ?></legend>
-		<ul class="fa-ul">
-			<?php
-			foreach ($entries as $entry) {
-				if (in_array($entry, $do_not_delete)) {
-					echo '<li><i class="fa-li fa fa-ban text-danger"></i>', Filter::escapeHtml($entry), '</li>';
-				} else {
-					$id = 'input-' . Uuid::uuid4();
-					echo '<li><i class="fa-li fa fa-trash-o"></i>';
-					echo '<label for="', $id, '">';
-					echo '<input type="checkbox" id="', $id, '" name="to_delete[]" value="', Filter::escapeHtml($entry), '"> ';
-					echo Filter::escapeHtml($entry);
-					echo '</label></li>';
-				}
-			}
-			$dir->close();
-			?>
-		</ul>
-	</fieldset>
-	<button class="btn btn-danger" type="submit">
-		<i class="fa fa-trash-o"></i>
-		<?php echo /* I18N: A button label. */ I18N::translate('delete'); ?>
-	</button>
+    <?php echo Filter::getCsrf(); ?>
+    <fieldset>
+        <legend class="sr-only"><?php echo $controller->getPageTitle(); ?></legend>
+        <ul class="fa-ul">
+            <?php
+            foreach ($entries as $entry) {
+                if (in_array($entry, $do_not_delete)) {
+                    echo '<li><i class="fa-li fa fa-ban text-danger"></i>', Filter::escapeHtml($entry), '</li>';
+                } else {
+                    $id = 'input-' . Uuid::uuid4();
+                    echo '<li><i class="fa-li fa fa-trash-o"></i>';
+                    echo '<label for="', $id, '">';
+                    echo '<input type="checkbox" id="', $id, '" name="to_delete[]" value="', Filter::escapeHtml($entry), '"> ';
+                    echo Filter::escapeHtml($entry);
+                    echo '</label></li>';
+                }
+            }
+            $dir->close();
+            ?>
+        </ul>
+    </fieldset>
+    <button class="btn btn-danger" type="submit">
+        <i class="fa fa-trash-o"></i>
+        <?php echo /* I18N: A button label. */ I18N::translate('delete'); ?>
+    </button>
 </form>

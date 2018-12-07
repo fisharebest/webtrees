@@ -22,26 +22,26 @@ use Fisharebest\Webtrees\Schema\MigrationInterface;
  * Upgrade the database schema from version 5 to version 6.
  */
 class Migration5 implements MigrationInterface {
-	/** {@inheritDoc} */
-	public function upgrade() {
-		// Default settings
-		Database::prepare(
-			"INSERT IGNORE INTO `##module_setting` (module_name, setting_name, setting_value) VALUES " .
-			" ('googlemap', 'GM_MAP_TYPE', 'G_NORMAL_MAP')," .
-			" ('googlemap', 'GM_MAX_ZOOM', '15')," .
-			" ('googlemap', 'GM_MIN_ZOOM', '2')," .
-			" ('googlemap', 'GM_PRECISION_0', '0')," .
-			" ('googlemap', 'GM_PRECISION_1', '1')," .
-			" ('googlemap', 'GM_PRECISION_2', '2')," .
-			" ('googlemap', 'GM_PRECISION_3', '3')," .
-			" ('googlemap', 'GM_PRECISION_4', '4')," .
-			" ('googlemap', 'GM_PRECISION_5', '5')," .
-			" ('googlemap', 'GM_XSIZE', '600')," .
-			" ('googlemap', 'GM_YSIZE', '400')," .
-			" ('googlemap', 'GM_PH_XSIZE', '500')," .
-			" ('googlemap', 'GM_PH_YSIZE', '350')," .
-			" ('googlemap', 'GM_PH_MARKER', 'G_FLAG')," .
-			" ('googlemap', 'GM_DISP_SHORT_PLACE', '0')"
-		)->execute();
-	}
+    /** {@inheritDoc} */
+    public function upgrade() {
+        // Default settings
+        Database::prepare(
+            "INSERT IGNORE INTO `##module_setting` (module_name, setting_name, setting_value) VALUES " .
+            " ('googlemap', 'GM_MAP_TYPE', 'G_NORMAL_MAP')," .
+            " ('googlemap', 'GM_MAX_ZOOM', '15')," .
+            " ('googlemap', 'GM_MIN_ZOOM', '2')," .
+            " ('googlemap', 'GM_PRECISION_0', '0')," .
+            " ('googlemap', 'GM_PRECISION_1', '1')," .
+            " ('googlemap', 'GM_PRECISION_2', '2')," .
+            " ('googlemap', 'GM_PRECISION_3', '3')," .
+            " ('googlemap', 'GM_PRECISION_4', '4')," .
+            " ('googlemap', 'GM_PRECISION_5', '5')," .
+            " ('googlemap', 'GM_XSIZE', '600')," .
+            " ('googlemap', 'GM_YSIZE', '400')," .
+            " ('googlemap', 'GM_PH_XSIZE', '500')," .
+            " ('googlemap', 'GM_PH_YSIZE', '350')," .
+            " ('googlemap', 'GM_PH_MARKER', 'G_FLAG')," .
+            " ('googlemap', 'GM_DISP_SHORT_PLACE', '0')"
+        )->execute();
+    }
 }

@@ -31,10 +31,10 @@ require './includes/session.php';
 
 $controller = new PedigreeController;
 $controller
-	->restrictAccess(Module::isActiveChart($WT_TREE, 'pedigree_chart'))
-	->pageHeader()
-	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
-	->addInlineJavascript('
+    ->restrictAccess(Module::isActiveChart($WT_TREE, 'pedigree_chart'))
+    ->pageHeader()
+    ->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
+    ->addInlineJavascript('
 	(function() {
 		autocomplete();
 
@@ -145,54 +145,54 @@ $controller
 
 ?>
 <div id="pedigree-page">
-	<h2><?php echo $controller->getPageTitle(); ?></h2>
+    <h2><?php echo $controller->getPageTitle(); ?></h2>
 
-	<form name="people" id="people" method="get" action="?">
-		<input type="hidden" name="ged" value="<?php echo $WT_TREE->getNameHtml(); ?>">
-		<input type="hidden" name="show_full" value="<?php echo $controller->showFull(); ?>">
-		<table class="list_table">
-			<tbody>
-				<tr>
-					<th class="descriptionbox wrap">
-						<?php echo I18N::translate('Individual'); ?>
-					</th>
-					<th class="descriptionbox wrap">
-						<?php echo I18N::translate('Generations'); ?>
-					</th>
-					<th class="descriptionbox wrap">
-						<?php echo I18N::translate('Layout'); ?>
-					</th>
-					<th class="descriptionbox wrap">
-						<?php echo I18N::translate('Show details'); ?>
-					</th>
-					<th rowspan="2" class="facts_label03">
-						<input type="submit" value="<?php echo /* I18N: A button label. */ I18N::translate('view'); ?>">
-					</th>
-				</tr>
-				<tr>
-					<td class="optionbox">
-						<input class="pedigree_form" data-autocomplete-type="INDI" type="text" id="rootid" name="rootid"
-							size="3" value="<?php echo $controller->root->getXref(); ?>">
-						<?php echo FunctionsPrint::printFindIndividualLink('rootid'); ?>
-					</td>
-					<td class="optionbox center">
-						<?php echo FunctionsEdit::editFieldInteger('PEDIGREE_GENERATIONS', $controller->generations, 3, $WT_TREE->getPreference('MAX_PEDIGREE_GENERATIONS')); ?>
-					</td>
-					<td class="optionbox center">
-						<?php echo FunctionsEdit::selectEditControl('orientation', array(0 => I18N::translate('Portrait'), 1 => I18N::translate('Landscape'), 2 => I18N::translate('Oldest at top'), 3 => I18N::translate('Oldest at bottom')), null, $controller->orientation); ?>
-					</td>
-					<td class="optionbox center">
-						<?php echo FunctionsEdit::twoStateCheckbox('show_full', $controller->showFull()); ?>
-					</td>
-				</tr>
-			</tbody>
-		</table>
-	</form>
+    <form name="people" id="people" method="get" action="?">
+        <input type="hidden" name="ged" value="<?php echo $WT_TREE->getNameHtml(); ?>">
+        <input type="hidden" name="show_full" value="<?php echo $controller->showFull(); ?>">
+        <table class="list_table">
+            <tbody>
+                <tr>
+                    <th class="descriptionbox wrap">
+                        <?php echo I18N::translate('Individual'); ?>
+                    </th>
+                    <th class="descriptionbox wrap">
+                        <?php echo I18N::translate('Generations'); ?>
+                    </th>
+                    <th class="descriptionbox wrap">
+                        <?php echo I18N::translate('Layout'); ?>
+                    </th>
+                    <th class="descriptionbox wrap">
+                        <?php echo I18N::translate('Show details'); ?>
+                    </th>
+                    <th rowspan="2" class="facts_label03">
+                        <input type="submit" value="<?php echo /* I18N: A button label. */ I18N::translate('view'); ?>">
+                    </th>
+                </tr>
+                <tr>
+                    <td class="optionbox">
+                        <input class="pedigree_form" data-autocomplete-type="INDI" type="text" id="rootid" name="rootid"
+                            size="3" value="<?php echo $controller->root->getXref(); ?>">
+                        <?php echo FunctionsPrint::printFindIndividualLink('rootid'); ?>
+                    </td>
+                    <td class="optionbox center">
+                        <?php echo FunctionsEdit::editFieldInteger('PEDIGREE_GENERATIONS', $controller->generations, 3, $WT_TREE->getPreference('MAX_PEDIGREE_GENERATIONS')); ?>
+                    </td>
+                    <td class="optionbox center">
+                        <?php echo FunctionsEdit::selectEditControl('orientation', array(0 => I18N::translate('Portrait'), 1 => I18N::translate('Landscape'), 2 => I18N::translate('Oldest at top'), 3 => I18N::translate('Oldest at bottom')), null, $controller->orientation); ?>
+                    </td>
+                    <td class="optionbox center">
+                        <?php echo FunctionsEdit::twoStateCheckbox('show_full', $controller->showFull()); ?>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
 <?php
 if ($controller->error_message) {
-	echo '<p class="ui-state-error">', $controller->error_message, '</p>';
+    echo '<p class="ui-state-error">', $controller->error_message, '</p>';
 
-	return;
+    return;
 }
 
 $posn         = I18N::direction() === 'rtl' ? 'right' : 'left';
@@ -203,31 +203,31 @@ echo '<div id="pedigree_chart" class="layout', $controller->orientation, '">';
 //Output the chart
 foreach ($controller->nodes as $i => $node) {
 
-	// -- draw the box
-	printf('<div id="sosa_%s" class="shadow" style="%s:%spx; top:%spx">', $i + 1, $posn, $node["x"], $node["y"]);
+    // -- draw the box
+    printf('<div id="sosa_%s" class="shadow" style="%s:%spx; top:%spx">', $i + 1, $posn, $node["x"], $node["y"]);
 
-	if ($controller->orientation === $controller::OLDEST_AT_TOP) {
-		if ($i >= $lastgenStart) {
-			echo $controller->gotoPreviousGen($i);
-		}
-	} else {
-		if (!$i) {
-			echo $controller->getMenu();
-		}
-	}
+    if ($controller->orientation === $controller::OLDEST_AT_TOP) {
+        if ($i >= $lastgenStart) {
+            echo $controller->gotoPreviousGen($i);
+        }
+    } else {
+        if (!$i) {
+            echo $controller->getMenu();
+        }
+    }
 
-	FunctionsPrint::printPedigreePerson($controller->nodes[$i]['indi'], $controller->showFull());
+    FunctionsPrint::printPedigreePerson($controller->nodes[$i]['indi'], $controller->showFull());
 
-	if ($controller->orientation === $controller::OLDEST_AT_TOP) {
-		if (!$i) {
-			echo $controller->getMenu();
-		}
-	} else {
-		if ($i >= $lastgenStart) {
-			echo $controller->gotoPreviousGen($i);
-		}
-	}
-	echo '</div>';
+    if ($controller->orientation === $controller::OLDEST_AT_TOP) {
+        if (!$i) {
+            echo $controller->getMenu();
+        }
+    } else {
+        if ($i >= $lastgenStart) {
+            echo $controller->gotoPreviousGen($i);
+        }
+    }
+    echo '</div>';
 }
 
 echo '<canvas id="pedigree_canvas" width="' . $controller->chartsize['x'] . '" height="' . $controller->chartsize['y'] . '"><p>No lines between boxes? Unfortunately your browser does not support the HTML5 canvas feature.</p></canvas>';

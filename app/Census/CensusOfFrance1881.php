@@ -19,27 +19,27 @@ namespace Fisharebest\Webtrees\Census;
  * Definitions for a census
  */
 class CensusOfFrance1881 extends CensusOfFrance implements CensusInterface {
-	/**
-	 * When did this census occur.
-	 *
-	 * @return string
-	 */
-	public function censusDate() {
-		return '20 JAN 1881';
-	}
+    /**
+     * When did this census occur.
+     *
+     * @return string
+     */
+    public function censusDate() {
+        return '20 JAN 1881';
+    }
 
-	/**
-	 * The columns of the census.
-	 *
-	 * @return CensusColumnInterface[]
-	 */
-	public function columns() {
-		return array(
-			new CensusColumnSurname($this, 'Noms', 'Noms de famille'),
-			new CensusColumnGivenNames($this, 'Prénoms', ''),
-			new CensusColumnAge($this, 'Âge', ''),
-			new CensusColumnOccupation($this, 'Profession', ''),
-			new CensusColumnRelationToHead($this, 'Position', 'Position dans le ménage'),
-		);
-	}
+    /**
+     * The columns of the census.
+     *
+     * @return CensusColumnInterface[]
+     */
+    public function columns() {
+        return array(
+            new CensusColumnSurname($this, 'Noms', 'Noms de famille'),
+            new CensusColumnGivenNames($this, 'Prénoms', ''),
+            new CensusColumnAge($this, 'Âge', ''),
+            new CensusColumnOccupation($this, 'Profession', ''),
+            new CensusColumnRelationToHead($this, 'Position', 'Position dans le ménage'),
+        );
+    }
 }

@@ -19,33 +19,33 @@ namespace Fisharebest\Webtrees\Census;
  * Definitions for a census
  */
 class CensusOfDenmark1925 extends CensusOfDenmark implements CensusInterface {
-	/**
-	 * When did this census occur.
-	 *
-	 * @return string
-	 */
-	public function censusDate() {
-		return '05 NOV 1925';
-	}
+    /**
+     * When did this census occur.
+     *
+     * @return string
+     */
+    public function censusDate() {
+        return '05 NOV 1925';
+    }
 
-	/**
-	 * The columns of the census.
-	 *
-	 * @return CensusColumnInterface[]
-	 */
-	public function columns() {
-		return array(
-			new CensusColumnFullName($this, 'Navn', 'Samtlige Personers Navn (ogsaa Fornavn). Ved Børn, endnu uden Navn, sættes „Dreng“ eller „Pige“. Midlertidig fraværerade Personer anføres ikke her, men paa Skemaeta Bagside)'),
-			new CensusColumnSexMK($this, 'Køn', 'Kjønnet. Mandkøn (M) eller Kvindekøn (K).'),
-			new CensusColumnBirthDaySlashMonth($this, 'Fødselsdag', ''),
-			new CensusColumnBirthYear($this, 'Fødselsaar', ''),
-			new CensusColumnBirthPlace($this, 'Fødested', ''),
-			new CensusColumnNull($this, 'Statsbergerferhold', ''),
-			new CensusColumnConditionDanish($this, 'Civilstand', 'Ægteskabelig Stillinge. Ugift (U), Gift (G), Enkemand eller Enke (E), Separeret (S), Fraskilt (F).'),
-			new CensusColumnRelationToHead($this, 'Stilling i familien', 'Stilling i Familien: Husfader, Husmoder, Barn, Slangtning o.l., Tjenestetyende, Logerende, Pensioner'),
-			new CensusColumnOccupation($this, 'Erhverv', 'Erhverv eller Livsstilling'),
-			new CensusColumnNull($this, 'Bopæl', 'Bopæl den 5. Novbr. 1924'),
-			new CensusColumnNull($this, 'Anmærkninger', 'Anmærkninger'),
-		);
-	}
+    /**
+     * The columns of the census.
+     *
+     * @return CensusColumnInterface[]
+     */
+    public function columns() {
+        return array(
+            new CensusColumnFullName($this, 'Navn', 'Samtlige Personers Navn (ogsaa Fornavn). Ved Børn, endnu uden Navn, sættes „Dreng“ eller „Pige“. Midlertidig fraværerade Personer anføres ikke her, men paa Skemaeta Bagside)'),
+            new CensusColumnSexMK($this, 'Køn', 'Kjønnet. Mandkøn (M) eller Kvindekøn (K).'),
+            new CensusColumnBirthDaySlashMonth($this, 'Fødselsdag', ''),
+            new CensusColumnBirthYear($this, 'Fødselsaar', ''),
+            new CensusColumnBirthPlace($this, 'Fødested', ''),
+            new CensusColumnNull($this, 'Statsbergerferhold', ''),
+            new CensusColumnConditionDanish($this, 'Civilstand', 'Ægteskabelig Stillinge. Ugift (U), Gift (G), Enkemand eller Enke (E), Separeret (S), Fraskilt (F).'),
+            new CensusColumnRelationToHead($this, 'Stilling i familien', 'Stilling i Familien: Husfader, Husmoder, Barn, Slangtning o.l., Tjenestetyende, Logerende, Pensioner'),
+            new CensusColumnOccupation($this, 'Erhverv', 'Erhverv eller Livsstilling'),
+            new CensusColumnNull($this, 'Bopæl', 'Bopæl den 5. Novbr. 1924'),
+            new CensusColumnNull($this, 'Anmærkninger', 'Anmærkninger'),
+        );
+    }
 }

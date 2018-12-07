@@ -21,17 +21,17 @@ use Fisharebest\Webtrees\Individual;
  * The individual's religion.
  */
 class CensusColumnReligion extends AbstractCensusColumn implements CensusColumnInterface {
-	/**
-	 * Generate the likely value of this census column, based on available information.
-	 *
-	 * @todo Look for RELI tags (or subtags?)
-	 *
-	 * @param Individual      $individual
-	 * @param Individual|null $head
-	 *
-	 * @return string
-	 */
-	public function generate(Individual $individual, Individual $head = null) {
-		return '';
-	}
+    /**
+     * Generate the likely value of this census column, based on available information.
+     *
+     * @todo Look for RELI tags (or subtags?)
+     *
+     * @param Individual      $individual
+     * @param Individual|null $head
+     *
+     * @return string
+     */
+    public function generate(Individual $individual, Individual $head = null) {
+        return '';
+    }
 }

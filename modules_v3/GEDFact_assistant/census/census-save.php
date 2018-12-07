@@ -22,29 +22,29 @@ global $controller;
 global $WT_TREE;
 
 if (!Filter::checkCsrf()) {
-	require WT_ROOT . WT_MODULES_DIR . 'GEDFact_assistant/census/census-edit.php';
+    require WT_ROOT . WT_MODULES_DIR . 'GEDFact_assistant/census/census-edit.php';
 
-	return;
+    return;
 }
 
 // We are creating a CENS/NOTE record linked to these individuals
 $pid_array = Filter::post('pid_array');
 
 if (empty($pid_array)) {
-	$xref = '';
+    $xref = '';
 } else {
-	$NOTE   = Filter::post('NOTE');
-	$gedcom = '0 @XREF@ NOTE ' . preg_replace('/\r?\n/', "\n1 CONT ", trim($NOTE));
-	$xref   = $WT_TREE->createRecord($gedcom)->getXref();
+    $NOTE   = Filter::post('NOTE');
+    $gedcom = '0 @XREF@ NOTE ' . preg_replace('/\r?\n/', "\n1 CONT ", trim($NOTE));
+    $xref   = $WT_TREE->createRecord($gedcom)->getXref();
 }
 
 $controller
-	->addInlineJavascript('window.opener.set_pid_array("' . $pid_array . '");')
-	->addInlineJavascript('openerpasteid("' . $xref . '");')
-	->setPageTitle(I18N::translate('Create a shared note using the census assistant'))
-	->pageHeader();
+    ->addInlineJavascript('window.opener.set_pid_array("' . $pid_array . '");')
+    ->addInlineJavascript('openerpasteid("' . $xref . '");')
+    ->setPageTitle(I18N::translate('Create a shared note using the census assistant'))
+    ->pageHeader();
 ?>
 
 <div id="edit_interface-page">
-	<h4><?php echo $controller->getPageTitle() ?></h4>
+    <h4><?php echo $controller->getPageTitle() ?></h4>
 </div>

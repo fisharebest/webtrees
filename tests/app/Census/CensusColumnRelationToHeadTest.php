@@ -22,24 +22,24 @@ use Mockery;
  * Test harness for the class CensusColumnRelationToHead
  */
 class CensusColumnRelationToHeadTest extends \PHPUnit_Framework_TestCase {
-	/**
-	 * Delete mock objects
-	 */
-	public function tearDown() {
-		Mockery::close();
-	}
+    /**
+     * Delete mock objects
+     */
+    public function tearDown() {
+        Mockery::close();
+    }
 
-	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnRelationToHead
-	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
-	 */
-	public function testNull() {
-		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
+    /**
+     * @covers Fisharebest\Webtrees\Census\CensusColumnRelationToHead
+     * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
+     */
+    public function testNull() {
+        $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
 
-		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
+        $census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
 
-		$column = new CensusColumnRelationToHead($census, '', '');
+        $column = new CensusColumnRelationToHead($census, '', '');
 
-		$this->assertSame('', $column->generate($individual));
-	}
+        $this->assertSame('', $column->generate($individual));
+    }
 }

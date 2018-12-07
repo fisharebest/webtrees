@@ -19,37 +19,37 @@ namespace Fisharebest\Webtrees\Census;
  * Definitions for a census
  */
 class CensusOfUnitedStates1810 extends CensusOfUnitedStates implements CensusInterface {
-	/**
-	 * When did this census occur.
-	 *
-	 * @return string
-	 */
-	public function censusDate() {
-		return '06 AUG 1810';
-	}
+    /**
+     * When did this census occur.
+     *
+     * @return string
+     */
+    public function censusDate() {
+        return '06 AUG 1810';
+    }
 
-	/**
-	 * The columns of the census.
-	 *
-	 * @return CensusColumnInterface[]
-	 */
-	public function columns() {
-		return array(
-			new CensusColumnFullName($this, 'Name', 'Name of head of family'),
-			new CensusColumnNull($this, 'M0-10', 'Free white males 0-10 years'),
-			new CensusColumnNull($this, 'M10-16', 'Free white males 10-16 years'),
-			new CensusColumnNull($this, 'M16-26', 'Free white males 16-26 years'),
-			new CensusColumnNull($this, 'M26-45', 'Free white males 26-45 years'),
-			new CensusColumnNull($this, 'M45+', 'Free white males 45+ years'),
-			new CensusColumnNull($this, 'F0-10', 'Free white females 0-10 years'),
-			new CensusColumnNull($this, 'F10-16', 'Free white females 10-16 years'),
-			new CensusColumnNull($this, 'F16-26', 'Free white females 16-26 years'),
-			new CensusColumnNull($this, 'F26-45', 'Free white females 26-45 years'),
-			new CensusColumnNull($this, 'F45+', 'Free white females 45+ years'),
-			new CensusColumnNull($this, 'Free', 'All other free persons, except Indians not taxed'),
-			new CensusColumnNull($this, 'Slaves', 'Number of slaves'),
-			new CensusColumnNull($this, 'Total', 'Total number of individuals'),
+    /**
+     * The columns of the census.
+     *
+     * @return CensusColumnInterface[]
+     */
+    public function columns() {
+        return array(
+            new CensusColumnFullName($this, 'Name', 'Name of head of family'),
+            new CensusColumnNull($this, 'M0-10', 'Free white males 0-10 years'),
+            new CensusColumnNull($this, 'M10-16', 'Free white males 10-16 years'),
+            new CensusColumnNull($this, 'M16-26', 'Free white males 16-26 years'),
+            new CensusColumnNull($this, 'M26-45', 'Free white males 26-45 years'),
+            new CensusColumnNull($this, 'M45+', 'Free white males 45+ years'),
+            new CensusColumnNull($this, 'F0-10', 'Free white females 0-10 years'),
+            new CensusColumnNull($this, 'F10-16', 'Free white females 10-16 years'),
+            new CensusColumnNull($this, 'F16-26', 'Free white females 16-26 years'),
+            new CensusColumnNull($this, 'F26-45', 'Free white females 26-45 years'),
+            new CensusColumnNull($this, 'F45+', 'Free white females 45+ years'),
+            new CensusColumnNull($this, 'Free', 'All other free persons, except Indians not taxed'),
+            new CensusColumnNull($this, 'Slaves', 'Number of slaves'),
+            new CensusColumnNull($this, 'Total', 'Total number of individuals'),
 
-		);
-	}
+        );
+    }
 }

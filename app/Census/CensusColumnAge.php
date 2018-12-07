@@ -22,15 +22,15 @@ use Fisharebest\Webtrees\Individual;
  * The individual's age.
  */
 class CensusColumnAge extends AbstractCensusColumn implements CensusColumnInterface {
-	/**
-	 * Generate the likely value of this census column, based on available information.
-	 *
-	 * @param Individual      $individual
-	 * @param Individual|null $head
-	 *
-	 * @return string
-	 */
-	public function generate(Individual $individual, Individual $head = null) {
-		return (string) Date::getAge($individual->getEstimatedBirthDate(), $this->date(), 0);
-	}
+    /**
+     * Generate the likely value of this census column, based on available information.
+     *
+     * @param Individual      $individual
+     * @param Individual|null $head
+     *
+     * @return string
+     */
+    public function generate(Individual $individual, Individual $head = null) {
+        return (string) Date::getAge($individual->getEstimatedBirthDate(), $this->date(), 0);
+    }
 }

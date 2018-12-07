@@ -22,12 +22,12 @@ use Fisharebest\Webtrees\Schema\MigrationInterface;
  * Upgrade the database schema from version 4 to version 5.
  */
 class Migration4 implements MigrationInterface {
-	/** {@inheritDoc} */
-	public function upgrade() {
-		// Delete some old/unused configuration settings
-		Database::exec(
-			"DELETE FROM `##module_setting` WHERE module_name='googlemap' AND setting_name IN (
+    /** {@inheritDoc} */
+    public function upgrade() {
+        // Delete some old/unused configuration settings
+        Database::exec(
+            "DELETE FROM `##module_setting` WHERE module_name='googlemap' AND setting_name IN (
 	'GM_API_KEY', 'GM_DEFAULT_TOP_VALUE', 'GM_DISP_COUNT', 'GM_MAX_NOF_LEVELS', 'GM_PH_CONTROLS', 'GM_PH_WHEEL', 'GM_PRE_POST_MODE_1', 'GM_PRE_POST_MODE_2', 'GM_PRE_POST_MODE_3', 'GM_PRE_POST_MODE_4', 'GM_PRE_POST_MODE_5', 'GM_PRE_POST_MODE_6', 'GM_PRE_POST_MODE_7', 'GM_PRE_POST_MODE_8', 'GM_PRE_POST_MODE_9')"
-		);
-	}
+        );
+    }
 }

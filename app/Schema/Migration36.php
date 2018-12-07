@@ -21,13 +21,13 @@ use Fisharebest\Webtrees\Database;
  * Upgrade the database schema from version 36 to version 37.
  */
 class Migration36 implements MigrationInterface {
-	/**
-	 * Upgrade to to the next version
-	 */
-	public function upgrade() {
-		// IPv6 addresses can be up to 45 characters.
-		Database::exec("ALTER TABLE `##log`     CHANGE ip_address ip_address VARCHAR(45) NOT NULL");
-		Database::exec("ALTER TABLE `##message` CHANGE ip_address ip_address VARCHAR(45) NOT NULL");
-		Database::exec("ALTER TABLE `##session` CHANGE ip_address ip_address VARCHAR(45) NOT NULL");
-	}
+    /**
+     * Upgrade to to the next version
+     */
+    public function upgrade() {
+        // IPv6 addresses can be up to 45 characters.
+        Database::exec("ALTER TABLE `##log`     CHANGE ip_address ip_address VARCHAR(45) NOT NULL");
+        Database::exec("ALTER TABLE `##message` CHANGE ip_address ip_address VARCHAR(45) NOT NULL");
+        Database::exec("ALTER TABLE `##session` CHANGE ip_address ip_address VARCHAR(45) NOT NULL");
+    }
 }

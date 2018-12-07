@@ -25,9 +25,9 @@ $controller = new HourglassController;
 header('Content-type: text/html; charset=UTF-8');
 
 if (Filter::get('type') === 'desc') {
-	$controller->dgenerations = 1;
-	$controller->printDescendency($controller->root, 0, false);
+    $controller->dgenerations = 1;
+    $controller->printDescendency($controller->root, 0, false);
 } else {
-	$controller->generations = 1;
-	$controller->printPersonPedigree($controller->root, 0);
+    $controller->generations = 1;
+    $controller->printPersonPedigree($controller->root, 0);
 }

@@ -22,24 +22,24 @@ use Mockery;
  * Test harness for the class CensusColumnNull
  */
 class CensusColumnNullTest extends \PHPUnit_Framework_TestCase {
-	/**
-	 * Delete mock objects
-	 */
-	public function tearDown() {
-		Mockery::close();
-	}
+    /**
+     * Delete mock objects
+     */
+    public function tearDown() {
+        Mockery::close();
+    }
 
-	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnNull
-	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
-	 */
-	public function testNull() {
-		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
+    /**
+     * @covers Fisharebest\Webtrees\Census\CensusColumnNull
+     * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
+     */
+    public function testNull() {
+        $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
 
-		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
+        $census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
 
-		$column = new CensusColumnNull($census, '', '');
+        $column = new CensusColumnNull($census, '', '');
 
-		$this->assertSame('', $column->generate($individual));
-	}
+        $this->assertSame('', $column->generate($individual));
+    }
 }

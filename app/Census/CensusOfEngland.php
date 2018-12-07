@@ -19,31 +19,31 @@ namespace Fisharebest\Webtrees\Census;
  * Definitions for a census
  */
 class CensusOfEngland extends Census implements CensusPlaceInterface {
-	/**
-	 * All available censuses for this census place.
-	 *
-	 * @return CensusInterface[]
-	 */
-	public function allCensusDates() {
-		return array(
-			new CensusOfEngland1841(),
-			new CensusOfEngland1851(),
-			new CensusOfEngland1861(),
-			new CensusOfEngland1871(),
-			new CensusOfEngland1881(),
-			new CensusOfEngland1891(),
-			new CensusOfEngland1901(),
-			new CensusOfEngland1911(),
-			new RegisterOfEngland1939(),
-		);
-	}
+    /**
+     * All available censuses for this census place.
+     *
+     * @return CensusInterface[]
+     */
+    public function allCensusDates() {
+        return array(
+            new CensusOfEngland1841(),
+            new CensusOfEngland1851(),
+            new CensusOfEngland1861(),
+            new CensusOfEngland1871(),
+            new CensusOfEngland1881(),
+            new CensusOfEngland1891(),
+            new CensusOfEngland1901(),
+            new CensusOfEngland1911(),
+            new RegisterOfEngland1939(),
+        );
+    }
 
-	/**
-	 * Where did this census occur, in GEDCOM format.
-	 *
-	 * @return string
-	 */
-	public function censusPlace() {
-		return 'England';
-	}
+    /**
+     * Where did this census occur, in GEDCOM format.
+     *
+     * @return string
+     */
+    public function censusPlace() {
+        return 'England';
+    }
 }

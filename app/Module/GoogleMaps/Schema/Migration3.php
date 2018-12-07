@@ -22,15 +22,15 @@ use Fisharebest\Webtrees\Schema\MigrationInterface;
  * Upgrade the database schema from version 3 to version 4.
  */
 class Migration3 implements MigrationInterface {
-	/** {@inheritDoc} */
-	public function upgrade() {
-		// Combine the two ways of enabling the GM module
-		Database::exec(
-			"UPDATE `##module` m, `##module_setting` ms SET m.status=CASE WHEN (m.status=1 AND ms.setting_value=1) THEN 'enabled' ELSE 'disabled' END WHERE m.module_name=ms.module_name AND m.module_name='googlemap' AND ms.setting_name='GM_ENABLED'"
-		);
+    /** {@inheritDoc} */
+    public function upgrade() {
+        // Combine the two ways of enabling the GM module
+        Database::exec(
+            "UPDATE `##module` m, `##module_setting` ms SET m.status=CASE WHEN (m.status=1 AND ms.setting_value=1) THEN 'enabled' ELSE 'disabled' END WHERE m.module_name=ms.module_name AND m.module_name='googlemap' AND ms.setting_name='GM_ENABLED'"
+        );
 
-		Database::exec(
-			"DELETE FROM `##module_setting` WHERE module_name='googlemap' AND setting_name='GM_ENABLED'"
-		);
-	}
+        Database::exec(
+            "DELETE FROM `##module_setting` WHERE module_name='googlemap' AND setting_name='GM_ENABLED'"
+        );
+    }
 }

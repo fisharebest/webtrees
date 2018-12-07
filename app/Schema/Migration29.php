@@ -22,19 +22,19 @@ use PDOException;
  * Upgrade the database schema from version 29 to version 30.
  */
 class Migration29 implements MigrationInterface {
-	/**
-	 * Upgrade to to the next version
-	 */
-	public function upgrade() {
-		// Originally migrated from PhpGedView, but never used.
-		Database::exec("DROP TABLE IF EXISTS `##ip_address`");
+    /**
+     * Upgrade to to the next version
+     */
+    public function upgrade() {
+        // Originally migrated from PhpGedView, but never used.
+        Database::exec("DROP TABLE IF EXISTS `##ip_address`");
 
-		// No longer used
-		Database::exec("DELETE FROM `##user_setting` WHERE setting_name IN ('editaccount')");
-		Database::exec("DELETE FROM `##gedcom_setting` WHERE setting_name IN ('SHOW_STATS')");
-		Database::exec("DELETE FROM `##site_setting` WHERE setting_name IN ('REQUIRE_ADMIN_AUTH_REGISTRATION')");
+        // No longer used
+        Database::exec("DELETE FROM `##user_setting` WHERE setting_name IN ('editaccount')");
+        Database::exec("DELETE FROM `##gedcom_setting` WHERE setting_name IN ('SHOW_STATS')");
+        Database::exec("DELETE FROM `##site_setting` WHERE setting_name IN ('REQUIRE_ADMIN_AUTH_REGISTRATION')");
 
-		// https://bugs.launchpad.net/webtrees/+bug/1405672
+        // https://bugs.launchpad.net/webtrees/+bug/1405672
         try {
             Database::exec(
                 "UPDATE `##site_access_rule` SET user_agent_pattern = 'Mozilla/5.0 (% Konqueror/%'" .
@@ -44,32 +44,32 @@ class Migration29 implements MigrationInterface {
             // Duplicate key?  Already done?
         }
 
-		// Embedded variables are based on function names - which were renamed for PSR2
-		Database::exec(
-			"UPDATE `##block_setting` " .
-			" JOIN `##block` USING (block_id)" .
-			" SET setting_value = REPLACE(setting_value, '#WT_VERSION#', '#webtreesVersion#')" .
-			" WHERE setting_name = 'html' AND module_name = 'html'"
-		);
-		Database::exec(
-			"UPDATE `##block_setting` " .
-			" JOIN `##block` USING (block_id)" .
-			" SET setting_value = REPLACE(setting_value, '#browserTime24#', '#browserTime#')" .
-			" WHERE setting_name = 'html' AND module_name = 'html'"
-		);
+        // Embedded variables are based on function names - which were renamed for PSR2
+        Database::exec(
+            "UPDATE `##block_setting` " .
+            " JOIN `##block` USING (block_id)" .
+            " SET setting_value = REPLACE(setting_value, '#WT_VERSION#', '#webtreesVersion#')" .
+            " WHERE setting_name = 'html' AND module_name = 'html'"
+        );
+        Database::exec(
+            "UPDATE `##block_setting` " .
+            " JOIN `##block` USING (block_id)" .
+            " SET setting_value = REPLACE(setting_value, '#browserTime24#', '#browserTime#')" .
+            " WHERE setting_name = 'html' AND module_name = 'html'"
+        );
 
-		// Language settings have changed from locale (en_GB) to language tag (en-GB)
-		Database::exec(
-			"UPDATE `##gedcom_setting` SET setting_value = REPLACE(setting_value, '_', '-') WHERE setting_name = 'language'"
-		);
-		Database::exec(
-			"UPDATE `##site_setting` SET setting_value = REPLACE(setting_value, '_', '-') WHERE setting_name = 'language'"
-		);
-		Database::exec(
-			"UPDATE `##user_setting` SET setting_value = REPLACE(setting_value, '_', '-') WHERE setting_name = 'language'"
-		);
-		Database::exec(
-			"UPDATE `##block_setting` SET setting_value = REPLACE(setting_value, '_', '-') WHERE setting_name = 'languages'"
-		);
-	}
+        // Language settings have changed from locale (en_GB) to language tag (en-GB)
+        Database::exec(
+            "UPDATE `##gedcom_setting` SET setting_value = REPLACE(setting_value, '_', '-') WHERE setting_name = 'language'"
+        );
+        Database::exec(
+            "UPDATE `##site_setting` SET setting_value = REPLACE(setting_value, '_', '-') WHERE setting_name = 'language'"
+        );
+        Database::exec(
+            "UPDATE `##user_setting` SET setting_value = REPLACE(setting_value, '_', '-') WHERE setting_name = 'language'"
+        );
+        Database::exec(
+            "UPDATE `##block_setting` SET setting_value = REPLACE(setting_value, '_', '-') WHERE setting_name = 'languages'"
+        );
+    }
 }

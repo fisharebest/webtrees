@@ -21,19 +21,19 @@ use Fisharebest\Webtrees\Individual;
  * The individual's occupation.
  */
 class CensusColumnOccupation extends AbstractCensusColumn implements CensusColumnInterface {
-	/**
-	 * Generate the likely value of this census column, based on available information.
-	 *
-	 * @param Individual      $individual
-	 * @param Individual|null $head
-	 *
-	 * @return string
-	 */
-	public function generate(Individual $individual, Individual $head = null) {
-		foreach ($individual->getFacts('OCCU') as $fact) {
-			return $fact->getValue();
-		}
+    /**
+     * Generate the likely value of this census column, based on available information.
+     *
+     * @param Individual      $individual
+     * @param Individual|null $head
+     *
+     * @return string
+     */
+    public function generate(Individual $individual, Individual $head = null) {
+        foreach ($individual->getFacts('OCCU') as $fact) {
+            return $fact->getValue();
+        }
 
-		return '';
-	}
+        return '';
+    }
 }

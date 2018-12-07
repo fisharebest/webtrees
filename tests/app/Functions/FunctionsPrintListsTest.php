@@ -19,10 +19,10 @@
  * Unit tests for the global functions in the file includes/functions/functions_print_lists.php
  */
 class FunctionsPrintListsTest extends \PHPUnit_Framework_TestCase {
-	/**
-	 * Test that the class exists
-	 */
-	public function testClassExists() {
-		$this->assertTrue(class_exists('\Fisharebest\Webtrees\Functions\FunctionsPrintLists'));
-	}
+    /**
+     * Test that the class exists
+     */
+    public function testClassExists() {
+        $this->assertTrue(class_exists('\Fisharebest\Webtrees\Functions\FunctionsPrintLists'));
+    }
 }

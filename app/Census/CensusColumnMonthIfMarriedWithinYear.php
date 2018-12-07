@@ -21,26 +21,26 @@ use Fisharebest\Webtrees\Individual;
  * The month of marriage, if within the last year.
  */
 class CensusColumnMonthIfMarriedWithinYear extends AbstractCensusColumn implements CensusColumnInterface {
-	/**
-	 * Generate the likely value of this census column, based on available information.
-	 *
-	 * @param Individual      $individual
-	 * @param Individual|null $head
-	 *
-	 * @return string
-	 */
-	public function generate(Individual $individual, Individual $head = null) {
-		foreach ($individual->getSpouseFamilies() as $family) {
-			foreach ($family->getFacts('MARR') as $fact) {
-				$marriage_jd = $fact->getDate()->julianDay();
-				$census_jd   = $this->date()->julianDay();
-				if ($marriage_jd <= $census_jd && $marriage_jd >= $census_jd - 365) {
-					// Use the GEDCOM month, as we need this in English - for the US census
-					return ucfirst(strtolower($fact->getDate()->minimumDate()->format('%O')));
-				}
-			}
-		}
+    /**
+     * Generate the likely value of this census column, based on available information.
+     *
+     * @param Individual      $individual
+     * @param Individual|null $head
+     *
+     * @return string
+     */
+    public function generate(Individual $individual, Individual $head = null) {
+        foreach ($individual->getSpouseFamilies() as $family) {
+            foreach ($family->getFacts('MARR') as $fact) {
+                $marriage_jd = $fact->getDate()->julianDay();
+                $census_jd   = $this->date()->julianDay();
+                if ($marriage_jd <= $census_jd && $marriage_jd >= $census_jd - 365) {
+                    // Use the GEDCOM month, as we need this in English - for the US census
+                    return ucfirst(strtolower($fact->getDate()->minimumDate()->format('%O')));
+                }
+            }
+        }
 
-		return '';
-	}
+        return '';
+    }
 }

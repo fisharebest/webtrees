@@ -31,8 +31,8 @@ require './includes/session.php';
 
 $controller = new PageController;
 $controller
-	->restrictAccess(Auth::isManager($WT_TREE))
-	->setPageTitle(I18N::translate('Website logs'));
+    ->restrictAccess(Auth::isManager($WT_TREE))
+    ->setPageTitle(I18N::translate('Website logs'));
 
 $earliest = Database::prepare("SELECT IFNULL(DATE(MIN(log_time)), CURDATE()) FROM `##log`")->execute(array())->fetchOne();
 $latest   = Database::prepare("SELECT IFNULL(DATE(MAX(log_time)), CURDATE()) FROM `##log`")->execute(array())->fetchOne();
@@ -49,148 +49,148 @@ $search = Filter::get('search');
 $search = isset($search['value']) ? $search['value'] : null;
 
 if (Auth::isAdmin()) {
-	// Administrators can see all logs
-	$gedc = Filter::get('gedc');
+    // Administrators can see all logs
+    $gedc = Filter::get('gedc');
 } else {
-	// Managers can only see logs relating to this gedcom
-	$gedc = $WT_TREE->getName();
+    // Managers can only see logs relating to this gedcom
+    $gedc = $WT_TREE->getName();
 }
 
 $sql_select =
-	"SELECT SQL_CALC_FOUND_ROWS log_id, log_time, log_type, log_message, ip_address, IFNULL(user_name, '<none>') AS user_name, IFNULL(gedcom_name, '<none>') AS gedcom_name" .
-	" FROM `##log`" .
-	" LEFT JOIN `##user` USING (user_id)" . // user may be deleted
-	" LEFT JOIN `##gedcom` USING (gedcom_id)"; // gedcom may be deleted
+    "SELECT SQL_CALC_FOUND_ROWS log_id, log_time, log_type, log_message, ip_address, IFNULL(user_name, '<none>') AS user_name, IFNULL(gedcom_name, '<none>') AS gedcom_name" .
+    " FROM `##log`" .
+    " LEFT JOIN `##user` USING (user_id)" . // user may be deleted
+    " LEFT JOIN `##gedcom` USING (gedcom_id)"; // gedcom may be deleted
 
 $where = " WHERE 1";
 $args  = array();
 if ($search) {
-	$where .= " AND log_message LIKE CONCAT('%', :search, '%')";
-	$args['search'] = $search;
+    $where .= " AND log_message LIKE CONCAT('%', :search, '%')";
+    $args['search'] = $search;
 }
 if ($from) {
-	$where .= " AND log_time >= :from";
-	$args['from'] = $from;
+    $where .= " AND log_time >= :from";
+    $args['from'] = $from;
 }
 if ($to) {
-	$where .= " AND log_time < TIMESTAMPADD(DAY, 1 , :to)"; // before end of the day
-	$args['to'] = $to;
+    $where .= " AND log_time < TIMESTAMPADD(DAY, 1 , :to)"; // before end of the day
+    $args['to'] = $to;
 }
 if ($type) {
-	$where .= " AND log_type = :type";
-	$args['type'] = $type;
+    $where .= " AND log_type = :type";
+    $args['type'] = $type;
 }
 if ($text) {
-	$where .= " AND log_message LIKE CONCAT('%', :text, '%')";
-	$args['text'] = $text;
+    $where .= " AND log_message LIKE CONCAT('%', :text, '%')";
+    $args['text'] = $text;
 }
 if ($ip) {
-	$where .= " AND ip_address LIKE CONCAT('%', :ip, '%')";
-	$args['ip'] = $ip;
+    $where .= " AND ip_address LIKE CONCAT('%', :ip, '%')";
+    $args['ip'] = $ip;
 }
 if ($user) {
-	$where .= " AND user_name LIKE CONCAT('%', :user, '%')";
-	$args['user'] = $user;
+    $where .= " AND user_name LIKE CONCAT('%', :user, '%')";
+    $args['user'] = $user;
 }
 if ($gedc) {
-	$where .= " AND gedcom_name LIKE CONCAT('%', :gedc, '%')";
-	$args['gedc'] = $gedc;
+    $where .= " AND gedcom_name LIKE CONCAT('%', :gedc, '%')";
+    $args['gedc'] = $gedc;
 }
 
 switch ($action) {
 case 'delete':
-	$sql_delete =
-		"DELETE `##log` FROM `##log`" .
-		" LEFT JOIN `##user` USING (user_id)" . // user may be deleted
-		" LEFT JOIN `##gedcom` USING (gedcom_id)"; // gedcom may be deleted
+    $sql_delete =
+        "DELETE `##log` FROM `##log`" .
+        " LEFT JOIN `##user` USING (user_id)" . // user may be deleted
+        " LEFT JOIN `##gedcom` USING (gedcom_id)"; // gedcom may be deleted
 
-	Database::prepare($sql_delete . $where)->execute($args);
-	break;
+    Database::prepare($sql_delete . $where)->execute($args);
+    break;
 
 case 'export':
-	header('Content-Type: text/csv');
-	header('Content-Disposition: attachment; filename="webtrees-logs.csv"');
-	$rows = Database::prepare($sql_select . $where . ' ORDER BY log_id')->execute($args)->fetchAll();
-	foreach ($rows as $row) {
-		echo
-			'"', $row->log_time, '",',
-			'"', $row->log_type, '",',
-			'"', str_replace('"', '""', $row->log_message), '",',
-			'"', $row->ip_address, '",',
-			'"', str_replace('"', '""', $row->user_name), '",',
-			'"', str_replace('"', '""', $row->gedcom_name), '"',
-			"\n";
-	}
+    header('Content-Type: text/csv');
+    header('Content-Disposition: attachment; filename="webtrees-logs.csv"');
+    $rows = Database::prepare($sql_select . $where . ' ORDER BY log_id')->execute($args)->fetchAll();
+    foreach ($rows as $row) {
+        echo
+            '"', $row->log_time, '",',
+            '"', $row->log_type, '",',
+            '"', str_replace('"', '""', $row->log_message), '",',
+            '"', $row->ip_address, '",',
+            '"', str_replace('"', '""', $row->user_name), '",',
+            '"', str_replace('"', '""', $row->gedcom_name), '"',
+            "\n";
+    }
 
-	return;
+    return;
 case 'load_json':
-	$start  = Filter::getInteger('start');
-	$length = Filter::getInteger('length');
-	$order  = Filter::getArray('order');
+    $start  = Filter::getInteger('start');
+    $length = Filter::getInteger('length');
+    $order  = Filter::getArray('order');
 
-	if ($order) {
-		$order_by = " ORDER BY ";
-		foreach ($order as $key => $value) {
-			if ($key > 0) {
-				$order_by .= ',';
-			}
-			// Datatables numbers columns 0, 1, 2
-			// MySQL numbers columns 1, 2, 3
-			switch ($value['dir']) {
-			case 'asc':
-				$order_by .= (1 + $value['column']) . " ASC ";
-				break;
-			case 'desc':
-				$order_by .= (1 + $value['column']) . " DESC ";
-				break;
-			}
-		}
-	} else {
-		$order_by = " ORDER BY 1 ASC";
-	}
+    if ($order) {
+        $order_by = " ORDER BY ";
+        foreach ($order as $key => $value) {
+            if ($key > 0) {
+                $order_by .= ',';
+            }
+            // Datatables numbers columns 0, 1, 2
+            // MySQL numbers columns 1, 2, 3
+            switch ($value['dir']) {
+            case 'asc':
+                $order_by .= (1 + $value['column']) . " ASC ";
+                break;
+            case 'desc':
+                $order_by .= (1 + $value['column']) . " DESC ";
+                break;
+            }
+        }
+    } else {
+        $order_by = " ORDER BY 1 ASC";
+    }
 
-	if ($length) {
-		Auth::user()->setPreference('admin_site_log_page_size', $length);
-		$limit          = " LIMIT :limit OFFSET :offset";
-		$args['limit']  = $length;
-		$args['offset'] = $start;
-	} else {
-		$limit = "";
-	}
+    if ($length) {
+        Auth::user()->setPreference('admin_site_log_page_size', $length);
+        $limit          = " LIMIT :limit OFFSET :offset";
+        $args['limit']  = $length;
+        $args['offset'] = $start;
+    } else {
+        $limit = "";
+    }
 
-	// This becomes a JSON list, not array, so need to fetch with numeric keys.
-	$data = Database::prepare($sql_select . $where . $order_by . $limit)->execute($args)->fetchAll(PDO::FETCH_NUM);
-	foreach ($data as &$datum) {
-		$datum[2] = Filter::escapeHtml($datum[2]);
-		$datum[3] = '<span dir="auto">' . Filter::escapeHtml($datum[3]) . '</span>';
-		$datum[4] = '<span dir="auto">' . Filter::escapeHtml($datum[4]) . '</span>';
-		$datum[5] = '<span dir="auto">' . Filter::escapeHtml($datum[5]) . '</span>';
-		$datum[6] = '<span dir="auto">' . Filter::escapeHtml($datum[6]) . '</span>';
-	}
+    // This becomes a JSON list, not array, so need to fetch with numeric keys.
+    $data = Database::prepare($sql_select . $where . $order_by . $limit)->execute($args)->fetchAll(PDO::FETCH_NUM);
+    foreach ($data as &$datum) {
+        $datum[2] = Filter::escapeHtml($datum[2]);
+        $datum[3] = '<span dir="auto">' . Filter::escapeHtml($datum[3]) . '</span>';
+        $datum[4] = '<span dir="auto">' . Filter::escapeHtml($datum[4]) . '</span>';
+        $datum[5] = '<span dir="auto">' . Filter::escapeHtml($datum[5]) . '</span>';
+        $datum[6] = '<span dir="auto">' . Filter::escapeHtml($datum[6]) . '</span>';
+    }
 
-	// Total filtered/unfiltered rows
-	$recordsFiltered = (int) Database::prepare("SELECT FOUND_ROWS()")->fetchOne();
-	$recordsTotal    = (int) Database::prepare("SELECT COUNT(*) FROM `##log`")->fetchOne();
+    // Total filtered/unfiltered rows
+    $recordsFiltered = (int) Database::prepare("SELECT FOUND_ROWS()")->fetchOne();
+    $recordsTotal    = (int) Database::prepare("SELECT COUNT(*) FROM `##log`")->fetchOne();
 
-	header('Content-type: application/json');
-	// See http://www.datatables.net/usage/server-side
-	echo json_encode(array(
-		'draw'            => Filter::getInteger('draw'),
-		'recordsTotal'    => $recordsTotal,
-		'recordsFiltered' => $recordsFiltered,
-		'data'            => $data,
-	));
+    header('Content-type: application/json');
+    // See http://www.datatables.net/usage/server-side
+    echo json_encode(array(
+        'draw'            => Filter::getInteger('draw'),
+        'recordsTotal'    => $recordsTotal,
+        'recordsFiltered' => $recordsFiltered,
+        'data'            => $data,
+    ));
 
-	return;
+    return;
 }
 
 $controller
-	->pageHeader()
-	->addExternalJavascript(WT_JQUERY_DATATABLES_JS_URL)
-	->addExternalJavascript(WT_DATATABLES_BOOTSTRAP_JS_URL)
-	->addExternalJavascript(WT_MOMENT_JS_URL)
-	->addExternalJavascript(WT_BOOTSTRAP_DATETIMEPICKER_JS_URL)
-	->addInlineJavascript('
+    ->pageHeader()
+    ->addExternalJavascript(WT_JQUERY_DATATABLES_JS_URL)
+    ->addExternalJavascript(WT_DATATABLES_BOOTSTRAP_JS_URL)
+    ->addExternalJavascript(WT_MOMENT_JS_URL)
+    ->addExternalJavascript(WT_BOOTSTRAP_DATETIMEPICKER_JS_URL)
+    ->addInlineJavascript('
 		jQuery(".table-site-logs").dataTable( {
 			processing: true,
 			serverSide: true,
@@ -228,109 +228,109 @@ $controller
 
 $users_array = array();
 foreach (User::all() as $tmp_user) {
-	$users_array[$tmp_user->getUserName()] = $tmp_user->getUserName();
+    $users_array[$tmp_user->getUserName()] = $tmp_user->getUserName();
 }
 
 ?>
 <ol class="breadcrumb small">
-	<li><a href="admin.php"><?php echo I18N::translate('Control panel') ?></a></li>
-	<li class="active"><?php echo $controller->getPageTitle() ?></li>
+    <li><a href="admin.php"><?php echo I18N::translate('Control panel') ?></a></li>
+    <li class="active"><?php echo $controller->getPageTitle() ?></li>
 </ol>
 
 <h1><?php echo $controller->getPageTitle() ?></h1>
 
 <form class="form" name="logs">
-	<input type="hidden" name="action" value="show">
+    <input type="hidden" name="action" value="show">
 
-	<div class="row">
-		<div class="form-group col-xs-6 col-sm-3">
-			<label for="from">
-				<?php echo /* I18N: label for the start of a date range (from x to y) */ I18N::translate('From') ?>
-			</label>
-			<div class="input-group date">
-				<input type="text" autocomplete="off" class="form-control" id="from" name="from" value="<?php echo Filter::escapeHtml($from) ?>" autocomplete="off">
-				<span class="input-group-addon"><span class="fa fa-calendar"></span></span>
-			</div>
-		</div>
+    <div class="row">
+        <div class="form-group col-xs-6 col-sm-3">
+            <label for="from">
+                <?php echo /* I18N: label for the start of a date range (from x to y) */ I18N::translate('From') ?>
+            </label>
+            <div class="input-group date">
+                <input type="text" autocomplete="off" class="form-control" id="from" name="from" value="<?php echo Filter::escapeHtml($from) ?>" autocomplete="off">
+                <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+            </div>
+        </div>
 
-		<div class="form-group col-xs-6 col-sm-3">
-			<label for="to">
-				<?php echo /* I18N: label for the end of a date range (from x to y) */ I18N::translate('To') ?>
-			</label>
-			<div class="input-group date">
-				<input type="text" autocomplete="off" class="form-control" id="to" name="to" value="<?php echo Filter::escapeHtml($to) ?>" autocomplete="off">
-				<span class="input-group-addon"><span class="fa fa-calendar"></span></span>
-			</div>
-		</div>
+        <div class="form-group col-xs-6 col-sm-3">
+            <label for="to">
+                <?php echo /* I18N: label for the end of a date range (from x to y) */ I18N::translate('To') ?>
+            </label>
+            <div class="input-group date">
+                <input type="text" autocomplete="off" class="form-control" id="to" name="to" value="<?php echo Filter::escapeHtml($to) ?>" autocomplete="off">
+                <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+            </div>
+        </div>
 
-		<div class="form-group col-xs-6 col-sm-2">
-			<label for="type">
-				<?php echo I18N::translate('Type') ?>
-			</label>
-			<?php echo FunctionsEdit::selectEditControl('type', array('' => '', 'auth' => 'auth', 'config' => 'config', 'debug' => 'debug', 'edit' => 'edit', 'error' => 'error', 'media' => 'media', 'search' => 'search'), null, $type, 'class="form-control"') ?>
-		</div>
+        <div class="form-group col-xs-6 col-sm-2">
+            <label for="type">
+                <?php echo I18N::translate('Type') ?>
+            </label>
+            <?php echo FunctionsEdit::selectEditControl('type', array('' => '', 'auth' => 'auth', 'config' => 'config', 'debug' => 'debug', 'edit' => 'edit', 'error' => 'error', 'media' => 'media', 'search' => 'search'), null, $type, 'class="form-control"') ?>
+        </div>
 
-		<div class="form-group col-xs-6 col-sm-4">
-			<label for="ip">
-				<?php echo I18N::translate('IP address') ?>
-			</label>
-			<input class="form-control" type="text" id="ip" name="ip" value="<?php echo Filter::escapeHtml($ip) ?>">
-		</div>
-	</div>
+        <div class="form-group col-xs-6 col-sm-4">
+            <label for="ip">
+                <?php echo I18N::translate('IP address') ?>
+            </label>
+            <input class="form-control" type="text" id="ip" name="ip" value="<?php echo Filter::escapeHtml($ip) ?>">
+        </div>
+    </div>
 
-	<div class="row">
-		<div class="form-group col-sm-4">
-			<label for="text">
-				<?php echo I18N::translate('Message') ?>
-			</label>
-			<input class="form-control" type="text" id="text" name="text" value="<?php echo Filter::escapeHtml($text) ?>">
-		</div>
+    <div class="row">
+        <div class="form-group col-sm-4">
+            <label for="text">
+                <?php echo I18N::translate('Message') ?>
+            </label>
+            <input class="form-control" type="text" id="text" name="text" value="<?php echo Filter::escapeHtml($text) ?>">
+        </div>
 
-		<div class="form-group col-sm-4">
-			<label for="user">
-				<?php echo I18N::translate('User') ?>
-			</label>
-			<?php echo FunctionsEdit::selectEditControl('user', $users_array, '', $user, 'class="form-control"') ?>
-		</div>
+        <div class="form-group col-sm-4">
+            <label for="user">
+                <?php echo I18N::translate('User') ?>
+            </label>
+            <?php echo FunctionsEdit::selectEditControl('user', $users_array, '', $user, 'class="form-control"') ?>
+        </div>
 
-		<div class="form-group col-sm-4">
-			<label for="gedc">
-				<?php echo I18N::translate('Family tree') ?>
-			</label>
-			<?php echo FunctionsEdit::selectEditControl('gedc', Tree::getNameList(), '', $gedc, Auth::isAdmin() ? 'class="form-control"' : 'disabled class="form-control"') ?>
-		</div>
-	</div>
+        <div class="form-group col-sm-4">
+            <label for="gedc">
+                <?php echo I18N::translate('Family tree') ?>
+            </label>
+            <?php echo FunctionsEdit::selectEditControl('gedc', Tree::getNameList(), '', $gedc, Auth::isAdmin() ? 'class="form-control"' : 'disabled class="form-control"') ?>
+        </div>
+    </div>
 
-	<div class="row text-center">
-		<button type="submit" class="btn btn-primary">
-			<?php echo /* I18N: A button label. */ I18N::translate('search') ?>
-		</button>
+    <div class="row text-center">
+        <button type="submit" class="btn btn-primary">
+            <?php echo /* I18N: A button label. */ I18N::translate('search') ?>
+        </button>
 
-		<button type="submit" class="btn btn-primary" onclick="document.logs.action.value='export';return true;" <?php echo $action === 'show' ? '' : 'disabled' ?>>
-			<?php echo /* I18N: A button label. */ I18N::translate('download') ?>
-		</button>
+        <button type="submit" class="btn btn-primary" onclick="document.logs.action.value='export';return true;" <?php echo $action === 'show' ? '' : 'disabled' ?>>
+            <?php echo /* I18N: A button label. */ I18N::translate('download') ?>
+        </button>
 
-		<button type="submit" class="btn btn-primary" onclick="if (confirm('<?php echo I18N::translate('Permanently delete these records?') ?>')) {document.logs.action.value='delete'; return true;} else {return false;}" <?php echo $action === 'show' ? '' : 'disabled' ?>>
-			<?php echo /* I18N: A button label. */ I18N::translate('delete') ?>
-		</button>
-	</div>
+        <button type="submit" class="btn btn-primary" onclick="if (confirm('<?php echo I18N::translate('Permanently delete these records?') ?>')) {document.logs.action.value='delete'; return true;} else {return false;}" <?php echo $action === 'show' ? '' : 'disabled' ?>>
+            <?php echo /* I18N: A button label. */ I18N::translate('delete') ?>
+        </button>
+    </div>
 </form>
 
 <?php if ($action): ?>
 <table class="table table-bordered table-condensed table-hover table-site-logs">
-	<caption class="sr-only">
-		<?php echo $controller->getPageTitle() ?>
-	</caption>
-	<thead>
-		<tr>
-			<th></th>
-			<th><?php echo I18N::translate('Timestamp') ?></th>
-			<th><?php echo I18N::translate('Type') ?></th>
-			<th><?php echo I18N::translate('Message') ?></th>
-			<th><?php echo I18N::translate('IP address') ?></th>
-			<th><?php echo I18N::translate('User') ?></th>
-			<th><?php echo I18N::translate('Family tree') ?></th>
-		</tr>
-	</thead>
+    <caption class="sr-only">
+        <?php echo $controller->getPageTitle() ?>
+    </caption>
+    <thead>
+        <tr>
+            <th></th>
+            <th><?php echo I18N::translate('Timestamp') ?></th>
+            <th><?php echo I18N::translate('Type') ?></th>
+            <th><?php echo I18N::translate('Message') ?></th>
+            <th><?php echo I18N::translate('IP address') ?></th>
+            <th><?php echo I18N::translate('User') ?></th>
+            <th><?php echo I18N::translate('Family tree') ?></th>
+        </tr>
+    </thead>
 </table>
 <?php endif ?>

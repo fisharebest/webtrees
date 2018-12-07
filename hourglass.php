@@ -31,65 +31,65 @@ require './includes/session.php';
 
 $controller = new HourglassController;
 $controller
-	->restrictAccess(Module::isActiveChart($WT_TREE, 'hourglass_chart'))
-	->pageHeader()
-	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
-	->addInlineJavascript('autocomplete();')
-	->setupJavascript();
+    ->restrictAccess(Module::isActiveChart($WT_TREE, 'hourglass_chart'))
+    ->pageHeader()
+    ->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
+    ->addInlineJavascript('autocomplete();')
+    ->setupJavascript();
 
 ?>
 <div id="hourglass-page">
-	<h2><?php echo $controller->getPageTitle(); ?></h2>
-	<form method="get" name="people" action="?">
-		<input type="hidden" name="ged" value="<?php echo $WT_TREE->getNameHtml(); ?>">
-		<table class="list_table">
-			<tbody>
-				<tr>
-					<td class="descriptionbox">
-						<?php echo I18N::translate('Individual'); ?>
-					</td>
-					<td class="optionbox">
-						<input class="pedigree_form" data-autocomplete-type="INDI" type="text" name="rootid" id="rootid" size="3" value="<?php echo $controller->root->getXref(); ?>">
-						<?php echo FunctionsPrint::printFindIndividualLink('pid'); ?>
-					</td>
-					<td class="descriptionbox">
-						<?php echo I18N::translate('Show details'); ?>
-					</td>
-					<td class="optionbox">
-						<?php echo FunctionsEdit::twoStateCheckbox('show_full', $controller->showFull()); ?>
-					</td>
-					<td rowspan="3" class="topbottombar vmiddle">
-						<input type="submit" value="<?php echo /* I18N: A button label. */ I18N::translate('view'); ?>">
-					</td>
-				</tr>
-				<tr>
-					<td class="descriptionbox" >
-						<?php echo I18N::translate('Generations'); ?>
-					</td>
-					<td class="optionbox">
-						<?php echo FunctionsEdit::editFieldInteger('generations', $controller->generations, 2, $WT_TREE->getPreference('MAX_DESCENDANCY_GENERATIONS')); ?>
-					</td>
-					<td class="descriptionbox">
-						<?php echo I18N::translate('Show spouses'); ?>
-					</td>
-					<td class="optionbox">
-						<input type="checkbox" value="1" name="show_spouse" <?php echo $controller->show_spouse ? 'checked' : ''; ?>>
-					</td>
-				</tr>
-			</tbody>
-		</table>
-	</form>
+    <h2><?php echo $controller->getPageTitle(); ?></h2>
+    <form method="get" name="people" action="?">
+        <input type="hidden" name="ged" value="<?php echo $WT_TREE->getNameHtml(); ?>">
+        <table class="list_table">
+            <tbody>
+                <tr>
+                    <td class="descriptionbox">
+                        <?php echo I18N::translate('Individual'); ?>
+                    </td>
+                    <td class="optionbox">
+                        <input class="pedigree_form" data-autocomplete-type="INDI" type="text" name="rootid" id="rootid" size="3" value="<?php echo $controller->root->getXref(); ?>">
+                        <?php echo FunctionsPrint::printFindIndividualLink('pid'); ?>
+                    </td>
+                    <td class="descriptionbox">
+                        <?php echo I18N::translate('Show details'); ?>
+                    </td>
+                    <td class="optionbox">
+                        <?php echo FunctionsEdit::twoStateCheckbox('show_full', $controller->showFull()); ?>
+                    </td>
+                    <td rowspan="3" class="topbottombar vmiddle">
+                        <input type="submit" value="<?php echo /* I18N: A button label. */ I18N::translate('view'); ?>">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="descriptionbox" >
+                        <?php echo I18N::translate('Generations'); ?>
+                    </td>
+                    <td class="optionbox">
+                        <?php echo FunctionsEdit::editFieldInteger('generations', $controller->generations, 2, $WT_TREE->getPreference('MAX_DESCENDANCY_GENERATIONS')); ?>
+                    </td>
+                    <td class="descriptionbox">
+                        <?php echo I18N::translate('Show spouses'); ?>
+                    </td>
+                    <td class="optionbox">
+                        <input type="checkbox" value="1" name="show_spouse" <?php echo $controller->show_spouse ? 'checked' : ''; ?>>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
 
-	<div id="hourglass_chart" style="width:98%; z-index:1;">
-		<table>
-			<tr>
-				<td style="vertical-align:middle">
-					<?php $controller->printDescendency($controller->root, 1); ?>
-				</td>
-				<td style="vertical-align:middle">
-					<?php $controller->printPersonPedigree($controller->root, 1); ?>
-				</td>
-			</tr>
-		</table>
-	</div>
+    <div id="hourglass_chart" style="width:98%; z-index:1;">
+        <table>
+            <tr>
+                <td style="vertical-align:middle">
+                    <?php $controller->printDescendency($controller->root, 1); ?>
+                </td>
+                <td style="vertical-align:middle">
+                    <?php $controller->printPersonPedigree($controller->root, 1); ?>
+                </td>
+            </tr>
+        </table>
+    </div>
 </div>

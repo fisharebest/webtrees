@@ -26,9 +26,9 @@ use Symfony\Component\HttpFoundation\Request;
 
 // WT_SCRIPT_NAME is defined in each script that the user is permitted to load.
 if (!defined('WT_SCRIPT_NAME')) {
-	http_response_code(403);
+    http_response_code(403);
 
-	return;
+    return;
 }
 
 /**
@@ -51,41 +51,41 @@ define('WT_WEBTREES_WIKI', 'https://wiki.webtrees.net/');
 define('WT_STATIC_URL', getenv('STATIC_URL')); // We could set this to load our own static resources from a cookie-free domain.
 
 if (getenv('USE_CDN')) {
-	// Caution, using a CDN will break support for responsive features in IE8, as respond.js
-	// needs to be on the same domain as all the CSS files.
-	define('WT_BOOTSTRAP_CSS_URL', '//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css');
-	define('WT_BOOTSTRAP_DATETIMEPICKER_CSS_URL', '//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css');
-	define('WT_BOOTSTRAP_DATETIMEPICKER_JS_URL', '//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js');
-	define('WT_BOOTSTRAP_JS_URL', '//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js');
-	define('WT_BOOTSTRAP_RTL_CSS_URL', '//cdnjs.cloudflare.com/ajax/libs/bootstrap-rtl/3.2.0-rc2/css/bootstrap-rtl.min.css'); // Cloudflare is out of date
-	//define('WT_DATATABLES_BOOTSTRAP_CSS_URL', '//cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.css');
-	define('WT_DATATABLES_BOOTSTRAP_JS_URL', '//cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.js');
-	define('WT_FONT_AWESOME_CSS_URL', '//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css');
-	define('WT_JQUERYUI_JS_URL', '//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js');
-	define('WT_JQUERYUI_TOUCH_PUNCH_URL', '//cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js');
-	define('WT_JQUERY_DATATABLES_JS_URL', '//cdnjs.cloudflare.com/ajax/libs/datatables/1.10.7/js/jquery.dataTables.min.js');
-	define('WT_JQUERY_JS_URL', '//cdnjs.cloudflare.com/ajax/libs/jquery/1.12.1/jquery.min.js');
-	define('WT_JQUERY2_JS_URL', '//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js');
-	define('WT_MODERNIZR_JS_URL', '//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js');
-	define('WT_MOMENT_JS_URL', '//cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment-with-locales.min.js');
-	define('WT_RESPOND_JS_URL', '//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js');
+    // Caution, using a CDN will break support for responsive features in IE8, as respond.js
+    // needs to be on the same domain as all the CSS files.
+    define('WT_BOOTSTRAP_CSS_URL', '//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css');
+    define('WT_BOOTSTRAP_DATETIMEPICKER_CSS_URL', '//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css');
+    define('WT_BOOTSTRAP_DATETIMEPICKER_JS_URL', '//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js');
+    define('WT_BOOTSTRAP_JS_URL', '//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js');
+    define('WT_BOOTSTRAP_RTL_CSS_URL', '//cdnjs.cloudflare.com/ajax/libs/bootstrap-rtl/3.2.0-rc2/css/bootstrap-rtl.min.css'); // Cloudflare is out of date
+    //define('WT_DATATABLES_BOOTSTRAP_CSS_URL', '//cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.css');
+    define('WT_DATATABLES_BOOTSTRAP_JS_URL', '//cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.js');
+    define('WT_FONT_AWESOME_CSS_URL', '//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css');
+    define('WT_JQUERYUI_JS_URL', '//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js');
+    define('WT_JQUERYUI_TOUCH_PUNCH_URL', '//cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js');
+    define('WT_JQUERY_DATATABLES_JS_URL', '//cdnjs.cloudflare.com/ajax/libs/datatables/1.10.7/js/jquery.dataTables.min.js');
+    define('WT_JQUERY_JS_URL', '//cdnjs.cloudflare.com/ajax/libs/jquery/1.12.1/jquery.min.js');
+    define('WT_JQUERY2_JS_URL', '//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js');
+    define('WT_MODERNIZR_JS_URL', '//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js');
+    define('WT_MOMENT_JS_URL', '//cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment-with-locales.min.js');
+    define('WT_RESPOND_JS_URL', '//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js');
 } else {
-	define('WT_BOOTSTRAP_CSS_URL', WT_STATIC_URL . 'packages/bootstrap-3.3.6/css/bootstrap.min.css');
-	define('WT_BOOTSTRAP_DATETIMEPICKER_CSS_URL', WT_STATIC_URL . 'packages/bootstrap-datetimepicker-4.17.37/css/bootstrap-datetimepicker.min.css');
-	define('WT_BOOTSTRAP_DATETIMEPICKER_JS_URL', WT_STATIC_URL . 'packages/bootstrap-datetimepicker-4.17.37/js/bootstrap-datetimepicker.min.js');
-	define('WT_BOOTSTRAP_JS_URL', WT_STATIC_URL . 'packages/bootstrap-3.3.6/js/bootstrap.min.js');
-	define('WT_BOOTSTRAP_RTL_CSS_URL', WT_STATIC_URL . 'packages/bootstrap-rtl-3.3.4/css/bootstrap-rtl.min.css');
-	//define('WT_DATATABLES_BOOTSTRAP_CSS_URL', WT_STATIC_URL . 'packages/datatables-1.10.7/plugins/dataTables.bootstrap.css');
-	define('WT_DATATABLES_BOOTSTRAP_JS_URL', WT_STATIC_URL . 'packages/datatables-1.10.7/plugins/dataTables.bootstrap.js');
-	define('WT_FONT_AWESOME_CSS_URL', WT_STATIC_URL . 'packages/font-awesome-4.4.0/css/font-awesome.min.css');
-	define('WT_JQUERYUI_JS_URL', WT_STATIC_URL . 'packages/jquery-ui-1.11.4/js/jquery-ui.min.js');
-	define('WT_JQUERYUI_TOUCH_PUNCH_URL', WT_STATIC_URL . 'packages/jqueryui-touch-punch-0.2.3/jquery.ui.touch-punch.min.js');
-	define('WT_JQUERY_DATATABLES_JS_URL', WT_STATIC_URL . 'packages/datatables-1.10.7/js/jquery.dataTables.min.js');
-	define('WT_JQUERY_JS_URL', WT_STATIC_URL . 'packages/jquery-1.12.1/jquery.min.js');
-	define('WT_JQUERY2_JS_URL', WT_STATIC_URL . 'packages/jquery-2.2.1/jquery.min.js');
-	define('WT_MODERNIZR_JS_URL', WT_STATIC_URL . 'packages/modernizr-2.8.3/modernizr.min.js');
-	define('WT_MOMENT_JS_URL', WT_STATIC_URL . 'packages/moment-2.11.2/moment-with-locales.min.js');
-	define('WT_RESPOND_JS_URL', WT_STATIC_URL . 'packages/respond-1.4.2/respond.min.js');
+    define('WT_BOOTSTRAP_CSS_URL', WT_STATIC_URL . 'packages/bootstrap-3.3.6/css/bootstrap.min.css');
+    define('WT_BOOTSTRAP_DATETIMEPICKER_CSS_URL', WT_STATIC_URL . 'packages/bootstrap-datetimepicker-4.17.37/css/bootstrap-datetimepicker.min.css');
+    define('WT_BOOTSTRAP_DATETIMEPICKER_JS_URL', WT_STATIC_URL . 'packages/bootstrap-datetimepicker-4.17.37/js/bootstrap-datetimepicker.min.js');
+    define('WT_BOOTSTRAP_JS_URL', WT_STATIC_URL . 'packages/bootstrap-3.3.6/js/bootstrap.min.js');
+    define('WT_BOOTSTRAP_RTL_CSS_URL', WT_STATIC_URL . 'packages/bootstrap-rtl-3.3.4/css/bootstrap-rtl.min.css');
+    //define('WT_DATATABLES_BOOTSTRAP_CSS_URL', WT_STATIC_URL . 'packages/datatables-1.10.7/plugins/dataTables.bootstrap.css');
+    define('WT_DATATABLES_BOOTSTRAP_JS_URL', WT_STATIC_URL . 'packages/datatables-1.10.7/plugins/dataTables.bootstrap.js');
+    define('WT_FONT_AWESOME_CSS_URL', WT_STATIC_URL . 'packages/font-awesome-4.4.0/css/font-awesome.min.css');
+    define('WT_JQUERYUI_JS_URL', WT_STATIC_URL . 'packages/jquery-ui-1.11.4/js/jquery-ui.min.js');
+    define('WT_JQUERYUI_TOUCH_PUNCH_URL', WT_STATIC_URL . 'packages/jqueryui-touch-punch-0.2.3/jquery.ui.touch-punch.min.js');
+    define('WT_JQUERY_DATATABLES_JS_URL', WT_STATIC_URL . 'packages/datatables-1.10.7/js/jquery.dataTables.min.js');
+    define('WT_JQUERY_JS_URL', WT_STATIC_URL . 'packages/jquery-1.12.1/jquery.min.js');
+    define('WT_JQUERY2_JS_URL', WT_STATIC_URL . 'packages/jquery-2.2.1/jquery.min.js');
+    define('WT_MODERNIZR_JS_URL', WT_STATIC_URL . 'packages/modernizr-2.8.3/modernizr.min.js');
+    define('WT_MOMENT_JS_URL', WT_STATIC_URL . 'packages/moment-2.11.2/moment-with-locales.min.js');
+    define('WT_RESPOND_JS_URL', WT_STATIC_URL . 'packages/respond-1.4.2/respond.min.js');
 }
 
 // We can't load these from a CDN, as these have been patched.
@@ -181,98 +181,98 @@ set_error_handler(function ($errno, $errstr, $errfile, $errline) {
 });
 
 set_exception_handler(function ($ex) {
-	$message = $ex->getFile() . ':' . $ex->getLine() . ' ' . $ex->getMessage() . PHP_EOL;
+    $message = $ex->getFile() . ':' . $ex->getLine() . ' ' . $ex->getMessage() . PHP_EOL;
 
-	foreach ($ex->getTrace() as $level => $frame) {
-		$frame += array('args' => array(), 'file' => 'unknown', 'line' => 'unknown');
-		array_walk($frame['args'], function (&$arg) {
-			switch (gettype($arg)) {
-			case 'boolean':
-			case 'integer':
-			case 'double':
-			case 'null':
-				$arg = var_export($arg, true);
-				break;
-			case 'string':
-				if (mb_strlen($arg) > 30) {
-					$arg = substr($arg, 0, 30) . '…';
-				}
-				$arg = var_export($arg, true);
-				break;
-			case 'object':
-				$reflection = new \ReflectionClass($arg);
-				if (is_object($arg) && method_exists($arg, '__toString')) {
-					$arg = '[' . $reflection->getShortName() . ' ' . (string) $arg . ']';
-				} else {
-					$arg = '[' . $reflection->getShortName() . ']';
-				}
-				break;
-			default:
-				$arg = '[' . gettype($arg) . ']';
-				break;
-			}
-		});
-		$frame['file'] = str_replace(dirname(__DIR__), '', $frame['file']);
-		$message .= '#' . $level . ' ' . $frame['file'] . ':' . $frame['line'] . ' ';
-		if ($level) {
-			$message .= $frame['function'] . '(' . implode(', ', $frame['args']) . ')' . PHP_EOL;
-		} else {
-			$message .= get_class($ex) . '("' . $ex->getMessage() . '")' . PHP_EOL;
-		}
-	}
+    foreach ($ex->getTrace() as $level => $frame) {
+        $frame += array('args' => array(), 'file' => 'unknown', 'line' => 'unknown');
+        array_walk($frame['args'], function (&$arg) {
+            switch (gettype($arg)) {
+            case 'boolean':
+            case 'integer':
+            case 'double':
+            case 'null':
+                $arg = var_export($arg, true);
+                break;
+            case 'string':
+                if (mb_strlen($arg) > 30) {
+                    $arg = substr($arg, 0, 30) . '…';
+                }
+                $arg = var_export($arg, true);
+                break;
+            case 'object':
+                $reflection = new \ReflectionClass($arg);
+                if (is_object($arg) && method_exists($arg, '__toString')) {
+                    $arg = '[' . $reflection->getShortName() . ' ' . (string) $arg . ']';
+                } else {
+                    $arg = '[' . $reflection->getShortName() . ']';
+                }
+                break;
+            default:
+                $arg = '[' . gettype($arg) . ']';
+                break;
+            }
+        });
+        $frame['file'] = str_replace(dirname(__DIR__), '', $frame['file']);
+        $message .= '#' . $level . ' ' . $frame['file'] . ':' . $frame['line'] . ' ';
+        if ($level) {
+            $message .= $frame['function'] . '(' . implode(', ', $frame['args']) . ')' . PHP_EOL;
+        } else {
+            $message .= get_class($ex) . '("' . $ex->getMessage() . '")' . PHP_EOL;
+        }
+    }
 
-	if ($ex instanceof PDOException || error_reporting() & $ex->getCode()) {
-		echo $message;
-	}
+    if ($ex instanceof PDOException || error_reporting() & $ex->getCode()) {
+        echo $message;
+    }
 
-	Log::addErrorLog($message);
+    Log::addErrorLog($message);
 });
 
 // Load our configuration file, so we can connect to the database
 if (file_exists(WT_ROOT . 'data/config.ini.php')) {
-	$dbconfig = parse_ini_file(WT_ROOT . 'data/config.ini.php');
-	// Invalid/unreadable config file?
-	if (!is_array($dbconfig)) {
-		header('Location: ' . WT_BASE_URL . 'site-unavailable.php');
-		exit;
-	}
-	// Down for maintenance?
-	if (file_exists(WT_ROOT . 'data/offline.txt')) {
-		header('Location: ' . WT_BASE_URL . 'site-offline.php');
-		exit;
-	}
+    $dbconfig = parse_ini_file(WT_ROOT . 'data/config.ini.php');
+    // Invalid/unreadable config file?
+    if (!is_array($dbconfig)) {
+        header('Location: ' . WT_BASE_URL . 'site-unavailable.php');
+        exit;
+    }
+    // Down for maintenance?
+    if (file_exists(WT_ROOT . 'data/offline.txt')) {
+        header('Location: ' . WT_BASE_URL . 'site-offline.php');
+        exit;
+    }
 } else {
-	// No config file. Set one up.
-	header('Location: ' . WT_BASE_URL . 'setup.php');
-	exit;
+    // No config file. Set one up.
+    header('Location: ' . WT_BASE_URL . 'setup.php');
+    exit;
 }
 
 // What is the remote client's IP address
 if (Filter::server('HTTP_CLIENT_IP') !== null) {
-	define('WT_CLIENT_IP', Filter::server('HTTP_CLIENT_IP'));
+    define('WT_CLIENT_IP', Filter::server('HTTP_CLIENT_IP'));
 } elseif (Filter::server('HTTP_X_FORWARDED_FOR') !== null) {
-	define('WT_CLIENT_IP', Filter::server('HTTP_X_FORWARDED_FOR'));
+    define('WT_CLIENT_IP', Filter::server('HTTP_X_FORWARDED_FOR'));
 } else {
-	define('WT_CLIENT_IP', Filter::server('REMOTE_ADDR', WT_REGEX_IPV4, '127.0.0.1'));
+    define('WT_CLIENT_IP', Filter::server('REMOTE_ADDR', WT_REGEX_IPV4, '127.0.0.1'));
 }
 
 // Connect to the database
 try {
-	Database::createInstance($dbconfig['dbhost'], $dbconfig['dbport'], $dbconfig['dbname'], $dbconfig['dbuser'], $dbconfig['dbpass']);
-	define('WT_TBLPREFIX', $dbconfig['tblpfx']);
-	unset($dbconfig);
-	// Some of the FAMILY JOIN HUSBAND JOIN WIFE queries can excede the MAX_JOIN_SIZE setting
-	Database::exec("SET NAMES 'utf8' COLLATE 'utf8_unicode_ci', SQL_BIG_SELECTS=1");
-	// Update the database schema
-	$updated = Database::updateSchema('\Fisharebest\Webtrees\Schema', 'WT_SCHEMA_VERSION', WT_SCHEMA_VERSION);
-	if ($updated) {
-		// updateSchema() might load custom modules - which we cannot load again.
-		header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME . (isset($_SERVER['QUERY_STRING']) ? '?' . $_SERVER['QUERY_STRING'] : ''));
-		exit;
-	}
+    Database::createInstance($dbconfig['dbhost'], $dbconfig['dbport'], $dbconfig['dbname'], $dbconfig['dbuser'], $dbconfig['dbpass']);
+    define('WT_TBLPREFIX', $dbconfig['tblpfx']);
+    unset($dbconfig);
+    // Some of the FAMILY JOIN HUSBAND JOIN WIFE queries can excede the MAX_JOIN_SIZE setting
+    Database::exec("SET NAMES 'utf8' COLLATE 'utf8_unicode_ci', SQL_BIG_SELECTS=1");
+    // Update the database schema
+    $updated = Database::updateSchema('\Fisharebest\Webtrees\Schema', 'WT_SCHEMA_VERSION', WT_SCHEMA_VERSION);
+    if ($updated) {
+        // updateSchema() might load custom modules - which we cannot load again.
+        header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME . (isset($_SERVER['QUERY_STRING']) ? '?' . $_SERVER['QUERY_STRING'] : ''));
+        exit;
+    }
 } catch (PDOException $ex) {
-	header('Location: ' . WT_BASE_URL . 'site-unavailable.php?message=' . rawurlencode($ex->getMessage()));
-	exit;
+    header('Location: ' . WT_BASE_URL . 'site-unavailable.php?message=' . rawurlencode($ex->getMessage()));
+    exit;
 }
 
 // The config.ini.php file must always be in a fixed location.
@@ -282,120 +282,120 @@ define('WT_DATA_DIR', realpath(Site::getPreference('INDEX_DIRECTORY') ? Site::ge
 // If we have a preferred URL (e.g. www.example.com instead of www.isp.com/~example), then redirect to it.
 $SERVER_URL = Site::getPreference('SERVER_URL');
 if ($SERVER_URL && $SERVER_URL != WT_BASE_URL) {
-	header('Location: ' . $SERVER_URL . WT_SCRIPT_NAME . (isset($_SERVER['QUERY_STRING']) ? '?' . $_SERVER['QUERY_STRING'] : ''), true, 301);
-	exit;
+    header('Location: ' . $SERVER_URL . WT_SCRIPT_NAME . (isset($_SERVER['QUERY_STRING']) ? '?' . $_SERVER['QUERY_STRING'] : ''), true, 301);
+    exit;
 }
 
 // Request more resources - if we can/want to
 if (!ini_get('safe_mode')) {
-	$memory_limit = Site::getPreference('MEMORY_LIMIT');
-	if ($memory_limit && strpos(ini_get('disable_functions'), 'ini_set') === false) {
-		ini_set('memory_limit', $memory_limit);
-	}
-	$max_execution_time = Site::getPreference('MAX_EXECUTION_TIME');
-	if ($max_execution_time && strpos(ini_get('disable_functions'), 'set_time_limit') === false) {
-		set_time_limit($max_execution_time);
-	}
+    $memory_limit = Site::getPreference('MEMORY_LIMIT');
+    if ($memory_limit && strpos(ini_get('disable_functions'), 'ini_set') === false) {
+        ini_set('memory_limit', $memory_limit);
+    }
+    $max_execution_time = Site::getPreference('MAX_EXECUTION_TIME');
+    if ($max_execution_time && strpos(ini_get('disable_functions'), 'set_time_limit') === false) {
+        set_time_limit($max_execution_time);
+    }
 }
 
 $rule = Database::prepare(
-	"SELECT rule FROM `##site_access_rule`" .
-	" WHERE IFNULL(INET_ATON(?), 0) BETWEEN ip_address_start AND ip_address_end" .
-	" AND ? LIKE user_agent_pattern" .
-	" ORDER BY ip_address_end LIMIT 1"
+    "SELECT rule FROM `##site_access_rule`" .
+    " WHERE IFNULL(INET_ATON(?), 0) BETWEEN ip_address_start AND ip_address_end" .
+    " AND ? LIKE user_agent_pattern" .
+    " ORDER BY ip_address_end LIMIT 1"
 )->execute(array(WT_CLIENT_IP, Filter::server('HTTP_USER_AGENT', null, '')))->fetchOne();
 
 switch ($rule) {
 case 'allow':
-	$SEARCH_SPIDER = false;
-	break;
+    $SEARCH_SPIDER = false;
+    break;
 case 'deny':
-	http_response_code(403);
-	exit;
+    http_response_code(403);
+    exit;
 case 'robot':
 case 'unknown':
-	// Search engines don’t send cookies, and so create a new session with every visit.
-	// Make sure they always use the same one
-	Session::setId('search-engine-' . str_replace('.', '-', WT_CLIENT_IP));
-	$SEARCH_SPIDER = true;
-	break;
+    // Search engines don’t send cookies, and so create a new session with every visit.
+    // Make sure they always use the same one
+    Session::setId('search-engine-' . str_replace('.', '-', WT_CLIENT_IP));
+    $SEARCH_SPIDER = true;
+    break;
 case '':
-	Database::prepare(
-		"INSERT INTO `##site_access_rule` (ip_address_start, ip_address_end, user_agent_pattern, comment) VALUES (IFNULL(INET_ATON(?), 0), IFNULL(INET_ATON(?), 4294967295), ?, '')"
-	)->execute(array(WT_CLIENT_IP, WT_CLIENT_IP, Filter::server('HTTP_USER_AGENT', null, '')));
-	$SEARCH_SPIDER = true;
-	break;
+    Database::prepare(
+        "INSERT INTO `##site_access_rule` (ip_address_start, ip_address_end, user_agent_pattern, comment) VALUES (IFNULL(INET_ATON(?), 0), IFNULL(INET_ATON(?), 4294967295), ?, '')"
+    )->execute(array(WT_CLIENT_IP, WT_CLIENT_IP, Filter::server('HTTP_USER_AGENT', null, '')));
+    $SEARCH_SPIDER = true;
+    break;
 }
 
 // Store our session data in the database.
 session_set_save_handler(
-	// open
-	function () {
-		return true;
-	},
-	// close
-	function () {
-		return true;
-	},
-	// read
-	function ($id) {
-		return (string) Database::prepare("SELECT session_data FROM `##session` WHERE session_id=?")->execute(array($id))->fetchOne();
-	},
-	// write
-	function ($id, $data) {
-		// Only update the session table once per minute, unless the session data has actually changed.
-		Database::prepare(
-			"INSERT INTO `##session` (session_id, user_id, ip_address, session_data, session_time)" .
-			" VALUES (?, ?, ?, ?, CURRENT_TIMESTAMP - SECOND(CURRENT_TIMESTAMP))" .
-			" ON DUPLICATE KEY UPDATE" .
-			" user_id      = VALUES(user_id)," .
-			" ip_address   = VALUES(ip_address)," .
-			" session_data = VALUES(session_data)," .
-			" session_time = CURRENT_TIMESTAMP - SECOND(CURRENT_TIMESTAMP)"
-		)->execute(array($id, (int) Auth::id(), WT_CLIENT_IP, $data));
+    // open
+    function () {
+        return true;
+    },
+    // close
+    function () {
+        return true;
+    },
+    // read
+    function ($id) {
+        return (string) Database::prepare("SELECT session_data FROM `##session` WHERE session_id=?")->execute(array($id))->fetchOne();
+    },
+    // write
+    function ($id, $data) {
+        // Only update the session table once per minute, unless the session data has actually changed.
+        Database::prepare(
+            "INSERT INTO `##session` (session_id, user_id, ip_address, session_data, session_time)" .
+            " VALUES (?, ?, ?, ?, CURRENT_TIMESTAMP - SECOND(CURRENT_TIMESTAMP))" .
+            " ON DUPLICATE KEY UPDATE" .
+            " user_id      = VALUES(user_id)," .
+            " ip_address   = VALUES(ip_address)," .
+            " session_data = VALUES(session_data)," .
+            " session_time = CURRENT_TIMESTAMP - SECOND(CURRENT_TIMESTAMP)"
+        )->execute(array($id, (int) Auth::id(), WT_CLIENT_IP, $data));
 
-		return true;
-	},
-	// destroy
-	function ($id) {
-		Database::prepare("DELETE FROM `##session` WHERE session_id=?")->execute(array($id));
+        return true;
+    },
+    // destroy
+    function ($id) {
+        Database::prepare("DELETE FROM `##session` WHERE session_id=?")->execute(array($id));
 
-		return true;
-	},
-	// gc
-	function ($maxlifetime) {
-		Database::prepare("DELETE FROM `##session` WHERE session_time < DATE_SUB(NOW(), INTERVAL ? SECOND)")->execute(array($maxlifetime));
+        return true;
+    },
+    // gc
+    function ($maxlifetime) {
+        Database::prepare("DELETE FROM `##session` WHERE session_time < DATE_SUB(NOW(), INTERVAL ? SECOND)")->execute(array($maxlifetime));
 
-		return true;
-	}
+        return true;
+    }
 );
 
 Session::start(array(
-	'gc_maxlifetime' => Site::getPreference('SESSION_TIME'),
-	'cookie_path'    => implode('/', array_map('rawurlencode', explode('/', parse_url(WT_BASE_URL, PHP_URL_PATH)))),
+    'gc_maxlifetime' => Site::getPreference('SESSION_TIME'),
+    'cookie_path'    => implode('/', array_map('rawurlencode', explode('/', parse_url(WT_BASE_URL, PHP_URL_PATH)))),
 ));
 
 if (!Auth::isSearchEngine() && !Session::get('initiated')) {
-	// A new session, so prevent session fixation attacks by choosing a new PHPSESSID.
-	Session::regenerate(true);
-	Session::put('initiated', true);
+    // A new session, so prevent session fixation attacks by choosing a new PHPSESSID.
+    Session::regenerate(true);
+    Session::put('initiated', true);
 } else {
-	// An existing session
+    // An existing session
 }
 
 // Set the tree for the page; (1) the request, (2) the session, (3) the site default, (4) any tree
 foreach (array(Filter::post('ged'), Filter::get('ged'), Session::get('GEDCOM'), Site::getPreference('DEFAULT_GEDCOM')) as $tree_name) {
-	$WT_TREE = Tree::findByName($tree_name);
-	if ($WT_TREE) {
-		Session::put('GEDCOM', $tree_name);
-		break;
-	}
+    $WT_TREE = Tree::findByName($tree_name);
+    if ($WT_TREE) {
+        Session::put('GEDCOM', $tree_name);
+        break;
+    }
 }
 // No chosen tree? Use any one.
 if (!$WT_TREE) {
-	foreach (Tree::getAll() as $WT_TREE) {
-		break;
-	}
+    foreach (Tree::getAll() as $WT_TREE) {
+        break;
+    }
 }
 
 // With no parameters, init() looks to the environment to choose a language
@@ -407,9 +407,9 @@ define('WT_TIMESTAMP', (int) Database::prepare("SELECT UNIX_TIMESTAMP()")->fetch
 
 // Users get their own time-zone. Visitors get the site time-zone.
 if (Auth::check()) {
-	date_default_timezone_set(Auth::user()->getPreference('TIMEZONE', 'UTC'));
+    date_default_timezone_set(Auth::user()->getPreference('TIMEZONE', 'UTC'));
 } else {
-	date_default_timezone_set(Site::getPreference('TIMEZONE') ?: 'UTC');
+    date_default_timezone_set(Site::getPreference('TIMEZONE') ?: 'UTC');
 }
 define('WT_TIMESTAMP_OFFSET', date_offset_get(new \DateTime('now')));
 
@@ -417,79 +417,79 @@ define('WT_CLIENT_JD', 2440588 + (int) ((WT_TIMESTAMP + WT_TIMESTAMP_OFFSET) / 8
 
 // The login URL must be an absolute URL, and can be user-defined
 if (Site::getPreference('LOGIN_URL')) {
-	define('WT_LOGIN_URL', Site::getPreference('LOGIN_URL'));
+    define('WT_LOGIN_URL', Site::getPreference('LOGIN_URL'));
 } else {
-	define('WT_LOGIN_URL', WT_BASE_URL . 'login.php');
+    define('WT_LOGIN_URL', WT_BASE_URL . 'login.php');
 }
 
 // If there is no current tree and we need one, then redirect somewhere
 if (WT_SCRIPT_NAME != 'admin_trees_manage.php' && WT_SCRIPT_NAME != 'admin_pgv_to_wt.php' && WT_SCRIPT_NAME != 'login.php' && WT_SCRIPT_NAME != 'logout.php' && WT_SCRIPT_NAME != 'import.php' && WT_SCRIPT_NAME != 'help_text.php' && WT_SCRIPT_NAME != 'message.php' && WT_SCRIPT_NAME != 'action.php') {
-	if (!$WT_TREE || !$WT_TREE->getPreference('imported')) {
-		if (Auth::isAdmin()) {
-			header('Location: ' . WT_BASE_URL . 'admin_trees_manage.php');
-		} else {
-			// We're not an administrator, so we can only log in if there is a tree.
-			if (Auth::id()) {
-				Auth::logout();
-				FlashMessages::addMessage(
-					I18N::translate('This user account does not have access to any tree.')
-				);
-			}
-			header('Location: ' . WT_LOGIN_URL . '?url=' . rawurlencode(WT_SCRIPT_NAME . (isset($_SERVER['QUERY_STRING']) ? '?' . $_SERVER['QUERY_STRING'] : '')), true, 301);
+    if (!$WT_TREE || !$WT_TREE->getPreference('imported')) {
+        if (Auth::isAdmin()) {
+            header('Location: ' . WT_BASE_URL . 'admin_trees_manage.php');
+        } else {
+            // We're not an administrator, so we can only log in if there is a tree.
+            if (Auth::id()) {
+                Auth::logout();
+                FlashMessages::addMessage(
+                    I18N::translate('This user account does not have access to any tree.')
+                );
+            }
+            header('Location: ' . WT_LOGIN_URL . '?url=' . rawurlencode(WT_SCRIPT_NAME . (isset($_SERVER['QUERY_STRING']) ? '?' . $_SERVER['QUERY_STRING'] : '')), true, 301);
 
-		}
-		exit;
-	}
+        }
+        exit;
+    }
 }
 
 // Update the last-login time no more than once a minute
 if (WT_TIMESTAMP - Session::get('activity_time') >= 60) {
-	if (Session::get('masquerade') === null) {
-		Auth::user()->setPreference('sessiontime', WT_TIMESTAMP);
-	}
-	Session::put('activity_time', WT_TIMESTAMP);
+    if (Session::get('masquerade') === null) {
+        Auth::user()->setPreference('sessiontime', WT_TIMESTAMP);
+    }
+    Session::put('activity_time', WT_TIMESTAMP);
 }
 
 // Set the theme
 if (substr(WT_SCRIPT_NAME, 0, 5) === 'admin' || WT_SCRIPT_NAME === 'module.php' && substr(Filter::get('mod_action'), 0, 5) === 'admin') {
-	// Administration scripts begin with “admin” and use a special administration theme
-	Theme::theme(new AdministrationTheme)->init($WT_TREE);
+    // Administration scripts begin with “admin” and use a special administration theme
+    Theme::theme(new AdministrationTheme)->init($WT_TREE);
 } else {
-	// Last theme used?
-	$theme_id = Session::get('theme_id');
-	// Default for tree
-	if (!array_key_exists($theme_id, Theme::themeNames()) && $WT_TREE) {
-		$theme_id = $WT_TREE->getPreference('THEME_DIR');
-	}
-	// Default for site
-	if (!array_key_exists($theme_id, Theme::themeNames())) {
-		$theme_id = Site::getPreference('THEME_DIR');
-	}
-	// Default
-	if (!array_key_exists($theme_id, Theme::themeNames())) {
-		$theme_id = 'webtrees';
-	}
-	foreach (Theme::installedThemes() as $theme) {
-		if ($theme->themeId() === $theme_id) {
-			Theme::theme($theme)->init($WT_TREE);
-			// Remember this setting
-			if (Site::getPreference('ALLOW_USER_THEMES')) {
-				Session::put('theme_id', $theme_id);
-			}
-			break;
-		}
-	}
+    // Last theme used?
+    $theme_id = Session::get('theme_id');
+    // Default for tree
+    if (!array_key_exists($theme_id, Theme::themeNames()) && $WT_TREE) {
+        $theme_id = $WT_TREE->getPreference('THEME_DIR');
+    }
+    // Default for site
+    if (!array_key_exists($theme_id, Theme::themeNames())) {
+        $theme_id = Site::getPreference('THEME_DIR');
+    }
+    // Default
+    if (!array_key_exists($theme_id, Theme::themeNames())) {
+        $theme_id = 'webtrees';
+    }
+    foreach (Theme::installedThemes() as $theme) {
+        if ($theme->themeId() === $theme_id) {
+            Theme::theme($theme)->init($WT_TREE);
+            // Remember this setting
+            if (Site::getPreference('ALLOW_USER_THEMES')) {
+                Session::put('theme_id', $theme_id);
+            }
+            break;
+        }
+    }
 }
 
 // Search engines are only allowed to see certain pages.
 if (Auth::isSearchEngine() && !in_array(WT_SCRIPT_NAME, array(
-	'index.php', 'indilist.php', 'module.php', 'mediafirewall.php',
-	'individual.php', 'family.php', 'mediaviewer.php', 'note.php', 'repo.php', 'source.php',
+    'index.php', 'indilist.php', 'module.php', 'mediafirewall.php',
+    'individual.php', 'family.php', 'mediaviewer.php', 'note.php', 'repo.php', 'source.php',
 ))) {
-	http_response_code(403);
-	$controller = new PageController;
-	$controller->setPageTitle(I18N::translate('Search engine'));
-	$controller->pageHeader();
-	echo '<p class="ui-state-error">', I18N::translate('You do not have permission to view this page.'), '</p>';
-	exit;
+    http_response_code(403);
+    $controller = new PageController;
+    $controller->setPageTitle(I18N::translate('Search engine'));
+    $controller->pageHeader();
+    echo '<p class="ui-state-error">', I18N::translate('You do not have permission to view this page.'), '</p>';
+    exit;
 }

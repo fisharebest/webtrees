@@ -19,16 +19,16 @@
  * Test harness for the class IndividualFamiliesReportModule
  */
 class IndividualFamiliesReportModuleTest extends \PHPUnit_Framework_TestCase {
-	/**
-	 * Prepare the environment for these tests
-	 */
-	public function setUp() {
-	}
+    /**
+     * Prepare the environment for these tests
+     */
+    public function setUp() {
+    }
 
-	/**
-	 * Test that the class exists
-	 */
-	public function testClassExists() {
-		$this->assertTrue(class_exists('\Fisharebest\Webtrees\Module\IndividualFamiliesReportModule'));
-	}
+    /**
+     * Test that the class exists
+     */
+    public function testClassExists() {
+        $this->assertTrue(class_exists('\Fisharebest\Webtrees\Module\IndividualFamiliesReportModule'));
+    }
 }

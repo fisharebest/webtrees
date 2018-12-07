@@ -23,65 +23,65 @@ use Mockery;
  * Test harness for the class CensusColumnChildrenDied
  */
 class CensusColumnChildrenDiedTest extends \PHPUnit_Framework_TestCase {
-	/**
-	 * Delete mock objects
-	 */
-	public function tearDown() {
-		Mockery::close();
-	}
+    /**
+     * Delete mock objects
+     */
+    public function tearDown() {
+        Mockery::close();
+    }
 
-	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnChildrenDied
-	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
-	 */
-	public function testMale() {
-		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
-		$individual->shouldReceive('getSex')->andReturn('M');
+    /**
+     * @covers Fisharebest\Webtrees\Census\CensusColumnChildrenDied
+     * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
+     */
+    public function testMale() {
+        $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
+        $individual->shouldReceive('getSex')->andReturn('M');
 
-		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
+        $census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
 
-		$column = new CensusColumnChildrenDied($census, '', '');
+        $column = new CensusColumnChildrenDied($census, '', '');
 
-		$this->assertSame('', $column->generate($individual));
-	}
+        $this->assertSame('', $column->generate($individual));
+    }
 
-	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnChildrenDied
-	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
-	 */
-	public function testCountChildren() {
-		// Stillborn
-		$child1 = Mockery::mock('Fisharebest\Webtrees\Individual');
-		$child1->shouldReceive('getBirthDate')->andReturn(new Date('01 FEB 1904'));
-		$child1->shouldReceive('getDeathDate')->andReturn(new Date('01 FEB 1904'));
+    /**
+     * @covers Fisharebest\Webtrees\Census\CensusColumnChildrenDied
+     * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
+     */
+    public function testCountChildren() {
+        // Stillborn
+        $child1 = Mockery::mock('Fisharebest\Webtrees\Individual');
+        $child1->shouldReceive('getBirthDate')->andReturn(new Date('01 FEB 1904'));
+        $child1->shouldReceive('getDeathDate')->andReturn(new Date('01 FEB 1904'));
 
-		// Died after census
-		$child2 = Mockery::mock('Fisharebest\Webtrees\Individual');
-		$child2->shouldReceive('getBirthDate')->andReturn(new Date('02 FEB 1904'));
-		$child2->shouldReceive('getDeathDate')->andReturn(new Date('20 DEC 1912'));
+        // Died after census
+        $child2 = Mockery::mock('Fisharebest\Webtrees\Individual');
+        $child2->shouldReceive('getBirthDate')->andReturn(new Date('02 FEB 1904'));
+        $child2->shouldReceive('getDeathDate')->andReturn(new Date('20 DEC 1912'));
 
-		// Died before census
-		$child3 = Mockery::mock('Fisharebest\Webtrees\Individual');
-		$child3->shouldReceive('getBirthDate')->andReturn(new Date('02 FEB 1904'));
-		$child3->shouldReceive('getDeathDate')->andReturn(new Date('20 DEC 1910'));
+        // Died before census
+        $child3 = Mockery::mock('Fisharebest\Webtrees\Individual');
+        $child3->shouldReceive('getBirthDate')->andReturn(new Date('02 FEB 1904'));
+        $child3->shouldReceive('getDeathDate')->andReturn(new Date('20 DEC 1910'));
 
-		// Still living
-		$child4 = Mockery::mock('Fisharebest\Webtrees\Individual');
-		$child4->shouldReceive('getBirthDate')->andReturn(new Date('01 FEB 1904'));
-		$child4->shouldReceive('getDeathDate')->andReturn(new Date(''));
+        // Still living
+        $child4 = Mockery::mock('Fisharebest\Webtrees\Individual');
+        $child4->shouldReceive('getBirthDate')->andReturn(new Date('01 FEB 1904'));
+        $child4->shouldReceive('getDeathDate')->andReturn(new Date(''));
 
-		$family = Mockery::mock('Fisharebest\Webtrees\Family');
-		$family->shouldReceive('getChildren')->andReturn(array($child1, $child2, $child3, $child4));
+        $family = Mockery::mock('Fisharebest\Webtrees\Family');
+        $family->shouldReceive('getChildren')->andReturn(array($child1, $child2, $child3, $child4));
 
-		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
-		$individual->shouldReceive('getSex')->andReturn('F');
-		$individual->shouldReceive('getSpouseFamilies')->andReturn(array($family));
+        $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
+        $individual->shouldReceive('getSex')->andReturn('F');
+        $individual->shouldReceive('getSpouseFamilies')->andReturn(array($family));
 
-		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
-		$census->shouldReceive('censusDate')->andReturn('30 MAR 1911');
+        $census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
+        $census->shouldReceive('censusDate')->andReturn('30 MAR 1911');
 
-		$column = new CensusColumnChildrenDied($census, '', '');
+        $column = new CensusColumnChildrenDied($census, '', '');
 
-		$this->assertSame('1', $column->generate($individual));
-	}
+        $this->assertSame('1', $column->generate($individual));
+    }
 }

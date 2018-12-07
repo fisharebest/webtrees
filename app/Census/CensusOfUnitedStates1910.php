@@ -19,51 +19,51 @@ namespace Fisharebest\Webtrees\Census;
  * Definitions for a census
  */
 class CensusOfUnitedStates1910 extends CensusOfUnitedStates implements CensusInterface {
-	/**
-	 * When did this census occur.
-	 *
-	 * @return string
-	 */
-	public function censusDate() {
-		return '15 APR 1910';
-	}
+    /**
+     * When did this census occur.
+     *
+     * @return string
+     */
+    public function censusDate() {
+        return '15 APR 1910';
+    }
 
-	/**
-	 * The columns of the census.
-	 *
-	 * @return CensusColumnInterface[]
-	 */
-	public function columns() {
-		return array(
-			new CensusColumnSurnameGivenNameInitial($this, 'Name', 'Name'),
-			new CensusColumnRelationToHead($this, 'Relation', 'Relationship of each person to the head of the family'),
-			new CensusColumnSexMF($this, 'Sex', 'Sex'),
-			new CensusColumnNull($this, 'Race', 'Color or race'),
-			new CensusColumnAge($this, 'Age', 'Age at last birthday'),
-			new CensusColumnConditionUs($this, 'Cond', 'Whether single, married, widowed, or divorced'),
-			new CensusColumnYearsMarried($this, 'Marr', 'Number of years of present marriage'),
-			new CensusColumnChildrenBornAlive($this, 'Chil', 'Mother of how many children'),
-			new CensusColumnChildrenLiving($this, 'Chil', 'Number of these children living'),
-			new CensusColumnBirthPlaceSimple($this, 'BP', 'Place of birth of this person'),
-			new CensusColumnFatherBirthPlaceSimple($this, 'FBP', 'Place of birth of father of this person'),
-			new CensusColumnMotherBirthPlaceSimple($this, 'MBP', 'Place of birth of mother of this person'),
-			new CensusColumnNull($this, 'Imm', 'Year of immigration to the United States'),
-			new CensusColumnNull($this, 'Nat', 'Whether naturalized or alien'),
-			new CensusColumnNull($this, 'Lang', 'Whether able to speak English, of if not, give language spoken'),
-			new CensusColumnOccupation($this, 'Occupation', 'Trade or profession of, or particular kind of work done by this person'),
-			new CensusColumnNull($this, 'Ind', 'General nature of industry'),
-			new CensusColumnNull($this, 'Emp', 'Whether an employer, employee, or work on own account'),
-			new CensusColumnNull($this, 'Unemp', 'Whether out of work on April 15, 1910'),
-			new CensusColumnNull($this, 'Unemp', 'Number of weeks out of work in 1909'),
-			new CensusColumnNull($this, 'R', 'Whether able to read'),
-			new CensusColumnNull($this, 'W', 'Whether able to write'),
-			new CensusColumnNull($this, 'Sch', 'Attended school since September 1, 1909'),
-			new CensusColumnNull($this, 'Home', 'Owned or rented'),
-			new CensusColumnNull($this, 'Mort', 'Owned free or mortgaged'),
-			new CensusColumnNull($this, 'Farm', 'Farm or house'),
-			new CensusColumnNull($this, 'CW', 'Whether a survivor of the Union or Confederate Army or Navy'),
-			new CensusColumnNull($this, 'Blind', 'Whether blind (both eyes)'),
-			new CensusColumnNull($this, 'Deaf', 'Whether deaf and dumb'),
-		);
-	}
+    /**
+     * The columns of the census.
+     *
+     * @return CensusColumnInterface[]
+     */
+    public function columns() {
+        return array(
+            new CensusColumnSurnameGivenNameInitial($this, 'Name', 'Name'),
+            new CensusColumnRelationToHead($this, 'Relation', 'Relationship of each person to the head of the family'),
+            new CensusColumnSexMF($this, 'Sex', 'Sex'),
+            new CensusColumnNull($this, 'Race', 'Color or race'),
+            new CensusColumnAge($this, 'Age', 'Age at last birthday'),
+            new CensusColumnConditionUs($this, 'Cond', 'Whether single, married, widowed, or divorced'),
+            new CensusColumnYearsMarried($this, 'Marr', 'Number of years of present marriage'),
+            new CensusColumnChildrenBornAlive($this, 'Chil', 'Mother of how many children'),
+            new CensusColumnChildrenLiving($this, 'Chil', 'Number of these children living'),
+            new CensusColumnBirthPlaceSimple($this, 'BP', 'Place of birth of this person'),
+            new CensusColumnFatherBirthPlaceSimple($this, 'FBP', 'Place of birth of father of this person'),
+            new CensusColumnMotherBirthPlaceSimple($this, 'MBP', 'Place of birth of mother of this person'),
+            new CensusColumnNull($this, 'Imm', 'Year of immigration to the United States'),
+            new CensusColumnNull($this, 'Nat', 'Whether naturalized or alien'),
+            new CensusColumnNull($this, 'Lang', 'Whether able to speak English, of if not, give language spoken'),
+            new CensusColumnOccupation($this, 'Occupation', 'Trade or profession of, or particular kind of work done by this person'),
+            new CensusColumnNull($this, 'Ind', 'General nature of industry'),
+            new CensusColumnNull($this, 'Emp', 'Whether an employer, employee, or work on own account'),
+            new CensusColumnNull($this, 'Unemp', 'Whether out of work on April 15, 1910'),
+            new CensusColumnNull($this, 'Unemp', 'Number of weeks out of work in 1909'),
+            new CensusColumnNull($this, 'R', 'Whether able to read'),
+            new CensusColumnNull($this, 'W', 'Whether able to write'),
+            new CensusColumnNull($this, 'Sch', 'Attended school since September 1, 1909'),
+            new CensusColumnNull($this, 'Home', 'Owned or rented'),
+            new CensusColumnNull($this, 'Mort', 'Owned free or mortgaged'),
+            new CensusColumnNull($this, 'Farm', 'Farm or house'),
+            new CensusColumnNull($this, 'CW', 'Whether a survivor of the Union or Confederate Army or Navy'),
+            new CensusColumnNull($this, 'Blind', 'Whether blind (both eyes)'),
+            new CensusColumnNull($this, 'Deaf', 'Whether deaf and dumb'),
+        );
+    }
 }

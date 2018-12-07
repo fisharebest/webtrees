@@ -15,33 +15,33 @@
 
 /* CSS reset (as per bootstrap) */
 .table {
-	border-collapse: collapse;
-	width: 100%;
+    border-collapse: collapse;
+    width: 100%;
 }
 
 /* Census input boxes */
 .table-census-inputs {
-	background-color: #fff;
+    background-color: #fff;
 }
 
 .table-census-inputs td,
 .table-census-inputs th {
-	border: solid thin #000;
+    border: solid thin #000;
 }
 
 .table-census-inputs th {
-	font-style: italic;
+    font-style: italic;
 }
 
 .table-census-inputs input {
-	width: 100%;
-	margin: 0;
-	border: 0;
-	padding: 0;
+    width: 100%;
+    margin: 0;
+    border: 0;
+    padding: 0;
 }
 
 .table-census-inputs input:focus {
-	min-width: 10em;
-	outline: solid thin #000;
+    min-width: 10em;
+    outline: solid thin #000;
 }
 

@@ -19,36 +19,36 @@ namespace Fisharebest\Webtrees\Census;
  * Definitions for a census
  */
 class CensusOfDenmark1803 extends CensusOfDenmark implements CensusInterface {
-	/**
-	 * When did this census occur.
-	 *
-	 * @return string
-	 */
-	public function censusDate() {
-		return '01 FEB 1803';
-	}
+    /**
+     * When did this census occur.
+     *
+     * @return string
+     */
+    public function censusDate() {
+        return '01 FEB 1803';
+    }
 
-	/**
-	 * Where did this census occur, in GEDCOM format.
-	 *
-	 * @return string
-	 */
-	public function censusPlace() {
-		return 'Schleswig-Holstein, Deutschland';
-	}
+    /**
+     * Where did this census occur, in GEDCOM format.
+     *
+     * @return string
+     */
+    public function censusPlace() {
+        return 'Schleswig-Holstein, Deutschland';
+    }
 
-	/**
-	 * The columns of the census.
-	 *
-	 * @return CensusColumnInterface[]
-	 */
-	public function columns() {
-		return array(
-			new CensusColumnFullName($this, 'Navn', ''),
-			new CensusColumnRelationToHead($this, 'Stilling i familien', ''),
-			new CensusColumnAge($this, 'Alder', ''),
-			new CensusColumnConditionDanish($this, 'Civilstand', ''),
-			new CensusColumnOccupation($this, 'Erhverv', ''),
-		);
-	}
+    /**
+     * The columns of the census.
+     *
+     * @return CensusColumnInterface[]
+     */
+    public function columns() {
+        return array(
+            new CensusColumnFullName($this, 'Navn', ''),
+            new CensusColumnRelationToHead($this, 'Stilling i familien', ''),
+            new CensusColumnAge($this, 'Alder', ''),
+            new CensusColumnConditionDanish($this, 'Civilstand', ''),
+            new CensusColumnOccupation($this, 'Erhverv', ''),
+        );
+    }
 }

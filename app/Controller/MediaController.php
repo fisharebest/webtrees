@@ -28,114 +28,114 @@ use Fisharebest\Webtrees\Module;
  * Controller for the media page
  */
 class MediaController extends GedcomRecordController {
-	/**
-	 * get edit menu
-	 */
-	public function getEditMenu() {
-		if (!$this->record || $this->record->isPendingDeletion()) {
-			return null;
-		}
+    /**
+     * get edit menu
+     */
+    public function getEditMenu() {
+        if (!$this->record || $this->record->isPendingDeletion()) {
+            return null;
+        }
 
-		// edit menu
-		$menu = new Menu(I18N::translate('Edit'), '#', 'menu-obje');
+        // edit menu
+        $menu = new Menu(I18N::translate('Edit'), '#', 'menu-obje');
 
-		if (Auth::isEditor($this->record->getTree())) {
-			$menu->addSubmenu(new Menu(I18N::translate('Edit the media object'), '#', 'menu-obje-edit', array(
-				'onclick' => 'window.open("addmedia.php?action=editmedia&pid=' . $this->record->getXref() . '", "_blank", edit_window_specs)',
-			)));
+        if (Auth::isEditor($this->record->getTree())) {
+            $menu->addSubmenu(new Menu(I18N::translate('Edit the media object'), '#', 'menu-obje-edit', array(
+                'onclick' => 'window.open("addmedia.php?action=editmedia&pid=' . $this->record->getXref() . '", "_blank", edit_window_specs)',
+            )));
 
-			// main link displayed on page
-			if (Module::getModuleByName('GEDFact_assistant')) {
-				$menu->addSubmenu(new Menu(I18N::translate('Manage the links'), '#', 'menu-obje-link', array(
-					'onclick' => 'return ilinkitem("' . $this->record->getXref() . '","manage");',
-				)));
-			} else {
-				$menu->addSubmenu(new Menu(I18N::translate('Link this media object to an individual'), '#', 'menu-obje-link-indi', array(
-					'onclick' => 'return ilinkitem("' . $this->record->getXref() . '","person");',
-				)));
+            // main link displayed on page
+            if (Module::getModuleByName('GEDFact_assistant')) {
+                $menu->addSubmenu(new Menu(I18N::translate('Manage the links'), '#', 'menu-obje-link', array(
+                    'onclick' => 'return ilinkitem("' . $this->record->getXref() . '","manage");',
+                )));
+            } else {
+                $menu->addSubmenu(new Menu(I18N::translate('Link this media object to an individual'), '#', 'menu-obje-link-indi', array(
+                    'onclick' => 'return ilinkitem("' . $this->record->getXref() . '","person");',
+                )));
 
-				$menu->addSubmenu(new Menu(I18N::translate('Link this media object to a family'), '#', 'menu-obje-link-fam', array(
-					'onclick' => 'return ilinkitem("' . $this->record->getXref() . '","family");',
-				)));
+                $menu->addSubmenu(new Menu(I18N::translate('Link this media object to a family'), '#', 'menu-obje-link-fam', array(
+                    'onclick' => 'return ilinkitem("' . $this->record->getXref() . '","family");',
+                )));
 
-				$menu->addSubmenu(new Menu(I18N::translate('Link this media object to a source'), '#', 'menu-obje-link-sour', array(
-					'onclick' => 'return ilinkitem("' . $this->record->getXref() . '","source");',
-				)));
-			}
+                $menu->addSubmenu(new Menu(I18N::translate('Link this media object to a source'), '#', 'menu-obje-link-sour', array(
+                    'onclick' => 'return ilinkitem("' . $this->record->getXref() . '","source");',
+                )));
+            }
 
-			// delete
-			$menu->addSubmenu(new Menu(I18N::translate('Delete'), '#', 'menu-obje-del', array(
-				'onclick' => 'return delete_record("' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Filter::unescapeHtml($this->record->getFullName()))) . '", "' . $this->record->getXref() . '");',
-			)));
-		}
+            // delete
+            $menu->addSubmenu(new Menu(I18N::translate('Delete'), '#', 'menu-obje-del', array(
+                'onclick' => 'return delete_record("' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Filter::unescapeHtml($this->record->getFullName()))) . '", "' . $this->record->getXref() . '");',
+            )));
+        }
 
-		// edit raw
-		if (Auth::isAdmin() || Auth::isEditor($this->record->getTree()) && $this->record->getTree()->getPreference('SHOW_GEDCOM_RECORD')) {
-			$menu->addSubmenu(new Menu(I18N::translate('Edit the raw GEDCOM'), '#', 'menu-obje-editraw', array(
-				'onclick' => 'return edit_raw("' . $this->record->getXref() . '");',
-			)));
-		}
+        // edit raw
+        if (Auth::isAdmin() || Auth::isEditor($this->record->getTree()) && $this->record->getTree()->getPreference('SHOW_GEDCOM_RECORD')) {
+            $menu->addSubmenu(new Menu(I18N::translate('Edit the raw GEDCOM'), '#', 'menu-obje-editraw', array(
+                'onclick' => 'return edit_raw("' . $this->record->getXref() . '");',
+            )));
+        }
 
-		return $menu;
-	}
+        return $menu;
+    }
 
-	/**
-	 * Return a list of facts
-	 *
-	 * @return Fact[]
-	 */
-	public function getFacts() {
-		$facts = $this->record->getFacts();
+    /**
+     * Return a list of facts
+     *
+     * @return Fact[]
+     */
+    public function getFacts() {
+        $facts = $this->record->getFacts();
 
-		// Add some dummy facts to show additional information
-		if ($this->record->fileExists()) {
-			// get height and width of image, when available
-			$imgsize = $this->record->getImageAttributes();
-			if (!empty($imgsize['WxH'])) {
-				$facts[] = new Fact('1 __IMAGE_SIZE__ ' . $imgsize['WxH'], $this->record, 0);
-			}
-			//Prints the file size
-			$facts[] = new Fact('1 __FILE_SIZE__ ' . $this->record->getFilesize(), $this->record, 0);
-		}
+        // Add some dummy facts to show additional information
+        if ($this->record->fileExists()) {
+            // get height and width of image, when available
+            $imgsize = $this->record->getImageAttributes();
+            if (!empty($imgsize['WxH'])) {
+                $facts[] = new Fact('1 __IMAGE_SIZE__ ' . $imgsize['WxH'], $this->record, 0);
+            }
+            //Prints the file size
+            $facts[] = new Fact('1 __FILE_SIZE__ ' . $this->record->getFilesize(), $this->record, 0);
+        }
 
-		Functions::sortFacts($facts);
+        Functions::sortFacts($facts);
 
-		return $facts;
-	}
+        return $facts;
+    }
 
-	/**
-	 * Edit menu items used in media list
-	 *
-	 * @param Media $mediaobject
-	 *
-	 * @return string
-	 */
-	public static function getMediaListMenu(Media $mediaobject) {
-		$html = '';
+    /**
+     * Edit menu items used in media list
+     *
+     * @param Media $mediaobject
+     *
+     * @return string
+     */
+    public static function getMediaListMenu(Media $mediaobject) {
+        $html = '';
 
-		$menu = new Menu(I18N::translate('Edit the details'), '#', 'lb-image_edit', array(
-			'onclick' => 'return window.open("addmedia.php?action=editmedia&pid=' . $mediaobject->getXref() . '", "_blank", edit_window_specs);',
-		));
-		$html .= '<ul class="makeMenu lb-menu">' . $menu->getMenuAsList() . '</ul>';
+        $menu = new Menu(I18N::translate('Edit the details'), '#', 'lb-image_edit', array(
+            'onclick' => 'return window.open("addmedia.php?action=editmedia&pid=' . $mediaobject->getXref() . '", "_blank", edit_window_specs);',
+        ));
+        $html .= '<ul class="makeMenu lb-menu">' . $menu->getMenuAsList() . '</ul>';
 
-		$menu = new Menu(I18N::translate('Manage the links'), '#', 'lb-image_link', array(
-			'onclick' => 'return false;',
-		), array(
-			new Menu(I18N::translate('Link this media object to an individual'), '#', '', array(
-				'onclick' => 'return ilinkitem("' . $mediaobject->getXref() . '","person");',
-			)),
-			new Menu(I18N::translate('Link this media object to a family'), '#', '', array(
-				'onclick' => 'return ilinkitem("' . $mediaobject->getXref() . '","family");',
-			)),
-			new Menu(I18N::translate('Link this media object to a source'), '#', '', array(
-				'onclick' => 'return ilinkitem("' . $mediaobject->getXref() . '","source");',
-			)),
-		));
-		$html .= '<ul class="makeMenu lb-menu">' . $menu->getMenuAsList() . '</ul>';
+        $menu = new Menu(I18N::translate('Manage the links'), '#', 'lb-image_link', array(
+            'onclick' => 'return false;',
+        ), array(
+            new Menu(I18N::translate('Link this media object to an individual'), '#', '', array(
+                'onclick' => 'return ilinkitem("' . $mediaobject->getXref() . '","person");',
+            )),
+            new Menu(I18N::translate('Link this media object to a family'), '#', '', array(
+                'onclick' => 'return ilinkitem("' . $mediaobject->getXref() . '","family");',
+            )),
+            new Menu(I18N::translate('Link this media object to a source'), '#', '', array(
+                'onclick' => 'return ilinkitem("' . $mediaobject->getXref() . '","source");',
+            )),
+        ));
+        $html .= '<ul class="makeMenu lb-menu">' . $menu->getMenuAsList() . '</ul>';
 
-		$menu = new Menu(I18N::translate('View the details'), $mediaobject->getHtmlUrl(), 'lb-image_view');
-		$html .= '<ul class="makeMenu lb-menu">' . $menu->getMenuAsList() . '</ul>';
+        $menu = new Menu(I18N::translate('View the details'), $mediaobject->getHtmlUrl(), 'lb-image_view');
+        $html .= '<ul class="makeMenu lb-menu">' . $menu->getMenuAsList() . '</ul>';
 
-		return '<div class="lightbox-menu">' . $html . '</div>';
-	}
+        return '<div class="lightbox-menu">' . $html . '</div>';
+    }
 }

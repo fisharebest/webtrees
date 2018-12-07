@@ -22,24 +22,24 @@ namespace Fisharebest\Webtrees\SpecialChars;
  * that may be difficult to type.
  */
 interface SpecialCharsInterface {
-	/**
-	 * A list of magiscule letters.
-	 *
-	 * @return string[]
-	 */
-	public function upper();
+    /**
+     * A list of magiscule letters.
+     *
+     * @return string[]
+     */
+    public function upper();
 
-	/**
-	 * A list of miniscule letters.
-	 *
-	 * @return string[]
-	 */
-	public function lower();
+    /**
+     * A list of miniscule letters.
+     *
+     * @return string[]
+     */
+    public function lower();
 
-	/**
-	 * A list of puncutation and other symbols
-	 *
-	 * @return string[]
-	 */
-	public function other();
+    /**
+     * A list of puncutation and other symbols
+     *
+     * @return string[]
+     */
+    public function other();
 }

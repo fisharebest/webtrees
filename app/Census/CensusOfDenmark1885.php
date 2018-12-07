@@ -19,44 +19,44 @@ namespace Fisharebest\Webtrees\Census;
  * Definitions for a census
  */
 class CensusOfDenmark1885 extends CensusOfDenmark implements CensusInterface {
-	/**
-	 * When did this census occur.
-	 *
-	 * @return string
-	 */
-	public function censusDate() {
-		return '01 FEB 1885';
-	}
+    /**
+     * When did this census occur.
+     *
+     * @return string
+     */
+    public function censusDate() {
+        return '01 FEB 1885';
+    }
 
-	/**
-	 * Where did this census occur, in GEDCOM format.
-	 *
-	 * @return string
-	 */
-	public function censusPlace() {
-		return 'København, Danmark';
-	}
+    /**
+     * Where did this census occur, in GEDCOM format.
+     *
+     * @return string
+     */
+    public function censusPlace() {
+        return 'København, Danmark';
+    }
 
-	/**
-	 * The columns of the census.
-	 *
-	 * @return CensusColumnInterface[]
-	 */
-	public function columns() {
-		return array(
-			new CensusColumnFullName($this, 'Navn', ''),
-			new CensusColumnSexMK($this, 'Køn', ''),
-			new CensusColumnAge($this, 'Alder', ''),
-			new CensusColumnConditionDanish($this, 'Civilstand', ''),
-			new CensusColumnReligion($this, 'Religion', ''),
-			new CensusColumnOccupation($this, 'Erhverv', ''),
-			new CensusColumnRelationToHead($this, 'Stilling i familien', ''),
-			new CensusColumnNull($this, '', ''),
-			new CensusColumnNull($this, '', ''),
-			new CensusColumnNull($this, '', ''),
-			new CensusColumnNull($this, '', ''),
-			new CensusColumnNull($this, '', ''),
-			new CensusColumnNull($this, '', ''),
-		);
-	}
+    /**
+     * The columns of the census.
+     *
+     * @return CensusColumnInterface[]
+     */
+    public function columns() {
+        return array(
+            new CensusColumnFullName($this, 'Navn', ''),
+            new CensusColumnSexMK($this, 'Køn', ''),
+            new CensusColumnAge($this, 'Alder', ''),
+            new CensusColumnConditionDanish($this, 'Civilstand', ''),
+            new CensusColumnReligion($this, 'Religion', ''),
+            new CensusColumnOccupation($this, 'Erhverv', ''),
+            new CensusColumnRelationToHead($this, 'Stilling i familien', ''),
+            new CensusColumnNull($this, '', ''),
+            new CensusColumnNull($this, '', ''),
+            new CensusColumnNull($this, '', ''),
+            new CensusColumnNull($this, '', ''),
+            new CensusColumnNull($this, '', ''),
+            new CensusColumnNull($this, '', ''),
+        );
+    }
 }

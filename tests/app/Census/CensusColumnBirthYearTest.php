@@ -22,32 +22,32 @@ use Mockery;
  * Test harness for the class CensusColumnAge
  */
 class CensusColumnBirthYearTest extends \PHPUnit_Framework_TestCase {
-	/**
-	 * Delete mock objects
-	 */
-	public function tearDown() {
-		Mockery::close();
-	}
+    /**
+     * Delete mock objects
+     */
+    public function tearDown() {
+        Mockery::close();
+    }
 
-	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnBirthYear
-	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
-	 */
-	public function testGenerateColumn() {
-		$cal_date = Mockery::mock('Fisharebest\Webtrees\Date\CalendarDate');
-		$cal_date->shouldReceive('format')->andReturn('1800');
+    /**
+     * @covers Fisharebest\Webtrees\Census\CensusColumnBirthYear
+     * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
+     */
+    public function testGenerateColumn() {
+        $cal_date = Mockery::mock('Fisharebest\Webtrees\Date\CalendarDate');
+        $cal_date->shouldReceive('format')->andReturn('1800');
 
-		$date = Mockery::mock('Fisharebest\Webtrees\Date');
-		$date->shouldReceive('minimumDate')->andReturn($cal_date);
+        $date = Mockery::mock('Fisharebest\Webtrees\Date');
+        $date->shouldReceive('minimumDate')->andReturn($cal_date);
 
-		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
-		$individual->shouldReceive('getEstimatedBirthDate')->andReturn($date);
+        $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
+        $individual->shouldReceive('getEstimatedBirthDate')->andReturn($date);
 
-		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
-		$census->shouldReceive('censusDate')->andReturn('30 JUN 1832');
+        $census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
+        $census->shouldReceive('censusDate')->andReturn('30 JUN 1832');
 
-		$column = new CensusColumnBirthYear($census, '', '');
+        $column = new CensusColumnBirthYear($census, '', '');
 
-		$this->assertSame('1800', $column->generate($individual));
-	}
+        $this->assertSame('1800', $column->generate($individual));
+    }
 }

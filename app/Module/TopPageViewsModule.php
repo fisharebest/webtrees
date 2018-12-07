@@ -27,144 +27,144 @@ use Fisharebest\Webtrees\Theme;
  * Class TopPageViewsModule
  */
 class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface {
-	/**
-	 * How should this module be labelled on tabs, menus, etc.?
-	 *
-	 * @return string
-	 */
-	public function getTitle() {
-		return /* I18N: Name of a module */ I18N::translate('Most viewed pages');
-	}
+    /**
+     * How should this module be labelled on tabs, menus, etc.?
+     *
+     * @return string
+     */
+    public function getTitle() {
+        return /* I18N: Name of a module */ I18N::translate('Most viewed pages');
+    }
 
-	/**
-	 * A sentence describing what this module does.
-	 *
-	 * @return string
-	 */
-	public function getDescription() {
-		return /* I18N: Description of the “Most visited pages” module */ I18N::translate('A list of the pages that have been viewed the most number of times.');
-	}
+    /**
+     * A sentence describing what this module does.
+     *
+     * @return string
+     */
+    public function getDescription() {
+        return /* I18N: Description of the “Most visited pages” module */ I18N::translate('A list of the pages that have been viewed the most number of times.');
+    }
 
-	/**
-	 * Generate the HTML content of this block.
-	 *
-	 * @param int      $block_id
-	 * @param bool     $template
-	 * @param string[] $cfg
-	 *
-	 * @return string
-	 */
-	public function getBlock($block_id, $template = true, $cfg = array()) {
-		global $ctype, $WT_TREE;
+    /**
+     * Generate the HTML content of this block.
+     *
+     * @param int      $block_id
+     * @param bool     $template
+     * @param string[] $cfg
+     *
+     * @return string
+     */
+    public function getBlock($block_id, $template = true, $cfg = array()) {
+        global $ctype, $WT_TREE;
 
-		$num             = $this->getBlockSetting($block_id, 'num', '10');
-		$count_placement = $this->getBlockSetting($block_id, 'count_placement', 'before');
+        $num             = $this->getBlockSetting($block_id, 'num', '10');
+        $count_placement = $this->getBlockSetting($block_id, 'count_placement', 'before');
 
-		foreach (array('count_placement', 'num') as $name) {
-			if (array_key_exists($name, $cfg)) {
-				$$name = $cfg[$name];
-			}
-		}
+        foreach (array('count_placement', 'num') as $name) {
+            if (array_key_exists($name, $cfg)) {
+                $$name = $cfg[$name];
+            }
+        }
 
-		$id    = $this->getName() . $block_id;
-		$class = $this->getName() . '_block';
-		if ($ctype === 'gedcom' && Auth::isManager($WT_TREE) || $ctype === 'user' && Auth::check()) {
-			$title = '<a class="icon-admin" title="' . I18N::translate('Preferences') . '" href="block_edit.php?block_id=' . $block_id . '&amp;ged=' . $WT_TREE->getNameHtml() . '&amp;ctype=' . $ctype . '"></a>';
-		} else {
-			$title = '';
-		}
-		$title .= $this->getTitle();
+        $id    = $this->getName() . $block_id;
+        $class = $this->getName() . '_block';
+        if ($ctype === 'gedcom' && Auth::isManager($WT_TREE) || $ctype === 'user' && Auth::check()) {
+            $title = '<a class="icon-admin" title="' . I18N::translate('Preferences') . '" href="block_edit.php?block_id=' . $block_id . '&amp;ged=' . $WT_TREE->getNameHtml() . '&amp;ctype=' . $ctype . '"></a>';
+        } else {
+            $title = '';
+        }
+        $title .= $this->getTitle();
 
-		$content = '';
-		// load the lines from the file
-		$top10 = Database::prepare(
-			"SELECT page_parameter, page_count" .
-			" FROM `##hit_counter`" .
-			" WHERE gedcom_id = :tree_id AND page_name IN ('individual.php','family.php','source.php','repo.php','note.php','mediaviewer.php')" .
-			" ORDER BY page_count DESC LIMIT :limit"
-		)->execute(array(
-			'tree_id' => $WT_TREE->getTreeId(),
-			'limit'   => (int) $num,
-		))->fetchAssoc();
+        $content = '';
+        // load the lines from the file
+        $top10 = Database::prepare(
+            "SELECT page_parameter, page_count" .
+            " FROM `##hit_counter`" .
+            " WHERE gedcom_id = :tree_id AND page_name IN ('individual.php','family.php','source.php','repo.php','note.php','mediaviewer.php')" .
+            " ORDER BY page_count DESC LIMIT :limit"
+        )->execute(array(
+            'tree_id' => $WT_TREE->getTreeId(),
+            'limit'   => (int) $num,
+        ))->fetchAssoc();
 
-		$content .= '<table>';
-		foreach ($top10 as $id => $count) {
-			$record = GedcomRecord::getInstance($id, $WT_TREE);
-			if ($record && $record->canShow()) {
-				$content .= '<tr>';
-				if ($count_placement == 'before') {
-					$content .= '<td dir="ltr" style="text-align:right">[' . $count . ']</td>';
-				}
-				$content .= '<td class="name2" ><a href="' . $record->getHtmlUrl() . '">' . $record->getFullName() . '</a></td>';
-				if ($count_placement == 'after') {
-					$content .= '<td dir="ltr" style="text-align:right">[' . $count . ']</td>';
-				}
-				$content .= '</tr>';
-			}
-		}
-		$content .= "</table>";
+        $content .= '<table>';
+        foreach ($top10 as $id => $count) {
+            $record = GedcomRecord::getInstance($id, $WT_TREE);
+            if ($record && $record->canShow()) {
+                $content .= '<tr>';
+                if ($count_placement == 'before') {
+                    $content .= '<td dir="ltr" style="text-align:right">[' . $count . ']</td>';
+                }
+                $content .= '<td class="name2" ><a href="' . $record->getHtmlUrl() . '">' . $record->getFullName() . '</a></td>';
+                if ($count_placement == 'after') {
+                    $content .= '<td dir="ltr" style="text-align:right">[' . $count . ']</td>';
+                }
+                $content .= '</tr>';
+            }
+        }
+        $content .= "</table>";
 
-		if ($template) {
-			return Theme::theme()->formatBlock($id, $title, $class, $content);
-		} else {
-			return $content;
-		}
-	}
+        if ($template) {
+            return Theme::theme()->formatBlock($id, $title, $class, $content);
+        } else {
+            return $content;
+        }
+    }
 
-	/**
-	 * Should this block load asynchronously using AJAX?
-	 *
-	 * Simple blocks are faster in-line, more comples ones
-	 * can be loaded later.
-	 *
-	 * @return bool
-	 */
-	public function loadAjax() {
-		return true;
-	}
+    /**
+     * Should this block load asynchronously using AJAX?
+     *
+     * Simple blocks are faster in-line, more comples ones
+     * can be loaded later.
+     *
+     * @return bool
+     */
+    public function loadAjax() {
+        return true;
+    }
 
-	/**
-	 * Can this block be shown on the user’s home page?
-	 *
-	 * @return bool
-	 */
-	public function isUserBlock() {
-		return false;
-	}
+    /**
+     * Can this block be shown on the user’s home page?
+     *
+     * @return bool
+     */
+    public function isUserBlock() {
+        return false;
+    }
 
-	/**
-	 * Can this block be shown on the tree’s home page?
-	 *
-	 * @return bool
-	 */
-	public function isGedcomBlock() {
-		return true;
-	}
+    /**
+     * Can this block be shown on the tree’s home page?
+     *
+     * @return bool
+     */
+    public function isGedcomBlock() {
+        return true;
+    }
 
-	/**
-	 * An HTML form to edit block settings
-	 *
-	 * @param int $block_id
-	 */
-	public function configureBlock($block_id) {
-		if (Filter::postBool('save') && Filter::checkCsrf()) {
-			$this->setBlockSetting($block_id, 'num', Filter::postInteger('num', 1, 10000, 10));
-			$this->setBlockSetting($block_id, 'count_placement', Filter::post('count_placement', 'before|after', 'before'));
-		}
+    /**
+     * An HTML form to edit block settings
+     *
+     * @param int $block_id
+     */
+    public function configureBlock($block_id) {
+        if (Filter::postBool('save') && Filter::checkCsrf()) {
+            $this->setBlockSetting($block_id, 'num', Filter::postInteger('num', 1, 10000, 10));
+            $this->setBlockSetting($block_id, 'count_placement', Filter::post('count_placement', 'before|after', 'before'));
+        }
 
-		$num             = $this->getBlockSetting($block_id, 'num', '10');
-		$count_placement = $this->getBlockSetting($block_id, 'count_placement', 'before');
+        $num             = $this->getBlockSetting($block_id, 'num', '10');
+        $count_placement = $this->getBlockSetting($block_id, 'count_placement', 'before');
 
-		echo '<tr><td class="descriptionbox wrap width33">';
-		echo /* I18N: ... to show in a list */ I18N::translate('Number of pages');
-		echo '</td><td class="optionbox">';
-		echo '<input type="text" name="num" size="2" value="', $num, '">';
-		echo '</td></tr>';
+        echo '<tr><td class="descriptionbox wrap width33">';
+        echo /* I18N: ... to show in a list */ I18N::translate('Number of pages');
+        echo '</td><td class="optionbox">';
+        echo '<input type="text" name="num" size="2" value="', $num, '">';
+        echo '</td></tr>';
 
-		echo "<tr><td class=\"descriptionbox wrap width33\">";
-		echo /* I18N: Label for a configuration option */ I18N::translate('Show counts before or after name');
-		echo "</td><td class=\"optionbox\">";
-		echo FunctionsEdit::selectEditControl('count_placement', array('before' => I18N::translate('before'), 'after' => I18N::translate('after')), null, $count_placement, '');
-		echo '</td></tr>';
-	}
+        echo "<tr><td class=\"descriptionbox wrap width33\">";
+        echo /* I18N: Label for a configuration option */ I18N::translate('Show counts before or after name');
+        echo "</td><td class=\"optionbox\">";
+        echo FunctionsEdit::selectEditControl('count_placement', array('before' => I18N::translate('before'), 'after' => I18N::translate('after')), null, $count_placement, '');
+        echo '</td></tr>';
+    }
 }

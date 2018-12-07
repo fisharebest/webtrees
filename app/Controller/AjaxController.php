@@ -19,41 +19,41 @@ namespace Fisharebest\Webtrees\Controller;
  * Base controller for all popup pages
  */
 class AjaxController extends BaseController {
-	/**
-	 * Print the page header, using the theme
-	 *
-	 * @return $this
-	 */
-	public function pageHeader() {
-		// Ajax responses are always UTF8
-		header('Content-Type: text/html; charset=UTF-8');
-		// We've displayed the header - display the footer automatically
-		register_shutdown_function(array($this, 'pageFooter'));
+    /**
+     * Print the page header, using the theme
+     *
+     * @return $this
+     */
+    public function pageHeader() {
+        // Ajax responses are always UTF8
+        header('Content-Type: text/html; charset=UTF-8');
+        // We've displayed the header - display the footer automatically
+        register_shutdown_function(array($this, 'pageFooter'));
 
-		return $this;
-	}
+        return $this;
+    }
 
-	/**
-	 * Print the page footer, using the theme
-	 */
-	public function pageFooter() {
-		// Ajax responses may have Javascript
-		echo $this->getJavascript();
-	}
+    /**
+     * Print the page footer, using the theme
+     */
+    public function pageFooter() {
+        // Ajax responses may have Javascript
+        echo $this->getJavascript();
+    }
 
-	/**
-	 * Restrict access.
-	 *
-	 * @param bool $condition
-	 *
-	 * @return $this
-	 */
-	public function restrictAccess($condition) {
-		if ($condition !== true) {
-			http_response_code(403);
-			exit;
-		}
+    /**
+     * Restrict access.
+     *
+     * @param bool $condition
+     *
+     * @return $this
+     */
+    public function restrictAccess($condition) {
+        if ($condition !== true) {
+            http_response_code(403);
+            exit;
+        }
 
-		return $this;
-	}
+        return $this;
+    }
 }

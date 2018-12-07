@@ -23,50 +23,50 @@ use Fisharebest\Webtrees\Menu;
  * Class AhnentafelReportModule
  */
 class AhnentafelReportModule extends AbstractModule implements ModuleReportInterface {
-	/**
-	 * How should this module be labelled on tabs, menus, etc.?
-	 *
-	 * @return string
-	 */
-	public function getTitle() {
-		// This text also appears in the .XML file - update both together
-		return /* I18N: Name of a module/report */ I18N::translate('Ancestors');
-	}
+    /**
+     * How should this module be labelled on tabs, menus, etc.?
+     *
+     * @return string
+     */
+    public function getTitle() {
+        // This text also appears in the .XML file - update both together
+        return /* I18N: Name of a module/report */ I18N::translate('Ancestors');
+    }
 
-	/**
-	 * A sentence describing what this module does.
-	 *
-	 * @return string
-	 */
-	public function getDescription() {
-		// This text also appears in the .XML file - update both together
-		return /* I18N: Description of the “Ancestors” module */ I18N::translate('A report of an individual’s ancestors, in a narrative style.');
-	}
+    /**
+     * A sentence describing what this module does.
+     *
+     * @return string
+     */
+    public function getDescription() {
+        // This text also appears in the .XML file - update both together
+        return /* I18N: Description of the “Ancestors” module */ I18N::translate('A report of an individual’s ancestors, in a narrative style.');
+    }
 
-	/**
-	 * What is the default access level for this module?
-	 *
-	 * Some modules are aimed at admins or managers, and are not generally shown to users.
-	 *
-	 * @return int
-	 */
-	public function defaultAccessLevel() {
-		return Auth::PRIV_PRIVATE;
-	}
+    /**
+     * What is the default access level for this module?
+     *
+     * Some modules are aimed at admins or managers, and are not generally shown to users.
+     *
+     * @return int
+     */
+    public function defaultAccessLevel() {
+        return Auth::PRIV_PRIVATE;
+    }
 
-	/**
-	 * Return a menu item for this report.
-	 *
-	 * @return Menu
-	 */
-	public function getReportMenu() {
-		global $controller, $WT_TREE;
+    /**
+     * Return a menu item for this report.
+     *
+     * @return Menu
+     */
+    public function getReportMenu() {
+        global $controller, $WT_TREE;
 
-		return new Menu(
-			$this->getTitle(),
-			'reportengine.php?ged=' . $WT_TREE->getNameUrl() . '&amp;action=setup&amp;report=' . WT_MODULES_DIR . $this->getName() . '/report.xml&amp;pid=' . $controller->getSignificantIndividual()->getXref(),
-			'menu-report-' . $this->getName(),
-			array('rel' => 'nofollow')
-		);
-	}
+        return new Menu(
+            $this->getTitle(),
+            'reportengine.php?ged=' . $WT_TREE->getNameUrl() . '&amp;action=setup&amp;report=' . WT_MODULES_DIR . $this->getName() . '/report.xml&amp;pid=' . $controller->getSignificantIndividual()->getXref(),
+            'menu-report-' . $this->getName(),
+            array('rel' => 'nofollow')
+        );
+    }
 }

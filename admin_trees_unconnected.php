@@ -30,20 +30,20 @@ require './includes/session.php';
 
 $controller = new PageController;
 $controller
-	->restrictAccess(Auth::isManager($WT_TREE))
-	->setPageTitle(I18N::translate('Find unrelated individuals') . ' — ' . $WT_TREE->getTitleHtml())
-	->pageHeader();
+    ->restrictAccess(Auth::isManager($WT_TREE))
+    ->setPageTitle(I18N::translate('Find unrelated individuals') . ' — ' . $WT_TREE->getTitleHtml())
+    ->pageHeader();
 
 $rows = Database::prepare(
-	"SELECT l_from, l_to FROM `##link` WHERE l_file = :tree_id AND l_type IN ('FAMS', 'FAMC')"
+    "SELECT l_from, l_to FROM `##link` WHERE l_file = :tree_id AND l_type IN ('FAMS', 'FAMC')"
 )->execute(array(
-	'tree_id' => $WT_TREE->getTreeId(),
+    'tree_id' => $WT_TREE->getTreeId(),
 ))->fetchAll();
 $graph = array();
 
 foreach ($rows as $row) {
-	$graph[$row->l_from][$row->l_to] = 1;
-	$graph[$row->l_to][$row->l_from] = 1;
+    $graph[$row->l_from][$row->l_to] = 1;
+    $graph[$row->l_to][$row->l_from] = 1;
 }
 
 $algorithm  = new ConnectedComponent($graph);
@@ -56,21 +56,21 @@ $individual_groups = array();
 $group_number      = 1;
 
 foreach ($components as $key => $component) {
-	if (!in_array($root_id, $component)) {
-		$individuals = array();
-		foreach ($component as $xref) {
-			$individual = Individual::getInstance($xref, $WT_TREE);
-			if ($individual instanceof Individual) {
-				$individuals[] = $individual;
-			}
-		}
-		$individual_groups[$group_number++] = $individuals;
-	}
+    if (!in_array($root_id, $component)) {
+        $individuals = array();
+        foreach ($component as $xref) {
+            $individual = Individual::getInstance($xref, $WT_TREE);
+            if ($individual instanceof Individual) {
+                $individuals[] = $individual;
+            }
+        }
+        $individual_groups[$group_number++] = $individuals;
+    }
 }
 
 ?>
 <ol class="breadcrumb small">
-	<li><a href="admin.php"><?php echo I18N::translate('Control panel'); ?></a></li>
+    <li><a href="admin.php"><?php echo I18N::translate('Control panel'); ?></a></li>
 <li><a href="admin_trees_manage.php"><?php echo I18N::translate('Manage family trees'); ?></a></li>
 <li class="active"><?php echo $controller->getPageTitle(); ?></li>
 </ol>
@@ -80,12 +80,12 @@ foreach ($components as $key => $component) {
 <p><?php echo I18N::translate('These groups of individuals are not related to %s.', $root->getFullName()) ?></p>
 
 <?php foreach ($individual_groups as $group): ?>
-	<h2><?php echo I18N::plural('%s individual', '%s individuals', count($group), I18N::number(count($group))) ?></h2>
-	<ul>
-		<?php foreach ($group as $individual): ?>
-			<li>
-				<a href="<?php echo $individual->getHtmlUrl() ?>"><?php echo $individual->getFullName() ?></a>
-			</li>
-		<?php endforeach ?>
-	</ul>
+    <h2><?php echo I18N::plural('%s individual', '%s individuals', count($group), I18N::number(count($group))) ?></h2>
+    <ul>
+        <?php foreach ($group as $individual): ?>
+            <li>
+                <a href="<?php echo $individual->getHtmlUrl() ?>"><?php echo $individual->getFullName() ?></a>
+            </li>
+        <?php endforeach ?>
+    </ul>
 <?php endforeach ?>

@@ -22,89 +22,89 @@ use Mockery;
  * Test harness for the class CensusColumnMotherBirthPlace
  */
 class CensusColumnMotherBirthPlaceTest extends \PHPUnit_Framework_TestCase {
-	/**
-	 * Delete mock objects
-	 */
-	public function tearDown() {
-		Mockery::close();
-	}
+    /**
+     * Delete mock objects
+     */
+    public function tearDown() {
+        Mockery::close();
+    }
 
-	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnMotherBirthPlace
-	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
-	 */
-	public function testSameCountry() {
-		$mother = Mockery::mock('Fisharebest\Webtrees\Individual');
-		$mother->shouldReceive('getBirthPlace')->andReturn('London, England');
+    /**
+     * @covers Fisharebest\Webtrees\Census\CensusColumnMotherBirthPlace
+     * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
+     */
+    public function testSameCountry() {
+        $mother = Mockery::mock('Fisharebest\Webtrees\Individual');
+        $mother->shouldReceive('getBirthPlace')->andReturn('London, England');
 
-		$family = Mockery::mock('Fisharebest\Webtrees\Family');
-		$family->shouldReceive('getWife')->andReturn($mother);
+        $family = Mockery::mock('Fisharebest\Webtrees\Family');
+        $family->shouldReceive('getWife')->andReturn($mother);
 
-		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
-		$individual->shouldReceive('getPrimaryChildFamily')->andReturn($family);
+        $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
+        $individual->shouldReceive('getPrimaryChildFamily')->andReturn($family);
 
-		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
-		$census->shouldReceive('censusPlace')->andReturn('England');
+        $census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
+        $census->shouldReceive('censusPlace')->andReturn('England');
 
-		$column = new CensusColumnMotherBirthPlace($census, '', '');
+        $column = new CensusColumnMotherBirthPlace($census, '', '');
 
-		$this->assertSame('London', $column->generate($individual));
-	}
+        $this->assertSame('London', $column->generate($individual));
+    }
 
-	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnMotherBirthPlace
-	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
-	 */
-	public function testDifferentCountry() {
-		$mother = Mockery::mock('Fisharebest\Webtrees\Individual');
-		$mother->shouldReceive('getBirthPlace')->andReturn('London, England');
+    /**
+     * @covers Fisharebest\Webtrees\Census\CensusColumnMotherBirthPlace
+     * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
+     */
+    public function testDifferentCountry() {
+        $mother = Mockery::mock('Fisharebest\Webtrees\Individual');
+        $mother->shouldReceive('getBirthPlace')->andReturn('London, England');
 
-		$family = Mockery::mock('Fisharebest\Webtrees\Family');
-		$family->shouldReceive('getWife')->andReturn($mother);
+        $family = Mockery::mock('Fisharebest\Webtrees\Family');
+        $family->shouldReceive('getWife')->andReturn($mother);
 
-		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
-		$individual->shouldReceive('getPrimaryChildFamily')->andReturn($family);
+        $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
+        $individual->shouldReceive('getPrimaryChildFamily')->andReturn($family);
 
-		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
-		$census->shouldReceive('censusPlace')->andReturn('Ireland');
+        $census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
+        $census->shouldReceive('censusPlace')->andReturn('Ireland');
 
-		$column = new CensusColumnMotherBirthPlace($census, '', '');
+        $column = new CensusColumnMotherBirthPlace($census, '', '');
 
-		$this->assertSame('London, England', $column->generate($individual));
-	}
+        $this->assertSame('London, England', $column->generate($individual));
+    }
 
-	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnMotherBirthPlace
-	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
-	 */
-	public function testPlaceNoParent() {
-		$family = Mockery::mock('Fisharebest\Webtrees\Family');
-		$family->shouldReceive('getWife')->andReturn(null);
+    /**
+     * @covers Fisharebest\Webtrees\Census\CensusColumnMotherBirthPlace
+     * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
+     */
+    public function testPlaceNoParent() {
+        $family = Mockery::mock('Fisharebest\Webtrees\Family');
+        $family->shouldReceive('getWife')->andReturn(null);
 
-		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
-		$individual->shouldReceive('getPrimaryChildFamily')->andReturn($family);
+        $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
+        $individual->shouldReceive('getPrimaryChildFamily')->andReturn($family);
 
-		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
-		$census->shouldReceive('censusPlace')->andReturn('England');
+        $census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
+        $census->shouldReceive('censusPlace')->andReturn('England');
 
-		$column = new CensusColumnMotherBirthPlace($census, '', '');
+        $column = new CensusColumnMotherBirthPlace($census, '', '');
 
-		$this->assertSame('', $column->generate($individual));
-	}
+        $this->assertSame('', $column->generate($individual));
+    }
 
-	/**
-	 * @covers Fisharebest\Webtrees\Census\CensusColumnMotherBirthPlace
-	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
-	 */
-	public function testPlaceNoParentFamily() {
-		$individual = Mockery::mock('Fisharebest\Webtrees\Individual');
-		$individual->shouldReceive('getPrimaryChildFamily')->andReturn(null);
+    /**
+     * @covers Fisharebest\Webtrees\Census\CensusColumnMotherBirthPlace
+     * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
+     */
+    public function testPlaceNoParentFamily() {
+        $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
+        $individual->shouldReceive('getPrimaryChildFamily')->andReturn(null);
 
-		$census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
-		$census->shouldReceive('censusPlace')->andReturn('England');
+        $census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
+        $census->shouldReceive('censusPlace')->andReturn('England');
 
-		$column = new CensusColumnMotherBirthPlace($census, '', '');
+        $column = new CensusColumnMotherBirthPlace($census, '', '');
 
-		$this->assertSame('', $column->generate($individual));
-	}
+        $this->assertSame('', $column->generate($individual));
+    }
 }

@@ -22,27 +22,27 @@ use Fisharebest\Webtrees\Schema\MigrationInterface;
  * Upgrade the database schema from version 0 (empty database) to version 1.
  */
 class Migration0 implements MigrationInterface {
-	/** {@inheritDoc} */
-	public function upgrade() {
-		// Create the tables, as per PhpGedView 4.2.1
+    /** {@inheritDoc} */
+    public function upgrade() {
+        // Create the tables, as per PhpGedView 4.2.1
 
-		Database::exec(
-			"CREATE TABLE IF NOT EXISTS `##placelocation` (" .
-			" pl_id        INTEGER      NOT NULL," .
-			" pl_parent_id INTEGER          NULL," .
-			" pl_level     INTEGER          NULL," .
-			" pl_place     VARCHAR(255)     NULL," .
-			" pl_long      VARCHAR(30)      NULL," .
-			" pl_lati      VARCHAR(30)      NULL," .
-			" pl_zoom      INTEGER          NULL," .
-			" pl_icon      VARCHAR(255)     NULL," .
-			" PRIMARY KEY     (pl_id)," .
-			"         KEY ix1 (pl_level)," .
-			"         KEY ix2 (pl_long)," .
-			"         KEY ix3 (pl_lati)," .
-			"         KEY ix4 (pl_place)," .
-			"         KEY ix5 (pl_parent_id)" .
-			") COLLATE utf8_unicode_ci ENGINE=InnoDB"
-		);
-	}
+        Database::exec(
+            "CREATE TABLE IF NOT EXISTS `##placelocation` (" .
+            " pl_id        INTEGER      NOT NULL," .
+            " pl_parent_id INTEGER          NULL," .
+            " pl_level     INTEGER          NULL," .
+            " pl_place     VARCHAR(255)     NULL," .
+            " pl_long      VARCHAR(30)      NULL," .
+            " pl_lati      VARCHAR(30)      NULL," .
+            " pl_zoom      INTEGER          NULL," .
+            " pl_icon      VARCHAR(255)     NULL," .
+            " PRIMARY KEY     (pl_id)," .
+            "         KEY ix1 (pl_level)," .
+            "         KEY ix2 (pl_long)," .
+            "         KEY ix3 (pl_lati)," .
+            "         KEY ix4 (pl_place)," .
+            "         KEY ix5 (pl_parent_id)" .
+            ") COLLATE utf8_unicode_ci ENGINE=InnoDB"
+        );
+    }
 }

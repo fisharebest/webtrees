@@ -26,17 +26,17 @@ $controller = new FanchartController;
 global $WT_TREE;
 
 if (Filter::getBool('img')) {
-	header('Content-Type: image/png');
-	echo $controller->generateFanChart('png');
+    header('Content-Type: image/png');
+    echo $controller->generateFanChart('png');
 
-	return;
+    return;
 }
 
 $controller
-	->restrictAccess(Module::isActiveChart($WT_TREE, 'fan_chart'))
-	->pageHeader()
-	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
-	->addInlineJavascript('
+    ->restrictAccess(Module::isActiveChart($WT_TREE, 'fan_chart'))
+    ->pageHeader()
+    ->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
+    ->addInlineJavascript('
 		autocomplete();
 		var WT_FANCHART = (function() {
 			jQuery("area")
@@ -68,63 +68,63 @@ $controller
 
 ?>
 <div id="page-fan">
-	<h2><?php echo $controller->getPageTitle(); ?></h2>
-	<form name="people" method="get" action="?">
-		<input type="hidden" name="ged" value="<?php echo $WT_TREE->getNameHtml(); ?>">
-		<table class="list_table">
-			<tbody>
-				<tr>
-					<td class="descriptionbox">
-						<label for="rootid">
-							<?php echo I18N::translate('Individual'); ?>
-						</label>
-					</td>
-					<td class="optionbox">
-						<input class="pedigree_form" data-autocomplete-type="INDI" type="text" name="rootid" id="rootid" size="3" value="<?php echo $controller->root->getXref(); ?>">
-						<?php echo FunctionsPrint::printFindIndividualLink('rootid'); ?>
-					</td>
-					<td class="descriptionbox">
-						<label for="fan_style">
-							<?php echo I18N::translate('Layout'); ?>
-							</label>
-					</td>
-					<td class="optionbox">
-						<?php echo FunctionsEdit::selectEditControl('fan_style', $controller->getFanStyles(), null, $controller->fan_style); ?>
-					</td>
-					<td rowspan="2" class="topbottombar vmiddle">
-						<input type="submit" value="<?php echo /* I18N: A button label. */ I18N::translate('view'); ?>">
-					</td>
-				</tr>
-				<tr>
-					<td class="descriptionbox">
-						<label for="generations">
-							<?php echo I18N::translate('Generations'); ?>
-						</label>
-					</td>
-					<td class="optionbox">
-						<?php echo FunctionsEdit::editFieldInteger('generations', $controller->generations, 2, 9); ?>
-					</td>
-					<td class="descriptionbox">
-						<label for="fan_width">
-							<?php echo I18N::translate('Zoom'); ?>
-						</label>
-					</td>
-					<td class="optionbox">
-						<input type="text" size="3" id="fan_width" name="fan_width" value="<?php echo $controller->fan_width; ?>"> %
-					</td>
-				</tr>
-			</tbody>
-		</table>
-	</form>
+    <h2><?php echo $controller->getPageTitle(); ?></h2>
+    <form name="people" method="get" action="?">
+        <input type="hidden" name="ged" value="<?php echo $WT_TREE->getNameHtml(); ?>">
+        <table class="list_table">
+            <tbody>
+                <tr>
+                    <td class="descriptionbox">
+                        <label for="rootid">
+                            <?php echo I18N::translate('Individual'); ?>
+                        </label>
+                    </td>
+                    <td class="optionbox">
+                        <input class="pedigree_form" data-autocomplete-type="INDI" type="text" name="rootid" id="rootid" size="3" value="<?php echo $controller->root->getXref(); ?>">
+                        <?php echo FunctionsPrint::printFindIndividualLink('rootid'); ?>
+                    </td>
+                    <td class="descriptionbox">
+                        <label for="fan_style">
+                            <?php echo I18N::translate('Layout'); ?>
+                            </label>
+                    </td>
+                    <td class="optionbox">
+                        <?php echo FunctionsEdit::selectEditControl('fan_style', $controller->getFanStyles(), null, $controller->fan_style); ?>
+                    </td>
+                    <td rowspan="2" class="topbottombar vmiddle">
+                        <input type="submit" value="<?php echo /* I18N: A button label. */ I18N::translate('view'); ?>">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="descriptionbox">
+                        <label for="generations">
+                            <?php echo I18N::translate('Generations'); ?>
+                        </label>
+                    </td>
+                    <td class="optionbox">
+                        <?php echo FunctionsEdit::editFieldInteger('generations', $controller->generations, 2, 9); ?>
+                    </td>
+                    <td class="descriptionbox">
+                        <label for="fan_width">
+                            <?php echo I18N::translate('Zoom'); ?>
+                        </label>
+                    </td>
+                    <td class="optionbox">
+                        <input type="text" size="3" id="fan_width" name="fan_width" value="<?php echo $controller->fan_width; ?>"> %
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
 <?php
 
 if ($controller->error_message) {
-	echo '<p class="ui-state-error">', $controller->error_message, '</p>';
+    echo '<p class="ui-state-error">', $controller->error_message, '</p>';
 
-	return;
+    return;
 }
 
 if ($controller->root) {
-	echo '<div id="fan_chart">', $controller->generateFanChart('html'), '</div>';
+    echo '<div id="fan_chart">', $controller->generateFanChart('html'), '</div>';
 }
 echo '</div>';

@@ -19,34 +19,34 @@ namespace Fisharebest\Webtrees;
  * Generate messages in one request and display them in the next.
  */
 class FlashMessages {
-	// Session storage key
-	const FLASH_KEY = 'flash_messages';
+    // Session storage key
+    const FLASH_KEY = 'flash_messages';
 
-	/**
-	 * Add a message to the session storage.
-	 *
-	 * @param string $text
-	 * @param string $status "success", "info", "warning" or "danger"
-	 */
-	public static function addMessage($text, $status = 'info') {
-		$message         = new \stdClass;
-		$message->text   = $text;
-		$message->status = $status;
+    /**
+     * Add a message to the session storage.
+     *
+     * @param string $text
+     * @param string $status "success", "info", "warning" or "danger"
+     */
+    public static function addMessage($text, $status = 'info') {
+        $message         = new \stdClass;
+        $message->text   = $text;
+        $message->status = $status;
 
-		$messages   = Session::get(self::FLASH_KEY, array());
-		$messages[] = $message;
-		Session::put(self::FLASH_KEY, $messages);
-	}
+        $messages   = Session::get(self::FLASH_KEY, array());
+        $messages[] = $message;
+        Session::put(self::FLASH_KEY, $messages);
+    }
 
-	/**
-	 * Get the current messages, and remove them from session storage.
-	 *
-	 * @return string[]
-	 */
-	public static function getMessages() {
-		$messages = Session::get(self::FLASH_KEY, array());
-		Session::forget(self::FLASH_KEY);
+    /**
+     * Get the current messages, and remove them from session storage.
+     *
+     * @return string[]
+     */
+    public static function getMessages() {
+        $messages = Session::get(self::FLASH_KEY, array());
+        Session::forget(self::FLASH_KEY);
 
-		return $messages;
-	}
+        return $messages;
+    }
 }

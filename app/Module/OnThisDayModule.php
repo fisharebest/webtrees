@@ -26,137 +26,137 @@ use Fisharebest\Webtrees\Theme;
  * Class OnThisDayModule
  */
 class OnThisDayModule extends AbstractModule implements ModuleBlockInterface {
-	/** {@inheritdoc} */
-	public function getTitle() {
-		return /* I18N: Name of a module */ I18N::translate('On this day');
-	}
+    /** {@inheritdoc} */
+    public function getTitle() {
+        return /* I18N: Name of a module */ I18N::translate('On this day');
+    }
 
-	/** {@inheritdoc} */
-	public function getDescription() {
-		return /* I18N: Description of the “On this day” module */ I18N::translate('A list of the anniversaries that occur today.');
-	}
+    /** {@inheritdoc} */
+    public function getDescription() {
+        return /* I18N: Description of the “On this day” module */ I18N::translate('A list of the anniversaries that occur today.');
+    }
 
-	/**
-	 * Generate the HTML content of this block.
-	 *
-	 * @param int      $block_id
-	 * @param bool     $template
-	 * @param string[] $cfg
-	 *
-	 * @return string
-	 */
-	public function getBlock($block_id, $template = true, $cfg = array()) {
-		global $ctype, $WT_TREE;
+    /**
+     * Generate the HTML content of this block.
+     *
+     * @param int      $block_id
+     * @param bool     $template
+     * @param string[] $cfg
+     *
+     * @return string
+     */
+    public function getBlock($block_id, $template = true, $cfg = array()) {
+        global $ctype, $WT_TREE;
 
-		$filter    = $this->getBlockSetting($block_id, 'filter', '1');
-		$infoStyle = $this->getBlockSetting($block_id, 'infoStyle', 'table');
-		$sortStyle = $this->getBlockSetting($block_id, 'sortStyle', 'alpha');
-		$block     = $this->getBlockSetting($block_id, 'block', '1');
+        $filter    = $this->getBlockSetting($block_id, 'filter', '1');
+        $infoStyle = $this->getBlockSetting($block_id, 'infoStyle', 'table');
+        $sortStyle = $this->getBlockSetting($block_id, 'sortStyle', 'alpha');
+        $block     = $this->getBlockSetting($block_id, 'block', '1');
 
-		foreach (array('filter', 'infoStyle', 'sortStyle', 'block') as $name) {
-			if (array_key_exists($name, $cfg)) {
-				$$name = $cfg[$name];
-			}
-		}
+        foreach (array('filter', 'infoStyle', 'sortStyle', 'block') as $name) {
+            if (array_key_exists($name, $cfg)) {
+                $$name = $cfg[$name];
+            }
+        }
 
-		$todayjd = WT_CLIENT_JD;
+        $todayjd = WT_CLIENT_JD;
 
-		$id    = $this->getName() . $block_id;
-		$class = $this->getName() . '_block';
-		if ($ctype === 'gedcom' && Auth::isManager($WT_TREE) || $ctype === 'user' && Auth::check()) {
-			$title = '<a class="icon-admin" title="' . I18N::translate('Preferences') . '" href="block_edit.php?block_id=' . $block_id . '&amp;ged=' . $WT_TREE->getNameHtml() . '&amp;ctype=' . $ctype . '"></a>';
-		} else {
-			$title = '';
-		}
-		$title .= $this->getTitle();
+        $id    = $this->getName() . $block_id;
+        $class = $this->getName() . '_block';
+        if ($ctype === 'gedcom' && Auth::isManager($WT_TREE) || $ctype === 'user' && Auth::check()) {
+            $title = '<a class="icon-admin" title="' . I18N::translate('Preferences') . '" href="block_edit.php?block_id=' . $block_id . '&amp;ged=' . $WT_TREE->getNameHtml() . '&amp;ctype=' . $ctype . '"></a>';
+        } else {
+            $title = '';
+        }
+        $title .= $this->getTitle();
 
-		$content = '';
+        $content = '';
 
-		// If we are only showing living individuals, then we don't need to search for DEAT events.
-		$tags = $filter ? 'BIRT MARR' : 'BIRT MARR DEAT';
+        // If we are only showing living individuals, then we don't need to search for DEAT events.
+        $tags = $filter ? 'BIRT MARR' : 'BIRT MARR DEAT';
 
-		switch ($infoStyle) {
-		case 'list':
-			// Output style 1:  Old format, no visible tables, much smaller text. Better suited to right side of page.
-			$content .= FunctionsPrintLists::eventsList($todayjd, $todayjd, $tags, $filter, $sortStyle);
-			break;
-		case 'table':
-			// Style 2: New format, tables, big text, etc. Not too good on right side of page
-			ob_start();
-			$content .= FunctionsPrintLists::eventsTable($todayjd, $todayjd, $tags, $filter, $sortStyle);
-			$content .= ob_get_clean();
-			break;
-		}
+        switch ($infoStyle) {
+        case 'list':
+            // Output style 1:  Old format, no visible tables, much smaller text. Better suited to right side of page.
+            $content .= FunctionsPrintLists::eventsList($todayjd, $todayjd, $tags, $filter, $sortStyle);
+            break;
+        case 'table':
+            // Style 2: New format, tables, big text, etc. Not too good on right side of page
+            ob_start();
+            $content .= FunctionsPrintLists::eventsTable($todayjd, $todayjd, $tags, $filter, $sortStyle);
+            $content .= ob_get_clean();
+            break;
+        }
 
-		if ($template) {
-			if ($block) {
-				$class .= ' small_inner_block';
-			}
+        if ($template) {
+            if ($block) {
+                $class .= ' small_inner_block';
+            }
 
-			return Theme::theme()->formatBlock($id, $title, $class, $content);
-		} else {
-			return $content;
-		}
-	}
+            return Theme::theme()->formatBlock($id, $title, $class, $content);
+        } else {
+            return $content;
+        }
+    }
 
-	/** {@inheritdoc} */
-	public function loadAjax() {
-		return true;
-	}
+    /** {@inheritdoc} */
+    public function loadAjax() {
+        return true;
+    }
 
-	/** {@inheritdoc} */
-	public function isUserBlock() {
-		return true;
-	}
+    /** {@inheritdoc} */
+    public function isUserBlock() {
+        return true;
+    }
 
-	/** {@inheritdoc} */
-	public function isGedcomBlock() {
-		return true;
-	}
+    /** {@inheritdoc} */
+    public function isGedcomBlock() {
+        return true;
+    }
 
-	/**
-	 * An HTML form to edit block settings
-	 *
-	 * @param int $block_id
-	 */
-	public function configureBlock($block_id) {
-		if (Filter::postBool('save') && Filter::checkCsrf()) {
-			$this->setBlockSetting($block_id, 'filter', Filter::postBool('filter'));
-			$this->setBlockSetting($block_id, 'infoStyle', Filter::post('infoStyle', 'list|table', 'table'));
-			$this->setBlockSetting($block_id, 'sortStyle', Filter::post('sortStyle', 'alpha|anniv', 'alpha'));
-			$this->setBlockSetting($block_id, 'block', Filter::postBool('block'));
-		}
+    /**
+     * An HTML form to edit block settings
+     *
+     * @param int $block_id
+     */
+    public function configureBlock($block_id) {
+        if (Filter::postBool('save') && Filter::checkCsrf()) {
+            $this->setBlockSetting($block_id, 'filter', Filter::postBool('filter'));
+            $this->setBlockSetting($block_id, 'infoStyle', Filter::post('infoStyle', 'list|table', 'table'));
+            $this->setBlockSetting($block_id, 'sortStyle', Filter::post('sortStyle', 'alpha|anniv', 'alpha'));
+            $this->setBlockSetting($block_id, 'block', Filter::postBool('block'));
+        }
 
-		$filter    = $this->getBlockSetting($block_id, 'filter', '1');
-		$infoStyle = $this->getBlockSetting($block_id, 'infoStyle', 'table');
-		$sortStyle = $this->getBlockSetting($block_id, 'sortStyle', 'alpha');
-		$block     = $this->getBlockSetting($block_id, 'block', '1');
+        $filter    = $this->getBlockSetting($block_id, 'filter', '1');
+        $infoStyle = $this->getBlockSetting($block_id, 'infoStyle', 'table');
+        $sortStyle = $this->getBlockSetting($block_id, 'sortStyle', 'alpha');
+        $block     = $this->getBlockSetting($block_id, 'block', '1');
 
-		echo '<tr><td class="descriptionbox wrap width33">';
-		echo /* I18N: Label for a configuration option */ I18N::translate('Show only events of living individuals');
-		echo '</td><td class="optionbox">';
-		echo FunctionsEdit::editFieldYesNo('filter', $filter);
-		echo '</td></tr>';
+        echo '<tr><td class="descriptionbox wrap width33">';
+        echo /* I18N: Label for a configuration option */ I18N::translate('Show only events of living individuals');
+        echo '</td><td class="optionbox">';
+        echo FunctionsEdit::editFieldYesNo('filter', $filter);
+        echo '</td></tr>';
 
-		echo '<tr><td class="descriptionbox wrap width33">';
-		echo /* I18N: Label for a configuration option */ I18N::translate('Presentation style');
-		echo '</td><td class="optionbox">';
-		echo FunctionsEdit::selectEditControl('infoStyle', array('list' => I18N::translate('list'), 'table' => I18N::translate('table')), null, $infoStyle, '');
-		echo '</td></tr>';
+        echo '<tr><td class="descriptionbox wrap width33">';
+        echo /* I18N: Label for a configuration option */ I18N::translate('Presentation style');
+        echo '</td><td class="optionbox">';
+        echo FunctionsEdit::selectEditControl('infoStyle', array('list' => I18N::translate('list'), 'table' => I18N::translate('table')), null, $infoStyle, '');
+        echo '</td></tr>';
 
-		echo '<tr><td class="descriptionbox wrap width33">';
-		echo /* I18N: Label for a configuration option */ I18N::translate('Sort order');
-		echo '</td><td class="optionbox">';
-		echo FunctionsEdit::selectEditControl('sortStyle', array(
-			/* I18N: An option in a list-box */ 'alpha' => I18N::translate('sort by name'),
-			/* I18N: An option in a list-box */ 'anniv' => I18N::translate('sort by date'),
-		), null, $sortStyle, '');
-		echo '</td></tr>';
+        echo '<tr><td class="descriptionbox wrap width33">';
+        echo /* I18N: Label for a configuration option */ I18N::translate('Sort order');
+        echo '</td><td class="optionbox">';
+        echo FunctionsEdit::selectEditControl('sortStyle', array(
+            /* I18N: An option in a list-box */ 'alpha' => I18N::translate('sort by name'),
+            /* I18N: An option in a list-box */ 'anniv' => I18N::translate('sort by date'),
+        ), null, $sortStyle, '');
+        echo '</td></tr>';
 
-		echo '<tr><td class="descriptionbox wrap width33">';
-		echo /* I18N: label for a yes/no option */ I18N::translate('Add a scrollbar when block contents grow');
-		echo '</td><td class="optionbox">';
-		echo FunctionsEdit::editFieldYesNo('block', $block);
-		echo '</td></tr>';
-	}
+        echo '<tr><td class="descriptionbox wrap width33">';
+        echo /* I18N: label for a yes/no option */ I18N::translate('Add a scrollbar when block contents grow');
+        echo '</td><td class="optionbox">';
+        echo FunctionsEdit::editFieldYesNo('block', $block);
+        echo '</td></tr>';
+    }
 }

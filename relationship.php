@@ -45,200 +45,200 @@ $person1 = Individual::getInstance($pid1, $WT_TREE);
 $person2 = Individual::getInstance($pid2, $WT_TREE);
 
 $controller
-	->restrictAccess(Module::isActiveChart($WT_TREE, 'relationships_chart'))
-	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
-	->addInlineJavascript('autocomplete();');
+    ->restrictAccess(Module::isActiveChart($WT_TREE, 'relationships_chart'))
+    ->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
+    ->addInlineJavascript('autocomplete();');
 
 if ($person1 && $person2) {
-	$controller
-		->setPageTitle(I18N::translate(/* I18N: %s are individual’s names */ 'Relationships between %1$s and %2$s', $person1->getFullName(), $person2->getFullName()))
-		->pageHeader();
-	$paths = $controller->calculateRelationships($person1, $person2, $recursion, (bool) $ancestors);
+    $controller
+        ->setPageTitle(I18N::translate(/* I18N: %s are individual’s names */ 'Relationships between %1$s and %2$s', $person1->getFullName(), $person2->getFullName()))
+        ->pageHeader();
+    $paths = $controller->calculateRelationships($person1, $person2, $recursion, (bool) $ancestors);
 } else {
-	$controller
-		->setPageTitle(I18N::translate('Relationships'))
-		->pageHeader();
-	$paths = array();
+    $controller
+        ->setPageTitle(I18N::translate('Relationships'))
+        ->pageHeader();
+    $paths = array();
 }
 
 ?>
 <h2><?php echo $controller->getPageTitle() ?></h2>
 <form name="people" method="get" action="?">
-	<input type="hidden" name="ged" value="<?php echo $WT_TREE->getNameHtml() ?>">
-	<table class="list_table">
-		<tbody>
-			<tr>
-				<td class="descriptionbox">
-					<label for="pid1">
-						<?php echo I18N::translate('Individual 1') ?>
-					</label>
-				</td>
-				<td class="optionbox">
-					<input class="pedigree_form" data-autocomplete-type="INDI" type="text" name="pid1" id="pid1" size="3" value="<?php echo $pid1 ?>">
-					<?php echo FunctionsPrint::printFindIndividualLink('pid1') ?>
-				</td>
-				<td class="optionbox">
-					<label>
-						<?php echo FunctionsEdit::twoStateCheckbox('show_full', $show_full) ?>
-						<?php echo I18N::translate('Show details') ?>
-					</label>
-				</td>
-				<td class="optionbox vmiddle" rowspan="2">
-					<input type="submit" value="<?php echo /* I18N: A button label. */ I18N::translate('view') ?>">
-				</td>
-			</tr>
-			<tr>
-				<td class="descriptionbox">
-					<label for="pid2">
-						<?php echo I18N::translate('Individual 2') ?>
-					</label>
-				</td>
-				<td class="optionbox">
-					<input class="pedigree_form" data-autocomplete-type="INDI" type="text" name="pid2" id="pid2" size="3" value="<?php echo $pid2 ?>">
-					<?php echo FunctionsPrint::printFindIndividualLink('pid2') ?>
-					<br>
-					<a href="#" onclick="var x = jQuery('#pid1').val(); jQuery('#pid1').val(jQuery('#pid2').val()); jQuery('#pid2').val(x); return false;"><?php echo /* I18N: Reverse the order of two individuals */ I18N::translate('Swap individuals') ?></a>
-				</td>
-				<td class="optionbox">
-					<?php if ($ancestors_only === '1'): ?>
-						<input type="hidden" name="ancestors" value="1">
-						<?php echo I18N::translate('Find relationships via ancestors') ?>
-					<?php else: ?>
-						<label>
-							<input type="radio" name="ancestors" value="0" <?php echo $ancestors == 0 ? 'checked' : '' ?>>
-							<?php echo I18N::translate('Find any relationship') ?>
-						</label>
-						<br>
-						<label>
-							<input type="radio" name="ancestors" value="1" <?php echo $ancestors == 1 ? 'checked' : '' ?>>
-							<?php echo I18N::translate('Find relationships via ancestors') ?>
-						</label>
-					<?php endif; ?>
+    <input type="hidden" name="ged" value="<?php echo $WT_TREE->getNameHtml() ?>">
+    <table class="list_table">
+        <tbody>
+            <tr>
+                <td class="descriptionbox">
+                    <label for="pid1">
+                        <?php echo I18N::translate('Individual 1') ?>
+                    </label>
+                </td>
+                <td class="optionbox">
+                    <input class="pedigree_form" data-autocomplete-type="INDI" type="text" name="pid1" id="pid1" size="3" value="<?php echo $pid1 ?>">
+                    <?php echo FunctionsPrint::printFindIndividualLink('pid1') ?>
+                </td>
+                <td class="optionbox">
+                    <label>
+                        <?php echo FunctionsEdit::twoStateCheckbox('show_full', $show_full) ?>
+                        <?php echo I18N::translate('Show details') ?>
+                    </label>
+                </td>
+                <td class="optionbox vmiddle" rowspan="2">
+                    <input type="submit" value="<?php echo /* I18N: A button label. */ I18N::translate('view') ?>">
+                </td>
+            </tr>
+            <tr>
+                <td class="descriptionbox">
+                    <label for="pid2">
+                        <?php echo I18N::translate('Individual 2') ?>
+                    </label>
+                </td>
+                <td class="optionbox">
+                    <input class="pedigree_form" data-autocomplete-type="INDI" type="text" name="pid2" id="pid2" size="3" value="<?php echo $pid2 ?>">
+                    <?php echo FunctionsPrint::printFindIndividualLink('pid2') ?>
+                    <br>
+                    <a href="#" onclick="var x = jQuery('#pid1').val(); jQuery('#pid1').val(jQuery('#pid2').val()); jQuery('#pid2').val(x); return false;"><?php echo /* I18N: Reverse the order of two individuals */ I18N::translate('Swap individuals') ?></a>
+                </td>
+                <td class="optionbox">
+                    <?php if ($ancestors_only === '1'): ?>
+                        <input type="hidden" name="ancestors" value="1">
+                        <?php echo I18N::translate('Find relationships via ancestors') ?>
+                    <?php else: ?>
+                        <label>
+                            <input type="radio" name="ancestors" value="0" <?php echo $ancestors == 0 ? 'checked' : '' ?>>
+                            <?php echo I18N::translate('Find any relationship') ?>
+                        </label>
+                        <br>
+                        <label>
+                            <input type="radio" name="ancestors" value="1" <?php echo $ancestors == 1 ? 'checked' : '' ?>>
+                            <?php echo I18N::translate('Find relationships via ancestors') ?>
+                        </label>
+                    <?php endif; ?>
 
-					<hr>
+                    <hr>
 
-					<?php if ($max_recursion == 0): ?>
-						<?php echo I18N::translate('Find the closest relationships') ?>
-						<input type="hidden" name="recursion" value="0">
-					<?php else: ?>
-						<label>
-							<input type="radio" name="recursion" value="0" <?php echo $recursion == 0 ? 'checked' : '' ?>>
-							<?php echo I18N::translate('Find the closest relationships') ?>
-						</label>
-						<br>
-						<label>
-							<input type="radio" name="recursion" value="<?php echo $max_recursion ?>" <?php echo $recursion > 0 ? 'checked' : '' ?>>
-							<?php if ($max_recursion == RelationshipsChartModule::UNLIMITED_RECURSION): ?>
-								<?php echo I18N::translate('Find all possible relationships') ?>
-							<?php else: ?>
-								<?php echo I18N::translate('Find other relationships') ?>
-							<?php endif; ?>
-						</label>
-					<?php endif; ?>
-				</td>
-			</tr>
-		</tbody>
-	</table>
+                    <?php if ($max_recursion == 0): ?>
+                        <?php echo I18N::translate('Find the closest relationships') ?>
+                        <input type="hidden" name="recursion" value="0">
+                    <?php else: ?>
+                        <label>
+                            <input type="radio" name="recursion" value="0" <?php echo $recursion == 0 ? 'checked' : '' ?>>
+                            <?php echo I18N::translate('Find the closest relationships') ?>
+                        </label>
+                        <br>
+                        <label>
+                            <input type="radio" name="recursion" value="<?php echo $max_recursion ?>" <?php echo $recursion > 0 ? 'checked' : '' ?>>
+                            <?php if ($max_recursion == RelationshipsChartModule::UNLIMITED_RECURSION): ?>
+                                <?php echo I18N::translate('Find all possible relationships') ?>
+                            <?php else: ?>
+                                <?php echo I18N::translate('Find other relationships') ?>
+                            <?php endif; ?>
+                        </label>
+                    <?php endif; ?>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </form>
 <?php
 
 if ($person1 && $person2) {
-	if (I18N::direction() === 'ltr') {
-		$horizontal_arrow = '<br><i class="icon-rarrow"></i>';
-		$diagonal1        = Theme::theme()->parameter('image-dline');
-		$diagonal2        = Theme::theme()->parameter('image-dline2');
-	} else {
-		$horizontal_arrow = '<br><i class="icon-larrow"></i>';
-		$diagonal1        = Theme::theme()->parameter('image-dline2');
-		$diagonal2        = Theme::theme()->parameter('image-dline');
-	}
-	$up_arrow   = ' <i class="icon-uarrow"></i>';
-	$down_arrow = ' <i class="icon-darrow"></i>';
+    if (I18N::direction() === 'ltr') {
+        $horizontal_arrow = '<br><i class="icon-rarrow"></i>';
+        $diagonal1        = Theme::theme()->parameter('image-dline');
+        $diagonal2        = Theme::theme()->parameter('image-dline2');
+    } else {
+        $horizontal_arrow = '<br><i class="icon-larrow"></i>';
+        $diagonal1        = Theme::theme()->parameter('image-dline2');
+        $diagonal2        = Theme::theme()->parameter('image-dline');
+    }
+    $up_arrow   = ' <i class="icon-uarrow"></i>';
+    $down_arrow = ' <i class="icon-darrow"></i>';
 
-	$num_paths = 0;
-	foreach ($paths as $path) {
-		// Extract the relationship names between pairs of individuals
-		$relationships = $controller->oldStyleRelationshipPath($path);
-		if (empty($relationships)) {
-			// Cannot see one of the families/individuals, due to privacy;
-			continue;
-		}
-		echo '<h3>', I18N::translate('Relationship: %s', Functions::getRelationshipNameFromPath(implode('', $relationships), $person1, $person2)), '</h3>';
-		$num_paths++;
+    $num_paths = 0;
+    foreach ($paths as $path) {
+        // Extract the relationship names between pairs of individuals
+        $relationships = $controller->oldStyleRelationshipPath($path);
+        if (empty($relationships)) {
+            // Cannot see one of the families/individuals, due to privacy;
+            continue;
+        }
+        echo '<h3>', I18N::translate('Relationship: %s', Functions::getRelationshipNameFromPath(implode('', $relationships), $person1, $person2)), '</h3>';
+        $num_paths++;
 
-		// Use a table/grid for layout.
-		$table = array();
-		// Current position in the grid.
-		$x     = 0;
-		$y     = 0;
-		// Extent of the grid.
-		$min_y = 0;
-		$max_y = 0;
-		$max_x = 0;
-		// For each node in the path.
-		foreach ($path as $n => $xref) {
-			if ($n % 2 === 1) {
-				switch ($relationships[$n]) {
-				case 'hus':
-				case 'wif':
-				case 'spo':
-				case 'bro':
-				case 'sis':
-				case 'sib':
-					$table[$x + 1][$y] = '<div style="background:url(' . Theme::theme()->parameter('image-hline') . ') repeat-x center;  width: 94px; text-align: center"><div class="hline-text" style="height: 32px;">' . Functions::getRelationshipNameFromPath($relationships[$n], Individual::getInstance($path[$n - 1], $WT_TREE), Individual::getInstance($path[$n + 1], $WT_TREE)) . '</div><div style="height: 32px;">' . $horizontal_arrow . '</div></div>';
-					$x += 2;
-					break;
-				case 'son':
-				case 'dau':
-				case 'chi':
-					if ($n > 2 && preg_match('/fat|mot|par/', $relationships[$n - 2])) {
-						$table[$x + 1][$y - 1] = '<div style="background:url(' . $diagonal2 . '); width: 64px; height: 64px; text-align: center;"><div style="height: 32px; text-align: end;">' . Functions::getRelationshipNameFromPath($relationships[$n], Individual::getInstance($path[$n - 1], $WT_TREE), Individual::getInstance($path[$n + 1], $WT_TREE)) . '</div><div style="height: 32px; text-align: start;">' . $down_arrow . '</div></div>';
-						$x += 2;
-					} else {
-						$table[$x][$y - 1] = '<div style="background:url(' . Theme::theme()
-								->parameter('image-vline') . ') repeat-y center; height: 64px; text-align: center;"><div class="vline-text" style="display: inline-block; width:50%; line-height: 64px;">' . Functions::getRelationshipNameFromPath($relationships[$n], Individual::getInstance($path[$n - 1], $WT_TREE), Individual::getInstance($path[$n + 1], $WT_TREE)) . '</div><div style="display: inline-block; width:50%; line-height: 64px;">' . $down_arrow . '</div></div>';
-					}
-					$y -= 2;
-					break;
-				case 'fat':
-				case 'mot':
-				case 'par':
-					if ($n > 2 && preg_match('/son|dau|chi/', $relationships[$n - 2])) {
-						$table[$x + 1][$y + 1] = '<div style="background:url(' . $diagonal1 . '); background-position: top right; width: 64px; height: 64px; text-align: center;"><div style="height: 32px; text-align: start;">' . Functions::getRelationshipNameFromPath($relationships[$n], Individual::getInstance($path[$n - 1], $WT_TREE), Individual::getInstance($path[$n + 1], $WT_TREE)) . '</div><div style="height: 32px; text-align: end;">' . $up_arrow . '</div></div>';
-						$x += 2;
-					} else {
-						$table[$x][$y + 1] = '<div style="background:url(' . Theme::theme()
-								->parameter('image-vline') . ') repeat-y center; height: 64px; text-align:center; "><div class="vline-text" style="display: inline-block; width: 50%; line-height: 32px;">' . Functions::getRelationshipNameFromPath($relationships[$n], Individual::getInstance($path[$n - 1], $WT_TREE), Individual::getInstance($path[$n + 1], $WT_TREE)) . '</div><div style="display: inline-block; width: 50%; line-height: 32px">' . $up_arrow . '</div></div>';
-					}
-					$y += 2;
-					break;
-				}
-				$max_x = max($max_x, $x);
-				$min_y = min($min_y, $y);
-				$max_y = max($max_y, $y);
-			} else {
-				$individual = Individual::getInstance($xref, $WT_TREE);
-				ob_start();
-				FunctionsPrint::printPedigreePerson($individual, $show_full);
-				$table[$x][$y] = ob_get_clean();
-			}
-		}
-		echo '<table id="relationship-page" style="border-collapse: collapse; margin: 20px 50px;">';
-		for ($y = $max_y; $y >= $min_y; --$y) {
-			echo '<tr>';
-			for ($x = 0; $x <= $max_x; ++$x) {
-				echo '<td style="padding: 0;">';
-				if (isset($table[$x][$y])) {
-					echo $table[$x][$y];
-				}
-				echo '</td>';
-			}
-			echo '</tr>';
-		}
-		echo '</table>';
-	}
+        // Use a table/grid for layout.
+        $table = array();
+        // Current position in the grid.
+        $x     = 0;
+        $y     = 0;
+        // Extent of the grid.
+        $min_y = 0;
+        $max_y = 0;
+        $max_x = 0;
+        // For each node in the path.
+        foreach ($path as $n => $xref) {
+            if ($n % 2 === 1) {
+                switch ($relationships[$n]) {
+                case 'hus':
+                case 'wif':
+                case 'spo':
+                case 'bro':
+                case 'sis':
+                case 'sib':
+                    $table[$x + 1][$y] = '<div style="background:url(' . Theme::theme()->parameter('image-hline') . ') repeat-x center;  width: 94px; text-align: center"><div class="hline-text" style="height: 32px;">' . Functions::getRelationshipNameFromPath($relationships[$n], Individual::getInstance($path[$n - 1], $WT_TREE), Individual::getInstance($path[$n + 1], $WT_TREE)) . '</div><div style="height: 32px;">' . $horizontal_arrow . '</div></div>';
+                    $x += 2;
+                    break;
+                case 'son':
+                case 'dau':
+                case 'chi':
+                    if ($n > 2 && preg_match('/fat|mot|par/', $relationships[$n - 2])) {
+                        $table[$x + 1][$y - 1] = '<div style="background:url(' . $diagonal2 . '); width: 64px; height: 64px; text-align: center;"><div style="height: 32px; text-align: end;">' . Functions::getRelationshipNameFromPath($relationships[$n], Individual::getInstance($path[$n - 1], $WT_TREE), Individual::getInstance($path[$n + 1], $WT_TREE)) . '</div><div style="height: 32px; text-align: start;">' . $down_arrow . '</div></div>';
+                        $x += 2;
+                    } else {
+                        $table[$x][$y - 1] = '<div style="background:url(' . Theme::theme()
+                                ->parameter('image-vline') . ') repeat-y center; height: 64px; text-align: center;"><div class="vline-text" style="display: inline-block; width:50%; line-height: 64px;">' . Functions::getRelationshipNameFromPath($relationships[$n], Individual::getInstance($path[$n - 1], $WT_TREE), Individual::getInstance($path[$n + 1], $WT_TREE)) . '</div><div style="display: inline-block; width:50%; line-height: 64px;">' . $down_arrow . '</div></div>';
+                    }
+                    $y -= 2;
+                    break;
+                case 'fat':
+                case 'mot':
+                case 'par':
+                    if ($n > 2 && preg_match('/son|dau|chi/', $relationships[$n - 2])) {
+                        $table[$x + 1][$y + 1] = '<div style="background:url(' . $diagonal1 . '); background-position: top right; width: 64px; height: 64px; text-align: center;"><div style="height: 32px; text-align: start;">' . Functions::getRelationshipNameFromPath($relationships[$n], Individual::getInstance($path[$n - 1], $WT_TREE), Individual::getInstance($path[$n + 1], $WT_TREE)) . '</div><div style="height: 32px; text-align: end;">' . $up_arrow . '</div></div>';
+                        $x += 2;
+                    } else {
+                        $table[$x][$y + 1] = '<div style="background:url(' . Theme::theme()
+                                ->parameter('image-vline') . ') repeat-y center; height: 64px; text-align:center; "><div class="vline-text" style="display: inline-block; width: 50%; line-height: 32px;">' . Functions::getRelationshipNameFromPath($relationships[$n], Individual::getInstance($path[$n - 1], $WT_TREE), Individual::getInstance($path[$n + 1], $WT_TREE)) . '</div><div style="display: inline-block; width: 50%; line-height: 32px">' . $up_arrow . '</div></div>';
+                    }
+                    $y += 2;
+                    break;
+                }
+                $max_x = max($max_x, $x);
+                $min_y = min($min_y, $y);
+                $max_y = max($max_y, $y);
+            } else {
+                $individual = Individual::getInstance($xref, $WT_TREE);
+                ob_start();
+                FunctionsPrint::printPedigreePerson($individual, $show_full);
+                $table[$x][$y] = ob_get_clean();
+            }
+        }
+        echo '<table id="relationship-page" style="border-collapse: collapse; margin: 20px 50px;">';
+        for ($y = $max_y; $y >= $min_y; --$y) {
+            echo '<tr>';
+            for ($x = 0; $x <= $max_x; ++$x) {
+                echo '<td style="padding: 0;">';
+                if (isset($table[$x][$y])) {
+                    echo $table[$x][$y];
+                }
+                echo '</td>';
+            }
+            echo '</tr>';
+        }
+        echo '</table>';
+    }
 
-	if (!$num_paths) {
-		echo '<p>', I18N::translate('No link between the two individuals could be found.'), '</p>';
-	}
+    if (!$num_paths) {
+        echo '<p>', I18N::translate('No link between the two individuals could be found.'), '</p>';
+    }
 }

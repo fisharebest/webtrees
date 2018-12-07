@@ -24,28 +24,28 @@ use Fisharebest\Webtrees\Menu;
  * Controller for the shared note page
  */
 class NoteController extends GedcomRecordController {
-	/**
-	 * get edit menu
-	 */
-	public function getEditMenu() {
-		if (!$this->record || $this->record->isPendingDeletion()) {
-			return null;
-		}
+    /**
+     * get edit menu
+     */
+    public function getEditMenu() {
+        if (!$this->record || $this->record->isPendingDeletion()) {
+            return null;
+        }
 
-		// edit menu
-		$menu = new Menu(I18N::translate('Edit'), '#', 'menu-note');
+        // edit menu
+        $menu = new Menu(I18N::translate('Edit'), '#', 'menu-note');
 
-		if (Auth::isEditor($this->record->getTree())) {
-			$menu->addSubmenu(new Menu(I18N::translate('Edit the note'), '#', 'menu-note-edit', array(
-				'onclick' => 'return edit_note("' . $this->record->getXref() . '");',
-			)));
+        if (Auth::isEditor($this->record->getTree())) {
+            $menu->addSubmenu(new Menu(I18N::translate('Edit the note'), '#', 'menu-note-edit', array(
+                'onclick' => 'return edit_note("' . $this->record->getXref() . '");',
+            )));
 
-			// delete
-			$menu->addSubmenu(new Menu(I18N::translate('Delete'), '#', 'menu-note-del', array(
-				'onclick' => 'return delete_record("' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Filter::unescapeHtml($this->record->getFullName()))) . '", "' . $this->record->getXref() . '");',
-			)));
-		}
+            // delete
+            $menu->addSubmenu(new Menu(I18N::translate('Delete'), '#', 'menu-note-del', array(
+                'onclick' => 'return delete_record("' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Filter::unescapeHtml($this->record->getFullName()))) . '", "' . $this->record->getXref() . '");',
+            )));
+        }
 
-		return $menu;
-	}
+        return $menu;
+    }
 }

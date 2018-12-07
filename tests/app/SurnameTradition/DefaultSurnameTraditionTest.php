@@ -21,139 +21,139 @@ use Fisharebest\Webtrees\SurnameTradition\SurnameTraditionInterface;
  * Test harness for the class DefaultSurnameTradition
  */
 class DefaultSurnameTraditionTest extends \PHPUnit_Framework_TestCase {
-	/** @var SurnameTraditionInterface */
-	private $surname_tradition;
+    /** @var SurnameTraditionInterface */
+    private $surname_tradition;
 
-	/**
-	 * Prepare the environment for these tests
-	 */
-	public function setUp() {
-		$this->surname_tradition = new DefaultSurnameTradition;
-	}
+    /**
+     * Prepare the environment for these tests
+     */
+    public function setUp() {
+        $this->surname_tradition = new DefaultSurnameTradition;
+    }
 
-	/**
-	 * Test whether married surnames are used
-	 *
-	 * @covers Fisharebest\Webtrees\SurnameTradition\DefaultSurnameTradition
-	 */
-	public function testMarriedSurnames() {
-		$this->assertSame(false, $this->surname_tradition->hasMarriedNames());
-	}
+    /**
+     * Test whether married surnames are used
+     *
+     * @covers Fisharebest\Webtrees\SurnameTradition\DefaultSurnameTradition
+     */
+    public function testMarriedSurnames() {
+        $this->assertSame(false, $this->surname_tradition->hasMarriedNames());
+    }
 
-	/**
-	 * Test whether surnames are used
-	 *
-	 * @covers Fisharebest\Webtrees\SurnameTradition\DefaultSurnameTradition
-	 */
-	public function testSurnames() {
-		$this->assertSame(true, $this->surname_tradition->hasSurnames());
-	}
+    /**
+     * Test whether surnames are used
+     *
+     * @covers Fisharebest\Webtrees\SurnameTradition\DefaultSurnameTradition
+     */
+    public function testSurnames() {
+        $this->assertSame(true, $this->surname_tradition->hasSurnames());
+    }
 
-	/**
-	 * Test new son names
-	 *
-	 * @covers Fisharebest\Webtrees\SurnameTradition\DefaultSurnameTradition
-	 */
-	public function testNewSonNames() {
-		$this->assertSame(
-			array('NAME' => '//'),
-			$this->surname_tradition->newChildNames('John /White/', 'Mary /Black/', 'M')
-		);
-	}
+    /**
+     * Test new son names
+     *
+     * @covers Fisharebest\Webtrees\SurnameTradition\DefaultSurnameTradition
+     */
+    public function testNewSonNames() {
+        $this->assertSame(
+            array('NAME' => '//'),
+            $this->surname_tradition->newChildNames('John /White/', 'Mary /Black/', 'M')
+        );
+    }
 
-	/**
-	 * Test new daughter names
-	 *
-	 * @covers Fisharebest\Webtrees\SurnameTradition\DefaultSurnameTradition
-	 */
-	public function testNewDaughterNames() {
-		$this->assertSame(
-			array('NAME' => '//'),
-			$this->surname_tradition->newChildNames('John /White/', 'Mary /Black/', 'F')
-		);
-	}
+    /**
+     * Test new daughter names
+     *
+     * @covers Fisharebest\Webtrees\SurnameTradition\DefaultSurnameTradition
+     */
+    public function testNewDaughterNames() {
+        $this->assertSame(
+            array('NAME' => '//'),
+            $this->surname_tradition->newChildNames('John /White/', 'Mary /Black/', 'F')
+        );
+    }
 
-	/**
-	 * Test new child names
-	 *
-	 * @covers Fisharebest\Webtrees\SurnameTradition\DefaultSurnameTradition
-	 */
-	public function testNewChildNames() {
-		$this->assertSame(
-			array('NAME' => '//'),
-			$this->surname_tradition->newChildNames('John /White/', 'Mary /Black/', 'U')
-		);
-	}
+    /**
+     * Test new child names
+     *
+     * @covers Fisharebest\Webtrees\SurnameTradition\DefaultSurnameTradition
+     */
+    public function testNewChildNames() {
+        $this->assertSame(
+            array('NAME' => '//'),
+            $this->surname_tradition->newChildNames('John /White/', 'Mary /Black/', 'U')
+        );
+    }
 
-	/**
-	 * Test new father names
-	 *
-	 * @covers Fisharebest\Webtrees\SurnameTradition\DefaultSurnameTradition
-	 */
-	public function testNewFatherNames() {
-		$this->assertSame(
-			array('NAME' => '//'),
-			$this->surname_tradition->newParentNames('John /White/', 'M')
-		);
-	}
+    /**
+     * Test new father names
+     *
+     * @covers Fisharebest\Webtrees\SurnameTradition\DefaultSurnameTradition
+     */
+    public function testNewFatherNames() {
+        $this->assertSame(
+            array('NAME' => '//'),
+            $this->surname_tradition->newParentNames('John /White/', 'M')
+        );
+    }
 
-	/**
-	 * Test new mother names
-	 *
-	 * @covers Fisharebest\Webtrees\SurnameTradition\DefaultSurnameTradition
-	 */
-	public function testNewMotherNames() {
-		$this->assertSame(
-			array('NAME' => '//'),
-			$this->surname_tradition->newParentNames('John /White/', 'F')
-		);
-	}
+    /**
+     * Test new mother names
+     *
+     * @covers Fisharebest\Webtrees\SurnameTradition\DefaultSurnameTradition
+     */
+    public function testNewMotherNames() {
+        $this->assertSame(
+            array('NAME' => '//'),
+            $this->surname_tradition->newParentNames('John /White/', 'F')
+        );
+    }
 
-	/**
-	 * Test new parent names
-	 *
-	 * @covers Fisharebest\Webtrees\SurnameTradition\DefaultSurnameTradition
-	 */
-	public function testNewParentNames() {
-		$this->assertSame(
-			array('NAME' => '//'),
-			$this->surname_tradition->newParentNames('John /White/', 'U')
-		);
-	}
+    /**
+     * Test new parent names
+     *
+     * @covers Fisharebest\Webtrees\SurnameTradition\DefaultSurnameTradition
+     */
+    public function testNewParentNames() {
+        $this->assertSame(
+            array('NAME' => '//'),
+            $this->surname_tradition->newParentNames('John /White/', 'U')
+        );
+    }
 
-	/**
-	 * Test new husband names
-	 *
-	 * @covers Fisharebest\Webtrees\SurnameTradition\DefaultSurnameTradition
-	 */
-	public function testNewHusbandNames() {
-		$this->assertSame(
-			array('NAME' => '//'),
-			$this->surname_tradition->newSpouseNames('Mary /Black/', 'M')
-		);
-	}
+    /**
+     * Test new husband names
+     *
+     * @covers Fisharebest\Webtrees\SurnameTradition\DefaultSurnameTradition
+     */
+    public function testNewHusbandNames() {
+        $this->assertSame(
+            array('NAME' => '//'),
+            $this->surname_tradition->newSpouseNames('Mary /Black/', 'M')
+        );
+    }
 
-	/**
-	 * Test new wife names
-	 *
-	 * @covers Fisharebest\Webtrees\SurnameTradition\DefaultSurnameTradition
-	 */
-	public function testNewWifeNames() {
-		$this->assertSame(
-			array('NAME' => '//'),
-			$this->surname_tradition->newSpouseNames('John /White/', 'F')
-		);
-	}
+    /**
+     * Test new wife names
+     *
+     * @covers Fisharebest\Webtrees\SurnameTradition\DefaultSurnameTradition
+     */
+    public function testNewWifeNames() {
+        $this->assertSame(
+            array('NAME' => '//'),
+            $this->surname_tradition->newSpouseNames('John /White/', 'F')
+        );
+    }
 
-	/**
-	 * Test new spouse names
-	 *
-	 * @covers Fisharebest\Webtrees\SurnameTradition\DefaultSurnameTradition
-	 */
-	public function testNewSpouseNames() {
-		$this->assertSame(
-			array('NAME' => '//'),
-			$this->surname_tradition->newSpouseNames('Chris /Green/', 'U')
-		);
-	}
+    /**
+     * Test new spouse names
+     *
+     * @covers Fisharebest\Webtrees\SurnameTradition\DefaultSurnameTradition
+     */
+    public function testNewSpouseNames() {
+        $this->assertSame(
+            array('NAME' => '//'),
+            $this->surname_tradition->newSpouseNames('Chris /Green/', 'U')
+        );
+    }
 }

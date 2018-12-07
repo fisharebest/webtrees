@@ -22,9 +22,9 @@ require './includes/session.php';
 
 $controller = new PageController;
 $controller
-	->restrictAccess(Auth::isAdmin())
-	->setPageTitle(I18N::translate('Server information'))
-	->pageHeader();
+    ->restrictAccess(Auth::isAdmin())
+    ->setPageTitle(I18N::translate('Server information'))
+    ->pageHeader();
 
 $variables = Database::prepare("SHOW VARIABLES")->fetchAssoc();
 array_walk($variables, function (&$x) { $x = str_replace(',', ', ', $x); });
@@ -37,45 +37,45 @@ $html = $matches[1];
 ?>
 
 <ol class="breadcrumb small">
-	<li><a href="admin.php"><?php echo I18N::translate('Control panel'); ?></a></li>
-	<li class="active"><?php echo $controller->getPageTitle(); ?></li>
+    <li><a href="admin.php"><?php echo I18N::translate('Control panel'); ?></a></li>
+    <li class="active"><?php echo $controller->getPageTitle(); ?></li>
 </ol>
 
 <h1><?php echo $controller->getPageTitle(); ?></h1>
 
 <div class="row">
-	<div class="col-xs-12">
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				<h2 class="panel-title">
-					<?php echo I18N::translate('PHP information'); ?>
-				</h2>
-			</div>
-			<div class="panel-body" dir="ltr">
-				<div class="php-info">
-					<?php echo $html; ?>
-				</div>
-			</div>
-		</div>
-	</div>
+    <div class="col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 class="panel-title">
+                    <?php echo I18N::translate('PHP information'); ?>
+                </h2>
+            </div>
+            <div class="panel-body" dir="ltr">
+                <div class="php-info">
+                    <?php echo $html; ?>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="row">
-	<div class="col-xs-12">
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				<h2 class="panel-title">
-					<?php echo I18N::translate('MySQL variables'); ?>
-				</h2>
-			</div>
-			<div class="panel-body">
-				<dl>
-					<?php foreach ($variables as $variable => $value): ?>
-						<dt><?php echo Filter::escapeHtml($variable); ?></dt>
-						<dd><?php echo Filter::escapeHtml($value); ?></dd>
-					<?php endforeach; ?>
-				</dl>
-			</div>
-		</div>
-	</div>
+    <div class="col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 class="panel-title">
+                    <?php echo I18N::translate('MySQL variables'); ?>
+                </h2>
+            </div>
+            <div class="panel-body">
+                <dl>
+                    <?php foreach ($variables as $variable => $value): ?>
+                        <dt><?php echo Filter::escapeHtml($variable); ?></dt>
+                        <dd><?php echo Filter::escapeHtml($value); ?></dd>
+                    <?php endforeach; ?>
+                </dl>
+            </div>
+        </div>
+    </div>
 </div>

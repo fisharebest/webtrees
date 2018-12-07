@@ -24,9 +24,9 @@ require './includes/session.php';
 
 $controller = new PageController;
 $controller
-	->restrictAccess(Auth::isAdmin())
-	->setPageTitle(I18N::translate('README documentation'))
-	->pageHeader();
+    ->restrictAccess(Auth::isAdmin())
+    ->setPageTitle(I18N::translate('README documentation'))
+    ->pageHeader();
 
 // The readme file contains code-quality badges before the first header
 $readme = file_get_contents('README.md');
@@ -34,12 +34,12 @@ $readme = preg_replace('/.*(?=# webtrees)/s', '', $readme);
 
 ?>
 <ol class="breadcrumb small">
-	<li><a href="admin.php"><?php echo I18N::translate('Control panel'); ?></a></li>
-	<li class="active"><?php echo $controller->getPageTitle(); ?></li>
+    <li><a href="admin.php"><?php echo I18N::translate('Control panel'); ?></a></li>
+    <li class="active"><?php echo $controller->getPageTitle(); ?></li>
 </ol>
 
 <h1><?php echo $controller->getPageTitle(); ?></h1>
 
 <div class="markdown" dir="ltr" lang="en">
-	<?php echo MarkdownExtra::defaultTransform($readme); ?>
+    <?php echo MarkdownExtra::defaultTransform($readme); ?>
 </div>

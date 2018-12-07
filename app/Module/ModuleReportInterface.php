@@ -21,10 +21,10 @@ use Fisharebest\Webtrees\Menu;
  * Interface ModuleReportInterface - Classes and libraries for module system
  */
 interface ModuleReportInterface {
-	/**
-	 * Return a menu item for this report.
-	 *
-	 * @return Menu
-	 */
-	public function getReportMenu();
+    /**
+     * Return a menu item for this report.
+     *
+     * @return Menu
+     */
+    public function getReportMenu();
 }

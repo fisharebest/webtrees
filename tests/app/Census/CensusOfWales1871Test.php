@@ -20,54 +20,54 @@ namespace Fisharebest\Webtrees\Census;
  * Test harness for the class CensusOfWales1871
  */
 class CensusOfWales1871Test extends \PHPUnit_Framework_TestCase {
-	/**
-	 * Test the census place and date
-	 *
-	 * @covers Fisharebest\Webtrees\Census\CensusOfWales1871
-	 */
-	public function testPlaceAndDate() {
-		$census = new CensusOfWales1871;
+    /**
+     * Test the census place and date
+     *
+     * @covers Fisharebest\Webtrees\Census\CensusOfWales1871
+     */
+    public function testPlaceAndDate() {
+        $census = new CensusOfWales1871;
 
-		$this->assertSame('Wales', $census->censusPlace());
-		$this->assertSame('02 APR 1871', $census->censusDate());
-	}
+        $this->assertSame('Wales', $census->censusPlace());
+        $this->assertSame('02 APR 1871', $census->censusDate());
+    }
 
-	/**
-	 * Test the census columns
-	 *
-	 * @covers Fisharebest\Webtrees\Census\CensusOfWales1871
-	 * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
-	 */
-	public function testColumns() {
-		$census  = new CensusOfWales1871;
-		$columns = $census->columns();
+    /**
+     * Test the census columns
+     *
+     * @covers Fisharebest\Webtrees\Census\CensusOfWales1871
+     * @covers Fisharebest\Webtrees\Census\AbstractCensusColumn
+     */
+    public function testColumns() {
+        $census  = new CensusOfWales1871;
+        $columns = $census->columns();
 
-		$this->assertCount(8, $columns);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnFullName', $columns[0]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnRelationToHead', $columns[1]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnConditionEnglish', $columns[2]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnAgeMale', $columns[3]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnAgeFemale', $columns[4]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnOccupation', $columns[5]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnBirthPlace', $columns[6]);
-		$this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[7]);
+        $this->assertCount(8, $columns);
+        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnFullName', $columns[0]);
+        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnRelationToHead', $columns[1]);
+        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnConditionEnglish', $columns[2]);
+        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnAgeMale', $columns[3]);
+        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnAgeFemale', $columns[4]);
+        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnOccupation', $columns[5]);
+        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnBirthPlace', $columns[6]);
+        $this->assertInstanceOf('Fisharebest\Webtrees\Census\CensusColumnNull', $columns[7]);
 
-		$this->assertSame('Name', $columns[0]->abbreviation());
-		$this->assertSame('Relation', $columns[1]->abbreviation());
-		$this->assertSame('Condition', $columns[2]->abbreviation());
-		$this->assertSame('AgeM', $columns[3]->abbreviation());
-		$this->assertSame('AgeF', $columns[4]->abbreviation());
-		$this->assertSame('Occupation', $columns[5]->abbreviation());
-		$this->assertSame('Birthplace', $columns[6]->abbreviation());
-		$this->assertSame('Infirm', $columns[7]->abbreviation());
+        $this->assertSame('Name', $columns[0]->abbreviation());
+        $this->assertSame('Relation', $columns[1]->abbreviation());
+        $this->assertSame('Condition', $columns[2]->abbreviation());
+        $this->assertSame('AgeM', $columns[3]->abbreviation());
+        $this->assertSame('AgeF', $columns[4]->abbreviation());
+        $this->assertSame('Occupation', $columns[5]->abbreviation());
+        $this->assertSame('Birthplace', $columns[6]->abbreviation());
+        $this->assertSame('Infirm', $columns[7]->abbreviation());
 
-		$this->assertSame('Name and surname', $columns[0]->title());
-		$this->assertSame('Relation to head of household', $columns[1]->title());
-		$this->assertSame('Condition', $columns[2]->title());
-		$this->assertSame('Age (males)', $columns[3]->title());
-		$this->assertSame('Age (females)', $columns[4]->title());
-		$this->assertSame('Rank, profession or occupation', $columns[5]->title());
-		$this->assertSame('Where born', $columns[6]->title());
-		$this->assertSame('Whether deaf-and-dumb, blind, imbecile, idiot or lunatic', $columns[7]->title());
-	}
+        $this->assertSame('Name and surname', $columns[0]->title());
+        $this->assertSame('Relation to head of household', $columns[1]->title());
+        $this->assertSame('Condition', $columns[2]->title());
+        $this->assertSame('Age (males)', $columns[3]->title());
+        $this->assertSame('Age (females)', $columns[4]->title());
+        $this->assertSame('Rank, profession or occupation', $columns[5]->title());
+        $this->assertSame('Where born', $columns[6]->title());
+        $this->assertSame('Whether deaf-and-dumb, blind, imbecile, idiot or lunatic', $columns[7]->title());
+    }
 }

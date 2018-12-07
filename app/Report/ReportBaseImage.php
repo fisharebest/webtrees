@@ -19,91 +19,91 @@ namespace Fisharebest\Webtrees\Report;
  * Class ReportBaseImage
  */
 class ReportBaseImage extends ReportBaseElement {
-	/**
-	 * Filename of the image
-	 *
-	 * @var string
-	 */
-	public $file;
-	/**
-	 * Height of the image
-	 *
-	 * @var float
-	 */
-	public $height;
-	/**
-	 * Width of the image
-	 *
-	 * @var float
-	 */
-	public $width;
-	/**
-	 * X-position (left) of the image
-	 *
-	 * @var float
-	 */
-	public $x;
-	/**
-	 * Y-position (top) of the image
-	 *
-	 * @var float
-	 */
-	public $y;
-	/**
-	 * Placement fo the image. L: left, C:center, R:right
-	 *
-	 * @var string
-	 */
-	public $align = "";
-	/**
-	 * T:same line, N:next line
-	 *
-	 * @var string
-	 */
-	public $line = "";
+    /**
+     * Filename of the image
+     *
+     * @var string
+     */
+    public $file;
+    /**
+     * Height of the image
+     *
+     * @var float
+     */
+    public $height;
+    /**
+     * Width of the image
+     *
+     * @var float
+     */
+    public $width;
+    /**
+     * X-position (left) of the image
+     *
+     * @var float
+     */
+    public $x;
+    /**
+     * Y-position (top) of the image
+     *
+     * @var float
+     */
+    public $y;
+    /**
+     * Placement fo the image. L: left, C:center, R:right
+     *
+     * @var string
+     */
+    public $align = "";
+    /**
+     * T:same line, N:next line
+     *
+     * @var string
+     */
+    public $line = "";
 
-	/**
-	 * Image class function - Base
-	 *
-	 * @param string $file  Filename of the image
-	 * @param float  $x     X-position (left) of the image
-	 * @param float  $y     Y-position (top) of the image
-	 * @param float  $w     Width of the image
-	 * @param float  $h     Height of the image
-	 * @param string $align Placement of the image. L: left, C:center, R:right
-	 * @param string $ln    T:same line, N:next line
-	 */
-	public function __construct($file, $x, $y, $w, $h, $align, $ln) {
-		$this->file   = $file;
-		$this->width  = $w;
-		$this->height = $h;
-		$this->x      = $x;
-		$this->y      = $y;
-		$this->align  = $align;
-		$this->line   = $ln;
+    /**
+     * Image class function - Base
+     *
+     * @param string $file  Filename of the image
+     * @param float  $x     X-position (left) of the image
+     * @param float  $y     Y-position (top) of the image
+     * @param float  $w     Width of the image
+     * @param float  $h     Height of the image
+     * @param string $align Placement of the image. L: left, C:center, R:right
+     * @param string $ln    T:same line, N:next line
+     */
+    public function __construct($file, $x, $y, $w, $h, $align, $ln) {
+        $this->file   = $file;
+        $this->width  = $w;
+        $this->height = $h;
+        $this->x      = $x;
+        $this->y      = $y;
+        $this->align  = $align;
+        $this->line   = $ln;
 
-		return 0;
-	}
+        return 0;
+    }
 
-	/**
-	 * Get the height.
-	 *
-	 * @param $renderer
-	 *
-	 * @return float
-	 */
-	public function getHeight($renderer) {
-		return $this->height;
-	}
+    /**
+     * Get the height.
+     *
+     * @param $renderer
+     *
+     * @return float
+     */
+    public function getHeight($renderer) {
+        return $this->height;
+    }
 
-	/**
-	 * Get the width.
-	 *
-	 * @param $renderer
-	 *
-	 * @return float
-	 */
-	public function getWidth($renderer) {
-		return $this->width;
-	}
+    /**
+     * Get the width.
+     *
+     * @param $renderer
+     *
+     * @return float
+     */
+    public function getWidth($renderer) {
+        return $this->width;
+    }
 }

@@ -23,14 +23,14 @@ use PDOException;
  * Upgrade the database schema from version 3 to version 4.
  */
 class Migration3 implements MigrationInterface {
-	/** {@inheritDoc} */
-	public function upgrade() {
-		// An earlier update mistakenly made the fv_note column too short.
-		// Add the new constraints
-		try {
-			Database::exec("ALTER TABLE `##favorite` CHANGE note note VARCHAR(1000) NULL");
-		} catch (PDOException $ex) {
-			// Already updated?
-		}
-	}
+    /** {@inheritDoc} */
+    public function upgrade() {
+        // An earlier update mistakenly made the fv_note column too short.
+        // Add the new constraints
+        try {
+            Database::exec("ALTER TABLE `##favorite` CHANGE note note VARCHAR(1000) NULL");
+        } catch (PDOException $ex) {
+            // Already updated?
+        }
+    }
 }

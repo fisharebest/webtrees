@@ -25,58 +25,58 @@ use Fisharebest\Webtrees\Module;
  * Controller for the repository page
  */
 class RepositoryController extends GedcomRecordController {
-	/**
-	 * get edit menu
-	 */
-	public function getEditMenu() {
-		if (!$this->record || $this->record->isPendingDeletion()) {
-			return null;
-		}
+    /**
+     * get edit menu
+     */
+    public function getEditMenu() {
+        if (!$this->record || $this->record->isPendingDeletion()) {
+            return null;
+        }
 
-		// edit menu
-		$menu = new Menu(I18N::translate('Edit'), '#', 'menu-repo');
+        // edit menu
+        $menu = new Menu(I18N::translate('Edit'), '#', 'menu-repo');
 
-		if (Auth::isEditor($this->record->getTree())) {
-			$fact = $this->record->getFirstFact('NAME');
-			if ($fact) {
-				// Edit existing name
-				$menu->addSubmenu(new Menu(I18N::translate('Edit the repository'), '#', 'menu-repo-edit', array(
-					'onclick' => 'return edit_record("' . $this->record->getXref() . '", "' . $fact->getFactId() . '");',
-				)));
-			} else {
-				// Add new name
-				$menu->addSubmenu(new Menu(I18N::translate('Edit the repository'), '#', 'menu-repo-edit', array(
-					'onclick' => 'return add_fact("' . $this->record->getXref() . '", "NAME");',
-				)));
-			}
-		}
+        if (Auth::isEditor($this->record->getTree())) {
+            $fact = $this->record->getFirstFact('NAME');
+            if ($fact) {
+                // Edit existing name
+                $menu->addSubmenu(new Menu(I18N::translate('Edit the repository'), '#', 'menu-repo-edit', array(
+                    'onclick' => 'return edit_record("' . $this->record->getXref() . '", "' . $fact->getFactId() . '");',
+                )));
+            } else {
+                // Add new name
+                $menu->addSubmenu(new Menu(I18N::translate('Edit the repository'), '#', 'menu-repo-edit', array(
+                    'onclick' => 'return add_fact("' . $this->record->getXref() . '", "NAME");',
+                )));
+            }
+        }
 
-		// delete
-		if (Auth::isEditor($this->record->getTree())) {
-			$menu->addSubmenu(new Menu(I18N::translate('Delete'), '#', 'menu-repo-del', array(
-				'onclick' => 'return delete_record("' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Filter::unescapeHtml($this->record->getFullName()))) . '", "' . $this->record->getXref() . '");',
-			)));
-		}
+        // delete
+        if (Auth::isEditor($this->record->getTree())) {
+            $menu->addSubmenu(new Menu(I18N::translate('Delete'), '#', 'menu-repo-del', array(
+                'onclick' => 'return delete_record("' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Filter::unescapeHtml($this->record->getFullName()))) . '", "' . $this->record->getXref() . '");',
+            )));
+        }
 
-		// edit raw
-		if (Auth::isAdmin() || Auth::isEditor($this->record->getTree()) && $this->record->getTree()->getPreference('SHOW_GEDCOM_RECORD')) {
-			$menu->addSubmenu(new Menu(I18N::translate('Edit the raw GEDCOM'), '#', 'menu-repo-editraw', array(
-				'onclick' => 'return edit_raw("' . $this->record->getXref() . '");',
-			)));
-		}
+        // edit raw
+        if (Auth::isAdmin() || Auth::isEditor($this->record->getTree()) && $this->record->getTree()->getPreference('SHOW_GEDCOM_RECORD')) {
+            $menu->addSubmenu(new Menu(I18N::translate('Edit the raw GEDCOM'), '#', 'menu-repo-editraw', array(
+                'onclick' => 'return edit_raw("' . $this->record->getXref() . '");',
+            )));
+        }
 
-		// add to favorites
-		if (Module::getModuleByName('user_favorites')) {
-			$menu->addSubmenu(new Menu(
-				/* I18N: Menu option. Add [the current page] to the list of favorites */ I18N::translate('Add to favorites'),
-				'#',
-				'menu-repo-addfav',
-				array(
-					'onclick' => 'jQuery.post("module.php?mod=user_favorites&mod_action=menu-add-favorite" ,{xref:"' . $this->record->getXref() . '"},function(){location.reload();})',
-				)
-			));
-		}
+        // add to favorites
+        if (Module::getModuleByName('user_favorites')) {
+            $menu->addSubmenu(new Menu(
+                /* I18N: Menu option. Add [the current page] to the list of favorites */ I18N::translate('Add to favorites'),
+                '#',
+                'menu-repo-addfav',
+                array(
+                    'onclick' => 'jQuery.post("module.php?mod=user_favorites&mod_action=menu-add-favorite" ,{xref:"' . $this->record->getXref() . '"},function(){location.reload();})',
+                )
+            ));
+        }
 
-		return $menu;
-	}
+        return $menu;
+    }
 }

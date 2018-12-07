@@ -22,17 +22,17 @@ use Fisharebest\Webtrees\Menu;
  * Interface ModuleChartInterface - Classes and libraries for module system
  */
 interface ModuleChartInterface {
-	/**
-	 * Return a menu item for this chart.
-	 *
-	 * @return Menu|null
-	 */
-	public function getChartMenu(Individual $individual);
+    /**
+     * Return a menu item for this chart.
+     *
+     * @return Menu|null
+     */
+    public function getChartMenu(Individual $individual);
 
-	/**
-	 * Return a menu item for this chart (for menu in individual box).
-	 *
-	 * @return Menu|null
-	 */
-	public function getBoxChartMenu(Individual $individual);
+    /**
+     * Return a menu item for this chart (for menu in individual box).
+     *
+     * @return Menu|null
+     */
+    public function getBoxChartMenu(Individual $individual);
 }

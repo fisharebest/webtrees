@@ -22,33 +22,33 @@ use Fisharebest\Webtrees\Individual;
  * The number of children who are still living.
  */
 class CensusColumnChildrenLiving extends AbstractCensusColumn implements CensusColumnInterface {
-	/**
-	 * Generate the likely value of this census column, based on available information.
-	 *
-	 * @param Individual      $individual
-	 * @param Individual|null $head
-	 *
-	 * @return string
-	 */
-	public function generate(Individual $individual, Individual $head = null) {
-		if ($individual->getSex() !== 'F') {
-			return '';
-		}
+    /**
+     * Generate the likely value of this census column, based on available information.
+     *
+     * @param Individual      $individual
+     * @param Individual|null $head
+     *
+     * @return string
+     */
+    public function generate(Individual $individual, Individual $head = null) {
+        if ($individual->getSex() !== 'F') {
+            return '';
+        }
 
-		$count = 0;
-		foreach ($individual->getSpouseFamilies() as $family) {
-			foreach ($family->getChildren() as $child) {
-				if (
-					$child->getBirthDate()->isOK() &&
-					Date::compare($child->getBirthDate(), $this->date()) < 0 &&
-					$child->getBirthDate() != $child->getDeathDate() &&
-					(!$child->getDeathDate()->isOK() || Date::compare($child->getDeathDate(), $this->date()) > 0)
-				) {
-					$count++;
-				}
-			}
-		}
+        $count = 0;
+        foreach ($individual->getSpouseFamilies() as $family) {
+            foreach ($family->getChildren() as $child) {
+                if (
+                    $child->getBirthDate()->isOK() &&
+                    Date::compare($child->getBirthDate(), $this->date()) < 0 &&
+                    $child->getBirthDate() != $child->getDeathDate() &&
+                    (!$child->getDeathDate()->isOK() || Date::compare($child->getDeathDate(), $this->date()) > 0)
+                ) {
+                    $count++;
+                }
+            }
+        }
 
-		return (string) $count;
-	}
+        return (string) $count;
+    }
 }

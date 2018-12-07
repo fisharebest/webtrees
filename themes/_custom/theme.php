@@ -32,61 +32,61 @@ use Fisharebest\Webtrees\Theme\WebtreesTheme;
  * The rest are just examples, and should be removed in actual themes.
  */
 class MyTheme extends WebtreesTheme {
-	/**
-	 * Give your theme a unique identifier. Themes beginning with an underscore
-	 * are reserved for internal use.
-	 *
-	 * {@inheritdoc}
-	 */
-	public function themeId() {
-		return '_custom';
-	}
+    /**
+     * Give your theme a unique identifier. Themes beginning with an underscore
+     * are reserved for internal use.
+     *
+     * {@inheritdoc}
+     */
+    public function themeId() {
+        return '_custom';
+    }
 
-	/**
-	 * Give your theme a name. This is shown to the users.
-	 * Use HTML entities where appropriate. e.g. “Black &amp; white”.
-	 *
-	 * You could use switch($this->locale) {} to provide a translated versions
-	 * of the theme name.
-	 *
-	 * {@inheritdoc}
-	 */
-	public function themeName() {
-		return 'Custom theme';
-	}
+    /**
+     * Give your theme a name. This is shown to the users.
+     * Use HTML entities where appropriate. e.g. “Black &amp; white”.
+     *
+     * You could use switch($this->locale) {} to provide a translated versions
+     * of the theme name.
+     *
+     * {@inheritdoc}
+     */
+    public function themeName() {
+        return 'Custom theme';
+    }
 
-	/**
-	 * This is an example function which shows how to add an additional CSS file to the theme.
-	 *
-	 * {@inheritdoc}
-	 */
-	public function stylesheets() {
-		$css_files   = parent::stylesheets();
-		// Put a version number in the URL, to prevent browsers from caching old versions.
-		$css_files[] = WT_BASE_URL . 'themes/_custom/custom-v1.0.css';
+    /**
+     * This is an example function which shows how to add an additional CSS file to the theme.
+     *
+     * {@inheritdoc}
+     */
+    public function stylesheets() {
+        $css_files   = parent::stylesheets();
+        // Put a version number in the URL, to prevent browsers from caching old versions.
+        $css_files[] = WT_BASE_URL . 'themes/_custom/custom-v1.0.css';
 
-		return $css_files;
-	}
+        return $css_files;
+    }
 
-	/**
-	 * This is an example function which shows one way to remove an entry from a menu.
-	 *
-	 * @param string $surname The significant surname for the page.
-	 *
-	 * {@inheritdoc}
-	 */
-	public function menuLists($surname) {
-		// Start with the default "Lists" menu.
-		$menu = parent::menuLists($surname);
-		// Remove the "notes" sub-menu.
-		$submenus = array_filter($menu->getSubmenus(), function (Menu $menu) {
-			return $menu->getClass() !== 'menu-list-note';
-		});
-		// Replace the sub-menus
-		$menu->setSubmenus($submenus);
+    /**
+     * This is an example function which shows one way to remove an entry from a menu.
+     *
+     * @param string $surname The significant surname for the page.
+     *
+     * {@inheritdoc}
+     */
+    public function menuLists($surname) {
+        // Start with the default "Lists" menu.
+        $menu = parent::menuLists($surname);
+        // Remove the "notes" sub-menu.
+        $submenus = array_filter($menu->getSubmenus(), function (Menu $menu) {
+            return $menu->getClass() !== 'menu-list-note';
+        });
+        // Replace the sub-menus
+        $menu->setSubmenus($submenus);
 
-		return $menu;
-	}
+        return $menu;
+    }
 }
 
 return new MyTheme; // This script must return a theme object.

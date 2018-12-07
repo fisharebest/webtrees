@@ -19,14 +19,14 @@ namespace Fisharebest\Webtrees;
  * Class Html - Add HTML markup to elements consistently.
  */
 class Html {
-	/**
-	 * Filenames are (almost?) always LTR, even on RTL systems.
-	 *
-	 * @param string $filename
-	 *
-	 * @return string
-	 */
-	public static function filename($filename) {
-		return '<samp class="filename" dir="ltr">' . Filter::escapeHtml($filename) . '</samp>';
-	}
+    /**
+     * Filenames are (almost?) always LTR, even on RTL systems.
+     *
+     * @param string $filename
+     *
+     * @return string
+     */
+    public static function filename($filename) {
+        return '<samp class="filename" dir="ltr">' . Filter::escapeHtml($filename) . '</samp>';
+    }
 }

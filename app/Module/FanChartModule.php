@@ -24,61 +24,61 @@ use Fisharebest\Webtrees\Menu;
  * Class FanChartModule
  */
 class FanChartModule extends AbstractModule implements ModuleChartInterface {
-	/**
-	 * How should this module be labelled on tabs, menus, etc.?
-	 *
-	 * @return string
-	 */
-	public function getTitle() {
-		return /* I18N: Name of a module/chart */ I18N::translate('Fan chart');
-	}
+    /**
+     * How should this module be labelled on tabs, menus, etc.?
+     *
+     * @return string
+     */
+    public function getTitle() {
+        return /* I18N: Name of a module/chart */ I18N::translate('Fan chart');
+    }
 
-	/**
-	 * A sentence describing what this module does.
-	 *
-	 * @return string
-	 */
-	public function getDescription() {
-		return /* I18N: Description of the “Fan Chart” module */ I18N::translate('A fan chart of an individual’s ancestors.');
-	}
+    /**
+     * A sentence describing what this module does.
+     *
+     * @return string
+     */
+    public function getDescription() {
+        return /* I18N: Description of the “Fan Chart” module */ I18N::translate('A fan chart of an individual’s ancestors.');
+    }
 
-	/**
-	 * What is the default access level for this module?
-	 *
-	 * Some modules are aimed at admins or managers, and are not generally shown to users.
-	 *
-	 * @return int
-	 */
-	public function defaultAccessLevel() {
-		return Auth::PRIV_PRIVATE;
-	}
+    /**
+     * What is the default access level for this module?
+     *
+     * Some modules are aimed at admins or managers, and are not generally shown to users.
+     *
+     * @return int
+     */
+    public function defaultAccessLevel() {
+        return Auth::PRIV_PRIVATE;
+    }
 
-	/**
-	 * Return a menu item for this chart.
-	 *
-	 * We can only do this if the GD2 library is installed with TrueType support.
-	 *
-	 * @return Menu|null
-	 */
-	public function getChartMenu(Individual $individual) {
-		if (function_exists('imagettftext')) {
-			return new Menu(
-				$this->getTitle(),
-				'fanchart.php?rootid=' . $individual->getXref() . '&amp;ged=' . $individual->getTree()->getNameUrl(),
-				'menu-chart-fanchart',
-				array('rel' => 'nofollow')
-			);
-		} else {
-			return null;
-		}
-	}
+    /**
+     * Return a menu item for this chart.
+     *
+     * We can only do this if the GD2 library is installed with TrueType support.
+     *
+     * @return Menu|null
+     */
+    public function getChartMenu(Individual $individual) {
+        if (function_exists('imagettftext')) {
+            return new Menu(
+                $this->getTitle(),
+                'fanchart.php?rootid=' . $individual->getXref() . '&amp;ged=' . $individual->getTree()->getNameUrl(),
+                'menu-chart-fanchart',
+                array('rel' => 'nofollow')
+            );
+        } else {
+            return null;
+        }
+    }
 
-	/**
-	 * Return a menu item for this chart - for use in individual boxes.
-	 *
-	 * @return Menu|null
-	 */
-	public function getBoxChartMenu(Individual $individual) {
-		return $this->getChartMenu($individual);
-	}
+    /**
+     * Return a menu item for this chart - for use in individual boxes.
+     *
+     * @return Menu|null
+     */
+    public function getBoxChartMenu(Individual $individual) {
+        return $this->getChartMenu($individual);
+    }
 }

@@ -26,217 +26,217 @@ use Fisharebest\Webtrees\User;
  * Specification for a theme.
  */
 interface ThemeInterface {
-	/**
-	 * Where are our CSS, JS and other assets?
-	 *
-	 * @return string A relative path, such as "themes/foo/"
-	 */
-	public function assetUrl();
+    /**
+     * Where are our CSS, JS and other assets?
+     *
+     * @return string A relative path, such as "themes/foo/"
+     */
+    public function assetUrl();
 
-	/**
-	 * Create the top of the <body>.
-	 *
-	 * @return string
-	 */
-	public function bodyHeader();
+    /**
+     * Create the top of the <body>.
+     *
+     * @return string
+     */
+    public function bodyHeader();
 
-	/**
-	 * Create the top of the <body> (for popup windows).
-	 *
-	 * @return string
-	 */
-	public function bodyHeaderPopupWindow();
+    /**
+     * Create the top of the <body> (for popup windows).
+     *
+     * @return string
+     */
+    public function bodyHeaderPopupWindow();
 
-	/**
-	 * Create a contact link for a user.
-	 *
-	 * @param User $user
-	 *
-	 * @return string
-	 */
-	public function contactLink(User $user);
+    /**
+     * Create a contact link for a user.
+     *
+     * @param User $user
+     *
+     * @return string
+     */
+    public function contactLink(User $user);
 
-	/**
-	 * Create the <DOCTYPE> tag.
-	 *
-	 * @return string
-	 */
-	public function doctype();
+    /**
+     * Create the <DOCTYPE> tag.
+     *
+     * @return string
+     */
+    public function doctype();
 
-	/**
-	 * Close the main content and create the <footer> tag.
-	 *
-	 * @return string
-	 */
-	public function footerContainer();
+    /**
+     * Close the main content and create the <footer> tag.
+     *
+     * @return string
+     */
+    public function footerContainer();
 
-	/**
-	 * Close the main content.
-	 * Note that popup windows are deprecated
-	 *
-	 * @return string
-	 */
-	public function footerContainerPopupWindow();
+    /**
+     * Close the main content.
+     * Note that popup windows are deprecated
+     *
+     * @return string
+     */
+    public function footerContainerPopupWindow();
 
-	/**
-	 * Format the contents of a variable-height home-page block.
-	 *
-	 * @param string $id
-	 * @param string $title
-	 * @param string $class
-	 * @param string $content
-	 *
-	 * @return string
-	 */
-	public function formatBlock($id, $title, $class, $content);
+    /**
+     * Format the contents of a variable-height home-page block.
+     *
+     * @param string $id
+     * @param string $title
+     * @param string $class
+     * @param string $content
+     *
+     * @return string
+     */
+    public function formatBlock($id, $title, $class, $content);
 
-	/**
-	 * Create the <head> tag.
-	 *
-	 * @param PageController $controller The current controller
-	 *
-	 * @return string
-	 */
-	public function head(PageController $controller);
+    /**
+     * Create the <head> tag.
+     *
+     * @param PageController $controller The current controller
+     *
+     * @return string
+     */
+    public function head(PageController $controller);
 
-	/**
-	 * Allow themes to do things after initialization (since they cannot use
-	 * the constructor).
-	 */
-	public function hookAfterInit();
+    /**
+     * Allow themes to do things after initialization (since they cannot use
+     * the constructor).
+     */
+    public function hookAfterInit();
 
-	/**
-	 * Allow themes to add extra scripts to the page footer.
-	 *
-	 * @return string
-	 */
-	public function hookFooterExtraJavascript();
+    /**
+     * Allow themes to add extra scripts to the page footer.
+     *
+     * @return string
+     */
+    public function hookFooterExtraJavascript();
 
-	/**
-	 * Allow themes to add extra content to the page header.
-	 * Typically this will be additional CSS.
-	 *
-	 * @return string
-	 */
-	public function hookHeaderExtraContent();
+    /**
+     * Allow themes to add extra content to the page header.
+     * Typically this will be additional CSS.
+     *
+     * @return string
+     */
+    public function hookHeaderExtraContent();
 
-	/**
-	 * Create the <html> tag.
-	 *
-	 * @return string
-	 */
-	public function html();
+    /**
+     * Create the <html> tag.
+     *
+     * @return string
+     */
+    public function html();
 
-	/**
-	 * Add HTML markup to create an alert
-	 *
-	 * @param string $html        The content of the alert
-	 * @param string $level       One of 'success', 'info', 'warning', 'danger'
-	 * @param bool   $dismissible If true, add a close button.
-	 *
-	 * @return string
-	 */
-	public function htmlAlert($html, $level, $dismissible);
+    /**
+     * Add HTML markup to create an alert
+     *
+     * @param string $html        The content of the alert
+     * @param string $level       One of 'success', 'info', 'warning', 'danger'
+     * @param bool   $dismissible If true, add a close button.
+     *
+     * @return string
+     */
+    public function htmlAlert($html, $level, $dismissible);
 
-	/**
-	 * Display an icon for this fact.
-	 *
-	 * @param Fact $fact
-	 *
-	 * @return string
-	 */
-	public function icon(Fact $fact);
+    /**
+     * Display an icon for this fact.
+     *
+     * @param Fact $fact
+     *
+     * @return string
+     */
+    public function icon(Fact $fact);
 
-	/**
-	 * Display an individual in a box - for charts, etc.
-	 *
-	 * @param Individual $individual
-	 *
-	 * @return string
-	 */
-	public function individualBox(Individual $individual);
+    /**
+     * Display an individual in a box - for charts, etc.
+     *
+     * @param Individual $individual
+     *
+     * @return string
+     */
+    public function individualBox(Individual $individual);
 
-	/**
-	 * Display an empty box - for a missing individual in a chart.
-	 *
-	 * @return string
-	 */
-	public function individualBoxEmpty();
+    /**
+     * Display an empty box - for a missing individual in a chart.
+     *
+     * @return string
+     */
+    public function individualBoxEmpty();
 
-	/**
-	 * Display an individual in a box - for charts, etc.
-	 *
-	 * @param Individual $individual
-	 *
-	 * @return string
-	 */
-	public function individualBoxLarge(Individual $individual);
+    /**
+     * Display an individual in a box - for charts, etc.
+     *
+     * @param Individual $individual
+     *
+     * @return string
+     */
+    public function individualBoxLarge(Individual $individual);
 
-	/**
-	 * Display an individual in a box - for charts, etc.
-	 *
-	 * @param Individual $individual
-	 *
-	 * @return string
-	 */
-	public function individualBoxSmall(Individual $individual);
+    /**
+     * Display an individual in a box - for charts, etc.
+     *
+     * @param Individual $individual
+     *
+     * @return string
+     */
+    public function individualBoxSmall(Individual $individual);
 
-	/**
-	 * Display an individual in a box - for charts, etc.
-	 *
-	 * @return string
-	 */
-	public function individualBoxSmallEmpty();
+    /**
+     * Display an individual in a box - for charts, etc.
+     *
+     * @return string
+     */
+    public function individualBoxSmallEmpty();
 
-	/**
-	 * Initialise the theme. We cannot pass these in a constructor, as the construction
-	 * happens in a theme file, and we need to be able to change it.
-	 *
-	 * @param Tree|null $tree The current tree (if there is one).
-	 */
-	public function init(Tree $tree = null);
+    /**
+     * Initialise the theme. We cannot pass these in a constructor, as the construction
+     * happens in a theme file, and we need to be able to change it.
+     *
+     * @param Tree|null $tree The current tree (if there is one).
+     */
+    public function init(Tree $tree = null);
 
-	/**
-	 * Links, to show in chart boxes;
-	 *
-	 * @param Individual $individual
-	 *
-	 * @return Menu[]
-	 */
-	public function individualBoxMenu(Individual $individual);
+    /**
+     * Links, to show in chart boxes;
+     *
+     * @param Individual $individual
+     *
+     * @return Menu[]
+     */
+    public function individualBoxMenu(Individual $individual);
 
-	/**
-	 * Themes menu.
-	 *
-	 * @return Menu|null
-	 */
-	public function menuThemes();
+    /**
+     * Themes menu.
+     *
+     * @return Menu|null
+     */
+    public function menuThemes();
 
-	/**
-	 * Misecellaneous dimensions, fonts, styles, etc.
-	 *
-	 * @param string $parameter_name
-	 *
-	 * @return string|int|float
-	 */
-	public function parameter($parameter_name);
+    /**
+     * Misecellaneous dimensions, fonts, styles, etc.
+     *
+     * @param string $parameter_name
+     *
+     * @return string|int|float
+     */
+    public function parameter($parameter_name);
 
-	/**
-	 * Send any HTTP headers.
-	 */
-	public function sendHeaders();
+    /**
+     * Send any HTTP headers.
+     */
+    public function sendHeaders();
 
-	/**
-	 * A fixed string to identify this theme, in settings, etc.
-	 *
-	 * @return string
-	 */
-	public function themeId();
+    /**
+     * A fixed string to identify this theme, in settings, etc.
+     *
+     * @return string
+     */
+    public function themeId();
 
-	/**
-	 * What is this theme called?
-	 *
-	 * @return string
-	 */
-	public function themeName();
+    /**
+     * What is this theme called?
+     *
+     * @return string
+     */
+    public function themeName();
 }

@@ -23,13 +23,13 @@ namespace Fisharebest\Webtrees\Date;
  * webtrees won’t compain if it receives one.
  */
 class RomanDate extends JulianDate {
-	/** {@inheritdoc} */
-	protected function formatGedcomYear() {
-		return sprintf('%04dAUC', $this->y);
-	}
+    /** {@inheritdoc} */
+    protected function formatGedcomYear() {
+        return sprintf('%04dAUC', $this->y);
+    }
 
-	/** {@inheritdoc} */
-	protected function formatLongYear() {
-		return $this->y . 'AUC';
-	}
+    /** {@inheritdoc} */
+    protected function formatLongYear() {
+        return $this->y . 'AUC';
+    }
 }

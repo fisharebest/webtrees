@@ -19,19 +19,19 @@ namespace Fisharebest\Webtrees\Census;
  * Definitions for a census
  */
 class Census {
-	/**
-	 * @return CensusPlaceInterface[]
-	 */
-	public static function allCensusPlaces() {
-		return array(
-			new CensusOfCzechRepublic,
-			new CensusOfDenmark,
-			new CensusOfDeutschland,
-			new CensusOfEngland,
-			new CensusOfFrance,
-			new CensusOfScotland,
-			new CensusOfUnitedStates,
-			new CensusOfWales,
-		);
-	}
+    /**
+     * @return CensusPlaceInterface[]
+     */
+    public static function allCensusPlaces() {
+        return array(
+            new CensusOfCzechRepublic,
+            new CensusOfDenmark,
+            new CensusOfDeutschland,
+            new CensusOfEngland,
+            new CensusOfFrance,
+            new CensusOfScotland,
+            new CensusOfUnitedStates,
+            new CensusOfWales,
+        );
+    }
 }

@@ -29,203 +29,203 @@ use Fisharebest\Webtrees\Theme;
  * Class ChartsBlockModule
  */
 class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
-	/** {@inheritdoc} */
-	public function getTitle() {
-		return /* I18N: Name of a module/block */ I18N::translate('Charts');
-	}
+    /** {@inheritdoc} */
+    public function getTitle() {
+        return /* I18N: Name of a module/block */ I18N::translate('Charts');
+    }
 
-	/** {@inheritdoc} */
-	public function getDescription() {
-		return /* I18N: Description of the “Charts” module */ I18N::translate('An alternative way to display charts.');
-	}
+    /** {@inheritdoc} */
+    public function getDescription() {
+        return /* I18N: Description of the “Charts” module */ I18N::translate('An alternative way to display charts.');
+    }
 
-	/**
-	 * Generate the HTML content of this block.
-	 *
-	 * @param int      $block_id
-	 * @param bool     $template
-	 * @param string[] $cfg
-	 *
-	 * @return string
-	 */
-	public function getBlock($block_id, $template = true, $cfg = array()) {
-		global $WT_TREE, $ctype, $controller;
+    /**
+     * Generate the HTML content of this block.
+     *
+     * @param int      $block_id
+     * @param bool     $template
+     * @param string[] $cfg
+     *
+     * @return string
+     */
+    public function getBlock($block_id, $template = true, $cfg = array()) {
+        global $WT_TREE, $ctype, $controller;
 
-		$PEDIGREE_ROOT_ID = $WT_TREE->getPreference('PEDIGREE_ROOT_ID');
-		$gedcomid         = $WT_TREE->getUserPreference(Auth::user(), 'gedcomid');
+        $PEDIGREE_ROOT_ID = $WT_TREE->getPreference('PEDIGREE_ROOT_ID');
+        $gedcomid         = $WT_TREE->getUserPreference(Auth::user(), 'gedcomid');
 
-		$details = $this->getBlockSetting($block_id, 'details', '0');
-		$type    = $this->getBlockSetting($block_id, 'type', 'pedigree');
-		$pid     = $this->getBlockSetting($block_id, 'pid', Auth::check() ? ($gedcomid ? $gedcomid : $PEDIGREE_ROOT_ID) : $PEDIGREE_ROOT_ID);
+        $details = $this->getBlockSetting($block_id, 'details', '0');
+        $type    = $this->getBlockSetting($block_id, 'type', 'pedigree');
+        $pid     = $this->getBlockSetting($block_id, 'pid', Auth::check() ? ($gedcomid ? $gedcomid : $PEDIGREE_ROOT_ID) : $PEDIGREE_ROOT_ID);
 
-		foreach (array('details', 'type', 'pid', 'block') as $name) {
-			if (array_key_exists($name, $cfg)) {
-				$$name = $cfg[$name];
-			}
-		}
+        foreach (array('details', 'type', 'pid', 'block') as $name) {
+            if (array_key_exists($name, $cfg)) {
+                $$name = $cfg[$name];
+            }
+        }
 
-		$person = Individual::getInstance($pid, $WT_TREE);
-		if (!$person) {
-			$pid = $PEDIGREE_ROOT_ID;
-			$this->setBlockSetting($block_id, 'pid', $pid);
-			$person = Individual::getInstance($pid, $WT_TREE);
-		}
+        $person = Individual::getInstance($pid, $WT_TREE);
+        if (!$person) {
+            $pid = $PEDIGREE_ROOT_ID;
+            $this->setBlockSetting($block_id, 'pid', $pid);
+            $person = Individual::getInstance($pid, $WT_TREE);
+        }
 
-		$id    = $this->getName() . $block_id;
-		$class = $this->getName() . '_block';
-		if ($ctype == 'gedcom' && Auth::isManager($WT_TREE) || $ctype == 'user' && Auth::check()) {
-			$title = '<a class="icon-admin" title="' . I18N::translate('Preferences') . '" href="block_edit.php?block_id=' . $block_id . '&amp;ged=' . $WT_TREE->getNameHtml() . '&amp;ctype=' . $ctype . '"></a>';
-		} else {
-			$title = '';
-		}
+        $id    = $this->getName() . $block_id;
+        $class = $this->getName() . '_block';
+        if ($ctype == 'gedcom' && Auth::isManager($WT_TREE) || $ctype == 'user' && Auth::check()) {
+            $title = '<a class="icon-admin" title="' . I18N::translate('Preferences') . '" href="block_edit.php?block_id=' . $block_id . '&amp;ged=' . $WT_TREE->getNameHtml() . '&amp;ctype=' . $ctype . '"></a>';
+        } else {
+            $title = '';
+        }
 
-		if ($person) {
-			$content = '';
-			switch ($type) {
-			case 'pedigree':
-				$title .= I18N::translate('Pedigree of %s', $person->getFullName());
-				$chartController = new HourglassController($person->getXref(), $details, false);
-				$controller->addInlineJavascript($chartController->setupJavascript());
-				$content .= '<table cellspacing="0" cellpadding="0" border="0"><tr>';
-				$content .= '<td>';
-				ob_start();
-				FunctionsPrint::printPedigreePerson($person, $details);
-				$content .= ob_get_clean();
-				$content .= '</td>';
-				$content .= '<td>';
-				ob_start();
-				$chartController->printPersonPedigree($person, 1);
-				$content .= ob_get_clean();
-				$content .= '</td>';
-				$content .= '</tr></table>';
-				break;
-			case 'descendants':
-				$title .= I18N::translate('Descendants of %s', $person->getFullName());
-				$chartController = new HourglassController($person->getXref(), $details, false);
-				$controller->addInlineJavascript($chartController->setupJavascript());
-				ob_start();
-				$chartController->printDescendency($person, 1, false);
-				$content .= ob_get_clean();
-				break;
-			case 'hourglass':
-				$title .= I18N::translate('Hourglass chart of %s', $person->getFullName());
-				$chartController = new HourglassController($person->getXref(), $details, false);
-				$controller->addInlineJavascript($chartController->setupJavascript());
-				$content .= '<table cellspacing="0" cellpadding="0" border="0"><tr>';
-				$content .= '<td>';
-				ob_start();
-				$chartController->printDescendency($person, 1, false);
-				$content .= ob_get_clean();
-				$content .= '</td>';
-				$content .= '<td>';
-				ob_start();
-				$chartController->printPersonPedigree($person, 1);
-				$content .= ob_get_clean();
-				$content .= '</td>';
-				$content .= '</tr></table>';
-				break;
-			case 'treenav':
-				$title .= I18N::translate('Interactive tree of %s', $person->getFullName());
-				$mod = new InteractiveTreeModule(WT_MODULES_DIR . 'tree');
-				$tv  = new TreeView;
-				$content .= '<script>jQuery("head").append(\'<link rel="stylesheet" href="' . $mod->css() . '" type="text/css" />\');</script>';
-				$content .= '<script src="' . $mod->js() . '"></script>';
-				list($html, $js) = $tv->drawViewport($person, 2);
-				$content .= $html . '<script>' . $js . '</script>';
-				break;
-			}
-		} else {
-			$content = I18N::translate('You must select an individual and a chart type in the block preferences');
-		}
+        if ($person) {
+            $content = '';
+            switch ($type) {
+            case 'pedigree':
+                $title .= I18N::translate('Pedigree of %s', $person->getFullName());
+                $chartController = new HourglassController($person->getXref(), $details, false);
+                $controller->addInlineJavascript($chartController->setupJavascript());
+                $content .= '<table cellspacing="0" cellpadding="0" border="0"><tr>';
+                $content .= '<td>';
+                ob_start();
+                FunctionsPrint::printPedigreePerson($person, $details);
+                $content .= ob_get_clean();
+                $content .= '</td>';
+                $content .= '<td>';
+                ob_start();
+                $chartController->printPersonPedigree($person, 1);
+                $content .= ob_get_clean();
+                $content .= '</td>';
+                $content .= '</tr></table>';
+                break;
+            case 'descendants':
+                $title .= I18N::translate('Descendants of %s', $person->getFullName());
+                $chartController = new HourglassController($person->getXref(), $details, false);
+                $controller->addInlineJavascript($chartController->setupJavascript());
+                ob_start();
+                $chartController->printDescendency($person, 1, false);
+                $content .= ob_get_clean();
+                break;
+            case 'hourglass':
+                $title .= I18N::translate('Hourglass chart of %s', $person->getFullName());
+                $chartController = new HourglassController($person->getXref(), $details, false);
+                $controller->addInlineJavascript($chartController->setupJavascript());
+                $content .= '<table cellspacing="0" cellpadding="0" border="0"><tr>';
+                $content .= '<td>';
+                ob_start();
+                $chartController->printDescendency($person, 1, false);
+                $content .= ob_get_clean();
+                $content .= '</td>';
+                $content .= '<td>';
+                ob_start();
+                $chartController->printPersonPedigree($person, 1);
+                $content .= ob_get_clean();
+                $content .= '</td>';
+                $content .= '</tr></table>';
+                break;
+            case 'treenav':
+                $title .= I18N::translate('Interactive tree of %s', $person->getFullName());
+                $mod = new InteractiveTreeModule(WT_MODULES_DIR . 'tree');
+                $tv  = new TreeView;
+                $content .= '<script>jQuery("head").append(\'<link rel="stylesheet" href="' . $mod->css() . '" type="text/css" />\');</script>';
+                $content .= '<script src="' . $mod->js() . '"></script>';
+                list($html, $js) = $tv->drawViewport($person, 2);
+                $content .= $html . '<script>' . $js . '</script>';
+                break;
+            }
+        } else {
+            $content = I18N::translate('You must select an individual and a chart type in the block preferences');
+        }
 
-		if ($template) {
-			return Theme::theme()->formatBlock($id, $title, $class, $content);
-		} else {
-			return $content;
-		}
-	}
+        if ($template) {
+            return Theme::theme()->formatBlock($id, $title, $class, $content);
+        } else {
+            return $content;
+        }
+    }
 
-	/** {@inheritdoc} */
-	public function loadAjax() {
-		return true;
-	}
+    /** {@inheritdoc} */
+    public function loadAjax() {
+        return true;
+    }
 
-	/** {@inheritdoc} */
-	public function isUserBlock() {
-		return true;
-	}
+    /** {@inheritdoc} */
+    public function isUserBlock() {
+        return true;
+    }
 
-	/** {@inheritdoc} */
-	public function isGedcomBlock() {
-		return true;
-	}
+    /** {@inheritdoc} */
+    public function isGedcomBlock() {
+        return true;
+    }
 
-	/**
-	 * An HTML form to edit block settings
-	 *
-	 * @param int $block_id
-	 */
-	public function configureBlock($block_id) {
-		global $WT_TREE, $controller;
+    /**
+     * An HTML form to edit block settings
+     *
+     * @param int $block_id
+     */
+    public function configureBlock($block_id) {
+        global $WT_TREE, $controller;
 
-		$PEDIGREE_ROOT_ID = $WT_TREE->getPreference('PEDIGREE_ROOT_ID');
-		$gedcomid         = $WT_TREE->getUserPreference(Auth::user(), 'gedcomid');
+        $PEDIGREE_ROOT_ID = $WT_TREE->getPreference('PEDIGREE_ROOT_ID');
+        $gedcomid         = $WT_TREE->getUserPreference(Auth::user(), 'gedcomid');
 
-		if (Filter::postBool('save') && Filter::checkCsrf()) {
-			$this->setBlockSetting($block_id, 'details', Filter::postBool('details'));
-			$this->setBlockSetting($block_id, 'type', Filter::post('type', 'pedigree|descendants|hourglass|treenav', 'pedigree'));
-			$this->setBlockSetting($block_id, 'pid', Filter::post('pid', WT_REGEX_XREF));
-		}
+        if (Filter::postBool('save') && Filter::checkCsrf()) {
+            $this->setBlockSetting($block_id, 'details', Filter::postBool('details'));
+            $this->setBlockSetting($block_id, 'type', Filter::post('type', 'pedigree|descendants|hourglass|treenav', 'pedigree'));
+            $this->setBlockSetting($block_id, 'pid', Filter::post('pid', WT_REGEX_XREF));
+        }
 
-		$details = $this->getBlockSetting($block_id, 'details', '0');
-		$type    = $this->getBlockSetting($block_id, 'type', 'pedigree');
-		$pid     = $this->getBlockSetting($block_id, 'pid', Auth::check() ? ($gedcomid ? $gedcomid : $PEDIGREE_ROOT_ID) : $PEDIGREE_ROOT_ID);
+        $details = $this->getBlockSetting($block_id, 'details', '0');
+        $type    = $this->getBlockSetting($block_id, 'type', 'pedigree');
+        $pid     = $this->getBlockSetting($block_id, 'pid', Auth::check() ? ($gedcomid ? $gedcomid : $PEDIGREE_ROOT_ID) : $PEDIGREE_ROOT_ID);
 
-		$charts = array(
-			'pedigree'    => I18N::translate('Pedigree'),
-			'descendants' => I18N::translate('Descendants'),
-			'hourglass'   => I18N::translate('Hourglass chart'),
-			'treenav'     => I18N::translate('Interactive tree'),
-		);
-		uasort($charts, 'Fisharebest\Webtrees\I18N::strcasecmp');
+        $charts = array(
+            'pedigree'    => I18N::translate('Pedigree'),
+            'descendants' => I18N::translate('Descendants'),
+            'hourglass'   => I18N::translate('Hourglass chart'),
+            'treenav'     => I18N::translate('Interactive tree'),
+        );
+        uasort($charts, 'Fisharebest\Webtrees\I18N::strcasecmp');
 
-		$controller
-			->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
-			->addInlineJavascript('autocomplete();');
-	?>
-		<tr>
-			<td class="descriptionbox wrap width33">
-				<?php echo I18N::translate('Chart type'); ?>
-			</td>
-			<td class="optionbox">
-				<?php echo FunctionsEdit::selectEditControl('type', $charts, null, $type); ?>
-			</td>
-		</tr>
-		<tr>
-			<td class="descriptionbox wrap width33">
-				<?php echo I18N::translate('Show details'); ?>
-			</td>
-		<td class="optionbox">
-			<?php echo FunctionsEdit::editFieldYesNo('details', $details); ?>
-			</td>
-		</tr>
-		<tr>
-			<td class="descriptionbox wrap width33">
-				<label for="pid">
-					<?php echo I18N::translate('Individual'); ?>
-				</label>
-			</td>
-			<td class="optionbox">
-				<input data-autocomplete-type="INDI" type="text" name="pid" id="pid" value="<?php echo $pid; ?>" size="5">
-				<?php
-				echo FunctionsPrint::printFindIndividualLink('pid');
-				$root = Individual::getInstance($pid, $WT_TREE);
-				if ($root) {
-					echo ' <span class="list_item">', $root->getFullName(), $root->formatFirstMajorFact(WT_EVENTS_BIRT, 1), '</span>';
-				}
-				?>
-			</td>
-		</tr>
-		<?php
-	}
+        $controller
+            ->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
+            ->addInlineJavascript('autocomplete();');
+    ?>
+        <tr>
+            <td class="descriptionbox wrap width33">
+                <?php echo I18N::translate('Chart type'); ?>
+            </td>
+            <td class="optionbox">
+                <?php echo FunctionsEdit::selectEditControl('type', $charts, null, $type); ?>
+            </td>
+        </tr>
+        <tr>
+            <td class="descriptionbox wrap width33">
+                <?php echo I18N::translate('Show details'); ?>
+            </td>
+        <td class="optionbox">
+            <?php echo FunctionsEdit::editFieldYesNo('details', $details); ?>
+            </td>
+        </tr>
+        <tr>
+            <td class="descriptionbox wrap width33">
+                <label for="pid">
+                    <?php echo I18N::translate('Individual'); ?>
+                </label>
+            </td>
+            <td class="optionbox">
+                <input data-autocomplete-type="INDI" type="text" name="pid" id="pid" value="<?php echo $pid; ?>" size="5">
+                <?php
+                echo FunctionsPrint::printFindIndividualLink('pid');
+                $root = Individual::getInstance($pid, $WT_TREE);
+                if ($root) {
+                    echo ' <span class="list_item">', $root->getFullName(), $root->formatFirstMajorFact(WT_EVENTS_BIRT, 1), '</span>';
+                }
+                ?>
+            </td>
+        </tr>
+        <?php
+    }
 }

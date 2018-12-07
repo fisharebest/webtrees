@@ -23,42 +23,42 @@ use Fisharebest\Webtrees\Menu;
  * Class MissingFactsReportModule
  */
 class MissingFactsReportModule extends AbstractModule implements ModuleReportInterface {
-	/** {@inheritdoc} */
-	public function getTitle() {
-		// This text also appears in the .XML file - update both together
-		return /* I18N: Name of a module/report */ I18N::translate('Missing data');
-	}
+    /** {@inheritdoc} */
+    public function getTitle() {
+        // This text also appears in the .XML file - update both together
+        return /* I18N: Name of a module/report */ I18N::translate('Missing data');
+    }
 
-	/** {@inheritdoc} */
-	public function getDescription() {
-		// This text also appears in the .XML file - update both together
-		return /* I18N: Description of the “Missing data” */ I18N::translate('A report of the information that is missing for an individual and their relatives.');
-	}
+    /** {@inheritdoc} */
+    public function getDescription() {
+        // This text also appears in the .XML file - update both together
+        return /* I18N: Description of the “Missing data” */ I18N::translate('A report of the information that is missing for an individual and their relatives.');
+    }
 
-	/**
-	 * What is the default access level for this module?
-	 *
-	 * Some modules are aimed at admins or managers, and are not generally shown to users.
-	 *
-	 * @return int
-	 */
-	public function defaultAccessLevel() {
-		return Auth::PRIV_USER;
-	}
+    /**
+     * What is the default access level for this module?
+     *
+     * Some modules are aimed at admins or managers, and are not generally shown to users.
+     *
+     * @return int
+     */
+    public function defaultAccessLevel() {
+        return Auth::PRIV_USER;
+    }
 
-	/**
-	 * Return a menu item for this report.
-	 *
-	 * @return Menu
-	 */
-	public function getReportMenu() {
-		global $WT_TREE;
+    /**
+     * Return a menu item for this report.
+     *
+     * @return Menu
+     */
+    public function getReportMenu() {
+        global $WT_TREE;
 
-		return new Menu(
-			$this->getTitle(),
-			'reportengine.php?ged=' . $WT_TREE->getNameUrl() . '&amp;action=setup&amp;report=' . WT_MODULES_DIR . $this->getName() . '/report.xml',
-			'menu-report-' . $this->getName(),
-			array('rel' => 'nofollow')
-		);
-	}
+        return new Menu(
+            $this->getTitle(),
+            'reportengine.php?ged=' . $WT_TREE->getNameUrl() . '&amp;action=setup&amp;report=' . WT_MODULES_DIR . $this->getName() . '/report.xml',
+            'menu-report-' . $this->getName(),
+            array('rel' => 'nofollow')
+        );
+    }
 }

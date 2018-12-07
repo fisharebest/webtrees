@@ -22,43 +22,43 @@ use Fisharebest\Webtrees\Individual;
  * The nationality of the individual.
  */
 class CensusColumnNationality extends AbstractCensusColumn implements CensusColumnInterface {
-	/** @var array Convert a country name to a nationality */
-	private $nationalities = array(
-		'England'     => 'British',
-		'Scotland'    => 'British',
-		'Wales'       => 'British',
-		'Deutschland' => 'Deutsch',
-	);
+    /** @var array Convert a country name to a nationality */
+    private $nationalities = array(
+        'England'     => 'British',
+        'Scotland'    => 'British',
+        'Wales'       => 'British',
+        'Deutschland' => 'Deutsch',
+    );
 
-	/**
-	 * Generate the likely value of this census column, based on available information.
-	 *
-	 * @param Individual      $individual
-	 * @param Individual|null $head
-	 *
-	 * @return string
-	 */
-	public function generate(Individual $individual, Individual $head = null) {
-		$place = $individual->getBirthPlace();
+    /**
+     * Generate the likely value of this census column, based on available information.
+     *
+     * @param Individual      $individual
+     * @param Individual|null $head
+     *
+     * @return string
+     */
+    public function generate(Individual $individual, Individual $head = null) {
+        $place = $individual->getBirthPlace();
 
-		// No birthplace?  Assume born in the same country.
-		if ($place === '') {
-			$place = $this->place();
-		}
+        // No birthplace?  Assume born in the same country.
+        if ($place === '') {
+            $place = $this->place();
+        }
 
-		// Did we emigrate or naturalise?
-		foreach ($individual->getFacts('IMMI|EMIG|NATU', true) as $fact) {
-			if (Date::compare($fact->getDate(), $this->date()) <= 0) {
-				$place = $fact->getPlace()->getGedcomName();
-			}
-		}
+        // Did we emigrate or naturalise?
+        foreach ($individual->getFacts('IMMI|EMIG|NATU', true) as $fact) {
+            if (Date::compare($fact->getDate(), $this->date()) <= 0) {
+                $place = $fact->getPlace()->getGedcomName();
+            }
+        }
 
-		$place = $this->lastPartOfPlace($place);
+        $place = $this->lastPartOfPlace($place);
 
-		if (array_key_exists($place, $this->nationalities)) {
-			return $this->nationalities[$place];
-		} else {
-			return $place;
-		}
-	}
+        if (array_key_exists($place, $this->nationalities)) {
+            return $this->nationalities[$place];
+        } else {
+            return $place;
+        }
+    }
 }

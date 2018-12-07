@@ -29,73 +29,73 @@ use PDO;
  * The "user favorites" module is almost identical to the "family tree favorites" module
  */
 class UserFavoritesModule extends FamilyTreeFavoritesModule {
-	/** {@inheritdoc} */
-	public function getDescription() {
-		return /* I18N: Description of the “Favorites” module */ I18N::translate('Display and manage a user’s favorite pages.');
-	}
+    /** {@inheritdoc} */
+    public function getDescription() {
+        return /* I18N: Description of the “Favorites” module */ I18N::translate('Display and manage a user’s favorite pages.');
+    }
 
-	/**
-	 * Can this block be shown on the user’s home page?
-	 *
-	 * @return bool
-	 */
-	public function isUserBlock() {
-		return true;
-	}
+    /**
+     * Can this block be shown on the user’s home page?
+     *
+     * @return bool
+     */
+    public function isUserBlock() {
+        return true;
+    }
 
-	/**
-	 * Can this block be shown on the tree’s home page?
-	 *
-	 * @return bool
-	 */
-	public function isGedcomBlock() {
-		return false;
-	}
+    /**
+     * Can this block be shown on the tree’s home page?
+     *
+     * @return bool
+     */
+    public function isGedcomBlock() {
+        return false;
+    }
 
-	/**
-	 * Get the favorites for a user (for the current family tree)
-	 *
-	 * @param int $user_id
-	 *
-	 * @return string[][]
-	 */
-	public static function getFavorites($user_id) {
-		global $WT_TREE;
+    /**
+     * Get the favorites for a user (for the current family tree)
+     *
+     * @param int $user_id
+     *
+     * @return string[][]
+     */
+    public static function getFavorites($user_id) {
+        global $WT_TREE;
 
-		return
-			Database::prepare(
-				"SELECT favorite_id AS id, user_id, gedcom_id, xref AS gid, favorite_type AS type, title AS title, note AS note, url AS url" .
-				" FROM `##favorite` WHERE user_id=? AND gedcom_id=?")
-			->execute(array($user_id, $WT_TREE->getTreeId()))
-			->fetchAll(PDO::FETCH_ASSOC);
-	}
+        return
+            Database::prepare(
+                "SELECT favorite_id AS id, user_id, gedcom_id, xref AS gid, favorite_type AS type, title AS title, note AS note, url AS url" .
+                " FROM `##favorite` WHERE user_id=? AND gedcom_id=?")
+            ->execute(array($user_id, $WT_TREE->getTreeId()))
+            ->fetchAll(PDO::FETCH_ASSOC);
+    }
 
-	/**
-	 * This is a general purpose hook, allowing modules to respond to routes
-	 * of the form module.php?mod=FOO&mod_action=BAR
-	 *
-	 * @param string $mod_action
-	 */
-	public function modAction($mod_action) {
-		global $WT_TREE;
+    /**
+     * This is a general purpose hook, allowing modules to respond to routes
+     * of the form module.php?mod=FOO&mod_action=BAR
+     *
+     * @param string $mod_action
+     */
+    public function modAction($mod_action) {
+        global $WT_TREE;
 
-		switch ($mod_action) {
-		case 'menu-add-favorite':
-			// Process the "add to user favorites" menu item on indi/fam/etc. pages
-			$record = GedcomRecord::getInstance(Filter::post('xref', WT_REGEX_XREF), $WT_TREE);
-			if (Auth::check() && $record->canShowName()) {
-				self::addFavorite(array(
-					'user_id'   => Auth::id(),
-					'gedcom_id' => $record->getTree()->getTreeId(),
-					'gid'       => $record->getXref(),
-					'type'      => $record::RECORD_TYPE,
-					'url'       => null,
-					'note'      => null,
-					'title'     => null,
-				));
-				FlashMessages::addMessage(/* I18N: %s is the name of an individual, source or other record */ I18N::translate('“%s” has been added to your favorites.', $record->getFullName()));
-			}
-			break;
-		}
-	}
+        switch ($mod_action) {
+        case 'menu-add-favorite':
+            // Process the "add to user favorites" menu item on indi/fam/etc. pages
+            $record = GedcomRecord::getInstance(Filter::post('xref', WT_REGEX_XREF), $WT_TREE);
+            if (Auth::check() && $record->canShowName()) {
+                self::addFavorite(array(
+                    'user_id'   => Auth::id(),
+                    'gedcom_id' => $record->getTree()->getTreeId(),
+                    'gid'       => $record->getXref(),
+                    'type'      => $record::RECORD_TYPE,
+                    'url'       => null,
+                    'note'      => null,
+                    'title'     => null,
+                ));
+                FlashMessages::addMessage(/* I18N: %s is the name of an individual, source or other record */ I18N::translate('“%s” has been added to your favorites.', $record->getFullName()));
+            }
+            break;
+        }
+    }
 }

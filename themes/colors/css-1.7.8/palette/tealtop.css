@@ -17,13 +17,13 @@
 
 /* Header */
 header {
-	background: #34775a;
-	color: #fff;
+    background: #34775a;
+    color: #fff;
 }
 
 .title {
-	text-decoration: none;
-	color: #fff;
+    text-decoration: none;
+    color: #fff;
 }
 
 /* Tbls and menus  */
@@ -34,17 +34,17 @@ header {
 #lightbox_content span a, #lightbox_content span a:hover,
 #separator:after, #family_nav,
 .ui-state-active a:link, .ui-state-active a:visited {
-	background-color: #51b389;
-	color: #fff;
+    background-color: #51b389;
+    color: #fff;
 }
 
 .ui-state-active, .ui-widget-content .ui-state-active {
-	background: none repeat scroll 0 0 #51b389;
+    background: none repeat scroll 0 0 #51b389;
 }
 
 /* Top Menu  */
 .primary-menu {
-	background: #52bf90;
+    background: #52bf90;
 
 }
 
@@ -55,19 +55,19 @@ header {
 .optionbox, #indi_header .ui-state-active a:link,
 .list_value, .list_value_wrap, .list_value_wrap a,
 #login-form, #new_passwd_form, #register-form, .facts_value  {
-	background: #d2f4e6;
+    background: #d2f4e6;
 }
 
 /* Alerts */
 .error, .warning, .red {
-	color: #f00;
+    color: #f00;
 }
 
 /* Light Text */
 .secondary-menu li a {
-	color: #fff;
+    color: #fff;
 }
 
 .subheaders {
-	color: #2d2d2d;
+    color: #2d2d2d;
 }

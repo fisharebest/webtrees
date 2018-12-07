@@ -34,34 +34,34 @@ $record     = Media::getInstance(Filter::get('mid', WT_REGEX_XREF), $WT_TREE);
 $controller = new MediaController($record);
 
 if ($controller->record && $controller->record->canShow()) {
-	if ($controller->record->isPendingDeletion()) {
-		if (Auth::isModerator($controller->record->getTree())) {
-			FlashMessages::addMessage(/* I18N: %1$s is “accept”, %2$s is “reject”. These are links. */ I18N::translate(
-				'This media object has been deleted. You should review the deletion and then %1$s or %2$s it.',
-				'<a href="#" onclick="accept_changes(\'' . $controller->record->getXref() . '\');">' . I18N::translateContext('You should review the deletion and then accept or reject it.', 'accept') . '</a>',
-				'<a href="#" onclick="reject_changes(\'' . $controller->record->getXref() . '\');">' . I18N::translateContext('You should review the deletion and then accept or reject it.', 'reject') . '</a>'
-			) . ' ' . FunctionsPrint::helpLink('pending_changes'), 'warning');
-		} elseif (Auth::isEditor($controller->record->getTree())) {
-			FlashMessages::addMessage(I18N::translate('This media object has been deleted. The deletion will need to be reviewed by a moderator.') . ' ' . FunctionsPrint::helpLink('pending_changes'), 'warning');
-		}
-	} elseif ($controller->record->isPendingAddtion()) {
-		if (Auth::isModerator($controller->record->getTree())) {
-			FlashMessages::addMessage(/* I18N: %1$s is “accept”, %2$s is “reject”. These are links. */ I18N::translate(
-				'This media object has been edited. You should review the changes and then %1$s or %2$s them.',
-				'<a href="#" onclick="accept_changes(\'' . $controller->record->getXref() . '\');">' . I18N::translateContext('You should review the changes and then accept or reject them.', 'accept') . '</a>',
-				'<a href="#" onclick="reject_changes(\'' . $controller->record->getXref() . '\');">' . I18N::translateContext('You should review the changes and then accept or reject them.', 'reject') . '</a>'
-			) . ' ' . FunctionsPrint::helpLink('pending_changes'), 'warning');
-		} elseif (Auth::isEditor($controller->record->getTree())) {
-			FlashMessages::addMessage(I18N::translate('This media object has been edited. The changes need to be reviewed by a moderator.') . ' ' . FunctionsPrint::helpLink('pending_changes'), 'warning');
-		}
-	}
-	$controller->pageHeader();
+    if ($controller->record->isPendingDeletion()) {
+        if (Auth::isModerator($controller->record->getTree())) {
+            FlashMessages::addMessage(/* I18N: %1$s is “accept”, %2$s is “reject”. These are links. */ I18N::translate(
+                'This media object has been deleted. You should review the deletion and then %1$s or %2$s it.',
+                '<a href="#" onclick="accept_changes(\'' . $controller->record->getXref() . '\');">' . I18N::translateContext('You should review the deletion and then accept or reject it.', 'accept') . '</a>',
+                '<a href="#" onclick="reject_changes(\'' . $controller->record->getXref() . '\');">' . I18N::translateContext('You should review the deletion and then accept or reject it.', 'reject') . '</a>'
+            ) . ' ' . FunctionsPrint::helpLink('pending_changes'), 'warning');
+        } elseif (Auth::isEditor($controller->record->getTree())) {
+            FlashMessages::addMessage(I18N::translate('This media object has been deleted. The deletion will need to be reviewed by a moderator.') . ' ' . FunctionsPrint::helpLink('pending_changes'), 'warning');
+        }
+    } elseif ($controller->record->isPendingAddtion()) {
+        if (Auth::isModerator($controller->record->getTree())) {
+            FlashMessages::addMessage(/* I18N: %1$s is “accept”, %2$s is “reject”. These are links. */ I18N::translate(
+                'This media object has been edited. You should review the changes and then %1$s or %2$s them.',
+                '<a href="#" onclick="accept_changes(\'' . $controller->record->getXref() . '\');">' . I18N::translateContext('You should review the changes and then accept or reject them.', 'accept') . '</a>',
+                '<a href="#" onclick="reject_changes(\'' . $controller->record->getXref() . '\');">' . I18N::translateContext('You should review the changes and then accept or reject them.', 'reject') . '</a>'
+            ) . ' ' . FunctionsPrint::helpLink('pending_changes'), 'warning');
+        } elseif (Auth::isEditor($controller->record->getTree())) {
+            FlashMessages::addMessage(I18N::translate('This media object has been edited. The changes need to be reviewed by a moderator.') . ' ' . FunctionsPrint::helpLink('pending_changes'), 'warning');
+        }
+    }
+    $controller->pageHeader();
 } else {
-	FlashMessages::addMessage(I18N::translate('This media object does not exist or you do not have permission to view it.'), 'danger');
-	http_response_code(404);
-	$controller->pageHeader();
+    FlashMessages::addMessage(I18N::translate('This media object does not exist or you do not have permission to view it.'), 'danger');
+    http_response_code(404);
+    $controller->pageHeader();
 
-	return;
+    return;
 }
 
 $controller->addInlineJavascript('
@@ -84,111 +84,111 @@ $facts = $controller->getFacts();
 
 ?>
 <div id="media-details">
-	<h2>
-		<?php echo $controller->record->getFullName() ?>
-	</h2>
-	<div id="media-tabs">
-		<ul>
-			<li>
-				<a href="#media-edit">
-					<?php echo I18N::translate('Details') ?>
-				</a>
-			</li>
-			<?php if ($linked_indi): ?>
-			<li>
-				<a href="#linked-individuals">
-					<?php echo I18N::translate('Individuals') ?>
-				</a>
-			</li>
-			<?php endif; ?>
-			<?php if ($linked_fam): ?>
-			<li>
-				<a href="#linked-families">
-					<?php echo I18N::translate('Families') ?>
-				</a>
-			</li>
-			<?php endif; ?>
-			<?php if ($linked_obje): ?>
-			<li>
-				<a href="#linked-media">
-					<?php echo I18N::translate('Media objects') ?>
-				</a>
-			</li>
-			<?php endif; ?>
-			<?php if ($linked_sour): ?>
-			<li>
-				<a href="#linked-sources"><?php echo I18N::translate('Sources') ?></a>
-			</li>
-			<?php endif; ?>
-			<?php if ($linked_note): ?>
-			<li>
-				<a href="#linked-notes"><?php echo I18N::translate('Notes') ?></a>
-			</li>
-			<?php endif; ?>
-		</ul>
+    <h2>
+        <?php echo $controller->record->getFullName() ?>
+    </h2>
+    <div id="media-tabs">
+        <ul>
+            <li>
+                <a href="#media-edit">
+                    <?php echo I18N::translate('Details') ?>
+                </a>
+            </li>
+            <?php if ($linked_indi): ?>
+            <li>
+                <a href="#linked-individuals">
+                    <?php echo I18N::translate('Individuals') ?>
+                </a>
+            </li>
+            <?php endif; ?>
+            <?php if ($linked_fam): ?>
+            <li>
+                <a href="#linked-families">
+                    <?php echo I18N::translate('Families') ?>
+                </a>
+            </li>
+            <?php endif; ?>
+            <?php if ($linked_obje): ?>
+            <li>
+                <a href="#linked-media">
+                    <?php echo I18N::translate('Media objects') ?>
+                </a>
+            </li>
+            <?php endif; ?>
+            <?php if ($linked_sour): ?>
+            <li>
+                <a href="#linked-sources"><?php echo I18N::translate('Sources') ?></a>
+            </li>
+            <?php endif; ?>
+            <?php if ($linked_note): ?>
+            <li>
+                <a href="#linked-notes"><?php echo I18N::translate('Notes') ?></a>
+            </li>
+            <?php endif; ?>
+        </ul>
 
-		<div id="media-edit">
-			<table class="facts_table">
-			<tr>
-				<td style="text-align:center; width:150px;">
-				<?php
-					// When we have a pending edit, $controller->record shows the *old* data.
-					// As a temporary kludge, fetch a "normal" version of the record - which includes pending changes
-					// Perhaps check both, and use RED/BLUE boxes.
-					$tmp = Media::getInstance($controller->record->getXref(), $WT_TREE);
-					echo $tmp->displayImage();
-					if (!$tmp->isExternal()) {
-						if ($tmp->fileExists('main')) {
-							if ($WT_TREE->getPreference('SHOW_MEDIA_DOWNLOAD') >= Auth::accessLevel($WT_TREE)) {
-								echo '<p><a href="' . $tmp->getHtmlUrlDirect('main', true) . '">' . I18N::translate('Download file') . '</a></p>';
-							}
-						} else {
-							echo '<p class="ui-state-error">' . I18N::translate('The file “%s” does not exist.', $tmp->getFilename()) . '</p>';
-						}
-					}
-				?>
-					</td>
-					<td>
-						<table class="facts_table">
-							<?php
-							foreach ($facts as $fact) {
-								FunctionsPrintFacts::printFact($fact, $controller->record);
-							}
-							?>
-						</table>
-					</td>
-				</tr>
-			</table>
-		</div>
+        <div id="media-edit">
+            <table class="facts_table">
+            <tr>
+                <td style="text-align:center; width:150px;">
+                <?php
+                    // When we have a pending edit, $controller->record shows the *old* data.
+                    // As a temporary kludge, fetch a "normal" version of the record - which includes pending changes
+                    // Perhaps check both, and use RED/BLUE boxes.
+                    $tmp = Media::getInstance($controller->record->getXref(), $WT_TREE);
+                    echo $tmp->displayImage();
+                    if (!$tmp->isExternal()) {
+                        if ($tmp->fileExists('main')) {
+                            if ($WT_TREE->getPreference('SHOW_MEDIA_DOWNLOAD') >= Auth::accessLevel($WT_TREE)) {
+                                echo '<p><a href="' . $tmp->getHtmlUrlDirect('main', true) . '">' . I18N::translate('Download file') . '</a></p>';
+                            }
+                        } else {
+                            echo '<p class="ui-state-error">' . I18N::translate('The file “%s” does not exist.', $tmp->getFilename()) . '</p>';
+                        }
+                    }
+                ?>
+                    </td>
+                    <td>
+                        <table class="facts_table">
+                            <?php
+                            foreach ($facts as $fact) {
+                                FunctionsPrintFacts::printFact($fact, $controller->record);
+                            }
+                            ?>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>
 
-		<?php if ($linked_indi): ?>
-			<div id="linked-individuals">
-				<?php echo FunctionsPrintLists::individualTable($linked_indi) ?>
-			</div>
-		<?php endif; ?>
+        <?php if ($linked_indi): ?>
+            <div id="linked-individuals">
+                <?php echo FunctionsPrintLists::individualTable($linked_indi) ?>
+            </div>
+        <?php endif; ?>
 
-		<?php if ($linked_fam): ?>
-			<div id="linked-families">
-				<?php echo FunctionsPrintLists::familyTable($linked_fam) ?>
-			</div>
-		<?php endif; ?>
+        <?php if ($linked_fam): ?>
+            <div id="linked-families">
+                <?php echo FunctionsPrintLists::familyTable($linked_fam) ?>
+            </div>
+        <?php endif; ?>
 
-		<?php if ($linked_obje): ?>
-			<div id="linked-media">
-				<?php echo FunctionsPrintLists::mediaTable($linked_obje) ?>
-			</div>
-		<?php endif; ?>
+        <?php if ($linked_obje): ?>
+            <div id="linked-media">
+                <?php echo FunctionsPrintLists::mediaTable($linked_obje) ?>
+            </div>
+        <?php endif; ?>
 
-		<?php if ($linked_sour): ?>
-			<div id="linked-sources">
-				<?php echo FunctionsPrintLists::sourceTable($linked_sour) ?>
-			</div>
-		<?php endif; ?>
+        <?php if ($linked_sour): ?>
+            <div id="linked-sources">
+                <?php echo FunctionsPrintLists::sourceTable($linked_sour) ?>
+            </div>
+        <?php endif; ?>
 
-		<?php if ($linked_note): ?>
-			<div id="linked-notes">
-				<?php echo FunctionsPrintLists::noteTable($linked_note) ?>
-			</div>
-		<?php endif; ?>
-	</div>
+        <?php if ($linked_note): ?>
+            <div id="linked-notes">
+                <?php echo FunctionsPrintLists::noteTable($linked_note) ?>
+            </div>
+        <?php endif; ?>
+    </div>
 </div>

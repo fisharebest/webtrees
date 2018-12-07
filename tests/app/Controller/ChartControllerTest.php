@@ -19,16 +19,16 @@
  * Test harness for the class ChartController
  */
 class ChartControllerTest extends \PHPUnit_Framework_TestCase {
-	/**
-	 * Prepare the environment for these tests
-	 */
-	public function setUp() {
-	}
+    /**
+     * Prepare the environment for these tests
+     */
+    public function setUp() {
+    }
 
-	/**
-	 * Test that the class exists
-	 */
-	public function testClassExists() {
-		$this->assertTrue(class_exists('\Fisharebest\Webtrees\Controller\ChartController'));
-	}
+    /**
+     * Test that the class exists
+     */
+    public function testClassExists() {
+        $this->assertTrue(class_exists('\Fisharebest\Webtrees\Controller\ChartController'));
+    }
 }

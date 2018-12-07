@@ -22,114 +22,114 @@ use Fisharebest\Webtrees\Theme;
  * The webtrees (default) theme.
  */
 class WebtreesTheme extends AbstractTheme implements ThemeInterface {
-	/**
-	 * Where are our CSS, JS and other assets?
-	 *
-	 * @return string A relative path, such as "themes/foo/"
-	 */
-	public function assetUrl() {
-		return 'themes/webtrees/css-1.7.8/';
-	}
+    /**
+     * Where are our CSS, JS and other assets?
+     *
+     * @return string A relative path, such as "themes/foo/"
+     */
+    public function assetUrl() {
+        return 'themes/webtrees/css-1.7.8/';
+    }
 
-	/**
-	 * Add markup to a flash message.
-	 *
-	 * @param \stdClass $message
-	 *
-	 * @return string
-	 */
-	protected function flashMessageContainer(\stdClass $message) {
-		// This theme uses jQueryUI markup.
-		switch ($message->status) {
-		case 'danger':
-			return '<p class="ui-state-error">' . $message->text . '</p>';
-		default:
-			return '<p class="ui-state-highlight">' . $message->text . '</p>';
-		}
-	}
+    /**
+     * Add markup to a flash message.
+     *
+     * @param \stdClass $message
+     *
+     * @return string
+     */
+    protected function flashMessageContainer(\stdClass $message) {
+        // This theme uses jQueryUI markup.
+        switch ($message->status) {
+        case 'danger':
+            return '<p class="ui-state-error">' . $message->text . '</p>';
+        default:
+            return '<p class="ui-state-highlight">' . $message->text . '</p>';
+        }
+    }
 
-	/**
-	 * Create a search field and submit button for the quick search form in the header.
-	 *
-	 * @return string
-	 */
-	protected function formQuickSearchFields() {
-		return
-			'<input type="search" name="query" size="25" placeholder="' . I18N::translate('Search') . '">' .
-			'<input type="image" class="image" src="' . $this->assetUrl() . 'images/search.png" alt="' . I18N::translate('Search') . '" title="' . I18N::translate('Search') . '">';
-	}
+    /**
+     * Create a search field and submit button for the quick search form in the header.
+     *
+     * @return string
+     */
+    protected function formQuickSearchFields() {
+        return
+            '<input type="search" name="query" size="25" placeholder="' . I18N::translate('Search') . '">' .
+            '<input type="image" class="image" src="' . $this->assetUrl() . 'images/search.png" alt="' . I18N::translate('Search') . '" title="' . I18N::translate('Search') . '">';
+    }
 
-	/**
-	 * Allow themes to add extra scripts to the page footer.
-	 *
-	 * @return string
-	 */
-	public function hookFooterExtraJavascript() {
-		return
-			'<script src="' . WT_JQUERY_COLORBOX_URL . '"></script>' .
-			'<script src="' . WT_JQUERY_WHEELZOOM_URL . '"></script>' .
-			'<script>' .
-			'activate_colorbox();' .
-			'jQuery.extend(jQuery.colorbox.settings, {' .
-			' width:"85%",' .
-			' height:"85%",' .
-			' transition:"none",' .
-			' slideshowStart:"' . I18N::translate('Play') . '",' .
-			' slideshowStop:"' . I18N::translate('Stop') . '",' .
-			' title: function() { return jQuery(this).data("title"); }' .
-			'});' .
-			'</script>';
-	}
+    /**
+     * Allow themes to add extra scripts to the page footer.
+     *
+     * @return string
+     */
+    public function hookFooterExtraJavascript() {
+        return
+            '<script src="' . WT_JQUERY_COLORBOX_URL . '"></script>' .
+            '<script src="' . WT_JQUERY_WHEELZOOM_URL . '"></script>' .
+            '<script>' .
+            'activate_colorbox();' .
+            'jQuery.extend(jQuery.colorbox.settings, {' .
+            ' width:"85%",' .
+            ' height:"85%",' .
+            ' transition:"none",' .
+            ' slideshowStart:"' . I18N::translate('Play') . '",' .
+            ' slideshowStop:"' . I18N::translate('Stop') . '",' .
+            ' title: function() { return jQuery(this).data("title"); }' .
+            '});' .
+            '</script>';
+    }
 
-	/**
-	 * Misecellaneous dimensions, fonts, styles, etc.
-	 *
-	 * @param string $parameter_name
-	 *
-	 * @return string|int|float
-	 */
-	public function parameter($parameter_name) {
-		$parameters = array(
-			'chart-background-f'             => 'e9daf1',
-			'chart-background-m'             => 'b1cff0',
-			'distribution-chart-high-values' => '84beff',
-			'distribution-chart-low-values'  => 'c3dfff',
-		);
+    /**
+     * Misecellaneous dimensions, fonts, styles, etc.
+     *
+     * @param string $parameter_name
+     *
+     * @return string|int|float
+     */
+    public function parameter($parameter_name) {
+        $parameters = array(
+            'chart-background-f'             => 'e9daf1',
+            'chart-background-m'             => 'b1cff0',
+            'distribution-chart-high-values' => '84beff',
+            'distribution-chart-low-values'  => 'c3dfff',
+        );
 
-		if (array_key_exists($parameter_name, $parameters)) {
-			return $parameters[$parameter_name];
-		} else {
-			return parent::parameter($parameter_name);
-		}
-	}
+        if (array_key_exists($parameter_name, $parameters)) {
+            return $parameters[$parameter_name];
+        } else {
+            return parent::parameter($parameter_name);
+        }
+    }
 
-	/**
-	 * A list of CSS files to include for this page.
-	 *
-	 * @return string[]
-	 */
-	protected function stylesheets() {
-		return array(
-			'themes/webtrees/jquery-ui-1.11.2/jquery-ui.css',
-			$this->assetUrl() . 'style.css',
-		);
-	}
+    /**
+     * A list of CSS files to include for this page.
+     *
+     * @return string[]
+     */
+    protected function stylesheets() {
+        return array(
+            'themes/webtrees/jquery-ui-1.11.2/jquery-ui.css',
+            $this->assetUrl() . 'style.css',
+        );
+    }
 
-	/**
-	 * A fixed string to identify this theme, in settings, etc.
-	 *
-	 * @return string
-	 */
-	public function themeId() {
-		return 'webtrees';
-	}
+    /**
+     * A fixed string to identify this theme, in settings, etc.
+     *
+     * @return string
+     */
+    public function themeId() {
+        return 'webtrees';
+    }
 
-	/**
-	 * What is this theme called?
-	 *
-	 * @return string
-	 */
-	public function themeName() {
-		return I18N::translate('webtrees');
-	}
+    /**
+     * What is this theme called?
+     *
+     * @return string
+     */
+    public function themeName() {
+        return I18N::translate('webtrees');
+    }
 }
