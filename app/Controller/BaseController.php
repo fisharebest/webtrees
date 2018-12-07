@@ -39,7 +39,8 @@ class BaseController {
     /**
      * Startup activity
      */
-    public function __construct() {
+    public function __construct()
+    {
     }
 
     /**
@@ -49,7 +50,8 @@ class BaseController {
      *
      * @return $this
      */
-    public function addExternalJavascript($script_name) {
+    public function addExternalJavascript($script_name)
+    {
         $this->external_javascript[$script_name] = true;
 
         return $this;
@@ -65,7 +67,8 @@ class BaseController {
      *
      * @return $this
      */
-    public function addInlineJavascript($script, $priority = self::JS_PRIORITY_NORMAL) {
+    public function addInlineJavascript($script, $priority = self::JS_PRIORITY_NORMAL)
+    {
         $tmp   = &$this->inline_javascript[$priority];
         $tmp[] = $script;
 
@@ -78,7 +81,8 @@ class BaseController {
      *
      * @return string
      */
-    public function getJavascript() {
+    public function getJavascript()
+    {
         $javascript1 = '';
         $javascript2 = '';
         $javascript3 = '';
@@ -120,7 +124,8 @@ class BaseController {
      *
      * @return $this
      */
-    public function pageHeader() {
+    public function pageHeader()
+    {
         // We've displayed the header - display the footer automatically
         register_shutdown_function(array($this, 'pageFooter'));
 
@@ -130,7 +135,8 @@ class BaseController {
     /**
      * Print the page footer, using the theme
      */
-    public function pageFooter() {
+    public function pageFooter()
+    {
         if (WT_DEBUG_SQL) {
             echo Database::getQueryLog();
         }

@@ -30,12 +30,14 @@ use Fisharebest\Webtrees\Tree;
  */
 class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMenuInterface, ModuleConfigInterface {
     /** {@inheritdoc} */
-    public function getTitle() {
+    public function getTitle()
+    {
         return /* I18N: Name of a module. Abbreviation for “Frequently Asked Questions” */ I18N::translate('FAQ');
     }
 
     /** {@inheritdoc} */
-    public function getDescription() {
+    public function getDescription()
+    {
         return /* I18N: Description of the “FAQ” module */ I18N::translate('A list of frequently asked questions and answers.');
     }
 
@@ -45,7 +47,8 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
      *
      * @param string $mod_action
      */
-    public function modAction($mod_action) {
+    public function modAction($mod_action)
+    {
         switch ($mod_action) {
             case 'admin_config':
                 $this->config();
@@ -86,14 +89,16 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
     }
 
     /** {@inheritdoc} */
-    public function getConfigLink() {
+    public function getConfigLink()
+    {
         return 'module.php?mod=' . $this->getName() . '&amp;mod_action=admin_config';
     }
 
     /**
      * Action from the configuration page
      */
-    private function editSave() {
+    private function editSave()
+    {
         if (Filter::checkCsrf()) {
             $block_id = Filter::postInteger('block_id');
             if ($block_id) {
@@ -125,7 +130,8 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
     /**
      * Action from the configuration page
      */
-    private function edit() {
+    private function edit()
+    {
         global $WT_TREE;
 
         $controller = new PageController;
@@ -241,7 +247,8 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
     /**
      * Delete an FAQ.
      */
-    private function delete() {
+    private function delete()
+    {
         $block_id = Filter::getInteger('block_id');
 
         Database::prepare(
@@ -256,7 +263,8 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
     /**
      * Move an FAQ up the list.
      */
-    private function moveup() {
+    private function moveup()
+    {
         $block_id = Filter::getInteger('block_id');
 
         $block_order = Database::prepare(
@@ -294,7 +302,8 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
     /**
      * Move an FAQ down the list.
      */
-    private function movedown() {
+    private function movedown()
+    {
         $block_id = Filter::get('block_id');
 
         $block_order = Database::prepare(
@@ -334,7 +343,8 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
     /**
      * Show a list of FAQs
      */
-    private function show() {
+    private function show()
+    {
         global $controller, $WT_TREE;
 
         $controller = new PageController;
@@ -396,7 +406,8 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
     /**
      * Provide a form to manage the FAQs.
      */
-    private function config() {
+    private function config()
+    {
         global $WT_TREE;
 
         $controller = new PageController;
@@ -509,7 +520,8 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
      *
      * @return int
      */
-    public function defaultMenuOrder() {
+    public function defaultMenuOrder()
+    {
         return 40;
     }
 
@@ -518,7 +530,8 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
      *
      * @return Menu|null
      */
-    public function getMenu() {
+    public function getMenu()
+    {
         global $WT_TREE;
 
         $faqs = Database::prepare(

@@ -28,7 +28,8 @@ class AhnentafelReportModule extends AbstractModule implements ModuleReportInter
      *
      * @return string
      */
-    public function getTitle() {
+    public function getTitle()
+    {
         // This text also appears in the .XML file - update both together
         return /* I18N: Name of a module/report */ I18N::translate('Ancestors');
     }
@@ -38,7 +39,8 @@ class AhnentafelReportModule extends AbstractModule implements ModuleReportInter
      *
      * @return string
      */
-    public function getDescription() {
+    public function getDescription()
+    {
         // This text also appears in the .XML file - update both together
         return /* I18N: Description of the “Ancestors” module */ I18N::translate('A report of an individual’s ancestors, in a narrative style.');
     }
@@ -50,7 +52,8 @@ class AhnentafelReportModule extends AbstractModule implements ModuleReportInter
      *
      * @return int
      */
-    public function defaultAccessLevel() {
+    public function defaultAccessLevel()
+    {
         return Auth::PRIV_PRIVATE;
     }
 
@@ -59,7 +62,8 @@ class AhnentafelReportModule extends AbstractModule implements ModuleReportInter
      *
      * @return Menu
      */
-    public function getReportMenu() {
+    public function getReportMenu()
+    {
         global $controller, $WT_TREE;
 
         return new Menu(

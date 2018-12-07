@@ -28,7 +28,8 @@ class MatrilinealSurnameTradition extends DefaultSurnameTradition implements Sur
      *
      * @return string[] Associative array of GEDCOM name parts (SURN, _MARNM, etc.)
      */
-    public function newChildNames($father_name, $mother_name, $child_sex) {
+    public function newChildNames($father_name, $mother_name, $child_sex)
+    {
         if (preg_match(self::REGEX_SPFX_SURN, $mother_name, $match)) {
             return array_filter(array(
                 'NAME' => $match['NAME'],
@@ -50,7 +51,8 @@ class MatrilinealSurnameTradition extends DefaultSurnameTradition implements Sur
      *
      * @return string[] Associative array of GEDCOM name parts (SURN, _MARNM, etc.)
      */
-    public function newParentNames($child_name, $parent_sex) {
+    public function newParentNames($child_name, $parent_sex)
+    {
         if ($parent_sex === 'F' && preg_match(self::REGEX_SPFX_SURN, $child_name, $match)) {
             return array_filter(array(
                 'NAME' => $match['NAME'],

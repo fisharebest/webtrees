@@ -26,7 +26,8 @@ class BatchUpdateDuplicateLinksPlugin extends BatchUpdateBasePlugin {
      *
      * @return string
      */
-    public function getName() {
+    public function getName()
+    {
         return I18N::translate('Remove duplicate links');
     }
 
@@ -35,7 +36,8 @@ class BatchUpdateDuplicateLinksPlugin extends BatchUpdateBasePlugin {
      *
      * @return string
      */
-    public function getDescription() {
+    public function getDescription()
+    {
         return I18N::translate('A common error is to have multiple links to the same record, for example listing the same child more than once in a family record.');
     }
 
@@ -44,7 +46,8 @@ class BatchUpdateDuplicateLinksPlugin extends BatchUpdateBasePlugin {
      *
      * @return string[]
      */
-    public function getRecordTypesToUpdate() {
+    public function getRecordTypesToUpdate()
+    {
         return array('INDI', 'FAM', 'SOUR', 'REPO', 'NOTE', 'OBJE');
     }
 
@@ -56,7 +59,8 @@ class BatchUpdateDuplicateLinksPlugin extends BatchUpdateBasePlugin {
      *
      * @return bool
      */
-    public function doesRecordNeedUpdate($xref, $gedrec) {
+    public function doesRecordNeedUpdate($xref, $gedrec)
+    {
         return
             preg_match('/(\n1.*@.+@.*(?:(?:\n[2-9].*)*))(?:\n1.*(?:\n[2-9].*)*)*\1/', $gedrec) ||
             preg_match('/(\n2.*@.+@.*(?:(?:\n[3-9].*)*))(?:\n2.*(?:\n[3-9].*)*)*\1/', $gedrec) ||
@@ -71,7 +75,8 @@ class BatchUpdateDuplicateLinksPlugin extends BatchUpdateBasePlugin {
      *
      * @return string
      */
-    public function updateRecord($xref, $gedrec) {
+    public function updateRecord($xref, $gedrec)
+    {
         return preg_replace(
             array(
                 '/(\n1.*@.+@.*(?:(?:\n[2-9].*)*))((?:\n1.*(?:\n[2-9].*)*)*\1)/',

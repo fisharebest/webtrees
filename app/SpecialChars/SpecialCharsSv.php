@@ -27,7 +27,8 @@ class SpecialCharsSv extends AbstractSpecialChars {
      *
      * @return string[]
      */
-    public function upper() {
+    public function upper()
+    {
         return array(
             'Ä', 'Å', 'É', 'Ö', 'Á', 'Ë', 'Ü',
         );
@@ -38,7 +39,8 @@ class SpecialCharsSv extends AbstractSpecialChars {
      *
      * @return string[]
      */
-    public function lower() {
+    public function lower()
+    {
         return array(
             'ä', 'å', 'é', 'ö', 'á', 'ë', 'ü',
         );

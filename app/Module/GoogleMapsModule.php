@@ -68,12 +68,14 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
     private $treesize;
 
     /** {@inheritdoc} */
-    public function getTitle() {
+    public function getTitle()
+    {
         return /* I18N: The name of a module. Google Maps™ is a trademark. Do not translate it? http://en.wikipedia.org/wiki/Google_maps */ I18N::translate('Google Maps™');
     }
 
     /** {@inheritdoc} */
-    public function getDescription() {
+    public function getDescription()
+    {
         return /* I18N: Description of the “Google Maps™” module */ I18N::translate('Show the location of places and events using the Google Maps™ mapping service.');
     }
 
@@ -83,7 +85,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
      *
      * @param string $mod_action
      */
-    public function modAction($mod_action) {
+    public function modAction($mod_action)
+    {
         Database::updateSchema(self::SCHEMA_MIGRATION_PREFIX, self::SCHEMA_SETTING_NAME, self::SCHEMA_TARGET_VERSION);
 
         switch ($mod_action) {
@@ -115,19 +118,22 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
     }
 
     /** {@inheritdoc} */
-    public function getConfigLink() {
+    public function getConfigLink()
+    {
         Database::updateSchema(self::SCHEMA_MIGRATION_PREFIX, self::SCHEMA_SETTING_NAME, self::SCHEMA_TARGET_VERSION);
 
         return 'module.php?mod=' . $this->getName() . '&amp;mod_action=admin_config';
     }
 
     /** {@inheritdoc} */
-    public function defaultTabOrder() {
+    public function defaultTabOrder()
+    {
         return 80;
     }
 
     /** {@inheritdoc} */
-    public function getPreLoadContent() {
+    public function getPreLoadContent()
+    {
         global $controller;
 
         $controller->addInlineJavascript("
@@ -147,12 +153,14 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
     }
 
     /** {@inheritdoc} */
-    public function canLoadAjax() {
+    public function canLoadAjax()
+    {
         return true;
     }
 
     /** {@inheritdoc} */
-    public function getTabContent() {
+    public function getTabContent()
+    {
         global $controller;
 
         Database::updateSchema(self::SCHEMA_MIGRATION_PREFIX, self::SCHEMA_SETTING_NAME, self::SCHEMA_TARGET_VERSION);
@@ -189,12 +197,14 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
     }
 
     /** {@inheritdoc} */
-    public function hasTabContent() {
+    public function hasTabContent()
+    {
         return Module::getModuleByName('googlemap') || Auth::isAdmin();
     }
 
     /** {@inheritdoc} */
-    public function isGrayedOut() {
+    public function isGrayedOut()
+    {
         return false;
     }
 
@@ -205,7 +215,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
      *
      * @return Menu
      */
-    public function getChartMenu(Individual $individual) {
+    public function getChartMenu(Individual $individual)
+    {
         return new Menu(
             I18N::translate('Pedigree map'),
             'module.php?mod=googlemap&amp;mod_action=pedigree_map&amp;rootid=' . $individual->getXref() . '&amp;ged=' . $individual->getTree()->getNameUrl(),
@@ -221,14 +232,16 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
      *
      * @return Menu
      */
-    public function getBoxChartMenu(Individual $individual) {
+    public function getBoxChartMenu(Individual $individual)
+    {
         return $this->getChartMenu($individual);
     }
 
     /**
      * A form to edit the module configuration.
      */
-    private function config() {
+    private function config()
+    {
         $controller = new PageController;
         $controller
             ->restrictAccess(Auth::isAdmin())
@@ -480,7 +493,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
      *
      * @return string
      */
-    private function googleMapsScript() {
+    private function googleMapsScript()
+    {
         $key = $this->getSetting('GM_API_KEY');
 
         return 'https://maps.googleapis.com/maps/api/js?v=3&amp;key=' . $key . '&amp;language=' . WT_LOCALE;
@@ -489,7 +503,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
     /**
      * Select a flag.
      */
-    private function flags() {
+    private function flags()
+    {
         global $WT_TREE;
 
         $controller = new SimpleController;
@@ -691,7 +706,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
     /**
      * Display a map showing the origins of ones ancestors.
      */
-    private function pedigreeMap() {
+    private function pedigreeMap()
+    {
         global $controller, $WT_TREE;
 
         $MAX_PEDIGREE_GENERATIONS = $WT_TREE->getPreference('MAX_PEDIGREE_GENERATIONS');
@@ -867,7 +883,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
      *
      * @return string
      */
-    private function pedigreeMapJavascript() {
+    private function pedigreeMapJavascript()
+    {
 
         $js = '
 		// this variable will collect the html which will eventually be placed in the side bar
@@ -1277,7 +1294,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
     /**
      * Check places for missing data, etc.
      */
-    private function adminPlaceCheck() {
+    private function adminPlaceCheck()
+    {
         global $WT_TREE;
 
         $gedcom_id = Filter::get('gedcom_id', null, $WT_TREE->getTreeId());
@@ -1566,7 +1584,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
      *
      * @return bool
      */
-    private function checkMapData(Individual $individual) {
+    private function checkMapData(Individual $individual)
+    {
         $statement = Database::prepare(
             "SELECT COUNT(*) FROM `##placelinks` WHERE pl_gid = :xref AND pl_file = :tree_id"
         );
@@ -1598,7 +1617,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
      *
      * @return string[]
      */
-    private function removePrefixFromPlaceName($prefix_list, $place, $placelist) {
+    private function removePrefixFromPlaceName($prefix_list, $place, $placelist)
+    {
         if ($prefix_list) {
             foreach (explode(';', $prefix_list) as $prefix) {
                 if ($prefix && substr($place, 0, strlen($prefix) + 1) == $prefix . ' ') {
@@ -1619,7 +1639,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
      *
      * @return string[]
      */
-    private function removeSuffixFromPlaceName($suffix_list, $place, $placelist) {
+    private function removeSuffixFromPlaceName($suffix_list, $place, $placelist)
+    {
         if ($suffix_list) {
             foreach (explode(';', $suffix_list) as $postfix) {
                 if ($postfix && substr($place, -strlen($postfix) - 1) == ' ' . $postfix) {
@@ -1641,7 +1662,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
      *
      * @return string[]
      */
-    private function removePrefixAndSuffixFromPlaceName($prefix_list, $suffix_list, $place, $placelist) {
+    private function removePrefixAndSuffixFromPlaceName($prefix_list, $suffix_list, $place, $placelist)
+    {
         if ($prefix_list && $suffix_list) {
             foreach (explode(';', $prefix_list) as $prefix) {
                 foreach (explode(';', $suffix_list) as $postfix) {
@@ -1663,7 +1685,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
      *
      * @return string[]
      */
-    private function createPossiblePlaceNames($placename, $level) {
+    private function createPossiblePlaceNames($placename, $level)
+    {
         $retlist = array();
         if ($level <= 9) {
             $retlist = $this->removePrefixAndSuffixFromPlaceName($this->getSetting('GM_PREFIX_' . $level), $this->getSetting('GM_POSTFIX_' . $level), $placename, $retlist); // Remove both
@@ -1682,7 +1705,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
      *
      * @return null|\stdClass
      */
-    private function getLatitudeAndLongitudeFromPlaceLocation($place) {
+    private function getLatitudeAndLongitudeFromPlaceLocation($place)
+    {
         $parent     = explode(',', $place);
         $parent     = array_reverse($parent);
         $place_id   = 0;
@@ -1720,7 +1744,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
      *
      * @return array
      */
-    private function getPlaceData(Fact $fact) {
+    private function getPlaceData(Fact $fact)
+    {
         $result = array();
 
         $has_latitude  = preg_match('/\n4 LATI (.+)/', $fact->getGedcom(), $match1);
@@ -1778,7 +1803,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
      *
      * @param Individual $indi
      */
-    private function buildIndividualMap(Individual $indi) {
+    private function buildIndividualMap(Individual $indi)
+    {
         $GM_MAX_ZOOM = $this->getSetting('GM_MAX_ZOOM');
         $facts       = $indi->getFacts();
         foreach ($indi->getSpouseFamilies() as $family) {
@@ -2127,7 +2153,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
      *
      * @return int
      */
-    private function getPlaceLocationId($place) {
+    private function getPlaceLocationId($place)
+    {
         $par      = explode(',', strip_tags($place));
         $par      = array_reverse($par);
         $place_id = 0;
@@ -2167,7 +2194,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
      *
      * @return int
      */
-    private function getPlaceId($place) {
+    private function getPlaceId($place)
+    {
         global $WT_TREE;
 
         $par      = explode(',', $place);
@@ -2207,7 +2235,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
      *
      * @return int
      */
-    private function setPlaceIdMap($level, $parent) {
+    private function setPlaceIdMap($level, $parent)
+    {
         $fullplace = '';
         if ($level == 0) {
             return 0;
@@ -2229,7 +2258,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
      *
      * @return int
      */
-    private function setLevelMap($level, $parent) {
+    private function setLevelMap($level, $parent)
+    {
         $fullplace = '';
         if ($level == 0) {
             return 0;
@@ -2250,7 +2280,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
     /**
      * Called by placelist.php
      */
-    public function createMap() {
+    public function createMap()
+    {
         global $level, $levelm, $plzoom, $WT_TREE;
 
         Database::updateSchema(self::SCHEMA_MIGRATION_PREFIX, self::SCHEMA_SETTING_NAME, self::SCHEMA_TARGET_VERSION);
@@ -2360,7 +2391,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
      * @param int      $level
      * @param string[] $parent
      */
-    private function printHowManyPeople($level, $parent) {
+    private function printHowManyPeople($level, $parent)
+    {
         global $WT_TREE;
 
         $stats = new Stats($WT_TREE);
@@ -2391,7 +2423,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
      * @param int      $levelm
      * @param string   $linklevels
      */
-    private function printGoogleMapMarkers($place2, $level, $parent, $levelm, $linklevels) {
+    private function printGoogleMapMarkers($place2, $level, $parent, $levelm, $linklevels)
+    {
         echo 'var icon_url = null;';
         if (!$place2['lati'] || !$place2['long']) {
             echo 'var icon_url ="' . WT_STATIC_URL . WT_MODULES_DIR . 'googlemap/images/marker_yellow.png";';
@@ -2468,7 +2501,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
      * @param string   $linklevels
      * @param string[] $place_names
      */
-    public function mapScripts($numfound, $level, $parent, $linklevels, $place_names) {
+    public function mapScripts($numfound, $level, $parent, $linklevels, $place_names)
+    {
         global $plzoom, $controller;
 
         $controller->addInlineJavascript('
@@ -2644,7 +2678,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
      *
      * @return string[]
      */
-    private function placeIdToHierarchy($id) {
+    private function placeIdToHierarchy($id)
+    {
         $statement = Database::prepare("SELECT pl_parent_id, pl_place FROM `##placelocation` WHERE pl_id=?");
         $arr       = array();
         while ($id != 0) {
@@ -2661,7 +2696,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
      *
      * @return int
      */
-    private function getHighestIndex() {
+    private function getHighestIndex()
+    {
         return (int) Database::prepare("SELECT MAX(pl_id) FROM `##placelocation`")->fetchOne();
     }
 
@@ -2670,7 +2706,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
      *
      * @return int
      */
-    private function getHighestLevel() {
+    private function getHighestLevel()
+    {
         return (int) Database::prepare("SELECT MAX(pl_level) FROM `##placelocation`")->fetchOne();
     }
 
@@ -2682,7 +2719,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
      *
      * @return array[]
      */
-    private function getPlaceListLocation($parent_id, $inactive = false) {
+    private function getPlaceListLocation($parent_id, $inactive = false)
+    {
         if ($inactive) {
             $rows = Database::prepare(
                     "SELECT pl_id, pl_place, pl_lati, pl_long, pl_zoom, pl_icon" .
@@ -2726,7 +2764,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
      *
      * @param int $parent_id
      */
-    private function outputLevel($parent_id) {
+    private function outputLevel($parent_id)
+    {
         $tmp      = $this->placeIdToHierarchy($parent_id);
         $maxLevel = $this->getHighestLevel();
         if ($maxLevel > 8) {
@@ -2758,7 +2797,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
      *
      * @return string[]
      */
-    private function findFiles($path) {
+    private function findFiles($path)
+    {
         $placefiles = array();
 
         try {
@@ -2780,7 +2820,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
     /**
      * Edit places.
      */
-    private function placesEdit() {
+    private function placesEdit()
+    {
         $GM_MAX_ZOOM = $this->getSetting('GM_MAX_ZOOM');
 
         $action     = Filter::post('action', null, Filter::get('action'));
@@ -3416,7 +3457,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
     /**
      * Places administration.
      */
-    private function adminPlaces() {
+    private function adminPlaces()
+    {
         global $WT_TREE;
 
         $action       = Filter::get('action');
@@ -4091,7 +4133,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
     /**
      * Generate the streetview window.
      */
-    private function wtStreetView() {
+    private function wtStreetView()
+    {
         header('Content-type: text/html; charset=UTF-8');
 
         ?>

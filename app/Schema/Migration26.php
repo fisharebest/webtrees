@@ -24,7 +24,8 @@ class Migration26 implements MigrationInterface {
     /**
      * Upgrade to to the next version
      */
-    public function upgrade() {
+    public function upgrade()
+    {
         // Earlier versions of webtrees put quote marks round soundex codes.
         // These are harmless, but clean them up for consistency.
         Database::exec(

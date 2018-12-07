@@ -64,7 +64,8 @@ class FunctionsEdit {
      *
      * @return string
      */
-    public static function selectEditControl($name, $values, $empty, $selected, $extra = '') {
+    public static function selectEditControl($name, $values, $empty, $selected, $extra = '')
+    {
         if (is_null($empty)) {
             $html = '';
         } else {
@@ -104,7 +105,8 @@ class FunctionsEdit {
      *
      * @return string
      */
-    public static function radioButtons($name, $values, $selected, $extra = '') {
+    public static function radioButtons($name, $values, $selected, $extra = '')
+    {
         $html = '';
         foreach ($values as $key => $value) {
             $html .=
@@ -129,7 +131,8 @@ class FunctionsEdit {
      *
      * @return string
      */
-    public static function editFieldYesNo($name, $selected = false, $extra = '') {
+    public static function editFieldYesNo($name, $selected = false, $extra = '')
+    {
         return self::radioButtons(
             $name, array(I18N::translate('no'), I18N::translate('yes')), $selected, $extra
         );
@@ -144,7 +147,8 @@ class FunctionsEdit {
      *
      * @return string
      */
-    public static function checkbox($name, $is_checked = false, $extra = '') {
+    public static function checkbox($name, $is_checked = false, $extra = '')
+    {
         return '<input type="checkbox" name="' . $name . '" value="1" ' . ($is_checked ? 'checked ' : '') . $extra . '>';
     }
 
@@ -160,7 +164,8 @@ class FunctionsEdit {
      *
      * @return string
      */
-    public static function twoStateCheckbox($name, $is_checked = 0, $extra = '') {
+    public static function twoStateCheckbox($name, $is_checked = 0, $extra = '')
+    {
         return
             '<input type="hidden" id="' . $name . '" name="' . $name . '" value="' . ($is_checked ? 1 : 0) . '">' .
             '<input type="checkbox" name="' . $name . '-GUI-ONLY" value="1"' .
@@ -176,7 +181,8 @@ class FunctionsEdit {
      *
      * @return string
      */
-    public static function editLanguageCheckboxes($parameter_name, $accepted_languages) {
+    public static function editLanguageCheckboxes($parameter_name, $accepted_languages)
+    {
         $html = '';
         foreach (I18N::activeLocales() as $locale) {
             $html .= '<div class="checkbox">';
@@ -200,7 +206,8 @@ class FunctionsEdit {
      *
      * @return string
      */
-    public static function editFieldAccessLevel($name, $selected = '', $extra = '') {
+    public static function editFieldAccessLevel($name, $selected = '', $extra = '')
+    {
         $ACCESS_LEVEL = array(
             Auth::PRIV_PRIVATE => I18N::translate('Show to visitors'),
             Auth::PRIV_USER    => I18N::translate('Show to members'),
@@ -220,7 +227,8 @@ class FunctionsEdit {
      *
      * @return string
      */
-    public static function editFieldRestriction($name, $selected = '', $extra = '') {
+    public static function editFieldRestriction($name, $selected = '', $extra = '')
+    {
         $RESN = array(
             ''             => '',
             'none'         => I18N::translate('Show to visitors'), // Not valid GEDCOM, but very useful
@@ -241,7 +249,8 @@ class FunctionsEdit {
      *
      * @return string
      */
-    public static function editFieldContact($name, $selected = '', $extra = '') {
+    public static function editFieldContact($name, $selected = '', $extra = '')
+    {
         // Different ways to contact the users
         $CONTACT_METHODS = array(
             'messaging'  => I18N::translate('Internal messaging'),
@@ -263,7 +272,8 @@ class FunctionsEdit {
      *
      * @return string
      */
-    public static function editFieldLanguage($name, $selected = '', $extra = '') {
+    public static function editFieldLanguage($name, $selected = '', $extra = '')
+    {
         $languages = array();
         foreach (I18N::activeLocales() as $locale) {
             $languages[$locale->languageTag()] = $locale->endonym();
@@ -283,7 +293,8 @@ class FunctionsEdit {
      *
      * @return string
      */
-    public static function editFieldInteger($name, $selected = '', $min, $max, $extra = '') {
+    public static function editFieldInteger($name, $selected = '', $min, $max, $extra = '')
+    {
         $array = array();
         for ($i = $min; $i <= $max; ++$i) {
             $array[$i] = I18N::number($i);
@@ -301,7 +312,8 @@ class FunctionsEdit {
      *
      * @return string
      */
-    public static function editFieldUsername($name, $selected = '', $extra = '') {
+    public static function editFieldUsername($name, $selected = '', $extra = '')
+    {
         $users = array();
         foreach (User::all() as $user) {
             $users[$user->getUserName()] = $user->getRealName() . ' - ' . $user->getUserName();
@@ -324,7 +336,8 @@ class FunctionsEdit {
      *
      * @return string
      */
-    public static function editFieldAdoption($name, $selected = '', $extra = '', Individual $individual = null) {
+    public static function editFieldAdoption($name, $selected = '', $extra = '', Individual $individual = null)
+    {
         return self::selectEditControl($name, GedcomCodeAdop::getValues($individual), null, $selected, $extra);
     }
 
@@ -338,7 +351,8 @@ class FunctionsEdit {
      *
      * @return string
      */
-    public static function editFieldPedigree($name, $selected = '', $extra = '', Individual $individual = null) {
+    public static function editFieldPedigree($name, $selected = '', $extra = '', Individual $individual = null)
+    {
         return self::selectEditControl($name, GedcomCodePedi::getValues($individual), '', $selected, $extra);
     }
 
@@ -352,7 +366,8 @@ class FunctionsEdit {
      *
      * @return string
      */
-    public static function editFieldNameType($name, $selected = '', $extra = '', Individual $individual = null) {
+    public static function editFieldNameType($name, $selected = '', $extra = '', Individual $individual = null)
+    {
         return self::selectEditControl($name, GedcomCodeName::getValues($individual), '', $selected, $extra);
     }
 
@@ -365,7 +380,8 @@ class FunctionsEdit {
      *
      * @return string
      */
-    public static function editFieldRelationship($name, $selected = '', $extra = '') {
+    public static function editFieldRelationship($name, $selected = '', $extra = '')
+    {
         $rela_codes = GedcomCodeRela::getValues();
         // The user is allowed to specify values that aren't in the list.
         if (!array_key_exists($selected, $rela_codes)) {
@@ -383,7 +399,8 @@ class FunctionsEdit {
      *
      * @return string
      */
-    public static function removeLinks($gedrec, $xref) {
+    public static function removeLinks($gedrec, $xref)
+    {
         $gedrec = preg_replace('/\n1 ' . WT_REGEX_TAG . ' @' . $xref . '@(\n[2-9].*)*/', '', $gedrec);
         $gedrec = preg_replace('/\n2 ' . WT_REGEX_TAG . ' @' . $xref . '@(\n[3-9].*)*/', '', $gedrec);
         $gedrec = preg_replace('/\n3 ' . WT_REGEX_TAG . ' @' . $xref . '@(\n[4-9].*)*/', '', $gedrec);
@@ -400,7 +417,8 @@ class FunctionsEdit {
      *
      * @return string
      */
-    public static function printCalendarPopup($id) {
+    public static function printCalendarPopup($id)
+    {
         return
             ' <a href="#" onclick="cal_toggleDate(\'caldiv' . $id . '\', \'' . $id . '\'); return false;" class="icon-button_calendar" title="' . I18N::translate('Select a date') . '"></a>' .
             '<div id="caldiv' . $id . '" style="position:absolute;visibility:hidden;background-color:white;z-index:1000;"></div>';
@@ -413,7 +431,8 @@ class FunctionsEdit {
      *
      * @return string
      */
-    public static function printAddNewMediaLink($element_id) {
+    public static function printAddNewMediaLink($element_id)
+    {
         return '<a href="#" onclick="pastefield=document.getElementById(\'' . $element_id . '\'); window.open(\'addmedia.php?action=showmediaform\', \'_blank\', edit_window_specs); return false;" class="icon-button_addmedia" title="' . I18N::translate('Create a media object') . '"></a>';
     }
 
@@ -424,7 +443,8 @@ class FunctionsEdit {
      *
      * @return string
      */
-    public static function printAddNewRepositoryLink($element_id) {
+    public static function printAddNewRepositoryLink($element_id)
+    {
         return '<a href="#" onclick="addnewrepository(document.getElementById(\'' . $element_id . '\')); return false;" class="icon-button_addrepository" title="' . I18N::translate('Create a repository') . '"></a>';
     }
 
@@ -435,7 +455,8 @@ class FunctionsEdit {
      *
      * @return string
      */
-    public static function printAddNewNoteLink($element_id) {
+    public static function printAddNewNoteLink($element_id)
+    {
         return '<a href="#" onclick="addnewnote(document.getElementById(\'' . $element_id . '\')); return false;" class="icon-button_addnote" title="' . I18N::translate('Create a shared note') . '"></a>';
     }
 
@@ -446,7 +467,8 @@ class FunctionsEdit {
      *
      * @return string
      */
-    public static function printEditNoteLink($note_id) {
+    public static function printEditNoteLink($note_id)
+    {
         return '<a href="#" onclick="edit_note(\'' . $note_id . '\'); return false;" class="icon-button_note" title="' . I18N::translate('Edit the shared note') . '"></a>';
     }
 
@@ -457,7 +479,8 @@ class FunctionsEdit {
      *
      * @return string
      */
-    public static function printAddNewSourceLink($element_id) {
+    public static function printAddNewSourceLink($element_id)
+    {
         return '<a href="#" onclick="addnewsource(document.getElementById(\'' . $element_id . '\')); return false;" class="icon-button_addsource" title="' . I18N::translate('Create a source') . '"></a>';
     }
 
@@ -480,7 +503,8 @@ class FunctionsEdit {
      *
      * @return string
      */
-    public static function addSimpleTag($tag, $upperlevel = '', $label = '', $extra = null, Individual $person = null) {
+    public static function addSimpleTag($tag, $upperlevel = '', $label = '', $extra = null, Individual $person = null)
+    {
         global $tags, $main_fact, $xref, $bdm, $action, $WT_TREE;
 
         // Keep track of SOUR fields, so we can reference them in subsequent PAGE fields.
@@ -964,7 +988,8 @@ class FunctionsEdit {
      * @param string $locale - Sort the censuses for this locale
      * @param string $xref   - The individual for whom we are adding a census
      */
-    public static function censusDateSelector($locale, $xref) {
+    public static function censusDateSelector($locale, $xref)
+    {
         global $controller;
 
         // Show more likely census details at the top of the list.
@@ -1049,7 +1074,8 @@ class FunctionsEdit {
      * @param int $level
      * @param string $parent_tag
      */
-    public static function printAddLayer($tag, $level = 2, $parent_tag = '') {
+    public static function printAddLayer($tag, $level = 2, $parent_tag = '')
+    {
         global $WT_TREE;
 
         switch ($tag) {
@@ -1152,7 +1178,8 @@ class FunctionsEdit {
      *
      * @param string $fact
      */
-    public static function addSimpleTags($fact) {
+    public static function addSimpleTags($fact)
+    {
         global $WT_TREE;
 
         // For new individuals, these facts default to "Y"
@@ -1185,7 +1212,8 @@ class FunctionsEdit {
      *
      * @return string
      */
-    public static function addNewName() {
+    public static function addNewName()
+    {
         global $WT_TREE;
 
         $gedrec = "\n1 NAME " . Filter::post('NAME');
@@ -1217,7 +1245,8 @@ class FunctionsEdit {
      *
      * @return string
      */
-    public static function addNewSex() {
+    public static function addNewSex()
+    {
         switch (Filter::post('SEX', '[MF]', 'U')) {
             case 'M':
                 return "\n1 SEX M";
@@ -1235,7 +1264,8 @@ class FunctionsEdit {
      *
      * @return string
      */
-    public static function addNewFact($fact) {
+    public static function addNewFact($fact)
+    {
         global $WT_TREE;
 
         $FACT = Filter::post($fact);
@@ -1305,7 +1335,8 @@ class FunctionsEdit {
      * - $islinkRest[] - an array of 1 or 0 values to indicate when the text is a link element
      * - $textRest[] - an array of the text data for each line
      */
-    public static function splitSource() {
+    public static function splitSource()
+    {
         global $glevels, $tag, $islink, $text;
         global $glevelsSOUR, $tagSOUR, $islinkSOUR, $textSOUR;
         global $glevelsRest, $tagRest, $islinkRest, $textRest;
@@ -1363,7 +1394,8 @@ class FunctionsEdit {
      *
      * @return string
      */
-    public static function updateSource($inputRec, $levelOverride = 'no') {
+    public static function updateSource($inputRec, $levelOverride = 'no')
+    {
         global $glevels, $tag, $islink, $text;
         global $glevelsSOUR, $tagSOUR, $islinkSOUR, $textSOUR;
 
@@ -1403,7 +1435,8 @@ class FunctionsEdit {
      *
      * @return string
      */
-    public static function updateRest($inputRec, $levelOverride = 'no') {
+    public static function updateRest($inputRec, $levelOverride = 'no')
+    {
         global $glevels, $tag, $islink, $text;
         global $glevelsRest, $tagRest, $islinkRest, $textRest;
 
@@ -1458,7 +1491,8 @@ class FunctionsEdit {
      *
      * @return string The updated gedcom record
      */
-    public static function handleUpdates($newged, $levelOverride = 'no') {
+    public static function handleUpdates($newged, $levelOverride = 'no')
+    {
         global $glevels, $islink, $tag, $uploaded_files, $text;
 
         if ($levelOverride === 'no' || count($glevels) === 0) {
@@ -1532,7 +1566,8 @@ class FunctionsEdit {
      *
      * @param string $fact the new fact we are adding
      */
-    public static function createAddForm($fact) {
+    public static function createAddForm($fact)
+    {
         global $tags, $WT_TREE;
 
         $tags = array();
@@ -1576,7 +1611,8 @@ class FunctionsEdit {
      *
      * @return string
      */
-    public static function createEditForm(Fact $fact) {
+    public static function createEditForm(Fact $fact)
+    {
         global $tags;
 
         $record = $fact->getParent();
@@ -1720,7 +1756,8 @@ class FunctionsEdit {
      * @param string $level1tag the type of the level 1 gedcom record
      * @param bool $add_date
      */
-    public static function insertMissingSubtags($level1tag, $add_date = false) {
+    public static function insertMissingSubtags($level1tag, $add_date = false)
+    {
         global $tags, $WT_TREE;
 
         // handle  MARRiage TYPE

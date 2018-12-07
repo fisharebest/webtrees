@@ -37,7 +37,8 @@ class ColorsTheme extends CloudsTheme implements ThemeInterface {
      *
      * @return string A relative path, such as "themes/foo/"
      */
-    public function assetUrl() {
+    public function assetUrl()
+    {
         return 'themes/colors/css-1.7.8/';
     }
 
@@ -46,7 +47,8 @@ class ColorsTheme extends CloudsTheme implements ThemeInterface {
      *
      * @return string
      */
-    protected function formatSecondaryMenu() {
+    protected function formatSecondaryMenu()
+    {
         return
             '<ul class="secondary-menu">' .
             implode('', $this->secondaryMenu()) .
@@ -61,7 +63,8 @@ class ColorsTheme extends CloudsTheme implements ThemeInterface {
      *
      * @return string
      */
-    protected function headerContent() {
+    protected function headerContent()
+    {
         return
             //$this->accessibilityLinks() .
             $this->formatTreeTitle() .
@@ -71,7 +74,8 @@ class ColorsTheme extends CloudsTheme implements ThemeInterface {
     /**
      * Create resources for the colors theme.
      */
-    public function hookAfterInit() {
+    public function hookAfterInit()
+    {
         $this->palettes = array(
             'aquamarine'       => /* I18N: The name of a colour-scheme */ I18N::translate('Aqua Marine'),
             'ash'              => /* I18N: The name of a colour-scheme */ I18N::translate('Ash'),
@@ -125,7 +129,8 @@ class ColorsTheme extends CloudsTheme implements ThemeInterface {
      *
      * @return Menu[]
      */
-    protected function secondaryMenu() {
+    protected function secondaryMenu()
+    {
         return array_filter(array(
             $this->menuPendingChanges(),
             $this->menuMyPages(),
@@ -143,7 +148,8 @@ class ColorsTheme extends CloudsTheme implements ThemeInterface {
      *
      * @return Menu
      */
-    protected function menuPalette() {
+    protected function menuPalette()
+    {
         if ($this->tree && Site::getPreference('ALLOW_USER_THEMES') && $this->tree->getPreference('ALLOW_THEME_DROPDOWN')) {
             $menu = new Menu(/* I18N: A colour scheme */
                 I18N::translate('Palette'), '#', 'menu-color');
@@ -170,7 +176,8 @@ class ColorsTheme extends CloudsTheme implements ThemeInterface {
      *
      * @return string[]
      */
-    protected function stylesheets() {
+    protected function stylesheets()
+    {
         return array(
             'themes/colors/jquery-ui-1.11.2/jquery-ui.css',
             $this->assetUrl() . 'style.css',
@@ -183,7 +190,8 @@ class ColorsTheme extends CloudsTheme implements ThemeInterface {
      *
      * @return string
      */
-    public function themeId() {
+    public function themeId()
+    {
         return 'colors';
     }
 
@@ -192,7 +200,8 @@ class ColorsTheme extends CloudsTheme implements ThemeInterface {
      *
      * @return string
      */
-    public function themeName() {
+    public function themeName()
+    {
         return /* I18N: Name of a theme. */ I18N::translate('colors');
     }
 }

@@ -35,7 +35,8 @@ class Log {
      * @param string    $log_type
      * @param Tree|null $tree
      */
-    private static function addLog($message, $log_type, Tree $tree = null) {
+    private static function addLog($message, $log_type, Tree $tree = null)
+    {
         global $WT_TREE;
 
         if (!$tree) {
@@ -58,7 +59,8 @@ class Log {
      *
      * @param string $message
      */
-    public static function addAuthenticationLog($message) {
+    public static function addAuthenticationLog($message)
+    {
         self::addLog($message, self::TYPE_AUTHENTICATION);
     }
 
@@ -68,7 +70,8 @@ class Log {
      * @param string       $message
      * @param Tree|null $tree
      */
-    public static function addConfigurationLog($message, Tree $tree = null) {
+    public static function addConfigurationLog($message, Tree $tree = null)
+    {
         self::addLog($message, self::TYPE_CONFIGURATION, $tree);
     }
 
@@ -77,7 +80,8 @@ class Log {
      *
      * @param string $message
      */
-    public static function addDebugLog($message) {
+    public static function addDebugLog($message)
+    {
         self::addLog($message, self::TYPE_DEBUG);
     }
 
@@ -86,7 +90,8 @@ class Log {
      *
      * @param string $message
      */
-    public static function addEditLog($message) {
+    public static function addEditLog($message)
+    {
         self::addLog($message, self::TYPE_EDIT);
     }
 
@@ -95,7 +100,8 @@ class Log {
      *
      * @param string $message
      */
-    public static function addErrorLog($message) {
+    public static function addErrorLog($message)
+    {
         self::addLog($message, self::TYPE_ERROR);
     }
 
@@ -104,7 +110,8 @@ class Log {
      *
      * @param string $message
      */
-    public static function addMediaLog($message) {
+    public static function addMediaLog($message)
+    {
         self::addLog($message, self::TYPE_MEDIA);
     }
 
@@ -117,7 +124,8 @@ class Log {
      * @param string    $message
      * @param Tree[] $trees Which trees were searched
      */
-    public static function addSearchLog($message, array $trees) {
+    public static function addSearchLog($message, array $trees)
+    {
         foreach ($trees as $tree) {
             self::addLog($message, self::TYPE_SEARCH, $tree);
         }

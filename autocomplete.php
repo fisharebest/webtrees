@@ -506,7 +506,8 @@ switch ($type) {
  *
  * @return \stdClass[]
  */
-function get_FAM_rows(Tree $tree, $term) {
+function get_FAM_rows(Tree $tree, $term)
+{
     return Database::prepare(
         "SELECT DISTINCT 'FAM' AS type, f_id AS xref, f_gedcom AS gedcom, husb_name.n_sort, wife_name.n_sort" .
         " FROM `##families`" .
@@ -530,7 +531,8 @@ function get_FAM_rows(Tree $tree, $term) {
  *
  * @return \stdClass[]
  */
-function get_INDI_rows(Tree $tree, $term) {
+function get_INDI_rows(Tree $tree, $term)
+{
     return Database::prepare(
         "SELECT 'INDI' AS type, i_id AS xref, i_gedcom AS gedcom, n_full" .
         " FROM `##individuals`" .
@@ -551,7 +553,8 @@ function get_INDI_rows(Tree $tree, $term) {
  *
  * @return \stdClass[]
  */
-function get_NOTE_rows(Tree $tree, $term) {
+function get_NOTE_rows(Tree $tree, $term)
+{
     return Database::prepare(
         "SELECT o_id AS xref, o_gedcom AS gedcom" .
         " FROM `##other`" .
@@ -573,7 +576,8 @@ function get_NOTE_rows(Tree $tree, $term) {
  *
  * @return \stdClass[]
  */
-function get_OBJE_rows(Tree $tree, $term) {
+function get_OBJE_rows(Tree $tree, $term)
+{
     return Database::prepare(
         "SELECT 'OBJE' AS type, m_id AS xref, m_gedcom AS gedcom" .
         " FROM `##media`" .
@@ -595,7 +599,8 @@ function get_OBJE_rows(Tree $tree, $term) {
  *
  * @return \stdClass[]
  */
-function get_REPO_rows(Tree $tree, $term) {
+function get_REPO_rows(Tree $tree, $term)
+{
     return Database::prepare(
         "SELECT o_id AS xref, o_gedcom AS gedcom" .
         " FROM `##other`" .
@@ -617,7 +622,8 @@ function get_REPO_rows(Tree $tree, $term) {
  *
  * @return \stdClass[]
  */
-function get_SOUR_rows(Tree $tree, $term) {
+function get_SOUR_rows(Tree $tree, $term)
+{
     return Database::prepare(
         "SELECT s_id AS xref, s_gedcom AS gedcom" .
         " FROM `##sources`" .

@@ -43,7 +43,8 @@ class FamilyBookController extends ChartController {
     /**
      * Create a family-book controller
      */
-    public function __construct() {
+    public function __construct()
+    {
         global $WT_TREE;
 
         parent::__construct();
@@ -78,7 +79,8 @@ class FamilyBookController extends ChartController {
      *
      * @return int
      */
-    private function printDescendency(Individual $person = null, $generation) {
+    private function printDescendency(Individual $person = null, $generation)
+    {
 
         if ($generation > $this->dgenerations) {
             return 0;
@@ -185,7 +187,8 @@ class FamilyBookController extends ChartController {
      * @param Individual $person
      * @param int        $count
      */
-    private function printPersonPedigree($person, $count) {
+    private function printPersonPedigree($person, $count)
+    {
         if ($count >= $this->generations) {
             return;
         }
@@ -316,7 +319,8 @@ class FamilyBookController extends ChartController {
      *
      * @return int
      */
-    private function maxDescendencyGenerations($pid, $depth) {
+    private function maxDescendencyGenerations($pid, $depth)
+    {
         global $WT_TREE;
 
         if ($depth > $this->generations) {
@@ -350,7 +354,8 @@ class FamilyBookController extends ChartController {
      * Print empty box
      */
 
-    private function printEmptyBox() {
+    private function printEmptyBox()
+    {
         echo $this->showFull() ? Theme::theme()->individualBoxEmpty() : Theme::theme()->individualBoxSmallEmpty();
     }
 
@@ -360,7 +365,8 @@ class FamilyBookController extends ChartController {
      * @param Individual $person
      * @param int    $descent_steps
      */
-    public function printFamilyBook(Individual $person, $descent_steps) {
+    public function printFamilyBook(Individual $person, $descent_steps)
+    {
         if ($descent_steps == 0 || !$person->canShowName()) {
             return;
         }

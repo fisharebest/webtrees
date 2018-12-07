@@ -30,7 +30,8 @@ use PDO;
  */
 class UserFavoritesModule extends FamilyTreeFavoritesModule {
     /** {@inheritdoc} */
-    public function getDescription() {
+    public function getDescription()
+    {
         return /* I18N: Description of the “Favorites” module */ I18N::translate('Display and manage a user’s favorite pages.');
     }
 
@@ -39,7 +40,8 @@ class UserFavoritesModule extends FamilyTreeFavoritesModule {
      *
      * @return bool
      */
-    public function isUserBlock() {
+    public function isUserBlock()
+    {
         return true;
     }
 
@@ -48,7 +50,8 @@ class UserFavoritesModule extends FamilyTreeFavoritesModule {
      *
      * @return bool
      */
-    public function isGedcomBlock() {
+    public function isGedcomBlock()
+    {
         return false;
     }
 
@@ -59,7 +62,8 @@ class UserFavoritesModule extends FamilyTreeFavoritesModule {
      *
      * @return string[][]
      */
-    public static function getFavorites($user_id) {
+    public static function getFavorites($user_id)
+    {
         global $WT_TREE;
 
         return
@@ -76,7 +80,8 @@ class UserFavoritesModule extends FamilyTreeFavoritesModule {
      *
      * @param string $mod_action
      */
-    public function modAction($mod_action) {
+    public function modAction($mod_action)
+    {
         global $WT_TREE;
 
         switch ($mod_action) {

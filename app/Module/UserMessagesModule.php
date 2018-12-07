@@ -29,12 +29,14 @@ use Fisharebest\Webtrees\User;
  */
 class UserMessagesModule extends AbstractModule implements ModuleBlockInterface {
     /** {@inheritdoc} */
-    public function getTitle() {
+    public function getTitle()
+    {
         return /* I18N: Name of a module */ I18N::translate('Messages');
     }
 
     /** {@inheritdoc} */
-    public function getDescription() {
+    public function getDescription()
+    {
         return /* I18N: Description of the “Messages” module */ I18N::translate('Communicate directly with other users, using private messages.');
     }
 
@@ -44,7 +46,8 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface 
      *
      * @param string $mod_action
      */
-    public function modAction($mod_action) {
+    public function modAction($mod_action)
+    {
         switch ($mod_action) {
             case 'delete':
                 $stmt = Database::prepare("DELETE FROM `##message` WHERE user_id = :user_id AND message_id = :message_id");
@@ -72,7 +75,8 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface 
      *
      * @return string
      */
-    public function getBlock($block_id, $template = true, $cfg = array()) {
+    public function getBlock($block_id, $template = true, $cfg = array())
+    {
         global $ctype, $WT_TREE;
 
         $block = $this->getBlockSetting($block_id, 'block', '1');
@@ -155,17 +159,20 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface 
     }
 
     /** {@inheritdoc} */
-    public function loadAjax() {
+    public function loadAjax()
+    {
         return false;
     }
 
     /** {@inheritdoc} */
-    public function isUserBlock() {
+    public function isUserBlock()
+    {
         return true;
     }
 
     /** {@inheritdoc} */
-    public function isGedcomBlock() {
+    public function isGedcomBlock()
+    {
         return false;
     }
 
@@ -174,7 +181,8 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface 
      *
      * @param int $block_id
      */
-    public function configureBlock($block_id) {
+    public function configureBlock($block_id)
+    {
         if (Filter::postBool('save') && Filter::checkCsrf()) {
             $this->setBlockSetting($block_id, 'block', Filter::postBool('block'));
         }

@@ -29,7 +29,8 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
      *
      * @return string
      */
-    public function getTitle() {
+    public function getTitle()
+    {
         return /* I18N: Name of a module/chart */ I18N::translate('Timeline');
     }
 
@@ -38,7 +39,8 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
      *
      * @return string
      */
-    public function getDescription() {
+    public function getDescription()
+    {
         return /* I18N: Description of the “TimelineChart” module */ I18N::translate('A timeline displaying individual events.');
     }
 
@@ -49,7 +51,8 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
      *
      * @return int
      */
-    public function defaultAccessLevel() {
+    public function defaultAccessLevel()
+    {
         return Auth::PRIV_PRIVATE;
     }
 
@@ -58,7 +61,8 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
      *
      * @return Menu|null
      */
-    public function getChartMenu(Individual $individual) {
+    public function getChartMenu(Individual $individual)
+    {
         return new Menu(
             $this->getTitle(),
             'timeline.php?pids%5B%5D=' . $individual->getXref() . '&amp;ged=' . $individual->getTree()->getNameUrl(),
@@ -72,7 +76,8 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
      *
      * @return Menu|null
      */
-    public function getBoxChartMenu(Individual $individual) {
+    public function getBoxChartMenu(Individual $individual)
+    {
         return null;
     }
 }

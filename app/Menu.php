@@ -54,7 +54,8 @@ class Menu {
      * @param string[] $attrs    Optional attributes, such as onclick or data-xxx
      * @param Menu[]   $submenus Any submenus
      */
-    public function __construct($label, $link = '#', $class = '', array $attrs = array(), array $submenus = array()) {
+    public function __construct($label, $link = '#', $class = '', array $attrs = array(), array $submenus = array())
+    {
         $this
             ->setLabel($label)
             ->setLink($link)
@@ -69,7 +70,8 @@ class Menu {
      *
      * @return string
      */
-    public function __toString() {
+    public function __toString()
+    {
         return $this->getMenuAsList();
     }
 
@@ -78,7 +80,8 @@ class Menu {
      *
      * @return string
      */
-    public function bootstrap() {
+    public function bootstrap()
+    {
         if ($this->submenus) {
             $submenus = '';
             foreach ($this->submenus as $submenu) {
@@ -109,7 +112,8 @@ class Menu {
      *
      * @return string[]
      */
-    public function getAttrs() {
+    public function getAttrs()
+    {
         return $this->attrs;
     }
 
@@ -120,7 +124,8 @@ class Menu {
      *
      * @return $this
      */
-    public function setAttrs(array $attrs) {
+    public function setAttrs(array $attrs)
+    {
         $this->attrs = $attrs;
 
         return $this;
@@ -132,7 +137,8 @@ class Menu {
      * @param string $menuclass
      * @param string $submenuclass
      */
-    public function addClass($menuclass, $submenuclass = '') {
+    public function addClass($menuclass, $submenuclass = '')
+    {
         $this->menuclass    = $menuclass;
         $this->submenuclass = $submenuclass;
     }
@@ -142,7 +148,8 @@ class Menu {
      *
      * @return string
      */
-    public function getClass() {
+    public function getClass()
+    {
         return $this->class;
     }
 
@@ -153,7 +160,8 @@ class Menu {
      *
      * @return $this
      */
-    public function setClass($class) {
+    public function setClass($class)
+    {
         $this->class = $class;
 
         return $this;
@@ -164,7 +172,8 @@ class Menu {
      *
      * @return string
      */
-    public function getLabel() {
+    public function getLabel()
+    {
         return $this->label;
     }
 
@@ -175,7 +184,8 @@ class Menu {
      *
      * @return $this
      */
-    public function setLabel($label) {
+    public function setLabel($label)
+    {
         $this->label = $label;
 
         return $this;
@@ -186,7 +196,8 @@ class Menu {
      *
      * @return string
      */
-    public function getLink() {
+    public function getLink()
+    {
         return $this->link;
     }
 
@@ -197,7 +208,8 @@ class Menu {
      *
      * @return $this
      */
-    public function setLink($link) {
+    public function setLink($link)
+    {
         $this->link = $link;
 
         return $this;
@@ -210,7 +222,8 @@ class Menu {
      *
      * @return $this
      */
-    public function addSubmenu($menu) {
+    public function addSubmenu($menu)
+    {
         $this->submenus[] = $menu;
 
         return $this;
@@ -221,7 +234,8 @@ class Menu {
      *
      * @return string
      */
-    public function getMenu() {
+    public function getMenu()
+    {
         $menu_id     = 'menu-' . Uuid::uuid4();
         $sub_menu_id = 'sub-' . $menu_id;
 
@@ -255,7 +269,8 @@ class Menu {
      *
      * @return string
      */
-    public function getMenuAsList() {
+    public function getMenuAsList()
+    {
         $attrs = '';
         foreach ($this->attrs as $key => $value) {
             $attrs .= ' ' . $key . '="' . Filter::escapeHtml($value) . '"';
@@ -282,7 +297,8 @@ class Menu {
      *
      * @return Menu[]
      */
-    public function getSubmenus() {
+    public function getSubmenus()
+    {
         return $this->submenus;
     }
 
@@ -293,7 +309,8 @@ class Menu {
      *
      * @return $this
      */
-    public function setSubmenus(array $submenus) {
+    public function setSubmenus(array $submenus)
+    {
         $this->submenus = $submenus;
 
         return $this;

@@ -24,7 +24,8 @@ use PDOException;
  */
 class Migration1 implements MigrationInterface {
     /** {@inheritDoc} */
-    public function upgrade() {
+    public function upgrade()
+    {
         // Add new columns
         try {
             Database::exec(

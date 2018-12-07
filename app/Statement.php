@@ -33,7 +33,8 @@ class Statement {
      *
      * @param PDOStatement $pdo_statement
      */
-    public function __construct(PDOStatement $pdo_statement) {
+    public function __construct(PDOStatement $pdo_statement)
+    {
         $this->pdo_statement = $pdo_statement;
     }
 
@@ -46,7 +47,8 @@ class Statement {
      *
      * @return Statement
      */
-    public function execute($bind_variables = array()) {
+    public function execute($bind_variables = array())
+    {
         if ($this->executed) {
             throw new \Exception('Statement::execute() called twice.');
         }
@@ -93,7 +95,8 @@ class Statement {
      * Close the cursor, and mark it as not-executed, so we can execute
      * it again (perhaps with different parameters).
      */
-    public function closeCursor() {
+    public function closeCursor()
+    {
         $this->pdo_statement->closeCursor();
         $this->executed = false;
     }
@@ -107,7 +110,8 @@ class Statement {
      *
      * @return \stdClass|array|false
      */
-    public function fetch($fetch_style = PDO::FETCH_OBJ) {
+    public function fetch($fetch_style = PDO::FETCH_OBJ)
+    {
         if (!$this->executed) {
             $this->execute();
         }
@@ -124,7 +128,8 @@ class Statement {
      *
      * @return \stdClass[]|string[][]
      */
-    public function fetchAll($fetch_style = PDO::FETCH_OBJ) {
+    public function fetchAll($fetch_style = PDO::FETCH_OBJ)
+    {
         if (!$this->executed) {
             $this->execute();
         }
@@ -144,7 +149,8 @@ class Statement {
      *
      * @return \stdClass|array|null
      */
-    public function fetchOneRow($fetch_style = PDO::FETCH_OBJ) {
+    public function fetchOneRow($fetch_style = PDO::FETCH_OBJ)
+    {
         if (!$this->executed) {
             $this->execute();
         }
@@ -162,7 +168,8 @@ class Statement {
      *
      * @return string|null
      */
-    public function fetchOne() {
+    public function fetchOne()
+    {
         if (!$this->executed) {
             $this->execute();
         }
@@ -180,7 +187,8 @@ class Statement {
      *
      * @return string[]
      */
-    public function fetchAssoc() {
+    public function fetchAssoc()
+    {
         if (!$this->executed) {
             $this->execute();
         }
@@ -201,7 +209,8 @@ class Statement {
      *
      * @return string[]
      */
-    public function fetchOneColumn() {
+    public function fetchOneColumn()
+    {
         if (!$this->executed) {
             $this->execute();
         }
@@ -220,7 +229,8 @@ class Statement {
      *
      * @return int
      */
-    public function rowCount() {
+    public function rowCount()
+    {
         return $this->pdo_statement->rowCount();
     }
 }

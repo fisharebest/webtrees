@@ -23,12 +23,14 @@ use Fisharebest\Webtrees\Theme;
  */
 class ThemeSelectModule extends AbstractModule implements ModuleBlockInterface {
     /** {@inheritdoc} */
-    public function getTitle() {
+    public function getTitle()
+    {
         return /* I18N: Name of a module */ I18N::translate('Theme change');
     }
 
     /** {@inheritdoc} */
-    public function getDescription() {
+    public function getDescription()
+    {
         return /* I18N: Description of the “Theme change” module */ I18N::translate('An alternative way to select a new theme.');
     }
 
@@ -41,7 +43,8 @@ class ThemeSelectModule extends AbstractModule implements ModuleBlockInterface {
      *
      * @return string
      */
-    public function getBlock($block_id, $template = true, $cfg = array()) {
+    public function getBlock($block_id, $template = true, $cfg = array())
+    {
         $id    = $this->getName() . $block_id;
         $class = $this->getName() . '_block';
         $title = $this->getTitle();
@@ -61,17 +64,20 @@ class ThemeSelectModule extends AbstractModule implements ModuleBlockInterface {
     }
 
     /** {@inheritdoc} */
-    public function loadAjax() {
+    public function loadAjax()
+    {
         return false;
     }
 
     /** {@inheritdoc} */
-    public function isUserBlock() {
+    public function isUserBlock()
+    {
         return true;
     }
 
     /** {@inheritdoc} */
-    public function isGedcomBlock() {
+    public function isGedcomBlock()
+    {
         return true;
     }
 
@@ -80,6 +86,7 @@ class ThemeSelectModule extends AbstractModule implements ModuleBlockInterface {
      *
      * @param int $block_id
      */
-    public function configureBlock($block_id) {
+    public function configureBlock($block_id)
+    {
     }
 }

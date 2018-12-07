@@ -45,7 +45,8 @@ class GedcomRecordController extends PageController {
      *
      * @param GedcomRecord|null $record
      */
-    public function __construct(GedcomRecord $record = null) {
+    public function __construct(GedcomRecord $record = null)
+    {
         $this->record = $record;
 
         // Automatically fix broken links
@@ -96,7 +97,8 @@ class GedcomRecordController extends PageController {
     /**
      * get edit menu
      */
-    public function getEditMenu() {
+    public function getEditMenu()
+    {
         if (!$this->record || $this->record->isPendingDeletion()) {
             return null;
         }

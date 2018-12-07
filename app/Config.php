@@ -28,7 +28,8 @@ class Config {
      *
      * @return string[]
      */
-    public static function namePrefixes() {
+    public static function namePrefixes()
+    {
         return array(
             'Adm', 'Amb', 'Brig', 'Can', 'Capt', 'Chan', 'Chapln', 'Cmdr', 'Col', 'Cpl',
             'Cpt', 'Dr', 'Gen', 'Gov', 'Hon', 'Lady', 'Lt', 'Mr', 'Mrs', 'Ms', 'Msgr',
@@ -42,7 +43,8 @@ class Config {
      *
      * @return string[]
      */
-    public static function fileFormats() {
+    public static function fileFormats()
+    {
         return array(
             'avi', 'bmp', 'gif', 'jpeg', 'mp3', 'ole', 'pcx', 'png', 'tiff', 'wav',
         );
@@ -53,7 +55,8 @@ class Config {
      *
      * return string[]
      */
-    public static function emptyFacts() {
+    public static function emptyFacts()
+    {
         return array(
             'ADOP', 'ANUL', 'BAPL', 'BAPM', 'BARM', 'BASM', 'BIRT', 'BLES', 'BURI',
             'CENS', 'CHAN', 'CHR', 'CHRA', 'CONF', 'CONL', 'CREM', 'DATA', 'DEAT',
@@ -69,7 +72,8 @@ class Config {
      *
      * @return string[]
      */
-    public static function nonPlaceFacts() {
+    public static function nonPlaceFacts()
+    {
         return array(
             'ENDL', 'NCHI', 'REFN', 'SLGC', 'SLGS',
         );
@@ -80,7 +84,8 @@ class Config {
      *
      * @return string[]
      */
-    public static function nonDateFacts() {
+    public static function nonDateFacts()
+    {
         return array(
             'ABBR', 'ADDR', 'AFN', 'ALIA', 'AUTH', 'CHIL', 'EMAIL', 'FAX', 'FILE',
             'HUSB', 'NAME', 'NCHI', 'NOTE', 'OBJE', 'PHON', 'PUBL', 'REFN', 'REPO',
@@ -93,7 +98,8 @@ class Config {
      *
      * @return string[]
      */
-    public static function dateAndTime() {
+    public static function dateAndTime()
+    {
         return array(
             'BIRT', 'DEAT',
         );
@@ -105,7 +111,8 @@ class Config {
      *
      * @return string[][]
      */
-    public static function levelTwoTags() {
+    public static function levelTwoTags()
+    {
         return array(
             '_HEB'     => array(
                 'NAME', 'TITL',
@@ -203,7 +210,8 @@ class Config {
      *
      * @return string[]
      */
-    public static function standardNameFacts() {
+    public static function standardNameFacts()
+    {
         return array(
             'NAME', 'NPFX', 'GIVN', 'SPFX', 'SURN', 'NSFX',
         );
@@ -215,7 +223,8 @@ class Config {
      *
      * @return string[]
      */
-    public static function twoAssociates() {
+    public static function twoAssociates()
+    {
         return array(
             'CHR', 'BAPM', 'MARR',
         );

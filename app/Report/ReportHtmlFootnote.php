@@ -24,7 +24,8 @@ class ReportHtmlFootnote extends ReportBaseFootnote {
      *
      * @param ReportHtml $renderer
      */
-    public function render($renderer) {
+    public function render($renderer)
+    {
         $renderer->setCurrentStyle("footnotenum");
         echo "<a href=\"#footnote", $this->num, "\"><sup>";
         $renderer->write($renderer->entityRTL . $this->num);
@@ -37,7 +38,8 @@ class ReportHtmlFootnote extends ReportBaseFootnote {
      *
      * @param ReportHtml $html
      */
-    public function renderFootnote($html) {
+    public function renderFootnote($html)
+    {
 
         if ($html->getCurrentStyle() != $this->styleName) {
             $html->setCurrentStyle($this->styleName);
@@ -61,7 +63,8 @@ class ReportHtmlFootnote extends ReportBaseFootnote {
      *
      * @return int       Footnote height in points
      */
-    public function getFootnoteHeight($html, $cellWidth = 0) {
+    public function getFootnoteHeight($html, $cellWidth = 0)
+    {
         if ($html->getCurrentStyle() != $this->styleName) {
             $html->setCurrentStyle($this->styleName);
         }
@@ -84,7 +87,8 @@ class ReportHtmlFootnote extends ReportBaseFootnote {
      *
      * @return array
      */
-    public function getWidth($html) {
+    public function getWidth($html)
+    {
         // Setup the style name
         $html->setCurrentStyle("footnotenum");
 

@@ -40,17 +40,20 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
     const MAX_DAYS           = 90;
 
     /** {@inheritdoc} */
-    public function getTitle() {
+    public function getTitle()
+    {
         return /* I18N: Name of a module */ I18N::translate('Recent changes');
     }
 
     /** {@inheritdoc} */
-    public function getDescription() {
+    public function getDescription()
+    {
         return /* I18N: Description of the “Recent changes” module */ I18N::translate('A list of records that have been updated recently.');
     }
 
     /** {@inheritdoc} */
-    public function getBlock($block_id, $template = true, $cfg = array()) {
+    public function getBlock($block_id, $template = true, $cfg = array())
+    {
         global $ctype, $WT_TREE;
 
         $days       = $this->getBlockSetting($block_id, 'days', self::DEFAULT_DAYS);
@@ -110,22 +113,26 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
     }
 
     /** {@inheritdoc} */
-    public function loadAjax() {
+    public function loadAjax()
+    {
         return true;
     }
 
     /** {@inheritdoc} */
-    public function isUserBlock() {
+    public function isUserBlock()
+    {
         return true;
     }
 
     /** {@inheritdoc} */
-    public function isGedcomBlock() {
+    public function isGedcomBlock()
+    {
         return true;
     }
 
     /** {@inheritdoc} */
-    public function configureBlock($block_id) {
+    public function configureBlock($block_id)
+    {
         if (Filter::postBool('save') && Filter::checkCsrf()) {
             $this->setBlockSetting($block_id, 'days', Filter::postInteger('days', 1, self::MAX_DAYS));
             $this->setBlockSetting($block_id, 'infoStyle', Filter::post('infoStyle', 'list|table'));
@@ -195,7 +202,8 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
      *
      * @return GedcomRecord[] List of records with changes
      */
-    private function getRecentChanges(Tree $tree, $jd) {
+    private function getRecentChanges(Tree $tree, $jd)
+    {
         $sql =
             "SELECT d_gid FROM `##dates`" .
             " WHERE d_fact='CHAN' AND d_julianday1 >= :jd AND d_file = :tree_id";
@@ -227,7 +235,8 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
      *
      * @return string
      */
-    private function changesList(array $records, $sort, $show_user) {
+    private function changesList(array $records, $sort, $show_user)
+    {
         switch ($sort) {
             case 'name':
                 uasort($records, array('self', 'sortByNameAndChangeDate'));
@@ -276,7 +285,8 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
      *
      * @return string
      */
-    private function changesTable($records, $sort, $show_user) {
+    private function changesTable($records, $sort, $show_user)
+    {
         global $controller;
 
         $table_id = 'table-chan-' . Uuid::uuid4(); // lists requires a unique ID in case there are multiple lists per page
@@ -372,7 +382,8 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
      *
      * @return int
      */
-    private static function sortByChangeDateAndName(GedcomRecord $a, GedcomRecord $b) {
+    private static function sortByChangeDateAndName(GedcomRecord $a, GedcomRecord $b)
+    {
         return $b->lastChangeTimestamp(true) - $a->lastChangeTimestamp(true) ?: GedcomRecord::compare($a, $b);
     }
 
@@ -384,7 +395,8 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
      *
      * @return int
      */
-    private static function sortByNameAndChangeDate(GedcomRecord $a, GedcomRecord $b) {
+    private static function sortByNameAndChangeDate(GedcomRecord $a, GedcomRecord $b)
+    {
         return GedcomRecord::compare($a, $b) ?: $b->lastChangeTimestamp(true) - $a->lastChangeTimestamp(true);
     }
 }

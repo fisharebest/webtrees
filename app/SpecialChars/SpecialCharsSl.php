@@ -27,7 +27,8 @@ class SpecialCharsSl extends AbstractSpecialChars {
      *
      * @return string[]
      */
-    public function upper() {
+    public function upper()
+    {
         return array(
             'Č', 'Š', 'Ž', 'Ć', 'Ð', 'Ä', 'Ö', 'Ü',
         );
@@ -38,7 +39,8 @@ class SpecialCharsSl extends AbstractSpecialChars {
      *
      * @return string[]
      */
-    public function lower() {
+    public function lower()
+    {
         return array(
             'č', 'š', 'ž', 'ć', 'đ', 'ä', 'ö', 'ü',
         );

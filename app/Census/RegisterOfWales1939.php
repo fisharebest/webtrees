@@ -24,7 +24,8 @@ class RegisterOfWales1939 extends CensusOfWales implements CensusInterface {
      *
      * @return string
      */
-    public function censusDate() {
+    public function censusDate()
+    {
         return '29 SEP 1939';
     }
 
@@ -33,7 +34,8 @@ class RegisterOfWales1939 extends CensusOfWales implements CensusInterface {
      *
      * @return CensusColumnInterface[]
      */
-    public function columns() {
+    public function columns()
+    {
         return array(
             new CensusColumnNull($this, 'Schedule', 'Schedule Number'),
             new CensusColumnNull($this, 'SubNum', 'Schedule Sub Number'),

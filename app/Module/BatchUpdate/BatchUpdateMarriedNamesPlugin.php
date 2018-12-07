@@ -31,7 +31,8 @@ class BatchUpdateMarriedNamesPlugin extends BatchUpdateBasePlugin {
      *
      * @return string
      */
-    public function getName() {
+    public function getName()
+    {
         return I18N::translate('Add missing married names');
     }
 
@@ -40,7 +41,8 @@ class BatchUpdateMarriedNamesPlugin extends BatchUpdateBasePlugin {
      *
      * @return string
      */
-    public function getDescription() {
+    public function getDescription()
+    {
         return I18N::translate('You can make it easier to search for married women by recording their married name. However not all women take their husband’s surname, so beware of introducing incorrect information into your database.');
     }
 
@@ -52,7 +54,8 @@ class BatchUpdateMarriedNamesPlugin extends BatchUpdateBasePlugin {
      *
      * @return bool
      */
-    public function doesRecordNeedUpdate($xref, $gedrec) {
+    public function doesRecordNeedUpdate($xref, $gedrec)
+    {
         return preg_match('/^1 SEX F/m', $gedrec) && preg_match('/^1 NAME /m', $gedrec) && self::surnamesToAdd($xref, $gedrec);
     }
 
@@ -64,7 +67,8 @@ class BatchUpdateMarriedNamesPlugin extends BatchUpdateBasePlugin {
      *
      * @return string
      */
-    public function updateRecord($xref, $gedrec) {
+    public function updateRecord($xref, $gedrec)
+    {
         global $WT_TREE;
 
         $SURNAME_TRADITION = $WT_TREE->getPreference('SURNAME_TRADITION');
@@ -97,7 +101,8 @@ class BatchUpdateMarriedNamesPlugin extends BatchUpdateBasePlugin {
      *
      * @return string[]
      */
-    private function surnamesToAdd($xref, $gedrec) {
+    private function surnamesToAdd($xref, $gedrec)
+    {
         $wife_surnames    = self::surnames($xref, $gedrec);
         $husb_surnames    = array();
         $missing_surnames = array();
@@ -126,7 +131,8 @@ class BatchUpdateMarriedNamesPlugin extends BatchUpdateBasePlugin {
      *
      * @return string[]
      */
-    private function surnames($xref, $gedrec) {
+    private function surnames($xref, $gedrec)
+    {
         if (preg_match_all('/^(?:1 NAME|2 _MARNM) .*\/(.+)\//m', $gedrec, $match)) {
             return $match[1];
         } else {
@@ -137,7 +143,8 @@ class BatchUpdateMarriedNamesPlugin extends BatchUpdateBasePlugin {
     /**
      * Process the user-supplied options.
      */
-    public function getOptions() {
+    public function getOptions()
+    {
         parent::getOptions();
         $this->surname = Filter::get('surname', 'add|replace', 'replace');
     }
@@ -147,7 +154,8 @@ class BatchUpdateMarriedNamesPlugin extends BatchUpdateBasePlugin {
      *
      * @return string
      */
-    public function getOptionsForm() {
+    public function getOptionsForm()
+    {
         return
             '<div class="form-group">' .
             '<label class="control-label col-sm-3">' . I18N::translate('Surname option') . '</label>' .

@@ -26,7 +26,8 @@ class Migration0 implements MigrationInterface {
     /**
      * Upgrade to to the next version
      */
-    public function upgrade() {
+    public function upgrade()
+    {
         Database::exec(
             "CREATE TABLE IF NOT EXISTS `##gedcom` (" .
             " gedcom_id     INTEGER AUTO_INCREMENT NOT NULL," .

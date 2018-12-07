@@ -33,7 +33,8 @@ class Place {
      * @param string $gedcom_place
      * @param Tree   $tree
      */
-    public function __construct($gedcom_place, Tree $tree) {
+    public function __construct($gedcom_place, Tree $tree)
+    {
         if ($gedcom_place) {
             $this->gedcom_place = explode(self::GEDCOM_SEPARATOR, $gedcom_place);
         } else {
@@ -48,7 +49,8 @@ class Place {
      *
      * @return int
      */
-    public function getPlaceId() {
+    public function getPlaceId()
+    {
         $place_id = 0;
         foreach (array_reverse($this->gedcom_place) as $place) {
             $place_id = Database::prepare(
@@ -68,7 +70,8 @@ class Place {
      *
      * @return Place
      */
-    public function getParentPlace() {
+    public function getParentPlace()
+    {
         return new self(implode(self::GEDCOM_SEPARATOR, array_slice($this->gedcom_place, 1)), $this->tree);
     }
 
@@ -77,7 +80,8 @@ class Place {
      *
      * @return Place[]
      */
-    public function getChildPlaces() {
+    public function getChildPlaces()
+    {
         $children = array();
         if ($this->getPlaceId()) {
             $parent_text = self::GEDCOM_SEPARATOR . $this->getGedcomName();
@@ -106,7 +110,8 @@ class Place {
      *
      * @return string
      */
-    public function getURL() {
+    public function getURL()
+    {
         if (Auth::isSearchEngine()) {
             return '#';
         } else {
@@ -126,7 +131,8 @@ class Place {
      *
      * @return string
      */
-    public function getGedcomName() {
+    public function getGedcomName()
+    {
         return implode(self::GEDCOM_SEPARATOR, $this->gedcom_place);
     }
 
@@ -135,7 +141,8 @@ class Place {
      *
      * @return string
      */
-    public function getPlaceName() {
+    public function getPlaceName()
+    {
         $place = reset($this->gedcom_place);
 
         return $place ? '<span dir="auto">' . Filter::escapeHtml($place) . '</span>' : I18N::translate('unknown');
@@ -146,7 +153,8 @@ class Place {
      *
      * @return bool
      */
-    public function isEmpty() {
+    public function isEmpty()
+    {
         return empty($this->gedcom_place);
     }
 
@@ -155,7 +163,8 @@ class Place {
      *
      * @return string
      */
-    public function getFullName() {
+    public function getFullName()
+    {
         if (true) {
             // If a place hierarchy is a single entity
             return '<span dir="auto">' . Filter::escapeHtml(implode(I18N::$list_separator, $this->gedcom_place)) . '</span>';
@@ -175,7 +184,8 @@ class Place {
      *
      * @return string
      */
-    public function getShortName() {
+    public function getShortName()
+    {
         $SHOW_PEDIGREE_PLACES = $this->tree->getPreference('SHOW_PEDIGREE_PLACES');
 
         if ($SHOW_PEDIGREE_PLACES >= count($this->gedcom_place)) {
@@ -200,7 +210,8 @@ class Place {
      *
      * @return string
      */
-    public function getReverseName() {
+    public function getReverseName()
+    {
         $tmp = array();
         foreach (array_reverse($this->gedcom_place) as $place) {
             $tmp[] = '<span dir="auto">' . Filter::escapeHtml($place) . '</span>';
@@ -216,7 +227,8 @@ class Place {
      *
      * @return string[]
      */
-    public static function allPlaces(Tree $tree) {
+    public static function allPlaces(Tree $tree)
+    {
         $places = array();
         $rows   =
             Database::prepare(
@@ -252,7 +264,8 @@ class Place {
      *
      * @return Place[]
      */
-    public static function findPlaces($filter, Tree $tree) {
+    public static function findPlaces($filter, Tree $tree)
+    {
         $places = array();
         $rows   =
             Database::prepare(

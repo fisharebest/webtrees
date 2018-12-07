@@ -25,7 +25,8 @@ class Migration12 implements MigrationInterface {
     /**
      * Upgrade to to the next version
      */
-    public function upgrade() {
+    public function upgrade()
+    {
         // Delete old config settings
 
         // Convert MULTI_MEDIA (0=false, 1=true) to MEDIA_UPLOAD (1=members, 0=managers, -1=nobody)

@@ -24,7 +24,8 @@ class Session {
      *
      * @param array $config
      */
-    public static function start(array $config = array()) {
+    public static function start(array $config = array())
+    {
         $default_config = array(
             'use_cookies'     => 1,
             'name'            => 'WT_SESSION',
@@ -50,7 +51,8 @@ class Session {
      *
      * @return mixed
      */
-    public static function get($name, $default = null) {
+    public static function get($name, $default = null)
+    {
         if (isset($_SESSION[$name])) {
             return $_SESSION[$name];
         } else {
@@ -64,7 +66,8 @@ class Session {
      * @param string $name
      * @param mixed  $value
      */
-    public static function put($name, $value) {
+    public static function put($name, $value)
+    {
         $_SESSION[$name] = $value;
     }
 
@@ -73,7 +76,8 @@ class Session {
      *
      * @param string $name
      */
-    public static function forget($name) {
+    public static function forget($name)
+    {
         unset($_SESSION[$name]);
     }
 
@@ -84,14 +88,16 @@ class Session {
      *
      * @return bool
      */
-    public static function has($name) {
+    public static function has($name)
+    {
         return isset($_SESSION[$name]);
     }
 
     /**
      * Remove all stored data from the session.
      */
-    public static function clear() {
+    public static function clear()
+    {
         $_SESSION = array();
     }
 
@@ -100,7 +106,8 @@ class Session {
      *
      * @param bool $destroy
      */
-    public static function regenerate($destroy = false) {
+    public static function regenerate($destroy = false)
+    {
         if ($destroy) {
             self::clear();
         }
@@ -112,7 +119,8 @@ class Session {
      *
      * @param string $id
      */
-    public static function setId($id) {
+    public static function setId($id)
+    {
         session_id($id);
     }
 }

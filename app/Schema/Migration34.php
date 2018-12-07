@@ -25,7 +25,8 @@ class Migration34 implements MigrationInterface {
     /**
      * Upgrade to to the next version
      */
-    public function upgrade() {
+    public function upgrade()
+    {
         // New modules (charts) have been added.
         Module::getInstalledModules('enabled');
 

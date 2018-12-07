@@ -24,7 +24,8 @@ class Migration17 implements MigrationInterface {
     /**
      * Upgrade to to the next version
      */
-    public function upgrade() {
+    public function upgrade()
+    {
         // Add table to control site access
         Database::exec(
             "CREATE TABLE IF NOT EXISTS `##site_access_rule` (" .

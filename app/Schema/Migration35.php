@@ -24,7 +24,8 @@ class Migration35 implements MigrationInterface {
     /**
      * Upgrade to to the next version
      */
-    public function upgrade() {
+    public function upgrade()
+    {
         // Use LONGTEXT instead of TEXT and MEDIUMTEXT, and make NOT NULL.
         Database::exec("UPDATE `##news`   SET body          = '' WHERE body          IS NULL");
         Database::exec("UPDATE `##other`  SET o_gedcom      = '' WHERE o_gedcom      IS NULL");

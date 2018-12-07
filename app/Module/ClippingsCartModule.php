@@ -33,13 +33,15 @@ use Fisharebest\Webtrees\Session;
  */
 class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface, ModuleSidebarInterface {
     /** {@inheritdoc} */
-    public function getTitle() {
+    public function getTitle()
+    {
         return /* I18N: Name of a module */
             I18N::translate('Clippings cart');
     }
 
     /** {@inheritdoc} */
-    public function getDescription() {
+    public function getDescription()
+    {
         return /* I18N: Description of the “Clippings cart” module */
             I18N::translate('Select records from your family tree and save them as a GEDCOM file.');
     }
@@ -51,7 +53,8 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
      *
      * @return int
      */
-    public function defaultAccessLevel() {
+    public function defaultAccessLevel()
+    {
         return Auth::PRIV_USER;
     }
 
@@ -61,7 +64,8 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
      *
      * @param string $mod_action
      */
-    public function modAction($mod_action) {
+    public function modAction($mod_action)
+    {
         global $WT_TREE;
 
         // Only allow access if either the menu or sidebar is enabled.
@@ -555,7 +559,8 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
      *
      * @return int
      */
-    public function defaultMenuOrder() {
+    public function defaultMenuOrder()
+    {
         return 20;
     }
 
@@ -564,7 +569,8 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
      *
      * @return Menu|null
      */
-    public function getMenu() {
+    public function getMenu()
+    {
         global $controller, $WT_TREE;
 
         $submenus = array();
@@ -583,12 +589,14 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
     }
 
     /** {@inheritdoc} */
-    public function defaultSidebarOrder() {
+    public function defaultSidebarOrder()
+    {
         return 60;
     }
 
     /** {@inheritdoc} */
-    public function hasSidebarContent() {
+    public function hasSidebarContent()
+    {
         // Creating a controller has the side effect of initialising the cart
         new ClippingsCartController;
 
@@ -600,7 +608,8 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
      *
      * @return string
      */
-    public function getSidebarContent() {
+    public function getSidebarContent()
+    {
         global $controller;
 
         $controller->addInlineJavascript('
@@ -614,7 +623,8 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
     }
 
     /** {@inheritdoc} */
-    public function getSidebarAjaxContent() {
+    public function getSidebarAjaxContent()
+    {
         global $WT_TREE;
 
         $cart = Session::get('cart');
@@ -678,7 +688,8 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
      *
      * @return string
      */
-    public function getCartList() {
+    public function getCartList()
+    {
         global $WT_TREE;
 
         $cart = Session::get('cart', array());
@@ -747,7 +758,8 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
      *
      * @return string
      */
-    public function downloadForm(ClippingsCartController $clip_ctrl) {
+    public function downloadForm(ClippingsCartController $clip_ctrl)
+    {
         global $WT_TREE;
 
         $pid = Filter::get('pid', WT_REGEX_XREF);

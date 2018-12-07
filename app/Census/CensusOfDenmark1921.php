@@ -24,7 +24,8 @@ class CensusOfDenmark1921 extends CensusOfDenmark implements CensusInterface {
      *
      * @return string
      */
-    public function censusDate() {
+    public function censusDate()
+    {
         return '01 FEB 1921';
     }
 
@@ -33,7 +34,8 @@ class CensusOfDenmark1921 extends CensusOfDenmark implements CensusInterface {
      *
      * @return CensusColumnInterface[]
      */
-    public function columns() {
+    public function columns()
+    {
         return array(
             new CensusColumnFullName($this, 'Navn', 'Samtlige Personers Navn (ogsaa Fornavn). Ved Børn, endnu uden Navn, sættes „Dreng“ eller „Pige“. Midlertidig fraværerade Personer anføres ikke her, men paa Skemaeta Bagside)'),
             new CensusColumnSexMK($this, 'Køn', 'Kjønnet. Mandkøn (M) eller Kvindekøn (K).'),

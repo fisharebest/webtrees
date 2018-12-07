@@ -47,7 +47,8 @@ class BranchesController extends PageController {
     /**
      * Create a branches list controller
      */
-    public function __construct() {
+    public function __construct()
+    {
         global $WT_TREE;
 
         parent::__construct();
@@ -74,7 +75,8 @@ class BranchesController extends PageController {
      *
      * @return null|string
      */
-    public function getSurname() {
+    public function getSurname()
+    {
         return $this->surname;
     }
 
@@ -83,7 +85,8 @@ class BranchesController extends PageController {
      *
      * @return bool
      */
-    public function getSoundexStd() {
+    public function getSoundexStd()
+    {
         return $this->soundex_std;
     }
 
@@ -92,14 +95,16 @@ class BranchesController extends PageController {
      *
      * @return bool
      */
-    public function getSoundexDm() {
+    public function getSoundexDm()
+    {
         return $this->soundex_dm;
     }
 
     /**
      * Fetch all individuals with a matching surname
      */
-    private function loadIndividuals() {
+    private function loadIndividuals()
+    {
         global $WT_TREE;
 
         $sql =
@@ -144,7 +149,8 @@ class BranchesController extends PageController {
      * @param Individual $ancestor
      * @param int        $sosa
      */
-    private function loadAncestors(Individual $ancestor, $sosa) {
+    private function loadAncestors(Individual $ancestor, $sosa)
+    {
         if ($ancestor) {
             $this->ancestors[$sosa] = $ancestor;
             foreach ($ancestor->getChildFamilies() as $family) {
@@ -160,7 +166,8 @@ class BranchesController extends PageController {
      *
      * @return string
      */
-    public function getPatriarchsHtml() {
+    public function getPatriarchsHtml()
+    {
         $html = '';
         foreach ($this->individuals as $individual) {
             foreach ($individual->getChildFamilies() as $family) {
@@ -185,7 +192,8 @@ class BranchesController extends PageController {
      *
      * @return string
      */
-    private function getDescendantsHtml(Individual $individual, Family $parents = null) {
+    private function getDescendantsHtml(Individual $individual, Family $parents = null)
+    {
         // A person has many names. Select the one that matches the searched surname
         $person_name = '';
         foreach ($individual->getAllNames() as $name) {
@@ -284,7 +292,8 @@ class BranchesController extends PageController {
      *
      * @return string
      */
-    private static function sosaGeneration($sosa) {
+    private static function sosaGeneration($sosa)
+    {
         $generation = (int) log($sosa, 2) + 1;
 
         return '<sup title="' . I18N::translate('Generation') . '">' . $generation . '</sup>';

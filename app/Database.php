@@ -38,7 +38,8 @@ class Database {
     /**
      * Prevent instantiation via new Database
      */
-    private function __construct() {
+    private function __construct()
+    {
         self::$log = array();
     }
 
@@ -47,7 +48,8 @@ class Database {
      *
      * @return bool
      */
-    public static function beginTransaction() {
+    public static function beginTransaction()
+    {
         return self::$pdo->beginTransaction();
     }
 
@@ -56,14 +58,16 @@ class Database {
      *
      * @return bool
      */
-    public static function commit() {
+    public static function commit()
+    {
         return self::$pdo->commit();
     }
 
     /**
      * Disconnect from the server, so we can connect to another one
      */
-    public static function disconnect() {
+    public static function disconnect()
+    {
         self::$pdo = null;
     }
 
@@ -78,7 +82,8 @@ class Database {
      *
      * @throws \Exception
      */
-    public static function createInstance($DBHOST, $DBPORT, $DBNAME, $DBUSER, $DBPASS) {
+    public static function createInstance($DBHOST, $DBPORT, $DBNAME, $DBUSER, $DBPASS)
+    {
         if (self::$pdo instanceof PDO) {
             throw new \Exception('Database::createInstance() can only be called once.');
         }
@@ -109,7 +114,8 @@ class Database {
      *
      * @return Database
      */
-    public static function getInstance() {
+    public static function getInstance()
+    {
         if (self::$pdo instanceof PDO) {
             return self::$instance;
         } else {
@@ -122,7 +128,8 @@ class Database {
      *
      * @return bool
      */
-    public static function isConnected() {
+    public static function isConnected()
+    {
         return self::$pdo instanceof PDO;
     }
 
@@ -134,7 +141,8 @@ class Database {
      * @param float    $microtime
      * @param string[] $bind_variables
      */
-    public static function logQuery($query, $rows, $microtime, $bind_variables) {
+    public static function logQuery($query, $rows, $microtime, $bind_variables)
+    {
         if (WT_DEBUG_SQL) {
             // Full logging
             // Trace
@@ -185,7 +193,8 @@ class Database {
      *
      * @return int
      */
-    public static function getQueryCount() {
+    public static function getQueryCount()
+    {
         return count(self::$log);
     }
 
@@ -194,7 +203,8 @@ class Database {
      *
      * @return string
      */
-    public static function getQueryLog() {
+    public static function getQueryLog()
+    {
         $html      = '<table border="1" style="table-layout: fixed; width: 960px;word-wrap: break-word;"><col span="3"><col align="char"><thead><tr><th>#</th><th style="width: 800px;">Query</th><th>Rows</th><th>Time (ms)</th></tr></thead><tbody>' . implode('', self::$log) . '</tbody></table>';
         self::$log = array();
 
@@ -206,7 +216,8 @@ class Database {
      *
      * @return string
      */
-    public static function lastInsertId() {
+    public static function lastInsertId()
+    {
         return self::$pdo->lastInsertId();
     }
 
@@ -221,7 +232,8 @@ class Database {
      *
      * @deprecated We should use bind-variables instead.
      */
-    public static function quote($string) {
+    public static function quote($string)
+    {
         if (is_null($string)) {
             return 'NULL';
         } else {
@@ -236,7 +248,8 @@ class Database {
      *
      * @return int The number of rows affected by this SQL query
      */
-    public static function exec($sql) {
+    public static function exec($sql)
+    {
         $sql   = str_replace('##', WT_TBLPREFIX, $sql);
         $start = microtime(true);
         $rows  = self::$pdo->exec($sql);
@@ -255,7 +268,8 @@ class Database {
      *
      * @return Statement
      */
-    public static function prepare($sql) {
+    public static function prepare($sql)
+    {
         if (!self::$pdo instanceof PDO) {
             throw new \Exception("No Connection Established");
         }
@@ -274,7 +288,8 @@ class Database {
      *
      * @return bool
      */
-    public static function rollBack() {
+    public static function rollBack()
+    {
         return self::$pdo->rollBack();
     }
 
@@ -289,7 +304,8 @@ class Database {
      *
      * @return bool  Were any updates applied
      */
-    public static function updateSchema($namespace, $schema_name, $target_version) {
+    public static function updateSchema($namespace, $schema_name, $target_version)
+    {
         try {
             $current_version = (int) Site::getPreference($schema_name);
         } catch (PDOException $e) {

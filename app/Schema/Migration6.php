@@ -25,7 +25,8 @@ class Migration6 implements MigrationInterface {
     /**
      * Upgrade to to the next version
      */
-    public function upgrade() {
+    public function upgrade()
+    {
         // Remove tables/columns relating to remote linking
 
         try {

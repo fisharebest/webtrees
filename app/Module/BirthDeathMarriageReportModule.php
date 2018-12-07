@@ -28,7 +28,8 @@ class BirthDeathMarriageReportModule extends AbstractModule implements ModuleRep
      *
      * @return string
      */
-    public function getTitle() {
+    public function getTitle()
+    {
         // This text also appears in the .XML file - update both together
         return /* I18N: Name of a module/report. “Vital records” are life events - birth/marriage/death */ I18N::translate('Vital records');
     }
@@ -38,7 +39,8 @@ class BirthDeathMarriageReportModule extends AbstractModule implements ModuleRep
      *
      * @return string
      */
-    public function getDescription() {
+    public function getDescription()
+    {
         // This text also appears in the .XML file - update both together
         return /* I18N: Description of the “Vital records” module. “Vital records” are life events - birth/marriage/death */ I18N::translate('A report of vital records for a given date or place.');
     }
@@ -50,7 +52,8 @@ class BirthDeathMarriageReportModule extends AbstractModule implements ModuleRep
      *
      * @return int
      */
-    public function defaultAccessLevel() {
+    public function defaultAccessLevel()
+    {
         return Auth::PRIV_PRIVATE;
     }
 
@@ -59,7 +62,8 @@ class BirthDeathMarriageReportModule extends AbstractModule implements ModuleRep
      *
      * @return Menu
      */
-    public function getReportMenu() {
+    public function getReportMenu()
+    {
         global $WT_TREE;
 
         return new Menu(

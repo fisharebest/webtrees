@@ -36,7 +36,8 @@ class HijriDate extends CalendarDate {
      *
      * @param array|int|CalendarDate $date
      */
-    public function __construct($date) {
+    public function __construct($date)
+    {
         $this->calendar = new ArabicCalendar;
         parent::__construct($date);
     }
@@ -49,7 +50,8 @@ class HijriDate extends CalendarDate {
      *
      * @return string
      */
-    public static function monthNameNominativeCase($month_number, $leap_year) {
+    public static function monthNameNominativeCase($month_number, $leap_year)
+    {
         static $translated_month_names;
 
         if ($translated_month_names === null) {
@@ -81,7 +83,8 @@ class HijriDate extends CalendarDate {
      *
      * @return string
      */
-    protected function monthNameGenitiveCase($month_number, $leap_year) {
+    protected function monthNameGenitiveCase($month_number, $leap_year)
+    {
         static $translated_month_names;
 
         if ($translated_month_names === null) {
@@ -113,7 +116,8 @@ class HijriDate extends CalendarDate {
      *
      * @return string
      */
-    protected function monthNameLocativeCase($month_number, $leap_year) {
+    protected function monthNameLocativeCase($month_number, $leap_year)
+    {
         static $translated_month_names;
 
         if ($translated_month_names === null) {
@@ -145,7 +149,8 @@ class HijriDate extends CalendarDate {
      *
      * @return string
      */
-    protected function monthNameInstrumentalCase($month_number, $leap_year) {
+    protected function monthNameInstrumentalCase($month_number, $leap_year)
+    {
         static $translated_month_names;
 
         if ($translated_month_names === null) {
@@ -177,7 +182,8 @@ class HijriDate extends CalendarDate {
      *
      * @return string
      */
-    protected function monthNameAbbreviated($month_number, $leap_year) {
+    protected function monthNameAbbreviated($month_number, $leap_year)
+    {
         return self::monthNameNominativeCase($month_number, $leap_year);
     }
 }

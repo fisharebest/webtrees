@@ -262,7 +262,9 @@ switch ($action) {
 
                 // Filter unused files
                 if ($search) {
-                    $unused_files = array_filter($unused_files, function ($x) use ($search) { return strpos($x, $search) !== false; });
+                    $unused_files = array_filter($unused_files, function ($x) use ($search) {
+                        return strpos($x, $search) !== false;
+                    });
                 }
                 $recordsFiltered = count($unused_files);
 
@@ -348,7 +350,8 @@ switch ($action) {
  *
  * @return string[]
  */
-function all_media_folders() {
+function all_media_folders()
+{
     return Database::prepare(
         "SELECT setting_value, setting_value" .
         " FROM `##gedcom_setting`" .
@@ -365,7 +368,8 @@ function all_media_folders() {
  *
  * @return string[]
  */
-function media_paths($media_folder) {
+function media_paths($media_folder)
+{
     $media_paths = Database::prepare(
         "SELECT LEFT(m_filename, CHAR_LENGTH(m_filename) - CHAR_LENGTH(SUBSTRING_INDEX(m_filename, '/', -1))) AS media_path" .
         " FROM  `##media`" .
@@ -396,7 +400,8 @@ function media_paths($media_folder) {
  *
  * @return string[]
  */
-function scan_dirs($dir, $recursive, $filter) {
+function scan_dirs($dir, $recursive, $filter)
+{
     $files = array();
 
     // $dir comes from the database. The actual folder may not exist.
@@ -428,7 +433,8 @@ function scan_dirs($dir, $recursive, $filter) {
  *
  * @return string[]
  */
-function all_disk_files($media_folder, $media_path, $subfolders, $filter) {
+function all_disk_files($media_folder, $media_path, $subfolders, $filter)
+{
     return scan_dirs(WT_DATA_DIR . $media_folder . $media_path, $subfolders == 'include', $filter);
 }
 
@@ -446,7 +452,8 @@ function all_disk_files($media_folder, $media_path, $subfolders, $filter) {
  *
  * @return string[]
  */
-function all_media_files($media_folder, $media_path, $subfolders, $filter) {
+function all_media_files($media_folder, $media_path, $subfolders, $filter)
+{
     return Database::prepare(
         "SELECT SQL_CALC_FOUND_ROWS TRIM(LEADING :media_path_1 FROM m_filename) AS media_path, 'OBJE' AS type, m_titl, m_id AS xref, m_file AS ged_id, m_gedcom AS gedrec, m_filename" .
         " FROM  `##media`" .
@@ -476,7 +483,8 @@ function all_media_files($media_folder, $media_path, $subfolders, $filter) {
  *
  * @return string
  */
-function mediaFileInfo($media_folder, $media_path, $file) {
+function mediaFileInfo($media_folder, $media_path, $file)
+{
     $html = '<dl>';
     $html .= '<dt>' . I18N::translate('Filename') . '</dt>';
     $html .= '<dd>' . Filter::escapeHtml($file) . '</dd>';
@@ -519,7 +527,8 @@ function mediaFileInfo($media_folder, $media_path, $file) {
  *
  * @return string HTML
  */
-function mediaObjectInfo(Media $media) {
+function mediaObjectInfo(Media $media)
+{
     $xref   = $media->getXref();
     $gedcom = $media->getTree()->getName();
 

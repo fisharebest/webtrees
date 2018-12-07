@@ -24,7 +24,8 @@ class CensusOfUnitedStates1790 extends CensusOfUnitedStates implements CensusInt
      *
      * @return string
      */
-    public function censusDate() {
+    public function censusDate()
+    {
         return '02 AUG 1790';
     }
 
@@ -33,7 +34,8 @@ class CensusOfUnitedStates1790 extends CensusOfUnitedStates implements CensusInt
      *
      * @return CensusColumnInterface[]
      */
-    public function columns() {
+    public function columns()
+    {
         return array(
             new CensusColumnFullName($this, 'Name', 'Name of head of family'),
             new CensusColumnOccupation($this, 'Occupation', 'Professions and occupation'),

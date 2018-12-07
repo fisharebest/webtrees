@@ -23,7 +23,8 @@ use Fisharebest\Webtrees\Schema\MigrationInterface;
  */
 class Migration2 implements MigrationInterface {
     /** {@inheritDoc} */
-    public function upgrade() {
+    public function upgrade()
+    {
         // Convert flag icons from .gif to .png
 
         Database::exec("UPDATE `##placelocation` SET pl_icon=REPLACE(pl_icon, '.gif', '.png')");

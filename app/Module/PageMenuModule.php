@@ -24,12 +24,14 @@ use Fisharebest\Webtrees\Menu;
  */
 class PageMenuModule extends AbstractModule implements ModuleMenuInterface {
     /** {@inheritdoc} */
-    public function getTitle() {
+    public function getTitle()
+    {
         return /* I18N: Name of a module/menu */ I18N::translate('Edit');
     }
 
     /** {@inheritdoc} */
-    public function getDescription() {
+    public function getDescription()
+    {
         return /* I18N: Description of the “Edit” module */ I18N::translate('An edit menu for individuals, families, sources, etc.');
     }
 
@@ -38,7 +40,8 @@ class PageMenuModule extends AbstractModule implements ModuleMenuInterface {
      *
      * @return int
      */
-    public function defaultMenuOrder() {
+    public function defaultMenuOrder()
+    {
         return 10;
     }
 
@@ -47,7 +50,8 @@ class PageMenuModule extends AbstractModule implements ModuleMenuInterface {
      *
      * @return Menu|null
      */
-    public function getMenu() {
+    public function getMenu()
+    {
         global $controller, $WT_TREE;
 
         $menu = null;

@@ -24,7 +24,8 @@ class ReportHtmlPageheader extends ReportBasePageheader {
      *
      * @param ReportHtml $renderer
      */
-    public function render($renderer) {
+    public function render($renderer)
+    {
         $renderer->clearPageHeader();
         foreach ($this->elements as $element) {
             $renderer->addPageHeader($element);

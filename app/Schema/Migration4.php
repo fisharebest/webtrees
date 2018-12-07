@@ -25,7 +25,8 @@ class Migration4 implements MigrationInterface {
     /**
      * Upgrade to to the next version
      */
-    public function upgrade() {
+    public function upgrade()
+    {
         // Add support for sorting gedcoms non-alphabetically
         // Also clean out some old/unused values and files.
         try {

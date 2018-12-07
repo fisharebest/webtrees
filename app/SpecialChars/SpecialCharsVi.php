@@ -27,7 +27,8 @@ class SpecialCharsVi extends AbstractSpecialChars {
      *
      * @return string[]
      */
-    public function upper() {
+    public function upper()
+    {
         return array(
             'À', 'Á', 'Â', 'Ã', 'Ạ', 'Ả', 'Ă', 'Ấ', 'Ầ', 'Ẫ', 'Ậ', 'Ắ', 'Ằ', 'Ẳ', 'Ẵ', 'Ặ',
             'Đ', 'È', 'É', 'Ê', 'Ẹ', 'Ẻ', 'Ẽ', 'Ế', 'Ề', 'Ể', 'Ễ', 'Ệ', 'Ì', 'Í', 'Ĩ', 'Ỉ', 'Ị',
@@ -41,7 +42,8 @@ class SpecialCharsVi extends AbstractSpecialChars {
      *
      * @return string[]
      */
-    public function lower() {
+    public function lower()
+    {
         return array(
             'à', 'á', 'â', 'ã', 'ạ', 'ả', 'ă', 'ấ', 'ầ', 'ẫ', 'ậ', 'ắ', 'ằ', 'ẳ', 'ẵ', 'ặ',
             'đ', 'è', 'é', 'ê', 'ẹ', 'ẻ', 'ẽ', 'ế', 'ề', 'ể', 'ễ', 'ệ', 'ì', 'í', 'ĩ', 'ỉ', 'ị',

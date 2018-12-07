@@ -30,7 +30,8 @@ class CensusColumnYearsMarried extends AbstractCensusColumn implements CensusCol
      *
      * @return string
      */
-    public function generate(Individual $individual, Individual $head = null) {
+    public function generate(Individual $individual, Individual $head = null)
+    {
         $marriage_date = null;
 
         foreach ($individual->getSpouseFamilies() as $family) {

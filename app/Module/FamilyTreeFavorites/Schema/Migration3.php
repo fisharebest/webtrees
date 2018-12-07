@@ -24,7 +24,8 @@ use PDOException;
  */
 class Migration3 implements MigrationInterface {
     /** {@inheritDoc} */
-    public function upgrade() {
+    public function upgrade()
+    {
         // An earlier update mistakenly made the fv_note column too short.
         // Add the new constraints
         try {

@@ -36,7 +36,8 @@ require './includes/session.php';
  *
  * @return int
  */
-function month_of_birth($z_axis, array $z_boundaries, Stats $stats) {
+function month_of_birth($z_axis, array $z_boundaries, Stats $stats)
+{
     $total = 0;
 
     if ($z_axis === 300) {
@@ -92,7 +93,8 @@ function month_of_birth($z_axis, array $z_boundaries, Stats $stats) {
  *
  * @return int
  */
-function month_of_birth_of_first_child($z_axis, array $z_boundaries, Stats $stats) {
+function month_of_birth_of_first_child($z_axis, array $z_boundaries, Stats $stats)
+{
     $total = 0;
 
     if ($z_axis === 300) {
@@ -148,7 +150,8 @@ function month_of_birth_of_first_child($z_axis, array $z_boundaries, Stats $stat
  *
  * @return int
  */
-function month_of_death($z_axis, array $z_boundaries, Stats $stats) {
+function month_of_death($z_axis, array $z_boundaries, Stats $stats)
+{
     $total = 0;
 
     if ($z_axis === 300) {
@@ -204,7 +207,8 @@ function month_of_death($z_axis, array $z_boundaries, Stats $stats) {
  *
  * @return int
  */
-function month_of_marriage($z_axis, array $z_boundaries, Stats $stats) {
+function month_of_marriage($z_axis, array $z_boundaries, Stats $stats)
+{
     $total = 0;
 
     if ($z_axis === 300) {
@@ -245,7 +249,8 @@ function month_of_marriage($z_axis, array $z_boundaries, Stats $stats) {
  *
  * @return int
  */
-function month_of_first_marriage($z_axis, array $z_boundaries, Stats $stats) {
+function month_of_first_marriage($z_axis, array $z_boundaries, Stats $stats)
+{
     $total = 0;
 
     if ($z_axis === 300) {
@@ -298,7 +303,8 @@ function month_of_first_marriage($z_axis, array $z_boundaries, Stats $stats) {
  *
  * @return int
  */
-function lifespan_by_birth_year($z_axis, array $z_boundaries, Stats $stats) {
+function lifespan_by_birth_year($z_axis, array $z_boundaries, Stats $stats)
+{
     $total = 0;
 
     if ($z_axis === 300) {
@@ -350,7 +356,8 @@ function lifespan_by_birth_year($z_axis, array $z_boundaries, Stats $stats) {
  *
  * @return int
  */
-function lifespan_by_death_year($z_axis, array $z_boundaries, Stats $stats) {
+function lifespan_by_death_year($z_axis, array $z_boundaries, Stats $stats)
+{
     $total = 0;
 
     if ($z_axis === 300) {
@@ -402,7 +409,8 @@ function lifespan_by_death_year($z_axis, array $z_boundaries, Stats $stats) {
  *
  * @return int
  */
-function age_at_marriage($z_axis, array $z_boundaries, Stats $stats) {
+function age_at_marriage($z_axis, array $z_boundaries, Stats $stats)
+{
     $total = 0;
 
     if ($z_axis === 300) {
@@ -456,7 +464,8 @@ function age_at_marriage($z_axis, array $z_boundaries, Stats $stats) {
  *
  * @return int
  */
-function age_at_first_marriage($z_axis, array $z_boundaries, Stats $stats) {
+function age_at_first_marriage($z_axis, array $z_boundaries, Stats $stats)
+{
     $total = 0;
 
     if ($z_axis === 300) {
@@ -533,7 +542,8 @@ function age_at_first_marriage($z_axis, array $z_boundaries, Stats $stats) {
  *
  * @return int
  */
-function number_of_children($z_axis, array $z_boundaries, Stats $stats) {
+function number_of_children($z_axis, array $z_boundaries, Stats $stats)
+{
     $total = 0;
 
     if ($z_axis === 300) {
@@ -575,7 +585,8 @@ function number_of_children($z_axis, array $z_boundaries, Stats $stats) {
  * @param int $x
  * @param int $val
  */
-function fill_y_data($z, $x, $val) {
+function fill_y_data($z, $x, $val)
+{
     global $ydata, $xmax, $x_boundaries, $zmax, $z_boundaries, $xgiven, $zgiven;
     //-- calculate index $i out of given z value
     //-- calculate index $j out of given x value
@@ -612,7 +623,8 @@ function fill_y_data($z, $x, $val) {
  * @param string      $ytitle
  * @param string[]    $legend
  */
-function my_plot($mytitle, $xdata, $xtitle, $ydata, $ytitle, $legend) {
+function my_plot($mytitle, $xdata, $xtitle, $ydata, $ytitle, $legend)
+{
     global $percentage, $male_female, $ymax, $scalefactor, $datastring, $imgurl;
 
     // Google Chart API only allows text encoding for numbers less than 100
@@ -752,7 +764,8 @@ function my_plot($mytitle, $xdata, $xtitle, $ydata, $ytitle, $legend) {
  *
  * @param string $x_axis_boundaries
  */
-function calculate_axis($x_axis_boundaries) {
+function calculate_axis($x_axis_boundaries)
+{
     global $x_axis, $xdata, $xmax, $x_boundaries;
 
     // Calculate xdata and zdata elements out of chart values
@@ -801,7 +814,8 @@ function calculate_axis($x_axis_boundaries) {
  *
  * @return string
  */
-function format_range_of_numbers($x, $y) {
+function format_range_of_numbers($x, $y)
+{
     return /* I18N: A range of numbers */ I18N::translate(
         '%1$s–%2$s',
         I18N::number($x),
@@ -814,7 +828,8 @@ function format_range_of_numbers($x, $y) {
  *
  * @param string $boundaries_z_axis
  */
-function calculate_legend($boundaries_z_axis) {
+function calculate_legend($boundaries_z_axis)
+{
     global $legend, $zmax, $z_boundaries;
 
     // calculate the legend values

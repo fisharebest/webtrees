@@ -29,12 +29,14 @@ use Fisharebest\Webtrees\Tree;
  */
 class IndividualSidebarModule extends AbstractModule implements ModuleSidebarInterface {
     /** {@inheritdoc} */
-    public function getTitle() {
+    public function getTitle()
+    {
         return /* I18N: Name of a module */ I18N::translate('Individual list');
     }
 
     /** {@inheritdoc} */
-    public function getDescription() {
+    public function getDescription()
+    {
         return /* I18N: Description of “Individuals” module */ I18N::translate('A sidebar showing an alphabetic list of all the individuals in the family tree.');
     }
 
@@ -44,7 +46,8 @@ class IndividualSidebarModule extends AbstractModule implements ModuleSidebarInt
      *
      * @param string $mod_action
      */
-    public function modAction($mod_action) {
+    public function modAction($mod_action)
+    {
         switch ($mod_action) {
             case 'ajax':
                 header('Content-Type: text/html; charset=UTF-8');
@@ -57,17 +60,20 @@ class IndividualSidebarModule extends AbstractModule implements ModuleSidebarInt
     }
 
     /** {@inheritdoc} */
-    public function defaultSidebarOrder() {
+    public function defaultSidebarOrder()
+    {
         return 40;
     }
 
     /** {@inheritdoc} */
-    public function hasSidebarContent() {
+    public function hasSidebarContent()
+    {
         return !Auth::isSearchEngine();
     }
 
     /** {@inheritdoc} */
-    public function getSidebarAjaxContent() {
+    public function getSidebarAjaxContent()
+    {
         global $WT_TREE;
 
         $alpha   = Filter::get('alpha'); // All surnames beginning with this letter where "@"=unknown and ","=none
@@ -90,7 +96,8 @@ class IndividualSidebarModule extends AbstractModule implements ModuleSidebarInt
      *
      * @return string
      */
-    public function getSidebarContent() {
+    public function getSidebarContent()
+    {
         global $controller, $WT_TREE;
 
         // Fetch a list of the initial letters of all surnames in the database
@@ -182,7 +189,8 @@ class IndividualSidebarModule extends AbstractModule implements ModuleSidebarInt
      *
      * @return string
      */
-    private function getAlphaSurnames(Tree $tree, $alpha) {
+    private function getAlphaSurnames(Tree $tree, $alpha)
+    {
         $surnames = QueryName::surnames($tree, '', $alpha, true, false);
         $out      = '<ul>';
         foreach (array_keys($surnames) as $surname) {
@@ -204,7 +212,8 @@ class IndividualSidebarModule extends AbstractModule implements ModuleSidebarInt
      *
      * @return string
      */
-    private function getSurnameIndis(Tree $tree, $alpha, $surname) {
+    private function getSurnameIndis(Tree $tree, $alpha, $surname)
+    {
         $indis = QueryName::individuals($tree, $surname, $alpha, '', true, false);
         $out   = '<ul>';
         foreach ($indis as $person) {
@@ -232,7 +241,8 @@ class IndividualSidebarModule extends AbstractModule implements ModuleSidebarInt
      *
      * @return string
      */
-    private function search(Tree $tree, $query) {
+    private function search(Tree $tree, $query)
+    {
         if (strlen($query) < 2) {
             return '';
         }

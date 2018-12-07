@@ -34,7 +34,8 @@ class GedcomCodeAdop {
      *
      * @return string
      */
-    public static function getValue($type, GedcomRecord $record = null) {
+    public static function getValue($type, GedcomRecord $record = null)
+    {
         if ($record instanceof Individual) {
             $sex = $record->getSex();
         } else {
@@ -81,7 +82,8 @@ class GedcomCodeAdop {
      *
      * @return string[]
      */
-    public static function getValues(GedcomRecord $record = null) {
+    public static function getValues(GedcomRecord $record = null)
+    {
         $values = array();
         foreach (self::$TYPES as $type) {
             $values[$type] = self::getValue($type, $record);

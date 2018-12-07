@@ -34,7 +34,8 @@ class FamilyController extends GedcomRecordController {
      *
      * @return Individual
      */
-    public function getSignificantIndividual() {
+    public function getSignificantIndividual()
+    {
         if ($this->record) {
             foreach ($this->record->getSpouses() as $individual) {
                 return $individual;
@@ -53,7 +54,8 @@ class FamilyController extends GedcomRecordController {
      *
      * @return Family
      */
-    public function getSignificantFamily() {
+    public function getSignificantFamily()
+    {
         if ($this->record) {
             return $this->record;
         }
@@ -64,7 +66,8 @@ class FamilyController extends GedcomRecordController {
     /**
      * get edit menu
      */
-    public function getEditMenu() {
+    public function getEditMenu()
+    {
         if (!$this->record || $this->record->isPendingDeletion()) {
             return null;
         }
@@ -112,7 +115,8 @@ class FamilyController extends GedcomRecordController {
      *
      * @return string
      */
-    public function getSignificantSurname() {
+    public function getSignificantSurname()
+    {
         if ($this->record && $this->record->getHusband()) {
             list($surn) = explode(',', $this->record->getHusband()->getSortName());
 
@@ -125,7 +129,8 @@ class FamilyController extends GedcomRecordController {
     /**
      * Print the facts
      */
-    public function printFamilyFacts() {
+    public function printFamilyFacts()
+    {
         global $linkToID;
 
         $linkToID = $this->record->getXref(); // -- Tell addmedia.php what to link to

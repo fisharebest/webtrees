@@ -29,7 +29,8 @@ class CensusColumnMonthIfBornWithinYear extends AbstractCensusColumn implements 
      *
      * @return string
      */
-    public function generate(Individual $individual, Individual $head = null) {
+    public function generate(Individual $individual, Individual $head = null)
+    {
         $birth_jd  = $individual->getBirthDate()->julianDay();
         $census_jd = $this->date()->julianDay();
         if ($birth_jd <= $census_jd && $birth_jd >= $census_jd - 365) {

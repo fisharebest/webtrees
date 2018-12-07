@@ -40,7 +40,8 @@ class ChartController extends PageController {
      *
      * @param int $show_full needed for use by charts module
      */
-    public function __construct($show_full = 1) {
+    public function __construct($show_full = 1)
+    {
         global $WT_TREE;
 
         parent::__construct();
@@ -80,7 +81,8 @@ class ChartController extends PageController {
      *
      * @return Individual
      */
-    public function getSignificantIndividual() {
+    public function getSignificantIndividual()
+    {
         if ($this->root) {
             return $this->root;
         } else {
@@ -95,7 +97,8 @@ class ChartController extends PageController {
      *
      * @return Individual[]
      */
-    public function sosaAncestors($generations) {
+    public function sosaAncestors($generations)
+    {
         $ancestors = array(
             1 => $this->root,
         );
@@ -128,7 +131,8 @@ class ChartController extends PageController {
      *
      * @return bool
      */
-    public function showFull() {
+    public function showFull()
+    {
         return $this->show_full;
     }
 
@@ -137,7 +141,8 @@ class ChartController extends PageController {
      *
      * @return \stdClass
      */
-    public function getBoxDimensions() {
+    public function getBoxDimensions()
+    {
         return $this->box;
     }
 }

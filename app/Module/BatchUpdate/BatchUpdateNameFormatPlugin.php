@@ -26,7 +26,8 @@ class BatchUpdateNameFormatPlugin extends BatchUpdateBasePlugin {
      *
      * @return string
      */
-    public function getName() {
+    public function getName()
+    {
         return I18N::translate('Fix name slashes and spaces');
     }
 
@@ -35,7 +36,8 @@ class BatchUpdateNameFormatPlugin extends BatchUpdateBasePlugin {
      *
      * @return string
      */
-    public function getDescription() {
+    public function getDescription()
+    {
         return I18N::translate('Correct NAME records of the form “John/DOE/” or “John /DOE”, as produced by older genealogy programs.');
     }
 
@@ -47,7 +49,8 @@ class BatchUpdateNameFormatPlugin extends BatchUpdateBasePlugin {
      *
      * @return bool
      */
-    public function doesRecordNeedUpdate($xref, $gedrec) {
+    public function doesRecordNeedUpdate($xref, $gedrec)
+    {
         return
             preg_match('/^(?:1 NAME|2 (?:FONE|ROMN|_MARNM|_AKA|_HEB)) [^\/\n]*\/[^\/\n]*$/m', $gedrec) ||
             preg_match('/^(?:1 NAME|2 (?:FONE|ROMN|_MARNM|_AKA|_HEB)) [^\/\n]*[^\/ ]\//m', $gedrec);
@@ -61,7 +64,8 @@ class BatchUpdateNameFormatPlugin extends BatchUpdateBasePlugin {
      *
      * @return string
      */
-    public function updateRecord($xref, $gedrec) {
+    public function updateRecord($xref, $gedrec)
+    {
         return preg_replace(
             array(
                 '/^((?:1 NAME|2 (?:FONE|ROMN|_MARNM|_AKA|_HEB)) [^\/\n]*\/[^\/\n]*)$/m',

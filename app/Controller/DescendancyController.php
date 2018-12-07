@@ -47,7 +47,8 @@ class DescendancyController extends ChartController {
     /**
      * Create the descendancy controller
      */
-    public function __construct() {
+    public function __construct()
+    {
         global $WT_TREE;
 
         parent::__construct();
@@ -74,7 +75,8 @@ class DescendancyController extends ChartController {
      * @param string     $label
      * @param string     $gpid
      */
-    public function printChildFamily(Individual $person, $depth, $label = '1.', $gpid = '') {
+    public function printChildFamily(Individual $person, $depth, $label = '1.', $gpid = '')
+    {
 
         if ($depth < 2) {
             return;
@@ -94,7 +96,8 @@ class DescendancyController extends ChartController {
      * @param Individual $person
      * @param int        $depth the descendancy depth to show
      */
-    public function printChildDescendancy(Individual $person, $depth) {
+    public function printChildDescendancy(Individual $person, $depth)
+    {
         echo "<li>";
         echo "<table><tr><td>";
         if ($depth == $this->generations) {
@@ -160,7 +163,8 @@ class DescendancyController extends ChartController {
      * @param Family     $family
      * @param int        $depth the descendancy depth to show
      */
-    private function printFamilyDescendancy(Individual $person, Family $family, $depth) {
+    private function printFamilyDescendancy(Individual $person, Family $family, $depth)
+    {
         $uid = Uuid::uuid4(); // create a unique ID
         // print marriage info
         echo '<li>';
@@ -233,7 +237,8 @@ class DescendancyController extends ChartController {
      *
      * @return Individual[]
      */
-    public function individualDescendancy(Individual $person, $n, $array) {
+    public function individualDescendancy(Individual $person, $n, $array)
+    {
         if ($n < 1) {
             return $array;
         }
@@ -260,7 +265,8 @@ class DescendancyController extends ChartController {
      *
      * @return Family[]
      */
-    public function familyDescendancy($person, $n, $array) {
+    public function familyDescendancy($person, $n, $array)
+    {
         if ($n < 1) {
             return $array;
         }

@@ -2253,7 +2253,8 @@ switch ($action) {
  *
  * @return string
  */
-function keep_chan(GedcomRecord $record = null) {
+function keep_chan(GedcomRecord $record = null)
+{
     global $WT_TREE;
 
     if (Auth::isAdmin()) {
@@ -2288,7 +2289,8 @@ function keep_chan(GedcomRecord $record = null) {
  * @param string     $famtag
  * @param string     $gender
  */
-function print_indi_form($nextaction, Individual $person = null, Family $family = null, Fact $name_fact = null, $famtag = 'CHIL', $gender = 'U') {
+function print_indi_form($nextaction, Individual $person = null, Family $family = null, Fact $name_fact = null, $famtag = 'CHIL', $gender = 'U')
+{
     global $WT_TREE, $bdm, $controller;
 
     if ($person) {
@@ -2754,7 +2756,8 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
  *
  * @param GedcomRecord $object
  */
-function check_record_access(GedcomRecord $object = null) {
+function check_record_access(GedcomRecord $object = null)
+{
     global $controller;
 
     if (!$object || !$object->canShow() || !$object->canEdit()) {

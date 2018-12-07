@@ -72,7 +72,8 @@ class FunctionsRtl {
      *
      * @return string The input string, with &lrm; and &rlm; stripped
      */
-    public static function stripLrmRlm($inputText) {
+    public static function stripLrmRlm($inputText)
+    {
         return str_replace(array(WT_UTF8_LRM, WT_UTF8_RLM, WT_UTF8_LRO, WT_UTF8_RLO, WT_UTF8_LRE, WT_UTF8_RLE, WT_UTF8_PDF, "&lrm;", "&rlm;", "&LRM;", "&RLM;"), "", $inputText);
     }
 
@@ -86,7 +87,8 @@ class FunctionsRtl {
      *
      * @return string The string with all texts encapsulated as required
      */
-    public static function spanLtrRtl($inputText, $direction = 'BOTH', $class = '') {
+    public static function spanLtrRtl($inputText, $direction = 'BOTH', $class = '')
+    {
         if ($inputText == '') {
             // Nothing to do
             return '';
@@ -504,7 +506,8 @@ class FunctionsRtl {
      *
      * @return string
      */
-    public static function starredName($textSpan, $direction) {
+    public static function starredName($textSpan, $direction)
+    {
         // To avoid a TCPDF bug that mixes up the word order, insert those <u> and </u> tags
         // only when page and span directions are identical.
         if ($direction === strtoupper(I18N::direction())) {
@@ -545,7 +548,8 @@ class FunctionsRtl {
      *
      * @return array
      */
-    public static function getChar($text, $offset) {
+    public static function getChar($text, $offset)
+    {
 
         if ($text == '') {
             return array('letter' => '', 'length' => 0);
@@ -572,7 +576,8 @@ class FunctionsRtl {
      *
      * @param string $result
      */
-    public static function breakCurrentSpan(&$result) {
+    public static function breakCurrentSpan(&$result)
+    {
         // Interrupt the current span, insert that <br>, and then continue the current span
         $result .= self::$waitingText;
         self::$waitingText = '';
@@ -588,7 +593,8 @@ class FunctionsRtl {
      *
      * @param string $result
      */
-    public static function beginCurrentSpan(&$result) {
+    public static function beginCurrentSpan(&$result)
+    {
         if (self::$currentState == 'LTR') {
             $result .= self::$startLTR;
         }
@@ -605,7 +611,8 @@ class FunctionsRtl {
      * @param string $result
      * @param bool $theEnd
      */
-    public static function finishCurrentSpan(&$result, $theEnd = false) {
+    public static function finishCurrentSpan(&$result, $theEnd = false)
+    {
         $textSpan = substr($result, self::$posSpanStart);
         $result   = substr($result, 0, self::$posSpanStart);
 
@@ -1116,7 +1123,8 @@ class FunctionsRtl {
      *
      * @return string
      */
-    public static function utf8WordWrap($string, $width = 75, $sep = "\n", $cut = false) {
+    public static function utf8WordWrap($string, $width = 75, $sep = "\n", $cut = false)
+    {
         $out = '';
         while ($string) {
             if (mb_strlen($string) <= $width) {

@@ -27,7 +27,8 @@ class IcelandicSurnameTradition extends DefaultSurnameTradition implements Surna
      *
      * @return bool
      */
-    public function hasSurnames() {
+    public function hasSurnames()
+    {
         return false;
     }
 
@@ -40,7 +41,8 @@ class IcelandicSurnameTradition extends DefaultSurnameTradition implements Surna
      *
      * @return string[] Associative array of GEDCOM name parts (SURN, _MARNM, etc.)
      */
-    public function newChildNames($father_name, $mother_name, $child_sex) {
+    public function newChildNames($father_name, $mother_name, $child_sex)
+    {
         if (preg_match(self::REGEX_GIVN, $father_name, $father_match)) {
             switch ($child_sex) {
                 case 'M':
@@ -65,7 +67,8 @@ class IcelandicSurnameTradition extends DefaultSurnameTradition implements Surna
      *
      * @return string[] Associative array of GEDCOM name parts (SURN, _MARNM, etc.)
      */
-    public function newParentNames($child_name, $parent_sex) {
+    public function newParentNames($child_name, $parent_sex)
+    {
         if ($parent_sex === 'M' && preg_match('~(?<GIVN>[^ /]+)(:?sson|sdottir)$~', $child_name, $child_match)) {
             return array(
                 'NAME' => $child_match['GIVN'],
@@ -84,7 +87,8 @@ class IcelandicSurnameTradition extends DefaultSurnameTradition implements Surna
      *
      * @return string[] Associative array of GEDCOM name parts (SURN, _MARNM, etc.)
      */
-    public function newSpouseNames($spouse_name, $spouse_sex) {
+    public function newSpouseNames($spouse_name, $spouse_sex)
+    {
         return array();
     }
 }

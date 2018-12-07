@@ -27,7 +27,9 @@ $controller
     ->pageHeader();
 
 $variables = Database::prepare("SHOW VARIABLES")->fetchAssoc();
-array_walk($variables, function (&$x) { $x = str_replace(',', ', ', $x); });
+array_walk($variables, function (&$x) {
+    $x = str_replace(',', ', ', $x);
+});
 
 ob_start();
 phpinfo(INFO_ALL & ~INFO_CREDITS & ~INFO_LICENSE);

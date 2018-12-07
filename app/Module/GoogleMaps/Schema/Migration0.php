@@ -23,7 +23,8 @@ use Fisharebest\Webtrees\Schema\MigrationInterface;
  */
 class Migration0 implements MigrationInterface {
     /** {@inheritDoc} */
-    public function upgrade() {
+    public function upgrade()
+    {
         // Create the tables, as per PhpGedView 4.2.1
 
         Database::exec(

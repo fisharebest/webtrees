@@ -24,13 +24,15 @@ use Fisharebest\Webtrees\Menu;
  */
 class RelatedIndividualsReportModule extends AbstractModule implements ModuleReportInterface {
     /** {@inheritdoc} */
-    public function getTitle() {
+    public function getTitle()
+    {
         // This text also appears in the .XML file - update both together
         return /* I18N: Name of a report */ I18N::translate('Related individuals');
     }
 
     /** {@inheritdoc} */
-    public function getDescription() {
+    public function getDescription()
+    {
         // This text also appears in the .XML file - update both together
         return /* I18N: Description of the “Related individuals” module */ I18N::translate('A report of the individuals that are closely related to an individual.');
     }
@@ -42,7 +44,8 @@ class RelatedIndividualsReportModule extends AbstractModule implements ModuleRep
      *
      * @return int
      */
-    public function defaultAccessLevel() {
+    public function defaultAccessLevel()
+    {
         return Auth::PRIV_PRIVATE;
     }
 
@@ -51,7 +54,8 @@ class RelatedIndividualsReportModule extends AbstractModule implements ModuleRep
      *
      * @return Menu
      */
-    public function getReportMenu() {
+    public function getReportMenu()
+    {
         global $controller, $WT_TREE;
 
         return new Menu(

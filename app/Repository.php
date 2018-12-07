@@ -30,7 +30,8 @@ class Repository extends GedcomRecord {
      *
      * @return null|string
      */
-    protected static function fetchGedcomRecord($xref, $tree_id) {
+    protected static function fetchGedcomRecord($xref, $tree_id)
+    {
         return Database::prepare(
             "SELECT o_gedcom FROM `##other` WHERE o_id = :xref AND o_file = :tree_id AND o_type = 'REPO'"
         )->execute(array(
@@ -46,14 +47,16 @@ class Repository extends GedcomRecord {
      *
      * @return string
      */
-    protected function createPrivateGedcomRecord($access_level) {
+    protected function createPrivateGedcomRecord($access_level)
+    {
         return '0 @' . $this->xref . "@ REPO\n1 NAME " . I18N::translate('Private');
     }
 
     /**
      * Extract names from the GEDCOM record.
      */
-    public function extractNames() {
+    public function extractNames()
+    {
         parent::extractNamesFromFacts(1, 'NAME', $this->getFacts('NAME'));
     }
 }

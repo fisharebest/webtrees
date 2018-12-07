@@ -56,7 +56,8 @@ class HourglassController extends ChartController {
      * @param int    $show_full
      * @param bool   $loadJS
      */
-    public function __construct($rootid = '', $show_full = 1, $loadJS = true) {
+    public function __construct($rootid = '', $show_full = 1, $loadJS = true)
+    {
         global $WT_TREE;
 
         parent::__construct($show_full);
@@ -93,7 +94,8 @@ class HourglassController extends ChartController {
      * @param Individual $person ID of person to print the pedigree for
      * @param int        $count  generation count, so it recursively calls itself
      */
-    public function printPersonPedigree(Individual $person, $count) {
+    public function printPersonPedigree(Individual $person, $count)
+    {
 
         if ($count >= $this->generations) {
             return;
@@ -181,7 +183,8 @@ class HourglassController extends ChartController {
      * @return string
      */
 
-    private function printEmptyBox() {
+    private function printEmptyBox()
+    {
         return $this->showFull() ? Theme::theme()->individualBoxEmpty() : Theme::theme()->individualBoxSmallEmpty();
     }
 
@@ -194,7 +197,8 @@ class HourglassController extends ChartController {
      *
      * @return int
      */
-    public function printDescendency($person, $count, $showNav = true) {
+    public function printDescendency($person, $count, $showNav = true)
+    {
         global $lastGenSecondFam;
 
         if ($count > $this->dgenerations) {
@@ -381,7 +385,8 @@ class HourglassController extends ChartController {
      *
      * @return int Number of generations the descendency actually goes
      */
-    private function maxDescendencyGenerations(Individual $individual, $depth) {
+    private function maxDescendencyGenerations(Individual $individual, $depth)
+    {
         if ($depth > $this->generations) {
             return $depth;
         }
@@ -409,7 +414,8 @@ class HourglassController extends ChartController {
     /**
      * setup all of the javascript that is needed for the hourglass chart
      */
-    public function setupJavascript() {
+    public function setupJavascript()
+    {
         $js = "
 			var WT_HOURGLASS_CHART = (function() {
 				function sizeLines() {

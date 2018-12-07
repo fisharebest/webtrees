@@ -28,7 +28,8 @@ class CloudsTheme extends AbstractTheme implements ThemeInterface {
      *
      * @return string A relative path, such as "themes/foo/"
      */
-    public function assetUrl() {
+    public function assetUrl()
+    {
         return 'themes/clouds/css-1.7.8/';
     }
 
@@ -39,7 +40,8 @@ class CloudsTheme extends AbstractTheme implements ThemeInterface {
      *
      * @return string
      */
-    protected function flashMessageContainer(\stdClass $message) {
+    protected function flashMessageContainer(\stdClass $message)
+    {
         // This theme uses jQueryUI markup.
         switch ($message->status) {
             case 'danger':
@@ -59,7 +61,8 @@ class CloudsTheme extends AbstractTheme implements ThemeInterface {
      *
      * @return string
      */
-    public function formatBlock($id, $title, $class, $content) {
+    public function formatBlock($id, $title, $class, $content)
+    {
         return
             '<div id="' . $id . '" class="block" >' .
             '<table class="blockheader"><tr><td class="blockh1"></td><td class="blockh2">' .
@@ -74,7 +77,8 @@ class CloudsTheme extends AbstractTheme implements ThemeInterface {
      *
      * @return string
      */
-    protected function formQuickSearchFields() {
+    protected function formQuickSearchFields()
+    {
         return
             '<input type="search" name="query" size="15" placeholder="' . I18N::translate('Search') . '">' .
             '<input class="search-icon" type="image" src="' . $this->assetUrl() . 'images/go.png" alt="' . I18N::translate('Search') . '" title="' . I18N::translate('Search') . '">';
@@ -85,7 +89,8 @@ class CloudsTheme extends AbstractTheme implements ThemeInterface {
      *
      * @return string
      */
-    public function hookFooterExtraJavascript() {
+    public function hookFooterExtraJavascript()
+    {
         return
             '<script src="' . WT_JQUERY_COLORBOX_URL . '"></script>' .
             '<script src="' . WT_JQUERY_WHEELZOOM_URL . '"></script>' .
@@ -109,7 +114,8 @@ class CloudsTheme extends AbstractTheme implements ThemeInterface {
      *
      * @return string|int|float
      */
-    public function parameter($parameter_name) {
+    public function parameter($parameter_name)
+    {
         $parameters = array(
             'chart-background-f'             => 'e9daf1',
             'chart-background-m'             => 'b1cff0',
@@ -132,7 +138,8 @@ class CloudsTheme extends AbstractTheme implements ThemeInterface {
      *
      * @return string
      */
-    protected function primaryMenuContent(array $menus) {
+    protected function primaryMenuContent(array $menus)
+    {
         $html = '';
 
         foreach ($menus as $menu) {
@@ -155,7 +162,8 @@ class CloudsTheme extends AbstractTheme implements ThemeInterface {
      *
      * @return string[]
      */
-    protected function stylesheets() {
+    protected function stylesheets()
+    {
         return array(
             'themes/clouds/jquery-ui-1.11.2/jquery-ui.css',
             $this->assetUrl() . 'style.css',
@@ -167,7 +175,8 @@ class CloudsTheme extends AbstractTheme implements ThemeInterface {
      *
      * @return string
      */
-    public function themeId() {
+    public function themeId()
+    {
         return 'clouds';
     }
 
@@ -176,7 +185,8 @@ class CloudsTheme extends AbstractTheme implements ThemeInterface {
      *
      * @return string
      */
-    public function themeName() {
+    public function themeName()
+    {
         return /* I18N: Name of a theme. */ I18N::translate('clouds');
     }
 }

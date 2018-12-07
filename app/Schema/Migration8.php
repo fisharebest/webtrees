@@ -25,7 +25,8 @@ class Migration8 implements MigrationInterface {
     /**
      * Upgrade to to the next version
      */
-    public function upgrade() {
+    public function upgrade()
+    {
         // Add support for the persian/jalali calendar
         try {
             Database::exec(

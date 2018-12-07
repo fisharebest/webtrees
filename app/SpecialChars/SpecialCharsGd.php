@@ -27,7 +27,8 @@ class SpecialCharsGd extends AbstractSpecialChars {
      *
      * @return string[]
      */
-    public function upper() {
+    public function upper()
+    {
         return array(
             'Á', 'É', 'Í', 'Ó', 'Ú',
         );
@@ -38,7 +39,8 @@ class SpecialCharsGd extends AbstractSpecialChars {
      *
      * @return string[]
      */
-    public function lower() {
+    public function lower()
+    {
         return array(
             'á', 'é', 'í', 'ó', 'ú',
         );

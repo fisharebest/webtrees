@@ -24,7 +24,8 @@ class PaternalSurnameTradition extends PatrilinealSurnameTradition implements Su
      *
      * @return bool
      */
-    public function hasMarriedNames() {
+    public function hasMarriedNames()
+    {
         return true;
     }
 
@@ -36,7 +37,8 @@ class PaternalSurnameTradition extends PatrilinealSurnameTradition implements Su
      *
      * @return string[] Associative array of GEDCOM name parts (SURN, _MARNM, etc.)
      */
-    public function newParentNames($child_name, $parent_sex) {
+    public function newParentNames($child_name, $parent_sex)
+    {
         if (preg_match(self::REGEX_SPFX_SURN, $child_name, $match)) {
             switch ($parent_sex) {
                 case 'M':
@@ -66,7 +68,8 @@ class PaternalSurnameTradition extends PatrilinealSurnameTradition implements Su
      *
      * @return string[] Associative array of GEDCOM name parts (SURN, _MARNM, etc.)
      */
-    public function newSpouseNames($spouse_name, $spouse_sex) {
+    public function newSpouseNames($spouse_name, $spouse_sex)
+    {
         if ($spouse_sex === 'F' && preg_match(self::REGEX_SURN, $spouse_name, $match)) {
             return array(
                 'NAME'   => '//',

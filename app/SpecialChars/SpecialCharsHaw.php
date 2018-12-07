@@ -27,7 +27,8 @@ class SpecialCharsHaw extends AbstractSpecialChars {
      *
      * @return string[]
      */
-    public function upper() {
+    public function upper()
+    {
         return array(
             'Ā', 'Ē', 'Ī', 'Ō', 'Ū', '‘',
         );
@@ -38,7 +39,8 @@ class SpecialCharsHaw extends AbstractSpecialChars {
      *
      * @return string[]
      */
-    public function lower() {
+    public function lower()
+    {
         return array(
             'ā', 'ē', 'ī', 'ō', 'ū', '‘',
         );

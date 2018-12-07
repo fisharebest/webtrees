@@ -30,12 +30,14 @@ use Fisharebest\Webtrees\Theme;
  */
 class SlideShowModule extends AbstractModule implements ModuleBlockInterface {
     /** {@inheritdoc} */
-    public function getTitle() {
+    public function getTitle()
+    {
         return /* I18N: Name of a module */ I18N::translate('Slide show');
     }
 
     /** {@inheritdoc} */
-    public function getDescription() {
+    public function getDescription()
+    {
         return /* I18N: Description of the “Slide show” module */ I18N::translate('Random images from the current family tree.');
     }
 
@@ -48,7 +50,8 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface {
      *
      * @return string
      */
-    public function getBlock($block_id, $template = true, $cfg = array()) {
+    public function getBlock($block_id, $template = true, $cfg = array())
+    {
         global $ctype, $WT_TREE;
 
         $filter   = $this->getBlockSetting($block_id, 'filter', 'all');
@@ -199,17 +202,20 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface {
     }
 
     /** {@inheritdoc} */
-    public function loadAjax() {
+    public function loadAjax()
+    {
         return true;
     }
 
     /** {@inheritdoc} */
-    public function isUserBlock() {
+    public function isUserBlock()
+    {
         return true;
     }
 
     /** {@inheritdoc} */
-    public function isGedcomBlock() {
+    public function isGedcomBlock()
+    {
         return true;
     }
 
@@ -218,7 +224,8 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface {
      *
      * @param int $block_id
      */
-    public function configureBlock($block_id) {
+    public function configureBlock($block_id)
+    {
         if (Filter::postBool('save') && Filter::checkCsrf()) {
             $this->setBlockSetting($block_id, 'filter', Filter::post('filter', 'indi|event|all', 'all'));
             $this->setBlockSetting($block_id, 'controls', Filter::postBool('controls'));

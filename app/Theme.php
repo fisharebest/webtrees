@@ -25,7 +25,8 @@ class Theme {
      * PHP 5.3.2 requires a constructor when there is also a method
      * called theme()
      */
-    private function __construct() {
+    private function __construct()
+    {
     }
 
     /** @var ThemeInterface The current theme*/
@@ -40,7 +41,8 @@ class Theme {
      *
      * @return ThemeInterface[]
      */
-    public static function installedThemes() {
+    public static function installedThemes()
+    {
         if (self::$installed_themes === null) {
             self::$installed_themes = array();
             foreach (glob(WT_ROOT . '/themes/*/theme.php') as $theme_path) {
@@ -64,7 +66,8 @@ class Theme {
      *
      * @return string[]
      */
-    public static function themeNames() {
+    public static function themeNames()
+    {
         $theme_names = array();
         foreach (self::installedThemes() as $theme) {
             $theme_names[$theme->themeId()] = $theme->themeName();
@@ -82,7 +85,8 @@ class Theme {
      *
      * @return ThemeInterface
      */
-    public static function theme(ThemeInterface $theme = null) {
+    public static function theme(ThemeInterface $theme = null)
+    {
 
         if ($theme) {
             self::$theme = $theme;

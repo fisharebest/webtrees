@@ -32,12 +32,14 @@ use Fisharebest\Webtrees\Tree;
  */
 class StoriesModule extends AbstractModule implements ModuleTabInterface, ModuleConfigInterface, ModuleMenuInterface {
     /** {@inheritdoc} */
-    public function getTitle() {
+    public function getTitle()
+    {
         return /* I18N: Name of a module */ I18N::translate('Stories');
     }
 
     /** {@inheritdoc} */
-    public function getDescription() {
+    public function getDescription()
+    {
         return /* I18N: Description of the “Stories” module */ I18N::translate('Add narrative stories to individuals in the family tree.');
     }
 
@@ -47,7 +49,8 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
      *
      * @param string $mod_action
      */
-    public function modAction($mod_action) {
+    public function modAction($mod_action)
+    {
         switch ($mod_action) {
             case 'admin_edit':
                 $this->edit();
@@ -68,17 +71,20 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
     }
 
     /** {@inheritdoc} */
-    public function getConfigLink() {
+    public function getConfigLink()
+    {
         return 'module.php?mod=' . $this->getName() . '&amp;mod_action=admin_config';
     }
 
     /** {@inheritdoc} */
-    public function defaultTabOrder() {
+    public function defaultTabOrder()
+    {
         return 55;
     }
 
     /** {@inheritdoc} */
-    public function getTabContent() {
+    public function getTabContent()
+    {
         global $controller, $WT_TREE;
 
         $block_ids =
@@ -117,12 +123,14 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
     }
 
     /** {@inheritdoc} */
-    public function hasTabContent() {
+    public function hasTabContent()
+    {
         return $this->getTabContent() != '';
     }
 
     /** {@inheritdoc} */
-    public function isGrayedOut() {
+    public function isGrayedOut()
+    {
         global $controller;
 
         $count_of_stories =
@@ -142,19 +150,22 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
     }
 
     /** {@inheritdoc} */
-    public function canLoadAjax() {
+    public function canLoadAjax()
+    {
         return false;
     }
 
     /** {@inheritdoc} */
-    public function getPreLoadContent() {
+    public function getPreLoadContent()
+    {
         return '';
     }
 
     /**
      * Show and process a form to edit a story.
      */
-    private function edit() {
+    private function edit()
+    {
         global $WT_TREE;
 
         if (Auth::isEditor($WT_TREE)) {
@@ -283,7 +294,8 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
     /**
      * Respond to a request to delete a story.
      */
-    private function delete() {
+    private function delete()
+    {
         global $WT_TREE;
 
         if (Auth::isEditor($WT_TREE)) {
@@ -305,7 +317,8 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
     /**
      * The admin view - list, create, edit, delete stories.
      */
-    private function config() {
+    private function config()
+    {
         global $WT_TREE;
 
         $controller = new PageController;
@@ -416,7 +429,8 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
     /**
      * Show the list of stories
      */
-    private function showList() {
+    private function showList()
+    {
         global $controller, $WT_TREE;
 
         $controller = new PageController;
@@ -482,7 +496,8 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
      *
      * @return int
      */
-    public function defaultMenuOrder() {
+    public function defaultMenuOrder()
+    {
         return 30;
     }
 
@@ -493,7 +508,8 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
      *
      * @return int
      */
-    public function defaultAccessLevel() {
+    public function defaultAccessLevel()
+    {
         return Auth::PRIV_HIDE;
     }
 
@@ -502,7 +518,8 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
      *
      * @return Menu|null
      */
-    public function getMenu() {
+    public function getMenu()
+    {
         $menu = new Menu($this->getTitle(), 'module.php?mod=' . $this->getName() . '&amp;mod_action=show_list', 'menu-story');
 
         return $menu;

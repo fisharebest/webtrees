@@ -30,34 +30,40 @@ class SourcesTabModule extends AbstractModule implements ModuleTabInterface {
     private $facts;
 
     /** {@inheritdoc} */
-    public function getTitle() {
+    public function getTitle()
+    {
         return /* I18N: Name of a module */ I18N::translate('Sources');
     }
 
     /** {@inheritdoc} */
-    public function getDescription() {
+    public function getDescription()
+    {
         return /* I18N: Description of the “Sources” module */ I18N::translate('A tab showing the sources linked to an individual.');
     }
 
     /** {@inheritdoc} */
-    public function defaultTabOrder() {
+    public function defaultTabOrder()
+    {
         return 30;
     }
 
     /** {@inheritdoc} */
-    public function hasTabContent() {
+    public function hasTabContent()
+    {
         global $WT_TREE;
 
         return Auth::isEditor($WT_TREE) || $this->getFactsWithSources();
     }
 
     /** {@inheritdoc} */
-    public function isGrayedOut() {
+    public function isGrayedOut()
+    {
         return !$this->getFactsWithSources();
     }
 
     /** {@inheritdoc} */
-    public function getTabContent() {
+    public function getTabContent()
+    {
         global $controller;
 
         ob_start();
@@ -113,7 +119,8 @@ class SourcesTabModule extends AbstractModule implements ModuleTabInterface {
      *
      * @return Fact[]
      */
-    private function getFactsWithSources() {
+    private function getFactsWithSources()
+    {
         global $controller;
 
         if ($this->facts === null) {
@@ -138,12 +145,14 @@ class SourcesTabModule extends AbstractModule implements ModuleTabInterface {
     }
 
     /** {@inheritdoc} */
-    public function canLoadAjax() {
+    public function canLoadAjax()
+    {
         return !Auth::isSearchEngine(); // Search engines cannot use AJAX
     }
 
     /** {@inheritdoc} */
-    public function getPreLoadContent() {
+    public function getPreLoadContent()
+    {
         return '';
     }
 }

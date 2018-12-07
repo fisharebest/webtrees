@@ -40,7 +40,8 @@ abstract class AbstractModule {
      *
      * @param string $directory Where is this module installed
      */
-    public function __construct($directory) {
+    public function __construct($directory)
+    {
         $this->directory = $directory;
     }
 
@@ -53,7 +54,8 @@ abstract class AbstractModule {
      *
      * @return null|string
      */
-    public function getBlockSetting($block_id, $setting_name, $default_value = null) {
+    public function getBlockSetting($block_id, $setting_name, $default_value = null)
+    {
         $setting_value = Database::prepare(
             "SELECT setting_value FROM `##block_setting` WHERE block_id = :block_id AND setting_name = :setting_name"
         )->execute(array(
@@ -73,7 +75,8 @@ abstract class AbstractModule {
      *
      * @return $this
      */
-    public function setBlockSetting($block_id, $setting_name, $setting_value) {
+    public function setBlockSetting($block_id, $setting_name, $setting_value)
+    {
         if ($setting_value === null) {
             Database::prepare(
                 "DELETE FROM `##block_setting` WHERE block_id = :block_id AND setting_name = :setting_name"
@@ -115,7 +118,8 @@ abstract class AbstractModule {
      *
      * @return int
      */
-    public function defaultAccessLevel() {
+    public function defaultAccessLevel()
+    {
         // Returns one of: Auth::PRIV_HIDE, Auth::PRIV_PRIVATE, Auth::PRIV_USER, WT_PRIV_ADMIN
         return Auth::PRIV_PRIVATE;
     }
@@ -125,7 +129,8 @@ abstract class AbstractModule {
      *
      * @return string
      */
-    public function getName() {
+    public function getName()
+    {
         return basename($this->directory);
     }
 
@@ -135,7 +140,8 @@ abstract class AbstractModule {
      * Since modules may have many settings, and will probably want to use
      * lots of them, load them all at once and cache them.
      */
-    private function loadAllSettings() {
+    private function loadAllSettings()
+    {
         if ($this->settings === null) {
             $this->settings = Database::prepare(
                 "SELECT setting_name, setting_value FROM `##module_setting` WHERE module_name = ?"
@@ -151,7 +157,8 @@ abstract class AbstractModule {
      *
      * @return string|null
      */
-    public function getSetting($setting_name, $default = null) {
+    public function getSetting($setting_name, $default = null)
+    {
         $this->loadAllSettings();
 
         if (array_key_exists($setting_name, $this->settings)) {
@@ -170,7 +177,8 @@ abstract class AbstractModule {
      * @param string $setting_name
      * @param string $setting_value
      */
-    public function setSetting($setting_name, $setting_value) {
+    public function setSetting($setting_name, $setting_value)
+    {
         $this->loadAllSettings();
 
         if ($setting_value === null) {
@@ -199,7 +207,8 @@ abstract class AbstractModule {
      *
      * @param string $mod_action
      */
-    public function modAction($mod_action) {
+    public function modAction($mod_action)
+    {
     }
 
     /**
@@ -210,7 +219,8 @@ abstract class AbstractModule {
      *
      * @return int
      */
-    public function getAccessLevel(Tree $tree, $component) {
+    public function getAccessLevel(Tree $tree, $component)
+    {
         $access_level = Database::prepare(
             "SELECT access_level FROM `##module_privacy` WHERE gedcom_id = :gedcom_id AND module_name = :module_name AND component = :component"
         )->execute(array(

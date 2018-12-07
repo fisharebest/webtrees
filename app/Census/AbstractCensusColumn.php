@@ -39,7 +39,8 @@ class AbstractCensusColumn {
      * @param string          $abbr   - The abbrievated on-screen name "BiC"
      * @param string          $title  - The full column heading "Born in the county"
      */
-    public function __construct(CensusInterface $census, $abbr, $title) {
+    public function __construct(CensusInterface $census, $abbr, $title)
+    {
         $this->census = $census;
         $this->abbr   = $abbr;
         $this->title  = $title;
@@ -50,7 +51,8 @@ class AbstractCensusColumn {
      *
      * @return string
      */
-    public function abbreviation() {
+    public function abbreviation()
+    {
         return $this->abbr;
     }
 
@@ -61,7 +63,8 @@ class AbstractCensusColumn {
      *
      * @return string - e.g. "England"
      */
-    protected function lastPartOfPlace($place) {
+    protected function lastPartOfPlace($place)
+    {
         $place = explode(', ', $place);
 
         return end($place);
@@ -72,7 +75,8 @@ class AbstractCensusColumn {
      *
      * @return Date
      */
-    public function date() {
+    public function date()
+    {
         return new Date($this->census->censusDate());
     }
 
@@ -83,7 +87,8 @@ class AbstractCensusColumn {
      *
      * @return Individual|null
      */
-    public function father(Individual $individual) {
+    public function father(Individual $individual)
+    {
         $family = $individual->getPrimaryChildFamily();
 
         if ($family) {
@@ -100,7 +105,8 @@ class AbstractCensusColumn {
      *
      * @return Individual|null
      */
-    public function mother(Individual $individual) {
+    public function mother(Individual $individual)
+    {
         $family = $individual->getPrimaryChildFamily();
 
         if ($family) {
@@ -117,7 +123,8 @@ class AbstractCensusColumn {
      *
      * @return string - e.g. "London" (for census of England) and "London, England" elsewhere
      */
-    protected function notCountry($place) {
+    protected function notCountry($place)
+    {
         $parts = explode(', ', $place);
 
         if (end($parts) === $this->place()) {
@@ -132,7 +139,8 @@ class AbstractCensusColumn {
      *
      * @return string
      */
-    public function place() {
+    public function place()
+    {
         return $this->census->censusPlace();
     }
 
@@ -143,7 +151,8 @@ class AbstractCensusColumn {
      *
      * @return Family|null
      */
-    public function spouseFamily(Individual $individual) {
+    public function spouseFamily(Individual $individual)
+    {
         // Exclude families that were created after this census date
         $families = array();
         foreach ($individual->getSpouseFamilies() as $family) {
@@ -155,7 +164,9 @@ class AbstractCensusColumn {
         if (empty($families)) {
             return null;
         } else {
-            usort($families, function (Family $x, Family $y) { return Date::compare($x->getMarriageDate(), $y->getMarriageDate()); });
+            usort($families, function (Family $x, Family $y) {
+                return Date::compare($x->getMarriageDate(), $y->getMarriageDate());
+            });
 
             return end($families);
         }
@@ -166,7 +177,8 @@ class AbstractCensusColumn {
      *
      * @return string
      */
-    public function title() {
+    public function title()
+    {
         return $this->title;
     }
 }

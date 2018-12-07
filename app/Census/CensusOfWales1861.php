@@ -24,7 +24,8 @@ class CensusOfWales1861 extends CensusOfWales implements CensusInterface {
      *
      * @return string
      */
-    public function censusDate() {
+    public function censusDate()
+    {
         return '07 APR 1861';
     }
 
@@ -33,7 +34,8 @@ class CensusOfWales1861 extends CensusOfWales implements CensusInterface {
      *
      * @return CensusColumnInterface[]
      */
-    public function columns() {
+    public function columns()
+    {
         return array(
             new CensusColumnFullName($this, 'Name', 'Name and surname'),
             new CensusColumnRelationToHead($this, 'Relation', 'Relation to head of household'),

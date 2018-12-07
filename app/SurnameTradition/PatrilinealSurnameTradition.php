@@ -28,7 +28,8 @@ class PatrilinealSurnameTradition extends DefaultSurnameTradition implements Sur
      *
      * @return string[] Associative array of GEDCOM name parts (SURN, _MARNM, etc.)
      */
-    public function newChildNames($father_name, $mother_name, $child_sex) {
+    public function newChildNames($father_name, $mother_name, $child_sex)
+    {
         if (preg_match(self::REGEX_SPFX_SURN, $father_name, $match)) {
             return array_filter(array(
                 'NAME' => $match['NAME'],
@@ -50,7 +51,8 @@ class PatrilinealSurnameTradition extends DefaultSurnameTradition implements Sur
      *
      * @return string[] Associative array of GEDCOM name parts (SURN, _MARNM, etc.)
      */
-    public function newParentNames($child_name, $parent_sex) {
+    public function newParentNames($child_name, $parent_sex)
+    {
         if ($parent_sex === 'M' && preg_match(self::REGEX_SPFX_SURN, $child_name, $match)) {
             return array_filter(array(
                 'NAME' => $match['NAME'],
@@ -70,7 +72,8 @@ class PatrilinealSurnameTradition extends DefaultSurnameTradition implements Sur
      *
      * @return string An inflected name
      */
-    protected function inflect($name, $inflections) {
+    protected function inflect($name, $inflections)
+    {
         foreach ($inflections as $from => $to) {
             $name = preg_replace('~' . $from . '~u', $to, $name);
         }

@@ -59,7 +59,8 @@ class Fact {
      *
      * @throws \InvalidArgumentException
      */
-    public function __construct($gedcom, GedcomRecord $parent, $fact_id) {
+    public function __construct($gedcom, GedcomRecord $parent, $fact_id)
+    {
         if (preg_match('/^1 (' . WT_REGEX_TAG . ')/', $gedcom, $match)) {
             $this->gedcom  = $gedcom;
             $this->parent  = $parent;
@@ -76,7 +77,8 @@ class Fact {
      *
      * @return string|null
      */
-    public function getValue() {
+    public function getValue()
+    {
         if (preg_match('/^1 (?:' . $this->tag . ') ?(.*(?:(?:\n2 CONT ?.*)*))/', $this->gedcom, $match)) {
             return preg_replace("/\n2 CONT ?/", "\n", $match[1]);
         } else {
@@ -89,7 +91,8 @@ class Fact {
      *
      * @return Individual|Family|Source|Repository|Media|Note|null
      */
-    public function getTarget() {
+    public function getTarget()
+    {
         $xref = trim($this->getValue(), '@');
         switch ($this->tag) {
             case 'FAMC':
@@ -119,7 +122,8 @@ class Fact {
      *
      * @return string|null
      */
-    public function getAttribute($tag) {
+    public function getAttribute($tag)
+    {
         if (preg_match('/\n2 (?:' . $tag . ') ?(.*(?:(?:\n3 CONT ?.*)*)*)/', $this->gedcom, $match)) {
             return preg_replace("/\n3 CONT ?/", "\n", $match[1]);
         } else {
@@ -134,7 +138,8 @@ class Fact {
      *
      * @return bool
      */
-    public function canShow($access_level = null) {
+    public function canShow($access_level = null)
+    {
         if ($access_level === null) {
             $access_level = Auth::accessLevel($this->getParent()->getTree());
         }
@@ -170,7 +175,8 @@ class Fact {
      *
      * @return bool
      */
-    public function canEdit() {
+    public function canEdit()
+    {
         // Managers can edit anything
         // Members cannot edit RESN, CHAN and locked records
         return
@@ -185,7 +191,8 @@ class Fact {
      *
      * @return Place
      */
-    public function getPlace() {
+    public function getPlace()
+    {
         if ($this->place === null) {
             $this->place = new Place($this->getAttribute('PLAC'), $this->getParent()->getTree());
         }
@@ -200,7 +207,8 @@ class Fact {
      *
      * @return Date
      */
-    public function getDate() {
+    public function getDate()
+    {
         if ($this->date === null) {
             $this->date = new Date($this->getAttribute('DATE'));
         }
@@ -213,7 +221,8 @@ class Fact {
      *
      * @return string
      */
-    public function getGedcom() {
+    public function getGedcom()
+    {
         return $this->gedcom;
     }
 
@@ -222,7 +231,8 @@ class Fact {
      *
      * @return string
      */
-    public function getFactId() {
+    public function getFactId()
+    {
         return $this->fact_id;
     }
 
@@ -232,7 +242,8 @@ class Fact {
      *
      * @return string
      */
-    public function getTag() {
+    public function getTag()
+    {
         return $this->tag;
     }
 
@@ -241,7 +252,8 @@ class Fact {
      *
      * @param string $tag
      */
-    public function setTag($tag) {
+    public function setTag($tag)
+    {
         $this->tag = $tag;
     }
 
@@ -251,7 +263,8 @@ class Fact {
      *
      * @return Individual|Family|Source|Repository|Media|Note|GedcomRecord
      */
-    public function getParent() {
+    public function getParent()
+    {
         return $this->parent;
     }
 
@@ -260,7 +273,8 @@ class Fact {
      *
      * @return string
      */
-    public function getLabel() {
+    public function getLabel()
+    {
         switch ($this->tag) {
             case 'EVEN':
             case 'FACT':
@@ -277,7 +291,8 @@ class Fact {
     /**
      * This is a newly deleted fact, pending approval.
      */
-    public function setPendingDeletion() {
+    public function setPendingDeletion()
+    {
         $this->pending_deletion = true;
         $this->pending_addition = false;
     }
@@ -287,14 +302,16 @@ class Fact {
      *
      * @return bool
      */
-    public function isPendingDeletion() {
+    public function isPendingDeletion()
+    {
         return $this->pending_deletion;
     }
 
     /**
      * This is a newly added fact, pending approval.
      */
-    public function setPendingAddition() {
+    public function setPendingAddition()
+    {
         $this->pending_addition = true;
         $this->pending_deletion = false;
     }
@@ -304,7 +321,8 @@ class Fact {
      *
      * @return bool
      */
-    public function isPendingAddition() {
+    public function isPendingAddition()
+    {
         return $this->pending_addition;
     }
 
@@ -313,7 +331,8 @@ class Fact {
      *
      * @return string[]
      */
-    public function getCitations() {
+    public function getCitations()
+    {
         preg_match_all('/\n(2 SOUR @(' . WT_REGEX_XREF . ')@(?:\n[3-9] .*)*)/', $this->getGedcom(), $matches, PREG_SET_ORDER);
         $citations = array();
         foreach ($matches as $match) {
@@ -331,7 +350,8 @@ class Fact {
      *
      * @return string[]|Note[]
      */
-    public function getNotes() {
+    public function getNotes()
+    {
         $notes = array();
         preg_match_all('/\n2 NOTE ?(.*(?:\n3.*)*)/', $this->getGedcom(), $matches);
         foreach ($matches[1] as $match) {
@@ -356,7 +376,8 @@ class Fact {
      *
      * @return Media[]
      */
-    public function getMedia() {
+    public function getMedia()
+    {
         $media = array();
         preg_match_all('/\n2 OBJE @(' . WT_REGEX_XREF . ')@/', $this->getGedcom(), $matches);
         foreach ($matches[1] as $match) {
@@ -374,7 +395,8 @@ class Fact {
      *
      * @return string
      */
-    public function summary() {
+    public function summary()
+    {
         $attributes = array();
         $target     = $this->getTarget();
         if ($target) {
@@ -422,7 +444,8 @@ class Fact {
      *
      * @return int
      */
-    public static function compareDate(Fact $a, Fact $b) {
+    public static function compareDate(Fact $a, Fact $b)
+    {
         if ($a->getDate()->isOK() && $b->getDate()->isOK()) {
             // If both events have dates, compare by date
             $ret = Date::compare($a->getDate(), $b->getDate());
@@ -452,7 +475,8 @@ class Fact {
      *
      * @return int
      */
-    public static function compareType(Fact $a, Fact $b) {
+    public static function compareType(Fact $a, Fact $b)
+    {
         global $factsort;
 
         if (empty($factsort)) {
@@ -579,7 +603,8 @@ class Fact {
      *
      * @return string
      */
-    public function __toString() {
+    public function __toString()
+    {
         return $this->fact_id . '@' . $this->parent->getXref();
     }
 }

@@ -25,7 +25,8 @@ class Migration2 implements MigrationInterface {
     /**
      * Upgrade to to the next version
      */
-    public function upgrade() {
+    public function upgrade()
+    {
         // - create the wt_gedcom_chunk table to import gedcoms in
         // blocks of data smaller than the max_allowed_packet restriction.
 

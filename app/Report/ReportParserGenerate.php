@@ -121,7 +121,8 @@ class ReportParserGenerate extends ReportParserBase {
      * @param ReportBase $report_root
      * @param string[][] $vars
      */
-    public function __construct($report, ReportBase $report_root = null, array $vars = array()) {
+    public function __construct($report, ReportBase $report_root = null, array $vars = array())
+    {
         $this->report_root     = $report_root;
         $this->wt_report       = $report_root;
         $this->current_element = new ReportBaseElement;
@@ -139,7 +140,8 @@ class ReportParserGenerate extends ReportParserBase {
      * @param string   $name   the name of the XML element parsed
      * @param array    $attrs  an array of key value pairs for the attributes
      */
-    protected function startElement($parser, $name, $attrs) {
+    protected function startElement($parser, $name, $attrs)
+    {
         $newattrs = array();
 
         foreach ($attrs as $key => $value) {
@@ -171,7 +173,8 @@ class ReportParserGenerate extends ReportParserBase {
      * @param resource $parser the resource handler for the XML parser
      * @param string   $name   the name of the XML element parsed
      */
-    protected function endElement($parser, $name) {
+    protected function endElement($parser, $name)
+    {
         if (($this->process_footnote || $name === "Footnote") && ($this->process_ifs === 0 || $name === "if") && ($this->process_gedcoms === 0 || $name === "Gedcom") && ($this->process_repeats === 0 || $name === "Facts" || $name === "RepeatTag" || $name === "List" || $name === "Relatives")) {
             $start_method = $name . 'StartHandler';
             $end_method   = $name . 'EndHandler';
@@ -189,7 +192,8 @@ class ReportParserGenerate extends ReportParserBase {
      * @param resource $parser the resource handler for the XML parser
      * @param string   $data   the name of the XML element parsed
      */
-    protected function characterData($parser, $data) {
+    protected function characterData($parser, $data)
+    {
         if ($this->print_data && $this->process_gedcoms === 0 && $this->process_ifs === 0 && $this->process_repeats === 0) {
             $this->current_element->addText($data);
         }
@@ -200,7 +204,8 @@ class ReportParserGenerate extends ReportParserBase {
      *
      * @param array $attrs an array of key value pairs for the attributes
      */
-    private function styleStartHandler($attrs) {
+    private function styleStartHandler($attrs)
+    {
         if (empty($attrs['name'])) {
             throw new \DomainException('REPORT ERROR Style: The "name" of the style is missing or not set in the XML file.');
         }
@@ -239,7 +244,8 @@ class ReportParserGenerate extends ReportParserBase {
      *
      * @param array $attrs an array of key value pairs for the attributes
      */
-    private function docStartHandler($attrs) {
+    private function docStartHandler($attrs)
+    {
         $this->parser = $this->xml_parser;
 
         // Custom page width
@@ -328,14 +334,16 @@ class ReportParserGenerate extends ReportParserBase {
     /**
      * XML </Doc>
      */
-    private function docEndHandler() {
+    private function docEndHandler()
+    {
         $this->wt_report->run();
     }
 
     /**
      * XML <Header>
      */
-    private function headerStartHandler() {
+    private function headerStartHandler()
+    {
         // Clear the Header before any new elements are added
         $this->wt_report->clearHeader();
         $this->wt_report->setProcessing("H");
@@ -344,7 +352,8 @@ class ReportParserGenerate extends ReportParserBase {
     /**
      * XML <PageHeader>
      */
-    private function pageHeaderStartHandler() {
+    private function pageHeaderStartHandler()
+    {
         array_push($this->print_data_stack, $this->print_data);
         $this->print_data = false;
         array_push($this->wt_report_stack, $this->wt_report);
@@ -354,7 +363,8 @@ class ReportParserGenerate extends ReportParserBase {
     /**
      * XML <pageHeaderEndHandler>
      */
-    private function pageHeaderEndHandler() {
+    private function pageHeaderEndHandler()
+    {
         $this->print_data        = array_pop($this->print_data_stack);
         $this->current_element   = $this->wt_report;
         $this->wt_report         = array_pop($this->wt_report_stack);
@@ -364,14 +374,16 @@ class ReportParserGenerate extends ReportParserBase {
     /**
      * XML <bodyStartHandler>
      */
-    private function bodyStartHandler() {
+    private function bodyStartHandler()
+    {
         $this->wt_report->setProcessing("B");
     }
 
     /**
      * XML <footerStartHandler>
      */
-    private function footerStartHandler() {
+    private function footerStartHandler()
+    {
         $this->wt_report->setProcessing("F");
     }
 
@@ -380,7 +392,8 @@ class ReportParserGenerate extends ReportParserBase {
      *
      * @param array $attrs an array of key value pairs for the attributes
      */
-    private function cellStartHandler($attrs) {
+    private function cellStartHandler($attrs)
+    {
         // string The text alignment of the text in this box.
         $align = "";
         if (!empty($attrs['align'])) {
@@ -534,7 +547,8 @@ class ReportParserGenerate extends ReportParserBase {
     /**
      * XML </Cell>
      */
-    private function cellEndHandler() {
+    private function cellEndHandler()
+    {
         $this->print_data = array_pop($this->print_data_stack);
         $this->wt_report->addElement($this->current_element);
     }
@@ -542,7 +556,8 @@ class ReportParserGenerate extends ReportParserBase {
     /**
      * XML <Now /> element handler
      */
-    private function nowStartHandler() {
+    private function nowStartHandler()
+    {
         $g = FunctionsDate::timestampToGedcomDate(WT_TIMESTAMP + WT_TIMESTAMP_OFFSET);
         $this->current_element->addText($g->display());
     }
@@ -550,14 +565,16 @@ class ReportParserGenerate extends ReportParserBase {
     /**
      * XML <PageNum /> element handler
      */
-    private function pageNumStartHandler() {
+    private function pageNumStartHandler()
+    {
         $this->current_element->addText("#PAGENUM#");
     }
 
     /**
      * XML <TotalPages /> element handler
      */
-    private function totalPagesStartHandler() {
+    private function totalPagesStartHandler()
+    {
         $this->current_element->addText("{{:ptp:}}");
     }
 
@@ -566,7 +583,8 @@ class ReportParserGenerate extends ReportParserBase {
      *
      * @param array $attrs an array of key value pairs for the attributes
      */
-    private function gedcomStartHandler($attrs) {
+    private function gedcomStartHandler($attrs)
+    {
         global $WT_TREE;
 
         if ($this->process_gedcoms > 0) {
@@ -629,7 +647,8 @@ class ReportParserGenerate extends ReportParserBase {
     /**
      * Called at the end of an element.
      */
-    private function gedcomEndHandler() {
+    private function gedcomEndHandler()
+    {
         if ($this->process_gedcoms > 0) {
             $this->process_gedcoms--;
         } else {
@@ -642,7 +661,8 @@ class ReportParserGenerate extends ReportParserBase {
      *
      * @param array $attrs an array of key value pairs for the attributes
      */
-    private function textBoxStartHandler($attrs) {
+    private function textBoxStartHandler($attrs)
+    {
         // string Background color code
         $bgcolor = "";
         if (!empty($attrs['bgcolor'])) {
@@ -765,7 +785,8 @@ class ReportParserGenerate extends ReportParserBase {
     /**
      * XML <textBoxEndHandler>
      */
-    private function textBoxEndHandler() {
+    private function textBoxEndHandler()
+    {
         $this->print_data      = array_pop($this->print_data_stack);
         $this->current_element = $this->wt_report;
         $this->wt_report       = array_pop($this->wt_report_stack);
@@ -777,7 +798,8 @@ class ReportParserGenerate extends ReportParserBase {
      *
      * @param array $attrs an array of key value pairs for the attributes
      */
-    private function textStartHandler($attrs) {
+    private function textStartHandler($attrs)
+    {
         array_push($this->print_data_stack, $this->print_data);
         $this->print_data = true;
 
@@ -799,7 +821,8 @@ class ReportParserGenerate extends ReportParserBase {
     /**
      * XML </Text>
      */
-    private function textEndHandler() {
+    private function textEndHandler()
+    {
         $this->print_data = array_pop($this->print_data_stack);
         $this->wt_report->addElement($this->current_element);
     }
@@ -813,7 +836,8 @@ class ReportParserGenerate extends ReportParserBase {
      *
      * @param array $attrs an array of key value pairs for the attributes
      */
-    private function getPersonNameStartHandler($attrs) {
+    private function getPersonNameStartHandler($attrs)
+    {
         global $WT_TREE;
 
         $id    = "";
@@ -896,7 +920,8 @@ class ReportParserGenerate extends ReportParserBase {
      *
      * @param array $attrs an array of key value pairs for the attributes
      */
-    private function gedcomValueStartHandler($attrs) {
+    private function gedcomValueStartHandler($attrs)
+    {
         global $WT_TREE;
 
         $id    = "";
@@ -967,7 +992,8 @@ class ReportParserGenerate extends ReportParserBase {
      *
      * @param array $attrs an array of key value pairs for the attributes
      */
-    private function repeatTagStartHandler($attrs) {
+    private function repeatTagStartHandler($attrs)
+    {
         global $WT_TREE;
 
         $this->process_repeats++;
@@ -1039,7 +1065,8 @@ class ReportParserGenerate extends ReportParserBase {
     /**
      * XML </ RepeatTag>
      */
-    private function repeatTagEndHandler() {
+    private function repeatTagEndHandler()
+    {
         global $report;
 
         $this->process_repeats--;
@@ -1118,7 +1145,8 @@ class ReportParserGenerate extends ReportParserBase {
      *
      * @param array $attrs an array of key value pairs for the attributes
      */
-    private function varStartHandler($attrs) {
+    private function varStartHandler($attrs)
+    {
         if (empty($attrs['var'])) {
             throw new \DomainException('REPORT ERROR var: The attribute "var=" is missing or not set in the XML file on line: ' . xml_get_current_line_number($this->parser));
         }
@@ -1159,7 +1187,8 @@ class ReportParserGenerate extends ReportParserBase {
      *
      * @param array $attrs an array of key value pairs for the attributes
      */
-    private function factsStartHandler($attrs) {
+    private function factsStartHandler($attrs)
+    {
         global $WT_TREE;
 
         $this->process_repeats++;
@@ -1207,7 +1236,8 @@ class ReportParserGenerate extends ReportParserBase {
     /**
      * XML </Facts>
      */
-    private function factsEndHandler() {
+    private function factsEndHandler()
+    {
         global $report;
 
         $this->process_repeats--;
@@ -1290,7 +1320,8 @@ class ReportParserGenerate extends ReportParserBase {
      *
      * @param array $attrs an array of key value pairs for the attributes
      */
-    private function setVarStartHandler($attrs) {
+    private function setVarStartHandler($attrs)
+    {
         if (empty($attrs['name'])) {
             throw new \DomainException('REPORT ERROR var: The attribute "name" is missing or not set in the XML file');
         }
@@ -1364,7 +1395,8 @@ class ReportParserGenerate extends ReportParserBase {
      *
      * @param array $attrs an array of key value pairs for the attributes
      */
-    private function ifStartHandler($attrs) {
+    private function ifStartHandler($attrs)
+    {
         if ($this->process_ifs > 0) {
             $this->process_ifs++;
 
@@ -1419,7 +1451,8 @@ class ReportParserGenerate extends ReportParserBase {
     /**
      * XML <if /> end element
      */
-    private function ifEndHandler() {
+    private function ifEndHandler()
+    {
         if ($this->process_ifs > 0) {
             $this->process_ifs--;
         }
@@ -1432,7 +1465,8 @@ class ReportParserGenerate extends ReportParserBase {
      *
      * @param array $attrs an array of key value pairs for the attributes
      */
-    private function footnoteStartHandler($attrs) {
+    private function footnoteStartHandler($attrs)
+    {
         global $WT_TREE;
 
         $id = "";
@@ -1459,7 +1493,8 @@ class ReportParserGenerate extends ReportParserBase {
      * XML <Footnote /> end element
      * Print the collected Footnote data
      */
-    private function footnoteEndHandler() {
+    private function footnoteEndHandler()
+    {
         if ($this->process_footnote) {
             $this->print_data = array_pop($this->print_data_stack);
             $temp             = trim($this->current_element->getValue());
@@ -1475,7 +1510,8 @@ class ReportParserGenerate extends ReportParserBase {
     /**
      * XML <FootnoteTexts /> element
      */
-    private function footnoteTextsStartHandler() {
+    private function footnoteTextsStartHandler()
+    {
         $temp = "footnotetexts";
         $this->wt_report->addElement($temp);
     }
@@ -1483,7 +1519,8 @@ class ReportParserGenerate extends ReportParserBase {
     /**
      * XML <AgeAtDeath /> element handler
      */
-    private function ageAtDeathStartHandler() {
+    private function ageAtDeathStartHandler()
+    {
         // This duplicates functionality in FunctionsPrint::format_fact_date()
         global $factrec, $WT_TREE;
 
@@ -1540,7 +1577,8 @@ class ReportParserGenerate extends ReportParserBase {
     /**
      * XML element Forced line break handler - HTML code
      */
-    private function brStartHandler() {
+    private function brStartHandler()
+    {
         if ($this->print_data && $this->process_gedcoms === 0) {
             $this->current_element->addText('<br>');
         }
@@ -1549,7 +1587,8 @@ class ReportParserGenerate extends ReportParserBase {
     /**
      * XML <sp />element Forced space handler
      */
-    private function spStartHandler() {
+    private function spStartHandler()
+    {
         if ($this->print_data && $this->process_gedcoms === 0) {
             $this->current_element->addText(' ');
         }
@@ -1560,7 +1599,8 @@ class ReportParserGenerate extends ReportParserBase {
      *
      * @param array $attrs an array of key value pairs for the attributes
      */
-    private function highlightedImageStartHandler($attrs) {
+    private function highlightedImageStartHandler($attrs)
+    {
         global $WT_TREE;
 
         $id    = '';
@@ -1661,7 +1701,8 @@ class ReportParserGenerate extends ReportParserBase {
      *
      * @param array $attrs an array of key value pairs for the attributes
      */
-    private function imageStartHandler($attrs) {
+    private function imageStartHandler($attrs)
+    {
         global $WT_TREE;
 
         // mixed Position the top corner of this box on the page. the default is the current position
@@ -1778,7 +1819,8 @@ class ReportParserGenerate extends ReportParserBase {
      *
      * @param array $attrs an array of key value pairs for the attributes
      */
-    private function lineStartHandler($attrs) {
+    private function lineStartHandler($attrs)
+    {
         // Start horizontal position, current position (default)
         $x1 = ".";
         if (isset($attrs['x1'])) {
@@ -1833,7 +1875,8 @@ class ReportParserGenerate extends ReportParserBase {
      *
      * @param array $attrs an array of key value pairs for the attributes
      */
-    private function listStartHandler($attrs) {
+    private function listStartHandler($attrs)
+    {
         global $WT_TREE;
 
         $this->process_repeats++;
@@ -2212,7 +2255,8 @@ class ReportParserGenerate extends ReportParserBase {
     /**
      * XML <List>
      */
-    private function listEndHandler() {
+    private function listEndHandler()
+    {
         global $report;
 
         $this->process_repeats--;
@@ -2291,7 +2335,8 @@ class ReportParserGenerate extends ReportParserBase {
      * The total number is collected from
      * List and Relatives
      */
-    private function listTotalStartHandler() {
+    private function listTotalStartHandler()
+    {
         if ($this->list_private == 0) {
             $this->current_element->addText($this->list_total);
         } else {
@@ -2304,7 +2349,8 @@ class ReportParserGenerate extends ReportParserBase {
      *
      * @param array $attrs an array of key value pairs for the attributes
      */
-    private function relativesStartHandler($attrs) {
+    private function relativesStartHandler($attrs)
+    {
         global $WT_TREE;
 
         $this->process_repeats++;
@@ -2443,7 +2489,8 @@ class ReportParserGenerate extends ReportParserBase {
     /**
      * XML </ Relatives>
      */
-    private function relativesEndHandler() {
+    private function relativesEndHandler()
+    {
         global $report, $WT_TREE;
 
         $this->process_repeats--;
@@ -2518,7 +2565,8 @@ class ReportParserGenerate extends ReportParserBase {
      *
      * Prints the number of generations
      */
-    private function generationStartHandler() {
+    private function generationStartHandler()
+    {
         $this->current_element->addText($this->generation);
     }
 
@@ -2527,7 +2575,8 @@ class ReportParserGenerate extends ReportParserBase {
      *
      * Has to be placed in an element (header, pageheader, body or footer)
      */
-    private function newPageStartHandler() {
+    private function newPageStartHandler()
+    {
         $temp = "addpage";
         $this->wt_report->addElement($temp);
     }
@@ -2538,7 +2587,8 @@ class ReportParserGenerate extends ReportParserBase {
      * @param string  $tag   HTML tag name
      * @param array[] $attrs an array of key value pairs for the attributes
      */
-    private function htmlStartHandler($tag, $attrs) {
+    private function htmlStartHandler($tag, $attrs)
+    {
         if ($tag === "tempdoc") {
             return;
         }
@@ -2555,7 +2605,8 @@ class ReportParserGenerate extends ReportParserBase {
      *
      * @param string $tag
      */
-    private function htmlEndHandler($tag) {
+    private function htmlEndHandler($tag)
+    {
         if ($tag === "tempdoc") {
             return;
         }
@@ -2573,42 +2624,48 @@ class ReportParserGenerate extends ReportParserBase {
     /**
      * Handle <Input>
      */
-    private function inputStartHandler() {
+    private function inputStartHandler()
+    {
         // Dummy function, to prevent the default HtmlStartHandler() being called
     }
 
     /**
      * Handle </Input>
      */
-    private function inputEndHandler() {
+    private function inputEndHandler()
+    {
         // Dummy function, to prevent the default HtmlEndHandler() being called
     }
 
     /**
      * Handle <Report>
      */
-    private function reportStartHandler() {
+    private function reportStartHandler()
+    {
         // Dummy function, to prevent the default HtmlStartHandler() being called
     }
 
     /**
      * Handle </Report>
      */
-    private function reportEndHandler() {
+    private function reportEndHandler()
+    {
         // Dummy function, to prevent the default HtmlEndHandler() being called
     }
 
     /**
      * XML </titleEndHandler>
      */
-    private function titleEndHandler() {
+    private function titleEndHandler()
+    {
         $this->report_root->addTitle($this->text);
     }
 
     /**
      * XML </descriptionEndHandler>
      */
-    private function descriptionEndHandler() {
+    private function descriptionEndHandler()
+    {
         $this->report_root->addDescription($this->text);
     }
 
@@ -2620,7 +2677,8 @@ class ReportParserGenerate extends ReportParserBase {
      * @param bool  $parents
      * @param int  $generations
      */
-    private function addDescendancy(&$list, $pid, $parents = false, $generations = -1) {
+    private function addDescendancy(&$list, $pid, $parents = false, $generations = -1)
+    {
         global $WT_TREE;
 
         $person = Individual::getInstance($pid, $WT_TREE);
@@ -2681,7 +2739,8 @@ class ReportParserGenerate extends ReportParserBase {
      * @param bool  $children
      * @param int  $generations
      */
-    private function addAncestors(&$list, $pid, $children = false, $generations = -1) {
+    private function addAncestors(&$list, $pid, $children = false, $generations = -1)
+    {
         global $WT_TREE;
 
         $genlist                = array($pid);
@@ -2734,7 +2793,8 @@ class ReportParserGenerate extends ReportParserBase {
      *
      * @return string the value of a gedcom tag from the given gedcom record
      */
-    private function getGedcomValue($tag, $level, $gedrec) {
+    private function getGedcomValue($tag, $level, $gedrec)
+    {
         global $WT_TREE;
 
         if (empty($gedrec)) {
@@ -2810,7 +2870,8 @@ class ReportParserGenerate extends ReportParserBase {
      *
      * @return string
      */
-    private function substituteVars($expression, $quote) {
+    private function substituteVars($expression, $quote)
+    {
         $that = $this; // PHP5.3 cannot access $this inside a closure
         return preg_replace_callback(
             '/\$(\w+)/',

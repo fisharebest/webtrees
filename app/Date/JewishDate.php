@@ -33,7 +33,8 @@ class JewishDate extends CalendarDate {
      *
      * @param array|int|CalendarDate $date
      */
-    public function __construct($date) {
+    public function __construct($date)
+    {
         $this->calendar = new JewishCalendar;
         parent::__construct($date);
     }
@@ -43,7 +44,8 @@ class JewishDate extends CalendarDate {
      *
      * @return string
      */
-    protected function formatDay() {
+    protected function formatDay()
+    {
         if (WT_LOCALE === 'he' || WT_LOCALE === 'yi') {
             return $this->calendar->numberToHebrewNumerals($this->d, true);
         } else {
@@ -59,7 +61,8 @@ class JewishDate extends CalendarDate {
      *
      * @return string
      */
-    protected function formatShortYear() {
+    protected function formatShortYear()
+    {
         if (WT_LOCALE === 'he' || WT_LOCALE === 'yi') {
             return $this->calendar->numberToHebrewNumerals($this->y, false);
         } else {
@@ -72,7 +75,8 @@ class JewishDate extends CalendarDate {
      *
      * @return string
      */
-    protected function formatLongYear() {
+    protected function formatLongYear()
+    {
         if (WT_LOCALE === 'he' || WT_LOCALE === 'yi') {
             return $this->calendar->numberToHebrewNumerals($this->y, true);
         } else {
@@ -88,7 +92,8 @@ class JewishDate extends CalendarDate {
      *
      * @return string
      */
-    public static function monthNameNominativeCase($month_number, $leap_year) {
+    public static function monthNameNominativeCase($month_number, $leap_year)
+    {
         static $translated_month_names;
 
         if ($translated_month_names === null) {
@@ -126,7 +131,8 @@ class JewishDate extends CalendarDate {
      *
      * @return string
      */
-    protected function monthNameGenitiveCase($month_number, $leap_year) {
+    protected function monthNameGenitiveCase($month_number, $leap_year)
+    {
         static $translated_month_names;
 
         if ($translated_month_names === null) {
@@ -164,7 +170,8 @@ class JewishDate extends CalendarDate {
      *
      * @return string
      */
-    protected function monthNameLocativeCase($month_number, $leap_year) {
+    protected function monthNameLocativeCase($month_number, $leap_year)
+    {
         static $translated_month_names;
 
         if ($translated_month_names === null) {
@@ -202,7 +209,8 @@ class JewishDate extends CalendarDate {
      *
      * @return string
      */
-    protected function monthNameInstrumentalCase($month_number, $leap_year) {
+    protected function monthNameInstrumentalCase($month_number, $leap_year)
+    {
         static $translated_month_names;
 
         if ($translated_month_names === null) {
@@ -240,7 +248,8 @@ class JewishDate extends CalendarDate {
      *
      * @return string
      */
-    protected function monthNameAbbreviated($month_number, $leap_year) {
+    protected function monthNameAbbreviated($month_number, $leap_year)
+    {
         return self::monthNameNominativeCase($month_number, $leap_year);
     }
 
@@ -249,7 +258,8 @@ class JewishDate extends CalendarDate {
      *
      * @return int[]
      */
-    protected function nextMonth() {
+    protected function nextMonth()
+    {
         if ($this->m == 6 && !$this->isLeapYear()) {
             return array($this->y, 8);
         } else {

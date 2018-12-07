@@ -36,7 +36,8 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
      *
      * @param string $directory Where is this module installed
      */
-    public function __construct($directory) {
+    public function __construct($directory)
+    {
         parent::__construct($directory);
 
         // Create/update the database tables.
@@ -49,7 +50,8 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
      *
      * @return string
      */
-    public function getTitle() {
+    public function getTitle()
+    {
         return /* I18N: Name of a module */ I18N::translate('News');
     }
 
@@ -58,7 +60,8 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
      *
      * @return string
      */
-    public function getDescription() {
+    public function getDescription()
+    {
         return /* I18N: Description of the “News” module */ I18N::translate('Family news and site announcements.');
     }
 
@@ -71,7 +74,8 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
      *
      * @return string
      */
-    public function getBlock($block_id, $template = true, $cfg = array()) {
+    public function getBlock($block_id, $template = true, $cfg = array())
+    {
         global $ctype, $WT_TREE;
 
         switch (Filter::get('action')) {
@@ -145,17 +149,20 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
     }
 
     /** {@inheritdoc} */
-    public function loadAjax() {
+    public function loadAjax()
+    {
         return false;
     }
 
     /** {@inheritdoc} */
-    public function isUserBlock() {
+    public function isUserBlock()
+    {
         return false;
     }
 
     /** {@inheritdoc} */
-    public function isGedcomBlock() {
+    public function isGedcomBlock()
+    {
         return true;
     }
 
@@ -164,6 +171,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
      *
      * @param int $block_id
      */
-    public function configureBlock($block_id) {
+    public function configureBlock($block_id)
+    {
     }
 }

@@ -30,12 +30,14 @@ use Fisharebest\Webtrees\Theme;
  */
 class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
     /** {@inheritdoc} */
-    public function getTitle() {
+    public function getTitle()
+    {
         return /* I18N: Name of a module/block */ I18N::translate('Charts');
     }
 
     /** {@inheritdoc} */
-    public function getDescription() {
+    public function getDescription()
+    {
         return /* I18N: Description of the “Charts” module */ I18N::translate('An alternative way to display charts.');
     }
 
@@ -48,7 +50,8 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
      *
      * @return string
      */
-    public function getBlock($block_id, $template = true, $cfg = array()) {
+    public function getBlock($block_id, $template = true, $cfg = array())
+    {
         global $WT_TREE, $ctype, $controller;
 
         $PEDIGREE_ROOT_ID = $WT_TREE->getPreference('PEDIGREE_ROOT_ID');
@@ -146,17 +149,20 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
     }
 
     /** {@inheritdoc} */
-    public function loadAjax() {
+    public function loadAjax()
+    {
         return true;
     }
 
     /** {@inheritdoc} */
-    public function isUserBlock() {
+    public function isUserBlock()
+    {
         return true;
     }
 
     /** {@inheritdoc} */
-    public function isGedcomBlock() {
+    public function isGedcomBlock()
+    {
         return true;
     }
 
@@ -165,7 +171,8 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
      *
      * @param int $block_id
      */
-    public function configureBlock($block_id) {
+    public function configureBlock($block_id)
+    {
         global $WT_TREE, $controller;
 
         $PEDIGREE_ROOT_ID = $WT_TREE->getPreference('PEDIGREE_ROOT_ID');

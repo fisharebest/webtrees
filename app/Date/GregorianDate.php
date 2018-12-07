@@ -29,7 +29,8 @@ class GregorianDate extends CalendarDate {
      *
      * @param array|int|CalendarDate $date
      */
-    public function __construct($date) {
+    public function __construct($date)
+    {
         $this->calendar = new GregorianCalendar;
         parent::__construct($date);
     }

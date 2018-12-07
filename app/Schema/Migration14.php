@@ -24,7 +24,8 @@ class Migration14 implements MigrationInterface {
     /**
      * Upgrade to to the next version
      */
-    public function upgrade() {
+    public function upgrade()
+    {
         // Delete old config settings
         Database::exec("DELETE FROM `##gedcom_setting` WHERE setting_name IN('GEDCOM_DEFAULT_TAB', 'LINK_ICONS', 'ZOOM_BOXES')");
         Database::exec("DELETE FROM `##user_setting` WHERE setting_name='default'");

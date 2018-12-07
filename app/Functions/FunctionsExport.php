@@ -38,7 +38,8 @@ class FunctionsExport {
      *
      * @return string
      */
-    public static function reformatRecord($rec) {
+    public static function reformatRecord($rec)
+    {
         global $WT_TREE;
 
         $newrec = '';
@@ -93,7 +94,8 @@ class FunctionsExport {
      *
      * @return string
      */
-    public static function gedcomHeader(Tree $tree) {
+    public static function gedcomHeader(Tree $tree)
+    {
         // Default values for a new header
         $HEAD = "0 HEAD";
         $SOUR = "\n1 SOUR " . WT_WEBTREES . "\n2 NAME " . WT_WEBTREES . "\n2 VERS " . WT_VERSION;
@@ -148,7 +150,8 @@ class FunctionsExport {
      *
      * @return string
      */
-    public static function convertMediaPath($rec, $path) {
+    public static function convertMediaPath($rec, $path)
+    {
         if ($path && preg_match('/\n1 FILE (.+)/', $rec, $match)) {
             $old_file_name = $match[1];
             // Don’t modify external links
@@ -181,7 +184,8 @@ class FunctionsExport {
      *                                'path':         what constant should prefix all media file paths? (eg: media/  or c:\my pictures\my family
      *                                'slashes':      what folder separators apply to media file paths? (forward, backward)
      */
-    public static function exportGedcom(Tree $tree, $gedout, $exportOptions) {
+    public static function exportGedcom(Tree $tree, $gedout, $exportOptions)
+    {
         switch ($exportOptions['privatize']) {
             case 'gedadmin':
                 $access_level = Auth::PRIV_NONE;

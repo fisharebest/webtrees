@@ -105,7 +105,8 @@ class I18N {
      *
      * @return LocaleInterface[]
      */
-    public static function activeLocales() {
+    public static function activeLocales()
+    {
         $code_list = Site::getPreference('LANGUAGES');
 
         if ($code_list) {
@@ -138,7 +139,8 @@ class I18N {
      *
      * @return string
      */
-    public static function collation() {
+    public static function collation()
+    {
         $collation = self::$locale->collation();
         switch ($collation) {
             case 'croatian_ci':
@@ -156,7 +158,8 @@ class I18N {
      *
      * @return string
      */
-    public static function dateFormat() {
+    public static function dateFormat()
+    {
         return /* I18N: This is the format string for full dates. See http://php.net/date for codes */ self::$translator->translate('%j %F %Y');
     }
 
@@ -167,7 +170,8 @@ class I18N {
      *
      * @return string
      */
-    public static function datatablesI18N(array $lengths = null) {
+    public static function datatablesI18N(array $lengths = null)
+    {
         if ($lengths === null) {
             $lengths = array(10, 20, 30, 50, 100, -1);
         }
@@ -248,7 +252,8 @@ class I18N {
      *
      * @return string
      */
-    public static function digits($n) {
+    public static function digits($n)
+    {
         return self::$locale->digits($n);
     }
 
@@ -257,7 +262,8 @@ class I18N {
      *
      * @return string "ltr" or "rtl"
      */
-    public static function direction() {
+    public static function direction()
+    {
         return self::$locale->direction();
     }
 
@@ -266,7 +272,8 @@ class I18N {
      *
      * @return int Sunday=0, Monday=1, etc.
      */
-    public static function firstDay() {
+    public static function firstDay()
+    {
         return self::$locale->territory()->firstDay();
     }
 
@@ -281,7 +288,8 @@ class I18N {
      *
      * @return string
      */
-    public static function gedcomAge($string) {
+    public static function gedcomAge($string)
+    {
         switch ($string) {
             case 'STILLBORN':
                 // I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (stillborn)
@@ -339,7 +347,8 @@ class I18N {
      *
      * @return string
      */
-    public static function htmlAttributes() {
+    public static function htmlAttributes()
+    {
         return self::$locale->htmlAttributes();
     }
 
@@ -350,7 +359,8 @@ class I18N {
      *
      * @return string $string
      */
-    public static function init($code = null) {
+    public static function init($code = null)
+    {
         global $WT_TREE;
 
         mb_internal_encoding('UTF-8');
@@ -450,7 +460,8 @@ class I18N {
      *
      * @return LocaleInterface[]
      */
-    public static function installedLocales() {
+    public static function installedLocales()
+    {
         $locales = array();
         foreach (glob(WT_ROOT . 'language/*.mo') as $file) {
             try {
@@ -471,7 +482,8 @@ class I18N {
      *
      * @return string
      */
-    public static function languageName($locale) {
+    public static function languageName($locale)
+    {
         return Locale::create($locale)->endonym();
     }
 
@@ -482,7 +494,8 @@ class I18N {
      *
      * @return string
      */
-    public static function languageScript($locale) {
+    public static function languageScript($locale)
+    {
         return Locale::create($locale)->script()->code();
     }
 
@@ -499,7 +512,8 @@ class I18N {
      *
      * @return string
      */
-    public static function number($n, $precision = 0) {
+    public static function number($n, $precision = 0)
+    {
         return self::$locale->number(round($n, $precision));
     }
 
@@ -516,7 +530,8 @@ class I18N {
      *
      * @return string
      */
-    public static function percentage($n, $precision = 0) {
+    public static function percentage($n, $precision = 0)
+    {
         return self::$locale->percent(round($n, $precision + 2));
     }
 
@@ -529,7 +544,8 @@ class I18N {
      *
      * @return string
      */
-    public static function plural(/* var_args */) {
+    public static function plural(/* var_args */)
+    {
         $args    = func_get_args();
         $args[0] = self::$translator->translatePlural($args[0], $args[1], (int) $args[2]);
         unset($args[1], $args[2]);
@@ -551,7 +567,8 @@ class I18N {
      *
      * @return string
      */
-    public static function reverseText($text) {
+    public static function reverseText($text)
+    {
         // Remove HTML markup - we can't display it and it is LTR.
         $text = Filter::unescapeHtml($text);
 
@@ -589,7 +606,8 @@ class I18N {
      *
      * @return string
      */
-    public static function scriptDirection($script) {
+    public static function scriptDirection($script)
+    {
         switch ($script) {
             case 'Arab':
             case 'Hebr':
@@ -611,7 +629,8 @@ class I18N {
      *
      * @return int
      */
-    public static function strcasecmp($string1, $string2) {
+    public static function strcasecmp($string1, $string2)
+    {
         $strpos1 = 0;
         $strpos2 = 0;
         $strlen1 = strlen($string1);
@@ -684,7 +703,8 @@ class I18N {
      *
      * @return string
      */
-    public static function strtolower($string) {
+    public static function strtolower($string)
+    {
         if (self::$locale->language()->code() === 'tr' || self::$locale->language()->code() === 'az') {
             $string = strtr($string, array('I' => 'ı', 'İ' => 'i'));
         }
@@ -701,7 +721,8 @@ class I18N {
      *
      * @return string
      */
-    public static function strtoupper($string) {
+    public static function strtoupper($string)
+    {
         if (self::$locale->language()->code() === 'tr' || self::$locale->language()->code() === 'az') {
             $string = strtr($string, array('ı' => 'I', 'i' => 'İ'));
         }
@@ -718,7 +739,8 @@ class I18N {
      *
      * @return string
      */
-    private static function substitutePlaceholders(array $args) {
+    private static function substitutePlaceholders(array $args)
+    {
         if (count($args) > 1) {
             return call_user_func_array('sprintf', $args);
         } else {
@@ -733,7 +755,8 @@ class I18N {
      *
      * @return string
      */
-    public static function textScript($string) {
+    public static function textScript($string)
+    {
         $string = strip_tags($string); // otherwise HTML tags show up as latin
         $string = html_entity_decode($string, ENT_QUOTES, 'UTF-8'); // otherwise HTML entities show up as latin
         $string = str_replace(array('@N.N.', '@P.N.'), '', $string); // otherwise unknown names show up as latin
@@ -781,7 +804,8 @@ class I18N {
      *
      * @return string
      */
-    public static function timeAgo($seconds) {
+    public static function timeAgo($seconds)
+    {
         $minute = 60;
         $hour   = 60 * $minute;
         $day    = 24 * $hour;
@@ -818,7 +842,8 @@ class I18N {
      *
      * @return string
      */
-    public static function timeFormat() {
+    public static function timeFormat()
+    {
         return /* I18N: This is the format string for the time-of-day. See http://php.net/date for codes */ self::$translator->translate('%H:%i:%s');
     }
 
@@ -830,7 +855,8 @@ class I18N {
      *
      * @return string
      */
-    public static function translate(/* var_args */) {
+    public static function translate(/* var_args */)
+    {
         $args    = func_get_args();
         $args[0] = self::$translator->translate($args[0]);
 
@@ -845,7 +871,8 @@ class I18N {
      *
      * @return string
      */
-    public static function translateContext(/* var_args */) {
+    public static function translateContext(/* var_args */)
+    {
         $args    = func_get_args();
         $args[0] = self::$translator->translateContext($args[0], $args[1]);
         unset($args[1]);
@@ -858,7 +885,8 @@ class I18N {
      *
      * @return int Sunday=0, Monday=1, etc.
      */
-    public static function weekendEnd() {
+    public static function weekendEnd()
+    {
         return self::$locale->territory()->weekendEnd();
     }
 
@@ -867,7 +895,8 @@ class I18N {
      *
      * @return int Sunday=0, Monday=1, etc.
      */
-    public static function weekendStart() {
+    public static function weekendStart()
+    {
         return self::$locale->territory()->weekendStart();
     }
 
@@ -876,7 +905,8 @@ class I18N {
      *
      * @return CalendarInterface
      */
-    public static function defaultCalendar() {
+    public static function defaultCalendar()
+    {
         switch (self::$locale->languageTag()) {
             case 'ar':
                 return new ArabicCalendar;

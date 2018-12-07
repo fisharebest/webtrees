@@ -29,7 +29,8 @@ class CensusColumnBirthDayMonthSlashYear extends AbstractCensusColumn implements
      *
      * @return string
      */
-    public function generate(Individual $individual, Individual $head = null) {
+    public function generate(Individual $individual, Individual $head = null)
+    {
         $birth_date = $individual->getBirthDate();
 
         if ($birth_date->minimumJulianDay() === $birth_date->maximumJulianDay()) {

@@ -28,7 +28,8 @@ class QueryMedia {
      *
      * @return string[]
      */
-    public static function folderList() {
+    public static function folderList()
+    {
         global $WT_TREE;
 
         $folders = Database::prepare(
@@ -53,7 +54,8 @@ class QueryMedia {
      *
      * @return array
      */
-    public static function folderListAll() {
+    public static function folderListAll()
+    {
         $folders = Database::prepare(
             "SELECT LEFT(m_filename, CHAR_LENGTH(m_filename) - CHAR_LENGTH(SUBSTRING_INDEX(m_filename, '/', -1))) AS media_path" .
             " FROM  `##media`" .
@@ -83,7 +85,8 @@ class QueryMedia {
      *
      * @return Media[]
      */
-    public static function mediaList($folder, $subfolders, $sort, $filter, $form_type) {
+    public static function mediaList($folder, $subfolders, $sort, $filter, $form_type)
+    {
         global $WT_TREE;
 
         // All files in the folder, plus external files

@@ -24,7 +24,8 @@ class CensusOfDenmark1787 extends CensusOfDenmark implements CensusInterface {
      *
      * @return string
      */
-    public function censusDate() {
+    public function censusDate()
+    {
         return '01 JUL 1787';
     }
 
@@ -33,7 +34,8 @@ class CensusOfDenmark1787 extends CensusOfDenmark implements CensusInterface {
      *
      * @return CensusColumnInterface[]
      */
-    public function columns() {
+    public function columns()
+    {
         return array(
             new CensusColumnFullName($this, 'Navn', ''),
             new CensusColumnRelationToHead($this, 'Stilling i familien', ''),

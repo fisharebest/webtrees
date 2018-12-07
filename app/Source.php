@@ -29,7 +29,8 @@ class Source extends GedcomRecord {
      *
      * @return bool
      */
-    protected function canShowByType($access_level) {
+    protected function canShowByType($access_level)
+    {
         // Hide sources if they are attached to private repositories ...
         preg_match_all('/\n1 REPO @(.+)@/', $this->gedcom, $matches);
         foreach ($matches[1] as $match) {
@@ -50,7 +51,8 @@ class Source extends GedcomRecord {
      *
      * @return string
      */
-    protected function createPrivateGedcomRecord($access_level) {
+    protected function createPrivateGedcomRecord($access_level)
+    {
         return '0 @' . $this->xref . "@ SOUR\n1 TITL " . I18N::translate('Private');
     }
 
@@ -62,7 +64,8 @@ class Source extends GedcomRecord {
      *
      * @return null|string
      */
-    protected static function fetchGedcomRecord($xref, $tree_id) {
+    protected static function fetchGedcomRecord($xref, $tree_id)
+    {
         return Database::prepare(
             "SELECT s_gedcom FROM `##sources` WHERE s_id = :xref AND s_file = :tree_id"
         )->execute(array(
@@ -74,7 +77,8 @@ class Source extends GedcomRecord {
     /**
      * Extract names from the GEDCOM record.
      */
-    public function extractNames() {
+    public function extractNames()
+    {
         parent::extractNamesFromFacts(1, 'TITL', $this->getFacts('TITL'));
     }
 }

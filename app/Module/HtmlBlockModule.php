@@ -32,12 +32,14 @@ use Fisharebest\Webtrees\Tree;
  */
 class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface {
     /** {@inheritdoc} */
-    public function getTitle() {
+    public function getTitle()
+    {
         return /* I18N: Name of a module */ I18N::translate('HTML');
     }
 
     /** {@inheritdoc} */
-    public function getDescription() {
+    public function getDescription()
+    {
         return /* I18N: Description of the “HTML” module */ I18N::translate('Add your own text and graphics.');
     }
 
@@ -50,7 +52,8 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface {
      *
      * @return string
      */
-    public function getBlock($block_id, $template = true, $cfg = array()) {
+    public function getBlock($block_id, $template = true, $cfg = array())
+    {
         global $ctype, $WT_TREE;
 
         $title          = $this->getBlockSetting($block_id, 'title');
@@ -120,17 +123,20 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface {
     }
 
     /** {@inheritdoc} */
-    public function loadAjax() {
+    public function loadAjax()
+    {
         return false;
     }
 
     /** {@inheritdoc} */
-    public function isUserBlock() {
+    public function isUserBlock()
+    {
         return true;
     }
 
     /** {@inheritdoc} */
-    public function isGedcomBlock() {
+    public function isGedcomBlock()
+    {
         return true;
     }
 
@@ -139,7 +145,8 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface {
      *
      * @param int $block_id
      */
-    public function configureBlock($block_id) {
+    public function configureBlock($block_id)
+    {
         global $WT_TREE;
 
         if (Filter::postBool('save') && Filter::checkCsrf()) {

@@ -23,7 +23,8 @@ use Fisharebest\Webtrees\Schema\MigrationInterface;
  */
 class Migration4 implements MigrationInterface {
     /** {@inheritDoc} */
-    public function upgrade() {
+    public function upgrade()
+    {
         // Delete some old/unused configuration settings
         Database::exec(
             "DELETE FROM `##module_setting` WHERE module_name='googlemap' AND setting_name IN (

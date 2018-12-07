@@ -27,7 +27,8 @@ class Note extends GedcomRecord {
      *
      * @return string|null
      */
-    public function getNote() {
+    public function getNote()
+    {
         if (preg_match('/^0 @' . WT_REGEX_XREF . '@ NOTE ?(.*(?:\n1 CONT ?.*)*)/', $this->gedcom . $this->pending, $match)) {
             return preg_replace("/\n1 CONT ?/", "\n", $match[1]);
         } else {
@@ -42,7 +43,8 @@ class Note extends GedcomRecord {
      *
      * @return bool
      */
-    protected function canShowByType($access_level) {
+    protected function canShowByType($access_level)
+    {
         // Hide notes if they are attached to private records
         $linked_ids = Database::prepare(
             "SELECT l_from FROM `##link` WHERE l_to=? AND l_file=?"
@@ -67,7 +69,8 @@ class Note extends GedcomRecord {
      *
      * @return string
      */
-    protected function createPrivateGedcomRecord($access_level) {
+    protected function createPrivateGedcomRecord($access_level)
+    {
         return '0 @' . $this->xref . '@ NOTE ' . I18N::translate('Private');
     }
 
@@ -79,7 +82,8 @@ class Note extends GedcomRecord {
      *
      * @return null|string
      */
-    protected static function fetchGedcomRecord($xref, $tree_id) {
+    protected static function fetchGedcomRecord($xref, $tree_id)
+    {
         return Database::prepare(
             "SELECT o_gedcom FROM `##other` WHERE o_id = :xref AND o_file = :tree_id AND o_type = 'NOTE'"
         )->execute(array(
@@ -92,7 +96,8 @@ class Note extends GedcomRecord {
      * Create a name for this note - apply (and remove) markup, then take
      * a maximum of 100 characters from the first line.
      */
-    public function extractNames() {
+    public function extractNames()
+    {
         $text = $this->getNote();
 
         if ($text) {

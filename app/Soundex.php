@@ -24,7 +24,8 @@ class Soundex {
      *
      * @return string[]
      */
-    public static function getAlgorithms() {
+    public static function getAlgorithms()
+    {
         return array(
             'std' => /* I18N: http://en.wikipedia.org/wiki/Soundex */ I18N::translate('Russell'),
             'dm'  => /* I18N: http://en.wikipedia.org/wiki/Daitch–Mokotoff_Soundex */ I18N::translate('Daitch-Mokotoff'),
@@ -39,7 +40,8 @@ class Soundex {
      *
      * @return bool
      */
-    public static function compare($soundex1, $soundex2) {
+    public static function compare($soundex1, $soundex2)
+    {
         if ($soundex1 && $soundex2) {
             foreach (explode(':', $soundex1) as $code) {
                 if (strpos($soundex2, $code) !== false) {
@@ -58,7 +60,8 @@ class Soundex {
      *
      * @return null|string
      */
-    public static function russell($text) {
+    public static function russell($text)
+    {
         $words         = preg_split('/\s/', $text, -1, PREG_SPLIT_NO_EMPTY);
         $soundex_array = array();
         foreach ($words as $word) {
@@ -89,7 +92,8 @@ class Soundex {
      *
      * @return null|string
      */
-    public static function daitchMokotoff($text) {
+    public static function daitchMokotoff($text)
+    {
         $words         = preg_split('/\s/', $text, -1, PREG_SPLIT_NO_EMPTY);
         $soundex_array = array();
         foreach ($words as $word) {
@@ -686,7 +690,8 @@ class Soundex {
      *
      * @return string[] List of possible DM codes for the word.
      */
-    private static function daitchMokotoffWord($name) {
+    private static function daitchMokotoffWord($name)
+    {
         // Apply special transformation rules to the input string
         $name = I18N::strtoupper($name);
         foreach (self::$transformNameTable as $transformRule) {

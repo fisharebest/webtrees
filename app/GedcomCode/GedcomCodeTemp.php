@@ -28,7 +28,8 @@ class GedcomCodeTemp {
      *
      * @return bool
      */
-    public static function isTagLDS($tag) {
+    public static function isTagLDS($tag)
+    {
         return $tag === 'BAPL' || $tag === 'CONL' || $tag === 'ENDL' || $tag === 'SLGC' || $tag === 'SLGS';
     }
 
@@ -43,7 +44,8 @@ class GedcomCodeTemp {
      *
      * @return string[]
      */
-    public static function templeCodes() {
+    public static function templeCodes()
+    {
         return array(
             'ABA', 'ACCRA', 'ADELA', 'ALBER', 'ALBUQ', 'ANCHO', 'ARIZO', 'ASUNC',
             'ATLAN', 'BAIRE', 'BILLI', 'BIRMI', 'BISMA', 'BOGOT', 'BOISE', 'BOSTO',
@@ -75,7 +77,8 @@ class GedcomCodeTemp {
      *
      * @return string
      */
-    public static function templeName($temple_code) {
+    public static function templeName($temple_code)
+    {
         switch ($temple_code) {
             case 'ABA':
                 return /* I18N: Location of an LDS church temple */ I18N::translate('Aba, Nigeria');
@@ -397,7 +400,8 @@ class GedcomCodeTemp {
      *
      * @return string[]
      */
-    public static function templeNames() {
+    public static function templeNames()
+    {
         $temple_names = array();
         foreach (self::templeCodes() as $temple_code) {
             $temple_names[$temple_code] = self::templeName($temple_code);

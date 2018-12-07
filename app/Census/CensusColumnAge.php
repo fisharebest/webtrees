@@ -30,7 +30,8 @@ class CensusColumnAge extends AbstractCensusColumn implements CensusColumnInterf
      *
      * @return string
      */
-    public function generate(Individual $individual, Individual $head = null) {
+    public function generate(Individual $individual, Individual $head = null)
+    {
         return (string) Date::getAge($individual->getEstimatedBirthDate(), $this->date(), 0);
     }
 }

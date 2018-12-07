@@ -26,7 +26,8 @@ class Html {
      *
      * @return string
      */
-    public static function filename($filename) {
+    public static function filename($filename)
+    {
         return '<samp class="filename" dir="ltr">' . Filter::escapeHtml($filename) . '</samp>';
     }
 }

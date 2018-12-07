@@ -24,7 +24,8 @@ class CensusOfFrance1931 extends CensusOfFrance implements CensusInterface {
      *
      * @return string
      */
-    public function censusDate() {
+    public function censusDate()
+    {
         return '15 JAN 1931';
     }
 
@@ -33,7 +34,8 @@ class CensusOfFrance1931 extends CensusOfFrance implements CensusInterface {
      *
      * @return CensusColumnInterface[]
      */
-    public function columns() {
+    public function columns()
+    {
         return array(
             new CensusColumnSurname($this, 'Noms', 'Noms de famille'),
             new CensusColumnGivenNames($this, 'Prénoms', ''),

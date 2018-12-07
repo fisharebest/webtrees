@@ -50,7 +50,8 @@ class ReportBaseText extends ReportBaseElement {
      * @param string $style The name of the text style
      * @param string $color HTML color code
      */
-    public function __construct($style, $color) {
+    public function __construct($style, $color)
+    {
         $this->text               = '';
         $this->color              = $color;
         $this->wrapWidthRemaining = 0;
@@ -67,7 +68,8 @@ class ReportBaseText extends ReportBaseElement {
      *
      * @return mixed
      */
-    public function setWrapWidth($wrapwidth, $cellwidth) {
+    public function setWrapWidth($wrapwidth, $cellwidth)
+    {
         $this->wrapWidthCell = $cellwidth;
         if (strpos($this->text, "\n") !== false) {
             $this->wrapWidthRemaining = $cellwidth;
@@ -83,7 +85,8 @@ class ReportBaseText extends ReportBaseElement {
      *
      * @return string
      */
-    public function getStyleName() {
+    public function getStyleName()
+    {
         return $this->styleName;
     }
 }

@@ -37,7 +37,8 @@ class Filter {
      *
      * @return string
      */
-    public static function escapeHtml($string) {
+    public static function escapeHtml($string)
+    {
         if (defined('ENT_SUBSTITUTE')) {
             // PHP5.4 allows us to substitute invalid UTF8 sequences
             return htmlspecialchars($string, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
@@ -53,7 +54,8 @@ class Filter {
      *
      * @return string
      */
-    public static function escapeUrl($string) {
+    public static function escapeUrl($string)
+    {
         return rawurlencode($string);
     }
 
@@ -64,7 +66,8 @@ class Filter {
      *
      * @return string
      */
-    public static function escapeJs($string) {
+    public static function escapeJs($string)
+    {
         return preg_replace_callback('/[^A-Za-z0-9,. _]/Su', function ($x) {
             if (strlen($x[0]) == 1) {
                 return sprintf('\\x%02X', ord($x[0]));
@@ -85,7 +88,8 @@ class Filter {
      *
      * @return string
      */
-    public static function escapeLike($string) {
+    public static function escapeLike($string)
+    {
         return strtr(
             $string,
             array(
@@ -103,7 +107,8 @@ class Filter {
      *
      * @return string
      */
-    public static function unescapeHtml($string) {
+    public static function unescapeHtml($string)
+    {
         return html_entity_decode(strip_tags($string), ENT_QUOTES, 'UTF-8');
     }
 
@@ -115,7 +120,8 @@ class Filter {
      *
      * @return string
      */
-    public static function formatText($text, Tree $WT_TREE) {
+    public static function formatText($text, Tree $WT_TREE)
+    {
         switch ($WT_TREE->getPreference('FORMAT_TEXT')) {
             case 'markdown':
                 return '<div class="markdown" dir="auto">' . self::markdown($text) . '</div>';
@@ -131,7 +137,8 @@ class Filter {
      *
      * @return string
      */
-    public static function expandUrls($text) {
+    public static function expandUrls($text)
+    {
         return preg_replace_callback(
             '/' . addcslashes('(?!>)' . self::URL_REGEX . '(?!</a>)', '/') . '/i',
             function ($m) {
@@ -148,7 +155,8 @@ class Filter {
      *
      * @return string
      */
-    public static function markdown($text) {
+    public static function markdown($text)
+    {
         $parser                       = new MarkdownExtra;
         $parser->empty_element_suffix = '>';
         $parser->no_markup            = true;
@@ -179,7 +187,8 @@ class Filter {
      *
      * @return string|null
      */
-    private static function input($source, $variable, $regexp = null, $default = null) {
+    private static function input($source, $variable, $regexp = null, $default = null)
+    {
         if ($regexp) {
             return filter_input(
                 $source,
@@ -218,7 +227,8 @@ class Filter {
      *
      * @return string[]
      */
-    private static function inputArray($source, $variable, $regexp = null, $default = null) {
+    private static function inputArray($source, $variable, $regexp = null, $default = null)
+    {
         if ($regexp) {
             // PHP5.3 requires the $tmp variable
             $tmp = filter_input_array(
@@ -264,7 +274,8 @@ class Filter {
      *
      * @return null|string
      */
-    public static function get($variable, $regexp = null, $default = null) {
+    public static function get($variable, $regexp = null, $default = null)
+    {
         return self::input(INPUT_GET, $variable, $regexp, $default);
     }
 
@@ -277,7 +288,8 @@ class Filter {
      *
      * @return string[]
      */
-    public static function getArray($variable, $regexp = null, $default = null) {
+    public static function getArray($variable, $regexp = null, $default = null)
+    {
         return self::inputArray(INPUT_GET, $variable, $regexp, $default);
     }
 
@@ -288,7 +300,8 @@ class Filter {
      *
      * @return bool
      */
-    public static function getBool($variable) {
+    public static function getBool($variable)
+    {
         return (bool) filter_input(INPUT_GET, $variable, FILTER_VALIDATE_BOOLEAN);
     }
 
@@ -302,7 +315,8 @@ class Filter {
      *
      * @return int
      */
-    public static function getInteger($variable, $min = 0, $max = PHP_INT_MAX, $default = 0) {
+    public static function getInteger($variable, $min = 0, $max = PHP_INT_MAX, $default = 0)
+    {
         return filter_input(INPUT_GET, $variable, FILTER_VALIDATE_INT, array('options' => array('min_range' => $min, 'max_range' => $max, 'default' => $default)));
     }
 
@@ -314,7 +328,8 @@ class Filter {
      *
      * @return null|string
      */
-    public static function getEmail($variable, $default = null) {
+    public static function getEmail($variable, $default = null)
+    {
         return filter_input(INPUT_GET, $variable, FILTER_VALIDATE_EMAIL) ?: $default;
     }
 
@@ -326,7 +341,8 @@ class Filter {
      *
      * @return null|string
      */
-    public static function getUrl($variable, $default = null) {
+    public static function getUrl($variable, $default = null)
+    {
         return filter_input(INPUT_GET, $variable, FILTER_VALIDATE_URL) ?: $default;
     }
 
@@ -339,7 +355,8 @@ class Filter {
      *
      * @return null|string
      */
-    public static function post($variable, $regexp = null, $default = null) {
+    public static function post($variable, $regexp = null, $default = null)
+    {
         return self::input(INPUT_POST, $variable, $regexp, $default);
     }
 
@@ -352,7 +369,8 @@ class Filter {
      *
      * @return string[]
      */
-    public static function postArray($variable, $regexp = null, $default = null) {
+    public static function postArray($variable, $regexp = null, $default = null)
+    {
         return self::inputArray(INPUT_POST, $variable, $regexp, $default);
     }
 
@@ -363,7 +381,8 @@ class Filter {
      *
      * @return bool
      */
-    public static function postBool($variable) {
+    public static function postBool($variable)
+    {
         return (bool) filter_input(INPUT_POST, $variable, FILTER_VALIDATE_BOOLEAN);
     }
 
@@ -377,7 +396,8 @@ class Filter {
      *
      * @return int
      */
-    public static function postInteger($variable, $min = 0, $max = PHP_INT_MAX, $default = 0) {
+    public static function postInteger($variable, $min = 0, $max = PHP_INT_MAX, $default = 0)
+    {
         return filter_input(INPUT_POST, $variable, FILTER_VALIDATE_INT, array('options' => array('min_range' => $min, 'max_range' => $max, 'default' => $default)));
     }
 
@@ -389,7 +409,8 @@ class Filter {
      *
      * @return null|string
      */
-    public static function postEmail($variable, $default = null) {
+    public static function postEmail($variable, $default = null)
+    {
         return filter_input(INPUT_POST, $variable, FILTER_VALIDATE_EMAIL) ?: $default;
     }
 
@@ -401,7 +422,8 @@ class Filter {
      *
      * @return null|string
      */
-    public static function postUrl($variable, $default = null) {
+    public static function postUrl($variable, $default = null)
+    {
         return filter_input(INPUT_POST, $variable, FILTER_VALIDATE_URL) ?: $default;
     }
 
@@ -414,7 +436,8 @@ class Filter {
      *
      * @return null|string
      */
-    public static function cookie($variable, $regexp = null, $default = null) {
+    public static function cookie($variable, $regexp = null, $default = null)
+    {
         return self::input(INPUT_COOKIE, $variable, $regexp, $default);
     }
 
@@ -427,7 +450,8 @@ class Filter {
      *
      * @return null|string
      */
-    public static function server($variable, $regexp = null, $default = null) {
+    public static function server($variable, $regexp = null, $default = null)
+    {
         // On some servers, variables that are present in $_SERVER cannot be
         // found via filter_input(INPUT_SERVER). Instead, they are found via
         // filter_input(INPUT_ENV). Since we cannot rely on filter_input(),
@@ -446,7 +470,8 @@ class Filter {
      *
      * @return string
      */
-    public static function getCsrfToken() {
+    public static function getCsrfToken()
+    {
         if (!Session::has('CSRF_TOKEN')) {
             $charset    = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcedfghijklmnopqrstuvwxyz0123456789';
             $csrf_token = '';
@@ -464,7 +489,8 @@ class Filter {
      *
      * @return string
      */
-    public static function getCsrf() {
+    public static function getCsrf()
+    {
         return '<input type="hidden" name="csrf" value="' . self::getCsrfToken() . '">';
     }
 
@@ -473,7 +499,8 @@ class Filter {
      *
      * @return bool
      */
-    public static function checkCsrf() {
+    public static function checkCsrf()
+    {
         if (self::post('csrf') !== self::getCsrfToken()) {
             // Oops. Something is not quite right
             FlashMessages::addMessage(I18N::translate('This form has expired. Try again.'), 'error');

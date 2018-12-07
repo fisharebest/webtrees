@@ -27,7 +27,8 @@ class ReportBaseElement {
      *
      * @param ReportHtml|ReportTcpdf $renderer
      */
-    public function render($renderer) {
+    public function render($renderer)
+    {
         //-- to be implemented in inherited classes
     }
 
@@ -38,7 +39,8 @@ class ReportBaseElement {
      *
      * @return float
      */
-    public function getHeight($renderer) {
+    public function getHeight($renderer)
+    {
         return 0.0;
     }
 
@@ -49,7 +51,8 @@ class ReportBaseElement {
      *
      * @return float
      */
-    public function getWidth($renderer) {
+    public function getWidth($renderer)
+    {
         return 0.0;
     }
 
@@ -60,7 +63,8 @@ class ReportBaseElement {
      *
      * @return int
      */
-    public function addText($t) {
+    public function addText($t)
+    {
         $t = trim($t, "\r\n\t");
         $t = str_replace(array("<br>", "&nbsp;"), array("\n", " "), $t);
         $t = strip_tags($t);
@@ -75,7 +79,8 @@ class ReportBaseElement {
      *
      * @return int
      */
-    public function addNewline() {
+    public function addNewline()
+    {
         $this->text .= "\n";
 
         return 0;
@@ -86,7 +91,8 @@ class ReportBaseElement {
      *
      * @return string
      */
-    public function getValue() {
+    public function getValue()
+    {
         return $this->text;
     }
 
@@ -98,7 +104,8 @@ class ReportBaseElement {
      *
      * @return int
      */
-    public function setWrapWidth($wrapwidth, $cellwidth) {
+    public function setWrapWidth($wrapwidth, $cellwidth)
+    {
         return 0;
     }
 
@@ -107,7 +114,8 @@ class ReportBaseElement {
      *
      * @param $renderer
      */
-    public function renderFootnote($renderer) {
+    public function renderFootnote($renderer)
+    {
     }
 
     /**
@@ -115,7 +123,8 @@ class ReportBaseElement {
      *
      * @param $text
      */
-    public function setText($text) {
+    public function setText($text)
+    {
         $this->text = $text;
     }
 }

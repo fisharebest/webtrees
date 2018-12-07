@@ -25,12 +25,14 @@ use Fisharebest\Webtrees\Theme;
  */
 class LoginBlockModule extends AbstractModule implements ModuleBlockInterface {
     /** {@inheritdoc} */
-    public function getTitle() {
+    public function getTitle()
+    {
         return /* I18N: Name of a module */ I18N::translate('Sign in');
     }
 
     /** {@inheritdoc} */
-    public function getDescription() {
+    public function getDescription()
+    {
         return /* I18N: Description of the “Sign in” module */ I18N::translate('An alternative way to sign in and sign out.');
     }
 
@@ -43,7 +45,8 @@ class LoginBlockModule extends AbstractModule implements ModuleBlockInterface {
      *
      * @return string
      */
-    public function getBlock($block_id, $template = true, $cfg = array()) {
+    public function getBlock($block_id, $template = true, $cfg = array())
+    {
         global $controller;
         $id    = $this->getName() . $block_id;
         $class = $this->getName() . '_block';
@@ -116,17 +119,20 @@ class LoginBlockModule extends AbstractModule implements ModuleBlockInterface {
     }
 
     /** {@inheritdoc} */
-    public function loadAjax() {
+    public function loadAjax()
+    {
         return false;
     }
 
     /** {@inheritdoc} */
-    public function isUserBlock() {
+    public function isUserBlock()
+    {
         return true;
     }
 
     /** {@inheritdoc} */
-    public function isGedcomBlock() {
+    public function isGedcomBlock()
+    {
         return true;
     }
 
@@ -135,6 +141,7 @@ class LoginBlockModule extends AbstractModule implements ModuleBlockInterface {
      *
      * @param int $block_id
      */
-    public function configureBlock($block_id) {
+    public function configureBlock($block_id)
+    {
     }
 }

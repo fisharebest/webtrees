@@ -208,7 +208,8 @@ switch ($action) {
  *
  * @return bool
  */
-function addMessage($message) {
+function addMessage($message)
+{
     global $WT_TREE;
 
     $success = true;

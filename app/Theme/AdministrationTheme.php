@@ -29,7 +29,8 @@ class AdministrationTheme extends AbstractTheme implements ThemeInterface {
      *
      * @return string[]
      */
-    protected function stylesheets() {
+    protected function stylesheets()
+    {
         $stylesheets   = parent::stylesheets();
         $stylesheets[] = WT_DATATABLES_BOOTSTRAP_CSS_URL;
         $stylesheets[] = WT_BOOTSTRAP_DATETIMEPICKER_CSS_URL;
@@ -43,7 +44,8 @@ class AdministrationTheme extends AbstractTheme implements ThemeInterface {
      *
      * @return string A relative path, such as "themes/foo/"
      */
-    public function assetUrl() {
+    public function assetUrl()
+    {
         return 'themes/_administration/css-1.7.5/';
     }
 
@@ -52,7 +54,8 @@ class AdministrationTheme extends AbstractTheme implements ThemeInterface {
      *
      * @return string
      */
-    protected function favicon() {
+    protected function favicon()
+    {
         return '<link rel="icon" href="favicon.ico" type="image/x-icon">';
     }
     /**
@@ -60,7 +63,8 @@ class AdministrationTheme extends AbstractTheme implements ThemeInterface {
      *
      * @return string
      */
-    protected function footerContent() {
+    protected function footerContent()
+    {
         return '';
     }
 
@@ -69,7 +73,8 @@ class AdministrationTheme extends AbstractTheme implements ThemeInterface {
      *
      * @return string
      */
-    protected function headerContent() {
+    protected function headerContent()
+    {
         return
             $this->accessibilityLinks() .
             $this->secondaryMenuContainer($this->secondaryMenu());
@@ -80,7 +85,8 @@ class AdministrationTheme extends AbstractTheme implements ThemeInterface {
      *
      * @return string
      */
-    public function hookFooterExtraJavascript() {
+    public function hookFooterExtraJavascript()
+    {
         return
             '<script src="' . WT_BOOTSTRAP_JS_URL . '"></script>';
     }
@@ -90,7 +96,8 @@ class AdministrationTheme extends AbstractTheme implements ThemeInterface {
      *
      * @return Menu
      */
-    protected function menuAdminSite() {
+    protected function menuAdminSite()
+    {
         return new Menu(/* I18N: Menu entry*/ I18N::translate('Website'), '#', '', array(), array(
             new Menu(/* I18N: Menu entry */ I18N::translate('Website preferences'), 'admin_site_config.php?action=site'),
             new Menu(/* I18N: Menu entry */ I18N::translate('Sending email'), 'admin_site_config.php?action=email'),
@@ -110,7 +117,8 @@ class AdministrationTheme extends AbstractTheme implements ThemeInterface {
      *
      * @return Menu
      */
-    protected function menuAdminTrees() {
+    protected function menuAdminTrees()
+    {
         return new Menu(/* I18N: Menu entry */ I18N::translate('Family trees'), '#', '', array(), array_filter(array(
             $this->menuAdminTreesManage(),
             $this->menuAdminTreesSetDefault(),
@@ -123,7 +131,8 @@ class AdministrationTheme extends AbstractTheme implements ThemeInterface {
      *
      * @return Menu
      */
-    protected function menuAdminTreesManage() {
+    protected function menuAdminTreesManage()
+    {
         return new Menu(/* I18N: Menu entry */ I18N::translate('Manage family trees'), 'admin_trees_manage.php');
     }
 
@@ -132,7 +141,8 @@ class AdministrationTheme extends AbstractTheme implements ThemeInterface {
      *
      * @return Menu|null
      */
-    protected function menuAdminTreesMerge() {
+    protected function menuAdminTreesMerge()
+    {
         if (Auth::isAdmin() && count(Tree::getAll()) > 1) {
             return new Menu(/* I18N: Menu entry */ I18N::translate('Merge family trees'), 'admin_trees_merge.php');
         } else {
@@ -145,7 +155,8 @@ class AdministrationTheme extends AbstractTheme implements ThemeInterface {
      *
      * @return Menu|null
      */
-    protected function menuAdminTreesSetDefault() {
+    protected function menuAdminTreesSetDefault()
+    {
         if (Auth::isAdmin() && count(Tree::getAll()) > 1) {
             return new Menu(/* I18N: Menu entry */ I18N::translate('Set the default blocks for new family trees'), 'index_edit.php?gedcom_id=-1');
         } else {
@@ -158,7 +169,8 @@ class AdministrationTheme extends AbstractTheme implements ThemeInterface {
      *
      * @return Menu
      */
-    protected function menuAdminUsers() {
+    protected function menuAdminUsers()
+    {
         return new Menu(/* I18N: Menu entry */ I18N::translate('Users'), '#', '', array(), array(
             new Menu(/* I18N: Menu entry */ I18N::translate('User administration'), 'admin_users.php'),
             new Menu(/* I18N: Menu entry */ I18N::translate('Add a user'), 'admin_users.php?action=edit'),
@@ -173,7 +185,8 @@ class AdministrationTheme extends AbstractTheme implements ThemeInterface {
      *
      * @return Menu
      */
-    protected function menuAdminMedia() {
+    protected function menuAdminMedia()
+    {
         return new Menu(/* I18N: Menu entry */ I18N::translate('Media'), '#', '', array(), array(
             new Menu(/* I18N: Menu entry */ I18N::translate('Manage media'), 'admin_media.php'),
             new Menu(/* I18N: Menu entry */ I18N::translate('Upload media files'), 'admin_media_upload.php'),
@@ -185,7 +198,8 @@ class AdministrationTheme extends AbstractTheme implements ThemeInterface {
      *
      * @return Menu
      */
-    protected function menuAdminModules() {
+    protected function menuAdminModules()
+    {
         return new Menu(/* I18N: Menu entry */ I18N::translate('Modules'), '#', '', array(), array(
             new Menu(/* I18N: Menu entry */ I18N::translate('Module administration'), 'admin_modules.php'),
             new Menu(/* I18N: Menu entry */ I18N::translate('Menus'), 'admin_module_menus.php'),
@@ -202,7 +216,8 @@ class AdministrationTheme extends AbstractTheme implements ThemeInterface {
      *
      * @return Menu[]
      */
-    protected function primaryMenu() {
+    protected function primaryMenu()
+    {
         if (Auth::isAdmin()) {
             return array(
                 $this->menuAdminSite(),
@@ -225,7 +240,8 @@ class AdministrationTheme extends AbstractTheme implements ThemeInterface {
      *
      * @return string
      */
-    protected function primaryMenuContainer(array $menus) {
+    protected function primaryMenuContainer(array $menus)
+    {
         $html = '';
         foreach ($menus as $menu) {
             $html .= $menu->bootstrap();
@@ -255,7 +271,8 @@ class AdministrationTheme extends AbstractTheme implements ThemeInterface {
      *
      * @return Menu[]
      */
-    protected function secondaryMenu() {
+    protected function secondaryMenu()
+    {
         return array_filter(array(
             $this->menuPendingChanges(),
             $this->menuMyPage(),
@@ -271,7 +288,8 @@ class AdministrationTheme extends AbstractTheme implements ThemeInterface {
      *
      * @return string
      */
-    protected function secondaryMenuContainer(array $menus) {
+    protected function secondaryMenuContainer(array $menus)
+    {
         return '<div class="clearfix"><ul class="nav nav-pills small pull-right flip" role="menu">' . $this->secondaryMenuContent($menus) . '</ul></div>';
     }
 
@@ -282,8 +300,11 @@ class AdministrationTheme extends AbstractTheme implements ThemeInterface {
      *
      * @return string
      */
-    protected function secondaryMenuContent(array $menus) {
-        return implode('', array_map(function (Menu $menu) { return $menu->bootstrap(); }, $menus));
+    protected function secondaryMenuContent(array $menus)
+    {
+        return implode('', array_map(function (Menu $menu) {
+            return $menu->bootstrap();
+        }, $menus));
     }
 
     /**
@@ -291,7 +312,8 @@ class AdministrationTheme extends AbstractTheme implements ThemeInterface {
      *
      * @return string
      */
-    public function themeId() {
+    public function themeId()
+    {
         return '_administration';
     }
 
@@ -300,7 +322,8 @@ class AdministrationTheme extends AbstractTheme implements ThemeInterface {
      *
      * @return string
      */
-    public function themeName() {
+    public function themeName()
+    {
         return 'administration';
     }
 }

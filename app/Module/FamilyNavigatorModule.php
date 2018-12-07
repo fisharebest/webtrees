@@ -30,27 +30,32 @@ class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInter
     const MSG = "<div class='flyout4'>(%s)</div>"; // class flyout4 not used in standard themes
 
     /** {@inheritdoc} */
-    public function getTitle() {
+    public function getTitle()
+    {
         return /* I18N: Name of a module/sidebar */ I18N::translate('Family navigator');
     }
 
     /** {@inheritdoc} */
-    public function getDescription() {
+    public function getDescription()
+    {
         return /* I18N: Description of the “Family navigator” module */ I18N::translate('A sidebar showing an individual’s close families and relatives.');
     }
 
     /** {@inheritdoc} */
-    public function defaultSidebarOrder() {
+    public function defaultSidebarOrder()
+    {
         return 20;
     }
 
     /** {@inheritdoc} */
-    public function hasSidebarContent() {
+    public function hasSidebarContent()
+    {
         return true;
     }
 
     /** {@inheritdoc} */
-    public function getSidebarAjaxContent() {
+    public function getSidebarAjaxContent()
+    {
         return '';
     }
 
@@ -59,7 +64,8 @@ class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInter
      *
      * @return string
      */
-    public function getSidebarContent() {
+    public function getSidebarContent()
+    {
         global $controller;
 
         $controller->addInlineJavascript('
@@ -110,7 +116,8 @@ class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInter
      * @param Family $family
      * @param string $title
      */
-    private function drawFamily(Family $family, $title) {
+    private function drawFamily(Family $family, $title)
+    {
         global $controller;
 
         ?>
@@ -181,7 +188,8 @@ class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInter
      *
      * @return string
      */
-    private function getHTML($person, $showUnknown = false) {
+    private function getHTML($person, $showUnknown = false)
+    {
         if ($person instanceof Individual) {
             return sprintf(self::LNK, $person->getHtmlUrl(), $person->getFullName());
         } elseif ($showUnknown) {
@@ -198,7 +206,8 @@ class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInter
      *
      * @return string
      */
-    private function getParents(Individual $person) {
+    private function getParents(Individual $person)
+    {
         $father = null;
         $mother = null;
         $html   = sprintf(self::TTL, I18N::translate('Parents'));
@@ -240,7 +249,8 @@ class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInter
      *
      * @return string
      */
-    private function getFamily(Individual $person) {
+    private function getFamily(Individual $person)
+    {
         $html = '';
         if ($person->canShowName()) {
             foreach ($person->getSpouseFamilies() as $family) {

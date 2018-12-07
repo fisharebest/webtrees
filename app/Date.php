@@ -57,7 +57,8 @@ class Date {
      *
      * @param string $date A date in GEDCOM format
      */
-    public function __construct($date) {
+    public function __construct($date)
+    {
         // Extract any explanatory text
         if (preg_match('/^(.*) ?[(](.*)[)]/', $date, $match)) {
             $date       = $match[1];
@@ -80,7 +81,8 @@ class Date {
      * When we copy a date object, we need to create copies of
      * its child objects.
      */
-    public function __clone() {
+    public function __clone()
+    {
         $this->date1 = clone $this->date1;
         if (is_object($this->date2)) {
             $this->date2 = clone $this->date2;
@@ -98,7 +100,8 @@ class Date {
      *
      * @return CalendarDate
      */
-    private function parseDate($date) {
+    private function parseDate($date)
+    {
         // Valid calendar escape specified? - use it
         if (preg_match('/^(@#D(?:GREGORIAN|JULIAN|HEBREW|HIJRI|JALALI|FRENCH R|ROMAN)+@) ?(.*)/', $date, $match)) {
             $cal  = $match[1];
@@ -193,7 +196,8 @@ class Date {
      *
      * @return string[]
      */
-    public static function calendarNames() {
+    public static function calendarNames()
+    {
         return array(
             'gregorian' => /* I18N: The gregorian calendar */ I18N::translate('Gregorian'),
             'julian'    => /* I18N: The julian calendar */ I18N::translate('Julian'),
@@ -213,7 +217,8 @@ class Date {
      *
      * @return string
      */
-    public function display($url = false, $date_format = null, $convert_calendars = true) {
+    public function display($url = false, $date_format = null, $convert_calendars = true)
+    {
         global $WT_TREE;
 
         $CALENDAR_FORMAT = $WT_TREE->getPreference('CALENDAR_FORMAT');
@@ -346,7 +351,8 @@ class Date {
      *
      * @return CalendarDate
      */
-    public function minimumDate() {
+    public function minimumDate()
+    {
         return $this->date1;
     }
 
@@ -357,7 +363,8 @@ class Date {
      *
      * @return CalendarDate
      */
-    public function maximumDate() {
+    public function maximumDate()
+    {
         if (is_null($this->date2)) {
             return $this->date1;
         } else {
@@ -370,7 +377,8 @@ class Date {
      *
      * @return int
      */
-    public function minimumJulianDay() {
+    public function minimumJulianDay()
+    {
         return $this->minimumDate()->minJD;
     }
 
@@ -379,7 +387,8 @@ class Date {
      *
      * @return int
      */
-    public function maximumJulianDay() {
+    public function maximumJulianDay()
+    {
         return $this->maximumDate()->maxJD;
     }
 
@@ -391,7 +400,8 @@ class Date {
      *
      * @return int
      */
-    public function julianDay() {
+    public function julianDay()
+    {
         return (int) (($this->minimumJulianDay() + $this->maximumJulianDay()) / 2);
     }
 
@@ -406,7 +416,8 @@ class Date {
      *
      * @return Date
      */
-    public function addYears($years, $qualifier = '') {
+    public function addYears($years, $qualifier = '')
+    {
         $tmp = clone $this;
         $tmp->date1->y += $years;
         $tmp->date1->m = 0;
@@ -430,7 +441,8 @@ class Date {
      *
      * @return int|string
      */
-    public static function getAge(Date $d1, Date $d2 = null, $format = 0) {
+    public static function getAge(Date $d1, Date $d2 = null, $format = 0)
+    {
         if ($d2) {
             if ($d2->maximumJulianDay() >= $d1->minimumJulianDay() && $d2->minimumJulianDay() <= $d1->minimumJulianDay()) {
                 // Overlapping dates
@@ -484,7 +496,8 @@ class Date {
      *
      * @return string
      */
-    public static function getAgeGedcom(Date $d1, Date $d2 = null) {
+    public static function getAgeGedcom(Date $d1, Date $d2 = null)
+    {
         if (is_null($d2)) {
             return $d1->date1->getAge(true, WT_CLIENT_JD, true);
         } else {
@@ -512,7 +525,8 @@ class Date {
      *
      * @return int
      */
-    public static function compare(Date $a, Date $b) {
+    public static function compare(Date $a, Date $b)
+    {
         // Get min/max JD for each date.
         switch ($a->qual1) {
             case 'BEF':
@@ -563,7 +577,8 @@ class Date {
      *
      * @return bool
      */
-    public function isOK() {
+    public function isOK()
+    {
         return $this->minimumJulianDay() && $this->maximumJulianDay();
     }
 
@@ -575,7 +590,8 @@ class Date {
      *
      * @return int
      */
-    public function gregorianYear() {
+    public function gregorianYear()
+    {
         if ($this->isOK()) {
             $gregorian_calendar = new GregorianCalendar;
             list($year)         = $gregorian_calendar->jdToYmd($this->julianDay());

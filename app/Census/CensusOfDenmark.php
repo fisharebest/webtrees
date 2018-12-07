@@ -24,7 +24,8 @@ class CensusOfDenmark extends Census implements CensusPlaceInterface {
      *
      * @return CensusInterface[]
      */
-    public function allCensusDates() {
+    public function allCensusDates()
+    {
         return array(
             new CensusOfDenmark1787(),
             new CensusOfDenmark1801(),
@@ -56,7 +57,8 @@ class CensusOfDenmark extends Census implements CensusPlaceInterface {
      *
      * @return string
      */
-    public function censusPlace() {
+    public function censusPlace()
+    {
         return 'Danmark';
     }
 }

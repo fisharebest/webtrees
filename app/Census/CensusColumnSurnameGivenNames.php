@@ -29,7 +29,8 @@ class CensusColumnSurnameGivenNames extends AbstractCensusColumn implements Cens
      *
      * @return string
      */
-    public function generate(Individual $individual, Individual $head = null) {
+    public function generate(Individual $individual, Individual $head = null)
+    {
         foreach ($individual->getAllNames() as $name) {
             return $name['surname'] . ', ' . $name['givn'];
         }

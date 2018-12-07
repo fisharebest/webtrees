@@ -24,7 +24,8 @@ class ReportPdfLine extends ReportBaseLine {
      *
      * @param ReportTcpdf $renderer
      */
-    public function render($renderer) {
+    public function render($renderer)
+    {
         if ($this->x1 == ".") {
             $this->x1 = $renderer->GetX();
         }

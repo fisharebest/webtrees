@@ -50,7 +50,8 @@ class Stats {
      *
      * @param Tree $tree Generate statistics for this tree
      */
-    public function __construct(Tree $tree) {
+    public function __construct(Tree $tree)
+    {
         $this->tree = $tree;
     }
 
@@ -59,7 +60,8 @@ class Stats {
      *
      * @return string
      */
-    public function getAllTagsTable() {
+    public function getAllTagsTable()
+    {
         $examples = array();
         foreach (get_class_methods($this) as $method) {
             $reflection = new \ReflectionMethod($this, $method);
@@ -97,7 +99,8 @@ class Stats {
      *
      * @return string
      */
-    public function getAllTagsText() {
+    public function getAllTagsText()
+    {
         $examples = array();
         foreach (get_class_methods($this) as $method) {
             $reflection = new \ReflectionMethod($this, $method);
@@ -117,7 +120,8 @@ class Stats {
      *
      * @return string[][]
      */
-    private function getTags($text) {
+    private function getTags($text)
+    {
         static $funcs;
 
         // Retrive all class methods
@@ -160,7 +164,8 @@ class Stats {
      *
      * @return string
      */
-    public function embedTags($text) {
+    public function embedTags($text)
+    {
         if (strpos($text, '#') !== false) {
             list($new_tags, $new_values) = $this->getTags($text);
             $text                        = str_replace($new_tags, $new_values, $text);
@@ -174,7 +179,8 @@ class Stats {
      *
      * @return string
      */
-    public function gedcomFilename() {
+    public function gedcomFilename()
+    {
         return $this->tree->getName();
     }
 
@@ -183,7 +189,8 @@ class Stats {
      *
      * @return int
      */
-    public function gedcomId() {
+    public function gedcomId()
+    {
         return $this->tree->getTreeId();
     }
 
@@ -192,7 +199,8 @@ class Stats {
      *
      * @return string
      */
-    public function gedcomTitle() {
+    public function gedcomTitle()
+    {
         return $this->tree->getTitleHtml();
     }
 
@@ -201,7 +209,8 @@ class Stats {
      *
      * @return string[]
      */
-    private function gedcomHead() {
+    private function gedcomHead()
+    {
         $title   = '';
         $version = '';
         $source  = '';
@@ -222,7 +231,8 @@ class Stats {
      *
      * @return string
      */
-    public function gedcomCreatedSoftware() {
+    public function gedcomCreatedSoftware()
+    {
         $head = $this->gedcomHead();
 
         return $head[0];
@@ -233,7 +243,8 @@ class Stats {
      *
      * @return string
      */
-    public function gedcomCreatedVersion() {
+    public function gedcomCreatedVersion()
+    {
         $head = $this->gedcomHead();
         // fix broken version string in Family Tree Maker
         if (strstr($head[1], 'Family Tree Maker ')) {
@@ -254,7 +265,8 @@ class Stats {
      *
      * @return string
      */
-    public function gedcomDate() {
+    public function gedcomDate()
+    {
         $head = GedcomRecord::getInstance('HEAD', $this->tree);
         $fact = $head->getFirstFact('DATE');
         if ($fact) {
@@ -271,7 +283,8 @@ class Stats {
      *
      * @return string
      */
-    public function gedcomUpdated() {
+    public function gedcomUpdated()
+    {
         $row = Database::prepare(
             "SELECT d_year, d_month, d_day FROM `##dates` WHERE d_julianday1 = (SELECT MAX(d_julianday1) FROM `##dates` WHERE d_file =? AND d_fact='CHAN') LIMIT 1"
         )->execute(array($this->tree->getTreeId()))->fetchOneRow();
@@ -289,7 +302,8 @@ class Stats {
      *
      * @return string
      */
-    public function gedcomRootId() {
+    public function gedcomRootId()
+    {
         return $this->tree->getPreference('PEDIGREE_ROOT_ID');
     }
 
@@ -301,7 +315,8 @@ class Stats {
      *
      * @return string
      */
-    private function getPercentage($total, $type) {
+    private function getPercentage($total, $type)
+    {
         switch ($type) {
             case 'individual':
                 $type = $this->totalIndividualsQuery();
@@ -332,7 +347,8 @@ class Stats {
      *
      * @return string
      */
-    public function totalRecords() {
+    public function totalRecords()
+    {
         return I18N::number($this->totalIndividualsQuery() + $this->totalFamiliesQuery() + $this->totalSourcesQuery());
     }
 
@@ -341,7 +357,8 @@ class Stats {
      *
      * @return int
      */
-    private function totalIndividualsQuery() {
+    private function totalIndividualsQuery()
+    {
         return (int) Database::prepare(
             "SELECT COUNT(*) FROM `##individuals` WHERE i_file = :tree_id"
         )->execute(array(
@@ -354,7 +371,8 @@ class Stats {
      *
      * @return string
      */
-    public function totalIndividuals() {
+    public function totalIndividuals()
+    {
         return I18N::number($this->totalIndividualsQuery());
     }
 
@@ -363,7 +381,8 @@ class Stats {
      *
      * @return int
      */
-    private function totalIndisWithSourcesQuery() {
+    private function totalIndisWithSourcesQuery()
+    {
         return (int) Database::prepare(
             "SELECT COUNT(DISTINCT i_id)" .
             " FROM `##individuals` JOIN `##link` ON i_id = l_from AND i_file = l_file" .
@@ -378,7 +397,8 @@ class Stats {
      *
      * @return string
      */
-    public function totalIndisWithSources() {
+    public function totalIndisWithSources()
+    {
         return I18N::number($this->totalIndisWithSourcesQuery());
     }
 
@@ -389,7 +409,8 @@ class Stats {
      *
      * @return string
      */
-    public function chartIndisWithSources($params = array()) {
+    public function chartIndisWithSources($params = array())
+    {
         $WT_STATS_CHART_COLOR1 = Theme::theme()->parameter('distribution-chart-no-values');
         $WT_STATS_CHART_COLOR2 = Theme::theme()->parameter('distribution-chart-high-values');
         $WT_STATS_S_CHART_X    = Theme::theme()->parameter('stats-small-chart-x');
@@ -430,7 +451,8 @@ class Stats {
      *
      * @return string
      */
-    public function totalIndividualsPercentage() {
+    public function totalIndividualsPercentage()
+    {
         return $this->getPercentage($this->totalIndividualsQuery(), 'all');
     }
 
@@ -439,7 +461,8 @@ class Stats {
      *
      * @return int
      */
-    private function totalFamiliesQuery() {
+    private function totalFamiliesQuery()
+    {
         return (int) Database::prepare(
             "SELECT COUNT(*) FROM `##families` WHERE f_file = :tree_id"
         )->execute(array(
@@ -452,7 +475,8 @@ class Stats {
      *
      * @return string
      */
-    public function totalFamilies() {
+    public function totalFamilies()
+    {
         return I18N::number($this->totalFamiliesQuery());
     }
 
@@ -461,7 +485,8 @@ class Stats {
      *
      * @return int
      */
-    private function totalFamsWithSourcesQuery() {
+    private function totalFamsWithSourcesQuery()
+    {
         return (int) Database::prepare(
             "SELECT COUNT(DISTINCT f_id)" .
             " FROM `##families` JOIN `##link` ON f_id = l_from AND f_file = l_file" .
@@ -476,7 +501,8 @@ class Stats {
      *
      * @return string
      */
-    public function totalFamsWithSources() {
+    public function totalFamsWithSources()
+    {
         return I18N::number($this->totalFamsWithSourcesQuery());
     }
 
@@ -487,7 +513,8 @@ class Stats {
      *
      * @return string
      */
-    public function chartFamsWithSources($params = array()) {
+    public function chartFamsWithSources($params = array())
+    {
         $WT_STATS_CHART_COLOR1 = Theme::theme()->parameter('distribution-chart-no-values');
         $WT_STATS_CHART_COLOR2 = Theme::theme()->parameter('distribution-chart-high-values');
         $WT_STATS_S_CHART_X    = Theme::theme()->parameter('stats-small-chart-x');
@@ -528,7 +555,8 @@ class Stats {
      *
      * @return string
      */
-    public function totalFamiliesPercentage() {
+    public function totalFamiliesPercentage()
+    {
         return $this->getPercentage($this->totalFamiliesQuery(), 'all');
     }
 
@@ -537,7 +565,8 @@ class Stats {
      *
      * @return int
      */
-    private function totalSourcesQuery() {
+    private function totalSourcesQuery()
+    {
         return (int) Database::prepare(
             "SELECT COUNT(*) FROM `##sources` WHERE s_file = :tree_id"
         )->execute(array(
@@ -550,7 +579,8 @@ class Stats {
      *
      * @return string
      */
-    public function totalSources() {
+    public function totalSources()
+    {
         return I18N::number($this->totalSourcesQuery());
     }
 
@@ -559,7 +589,8 @@ class Stats {
      *
      * @return string
      */
-    public function totalSourcesPercentage() {
+    public function totalSourcesPercentage()
+    {
         return $this->getPercentage($this->totalSourcesQuery(), 'all');
     }
 
@@ -568,7 +599,8 @@ class Stats {
      *
      * @return int
      */
-    private function totalNotesQuery() {
+    private function totalNotesQuery()
+    {
         return (int) Database::prepare(
             "SELECT COUNT(*) FROM `##other` WHERE o_type='NOTE' AND o_file = :tree_id"
         )->execute(array(
@@ -581,7 +613,8 @@ class Stats {
      *
      * @return string
      */
-    public function totalNotes() {
+    public function totalNotes()
+    {
         return I18N::number($this->totalNotesQuery());
     }
 
@@ -590,7 +623,8 @@ class Stats {
      *
      * @return string
      */
-    public function totalNotesPercentage() {
+    public function totalNotesPercentage()
+    {
         return $this->getPercentage($this->totalNotesQuery(), 'all');
     }
 
@@ -599,7 +633,8 @@ class Stats {
      *
      * @return int
      */
-    private function totalRepositoriesQuery() {
+    private function totalRepositoriesQuery()
+    {
         return (int) Database::prepare(
             "SELECT COUNT(*) FROM `##other` WHERE o_type='REPO' AND o_file = :tree_id"
         )->execute(array(
@@ -612,7 +647,8 @@ class Stats {
      *
      * @return string
      */
-    public function totalRepositories() {
+    public function totalRepositories()
+    {
         return I18N::number($this->totalRepositoriesQuery());
     }
 
@@ -621,7 +657,8 @@ class Stats {
      *
      * @return string
      */
-    public function totalRepositoriesPercentage() {
+    public function totalRepositoriesPercentage()
+    {
         return $this->getPercentage($this->totalRepositoriesQuery(), 'all');
     }
 
@@ -632,7 +669,8 @@ class Stats {
      *
      * @return string
      */
-    public function totalSurnames($params = array()) {
+    public function totalSurnames($params = array())
+    {
         if ($params) {
             $opt      = 'IN (' . implode(',', array_fill(0, count($params), '?')) . ')';
             $distinct = '';
@@ -661,7 +699,8 @@ class Stats {
      *
      * @return string
      */
-    public function totalGivennames($params = array()) {
+    public function totalGivennames($params = array())
+    {
         if ($params) {
             $qs       = implode(',', array_fill(0, count($params), '?'));
             $params[] = $this->tree->getTreeId();
@@ -686,7 +725,8 @@ class Stats {
      *
      * @return string
      */
-    public function totalEvents($params = array()) {
+    public function totalEvents($params = array())
+    {
         $sql  = "SELECT COUNT(*) AS tot FROM `##dates` WHERE d_file=?";
         $vars = array($this->tree->getTreeId());
 
@@ -716,7 +756,8 @@ class Stats {
      *
      * @return string
      */
-    public function totalEventsBirth() {
+    public function totalEventsBirth()
+    {
         return $this->totalEvents(explode('|', WT_EVENTS_BIRT));
     }
 
@@ -725,7 +766,8 @@ class Stats {
      *
      * @return string
      */
-    public function totalBirths() {
+    public function totalBirths()
+    {
         return $this->totalEvents(array('BIRT'));
     }
 
@@ -734,7 +776,8 @@ class Stats {
      *
      * @return string
      */
-    public function totalEventsDeath() {
+    public function totalEventsDeath()
+    {
         return $this->totalEvents(explode('|', WT_EVENTS_DEAT));
     }
 
@@ -743,7 +786,8 @@ class Stats {
      *
      * @return string
      */
-    public function totalDeaths() {
+    public function totalDeaths()
+    {
         return $this->totalEvents(array('DEAT'));
     }
 
@@ -752,7 +796,8 @@ class Stats {
      *
      * @return string
      */
-    public function totalEventsMarriage() {
+    public function totalEventsMarriage()
+    {
         return $this->totalEvents(explode('|', WT_EVENTS_MARR));
     }
 
@@ -761,7 +806,8 @@ class Stats {
      *
      * @return string
      */
-    public function totalMarriages() {
+    public function totalMarriages()
+    {
         return $this->totalEvents(array('MARR'));
     }
 
@@ -770,7 +816,8 @@ class Stats {
      *
      * @return string
      */
-    public function totalEventsDivorce() {
+    public function totalEventsDivorce()
+    {
         return $this->totalEvents(explode('|', WT_EVENTS_DIV));
     }
 
@@ -779,7 +826,8 @@ class Stats {
      *
      * @return string
      */
-    public function totalDivorces() {
+    public function totalDivorces()
+    {
         return $this->totalEvents(array('DIV'));
     }
 
@@ -788,7 +836,8 @@ class Stats {
      *
      * @return string
      */
-    public function totalEventsOther() {
+    public function totalEventsOther()
+    {
         $facts    = array_merge(explode('|', WT_EVENTS_BIRT . '|' . WT_EVENTS_MARR . '|' . WT_EVENTS_DIV . '|' . WT_EVENTS_DEAT));
         $no_facts = array();
         foreach ($facts as $fact) {
@@ -804,7 +853,8 @@ class Stats {
      *
      * @return int
      */
-    private function totalSexMalesQuery() {
+    private function totalSexMalesQuery()
+    {
         return (int) Database::prepare(
             "SELECT COUNT(*) FROM `##individuals` WHERE i_file = :tree_id AND i_sex = 'M'"
         )->execute(array(
@@ -817,7 +867,8 @@ class Stats {
      *
      * @return string
      */
-    public function totalSexMales() {
+    public function totalSexMales()
+    {
         return I18N::number($this->totalSexMalesQuery());
     }
 
@@ -826,7 +877,8 @@ class Stats {
      *
      * @return string
      */
-    public function totalSexMalesPercentage() {
+    public function totalSexMalesPercentage()
+    {
         return $this->getPercentage($this->totalSexMalesQuery(), 'individual');
     }
 
@@ -835,7 +887,8 @@ class Stats {
      *
      * @return int
      */
-    private function totalSexFemalesQuery() {
+    private function totalSexFemalesQuery()
+    {
         return (int) Database::prepare(
             "SELECT COUNT(*) FROM `##individuals` WHERE i_file = :tree_id AND i_sex = 'F'"
         )->execute(array(
@@ -848,7 +901,8 @@ class Stats {
      *
      * @return string
      */
-    public function totalSexFemales() {
+    public function totalSexFemales()
+    {
         return I18N::number($this->totalSexFemalesQuery());
     }
 
@@ -857,7 +911,8 @@ class Stats {
      *
      * @return string
      */
-    public function totalSexFemalesPercentage() {
+    public function totalSexFemalesPercentage()
+    {
         return $this->getPercentage($this->totalSexFemalesQuery(), 'individual');
     }
 
@@ -866,7 +921,8 @@ class Stats {
      *
      * @return int
      */
-    private function totalSexUnknownQuery() {
+    private function totalSexUnknownQuery()
+    {
         return (int) Database::prepare(
             "SELECT COUNT(*) FROM `##individuals` WHERE i_file = :tree_id AND i_sex = 'U'"
         )->execute(array(
@@ -879,7 +935,8 @@ class Stats {
      *
      * @return string
      */
-    public function totalSexUnknown() {
+    public function totalSexUnknown()
+    {
         return I18N::number($this->totalSexUnknownQuery());
     }
 
@@ -888,7 +945,8 @@ class Stats {
      *
      * @return string
      */
-    public function totalSexUnknownPercentage() {
+    public function totalSexUnknownPercentage()
+    {
         return $this->getPercentage($this->totalSexUnknownQuery(), 'individual');
     }
 
@@ -899,7 +957,8 @@ class Stats {
      *
      * @return string
      */
-    public function chartSex($params = array()) {
+    public function chartSex($params = array())
+    {
         $WT_STATS_S_CHART_X    = Theme::theme()->parameter('stats-small-chart-x');
         $WT_STATS_S_CHART_Y    = Theme::theme()->parameter('stats-small-chart-y');
 
@@ -969,7 +1028,8 @@ class Stats {
      *
      * @return int
      */
-    private function totalLivingQuery() {
+    private function totalLivingQuery()
+    {
         return (int) Database::prepare(
             "SELECT COUNT(*) FROM `##individuals` WHERE i_file = :tree_id AND i_gedcom NOT REGEXP '\\n1 (" . WT_EVENTS_DEAT . ")'"
         )->execute(array(
@@ -982,7 +1042,8 @@ class Stats {
      *
      * @return string
      */
-    public function totalLiving() {
+    public function totalLiving()
+    {
         return I18N::number($this->totalLivingQuery());
     }
 
@@ -991,7 +1052,8 @@ class Stats {
      *
      * @return string
      */
-    public function totalLivingPercentage() {
+    public function totalLivingPercentage()
+    {
         return $this->getPercentage($this->totalLivingQuery(), 'individual');
     }
 
@@ -1000,7 +1062,8 @@ class Stats {
      *
      * @return int
      */
-    private function totalDeceasedQuery() {
+    private function totalDeceasedQuery()
+    {
         return (int) Database::prepare(
             "SELECT COUNT(*) FROM `##individuals` WHERE i_file = :tree_id AND i_gedcom REGEXP '\\n1 (" . WT_EVENTS_DEAT . ")'"
         )->execute(array(
@@ -1013,7 +1076,8 @@ class Stats {
      *
      * @return string
      */
-    public function totalDeceased() {
+    public function totalDeceased()
+    {
         return I18N::number($this->totalDeceasedQuery());
     }
 
@@ -1022,7 +1086,8 @@ class Stats {
      *
      * @return string
      */
-    public function totalDeceasedPercentage() {
+    public function totalDeceasedPercentage()
+    {
         return $this->getPercentage($this->totalDeceasedQuery(), 'individual');
     }
 
@@ -1033,7 +1098,8 @@ class Stats {
      *
      * @return string
      */
-    public function chartMortality($params = array()) {
+    public function chartMortality($params = array())
+    {
         $WT_STATS_S_CHART_X    = Theme::theme()->parameter('stats-small-chart-x');
         $WT_STATS_S_CHART_Y    = Theme::theme()->parameter('stats-small-chart-y');
 
@@ -1081,7 +1147,8 @@ class Stats {
      *
      * @return string
      */
-    public function totalUsers($params = array()) {
+    public function totalUsers($params = array())
+    {
         if (isset($params[0])) {
             $total = count(User::all()) + (int) $params[0];
         } else {
@@ -1096,7 +1163,8 @@ class Stats {
      *
      * @return string
      */
-    public function totalAdmins() {
+    public function totalAdmins()
+    {
         return I18N::number(count(User::allAdmins()));
     }
 
@@ -1105,7 +1173,8 @@ class Stats {
      *
      * @return string
      */
-    public function totalNonAdmins() {
+    public function totalNonAdmins()
+    {
         return I18N::number(count(User::all()) - count(User::allAdmins()));
     }
 
@@ -1116,7 +1185,8 @@ class Stats {
      *
      * @return int
      */
-    private function totalMediaType($type = 'all') {
+    private function totalMediaType($type = 'all')
+    {
         if (!in_array($type, $this->_media_types) && $type != 'all' && $type != 'unknown') {
             return 0;
         }
@@ -1146,7 +1216,8 @@ class Stats {
      *
      * @return string
      */
-    public function totalMedia() {
+    public function totalMedia()
+    {
         return I18N::number($this->totalMediaType('all'));
     }
 
@@ -1155,7 +1226,8 @@ class Stats {
      *
      * @return string
      */
-    public function totalMediaAudio() {
+    public function totalMediaAudio()
+    {
         return I18N::number($this->totalMediaType('audio'));
     }
 
@@ -1164,7 +1236,8 @@ class Stats {
      *
      * @return string
      */
-    public function totalMediaBook() {
+    public function totalMediaBook()
+    {
         return I18N::number($this->totalMediaType('book'));
     }
 
@@ -1173,7 +1246,8 @@ class Stats {
      *
      * @return string
      */
-    public function totalMediaCard() {
+    public function totalMediaCard()
+    {
         return I18N::number($this->totalMediaType('card'));
     }
 
@@ -1182,7 +1256,8 @@ class Stats {
      *
      * @return string
      */
-    public function totalMediaCertificate() {
+    public function totalMediaCertificate()
+    {
         return I18N::number($this->totalMediaType('certificate'));
     }
 
@@ -1191,7 +1266,8 @@ class Stats {
      *
      * @return string
      */
-    public function totalMediaCoatOfArms() {
+    public function totalMediaCoatOfArms()
+    {
         return I18N::number($this->totalMediaType('coat'));
     }
 
@@ -1200,7 +1276,8 @@ class Stats {
      *
      * @return string
      */
-    public function totalMediaDocument() {
+    public function totalMediaDocument()
+    {
         return I18N::number($this->totalMediaType('document'));
     }
 
@@ -1209,7 +1286,8 @@ class Stats {
      *
      * @return string
      */
-    public function totalMediaElectronic() {
+    public function totalMediaElectronic()
+    {
         return I18N::number($this->totalMediaType('electronic'));
     }
 
@@ -1218,7 +1296,8 @@ class Stats {
      *
      * @return string
      */
-    public function totalMediaMagazine() {
+    public function totalMediaMagazine()
+    {
         return I18N::number($this->totalMediaType('magazine'));
     }
 
@@ -1227,7 +1306,8 @@ class Stats {
      *
      * @return string
      */
-    public function totalMediaManuscript() {
+    public function totalMediaManuscript()
+    {
         return I18N::number($this->totalMediaType('manuscript'));
     }
 
@@ -1236,7 +1316,8 @@ class Stats {
      *
      * @return string
      */
-    public function totalMediaMap() {
+    public function totalMediaMap()
+    {
         return I18N::number($this->totalMediaType('map'));
     }
 
@@ -1245,7 +1326,8 @@ class Stats {
      *
      * @return string
      */
-    public function totalMediaFiche() {
+    public function totalMediaFiche()
+    {
         return I18N::number($this->totalMediaType('fiche'));
     }
 
@@ -1254,7 +1336,8 @@ class Stats {
      *
      * @return string
      */
-    public function totalMediaFilm() {
+    public function totalMediaFilm()
+    {
         return I18N::number($this->totalMediaType('film'));
     }
 
@@ -1263,7 +1346,8 @@ class Stats {
      *
      * @return string
      */
-    public function totalMediaNewspaper() {
+    public function totalMediaNewspaper()
+    {
         return I18N::number($this->totalMediaType('newspaper'));
     }
 
@@ -1272,7 +1356,8 @@ class Stats {
      *
      * @return string
      */
-    public function totalMediaPainting() {
+    public function totalMediaPainting()
+    {
         return I18N::number($this->totalMediaType('painting'));
     }
 
@@ -1281,7 +1366,8 @@ class Stats {
      *
      * @return string
      */
-    public function totalMediaPhoto() {
+    public function totalMediaPhoto()
+    {
         return I18N::number($this->totalMediaType('photo'));
     }
 
@@ -1290,7 +1376,8 @@ class Stats {
      *
      * @return string
      */
-    public function totalMediaTombstone() {
+    public function totalMediaTombstone()
+    {
         return I18N::number($this->totalMediaType('tombstone'));
     }
 
@@ -1299,7 +1386,8 @@ class Stats {
      *
      * @return string
      */
-    public function totalMediaVideo() {
+    public function totalMediaVideo()
+    {
         return I18N::number($this->totalMediaType('video'));
     }
 
@@ -1308,7 +1396,8 @@ class Stats {
      *
      * @return string
      */
-    public function totalMediaOther() {
+    public function totalMediaOther()
+    {
         return I18N::number($this->totalMediaType('other'));
     }
 
@@ -1317,7 +1406,8 @@ class Stats {
      *
      * @return string
      */
-    public function totalMediaUnknown() {
+    public function totalMediaUnknown()
+    {
         return I18N::number($this->totalMediaType('unknown'));
     }
 
@@ -1328,7 +1418,8 @@ class Stats {
      *
      * @return string
      */
-    public function chartMedia($params = array()) {
+    public function chartMedia($params = array())
+    {
         $WT_STATS_CHART_COLOR1 = Theme::theme()->parameter('distribution-chart-no-values');
         $WT_STATS_CHART_COLOR2 = Theme::theme()->parameter('distribution-chart-high-values');
         $WT_STATS_S_CHART_X    = Theme::theme()->parameter('stats-small-chart-x');
@@ -1414,7 +1505,8 @@ class Stats {
      *
      * @return string
      */
-    private function mortalityQuery($type = 'full', $life_dir = 'ASC', $birth_death = 'BIRT') {
+    private function mortalityQuery($type = 'full', $life_dir = 'ASC', $birth_death = 'BIRT')
+    {
         if ($birth_death == 'MARR') {
             $query_field = "'MARR'";
         } elseif ($birth_death == 'DIV') {
@@ -1482,7 +1574,8 @@ class Stats {
      *
      * @return int[]|string[][]
      */
-    public function statsPlaces($what = 'ALL', $fact = '', $parent = 0, $country = false) {
+    public function statsPlaces($what = 'ALL', $fact = '', $parent = 0, $country = false)
+    {
         if ($fact) {
             if ($what == 'INDI') {
                 $rows = Database::prepare(
@@ -1570,7 +1663,8 @@ class Stats {
      *
      * @return int
      */
-    private function totalPlacesQuery() {
+    private function totalPlacesQuery()
+    {
         return
             (int) Database::prepare("SELECT COUNT(*) FROM `##places` WHERE p_file=?")
                 ->execute(array($this->tree->getTreeId()))
@@ -1582,7 +1676,8 @@ class Stats {
      *
      * @return string
      */
-    public function totalPlaces() {
+    public function totalPlaces()
+    {
         return I18N::number($this->totalPlacesQuery());
     }
 
@@ -1593,7 +1688,8 @@ class Stats {
      *
      * @return string
      */
-    public function chartDistribution($params = array()) {
+    public function chartDistribution($params = array())
+    {
         $WT_STATS_CHART_COLOR1 = Theme::theme()->parameter('distribution-chart-no-values');
         $WT_STATS_CHART_COLOR2 = Theme::theme()->parameter('distribution-chart-high-values');
         $WT_STATS_CHART_COLOR3 = Theme::theme()->parameter('distribution-chart-low-values');
@@ -1747,7 +1843,8 @@ class Stats {
      *
      * @return string
      */
-    public function commonCountriesList() {
+    public function commonCountriesList()
+    {
         $countries = $this->statsPlaces();
         if (empty($countries)) {
             return '';
@@ -1799,7 +1896,8 @@ class Stats {
      *
      * @return string
      */
-    public function commonBirthPlacesList() {
+    public function commonBirthPlacesList()
+    {
         $places = $this->statsPlaces('INDI', 'BIRT');
         $top10  = array();
         $i      = 1;
@@ -1822,7 +1920,8 @@ class Stats {
      *
      * @return string
      */
-    public function commonDeathPlacesList() {
+    public function commonDeathPlacesList()
+    {
         $places = $this->statsPlaces('INDI', 'DEAT');
         $top10  = array();
         $i      = 1;
@@ -1845,7 +1944,8 @@ class Stats {
      *
      * @return string
      */
-    public function commonMarriagePlacesList() {
+    public function commonMarriagePlacesList()
+    {
         $places = $this->statsPlaces('FAM', 'MARR');
         $top10  = array();
         $i      = 1;
@@ -1874,7 +1974,8 @@ class Stats {
      *
      * @return array|string
      */
-    public function statsBirthQuery($simple = true, $sex = false, $year1 = -1, $year2 = -1, $params = array()) {
+    public function statsBirthQuery($simple = true, $sex = false, $year1 = -1, $year2 = -1, $params = array())
+    {
         $WT_STATS_CHART_COLOR1 = Theme::theme()->parameter('distribution-chart-no-values');
         $WT_STATS_CHART_COLOR2 = Theme::theme()->parameter('distribution-chart-high-values');
         $WT_STATS_S_CHART_X    = Theme::theme()->parameter('stats-small-chart-x');
@@ -1967,7 +2068,8 @@ class Stats {
      *
      * @return array|string
      */
-    public function statsDeathQuery($simple = true, $sex = false, $year1 = -1, $year2 = -1, $params = array()) {
+    public function statsDeathQuery($simple = true, $sex = false, $year1 = -1, $year2 = -1, $params = array())
+    {
         $WT_STATS_CHART_COLOR1 = Theme::theme()->parameter('distribution-chart-no-values');
         $WT_STATS_CHART_COLOR2 = Theme::theme()->parameter('distribution-chart-high-values');
         $WT_STATS_S_CHART_X    = Theme::theme()->parameter('stats-small-chart-x');
@@ -2054,7 +2156,8 @@ class Stats {
      *
      * @return string
      */
-    public function firstBirth() {
+    public function firstBirth()
+    {
         return $this->mortalityQuery('full', 'ASC', 'BIRT');
     }
 
@@ -2063,7 +2166,8 @@ class Stats {
      *
      * @return string
      */
-    public function firstBirthYear() {
+    public function firstBirthYear()
+    {
         return $this->mortalityQuery('year', 'ASC', 'BIRT');
     }
 
@@ -2072,7 +2176,8 @@ class Stats {
      *
      * @return string
      */
-    public function firstBirthName() {
+    public function firstBirthName()
+    {
         return $this->mortalityQuery('name', 'ASC', 'BIRT');
     }
 
@@ -2081,7 +2186,8 @@ class Stats {
      *
      * @return string
      */
-    public function firstBirthPlace() {
+    public function firstBirthPlace()
+    {
         return $this->mortalityQuery('place', 'ASC', 'BIRT');
     }
 
@@ -2090,7 +2196,8 @@ class Stats {
      *
      * @return string
      */
-    public function lastBirth() {
+    public function lastBirth()
+    {
         return $this->mortalityQuery('full', 'DESC', 'BIRT');
     }
 
@@ -2099,7 +2206,8 @@ class Stats {
      *
      * @return string
      */
-    public function lastBirthYear() {
+    public function lastBirthYear()
+    {
         return $this->mortalityQuery('year', 'DESC', 'BIRT');
     }
 
@@ -2108,7 +2216,8 @@ class Stats {
      *
      * @return string
      */
-    public function lastBirthName() {
+    public function lastBirthName()
+    {
         return $this->mortalityQuery('name', 'DESC', 'BIRT');
     }
 
@@ -2117,7 +2226,8 @@ class Stats {
      *
      * @return string
      */
-    public function lastBirthPlace() {
+    public function lastBirthPlace()
+    {
         return $this->mortalityQuery('place', 'DESC', 'BIRT');
     }
 
@@ -2128,7 +2238,8 @@ class Stats {
      *
      * @return string
      */
-    public function statsBirth($params = array()) {
+    public function statsBirth($params = array())
+    {
         return $this->statsBirthQuery(true, false, -1, -1, $params);
     }
 
@@ -2137,7 +2248,8 @@ class Stats {
      *
      * @return string
      */
-    public function firstDeath() {
+    public function firstDeath()
+    {
         return $this->mortalityQuery('full', 'ASC', 'DEAT');
     }
 
@@ -2146,7 +2258,8 @@ class Stats {
      *
      * @return string
      */
-    public function firstDeathYear() {
+    public function firstDeathYear()
+    {
         return $this->mortalityQuery('year', 'ASC', 'DEAT');
     }
 
@@ -2155,7 +2268,8 @@ class Stats {
      *
      * @return string
      */
-    public function firstDeathName() {
+    public function firstDeathName()
+    {
         return $this->mortalityQuery('name', 'ASC', 'DEAT');
     }
 
@@ -2164,7 +2278,8 @@ class Stats {
      *
      * @return string
      */
-    public function firstDeathPlace() {
+    public function firstDeathPlace()
+    {
         return $this->mortalityQuery('place', 'ASC', 'DEAT');
     }
 
@@ -2173,7 +2288,8 @@ class Stats {
      *
      * @return string
      */
-    public function lastDeath() {
+    public function lastDeath()
+    {
         return $this->mortalityQuery('full', 'DESC', 'DEAT');
     }
 
@@ -2182,7 +2298,8 @@ class Stats {
      *
      * @return string
      */
-    public function lastDeathYear() {
+    public function lastDeathYear()
+    {
         return $this->mortalityQuery('year', 'DESC', 'DEAT');
     }
 
@@ -2191,7 +2308,8 @@ class Stats {
      *
      * @return string
      */
-    public function lastDeathName() {
+    public function lastDeathName()
+    {
         return $this->mortalityQuery('name', 'DESC', 'DEAT');
     }
 
@@ -2200,7 +2318,8 @@ class Stats {
      *
      * @return string
      */
-    public function lastDeathPlace() {
+    public function lastDeathPlace()
+    {
         return $this->mortalityQuery('place', 'DESC', 'DEAT');
     }
 
@@ -2211,7 +2330,8 @@ class Stats {
      *
      * @return string
      */
-    public function statsDeath($params = array()) {
+    public function statsDeath($params = array())
+    {
         return $this->statsDeathQuery(true, false, -1, -1, $params);
     }
 
@@ -2223,7 +2343,8 @@ class Stats {
      *
      * @return string
      */
-    private function longlifeQuery($type = 'full', $sex = 'F') {
+    private function longlifeQuery($type = 'full', $sex = 'F')
+    {
         $sex_search = ' 1=1';
         if ($sex == 'F') {
             $sex_search = " i_sex='F'";
@@ -2287,7 +2408,8 @@ class Stats {
      *
      * @return string
      */
-    private function topTenOldestQuery($type = 'list', $sex = 'BOTH', $params = array()) {
+    private function topTenOldestQuery($type = 'list', $sex = 'BOTH', $params = array())
+    {
         if ($sex === 'F') {
             $sex_search = " AND i_sex='F' ";
         } elseif ($sex === 'M') {
@@ -2370,7 +2492,8 @@ class Stats {
      *
      * @return string
      */
-    private function topTenOldestAliveQuery($type = 'list', $sex = 'BOTH', $params = array()) {
+    private function topTenOldestAliveQuery($type = 'list', $sex = 'BOTH', $params = array())
+    {
         if (!Auth::isMember($this->tree)) {
             return I18N::translate('This information is private and cannot be shown.');
         }
@@ -2446,7 +2569,8 @@ class Stats {
      *
      * @return string
      */
-    private function averageLifespanQuery($sex = 'BOTH', $show_years = false) {
+    private function averageLifespanQuery($sex = 'BOTH', $show_years = false)
+    {
         if ($sex === 'F') {
             $sex_search = " AND i_sex='F' ";
         } elseif ($sex === 'M') {
@@ -2505,7 +2629,8 @@ class Stats {
      *
      * @return array|string
      */
-    public function statsAgeQuery($simple = true, $related = 'BIRT', $sex = 'BOTH', $year1 = -1, $year2 = -1, $params = array()) {
+    public function statsAgeQuery($simple = true, $related = 'BIRT', $sex = 'BOTH', $year1 = -1, $year2 = -1, $params = array())
+    {
         if ($simple) {
             if (isset($params[0]) && $params[0] != '') {
                 $size = strtolower($params[0]);
@@ -2646,7 +2771,8 @@ class Stats {
      *
      * @return string
      */
-    public function statsAge($params = array()) {
+    public function statsAge($params = array())
+    {
         return $this->statsAgeQuery(true, 'BIRT', 'BOTH', -1, -1, $params);
     }
 
@@ -2655,7 +2781,8 @@ class Stats {
      *
      * @return string
      */
-    public function longestLife() {
+    public function longestLife()
+    {
         return $this->longlifeQuery('full', 'BOTH');
     }
 
@@ -2664,7 +2791,8 @@ class Stats {
      *
      * @return string
      */
-    public function longestLifeAge() {
+    public function longestLifeAge()
+    {
         return $this->longlifeQuery('age', 'BOTH');
     }
 
@@ -2673,7 +2801,8 @@ class Stats {
      *
      * @return string
      */
-    public function longestLifeName() {
+    public function longestLifeName()
+    {
         return $this->longlifeQuery('name', 'BOTH');
     }
 
@@ -2684,7 +2813,8 @@ class Stats {
      *
      * @return string
      */
-    public function topTenOldest($params = array()) {
+    public function topTenOldest($params = array())
+    {
         return $this->topTenOldestQuery('nolist', 'BOTH', $params);
     }
 
@@ -2695,7 +2825,8 @@ class Stats {
      *
      * @return string
      */
-    public function topTenOldestList($params = array()) {
+    public function topTenOldestList($params = array())
+    {
         return $this->topTenOldestQuery('list', 'BOTH', $params);
     }
 
@@ -2706,7 +2837,8 @@ class Stats {
      *
      * @return string
      */
-    public function topTenOldestAlive($params = array()) {
+    public function topTenOldestAlive($params = array())
+    {
         return $this->topTenOldestAliveQuery('nolist', 'BOTH', $params);
     }
 
@@ -2717,7 +2849,8 @@ class Stats {
      *
      * @return string
      */
-    public function topTenOldestListAlive($params = array()) {
+    public function topTenOldestListAlive($params = array())
+    {
         return $this->topTenOldestAliveQuery('list', 'BOTH', $params);
     }
 
@@ -2728,7 +2861,8 @@ class Stats {
      *
      * @return string
      */
-    public function averageLifespan($show_years = false) {
+    public function averageLifespan($show_years = false)
+    {
         return $this->averageLifespanQuery('BOTH', $show_years);
     }
 
@@ -2737,7 +2871,8 @@ class Stats {
      *
      * @return string
      */
-    public function longestLifeFemale() {
+    public function longestLifeFemale()
+    {
         return $this->longlifeQuery('full', 'F');
     }
 
@@ -2746,7 +2881,8 @@ class Stats {
      *
      * @return string
      */
-    public function longestLifeFemaleAge() {
+    public function longestLifeFemaleAge()
+    {
         return $this->longlifeQuery('age', 'F');
     }
 
@@ -2755,7 +2891,8 @@ class Stats {
      *
      * @return string
      */
-    public function longestLifeFemaleName() {
+    public function longestLifeFemaleName()
+    {
         return $this->longlifeQuery('name', 'F');
     }
 
@@ -2766,7 +2903,8 @@ class Stats {
      *
      * @return string
      */
-    public function topTenOldestFemale($params = array()) {
+    public function topTenOldestFemale($params = array())
+    {
         return $this->topTenOldestQuery('nolist', 'F', $params);
     }
 
@@ -2777,7 +2915,8 @@ class Stats {
      *
      * @return string
      */
-    public function topTenOldestFemaleList($params = array()) {
+    public function topTenOldestFemaleList($params = array())
+    {
         return $this->topTenOldestQuery('list', 'F', $params);
     }
 
@@ -2788,7 +2927,8 @@ class Stats {
      *
      * @return string
      */
-    public function topTenOldestFemaleAlive($params = array()) {
+    public function topTenOldestFemaleAlive($params = array())
+    {
         return $this->topTenOldestAliveQuery('nolist', 'F', $params);
     }
 
@@ -2799,7 +2939,8 @@ class Stats {
      *
      * @return string
      */
-    public function topTenOldestFemaleListAlive($params = array()) {
+    public function topTenOldestFemaleListAlive($params = array())
+    {
         return $this->topTenOldestAliveQuery('list', 'F', $params);
     }
 
@@ -2810,7 +2951,8 @@ class Stats {
      *
      * @return string
      */
-    public function averageLifespanFemale($show_years = false) {
+    public function averageLifespanFemale($show_years = false)
+    {
         return $this->averageLifespanQuery('F', $show_years);
     }
 
@@ -2819,7 +2961,8 @@ class Stats {
      *
      * @return string
      */
-    public function longestLifeMale() {
+    public function longestLifeMale()
+    {
         return $this->longlifeQuery('full', 'M');
     }
 
@@ -2828,7 +2971,8 @@ class Stats {
      *
      * @return string
      */
-    public function longestLifeMaleAge() {
+    public function longestLifeMaleAge()
+    {
         return $this->longlifeQuery('age', 'M');
     }
 
@@ -2837,7 +2981,8 @@ class Stats {
      *
      * @return string
      */
-    public function longestLifeMaleName() {
+    public function longestLifeMaleName()
+    {
         return $this->longlifeQuery('name', 'M');
     }
 
@@ -2848,7 +2993,8 @@ class Stats {
      *
      * @return string
      */
-    public function topTenOldestMale($params = array()) {
+    public function topTenOldestMale($params = array())
+    {
         return $this->topTenOldestQuery('nolist', 'M', $params);
     }
 
@@ -2859,7 +3005,8 @@ class Stats {
      *
      * @return string
      */
-    public function topTenOldestMaleList($params = array()) {
+    public function topTenOldestMaleList($params = array())
+    {
         return $this->topTenOldestQuery('list', 'M', $params);
     }
 
@@ -2870,7 +3017,8 @@ class Stats {
      *
      * @return string
      */
-    public function topTenOldestMaleAlive($params = array()) {
+    public function topTenOldestMaleAlive($params = array())
+    {
         return $this->topTenOldestAliveQuery('nolist', 'M', $params);
     }
 
@@ -2881,7 +3029,8 @@ class Stats {
      *
      * @return string
      */
-    public function topTenOldestMaleListAlive($params = array()) {
+    public function topTenOldestMaleListAlive($params = array())
+    {
         return $this->topTenOldestAliveQuery('list', 'M', $params);
     }
 
@@ -2892,7 +3041,8 @@ class Stats {
      *
      * @return string
      */
-    public function averageLifespanMale($show_years = false) {
+    public function averageLifespanMale($show_years = false)
+    {
         return $this->averageLifespanQuery('M', $show_years);
     }
 
@@ -2905,7 +3055,8 @@ class Stats {
      *
      * @return string
      */
-    private function eventQuery($type, $direction, $facts) {
+    private function eventQuery($type, $direction, $facts)
+    {
         $eventTypes = array(
             'BIRT' => I18N::translate('birth'),
             'DEAT' => I18N::translate('death'),
@@ -2982,7 +3133,8 @@ class Stats {
      *
      * @return string
      */
-    public function firstEvent() {
+    public function firstEvent()
+    {
         return $this->eventQuery('full', 'ASC', WT_EVENTS_BIRT . '|' . WT_EVENTS_MARR . '|' . WT_EVENTS_DIV . '|' . WT_EVENTS_DEAT);
     }
 
@@ -2991,7 +3143,8 @@ class Stats {
      *
      * @return string
      */
-    public function firstEventYear() {
+    public function firstEventYear()
+    {
         return $this->eventQuery('year', 'ASC', WT_EVENTS_BIRT . '|' . WT_EVENTS_MARR . '|' . WT_EVENTS_DIV . '|' . WT_EVENTS_DEAT);
     }
 
@@ -3000,7 +3153,8 @@ class Stats {
      *
      * @return string
      */
-    public function firstEventType() {
+    public function firstEventType()
+    {
         return $this->eventQuery('type', 'ASC', WT_EVENTS_BIRT . '|' . WT_EVENTS_MARR . '|' . WT_EVENTS_DIV . '|' . WT_EVENTS_DEAT);
     }
 
@@ -3009,7 +3163,8 @@ class Stats {
      *
      * @return string
      */
-    public function firstEventName() {
+    public function firstEventName()
+    {
         return $this->eventQuery('name', 'ASC', WT_EVENTS_BIRT . '|' . WT_EVENTS_MARR . '|' . WT_EVENTS_DIV . '|' . WT_EVENTS_DEAT);
     }
 
@@ -3018,7 +3173,8 @@ class Stats {
      *
      * @return string
      */
-    public function firstEventPlace() {
+    public function firstEventPlace()
+    {
         return $this->eventQuery('place', 'ASC', WT_EVENTS_BIRT . '|' . WT_EVENTS_MARR . '|' . WT_EVENTS_DIV . '|' . WT_EVENTS_DEAT);
     }
 
@@ -3027,7 +3183,8 @@ class Stats {
      *
      * @return string
      */
-    public function lastEvent() {
+    public function lastEvent()
+    {
         return $this->eventQuery('full', 'DESC', WT_EVENTS_BIRT . '|' . WT_EVENTS_MARR . '|' . WT_EVENTS_DIV . '|' . WT_EVENTS_DEAT);
     }
 
@@ -3036,7 +3193,8 @@ class Stats {
      *
      * @return string
      */
-    public function lastEventYear() {
+    public function lastEventYear()
+    {
         return $this->eventQuery('year', 'DESC', WT_EVENTS_BIRT . '|' . WT_EVENTS_MARR . '|' . WT_EVENTS_DIV . '|' . WT_EVENTS_DEAT);
     }
 
@@ -3045,7 +3203,8 @@ class Stats {
      *
      * @return string
      */
-    public function lastEventType() {
+    public function lastEventType()
+    {
         return $this->eventQuery('type', 'DESC', WT_EVENTS_BIRT . '|' . WT_EVENTS_MARR . '|' . WT_EVENTS_DIV . '|' . WT_EVENTS_DEAT);
     }
 
@@ -3054,7 +3213,8 @@ class Stats {
      *
      * @return string
      */
-    public function lastEventName() {
+    public function lastEventName()
+    {
         return $this->eventQuery('name', 'DESC', WT_EVENTS_BIRT . '|' . WT_EVENTS_MARR . '|' . WT_EVENTS_DIV . '|' . WT_EVENTS_DEAT);
     }
 
@@ -3063,7 +3223,8 @@ class Stats {
      *
      * @return string
      */
-    public function lastEventPlace() {
+    public function lastEventPlace()
+    {
         return $this->eventQuery('place', 'DESC', WT_EVENTS_BIRT . '|' . WT_EVENTS_MARR . '|' . WT_EVENTS_DIV . '|' . WT_EVENTS_DEAT);
     }
 
@@ -3077,7 +3238,8 @@ class Stats {
      *
      * @return string
      */
-    private function marriageQuery($type = 'full', $age_dir = 'ASC', $sex = 'F', $show_years = false) {
+    private function marriageQuery($type = 'full', $age_dir = 'ASC', $sex = 'F', $show_years = false)
+    {
         if ($sex == 'F') {
             $sex_field = 'f_wife';
         } else {
@@ -3156,7 +3318,8 @@ class Stats {
      *
      * @return string
      */
-    private function ageOfMarriageQuery($type = 'list', $age_dir = 'ASC', $params = array()) {
+    private function ageOfMarriageQuery($type = 'list', $age_dir = 'ASC', $params = array())
+    {
         if (isset($params[0])) {
             $total = (int) $params[0];
         } else {
@@ -3291,7 +3454,8 @@ class Stats {
      *
      * @return string
      */
-    private function ageBetweenSpousesQuery($type = 'list', $age_dir = 'DESC', $params = array()) {
+    private function ageBetweenSpousesQuery($type = 'list', $age_dir = 'DESC', $params = array())
+    {
         if (isset($params[0])) {
             $total = (int) $params[0];
         } else {
@@ -3376,7 +3540,8 @@ class Stats {
      *
      * @return string
      */
-    private function parentsQuery($type = 'full', $age_dir = 'ASC', $sex = 'F', $show_years = false) {
+    private function parentsQuery($type = 'full', $age_dir = 'ASC', $sex = 'F', $show_years = false)
+    {
         if ($sex == 'F') {
             $sex_field = 'WIFE';
         } else {
@@ -3456,7 +3621,8 @@ class Stats {
      *
      * @return string|array
      */
-    public function statsMarrQuery($simple = true, $first = false, $year1 = -1, $year2 = -1, $params = array()) {
+    public function statsMarrQuery($simple = true, $first = false, $year1 = -1, $year2 = -1, $params = array())
+    {
         $WT_STATS_CHART_COLOR1 = Theme::theme()->parameter('distribution-chart-no-values');
         $WT_STATS_CHART_COLOR2 = Theme::theme()->parameter('distribution-chart-high-values');
         $WT_STATS_S_CHART_X    = Theme::theme()->parameter('stats-small-chart-x');
@@ -3554,7 +3720,8 @@ class Stats {
      *
      * @return string|array
      */
-    private function statsDivQuery($simple = true, $first = false, $year1 = -1, $year2 = -1, $params = array()) {
+    private function statsDivQuery($simple = true, $first = false, $year1 = -1, $year2 = -1, $params = array())
+    {
         $WT_STATS_CHART_COLOR1 = Theme::theme()->parameter('distribution-chart-no-values');
         $WT_STATS_CHART_COLOR2 = Theme::theme()->parameter('distribution-chart-high-values');
         $WT_STATS_S_CHART_X    = Theme::theme()->parameter('stats-small-chart-x');
@@ -3645,7 +3812,8 @@ class Stats {
      *
      * @return string
      */
-    public function firstMarriage() {
+    public function firstMarriage()
+    {
         return $this->mortalityQuery('full', 'ASC', 'MARR');
     }
 
@@ -3654,7 +3822,8 @@ class Stats {
      *
      * @return string
      */
-    public function firstMarriageYear() {
+    public function firstMarriageYear()
+    {
         return $this->mortalityQuery('year', 'ASC', 'MARR');
     }
 
@@ -3663,7 +3832,8 @@ class Stats {
      *
      * @return string
      */
-    public function firstMarriageName() {
+    public function firstMarriageName()
+    {
         return $this->mortalityQuery('name', 'ASC', 'MARR');
     }
 
@@ -3672,7 +3842,8 @@ class Stats {
      *
      * @return string
      */
-    public function firstMarriagePlace() {
+    public function firstMarriagePlace()
+    {
         return $this->mortalityQuery('place', 'ASC', 'MARR');
     }
 
@@ -3681,7 +3852,8 @@ class Stats {
      *
      * @return string
      */
-    public function lastMarriage() {
+    public function lastMarriage()
+    {
         return $this->mortalityQuery('full', 'DESC', 'MARR');
     }
 
@@ -3690,7 +3862,8 @@ class Stats {
      *
      * @return string
      */
-    public function lastMarriageYear() {
+    public function lastMarriageYear()
+    {
         return $this->mortalityQuery('year', 'DESC', 'MARR');
     }
 
@@ -3699,7 +3872,8 @@ class Stats {
      *
      * @return string
      */
-    public function lastMarriageName() {
+    public function lastMarriageName()
+    {
         return $this->mortalityQuery('name', 'DESC', 'MARR');
     }
 
@@ -3708,7 +3882,8 @@ class Stats {
      *
      * @return string
      */
-    public function lastMarriagePlace() {
+    public function lastMarriagePlace()
+    {
         return $this->mortalityQuery('place', 'DESC', 'MARR');
     }
 
@@ -3719,7 +3894,8 @@ class Stats {
      *
      * @return string
      */
-    public function statsMarr($params = array()) {
+    public function statsMarr($params = array())
+    {
         return $this->statsMarrQuery(true, false, -1, -1, $params);
     }
 
@@ -3728,7 +3904,8 @@ class Stats {
      *
      * @return string
      */
-    public function firstDivorce() {
+    public function firstDivorce()
+    {
         return $this->mortalityQuery('full', 'ASC', 'DIV');
     }
 
@@ -3737,7 +3914,8 @@ class Stats {
      *
      * @return string
      */
-    public function firstDivorceYear() {
+    public function firstDivorceYear()
+    {
         return $this->mortalityQuery('year', 'ASC', 'DIV');
     }
 
@@ -3746,7 +3924,8 @@ class Stats {
      *
      * @return string
      */
-    public function firstDivorceName() {
+    public function firstDivorceName()
+    {
         return $this->mortalityQuery('name', 'ASC', 'DIV');
     }
 
@@ -3755,7 +3934,8 @@ class Stats {
      *
      * @return string
      */
-    public function firstDivorcePlace() {
+    public function firstDivorcePlace()
+    {
         return $this->mortalityQuery('place', 'ASC', 'DIV');
     }
 
@@ -3764,7 +3944,8 @@ class Stats {
      *
      * @return string
      */
-    public function lastDivorce() {
+    public function lastDivorce()
+    {
         return $this->mortalityQuery('full', 'DESC', 'DIV');
     }
 
@@ -3773,7 +3954,8 @@ class Stats {
      *
      * @return string
      */
-    public function lastDivorceYear() {
+    public function lastDivorceYear()
+    {
         return $this->mortalityQuery('year', 'DESC', 'DIV');
     }
 
@@ -3782,7 +3964,8 @@ class Stats {
      *
      * @return string
      */
-    public function lastDivorceName() {
+    public function lastDivorceName()
+    {
         return $this->mortalityQuery('name', 'DESC', 'DIV');
     }
 
@@ -3791,7 +3974,8 @@ class Stats {
      *
      * @return string
      */
-    public function lastDivorcePlace() {
+    public function lastDivorcePlace()
+    {
         return $this->mortalityQuery('place', 'DESC', 'DIV');
     }
 
@@ -3802,7 +3986,8 @@ class Stats {
      *
      * @return string
      */
-    public function statsDiv($params = array()) {
+    public function statsDiv($params = array())
+    {
         return $this->statsDivQuery(true, false, -1, -1, $params);
     }
 
@@ -3817,7 +4002,8 @@ class Stats {
      *
      * @return array|string
      */
-    public function statsMarrAgeQuery($simple = true, $sex = 'M', $year1 = -1, $year2 = -1, $params = array()) {
+    public function statsMarrAgeQuery($simple = true, $sex = 'M', $year1 = -1, $year2 = -1, $params = array())
+    {
         if ($simple) {
             if (isset($params[0]) && $params[0] != '') {
                 $size = strtolower($params[0]);
@@ -3983,7 +4169,8 @@ class Stats {
      *
      * @return string
      */
-    public function youngestMarriageFemale() {
+    public function youngestMarriageFemale()
+    {
         return $this->marriageQuery('full', 'ASC', 'F', false);
     }
 
@@ -3992,7 +4179,8 @@ class Stats {
      *
      * @return string
      */
-    public function youngestMarriageFemaleName() {
+    public function youngestMarriageFemaleName()
+    {
         return $this->marriageQuery('name', 'ASC', 'F', false);
     }
 
@@ -4003,7 +4191,8 @@ class Stats {
      *
      * @return string
      */
-    public function youngestMarriageFemaleAge($show_years = false) {
+    public function youngestMarriageFemaleAge($show_years = false)
+    {
         return $this->marriageQuery('age', 'ASC', 'F', $show_years);
     }
 
@@ -4012,7 +4201,8 @@ class Stats {
      *
      * @return string
      */
-    public function oldestMarriageFemale() {
+    public function oldestMarriageFemale()
+    {
         return $this->marriageQuery('full', 'DESC', 'F', false);
     }
 
@@ -4021,7 +4211,8 @@ class Stats {
      *
      * @return string
      */
-    public function oldestMarriageFemaleName() {
+    public function oldestMarriageFemaleName()
+    {
         return $this->marriageQuery('name', 'DESC', 'F', false);
     }
 
@@ -4032,7 +4223,8 @@ class Stats {
      *
      * @return string
      */
-    public function oldestMarriageFemaleAge($show_years = false) {
+    public function oldestMarriageFemaleAge($show_years = false)
+    {
         return $this->marriageQuery('age', 'DESC', 'F', $show_years);
     }
 
@@ -4041,7 +4233,8 @@ class Stats {
      *
      * @return string
      */
-    public function youngestMarriageMale() {
+    public function youngestMarriageMale()
+    {
         return $this->marriageQuery('full', 'ASC', 'M', false);
     }
 
@@ -4050,7 +4243,8 @@ class Stats {
      *
      * @return string
      */
-    public function youngestMarriageMaleName() {
+    public function youngestMarriageMaleName()
+    {
         return $this->marriageQuery('name', 'ASC', 'M', false);
     }
 
@@ -4061,7 +4255,8 @@ class Stats {
      *
      * @return string
      */
-    public function youngestMarriageMaleAge($show_years = false) {
+    public function youngestMarriageMaleAge($show_years = false)
+    {
         return $this->marriageQuery('age', 'ASC', 'M', $show_years);
     }
 
@@ -4070,7 +4265,8 @@ class Stats {
      *
      * @return string
      */
-    public function oldestMarriageMale() {
+    public function oldestMarriageMale()
+    {
         return $this->marriageQuery('full', 'DESC', 'M', false);
     }
 
@@ -4079,7 +4275,8 @@ class Stats {
      *
      * @return string
      */
-    public function oldestMarriageMaleName() {
+    public function oldestMarriageMaleName()
+    {
         return $this->marriageQuery('name', 'DESC', 'M', false);
     }
 
@@ -4090,7 +4287,8 @@ class Stats {
      *
      * @return string
      */
-    public function oldestMarriageMaleAge($show_years = false) {
+    public function oldestMarriageMaleAge($show_years = false)
+    {
         return $this->marriageQuery('age', 'DESC', 'M', $show_years);
     }
 
@@ -4101,7 +4299,8 @@ class Stats {
      *
      * @return string
      */
-    public function statsMarrAge($params = array()) {
+    public function statsMarrAge($params = array())
+    {
         return $this->statsMarrAgeQuery(true, 'BOTH', -1, -1, $params);
     }
 
@@ -4112,7 +4311,8 @@ class Stats {
      *
      * @return string
      */
-    public function ageBetweenSpousesMF($params = array()) {
+    public function ageBetweenSpousesMF($params = array())
+    {
         return $this->ageBetweenSpousesQuery('nolist', 'DESC', $params);
     }
 
@@ -4123,7 +4323,8 @@ class Stats {
      *
      * @return string
      */
-    public function ageBetweenSpousesMFList($params = array()) {
+    public function ageBetweenSpousesMFList($params = array())
+    {
         return $this->ageBetweenSpousesQuery('list', 'DESC', $params);
     }
 
@@ -4134,7 +4335,8 @@ class Stats {
      *
      * @return string
      */
-    public function ageBetweenSpousesFM($params = array()) {
+    public function ageBetweenSpousesFM($params = array())
+    {
         return $this->ageBetweenSpousesQuery('nolist', 'ASC', $params);
     }
 
@@ -4145,7 +4347,8 @@ class Stats {
      *
      * @return string
      */
-    public function ageBetweenSpousesFMList($params = array()) {
+    public function ageBetweenSpousesFMList($params = array())
+    {
         return $this->ageBetweenSpousesQuery('list', 'ASC', $params);
     }
 
@@ -4154,7 +4357,8 @@ class Stats {
      *
      * @return string
      */
-    public function topAgeOfMarriageFamily() {
+    public function topAgeOfMarriageFamily()
+    {
         return $this->ageOfMarriageQuery('name', 'DESC', array('1'));
     }
 
@@ -4163,7 +4367,8 @@ class Stats {
      *
      * @return string
      */
-    public function topAgeOfMarriage() {
+    public function topAgeOfMarriage()
+    {
         return $this->ageOfMarriageQuery('age', 'DESC', array('1'));
     }
 
@@ -4174,7 +4379,8 @@ class Stats {
      *
      * @return string
      */
-    public function topAgeOfMarriageFamilies($params = array()) {
+    public function topAgeOfMarriageFamilies($params = array())
+    {
         return $this->ageOfMarriageQuery('nolist', 'DESC', $params);
     }
 
@@ -4185,7 +4391,8 @@ class Stats {
      *
      * @return string
      */
-    public function topAgeOfMarriageFamiliesList($params = array()) {
+    public function topAgeOfMarriageFamiliesList($params = array())
+    {
         return $this->ageOfMarriageQuery('list', 'DESC', $params);
     }
 
@@ -4194,7 +4401,8 @@ class Stats {
      *
      * @return string
      */
-    public function minAgeOfMarriageFamily() {
+    public function minAgeOfMarriageFamily()
+    {
         return $this->ageOfMarriageQuery('name', 'ASC', array('1'));
     }
 
@@ -4203,7 +4411,8 @@ class Stats {
      *
      * @return string
      */
-    public function minAgeOfMarriage() {
+    public function minAgeOfMarriage()
+    {
         return $this->ageOfMarriageQuery('age', 'ASC', array('1'));
     }
 
@@ -4214,7 +4423,8 @@ class Stats {
      *
      * @return string
      */
-    public function minAgeOfMarriageFamilies($params = array()) {
+    public function minAgeOfMarriageFamilies($params = array())
+    {
         return $this->ageOfMarriageQuery('nolist', 'ASC', $params);
     }
 
@@ -4225,7 +4435,8 @@ class Stats {
      *
      * @return string
      */
-    public function minAgeOfMarriageFamiliesList($params = array()) {
+    public function minAgeOfMarriageFamiliesList($params = array())
+    {
         return $this->ageOfMarriageQuery('list', 'ASC', $params);
     }
 
@@ -4234,7 +4445,8 @@ class Stats {
      *
      * @return string
      */
-    public function youngestMother() {
+    public function youngestMother()
+    {
         return $this->parentsQuery('full', 'ASC', 'F');
     }
 
@@ -4243,7 +4455,8 @@ class Stats {
      *
      * @return string
      */
-    public function youngestMotherName() {
+    public function youngestMotherName()
+    {
         return $this->parentsQuery('name', 'ASC', 'F');
     }
 
@@ -4254,7 +4467,8 @@ class Stats {
      *
      * @return string
      */
-    public function youngestMotherAge($show_years = false) {
+    public function youngestMotherAge($show_years = false)
+    {
         return $this->parentsQuery('age', 'ASC', 'F', $show_years);
     }
 
@@ -4263,7 +4477,8 @@ class Stats {
      *
      * @return string
      */
-    public function oldestMother() {
+    public function oldestMother()
+    {
         return $this->parentsQuery('full', 'DESC', 'F');
     }
 
@@ -4272,7 +4487,8 @@ class Stats {
      *
      * @return string
      */
-    public function oldestMotherName() {
+    public function oldestMotherName()
+    {
         return $this->parentsQuery('name', 'DESC', 'F');
     }
 
@@ -4283,7 +4499,8 @@ class Stats {
      *
      * @return string
      */
-    public function oldestMotherAge($show_years = false) {
+    public function oldestMotherAge($show_years = false)
+    {
         return $this->parentsQuery('age', 'DESC', 'F', $show_years);
     }
 
@@ -4292,7 +4509,8 @@ class Stats {
      *
      * @return string
      */
-    public function youngestFather() {
+    public function youngestFather()
+    {
         return $this->parentsQuery('full', 'ASC', 'M');
     }
 
@@ -4301,7 +4519,8 @@ class Stats {
      *
      * @return string
      */
-    public function youngestFatherName() {
+    public function youngestFatherName()
+    {
         return $this->parentsQuery('name', 'ASC', 'M');
     }
 
@@ -4312,7 +4531,8 @@ class Stats {
      *
      * @return string
      */
-    public function youngestFatherAge($show_years = false) {
+    public function youngestFatherAge($show_years = false)
+    {
         return $this->parentsQuery('age', 'ASC', 'M', $show_years);
     }
 
@@ -4321,7 +4541,8 @@ class Stats {
      *
      * @return string
      */
-    public function oldestFather() {
+    public function oldestFather()
+    {
         return $this->parentsQuery('full', 'DESC', 'M');
     }
 
@@ -4330,7 +4551,8 @@ class Stats {
      *
      * @return string
      */
-    public function oldestFatherName() {
+    public function oldestFatherName()
+    {
         return $this->parentsQuery('name', 'DESC', 'M');
     }
 
@@ -4341,7 +4563,8 @@ class Stats {
      *
      * @return string
      */
-    public function oldestFatherAge($show_years = false) {
+    public function oldestFatherAge($show_years = false)
+    {
         return $this->parentsQuery('age', 'DESC', 'M', $show_years);
     }
 
@@ -4350,7 +4573,8 @@ class Stats {
      *
      * @return string
      */
-    public function totalMarriedMales() {
+    public function totalMarriedMales()
+    {
         $n = Database::prepare("SELECT COUNT(DISTINCT f_husb) FROM `##families` WHERE f_file=? AND f_gedcom LIKE '%\\n1 MARR%'")
             ->execute(array($this->tree->getTreeId()))
             ->fetchOne();
@@ -4363,7 +4587,8 @@ class Stats {
      *
      * @return string
      */
-    public function totalMarriedFemales() {
+    public function totalMarriedFemales()
+    {
         $n = Database::prepare("SELECT COUNT(DISTINCT f_wife) FROM `##families` WHERE f_file=? AND f_gedcom LIKE '%\\n1 MARR%'")
             ->execute(array($this->tree->getTreeId()))
             ->fetchOne();
@@ -4378,7 +4603,8 @@ class Stats {
      *
      * @return string
      */
-    private function familyQuery($type = 'full') {
+    private function familyQuery($type = 'full')
+    {
         $rows = $this->runSql(
             " SELECT f_numchil AS tot, f_id AS id" .
             " FROM `##families`" .
@@ -4424,7 +4650,8 @@ class Stats {
      *
      * @return string
      */
-    private function topTenFamilyQuery($type = 'list', $params = array()) {
+    private function topTenFamilyQuery($type = 'list', $params = array())
+    {
         if (isset($params[0])) {
             $total = (int) $params[0];
         } else {
@@ -4482,7 +4709,8 @@ class Stats {
      *
      * @return string
      */
-    private function ageBetweenSiblingsQuery($type = 'list', $params = array()) {
+    private function ageBetweenSiblingsQuery($type = 'list', $params = array())
+    {
         if (isset($params[0])) {
             $total = (int) $params[0];
         } else {
@@ -4611,7 +4839,8 @@ class Stats {
      *
      * @return string|string[][]
      */
-    public function monthFirstChildQuery($simple = true, $sex = false, $year1 = -1, $year2 = -1, $params = array()) {
+    public function monthFirstChildQuery($simple = true, $sex = false, $year1 = -1, $year2 = -1, $params = array())
+    {
         $WT_STATS_CHART_COLOR1 = Theme::theme()->parameter('distribution-chart-no-values');
         $WT_STATS_CHART_COLOR2 = Theme::theme()->parameter('distribution-chart-high-values');
         $WT_STATS_S_CHART_X    = Theme::theme()->parameter('stats-small-chart-x');
@@ -4743,7 +4972,8 @@ class Stats {
      *
      * @return string
      */
-    public function largestFamily() {
+    public function largestFamily()
+    {
         return $this->familyQuery('full');
     }
 
@@ -4752,7 +4982,8 @@ class Stats {
      *
      * @return string
      */
-    public function largestFamilySize() {
+    public function largestFamilySize()
+    {
         return $this->familyQuery('size');
     }
 
@@ -4761,7 +4992,8 @@ class Stats {
      *
      * @return string
      */
-    public function largestFamilyName() {
+    public function largestFamilyName()
+    {
         return $this->familyQuery('name');
     }
 
@@ -4772,7 +5004,8 @@ class Stats {
      *
      * @return string
      */
-    public function topTenLargestFamily($params = array()) {
+    public function topTenLargestFamily($params = array())
+    {
         return $this->topTenFamilyQuery('nolist', $params);
     }
 
@@ -4783,7 +5016,8 @@ class Stats {
      *
      * @return string
      */
-    public function topTenLargestFamilyList($params = array()) {
+    public function topTenLargestFamilyList($params = array())
+    {
         return $this->topTenFamilyQuery('list', $params);
     }
 
@@ -4794,7 +5028,8 @@ class Stats {
      *
      * @return string
      */
-    public function chartLargestFamilies($params = array()) {
+    public function chartLargestFamilies($params = array())
+    {
         $WT_STATS_CHART_COLOR1 = Theme::theme()->parameter('distribution-chart-no-values');
         $WT_STATS_CHART_COLOR2 = Theme::theme()->parameter('distribution-chart-high-values');
         $WT_STATS_L_CHART_X    = Theme::theme()->parameter('stats-large-chart-x');
@@ -4860,7 +5095,8 @@ class Stats {
      *
      * @return string
      */
-    public function totalChildren() {
+    public function totalChildren()
+    {
         $rows = $this->runSql("SELECT SUM(f_numchil) AS tot FROM `##families` WHERE f_file={$this->tree->getTreeId()}");
 
         return I18N::number($rows[0]['tot']);
@@ -4871,7 +5107,8 @@ class Stats {
      *
      * @return string
      */
-    public function averageChildren() {
+    public function averageChildren()
+    {
         $rows = $this->runSql("SELECT AVG(f_numchil) AS tot FROM `##families` WHERE f_file={$this->tree->getTreeId()}");
 
         return I18N::number($rows[0]['tot'], 2);
@@ -4888,7 +5125,8 @@ class Stats {
      *
      * @return string|string[][]
      */
-    public function statsChildrenQuery($simple = true, $sex = 'BOTH', $year1 = -1, $year2 = -1, $params = array()) {
+    public function statsChildrenQuery($simple = true, $sex = 'BOTH', $year1 = -1, $year2 = -1, $params = array())
+    {
         if ($simple) {
             if (isset($params[0]) && $params[0] != '') {
                 $size = strtolower($params[0]);
@@ -4994,7 +5232,8 @@ class Stats {
      *
      * @return string
      */
-    public function statsChildren($params = array()) {
+    public function statsChildren($params = array())
+    {
         return $this->statsChildrenQuery(true, 'BOTH', -1, -1, $params);
     }
 
@@ -5005,7 +5244,8 @@ class Stats {
      *
      * @return string
      */
-    public function topAgeBetweenSiblingsName($params = array()) {
+    public function topAgeBetweenSiblingsName($params = array())
+    {
         return $this->ageBetweenSiblingsQuery('name', $params);
     }
 
@@ -5016,7 +5256,8 @@ class Stats {
      *
      * @return string
      */
-    public function topAgeBetweenSiblings($params = array()) {
+    public function topAgeBetweenSiblings($params = array())
+    {
         return $this->ageBetweenSiblingsQuery('age', $params);
     }
 
@@ -5027,7 +5268,8 @@ class Stats {
      *
      * @return string
      */
-    public function topAgeBetweenSiblingsFullName($params = array()) {
+    public function topAgeBetweenSiblingsFullName($params = array())
+    {
         return $this->ageBetweenSiblingsQuery('nolist', $params);
     }
 
@@ -5038,7 +5280,8 @@ class Stats {
      *
      * @return string
      */
-    public function topAgeBetweenSiblingsList($params = array()) {
+    public function topAgeBetweenSiblingsList($params = array())
+    {
         return $this->ageBetweenSiblingsQuery('list', $params);
     }
 
@@ -5047,7 +5290,8 @@ class Stats {
      *
      * @return string
      */
-    private function noChildrenFamiliesQuery() {
+    private function noChildrenFamiliesQuery()
+    {
         $rows = $this->runSql(
             " SELECT COUNT(*) AS tot" .
             " FROM  `##families`" .
@@ -5061,7 +5305,8 @@ class Stats {
      *
      * @return string
      */
-    public function noChildrenFamilies() {
+    public function noChildrenFamilies()
+    {
         return I18N::number($this->noChildrenFamiliesQuery());
     }
 
@@ -5072,7 +5317,8 @@ class Stats {
      *
      * @return string
      */
-    public function noChildrenFamiliesList($params = array()) {
+    public function noChildrenFamiliesList($params = array())
+    {
         if (isset($params[0]) && $params[0] != '') {
             $type = strtolower($params[0]);
         } else {
@@ -5118,7 +5364,8 @@ class Stats {
      *
      * @return string
      */
-    public function chartNoChildrenFamilies($params = array()) {
+    public function chartNoChildrenFamilies($params = array())
+    {
         if (isset($params[0]) && $params[0] != '') {
             $size = strtolower($params[0]);
         } else {
@@ -5217,7 +5464,8 @@ class Stats {
      *
      * @return string
      */
-    private function topTenGrandFamilyQuery($type = 'list', $params = array()) {
+    private function topTenGrandFamilyQuery($type = 'list', $params = array())
+    {
         if (isset($params[0])) {
             $total = (int) $params[0];
         } else {
@@ -5281,7 +5529,8 @@ class Stats {
      *
      * @return string
      */
-    public function topTenLargestGrandFamily($params = array()) {
+    public function topTenLargestGrandFamily($params = array())
+    {
         return $this->topTenGrandFamilyQuery('nolist', $params);
     }
 
@@ -5292,7 +5541,8 @@ class Stats {
      *
      * @return string
      */
-    public function topTenLargestGrandFamilyList($params = array()) {
+    public function topTenLargestGrandFamilyList($params = array())
+    {
         return $this->topTenGrandFamilyQuery('list', $params);
     }
 
@@ -5305,7 +5555,8 @@ class Stats {
      *
      * @return string
      */
-    private function commonSurnamesQuery($type = 'list', $show_tot = false, $params = array()) {
+    private function commonSurnamesQuery($type = 'list', $show_tot = false, $params = array())
+    {
         $threshold          = empty($params[0]) ? 10 : (int) $params[0];
         $number_of_surnames = empty($params[1]) ? 10 : (int) $params[1];
         $sorting            = empty($params[2]) ? 'alpha' : $params[2];
@@ -5342,7 +5593,8 @@ class Stats {
      *
      * @return string
      */
-    public function getCommonSurname() {
+    public function getCommonSurname()
+    {
         $surnames = array_keys(FunctionsDb::getTopSurnames($this->tree->getTreeId(), 1, 1));
 
         return array_shift($surnames);
@@ -5355,7 +5607,8 @@ class Stats {
      *
      * @return string
      */
-    public function commonSurnames($params = array('', '', 'alpha')) {
+    public function commonSurnames($params = array('', '', 'alpha'))
+    {
         return $this->commonSurnamesQuery('nolist', false, $params);
     }
 
@@ -5366,7 +5619,8 @@ class Stats {
      *
      * @return string
      */
-    public function commonSurnamesTotals($params = array('', '', 'rcount')) {
+    public function commonSurnamesTotals($params = array('', '', 'rcount'))
+    {
         return $this->commonSurnamesQuery('nolist', true, $params);
     }
 
@@ -5377,7 +5631,8 @@ class Stats {
      *
      * @return string
      */
-    public function commonSurnamesList($params = array('', '', 'alpha')) {
+    public function commonSurnamesList($params = array('', '', 'alpha'))
+    {
         return $this->commonSurnamesQuery('list', false, $params);
     }
 
@@ -5388,7 +5643,8 @@ class Stats {
      *
      * @return string
      */
-    public function commonSurnamesListTotals($params = array('', '', 'rcount')) {
+    public function commonSurnamesListTotals($params = array('', '', 'rcount'))
+    {
         return $this->commonSurnamesQuery('list', true, $params);
     }
 
@@ -5399,7 +5655,8 @@ class Stats {
      *
      * @return string
      */
-    public function chartCommonSurnames($params = array()) {
+    public function chartCommonSurnames($params = array())
+    {
         $WT_STATS_CHART_COLOR1 = Theme::theme()->parameter('distribution-chart-no-values');
         $WT_STATS_CHART_COLOR2 = Theme::theme()->parameter('distribution-chart-high-values');
         $WT_STATS_S_CHART_X    = Theme::theme()->parameter('stats-small-chart-x');
@@ -5468,7 +5725,8 @@ class Stats {
      *
      * @return string
      */
-    private function commonGivenQuery($sex = 'B', $type = 'list', $show_tot = false, $params = array()) {
+    private function commonGivenQuery($sex = 'B', $type = 'list', $show_tot = false, $params = array())
+    {
         if (isset($params[0]) && $params[0] != '' && $params[0] >= 0) {
             $threshold = (int) $params[0];
         } else {
@@ -5596,7 +5854,8 @@ class Stats {
      *
      * @return string
      */
-    public function commonGiven($params = array(1, 10, 'alpha')) {
+    public function commonGiven($params = array(1, 10, 'alpha'))
+    {
         return $this->commonGivenQuery('B', 'nolist', false, $params);
     }
 
@@ -5607,7 +5866,8 @@ class Stats {
      *
      * @return string
      */
-    public function commonGivenTotals($params = array(1, 10, 'rcount')) {
+    public function commonGivenTotals($params = array(1, 10, 'rcount'))
+    {
         return $this->commonGivenQuery('B', 'nolist', true, $params);
     }
 
@@ -5618,7 +5878,8 @@ class Stats {
      *
      * @return string
      */
-    public function commonGivenList($params = array(1, 10, 'alpha')) {
+    public function commonGivenList($params = array(1, 10, 'alpha'))
+    {
         return $this->commonGivenQuery('B', 'list', false, $params);
     }
 
@@ -5629,7 +5890,8 @@ class Stats {
      *
      * @return string
      */
-    public function commonGivenListTotals($params = array(1, 10, 'rcount')) {
+    public function commonGivenListTotals($params = array(1, 10, 'rcount'))
+    {
         return $this->commonGivenQuery('B', 'list', true, $params);
     }
 
@@ -5640,7 +5902,8 @@ class Stats {
      *
      * @return string
      */
-    public function commonGivenTable($params = array(1, 10, 'rcount')) {
+    public function commonGivenTable($params = array(1, 10, 'rcount'))
+    {
         return $this->commonGivenQuery('B', 'table', false, $params);
     }
 
@@ -5651,7 +5914,8 @@ class Stats {
      *
      * @return string
      */
-    public function commonGivenFemale($params = array(1, 10, 'alpha')) {
+    public function commonGivenFemale($params = array(1, 10, 'alpha'))
+    {
         return $this->commonGivenQuery('F', 'nolist', false, $params);
     }
 
@@ -5662,7 +5926,8 @@ class Stats {
      *
      * @return string
      */
-    public function commonGivenFemaleTotals($params = array(1, 10, 'rcount')) {
+    public function commonGivenFemaleTotals($params = array(1, 10, 'rcount'))
+    {
         return $this->commonGivenQuery('F', 'nolist', true, $params);
     }
 
@@ -5673,7 +5938,8 @@ class Stats {
      *
      * @return string
      */
-    public function commonGivenFemaleList($params = array(1, 10, 'alpha')) {
+    public function commonGivenFemaleList($params = array(1, 10, 'alpha'))
+    {
         return $this->commonGivenQuery('F', 'list', false, $params);
     }
 
@@ -5684,7 +5950,8 @@ class Stats {
      *
      * @return string
      */
-    public function commonGivenFemaleListTotals($params = array(1, 10, 'rcount')) {
+    public function commonGivenFemaleListTotals($params = array(1, 10, 'rcount'))
+    {
         return $this->commonGivenQuery('F', 'list', true, $params);
     }
 
@@ -5695,7 +5962,8 @@ class Stats {
      *
      * @return string
      */
-    public function commonGivenFemaleTable($params = array(1, 10, 'rcount')) {
+    public function commonGivenFemaleTable($params = array(1, 10, 'rcount'))
+    {
         return $this->commonGivenQuery('F', 'table', false, $params);
     }
 
@@ -5706,7 +5974,8 @@ class Stats {
      *
      * @return string
      */
-    public function commonGivenMale($params = array(1, 10, 'alpha')) {
+    public function commonGivenMale($params = array(1, 10, 'alpha'))
+    {
         return $this->commonGivenQuery('M', 'nolist', false, $params);
     }
 
@@ -5717,7 +5986,8 @@ class Stats {
      *
      * @return string
      */
-    public function commonGivenMaleTotals($params = array(1, 10, 'rcount')) {
+    public function commonGivenMaleTotals($params = array(1, 10, 'rcount'))
+    {
         return $this->commonGivenQuery('M', 'nolist', true, $params);
     }
 
@@ -5728,7 +5998,8 @@ class Stats {
      *
      * @return string
      */
-    public function commonGivenMaleList($params = array(1, 10, 'alpha')) {
+    public function commonGivenMaleList($params = array(1, 10, 'alpha'))
+    {
         return $this->commonGivenQuery('M', 'list', false, $params);
     }
 
@@ -5739,7 +6010,8 @@ class Stats {
      *
      * @return string
      */
-    public function commonGivenMaleListTotals($params = array(1, 10, 'rcount')) {
+    public function commonGivenMaleListTotals($params = array(1, 10, 'rcount'))
+    {
         return $this->commonGivenQuery('M', 'list', true, $params);
     }
 
@@ -5750,7 +6022,8 @@ class Stats {
      *
      * @return string
      */
-    public function commonGivenMaleTable($params = array(1, 10, 'rcount')) {
+    public function commonGivenMaleTable($params = array(1, 10, 'rcount'))
+    {
         return $this->commonGivenQuery('M', 'table', false, $params);
     }
 
@@ -5761,7 +6034,8 @@ class Stats {
      *
      * @return string
      */
-    public function commonGivenUnknown($params = array(1, 10, 'alpha')) {
+    public function commonGivenUnknown($params = array(1, 10, 'alpha'))
+    {
         return $this->commonGivenQuery('U', 'nolist', false, $params);
     }
 
@@ -5772,7 +6046,8 @@ class Stats {
      *
      * @return string
      */
-    public function commonGivenUnknownTotals($params = array(1, 10, 'rcount')) {
+    public function commonGivenUnknownTotals($params = array(1, 10, 'rcount'))
+    {
         return $this->commonGivenQuery('U', 'nolist', true, $params);
     }
 
@@ -5783,7 +6058,8 @@ class Stats {
      *
      * @return string
      */
-    public function commonGivenUnknownList($params = array(1, 10, 'alpha')) {
+    public function commonGivenUnknownList($params = array(1, 10, 'alpha'))
+    {
         return $this->commonGivenQuery('U', 'list', false, $params);
     }
 
@@ -5794,7 +6070,8 @@ class Stats {
      *
      * @return string
      */
-    public function commonGivenUnknownListTotals($params = array(1, 10, 'rcount')) {
+    public function commonGivenUnknownListTotals($params = array(1, 10, 'rcount'))
+    {
         return $this->commonGivenQuery('U', 'list', true, $params);
     }
 
@@ -5805,7 +6082,8 @@ class Stats {
      *
      * @return string
      */
-    public function commonGivenUnknownTable($params = array(1, 10, 'rcount')) {
+    public function commonGivenUnknownTable($params = array(1, 10, 'rcount'))
+    {
         return $this->commonGivenQuery('U', 'table', false, $params);
     }
 
@@ -5816,7 +6094,8 @@ class Stats {
      *
      * @return string
      */
-    public function chartCommonGiven($params = array()) {
+    public function chartCommonGiven($params = array())
+    {
         $WT_STATS_CHART_COLOR1 = Theme::theme()->parameter('distribution-chart-no-values');
         $WT_STATS_CHART_COLOR2 = Theme::theme()->parameter('distribution-chart-high-values');
         $WT_STATS_S_CHART_X    = Theme::theme()->parameter('stats-small-chart-x');
@@ -5884,7 +6163,8 @@ class Stats {
      *
      * @return string
      */
-    private function usersLoggedInQuery($type = 'nolist') {
+    private function usersLoggedInQuery($type = 'nolist')
+    {
         $content = '';
         // List active users
         $NumAnonymous = 0;
@@ -5951,7 +6231,8 @@ class Stats {
      *
      * @return int
      */
-    private function usersLoggedInTotalQuery($type = 'all') {
+    private function usersLoggedInTotalQuery($type = 'all')
+    {
         $anon    = 0;
         $visible = 0;
         foreach (User::allLoggedIn() as $user) {
@@ -5975,7 +6256,8 @@ class Stats {
      *
      * @return string
      */
-    public function usersLoggedIn() {
+    public function usersLoggedIn()
+    {
         return $this->usersLoggedInQuery('nolist');
     }
 
@@ -5984,7 +6266,8 @@ class Stats {
      *
      * @return string
      */
-    public function usersLoggedInList() {
+    public function usersLoggedInList()
+    {
         return $this->usersLoggedInQuery('list');
     }
 
@@ -5993,7 +6276,8 @@ class Stats {
      *
      * @return int
      */
-    public function usersLoggedInTotal() {
+    public function usersLoggedInTotal()
+    {
         return $this->usersLoggedInTotalQuery('all');
     }
 
@@ -6002,7 +6286,8 @@ class Stats {
      *
      * @return int
      */
-    public function usersLoggedInTotalAnon() {
+    public function usersLoggedInTotalAnon()
+    {
         return $this->usersLoggedInTotalQuery('anon');
     }
 
@@ -6011,7 +6296,8 @@ class Stats {
      *
      * @return int
      */
-    public function usersLoggedInTotalVisible() {
+    public function usersLoggedInTotalVisible()
+    {
         return $this->usersLoggedInTotalQuery('visible');
     }
 
@@ -6020,7 +6306,8 @@ class Stats {
      *
      * @return null|string
      */
-    public function userId() {
+    public function userId()
+    {
         return Auth::id();
     }
 
@@ -6031,7 +6318,8 @@ class Stats {
      *
      * @return string
      */
-    public function userName($params = array()) {
+    public function userName($params = array())
+    {
         if (Auth::check()) {
             return Filter::escapeHtml(Auth::user()->getUserName());
         } elseif (isset($params[0]) && $params[0] != '') {
@@ -6047,7 +6335,8 @@ class Stats {
      *
      * @return string
      */
-    public function userFullName() {
+    public function userFullName()
+    {
         return Auth::check() ? Auth::user()->getRealNameHtml() : '';
     }
 
@@ -6059,7 +6348,8 @@ class Stats {
      *
      * @return string
      */
-    private function getLatestUserData($type = 'userid', $params = array()) {
+    private function getLatestUserData($type = 'userid', $params = array())
+    {
         static $user_id = null;
 
         if ($user_id === null) {
@@ -6113,7 +6403,8 @@ class Stats {
      *
      * @return string
      */
-    public function latestUserId() {
+    public function latestUserId()
+    {
         return $this->getLatestUserData('userid');
     }
 
@@ -6122,7 +6413,8 @@ class Stats {
      *
      * @return string
      */
-    public function latestUserName() {
+    public function latestUserName()
+    {
         return $this->getLatestUserData('username');
     }
 
@@ -6131,7 +6423,8 @@ class Stats {
      *
      * @return string
      */
-    public function latestUserFullName() {
+    public function latestUserFullName()
+    {
         return $this->getLatestUserData('fullname');
     }
 
@@ -6142,7 +6435,8 @@ class Stats {
      *
      * @return string
      */
-    public function latestUserRegDate($params = array()) {
+    public function latestUserRegDate($params = array())
+    {
         return $this->getLatestUserData('regdate', $params);
     }
 
@@ -6153,7 +6447,8 @@ class Stats {
      *
      * @return string
      */
-    public function latestUserRegTime($params = array()) {
+    public function latestUserRegTime($params = array())
+    {
         return $this->getLatestUserData('regtime', $params);
     }
 
@@ -6164,7 +6459,8 @@ class Stats {
      *
      * @return string
      */
-    public function latestUserLoggedin($params = array()) {
+    public function latestUserLoggedin($params = array())
+    {
         return $this->getLatestUserData('loggedin', $params);
     }
 
@@ -6173,7 +6469,8 @@ class Stats {
      *
      * @return string
      */
-    public function contactWebmaster() {
+    public function contactWebmaster()
+    {
         $user_id = $this->tree->getPreference('WEBMASTER_USER_ID');
         $user    = User::find($user_id);
         if ($user) {
@@ -6188,7 +6485,8 @@ class Stats {
      *
      * @return string
      */
-    public function contactGedcom() {
+    public function contactGedcom()
+    {
         $user_id = $this->tree->getPreference('CONTACT_USER_ID');
         $user    = User::find($user_id);
         if ($user) {
@@ -6203,7 +6501,8 @@ class Stats {
      *
      * @return string
      */
-    public function serverDate() {
+    public function serverDate()
+    {
         return FunctionsDate::timestampToGedcomDate(WT_TIMESTAMP)->display();
     }
 
@@ -6212,7 +6511,8 @@ class Stats {
      *
      * @return string
      */
-    public function serverTime() {
+    public function serverTime()
+    {
         return date('g:i a');
     }
 
@@ -6221,7 +6521,8 @@ class Stats {
      *
      * @return string
      */
-    public function serverTime24() {
+    public function serverTime24()
+    {
         return date('G:i');
     }
 
@@ -6230,7 +6531,8 @@ class Stats {
      *
      * @return string
      */
-    public function serverTimezone() {
+    public function serverTimezone()
+    {
         return date('T');
     }
 
@@ -6239,7 +6541,8 @@ class Stats {
      *
      * @return string
      */
-    public function browserDate() {
+    public function browserDate()
+    {
         return FunctionsDate::timestampToGedcomDate(WT_TIMESTAMP + WT_TIMESTAMP_OFFSET)->display();
     }
 
@@ -6248,7 +6551,8 @@ class Stats {
      *
      * @return string
      */
-    public function browserTime() {
+    public function browserTime()
+    {
         return date(str_replace('%', '', I18N::timeFormat()), WT_TIMESTAMP + WT_TIMESTAMP_OFFSET);
     }
 
@@ -6257,7 +6561,8 @@ class Stats {
      *
      * @return string
      */
-    public function browserTimezone() {
+    public function browserTimezone()
+    {
         return date('T', WT_TIMESTAMP + WT_TIMESTAMP_OFFSET);
     }
 
@@ -6266,7 +6571,8 @@ class Stats {
      *
      * @return string
      */
-    public function webtreesVersion() {
+    public function webtreesVersion()
+    {
         return WT_VERSION;
     }
 
@@ -6278,7 +6584,8 @@ class Stats {
      *
      * @return string
      */
-    private function hitCountQuery($page_name, $params) {
+    private function hitCountQuery($page_name, $params)
+    {
         if (is_array($params) && isset($params[0]) && $params[0] != '') {
             $page_parameter = $params[0];
         } else {
@@ -6307,7 +6614,8 @@ class Stats {
      *
      * @return string
      */
-    public function hitCount($params = array()) {
+    public function hitCount($params = array())
+    {
         return $this->hitCountQuery(null, $params);
     }
 
@@ -6318,7 +6626,8 @@ class Stats {
      *
      * @return string
      */
-    public function hitCountUser($params = array()) {
+    public function hitCountUser($params = array())
+    {
         return $this->hitCountQuery('index.php', $params);
     }
 
@@ -6329,7 +6638,8 @@ class Stats {
      *
      * @return string
      */
-    public function hitCountIndi($params = array()) {
+    public function hitCountIndi($params = array())
+    {
         return $this->hitCountQuery('individual.php', $params);
     }
 
@@ -6340,7 +6650,8 @@ class Stats {
      *
      * @return string
      */
-    public function hitCountFam($params = array()) {
+    public function hitCountFam($params = array())
+    {
         return $this->hitCountQuery('family.php', $params);
     }
 
@@ -6351,7 +6662,8 @@ class Stats {
      *
      * @return string
      */
-    public function hitCountSour($params = array()) {
+    public function hitCountSour($params = array())
+    {
         return $this->hitCountQuery('source.php', $params);
     }
 
@@ -6362,7 +6674,8 @@ class Stats {
      *
      * @return string
      */
-    public function hitCountRepo($params = array()) {
+    public function hitCountRepo($params = array())
+    {
         return $this->hitCountQuery('repo.php', $params);
     }
 
@@ -6373,7 +6686,8 @@ class Stats {
      *
      * @return string
      */
-    public function hitCountNote($params = array()) {
+    public function hitCountNote($params = array())
+    {
         return $this->hitCountQuery('note.php', $params);
     }
 
@@ -6384,7 +6698,8 @@ class Stats {
      *
      * @return string
      */
-    public function hitCountObje($params = array()) {
+    public function hitCountObje($params = array())
+    {
         return $this->hitCountQuery('mediaviewer.php', $params);
     }
 
@@ -6397,7 +6712,8 @@ class Stats {
      *
      * @return string
      */
-    private function arrayToExtendedEncoding($a) {
+    private function arrayToExtendedEncoding($a)
+    {
         $xencoding = WT_GOOGLE_CHART_ENCODING;
 
         $encoding = '';
@@ -6421,7 +6737,8 @@ class Stats {
      *
      * @return int
      */
-    private function nameTotalSort($a, $b) {
+    private function nameTotalSort($a, $b)
+    {
         return $a['match'] - $b['match'];
     }
 
@@ -6433,7 +6750,8 @@ class Stats {
      *
      * @return int
      */
-    private function nameTotalReverseSort($a, $b) {
+    private function nameTotalReverseSort($a, $b)
+    {
         return $b['match'] - $a['match'];
     }
 
@@ -6444,7 +6762,8 @@ class Stats {
      *
      * @return string[][]
      */
-    private function runSql($sql) {
+    private function runSql($sql)
+    {
         static $cache = array();
 
         $id = md5($sql);
@@ -6462,7 +6781,8 @@ class Stats {
      *
      * @return string
      */
-    public function gedcomFavorites() {
+    public function gedcomFavorites()
+    {
         if (Module::getModuleByName('gedcom_favorites')) {
             $block = new FamilyTreeFavoritesModule(WT_MODULES_DIR . 'gedcom_favorites');
 
@@ -6477,7 +6797,8 @@ class Stats {
      *
      * @return string
      */
-    public function userFavorites() {
+    public function userFavorites()
+    {
         if (Auth::check() && Module::getModuleByName('user_favorites')) {
             $block = new UserFavoritesModule(WT_MODULES_DIR . 'gedcom_favorites');
 
@@ -6492,7 +6813,8 @@ class Stats {
      *
      * @return int
      */
-    public function totalGedcomFavorites() {
+    public function totalGedcomFavorites()
+    {
         if (Module::getModuleByName('gedcom_favorites')) {
             return count(FamilyTreeFavoritesModule::getFavorites($this->tree->getTreeId()));
         } else {
@@ -6505,7 +6827,8 @@ class Stats {
      *
      * @return int
      */
-    public function totalUserFavorites() {
+    public function totalUserFavorites()
+    {
         if (Module::getModuleByName('user_favorites')) {
             return count(UserFavoritesModule::getFavorites(Auth::id()));
         } else {
@@ -6522,7 +6845,8 @@ class Stats {
      *
      * @return string
      */
-    public function callBlock($params = array()) {
+    public function callBlock($params = array())
+    {
         global $ctype;
 
         if (isset($params[0]) && $params[0] != '') {
@@ -6562,7 +6886,8 @@ class Stats {
      *
      * @return string
      */
-    public function totalUserMessages() {
+    public function totalUserMessages()
+    {
         $total = (int) Database::prepare("SELECT COUNT(*) FROM `##message` WHERE user_id = ?")
             ->execute(array(Auth::id()))
             ->fetchOne();
@@ -6575,7 +6900,8 @@ class Stats {
      *
      * @return string
      */
-    public function totalUserJournal() {
+    public function totalUserJournal()
+    {
         try {
             $number = (int) Database::prepare("SELECT COUNT(*) FROM `##news` WHERE user_id = ?")
                 ->execute(array(Auth::id()))
@@ -6593,7 +6919,8 @@ class Stats {
      *
      * @return string
      */
-    public function totalGedcomNews() {
+    public function totalGedcomNews()
+    {
         try {
             $number = (int) Database::prepare("SELECT COUNT(*) FROM `##news` WHERE gedcom_id = ?")
                 ->execute(array($this->tree->getTreeId()))
@@ -6613,7 +6940,8 @@ class Stats {
      *
      * @return string[]
      */
-    public function iso3166() {
+    public function iso3166()
+    {
         return array(
             'ABW' => 'AW', 'AFG' => 'AF', 'AGO' => 'AO', 'AIA' => 'AI', 'ALA' => 'AX', 'ALB' => 'AL',
             'AND' => 'AD', 'ARE' => 'AE', 'ARG' => 'AR', 'ARM' => 'AM', 'ASM' => 'AS',
@@ -6665,7 +6993,8 @@ class Stats {
      *
      * @return string[]
      */
-    public function getAllCountries() {
+    public function getAllCountries()
+    {
         return array(
             '???' => /* I18N: Name of a country or state */ I18N::translate('Unknown'),
             'ABW' => /* I18N: Name of a country or state */ I18N::translate('Aruba'),
@@ -6934,7 +7263,8 @@ class Stats {
      *
      * @return string
      */
-    private function centuryName($century) {
+    private function centuryName($century)
+    {
         if ($century < 0) {
             return str_replace(-$century, self::centuryName(-$century), /* I18N: BCE=Before the Common Era, for Julian years < 0. See http://en.wikipedia.org/wiki/Common_Era */
                 I18N::translate('%s BCE', I18N::number(-$century)));

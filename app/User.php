@@ -44,7 +44,8 @@ class User {
      *
      * @return User|null
      */
-    public static function find($user_id) {
+    public static function find($user_id)
+    {
         if (!array_key_exists($user_id, self::$cache)) {
             $row = Database::prepare(
                 "SELECT user_id, user_name, real_name, email FROM `##user` WHERE user_id = ?"
@@ -66,7 +67,8 @@ class User {
      *
      * @return User|null
      */
-    public static function findByUserName($user_name) {
+    public static function findByUserName($user_name)
+    {
         $user_id = Database::prepare(
             "SELECT user_id FROM `##user` WHERE user_name = :user_name"
         )->execute(array(
@@ -83,7 +85,8 @@ class User {
      *
      * @return User|null
      */
-    public static function findByEmail($email) {
+    public static function findByEmail($email)
+    {
         $user_id = Database::prepare(
             "SELECT user_id FROM `##user` WHERE email = :email"
         )->execute(array(
@@ -100,7 +103,8 @@ class User {
      *
      * @return User|null
      */
-    public static function findByIdentifier($identifier) {
+    public static function findByIdentifier($identifier)
+    {
         $user_id = Database::prepare(
             "SELECT user_id FROM `##user` WHERE ? IN (user_name, email)"
         )->execute(array($identifier))->fetchOne();
@@ -115,7 +119,8 @@ class User {
      *
      * @return User|null
      */
-    public static function findByGenealogyRecord(Individual $individual) {
+    public static function findByGenealogyRecord(Individual $individual)
+    {
         $user_id = Database::prepare(
             "SELECT user_id" .
             " FROM `##user_gedcom_setting`" .
@@ -133,7 +138,8 @@ class User {
      *
      * @return User|null
      */
-    public static function findLatestToRegister() {
+    public static function findLatestToRegister()
+    {
         $user_id = Database::prepare(
             "SELECT u.user_id" .
             " FROM `##user` u" .
@@ -157,7 +163,8 @@ class User {
      *
      * @return User
      */
-    public static function create($user_name, $real_name, $email, $password) {
+    public static function create($user_name, $real_name, $email, $password)
+    {
         Database::prepare(
             "INSERT INTO `##user` (user_name, real_name, email, password) VALUES (:user_name, :real_name, :email, :password)"
         )->execute(array(
@@ -182,7 +189,8 @@ class User {
      *
      * @return int
      */
-    public static function count() {
+    public static function count()
+    {
         return (int) Database::prepare(
             "SELECT COUNT(*)" .
             " FROM `##user`" .
@@ -195,7 +203,8 @@ class User {
      *
      * @return User[]
      */
-    public static function all() {
+    public static function all()
+    {
         $users = array();
 
         $rows = Database::prepare(
@@ -217,7 +226,8 @@ class User {
      *
      * @return User[]
      */
-    public static function allAdmins() {
+    public static function allAdmins()
+    {
         $rows = Database::prepare(
             "SELECT user_id, user_name, real_name, email" .
             " FROM `##user`" .
@@ -240,7 +250,8 @@ class User {
      *
      * @return User[]
      */
-    public static function allVerified() {
+    public static function allVerified()
+    {
         $rows = Database::prepare(
             "SELECT user_id, user_name, real_name, email" .
             " FROM `##user`" .
@@ -263,7 +274,8 @@ class User {
      *
      * @return User[]
      */
-    public static function allLoggedIn() {
+    public static function allLoggedIn()
+    {
         $rows = Database::prepare(
             "SELECT DISTINCT user_id, user_name, real_name, email" .
             " FROM `##user`" .
@@ -283,7 +295,8 @@ class User {
      *
      * @param \stdclass $user A row from the wt_user table
      */
-    public function __construct(\stdClass $user) {
+    public function __construct(\stdClass $user)
+    {
         $this->user_id   = $user->user_id;
         $this->user_name = $user->user_name;
         $this->real_name = $user->real_name;
@@ -293,7 +306,8 @@ class User {
     /**
      * Delete a user
      */
-    public function delete() {
+    public function delete()
+    {
         // Don't delete the logs.
         Database::prepare("UPDATE `##log` SET user_id=NULL WHERE user_id =?")->execute(array($this->user_id));
         // Take over the user’s pending changes. (What else could we do with them?)
@@ -313,7 +327,8 @@ class User {
      *
      * @return bool
      */
-    public function checkPassword($password) {
+    public function checkPassword($password)
+    {
         $password_hash = Database::prepare(
             "SELECT password FROM `##user` WHERE user_id = ?"
         )->execute(array($this->user_id))->fetchOne();
@@ -334,7 +349,8 @@ class User {
      *
      * @return string
      */
-    public function getUserId() {
+    public function getUserId()
+    {
         return $this->user_id;
     }
 
@@ -343,7 +359,8 @@ class User {
      *
      * @return string
      */
-    public function getUserName() {
+    public function getUserName()
+    {
         return $this->user_name;
     }
 
@@ -354,7 +371,8 @@ class User {
      *
      * @return $this
      */
-    public function setUserName($user_name) {
+    public function setUserName($user_name)
+    {
         if ($this->user_name !== $user_name) {
             $this->user_name = $user_name;
             Database::prepare(
@@ -370,7 +388,8 @@ class User {
      *
      * @return string
      */
-    public function getRealName() {
+    public function getRealName()
+    {
         return $this->real_name;
     }
 
@@ -379,7 +398,8 @@ class User {
      *
      * @return string
      */
-    public function getRealNameHtml() {
+    public function getRealNameHtml()
+    {
         return '<span dir="auto">' . Filter::escapeHtml($this->real_name) . '</span>';
     }
 
@@ -390,7 +410,8 @@ class User {
      *
      * @return User
      */
-    public function setRealName($real_name) {
+    public function setRealName($real_name)
+    {
         if ($this->real_name !== $real_name) {
             $this->real_name = $real_name;
             Database::prepare(
@@ -406,7 +427,8 @@ class User {
      *
      * @return string
      */
-    public function getEmail() {
+    public function getEmail()
+    {
         return $this->email;
     }
 
@@ -417,7 +439,8 @@ class User {
      *
      * @return User
      */
-    public function setEmail($email) {
+    public function setEmail($email)
+    {
         if ($this->email !== $email) {
             $this->email = $email;
             Database::prepare(
@@ -435,7 +458,8 @@ class User {
      *
      * @return User
      */
-    public function setPassword($password) {
+    public function setPassword($password)
+    {
         Database::prepare(
             "UPDATE `##user` SET password = ? WHERE user_id = ?"
         )->execute(array($this->passwordHash($password), $this->user_id));
@@ -454,7 +478,8 @@ class User {
      *
      * @return string|null
      */
-    public function getPreference($setting_name, $default = null) {
+    public function getPreference($setting_name, $default = null)
+    {
         if ($this->preferences === null) {
             if ($this->user_id) {
                 $this->preferences = Database::prepare(
@@ -481,7 +506,8 @@ class User {
      *
      * @return User
      */
-    public function setPreference($setting_name, $setting_value) {
+    public function setPreference($setting_name, $setting_value)
+    {
         if ($this->user_id && $this->getPreference($setting_name) !== $setting_value) {
             Database::prepare("REPLACE INTO `##user_setting` (user_id, setting_name, setting_value) VALUES (?, ?, LEFT(?, 255))")
                 ->execute(array($this->user_id, $setting_name, $setting_value));
@@ -498,7 +524,8 @@ class User {
      *
      * @return User
      */
-    public function deletePreference($setting_name) {
+    public function deletePreference($setting_name)
+    {
         if ($this->user_id && $this->getPreference($setting_name) !== null) {
             Database::prepare("DELETE FROM `##user_setting` WHERE user_id = ? AND setting_name = ?")
                 ->execute(array($this->user_id, $setting_name));
@@ -514,7 +541,8 @@ class User {
      *
      * @return bool
      */
-    private static function isPhpCryptBroken() {
+    private static function isPhpCryptBroken()
+    {
         return PHP_VERSION_ID < 50307 && password_hash('foo', PASSWORD_DEFAULT) === false;
     }
 
@@ -523,7 +551,8 @@ class User {
      *
      * @return string
      */
-    private static function passwordHash($password) {
+    private static function passwordHash($password)
+    {
         if (self::isPhpCryptBroken()) {
             return crypt($password);
         } else {
@@ -536,7 +565,8 @@ class User {
      *
      * @return bool
      */
-    private static function passwordNeedsRehash($hash) {
+    private static function passwordNeedsRehash($hash)
+    {
         if (self::isPhpCryptBroken()) {
             return false;
         } else {
@@ -550,7 +580,8 @@ class User {
      *
      * @return bool
      */
-    private static function passwordVerify($password, $hash) {
+    private static function passwordVerify($password, $hash)
+    {
         if (self::isPhpCryptBroken()) {
             return crypt($password, $hash) === $hash;
         } else {

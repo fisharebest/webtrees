@@ -32,7 +32,8 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface 
      *
      * @return string
      */
-    public function getTitle() {
+    public function getTitle()
+    {
         return /* I18N: Name of a module */ I18N::translate('Most viewed pages');
     }
 
@@ -41,7 +42,8 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface 
      *
      * @return string
      */
-    public function getDescription() {
+    public function getDescription()
+    {
         return /* I18N: Description of the “Most visited pages” module */ I18N::translate('A list of the pages that have been viewed the most number of times.');
     }
 
@@ -54,7 +56,8 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface 
      *
      * @return string
      */
-    public function getBlock($block_id, $template = true, $cfg = array()) {
+    public function getBlock($block_id, $template = true, $cfg = array())
+    {
         global $ctype, $WT_TREE;
 
         $num             = $this->getBlockSetting($block_id, 'num', '10');
@@ -119,7 +122,8 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface 
      *
      * @return bool
      */
-    public function loadAjax() {
+    public function loadAjax()
+    {
         return true;
     }
 
@@ -128,7 +132,8 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface 
      *
      * @return bool
      */
-    public function isUserBlock() {
+    public function isUserBlock()
+    {
         return false;
     }
 
@@ -137,7 +142,8 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface 
      *
      * @return bool
      */
-    public function isGedcomBlock() {
+    public function isGedcomBlock()
+    {
         return true;
     }
 
@@ -146,7 +152,8 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface 
      *
      * @param int $block_id
      */
-    public function configureBlock($block_id) {
+    public function configureBlock($block_id)
+    {
         if (Filter::postBool('save') && Filter::checkCsrf()) {
             $this->setBlockSetting($block_id, 'num', Filter::postInteger('num', 1, 10000, 10));
             $this->setBlockSetting($block_id, 'count_placement', Filter::post('count_placement', 'before|after', 'before'));

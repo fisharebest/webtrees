@@ -25,7 +25,8 @@ class ReportBasePageheader extends ReportBaseElement {
     /**
      * Create a page header
      */
-    public function __construct() {
+    public function __construct()
+    {
         $this->elements = array();
 
         return 0;
@@ -36,7 +37,8 @@ class ReportBasePageheader extends ReportBaseElement {
      *
      * @return int
      */
-    public function textBox() {
+    public function textBox()
+    {
         $this->elements = array();
 
         return 0;
@@ -47,7 +49,8 @@ class ReportBasePageheader extends ReportBaseElement {
      *
      * @param ReportBaseElement $element
      */
-    public function addElement($element) {
+    public function addElement($element)
+    {
         $this->elements[] = $element;
     }
 }

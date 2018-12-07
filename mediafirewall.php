@@ -34,7 +34,8 @@ $media = Media::getInstance($mid, $WT_TREE);
 /**
  * Send a “Not found” error as an image
  */
-function send404AsImage() {
+function send404AsImage()
+{
     $error = I18N::translate('The media file was not found in this family tree.');
 
     $width  = mb_strlen($error) * 6.5 + 50;
@@ -61,7 +62,8 @@ function send404AsImage() {
  *
  * @return resource
  */
-function applyWatermark($im, Tree $tree) {
+function applyWatermark($im, Tree $tree)
+{
     // text to watermark with
     $word1_text = $tree->getTitle();
     // maximum font size for “word1” ; will be automaticaly reduced to fit in the image
@@ -100,7 +102,8 @@ function applyWatermark($im, Tree $tree) {
  * @param string   $vpos
  * @param string   $hpos
  */
-function embedText($im, $text, $maxsize, $color, $font, $vpos, $hpos) {
+function embedText($im, $text, $maxsize, $color, $font, $vpos, $hpos)
+{
     global $useTTF;
 
     // there are two ways to embed text with PHP
@@ -203,7 +206,8 @@ function embedText($im, $text, $maxsize, $color, $font, $vpos, $hpos) {
  *
  * @return int
  */
-function textlength($t, $mxl, $text) {
+function textlength($t, $mxl, $text)
+{
     $taille_c = $t;
     $len      = mb_strlen($text);
     while (($taille_c - 2) * $len > $mxl) {
@@ -225,7 +229,8 @@ function textlength($t, $mxl, $text) {
  *
  * @return bool
  */
-function imagettftextErrorHandler($errno, $errstr) {
+function imagettftextErrorHandler($errno, $errstr)
+{
     global $useTTF, $serverFilename;
     // log the error
     Log::addErrorLog('Media Firewall error: >' . $errno . '/' . $errstr . '< while processing file >' . $serverFilename . '<');
@@ -243,7 +248,8 @@ function imagettftextErrorHandler($errno, $errstr) {
  *
  * @return string|false
  */
-function isImageTypeSupported($reqtype) {
+function isImageTypeSupported($reqtype)
+{
     $supportByGD = array('jpg' => 'jpeg', 'jpeg' => 'jpeg', 'gif' => 'gif', 'png' => 'png');
     $reqtype     = strtolower($reqtype);
 

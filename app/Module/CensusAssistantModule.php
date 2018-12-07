@@ -35,12 +35,14 @@ use Fisharebest\Webtrees\Soundex;
  */
 class CensusAssistantModule extends AbstractModule {
     /** {@inheritdoc} */
-    public function getTitle() {
+    public function getTitle()
+    {
         return /* I18N: Name of a module */ I18N::translate('Census assistant');
     }
 
     /** {@inheritdoc} */
-    public function getDescription() {
+    public function getDescription()
+    {
         return /* I18N: Description of the “Census assistant” module */ I18N::translate('An alternative way to enter census transcripts and link them to individuals.');
     }
 
@@ -50,7 +52,8 @@ class CensusAssistantModule extends AbstractModule {
      *
      * @param string $mod_action
      */
-    public function modAction($mod_action) {
+    public function modAction($mod_action)
+    {
         switch ($mod_action) {
             case 'census_find':
                 self::censusFind();
@@ -69,7 +72,8 @@ class CensusAssistantModule extends AbstractModule {
     /**
      * Find an individual.
      */
-    private static function censusFind() {
+    private static function censusFind()
+    {
         global $WT_TREE;
 
         $controller = new SimpleController;
@@ -126,7 +130,8 @@ class CensusAssistantModule extends AbstractModule {
     /**
      * Find a media object.
      */
-    private static function mediaFind() {
+    private static function mediaFind()
+    {
         global $WT_TREE;
 
         $controller = new SimpleController;
@@ -224,7 +229,8 @@ class CensusAssistantModule extends AbstractModule {
     /**
      * Search for a media object.
      */
-    private static function mediaQuery() {
+    private static function mediaQuery()
+    {
         global $WT_TREE;
 
         $iid2 = Filter::get('iid', WT_REGEX_XREF);
@@ -277,7 +283,8 @@ class CensusAssistantModule extends AbstractModule {
      *
      * @return string
      */
-    public static function formatCensusNote(Note $note) {
+    public static function formatCensusNote(Note $note)
+    {
         global $WT_TREE;
 
         if (preg_match('/(.*)((?:\n.*)*)\n\.start_formatted_area\.\n(.+)\n(.+(?:\n.+)*)\n.end_formatted_area\.((?:\n.*)*)/', $note->getNote(), $match)) {
@@ -363,7 +370,8 @@ class CensusAssistantModule extends AbstractModule {
      *
      * @return string
      */
-    public static function censusTableHeader(CensusInterface $census) {
+    public static function censusTableHeader(CensusInterface $census)
+    {
         $html = '';
         foreach ($census->columns() as $column) {
             $html .= '<th title="' . $column->title() . '">' . $column->abbreviation() . '</th>';
@@ -382,7 +390,8 @@ class CensusAssistantModule extends AbstractModule {
      *
      * @return string
      */
-    public static function censusTableEmptyRow(CensusInterface $census) {
+    public static function censusTableEmptyRow(CensusInterface $census)
+    {
         return '<tr><td hidden></td>' . str_repeat('<td><input type="text"></td>', count($census->columns())) . '<td><a class="icon-remove" href="#" title="' . I18N::translate('Remove') . '"></a></td></tr>';
     }
 
@@ -398,7 +407,8 @@ class CensusAssistantModule extends AbstractModule {
      *
      * @return string
      */
-    public static function censusTableRow(CensusInterface $census, Individual $individual, Individual $head = null) {
+    public static function censusTableRow(CensusInterface $census, Individual $individual, Individual $head = null)
+    {
         $html = '';
         foreach ($census->columns() as $column) {
             $html .= '<td><input type="text" value="' . $column->generate($individual, $head) . '"></td>';
@@ -416,7 +426,8 @@ class CensusAssistantModule extends AbstractModule {
      *
      * @return string
      */
-    public static function censusNavigatorFamily(CensusInterface $census, Family $family, Individual $head) {
+    public static function censusNavigatorFamily(CensusInterface $census, Family $family, Individual $head)
+    {
         $headImg2 = '<i class="icon-button_head" title="' . I18N::translate('Head of household') . '"></i>';
 
         foreach ($family->getSpouses() as $spouse) {

@@ -35,7 +35,8 @@ class RelationshipController extends PageController {
      *
      * @return string[][]
      */
-    public function calculateRelationships(Individual $individual1, Individual $individual2, $recursion, $ancestor = false) {
+    public function calculateRelationships(Individual $individual1, Individual $individual2, $recursion, $ancestor = false)
+    {
 
         $rows = Database::prepare(
             "SELECT l_from, l_to FROM `##link` WHERE l_file = :tree_id AND l_type IN ('FAMS', 'FAMC')"
@@ -114,7 +115,8 @@ class RelationshipController extends PageController {
      *
      * @return string[]
      */
-    public function oldStyleRelationshipPath(array $path) {
+    public function oldStyleRelationshipPath(array $path)
+    {
         global $WT_TREE;
 
         $spouse_codes  = array('M' => 'hus', 'F' => 'wif', 'U' => 'spo');
@@ -160,7 +162,8 @@ class RelationshipController extends PageController {
      *
      * @return array
      */
-    private function allAncestors($xref1, $xref2, $tree_id) {
+    private function allAncestors($xref1, $xref2, $tree_id)
+    {
         $ancestors = array($xref1, $xref2);
 
         $queue = array($xref1, $xref2);
@@ -199,7 +202,8 @@ class RelationshipController extends PageController {
      *
      * @return array
      */
-    private function excludeFamilies($xref1, $xref2, $tree_id) {
+    private function excludeFamilies($xref1, $xref2, $tree_id)
+    {
         return Database::prepare(
             "SELECT l_to" .
             " FROM `##link` AS l1" .

@@ -24,7 +24,8 @@ class CensusOfDenmark1930 extends CensusOfDenmark implements CensusInterface {
      *
      * @return string
      */
-    public function censusDate() {
+    public function censusDate()
+    {
         return '05 NOV 1930';
     }
 
@@ -33,7 +34,8 @@ class CensusOfDenmark1930 extends CensusOfDenmark implements CensusInterface {
      *
      * @return CensusColumnInterface[]
      */
-    public function columns() {
+    public function columns()
+    {
         return array(
             new CensusColumnSurnameGivenNames($this, 'Navn', ''),
             new CensusColumnNull($this, 'Bopæl', ''),

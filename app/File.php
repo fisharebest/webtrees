@@ -32,7 +32,8 @@ class File {
      *
      * @return null|string
      */
-    public static function fetchUrl($url, $stream = null) {
+    public static function fetchUrl($url, $stream = null)
+    {
         $host  = parse_url($url, PHP_URL_HOST);
         $port  = parse_url($url, PHP_URL_PORT);
         $path  = parse_url($url, PHP_URL_PATH);
@@ -90,7 +91,8 @@ class File {
      *
      * @return bool Was the file deleted
      */
-    public static function delete($path) {
+    public static function delete($path)
+    {
         if (is_dir($path)) {
             $dir = opendir($path);
             while ($dir !== false && (($file = readdir($dir)) !== false)) {
@@ -122,7 +124,8 @@ class File {
      *
      * @return bool Does the folder now exist
      */
-    public static function mkdir($path) {
+    public static function mkdir($path)
+    {
         if (is_dir($path)) {
             return true;
         } else {

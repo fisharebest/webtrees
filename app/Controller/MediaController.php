@@ -31,7 +31,8 @@ class MediaController extends GedcomRecordController {
     /**
      * get edit menu
      */
-    public function getEditMenu() {
+    public function getEditMenu()
+    {
         if (!$this->record || $this->record->isPendingDeletion()) {
             return null;
         }
@@ -84,7 +85,8 @@ class MediaController extends GedcomRecordController {
      *
      * @return Fact[]
      */
-    public function getFacts() {
+    public function getFacts()
+    {
         $facts = $this->record->getFacts();
 
         // Add some dummy facts to show additional information
@@ -110,7 +112,8 @@ class MediaController extends GedcomRecordController {
      *
      * @return string
      */
-    public static function getMediaListMenu(Media $mediaobject) {
+    public static function getMediaListMenu(Media $mediaobject)
+    {
         $html = '';
 
         $menu = new Menu(I18N::translate('Edit the details'), '#', 'lb-image_edit', array(

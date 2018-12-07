@@ -25,7 +25,8 @@ class Migration27 implements MigrationInterface {
     /**
      * Upgrade to to the next version
      */
-    public function upgrade() {
+    public function upgrade()
+    {
         // Delete old/unused settings
         Database::exec(
             "DELETE FROM `##gedcom_setting` WHERE setting_name IN ('USE_GEONAMES')"

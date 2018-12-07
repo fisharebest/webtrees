@@ -24,7 +24,8 @@ class ReportPdfImage extends ReportBaseImage {
      *
      * @param ReportTcpdf $renderer
      */
-    public function render($renderer) {
+    public function render($renderer)
+    {
         global $lastpicbottom, $lastpicpage, $lastpicleft, $lastpicright;
 
         // Check for a pagebreak first
@@ -100,7 +101,8 @@ class ReportPdfImage extends ReportBaseImage {
      *
      * @return float
      */
-    public function getHeight($pdf) {
+    public function getHeight($pdf)
+    {
         return $this->height;
     }
 
@@ -111,7 +113,8 @@ class ReportPdfImage extends ReportBaseImage {
      *
      * @return float
      */
-    public function getWidth($pdf) {
+    public function getWidth($pdf)
+    {
         return $this->width;
     }
 }

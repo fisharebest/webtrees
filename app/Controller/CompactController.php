@@ -31,7 +31,8 @@ class CompactController extends ChartController {
     /**
      * Startup activity
      */
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
 
         // Extract the request parameters
@@ -55,7 +56,8 @@ class CompactController extends ChartController {
      *
      * @return string
      */
-    public function sosaIndividual($n) {
+    public function sosaIndividual($n)
+    {
         $indi = $this->treeid[$n];
 
         if ($indi && $indi->canShowName()) {
@@ -109,7 +111,8 @@ class CompactController extends ChartController {
      *
      * @return string
      */
-    public function sosaArrow($n, $arrow_dir) {
+    public function sosaArrow($n, $arrow_dir)
+    {
         $indi = $this->treeid[$n];
 
         $arrow_dir = substr($arrow_dir, 0, 1);

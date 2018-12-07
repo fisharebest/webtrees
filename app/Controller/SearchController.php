@@ -104,7 +104,8 @@ class SearchController extends PageController {
     /**
      * Startup activity
      */
-    public function __construct() {
+    public function __construct()
+    {
         global $WT_TREE;
 
         parent::__construct();
@@ -216,7 +217,8 @@ class SearchController extends PageController {
     /**
      * Gathers results for a general search
      */
-    private function generalSearch() {
+    private function generalSearch()
+    {
         // Split search terms into an array
         $query_terms = array();
         $query       = $this->query;
@@ -301,7 +303,8 @@ class SearchController extends PageController {
      *
      * @param Tree $tree
      */
-    private function searchAndReplace(Tree $tree) {
+    private function searchAndReplace(Tree $tree)
+    {
         $this->generalSearch();
 
         //-- don't try to make any changes if nothing was found
@@ -449,7 +452,8 @@ class SearchController extends PageController {
      *  The names' Soundex SQL table contains all the soundex values twice
      *  The places table contains only one value
      */
-    private function soundexSearch() {
+    private function soundexSearch()
+    {
         if (((!empty($this->lastname)) || (!empty($this->firstname)) || (!empty($this->place))) && $this->search_trees) {
             $logstring = "Type: Soundex\n";
             if (!empty($this->lastname)) {
@@ -506,7 +510,8 @@ class SearchController extends PageController {
     /**
      * Display the search results
      */
-    public function printResults() {
+    public function printResults()
+    {
         if ($this->action !== 'replace' && ($this->query || $this->firstname || $this->lastname || $this->place)) {
             if ($this->myindilist || $this->myfamlist || $this->mysourcelist || $this->mynotelist) {
                 $this->addInlineJavascript('jQuery("#search-result-tabs").tabs();');

@@ -33,7 +33,8 @@ class Site {
      *
      * @return string|null
      */
-    public static function getPreference($setting_name) {
+    public static function getPreference($setting_name)
+    {
         // There are lots of settings, and we need to fetch lots of them on every page
         // so it is quicker to fetch them all in one go.
         if (self::$settings === null) {
@@ -56,7 +57,8 @@ class Site {
      * @param string          $setting_name
      * @param string|int|bool $setting_value
      */
-    public static function setPreference($setting_name, $setting_value) {
+    public static function setPreference($setting_name, $setting_value)
+    {
         // Only need to update the database if the setting has actually changed.
         if (self::getPreference($setting_name) != $setting_value) {
             if ($setting_value === null) {

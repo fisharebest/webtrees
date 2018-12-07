@@ -28,12 +28,14 @@ use Fisharebest\Webtrees\User;
  */
 class LoggedInUsersModule extends AbstractModule implements ModuleBlockInterface {
     /** {@inheritdoc} */
-    public function getTitle() {
+    public function getTitle()
+    {
         return /* I18N: Name of a module. (A list of users who are online now) */ I18N::translate('Who is online');
     }
 
     /** {@inheritdoc} */
-    public function getDescription() {
+    public function getDescription()
+    {
         return /* I18N: Description of the “Who is online” module */ I18N::translate('A list of users and visitors who are currently online.');
     }
 
@@ -46,7 +48,8 @@ class LoggedInUsersModule extends AbstractModule implements ModuleBlockInterface
      *
      * @return string
      */
-    public function getBlock($block_id, $template = true, $cfg = array()) {
+    public function getBlock($block_id, $template = true, $cfg = array())
+    {
         global $WT_TREE;
 
         $id        = $this->getName() . $block_id;
@@ -106,17 +109,20 @@ class LoggedInUsersModule extends AbstractModule implements ModuleBlockInterface
     }
 
     /** {@inheritdoc} */
-    public function loadAjax() {
+    public function loadAjax()
+    {
         return false;
     }
 
     /** {@inheritdoc} */
-    public function isUserBlock() {
+    public function isUserBlock()
+    {
         return true;
     }
 
     /** {@inheritdoc} */
-    public function isGedcomBlock() {
+    public function isGedcomBlock()
+    {
         return true;
     }
 
@@ -125,6 +131,7 @@ class LoggedInUsersModule extends AbstractModule implements ModuleBlockInterface
      *
      * @param int $block_id
      */
-    public function configureBlock($block_id) {
+    public function configureBlock($block_id)
+    {
     }
 }

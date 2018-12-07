@@ -25,7 +25,8 @@ class Migration18 implements MigrationInterface {
     /**
      * Upgrade to to the next version
      */
-    public function upgrade() {
+    public function upgrade()
+    {
         // Update some indexes, based on analysis of slow-query-logs
         try {
             Database::exec(

@@ -33,7 +33,8 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface {
      *
      * @return string
      */
-    public function getTitle() {
+    public function getTitle()
+    {
         return /* I18N: Name of a module */ I18N::translate('Families');
     }
 
@@ -42,7 +43,8 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface {
      *
      * @return string
      */
-    public function getDescription() {
+    public function getDescription()
+    {
         return /* I18N: Description of the “Families” module */ I18N::translate('A tab showing the close relatives of an individual.');
     }
 
@@ -52,7 +54,8 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface {
      *
      * @return int
      */
-    public function defaultTabOrder() {
+    public function defaultTabOrder()
+    {
         return 20;
     }
 
@@ -65,7 +68,8 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface {
      *
      * @return string
      */
-    private static function ageDifference(Date $prev, Date $next, $child_number = 0) {
+    private static function ageDifference(Date $prev, Date $next, $child_number = 0)
+    {
         if ($prev->isOK() && $next->isOK()) {
             $days = $next->maximumJulianDay() - $prev->minimumJulianDay();
             if ($days < 0) {
@@ -98,7 +102,8 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface {
      * @param string $type
      * @param string $label
      */
-    private function printFamily(Family $family, $type, $label) {
+    private function printFamily(Family $family, $type, $label)
+    {
         global $controller;
 
         if ($family->getTree()->getPreference('SHOW_PRIVATE_RELATIONSHIPS')) {
@@ -296,7 +301,8 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface {
     }
 
     /** {@inheritdoc} */
-    public function getTabContent() {
+    public function getTabContent()
+    {
         global $show_full, $controller;
 
         if (isset($show_full)) {
@@ -415,20 +421,24 @@ if ($controller->record->getSex() != "M") { ?>
     }
 
     /** {@inheritdoc} */
-    public function hasTabContent() {
+    public function hasTabContent()
+    {
         return true;
     }
     /** {@inheritdoc} */
-    public function isGrayedOut() {
+    public function isGrayedOut()
+    {
         return false;
     }
     /** {@inheritdoc} */
-    public function canLoadAjax() {
+    public function canLoadAjax()
+    {
         return !Auth::isSearchEngine(); // Search engines cannot use AJAX
     }
 
     /** {@inheritdoc} */
-    public function getPreLoadContent() {
+    public function getPreLoadContent()
+    {
         return '';
     }
 }

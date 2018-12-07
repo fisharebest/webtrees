@@ -34,7 +34,8 @@ class JulianDate extends CalendarDate {
      *
      * @param array|int|CalendarDate $date
      */
-    public function __construct($date) {
+    public function __construct($date)
+    {
         $this->calendar = new JulianCalendar;
         parent::__construct($date);
     }
@@ -46,7 +47,8 @@ class JulianDate extends CalendarDate {
      *
      * @return int
      */
-    protected function nextYear($year) {
+    protected function nextYear($year)
+    {
         if ($year == -1) {
             return 1;
         } else {
@@ -61,7 +63,8 @@ class JulianDate extends CalendarDate {
      *
      * @return int
      */
-    protected function extractYear($year) {
+    protected function extractYear($year)
+    {
         if (preg_match('/^(\d\d\d\d)\/\d{1,4}$/', $year, $match)) {
             // Assume the first year is correct
             $this->new_old_style = true;
@@ -79,7 +82,8 @@ class JulianDate extends CalendarDate {
      *
      * @return string
      */
-    protected function formatLongYear() {
+    protected function formatLongYear()
+    {
         if ($this->y < 0) {
             return /*  I18N: BCE=Before the Common Era, for Julian years < 0. See http://en.wikipedia.org/wiki/Common_Era */
                 I18N::translate('%s&nbsp;BCE', I18N::digits(-$this->y));
@@ -98,7 +102,8 @@ class JulianDate extends CalendarDate {
      *
      * @return string
      */
-    protected function formatGedcomYear() {
+    protected function formatGedcomYear()
+    {
         if ($this->y < 0) {
             return sprintf('%04d B.C.', -$this->y);
         } else {

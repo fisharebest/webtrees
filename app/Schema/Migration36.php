@@ -24,7 +24,8 @@ class Migration36 implements MigrationInterface {
     /**
      * Upgrade to to the next version
      */
-    public function upgrade() {
+    public function upgrade()
+    {
         // IPv6 addresses can be up to 45 characters.
         Database::exec("ALTER TABLE `##log`     CHANGE ip_address ip_address VARCHAR(45) NOT NULL");
         Database::exec("ALTER TABLE `##message` CHANGE ip_address ip_address VARCHAR(45) NOT NULL");

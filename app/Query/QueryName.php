@@ -32,7 +32,8 @@ class QueryName {
      *
      * @return string[]
      */
-    private static function getAlphabetForLocale($locale) {
+    private static function getAlphabetForLocale($locale)
+    {
         switch ($locale) {
             case 'ar':
                 return array(
@@ -123,7 +124,8 @@ class QueryName {
      *
      * @return string
      */
-    public static function initialLetter($name) {
+    public static function initialLetter($name)
+    {
         $name = I18N::strtoupper($name);
         switch (WT_LOCALE) {
             case 'cs':
@@ -189,7 +191,8 @@ class QueryName {
      *
      * @return string
      */
-    private static function getInitialSql($field, $letter) {
+    private static function getInitialSql($field, $letter)
+    {
         switch (WT_LOCALE) {
             case 'cs':
                 switch ($letter) {
@@ -252,7 +255,8 @@ class QueryName {
      *
      * @return int[]
      */
-    public static function surnameAlpha(Tree $tree, $marnm, $fams, $totals = true) {
+    public static function surnameAlpha(Tree $tree, $marnm, $fams, $totals = true)
+    {
         $alphas = array();
 
         $sql =
@@ -328,7 +332,8 @@ class QueryName {
      *
      * @return int[]
      */
-    public static function givenAlpha(Tree $tree, $surn, $salpha, $marnm, $fams) {
+    public static function givenAlpha(Tree $tree, $surn, $salpha, $marnm, $fams)
+    {
         $alphas = array();
 
         $sql =
@@ -410,7 +415,8 @@ class QueryName {
      *
      * @return array
      */
-    public static function surnames(Tree $tree, $surn, $salpha, $marnm, $fams) {
+    public static function surnames(Tree $tree, $surn, $salpha, $marnm, $fams)
+    {
         $sql =
             "SELECT n2.n_surn, n1.n_surname, n1.n_id" .
             " FROM `##name` n1 " .
@@ -465,7 +471,8 @@ class QueryName {
      *
      * @return Individual[]
      */
-    public static function individuals(Tree $tree, $surn, $salpha, $galpha, $marnm, $fams) {
+    public static function individuals(Tree $tree, $surn, $salpha, $galpha, $marnm, $fams)
+    {
         $sql =
             "SELECT i_id AS xref, i_gedcom AS gedcom, n_full " .
             "FROM `##individuals` " .
@@ -534,7 +541,8 @@ class QueryName {
      *
      * @return Family[]
      */
-    public static function families(Tree $tree, $surn, $salpha, $galpha, $marnm) {
+    public static function families(Tree $tree, $surn, $salpha, $galpha, $marnm)
+    {
         $list = array();
         foreach (self::individuals($tree, $surn, $salpha, $galpha, $marnm, true) as $indi) {
             foreach ($indi->getSpouseFamilies() as $family) {

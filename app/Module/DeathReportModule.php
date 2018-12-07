@@ -24,13 +24,15 @@ use Fisharebest\Webtrees\Menu;
  */
 class DeathReportModule extends AbstractModule implements ModuleReportInterface {
     /** {@inheritdoc} */
-    public function getTitle() {
+    public function getTitle()
+    {
         // This text also appears in the .XML file - update both together
         return /* I18N: Name of a module/report */ I18N::translate('Deaths');
     }
 
     /** {@inheritdoc} */
-    public function getDescription() {
+    public function getDescription()
+    {
         // This text also appears in the .XML file - update both together
         return /* I18N: Description of the “Deaths” module */ I18N::translate('A report of individuals who died in a given time or place.');
     }
@@ -42,7 +44,8 @@ class DeathReportModule extends AbstractModule implements ModuleReportInterface 
      *
      * @return int
      */
-    public function defaultAccessLevel() {
+    public function defaultAccessLevel()
+    {
         return Auth::PRIV_PRIVATE;
     }
 
@@ -51,7 +54,8 @@ class DeathReportModule extends AbstractModule implements ModuleReportInterface 
      *
      * @return Menu
      */
-    public function getReportMenu() {
+    public function getReportMenu()
+    {
         global $WT_TREE;
 
         return new Menu(

@@ -113,7 +113,8 @@ class LifespanController extends PageController {
     /**
      * Startup activity
      */
-    public function __construct() {
+    public function __construct()
+    {
         global $WT_TREE;
 
         parent::__construct();
@@ -302,7 +303,8 @@ class LifespanController extends PageController {
      *
      * @return array
      */
-    private function addFamily(Individual $person, $add_family) {
+    private function addFamily(Individual $person, $add_family)
+    {
         $xrefs   = array();
         $xrefs[] = $person->getXref();
         if ($add_family) {
@@ -333,7 +335,8 @@ class LifespanController extends PageController {
     /**
      * Prints the time line scale
      */
-    public function printTimeline() {
+    public function printTimeline()
+    {
         $startYear = $this->timelineMinYear;
         while ($startYear < $this->timelineMaxYear) {
             $date = new Date($this->calendarEscape . $startYear);
@@ -347,7 +350,8 @@ class LifespanController extends PageController {
      *
      * @return int
      */
-    public function fillTimeline() {
+    public function fillTimeline()
+    {
         $rows = array();
         $maxY = self::CHART_TOP;
         //base case
@@ -480,7 +484,8 @@ class LifespanController extends PageController {
      *
      * @return bool
      */
-    public function checkFact(Fact $fact) {
+    public function checkFact(Fact $fact)
+    {
         $valid = !in_array($fact->getTag(), $this->nonfacts);
         if ($valid && $this->place_obj) {
             $valid = stripos($fact->getPlace()->getGedcomName(), $this->place_obj->getGedcomName()) !== false;
@@ -507,7 +512,8 @@ class LifespanController extends PageController {
      *
      * @return object
      */
-    public function getCalendarDate($date) {
+    public function getCalendarDate($date)
+    {
         switch ($this->calendar) {
             case 'julian':
                 $caldate = new JulianDate($date);
@@ -536,7 +542,8 @@ class LifespanController extends PageController {
      *
      * @return string
      */
-    public function getCalendarOptionList() {
+    public function getCalendarOptionList()
+    {
         $html = '';
         foreach (Date::calendarNames() as $calendar => $name) {
             $selected = $this->calendar === $calendar ? 'selected' : '';

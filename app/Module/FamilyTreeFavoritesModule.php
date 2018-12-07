@@ -45,7 +45,8 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
      *
      * @param string $directory Where is this module installed
      */
-    public function __construct($directory) {
+    public function __construct($directory)
+    {
         parent::__construct($directory);
 
         // Create/update the database tables.
@@ -58,7 +59,8 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
      *
      * @return string
      */
-    public function getTitle() {
+    public function getTitle()
+    {
         return /* I18N: Name of a module */ I18N::translate('Favorites');
     }
 
@@ -67,7 +69,8 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
      *
      * @return string
      */
-    public function getDescription() {
+    public function getDescription()
+    {
         return /* I18N: Description of the “Favorites” module */ I18N::translate('Display and manage a family tree’s favorite pages.');
     }
 
@@ -80,7 +83,8 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
      *
      * @return string
      */
-    public function getBlock($block_id, $template = true, $cfg = array()) {
+    public function getBlock($block_id, $template = true, $cfg = array())
+    {
         global $ctype, $controller, $WT_TREE;
 
         $action = Filter::get('action');
@@ -248,7 +252,8 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
      *
      * @return bool
      */
-    public function loadAjax() {
+    public function loadAjax()
+    {
         return false;
     }
 
@@ -257,7 +262,8 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
      *
      * @return bool
      */
-    public function isUserBlock() {
+    public function isUserBlock()
+    {
         return false;
     }
 
@@ -266,7 +272,8 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
      *
      * @return bool
      */
-    public function isGedcomBlock() {
+    public function isGedcomBlock()
+    {
         return true;
     }
 
@@ -275,7 +282,8 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
      *
      * @param int $block_id
      */
-    public function configureBlock($block_id) {
+    public function configureBlock($block_id)
+    {
         if (Filter::postBool('save') && Filter::checkCsrf()) {
             $this->setBlockSetting($block_id, 'block', Filter::postBool('block'));
         }
@@ -296,7 +304,8 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
      *
      * @return bool
      */
-    public static function deleteFavorite($favorite_id) {
+    public static function deleteFavorite($favorite_id)
+    {
         return (bool)
             Database::prepare("DELETE FROM `##favorite` WHERE favorite_id=?")
             ->execute(array($favorite_id));
@@ -309,7 +318,8 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
      *
      * @return bool
      */
-    public static function addFavorite($favorite) {
+    public static function addFavorite($favorite)
+    {
         // -- make sure a favorite is added
         if (empty($favorite['gid']) && empty($favorite['url'])) {
             return false;
@@ -350,7 +360,8 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
      *
      * @return string[][]
      */
-    public static function getFavorites($gedcom_id) {
+    public static function getFavorites($gedcom_id)
+    {
         return
             Database::prepare(
                 "SELECT favorite_id AS id, user_id, gedcom_id, xref AS gid, favorite_type AS type, title, note, url" .

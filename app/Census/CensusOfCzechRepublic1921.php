@@ -24,7 +24,8 @@ class CensusOfCzechRepublic1921 extends CensusOfCzechRepublic implements CensusI
      *
      * @return string
      */
-    public function censusDate() {
+    public function censusDate()
+    {
         return '15 FEB 1921';
     }
 
@@ -33,7 +34,8 @@ class CensusOfCzechRepublic1921 extends CensusOfCzechRepublic implements CensusI
      *
      * @return CensusColumnInterface[]
      */
-    public function columns() {
+    public function columns()
+    {
         return array(
             new CensusColumnFullName($this, 'Jméno', ''),
             new CensusColumnRelationToHead($this, 'Vztah', ''),

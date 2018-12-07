@@ -24,7 +24,8 @@ class ReportPdfFootnote extends ReportBaseFootnote {
      *
      * @param ReportTcpdf $renderer
      */
-    public function render($renderer) {
+    public function render($renderer)
+    {
         $renderer->setCurrentStyle("footnotenum");
         $renderer->Write($renderer->getCurrentStyleHeight(), $this->numText, $this->addlink); //source link numbers after name
     }
@@ -35,7 +36,8 @@ class ReportPdfFootnote extends ReportBaseFootnote {
      *
      * @param ReportTcpdf $pdf
      */
-    public function renderFootnote($pdf) {
+    public function renderFootnote($pdf)
+    {
         if ($pdf->getCurrentStyle() != $this->styleName) {
             $pdf->setCurrentStyle($this->styleName);
         }
@@ -61,7 +63,8 @@ class ReportPdfFootnote extends ReportBaseFootnote {
      *
      * @return float $h
      */
-    public function getFootnoteHeight($renderer) {
+    public function getFootnoteHeight($renderer)
+    {
         return 0;
     }
 
@@ -73,7 +76,8 @@ class ReportPdfFootnote extends ReportBaseFootnote {
      *
      * @return array
      */
-    public function getWidth($pdf) {
+    public function getWidth($pdf)
+    {
         // Setup the style name, a font must be selected to calculate the width
         $pdf->setCurrentStyle("footnotenum");
 

@@ -28,7 +28,8 @@ class FunctionsMedia {
      *
      * @return int
      */
-    public static function sizeToBytes($val) {
+    public static function sizeToBytes($val)
+    {
         if (!$val) {
             // no value was passed in, assume no limit and return -1
             $val = -1;
@@ -55,7 +56,8 @@ class FunctionsMedia {
      *
      * @return bool
      */
-    public static function hasMemoryForImage($serverFilename) {
+    public static function hasMemoryForImage($serverFilename)
+    {
         // find out how much total memory this script can access
         $memoryAvailable = self::sizeToBytes(ini_get('memory_limit'));
         // if memory is unlimited, it will return -1 and we don’t need to worry about it

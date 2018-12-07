@@ -45,7 +45,8 @@ class Mail {
      *
      * @return bool
      */
-    public static function send(Tree $tree, $to_email, $to_name, $replyto_email, $replyto_name, $subject, $message) {
+    public static function send(Tree $tree, $to_email, $to_name, $replyto_email, $replyto_name, $subject, $message)
+    {
         try {
             // Swiftmailer uses the PHP default tmp directory.  On some servers, this
             // is outside the open_basedir list.  Therefore we must set one explicitly.
@@ -81,7 +82,8 @@ class Mail {
      *
      * @return bool
      */
-    public static function systemMessage(Tree $tree, User $user, $subject, $message) {
+    public static function systemMessage(Tree $tree, User $user, $subject, $message)
+    {
         return self::send(
             $tree,
             $user->getEmail(), $user->getRealName(),
@@ -96,7 +98,8 @@ class Mail {
      *
      * @return Swift_Transport
      */
-    public static function transport() {
+    public static function transport()
+    {
         switch (Site::getPreference('SMTP_ACTIVE')) {
             case 'internal':
                 return Swift_MailTransport::newInstance();

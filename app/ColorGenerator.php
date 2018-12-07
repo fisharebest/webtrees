@@ -49,7 +49,8 @@ class ColorGenerator {
      * @param int $alpha
      * @param int $range (sign determines direction. positive = clockwise, negative = anticlockwise)
      */
-    public function __construct($hue, $saturation, $lightness, $alpha, $range) {
+    public function __construct($hue, $saturation, $lightness, $alpha, $range)
+    {
         $this->hue           = $hue;
         $this->basehue       = $hue;
         $this->saturation    = $saturation;
@@ -71,7 +72,8 @@ class ColorGenerator {
      *
      * @return string
      */
-    public function getNextColor($lightnessStep = 10, $hueStep = 15) {
+    public function getNextColor($lightnessStep = 10, $hueStep = 15)
+    {
         $lightness = $this->lightness + $lightnessStep;
         $hue       = $this->hue;
 

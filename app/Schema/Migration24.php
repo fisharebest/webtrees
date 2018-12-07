@@ -24,7 +24,8 @@ class Migration24 implements MigrationInterface {
     /**
      * Upgrade to to the next version
      */
-    public function upgrade() {
+    public function upgrade()
+    {
         // Tree settings become site settings
         Database::exec(
             "INSERT IGNORE INTO `##site_setting` (setting_name, setting_value)" .

@@ -28,12 +28,14 @@ use Fisharebest\Webtrees\Tree;
  */
 class FamiliesSidebarModule extends AbstractModule implements ModuleSidebarInterface {
     /** {@inheritdoc} */
-    public function getTitle() {
+    public function getTitle()
+    {
         return /* I18N: Name of a module/sidebar */ I18N::translate('Family list');
     }
 
     /** {@inheritdoc} */
-    public function getDescription() {
+    public function getDescription()
+    {
         return /* I18N: Description of the “Families” module */ I18N::translate('A sidebar showing an alphabetic list of all the families in the family tree.');
     }
 
@@ -43,7 +45,8 @@ class FamiliesSidebarModule extends AbstractModule implements ModuleSidebarInter
      *
      * @param string $mod_action
      */
-    public function modAction($mod_action) {
+    public function modAction($mod_action)
+    {
         switch ($mod_action) {
             case 'ajax':
                 header('Content-Type: text/html; charset=UTF-8');
@@ -56,17 +59,20 @@ class FamiliesSidebarModule extends AbstractModule implements ModuleSidebarInter
     }
 
     /** {@inheritdoc} */
-    public function defaultSidebarOrder() {
+    public function defaultSidebarOrder()
+    {
         return 50;
     }
 
     /** {@inheritdoc} */
-    public function hasSidebarContent() {
+    public function hasSidebarContent()
+    {
         return true;
     }
 
     /** {@inheritdoc} */
-    public function getSidebarAjaxContent() {
+    public function getSidebarAjaxContent()
+    {
         global $WT_TREE;
 
         $alpha   = Filter::get('alpha'); // All surnames beginning with this letter where "@"=unknown and ","=none
@@ -89,7 +95,8 @@ class FamiliesSidebarModule extends AbstractModule implements ModuleSidebarInter
      *
      * @return string
      */
-    public function getSidebarContent() {
+    public function getSidebarContent()
+    {
         global $controller, $WT_TREE;
 
         // Fetch a list of the initial letters of all surnames in the database
@@ -181,7 +188,8 @@ class FamiliesSidebarModule extends AbstractModule implements ModuleSidebarInter
      *
      * @return string
      */
-    private function getAlphaSurnames(Tree $tree, $alpha) {
+    private function getAlphaSurnames(Tree $tree, $alpha)
+    {
         $surnames = QueryName::surnames($tree, '', $alpha, true, true);
         $out      = '<ul>';
         foreach (array_keys($surnames) as $surname) {
@@ -203,7 +211,8 @@ class FamiliesSidebarModule extends AbstractModule implements ModuleSidebarInter
      *
      * @return string
      */
-    public function getSurnameFams(Tree $tree, $alpha, $surname) {
+    public function getSurnameFams(Tree $tree, $alpha, $surname)
+    {
         $families = QueryName::families($tree, $surname, $alpha, '', true);
         $out      = '<ul>';
         foreach ($families as $family) {
@@ -231,7 +240,8 @@ class FamiliesSidebarModule extends AbstractModule implements ModuleSidebarInter
      *
      * @return string
      */
-    private function search(Tree $tree, $query) {
+    private function search(Tree $tree, $query)
+    {
         if (strlen($query) < 2) {
             return '';
         }

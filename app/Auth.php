@@ -30,7 +30,8 @@ class Auth {
      *
      * @return bool
      */
-    public static function check() {
+    public static function check()
+    {
         return self::id() !== null;
     }
 
@@ -41,7 +42,8 @@ class Auth {
      *
      * @return bool
      */
-    public static function isAdmin(User $user = null) {
+    public static function isAdmin(User $user = null)
+    {
         if ($user === null) {
             $user = self::user();
         }
@@ -57,7 +59,8 @@ class Auth {
      *
      * @return bool
      */
-    public static function isManager(Tree $tree, User $user = null) {
+    public static function isManager(Tree $tree, User $user = null)
+    {
         if ($user === null) {
             $user = self::user();
         }
@@ -73,7 +76,8 @@ class Auth {
      *
      * @return bool
      */
-    public static function isModerator(Tree $tree, User $user = null) {
+    public static function isModerator(Tree $tree, User $user = null)
+    {
         if ($user === null) {
             $user = self::user();
         }
@@ -89,7 +93,8 @@ class Auth {
      *
      * @return bool
      */
-    public static function isEditor(Tree $tree, User $user = null) {
+    public static function isEditor(Tree $tree, User $user = null)
+    {
         if ($user === null) {
             $user = self::user();
         }
@@ -105,7 +110,8 @@ class Auth {
      *
      * @return bool
      */
-    public static function isMember(Tree $tree, User $user = null) {
+    public static function isMember(Tree $tree, User $user = null)
+    {
         if ($user === null) {
             $user = self::user();
         }
@@ -121,7 +127,8 @@ class Auth {
      *
      * @return int
      */
-    public static function accessLevel(Tree $tree, User $user = null) {
+    public static function accessLevel(Tree $tree, User $user = null)
+    {
         if ($user === null) {
             $user = self::user();
         }
@@ -140,7 +147,8 @@ class Auth {
      *
      * @return bool
      */
-    public static function isSearchEngine() {
+    public static function isSearchEngine()
+    {
         global $SEARCH_SPIDER;
 
         return $SEARCH_SPIDER;
@@ -151,7 +159,8 @@ class Auth {
      *
      * @return string|null
      */
-    public static function id() {
+    public static function id()
+    {
         return Session::get('wt_user');
     }
 
@@ -160,7 +169,8 @@ class Auth {
      *
      * @return User
      */
-    public static function user() {
+    public static function user()
+    {
         $user = User::find(self::id());
         if ($user === null) {
             $visitor            = new \stdClass;
@@ -180,7 +190,8 @@ class Auth {
      *
      * @param User $user
      */
-    public static function login(User $user) {
+    public static function login(User $user)
+    {
         Session::regenerate(false);
         Session::put('wt_user', $user->getUserId());
     }
@@ -188,7 +199,8 @@ class Auth {
     /**
      * End the session for the current user.
      */
-    public static function logout() {
+    public static function logout()
+    {
         Session::regenerate(true);
     }
 }

@@ -26,7 +26,8 @@ class MinimalTheme extends AbstractTheme implements ThemeInterface {
      *
      * @return string A relative path, such as "themes/foo/"
      */
-    public function assetUrl() {
+    public function assetUrl()
+    {
         return 'themes/minimal/css-1.7.8/';
     }
 
@@ -37,7 +38,8 @@ class MinimalTheme extends AbstractTheme implements ThemeInterface {
      *
      * @return string
      */
-    protected function flashMessageContainer(\stdClass $message) {
+    protected function flashMessageContainer(\stdClass $message)
+    {
         // This theme uses jQueryUI markup.
         switch ($message->status) {
             case 'danger':
@@ -52,7 +54,8 @@ class MinimalTheme extends AbstractTheme implements ThemeInterface {
      *
      * @return string
      */
-    protected function formQuickSearchFields() {
+    protected function formQuickSearchFields()
+    {
         return
             '<input type="search" name="query" size="20" placeholder="' . I18N::translate('Search') . '">';
     }
@@ -62,7 +65,8 @@ class MinimalTheme extends AbstractTheme implements ThemeInterface {
      *
      * @return string
      */
-    protected function formatSecondaryMenu() {
+    protected function formatSecondaryMenu()
+    {
         return
             '<ul class="secondary-menu">' .
             implode('', $this->secondaryMenu()) .
@@ -77,7 +81,8 @@ class MinimalTheme extends AbstractTheme implements ThemeInterface {
      *
      * @return string
      */
-    protected function headerContent() {
+    protected function headerContent()
+    {
         return
             //$this->accessibilityLinks() .
             $this->formatTreeTitle() .
@@ -89,7 +94,8 @@ class MinimalTheme extends AbstractTheme implements ThemeInterface {
      *
      * @return string
      */
-    protected function logoPoweredBy() {
+    protected function logoPoweredBy()
+    {
         return '<a href="' . WT_WEBTREES_URL . '" class="powered-by-webtrees" title="' . WT_WEBTREES_URL . '">' . WT_WEBTREES . '</a>';
     }
 
@@ -98,7 +104,8 @@ class MinimalTheme extends AbstractTheme implements ThemeInterface {
      *
      * @return string
      */
-    public function hookFooterExtraJavascript() {
+    public function hookFooterExtraJavascript()
+    {
         return
             '<script src="' . WT_JQUERY_COLORBOX_URL . '"></script>' .
             '<script src="' . WT_JQUERY_WHEELZOOM_URL . '"></script>' .
@@ -122,7 +129,8 @@ class MinimalTheme extends AbstractTheme implements ThemeInterface {
      *
      * @return string|int|float
      */
-    public function parameter($parameter_name) {
+    public function parameter($parameter_name)
+    {
         $parameters = array(
             'chart-background-f'             => 'dddddd',
             'chart-background-m'             => 'cccccc',
@@ -142,7 +150,8 @@ class MinimalTheme extends AbstractTheme implements ThemeInterface {
      *
      * @return string[]
      */
-    protected function stylesheets() {
+    protected function stylesheets()
+    {
         return array(
             'themes/minimal/jquery-ui-1.11.2/jquery-ui.css',
             $this->assetUrl() . 'style.css',
@@ -154,7 +163,8 @@ class MinimalTheme extends AbstractTheme implements ThemeInterface {
      *
      * @return string
      */
-    public function themeId() {
+    public function themeId()
+    {
         return 'minimal';
     }
 
@@ -163,7 +173,8 @@ class MinimalTheme extends AbstractTheme implements ThemeInterface {
      *
      * @return string
      */
-    public function themeName() {
+    public function themeName()
+    {
         return /* I18N: Name of a theme. */ I18N::translate('minimal');
     }
 }

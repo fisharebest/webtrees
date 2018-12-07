@@ -30,7 +30,8 @@ class CensusColumnFullName extends AbstractCensusColumn implements CensusColumnI
      *
      * @return string
      */
-    public function generate(Individual $individual, Individual $head = null) {
+    public function generate(Individual $individual, Individual $head = null)
+    {
         $name = $this->nameAtCensusDate($individual, $this->date());
 
         return strip_tags($name['full']);
@@ -45,7 +46,8 @@ class CensusColumnFullName extends AbstractCensusColumn implements CensusColumnI
      *
      * @return string[]
      */
-    protected function nameAtCensusDate(Individual $individual, Date $census_date) {
+    protected function nameAtCensusDate(Individual $individual, Date $census_date)
+    {
         $names = $individual->getAllNames();
         $name  = $names[0];
 

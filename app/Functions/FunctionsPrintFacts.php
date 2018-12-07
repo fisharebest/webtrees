@@ -53,7 +53,8 @@ class FunctionsPrintFacts {
      * @param Fact $fact
      * @param GedcomRecord $record
      */
-    public static function printFact(Fact $fact, GedcomRecord $record) {
+    public static function printFact(Fact $fact, GedcomRecord $record)
+    {
         static $n_chil = 0, $n_gchi = 0;
 
         $parent = $fact->getParent();
@@ -494,7 +495,8 @@ class FunctionsPrintFacts {
      *
      * @return string
      */
-    private static function formatAssociateRelationship(Fact $event) {
+    private static function formatAssociateRelationship(Fact $event)
+    {
         $parent = $event->getParent();
         // To whom is this record an assocate?
         if ($parent instanceof Individual) {
@@ -561,7 +563,8 @@ class FunctionsPrintFacts {
      *
      * @param string $xref the Gedcom Xref ID of the repository to print
      */
-    public static function printRepositoryRecord($xref) {
+    public static function printRepositoryRecord($xref)
+    {
         global $WT_TREE;
 
         $repository = Repository::getInstance($xref, $WT_TREE);
@@ -583,7 +586,8 @@ class FunctionsPrintFacts {
      *
      * @return string HTML text
      */
-    public static function printFactSources($factrec, $level) {
+    public static function printFactSources($factrec, $level)
+    {
         global $WT_TREE;
 
         $data   = '';
@@ -666,7 +670,8 @@ class FunctionsPrintFacts {
      * @param string $factrec
      * @param int $level
      */
-    public static function printMediaLinks($factrec, $level) {
+    public static function printMediaLinks($factrec, $level)
+    {
         global $WT_TREE;
 
         $nlevel = $level + 1;
@@ -735,7 +740,8 @@ class FunctionsPrintFacts {
      * @param Fact $fact
      * @param int $level
      */
-    public static function printMainSources(Fact $fact, $level) {
+    public static function printMainSources(Fact $fact, $level)
+    {
         $factrec = $fact->getGedcom();
         $fact_id = $fact->getFactId();
         $parent  = $fact->getParent();
@@ -881,7 +887,8 @@ class FunctionsPrintFacts {
      *
      * @return string
      */
-    public static function printSourceStructure($textSOUR) {
+    public static function printSourceStructure($textSOUR)
+    {
         global $WT_TREE;
         $html = '';
 
@@ -928,7 +935,8 @@ class FunctionsPrintFacts {
      *
      * @return string[]
      */
-    public static function getSourceStructure($srec) {
+    public static function getSourceStructure($srec)
+    {
         // Set up the output array
         $textSOUR = array(
             'PAGE' => '',
@@ -974,7 +982,8 @@ class FunctionsPrintFacts {
      * @param Fact $fact
      * @param int $level
      */
-    public static function printMainNotes(Fact $fact, $level) {
+    public static function printMainNotes(Fact $fact, $level)
+    {
         $factrec = $fact->getGedcom();
         $fact_id = $fact->getFactId();
         $parent  = $fact->getParent();
@@ -1121,7 +1130,8 @@ class FunctionsPrintFacts {
      * @param Fact $fact
      * @param int $level
      */
-    public static function printMainMedia(Fact $fact, $level) {
+    public static function printMainMedia(Fact $fact, $level)
+    {
         $factrec = $fact->getGedcom();
         $parent  = $fact->getParent();
 

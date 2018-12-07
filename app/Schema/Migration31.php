@@ -35,7 +35,8 @@ class Migration31 implements MigrationInterface {
     /**
      * Upgrade to to the next version
      */
-    public function upgrade() {
+    public function upgrade()
+    {
         $index_dir = Site::getPreference('INDEX_DIRECTORY');
 
         // Due to the language code changes in 1.7.0, we need to update some other settings

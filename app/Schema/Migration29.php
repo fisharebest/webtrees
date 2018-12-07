@@ -25,7 +25,8 @@ class Migration29 implements MigrationInterface {
     /**
      * Upgrade to to the next version
      */
-    public function upgrade() {
+    public function upgrade()
+    {
         // Originally migrated from PhpGedView, but never used.
         Database::exec("DROP TABLE IF EXISTS `##ip_address`");
 

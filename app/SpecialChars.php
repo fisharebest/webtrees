@@ -32,7 +32,8 @@ class SpecialChars {
      *
      * @return string[]
      */
-    public static function allLanguages() {
+    public static function allLanguages()
+    {
         $array = array();
         foreach (self::$languages as $language) {
             $array[$language] = Locale::create($language)->endonym();
@@ -49,7 +50,8 @@ class SpecialChars {
      *
      * @return SpecialCharsInterface
      */
-    public static function create($language) {
+    public static function create($language)
+    {
         $class = '\Fisharebest\Webtrees\SpecialChars\SpecialChars' . ucfirst($language);
 
         return new $class;

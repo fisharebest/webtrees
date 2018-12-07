@@ -48,7 +48,8 @@ class FunctionsPrint {
      * @param Individual $person The person to print
      * @param int $show_full The style to print the box in, 0 for smaller boxes, 1 for larger boxes
      */
-    public static function printPedigreePerson(Individual $person = null, $show_full = 1) {
+    public static function printPedigreePerson(Individual $person = null, $show_full = 1)
+    {
 
         switch ($show_full) {
             case 0:
@@ -78,7 +79,8 @@ class FunctionsPrint {
      *
      * @return string
      */
-    public static function printNoteRecord($text, $nlevel, $nrec, $textOnly = false) {
+    public static function printNoteRecord($text, $nlevel, $nrec, $textOnly = false)
+    {
         global $WT_TREE;
 
         $text .= Functions::getCont($nlevel, $nrec);
@@ -137,7 +139,8 @@ class FunctionsPrint {
      *
      * @return string HTML
      */
-    public static function printFactNotes($factrec, $level, $textOnly = false) {
+    public static function printFactNotes($factrec, $level, $textOnly = false)
+    {
         global $WT_TREE;
 
         $data          = '';
@@ -194,7 +197,8 @@ class FunctionsPrint {
      *
      * @return string
      */
-    public static function helpLink($help_topic, $module = '') {
+    public static function helpLink($help_topic, $module = '')
+    {
         return '<span class="icon-help" onclick="helpDialog(\'' . $help_topic . '\',\'' . $module . '\'); return false;">&nbsp;</span>';
     }
 
@@ -207,7 +211,8 @@ class FunctionsPrint {
      *
      * @return string
      */
-    public static function wikiHelpLink($topic) {
+    public static function wikiHelpLink($topic)
+    {
         return '<a class="help icon-wiki" href="' . WT_WEBTREES_WIKI . $topic . '" title="' . I18N::translate('webtrees wiki') . '"></a>';
     }
 
@@ -219,7 +224,8 @@ class FunctionsPrint {
      *
      * @return string
      */
-    public static function highlightSearchHits($string) {
+    public static function highlightSearchHits($string)
+    {
         global $controller;
 
         if ($controller instanceof SearchController && $controller->query) {
@@ -248,7 +254,8 @@ class FunctionsPrint {
      *
      * @return string HTML
      */
-    public static function formatParentsAges(Individual $person, Date $birth_date) {
+    public static function formatParentsAges(Individual $person, Date $birth_date)
+    {
         $html     = '';
         $families = $person->getChildFamilies();
         // Multiple sets of parents (e.g. adoption) cause complications, so ignore.
@@ -300,7 +307,8 @@ class FunctionsPrint {
      *
      * @return string
      */
-    public static function formatFactDate(Fact $event, GedcomRecord $record, $anchor, $time) {
+    public static function formatFactDate(Fact $event, GedcomRecord $record, $anchor, $time)
+    {
         global $pid;
 
         $factrec = $event->getGedcom();
@@ -433,7 +441,8 @@ class FunctionsPrint {
      *
      * @return string HTML
      */
-    public static function formatFactPlace(Fact $event, $anchor = false, $sub_records = false, $lds = false) {
+    public static function formatFactPlace(Fact $event, $anchor = false, $sub_records = false, $lds = false)
+    {
         if ($anchor) {
             // Show the full place name, for facts/events tab
             $html = '<a href="' . $event->getPlace()->getURL() . '">' . $event->getPlace()->getFullName() . '</a>';
@@ -501,7 +510,8 @@ class FunctionsPrint {
      *
      * @return string[]
      */
-    public static function checkFactUnique($uniquefacts, $recfacts, $type) {
+    public static function checkFactUnique($uniquefacts, $recfacts, $type)
+    {
         foreach ($recfacts as $factarray) {
             $fact = false;
             if (is_object($factarray)) {
@@ -537,7 +547,8 @@ class FunctionsPrint {
      * @param array $usedfacts an array of facts already used in this record
      * @param string $type the type of record INDI, FAM, SOUR etc
      */
-    public static function printAddNewFact($id, $usedfacts, $type) {
+    public static function printAddNewFact($id, $usedfacts, $type)
+    {
         global $WT_TREE;
 
         // -- Add from clipboard
@@ -637,7 +648,8 @@ class FunctionsPrint {
     /**
      * javascript declaration for calendar popup
      */
-    public static function initializeCalendarPopup() {
+    public static function initializeCalendarPopup()
+    {
         global $controller;
 
         $controller->addInlineJavascript('
@@ -677,7 +689,8 @@ class FunctionsPrint {
      *
      * @return string
      */
-    public static function printFindIndividualLink($element_id, $indiname = '', $tree = null) {
+    public static function printFindIndividualLink($element_id, $indiname = '', $tree = null)
+    {
         global $WT_TREE;
 
         if ($tree === null) {
@@ -694,7 +707,8 @@ class FunctionsPrint {
      *
      * @return string
      */
-    public static function printFindPlaceLink($element_id) {
+    public static function printFindPlaceLink($element_id)
+    {
         return '<a href="#" onclick="findPlace(document.getElementById(\'' . $element_id . '\'), WT_GEDCOM); return false;" class="icon-button_place" title="' . I18N::translate('Find a place') . '"></a>';
     }
 
@@ -705,7 +719,8 @@ class FunctionsPrint {
      *
      * @return string
      */
-    public static function printFindFamilyLink($element_id) {
+    public static function printFindFamilyLink($element_id)
+    {
         return '<a href="#" onclick="findFamily(document.getElementById(\'' . $element_id . '\'), WT_GEDCOM); return false;" class="icon-button_family" title="' . I18N::translate('Find a family') . '"></a>';
     }
 
@@ -716,7 +731,8 @@ class FunctionsPrint {
      *
      * @return string
      */
-    public static function printSpecialCharacterLink($element_id) {
+    public static function printSpecialCharacterLink($element_id)
+    {
         return '<span onclick="findSpecialChar(document.getElementById(\'' . $element_id . '\')); if (window.updatewholename) { updatewholename(); } return false;" class="icon-button_keyboard" title="' . I18N::translate('Find a special character') . '"></span>';
     }
 
@@ -726,7 +742,8 @@ class FunctionsPrint {
      * @param string $element_id
      * @param string[] $choices
      */
-    public static function printAutoPasteLink($element_id, $choices) {
+    public static function printAutoPasteLink($element_id, $choices)
+    {
         echo '<small>';
         foreach ($choices as $choice) {
             echo '<span onclick="document.getElementById(\'', $element_id, '\').value=';
@@ -744,7 +761,8 @@ class FunctionsPrint {
      *
      * @return string
      */
-    public static function printFindSourceLink($element_id, $sourcename = '') {
+    public static function printFindSourceLink($element_id, $sourcename = '')
+    {
         return '<a href="#" onclick="findSource(document.getElementById(\'' . $element_id . '\'), document.getElementById(\'' . $sourcename . '\'), WT_GEDCOM); return false;" class="icon-button_source" title="' . I18N::translate('Find a source') . '"></a>';
     }
 
@@ -756,7 +774,8 @@ class FunctionsPrint {
      *
      * @return string
      */
-    public static function printFindNoteLink($element_id, $notename = '') {
+    public static function printFindNoteLink($element_id, $notename = '')
+    {
         return '<a href="#" onclick="findnote(document.getElementById(\'' . $element_id . '\'), document.getElementById(\'' . $notename . '\'), \'WT_GEDCOM\'); return false;" class="icon-button_find" title="' . I18N::translate('Find a shared note') . '"></a>';
     }
 
@@ -767,7 +786,8 @@ class FunctionsPrint {
      *
      * @return string
      */
-    public static function printFindRepositoryLink($element_id) {
+    public static function printFindRepositoryLink($element_id)
+    {
         return '<a href="#" onclick="findRepository(document.getElementById(\'' . $element_id . '\'), WT_GEDCOM); return false;" class="icon-button_repository" title="' . I18N::translate('Find a repository') . '"></a>';
     }
 
@@ -779,7 +799,8 @@ class FunctionsPrint {
      *
      * @return string
      */
-    public static function printFindMediaLink($element_id, $choose = '') {
+    public static function printFindMediaLink($element_id, $choose = '')
+    {
         return '<a href="#" onclick="findMedia(document.getElementById(\'' . $element_id . '\'), \'' . $choose . '\', WT_GEDCOM); return false;" class="icon-button_media" title="' . I18N::translate('Find a media object') . '"></a>';
     }
 
@@ -790,7 +811,8 @@ class FunctionsPrint {
      *
      * @return string
      */
-    public static function printFindFactLink($element_id) {
+    public static function printFindFactLink($element_id)
+    {
         return '<a href="#" onclick="findFact(document.getElementById(\'' . $element_id . '\'), WT_GEDCOM); return false;" class="icon-button_find_facts" title="' . I18N::translate('Find a fact or event') . '"></a>';
     }
 
@@ -801,7 +823,8 @@ class FunctionsPrint {
      *
      * @return string
      */
-    public static function getLdsSummary(Individual $individual) {
+    public static function getLdsSummary(Individual $individual)
+    {
         $BAPL = $individual->getFacts('BAPL') ? 'B' : '_';
         $ENDL = $individual->getFacts('ENDL') ? 'E' : '_';
         $SLGC = $individual->getFacts('SLGC') ? 'C' : '_';

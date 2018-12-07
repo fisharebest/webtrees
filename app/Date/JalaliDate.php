@@ -33,7 +33,8 @@ class JalaliDate extends CalendarDate {
      *
      * @param array|int|CalendarDate $date
      */
-    public function __construct($date) {
+    public function __construct($date)
+    {
         $this->calendar = new PersianCalendar;
         parent::__construct($date);
     }
@@ -46,7 +47,8 @@ class JalaliDate extends CalendarDate {
      *
      * @return string
      */
-    public static function monthNameNominativeCase($month_number, $leap_year) {
+    public static function monthNameNominativeCase($month_number, $leap_year)
+    {
         static $translated_month_names;
 
         if ($translated_month_names === null) {
@@ -78,7 +80,8 @@ class JalaliDate extends CalendarDate {
      *
      * @return string
      */
-    protected function monthNameGenitiveCase($month_number, $leap_year) {
+    protected function monthNameGenitiveCase($month_number, $leap_year)
+    {
         static $translated_month_names;
 
         if ($translated_month_names === null) {
@@ -110,7 +113,8 @@ class JalaliDate extends CalendarDate {
      *
      * @return string
      */
-    protected function monthNameLocativeCase($month_number, $leap_year) {
+    protected function monthNameLocativeCase($month_number, $leap_year)
+    {
         static $translated_month_names;
 
         if ($translated_month_names === null) {
@@ -142,7 +146,8 @@ class JalaliDate extends CalendarDate {
      *
      * @return string
      */
-    protected function monthNameInstrumentalCase($month_number, $leap_year) {
+    protected function monthNameInstrumentalCase($month_number, $leap_year)
+    {
         static $translated_month_names;
 
         if ($translated_month_names === null) {
@@ -174,7 +179,8 @@ class JalaliDate extends CalendarDate {
      *
      * @return string
      */
-    protected function monthNameAbbreviated($month_number, $leap_year) {
+    protected function monthNameAbbreviated($month_number, $leap_year)
+    {
         static $translated_month_names;
 
         if ($translated_month_names === null) {

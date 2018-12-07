@@ -43,7 +43,8 @@ class RelationshipsChartModule extends AbstractModule implements ModuleConfigInt
      *
      * @return string
      */
-    public function getTitle() {
+    public function getTitle()
+    {
         return /* I18N: Name of a module/chart */ I18N::translate('Relationships');
     }
 
@@ -52,7 +53,8 @@ class RelationshipsChartModule extends AbstractModule implements ModuleConfigInt
      *
      * @return string
      */
-    public function getDescription() {
+    public function getDescription()
+    {
         return /* I18N: Description of the “RelationshipsChart” module */ I18N::translate('A chart displaying relationships between two individuals.');
     }
 
@@ -63,7 +65,8 @@ class RelationshipsChartModule extends AbstractModule implements ModuleConfigInt
      *
      * @return int
      */
-    public function defaultAccessLevel() {
+    public function defaultAccessLevel()
+    {
         return Auth::PRIV_PRIVATE;
     }
 
@@ -74,7 +77,8 @@ class RelationshipsChartModule extends AbstractModule implements ModuleConfigInt
      *
      * @return Menu|null
      */
-    public function getChartMenu(Individual $individual) {
+    public function getChartMenu(Individual $individual)
+    {
         $tree     = $individual->getTree();
         $gedcomid = $tree->getUserPreference(Auth::user(), 'gedcomid');
 
@@ -102,7 +106,8 @@ class RelationshipsChartModule extends AbstractModule implements ModuleConfigInt
      *
      * @return Menu|null
      */
-    public function getBoxChartMenu(Individual $individual) {
+    public function getBoxChartMenu(Individual $individual)
+    {
         return $this->getChartMenu($individual);
     }
 
@@ -112,7 +117,8 @@ class RelationshipsChartModule extends AbstractModule implements ModuleConfigInt
      *
      * @param string $mod_action
      */
-    public function modAction($mod_action) {
+    public function modAction($mod_action)
+    {
         switch ($mod_action) {
             case 'admin':
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -129,7 +135,8 @@ class RelationshipsChartModule extends AbstractModule implements ModuleConfigInt
     /**
      * Possible options for the ancestors option
      */
-    private function ancestorsOptions() {
+    private function ancestorsOptions()
+    {
         return array(
             0 => I18N::translate('Find any relationship'),
             1 => I18N::translate('Find relationships via ancestors'),
@@ -139,7 +146,8 @@ class RelationshipsChartModule extends AbstractModule implements ModuleConfigInt
     /**
      * Possible options for the recursion option
      */
-    private function recursionOptions() {
+    private function recursionOptions()
+    {
         return array(
             0                         => I18N::translate('none'),
             1                         => I18N::number(1),
@@ -152,7 +160,8 @@ class RelationshipsChartModule extends AbstractModule implements ModuleConfigInt
     /**
      * Display a form to edit configuration settings.
      */
-    private function editConfig() {
+    private function editConfig()
+    {
         $controller = new PageController;
         $controller
             ->restrictAccess(Auth::isAdmin())
@@ -208,7 +217,8 @@ class RelationshipsChartModule extends AbstractModule implements ModuleConfigInt
     /**
      * Save updated configuration settings.
      */
-    private function saveConfig() {
+    private function saveConfig()
+    {
         if (Auth::isAdmin()) {
             foreach (Tree::getAll() as $tree) {
                 $tree->setPreference('RELATIONSHIP_RECURSION', Filter::post('relationship-recursion-' . $tree->getTreeId()));
@@ -226,7 +236,8 @@ class RelationshipsChartModule extends AbstractModule implements ModuleConfigInt
      *
      * @return string
      */
-    public function getConfigLink() {
+    public function getConfigLink()
+    {
         return 'module.php?mod=' . $this->getName() . '&amp;mod_action=admin';
     }
 }

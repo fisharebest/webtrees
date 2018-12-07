@@ -63,7 +63,8 @@ abstract class AbstractCensusColumnCondition extends AbstractCensusColumn implem
      *
      * @return string
      */
-    public function generate(Individual $individual, Individual $head = null) {
+    public function generate(Individual $individual, Individual $head = null)
+    {
         $family = $this->spouseFamily($individual);
         $sex    = $individual->getSex();
 
@@ -92,7 +93,8 @@ abstract class AbstractCensusColumnCondition extends AbstractCensusColumn implem
      *
      * @return string
      */
-    private function conditionChild($sex) {
+    private function conditionChild($sex)
+    {
         if ($sex === 'F') {
             return $this->girl;
         } else {
@@ -107,7 +109,8 @@ abstract class AbstractCensusColumnCondition extends AbstractCensusColumn implem
      *
      * @return string
      */
-    private function conditionDivorced($sex) {
+    private function conditionDivorced($sex)
+    {
         if ($sex === 'F') {
             return $this->divorcee;
         } else {
@@ -122,7 +125,8 @@ abstract class AbstractCensusColumnCondition extends AbstractCensusColumn implem
      *
      * @return string
      */
-    private function conditionMarried($sex) {
+    private function conditionMarried($sex)
+    {
         if ($sex === 'F') {
             return $this->wife;
         } else {
@@ -137,7 +141,8 @@ abstract class AbstractCensusColumnCondition extends AbstractCensusColumn implem
      *
      * @return string
      */
-    private function conditionSingle($sex) {
+    private function conditionSingle($sex)
+    {
         if ($sex === 'F') {
             return $this->spinster;
         } else {
@@ -152,7 +157,8 @@ abstract class AbstractCensusColumnCondition extends AbstractCensusColumn implem
      *
      * @return string
      */
-    private function conditionWidowed($sex) {
+    private function conditionWidowed($sex)
+    {
         if ($sex === 'F') {
             return $this->widow;
         } else {
@@ -167,7 +173,8 @@ abstract class AbstractCensusColumnCondition extends AbstractCensusColumn implem
      *
      * @return bool
      */
-    private function isChild(Individual $individual) {
+    private function isChild(Individual $individual)
+    {
         $age = (int) Date::getAge($individual->getEstimatedBirthDate(), $this->date(), 0);
 
         return $age < $this->age_adult;
@@ -180,7 +187,8 @@ abstract class AbstractCensusColumnCondition extends AbstractCensusColumn implem
      *
      * @return bool
      */
-    private function isDead(Individual $individual) {
+    private function isDead(Individual $individual)
+    {
         return $individual->getDeathDate()->isOK() && Date::compare($individual->getDeathDate(), $this->date()) < 0;
     }
 }

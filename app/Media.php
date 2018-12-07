@@ -41,7 +41,8 @@ class Media extends GedcomRecord {
      *                             empty string for records with pending deletions
      * @param Tree        $tree
      */
-    public function __construct($xref, $gedcom, $pending, $tree) {
+    public function __construct($xref, $gedcom, $pending, $tree)
+    {
         parent::__construct($xref, $gedcom, $pending, $tree);
 
         if (preg_match('/\n1 FILE (.+)/', $gedcom . $pending, $match)) {
@@ -59,7 +60,8 @@ class Media extends GedcomRecord {
      *
      * @return bool
      */
-    protected function canShowByType($access_level) {
+    protected function canShowByType($access_level)
+    {
         // Hide media objects if they are attached to private records
         $linked_ids = Database::prepare(
             "SELECT l_from FROM `##link` WHERE l_to = ? AND l_file = ?"
@@ -85,7 +87,8 @@ class Media extends GedcomRecord {
      *
      * @return null|string
      */
-    protected static function fetchGedcomRecord($xref, $tree_id) {
+    protected static function fetchGedcomRecord($xref, $tree_id)
+    {
         return Database::prepare(
             "SELECT m_gedcom FROM `##media` WHERE m_id = :xref AND m_file = :tree_id"
         )->execute(array(
@@ -99,7 +102,8 @@ class Media extends GedcomRecord {
      *
      * @return null|string
      */
-    public function getNote() {
+    public function getNote()
+    {
         $note = $this->getFirstFact('NOTE');
         if ($note) {
             $text = $note->getValue();
@@ -118,7 +122,8 @@ class Media extends GedcomRecord {
      *
      * @return string
      */
-    public function getFilename() {
+    public function getFilename()
+    {
         return $this->file;
     }
 
@@ -127,7 +132,8 @@ class Media extends GedcomRecord {
      *
      * @return string
      */
-    public function getTitle() {
+    public function getTitle()
+    {
         return $this->title;
     }
 
@@ -139,7 +145,8 @@ class Media extends GedcomRecord {
      *
      * @return string
      */
-    public function getServerFilename($which = 'main') {
+    public function getServerFilename($which = 'main')
+    {
         $MEDIA_DIRECTORY = $this->tree->getPreference('MEDIA_DIRECTORY');
         $THUMBNAIL_WIDTH = $this->tree->getPreference('THUMBNAIL_WIDTH');
 
@@ -249,7 +256,8 @@ class Media extends GedcomRecord {
      *
      * @return bool
      */
-    public function fileExists($which = 'main') {
+    public function fileExists($which = 'main')
+    {
         return file_exists($this->getServerFilename($which));
     }
 
@@ -258,7 +266,8 @@ class Media extends GedcomRecord {
      *
      * @return bool
      */
-    public function isExternal() {
+    public function isExternal()
+    {
         return strpos($this->file, '://') !== false;
     }
 
@@ -269,7 +278,8 @@ class Media extends GedcomRecord {
      *
      * @return string
      */
-    public function getFilesize($which = 'main') {
+    public function getFilesize($which = 'main')
+    {
         $size = $this->getFilesizeraw($which);
         // Round up to the nearest KB.
         $size = (int) (($size + 1023) / 1024);
@@ -284,7 +294,8 @@ class Media extends GedcomRecord {
      *
      * @return int
      */
-    public function getFilesizeraw($which = 'main') {
+    public function getFilesizeraw($which = 'main')
+    {
         try {
             return filesize($this->getServerFilename($which));
         } catch (\ErrorException $ex) {
@@ -299,7 +310,8 @@ class Media extends GedcomRecord {
      *
      * @return int
      */
-    public function getFiletime($which = 'main') {
+    public function getFiletime($which = 'main')
+    {
         try {
             return filemtime($this->getServerFilename($which));
         } catch (\ErrorException $ex) {
@@ -314,7 +326,8 @@ class Media extends GedcomRecord {
      *
      * @return string
      */
-    public function getEtag($which = 'main') {
+    public function getEtag($which = 'main')
+    {
         if ($this->isExternal()) {
             // etag not really defined for external media
 
@@ -331,7 +344,8 @@ class Media extends GedcomRecord {
      *
      * @return string
      */
-    public function getMediaType() {
+    public function getMediaType()
+    {
         if (preg_match('/\n\d TYPE (.+)/', $this->gedcom, $match)) {
             return strtolower($match[1]);
         } else {
@@ -344,7 +358,8 @@ class Media extends GedcomRecord {
      *
      * @return string
      */
-    public function isPrimary() {
+    public function isPrimary()
+    {
         if (preg_match('/\n\d _PRIM ([YN])/', $this->getGedcom(), $match)) {
             return $match[1];
         } else {
@@ -361,7 +376,8 @@ class Media extends GedcomRecord {
      *
      * @return array
      */
-    public function getImageAttributes($which = 'main', $addWidth = 0, $addHeight = 0) {
+    public function getImageAttributes($which = 'main', $addWidth = 0, $addHeight = 0)
+    {
         $THUMBNAIL_WIDTH = $this->tree->getPreference('THUMBNAIL_WIDTH');
 
         $var = $which . 'imagesize';
@@ -456,7 +472,8 @@ class Media extends GedcomRecord {
      *
      * @return string
      */
-    public function getHtmlUrlDirect($which = 'main', $download = false) {
+    public function getHtmlUrlDirect($which = 'main', $download = false)
+    {
         // “cb” is “cache buster”, so clients will make new request if anything significant about the user or the file changes
         // The extension is there so that image viewers (e.g. colorbox) can do something sensible
         $thumbstr    = ($which == 'thumb') ? '&amp;thumb=1' : '';
@@ -473,7 +490,8 @@ class Media extends GedcomRecord {
      *
      * @return string
      */
-    public function extension() {
+    public function extension()
+    {
         if (preg_match('/\.([a-zA-Z0-9]+)$/', $this->file, $match)) {
             return strtolower($match[1]);
         } else {
@@ -487,7 +505,8 @@ class Media extends GedcomRecord {
      *
      * @return string
      */
-    public function mimeType() {
+    public function mimeType()
+    {
         // Themes contain icon definitions for some/all of these mime-types
         switch ($this->extension()) {
             case 'bmp':
@@ -546,7 +565,8 @@ class Media extends GedcomRecord {
      *
      * @return string
      */
-    public function displayImage() {
+    public function displayImage()
+    {
         // Default image for external, missing or corrupt images.
         $image =
             '<i' .
@@ -588,7 +608,8 @@ class Media extends GedcomRecord {
      *
      * @return string
      */
-    public function getFallBackName() {
+    public function getFallBackName()
+    {
         if ($this->canShow()) {
             return basename($this->file);
         } else {
@@ -599,7 +620,8 @@ class Media extends GedcomRecord {
     /**
      * Extract names from the GEDCOM record.
      */
-    public function extractNames() {
+    public function extractNames()
+    {
         // Earlier gedcom versions had level 1 titles
         // Later gedcom versions had level 2 titles
         $this->extractNamesFromFacts(2, 'TITL', $this->getFacts('FILE'));
@@ -612,7 +634,8 @@ class Media extends GedcomRecord {
      *
      * @return string
      */
-    public function formatListDetails() {
+    public function formatListDetails()
+    {
         ob_start();
         FunctionsPrintFacts::printMediaLinks('1 OBJE @' . $this->getXref() . '@', 1);
 

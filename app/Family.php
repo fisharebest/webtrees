@@ -37,7 +37,8 @@ class Family extends GedcomRecord {
      *                             empty string for records with pending deletions
      * @param Tree        $tree
      */
-    public function __construct($xref, $gedcom, $pending, $tree) {
+    public function __construct($xref, $gedcom, $pending, $tree)
+    {
         parent::__construct($xref, $gedcom, $pending, $tree);
 
         // Fetch family members
@@ -65,7 +66,8 @@ class Family extends GedcomRecord {
      *
      * @return string
      */
-    protected function createPrivateGedcomRecord($access_level) {
+    protected function createPrivateGedcomRecord($access_level)
+    {
         $SHOW_PRIVATE_RELATIONSHIPS = $this->tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS');
 
         $rec = '0 @' . $this->xref . '@ FAM';
@@ -89,7 +91,8 @@ class Family extends GedcomRecord {
      *
      * @return null|string
      */
-    protected static function fetchGedcomRecord($xref, $tree_id) {
+    protected static function fetchGedcomRecord($xref, $tree_id)
+    {
         return Database::prepare(
             "SELECT f_gedcom FROM `##families` WHERE f_id = :xref AND f_file = :tree_id"
         )->execute(array(
@@ -105,7 +108,8 @@ class Family extends GedcomRecord {
      *
      * @return Individual|null
      */
-    public function getHusband($access_level = null) {
+    public function getHusband($access_level = null)
+    {
         $SHOW_PRIVATE_RELATIONSHIPS = $this->tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS');
 
         if ($this->husb && ($SHOW_PRIVATE_RELATIONSHIPS || $this->husb->canShowName($access_level))) {
@@ -122,7 +126,8 @@ class Family extends GedcomRecord {
      *
      * @return Individual|null
      */
-    public function getWife($access_level = null) {
+    public function getWife($access_level = null)
+    {
         $SHOW_PRIVATE_RELATIONSHIPS = $this->tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS');
 
         if ($this->wife && ($SHOW_PRIVATE_RELATIONSHIPS || $this->wife->canShowName($access_level))) {
@@ -139,7 +144,8 @@ class Family extends GedcomRecord {
      *
      * @return bool
      */
-    protected function canShowByType($access_level) {
+    protected function canShowByType($access_level)
+    {
         // Hide a family if any member is private
         preg_match_all('/\n1 (?:CHIL|HUSB|WIFE) @(' . WT_REGEX_XREF . ')@/', $this->gedcom, $matches);
         foreach ($matches[1] as $match) {
@@ -159,7 +165,8 @@ class Family extends GedcomRecord {
      *
      * @return bool
      */
-    public function canShowName($access_level = null) {
+    public function canShowName($access_level = null)
+    {
         // We can always see the name (Husband-name + Wife-name), however,
         // the name will often be "private + private"
         return true;
@@ -173,7 +180,8 @@ class Family extends GedcomRecord {
      *
      * @return Individual|null
      */
-    public function getSpouse(Individual $person, $access_level = null) {
+    public function getSpouse(Individual $person, $access_level = null)
+    {
         if ($person === $this->wife) {
             return $this->getHusband($access_level);
         } else {
@@ -188,7 +196,8 @@ class Family extends GedcomRecord {
      *
      * @return Individual[]
      */
-    public function getSpouses($access_level = null) {
+    public function getSpouses($access_level = null)
+    {
         return array_filter(array(
             $this->getHusband($access_level),
             $this->getWife($access_level),
@@ -202,7 +211,8 @@ class Family extends GedcomRecord {
      *
      * @return Individual[]
      */
-    public function getChildren($access_level = null) {
+    public function getChildren($access_level = null)
+    {
         if ($access_level === null) {
             $access_level = Auth::accessLevel($this->tree);
         }
@@ -228,7 +238,8 @@ class Family extends GedcomRecord {
      *
      * @return int
      */
-    public static function compareMarrDate(Family $x, Family $y) {
+    public static function compareMarrDate(Family $x, Family $y)
+    {
         return Date::compare($x->getMarriageDate(), $y->getMarriageDate());
     }
 
@@ -237,7 +248,8 @@ class Family extends GedcomRecord {
      *
      * @return int
      */
-    public function getNumberOfChildren() {
+    public function getNumberOfChildren()
+    {
         $nchi = count($this->getChildren());
         foreach ($this->getFacts('NCHI') as $fact) {
             $nchi = max($nchi, (int) $fact->getValue());
@@ -251,7 +263,8 @@ class Family extends GedcomRecord {
      *
      * @return Fact
      */
-    public function getMarriage() {
+    public function getMarriage()
+    {
         return $this->getFirstFact('MARR');
     }
 
@@ -260,7 +273,8 @@ class Family extends GedcomRecord {
      *
      * @return Date
      */
-    public function getMarriageDate() {
+    public function getMarriageDate()
+    {
         $marriage = $this->getMarriage();
         if ($marriage) {
             return $marriage->getDate();
@@ -274,7 +288,8 @@ class Family extends GedcomRecord {
      *
      * @return int
      */
-    public function getMarriageYear() {
+    public function getMarriageYear()
+    {
         return $this->getMarriageDate()->minimumDate()->y;
     }
 
@@ -283,7 +298,8 @@ class Family extends GedcomRecord {
      *
      * @return string|null
      */
-    public function getMarriageType() {
+    public function getMarriageType()
+    {
         $marriage = $this->getMarriage();
         if ($marriage) {
             return $marriage->getAttribute('TYPE');
@@ -297,7 +313,8 @@ class Family extends GedcomRecord {
      *
      * @return Place
      */
-    public function getMarriagePlace() {
+    public function getMarriagePlace()
+    {
         $marriage = $this->getMarriage();
 
         return $marriage->getPlace();
@@ -308,7 +325,8 @@ class Family extends GedcomRecord {
      *
      * @return Date[]
      */
-    public function getAllMarriageDates() {
+    public function getAllMarriageDates()
+    {
         foreach (explode('|', WT_EVENTS_MARR) as $event) {
             if ($array = $this->getAllEventDates($event)) {
                 return $array;
@@ -323,7 +341,8 @@ class Family extends GedcomRecord {
      *
      * @return string[]
      */
-    public function getAllMarriagePlaces() {
+    public function getAllMarriagePlaces()
+    {
         foreach (explode('|', WT_EVENTS_MARR) as $event) {
             if ($array = $this->getAllEventPlaces($event)) {
                 return $array;
@@ -338,12 +357,15 @@ class Family extends GedcomRecord {
      *
      * @return string[][]
      */
-    public function getAllNames() {
+    public function getAllNames()
+    {
         if (is_null($this->_getAllNames)) {
             // Check the script used by each name, so we can match cyrillic with cyrillic, greek with greek, etc.
             $husb_names = array();
             if ($this->husb) {
-                $husb_names = array_filter($this->husb->getAllNames(), function(array $x) { return $x['type'] !== '_MARNM'; } );
+                $husb_names = array_filter($this->husb->getAllNames(), function (array $x) {
+                    return $x['type'] !== '_MARNM';
+                });
             }
             // If the individual only has married names, create a dummy birth name.
             if (empty($husb_names)) {
@@ -359,7 +381,9 @@ class Family extends GedcomRecord {
 
             $wife_names = array();
             if ($this->wife) {
-                $wife_names = array_filter($this->wife->getAllNames(), function(array $x) { return $x['type'] !== '_MARNM'; } );
+                $wife_names = array_filter($this->wife->getAllNames(), function (array $x) {
+                    return $x['type'] !== '_MARNM';
+                });
             }
             // If the individual only has married names, create a dummy birth name.
             if (empty($wife_names)) {
@@ -411,7 +435,8 @@ class Family extends GedcomRecord {
      *
      * @return string
      */
-    public function formatListDetails() {
+    public function formatListDetails()
+    {
         return
             $this->formatFirstMajorFact(WT_EVENTS_MARR, 1) .
             $this->formatFirstMajorFact(WT_EVENTS_DIV, 1);

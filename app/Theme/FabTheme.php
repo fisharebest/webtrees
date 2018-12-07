@@ -27,7 +27,8 @@ class FabTheme extends AbstractTheme implements ThemeInterface {
      *
      * @return string A relative path, such as "themes/foo/"
      */
-    public function assetUrl() {
+    public function assetUrl()
+    {
         return 'themes/fab/css-1.7.8/';
     }
 
@@ -38,7 +39,8 @@ class FabTheme extends AbstractTheme implements ThemeInterface {
      *
      * @return string
      */
-    protected function flashMessageContainer(\stdClass $message) {
+    protected function flashMessageContainer(\stdClass $message)
+    {
         // This theme uses jQueryUI markup.
         switch ($message->status) {
             case 'danger':
@@ -53,7 +55,8 @@ class FabTheme extends AbstractTheme implements ThemeInterface {
      *
      * @return string
      */
-    protected function formatSecondaryMenu() {
+    protected function formatSecondaryMenu()
+    {
         return
             '<ul class="secondary-menu">' .
             implode('', $this->secondaryMenu()) .
@@ -68,7 +71,8 @@ class FabTheme extends AbstractTheme implements ThemeInterface {
      *
      * @return string
      */
-    protected function headerContent() {
+    protected function headerContent()
+    {
         return
             //$this->accessibilityLinks() .
             $this->formatTreeTitle() .
@@ -82,7 +86,8 @@ class FabTheme extends AbstractTheme implements ThemeInterface {
      *
      * @return string
      */
-    protected function formatSecondaryMenuItem(Menu $menu) {
+    protected function formatSecondaryMenuItem(Menu $menu)
+    {
         return $menu->getMenuAsList();
     }
 
@@ -91,7 +96,8 @@ class FabTheme extends AbstractTheme implements ThemeInterface {
      *
      * @return string
      */
-    protected function formQuickSearchFields() {
+    protected function formQuickSearchFields()
+    {
         return
             '<input type="search" name="query" size="20" placeholder="' . I18N::translate('Search') . '">';
     }
@@ -101,7 +107,8 @@ class FabTheme extends AbstractTheme implements ThemeInterface {
      *
      * @return string
      */
-    public function hookFooterExtraJavascript() {
+    public function hookFooterExtraJavascript()
+    {
         return
             '<script src="' . WT_JQUERY_COLORBOX_URL . '"></script>' .
             '<script src="' . WT_JQUERY_WHEELZOOM_URL . '"></script>' .
@@ -125,7 +132,8 @@ class FabTheme extends AbstractTheme implements ThemeInterface {
      *
      * @return string|int|float
      */
-    public function parameter($parameter_name) {
+    public function parameter($parameter_name)
+    {
         $parameters = array(
             'chart-background-f'             => 'e9daf1',
             'chart-background-m'             => 'b1cff0',
@@ -147,7 +155,8 @@ class FabTheme extends AbstractTheme implements ThemeInterface {
      *
      * @return string[]
      */
-    protected function stylesheets() {
+    protected function stylesheets()
+    {
         return array(
             'themes/fab/jquery-ui-1.11.2/jquery-ui.css',
             $this->assetUrl() . 'style.css',
@@ -159,7 +168,8 @@ class FabTheme extends AbstractTheme implements ThemeInterface {
      *
      * @return string
      */
-    public function themeId() {
+    public function themeId()
+    {
         return 'fab';
     }
 
@@ -168,7 +178,8 @@ class FabTheme extends AbstractTheme implements ThemeInterface {
      *
      * @return string
      */
-    public function themeName() {
+    public function themeName()
+    {
         return /* I18N: Name of a theme. */ I18N::translate('F.A.B.');
     }
 }

@@ -48,7 +48,8 @@ class FunctionsDb {
      *
      * @return string[]
      */
-    public static function fetchAllLinks($xref, $gedcom_id) {
+    public static function fetchAllLinks($xref, $gedcom_id)
+    {
         return
             Database::prepare(
                 "SELECT l_from FROM `##link` WHERE l_file = ? AND l_to = ?" .
@@ -71,7 +72,8 @@ class FunctionsDb {
      *
      * @return Source[] array
      */
-    public static function getSourceList(Tree $tree) {
+    public static function getSourceList(Tree $tree)
+    {
         $rows = Database::prepare(
             "SELECT s_id AS xref, s_gedcom AS gedcom FROM `##sources` WHERE s_file = :tree_id"
         )->execute(array(
@@ -82,7 +84,9 @@ class FunctionsDb {
         foreach ($rows as $row) {
             $list[] = Source::getInstance($row->xref, $tree, $row->gedcom);
         }
-        $list = array_filter($list, function (Source $x) { return $x->canShowName(); });
+        $list = array_filter($list, function (Source $x) {
+            return $x->canShowName();
+        });
         usort($list, '\Fisharebest\Webtrees\GedcomRecord::compare');
 
         return $list;
@@ -95,7 +99,8 @@ class FunctionsDb {
      *
      * @return Repository[] array
      */
-    public static function getRepositoryList(Tree $tree) {
+    public static function getRepositoryList(Tree $tree)
+    {
         $rows = Database::prepare(
             "SELECT o_id AS xref, o_gedcom AS gedcom FROM `##other` WHERE o_type = 'REPO' AND o_file = ?"
         )->execute(array(
@@ -106,7 +111,9 @@ class FunctionsDb {
         foreach ($rows as $row) {
             $list[] = Repository::getInstance($row->xref, $tree, $row->gedcom);
         }
-        $list = array_filter($list, function (Repository $x) { return $x->canShowName(); });
+        $list = array_filter($list, function (Repository $x) {
+            return $x->canShowName();
+        });
         usort($list, '\Fisharebest\Webtrees\GedcomRecord::compare');
 
         return $list;
@@ -119,7 +126,8 @@ class FunctionsDb {
      *
      * @return Note[] array
      */
-    public static function getNoteList(Tree $tree) {
+    public static function getNoteList(Tree $tree)
+    {
         $rows = Database::prepare(
             "SELECT o_id AS xref, o_gedcom AS gedcom FROM `##other` WHERE o_type = 'NOTE' AND o_file = :tree_id"
         )->execute(array(
@@ -130,7 +138,9 @@ class FunctionsDb {
         foreach ($rows as $row) {
             $list[] = Note::getInstance($row->xref, $tree, $row->gedcom);
         }
-        $list = array_filter($list, function (Note $x) { return $x->canShowName(); });
+        $list = array_filter($list, function (Note $x) {
+            return $x->canShowName();
+        });
         usort($list, '\Fisharebest\Webtrees\GedcomRecord::compare');
 
         return $list;
@@ -144,7 +154,8 @@ class FunctionsDb {
      *
      * @return Individual[]
      */
-    public static function searchIndividuals(array $query, array $trees) {
+    public static function searchIndividuals(array $query, array $trees)
+    {
         // Convert the query into a regular expression
         $queryregex = array();
 
@@ -184,7 +195,9 @@ class FunctionsDb {
             }
             $list[] = $record;
         }
-        $list = array_filter($list, function (Individual $x) { return $x->canShowName(); });
+        $list = array_filter($list, function (Individual $x) {
+            return $x->canShowName();
+        });
 
         return $list;
     }
@@ -197,7 +210,8 @@ class FunctionsDb {
      *
      * @return Individual[]
      */
-    public static function searchIndividualNames(array $query, array $trees) {
+    public static function searchIndividualNames(array $query, array $trees)
+    {
         $sql  = "SELECT DISTINCT i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom, n_full FROM `##individuals` JOIN `##name` ON i_id=n_id AND i_file=n_file WHERE 1";
         $args = array();
 
@@ -231,7 +245,9 @@ class FunctionsDb {
                 }
             }
         }
-        $list = array_filter($list, function (Individual $x) { return $x->canShowName(); });
+        $list = array_filter($list, function (Individual $x) {
+            return $x->canShowName();
+        });
 
         return $list;
     }
@@ -247,7 +263,8 @@ class FunctionsDb {
      *
      * @return Individual[]
      */
-    public static function searchIndividualsPhonetic($soundex, $lastname, $firstname, $place, array $trees) {
+    public static function searchIndividualsPhonetic($soundex, $lastname, $firstname, $place, array $trees)
+    {
         switch ($soundex) {
             case 'Russell':
                 $givn_sdx = Soundex::russell($firstname);
@@ -345,7 +362,9 @@ class FunctionsDb {
         foreach ($rows as $row) {
             $list[] = Individual::getInstance($row->xref, Tree::findById($row->gedcom_id), $row->gedcom);
         }
-        $list = array_filter($list, function (Individual $x) { return $x->canShowName(); });
+        $list = array_filter($list, function (Individual $x) {
+            return $x->canShowName();
+        });
 
         return $list;
     }
@@ -358,7 +377,8 @@ class FunctionsDb {
      *
      * @return Family[]
      */
-    public static function searchFamilies(array $query, array $trees) {
+    public static function searchFamilies(array $query, array $trees)
+    {
         // Convert the query into a regular expression
         $queryregex = array();
 
@@ -400,7 +420,9 @@ class FunctionsDb {
             }
             $list[] = $record;
         }
-        $list = array_filter($list, function (Family $x) { return $x->canShowName(); });
+        $list = array_filter($list, function (Family $x) {
+            return $x->canShowName();
+        });
 
         return $list;
     }
@@ -413,7 +435,8 @@ class FunctionsDb {
      *
      * @return Family[]
      */
-    public static function searchFamilyNames(array $query, array $trees) {
+    public static function searchFamilyNames(array $query, array $trees)
+    {
         // No query => no results
         if (!$query) {
             return array();
@@ -471,7 +494,8 @@ class FunctionsDb {
      *
      * @return Source[]
      */
-    public static function searchSources($query, $trees) {
+    public static function searchSources($query, $trees)
+    {
         // Convert the query into a regular expression
         $queryregex = array();
 
@@ -513,7 +537,9 @@ class FunctionsDb {
             }
             $list[] = $record;
         }
-        $list = array_filter($list, function (Source $x) { return $x->canShowName(); });
+        $list = array_filter($list, function (Source $x) {
+            return $x->canShowName();
+        });
 
         return $list;
     }
@@ -526,7 +552,8 @@ class FunctionsDb {
      *
      * @return Note[]
      */
-    public static function searchNotes(array $query, array $trees) {
+    public static function searchNotes(array $query, array $trees)
+    {
         // Convert the query into a regular expression
         $queryregex = array();
 
@@ -568,7 +595,9 @@ class FunctionsDb {
             }
             $list[] = $record;
         }
-        $list = array_filter($list, function (Note $x) { return $x->canShowName(); });
+        $list = array_filter($list, function (Note $x) {
+            return $x->canShowName();
+        });
 
         return $list;
     }
@@ -581,7 +610,8 @@ class FunctionsDb {
      *
      * @return Repository[]
      */
-    public static function searchRepositories(array $query, array $trees) {
+    public static function searchRepositories(array $query, array $trees)
+    {
         // Convert the query into a regular expression
         $queryregex = array();
 
@@ -623,7 +653,9 @@ class FunctionsDb {
             }
             $list[] = $record;
         }
-        $list = array_filter($list, function (Repository $x) { return $x->canShowName(); });
+        $list = array_filter($list, function (Repository $x) {
+            return $x->canShowName();
+        });
 
         return $list;
     }
@@ -635,7 +667,8 @@ class FunctionsDb {
      *
      * @return string
      */
-    public static function findRin($rin) {
+    public static function findRin($rin)
+    {
         global $WT_TREE;
 
         $xref =
@@ -659,7 +692,8 @@ class FunctionsDb {
      *
      * @return int[]
      */
-    public static function getCommonSurnames($min, Tree $tree) {
+    public static function getCommonSurnames($min, Tree $tree)
+    {
         return self::getTopSurnames($tree->getTreeId(), $min, 0);
     }
 
@@ -672,7 +706,8 @@ class FunctionsDb {
      *
      * @return int[]
      */
-    public static function getTopSurnames($ged_id, $min, $max) {
+    public static function getTopSurnames($ged_id, $min, $max)
+    {
         // Use n_surn, rather than n_surname, as it is used to generate URLs for
         // the indi-list, etc.
         $max = (int) $max;
@@ -713,7 +748,8 @@ class FunctionsDb {
      *
      * @return Fact[]
      */
-    public static function getAnniversaryEvents($jd, $facts, Tree $tree) {
+    public static function getAnniversaryEvents($jd, $facts, Tree $tree)
+    {
         $found_facts = array();
         foreach (array(
             new GregorianDate($jd),
@@ -890,7 +926,8 @@ class FunctionsDb {
      *
      * @return Fact[]
      */
-    public static function getCalendarEvents($jd1, $jd2, $facts, Tree $tree) {
+    public static function getCalendarEvents($jd1, $jd2, $facts, Tree $tree)
+    {
         // If no facts specified, get all except these
         $skipfacts = "CHAN,BAPL,SLGC,SLGS,ENDL,CENS,RESI,NOTE,ADDR,OBJE,SOUR,PAGE,DATA,TEXT";
 
@@ -944,7 +981,8 @@ class FunctionsDb {
      *
      * @return Fact[]
      */
-    public static function getEventsList($jd1, $jd2, $events, Tree $tree) {
+    public static function getEventsList($jd1, $jd2, $events, Tree $tree)
+    {
         $found_facts = array();
         for ($jd = $jd1; $jd <= $jd2; ++$jd) {
             $found_facts = array_merge($found_facts, self::getAnniversaryEvents($jd, $events, $tree));
@@ -961,7 +999,8 @@ class FunctionsDb {
      *
      * @return bool
      */
-    public static function isMediaUsedInOtherTree($file_name, $ged_id) {
+    public static function isMediaUsedInOtherTree($file_name, $ged_id)
+    {
         return
             (bool) Database::prepare("SELECT COUNT(*) FROM `##media` WHERE m_filename LIKE ? AND m_file<>?")
                 ->execute(array("%{$file_name}", $ged_id))
@@ -975,7 +1014,8 @@ class FunctionsDb {
      *
      * @return string[][]
      */
-    public static function getUserBlocks($user_id) {
+    public static function getUserBlocks($user_id)
+    {
         global $WT_TREE;
 
         $blocks = array('main' => array(), 'side' => array());
@@ -1004,7 +1044,8 @@ class FunctionsDb {
      *
      * @return string[][]
      */
-    public static function getTreeBlocks($gedcom_id) {
+    public static function getTreeBlocks($gedcom_id)
+    {
         if ($gedcom_id < 0) {
             $access_level = Auth::PRIV_NONE;
         } else {
@@ -1041,7 +1082,8 @@ class FunctionsDb {
      *
      * @return int
      */
-    public static function updateFavorites($xref_from, $xref_to, Tree $tree) {
+    public static function updateFavorites($xref_from, $xref_to, Tree $tree)
+    {
         return
             Database::prepare("UPDATE `##favorite` SET xref=? WHERE xref=? AND gedcom_id=?")
                 ->execute(array($xref_to, $xref_from, $tree->getTreeId()))

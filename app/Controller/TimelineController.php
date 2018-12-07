@@ -66,7 +66,8 @@ class TimelineController extends PageController {
     /**
      * Startup activity
      */
-    public function __construct() {
+    public function __construct()
+    {
         global $WT_TREE;
 
         parent::__construct();
@@ -149,7 +150,8 @@ class TimelineController extends PageController {
      *
      * @param Fact $event
      */
-    public function printTimeFact(Fact $event) {
+    public function printTimeFact(Fact $event)
+    {
         global $basexoffset, $baseyoffset, $factcount, $placements;
 
         $desc = $event->getValue();
@@ -273,7 +275,8 @@ class TimelineController extends PageController {
      *
      * @return Individual
      */
-    public function getSignificantIndividual() {
+    public function getSignificantIndividual()
+    {
         global $WT_TREE;
 
         if ($this->people) {

@@ -23,7 +23,8 @@ class SimpleController extends PageController {
      * Create content for a popup window.
      * The page title is not used by all browsers.
      */
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
         $this->setPageTitle(WT_WEBTREES);
     }
@@ -35,7 +36,8 @@ class SimpleController extends PageController {
      *
      * @return $this
      */
-    public function pageHeader($popup = true) {
+    public function pageHeader($popup = true)
+    {
         return parent::pageHeader($popup);
     }
 
@@ -46,7 +48,8 @@ class SimpleController extends PageController {
      *
      * @return $this
      */
-    public function restrictAccess($condition) {
+    public function restrictAccess($condition)
+    {
         if ($condition !== true) {
             $this->addInlineJavascript('opener.window.location.reload(); window.close();');
             exit;

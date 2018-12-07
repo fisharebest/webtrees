@@ -24,7 +24,8 @@ class CensusOfDenmark1835 extends CensusOfDenmark implements CensusInterface {
      *
      * @return string
      */
-    public function censusDate() {
+    public function censusDate()
+    {
         return '18 FEB 1835';
     }
 
@@ -33,7 +34,8 @@ class CensusOfDenmark1835 extends CensusOfDenmark implements CensusInterface {
      *
      * @return string
      */
-    public function censusPlace() {
+    public function censusPlace()
+    {
         return 'Schleswig-Holstein, Deutschland';
     }
 
@@ -42,7 +44,8 @@ class CensusOfDenmark1835 extends CensusOfDenmark implements CensusInterface {
      *
      * @return CensusColumnInterface[]
      */
-    public function columns() {
+    public function columns()
+    {
         return array(
             new CensusColumnFullName($this, 'Navn', ''),
             new CensusColumnAge($this, 'Alder', ''),

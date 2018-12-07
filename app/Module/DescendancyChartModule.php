@@ -29,7 +29,8 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
      *
      * @return string
      */
-    public function getTitle() {
+    public function getTitle()
+    {
         return /* I18N: Name of a module/chart */ I18N::translate('Descendants');
     }
 
@@ -38,7 +39,8 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
      *
      * @return string
      */
-    public function getDescription() {
+    public function getDescription()
+    {
         return /* I18N: Description of the “DescendancyChart” module */ I18N::translate('A chart of an individual’s descendants.');
     }
 
@@ -49,7 +51,8 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
      *
      * @return int
      */
-    public function defaultAccessLevel() {
+    public function defaultAccessLevel()
+    {
         return Auth::PRIV_PRIVATE;
     }
 
@@ -58,7 +61,8 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
      *
      * @return Menu|null
      */
-    public function getChartMenu(Individual $individual) {
+    public function getChartMenu(Individual $individual)
+    {
         return new Menu(
             $this->getTitle(),
             'descendancy.php?rootid=' . $individual->getXref() . '&amp;ged=' . $individual->getTree()->getNameUrl(),
@@ -72,7 +76,8 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
      *
      * @return Menu|null
      */
-    public function getBoxChartMenu(Individual $individual) {
+    public function getBoxChartMenu(Individual $individual)
+    {
         return $this->getChartMenu($individual);
     }
 }

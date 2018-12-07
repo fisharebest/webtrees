@@ -91,7 +91,8 @@ class GedcomTag {
      *
      * @return bool
      */
-    public static function isTag($tag) {
+    public static function isTag($tag)
+    {
         return in_array($tag, self::$ALL_TAGS);
     }
 
@@ -103,7 +104,8 @@ class GedcomTag {
      *
      * @return string
      */
-    public static function getLabel($tag, GedcomRecord $record = null) {
+    public static function getLabel($tag, GedcomRecord $record = null)
+    {
         if ($record instanceof Individual) {
             $sex = $record->getSex();
         } else {
@@ -1807,7 +1809,8 @@ class GedcomTag {
      *
      * @return string
      */
-    public static function getLabelValue($tag, $value, GedcomRecord $record = null, $element = 'div') {
+    public static function getLabelValue($tag, $value, GedcomRecord $record = null, $element = 'div')
+    {
         return
             '<' . $element . ' class="fact_' . $tag . '">' .
             /* I18N: a label/value pair, such as “Occupation: Farmer”. Some languages may need to change the punctuation. */
@@ -1820,7 +1823,8 @@ class GedcomTag {
      *
      * @return string[]
      */
-    public static function getPicklistFacts($fact_type) {
+    public static function getPicklistFacts($fact_type)
+    {
         switch ($fact_type) {
             case 'INDI':
                 $tags = array(
@@ -1903,7 +1907,8 @@ class GedcomTag {
      *
      * @return string
      */
-    public static function getFileFormTypeValue($type) {
+    public static function getFileFormTypeValue($type)
+    {
         switch (strtolower($type)) {
             case 'audio':
                 return /* I18N: Type of media object */ I18N::translate('Audio');
@@ -1949,7 +1954,8 @@ class GedcomTag {
      *
      * @return string[]
      */
-    public static function getFileFormTypes() {
+    public static function getFileFormTypes()
+    {
         $values = array();
         foreach (self::$OBJE_FILE_FORM_TYPE as $type) {
             $values[$type] = self::getFileFormTypeValue($type);
@@ -1968,7 +1974,8 @@ class GedcomTag {
      *
      * @return string
      */
-    public static function createUid() {
+    public static function createUid()
+    {
         $uid = str_replace('-', '', Uuid::uuid4());
 
         $checksum_a = 0; // a sum of the bytes

@@ -28,7 +28,8 @@ class FlashMessages {
      * @param string $text
      * @param string $status "success", "info", "warning" or "danger"
      */
-    public static function addMessage($text, $status = 'info') {
+    public static function addMessage($text, $status = 'info')
+    {
         $message         = new \stdClass;
         $message->text   = $text;
         $message->status = $status;
@@ -43,7 +44,8 @@ class FlashMessages {
      *
      * @return string[]
      */
-    public static function getMessages() {
+    public static function getMessages()
+    {
         $messages = Session::get(self::FLASH_KEY, array());
         Session::forget(self::FLASH_KEY);
 

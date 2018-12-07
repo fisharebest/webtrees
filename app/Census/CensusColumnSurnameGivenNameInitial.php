@@ -29,7 +29,8 @@ class CensusColumnSurnameGivenNameInitial extends CensusColumnFullName {
      *
      * @return string
      */
-    public function generate(Individual $individual, Individual $head = null) {
+    public function generate(Individual $individual, Individual $head = null)
+    {
         $name  = $this->nameAtCensusDate($individual, $this->date());
         $given = $name['givn'];
         if (strpos($given, ' ') === false) {

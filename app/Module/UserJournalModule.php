@@ -31,7 +31,8 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface {
      *
      * @param string $directory Where is this module installed
      */
-    public function __construct($directory) {
+    public function __construct($directory)
+    {
         parent::__construct($directory);
 
         // Create/update the database tables.
@@ -43,7 +44,8 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface {
      *
      * @return string
      */
-    public function getTitle() {
+    public function getTitle()
+    {
         return /* I18N: Name of a module */ I18N::translate('Journal');
     }
 
@@ -52,7 +54,8 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface {
      *
      * @return string
      */
-    public function getDescription() {
+    public function getDescription()
+    {
         return /* I18N: Description of the “Journal” module */ I18N::translate('A private area to record notes or keep a journal.');
     }
 
@@ -65,7 +68,8 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface {
      *
      * @return string
      */
-    public function getBlock($block_id, $template = true, $cfg = array()) {
+    public function getBlock($block_id, $template = true, $cfg = array())
+    {
         global $ctype, $WT_TREE;
 
         switch (Filter::get('action')) {
@@ -117,17 +121,20 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface {
     }
 
     /** {@inheritdoc} */
-    public function loadAjax() {
+    public function loadAjax()
+    {
         return false;
     }
 
     /** {@inheritdoc} */
-    public function isUserBlock() {
+    public function isUserBlock()
+    {
         return true;
     }
 
     /** {@inheritdoc} */
-    public function isGedcomBlock() {
+    public function isGedcomBlock()
+    {
         return false;
     }
 
@@ -136,6 +143,7 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface {
      *
      * @param int $block_id
      */
-    public function configureBlock($block_id) {
+    public function configureBlock($block_id)
+    {
     }
 }

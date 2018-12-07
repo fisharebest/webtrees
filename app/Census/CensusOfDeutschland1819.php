@@ -24,7 +24,8 @@ class CensusOfDeutschland1819 extends CensusOfDeutschland implements CensusInter
      *
      * @return string
      */
-    public function censusDate() {
+    public function censusDate()
+    {
         return 'AUG 1819';
     }
 
@@ -33,7 +34,8 @@ class CensusOfDeutschland1819 extends CensusOfDeutschland implements CensusInter
      *
      * @return string
      */
-    public function censusPlace() {
+    public function censusPlace()
+    {
         return 'Mecklenburg-Schwerin, Deutschland';
     }   
 
@@ -42,7 +44,8 @@ class CensusOfDeutschland1819 extends CensusOfDeutschland implements CensusInter
      *
      * @return CensusColumnInterface[]
      */
-    public function columns() {
+    public function columns()
+    {
         return array(
             new CensusColumnNull($this, 'Nr.', 'Laufende Num̅er.'),
             new CensusColumnNull($this, 'Geschlecht', 'Ob männlichen oder weiblichen Geschlechts.'),

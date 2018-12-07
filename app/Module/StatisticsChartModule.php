@@ -29,7 +29,8 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
      *
      * @return string
      */
-    public function getTitle() {
+    public function getTitle()
+    {
         return /* I18N: Name of a module/chart */ I18N::translate('Statistics');
     }
 
@@ -38,7 +39,8 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
      *
      * @return string
      */
-    public function getDescription() {
+    public function getDescription()
+    {
         return /* I18N: Description of the “StatisticsChart” module */ I18N::translate('Various statistics charts.');
     }
 
@@ -49,7 +51,8 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
      *
      * @return int
      */
-    public function defaultAccessLevel() {
+    public function defaultAccessLevel()
+    {
         return Auth::PRIV_PRIVATE;
     }
 
@@ -58,7 +61,8 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
      *
      * @return Menu|null
      */
-    public function getChartMenu(Individual $individual) {
+    public function getChartMenu(Individual $individual)
+    {
         return new Menu(
             $this->getTitle(),
             'statistics.php?ged=' . $individual->getTree()->getNameUrl(),
@@ -72,7 +76,8 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
      *
      * @return Menu|null
      */
-    public function getBoxChartMenu(Individual $individual) {
+    public function getBoxChartMenu(Individual $individual)
+    {
         return null;
     }
 }

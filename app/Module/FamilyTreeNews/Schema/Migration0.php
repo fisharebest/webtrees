@@ -23,7 +23,8 @@ use Fisharebest\Webtrees\Schema\MigrationInterface;
  */
 class Migration0 implements MigrationInterface {
     /** {@inheritDoc} */
-    public function upgrade() {
+    public function upgrade()
+    {
         Database::exec(
             "CREATE TABLE IF NOT EXISTS `##news` (" .
             " n_id       INTEGER AUTO_INCREMENT NOT NULL," .

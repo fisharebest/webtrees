@@ -33,12 +33,14 @@ use Fisharebest\Webtrees\User;
  */
 class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface {
     /** {@inheritdoc} */
-    public function getTitle() {
+    public function getTitle()
+    {
         return /* I18N: Name of a module */ I18N::translate('Pending changes');
     }
 
     /** {@inheritdoc} */
-    public function getDescription() {
+    public function getDescription()
+    {
         return /* I18N: Description of the “Pending changes” module */ I18N::translate('A list of changes that need to be reviewed by a moderator, and email notifications.');
     }
 
@@ -51,7 +53,8 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
      *
      * @return string
      */
-    public function getBlock($block_id, $template = true, $cfg = array()) {
+    public function getBlock($block_id, $template = true, $cfg = array())
+    {
         global $ctype, $WT_TREE;
 
         $sendmail = $this->getBlockSetting($block_id, 'sendmail', '1');
@@ -143,17 +146,20 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
     }
 
     /** {@inheritdoc} */
-    public function loadAjax() {
+    public function loadAjax()
+    {
         return false;
     }
 
     /** {@inheritdoc} */
-    public function isUserBlock() {
+    public function isUserBlock()
+    {
         return true;
     }
 
     /** {@inheritdoc} */
-    public function isGedcomBlock() {
+    public function isGedcomBlock()
+    {
         return true;
     }
 
@@ -162,7 +168,8 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
      *
      * @param int $block_id
      */
-    public function configureBlock($block_id) {
+    public function configureBlock($block_id)
+    {
         if (Filter::postBool('save') && Filter::checkCsrf()) {
             $this->setBlockSetting($block_id, 'days', Filter::postInteger('num', 1, 180, 1));
             $this->setBlockSetting($block_id, 'sendmail', Filter::postBool('sendmail'));

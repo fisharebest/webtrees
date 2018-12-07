@@ -549,7 +549,8 @@ echo '</div>'; //close "calendar-page"
  *
  * @return array
  */
-function apply_filter($facts, $filterof, $filtersx) {
+function apply_filter($facts, $filterof, $filtersx)
+{
     $filtered      = array();
     $hundred_years = WT_CLIENT_JD - 36525;
     foreach ($facts as $fact) {
@@ -595,7 +596,8 @@ function apply_filter($facts, $filterof, $filtersx) {
  *
  * @return string
  */
-function calendar_fact_text(Fact $fact, $show_places) {
+function calendar_fact_text(Fact $fact, $show_places)
+{
     $text = $fact->getLabel() . ' — ' . $fact->getDate()->display(true, null, false);
     if ($fact->anniv) {
         $text .= ' (' . I18N::translate('%s year anniversary', $fact->anniv) . ')';
@@ -617,7 +619,8 @@ function calendar_fact_text(Fact $fact, $show_places) {
  *
  * @return string
  */
-function calendar_list_text($list, $tag1, $tag2, $show_sex_symbols) {
+function calendar_list_text($list, $tag1, $tag2, $show_sex_symbols)
+{
     global $males, $females, $WT_TREE;
 
     $html = '';

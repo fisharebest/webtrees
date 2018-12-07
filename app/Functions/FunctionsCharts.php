@@ -32,7 +32,8 @@ class FunctionsCharts {
      * @param string $pid optional pid
      * @param string $arrowDirection direction of link arrow
      */
-    public static function printSosaNumber($sosa, $pid = "", $arrowDirection = "up") {
+    public static function printSosaNumber($sosa, $pid = "", $arrowDirection = "up")
+    {
         if (substr($sosa, -1, 1) == ".") {
             $personLabel = substr($sosa, 0, -1);
         } else {
@@ -71,7 +72,8 @@ class FunctionsCharts {
      * @param string $gparid gd-parent ID (descendancy booklet)
      * @param int $show_full large or small box
      */
-    public static function printFamilyParents(Family $family, $sosa = 0, $label = '', $parid = '', $gparid = '', $show_full = 1) {
+    public static function printFamilyParents(Family $family, $sosa = 0, $label = '', $parid = '', $gparid = '', $show_full = 1)
+    {
 
         if ($show_full) {
             $pbheight = Theme::theme()->parameter('chart-box-y') + 14;
@@ -280,7 +282,8 @@ class FunctionsCharts {
      * @param int $show_cousins display cousins on chart
      * @param int $show_full large or small box
      */
-    public static function printFamilyChildren(Family $family, $childid = '', $sosa = 0, $label = '', $show_cousins = 0, $show_full = 1) {
+    public static function printFamilyChildren(Family $family, $childid = '', $sosa = 0, $label = '', $show_cousins = 0, $show_full = 1)
+    {
 
         if ($show_full) {
             $bheight = Theme::theme()->parameter('chart-box-y');
@@ -425,7 +428,8 @@ class FunctionsCharts {
      * @param int $show_cousins display cousins on chart
      * @param int $show_full large or small box
      */
-    public static function printSosaFamily($famid, $childid, $sosa, $label = '', $parid = '', $gparid = '', $show_cousins = 0, $show_full = 1) {
+    public static function printSosaFamily($famid, $childid, $sosa, $label = '', $parid = '', $gparid = '', $show_cousins = 0, $show_full = 1)
+    {
         global $WT_TREE;
 
         echo '<hr>';
@@ -448,7 +452,8 @@ class FunctionsCharts {
      * @param string $label arrow label
      * @param int $dir arrow direction 0=left 1=right 2=up 3=down (default=2)
      */
-    public static function printUrlArrow($url, $label, $dir = 2) {
+    public static function printUrlArrow($url, $label, $dir = 2)
+    {
         if ($url === '') {
             return;
         }
@@ -477,7 +482,8 @@ class FunctionsCharts {
      *
      * @return string
      */
-    public static function getSosaName($sosa) {
+    public static function getSosaName($sosa)
+    {
         $path = '';
         while ($sosa > 1) {
             if ($sosa % 2 == 1) {
@@ -498,7 +504,8 @@ class FunctionsCharts {
      * @param string $famid family ID
      * @param int $show_full large or small box
      */
-    public static function printCousins($famid, $show_full = 1) {
+    public static function printCousins($famid, $show_full = 1)
+    {
         global $WT_TREE;
 
         if ($show_full) {

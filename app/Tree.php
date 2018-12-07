@@ -58,7 +58,8 @@ class Tree {
      * @param string $tree_name
      * @param string $tree_title
      */
-    private function __construct($tree_id, $tree_name, $tree_title) {
+    private function __construct($tree_id, $tree_name, $tree_title)
+    {
         $this->tree_id                 = $tree_id;
         $this->name                    = $tree_name;
         $this->title                   = $tree_title;
@@ -97,7 +98,8 @@ class Tree {
      *
      * @return int
      */
-    public function getTreeId() {
+    public function getTreeId()
+    {
         return $this->tree_id;
     }
 
@@ -106,7 +108,8 @@ class Tree {
      *
      * @return string
      */
-    public function getName() {
+    public function getName()
+    {
         return $this->name;
     }
 
@@ -115,7 +118,8 @@ class Tree {
      *
      * @return string
      */
-    public function getNameHtml() {
+    public function getNameHtml()
+    {
         return Filter::escapeHtml($this->name);
     }
 
@@ -124,7 +128,8 @@ class Tree {
      *
      * @return string
      */
-    public function getNameUrl() {
+    public function getNameUrl()
+    {
         return Filter::escapeUrl($this->name);
     }
 
@@ -133,7 +138,8 @@ class Tree {
      *
      * @return string
      */
-    public function getTitle() {
+    public function getTitle()
+    {
         return $this->title;
     }
 
@@ -142,7 +148,8 @@ class Tree {
      *
      * @return string
      */
-    public function getTitleHtml() {
+    public function getTitleHtml()
+    {
         return '<span dir="auto">' . Filter::escapeHtml($this->title) . '</span>';
     }
 
@@ -151,7 +158,8 @@ class Tree {
      *
      * @return int[]
      */
-    public function getFactPrivacy() {
+    public function getFactPrivacy()
+    {
         return $this->fact_privacy;
     }
 
@@ -160,7 +168,8 @@ class Tree {
      *
      * @return int[]
      */
-    public function getIndividualPrivacy() {
+    public function getIndividualPrivacy()
+    {
         return $this->individual_privacy;
     }
 
@@ -169,7 +178,8 @@ class Tree {
      *
      * @return integer[][]
      */
-    public function getIndividualFactPrivacy() {
+    public function getIndividualFactPrivacy()
+    {
         return $this->individual_fact_privacy;
     }
 
@@ -181,7 +191,8 @@ class Tree {
      *
      * @return string|null
      */
-    public function getPreference($setting_name, $default = null) {
+    public function getPreference($setting_name, $default = null)
+    {
         if ($this->preferences === null) {
             $this->preferences = Database::prepare(
                 "SELECT setting_name, setting_value FROM `##gedcom_setting` WHERE gedcom_id = ?"
@@ -203,7 +214,8 @@ class Tree {
      *
      * @return $this
      */
-    public function setPreference($setting_name, $setting_value) {
+    public function setPreference($setting_name, $setting_value)
+    {
         if ($setting_value !== $this->getPreference($setting_name)) {
             // Update the database
             if ($setting_value === null) {
@@ -241,7 +253,8 @@ class Tree {
      *
      * @return string
      */
-    public function getUserPreference(User $user, $setting_name, $default = null) {
+    public function getUserPreference(User $user, $setting_name, $default = null)
+    {
         // There are lots of settings, and we need to fetch lots of them on every page
         // so it is quicker to fetch them all in one go.
         if (!array_key_exists($user->getUserId(), $this->user_preferences)) {
@@ -266,7 +279,8 @@ class Tree {
      *
      * @return $this
      */
-    public function setUserPreference(User $user, $setting_name, $setting_value) {
+    public function setUserPreference(User $user, $setting_name, $setting_value)
+    {
         if ($this->getUserPreference($user, $setting_name) !== $setting_value) {
             // Update the database
             if ($setting_value === null) {
@@ -303,7 +317,8 @@ class Tree {
      *
      * @return bool
      */
-    public function canAcceptChanges(User $user) {
+    public function canAcceptChanges(User $user)
+    {
         return Auth::isModerator($this, $user);
     }
 
@@ -312,7 +327,8 @@ class Tree {
      *
      * @return Tree[]
      */
-    public static function getAll() {
+    public static function getAll()
+    {
         if (self::$trees === null) {
             self::$trees = array();
             $rows        = Database::prepare(
@@ -350,7 +366,8 @@ class Tree {
      *
      * @return Tree
      */
-    public static function findById($tree_id) {
+    public static function findById($tree_id)
+    {
         foreach (self::getAll() as $tree) {
             if ($tree->tree_id == $tree_id) {
                 return $tree;
@@ -366,7 +383,8 @@ class Tree {
      *
      * @return Tree|null
      */
-    public static function findByName($tree_name) {
+    public static function findByName($tree_name)
+    {
         foreach (self::getAll() as $tree) {
             if ($tree->name === $tree_name) {
                 return $tree;
@@ -382,7 +400,8 @@ class Tree {
      *
      * @return string[]
      */
-    public static function getIdList() {
+    public static function getIdList()
+    {
         $list = array();
         foreach (self::getAll() as $tree) {
             $list[$tree->tree_id] = $tree->title;
@@ -397,7 +416,8 @@ class Tree {
      *
      * @return string[]
      */
-    public static function getNameList() {
+    public static function getNameList()
+    {
         $list = array();
         foreach (self::getAll() as $tree) {
             $list[$tree->name] = $tree->title;
@@ -414,7 +434,8 @@ class Tree {
      *
      * @return Tree
      */
-    public static function create($tree_name, $tree_title) {
+    public static function create($tree_name, $tree_title)
+    {
         try {
             // Create a new tree
             Database::prepare(
@@ -508,7 +529,8 @@ class Tree {
      *
      * @return bool
      */
-    public function hasPendingEdit() {
+    public function hasPendingEdit()
+    {
         return (bool) Database::prepare(
             "SELECT 1 FROM `##change` WHERE status = 'pending' AND gedcom_id = :tree_id"
         )->execute(array(
@@ -524,7 +546,8 @@ class Tree {
      *
      * @param bool $keep_media
      */
-    public function deleteGenealogyData($keep_media) {
+    public function deleteGenealogyData($keep_media)
+    {
         Database::prepare("DELETE FROM `##gedcom_chunk` WHERE gedcom_id = ?")->execute(array($this->tree_id));
         Database::prepare("DELETE FROM `##individuals`  WHERE i_file    = ?")->execute(array($this->tree_id));
         Database::prepare("DELETE FROM `##families`     WHERE f_file    = ?")->execute(array($this->tree_id));
@@ -547,7 +570,8 @@ class Tree {
     /**
      * Delete everything relating to a tree
      */
-    public function delete() {
+    public function delete()
+    {
         // If this is the default tree, then unset it
         if (Site::getPreference('DEFAULT_GEDCOM') === $this->name) {
             Site::setPreference('DEFAULT_GEDCOM', '');
@@ -576,7 +600,8 @@ class Tree {
      *
      * @param resource $stream
      */
-    public function exportGedcom($stream) {
+    public function exportGedcom($stream)
+    {
         $stmt = Database::prepare(
             "SELECT i_gedcom AS gedcom, i_id AS xref, 1 AS n FROM `##individuals` WHERE i_file = :tree_id_1" .
             " UNION ALL " .
@@ -616,7 +641,8 @@ class Tree {
      *
      * @throws \Exception
      */
-    public function importGedcomFile($path, $filename) {
+    public function importGedcomFile($path, $filename)
+    {
         // Read the file in blocks of roughly 64K. Ensure that each block
         // contains complete gedcom records. This will ensure we don’t split
         // multi-byte characters, as well as simplifying the code to import
@@ -664,7 +690,8 @@ class Tree {
      *
      * @return string
      */
-    public function getNewXref($type = 'INDI') {
+    public function getNewXref($type = 'INDI')
+    {
         /** @var string[] Which tree preference is used for which record type */
         static $type_to_preference = array(
             'INDI' => 'GEDCOM_ID_PREFIX',
@@ -747,7 +774,8 @@ class Tree {
      *
      * @return GedcomRecord
      */
-    public function createRecord($gedcom) {
+    public function createRecord($gedcom)
+    {
         if (preg_match('/^0 @(' . WT_REGEX_XREF . ')@ (' . WT_REGEX_TAG . ')/', $gedcom, $match)) {
             $xref = $match[1];
             $type = $match[2];

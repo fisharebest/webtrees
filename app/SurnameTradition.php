@@ -37,7 +37,8 @@ class SurnameTradition {
      *
      * @return SurnameTraditionInterface
      */
-    public static function create($name) {
+    public static function create($name)
+    {
         switch ($name) {
             case 'paternal':
                 return new PaternalSurnameTradition;
@@ -65,7 +66,8 @@ class SurnameTradition {
      *
      * @return string[]
      */
-    public static function allDescriptions() {
+    public static function allDescriptions()
+    {
         return array(
             'paternal' =>
                 I18N::translateContext('Surname tradition', 'paternal') .

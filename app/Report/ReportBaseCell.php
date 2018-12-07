@@ -130,7 +130,20 @@ class ReportBaseCell extends ReportBaseElement {
      * @param        $reseth
      */
     public function __construct(
-        $width, $height, $border, $align, $bgcolor, $style, $ln, $top, $left, $fill, $stretch, $bocolor, $tcolor, $reseth
+        $width,
+        $height,
+        $border,
+        $align,
+        $bgcolor,
+        $style,
+        $ln,
+        $top,
+        $left,
+        $fill,
+        $stretch,
+        $bocolor,
+        $tcolor,
+        $reseth
     ) {
         $this->align     = $align;
         $this->border    = $border;
@@ -159,7 +172,8 @@ class ReportBaseCell extends ReportBaseElement {
      *
      * @return float
      */
-    public function getHeight($renderer) {
+    public function getHeight($renderer)
+    {
         return $this->height;
     }
 
@@ -170,7 +184,8 @@ class ReportBaseCell extends ReportBaseElement {
      *
      * @return int
      */
-    public function setUrl($url) {
+    public function setUrl($url)
+    {
         $this->url = $url;
 
         return 0;
@@ -183,7 +198,8 @@ class ReportBaseCell extends ReportBaseElement {
      *
      * @return float
      */
-    public function getWidth($renderer) {
+    public function getWidth($renderer)
+    {
         return $this->width;
     }
 }

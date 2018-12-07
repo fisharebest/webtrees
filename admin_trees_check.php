@@ -223,7 +223,8 @@ echo '</ul>';
  *
  * @return string
  */
-function link_message($type1, $xref1, $type2, $xref2) {
+function link_message($type1, $xref1, $type2, $xref2)
+{
     return /* I18N: The placeholders are GEDCOM XREFs and tags. e.g. “INDI I123 contains a FAMC link to F234.” */ I18N::translate(
         '%1$s %2$s has a %3$s link to %4$s.',
         format_type($type1),
@@ -240,7 +241,8 @@ function link_message($type1, $xref1, $type2, $xref2) {
  *
  * @return string
  */
-function format_link($xref) {
+function format_link($xref)
+{
     return '<b><a href="gedrecord.php?pid=' . $xref . '">' . $xref . '</a></b>';
 }
 
@@ -251,7 +253,8 @@ function format_link($xref) {
  *
  * @return string
  */
-function format_type($type) {
+function format_type($type)
+{
     return '<b title="' . strip_tags(GedcomTag::getLabel($type)) . '">' . $type . '</b>';
 }
 
@@ -262,7 +265,8 @@ function format_type($type) {
  *
  * @return string
  */
-function error($message) {
+function error($message)
+{
     global $errors;
     $errors = true;
 
@@ -276,7 +280,8 @@ function error($message) {
  *
  * @return string
  */
-function warning($message) {
+function warning($message)
+{
     global $errors;
     $errors = true;
 

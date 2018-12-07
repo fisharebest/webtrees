@@ -33,7 +33,8 @@ class ReportParserSetup extends ReportParserBase {
      *
      * @return array
      */
-    public function reportProperties() {
+    public function reportProperties()
+    {
         return $this->data;
     }
 
@@ -42,7 +43,8 @@ class ReportParserSetup extends ReportParserBase {
      *
      * @param string[] $attrs
      */
-    protected function reportStartHandler($attrs) {
+    protected function reportStartHandler($attrs)
+    {
         $access = Auth::PRIV_PRIVATE;
         if (isset($attrs['access'])) {
             if (isset($$attrs["access"])) {
@@ -63,7 +65,8 @@ class ReportParserSetup extends ReportParserBase {
      *
      * @param string[] $attrs
      */
-    protected function varStartHandler($attrs) {
+    protected function varStartHandler($attrs)
+    {
         if (preg_match('/^I18N::number\((.+)\)$/', $attrs['var'], $match)) {
             $this->text .= I18N::number($match[1]);
         } elseif (preg_match('/^I18N::translate\(\'(.+)\'\)$/', $attrs['var'], $match)) {
@@ -78,14 +81,16 @@ class ReportParserSetup extends ReportParserBase {
     /**
      * Process <Title>
      */
-    protected function titleStartHandler() {
+    protected function titleStartHandler()
+    {
         $this->text = '';
     }
 
     /**
      * Process </Title>
      */
-    protected function titleEndHandler() {
+    protected function titleEndHandler()
+    {
         $this->data['title'] = $this->text;
         $this->text          = '';
     }
@@ -93,7 +98,8 @@ class ReportParserSetup extends ReportParserBase {
     /**
      * Process </Description>
      */
-    protected function descriptionEndHandler() {
+    protected function descriptionEndHandler()
+    {
         $this->data['description'] = $this->text;
         $this->text                = '';
     }
@@ -103,7 +109,8 @@ class ReportParserSetup extends ReportParserBase {
      *
      * @param string[] $attrs
      */
-    protected function inputStartHandler($attrs) {
+    protected function inputStartHandler($attrs)
+    {
         $this->text  = '';
         $this->input = array(
             'name'    => isset($attrs['name']) ? $attrs['name'] : '',
@@ -135,7 +142,8 @@ class ReportParserSetup extends ReportParserBase {
     /**
      * Process </Input>
      */
-    protected function inputEndHandler() {
+    protected function inputEndHandler()
+    {
         $this->input['value'] = $this->text;
         if (!isset($this->data['inputs'])) {
             $this->data['inputs'] = array();

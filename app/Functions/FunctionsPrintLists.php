@@ -49,7 +49,8 @@ class FunctionsPrintLists {
      *
      * @return string[]
      */
-    private static function sortableNames(Individual $individual) {
+    private static function sortableNames(Individual $individual)
+    {
         $names   = $individual->getAllNames();
         $primary = $individual->getPrimaryName();
 
@@ -72,7 +73,8 @@ class FunctionsPrintLists {
      *
      * @return string
      */
-    public static function individualTable($indiviudals, $option = '') {
+    public static function individualTable($indiviudals, $option = '')
+    {
         global $controller, $WT_TREE;
 
         $table_id = 'table-indi-' . Uuid::uuid4(); // lists requires a unique ID in case there are multiple lists per page
@@ -512,7 +514,8 @@ class FunctionsPrintLists {
      *
      * @return string
      */
-    public static function familyTable($families) {
+    public static function familyTable($families)
+    {
         global $WT_TREE, $controller;
 
         $table_id = 'table-fam-' . Uuid::uuid4(); // lists requires a unique ID in case there are multiple lists per page
@@ -980,7 +983,8 @@ class FunctionsPrintLists {
      *
      * @return string
      */
-    public static function sourceTable($sources) {
+    public static function sourceTable($sources)
+    {
         global $WT_TREE, $controller;
 
         // Count the number of linked records. These numbers include private records.
@@ -1107,7 +1111,8 @@ class FunctionsPrintLists {
      *
      * @return string
      */
-    public static function noteTable($notes) {
+    public static function noteTable($notes)
+    {
         global $WT_TREE, $controller;
 
         // Count the number of linked records. These numbers include private records.
@@ -1213,7 +1218,8 @@ class FunctionsPrintLists {
      *
      * @return string
      */
-    public static function repositoryTable($repositories) {
+    public static function repositoryTable($repositories)
+    {
         global $WT_TREE, $controller;
 
         // Count the number of linked records. These numbers include private records.
@@ -1306,7 +1312,8 @@ class FunctionsPrintLists {
      *
      * @return string
      */
-    public static function mediaTable($media_objects) {
+    public static function mediaTable($media_objects)
+    {
         global $WT_TREE, $controller;
 
         $html     = '';
@@ -1399,7 +1406,8 @@ class FunctionsPrintLists {
      *
      * @return string
      */
-    public static function surnameTable($surnames, $script, Tree $tree) {
+    public static function surnameTable($surnames, $script, Tree $tree)
+    {
         global $controller;
 
         $html = '';
@@ -1489,7 +1497,8 @@ class FunctionsPrintLists {
      *
      * @return string
      */
-    public static function surnameTagCloud($surnames, $script, $totals, Tree $tree) {
+    public static function surnameTagCloud($surnames, $script, $totals, Tree $tree)
+    {
         $minimum = PHP_INT_MAX;
         $maximum = 1;
         foreach ($surnames as $surn => $surns) {
@@ -1532,7 +1541,8 @@ class FunctionsPrintLists {
      *
      * @return string
      */
-    public static function surnameList($surnames, $style, $totals, $script, Tree $tree) {
+    public static function surnameList($surnames, $style, $totals, $script, Tree $tree)
+    {
         $html = array();
         foreach ($surnames as $surn => $surns) {
             // Each surname links back to the indilist
@@ -1611,7 +1621,8 @@ class FunctionsPrintLists {
      *
      * @return string
      */
-    public static function eventsTable($startjd, $endjd, $events = 'BIRT MARR DEAT', $only_living = false, $sort_by = 'anniv') {
+    public static function eventsTable($startjd, $endjd, $events = 'BIRT MARR DEAT', $only_living = false, $sort_by = 'anniv')
+    {
         global $controller, $WT_TREE;
 
         $html     = '';
@@ -1741,7 +1752,8 @@ class FunctionsPrintLists {
      *
      * @return string
      */
-    public static function eventsList($startjd, $endjd, $events = 'BIRT MARR DEAT', $only_living = false, $sort_by = 'anniv') {
+    public static function eventsList($startjd, $endjd, $events = 'BIRT MARR DEAT', $only_living = false, $sort_by = 'anniv')
+    {
         global $WT_TREE;
 
         // Did we have any output? Did we skip anything?
@@ -1851,7 +1863,8 @@ class FunctionsPrintLists {
      *
      * @return string
      */
-    public static function chartByAge($data, $title) {
+    public static function chartByAge($data, $title)
+    {
         $count  = 0;
         $agemax = 0;
         $vmax   = 0;
@@ -1922,7 +1935,8 @@ class FunctionsPrintLists {
      *
      * @return string
      */
-    public static function chartByDecade($data, $title) {
+    public static function chartByDecade($data, $title)
+    {
         $count = 0;
         $vmax  = 0;
         foreach ($data as $v) {

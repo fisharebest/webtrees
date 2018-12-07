@@ -36,7 +36,8 @@ class AlbumModule extends AbstractModule implements ModuleTabInterface {
      *
      * @return string
      */
-    public function getTitle() {
+    public function getTitle()
+    {
         return /* I18N: Name of a module */ I18N::translate('Album');
     }
 
@@ -45,7 +46,8 @@ class AlbumModule extends AbstractModule implements ModuleTabInterface {
      *
      * @return string
      */
-    public function getDescription() {
+    public function getDescription()
+    {
         return /* I18N: Description of the “Album” module */ I18N::translate('An alternative to the “media” tab, and an enhanced image viewer.');
     }
 
@@ -55,7 +57,8 @@ class AlbumModule extends AbstractModule implements ModuleTabInterface {
      *
      * @return int
      */
-    public function defaultTabOrder() {
+    public function defaultTabOrder()
+    {
         return 60;
     }
 
@@ -64,7 +67,8 @@ class AlbumModule extends AbstractModule implements ModuleTabInterface {
      *
      * @return bool
      */
-    public function hasTabContent() {
+    public function hasTabContent()
+    {
         global $WT_TREE;
 
         return Auth::isEditor($WT_TREE) || $this->getMedia();
@@ -76,7 +80,8 @@ class AlbumModule extends AbstractModule implements ModuleTabInterface {
      *
      * @return bool
      */
-    public function isGrayedOut() {
+    public function isGrayedOut()
+    {
         return !$this->getMedia();
     }
 
@@ -85,7 +90,8 @@ class AlbumModule extends AbstractModule implements ModuleTabInterface {
      *
      * @return string
      */
-    public function getTabContent() {
+    public function getTabContent()
+    {
         global $WT_TREE, $controller;
 
         $html = '<div id="' . $this->getName() . '_content">';
@@ -210,7 +216,8 @@ class AlbumModule extends AbstractModule implements ModuleTabInterface {
      *
      * @return Media[]
      */
-    private function getMedia() {
+    private function getMedia()
+    {
         global $controller;
 
         if ($this->media_list === null) {
@@ -255,7 +262,8 @@ class AlbumModule extends AbstractModule implements ModuleTabInterface {
      *
      * @return bool
      */
-    public function canLoadAjax() {
+    public function canLoadAjax()
+    {
         return !Auth::isSearchEngine(); // Search engines cannot use AJAX
     }
 
@@ -266,7 +274,8 @@ class AlbumModule extends AbstractModule implements ModuleTabInterface {
      *
      * @return string
      */
-    public function getPreLoadContent() {
+    public function getPreLoadContent()
+    {
         return '';
     }
 }

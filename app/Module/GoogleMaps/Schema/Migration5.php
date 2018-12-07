@@ -23,7 +23,8 @@ use Fisharebest\Webtrees\Schema\MigrationInterface;
  */
 class Migration5 implements MigrationInterface {
     /** {@inheritDoc} */
-    public function upgrade() {
+    public function upgrade()
+    {
         // Default settings
         Database::prepare(
             "INSERT IGNORE INTO `##module_setting` (module_name, setting_name, setting_value) VALUES " .

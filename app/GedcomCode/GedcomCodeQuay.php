@@ -31,7 +31,8 @@ class GedcomCodeQuay {
      *
      * @return string
      */
-    public static function getValue($type) {
+    public static function getValue($type)
+    {
         switch ($type) {
             case '3':
                 return
@@ -59,7 +60,8 @@ class GedcomCodeQuay {
      *
      * @return string[]
      */
-    public static function getValues() {
+    public static function getValues()
+    {
         $values = array();
         foreach (self::$TYPES as $type) {
             $values[$type] = self::getValue($type);

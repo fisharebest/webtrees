@@ -34,7 +34,8 @@ class GedcomCodePedi {
      *
      * @return string
      */
-    public static function getValue($type, GedcomRecord $record = null) {
+    public static function getValue($type, GedcomRecord $record = null)
+    {
         if ($record instanceof Individual) {
             $sex = $record->getSex();
         } else {
@@ -103,7 +104,8 @@ class GedcomCodePedi {
      *
      * @return string[]
      */
-    public static function getValues(GedcomRecord $record = null) {
+    public static function getValues(GedcomRecord $record = null)
+    {
         $values = array();
         foreach (self::$TYPES as $type) {
             $values[$type] = self::getValue($type, $record);
@@ -120,7 +122,8 @@ class GedcomCodePedi {
      *
      * @return string
      */
-    public static function getChildFamilyLabel($pedi) {
+    public static function getChildFamilyLabel($pedi)
+    {
         switch ($pedi) {
             case '':
             case 'birth':
@@ -150,7 +153,8 @@ class GedcomCodePedi {
      *
      * @return string
      */
-    public static function createNewFamcPedi($pedi, $xref) {
+    public static function createNewFamcPedi($pedi, $xref)
+    {
         switch ($pedi) {
             case '':
                 return "1 FAMC @$xref@";

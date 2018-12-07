@@ -27,7 +27,8 @@ class BatchUpdateMissingDeathPlugin extends BatchUpdateBasePlugin {
      *
      * @return string
      */
-    public function getName() {
+    public function getName()
+    {
         return I18N::translate('Add missing death records');
     }
 
@@ -36,7 +37,8 @@ class BatchUpdateMissingDeathPlugin extends BatchUpdateBasePlugin {
      *
      * @return string
      */
-    public function getDescription() {
+    public function getDescription()
+    {
         return I18N::translate('You can speed up the privacy calculations by adding a death record to individuals whose death can be inferred from other dates, but who do not have a record of death, burial, cremation, etc.');
     }
 
@@ -48,7 +50,8 @@ class BatchUpdateMissingDeathPlugin extends BatchUpdateBasePlugin {
      *
      * @return bool
      */
-    public function doesRecordNeedUpdate($xref, $gedrec) {
+    public function doesRecordNeedUpdate($xref, $gedrec)
+    {
         global $WT_TREE;
 
         return !preg_match('/\n1 (' . WT_EVENTS_DEAT . ')/', $gedrec) && Individual::getInstance($xref, $WT_TREE)->isDead();
@@ -62,7 +65,8 @@ class BatchUpdateMissingDeathPlugin extends BatchUpdateBasePlugin {
      *
      * @return string
      */
-    public function updateRecord($xref, $gedrec) {
+    public function updateRecord($xref, $gedrec)
+    {
         return $gedrec . "\n1 DEAT Y";
     }
 }

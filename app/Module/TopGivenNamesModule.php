@@ -27,12 +27,14 @@ use Fisharebest\Webtrees\Theme;
  */
 class TopGivenNamesModule extends AbstractModule implements ModuleBlockInterface {
     /** {@inheritdoc} */
-    public function getTitle() {
+    public function getTitle()
+    {
         return /* I18N: Name of a module. Top=Most common */ I18N::translate('Top given names');
     }
 
     /** {@inheritdoc} */
-    public function getDescription() {
+    public function getDescription()
+    {
         return /* I18N: Description of the “Top given names” module */ I18N::translate('A list of the most popular given names.');
     }
 
@@ -45,7 +47,8 @@ class TopGivenNamesModule extends AbstractModule implements ModuleBlockInterface
      *
      * @return string
      */
-    public function getBlock($block_id, $template = true, $cfg = array()) {
+    public function getBlock($block_id, $template = true, $cfg = array())
+    {
         global $ctype, $WT_TREE;
 
         $num       = $this->getBlockSetting($block_id, 'num', '10');
@@ -114,17 +117,20 @@ class TopGivenNamesModule extends AbstractModule implements ModuleBlockInterface
     }
 
     /** {@inheritdoc} */
-    public function loadAjax() {
+    public function loadAjax()
+    {
         return true;
     }
 
     /** {@inheritdoc} */
-    public function isUserBlock() {
+    public function isUserBlock()
+    {
         return true;
     }
 
     /** {@inheritdoc} */
-    public function isGedcomBlock() {
+    public function isGedcomBlock()
+    {
         return true;
     }
 
@@ -133,7 +139,8 @@ class TopGivenNamesModule extends AbstractModule implements ModuleBlockInterface
      *
      * @param int $block_id
      */
-    public function configureBlock($block_id) {
+    public function configureBlock($block_id)
+    {
         if (Filter::postBool('save') && Filter::checkCsrf()) {
             $this->setBlockSetting($block_id, 'num', Filter::postInteger('num', 1, 10000, 10));
             $this->setBlockSetting($block_id, 'infoStyle', Filter::post('infoStyle', 'list|table', 'table'));

@@ -24,7 +24,8 @@ class AjaxController extends BaseController {
      *
      * @return $this
      */
-    public function pageHeader() {
+    public function pageHeader()
+    {
         // Ajax responses are always UTF8
         header('Content-Type: text/html; charset=UTF-8');
         // We've displayed the header - display the footer automatically
@@ -36,7 +37,8 @@ class AjaxController extends BaseController {
     /**
      * Print the page footer, using the theme
      */
-    public function pageFooter() {
+    public function pageFooter()
+    {
         // Ajax responses may have Javascript
         echo $this->getJavascript();
     }
@@ -48,7 +50,8 @@ class AjaxController extends BaseController {
      *
      * @return $this
      */
-    public function restrictAccess($condition) {
+    public function restrictAccess($condition)
+    {
         if ($condition !== true) {
             http_response_code(403);
             exit;

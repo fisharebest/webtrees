@@ -29,7 +29,8 @@ class FunctionsDate {
      *
      * @return string
      */
-    public static function getAgeAtEvent($age_string) {
+    public static function getAgeAtEvent($age_string)
+    {
         switch (strtoupper($age_string)) {
             case 'CHILD':
                 return I18N::translate('Child');
@@ -68,7 +69,8 @@ class FunctionsDate {
      *
      * @return string
      */
-    public static function formatTimestamp($time) {
+    public static function formatTimestamp($time)
+    {
         $time_fmt = I18N::timeFormat();
         // PHP::date() doesn't do I18N. Do it ourselves....
         preg_match_all('/%[^%]/', $time_fmt, $matches);
@@ -121,7 +123,8 @@ class FunctionsDate {
      *
      * @return Date
      */
-    public static function timestampToGedcomDate($time) {
+    public static function timestampToGedcomDate($time)
+    {
         return new Date(strtoupper(gmdate('j M Y', $time)));
     }
 }

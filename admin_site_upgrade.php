@@ -449,7 +449,8 @@ echo '<p>', I18N::translate('The upgrade is complete.'), '</p>';
 /**
  * Reset the time limit, as timeouts in this script could leave the upgrade incomplete.
  */
-function reset_timeout() {
+function reset_timeout()
+{
     if (!ini_get('safe_mode') && strpos(ini_get('disable_functions'), 'set_time_limit') === false) {
         try {
             set_time_limit(ini_get('max_execution_time'));

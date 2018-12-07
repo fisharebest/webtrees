@@ -44,7 +44,8 @@ class PageController extends BaseController {
      *
      * @return $this
      */
-    public function setPageTitle($page_title) {
+    public function setPageTitle($page_title)
+    {
         $this->page_title = $page_title;
 
         return $this;
@@ -55,7 +56,8 @@ class PageController extends BaseController {
      *
      * @return string
      */
-    public function getPageTitle() {
+    public function getPageTitle()
+    {
         return $this->page_title;
     }
 
@@ -66,7 +68,8 @@ class PageController extends BaseController {
      *
      * @return $this
      */
-    public function setMetaRobots($meta_robots) {
+    public function setMetaRobots($meta_robots)
+    {
         $this->meta_robots = $meta_robots;
 
         return $this;
@@ -77,7 +80,8 @@ class PageController extends BaseController {
      *
      * @return string
      */
-    public function getMetaRobots() {
+    public function getMetaRobots()
+    {
         return $this->meta_robots;
     }
 
@@ -88,7 +92,8 @@ class PageController extends BaseController {
      *
      * @return $this
      */
-    public function restrictAccess($condition) {
+    public function restrictAccess($condition)
+    {
         if ($condition !== true) {
             header('Location: ' . WT_LOGIN_URL . '?url=' . rawurlencode(Functions::getQueryUrl()));
             exit;
@@ -100,7 +105,8 @@ class PageController extends BaseController {
     /**
      * Print the page footer, using the theme
      */
-    public function pageFooter() {
+    public function pageFooter()
+    {
         echo
             Theme::theme()->footerContainer() .
             '<!--[if lt IE 9]><script src="' . WT_JQUERY_JS_URL . '"></script><![endif]-->' .
@@ -122,7 +128,8 @@ class PageController extends BaseController {
      * Print the page footer, using the theme
      * Note that popup windows are deprecated
      */
-    public function pageFooterPopupWindow() {
+    public function pageFooterPopupWindow()
+    {
         echo
             Theme::theme()->footerContainerPopupWindow() .
             '<!--[if lt IE 9]><script src="' . WT_JQUERY_JS_URL . '"></script><![endif]-->' .
@@ -147,7 +154,8 @@ class PageController extends BaseController {
      *
      * @return $this
      */
-    public function pageHeader($popup = false) {
+    public function pageHeader($popup = false)
+    {
         global $WT_TREE;
 
         $this->popup = $popup;
@@ -188,7 +196,8 @@ class PageController extends BaseController {
      *
      * @return Individual
      */
-    public function getSignificantIndividual() {
+    public function getSignificantIndividual()
+    {
         global $WT_TREE;
 
         static $individual; // Only query the DB once.
@@ -224,7 +233,8 @@ class PageController extends BaseController {
      *
      * @return Family
      */
-    public function getSignificantFamily() {
+    public function getSignificantFamily()
+    {
         $individual = $this->getSignificantIndividual();
         if ($individual) {
             foreach ($individual->getChildFamilies() as $family) {
@@ -245,7 +255,8 @@ class PageController extends BaseController {
      *
      * @return string
      */
-    public function getSignificantSurname() {
+    public function getSignificantSurname()
+    {
         return '';
     }
 }

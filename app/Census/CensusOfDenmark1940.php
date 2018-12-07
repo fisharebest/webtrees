@@ -24,7 +24,8 @@ class CensusOfDenmark1940 extends CensusOfDenmark implements CensusInterface {
      *
      * @return string
      */
-    public function censusDate() {
+    public function censusDate()
+    {
         return '05 NOV 1940';
     }
 
@@ -33,7 +34,8 @@ class CensusOfDenmark1940 extends CensusOfDenmark implements CensusInterface {
      *
      * @return CensusColumnInterface[]
      */
-    public function columns() {
+    public function columns()
+    {
         return array(
             new CensusColumnSurnameGivenNames($this, 'Navn', ''),
             new CensusColumnNull($this, 'Nærværende', 'Hvis den i Rubrik 1 opførte Person er midleritidg nærværende d.v.s. har fast Bopæl ????? (er optaget under en anden Address i Folkeregistret), anføres her den faste Bopæls Adresse (Kommunens Navn og den fuldstændige Adresse i denne; for Udlændinge dog kun Landets Navn).'),

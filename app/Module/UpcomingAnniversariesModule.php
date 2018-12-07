@@ -31,7 +31,8 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
      *
      * @return string
      */
-    public function getTitle() {
+    public function getTitle()
+    {
         return /* I18N: Name of a module */ I18N::translate('Upcoming events');
     }
 
@@ -40,7 +41,8 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
      *
      * @return string
      */
-    public function getDescription() {
+    public function getDescription()
+    {
         return /* I18N: Description of the “Upcoming events” module */ I18N::translate('A list of the anniversaries that will occur in the near future.');
     }
 
@@ -53,7 +55,8 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
      *
      * @return string
      */
-    public function getBlock($block_id, $template = true, $cfg = array()) {
+    public function getBlock($block_id, $template = true, $cfg = array())
+    {
         global $ctype, $WT_TREE;
 
         $days      = $this->getBlockSetting($block_id, 'days', '7');
@@ -107,17 +110,20 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
     }
 
     /** {@inheritdoc} */
-    public function loadAjax() {
+    public function loadAjax()
+    {
         return true;
     }
 
     /** {@inheritdoc} */
-    public function isUserBlock() {
+    public function isUserBlock()
+    {
         return true;
     }
 
     /** {@inheritdoc} */
-    public function isGedcomBlock() {
+    public function isGedcomBlock()
+    {
         return true;
     }
 
@@ -126,7 +132,8 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
      *
      * @param int $block_id
      */
-    public function configureBlock($block_id) {
+    public function configureBlock($block_id)
+    {
         if (Filter::postBool('save') && Filter::checkCsrf()) {
             $this->setBlockSetting($block_id, 'days', Filter::postInteger('days', 1, 30, 7));
             $this->setBlockSetting($block_id, 'filter', Filter::postBool('filter'));

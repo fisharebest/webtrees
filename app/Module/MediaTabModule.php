@@ -31,34 +31,40 @@ class MediaTabModule extends AbstractModule implements ModuleTabInterface {
     private $facts;
 
     /** {@inheritdoc} */
-    public function getTitle() {
+    public function getTitle()
+    {
         return /* I18N: Name of a module */ I18N::translate('Media');
     }
 
     /** {@inheritdoc} */
-    public function getDescription() {
+    public function getDescription()
+    {
         return /* I18N: Description of the “Media” module */ I18N::translate('A tab showing the media objects linked to an individual.');
     }
 
     /** {@inheritdoc} */
-    public function defaultTabOrder() {
+    public function defaultTabOrder()
+    {
         return 50;
     }
 
     /** {@inheritdoc} */
-    public function hasTabContent() {
+    public function hasTabContent()
+    {
         global $WT_TREE;
 
         return Auth::isEditor($WT_TREE) || $this->getFactsWithMedia();
     }
 
     /** {@inheritdoc} */
-    public function isGrayedOut() {
+    public function isGrayedOut()
+    {
         return !$this->getFactsWithMedia();
     }
 
     /** {@inheritdoc} */
-    public function getTabContent() {
+    public function getTabContent()
+    {
         global $WT_TREE, $controller;
 
         ob_start();
@@ -106,7 +112,8 @@ class MediaTabModule extends AbstractModule implements ModuleTabInterface {
      *
      * @return Fact[]
      */
-    private function getFactsWithMedia() {
+    private function getFactsWithMedia()
+    {
         global $controller;
 
         if ($this->facts === null) {
@@ -131,12 +138,14 @@ class MediaTabModule extends AbstractModule implements ModuleTabInterface {
     }
 
     /** {@inheritdoc} */
-    public function canLoadAjax() {
+    public function canLoadAjax()
+    {
         return !Auth::isSearchEngine(); // Search engines cannot use AJAX
     }
 
     /** {@inheritdoc} */
-    public function getPreLoadContent() {
+    public function getPreLoadContent()
+    {
         return '';
     }
 }

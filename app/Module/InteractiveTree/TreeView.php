@@ -35,7 +35,8 @@ class TreeView {
      *
      * @param string $name the name of the TreeView object’s instance
      */
-    public function __construct($name = 'tree') {
+    public function __construct($name = 'tree')
+    {
         $this->name         = $name;
         $this->all_partners = Filter::cookie('allPartners', 'true|false', 'true');
     }
@@ -49,7 +50,8 @@ class TreeView {
      *
      * @return string[]  HTML and Javascript
      */
-    public function drawViewport(Individual $root_person, $generations) {
+    public function drawViewport(Individual $root_person, $generations)
+    {
         $html = '
 			<a name="tv_content"></a>
 			<div id="' . $this->name . '_out" class="tv_out">
@@ -83,7 +85,8 @@ class TreeView {
      *
      * @return string
      */
-    public function getPersons($list) {
+    public function getPersons($list)
+    {
         global $WT_TREE;
 
         $list = explode(';', $list);
@@ -124,7 +127,8 @@ class TreeView {
      *
      * @return string
      */
-    public function getDetails(Individual $individual) {
+    public function getDetails(Individual $individual)
+    {
         $html = $this->getPersonDetails($individual, null);
         foreach ($individual->getSpouseFamilies() as $family) {
             $spouse = $family->getSpouse($individual);
@@ -144,7 +148,8 @@ class TreeView {
      *
      * @return string
      */
-    private function getPersonDetails(Individual $individual, Family $family = null) {
+    private function getPersonDetails(Individual $individual, Family $family = null)
+    {
         $hmtl = $this->getThumbnail($individual);
         $hmtl .= '<a class="tv_link" href="' . $individual->getHtmlUrl() . '">' . $individual->getFullName() . '</a> <a href="module.php?mod=tree&amp;mod_action=treeview&amp;rootid=' . $individual->getXref() . '" title="' . I18N::translate('Interactive tree of %s', strip_tags($individual->getFullName())) . '" class="icon-button_indi tv_link tv_treelink"></a>';
         foreach ($individual->getFacts(WT_EVENTS_BIRT, true) as $fact) {
@@ -171,7 +176,8 @@ class TreeView {
      *
      * @return string
      */
-    private function drawChildren(array $familyList, $gen = 1, $ajax = false) {
+    private function drawChildren(array $familyList, $gen = 1, $ajax = false)
+    {
         $html          = '';
         $children2draw = array();
         $f2load        = array();
@@ -230,7 +236,8 @@ class TreeView {
      * (for "life partner") here fits much better than "spouse" or "mate"
      * to translate properly the modern french meaning of "conjoint"
      */
-    private function drawPerson(Individual $person, $gen, $state, Family $pfamily = null, $order = null, $isRoot = false) {
+    private function drawPerson(Individual $person, $gen, $state, Family $pfamily = null, $order = null, $isRoot = false)
+    {
         if ($gen < 0) {
             return '';
         }
@@ -333,7 +340,8 @@ class TreeView {
      *
      * @return string
      */
-    private function drawPersonName(Individual $individual, $dashed = '') {
+    private function drawPersonName(Individual $individual, $dashed = '')
+    {
         if ($this->all_partners === 'true') {
             $family = $individual->getPrimaryChildFamily();
             if ($family) {
@@ -367,7 +375,8 @@ class TreeView {
      *
      * @return string
      */
-    private function getThumbnail(Individual $individual) {
+    private function getThumbnail(Individual $individual)
+    {
         if ($individual->getTree()->getPreference('SHOW_HIGHLIGHT_IMAGES')) {
             return $individual->displayImage();
         } else {
@@ -386,14 +395,16 @@ class TreeView {
      * and some other browsers (ex: firefox) shows a <div> tag, which have no size limit in height
      * Therefore, Firefox is a good choice to print very big trees.
      */
-    private function drawVerticalLine($order) {
+    private function drawVerticalLine($order)
+    {
         return '<td class="tv_vline tv_vline_' . $order . '"><div class="tv_vline tv_vline_' . $order . '"></div></td>';
     }
 
     /**
      * Draw an horizontal line
      */
-    private function drawHorizontalLine() {
+    private function drawHorizontalLine()
+    {
         return '<td class="tv_hline"><div class="tv_hline"></div></td>';
     }
 }

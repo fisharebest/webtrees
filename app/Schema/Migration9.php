@@ -25,7 +25,8 @@ class Migration9 implements MigrationInterface {
     /**
      * Upgrade to to the next version
      */
-    public function upgrade() {
+    public function upgrade()
+    {
         // Change index on name table
         try {
             Database::exec(

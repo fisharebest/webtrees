@@ -30,34 +30,40 @@ class NotesTabModule extends AbstractModule implements ModuleTabInterface {
     private $facts;
 
     /** {@inheritdoc} */
-    public function getTitle() {
+    public function getTitle()
+    {
         return /* I18N: Name of a module */ I18N::translate('Notes');
     }
 
     /** {@inheritdoc} */
-    public function getDescription() {
+    public function getDescription()
+    {
         return /* I18N: Description of the “Notes” module */ I18N::translate('A tab showing the notes attached to an individual.');
     }
 
     /** {@inheritdoc} */
-    public function defaultTabOrder() {
+    public function defaultTabOrder()
+    {
         return 40;
     }
 
     /** {@inheritdoc} */
-    public function hasTabContent() {
+    public function hasTabContent()
+    {
         global $WT_TREE;
 
         return Auth::isEditor($WT_TREE) || $this->getFactsWithNotes();
     }
 
     /** {@inheritdoc} */
-    public function isGrayedOut() {
+    public function isGrayedOut()
+    {
         return !$this->getFactsWithNotes();
     }
 
     /** {@inheritdoc} */
-    public function getTabContent() {
+    public function getTabContent()
+    {
         global $controller;
 
         ob_start();
@@ -130,7 +136,8 @@ class NotesTabModule extends AbstractModule implements ModuleTabInterface {
      *
      * @return Fact[]
      */
-    private function getFactsWithNotes() {
+    private function getFactsWithNotes()
+    {
         global $controller;
 
         if ($this->facts === null) {
@@ -155,12 +162,14 @@ class NotesTabModule extends AbstractModule implements ModuleTabInterface {
     }
 
     /** {@inheritdoc} */
-    public function canLoadAjax() {
+    public function canLoadAjax()
+    {
         return !Auth::isSearchEngine(); // Search engines cannot use AJAX
     }
 
     /** {@inheritdoc} */
-    public function getPreLoadContent() {
+    public function getPreLoadContent()
+    {
         return '';
     }
 }

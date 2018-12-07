@@ -27,7 +27,8 @@ class SpecialCharsEu extends AbstractSpecialChars {
      *
      * @return string[]
      */
-    public function upper() {
+    public function upper()
+    {
         return array(
             'Ç',
         );
@@ -38,7 +39,8 @@ class SpecialCharsEu extends AbstractSpecialChars {
      *
      * @return string[]
      */
-    public function lower() {
+    public function lower()
+    {
         return array(
             'ç',
         );

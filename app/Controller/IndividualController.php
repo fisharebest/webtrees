@@ -48,7 +48,8 @@ class IndividualController extends GedcomRecordController {
      *
      * @param Individual|null $record
      */
-    public function __construct($record) {
+    public function __construct($record)
+    {
         parent::__construct($record);
 
         // If we can display the details, add them to the page header
@@ -64,7 +65,8 @@ class IndividualController extends GedcomRecordController {
      *
      * @return Individual
      */
-    public function getSignificantIndividual() {
+    public function getSignificantIndividual()
+    {
         if ($this->record) {
             return $this->record;
         }
@@ -78,7 +80,8 @@ class IndividualController extends GedcomRecordController {
      *
      * @return Family
      */
-    public function getSignificantFamily() {
+    public function getSignificantFamily()
+    {
         if ($this->record) {
             foreach ($this->record->getChildFamilies() as $family) {
                 return $family;
@@ -94,7 +97,8 @@ class IndividualController extends GedcomRecordController {
     /**
      * Handle AJAX requests - to generate the tab content
      */
-    public function ajaxRequest() {
+    public function ajaxRequest()
+    {
         // Search engines should not make AJAX requests
         if (Auth::isSearchEngine()) {
             http_response_code(403);
@@ -127,7 +131,8 @@ class IndividualController extends GedcomRecordController {
      *
      * @param Fact $event the event object
      */
-    public function printNameRecord(Fact $event) {
+    public function printNameRecord(Fact $event)
+    {
         $factrec = $event->getGedcom();
 
         // Create a dummy record, so we can extract the formatted NAME value from the event.
@@ -219,7 +224,8 @@ class IndividualController extends GedcomRecordController {
      *
      * @param Fact $event the Event object
      */
-    public function printSexRecord(Fact $event) {
+    public function printSexRecord(Fact $event)
+    {
         $sex = $event->getValue();
         if (empty($sex)) {
             $sex = 'U';
@@ -265,7 +271,8 @@ class IndividualController extends GedcomRecordController {
     /**
      * get edit menu
      */
-    public function getEditMenu() {
+    public function getEditMenu()
+    {
         if (!$this->record || $this->record->isPendingDeletion()) {
             return null;
         }
@@ -322,7 +329,8 @@ class IndividualController extends GedcomRecordController {
      *
      * @return string returns 'person_box', 'person_boxF', or 'person_boxNN'
      */
-    public function getPersonStyle($person) {
+    public function getPersonStyle($person)
+    {
         switch ($person->getSex()) {
             case 'M':
                 $class = 'person_box';
@@ -349,7 +357,8 @@ class IndividualController extends GedcomRecordController {
      *
      * @return string
      */
-    public function getSignificantSurname() {
+    public function getSignificantSurname()
+    {
         if ($this->record) {
             list($surn) = explode(',', $this->record->getSortName());
 
@@ -364,7 +373,8 @@ class IndividualController extends GedcomRecordController {
      *
      * @return string
      */
-    public function getSideBarContent() {
+    public function getSideBarContent()
+    {
         global $controller;
 
         $html   = '';
@@ -408,7 +418,8 @@ class IndividualController extends GedcomRecordController {
      *
      * @return string
      */
-    public function getSpouseFamilyLabel(Family $family, Individual $individual) {
+    public function getSpouseFamilyLabel(Family $family, Individual $individual)
+    {
         $spouse = $family->getSpouse($individual);
         if ($spouse) {
             return

@@ -24,7 +24,8 @@ class Migration21 implements MigrationInterface {
     /**
      * Upgrade to to the next version
      */
-    public function upgrade() {
+    public function upgrade()
+    {
         // Data fix for bug #1072477
         Database::exec("UPDATE `##default_resn` SET xref     = NULL WHERE xref     = ''");
         Database::exec("UPDATE `##default_resn` SET tag_type = NULL WHERE tag_type = ''");

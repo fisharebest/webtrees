@@ -26,12 +26,14 @@ use Fisharebest\Webtrees\Theme;
  */
 class WelcomeBlockModule extends AbstractModule implements ModuleBlockInterface {
     /** {@inheritdoc} */
-    public function getTitle() {
+    public function getTitle()
+    {
         return /* I18N: Name of a module */ I18N::translate('Home page');
     }
 
     /** {@inheritdoc} */
-    public function getDescription() {
+    public function getDescription()
+    {
         return /* I18N: Description of the “Home page” module */ I18N::translate('A greeting message for site visitors.');
     }
 
@@ -44,7 +46,8 @@ class WelcomeBlockModule extends AbstractModule implements ModuleBlockInterface 
      *
      * @return string
      */
-    public function getBlock($block_id, $template = true, $cfg = array()) {
+    public function getBlock($block_id, $template = true, $cfg = array())
+    {
         global $controller, $WT_TREE;
 
         $indi_xref = $controller->getSignificantIndividual()->getXref();
@@ -70,17 +73,20 @@ class WelcomeBlockModule extends AbstractModule implements ModuleBlockInterface 
     }
 
     /** {@inheritdoc} */
-    public function loadAjax() {
+    public function loadAjax()
+    {
         return false;
     }
 
     /** {@inheritdoc} */
-    public function isUserBlock() {
+    public function isUserBlock()
+    {
         return false;
     }
 
     /** {@inheritdoc} */
-    public function isGedcomBlock() {
+    public function isGedcomBlock()
+    {
         return true;
     }
 
@@ -89,6 +95,7 @@ class WelcomeBlockModule extends AbstractModule implements ModuleBlockInterface 
      *
      * @param int $block_id
      */
-    public function configureBlock($block_id) {
+    public function configureBlock($block_id)
+    {
     }
 }

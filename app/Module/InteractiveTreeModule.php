@@ -29,22 +29,26 @@ use Fisharebest\Webtrees\Module\InteractiveTree\TreeView;
  */
 class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface, ModuleChartInterface {
     /** {@inheritdoc} */
-    public function getTitle() {
+    public function getTitle()
+    {
         return /* I18N: Name of a module */ I18N::translate('Interactive tree');
     }
 
     /** {@inheritdoc} */
-    public function getDescription() {
+    public function getDescription()
+    {
         return /* I18N: Description of the “Interactive tree” module */ I18N::translate('An interactive tree, showing all the ancestors and descendants of an individual.');
     }
 
     /** {@inheritdoc} */
-    public function defaultTabOrder() {
+    public function defaultTabOrder()
+    {
         return 68;
     }
 
     /** {@inheritdoc} */
-    public function getTabContent() {
+    public function getTabContent()
+    {
         global $controller;
 
         $tv              = new TreeView('tvTab');
@@ -58,17 +62,20 @@ class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface
     }
 
     /** {@inheritdoc} */
-    public function hasTabContent() {
+    public function hasTabContent()
+    {
         return !Auth::isSearchEngine();
     }
 
     /** {@inheritdoc} */
-    public function isGrayedOut() {
+    public function isGrayedOut()
+    {
         return false;
     }
 
     /** {@inheritdoc} */
-    public function canLoadAjax() {
+    public function canLoadAjax()
+    {
         return true;
     }
 
@@ -77,7 +84,8 @@ class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface
      *
      * @return Menu|null
      */
-    public function getChartMenu(Individual $individual) {
+    public function getChartMenu(Individual $individual)
+    {
         return new Menu(
             $this->getTitle(),
             'module.php?mod=tree&amp;mod_action=treeview&amp;rootid=' . $individual->getXref() . '&amp;ged=' . $individual->getTree()->getNameUrl(),
@@ -91,12 +99,14 @@ class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface
      *
      * @return Menu|null
      */
-    public function getBoxChartMenu(Individual $individual) {
+    public function getBoxChartMenu(Individual $individual)
+    {
         return $this->getChartMenu($individual);
     }
 
     /** {@inheritdoc} */
-    public function getPreLoadContent() {
+    public function getPreLoadContent()
+    {
         // We cannot use jQuery("head").append(<link rel="stylesheet" ...as jQuery is not loaded at this time
         return
             '<script>
@@ -118,7 +128,8 @@ class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface
      *
      * @param string $mod_action
      */
-    public function modAction($mod_action) {
+    public function modAction($mod_action)
+    {
         global $controller, $WT_TREE;
 
         switch ($mod_action) {
@@ -177,7 +188,8 @@ class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface
      *
      * @return string
      */
-    public function css() {
+    public function css()
+    {
         return WT_STATIC_URL . WT_MODULES_DIR . $this->getName() . '/css/treeview.css';
     }
 
@@ -186,7 +198,8 @@ class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface
      *
      * @return string
      */
-    public function js() {
+    public function js()
+    {
         return WT_STATIC_URL . WT_MODULES_DIR . $this->getName() . '/js/treeview.js';
     }
 }

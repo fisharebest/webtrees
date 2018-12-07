@@ -29,7 +29,8 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
      *
      * @return string
      */
-    public function getTitle() {
+    public function getTitle()
+    {
         return /* I18N: Name of a module/chart */ I18N::translate('Pedigree');
     }
 
@@ -38,7 +39,8 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
      *
      * @return string
      */
-    public function getDescription() {
+    public function getDescription()
+    {
         return /* I18N: Description of the “PedigreeChart” module */ I18N::translate('A chart of an individual’s ancestors, formatted as a tree.');
     }
 
@@ -49,7 +51,8 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
      *
      * @return int
      */
-    public function defaultAccessLevel() {
+    public function defaultAccessLevel()
+    {
         return Auth::PRIV_PRIVATE;
     }
 
@@ -58,7 +61,8 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
      *
      * @return Menu|null
      */
-    public function getChartMenu(Individual $individual) {
+    public function getChartMenu(Individual $individual)
+    {
         return new Menu(
             $this->getTitle(),
             'pedigree.php?rootid=' . $individual->getXref() . '&amp;ged=' . $individual->getTree()->getNameUrl(),
@@ -72,7 +76,8 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
      *
      * @return Menu|null
      */
-    public function getBoxChartMenu(Individual $individual) {
+    public function getBoxChartMenu(Individual $individual)
+    {
         return $this->getChartMenu($individual);
     }
 }

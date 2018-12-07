@@ -24,7 +24,8 @@ class Migration37 implements MigrationInterface {
     /**
      * Upgrade to to the next version
      */
-    public function upgrade() {
+    public function upgrade()
+    {
         // Move repositories to their own table
         Database::exec(
             "CREATE TABLE IF NOT EXISTS `##repository` (" .

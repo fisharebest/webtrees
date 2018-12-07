@@ -24,7 +24,8 @@ class ReportPdfPageheader extends ReportBasePageheader {
      *
      * @param ReportTcpdf $renderer
      */
-    public function render($renderer) {
+    public function render($renderer)
+    {
         $renderer->clearPageHeader();
         foreach ($this->elements as $element) {
             $renderer->addPageHeader($element);

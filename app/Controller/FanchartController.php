@@ -35,7 +35,8 @@ class FanchartController extends ChartController {
     /**
      * Create the controller
      */
-    public function __construct() {
+    public function __construct()
+    {
         global $WT_TREE;
 
         parent::__construct();
@@ -62,7 +63,8 @@ class FanchartController extends ChartController {
      *
      * @return string[]
      */
-    public function getFanStyles() {
+    public function getFanStyles()
+    {
         return array(
             2 => /* I18N: layout option for the fan chart */ I18N::translate('half circle'),
             3 => /* I18N: layout option for the fan chart */ I18N::translate('three-quarter circle'),
@@ -78,7 +80,8 @@ class FanchartController extends ChartController {
      *
      * @return string $text output string
      */
-    public function splitAlignText($data, $maxlen) {
+    public function splitAlignText($data, $maxlen)
+    {
         $RTLOrd = array(215, 216, 217, 218, 219);
 
         $lines = explode("\n", $data);
@@ -149,7 +152,8 @@ class FanchartController extends ChartController {
      *
      * @return string
      */
-    public function generateFanChart($what) {
+    public function generateFanChart($what)
+    {
         $treeid = $this->sosaAncestors($this->generations);
         $fanw   = 640 * $this->fan_width / 100;
         $fandeg = 90 * $this->fan_style;

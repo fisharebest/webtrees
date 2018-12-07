@@ -24,7 +24,8 @@ class Migration1 implements MigrationInterface {
     /**
      * Upgrade to to the next version
      */
-    public function upgrade() {
+    public function upgrade()
+    {
         // Create the wt_session table to store session data in the database,
         // rather than in the filesystem.
         Database::exec(

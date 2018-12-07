@@ -26,7 +26,8 @@ class XeneaTheme extends AbstractTheme implements ThemeInterface {
      *
      * @return string A relative path, such as "themes/foo/"
      */
-    public function assetUrl() {
+    public function assetUrl()
+    {
         return 'themes/xenea/css-1.7.8/';
     }
 
@@ -37,7 +38,8 @@ class XeneaTheme extends AbstractTheme implements ThemeInterface {
      *
      * @return string
      */
-    protected function flashMessageContainer(\stdClass $message) {
+    protected function flashMessageContainer(\stdClass $message)
+    {
         // This theme uses jQueryUI markup.
         switch ($message->status) {
             case 'danger':
@@ -52,7 +54,8 @@ class XeneaTheme extends AbstractTheme implements ThemeInterface {
      *
      * @return string
      */
-    protected function formQuickSearchFields() {
+    protected function formQuickSearchFields()
+    {
         return
             '<input type="search" name="query" size="12" placeholder="' . I18N::translate('Search') . '">' .
             '<input type="submit" name="search" value="&gt;">';
@@ -63,7 +66,8 @@ class XeneaTheme extends AbstractTheme implements ThemeInterface {
      *
      * @return string
      */
-    protected function headerContent() {
+    protected function headerContent()
+    {
         return
             //$this->accessibilityLinks() .
             '<div class="header-upper">' .
@@ -80,7 +84,8 @@ class XeneaTheme extends AbstractTheme implements ThemeInterface {
      *
      * @return string
      */
-    public function hookFooterExtraJavascript() {
+    public function hookFooterExtraJavascript()
+    {
         return
             '<script src="' . WT_JQUERY_COLORBOX_URL . '"></script>' .
             '<script src="' . WT_JQUERY_WHEELZOOM_URL . '"></script>' .
@@ -104,7 +109,8 @@ class XeneaTheme extends AbstractTheme implements ThemeInterface {
      *
      * @return string|int|float
      */
-    public function parameter($parameter_name) {
+    public function parameter($parameter_name)
+    {
         $parameters = array(
             'chart-background-f'             => 'e9daf1',
             'chart-background-m'             => 'b1cff0',
@@ -124,7 +130,8 @@ class XeneaTheme extends AbstractTheme implements ThemeInterface {
      *
      * @return string[]
      */
-    protected function stylesheets() {
+    protected function stylesheets()
+    {
         return array(
             'themes/xenea/jquery-ui-1.11.2/jquery-ui.css',
             $this->assetUrl() . 'style.css',
@@ -136,7 +143,8 @@ class XeneaTheme extends AbstractTheme implements ThemeInterface {
      *
      * @return string
      */
-    public function themeId() {
+    public function themeId()
+    {
         return 'xenea';
     }
 
@@ -145,7 +153,8 @@ class XeneaTheme extends AbstractTheme implements ThemeInterface {
      *
      * @return string
      */
-    public function themeName() {
+    public function themeName()
+    {
         return /* I18N: Name of a theme. */ I18N::translate('xenea');
     }
 }

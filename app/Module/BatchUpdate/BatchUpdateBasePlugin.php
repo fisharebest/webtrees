@@ -40,14 +40,16 @@ class BatchUpdateBasePlugin {
      *
      * @return string[]
      */
-    public function getRecordTypesToUpdate() {
+    public function getRecordTypesToUpdate()
+    {
         return array('INDI');
     }
 
     /**
      * Default option is just the "don't update CHAN record"
      */
-    public function getOptions() {
+    public function getOptions()
+    {
         $this->chan = Filter::getBool('chan');
     }
 
@@ -56,7 +58,8 @@ class BatchUpdateBasePlugin {
      *
      * @return string
      */
-    public function getOptionsForm() {
+    public function getOptionsForm()
+    {
         return
             '<div class="form-group">' .
             '<label class="control-label col-sm-3">' . I18N::translate('Keep the existing “last change” information') . '</label>' .
@@ -72,7 +75,8 @@ class BatchUpdateBasePlugin {
      *
      * @return string[]
      */
-    public function getActionButtons($xref) {
+    public function getActionButtons($xref)
+    {
         if (Auth::user()->getPreference('auto_accept')) {
             return array(
                 BatchUpdateModule::createSubmitButton(I18N::translate('Update'), $xref, 'update'),
@@ -92,7 +96,8 @@ class BatchUpdateBasePlugin {
      *
      * @return string
      */
-    public function getActionPreview(GedcomRecord $record) {
+    public function getActionPreview(GedcomRecord $record)
+    {
         $old_lines   = preg_split('/[\n]+/', $record->getGedcom());
         $new_lines   = preg_split('/[\n]+/', $this->updateRecord($record->getXref(), $record->getGedcom()));
         $algorithm   = new MyersDiff;
@@ -122,7 +127,8 @@ class BatchUpdateBasePlugin {
      *
      * @return string
      */
-    public static function decorateInsertedText($text) {
+    public static function decorateInsertedText($text)
+    {
         return '<ins>' . $text . '</ins>';
     }
 
@@ -133,7 +139,8 @@ class BatchUpdateBasePlugin {
      *
      * @return string
      */
-    public static function decorateDeletedText($text) {
+    public static function decorateDeletedText($text)
+    {
         return '<del>' . $text . '</del>';
     }
 
@@ -144,7 +151,8 @@ class BatchUpdateBasePlugin {
      *
      * @return string
      */
-    public static function createEditLinks($gedrec) {
+    public static function createEditLinks($gedrec)
+    {
         return preg_replace(
             "/@([^#@\n]+)@/m",
             '<a href="#" onclick="return edit_raw(\'\\1\');">@\\1@</a>',

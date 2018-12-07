@@ -24,7 +24,8 @@ class CensusOfDeutschland1919 extends CensusOfDeutschland implements CensusInter
      *
      * @return string
      */
-    public function censusDate() {
+    public function censusDate()
+    {
         return '08 OCT 1919';
     }
 
@@ -33,7 +34,8 @@ class CensusOfDeutschland1919 extends CensusOfDeutschland implements CensusInter
      *
      * @return string
      */
-    public function censusPlace() {
+    public function censusPlace()
+    {
         return 'Mecklenburg-Schwerin, Deutschland';
     }   
 
@@ -42,7 +44,8 @@ class CensusOfDeutschland1919 extends CensusOfDeutschland implements CensusInter
      *
      * @return CensusColumnInterface[]
      */
-    public function columns() {
+    public function columns()
+    {
         return array(
             new CensusColumnNull($this, 'Nummer', 'Laufende Nummer'),
             new CensusColumnGivenNames($this, 'Vorname', 'Vorname'),

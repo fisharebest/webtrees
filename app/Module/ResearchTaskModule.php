@@ -35,12 +35,14 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface 
     const DEFAULT_BLOCK           = '1';
 
     /** {@inheritdoc} */
-    public function getTitle() {
+    public function getTitle()
+    {
         return /* I18N: Name of a module. Tasks that need further research. */ I18N::translate('Research tasks');
     }
 
     /** {@inheritdoc} */
-    public function getDescription() {
+    public function getDescription()
+    {
         return /* I18N: Description of “Research tasks” module */ I18N::translate('A list of tasks and activities that are linked to the family tree.');
     }
 
@@ -53,7 +55,8 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface 
      *
      * @return string
      */
-    public function getBlock($block_id, $template = true, $cfg = array()) {
+    public function getBlock($block_id, $template = true, $cfg = array())
+    {
         global $ctype, $controller, $WT_TREE;
 
         $show_other      = $this->getBlockSetting($block_id, 'show_other', self::DEFAULT_SHOW_OTHER);
@@ -163,17 +166,20 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface 
     }
 
     /** {@inheritdoc} */
-    public function loadAjax() {
+    public function loadAjax()
+    {
         return false;
     }
 
     /** {@inheritdoc} */
-    public function isUserBlock() {
+    public function isUserBlock()
+    {
         return true;
     }
 
     /** {@inheritdoc} */
-    public function isGedcomBlock() {
+    public function isGedcomBlock()
+    {
         return true;
     }
 
@@ -182,7 +188,8 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface 
      *
      * @param int $block_id
      */
-    public function configureBlock($block_id) {
+    public function configureBlock($block_id)
+    {
         if (Filter::postBool('save') && Filter::checkCsrf()) {
             $this->setBlockSetting($block_id, 'show_other', Filter::postBool('show_other'));
             $this->setBlockSetting($block_id, 'show_unassigned', Filter::postBool('show_unassigned'));

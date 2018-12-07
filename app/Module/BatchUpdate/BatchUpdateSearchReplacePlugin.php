@@ -46,7 +46,8 @@ class BatchUpdateSearchReplacePlugin extends BatchUpdateBasePlugin {
      *
      * @return string
      */
-    public function getName() {
+    public function getName()
+    {
         return I18N::translate('Search and replace');
     }
 
@@ -55,7 +56,8 @@ class BatchUpdateSearchReplacePlugin extends BatchUpdateBasePlugin {
      *
      * @return string
      */
-    public function getDescription() {
+    public function getDescription()
+    {
         return /* I18N: Description of the “Search and replace” option of the batch update module */ I18N::translate('Search and replace text, using simple searches or advanced pattern matching.');
     }
 
@@ -64,7 +66,8 @@ class BatchUpdateSearchReplacePlugin extends BatchUpdateBasePlugin {
      *
      * @return string[]
      */
-    public function getRecordTypesToUpdate() {
+    public function getRecordTypesToUpdate()
+    {
         return array('INDI', 'FAM', 'SOUR', 'REPO', 'NOTE', 'OBJE');
     }
 
@@ -76,7 +79,8 @@ class BatchUpdateSearchReplacePlugin extends BatchUpdateBasePlugin {
      *
      * @return bool
      */
-    public function doesRecordNeedUpdate($xref, $gedrec) {
+    public function doesRecordNeedUpdate($xref, $gedrec)
+    {
         return !$this->error && preg_match('/(?:' . $this->regex . ')/mu' . $this->case, $gedrec);
     }
 
@@ -88,7 +92,8 @@ class BatchUpdateSearchReplacePlugin extends BatchUpdateBasePlugin {
      *
      * @return string
      */
-    public function updateRecord($xref, $gedrec) {
+    public function updateRecord($xref, $gedrec)
+    {
         // Allow "\n" to indicate a line-feed in replacement text.
         // Back-references such as $1, $2 are handled automatically.
         return preg_replace('/' . $this->regex . '/mu' . $this->case, str_replace('\n', "\n", $this->replace), $gedrec);
@@ -97,7 +102,8 @@ class BatchUpdateSearchReplacePlugin extends BatchUpdateBasePlugin {
     /**
      * Process the user-supplied options.
      */
-    public function getOptions() {
+    public function getOptions()
+    {
         parent::getOptions();
         $this->search  = Filter::get('search');
         $this->replace = Filter::get('replace');
@@ -134,7 +140,8 @@ class BatchUpdateSearchReplacePlugin extends BatchUpdateBasePlugin {
      *
      * @return string
      */
-    public function getOptionsForm() {
+    public function getOptionsForm()
+    {
         $descriptions = array(
             'exact'     => I18N::translate('Match the exact text, even if it occurs in the middle of a word.'),
             'words'     => I18N::translate('Match the exact text, unless it occurs in the middle of a word.'),

@@ -41,7 +41,8 @@ class Individual extends GedcomRecord {
      * @param Tree  $tree
      * @param string[] $xrefs
      */
-    public static function load(Tree $tree, array $xrefs) {
+    public static function load(Tree $tree, array $xrefs)
+    {
         $args = array(
             'tree_id' => $tree->getTreeId(),
         );
@@ -76,7 +77,8 @@ class Individual extends GedcomRecord {
      *
      * @return bool
      */
-    public function canShowName($access_level = null) {
+    public function canShowName($access_level = null)
+    {
         if ($access_level === null) {
             $access_level = Auth::accessLevel($this->tree);
         }
@@ -91,7 +93,8 @@ class Individual extends GedcomRecord {
      *
      * @return bool
      */
-    protected function canShowByType($access_level) {
+    protected function canShowByType($access_level)
+    {
         global $WT_TREE;
 
         // Dead people...
@@ -142,7 +145,8 @@ class Individual extends GedcomRecord {
      *
      * @return bool
      */
-    private static function isRelated(Individual $target, $distance) {
+    private static function isRelated(Individual $target, $distance)
+    {
         static $cache = null;
 
         $user_individual = self::getInstance($target->tree->getUserPreference(Auth::user(), 'gedcomid'), $target->tree);
@@ -216,7 +220,8 @@ class Individual extends GedcomRecord {
      *
      * @return string
      */
-    protected function createPrivateGedcomRecord($access_level) {
+    protected function createPrivateGedcomRecord($access_level)
+    {
         $SHOW_PRIVATE_RELATIONSHIPS = $this->tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS');
 
         $rec = '0 @' . $this->xref . '@ INDI';
@@ -250,7 +255,8 @@ class Individual extends GedcomRecord {
      *
      * @return null|string
      */
-    protected static function fetchGedcomRecord($xref, $tree_id) {
+    protected static function fetchGedcomRecord($xref, $tree_id)
+    {
         return Database::prepare(
             "SELECT i_gedcom FROM `##individuals` WHERE i_id = :xref AND i_file = :tree_id"
         )->execute(array(
@@ -267,7 +273,8 @@ class Individual extends GedcomRecord {
      *
      * @return int
      */
-    public static function compareBirthDate(Individual $x, Individual $y) {
+    public static function compareBirthDate(Individual $x, Individual $y)
+    {
         return Date::compare($x->getEstimatedBirthDate(), $y->getEstimatedBirthDate());
     }
 
@@ -279,7 +286,8 @@ class Individual extends GedcomRecord {
      *
      * @return int
      */
-    public static function compareDeathDate(Individual $x, Individual $y) {
+    public static function compareDeathDate(Individual $x, Individual $y)
+    {
         return Date::compare($x->getEstimatedDeathDate(), $y->getEstimatedDeathDate());
     }
 
@@ -289,7 +297,8 @@ class Individual extends GedcomRecord {
      *
      * @return bool
      */
-    public function isDead() {
+    public function isDead()
+    {
         $MAX_ALIVE_AGE = $this->tree->getPreference('MAX_ALIVE_AGE');
 
         // "1 DEAT Y" or "1 DEAT/2 DATE" or "1 DEAT/2 PLAC"
@@ -390,7 +399,8 @@ class Individual extends GedcomRecord {
      *
      * @return null|Media
      */
-    public function findHighlightedMedia() {
+    public function findHighlightedMedia()
+    {
         $objectA = null;
         $objectB = null;
         $objectC = null;
@@ -445,7 +455,8 @@ class Individual extends GedcomRecord {
      *
      * @return string
      */
-    public function displayImage() {
+    public function displayImage()
+    {
         $media = $this->findHighlightedMedia();
         if ($media && $this->canShow()) {
             // Thumbnail exists - use it.
@@ -463,7 +474,8 @@ class Individual extends GedcomRecord {
      *
      * @return Date
      */
-    public function getBirthDate() {
+    public function getBirthDate()
+    {
         foreach ($this->getAllBirthDates() as $date) {
             if ($date->isOK()) {
                 return $date;
@@ -478,7 +490,8 @@ class Individual extends GedcomRecord {
      *
      * @return string
      */
-    public function getBirthPlace() {
+    public function getBirthPlace()
+    {
         foreach ($this->getAllBirthPlaces() as $place) {
             if ($place) {
                 return $place;
@@ -493,7 +506,8 @@ class Individual extends GedcomRecord {
      *
      * @return string the year of birth
      */
-    public function getBirthYear() {
+    public function getBirthYear()
+    {
         return $this->getBirthDate()->minimumDate()->format('%Y');
     }
 
@@ -502,7 +516,8 @@ class Individual extends GedcomRecord {
      *
      * @return Date
      */
-    public function getDeathDate() {
+    public function getDeathDate()
+    {
         foreach ($this->getAllDeathDates() as $date) {
             if ($date->isOK()) {
                 return $date;
@@ -517,7 +532,8 @@ class Individual extends GedcomRecord {
      *
      * @return string
      */
-    public function getDeathPlace() {
+    public function getDeathPlace()
+    {
         foreach ($this->getAllDeathPlaces() as $place) {
             if ($place) {
                 return $place;
@@ -532,7 +548,8 @@ class Individual extends GedcomRecord {
      *
      * @return string the year of death
      */
-    public function getDeathYear() {
+    public function getDeathYear()
+    {
         return $this->getDeathDate()->minimumDate()->format('%Y');
     }
 
@@ -544,7 +561,8 @@ class Individual extends GedcomRecord {
      *
      * @return string
      */
-    public function getLifeSpan() {
+    public function getLifeSpan()
+    {
         return
             /* I18N: A range of years, e.g. “1870–”, “1870–1920”, “–1920” */ I18N::translate(
                 '%1$s–%2$s',
@@ -558,7 +576,8 @@ class Individual extends GedcomRecord {
      *
      * @return Date[]
      */
-    public function getAllBirthDates() {
+    public function getAllBirthDates()
+    {
         foreach (explode('|', WT_EVENTS_BIRT) as $event) {
             $tmp = $this->getAllEventDates($event);
             if ($tmp) {
@@ -574,7 +593,8 @@ class Individual extends GedcomRecord {
      *
      * @return string[]
      */
-    public function getAllBirthPlaces() {
+    public function getAllBirthPlaces()
+    {
         foreach (explode('|', WT_EVENTS_BIRT) as $event) {
             $tmp = $this->getAllEventPlaces($event);
             if ($tmp) {
@@ -590,7 +610,8 @@ class Individual extends GedcomRecord {
      *
      * @return Date[]
      */
-    public function getAllDeathDates() {
+    public function getAllDeathDates()
+    {
         foreach (explode('|', WT_EVENTS_DEAT) as $event) {
             $tmp = $this->getAllEventDates($event);
             if ($tmp) {
@@ -606,7 +627,8 @@ class Individual extends GedcomRecord {
      *
      * @return string[]
      */
-    public function getAllDeathPlaces() {
+    public function getAllDeathPlaces()
+    {
         foreach (explode('|', WT_EVENTS_DEAT) as $event) {
             $tmp = $this->getAllEventPlaces($event);
             if ($tmp) {
@@ -622,7 +644,8 @@ class Individual extends GedcomRecord {
      *
      * @return Date
      */
-    public function getEstimatedBirthDate() {
+    public function getEstimatedBirthDate()
+    {
         if (is_null($this->_getEstimatedBirthDate)) {
             foreach ($this->getAllBirthDates() as $date) {
                 if ($date->isOK()) {
@@ -707,7 +730,8 @@ class Individual extends GedcomRecord {
      *
      * @return Date
      */
-    public function getEstimatedDeathDate() {
+    public function getEstimatedDeathDate()
+    {
         if ($this->_getEstimatedDeathDate === null) {
             foreach ($this->getAllDeathDates() as $date) {
                 if ($date->isOK()) {
@@ -734,7 +758,8 @@ class Individual extends GedcomRecord {
      *
      * @return string
      */
-    public function getSex() {
+    public function getSex()
+    {
         if (preg_match('/\n1 SEX ([MF])/', $this->gedcom . $this->pending, $match)) {
             return $match[1];
         } else {
@@ -749,7 +774,8 @@ class Individual extends GedcomRecord {
      *
      * @return string
      */
-    public function getSexImage($size = 'small') {
+    public function getSexImage($size = 'small')
+    {
         return self::sexImage($this->getSex(), $size);
     }
 
@@ -761,7 +787,8 @@ class Individual extends GedcomRecord {
      *
      * @return string
      */
-    public static function sexImage($sex, $size = 'small') {
+    public static function sexImage($sex, $size = 'small')
+    {
         return '<i class="icon-sex_' . strtolower($sex) . '_' . ($size == 'small' ? '9x9' : '15x15') . '"></i>';
     }
 
@@ -770,7 +797,8 @@ class Individual extends GedcomRecord {
      *
      * @return string
      */
-    public function getBoxStyle() {
+    public function getBoxStyle()
+    {
         $tmp = array('M' => '', 'F' => 'F', 'U' => 'NN');
 
         return 'person_box' . $tmp[$this->getSex()];
@@ -783,7 +811,8 @@ class Individual extends GedcomRecord {
      *
      * @return Family[]
      */
-    public function getSpouseFamilies($access_level = null) {
+    public function getSpouseFamilies($access_level = null)
+    {
         if ($access_level === null) {
             $access_level = Auth::accessLevel($this->tree);
         }
@@ -809,7 +838,8 @@ class Individual extends GedcomRecord {
      *
      * @return Individual|null
      */
-    public function getCurrentSpouse() {
+    public function getCurrentSpouse()
+    {
         $tmp    = $this->getSpouseFamilies();
         $family = end($tmp);
         if ($family) {
@@ -824,7 +854,8 @@ class Individual extends GedcomRecord {
      *
      * @return int
      */
-    public function getNumberOfChildren() {
+    public function getNumberOfChildren()
+    {
         if (preg_match('/\n1 NCHI (\d+)(?:\n|$)/', $this->getGedcom(), $match)) {
             return $match[1];
         } else {
@@ -846,7 +877,8 @@ class Individual extends GedcomRecord {
      *
      * @return Family[]
      */
-    public function getChildFamilies($access_level = null) {
+    public function getChildFamilies($access_level = null)
+    {
         if ($access_level === null) {
             $access_level = Auth::accessLevel($this->tree);
         }
@@ -876,7 +908,8 @@ class Individual extends GedcomRecord {
      *
      * @return Family|null
      */
-    public function getPrimaryChildFamily() {
+    public function getPrimaryChildFamily()
+    {
         $families = $this->getChildFamilies();
         switch (count($families)) {
             case 0:
@@ -914,7 +947,8 @@ class Individual extends GedcomRecord {
      *
      * @return Family[]
      */
-    public function getChildStepFamilies() {
+    public function getChildStepFamilies()
+    {
         $step_families = array();
         $families      = $this->getChildFamilies();
         foreach ($families as $family) {
@@ -944,7 +978,8 @@ class Individual extends GedcomRecord {
      *
      * @return Family[]
      */
-    public function getSpouseStepFamilies() {
+    public function getSpouseStepFamilies()
+    {
         $step_families = array();
         $families      = $this->getSpouseFamilies();
         foreach ($families as $family) {
@@ -968,7 +1003,8 @@ class Individual extends GedcomRecord {
      *
      * @return string
      */
-    public function getChildFamilyLabel(Family $family) {
+    public function getChildFamilyLabel(Family $family)
+    {
         if (preg_match('/\n1 FAMC @' . $family->getXref() . '@(?:\n[2-9].*)*\n2 PEDI (.+)/', $this->getGedcom(), $match)) {
             // A specified pedigree
             return GedcomCodePedi::getChildFamilyLabel($match[1]);
@@ -985,7 +1021,8 @@ class Individual extends GedcomRecord {
      *
      * @return string
      */
-    public function getStepFamilyLabel(Family $step_family) {
+    public function getStepFamilyLabel(Family $step_family)
+    {
         foreach ($this->getChildFamilies() as $family) {
             if ($family !== $step_family) {
                 // Must be a step-family
@@ -1034,7 +1071,8 @@ class Individual extends GedcomRecord {
      *
      * @return string a div block with father & mother names
      */
-    public function getPrimaryParentsNames($classname = '', $display = '') {
+    public function getPrimaryParentsNames($classname = '', $display = '')
+    {
         $fam = $this->getPrimaryChildFamily();
         if (!$fam) {
             return '';
@@ -1075,7 +1113,8 @@ class Individual extends GedcomRecord {
     }
 
     /** {@inheritdoc} */
-    public function getFallBackName() {
+    public function getFallBackName()
+    {
         return '@P.N. /@N.N./';
     }
 
@@ -1108,7 +1147,8 @@ class Individual extends GedcomRecord {
      * @param string $full
      * @param string $gedcom
      */
-    protected function addName($type, $full, $gedcom) {
+    protected function addName($type, $full, $gedcom)
+    {
         ////////////////////////////////////////////////////////////////////////////
         // Extract the structured name parts - use for "sortable" names and indexes
         ////////////////////////////////////////////////////////////////////////////
@@ -1215,7 +1255,9 @@ class Individual extends GedcomRecord {
         // Format for display
         $full = '<span class="NAME" dir="auto" translate="no">' . preg_replace('/\/([^\/]*)\//', '<span class="SURN">$1</span>', Filter::escapeHtml($full)) . '</span>';
         // Localise quotation marks around the nickname
-        $full = preg_replace_callback('/&quot;([^&]*)&quot;/', function ($matches) { return I18N::translate('“%s”', $matches[1]); }, $full);
+        $full = preg_replace_callback('/&quot;([^&]*)&quot;/', function ($matches) {
+            return I18N::translate('“%s”', $matches[1]);
+        }, $full);
 
         // A suffix of “*” indicates a preferred name
         $full = preg_replace('/([^ >]*)\*/', '<span class="starredname">\\1</span>', $full);
@@ -1247,7 +1289,8 @@ class Individual extends GedcomRecord {
     /**
      * Extract names from the GEDCOM record.
      */
-    public function extractNames() {
+    public function extractNames()
+    {
         $this->extractNamesFromFacts(1, 'NAME', $this->getFacts('NAME', false, Auth::accessLevel($this->tree), $this->canShowName()));
     }
 
@@ -1257,7 +1300,8 @@ class Individual extends GedcomRecord {
      *
      * @return string
      */
-    public function formatListDetails() {
+    public function formatListDetails()
+    {
         return
             $this->formatFirstMajorFact(WT_EVENTS_BIRT, 1) .
             $this->formatFirstMajorFact(WT_EVENTS_DEAT, 1);
@@ -1268,7 +1312,8 @@ class Individual extends GedcomRecord {
      *
      * @return string
      */
-    public function getShortName() {
+    public function getShortName()
+    {
         global $bwidth;
 
         // Estimate number of characters that can fit in box. Calulates to 28 characters in webtrees theme, or 34 if no thumbnail used.

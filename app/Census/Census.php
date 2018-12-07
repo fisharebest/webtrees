@@ -22,7 +22,8 @@ class Census {
     /**
      * @return CensusPlaceInterface[]
      */
-    public static function allCensusPlaces() {
+    public static function allCensusPlaces()
+    {
         return array(
             new CensusOfCzechRepublic,
             new CensusOfDenmark,

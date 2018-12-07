@@ -42,7 +42,8 @@ class FunctionsImport {
      *
      * @return string
      */
-    public static function reformatRecord($rec, Tree $tree) {
+    public static function reformatRecord($rec, Tree $tree)
+    {
         // Strip out UTF8 formatting characters
         $rec = str_replace(array(WT_UTF8_BOM, WT_UTF8_LRM, WT_UTF8_RLM), '', $rec);
 
@@ -594,7 +595,8 @@ class FunctionsImport {
      * @param Tree   $tree   import the record into this tree
      * @param bool   $update whether or not this is an updated record that has been accepted
      */
-    public static function importRecord($gedrec, Tree $tree, $update) {
+    public static function importRecord($gedrec, Tree $tree, $update)
+    {
         $tree_id = $tree->getTreeId();
 
         // Escaped @ signs (only if importing from file)
@@ -762,7 +764,8 @@ class FunctionsImport {
      * @param int    $ged_id
      * @param string $gedrec
      */
-    public static function updatePlaces($gid, $ged_id, $gedrec) {
+    public static function updatePlaces($gid, $ged_id, $gedrec)
+    {
         global $placecache;
 
         if (!isset($placecache)) {
@@ -854,7 +857,8 @@ class FunctionsImport {
      * @param int    $ged_id
      * @param string $gedrec
      */
-    public static function updateDates($xref, $ged_id, $gedrec) {
+    public static function updateDates($xref, $ged_id, $gedrec)
+    {
         if (strpos($gedrec, '2 DATE ') && preg_match_all("/\n1 (\w+).*(?:\n[2-9].*)*(?:\n2 DATE (.+))(?:\n[2-9].*)*/", $gedrec, $matches, PREG_SET_ORDER)) {
             foreach ($matches as $match) {
                 $fact = $match[1];
@@ -903,7 +907,8 @@ class FunctionsImport {
      * @param int    $ged_id
      * @param string $gedrec
      */
-    public static function updateLinks($xref, $ged_id, $gedrec) {
+    public static function updateLinks($xref, $ged_id, $gedrec)
+    {
         if (preg_match_all('/^\d+ (' . WT_REGEX_TAG . ') @(' . WT_REGEX_XREF . ')@/m', $gedrec, $matches, PREG_SET_ORDER)) {
             $data = array();
             foreach ($matches as $match) {
@@ -932,7 +937,8 @@ class FunctionsImport {
      * @param int          $ged_id
      * @param GedcomRecord $record
      */
-    public static function updateNames($xref, $ged_id, GedcomRecord $record) {
+    public static function updateNames($xref, $ged_id, GedcomRecord $record)
+    {
         foreach ($record->getAllNames() as $n => $name) {
             if ($record instanceof Individual) {
                 if ($name['givn'] === '@P.N.') {
@@ -972,7 +978,8 @@ class FunctionsImport {
      *
      * @return string
      */
-    public static function convertInlineMedia(Tree $tree, $gedrec) {
+    public static function convertInlineMedia(Tree $tree, $gedrec)
+    {
         while (preg_match('/\n1 OBJE(?:\n[2-9].+)+/', $gedrec, $match)) {
             $gedrec = str_replace($match[0], self::createMediaObject(1, $match[0], $tree), $gedrec);
         }
@@ -995,7 +1002,8 @@ class FunctionsImport {
      *
      * @return string
      */
-    public static function createMediaObject($level, $gedrec, Tree $tree) {
+    public static function createMediaObject($level, $gedrec, Tree $tree)
+    {
         if (preg_match('/\n\d FILE (.+)/', $gedrec, $file_match)) {
             $file = $file_match[1];
         } else {
@@ -1045,7 +1053,8 @@ class FunctionsImport {
      * @param string $xref
      * @param int    $ged_id
      */
-    public static function acceptAllChanges($xref, $ged_id) {
+    public static function acceptAllChanges($xref, $ged_id)
+    {
         $changes = Database::prepare(
             "SELECT change_id, gedcom_name, old_gedcom, new_gedcom" .
             " FROM `##change` c" .
@@ -1075,7 +1084,8 @@ class FunctionsImport {
      *
      * @param GedcomRecord $record
      */
-    public static function rejectAllChanges(GedcomRecord $record) {
+    public static function rejectAllChanges(GedcomRecord $record)
+    {
         Database::prepare(
             "UPDATE `##change`" .
             " SET status = 'rejected'" .
@@ -1093,7 +1103,8 @@ class FunctionsImport {
      * @param int    $ged_id
      * @param bool   $delete
      */
-    public static function updateRecord($gedrec, $ged_id, $delete) {
+    public static function updateRecord($gedrec, $ged_id, $delete)
+    {
         if (preg_match('/^0 @(' . WT_REGEX_XREF . ')@ (' . WT_REGEX_TAG . ')/', $gedrec, $match)) {
             list(, $gid, $type) = $match;
         } elseif (preg_match('/^0 (HEAD)(?:\n|$)/', $gedrec, $match)) {

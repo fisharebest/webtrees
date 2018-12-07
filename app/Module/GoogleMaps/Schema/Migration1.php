@@ -24,7 +24,8 @@ use PDOException;
  */
 class Migration1 implements MigrationInterface {
     /** {@inheritDoc} */
-    public function upgrade() {
+    public function upgrade()
+    {
         // Update the tables to support streetview
         try {
             Database::exec(

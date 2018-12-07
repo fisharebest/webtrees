@@ -36,7 +36,8 @@ class Functions {
      *
      * @return null|string
      */
-    public static function fetchLatestVersion() {
+    public static function fetchLatestVersion()
+    {
         $last_update_timestamp = Site::getPreference('LATEST_WT_VERSION_TIMESTAMP');
         if ($last_update_timestamp < WT_TIMESTAMP - 24 * 60 * 60) {
             $row                = Database::prepare("SHOW VARIABLES LIKE 'version'")->fetchOneRow();
@@ -63,7 +64,8 @@ class Functions {
      *
      * @return string
      */
-    public static function fileUploadErrorText($error_code) {
+    public static function fileUploadErrorText($error_code)
+    {
         switch ($error_code) {
             case UPLOAD_ERR_OK:
                 return I18N::translate('File successfully uploaded');
@@ -113,7 +115,8 @@ class Functions {
      *
      * @return string the subrecord that was found or an empty string "" if not found.
      */
-    public static function getSubRecord($level, $tag, $gedrec, $num = 1) {
+    public static function getSubRecord($level, $tag, $gedrec, $num = 1)
+    {
         if (empty($gedrec)) {
             return '';
         }
@@ -154,7 +157,8 @@ class Functions {
      *
      * @return string a string with all CONT lines merged
      */
-    public static function getCont($nlevel, $nrec) {
+    public static function getCont($nlevel, $nrec)
+    {
         $text = '';
 
         $subrecords = explode("\n", $nrec);
@@ -180,7 +184,8 @@ class Functions {
      *
      * @param Fact[] $arr
      */
-    public static function sortFacts(&$arr) {
+    public static function sortFacts(&$arr)
+    {
         $dated    = array();
         $nondated = array();
         //-- split the array into dated and non-dated arrays
@@ -236,7 +241,8 @@ class Functions {
      *
      * @return string
      */
-    public static function getCloseRelationshipName(Individual $individual1, Individual $individual2) {
+    public static function getCloseRelationshipName(Individual $individual1, Individual $individual2)
+    {
         if ($individual1 === $individual2) {
             $label = '<i class="icon-selected"></i> ' . self::reflexivePronoun($individual1);
         } else {
@@ -254,7 +260,8 @@ class Functions {
      *
      * @return string
      */
-    public static function getAssociateRelationshipName(Individual $individual1, Individual $individual2) {
+    public static function getAssociateRelationshipName(Individual $individual1, Individual $individual2)
+    {
         if ($individual1 === $individual2) {
             $label = self::reflexivePronoun($individual1);
         } else {
@@ -271,7 +278,8 @@ class Functions {
      *
      * @return string
      */
-    private static function reflexivePronoun(Individual $individual) {
+    private static function reflexivePronoun(Individual $individual)
+    {
         switch ($individual->getSex()) {
             case 'M':
                 return /* I18N: reflexive pronoun */ I18N::translate('himself');
@@ -291,7 +299,8 @@ class Functions {
      *
      * @return array|bool An array of nodes on the relationship path, or false if no path found
      */
-    public static function getRelationship(Individual $person1, Individual $person2, $maxlength = 4) {
+    public static function getRelationship(Individual $person1, Individual $person2, $maxlength = 4)
+    {
         if ($person1 === $person2) {
             return false;
         }
@@ -423,7 +432,8 @@ class Functions {
      *
      * @return string
      */
-    public static function getRelationshipName($nodes) {
+    public static function getRelationshipName($nodes)
+    {
         if (!is_array($nodes)) {
             return '';
         }
@@ -461,7 +471,8 @@ class Functions {
      *
      * @return string
      */
-    public static function cousinName($n, $sex) {
+    public static function cousinName($n, $sex)
+    {
         switch ($sex) {
             case 'M':
                 switch ($n) {
@@ -597,7 +608,8 @@ class Functions {
      *
      * @return string
      */
-    public static function cousinName2($n, $sex, $relation) {
+    public static function cousinName2($n, $sex, $relation)
+    {
         switch ($sex) {
             case 'M':
                 switch ($n) {
@@ -659,7 +671,8 @@ class Functions {
      *
      * @return string
      */
-    public static function getRelationshipNameFromPath($path, Individual $person1 = null, Individual $person2 = null) {
+    public static function getRelationshipNameFromPath($path, Individual $person1 = null, Individual $person2 = null)
+    {
         if (!preg_match('/^(mot|fat|par|hus|wif|spo|son|dau|chi|bro|sis|sib)*$/', $path)) {
             // TODO: Update all the “3 RELA ” values in class_person
             return '<span class="error">' . $path . '</span>';
@@ -2176,7 +2189,8 @@ class Functions {
      *
      * @return string
      */
-    public static function getQueryUrl($overwrite = null, $separator = '&') {
+    public static function getQueryUrl($overwrite = null, $separator = '&')
+    {
         if (empty($_GET)) {
             $get = array();
         } else {
@@ -2213,7 +2227,8 @@ class Functions {
      *
      * @return bool
      */
-    public static function isFileExternal($file) {
+    public static function isFileExternal($file)
+    {
         return strpos($file, '://') !== false;
     }
 }

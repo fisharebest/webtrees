@@ -30,7 +30,8 @@ class CensusColumnChildrenBornAlive extends AbstractCensusColumn implements Cens
      *
      * @return string
      */
-    public function generate(Individual $individual, Individual $head = null) {
+    public function generate(Individual $individual, Individual $head = null)
+    {
         if ($individual->getSex() !== 'F') {
             return '';
         }

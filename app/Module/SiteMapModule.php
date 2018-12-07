@@ -35,12 +35,14 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface {
     const CACHE_LIFE         = 1209600; // Two weeks
 
     /** {@inheritdoc} */
-    public function getTitle() {
+    public function getTitle()
+    {
         return /* I18N: Name of a module - see http://en.wikipedia.org/wiki/Sitemaps */ I18N::translate('Sitemaps');
     }
 
     /** {@inheritdoc} */
-    public function getDescription() {
+    public function getDescription()
+    {
         return /* I18N: Description of the “Sitemaps” module */ I18N::translate('Generate sitemap files for search engines.');
     }
 
@@ -50,7 +52,8 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface {
      *
      * @param string $mod_action
      */
-    public function modAction($mod_action) {
+    public function modAction($mod_action)
+    {
         switch ($mod_action) {
             case 'admin':
                 $this->admin();
@@ -68,7 +71,8 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface {
      *
      * @param string $file
      */
-    private function generate($file) {
+    private function generate($file)
+    {
         if ($file == 'sitemap.xml') {
             $this->generateIndex();
         } elseif (preg_match('/^sitemap-(\d+)-([isrmn])-(\d+).xml$/', $file, $match)) {
@@ -82,7 +86,8 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface {
      * The index file contains references to all the other files.
      * These files are the same for visitors/users/admins.
      */
-    private function generateIndex() {
+    private function generateIndex()
+    {
         // Check the cache
         $timestamp = $this->getSetting('sitemap.timestamp');
         if ($timestamp > WT_TIMESTAMP - self::CACHE_LIFE) {
@@ -150,7 +155,8 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface {
      * @param string $rec_type
      * @param string $volume
      */
-    private function generateFile($ged_id, $rec_type, $volume) {
+    private function generateFile($ged_id, $rec_type, $volume)
+    {
         $tree = Tree::findById($ged_id);
         // Check the cache
         $timestamp = $this->getSetting('sitemap-' . $ged_id . '-' . $rec_type . '-' . $volume . '.timestamp');
@@ -271,7 +277,8 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface {
     /**
      * Edit the configuration
      */
-    private function admin() {
+    private function admin()
+    {
         $controller = new PageController;
         $controller
             ->restrictAccess(Auth::isAdmin())
@@ -339,7 +346,8 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface {
     }
 
     /** {@inheritdoc} */
-    public function getConfigLink() {
+    public function getConfigLink()
+    {
         return 'module.php?mod=' . $this->getName() . '&amp;mod_action=admin';
     }
 }

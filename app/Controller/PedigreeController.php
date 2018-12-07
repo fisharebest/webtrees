@@ -63,7 +63,8 @@ class PedigreeController extends ChartController {
     /**
      * Create a pedigree controller
      */
-    public function __construct() {
+    public function __construct()
+    {
         global $WT_TREE;
 
         parent::__construct();
@@ -256,7 +257,8 @@ class PedigreeController extends ChartController {
      *
      * @return string
      */
-    public function getMenu() {
+    public function getMenu()
+    {
         $famids = $this->root->getSpouseFamilies();
         $html   = '';
         if ($famids) {
@@ -306,7 +308,8 @@ class PedigreeController extends ChartController {
      *
      * @return string
      */
-    public function gotoPreviousGen($index) {
+    public function gotoPreviousGen($index)
+    {
         $html = '';
         if ($this->chartHasAncestors) {
             if ($this->nodes[$index]['indi'] && $this->nodes[$index]['indi']->getChildFamilies()) {

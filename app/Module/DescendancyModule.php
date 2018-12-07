@@ -27,13 +27,15 @@ use Fisharebest\Webtrees\Tree;
  */
 class DescendancyModule extends AbstractModule implements ModuleSidebarInterface {
     /** {@inheritdoc} */
-    public function getTitle() {
+    public function getTitle()
+    {
         return /* I18N: Name of a module/sidebar */
             I18N::translate('Descendants');
     }
 
     /** {@inheritdoc} */
-    public function getDescription() {
+    public function getDescription()
+    {
         return /* I18N: Description of the “Descendants” module */
             I18N::translate('A sidebar showing the descendants of an individual.');
     }
@@ -44,7 +46,8 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
      *
      * @param string $mod_action
      */
-    public function modAction($mod_action) {
+    public function modAction($mod_action)
+    {
         global $WT_TREE;
 
         header('Content-Type: text/html; charset=UTF-8');
@@ -67,17 +70,20 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
     }
 
     /** {@inheritdoc} */
-    public function defaultSidebarOrder() {
+    public function defaultSidebarOrder()
+    {
         return 30;
     }
 
     /** {@inheritdoc} */
-    public function hasSidebarContent() {
+    public function hasSidebarContent()
+    {
         return true;
     }
 
     /** {@inheritdoc} */
-    public function getSidebarAjaxContent() {
+    public function getSidebarAjaxContent()
+    {
         return '';
     }
 
@@ -86,7 +92,8 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
      *
      * @return string
      */
-    public function getSidebarContent() {
+    public function getSidebarContent()
+    {
         global $controller;
 
         $controller->addInlineJavascript('
@@ -146,7 +153,8 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
      *
      * @return string
      */
-    public function getPersonLi(Individual $person, $generations = 0) {
+    public function getPersonLi(Individual $person, $generations = 0)
+    {
         $icon     = $generations > 0 ? 'icon-minus' : 'icon-plus';
         $lifespan = $person->canShow() ? '(' . $person->getLifeSpan() . ')' : '';
         $spouses  = $generations > 0 ? $this->loadSpouses($person, 0) : '';
@@ -171,7 +179,8 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
      *
      * @return string
      */
-    public function getFamilyLi(Family $family, Individual $person, $generations = 0) {
+    public function getFamilyLi(Family $family, Individual $person, $generations = 0)
+    {
         $spouse = $family->getSpouse($person);
         if ($spouse) {
             $spouse_name = $spouse->getSexImage() . $spouse->getFullName();
@@ -201,7 +210,8 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
      *
      * @return string
      */
-    public function search($query, Tree $tree) {
+    public function search($query, Tree $tree)
+    {
         if (strlen($query) < 2) {
             return '';
         }
@@ -239,7 +249,8 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
      *
      * @return string
      */
-    public function loadSpouses(Individual $person, $generations) {
+    public function loadSpouses(Individual $person, $generations)
+    {
         $out = '';
         if ($person && $person->canShow()) {
             foreach ($person->getSpouseFamilies() as $family) {
@@ -261,7 +272,8 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
      *
      * @return string
      */
-    public function loadChildren(Family $family, $generations) {
+    public function loadChildren(Family $family, $generations)
+    {
         $out = '';
         if ($family->canShow()) {
             $children = $family->getChildren();

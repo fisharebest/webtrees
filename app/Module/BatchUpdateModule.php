@@ -73,7 +73,8 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface 
      *
      * @return string
      */
-    public function getTitle() {
+    public function getTitle()
+    {
         return /* I18N: Name of a module */ I18N::translate('Batch update');
     }
 
@@ -82,7 +83,8 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface 
      *
      * @return string
      */
-    public function getDescription() {
+    public function getDescription()
+    {
         return /* I18N: Description of the “Batch update” module */ I18N::translate('Apply automatic corrections to your genealogy data.');
     }
 
@@ -92,7 +94,8 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface 
      *
      * @param string $mod_action
      */
-    public function modAction($mod_action) {
+    public function modAction($mod_action)
+    {
         switch ($mod_action) {
             case 'admin_batch_update':
                 echo $this->main();
@@ -109,7 +112,8 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface 
      *
      * @return string
      */
-    private function main() {
+    private function main()
+    {
         global $WT_TREE;
 
         $this->plugins = $this->getPluginList(); // List of available plugins
@@ -270,7 +274,8 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface 
      *
      * @return string|null
      */
-    private function findNextXref($xref) {
+    private function findNextXref($xref)
+    {
         foreach (array_keys($this->all_xrefs) as $key) {
             if ($key > $xref) {
                 $record = self::getLatestRecord($key, $this->all_xrefs[$key]);
@@ -290,7 +295,8 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface 
      *
      * @return string|null
      */
-    private function findPrevXref($xref) {
+    private function findPrevXref($xref)
+    {
         foreach (array_reverse(array_keys($this->all_xrefs)) as $key) {
             if ($key < $xref) {
                 $record = self::getLatestRecord($key, $this->all_xrefs[$key]);
@@ -306,7 +312,8 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface 
     /**
      * Generate a list of all XREFs.
      */
-    private function getAllXrefs() {
+    private function getAllXrefs()
+    {
         global $WT_TREE;
 
         $sql  = array();
@@ -348,7 +355,8 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface 
      *
      * @return BatchUpdateBasePlugin[]
      */
-    private function getPluginList() {
+    private function getPluginList()
+    {
         $plugins    = array();
         $dir_handle = opendir(__DIR__ . '/BatchUpdate');
         while (($file = readdir($dir_handle)) !== false) {
@@ -367,7 +375,8 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface 
      *
      * @return string
      */
-    private function getJavascript() {
+    private function getJavascript()
+    {
         return
             '<script>' .
             'function reset_reload() {' .
@@ -389,7 +398,8 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface 
      *
      * @return string
      */
-    public static function createSubmitButton($text, $xref, $action = '', $data = '') {
+    public static function createSubmitButton($text, $xref, $action = '', $data = '')
+    {
         return
             '<input class="btn btn-primary" type="submit" value="' . $text . '" onclick="' .
             'this.form.xref.value=\'' . Filter::escapeHtml($xref) . '\';' .
@@ -407,7 +417,8 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface 
      *
      * @return string
      */
-    public static function getLatestRecord($xref, $type) {
+    public static function getLatestRecord($xref, $type)
+    {
         global $WT_TREE;
 
         switch ($type) {
@@ -434,7 +445,8 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface 
      *
      * @return string
      */
-    public function getConfigLink() {
+    public function getConfigLink()
+    {
         return 'module.php?mod=' . $this->getName() . '&amp;mod_action=admin_batch_update';
     }
 

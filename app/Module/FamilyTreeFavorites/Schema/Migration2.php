@@ -24,7 +24,8 @@ use PDOException;
  */
 class Migration2 implements MigrationInterface {
     /** {@inheritDoc} */
-    public function upgrade() {
+    public function upgrade()
+    {
         // Add foreign key constraints
         // Delete any data that might violate the new constraints
         Database::exec(

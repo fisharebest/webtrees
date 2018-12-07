@@ -24,7 +24,8 @@ class Migration3 implements MigrationInterface {
     /**
      * Upgrade to to the next version
      */
-    public function upgrade() {
+    public function upgrade()
+    {
         // Update the max_relation_path_length from a separate
         // user setting and gedcom setting to a combined user-gedcom
         // setting.

@@ -73,7 +73,8 @@ class ReportBaseImage extends ReportBaseElement {
      * @param string $align Placement of the image. L: left, C:center, R:right
      * @param string $ln    T:same line, N:next line
      */
-    public function __construct($file, $x, $y, $w, $h, $align, $ln) {
+    public function __construct($file, $x, $y, $w, $h, $align, $ln)
+    {
         $this->file   = $file;
         $this->width  = $w;
         $this->height = $h;
@@ -92,7 +93,8 @@ class ReportBaseImage extends ReportBaseElement {
      *
      * @return float
      */
-    public function getHeight($renderer) {
+    public function getHeight($renderer)
+    {
         return $this->height;
     }
 
@@ -103,7 +105,8 @@ class ReportBaseImage extends ReportBaseElement {
      *
      * @return float
      */
-    public function getWidth($renderer) {
+    public function getWidth($renderer)
+    {
         return $this->width;
     }
 }

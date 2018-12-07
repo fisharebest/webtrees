@@ -39,7 +39,8 @@ class AdvancedSearchController extends SearchController {
     /**
      * Startup activity
      */
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
 
         $this->setPageTitle(I18N::translate('Advanced search'));
@@ -84,7 +85,8 @@ class AdvancedSearchController extends SearchController {
      *
      * @return string[]
      */
-    public function getOtherFields() {
+    public function getOtherFields()
+    {
         global $WT_TREE;
 
         $ofields = array(
@@ -160,7 +162,8 @@ class AdvancedSearchController extends SearchController {
      *
      * @return int
      */
-    public static function tagSort($x, $y) {
+    public static function tagSort($x, $y)
+    {
         list($x1) = explode(':', $x . ':');
         list($y1) = explode(':', $y . ':');
         $tmp      = I18N::strcasecmp(GedcomTag::getLabel($x1), GedcomTag::getLabel($y1));
@@ -178,7 +181,8 @@ class AdvancedSearchController extends SearchController {
      *
      * @return string
      */
-    public function getValue($i) {
+    public function getValue($i)
+    {
         $val = '';
         if (isset($this->values[$i])) {
             $val = $this->values[$i];
@@ -194,7 +198,8 @@ class AdvancedSearchController extends SearchController {
      *
      * @return string
      */
-    public function getField($i) {
+    public function getField($i)
+    {
         $val = '';
         if (isset($this->fields[$i])) {
             $val = htmlentities($this->fields[$i]);
@@ -210,7 +215,8 @@ class AdvancedSearchController extends SearchController {
      *
      * @return int
      */
-    public function getIndex($field) {
+    public function getIndex($field)
+    {
         return array_search($field, $this->fields);
     }
 
@@ -221,14 +227,16 @@ class AdvancedSearchController extends SearchController {
      *
      * @return string
      */
-    public function getLabel($tag) {
+    public function getLabel($tag)
+    {
         return GedcomTag::getLabel(preg_replace('/:(SDX|BEGINS|EXACT|CONTAINS)$/', '', $tag));
     }
 
     /**
      * Set the field order
      */
-    private function reorderFields() {
+    private function reorderFields()
+    {
         $i         = 0;
         $newfields = array();
         $newvalues = array();
@@ -260,7 +268,8 @@ class AdvancedSearchController extends SearchController {
     /**
      * Perform the search
      */
-    private function advancedSearch() {
+    private function advancedSearch()
+    {
         global $WT_TREE;
 
         $this->myindilist = array();
@@ -656,7 +665,8 @@ class AdvancedSearchController extends SearchController {
     /**
      * Display the search results
      */
-    public function printResults() {
+    public function printResults()
+    {
         if ($this->myindilist) {
             uasort($this->myindilist, '\Fisharebest\Webtrees\GedcomRecord::compare');
             echo FunctionsPrintLists::individualTable($this->myindilist);

@@ -28,7 +28,8 @@ class HitCounter {
      *
      * @return int
      */
-    public static function countHit(Tree $tree, $page, $parameter) {
+    public static function countHit(Tree $tree, $page, $parameter)
+    {
         // Don't increment the counter while we stay on the same page.
         if (
             Session::get('last_tree_id') === $tree->getTreeId() &&
@@ -79,7 +80,8 @@ class HitCounter {
      *
      * @return int
      */
-    public static function getCount(Tree $tree, $page, $parameter) {
+    public static function getCount(Tree $tree, $page, $parameter)
+    {
         return (int) Database::prepare(
             "SELECT page_count FROM `##hit_counter`" .
             " WHERE gedcom_id = :tree_id AND page_name = :page AND page_parameter = :parameter"

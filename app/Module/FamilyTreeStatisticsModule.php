@@ -33,12 +33,14 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
     const DEFAULT_NUMBER_OF_SURNAMES = 10;
 
     /** {@inheritdoc} */
-    public function getTitle() {
+    public function getTitle()
+    {
         return /* I18N: Name of a module */ I18N::translate('Statistics');
     }
 
     /** {@inheritdoc} */
-    public function getDescription() {
+    public function getDescription()
+    {
         return /* I18N: Description of “Statistics” module */ I18N::translate('The size of the family tree, earliest and latest events, common names, etc.');
     }
 
@@ -51,7 +53,8 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
      *
      * @return string
      */
-    public function getBlock($block_id, $template = true, $cfg = array()) {
+    public function getBlock($block_id, $template = true, $cfg = array())
+    {
         global $WT_TREE, $ctype;
 
         $show_last_update     = $this->getBlockSetting($block_id, 'show_last_update', '1');
@@ -226,17 +229,20 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
     }
 
     /** {@inheritdoc} */
-    public function loadAjax() {
+    public function loadAjax()
+    {
         return true;
     }
 
     /** {@inheritdoc} */
-    public function isUserBlock() {
+    public function isUserBlock()
+    {
         return true;
     }
 
     /** {@inheritdoc} */
-    public function isGedcomBlock() {
+    public function isGedcomBlock()
+    {
         return true;
     }
 
@@ -245,7 +251,8 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
      *
      * @param int $block_id
      */
-    public function configureBlock($block_id) {
+    public function configureBlock($block_id)
+    {
         if (Filter::postBool('save') && Filter::checkCsrf()) {
             $this->setBlockSetting($block_id, 'show_last_update', Filter::postBool('show_last_update'));
             $this->setBlockSetting($block_id, 'show_common_surnames', Filter::postBool('show_common_surnames'));

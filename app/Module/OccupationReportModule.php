@@ -24,13 +24,15 @@ use Fisharebest\Webtrees\Menu;
  */
 class OccupationReportModule extends AbstractModule implements ModuleReportInterface {
     /** {@inheritdoc} */
-    public function getTitle() {
+    public function getTitle()
+    {
         // This text also appears in the .XML file - update both together
         return /* I18N: Name of a report */ I18N::translate('Occupations');
     }
 
     /** {@inheritdoc} */
-    public function getDescription() {
+    public function getDescription()
+    {
         // This text also appears in the .XML file - update both together
         return /* I18N: Description of the “Occupations” module */ I18N::translate('A report of individuals who had a given occupation.');
     }
@@ -42,7 +44,8 @@ class OccupationReportModule extends AbstractModule implements ModuleReportInter
      *
      * @return int
      */
-    public function defaultAccessLevel() {
+    public function defaultAccessLevel()
+    {
         return Auth::PRIV_USER;
     }
 
@@ -51,7 +54,8 @@ class OccupationReportModule extends AbstractModule implements ModuleReportInter
      *
      * @return Menu
      */
-    public function getReportMenu() {
+    public function getReportMenu()
+    {
         global $WT_TREE;
 
         return new Menu(

@@ -38,7 +38,8 @@ class AncestryController extends ChartController {
     /**
      * Startup activity
      */
-    public function __construct() {
+    public function __construct()
+    {
         global $WT_TREE;
 
         parent::__construct();
@@ -65,7 +66,8 @@ class AncestryController extends ChartController {
      * @param int        $sosa  child sosa number
      * @param int        $depth the ascendancy depth to show
      */
-    public function printChildAscendancy(Individual $individual, $sosa, $depth) {
+    public function printChildAscendancy(Individual $individual, $sosa, $depth)
+    {
         echo '<li>';
         echo '<table><tbody><tr><td>';
         if ($sosa === 1) {
