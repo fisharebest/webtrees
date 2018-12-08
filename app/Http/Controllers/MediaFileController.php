@@ -213,7 +213,7 @@ class MediaFileController extends AbstractBaseController
         $cache_folder     = new Filesystem(new Local(WT_DATA_DIR . 'thumbnail-cache/' . md5($media_folder)));
         $driver           = $this->graphicsDriver();
         $source_folder    = new Filesystem(new Local($media_folder));
-        $watermark_folder = new Filesystem(new Local('resources/assets/img'));
+        $watermark_folder = new Filesystem(new Local('resources/img'));
 
         return ServerFactory::create([
             'cache'      => $cache_folder,

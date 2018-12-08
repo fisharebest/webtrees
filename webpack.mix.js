@@ -5,8 +5,8 @@ mix
   .autoload({
     jquery: ['$', 'jQuery']
   })
-  .js('resources/assets/js/vendor.js', path + 'js/vendor.js')
-  .babel('resources/assets/js/webtrees.js', path + 'js/webtrees.js')
+  .js('resources/js/vendor.js', path + 'js/vendor.js')
+  .babel('resources/js/webtrees.js', path + 'js/webtrees.js')
   .sourceMaps()
   .styles([
     'node_modules/bootstrap/dist/css/bootstrap.min.css',
@@ -24,7 +24,7 @@ mix
     'node_modules/leaflet.markercluster/dist/MarkerCluster.css',
   ], path + 'css/vendor.css')
   .styles([
-    'resources/assets/css/bootstrap-rtl.min.css',
+    'resources/css/bootstrap-rtl.min.css',
     'node_modules/datatables.net-bs4/css/dataTables.bootstrap4.css',
     'node_modules/font-awesome/css/font-awesome.css',
     'node_modules/@fortawesome/fontawesome-free/css/regular.css',
