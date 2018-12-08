@@ -17,6 +17,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Census;
 
+use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Place;
 use Mockery;
 
@@ -44,7 +46,7 @@ class CensusColumnMotherForeignTest extends \Fisharebest\Webtrees\TestCase
      */
     private function getPlaceMock($place): Place
     {
-        $placeMock = Mockery::mock('\Fisharebest\Webtrees\Place');
+        $placeMock = Mockery::mock(Place::class);
         $placeMock->shouldReceive('getGedcomName')->andReturn($place);
 
         return $placeMock;
@@ -58,16 +60,16 @@ class CensusColumnMotherForeignTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testSameCountry()
     {
-        $mother = Mockery::mock('Fisharebest\Webtrees\Individual');
+        $mother = Mockery::mock(Individual::class);
         $mother->shouldReceive('getBirthPlace')->andReturn($this->getPlaceMock('London, England'));
 
-        $family = Mockery::mock('Fisharebest\Webtrees\Family');
+        $family = Mockery::mock(Family::class);
         $family->shouldReceive('getWife')->andReturn($mother);
 
-        $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
+        $individual = Mockery::mock(Individual::class);
         $individual->shouldReceive('getPrimaryChildFamily')->andReturn($family);
 
-        $census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
+        $census = Mockery::mock(CensusInterface::class);
         $census->shouldReceive('censusPlace')->andReturn('England');
 
         $column = new CensusColumnMotherForeign($census, '', '');
@@ -83,16 +85,16 @@ class CensusColumnMotherForeignTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testDifferentCountry()
     {
-        $mother = Mockery::mock('Fisharebest\Webtrees\Individual');
+        $mother = Mockery::mock(Individual::class);
         $mother->shouldReceive('getBirthPlace')->andReturn($this->getPlaceMock('London, England'));
 
-        $family = Mockery::mock('Fisharebest\Webtrees\Family');
+        $family = Mockery::mock(Family::class);
         $family->shouldReceive('getWife')->andReturn($mother);
 
-        $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
+        $individual = Mockery::mock(Individual::class);
         $individual->shouldReceive('getPrimaryChildFamily')->andReturn($family);
 
-        $census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
+        $census = Mockery::mock(CensusInterface::class);
         $census->shouldReceive('censusPlace')->andReturn('Ireland');
 
         $column = new CensusColumnMotherForeign($census, '', '');
@@ -108,13 +110,13 @@ class CensusColumnMotherForeignTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testPlaceNoParent()
     {
-        $family = Mockery::mock('Fisharebest\Webtrees\Family');
+        $family = Mockery::mock(Family::class);
         $family->shouldReceive('getWife')->andReturn(null);
 
-        $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
+        $individual = Mockery::mock(Individual::class);
         $individual->shouldReceive('getPrimaryChildFamily')->andReturn($family);
 
-        $census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
+        $census = Mockery::mock(CensusInterface::class);
         $census->shouldReceive('censusPlace')->andReturn('England');
 
         $column = new CensusColumnMotherForeign($census, '', '');
@@ -130,10 +132,10 @@ class CensusColumnMotherForeignTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testPlaceNoParentFamily()
     {
-        $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
+        $individual = Mockery::mock(Individual::class);
         $individual->shouldReceive('getPrimaryChildFamily')->andReturn(null);
 
-        $census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
+        $census = Mockery::mock(CensusInterface::class);
         $census->shouldReceive('censusPlace')->andReturn('England');
 
         $column = new CensusColumnMotherForeign($census, '', '');

@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Census;
 
+use Fisharebest\Webtrees\Individual;
 use Mockery;
 
 /**
@@ -42,9 +43,9 @@ class CensusColumnRelationToHeadGermanTest extends \Fisharebest\Webtrees\TestCas
      */
     public function testNull()
     {
-        $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
+        $individual = Mockery::mock(Individual::class);
 
-        $census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
+        $census = Mockery::mock(CensusInterface::class);
 
         $column = new CensusColumnRelationToHeadGerman($census, '', '');
 

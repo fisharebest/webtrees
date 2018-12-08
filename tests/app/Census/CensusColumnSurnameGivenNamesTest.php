@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Census;
 
+use Fisharebest\Webtrees\Individual;
 use Mockery;
 
 /**
@@ -42,7 +43,7 @@ class CensusColumnSurnameGivenNamesTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testOneGivenName()
     {
-        $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
+        $individual = Mockery::mock(Individual::class);
         $individual->shouldReceive('getAllNames')->andReturn([
             [
                 'givn' => 'Joe',
@@ -51,7 +52,7 @@ class CensusColumnSurnameGivenNamesTest extends \Fisharebest\Webtrees\TestCase
         ]);
         $individual->shouldReceive('getSpouseFamilies')->andReturn([]);
 
-        $census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
+        $census = Mockery::mock(CensusInterface::class);
         $census->shouldReceive('censusDate')->andReturn('');
 
         $column = new CensusColumnSurnameGivenNames($census, '', '');
@@ -67,7 +68,7 @@ class CensusColumnSurnameGivenNamesTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testMultipleGivenNames()
     {
-        $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
+        $individual = Mockery::mock(Individual::class);
         $individual->shouldReceive('getAllNames')->andReturn([
             [
                 'givn' => 'Joe Fred',
@@ -76,7 +77,7 @@ class CensusColumnSurnameGivenNamesTest extends \Fisharebest\Webtrees\TestCase
         ]);
         $individual->shouldReceive('getSpouseFamilies')->andReturn([]);
 
-        $census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
+        $census = Mockery::mock(CensusInterface::class);
         $census->shouldReceive('censusDate')->andReturn('');
 
         $column = new CensusColumnSurnameGivenNames($census, '', '');
@@ -92,11 +93,11 @@ class CensusColumnSurnameGivenNamesTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testNoName()
     {
-        $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
+        $individual = Mockery::mock(Individual::class);
         $individual->shouldReceive('getAllNames')->andReturn([]);
         $individual->shouldReceive('getSpouseFamilies')->andReturn([]);
 
-        $census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
+        $census = Mockery::mock(CensusInterface::class);
         $census->shouldReceive('censusDate')->andReturn('');
 
         $column = new CensusColumnSurnameGivenNames($census, '', '');

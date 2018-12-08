@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Census;
 
+use Fisharebest\Webtrees\Individual;
 use Mockery;
 
 /**
@@ -42,10 +43,10 @@ class CensusColumnGivenNamesTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testGivenNames()
     {
-        $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
+        $individual = Mockery::mock(Individual::class);
         $individual->shouldReceive('getAllNames')->andReturn([['givn' => 'Joe']]);
 
-        $census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
+        $census = Mockery::mock(CensusInterface::class);
 
         $column = new CensusColumnGivenNames($census, '', '');
 
@@ -60,10 +61,10 @@ class CensusColumnGivenNamesTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testNoName()
     {
-        $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
+        $individual = Mockery::mock(Individual::class);
         $individual->shouldReceive('getAllNames')->andReturn([]);
 
-        $census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
+        $census = Mockery::mock(CensusInterface::class);
 
         $column = new CensusColumnGivenNames($census, '', '');
 

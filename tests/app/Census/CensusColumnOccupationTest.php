@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Census;
 
+use Fisharebest\Webtrees\Individual;
 use Mockery;
 
 /**
@@ -42,10 +43,10 @@ class CensusColumnOccupationTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testNoOccupation()
     {
-        $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
+        $individual = Mockery::mock(Individual::class);
         $individual->shouldReceive('facts')->with(['OCCU'])->andReturn([]);
 
-        $census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
+        $census = Mockery::mock(CensusInterface::class);
 
         $column = new CensusColumnOccupation($census, '', '');
 
@@ -60,13 +61,13 @@ class CensusColumnOccupationTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testOccupation()
     {
-        $fact = Mockery::mock('Fisharebest\Webtrees\Fact');
+        $fact = Mockery::mock(Fact::class);
         $fact->shouldReceive('value')->andReturn('Farmer');
 
-        $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
+        $individual = Mockery::mock(Individual::class);
         $individual->shouldReceive('facts')->with(['OCCU'])->andReturn([$fact]);
 
-        $census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
+        $census = Mockery::mock(CensusInterface::class);
 
         $column = new CensusColumnOccupation($census, '', '');
 

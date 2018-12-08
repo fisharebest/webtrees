@@ -13,8 +13,10 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+
 declare(strict_types=1);
 
+use Fisharebest\Webtrees\Place;
 
 /**
  * Test harness for the class Place
@@ -28,6 +30,6 @@ class PlaceTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testClassExists()
     {
-        $this->assertTrue(class_exists('\Fisharebest\Webtrees\Place'));
+        $this->assertTrue(class_exists(Place::class));
     }
 }

@@ -17,6 +17,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Census;
 
+use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Date\GregorianDate;
+use Fisharebest\Webtrees\Individual;
 use Mockery;
 
 /**
@@ -42,16 +45,16 @@ class CensusColumnBirthYearTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testGenerateColumn()
     {
-        $cal_date = Mockery::mock('Fisharebest\Webtrees\Date\GregorianDate');
+        $cal_date = Mockery::mock(GregorianDate::class);
         $cal_date->shouldReceive('format')->andReturn('1800');
 
-        $date = Mockery::mock('Fisharebest\Webtrees\Date');
+        $date = Mockery::mock(Date::class);
         $date->shouldReceive('minimumDate')->andReturn($cal_date);
 
-        $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
+        $individual = Mockery::mock(Individual::class);
         $individual->shouldReceive('getEstimatedBirthDate')->andReturn($date);
 
-        $census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
+        $census = Mockery::mock(CensusInterface::class);
         $census->shouldReceive('censusDate')->andReturn('30 JUN 1832');
 
         $column = new CensusColumnBirthYear($census, '', '');

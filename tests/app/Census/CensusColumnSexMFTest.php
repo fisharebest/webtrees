@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Census;
 
+use Fisharebest\Webtrees\Individual;
 use Mockery;
 
 /**
@@ -42,10 +43,10 @@ class CensusColumnSexMFTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testMale()
     {
-        $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
+        $individual = Mockery::mock(Individual::class);
         $individual->shouldReceive('getSex')->andReturn('M');
 
-        $census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
+        $census = Mockery::mock(CensusInterface::class);
 
         $column = new CensusColumnSexMF($census, '', '');
 
@@ -60,10 +61,10 @@ class CensusColumnSexMFTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testFeale()
     {
-        $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
+        $individual = Mockery::mock(Individual::class);
         $individual->shouldReceive('getSex')->andReturn('F');
 
-        $census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
+        $census = Mockery::mock(CensusInterface::class);
 
         $column = new CensusColumnSexMF($census, '', '');
 
@@ -78,10 +79,10 @@ class CensusColumnSexMFTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testUnknownSex()
     {
-        $individual = Mockery::mock('Fisharebest\Webtrees\Individual');
+        $individual = Mockery::mock(Individual::class);
         $individual->shouldReceive('getSex')->andReturn('U');
 
-        $census = Mockery::mock('Fisharebest\Webtrees\Census\CensusInterface');
+        $census = Mockery::mock(CensusInterface::class);
 
         $column = new CensusColumnSexMF($census, '', '');
 
