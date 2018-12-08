@@ -216,8 +216,6 @@ class Database
         try {
             $current_version = (int)Site::getPreference($schema_name);
         } catch (PDOException $ex) {
-            DebugBar::addThrowable($ex);
-
             // During initial installation, the site_preference table won’t exist.
             $current_version = 0;
         }

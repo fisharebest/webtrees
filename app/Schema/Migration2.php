@@ -53,8 +53,6 @@ class Migration2 implements MigrationInterface
                 "ALTER TABLE `##gedcom` DROP import_gedcom, DROP import_offset"
             );
         } catch (PDOException $ex) {
-            DebugBar::addThrowable($ex);
-
             // Perhaps we have already deleted these columns?
         }
     }

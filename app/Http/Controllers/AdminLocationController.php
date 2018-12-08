@@ -205,8 +205,6 @@ class AdminLocationController extends AbstractBaseController
                 ]
             );
         } catch (Exception $ex) {
-            DebugBar::addThrowable($ex);
-
             FlashMessages::addMessage(
                 I18N::translate('Location not removed: this location contains sub-locations'),
                 'danger'

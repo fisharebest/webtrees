@@ -56,8 +56,6 @@ class Migration31 implements MigrationInterface
                     'new' => $new,
                 ]);
             } catch (PDOException $ex) {
-                DebugBar::addThrowable($ex);
-
                 // Duplicate key? Already done?
             }
 

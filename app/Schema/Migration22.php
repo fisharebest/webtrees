@@ -89,8 +89,6 @@ class Migration22 implements MigrationInterface
                         unlink($WT_DATA_DIR . $_cfg->media_directory . 'Mediainfo.txt');
                         unlink($WT_DATA_DIR . $_cfg->media_directory . 'thumbs/Thumbsinfo.txt');
                     } catch (Throwable $ex) {
-                        DebugBar::addThrowable($ex);
-
                         // Cannot move the folder?
                     }
                 }

@@ -39,8 +39,6 @@ class Migration8 implements MigrationInterface
                 "ALTER TABLE `##dates` CHANGE d_type d_type ENUM('@#DGREGORIAN@', '@#DJULIAN@', '@#DHEBREW@', '@#DFRENCH R@', '@#DHIJRI@', '@#DROMAN@', '@#DJALALI@')"
             );
         } catch (PDOException $ex) {
-            DebugBar::addThrowable($ex);
-
             // Already been run?
         }
     }

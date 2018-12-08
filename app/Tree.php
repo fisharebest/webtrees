@@ -406,8 +406,6 @@ class Tree
 
             $tree_id = (int) Database::prepare("SELECT LAST_INSERT_ID()")->fetchOne();
         } catch (PDOException $ex) {
-            DebugBar::addThrowable($ex);
-
             // A tree with that name already exists?
             return self::findByName($tree_name);
         }

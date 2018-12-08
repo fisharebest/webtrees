@@ -512,8 +512,6 @@ class AdminTreesController extends AbstractBaseController
             /* I18N: %s is a filename */
             FlashMessages::addMessage(I18N::translate('The family tree has been exported to %s.', Html::filename($filename)), 'success');
         } catch (Throwable $ex) {
-            DebugBar::addThrowable($ex);
-
             FlashMessages::addMessage(
                 I18N::translate('The file %s could not be created.', Html::filename($filename)) . '<hr><samp dir="ltr">' . $ex->getMessage() . '</samp>',
                 'danger'
@@ -1109,8 +1107,6 @@ class AdminTreesController extends AbstractBaseController
                     $tree->name(),
                 ]);
             } catch (\Exception $ex) {
-                DebugBar::addThrowable($ex);
-
                 // Probably a duplicate name.
             }
         }
@@ -1536,8 +1532,6 @@ class AdminTreesController extends AbstractBaseController
                     $tree->id(),
                 ]);
             } catch (\Exception $ex) {
-                DebugBar::addThrowable($ex);
-
                 // Perhaps the favorites module was not installed?
             }
 

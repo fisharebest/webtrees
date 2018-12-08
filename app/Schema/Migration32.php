@@ -38,8 +38,6 @@ class Migration32 implements MigrationInterface
                 "ALTER TABLE `##site_setting` CHANGE setting_value setting_value VARCHAR(2000) NOT NULL"
             )->execute();
         } catch (PDOException $ex) {
-            DebugBar::addThrowable($ex);
-
             // Already done?
         }
 

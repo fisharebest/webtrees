@@ -243,9 +243,7 @@ class I18N
             if (file_exists(WT_ROOT . 'language/' . $code . '.mo')) {
                 try {
                     $locales[] = Locale::create($code);
-                } catch (\Exception $ex) {
-                    DebugBar::addThrowable($ex);
-
+                } catch (Exception $ex) {
                     // No such locale exists?
                 }
             }
@@ -450,8 +448,6 @@ class I18N
                 File::mkdir($cache_dir);
                 file_put_contents($cache_file, '<?php return ' . var_export($translations, true) . ';');
             } catch (Exception $ex) {
-                DebugBar::addThrowable($ex);
-
                 // During setup, we may not have been able to create it.
             }
         } else {
@@ -491,9 +487,7 @@ class I18N
         foreach (glob(WT_ROOT . 'language/*.mo') as $file) {
             try {
                 $locales[] = Locale::create(basename($file, '.mo'));
-            } catch (\Exception $ex) {
-                DebugBar::addThrowable($ex);
-
+            } catch (Exception $ex) {
                 // Not a recognised locale
             }
         }

@@ -67,8 +67,6 @@ class Migration39 implements MigrationInterface
                 " ADD KEY news_ix1 (gedcom_id, user_id)"
             );
         } catch (PDOException $ex) {
-            DebugBar::addThrowable($ex);
-
             // Already updated?
         }
 
@@ -81,8 +79,6 @@ class Migration39 implements MigrationInterface
                 " SET f.gedcom_id=g.gedcom_id, f.user_id=u.user_id"
             );
         } catch (PDOException $ex) {
-            DebugBar::addThrowable($ex);
-
             // Already updated?
         }
 
@@ -97,8 +93,6 @@ class Migration39 implements MigrationInterface
                 "ALTER TABLE `##favorites` DROP fv_username, DROP fv_file"
             );
         } catch (PDOException $ex) {
-            DebugBar::addThrowable($ex);
-
             // Already updated?
         }
 
@@ -108,8 +102,6 @@ class Migration39 implements MigrationInterface
                 "RENAME TABLE `##favorites` TO `##favorite`"
             );
         } catch (PDOException $ex) {
-            DebugBar::addThrowable($ex);
-
             // Already updated?
         }
 
@@ -129,8 +121,6 @@ class Migration39 implements MigrationInterface
                 " ADD FOREIGN KEY `##favorite_fk2` (gedcom_id) REFERENCES `##gedcom` (gedcom_id) ON DELETE CASCADE"
             );
         } catch (PDOException $ex) {
-            DebugBar::addThrowable($ex);
-
             // Already updated?
         }
     }

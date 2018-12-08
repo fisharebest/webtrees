@@ -330,8 +330,6 @@ class MediaFile
         try {
             return filesize($this->folder() . $this->multimedia_file_refn);
         } catch (Throwable $ex) {
-            DebugBar::addThrowable($ex);
-
             return 0;
         }
     }

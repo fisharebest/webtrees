@@ -54,8 +54,6 @@ class Migration20 implements MigrationInterface
                 " ADD            KEY ix3 (m_titl)"
             );
         } catch (PDOException $ex) {
-            DebugBar::addThrowable($ex);
-
             // Assume we've already done this
         }
 

@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\Exceptions\Handler;
 use Fisharebest\Webtrees\Http\Controllers\SetupController;
 use Fisharebest\Webtrees\Http\Middleware\CheckCsrf;
 use Fisharebest\Webtrees\Http\Middleware\CheckForMaintenanceMode;
+use Fisharebest\Webtrees\Http\Middleware\DebugBarData;
 use Fisharebest\Webtrees\Http\Middleware\Housekeeping;
 use Fisharebest\Webtrees\Http\Middleware\PageHitCounter;
 use Fisharebest\Webtrees\Http\Middleware\UseTransaction;
@@ -96,28 +97,24 @@ try {
 
     // Update the database schema, if necessary.
     Database::updateSchema('\Fisharebest\Webtrees\Schema', 'WT_SCHEMA_VERSION', Webtrees::SCHEMA_VERSION);
-} catch (PDOException $ex) {
-    DebugBar::addThrowable($ex);
-
+} catch (PDOException $exception) {
     define('WT_DATA_DIR', 'data/');
     I18N::init();
-    if ($ex->getCode() === 1045) {
+    if ($exception->getCode() === 1045) {
         // Error during connection?
-        $content = view('errors/database-connection', ['error' => $ex->getMessage()]);
+        $content = view('errors/database-connection', ['error' => $exception->getMessage()]);
     } else {
         // Error in a migration script?
-        $content = view('errors/database-error', ['error' => $ex->getMessage()]);
+        $content = view('errors/database-error', ['error' => $exception->getMessage()]);
     }
     $html     = view('layouts/error', ['content' => $content]);
     $response = new Response($html, Response::HTTP_SERVICE_UNAVAILABLE);
     $response->prepare($request)->send();
     return;
-} catch (Throwable $ex) {
-    DebugBar::addThrowable($ex);
-
+} catch (Throwable $exception) {
     define('WT_DATA_DIR', 'data/');
     I18N::init();
-    $content  = view('errors/database-connection', ['error' => $ex->getMessage()]);
+    $content  = view('errors/database-connection', ['error' => $exception->getMessage()]);
     $html     = view('layouts/error', ['content' => $content]);
     $response = new Response($html, Response::HTTP_SERVICE_UNAVAILABLE);
     $response->prepare($request)->send();
@@ -158,7 +155,7 @@ try {
     } else {
         date_default_timezone_set(Site::getPreference('TIMEZONE'));
     }
-} catch (ErrorException $ex) {
+} catch (ErrorException $exception) {
     // Server upgrades and migrations can leave us with invalid timezone settings.
     date_default_timezone_set('UTC');
 }
@@ -257,6 +254,10 @@ try {
         CheckForMaintenanceMode::class,
     ];
 
+    if (class_exists(DebugBar::class)) {
+        $middleware_stack[] = DebugBarData::class;
+    }
+
     if ($request->getMethod() === Request::METHOD_GET) {
         $middleware_stack[] = PageHitCounter::class;
         $middleware_stack[] = Housekeeping::class;
@@ -281,18 +282,8 @@ try {
 
     $response = call_user_func($pipeline, $request);
 } catch (Exception $exception) {
-    DebugBar::addThrowable($exception);
-
     $response = (new Handler())->render($request, $exception);
 }
 
 // Send response
-if ($response instanceof RedirectResponse) {
-    // Show the debug data on the next page
-    DebugBar::stackData();
-} elseif ($response instanceof JsonResponse) {
-    // Use HTTP headers and some jQuery to add debug to the current page.
-    DebugBar::sendDataInHeaders();
-}
-
 $response->prepare($request)->send();

@@ -195,24 +195,6 @@ class DebugBar
     /**
      * Log an exception/throwable
      *
-     * @param Throwable $throwable
-     *
-     * @return void
-     */
-    public static function addThrowable(Throwable $throwable)
-    {
-        if (self::$debugbar instanceof StandardDebugBar) {
-            $collector = self::$debugbar->getCollector('exceptions');
-
-            if ($collector instanceof ExceptionsCollector) {
-                $collector->addThrowable($throwable);
-            }
-        }
-    }
-
-    /**
-     * Log an exception/throwable
-     *
      * @param string  $view
      * @param mixed[] $data
      *

@@ -101,8 +101,6 @@ class AdminMediaController extends AbstractBaseController
                 unlink($tmp);
                 FlashMessages::addMessage(I18N::translate('The file %s has been deleted.', Html::filename($tmp)), 'info');
             } catch (Throwable $ex) {
-                DebugBar::addThrowable($ex);
-
                 FlashMessages::addMessage(I18N::translate('The file %s could not be deleted.', Html::filename($tmp)) . '<hr><samp dir="ltr">' . $ex->getMessage() . '</samp>', 'danger');
             }
         }
@@ -677,15 +675,11 @@ class AdminMediaController extends AbstractBaseController
                 /* I18N: image dimensions, width × height */
                 $html    .= '<dd>' . I18N::translate('%1$s × %2$s pixels', I18N::number($imgsize['0']), I18N::number($imgsize['1'])) . '</dd>';
             } catch (Throwable $ex) {
-                DebugBar::addThrowable($ex);
-
                 // Not an image, or not a valid image?
             }
 
             $html .= '</dl>';
         } catch (Throwable $ex) {
-            DebugBar::addThrowable($ex);
-
             // Not a file?  Not an image?
         }
 

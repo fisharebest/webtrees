@@ -976,8 +976,6 @@ class FunctionsImport
                             $ged_id,
                         ]);
                     } catch (PDOException $ex) {
-                        DebugBar::addThrowable($ex);
-
                         // We could display a warning here....
                     }
                 }

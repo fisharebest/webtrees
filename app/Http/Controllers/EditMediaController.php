@@ -599,7 +599,6 @@ class EditMediaController extends AbstractEditController
                         return $folder . $file;
                     }
                 } catch (FileException $ex) {
-                    DebugBar::addThrowable($ex);
                 }
 
                 return '';

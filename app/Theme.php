@@ -48,8 +48,6 @@ class Theme
                         self::$installed_themes[] = $theme;
                     }
                 } catch (\Exception $ex) {
-                    DebugBar::addThrowable($ex);
-
                     // Broken theme? Ignore it.
                 }
             }

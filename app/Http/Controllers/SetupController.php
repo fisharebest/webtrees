@@ -167,8 +167,6 @@ class SetupController extends AbstractBaseController
             ]);
             Database::disconnect();
         } catch (PDOException $ex) {
-            DebugBar::addThrowable($ex);
-
             return I18N::translate('Unable to connect using this username and password. Your server gave the following error.') . '<br><br>' . e($ex->getMessage()) . '<br><br>' . I18N::translate('Check the settings and try again.');
         }
 
@@ -214,8 +212,6 @@ class SetupController extends AbstractBaseController
             Database::exec("USE `{$dbname}`");
             Database::disconnect();
         } catch (PDOException $ex) {
-            DebugBar::addThrowable($ex);
-
             return I18N::translate('Unable to connect using this username and password. Your server gave the following error.') . '<br><br>' . e($ex->getMessage()) . '<br><br>' . I18N::translate('Check the settings and try again.');
         }
 
@@ -237,8 +233,6 @@ class SetupController extends AbstractBaseController
             $text2 = file_get_contents(WT_DATA_DIR . 'test.txt');
             unlink(WT_DATA_DIR . 'test.txt');
         } catch (Exception $ex) {
-            DebugBar::addThrowable($ex);
-
             return false;
         }
 
@@ -257,8 +251,6 @@ class SetupController extends AbstractBaseController
         try {
             I18N::init($request->get('lang', ''));
         } catch (Exception $ex) {
-            DebugBar::addThrowable($ex);
-
             return false;
         }
 
@@ -327,8 +319,6 @@ class SetupController extends AbstractBaseController
             // Done - start using webtrees!
             return '';
         } catch (PDOException $ex) {
-            DebugBar::addThrowable($ex);
-
             return $ex->getMessage();
         }
     }

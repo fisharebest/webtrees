@@ -38,16 +38,12 @@ class Migration4 implements MigrationInterface
         try {
             Database::exec("ALTER TABLE `##gedcom` ADD COLUMN sort_order INTEGER NOT NULL DEFAULT 0");
         } catch (PDOException $ex) {
-            DebugBar::addThrowable($ex);
-
             // If this fails, it has probably already been done.
         }
 
         try {
             Database::exec("ALTER TABLE `##gedcom` ADD INDEX ix1 (sort_order)");
         } catch (PDOException $ex) {
-            DebugBar::addThrowable($ex);
-
             // If this fails, it has probably already been done.
         }
 

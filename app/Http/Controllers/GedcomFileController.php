@@ -222,8 +222,6 @@ class GedcomFileController extends AbstractBaseController
                     'chunk_id' => $data->gedcom_chunk_id,
                 ]);
             } catch (PDOException $ex) {
-                DebugBar::addThrowable($ex);
-
                 return $this->viewResponse('admin/import-fail', [
                     'error' => $ex->getMessage(),
                 ]);

@@ -22,6 +22,7 @@ use Fisharebest\ExtCalendar\JewishCalendar;
 use Fisharebest\Webtrees\DebugBar;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
+use InvalidArgumentException;
 
 /**
  * Classes for Gedcom Date/Calendar functionality.
@@ -511,9 +512,7 @@ abstract class AbstractCalendarDate
     {
         try {
             return $this->calendar->daysInMonth($this->year, $this->month);
-        } catch (\InvalidArgumentException $ex) {
-            DebugBar::addThrowable($ex);
-
+        } catch (InvalidArgumentException $ex) {
             // calendar.php calls this with "DD MMM" dates, for which we cannot calculate
             // the length of a month. Should we validate this before calling this function?
             return 0;
@@ -779,7 +778,7 @@ abstract class AbstractCalendarDate
             case 'INSTRUMENTAL':
                 return $this->monthNameInstrumentalCase($this->month, $this->isLeapYear());
             default:
-                throw new \InvalidArgumentException($case);
+                throw new InvalidArgumentException($case);
         }
     }
 

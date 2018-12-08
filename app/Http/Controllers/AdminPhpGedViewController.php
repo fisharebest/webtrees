@@ -227,8 +227,6 @@ class AdminPhpGedViewController extends AbstractBaseController
                 return new Response(I18N::translate('The version of %s is too new.', 'PhpGedView'), Response::HTTP_INTERNAL_SERVER_ERROR);
             }
         } catch (Exception $ex) {
-            DebugBar::addThrowable($ex);
-
             $content = I18N::translate('webtrees cannot connect to the PhpGedView database: %s.', $DBNAME . '@' . $DBHOST) .
                 '<br>' .
                 I18N::translate('MySQL gave the error: %s', $ex->getMessage());
@@ -271,8 +269,6 @@ class AdminPhpGedViewController extends AbstractBaseController
                 " SELECT pl_id, pl_parent_id, pl_level, pl_place, pl_long, pl_lati, pl_zoom, pl_icon FROM `{$DBNAME}`.`{$TBLPREFIX}placelocation`"
             )->execute();
         } catch (PDOException $ex) {
-            DebugBar::addThrowable($ex);
-
             // This table will only exist if the gm module is installed in PhpGedView/WT
         }
 
@@ -426,8 +422,6 @@ class AdminPhpGedViewController extends AbstractBaseController
                     " AND us3.setting_name='email'"
                 )->execute();
             } catch (PDOException $ex) {
-                DebugBar::addThrowable($ex);
-
                 // Ignore duplicates
             }
 
@@ -515,8 +509,6 @@ class AdminPhpGedViewController extends AbstractBaseController
                                 $array['gedcom'],
                             ]);
                     } catch (PDOException $ex) {
-                        DebugBar::addThrowable($ex);
-
                         // Ignore duplicates
                     }
                     // insert gedcom
@@ -530,8 +522,6 @@ class AdminPhpGedViewController extends AbstractBaseController
                                         $value,
                                     ]);
                             } catch (PDOException $ex) {
-                                DebugBar::addThrowable($ex);
-
                                 // Ignore duplicates
                             }
                         }
@@ -549,8 +539,6 @@ class AdminPhpGedViewController extends AbstractBaseController
                     " SELECT u_username, CONCAT_WS(' ', u_firstname, u_lastname), u_email, u_password FROM `{$DBNAME}`.`{$TBLPREFIX}users`"
                 )->execute();
             } catch (PDOException $ex) {
-                DebugBar::addThrowable($ex);
-
                 // This could only fail if;
                 // a) we've already done it (upgrade)
                 // b) it doesn't exist (new install)
@@ -649,8 +637,6 @@ class AdminPhpGedViewController extends AbstractBaseController
                     " JOIN `##user` ON (user_name=CONVERT(u_username USING utf8) COLLATE utf8_unicode_ci)"
                 )->execute();
             } catch (PDOException $ex) {
-                DebugBar::addThrowable($ex);
-
                 // This could only fail if;
                 // a) we've already done it (upgrade)
                 // b) it doesn't exist (new install)
@@ -689,8 +675,6 @@ class AdminPhpGedViewController extends AbstractBaseController
                         }
                     }
                 } catch (Throwable $ex) {
-                    DebugBar::addThrowable($ex);
-
                     // Invalid serialized data?
                 }
 
@@ -710,8 +694,6 @@ class AdminPhpGedViewController extends AbstractBaseController
                         }
                     }
                 } catch (Throwable $ex) {
-                    DebugBar::addThrowable($ex);
-
                     // Invalid serialized data?
                 }
 
@@ -731,8 +713,6 @@ class AdminPhpGedViewController extends AbstractBaseController
                         }
                     }
                 } catch (Throwable $ex) {
-                    DebugBar::addThrowable($ex);
-
                     // Invalid serialized data?
                 }
             }
@@ -1328,8 +1308,6 @@ class AdminPhpGedViewController extends AbstractBaseController
                                     $match[3],
                                 ]);
                             } catch (PDOException $ex) {
-                                DebugBar::addThrowable($ex);
-
                                 // Primary key violation? Ignore?
                             }
                         }
@@ -1370,8 +1348,6 @@ class AdminPhpGedViewController extends AbstractBaseController
                 " LEFT JOIN `##user`   u ON (f.fv_username=u.user_name)"
             )->execute();
         } catch (PDOException $ex) {
-            DebugBar::addThrowable($ex);
-
             // This table will only exist if the favorites module is installed in WT
         }
 
@@ -1388,8 +1364,6 @@ class AdminPhpGedViewController extends AbstractBaseController
                 " LEFT JOIN `##user` u ON (n.n_username=u.user_name)"
             )->execute();
         } catch (PDOException $ex) {
-            DebugBar::addThrowable($ex);
-
             // This table will only exist if the news/blog module is installed in WT
         }
 

@@ -49,8 +49,6 @@ class Migration2 implements MigrationInterface
                 " ADD FOREIGN KEY `##news_fk2` (gedcom_id) REFERENCES `##gedcom` (gedcom_id) ON DELETE CASCADE"
             );
         } catch (PDOException $ex) {
-            DebugBar::addThrowable($ex);
-
             // Already updated?
         }
     }

@@ -45,8 +45,6 @@ class File
 
             return true;
         } catch (Throwable $ex) {
-            DebugBar::addThrowable($ex);
-
             return false;
         }
     }

@@ -131,8 +131,6 @@ class LoginController extends AbstractBaseController
             return new RedirectResponse($url);
         } catch (Exception $ex) {
             // Failed to log in.
-            DebugBar::addThrowable($ex);
-
             return new RedirectResponse(route('login', [
                 'username' => $username,
                 'url'      => $url,

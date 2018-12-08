@@ -39,8 +39,6 @@ class Migration12 implements MigrationInterface
         try {
             Database::exec("UPDATE `##gedcom_setting` SET setting_name='MEDIA_UPLOAD' WHERE setting_name='MULTI_MEDIA'");
         } catch (PDOException $ex) {
-            DebugBar::addThrowable($ex);
-
             // This could theoretically cause a duplicate key error, if a MULTI_MEDIA setting already exists
         }
 

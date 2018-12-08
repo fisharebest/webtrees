@@ -158,8 +158,6 @@ class BatchUpdateSearchReplacePlugin extends BatchUpdateBasePlugin
                 try {
                     preg_match('/' . $this->search . '/', null);
                 } catch (Throwable $ex) {
-                    DebugBar::addThrowable($ex);
-
                     /* I18N: http://en.wikipedia.org/wiki/Regular_expression */
                     $this->error = '<div class="alert alert-danger">' . I18N::translate('The regular expression appears to contain an error. It can’t be used.') . '</div>';
                 }
