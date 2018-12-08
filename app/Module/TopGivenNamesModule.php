@@ -66,21 +66,19 @@ class TopGivenNamesModule extends AbstractModule implements ModuleBlockInterface
         extract($cfg, EXTR_OVERWRITE);
 
         $stats   = new Stats($tree);
-        $males   = $stats->commonGivenMaleTable('1', $num);
-        $females = $stats->commonGivenFemaleTable('1', $num);
 
         switch ($infoStyle) {
             case 'list':
-                $content = view('modules/top10_givnnames/list', [
-                    'males'   => $males,
-                    'females' => $females,
+                $content = view('modules/top10_givnnames/block', [
+                    'males'   => $stats->commonGivenMaleListTotals('1', $num),
+                    'females' => $stats->commonGivenFemaleListTotals('1', $num),
                 ]);
                 break;
             default:
             case 'table':
-                $content = view('modules/top10_givnnames/table', [
-                    'males'   => $males,
-                    'females' => $females,
+                $content = view('modules/top10_givnnames/block', [
+                    'males'   => $stats->commonGivenMaleTable('1', $num),
+                    'females' => $stats->commonGivenFemaleTable('1', $num),
                 ]);
                 break;
         }

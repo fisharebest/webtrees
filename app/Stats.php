@@ -5676,67 +5676,48 @@ class Stats
                 // Exclude initials and particles.
                 if (!preg_match('/^([A-Z]|[a-z]{1,3})$/', $given)) {
                     if (array_key_exists($given, $nameList)) {
-                        $nameList[$given] += $row->num;
+                        $nameList[$given] += (int) $row->num;
                     } else {
-                        $nameList[$given] = $row->num;
+                        $nameList[$given] = (int) $row->num;
                     }
                 }
             }
         }
-        arsort($nameList, SORT_NUMERIC);
+        arsort($nameList);
         $nameList = array_slice($nameList, 0, $maxtoshow);
 
-        if ($type == 'chart') {
-            return $nameList;
-        }
-
-        $common = [];
         foreach ($nameList as $given => $total) {
-            if ($maxtoshow !== -1) {
-                if ($maxtoshow-- <= 0) {
-                    break;
-                }
-            }
             if ($total < $threshold) {
-                break;
-            }
-            if ($show_tot) {
-                $tot = ' (' . I18N::number($total) . ')';
-            } else {
-                $tot = '';
-            }
-            switch ($type) {
-                case 'table':
-                    $common[] = '<tr><td>' . $given . '</td><td class="text-center" data-sort="' . $total . '">' . I18N::number($total) . '</td></tr>';
-                    break;
-                case 'list':
-                    $common[] = '<li><span dir="auto">' . $given . '</span>' . $tot . '</li>';
-                    break;
-                case 'nolist':
-                    $common[] = '<span dir="auto">' . $given . '</span>' . $tot;
-                    break;
+                unset($nameList[$given]);
             }
         }
-        if ($common) {
-            switch ($type) {
-                case 'table':
-                    $lookup = [
-                        'M' => I18N::translate('Male'),
-                        'F' => I18N::translate('Female'),
-                        'U' => I18N::translateContext('unknown gender', 'Unknown'),
-                        'B' => I18N::translate('All'),
-                    ];
 
-                    return '<table ' . Datatables::givenNameTableAttributes() . '><thead><tr><th colspan="3">' . $lookup[$sex] . '</th></tr><tr><th>' . I18N::translate('Name') . '</th><th>' . I18N::translate('Individuals') . '</th></tr></thead><tbody>' . implode('', $common) . '</tbody></table>';
-                case 'list':
-                    return '<ul>' . implode('', $common) . '</ul>';
-                case 'nolist':
-                    return implode(I18N::$list_separator, $common);
-                default:
-                    return '';
-            }
-        } else {
-            return '';
+        switch ($type) {
+            case 'chart':
+                return $nameList;
+
+            case 'table':
+                return view('lists/given-names-table', [
+                    'given_names' => $nameList,
+                ]);
+
+            case 'list':
+                return view('lists/given-names-list', [
+                    'given_names' => $nameList,
+                    'show_totals' => $show_tot,
+                ]);
+
+            case 'nolist':
+            default:
+                array_walk($nameList, function(int &$value, string $key) use ($show_tot): void {
+                    if ($show_tot) {
+                        $value = '<span dir="auto">' . e($key);
+                    } else {
+                        $value = '<span dir="auto">' . e($key) . ' (' . I18N::number($value) . ')';
+                    }
+                });
+
+                return implode(I18N::$list_separator, $nameList);
         }
     }
 

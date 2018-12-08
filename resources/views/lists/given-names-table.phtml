@@ -1,0 +1,29 @@
+<?php use Fisharebest\Webtrees\I18N; ?>
+
+<table class="table table-bordered table-sm datatables wt-table-given-name" data-info="false" data-paging="false" data-searching="false" data-state-save="true" data-order="<?= e(json_encode($order ?? [[1, 'desc']])) ?>">
+    <caption class="sr-only">
+        <?= I18N::translate('Given names') ?>
+    </caption>
+    <thead>
+        <tr>
+            <th>
+                <?= I18N::translate('Given name') ?>
+            </th>
+            <th>
+                <?= I18N::translate('Individuals') ?>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($given_names as $given_name => $count): ?>
+        <tr>
+            <td>
+                <?= e($given_name) ?>
+            </td>
+            <td>
+                <?= I18N::number($count) ?>
+            </td>
+        </tr>
+        <?php endforeach ?>
+    </tbody>
+</table>

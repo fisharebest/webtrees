@@ -1,0 +1,12 @@
+<?php use Fisharebest\Webtrees\I18N; ?>
+
+<ul>
+    <?php foreach ($given_names as $given_name => $count): ?>
+        <li>
+            <span dir="auto"><?= e($given_name) ?></span>
+            <?php if ($show_totals): ?>
+             (<?= I18N::number($count) ?>)
+            <?php endif ?>
+        </li>
+    <?php endforeach ?>
+</ul>
