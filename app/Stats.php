@@ -5356,7 +5356,7 @@ class Stats
         foreach ($rows as $row) {
             $family = Family::getInstance($row->id, $this->tree);
             if ($family->canShow()) {
-                $total  = (int) $row->tot;
+                $total = (int) $row->tot;
 
                 if ($type === 'list') {
                     $top10[] = '<li><a href="' . e($family->url()) . '">' . $family->getFullName() . '</a> - ' . I18N::plural('%s grandchild', '%s grandchildren', $total, I18N::number($total));
