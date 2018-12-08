@@ -40,8 +40,6 @@ use Fisharebest\Webtrees\View;
 use Fisharebest\Webtrees\Webtrees;
 use League\Flysystem\Adapter\Local;
 use League\Flysystem\Filesystem;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -110,6 +108,7 @@ try {
     $html     = view('layouts/error', ['content' => $content]);
     $response = new Response($html, Response::HTTP_SERVICE_UNAVAILABLE);
     $response->prepare($request)->send();
+
     return;
 } catch (Throwable $exception) {
     define('WT_DATA_DIR', 'data/');
@@ -118,6 +117,7 @@ try {
     $html     = view('layouts/error', ['content' => $content]);
     $response = new Response($html, Response::HTTP_SERVICE_UNAVAILABLE);
     $response->prepare($request)->send();
+
     return;
 }
 
