@@ -563,8 +563,8 @@ class Individual extends GedcomRecord
         return
             I18N::translate(
                 '%1$s–%2$s',
-                '<span title="' . e($birth_place) . ' ' . $birth_date . '">' . $this->getBirthYear() . '</span>',
-                '<span title="' . e($death_place) . ' ' . $death_date . '">' . $this->getDeathYear() . '</span>'
+                '<span title="' . $birth_place . ' ' . $birth_date . '">' . $this->getBirthYear() . '</span>',
+                '<span title="' . $death_place . ' ' . $death_date . '">' . $this->getDeathYear() . '</span>'
             );
     }
 
