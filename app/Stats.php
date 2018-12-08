@@ -5709,7 +5709,7 @@ class Stats
 
             case 'nolist':
             default:
-                array_walk($nameList, function(int &$value, string $key) use ($show_tot): void {
+                array_walk($nameList, function (int &$value, string $key) use ($show_tot): void {
                     if ($show_tot) {
                         $value = '<span dir="auto">' . e($key);
                     } else {
