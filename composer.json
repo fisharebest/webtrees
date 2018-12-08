@@ -64,7 +64,7 @@
     },
     "scripts": {
        "webtrees:build": [
-           "@composer webtrees-mo",
+           "@composer webtrees:mo",
            "git checkout language/en-US.mo",
            "rm -Rf webtrees/",
            "git archive --prefix=webtrees/ HEAD --format=tar | tar -x",
