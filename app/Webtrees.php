@@ -43,7 +43,7 @@ class Webtrees
     const SCHEMA_VERSION = 40;
 
     // e.g. "dev", "alpha", "beta.3", etc.
-    const STABILITY = 'dev';
+    const STABILITY = 'alpha.4';
 
     // Project website.
     const URL = 'https://www.webtrees.net/';
