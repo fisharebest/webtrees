@@ -96,8 +96,15 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
             ->fetchAll();
 
         $count = count($messages);
-        $users = array_filter(User::all(), function (User $user): bool {
-            return $user->getUserId() !== Auth::id() && $user->getPreference('verified_by_admin') && $user->getPreference('contactmethod') !== 'none';
+        $users = array_filter(User::all(), function (User $user) use ($tree): bool {
+            $public_tree = $tree->getPreference('REQUIRE_AUTHENTICATION') !== '1';
+            $can_see_tree = $public_tree || Auth::accessLevel($tree, $user) <= Auth::PRIV_USER;
+
+            return
+                $user->getUserId() !== Auth::id() &&
+                $user->getPreference('verified_by_admin') &&
+                $can_see_tree &&
+                $user->getPreference('contactmethod') !== 'none';
         });
 
         $content = '';
