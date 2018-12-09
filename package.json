@@ -8,15 +8,10 @@
     "production": "NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
   },
   "devDependencies": {
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-polyfill": "^6.26.0",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-stage-2": "^6.24.1",
-    "laravel-mix": "^2.1.14"
+    "laravel-mix": "^3.0.0"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^5.4.0",
+    "@fortawesome/fontawesome-free": "^5.6.0",
     "beautifymarker": "^1.0.7",
     "bootstrap": "^4.1.3",
     "corejs-typeahead": "^1.2.1",
@@ -27,10 +22,10 @@
     "jquery-colorbox": "^1.6.4",
     "leaflet": "^1.3.4",
     "leaflet-geosearch": "^2.7.0",
-    "leaflet-providers": "^1.4.0",
+    "leaflet-providers": "^1.5.0",
     "leaflet.markercluster": "^1.4.0",
     "moment": "^2.22.2",
-    "popper.js": "^1.14.4",
+    "popper.js": "^1.14.6",
     "select2": "^4.0.5",
     "sortablejs": "^1.7.0",
     "typeahead.js-bootstrap4-css": "^1.0.0",
