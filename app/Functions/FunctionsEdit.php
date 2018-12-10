@@ -938,6 +938,7 @@ class FunctionsEdit
             //-- handle the special SOURce case for level 1 sources [ 1759246 ]
             if ($fact === 'SOUR') {
                 echo self::addSimpleTag($tree, '2 PAGE');
+                echo self::addSimpleTag($tree, '2 DATA');
                 echo self::addSimpleTag($tree, '3 TEXT');
                 if ($tree->getPreference('FULL_SOURCES')) {
                     echo self::addSimpleTag($tree, '3 DATE', '', GedcomTag::getLabel('DATA:DATE'));
