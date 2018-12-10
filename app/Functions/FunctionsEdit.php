@@ -1595,6 +1595,7 @@ class FunctionsEdit
             //-- handle the special SOURce case for level 1 sources [ 1759246 ]
             if ($fact === 'SOUR') {
                 self::addSimpleTag('2 PAGE');
+                self::addSimpleTag('2 DATA');
                 self::addSimpleTag('3 TEXT');
                 if ($WT_TREE->getPreference('FULL_SOURCES')) {
                     self::addSimpleTag('3 DATE', '', GedcomTag::getLabel('DATA:DATE'));
