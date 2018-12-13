@@ -2,10 +2,10 @@
 /** @var \Fisharebest\Webtrees\Stats $stats */
 ?>
 
-<?= view('statistics/total', ['stats' => $stats]) ?>
-<?= view('statistics/total-events', ['stats' => $stats]) ?>
-<?= view('statistics/media-objects', ['stats' => $stats]) ?>
-<?= view('statistics/source-objects', ['stats' => $stats]) ?>
-<?= view('statistics/places', ['stats' => $stats]) ?>
-
-<?= $stats->chartDistribution() ?>
+<div class="container p-0 pt-3">
+    <?= view('statistics/total-records', ['stats' => $stats]) ?>
+    <?= view('statistics/total-events', ['stats' => $stats]) ?>
+    <?= view('statistics/chart-objects', ['stats' => $stats]) ?>
+    <?= view('statistics/places', ['stats' => $stats]) ?>
+    <?= $stats->chartDistribution() ?>
+</div>

@@ -1,23 +1,36 @@
 <?php
+declare(strict_types=1);
+
 use Fisharebest\Webtrees\I18N;
 
 /** @var \Fisharebest\Webtrees\Stats $stats */
 ?>
 
-<div class="row">
-    <div class="col-md-12">
-        <h2>
-            <?= I18N::translate('Total events'), ': ', $stats->totalEvents() ?>
-        </h2>
+<h3 class="border-bottom p-2 mb-4">
+    <?= I18N::translate('Total events') ?>
+    <span class="badge badge-secondary badge-pill float-right"><?= $stats->totalEvents() ?></span>
+</h3>
+
+<div class="card-deck mb-3">
+    <div class="col-lg-6 col-md-6 mb-3">
+        <div class="card m-0">
+            <h4 class="card-header">
+                <?= I18N::translate('First event'), ' - ', $stats->firstEventType() ?>
+            </h4>
+            <div class="card-body">
+                <?= $stats->firstEvent() ?>
+            </div>
+        </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-md-6 col-sm-6 col-xs-12">
-        <span><?= I18N::translate('First event'), ' - ', $stats->firstEventType() ?></span>
-        <h2><?= $stats->firstEvent() ?></h2>
-    </div>
-    <div class="col-md-6 col-sm-6 col-xs-12">
-        <span><?= I18N::translate('Last event'), ' - ', $stats->lastEventType() ?></span>
-        <h2><?= $stats->lastEvent() ?></h2>
+
+    <div class="col-lg-6 col-md-6 mb-3">
+        <div class="card m-0">
+            <h4 class="card-header">
+                <?= I18N::translate('Last event'), ' - ', $stats->lastEventType() ?>
+            </h4>
+            <div class="card-body">
+                <?= $stats->lastEvent() ?>
+            </div>
+        </div>
     </div>
 </div>

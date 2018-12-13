@@ -1,0 +1,54 @@
+<?php
+use Fisharebest\Webtrees\I18N;
+
+/** @var \Fisharebest\Webtrees\Stats $stats */
+?>
+
+<h3 class="border-bottom p-2 mb-4">
+    <?= I18N::translate('Media objects') ?>
+</h3>
+
+<div class="card-deck mb-3">
+    <div class="col-lg-6 col-md-12 mb-3">
+        <div class="card m-0">
+            <h4 class="card-header">
+                <?= I18N::translate('Media objects') ?>
+                <span class="badge badge-secondary badge-pill float-right"><?= $stats->totalMedia() ?></span>
+            </h4>
+            <div class="card-body">
+                <?= $stats->chartMedia() ?>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h3 class="border-bottom p-2 mb-4">
+    <?= I18N::translate('Sources') ?>
+    <span class="badge badge-secondary badge-pill float-right"><?= $stats->totalSources() ?></span>
+</h3>
+
+<div class="card-deck mb-3">
+    <div class="col-lg-6 col-md-12 mb-3">
+        <div class="card m-0">
+            <h4 class="card-header">
+                <?= I18N::translate('Individuals with sources') ?>
+                <span class="badge badge-secondary badge-pill float-right"><?= $stats->totalIndisWithSources() ?></span>
+            </h4>
+            <div class="card-body">
+                <?= $stats->chartIndisWithSources() ?>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6 col-md-12 mb-3">
+        <div class="card m-0">
+            <h4 class="card-header">
+                <?= I18N::translate('Families with sources') ?>
+                <span class="badge badge-secondary badge-pill float-right"><?= $stats->totalFamsWithSources() ?></span>
+            </h4>
+            <div class="card-body">
+                <?= $stats->chartFamsWithSources() ?>
+            </div>
+        </div>
+    </div>
+</div>

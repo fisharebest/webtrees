@@ -2,17 +2,26 @@
 use Fisharebest\Webtrees\I18N;
 ?>
 
-<div id="google_charts" class="center">
-    <p><?= $chart_title ?></p>
-    <div>
-        <img src="<?= $chart_url ?>" alt="<?= $chart_title ?>" title="<?= $chart_title ?>" class="gchart" />
-        <br>
-        <table class="center">
-            <tr>
-                <td bgcolor="#<?= $WT_STATS_CHART_COLOR2 ?>" width="12"></td><td><?= I18N::translate('Highest population') ?></td>
-                <td bgcolor="#<?= $WT_STATS_CHART_COLOR3 ?>" width="12"></td><td><?= I18N::translate('Lowest population') ?></td>
-                <td bgcolor="#<?= $WT_STATS_CHART_COLOR1 ?>" width="12"></td><td><?= I18N::translate('Nobody at all') ?></td>
-            </tr>
-        </table>
+<h3 class="border-bottom p-2 mb-4">
+    <?= $chart_title ?>
+</h3>
+
+<div class="card-deck mb-3">
+    <div class="col-lg-12 col-md-12 mb-3">
+        <div class="card m-0">
+            <div class="card-body">
+                <div id="google_charts" class="text-center">
+                    <img src="<?= $chart_url ?>" alt="<?= $chart_title ?>" title="<?= $chart_title ?>" class="gchart" />
+                    <br>
+                    <table class="center">
+                        <tr>
+                            <td bgcolor="#<?= $WT_STATS_CHART_COLOR2 ?>" width="12"></td><td><?= I18N::translate('Highest population') ?></td>
+                            <td bgcolor="#<?= $WT_STATS_CHART_COLOR3 ?>" width="12"></td><td><?= I18N::translate('Lowest population') ?></td>
+                            <td bgcolor="#<?= $WT_STATS_CHART_COLOR1 ?>" width="12"></td><td><?= I18N::translate('Nobody at all') ?></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

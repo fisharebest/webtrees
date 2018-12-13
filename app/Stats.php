@@ -3091,6 +3091,7 @@ class Stats
             ' ORDER BY' .
             " d_julianday1 {$direction}, d_type LIMIT 1"
         );
+
         if (!isset($rows[0])) {
             return '';
         }

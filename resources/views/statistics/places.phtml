@@ -1,138 +1,99 @@
 <?php
+declare(strict_types=1);
+
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Place;
 
 /** @var \Fisharebest\Webtrees\Stats $stats */
 ?>
 
-<div class="row">
-    <div class="col-md-12">
-        <h2>
-            <?= I18N::translate('Places'), ': ', $stats->totalPlaces() ?>
-        </h2>
-    </div>
-</div>
+<h3 class="border-bottom p-2 mb-4">
+    <?= I18N::translate('Places') ?>
+    <span class="badge badge-secondary badge-pill float-right"><?= $stats->totalPlaces() ?></span>
+</h3>
 
-<div class="row">
-    <div class="col-lg-6">
-        <div class="table-responsive">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th colspan="2">
-                            <?= I18N::translate('Birth places') ?>
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php $places = $stats->commonBirthPlacesList(); ?>
-                    <?php foreach ($places as $entry): ?>
-                        <?php
-                            /* @var Place $place */
-                            $place = $entry['place'];
-                        ?>
-                        <tr>
-                            <td>
-                                <a href="<?= e($place->url()) ?>"><?= $place->getFullName() ?></a>
-                            </td>
-                            <td class="text-right">
-                                <?= I18N::number($entry['count']) ?>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
+<div class="card-deck mb-3">
+    <div class="col-lg-6 col-md-6 mb-3">
+        <div class="card m-0">
+            <h4 class="card-header">
+                <?= I18N::translate('Birth places') ?>
+            </h4>
+            <ul class="list-group list-group-flush">
+                <?php $places = $stats->commonBirthPlacesList(); ?>
+                <?php foreach ($places as $entry): ?>
+                    <?php
+                        /* @var Place $place */
+                        $place = $entry['place'];
+                    ?>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <a href="<?= e($place->url()) ?>"><?= $place->getFullName() ?></a>
+                        <span class="badge badge-secondary badge-pill ml-3"><?= I18N::number($entry['count']) ?></span>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
         </div>
     </div>
 
-    <div class="col-lg-6">
-        <div class="table-responsive">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th colspan="2">
-                            <?= I18N::translate('Death places') ?>
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php $places = $stats->commonDeathPlacesList(); ?>
-                    <?php foreach ($places as $entry): ?>
-                        <?php
-                            /* @var Place $place */
-                            $place = $entry['place'];
-                        ?>
-                        <tr>
-                            <td>
-                                <a href="<?= e($place->url()) ?>"><?= $place->getFullName() ?></a>
-                            </td>
-                            <td class="text-right">
-                                <?= I18N::number($entry['count']) ?>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-lg-6">
-        <div class="table-responsive">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th colspan="2"><?= I18N::translate('Marriage places') ?></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php $places = $stats->commonMarriagePlacesList(); ?>
-                    <?php foreach ($places as $entry): ?>
-                        <?php
-                            /* @var Place $place */
-                            $place = $entry['place'];
-                        ?>
-                        <tr>
-                            <td>
-                                <a href="<?= e($place->url()) ?>"><?= $place->getFullName() ?></a>
-                            </td>
-                            <td class="text-right">
-                                <?= I18N::number($entry['count']) ?>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
+    <div class="col-lg-6 col-md-6 mb-3">
+        <div class="card m-0">
+            <h4 class="card-header">
+                <?= I18N::translate('Death places') ?>
+            </h4>
+            <ul class="list-group list-group-flush">
+                <?php $places = $stats->commonDeathPlacesList(); ?>
+                <?php foreach ($places as $entry): ?>
+                    <?php
+                    /* @var Place $place */
+                    $place = $entry['place'];
+                    ?>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <a href="<?= e($place->url()) ?>"><?= $place->getFullName() ?></a>
+                        <span class="badge badge-secondary badge-pill ml-3"><?= I18N::number($entry['count']) ?></span>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
         </div>
     </div>
 
-    <div class="col-lg-6">
-        <div class="table-responsive">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th colspan="2"><?= I18N::translate('Events in countries') ?></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php $places = $stats->commonCountriesList(); ?>
-                    <?php foreach ($places as $entry): ?>
-                        <?php
-                            /* @var Place $place */
-                            $place = $entry['place'];
-                        ?>
-                        <tr>
-                            <td>
-                                <a href="<?= e($place->url()) ?>"><?= $entry['name'] ?></a>
-                            </td>
-                            <td class="text-right">
-                                <?= I18N::number($entry['count']) ?>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
+    <div class="col-lg-6 col-md-6 mb-3">
+        <div class="card m-0">
+            <h4 class="card-header">
+                <?= I18N::translate('Marriage places') ?>
+            </h4>
+            <ul class="list-group list-group-flush">
+                <?php $places = $stats->commonMarriagePlacesList(); ?>
+                <?php foreach ($places as $entry): ?>
+                    <?php
+                    /* @var Place $place */
+                    $place = $entry['place'];
+                    ?>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <a href="<?= e($place->url()) ?>"><?= $place->getFullName() ?></a>
+                        <span class="badge badge-secondary badge-pill ml-3"><?= I18N::number($entry['count']) ?></span>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+    </div>
+
+    <div class="col-lg-6 col-md-6 mb-3">
+        <div class="card m-0">
+            <h4 class="card-header">
+                <?= I18N::translate('Events in countries') ?>
+            </h4>
+            <ul class="list-group list-group-flush">
+                <?php $places = $stats->commonCountriesList(); ?>
+                <?php foreach ($places as $entry): ?>
+                    <?php
+                    /* @var Place $place */
+                    $place = $entry['place'];
+                    ?>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <a href="<?= e($place->url()) ?>"><?= $entry['name'] ?></a>
+                        <span class="badge badge-secondary badge-pill ml-3"><?= I18N::number($entry['count']) ?></span>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
         </div>
     </div>
 </div>
