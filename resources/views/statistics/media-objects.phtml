@@ -4,16 +4,15 @@ use Fisharebest\Webtrees\I18N;
 /** @var \Fisharebest\Webtrees\Stats $stats */
 ?>
 
-<h3>
-    <?= I18N::translate('Media objects'), ': ', $stats->totalMedia() ?>
-</h3>
-<table>
-    <tr>
-        <td><?= I18N::translate('Media objects') ?></td>
-    </tr>
-    <tr>
-        <td>
-            <?= $stats->chartMedia() ?>
-        </td>
-    </tr>
-</table>
+<div class="row">
+    <div class="col-md-12">
+        <h2>
+            <?= I18N::translate('Media objects'), ': ', $stats->totalMedia() ?>
+        </h2>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4 col-sm-6 col-xs-12">
+        <?= $stats->chartMedia() ?>
+    </div>
+</div>

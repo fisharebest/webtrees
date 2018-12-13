@@ -4,27 +4,45 @@ use Fisharebest\Webtrees\I18N;
 /** @var \Fisharebest\Webtrees\Stats $stats */
 ?>
 
-<h3>
-    <?= I18N::translate('Places'), ': ', $stats->totalPlaces() ?>
-</h3>
-<table>
-    <tr>
-        <td><?= I18N::translate('Birth places') ?></td>
-        <td><?= I18N::translate('Death places') ?></td>
-    </tr>
-    <tr>
-        <td><?= $stats->commonBirthPlacesList() ?></td>
-        <td><?= $stats->commonDeathPlacesList() ?></td>
-    </tr>
-    <tr>
-        <td><?= I18N::translate('Marriage places') ?></td>
-        <td><?= I18N::translate('Events in countries') ?></td>
-    </tr>
-    <tr>
-        <td><?= $stats->commonMarriagePlacesList() ?></td>
-        <td><?= $stats->commonCountriesList() ?></td>
-    </tr>
-    <tr>
-        <td colspan="2"><?= $stats->chartDistribution() ?></td>
-    </tr>
-</table>
+<div class="row">
+    <div class="col-md-12">
+        <h2>
+            <?= I18N::translate('Places'), ': ', $stats->totalPlaces() ?>
+        </h2>
+    </div>
+</div>
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th><?= I18N::translate('Birth places') ?></th>
+                <th><?= I18N::translate('Death places') ?></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><?= $stats->commonBirthPlacesList() ?></td>
+                <td><?= $stats->commonDeathPlacesList() ?></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th><?= I18N::translate('Marriage places') ?></th>
+                <th><?= I18N::translate('Events in countries') ?></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><?= $stats->commonMarriagePlacesList() ?></td>
+                <td><?= $stats->commonCountriesList() ?></td>
+            </tr>
+            <tr>
+                <td colspan="2"><?= $stats->chartDistribution() ?></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
