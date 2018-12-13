@@ -3023,7 +3023,7 @@ class Stats
             'CENS' => I18N::translate('census added'),
         ];
 
-        $fact_query = 'IN ("' . implode('","', $facts) . '")';
+        $fact_query = "IN ('" . implode("','", $facts) . "')";
         
         if ($direction != 'ASC') {
             $direction = 'DESC';
