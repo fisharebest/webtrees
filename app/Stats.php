@@ -3024,7 +3024,7 @@ class Stats
         ];
 
         $fact_query = "IN ('" . implode("','", $facts) . "')";
-        
+
         if ($direction != 'ASC') {
             $direction = 'DESC';
         }
