@@ -1,0 +1,19 @@
+<?php
+use Fisharebest\Webtrees\I18N;
+
+/** @var \Fisharebest\Webtrees\Stats $stats */
+?>
+
+<h3>
+    <?= I18N::translate('Total events'), ': ', $stats->totalEvents() ?>
+</h3>
+<table>
+    <tr>
+        <td><?= I18N::translate('First event'), ' - ', $stats->firstEventType() ?></td>
+        <td><?= I18N::translate('Last event'), ' - ', $stats->lastEventType() ?></td>
+    </tr>
+    <tr>
+        <td><?= $stats->firstEvent() ?></td>
+        <td><?= $stats->lastEvent() ?></td>
+    </tr>
+</table>

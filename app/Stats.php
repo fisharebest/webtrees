@@ -440,7 +440,17 @@ class Stats
         $chl           = I18N::translate('Without sources') . ' - ' . I18N::percentage(1 - $tot_sindi_per, 1) . '|' . I18N::translate('With sources') . ' - ' . I18N::percentage($tot_sindi_per, 1);
         $chart_title   = I18N::translate('Individuals with sources');
 
-        return '<img src="https://chart.googleapis.com/chart?cht=p3&amp;chd=e:' . $chd . '&amp;chs=' . $size . '&amp;chco=' . $color_from . ',' . $color_to . '&amp;chf=bg,s,ffffff00&amp;chl=' . rawurlencode($chl) . '" width="' . $sizes[0] . '" height="' . $sizes[1] . '" alt="' . $chart_title . '" title="' . $chart_title . '">';
+        $chart_url = 'https://chart.googleapis.com/chart?cht=p3&chd=e:' . $chd
+            . '&chs=' . $size . '&chco=' . $color_from . ',' . $color_to . '&chf=bg,s,ffffff00&chl=' . $chl;
+
+        return view(
+            'statistics/chart-individuals-with-sources',
+            [
+                'chart_title' => $chart_title,
+                'chart_url'   => $chart_url,
+                'sizes'       => $sizes,
+            ]
+        );
     }
 
     /**
@@ -535,7 +545,17 @@ class Stats
         $chl          = I18N::translate('Without sources') . ' - ' . I18N::percentage(1 - $tot_sfam_per, 1) . '|' . I18N::translate('With sources') . ' - ' . I18N::percentage($tot_sfam_per, 1);
         $chart_title  = I18N::translate('Families with sources');
 
-        return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . $chart_title . '" title="' . $chart_title . '" />';
+        $chart_url = 'https://chart.googleapis.com/chart?cht=p3&chd=e:' . $chd
+            . '&chs=' . $size . '&chco=' . $color_from . ',' . $color_to . '&chf=bg,s,ffffff00&chl=' . $chl;
+
+        return view(
+            'statistics/chart-families-with-sources',
+            [
+                'chart_title' => $chart_title,
+                'chart_url'   => $chart_url,
+                'sizes'       => $sizes,
+            ]
+        );
     }
 
     /**
@@ -1463,7 +1483,17 @@ class Stats
         $chd         = $this->arrayToExtendedEncoding($mediaCounts);
         $chl         = substr($mediaTypes, 0, -1);
 
-        return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . $chart_title . '" title="' . $chart_title . '" />';
+        $chart_url = 'https://chart.googleapis.com/chart?cht=p3&chd=e:' . $chd
+            . '&chs=' . $size . '&chco=' . $color_from . ',' . $color_to . '&chf=bg,s,ffffff00&chl=' . $chl;
+
+        return view(
+            'statistics/chart-media',
+            [
+                'chart_title' => $chart_title,
+                'chart_url'   => $chart_url,
+                'sizes'       => $sizes,
+            ]
+        );
     }
 
     /**
@@ -1799,16 +1829,17 @@ class Stats
         foreach ($surn_countries as $count) {
             $chart_url .= substr(self::GOOGLE_CHART_ENCODING, (int) ($count / max($surn_countries) * 61), 1);
         }
-        $chart = '<div id="google_charts" class="center">';
-        $chart .= '<p>' . $chart_title . '</p>';
-        $chart .= '<div><img src="' . $chart_url . '" alt="' . $chart_title . '" title="' . $chart_title . '" class="gchart" /><br>';
-        $chart .= '<table class="center"><tr>';
-        $chart .= '<td bgcolor="#' . $WT_STATS_CHART_COLOR2 . '" width="12"></td><td>' . I18N::translate('Highest population') . '</td>';
-        $chart .= '<td bgcolor="#' . $WT_STATS_CHART_COLOR3 . '" width="12"></td><td>' . I18N::translate('Lowest population') . '</td>';
-        $chart .= '<td bgcolor="#' . $WT_STATS_CHART_COLOR1 . '" width="12"></td><td>' . I18N::translate('Nobody at all') . '</td>';
-        $chart .= '</tr></table></div></div>';
 
-        return $chart;
+        return view(
+            'statistics/chart-distribution',
+            [
+                'chart_title'           => $chart_title,
+                'chart_url'             => $chart_url,
+                'WT_STATS_CHART_COLOR1' => $WT_STATS_CHART_COLOR1,
+                'WT_STATS_CHART_COLOR2' => $WT_STATS_CHART_COLOR2,
+                'WT_STATS_CHART_COLOR3' => $WT_STATS_CHART_COLOR3,
+            ]
+        );
     }
 
     /**

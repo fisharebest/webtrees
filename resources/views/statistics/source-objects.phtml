@@ -1,0 +1,23 @@
+<?php
+use Fisharebest\Webtrees\I18N;
+
+/** @var \Fisharebest\Webtrees\Stats $stats */
+?>
+
+<h3>
+    <?= I18N::translate('Sources'), ': ', $stats->totalSources() ?>
+</h3>
+<table>
+    <tr>
+        <td><?= I18N::translate('Individuals with sources') ?></td>
+        <td><?= I18N::translate('Families with sources') ?></td>
+    </tr>
+    <tr>
+        <td><?= $stats->totalIndisWithSources() ?></td>
+        <td><?= $stats->totalFamsWithSources() ?></td>
+    </tr>
+    <tr>
+        <td><?= $stats->chartIndisWithSources() ?></td>
+        <td><?= $stats->chartFamsWithSources() ?></td>
+    </tr>
+</table>

@@ -1,0 +1,19 @@
+<?php
+use Fisharebest\Webtrees\I18N;
+
+/** @var \Fisharebest\Webtrees\Stats $stats */
+?>
+
+<h3>
+    <?= I18N::translate('Media objects'), ': ', $stats->totalMedia() ?>
+</h3>
+<table>
+    <tr>
+        <td><?= I18N::translate('Media objects') ?></td>
+    </tr>
+    <tr>
+        <td>
+            <?= $stats->chartMedia() ?>
+        </td>
+    </tr>
+</table>

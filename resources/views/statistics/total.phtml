@@ -1,0 +1,23 @@
+<?php
+use Fisharebest\Webtrees\I18N;
+
+/** @var \Fisharebest\Webtrees\Stats $stats */
+?>
+
+<h3>
+    <?= I18N::translate('Records') ?>: <?= $stats->totalRecords() ?>
+</h3>
+<table>
+    <tr>
+        <td><?= I18N::translate('Media objects') ?></td>
+        <td><?= I18N::translate('Sources') ?></td>
+        <td><?= I18N::translate('Notes') ?></td>
+        <td><?= I18N::translate('Repositories') ?></td>
+    </tr>
+    <tr>
+        <td><?= $stats->totalMedia() ?></td>
+        <td><?= $stats->totalSources() ?></td>
+        <td><?= $stats->totalNotes() ?></td>
+        <td><?= $stats->totalRepositories() ?></td>
+    </tr>
+</table>
