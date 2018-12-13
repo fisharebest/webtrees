@@ -7,3 +7,5 @@
 <?= view('statistics/media-objects', ['stats' => $stats]) ?>
 <?= view('statistics/source-objects', ['stats' => $stats]) ?>
 <?= view('statistics/places', ['stats' => $stats]) ?>
+
+<?= $stats->chartDistribution() ?>
