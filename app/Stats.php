@@ -3989,6 +3989,7 @@ class Stats
             }
             $max = 0;
             foreach ($rows as $values) {
+                $values->age = (int) $values->age;
                 if ($max < $values->age) {
                     $max = $values->age;
                 }
@@ -5017,6 +5018,7 @@ class Stats
                 return '';
             }
             foreach ($rows as $values) {
+                $values->num = (int) $values->num;
                 if ($max < $values->num) {
                     $max = $values->num;
                 }
@@ -5277,10 +5279,12 @@ class Stats
             return '';
         }
         foreach ($rows as $values) {
+            $values->count = (int) $values->count;
+
             if ($max < $values->count) {
                 $max = $values->count;
             }
-            $tot += (int) $values->count;
+            $tot += $values->count;
         }
         $unknown = $this->noChildrenFamiliesQuery() - $tot;
         if ($unknown > $max) {
