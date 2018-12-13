@@ -591,27 +591,4 @@ class FunctionsPrint
         echo '</span>';
         echo '</td></tr>';
     }
-
-    /**
-     * Summary of LDS ordinances.
-     *
-     * @param Individual $individual
-     *
-     * @return string
-     */
-    public static function getLdsSummary(Individual $individual): string
-    {
-        $BAPL = $individual->facts(['BAPL']) ? 'B' : '_';
-        $ENDL = $individual->facts(['ENDL']) ? 'E' : '_';
-        $SLGC = $individual->facts(['SLGC']) ? 'C' : '_';
-        $SLGS = '_';
-
-        foreach ($individual->getSpouseFamilies() as $family) {
-            if ($family->facts(['SLGS'])) {
-                $SLGS = '';
-            }
-        }
-
-        return $BAPL . $ENDL . $SLGS . $SLGC;
-    }
 }

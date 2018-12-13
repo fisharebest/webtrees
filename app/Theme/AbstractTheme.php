@@ -898,33 +898,6 @@ abstract class AbstractTheme
     }
 
     /**
-     * Generate the LDS summary, for display in charts.
-     *
-     * @param Individual $individual
-     *
-     * @return string
-     */
-    public function individualBoxLdsSummary(Individual $individual)
-    {
-        if ($individual->tree()->getPreference('SHOW_LDS_AT_GLANCE')) {
-            $BAPL = $individual->facts(['BAPL']) ? 'B' : '_';
-            $ENDL = $individual->facts(['ENDL']) ? 'E' : '_';
-            $SLGC = $individual->facts(['SLGC']) ? 'C' : '_';
-            $SLGS = '_';
-
-            foreach ($individual->getSpouseFamilies() as $family) {
-                if ($family->facts(['SLGS'])) {
-                    $SLGS = '';
-                }
-            }
-
-            return $BAPL . $ENDL . $SLGS . $SLGC;
-        }
-
-        return '';
-    }
-
-    /**
      * Links, to show in chart boxes;
      *
      * @param Individual $individual

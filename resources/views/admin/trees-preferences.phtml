@@ -556,21 +556,6 @@
         </div>
     </fieldset>
 
-    <!-- SHOW_LDS_AT_GLANCE -->
-    <fieldset class="form-group">
-        <div class="row">
-            <legend class="col-form-label col-sm-3">
-                <?= /* I18N: A configuration setting */ I18N::translate('LDS ordinance codes in chart boxes') ?>
-            </legend>
-            <div class="col-sm-9">
-        <?= view('components/radios-hide-show', ['name' => 'SHOW_LDS_AT_GLANCE', 'value' => $tree->getPreference('SHOW_LDS_AT_GLANCE')]) ?>
-                <p class="small text-muted">
-                    <?= /* I18N: Help text for the “LDS ordinance codes in chart boxes” configuration setting. "B", "E", "S" and "P" should not be translated. */ I18N::translate('This is a summary of the <abbr title="The Church of Jesus Christ of Latter-day Saints">LDS</abbr> ordinances for the individual. “B” indicates an LDS baptism. “E” indicates an LDS endowment. “S” indicates an LDS spouse sealing. “P” indicates an LDS child-to-parent sealing.') ?>
-                </p>
-            </div>
-        </div>
-    </fieldset>
-
     <!-- CHART_BOX_TAGS -->
     <div class="row form-group">
         <label class="col-sm-3 col-form-label" for="CHART_BOX_TAGS">

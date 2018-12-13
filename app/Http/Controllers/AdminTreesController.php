@@ -1059,7 +1059,6 @@ class AdminTreesController extends AbstractBaseController
         $tree->setPreference('SHOW_GEDCOM_RECORD', (string) (bool) $request->get('SHOW_GEDCOM_RECORD'));
         $tree->setPreference('SHOW_HIGHLIGHT_IMAGES', (string) (bool) $request->get('SHOW_HIGHLIGHT_IMAGES'));
         $tree->setPreference('SHOW_LAST_CHANGE', (string) (bool) $request->get('SHOW_LAST_CHANGE'));
-        $tree->setPreference('SHOW_LDS_AT_GLANCE', (string) (bool) $request->get('SHOW_LDS_AT_GLANCE'));
         $tree->setPreference('SHOW_MEDIA_DOWNLOAD', $request->get('SHOW_MEDIA_DOWNLOAD'));
         $tree->setPreference('SHOW_NO_WATERMARK', $request->get('SHOW_NO_WATERMARK'));
         $tree->setPreference('SHOW_PARENTS_AGE', (string) (bool) $request->get('SHOW_PARENTS_AGE'));

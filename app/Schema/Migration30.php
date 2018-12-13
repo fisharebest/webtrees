@@ -101,7 +101,6 @@ class Migration30 implements MigrationInterface
             "(-1, 'SHOW_FACT_ICONS', '1')," .
             "(-1, 'SHOW_GEDCOM_RECORD', '0')," .
             "(-1, 'SHOW_HIGHLIGHT_IMAGES', '1')," .
-            "(-1, 'SHOW_LDS_AT_GLANCE', '0')," .
             "(-1, 'SHOW_LEVEL2_NOTES', '1')," .
             "(-1, 'SHOW_LIVING_NAMES', :SHOW_LIVING_NAMES)," .
             "(-1, 'SHOW_MEDIA_DOWNLOAD', '0')," .

@@ -795,7 +795,6 @@ class AdminPhpGedViewController extends AbstractBaseController
             $SHOW_FACT_ICONS              = '';
             $SHOW_GEDCOM_RECORD           = '';
             $SHOW_HIGHLIGHT_IMAGES        = '';
-            $SHOW_LDS_AT_GLANCE           = '';
             $SHOW_LIST_PLACES             = '';
             $SHOW_LIVING_NAMES            = '';
             $SHOW_MEDIA_DOWNLOAD          = '';
@@ -1120,11 +1119,6 @@ class AdminPhpGedViewController extends AbstractBaseController
                 $GED_DATA->id,
                 'SHOW_HIGHLIGHT_IMAGES',
                 $SHOW_HIGHLIGHT_IMAGES,
-            ]);
-            $stmt_gedcom_setting->execute([
-                $GED_DATA->id,
-                'SHOW_LDS_AT_GLANCE',
-                $SHOW_LDS_AT_GLANCE,
             ]);
             $stmt_gedcom_setting->execute([
                 $GED_DATA->id,
