@@ -889,7 +889,6 @@ $(function () {
 
   // Select2 - activate autocomplete fields
     $('select.select2').select2({
-        width: '90%',
       // Do not escape.
         escapeMarkup: function (x) {
             return x }
