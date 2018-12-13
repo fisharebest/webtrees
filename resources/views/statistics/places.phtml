@@ -1,5 +1,6 @@
 <?php
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Place;
 
 /** @var \Fisharebest\Webtrees\Stats $stats */
 ?>
@@ -11,35 +12,127 @@ use Fisharebest\Webtrees\I18N;
         </h2>
     </div>
 </div>
-<div class="table-responsive">
-    <table class="table">
-        <thead>
-            <tr>
-                <th><?= I18N::translate('Birth places') ?></th>
-                <th><?= I18N::translate('Death places') ?></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><?= $stats->commonBirthPlacesList() ?></td>
-                <td><?= $stats->commonDeathPlacesList() ?></td>
-            </tr>
-        </tbody>
-    </table>
+
+<div class="row">
+    <div class="col-lg-6">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th colspan="2">
+                            <?= I18N::translate('Birth places') ?>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php $places = $stats->commonBirthPlacesList(); ?>
+                    <?php foreach ($places as $entry): ?>
+                        <?php
+                            /* @var Place $place */
+                            $place = $entry['place'];
+                        ?>
+                        <tr>
+                            <td>
+                                <a href="<?= e($place->url()) ?>"><?= $place->getFullName() ?></a>
+                            </td>
+                            <td class="text-right">
+                                <?= I18N::number($entry['count']) ?>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="col-lg-6">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th colspan="2">
+                            <?= I18N::translate('Death places') ?>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php $places = $stats->commonDeathPlacesList(); ?>
+                    <?php foreach ($places as $entry): ?>
+                        <?php
+                            /* @var Place $place */
+                            $place = $entry['place'];
+                        ?>
+                        <tr>
+                            <td>
+                                <a href="<?= e($place->url()) ?>"><?= $place->getFullName() ?></a>
+                            </td>
+                            <td class="text-right">
+                                <?= I18N::number($entry['count']) ?>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
-<div class="table-responsive">
-    <table class="table">
-        <thead>
-            <tr>
-                <th><?= I18N::translate('Marriage places') ?></th>
-                <th><?= I18N::translate('Events in countries') ?></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><?= $stats->commonMarriagePlacesList() ?></td>
-                <td><?= $stats->commonCountriesList() ?></td>
-            </tr>
-        </tbody>
-    </table>
+
+<div class="row">
+    <div class="col-lg-6">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th colspan="2"><?= I18N::translate('Marriage places') ?></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php $places = $stats->commonMarriagePlacesList(); ?>
+                    <?php foreach ($places as $entry): ?>
+                        <?php
+                            /* @var Place $place */
+                            $place = $entry['place'];
+                        ?>
+                        <tr>
+                            <td>
+                                <a href="<?= e($place->url()) ?>"><?= $place->getFullName() ?></a>
+                            </td>
+                            <td class="text-right">
+                                <?= I18N::number($entry['count']) ?>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="col-lg-6">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th colspan="2"><?= I18N::translate('Events in countries') ?></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php $places = $stats->commonCountriesList(); ?>
+                    <?php foreach ($places as $entry): ?>
+                        <?php
+                            /* @var Place $place */
+                            $place = $entry['place'];
+                        ?>
+                        <tr>
+                            <td>
+                                <a href="<?= e($place->url()) ?>"><?= $entry['name'] ?></a>
+                            </td>
+                            <td class="text-right">
+                                <?= I18N::number($entry['count']) ?>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>

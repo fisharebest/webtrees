@@ -1845,13 +1845,13 @@ class Stats
     /**
      * A list of common countries.
      *
-     * @return string
+     * @return array
      */
-    public function commonCountriesList(): string
+    public function commonCountriesList(): array
     {
         $countries = $this->statsPlaces();
         if (empty($countries)) {
-            return '';
+            return [];
         }
         $top10 = [];
         $i     = 1;
@@ -1879,92 +1879,106 @@ class Stats
         // get all the user’s countries names
         $all_countries = $this->getAllCountries();
         foreach ($all_db_countries as $country_code => $country) {
-            $top10[] = '<li>';
             foreach ($country as $country_name => $tot) {
                 $tmp     = new Place($country_name, $this->tree);
-                $place   = '<a href="' . e($tmp->url()) . '" class="list_item">' . $all_countries[$country_code] . '</a>';
-                $top10[] .= $place . ' - ' . I18N::number($tot);
+
+                $top10[] = [
+                    'place' => $tmp,
+                    'count' => $tot,
+                    'name'  => $all_countries[$country_code],
+                ];
             }
-            $top10[] .= '</li>';
-            if ($i++ == 10) {
+
+            if ($i++ === 10) {
                 break;
             }
         }
-        $top10 = implode('', $top10);
 
-        return '<ul>' . $top10 . '</ul>';
+        return $top10;
     }
 
     /**
      * A list of common birth places.
      *
-     * @return string
+     * @return array
      */
-    public function commonBirthPlacesList(): string
+    public function commonBirthPlacesList(): array
     {
         $places = $this->statsPlaces('INDI', 'BIRT');
         $top10  = [];
         $i      = 1;
+
         arsort($places);
+
         foreach ($places as $place => $count) {
             $tmp     = new Place($place, $this->tree);
-            $place   = '<a href="' . e($tmp->url()) . '" class="list_item">' . $tmp->fullName() . '</a>';
-            $top10[] = '<li>' . $place . ' - ' . I18N::number($count) . '</li>';
-            if ($i++ == 10) {
+            $top10[] = [
+                'place' => $tmp,
+                'count' => $count,
+            ];
+
+            if ($i++ === 10) {
                 break;
             }
         }
-        $top10 = implode('', $top10);
 
-        return '<ul>' . $top10 . '</ul>';
+        return $top10;
     }
 
     /**
      * A list of common death places.
      *
-     * @return string
+     * @return array
      */
-    public function commonDeathPlacesList(): string
+    public function commonDeathPlacesList(): array
     {
         $places = $this->statsPlaces('INDI', 'DEAT');
         $top10  = [];
         $i      = 1;
+
         arsort($places);
+
         foreach ($places as $place => $count) {
             $tmp     = new Place($place, $this->tree);
-            $place   = '<a href="' . e($tmp->url()) . '" class="list_item">' . $tmp->fullName() . '</a>';
-            $top10[] = '<li>' . $place . ' - ' . I18N::number($count) . '</li>';
-            if ($i++ == 10) {
+            $top10[] = [
+                'place' => $tmp,
+                'count' => $count,
+            ];
+
+            if ($i++ === 10) {
                 break;
             }
         }
-        $top10 = implode('', $top10);
 
-        return '<ul>' . $top10 . '</ul>';
+        return $top10;
     }
 
     /**
      * A list of common marriage places.
      *
-     * @return string
+     * @return array
      */
-    public function commonMarriagePlacesList(): string
+    public function commonMarriagePlacesList(): array
     {
         $places = $this->statsPlaces('FAM', 'MARR');
         $top10  = [];
         $i      = 1;
+
         arsort($places);
+
         foreach ($places as $place => $count) {
             $tmp     = new Place($place, $this->tree);
-            $place   = '<a href="' . e($tmp->url()) . '" class="list_item">' . $tmp->fullName() . '</a>';
-            $top10[] = '<li>' . $place . ' - ' . I18N::number($count) . '</li>';
-            if ($i++ == 10) {
+            $top10[] = [
+                'place' => $tmp,
+                'count' => $count,
+            ];
+
+            if ($i++ === 10) {
                 break;
             }
         }
-        $top10 = implode('', $top10);
 
-        return '<ul>' . $top10 . '</ul>';
+        return $top10;
     }
 
     /**
