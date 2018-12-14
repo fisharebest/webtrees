@@ -34,7 +34,8 @@ class ClipboardService
      *
      * @param Fact $fact
      */
-    public function copyFact(Fact $fact): void {
+    public function copyFact(Fact $fact): void
+    {
         $clipboard = Session::get('clipboard', []);
 
         switch ($fact->getTag()) {
@@ -75,7 +76,8 @@ class ClipboardService
      *
      * @return bool
      */
-    public function pasteFact(string $fact_id, GedcomRecord $record): bool {
+    public function pasteFact(string $fact_id, GedcomRecord $record): bool
+    {
         $clipboard = Session::get('clipboard');
 
         if (isset($clipboard[$fact_id])) {
@@ -93,7 +95,8 @@ class ClipboardService
      *
      * @return Fact[]
      */
-    public function pastableFacts(GedcomRecord $gedcom_record): array {
+    public function pastableFacts(GedcomRecord $gedcom_record): array
+    {
         // The facts are stored in the session.
         $clipboard = Session::get('clipboard', []);
 
@@ -101,12 +104,12 @@ class ClipboardService
         $clipboard = array_reverse($clipboard);
 
         // Only include facts that can be pasted onto this record.
-        $clipboard = array_filter($clipboard, function(array $clipping) use ($gedcom_record): bool {
+        $clipboard = array_filter($clipboard, function (array $clipping) use ($gedcom_record): bool {
             return $clipping['type'] == $gedcom_record::RECORD_TYPE || $clipping['type'] == 'all';
         });
 
         // Create facts for the record.
-        $facts = array_map(function(array $clipping) use ($gedcom_record): Fact {
+        $facts = array_map(function (array $clipping) use ($gedcom_record): Fact {
             return new Fact($clipping['factrec'], $gedcom_record, md5($clipping['factrec']));
         }, $clipboard);
 
