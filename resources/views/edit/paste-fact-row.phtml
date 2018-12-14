@@ -1,0 +1,33 @@
+<?php use Fisharebest\Webtrees\I18N; ?>
+
+<?php if (!empty($facts)) : ?>
+<tr>
+    <th scope="row">
+        <?= I18N::translate('Add from clipboard') ?>
+    </th>
+    <td>
+        <form name="newFromClipboard" onsubmit="return false;">
+            <div class="input-group">
+                <select class="form-control" id="newClipboardFact">
+                    <?php foreach ($facts as $fact) : ?>
+                    <option value="<?= e($fact->id()) ?>">
+                        <?= $fact->label() ?>
+                        <?php if ($fact->date()->isOK()) : ?>
+                            – <?= $fact->date()->minimumDate()->format('%Y') ?>
+                        <?php endif ?>
+                        <?php if (!$fact->place()->isEmpty()) : ?>
+                            – <?= $fact->place()->getShortName() ?>
+                        <?php endif ?>
+                    </option>
+                    <?php endforeach ?>
+                </select>
+                <div class="input-group-append">
+                    <button class="btn btn-light" type="submit" onclick="return paste_fact('<?= e($tree->name()) ?>', '<?= e($record->xref()) ?>', '#newClipboardFact');">
+                        <?= /* I18N: A button label. */ I18N::translate('add') ?>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </td>
+</tr>
+<?php endif ?>

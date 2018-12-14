@@ -32,6 +32,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Place;
+use Fisharebest\Webtrees\Services\ClipboardService;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
@@ -479,41 +480,9 @@ class FunctionsPrint
      *
      * @return void
      */
-    public static function printAddNewFact(GedcomRecord $record, $usedfacts, $type)
+    public static function printAddNewFact(GedcomRecord $record, $usedfacts, $type): void
     {
         $tree = $record->tree();
-
-        // -- Add from clipboard
-        if (is_array(Session::get('clipboard'))) {
-            $newRow = true;
-            foreach (array_reverse(Session::get('clipboard'), true) as $fact_id => $fact) {
-                if ($fact['type'] == $type || $fact['type'] == 'all') {
-                    if ($newRow) {
-                        $newRow = false;
-                        echo '<tr><th scope="row">';
-                        echo I18N::translate('Add from clipboard'), '</th>';
-                        echo '<td><form name="newFromClipboard" onsubmit="return false;">';
-                        echo '<select id="newClipboardFact">';
-                    }
-                    echo '<option value="', e($fact_id), '">', GedcomTag::getLabel($fact['fact']);
-                    // TODO use the event class to store/parse the clipboard events
-                    if (preg_match('/^2 DATE (.+)/m', $fact['factrec'], $match)) {
-                        $tmp = new Date($match[1]);
-                        echo '; ', $tmp->minimumDate()->format('%Y');
-                    }
-                    if (preg_match('/^2 PLAC ([^,\n]+)/m', $fact['factrec'], $match)) {
-                        echo '; ', $match[1];
-                    }
-                    echo '</option>';
-                }
-            }
-            if (!$newRow) {
-                echo '</select>';
-                /* I18N: A button label. */
-                echo '&nbsp;&nbsp;<input type="button" value="', I18N::translate('add'), '" onclick="return paste_fact(\'' . e($tree->name()) . '\',\'' . e($record->xref()) . '\', \'#newClipboardFact\');"> ';
-                echo '</form></td></tr>', "\n";
-            }
-        }
 
         // -- Add from pick list
         switch ($type) {
@@ -559,36 +528,20 @@ class FunctionsPrint
         uasort($translated_addfacts, function (string $x, string $y): int {
             return I18N::strcasecmp(I18N::translate($x), I18N::translate($y));
         });
-        echo '<tr><th scope="row">';
-        echo I18N::translate('Fact or event');
-        echo '</th>';
-        echo '<td>';
-        echo '<form onsubmit="if ($(&quot;#add-fact&quot;).val() === null) {event.preventDefault();}">';
-        echo '<input type="hidden" name="route" value="add-fact">';
-        echo '<input type="hidden" name="xref" value="' . e($record->xref()) . '">';
-        echo '<input type="hidden" name="ged" value="' . e($tree->name()) . '">';
-        echo '<select id="add-fact" name="fact">';
-        echo '<option value="" disabled selected>' . I18N::translate('&lt;select&gt;') . '</option>';
-        foreach ($translated_addfacts as $fact => $fact_name) {
-            echo '<option value="', $fact, '">', $fact_name, '</option>';
-        }
-        if ($type == 'INDI' || $type == 'FAM') {
-            echo '<option value="FACT">', I18N::translate('Custom fact'), '</option>';
-            echo '<option value="EVEN">', I18N::translate('Custom event'), '</option>';
-        }
-        echo '</select>';
-        /* I18N: A button label. */
-        echo '<input type="submit" value="', I18N::translate('add'), '">';
-        echo '</form>';
-        echo '<span class="quickfacts">';
-        foreach ($quickfacts as $fact) {
-            echo '<a href="' . e(route('add-fact', [
-                    'fact' => $fact,
-                    'xref' => $record->xref(),
-                    'ged'  => $tree->name(),
-                ])) . '">', GedcomTag::getLabel($fact), '</a>';
-        }
-        echo '</span>';
-        echo '</td></tr>';
+
+        $clipboard_service = new ClipboardService();
+
+        $pastable_facts = $clipboard_service->pastableFacts($record);
+
+        echo view('edit/paste-fact-row', [
+            'facts'  => $pastable_facts,
+            'record' => $record,
+        ]);
+
+        echo view('edit/add-fact-row', [
+            'add_facts'   => $translated_addfacts,
+            'quick_facts' => $quickfacts,
+            'record'      => $record,
+        ]);
     }
 }

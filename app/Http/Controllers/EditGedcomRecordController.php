@@ -27,7 +27,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Module\CensusAssistantModule;
-use Fisharebest\Webtrees\Session;
+use Fisharebest\Webtrees\Services\ClipboardService;
 use Fisharebest\Webtrees\Tree;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -44,12 +44,13 @@ class EditGedcomRecordController extends AbstractEditController
     /**
      * Copy a fact to the clipboard.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param Request          $request
+     * @param Tree             $tree
+     * @param ClipboardService $clipboard_service
      *
      * @return Response
      */
-    public function copyFact(Request $request, Tree $tree): Response
+    public function copyFact(Request $request, Tree $tree, ClipboardService $clipboard_service): Response
     {
         $xref    = $request->get('xref', '');
         $fact_id = $request->get('fact_id');
@@ -59,31 +60,9 @@ class EditGedcomRecordController extends AbstractEditController
         $this->checkRecordAccess($record, true);
 
         foreach ($record->facts() as $fact) {
-            if ($fact->id() == $fact_id) {
-                switch ($fact->getTag()) {
-                    case 'NOTE':
-                    case 'SOUR':
-                    case 'OBJE':
-                        $type = 'all'; // paste this anywhere
-                        break;
-                    default:
-                        $type = $record::RECORD_TYPE; // paste only to the same record type
-                        break;
-                }
-                $clipboard = Session::get('clipboard');
-                if (!is_array($clipboard)) {
-                    $clipboard = [];
-                }
-                $clipboard[$fact_id] = [
-                    'type'    => $type,
-                    'factrec' => $fact->gedcom(),
-                    'fact'    => $fact->getTag(),
-                ];
+            if ($fact->id() === $fact_id) {
+                $clipboard_service->copyFact($fact);
 
-                // The clipboard only holds 10 facts
-                $clipboard = array_slice($clipboard, -10);
-
-                Session::put('clipboard', $clipboard);
                 FlashMessages::addMessage(I18N::translate('The record has been copied to the clipboard.'));
                 break;
             }
@@ -178,12 +157,13 @@ class EditGedcomRecordController extends AbstractEditController
     /**
      * Paste a fact from the clipboard into a record.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param Request          $request
+     * @param Tree             $tree
+     * @param ClipboardService $clipboard_service
      *
      * @return Response
      */
-    public function pasteFact(Request $request, Tree $tree): Response
+    public function pasteFact(Request $request, Tree $tree, ClipboardService $clipboard_service): Response
     {
         $xref    = $request->get('xref', '');
         $fact_id = $request->get('fact_id');
@@ -192,11 +172,7 @@ class EditGedcomRecordController extends AbstractEditController
 
         $this->checkRecordAccess($record, true);
 
-        $clipboard = Session::get('clipboard');
-
-        if (isset($clipboard[$fact_id])) {
-            $record->createFact($clipboard[$fact_id]['factrec'], true);
-        }
+        $clipboard_service->pasteFact($fact_id, $record);
 
         return new Response();
     }

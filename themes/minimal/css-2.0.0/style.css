@@ -623,11 +623,6 @@ table {
 	margin: 0 auto;
 }
 
-.quickfacts a {
-	font-size: .75rem;
-	padding: 0 3px;
-}
-
 #reportengine-page .report-type {
 	overflow: hidden;
 	margin: auto;
