@@ -50,54 +50,6 @@ abstract class AbstractTheme
     const ASSET_DIR  = 'themes/' . self::THEME_DIR . '/css-2.0.0/';
     const STYLESHEET = self::ASSET_DIR . 'style.css';
 
-    // Icons are created using <i class="..."></i>
-    const ICONS = [
-        // Icons for GEDCOM records
-        'family'               => 'fas fa-users',
-        'individual'           => 'far fa-user',
-        'media'                => 'far fa-file-image',
-        'note'                 => 'far fa-sticky-note',
-        'repository'           => 'fas fa-university',
-        'source'               => 'far fa-file-alt',
-        'submission'           => 'fas fa-upload',
-        'submitter'            => 'fas fa-user-plus',
-
-        // Icons for sexes
-        'F'                    => 'fas fa-venus',
-        'M'                    => 'fas fa-mars',
-        'U'                    => 'fas fa-genderless',
-
-        // Icons for editing
-        'add'                  => 'fas fa-plus',
-        'config'               => 'far fa-cogs',
-        'copy'                 => 'far fa-copy',
-        'create'               => 'fas fa-plus',
-        'delete'               => 'fas fa-trash-alt',
-        'edit'                 => 'fas fa-pencil-alt',
-        'link'                 => 'fas fa-link',
-        'unlink'               => 'fas fa-unlink',
-
-        // Icons for arrows
-        'arrow-down'           => 'fas fa-arrow-down',
-        'arrow-left'           => 'fas fa-arrow-left',
-        'arrow-right'          => 'fas fa-arrow-right',
-        'arrow-up'             => 'fas fa-arrow-up',
-
-        // Status icons
-        'error'                => 'fas fa-exclamation-triangle',
-        'info'                 => 'fas fa-info-circle',
-        'warning'              => 'fas fa-exclamation-circle',
-
-        // Icons for file types
-        'mime-application-pdf' => '',
-        'mime-text-html'       => '',
-
-        // Other icons
-        'mail'                 => 'far fa-envelope',
-        'help'                 => 'fas fa-info-circle',
-        'search'               => 'fas fa-search',
-    ];
-
     const PERSON_BOX_CLASSES = [
         'M' => 'person_box',
         'F' => 'person_boxF',
@@ -670,38 +622,6 @@ abstract class AbstractTheme
 
         return '';
     }
-
-    /**
-     * Decorative icons are used in addition to text.
-     * They need additional markup to hide them from assistive technologies.
-     *
-     * Semantic icons are used in place of text.
-     * They need additional markup to convey their meaning to assistive technologies.
-     *
-     * @link http://fontawesome.io/accessibility
-     *
-     * @param string $icon
-     * @param string $text
-     *
-     * @return string
-     */
-    public function replacementIconFunction($icon, $text = '')
-    {
-        if (array_key_exists($icon, self::ICONS)) {
-            if ($text === '') {
-                // Decorative icon.  Hiden from assistive technology.
-                return '<i class="' . self::ICONS[$icon] . '" aria-hidden="true"></i>';
-            }
-
-            // Semantic icon.  Label for assistive technology.
-            return
-                '<i class="' . self::ICONS[$icon] . '" title="' . $text . '"></i>' .
-                '<span class="sr-only">' . $text . '</span>';
-        }
-
-        return $text;
-    }
-
 
     /**
      * Display an individual in a box - for charts, etc.
