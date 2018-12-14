@@ -12,6 +12,9 @@
                     <?php foreach ($facts as $fact) : ?>
                     <option value="<?= e($fact->id()) ?>">
                         <?= $fact->label() ?>
+                        <?php if ($fact->value() !== '') : ?>
+                            – <?= e($fact->value()) ?>
+                        <?php endif ?>
                         <?php if ($fact->date()->isOK()) : ?>
                             – <?= $fact->date()->minimumDate()->format('%Y') ?>
                         <?php endif ?>

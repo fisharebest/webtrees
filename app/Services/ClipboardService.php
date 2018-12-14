@@ -29,6 +29,17 @@ class ClipboardService
     // Maximum number of entries in the clipboard.
     private const CLIPBOARD_SIZE = 10;
 
+    // Some facts can be copied to multiple types of record.
+    // Others can only be copied to the same type.
+    // NOTE: just because GEDCOM permits these, it doesn't mean that they are advisable.
+    private const DESTINATION_TYPES = [
+        'CENS' => ['FAM', 'INDI'],
+        'RESI' => ['FAM', 'INDI'],
+        'NOTE' => ['FAM', 'INDI', 'OBJE', 'REPO', 'SOUR'],
+        'OBJE' => ['FAM', 'INDI', 'NOTE', 'SOUR'],
+        'SOUR' => ['FAM', 'INDI', 'NOTE', 'OBJE'],
+    ];
+
     /**
      * Copy a fact to the clipboard.
      *
@@ -37,32 +48,25 @@ class ClipboardService
     public function copyFact(Fact $fact): void {
         $clipboard = Session::get('clipboard', []);
 
-        switch ($fact->getTag()) {
-            case 'NOTE':
-            case 'SOUR':
-            case 'OBJE':
-                // paste this anywhere
-                $type = 'all';
-                break;
-            default:
-                // paste only to the same record type
-                $type = $fact->record()::RECORD_TYPE;
-                break;
-        }
+        $fact_type   = $fact->getTag();
+        $record_type = $fact->record()::RECORD_TYPE;
 
-        // If we are copying the same fact twice, make sure the new one is at the top.
+        $destination_types = self::DESTINATION_TYPES[$fact_type] ?? [$record_type];
+
         $fact_id = $fact->id();
 
-        unset($clipboard[$fact_id]);
+        foreach ($destination_types as $destination_type) {
+            // If we are copying the same fact twice, make sure the new one is at the end.
+            unset($clipboard[$destination_type][$fact_id]);
 
-        $clipboard[$fact_id] = [
-            'type'    => $type,
-            'factrec' => $fact->gedcom(),
-            'fact'    => $fact->getTag(),
-        ];
+            $clipboard[$destination_type][$fact_id] = [
+                'factrec' => $fact->gedcom(),
+                'fact'    => $fact->getTag(),
+            ];
 
-        // The clipboard only holds a limited number of facts.
-        $clipboard = array_slice($clipboard, -self::CLIPBOARD_SIZE);
+            // The clipboard only holds a limited number of facts.
+            $clipboard[$destination_type] = array_slice($clipboard[$destination_type], -self::CLIPBOARD_SIZE);
+        }
 
         Session::put('clipboard', $clipboard);
     }
@@ -78,8 +82,11 @@ class ClipboardService
     public function pasteFact(string $fact_id, GedcomRecord $record): bool {
         $clipboard = Session::get('clipboard');
 
-        if (isset($clipboard[$fact_id])) {
-            $record->createFact($clipboard[$fact_id]['factrec'], true);
+        $record_type = $record::RECORD_TYPE;
+
+        if (isset($clipboard[$record_type][$fact_id])) {
+            $record->createFact($clipboard[$record_type][$fact_id]['factrec'], true);
+
             return true;
         }
 
@@ -89,25 +96,20 @@ class ClipboardService
     /**
      * Createa a list of facts that can be pasted into a given record
      *
-     * @param GedcomRecord $gedcom_record
+     * @param GedcomRecord $record
      *
      * @return Fact[]
      */
-    public function pastableFacts(GedcomRecord $gedcom_record): array {
+    public function pastableFacts(GedcomRecord $record): array {
         // The facts are stored in the session.
         $clipboard = Session::get('clipboard', []);
 
         // Put the most recently copied fact at the top of the list.
-        $clipboard = array_reverse($clipboard);
-
-        // Only include facts that can be pasted onto this record.
-        $clipboard = array_filter($clipboard, function(array $clipping) use ($gedcom_record): bool {
-            return $clipping['type'] == $gedcom_record::RECORD_TYPE || $clipping['type'] == 'all';
-        });
+        $clipboard = array_reverse($clipboard[$record::RECORD_TYPE] ?? []);
 
         // Create facts for the record.
-        $facts = array_map(function(array $clipping) use ($gedcom_record): Fact {
-            return new Fact($clipping['factrec'], $gedcom_record, md5($clipping['factrec']));
+        $facts = array_map(function(array $clipping) use ($record): Fact {
+            return new Fact($clipping['factrec'], $record, md5($clipping['factrec']));
         }, $clipboard);
 
         return $facts;
