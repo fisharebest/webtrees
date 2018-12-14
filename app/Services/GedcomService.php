@@ -218,7 +218,7 @@ class GedcomService
      */
     public function isUserDefinedTag(string $tag): bool
     {
-        return substr_compare($tag, self::USER_DEFINED_TAG_PREFIX0, 0, 1) === 0;
+        return substr_compare($tag, self::USER_DEFINED_TAG_PREFIX, 0, 1) === 0;
     }
 
     /**
