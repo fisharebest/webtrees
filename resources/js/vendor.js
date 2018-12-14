@@ -31,6 +31,7 @@ window.Sortable = require('sortablejs');
 import "select2";
 
 import "moment";
+import "chart.js";
 
 import "jquery-colorbox";
 

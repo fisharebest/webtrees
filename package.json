@@ -15,6 +15,7 @@
     "@fortawesome/fontawesome-free": "^5.6.3",
     "beautifymarker": "^1.0.7",
     "bootstrap": "^4.2.1",
+    "chart.js": "^2.7.3",
     "corejs-typeahead": "^1.2.1",
     "datatables.net-bs4": "^1.10.19",
     "dejavu-fonts-ttf": "^2.37.3",

@@ -2,7 +2,9 @@
 /** @var \Fisharebest\Webtrees\Stats $stats */
 ?>
 
-<div class="container p-0 pt-3">
+<script src="node_modules/chart.js/dist/Chart.js"></script>
+
+<div class="container pt-3">
     <?= view('statistics/total-records', ['stats' => $stats]) ?>
     <?= view('statistics/total-events', ['stats' => $stats]) ?>
     <?= view('statistics/chart-objects', ['stats' => $stats]) ?>
