@@ -3,7 +3,9 @@
 
 <tr>
     <th scope="row">
-        <?= I18N::translate('Fact or event') ?>
+        <label for="add-fact">
+            <?= I18N::translate('Fact or event') ?>
+        </label>
     </th>
     <td>
         <form onsubmit="if ($('#add-fact').val() === null) {event.preventDefault();}">
@@ -11,7 +13,7 @@
             <input type="hidden" name="xref" value="<?= e($record->xref()) ?>">
             <input type="hidden" name="ged" value="<?= e($record->tree()->name()) ?>">
             <div class="input-group">
-                <select class="form-control" id="add-fact" name="fact">
+                <select class="custom-select" id="add-fact" name="fact">
                     <option value="" disabled selected>
                         <?= I18N::translate('&lt;select&gt;') ?>
                     </option>

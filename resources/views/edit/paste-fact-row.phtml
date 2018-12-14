@@ -3,12 +3,14 @@
 <?php if (!empty($facts)) : ?>
 <tr>
     <th scope="row">
-        <?= I18N::translate('Add from clipboard') ?>
+        <label for="paste-fact">
+            <?= I18N::translate('Add from clipboard') ?>
+        </label>
     </th>
     <td>
         <form name="newFromClipboard" onsubmit="return false;">
             <div class="input-group">
-                <select class="form-control" id="newClipboardFact">
+                <select class="custom-select" id="paste-fact">
                     <?php foreach ($facts as $fact) : ?>
                     <option value="<?= e($fact->id()) ?>">
                         <?= $fact->label() ?>
@@ -25,7 +27,7 @@
                     <?php endforeach ?>
                 </select>
                 <div class="input-group-append">
-                    <button class="btn btn-light" type="submit" onclick="return paste_fact('<?= e($tree->name()) ?>', '<?= e($record->xref()) ?>', '#newClipboardFact');">
+                    <button class="btn btn-light" type="submit" onclick="return paste_fact('<?= e($tree->name()) ?>', '<?= e($record->xref()) ?>', '#paste-fact');">
                         <?= /* I18N: A button label. */ I18N::translate('add') ?>
                     </button>
                 </div>
