@@ -444,7 +444,7 @@ class Stats
             . '&chs=' . $size . '&chco=' . $color_from . ',' . $color_to . '&chf=bg,s,ffffff00&chl=' . $chl;
 
         return view(
-            'statistics/chart-individuals-with-sources',
+            'statistics/other/chart-individuals-with-sources',
             [
                 'chart_title' => $chart_title,
                 'chart_url'   => $chart_url,
@@ -549,7 +549,7 @@ class Stats
             . '&chs=' . $size . '&chco=' . $color_from . ',' . $color_to . '&chf=bg,s,ffffff00&chl=' . $chl;
 
         return view(
-            'statistics/chart-families-with-sources',
+            'statistics/other/chart-families-with-sources',
             [
                 'chart_title' => $chart_title,
                 'chart_url'   => $chart_url,
@@ -1487,7 +1487,7 @@ class Stats
             . '&chs=' . $size . '&chco=' . $color_from . ',' . $color_to . '&chf=bg,s,ffffff00&chl=' . $chl;
 
         return view(
-            'statistics/chart-media',
+            'statistics/other/chart-media',
             [
                 'chart_title' => $chart_title,
                 'chart_url'   => $chart_url,
@@ -1834,7 +1834,7 @@ class Stats
         }
 
         return view(
-            'statistics/chart-distribution',
+            'statistics/other/chart-distribution',
             [
                 'chart_title'           => $chart_title,
                 'chart_url'             => $chart_url,

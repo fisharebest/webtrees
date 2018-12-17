@@ -1,0 +1,136 @@
+<?php
+use Fisharebest\Webtrees\GedcomTag;
+use Fisharebest\Webtrees\I18N;
+?>
+
+<div class="row">
+    <div class="col-12 col-lg-6 col-xl-6">
+        <canvas id="canvas" class="doughnut" height="250" width="250"></canvas>
+    </div>
+    <div class="col-12 col-lg-6 col-xl-6 mt-4 mt-lg-0 mt-xl-0">
+        <div class="doughnut-legend text-center text-lg-left text-xl-left"></div>
+    </div>
+</div>
+
+<?php
+
+$mediaCount = count($mediaTypes);
+
+$countList  = array_map(function ($value) { return I18N::number($value); }, array_values($mediaTypes));
+$countList  = json_encode($countList);
+
+$labelList  = array_map(function ($value) { return GedcomTag::getFileFormTypeValue($value); }, array_keys($mediaTypes));
+$labelList  = json_encode($labelList);
+
+?>
+
+<script type="text/javascript">
+
+function color()
+{
+    // Converts a #ffffff hex string into an [r,g,b] array
+    function hex2rgb(hex) {
+        const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+        return result ? [
+            parseInt(result[1], 16),
+            parseInt(result[2], 16),
+            parseInt(result[3], 16)
+        ] : null;
+    }
+
+    // Inverse of the above
+    function rgb2hex(rgb) {
+        return '#' + ((1 << 24) + (rgb[0] << 16) + (rgb[1] << 8) + rgb[2]).toString(16).slice(1);
+    }
+
+    // Interpolates two [r,g,b] colors and returns an [r,g,b] of the result
+    function _interpolateRgb(color1, color2, factor) {
+        if (arguments.length < 3) { factor = 0.5; }
+
+        let result = color1.slice();
+
+        for (let i=0;i<3;i++) {
+            result[i] = Math.round(result[i] + factor*(color2[i]-color1[i]));
+        }
+
+        return result;
+    }
+
+    function colorsToGradientRgb(startColor, endColor, steps) {
+        // returns array of hex values for color, since rgb would be an array of arrays and not strings, easier to handle hex strings
+        let arrReturnColors = [];
+        let interimColorRGB;
+        let interimColorHex;
+        const totalColors = steps;
+        const factorStep = 1 / (totalColors - 1);
+
+        // Ignore first entry (0), is mostly #fff
+        for (let idx = 1; idx < totalColors; idx++) {
+            interimColorRGB = _interpolateRgb(startColor, endColor, factorStep * idx);
+            interimColorHex = rgb2hex(interimColorRGB);
+            arrReturnColors.push(interimColorHex);
+        }
+
+        return arrReturnColors;
+    }
+
+    function generateGradient(color1, color2, total) {
+        const colorStart = typeof color1 === 'string' ? hex2rgb(color1) : color1;
+        const colorEnd   = typeof color2 === 'string' ? hex2rgb(color2) : color2;
+
+        return colorsToGradientRgb(colorStart, colorEnd, total);
+    }
+
+    return {
+        generateGradient
+    };
+}
+
+
+
+var canvas = document.getElementById('canvas');
+var ctx    = canvas.getContext('2d');
+
+let colorArray = color().generateGradient("#<?= $color_from ?>", "#<?= $color_to ?>", <?= $mediaCount + 1 ?>);
+
+let chart = new Chart(
+    ctx,
+    {
+        type: "doughnut",
+        data: {
+            labels: <?= $labelList ?>,
+            datasets: [{
+                data: <?= $countList ?>,
+                backgroundColor: colorArray
+            }]
+        },
+        options: {
+            responsive: true,
+            scaleBeginAtZero: false,
+            legend: false,
+            legendCallback: function(chart) {
+                var text = [];
+
+                text.push("<ul class=\"list-group d-inline d-lg-inline-flex d-xl-inline-flex\">");
+
+                for (var i = 0; i < chart.data.datasets[0].data.length; i++) {
+                    text.push("<li class=\"d-inline d-lg-inline-block d-xl-inline-block\">");
+                    text.push("<span style=\"background-color:" + chart.data.datasets[0].backgroundColor[i] + ";\"></span>");
+                    text.push(chart.data.labels[i] + " (" + chart.data.datasets[0].data[i] + ")");
+                    text.push("</li>");
+                }
+
+                text.push("</ul>");
+
+                return text.join("");
+            }
+        }
+    }
+);
+
+$(canvas).parent()
+    .next()
+    .children('.doughnut-legend')
+    .html(chart.generateLegend());
+
+</script>
