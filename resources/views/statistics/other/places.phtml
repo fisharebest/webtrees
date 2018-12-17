@@ -7,17 +7,17 @@ use Fisharebest\Webtrees\Place;
 /** @var \Fisharebest\Webtrees\Stats $stats */
 ?>
 
-<h3 class="border-bottom p-2 mb-4">
+<h4 class="border-bottom p-2 mb-4">
     <?= I18N::translate('Places') ?>
     <span class="badge badge-secondary badge-pill float-right"><?= $stats->totalPlaces() ?></span>
-</h3>
+</h4>
 
 <div class="card-deck mb-3">
     <div class="col-lg-6 col-md-6 mb-3">
         <div class="card m-0">
-            <h4 class="card-header">
+            <h5 class="card-header">
                 <?= I18N::translate('Birth places') ?>
-            </h4>
+            </h5>
             <ul class="list-group list-group-flush">
                 <?php $places = $stats->commonBirthPlacesList(); ?>
                 <?php foreach ($places as $entry): ?>
@@ -36,9 +36,9 @@ use Fisharebest\Webtrees\Place;
 
     <div class="col-lg-6 col-md-6 mb-3">
         <div class="card m-0">
-            <h4 class="card-header">
+            <h5 class="card-header">
                 <?= I18N::translate('Death places') ?>
-            </h4>
+            </h5>
             <ul class="list-group list-group-flush">
                 <?php $places = $stats->commonDeathPlacesList(); ?>
                 <?php foreach ($places as $entry): ?>
@@ -57,9 +57,9 @@ use Fisharebest\Webtrees\Place;
 
     <div class="col-lg-6 col-md-6 mb-3">
         <div class="card m-0">
-            <h4 class="card-header">
+            <h5 class="card-header">
                 <?= I18N::translate('Marriage places') ?>
-            </h4>
+            </h5>
             <ul class="list-group list-group-flush">
                 <?php $places = $stats->commonMarriagePlacesList(); ?>
                 <?php foreach ($places as $entry): ?>
@@ -78,9 +78,9 @@ use Fisharebest\Webtrees\Place;
 
     <div class="col-lg-6 col-md-6 mb-3">
         <div class="card m-0">
-            <h4 class="card-header">
+            <h5 class="card-header">
                 <?= I18N::translate('Events in countries') ?>
-            </h4>
+            </h5>
             <ul class="list-group list-group-flush">
                 <?php $places = $stats->commonCountriesList(); ?>
                 <?php foreach ($places as $entry): ?>

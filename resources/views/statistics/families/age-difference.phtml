@@ -1,0 +1,59 @@
+<?php
+declare(strict_types=1);
+
+use Fisharebest\Webtrees\I18N;
+
+/** @var \Fisharebest\Webtrees\Stats $stats */
+?>
+
+<h4 class="border-bottom p-2 mb-4">
+    <?= I18N::translate('Age difference') ?>
+</h4>
+
+<div class="card-deck mb-3">
+    <div class="col-lg-6 col-md-6 mb-3">
+        <div class="card m-0">
+            <h5 class="card-header">
+                <?= I18N::translate('Age between siblings') ?>
+            </h5>
+            <div class="card-body text-center">
+                <?= $stats->topAgeBetweenSiblingsList() ?>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6 col-md-6 mb-3">
+        <div class="card m-0">
+            <h5 class="card-header">
+                <?= I18N::translate('Greatest age between siblings') ?>
+            </h5>
+            <div class="card-body text-center">
+                <?= $stats->topAgeBetweenSiblingsFullName() ?>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card-deck mb-3">
+    <div class="col-lg-6 col-md-6 mb-3">
+        <div class="card m-0">
+            <h5 class="card-header">
+                <?= I18N::translate('Age between husband and wife') ?>
+            </h5>
+            <div class="card-body text-center">
+                <?= $stats->ageBetweenSpousesMFList() ?>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6 col-md-6 mb-3">
+        <div class="card m-0">
+            <h5 class="card-header">
+                <?= I18N::translate('Age between wife and husband') ?>
+            </h5>
+            <div class="card-body text-center">
+                <?= $stats->ageBetweenSpousesFMList() ?>
+            </div>
+        </div>
+    </div>
+</div>

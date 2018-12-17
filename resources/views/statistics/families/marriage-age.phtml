@@ -1,0 +1,69 @@
+<?php
+declare(strict_types=1);
+
+use Fisharebest\Webtrees\I18N;
+
+/** @var \Fisharebest\Webtrees\Stats $stats */
+?>
+
+<h4 class="border-bottom p-2 mb-4">
+    <?= I18N::translate('Age in year of marriage') ?>
+</h4>
+
+<div class="card-deck mb-3">
+    <div class="col-lg-6 col-md-6 mb-3">
+        <div class="card m-0">
+            <h5 class="card-header">
+                <?= I18N::translate('Youngest male'), ' - ', $stats->youngestMarriageMaleAge('1') ?>
+            </h5>
+            <div class="card-body">
+                <?= $stats->youngestMarriageMale() ?>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6 col-md-6 mb-3">
+        <div class="card m-0">
+            <h5 class="card-header">
+                <?= I18N::translate('Youngest female'), ' - ', $stats->youngestMarriageFemaleAge('1') ?>
+            </h5>
+            <div class="card-body">
+                <?= $stats->youngestMarriageFemale() ?>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card-deck mb-3">
+    <div class="col-lg-6 col-md-6 mb-3">
+        <div class="card m-0">
+            <h5 class="card-header">
+                <?= I18N::translate('Oldest male'), ' - ', $stats->oldestMarriageMaleAge('1') ?>
+            </h5>
+            <div class="card-body">
+                <?= $stats->oldestMarriageMale() ?>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6 col-md-6 mb-3">
+        <div class="card m-0">
+            <h5 class="card-header">
+                <?= I18N::translate('Oldest female'), ' - ', $stats->oldestMarriageFemaleAge('1') ?>
+            </h5>
+            <div class="card-body">
+                <?= $stats->oldestMarriageFemale() ?>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card-deck mb-3">
+    <div class="col-lg-12 col-md-12 mb-3">
+        <div class="card m-0">
+            <div class="card-body text-center">
+                <?= $stats->statsMarrAge() ?>
+            </div>
+        </div>
+    </div>
+</div>

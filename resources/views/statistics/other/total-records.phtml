@@ -6,45 +6,45 @@ use Fisharebest\Webtrees\I18N;
 /** @var \Fisharebest\Webtrees\Stats $stats */
 ?>
 
-<h3 class="border-bottom p-2 mb-4">
+<h4 class="border-bottom p-2 mb-4">
     <?= I18N::translate('Records') ?>
     <span class="badge badge-secondary badge-pill float-right"><?= $stats->totalRecords() ?></span>
-</h3>
+</h4>
 
 <div class="card-deck mb-3">
     <div class="col-xl-6 col-lg-6 col-md-12 mb-3">
         <div class="card m-0">
-            <h4 class="card-header border-bottom-0">
+            <h5 class="card-header border-bottom-0">
                 <?= I18N::translate('Media objects') ?>
                 <span class="badge badge-secondary badge-pill float-right"><?= $stats->totalMedia() ?></span>
-            </h4>
+            </h5>
         </div>
     </div>
 
     <div class="col-xl-6 col-lg-6 col-md-12 mb-3">
         <div class="card m-0">
-            <h4 class="card-header border-bottom-0">
+            <h5 class="card-header border-bottom-0">
                 <?= I18N::translate('Sources') ?>
                 <span class="badge badge-secondary badge-pill float-right"><?= $stats->totalSources() ?></span>
-            </h4>
+            </h5>
         </div>
     </div>
 
     <div class="col-xl-6 col-lg-6 col-md-12 mb-3">
         <div class="card m-0">
-            <h4 class="card-header border-bottom-0">
+            <h5 class="card-header border-bottom-0">
                 <?= I18N::translate('Notes') ?>
                 <span class="badge badge-secondary badge-pill float-right"><?= $stats->totalNotes() ?></span>
-            </h4>
+            </h5>
         </div>
     </div>
 
     <div class="col-xl-6 col-lg-6 col-md-12 mb-3">
         <div class="card m-0">
-            <h4 class="card-header border-bottom-0">
+            <h5 class="card-header border-bottom-0">
                 <?= I18N::translate('Repositories') ?>
                 <span class="badge badge-secondary badge-pill float-right"><?= $stats->totalRepositories() ?></span>
-            </h4>
+            </h5>
         </div>
     </div>
 </div>

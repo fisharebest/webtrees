@@ -6,17 +6,17 @@ use Fisharebest\Webtrees\I18N;
 /** @var \Fisharebest\Webtrees\Stats $stats */
 ?>
 
-<h3 class="border-bottom p-2 mb-4">
+<h4 class="border-bottom p-2 mb-4">
     <?= I18N::translate('Total events') ?>
     <span class="badge badge-secondary badge-pill float-right"><?= $stats->totalEvents() ?></span>
-</h3>
+</h4>
 
 <div class="card-deck mb-3">
     <div class="col-lg-6 col-md-6 mb-3">
         <div class="card m-0">
-            <h4 class="card-header">
+            <h5 class="card-header">
                 <?= I18N::translate('First event'), ' - ', $stats->firstEventType() ?>
-            </h4>
+            </h5>
             <div class="card-body">
                 <?= $stats->firstEvent() ?>
             </div>
@@ -25,9 +25,9 @@ use Fisharebest\Webtrees\I18N;
 
     <div class="col-lg-6 col-md-6 mb-3">
         <div class="card m-0">
-            <h4 class="card-header">
+            <h5 class="card-header">
                 <?= I18N::translate('Last event'), ' - ', $stats->lastEventType() ?>
-            </h4>
+            </h5>
             <div class="card-body">
                 <?= $stats->lastEvent() ?>
             </div>

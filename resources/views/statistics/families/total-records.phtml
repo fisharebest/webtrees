@@ -1,0 +1,32 @@
+<?php
+declare(strict_types=1);
+
+use Fisharebest\Webtrees\I18N;
+
+/** @var \Fisharebest\Webtrees\Stats $stats */
+?>
+
+<h4 class="border-bottom p-2 mb-4">
+    <?= I18N::translate('Total families') ?>
+    <span class="badge badge-secondary badge-pill float-right"><?= $stats->totalFamilies() ?></span>
+</h4>
+
+<div class="card-deck mb-3">
+    <div class="col-xl-6 col-lg-6 col-md-12 mb-3">
+        <div class="card m-0">
+            <h5 class="card-header border-bottom-0">
+                <?= I18N::translate('Total marriages') ?>
+                <span class="badge badge-secondary badge-pill float-right"><?= $stats->totalMarriages() ?></span>
+            </h5>
+        </div>
+    </div>
+
+    <div class="col-xl-6 col-lg-6 col-md-12 mb-3">
+        <div class="card m-0">
+            <h5 class="card-header border-bottom-0">
+                <?= I18N::translate('Total divorces') ?>
+                <span class="badge badge-secondary badge-pill float-right"><?= $stats->totalDivorces() ?></span>
+            </h5>
+        </div>
+    </div>
+</div>
