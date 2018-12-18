@@ -29,7 +29,7 @@ class Migration27 implements MigrationInterface
      *
      * @return void
      */
-    public function upgrade()
+    public function upgrade(): void
     {
         // Delete old/unused settings
         Database::exec(

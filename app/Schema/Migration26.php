@@ -29,7 +29,7 @@ class Migration26 implements MigrationInterface
      *
      * @return void
      */
-    public function upgrade()
+    public function upgrade(): void
     {
         // Earlier versions of webtrees put quote marks round soundex codes.
         // These are harmless, but clean them up for consistency.

@@ -27,11 +27,11 @@ use PDOException;
 class Migration11 implements MigrationInterface
 {
     /**
-     * Upgrade to to the next version
+     * Upgrade to to the next version.
      *
      * @return void
      */
-    public function upgrade()
+    public function upgrade(): void
     {
         // - delete the wt_name.n_list column; it has never been used
         // - a bug in webtrees 1.1.2 caused the wt_name.n_full column

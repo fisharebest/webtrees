@@ -31,7 +31,7 @@ class Migration30 implements MigrationInterface
      *
      * @return void
      */
-    public function upgrade()
+    public function upgrade(): void
     {
         $WEBTREES_EMAIL = 'webtrees-noreply@' . preg_replace('/^www\./i', '', $_SERVER['SERVER_NAME'] ?? '');
 

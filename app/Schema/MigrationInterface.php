@@ -27,5 +27,5 @@ interface MigrationInterface
      *
      * @return void
      */
-    public function upgrade();
+    public function upgrade(): void;
 }

@@ -31,7 +31,7 @@ class Migration9 implements MigrationInterface
      *
      * @return void
      */
-    public function upgrade()
+    public function upgrade(): void
     {
         // Change index on name table
         try {

@@ -27,13 +27,13 @@ use PDOException;
 class Migration2 implements MigrationInterface
 {
     /**
-     * Upgrade to to the next version
+     * Upgrade to to the next version.
      *
      * @return void
      */
-    public function upgrade()
+    public function upgrade(): void
     {
-        // - create the wt_gedcom_chunk table to import gedcoms in
+        // Create the wt_gedcom_chunk table to import gedcoms in
         // blocks of data smaller than the max_allowed_packet restriction.
 
         Database::exec(

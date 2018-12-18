@@ -40,18 +40,6 @@ function csrf_token()
 }
 
 /**
- * Escape a string for inclusion within HTML.
- *
- * @param string $text
- *
- * @return string
- */
-function e(string $text): string
-{
-    return htmlspecialchars($text, ENT_QUOTES, 'UTF-8');
-}
-
-/**
  * Generate a URL for a named route.
  *
  * @param string $route

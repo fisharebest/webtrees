@@ -27,11 +27,11 @@ use PDOException;
 class Migration13 implements MigrationInterface
 {
     /**
-     * Upgrade to to the next version
+     * Upgrade to to the next version.
      *
      * @return void
      */
-    public function upgrade()
+    public function upgrade(): void
     {
         // Remove the i_isdead column
         try {

@@ -30,7 +30,7 @@ class Migration38 implements MigrationInterface
      *
      * @return void
      */
-    public function upgrade()
+    public function upgrade(): void
     {
         // The geographic data is now handled by the core code.
         // The following migrations were once part of the old googlemap module.

@@ -32,7 +32,7 @@ class Migration2 implements MigrationInterface
      *
      * @return void
      */
-    public function upgrade()
+    public function upgrade(): void
     {
         // Delete any data that might violate the new constraints
         Database::exec(

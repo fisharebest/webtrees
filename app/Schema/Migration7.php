@@ -29,7 +29,7 @@ class Migration7 implements MigrationInterface
      *
      * @return void
      */
-    public function upgrade()
+    public function upgrade(): void
     {
         // Update config data defining theme selection
         Database::exec(

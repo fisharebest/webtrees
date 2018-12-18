@@ -31,7 +31,7 @@ class Migration6 implements MigrationInterface
      *
      * @return void
      */
-    public function upgrade()
+    public function upgrade(): void
     {
         // Remove tables/columns relating to remote linking
         Database::exec(

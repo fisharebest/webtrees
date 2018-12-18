@@ -31,7 +31,7 @@ class Migration8 implements MigrationInterface
      *
      * @return void
      */
-    public function upgrade()
+    public function upgrade(): void
     {
         // Add support for the persian/jalali calendar
         try {

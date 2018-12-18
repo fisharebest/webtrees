@@ -25,11 +25,11 @@ use Fisharebest\Webtrees\Database;
 class Migration15 implements MigrationInterface
 {
     /**
-     * Upgrade to to the next version
+     * Upgrade to to the next version.
      *
      * @return void
      */
-    public function upgrade()
+    public function upgrade(): void
     {
         // Delete old config settings
         Database::exec("DELETE FROM `##gedcom_setting` WHERE setting_name IN('GEDCOM_DEFAULT_TAB', 'LINK_ICONS', 'ZOOM_BOXES', 'SHOW_LIST_PLACES', 'SHOW_CONTEXT_HELP')");

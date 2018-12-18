@@ -29,7 +29,7 @@ class Migration5 implements MigrationInterface
      *
      * @return void
      */
-    public function upgrade()
+    public function upgrade(): void
     {
         // Changes to the values for the gedcom setting SHOW_RELATIVES_EVENTS
         $settings = Database::prepare("SELECT gedcom_id, setting_value FROM `##gedcom_setting` WHERE setting_name='SHOW_RELATIVES_EVENTS'")->fetchAssoc();

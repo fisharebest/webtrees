@@ -29,7 +29,7 @@ class Migration25 implements MigrationInterface
      *
      * @return void
      */
-    public function upgrade()
+    public function upgrade(): void
     {
         // - delete unused settings and update indexes
         Database::exec(

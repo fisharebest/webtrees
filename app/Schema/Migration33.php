@@ -27,7 +27,7 @@ class Migration33 implements MigrationInterface
      *
      * @return void
      */
-    public function upgrade()
+    public function upgrade(): void
     {
         // Originally, this inserted entries into wt_site_access_rule,
         // however this table now gets deleted in Migration37.

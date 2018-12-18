@@ -27,11 +27,11 @@ use Throwable;
 class Migration22 implements MigrationInterface
 {
     /**
-     * Upgrade to to the next version
+     * Upgrade to to the next version.
      *
      * @return void
      */
-    public function upgrade()
+    public function upgrade(): void
     {
         // - data update for 1.4.0 media changes
         $_cfgs = Database::prepare(

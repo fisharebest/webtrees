@@ -31,7 +31,7 @@ class Migration32 implements MigrationInterface
      *
      * @return void
      */
-    public function upgrade()
+    public function upgrade(): void
     {
         try {
             Database::prepare(

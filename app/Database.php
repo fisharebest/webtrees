@@ -19,6 +19,7 @@ namespace Fisharebest\Webtrees;
 
 use Exception;
 use Fisharebest\Webtrees\Schema\MigrationInterface;
+use Illuminate\Database\Capsule\Manager as DB;
 use PDO;
 use PDOException;
 use PDOStatement;
@@ -107,6 +108,21 @@ class Database
         self::$pdo->prepare("SET time_zone = :time_zone")->execute(['time_zone' => date('P')]);
 
         self::$instance = new self();
+
+        $capsule = new DB();
+        $capsule->addConnection([
+            'driver'         => 'mysql',
+            'host'           => $config['dbhost'],
+            'port'           => $config['dbport'],
+            'database'       => $config['dbname'],
+            'username'       => $config['dbuser'],
+            'password'       => $config['dbpass'],
+            'charset'        => 'utf8',
+            'collation'      => 'utf8_unicode_ci',
+            'prefix'         => $config['tblpfx'],
+            'prefix_indexes' => true,
+        ]);
+        $capsule->setAsGlobal();
     }
 
     /**

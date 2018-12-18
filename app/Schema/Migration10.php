@@ -25,11 +25,11 @@ use Fisharebest\Webtrees\Database;
 class Migration10 implements MigrationInterface
 {
     /**
-     * Upgrade to to the next version
+     * Upgrade to to the next version.
      *
      * @return void
      */
-    public function upgrade()
+    public function upgrade(): void
     {
         // Delete old configuration setting
         Database::exec("DELETE FROM `##gedcom_setting` WHERE setting_name IN ('SEARCH_FACTS_DEFAULT', 'DISPLAY_JEWISH_GERESHAYIM', 'DISPLAY_JEWISH_THOUSANDS')");

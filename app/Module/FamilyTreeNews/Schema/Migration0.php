@@ -30,7 +30,7 @@ class Migration0 implements MigrationInterface
      *
      * @return void
      */
-    public function upgrade()
+    public function upgrade(): void
     {
         Database::exec(
             "CREATE TABLE IF NOT EXISTS `##news` (" .

@@ -113,7 +113,7 @@ class ErrorController extends AbstractBaseController
             ], Response::HTTP_INTERNAL_SERVER_ERROR);
         } catch (Throwable $ex2) {
             // An error occured in the layout?  Just show the error.
-            return new Response($error, Response::HTTP_INTERNAL_SERVER_ERROR);
+            return new Response('<htrml><body><pre>' . e($error) . '</pre></body></htrml>', Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
 }

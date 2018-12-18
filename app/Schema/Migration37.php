@@ -30,7 +30,7 @@ class Migration37 implements MigrationInterface
      *
      * @return void
      */
-    public function upgrade()
+    public function upgrade(): void
     {
         Database::prepare(
             "DROP TABLE IF EXISTS `##site_access_rule`"

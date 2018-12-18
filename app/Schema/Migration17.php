@@ -23,11 +23,11 @@ namespace Fisharebest\Webtrees\Schema;
 class Migration17 implements MigrationInterface
 {
     /**
-     * Upgrade to to the next version
+     * Upgrade to to the next version.
      *
      * @return void
      */
-    public function upgrade()
+    public function upgrade(): void
     {
         // Originally, this created wt_site_access_rule,
         // however this table now gets deleted in Migration37.

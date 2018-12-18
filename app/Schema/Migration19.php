@@ -25,11 +25,11 @@ use Fisharebest\Webtrees\Database;
 class Migration19 implements MigrationInterface
 {
     /**
-     * Upgrade to to the next version
+     * Upgrade to to the next version.
      *
      * @return void
      */
-    public function upgrade()
+    public function upgrade(): void
     {
         // Fix some broken data caused by a bug
         Database::exec("UPDATE `##default_resn` SET xref     = NULL WHERE xref     = ''");

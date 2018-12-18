@@ -25,11 +25,11 @@ use Fisharebest\Webtrees\Database;
 class Migration21 implements MigrationInterface
 {
     /**
-     * Upgrade to to the next version
+     * Upgrade to to the next version.
      *
      * @return void
      */
-    public function upgrade()
+    public function upgrade(): void
     {
         // Data fix for bug #1072477
         Database::exec("UPDATE `##default_resn` SET xref     = NULL WHERE xref     = ''");
@@ -40,20 +40,6 @@ class Migration21 implements MigrationInterface
 
         // Delete old settings
         Database::exec("DELETE FROM `##module_setting` WHERE module_name='lightbox'");
-
-        // Very old versions of phpGedView allowed media paths beginning “./”
-        // Remove these
-        Database::exec(
-            "UPDATE `##media` m" .
-            " SET" .
-            "  m_filename = TRIM(LEADING './' FROM m_filename)," .
-            "  m_gedcom   = REPLACE(m_gedcom, '\n1 FILE ./', '\n1 FILE ')"
-        );
-        Database::exec(
-            "UPDATE `##change` c" .
-            " SET new_gedcom = REPLACE(new_gedcom, '\n1 FILE ./', '\n1 FILE ')" .
-            " WHERE status = 'pending'"
-        );
 
         // Previous versions of webtrees included the MEDIA_DIRECTORY setting in the
         // FILE tag of the OBJE records. Remove it…

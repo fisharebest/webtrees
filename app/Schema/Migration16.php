@@ -25,11 +25,11 @@ use Fisharebest\Webtrees\Database;
 class Migration16 implements MigrationInterface
 {
     /**
-     * Upgrade to to the next version
+     * Upgrade to to the next version.
      *
      * @return void
      */
-    public function upgrade()
+    public function upgrade(): void
     {
         // Add a "default" user, to store default settings
         Database::exec("INSERT IGNORE INTO `##user` (user_id, user_name, real_name, email, password) VALUES (-1, 'DEFAULT_USER', 'DEFAULT_USER', 'DEFAULT_USER', 'DEFAULT_USER')");

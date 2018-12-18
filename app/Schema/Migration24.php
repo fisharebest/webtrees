@@ -25,11 +25,11 @@ use Fisharebest\Webtrees\Database;
 class Migration24 implements MigrationInterface
 {
     /**
-     * Upgrade to to the next version
+     * Upgrade to to the next version.
      *
      * @return void
      */
-    public function upgrade()
+    public function upgrade(): void
     {
         // Tree settings become site settings
         Database::exec(

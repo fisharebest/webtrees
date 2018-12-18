@@ -27,11 +27,11 @@ use Fisharebest\Webtrees\Site;
 class Migration0 implements MigrationInterface
 {
     /**
-     * Upgrade to to the next version
+     * Upgrade to to the next version.
      *
      * @return void
      */
-    public function upgrade()
+    public function upgrade(): void
     {
         Database::exec(
             "CREATE TABLE IF NOT EXISTS `##gedcom` (" .

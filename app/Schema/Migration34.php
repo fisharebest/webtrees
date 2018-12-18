@@ -30,7 +30,7 @@ class Migration34 implements MigrationInterface
      *
      * @return void
      */
-    public function upgrade()
+    public function upgrade(): void
     {
         // New modules (charts) have been added.
         Module::getInstalledModules('enabled');

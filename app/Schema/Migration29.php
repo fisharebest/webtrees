@@ -29,11 +29,8 @@ class Migration29 implements MigrationInterface
      *
      * @return void
      */
-    public function upgrade()
+    public function upgrade(): void
     {
-        // Originally migrated from PhpGedView, but never used.
-        Database::exec("DROP TABLE IF EXISTS `##ip_address`");
-
         // No longer used
         Database::exec("DELETE FROM `##user_setting` WHERE setting_name IN ('editaccount')");
         Database::exec("DELETE FROM `##gedcom_setting` WHERE setting_name IN ('SHOW_STATS')");

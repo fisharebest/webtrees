@@ -25,11 +25,11 @@ use Fisharebest\Webtrees\Database;
 class Migration3 implements MigrationInterface
 {
     /**
-     * Upgrade to to the next version
+     * Upgrade to to the next version.
      *
      * @return void
      */
-    public function upgrade()
+    public function upgrade(): void
     {
         // Update the max_relation_path_length from a separate
         // user setting and gedcom setting to a combined user-gedcom

@@ -31,7 +31,7 @@ class Migration39 implements MigrationInterface
      *
      * @return void
      */
-    public function upgrade()
+    public function upgrade(): void
     {
         // The following migrations were once part of the favorites module.
 

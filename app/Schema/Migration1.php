@@ -25,11 +25,11 @@ use Fisharebest\Webtrees\Database;
 class Migration1 implements MigrationInterface
 {
     /**
-     * Upgrade to to the next version
+     * Upgrade to to the next version.
      *
      * @return void
      */
-    public function upgrade()
+    public function upgrade(): void
     {
         // Create the wt_session table to store session data in the database,
         // rather than in the filesystem.

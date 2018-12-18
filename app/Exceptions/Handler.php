@@ -17,11 +17,11 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Exceptions;
 
-use Exception;
 use Fisharebest\Webtrees\Http\Controllers\ErrorController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\HttpException;
+use Throwable;
 
 /**
  * Convert an exception into an HTTP response
@@ -32,11 +32,11 @@ class Handler
      * Render an exception into an HTTP response.
      *
      * @param  Request   $request
-     * @param  Exception $exception
+     * @param  Throwable $exception
      *
      * @return Response
      */
-    public function render(Request $request, Exception $exception): Response
+    public function render(Request $request, Throwable $exception): Response
     {
         if ($exception instanceof HttpException) {
             // Show a friendly page for expected exceptions.

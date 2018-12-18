@@ -32,7 +32,7 @@ class Migration1 implements MigrationInterface
      *
      * @return void
      */
-    public function upgrade()
+    public function upgrade(): void
     {
         // Add new columns
         try {

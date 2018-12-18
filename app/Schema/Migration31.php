@@ -41,7 +41,7 @@ class Migration31 implements MigrationInterface
      *
      * @return void
      */
-    public function upgrade()
+    public function upgrade(): void
     {
         $index_dir = Site::getPreference('INDEX_DIRECTORY');
 

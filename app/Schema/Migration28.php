@@ -29,7 +29,7 @@ class Migration28 implements MigrationInterface
      *
      * @return void
      */
-    public function upgrade()
+    public function upgrade(): void
     {
         // Earlier versions used the wrong month number for Adar in non-leap years
         Database::exec(
