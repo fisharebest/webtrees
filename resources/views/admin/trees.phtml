@@ -358,49 +358,6 @@
         </div>
     <?php endif ?>
 
-    <!-- display link to PhpGedView-WT transfer wizard on first visit to this page, before any GEDCOM is loaded -->
-    <?php if (empty($all_trees) && count($all_users) === 1) : ?>
-        <div class="card">
-            <div class="card-header" id="card-pgv-wizard-header">
-                <h2 class="mb-0">
-                    <?= view('icons/wizard') ?>
-                    <a data-toggle="collapse" data-parent="#accordion" href="#card-pgv-wizard-content" aria-controls="card-pgv-wizard-content">
-                        <?= I18N::translate('PhpGedView to webtrees transfer wizard') ?>
-                    </a>
-                </h2>
-            </div>
-            <div id="card-pgv-wizard-content" class="collapse show" role="tabpanel" aria-labelledby="card-pgv-wizard-header">
-                <div class="card-body">
-                    <p>
-                        <?= I18N::translate('The PhpGedView to webtrees wizard is an automated process to assist administrators make the move from a PhpGedView installation to a new webtrees one. It will transfer all PhpGedView GEDCOM and other database information directly to your new webtrees database. The following requirements are necessary:') ?>
-                    </p>
-                    <ul>
-                        <li>
-                            <?= I18N::translate('webtrees’ database must be on the same server as PhpGedView’s') ?>
-                        </li>
-                        <li>
-                            <?= /* I18N: %s is a number */ I18N::translate('PhpGedView must be version 4.2.3, or any SVN up to #%s', I18N::digits(7101)) ?>
-                        </li>
-                        <li>
-                            <?= I18N::translate('All changes in PhpGedView must be accepted') ?>
-                        </li>
-                        <li>
-                            <?= I18N::translate('All existing PhpGedView users must have distinct email addresses') ?>
-                        </li>
-                    </ul>
-                    <p>
-                        <?= I18N::translate('<b>Important note:</b> The transfer wizard is not able to assist with moving media items. You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished.') ?>
-                    </p>
-                    <p>
-                        <a href="<?= route('phpgedview-wizard') ?>">
-                            <?= I18N::translate('PhpGedView to webtrees transfer wizard') ?>
-                        </a>
-                    </p>
-                </div>
-            </div>
-        </div>
-    <?php endif ?>
-
     <!-- BULK LOAD/SYNCHRONISE GEDCOM FILES -->
     <?php if (count($gedcom_files) >= $multiple_tree_threshold) : ?>
         <div class="card">

@@ -615,13 +615,10 @@ class AdminTreesController extends AbstractBaseController
         $default_tree_name  = $this->generateNewTreeName();
         $default_tree_title = I18N::translate('My family tree');
 
-        $all_users = User::all();
-
         $title = I18N::translate('Manage family trees');
 
         return $this->viewResponse('admin/trees', [
             'all_trees'               => $all_trees,
-            'all_users'               => $all_users,
             'default_tree_name'       => $default_tree_name,
             'default_tree_title'      => $default_tree_title,
             'gedcom_files'            => $gedcom_files,

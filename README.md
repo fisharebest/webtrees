@@ -26,7 +26,6 @@ Further documentation is available at [wiki.webtrees.net](https://wiki.webtrees.
 * [Gedcom (family tree) files](#gedcom-family-tree-files)
 * [Security](#security)
 * [Backup](#backup)
-* [Converting from phpgedview](#converting-from-phpgedview)
 
 
 ### License
@@ -139,7 +138,7 @@ However, before you can use **webtrees**, you need at least one GEDCOM
 (family tree) file. If you have been doing your research using a desktop program
 such as Family Tree Maker, you can use it's “save as GEDCOM” function to create
 a GEDCOM file. If you are starting from scratch, then **webtrees** can create a
-GEDCOM file for you. Alternatively, you can import data directly from PhpGedView.
+GEDCOM file for you.
 
 On successful installation you will be taken to the
  ``Control panel`` -> ``Manage family trees``  page where you can:
@@ -147,9 +146,6 @@ On successful installation you will be taken to the
  * ADD a GEDCOM file from your server, (if your GEDCOM file is too large to upload,
    you can copy it to the webtrees/data folder, and load it from there)
  * CREATE a new, empty GEDCOM file
- * TRANSFER your existing PhpGedView data straight into **webtrees**, using the
-   PhpGedView-to-**webtrees** wizard described below:
-   [Converting from phpgedview](#converting-from-phpgedview)
 
 There are *lots* of configuration options. You'll probably want to review the
 privacy settings first. Don't worry too much about all the other options - the
@@ -372,70 +368,3 @@ To make a backup of **webtrees**, you need to make a copy of the following
 
 Remember that most web hosting services do NOT backup your data, and this is
 your responsibility.
-
-
-### Converting from phpgedview
-
-If you are moving to **webtrees** from an existing PhpGedView setup, and
-your PhpGedView install meets certain requirements, **webtrees** has provided a “wizard”
-to help make the transfer of the majority of your data a relatively quick and
-painless operation. See exceptions noted below. Please note that we have designed
-this wizard so as to not disturb your existing PhpGedView installation, leaving all those
-settings, data and your website intact and fully functional.
-
-The requirements are:
-
-* The PhpGedView database and index folder must be on the same server as **webtrees**.
-* Your **webtrees** MySQL database username and password must either be the same
-  as your PhpGedView username and password, or if you created a new user for **webtrees**,
-  that new user must also have full privileges to access your PhpGedView database.
-* PhpGedView must be at least versions 4.2.3 or 4.2.4 (this corresponds to an internal
-  “PGV_SCHEMA_VERSION” of between 10 and 14).  Newer versions, including the current
-  version 4.3 SVN work (as of JAN 2013) also currently, and later versions, should
-  they be released, will probably work, provided the data structures do not change;
-* All changes in PhpGedView must be accepted (as pending edits will not be transfered).
-* All existing PhpGedView users must have an email address, and it must be unique to that
-  user (PhpGedView allows users to delete their email address, or have the same email
-  address as other users;  **webtrees** requires that all users have their own
-  unique email address).
-* The wizard transfer process overwrites the username and password you may have
-  entered in setting up the initial admin account. The main administration user
-  name and password in **webtrees** will be identical to the admin username and
-  password from PhpGedView after running the wizard. Once done, you can change it back
-  if desired.
-
-
-#### Warning
-
-Please read the [https://wiki.webtrees.net/en/Converting_from_PhpGedView](https://wiki.webtrees.net/en/Converting_from_PhpGedView)
-before doing a transfer as important pre-processing steps and known issues may
-be outlined there.
-
-
-#### Important Note
-
-This transfer wizard is not able to assist with moving media items.  You will need
-to set up and move or copy your media configuration and objects separately after
-the transfer wizard is finished. If you use the media firewall in PhpGedView with a
-folder outside the PhpGedView root, then duplicating the media configuration in
-**webtrees** to use the same firewall folder should make your media available
-in **webtrees**.
-
-After the transfer is complete, you should check your family tree configuration
-and privacy settings. Due to differences in internal data formats, the following
-settings are not yet transfered: custom privacy restrictions, block configuration,
-FAQs, and HTML blocks.  We hope to add these to the wizard in a future release.
-
-
-#### Custom privacy restrictions, block configuration, FAQs and HTML blocks
-
-We hope to add these to the wizard in a future release. Otherwise, read the
-[https://wiki.webtrees.net/en/Converting_from_PhpGedView](https://wiki.webtrees.net/en/Converting_from_PhpGedView)
-before reporting a problem in the forum.
-
-The transfer wizard is accessed in **webtrees** from ``Control panel`` ->
-``Manage family trees`` to which you will be automatically directed once you
-have completed the initial **webtrees** installation steps (section 4 above:
-[installation](#installation)). This option is only available on a new,
-empty **webtrees** installation; once you have created a GEDCOM (family tree)
-or added user accounts, it will no longer be available.
