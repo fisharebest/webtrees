@@ -7,12 +7,7 @@ use Fisharebest\Webtrees\Individual;
 /* @var Individual $person */
 ?>
 
-<ul class="list-group list-group-flush">
-    <?php foreach ($records as $record): ?>
-        <?php $person = $record['person']; ?>
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-            <a href="<?= e($person->url()) ?>"><?= $person->getFullName() ?></a>
-            <span class="badge badge-secondary badge-pill ml-3"><?= $record['age'] ?></span>
-        </li>
-    <?php endforeach; ?>
-</ul>
+<?php foreach ($records as $record): ?>
+    <?php $person = $record['person']; ?>
+    <a href="<?= e($person->url()) ?>"><?= $person->getFullName() ?></a> (<?= $record['age'] ?>)
+<?php endforeach; ?>

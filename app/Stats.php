@@ -2836,7 +2836,7 @@ class Stats
         $records = $this->topTenOldestQuery('list', 'F', (int) $total);
 
         return view(
-            'statistics/individuals/top-10-oldest',
+            'statistics/individuals/top-10-oldest-list',
             [
                 'records' => $records,
             ]
@@ -2925,7 +2925,14 @@ class Stats
      */
     public function topTenOldestMale(string $total = '10'): string
     {
-        return $this->topTenOldestQuery('nolist', 'M', (int) $total);
+        $records = $this->topTenOldestQuery('nolist', 'M', (int) $total);
+
+        return view(
+            'statistics/individuals/top-10-oldest',
+            [
+                'records' => $records,
+            ]
+        );
     }
 
     /**
@@ -2940,7 +2947,7 @@ class Stats
         $records = $this->topTenOldestQuery('list', 'M', (int) $total);
 
         return view(
-            'statistics/individuals/top-10-oldest',
+            'statistics/individuals/top-10-oldest-list',
             [
                 'records' => $records,
             ]
