@@ -2291,9 +2291,9 @@ class Stats
      * @param string $sex
      * @param int    $total
      *
-     * @return string
+     * @return array
      */
-    private function topTenOldestQuery(string $type, string $sex, int $total): string
+    private function topTenOldestQuery(string $type, string $sex, int $total): array
     {
         if ($sex === 'F') {
             $sex_search = " AND i_sex='F' ";
@@ -2302,6 +2302,7 @@ class Stats
         } else {
             $sex_search = '';
         }
+
         $rows = $this->runSql(
             "SELECT " .
             " MAX(death.d_julianday2-birth.d_julianday1) AS age, " .
@@ -2325,13 +2326,16 @@ class Stats
             "ORDER BY age DESC " .
             "LIMIT " . $total
         );
+
         if (!isset($rows[0])) {
-            return '';
+            return [];
         }
+
         $top10 = [];
         foreach ($rows as $row) {
             $person = Individual::getInstance($row->deathdate, $this->tree);
             $age    = $row->age;
+
             if ((int) ($age / 365.25) > 0) {
                 $age = (int) ($age / 365.25) . 'y';
             } elseif ((int) ($age / 30.4375) > 0) {
@@ -2339,38 +2343,51 @@ class Stats
             } else {
                 $age = $age . 'd';
             }
-            $age = FunctionsDate::getAgeAtEvent($age);
+
+//            $age = FunctionsDate::getAgeAtEvent($age);
+
             if ($person->canShow()) {
-                if ($type == 'list') {
-                    $top10[] = '<li><a href="' . e($person->url()) . '">' . $person->getFullName() . '</a> (' . $age . ')' . '</li>';
-                } else {
-                    $top10[] = '<a href="' . e($person->url()) . '">' . $person->getFullName() . '</a> (' . $age . ')';
-                }
+                $top10[] = [
+                    'person' => $person,
+                    'age'    => FunctionsDate::getAgeAtEvent($age),
+                ];
             }
+
+//            if ($person->canShow()) {
+//                if ($type === 'list') {
+//                    $top10[] = '<li><a href="' . e($person->url()) . '">' . $person->getFullName() . '</a> (' . $age . ')' . '</li>';
+//                } else {
+//                    $top10[] = '<a href="' . e($person->url()) . '">' . $person->getFullName() . '</a> (' . $age . ')';
+//                }
+//            }
         }
-        if ($type == 'list') {
-            $top10 = implode('', $top10);
-        } else {
-            $top10 = implode(' ', $top10);
-        }
-        if (I18N::direction() === 'rtl') {
-            $top10 = str_replace([
-                '[',
-                ']',
-                '(',
-                ')',
-                '+',
-            ], [
-                '&rlm;[',
-                '&rlm;]',
-                '&rlm;(',
-                '&rlm;)',
-                '&rlm;+',
-            ], $top10);
-        }
-        if ($type == 'list') {
-            return '<ul>' . $top10 . '</ul>';
-        }
+
+//        if ($type === 'list') {
+//            $top10 = implode('', $top10);
+//        } else {
+//            $top10 = implode(' ', $top10);
+//        }
+//
+        // TODO
+//        if (I18N::direction() === 'rtl') {
+//            $top10 = str_replace([
+//                '[',
+//                ']',
+//                '(',
+//                ')',
+//                '+',
+//            ], [
+//                '&rlm;[',
+//                '&rlm;]',
+//                '&rlm;(',
+//                '&rlm;)',
+//                '&rlm;+',
+//            ], $top10);
+//        }
+
+//        if ($type == 'list') {
+//            return '<ul>' . $top10 . '</ul>';
+//        }
 
         return $top10;
     }
@@ -2382,18 +2399,20 @@ class Stats
      * @param string $sex
      * @param string $total
      *
-     * @return string
+     * @return array
      */
-    private function topTenOldestAliveQuery($type = 'list', $sex = 'BOTH', $total = '10'): string
+    private function topTenOldestAliveQuery($type = 'list', $sex = 'BOTH', $total = '10'): array
     {
         $total = (int) $total;
 
+        // TODO
         if (!Auth::isMember($this->tree)) {
             return I18N::translate('This information is private and cannot be shown.');
         }
-        if ($sex == 'F') {
+
+        if ($sex === 'F') {
             $sex_search = " AND i_sex='F'";
-        } elseif ($sex == 'M') {
+        } elseif ($sex === 'M') {
             $sex_search = " AND i_sex='M'";
         } else {
             $sex_search = '';
@@ -2418,10 +2437,13 @@ class Stats
             " ORDER BY age" .
             " ASC LIMIT " . $total
         );
+
         $top10 = [];
+
         foreach ($rows as $row) {
             $person = Individual::getInstance($row->id, $this->tree);
             $age    = (WT_CLIENT_JD - $row->age);
+
             if ((int) ($age / 365.25) > 0) {
                 $age = (int) ($age / 365.25) . 'y';
             } elseif ((int) ($age / 30.4375) > 0) {
@@ -2429,36 +2451,47 @@ class Stats
             } else {
                 $age = $age . 'd';
             }
-            $age = FunctionsDate::getAgeAtEvent($age);
-            if ($type === 'list') {
-                $top10[] = '<li><a href="' . e($person->url()) . '">' . $person->getFullName() . '</a> (' . $age . ')' . '</li>';
-            } else {
-                $top10[] = '<a href="' . e($person->url()) . '">' . $person->getFullName() . '</a> (' . $age . ')';
-            }
+
+//            $age = FunctionsDate::getAgeAtEvent($age);
+
+            $top10[] = [
+                'person' => $person,
+                'age'    => FunctionsDate::getAgeAtEvent($age),
+            ];
+
+//            if ($type === 'list') {
+//                $top10[] = '<li><a href="' . e($person->url()) . '">' . $person->getFullName() . '</a> (' . $age . ')' . '</li>';
+//            } else {
+//                $top10[] = '<a href="' . e($person->url()) . '">' . $person->getFullName() . '</a> (' . $age . ')';
+//            }
         }
-        if ($type === 'list') {
-            $top10 = implode('', $top10);
-        } else {
-            $top10 = implode('; ', $top10);
-        }
-        if (I18N::direction() === 'rtl') {
-            $top10 = str_replace([
-                '[',
-                ']',
-                '(',
-                ')',
-                '+',
-            ], [
-                '&rlm;[',
-                '&rlm;]',
-                '&rlm;(',
-                '&rlm;)',
-                '&rlm;+',
-            ], $top10);
-        }
-        if ($type === 'list') {
-            return '<ul>' . $top10 . '</ul>';
-        }
+
+//        if ($type === 'list') {
+//            $top10 = implode('', $top10);
+//        } else {
+//            $top10 = implode('; ', $top10);
+//        }
+
+        // TODO
+//        if (I18N::direction() === 'rtl') {
+//            $top10 = str_replace([
+//                '[',
+//                ']',
+//                '(',
+//                ')',
+//                '+',
+//            ], [
+//                '&rlm;[',
+//                '&rlm;]',
+//                '&rlm;(',
+//                '&rlm;)',
+//                '&rlm;+',
+//            ], $top10);
+//        }
+
+//        if ($type === 'list') {
+//            return '<ul>' . $top10 . '</ul>';
+//        }
 
         return $top10;
     }
@@ -2800,7 +2833,14 @@ class Stats
      */
     public function topTenOldestFemaleList(string $total = '10'): string
     {
-        return $this->topTenOldestQuery('list', 'F', (int) $total);
+        $records = $this->topTenOldestQuery('list', 'F', (int) $total);
+
+        return view(
+            'statistics/individuals/top-10-oldest',
+            [
+                'records' => $records,
+            ]
+        );
     }
 
     /**
@@ -2824,7 +2864,14 @@ class Stats
      */
     public function topTenOldestFemaleListAlive(string $total = '10'): string
     {
-        return $this->topTenOldestAliveQuery('list', 'F', $total);
+        $records = $this->topTenOldestAliveQuery('list', 'F', $total);
+
+        return view(
+            'statistics/individuals/top-10-oldest-alive',
+            [
+                'records' => $records,
+            ]
+        );
     }
 
     /**
@@ -2890,7 +2937,14 @@ class Stats
      */
     public function topTenOldestMaleList(string $total = '10'): string
     {
-        return $this->topTenOldestQuery('list', 'M', (int) $total);
+        $records = $this->topTenOldestQuery('list', 'M', (int) $total);
+
+        return view(
+            'statistics/individuals/top-10-oldest',
+            [
+                'records' => $records,
+            ]
+        );
     }
 
     /**
@@ -2914,7 +2968,14 @@ class Stats
      */
     public function topTenOldestMaleListAlive(string $total = '10'): string
     {
-        return $this->topTenOldestAliveQuery('list', 'M', $total);
+        $records = $this->topTenOldestAliveQuery('list', 'M', $total);
+
+        return view(
+            'statistics/individuals/top-10-oldest-alive',
+            [
+                'records' => $records,
+            ]
+        );
     }
 
     /**
