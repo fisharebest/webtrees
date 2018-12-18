@@ -10,49 +10,51 @@ use Fisharebest\Webtrees\I18N;
     <?= I18N::translate('Age at birth of child') ?>
 </h4>
 
-<div class="card-deck mb-3">
-    <div class="col-lg-6 col-md-6 mb-3">
-        <div class="card m-0">
-            <h5 class="card-header">
-                <?= I18N::translate('Youngest father'), ' - ', $stats->youngestFatherAge('1') ?>
-            </h5>
-            <div class="card-body">
-                <?= $stats->youngestFather() ?>
+<div class="mb-3">
+    <div class="card-deck">
+        <div class="col-12 col-md-6 mb-3">
+            <div class="card m-0">
+                <h5 class="card-header">
+                    <?= I18N::translate('Youngest father'), ' - ', $stats->youngestFatherAge('1') ?>
+                </h5>
+                <div class="card-body">
+                    <?= $stats->youngestFather() ?>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6 mb-3">
+            <div class="card m-0">
+                <h5 class="card-header">
+                    <?= I18N::translate('Youngest mother'), ' - ', $stats->youngestMotherAge('1') ?>
+                </h5>
+                <div class="card-body">
+                    <?= $stats->youngestMother() ?>
+                </div>
             </div>
         </div>
     </div>
 
-    <div class="col-lg-6 col-md-6 mb-3">
-        <div class="card m-0">
-            <h5 class="card-header">
-                <?= I18N::translate('Youngest mother'), ' - ', $stats->youngestMotherAge('1') ?>
-            </h5>
-            <div class="card-body">
-                <?= $stats->youngestMother() ?>
+    <div class="card-deck">
+        <div class="col-12 col-md-6 mb-3">
+            <div class="card m-0">
+                <h5 class="card-header">
+                    <?= I18N::translate('Oldest father'), ' - ', $stats->oldestFatherAge('1') ?>
+                </h5>
+                <div class="card-body">
+                    <?= $stats->oldestFather() ?>
+                </div>
             </div>
         </div>
-    </div>
-</div>
 
-<div class="card-deck mb-3">
-    <div class="col-lg-6 col-md-6 mb-3">
-        <div class="card m-0">
-            <h5 class="card-header">
-                <?= I18N::translate('Oldest father'), ' - ', $stats->oldestFatherAge('1') ?>
-            </h5>
-            <div class="card-body">
-                <?= $stats->oldestFather() ?>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-lg-6 col-md-6 mb-3">
-        <div class="card m-0">
-            <h5 class="card-header">
-                <?= I18N::translate('Oldest mother'), ' - ', $stats->oldestMotherAge('1') ?>
-            </h5>
-            <div class="card-body">
-                <?= $stats->oldestMother() ?>
+        <div class="col-12 col-md-6 mb-3">
+            <div class="card m-0">
+                <h5 class="card-header">
+                    <?= I18N::translate('Oldest mother'), ' - ', $stats->oldestMotherAge('1') ?>
+                </h5>
+                <div class="card-body">
+                    <?= $stats->oldestMother() ?>
+                </div>
             </div>
         </div>
     </div>

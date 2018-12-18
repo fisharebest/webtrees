@@ -1,0 +1,107 @@
+<?php
+declare(strict_types=1);
+
+use Fisharebest\Webtrees\I18N;
+
+/** @var \Fisharebest\Webtrees\Stats $stats */
+?>
+
+<h4 class="border-bottom p-2 mb-4">
+    <?= I18N::translate('Events') ?>
+</h4>
+
+<div class="mb-3">
+    <div class="row">
+        <div class="col-12 col-lg-6">
+            <div class="card-deck">
+                <div class="mb-3 col-12">
+                    <div class="card m-0">
+                        <h5 class="card-header border-bottom-0">
+                            <?= I18N::translate('Total births') ?>
+                            <span class="badge badge-secondary badge-pill float-right"><?= $stats->totalBirths() ?></span>
+                        </h5>
+                    </div>
+                </div>
+
+                <div class="mb-3 col-12">
+                    <div class="card m-0">
+                        <h5 class="card-header">
+                            <?= I18N::translate('Births by century') ?>
+                        </h5>
+                        <div class="card-body">
+                            <?= $stats->statsBirth() ?>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-3 col-12">
+                    <div class="card m-0">
+                        <h5 class="card-header">
+                            <?= I18N::translate('Earliest birth') ?>
+                        </h5>
+                        <div class="card-body">
+                            <?= $stats->firstBirth() ?>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-3 col-12">
+                    <div class="card m-0">
+                        <h5 class="card-header">
+                            <?= I18N::translate('Latest birth') ?>
+                        </h5>
+                        <div class="card-body">
+                            <?= $stats->lastBirth() ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-lg-6">
+            <div class="card-deck">
+                <div class="mb-3 col-12">
+                    <div class="card m-0">
+                        <h5 class="card-header border-bottom-0">
+                            <?= I18N::translate('Total deaths') ?>
+                            <span class="badge badge-secondary badge-pill float-right"><?= $stats->totalDeaths() ?></span>
+                        </h5>
+                    </div>
+                </div>
+
+                <div class="mb-3 col-12">
+                    <div class="card m-0">
+                        <h5 class="card-header">
+                            <?= I18N::translate('Deaths by century') ?>
+                        </h5>
+                        <div class="card-body">
+                            <?= $stats->statsDeath() ?>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-3 col-12">
+                    <div class="card m-0">
+                        <h5 class="card-header">
+                            <?= I18N::translate('Earliest death') ?>
+                        </h5>
+                        <div class="card-body">
+                            <?= $stats->firstDeath() ?>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-3 col-12">
+                    <div class="card m-0">
+                        <h5 class="card-header">
+                            <?= I18N::translate('Latest death') ?>
+                        </h5>
+                        <div class="card-body">
+                            <?= $stats->lastDeath() ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

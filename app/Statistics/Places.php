@@ -52,7 +52,7 @@ class Places
      * @param int    $parent
      * @param bool   $country
      *
-     * @return int[]|stdClass[]
+     * @return int[]|\stdClass[]
      */
     public function statsPlaces($what = 'ALL', $fact = '', $parent = 0, $country = false): array
     {
@@ -70,7 +70,9 @@ class Places
                     'tree_id' => $this->tree->id(),
                 ])->fetchAll();
             }
+
             $placelist = [];
+
             foreach ($rows as $row) {
                 if (preg_match('/\n1 ' . $fact . '(?:\n[2-9].*)*\n2 PLAC (.+)/', $row->ged, $match)) {
                     if ($country) {
@@ -123,6 +125,7 @@ class Places
         } else {
             $join = "";
         }
+
         $rows = $this->runSql(
             " SELECT" .
             " p_place AS country," .
@@ -139,21 +142,24 @@ class Places
 
         return $rows;
     }
+
     /**
      * Run an SQL query and cache the result.
      *
      * @param string $sql
      *
-     * @return stdClass[]
+     * @return \stdClass[]
      */
     private function runSql($sql): array
     {
         static $cache = [];
 
         $id = md5($sql);
+
         if (isset($cache[$id])) {
             return $cache[$id];
         }
+
         $rows       = Database::prepare($sql)->fetchAll();
         $cache[$id] = $rows;
 

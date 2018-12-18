@@ -1,0 +1,76 @@
+<?php
+declare(strict_types=1);
+
+use Fisharebest\Webtrees\I18N;
+
+/** @var \Fisharebest\Webtrees\Stats $stats */
+?>
+
+<h4 class="border-bottom p-2 mb-4">
+    <?= I18N::translate('Total individuals') ?>
+    <span class="badge badge-secondary badge-pill float-right"><?= $stats->totalIndividuals() ?></span>
+</h4>
+
+<div class="mb-3">
+    <div class="row">
+        <div class="col-12 col-lg-6">
+            <div class="card-deck">
+                <div class="mb-3 col-12">
+                    <div class="card m-0">
+                        <h5 class="card-header border-bottom-0">
+                            <?= I18N::translate('Total males') ?>
+                            <span class="badge badge-secondary badge-pill float-right"><?= $stats->totalSexMales() ?></span>
+                        </h5>
+                    </div>
+                </div>
+
+                <div class="mb-3 col-12">
+                    <div class="card m-0">
+                        <h5 class="card-header border-bottom-0">
+                            <?= I18N::translate('Total females') ?>
+                            <span class="badge badge-secondary badge-pill float-right"><?= $stats->totalSexFemales() ?></span>
+                        </h5>
+                    </div>
+                </div>
+
+                <div class="mb-3 col-12">
+                    <div class="card m-0">
+                        <div class="card-body">
+                            <?= $stats->chartSex() ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-lg-6">
+            <div class="card-deck">
+                <div class="mb-3 col-12">
+                    <div class="card m-0">
+                        <h5 class="card-header border-bottom-0">
+                            <?= I18N::translate('Total living') ?>
+                            <span class="badge badge-secondary badge-pill float-right"><?= $stats->totalLiving() ?></span>
+                        </h5>
+                    </div>
+                </div>
+
+                <div class="mb-3 col-12">
+                    <div class="card m-0">
+                        <h5 class="card-header border-bottom-0">
+                            <?= I18N::translate('Total dead') ?>
+                            <span class="badge badge-secondary badge-pill float-right"><?= $stats->totalDeceased() ?></span>
+                        </h5>
+                    </div>
+                </div>
+
+                <div class="mb-3 col-12">
+                    <div class="card m-0">
+                        <div class="card-body">
+                            <?= $stats->chartMortality() ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -8,41 +8,13 @@ use Fisharebest\Webtrees\I18N;
     <?= I18N::translate('Media objects') ?>
 </h4>
 
-<div class="card-deck mb-3">
-    <div class="col-lg-6 col-md-6 mb-3">
-        <div class="card m-0">
-            <div class="card-body">
-                <?= $stats->chartMedia() ?>
-            </div>
-        </div>
-    </div>
-</div>
-
-<h4 class="border-bottom p-2 mb-4">
-    <?= I18N::translate('Sources') ?>
-</h4>
-
-<div class="card-deck mb-3">
-    <div class="col-lg-6 col-md-12 mb-3">
-        <div class="card m-0">
-            <h5 class="card-header">
-                <?= I18N::translate('Individuals with sources') ?>
-                <span class="badge badge-secondary badge-pill float-right"><?= $stats->totalIndisWithSources() ?></span>
-            </h5>
-            <div class="card-body">
-                <?= $stats->chartIndisWithSources() ?>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-lg-6 col-md-12 mb-3">
-        <div class="card m-0">
-            <h5 class="card-header">
-                <?= I18N::translate('Families with sources') ?>
-                <span class="badge badge-secondary badge-pill float-right"><?= $stats->totalFamsWithSources() ?></span>
-            </h5>
-            <div class="card-body">
-                <?= $stats->chartFamsWithSources() ?>
+<div class="mb-3">
+    <div class="card-deck">
+        <div class="col-12 col-md-6 mb-3">
+            <div class="card m-0">
+                <div class="card-body">
+                    <?= $stats->chartMedia() ?>
+                </div>
             </div>
         </div>
     </div>

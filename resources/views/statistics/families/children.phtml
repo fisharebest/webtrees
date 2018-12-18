@@ -10,78 +10,80 @@ use Fisharebest\Webtrees\I18N;
     <?= I18N::translate('Children in family') ?>
 </h4>
 
-<div class="card-deck mb-3">
-    <div class="col-lg-6 col-md-6 mb-3">
-        <div class="card m-0">
-            <h5 class="card-header">
-                <?= I18N::translate('Average number of children per family') ?>
-                <span class="badge badge-secondary badge-pill float-right"><?= $stats->averageChildren() ?></span>
-            </h5>
-            <div class="card-body text-center">
-                <?= $stats->statsChildren() ?>
+<div class="mb-3">
+    <div class="card-deck">
+        <div class="col-12 col-md-6 mb-3">
+            <div class="card m-0">
+                <h5 class="card-header">
+                    <?= I18N::translate('Average number of children per family') ?>
+                    <span class="badge badge-secondary badge-pill float-right"><?= $stats->averageChildren() ?></span>
+                </h5>
+                <div class="card-body text-center">
+                    <?= $stats->statsChildren() ?>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6 mb-3">
+            <div class="card m-0">
+                <h5 class="card-header">
+                    <?= I18N::translate('Number of families without children') ?>
+                    <span class="badge badge-secondary badge-pill float-right"><?= $stats->noChildrenFamilies() ?></span>
+                </h5>
+                <div class="card-body text-center">
+                    <?= $stats->chartNoChildrenFamilies() ?>
+                </div>
             </div>
         </div>
     </div>
 
-    <div class="col-lg-6 col-md-6 mb-3">
-        <div class="card m-0">
-            <h5 class="card-header">
-                <?= I18N::translate('Number of families without children') ?>
-                <span class="badge badge-secondary badge-pill float-right"><?= $stats->noChildrenFamilies() ?></span>
-            </h5>
-            <div class="card-body text-center">
-                <?= $stats->chartNoChildrenFamilies() ?>
+    <div class="card-deck">
+        <div class="col-12 col-md-6 mb-3">
+            <div class="card m-0">
+                <h5 class="card-header">
+                    <?= I18N::translate('Largest families') ?>
+                </h5>
+                <ul class="list-group list-group-flush">
+                    <?php $families = $stats->topTenLargestFamilyList(); ?>
+                    <?php foreach ($families as $entry): ?>
+                        <?php
+                            /* @var Family $family */
+                            $family = $entry['family'];
+                        ?>
+
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <a href="<?= e($family->url()) ?>"><?= $family->getFullName() ?></a>
+                            <span class="badge badge-secondary badge-pill ml-3">
+                                <?= I18N::plural('%s child', '%s children', $entry['count'], I18N::number($entry['count'])) ?>
+                            </span>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
             </div>
         </div>
-    </div>
-</div>
 
-<div class="card-deck mb-3">
-    <div class="col-lg-6 col-md-6 mb-3">
-        <div class="card m-0">
-            <h5 class="card-header">
-                <?= I18N::translate('Largest families') ?>
-            </h5>
-            <ul class="list-group list-group-flush">
-                <?php $families = $stats->topTenLargestFamilyList(); ?>
-                <?php foreach ($families as $entry): ?>
-                    <?php
+        <div class="col-12 col-md-6 mb-3">
+            <div class="card m-0">
+                <h5 class="card-header">
+                    <?= I18N::translate('Largest number of grandchildren') ?>
+                </h5>
+                <ul class="list-group list-group-flush">
+                    <?php $families = $stats->topTenLargestGrandFamilyList(); ?>
+                    <?php foreach ($families as $entry): ?>
+                        <?php
                         /* @var Family $family */
                         $family = $entry['family'];
-                    ?>
+                        ?>
 
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        <a href="<?= e($family->url()) ?>"><?= $family->getFullName() ?></a>
-                        <span class="badge badge-secondary badge-pill ml-3">
-                            <?= I18N::plural('%s child', '%s children', $entry['count'], I18N::number($entry['count'])) ?>
-                        </span>
-                    </li>
-                <?php endforeach; ?>
-            </ul>
-        </div>
-    </div>
-
-    <div class="col-lg-6 col-md-6 mb-3">
-        <div class="card m-0">
-            <h5 class="card-header">
-                <?= I18N::translate('Largest number of grandchildren') ?>
-            </h5>
-            <ul class="list-group list-group-flush">
-                <?php $families = $stats->topTenLargestGrandFamilyList(); ?>
-                <?php foreach ($families as $entry): ?>
-                    <?php
-                    /* @var Family $family */
-                    $family = $entry['family'];
-                    ?>
-
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        <a href="<?= e($family->url()) ?>"><?= $family->getFullName() ?></a>
-                        <span class="badge badge-secondary badge-pill ml-3">
-                            <?= I18N::plural('%s grandchild', '%s grandchildren', $entry['count'], I18N::number($entry['count'])) ?>
-                        </span>
-                    </li>
-                <?php endforeach; ?>
-            </ul>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <a href="<?= e($family->url()) ?>"><?= $family->getFullName() ?></a>
+                            <span class="badge badge-secondary badge-pill ml-3">
+                                <?= I18N::plural('%s grandchild', '%s grandchildren', $entry['count'], I18N::number($entry['count'])) ?>
+                            </span>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
         </div>
     </div>
 </div>
