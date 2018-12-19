@@ -58,7 +58,7 @@ class ThemeSelectModule extends AbstractModule implements ModuleBlockInterface
         if ($menu) {
             $content = '<ul class="nav text-justify">' . $menu->bootstrap4() . '</ul>';
 
-            if ($ctype) {
+            if ($ctype !== '') {
                 return view('modules/block-template', [
                     'block'      => str_replace('_', '-', $this->getName()),
                     'id'         => $block_id,

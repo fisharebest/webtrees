@@ -127,7 +127,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
             $content = I18N::translate('This family tree has no images to display.');
         }
 
-        if ($ctype) {
+        if ($ctype !== '') {
             if ($ctype === 'gedcom' && Auth::isManager($tree)) {
                 $config_url = route('tree-page-block-edit', [
                     'block_id' => $block_id,

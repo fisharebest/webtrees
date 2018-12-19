@@ -81,7 +81,7 @@ class TopGivenNamesModule extends AbstractModule implements ModuleBlockInterface
                 break;
         }
 
-        if ($ctype) {
+        if ($ctype !== '') {
             $num = (int) $num;
 
             if ($num === 1) {

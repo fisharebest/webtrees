@@ -77,7 +77,7 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface
             $content .= '<br>' . FunctionsDate::formatTimestamp((int) $this->getBlockSetting($block_id, 'timestamp', (string) WT_TIMESTAMP) + WT_TIMESTAMP_OFFSET);
         }
 
-        if ($ctype) {
+        if ($ctype !== '') {
             if ($ctype === 'gedcom' && Auth::isManager($tree)) {
                 $config_url = route('tree-page-block-edit', [
                     'block_id' => $block_id,

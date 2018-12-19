@@ -96,7 +96,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
             'limit'    => 5,
         ]);
 
-        if ($ctype) {
+        if ($ctype !== '') {
             return view('modules/block-template', [
                 'block'      => str_replace('_', '-', $this->getName()),
                 'id'         => $block_id,

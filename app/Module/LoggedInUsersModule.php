@@ -101,7 +101,7 @@ class LoggedInUsersModule extends AbstractModule implements ModuleBlockInterface
             return '';
         }
 
-        if ($ctype) {
+        if ($ctype !== '') {
             return view('modules/block-template', [
                 'block'      => str_replace('_', '-', $this->getName()),
                 'id'         => $block_id,

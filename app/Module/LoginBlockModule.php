@@ -66,7 +66,7 @@ class LoginBlockModule extends AbstractModule implements ModuleBlockInterface
             ]);
         }
 
-        if ($ctype) {
+        if ($ctype !== '') {
             return view('modules/block-template', [
                 'block'      => str_replace('_', '-', $this->getName()),
                 'id'         => $block_id,

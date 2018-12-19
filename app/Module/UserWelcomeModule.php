@@ -88,7 +88,7 @@ class UserWelcomeModule extends AbstractModule implements ModuleBlockInterface
         /* I18N: A %s is the user’s name */
         $title = I18N::translate('Welcome %s', Auth::user()->getRealName());
 
-        if ($ctype) {
+        if ($ctype !== '') {
             return view('modules/block-template', [
                 'block'      => str_replace('_', '-', $this->getName()),
                 'id'         => $block_id,

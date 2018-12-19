@@ -141,7 +141,7 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface
             ]);
         }
 
-        if ($ctype) {
+        if ($ctype !== '') {
             if ($ctype === 'gedcom' && Auth::isManager($tree)) {
                 $config_url = route('tree-page-block-edit', [
                     'block_id' => $block_id,

@@ -130,7 +130,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
             $content = I18N::translate('You must select an individual and a chart type in the block preferences');
         }
 
-        if ($ctype) {
+        if ($ctype !== '') {
             if ($ctype === 'gedcom' && Auth::isManager($tree)) {
                 $config_url = route('tree-page-block-edit', [
                     'block_id' => $block_id,

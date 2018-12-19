@@ -73,7 +73,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
             'tree'       => $tree,
         ]);
 
-        if ($ctype) {
+        if ($ctype !== '') {
             return view('modules/block-template', [
                 'block'      => str_replace('_', '-', $this->getName()),
                 'id'         => $block_id,

@@ -91,7 +91,7 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
             'limit'    => 5,
         ]);
 
-        if ($ctype) {
+        if ($ctype !== '') {
             return view('modules/block-template', [
                 'block'      => str_replace('_', '-', $this->getName()),
                 'id'         => $block_id,

@@ -124,7 +124,7 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
                 break;
         }
 
-        if ($ctype) {
+        if ($ctype !== '') {
             $num = count($top_surnames);
             if ($num === 1) {
                 // I18N: i.e. most popular surname.
