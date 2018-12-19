@@ -239,8 +239,6 @@ class FunctionsPrint
      */
     public static function formatFactDate(Fact $event, GedcomRecord $record, $anchor, $time): string
     {
-        global $pid;
-
         $factrec = $event->gedcom();
         $html    = '';
         // Recorded age
@@ -290,16 +288,14 @@ class FunctionsPrint
                         // Before death, print age
                         $age = Date::getAgeGedcom($birth_date, $date);
                         // Only show calculated age if it differs from recorded age
-                        if ($age != '') {
+                        if ($age != '' && $age != '0d') {
                             if (
                                 $fact_age != '' && $fact_age != $age ||
                                 $fact_age == '' && $husb_age == '' && $wife_age == '' ||
                                 $husb_age != '' && $record->getSex() == 'M' && $husb_age != $age ||
                                 $wife_age != '' && $record->getSex() == 'F' && $wife_age != $age
                             ) {
-                                if ($age != '0d') {
-                                    $ageText = '(' . I18N::translate('Age') . ' ' . FunctionsDate::getAgeAtEvent($age) . ')';
-                                }
+                                $ageText = '(' . I18N::translate('Age') . ' ' . FunctionsDate::getAgeAtEvent($age) . ')';
                             }
                         }
                     }
@@ -315,30 +311,6 @@ class FunctionsPrint
                                 if ($event->record() instanceof Family) {
                                     $ageText .= '<i class="icon-warning"></i>';
                                 }
-                            }
-                        }
-                    }
-                    if ($ageText) {
-                        $html .= ' <span class="age">' . $ageText . '</span>';
-                    }
-                }
-            } elseif ($record instanceof Family) {
-                $indi = Individual::getInstance((string) $pid, $record->tree());
-                if ($indi) {
-                    $birth_date = $indi->getBirthDate();
-                    $death_date = $indi->getDeathDate();
-                    $ageText    = '';
-                    if (Date::compare($date, $death_date) <= 0) {
-                        $age = Date::getAgeGedcom($birth_date, $date);
-                        // Only show calculated age if it differs from recorded age
-                        if ($age != '' && $age > 0) {
-                            if (
-                                $fact_age != '' && $fact_age != $age ||
-                                $fact_age == '' && $husb_age == '' && $wife_age == '' ||
-                                $husb_age != '' && $indi->getSex() == 'M' && $husb_age != $age ||
-                                $wife_age != '' && $indi->getSex() == 'F' && $wife_age != $age
-                            ) {
-                                $ageText = '(' . I18N::translate('Age') . ' ' . FunctionsDate::getAgeAtEvent($age) . ')';
                             }
                         }
                     }
