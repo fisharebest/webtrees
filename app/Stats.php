@@ -2794,7 +2794,7 @@ class Stats
      *
      * @return string
      */
-    public function topTenOldestAlive(string $total = null): string
+    public function topTenOldestAlive(string $total = '10'): string
     {
         return $this->topTenOldestAliveQuery('nolist', 'BOTH', $total);
     }
@@ -2806,7 +2806,7 @@ class Stats
      *
      * @return string
      */
-    public function topTenOldestListAlive(string $total = null): string
+    public function topTenOldestListAlive(string $total = '10'): string
     {
         return $this->topTenOldestAliveQuery('list', 'BOTH', $total);
     }
@@ -2884,7 +2884,7 @@ class Stats
      *
      * @return string
      */
-    public function topTenOldestFemaleAlive(string $total = null): string
+    public function topTenOldestFemaleAlive(string $total = '10'): string
     {
         return $this->topTenOldestAliveQuery('nolist', 'F', $total);
     }
@@ -2896,7 +2896,7 @@ class Stats
      *
      * @return string
      */
-    public function topTenOldestFemaleListAlive(string $total = null): string
+    public function topTenOldestFemaleListAlive(string $total = '10'): string
     {
         return $this->topTenOldestAliveQuery('list', 'F', $total);
     }
@@ -2974,7 +2974,7 @@ class Stats
      *
      * @return string
      */
-    public function topTenOldestMaleAlive(string $total = null): string
+    public function topTenOldestMaleAlive(string $total = '10'): string
     {
         return $this->topTenOldestAliveQuery('nolist', 'M', $total);
     }
@@ -2986,7 +2986,7 @@ class Stats
      *
      * @return string
      */
-    public function topTenOldestMaleListAlive(string $total = null): string
+    public function topTenOldestMaleListAlive(string $total = '10'): string
     {
         return $this->topTenOldestAliveQuery('list', 'M', $total);
     }
