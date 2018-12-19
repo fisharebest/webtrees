@@ -1,0 +1,28 @@
+<?php
+declare(strict_types=1);
+
+use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+
+/* @var array      $records */
+/* @var Family     $family */
+/* @var Individual $child1 */
+/* @var Individual $child2 */
+?>
+
+<ul class="list-group list-group-flush">
+    <?php foreach ($records as $record): ?>
+        <?php $child1 = $record['child1']; ?>
+        <?php $child2 = $record['child2']; ?>
+        <?php $family = $record['family']; ?>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <span>
+                <a href="<?= e($child2->url()) ?>"><?= $child2->getFullName() ?></a> <?= I18N::translate('and') ?> <a href="<?= e($child1->url()) ?>"><?= $child1->getFullName() ?></a>
+                <br>
+                <a href="<?= e($family->url()) ?>">[<?= I18N::translate('View this family') ?>]</a>
+            </span>
+            <span class="badge badge-secondary badge-pill ml-3"><?= $record['age'] ?></span>
+        </li>
+    <?php endforeach; ?>
+</ul>

@@ -54,7 +54,7 @@ class BirthPlaces
      *
      * @return array
      */
-    public function getList(): array
+    private function getList(): array
     {
         $places = $this->places->statsPlaces('INDI', 'BIRT');
         $top10  = [];
@@ -77,5 +77,17 @@ class BirthPlaces
         }
 
         return $top10;
+    }
+
+    public function __toString(): string
+    {
+        $records = $this->getList();
+
+        return view(
+            'statistics/other/top10-list',
+            [
+                'records' => $records,
+            ]
+        );
     }
 }

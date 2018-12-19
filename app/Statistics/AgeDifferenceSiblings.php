@@ -51,9 +51,9 @@ class AgeDifferenceSiblings
      * @param int    $total
      * @param bool   $one   Include each family only once if true
      *
-     * @return string
+     * @return array
      */
-    public function query(string $type, int $total, bool $one): string
+    public function query(string $type, int $total, bool $one): array
     {
         $rows = $this->runSql(
             " SELECT DISTINCT" .
@@ -82,7 +82,7 @@ class AgeDifferenceSiblings
         );
 
         if (!isset($rows[0])) {
-            return '';
+            return [];
         }
 
         $top10 = [];
@@ -92,18 +92,18 @@ class AgeDifferenceSiblings
             $child1 = Individual::getInstance($fam->ch1, $this->tree);
             $child2 = Individual::getInstance($fam->ch2, $this->tree);
 
-            if ($type === 'name') {
-                if ($child1->canShow() && $child2->canShow()) {
-                    $return = '<a href="' . e($child2->url()) . '">' . $child2->getFullName() . '</a> ';
-                    $return .= I18N::translate('and') . ' ';
-                    $return .= '<a href="' . e($child1->url()) . '">' . $child1->getFullName() . '</a>';
-                    $return .= ' <a href="' . e($family->url()) . '">[' . I18N::translate('View this family') . ']</a>';
-                } else {
-                    $return = I18N::translate('This information is private and cannot be shown.');
-                }
-
-                return $return;
-            }
+//            if ($type === 'name') {
+//                if ($child1->canShow() && $child2->canShow()) {
+//                    $return = '<a href="' . e($child2->url()) . '">' . $child2->getFullName() . '</a> ';
+//                    $return .= I18N::translate('and') . ' ';
+//                    $return .= '<a href="' . e($child1->url()) . '">' . $child1->getFullName() . '</a>';
+//                    $return .= ' <a href="' . e($family->url()) . '">[' . I18N::translate('View this family') . ']</a>';
+//                } else {
+//                    $return = I18N::translate('This information is private and cannot be shown.');
+//                }
+//
+//                return $return;
+//            }
 
             $age = $fam->age;
             if ((int) ($age / 365.25) > 0) {
@@ -111,39 +111,44 @@ class AgeDifferenceSiblings
             } elseif ((int) ($age / 30.4375) > 0) {
                 $age = (int) ($age / 30.4375) . 'm';
             } else {
-                $age = $age . 'd';
+                $age .= 'd';
             }
 
             $age = FunctionsDate::getAgeAtEvent($age);
-            if ($type === 'age') {
-                return $age;
-            }
+//            if ($type === 'age') {
+//                return $age;
+//            }
 
             if ($type === 'list') {
                 if ($one && !in_array($fam->family, $dist)) {
                     if ($child1->canShow() && $child2->canShow()) {
-                        $return = '<li>';
-                        $return  .= '<a href="' . e($child2->url()) . '">' . $child2->getFullName() . '</a> ';
-                        $return  .= I18N::translate('and') . ' ';
-                        $return  .= '<a href="' . e($child1->url()) . '">' . $child1->getFullName() . '</a>';
-                        $return  .= ' (' . $age . ')';
-                        $return  .= ' <a href="' . e($family->url()) . '">[' . I18N::translate('View this family') . ']</a>';
-                        $return  .= '</li>';
-                        $top10[] = $return;
+                        $top10[] = [
+                            'child1' => $child1,
+                            'child2' => $child2,
+                            'family' => $family,
+                            'age'    => $age,
+                        ];
+
                         $dist[]  = $fam->family;
                     }
                 } elseif (!$one && $child1->canShow() && $child2->canShow()) {
-                    $return = '<li>';
-                    $return  .= '<a href="' . e($child2->url()) . '">' . $child2->getFullName() . '</a> ';
-                    $return  .= I18N::translate('and') . ' ';
-                    $return  .= '<a href="' . e($child1->url()) . '">' . $child1->getFullName() . '</a>';
-                    $return  .= ' (' . $age . ')';
-                    $return  .= ' <a href="' . e($family->url()) . '">[' . I18N::translate('View this family') . ']</a>';
-                    $return  .= '</li>';
-                    $top10[] = $return;
+                    $top10[] = [
+                        'child1' => $child1,
+                        'child2' => $child2,
+                        'family' => $family,
+                        'age'    => $age,
+                    ];
                 }
             } else {
                 if ($child1->canShow() && $child2->canShow()) {
+                    // ! Single array (no list)
+                    return [
+                        'child1' => $child1,
+                        'child2' => $child2,
+                        'family' => $family,
+                        'age'    => $age,
+                    ];
+
                     $return = $child2->formatList();
                     $return .= '<br>' . I18N::translate('and') . '<br>';
                     $return .= $child1->formatList();
@@ -152,33 +157,33 @@ class AgeDifferenceSiblings
                     return $return;
                 }
 
-                return I18N::translate('This information is private and cannot be shown.');
+//                return I18N::translate('This information is private and cannot be shown.');
             }
         }
 
-        if ($type === 'list') {
-            $top10 = implode('', $top10);
-        }
-
-        if (I18N::direction() === 'rtl') {
-            $top10 = str_replace([
-                '[',
-                ']',
-                '(',
-                ')',
-                '+',
-            ], [
-                '&rlm;[',
-                '&rlm;]',
-                '&rlm;(',
-                '&rlm;)',
-                '&rlm;+',
-            ], $top10);
-        }
-
-        if ($type === 'list') {
-            return '<ul>' . $top10 . '</ul>';
-        }
+//        if ($type === 'list') {
+//            $top10 = implode('', $top10);
+//        }
+//
+//        if (I18N::direction() === 'rtl') {
+//            $top10 = str_replace([
+//                '[',
+//                ']',
+//                '(',
+//                ')',
+//                '+',
+//            ], [
+//                '&rlm;[',
+//                '&rlm;]',
+//                '&rlm;(',
+//                '&rlm;)',
+//                '&rlm;+',
+//            ], $top10);
+//        }
+//
+//        if ($type === 'list') {
+//            return '<ul>' . $top10 . '</ul>';
+//        }
 
         return $top10;
     }
@@ -195,9 +200,11 @@ class AgeDifferenceSiblings
         static $cache = [];
 
         $id = md5($sql);
+
         if (isset($cache[$id])) {
             return $cache[$id];
         }
+
         $rows       = Database::prepare($sql)->fetchAll();
         $cache[$id] = $rows;
 

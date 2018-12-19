@@ -49,9 +49,9 @@ class AgeDifferenceSpouse
      * @param string $age_dir
      * @param int    $total
      *
-     * @return string
+     * @return array
      */
-    public function query(string $type, string $age_dir, int $total): string
+    public function query(string $type, string $age_dir, int $total): array
     {
         if ($age_dir === 'DESC') {
             $sql =
@@ -80,6 +80,7 @@ class AgeDifferenceSpouse
                 " ORDER BY age DESC" .
                 " LIMIT :limit";
         }
+
         $rows = Database::prepare(
             $sql
         )->execute([
@@ -88,35 +89,32 @@ class AgeDifferenceSpouse
         ])->fetchAll();
 
         $top10 = [];
+
         foreach ($rows as $fam) {
             $family = Family::getInstance($fam->xref, $this->tree);
+
             if ($fam->age < 0) {
                 break;
             }
+
             $age = $fam->age;
+
             if ((int) ($age / 365.25) > 0) {
                 $age = (int) ($age / 365.25) . 'y';
             } elseif ((int) ($age / 30.4375) > 0) {
                 $age = (int) ($age / 30.4375) . 'm';
             } else {
-                $age = $age . 'd';
+                $age .= 'd';
             }
+
             $age = FunctionsDate::getAgeAtEvent($age);
+
             if ($family->canShow()) {
-                if ($type === 'list') {
-                    $top10[] = '<li><a href="' . e($family->url()) . '">' . $family->getFullName() . '</a> (' . $age . ')' . '</li>';
-                } else {
-                    $top10[] = '<a href="' . e($family->url()) . '">' . $family->getFullName() . '</a> (' . $age . ')';
-                }
+                $top10[] = [
+                    'family' => $family,
+                    'age'    => $age,
+                ];
             }
-        }
-        if ($type === 'list') {
-            $top10 = implode('', $top10);
-            if ($top10) {
-                $top10 = '<ul>' . $top10 . '</ul>';
-            }
-        } else {
-            $top10 = implode(' ', $top10);
         }
 
         return $top10;

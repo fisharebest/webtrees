@@ -43,22 +43,7 @@ use Fisharebest\Webtrees\I18N;
                 <h5 class="card-header">
                     <?= I18N::translate('Largest families') ?>
                 </h5>
-                <ul class="list-group list-group-flush">
-                    <?php $families = $stats->topTenLargestFamilyList(); ?>
-                    <?php foreach ($families as $entry): ?>
-                        <?php
-                            /* @var Family $family */
-                            $family = $entry['family'];
-                        ?>
-
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <a href="<?= e($family->url()) ?>"><?= $family->getFullName() ?></a>
-                            <span class="badge badge-secondary badge-pill ml-3">
-                                <?= I18N::plural('%s child', '%s children', $entry['count'], I18N::number($entry['count'])) ?>
-                            </span>
-                        </li>
-                    <?php endforeach; ?>
-                </ul>
+                <?= $stats->topTenLargestFamilyList(); ?>
             </div>
         </div>
 
@@ -67,22 +52,7 @@ use Fisharebest\Webtrees\I18N;
                 <h5 class="card-header">
                     <?= I18N::translate('Largest number of grandchildren') ?>
                 </h5>
-                <ul class="list-group list-group-flush">
-                    <?php $families = $stats->topTenLargestGrandFamilyList(); ?>
-                    <?php foreach ($families as $entry): ?>
-                        <?php
-                        /* @var Family $family */
-                        $family = $entry['family'];
-                        ?>
-
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <a href="<?= e($family->url()) ?>"><?= $family->getFullName() ?></a>
-                            <span class="badge badge-secondary badge-pill ml-3">
-                                <?= I18N::plural('%s grandchild', '%s grandchildren', $entry['count'], I18N::number($entry['count'])) ?>
-                            </span>
-                        </li>
-                    <?php endforeach; ?>
-                </ul>
+                <?= $stats->topTenLargestGrandFamilyList(); ?>
             </div>
         </div>
     </div>

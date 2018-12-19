@@ -1,0 +1,19 @@
+<?php
+declare(strict_types=1);
+
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Place;
+
+/* @var array $records */
+/* @var Place $place */
+?>
+
+<ul class="list-group list-group-flush">
+    <?php foreach ($records as $record): ?>
+        <?php $place = $record['place']; ?>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <a href="<?= e($place->url()) ?>"><?= $place->fullName() ?></a>
+            <span class="badge badge-secondary badge-pill ml-3"><?= I18N::number($record['count']) ?></span>
+        </li>
+    <?php endforeach; ?>
+</ul>

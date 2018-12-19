@@ -1,0 +1,24 @@
+<?php
+declare(strict_types=1);
+
+use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+
+/* @var array      $record */
+/* @var Family     $family */
+/* @var Individual $child1 */
+/* @var Individual $child2 */
+?>
+
+<?php $child1 = $record['child1']; ?>
+<?php $child2 = $record['child2']; ?>
+<?php $family = $record['family']; ?>
+
+<?= $child2->formatList() ?>
+<br>
+<?= I18N::translate('and') ?>
+<br>
+<?= $child1->formatList() ?>
+<br>
+<a href="<?= e($family->url()) ?>">[<?= I18N::translate('View this family') ?>]</a>
