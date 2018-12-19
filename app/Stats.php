@@ -1438,7 +1438,7 @@ class Stats
         $sizes = explode('x', $size);
         $tot   = $this->totalMediaType('all');
         // Beware divide by zero
-        if ($tot == 0) {
+        if ($tot === 0) {
             return I18N::translate('None');
         }
         // Build a table listing only the media types actually present in the GEDCOM
@@ -2349,10 +2349,8 @@ class Stats
             } elseif ((int) ($age / 30.4375) > 0) {
                 $age = (int) ($age / 30.4375) . 'm';
             } else {
-                $age = $age . 'd';
+                $age .= 'd';
             }
-
-//            $age = FunctionsDate::getAgeAtEvent($age);
 
             if ($person->canShow()) {
                 $top10[] = [
@@ -2360,22 +2358,8 @@ class Stats
                     'age'    => FunctionsDate::getAgeAtEvent($age),
                 ];
             }
-
-//            if ($person->canShow()) {
-//                if ($type === 'list') {
-//                    $top10[] = '<li><a href="' . e($person->url()) . '">' . $person->getFullName() . '</a> (' . $age . ')' . '</li>';
-//                } else {
-//                    $top10[] = '<a href="' . e($person->url()) . '">' . $person->getFullName() . '</a> (' . $age . ')';
-//                }
-//            }
         }
 
-//        if ($type === 'list') {
-//            $top10 = implode('', $top10);
-//        } else {
-//            $top10 = implode(' ', $top10);
-//        }
-//
         // TODO
 //        if (I18N::direction() === 'rtl') {
 //            $top10 = str_replace([
@@ -2393,23 +2377,18 @@ class Stats
 //            ], $top10);
 //        }
 
-//        if ($type == 'list') {
-//            return '<ul>' . $top10 . '</ul>';
-//        }
-
         return $top10;
     }
 
     /**
      * Find the oldest living individuals.
      *
-     * @param string $type
      * @param string $sex
-     * @param string $total
+     * @param int    $total
      *
      * @return array
      */
-    private function topTenOldestAliveQuery($type = 'list', $sex = 'BOTH', $total = '10'): array
+    private function topTenOldestAliveQuery(string $sex = 'BOTH', int $total = 10): array
     {
         $total = (int) $total;
 
@@ -2460,25 +2439,11 @@ class Stats
                 $age .= 'd';
             }
 
-//            $age = FunctionsDate::getAgeAtEvent($age);
-
             $top10[] = [
                 'person' => $person,
                 'age'    => FunctionsDate::getAgeAtEvent($age),
             ];
-
-//            if ($type === 'list') {
-//                $top10[] = '<li><a href="' . e($person->url()) . '">' . $person->getFullName() . '</a> (' . $age . ')' . '</li>';
-//            } else {
-//                $top10[] = '<a href="' . e($person->url()) . '">' . $person->getFullName() . '</a> (' . $age . ')';
-//            }
         }
-
-//        if ($type === 'list') {
-//            $top10 = implode('', $top10);
-//        } else {
-//            $top10 = implode('; ', $top10);
-//        }
 
         // TODO
 //        if (I18N::direction() === 'rtl') {
@@ -2495,10 +2460,6 @@ class Stats
 //                '&rlm;)',
 //                '&rlm;+',
 //            ], $top10);
-//        }
-
-//        if ($type === 'list') {
-//            return '<ul>' . $top10 . '</ul>';
 //        }
 
         return $top10;
@@ -2739,7 +2700,14 @@ class Stats
      */
     public function topTenOldest(string $total = '10'): string
     {
-        return $this->topTenOldestQuery('nolist', 'BOTH', (int) $total);
+        $records = $this->topTenOldestQuery('nolist', 'BOTH', (int) $total);
+
+        return view(
+            'statistics/individuals/top10-nolist',
+            [
+                'records' => $records,
+            ]
+        );
     }
 
     /**
@@ -2751,7 +2719,14 @@ class Stats
      */
     public function topTenOldestList(string $total = '10'): string
     {
-        return $this->topTenOldestQuery('list', 'BOTH', (int) $total);
+        $records = $this->topTenOldestQuery('list', 'BOTH', (int) $total);
+
+        return view(
+            'statistics/individuals/top10-list',
+            [
+                'records' => $records,
+            ]
+        );
     }
 
     /**
@@ -2763,7 +2738,14 @@ class Stats
      */
     public function topTenOldestAlive(string $total = '10'): string
     {
-        return $this->topTenOldestAliveQuery('nolist', 'BOTH', $total);
+        $records = $this->topTenOldestAliveQuery('BOTH', (int) $total);
+
+        return view(
+            'statistics/individuals/top10-nolist',
+            [
+                'records' => $records,
+            ]
+        );
     }
 
     /**
@@ -2775,7 +2757,14 @@ class Stats
      */
     public function topTenOldestListAlive(string $total = '10'): string
     {
-        return $this->topTenOldestAliveQuery('list', 'BOTH', $total);
+        $records = $this->topTenOldestAliveQuery('BOTH', (int) $total);
+
+        return view(
+            'statistics/individuals/top10-list',
+            [
+                'records' => $records,
+            ]
+        );
     }
 
     /**
@@ -2829,7 +2818,14 @@ class Stats
      */
     public function topTenOldestFemale(string $total = '10'): string
     {
-        return $this->topTenOldestQuery('nolist', 'F', (int) $total);
+        $records = $this->topTenOldestQuery('nolist', 'F', (int) $total);
+
+        return view(
+            'statistics/individuals/top10-nolist',
+            [
+                'records' => $records,
+            ]
+        );
     }
 
     /**
@@ -2860,7 +2856,14 @@ class Stats
      */
     public function topTenOldestFemaleAlive(string $total = '10'): string
     {
-        return $this->topTenOldestAliveQuery('nolist', 'F', $total);
+        $records = $this->topTenOldestAliveQuery('F', (int) $total);
+
+        return view(
+            'statistics/individuals/top10-nolist',
+            [
+                'records' => $records,
+            ]
+        );
     }
 
     /**
@@ -2872,7 +2875,7 @@ class Stats
      */
     public function topTenOldestFemaleListAlive(string $total = '10'): string
     {
-        $records = $this->topTenOldestAliveQuery('list', 'F', $total);
+        $records = $this->topTenOldestAliveQuery('F', (int) $total);
 
         return view(
             'statistics/individuals/top10-list',
@@ -2971,7 +2974,14 @@ class Stats
      */
     public function topTenOldestMaleAlive(string $total = '10'): string
     {
-        return $this->topTenOldestAliveQuery('nolist', 'M', $total);
+        $records = $this->topTenOldestAliveQuery('M', (int) $total);
+
+        return view(
+            'statistics/individuals/top10-nolist',
+            [
+                'records' => $records,
+            ]
+        );
     }
 
     /**
@@ -2983,7 +2993,7 @@ class Stats
      */
     public function topTenOldestMaleListAlive(string $total = '10'): string
     {
-        $records = $this->topTenOldestAliveQuery('list', 'M', $total);
+        $records = $this->topTenOldestAliveQuery('M', (int) $total);
 
         return view(
             'statistics/individuals/top10-list',
@@ -3027,7 +3037,7 @@ class Stats
 
         $fact_query = "IN ('" . implode("','", $facts) . "')";
 
-        if ($direction != 'ASC') {
+        if ($direction !== 'ASC') {
             $direction = 'DESC';
         }
         $rows = $this->runSql(
@@ -3055,7 +3065,7 @@ class Stats
         switch ($type) {
             default:
             case 'full':
-                if ($record->canShow()) {
+                if ($record && $record->canShow()) {
                     $result = $record->formatList();
                 } else {
                     $result = I18N::translate('This information is private and cannot be shown.');
@@ -3200,12 +3210,12 @@ class Stats
      */
     private function marriageQuery(string $type, string $age_dir, string $sex, bool $show_years): string
     {
-        if ($sex == 'F') {
+        if ($sex === 'F') {
             $sex_field = 'f_wife';
         } else {
             $sex_field = 'f_husb';
         }
-        if ($age_dir != 'ASC') {
+        if ($age_dir !== 'ASC') {
             $age_dir = 'DESC';
         }
         $rows = $this->runSql(
@@ -3240,7 +3250,7 @@ class Stats
         switch ($type) {
             default:
             case 'full':
-                if ($family->canShow()) {
+                if ($family && $family->canShow()) {
                     $result = $family->formatList();
                 } else {
                     $result = I18N::translate('This information is private and cannot be shown.');
@@ -3257,7 +3267,7 @@ class Stats
                     } elseif ((int) ($age / 30.4375) > 0) {
                         $age = (int) ($age / 30.4375) . 'm';
                     } else {
-                        $age = $age . 'd';
+                        $age .= 'd';
                     }
                     $result = FunctionsDate::getAgeAtEvent($age);
                 } else {
@@ -3278,11 +3288,9 @@ class Stats
      *
      * @return string
      */
-    private function ageOfMarriageQuery($type, $age_dir, int $total): string
+    private function ageOfMarriageQuery(string $type, string $age_dir, int $total): string
     {
-        $total = (int) $total;
-
-        if ($age_dir != 'ASC') {
+        if ($age_dir !== 'ASC') {
             $age_dir = 'DESC';
         }
         $hrows = $this->runSql(
@@ -3375,7 +3383,7 @@ class Stats
             $husb = $family->getHusband();
             $wife = $family->getWife();
             if ($husb && $wife && ($husb->getAllDeathDates() && $wife->getAllDeathDates() || !$husb->isDead() || !$wife->isDead())) {
-                if ($family->canShow()) {
+                if ($family && $family->canShow()) {
                     if ($type === 'list') {
                         $top10[] = '<li><a href="' . e($family->url()) . '">' . $family->getFullName() . '</a> (' . $age . ')' . '</li>';
                     } else {
@@ -3441,12 +3449,12 @@ class Stats
      */
     private function parentsQuery(string $type, string $age_dir, string $sex, bool $show_years): string
     {
-        if ($sex == 'F') {
+        if ($sex === 'F') {
             $sex_field = 'WIFE';
         } else {
             $sex_field = 'HUSB';
         }
-        if ($age_dir != 'ASC') {
+        if ($age_dir !== 'ASC') {
             $age_dir = 'DESC';
         }
         $rows = $this->runSql(
@@ -3480,7 +3488,7 @@ class Stats
         switch ($type) {
             default:
             case 'full':
-                if ($person->canShow()) {
+                if ($person && $person->canShow()) {
                     $result = $person->formatList();
                 } else {
                     $result = I18N::translate('This information is private and cannot be shown.');
@@ -3497,7 +3505,7 @@ class Stats
                     } elseif ((int) ($age / 30.4375) > 0) {
                         $age = (int) ($age / 30.4375) . 'm';
                     } else {
-                        $age = $age . 'd';
+                        $age .= 'd';
                     }
                     $result = FunctionsDate::getAgeAtEvent($age);
                 } else {
@@ -3967,7 +3975,7 @@ class Stats
                         $value = $values['M'];
                     }
                     $countsm .= $value . ',';
-                    if ($average == 0) {
+                    if ($average === 0) {
                         $countsa .= $value . ',';
                     } else {
                         $countsa .= (($value + $average) / 2) . ',';
@@ -3975,7 +3983,7 @@ class Stats
                     $chmm .= 't' . $values['M'] . ',000000,0,' . $i . ',11,1|';
                 } else {
                     $countsm .= '0,';
-                    if ($average == 0) {
+                    if ($average === 0) {
                         $countsa .= '0,';
                     } else {
                         $countsa .= $value . ',';
@@ -4558,12 +4566,11 @@ class Stats
     /**
      * General query on families.
      *
-     * @param string $type
-     * @param int    $total
+     * @param int $total
      *
      * @return array
      */
-    private function topTenFamilyQuery(string $type, int $total): array
+    private function topTenFamilyQuery(int $total): array
     {
         $rows = $this->runSql(
             "SELECT f_numchil AS tot, f_id AS id" .
@@ -4582,12 +4589,10 @@ class Stats
         foreach ($rows as $row) {
             $family = Family::getInstance($row->id, $this->tree);
 
-            if ($family->canShow()) {
-                $total = (int) $row->tot;
-
+            if ($family && $family->canShow()) {
                 $top10[] = [
                     'family' => $family,
-                    'count'  => $total,
+                    'count'  => (int) $row->tot,
                 ];
             }
         }
@@ -4725,7 +4730,7 @@ class Stats
      */
     public function topTenLargestFamily(string $total = '10'): string
     {
-        $records = $this->topTenFamilyQuery('nolist', (int) $total);
+        $records = $this->topTenFamilyQuery((int) $total);
 
         return view(
             'statistics/families/top10-nolist',
@@ -4744,7 +4749,7 @@ class Stats
      */
     public function topTenLargestFamilyList(string $total = '10'): string
     {
-        $records = $this->topTenFamilyQuery('list', (int) $total);
+        $records = $this->topTenFamilyQuery((int) $total);
 
         return view(
             'statistics/families/top10-list',
@@ -4797,13 +4802,15 @@ class Stats
         $chl = [];
         foreach ($rows as $row) {
             $family = Family::getInstance($row->id, $this->tree);
-            if ($family->canShow()) {
-                if ($tot == 0) {
+
+            if ($family && $family->canShow()) {
+                if ($tot === 0) {
                     $per = 0;
                 } else {
                     $per = intdiv(100 * $row->tot, $tot);
                 }
-                $chd   .= $this->arrayToExtendedEncoding([$per]);
+
+                $chd .= $this->arrayToExtendedEncoding([$per]);
                 $chl[] = htmlspecialchars_decode(strip_tags($family->getFullName())) . ' - ' . I18N::number($row->tot);
             }
         }
@@ -4971,7 +4978,9 @@ class Stats
      */
     public function topAgeBetweenSiblingsName(string $total = '10', string $one = ''): string
     {
-        return $this->ageBetweenSiblingsQuery('name', (int) $total, (bool) $one);
+        // TODO
+//        return $this->ageBetweenSiblingsQuery('name', (int) $total, (bool) $one);
+        return 'topAgeBetweenSiblingsName';
     }
 
     /**
@@ -4984,7 +4993,9 @@ class Stats
      */
     public function topAgeBetweenSiblings(string $total = '10', string $one = ''): string
     {
-        return $this->ageBetweenSiblingsQuery('age', (int) $total, (bool) $one);
+        // TODO
+//        return $this->ageBetweenSiblingsQuery('age', (int) $total, (bool) $one);
+        return 'topAgeBetweenSiblings';
     }
 
     /**
@@ -5199,12 +5210,11 @@ class Stats
     /**
      * Find the couple with the most grandchildren.
      *
-     * @param string $type
-     * @param int    $total
+     * @param int $total
      *
      * @return array
      */
-    private function topTenGrandFamilyQuery(string $type, int $total): array
+    private function topTenGrandFamilyQuery(int $total): array
     {
         $rows = $this->runSql(
             "SELECT COUNT(*) AS tot, f_id AS id" .
@@ -5234,7 +5244,7 @@ class Stats
         foreach ($rows as $row) {
             $family = Family::getInstance($row->id, $this->tree);
 
-            if ($family->canShow()) {
+            if ($family && $family->canShow()) {
                 $total = (int) $row->tot;
 
                 $top10[] = [
@@ -5275,7 +5285,7 @@ class Stats
      */
     public function topTenLargestGrandFamily(string $total = '10'): string
     {
-        $records = $this->topTenGrandFamilyQuery('nolist', (int) $total);
+        $records = $this->topTenGrandFamilyQuery((int) $total);
 
         return view(
             'statistics/families/top10-nolist-grand',
@@ -5294,7 +5304,7 @@ class Stats
      */
     public function topTenLargestGrandFamilyList(string $total = '10'): string
     {
-        $records = $this->topTenGrandFamilyQuery('list', (int) $total);
+        $records = $this->topTenGrandFamilyQuery((int) $total);
 
         return view(
             'statistics/families/top10-list-grand',
@@ -6933,7 +6943,7 @@ class Stats
      *
      * @return string[]
      */
-    public function getAllCountries(): array
+    private function getAllCountries(): array
     {
         return [
             /* I18N: Name of a country or state */
