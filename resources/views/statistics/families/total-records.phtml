@@ -12,91 +12,99 @@ use Fisharebest\Webtrees\I18N;
 </h4>
 
 <div class="mb-3">
-    <div class="card-deck">
-        <div class="col-12 col-lg-6 mb-3">
-            <div class="card m-0">
-                <h5 class="card-header border-bottom-0">
-                    <?= I18N::translate('Total marriages') ?>
-                    <span class="badge badge-secondary badge-pill float-right"><?= $stats->totalMarriages() ?></span>
-                </h5>
-            </div>
-        </div>
+    <div class="row">
+        <div class="col-12 col-lg-6">
+            <div class="card-deck">
+                <div class="mb-3 col-12">
+                    <div class="card m-0">
+                        <h5 class="card-header border-bottom-0">
+                            <?= I18N::translate('Total marriages') ?>
+                            <span class="badge badge-secondary badge-pill float-right"><?= $stats->totalMarriages() ?></span>
+                        </h5>
+                    </div>
+                </div>
 
-        <div class="col-12 col-lg-6 mb-3">
-            <div class="card m-0">
-                <h5 class="card-header border-bottom-0">
-                    <?= I18N::translate('Total divorces') ?>
-                    <span class="badge badge-secondary badge-pill float-right"><?= $stats->totalDivorces() ?></span>
-                </h5>
+                <div class="mb-3 col-12">
+                    <div class="card m-0">
+                        <h5 class="card-header border-bottom-0">
+                            <?= I18N::translate('Marriages by century') ?>
+                        </h5>
+                        <div class="card-body">
+                            <?= $stats->statsMarr() ?>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
 
-    <div class="card-deck">
-        <div class="col-12 col-lg-6 mb-3">
-            <div class="card m-0">
-                <h5 class="card-header">
-                    <?= I18N::translate('Marriages by century') ?>
-                </h5>
-                <div class="card-body">
-                    <?= $stats->statsMarr() ?>
+            <div class="card-deck">
+                <div class="mb-3 col-lg-12 col-md-6">
+                    <div class="card m-0">
+                        <h5 class="card-header border-bottom-0">
+                            <?= I18N::translate('Earliest marriage') ?>
+                        </h5>
+                        <div class="card-body">
+                            <?= $stats->firstMarriage() ?>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-3 col-lg-12 col-md-6">
+                    <div class="card m-0">
+                        <h5 class="card-header border-bottom-0">
+                            <?= I18N::translate('Latest marriage') ?>
+                        </h5>
+                        <div class="card-body">
+                            <?= $stats->lastMarriage() ?>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="col-12 col-lg-6 mb-3">
-            <div class="card m-0">
-                <h5 class="card-header">
-                    <?= I18N::translate('Divorces by century') ?>
-                </h5>
-                <div class="card-body">
-                    <?= $stats->statsDiv() ?>
+        <div class="col-12 col-lg-6">
+            <div class="card-deck">
+                <div class="mb-3 col-12">
+                    <div class="card m-0">
+                        <h5 class="card-header border-bottom-0">
+                            <?= I18N::translate('Total divorces') ?>
+                            <span class="badge badge-secondary badge-pill float-right"><?= $stats->totalDivorces() ?></span>
+                        </h5>
+                    </div>
+                </div>
+
+                <div class="mb-3 col-12">
+                    <div class="card m-0">
+                        <h5 class="card-header">
+                            <?= I18N::translate('Divorces by century') ?>
+                        </h5>
+                        <div class="card-body">
+                            <?= $stats->statsDiv() ?>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
 
-    <div class="card-deck">
-        <div class="col-12 col-md-6 mb-3">
-            <div class="card m-0">
-                <h5 class="card-header">
-                    <?= I18N::translate('Earliest marriage') ?>
-                </h5>
-                <div class="card-body">
-                    <?= $stats->firstMarriage() ?>
+            <div class="card-deck">
+                <div class="mb-3 col-lg-12 col-md-6">
+                    <div class="card m-0">
+                        <h5 class="card-header">
+                            <?= I18N::translate('Earliest divorce') ?>
+                        </h5>
+                        <div class="card-body">
+                            <?= $stats->firstDivorce() ?>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
 
-        <div class="col-12 col-md-6 mb-3">
-            <div class="card m-0">
-                <h5 class="card-header">
-                    <?= I18N::translate('Earliest divorce') ?>
-                </h5>
-                <div class="card-body">
-                    <?= $stats->firstDivorce() ?>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-12 col-md-6 mb-3">
-            <div class="card m-0">
-                <h5 class="card-header">
-                    <?= I18N::translate('Latest marriage') ?>
-                </h5>
-                <div class="card-body">
-                    <?= $stats->lastMarriage() ?>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-12 col-md-6 mb-3">
-            <div class="card m-0">
-                <h5 class="card-header">
-                    <?= I18N::translate('Latest divorce') ?>
-                </h5>
-                <div class="card-body">
-                    <?= $stats->lastDivorce() ?>
+                <div class="mb-3 col-lg-12 col-md-6">
+                    <div class="card m-0">
+                        <h5 class="card-header">
+                            <?= I18N::translate('Latest divorce') ?>
+                        </h5>
+                        <div class="card-body">
+                            <?= $stats->lastDivorce() ?>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
