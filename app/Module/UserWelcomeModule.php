@@ -48,12 +48,12 @@ class UserWelcomeModule extends AbstractModule implements ModuleBlockInterface
      *
      * @param Tree     $tree
      * @param int      $block_id
-     * @param bool     $template
+     * @param string   $ctype
      * @param string[] $cfg
      *
      * @return string
      */
-    public function getBlock(Tree $tree, int $block_id, bool $template = true, array $cfg = []): string
+    public function getBlock(Tree $tree, int $block_id, string $ctype = '', array $cfg = []): string
     {
         $gedcomid   = $tree->getUserPreference(Auth::user(), 'gedcomid');
         $individual = Individual::getInstance($gedcomid, $tree);
@@ -88,7 +88,7 @@ class UserWelcomeModule extends AbstractModule implements ModuleBlockInterface
         /* I18N: A %s is the user’s name */
         $title = I18N::translate('Welcome %s', Auth::user()->getRealName());
 
-        if ($template) {
+        if ($ctype) {
             return view('modules/block-template', [
                 'block'      => str_replace('_', '-', $this->getName()),
                 'id'         => $block_id,

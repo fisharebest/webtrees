@@ -59,12 +59,12 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
      *
      * @param Tree     $tree
      * @param int      $block_id
-     * @param bool     $template
+     * @param string   $ctype
      * @param string[] $cfg
      *
      * @return string
      */
-    public function getBlock(Tree $tree, int $block_id, bool $template = true, array $cfg = []): string
+    public function getBlock(Tree $tree, int $block_id, string $ctype = '', array $cfg = []): string
     {
         $content = view('modules/gedcom_favorites/favorites', [
             'block_id'   => $block_id,
@@ -73,7 +73,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
             'tree'       => $tree,
         ]);
 
-        if ($template) {
+        if ($ctype) {
             return view('modules/block-template', [
                 'block'      => str_replace('_', '-', $this->getName()),
                 'id'         => $block_id,

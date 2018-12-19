@@ -56,15 +56,13 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface
      *
      * @param Tree     $tree
      * @param int      $block_id
-     * @param bool     $template
+     * @param string   $ctype
      * @param string[] $cfg
      *
      * @return string
      */
-    public function getBlock(Tree $tree, int $block_id, bool $template = true, array $cfg = []): string
+    public function getBlock(Tree $tree, int $block_id, string $ctype = '', array $cfg = []): string
     {
-        global $ctype;
-
         $num             = $this->getBlockSetting($block_id, 'num', '10');
         $count_placement = $this->getBlockSetting($block_id, 'count_placement', 'before');
 
@@ -98,7 +96,7 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface
         }
         $content .= '</table>';
 
-        if ($template) {
+        if ($ctype) {
             if ($ctype === 'gedcom' && Auth::isManager($tree)) {
                 $config_url = route('tree-page-block-edit', [
                     'block_id' => $block_id,

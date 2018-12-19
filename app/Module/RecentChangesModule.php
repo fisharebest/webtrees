@@ -52,10 +52,8 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
     }
 
     /** {@inheritdoc} */
-    public function getBlock(Tree $tree, int $block_id, bool $template = true, array $cfg = []): string
+    public function getBlock(Tree $tree, int $block_id, string $ctype = '', array $cfg = []): string
     {
-        global $ctype;
-
         $days      = (int) $this->getBlockSetting($block_id, 'days', self::DEFAULT_DAYS);
         $infoStyle = $this->getBlockSetting($block_id, 'infoStyle', self::DEFAULT_INFO_STYLE);
         $sortStyle = $this->getBlockSetting($block_id, 'sortStyle', self::DEFAULT_SORT_STYLE);
@@ -98,7 +96,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
             ]);
         }
 
-        if ($template) {
+        if ($ctype) {
             if ($ctype === 'gedcom' && Auth::isManager($tree)) {
                 $config_url = route('tree-page-block-edit', [
                     'block_id' => $block_id,

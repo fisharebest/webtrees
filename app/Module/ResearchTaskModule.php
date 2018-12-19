@@ -53,15 +53,13 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
      *
      * @param Tree     $tree
      * @param int      $block_id
-     * @param bool     $template
+     * @param string   $ctype
      * @param string[] $cfg
      *
      * @return string
      */
-    public function getBlock(Tree $tree, int $block_id, bool $template = true, array $cfg = []): string
+    public function getBlock(Tree $tree, int $block_id, string $ctype = '', array $cfg = []): string
     {
-        global $ctype;
-
         $show_other      = $this->getBlockSetting($block_id, 'show_other', self::DEFAULT_SHOW_OTHER);
         $show_unassigned = $this->getBlockSetting($block_id, 'show_unassigned', self::DEFAULT_SHOW_UNASSIGNED);
         $show_future     = $this->getBlockSetting($block_id, 'show_future', self::DEFAULT_SHOW_FUTURE);
@@ -100,7 +98,7 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
             $content = view('modules/todo/research-tasks', ['tasks' => $tasks]);
         }
 
-        if ($template) {
+        if ($ctype) {
             if ($ctype === 'gedcom' && Auth::isManager($tree)) {
                 $config_url = route('tree-page-block-edit', [
                     'block_id' => $block_id,

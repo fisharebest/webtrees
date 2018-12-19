@@ -47,12 +47,12 @@ class LoginBlockModule extends AbstractModule implements ModuleBlockInterface
      *
      * @param Tree     $tree
      * @param int      $block_id
-     * @param bool     $template
+     * @param string   $ctype
      * @param string[] $cfg
      *
      * @return string
      */
-    public function getBlock(Tree $tree, int $block_id, bool $template = true, array $cfg = []): string
+    public function getBlock(Tree $tree, int $block_id, string $ctype = '', array $cfg = []): string
     {
         if (Auth::check()) {
             $title   = I18N::translate('Sign out');
@@ -66,7 +66,7 @@ class LoginBlockModule extends AbstractModule implements ModuleBlockInterface
             ]);
         }
 
-        if ($template) {
+        if ($ctype) {
             return view('modules/block-template', [
                 'block'      => str_replace('_', '-', $this->getName()),
                 'id'         => $block_id,

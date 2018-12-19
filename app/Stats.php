@@ -6631,7 +6631,7 @@ class Stats
         if ($module instanceof FamilyTreeFavoritesModule) {
             $block = new FamilyTreeFavoritesModule(Webtrees::MODULES_PATH . 'gedcom_favorites');
 
-            return $block->getBlock($this->tree, 0, false);
+            return $block->getBlock($this->tree, 0, '');
         }
 
         return '';
@@ -6647,7 +6647,7 @@ class Stats
         if (Auth::check() && Module::getModuleByName('user_favorites')) {
             $block = new UserFavoritesModule(Webtrees::MODULES_PATH . 'gedcom_favorites');
 
-            return $block->getBlock($this->tree, 0, false);
+            return $block->getBlock($this->tree, 0, '');
         }
 
         return '';
@@ -6700,14 +6700,8 @@ class Stats
      */
     public function callBlock(string $block = '', ...$params): string
     {
-        global $ctype;
+        $all_blocks = Module::getActiveBlocks($this->tree);
 
-        $all_blocks = [];
-        foreach (Module::getActiveBlocks($this->tree) as $name => $active_block) {
-            if ($ctype == 'user' && $active_block->isUserBlock() || $ctype == 'gedcom' && $active_block->isGedcomBlock()) {
-                $all_blocks[$name] = $active_block;
-            }
-        }
         if (!array_key_exists($block, $all_blocks) || $block == 'html') {
             return '';
         }
@@ -6722,7 +6716,7 @@ class Stats
             $cfg[$v] = implode('=', $bits);
         }
         $block    = $all_blocks[$block];
-        $content  = $block->getBlock($this->tree, 0, false, $cfg);
+        $content  = $block->getBlock($this->tree, 0, '', $cfg);
 
         return $content;
     }

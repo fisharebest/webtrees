@@ -50,15 +50,13 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
      *
      * @param Tree     $tree
      * @param int      $block_id
-     * @param bool     $template
+     * @param string   $ctype
      * @param string[] $cfg
      *
      * @return string
      */
-    public function getBlock(Tree $tree, int $block_id, bool $template = true, array $cfg = []): string
+    public function getBlock(Tree $tree, int $block_id, string $ctype = '', array $cfg = []): string
     {
-        global $ctype;
-
         $filter   = $this->getBlockSetting($block_id, 'filter', 'all');
         $controls = $this->getBlockSetting($block_id, 'controls', '1');
         $start    = (bool) $this->getBlockSetting($block_id, 'start', '0');
@@ -129,7 +127,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
             $content = I18N::translate('This family tree has no images to display.');
         }
 
-        if ($template) {
+        if ($ctype) {
             if ($ctype === 'gedcom' && Auth::isManager($tree)) {
                 $config_url = route('tree-page-block-edit', [
                     'block_id' => $block_id,

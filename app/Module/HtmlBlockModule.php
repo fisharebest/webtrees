@@ -48,15 +48,13 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface
      *
      * @param Tree     $tree
      * @param int      $block_id
-     * @param bool     $template
+     * @param string   $ctype
      * @param string[] $cfg
      *
      * @return string
      */
-    public function getBlock(Tree $tree, int $block_id, bool $template = true, array $cfg = []): string
+    public function getBlock(Tree $tree, int $block_id, string $ctype = '', array $cfg = []): string
     {
-        global $ctype;
-
         $title          = $this->getBlockSetting($block_id, 'title', '');
         $content        = $this->getBlockSetting($block_id, 'html', '');
         $show_timestamp = $this->getBlockSetting($block_id, 'show_timestamp', '0');
@@ -79,7 +77,7 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface
             $content .= '<br>' . FunctionsDate::formatTimestamp((int) $this->getBlockSetting($block_id, 'timestamp', (string) WT_TIMESTAMP) + WT_TIMESTAMP_OFFSET);
         }
 
-        if ($template) {
+        if ($ctype) {
             if ($ctype === 'gedcom' && Auth::isManager($tree)) {
                 $config_url = route('tree-page-block-edit', [
                     'block_id' => $block_id,

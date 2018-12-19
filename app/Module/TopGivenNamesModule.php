@@ -51,15 +51,13 @@ class TopGivenNamesModule extends AbstractModule implements ModuleBlockInterface
      *
      * @param Tree     $tree
      * @param int      $block_id
-     * @param bool     $template
+     * @param string   $ctype
      * @param string[] $cfg
      *
      * @return string
      */
-    public function getBlock(Tree $tree, int $block_id, bool $template = true, array $cfg = []): string
+    public function getBlock(Tree $tree, int $block_id, string $ctype = '', array $cfg = []): string
     {
-        global $ctype;
-
         $num       = $this->getBlockSetting($block_id, 'num', self::DEFAULT_NUMBER);
         $infoStyle = $this->getBlockSetting($block_id, 'infoStyle', self::DEFAULT_STYLE);
 
@@ -83,7 +81,7 @@ class TopGivenNamesModule extends AbstractModule implements ModuleBlockInterface
                 break;
         }
 
-        if ($template) {
+        if ($ctype) {
             $num = (int) $num;
 
             if ($num === 1) {

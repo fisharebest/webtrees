@@ -30,12 +30,12 @@ interface ModuleBlockInterface extends ModuleInterface
      *
      * @param Tree     $tree
      * @param int      $block_id
-     * @param bool     $template
+     * @param string   $ctype
      * @param string[] $cfg
      *
      * @return string
      */
-    public function getBlock(Tree $tree, int $block_id, bool $template = true, array $cfg = []): string;
+    public function getBlock(Tree $tree, int $block_id, string $ctype = '', array $cfg = []): string;
 
     /**
      * Should this block load asynchronously using AJAX?

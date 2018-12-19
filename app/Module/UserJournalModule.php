@@ -71,12 +71,12 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
      *
      * @param Tree     $tree
      * @param int      $block_id
-     * @param bool     $template
+     * @param string   $ctype
      * @param string[] $cfg
      *
      * @return string
      */
-    public function getBlock(Tree $tree, int $block_id, bool $template = true, array $cfg = []): string
+    public function getBlock(Tree $tree, int $block_id, string $ctype = '', array $cfg = []): string
     {
         $articles = Database::prepare(
             "SELECT news_id, user_id, gedcom_id, UNIX_TIMESTAMP(updated) + :offset AS updated, subject, body FROM `##news` WHERE user_id = :user_id ORDER BY updated DESC"
@@ -91,7 +91,7 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
             'limit'    => 5,
         ]);
 
-        if ($template) {
+        if ($ctype) {
             return view('modules/block-template', [
                 'block'      => str_replace('_', '-', $this->getName()),
                 'id'         => $block_id,

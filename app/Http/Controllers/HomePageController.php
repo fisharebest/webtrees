@@ -49,7 +49,7 @@ class HomePageController extends AbstractBaseController
     {
         $block_id = (int) $request->get('block_id');
         $block    = $this->treeBlock($request, $user);
-        $title    = $block->getTitle() . ' — ' . I18N::translate('!Preferences');
+        $title    = $block->getTitle() . ' — ' . I18N::translate('Preferences');
 
         return $this->viewResponse('modules/edit-block-config', [
             'block'      => $block,
@@ -209,10 +209,6 @@ class HomePageController extends AbstractBaseController
         $side_blocks  = $this->getBlocksForTreePage($tree_id, $access_level, 'side');
         $title        = e($tree->title());
 
-        // @TODO - ModuleBlockInterface::getBlock() currently relies on these globals
-        global $ctype;
-        $ctype = 'gedcom';
-
         return $this->viewResponse('tree-page', [
             'main_blocks' => $main_blocks,
             'side_blocks' => $side_blocks,
@@ -246,12 +242,8 @@ class HomePageController extends AbstractBaseController
             return new Response('', Response::HTTP_NOT_FOUND);
         }
 
-        // @TODO - ModuleBlockInterface::getBlock() currently relies on these globals
-        global $ctype;
-        $ctype = 'gedcom';
-
         $html = view('layouts/ajax', [
-            'content' => $module->getBlock($tree, $block_id, true),
+            'content' => $module->getBlock($tree, $block_id, 'gedcom'),
         ]);
 
 
@@ -372,10 +364,6 @@ class HomePageController extends AbstractBaseController
         $side_blocks  = $this->getBlocksForUserPage($tree_id, $user_id, $access_level, 'side');
         $title        = I18N::translate('My page');
 
-        // @TODO - ModuleBlockInterface::getBlock() currently relies on these globals
-        global $ctype;
-        $ctype = 'user';
-
         return $this->viewResponse('user-page', [
             'main_blocks' => $main_blocks,
             'side_blocks' => $side_blocks,
@@ -409,12 +397,8 @@ class HomePageController extends AbstractBaseController
             return new Response('Block not found', Response::HTTP_NOT_FOUND);
         }
 
-        // @TODO - ModuleBlockInterface::getBlock() relies on these globals :-(
-        global $ctype;
-        $ctype = 'user';
-
         $html = view('layouts/ajax', [
-            'content' => $module->getBlock($tree, $block_id, true),
+            'content' => $module->getBlock($tree, $block_id, 'user'),
         ]);
 
         // Use HTTP headers and some jQuery to add debug to the current page.
