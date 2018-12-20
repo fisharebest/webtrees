@@ -18,11 +18,12 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Statistics;
 
 use Fisharebest\Webtrees\Database;
+use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
 
 /**
- * Create a chart showing where events occurred.
+ *
  */
 class Surname
 {
@@ -89,5 +90,46 @@ class Surname
         $top_surname = $this->topSurnames(1, 0);
 
         return implode(', ', array_keys(array_shift($top_surname)) ?? []);
+    }
+
+    /**
+     * Find common surnames.
+     *
+     * @param string $type
+     * @param bool   $show_tot
+     * @param int    $threshold
+     * @param int    $number_of_surnames
+     * @param string $sorting
+     *
+     * @return string
+     */
+    public function commonSurnamesQuery(
+        $type,
+        $show_tot,
+        int $threshold,
+        int $number_of_surnames,
+        string $sorting
+    ): string {
+        $surnames = $this->topSurnames($number_of_surnames, $threshold);
+
+        switch ($sorting) {
+            default:
+            case 'alpha':
+                uksort($surnames, [I18N::class, 'strcasecmp']);
+                break;
+            case 'count':
+                break;
+            case 'rcount':
+                $surnames = array_reverse($surnames, true);
+                break;
+        }
+
+        return FunctionsPrintLists::surnameList(
+            $surnames,
+            ($type === 'list' ? 1 : 2),
+            $show_tot,
+            'individual-list',
+            $this->tree
+        );
     }
 }

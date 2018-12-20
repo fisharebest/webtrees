@@ -15,28 +15,29 @@
  */
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Statistics;
+namespace Fisharebest\Webtrees\Statistics\Google;
 
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Statistics\Helper\Country;
+use Fisharebest\Webtrees\Statistics\Google;
+use Fisharebest\Webtrees\Statistics\Places;
+use Fisharebest\Webtrees\Statistics\Surname;
 use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
 
 /**
  * Create a chart showing where events occurred.
  */
-class ChartDistribution
+class ChartDistribution extends Google
 {
-    // Used in Google charts
-    private const GOOGLE_CHART_ENCODING = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-.';
-
     /**
      * @var Tree
      */
     private $tree;
 
     /**
-     * @var CountryHelper
+     * @var Country
      */
     private $country;
 
@@ -58,7 +59,7 @@ class ChartDistribution
     public function __construct(Tree $tree)
     {
         $this->tree    = $tree;
-        $this->country = new CountryHelper();
+        $this->country = new Country();
         $this->surname = new Surname($tree);
         $this->places  = new Places($tree);
     }

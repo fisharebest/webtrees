@@ -15,14 +15,14 @@
  */
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Statistics;
+namespace Fisharebest\Webtrees\Statistics\Helper;
 
 use Fisharebest\Webtrees\I18N;
 
 /**
  * Country codes and names.
  */
-class CountryHelper
+class Country
 {
     /**
      * Country codes and names

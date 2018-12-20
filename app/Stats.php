@@ -20,16 +20,30 @@ namespace Fisharebest\Webtrees;
 use Fisharebest\Webtrees\Functions\FunctionsDate;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
+use Fisharebest\Webtrees\Http\Middleware\PageHitCounter;
 use Fisharebest\Webtrees\Module\FamilyTreeFavoritesModule;
 use Fisharebest\Webtrees\Module\ModuleBlockInterface;
 use Fisharebest\Webtrees\Module\ModuleInterface;
 use Fisharebest\Webtrees\Module\UserFavoritesModule;
+use Fisharebest\Webtrees\Statistics\Age as StatisticAge;
 use Fisharebest\Webtrees\Statistics\AgeDifferenceSiblings;
 use Fisharebest\Webtrees\Statistics\AgeDifferenceSpouse;
+use Fisharebest\Webtrees\Statistics\Birth;
 use Fisharebest\Webtrees\Statistics\BirthPlaces;
-use Fisharebest\Webtrees\Statistics\ChartDistribution;
-use Fisharebest\Webtrees\Statistics\CountryHelper;
+use Fisharebest\Webtrees\Statistics\Children;
+use Fisharebest\Webtrees\Statistics\Death;
 use Fisharebest\Webtrees\Statistics\DeathPlaces;
+use Fisharebest\Webtrees\Statistics\Google;
+use Fisharebest\Webtrees\Statistics\Helper\Century;
+use Fisharebest\Webtrees\Statistics\Helper\Country;
+use Fisharebest\Webtrees\Statistics\Helper\Percentage;
+use Fisharebest\Webtrees\Statistics\Helper\Sql;
+use Fisharebest\Webtrees\Statistics\Individual as StatisticIndividual;
+use Fisharebest\Webtrees\Statistics\FamilyRepository;
+use Fisharebest\Webtrees\Statistics\Source as StatisticSource;
+use Fisharebest\Webtrees\Statistics\Note as StatisticNote;
+use Fisharebest\Webtrees\Statistics\Marriage;
+use Fisharebest\Webtrees\Statistics\MarriageAge;
 use Fisharebest\Webtrees\Statistics\MarriagePlaces;
 use Fisharebest\Webtrees\Statistics\Places;
 use Illuminate\Database\Capsule\Manager as DB;
@@ -46,9 +60,6 @@ use const PREG_SET_ORDER;
  */
 class Stats
 {
-    // Used in Google charts
-    const GOOGLE_CHART_ENCODING = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-.';
-
     /** @var Tree Generate statistics for a specified tree. */
     private $tree;
 
@@ -70,27 +81,65 @@ class Stats
         'statsMarrAgeQuery',
     ];
 
-    /** @var string[] List of GEDCOM media types */
-    private $media_types = [
-        'audio',
-        'book',
-        'card',
-        'certificate',
-        'coat',
-        'document',
-        'electronic',
-        'magazine',
-        'manuscript',
-        'map',
-        'fiche',
-        'film',
-        'newspaper',
-        'painting',
-        'photo',
-        'tombstone',
-        'video',
-        'other',
-    ];
+    /**
+     * @var Surname
+     */
+    private $surname;
+
+    /**
+     * @var StatisticIndividual
+     */
+    private $individual;
+
+    /**
+     * @var FamilyRepository
+     */
+    private $family;
+
+    /**
+     * @var Children
+     */
+    private $children;
+
+    /**
+     * @var StatisticSource
+     */
+    private $source;
+
+    /**
+     * @var StatisticNote
+     */
+    private $note;
+
+    /**
+     * @var Google
+     */
+    private $google;
+
+    /**
+     * @var Century
+     */
+    private $centuryHelper;
+
+    /**
+     * @var Country
+     */
+    private $countryHelper;
+
+    /**
+     * @var Statistics\Media
+     */
+    private $media;
+
+    /**
+     * @var Statistics\Living
+     */
+    private $living;
+
+    /**
+     * @var Statistics\Deceased
+     */
+    private $deceased;
 
     /**
      * Create the statistics for a tree.
@@ -99,7 +148,19 @@ class Stats
      */
     public function __construct(Tree $tree)
     {
-        $this->tree = $tree;
+        $this->tree          = $tree;
+        $this->surname       = new Surname($tree);
+        $this->individual    = new StatisticIndividual($tree);
+        $this->family        = new FamilyRepository($tree);
+        $this->children      = new Children($tree);
+        $this->source        = new StatisticSource($tree);
+        $this->note          = new StatisticNote($tree);
+        $this->google        = new Google();
+        $this->centuryHelper = new Century();
+        $this->countryHelper = new Country();
+        $this->media         = new Statistics\Media($tree);
+        $this->living        = new Statistics\Living($tree);
+        $this->deceased      = new Statistics\Deceased($tree);
     }
 
     /**
@@ -331,29 +392,12 @@ class Stats
      * @param string $type
      *
      * @return string
+     *
+     * @deprecated
      */
     private function getPercentage(int $total, string $type): string
     {
-        switch ($type) {
-            case 'individual':
-                $type = $this->totalIndividualsQuery();
-                break;
-            case 'family':
-                $type = $this->totalFamiliesQuery();
-                break;
-            case 'source':
-                $type = $this->totalSourcesQuery();
-                break;
-            case 'note':
-                $type = $this->totalNotesQuery();
-                break;
-            case 'all':
-            default:
-                $type = $this->totalIndividualsQuery() + $this->totalFamiliesQuery() + $this->totalSourcesQuery();
-                break;
-        }
-
-        return I18N::percentage($total / $type, 1);
+        return (new Percentage($this->tree))->getPercentage($total, $type);
     }
 
     /**
@@ -363,21 +407,7 @@ class Stats
      */
     public function totalRecords(): string
     {
-        return I18N::number($this->totalIndividualsQuery() + $this->totalFamiliesQuery() + $this->totalSourcesQuery());
-    }
-
-    /**
-     * How many individuals exist in the tree.
-     *
-     * @return int
-     */
-    private function totalIndividualsQuery(): int
-    {
-        return (int) Database::prepare(
-            "SELECT COUNT(*) FROM `##individuals` WHERE i_file = :tree_id"
-        )->execute([
-            'tree_id' => $this->tree->id(),
-        ])->fetchOne();
+        return I18N::number($this->individual->totalIndividualsQuery() + $this->family->totalFamiliesQuery() + $this->source->totalSourcesQuery());
     }
 
     /**
@@ -387,7 +417,7 @@ class Stats
      */
     public function totalIndividuals(): string
     {
-        return I18N::number($this->totalIndividualsQuery());
+        return I18N::number($this->individual->totalIndividualsQuery());
     }
 
     /**
@@ -437,14 +467,14 @@ class Stats
         $color_to   = $color_to ?? $WT_STATS_CHART_COLOR2;
 
         $sizes    = explode('x', $size);
-        $tot_indi = $this->totalIndividualsQuery();
+        $tot_indi = $this->individual->totalIndividualsQuery();
         if ($tot_indi == 0) {
             return '';
         }
 
         $tot_sindi_per = $this->totalIndisWithSourcesQuery() / $tot_indi;
         $with          = (int) (100 * $tot_sindi_per);
-        $chd           = $this->arrayToExtendedEncoding([100 - $with, $with]);
+        $chd           = $this->google->arrayToExtendedEncoding([100 - $with, $with]);
         $chl           = I18N::translate('Without sources') . ' - ' . I18N::percentage(1 - $tot_sindi_per, 1) . '|' . I18N::translate('With sources') . ' - ' . I18N::percentage($tot_sindi_per, 1);
         $chart_title   = I18N::translate('Individuals with sources');
 
@@ -468,21 +498,7 @@ class Stats
      */
     public function totalIndividualsPercentage(): string
     {
-        return $this->getPercentage($this->totalIndividualsQuery(), 'all');
-    }
-
-    /**
-     * Count the total families.
-     *
-     * @return int
-     */
-    private function totalFamiliesQuery(): int
-    {
-        return (int) Database::prepare(
-            "SELECT COUNT(*) FROM `##families` WHERE f_file = :tree_id"
-        )->execute([
-            'tree_id' => $this->tree->id(),
-        ])->fetchOne();
+        return $this->getPercentage($this->individual->totalIndividualsQuery(), 'all');
     }
 
     /**
@@ -492,7 +508,7 @@ class Stats
      */
     public function totalFamilies(): string
     {
-        return I18N::number($this->totalFamiliesQuery());
+        return I18N::number($this->family->totalFamiliesQuery());
     }
 
     /**
@@ -542,14 +558,15 @@ class Stats
         $color_to   = $color_to ?? $WT_STATS_CHART_COLOR2;
 
         $sizes   = explode('x', $size);
-        $tot_fam = $this->totalFamiliesQuery();
+        $tot_fam = $this->family->totalFamiliesQuery();
+
         if ($tot_fam == 0) {
             return '';
         }
 
         $tot_sfam_per = $this->totalFamsWithSourcesQuery() / $tot_fam;
         $with         = (int) (100 * $tot_sfam_per);
-        $chd          = $this->arrayToExtendedEncoding([100 - $with, $with]);
+        $chd          = $this->google->arrayToExtendedEncoding([100 - $with, $with]);
         $chl          = I18N::translate('Without sources') . ' - ' . I18N::percentage(1 - $tot_sfam_per, 1) . '|' . I18N::translate('With sources') . ' - ' . I18N::percentage($tot_sfam_per, 1);
         $chart_title  = I18N::translate('Families with sources');
 
@@ -573,21 +590,7 @@ class Stats
      */
     public function totalFamiliesPercentage(): string
     {
-        return $this->getPercentage($this->totalFamiliesQuery(), 'all');
-    }
-
-    /**
-     * Count the total number of sources.
-     *
-     * @return int
-     */
-    private function totalSourcesQuery(): int
-    {
-        return (int) Database::prepare(
-            "SELECT COUNT(*) FROM `##sources` WHERE s_file = :tree_id"
-        )->execute([
-            'tree_id' => $this->tree->id(),
-        ])->fetchOne();
+        return $this->getPercentage($this->family->totalFamiliesQuery(), 'all');
     }
 
     /**
@@ -597,7 +600,7 @@ class Stats
      */
     public function totalSources(): string
     {
-        return I18N::number($this->totalSourcesQuery());
+        return I18N::number($this->source->totalSourcesQuery());
     }
 
     /**
@@ -607,21 +610,7 @@ class Stats
      */
     public function totalSourcesPercentage(): string
     {
-        return $this->getPercentage($this->totalSourcesQuery(), 'all');
-    }
-
-    /**
-     * Count the number of notes.
-     *
-     * @return int
-     */
-    private function totalNotesQuery(): int
-    {
-        return (int) Database::prepare(
-            "SELECT COUNT(*) FROM `##other` WHERE o_type='NOTE' AND o_file = :tree_id"
-        )->execute([
-            'tree_id' => $this->tree->id(),
-        ])->fetchOne();
+        return $this->getPercentage($this->source->totalSourcesQuery(), 'all');
     }
 
     /**
@@ -631,7 +620,7 @@ class Stats
      */
     public function totalNotes(): string
     {
-        return I18N::number($this->totalNotesQuery());
+        return I18N::number($this->note->totalNotesQuery());
     }
 
     /**
@@ -641,7 +630,7 @@ class Stats
      */
     public function totalNotesPercentage(): string
     {
-        return $this->getPercentage($this->totalNotesQuery(), 'all');
+        return $this->getPercentage($this->note->totalNotesQuery(), 'all');
     }
 
     /**
@@ -755,7 +744,7 @@ class Stats
         if ($events) {
             $types = [];
             foreach ($events as $type) {
-                if (substr($type, 0, 1) == '!') {
+                if (substr($type, 0, 1) === '!') {
                     $no_types[] = substr($type, 1);
                 } else {
                     $types[] = $type;
@@ -1008,7 +997,7 @@ class Stats
         }
 
         if ($tot_u > 0) {
-            $chd         = $this->arrayToExtendedEncoding([
+            $chd = $this->google->arrayToExtendedEncoding([
                 intdiv(4095 * $tot_u, $tot),
                 intdiv(4095 * $tot_f, $tot),
                 intdiv(4095 * $tot_m, $tot),
@@ -1025,11 +1014,11 @@ class Stats
             return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_unknown},{$color_female},{$color_male}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . $chart_title . '" title="' . $chart_title . '" />';
         }
 
-        $chd         = $this->arrayToExtendedEncoding([
+        $chd = $this->google->arrayToExtendedEncoding([
             intdiv(4095 * $tot_f, $tot),
             intdiv(4095 * $tot_m, $tot),
         ]);
-        $chl         =
+        $chl =
             I18N::translate('Females') . ' - ' . $per_f . '|' .
             I18N::translate('Males') . ' - ' . $per_m;
         $chart_title = I18N::translate('Males') . ' - ' . $per_m . I18N::$list_separator .
@@ -1040,30 +1029,12 @@ class Stats
 
     /**
      * Count the number of living individuals.
-     * The totalLiving/totalDeceased queries assume that every dead person will
-     * have a DEAT record. It will not include individuals who were born more
-     * than MAX_ALIVE_AGE years ago, and who have no DEAT record.
-     * A good reason to run the “Add missing DEAT records” batch-update!
-     *
-     * @return int
-     */
-    private function totalLivingQuery(): int
-    {
-        return (int) Database::prepare(
-            "SELECT COUNT(*) FROM `##individuals` WHERE i_file = :tree_id AND i_gedcom NOT REGEXP '\\n1 (" . implode('|', Gedcom::DEATH_EVENTS) . ")'"
-        )->execute([
-            'tree_id' => $this->tree->id(),
-        ])->fetchOne();
-    }
-
-    /**
-     * Count the number of living individuals.
      *
      * @return string
      */
     public function totalLiving(): string
     {
-        return I18N::number($this->totalLivingQuery());
+        return I18N::number($this->living->totalLivingQuery());
     }
 
     /**
@@ -1073,21 +1044,7 @@ class Stats
      */
     public function totalLivingPercentage(): string
     {
-        return $this->getPercentage($this->totalLivingQuery(), 'individual');
-    }
-
-    /**
-     * Count the number of dead individuals.
-     *
-     * @return int
-     */
-    private function totalDeceasedQuery(): int
-    {
-        return (int) Database::prepare(
-            "SELECT COUNT(*) FROM `##individuals` WHERE i_file = :tree_id AND i_gedcom REGEXP '\\n1 (" . implode('|', Gedcom::DEATH_EVENTS) . ")'"
-        )->execute([
-            'tree_id' => $this->tree->id(),
-        ])->fetchOne();
+        return $this->living->totalLivingPercentage();
     }
 
     /**
@@ -1097,7 +1054,7 @@ class Stats
      */
     public function totalDeceased(): string
     {
-        return I18N::number($this->totalDeceasedQuery());
+        return I18N::number($this->deceased->totalDeceasedQuery());
     }
 
     /**
@@ -1107,7 +1064,7 @@ class Stats
      */
     public function totalDeceasedPercentage(): string
     {
-        return $this->getPercentage($this->totalDeceasedQuery(), 'individual');
+        return $this->deceased->totalDeceasedPercentage();
     }
 
     /**
@@ -1121,36 +1078,8 @@ class Stats
      */
     public function chartMortality(string $size = null, string $color_living = null, string $color_dead = null): string
     {
-        $WT_STATS_S_CHART_X = Theme::theme()->parameter('stats-small-chart-x');
-        $WT_STATS_S_CHART_Y = Theme::theme()->parameter('stats-small-chart-y');
-
-        $size         = $size ?? ($WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y);
-        $color_living = $color_living ?? 'ffffff';
-        $color_dead   = $color_dead ?? 'cccccc';
-
-        $sizes = explode('x', $size);
-        // Raw data - for calculation
-        $tot_l = $this->totalLivingQuery();
-        $tot_d = $this->totalDeceasedQuery();
-        $tot   = $tot_l + $tot_d;
-        // I18N data - for display
-        $per_l = $this->totalLivingPercentage();
-        $per_d = $this->totalDeceasedPercentage();
-        if ($tot == 0) {
-            return '';
-        }
-
-        $chd         = $this->arrayToExtendedEncoding([
-            intdiv(4095 * $tot_l, $tot),
-            intdiv(4095 * $tot_d, $tot),
-        ]);
-        $chl         =
-            I18N::translate('Living') . ' - ' . $per_l . '|' .
-            I18N::translate('Dead') . ' - ' . $per_d . '|';
-        $chart_title = I18N::translate('Living') . ' - ' . $per_l . I18N::$list_separator .
-            I18N::translate('Dead') . ' - ' . $per_d;
-
-        return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_living},{$color_dead}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . $chart_title . '" title="' . $chart_title . '" />';
+        return (new Google\ChartMortality($this->tree))
+            ->chartMortality($size, $color_living, $color_dead);
     }
 
     /**
@@ -1186,46 +1115,13 @@ class Stats
     }
 
     /**
-     * Count the number of media records with a given type.
-     *
-     * @param string $type
-     *
-     * @return int
-     */
-    private function totalMediaType($type): int
-    {
-        if (!in_array($type, $this->media_types) && $type != 'all' && $type != 'unknown') {
-            return 0;
-        }
-        $sql  = "SELECT COUNT(*) AS tot FROM `##media` WHERE m_file=?";
-        $vars = [$this->tree->id()];
-
-        if ($type != 'all') {
-            if ($type == 'unknown') {
-                // There has to be a better way then this :(
-                foreach ($this->media_types as $t) {
-                    $sql    .= " AND (m_gedcom NOT LIKE ? AND m_gedcom NOT LIKE ?)";
-                    $vars[] = "%3 TYPE {$t}%";
-                    $vars[] = "%1 _TYPE {$t}%";
-                }
-            } else {
-                $sql    .= " AND (m_gedcom LIKE ? OR m_gedcom LIKE ?)";
-                $vars[] = "%3 TYPE {$type}%";
-                $vars[] = "%1 _TYPE {$type}%";
-            }
-        }
-
-        return (int) Database::prepare($sql)->execute($vars)->fetchOne();
-    }
-
-    /**
      * Count the number of media records.
      *
      * @return string
      */
     public function totalMedia(): string
     {
-        return I18N::number($this->totalMediaType('all'));
+        return I18N::number($this->media->totalMediaType('all'));
     }
 
     /**
@@ -1235,7 +1131,7 @@ class Stats
      */
     public function totalMediaAudio(): string
     {
-        return I18N::number($this->totalMediaType('audio'));
+        return I18N::number($this->media->totalMediaType('audio'));
     }
 
     /**
@@ -1245,7 +1141,7 @@ class Stats
      */
     public function totalMediaBook(): string
     {
-        return I18N::number($this->totalMediaType('book'));
+        return I18N::number($this->media->totalMediaType('book'));
     }
 
     /**
@@ -1255,7 +1151,7 @@ class Stats
      */
     public function totalMediaCard(): string
     {
-        return I18N::number($this->totalMediaType('card'));
+        return I18N::number($this->media->totalMediaType('card'));
     }
 
     /**
@@ -1265,7 +1161,7 @@ class Stats
      */
     public function totalMediaCertificate(): string
     {
-        return I18N::number($this->totalMediaType('certificate'));
+        return I18N::number($this->media->totalMediaType('certificate'));
     }
 
     /**
@@ -1275,7 +1171,7 @@ class Stats
      */
     public function totalMediaCoatOfArms(): string
     {
-        return I18N::number($this->totalMediaType('coat'));
+        return I18N::number($this->media->totalMediaType('coat'));
     }
 
     /**
@@ -1285,7 +1181,7 @@ class Stats
      */
     public function totalMediaDocument(): string
     {
-        return I18N::number($this->totalMediaType('document'));
+        return I18N::number($this->media->totalMediaType('document'));
     }
 
     /**
@@ -1295,7 +1191,7 @@ class Stats
      */
     public function totalMediaElectronic(): string
     {
-        return I18N::number($this->totalMediaType('electronic'));
+        return I18N::number($this->media->totalMediaType('electronic'));
     }
 
     /**
@@ -1305,7 +1201,7 @@ class Stats
      */
     public function totalMediaMagazine(): string
     {
-        return I18N::number($this->totalMediaType('magazine'));
+        return I18N::number($this->media->totalMediaType('magazine'));
     }
 
     /**
@@ -1315,7 +1211,7 @@ class Stats
      */
     public function totalMediaManuscript(): string
     {
-        return I18N::number($this->totalMediaType('manuscript'));
+        return I18N::number($this->media->totalMediaType('manuscript'));
     }
 
     /**
@@ -1325,7 +1221,7 @@ class Stats
      */
     public function totalMediaMap(): string
     {
-        return I18N::number($this->totalMediaType('map'));
+        return I18N::number($this->media->totalMediaType('map'));
     }
 
     /**
@@ -1335,7 +1231,7 @@ class Stats
      */
     public function totalMediaFiche(): string
     {
-        return I18N::number($this->totalMediaType('fiche'));
+        return I18N::number($this->media->totalMediaType('fiche'));
     }
 
     /**
@@ -1345,7 +1241,7 @@ class Stats
      */
     public function totalMediaFilm(): string
     {
-        return I18N::number($this->totalMediaType('film'));
+        return I18N::number($this->media->totalMediaType('film'));
     }
 
     /**
@@ -1355,7 +1251,7 @@ class Stats
      */
     public function totalMediaNewspaper(): string
     {
-        return I18N::number($this->totalMediaType('newspaper'));
+        return I18N::number($this->media->totalMediaType('newspaper'));
     }
 
     /**
@@ -1365,7 +1261,7 @@ class Stats
      */
     public function totalMediaPainting(): string
     {
-        return I18N::number($this->totalMediaType('painting'));
+        return I18N::number($this->media->totalMediaType('painting'));
     }
 
     /**
@@ -1375,7 +1271,7 @@ class Stats
      */
     public function totalMediaPhoto(): string
     {
-        return I18N::number($this->totalMediaType('photo'));
+        return I18N::number($this->media->totalMediaType('photo'));
     }
 
     /**
@@ -1385,7 +1281,7 @@ class Stats
      */
     public function totalMediaTombstone(): string
     {
-        return I18N::number($this->totalMediaType('tombstone'));
+        return I18N::number($this->media->totalMediaType('tombstone'));
     }
 
     /**
@@ -1395,7 +1291,7 @@ class Stats
      */
     public function totalMediaVideo(): string
     {
-        return I18N::number($this->totalMediaType('video'));
+        return I18N::number($this->media->totalMediaType('video'));
     }
 
     /**
@@ -1405,7 +1301,7 @@ class Stats
      */
     public function totalMediaOther(): string
     {
-        return I18N::number($this->totalMediaType('other'));
+        return I18N::number($this->media->totalMediaType('other'));
     }
 
     /**
@@ -1415,7 +1311,7 @@ class Stats
      */
     public function totalMediaUnknown(): string
     {
-        return I18N::number($this->totalMediaType('unknown'));
+        return I18N::number($this->media->totalMediaType('unknown'));
     }
 
     /**
@@ -1429,82 +1325,8 @@ class Stats
      */
     public function chartMedia(string $size = null, string $color_from = null, string $color_to = null): string
     {
-        $WT_STATS_CHART_COLOR1 = Theme::theme()->parameter('distribution-chart-no-values');
-        $WT_STATS_CHART_COLOR2 = Theme::theme()->parameter('distribution-chart-high-values');
-        $WT_STATS_S_CHART_X    = Theme::theme()->parameter('stats-small-chart-x');
-        $WT_STATS_S_CHART_Y    = Theme::theme()->parameter('stats-small-chart-y');
-
-        $size       = $size ?? ($WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y);
-        $color_from = $color_from ?? $WT_STATS_CHART_COLOR1;
-        $color_to   = $color_to ?? $WT_STATS_CHART_COLOR2;
-
-        $sizes = explode('x', $size);
-        $tot   = $this->totalMediaType('all');
-        // Beware divide by zero
-        if ($tot === 0) {
-            return I18N::translate('None');
-        }
-        // Build a table listing only the media types actually present in the GEDCOM
-        $mediaCounts = [];
-        $mediaTypes  = '';
-        $chart_title = '';
-        $c           = 0;
-        $max         = 0;
-        $media       = [];
-        foreach ($this->media_types as $type) {
-            $count = $this->totalMediaType($type);
-            if ($count > 0) {
-                $media[$type] = $count;
-                if ($count > $max) {
-                    $max = $count;
-                }
-                $c += $count;
-            }
-        }
-        $count = $this->totalMediaType('unknown');
-        if ($count > 0) {
-            $media['unknown'] = $tot - $c;
-            if ($tot - $c > $max) {
-                $max = $count;
-            }
-        }
-        if (($max / $tot) > 0.6 && count($media) > 10) {
-            arsort($media);
-            $media = array_slice($media, 0, 10);
-            $c     = $tot;
-            foreach ($media as $cm) {
-                $c -= $cm;
-            }
-            if (isset($media['other'])) {
-                $media['other'] += $c;
-            } else {
-                $media['other'] = $c;
-            }
-        }
-        asort($media);
-        foreach ($media as $type => $count) {
-            $mediaCounts[] = intdiv(100 * $count, $tot);
-            $mediaTypes    .= GedcomTag::getFileFormTypeValue($type) . ' - ' . I18N::number($count) . '|';
-            $chart_title   .= GedcomTag::getFileFormTypeValue($type) . ' (' . $count . '), ';
-        }
-        $chart_title = substr($chart_title, 0, -2);
-        $chd         = $this->arrayToExtendedEncoding($mediaCounts);
-        $chl         = substr($mediaTypes, 0, -1);
-
-        $chart_url = 'https://chart.googleapis.com/chart?cht=p3&chd=e:' . $chd
-            . '&chs=' . $size . '&chco=' . $color_from . ',' . $color_to . '&chf=bg,s,ffffff00&chl=' . $chl;
-
-        return view(
-            'statistics/other/chart-media',
-            [
-                'chart_title' => $chart_title,
-                'chart_url'   => $chart_url,
-                'sizes'       => $sizes,
-                'color_from'  => $color_from,
-                'color_to'    => $color_to,
-                'mediaTypes'  => $media,
-            ]
-        );
+        return (new Google\ChartMedia($this->tree))
+            ->chartMedia($size, $color_from, $color_to);
     }
 
     /**
@@ -1592,8 +1414,7 @@ class Stats
      */
     public function statsPlaces($what = 'ALL', $fact = '', $parent = 0, $country = false): array
     {
-        $places = new Places($this->tree);
-        return $places->statsPlaces($what, $fact, $parent, $country);
+        return (new Places($this->tree))->statsPlaces($what, $fact, $parent, $country);
     }
 
     /**
@@ -1633,7 +1454,7 @@ class Stats
         string $chart_type  = '',
         string $surname     = ''
     ) : string {
-        return (new ChartDistribution($this->tree))
+        return (new Google\ChartDistribution($this->tree))
             ->chartDistribution($chart_shows, $chart_type, $surname);
     }
 
@@ -1657,7 +1478,7 @@ class Stats
         $country_names = [];
         foreach (I18N::activeLocales() as $locale) {
             I18N::init($locale->languageTag());
-            $all_countries = $this->getAllCountries();
+            $all_countries = $this->countryHelper->getAllCountries();
             foreach ($all_countries as $country_code => $country_name) {
                 $country_names[$country_name] = $country_code;
             }
@@ -1677,7 +1498,7 @@ class Stats
             }
         }
         // get all the user’s countries names
-        $all_countries = $this->getAllCountries();
+        $all_countries = $this->countryHelper->getAllCountries();
 
         foreach ($all_db_countries as $country_code => $country) {
             foreach ($country as $country_name => $tot) {
@@ -1731,178 +1552,6 @@ class Stats
     public function commonMarriagePlacesList(): string
     {
         return (string) new MarriagePlaces($this->tree);
-    }
-
-    /**
-     * Create a chart of birth places.
-     *
-     * @param bool        $simple
-     * @param bool        $sex
-     * @param int         $year1
-     * @param int         $year2
-     * @param string|null $size
-     * @param string|null $color_from
-     * @param string|null $color_to
-     *
-     * @return array|string
-     */
-    public function statsBirthQuery($simple = true, $sex = false, $year1 = -1, $year2 = -1, string $size = null, string $color_from = null, string $color_to = null)
-    {
-        $WT_STATS_CHART_COLOR1 = Theme::theme()->parameter('distribution-chart-no-values');
-        $WT_STATS_CHART_COLOR2 = Theme::theme()->parameter('distribution-chart-high-values');
-        $WT_STATS_S_CHART_X    = Theme::theme()->parameter('stats-small-chart-x');
-        $WT_STATS_S_CHART_Y    = Theme::theme()->parameter('stats-small-chart-y');
-
-        if ($simple) {
-            $sql =
-                "SELECT FLOOR(d_year/100+1) AS century, COUNT(*) AS total FROM `##dates` " .
-                "WHERE " .
-                "d_file = {$this->tree->id()} AND " .
-                "d_year <> 0 AND " .
-                "d_fact='BIRT' AND " .
-                "d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')";
-        } elseif ($sex) {
-            $sql =
-                "SELECT d_month, i_sex, COUNT(*) AS total FROM `##dates` " .
-                "JOIN `##individuals` ON d_file = i_file AND d_gid = i_id " .
-                "WHERE " .
-                "d_file={$this->tree->id()} AND " .
-                "d_fact='BIRT' AND " .
-                "d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')";
-        } else {
-            $sql =
-                "SELECT d_month, COUNT(*) AS total FROM `##dates` " .
-                "WHERE " .
-                "d_file={$this->tree->id()} AND " .
-                "d_fact='BIRT' AND " .
-                "d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')";
-        }
-        if ($year1 >= 0 && $year2 >= 0) {
-            $sql .= " AND d_year BETWEEN '{$year1}' AND '{$year2}'";
-        }
-        if ($simple) {
-            $sql .= " GROUP BY century ORDER BY century";
-        } else {
-            $sql .= " GROUP BY d_month";
-            if ($sex) {
-                $sql .= ", i_sex";
-            }
-        }
-        $rows = $this->runSql($sql);
-        if ($simple) {
-            $size       = $size ?? ($WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y);
-            $color_from = $color_from ?? $WT_STATS_CHART_COLOR1;
-            $color_to   = $color_to ?? $WT_STATS_CHART_COLOR2;
-
-            $sizes = explode('x', $size);
-            $tot   = 0;
-            foreach ($rows as $values) {
-                $values->total = (int) $values->total;
-                $tot           += $values->total;
-            }
-            // Beware divide by zero
-            if ($tot == 0) {
-                return '';
-            }
-            $centuries = '';
-            $counts    = [];
-            foreach ($rows as $values) {
-                $counts[]  = intdiv(100 * $values->total, $tot);
-                $centuries .= $this->centuryName($values->century) . ' - ' . I18N::number($values->total) . '|';
-            }
-            $chd = $this->arrayToExtendedEncoding($counts);
-            $chl = rawurlencode(substr($centuries, 0, -1));
-
-            return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . I18N::translate('Births by century') . '" title="' . I18N::translate('Births by century') . '" />';
-        }
-
-        return $rows;
-    }
-
-    /**
-     * Create a chart of death places.
-     *
-     * @param bool        $simple
-     * @param bool        $sex
-     * @param int         $year1
-     * @param int         $year2
-     * @param string|null $size
-     * @param string|null $color_from
-     * @param string|null $color_to
-     *
-     * @return array|string
-     */
-    public function statsDeathQuery($simple = true, $sex = false, $year1 = -1, $year2 = -1, string $size = null, string $color_from = null, string $color_to = null)
-    {
-        $WT_STATS_CHART_COLOR1 = Theme::theme()->parameter('distribution-chart-no-values');
-        $WT_STATS_CHART_COLOR2 = Theme::theme()->parameter('distribution-chart-high-values');
-        $WT_STATS_S_CHART_X    = Theme::theme()->parameter('stats-small-chart-x');
-        $WT_STATS_S_CHART_Y    = Theme::theme()->parameter('stats-small-chart-y');
-
-        if ($simple) {
-            $sql =
-                "SELECT FLOOR(d_year/100+1) AS century, COUNT(*) AS total FROM `##dates` " .
-                "WHERE " .
-                "d_file={$this->tree->id()} AND " .
-                'd_year<>0 AND ' .
-                "d_fact='DEAT' AND " .
-                "d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')";
-        } elseif ($sex) {
-            $sql =
-                "SELECT d_month, i_sex, COUNT(*) AS total FROM `##dates` " .
-                "JOIN `##individuals` ON d_file = i_file AND d_gid = i_id " .
-                "WHERE " .
-                "d_file={$this->tree->id()} AND " .
-                "d_fact='DEAT' AND " .
-                "d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')";
-        } else {
-            $sql =
-                "SELECT d_month, COUNT(*) AS total FROM `##dates` " .
-                "WHERE " .
-                "d_file={$this->tree->id()} AND " .
-                "d_fact='DEAT' AND " .
-                "d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')";
-        }
-        if ($year1 >= 0 && $year2 >= 0) {
-            $sql .= " AND d_year BETWEEN '{$year1}' AND '{$year2}'";
-        }
-        if ($simple) {
-            $sql .= " GROUP BY century ORDER BY century";
-        } else {
-            $sql .= " GROUP BY d_month";
-            if ($sex) {
-                $sql .= ", i_sex";
-            }
-        }
-        $rows = $this->runSql($sql);
-        if ($simple) {
-            $size       = $size ?? ($WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y);
-            $color_from = $color_from ?? $WT_STATS_CHART_COLOR1;
-            $color_to   = $color_to ?? $WT_STATS_CHART_COLOR2;
-
-            $sizes = explode('x', $size);
-            $tot   = 0;
-            foreach ($rows as $values) {
-                $values->total = (int) $values->total;
-                $tot           += $values->total;
-            }
-            // Beware divide by zero
-            if ($tot == 0) {
-                return '';
-            }
-            $centuries = '';
-            $counts    = [];
-            foreach ($rows as $values) {
-                $counts[]  = intdiv(100 * $values->total, $tot);
-                $centuries .= $this->centuryName($values->century) . ' - ' . I18N::number($values->total) . '|';
-            }
-            $chd = $this->arrayToExtendedEncoding($counts);
-            $chl = rawurlencode(substr($centuries, 0, -1));
-
-            return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . I18N::translate('Deaths by century') . '" title="' . I18N::translate('Deaths by century') . '" />';
-        }
-
-        return $rows;
     }
 
     /**
@@ -1986,6 +1635,21 @@ class Stats
     }
 
     /**
+     * Create a chart of birth places.
+     *
+     * @param bool $simple
+     * @param bool $sex
+     * @param int  $year1
+     * @param int  $year2
+     *
+     * @return array
+     */
+    public function statsBirthQuery($simple = true, $sex = false, $year1 = -1, $year2 = -1): array
+    {
+        return (new Birth($this->tree))->query($sex, $year1, $year2);
+    }
+
+    /**
      * General query on births.
      *
      * @param string|null $size
@@ -1996,7 +1660,8 @@ class Stats
      */
     public function statsBirth(string $size = null, string $color_from = null, string $color_to = null): string
     {
-        return $this->statsBirthQuery(true, false, -1, -1, $size, $color_from, $color_to);
+        return (new Google\ChartBirth($this->tree))
+            ->chartBirth($size, $color_from, $color_to);
     }
 
     /**
@@ -2080,6 +1745,21 @@ class Stats
     }
 
     /**
+     * Create a chart of death places.
+     *
+     * @param bool $simple
+     * @param bool $sex
+     * @param int  $year1
+     * @param int  $year2
+     *
+     * @return array
+     */
+    public function statsDeathQuery($simple = true, $sex = false, $year1 = -1, $year2 = -1): array
+    {
+        return (new Death($this->tree))->query($sex, $year1, $year2);
+    }
+
+    /**
      * General query on deaths.
      *
      * @param string|null $size
@@ -2090,7 +1770,8 @@ class Stats
      */
     public function statsDeath(string $size = null, string $color_from = null, string $color_to = null): string
     {
-        return $this->statsDeathQuery(true, false, -1, -1, $size, $color_from, $color_to);
+        return (new Google\ChartDeath($this->tree))
+            ->chartDeath($size, $color_from, $color_to);
     }
 
     /**
@@ -2370,7 +2051,7 @@ class Stats
             } elseif ((int) ($age / 30.4375) > 0) {
                 $age = (int) ($age / 30.4375) . 'm';
             } elseif (!empty($age)) {
-                $age = $age . 'd';
+                $age .= 'd';
             }
 
             return FunctionsDate::getAgeAtEvent($age);
@@ -2387,131 +2068,12 @@ class Stats
      * @param string $sex
      * @param int    $year1
      * @param int    $year2
-     * @param string $size
      *
      * @return array|string
      */
-    public function statsAgeQuery($simple = true, $related = 'BIRT', $sex = 'BOTH', $year1 = -1, $year2 = -1, $size = '230x250')
+    public function statsAgeQuery($simple = true, $related = 'BIRT', $sex = 'BOTH', $year1 = -1, $year2 = -1)
     {
-        if ($simple) {
-            $sizes = explode('x', $size);
-            $rows  = $this->runSql(
-                "SELECT" .
-                " ROUND(AVG(death.d_julianday2-birth.d_julianday1)/365.25,1) AS age," .
-                " FLOOR(death.d_year/100+1) AS century," .
-                " i_sex AS sex" .
-                " FROM" .
-                " `##dates` AS death," .
-                " `##dates` AS birth," .
-                " `##individuals` AS indi" .
-                " WHERE" .
-                " indi.i_id=birth.d_gid AND" .
-                " birth.d_gid=death.d_gid AND" .
-                " death.d_file={$this->tree->id()} AND" .
-                " birth.d_file=death.d_file AND" .
-                " birth.d_file=indi.i_file AND" .
-                " birth.d_fact='BIRT' AND" .
-                " death.d_fact='DEAT' AND" .
-                " birth.d_julianday1<>0 AND" .
-                " birth.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND" .
-                " death.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND" .
-                " death.d_julianday1>birth.d_julianday2" .
-                " GROUP BY century, sex ORDER BY century, sex"
-            );
-            if (empty($rows)) {
-                return '';
-            }
-            $chxl    = '0:|';
-            $countsm = '';
-            $countsf = '';
-            $countsa = '';
-            $out     = [];
-            foreach ($rows as $values) {
-                $out[$values->century][$values->sex] = $values->age;
-            }
-            foreach ($out as $century => $values) {
-                if ($sizes[0] < 980) {
-                    $sizes[0] += 50;
-                }
-                $chxl .= $this->centuryName($century) . '|';
-
-                $female_age  = $values['F'] ?? 0;
-                $male_age    = $values['M'] ?? 0;
-                $average_age = $female_age + $male_age;
-
-                if ($female_age > 0 && $male_age > 0) {
-                    $average_age = $average_age / 2.0;
-                }
-
-                $countsf .= (string) $female_age . ',';
-                $countsm .= (string) $male_age . ',';
-                $countsa .= (string) $average_age . ',';
-            }
-
-            $countsm = substr($countsm, 0, -1);
-            $countsf = substr($countsf, 0, -1);
-            $countsa = substr($countsa, 0, -1);
-            $chd     = 't2:' . $countsm . '|' . $countsf . '|' . $countsa;
-            $decades = '';
-            for ($i = 0; $i <= 100; $i += 10) {
-                $decades .= '|' . I18N::number($i);
-            }
-            $chxl  .= '1:||' . I18N::translate('century') . '|2:' . $decades . '|3:||' . I18N::translate('Age') . '|';
-            $title = I18N::translate('Average age related to death century');
-            if (count($rows) > 6 || mb_strlen($title) < 30) {
-                $chtt = $title;
-            } else {
-                $offset  = 0;
-                $counter = [];
-                while ($offset = strpos($title, ' ', $offset + 1)) {
-                    $counter[] = $offset;
-                }
-                $half = intdiv(count($counter), 2);
-                $chtt = substr_replace($title, '|', $counter[$half], 1);
-            }
-
-            return '<img src="' . "https://chart.googleapis.com/chart?cht=bvg&amp;chs={$sizes[0]}x{$sizes[1]}&amp;chm=D,FF0000,2,0,3,1|N*f1*,000000,0,-1,11,1|N*f1*,000000,1,-1,11,1&amp;chf=bg,s,ffffff00|c,s,ffffff00&amp;chtt=" . rawurlencode($chtt) . "&amp;chd={$chd}&amp;chco=0000FF,FFA0CB,FF0000&amp;chbh=20,3&amp;chxt=x,x,y,y&amp;chxl=" . rawurlencode($chxl) . '&amp;chdl=' . rawurlencode(I18N::translate('Males') . '|' . I18N::translate('Females') . '|' . I18N::translate('Average age at death')) . "\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . I18N::translate('Average age related to death century') . '" title="' . I18N::translate('Average age related to death century') . '" />';
-        }
-
-        $sex_search = '';
-        $years      = '';
-        if ($sex == 'F') {
-            $sex_search = " AND i_sex='F'";
-        } elseif ($sex == 'M') {
-            $sex_search = " AND i_sex='M'";
-        }
-        if ($year1 >= 0 && $year2 >= 0) {
-            if ($related == 'BIRT') {
-                $years = " AND birth.d_year BETWEEN '{$year1}' AND '{$year2}'";
-            } elseif ($related == 'DEAT') {
-                $years = " AND death.d_year BETWEEN '{$year1}' AND '{$year2}'";
-            }
-        }
-        $rows = $this->runSql(
-            "SELECT" .
-            " death.d_julianday2-birth.d_julianday1 AS age" .
-            " FROM" .
-            " `##dates` AS death," .
-            " `##dates` AS birth," .
-            " `##individuals` AS indi" .
-            " WHERE" .
-            " indi.i_id=birth.d_gid AND" .
-            " birth.d_gid=death.d_gid AND" .
-            " death.d_file={$this->tree->id()} AND" .
-            " birth.d_file=death.d_file AND" .
-            " birth.d_file=indi.i_file AND" .
-            " birth.d_fact='BIRT' AND" .
-            " death.d_fact='DEAT' AND" .
-            " birth.d_julianday1 <> 0 AND" .
-            " birth.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND" .
-            " death.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND" .
-            " death.d_julianday1>birth.d_julianday2" .
-            $years .
-            $sex_search .
-            " ORDER BY age DESC"
-        );
-
-        return $rows;
+        return (new StatisticAge($this->tree))->query($related, $sex, $year1, $year2);
     }
 
     /**
@@ -2523,7 +2085,8 @@ class Stats
      */
     public function statsAge(string $size = '230x250'): string
     {
-        return $this->statsAgeQuery(true, 'BIRT', 'BOTH', -1, -1, $size);
+        return (new Google\ChartAge($this->tree))
+            ->chartAge($size);
     }
 
     /**
@@ -3383,184 +2946,6 @@ class Stats
     }
 
     /**
-     * General query on marriages.
-     *
-     * @param bool        $simple
-     * @param bool        $first
-     * @param int         $year1
-     * @param int         $year2
-     * @param string|null $size
-     * @param string|null $color_from
-     * @param string|null $color_to
-     *
-     * @return string|array
-     */
-    public function statsMarrQuery($simple = true, $first = false, $year1 = -1, $year2 = -1, string $size = null, string $color_from = null, string $color_to = null)
-    {
-        $WT_STATS_CHART_COLOR1 = Theme::theme()->parameter('distribution-chart-no-values');
-        $WT_STATS_CHART_COLOR2 = Theme::theme()->parameter('distribution-chart-high-values');
-        $WT_STATS_S_CHART_X    = Theme::theme()->parameter('stats-small-chart-x');
-        $WT_STATS_S_CHART_Y    = Theme::theme()->parameter('stats-small-chart-y');
-
-        if ($simple) {
-            $sql =
-                "SELECT FLOOR(d_year/100+1) AS century, COUNT(*) AS total" .
-                " FROM `##dates`" .
-                " WHERE d_file={$this->tree->id()} AND d_year<>0 AND d_fact='MARR' AND d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')";
-            if ($year1 >= 0 && $year2 >= 0) {
-                $sql .= " AND d_year BETWEEN '{$year1}' AND '{$year2}'";
-            }
-            $sql .= " GROUP BY century ORDER BY century";
-        } elseif ($first) {
-            $years = '';
-            if ($year1 >= 0 && $year2 >= 0) {
-                $years = " married.d_year BETWEEN '{$year1}' AND '{$year2}' AND";
-            }
-            $sql =
-                " SELECT fam.f_id AS fams, fam.f_husb, fam.f_wife, married.d_julianday2 AS age, married.d_month AS month, indi.i_id AS indi" .
-                " FROM `##families` AS fam" .
-                " LEFT JOIN `##dates` AS married ON married.d_file = {$this->tree->id()}" .
-                " LEFT JOIN `##individuals` AS indi ON indi.i_file = {$this->tree->id()}" .
-                " WHERE" .
-                " married.d_gid = fam.f_id AND" .
-                " fam.f_file = {$this->tree->id()} AND" .
-                " married.d_fact = 'MARR' AND" .
-                " married.d_julianday2 <> 0 AND" .
-                $years .
-                " (indi.i_id = fam.f_husb OR indi.i_id = fam.f_wife)" .
-                " ORDER BY fams, indi, age ASC";
-        } else {
-            $sql =
-                "SELECT d_month, COUNT(*) AS total" .
-                " FROM `##dates`" .
-                " WHERE d_file={$this->tree->id()} AND d_fact='MARR'";
-            if ($year1 >= 0 && $year2 >= 0) {
-                $sql .= " AND d_year BETWEEN '{$year1}' AND '{$year2}'";
-            }
-            $sql .= " GROUP BY d_month";
-        }
-        $rows = $this->runSql($sql);
-
-        if ($simple) {
-            $size       = $size ?? ($WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y);
-            $color_from = $color_from ?? $WT_STATS_CHART_COLOR1;
-            $color_to   = $color_to ?? $WT_STATS_CHART_COLOR2;
-
-            $sizes = explode('x', $size);
-            $tot   = 0;
-
-            foreach ($rows as $values) {
-                $values->total = (int) $values->total;
-                $tot           += (int) $values->total;
-            }
-            // Beware divide by zero
-            if ($tot === 0) {
-                return '';
-            }
-            $centuries = '';
-            $counts    = [];
-            foreach ($rows as $values) {
-                $counts[]  = intdiv(100 * $values->total, $tot);
-                $centuries .= $this->centuryName($values->century) . ' - ' . I18N::number($values->total) . '|';
-            }
-            $chd = $this->arrayToExtendedEncoding($counts);
-            $chl = substr($centuries, 0, -1);
-
-            return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . I18N::translate('Marriages by century') . '" title="' . I18N::translate('Marriages by century') . '" />';
-        }
-
-        return $rows;
-    }
-
-    /**
-     * General query on divorces.
-     *
-     * @param bool        $simple
-     * @param bool        $first
-     * @param int         $year1
-     * @param int         $year2
-     * @param string|null $size
-     * @param string|null $color_from
-     * @param string|null $color_to
-     *
-     * @return string|stdClass[]
-     */
-    private function statsDivQuery($simple = true, $first = false, $year1 = -1, $year2 = -1, string $size = null, string $color_from = null, string $color_to = null)
-    {
-        $WT_STATS_CHART_COLOR1 = Theme::theme()->parameter('distribution-chart-no-values');
-        $WT_STATS_CHART_COLOR2 = Theme::theme()->parameter('distribution-chart-high-values');
-        $WT_STATS_S_CHART_X    = Theme::theme()->parameter('stats-small-chart-x');
-        $WT_STATS_S_CHART_Y    = Theme::theme()->parameter('stats-small-chart-y');
-
-        if ($simple) {
-            $sql =
-                "SELECT FLOOR(d_year/100+1) AS century, COUNT(*) AS total" .
-                " FROM `##dates`" .
-                " WHERE d_file={$this->tree->id()} AND d_year<>0 AND d_fact = 'DIV' AND d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')";
-            if ($year1 >= 0 && $year2 >= 0) {
-                $sql .= " AND d_year BETWEEN '{$year1}' AND '{$year2}'";
-            }
-            $sql .= " GROUP BY century ORDER BY century";
-        } elseif ($first) {
-            $years = '';
-            if ($year1 >= 0 && $year2 >= 0) {
-                $years = " divorced.d_year BETWEEN '{$year1}' AND '{$year2}' AND";
-            }
-            $sql =
-                " SELECT fam.f_id AS fams, fam.f_husb, fam.f_wife, divorced.d_julianday2 AS age, divorced.d_month AS month, indi.i_id AS indi" .
-                " FROM `##families` AS fam" .
-                " LEFT JOIN `##dates` AS divorced ON divorced.d_file = {$this->tree->id()}" .
-                " LEFT JOIN `##individuals` AS indi ON indi.i_file = {$this->tree->id()}" .
-                " WHERE" .
-                " divorced.d_gid = fam.f_id AND" .
-                " fam.f_file = {$this->tree->id()} AND" .
-                " divorced.d_fact = 'DIV' AND" .
-                " divorced.d_julianday2 <> 0 AND" .
-                $years .
-                " (indi.i_id = fam.f_husb OR indi.i_id = fam.f_wife)" .
-                " ORDER BY fams, indi, age ASC";
-        } else {
-            $sql =
-                "SELECT d_month, COUNT(*) AS total FROM `##dates` " .
-                "WHERE d_file={$this->tree->id()} AND d_fact = 'DIV'";
-            if ($year1 >= 0 && $year2 >= 0) {
-                $sql .= " AND d_year BETWEEN '{$year1}' AND '{$year2}'";
-            }
-            $sql .= " GROUP BY d_month";
-        }
-        $rows = $this->runSql($sql);
-
-        if ($simple) {
-            $size       = $size ?? ($WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y);
-            $color_from = $color_from ?? $WT_STATS_CHART_COLOR1;
-            $color_to   = $color_to ?? $WT_STATS_CHART_COLOR2;
-
-            $sizes = explode('x', $size);
-            $tot   = 0;
-            foreach ($rows as $values) {
-                $values->total = (int) $values->total;
-                $tot           += $values->total;
-            }
-            // Beware divide by zero
-            if ($tot === 0) {
-                return '';
-            }
-            $centuries = '';
-            $counts    = [];
-            foreach ($rows as $values) {
-                $counts[]  = intdiv(100 * $values->total, $tot);
-                $centuries .= $this->centuryName($values->century) . ' - ' . I18N::number($values->total) . '|';
-            }
-            $chd = $this->arrayToExtendedEncoding($counts);
-            $chl = substr($centuries, 0, -1);
-
-            return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . I18N::translate('Divorces by century') . '" title="' . I18N::translate('Divorces by century') . '" />';
-        }
-
-        return $rows;
-    }
-
-    /**
      * Find the earliest marriage.
      *
      * @return string
@@ -3643,6 +3028,21 @@ class Stats
     /**
      * General query on marriages.
      *
+     * @param bool $simple
+     * @param bool $first
+     * @param int  $year1
+     * @param int  $year2
+     *
+     * @return array
+     */
+    public function statsMarrQuery($simple = true, $first = false, $year1 = -1, $year2 = -1): array
+    {
+        return (new Marriage($this->tree))->query($first, $year1, $year2);
+    }
+
+    /**
+     * General query on marriages.
+     *
      * @param string|null $size
      * @param string|null $color_from
      * @param string|null $color_to
@@ -3651,7 +3051,8 @@ class Stats
      */
     public function statsMarr(string $size = null, string $color_from = null, string $color_to = null): string
     {
-        return $this->statsMarrQuery(true, false, -1, -1, $size, $color_from, $color_to);
+        return (new Google\ChartMarriage($this->tree))
+            ->chartMarriage($size, $color_from, $color_to);
     }
 
     /**
@@ -3745,177 +3146,8 @@ class Stats
      */
     public function statsDiv(string $size = null, string $color_from = null, string $color_to = null): string
     {
-        return $this->statsDivQuery(true, false, -1, -1, $size, $color_from, $color_to);
-    }
-
-    /**
-     * General query on ages at marriage.
-     *
-     * @param bool   $simple
-     * @param string $sex
-     * @param int    $year1
-     * @param int    $year2
-     * @param string $size
-     *
-     * @return array|string
-     */
-    public function statsMarrAgeQuery($simple = true, $sex = 'M', $year1 = -1, $year2 = -1, $size = '200x250')
-    {
-        if ($simple) {
-            $sizes = explode('x', $size);
-
-            $rows = $this->runSql(
-                "SELECT " .
-                " ROUND(AVG(married.d_julianday2-birth.d_julianday1-182.5)/365.25,1) AS age, " .
-                " FLOOR(married.d_year/100+1) AS century, " .
-                " 'M' AS sex " .
-                "FROM `##dates` AS married " .
-                "JOIN `##families` AS fam ON (married.d_gid=fam.f_id AND married.d_file=fam.f_file) " .
-                "JOIN `##dates` AS birth ON (birth.d_gid=fam.f_husb AND birth.d_file=fam.f_file) " .
-                "WHERE " .
-                " '{$sex}' IN ('M', 'BOTH') AND " .
-                " married.d_file={$this->tree->id()} AND married.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND married.d_fact='MARR' AND " .
-                " birth.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND birth.d_fact='BIRT' AND " .
-                " married.d_julianday1>birth.d_julianday1 AND birth.d_julianday1<>0 " .
-                "GROUP BY century, sex " .
-                "UNION ALL " .
-                "SELECT " .
-                " ROUND(AVG(married.d_julianday2-birth.d_julianday1-182.5)/365.25,1) AS age, " .
-                " FLOOR(married.d_year/100+1) AS century, " .
-                " 'F' AS sex " .
-                "FROM `##dates` AS married " .
-                "JOIN `##families` AS fam ON (married.d_gid=fam.f_id AND married.d_file=fam.f_file) " .
-                "JOIN `##dates` AS birth ON (birth.d_gid=fam.f_wife AND birth.d_file=fam.f_file) " .
-                "WHERE " .
-                " '{$sex}' IN ('F', 'BOTH') AND " .
-                " married.d_file={$this->tree->id()} AND married.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND married.d_fact='MARR' AND " .
-                " birth.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND birth.d_fact='BIRT' AND " .
-                " married.d_julianday1>birth.d_julianday1 AND birth.d_julianday1<>0 " .
-                " GROUP BY century, sex ORDER BY century"
-            );
-            if (empty($rows)) {
-                return '';
-            }
-            $max = 0;
-            foreach ($rows as $values) {
-                $values->age = (int) $values->age;
-                if ($max < $values->age) {
-                    $max = $values->age;
-                }
-            }
-            $chxl    = '0:|';
-            $chmm    = '';
-            $chmf    = '';
-            $i       = 0;
-            $countsm = '';
-            $countsf = '';
-            $countsa = '';
-            $out     = [];
-            foreach ($rows as $values) {
-                $out[$values->century][$values->sex] = $values->age;
-            }
-            foreach ($out as $century => $values) {
-                if ($sizes[0] < 1000) {
-                    $sizes[0] += 50;
-                }
-                $chxl    .= $this->centuryName($century) . '|';
-                $average = 0;
-                if (isset($values['F'])) {
-                    if ($max <= 50) {
-                        $value = $values['F'] * 2;
-                    } else {
-                        $value = $values['F'];
-                    }
-                    $countsf .= $value . ',';
-                    $average = $value;
-                    $chmf    .= 't' . $values['F'] . ',000000,1,' . $i . ',11,1|';
-                } else {
-                    $countsf .= '0,';
-                    $chmf    .= 't0,000000,1,' . $i . ',11,1|';
-                }
-                if (isset($values['M'])) {
-                    if ($max <= 50) {
-                        $value = $values['M'] * 2;
-                    } else {
-                        $value = $values['M'];
-                    }
-                    $countsm .= $value . ',';
-                    if ($average === 0) {
-                        $countsa .= $value . ',';
-                    } else {
-                        $countsa .= (($value + $average) / 2) . ',';
-                    }
-                    $chmm .= 't' . $values['M'] . ',000000,0,' . $i . ',11,1|';
-                } else {
-                    $countsm .= '0,';
-                    if ($average === 0) {
-                        $countsa .= '0,';
-                    } else {
-                        $countsa .= $value . ',';
-                    }
-                    $chmm .= 't0,000000,0,' . $i . ',11,1|';
-                }
-                $i++;
-            }
-            $countsm = substr($countsm, 0, -1);
-            $countsf = substr($countsf, 0, -1);
-            $countsa = substr($countsa, 0, -1);
-            $chmf    = substr($chmf, 0, -1);
-            $chd     = 't2:' . $countsm . '|' . $countsf . '|' . $countsa;
-            if ($max <= 50) {
-                $chxl .= '1:||' . I18N::translate('century') . '|2:|0|10|20|30|40|50|3:||' . I18N::translate('Age') . '|';
-            } else {
-                $chxl .= '1:||' . I18N::translate('century') . '|2:|0|10|20|30|40|50|60|70|80|90|100|3:||' . I18N::translate('Age') . '|';
-            }
-            if (count($rows) > 4 || mb_strlen(I18N::translate('Average age in century of marriage')) < 30) {
-                $chtt = I18N::translate('Average age in century of marriage');
-            } else {
-                $offset  = 0;
-                $counter = [];
-                while ($offset = strpos(I18N::translate('Average age in century of marriage'), ' ', $offset + 1)) {
-                    $counter[] = $offset;
-                }
-                $half = intdiv(count($counter), 2);
-                $chtt = substr_replace(I18N::translate('Average age in century of marriage'), '|', $counter[$half], 1);
-            }
-
-            return '<img src="' . "https://chart.googleapis.com/chart?cht=bvg&amp;chs={$sizes[0]}x{$sizes[1]}&amp;chm=D,FF0000,2,0,3,1|{$chmm}{$chmf}&amp;chf=bg,s,ffffff00|c,s,ffffff00&amp;chtt=" . rawurlencode($chtt) . "&amp;chd={$chd}&amp;chco=0000FF,FFA0CB,FF0000&amp;chbh=20,3&amp;chxt=x,x,y,y&amp;chxl=" . rawurlencode($chxl) . '&amp;chdl=' . rawurlencode(I18N::translate('Males') . '|' . I18N::translate('Females') . '|' . I18N::translate('Average age')) . "\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . I18N::translate('Average age in century of marriage') . '" title="' . I18N::translate('Average age in century of marriage') . '" />';
-        }
-
-        if ($year1 >= 0 && $year2 >= 0) {
-            $years = " married.d_year BETWEEN {$year1} AND {$year2} AND ";
-        } else {
-            $years = '';
-        }
-        $rows = $this->runSql(
-            "SELECT " .
-            " fam.f_id, " .
-            " birth.d_gid, " .
-            " married.d_julianday2-birth.d_julianday1 AS age " .
-            "FROM `##dates` AS married " .
-            "JOIN `##families` AS fam ON (married.d_gid=fam.f_id AND married.d_file=fam.f_file) " .
-            "JOIN `##dates` AS birth ON (birth.d_gid=fam.f_husb AND birth.d_file=fam.f_file) " .
-            "WHERE " .
-            " '{$sex}' IN ('M', 'BOTH') AND {$years} " .
-            " married.d_file={$this->tree->id()} AND married.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND married.d_fact='MARR' AND " .
-            " birth.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND birth.d_fact='BIRT' AND " .
-            " married.d_julianday1>birth.d_julianday1 AND birth.d_julianday1<>0 " .
-            "UNION ALL " .
-            "SELECT " .
-            " fam.f_id, " .
-            " birth.d_gid, " .
-            " married.d_julianday2-birth.d_julianday1 AS age " .
-            "FROM `##dates` AS married " .
-            "JOIN `##families` AS fam ON (married.d_gid=fam.f_id AND married.d_file=fam.f_file) " .
-            "JOIN `##dates` AS birth ON (birth.d_gid=fam.f_wife AND birth.d_file=fam.f_file) " .
-            "WHERE " .
-            " '{$sex}' IN ('F', 'BOTH') AND {$years} " .
-            " married.d_file={$this->tree->id()} AND married.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND married.d_fact='MARR' AND " .
-            " birth.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND birth.d_fact='BIRT' AND " .
-            " married.d_julianday1>birth.d_julianday1 AND birth.d_julianday1<>0 "
-        );
-
-        return $rows;
+        return (new Google\ChartDivorce($this->tree))
+            ->chartDivorce($size, $color_from, $color_to);
     }
 
     /**
@@ -4047,6 +3279,21 @@ class Stats
     }
 
     /**
+     * General query on ages at marriage.
+     *
+     * @param bool   $simple
+     * @param string $sex
+     * @param int    $year1
+     * @param int    $year2
+     *
+     * @return array
+     */
+    public function statsMarrAgeQuery($simple = true, $sex = 'M', $year1 = -1, $year2 = -1): array
+    {
+        return (new MarriageAge($this->tree))->query($sex, $year1, $year2);
+    }
+
+    /**
      * General query on marriage ages.
      *
      * @param string $size
@@ -4055,7 +3302,8 @@ class Stats
      */
     public function statsMarrAge(string $size = '200x250'): string
     {
-        return $this->statsMarrAgeQuery(true, 'BOTH', -1, -1, $size);
+        return (new Google\ChartMarriageAge($this->tree))
+            ->chartMarriageAge($size);
     }
 
     /**
@@ -4383,52 +3631,6 @@ class Stats
     }
 
     /**
-     * General query on family.
-     *
-     * @param string $type
-     *
-     * @return string
-     */
-    private function familyQuery($type): string
-    {
-        $rows = $this->runSql(
-            " SELECT f_numchil AS tot, f_id AS id" .
-            " FROM `##families`" .
-            " WHERE" .
-            " f_file={$this->tree->id()}" .
-            " AND f_numchil = (" .
-            "  SELECT max( f_numchil )" .
-            "  FROM `##families`" .
-            "  WHERE f_file ={$this->tree->id()}" .
-            " )" .
-            " LIMIT 1"
-        );
-        if (!isset($rows[0])) {
-            return '';
-        }
-        $row    = $rows[0];
-        $family = Family::getInstance($row->id, $this->tree);
-        switch ($type) {
-            default:
-            case 'full':
-                if ($family->canShow()) {
-                    $result = $family->formatList();
-                } else {
-                    $result = I18N::translate('This information is private and cannot be shown.');
-                }
-                break;
-            case 'size':
-                $result = I18N::number((int) $row->tot);
-                break;
-            case 'name':
-                $result = '<a href="' . e($family->url()) . '">' . $family->getFullName() . '</a>';
-                break;
-        }
-
-        return $result;
-    }
-
-    /**
      * General query on families.
      *
      * @param int $total
@@ -4513,6 +3715,7 @@ class Stats
         } else {
             $sql_years = '';
         }
+
         if ($sex) {
             $sql_sex1 = ', i_sex';
             $sql_sex2 = " JOIN `##individuals` AS child ON child1.d_file = i_file AND child1.d_gid = child.i_id ";
@@ -4520,6 +3723,7 @@ class Stats
             $sql_sex1 = '';
             $sql_sex2 = '';
         }
+
         $sql =
             "SELECT d_month{$sql_sex1}, COUNT(*) AS total " .
             "FROM (" .
@@ -4546,12 +3750,12 @@ class Stats
             " GROUP BY family, d_month{$sql_sex1}" .
             ") AS first_child " .
             "GROUP BY d_month";
+
         if ($sex) {
             $sql .= ', i_sex';
         }
-        $rows = $this->runSql($sql);
 
-        return $rows;
+        return $this->runSql($sql);
     }
 
     /**
@@ -4561,7 +3765,7 @@ class Stats
      */
     public function largestFamily(): string
     {
-        return $this->familyQuery('full');
+        return $this->family->familyQuery('full');
     }
 
     /**
@@ -4571,7 +3775,7 @@ class Stats
      */
     public function largestFamilySize(): string
     {
-        return $this->familyQuery('size');
+        return $this->family->familyQuery('size');
     }
 
     /**
@@ -4581,7 +3785,7 @@ class Stats
      */
     public function largestFamilyName(): string
     {
-        return $this->familyQuery('name');
+        return $this->family->familyQuery('name');
     }
 
     /**
@@ -4634,54 +3838,14 @@ class Stats
      *
      * @return string
      */
-    public function chartLargestFamilies(string $size = null, string $color_from = null, string $color_to = null, string $total = '10'): string
-    {
-        $WT_STATS_CHART_COLOR1 = Theme::theme()->parameter('distribution-chart-no-values');
-        $WT_STATS_CHART_COLOR2 = Theme::theme()->parameter('distribution-chart-high-values');
-        $WT_STATS_L_CHART_X    = Theme::theme()->parameter('stats-large-chart-x');
-        $WT_STATS_S_CHART_Y    = Theme::theme()->parameter('stats-small-chart-y');
-
-        $size       = $size ?? $WT_STATS_L_CHART_X . 'x' . $WT_STATS_S_CHART_Y;
-        $color_from = $color_from ?? $WT_STATS_CHART_COLOR1;
-        $color_to   = $color_to ?? $WT_STATS_CHART_COLOR2;
-        $total      = $total ?? '10';
-
-        $sizes = explode('x', $size);
-        $total = (int) $total;
-        $rows  = $this->runSql(
-            " SELECT f_numchil AS tot, f_id AS id" .
-            " FROM `##families`" .
-            " WHERE f_file={$this->tree->id()}" .
-            " ORDER BY tot DESC" .
-            " LIMIT " . $total
-        );
-        if (!isset($rows[0])) {
-            return '';
-        }
-        $tot = 0;
-        foreach ($rows as $row) {
-            $row->tot = (int) $row->tot;
-            $tot      += $row->tot;
-        }
-        $chd = '';
-        $chl = [];
-        foreach ($rows as $row) {
-            $family = Family::getInstance($row->id, $this->tree);
-
-            if ($family && $family->canShow()) {
-                if ($tot === 0) {
-                    $per = 0;
-                } else {
-                    $per = intdiv(100 * $row->tot, $tot);
-                }
-
-                $chd .= $this->arrayToExtendedEncoding([$per]);
-                $chl[] = htmlspecialchars_decode(strip_tags($family->getFullName())) . ' - ' . I18N::number($row->tot);
-            }
-        }
-        $chl = rawurlencode(implode('|', $chl));
-
-        return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . I18N::translate('Largest families') . '" title="' . I18N::translate('Largest families') . '" />';
+    public function chartLargestFamilies(
+        string $size       = null,
+        string $color_from = null,
+        string $color_to   = null,
+        string $total      = '10'
+    ): string {
+        return (new Google\ChartFamily($this->tree))
+            ->chartLargestFamilies($size, $color_from, $color_to, $total);
     }
 
     /**
@@ -4691,13 +3855,7 @@ class Stats
      */
     public function totalChildren(): string
     {
-        $total = (int) Database::prepare(
-            "SELECT SUM(f_numchil) FROM `##families` WHERE f_file = :tree_id"
-        )->execute([
-            'tree_id' => $this->tree->id(),
-        ])->fetchOne();
-
-        return I18N::number($total);
+        return $this->children->totalChildren();
     }
 
     /**
@@ -4707,13 +3865,7 @@ class Stats
      */
     public function averageChildren(): string
     {
-        $average = (float) Database::prepare(
-            "SELECT AVG(f_numchil) AS tot FROM `##families` WHERE f_file = :tree_id"
-        )->execute([
-            'tree_id' => $this->tree->id(),
-        ])->fetchOne();
-
-        return I18N::number($average, 2);
+        return $this->children->averageChildren();
     }
 
     /**
@@ -4723,102 +3875,12 @@ class Stats
      * @param string $sex
      * @param int    $year1
      * @param int    $year2
-     * @param string $size
      *
-     * @return string|stdClass[]
+     * @return stdClass[]
      */
-    public function statsChildrenQuery($simple = true, $sex = 'BOTH', $year1 = -1, $year2 = -1, $size = '220x200')
+    public function statsChildrenQuery($simple = true, $sex = 'BOTH', $year1 = -1, $year2 = -1): array
     {
-        if ($simple) {
-            $sizes = explode('x', $size);
-            $max   = 0;
-            $rows  = $this->runSql(
-                " SELECT ROUND(AVG(f_numchil),2) AS num, FLOOR(d_year/100+1) AS century" .
-                " FROM  `##families`" .
-                " JOIN  `##dates` ON (d_file = f_file AND d_gid=f_id)" .
-                " WHERE f_file = {$this->tree->id()}" .
-                " AND   d_julianday1<>0" .
-                " AND   d_fact = 'MARR'" .
-                " AND   d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')" .
-                " GROUP BY century" .
-                " ORDER BY century"
-            );
-            if (empty($rows)) {
-                return '';
-            }
-            foreach ($rows as $values) {
-                $values->num = (int) $values->num;
-                if ($max < $values->num) {
-                    $max = $values->num;
-                }
-            }
-            $chm    = '';
-            $chxl   = '0:|';
-            $i      = 0;
-            $counts = [];
-            foreach ($rows as $values) {
-                $chxl .= $this->centuryName($values->century) . '|';
-                if ($max <= 5) {
-                    $counts[] = (int) ($values->num * 819.2 - 1);
-                } elseif ($max <= 10) {
-                    $counts[] = (int) ($values->num * 409.6);
-                } else {
-                    $counts[] = (int) ($values->num * 204.8);
-                }
-                $chm .= 't' . $values->num . ',000000,0,' . $i . ',11,1|';
-                $i++;
-            }
-            $chd = $this->arrayToExtendedEncoding($counts);
-            $chm = substr($chm, 0, -1);
-            if ($max <= 5) {
-                $chxl .= '1:||' . I18N::translate('century') . '|2:|0|1|2|3|4|5|3:||' . I18N::translate('Number of children') . '|';
-            } elseif ($max <= 10) {
-                $chxl .= '1:||' . I18N::translate('century') . '|2:|0|1|2|3|4|5|6|7|8|9|10|3:||' . I18N::translate('Number of children') . '|';
-            } else {
-                $chxl .= '1:||' . I18N::translate('century') . '|2:|0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|3:||' . I18N::translate('Number of children') . '|';
-            }
-
-            return "<img src=\"https://chart.googleapis.com/chart?cht=bvg&amp;chs={$sizes[0]}x{$sizes[1]}&amp;chf=bg,s,ffffff00|c,s,ffffff00&amp;chm=D,FF0000,0,0,3,1|{$chm}&amp;chd=e:{$chd}&amp;chco=0000FF&amp;chbh=30,3&amp;chxt=x,x,y,y&amp;chxl=" . rawurlencode($chxl) . "\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . I18N::translate('Average number of children per family') . '" title="' . I18N::translate('Average number of children per family') . '" />';
-        }
-
-        if ($sex == 'M') {
-            $sql =
-                "SELECT num, COUNT(*) AS total FROM " .
-                "(SELECT count(i_sex) AS num FROM `##link` " .
-                "LEFT OUTER JOIN `##individuals` " .
-                "ON l_from=i_id AND l_file=i_file AND i_sex='M' AND l_type='FAMC' " .
-                "JOIN `##families` ON f_file=l_file AND f_id=l_to WHERE f_file={$this->tree->id()} GROUP BY l_to" .
-                ") boys" .
-                " GROUP BY num" .
-                " ORDER BY num";
-        } elseif ($sex == 'F') {
-            $sql =
-                "SELECT num, COUNT(*) AS total FROM " .
-                "(SELECT count(i_sex) AS num FROM `##link` " .
-                "LEFT OUTER JOIN `##individuals` " .
-                "ON l_from=i_id AND l_file=i_file AND i_sex='F' AND l_type='FAMC' " .
-                "JOIN `##families` ON f_file=l_file AND f_id=l_to WHERE f_file={$this->tree->id()} GROUP BY l_to" .
-                ") girls" .
-                " GROUP BY num" .
-                " ORDER BY num";
-        } else {
-            $sql = "SELECT f_numchil, COUNT(*) AS total FROM `##families` ";
-            if ($year1 >= 0 && $year2 >= 0) {
-                $sql .=
-                    "AS fam LEFT JOIN `##dates` AS married ON married.d_file = {$this->tree->id()}"
-                    . " WHERE"
-                    . " married.d_gid = fam.f_id AND"
-                    . " fam.f_file = {$this->tree->id()} AND"
-                    . " married.d_fact = 'MARR' AND"
-                    . " married.d_year BETWEEN '{$year1}' AND '{$year2}'";
-            } else {
-                $sql .= "WHERE f_file={$this->tree->id()}";
-            }
-            $sql .= ' GROUP BY f_numchil';
-        }
-        $rows = $this->runSql($sql);
-
-        return $rows;
+        return $this->children->query($sex, $year1, $year2);
     }
 
     /**
@@ -4830,7 +3892,8 @@ class Stats
      */
     public function statsChildren(string $size = '220x200'): string
     {
-        return $this->statsChildrenQuery(true, 'BOTH', -1, -1, $size);
+        return (new Google\ChartChildren($this->tree))
+            ->chartChildren($size);
     }
 
     /**
@@ -4999,11 +4062,13 @@ class Stats
         $year2 = (int) $year2;
 
         $sizes = explode('x', $size);
+
         if ($year1 >= 0 && $year2 >= 0) {
             $years = " married.d_year BETWEEN '{$year1}' AND '{$year2}' AND";
         } else {
             $years = '';
         }
+
         $max  = 0;
         $tot  = 0;
         $rows = $this->runSql(
@@ -5022,9 +4087,11 @@ class Stats
             " married.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')" .
             " GROUP BY century ORDER BY century"
         );
+
         if (empty($rows)) {
             return '';
         }
+
         foreach ($rows as $values) {
             $values->count = (int) $values->count;
 
@@ -5033,40 +4100,49 @@ class Stats
             }
             $tot += $values->count;
         }
+
         $unknown = $this->noChildrenFamiliesQuery() - $tot;
+
         if ($unknown > $max) {
             $max = $unknown;
         }
+
         $chm    = '';
         $chxl   = '0:|';
         $i      = 0;
         $counts = [];
+
         foreach ($rows as $values) {
-            $chxl     .= $this->centuryName($values->century) . '|';
+            $chxl     .= $this->centuryHelper->centuryName($values->century) . '|';
             $counts[] = intdiv(4095 * $values->count, $max + 1);
             $chm      .= 't' . $values->count . ',000000,0,' . $i . ',11,1|';
             $i++;
         }
+
         $counts[] = intdiv(4095 * $unknown, $max + 1);
-        $chd      = $this->arrayToExtendedEncoding($counts);
+        $chd      = $this->google->arrayToExtendedEncoding($counts);
         $chm      .= 't' . $unknown . ',000000,0,' . $i . ',11,1';
         $chxl     .= I18N::translateContext('unknown century', 'Unknown') . '|1:||' . I18N::translate('century') . '|2:|0|';
         $step     = $max + 1;
+
         for ($d = (int) ($max + 1); $d > 0; $d--) {
-            if (($max + 1) < ($d * 10 + 1) && fmod(($max + 1), $d) == 0) {
+            if (($max + 1) < ($d * 10 + 1) && fmod(($max + 1), $d) === 0) {
                 $step = $d;
             }
         }
-        if ($step == (int) ($max + 1)) {
+
+        if ($step === (int) ($max + 1)) {
             for ($d = (int) ($max); $d > 0; $d--) {
-                if ($max < ($d * 10 + 1) && fmod($max, $d) == 0) {
+                if ($max < ($d * 10 + 1) && fmod($max, $d) === 0) {
                     $step = $d;
                 }
             }
         }
+
         for ($n = $step; $n <= ($max + 1); $n += $step) {
             $chxl .= $n . '|';
         }
+
         $chxl .= '3:||' . I18N::translate('Total families') . '|';
 
         return "<img src=\"https://chart.googleapis.com/chart?cht=bvg&amp;chs={$sizes[0]}x{$sizes[1]}&amp;chf=bg,s,ffffff00|c,s,ffffff00&amp;chm=D,FF0000,0,0:" . ($i - 1) . ",3,1|{$chm}&amp;chd=e:{$chd}&amp;chco=0000FF,ffffff00&amp;chbh=30,3&amp;chxt=x,x,y,y&amp;chxl=" . rawurlencode($chxl) . "\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . I18N::translate('Number of families without children') . '" title="' . I18N::translate('Number of families without children') . '" />';
@@ -5182,56 +4258,13 @@ class Stats
     /**
      * Find common surnames.
      *
-     * @param string $type
-     * @param bool   $show_tot
-     * @param int    $threshold
-     * @param int    $number_of_surnames
-     * @param string $sorting
-     *
-     * @return string
-     */
-    private function commonSurnamesQuery($type, $show_tot, int $threshold, int $number_of_surnames, string $sorting): string
-    {
-        $surnames = $this->topSurnames($number_of_surnames, $threshold);
-
-        switch ($sorting) {
-            default:
-            case 'alpha':
-                uksort($surnames, [I18N::class, 'strcasecmp']);
-                break;
-            case 'count':
-                break;
-            case 'rcount':
-                $surnames = array_reverse($surnames, true);
-                break;
-        }
-
-        return FunctionsPrintLists::surnameList($surnames, ($type === 'list' ? 1 : 2), $show_tot, 'individual-list', $this->tree);
-    }
-
-    /**
-     * @param int $number_of_surnames
-     * @param int $threshold
-     *
-     * @return array
-     *
-     * @deprecated
-     */
-    private function topSurnames(int $number_of_surnames, int $threshold): array
-    {
-        return (new Surname($this->tree))->topSurnames($number_of_surnames, $threshold);
-    }
-
-    /**
-     * Find common surnames.
-     *
      * @return string
      *
      * @deprecated
      */
     public function getCommonSurname(): string
     {
-        return (new Surname($this->tree))->getCommonSurname();
+        return $this->surname->getCommonSurname();
     }
 
     /**
@@ -5245,7 +4278,7 @@ class Stats
      */
     public function commonSurnames(string $threshold = '1', string $number_of_surnames = '10', string $sorting = 'alpha'): string
     {
-        return $this->commonSurnamesQuery('nolist', false, (int) $threshold, (int) $number_of_surnames, $sorting);
+        return $this->surname->commonSurnamesQuery('nolist', false, (int) $threshold, (int) $number_of_surnames, $sorting);
     }
 
     /**
@@ -5259,7 +4292,7 @@ class Stats
      */
     public function commonSurnamesTotals(string $threshold = '1', string $number_of_surnames = '10', string $sorting = 'rcount'): string
     {
-        return $this->commonSurnamesQuery('nolist', true, (int) $threshold, (int) $number_of_surnames, $sorting);
+        return $this->surname->commonSurnamesQuery('nolist', true, (int) $threshold, (int) $number_of_surnames, $sorting);
     }
 
     /**
@@ -5273,7 +4306,7 @@ class Stats
      */
     public function commonSurnamesList(string $threshold = '1', string $number_of_surnames = '10', string $sorting = 'alpha'): string
     {
-        return $this->commonSurnamesQuery('list', false, (int) $threshold, (int) $number_of_surnames, $sorting);
+        return $this->surname->commonSurnamesQuery('list', false, (int) $threshold, (int) $number_of_surnames, $sorting);
     }
 
     /**
@@ -5287,7 +4320,7 @@ class Stats
      */
     public function commonSurnamesListTotals(string $threshold = '1', string $number_of_surnames = '10', string $sorting = 'rcount'): string
     {
-        return $this->commonSurnamesQuery('list', true, (int) $threshold, (int) $number_of_surnames, $sorting);
+        return $this->surname->commonSurnamesQuery('list', true, (int) $threshold, (int) $number_of_surnames, $sorting);
     }
 
     /**
@@ -5302,161 +4335,8 @@ class Stats
      */
     public function chartCommonSurnames(string $size = null, string $color_from = null, string $color_to = null, string $number_of_surnames = '10'): string
     {
-        $WT_STATS_CHART_COLOR1 = Theme::theme()->parameter('distribution-chart-no-values');
-        $WT_STATS_CHART_COLOR2 = Theme::theme()->parameter('distribution-chart-high-values');
-        $WT_STATS_S_CHART_X    = Theme::theme()->parameter('stats-small-chart-x');
-        $WT_STATS_S_CHART_Y    = Theme::theme()->parameter('stats-small-chart-y');
-
-        $size               = $size ?? ($WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y);
-        $color_from         = $color_from ?? $WT_STATS_CHART_COLOR1;
-        $color_to           = $color_to ?? $WT_STATS_CHART_COLOR2;
-        $number_of_surnames = (int) $number_of_surnames;
-
-        $sizes    = explode('x', $size);
-        $tot_indi = $this->totalIndividualsQuery();
-
-        $all_surnames = $this->topSurnames($number_of_surnames, 0);
-
-        if (empty($all_surnames)) {
-            return '';
-        }
-
-        $SURNAME_TRADITION = $this->tree->getPreference('SURNAME_TRADITION');
-
-        $tot = 0;
-
-        foreach ($all_surnames as $surn => $surnames) {
-            $tot += array_sum($surnames);
-        }
-
-        $chd = '';
-        $chl = [];
-        foreach ($all_surnames as $surns) {
-            $count_per = 0;
-            $max_name  = 0;
-            $top_name  = '';
-            foreach ($surns as $spfxsurn => $count) {
-                $per       = $count;
-                $count_per += $per;
-                // select most common surname from all variants
-                if ($per > $max_name) {
-                    $max_name = $per;
-                    $top_name = $spfxsurn;
-                }
-            }
-            switch ($SURNAME_TRADITION) {
-                case 'polish':
-                    // most common surname should be in male variant (Kowalski, not Kowalska)
-                    $top_name = preg_replace([
-                        '/ska$/',
-                        '/cka$/',
-                        '/dzka$/',
-                        '/żka$/',
-                    ], [
-                        'ski',
-                        'cki',
-                        'dzki',
-                        'żki',
-                    ], $top_name);
-            }
-            $per   = intdiv(100 * $count_per, $tot_indi);
-            $chd   .= $this->arrayToExtendedEncoding([$per]);
-            $chl[] = $top_name . ' - ' . I18N::number($count_per);
-        }
-        $per   = intdiv(100 * ($tot_indi - $tot), $tot_indi);
-        $chd   .= $this->arrayToExtendedEncoding([$per]);
-        $chl[] = I18N::translate('Other') . ' - ' . I18N::number($tot_indi - $tot);
-
-        $chart_title = implode(I18N::$list_separator, $chl);
-        $chl         = implode('|', $chl);
-
-        return '<img src="https://chart.googleapis.com/chart?cht=p3&amp;chd=e:' . $chd . '&amp;chs=' . $size . '&amp;chco=' . $color_from . ',' . $color_to . '&amp;chf=bg,s,ffffff00&amp;chl=' . rawurlencode($chl) . '" width="' . $sizes[0] . '" height="' . $sizes[1] . '" alt="' . $chart_title . '" title="' . $chart_title . '" />';
-    }
-
-    /**
-     * Find common given names.
-     *
-     * @param string $sex
-     * @param string $type
-     * @param bool   $show_tot
-     * @param int    $threshold
-     * @param int    $maxtoshow
-     *
-     * @return string|int[]
-     */
-    private function commonGivenQuery(string $sex, string $type, bool $show_tot, int $threshold, int $maxtoshow)
-    {
-        switch ($sex) {
-            case 'M':
-                $sex_sql = "i_sex='M'";
-                break;
-            case 'F':
-                $sex_sql = "i_sex='F'";
-                break;
-            case 'U':
-                $sex_sql = "i_sex='U'";
-                break;
-            case 'B':
-            default:
-                $sex_sql = "i_sex<>'U'";
-                break;
-        }
-        $ged_id = $this->tree->id();
-
-        $rows     = Database::prepare("SELECT n_givn, COUNT(*) AS num FROM `##name` JOIN `##individuals` ON (n_id=i_id AND n_file=i_file) WHERE n_file={$ged_id} AND n_type<>'_MARNM' AND n_givn NOT IN ('@P.N.', '') AND LENGTH(n_givn)>1 AND {$sex_sql} GROUP BY n_id, n_givn")
-            ->fetchAll();
-        $nameList = [];
-        foreach ($rows as $row) {
-            $row->num = (int) $row->num;
-
-            // Split “John Thomas” into “John” and “Thomas” and count against both totals
-            foreach (explode(' ', $row->n_givn) as $given) {
-                // Exclude initials and particles.
-                if (!preg_match('/^([A-Z]|[a-z]{1,3})$/', $given)) {
-                    if (array_key_exists($given, $nameList)) {
-                        $nameList[$given] += (int) $row->num;
-                    } else {
-                        $nameList[$given] = (int) $row->num;
-                    }
-                }
-            }
-        }
-        arsort($nameList);
-        $nameList = array_slice($nameList, 0, $maxtoshow);
-
-        foreach ($nameList as $given => $total) {
-            if ($total < $threshold) {
-                unset($nameList[$given]);
-            }
-        }
-
-        switch ($type) {
-            case 'chart':
-                return $nameList;
-
-            case 'table':
-                return view('lists/given-names-table', [
-                    'given_names' => $nameList,
-                ]);
-
-            case 'list':
-                return view('lists/given-names-list', [
-                    'given_names' => $nameList,
-                    'show_totals' => $show_tot,
-                ]);
-
-            case 'nolist':
-            default:
-                array_walk($nameList, function (int &$value, string $key) use ($show_tot): void {
-                    if ($show_tot) {
-                        $value = '<span dir="auto">' . e($key);
-                    } else {
-                        $value = '<span dir="auto">' . e($key) . ' (' . I18N::number($value) . ')';
-                    }
-                });
-
-                return implode(I18N::$list_separator, $nameList);
-        }
+        return (new Google\ChartCommonSurname($this->tree))
+            ->chartCommonSurnames($size, $color_from, $color_to, $number_of_surnames);
     }
 
     /**
@@ -5469,7 +4349,7 @@ class Stats
      */
     public function commonGiven(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->commonGivenQuery('B', 'nolist', false, (int) $threshold, (int) $maxtoshow);
+        return $this->individual->commonGivenQuery('B', 'nolist', false, (int) $threshold, (int) $maxtoshow);
     }
 
     /**
@@ -5482,7 +4362,7 @@ class Stats
      */
     public function commonGivenTotals(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->commonGivenQuery('B', 'nolist', true, (int) $threshold, (int) $maxtoshow);
+        return $this->individual->commonGivenQuery('B', 'nolist', true, (int) $threshold, (int) $maxtoshow);
     }
 
     /**
@@ -5495,7 +4375,7 @@ class Stats
      */
     public function commonGivenList(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->commonGivenQuery('B', 'list', false, (int) $threshold, (int) $maxtoshow);
+        return $this->individual->commonGivenQuery('B', 'list', false, (int) $threshold, (int) $maxtoshow);
     }
 
     /**
@@ -5508,7 +4388,7 @@ class Stats
      */
     public function commonGivenListTotals(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->commonGivenQuery('B', 'list', true, (int) $threshold, (int) $maxtoshow);
+        return $this->individual->commonGivenQuery('B', 'list', true, (int) $threshold, (int) $maxtoshow);
     }
 
     /**
@@ -5521,7 +4401,7 @@ class Stats
      */
     public function commonGivenTable(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->commonGivenQuery('B', 'table', false, (int) $threshold, (int) $maxtoshow);
+        return $this->individual->commonGivenQuery('B', 'table', false, (int) $threshold, (int) $maxtoshow);
     }
 
     /**
@@ -5534,7 +4414,7 @@ class Stats
      */
     public function commonGivenFemale(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->commonGivenQuery('F', 'nolist', false, (int) $threshold, (int) $maxtoshow);
+        return $this->individual->commonGivenQuery('F', 'nolist', false, (int) $threshold, (int) $maxtoshow);
     }
 
     /**
@@ -5547,7 +4427,7 @@ class Stats
      */
     public function commonGivenFemaleTotals(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->commonGivenQuery('F', 'nolist', true, (int) $threshold, (int) $maxtoshow);
+        return $this->individual->commonGivenQuery('F', 'nolist', true, (int) $threshold, (int) $maxtoshow);
     }
 
     /**
@@ -5560,7 +4440,7 @@ class Stats
      */
     public function commonGivenFemaleList(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->commonGivenQuery('F', 'list', false, (int) $threshold, (int) $maxtoshow);
+        return $this->individual->commonGivenQuery('F', 'list', false, (int) $threshold, (int) $maxtoshow);
     }
 
     /**
@@ -5573,7 +4453,7 @@ class Stats
      */
     public function commonGivenFemaleListTotals(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->commonGivenQuery('F', 'list', true, (int) $threshold, (int) $maxtoshow);
+        return $this->individual->commonGivenQuery('F', 'list', true, (int) $threshold, (int) $maxtoshow);
     }
 
     /**
@@ -5586,7 +4466,7 @@ class Stats
      */
     public function commonGivenFemaleTable(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->commonGivenQuery('F', 'table', false, (int) $threshold, (int) $maxtoshow);
+        return $this->individual->commonGivenQuery('F', 'table', false, (int) $threshold, (int) $maxtoshow);
     }
 
     /**
@@ -5599,7 +4479,7 @@ class Stats
      */
     public function commonGivenMale(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->commonGivenQuery('M', 'nolist', false, (int) $threshold, (int) $maxtoshow);
+        return $this->individual->commonGivenQuery('M', 'nolist', false, (int) $threshold, (int) $maxtoshow);
     }
 
     /**
@@ -5612,7 +4492,7 @@ class Stats
      */
     public function commonGivenMaleTotals(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->commonGivenQuery('M', 'nolist', true, (int) $threshold, (int) $maxtoshow);
+        return $this->individual->commonGivenQuery('M', 'nolist', true, (int) $threshold, (int) $maxtoshow);
     }
 
     /**
@@ -5625,7 +4505,7 @@ class Stats
      */
     public function commonGivenMaleList(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->commonGivenQuery('M', 'list', false, (int) $threshold, (int) $maxtoshow);
+        return $this->individual->commonGivenQuery('M', 'list', false, (int) $threshold, (int) $maxtoshow);
     }
 
     /**
@@ -5638,7 +4518,7 @@ class Stats
      */
     public function commonGivenMaleListTotals(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->commonGivenQuery('M', 'list', true, (int) $threshold, (int) $maxtoshow);
+        return $this->individual->commonGivenQuery('M', 'list', true, (int) $threshold, (int) $maxtoshow);
     }
 
     /**
@@ -5651,7 +4531,7 @@ class Stats
      */
     public function commonGivenMaleTable(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->commonGivenQuery('M', 'table', false, (int) $threshold, (int) $maxtoshow);
+        return $this->individual->commonGivenQuery('M', 'table', false, (int) $threshold, (int) $maxtoshow);
     }
 
     /**
@@ -5664,7 +4544,7 @@ class Stats
      */
     public function commonGivenUnknown(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->commonGivenQuery('U', 'nolist', false, (int) $threshold, (int) $maxtoshow);
+        return $this->individual->commonGivenQuery('U', 'nolist', false, (int) $threshold, (int) $maxtoshow);
     }
 
     /**
@@ -5677,7 +4557,7 @@ class Stats
      */
     public function commonGivenUnknownTotals(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->commonGivenQuery('U', 'nolist', true, (int) $threshold, (int) $maxtoshow);
+        return $this->individual->commonGivenQuery('U', 'nolist', true, (int) $threshold, (int) $maxtoshow);
     }
 
     /**
@@ -5690,7 +4570,7 @@ class Stats
      */
     public function commonGivenUnknownList(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->commonGivenQuery('U', 'list', false, (int) $threshold, (int) $maxtoshow);
+        return $this->individual->commonGivenQuery('U', 'list', false, (int) $threshold, (int) $maxtoshow);
     }
 
     /**
@@ -5703,7 +4583,7 @@ class Stats
      */
     public function commonGivenUnknownListTotals(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->commonGivenQuery('U', 'list', true, (int) $threshold, (int) $maxtoshow);
+        return $this->individual->commonGivenQuery('U', 'list', true, (int) $threshold, (int) $maxtoshow);
     }
 
     /**
@@ -5716,7 +4596,7 @@ class Stats
      */
     public function commonGivenUnknownTable(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->commonGivenQuery('U', 'table', false, (int) $threshold, (int) $maxtoshow);
+        return $this->individual->commonGivenQuery('U', 'table', false, (int) $threshold, (int) $maxtoshow);
     }
 
     /**
@@ -5731,47 +4611,8 @@ class Stats
      */
     public function chartCommonGiven(string $size = null, string $color_from = null, string $color_to = null, string $maxtoshow = '7'): string
     {
-        $WT_STATS_CHART_COLOR1 = Theme::theme()->parameter('distribution-chart-no-values');
-        $WT_STATS_CHART_COLOR2 = Theme::theme()->parameter('distribution-chart-high-values');
-        $WT_STATS_S_CHART_X    = Theme::theme()->parameter('stats-small-chart-x');
-        $WT_STATS_S_CHART_Y    = Theme::theme()->parameter('stats-small-chart-y');
-
-        $size       = $size ?? ($WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y);
-        $color_from = $color_from ?? $WT_STATS_CHART_COLOR1;
-        $color_to   = $color_to ?? $WT_STATS_CHART_COLOR2;
-        $maxtoshow  = (int) $maxtoshow;
-
-        $sizes    = explode('x', $size);
-        $tot_indi = $this->totalIndividualsQuery();
-        $given    = $this->commonGivenQuery('B', 'chart', false, 1, (int) $maxtoshow);
-
-        if (empty($given)) {
-            return '';
-        }
-
-        $tot = 0;
-        foreach ($given as $count) {
-            $tot += $count;
-        }
-        $chd = '';
-        $chl = [];
-        foreach ($given as $givn => $count) {
-            if ($tot == 0) {
-                $per = 0;
-            } else {
-                $per = intdiv(100 * $count, $tot_indi);
-            }
-            $chd   .= $this->arrayToExtendedEncoding([$per]);
-            $chl[] = $givn . ' - ' . I18N::number($count);
-        }
-        $per   = intdiv(100 * ($tot_indi - $tot), $tot_indi);
-        $chd   .= $this->arrayToExtendedEncoding([$per]);
-        $chl[] = I18N::translate('Other') . ' - ' . I18N::number($tot_indi - $tot);
-
-        $chart_title = implode(I18N::$list_separator, $chl);
-        $chl         = implode('|', $chl);
-
-        return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl=" . rawurlencode($chl) . "\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . $chart_title . '" title="' . $chart_title . '" />';
+        return (new Google\ChartCommonGiven($this->tree))
+            ->chartCommonGiven($size, $color_from, $color_to, $maxtoshow);
     }
 
     /**
@@ -6318,32 +5159,6 @@ class Stats
     }
 
     /**
-     * Convert numbers to Google's custom encoding.
-     *
-     * @link http://bendodson.com/news/google-extended-encoding-made-easy
-     *
-     * @param int[] $a
-     *
-     * @return string
-     */
-    private function arrayToExtendedEncoding($a): string
-    {
-        $xencoding = self::GOOGLE_CHART_ENCODING;
-
-        $encoding = '';
-        foreach ($a as $value) {
-            if ($value < 0) {
-                $value = 0;
-            }
-            $first    = intdiv($value, 64);
-            $second   = $value % 64;
-            $encoding .= $xencoding[(int) $first] . $xencoding[(int) $second];
-        }
-
-        return $encoding;
-    }
-
-    /**
      * Run an SQL query and cache the result.
      *
      * @param string $sql
@@ -6352,16 +5167,7 @@ class Stats
      */
     private function runSql($sql): array
     {
-        static $cache = [];
-
-        $id = md5($sql);
-        if (isset($cache[$id])) {
-            return $cache[$id];
-        }
-        $rows       = Database::prepare($sql)->fetchAll();
-        $cache[$id] = $rows;
-
-        return $rows;
+        return Sql::runSql($sql);
     }
 
     /**
@@ -6453,20 +5259,21 @@ class Stats
         if ($block === null) {
             return '';
         }
+
         // Build the config array
         $cfg = [];
         foreach ($params as $config) {
             $bits = explode('=', $config);
+
             if (count($bits) < 2) {
                 continue;
             }
+
             $v       = array_shift($bits);
             $cfg[$v] = implode('=', $bits);
         }
 
-        $content = $block->getBlock($this->tree, 0, '', $cfg);
-
-        return $content;
+        return $block->getBlock($this->tree, 0, '', $cfg);
     }
 
     /**
@@ -6519,80 +5326,5 @@ class Stats
         }
 
         return I18N::number($number);
-    }
-
-    /**
-     * Country codes and names
-     *
-     * @return string[]
-     *
-     * @deprecated
-     */
-    private function getAllCountries(): array
-    {
-        $helper = new CountryHelper();
-        return $helper->getAllCountries();
-    }
-
-    /**
-     * Century name, English => 21st, Polish => XXI, etc.
-     *
-     * @param int $century
-     *
-     * @return string
-     */
-    private function centuryName($century): string
-    {
-        if ($century < 0) {
-            return I18N::translate('%s BCE', $this->centuryName(-$century));
-        }
-
-        // The current chart engine (Google charts) can't handle <sup></sup> markup
-        switch ($century) {
-            case 21:
-                return strip_tags(I18N::translateContext('CENTURY', '21st'));
-            case 20:
-                return strip_tags(I18N::translateContext('CENTURY', '20th'));
-            case 19:
-                return strip_tags(I18N::translateContext('CENTURY', '19th'));
-            case 18:
-                return strip_tags(I18N::translateContext('CENTURY', '18th'));
-            case 17:
-                return strip_tags(I18N::translateContext('CENTURY', '17th'));
-            case 16:
-                return strip_tags(I18N::translateContext('CENTURY', '16th'));
-            case 15:
-                return strip_tags(I18N::translateContext('CENTURY', '15th'));
-            case 14:
-                return strip_tags(I18N::translateContext('CENTURY', '14th'));
-            case 13:
-                return strip_tags(I18N::translateContext('CENTURY', '13th'));
-            case 12:
-                return strip_tags(I18N::translateContext('CENTURY', '12th'));
-            case 11:
-                return strip_tags(I18N::translateContext('CENTURY', '11th'));
-            case 10:
-                return strip_tags(I18N::translateContext('CENTURY', '10th'));
-            case 9:
-                return strip_tags(I18N::translateContext('CENTURY', '9th'));
-            case 8:
-                return strip_tags(I18N::translateContext('CENTURY', '8th'));
-            case 7:
-                return strip_tags(I18N::translateContext('CENTURY', '7th'));
-            case 6:
-                return strip_tags(I18N::translateContext('CENTURY', '6th'));
-            case 5:
-                return strip_tags(I18N::translateContext('CENTURY', '5th'));
-            case 4:
-                return strip_tags(I18N::translateContext('CENTURY', '4th'));
-            case 3:
-                return strip_tags(I18N::translateContext('CENTURY', '3rd'));
-            case 2:
-                return strip_tags(I18N::translateContext('CENTURY', '2nd'));
-            case 1:
-                return strip_tags(I18N::translateContext('CENTURY', '1st'));
-            default:
-                return ($century - 1) . '01-' . $century . '00';
-        }
     }
 }

@@ -17,11 +17,11 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Statistics;
 
-use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Functions\FunctionsDate;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Statistics\Helper\Sql;
 use Fisharebest\Webtrees\Tree;
 
 /**
@@ -197,17 +197,6 @@ class AgeDifferenceSiblings
      */
     private function runSql($sql): array
     {
-        static $cache = [];
-
-        $id = md5($sql);
-
-        if (isset($cache[$id])) {
-            return $cache[$id];
-        }
-
-        $rows       = Database::prepare($sql)->fetchAll();
-        $cache[$id] = $rows;
-
-        return $rows;
+        return Sql::runSql($sql);
     }
 }

@@ -19,6 +19,7 @@ namespace Fisharebest\Webtrees\Statistics;
 
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Place;
+use Fisharebest\Webtrees\Statistics\Helper\Sql;
 use Fisharebest\Webtrees\Tree;
 
 /**
@@ -152,17 +153,6 @@ class Places
      */
     private function runSql($sql): array
     {
-        static $cache = [];
-
-        $id = md5($sql);
-
-        if (isset($cache[$id])) {
-            return $cache[$id];
-        }
-
-        $rows       = Database::prepare($sql)->fetchAll();
-        $cache[$id] = $rows;
-
-        return $rows;
+        return Sql::runSql($sql);
     }
 }
