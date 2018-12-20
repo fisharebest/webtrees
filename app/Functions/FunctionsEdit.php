@@ -477,12 +477,11 @@ class FunctionsEdit
      * @param string          $tag        fact record to edit (eg 2 DATE xxxxx)
      * @param string          $upperlevel optional upper level tag (eg BIRT)
      * @param string          $label      An optional label to echo instead of the default
-     * @param string          $extra      optional text to display after the input field
      * @param Individual|null $person     For male/female translations
      *
      * @return string
      */
-    public static function addSimpleTag(Tree $tree, $tag, $upperlevel = '', $label = '', $extra = null, Individual $person = null): string
+    public static function addSimpleTag(Tree $tree, $tag, $upperlevel = '', $label = '', Individual $person = null): string
     {
         // @TODO $xref is no longer set (from edit_interface).
         global $request;
@@ -859,7 +858,7 @@ class FunctionsEdit
             $html .= '<script>document.getElementById("' . $id . '").style.display="none";</script>';
         }
 
-        $html .= $extra . '</div></div>';
+        $html .= '</div></div>';
 
         return $html;
     }
