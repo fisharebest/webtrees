@@ -145,7 +145,7 @@ $bdm = ''; // used to copy '1 SOUR' to '2 SOUR' for BIRT DEAT MARR
     // First - standard name fields
     foreach ($name_fields as $tag => $value) {
         if (substr_compare($tag, '_', 0, 1) !== 0) {
-            echo FunctionsEdit::addSimpleTag($tree, '0 ' . $tag . ' ' . $value, '', '', $individual);
+            echo FunctionsEdit::addSimpleTag($tree, '0 ' . $tag . ' ' . $value, '', '');
         }
     }
 

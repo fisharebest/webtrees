@@ -477,11 +477,10 @@ class FunctionsEdit
      * @param string          $tag        fact record to edit (eg 2 DATE xxxxx)
      * @param string          $upperlevel optional upper level tag (eg BIRT)
      * @param string          $label      An optional label to echo instead of the default
-     * @param Individual|null $person     For male/female translations
      *
      * @return string
      */
-    public static function addSimpleTag(Tree $tree, $tag, $upperlevel = '', $label = '', Individual $person = null): string
+    public static function addSimpleTag(Tree $tree, $tag, $upperlevel = '', $label = ''): string
     {
         // @TODO $xref is no longer set (from edit_interface).
         global $request;
@@ -619,7 +618,7 @@ class FunctionsEdit
         } elseif ($fact === 'SURN' || $fact === '_MARNM_SURN') {
             $html .= '<input class="form-control" type="text" id="' . $id . '" name="' . $name . '" value="' . e($value) . '" data-autocomplete-type="SURN" oninput="updatewholename()">';
         } elseif ($fact === 'ADOP') {
-            $html .= Bootstrap4::select(GedcomCodeAdop::getValues($person), $value, [
+            $html .= Bootstrap4::select(GedcomCodeAdop::getValues(), $value, [
                 'id'   => $id,
                 'name' => $name,
             ]);
@@ -695,7 +694,7 @@ class FunctionsEdit
         } elseif ($fact === 'PAGE') {
             $html .= '<input class="form-control" type="text" id="' . $id . '" name="' . $name . '" value="' . e($value) . '"   data-autocomplete-type="PAGE" data-autocomplete-extra="#' . $previous_ids['SOUR'] . '">';
         } elseif ($fact === 'PEDI') {
-            $html .= Bootstrap4::select(GedcomCodePedi::getValues($person), $value, [
+            $html .= Bootstrap4::select(GedcomCodePedi::getValues(), $value, [
                 'id'   => $id,
                 'name' => $name,
             ]);
@@ -850,7 +849,7 @@ class FunctionsEdit
             $html .= '</select>';
         } elseif ($fact === 'TYPE' && $level === '0') {
             // NAME TYPE : hide text field and show a selection list
-            $html .= Bootstrap4::select(GedcomCodeName::getValues($person), $value, [
+            $html .= Bootstrap4::select(GedcomCodeName::getValues(), $value, [
                 'id'      => $id,
                 'name'    => $name,
                 'oninput' => 'document.getElementById(\'' . $id . '\').value=this.value"',
