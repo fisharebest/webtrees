@@ -20,7 +20,6 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 use Exception;
 use FilesystemIterator;
 use Fisharebest\Webtrees\Database;
-use Fisharebest\Webtrees\DebugBar;
 use Fisharebest\Webtrees\File;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Functions\FunctionsImport;

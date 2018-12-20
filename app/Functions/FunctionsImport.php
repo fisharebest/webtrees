@@ -19,7 +19,6 @@ namespace Fisharebest\Webtrees\Functions;
 
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Date;
-use Fisharebest\Webtrees\DebugBar;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;

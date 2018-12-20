@@ -138,11 +138,9 @@ class RelationshipsChartModule extends AbstractModule implements ModuleConfigInt
     }
 
     /**
-     * @param Request $request
-     *
      * @return Response
      */
-    public function getAdminAction(Request $request): Response
+    public function getAdminAction(): Response
     {
         $this->layout = 'layouts/administration';
 

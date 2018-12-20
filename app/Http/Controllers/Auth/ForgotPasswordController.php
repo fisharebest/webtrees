@@ -36,11 +36,9 @@ class ForgotPasswordController extends AbstractBaseController
     /**
      * Show a password reset page.
      *
-     * @param Request $request
-     *
      * @return Response
      */
-    public function forgotPasswordPage(Request $request): Response
+    public function forgotPasswordPage(): Response
     {
         $title = I18N::translate('Request a new password');
 

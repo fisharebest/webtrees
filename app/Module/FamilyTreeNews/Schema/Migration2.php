@@ -18,7 +18,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module\FamilyTreeNews\Schema;
 
 use Fisharebest\Webtrees\Database;
-use Fisharebest\Webtrees\DebugBar;
 use Fisharebest\Webtrees\Schema\MigrationInterface;
 use PDOException;
 

@@ -20,7 +20,6 @@ namespace Fisharebest\Webtrees\Http\Controllers\Auth;
 use Exception;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
-use Fisharebest\Webtrees\DebugBar;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Http\Controllers\AbstractBaseController;
 use Fisharebest\Webtrees\I18N;

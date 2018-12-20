@@ -21,7 +21,6 @@ use Fisharebest\Algorithm\ConnectedComponent;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Date;
-use Fisharebest\Webtrees\DebugBar;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\File;
 use Fisharebest\Webtrees\FlashMessages;
@@ -288,7 +287,6 @@ class AdminTreesController extends AbstractBaseController
         );
     }
 
-
     /**
      * Format a link to a record.
      *
@@ -415,7 +413,7 @@ class AdminTreesController extends AbstractBaseController
         ];
 
         $access_level = $access_levels[$privatize_export];
-        $encoding     =  $convert ? 'ANSI' : 'UTF-8';
+        $encoding     = $convert ? 'ANSI' : 'UTF-8';
 
         // What to call the downloaded file
         $download_filename = $tree->name();
@@ -489,7 +487,7 @@ class AdminTreesController extends AbstractBaseController
     }
 
     /**
-     * @param Tree    $tree
+     * @param Tree $tree
      *
      * @return RedirectResponse
      */
@@ -524,7 +522,6 @@ class AdminTreesController extends AbstractBaseController
 
         return new RedirectResponse($url);
     }
-
 
     /**
      * @param Request $request

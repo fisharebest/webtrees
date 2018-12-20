@@ -19,7 +19,6 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Exception;
 use Fisharebest\Webtrees\Database;
-use Fisharebest\Webtrees\DebugBar;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Location;
@@ -120,7 +119,7 @@ class AdminLocationController extends AbstractBaseController
             'lat'         => $lat,
             'lng'         => $lng,
             'ref'         => $id,
-            'data'        => $this->mapLocationData($id)
+            'data'        => $this->mapLocationData($id),
         ]);
     }
 
@@ -143,7 +142,6 @@ class AdminLocationController extends AbstractBaseController
         $icon      = $icon === '' ? null : $icon;
         $zoom      = $request->get('new_zoom_factor');
         $zoom      = $zoom === '' ? null : $zoom;
-
 
         if ($place_id === 0) {
             Database::prepare(
@@ -275,7 +273,7 @@ class AdminLocationController extends AbstractBaseController
         if ($format === 'csv') {
             // Create the header line for the output file (always English)
             $header = [
-                I18N::translate('Level')
+                I18N::translate('Level'),
             ];
 
             for ($i = 0; $i <= $maxlevel; $i++) {
@@ -314,9 +312,9 @@ class AdminLocationController extends AbstractBaseController
         asort($files);
 
         return $this->viewResponse('admin/map-import-form', [
-            'title'       => I18N::translate('Import geographic data'),
-            'parent_id'   => $parent_id,
-            'files'       => $files,
+            'title'     => I18N::translate('Import geographic data'),
+            'parent_id' => $parent_id,
+            'files'     => $files,
         ]);
     }
 
@@ -332,9 +330,9 @@ class AdminLocationController extends AbstractBaseController
      */
     public function importLocationsAction(Request $request): RedirectResponse
     {
-        $serverfile  = $request->get('serverfile');
-        $options     = $request->get('import-options');
-        $parent_id   = $request->get('parent_id');
+        $serverfile = $request->get('serverfile');
+        $options    = $request->get('import-options');
+        $parent_id  = $request->get('parent_id');
 
         $filename    = '';
         $places      = [];
@@ -424,12 +422,12 @@ class AdminLocationController extends AbstractBaseController
                 // can't match data type here because default table values are null
                 // but csv file return empty string
                 if ($valid && $options !== 'add' && (
-                    $place['pl_level'] != $location->getLevel() ||
-                    $place['pl_long'] != $location->getLon('DMS+') ||
-                    $place['pl_lati'] != $location->getLat('DMS+') ||
-                    $place['pl_zoom'] != $location->getZoom() ||
-                    $place['pl_icon'] != $location->getIcon()
-                )) {
+                        $place['pl_level'] != $location->getLevel() ||
+                        $place['pl_long'] != $location->getLon('DMS+') ||
+                        $place['pl_lati'] != $location->getLat('DMS+') ||
+                        $place['pl_zoom'] != $location->getZoom() ||
+                        $place['pl_icon'] != $location->getIcon()
+                    )) {
                     // overwrite
                     $location->update((object) $place);
                     $updated++;
@@ -533,7 +531,7 @@ class AdminLocationController extends AbstractBaseController
             foreach ($diff as $place) {
                 // For Westminster, London, England, we must also create England and London, England
                 $place_parts = explode(',', $place);
-                $count = count($place_parts);
+                $count       = count($place_parts);
 
                 $parent_id = 0;
                 for ($i = $count - 1; $i >= 0; $i--) {
@@ -547,7 +545,7 @@ class AdminLocationController extends AbstractBaseController
                             'level'  => $count - $i,
                             'place'  => $place_parts[$i],
                         ]);
-                        $parent_id = $nextRecordId;
+                        $parent_id             = $nextRecordId;
                         $locations[$parent_id] = $parent;
                         $inserted++;
                         $nextRecordId++;
@@ -566,8 +564,7 @@ class AdminLocationController extends AbstractBaseController
     }
 
     /**
-     * @param string $filename
-     *
+     * @param string     $filename
      * @param string[]   $columns
      * @param string[][] $places
      *
@@ -580,7 +577,7 @@ class AdminLocationController extends AbstractBaseController
 
             if ($stream !== false) {
                 fputcsv($stream, $columns);
-                
+
                 foreach ($places as $place) {
                     fputcsv($stream, $place, ';');
                 }
@@ -588,7 +585,6 @@ class AdminLocationController extends AbstractBaseController
                 fclose($stream);
             }
         });
-
 
         $disposition = $response->headers->makeDisposition(ResponseHeaderBag::DISPOSITION_ATTACHMENT, $filename);
         $response->headers->set('Content-Disposition', $disposition);

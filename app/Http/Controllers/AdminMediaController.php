@@ -18,7 +18,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Database;
-use Fisharebest\Webtrees\DebugBar;
 use Fisharebest\Webtrees\File;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Functions\Functions;
@@ -394,11 +393,9 @@ class AdminMediaController extends AbstractBaseController
     }
 
     /**
-     * @param Request $request
-     *
      * @return Response
      */
-    public function upload(Request $request): Response
+    public function upload(): Response
     {
         $media_folders = $this->folderListAll();
 

@@ -27,7 +27,6 @@ use DebugBar\StandardDebugBar;
 use DebugBar\Storage\FileStorage;
 use Fisharebest\Webtrees\DebugBar\ViewCollector;
 use PDO;
-use Throwable;
 
 /**
  * A static wrapper for maximebf/php-debugbar.

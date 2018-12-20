@@ -21,7 +21,6 @@ use Exception;
 use Fisharebest\Localization\Locale;
 use Fisharebest\Localization\Locale\LocaleEnUs;
 use Fisharebest\Webtrees\Database;
-use Fisharebest\Webtrees\DebugBar;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\User;
 use Fisharebest\Webtrees\Webtrees;
@@ -142,7 +141,6 @@ class SetupController extends AbstractBaseController
         return '';
     }
 
-
     /**
      * Check we can write to the data folder.
      *
@@ -152,7 +150,6 @@ class SetupController extends AbstractBaseController
      * @param string $dbpass
      *
      * @return string
-     *
      */
     private function checkDatabaseConnection($dbhost, $dbport, $buser, $dbpass): string
     {
@@ -184,7 +181,6 @@ class SetupController extends AbstractBaseController
      * @param string $tblpfx
      *
      * @return string
-     *
      */
     private function checkDatabaseName($dbhost, $dbport, $dbuser, $dbpass, $dbname, $tblpfx): string
     {

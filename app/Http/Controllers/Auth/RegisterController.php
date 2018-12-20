@@ -219,12 +219,10 @@ class RegisterController extends AbstractBaseController
     /**
      * Show an email verification page.
      *
-     * @param Request $request
-     *
      * @return Response
      * @throws NotFoundHttpException
      */
-    public function verifyPage(Request $request): Response
+    public function verifyPage(): Response
     {
         $this->checkRegistrationAllowed();
 
@@ -238,12 +236,10 @@ class RegisterController extends AbstractBaseController
     /**
      * Perform a registration.
      *
-     * @param Request $request
-     *
      * @return RedirectResponse
      * @throws NotFoundHttpException
      */
-    public function verifyAction(Request $request): RedirectResponse
+    public function verifyAction(): RedirectResponse
     {
         $this->checkRegistrationAllowed();
 
