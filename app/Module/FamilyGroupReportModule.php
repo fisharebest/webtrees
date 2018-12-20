@@ -58,7 +58,7 @@ class FamilyGroupReportModule extends AbstractModule implements ModuleReportInte
     /**
      * Return a menu item for this report.
      *
-     * @param Tree $tree
+     * @param Individual $individual
      *
      * @return Menu
      */
