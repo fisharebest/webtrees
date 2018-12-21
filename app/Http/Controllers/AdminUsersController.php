@@ -17,12 +17,14 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Functions\FunctionsDate;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
+use Fisharebest\Webtrees\Mail;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
@@ -32,6 +34,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use const WT_BASE_URL;
 
 /**
  * Controller for user administration.
@@ -389,6 +392,21 @@ class AdminUsersController extends AbstractBaseController
 
         if ($edit_user === null) {
             throw new NotFoundHttpException(I18N::translate('%1$s does not exist', 'user_id:' . $user_id));
+        }
+
+        // We have just approved a user.  Tell them
+        if ($edit_user->getPreference('verified_by_admin') !== '1' && $approved) {
+            I18N::init($edit_user->getPreference('language'));
+
+            Mail::send(
+                Auth::user(),
+                $edit_user,
+                Auth::user(),
+                /* I18N: %s is a server name/URL */
+                I18N::translate('New user at %s', WT_BASE_URL),
+                view('emails/approve-user-text', ['user' => $edit_user, 'site_url' => WT_BASE_URL]),
+                view('emails/approve-user-html', ['user' => $edit_user, 'site_url' => WT_BASE_URL])
+            );
         }
 
         $edit_user
