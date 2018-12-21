@@ -15,42 +15,31 @@
  */
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Statistics;
-
-use Fisharebest\Webtrees\Database;
-use Fisharebest\Webtrees\Tree;
+namespace Fisharebest\Webtrees\Statistics\Repository\Interfaces;
 
 /**
- *
+ * Statistics submodule providing all BROWSER related methods.
  */
-class Source
+interface BrowserRepositoryInterface
 {
     /**
-     * @var Tree
+     * What is the client's date.
+     *
+     * @return string
      */
-    private $tree;
+    public function browserDate(): string;
 
     /**
-     * Constructor.
+     * What is the client's timestamp.
      *
-     * @param Tree $tree
+     * @return string
      */
-    public function __construct(Tree $tree)
-    {
-        $this->tree = $tree;
-    }
+    public function browserTime(): string;
 
     /**
-     * Count the total number of sources.
+     * What is the browser's tiemzone.
      *
-     * @return int
+     * @return string
      */
-    public function totalSourcesQuery(): int
-    {
-        return (int) Database::prepare(
-            "SELECT COUNT(*) FROM `##sources` WHERE s_file = :tree_id"
-        )->execute([
-            'tree_id' => $this->tree->id(),
-        ])->fetchOne();
-    }
+    public function browserTimezone(): string;
 }

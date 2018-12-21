@@ -15,29 +15,17 @@
  */
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Statistics;
-
-use Fisharebest\Webtrees\Database;
-use Fisharebest\Webtrees\Gedcom;
-use Fisharebest\Webtrees\Tree;
+namespace Fisharebest\Webtrees\Statistics\Repository\Interfaces;
 
 /**
- *
+ * Statistics submodule providing all MESSAGE related methods.
  */
-class Totals
+interface MessageRepositoryInterface
 {
     /**
-     * @var Tree
-     */
-    private $tree;
-
-    /**
-     * Constructor.
+     * How many messages in the user's inbox.
      *
-     * @param Tree $tree
+     * @return string
      */
-    public function __construct(Tree $tree)
-    {
-        $this->tree = $tree;
-    }
+    public function totalUserMessages(): string;
 }

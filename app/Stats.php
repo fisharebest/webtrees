@@ -17,40 +17,50 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-use Fisharebest\Webtrees\Functions\FunctionsDate;
-use Fisharebest\Webtrees\Functions\FunctionsPrint;
-use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
-use Fisharebest\Webtrees\Http\Middleware\PageHitCounter;
-use Fisharebest\Webtrees\Module\FamilyTreeFavoritesModule;
-use Fisharebest\Webtrees\Module\ModuleBlockInterface;
-use Fisharebest\Webtrees\Module\ModuleInterface;
-use Fisharebest\Webtrees\Module\UserFavoritesModule;
-use Fisharebest\Webtrees\Statistics\Age as StatisticAge;
-use Fisharebest\Webtrees\Statistics\AgeDifferenceSiblings;
-use Fisharebest\Webtrees\Statistics\AgeDifferenceSpouse;
 use Fisharebest\Webtrees\Statistics\Birth;
-use Fisharebest\Webtrees\Statistics\BirthPlaces;
-use Fisharebest\Webtrees\Statistics\Children;
 use Fisharebest\Webtrees\Statistics\Death;
-use Fisharebest\Webtrees\Statistics\DeathPlaces;
 use Fisharebest\Webtrees\Statistics\Google;
-use Fisharebest\Webtrees\Statistics\Helper\Century;
 use Fisharebest\Webtrees\Statistics\Helper\Country;
-use Fisharebest\Webtrees\Statistics\Helper\Percentage;
 use Fisharebest\Webtrees\Statistics\Helper\Sql;
-use Fisharebest\Webtrees\Statistics\Individual as StatisticIndividual;
-use Fisharebest\Webtrees\Statistics\FamilyRepository;
-use Fisharebest\Webtrees\Statistics\Source as StatisticSource;
-use Fisharebest\Webtrees\Statistics\Note as StatisticNote;
-use Fisharebest\Webtrees\Statistics\Marriage;
-use Fisharebest\Webtrees\Statistics\MarriageAge;
-use Fisharebest\Webtrees\Statistics\MarriagePlaces;
-use Fisharebest\Webtrees\Statistics\Places;
-use Illuminate\Database\Capsule\Manager as DB;
-use Fisharebest\Webtrees\Statistics\Surname;
-use PDOException;
-use stdClass;
-use Symfony\Component\HttpFoundation\Request;
+use Fisharebest\Webtrees\Statistics\Repository\BrowserRepository;
+use Fisharebest\Webtrees\Statistics\Repository\ContactRepository;
+use Fisharebest\Webtrees\Statistics\Repository\EventRepository;
+use Fisharebest\Webtrees\Statistics\Repository\FamilyDatesRepository;
+use Fisharebest\Webtrees\Statistics\Repository\FamilyRepository;
+use Fisharebest\Webtrees\Statistics\Repository\FavoritesRepository;
+use Fisharebest\Webtrees\Statistics\Repository\GedcomRepository;
+use Fisharebest\Webtrees\Statistics\Repository\HitCountRepository;
+use Fisharebest\Webtrees\Statistics\Repository\IndividualRepository;
+use Fisharebest\Webtrees\Statistics\Repository\Interfaces\BrowserRepositoryInterface;
+use Fisharebest\Webtrees\Statistics\Repository\Interfaces\ContactRepositoryInterface;
+use Fisharebest\Webtrees\Statistics\Repository\Interfaces\EventRepositoryInterface;
+use Fisharebest\Webtrees\Statistics\Repository\Interfaces\FamilyDatesRepositoryInterface;
+use Fisharebest\Webtrees\Statistics\Repository\Interfaces\FavoritesRepositoryInterface;
+use Fisharebest\Webtrees\Statistics\Repository\Interfaces\GedcomRepositoryInterface;
+use Fisharebest\Webtrees\Statistics\Repository\Interfaces\HitCountRepositoryInterface;
+use Fisharebest\Webtrees\Statistics\Repository\Interfaces\LatestRepositoryInterface;
+use Fisharebest\Webtrees\Statistics\Repository\Interfaces\MediaRepositoryInterface;
+use Fisharebest\Webtrees\Statistics\Repository\Interfaces\MessageRepositoryInterface;
+use Fisharebest\Webtrees\Statistics\Repository\Interfaces\NewsRepositoryInterface;
+use Fisharebest\Webtrees\Statistics\Repository\Interfaces\NoteRepositoryInterface;
+use Fisharebest\Webtrees\Statistics\Repository\Interfaces\RepositoryRepositoryInterface;
+use Fisharebest\Webtrees\Statistics\Repository\Interfaces\ServerRepositoryInterface;
+use Fisharebest\Webtrees\Statistics\Repository\Interfaces\SexRepositoryInterface;
+use Fisharebest\Webtrees\Statistics\Repository\Interfaces\SourceRepositoryInterface;
+use Fisharebest\Webtrees\Statistics\Repository\Interfaces\TotalRepositoryInterface;
+use Fisharebest\Webtrees\Statistics\Repository\Interfaces\UserRepositoryInterface;
+use Fisharebest\Webtrees\Statistics\Repository\LatestRepository;
+use Fisharebest\Webtrees\Statistics\Repository\MediaRepository;
+use Fisharebest\Webtrees\Statistics\Repository\MessageRepository;
+use Fisharebest\Webtrees\Statistics\Repository\NewsRepository;
+use Fisharebest\Webtrees\Statistics\Repository\NoteRepository;
+use Fisharebest\Webtrees\Statistics\Repository\RepositoryRepository;
+use Fisharebest\Webtrees\Statistics\Repository\ServerRepository;
+use Fisharebest\Webtrees\Statistics\Repository\SexRepository;
+use Fisharebest\Webtrees\Statistics\Repository\SourceRepository;
+use Fisharebest\Webtrees\Statistics\Repository\TotalRepository;
+use Fisharebest\Webtrees\Statistics\Repository\UserRepository;
+use ReflectionMethod;
 use const PREG_SET_ORDER;
 
 /**
@@ -58,13 +68,31 @@ use const PREG_SET_ORDER;
  * These are primarily used for embedded keywords on HTML blocks, but
  * are also used elsewhere in the code.
  */
-class Stats
+class Stats implements
+    GedcomRepositoryInterface,
+    EventRepositoryInterface,
+    MediaRepositoryInterface,
+    SexRepositoryInterface,
+    NoteRepositoryInterface,
+    SourceRepositoryInterface,
+    UserRepositoryInterface,
+    ServerRepositoryInterface,
+    BrowserRepositoryInterface,
+    HitCountRepositoryInterface,
+    TotalRepositoryInterface,
+    RepositoryRepositoryInterface,
+    LatestRepositoryInterface,
+    FavoritesRepositoryInterface,
+    NewsRepositoryInterface,
+    MessageRepositoryInterface,
+    ContactRepositoryInterface,
+    FamilyDatesRepositoryInterface
 {
     /** @var Tree Generate statistics for a specified tree. */
     private $tree;
 
     /** @var string[] All public functions are available as keywords - except these ones */
-    private $public_but_not_allowed = [
+    private static $public_but_not_allowed = [
         '__construct',
         'embedTags',
         'iso3166',
@@ -82,44 +110,29 @@ class Stats
     ];
 
     /**
-     * @var Surname
+     * @var GedcomRepositoryInterface
      */
-    private $surname;
+    private $gedcomRepository;
 
     /**
-     * @var StatisticIndividual
+     * @var IndividualRepository
      */
-    private $individual;
+    private $individualRepository;
 
     /**
      * @var FamilyRepository
      */
-    private $family;
+    private $familyRepository;
 
     /**
-     * @var Children
+     * @var SourceRepository
      */
-    private $children;
+    private $sourceRepository;
 
     /**
-     * @var StatisticSource
+     * @var NoteRepositoryInterface
      */
-    private $source;
-
-    /**
-     * @var StatisticNote
-     */
-    private $note;
-
-    /**
-     * @var Google
-     */
-    private $google;
-
-    /**
-     * @var Century
-     */
-    private $centuryHelper;
+    private $noteRepository;
 
     /**
      * @var Country
@@ -127,9 +140,9 @@ class Stats
     private $countryHelper;
 
     /**
-     * @var Statistics\Media
+     * @var MediaRepositoryInterface
      */
-    private $media;
+    private $mediaRepository;
 
     /**
      * @var Statistics\Living
@@ -142,25 +155,100 @@ class Stats
     private $deceased;
 
     /**
+     * @var EventRepositoryInterface
+     */
+    private $eventRepository;
+
+    /**
+     * @var SexRepositoryInterface
+     */
+    private $sexRepository;
+
+    /**
+     * @var UserRepositoryInterface
+     */
+    private $userRepository;
+
+    /**
+     * @var ServerRepositoryInterface
+     */
+    private $serverRepository;
+
+    /**
+     * @var BrowserRepositoryInterface
+     */
+    private $browserRepository;
+
+    /**
+     * @var HitCountRepositoryInterface
+     */
+    private $hitCountRepository;
+
+    /**
+     * @var RepositoryRepositoryInterface
+     */
+    private $repositoryRepository;
+
+    /**
+     * @var LatestRepositoryInterface
+     */
+    private $latestRepository;
+
+    /**
+     * @var FavoritesRepositoryInterface
+     */
+    private $favoritesRepository;
+
+    /**
+     * @var NewsRepositoryInterface
+     */
+    private $newsRepository;
+
+    /**
+     * @var MessageRepositoryInterface
+     */
+    private $messageRepository;
+
+    /**
+     * @var ContactRepositoryInterface
+     */
+    private $contactRepository;
+
+    /**
+     * @var FamilyDatesRepositoryInterface
+     */
+    private $familyDatesRepository;
+
+    /**
      * Create the statistics for a tree.
      *
      * @param Tree $tree Generate statistics for this tree
      */
     public function __construct(Tree $tree)
     {
-        $this->tree          = $tree;
-        $this->surname       = new Surname($tree);
-        $this->individual    = new StatisticIndividual($tree);
-        $this->family        = new FamilyRepository($tree);
-        $this->children      = new Children($tree);
-        $this->source        = new StatisticSource($tree);
-        $this->note          = new StatisticNote($tree);
-        $this->google        = new Google();
-        $this->centuryHelper = new Century();
-        $this->countryHelper = new Country();
-        $this->media         = new Statistics\Media($tree);
-        $this->living        = new Statistics\Living($tree);
-        $this->deceased      = new Statistics\Deceased($tree);
+        $this->tree                  = $tree;
+        $this->countryHelper         = new Country();
+        $this->gedcomRepository      = new GedcomRepository($tree);
+        $this->individualRepository  = new IndividualRepository($tree);
+        $this->familyRepository      = new FamilyRepository($tree);
+        $this->familyDatesRepository = new FamilyDatesRepository($tree);
+        $this->sourceRepository      = new SourceRepository($tree);
+        $this->noteRepository        = new NoteRepository($tree);
+        $this->mediaRepository       = new MediaRepository($tree);
+        $this->living                = new Statistics\Living($tree);
+        $this->deceased              = new Statistics\Deceased($tree);
+        $this->eventRepository       = new EventRepository($tree);
+        $this->sexRepository         = new SexRepository($tree);
+        $this->userRepository        = new UserRepository($tree);
+        $this->serverRepository      = new ServerRepository();
+        $this->browserRepository     = new BrowserRepository();
+        $this->hitCountRepository    = new HitCountRepository($tree);
+        $this->repositoryRepository  = new RepositoryRepository($tree);
+        $this->latestRepository      = new LatestRepository();
+        $this->favoritesRepository   = new FavoritesRepository($tree);
+        $this->newsRepository        = new NewsRepository($tree);
+        $this->messageRepository     = new MessageRepository();
+        $this->contactRepository     = new ContactRepository($tree);
     }
 
     /**
@@ -171,12 +259,14 @@ class Stats
     public function getAllTagsTable(): string
     {
         $examples = [];
+
         foreach (get_class_methods($this) as $method) {
-            $reflection = new \ReflectionMethod($this, $method);
-            if ($reflection->isPublic() && !in_array($method, $this->public_but_not_allowed)) {
+            $reflection = new ReflectionMethod($this, $method);
+            if ($reflection->isPublic() && !\in_array($method, self::$public_but_not_allowed, true)) {
                 $examples[$method] = $this->$method();
             }
         }
+
         ksort($examples);
 
         $html = '';
@@ -196,12 +286,14 @@ class Stats
     public function getAllTagsText(): string
     {
         $examples = [];
+
         foreach (get_class_methods($this) as $method) {
-            $reflection = new \ReflectionMethod($this, $method);
-            if ($reflection->isPublic() && !in_array($method, $this->public_but_not_allowed)) {
+            $reflection = new ReflectionMethod($this, $method);
+            if ($reflection->isPublic() && !\in_array($method, self::$public_but_not_allowed, true)) {
                 $examples[$method] = $method;
             }
         }
+
         ksort($examples);
 
         return implode('<br>', $examples);
@@ -216,7 +308,8 @@ class Stats
      */
     private function getTags(string $text): array
     {
-        $tags = [];
+        $tags    = [];
+        $matches = [];
 
         preg_match_all('/#([^#]+)#/', $text, $matches, PREG_SET_ORDER);
 
@@ -255,7 +348,7 @@ class Stats
      */
     public function gedcomFilename(): string
     {
-        return $this->tree->name();
+        return $this->gedcomRepository->gedcomFilename();
     }
 
     /**
@@ -265,7 +358,7 @@ class Stats
      */
     public function gedcomId(): int
     {
-        return $this->tree->id();
+        return $this->gedcomRepository->gedcomId();
     }
 
     /**
@@ -275,33 +368,7 @@ class Stats
      */
     public function gedcomTitle(): string
     {
-        return e($this->tree->title());
-    }
-
-    /**
-     * Get information from the GEDCOM's HEAD record.
-     *
-     * @return string[]
-     */
-    private function gedcomHead(): array
-    {
-        $title   = '';
-        $version = '';
-        $source  = '';
-
-        $head = GedcomRecord::getInstance('HEAD', $this->tree);
-        $sour = $head->getFirstFact('SOUR');
-        if ($sour !== null) {
-            $source  = $sour->value();
-            $title   = $sour->attribute('NAME');
-            $version = $sour->attribute('VERS');
-        }
-
-        return [
-            $title,
-            $version,
-            $source,
-        ];
+        return $this->gedcomRepository->gedcomTitle();
     }
 
     /**
@@ -311,9 +378,7 @@ class Stats
      */
     public function gedcomCreatedSoftware(): string
     {
-        $head = $this->gedcomHead();
-
-        return $head[0];
+        return $this->gedcomRepository->gedcomCreatedSoftware();
     }
 
     /**
@@ -323,19 +388,7 @@ class Stats
      */
     public function gedcomCreatedVersion(): string
     {
-        $head = $this->gedcomHead();
-        // fix broken version string in Family Tree Maker
-        if (strstr($head[1], 'Family Tree Maker ')) {
-            $p       = strpos($head[1], '(') + 1;
-            $p2      = strpos($head[1], ')');
-            $head[1] = substr($head[1], $p, ($p2 - $p));
-        }
-        // Fix EasyTree version
-        if ($head[2] == 'EasyTree') {
-            $head[1] = substr($head[1], 1);
-        }
-
-        return $head[1];
+        return $this->gedcomRepository->gedcomCreatedVersion();
     }
 
     /**
@@ -345,15 +398,7 @@ class Stats
      */
     public function gedcomDate(): string
     {
-        $head = GedcomRecord::getInstance('HEAD', $this->tree);
-        $fact = $head->getFirstFact('DATE');
-        if ($fact) {
-            $date = new Date($fact->value());
-
-            return $date->display();
-        }
-
-        return '';
+        return $this->gedcomRepository->gedcomDate();
     }
 
     /**
@@ -363,16 +408,7 @@ class Stats
      */
     public function gedcomUpdated(): string
     {
-        $row = Database::prepare(
-            "SELECT d_year, d_month, d_day FROM `##dates` WHERE d_julianday1 = (SELECT MAX(d_julianday1) FROM `##dates` WHERE d_file =? AND d_fact='CHAN') LIMIT 1"
-        )->execute([$this->tree->id()])->fetchOneRow();
-        if ($row) {
-            $date = new Date("{$row->d_day} {$row->d_month} {$row->d_year}");
-
-            return $date->display();
-        }
-
-        return $this->gedcomDate();
+        return $this->gedcomRepository->gedcomUpdated();
     }
 
     /**
@@ -382,22 +418,7 @@ class Stats
      */
     public function gedcomRootId(): string
     {
-        return $this->tree->getPreference('PEDIGREE_ROOT_ID');
-    }
-
-    /**
-     * Convert totals into percentages.
-     *
-     * @param int    $total
-     * @param string $type
-     *
-     * @return string
-     *
-     * @deprecated
-     */
-    private function getPercentage(int $total, string $type): string
-    {
-        return (new Percentage($this->tree))->getPercentage($total, $type);
+        return $this->gedcomRepository->gedcomRootId();
     }
 
     /**
@@ -407,7 +428,7 @@ class Stats
      */
     public function totalRecords(): string
     {
-        return I18N::number($this->individual->totalIndividualsQuery() + $this->family->totalFamiliesQuery() + $this->source->totalSourcesQuery());
+        return (new TotalRepository($this->tree))->totalRecords();
     }
 
     /**
@@ -417,23 +438,7 @@ class Stats
      */
     public function totalIndividuals(): string
     {
-        return I18N::number($this->individual->totalIndividualsQuery());
-    }
-
-    /**
-     * How many individuals have one or more sources.
-     *
-     * @return int
-     */
-    private function totalIndisWithSourcesQuery(): int
-    {
-        return (int) Database::prepare(
-            "SELECT COUNT(DISTINCT i_id)" .
-            " FROM `##individuals` JOIN `##link` ON i_id = l_from AND i_file = l_file" .
-            " WHERE l_file = :tree_id AND l_type = 'SOUR'"
-        )->execute([
-            'tree_id' => $this->tree->id(),
-        ])->fetchOne();
+        return $this->individualRepository->totalIndividuals();
     }
 
     /**
@@ -443,52 +448,24 @@ class Stats
      */
     public function totalIndisWithSources(): string
     {
-        return I18N::number($this->totalIndisWithSourcesQuery());
+        return $this->individualRepository->totalIndisWithSources();
     }
 
     /**
      * Create a chart showing individuals with/without sources.
      *
-     * @param string|null $size // Optional parameter, set from tag
+     * @param string|null $size
      * @param string|null $color_from
      * @param string|null $color_to
      *
      * @return string
      */
-    public function chartIndisWithSources(string $size = null, string $color_from = null, string $color_to = null): string
-    {
-        $WT_STATS_CHART_COLOR1 = Theme::theme()->parameter('distribution-chart-no-values');
-        $WT_STATS_CHART_COLOR2 = Theme::theme()->parameter('distribution-chart-high-values');
-        $WT_STATS_S_CHART_X    = Theme::theme()->parameter('stats-small-chart-x');
-        $WT_STATS_S_CHART_Y    = Theme::theme()->parameter('stats-small-chart-y');
-
-        $size       = $size ?? ($WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y);
-        $color_from = $color_from ?? $WT_STATS_CHART_COLOR1;
-        $color_to   = $color_to ?? $WT_STATS_CHART_COLOR2;
-
-        $sizes    = explode('x', $size);
-        $tot_indi = $this->individual->totalIndividualsQuery();
-        if ($tot_indi == 0) {
-            return '';
-        }
-
-        $tot_sindi_per = $this->totalIndisWithSourcesQuery() / $tot_indi;
-        $with          = (int) (100 * $tot_sindi_per);
-        $chd           = $this->google->arrayToExtendedEncoding([100 - $with, $with]);
-        $chl           = I18N::translate('Without sources') . ' - ' . I18N::percentage(1 - $tot_sindi_per, 1) . '|' . I18N::translate('With sources') . ' - ' . I18N::percentage($tot_sindi_per, 1);
-        $chart_title   = I18N::translate('Individuals with sources');
-
-        $chart_url = 'https://chart.googleapis.com/chart?cht=p3&chd=e:' . $chd
-            . '&chs=' . $size . '&chco=' . $color_from . ',' . $color_to . '&chf=bg,s,ffffff00&chl=' . $chl;
-
-        return view(
-            'statistics/other/chart-individuals-with-sources',
-            [
-                'chart_title' => $chart_title,
-                'chart_url'   => $chart_url,
-                'sizes'       => $sizes,
-            ]
-        );
+    public function chartIndisWithSources(
+        string $size       = null,
+        string $color_from = null,
+        string $color_to   = null
+    ): string {
+        return $this->individualRepository->chartIndisWithSources($size, $color_from, $color_to);
     }
 
     /**
@@ -498,7 +475,7 @@ class Stats
      */
     public function totalIndividualsPercentage(): string
     {
-        return $this->getPercentage($this->individual->totalIndividualsQuery(), 'all');
+        return $this->individualRepository->totalIndividualsPercentage();
     }
 
     /**
@@ -508,23 +485,17 @@ class Stats
      */
     public function totalFamilies(): string
     {
-        return I18N::number($this->family->totalFamiliesQuery());
+        return $this->familyRepository->totalFamilies();
     }
 
     /**
-     * Count the families with source records.
+     * Show the total families as a percentage.
      *
-     * @return int
+     * @return string
      */
-    private function totalFamsWithSourcesQuery(): int
+    public function totalFamiliesPercentage(): string
     {
-        return (int) Database::prepare(
-            "SELECT COUNT(DISTINCT f_id)" .
-            " FROM `##families` JOIN `##link` ON f_id = l_from AND f_file = l_file" .
-            " WHERE l_file = :tree_id AND l_type = 'SOUR'"
-        )->execute([
-            'tree_id' => $this->tree->id(),
-        ])->fetchOne();
+        return $this->familyRepository->totalFamiliesPercentage();
     }
 
     /**
@@ -534,7 +505,7 @@ class Stats
      */
     public function totalFamsWithSources(): string
     {
-        return I18N::number($this->totalFamsWithSourcesQuery());
+        return $this->familyRepository->totalFamsWithSources();
     }
 
     /**
@@ -546,51 +517,12 @@ class Stats
      *
      * @return string
      */
-    public function chartFamsWithSources(string $size = null, string $color_from = null, string $color_to = null): string
-    {
-        $WT_STATS_CHART_COLOR1 = Theme::theme()->parameter('distribution-chart-no-values');
-        $WT_STATS_CHART_COLOR2 = Theme::theme()->parameter('distribution-chart-high-values');
-        $WT_STATS_S_CHART_X    = Theme::theme()->parameter('stats-small-chart-x');
-        $WT_STATS_S_CHART_Y    = Theme::theme()->parameter('stats-small-chart-y');
-
-        $size       = $size ?? ($WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y);
-        $color_from = $color_from ?? $WT_STATS_CHART_COLOR1;
-        $color_to   = $color_to ?? $WT_STATS_CHART_COLOR2;
-
-        $sizes   = explode('x', $size);
-        $tot_fam = $this->family->totalFamiliesQuery();
-
-        if ($tot_fam == 0) {
-            return '';
-        }
-
-        $tot_sfam_per = $this->totalFamsWithSourcesQuery() / $tot_fam;
-        $with         = (int) (100 * $tot_sfam_per);
-        $chd          = $this->google->arrayToExtendedEncoding([100 - $with, $with]);
-        $chl          = I18N::translate('Without sources') . ' - ' . I18N::percentage(1 - $tot_sfam_per, 1) . '|' . I18N::translate('With sources') . ' - ' . I18N::percentage($tot_sfam_per, 1);
-        $chart_title  = I18N::translate('Families with sources');
-
-        $chart_url = 'https://chart.googleapis.com/chart?cht=p3&chd=e:' . $chd
-            . '&chs=' . $size . '&chco=' . $color_from . ',' . $color_to . '&chf=bg,s,ffffff00&chl=' . $chl;
-
-        return view(
-            'statistics/other/chart-families-with-sources',
-            [
-                'chart_title' => $chart_title,
-                'chart_url'   => $chart_url,
-                'sizes'       => $sizes,
-            ]
-        );
-    }
-
-    /**
-     * Show the total families as a percentage.
-     *
-     * @return string
-     */
-    public function totalFamiliesPercentage(): string
-    {
-        return $this->getPercentage($this->family->totalFamiliesQuery(), 'all');
+    public function chartFamsWithSources(
+        string $size       = null,
+        string $color_from = null,
+        string $color_to   = null
+    ): string {
+        return $this->familyRepository->chartFamsWithSources($size, $color_from, $color_to);
     }
 
     /**
@@ -600,7 +532,7 @@ class Stats
      */
     public function totalSources(): string
     {
-        return I18N::number($this->source->totalSourcesQuery());
+        return $this->sourceRepository->totalSources();
     }
 
     /**
@@ -610,7 +542,7 @@ class Stats
      */
     public function totalSourcesPercentage(): string
     {
-        return $this->getPercentage($this->source->totalSourcesQuery(), 'all');
+        return $this->sourceRepository->totalSourcesPercentage();
     }
 
     /**
@@ -620,7 +552,7 @@ class Stats
      */
     public function totalNotes(): string
     {
-        return I18N::number($this->note->totalNotesQuery());
+        return $this->noteRepository->totalNotes();
     }
 
     /**
@@ -630,21 +562,7 @@ class Stats
      */
     public function totalNotesPercentage(): string
     {
-        return $this->getPercentage($this->note->totalNotesQuery(), 'all');
-    }
-
-    /**
-     * Count the number of repositories.
-     *
-     * @return int
-     */
-    private function totalRepositoriesQuery(): int
-    {
-        return (int) Database::prepare(
-            "SELECT COUNT(*) FROM `##other` WHERE o_type='REPO' AND o_file = :tree_id"
-        )->execute([
-            'tree_id' => $this->tree->id(),
-        ])->fetchOne();
+        return $this->noteRepository->totalNotesPercentage();
     }
 
     /**
@@ -654,7 +572,7 @@ class Stats
      */
     public function totalRepositories(): string
     {
-        return I18N::number($this->totalRepositoriesQuery());
+        return $this->repositoryRepository->totalRepositories();
     }
 
     /**
@@ -664,7 +582,7 @@ class Stats
      */
     public function totalRepositoriesPercentage(): string
     {
-        return $this->getPercentage($this->totalRepositoriesQuery(), 'all');
+        return $this->repositoryRepository->totalRepositoriesPercentage();
     }
 
     /**
@@ -676,24 +594,7 @@ class Stats
      */
     public function totalSurnames(...$params): string
     {
-        if ($params) {
-            $opt      = 'IN (' . implode(',', array_fill(0, count($params), '?')) . ')';
-            $distinct = '';
-        } else {
-            $opt      = "IS NOT NULL";
-            $distinct = 'DISTINCT';
-        }
-        $params[] = $this->tree->id();
-
-        $total = (int) Database::prepare(
-            "SELECT COUNT({$distinct} n_surn COLLATE '" . I18N::collation() . "')" .
-            " FROM `##name`" .
-            " WHERE n_surn COLLATE '" . I18N::collation() . "' {$opt} AND n_file=?"
-        )->execute(
-            $params
-        )->fetchOne();
-
-        return I18N::number($total);
+        return $this->individualRepository->totalSurnames(...$params);
     }
 
     /**
@@ -706,23 +607,7 @@ class Stats
      */
     public function totalGivennames(...$params): string
     {
-        if ($params) {
-            $qs       = implode(',', array_fill(0, count($params), '?'));
-            $params[] = $this->tree->id();
-            $total    = (int) Database::prepare(
-                "SELECT COUNT( n_givn) FROM `##name` WHERE n_givn IN ({$qs}) AND n_file=?"
-            )->execute(
-                $params
-            )->fetchOne();
-        } else {
-            $total = (int) Database::prepare(
-                "SELECT COUNT(DISTINCT n_givn) FROM `##name` WHERE n_givn IS NOT NULL AND n_file=?"
-            )->execute([
-                $this->tree->id(),
-            ])->fetchOne();
-        }
-
-        return I18N::number($total);
+        return $this->individualRepository->totalGivennames(...$params);
     }
 
     /**
@@ -734,33 +619,7 @@ class Stats
      */
     public function totalEvents(array $events = []): string
     {
-        $sql  = "SELECT COUNT(*) AS tot FROM `##dates` WHERE d_file=?";
-        $vars = [$this->tree->id()];
-
-        $no_types = [
-            'HEAD',
-            'CHAN',
-        ];
-        if ($events) {
-            $types = [];
-            foreach ($events as $type) {
-                if (substr($type, 0, 1) === '!') {
-                    $no_types[] = substr($type, 1);
-                } else {
-                    $types[] = $type;
-                }
-            }
-            if ($types) {
-                $sql  .= ' AND d_fact IN (' . implode(', ', array_fill(0, count($types), '?')) . ')';
-                $vars = array_merge($vars, $types);
-            }
-        }
-        $sql  .= ' AND d_fact NOT IN (' . implode(', ', array_fill(0, count($no_types), '?')) . ')';
-        $vars = array_merge($vars, $no_types);
-
-        $n = (int) Database::prepare($sql)->execute($vars)->fetchOne();
-
-        return I18N::number($n);
+        return $this->eventRepository->totalEvents($events);
     }
 
     /**
@@ -770,7 +629,7 @@ class Stats
      */
     public function totalEventsBirth(): string
     {
-        return $this->totalEvents(Gedcom::BIRTH_EVENTS);
+        return $this->eventRepository->totalEventsBirth();
     }
 
     /**
@@ -780,7 +639,7 @@ class Stats
      */
     public function totalBirths(): string
     {
-        return $this->totalEvents(['BIRT']);
+        return $this->eventRepository->totalBirths();
     }
 
     /**
@@ -790,7 +649,7 @@ class Stats
      */
     public function totalEventsDeath(): string
     {
-        return $this->totalEvents(Gedcom::DEATH_EVENTS);
+        return $this->eventRepository->totalEventsDeath();
     }
 
     /**
@@ -800,7 +659,7 @@ class Stats
      */
     public function totalDeaths(): string
     {
-        return $this->totalEvents(['DEAT']);
+        return $this->eventRepository->totalDeaths();
     }
 
     /**
@@ -810,7 +669,7 @@ class Stats
      */
     public function totalEventsMarriage(): string
     {
-        return $this->totalEvents(Gedcom::MARRIAGE_EVENTS);
+        return $this->eventRepository->totalEventsMarriage();
     }
 
     /**
@@ -820,7 +679,7 @@ class Stats
      */
     public function totalMarriages(): string
     {
-        return $this->totalEvents(['MARR']);
+        return $this->eventRepository->totalMarriages();
     }
 
     /**
@@ -830,7 +689,7 @@ class Stats
      */
     public function totalEventsDivorce(): string
     {
-        return $this->totalEvents(Gedcom::DIVORCE_EVENTS);
+        return $this->eventRepository->totalEventsDivorce();
     }
 
     /**
@@ -840,7 +699,7 @@ class Stats
      */
     public function totalDivorces(): string
     {
-        return $this->totalEvents(['DIV']);
+        return $this->eventRepository->totalDivorces();
     }
 
     /**
@@ -850,28 +709,7 @@ class Stats
      */
     public function totalEventsOther(): string
     {
-        $facts    = array_merge(Gedcom::BIRTH_EVENTS, Gedcom::MARRIAGE_EVENTS, Gedcom::DIVORCE_EVENTS, Gedcom::DEATH_EVENTS);
-        $no_facts = [];
-        foreach ($facts as $fact) {
-            $fact       = '!' . str_replace('\'', '', $fact);
-            $no_facts[] = $fact;
-        }
-
-        return $this->totalEvents($no_facts);
-    }
-
-    /**
-     * Count the number of males.
-     *
-     * @return int
-     */
-    private function totalSexMalesQuery(): int
-    {
-        return (int) Database::prepare(
-            "SELECT COUNT(*) FROM `##individuals` WHERE i_file = :tree_id AND i_sex = 'M'"
-        )->execute([
-            'tree_id' => $this->tree->id(),
-        ])->fetchOne();
+        return $this->eventRepository->totalEventsOther();
     }
 
     /**
@@ -881,7 +719,7 @@ class Stats
      */
     public function totalSexMales(): string
     {
-        return I18N::number($this->totalSexMalesQuery());
+        return $this->sexRepository->totalSexMales();
     }
 
     /**
@@ -891,21 +729,7 @@ class Stats
      */
     public function totalSexMalesPercentage(): string
     {
-        return $this->getPercentage($this->totalSexMalesQuery(), 'individual');
-    }
-
-    /**
-     * Count the number of females.
-     *
-     * @return int
-     */
-    private function totalSexFemalesQuery(): int
-    {
-        return (int) Database::prepare(
-            "SELECT COUNT(*) FROM `##individuals` WHERE i_file = :tree_id AND i_sex = 'F'"
-        )->execute([
-            'tree_id' => $this->tree->id(),
-        ])->fetchOne();
+        return $this->sexRepository->totalSexMalesPercentage();
     }
 
     /**
@@ -915,7 +739,7 @@ class Stats
      */
     public function totalSexFemales(): string
     {
-        return I18N::number($this->totalSexFemalesQuery());
+        return $this->sexRepository->totalSexFemales();
     }
 
     /**
@@ -925,21 +749,7 @@ class Stats
      */
     public function totalSexFemalesPercentage(): string
     {
-        return $this->getPercentage($this->totalSexFemalesQuery(), 'individual');
-    }
-
-    /**
-     * Count the number of individuals with unknown sex.
-     *
-     * @return int
-     */
-    private function totalSexUnknownQuery(): int
-    {
-        return (int) Database::prepare(
-            "SELECT COUNT(*) FROM `##individuals` WHERE i_file = :tree_id AND i_sex = 'U'"
-        )->execute([
-            'tree_id' => $this->tree->id(),
-        ])->fetchOne();
+        return $this->sexRepository->totalSexFemalesPercentage();
     }
 
     /**
@@ -949,7 +759,7 @@ class Stats
      */
     public function totalSexUnknown(): string
     {
-        return I18N::number($this->totalSexUnknownQuery());
+        return $this->sexRepository->totalSexUnknown();
     }
 
     /**
@@ -959,7 +769,7 @@ class Stats
      */
     public function totalSexUnknownPercentage(): string
     {
-        return $this->getPercentage($this->totalSexUnknownQuery(), 'individual');
+        return $this->sexRepository->totalSexUnknownPercentage();
     }
 
     /**
@@ -972,59 +782,13 @@ class Stats
      *
      * @return string
      */
-    public function chartSex(string $size = null, string $color_female = null, string $color_male = null, string $color_unknown = null): string
-    {
-        $WT_STATS_S_CHART_X = Theme::theme()->parameter('stats-small-chart-x');
-        $WT_STATS_S_CHART_Y = Theme::theme()->parameter('stats-small-chart-y');
-
-        $size          = $size ?? ($WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y);
-        $color_female  = $color_female ?? 'ffd1dc';
-        $color_male    = $color_male ?? '84beff';
-        $color_unknown = $color_unknown ?? '777777';
-
-        $sizes = explode('x', $size);
-        // Raw data - for calculation
-        $tot_f = $this->totalSexFemalesQuery();
-        $tot_m = $this->totalSexMalesQuery();
-        $tot_u = $this->totalSexUnknownQuery();
-        $tot   = $tot_f + $tot_m + $tot_u;
-        // I18N data - for display
-        $per_f = $this->totalSexFemalesPercentage();
-        $per_m = $this->totalSexMalesPercentage();
-        $per_u = $this->totalSexUnknownPercentage();
-        if ($tot == 0) {
-            return '';
-        }
-
-        if ($tot_u > 0) {
-            $chd = $this->google->arrayToExtendedEncoding([
-                intdiv(4095 * $tot_u, $tot),
-                intdiv(4095 * $tot_f, $tot),
-                intdiv(4095 * $tot_m, $tot),
-            ]);
-            $chl         =
-                I18N::translateContext('unknown people', 'Unknown') . ' - ' . $per_u . '|' .
-                I18N::translate('Females') . ' - ' . $per_f . '|' .
-                I18N::translate('Males') . ' - ' . $per_m;
-            $chart_title =
-                I18N::translate('Males') . ' - ' . $per_m . I18N::$list_separator .
-                I18N::translate('Females') . ' - ' . $per_f . I18N::$list_separator .
-                I18N::translateContext('unknown people', 'Unknown') . ' - ' . $per_u;
-
-            return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_unknown},{$color_female},{$color_male}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . $chart_title . '" title="' . $chart_title . '" />';
-        }
-
-        $chd = $this->google->arrayToExtendedEncoding([
-            intdiv(4095 * $tot_f, $tot),
-            intdiv(4095 * $tot_m, $tot),
-        ]);
-        $chl =
-            I18N::translate('Females') . ' - ' . $per_f . '|' .
-            I18N::translate('Males') . ' - ' . $per_m;
-        $chart_title = I18N::translate('Males') . ' - ' . $per_m . I18N::$list_separator .
-            I18N::translate('Females') . ' - ' . $per_f;
-
-        return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_female},{$color_male}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . $chart_title . '" title="' . $chart_title . '" />';
+    public function chartSex(
+        string $size          = null,
+        string $color_female  = null,
+        string $color_male    = null,
+        string $color_unknown = null
+    ): string {
+        return $this->sexRepository->chartSex($size, $color_female, $color_male, $color_unknown);
     }
 
     /**
@@ -1121,7 +885,7 @@ class Stats
      */
     public function totalMedia(): string
     {
-        return I18N::number($this->media->totalMediaType('all'));
+        return $this->mediaRepository->totalMedia();
     }
 
     /**
@@ -1131,7 +895,7 @@ class Stats
      */
     public function totalMediaAudio(): string
     {
-        return I18N::number($this->media->totalMediaType('audio'));
+        return $this->mediaRepository->totalMediaAudio();
     }
 
     /**
@@ -1141,7 +905,7 @@ class Stats
      */
     public function totalMediaBook(): string
     {
-        return I18N::number($this->media->totalMediaType('book'));
+        return $this->mediaRepository->totalMediaBook();
     }
 
     /**
@@ -1151,7 +915,7 @@ class Stats
      */
     public function totalMediaCard(): string
     {
-        return I18N::number($this->media->totalMediaType('card'));
+        return $this->mediaRepository->totalMediaCard();
     }
 
     /**
@@ -1161,7 +925,7 @@ class Stats
      */
     public function totalMediaCertificate(): string
     {
-        return I18N::number($this->media->totalMediaType('certificate'));
+        return $this->mediaRepository->totalMediaCertificate();
     }
 
     /**
@@ -1171,7 +935,7 @@ class Stats
      */
     public function totalMediaCoatOfArms(): string
     {
-        return I18N::number($this->media->totalMediaType('coat'));
+        return $this->mediaRepository->totalMediaCoatOfArms();
     }
 
     /**
@@ -1181,7 +945,7 @@ class Stats
      */
     public function totalMediaDocument(): string
     {
-        return I18N::number($this->media->totalMediaType('document'));
+        return $this->mediaRepository->totalMediaDocument();
     }
 
     /**
@@ -1191,7 +955,7 @@ class Stats
      */
     public function totalMediaElectronic(): string
     {
-        return I18N::number($this->media->totalMediaType('electronic'));
+        return $this->mediaRepository->totalMediaElectronic();
     }
 
     /**
@@ -1201,7 +965,7 @@ class Stats
      */
     public function totalMediaMagazine(): string
     {
-        return I18N::number($this->media->totalMediaType('magazine'));
+        return $this->mediaRepository->totalMediaMagazine();
     }
 
     /**
@@ -1211,7 +975,7 @@ class Stats
      */
     public function totalMediaManuscript(): string
     {
-        return I18N::number($this->media->totalMediaType('manuscript'));
+        return $this->mediaRepository->totalMediaManuscript();
     }
 
     /**
@@ -1221,7 +985,7 @@ class Stats
      */
     public function totalMediaMap(): string
     {
-        return I18N::number($this->media->totalMediaType('map'));
+        return $this->mediaRepository->totalMediaMap();
     }
 
     /**
@@ -1231,7 +995,7 @@ class Stats
      */
     public function totalMediaFiche(): string
     {
-        return I18N::number($this->media->totalMediaType('fiche'));
+        return $this->mediaRepository->totalMediaFiche();
     }
 
     /**
@@ -1241,7 +1005,7 @@ class Stats
      */
     public function totalMediaFilm(): string
     {
-        return I18N::number($this->media->totalMediaType('film'));
+        return $this->mediaRepository->totalMediaFilm();
     }
 
     /**
@@ -1251,7 +1015,7 @@ class Stats
      */
     public function totalMediaNewspaper(): string
     {
-        return I18N::number($this->media->totalMediaType('newspaper'));
+        return $this->mediaRepository->totalMediaNewspaper();
     }
 
     /**
@@ -1261,7 +1025,7 @@ class Stats
      */
     public function totalMediaPainting(): string
     {
-        return I18N::number($this->media->totalMediaType('painting'));
+        return $this->mediaRepository->totalMediaPainting();
     }
 
     /**
@@ -1271,7 +1035,7 @@ class Stats
      */
     public function totalMediaPhoto(): string
     {
-        return I18N::number($this->media->totalMediaType('photo'));
+        return $this->mediaRepository->totalMediaPhoto();
     }
 
     /**
@@ -1281,7 +1045,7 @@ class Stats
      */
     public function totalMediaTombstone(): string
     {
-        return I18N::number($this->media->totalMediaType('tombstone'));
+        return $this->mediaRepository->totalMediaTombstone();
     }
 
     /**
@@ -1291,7 +1055,7 @@ class Stats
      */
     public function totalMediaVideo(): string
     {
-        return I18N::number($this->media->totalMediaType('video'));
+        return $this->mediaRepository->totalMediaVideo();
     }
 
     /**
@@ -1301,7 +1065,7 @@ class Stats
      */
     public function totalMediaOther(): string
     {
-        return I18N::number($this->media->totalMediaType('other'));
+        return $this->mediaRepository->totalMediaOther();
     }
 
     /**
@@ -1311,7 +1075,7 @@ class Stats
      */
     public function totalMediaUnknown(): string
     {
-        return I18N::number($this->media->totalMediaType('unknown'));
+        return $this->mediaRepository->totalMediaUnknown();
     }
 
     /**
@@ -1325,79 +1089,7 @@ class Stats
      */
     public function chartMedia(string $size = null, string $color_from = null, string $color_to = null): string
     {
-        return (new Google\ChartMedia($this->tree))
-            ->chartMedia($size, $color_from, $color_to);
-    }
-
-    /**
-     * Birth and Death
-     *
-     * @param string $type
-     * @param string $life_dir
-     * @param string $birth_death
-     *
-     * @return string
-     */
-    private function mortalityQuery($type, $life_dir, $birth_death): string
-    {
-        if ($birth_death == 'MARR') {
-            $query_field = "'MARR'";
-        } elseif ($birth_death == 'DIV') {
-            $query_field = "'DIV'";
-        } elseif ($birth_death == 'BIRT') {
-            $query_field = "'BIRT'";
-        } else {
-            $query_field = "'DEAT'";
-        }
-        if ($life_dir == 'ASC') {
-            $dmod = 'MIN';
-        } else {
-            $dmod = 'MAX';
-        }
-        $rows = $this->runSql(
-            "SELECT d_year, d_type, d_fact, d_gid" .
-            " FROM `##dates`" .
-            " WHERE d_file={$this->tree->id()} AND d_fact IN ({$query_field}) AND d_julianday1=(" .
-            " SELECT {$dmod}( d_julianday1 )" .
-            " FROM `##dates`" .
-            " WHERE d_file={$this->tree->id()} AND d_fact IN ({$query_field}) AND d_julianday1<>0 )" .
-            " LIMIT 1"
-        );
-        if (!isset($rows[0])) {
-            return '';
-        }
-        $row    = $rows[0];
-        $record = GedcomRecord::getInstance($row->d_gid, $this->tree);
-        switch ($type) {
-            default:
-            case 'full':
-                if ($record->canShow()) {
-                    $result = $record->formatList();
-                } else {
-                    $result = I18N::translate('This information is private and cannot be shown.');
-                }
-                break;
-            case 'year':
-                if ($row->d_year < 0) {
-                    $row->d_year = abs($row->d_year) . ' B.C.';
-                }
-                $date   = new Date($row->d_type . ' ' . $row->d_year);
-                $result = $date->display();
-                break;
-            case 'name':
-                $result = '<a href="' . e($record->url()) . '">' . $record->getFullName() . '</a>';
-                break;
-            case 'place':
-                $fact = GedcomRecord::getInstance($row->d_gid, $this->tree)->getFirstFact($row->d_fact);
-                if ($fact) {
-                    $result = FunctionsPrint::formatFactPlace($fact, true, true, true);
-                } else {
-                    $result = I18N::translate('Private');
-                }
-                break;
-        }
-
-        return $result;
+        return $this->mediaRepository->chartMedia($size, $color_from, $color_to);
     }
 
     /**
@@ -1561,7 +1253,7 @@ class Stats
      */
     public function firstBirth(): string
     {
-        return $this->mortalityQuery('full', 'ASC', 'BIRT');
+        return $this->familyDatesRepository->firstBirth();
     }
 
     /**
@@ -1571,7 +1263,7 @@ class Stats
      */
     public function firstBirthYear(): string
     {
-        return $this->mortalityQuery('year', 'ASC', 'BIRT');
+        return $this->familyDatesRepository->firstBirthYear();
     }
 
     /**
@@ -1581,7 +1273,7 @@ class Stats
      */
     public function firstBirthName(): string
     {
-        return $this->mortalityQuery('name', 'ASC', 'BIRT');
+        return $this->familyDatesRepository->firstBirthName();
     }
 
     /**
@@ -1591,7 +1283,7 @@ class Stats
      */
     public function firstBirthPlace(): string
     {
-        return $this->mortalityQuery('place', 'ASC', 'BIRT');
+        return $this->familyDatesRepository->firstBirthPlace();
     }
 
     /**
@@ -1601,7 +1293,7 @@ class Stats
      */
     public function lastBirth(): string
     {
-        return $this->mortalityQuery('full', 'DESC', 'BIRT');
+        return $this->familyDatesRepository->lastBirth();
     }
 
     /**
@@ -1611,7 +1303,7 @@ class Stats
      */
     public function lastBirthYear(): string
     {
-        return $this->mortalityQuery('year', 'DESC', 'BIRT');
+        return $this->familyDatesRepository->lastBirthYear();
     }
 
     /**
@@ -1621,7 +1313,7 @@ class Stats
      */
     public function lastBirthName(): string
     {
-        return $this->mortalityQuery('name', 'DESC', 'BIRT');
+        return $this->familyDatesRepository->lastBirthName();
     }
 
     /**
@@ -1631,7 +1323,7 @@ class Stats
      */
     public function lastBirthPlace(): string
     {
-        return $this->mortalityQuery('place', 'DESC', 'BIRT');
+        return $this->familyDatesRepository->lastBirthPlace();
     }
 
     /**
@@ -1671,7 +1363,7 @@ class Stats
      */
     public function firstDeath(): string
     {
-        return $this->mortalityQuery('full', 'ASC', 'DEAT');
+        return $this->familyDatesRepository->firstDeath();
     }
 
     /**
@@ -1681,7 +1373,7 @@ class Stats
      */
     public function firstDeathYear(): string
     {
-        return $this->mortalityQuery('year', 'ASC', 'DEAT');
+        return $this->familyDatesRepository->firstDeathYear();
     }
 
     /**
@@ -1691,7 +1383,7 @@ class Stats
      */
     public function firstDeathName(): string
     {
-        return $this->mortalityQuery('name', 'ASC', 'DEAT');
+        return $this->familyDatesRepository->firstDeathName();
     }
 
     /**
@@ -1701,7 +1393,7 @@ class Stats
      */
     public function firstDeathPlace(): string
     {
-        return $this->mortalityQuery('place', 'ASC', 'DEAT');
+        return $this->familyDatesRepository->firstDeathPlace();
     }
 
     /**
@@ -1711,7 +1403,7 @@ class Stats
      */
     public function lastDeath(): string
     {
-        return $this->mortalityQuery('full', 'DESC', 'DEAT');
+        return $this->familyDatesRepository->lastDeath();
     }
 
     /**
@@ -1721,7 +1413,7 @@ class Stats
      */
     public function lastDeathYear(): string
     {
-        return $this->mortalityQuery('year', 'DESC', 'DEAT');
+        return $this->familyDatesRepository->lastDeathYear();
     }
 
     /**
@@ -1731,7 +1423,7 @@ class Stats
      */
     public function lastDeathName(): string
     {
-        return $this->mortalityQuery('name', 'DESC', 'DEAT');
+        return $this->familyDatesRepository->lastDeathName();
     }
 
     /**
@@ -1741,7 +1433,7 @@ class Stats
      */
     public function lastDeathPlace(): string
     {
-        return $this->mortalityQuery('place', 'DESC', 'DEAT');
+        return $this->familyDatesRepository->lastDeathPlace();
     }
 
     /**
@@ -1785,9 +1477,9 @@ class Stats
     private function longlifeQuery($type, $sex): string
     {
         $sex_search = ' 1=1';
-        if ($sex == 'F') {
+        if ($sex === 'F') {
             $sex_search = " i_sex='F'";
-        } elseif ($sex == 'M') {
+        } elseif ($sex === 'M') {
             $sex_search = " i_sex='M'";
         }
 
@@ -2085,12 +1777,11 @@ class Stats
      */
     public function statsAge(string $size = '230x250'): string
     {
-        return (new Google\ChartAge($this->tree))
-            ->chartAge($size);
+        return (new Google\ChartAge($this->tree))->chartAge($size);
     }
 
     /**
-     * Find the lognest lived individual.
+     * Find the longest lived individual.
      *
      * @return string
      */
@@ -2444,96 +2135,13 @@ class Stats
     }
 
     /**
-     * Events
-     *
-     * @param string   $type
-     * @param string   $direction
-     * @param string[] $facts
-     *
-     * @return string
-     */
-    private function eventQuery(string $type, string $direction, array $facts): string
-    {
-        $eventTypes = [
-            'BIRT' => I18N::translate('birth'),
-            'DEAT' => I18N::translate('death'),
-            'MARR' => I18N::translate('marriage'),
-            'ADOP' => I18N::translate('adoption'),
-            'BURI' => I18N::translate('burial'),
-            'CENS' => I18N::translate('census added'),
-        ];
-
-        $fact_query = "IN ('" . implode("','", $facts) . "')";
-
-        if ($direction !== 'ASC') {
-            $direction = 'DESC';
-        }
-        $rows = $this->runSql(
-            ' SELECT' .
-            ' d_gid AS id,' .
-            ' d_year AS year,' .
-            ' d_fact AS fact,' .
-            ' d_type AS type' .
-            ' FROM' .
-            " `##dates`" .
-            ' WHERE' .
-            " d_file={$this->tree->id()} AND" .
-            " d_gid<>'HEAD' AND" .
-            " d_fact {$fact_query} AND" .
-            ' d_julianday1<>0' .
-            ' ORDER BY' .
-            " d_julianday1 {$direction}, d_type LIMIT 1"
-        );
-
-        if (!isset($rows[0])) {
-            return '';
-        }
-        $row    = $rows[0];
-        $record = GedcomRecord::getInstance($row->id, $this->tree);
-        switch ($type) {
-            default:
-            case 'full':
-                if ($record && $record->canShow()) {
-                    $result = $record->formatList();
-                } else {
-                    $result = I18N::translate('This information is private and cannot be shown.');
-                }
-                break;
-            case 'year':
-                $date   = new Date($row->type . ' ' . $row->year);
-                $result = $date->display();
-                break;
-            case 'type':
-                if (isset($eventTypes[$row->fact])) {
-                    $result = $eventTypes[$row->fact];
-                } else {
-                    $result = GedcomTag::getLabel($row->fact);
-                }
-                break;
-            case 'name':
-                $result = '<a href="' . e($record->url()) . '">' . $record->getFullName() . '</a>';
-                break;
-            case 'place':
-                $fact = $record->getFirstFact($row->fact);
-                if ($fact) {
-                    $result = FunctionsPrint::formatFactPlace($fact, true, true, true);
-                } else {
-                    $result = I18N::translate('Private');
-                }
-                break;
-        }
-
-        return $result;
-    }
-
-    /**
      * Find the earliest event.
      *
      * @return string
      */
     public function firstEvent(): string
     {
-        return $this->eventQuery('full', 'ASC', array_merge(Gedcom::BIRTH_EVENTS, Gedcom::MARRIAGE_EVENTS, Gedcom::DIVORCE_EVENTS, Gedcom::DEATH_EVENTS));
+        return $this->eventRepository->firstEvent();
     }
 
     /**
@@ -2543,7 +2151,7 @@ class Stats
      */
     public function firstEventYear(): string
     {
-        return $this->eventQuery('year', 'ASC', array_merge(Gedcom::BIRTH_EVENTS, Gedcom::MARRIAGE_EVENTS, Gedcom::DIVORCE_EVENTS, Gedcom::DEATH_EVENTS));
+        return $this->eventRepository->firstEventYear();
     }
 
     /**
@@ -2553,7 +2161,7 @@ class Stats
      */
     public function firstEventType(): string
     {
-        return $this->eventQuery('type', 'ASC', array_merge(Gedcom::BIRTH_EVENTS, Gedcom::MARRIAGE_EVENTS, Gedcom::DIVORCE_EVENTS, Gedcom::DEATH_EVENTS));
+        return $this->eventRepository->firstEventType();
     }
 
     /**
@@ -2563,7 +2171,7 @@ class Stats
      */
     public function firstEventName(): string
     {
-        return $this->eventQuery('name', 'ASC', array_merge(Gedcom::BIRTH_EVENTS, Gedcom::MARRIAGE_EVENTS, Gedcom::DIVORCE_EVENTS, Gedcom::DEATH_EVENTS));
+        return $this->eventRepository->firstEventName();
     }
 
     /**
@@ -2573,7 +2181,7 @@ class Stats
      */
     public function firstEventPlace(): string
     {
-        return $this->eventQuery('place', 'ASC', array_merge(Gedcom::BIRTH_EVENTS, Gedcom::MARRIAGE_EVENTS, Gedcom::DIVORCE_EVENTS, Gedcom::DEATH_EVENTS));
+        return $this->eventRepository->firstEventPlace();
     }
 
     /**
@@ -2583,7 +2191,7 @@ class Stats
      */
     public function lastEvent(): string
     {
-        return $this->eventQuery('full', 'DESC', array_merge(Gedcom::BIRTH_EVENTS, Gedcom::MARRIAGE_EVENTS, Gedcom::DIVORCE_EVENTS, Gedcom::DEATH_EVENTS));
+        return $this->eventRepository->lastEvent();
     }
 
     /**
@@ -2593,7 +2201,7 @@ class Stats
      */
     public function lastEventYear(): string
     {
-        return $this->eventQuery('year', 'DESC', array_merge(Gedcom::BIRTH_EVENTS, Gedcom::MARRIAGE_EVENTS, Gedcom::DIVORCE_EVENTS, Gedcom::DEATH_EVENTS));
+        return $this->eventRepository->lastEventYear();
     }
 
     /**
@@ -2603,7 +2211,7 @@ class Stats
      */
     public function lastEventType(): string
     {
-        return $this->eventQuery('type', 'DESC', array_merge(Gedcom::BIRTH_EVENTS, Gedcom::MARRIAGE_EVENTS, Gedcom::DIVORCE_EVENTS, Gedcom::DEATH_EVENTS));
+        return $this->eventRepository->lastEventType();
     }
 
     /**
@@ -2613,7 +2221,7 @@ class Stats
      */
     public function lastEventName(): string
     {
-        return $this->eventQuery('name', 'DESC', array_merge(Gedcom::BIRTH_EVENTS, Gedcom::MARRIAGE_EVENTS, Gedcom::DIVORCE_EVENTS, Gedcom::DEATH_EVENTS));
+        return $this->eventRepository->lastEventName();
     }
 
     /**
@@ -2623,326 +2231,7 @@ class Stats
      */
     public function lastEventPlace(): string
     {
-        return $this->eventQuery('place', 'DESC', array_merge(Gedcom::BIRTH_EVENTS, Gedcom::MARRIAGE_EVENTS, Gedcom::DIVORCE_EVENTS, Gedcom::DEATH_EVENTS));
-    }
-
-    /**
-     * Query the database for marriage tags.
-     *
-     * @param string $type
-     * @param string $age_dir
-     * @param string $sex
-     * @param bool   $show_years
-     *
-     * @return string
-     */
-    private function marriageQuery(string $type, string $age_dir, string $sex, bool $show_years): string
-    {
-        if ($sex === 'F') {
-            $sex_field = 'f_wife';
-        } else {
-            $sex_field = 'f_husb';
-        }
-        if ($age_dir !== 'ASC') {
-            $age_dir = 'DESC';
-        }
-        $rows = $this->runSql(
-            " SELECT fam.f_id AS famid, fam.{$sex_field}, married.d_julianday2-birth.d_julianday1 AS age, indi.i_id AS i_id" .
-            " FROM `##families` AS fam" .
-            " LEFT JOIN `##dates` AS birth ON birth.d_file = {$this->tree->id()}" .
-            " LEFT JOIN `##dates` AS married ON married.d_file = {$this->tree->id()}" .
-            " LEFT JOIN `##individuals` AS indi ON indi.i_file = {$this->tree->id()}" .
-            " WHERE" .
-            " birth.d_gid = indi.i_id AND" .
-            " married.d_gid = fam.f_id AND" .
-            " indi.i_id = fam.{$sex_field} AND" .
-            " fam.f_file = {$this->tree->id()} AND" .
-            " birth.d_fact = 'BIRT' AND" .
-            " married.d_fact = 'MARR' AND" .
-            " birth.d_julianday1 <> 0 AND" .
-            " married.d_julianday2 > birth.d_julianday1 AND" .
-            " i_sex='{$sex}'" .
-            " ORDER BY" .
-            " married.d_julianday2-birth.d_julianday1 {$age_dir} LIMIT 1"
-        );
-        if (!isset($rows[0])) {
-            return '';
-        }
-        $row = $rows[0];
-        if (isset($row->famid)) {
-            $family = Family::getInstance($row->famid, $this->tree);
-        }
-        if (isset($row->i_id)) {
-            $person = Individual::getInstance($row->i_id, $this->tree);
-        }
-        switch ($type) {
-            default:
-            case 'full':
-                if ($family && $family->canShow()) {
-                    $result = $family->formatList();
-                } else {
-                    $result = I18N::translate('This information is private and cannot be shown.');
-                }
-                break;
-            case 'name':
-                $result = '<a href="' . e($family->url()) . '">' . $person->getFullName() . '</a>';
-                break;
-            case 'age':
-                $age = $row->age;
-                if ($show_years) {
-                    if ((int) ($age / 365.25) > 0) {
-                        $age = (int) ($age / 365.25) . 'y';
-                    } elseif ((int) ($age / 30.4375) > 0) {
-                        $age = (int) ($age / 30.4375) . 'm';
-                    } else {
-                        $age .= 'd';
-                    }
-                    $result = FunctionsDate::getAgeAtEvent($age);
-                } else {
-                    $result = I18N::number((int) ($age / 365.25));
-                }
-                break;
-        }
-
-        return $result;
-    }
-
-    /**
-     * General query on age at marriage.
-     *
-     * @param string $type
-     * @param string $age_dir
-     * @param int    $total
-     *
-     * @return string
-     */
-    private function ageOfMarriageQuery(string $type, string $age_dir, int $total): string
-    {
-        if ($age_dir !== 'ASC') {
-            $age_dir = 'DESC';
-        }
-        $hrows = $this->runSql(
-            " SELECT DISTINCT fam.f_id AS family, MIN(husbdeath.d_julianday2-married.d_julianday1) AS age" .
-            " FROM `##families` AS fam" .
-            " LEFT JOIN `##dates` AS married ON married.d_file = {$this->tree->id()}" .
-            " LEFT JOIN `##dates` AS husbdeath ON husbdeath.d_file = {$this->tree->id()}" .
-            " WHERE" .
-            " fam.f_file = {$this->tree->id()} AND" .
-            " husbdeath.d_gid = fam.f_husb AND" .
-            " husbdeath.d_fact = 'DEAT' AND" .
-            " married.d_gid = fam.f_id AND" .
-            " married.d_fact = 'MARR' AND" .
-            " married.d_julianday1 < husbdeath.d_julianday2 AND" .
-            " married.d_julianday1 <> 0" .
-            " GROUP BY family" .
-            " ORDER BY age {$age_dir}"
-        );
-        $wrows = $this->runSql(
-            " SELECT DISTINCT fam.f_id AS family, MIN(wifedeath.d_julianday2-married.d_julianday1) AS age" .
-            " FROM `##families` AS fam" .
-            " LEFT JOIN `##dates` AS married ON married.d_file = {$this->tree->id()}" .
-            " LEFT JOIN `##dates` AS wifedeath ON wifedeath.d_file = {$this->tree->id()}" .
-            " WHERE" .
-            " fam.f_file = {$this->tree->id()} AND" .
-            " wifedeath.d_gid = fam.f_wife AND" .
-            " wifedeath.d_fact = 'DEAT' AND" .
-            " married.d_gid = fam.f_id AND" .
-            " married.d_fact = 'MARR' AND" .
-            " married.d_julianday1 < wifedeath.d_julianday2 AND" .
-            " married.d_julianday1 <> 0" .
-            " GROUP BY family" .
-            " ORDER BY age {$age_dir}"
-        );
-        $drows = $this->runSql(
-            " SELECT DISTINCT fam.f_id AS family, MIN(divorced.d_julianday2-married.d_julianday1) AS age" .
-            " FROM `##families` AS fam" .
-            " LEFT JOIN `##dates` AS married ON married.d_file = {$this->tree->id()}" .
-            " LEFT JOIN `##dates` AS divorced ON divorced.d_file = {$this->tree->id()}" .
-            " WHERE" .
-            " fam.f_file = {$this->tree->id()} AND" .
-            " married.d_gid = fam.f_id AND" .
-            " married.d_fact = 'MARR' AND" .
-            " divorced.d_gid = fam.f_id AND" .
-            " divorced.d_fact IN ('DIV', 'ANUL', '_SEPR', '_DETS') AND" .
-            " married.d_julianday1 < divorced.d_julianday2 AND" .
-            " married.d_julianday1 <> 0" .
-            " GROUP BY family" .
-            " ORDER BY age {$age_dir}"
-        );
-        $rows  = [];
-        foreach ($drows as $family) {
-            $rows[$family->family] = $family->age;
-        }
-        foreach ($hrows as $family) {
-            if (!isset($rows[$family->family])) {
-                $rows[$family->family] = $family->age;
-            }
-        }
-        foreach ($wrows as $family) {
-            if (!isset($rows[$family->family])) {
-                $rows[$family->family] = $family->age;
-            } elseif ($rows[$family->family] > $family->age) {
-                $rows[$family->family] = $family->age;
-            }
-        }
-        if ($age_dir === 'DESC') {
-            arsort($rows);
-        } else {
-            asort($rows);
-        }
-        $top10 = [];
-        $i     = 0;
-        foreach ($rows as $fam => $age) {
-            $family = Family::getInstance($fam, $this->tree);
-            if ($type === 'name') {
-                return $family->formatList();
-            }
-            if ((int) ($age / 365.25) > 0) {
-                $age = (int) ($age / 365.25) . 'y';
-            } elseif ((int) ($age / 30.4375) > 0) {
-                $age = (int) ($age / 30.4375) . 'm';
-            } else {
-                $age = $age . 'd';
-            }
-            $age = FunctionsDate::getAgeAtEvent($age);
-            if ($type === 'age') {
-                return $age;
-            }
-            $husb = $family->getHusband();
-            $wife = $family->getWife();
-            if ($husb && $wife && ($husb->getAllDeathDates() && $wife->getAllDeathDates() || !$husb->isDead() || !$wife->isDead())) {
-                if ($family && $family->canShow()) {
-                    if ($type === 'list') {
-                        $top10[] = '<li><a href="' . e($family->url()) . '">' . $family->getFullName() . '</a> (' . $age . ')' . '</li>';
-                    } else {
-                        $top10[] = '<a href="' . e($family->url()) . '">' . $family->getFullName() . '</a> (' . $age . ')';
-                    }
-                }
-                if (++$i === $total) {
-                    break;
-                }
-            }
-        }
-        if ($type === 'list') {
-            $top10 = implode('', $top10);
-        } else {
-            $top10 = implode('; ', $top10);
-        }
-        if (I18N::direction() === 'rtl') {
-            $top10 = str_replace([
-                '[',
-                ']',
-                '(',
-                ')',
-                '+',
-            ], [
-                '&rlm;[',
-                '&rlm;]',
-                '&rlm;(',
-                '&rlm;)',
-                '&rlm;+',
-            ], $top10);
-        }
-        if ($type === 'list') {
-            return '<ul>' . $top10 . '</ul>';
-        }
-
-        return $top10;
-    }
-
-    /**
-     * Find the ages between spouses.
-     *
-     * @param string $type
-     * @param string $age_dir
-     * @param int    $total
-     *
-     * @return array
-     */
-    private function ageBetweenSpousesQuery(string $type, string $age_dir, int $total): array
-    {
-        $ageDiff = new AgeDifferenceSpouse($this->tree);
-        return $ageDiff->query($type, $age_dir, $total);
-    }
-
-    /**
-     * General query on parents.
-     *
-     * @param string $type
-     * @param string $age_dir
-     * @param string $sex
-     * @param bool   $show_years
-     *
-     * @return string
-     */
-    private function parentsQuery(string $type, string $age_dir, string $sex, bool $show_years): string
-    {
-        if ($sex === 'F') {
-            $sex_field = 'WIFE';
-        } else {
-            $sex_field = 'HUSB';
-        }
-        if ($age_dir !== 'ASC') {
-            $age_dir = 'DESC';
-        }
-        $rows = $this->runSql(
-            " SELECT" .
-            " parentfamily.l_to AS id," .
-            " childbirth.d_julianday2-birth.d_julianday1 AS age" .
-            " FROM `##link` AS parentfamily" .
-            " JOIN `##link` AS childfamily ON childfamily.l_file = {$this->tree->id()}" .
-            " JOIN `##dates` AS birth ON birth.d_file = {$this->tree->id()}" .
-            " JOIN `##dates` AS childbirth ON childbirth.d_file = {$this->tree->id()}" .
-            " WHERE" .
-            " birth.d_gid = parentfamily.l_to AND" .
-            " childfamily.l_to = childbirth.d_gid AND" .
-            " childfamily.l_type = 'CHIL' AND" .
-            " parentfamily.l_type = '{$sex_field}' AND" .
-            " childfamily.l_from = parentfamily.l_from AND" .
-            " parentfamily.l_file = {$this->tree->id()} AND" .
-            " birth.d_fact = 'BIRT' AND" .
-            " childbirth.d_fact = 'BIRT' AND" .
-            " birth.d_julianday1 <> 0 AND" .
-            " childbirth.d_julianday2 > birth.d_julianday1" .
-            " ORDER BY age {$age_dir} LIMIT 1"
-        );
-        if (!isset($rows[0])) {
-            return '';
-        }
-        $row = $rows[0];
-        if (isset($row->id)) {
-            $person = Individual::getInstance($row->id, $this->tree);
-        }
-        switch ($type) {
-            default:
-            case 'full':
-                if ($person && $person->canShow()) {
-                    $result = $person->formatList();
-                } else {
-                    $result = I18N::translate('This information is private and cannot be shown.');
-                }
-                break;
-            case 'name':
-                $result = '<a href="' . e($person->url()) . '">' . $person->getFullName() . '</a>';
-                break;
-            case 'age':
-                $age = $row->age;
-                if ($show_years) {
-                    if ((int) ($age / 365.25) > 0) {
-                        $age = (int) ($age / 365.25) . 'y';
-                    } elseif ((int) ($age / 30.4375) > 0) {
-                        $age = (int) ($age / 30.4375) . 'm';
-                    } else {
-                        $age .= 'd';
-                    }
-                    $result = FunctionsDate::getAgeAtEvent($age);
-                } else {
-                    $result = (string) floor($age / 365.25);
-                }
-                break;
-        }
-
-        return $result;
+        return $this->eventRepository->lastEventType();
     }
 
     /**
@@ -2952,7 +2241,7 @@ class Stats
      */
     public function firstMarriage(): string
     {
-        return $this->mortalityQuery('full', 'ASC', 'MARR');
+        return $this->familyDatesRepository->firstMarriage();
     }
 
     /**
@@ -2962,7 +2251,7 @@ class Stats
      */
     public function firstMarriageYear(): string
     {
-        return $this->mortalityQuery('year', 'ASC', 'MARR');
+        return $this->familyDatesRepository->firstMarriageYear();
     }
 
     /**
@@ -2972,7 +2261,7 @@ class Stats
      */
     public function firstMarriageName(): string
     {
-        return $this->mortalityQuery('name', 'ASC', 'MARR');
+        return $this->familyDatesRepository->firstMarriageName();
     }
 
     /**
@@ -2982,7 +2271,7 @@ class Stats
      */
     public function firstMarriagePlace(): string
     {
-        return $this->mortalityQuery('place', 'ASC', 'MARR');
+        return $this->familyDatesRepository->firstMarriagePlace();
     }
 
     /**
@@ -2992,7 +2281,7 @@ class Stats
      */
     public function lastMarriage(): string
     {
-        return $this->mortalityQuery('full', 'DESC', 'MARR');
+        return $this->familyDatesRepository->lastMarriage();
     }
 
     /**
@@ -3002,7 +2291,7 @@ class Stats
      */
     public function lastMarriageYear(): string
     {
-        return $this->mortalityQuery('year', 'DESC', 'MARR');
+        return $this->familyDatesRepository->lastMarriageYear();
     }
 
     /**
@@ -3012,7 +2301,7 @@ class Stats
      */
     public function lastMarriageName(): string
     {
-        return $this->mortalityQuery('name', 'DESC', 'MARR');
+        return $this->familyDatesRepository->lastMarriageName();
     }
 
     /**
@@ -3022,7 +2311,7 @@ class Stats
      */
     public function lastMarriagePlace(): string
     {
-        return $this->mortalityQuery('place', 'DESC', 'MARR');
+        return $this->familyDatesRepository->lastMarriagePlace();
     }
 
     /**
@@ -3037,7 +2326,7 @@ class Stats
      */
     public function statsMarrQuery($simple = true, $first = false, $year1 = -1, $year2 = -1): array
     {
-        return (new Marriage($this->tree))->query($first, $year1, $year2);
+        return $this->familyRepository->statsMarrQuery($first, $year1, $year2);
     }
 
     /**
@@ -3062,7 +2351,7 @@ class Stats
      */
     public function firstDivorce(): string
     {
-        return $this->mortalityQuery('full', 'ASC', 'DIV');
+        return $this->familyDatesRepository->firstDivorce();
     }
 
     /**
@@ -3072,7 +2361,7 @@ class Stats
      */
     public function firstDivorceYear(): string
     {
-        return $this->mortalityQuery('year', 'ASC', 'DIV');
+        return $this->familyDatesRepository->firstDivorceYear();
     }
 
     /**
@@ -3082,7 +2371,7 @@ class Stats
      */
     public function firstDivorceName(): string
     {
-        return $this->mortalityQuery('name', 'ASC', 'DIV');
+        return $this->familyDatesRepository->firstDivorceName();
     }
 
     /**
@@ -3092,7 +2381,7 @@ class Stats
      */
     public function firstDivorcePlace(): string
     {
-        return $this->mortalityQuery('place', 'ASC', 'DIV');
+        return $this->familyDatesRepository->firstDivorcePlace();
     }
 
     /**
@@ -3102,7 +2391,7 @@ class Stats
      */
     public function lastDivorce(): string
     {
-        return $this->mortalityQuery('full', 'DESC', 'DIV');
+        return $this->familyDatesRepository->lastDivorce();
     }
 
     /**
@@ -3112,7 +2401,7 @@ class Stats
      */
     public function lastDivorceYear(): string
     {
-        return $this->mortalityQuery('year', 'DESC', 'DIV');
+        return $this->familyDatesRepository->lastDivorceYear();
     }
 
     /**
@@ -3122,7 +2411,7 @@ class Stats
      */
     public function lastDivorceName(): string
     {
-        return $this->mortalityQuery('name', 'DESC', 'DIV');
+        return $this->familyDatesRepository->lastDivorceName();
     }
 
     /**
@@ -3132,7 +2421,7 @@ class Stats
      */
     public function lastDivorcePlace(): string
     {
-        return $this->mortalityQuery('place', 'DESC', 'DIV');
+        return $this->familyDatesRepository->lastDivorcePlace();
     }
 
     /**
@@ -3157,7 +2446,7 @@ class Stats
      */
     public function youngestMarriageFemale(): string
     {
-        return $this->marriageQuery('full', 'ASC', 'F', false);
+        return $this->familyRepository->youngestMarriageFemale();
     }
 
     /**
@@ -3167,7 +2456,7 @@ class Stats
      */
     public function youngestMarriageFemaleName(): string
     {
-        return $this->marriageQuery('name', 'ASC', 'F', false);
+        return $this->familyRepository->youngestMarriageFemaleName();
     }
 
     /**
@@ -3179,7 +2468,7 @@ class Stats
      */
     public function youngestMarriageFemaleAge(string $show_years = ''): string
     {
-        return $this->marriageQuery('age', 'ASC', 'F', (bool) $show_years);
+        return $this->familyRepository->youngestMarriageFemaleAge($show_years);
     }
 
     /**
@@ -3189,7 +2478,7 @@ class Stats
      */
     public function oldestMarriageFemale(): string
     {
-        return $this->marriageQuery('full', 'DESC', 'F', false);
+        return $this->familyRepository->oldestMarriageFemale();
     }
 
     /**
@@ -3199,7 +2488,7 @@ class Stats
      */
     public function oldestMarriageFemaleName(): string
     {
-        return $this->marriageQuery('name', 'DESC', 'F', false);
+        return $this->familyRepository->oldestMarriageFemaleName();
     }
 
     /**
@@ -3211,7 +2500,7 @@ class Stats
      */
     public function oldestMarriageFemaleAge(string $show_years = ''): string
     {
-        return $this->marriageQuery('age', 'DESC', 'F', (bool) $show_years);
+        return $this->familyRepository->oldestMarriageFemaleAge($show_years);
     }
 
     /**
@@ -3221,7 +2510,7 @@ class Stats
      */
     public function youngestMarriageMale(): string
     {
-        return $this->marriageQuery('full', 'ASC', 'M', false);
+        return $this->familyRepository->youngestMarriageMale();
     }
 
     /**
@@ -3231,7 +2520,7 @@ class Stats
      */
     public function youngestMarriageMaleName(): string
     {
-        return $this->marriageQuery('name', 'ASC', 'M', false);
+        return $this->familyRepository->youngestMarriageMaleName();
     }
 
     /**
@@ -3243,7 +2532,7 @@ class Stats
      */
     public function youngestMarriageMaleAge(string $show_years = ''): string
     {
-        return $this->marriageQuery('age', 'ASC', 'M', (bool) $show_years);
+        return $this->familyRepository->youngestMarriageMaleAge($show_years);
     }
 
     /**
@@ -3253,7 +2542,7 @@ class Stats
      */
     public function oldestMarriageMale(): string
     {
-        return $this->marriageQuery('full', 'DESC', 'M', false);
+        return $this->familyRepository->oldestMarriageMale();
     }
 
     /**
@@ -3263,7 +2552,7 @@ class Stats
      */
     public function oldestMarriageMaleName(): string
     {
-        return $this->marriageQuery('name', 'DESC', 'M', false);
+        return $this->familyRepository->oldestMarriageMaleName();
     }
 
     /**
@@ -3275,7 +2564,7 @@ class Stats
      */
     public function oldestMarriageMaleAge(string $show_years = ''): string
     {
-        return $this->marriageQuery('age', 'DESC', 'M', (bool) $show_years);
+        return $this->familyRepository->oldestMarriageMaleAge($show_years);
     }
 
     /**
@@ -3290,7 +2579,7 @@ class Stats
      */
     public function statsMarrAgeQuery($simple = true, $sex = 'M', $year1 = -1, $year2 = -1): array
     {
-        return (new MarriageAge($this->tree))->query($sex, $year1, $year2);
+        return $this->familyRepository->statsMarrAgeQuery($sex, $year1, $year2);
     }
 
     /**
@@ -3302,8 +2591,7 @@ class Stats
      */
     public function statsMarrAge(string $size = '200x250'): string
     {
-        return (new Google\ChartMarriageAge($this->tree))
-            ->chartMarriageAge($size);
+        return $this->familyRepository->statsMarrAge($size);
     }
 
     /**
@@ -3315,14 +2603,7 @@ class Stats
      */
     public function ageBetweenSpousesMF(string $total = '10'): string
     {
-        $records = $this->ageBetweenSpousesQuery('nolist', 'DESC', (int) $total);
-
-        return view(
-            'statistics/families/top10-nolist-spouses',
-            [
-                'records' => $records,
-            ]
-        );
+        return $this->familyRepository->ageBetweenSpousesMF($total);
     }
 
     /**
@@ -3334,14 +2615,7 @@ class Stats
      */
     public function ageBetweenSpousesMFList(string $total = '10'): string
     {
-        $records = $this->ageBetweenSpousesQuery('list', 'DESC', (int) $total);
-
-        return view(
-            'statistics/families/top10-list-spouses',
-            [
-                'records' => $records,
-            ]
-        );
+        return $this->familyRepository->ageBetweenSpousesMFList($total);
     }
 
     /**
@@ -3353,14 +2627,7 @@ class Stats
      */
     public function ageBetweenSpousesFM(string $total = '10'): string
     {
-        $records = $this->ageBetweenSpousesQuery('nolist', 'ASC', (int) $total);
-
-        return view(
-            'statistics/families/top10-nolist-spouses',
-            [
-                'records' => $records,
-            ]
-        );
+        return $this->familyRepository->ageBetweenSpousesFM($total);
     }
 
     /**
@@ -3372,14 +2639,7 @@ class Stats
      */
     public function ageBetweenSpousesFMList(string $total = '10'): string
     {
-        $records = $this->ageBetweenSpousesQuery('list', 'ASC', (int) $total);
-
-        return view(
-            'statistics/families/top10-list-spouses',
-            [
-                'records' => $records,
-            ]
-        );
+        return $this->familyRepository->ageBetweenSpousesFMList($total);
     }
 
     /**
@@ -3389,7 +2649,7 @@ class Stats
      */
     public function topAgeOfMarriageFamily(): string
     {
-        return $this->ageOfMarriageQuery('name', 'DESC', 1);
+        return $this->familyRepository->topAgeOfMarriageFamily();
     }
 
     /**
@@ -3399,7 +2659,7 @@ class Stats
      */
     public function topAgeOfMarriage(): string
     {
-        return $this->ageOfMarriageQuery('age', 'DESC', 1);
+        return $this->familyRepository->topAgeOfMarriage();
     }
 
     /**
@@ -3411,7 +2671,7 @@ class Stats
      */
     public function topAgeOfMarriageFamilies(string $total = '10'): string
     {
-        return $this->ageOfMarriageQuery('nolist', 'DESC', (int) $total);
+        return $this->familyRepository->topAgeOfMarriageFamilies($total);
     }
 
     /**
@@ -3423,7 +2683,7 @@ class Stats
      */
     public function topAgeOfMarriageFamiliesList(string $total = '10'): string
     {
-        return $this->ageOfMarriageQuery('list', 'DESC', (int) $total);
+        return $this->familyRepository->topAgeOfMarriageFamiliesList($total);
     }
 
     /**
@@ -3433,7 +2693,7 @@ class Stats
      */
     public function minAgeOfMarriageFamily(): string
     {
-        return $this->ageOfMarriageQuery('name', 'ASC', 1);
+        return $this->familyRepository->minAgeOfMarriageFamily();
     }
 
     /**
@@ -3443,7 +2703,7 @@ class Stats
      */
     public function minAgeOfMarriage(): string
     {
-        return $this->ageOfMarriageQuery('age', 'ASC', 1);
+        return $this->familyRepository->minAgeOfMarriage();
     }
 
     /**
@@ -3455,7 +2715,7 @@ class Stats
      */
     public function minAgeOfMarriageFamilies(string $total = '10'): string
     {
-        return $this->ageOfMarriageQuery('nolist', 'ASC', (int) $total);
+        return $this->familyRepository->minAgeOfMarriageFamilies($total);
     }
 
     /**
@@ -3467,7 +2727,7 @@ class Stats
      */
     public function minAgeOfMarriageFamiliesList(string $total = '10'): string
     {
-        return $this->ageOfMarriageQuery('list', 'ASC', (int) $total);
+        return $this->familyRepository->minAgeOfMarriageFamiliesList($total);
     }
 
     /**
@@ -3477,7 +2737,7 @@ class Stats
      */
     public function youngestMother(): string
     {
-        return $this->parentsQuery('full', 'ASC', 'F', false);
+        return $this->familyRepository->youngestMother();
     }
 
     /**
@@ -3487,7 +2747,7 @@ class Stats
      */
     public function youngestMotherName(): string
     {
-        return $this->parentsQuery('name', 'ASC', 'F', false);
+        return $this->familyRepository->youngestMotherName();
     }
 
     /**
@@ -3499,7 +2759,7 @@ class Stats
      */
     public function youngestMotherAge(string $show_years = ''): string
     {
-        return $this->parentsQuery('age', 'ASC', 'F', (bool) $show_years);
+        return $this->familyRepository->youngestMotherAge($show_years);
     }
 
     /**
@@ -3509,7 +2769,7 @@ class Stats
      */
     public function oldestMother(): string
     {
-        return $this->parentsQuery('full', 'DESC', 'F', false);
+        return $this->familyRepository->oldestMother();
     }
 
     /**
@@ -3519,7 +2779,7 @@ class Stats
      */
     public function oldestMotherName(): string
     {
-        return $this->parentsQuery('name', 'DESC', 'F', false);
+        return $this->familyRepository->oldestMotherName();
     }
 
     /**
@@ -3531,7 +2791,7 @@ class Stats
      */
     public function oldestMotherAge(string $show_years = ''): string
     {
-        return $this->parentsQuery('age', 'DESC', 'F', (bool) $show_years);
+        return $this->familyRepository->oldestMotherAge($show_years);
     }
 
     /**
@@ -3541,7 +2801,7 @@ class Stats
      */
     public function youngestFather(): string
     {
-        return $this->parentsQuery('full', 'ASC', 'M', false);
+        return $this->familyRepository->youngestFather();
     }
 
     /**
@@ -3551,7 +2811,7 @@ class Stats
      */
     public function youngestFatherName(): string
     {
-        return $this->parentsQuery('name', 'ASC', 'M', false);
+        return $this->familyRepository->youngestFatherName();
     }
 
     /**
@@ -3563,7 +2823,7 @@ class Stats
      */
     public function youngestFatherAge(string $show_years = ''): string
     {
-        return $this->parentsQuery('age', 'ASC', 'M', (bool) $show_years);
+        return $this->familyRepository->youngestFatherAge($show_years);
     }
 
     /**
@@ -3573,7 +2833,7 @@ class Stats
      */
     public function oldestFather(): string
     {
-        return $this->parentsQuery('full', 'DESC', 'M', false);
+        return $this->familyRepository->oldestFather();
     }
 
     /**
@@ -3583,7 +2843,7 @@ class Stats
      */
     public function oldestFatherName(): string
     {
-        return $this->parentsQuery('name', 'DESC', 'M', false);
+        return $this->familyRepository->oldestFatherName();
     }
 
     /**
@@ -3595,7 +2855,7 @@ class Stats
      */
     public function oldestFatherAge(string $show_years = ''): string
     {
-        return $this->parentsQuery('age', 'DESC', 'M', (bool) $show_years);
+        return $this->familyRepository->oldestFatherAge($show_years);
     }
 
     /**
@@ -3605,13 +2865,7 @@ class Stats
      */
     public function totalMarriedMales(): string
     {
-        $n = (int) Database::prepare(
-            "SELECT COUNT(DISTINCT f_husb) FROM `##families` WHERE f_file = :tree_id AND f_gedcom LIKE '%\\n1 MARR%'"
-        )->execute([
-            'tree_id' => $this->tree->id(),
-        ])->fetchOne();
-
-        return I18N::number($n);
+        return $this->familyRepository->totalMarriedMales();
     }
 
     /**
@@ -3621,141 +2875,19 @@ class Stats
      */
     public function totalMarriedFemales(): string
     {
-        $n = (int) Database::prepare(
-            "SELECT COUNT(DISTINCT f_wife) FROM `##families` WHERE f_file = :tree_id AND f_gedcom LIKE '%\\n1 MARR%'"
-        )->execute([
-            'tree_id' => $this->tree->id(),
-        ])->fetchOne();
-
-        return I18N::number($n);
-    }
-
-    /**
-     * General query on families.
-     *
-     * @param int $total
-     *
-     * @return array
-     */
-    private function topTenFamilyQuery(int $total): array
-    {
-        $rows = $this->runSql(
-            "SELECT f_numchil AS tot, f_id AS id" .
-            " FROM `##families`" .
-            " WHERE" .
-            " f_file={$this->tree->id()}" .
-            " ORDER BY tot DESC" .
-            " LIMIT " . $total
-        );
-
-        if (empty($rows)) {
-            return [];
-        }
-
-        $top10 = [];
-        foreach ($rows as $row) {
-            $family = Family::getInstance($row->id, $this->tree);
-
-            if ($family && $family->canShow()) {
-                $top10[] = [
-                    'family' => $family,
-                    'count'  => (int) $row->tot,
-                ];
-            }
-        }
-
-        // TODO
-//        if (I18N::direction() === 'rtl') {
-//            $top10 = str_replace([
-//                '[',
-//                ']',
-//                '(',
-//                ')',
-//                '+',
-//            ], [
-//                '&rlm;[',
-//                '&rlm;]',
-//                '&rlm;(',
-//                '&rlm;)',
-//                '&rlm;+',
-//            ], $top10);
-//        }
-
-        return $top10;
-    }
-
-    /**
-     * Find the ages between siblings.
-     *
-     * @param string $type
-     * @param int    $total
-     * @param bool   $one Include each family only once if true
-     *
-     * @return array
-     */
-    private function ageBetweenSiblingsQuery(string $type, int $total, bool $one): array
-    {
-        $ageDiff = new AgeDifferenceSiblings($this->tree);
-        return $ageDiff->query($type, $total, $one);
+        return $this->familyRepository->totalMarriedFemales();
     }
 
     /**
      * Find the month in the year of the birth of the first child.
      *
      * @param bool $sex
-     * @param int  $year1
-     * @param int  $year2
      *
      * @return stdClass[]
      */
-    public function monthFirstChildQuery($sex = false, $year1 = -1, $year2 = -1): array
+    public function monthFirstChildQuery(bool $sex = false): array
     {
-        if ($year1 >= 0 && $year2 >= 0) {
-            $sql_years = " AND (d_year BETWEEN '{$year1}' AND '{$year2}')";
-        } else {
-            $sql_years = '';
-        }
-
-        if ($sex) {
-            $sql_sex1 = ', i_sex';
-            $sql_sex2 = " JOIN `##individuals` AS child ON child1.d_file = i_file AND child1.d_gid = child.i_id ";
-        } else {
-            $sql_sex1 = '';
-            $sql_sex2 = '';
-        }
-
-        $sql =
-            "SELECT d_month{$sql_sex1}, COUNT(*) AS total " .
-            "FROM (" .
-            " SELECT family{$sql_sex1}, MIN(date) AS d_date, d_month" .
-            " FROM (" .
-            "  SELECT" .
-            "  link1.l_from AS family," .
-            "  link1.l_to AS child," .
-            "  child1.d_julianday2 AS date," .
-            "  child1.d_month as d_month" .
-            $sql_sex1 .
-            "  FROM `##link` AS link1" .
-            "  LEFT JOIN `##dates` AS child1 ON child1.d_file = {$this->tree->id()}" .
-            $sql_sex2 .
-            "  WHERE" .
-            "  link1.l_file = {$this->tree->id()} AND" .
-            "  link1.l_type = 'CHIL' AND" .
-            "  child1.d_gid = link1.l_to AND" .
-            "  child1.d_fact = 'BIRT' AND" .
-            "  child1.d_month IN ('JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC')" .
-            $sql_years .
-            "  ORDER BY date" .
-            " ) AS children" .
-            " GROUP BY family, d_month{$sql_sex1}" .
-            ") AS first_child " .
-            "GROUP BY d_month";
-
-        if ($sex) {
-            $sql .= ', i_sex';
-        }
-
-        return $this->runSql($sql);
+        return $this->familyRepository->monthFirstChildQuery($sex);
     }
 
     /**
@@ -3765,7 +2897,7 @@ class Stats
      */
     public function largestFamily(): string
     {
-        return $this->family->familyQuery('full');
+        return $this->familyRepository->largestFamily();
     }
 
     /**
@@ -3775,7 +2907,7 @@ class Stats
      */
     public function largestFamilySize(): string
     {
-        return $this->family->familyQuery('size');
+        return $this->familyRepository->largestFamilySize();
     }
 
     /**
@@ -3785,7 +2917,7 @@ class Stats
      */
     public function largestFamilyName(): string
     {
-        return $this->family->familyQuery('name');
+        return $this->familyRepository->largestFamilyName();
     }
 
     /**
@@ -3794,19 +2926,10 @@ class Stats
      * @param string $total
      *
      * @return string
-     *
-     * @deprecated
      */
     public function topTenLargestFamily(string $total = '10'): string
     {
-        $records = $this->topTenFamilyQuery((int) $total);
-
-        return view(
-            'statistics/families/top10-nolist',
-            [
-                'records' => $records,
-            ]
-        );
+        return $this->familyRepository->topTenLargestFamily($total);
     }
 
     /**
@@ -3818,14 +2941,7 @@ class Stats
      */
     public function topTenLargestFamilyList(string $total = '10'): string
     {
-        $records = $this->topTenFamilyQuery((int) $total);
-
-        return view(
-            'statistics/families/top10-list',
-            [
-                'records' => $records,
-            ]
-        );
+        return $this->familyRepository->topTenLargestFamilyList($total);
     }
 
     /**
@@ -3844,8 +2960,7 @@ class Stats
         string $color_to   = null,
         string $total      = '10'
     ): string {
-        return (new Google\ChartFamily($this->tree))
-            ->chartLargestFamilies($size, $color_from, $color_to, $total);
+        return $this->familyRepository->chartLargestFamilies($size, $color_from, $color_to, $total);
     }
 
     /**
@@ -3855,7 +2970,7 @@ class Stats
      */
     public function totalChildren(): string
     {
-        return $this->children->totalChildren();
+        return $this->familyRepository->totalChildren();
     }
 
     /**
@@ -3865,7 +2980,7 @@ class Stats
      */
     public function averageChildren(): string
     {
-        return $this->children->averageChildren();
+        return $this->familyRepository->averageChildren();
     }
 
     /**
@@ -3880,7 +2995,7 @@ class Stats
      */
     public function statsChildrenQuery($simple = true, $sex = 'BOTH', $year1 = -1, $year2 = -1): array
     {
-        return $this->children->query($sex, $year1, $year2);
+        return $this->familyRepository->statsChildrenQuery($sex, $year1, $year2);
     }
 
     /**
@@ -3892,8 +3007,7 @@ class Stats
      */
     public function statsChildren(string $size = '220x200'): string
     {
-        return (new Google\ChartChildren($this->tree))
-            ->chartChildren($size);
+        return $this->familyRepository->statsChildren($size);
     }
 
     /**
@@ -3906,9 +3020,7 @@ class Stats
      */
     public function topAgeBetweenSiblingsName(string $total = '10', string $one = ''): string
     {
-        // TODO
-//        return $this->ageBetweenSiblingsQuery('name', (int) $total, (bool) $one);
-        return 'topAgeBetweenSiblingsName';
+        return $this->familyRepository->topAgeBetweenSiblingsName($total, $one);
     }
 
     /**
@@ -3921,9 +3033,7 @@ class Stats
      */
     public function topAgeBetweenSiblings(string $total = '10', string $one = ''): string
     {
-        // TODO
-//        return $this->ageBetweenSiblingsQuery('age', (int) $total, (bool) $one);
-        return 'topAgeBetweenSiblings';
+        return $this->familyRepository->topAgeBetweenSiblings($total, $one);
     }
 
     /**
@@ -3936,14 +3046,7 @@ class Stats
      */
     public function topAgeBetweenSiblingsFullName(string $total = '10', string $one = ''): string
     {
-        $record = $this->ageBetweenSiblingsQuery('nolist', (int) $total, (bool) $one);
-
-        return view(
-            'statistics/families/top10-nolist-age',
-            [
-                'record' => $record,
-            ]
-        );
+        return $this->familyRepository->topAgeBetweenSiblingsFullName($total, $one);
     }
 
     /**
@@ -3956,30 +3059,7 @@ class Stats
      */
     public function topAgeBetweenSiblingsList(string $total = '10', string $one = ''): string
     {
-        $records = $this->ageBetweenSiblingsQuery('list', (int) $total, (bool) $one);
-
-        return view(
-            'statistics/families/top10-list-age',
-            [
-                'records' => $records,
-            ]
-        );
-    }
-
-    /**
-     * Find the families with no children.
-     *
-     * @return int
-     */
-    private function noChildrenFamiliesQuery(): int
-    {
-        $rows = $this->runSql(
-            " SELECT COUNT(*) AS tot" .
-            " FROM  `##families`" .
-            " WHERE f_numchil = 0 AND f_file = {$this->tree->id()}"
-        );
-
-        return (int) $rows[0]->tot;
+        return $this->familyRepository->topAgeBetweenSiblingsList($total, $one);
     }
 
     /**
@@ -3989,7 +3069,7 @@ class Stats
      */
     public function noChildrenFamilies(): string
     {
-        return I18N::number($this->noChildrenFamiliesQuery());
+        return $this->familyRepository->noChildrenFamilies();
     }
 
     /**
@@ -4001,50 +3081,7 @@ class Stats
      */
     public function noChildrenFamiliesList($type = 'list'): string
     {
-        $rows = $this->runSql(
-            " SELECT f_id AS family" .
-            " FROM `##families` AS fam" .
-            " WHERE f_numchil = 0 AND fam.f_file = {$this->tree->id()}"
-        );
-        if (!isset($rows[0])) {
-            return '';
-        }
-        $top10 = [];
-        foreach ($rows as $row) {
-            $family = Family::getInstance($row->family, $this->tree);
-            if ($family->canShow()) {
-                if ($type == 'list') {
-                    $top10[] = '<li><a href="' . e($family->url()) . '">' . $family->getFullName() . '</a></li>';
-                } else {
-                    $top10[] = '<a href="' . e($family->url()) . '">' . $family->getFullName() . '</a>';
-                }
-            }
-        }
-        if ($type == 'list') {
-            $top10 = implode('', $top10);
-        } else {
-            $top10 = implode('; ', $top10);
-        }
-        if (I18N::direction() === 'rtl') {
-            $top10 = str_replace([
-                '[',
-                ']',
-                '(',
-                ')',
-                '+',
-            ], [
-                '&rlm;[',
-                '&rlm;]',
-                '&rlm;(',
-                '&rlm;)',
-                '&rlm;+',
-            ], $top10);
-        }
-        if ($type === 'list') {
-            return '<ul>' . $top10 . '</ul>';
-        }
-
-        return $top10;
+        return $this->familyRepository->noChildrenFamiliesList($type);
     }
 
     /**
@@ -4058,161 +3095,7 @@ class Stats
      */
     public function chartNoChildrenFamilies(string $size = '220x200', $year1 = '-1', $year2 = '-1'): string
     {
-        $year1 = (int) $year1;
-        $year2 = (int) $year2;
-
-        $sizes = explode('x', $size);
-
-        if ($year1 >= 0 && $year2 >= 0) {
-            $years = " married.d_year BETWEEN '{$year1}' AND '{$year2}' AND";
-        } else {
-            $years = '';
-        }
-
-        $max  = 0;
-        $tot  = 0;
-        $rows = $this->runSql(
-            "SELECT" .
-            " COUNT(*) AS count," .
-            " FLOOR(married.d_year/100+1) AS century" .
-            " FROM" .
-            " `##families` AS fam" .
-            " JOIN" .
-            " `##dates` AS married ON (married.d_file = fam.f_file AND married.d_gid = fam.f_id)" .
-            " WHERE" .
-            " f_numchil = 0 AND" .
-            " fam.f_file = {$this->tree->id()} AND" .
-            $years .
-            " married.d_fact = 'MARR' AND" .
-            " married.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')" .
-            " GROUP BY century ORDER BY century"
-        );
-
-        if (empty($rows)) {
-            return '';
-        }
-
-        foreach ($rows as $values) {
-            $values->count = (int) $values->count;
-
-            if ($max < $values->count) {
-                $max = $values->count;
-            }
-            $tot += $values->count;
-        }
-
-        $unknown = $this->noChildrenFamiliesQuery() - $tot;
-
-        if ($unknown > $max) {
-            $max = $unknown;
-        }
-
-        $chm    = '';
-        $chxl   = '0:|';
-        $i      = 0;
-        $counts = [];
-
-        foreach ($rows as $values) {
-            $chxl     .= $this->centuryHelper->centuryName($values->century) . '|';
-            $counts[] = intdiv(4095 * $values->count, $max + 1);
-            $chm      .= 't' . $values->count . ',000000,0,' . $i . ',11,1|';
-            $i++;
-        }
-
-        $counts[] = intdiv(4095 * $unknown, $max + 1);
-        $chd      = $this->google->arrayToExtendedEncoding($counts);
-        $chm      .= 't' . $unknown . ',000000,0,' . $i . ',11,1';
-        $chxl     .= I18N::translateContext('unknown century', 'Unknown') . '|1:||' . I18N::translate('century') . '|2:|0|';
-        $step     = $max + 1;
-
-        for ($d = (int) ($max + 1); $d > 0; $d--) {
-            if (($max + 1) < ($d * 10 + 1) && fmod(($max + 1), $d) === 0) {
-                $step = $d;
-            }
-        }
-
-        if ($step === (int) ($max + 1)) {
-            for ($d = (int) ($max); $d > 0; $d--) {
-                if ($max < ($d * 10 + 1) && fmod($max, $d) === 0) {
-                    $step = $d;
-                }
-            }
-        }
-
-        for ($n = $step; $n <= ($max + 1); $n += $step) {
-            $chxl .= $n . '|';
-        }
-
-        $chxl .= '3:||' . I18N::translate('Total families') . '|';
-
-        return "<img src=\"https://chart.googleapis.com/chart?cht=bvg&amp;chs={$sizes[0]}x{$sizes[1]}&amp;chf=bg,s,ffffff00|c,s,ffffff00&amp;chm=D,FF0000,0,0:" . ($i - 1) . ",3,1|{$chm}&amp;chd=e:{$chd}&amp;chco=0000FF,ffffff00&amp;chbh=30,3&amp;chxt=x,x,y,y&amp;chxl=" . rawurlencode($chxl) . "\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . I18N::translate('Number of families without children') . '" title="' . I18N::translate('Number of families without children') . '" />';
-    }
-
-    /**
-     * Find the couple with the most grandchildren.
-     *
-     * @param int $total
-     *
-     * @return array
-     */
-    private function topTenGrandFamilyQuery(int $total): array
-    {
-        $rows = $this->runSql(
-            "SELECT COUNT(*) AS tot, f_id AS id" .
-            " FROM `##families`" .
-            " JOIN `##link` AS children ON children.l_file = {$this->tree->id()}" .
-            " JOIN `##link` AS mchildren ON mchildren.l_file = {$this->tree->id()}" .
-            " JOIN `##link` AS gchildren ON gchildren.l_file = {$this->tree->id()}" .
-            " WHERE" .
-            " f_file={$this->tree->id()} AND" .
-            " children.l_from=f_id AND" .
-            " children.l_type='CHIL' AND" .
-            " children.l_to=mchildren.l_from AND" .
-            " mchildren.l_type='FAMS' AND" .
-            " mchildren.l_to=gchildren.l_from AND" .
-            " gchildren.l_type='CHIL'" .
-            " GROUP BY id" .
-            " ORDER BY tot DESC" .
-            " LIMIT " . $total
-        );
-
-        if (!isset($rows[0])) {
-            return [];
-        }
-
-        $top10 = [];
-
-        foreach ($rows as $row) {
-            $family = Family::getInstance($row->id, $this->tree);
-
-            if ($family && $family->canShow()) {
-                $total = (int) $row->tot;
-
-                $top10[] = [
-                    'family' => $family,
-                    'count'  => $total,
-                ];
-            }
-        }
-
-        // TODO
-//        if (I18N::direction() === 'rtl') {
-//            $top10 = str_replace([
-//                '[',
-//                ']',
-//                '(',
-//                ')',
-//                '+',
-//            ], [
-//                '&rlm;[',
-//                '&rlm;]',
-//                '&rlm;(',
-//                '&rlm;)',
-//                '&rlm;+',
-//            ], $top10);
-//        }
-
-        return $top10;
+        return $this->familyRepository->chartNoChildrenFamilies($size, $year1, $year2);
     }
 
     /**
@@ -4221,19 +3104,10 @@ class Stats
      * @param string $total
      *
      * @return string
-     *
-     * @deprecated
      */
     public function topTenLargestGrandFamily(string $total = '10'): string
     {
-        $records = $this->topTenGrandFamilyQuery((int) $total);
-
-        return view(
-            'statistics/families/top10-nolist-grand',
-            [
-                'records' => $records,
-            ]
-        );
+        return $this->familyRepository->topTenLargestGrandFamily($total);
     }
 
     /**
@@ -4245,14 +3119,7 @@ class Stats
      */
     public function topTenLargestGrandFamilyList(string $total = '10'): string
     {
-        $records = $this->topTenGrandFamilyQuery((int) $total);
-
-        return view(
-            'statistics/families/top10-list-grand',
-            [
-                'records' => $records,
-            ]
-        );
+        return $this->familyRepository->topTenLargestGrandFamilyList($total);
     }
 
     /**
@@ -4264,7 +3131,7 @@ class Stats
      */
     public function getCommonSurname(): string
     {
-        return $this->surname->getCommonSurname();
+        return $this->individualRepository->getCommonSurname();
     }
 
     /**
@@ -4276,9 +3143,12 @@ class Stats
      *
      * @return string
      */
-    public function commonSurnames(string $threshold = '1', string $number_of_surnames = '10', string $sorting = 'alpha'): string
-    {
-        return $this->surname->commonSurnamesQuery('nolist', false, (int) $threshold, (int) $number_of_surnames, $sorting);
+    public function commonSurnames(
+        string $threshold = '1',
+        string $number_of_surnames = '10',
+        string $sorting = 'alpha'
+    ): string {
+        return $this->individualRepository->commonSurnames($threshold, $number_of_surnames, $sorting);
     }
 
     /**
@@ -4290,9 +3160,12 @@ class Stats
      *
      * @return string
      */
-    public function commonSurnamesTotals(string $threshold = '1', string $number_of_surnames = '10', string $sorting = 'rcount'): string
-    {
-        return $this->surname->commonSurnamesQuery('nolist', true, (int) $threshold, (int) $number_of_surnames, $sorting);
+    public function commonSurnamesTotals(
+        string $threshold = '1',
+        string $number_of_surnames = '10',
+        string $sorting = 'rcount'
+    ): string {
+        return $this->individualRepository->commonSurnamesTotals($threshold, $number_of_surnames, $sorting);
     }
 
     /**
@@ -4304,9 +3177,12 @@ class Stats
      *
      * @return string
      */
-    public function commonSurnamesList(string $threshold = '1', string $number_of_surnames = '10', string $sorting = 'alpha'): string
-    {
-        return $this->surname->commonSurnamesQuery('list', false, (int) $threshold, (int) $number_of_surnames, $sorting);
+    public function commonSurnamesList(
+        string $threshold = '1',
+        string $number_of_surnames = '10',
+        string $sorting = 'alpha'
+    ): string {
+        return $this->individualRepository->commonSurnamesList($threshold, $number_of_surnames, $sorting);
     }
 
     /**
@@ -4318,9 +3194,12 @@ class Stats
      *
      * @return string
      */
-    public function commonSurnamesListTotals(string $threshold = '1', string $number_of_surnames = '10', string $sorting = 'rcount'): string
-    {
-        return $this->surname->commonSurnamesQuery('list', true, (int) $threshold, (int) $number_of_surnames, $sorting);
+    public function commonSurnamesListTotals(
+        string $threshold = '1',
+        string $number_of_surnames = '10',
+        string $sorting = 'rcount'
+    ): string {
+        return $this->individualRepository->commonSurnamesListTotals($threshold, $number_of_surnames, $sorting);
     }
 
     /**
@@ -4333,10 +3212,13 @@ class Stats
      *
      * @return string
      */
-    public function chartCommonSurnames(string $size = null, string $color_from = null, string $color_to = null, string $number_of_surnames = '10'): string
-    {
-        return (new Google\ChartCommonSurname($this->tree))
-            ->chartCommonSurnames($size, $color_from, $color_to, $number_of_surnames);
+    public function chartCommonSurnames(
+        string $size = null,
+        string $color_from = null,
+        string $color_to = null,
+        string $number_of_surnames = '10'
+    ): string {
+        return $this->individualRepository->chartCommonSurnames($size, $color_from, $color_to, $number_of_surnames);
     }
 
     /**
@@ -4349,7 +3231,7 @@ class Stats
      */
     public function commonGiven(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->individual->commonGivenQuery('B', 'nolist', false, (int) $threshold, (int) $maxtoshow);
+        return $this->individualRepository->commonGiven($threshold, $maxtoshow);
     }
 
     /**
@@ -4362,7 +3244,7 @@ class Stats
      */
     public function commonGivenTotals(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->individual->commonGivenQuery('B', 'nolist', true, (int) $threshold, (int) $maxtoshow);
+        return $this->individualRepository->commonGivenTotals($threshold, $maxtoshow);
     }
 
     /**
@@ -4375,7 +3257,7 @@ class Stats
      */
     public function commonGivenList(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->individual->commonGivenQuery('B', 'list', false, (int) $threshold, (int) $maxtoshow);
+        return $this->individualRepository->commonGivenList($threshold, $maxtoshow);
     }
 
     /**
@@ -4388,7 +3270,7 @@ class Stats
      */
     public function commonGivenListTotals(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->individual->commonGivenQuery('B', 'list', true, (int) $threshold, (int) $maxtoshow);
+        return $this->individualRepository->commonGivenListTotals($threshold, $maxtoshow);
     }
 
     /**
@@ -4401,7 +3283,7 @@ class Stats
      */
     public function commonGivenTable(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->individual->commonGivenQuery('B', 'table', false, (int) $threshold, (int) $maxtoshow);
+        return $this->individualRepository->commonGivenTable($threshold, $maxtoshow);
     }
 
     /**
@@ -4414,7 +3296,7 @@ class Stats
      */
     public function commonGivenFemale(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->individual->commonGivenQuery('F', 'nolist', false, (int) $threshold, (int) $maxtoshow);
+        return $this->individualRepository->commonGivenFemale($threshold, $maxtoshow);
     }
 
     /**
@@ -4427,7 +3309,7 @@ class Stats
      */
     public function commonGivenFemaleTotals(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->individual->commonGivenQuery('F', 'nolist', true, (int) $threshold, (int) $maxtoshow);
+        return $this->individualRepository->commonGivenFemaleTotals($threshold, $maxtoshow);
     }
 
     /**
@@ -4440,7 +3322,7 @@ class Stats
      */
     public function commonGivenFemaleList(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->individual->commonGivenQuery('F', 'list', false, (int) $threshold, (int) $maxtoshow);
+        return $this->individualRepository->commonGivenFemaleList($threshold, $maxtoshow);
     }
 
     /**
@@ -4453,7 +3335,7 @@ class Stats
      */
     public function commonGivenFemaleListTotals(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->individual->commonGivenQuery('F', 'list', true, (int) $threshold, (int) $maxtoshow);
+        return $this->individualRepository->commonGivenFemaleListTotals($threshold, $maxtoshow);
     }
 
     /**
@@ -4466,7 +3348,7 @@ class Stats
      */
     public function commonGivenFemaleTable(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->individual->commonGivenQuery('F', 'table', false, (int) $threshold, (int) $maxtoshow);
+        return $this->individualRepository->commonGivenFemaleTable($threshold, $maxtoshow);
     }
 
     /**
@@ -4479,7 +3361,7 @@ class Stats
      */
     public function commonGivenMale(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->individual->commonGivenQuery('M', 'nolist', false, (int) $threshold, (int) $maxtoshow);
+        return $this->individualRepository->commonGivenMale($threshold, $maxtoshow);
     }
 
     /**
@@ -4492,7 +3374,7 @@ class Stats
      */
     public function commonGivenMaleTotals(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->individual->commonGivenQuery('M', 'nolist', true, (int) $threshold, (int) $maxtoshow);
+        return $this->individualRepository->commonGivenMaleTotals($threshold, $maxtoshow);
     }
 
     /**
@@ -4505,7 +3387,7 @@ class Stats
      */
     public function commonGivenMaleList(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->individual->commonGivenQuery('M', 'list', false, (int) $threshold, (int) $maxtoshow);
+        return $this->individualRepository->commonGivenMaleList($threshold, $maxtoshow);
     }
 
     /**
@@ -4518,7 +3400,7 @@ class Stats
      */
     public function commonGivenMaleListTotals(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->individual->commonGivenQuery('M', 'list', true, (int) $threshold, (int) $maxtoshow);
+        return $this->individualRepository->commonGivenMaleListTotals($threshold, $maxtoshow);
     }
 
     /**
@@ -4531,7 +3413,7 @@ class Stats
      */
     public function commonGivenMaleTable(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->individual->commonGivenQuery('M', 'table', false, (int) $threshold, (int) $maxtoshow);
+        return $this->individualRepository->commonGivenMaleTable($threshold, $maxtoshow);
     }
 
     /**
@@ -4544,7 +3426,7 @@ class Stats
      */
     public function commonGivenUnknown(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->individual->commonGivenQuery('U', 'nolist', false, (int) $threshold, (int) $maxtoshow);
+        return $this->individualRepository->commonGivenUnknown($threshold, $maxtoshow);
     }
 
     /**
@@ -4557,7 +3439,7 @@ class Stats
      */
     public function commonGivenUnknownTotals(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->individual->commonGivenQuery('U', 'nolist', true, (int) $threshold, (int) $maxtoshow);
+        return $this->individualRepository->commonGivenUnknownTotals($threshold, $maxtoshow);
     }
 
     /**
@@ -4570,7 +3452,7 @@ class Stats
      */
     public function commonGivenUnknownList(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->individual->commonGivenQuery('U', 'list', false, (int) $threshold, (int) $maxtoshow);
+        return $this->individualRepository->commonGivenUnknownList($threshold, $maxtoshow);
     }
 
     /**
@@ -4583,7 +3465,7 @@ class Stats
      */
     public function commonGivenUnknownListTotals(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->individual->commonGivenQuery('U', 'list', true, (int) $threshold, (int) $maxtoshow);
+        return $this->individualRepository->commonGivenUnknownListTotals($threshold, $maxtoshow);
     }
 
     /**
@@ -4596,7 +3478,7 @@ class Stats
      */
     public function commonGivenUnknownTable(string $threshold = '1', string $maxtoshow = '10'): string
     {
-        return $this->individual->commonGivenQuery('U', 'table', false, (int) $threshold, (int) $maxtoshow);
+        return $this->individualRepository->commonGivenUnknownTable($threshold, $maxtoshow);
     }
 
     /**
@@ -4609,108 +3491,13 @@ class Stats
      *
      * @return string
      */
-    public function chartCommonGiven(string $size = null, string $color_from = null, string $color_to = null, string $maxtoshow = '7'): string
-    {
-        return (new Google\ChartCommonGiven($this->tree))
-            ->chartCommonGiven($size, $color_from, $color_to, $maxtoshow);
-    }
-
-    /**
-     * Who is currently logged in?
-     *
-     * @TODO - this is duplicated from the LoggedInUsersModule class.
-     *
-     * @param string $type
-     *
-     * @return string
-     */
-    private function usersLoggedInQuery($type = 'nolist'): string
-    {
-        $content = '';
-        // List active users
-        $NumAnonymous = 0;
-        $loggedusers  = [];
-        foreach (User::allLoggedIn() as $user) {
-            if (Auth::isAdmin() || $user->getPreference('visibleonline')) {
-                $loggedusers[] = $user;
-            } else {
-                $NumAnonymous++;
-            }
-        }
-        $LoginUsers = count($loggedusers);
-        if ($LoginUsers == 0 && $NumAnonymous == 0) {
-            return I18N::translate('No signed-in and no anonymous users');
-        }
-        if ($NumAnonymous > 0) {
-            $content .= '<b>' . I18N::plural('%s anonymous signed-in user', '%s anonymous signed-in users', $NumAnonymous, I18N::number($NumAnonymous)) . '</b>';
-        }
-        if ($LoginUsers > 0) {
-            if ($NumAnonymous) {
-                if ($type == 'list') {
-                    $content .= '<br><br>';
-                } else {
-                    $content .= ' ' . I18N::translate('and') . ' ';
-                }
-            }
-            $content .= '<b>' . I18N::plural('%s signed-in user', '%s signed-in users', $LoginUsers, I18N::number($LoginUsers)) . '</b>';
-            if ($type == 'list') {
-                $content .= '<ul>';
-            } else {
-                $content .= ': ';
-            }
-        }
-        if (Auth::check()) {
-            foreach ($loggedusers as $user) {
-                if ($type == 'list') {
-                    $content .= '<li>' . e($user->getRealName()) . ' - ' . e($user->getUserName());
-                } else {
-                    $content .= e($user->getRealName()) . ' - ' . e($user->getUserName());
-                }
-                if (Auth::id() !== $user->id() && $user->getPreference('contactmethod') !== 'none') {
-                    if ($type == 'list') {
-                        $content .= '<br>';
-                    }
-                    $content .= '<a href="' . e(route('message', ['to' => $user->getUserName(), 'ged' => $this->tree->name()])) . '" class="btn btn-link" title="' . I18N::translate('Send a message') . '">' . view('icons/email') . '</a>';
-                }
-                if ($type == 'list') {
-                    $content .= '</li>';
-                }
-            }
-        }
-        if ($type == 'list') {
-            $content .= '</ul>';
-        }
-
-        return $content;
-    }
-
-    /**
-     * NUmber of users who are currently logged in?
-     *
-     * @param string $type
-     *
-     * @return int
-     */
-    private function usersLoggedInTotalQuery($type = 'all'): int
-    {
-        $anon    = 0;
-        $visible = 0;
-        foreach (User::allLoggedIn() as $user) {
-            if (Auth::isAdmin() || $user->getPreference('visibleonline')) {
-                $visible++;
-            } else {
-                $anon++;
-            }
-        }
-        if ($type == 'anon') {
-            return $anon;
-        }
-
-        if ($type == 'visible') {
-            return $visible;
-        }
-
-        return $visible + $anon;
+    public function chartCommonGiven(
+        string $size       = null,
+        string $color_from = null,
+        string $color_to   = null,
+        string $maxtoshow  = '7'
+    ): string {
+        return $this->individualRepository->chartCommonGiven($size, $color_from, $color_to, $maxtoshow);
     }
 
     /**
@@ -4720,7 +3507,7 @@ class Stats
      */
     public function usersLoggedIn(): string
     {
-        return $this->usersLoggedInQuery('nolist');
+        return $this->userRepository->usersLoggedIn();
     }
 
     /**
@@ -4730,7 +3517,7 @@ class Stats
      */
     public function usersLoggedInList(): string
     {
-        return $this->usersLoggedInQuery('list');
+        return $this->userRepository->usersLoggedInList();
     }
 
     /**
@@ -4740,7 +3527,7 @@ class Stats
      */
     public function usersLoggedInTotal(): int
     {
-        return $this->usersLoggedInTotalQuery('all');
+        return $this->userRepository->usersLoggedInTotal();
     }
 
     /**
@@ -4750,7 +3537,7 @@ class Stats
      */
     public function usersLoggedInTotalAnon(): int
     {
-        return $this->usersLoggedInTotalQuery('anon');
+        return $this->userRepository->usersLoggedInTotalAnon();
     }
 
     /**
@@ -4760,7 +3547,7 @@ class Stats
      */
     public function usersLoggedInTotalVisible(): int
     {
-        return $this->usersLoggedInTotalQuery('visible');
+        return $this->userRepository->usersLoggedInTotalVisible();
     }
 
     /**
@@ -4770,7 +3557,7 @@ class Stats
      */
     public function userId(): string
     {
-        return (string) Auth::id();
+        return $this->userRepository->userId();
     }
 
     /**
@@ -4782,12 +3569,7 @@ class Stats
      */
     public function userName(string $visitor_text = ''): string
     {
-        if (Auth::check()) {
-            return e(Auth::user()->getUserName());
-        }
-
-        // if #username:visitor# was specified, then "visitor" will be returned when the user is not logged in
-        return e($visitor_text);
+        return $this->userRepository->userName();
     }
 
     /**
@@ -4797,32 +3579,7 @@ class Stats
      */
     public function userFullName(): string
     {
-        return Auth::check() ? '<span dir="auto">' . e(Auth::user()->getRealName()) . '</span>' : '';
-    }
-
-    /**
-     * Find the newest user on the site.
-     * If no user has registered (i.e. all created by the admin), then
-     * return the current user.
-     *
-     * @return User
-     */
-    private function latestUser(): User
-    {
-        static $user;
-
-        if (!$user instanceof User) {
-            $user_id = (int) Database::prepare(
-                "SELECT u.user_id" .
-                " FROM `##user` u" .
-                " LEFT JOIN `##user_setting` us ON (u.user_id=us.user_id AND us.setting_name='reg_timestamp') " .
-                " ORDER BY us.setting_value DESC LIMIT 1"
-            )->execute()->fetchOne();
-
-            $user = User::find($user_id) ?? Auth::user();
-        }
-
-        return $user;
+        return $this->userRepository->userFullName();
     }
 
     /**
@@ -4832,7 +3589,7 @@ class Stats
      */
     public function latestUserId(): string
     {
-        return (string) $this->latestUser()->id();
+        return $this->latestRepository->latestUserId();
     }
 
     /**
@@ -4842,7 +3599,7 @@ class Stats
      */
     public function latestUserName(): string
     {
-        return e($this->latestUser()->getUserName());
+        return $this->latestRepository->latestUserName();
     }
 
     /**
@@ -4852,7 +3609,7 @@ class Stats
      */
     public function latestUserFullName(): string
     {
-        return e($this->latestUser()->getRealName());
+        return $this->latestRepository->latestUserFullName();
     }
 
     /**
@@ -4864,11 +3621,7 @@ class Stats
      */
     public function latestUserRegDate(string $format = null): string
     {
-        $format = $format ?? I18N::dateFormat();
-
-        $user = $this->latestUser();
-
-        return FunctionsDate::timestampToGedcomDate((int) $user->getPreference('reg_timestamp'))->display(false, $format);
+        return $this->latestRepository->latestUserRegDate();
     }
 
     /**
@@ -4880,11 +3633,7 @@ class Stats
      */
     public function latestUserRegTime(string $format = null): string
     {
-        $format = $format ?? str_replace('%', '', I18N::timeFormat());
-
-        $user = $this->latestUser();
-
-        return date($format, (int) $user->getPreference('reg_timestamp'));
+        return $this->latestRepository->latestUserRegTime();
     }
 
     /**
@@ -4897,18 +3646,7 @@ class Stats
      */
     public function latestUserLoggedin(string $yes = null, string $no = null): string
     {
-        $yes = $yes ?? I18N::translate('yes');
-        $no  = $no ?? I18N::translate('no');
-
-        $user = $this->latestUser();
-
-        $is_logged_in = (bool) Database::prepare(
-            "SELECT 1 FROM `##session` WHERE user_id = :user_id LIMIT 1"
-        )->execute([
-            'user_id' => $user->id(),
-        ])->fetchOne();
-
-        return $is_logged_in ? $yes : $no;
+        return $this->latestRepository->latestUserLoggedin();
     }
 
     /**
@@ -4918,18 +3656,7 @@ class Stats
      */
     public function contactWebmaster(): string
     {
-        $user_id = $this->tree->getPreference('WEBMASTER_USER_ID');
-        $user    = User::find((int) $user_id);
-
-        if ($user instanceof User) {
-            return view('modules/contact-links/contact', [
-                'request' => app()->make(Request::class),
-                'user'    => $user,
-                'tree'    => $this->tree,
-            ]);
-        }
-
-        return '';
+        return $this->contactRepository->contactWebmaster();
     }
 
     /**
@@ -4939,18 +3666,7 @@ class Stats
      */
     public function contactGedcom(): string
     {
-        $user_id = $this->tree->getPreference('CONTACT_USER_ID');
-        $user    = User::find((int) $user_id);
-
-        if ($user instanceof User) {
-            return view('modules/contact-links/contact', [
-                'request' => app()->make(Request::class),
-                'user'    => $user,
-                'tree'    => $this->tree,
-            ]);
-        }
-
-        return '';
+        return $this->contactRepository->contactGedcom();
     }
 
     /**
@@ -4960,7 +3676,7 @@ class Stats
      */
     public function serverDate(): string
     {
-        return FunctionsDate::timestampToGedcomDate(WT_TIMESTAMP)->display();
+        return $this->serverRepository->serverDate();
     }
 
     /**
@@ -4970,7 +3686,7 @@ class Stats
      */
     public function serverTime(): string
     {
-        return date('g:i a');
+        return $this->serverRepository->serverTime();
     }
 
     /**
@@ -4980,7 +3696,7 @@ class Stats
      */
     public function serverTime24(): string
     {
-        return date('G:i');
+        return $this->serverRepository->serverTime24();
     }
 
     /**
@@ -4990,7 +3706,7 @@ class Stats
      */
     public function serverTimezone(): string
     {
-        return date('T');
+        return $this->serverRepository->serverTimezone();
     }
 
     /**
@@ -5000,7 +3716,7 @@ class Stats
      */
     public function browserDate(): string
     {
-        return FunctionsDate::timestampToGedcomDate(WT_TIMESTAMP)->display();
+        return $this->browserRepository->browserDate();
     }
 
     /**
@@ -5010,7 +3726,7 @@ class Stats
      */
     public function browserTime(): string
     {
-        return date(str_replace('%', '', I18N::timeFormat()), WT_TIMESTAMP + WT_TIMESTAMP_OFFSET);
+        return $this->browserRepository->browserTime();
     }
 
     /**
@@ -5020,46 +3736,7 @@ class Stats
      */
     public function browserTimezone(): string
     {
-        return date('T', WT_TIMESTAMP + WT_TIMESTAMP_OFFSET);
-    }
-
-    /**
-     * What is the current version of webtrees.
-     *
-     * @return string
-     */
-    public function webtreesVersion(): string
-    {
-        return Webtrees::VERSION;
-    }
-
-    /**
-     * These functions provide access to hitcounter for use in the HTML block.
-     *
-     * @param string $page_name
-     * @param string $page_parameter
-     *
-     * @return string
-     */
-    private function hitCountQuery($page_name, string $page_parameter = ''): string
-    {
-        if ($page_name === '') {
-            // index.php?ctype=gedcom
-            $page_name      = 'index.php';
-            $page_parameter = 'gedcom:' . $this->tree->id();
-        } elseif ($page_name == 'index.php') {
-            // index.php?ctype=user
-            $user           = User::findByIdentifier($page_parameter);
-            $page_parameter = 'user:' . ($user ? $user->id() : Auth::id());
-        }
-
-        $count = (int) DB::table('hit_counter')
-            ->where('gedcom_id', '=', $this->tree->id())
-            ->where('page_name', '=', $page_name)
-            ->where('page_parameter', '=', $page_parameter)
-            ->value('page_count');
-
-        return '<span class="odometer">' . I18N::digits($count) . '</span>';
+        return $this->browserRepository->browserTimezone();
     }
 
     /**
@@ -5071,7 +3748,7 @@ class Stats
      */
     public function hitCount(string $page_parameter = ''): string
     {
-        return $this->hitCountQuery('', $page_parameter);
+        return $this->hitCountRepository->hitCount($page_parameter);
     }
 
     /**
@@ -5083,7 +3760,7 @@ class Stats
      */
     public function hitCountUser(string $page_parameter = ''): string
     {
-        return $this->hitCountQuery('index.php', $page_parameter);
+        return $this->hitCountRepository->hitCountUser($page_parameter);
     }
 
     /**
@@ -5095,7 +3772,7 @@ class Stats
      */
     public function hitCountIndi(string $page_parameter = ''): string
     {
-        return $this->hitCountQuery('individual.php', $page_parameter);
+        return $this->hitCountRepository->hitCountIndi($page_parameter);
     }
 
     /**
@@ -5107,7 +3784,7 @@ class Stats
      */
     public function hitCountFam(string $page_parameter = ''): string
     {
-        return $this->hitCountQuery('family.php', $page_parameter);
+        return $this->hitCountRepository->hitCountFam($page_parameter);
     }
 
     /**
@@ -5119,7 +3796,7 @@ class Stats
      */
     public function hitCountSour(string $page_parameter = ''): string
     {
-        return $this->hitCountQuery('source.php', $page_parameter);
+        return $this->hitCountRepository->hitCountSour($page_parameter);
     }
 
     /**
@@ -5131,7 +3808,7 @@ class Stats
      */
     public function hitCountRepo(string $page_parameter = ''): string
     {
-        return $this->hitCountQuery('repo.php', $page_parameter);
+        return $this->hitCountRepository->hitCountRepo($page_parameter);
     }
 
     /**
@@ -5143,7 +3820,7 @@ class Stats
      */
     public function hitCountNote(string $page_parameter = ''): string
     {
-        return $this->hitCountQuery('note.php', $page_parameter);
+        return $this->hitCountRepository->hitCountNote($page_parameter);
     }
 
     /**
@@ -5155,19 +3832,7 @@ class Stats
      */
     public function hitCountObje(string $page_parameter = ''): string
     {
-        return $this->hitCountQuery('mediaviewer.php', $page_parameter);
-    }
-
-    /**
-     * Run an SQL query and cache the result.
-     *
-     * @param string $sql
-     *
-     * @return stdClass[]
-     */
-    private function runSql($sql): array
-    {
-        return Sql::runSql($sql);
+        return $this->hitCountRepository->hitCountObje($page_parameter);
     }
 
     /**
@@ -5177,13 +3842,7 @@ class Stats
      */
     public function gedcomFavorites(): string
     {
-        $module = Module::findByClass(FamilyTreeFavoritesModule::class);
-
-        if ($module instanceof FamilyTreeFavoritesModule) {
-            return $module->getBlock($this->tree, 0, '');
-        }
-
-        return '';
+        return $this->favoritesRepository->gedcomFavorites();
     }
 
     /**
@@ -5193,13 +3852,7 @@ class Stats
      */
     public function userFavorites(): string
     {
-        $module = Module::findByClass(UserFavoritesModule::class);
-
-        if ($module instanceof UserFavoritesModule) {
-            return $module->getBlock($this->tree, 0, '');
-        }
-
-        return '';
+        return $this->favoritesRepository->userFavorites();
     }
 
     /**
@@ -5209,15 +3862,7 @@ class Stats
      */
     public function totalGedcomFavorites(): string
     {
-        $count = 0;
-
-        $module = Module::findByClass(FamilyTreeFavoritesModule::class);
-
-        if ($module instanceof FamilyTreeFavoritesModule) {
-            $count = count($module->getFavorites($this->tree));
-        }
-
-        return I18N::number($count);
+        return $this->favoritesRepository->totalGedcomFavorites();
     }
 
     /**
@@ -5227,15 +3872,37 @@ class Stats
      */
     public function totalUserFavorites(): string
     {
-        $count = 0;
+        return $this->favoritesRepository->totalUserFavorites();
+    }
 
-        $module = Module::findByClass(UserFavoritesModule::class);
+    /**
+     * How many messages in the user's inbox.
+     *
+     * @return string
+     */
+    public function totalUserMessages(): string
+    {
+        return $this->messageRepository->totalUserMessages();
+    }
 
-        if ($module instanceof UserFavoritesModule) {
-            $count = count($module->getFavorites($this->tree, Auth::user()));
-        }
+    /**
+     * How many blog entries exist for this user.
+     *
+     * @return string
+     */
+    public function totalUserJournal(): string
+    {
+        return $this->newsRepository->totalUserJournal();
+    }
 
-        return I18N::number($count);
+    /**
+     * How many news items exist for this tree.
+     *
+     * @return string
+     */
+    public function totalGedcomNews(): string
+    {
+        return $this->newsRepository->totalGedcomNews();
     }
 
     /**
@@ -5277,54 +3944,24 @@ class Stats
     }
 
     /**
-     * How many messages in the user's inbox.
+     * What is the current version of webtrees.
      *
      * @return string
      */
-    public function totalUserMessages(): string
+    public function webtreesVersion(): string
     {
-        $total = (int) Database::prepare("SELECT COUNT(*) FROM `##message` WHERE user_id = ?")
-            ->execute([Auth::id()])
-            ->fetchOne();
-
-        return I18N::number($total);
+        return Webtrees::VERSION;
     }
 
     /**
-     * How many blog entries exist for this user.
+     * Run an SQL query and cache the result.
      *
-     * @return string
-     */
-    public function totalUserJournal(): string
-    {
-        try {
-            $number = (int) Database::prepare("SELECT COUNT(*) FROM `##news` WHERE user_id = ?")
-                ->execute([Auth::id()])
-                ->fetchOne();
-        } catch (PDOException $ex) {
-            // The module may not be installed, so the table may not exist.
-            $number = 0;
-        }
-
-        return I18N::number($number);
-    }
-
-    /**
-     * How many news items exist for this tree.
+     * @param string $sql
      *
-     * @return string
+     * @return stdClass[]
      */
-    public function totalGedcomNews(): string
+    private function runSql($sql): array
     {
-        try {
-            $number = (int) Database::prepare("SELECT COUNT(*) FROM `##news` WHERE gedcom_id = ?")
-                ->execute([$this->tree->id()])
-                ->fetchOne();
-        } catch (PDOException $ex) {
-            // The module may not be installed, so the table may not exist.
-            $number = 0;
-        }
-
-        return I18N::number($number);
+        return Sql::runSql($sql);
     }
 }

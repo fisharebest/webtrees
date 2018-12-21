@@ -20,7 +20,7 @@ namespace Fisharebest\Webtrees\Statistics\Google;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Statistics\Google;
-use Fisharebest\Webtrees\Statistics\Media;
+use Fisharebest\Webtrees\Statistics\Repository\MediaRepository;
 use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
 
@@ -30,9 +30,9 @@ use Fisharebest\Webtrees\Tree;
 class ChartMedia extends Google
 {
     /**
-     * @var Media
+     * @var MediaRepository
      */
-    private $media;
+    private $mediaRepository;
 
     /**
      * Constructor.
@@ -41,19 +41,21 @@ class ChartMedia extends Google
      */
     public function __construct(Tree $tree)
     {
-        $this->media = new Media($tree);
+        $this->mediaRepository = new MediaRepository($tree);
     }
 
     /**
      * Create a chart of media types.
      *
+     * @param int         $tot        The total number of media files
+     * @param array       $med_types  The list of available media types
      * @param string|null $size
      * @param string|null $color_from
      * @param string|null $color_to
      *
      * @return string
      */
-    public function chartMedia(string $size = null, string $color_from = null, string $color_to = null): string
+    public function chartMedia(int $tot, array $med_types, string $size = null, string $color_from = null, string $color_to = null): string
     {
         $WT_STATS_CHART_COLOR1 = Theme::theme()->parameter('distribution-chart-no-values');
         $WT_STATS_CHART_COLOR2 = Theme::theme()->parameter('distribution-chart-high-values');
@@ -65,7 +67,6 @@ class ChartMedia extends Google
         $color_to   = $color_to ?? $WT_STATS_CHART_COLOR2;
 
         $sizes = explode('x', $size);
-        $tot   = $this->media->totalMediaType('all');
 
         // Beware divide by zero
         if ($tot === 0) {
@@ -80,8 +81,8 @@ class ChartMedia extends Google
         $max         = 0;
         $media       = [];
 
-        foreach ($this->media->getMediaTypes() as $type) {
-            $count = $this->media->totalMediaType($type);
+        foreach ($med_types as $type) {
+            $count = $this->mediaRepository->totalMediaType($type);
             if ($count > 0) {
                 $media[$type] = $count;
                 if ($count > $max) {
@@ -90,7 +91,7 @@ class ChartMedia extends Google
                 $c += $count;
             }
         }
-        $count = $this->media->totalMediaType('unknown');
+        $count = $this->mediaRepository->totalMediaType('unknown');
         if ($count > 0) {
             $media['unknown'] = $tot - $c;
             if ($tot - $c > $max) {

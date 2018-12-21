@@ -22,7 +22,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Statistics\Helper\Country;
 use Fisharebest\Webtrees\Statistics\Google;
 use Fisharebest\Webtrees\Statistics\Places;
-use Fisharebest\Webtrees\Statistics\Surname;
+use Fisharebest\Webtrees\Statistics\Repository\IndividualRepository;
 use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
 
@@ -42,9 +42,9 @@ class ChartDistribution extends Google
     private $country;
 
     /**
-     * @var Surname
+     * @var IndividualRepository
      */
-    private $surname;
+    private $individualRepository;
 
     /**
      * @var Places
@@ -58,10 +58,10 @@ class ChartDistribution extends Google
      */
     public function __construct(Tree $tree)
     {
-        $this->tree    = $tree;
-        $this->country = new Country();
-        $this->surname = new Surname($tree);
-        $this->places  = new Places($tree);
+        $this->tree                 = $tree;
+        $this->country              = new Country();
+        $this->individualRepository = new IndividualRepository($tree);
+        $this->places               = new Places($tree);
     }
 
     /**
@@ -106,7 +106,7 @@ class ChartDistribution extends Google
         switch ($chart_type) {
             case 'surname_distribution_chart':
                 if ($surname === '') {
-                    $surname = $this->surname->getCommonSurname();
+                    $surname = $this->individualRepository->getCommonSurname();
                 }
                 $chart_title = I18N::translate('Surname distribution chart') . ': ' . $surname;
                 // Count how many people are events in each country
@@ -141,6 +141,7 @@ class ChartDistribution extends Google
                 }
 
                 break;
+
             case 'birth_distribution_chart':
                 $chart_title = I18N::translate('Birth by country');
                 // Count how many people were born in each country
@@ -157,6 +158,7 @@ class ChartDistribution extends Google
                     }
                 }
                 break;
+
             case 'death_distribution_chart':
                 $chart_title = I18N::translate('Death by country');
                 // Count how many people were death in each country
@@ -173,6 +175,7 @@ class ChartDistribution extends Google
                     }
                 }
                 break;
+
             case 'marriage_distribution_chart':
                 $chart_title = I18N::translate('Marriage by country');
                 // Count how many families got marriage in each country
@@ -190,6 +193,7 @@ class ChartDistribution extends Google
                     }
                 }
                 break;
+
             case 'indi_distribution_chart':
             default:
                 $chart_title = I18N::translate('Individual distribution chart');
@@ -209,11 +213,13 @@ class ChartDistribution extends Google
                 }
                 break;
         }
+
         $chart_url = 'https://chart.googleapis.com/chart?cht=t&amp;chtm=' . $chart_shows;
         $chart_url .= '&amp;chco=' . $WT_STATS_CHART_COLOR1 . ',' . $WT_STATS_CHART_COLOR3 . ',' . $WT_STATS_CHART_COLOR2; // country colours
         $chart_url .= '&amp;chf=bg,s,ECF5FF'; // sea colour
         $chart_url .= '&amp;chs=' . $WT_STATS_MAP_X . 'x' . $WT_STATS_MAP_Y;
         $chart_url .= '&amp;chld=' . implode('', array_keys($surn_countries)) . '&amp;chd=s:';
+
         foreach ($surn_countries as $count) {
             $chart_url .= substr(self::GOOGLE_CHART_ENCODING, (int) ($count / max($surn_countries) * 61), 1);
         }

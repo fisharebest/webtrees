@@ -18,10 +18,10 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Statistics\Helper;
 
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Statistics\Individual;
-use Fisharebest\Webtrees\Statistics\FamilyRepository;
-use Fisharebest\Webtrees\Statistics\Source;
-use Fisharebest\Webtrees\Statistics\Note;
+use Fisharebest\Webtrees\Statistics\Repository\IndividualRepository;
+use Fisharebest\Webtrees\Statistics\Repository\FamilyRepository;
+use Fisharebest\Webtrees\Statistics\Repository\SourceRepository;
+use Fisharebest\Webtrees\Statistics\Repository\NoteRepository;
 use Fisharebest\Webtrees\Tree;
 
 /**
@@ -30,24 +30,24 @@ use Fisharebest\Webtrees\Tree;
 class Percentage
 {
     /**
-     * @var Individual
+     * @var IndividualRepository
      */
-    private $individual;
+    private $individualRepository;
 
     /**
      * @var FamilyRepository
      */
-    private $family;
+    private $familyRepository;
 
     /**
-     * @var Source
+     * @var SourceRepository
      */
-    private $source;
+    private $sourceRepository;
 
     /**
-     * @var Note
+     * @var NoteRepository
      */
-    private $note;
+    private $noteRepository;
 
     /**
      * Constructor.
@@ -56,10 +56,10 @@ class Percentage
      */
     public function __construct(Tree $tree)
     {
-        $this->individual = new Individual($tree);
-        $this->family     = new FamilyRepository($tree);
-        $this->source     = new Source($tree);
-        $this->note       = new Note($tree);
+        $this->individualRepository = new IndividualRepository($tree);
+        $this->familyRepository     = new FamilyRepository($tree);
+        $this->sourceRepository     = new SourceRepository($tree);
+        $this->noteRepository       = new NoteRepository($tree);
     }
 
     /**
@@ -74,26 +74,26 @@ class Percentage
     {
         switch ($type) {
             case 'individual':
-                $count = $this->individual->totalIndividualsQuery();
+                $count = $this->individualRepository->totalIndividualsQuery();
                 break;
 
             case 'family':
-                $count = $this->family->totalFamiliesQuery();
+                $count = $this->familyRepository->totalFamiliesQuery();
                 break;
 
             case 'source':
-                $count = $this->source->totalSourcesQuery();
+                $count = $this->sourceRepository->totalSourcesQuery();
                 break;
 
             case 'note':
-                $count = $this->note->totalNotesQuery();
+                $count = $this->noteRepository->totalNotesQuery();
                 break;
 
             case 'all':
             default:
-                $count = $this->individual->totalIndividualsQuery()
-                        + $this->family->totalFamiliesQuery()
-                        + $this->source->totalSourcesQuery();
+                $count = $this->individualRepository->totalIndividualsQuery()
+                        + $this->familyRepository->totalFamiliesQuery()
+                        + $this->sourceRepository->totalSourcesQuery();
                 break;
         }
 

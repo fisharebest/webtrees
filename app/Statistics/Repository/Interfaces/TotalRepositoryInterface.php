@@ -15,42 +15,17 @@
  */
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Statistics;
-
-use Fisharebest\Webtrees\Database;
-use Fisharebest\Webtrees\Tree;
+namespace Fisharebest\Webtrees\Statistics\Repository\Interfaces;
 
 /**
- *
+ * Statistics submodule providing all BROWSER related methods.
  */
-class Note
+interface TotalRepositoryInterface
 {
     /**
-     * @var Tree
-     */
-    private $tree;
-
-    /**
-     * Constructor.
+     * How many GEDCOM records exist in the tree.
      *
-     * @param Tree $tree
+     * @return string
      */
-    public function __construct(Tree $tree)
-    {
-        $this->tree = $tree;
-    }
-
-    /**
-     * Count the number of notes.
-     *
-     * @return int
-     */
-    public function totalNotesQuery(): int
-    {
-        return (int) Database::prepare(
-            "SELECT COUNT(*) FROM `##other` WHERE o_type='NOTE' AND o_file = :tree_id"
-        )->execute([
-            'tree_id' => $this->tree->id(),
-        ])->fetchOne();
-    }
+    public function totalRecords(): string;
 }

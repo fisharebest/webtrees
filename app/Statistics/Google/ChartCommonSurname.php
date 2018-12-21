@@ -19,8 +19,7 @@ namespace Fisharebest\Webtrees\Statistics\Google;
 
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Statistics\Google;
-use Fisharebest\Webtrees\Statistics\Individual;
-use Fisharebest\Webtrees\Statistics\Surname;
+use Fisharebest\Webtrees\Statistics\Repository\IndividualRepository;
 use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
 
@@ -35,14 +34,9 @@ class ChartCommonSurname extends Google
     private $tree;
 
     /**
-     * @var Individual
+     * @var IndividualRepository
      */
-    private $individual;
-
-    /**
-     * @var Surname
-     */
-    private $surname;
+    private $individualRepository;
 
     /**
      * Constructor.
@@ -51,41 +45,37 @@ class ChartCommonSurname extends Google
      */
     public function __construct(Tree $tree)
     {
-        $this->tree       = $tree;
-        $this->individual = new Individual($tree);
-        $this->surname    = new Surname($tree);
+        $this->tree                 = $tree;
+        $this->individualRepository = new IndividualRepository($tree);
     }
 
     /**
      * Create a chart of common surnames.
      *
+     * @param array       $all_surnames
      * @param string|null $size
      * @param string|null $color_from
      * @param string|null $color_to
-     * @param string      $number_of_surnames
      *
      * @return string
      */
     public function chartCommonSurnames(
+        array $all_surnames,
         string $size = null,
         string $color_from = null,
-        string $color_to = null,
-        string $number_of_surnames = '10'
+        string $color_to = null
     ): string {
         $WT_STATS_CHART_COLOR1 = Theme::theme()->parameter('distribution-chart-no-values');
         $WT_STATS_CHART_COLOR2 = Theme::theme()->parameter('distribution-chart-high-values');
         $WT_STATS_S_CHART_X    = Theme::theme()->parameter('stats-small-chart-x');
         $WT_STATS_S_CHART_Y    = Theme::theme()->parameter('stats-small-chart-y');
 
-        $size               = $size ?? ($WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y);
-        $color_from         = $color_from ?? $WT_STATS_CHART_COLOR1;
-        $color_to           = $color_to ?? $WT_STATS_CHART_COLOR2;
-        $number_of_surnames = (int) $number_of_surnames;
+        $size       = $size ?? ($WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y);
+        $color_from = $color_from ?? $WT_STATS_CHART_COLOR1;
+        $color_to   = $color_to ?? $WT_STATS_CHART_COLOR2;
 
         $sizes    = explode('x', $size);
-        $tot_indi = $this->individual->totalIndividualsQuery();
-
-        $all_surnames = $this->surname->topSurnames($number_of_surnames, 0);
+        $tot_indi = $this->individualRepository->totalIndividualsQuery();
 
         if (empty($all_surnames)) {
             return '';
