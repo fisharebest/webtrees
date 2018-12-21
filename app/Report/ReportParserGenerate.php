@@ -34,6 +34,7 @@ use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Tree;
+use Illuminate\Support\Str;
 use stdClass;
 use Symfony\Component\Cache\Adapter\NullAdapter;
 use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
@@ -942,9 +943,7 @@ class ReportParserGenerate extends ReportParserBase
                 );
                 $name = strip_tags($name);
                 if (!empty($attrs['truncate'])) {
-                    if (mb_strlen($name) > $attrs['truncate']) {
-                        $name = mb_substr($name, 0, $attrs['truncate'] - 1) . '…';
-                    }
+                    $name = Str::limit($name, $attrs['truncate'], I18N::translate('…'));
                 } else {
                     $addname = $record->getAddName();
                     $addname = preg_replace(

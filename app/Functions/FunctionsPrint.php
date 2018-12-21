@@ -35,6 +35,7 @@ use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Services\ClipboardService;
 use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
+use Illuminate\Support\Str;
 use Ramsey\Uuid\Uuid;
 
 /**
@@ -102,7 +103,7 @@ class FunctionsPrint
             $first_line = '<a href="' . e($note->url()) . '">' . $note->getFullName() . '</a>';
         } else {
             [$text] = explode("\n", strip_tags($html));
-            $first_line = strlen($text) > 100 ? mb_substr($text, 0, 100) . I18N::translate('…') : $text;
+            $first_line = Str::limit($text, 100, I18N::translate('…'));
         }
 
         return

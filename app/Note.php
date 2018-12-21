@@ -17,6 +17,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Illuminate\Support\Str;
+
 /**
  * A GEDCOM note (NOTE) object.
  */
@@ -140,7 +142,7 @@ class Note extends GedcomRecord
             }
 
             [$text] = explode("\n", $text);
-            $this->addName('NOTE', strlen($text) > 100 ? mb_substr($text, 0, 100) . I18N::translate('…') : $text, $this->gedcom());
+            $this->addName('NOTE', Str::limit($text, 100, I18N::translate('…')), $this->gedcom());
         }
     }
 }
