@@ -244,10 +244,10 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
                 if ($object instanceof Individual || $object instanceof Family) {
                     $filetext .= $record . "\n";
                     $filetext .= "1 SOUR @WEBTREES@\n";
-                    $filetext .= '2 PAGE ' . WT_BASE_URL . $object->url() . "\n";
+                    $filetext .= '2 PAGE ' . $object->url() . "\n";
                 } elseif ($object instanceof Source) {
                     $filetext .= $record . "\n";
-                    $filetext .= '1 NOTE ' . WT_BASE_URL . $object->url() . "\n";
+                    $filetext .= '1 NOTE ' . $object->url() . "\n";
                 } elseif ($object instanceof Media) {
                     // Add the media files to the archive
                     foreach ($object->mediaFiles() as $media_file) {
