@@ -1,6 +1,9 @@
 CHANGE LOG
 ==========
 
+## 2.5.0 (2018-09-17)
+ - Calculate number of months in a given year
+
 ## 2.4.0 (2018-01-15)
  - PHP error messages changed slightly in 7.2.0
 

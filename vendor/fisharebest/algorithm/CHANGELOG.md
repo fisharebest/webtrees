@@ -1,6 +1,9 @@
 CHANGE LOG
 ==========
 
+## 1.5.1 (2018-12-24)
+ - Workaround for each() sometimes fails on PHP7.3
+
 ## 1.5.0 (2018-09-07)
  - Fix compatibility with PHP5.3
  - Adopt PSR12 code style
