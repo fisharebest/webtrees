@@ -86,10 +86,8 @@ class Dijkstra
     {
         $paths = array(array($target));
 
-        while (current($paths) !== false) {
-            $key = key($paths);
-            $path = current($paths);
-            next($paths);
+        for ($key = 0; isset($paths[$key]); ++$key) {
+            $path = $paths[$key];
 
             if (!empty($this->previous[$path[0]])) {
                 foreach ($this->previous[$path[0]] as $previous) {

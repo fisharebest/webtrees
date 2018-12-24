@@ -12,6 +12,7 @@ class EncodeTest extends \PHPUnit_Framework_TestCase
     private $png;
     private $gif;
     private $tif;
+    private $webp;
 
     public function setUp()
     {
@@ -19,6 +20,10 @@ class EncodeTest extends \PHPUnit_Framework_TestCase
         $this->jpg = $manager->canvas(100, 100)->encode('jpg');
         $this->png = $manager->canvas(100, 100)->encode('png');
         $this->gif = $manager->canvas(100, 100)->encode('gif');
+
+        if (function_exists('imagecreatefromwebp')) {
+            $this->webp = $manager->canvas(100, 100)->encode('webp');
+        }
 
         $this->manipulator = new Encode();
     }
@@ -47,6 +52,17 @@ class EncodeTest extends \PHPUnit_Framework_TestCase
         $this->assertSame('image/gif', $this->manipulator->setParams(['fm' => 'gif'])->run($this->jpg)->mime);
         $this->assertSame('image/gif', $this->manipulator->setParams(['fm' => 'gif'])->run($this->png)->mime);
         $this->assertSame('image/gif', $this->manipulator->setParams(['fm' => 'gif'])->run($this->gif)->mime);
+
+        if (function_exists('imagecreatefromwebp')) {
+            $this->assertSame('image/jpeg', $this->manipulator->setParams(['fm' => 'jpg'])->run($this->webp)->mime);
+            $this->assertSame('image/jpeg', $this->manipulator->setParams(['fm' => 'pjpg'])->run($this->webp)->mime);
+            $this->assertSame('image/png', $this->manipulator->setParams(['fm' => 'png'])->run($this->webp)->mime);
+            $this->assertSame('image/gif', $this->manipulator->setParams(['fm' => 'gif'])->run($this->webp)->mime);
+            $this->assertSame('image/webp', $this->manipulator->setParams(['fm' => 'webp'])->run($this->jpg)->mime);
+            $this->assertSame('image/webp', $this->manipulator->setParams(['fm' => 'webp'])->run($this->png)->mime);
+            $this->assertSame('image/webp', $this->manipulator->setParams(['fm' => 'webp'])->run($this->gif)->mime);
+            $this->assertSame('image/webp', $this->manipulator->setParams(['fm' => 'webp'])->run($this->webp)->mime);
+        }
     }
 
     public function testGetFormat()
@@ -57,6 +73,10 @@ class EncodeTest extends \PHPUnit_Framework_TestCase
             $mock->shouldReceive('mime')->andReturn('image/gif')->once();
             $mock->shouldReceive('mime')->andReturn('image/bmp')->once();
             $mock->shouldReceive('mime')->andReturn('image/jpeg')->twice();
+
+            if (function_exists('imagecreatefromwebp')) {
+                $mock->shouldReceive('mime')->andReturn('image/webp')->once();
+            }
         });
 
         $this->assertSame('jpg', $this->manipulator->setParams(['fm' => 'jpg'])->getFormat($image));
@@ -68,6 +88,10 @@ class EncodeTest extends \PHPUnit_Framework_TestCase
         $this->assertSame('jpg', $this->manipulator->setParams(['fm' => null])->getFormat($image));
         $this->assertSame('jpg', $this->manipulator->setParams(['fm' => ''])->getFormat($image));
         $this->assertSame('jpg', $this->manipulator->setParams(['fm' => 'invalid'])->getFormat($image));
+
+        if (function_exists('imagecreatefromwebp')) {
+            $this->assertSame('webp', $this->manipulator->setParams(['fm' => null])->getFormat($image));
+        }
     }
 
     public function testGetQuality()
