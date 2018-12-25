@@ -176,7 +176,7 @@ class HourglassChartController extends AbstractChartController
      *
      * @return void
      */
-    private function printDescendency($individual, $generation, int $generations, bool $show_spouse, bool $show_menu)
+    private function printDescendency(Individual $individual, int $generation, int $generations, bool $show_spouse, bool $show_menu)
     {
         static $lastGenSecondFam = false;
 
