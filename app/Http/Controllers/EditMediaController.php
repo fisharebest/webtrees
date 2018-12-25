@@ -598,6 +598,7 @@ class EditMediaController extends AbstractEditController
                         return $folder . $file;
                     }
                 } catch (FileException $ex) {
+                    // No file to upload?
                 }
 
                 return '';

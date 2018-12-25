@@ -108,6 +108,8 @@ class UpgradeService
                     Site::setPreference('LATEST_WT_VERSION_TIMESTAMP', (string) WT_TIMESTAMP);
                 }
             } catch (RequestException $ex) {
+                // Can't connect to the server?
+                // Use the existing information about latest versions.
             }
         }
 
