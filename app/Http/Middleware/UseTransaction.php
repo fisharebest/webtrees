@@ -18,7 +18,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Middleware;
 
 use Closure;
-use Fisharebest\Webtrees\Database;
+use Illuminate\Database\Capsule\Manager as DB;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Throwable;
@@ -37,25 +37,18 @@ class UseTransaction implements MiddlewareInterface
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $connected = Database::isConnected();
-        if ($connected) {
-            Database::beginTransaction();
-        }
-
         try {
+            DB::connection()->beginTransaction();
+
             $response = $next($request);
 
-            if ($connected) {
-                Database::commit();
-            }
-        } catch (Throwable $ex) {
-            if ($connected) {
-                Database::rollBack();
-            }
+            DB::connection()->commit();
 
-            throw $ex;
+            return $response;
+        } catch (Throwable $exception) {
+            DB::connection()->rollBack();
+
+            throw $exception;
         }
-
-        return $response;
     }
 }
