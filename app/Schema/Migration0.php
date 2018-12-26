@@ -17,9 +17,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Schema;
 
-use Fisharebest\Webtrees\Database;
-use Fisharebest\Webtrees\Module;
-use Fisharebest\Webtrees\Site;
+use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Schema\Blueprint;
 
 /**
  * Upgrade the database schema from version 0 (empty database) to version 1.
@@ -33,353 +32,385 @@ class Migration0 implements MigrationInterface
      */
     public function upgrade(): void
     {
-        Database::exec(
-            "CREATE TABLE IF NOT EXISTS `##gedcom` (" .
-            " gedcom_id     INTEGER AUTO_INCREMENT NOT NULL," .
-            " gedcom_name   VARCHAR(255)           NOT NULL," .
-            " sort_order    INTEGER                NOT NULL DEFAULT 0," .
-            " PRIMARY KEY                (gedcom_id)," .
-            " UNIQUE  KEY `##gedcom_ix1` (gedcom_name)," .
-            "         KEY `##gedcom_ix2` (sort_order)" .
-            ") COLLATE utf8_unicode_ci ENGINE=InnoDB"
-        );
-        Database::exec(
-            "CREATE TABLE IF NOT EXISTS `##site_setting` (" .
-            " setting_name  VARCHAR(32)  NOT NULL," .
-            " setting_value VARCHAR(255) NOT NULL," .
-            " PRIMARY KEY (setting_name)" .
-            ") COLLATE utf8_unicode_ci ENGINE=InnoDB"
-        );
-        Database::exec(
-            "CREATE TABLE IF NOT EXISTS `##gedcom_setting` (" .
-            " gedcom_id     INTEGER      NOT NULL," .
-            " setting_name  VARCHAR(32)  NOT NULL," .
-            " setting_value VARCHAR(255) NOT NULL," .
-            " PRIMARY KEY                        (gedcom_id, setting_name)," .
-            " FOREIGN KEY `##gedcom_setting_fk1` (gedcom_id) REFERENCES `##gedcom` (gedcom_id) /* ON DELETE CASCADE */" .
-            ") COLLATE utf8_unicode_ci ENGINE=InnoDB"
-        );
-        Database::exec(
-            "CREATE TABLE IF NOT EXISTS `##user` (" .
-            " user_id   INTEGER AUTO_INCREMENT NOT NULL," .
-            " user_name VARCHAR(32)            NOT NULL," .
-            " real_name VARCHAR(64)            NOT NULL," .
-            " email     VARCHAR(64)            NOT NULL," .
-            " password  VARCHAR(128)           NOT NULL," .
-            " PRIMARY KEY              (user_id)," .
-            " UNIQUE  KEY `##user_ix1` (user_name)," .
-            " UNIQUE  KEY `##user_ix2` (email)" .
-            ") COLLATE utf8_unicode_ci ENGINE=InnoDB"
-        );
-        Database::exec(
-            "CREATE TABLE IF NOT EXISTS `##user_setting` (" .
-            " user_id       INTEGER      NOT NULL," .
-            " setting_name  VARCHAR(32)  NOT NULL," .
-            " setting_value VARCHAR(255) NOT NULL," .
-            " PRIMARY KEY                      (user_id, setting_name)," .
-            " FOREIGN KEY `##user_setting_fk1` (user_id) REFERENCES `##user` (user_id) /* ON DELETE CASCADE */" .
-            ") COLLATE utf8_unicode_ci ENGINE=InnoDB"
-        );
-        Database::exec(
-            "CREATE TABLE IF NOT EXISTS `##user_gedcom_setting` (" .
-            " user_id       INTEGER      NOT NULL," .
-            " gedcom_id     INTEGER      NOT NULL," .
-            " setting_name  VARCHAR(32)  NOT NULL," .
-            " setting_value VARCHAR(255) NOT NULL," .
-            " PRIMARY KEY                             (user_id, gedcom_id, setting_name)," .
-            " FOREIGN KEY `##user_gedcom_setting_fk1` (user_id)   REFERENCES `##user` (user_id) /* ON DELETE CASCADE */," .
-            " FOREIGN KEY `##user_gedcom_setting_fk2` (gedcom_id) REFERENCES `##gedcom` (gedcom_id) /* ON DELETE CASCADE */" .
-            ") COLLATE utf8_unicode_ci ENGINE=InnoDB"
-        );
-        Database::exec(
-            "CREATE TABLE IF NOT EXISTS `##log` (" .
-            " log_id      INTEGER AUTO_INCREMENT NOT NULL," .
-            " log_time    TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP," .
-            " log_type    ENUM('auth', 'config', 'debug', 'edit', 'error', 'media', 'search') NOT NULL," .
-            " log_message TEXT         NOT NULL," .
-            " ip_address  VARCHAR(40)  NOT NULL," .
-            " user_id     INTEGER          NULL," .
-            " gedcom_id   INTEGER          NULL," .
-            " PRIMARY KEY             (log_id)," .
-            "         KEY `##log_ix1` (log_time)," .
-            "         KEY `##log_ix2` (log_type)," .
-            "         KEY `##log_ix3` (ip_address)," .
-            " FOREIGN KEY `##log_fk1` (user_id)   REFERENCES `##user`(user_id) /* ON DELETE SET NULL */," .
-            " FOREIGN KEY `##log_fk2` (gedcom_id) REFERENCES `##gedcom` (gedcom_id) /* ON DELETE SET NULL */" .
-            ") COLLATE utf8_unicode_ci ENGINE=InnoDB"
-        );
-        Database::exec(
-            "CREATE TABLE IF NOT EXISTS `##change` (" .
-            " change_id      INTEGER AUTO_INCREMENT                  NOT NULL," .
-            " change_time    TIMESTAMP                               NOT NULL DEFAULT CURRENT_TIMESTAMP," .
-            " status         ENUM('accepted', 'pending', 'rejected') NOT NULL DEFAULT 'pending'," .
-            " gedcom_id      INTEGER                                 NOT NULL," .
-            " xref           VARCHAR(20)                             NOT NULL," .
-            " old_gedcom     MEDIUMTEXT                              NOT NULL," .
-            " new_gedcom     MEDIUMTEXT                              NOT NULL," .
-            " user_id        INTEGER                                 NOT NULL," .
-            " PRIMARY KEY                (change_id)," .
-            "         KEY `##change_ix1` (gedcom_id, status, xref)," .
-            " FOREIGN KEY `##change_fk1` (user_id)   REFERENCES `##user` (user_id) /* ON DELETE RESTRICT */," .
-            " FOREIGN KEY `##change_fk2` (gedcom_id) REFERENCES `##gedcom` (gedcom_id) /* ON DELETE CASCADE */" .
-            ") COLLATE utf8_unicode_ci ENGINE=InnoDB"
-        );
-        Database::exec(
-            "CREATE TABLE IF NOT EXISTS `##message` (" .
-            " message_id INTEGER AUTO_INCREMENT NOT NULL," .
-            " sender     VARCHAR(64)            NOT NULL," . // username or email address
-            " ip_address VARCHAR(40)            NOT NULL," . // long enough for IPv6
-            " user_id    INTEGER                NOT NULL," .
-            " subject    VARCHAR(255)           NOT NULL," .
-            " body       TEXT                   NOT NULL," .
-            " created    TIMESTAMP              NOT NULL DEFAULT CURRENT_TIMESTAMP," .
-            " PRIMARY KEY                 (message_id)," .
-            " FOREIGN KEY `##message_fk1` (user_id)   REFERENCES `##user` (user_id) /* ON DELETE RESTRICT */" .
-            ") COLLATE utf8_unicode_ci ENGINE=InnoDB"
-        );
-        Database::exec(
-            "CREATE TABLE IF NOT EXISTS `##default_resn` (" .
-            " default_resn_id INTEGER AUTO_INCREMENT                             NOT NULL," .
-            " gedcom_id       INTEGER                                            NOT NULL," .
-            " xref            VARCHAR(20)                                            NULL," .
-            " tag_type        VARCHAR(15)                                            NULL," .
-            " resn            ENUM ('none', 'privacy', 'confidential', 'hidden') NOT NULL," .
-            " comment         VARCHAR(255)                                           NULL," .
-            " updated         TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP," .
-            " PRIMARY KEY                      (default_resn_id)," .
-            " UNIQUE  KEY `##default_resn_ix1` (gedcom_id, xref, tag_type)," .
-            " FOREIGN KEY `##default_resn_fk1` (gedcom_id)  REFERENCES `##gedcom` (gedcom_id)" .
-            ") ENGINE=InnoDB COLLATE=utf8_unicode_ci"
-        );
-        Database::exec(
-            "CREATE TABLE IF NOT EXISTS `##individuals` (" .
-            " i_id     VARCHAR(20)         NOT NULL," .
-            " i_file   INTEGER             NOT NULL," .
-            " i_rin    VARCHAR(20)         NOT NULL," .
-            " i_sex    ENUM('U', 'M', 'F') NOT NULL," .
-            " i_gedcom MEDIUMTEXT          NOT NULL," .
-            " PRIMARY KEY                     (i_id, i_file)," .
-            " UNIQUE  KEY `##individuals_ix1` (i_file, i_id)" .
-            ") COLLATE utf8_unicode_ci ENGINE=InnoDB"
-        );
-        Database::exec(
-            "CREATE TABLE IF NOT EXISTS `##families` (" .
-            " f_id      VARCHAR(20)  NOT NULL," .
-            " f_file    INTEGER      NOT NULL," .
-            " f_husb    VARCHAR(20)      NULL," .
-            " f_wife    VARCHAR(20)      NULL," .
-            " f_gedcom  MEDIUMTEXT   NOT NULL," .
-            " f_numchil INTEGER      NOT NULL," .
-            " PRIMARY KEY                  (f_id, f_file)," .
-            " UNIQUE  KEY `##families_ix1` (f_file, f_id)," .
-            "         KEY `##families_ix2` (f_husb)," .
-            "         KEY `##families_ix3` (f_wife)" .
-            ") COLLATE utf8_unicode_ci ENGINE=InnoDB"
-        );
-        Database::exec(
-            "CREATE TABLE IF NOT EXISTS `##places` (" .
-            " p_id          INTEGER AUTO_INCREMENT NOT NULL," .
-            " p_place       VARCHAR(150)               NULL," .
-            " p_parent_id   INTEGER                    NULL," .
-            " p_file        INTEGER               NOT  NULL," .
-            " p_std_soundex TEXT                       NULL," .
-            " p_dm_soundex  TEXT                       NULL," .
-            " PRIMARY KEY                (p_id)," .
-            "         KEY `##places_ix1` (p_file, p_place)," .
-            " UNIQUE  KEY `##places_ix2` (p_parent_id, p_file, p_place)" .
-            ") COLLATE utf8_unicode_ci ENGINE=InnoDB"
-        );
-        Database::exec(
-            "CREATE TABLE IF NOT EXISTS `##placelinks` (" .
-            " pl_p_id INTEGER NOT NULL," .
-            " pl_gid  VARCHAR(20)  NOT NULL," .
-            " pl_file INTEGER  NOT NULL," .
-            " PRIMARY KEY                    (pl_p_id, pl_gid, pl_file)," .
-            "         KEY `##placelinks_ix1` (pl_p_id)," .
-            "         KEY `##placelinks_ix2` (pl_gid)," .
-            "         KEY `##placelinks_ix3` (pl_file)" .
-            ") COLLATE utf8_unicode_ci ENGINE=InnoDB"
-        );
-        Database::exec(
-            "CREATE TABLE IF NOT EXISTS `##dates` (" .
-            " d_day        TINYINT     NOT NULL," .
-            " d_month      CHAR(5)         NULL," .
-            " d_mon        TINYINT     NOT NULL," .
-            " d_year       SMALLINT    NOT NULL," .
-            " d_julianday1 MEDIUMINT   NOT NULL," .
-            " d_julianday2 MEDIUMINT   NOT NULL," .
-            " d_fact       VARCHAR(15) NOT NULL," .
-            " d_gid        VARCHAR(20) NOT NULL," .
-            " d_file       INTEGER     NOT NULL," .
-            " d_type       ENUM ('@#DGREGORIAN@', '@#DJULIAN@', '@#DHEBREW@', '@#DFRENCH R@', '@#DHIJRI@', '@#DROMAN@', '@#DJALALI@') NOT NULL," .
-            " KEY `##dates_ix1` (d_day)," .
-            " KEY `##dates_ix2` (d_month)," .
-            " KEY `##dates_ix3` (d_mon)," .
-            " KEY `##dates_ix4` (d_year)," .
-            " KEY `##dates_ix5` (d_julianday1)," .
-            " KEY `##dates_ix6` (d_julianday2)," .
-            " KEY `##dates_ix7` (d_gid)," .
-            " KEY `##dates_ix8` (d_file)," .
-            " KEY `##dates_ix9` (d_type)," .
-            " KEY `##dates_ix10` (d_fact, d_gid)" .
-            ") COLLATE utf8_unicode_ci ENGINE=InnoDB"
-        );
-        Database::exec(
-            "CREATE TABLE IF NOT EXISTS `##media` (" .
-            " m_id       VARCHAR(20)            NOT NULL," .
-            " m_ext      VARCHAR(6)                 NULL," .
-            " m_type     VARCHAR(20)                NULL," .
-            " m_titl     VARCHAR(255)               NULL," .
-            " m_filename VARCHAR(512)               NULL," .
-            " m_file     INTEGER                NOT NULL," .
-            " m_gedcom   MEDIUMTEXT                 NULL," .
-            " PRIMARY KEY               (m_file, m_id)," .
-            " UNIQUE  KEY `##media_ix1` (m_id, m_file)," .
-            "         KEY `##media_ix2` (m_ext, m_type)," .
-            "         KEY `##media_ix3` (m_titl)" .
-            ") COLLATE utf8_unicode_ci ENGINE=InnoDB"
-        );
-        Database::exec(
-            "CREATE TABLE IF NOT EXISTS `##next_id` (" .
-            " gedcom_id   INTEGER     NOT NULL," .
-            " record_type VARCHAR(15) NOT NULL," .
-            " next_id     DECIMAL(20) NOT NULL," .
-            " PRIMARY KEY                 (gedcom_id, record_type)," .
-            " FOREIGN KEY `##next_id_fk1` (gedcom_id) REFERENCES `##gedcom` (gedcom_id) /* ON DELETE CASCADE */" .
-            ") COLLATE utf8_unicode_ci ENGINE=InnoDB"
-        );
-        Database::exec(
-            "CREATE TABLE IF NOT EXISTS `##other` (" .
-            " o_id     VARCHAR(20) NOT NULL," .
-            " o_file   INTEGER     NOT NULL," .
-            " o_type   VARCHAR(15) NOT NULL," .
-            " o_gedcom MEDIUMTEXT      NULL," .
-            " PRIMARY KEY               (o_id, o_file)," .
-            " UNIQUE  KEY `##other_ix1` (o_file, o_id)" .
-            ") COLLATE utf8_unicode_ci ENGINE=InnoDB"
-        );
-        Database::exec(
-            "CREATE TABLE IF NOT EXISTS `##sources` (" .
-            " s_id     VARCHAR(20)    NOT NULL," .
-            " s_file   INTEGER        NOT NULL," .
-            " s_name   VARCHAR(255)   NOT NULL," .
-            " s_gedcom MEDIUMTEXT     NOT NULL," .
-            " PRIMARY KEY                 (s_id, s_file)," .
-            " UNIQUE  KEY `##sources_ix1` (s_file, s_id)," .
-            "         KEY `##sources_ix2` (s_name)" .
-            ") COLLATE utf8_unicode_ci ENGINE=InnoDB"
-        );
-        Database::exec(
-            "CREATE TABLE IF NOT EXISTS `##link` (" .
-            " l_file    INTEGER     NOT NULL," .
-            " l_from    VARCHAR(20) NOT NULL," .
-            " l_type    VARCHAR(15) NOT NULL," .
-            " l_to      VARCHAR(20) NOT NULL," .
-            " PRIMARY KEY              (l_from, l_file, l_type, l_to)," .
-            " UNIQUE  KEY `##link_ix1` (l_to, l_file, l_type, l_from)" .
-            ") COLLATE utf8_unicode_ci ENGINE=InnoDB"
-        );
-        Database::exec(
-            "CREATE TABLE IF NOT EXISTS `##name` (" .
-            " n_file             INTEGER      NOT NULL," .
-            " n_id               VARCHAR(20)  NOT NULL," .
-            " n_num              INTEGER      NOT NULL," .
-            " n_type             VARCHAR(15)  NOT NULL," .
-            " n_sort             VARCHAR(255) NOT NULL," . // e.g. “GOGH,VINCENT WILLEM”
-            " n_full             VARCHAR(255) NOT NULL," . // e.g. “Vincent Willem van GOGH”
-            // These fields are only used for INDI records
-            " n_surname          VARCHAR(255)     NULL," . // e.g. “van GOGH”
-            " n_surn             VARCHAR(255)     NULL," . // e.g. “GOGH”
-            " n_givn             VARCHAR(255)     NULL," . // e.g. “Vincent Willem”
-            " n_soundex_givn_std VARCHAR(255)     NULL," .
-            " n_soundex_surn_std VARCHAR(255)     NULL," .
-            " n_soundex_givn_dm  VARCHAR(255)     NULL," .
-            " n_soundex_surn_dm  VARCHAR(255)     NULL," .
-            " PRIMARY KEY              (n_id, n_file, n_num)," .
-            "         KEY `##name_ix1` (n_full, n_id, n_file)," .
-            "         KEY `##name_ix2` (n_surn, n_file, n_type, n_id)," .
-            "         KEY `##name_ix3` (n_givn, n_file, n_type, n_id)" .
-            ") COLLATE utf8_unicode_ci ENGINE=InnoDB"
-        );
-        Database::exec(
-            "CREATE TABLE IF NOT EXISTS `##module` (" .
-            " module_name   VARCHAR(32)                 NOT NULL," .
-            " status        ENUM('enabled', 'disabled') NOT NULL DEFAULT 'enabled'," .
-            " tab_order     INTEGER                         NULL, " .
-            " menu_order    INTEGER                         NULL, " .
-            " sidebar_order INTEGER                         NULL," .
-            " PRIMARY KEY (module_name)" .
-            ") COLLATE utf8_unicode_ci ENGINE=InnoDB"
-        );
-        Database::exec(
-            "CREATE TABLE IF NOT EXISTS `##module_setting` (" .
-            " module_name   VARCHAR(32) NOT NULL," .
-            " setting_name  VARCHAR(32) NOT NULL," .
-            " setting_value MEDIUMTEXT  NOT NULL," .
-            " PRIMARY KEY                        (module_name, setting_name)," .
-            " FOREIGN KEY `##module_setting_fk1` (module_name) REFERENCES `##module` (module_name) /* ON DELETE CASCADE */" .
-            ") COLLATE utf8_unicode_ci ENGINE=InnoDB"
-        );
-        Database::exec(
-            "CREATE TABLE IF NOT EXISTS `##module_privacy` (" .
-            " module_name   VARCHAR(32) NOT NULL," .
-            " gedcom_id     INTEGER     NOT NULL," .
-            " component     ENUM('block', 'chart', 'menu', 'report', 'sidebar', 'tab', 'theme') NOT NULL," .
-            " access_level  TINYINT     NOT NULL," .
-            " PRIMARY KEY                        (module_name, gedcom_id, component)," .
-            " FOREIGN KEY `##module_privacy_fk1` (module_name) REFERENCES `##module` (module_name) /* ON DELETE CASCADE */," .
-            " FOREIGN KEY `##module_privacy_fk2` (gedcom_id)   REFERENCES `##gedcom` (gedcom_id)   /* ON DELETE CASCADE */" .
-            ") COLLATE utf8_unicode_ci ENGINE=InnoDB"
-        );
-        Database::exec(
-            "CREATE TABLE IF NOT EXISTS `##block` (" .
-            " block_id    INTEGER AUTO_INCREMENT NOT NULL," .
-            " gedcom_id   INTEGER                    NULL," .
-            " user_id     INTEGER                    NULL," .
-            " xref        VARCHAR(20)                NULL," .
-            " location    ENUM('main', 'side')       NULL," .
-            " block_order INTEGER                NOT NULL," .
-            " module_name VARCHAR(32)            NOT NULL," .
-            " PRIMARY KEY               (block_id)," .
-            " FOREIGN KEY `##block_fk1` (gedcom_id)   REFERENCES `##gedcom` (gedcom_id),  /* ON DELETE CASCADE */" .
-            " FOREIGN KEY `##block_fk2` (user_id)     REFERENCES `##user`   (user_id),    /* ON DELETE CASCADE */" .
-            " FOREIGN KEY `##block_fk3` (module_name) REFERENCES `##module` (module_name) /* ON DELETE CASCADE */" .
-            ") COLLATE utf8_unicode_ci ENGINE=InnoDB"
-        );
-        Database::exec(
-            "CREATE TABLE IF NOT EXISTS `##block_setting` (" .
-            " block_id      INTEGER     NOT NULL," .
-            " setting_name  VARCHAR(32) NOT NULL," .
-            " setting_value TEXT        NOT NULL," .
-            " PRIMARY KEY                       (block_id, setting_name)," .
-            " FOREIGN KEY `##block_setting_fk1` (block_id) REFERENCES `##block` (block_id) /* ON DELETE CASCADE */" .
-            ") COLLATE utf8_unicode_ci ENGINE=InnoDB"
-        );
-        Database::exec(
-            "CREATE TABLE IF NOT EXISTS `##hit_counter` (" .
-            " gedcom_id      INTEGER     NOT NULL," .
-            " page_name      VARCHAR(32) NOT NULL," .
-            " page_parameter VARCHAR(32) NOT NULL," .
-            " page_count     INTEGER     NOT NULL," .
-            " PRIMARY KEY                     (gedcom_id, page_name, page_parameter)," .
-            " FOREIGN KEY `##hit_counter_fk1` (gedcom_id) REFERENCES `##gedcom` (gedcom_id) /* ON DELETE CASCADE */" .
-            ") COLLATE utf8_unicode_ci ENGINE=InnoDB"
-        );
+        DB::schema()->create('gedcom', function (Blueprint $table): void {
+            $table->integer('gedcom_id', true);
+            $table->string('gedcom_name', 255);
+            $table->integer('sort_order')->default(0);
 
-        // Set the default site preferences
-        Site::setPreference('INDEX_DIRECTORY', 'data/');
-        Site::setPreference('USE_REGISTRATION_MODULE', '1');
-        Site::setPreference('ALLOW_USER_THEMES', '1');
-        Site::setPreference('ALLOW_CHANGE_GEDCOM', '1');
-        Site::setPreference('SMTP_ACTIVE', 'internal');
-        Site::setPreference('SMTP_HOST', 'localhost');
-        Site::setPreference('SMTP_PORT', '25');
-        Site::setPreference('SMTP_AUTH', '1');
-        Site::setPreference('SMTP_SSL', 'none');
-        Site::setPreference('SMTP_HELO', $_SERVER['SERVER_NAME']);
-        Site::setPreference('SMTP_FROM_NAME', $_SERVER['SERVER_NAME']);
+            $table->unique('gedcom_name');
+            $table->index('sort_order');
+        });
 
-        // Search for all installed modules, and enable them.
-        Module::getInstalledModules('enabled');
+        DB::schema()->create('site_setting', function (Blueprint $table): void {
+            $table->string('setting_name', 32);
+            $table->string('setting_value', 2000);
+
+            $table->primary('setting_name');
+        });
+
+        DB::schema()->create('gedcom_setting', function (Blueprint $table): void {
+            $table->integer('gedcom_id');
+            $table->string('setting_name', 32);
+            $table->string('setting_value', 255);
+
+            $table->primary(['gedcom_id', 'setting_name']);
+
+            $table->foreign('gedcom_id')->references('gedcom_id')->on('gedcom');
+        });
+
+        DB::schema()->create('user', function (Blueprint $table): void {
+            $table->integer('user_id', true);
+            $table->string('user_name', 32);
+            $table->string('real_name', 64);
+            $table->string('email', 64);
+            $table->string('password', 128);
+
+            $table->unique('user_name');
+            $table->unique('email');
+        });
+
+        DB::schema()->create('user_setting', function (Blueprint $table): void {
+            $table->integer('user_id');
+            $table->string('setting_name', 32);
+            $table->string('setting_value', 255);
+
+            $table->primary(['user_id', 'setting_name']);
+
+            $table->foreign('user_id')->references('user_id')->on('user');
+        });
+
+        DB::schema()->create('user_gedcom_setting', function (Blueprint $table): void {
+            $table->integer('user_id');
+            $table->integer('gedcom_id');
+            $table->string('setting_name', 32);
+            $table->string('setting_value', 255);
+
+            $table->primary(['user_id', 'gedcom_id', 'setting_name']);
+            $table->index('gedcom_id');
+
+            $table->foreign('user_id')->references('user_id')->on('user');
+            $table->foreign('gedcom_id')->references('gedcom_id')->on('gedcom');
+        });
+
+        DB::schema()->create('log', function (Blueprint $table): void {
+            $table->integer('log_id', true);
+            $table->timestamp('log_time')->useCurrent();
+            $table->enum('log_type', ['auth', 'config', 'debug', 'edit', 'error', 'media', 'search']);
+            $table->longText('log_message');
+            $table->ipAddress('ip_address');
+            $table->integer('user_id')->nullable();
+            $table->integer('gedcom_id')->nullable();
+
+            $table->index('log_time');
+            $table->index('log_type');
+            $table->index('ip_address');
+            $table->index('user_id');
+            $table->index('gedcom_id');
+
+            $table->foreign('user_id')->references('user_id')->on('user');
+            $table->foreign('gedcom_id')->references('gedcom_id')->on('gedcom');
+        });
+
+        DB::schema()->create('change', function (Blueprint $table): void {
+            $table->integer('change_id', true);
+            $table->timestamp('change_time')->useCurrent();
+            $table->enum('status', ['accepted', 'pending', 'rejected'])->default('pending');
+            $table->integer('gedcom_id');
+            $table->string('xref', 20);
+            $table->longText('old_gedcom');
+            $table->longText('new_gedcom');
+            $table->integer('user_id');
+
+            $table->index(['gedcom_id', 'status', 'xref']);
+            $table->index('user_id');
+
+            $table->foreign('user_id')->references('user_id')->on('user');
+            $table->foreign('gedcom_id')->references('gedcom_id')->on('gedcom');
+        });
+
+        DB::schema()->create('message', function (Blueprint $table): void {
+            $table->integer('message_id', true);
+            $table->string('sender', 64);
+            $table->ipAddress('ip_address');
+            $table->integer('user_id');
+            $table->string('subject', 255);
+            $table->longText('body');
+            $table->timestamp('created')->useCurrent();
+
+            $table->index('user_id');
+
+            $table->foreign('user_id')->references('user_id')->on('user');
+        });
+
+        DB::schema()->create('default_resn', function (Blueprint $table): void {
+            $table->integer('default_resn_id', true);
+            $table->integer('gedcom_id');
+            $table->string('xref', 20)->nullable();
+            $table->string('tag_type', 15)->nullable();
+            $table->enum('resn', ['none', 'privacy', 'confidential', 'hidden']);
+            $table->string('comment', 255)->nullable();
+            $table->timestamp('updated')->useCurrent();
+
+            $table->unique(['gedcom_id', 'xref', 'tag_type']);
+
+            $table->foreign('gedcom_id')->references('gedcom_id')->on('gedcom');
+        });
+
+        DB::schema()->create('individuals', function (Blueprint $table): void {
+            $table->string('i_id', 20);
+            $table->integer('i_file');
+            $table->string('i_rin', 20);
+            $table->enum('i_sex', ['U', 'M', 'F']);
+            $table->longText('i_gedcom');
+
+            $table->primary(['i_id', 'i_file']);
+            $table->unique(['i_file', 'i_id']);
+        });
+
+        DB::schema()->create('families', function (Blueprint $table): void {
+            $table->string('f_id', 20);
+            $table->integer('f_file');
+            $table->string('f_husb', 20)->nullable();
+            $table->string('f_wife', 20)->nullable();
+            $table->longText('f_gedcom');
+            $table->integer('f_numchil');
+
+            $table->primary(['f_id', 'f_file']);
+            $table->unique(['f_file', 'f_id']);
+            $table->index('f_husb');
+            $table->index('f_wife');
+        });
+
+        DB::schema()->create('places', function (Blueprint $table): void {
+            $table->integer('p_id', true);
+            $table->string('p_place', 150);
+            $table->integer('p_parent_id')->nullable();
+            $table->integer('p_file');
+            $table->longText('p_std_soundex')->nullable();
+            $table->longText('p_dm_soundex')->nullable();
+
+            $table->index(['p_file', 'p_place']);
+            $table->unique(['p_parent_id', 'p_file', 'p_place']);
+        });
+
+        DB::schema()->create('placelinks', function (Blueprint $table): void {
+            $table->integer('pl_p_id');
+            $table->string('pl_gid', 20);
+            $table->integer('pl_file');
+
+            $table->primary(['pl_p_id', 'pl_gid', 'pl_file']);
+            $table->index('pl_p_id');
+            $table->index('pl_gid');
+            $table->index('pl_file');
+        });
+
+        DB::schema()->create('dates', function (Blueprint $table): void {
+            $table->tinyInteger('d_day');
+            $table->char('d_month', 5)->nullable();
+            $table->tinyInteger('d_mon');
+            $table->smallInteger('d_year');
+            $table->mediumInteger('d_julianday1');
+            $table->mediumInteger('d_julianday2');
+            $table->string('d_fact', 15);
+            $table->string('d_gid', 20);
+            $table->integer('d_file');
+            $table->enum('d_type', ['@#DGREGORIAN@', '@#DJULIAN@', '@#DHEBREW@', '@#DFRENCH R@', '@#DHIJRI@', '@#DROMAN@', '@#DJALALI@']);
+
+            $table->index('d_day');
+            $table->index('d_month');
+            $table->index('d_mon');
+            $table->index('d_year');
+            $table->index('d_julianday1');
+            $table->index('d_julianday2');
+            $table->index('d_gid');
+            $table->index('d_file');
+            $table->index('d_type');
+            $table->index(['d_fact', 'd_gid']);
+        });
+
+        DB::schema()->create('media', function (Blueprint $table): void {
+            $table->string('m_id', 20);
+            $table->string('m_ext', 6)->nullable();
+            $table->string('m_type', 20)->nullable();
+            $table->string('m_titl', 255)->nullable();
+            $table->string('m_filename', 512)->nullable();
+            $table->integer('m_file');
+            $table->longText('m_gedcom')->nullable();
+
+            $table->primary(['m_file', 'm_id']);
+            $table->unique(['m_id', 'm_file']);
+            $table->index(['m_ext', 'm_type']);
+        });
+
+        DB::schema()->create('next_id', function (Blueprint $table): void {
+            $table->integer('gedcom_id');
+            $table->string('record_type', 15);
+            $table->decimal('next_id', 20, 0);
+
+            $table->primary(['gedcom_id', 'record_type']);
+
+            $table->foreign('gedcom_id')->references('gedcom_id')->on('gedcom');
+        });
+
+        DB::schema()->create('other', function (Blueprint $table): void {
+            $table->string('o_id', 20);
+            $table->integer('o_file');
+            $table->string('o_type', 15);
+            $table->longText('o_gedcom');
+
+            $table->primary(['o_id', 'o_file']);
+            $table->unique(['o_file', 'o_id']);
+        });
+
+        DB::schema()->create('sources', function (Blueprint $table): void {
+            $table->string('s_id', 20);
+            $table->integer('s_file');
+            $table->string('s_name', 255);
+            $table->longText('s_gedcom');
+
+            $table->primary(['s_id', 's_file']);
+            $table->unique(['s_file', 's_id']);
+            $table->index('s_name');
+        });
+
+        DB::schema()->create('link', function (Blueprint $table): void {
+            $table->integer('l_file');
+            $table->string('l_from', 20);
+            $table->string('l_type', 15);
+            $table->string('l_to', 20);
+
+            $table->primary(['l_from', 'l_file', 'l_type', 'l_to']);
+            $table->unique(['l_to', 'l_file', 'l_type', 'l_from']);
+        });
+
+        DB::schema()->create('name', function (Blueprint $table): void {
+            $table->integer('n_file');
+            $table->string('n_id', 20);
+            $table->integer('n_num');
+            $table->string('n_type', 15);
+            $table->string('n_sort', 255);
+            $table->string('n_full', 255);
+            $table->string('n_surname', 255)->nullable();
+            $table->string('n_surn', 255)->nullable();
+            $table->string('n_givn', 255)->nullable();
+            $table->string('n_soundex_givn_std', 255)->nullable();
+            $table->string('n_soundex_surn_std', 255)->nullable();
+            $table->string('n_soundex_givn_dm', 255)->nullable();
+            $table->string('n_soundex_surn_dm', 255)->nullable();
+
+            $table->primary(['n_id', 'n_file', 'n_num']);
+            $table->index(['n_full', 'n_id', 'n_file']);
+            $table->index(['n_surn', 'n_file', 'n_type', 'n_id']);
+            $table->index(['n_givn', 'n_file', 'n_type', 'n_id']);
+        });
+
+        DB::schema()->create('module', function (Blueprint $table): void {
+            $table->string('module_name', 32);
+            $table->enum('status', ['enabled', 'disabled'])->default('enabled');
+            $table->integer('tab_order')->nullable();
+            $table->integer('menu_order')->nullable();
+            $table->integer('sidebar_order')->nullable();
+
+            $table->primary('module_name');
+        });
+
+        DB::schema()->create('module_setting', function (Blueprint $table): void {
+            $table->string('module_name', 32);
+            $table->string('setting_name', 32);
+            $table->longText('setting_value');
+
+            $table->primary(['module_name', 'setting_name']);
+
+            $table->foreign('module_name')->references('module_name')->on('module');
+        });
+
+        DB::schema()->create('module_privacy', function (Blueprint $table): void {
+            $table->string('module_name', 32);
+            $table->integer('gedcom_id');
+            $table->enum('component', ['block', 'chart', 'menu', 'report', 'sidebar', 'tab', 'theme']);
+            $table->tinyInteger('access_level');
+
+            $table->primary(['module_name', 'gedcom_id', 'component']);
+            $table->unique(['gedcom_id', 'module_name', 'component']);
+
+            $table->foreign('module_name')->references('module_name')->on('module');
+            $table->foreign('gedcom_id')->references('gedcom_id')->on('gedcom');
+        });
+
+        DB::schema()->create('block', function (Blueprint $table): void {
+            $table->integer('block_id', true);
+            $table->integer('gedcom_id')->nullable();
+            $table->integer('user_id')->nullable();
+            $table->string('xref', 20)->nullable();
+            $table->enum('location', ['main', 'side'])->nullable();
+            $table->integer('block_order');
+            $table->string('module_name', 32);
+
+            $table->index('module_name');
+            $table->index('gedcom_id');
+            $table->index('user_id');
+
+            $table->foreign('module_name')->references('module_name')->on('module');
+            $table->foreign('gedcom_id')->references('gedcom_id')->on('gedcom');
+            $table->foreign('user_id')->references('user_id')->on('user');
+        });
+
+        DB::schema()->create('block_setting', function (Blueprint $table): void {
+            $table->integer('block_id');
+            $table->string('setting_name', 32);
+            $table->longText('setting_value');
+
+            $table->primary(['block_id', 'setting_name']);
+
+            $table->foreign('block_id')->references('block_id')->on('block');
+        });
+
+        DB::schema()->create('hit_counter', function (Blueprint $table): void {
+            $table->integer('gedcom_id');
+            $table->string('page_name', 32);
+            $table->string('page_parameter', 32);
+            $table->integer('page_count');
+
+            $table->primary(['gedcom_id', 'page_name', 'page_parameter']);
+
+            $table->foreign('gedcom_id')->references('gedcom_id')->on('gedcom');
+        });
+
+        DB::schema()->create('session', function (Blueprint $table): void {
+            $table->string('session_id', 32);
+            $table->timestamp('session_time')->useCurrent();
+            $table->integer('user_id');
+            $table->ipAddress('ip_address');
+            $table->binary('session_data');
+
+            $table->primary('session_id');
+            $table->index('session_time');
+            $table->index(['user_id', 'ip_address']);
+        });
+
+        // See https://github.com/laravel/framework/issues/3544
+        if (DB::connection()->getDriverName() === 'mysql') {
+            $table = DB::connection()->getSchemaGrammar()->wrapTable('session');
+            $sql   = 'ALTER TABLE ' . $table . ' MODIFY session_data LONGBLOB';
+            DB::connection()->statement($sql);
+        }
+
+        DB::schema()->create('gedcom_chunk', function (Blueprint $table): void {
+            $table->integer('gedcom_chunk_id', true);
+            $table->integer('gedcom_id');
+            $table->binary('chunk_data');
+            $table->boolean('imported')->default(0);
+
+            $table->index(['gedcom_id', 'imported']);
+
+            $table->foreign('gedcom_id')->references('gedcom_id')->on('gedcom');
+        });
+
+        // See https://github.com/laravel/framework/issues/3544
+        if (DB::connection()->getDriverName() === 'mysql') {
+            $table = DB::connection()->getSchemaGrammar()->wrapTable('gedcom_chunk');
+            $sql   = 'ALTER TABLE ' . $table . ' MODIFY chunk_data LONGBLOB';
+            DB::connection()->statement($sql);
+        }
     }
 }

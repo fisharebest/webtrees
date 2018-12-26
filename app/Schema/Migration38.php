@@ -17,8 +17,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Schema;
 
-use Fisharebest\Webtrees\Database;
-use PDOException;
+use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Schema\Blueprint;
 
 /**
  * Upgrade the database schema from version 38 to version 39.
@@ -32,75 +32,33 @@ class Migration38 implements MigrationInterface
      */
     public function upgrade(): void
     {
-        // The geographic data is now handled by the core code.
-        // The following migrations were once part of the old googlemap module.
-        try {
-            // Create the tables, as per PhpGedView 4.2.1
-            Database::exec(
-                "CREATE TABLE IF NOT EXISTS `##placelocation` (" .
-                " pl_id        INTEGER      NOT NULL," .
-                " pl_parent_id INTEGER          NULL," .
-                " pl_level     INTEGER          NULL," .
-                " pl_place     VARCHAR(255)     NULL," .
-                " pl_long      VARCHAR(30)      NULL," .
-                " pl_lati      VARCHAR(30)      NULL," .
-                " pl_zoom      INTEGER          NULL," .
-                " pl_icon      VARCHAR(255)     NULL," .
-                " PRIMARY KEY     (pl_id)," .
-                "         KEY ix1 (pl_level)," .
-                "         KEY ix2 (pl_long)," .
-                "         KEY ix3 (pl_lati)," .
-                "         KEY ix4 (pl_place)," .
-                "         KEY ix5 (pl_parent_id)" .
-                ") COLLATE utf8_unicode_ci ENGINE=InnoDB"
-            );
-        } catch (PDOException $ex) {
-            // Already done?
+        // This table was previously created by the googlemap module in 1.7.9.
+        // These migrations are now part of the core code.
+
+        if (!DB::schema()->hasTable('placelocation')) {
+            DB::schema()->create('placelocation', function (Blueprint $table): void {
+                $table->integer('pl_id')->primary();
+                $table->integer('pl_parent_id');
+                $table->integer('pl_level');
+                $table->string('pl_place', 255)->index();
+                $table->string('pl_long', 30);
+                $table->string('pl_lati', 30);
+                $table->integer('pl_zoom');
+                $table->string('pl_icon', 255);
+
+                $table->unique(['pl_parent_id', 'pl_place']);
+            });
         }
 
-        try {
-            Database::exec(
-                "ALTER TABLE `##placelocation` ADD (" .
-                " pl_media      VARCHAR(60)     NULL," .
-                " sv_long       FLOAT           NOT NULL DEFAULT 0," .
-                " sv_lati       FLOAT           NOT NULL DEFAULT 0," .
-                " sv_bearing    FLOAT           NOT NULL DEFAULT 0," .
-                " sv_elevation  FLOAT           NOT NULL DEFAULT 0," .
-                " sv_zoom       FLOAT           NOT NULL DEFAULT 1" .
-                ")"
-            );
-        } catch (PDOException $ex) {
-            // Already done?
+        if (DB::schema()->hasColumn('placelocation', 'pl_media')) {
+            DB::schema()->table('placelocation', function (Blueprint $table): void {
+                $table->dropColumn('pl_media');
+                $table->dropColumn('sv_long');
+                $table->dropColumn('sv_lati');
+                $table->dropColumn('sv_bearing');
+                $table->dropColumn('sv_elevation');
+                $table->dropColumn('sv_zoom');
+            });
         }
-
-        try {
-            Database::exec(
-                "ALTER TABLE `##placelocation`" .
-                " DROP COLUMN pl_media," .
-                " DROP COLUMN sv_long," .
-                " DROP COLUMN sv_lati," .
-                " DROP COLUMN sv_bearing," .
-                " DROP COLUMN sv_elevation," .
-                " DROP COLUMN sv_zoom," .
-                " DROP INDEX ix1," .
-                " DROP INDEX ix2," .
-                " DROP INDEX ix3," .
-                " DROP INDEX ix4," .
-                " DROP INDEX ix5," .
-                " ADD UNIQUE INDEX ix1 (pl_parent_id, pl_place)," .
-                " ADD INDEX ix2 (pl_parent_id)," .
-                " ADD INDEX ix3 (pl_place)"
-            );
-        } catch (PDOException $ex) {
-            // Already done?
-        }
-
-        // Convert flag icons from .gif to .png
-        Database::exec("UPDATE `##placelocation` SET pl_icon=REPLACE(pl_icon, '.gif', '.png')");
-
-        // Delete old settings
-        Database::exec("DELETE FROM `##module_setting` WHERE module_name='googlemap'");
-        Database::exec("DELETE FROM `##module_privacy` WHERE module_name='googlemap'");
-        Database::exec("DELETE FROM `##module` WHERE module_name='googlemap'");
     }
 }

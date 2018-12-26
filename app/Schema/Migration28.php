@@ -17,10 +17,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Schema;
 
-use Fisharebest\Webtrees\Database;
-
 /**
- * Upgrade the database schema from version 28 to version 29.
+ * Upgrade the database schema from version 28 to version 29 (webtrees 1.6.1).
  */
 class Migration28 implements MigrationInterface
 {
@@ -31,9 +29,7 @@ class Migration28 implements MigrationInterface
      */
     public function upgrade(): void
     {
-        // Earlier versions used the wrong month number for Adar in non-leap years
-        Database::exec(
-            "UPDATE `##dates` SET d_mon = 7 WHERE d_mon = 6 && d_type = '@#DHEBREW@' AND MOD(7 * d_year + 1, 19) >= 7"
-        );
+        // These migrations have been merged into migration 0.
+        // Direct upgrade from webtrees < 1.7.9 is not supported.
     }
 }

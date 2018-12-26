@@ -17,12 +17,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Schema;
 
-use Fisharebest\Webtrees\Database;
-use Fisharebest\Webtrees\DebugBar;
-use PDOException;
-
 /**
- * Upgrade the database schema from version 8 to version 9.
+ * Upgrade the database schema from version 8 to version 9 (webtrees 1.1.0).
  */
 class Migration8 implements MigrationInterface
 {
@@ -33,13 +29,7 @@ class Migration8 implements MigrationInterface
      */
     public function upgrade(): void
     {
-        // Add support for the persian/jalali calendar
-        try {
-            Database::exec(
-                "ALTER TABLE `##dates` CHANGE d_type d_type ENUM('@#DGREGORIAN@', '@#DJULIAN@', '@#DHEBREW@', '@#DFRENCH R@', '@#DHIJRI@', '@#DROMAN@', '@#DJALALI@')"
-            );
-        } catch (PDOException $ex) {
-            // Already been run?
-        }
+        // These migrations have been merged into migration 0.
+        // Direct upgrade from webtrees < 1.7.9 is not supported.
     }
 }

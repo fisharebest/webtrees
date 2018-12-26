@@ -17,12 +17,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Schema;
 
-use Fisharebest\Webtrees\Database;
-use Fisharebest\Webtrees\DebugBar;
-use PDOException;
-
 /**
- * Upgrade the database schema from version 9 to version 10.
+ * Upgrade the database schema from version 9 to version 10 (webtrees 1.1.2).
  */
 class Migration9 implements MigrationInterface
 {
@@ -33,22 +29,7 @@ class Migration9 implements MigrationInterface
      */
     public function upgrade(): void
     {
-        // Change index on name table
-        try {
-            Database::exec(
-                "ALTER TABLE `##dates` CHANGE d_type d_type ENUM('@#DGREGORIAN@', '@#DJULIAN@', '@#DHEBREW@', '@#DFRENCH R@', '@#DHIJRI@', '@#DROMAN@', '@#DJALALI@')"
-            );
-        } catch (PDOException $ex) {
-            // Already been run?
-        }
-
-        try {
-            // The INDILIST and FAMLIST scripts have been rewritten to use this index
-            Database::exec(
-                "ALTER TABLE `##name` DROP INDEX ix2, ADD INDEX ix2 (n_surn, n_file, n_type, n_id), ADD INDEX ix3 (n_givn, n_file, n_type, n_id)"
-            );
-        } catch (PDOException $ex) {
-            // Already been run?
-        }
+        // These migrations have been merged into migration 0.
+        // Direct upgrade from webtrees < 1.7.9 is not supported.
     }
 }

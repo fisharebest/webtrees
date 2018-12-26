@@ -17,10 +17,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Schema;
 
-use Fisharebest\Webtrees\Database;
-
 /**
- * Upgrade the database schema from version 36 to version 37.
+ * Upgrade the database schema from version 36 to version 37 (webtrees 1.7.8).
  */
 class Migration36 implements MigrationInterface
 {
@@ -31,9 +29,7 @@ class Migration36 implements MigrationInterface
      */
     public function upgrade(): void
     {
-        // IPv6 addresses can be up to 45 characters.
-        Database::exec("ALTER TABLE `##log`     CHANGE ip_address ip_address VARCHAR(45) NOT NULL");
-        Database::exec("ALTER TABLE `##message` CHANGE ip_address ip_address VARCHAR(45) NOT NULL");
-        Database::exec("ALTER TABLE `##session` CHANGE ip_address ip_address VARCHAR(45) NOT NULL");
+        // These migrations have been merged into migration 0.
+        // Direct upgrade from webtrees < 1.7.9 is not supported.
     }
 }

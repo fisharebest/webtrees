@@ -17,19 +17,25 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Schema;
 
+use Illuminate\Database\Capsule\Manager as DB;
+
 /**
- * Upgrade the database schema from version 23 to version 24.
+ * Populate the gedcom table
  */
-class Migration23 implements MigrationInterface
+class SeedGedcomTable implements SeedInterface
 {
     /**
-     * Upgrade to to the next version.
+     *  Run the seeder.
      *
      * @return void
      */
-    public function upgrade(): void
+    public function run(): void
     {
-        // These migrations have been merged into migration 0.
-        // Direct upgrade from webtrees < 1.7.9 is not supported.
+        // Add a "default" tree, to store default settings
+        DB::table('gedcom')->updateOrInsert([
+            'gedcom_id'   => -1,
+        ], [
+            'gedcom_name'  => 'DEFAULT_TREE',
+        ]);
     }
 }

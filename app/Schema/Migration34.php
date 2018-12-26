@@ -17,11 +17,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Schema;
 
-use Fisharebest\Webtrees\Database;
-use Fisharebest\Webtrees\Module;
-
 /**
- * Upgrade the database schema from version 34 to version 35.
+ * Upgrade the database schema from version 34 to version 35 (webtrees 1.7.5).
  */
 class Migration34 implements MigrationInterface
 {
@@ -32,12 +29,7 @@ class Migration34 implements MigrationInterface
      */
     public function upgrade(): void
     {
-        // New modules (charts) have been added.
-        Module::getInstalledModules('enabled');
-
-        // Delete old/unused settings
-        Database::exec(
-            "DELETE FROM `##gedcom_setting` WHERE setting_name IN ('COMMON_NAMES_ADD', 'COMMON_NAMES_REMOVE', 'COMMON_NAMES_THRESHOLD')"
-        );
+        // These migrations have been merged into migration 0.
+        // Direct upgrade from webtrees < 1.7.9 is not supported.
     }
 }

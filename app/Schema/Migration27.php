@@ -17,8 +17,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Schema;
 
-use Fisharebest\Webtrees\Database;
-
 /**
  * Upgrade the database schema from version 27 to version 28.
  */
@@ -31,12 +29,7 @@ class Migration27 implements MigrationInterface
      */
     public function upgrade(): void
     {
-        // Delete old/unused settings
-        Database::exec(
-            "DELETE FROM `##gedcom_setting` WHERE setting_name IN ('USE_GEONAMES')"
-        );
-
-        // Originally, this updated wt_site_access_rule,
-        // however this table now gets deleted in Migration37.
+        // These migrations have been merged into migration 0.
+        // Direct upgrade from webtrees < 1.7.9 is not supported.
     }
 }

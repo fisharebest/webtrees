@@ -17,8 +17,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Schema;
 
-use Fisharebest\Webtrees\Database;
-
 /**
  * Upgrade the database schema from version 29 to version 30.
  */
@@ -31,40 +29,7 @@ class Migration29 implements MigrationInterface
      */
     public function upgrade(): void
     {
-        // No longer used
-        Database::exec("DELETE FROM `##user_setting` WHERE setting_name IN ('editaccount')");
-        Database::exec("DELETE FROM `##gedcom_setting` WHERE setting_name IN ('SHOW_STATS')");
-        Database::exec("DELETE FROM `##site_setting` WHERE setting_name IN ('REQUIRE_ADMIN_AUTH_REGISTRATION')");
-
-        // Originally, this updated entries into wt_site_access_rule,
-        // however this table now gets deleted in Migration37.
-
-        // Embedded variables are based on function names - which were renamed for PSR2
-        Database::exec(
-            "UPDATE `##block_setting` " .
-            " JOIN `##block` USING (block_id)" .
-            " SET setting_value = REPLACE(setting_value, '#WT_VERSION#', '#webtreesVersion#')" .
-            " WHERE setting_name = 'html' AND module_name = 'html'"
-        );
-        Database::exec(
-            "UPDATE `##block_setting` " .
-            " JOIN `##block` USING (block_id)" .
-            " SET setting_value = REPLACE(setting_value, '#browserTime24#', '#browserTime#')" .
-            " WHERE setting_name = 'html' AND module_name = 'html'"
-        );
-
-        // Language settings have changed from locale (en_GB) to language tag (en-GB)
-        Database::exec(
-            "UPDATE `##gedcom_setting` SET setting_value = REPLACE(setting_value, '_', '-') WHERE setting_name = 'language'"
-        );
-        Database::exec(
-            "UPDATE `##site_setting` SET setting_value = REPLACE(setting_value, '_', '-') WHERE setting_name = 'language'"
-        );
-        Database::exec(
-            "UPDATE `##user_setting` SET setting_value = REPLACE(setting_value, '_', '-') WHERE setting_name = 'language'"
-        );
-        Database::exec(
-            "UPDATE `##block_setting` SET setting_value = REPLACE(setting_value, '_', '-') WHERE setting_name = 'languages'"
-        );
+        // These migrations have been merged into migration 0.
+        // Direct upgrade from webtrees < 1.7.9 is not supported.
     }
 }

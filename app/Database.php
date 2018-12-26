@@ -117,10 +117,11 @@ class Database
             'database'       => $config['dbname'],
             'username'       => $config['dbuser'],
             'password'       => $config['dbpass'],
-            'charset'        => 'utf8',
-            'collation'      => 'utf8_unicode_ci',
             'prefix'         => $config['tblpfx'],
             'prefix_indexes' => true,
+            'charset'        => 'utf8',
+            'collation'      => 'utf8_unicode_ci',
+            'enigne'         => 'InnoDB',
         ]);
         $capsule->setAsGlobal();
     }

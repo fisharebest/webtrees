@@ -17,10 +17,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Schema;
 
-use Fisharebest\Webtrees\Database;
-
 /**
- * Upgrade the database schema from version 10 to version 11.
+ * Upgrade the database schema from version 10 to version 11 (webtrees 1.2.0).
  */
 class Migration10 implements MigrationInterface
 {
@@ -31,10 +29,7 @@ class Migration10 implements MigrationInterface
      */
     public function upgrade(): void
     {
-        // Delete old configuration setting
-        Database::exec("DELETE FROM `##gedcom_setting` WHERE setting_name IN ('SEARCH_FACTS_DEFAULT', 'DISPLAY_JEWISH_GERESHAYIM', 'DISPLAY_JEWISH_THOUSANDS')");
-
-        // Increase the password column from 64 to 128 characters
-        Database::exec("ALTER TABLE `##user` CHANGE password password VARCHAR(128) COLLATE utf8_unicode_ci NOT NULL");
+        // These migrations have been merged into migration 0.
+        // Direct upgrade from webtrees < 1.7.9 is not supported.
     }
 }

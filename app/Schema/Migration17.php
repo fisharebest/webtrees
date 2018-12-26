@@ -18,7 +18,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Schema;
 
 /**
- * Upgrade the database schema from version 17 to version 18.
+ * Upgrade the database schema from version 17 to version 18 (webtrees 1.3.0).
  */
 class Migration17 implements MigrationInterface
 {

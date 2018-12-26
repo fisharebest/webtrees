@@ -17,24 +17,11 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Schema;
 
-use Fisharebest\Webtrees\Database;
-use Fisharebest\Webtrees\Site;
-use PDOException;
-
 /**
- * Upgrade the database schema from version 31 to version 32.
+ * Upgrade the database schema from version 31 to version 32  (webtrees 1.7.2).
  */
 class Migration31 implements MigrationInterface
 {
-    /** @var string[] Updated language codes */
-    private $languages = [
-        'en_AU' => 'en-AU',
-        'en_GB' => 'en-GB',
-        'en_US' => 'en-US',
-        'fr_CA' => 'fr-CA',
-        'pt_BR' => 'pt-BR',
-    ];
-
     /**
      * Upgrade to to the next version
      *
@@ -42,47 +29,7 @@ class Migration31 implements MigrationInterface
      */
     public function upgrade(): void
     {
-        $index_dir = Site::getPreference('INDEX_DIRECTORY');
-
-        // Due to the language code changes in 1.7.0, we need to update some other settings
-        foreach ($this->languages as $old => $new) {
-            try {
-                Database::prepare(
-                    "UPDATE `##site_setting` SET setting_name = REPLACE(setting_name, :old, :new) " .
-                    "WHERE setting_name LIKE 'WELCOME_TEXT_AUTH_MODE_%'"
-                )->execute([
-                    'old' => $old,
-                    'new' => $new,
-                ]);
-            } catch (PDOException $ex) {
-                // Duplicate key? Already done?
-            }
-
-            Database::prepare(
-                "UPDATE `##block_setting` SET setting_value = REPLACE(setting_value, :old, :new) " .
-                "WHERE setting_name = 'languages'"
-            )->execute([
-                'old' => $old,
-                'new' => $new,
-            ]);
-
-            // Historical fact files
-            if (file_exists($index_dir . 'histo.' . $old . '.php') && !file_exists($index_dir . 'histo.' . $new . '.php')) {
-                rename($index_dir . 'histo.' . $old . '.php', $index_dir . 'histo.' . $new . '.php');
-            }
-
-            // Language files
-            if (file_exists($index_dir . 'language/' . $old . '.php') && !file_exists($index_dir . 'language/' . $new . '.php')) {
-                rename($index_dir . 'language/' . $old . '.php', $index_dir . 'language/' . $new . '.php');
-            }
-
-            if (file_exists($index_dir . 'language/' . $old . '.csv') && !file_exists($index_dir . 'language/' . $new . '.csv')) {
-                rename($index_dir . 'language/' . $old . '.csv', $index_dir . 'language/' . $new . '.csv');
-            }
-
-            if (file_exists($index_dir . 'language/' . $old . '.mo') && !file_exists($index_dir . 'language/' . $new . '.mo')) {
-                rename($index_dir . 'language/' . $old . '.mo', $index_dir . 'language/' . $new . '.mo');
-            }
-        }
+        // These migrations have been merged into migration 0.
+        // Direct upgrade from webtrees < 1.7.9 is not supported.
     }
 }

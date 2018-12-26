@@ -4,9 +4,9 @@
     <?= I18N::translate('An unexpected database error occurred.') ?>
 </p>
 
-<pre>
-    <?= $error ?>
-</pre>
+<pre><?= $exception->getMessage() ?></pre>
+
+<pre><?= $exception->getTraceAsString() ?></pre>
 
 <p>
     <?= I18N::translate('The webtrees developers would be very interested to learn about this error. If you contact them, they will help you resolve the problem.') ?>

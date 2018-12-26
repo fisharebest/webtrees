@@ -17,9 +17,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Schema;
 
-use Fisharebest\Webtrees\Database;
-use PDOException;
-
 /**
  * Upgrade the database schema from version 13 to version 14.
  */
@@ -32,11 +29,7 @@ class Migration13 implements MigrationInterface
      */
     public function upgrade(): void
     {
-        // Remove the i_isdead column
-        try {
-            Database::exec("ALTER TABLE `##individuals` DROP i_isdead");
-        } catch (PDOException $ex) {
-            // Already done this?
-        }
+        // These migrations have been merged into migration 0.
+        // Direct upgrade from webtrees < 1.7.9 is not supported.
     }
 }

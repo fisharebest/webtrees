@@ -31,24 +31,6 @@ use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
  */
 class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterface
 {
-    // How to update the database schema for this module
-    const SCHEMA_TARGET_VERSION   = 3;
-    const SCHEMA_SETTING_NAME     = 'NB_SCHEMA_VERSION';
-    const SCHEMA_MIGRATION_PREFIX = '\Fisharebest\Webtrees\Module\FamilyTreeNews\Schema';
-
-    /**
-     * Create a new module.
-     *
-     * @param string $directory Where is this module installed
-     */
-    public function __construct(string $directory)
-    {
-        parent::__construct($directory);
-
-        // Create/update the database tables.
-        Database::updateSchema(self::SCHEMA_MIGRATION_PREFIX, self::SCHEMA_SETTING_NAME, self::SCHEMA_TARGET_VERSION);
-    }
-
     /**
      * How should this module be labelled on tabs, menus, etc.?
      *

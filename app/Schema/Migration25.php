@@ -17,10 +17,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Schema;
 
-use Fisharebest\Webtrees\Database;
-
 /**
- * Upgrade the database schema from version 25 to version 26.
+ * Upgrade the database schema from version 25 to version 26 (webtrees 1.4.5).
  */
 class Migration25 implements MigrationInterface
 {
@@ -31,12 +29,7 @@ class Migration25 implements MigrationInterface
      */
     public function upgrade(): void
     {
-        // - delete unused settings and update indexes
-        Database::exec(
-            "DELETE FROM `##site_setting` WHERE setting_name IN ('WELCOME_TEXT_CUST_HEAD')"
-        );
-
-        // Originally, this inserted entries into wt_site_access_rule,
-        // however this table now gets deleted in Migration37.
+        // These migrations have been merged into migration 0.
+        // Direct upgrade from webtrees < 1.7.9 is not supported.
     }
 }

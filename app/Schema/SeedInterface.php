@@ -18,18 +18,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Schema;
 
 /**
- * Upgrade the database schema from version 23 to version 24.
+ * Populate database tables.
  */
-class Migration23 implements MigrationInterface
+interface SeedInterface
 {
     /**
-     * Upgrade to to the next version.
+     *  Run the seeder.
      *
      * @return void
      */
-    public function upgrade(): void
-    {
-        // These migrations have been merged into migration 0.
-        // Direct upgrade from webtrees < 1.7.9 is not supported.
-    }
+    public function run(): void;
 }

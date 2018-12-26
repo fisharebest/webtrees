@@ -17,11 +17,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Schema;
 
-use Fisharebest\Webtrees\Database;
-use PDOException;
-
 /**
- * Upgrade the database schema from version 18 to version 19.
+ * Upgrade the database schema from version 18 to version 19 (webtrees 1.3.1).
  */
 class Migration18 implements MigrationInterface
 {
@@ -32,20 +29,7 @@ class Migration18 implements MigrationInterface
      */
     public function upgrade(): void
     {
-        // Update some indexes, based on analysis of slow-query-logs
-        try {
-            Database::exec(
-                "ALTER TABLE `##places`" .
-                " DROP       KEY ix1," .
-                " DROP       KEY ix2," .
-                " DROP       KEY ix3," .
-                " DROP       KEY ix4," .
-                " DROP       p_level," . // Not needed - implicit from p_parent
-                " ADD        KEY ix1 (p_file, p_place)," . // autocomplete.php
-                " ADD UNIQUE KEY ux1 (p_parent_id, p_file, p_place)" // placelist.php
-            );
-        } catch (PDOException $ex) {
-            // Already done?
-        }
+        // These migrations have been merged into migration 0.
+        // Direct upgrade from webtrees < 1.7.9 is not supported.
     }
 }

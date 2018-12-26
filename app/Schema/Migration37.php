@@ -18,7 +18,10 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Schema;
 
 use Fisharebest\Webtrees\Database;
+use Illuminate\Database\Query\Builder;
 use PDOException;
+use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Schema\Blueprint;
 
 /**
  * Upgrade the database schema from version 37 to version 38.
@@ -32,65 +35,58 @@ class Migration37 implements MigrationInterface
      */
     public function upgrade(): void
     {
-        Database::prepare(
-            "DROP TABLE IF EXISTS `##site_access_rule`"
-        )->execute();
+        // These tables were created by webtrees 1.x, and may not exist if we first installed webtrees 2.x
+        DB::schema()->dropIfExists('site_access_rule');
+        DB::schema()->dropIfExists('next_id');
 
-        try {
-            Database::prepare(
-                "INSERT INTO `##site_setting` (setting_name, setting_value)" .
-                " SELECT 'next_xref', MAX(next_id) FROM `##next_id`"
-            )->execute();
-        } catch (PDOException $ex) {
-            // Already done?
-        }
+        // Split the media table into media/media_file so that we can store multiple media
+        // files in each media object.
+        DB::schema()->create('media_file', function (Blueprint $table): void {
+            $table->integer('id', true);
+            $table->string('m_id', 20);
+            $table->integer('m_file');
+            $table->string('multimedia_file_refn', 512); // GEDCOM only allows 30 characters
+            $table->string('multimedia_format', 4);
+            $table->string('source_media_type', 15);
+            $table->string('descriptive_title', 248);
 
-        Database::prepare(
-            "DELETE FROM `##gedcom_setting` WHERE setting_name in ('FAM_ID_PREFIX', 'GEDCOM_ID_PREFIX', 'MEDIA_ID_PREFIX', 'NOTE_ID_PREFIX', 'REPO_ID_PREFIX', 'SOURCE_ID_PREFIX')"
-        )->execute();
+            $table->index(['m_id', 'm_file']);
+            $table->index(['m_file', 'm_id']);
+            $table->index(['m_file', 'multimedia_file_refn']);
+            $table->index(['m_file', 'multimedia_format']);
+            $table->index(['m_file', 'source_media_type']);
+            $table->index(['m_file', 'descriptive_title']);
 
-        Database::prepare(
-            "DROP TABLE IF EXISTS `##next_id`"
-        )->execute();
+            // Need to set row format so that we can index fields longer than 255 characters.
+            $table->engine = 'InnoDB ROW_FORMAT=COMPRESSED';
+        });
 
-        Database::prepare(
-            "CREATE TABLE IF NOT EXISTS `##media_file` (" .
-            "id                   INTEGER AUTO_INCREMENT NOT NULL PRIMARY KEY," .
-            "m_id                 VARCHAR(20)  NOT NULL," .
-            "m_file               INTEGER      NOT NULL," .
-            "multimedia_file_refn VARCHAR(512) NOT NULL," . // GEDCOM only allows 30 characters
-            "multimedia_format    VARCHAR(4)   NOT NULL," .
-            "source_media_type    VARCHAR(15)  NOT NULL," .
-            "descriptive_title    VARCHAR(248) NOT NULL," .
-            "KEY `##media_file_ix1` (m_id, m_file)," .
-            "KEY `##media_file_ix2` (m_file, m_id)," .
-            "KEY `##media_file_ix3` (m_file, multimedia_file_refn)," .
-            "KEY `##media_file_ix4` (m_file, multimedia_format)," .
-            "KEY `##media_file_ix5` (m_file, source_media_type)," .
-            "KEY `##media_file_ix6` (m_file, descriptive_title)" .
-            ") ENGINE=InnoDB ROW_FORMAT=COMPRESSED COLLATE=utf8_unicode_ci"
-        )->execute();
+        if (DB::schema()->hasColumn('media', 'm_filename')) {
+            $builder = new Builder(DB::connection());
+            $builder->from('media_file')->insertUsing([
+                'm_id',
+                'm_file',
+                'multimedia_file_refn',
+                'multimedia_format',
+                'source_media_type',
+                'descriptive_title',
+            ], function (Builder $query) {
+                $query->select([
+                    'm_id',
+                    'm_file',
+                    'm_filename',
+                    'm_ext',
+                    DB::raw('LEFT(m_type, 15)'),
+                    'm_titl',
+                ])->from('media');
+            });
 
-        try {
-            Database::prepare(
-                "INSERT INTO `##media_file` (" .
-                "m_id, m_file, multimedia_file_refn, multimedia_format, source_media_type, descriptive_title" .
-                ") SELECT m_id, m_file, m_filename, m_ext, LEFT(m_type, 15), m_titl FROM `##media`"
-            )->execute();
-        } catch (PDOException $ex) {
-            // Already done?
-        }
-
-        try {
-            Database::prepare(
-                "ALTER TABLE `##media`" .
-                " DROP COLUMN m_filename," .
-                " DROP COLUMN m_ext," .
-                " DROP COLUMN m_type," .
-                " DROP COLUMN m_titl"
-            )->execute();
-        } catch (PDOException $ex) {
-            // Already done?
+            DB::schema()->table('media', function(Blueprint $table): void {
+                $table->dropColumn('m_filename');
+                $table->dropColumn('m_ext');
+                $table->dropColumn('m_type');
+                $table->dropColumn('m_titl');
+            });
         }
     }
 }

@@ -17,11 +17,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Schema;
 
-use Fisharebest\Webtrees\Database;
-use PDOException;
-
 /**
- * Upgrade the database schema from version 11 to version 12.
+ * Upgrade the database schema from version 11 to version 12 (webtrees 1.2.3).
  */
 class Migration11 implements MigrationInterface
 {
@@ -32,18 +29,7 @@ class Migration11 implements MigrationInterface
      */
     public function upgrade(): void
     {
-        // - delete the wt_name.n_list column; it has never been used
-        // - a bug in webtrees 1.1.2 caused the wt_name.n_full column
-        // to include slashes around the surname. These are unnecessary,
-        // and cause problems when we try to match the name from the
-        // gedcom with the name from the table.
-        // Remove slashes from INDI names
-        Database::exec("UPDATE `##name` SET n_full=REPLACE(n_full, '/', '') WHERE n_surn IS NOT NULL");
-
-        try {
-            Database::exec("ALTER TABLE `##name` DROP n_list");
-        } catch (PDOException $ex) {
-            // Already done?
-        }
+        // These migrations have been merged into migration 0.
+        // Direct upgrade from webtrees < 1.7.9 is not supported.
     }
 }

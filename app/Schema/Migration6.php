@@ -17,10 +17,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Schema;
 
-use Fisharebest\Webtrees\Database;
-use Fisharebest\Webtrees\DebugBar;
-use PDOException;
-
 /**
  * Upgrade the database schema from version 6 to version 7.
  */
@@ -33,25 +29,7 @@ class Migration6 implements MigrationInterface
      */
     public function upgrade(): void
     {
-        // Remove tables/columns relating to remote linking
-        Database::exec(
-            "DROP TABLE IF EXISTS `##remotelinks`"
-        );
-
-        try {
-            Database::exec(
-                "ALTER TABLE `##sources` DROP INDEX ix2"
-            );
-        } catch (PDOException $ex) {
-            // already been done?
-        }
-
-        try {
-            Database::exec(
-                "ALTER TABLE `##sources` DROP COLUMN s_dbid"
-            );
-        } catch (PDOException $ex) {
-            // already been done?
-        }
+        // These migrations have been merged into migration 0.
+        // Direct upgrade from webtrees < 1.7.9 is not supported.
     }
 }

@@ -22,12 +22,14 @@ use Fisharebest\Localization\Locale;
 use Fisharebest\Localization\Locale\LocaleEnUs;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Schema\SeedDatabase;
 use Fisharebest\Webtrees\User;
 use Fisharebest\Webtrees\Webtrees;
 use PDOException;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Throwable;
 
 /**
  * Controller for the installation wizard
@@ -110,13 +112,14 @@ class SetupController extends AbstractBaseController
             case 5:
                 return $this->viewResponse('setup/step-5-administrator', $data);
             case 6:
-                $error = $this->createConfigFile($data['dbhost'], $data['dbport'], $data['dbuser'], $data['dbpass'], $data['dbname'], $data['tblpfx'], $data['wtname'], $data['wtuser'], $data['wtpass'], $data['wtemail']);
-
-                if ($error === '') {
-                    return new RedirectResponse(route('admin-trees'));
+                try {
+                    $this->createConfigFile($data);
+                } catch (Throwable $exception) {
+                    return $this->viewResponse('setup/step-6-failed', ['exception' => $exception]);
                 }
 
-                return $this->viewResponse('setup/step-6-failed', ['error' => $error]);
+                // Done - start using webtrees!
+                return new RedirectResponse(route('admin-trees'));
         }
     }
 
@@ -254,69 +257,56 @@ class SetupController extends AbstractBaseController
     }
 
     /**
-     * @param string $dbhost
-     * @param string $dbport
-     * @param string $dbuser
-     * @param string $dbpass
-     * @param string $dbname
-     * @param string $tblpfx
-     * @param string $wtname
-     * @param string $wtuser
-     * @param string $wtpass
-     * @param string $wtemail
+     * @param string[] $data
      *
-     * @return string
+     * @return void
      */
-    private function createConfigFile($dbhost, $dbport, $dbuser, $dbpass, $dbname, $tblpfx, $wtname, $wtuser, $wtpass, $wtemail): string
+    private function createConfigFile(array $data): void
     {
-        try {
-            // Create/update the database tables.
-            Database::createInstance([
-                'dbhost' => $dbhost,
-                'dbport' => $dbport,
-                'dbname' => $dbname,
-                'dbuser' => $dbuser,
-                'dbpass' => $dbpass,
-                'tblpfx' => $tblpfx,
-            ]);
-            Database::updateSchema('\Fisharebest\Webtrees\Schema', 'WT_SCHEMA_VERSION', Webtrees::SCHEMA_VERSION);
+        // Create/update the database tables.
+        Database::createInstance([
+            'dbhost' => $data['dbhost'],
+            'dbport' => $data['dbport'],
+            'dbname' => $data['dbname'],
+            'dbuser' => $data['dbuser'],
+            'dbpass' => $data['dbpass'],
+            'tblpfx' => $data['tblpfx'],
+        ]);
+        Database::updateSchema('\Fisharebest\Webtrees\Schema', 'WT_SCHEMA_VERSION', Webtrees::SCHEMA_VERSION);
 
-            // If we are re-installing, then this user may already exist.
-            $admin = User::findByIdentifier($wtemail);
-            if ($admin === null) {
-                $admin = User::findByIdentifier($wtuser);
-            }
-            // Create the user
-            if ($admin === null) {
-                $admin = User::create($wtuser, $wtname, $wtemail, $wtpass)
-                    ->setPreference('language', WT_LOCALE)
-                    ->setPreference('visibleonline', '1');
-            } else {
-                $admin->setPassword($_POST['wtpass']);
-            }
-            // Make the user an administrator
-            $admin
-                ->setPreference('canadmin', '1')
-                ->setPreference('verified', '1')
-                ->setPreference('verified_by_admin', '1');
+        // Add some default/necessary configuration data.
+        (new SeedDatabase())->run();
 
-            // Write the config file. We already checked that this would work.
-            $config_ini_php =
-                '; <' . '?php exit; ?' . '> DO NOT DELETE THIS LINE' . PHP_EOL .
-                'dbhost="' . addcslashes($dbhost, '"') . '"' . PHP_EOL .
-                'dbport="' . addcslashes($dbport, '"') . '"' . PHP_EOL .
-                'dbuser="' . addcslashes($dbuser, '"') . '"' . PHP_EOL .
-                'dbpass="' . addcslashes($dbpass, '"') . '"' . PHP_EOL .
-                'dbname="' . addcslashes($dbname, '"') . '"' . PHP_EOL .
-                'tblpfx="' . addcslashes($tblpfx, '"') . '"' . PHP_EOL;
-
-            file_put_contents(Webtrees::CONFIG_FILE, $config_ini_php);
-
-            // Done - start using webtrees!
-            return '';
-        } catch (PDOException $ex) {
-            return $ex->getMessage();
+        // If we are re-installing, then this user may already exist.
+        $admin = User::findByIdentifier($data['wtemail']);
+        if ($admin === null) {
+            $admin = User::findByIdentifier($data['wtuser']);
         }
+        // Create the user
+        if ($admin === null) {
+            $admin = User::create($data['wtuser'], $data['wtname'], $data['wtemail'], $data['wtpass'])
+                ->setPreference('language', WT_LOCALE)
+                ->setPreference('visibleonline', '1');
+        } else {
+            $admin->setPassword($_POST['wtpass']);
+        }
+        // Make the user an administrator
+        $admin
+            ->setPreference('canadmin', '1')
+            ->setPreference('verified', '1')
+            ->setPreference('verified_by_admin', '1');
+
+        // Write the config file. We already checked that this would work.
+        $config_ini_php =
+            '; <' . '?php exit; ?' . '> DO NOT DELETE THIS LINE' . PHP_EOL .
+            'dbhost="' . addcslashes($data['dbhost'], '"') . '"' . PHP_EOL .
+            'dbport="' . addcslashes($data['dbport'], '"') . '"' . PHP_EOL .
+            'dbuser="' . addcslashes($data['dbuser'], '"') . '"' . PHP_EOL .
+            'dbpass="' . addcslashes($data['dbpass'], '"') . '"' . PHP_EOL .
+            'dbname="' . addcslashes($data['dbname'], '"') . '"' . PHP_EOL .
+            'tblpfx="' . addcslashes($data['tblpfx'], '"') . '"' . PHP_EOL;
+
+        file_put_contents(Webtrees::CONFIG_FILE, $config_ini_php);
     }
 
     /**
@@ -442,11 +432,11 @@ class SetupController extends AbstractBaseController
             /* I18N: a program feature */
             'simplexml' => I18N::translate('reporting'),
         ];
-        $settings = [
+        $settings   = [
             /* I18N: a program feature */
             'file_uploads' => I18N::translate('file upload capability'),
         ];
-        $warnings = [];
+        $warnings   = [];
 
         foreach ($extensions as $extension => $features) {
             if (!extension_loaded($extension)) {

@@ -32,19 +32,6 @@ use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 class UserJournalModule extends AbstractModule implements ModuleBlockInterface
 {
     /**
-     * Create a new module.
-     *
-     * @param string $directory Where is this module installed
-     */
-    public function __construct(string $directory)
-    {
-        parent::__construct($directory);
-
-        // Create/update the database tables.
-        Database::updateSchema('\Fisharebest\Webtrees\Module\FamilyTreeNews\Schema', 'NB_SCHEMA_VERSION', 3);
-    }
-
-    /**
      * How should this module be labelled on tabs, menus, etc.?
      *
      * @return string

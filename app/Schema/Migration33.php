@@ -18,7 +18,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Schema;
 
 /**
- * Upgrade the database schema from version 33 to version 34.
+ * Upgrade the database schema from version 33 to version 34 (webtrees 1.7.3).
  */
 class Migration33 implements MigrationInterface
 {
@@ -29,7 +29,7 @@ class Migration33 implements MigrationInterface
      */
     public function upgrade(): void
     {
-        // Originally, this inserted entries into wt_site_access_rule,
-        // however this table now gets deleted in Migration37.
+        // These migrations have been merged into migration 0.
+        // Direct upgrade from webtrees < 1.7.9 is not supported.
     }
 }
