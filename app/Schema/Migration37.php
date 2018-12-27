@@ -81,7 +81,7 @@ class Migration37 implements MigrationInterface
                 ])->from('media');
             });
 
-            DB::schema()->table('media', function(Blueprint $table): void {
+            DB::schema()->table('media', function (Blueprint $table): void {
                 $table->dropColumn('m_filename');
                 $table->dropColumn('m_ext');
                 $table->dropColumn('m_type');
