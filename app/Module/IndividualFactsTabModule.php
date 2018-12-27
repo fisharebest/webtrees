@@ -427,20 +427,16 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
      */
     private static function historicalFacts(Individual $person, Date $min_date, Date $max_date): array
     {
-        $SHOW_RELATIVES_EVENTS = $person->tree()->getPreference('SHOW_RELATIVES_EVENTS');
-
         $facts = [];
 
-        if ($SHOW_RELATIVES_EVENTS) {
-            if (file_exists(Site::getPreference('INDEX_DIRECTORY') . 'histo.' . WT_LOCALE . '.php')) {
-                $histo = [];
-                require Site::getPreference('INDEX_DIRECTORY') . 'histo.' . WT_LOCALE . '.php';
-                foreach ($histo as $hist) {
-                    $fact  = new Fact($hist, $person, 'histo');
+        if (file_exists(Site::getPreference('INDEX_DIRECTORY') . 'histo.' . WT_LOCALE . '.php')) {
+            $histo = [];
+            require Site::getPreference('INDEX_DIRECTORY') . 'histo.' . WT_LOCALE . '.php';
+            foreach ($histo as $hist) {
+                $fact  = new Fact($hist, $person, 'histo');
 
-                    if (self::includeFact($fact, $min_date, $max_date)) {
-                        $facts[] = $fact;
-                    }
+                if (self::includeFact($fact, $min_date, $max_date)) {
+                    $facts[] = $fact;
                 }
             }
         }
