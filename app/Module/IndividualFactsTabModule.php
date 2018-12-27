@@ -433,7 +433,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
             $histo = [];
             require Site::getPreference('INDEX_DIRECTORY') . 'histo.' . WT_LOCALE . '.php';
             foreach ($histo as $hist) {
-                $fact  = new Fact($hist, $person, 'histo');
+                $fact = new Fact($hist, $person, 'histo');
 
                 if (self::includeFact($fact, $min_date, $max_date)) {
                     $facts[] = $fact;
