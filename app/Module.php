@@ -418,7 +418,6 @@ class Module
                 ])->from('gedcom');
             }
         );
-
     }
 
     /**
