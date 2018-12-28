@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Module\ModuleBlockInterface;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
+use Illuminate\Database\Capsule\Manager as DB;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -562,13 +563,11 @@ class HomePageController extends AbstractBaseController
     {
         $active_blocks = Module::getActiveBlocks($tree);
 
-        $module_name = Database::prepare(
-            "SELECT module_name FROM `##block`" .
-            " JOIN  `##module` USING (module_name)" .
-            " WHERE block_id = :block_id AND status = 'enabled'"
-        )->execute([
-            'block_id' => $block_id,
-        ])->fetchOne();
+        $module_name = DB::table('block')
+            ->join('module', 'block.module_name', '=', 'module.module_name')
+            ->where('block_id', '=', $block_id)
+            ->where('status', '=', 'enabled')
+            ->value('module.module_name');
 
         return $active_blocks[$module_name] ?? null;
     }
@@ -614,21 +613,17 @@ class HomePageController extends AbstractBaseController
      */
     private function getBlocksForTreePage(int $tree_id, int $access_level, string $location): array
     {
-        $rows = Database::prepare(
-            "SELECT block_id, module_name" .
-            " FROM  `##block`" .
-            " JOIN  `##module` USING (module_name)" .
-            " JOIN  `##module_privacy` USING (module_name, gedcom_id)" .
-            " WHERE gedcom_id = :tree_id" .
-            " AND   status = 'enabled'" .
-            " AND   location = :location" .
-            " AND   access_level >= :access_level" .
-            " ORDER BY location, block_order"
-        )->execute([
-            'access_level' => $access_level,
-            'location'     => $location,
-            'tree_id'      => $tree_id,
-        ])->fetchAssoc();
+        $rows = DB::table('block')
+            ->join('module', 'module.module_name', '=', 'block.module_name')
+            ->join('module_privacy', 'module_privacy.module_name', '=', 'module.module_name')
+            ->where('block.gedcom_id', '=', $tree_id)
+            ->where('module_privacy.gedcom_id', '=', $tree_id)
+            ->where('location', '=', $location)
+            ->where('status', '=', 'enabled')
+            ->where('access_level', '>=', $access_level)
+            ->orderBy('block_order')
+            ->pluck('block.module_name', 'block_id')
+            ->all();
 
         return $this->filterActiveBlocks($rows, $this->getAvailableTreeBlocks());
     }
@@ -645,23 +640,17 @@ class HomePageController extends AbstractBaseController
      */
     private function getBlocksForUserPage(int $tree_id, int $user_id, int $access_level, string $location): array
     {
-        $rows = Database::prepare(
-            "SELECT block_id, module_name" .
-            " FROM  `##block`" .
-            " JOIN  `##module` USING (module_name)" .
-            " JOIN  `##module_privacy` USING (module_name)" .
-            " WHERE user_id = :user_id" .
-            " AND   status = 'enabled'" .
-            " AND   location = :location" .
-            " AND   `##module_privacy`.gedcom_id = :tree_id" .
-            " AND   access_level >= :access_level" .
-            " ORDER BY block_order"
-        )->execute([
-            'access_level' => $access_level,
-            'location'     => $location,
-            'user_id'      => $user_id,
-            'tree_id'      => $tree_id,
-        ])->fetchAssoc();
+        $rows = DB::table('block')
+            ->join('module', 'module.module_name', '=', 'block.module_name')
+            ->join('module_privacy', 'module_privacy.module_name', '=', 'module.module_name')
+            ->where('user_id', '=', $user_id)
+            ->where('module_privacy.gedcom_id', '=', $tree_id)
+            ->where('location', '=', $location)
+            ->where('status', '=', 'enabled')
+            ->where('access_level', '>=', $access_level)
+            ->orderBy('block_order')
+            ->pluck('block.module_name', 'block_id')
+            ->all();
 
         return $this->filterActiveBlocks($rows, $this->getAvailableUserBlocks());
     }

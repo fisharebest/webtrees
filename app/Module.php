@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Exception;
 use Fisharebest\Webtrees\Module\ModuleBlockInterface;
 use Fisharebest\Webtrees\Module\ModuleChartInterface;
 use Fisharebest\Webtrees\Module\ModuleConfigInterface;
@@ -26,7 +27,8 @@ use Fisharebest\Webtrees\Module\ModuleReportInterface;
 use Fisharebest\Webtrees\Module\ModuleSidebarInterface;
 use Fisharebest\Webtrees\Module\ModuleTabInterface;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
-use League\Flysystem\Exception;
+use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Query\Builder;
 
 /**
  * Functions for managing and maintaining modules.
@@ -135,89 +137,6 @@ class Module
     }
 
     /**
-     * Get a list of all core modules.  We need to identify
-     * third-party during upgrade and on the module admin page.
-     *
-     * @return string[]
-     */
-    public static function getCoreModuleNames(): array
-    {
-        return [
-            'GEDFact_assistant',
-            'ahnentafel_report',
-            'ancestors_chart',
-            'batch_update',
-            'bdm_report',
-            'birth_report',
-            'cemetery_report',
-            'change_report',
-            'charts',
-            //'ckeditor',
-            'clippings',
-            'compact_tree_chart',
-            'death_report',
-            'descendancy',
-            'descendancy_chart',
-            'descendancy_report',
-            'extra_info',
-            'fact_sources',
-            'families',
-            'family_book_chart',
-            'family_group_report',
-            'family_nav',
-            'fan_chart',
-            'faq',
-            'gedcom_block',
-            'gedcom_favorites',
-            'gedcom_news',
-            'gedcom_stats',
-            'googlemap',
-            'hourglass_chart',
-            'html',
-            'individual_ext_report',
-            'individual_report',
-            'individuals',
-            'lifespans_chart',
-            'lightbox',
-            'logged_in',
-            'login_block',
-            'marriage_report',
-            'media',
-            'missing_facts_report',
-            'notes',
-            'occupation_report',
-            'openstreetmap',
-            'pedigree_chart',
-            'pedigree_report',
-            'personal_facts',
-            'random_media',
-            'recent_changes',
-            'relationships_chart',
-            'relative_ext_report',
-            'relatives',
-            'review_changes',
-            'sitemap',
-            'sources_tab',
-            'statistics_chart',
-            'stories',
-            'theme_select',
-            'timeline_chart',
-            'todays_events',
-            'todo',
-            'top10_givnnames',
-            'top10_pageviews',
-            'top10_surnames',
-            'tree',
-            'upcoming_events',
-            'user_blog',
-            'user_favorites',
-            'user_messages',
-            'user_welcome',
-            'yahrzeit',
-        ];
-    }
-
-    /**
      * Get a list of all active (enabled) modules.
      *
      * @return ModuleInterface[]
@@ -228,27 +147,21 @@ class Module
         static $modules;
 
         if ($modules === null) {
-            $module_names = Database::prepare(
-                "SELECT module_name FROM `##module` WHERE status = 'enabled'"
-            )->fetchOneColumn();
+            $module_names = DB::table('module')
+                ->where('status', '=', 'enabled')
+                ->pluck('module_name');
 
             $modules = [];
             foreach ($module_names as $module_name) {
-                try {
-                    $module = self::loadModule(WT_ROOT . Webtrees::MODULES_PATH . $module_name . '/module.php');
-                    if ($module instanceof ModuleInterface) {
-                        $modules[$module->getName()] = $module;
-                    } else {
-                        throw new \Exception();
-                    }
-                } catch (\Exception $ex) {
+                $module = self::loadModule(WT_ROOT . Webtrees::MODULES_PATH . $module_name . '/module.php');
+                if ($module instanceof ModuleInterface) {
+                    $modules[$module->getName()] = $module;
+                } else {
                     // The module has been deleted or is broken? Disable it.
-                    Log::addConfigurationLog("Module {$module_name} is missing or broken - disabling it. " . $ex->getMessage(), null);
-                    Database::prepare(
-                        "UPDATE `##module` SET status = 'disabled' WHERE module_name = :module_name"
-                    )->execute([
-                        'module_name' => $module_name,
-                    ]);
+                    Log::addConfigurationLog("Module {$module_name} is missing or broken - disabling it. ", null);
+                    DB::table('module')
+                        ->where('module_name', '=', $module_name)
+                        ->update(['status' => 'disabled']);
                 }
             }
         }
@@ -257,8 +170,23 @@ class Module
     }
 
     /**
-     * Get a list of modules which (a) provide a specific function and (b) we have permission to see.
+     * Which column to sort by when fetching components.
      *
+     * @param string $component
+     *
+     * @return string
+     */
+    private static function componentSortColumn(string $component): string
+    {
+        if ($component === 'menu' || $component === 'sidebar' || $component === 'tab') {
+            return $component . '_order';
+        } else {
+            return 'module_name';
+        }
+    }
+
+    /**
+     * Get a list of modules which (a) provide a specific function and (b) we have permission to see.
      * We cannot currently use auto-loading for modules, as there may be user-defined
      * modules about which the auto-loader knows nothing.
      *
@@ -269,17 +197,16 @@ class Module
      */
     private static function getActiveModulesByComponent(Tree $tree, $component): array
     {
-        $module_names = Database::prepare(
-            "SELECT module_name" .
-            " FROM `##module`" .
-            " JOIN `##module_privacy` USING (module_name)" .
-            " WHERE gedcom_id = :tree_id AND component = :component AND status = 'enabled' AND access_level >= :access_level" .
-            " ORDER BY CASE component WHEN 'menu' THEN menu_order WHEN 'sidebar' THEN sidebar_order WHEN 'tab' THEN tab_order ELSE 0 END, module_name"
-        )->execute([
-            'tree_id'      => $tree->id(),
-            'component'    => $component,
-            'access_level' => Auth::accessLevel($tree),
-        ])->fetchOneColumn();
+        $sort_column = self::componentSortColumn($component);
+
+        $module_names = DB::table('module')
+            ->join('module_privacy', 'module.module_name', '=', 'module_privacy.module_name')
+            ->where('gedcom_id', '=', $tree->id())
+            ->where('component', '=', $component)
+            ->where('status', '=', 'enabled')
+            ->where('access_level', '>=', Auth::accessLevel($tree))
+            ->orderBy('module.' . $sort_column)
+            ->pluck('module.module_name');
 
         $array = [];
         foreach ($module_names as $module_name) {
@@ -302,7 +229,6 @@ class Module
 
     /**
      * Get a list of all modules, enabled or not, which provide a specific function.
-     *
      * We cannot currently use auto-loading for modules, as there may be user-defined
      * modules about which the auto-loader knows nothing.
      *
@@ -312,13 +238,11 @@ class Module
      */
     public static function getAllModulesByComponent($component): array
     {
-        $module_names = Database::prepare(
-            "SELECT module_name" .
-            " FROM `##module`" .
-            " ORDER BY CASE :component WHEN 'menu' THEN menu_order WHEN 'sidebar' THEN sidebar_order WHEN 'tab' THEN tab_order ELSE 0 END, module_name"
-        )->execute([
-            'component' => $component,
-        ])->fetchOneColumn();
+        $sort_column = self::componentSortColumn($component);
+
+        $module_names = DB::table('module')
+            ->orderBy($sort_column)
+            ->pluck('module_name');
 
         $array = [];
         foreach ($module_names as $module_name) {
@@ -388,7 +312,10 @@ class Module
         });
 
         // Exclude disabled modules
-        $enabled_modules = Database::prepare("SELECT module_name, status FROM `##module` WHERE status='enabled'")->fetchOneColumn();
+        $enabled_modules = DB::table('module')
+            ->where('status', '=', 'enabled')
+            ->pluck('module_name')
+            ->all();
 
         return array_filter($modules, function (ModuleConfigInterface $module) use ($enabled_modules): bool {
             return in_array($module->getName(), $enabled_modules);
@@ -473,8 +400,29 @@ class Module
     }
 
     /**
-     * Scan the source code to find a list of all installed modules.
+     * For newly discovered modules, set the access level for all trees.
      *
+     * @param ModuleInterface $module
+     * @param string          $component
+     */
+    private static function setAllAccessLevels(ModuleInterface $module, string $component): void
+    {
+        (new Builder(DB::connection()))->from('module_privacy')->insertUsing(
+            ['module_name', 'gedcom_id', 'component', 'access_level'],
+            function (Builder $query) use ($module, $component) {
+                $query->select([
+                    DB::raw(DB::connection()->getPdo()->quote($module->getName())),
+                    'gedcom_id',
+                    DB::raw(DB::connection()->getPdo()->quote($component)),
+                    DB::raw(DB::connection()->getPdo()->quote($module->defaultAccessLevel())),
+                ])->from('gedcom');
+            }
+        );
+
+    }
+
+    /**
+     * Scan the source code to find a list of all installed modules.
      * During setup, new modules need a status of “enabled”.
      * In admin->modules, new modules need status of “disabled”.
      *
@@ -491,93 +439,68 @@ class Module
                 $module = self::loadModule($file);
                 if ($module instanceof ModuleInterface) {
                     $modules[$module->getName()] = $module;
-                    Database::prepare("INSERT IGNORE INTO `##module` (module_name, status, menu_order, sidebar_order, tab_order) VALUES (?, ?, ?, ?, ?)")->execute([
-                        $module->getName(),
-                        $default_status,
-                        $module instanceof ModuleMenuInterface ? $module->defaultMenuOrder() : null,
-                        $module instanceof ModuleSidebarInterface ? $module->defaultSidebarOrder() : null,
-                        $module instanceof ModuleTabInterface ? $module->defaultTabOrder() : null,
-                    ]);
-                    // Set the default privcy for this module. Note that this also sets it for the
-                    // default family tree, with a gedcom_id of -1
-                    if ($module instanceof ModuleMenuInterface) {
-                        Database::prepare(
-                            "INSERT IGNORE INTO `##module_privacy` (module_name, gedcom_id, component, access_level)" .
-                            " SELECT ?, gedcom_id, 'menu', ?" .
-                            " FROM `##gedcom`"
-                        )->execute([
-                            $module->getName(),
-                            $module->defaultAccessLevel(),
+
+                    $exists = DB::table('module')->where('module_name', '=' . $module->getName())->pluck('module_name')->isNotEmpty();
+
+                    if (!$exists) {
+                        DB::table('module')->insert([
+                            'module_name'   => $module->getName(),
+                            'status'        => $default_status,
+                            'menu_order'    => $module instanceof ModuleMenuInterface ? $module->defaultMenuOrder() : null,
+                            'sidebar_order' => $module instanceof ModuleSidebarInterface ? $module->defaultSidebarOrder() : null,
+                            'tab_order'     => $module instanceof ModuleTabInterface ? $module->defaultTabOrder() : null,
                         ]);
-                    }
-                    if ($module instanceof ModuleSidebarInterface) {
-                        Database::prepare(
-                            "INSERT IGNORE INTO `##module_privacy` (module_name, gedcom_id, component, access_level)" .
-                            " SELECT ?, gedcom_id, 'sidebar', ?" .
-                            " FROM `##gedcom`"
-                        )->execute([
-                            $module->getName(),
-                            $module->defaultAccessLevel(),
-                        ]);
-                    }
-                    if ($module instanceof ModuleTabInterface) {
-                        Database::prepare(
-                            "INSERT IGNORE INTO `##module_privacy` (module_name, gedcom_id, component, access_level)" .
-                            " SELECT ?, gedcom_id, 'tab', ?" .
-                            " FROM `##gedcom`"
-                        )->execute([
-                            $module->getName(),
-                            $module->defaultAccessLevel(),
-                        ]);
-                    }
-                    if ($module instanceof ModuleBlockInterface) {
-                        Database::prepare(
-                            "INSERT IGNORE INTO `##module_privacy` (module_name, gedcom_id, component, access_level)" .
-                            " SELECT ?, gedcom_id, 'block', ?" .
-                            " FROM `##gedcom`"
-                        )->execute([
-                            $module->getName(),
-                            $module->defaultAccessLevel(),
-                        ]);
-                    }
-                    if ($module instanceof ModuleChartInterface) {
-                        Database::prepare(
-                            "INSERT IGNORE INTO `##module_privacy` (module_name, gedcom_id, component, access_level)" .
-                            " SELECT ?, gedcom_id, 'chart', ?" .
-                            " FROM `##gedcom`"
-                        )->execute([
-                            $module->getName(),
-                            $module->defaultAccessLevel(),
-                        ]);
-                    }
-                    if ($module instanceof ModuleReportInterface) {
-                        Database::prepare(
-                            "INSERT IGNORE INTO `##module_privacy` (module_name, gedcom_id, component, access_level)" .
-                            " SELECT ?, gedcom_id, 'report', ?" .
-                            " FROM `##gedcom`"
-                        )->execute([
-                            $module->getName(),
-                            $module->defaultAccessLevel(),
-                        ]);
-                    }
-                    if ($module instanceof ModuleThemeInterface) {
-                        Database::prepare(
-                            "INSERT IGNORE INTO `##module_privacy` (module_name, gedcom_id, component, access_level)" .
-                            " SELECT ?, gedcom_id, 'theme', ?" .
-                            " FROM `##gedcom`"
-                        )->execute([
-                            $module->getName(),
-                            $module->defaultAccessLevel(),
-                        ]);
+
+                        // Set the default privcy for this module. Note that this also sets it for the
+                        // default family tree, with a gedcom_id of -1
+                        if ($module instanceof ModuleMenuInterface) {
+                            self::setAllAccessLevels($module, 'menu');
+                        }
+                        if ($module instanceof ModuleSidebarInterface) {
+                            self::setAllAccessLevels($module, 'sidebar');
+                        }
+                        if ($module instanceof ModuleTabInterface) {
+                            self::setAllAccessLevels($module, 'tab');
+                        }
+                        if ($module instanceof ModuleBlockInterface) {
+                            self::setAllAccessLevels($module, 'block');
+                        }
+                        if ($module instanceof ModuleChartInterface) {
+                            self::setAllAccessLevels($module, 'chart');
+                        }
+                        if ($module instanceof ModuleReportInterface) {
+                            self::setAllAccessLevels($module, 'report');
+                        }
+                        if ($module instanceof ModuleThemeInterface) {
+                            self::setAllAccessLevels($module, 'theme');
+                        }
                     }
                 }
-            } catch (\Exception $ex) {
+            } catch (Exception $ex) {
                 // Old or invalid module?
                 Log::addErrorLog($ex->getMessage());
             }
         }
 
         return $modules;
+    }
+
+    /**
+     * Set the access level for a tree/module/component.
+     *
+     * @param int             $tree_id
+     * @param ModuleInterface $module
+     * @param string          $component
+     */
+    private static function setAccessLevel(int $tree_id, ModuleInterface $module, string $component): void
+    {
+        DB::table('module_privacy')->updateOrInsert([
+            'module_name' => $module->getName(),
+            'gedcom_id'   => $tree_id,
+            'component'   => $component,
+        ], [
+            'access_level' => $module->defaultAccessLevel(),
+        ]);
     }
 
     /**
@@ -592,67 +515,25 @@ class Module
     {
         foreach (self::getInstalledModules('disabled') as $module) {
             if ($module instanceof ModuleMenuInterface) {
-                Database::prepare(
-                    "INSERT IGNORE `##module_privacy` (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'menu', ?)"
-                )->execute([
-                    $module->getName(),
-                    $tree_id,
-                    $module->defaultAccessLevel(),
-                ]);
+                self::setAccessLevel($tree_id, $module, 'menu');
             }
             if ($module instanceof ModuleSidebarInterface) {
-                Database::prepare(
-                    "INSERT IGNORE `##module_privacy` (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'sidebar', ?)"
-                )->execute([
-                    $module->getName(),
-                    $tree_id,
-                    $module->defaultAccessLevel(),
-                ]);
+                self::setAccessLevel($tree_id, $module, 'sidebar');
             }
             if ($module instanceof ModuleTabInterface) {
-                Database::prepare(
-                    "INSERT IGNORE `##module_privacy` (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'tab', ?)"
-                )->execute([
-                    $module->getName(),
-                    $tree_id,
-                    $module->defaultAccessLevel(),
-                ]);
+                self::setAccessLevel($tree_id, $module, 'tab');
             }
             if ($module instanceof ModuleBlockInterface) {
-                Database::prepare(
-                    "INSERT IGNORE `##module_privacy` (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'block', ?)"
-                )->execute([
-                    $module->getName(),
-                    $tree_id,
-                    $module->defaultAccessLevel(),
-                ]);
+                self::setAccessLevel($tree_id, $module, 'block');
             }
             if ($module instanceof ModuleChartInterface) {
-                Database::prepare(
-                    "INSERT IGNORE `##module_privacy` (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'chart', ?)"
-                )->execute([
-                    $module->getName(),
-                    $tree_id,
-                    $module->defaultAccessLevel(),
-                ]);
+                self::setAccessLevel($tree_id, $module, 'chart');
             }
             if ($module instanceof ModuleReportInterface) {
-                Database::prepare(
-                    "INSERT IGNORE `##module_privacy` (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'report', ?)"
-                )->execute([
-                    $module->getName(),
-                    $tree_id,
-                    $module->defaultAccessLevel(),
-                ]);
+                self::setAccessLevel($tree_id, $module, 'report');
             }
             if ($module instanceof ModuleThemeInterface) {
-                Database::prepare(
-                    "INSERT IGNORE `##module_privacy` (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'theme', ?)"
-                )->execute([
-                    $module->getName(),
-                    $tree_id,
-                    $module->defaultAccessLevel(),
-                ]);
+                self::setAccessLevel($tree_id, $module, 'theme');
             }
         }
     }

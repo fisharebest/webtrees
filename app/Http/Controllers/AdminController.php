@@ -40,6 +40,7 @@ use Fisharebest\Webtrees\Services\UpgradeService;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
+use Illuminate\Database\Capsule\Manager as DB;
 use Intervention\Image\ImageManager;
 use League\Flysystem\Adapter\Local;
 use League\Flysystem\Filesystem;
@@ -343,35 +344,28 @@ class AdminController extends AbstractBaseController
     {
         $module_name = $request->get('module_name');
 
-        Database::prepare(
-            "DELETE `##block_setting` FROM `##block_setting` JOIN `##block` USING (block_id) JOIN `##module` USING (module_name) WHERE module_name = :module_name"
-        )->execute([
-            'module_name' => $module_name,
-        ]);
+        DB::table('block_setting')
+            ->join('block', 'block_setting.block_id', '=', 'block.block_id')
+            ->join('module', 'block.module_name', '=', 'module.module_name')
+            ->where('module.module_name', '=', $module_name)
+            ->delete();
 
-        Database::prepare(
-            "DELETE `##block` FROM `##block` JOIN `##module` USING (module_name) WHERE module_name = :module_name"
-        )->execute([
-            'module_name' => $module_name,
-        ]);
+        DB::table('block')
+            ->join('module', 'block.module_name', '=', 'module.module_name')
+            ->where('module.module_name', '=', $module_name)
+            ->delete();
 
-        Database::prepare(
-            "DELETE FROM `##module_setting` WHERE module_name = :module_name"
-        )->execute([
-            'module_name' => $module_name,
-        ]);
+        DB::table('module_setting')
+            ->where('module_name', '=', $module_name)
+            ->delete();
 
-        Database::prepare(
-            "DELETE FROM `##module_privacy` WHERE module_name = :module_name"
-        )->execute([
-            'module_name' => $module_name,
-        ]);
+        DB::table('module_privacy')
+            ->where('module_name', '=', $module_name)
+            ->delete();
 
-        Database::prepare(
-            "DELETE FROM `##module` WHERE module_name = :module_name"
-        )->execute([
-            'module_name' => $module_name,
-        ]);
+        DB::table('module')
+            ->where('module_name', '=', $module_name)
+            ->delete();
 
         FlashMessages::addMessage(I18N::translate('The preferences for the module “%s” have been deleted.', $module_name), 'success');
 
@@ -940,7 +934,7 @@ class AdminController extends AbstractBaseController
      */
     public function modules(): Response
     {
-        $module_status = Database::prepare("SELECT module_name, status FROM `##module`")->fetchAssoc();
+        $module_status = DB::table('module')->pluck('status', 'module_name')->all();
 
         return $this->viewResponse('admin/modules', [
             'title'             => I18N::translate('Module administration'),
@@ -1108,10 +1102,11 @@ class AdminController extends AbstractBaseController
                 $key          = 'access-' . $module->getName() . '-' . $tree->id();
                 $access_level = (int) $request->get($key, $module->defaultAccessLevel());
 
-                Database::prepare("REPLACE INTO `##module_privacy` (module_name, gedcom_id, component, access_level) VALUES (:module_name, :tree_id, :component, :access_level)")->execute([
-                    'module_name'  => $module->getName(),
-                    'tree_id'      => $tree->id(),
-                    'component'    => $component,
+                DB::table('module_privacy')->updateOrInsert([
+                    'module_name' => $module->getName(),
+                    'gedcom_id'   => $tree->id(),
+                    'component'   => $component,
+                ], [
                     'access_level' => $access_level,
                 ]);
             }
@@ -1130,17 +1125,16 @@ class AdminController extends AbstractBaseController
     public function updateModuleStatus(Request $request): RedirectResponse
     {
         $modules       = Module::getInstalledModules('disabled');
-        $module_status = Database::prepare("SELECT module_name, status FROM `##module`")->fetchAssoc();
+        $module_status = DB::table('module')->pluck('status', 'module_name');
 
         foreach ($modules as $module) {
             $new_status = (bool) $request->get('status-' . $module->getName()) ? 'enabled' : 'disabled';
             $old_status = $module_status[$module->getName()];
 
             if ($new_status !== $old_status) {
-                Database::prepare("UPDATE `##module` SET status = :status WHERE module_name = :module_name")->execute([
-                    'status'      => $new_status,
-                    'module_name' => $module->getName(),
-                ]);
+                DB::table('module')
+                    ->where('module_name', '=', $module->getName())
+                    ->update(['status' => $new_status]);
 
                 if ($new_status === 'enabled') {
                     FlashMessages::addMessage(I18N::translate('The module “%s” has been enabled.', $module->getTitle()), 'success');
@@ -1324,7 +1318,7 @@ class AdminController extends AbstractBaseController
      */
     private function deletedModuleNames(): array
     {
-        $database_modules = Database::prepare("SELECT module_name FROM `##module`")->fetchOneColumn();
+        $database_modules = DB::table('module')->pluck('module_name')->all();
         $disk_modules     = Module::getInstalledModules('disabled');
 
         return array_diff($database_modules, array_keys($disk_modules));

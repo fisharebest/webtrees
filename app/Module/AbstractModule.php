@@ -20,6 +20,7 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Tree;
+use Illuminate\Database\Capsule\Manager as DB;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -128,9 +129,10 @@ abstract class AbstractModule
     private function loadAllSettings()
     {
         if ($this->settings === null) {
-            $this->settings = Database::prepare(
-                "SELECT setting_name, setting_value FROM `##module_setting` WHERE module_name = ?"
-            )->execute([$this->getName()])->fetchAssoc();
+            $this->settings = DB::table('module_setting')
+                ->where('module_name', '=', $this->getName())
+                ->pluck('setting_value', 'setting_name')
+                ->all();
         }
     }
 

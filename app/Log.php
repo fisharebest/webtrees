@@ -43,7 +43,7 @@ class Log
      */
     private static function addLog($message, $log_type, Tree $tree = null)
     {
-        $request = Request::create('', '', [], [], [], $_SERVER);
+        $request = Request::createFromGlobals();
 
         Database::prepare(
             "INSERT INTO `##log` (log_type, log_message, ip_address, user_id, gedcom_id) VALUES (?, ?, ?, ?, ?)"
