@@ -18,18 +18,17 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Middleware;
 
 use Closure;
-use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Fisharebest\Webtrees\View;
+use Illuminate\Database\Capsule\Manager as DB;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Throwable;
 
 /**
  * Middleware to count requests for particular pages.
- *
  * For historical reasons, we record the names of the original webtrees script and parameter.
  */
 class PageHitCounter implements MiddlewareInterface
@@ -130,25 +129,15 @@ class PageHitCounter implements MiddlewareInterface
 
         $count = $this->getCount($tree, $page, $parameter);
 
-        if ($count === 0) {
-            Database::prepare(
-                "INSERT INTO `##hit_counter` (gedcom_id, page_name, page_parameter, page_count) VALUES (:tree_id, :page, :parameter, 1)"
-            )->execute([
-                'tree_id'   => $gedcom_id,
-                'page'      => $page,
-                'parameter' => $parameter,
-            ]);
-        } else {
-            Database::prepare(
-                "UPDATE `##hit_counter` SET page_count = page_count + 1 WHERE gedcom_id = :tree_id AND page_name = :page AND page_parameter = :parameter"
-            )->execute([
-                'tree_id'   => $gedcom_id,
-                'page'      => $page,
-                'parameter' => $parameter,
-            ]);
-        }
-
         $count++;
+
+        DB::table('hit_counter')->updateOrInsert([
+            'gedcom_id'      => $tree->id(),
+            'page_name'      => $page,
+            'page_parameter' => $parameter,
+        ], [
+            'page_count' => $count,
+        ]);
 
         Session::put('last_gedcom_id', $gedcom_id);
         Session::put('last_page_name', $page);
@@ -169,12 +158,10 @@ class PageHitCounter implements MiddlewareInterface
      */
     public function getCount(Tree $tree, $page, $parameter): int
     {
-        return (int) Database::prepare(
-            "SELECT page_count FROM `##hit_counter` WHERE gedcom_id = :tree_id AND page_name = :page AND page_parameter = :parameter"
-        )->execute([
-            'tree_id'   => $tree->id(),
-            'page'      => $page,
-            'parameter' => $parameter,
-        ])->fetchOne();
+        return (int) DB::table('hit_counter')
+            ->where('gedcom_id', '=', $tree->id())
+            ->where('page_name', '=', $page)
+            ->where('page_parameter', '=', $parameter)
+            ->value('page_count');
     }
 }
