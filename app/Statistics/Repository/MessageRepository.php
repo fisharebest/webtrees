@@ -18,9 +18,9 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Statistics\Repository;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\MessageRepositoryInterface;
+use Illuminate\Database\Capsule\Manager as DB;
 
 /**
  * Statistics submodule providing all MESSAGE related methods.
@@ -34,9 +34,9 @@ class MessageRepository implements MessageRepositoryInterface
      */
     public function totalUserMessages(): string
     {
-        $total = (int) Database::prepare("SELECT COUNT(*) FROM `##message` WHERE user_id = ?")
-            ->execute([Auth::id()])
-            ->fetchOne();
+        $total = DB::table('message')
+            ->where('user_id', '=', Auth::id())
+            ->count();
 
         return I18N::number($total);
     }

@@ -18,11 +18,10 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Statistics\Repository;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\NewsRepositoryInterface;
 use Fisharebest\Webtrees\Tree;
-use PDOException;
+use Illuminate\Database\Capsule\Manager as DB;
 
 /**
  * Statistics submodule providing all NEWS related methods.
@@ -51,14 +50,9 @@ class NewsRepository implements NewsRepositoryInterface
      */
     public function totalUserJournal(): string
     {
-        try {
-            $number = (int) Database::prepare("SELECT COUNT(*) FROM `##news` WHERE user_id = ?")
-                ->execute([Auth::id()])
-                ->fetchOne();
-        } catch (PDOException $ex) {
-            // The module may not be installed, so the table may not exist.
-            $number = 0;
-        }
+        $number = DB::table('news')
+            ->where('user_id', '=', Auth::id())
+            ->count();
 
         return I18N::number($number);
     }
@@ -70,14 +64,9 @@ class NewsRepository implements NewsRepositoryInterface
      */
     public function totalGedcomNews(): string
     {
-        try {
-            $number = (int) Database::prepare("SELECT COUNT(*) FROM `##news` WHERE gedcom_id = ?")
-                ->execute([$this->tree->id()])
-                ->fetchOne();
-        } catch (PDOException $ex) {
-            // The module may not be installed, so the table may not exist.
-            $number = 0;
-        }
+        $number = DB::table('news')
+            ->where('gedcom_id', '=', $this->tree->id())
+            ->count();
 
         return I18N::number($number);
     }

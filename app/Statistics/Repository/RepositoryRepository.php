@@ -17,11 +17,11 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Statistics\Repository;
 
-use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Statistics\Helper\Percentage;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\RepositoryRepositoryInterface;
 use Fisharebest\Webtrees\Tree;
+use Illuminate\Database\Capsule\Manager as DB;
 
 /**
  * Statistics submodule providing all REPOSITORY related methods.
@@ -50,11 +50,10 @@ class RepositoryRepository implements RepositoryRepositoryInterface
      */
     private function totalRepositoriesQuery(): int
     {
-        return (int) Database::prepare(
-            "SELECT COUNT(*) FROM `##other` WHERE o_type='REPO' AND o_file = :tree_id"
-        )->execute([
-            'tree_id' => $this->tree->id(),
-        ])->fetchOne();
+        return DB::table('other')
+            ->where('o_file', '=', $this->tree->id())
+            ->where('o_type', '=', 'REPO')
+            ->count();
     }
 
     /**

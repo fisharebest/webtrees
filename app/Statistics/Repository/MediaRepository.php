@@ -17,11 +17,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Statistics\Repository;
 
-use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Statistics\Google\ChartMedia;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\MediaRepositoryInterface;
 use Fisharebest\Webtrees\Tree;
+use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Query\Builder;
 
 /**
  * Statistics submodule providing all MEDIA related methods.
@@ -93,25 +94,29 @@ class MediaRepository implements MediaRepositoryInterface
             return 0;
         }
 
-        $sql  = "SELECT COUNT(*) AS tot FROM `##media` WHERE m_file=?";
-        $vars = [$this->tree->id()];
+        $query = DB::table('media')
+            ->where('m_file', '=', $this->tree->id());
 
         if ($type !== 'all') {
             if ($type === 'unknown') {
                 // There has to be a better way then this :(
                 foreach ($this->getMediaTypes() as $t) {
-                    $sql .= " AND (m_gedcom NOT LIKE ? AND m_gedcom NOT LIKE ?)";
-                    $vars[] = "%3 TYPE {$t}%";
-                    $vars[] = "%1 _TYPE {$t}%";
+                    // Use function to add brackets
+                    $query->where(function (Builder $query) use ($t) {
+                        $query->where('m_gedcom', 'not like', '%3 TYPE ' . $t . '%')
+                            ->where('m_gedcom', 'not like', '%1 _TYPE ' . $t . '%');
+                    });
                 }
             } else {
-                $sql .= " AND (m_gedcom LIKE ? OR m_gedcom LIKE ?)";
-                $vars[] = "%3 TYPE {$type}%";
-                $vars[] = "%1 _TYPE {$type}%";
+                // Use function to add brackets
+                $query->where(function (Builder $query) use ($type) {
+                    $query->where('m_gedcom', 'like', '%3 TYPE ' . $type . '%')
+                        ->orWhere('m_gedcom', 'like', '%1 _TYPE ' . $type . '%');
+                });
             }
         }
 
-        return (int) Database::prepare($sql)->execute($vars)->fetchOne();
+        return $query->count();
     }
 
     /**
@@ -327,7 +332,7 @@ class MediaRepository implements MediaRepositoryInterface
     {
         $tot       = $this->totalMediaType('all');
         $med_types = $this->getMediaTypes();
-        
+
         return (new ChartMedia($this->tree))
             ->chartMedia($tot, $med_types, $size, $color_from, $color_to);
     }

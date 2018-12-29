@@ -17,7 +17,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Statistics\Repository;
 
-use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\Gedcom;
@@ -27,6 +26,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Statistics\Helper\Sql;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\EventRepositoryInterface;
 use Fisharebest\Webtrees\Tree;
+use Illuminate\Database\Capsule\Manager as DB;
 
 /**
  * Statistics submodule providing all EVENT related methods.
@@ -49,28 +49,16 @@ class EventRepository implements EventRepositoryInterface
     }
 
     /**
-     * Run an SQL query and cache the result.
+     * Returns the total number of a given list of events (with dates).
      *
-     * @param string $sql
+     * @param array $events The list of events to count (e.g. BIRT, DEAT, ...)
      *
-     * @return \stdClass[]
+     * @return int
      */
-    private function runSql($sql): array
+    private function getEventCount(array $events = []): int
     {
-        return Sql::runSql($sql);
-    }
-
-    /**
-     * Count the number of events (with dates).
-     *
-     * @param string[] $events
-     *
-     * @return string
-     */
-    public function totalEvents(array $events = []): string
-    {
-        $sql  = "SELECT COUNT(*) AS tot FROM `##dates` WHERE d_file=?";
-        $vars = [$this->tree->id()];
+        $query = DB::table('dates')
+            ->where('d_file', '=', $this->tree->id());
 
         $no_types = [
             'HEAD',
@@ -89,21 +77,30 @@ class EventRepository implements EventRepositoryInterface
             }
 
             if ($types) {
-                $sql .= ' AND d_fact IN (' . implode(', ', array_fill(0, count($types), '?')) . ')';
-                $vars = array_merge($vars, $types);
+                $query->whereIn('d_fact', $types);
             }
         }
 
-        $sql .= ' AND d_fact NOT IN (' . implode(', ', array_fill(0, count($no_types), '?')) . ')';
-        $vars = array_merge($vars, $no_types);
-
-        $n = (int) Database::prepare($sql)->execute($vars)->fetchOne();
-
-        return I18N::number($n);
+        return $query->whereNotIn('d_fact', $no_types)
+            ->count();
     }
 
     /**
-     * Count the number of births.
+     * Count the number of events (with dates).
+     *
+     * @param string[] $events
+     *
+     * @return string
+     */
+    public function totalEvents(array $events = []): string
+    {
+        return I18N::number(
+            $this->getEventCount($events)
+        );
+    }
+
+    /**
+     * Count the number of births events (BIRT, CHR, BAPM, ADOP).
      *
      * @return string
      */
@@ -113,7 +110,7 @@ class EventRepository implements EventRepositoryInterface
     }
 
     /**
-     * Count the number of births.
+     * Count the number of births (BIRT).
      *
      * @return string
      */
@@ -123,7 +120,7 @@ class EventRepository implements EventRepositoryInterface
     }
 
     /**
-     * Count the number of deaths.
+     * Count the number of death events (DEAT, BURI, CREM).
      *
      * @return string
      */
@@ -133,7 +130,7 @@ class EventRepository implements EventRepositoryInterface
     }
 
     /**
-     * Count the number of deaths.
+     * Count the number of deaths (DEAT).
      *
      * @return string
      */
@@ -143,7 +140,7 @@ class EventRepository implements EventRepositoryInterface
     }
 
     /**
-     * Count the number of marriages.
+     * Count the number of marriage events (MARR, _NMR).
      *
      * @return string
      */
@@ -153,7 +150,7 @@ class EventRepository implements EventRepositoryInterface
     }
 
     /**
-     * Count the number of marriages.
+     * Count the number of marriages (MARR).
      *
      * @return string
      */
@@ -163,7 +160,7 @@ class EventRepository implements EventRepositoryInterface
     }
 
     /**
-     * Count the number of divorces.
+     * Count the number of divorce events (DIV, ANUL, _SEPR).
      *
      * @return string
      */
@@ -173,7 +170,7 @@ class EventRepository implements EventRepositoryInterface
     }
 
     /**
-     * Count the number of divorces.
+     * Count the number of divorces (DIV).
      *
      * @return string
      */
@@ -196,13 +193,26 @@ class EventRepository implements EventRepositoryInterface
             Gedcom::DEATH_EVENTS
         );
 
-        $no_facts = [];
-        foreach ($facts as $fact) {
-            $fact       = '!' . str_replace('\'', '', $fact);
-            $no_facts[] = $fact;
-        }
+        $no_facts = array_map(
+            function (string $fact) {
+                return '!' . $fact;
+            },
+            $facts
+        );
 
         return $this->totalEvents($no_facts);
+    }
+
+    /**
+     * Run an SQL query and cache the result.
+     *
+     * @param string $sql
+     *
+     * @return \stdClass[]
+     */
+    private function runSql($sql): array
+    {
+        return Sql::runSql($sql);
     }
 
     /**
@@ -262,10 +272,12 @@ class EventRepository implements EventRepositoryInterface
                     $result = I18N::translate('This information is private and cannot be shown.');
                 }
                 break;
+
             case 'year':
                 $date   = new Date($row->type . ' ' . $row->year);
                 $result = $date->display();
                 break;
+
             case 'type':
                 if (isset($eventTypes[$row->fact])) {
                     $result = $eventTypes[$row->fact];
@@ -273,9 +285,11 @@ class EventRepository implements EventRepositoryInterface
                     $result = GedcomTag::getLabel($row->fact);
                 }
                 break;
+
             case 'name':
                 $result = '<a href="' . e($record->url()) . '">' . $record->getFullName() . '</a>';
                 break;
+
             case 'place':
                 $fact = $record->getFirstFact($row->fact);
                 if ($fact) {

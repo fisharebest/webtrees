@@ -18,11 +18,13 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Statistics\Repository;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Functions\FunctionsDate;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\LatestRepositoryInterface;
 use Fisharebest\Webtrees\User;
+use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Query\Builder;
+use Illuminate\Database\Query\JoinClause;
 
 /**
  * Statistics submodule providing all LATEST related methods.
@@ -45,12 +47,16 @@ class LatestRepository implements LatestRepositoryInterface
             return $user;
         }
 
-        $user_id = (int) Database::prepare(
-            "SELECT u.user_id" .
-            " FROM `##user` u" .
-            " LEFT JOIN `##user_setting` us ON (u.user_id=us.user_id AND us.setting_name='reg_timestamp') " .
-            " ORDER BY us.setting_value DESC LIMIT 1"
-        )->execute()->fetchOne();
+        $user_id = DB::table('user as u')
+            ->select(['u.user_id'])
+            ->leftJoin('user_setting as us', function (JoinClause $join) {
+                $join->on(function (Builder $query) {
+                    $query->whereColumn('u.user_id', '=', 'us.user_id')
+                        ->where('us.setting_name', '=', 'reg_timestamp');
+                });
+            })
+            ->orderByDesc('us.setting_value')
+            ->value('user_id');
 
         $user = User::find($user_id) ?? Auth::user();
 
@@ -129,16 +135,14 @@ class LatestRepository implements LatestRepositoryInterface
      */
     public function latestUserLoggedin(string $yes = null, string $no = null): string
     {
-        $yes = $yes ?? I18N::translate('yes');
-        $no  = $no ?? I18N::translate('no');
-
+        $yes  = $yes ?? I18N::translate('yes');
+        $no   = $no ?? I18N::translate('no');
         $user = $this->latestUser();
 
-        $is_logged_in = (bool) Database::prepare(
-            "SELECT 1 FROM `##session` WHERE user_id = :user_id LIMIT 1"
-        )->execute([
-            'user_id' => $user->id()
-        ])->fetchOne();
+        $is_logged_in = DB::table('session')
+            ->selectRaw('1')
+            ->where('user_id', '=', $user->id())
+            ->first();
 
         return $is_logged_in ? $yes : $no;
     }

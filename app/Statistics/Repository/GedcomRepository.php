@@ -17,11 +17,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Statistics\Repository;
 
-use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\GedcomRepositoryInterface;
 use Fisharebest\Webtrees\Tree;
+use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Query\Builder;
 
 /**
  * Statistics submodule providing all GEDCOM related methods.
@@ -169,13 +170,15 @@ class GedcomRepository implements GedcomRepositoryInterface
      */
     public function gedcomUpdated(): string
     {
-        $row = Database::prepare(
-            "SELECT d_year, d_month, d_day FROM `##dates` "
-            . "WHERE d_julianday1 = (SELECT MAX(d_julianday1) "
-            . "FROM `##dates` "
-            . "WHERE d_file =? AND d_fact='CHAN') "
-            . "LIMIT 1"
-        )->execute([$this->tree->id()])->fetchOneRow();
+        $row = DB::table('dates')
+            ->select(['d_year', 'd_month', 'd_day'])
+            ->where('d_julianday1', '=', function (Builder $query) {
+                $query->selectRaw('MAX(d_julianday1)')
+                    ->from('dates')
+                    ->where('d_file', '=', $this->tree->id())
+                    ->where('d_fact', '=', 'CHAN');
+            })
+            ->first();
 
         if ($row) {
             $date = new Date("{$row->d_day} {$row->d_month} {$row->d_year}");

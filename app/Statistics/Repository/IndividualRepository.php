@@ -19,12 +19,15 @@ namespace Fisharebest\Webtrees\Statistics\Repository;
 
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
+use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Statistics\Google\ChartCommonGiven;
 use Fisharebest\Webtrees\Statistics\Google\ChartCommonSurname;
 use Fisharebest\Webtrees\Statistics\Google\ChartIndividual;
+use Fisharebest\Webtrees\Statistics\Google\ChartMortality;
 use Fisharebest\Webtrees\Statistics\Helper\Percentage;
 use Fisharebest\Webtrees\Tree;
+use Illuminate\Database\Capsule\Manager as DB;
 
 /**
  *
@@ -53,11 +56,9 @@ class IndividualRepository
      */
     public function totalIndividualsQuery(): int
     {
-        return (int) Database::prepare(
-            "SELECT COUNT(*) FROM `##individuals` WHERE i_file = :tree_id"
-        )->execute([
-            'tree_id' => $this->tree->id(),
-        ])->fetchOne();
+        return DB::table('individuals')
+            ->where('i_file', '=', $this->tree->id())
+            ->count();
     }
 
     /**
@@ -736,5 +737,102 @@ class IndividualRepository
         return (new ChartIndividual())
             ->chartIndisWithSources($tot_indi, $tot_indi_source, $size, $color_from, $color_to);
 
+    }
+
+    /**
+     * Count the number of living individuals.
+     *
+     * The totalLiving/totalDeceased queries assume that every dead person will
+     * have a DEAT record. It will not include individuals who were born more
+     * than MAX_ALIVE_AGE years ago, and who have no DEAT record.
+     * A good reason to run the “Add missing DEAT records” batch-update!
+     *
+     * @return int
+     */
+    private function totalLivingQuery(): int
+    {
+        return (int) Database::prepare(
+            "SELECT COUNT(*) FROM `##individuals` WHERE i_file = :tree_id AND i_gedcom NOT REGEXP '\\n1 ("
+            . implode('|', Gedcom::DEATH_EVENTS) . ")'"
+        )->execute([
+            'tree_id' => $this->tree->id(),
+        ])->fetchOne();
+    }
+
+    /**
+     * Count the number of living individuals.
+     *
+     * @return string
+     */
+    public function totalLiving(): string
+    {
+        return I18N::number($this->totalLivingQuery());
+    }
+
+    /**
+     * Count the number of living individuals.
+     *
+     * @return string
+     */
+    public function totalLivingPercentage(): string
+    {
+        $percentageHelper = new Percentage($this->tree);
+        return $percentageHelper->getPercentage($this->totalLivingQuery(), 'individual');
+    }
+
+    /**
+     * Count the number of dead individuals.
+     *
+     * @return int
+     */
+    private function totalDeceasedQuery(): int
+    {
+        return (int) Database::prepare(
+            "SELECT COUNT(*) FROM `##individuals` WHERE i_file = :tree_id AND i_gedcom REGEXP '\\n1 ("
+            . implode('|', Gedcom::DEATH_EVENTS) . ")'"
+        )->execute([
+            'tree_id' => $this->tree->id(),
+        ])->fetchOne();
+    }
+
+    /**
+     * Count the number of dead individuals.
+     *
+     * @return string
+     */
+    public function totalDeceased(): string
+    {
+        return I18N::number($this->totalDeceasedQuery());
+    }
+
+    /**
+     * Count the number of dead individuals.
+     *
+     * @return string
+     */
+    public function totalDeceasedPercentage(): string
+    {
+        $percentageHelper = new Percentage($this->tree);
+        return $percentageHelper->getPercentage($this->totalDeceasedQuery(), 'individual');
+    }
+
+    /**
+     * Create a chart showing mortality.
+     *
+     * @param string|null $size
+     * @param string|null $color_living
+     * @param string|null $color_dead
+     *
+     * @return string
+     */
+    public function chartMortality(string $size = null, string $color_living = null, string $color_dead = null): string
+    {
+        $tot_l = $this->totalLivingQuery();
+        $tot_d = $this->totalDeceasedQuery();
+        $per_l = $this->totalLivingPercentage();
+        $per_d = $this->totalDeceasedPercentage();
+
+        return (new ChartMortality())
+            ->chartMortality($tot_l, $tot_d, $per_l, $per_d, $size, $color_living, $color_dead);
     }
 }

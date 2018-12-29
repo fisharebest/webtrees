@@ -100,12 +100,14 @@ class UserRepository implements UserRepositoryInterface
                 } else {
                     $content .= e($user->getRealName()) . ' - ' . e($user->getUserName());
                 }
+
                 if (Auth::id() !== $user->id() && $user->getPreference('contactmethod') !== 'none') {
                     if ($type === 'list') {
                         $content .= '<br>';
                     }
                     $content .= '<a href="' . e(route('message', ['to'  => $user->getUserName(), 'ged' => $this->tree->name()])) . '" class="btn btn-link" title="' . I18N::translate('Send a message') . '">' . view('icons/email') . '</a>';
                 }
+
                 if ($type === 'list') {
                     $content .= '</li>';
                 }
@@ -133,9 +135,9 @@ class UserRepository implements UserRepositoryInterface
 
         foreach (User::allLoggedIn() as $user) {
             if (Auth::isAdmin() || $user->getPreference('visibleonline')) {
-                $visible++;
+                ++$visible;
             } else {
-                $anon++;
+                ++$anon;
             }
         }
 
@@ -235,5 +237,37 @@ class UserRepository implements UserRepositoryInterface
     public function userFullName(): string
     {
         return Auth::check() ? '<span dir="auto">' . e(Auth::user()->getRealName()) . '</span>' : '';
+    }
+
+    /**
+     * Count the number of users.
+     *
+     * @return string
+     */
+    public function totalUsers(): string
+    {
+        $total = count(User::all());
+
+        return I18N::number($total);
+    }
+
+    /**
+     * Count the number of administrators.
+     *
+     * @return string
+     */
+    public function totalAdmins(): string
+    {
+        return I18N::number(count(User::administrators()));
+    }
+
+    /**
+     * Count the number of administrators.
+     *
+     * @return string
+     */
+    public function totalNonAdmins(): string
+    {
+        return I18N::number(count(User::all()) - count(User::administrators()));
     }
 }

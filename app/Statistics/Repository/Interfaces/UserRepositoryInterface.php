@@ -79,4 +79,25 @@ interface UserRepositoryInterface
      * @return string
      */
     public function userFullName(): string;
+
+    /**
+     * Count the number of users.
+     *
+     * @return string
+     */
+    public function totalUsers(): string;
+
+    /**
+     * Count the number of administrators.
+     *
+     * @return string
+     */
+    public function totalAdmins(): string;
+
+    /**
+     * Count the number of administrators.
+     *
+     * @return string
+     */
+    public function totalNonAdmins(): string;
 }

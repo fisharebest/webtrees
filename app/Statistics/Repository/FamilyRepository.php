@@ -29,6 +29,7 @@ use Fisharebest\Webtrees\Statistics\Google\ChartMarriageAge;
 use Fisharebest\Webtrees\Statistics\Helper\Percentage;
 use Fisharebest\Webtrees\Statistics\Helper\Sql;
 use Fisharebest\Webtrees\Tree;
+use Illuminate\Database\Capsule\Manager as DB;
 
 /**
  *
@@ -119,16 +120,12 @@ class FamilyRepository
      * Count the total families.
      *
      * @return int
-     *
-     * @todo Should be private
      */
     public function totalFamiliesQuery(): int
     {
-        return (int) Database::prepare(
-            "SELECT COUNT(*) FROM `##families` WHERE f_file = :tree_id"
-        )->execute([
-            'tree_id' => $this->tree->id(),
-        ])->fetchOne();
+        return DB::table('families')
+            ->where('f_file', '=', $this->tree->id())
+            ->count();
     }
 
     /**
@@ -1125,7 +1122,7 @@ class FamilyRepository
             } elseif ((int) ($age / 30.4375) > 0) {
                 $age = (int) ($age / 30.4375) . 'm';
             } else {
-                $age = $age . 'd';
+                $age .= 'd';
             }
             $age = FunctionsDate::getAgeAtEvent($age);
             if ($type === 'age') {

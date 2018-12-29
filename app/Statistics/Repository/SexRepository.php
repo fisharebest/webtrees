@@ -17,12 +17,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Statistics\Repository;
 
-use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Statistics\Google\ChartSex;
 use Fisharebest\Webtrees\Statistics\Helper\Percentage;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\SexRepositoryInterface;
 use Fisharebest\Webtrees\Tree;
+use Illuminate\Database\Capsule\Manager as DB;
 
 /**
  * Statistics submodule providing all SEX related methods.
@@ -54,16 +54,13 @@ class SexRepository implements SexRepositoryInterface
      * Count the number of males.
      *
      * @return int
-     *
-     * @todo Should be private
      */
     private function totalSexMalesQuery(): int
     {
-        return (int) Database::prepare(
-            "SELECT COUNT(*) FROM `##individuals` WHERE i_file = :tree_id AND i_sex = 'M'"
-        )->execute([
-            'tree_id' => $this->tree->id(),
-        ])->fetchOne();
+        return DB::table('individuals')
+            ->where('i_file', '=', $this->tree->id())
+            ->where('i_sex', '=', 'M')
+            ->count();
     }
 
     /**
@@ -73,11 +70,10 @@ class SexRepository implements SexRepositoryInterface
      */
     private function totalSexFemalesQuery(): int
     {
-        return (int) Database::prepare(
-            "SELECT COUNT(*) FROM `##individuals` WHERE i_file = :tree_id AND i_sex = 'F'"
-        )->execute([
-            'tree_id' => $this->tree->id(),
-        ])->fetchOne();
+        return DB::table('individuals')
+            ->where('i_file', '=', $this->tree->id())
+            ->where('i_sex', '=', 'F')
+            ->count();
     }
 
     /**
@@ -87,11 +83,10 @@ class SexRepository implements SexRepositoryInterface
      */
     private function totalSexUnknownQuery(): int
     {
-        return (int) Database::prepare(
-            "SELECT COUNT(*) FROM `##individuals` WHERE i_file = :tree_id AND i_sex = 'U'"
-        )->execute([
-            'tree_id' => $this->tree->id(),
-        ])->fetchOne();
+        return DB::table('individuals')
+            ->where('i_file', '=', $this->tree->id())
+            ->where('i_sex', '=', 'U')
+            ->count();
     }
 
     /**

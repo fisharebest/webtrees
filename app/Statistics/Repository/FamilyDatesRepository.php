@@ -21,9 +21,10 @@ use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Statistics\Helper\Sql;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\FamilyDatesRepositoryInterface;
 use Fisharebest\Webtrees\Tree;
+use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Query\Builder;
 
 /**
  * Statistics submodule providing all methods related to family dates (birth, death, marriage, divorce).
@@ -46,18 +47,6 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
     }
 
     /**
-     * Run an SQL query and cache the result.
-     *
-     * @param string $sql
-     *
-     * @return \stdClass[]
-     */
-    private function runSql($sql): array
-    {
-        return Sql::runSql($sql);
-    }
-
-    /**
      * Birth and Death
      *
      * @param string $type
@@ -69,13 +58,13 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
     private function mortalityQuery($type, $life_dir, $birth_death): string
     {
         if ($birth_death === 'MARR') {
-            $query_field = "'MARR'";
+            $query_field = 'MARR';
         } elseif ($birth_death === 'DIV') {
-            $query_field = "'DIV'";
+            $query_field = 'DIV';
         } elseif ($birth_death === 'BIRT') {
-            $query_field = "'BIRT'";
+            $query_field = 'BIRT';
         } else {
-            $query_field = "'DEAT'";
+            $query_field = 'DEAT';
         }
 
         if ($life_dir === 'ASC') {
@@ -84,21 +73,23 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
             $dmod = 'MAX';
         }
 
-        $rows = $this->runSql(
-            "SELECT d_year, d_type, d_fact, d_gid" .
-            " FROM `##dates`" .
-            " WHERE d_file={$this->tree->id()} AND d_fact IN ({$query_field}) AND d_julianday1=(" .
-            " SELECT {$dmod}( d_julianday1 )" .
-            " FROM `##dates`" .
-            " WHERE d_file={$this->tree->id()} AND d_fact IN ({$query_field}) AND d_julianday1<>0 )" .
-            " LIMIT 1"
-        );
+        $row = DB::table('dates')
+            ->select(['d_year', 'd_type', 'd_fact', 'd_gid'])
+            ->where('d_file', '=', $this->tree->id())
+            ->where('d_fact', '=', $query_field)
+            ->where('d_julianday1', '=', function (Builder $query) use ($dmod, $query_field) {
+                $query->selectRaw($dmod . '(d_julianday1)')
+                    ->from('dates')
+                    ->where('d_file', '=', $this->tree->id())
+                    ->where('d_fact', '=', $query_field)
+                    ->where('d_julianday1', '<>', 0);
+            })
+            ->first();
 
-        if (!isset($rows[0])) {
+        if (!$row) {
             return '';
         }
 
-        $row    = $rows[0];
         $result = '';
 
         switch ($type) {

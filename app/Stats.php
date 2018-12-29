@@ -145,16 +145,6 @@ class Stats implements
     private $mediaRepository;
 
     /**
-     * @var Statistics\Living
-     */
-    private $living;
-
-    /**
-     * @var Statistics\Deceased
-     */
-    private $deceased;
-
-    /**
      * @var EventRepositoryInterface
      */
     private $eventRepository;
@@ -235,8 +225,6 @@ class Stats implements
         $this->sourceRepository      = new SourceRepository($tree);
         $this->noteRepository        = new NoteRepository($tree);
         $this->mediaRepository       = new MediaRepository($tree);
-        $this->living                = new Statistics\Living($tree);
-        $this->deceased              = new Statistics\Deceased($tree);
         $this->eventRepository       = new EventRepository($tree);
         $this->sexRepository         = new SexRepository($tree);
         $this->userRepository        = new UserRepository($tree);
@@ -798,7 +786,7 @@ class Stats implements
      */
     public function totalLiving(): string
     {
-        return I18N::number($this->living->totalLivingQuery());
+        return $this->individualRepository->totalLiving();
     }
 
     /**
@@ -808,7 +796,7 @@ class Stats implements
      */
     public function totalLivingPercentage(): string
     {
-        return $this->living->totalLivingPercentage();
+        return $this->individualRepository->totalLivingPercentage();
     }
 
     /**
@@ -818,7 +806,7 @@ class Stats implements
      */
     public function totalDeceased(): string
     {
-        return I18N::number($this->deceased->totalDeceasedQuery());
+        return $this->individualRepository->totalDeceased();
     }
 
     /**
@@ -828,7 +816,7 @@ class Stats implements
      */
     public function totalDeceasedPercentage(): string
     {
-        return $this->deceased->totalDeceasedPercentage();
+        return $this->individualRepository->totalDeceasedPercentage();
     }
 
     /**
@@ -842,40 +830,7 @@ class Stats implements
      */
     public function chartMortality(string $size = null, string $color_living = null, string $color_dead = null): string
     {
-        return (new Google\ChartMortality($this->tree))
-            ->chartMortality($size, $color_living, $color_dead);
-    }
-
-    /**
-     * Count the number of users.
-     *
-     * @return string
-     */
-    public function totalUsers(): string
-    {
-        $total = count(User::all());
-
-        return I18N::number($total);
-    }
-
-    /**
-     * Count the number of administrators.
-     *
-     * @return string
-     */
-    public function totalAdmins(): string
-    {
-        return I18N::number(count(User::administrators()));
-    }
-
-    /**
-     * Count the number of administrators.
-     *
-     * @return string
-     */
-    public function totalNonAdmins(): string
-    {
-        return I18N::number(count(User::all()) - count(User::administrators()));
+        return $this->individualRepository->chartMortality($size, $color_living, $color_dead);
     }
 
     /**
@@ -3580,6 +3535,36 @@ class Stats implements
     public function userFullName(): string
     {
         return $this->userRepository->userFullName();
+    }
+
+    /**
+     * Count the number of users.
+     *
+     * @return string
+     */
+    public function totalUsers(): string
+    {
+        return $this->userRepository->totalUsers();
+    }
+
+    /**
+     * Count the number of administrators.
+     *
+     * @return string
+     */
+    public function totalAdmins(): string
+    {
+        return $this->userRepository->totalAdmins();
+    }
+
+    /**
+     * Count the number of administrators.
+     *
+     * @return string
+     */
+    public function totalNonAdmins(): string
+    {
+        return $this->userRepository->totalNonAdmins();
     }
 
     /**

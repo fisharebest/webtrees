@@ -17,11 +17,11 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Statistics\Repository;
 
-use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Statistics\Helper\Percentage;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\SourceRepositoryInterface;
 use Fisharebest\Webtrees\Tree;
+use Illuminate\Database\Capsule\Manager as DB;
 
 /**
  * Statistics submodule providing all SOURCE related methods.
@@ -47,16 +47,12 @@ class SourceRepository implements SourceRepositoryInterface
      * Count the total number of sources.
      *
      * @return int
-     *
-     * @todo Should be private
      */
     public function totalSourcesQuery(): int
     {
-        return (int) Database::prepare(
-            "SELECT COUNT(*) FROM `##sources` WHERE s_file = :tree_id"
-        )->execute([
-            'tree_id' => $this->tree->id(),
-        ])->fetchOne();
+        return DB::table('sources')
+            ->where('s_file', '=', $this->tree->id())
+            ->count();
     }
 
     /**
