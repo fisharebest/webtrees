@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Str;
 
 /**
@@ -114,12 +115,11 @@ class Note extends GedcomRecord
      */
     protected static function fetchGedcomRecord(string $xref, int $tree_id)
     {
-        return Database::prepare(
-            "SELECT o_gedcom FROM `##other` WHERE o_id = :xref AND o_file = :tree_id AND o_type = 'NOTE'"
-        )->execute([
-            'xref'    => $xref,
-            'tree_id' => $tree_id,
-        ])->fetchOne();
+        return DB::table('other')
+            ->where('o_id', '=', $xref)
+            ->where('o_file', '=', $tree_id)
+            ->where('o_type', '=', self::RECORD_TYPE)
+            ->value('o_gedcom');
     }
 
     /**

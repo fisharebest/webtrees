@@ -17,6 +17,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Illuminate\Database\Capsule\Manager as DB;
+
 /**
  * A GEDCOM source (SOUR) object.
  */
@@ -93,12 +95,10 @@ class Source extends GedcomRecord
      */
     protected static function fetchGedcomRecord(string $xref, int $tree_id)
     {
-        return Database::prepare(
-            "SELECT s_gedcom FROM `##sources` WHERE s_id = :xref AND s_file = :tree_id"
-        )->execute([
-            'xref'    => $xref,
-            'tree_id' => $tree_id,
-        ])->fetchOne();
+        return DB::table('sources')
+            ->where('s_id', '=', $xref)
+            ->where('s_file', '=', $tree_id)
+            ->value('s_gedcom');
     }
 
     /**

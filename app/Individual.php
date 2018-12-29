@@ -19,6 +19,7 @@ namespace Fisharebest\Webtrees;
 
 use Fisharebest\ExtCalendar\GregorianCalendar;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodePedi;
+use Illuminate\Database\Capsule\Manager as DB;
 
 /**
  * A GEDCOM individual (INDI) object.
@@ -47,7 +48,6 @@ class Individual extends GedcomRecord
      * @param string|null $gedcom
      *
      * @throws \Exception
-     *
      * @return Individual|null
      */
     public static function getInstance(string $xref, Tree $tree, string $gedcom = null)
@@ -70,32 +70,16 @@ class Individual extends GedcomRecord
      *
      * @return void
      */
-    public static function load(Tree $tree, array $xrefs)
+    public static function load(Tree $tree, array $xrefs): void
     {
-        $args         = [
-            'tree_id' => $tree->id(),
-        ];
-        $placeholders = [];
+        $rows = DB::table('individuals')
+            ->where('i_file', '=', $tree->id())
+            ->whereIn('i_id', array_unique($xrefs))
+            ->select(['i_id AS xref', 'i_gedcom AS gedcom'])
+            ->get();
 
-        foreach (array_unique($xrefs) as $n => $xref) {
-            if (!isset(self::$gedcom_record_cache[$tree->id()][$xref])) {
-                $placeholders[] = ':x' . $n;
-                $args['x' . $n] = $xref;
-            }
-        }
-
-        if (!empty($placeholders)) {
-            $rows = Database::prepare(
-                "SELECT i_id AS xref, i_gedcom AS gedcom" .
-                " FROM `##individuals`" .
-                " WHERE i_file = :tree_id AND i_id IN (" . implode(',', $placeholders) . ")"
-            )->execute(
-                $args
-            )->fetchAll();
-
-            foreach ($rows as $row) {
-                self::getInstance($row->xref, $tree, $row->gedcom);
-            }
+        foreach ($rows as $row) {
+            self::getInstance($row->xref, $tree, $row->gedcom);
         }
     }
 
@@ -284,12 +268,10 @@ class Individual extends GedcomRecord
      */
     protected static function fetchGedcomRecord(string $xref, int $tree_id)
     {
-        return Database::prepare(
-            "SELECT i_gedcom FROM `##individuals` WHERE i_id = :xref AND i_file = :tree_id"
-        )->execute([
-            'xref'    => $xref,
-            'tree_id' => $tree_id,
-        ])->fetchOne();
+        return DB::table('individuals')
+            ->where('i_id', '=', $xref)
+            ->where('i_file', '=', $tree_id)
+            ->value('i_gedcom');
     }
 
     /**
@@ -664,15 +646,17 @@ class Individual extends GedcomRecord
                         $min[] = $tmp->maximumJulianDay() - 365 * 1;
                         $max[] = $tmp->minimumJulianDay() + 365 * 30;
                     }
-                    if ($parent = $family->getHusband()) {
-                        $tmp = $parent->getBirthDate();
+                    $husband = $family->getHusband();
+                    if ($husband instanceof Individual) {
+                        $tmp = $husband->getBirthDate();
                         if ($tmp->isOK()) {
                             $min[] = $tmp->maximumJulianDay() + 365 * 15;
                             $max[] = $tmp->minimumJulianDay() + 365 * 65;
                         }
                     }
-                    if ($parent = $family->getWife()) {
-                        $tmp = $parent->getBirthDate();
+                    $wife = $family->getWife();
+                    if ($wife instanceof Individual) {
+                        $tmp = $wife->getBirthDate();
                         if ($tmp->isOK()) {
                             $min[] = $tmp->maximumJulianDay() + 365 * 15;
                             $max[] = $tmp->minimumJulianDay() + 365 * 45;
@@ -1064,7 +1048,6 @@ class Individual extends GedcomRecord
         return I18N::translate('Family with parents');
     }
 
-
     /**
      * Get the description for the family.
      *
@@ -1174,9 +1157,9 @@ class Individual extends GedcomRecord
         ////////////////////////////////////////////////////////////////////////////
 
         $sublevel = 1 + (int) substr($gedcom, 0, 1);
-        $GIVN = preg_match("/\n{$sublevel} GIVN (.+)/", $gedcom, $match) ? $match[1] : '';
-        $SURN = preg_match("/\n{$sublevel} SURN (.+)/", $gedcom, $match) ? $match[1] : '';
-        $NICK = preg_match("/\n{$sublevel} NICK (.+)/", $gedcom, $match) ? $match[1] : '';
+        $GIVN     = preg_match("/\n{$sublevel} GIVN (.+)/", $gedcom, $match) ? $match[1] : '';
+        $SURN     = preg_match("/\n{$sublevel} SURN (.+)/", $gedcom, $match) ? $match[1] : '';
+        $NICK     = preg_match("/\n{$sublevel} NICK (.+)/", $gedcom, $match) ? $match[1] : '';
 
         // SURN is an comma-separated list of surnames...
         if ($SURN !== '') {

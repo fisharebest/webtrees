@@ -17,6 +17,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Illuminate\Database\Capsule\Manager as DB;
+
 /**
  * A GEDCOM family (FAM) object.
  */
@@ -115,12 +117,10 @@ class Family extends GedcomRecord
      */
     protected static function fetchGedcomRecord(string $xref, int $tree_id)
     {
-        return Database::prepare(
-            "SELECT f_gedcom FROM `##families` WHERE f_id = :xref AND f_file = :tree_id"
-        )->execute([
-            'xref'    => $xref,
-            'tree_id' => $tree_id,
-        ])->fetchOne();
+        return DB::table('families')
+            ->where('f_id', '=', $xref)
+            ->where('f_file', '=', $tree_id)
+            ->value('f_gedcom');
     }
 
     /**

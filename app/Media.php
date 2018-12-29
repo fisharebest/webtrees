@@ -18,6 +18,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
+use Illuminate\Database\Capsule\Manager as DB;
 
 /**
  * A GEDCOM media (OBJE) object.
@@ -88,12 +89,10 @@ class Media extends GedcomRecord
      */
     protected static function fetchGedcomRecord(string $xref, int $tree_id)
     {
-        return Database::prepare(
-            "SELECT m_gedcom FROM `##media` WHERE m_id = :xref AND m_file = :tree_id"
-        )->execute([
-            'xref'    => $xref,
-            'tree_id' => $tree_id,
-        ])->fetchOne();
+        return DB::table('media')
+            ->where('m_id', '=', $xref)
+            ->where('m_file', '=', $tree_id)
+            ->value('m_gedcom');
     }
 
     /**
