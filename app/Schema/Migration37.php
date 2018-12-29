@@ -76,15 +76,22 @@ class Migration37 implements MigrationInterface
                     'm_file',
                     'm_filename',
                     'm_ext',
-                    DB::raw('LEFT(m_type, 15)'),
+                    'm_type', //DB::raw('LEFT(m_type, 15)'),
                     'm_titl',
                 ])->from('media');
             });
 
+            // SQLite can only drop one column at a time.
             DB::schema()->table('media', function (Blueprint $table): void {
                 $table->dropColumn('m_filename');
+            });
+            DB::schema()->table('media', function (Blueprint $table): void {
                 $table->dropColumn('m_ext');
+            });
+            DB::schema()->table('media', function (Blueprint $table): void {
                 $table->dropColumn('m_type');
+            });
+            DB::schema()->table('media', function (Blueprint $table): void {
                 $table->dropColumn('m_titl');
             });
         }

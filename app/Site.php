@@ -17,6 +17,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Illuminate\Database\Capsule\Manager as DB;
+use function mb_substr;
+
 /**
  * Provide an interface to the wt_site_setting table.
  */
@@ -42,9 +45,9 @@ class Site
         // There are lots of settings, and we need to fetch lots of them on every page
         // so it is quicker to fetch them all in one go.
         if (empty(self::$preferences)) {
-            self::$preferences = Database::prepare(
-                "SELECT setting_name, setting_value FROM `##site_setting`"
-            )->fetchAssoc();
+            self::$preferences = DB::table('site_setting')
+                ->pluck('setting_value', 'setting_name')
+                ->all();
         }
 
         return self::$preferences[$setting_name] ?? $default;
@@ -61,12 +64,10 @@ class Site
     public static function setPreference($setting_name, $setting_value)
     {
         if (self::getPreference($setting_name) !== $setting_value) {
-            Database::prepare(
-                "REPLACE INTO `##site_setting` (setting_name, setting_value)" .
-                " VALUES (:setting_name, LEFT(:setting_value, 2000))"
-            )->execute([
-                'setting_name'  => $setting_name,
-                'setting_value' => $setting_value,
+            DB::table('site_setting')->updateOrInsert([
+                'setting_name' => $setting_name,
+            ], [
+                'setting_value' => mb_substr($setting_value, 0, 2000),
             ]);
 
             self::$preferences[$setting_name] = $setting_value;

@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Illuminate\Database\Capsule\Manager as DB;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -43,16 +44,16 @@ class Log
      */
     private static function addLog($message, $log_type, Tree $tree = null)
     {
-        $request = Request::createFromGlobals();
+        $request    = Request::createFromGlobals();
+        $ip_address = $request->getClientIp() ?? '127.0.0.1';
+        $tree_id    = $tree ? $tree->id() : null;
 
-        Database::prepare(
-            "INSERT INTO `##log` (log_type, log_message, ip_address, user_id, gedcom_id) VALUES (?, ?, ?, ?, ?)"
-        )->execute([
-            $log_type,
-            $message,
-            $request->getClientIp(),
-            Auth::id(),
-            $tree ? $tree->id() : null,
+        DB::table('log')->insert([
+            'log_type'    => $log_type,
+            'log_message' => $message,
+            'ip_address'  => $ip_address,
+            'user_id'     => Auth::id(),
+            'gedcom_id'   => $tree_id,
         ]);
     }
 
@@ -120,7 +121,6 @@ class Log
 
     /**
      * Store a search event in the message log.
-     *
      * Unlike most webtrees activity, search is not restricted to a single tree,
      * so we need to record which trees were searchecd.
      *
