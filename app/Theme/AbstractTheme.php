@@ -18,7 +18,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Theme;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
@@ -35,6 +34,7 @@ use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Fisharebest\Webtrees\Webtrees;
+use Illuminate\Database\Capsule\Manager as DB;
 use stdClass;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -72,7 +72,6 @@ abstract class AbstractTheme
 
     /**
      * Create accessibility links for the header.
-     *
      * "Skip to content" allows keyboard only users to navigate over the headers without
      * pressing TAB many times.
      *
@@ -146,7 +145,6 @@ abstract class AbstractTheme
 
     /**
      * Create the tracking code for Google Analytics.
-     *
      * See https://developers.google.com/analytics/devguides/collection/analyticsjs/advanced
      *
      * @param string $analytics_id
@@ -232,7 +230,6 @@ abstract class AbstractTheme
      * Where are our CSS, JS and other assets?
      *
      * @deprecated - use the constant directly
-     *
      * @return string A relative path, such as "themes/foo/"
      */
     public function assetUrl(): string
@@ -1134,18 +1131,23 @@ abstract class AbstractTheme
     public function menuLists($surname): Menu
     {
         // Do not show empty lists
-        $row = Database::prepare(
-            "SELECT" .
-            " EXISTS(SELECT 1 FROM `##sources` WHERE s_file = ?) AS sour," .
-            " EXISTS(SELECT 1 FROM `##other` WHERE o_file = ? AND o_type='REPO') AS repo," .
-            " EXISTS(SELECT 1 FROM `##other` WHERE o_file = ? AND o_type='NOTE') AS note," .
-            " EXISTS(SELECT 1 FROM `##media` WHERE m_file = ?) AS obje"
-        )->execute([
-            $this->tree->id(),
-            $this->tree->id(),
-            $this->tree->id(),
-            $this->tree->id(),
-        ])->fetchOneRow();
+        $sources_exist = DB::table('sources')
+            ->where('s_file', '=', $this->tree->id())
+            ->exists();
+
+        $repositories_exist = DB::table('other')
+            ->where('o_file', '=', $this->tree->id())
+            ->where('o_type', '=', 'REPO')
+            ->exists();
+
+        $notes_exist = DB::table('other')
+            ->where('o_file', '=', $this->tree->id())
+            ->where('o_type', '=', 'NOTE')
+            ->exists();
+
+        $media_exist = DB::table('media')
+            ->where('m_file', '=', $this->tree->id())
+            ->exists();
 
         $submenus = [
             $this->menuListsIndividuals($surname),
@@ -1153,16 +1155,16 @@ abstract class AbstractTheme
             $this->menuListsBranches($surname),
             $this->menuListsPlaces(),
         ];
-        if ($row->obje) {
+        if ($media_exist) {
             $submenus[] = $this->menuListsMedia();
         }
-        if ($row->repo) {
+        if ($repositories_exist) {
             $submenus[] = $this->menuListsRepositories();
         }
-        if ($row->sour) {
+        if ($sources_exist) {
             $submenus[] = $this->menuListsSources();
         }
-        if ($row->note) {
+        if ($notes_exist) {
             $submenus[] = $this->menuListsNotes();
         }
 
