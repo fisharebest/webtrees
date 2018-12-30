@@ -1130,17 +1130,17 @@
     },
     {
         "name": "league/commonmark",
-        "version": "0.18.0",
-        "version_normalized": "0.18.0.0",
+        "version": "0.18.1",
+        "version_normalized": "0.18.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/thephpleague/commonmark.git",
-            "reference": "006af077d4b1b7eb1d9760964f9f984ba188632c"
+            "reference": "e5029f74ba39e043ce4b3ca6c05dc719d8aafd94"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/006af077d4b1b7eb1d9760964f9f984ba188632c",
-            "reference": "006af077d4b1b7eb1d9760964f9f984ba188632c",
+            "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/e5029f74ba39e043ce4b3ca6c05dc719d8aafd94",
+            "reference": "e5029f74ba39e043ce4b3ca6c05dc719d8aafd94",
             "shasum": ""
         },
         "require": {
@@ -1163,7 +1163,7 @@
         "suggest": {
             "league/commonmark-extras": "Library of useful extensions including smart punctuation"
         },
-        "time": "2018-09-18T13:13:55+00:00",
+        "time": "2018-12-30T01:55:29+00:00",
         "bin": [
             "bin/commonmark"
         ],
@@ -1191,7 +1191,7 @@
                 "role": "Lead Developer"
             }
         ],
-        "description": "Markdown parser for PHP based on the CommonMark spec",
+        "description": "PHP Markdown parser based on the CommonMark spec",
         "homepage": "https://github.com/thephpleague/commonmark",
         "keywords": [
             "commonmark",
@@ -1399,17 +1399,17 @@
     },
     {
         "name": "nesbot/carbon",
-        "version": "1.36.1",
-        "version_normalized": "1.36.1.0",
+        "version": "1.36.2",
+        "version_normalized": "1.36.2.0",
         "source": {
             "type": "git",
             "url": "https://github.com/briannesbitt/Carbon.git",
-            "reference": "63da8cdf89d7a5efe43aabc794365f6e7b7b8983"
+            "reference": "cd324b98bc30290f233dd0e75e6ce49f7ab2a6c9"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/63da8cdf89d7a5efe43aabc794365f6e7b7b8983",
-            "reference": "63da8cdf89d7a5efe43aabc794365f6e7b7b8983",
+            "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/cd324b98bc30290f233dd0e75e6ce49f7ab2a6c9",
+            "reference": "cd324b98bc30290f233dd0e75e6ce49f7ab2a6c9",
             "shasum": ""
         },
         "require": {
@@ -1423,7 +1423,7 @@
             "friendsofphp/php-cs-fixer": "Needed for the `composer phpcs` command. Allow to automatically fix code style.",
             "phpstan/phpstan": "Needed for the `composer phpstan` command. Allow to detect potential errors."
         },
-        "time": "2018-11-22T18:23:02+00:00",
+        "time": "2018-12-28T10:07:33+00:00",
         "type": "library",
         "extra": {
             "laravel": {
