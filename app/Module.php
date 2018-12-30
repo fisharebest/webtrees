@@ -510,7 +510,7 @@ class Module
      *
      * @return void
      */
-    public static function setDefaultAccess($tree_id)
+    public static function setDefaultAccess(int $tree_id): void
     {
         foreach (self::getInstalledModules('disabled') as $module) {
             if ($module instanceof ModuleMenuInterface) {

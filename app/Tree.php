@@ -59,6 +59,13 @@ class Tree
     /** @var string[][] Cached copy of the wt_user_gedcom_setting table. */
     private $user_preferences = [];
 
+    private const RESN_PRIVACY = [
+        'none'         => Auth::PRIV_PRIVATE,
+        'privacy'      => Auth::PRIV_USER,
+        'confidential' => Auth::PRIV_NONE,
+        'hidden'       => Auth::PRIV_HIDE,
+    ];
+
     /**
      * Create a tree object. This is a private constructor - it can only
      * be called from Tree::getAll() to ensure proper initialisation.
@@ -77,18 +84,14 @@ class Tree
         $this->individual_fact_privacy = [];
 
         // Load the privacy settings for this tree
-        $rows = Database::prepare(
-            "SELECT xref, tag_type, CASE resn WHEN 'none' THEN :priv_public WHEN 'privacy' THEN :priv_user WHEN 'confidential' THEN :priv_none WHEN 'hidden' THEN :priv_hide END AS resn" .
-            " FROM `##default_resn` WHERE gedcom_id = :tree_id"
-        )->execute([
-            'priv_public' => Auth::PRIV_PRIVATE,
-            'priv_user'   => Auth::PRIV_USER,
-            'priv_none'   => Auth::PRIV_NONE,
-            'priv_hide'   => Auth::PRIV_HIDE,
-            'tree_id'     => $this->id,
-        ])->fetchAll();
+        $rows = DB::table('default_resn')
+            ->where('gedcom_id', '=', $this->id)
+            ->get();
 
         foreach ($rows as $row) {
+            // Convert GEDCOM privacy restriction to a webtrees access level.
+            $row->resn = self::RESN_PRIVACY[$row->resn];
+
             if ($row->xref !== null) {
                 if ($row->tag_type !== null) {
                     $this->individual_fact_privacy[$row->xref][$row->tag_type] = (int) $row->resn;
@@ -172,9 +175,10 @@ class Tree
     public function getPreference(string $setting_name, string $default = ''): string
     {
         if (empty($this->preferences)) {
-            $this->preferences = Database::prepare(
-                "SELECT setting_name, setting_value FROM `##gedcom_setting` WHERE gedcom_id = ?"
-            )->execute([$this->id])->fetchAssoc();
+            $this->preferences = DB::table('gedcom_setting')
+                ->where('gedcom_id', '=', $this->id)
+                ->pluck('setting_value', 'setting_name')
+                ->all();
         }
 
         return $this->preferences[$setting_name] ?? $default;
@@ -191,12 +195,10 @@ class Tree
     public function setPreference(string $setting_name, string $setting_value): Tree
     {
         if ($setting_value !== $this->getPreference($setting_name)) {
-            Database::prepare(
-                "REPLACE INTO `##gedcom_setting` (gedcom_id, setting_name, setting_value)" .
-                " VALUES (:tree_id, :setting_name, LEFT(:setting_value, 255))"
-            )->execute([
-                'tree_id'       => $this->id,
-                'setting_name'  => $setting_name,
+            DB::table('gedcom_setting')->updateOrInsert([
+                'gedcom_id' =>$this->id,
+                'setting_name' => $setting_name,
+            ], [
                 'setting_value' => $setting_value,
             ]);
 
@@ -222,12 +224,11 @@ class Tree
         // There are lots of settings, and we need to fetch lots of them on every page
         // so it is quicker to fetch them all in one go.
         if (!array_key_exists($user->getUserId(), $this->user_preferences)) {
-            $this->user_preferences[$user->getUserId()] = Database::prepare(
-                "SELECT setting_name, setting_value FROM `##user_gedcom_setting` WHERE user_id = ? AND gedcom_id = ?"
-            )->execute([
-                $user->getUserId(),
-                $this->id,
-            ])->fetchAssoc();
+            $this->user_preferences[$user->getUserId()] = DB::table('user_gedcom_setting')
+                ->where('user_id', '=', $user->getUserId())
+                ->where('gedcom_id', '=', $this->id)
+                ->pluck('setting_value', 'setting_name')
+                ->all();
         }
 
         return $this->user_preferences[$user->getUserId()][$setting_name] ?? $default;
@@ -246,25 +247,15 @@ class Tree
     {
         if ($this->getUserPreference($user, $setting_name) !== $setting_value) {
             // Update the database
-            if ($setting_value === '') {
-                Database::prepare(
-                    "DELETE FROM `##user_gedcom_setting` WHERE gedcom_id = :tree_id AND user_id = :user_id AND setting_name = :setting_name"
-                )->execute([
-                    'tree_id'      => $this->id,
-                    'user_id'      => $user->getUserId(),
-                    'setting_name' => $setting_name,
-                ]);
-            } else {
-                Database::prepare(
-                    "REPLACE INTO `##user_gedcom_setting` (user_id, gedcom_id, setting_name, setting_value) VALUES (:user_id, :tree_id, :setting_name, LEFT(:setting_value, 255))"
-                )->execute([
-                    'user_id'       => $user->getUserId(),
-                    'tree_id'       => $this->id,
-                    'setting_name'  => $setting_name,
-                    'setting_value' => $setting_value,
-                ]);
-            }
-            // Update our cache
+            DB::table('user_gedcom_setting')->updateOrInsert([
+                'gedcom_id' => $this->id(),
+                'user_id' =>$user->getUserId(),
+                'setting_name' => $setting_name,
+            ], [
+                'setting_value' => $setting_value,
+            ]);
+
+            // Update the cache
             $this->user_preferences[$user->getUserId()][$setting_name] = $setting_value;
             // Audit log of changes
             Log::addConfigurationLog('Tree preference "' . $setting_name . '" set to "' . $setting_value . '" for user "' . $user->getUserName() . '"', $this);
@@ -293,6 +284,7 @@ class Tree
     public static function getAll(): array
     {
         if (empty(self::$trees)) {
+            /*
             $rows = Database::prepare(
                 "SELECT g.gedcom_id AS tree_id, g.gedcom_name AS tree_name, gs1.setting_value AS tree_title" .
                 " FROM `##gedcom` g" .
@@ -314,9 +306,9 @@ class Tree
                 Auth::id(),
                 Auth::id(),
             ])->fetchAll();
+            */
 
             // Admins see all trees
-            /*
             $query = DB::table('gedcom')
                 ->leftJoin('gedcom_setting', function (JoinClause $join): void {
                     $join->on('gedcom_setting.gedcom_id', '=', 'gedcom.gedcom_id')
@@ -331,7 +323,7 @@ class Tree
                 ->orderBy('gedcom.sort_order')
                 ->orderBy('gedcom_setting.setting_value');
 
-            if (!Auth::isAdmin()) {
+            if (false && !Auth::isAdmin()) {
                 $query
                     ->join('gedcom_setting AS gs2','gs2.gedcom_id', '=', 'gedcom.gedcom_id')
                     ->where('gs2.setting_name', '=', 'imported');
@@ -368,7 +360,6 @@ class Tree
             }
 
             $rows = $query->get();
-            */
 
             foreach ($rows as $row) {
                 self::$trees[$row->tree_name] = new self((int) $row->tree_id, $row->tree_name, $row->tree_title);
@@ -462,7 +453,7 @@ class Tree
                 'gedcom_name' => $tree_name,
             ]);
 
-            $tree_id = DB::connection()->getPdo()->lastInsertId();
+            $tree_id = (int) DB::connection()->getPdo()->lastInsertId();
         } catch (PDOException $ex) {
             // A tree with that name already exists?
             return self::findByName($tree_name);
@@ -479,29 +470,35 @@ class Tree
         Module::setDefaultAccess($tree_id);
 
         // Set preferences from default tree
-        Database::prepare(
-            "INSERT INTO `##gedcom_setting` (gedcom_id, setting_name, setting_value)" .
-            " SELECT :tree_id, setting_name, setting_value" .
-            " FROM `##gedcom_setting` WHERE gedcom_id = -1"
-        )->execute([
-            'tree_id' => $tree_id,
-        ]);
+        (new Builder(DB::connection()))->from('gedcom_setting')->insertUsing(
+            ['gedcom_id', 'setting_name', 'setting_value'],
+            function (Builder $query) use ($tree_id): void {
+                $query
+                    ->select([DB::raw($tree_id), 'setting_name', 'setting_value'])
+                    ->from('gedcom_setting')
+                    ->where('gedcom_id', '=', -1);
+            }
+        );
 
-        Database::prepare(
-            "INSERT INTO `##default_resn` (gedcom_id, tag_type, resn)" .
-            " SELECT :tree_id, tag_type, resn" .
-            " FROM `##default_resn` WHERE gedcom_id = -1"
-        )->execute([
-            'tree_id' => $tree_id,
-        ]);
+        (new Builder(DB::connection()))->from('default_resn')->insertUsing(
+            ['gedcom_id', 'tag_type', 'resn'],
+            function (Builder $query) use ($tree_id): void {
+                $query
+                    ->select([DB::raw($tree_id), 'tag_type', 'resn'])
+                    ->from('default_resn')
+                    ->where('gedcom_id', '=', -1);
+            }
+        );
 
-        Database::prepare(
-            "INSERT INTO `##block` (gedcom_id, location, block_order, module_name)" .
-            " SELECT :tree_id, location, block_order, module_name" .
-            " FROM `##block` WHERE gedcom_id = -1"
-        )->execute([
-            'tree_id' => $tree_id,
-        ]);
+        (new Builder(DB::connection()))->from('block')->insertUsing(
+            ['gedcom_id', 'location', 'block_order', 'module_name'],
+            function (Builder $query) use ($tree_id): void {
+                $query
+                    ->select([DB::raw($tree_id), 'location', 'block_order', 'module_name'])
+                    ->from('block')
+                    ->where('gedcom_id', '=', -1);
+            }
+        );
 
         // Gedcom and privacy settings
         $tree->setPreference('CONTACT_USER_ID', (string) Auth::id());
@@ -534,9 +531,11 @@ class Tree
         /* I18N: This should be a common/default/placeholder name of an individual. Put slashes around the surname. */
         $john_doe = I18N::translate('John /DOE/');
         $note     = I18N::translate('Edit this individual and replace their details with your own.');
-        Database::prepare("INSERT INTO `##gedcom_chunk` (gedcom_id, chunk_data) VALUES (?, ?)")->execute([
-            $tree_id,
-            "0 HEAD\n1 CHAR UTF-8\n0 @I1@ INDI\n1 NAME {$john_doe}\n1 SEX M\n1 BIRT\n2 DATE 01 JAN 1850\n2 NOTE {$note}\n0 TRLR\n",
+        $gedcom   = "0 HEAD\n1 CHAR UTF-8\n0 @X1@ INDI\n1 NAME {$john_doe}\n1 SEX M\n1 BIRT\n2 DATE 01 JAN 1850\n2 NOTE {$note}\n0 TRLR\n";
+
+        DB::table('gedcom_chunk')->insert([
+            'gedcom_id'  => $tree_id,
+            'chunk_data' => $gedcom,
         ]);
 
         // Update our cache

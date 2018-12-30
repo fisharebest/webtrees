@@ -18,28 +18,144 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 /**
- * Test the database migration process
+ * Test the user functions
+ *
+ * @runTestsInSeparateProcesses
+ * @preserveGlobalState disabled
  */
-class MigrationTest extends \Fisharebest\Webtrees\TestCase
+class UserTest extends \Fisharebest\Webtrees\TestCase
 {
-    protected function setUp()
-    {
-        parent::setUp();
+    protected static $uses_database = true;
 
-        $this->createTestDatabase();
-    }
+    protected static $uses_transactions = true;
 
     /**
-     * Test that the class exists
+     * Test administrators.
+     *
+     * @covers \Fisharebest\Webtrees\Auth
+     * @covers \Fisharebest\Webtrees\Tree
+     * @covers \Fisharebest\Webtrees\User
      *
      * @return void
      */
-    public function testTablesExists()
+    public function testAdministrator(): void
     {
-        $tree = $this->importTree(__DIR__ . '/../data/demo.ged');
+        // By default, new users are not admins.
+        $user = User::create('admin', 'Administrator', 'admin@example.com', 'secret');
+        $this->assertFalse(Auth::isAdmin($user));
 
-        $this->assertSame(1, $tree->id());
-        $this->assertSame('demo', $tree->name());
-        $this->assertSame('demo', $tree->title());
+        // Make the user a manager.
+        $user->setPreference('canadmin', '1');
+        $this->assertTrue(Auth::isAdmin($user));
+
+        // Test that the current user is an admin.
+        $this->assertFalse(Auth::isAdmin());
+        Auth::login($user);
+        $this->assertTrue(Auth::isAdmin());
+    }
+
+    /**
+     * Test managers.
+     *
+     * @covers \Fisharebest\Webtrees\Auth
+     * @covers \Fisharebest\Webtrees\Tree
+     * @covers \Fisharebest\Webtrees\User
+     *
+     * @return void
+     */
+    public function testManager(): void
+    {
+        // By default, new users are not managers.
+        $user = User::create('manager', 'Manager', 'manager@example.com', 'secret');
+        $tree = Tree::create('test', 'Test');
+        $tree->setPreference('imported', '1');
+        $this->assertFalse(Auth::isManager($tree, $user));
+
+        // Make the user a manager.
+        $tree->setUserPreference($user, 'canedit', 'admin');
+        $this->assertTrue(Auth::isManager($tree, $user));
+
+        // Test that a specific user is a manager.
+        $this->assertFalse(Auth::isManager($tree));
+        Auth::login($user);
+        $this->assertTrue(Auth::isManager($tree));
+    }
+
+    /**
+     * Test moderators.
+     *
+     * @covers \Fisharebest\Webtrees\Auth
+     * @covers \Fisharebest\Webtrees\Tree
+     * @covers \Fisharebest\Webtrees\User
+     *
+     * @return void
+     */
+    public function testModerator(): void
+    {
+        // By default, new users are not moderators.
+        $user = User::create('moderator', 'Moderator', 'moderator@example.com', 'secret');
+        $tree = Tree::create('test', 'Test');
+        $this->assertFalse(Auth::isModerator($tree, $user));
+
+        // Make the user a moderator.
+        $tree->setUserPreference($user, 'canedit', 'accept');
+        $this->assertTrue(Auth::isModerator($tree, $user));
+
+        // Test that a specific user is a moderator.
+        $this->assertFalse(Auth::isModerator($tree));
+        Auth::login($user);
+        $this->assertTrue(Auth::isModerator($tree));
+    }
+
+    /**
+     * Test editors.
+     *
+     * @covers \Fisharebest\Webtrees\Auth
+     * @covers \Fisharebest\Webtrees\Tree
+     * @covers \Fisharebest\Webtrees\User
+     *
+     * @return void
+     */
+    public function testEditor(): void
+    {
+        // By default, new users are not editors.
+        $user = User::create('editor', 'Editor', 'editor@example.com', 'secret');
+        $tree = Tree::create('test', 'Test');
+        $this->assertFalse(Auth::isEditor($tree, $user));
+
+        // Make the user an editor.
+        $tree->setUserPreference($user, 'canedit', 'edit');
+        $this->assertTrue(Auth::isEditor($tree, $user));
+
+        // Test that a specific user is an editor.
+        $this->assertFalse(Auth::isEditor($tree));
+        Auth::login($user);
+        $this->assertTrue(Auth::isEditor($tree));
+    }
+
+    /**
+     * Test members.
+     *
+     * @covers \Fisharebest\Webtrees\Auth
+     * @covers \Fisharebest\Webtrees\Tree
+     * @covers \Fisharebest\Webtrees\User
+     *
+     * @return void
+     */
+    public function testMember(): void
+    {
+        // By default, new users are not members.
+        $user = User::create('member', 'Member', 'member@example.com', 'secret');
+        $tree = Tree::create('test', 'Test');
+        $this->assertFalse(Auth::isMember($tree, $user));
+
+        // Make the user a members.
+        $tree->setUserPreference($user, 'canedit', 'edit');
+        $this->assertTrue(Auth::isMember($tree, $user));
+
+        // Test that a specific user is a member.
+        $this->assertFalse(Auth::isMember($tree));
+        Auth::login($user);
+        $this->assertTrue(Auth::isMember($tree));
     }
 }
