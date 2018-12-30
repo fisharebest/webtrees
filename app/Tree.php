@@ -325,7 +325,7 @@ class Tree
 
             if (false && !Auth::isAdmin()) {
                 $query
-                    ->join('gedcom_setting AS gs2','gs2.gedcom_id', '=', 'gedcom.gedcom_id')
+                    ->join('gedcom_setting AS gs2', 'gs2.gedcom_id', '=', 'gedcom.gedcom_id')
                     ->where('gs2.setting_name', '=', 'imported');
 
                 // Some trees are private

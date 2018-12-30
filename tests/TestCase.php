@@ -80,7 +80,8 @@ class TestCase extends \PHPUnit\Framework\TestCase
     /**
      * Things to run after every test
      */
-    protected function tearDown() {
+    protected function tearDown()
+    {
         if (static::$uses_database && static::$uses_transactions) {
             DB::connection()->rollBack();
         }
