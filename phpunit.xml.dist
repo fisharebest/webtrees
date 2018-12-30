@@ -6,8 +6,11 @@
 		forceCoversAnnotation="true"
 >
 	<testsuites>
-		<testsuite name="Application Test Suite">
-			<directory>tests</directory>
+		<testsuite name="Unit tests">
+			<directory>tests/app</directory>
+		</testsuite>
+		<testsuite name="Feature tests">
+			<directory>tests/feature</directory>
 		</testsuite>
 	</testsuites>
 	<filter>

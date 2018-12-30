@@ -57,8 +57,10 @@ class TimeoutServiceTest extends TestCase
      *
      * @return void
      */
-    public function setUp()
+    protected function setUp()
     {
+        parent::setUp();
+
         self::$mock_functions = Mockery::mock();
     }
 

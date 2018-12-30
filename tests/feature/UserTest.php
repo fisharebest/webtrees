@@ -18,17 +18,28 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 /**
- * Test harness for the class WT_User
+ * Test the database migration process
  */
-class UserTest extends \Fisharebest\Webtrees\TestCase
+class MigrationTest extends \Fisharebest\Webtrees\TestCase
 {
+    protected function setUp()
+    {
+        parent::setUp();
+
+        $this->createTestDatabase();
+    }
+
     /**
      * Test that the class exists
      *
      * @return void
      */
-    public function testClassExists()
+    public function testTablesExists()
     {
-        $this->assertTrue(class_exists('\Fisharebest\Webtrees\User'));
+        $tree = $this->importTree(__DIR__ . '/../data/demo.ged');
+
+        $this->assertSame(1, $tree->id());
+        $this->assertSame('demo', $tree->name());
+        $this->assertSame('demo', $tree->title());
     }
 }

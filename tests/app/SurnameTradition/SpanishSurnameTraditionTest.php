@@ -30,8 +30,10 @@ class SpanishSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      *
      * @return void
      */
-    public function setUp()
+    protected function setUp()
     {
+        parent::setUp();
+
         $this->surname_tradition = new SpanishSurnameTradition;
     }
 

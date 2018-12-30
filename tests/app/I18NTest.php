@@ -23,19 +23,6 @@ namespace Fisharebest\Webtrees;
 class I18NTest extends \Fisharebest\Webtrees\TestCase
 {
     /**
-     * Prepare the environment for these tests
-     *
-     * @return void
-     */
-    public function setUp()
-    {
-        defined('WT_BASE_URL') || define('WT_BASE_URL', 'http://localhost/');
-        defined('WT_DATA_DIR') || define('WT_DATA_DIR', 'data/');
-        defined('WT_ROOT') || define('WT_ROOT', '');
-        I18N::init('en-US');
-    }
-
-    /**
      * Test I18N::strtoupper()
      *
      * @return void

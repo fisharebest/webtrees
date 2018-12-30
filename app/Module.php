@@ -439,7 +439,7 @@ class Module
                 if ($module instanceof ModuleInterface) {
                     $modules[$module->getName()] = $module;
 
-                    $exists = DB::table('module')->where('module_name', '=' . $module->getName())->pluck('module_name')->isNotEmpty();
+                    $exists = DB::table('module')->where('module_name', '=', $module->getName())->pluck('module_name')->isNotEmpty();
 
                     if (!$exists) {
                         DB::table('module')->insert([

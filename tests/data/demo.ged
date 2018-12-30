@@ -1,0 +1,2363 @@
+0 HEAD
+1 SOUR webtrees
+2 NAME webtrees
+2 VERS 2.0.0-dev
+1 DEST DISKETTE
+1 DATE 21 MAY 2018
+2 TIME 22:45:34
+1 GEDC
+2 VERS 5.5.1
+1 CHAR UTF-8
+1 FILE demo.ged
+1 SUBM @X1166@
+0 @X1030@ INDI
+1 NAME Queen Elizabeth II
+2 GIVN Elizabeth, Alexandra, Mary
+2 SURN Windsor
+1 SEX F
+1 BIRT
+2 DATE 21 APR 1926
+2 PLAC Mayfair, London, England
+2 SOUR @X1102@
+3 PAGE http://en.wikipedia.org/wiki/Elizabeth_II
+2 SOUR @X1103@
+3 PAGE District: St George Hanover Square, Year: 1926, Quarter: 2, Volume: 1a, Page: 583
+3 DATA
+4 TEXT Name: Elizabeth A M Windsor
+5 CONT Mother’s maiden surname: Bowes-Lyon
+3 OBJE @X1161@
+1 CHAN
+2 DATE 03 FEB 2013
+3 TIME 17:42:33
+2 _WT_USER greg
+1 OBJE @X1104@
+1 FAMS @f1@
+1 OBJE @X1105@
+1 OBJE @X1106@
+1 OBJE @X1107@
+1 FAMC @f13@
+1 RESN none
+1 NOTE Although Queen Elizabeth is still living, and would be private by default, her record is explicitly tagged with ‘Show to visitors’.
+1 OBJE @X1156@
+1 OBJE @X1157@
+1 OBJE @X1158@
+1 OBJE @X1160@
+1 BAPM
+2 DATE 29 MAY 1926
+2 PLAC City of Westminster, London, England
+2 ADDR The chapel at Buckingham Palace
+2 SOUR @X1102@
+3 PAGE http://en.wikipedia.org/wiki/Elizabeth_II
+2 OBJE @X1148@
+2 ASSO @X1095@
+3 RELA godfather
+2 ASSO @X1100@
+3 RELA godmother
+2 ASSO @X1101@
+3 RELA godfather
+2 ASSO @X1031@
+3 RELA godfather
+2 ASSO @X1032@
+3 RELA godmother
+2 ASSO @X1033@
+3 RELA godmother
+0 @X1031@ INDI
+1 NAME Prince Arthur, Duke of Connaught
+2 GIVN Arthur
+1 SEX M
+1 CHAN
+2 DATE 26 MAY 2012
+3 TIME 09:02:22
+2 _WT_USER greg
+1 OBJE @X1152@
+1 FAMC @f29@
+0 @X1032@ INDI
+1 NAME Princess Mary, Viscountess Lascelles
+2 GIVN Victoria Alexandra Alice Mary
+2 SURN Saxe-Coburg-Gotha
+1 SEX F
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 20:17:25
+2 _WT_USER greg
+1 BIRT
+2 DATE 25 APR 1897
+2 PLAC Sandringham, Norfolk, England
+2 ADDR York Cottage, Sandringham Estate
+2 SOUR @X1102@
+3 PAGE http://en.wikipedia.org/wiki/Mary,_Princess_Royal_and_Countess_of_Harewood
+2 OBJE @X1131@
+1 OBJE @X1108@
+1 FAMC @f2@
+0 @X1033@ INDI
+1 NAME Lady Elphinstone
+1 SEX F
+1 CHAN
+2 DATE 26 MAY 2012
+3 TIME 09:00:00
+2 _WT_USER greg
+1 FAMC @f26@
+1 BIRT
+2 DATE 30 AUG 1883
+2 PLAC Angus, Scotland
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Mary_Elphinstone,_Lady_Elphinstone
+1 DEAT
+2 DATE 08 FEB 1961
+2 PLAC Inveresk, Scotland
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Mary_Elphinstone,_Lady_Elphinstone
+0 @X1034@ INDI
+1 NAME Lady Diana /Spencer/
+2 GIVN Diana
+2 SURN Spencer
+1 SEX F
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 20:01:06
+2 _WT_USER greg
+1 FAMS @f3@
+1 OBJE @X1110@
+1 DEAT
+2 CAUS Car crash
+2 DATE 31 AUG 1997
+2 PLAC Paris, Île-de-France, France
+2 ADDR Pitié-Salpêtrière Hospital
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Diana,_Princess_of_Wales
+1 BURI
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Diana,_Princess_of_Wales
+2 DATE 06 SEP 1997
+2 PLAC Althorp, Northamptonshire, England
+2 OBJE @X1133@
+1 BIRT
+2 DATE 01 JUL 1961
+2 PLAC Sandringham, Norfolk, England
+2 ADDR Park House
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Diana,_Princess_of_Wales
+0 @X1035@ INDI
+1 NAME Camilla Rosemary /Shand/
+2 GIVN Camilla Rosemary
+2 SURN Shand
+1 NAME Camilla, Duchess of Cornwall
+2 TYPE married
+2 GIVN Camilla Rosemary
+1 SEX F
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 20:06:44
+2 _WT_USER greg
+1 FAMS @f4@
+1 NAME Camilla, Duchess of Cornwall
+2 GIVN Camilla
+2 SURN Windsor
+1 OBJE @X1111@
+1 BIRT
+2 DATE 17 JUL 1946
+2 PLAC London, England
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Camilla,_Duchess_of_Cornwall
+1 FAMS @f14@
+0 @X1036@ INDI
+1 NAME Prince William, Duke of Cambridge
+2 GIVN William Arthur Philip Louis
+2 SURN Windsor
+1 SEX M
+1 FAMC @f3@
+1 CHAN
+2 DATE 26 MAY 2012
+3 TIME 07:47:33
+2 _WT_USER greg
+1 OBJE @X1112@
+1 FAMS @f10@
+1 BIRT
+2 DATE 21 JUN 1982
+2 PLAC Paddington, London, England
+2 ADDR St Mary’s Hospital
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Prince_William,_Duke_of_Cambridge
+0 @X1037@ INDI
+1 NAME Prince Harry of Wales
+2 GIVN Henry Charles Albert David
+2 SURN Windsor
+1 SEX M
+1 FAMC @f3@
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 08:35:02
+2 _WT_USER greg
+1 OBJE @X1113@
+0 @X1038@ INDI
+1 NAME Captain Mark Anthony Peter /Phillips/
+2 GIVN Mark Anthony Peter
+2 SURN Phillips
+1 SEX M
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 17:25:14
+2 _WT_USER greg
+1 FAMS @f5@
+1 BIRT
+2 DATE 22 SEP 1948
+2 PLAC Tetbury, Gloucestershire, England
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Mark_Phillips
+1 FAMS @f11@
+0 @X1039@ INDI
+1 NAME Sir Timothy James Hamilton /Laurence/
+2 GIVN Timothy James Hamilton
+2 SURN Laurence
+1 SEX M
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 17:48:46
+2 _WT_USER greg
+1 FAMS @f6@
+1 BIRT
+2 DATE 01 MAR 1955
+2 PLAC Camberwell, London, England
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Timothy_Laurence
+0 @X1040@ INDI
+1 NAME Peter Mark Andrew /Phillips/
+2 GIVN Peter Mark Andrew
+2 SURN Phillips
+1 SEX M
+1 FAMC @f5@
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 17:28:04
+2 _WT_USER greg
+1 FAMS @f7@
+1 BIRT
+2 DATE 15 NOV 1977
+2 PLAC Paddington, London, England
+2 ADDR St Mary’s Hospital
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Peter_Phillips
+0 @X1041@ INDI
+1 NAME Prince Philip, Duke of Edinburgh
+2 GIVN Philip
+1 SEX M
+1 BIRT
+2 DATE 10 JUN 1921
+2 PLAC Mon Repos, Corfu, Greece
+2 SOUR @X1102@
+3 PAGE http://en.wikipedia.org/wiki/Prince_Philip,_Duke_of_Edinburgh
+1 CHAN
+2 DATE 24 MAY 2012
+3 TIME 22:15:22
+2 _WT_USER greg
+1 FAMS @f1@
+1 OBJE @X1126@
+1 OBJE @X1107@
+0 @X1042@ INDI
+1 NAME Zara Anne Elizabeth /Phillips/
+2 GIVN Zara Anne Elizabeth
+2 SURN Phillips
+1 SEX F
+1 FAMC @f5@
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 17:44:23
+2 _WT_USER greg
+1 NAME Zara Anne Elizabeth /Tindall/
+2 TYPE married
+2 GIVN Zara Anne Elizabeth
+2 SURN Tindall
+1 BIRT
+2 DATE 15 MAY 1981
+2 PLAC Paddington, London, England
+2 ADDR St Mary’s Hospital
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Zara_Phillips
+1 OBJE @X1117@
+1 FAMS @f12@
+0 @X1043@ INDI
+1 NAME Autumn Patricia /Kelly/
+2 GIVN Autumn Patricia
+2 SURN Kelly
+1 SEX F
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 17:29:52
+2 _WT_USER greg
+1 FAMS @f7@
+1 NAME Autumn Patricia /Phillips/
+2 TYPE married
+2 GIVN Autumn Patricia
+2 SURN Phillips
+1 BIRT
+2 DATE 03 MAY 1978
+2 PLAC Montreal, Quebec, Canada
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Autumn_Phillips
+0 @X1044@ INDI
+1 NAME Savannah Anne Kathleen /Phillips/
+2 GIVN Savannah Anne Kathleen
+2 SURN Phillips
+1 SEX F
+1 FAMC @f7@
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 17:37:03
+2 _WT_USER greg
+1 BIRT
+2 DATE 29 DEC 2010
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Autumn_Phillips
+2 PLAC Gloucester, Gloucestershire, England
+2 ADDR Gloucestershire Royal Hospital
+0 @X1045@ INDI
+1 NAME Isla Elizabeth /Phillips/
+2 GIVN Isla Elizabeth
+2 SURN Phillips
+1 SEX F
+1 FAMC @f7@
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 19:25:07
+2 _WT_USER greg
+1 BIRT
+2 DATE 29 MAR 2012
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Autumn_Phillips
+0 @X1046@ INDI
+1 NAME Sarah /Fergusson/
+2 GIVN Sarah
+2 SURN Fergusson
+1 SEX F
+1 CHAN
+2 DATE 24 MAY 2012
+3 TIME 22:46:45
+2 _WT_USER greg
+1 FAMS @f8@
+0 @X1047@ INDI
+1 NAME Princess Beatrice of York
+2 GIVN Beatrice
+1 SEX F
+1 FAMC @f8@
+1 CHAN
+2 DATE 24 MAY 2012
+3 TIME 22:47:07
+2 _WT_USER greg
+0 @X1048@ INDI
+1 NAME Princess Eugenie of York
+2 GIVN Eugenie
+1 SEX F
+1 FAMC @f8@
+1 CHAN
+2 DATE 24 MAY 2012
+3 TIME 22:47:27
+2 _WT_USER greg
+0 @X1049@ INDI
+1 NAME Sophie Helen /Rhys-Jones/
+2 GIVN Sophie Helen
+2 SURN Rhys-Jones
+1 SEX F
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 12:41:37
+2 _WT_USER greg
+1 FAMS @f9@
+1 OBJE @X1116@
+1 BIRT
+2 DATE 20 JAN 1965
+2 PLAC Oxford, Oxfordshire, England
+2 ADDR Radcliffe Infirmary
+2 SOUR @X1102@
+3 PAGE http://en.wikipedia.org/wiki/Sophie,_Countess_of_Wessex
+1 NAME Sophie, Countess of Wessex
+2 TYPE married
+2 GIVN Sophie
+0 @X1050@ INDI
+1 NAME Lady Louise Windsor
+2 GIVN Louise Alice Elizabeth Mary
+2 SURN Windsor
+1 SEX F
+1 FAMC @f9@
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 12:50:34
+2 _WT_USER greg
+1 BIRT
+2 DATE 08 NOV 2003
+2 PLAC Frimley, Surrey, England
+2 ADDR Frimley Park Hospital
+2 SOUR @X1102@
+3 PAGE http://en.wikipedia.org/wiki/Lady_Louise_Windsor
+0 @X1051@ INDI
+1 NAME James, Viscount Severn
+2 GIVN James Alexander Philip Theo
+2 SURN Windsor
+1 SEX M
+1 FAMC @f9@
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 12:52:50
+2 _WT_USER greg
+1 BIRT
+2 DATE 17 DEC 2007
+2 PLAC Frimley, Surrey, England
+2 ADDR Frimley Park Hospital
+2 SOUR @X1102@
+3 PAGE http://en.wikipedia.org/wiki/James,_Viscount_Severn
+0 @X1052@ INDI
+1 NAME Charles, Prince of Wales
+2 GIVN Charles Philip Arthur George
+2 SURN Windsor
+1 SEX M
+1 BIRT
+2 DATE 14 NOV 1948
+2 PLAC City of Westminster, London, England
+2 ADDR Buckingham Palace
+2 SOUR @X1102@
+3 PAGE http://en.wikipedia.org/wiki/Charles,_Prince_of_Wales
+2 OBJE @X1148@
+1 FAMC @f1@
+1 CHAN
+2 DATE 24 MAY 2012
+3 TIME 22:44:11
+2 _WT_USER greg
+1 OBJE @X1137@
+1 FAMS @f3@
+1 FAMS @f4@
+0 @X1053@ INDI
+1 NAME Catherine Elizabeth /Middleton/
+2 GIVN Catherine Elizabeth
+2 SURN Middleton
+1 NAME Catherine, Duchess of Cambridge
+2 TYPE married
+2 GIVN Catherine Elizabeth
+1 SEX F
+1 CHAN
+2 DATE 24 JAN 2013
+3 TIME 09:49:50
+2 _WT_USER greg
+1 FAMS @f10@
+1 OBJE @X1114@
+1 BIRT
+2 DATE 09 JAN 1982
+2 PLAC Reading, Berkshire, England
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Catherine,_Duchess_of_Cambridge
+1 OBJE @X1155@
+0 @X1054@ INDI
+1 NAME Sandy /Pfleuger/
+2 GIVN Sandy
+2 SURN Pfleuger
+1 NAME Sandy /Phillips/
+2 TYPE married
+2 GIVN Sandy
+2 SURN Phillips
+1 SEX F
+1 BIRT
+2 DATE 1954
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Sandy_Pflueger
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 18:02:49
+2 _WT_USER greg
+1 FAMS @f11@
+0 @X1055@ INDI
+1 NAME Stephanie /Phillips/
+2 GIVN Stephanie
+2 SURN Phillips
+1 SEX F
+1 BIRT
+2 DATE 02 OCT 1997
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Sandy_Pflueger
+1 FAMC @f11@
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 17:25:47
+2 _WT_USER greg
+0 @X1056@ INDI
+1 NAME Michael "Mike" James /Tindall/
+2 GIVN Michael "Mike" James
+2 SURN Tindall
+1 SEX M
+1 BIRT
+2 DATE 18 OCT 1978
+2 PLAC Otley, West Yorkshire, England
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Mike_Tindall
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 17:45:28
+2 _WT_USER greg
+1 FAMS @f12@
+1 OBJE @X1118@
+0 @X1057@ INDI
+1 NAME King George VI
+2 GIVN Albert Frederick Arthur George
+1 SEX M
+1 BIRT
+2 DATE 14 DEC 1895
+2 PLAC Sandringham, Norfolk, England
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/George_VI
+2 ADDR York Cottage, Sandringham House
+2 OBJE @X1131@
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 19:57:35
+2 _WT_USER greg
+1 FAMS @f13@
+1 FAMC @f2@
+1 OBJE @X1120@
+1 BURI
+2 DATE 15 FEB 1952
+2 PLAC Windsor, Berkshire, England
+2 ADDR St George’s Chapel, Windsor Castle
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/George_VI
+2 OBJE @X1127@
+1 DEAT
+2 DATE 06 FEB 1952
+2 PLAC Sandringham, Norfolk, England
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/George_VI
+2 ADDR Sandringham House
+2 OBJE @X1130@
+0 @X1058@ INDI
+1 NAME Elizabeth Angela Marguerite /Bowes-Lyon/
+2 GIVN Elizabeth Angela Marguerite
+2 SURN Bowes-Lyon
+1 SEX F
+1 CHAN
+2 DATE 26 MAY 2012
+3 TIME 07:12:57
+2 _WT_USER greg
+1 FAMS @f13@
+1 OBJE @X1119@
+1 BIRT
+2 DATE 04 AUG 1900
+2 PLAC Hitchin, Hertfordshire, England
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Queen_Elizabeth_The_Queen_Mother
+1 NAME Queen Elizabeth The Queen Mother
+2 TYPE aka
+2 GIVN Elizabeth
+1 FAMC @f26@
+1 BURI
+2 DATE 09 APR 2002
+2 PLAC Windsor, Berkshire, England
+2 ADDR St George’s Chapel, Windsor Castle
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Queen_Elizabeth_The_Queen_Mother
+2 OBJE @X1127@
+1 DEAT
+2 DATE 30 MAR 2002
+2 PLAC Windsor, Berkshire, England
+2 ADDR Royal Lodge
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Queen_Elizabeth_The_Queen_Mother
+2 OBJE @X1132@
+0 @X1059@ INDI
+1 NAME Andrew /Parker Bowles/
+2 GIVN Andrew
+2 SURN Parker Bowles
+1 SEX M
+1 BIRT
+2 DATE 27 DEC 1939
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Andrew_Parker_Bowles
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 20:06:44
+2 _WT_USER greg
+1 FAMS @f14@
+0 @X1060@ INDI
+1 NAME Thomas "Tom" Henry /Parker Bowles/
+2 GIVN Thomas "Tom" Henry
+2 SURN Parker Bowles
+1 SEX M
+1 BIRT
+2 DATE 18 DEC 1974
+2 PLAC London, England
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Tom_Parker_Bowles
+1 FAMC @f14@
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 20:16:00
+2 _WT_USER greg
+1 FAMS @f16@
+0 @X1061@ INDI
+1 NAME Laura Rose /Parker Bowles/
+2 GIVN Laura Rose
+2 SURN Parker Bowles
+1 SEX F
+1 BIRT
+2 DATE 01 JAN 1978
+2 PLAC London, England
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Laura_Lopes
+1 FAMC @f14@
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 20:10:55
+2 _WT_USER greg
+1 NAME Larua Rose /Lopes/
+2 TYPE married
+2 GIVN Larua Rose
+2 SURN Lopes
+1 FAMS @f15@
+0 @X1062@ INDI
+1 NAME Harry Marcus George /Lopes/
+2 GIVN Harry Marcus George
+2 SURN Lopes
+1 SEX M
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 20:11:31
+2 _WT_USER greg
+1 FAMS @f15@
+0 @X1063@ INDI
+1 NAME Anne, Princess Royal
+2 GIVN Anne Elizabeth Alice Louise
+2 SURN Windsor
+1 SEX F
+1 BIRT
+2 DATE 15 AUG 1950
+2 PLAC City of Westminster, London, England
+2 SOUR @X1102@
+3 PAGE http://en.wikipedia.org/wiki/Anne,_Princess_Royal
+2 ADDR Clarence House, The Mall
+2 OBJE @X1162@
+1 FAMC @f1@
+1 CHAN
+2 DATE 24 MAY 2012
+3 TIME 22:44:57
+2 _WT_USER greg
+1 OBJE @X1159@
+1 FAMS @f5@
+1 FAMS @f6@
+0 @X1064@ INDI
+1 NAME Eliza /Lopes/
+2 GIVN Eliza
+2 SURN Lopes
+1 SEX F
+1 BIRT
+2 DATE 2008
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Laura_Lopes
+1 FAMC @f15@
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 20:13:12
+2 _WT_USER greg
+0 @X1065@ INDI
+1 NAME Gus /Lopes/
+2 GIVN Gus
+2 SURN Lopes
+1 SEX M
+1 BIRT
+2 DATE 2009
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Laura_Lopes
+1 FAMC @f15@
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 20:13:33
+2 _WT_USER greg
+0 @X1066@ INDI
+1 NAME Louis /Lopes/
+2 GIVN Louis
+2 SURN Lopes
+1 SEX M
+1 FAMC @f15@
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 20:14:37
+2 _WT_USER greg
+1 BIRT
+2 DATE 2009
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Laura_Lopes
+0 @X1067@ INDI
+1 NAME Sarah /Buys/
+2 GIVN Sarah
+2 SURN Buys
+2 _MARNM Sarah /Parker Bowles/
+1 SEX F
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 20:16:00
+2 _WT_USER greg
+1 FAMS @f16@
+0 @X1068@ INDI
+1 NAME Lola Rosalind /Parker Bowles/
+2 GIVN Lola Rosalind
+2 SURN Parker Bowles
+1 SEX F
+1 BIRT
+2 DATE 2007
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Tom_Parker_Bowles
+1 FAMC @f16@
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 20:16:25
+2 _WT_USER greg
+0 @X1069@ INDI
+1 NAME Freddy /Parker Bowles/
+2 GIVN Freddy
+2 SURN Parker Bowles
+1 SEX M
+1 BIRT
+2 DATE 2010
+2 SOUR @w@
+3 PAGE https://en.wikipedia.org/wiki/Tom_Parker_Bowles
+1 FAMC @f16@
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 20:16:54
+2 _WT_USER greg
+0 @X1070@ INDI
+1 NAME King Edward VII
+2 GIVN Albert Edward
+2 SURN Saxe-Coburg-Gotha
+1 SEX M
+1 BIRT
+2 DATE 09 NOV 1841
+2 PLAC City of Westminster, London, England
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Edward_VII
+2 OBJE @X1148@
+2 ADDR Buckingham Palace
+1 OBJE @X1136@
+1 CHAN
+2 DATE 26 MAY 2012
+3 TIME 09:03:29
+2 _WT_USER greg
+1 FAMS @f17@
+1 FAMC @f29@
+1 BAPM
+2 DATE 25 JAN 1842
+2 PLAC Windsor, Berkshire, England
+2 ADDR St George’s Chapel, Windsor Castle
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Edward_VII
+2 OBJE @X1127@
+1 BURI
+2 DATE 20 MAY 1910
+2 PLAC Windsor, Berkshire, England
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Edward_VII
+2 ADDR St George’s Chapel, Windsor Castle
+2 OBJE @X1127@
+1 DEAT
+2 DATE 06 MAY 1910
+2 PLAC City of Westminster, London, England
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Edward_VII
+2 ADDR Buckingham Palace
+2 OBJE @X1148@
+0 @X1071@ INDI
+1 NAME Alexandra of Denmark
+2 GIVN Alexandra Caroline Marie Charlotte Louise Julia
+1 SEX F
+1 BIRT
+2 DATE 01 DEC 1844
+2 PLAC Copenhagen, Denmark
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Alexandra_of_Denmark
+2 ADDR Yellow Palace
+2 OBJE @X1139@
+1 DEAT
+2 DATE 20 NOV 1925
+2 PLAC Sandringham, Norfolk, England
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Alexandra_of_Denmark
+2 ADDR Sandringham House
+2 OBJE @X1130@
+1 OBJE @X1138@
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 21:18:25
+2 _WT_USER greg
+1 FAMS @f17@
+1 BURI
+2 DATE 28 NOV 1925
+2 PLAC Windsor, Berkshire, England
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Alexandra_of_Denmark
+2 ADDR St George’s Chapel, Windsor Castle
+2 OBJE @X1127@
+0 @X1072@ INDI
+1 NAME Francis, Duke of Teck
+2 GIVN Franz Paul Karl Ludwig Alexander
+1 SEX M
+1 BIRT
+2 DATE 28 AUG 1837
+2 PLAC Osijek, Croatia
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Francis,_Duke_of_Teck
+1 DEAT
+2 DATE 21 JAN 1900
+2 PLAC Richmond, Surrey, England
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Francis,_Duke_of_Teck
+2 ADDR White Lodge, Richmond park
+2 OBJE @X1141@
+1 OBJE @X1140@
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 21:26:11
+2 _WT_USER greg
+1 FAMS @f18@
+1 BURI
+2 PLAC Windsor, Berkshire, England
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Francis,_Duke_of_Teck
+2 ADDR St George’s Chapel, Windsor Castle
+2 OBJE @X1127@
+0 @X1073@ INDI
+1 NAME Princess Mary Adelaide Wilhelmina Elizabeth of Cambridge
+2 GIVN Mary Adelaide Wilhelmina Elizabeth
+1 SEX F
+1 BIRT
+2 DATE 27 NOV 1833
+2 PLAC Hanover, Germany
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Princess_Mary_Adelaide_of_Cambridge
+1 DEAT
+2 DATE 27 OCT 1897
+2 PLAC Richmond, Surrey, England
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Princess_Mary_Adelaide_of_Cambridge
+1 OBJE @X1142@
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 21:30:35
+2 _WT_USER greg
+1 FAMS @f18@
+1 BURI
+2 PLAC Windsor, Berkshire, England
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Princess_Mary_Adelaide_of_Cambridge
+0 @X1074@ INDI
+1 NAME Prince Andrew, Duke of York
+2 GIVN Andrew Albert Christian Edward
+2 SURN Windsor
+1 SEX M
+1 BIRT
+2 DATE 19 FEB 1960
+2 PLAC City of Westminster, London, England
+2 SOUR @X1102@
+3 PAGE http://en.wikipedia.org/wiki/Prince_Andrew,_Duke_of_York
+2 ADDR Buckingham Palace
+2 OBJE @X1148@
+1 FAMC @f1@
+1 CHAN
+2 DATE 24 MAY 2012
+3 TIME 22:46:45
+2 _WT_USER greg
+1 OBJE @X1163@
+1 FAMS @f8@
+0 @X1075@ INDI
+1 NAME Princess Margaret
+2 GIVN Margaret Rose
+2 SURN Windsor
+1 SEX F
+1 BIRT
+2 DATE 21 AUG 1930
+2 PLAC Glamis, Angus, Scotland
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Princess_Margaret,_Countess_of_Snowdon
+2 ADDR Glamis Castle
+2 OBJE @X1145@
+1 FAMC @f13@
+1 OBJE @X1144@
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 21:52:45
+2 _WT_USER greg
+1 DEAT
+2 DATE 09 FEB 2002
+2 PLAC London, England
+2 ADDR King Edward VII Hospital
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Princess_Margaret,_Countess_of_Snowdon
+1 CREM
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Princess_Margaret,_Countess_of_Snowdon
+2 DATE FEB 2002
+1 FAMS @f19@
+1 _INTE
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Princess_Margaret,_Countess_of_Snowdon
+2 DATE APR 2002
+2 PLAC Windsor, Berkshire, England
+2 ADDR St George’s Chapel, Windsor Castle
+2 OBJE @X1127@
+0 @X1076@ INDI
+1 NAME Antony Armstrong-Jones, 1st Earl of Snowdon
+2 GIVN Antony
+2 SURN Armstrong-Jones
+1 SEX M
+1 BIRT
+2 DATE 07 MAR 1930
+2 PLAC London, England
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Antony_Armstrong-Jones,_1st_Earl_of_Snowdon
+1 OBJE @X1146@
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 22:07:43
+2 _WT_USER greg
+1 FAMS @f19@
+1 FAMS @f20@
+1 FAMS @f21@
+0 @X1077@ INDI
+1 NAME Lucy Mary /Davies/
+2 GIVN Lucy Mary
+2 SURN Davies
+1 NAME Lucy Mary /Lindsay-Hogg/
+2 TYPE married
+2 GIVN Lucy Mary
+2 SURN Lindsay-Hogg
+1 SEX F
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 22:16:45
+2 _WT_USER greg
+1 FAMS @f20@
+1 FAMS @f22@
+0 @X1078@ INDI
+1 NAME Melanie /Cable-Alexander/
+2 GIVN Melanie
+2 SURN Cable-Alexander
+1 SEX F
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 22:07:43
+2 _WT_USER greg
+1 FAMS @f21@
+0 @X1079@ INDI
+1 NAME Jasper William Oliver /Cable-Alexander/
+2 GIVN Jasper William Oliver
+2 SURN Cable-Alexander
+1 SEX M
+1 BIRT
+2 DATE 30 APR 1998
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Antony_Armstrong-Jones,_1st_Earl_of_Snowdon
+1 FAMC @f21@
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 22:08:44
+2 _WT_USER greg
+0 @X1080@ INDI
+1 NAME Lady Frances /Armstrong-Jones/
+2 GIVN Frances
+2 SURN Armstrong-Jones
+1 SEX F
+1 BIRT
+2 DATE 17 JUL 1979
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Antony_Armstrong-Jones,_1st_Earl_of_Snowdon
+1 FAMC @f20@
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 22:22:02
+2 _WT_USER greg
+1 NAME Frances /von Hofmannsthal/
+2 TYPE married
+2 GIVN Frances
+2 SURN von Hofmannsthal
+1 FAMS @f23@
+0 @X1081@ INDI
+1 NAME Sir Michael Edward /Lindsay-Hogg/, 5th Baronet
+2 GIVN Michael Edward
+2 SURN Lindsay-Hogg
+1 SEX M
+1 BIRT
+2 DATE 05 MAY 1940
+2 PLAC New York City, New York, USA
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Michael_Lindsay-Hogg
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 22:15:57
+2 _WT_USER greg
+1 FAMS @f22@
+0 @X1082@ INDI
+1 NAME //
+1 SEX M
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 22:22:02
+2 _WT_USER greg
+1 FAMS @f23@
+0 @X1083@ INDI
+1 NAME David /Armstrong-Jones/, Viscount Linley
+2 GIVN David
+2 SURN Armstrong-Jones
+1 SEX M
+1 BIRT
+2 DATE 03 NOV 1961
+2 PLAC City of Westminster, London, England
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/David_Armstrong-Jones,_Viscount_Linley
+2 ADDR Clarence House
+2 OBJE @X1162@
+1 OBJE @X1147@
+1 CHAN
+2 DATE 26 MAY 2012
+3 TIME 06:55:25
+2 _WT_USER greg
+1 FAMS @f24@
+1 FAMC @f19@
+0 @X1084@ INDI
+1 NAME The Honourable Serena /Stanhope/
+2 GIVN Serena Alleyne
+2 SURN Stanhope
+1 NAME Lady Serena /Armstrong-Jones/, Viscountess Linley
+2 TYPE married
+2 GIVN Serena Alleyne
+2 SURN Armstrong-Jones
+1 SEX F
+1 BIRT
+2 DATE 01 MAR 1970
+2 PLAC Limerick, County Limerick, Ireland
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Serena_Armstrong-Jones,_Viscountess_Linley
+1 CHAN
+2 DATE 26 MAY 2012
+3 TIME 07:33:37
+2 _WT_USER greg
+1 FAMS @f24@
+0 @X1085@ INDI
+1 NAME Prince Edward, Earl of Wessex
+2 GIVN Edward Antony Richard Louis
+2 SURN Windsor
+1 SEX M
+1 BIRT
+2 DATE 10 MAR 1964
+2 PLAC City of Westminster, London, England
+2 ADDR Buckingham Palace
+2 OBJE @X1148@
+1 FAMC @f1@
+1 OBJE @X1164@
+1 CHAN
+2 DATE 24 MAY 2012
+3 TIME 22:47:47
+2 _WT_USER greg
+1 FAMS @f9@
+0 @X1086@ INDI
+1 NAME The Honourable Charles /Armstrong-Jones/
+2 GIVN Charles Patrick Inigo
+2 SURN Armstrong-Jones
+1 SEX M
+1 BIRT
+2 DATE 01 JUL 1999
+2 PLAC London, England
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Charles_Armstrong-Jones
+1 FAMC @f24@
+1 CHAN
+2 DATE 26 MAY 2012
+3 TIME 06:45:29
+2 _WT_USER greg
+0 @X1087@ INDI
+1 NAME The Honourable Margarita /Armstrong-Jones/
+2 GIVN Margarita Elizabeth Rose Alleyne
+2 SURN Armstrong-Jones
+1 SEX F
+1 BIRT
+2 DATE 14 MAY 2002
+2 PLAC London, England
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Margarita_Armstrong-Jones
+1 FAMC @f24@
+1 CHAN
+2 DATE 26 MAY 2012
+3 TIME 06:46:39
+2 _WT_USER greg
+0 @X1088@ INDI
+1 NAME Lady Sarah /Armstrong-Jones/
+2 GIVN Sarah Frances Elizabeth
+2 SURN Armstrong-Jones
+1 SEX F
+1 BIRT
+2 DATE 01 MAY 1964
+2 PLAC Kensington, London, England
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Lady_Sarah_Chatto
+2 ADDR Kensington Palace
+2 OBJE @X1128@
+1 FAMC @f19@
+1 CHAN
+2 DATE 26 MAY 2012
+3 TIME 07:03:47
+2 _WT_USER greg
+1 FAMS @f25@
+0 @X1089@ INDI
+1 NAME Daniel St George /Sproule/
+2 GIVN Daniel St George
+2 SURN Sproule
+1 SEX M
+1 BIRT
+2 DATE 22 APR 1957
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Daniel_Chatto
+1 CHAN
+2 DATE 26 MAY 2012
+3 TIME 07:05:53
+2 _WT_USER greg
+1 FAMS @f25@
+1 NAME Daniel St George /Chatto/
+2 TYPE change
+2 GIVN Daniel St George
+2 SURN Chatto
+2 NOTE Changed his name by deed poll to his father’s stage name Chatto
+0 @X1090@ INDI
+1 NAME Samuel David Benedict /Chatto/
+2 GIVN Samuel David Benedict
+2 SURN Chatto
+1 SEX M
+1 BIRT
+2 DATE 28 JUL 1996
+2 PLAC London, England
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Lady_Sarah_Chatto
+1 FAMC @f25@
+1 CHAN
+2 DATE 26 MAY 2012
+3 TIME 07:07:58
+2 _WT_USER greg
+0 @X1091@ INDI
+1 NAME Arthur Robert Nathaniel /Chatto/
+2 GIVN Arthur Robert Nathaniel
+2 SURN Chatto
+1 SEX M
+1 BIRT
+2 DATE 05 FEB 1999
+2 PLAC London, England
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Lady_Sarah_Chatto
+1 FAMC @f25@
+1 CHAN
+2 DATE 26 MAY 2012
+3 TIME 07:08:49
+2 _WT_USER greg
+0 @X1092@ INDI
+1 NAME Cecilia Nina /Cavendish-Bentinck/
+2 GIVN Cecilia Nina
+2 SURN Cavendish-Bentinck
+1 SEX F
+1 BIRT
+2 DATE 11 SEP 1862
+2 PLAC London, England
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Cecilia_Bowes-Lyon,_Countess_of_Strathmore_and_Kinghorne
+1 BURI
+2 DATE 27 JUN 1938
+2 PLAC Glamis, Angus, Scotland
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Cecilia_Bowes-Lyon,_Countess_of_Strathmore_and_Kinghorne
+2 ADDR Glamis Castle
+2 OBJE @X1145@
+1 CHAN
+2 DATE 26 MAY 2012
+3 TIME 08:43:05
+2 _WT_USER greg
+1 FAMS @f26@
+1 OBJE @X1151@
+1 FAMC @f28@
+1 DEAT
+2 DATE 23 JUN 1938
+2 PLAC Marylebone, London, England
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Cecilia_Bowes-Lyon,_Countess_of_Strathmore_and_Kinghorne
+2 ADDR 38 Cumberland Mansions, Bryanston Street
+0 @X1093@ INDI
+1 NAME Claude /Bowes-Lyon/, 13th Earl of Strathmore and Kinghorne
+2 GIVN Claude
+2 SURN Bowes-Lyon
+1 SEX M
+1 CHAN
+2 DATE 26 MAY 2012
+3 TIME 08:39:06
+2 _WT_USER greg
+1 FAMS @f27@
+0 @X1094@ INDI
+1 NAME Frances Dora /Smith/
+2 GIVN Frances Dora
+2 SURN Smith
+1 SEX F
+1 BIRT
+2 DATE 29 JUL 1832
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Frances_Bowes-Lyon,_Countess_of_Strathmore_and_Kinghorne
+1 DEAT
+2 DATE 05 FEB 1922
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Frances_Bowes-Lyon,_Countess_of_Strathmore_and_Kinghorne
+1 BURI
+2 PLAC Glamis, Angus, Scotland
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Frances_Bowes-Lyon,_Countess_of_Strathmore_and_Kinghorne
+1 CHAN
+2 DATE 26 MAY 2012
+3 TIME 08:40:48
+2 _WT_USER greg
+1 FAMS @f27@
+0 @X1095@ INDI
+1 NAME King George V
+2 GIVN George
+1 SEX M
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 21:05:15
+2 _WT_USER greg
+1 FAMS @f2@
+1 OBJE @X1129@
+1 BIRT
+2 DATE 03 JUN 1865
+2 PLAC City of Westminster, London, England
+2 ADDR Marlborough House
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/George_V
+2 OBJE @X1122@
+1 OBJE @X1135@
+1 FAMC @f17@
+1 BAPM
+2 DATE 07 JUL 1865
+2 PLAC Windsor, Berkshire, England
+2 ADDR St George’s Chapel, Windsor Castle
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/George_V
+2 OBJE @X1127@
+1 BURI
+2 DATE 29 JAN 1936
+2 PLAC Windsor, Berkshire, England
+2 ADDR St George’s Chapel, Windsor Castle
+2 OBJE @X1127@
+2 OBJE @X1125@
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/George_V
+1 DEAT
+2 DATE 20 JAN 1936
+2 PLAC Sandringham, Norfolk, England
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/George_V
+2 ADDR Sandringham House
+2 OBJE @X1130@
+0 @X1096@ INDI
+1 NAME Charles William Frederick /Cavendish-Bentinck/
+2 GIVN Charles William Frederick
+2 SURN Cavendish-Bentinck
+1 SEX M
+1 BIRT
+2 DATE 08 NOV 1817
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Charles_Cavendish-Bentinck_%28priest%29
+1 DEAT
+2 DATE 17 AUG 1865
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Charles_Cavendish-Bentinck_%28priest%29
+1 CHAN
+2 DATE 26 MAY 2012
+3 TIME 08:43:05
+2 _WT_USER greg
+1 FAMS @f28@
+0 @X1097@ INDI
+1 NAME Caroline Louisa* /Burnaby/
+2 GIVN Caroline Louisa*
+2 SURN Burnaby
+1 SEX F
+1 BIRT
+2 DATE 05 DEC 1832
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Louisa_Cavendish-Bentinck
+1 DEAT
+2 DATE 06 JUL 1918
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Louisa_Cavendish-Bentinck
+1 CHAN
+2 DATE 26 MAY 2012
+3 TIME 08:44:42
+2 _WT_USER greg
+1 FAMS @f28@
+0 @X1098@ INDI
+1 NAME Prince Albert of Saxe-Coburg and Gotha
+2 GIVN Francis Albert Augustus
+1 SEX M
+1 CHAN
+2 DATE 26 MAY 2012
+3 TIME 09:11:29
+2 _WT_USER greg
+1 FAMS @f29@
+1 OBJE @X1154@
+1 BIRT
+2 DATE 26 AUG 1819
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Albert,_Prince_Consort
+1 DEAT
+2 DATE 14 DEC 1861
+2 PLAC Windsor, Berkshire, England
+2 ADDR Windsor Castle
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Albert,_Prince_Consort
+2 OBJE @X1125@
+1 BURI
+2 DATE 23 DEC 1861
+2 PLAC Windsor, Berkshire, England
+2 ADDR St George’s Chapel, Windor Castle
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Albert,_Prince_Consort
+3 OBJE @X1127@
+0 @X1099@ INDI
+1 NAME Queen Victoria
+2 GIVN Alexandrina Victoria
+1 SEX F
+1 CHAN
+2 DATE 26 MAY 2012
+3 TIME 09:06:53
+2 _WT_USER greg
+1 FAMS @f29@
+1 BIRT
+2 DATE 24 MAY 1819
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Queen_Victoria
+1 DEAT
+2 DATE 22 JAN 1901
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Queen_Victoria
+1 OBJE @X1153@
+0 @X1100@ INDI
+1 NAME Princess Mary of Teck
+2 GIVN Victoria Mary Augusta Louise Olga Pauline Claudine Agnes
+1 SEX F
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 21:24:21
+2 _WT_USER greg
+1 FAMS @f2@
+1 OBJE @X1121@
+1 BIRT
+2 DATE 26 MAY 1867
+2 PLAC Kensington, London, England
+2 ADDR Kensington Palace
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Mary_of_Teck
+2 OBJE @X1128@
+1 FAMC @f18@
+1 BURI
+2 DATE 31 MAR 1953
+2 PLAC Windsor, Berkshire, England
+2 ADDR St George’s Chapel, Windsor Castle
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Mary_of_Teck
+2 OBJE @X1125@
+2 OBJE @X1127@
+1 DEAT
+2 DATE 24 MAR 1953
+2 PLAC City of Westminster, London, England
+2 ADDR Marlborough House
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Mary_of_Teck
+2 OBJE @X1122@
+0 @X1101@ INDI
+1 NAME Claude Bowes-Lyon, 14th Earl of Strathmore and Kinghorne
+2 GIVN Claude George
+2 SURN Bowes-Lyon
+1 SEX M
+1 BIRT
+2 DATE 14 MAR 1855
+2 PLAC Belgravia, London, England
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Claude_Bowes-Lyon,_14th_Earl_of_Strathmore_and_Kinghorne
+2 ADDR Lowndes Square
+1 DEAT
+2 DATE 07 NOV 1944
+2 PLAC Glamis, Angus, Scotland
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Claude_Bowes-Lyon,_14th_Earl_of_Strathmore_and_Kinghorne
+2 ADDR Glamis Castle
+2 OBJE @X1145@
+1 OBJE @X1150@
+1 FAMS @f26@
+1 FAMC @f27@
+1 CHAN
+2 DATE 26 MAY 2012
+3 TIME 09:39:19
+2 _WT_USER greg
+0 @f1@ FAM
+1 HUSB @X1041@
+1 WIFE @X1030@
+1 MARR
+2 DATE 20 NOV 1947
+2 PLAC City of Westminster, London, England
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Prince_Philip,_Duke_of_Edinburgh
+2 ADDR Westminster Abbey
+2 OBJE @X1115@
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Elizabeth_II
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 05:45:31
+2 _WT_USER greg
+1 CHIL @X1052@
+1 CHIL @X1063@
+1 CHIL @X1074@
+1 CHIL @X1085@
+0 @f2@ FAM
+1 WIFE @X1100@
+1 HUSB @X1095@
+1 MARR
+2 DATE 06 JUL 1893
+2 PLAC City of Westminster, London, England
+2 ADDR Chapel Royal, St James’s Palace
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Wedding_of_Prince_George,_Duke_of_York,_and_Princess_Mary_of_Teck
+2 OBJE @X1123@
+2 OBJE @X1124@
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 19:21:17
+2 _WT_USER greg
+1 CHIL @X1032@
+1 CHIL @X1057@
+0 @f3@ FAM
+1 WIFE @X1034@
+1 HUSB @X1052@
+1 MARR
+2 DATE 29 JUL 1981
+2 PLAC City of Westminster, London, England
+2 ADDR St Paul’s Cathedral
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Diana,_Princess_of_Wales
+2 OBJE @X1109@
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 18:16:12
+2 _WT_USER greg
+1 CHIL @X1036@
+1 CHIL @X1037@
+1 DIV
+2 DATE 28 AUG 1996
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Elizabeth_II
+0 @f4@ FAM
+1 WIFE @X1035@
+1 HUSB @X1052@
+1 MARR
+2 DATE 9 APR 2005
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Camilla,_Duchess_of_Cornwall
+2 PLAC Windsor, Berkshire, England
+2 ADDR Windsor Guildhall
+2 OBJE @X1134@
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 20:03:28
+2 _WT_USER greg
+0 @f5@ FAM
+1 HUSB @X1038@
+1 WIFE @X1063@
+1 MARR
+2 DATE 14 NOV 1973
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Elizabeth_II
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 17:23:02
+2 _WT_USER greg
+1 CHIL @X1040@
+1 CHIL @X1042@
+1 DIV
+2 DATE 28 APR 1992
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Elizabeth_II
+0 @f6@ FAM
+1 HUSB @X1039@
+1 WIFE @X1063@
+1 MARR
+2 DATE 12 DEC 1992
+2 PLAC Ballater, Aberdeenshire, Scotland
+2 ADDR Crathie Parish Church
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Timothy_Laurence
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 17:50:54
+2 _WT_USER greg
+0 @f7@ FAM
+1 WIFE @X1043@
+1 HUSB @X1040@
+1 MARR
+2 DATE 17 MAY 2008
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Peter_Phillips
+2 PLAC Windsor, Berkshire, England
+2 ADDR St George’s Chapel, Windsor Castle
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Autumn_Phillips
+2 OBJE @X1127@
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 20:18:25
+2 _WT_USER greg
+1 CHIL @X1044@
+1 CHIL @X1045@
+0 @f8@ FAM
+1 WIFE @X1046@
+1 HUSB @X1074@
+1 MARR
+2 DATE 23 JUL 1986
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Elizabeth_II
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 18:17:27
+2 _WT_USER greg
+1 CHIL @X1047@
+1 CHIL @X1048@
+1 DIV
+2 DATE 30 MAY 1996
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Elizabeth_II
+0 @f9@ FAM
+1 WIFE @X1049@
+1 HUSB @X1085@
+1 MARR
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Wedding_of_Prince_Edward,_Earl_of_Wessex,_and_Sophie_Rhys-Jones
+2 PLAC Windsor, Berkshire, England
+2 ADDR St George’s Chapel, Windsor Castle
+2 DATE 19 JUN 1999
+2 OBJE @X1127@
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 20:17:50
+2 _WT_USER greg
+1 CHIL @X1050@
+1 CHIL @X1051@
+1 ENGA
+2 DATE 06 JAN 1999
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Wedding_of_Prince_Edward,_Earl_of_Wessex,_and_Sophie_Rhys-Jones
+0 @f10@ FAM
+1 WIFE @X1053@
+1 HUSB @X1036@
+1 MARR
+2 DATE 29 APR 2011
+2 PLAC City of Westminster, London, England
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Wedding_of_Prince_William_and_Catherine_Middleton
+2 OBJE @X1115@
+2 ADDR Westminster Abbey
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 20:54:43
+2 _WT_USER greg
+1 ENGA
+2 DATE 20 OCT 2010
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Wedding_of_Prince_William_and_Catherine_Middleton
+0 @f11@ FAM
+1 WIFE @X1054@
+1 HUSB @X1038@
+1 MARR
+2 DATE 01 FEB 1997
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Sandy_Pflueger
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 17:25:47
+2 _WT_USER greg
+1 CHIL @X1055@
+0 @f12@ FAM
+1 HUSB @X1056@
+1 WIFE @X1042@
+1 MARR
+2 DATE 30 JUL 2011
+2 PLAC Edinburgh, Scotland
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Mike_Tindall
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 17:44:23
+2 _WT_USER greg
+0 @f13@ FAM
+1 HUSB @X1057@
+1 CHIL @X1030@
+1 CHIL @X1075@
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 21:40:55
+2 _WT_USER greg
+1 WIFE @X1058@
+1 MARR
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Queen_Elizabeth_The_Queen_Mother
+2 DATE 26 APR 1923
+2 PLAC City of Westminster, London, England
+2 ADDR Westminster Abbey
+2 OBJE @X1115@
+0 @f14@ FAM
+1 HUSB @X1059@
+1 WIFE @X1035@
+1 MARR
+2 DATE 1973
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Andrew_Parker_Bowles
+1 DIV
+2 DATE 1996
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Andrew_Parker_Bowles
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 20:09:21
+2 _WT_USER greg
+1 CHIL @X1060@
+1 CHIL @X1061@
+0 @f15@ FAM
+1 HUSB @X1062@
+1 WIFE @X1061@
+1 MARR
+2 DATE 6 MAY 2006
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Laura_Lopes
+2 PLAC Lacock, Wiltshire, England
+2 ADDR Saint Cyriac Church
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 20:13:49
+2 _WT_USER greg
+1 CHIL @X1064@
+1 CHIL @X1065@
+1 CHIL @X1066@
+0 @f16@ FAM
+1 WIFE @X1067@
+1 HUSB @X1060@
+1 MARR
+2 DATE 2005
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Tom_Parker_Bowles
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 20:16:54
+2 _WT_USER greg
+1 CHIL @X1068@
+1 CHIL @X1069@
+0 @f17@ FAM
+1 HUSB @X1070@
+1 CHIL @X1095@
+1 OBJE @X1136@
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 21:17:31
+2 _WT_USER greg
+1 WIFE @X1071@
+1 MARR
+2 DATE 10 MAR 1863
+2 PLAC Windsor, Berkshire, England
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Alexandra_of_Denmark
+2 ADDR St George’s Chapel, Windsor Castle
+2 OBJE @X1127@
+1 OBJE @X1138@
+0 @f18@ FAM
+1 HUSB @X1072@
+1 CHIL @X1100@
+1 OBJE @X1140@
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 21:32:27
+2 _WT_USER greg
+1 WIFE @X1073@
+1 MARR
+2 DATE 12 JUN 1866
+2 PLAC Kew, Surrey, England
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Princess_Mary_Adelaide_of_Cambridge
+2 ADDR St Anne’s Church
+2 OBJE @X1143@
+1 OBJE @X1142@
+0 @f19@ FAM
+1 HUSB @X1076@
+1 WIFE @X1075@
+1 MARR
+2 DATE 06 MAY 1960
+2 PLAC City of Westminster, London, England
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Antony_Armstrong-Jones,_1st_Earl_of_Snowdon
+2 ADDR Westminster Abbey
+2 OBJE @X1115@
+1 DIV
+2 DATE 1978
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Antony_Armstrong-Jones,_1st_Earl_of_Snowdon
+1 OBJE @X1146@
+1 CHAN
+2 DATE 26 MAY 2012
+3 TIME 07:00:29
+2 _WT_USER greg
+1 ENGA
+2 DATE FEB 1960
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Antony_Armstrong-Jones,_1st_Earl_of_Snowdon
+1 CHIL @X1083@
+1 CHIL @X1088@
+0 @f20@ FAM
+1 WIFE @X1077@
+1 HUSB @X1076@
+1 MARR
+2 DATE 15 DEC 1978
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Antony_Armstrong-Jones,_1st_Earl_of_Snowdon
+1 CHAN
+2 DATE 26 MAY 2012
+3 TIME 06:55:25
+2 _WT_USER greg
+1 _SEPR
+2 DATE 2000
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Antony_Armstrong-Jones,_1st_Earl_of_Snowdon
+1 CHIL @X1080@
+0 @f21@ FAM
+1 WIFE @X1078@
+1 HUSB @X1076@
+1 MARR Y
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Antony_Armstrong-Jones,_1st_Earl_of_Snowdon
+1 _NMR Y
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Antony_Armstrong-Jones,_1st_Earl_of_Snowdon
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 22:08:44
+2 _WT_USER greg
+1 CHIL @X1079@
+0 @f22@ FAM
+1 HUSB @X1081@
+1 WIFE @X1077@
+1 MARR
+2 DATE 1967
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Michael_Lindsay-Hogg
+1 DIV
+2 DATE 1971
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Michael_Lindsay-Hogg
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 22:15:57
+2 _WT_USER greg
+0 @f23@ FAM
+1 HUSB @X1082@
+1 WIFE @X1080@
+1 MARR Y
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 22:22:02
+2 _WT_USER greg
+0 @f24@ FAM
+1 WIFE @X1084@
+1 HUSB @X1083@
+1 MARR
+2 DATE 08 OCT 1993
+2 PLAC City of Westminster, London, England
+2 ADDR St Margaret’s Church
+2 OBJE @X1149@
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Serena_Armstrong-Jones,_Viscountess_Linley
+1 CHAN
+2 DATE 26 MAY 2012
+3 TIME 06:46:39
+2 _WT_USER greg
+1 CHIL @X1086@
+1 CHIL @X1087@
+0 @f25@ FAM
+1 HUSB @X1089@
+1 WIFE @X1088@
+1 MARR
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Daniel_Chatto
+2 DATE 14 JUL 1994
+1 CHAN
+2 DATE 26 MAY 2012
+3 TIME 07:08:49
+2 _WT_USER greg
+1 CHIL @X1090@
+1 CHIL @X1091@
+0 @f26@ FAM
+1 HUSB @X1101@
+1 CHIL @X1058@
+1 OBJE @X1150@
+1 CHAN
+2 DATE 26 MAY 2012
+3 TIME 09:39:19
+2 _WT_USER greg
+1 WIFE @X1092@
+1 MARR
+2 DATE 16 JUL 1881
+2 PLAC Peterhsam, Surrey, England
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Cecilia_Bowes-Lyon,_Countess_of_Strathmore_and_Kinghorne
+3 OBJE @X1151@
+1 CHIL @X1033@
+0 @f27@ FAM
+1 HUSB @X1093@
+1 CHIL @X1101@
+1 CHAN
+2 DATE 26 MAY 2012
+3 TIME 09:39:19
+2 _WT_USER greg
+1 WIFE @X1094@
+1 MARR
+2 DATE 28 SEP 1853
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Frances_Bowes-Lyon,_Countess_of_Strathmore_and_Kinghorne
+0 @f28@ FAM
+1 HUSB @X1096@
+1 CHIL @X1092@
+1 CHAN
+2 DATE 26 MAY 2012
+3 TIME 08:44:42
+2 _WT_USER greg
+1 WIFE @X1097@
+1 MARR
+2 DATE 13 DEC 1859
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Louisa_Cavendish-Bentinck
+0 @f29@ FAM
+1 HUSB @X1098@
+1 CHIL @X1031@
+1 CHAN
+2 DATE 26 MAY 2012
+3 TIME 09:18:35
+2 _WT_USER greg
+1 WIFE @X1099@
+1 MARR
+2 DATE 10 FEB 1840
+2 PLAC City of Westminster, London, England
+2 ADDR St James’s Palace
+2 SOUR @X1102@
+3 PAGE https://en.wikipedia.org/wiki/Albert,_Prince_Consort
+2 OBJE @X1123@
+1 CHIL @X1070@
+0 @X1102@ SOUR
+1 TITL Wikipedia
+1 CHAN
+2 DATE 24 MAY 2012
+3 TIME 21:23:14
+2 _WT_USER greg
+0 @X1103@ SOUR
+1 TITL England and Wales birth index
+1 REPO @X1165@
+1 CHAN
+2 DATE 03 FEB 2013
+3 TIME 17:40:22
+2 _WT_USER greg
+0 @X1165@ REPO
+1 NAME The National Archives
+1 CHAN
+2 DATE 03 FEB 2013
+3 TIME 17:40:15
+2 _WT_USER greg
+0 @X1166@ SUBM
+1 NAME greg
+0 @X247@ OBJE
+1 FILE myth/Aion_mosaic_Glyptothek_Munich_W504.jpg
+2 TITL new media
+1 NOTE noted!
+1 CHAN
+2 DATE 20 MAY 2018
+3 TIME 15:30:44
+2 _WT_USER greg
+0 @X1104@ OBJE
+1 FILE Elizabeth_II_greets_NASA_GSFC_employees,_May_8,_2007_edit.jpg
+2 TITL Queen Elizabeth II
+1 NOTE Image downloaded from http://en.wikipedia.org/wiki/Elizabeth_II on 24th May 2012
+1 CHAN
+2 DATE 24 MAY 2012
+3 TIME 21:22:49
+2 _WT_USER greg
+0 @X1105@ OBJE
+1 FILE Queen_Elizabeth_II_1929.jpg
+2 TITL Princess Elizabeth aged 3, 1929
+1 NOTE Image downloaded from http://en.wikipedia.org/wiki/Elizabeth_II on 24th May 2012
+1 CHAN
+2 DATE 03 FEB 2013
+3 TIME 17:33:36
+2 _WT_USER greg
+0 @X1106@ OBJE
+1 FILE Philip_Alexius_de_Laszlo-Princess_Elizabeth_of_York,_Currently_Queen_Elizabeth_II_of_England,1933.jpg
+2 TITL Princess Elizabeth aged 7, 1933 Painting by Philip de László
+1 NOTE Image downloaded from http://en.wikipedia.org/wiki/Elizabeth_II on 24th May 2012
+1 CHAN
+2 DATE 03 FEB 2013
+3 TIME 17:33:29
+2 _WT_USER greg
+0 @X1107@ OBJE
+1 FILE Elizabeth_and_Philip_1953.jpg
+2 TITL Coronation portrait of Queen Elizabeth II and the Duke of Edinburgh, June 1953
+1 NOTE Image downloaded from http://en.wikipedia.org/wiki/Elizabeth_II on 24th May 2012
+1 CHAN
+2 DATE 03 FEB 2013
+3 TIME 17:34:23
+2 _WT_USER greg
+0 @X1108@ OBJE
+1 FILE Mary,_Princess_Royal_and_Countess_of_Harewood.jpg
+2 TITL Princess Mary, c. 1926
+1 NOTE Image downloaded from http://en.wikipedia.org/wiki/Mary,_Princess_Royal_and_Countess_of_Harewood on 24th May 2012
+1 CHAN
+2 DATE 24 MAY 2012
+3 TIME 22:33:37
+2 _WT_USER greg
+0 @X1109@ OBJE
+1 FILE St_Pauls_Cathedral_in_1896.JPG
+2 TITL St Paul’s Cathedral in 1896
+1 NOTE Image downloaded from https://en.wikipedia.org/wiki/St_Paul%27s_Cathedral on 25th May 2012
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 05:53:32
+2 _WT_USER greg
+0 @X1110@ OBJE
+1 FILE Международная_Леонардо-премия_18.jpg
+2 TITL The Princess of Wales at The Leonardo Prize, 1995
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 05:56:51
+2 _WT_USER greg
+0 @X1111@ OBJE
+1 FILE Camilla_Parker_Bowles_before_wedding_of_Prince_William.jpg
+2 TITL Camilla Parker Bowles before wedding of Prince William
+1 NOTE Image downloaded from http://en.wikipedia.org/wiki/Camilla,_Duchess_of_Cornwall on 25th May 2012
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 08:22:36
+2 _WT_USER greg
+0 @X1112@ OBJE
+1 FILE Prince_William_of_Wales_RAF.jpg
+2 TITL Prince William in his flight lieutenant’s uniform on 12 June 2010
+1 NOTE Image downloaded from http://en.wikipedia.org/wiki/Prince_William,_Duke_of_Cambridge on 25th May 2012
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 08:34:01
+2 _WT_USER greg
+0 @X1113@ OBJE
+1 FILE Prince_Harry's_Speech.jpg
+2 TITL Prince Harry at the Official Press Launch for Walking With The Wounded, 1 March 2010
+1 NOTE Image downloaded from http://en.wikipedia.org/wiki/Prince_Harry_of_Wales on 25th May 2012
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 08:35:02
+2 _WT_USER greg
+0 @X1114@ OBJE
+1 FILE Kate_in_Ottawa_for_Canada_Day_2011.jpg
+2 TITL Catherine at Canada Day celebrations in Ottawa, 2011
+1 NOTE Image downloaded from http://en.wikipedia.org/wiki/Catherine,_Duchess_of_Cambridge on 25th May 2012
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 08:38:04
+2 _WT_USER greg
+0 @X1115@ OBJE
+1 FILE West_Side_of_Westminster_Abbey,_London_-_geograph.org.uk_-_1406999.jpg
+2 TITL Westminster Abbey
+1 NOTE Image downloaded from http://en.wikipedia.org/wiki/Westminster_abbey on 24th May 2012
+1 CHAN
+2 DATE 24 MAY 2012
+3 TIME 21:30:07
+2 _WT_USER greg
+0 @X1116@ OBJE
+1 FILE HRH_Sophie,_Countess_of_Wessex.jpg
+2 TITL HRH Sophie, Countess of Wessex
+1 NOTE Image downloaded from http://en.wikipedia.org/wiki/Sophie,_Countess_of_Wessex on 25th May 2012
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 12:38:08
+2 _WT_USER greg
+0 @X1117@ OBJE
+1 FILE Zara_Phillips_cropped_but_without_a_crop.jpg
+2 TITL Zara Phillips
+1 NOTE Image downloaded from https://en.wikipedia.org/wiki/Zara_Phillips on 25th May 2012
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 17:41:12
+2 _WT_USER greg
+0 @X1118@ OBJE
+1 FILE Mike_Tindall_2005.jpg
+2 TITL Mike Tindall
+1 NOTE Image downloaded from https://en.wikipedia.org/wiki/Mike_Tindall on 25th May 2012
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 17:45:28
+2 _WT_USER greg
+0 @X1119@ OBJE
+1 FILE Queen_Elizabeth_the_Queen_Mother_portrait.jpg
+2 TITL Portrait of Queen Elizabeth The Queen Mother, by Richard Stone, 1986
+1 NOTE Image downloaded from https://en.wikipedia.org/wiki/Queen_Elizabeth_The_Queen_Mother on 25th May 2012
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 18:50:05
+2 _WT_USER greg
+0 @X1120@ OBJE
+1 FILE King_George_VI_of_England,_formal_photo_portrait,_circa_1940-1946.jpg
+2 TITL King George VI
+1 NOTE Image downloaded from https://en.wikipedia.org/wiki/George_VI on 25th May 2012
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 18:57:49
+2 _WT_USER greg
+0 @X1121@ OBJE
+1 FILE Queenmaryformalportrait_edit3.jpg
+2 TITL Princess Mary of Teck
+1 NOTE Image downloaded from https://en.wikipedia.org/wiki/Mary_of_Teck on 25th May 2012
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 19:02:34
+2 _WT_USER greg
+0 @X1122@ OBJE
+1 FILE Marlborough_House.jpg
+2 TITL Marlborough House
+1 NOTE Image downloaded from https://en.wikipedia.org/wiki/Marlborough_House on 25th May 2012
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 19:07:41
+2 _WT_USER greg
+0 @X1123@ OBJE
+1 FILE St_Jamess_Palace.jpg
+2 TITL St James’s Palace
+1 NOTE Image downloaded from https://en.wikipedia.org/wiki/St._James%27s_Palace on 25th May 2012
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 19:18:25
+2 _WT_USER greg
+0 @X1124@ OBJE
+1 FILE Princess_Mary_of_Teck_wedding_dress_1893_no2.jpg
+2 TITL Wedding of Prince George, Duke of York, and Princess Mary of Teck
+1 NOTE Image downloaded from https://en.wikipedia.org/wiki/Wedding_of_Prince_George,_Duke_of_York,_and_Princess_Mary_of_Teck on 25th May 2012
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 19:19:55
+2 _WT_USER greg
+0 @X1125@ OBJE
+1 FILE Windsor_Castle_at_Sunset_-_Nov_2006.jpg
+2 TITL Windsor Castle
+1 NOTE Image downloaded from https://en.wikipedia.org/wiki/Windsor_castle on 25th May 2012
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 19:28:40
+2 _WT_USER greg
+0 @X1126@ OBJE
+1 FILE Prince_Philip_by_Allan_Warren_1992.jpg
+2 TITL Prince Philip, Duke of Edinburgh
+1 CHAN
+2 DATE 24 MAY 2012
+3 TIME 21:31:12
+2 _WT_USER greg
+0 @X1127@ OBJE
+1 FILE St._Georges_Chapel,_Windsor_Castle_(1).jpg
+2 TITL St George’s Chapel, Windsor Castle
+1 NOTE Image downloaded from https://en.wikipedia.org/wiki/St_George%27s_Chapel,_Windsor_Castle on 25th May 2012
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 19:33:17
+2 _WT_USER greg
+0 @X1128@ OBJE
+1 FILE Kensington_Palace,_the_South_Front_-_geograph.org.uk_-_287402.jpg
+2 TITL Kensington Palace
+1 NOTE Image downloaded from https://en.wikipedia.org/wiki/Kensington_Palace on 25th May 2012
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 19:39:16
+2 _WT_USER greg
+0 @X1129@ OBJE
+1 FILE King_George_V_1911_color-crop.jpg
+2 TITL King George V, Coronation portrait by Sir Luke Fildes, 1911
+1 NOTE Image downloaded from https://en.wikipedia.org/wiki/George_V on 25th May 2012
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 19:42:10
+2 _WT_USER greg
+0 @X1130@ OBJE
+1 FILE Sandringham_-_geograph.org.uk_-_1062504.jpg
+2 TITL Sandringham House
+1 NOTE Image downloaded from https://en.wikipedia.org/wiki/Sandringham_House on 25th May 2012
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 19:45:48
+2 _WT_USER greg
+0 @X1131@ OBJE
+1 FILE York_Cottage.JPG
+2 TITL York Cottage, Sandringham Estate
+1 NOTE Image downloaded from https://en.wikipedia.org/wiki/York_Cottage on 25th May 2012
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 19:51:41
+2 _WT_USER greg
+0 @X1132@ OBJE
+1 FILE RoyalLodgeWindsorParkWilliamDaniell1827.jpg
+2 TITL Royal Lodge, Windsor Great Park, in 1827
+1 NOTE Image downloaded from https://en.wikipedia.org/wiki/Royal_Lodge on 25th May 2012
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 19:56:38
+2 _WT_USER greg
+0 @X1133@ OBJE
+1 FILE Althorp_House.jpg
+2 TITL Althorp House
+1 NOTE Image downloaded from https://en.wikipedia.org/wiki/Althorp_House on 25th May 2012
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 20:01:01
+2 _WT_USER greg
+0 @X1134@ OBJE
+1 FILE Windsorguildhall.jpg
+2 TITL Windsor Guildhall
+1 NOTE Image downloaded from https://en.wikipedia.org/wiki/Windsor_Guildhall on 25th May 2012
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 20:03:21
+2 _WT_USER greg
+0 @X1135@ OBJE
+1 FILE Duke_of_York_at_Montreal_and_Quebec_1901.ogv
+2 TITL Duke of York at Montreal and Quebec, 1901
+1 NOTE Video downloaded from https://en.wikipedia.org/wiki/George_V on 25th May 2012
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 20:31:21
+2 _WT_USER greg
+0 @X1136@ OBJE
+1 FILE Eduard_VII.jpg
+2 TITL Edward VII
+1 NOTE Image downloaded from https://en.wikipedia.org/wiki/Edward_VII on 25th May 2012
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 21:05:09
+2 _WT_USER greg
+0 @X1137@ OBJE
+1 FILE Carlos_de_Gales_(2011).jpg
+2 TITL Charles, Prince of Wales
+1 NOTE Image downloaded from http://en.wikipedia.org/wiki/Charles,_Prince_of_Wales on 24th May 2012
+1 CHAN
+2 DATE 24 MAY 2012
+3 TIME 21:41:23
+2 _WT_USER greg
+0 @X1138@ OBJE
+1 FILE Queen_Alexandra,_the_Princess_of_Wales.jpg
+2 TITL Alexandra of Denmark
+1 NOTE Image downloaded from https://en.wikipedia.org/wiki/Alexandra_of_Denmark on 25th May 2012
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 21:13:22
+2 _WT_USER greg
+0 @X1139@ OBJE
+1 FILE Det_Gule_Palae_Copenhagen.jpg
+2 TITL Yellow Palace, Copenhagen
+1 SOUR @X1102@
+2 PAGE https://en.wikipedia.org/wiki/Yellow_Palace,_Copenhagen
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 21:16:37
+2 _WT_USER greg
+0 @X1140@ OBJE
+1 FILE Francis,_Duke_of_Teck,_Vanity_Fair,_1902-05-29.jpg
+2 TITL Francis, Duke of Teck
+1 NOTE Image downloaded from https://en.wikipedia.org/wiki/Francis,_Duke_of_Teck on 25th May 2012
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 21:23:11
+2 _WT_USER greg
+0 @X1141@ OBJE
+1 FILE White_Lodge.jpg
+2 TITL White Lodge, Richmond Park
+1 NOTE Image downloaded from https://en.wikipedia.org/wiki/White_Lodge,_Richmond_Park on 25th May 2012
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 21:25:40
+2 _WT_USER greg
+0 @X1142@ OBJE
+1 FILE Mary-Hannover-1897.jpg
+2 TITL Princess Mary Adelaide of Cambridge
+1 NOTE Image downloaded from https://en.wikipedia.org/wiki/Princess_Mary_Adelaide_of_Cambridge on 25th May 2012
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 21:28:04
+2 _WT_USER greg
+0 @X1143@ OBJE
+1 FILE St-Anne-church-Kew-5857.jpg
+2 TITL St Anne’s Church, Kew
+1 NOTE Image downloaded from https://en.wikipedia.org/wiki/St._Anne%27s_Church,_Kew on 25th May 2012
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 21:32:20
+2 _WT_USER greg
+0 @X1144@ OBJE
+1 FILE Princess_Margaret.jpg
+2 TITL Princess Margaret
+1 NOTE Image downloaded from https://en.wikipedia.org/wiki/Princess_Margaret,_Countess_of_Snowdon on 25th May 2012
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 21:40:25
+2 _WT_USER greg
+0 @X1145@ OBJE
+1 FILE GlamisWide.JPG
+2 TITL Glamis Castle
+1 NOTE Image downloaded from https://en.wikipedia.org/wiki/Glamis_Castle on 25th May 2012
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 21:42:05
+2 _WT_USER greg
+0 @X1146@ OBJE
+1 FILE Anthony_Lord_Snowdon.jpg
+2 TITL Antony Armstrong-Jones, 1st Earl of Snowdon
+1 NOTE Image downloaded from https://en.wikipedia.org/wiki/Antony_Armstrong-Jones,_1st_Earl_of_Snowdon on 25th May 2012
+1 CHAN
+2 DATE 25 MAY 2012
+3 TIME 21:52:37
+2 _WT_USER greg
+0 @X1147@ OBJE
+1 FILE Viscount_Linley_Trooping_the_Colour_Saturday_June_16th_2007.jpg
+2 TITL David Linley
+1 NOTE Image downloaded from https://en.wikipedia.org/wiki/David_Armstrong-Jones,_Viscount_Linley on 26th May 2012
+1 CHAN
+2 DATE 26 MAY 2012
+3 TIME 06:37:48
+2 _WT_USER greg
+0 @X1148@ OBJE
+1 FILE Buckingham_Palace,_London_-_April_2009.jpg
+2 TITL Buckingham Palace
+1 NOTE Image downloaded from http://en.wikipedia.org/wiki/Buckingham_Palace on 24th May 2012
+1 CHAN
+2 DATE 24 MAY 2012
+3 TIME 21:47:35
+2 _WT_USER greg
+0 @X1149@ OBJE
+1 FILE StMargaretsChurch.jpg
+2 TITL St Margaret's Church, Westminster
+1 NOTE Image downloaded from https://en.wikipedia.org/wiki/St._Margaret%27s,_Westminster on 26th May 2012
+1 CHAN
+2 DATE 26 MAY 2012
+3 TIME 06:42:42
+2 _WT_USER greg
+0 @X1150@ OBJE
+1 FILE StrathmoreColor.jpg
+2 TITL Claude Bowes-Lyon, 14th Earl of Strathmore and Kinghorne
+1 NOTE Image downloaded from https://en.wikipedia.org/wiki/Claude_Bowes-Lyon,_14th_Earl_of_Strathmore_and_Kinghorne on 26th May 2012
+1 CHAN
+2 DATE 26 MAY 2012
+3 TIME 07:12:52
+2 _WT_USER greg
+0 @X1151@ OBJE
+1 FILE Nina_Cecilia_Cavendish-Bentinck.jpg
+1 NOTE Image downloaded from https://en.wikipedia.org/wiki/Cecilia_Bowes-Lyon,_Countess_of_Strathmore_and_Kinghorne on 26th May 2012
+1 CHAN
+2 DATE 26 MAY 2012
+3 TIME 07:19:22
+2 _WT_USER greg
+0 @X1152@ OBJE
+1 FILE Prince_Arthur,_Duke_of_Connaught.jpg
+2 TITL Prince Arthur, Duke of Connaught
+1 NOTE Image downloaded from https://en.wikipedia.org/wiki/Prince_Arthur,_Duke_of_Connaught_and_Strathearn on 26th May 2012
+1 CHAN
+2 DATE 26 MAY 2012
+3 TIME 09:01:48
+2 _WT_USER greg
+0 @X1153@ OBJE
+1 FILE Queen_Victoria_by_Bassano.jpg
+2 TITL Queen Victoria
+1 NOTE Image downloaded from https://en.wikipedia.org/wiki/Queen_Victoria on 26th May 2012
+1 CHAN
+2 DATE 26 MAY 2012
+3 TIME 09:06:53
+2 _WT_USER greg
+0 @X1154@ OBJE
+1 FILE Prince_Albert-1842.jpg
+2 TITL Prince Albert of Saxe-Coburg and Gotha
+1 NOTE Image downloaded from https://en.wikipedia.org/wiki/Albert,_Prince_Consort on 26th May 2012
+1 CHAN
+2 DATE 26 MAY 2012
+3 TIME 09:08:52
+2 _WT_USER greg
+0 @X1155@ OBJE
+1 FILE http://www.youtube.com/embed/9P4VItL3Iek
+2 TITL The first portrait of The Duchess of Cambridge is unveiled (YouTube)
+1 CHAN
+2 DATE 03 FEB 2013
+3 TIME 17:24:08
+2 _WT_USER greg
+0 @X1156@ OBJE
+1 FILE HD Queen Elizabeth II Christmas Message 2011 26 12 2011.mp3
+2 TITL Queen Elizabeth II’s christmas message 2011
+1 CHAN
+2 DATE 24 JAN 2013
+3 TIME 09:59:25
+2 _WT_USER greg
+0 @X1157@ OBJE
+1 FILE Royal_Coat_of_Arms_of_the_United_Kingdom_(HM_Government).svg
+2 TITL Royal Coat of Arma of the United Kingdom
+1 NOTE Quarterly, First and Fourth Gules three lions passant guardant in pale Or armed and langued Azure (for England), Second quarter Or a lion rampant within a double tressure flory counter-flory Gules (for Scotland), Third quarter Azure a harp Or str
+2 CONC inged Argent (for Ireland), the whole surrounded by the Garter; for a Crest, the imperial crown Proper; for Supporters, dexter a lion rampant guardant Or crowned as the Crest, sinister a unicorn Argent armed, crined and unguled Proper, gorged wit
+2 CONC h a coronet Or composed of crosses patée and fleurs de lys a chain affixed thereto passing between the forelegs and reflexed over the back also Or; Motto 'Dieu et mon Droit’ below the shield.
+1 NOTE Downloaded from http://en.wikipedia.org/wiki/File:Royal_Coat_of_Arms_of_the_United_Kingdom_%28HM_Government%29.svg on 3rd February 2013
+1 CHAN
+2 DATE 03 FEB 2013
+3 TIME 17:20:26
+2 _WT_USER greg
+0 @X1158@ OBJE
+1 FILE https://maps.google.co.uk/?ie=UTF8&ll=51.501543,-0.141084&spn=0.011274,0.020106&t=h&z=16&output=embed
+2 TITL Location of Buckingham Palace
+1 CHAN
+2 DATE 03 FEB 2013
+3 TIME 17:34:01
+2 _WT_USER greg
+0 @X1159@ OBJE
+1 FILE Princesa_Ana_do_Reino_Unido.jpg
+2 TITL Anne, Princess Royal
+1 NOTE Image downloaded from http://en.wikipedia.org/wiki/Anne,_Princess_Royal on 24th May 2012
+1 CHAN
+2 DATE 24 MAY 2012
+3 TIME 21:55:35
+2 _WT_USER greg
+0 @X1160@ OBJE
+1 FILE European_monarchs_family_tree.pdf
+2 TITL European monarchs family tree
+1 CHAN
+2 DATE 03 FEB 2013
+3 TIME 17:33:03
+2 _WT_USER greg
+0 @X1161@ OBJE
+1 FILE Queen Elizabeth birth registration.jpeg
+1 CHAN
+2 DATE 03 FEB 2013
+3 TIME 17:42:31
+2 _WT_USER greg
+0 @X1162@ OBJE
+1 FILE Clarence_house.jpg
+2 TITL Clarence House
+1 NOTE Image downloaded from http://en.wikipedia.org/wiki/Clarence_House on 24th May 2012
+1 CHAN
+2 DATE 24 MAY 2012
+3 TIME 21:57:16
+2 _WT_USER greg
+0 @X1163@ OBJE
+1 FILE Príncipe_André_do_Reino_Unido.jpg
+2 TITL Prince Andrew, Duke of York
+1 NOTE Image downloaded from http://en.wikipedia.org/wiki/Prince_Andrew,_Duke_of_York on 24th May 2012
+1 CHAN
+2 DATE 24 MAY 2012
+3 TIME 22:00:44
+2 _WT_USER greg
+0 @X1164@ OBJE
+1 FILE Royal_Wedding_Stockholm_2010-Konserthuset-Prince_Edward,_Earl_of_Wessex.jpg
+2 TITL Prince Andrew, Duke of York
+1 NOTE Image downloaded from http://en.wikipedia.org/wiki/Prince_Edward,_Earl_of_Wessex on 24th May 2012
+1 CHAN
+2 DATE 24 MAY 2012
+3 TIME 22:02:59
+2 _WT_USER greg
+0 TRLR

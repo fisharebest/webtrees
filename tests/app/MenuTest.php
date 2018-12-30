@@ -23,15 +23,6 @@ namespace Fisharebest\Webtrees;
 class MenuTest extends \Fisharebest\Webtrees\TestCase
 {
     /**
-     * Prepare the environment for these tests.
-     *
-     * @return void
-     */
-    public function setUp()
-    {
-    }
-
-    /**
      * Test the constructor with default parameters.
      *
      * @return void
