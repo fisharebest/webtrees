@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use function session_status;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -125,7 +126,10 @@ class Session
         if ($destroy) {
             self::clear();
         }
-        session_regenerate_id($destroy);
+
+        if (session_status() === PHP_SESSION_ACTIVE) {
+            session_regenerate_id($destroy);
+        }
     }
 
     /**

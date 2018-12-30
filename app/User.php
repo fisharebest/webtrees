@@ -17,6 +17,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Query\Builder;
 use stdClass;
 
 /**
@@ -69,9 +71,7 @@ class User
      */
     public static function create($user_name, $real_name, $email, $password): User
     {
-        Database::prepare(
-            "INSERT INTO `##user` (user_name, real_name, email, password) VALUES (:user_name, :real_name, :email, :password)"
-        )->execute([
+        DB::table('user')->insert([
             'user_name' => $user_name,
             'real_name' => $real_name,
             'email'     => $email,
@@ -80,12 +80,16 @@ class User
 
         // Set default blocks for this user
         $user = self::findByIdentifier($user_name);
-        Database::prepare(
-            "INSERT INTO `##block` (`user_id`, `location`, `block_order`, `module_name`)" .
-            " SELECT :user_id , `location`, `block_order`, `module_name` FROM `##block` WHERE `user_id` = -1"
-        )->execute([
-            'user_id' => $user->getUserId(),
-        ]);
+
+        (new Builder(DB::connection()))->from('block')->insertUsing(
+            ['user_id', 'location', 'block_order', 'module_name'],
+            function (Builder $query) use ($user): void {
+                $query
+                    ->select([DB::raw($user->getuserId()), 'location', 'block_order', 'module_name'])
+                    ->from('block')
+                    ->where('user_id', '=', -1);
+            }
+        );
 
         return $user;
     }
@@ -124,9 +128,10 @@ class User
     public static function find($user_id)
     {
         if (!array_key_exists($user_id, self::$cache)) {
-            $row = Database::prepare(
-                "SELECT user_id, user_name, real_name, email FROM `##user` WHERE user_id = ?"
-            )->execute([$user_id])->fetchOneRow();
+            $row = DB::table('user')
+                ->where('user_id', '=', $user_id)
+                ->first();
+
             if ($row) {
                 self::$cache[$user_id] = new self($row);
             } else {
@@ -146,11 +151,9 @@ class User
      */
     public static function findByEmail($email)
     {
-        $user_id = (int) Database::prepare(
-            "SELECT user_id FROM `##user` WHERE email = :email"
-        )->execute([
-            'email' => $email,
-        ])->fetchOne();
+        $user_id = (int) DB::table('user')
+            ->where('email', '=', $email)
+            ->value('user_id');
 
         return self::find($user_id);
     }
@@ -164,9 +167,10 @@ class User
      */
     public static function findByIdentifier($identifier)
     {
-        $user_id = (int) Database::prepare(
-            "SELECT user_id FROM `##user` WHERE ? IN (user_name, email)"
-        )->execute([$identifier])->fetchOne();
+        $user_id = (int) DB::table('user')
+            ->where('user_name', '=', $identifier)
+            ->orWhere('email', '=', $identifier)
+            ->value('user_id');
 
         return self::find($user_id);
     }
@@ -201,11 +205,9 @@ class User
      */
     public static function findByUserName($user_name)
     {
-        $user_id = (int) Database::prepare(
-            "SELECT user_id FROM `##user` WHERE user_name = :user_name"
-        )->execute([
-            'user_name' => $user_name,
-        ])->fetchOne();
+        $user_id = (int) DB::table('user')
+            ->where('user_name', '=', $user_name)
+            ->value('user_id');
 
         return self::find($user_id);
     }
@@ -400,12 +402,12 @@ class User
     {
         if ($this->user_name !== $user_name) {
             $this->user_name = $user_name;
-            Database::prepare(
-                "UPDATE `##user` SET user_name = ? WHERE user_id = ?"
-            )->execute([
-                $user_name,
-                $this->user_id,
-            ]);
+
+            DB::table('user')
+                ->where('user_id', '=', $this->user_id)
+                ->update([
+                    'user_name' => $user_name,
+                ]);
         }
 
         return $this;
@@ -432,12 +434,12 @@ class User
     {
         if ($this->real_name !== $real_name) {
             $this->real_name = $real_name;
-            Database::prepare(
-                "UPDATE `##user` SET real_name = ? WHERE user_id = ?"
-            )->execute([
-                $real_name,
-                $this->user_id,
-            ]);
+
+            DB::table('user')
+                ->where('user_id', '=', $this->user_id)
+                ->update([
+                    'real_name' => $real_name,
+                ]);
         }
 
         return $this;
@@ -464,12 +466,12 @@ class User
     {
         if ($this->email !== $email) {
             $this->email = $email;
-            Database::prepare(
-                "UPDATE `##user` SET email = ? WHERE user_id = ?"
-            )->execute([
-                $email,
-                $this->user_id,
-            ]);
+
+            DB::table('user')
+                ->where('user_id', '=', $this->user_id)
+                ->update([
+                    'email' => $email,
+                ]);
         }
 
         return $this;
@@ -484,12 +486,11 @@ class User
      */
     public function setPassword($password): User
     {
-        Database::prepare(
-            "UPDATE `##user` SET password = :password WHERE user_id = :user_id"
-        )->execute([
-            'password' => password_hash($password, PASSWORD_DEFAULT),
-            'user_id'  => $this->user_id,
-        ]);
+        DB::table('user')
+            ->where('user_id', '=', $this->user_id)
+            ->update([
+                'password' => password_hash($password, PASSWORD_DEFAULT),
+            ]);
 
         return $this;
     }
@@ -507,20 +508,13 @@ class User
     public function getPreference($setting_name, $default = ''): string
     {
         if (empty($this->preferences) && $this->user_id !== 0) {
-            $this->preferences = Database::prepare(
-                "SELECT setting_name, setting_value" .
-                " FROM `##user_setting`" .
-                " WHERE user_id = :user_id"
-            )->execute([
-                'user_id' => $this->user_id,
-            ])->fetchAssoc();
+            $this->preferences = DB::table('user_setting')
+                ->where('user_id', '=', $this->user_id)
+                ->pluck('setting_value', 'setting_name')
+                ->all();
         }
 
-        if (!array_key_exists($setting_name, $this->preferences)) {
-            $this->preferences[$setting_name] = $default;
-        }
-
-        return $this->preferences[$setting_name];
+        return $this->preferences[$setting_name] ?? $default;
     }
 
     /**
@@ -534,12 +528,11 @@ class User
     public function setPreference($setting_name, $setting_value): User
     {
         if ($this->user_id !== 0 && $this->getPreference($setting_name) !== $setting_value) {
-            Database::prepare(
-                "REPLACE INTO `##user_setting` (user_id, setting_name, setting_value) VALUES (?, ?, LEFT(?, 255))"
-            )->execute([
-                $this->user_id,
-                $setting_name,
-                $setting_value,
+            DB::table('user_setting')->updateOrInsert([
+                'user_id'      => $this->user_id,
+                'setting_name' => $setting_name,
+            ], [
+                'setting_value' => $setting_value,
             ]);
 
             $this->preferences[$setting_name] = $setting_value;

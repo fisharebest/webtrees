@@ -20,6 +20,9 @@ namespace Fisharebest\Webtrees;
 use Exception;
 use Fisharebest\Webtrees\Functions\FunctionsExport;
 use Fisharebest\Webtrees\Functions\FunctionsImport;
+use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Query\Builder;
+use Illuminate\Database\Query\JoinClause;
 use InvalidArgumentException;
 use PDOException;
 use function substr_compare;
@@ -312,6 +315,61 @@ class Tree
                 Auth::id(),
             ])->fetchAll();
 
+            // Admins see all trees
+            /*
+            $query = DB::table('gedcom')
+                ->leftJoin('gedcom_setting', function (JoinClause $join): void {
+                    $join->on('gedcom_setting.gedcom_id', '=', 'gedcom.gedcom_id')
+                        ->where('gedcom_setting.setting_name', '=', 'title');
+                })
+                ->where('gedcom.gedcom_id', '>', 0)
+                ->select([
+                    'gedcom.gedcom_id AS tree_id',
+                    'gedcom.gedcom_name AS tree_name',
+                    'gedcom_setting.setting_value AS tree_title',
+                ])
+                ->orderBy('gedcom.sort_order')
+                ->orderBy('gedcom_setting.setting_value');
+
+            if (!Auth::isAdmin()) {
+                $query
+                    ->join('gedcom_setting AS gs2','gs2.gedcom_id', '=', 'gedcom.gedcom_id')
+                    ->where('gs2.setting_name', '=', 'imported');
+
+                // Some trees are private
+                $query
+                    ->leftJoin('gedcom_setting AS gs3', function (JoinClause $join): void {
+                        $join->on('gs3.gedcom_id', '=', 'gedcom.gedcom_id')
+                            ->where('gs3.setting_name', '=', 'REQUIRE_AUTHENTICATION');
+                    })
+                    ->leftJoin('user_gedcom_setting', function (JoinClause $join): void {
+                        $join->on('user_gedcom_setting.gedcom_id', '=', 'gedcom.gedcom_id')
+                            ->where('user_gedcom_setting.user_id', '=', Auth::id())
+                            ->where('user_gedcom_setting.setting_name', '=', 'canedit');
+                    })
+                    ->where(function (Builder $query): void {
+                        $query
+                            // Managers
+                            ->where('user_gedcom_setting.setting_value', '=', 'admin')
+                            // Members
+                            ->orWhere(function (Builder $query): void {
+                                $query
+                                    ->where('gs2.setting_value', '=', '1')
+                                    ->where('gs3.setting_value', '=', '1')
+                                    ->where('user_gedcom_setting.setting_value', '<>', 'none');
+                            })
+                            // Visitors
+                            ->orWhere(function (Builder $query): void {
+                                $query
+                                    ->where('gs2.setting_value', '=', '1')
+                                    ->where(DB::raw("COALESCE(gs3.setting_value ,'0')"), '=', 0);
+                            });
+                    });
+            }
+
+            $rows = $query->get();
+            */
+
             foreach ($rows as $row) {
                 self::$trees[$row->tree_name] = new self((int) $row->tree_id, $row->tree_name, $row->tree_title);
             }
@@ -400,11 +458,11 @@ class Tree
     {
         try {
             // Create a new tree
-            Database::prepare(
-                "INSERT INTO `##gedcom` (gedcom_name) VALUES (?)"
-            )->execute([$tree_name]);
+            DB::table('gedcom')->insert([
+                'gedcom_name' => $tree_name,
+            ]);
 
-            $tree_id = (int) Database::prepare("SELECT LAST_INSERT_ID()")->fetchOne();
+            $tree_id = DB::connection()->getPdo()->lastInsertId();
         } catch (PDOException $ex) {
             // A tree with that name already exists?
             return self::findByName($tree_name);
