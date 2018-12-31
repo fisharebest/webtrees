@@ -330,7 +330,7 @@ class Tree
                             ->orWhere(function (Builder $query): void {
                                 $query
                                     ->where('gs2.setting_value', '=', '1')
-                                    ->where('gs3.setting_value' , '<>', '1');
+                                    ->where('gs3.setting_value', '<>', '1');
                             });
                     });
             }
