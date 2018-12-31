@@ -21,11 +21,15 @@ use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Statistics\Google\ChartAge;
+use Fisharebest\Webtrees\Statistics\Google\ChartBirth;
 use Fisharebest\Webtrees\Statistics\Google\ChartCommonGiven;
 use Fisharebest\Webtrees\Statistics\Google\ChartCommonSurname;
+use Fisharebest\Webtrees\Statistics\Google\ChartDeath;
 use Fisharebest\Webtrees\Statistics\Google\ChartIndividual;
 use Fisharebest\Webtrees\Statistics\Google\ChartMortality;
 use Fisharebest\Webtrees\Statistics\Helper\Percentage;
+use Fisharebest\Webtrees\Statistics\Helper\Sql;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 
@@ -47,6 +51,18 @@ class IndividualRepository
     public function __construct(Tree $tree)
     {
         $this->tree = $tree;
+    }
+
+    /**
+     * Run an SQL query and cache the result.
+     *
+     * @param string $sql
+     *
+     * @return \stdClass[]
+     */
+    private function runSql($sql): array
+    {
+        return Sql::runSql($sql);
     }
 
     /**
@@ -834,5 +850,186 @@ class IndividualRepository
 
         return (new ChartMortality())
             ->chartMortality($tot_l, $tot_d, $per_l, $per_d, $size, $color_living, $color_dead);
+    }
+
+    /**
+     * Create a chart of birth places.
+     *
+     * @param bool $sex
+     * @param int  $year1
+     * @param int  $year2
+     *
+     * @return array
+     */
+    public function statsBirthQuery($sex = false, $year1 = -1, $year2 = -1): array
+    {
+        if ($sex) {
+            $sql =
+                "SELECT d_month, i_sex, COUNT(*) AS total FROM `##dates` " .
+                "JOIN `##individuals` ON d_file = i_file AND d_gid = i_id " .
+                "WHERE " .
+                "d_file={$this->tree->id()} AND " .
+                "d_fact='BIRT' AND " .
+                "d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')";
+        } else {
+            $sql =
+                "SELECT d_month, COUNT(*) AS total FROM `##dates` " .
+                "WHERE " .
+                "d_file={$this->tree->id()} AND " .
+                "d_fact='BIRT' AND " .
+                "d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')";
+        }
+
+        if ($year1 >= 0 && $year2 >= 0) {
+            $sql .= " AND d_year BETWEEN '{$year1}' AND '{$year2}'";
+        }
+
+        $sql .= " GROUP BY d_month";
+
+        if ($sex) {
+            $sql .= ", i_sex";
+        }
+
+        return $this->runSql($sql);
+    }
+
+    /**
+     * General query on births.
+     *
+     * @param string|null $size
+     * @param string|null $color_from
+     * @param string|null $color_to
+     *
+     * @return string
+     */
+    public function statsBirth(string $size = null, string $color_from = null, string $color_to = null): string
+    {
+        return (new ChartBirth($this->tree))
+            ->chartBirth($size, $color_from, $color_to);
+    }
+
+    /**
+     * Create a chart of death places.
+     *
+     * @param bool $sex
+     * @param int  $year1
+     * @param int  $year2
+     *
+     * @return array
+     */
+    public function statsDeathQuery($sex = false, $year1 = -1, $year2 = -1): array
+    {
+        if ($sex) {
+            $sql =
+                "SELECT d_month, i_sex, COUNT(*) AS total FROM `##dates` " .
+                "JOIN `##individuals` ON d_file = i_file AND d_gid = i_id " .
+                "WHERE " .
+                "d_file={$this->tree->id()} AND " .
+                "d_fact='DEAT' AND " .
+                "d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')";
+        } else {
+            $sql =
+                "SELECT d_month, COUNT(*) AS total FROM `##dates` " .
+                "WHERE " .
+                "d_file={$this->tree->id()} AND " .
+                "d_fact='DEAT' AND " .
+                "d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')";
+        }
+
+        if ($year1 >= 0 && $year2 >= 0) {
+            $sql .= " AND d_year BETWEEN '{$year1}' AND '{$year2}'";
+        }
+
+        $sql .= " GROUP BY d_month";
+
+        if ($sex) {
+            $sql .= ", i_sex";
+        }
+
+        return $this->runSql($sql);
+    }
+
+    /**
+     * General query on deaths.
+     *
+     * @param string|null $size
+     * @param string|null $color_from
+     * @param string|null $color_to
+     *
+     * @return string
+     */
+    public function statsDeath(string $size = null, string $color_from = null, string $color_to = null): string
+    {
+        return (new ChartDeath($this->tree))
+            ->chartDeath($size, $color_from, $color_to);
+    }
+
+    /**
+     * General query on ages.
+     *
+     * @param string $related
+     * @param string $sex
+     * @param int    $year1
+     * @param int    $year2
+     *
+     * @return array|string
+     */
+    public function statsAgeQuery($related = 'BIRT', $sex = 'BOTH', $year1 = -1, $year2 = -1)
+    {
+        $sex_search = '';
+        $years      = '';
+
+        if ($sex === 'F') {
+            $sex_search = " AND i_sex='F'";
+        } elseif ($sex === 'M') {
+            $sex_search = " AND i_sex='M'";
+        }
+
+        if ($year1 >= 0 && $year2 >= 0) {
+            if ($related === 'BIRT') {
+                $years = " AND birth.d_year BETWEEN '{$year1}' AND '{$year2}'";
+            } elseif ($related === 'DEAT') {
+                $years = " AND death.d_year BETWEEN '{$year1}' AND '{$year2}'";
+
+            }
+        }
+
+        $rows = $this->runSql(
+            "SELECT" .
+            " death.d_julianday2-birth.d_julianday1 AS age" .
+            " FROM" .
+            " `##dates` AS death," .
+            " `##dates` AS birth," .
+            " `##individuals` AS indi" .
+            " WHERE" .
+            " indi.i_id=birth.d_gid AND" .
+            " birth.d_gid=death.d_gid AND" .
+            " death.d_file={$this->tree->id()} AND" .
+            " birth.d_file=death.d_file AND" .
+            " birth.d_file=indi.i_file AND" .
+            " birth.d_fact='BIRT' AND" .
+            " death.d_fact='DEAT' AND" .
+            " birth.d_julianday1 <> 0 AND" .
+            " birth.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND" .
+            " death.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND" .
+            " death.d_julianday1>birth.d_julianday2" .
+            $years .
+            $sex_search .
+            " ORDER BY age DESC"
+        );
+
+        return $rows;
+    }
+
+    /**
+     * General query on ages.
+     *
+     * @param string $size
+     *
+     * @return string
+     */
+    public function statsAge(string $size = '230x250'): string
+    {
+        return (new ChartAge($this->tree))->chartAge($size);
     }
 }
