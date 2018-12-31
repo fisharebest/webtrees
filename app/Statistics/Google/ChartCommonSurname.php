@@ -18,7 +18,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Statistics\Google;
 
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Statistics\Google;
+use Fisharebest\Webtrees\Statistics\AbstractGoogle;
 use Fisharebest\Webtrees\Statistics\Repository\IndividualRepository;
 use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
@@ -26,7 +26,7 @@ use Fisharebest\Webtrees\Tree;
 /**
  *
  */
-class ChartCommonSurname extends Google
+class ChartCommonSurname extends AbstractGoogle
 {
     /**
      * @var Tree

@@ -19,7 +19,7 @@ namespace Fisharebest\Webtrees\Statistics\Google;
 
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Statistics\Google;
+use Fisharebest\Webtrees\Statistics\AbstractGoogle;
 use Fisharebest\Webtrees\Statistics\Repository\MediaRepository;
 use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
@@ -27,7 +27,7 @@ use Fisharebest\Webtrees\Tree;
 /**
  *
  */
-class ChartMedia extends Google
+class ChartMedia extends AbstractGoogle
 {
     /**
      * @var MediaRepository

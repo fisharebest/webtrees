@@ -18,16 +18,15 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Statistics\Google;
 
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Statistics\AbstractGoogle;
 use Fisharebest\Webtrees\Statistics\Helper\Century;
-use Fisharebest\Webtrees\Statistics\Google;
 use Fisharebest\Webtrees\Statistics\Helper\Sql;
-use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
 
 /**
  *
  */
-class ChartMarriageAge extends Google
+class ChartMarriageAge extends AbstractGoogle
 {
     /**
      * @var Tree

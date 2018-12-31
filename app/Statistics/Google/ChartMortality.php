@@ -18,50 +18,43 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Statistics\Google;
 
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Statistics\Deceased;
-use Fisharebest\Webtrees\Statistics\Google;
-use Fisharebest\Webtrees\Statistics\Helper\Percentage;
-use Fisharebest\Webtrees\Statistics\Living;
+use Fisharebest\Webtrees\Statistics\AbstractGoogle;
 use Fisharebest\Webtrees\Theme;
-use Fisharebest\Webtrees\Tree;
 
 /**
  *
  */
-class ChartMortality extends Google
+class ChartMortality extends AbstractGoogle
 {
-    /**
-     * @var Living
-     */
-    private $living;
-
-    /**
-     * @var Deceased
-     */
-    private $deceased;
-
-    /**
-     * Constructor.
-     *
-     * @param Tree $tree
-     */
-    public function __construct(Tree $tree)
-    {
-        $this->living   = new Living($tree);
-        $this->deceased = new Deceased($tree);
-    }
-
     /**
      * Create a chart showing mortality.
      *
+     * @param int         $tot_l
+     * @param int         $tot_d
+     * @param string      $per_l
+     * @param string      $per_d
      * @param string|null $size
      * @param string|null $color_living
      * @param string|null $color_dead
      *
      * @return string
      */
-    public function chartMortality(string $size = null, string $color_living = null, string $color_dead = null): string
-    {
+    public function chartMortality(
+        int $tot_l,
+        int $tot_d,
+        string $per_l,
+        string $per_d,
+        string $size = null,
+        string $color_living = null,
+        string $color_dead = null
+    ): string {
+        // Raw data - for calculation
+        $tot = $tot_l + $tot_d;
+
+        if ($tot === 0) {
+            return '';
+        }
+
         $WT_STATS_S_CHART_X = Theme::theme()->parameter('stats-small-chart-x');
         $WT_STATS_S_CHART_Y = Theme::theme()->parameter('stats-small-chart-y');
 
@@ -70,19 +63,6 @@ class ChartMortality extends Google
         $color_dead   = $color_dead ?? 'cccccc';
 
         $sizes = explode('x', $size);
-
-        // Raw data - for calculation
-        $tot_l = $this->living->totalLivingQuery();
-        $tot_d = $this->deceased->totalDeceasedQuery();
-        $tot   = $tot_l + $tot_d;
-
-        // I18N data - for display
-        $per_l = $this->living->totalLivingPercentage();
-        $per_d = $this->deceased->totalDeceasedPercentage();
-
-        if ($tot === 0) {
-            return '';
-        }
 
         $chd = $this->arrayToExtendedEncoding([
             intdiv(4095 * $tot_l, $tot),

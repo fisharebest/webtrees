@@ -20,7 +20,7 @@ namespace Fisharebest\Webtrees\Statistics\Google;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Statistics\Helper\Country;
-use Fisharebest\Webtrees\Statistics\Google;
+use Fisharebest\Webtrees\Statistics\AbstractGoogle;
 use Fisharebest\Webtrees\Statistics\Places;
 use Fisharebest\Webtrees\Statistics\Repository\IndividualRepository;
 use Fisharebest\Webtrees\Theme;
@@ -29,7 +29,7 @@ use Fisharebest\Webtrees\Tree;
 /**
  * Create a chart showing where events occurred.
  */
-class ChartDistribution extends Google
+class ChartDistribution extends AbstractGoogle
 {
     /**
      * @var Tree

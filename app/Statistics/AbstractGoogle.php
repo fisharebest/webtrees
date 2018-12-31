@@ -17,13 +17,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Statistics;
 
-use Fisharebest\Webtrees\Database;
-use Fisharebest\Webtrees\Tree;
-
 /**
  * Base class for all google charts.
  */
-class Google
+abstract class AbstractGoogle
 {
     // Used in Google charts
     public const GOOGLE_CHART_ENCODING = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-.';
@@ -37,7 +34,7 @@ class Google
      *
      * @return string
      */
-    public function arrayToExtendedEncoding(array $a): string
+    protected function arrayToExtendedEncoding(array $a): string
     {
         $xencoding = self::GOOGLE_CHART_ENCODING;
         $encoding  = '';

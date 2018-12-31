@@ -19,7 +19,7 @@ namespace Fisharebest\Webtrees\Statistics\Google;
 
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Statistics\Helper\Century;
-use Fisharebest\Webtrees\Statistics\Google;
+use Fisharebest\Webtrees\Statistics\AbstractGoogle;
 use Fisharebest\Webtrees\Statistics\Helper\Sql;
 use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
@@ -27,7 +27,7 @@ use Fisharebest\Webtrees\Tree;
 /**
  *
  */
-class ChartDivorce extends Google
+class ChartDivorce extends AbstractGoogle
 {
     /**
      * @var Tree

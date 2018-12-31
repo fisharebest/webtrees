@@ -19,7 +19,7 @@ namespace Fisharebest\Webtrees\Statistics\Google;
 
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Statistics\Google;
+use Fisharebest\Webtrees\Statistics\AbstractGoogle;
 use Fisharebest\Webtrees\Statistics\Helper\Century;
 use Fisharebest\Webtrees\Statistics\Helper\Sql;
 use Fisharebest\Webtrees\Theme;
@@ -28,7 +28,7 @@ use Fisharebest\Webtrees\Tree;
 /**
  *
  */
-class ChartFamily extends Google
+class ChartFamily extends AbstractGoogle
 {
     /**
      * @var Tree
@@ -243,13 +243,13 @@ class ChartFamily extends Google
         $step     = $max + 1;
 
         for ($d = (int) ($max + 1); $d > 0; $d--) {
-            if (($max + 1) < ($d * 10 + 1) && fmod(($max + 1), $d) === 0) {
+            if (($max + 1) < ($d * 10 + 1) && fmod($max + 1, $d) === 0) {
                 $step = $d;
             }
         }
 
         if ($step === (int) ($max + 1)) {
-            for ($d = (int) ($max); $d > 0; $d--) {
+            for ($d = (int) $max; $d > 0; $d--) {
                 if ($max < ($d * 10 + 1) && fmod($max, $d) === 0) {
                     $step = $d;
                 }

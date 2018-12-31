@@ -19,7 +19,7 @@ namespace Fisharebest\Webtrees\Statistics\Google;
 
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Statistics\Helper\Century;
-use Fisharebest\Webtrees\Statistics\Google;
+use Fisharebest\Webtrees\Statistics\AbstractGoogle;
 use Fisharebest\Webtrees\Statistics\Helper\Sql;
 use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
@@ -27,7 +27,7 @@ use Fisharebest\Webtrees\Tree;
 /**
  *
  */
-class ChartMarriage extends Google
+class ChartMarriage extends AbstractGoogle
 {
     /**
      * @var Tree
@@ -57,7 +57,7 @@ class ChartMarriage extends Google
      * @param string|null $color_from
      * @param string|null $color_to
      *
-     * @return array
+     * @return string
      */
     public function chartMarriage(string $size = null, string $color_from = null, string $color_to = null): string
     {
