@@ -48,6 +48,9 @@ class AuthTest extends \Fisharebest\Webtrees\TestCase
      */
     public function testIdNumbers(): void
     {
+        // Initially, a visitor.
+        $this->assertNull(Auth::id());
+
         // ID numbers are issued sequentially, starting at 1.
         $user1 = User::create('user1', 'User1', 'user1@example.com', 'secret');
         Auth::login($user1);
@@ -59,9 +62,30 @@ class AuthTest extends \Fisharebest\Webtrees\TestCase
     }
 
     /**
-     * Test administrators.
+     * @covers \Fisharebest\Webtrees\Auth::id
      *
-     * @covers \Fisharebest\Webtrees\Auth
+     * @return void
+     */
+    public function testVisitors(): void
+    {
+        // A visitor.
+        $user = Auth::user();
+
+        $this->assertSame(0, $user->getUserId());
+        $this->assertSame('', $user->getUserName());
+        $this->assertSame('', $user->getRealName());
+        $this->assertSame('', $user->getEmail());
+
+        // Logged in.
+        $user = User::create('user', 'User', 'user@example.com', 'secret');
+        $this->assertSame(1, $user->getUserId());
+        $this->assertSame('user', $user->getUserName());
+        $this->assertSame('User', $user->getRealName());
+        $this->assertSame('user@example.com', $user->getEmail());
+    }
+
+    /**
+     * @covers \Fisharebest\Webtrees\Auth::isAdmin
      *
      * @return void
      */
@@ -82,9 +106,8 @@ class AuthTest extends \Fisharebest\Webtrees\TestCase
     }
 
     /**
-     * Test managers.
-     *
-     * @covers \Fisharebest\Webtrees\Auth
+     * @covers \Fisharebest\Webtrees\Auth::isManager
+     * @covers \Fisharebest\Webtrees\Auth::accessLevel
      *
      * @return void
      */
@@ -112,9 +135,8 @@ class AuthTest extends \Fisharebest\Webtrees\TestCase
     }
 
     /**
-     * Test moderators.
-     *
-     * @covers \Fisharebest\Webtrees\Auth
+     * @covers \Fisharebest\Webtrees\Auth::isModerator
+     * @covers \Fisharebest\Webtrees\Auth::accessLevel
      *
      * @return void
      */
@@ -140,9 +162,8 @@ class AuthTest extends \Fisharebest\Webtrees\TestCase
     }
 
     /**
-     * Test editors.
-     *
-     * @covers \Fisharebest\Webtrees\Auth
+     * @covers \Fisharebest\Webtrees\Auth::isEditor
+     * @covers \Fisharebest\Webtrees\Auth::accessLevel
      *
      * @return void
      */
@@ -168,9 +189,8 @@ class AuthTest extends \Fisharebest\Webtrees\TestCase
     }
 
     /**
-     * Test members.
-     *
-     * @covers \Fisharebest\Webtrees\Auth
+     * @covers \Fisharebest\Webtrees\Auth::isMember
+     * @covers \Fisharebest\Webtrees\Auth::accessLevel
      *
      * @return void
      */
