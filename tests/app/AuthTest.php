@@ -25,6 +25,40 @@ class AuthTest extends \Fisharebest\Webtrees\TestCase
     protected static $uses_database = true;
 
     /**
+     * @covers \Fisharebest\Webtrees\Auth::check
+     *
+     * @return void
+     */
+    public function testLoginAndLogout(): void
+    {
+        $user = User::create('user', 'User', 'user@example.com', 'secret');
+        $this->assertFalse(Auth::check());
+
+        Auth::login($user);
+        $this->assertTrue(Auth::check());
+
+        Auth::logout();
+        $this->assertFalse(Auth::check());
+    }
+
+    /**
+     * @covers \Fisharebest\Webtrees\Auth::id
+     *
+     * @return void
+     */
+    public function testIdNumbers(): void
+    {
+        // ID numbers are issued sequentially, starting at 1.
+        $user1 = User::create('user1', 'User1', 'user1@example.com', 'secret');
+        Auth::login($user1);
+        $this->assertSame(1, Auth::id());
+
+        $user2 = User::create('user2', 'User2', 'user2@example.com', 'secret');
+        Auth::login($user2);
+        $this->assertSame(2, Auth::id());
+    }
+
+    /**
      * Test administrators.
      *
      * @covers \Fisharebest\Webtrees\Auth
