@@ -96,7 +96,7 @@ class ChartBirth extends AbstractGoogle
         $counts    = [];
         foreach ($rows as $values) {
             $counts[] = intdiv(100 * $values->total, $tot);
-            $centuries .= $this->centuryHelper->centuryName($values->century) . ' - ' . I18N::number($values->total) . '|';
+            $centuries .= $this->centuryHelper->centuryName((int) $values->century) . ' - ' . I18N::number($values->total) . '|';
         }
         $chd = $this->arrayToExtendedEncoding($counts);
         $chl = rawurlencode(substr($centuries, 0, -1));

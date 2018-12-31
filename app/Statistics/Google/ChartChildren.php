@@ -85,7 +85,7 @@ class ChartChildren extends AbstractGoogle
         $i      = 0;
         $counts = [];
         foreach ($rows as $values) {
-            $chxl .= $this->centuryHelper->centuryName($values->century) . '|';
+            $chxl .= $this->centuryHelper->centuryName((int) $values->century) . '|';
             if ($max <= 5) {
                 $counts[] = (int) ($values->num * 819.2 - 1);
             } elseif ($max <= 10) {

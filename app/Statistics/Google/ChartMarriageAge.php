@@ -114,7 +114,7 @@ class ChartMarriageAge extends AbstractGoogle
         $out     = [];
 
         foreach ($rows as $values) {
-            $out[$values->century][$values->sex] = $values->age;
+            $out[(int) $values->century][$values->sex] = $values->age;
         }
 
         foreach ($out as $century => $values) {

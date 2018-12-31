@@ -230,7 +230,7 @@ class ChartFamily extends AbstractGoogle
         $counts = [];
 
         foreach ($rows as $values) {
-            $chxl     .= $this->centuryHelper->centuryName($values->century) . '|';
+            $chxl     .= $this->centuryHelper->centuryName((int) $values->century) . '|';
             $counts[] = intdiv(4095 * $values->count, $max + 1);
             $chm      .= 't' . $values->count . ',000000,0,' . $i . ',11,1|';
             $i++;
