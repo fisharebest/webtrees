@@ -51,7 +51,7 @@ class Tree
     private $individual_fact_privacy;
 
     /** @var Tree[] All trees that we have permission to see. */
-    private static $trees = [];
+    public static $trees = [];
 
     /** @var string[] Cached copy of the wt_gedcom_setting table. */
     private $preferences = [];
@@ -323,7 +323,8 @@ class Tree
                 ->orderBy('gedcom.sort_order')
                 ->orderBy('gedcom_setting.setting_value');
 
-            if (false && !Auth::isAdmin()) {
+            // Non-admins may not see all trees
+            if (!Auth::isAdmin()) {
                 $query
                     ->join('gedcom_setting AS gs2', 'gs2.gedcom_id', '=', 'gedcom.gedcom_id')
                     ->where('gs2.setting_name', '=', 'imported');
@@ -454,14 +455,15 @@ class Tree
             ]);
 
             $tree_id = (int) DB::connection()->getPdo()->lastInsertId();
+
+            $tree = new self($tree_id, $tree_name, $tree_title);
         } catch (PDOException $ex) {
             // A tree with that name already exists?
             return self::findByName($tree_name);
         }
 
         // Update the list of trees - to include this new one
-        self::$trees = [];
-        $tree        = self::findById($tree_id);
+        self::$trees[$tree_name] = $tree;
 
         $tree->setPreference('imported', '0');
         $tree->setPreference('title', $tree_title);

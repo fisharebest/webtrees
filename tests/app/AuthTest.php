@@ -18,17 +18,146 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 /**
- * Test harness for the class Auth
+ * Test the user functions
  */
 class AuthTest extends \Fisharebest\Webtrees\TestCase
 {
+    protected static $uses_database = true;
+
     /**
-     * Test that the class exists
+     * Test administrators.
+     *
+     * @covers \Fisharebest\Webtrees\Auth
      *
      * @return void
      */
-    public function testClassExists()
+    public function testAdministrator(): void
     {
-        $this->assertTrue(class_exists('\Fisharebest\Webtrees\Auth'));
+        // By default, new users are not admins.
+        $user = User::create('admin', 'Administrator', 'admin@example.com', 'secret');
+        $this->assertFalse(Auth::isAdmin($user));
+
+        // Make the user a manager.
+        $user->setPreference('canadmin', '1');
+        $this->assertTrue(Auth::isAdmin($user));
+
+        // Test that the current user is an admin.
+        $this->assertFalse(Auth::isAdmin());
+        Auth::login($user);
+        $this->assertTrue(Auth::isAdmin());
+    }
+
+    /**
+     * Test managers.
+     *
+     * @covers \Fisharebest\Webtrees\Auth
+     *
+     * @return void
+     */
+    public function testManager(): void
+    {
+        $tree = Tree::create('test', 'Test');
+        $tree->setPreference('imported', '1');
+
+        // By default, new users are not managers.
+        $user = User::create('manager', 'Manager', 'manager@example.com', 'secret');
+        $this->assertFalse(Auth::isManager($tree, $user));
+        $this->assertSame(Auth::PRIV_PRIVATE, Auth::accessLevel($tree, $user));
+
+        // Make the user a manager.
+        $tree->setUserPreference($user, 'canedit', 'admin');
+        $this->assertTrue(Auth::isManager($tree, $user));
+        $this->assertSame(Auth::PRIV_NONE, Auth::accessLevel($tree, $user));
+
+        // Test that the current user is a manager.
+        $this->assertFalse(Auth::isManager($tree));
+        $this->assertSame(Auth::PRIV_PRIVATE, Auth::accessLevel($tree));
+        Auth::login($user);
+        $this->assertTrue(Auth::isManager($tree));
+        $this->assertSame(Auth::PRIV_NONE, Auth::accessLevel($tree));
+    }
+
+    /**
+     * Test moderators.
+     *
+     * @covers \Fisharebest\Webtrees\Auth
+     *
+     * @return void
+     */
+    public function testModerator(): void
+    {
+        // By default, new users are not moderators.
+        $user = User::create('moderator', 'Moderator', 'moderator@example.com', 'secret');
+        $tree = Tree::create('test', 'Test');
+        $this->assertFalse(Auth::isModerator($tree, $user));
+        $this->assertSame(Auth::PRIV_PRIVATE, Auth::accessLevel($tree, $user));
+
+        // Make the user a moderator.
+        $tree->setUserPreference($user, 'canedit', 'accept');
+        $this->assertTrue(Auth::isModerator($tree, $user));
+        $this->assertSame(Auth::PRIV_USER, Auth::accessLevel($tree, $user));
+
+        // Test that the current user is a moderator.
+        $this->assertFalse(Auth::isModerator($tree));
+        $this->assertSame(Auth::PRIV_PRIVATE, Auth::accessLevel($tree));
+        Auth::login($user);
+        $this->assertTrue(Auth::isModerator($tree));
+        $this->assertSame(Auth::PRIV_USER, Auth::accessLevel($tree));
+    }
+
+    /**
+     * Test editors.
+     *
+     * @covers \Fisharebest\Webtrees\Auth
+     *
+     * @return void
+     */
+    public function testEditor(): void
+    {
+        // By default, new users are not editors.
+        $user = User::create('editor', 'Editor', 'editor@example.com', 'secret');
+        $tree = Tree::create('test', 'Test');
+        $this->assertFalse(Auth::isEditor($tree, $user));
+        $this->assertSame(Auth::PRIV_PRIVATE, Auth::accessLevel($tree, $user));
+
+        // Make the user an editor.
+        $tree->setUserPreference($user, 'canedit', 'edit');
+        $this->assertTrue(Auth::isEditor($tree, $user));
+        $this->assertSame(Auth::PRIV_USER, Auth::accessLevel($tree, $user));
+
+        // Test that the current user is an editor.
+        $this->assertFalse(Auth::isEditor($tree));
+        $this->assertSame(Auth::PRIV_PRIVATE, Auth::accessLevel($tree));
+        Auth::login($user);
+        $this->assertTrue(Auth::isEditor($tree));
+        $this->assertSame(Auth::PRIV_USER, Auth::accessLevel($tree));
+    }
+
+    /**
+     * Test members.
+     *
+     * @covers \Fisharebest\Webtrees\Auth
+     *
+     * @return void
+     */
+    public function testMember(): void
+    {
+        // By default, new users are not members.
+        $user = User::create('member', 'Member', 'member@example.com', 'secret');
+        $tree = Tree::create('test', 'Test');
+        $this->assertFalse(Auth::isMember($tree, $user));
+        $this->assertSame(Auth::PRIV_PRIVATE, Auth::accessLevel($tree, $user));
+
+        // Make the user a members.
+        $tree->setUserPreference($user, 'canedit', 'access');
+        $this->assertTrue(Auth::isMember($tree, $user));
+        $this->assertSame(Auth::PRIV_USER, Auth::accessLevel($tree, $user));
+
+        // Test that the current user is a member.
+        $this->assertFalse(Auth::isMember($tree));
+        $this->assertSame(Auth::PRIV_PRIVATE, Auth::accessLevel($tree));
+        Auth::login($user);
+        $this->assertTrue(Auth::isMember($tree));
+        $this->assertSame(Auth::PRIV_USER, Auth::accessLevel($tree));
     }
 }

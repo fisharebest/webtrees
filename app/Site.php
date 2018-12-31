@@ -30,7 +30,7 @@ class Site
      *
      * @var array
      */
-    private static $preferences = [];
+    public static $preferences = [];
 
     /**
      * Get the site’s configuration settings
@@ -63,11 +63,14 @@ class Site
      */
     public static function setPreference($setting_name, $setting_value)
     {
+        // The database column is only this long.
+        $setting_value = mb_substr($setting_value, 0, 2000);
+
         if (self::getPreference($setting_name) !== $setting_value) {
             DB::table('site_setting')->updateOrInsert([
                 'setting_name' => $setting_name,
             ], [
-                'setting_value' => mb_substr($setting_value, 0, 2000),
+                'setting_value' => $setting_value,
             ]);
 
             self::$preferences[$setting_name] = $setting_value;

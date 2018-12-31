@@ -15,19 +15,54 @@
  */
 declare(strict_types=1);
 
+namespace Fisharebest\Webtrees;
+
+use function mb_substr;
+use function str_repeat;
+use function strlen;
 
 /**
- * Test harness for the class Site
+ * Test the site functions
  */
 class SiteTest extends \Fisharebest\Webtrees\TestCase
 {
+    protected static $uses_database = true;
+
     /**
-     * Test that the class exists
+     * @covers \Fisharebest\Webtrees\Site
      *
      * @return void
      */
-    public function testClassExists()
+    public function testDefault(): void
     {
-        $this->assertTrue(class_exists('\Fisharebest\Webtrees\Site'));
+        $this->assertSame('foo', Site::getPreference('no-such-setting', 'foo'));
+        $this->assertSame('bar', Site::getPreference('no-such-setting', 'bar'));
+    }
+
+    /**
+     * @covers \Fisharebest\Webtrees\Site
+     *
+     * @return void
+     */
+    public function testSetAndGetPreference(): void
+    {
+        Site::setPreference('setting', 'foo');
+
+        $this->assertSame('foo', Site::getPreference('setting'));
+    }
+
+    /**
+     * @covers \Fisharebest\Webtrees\Site
+     *
+     * @return void
+     */
+    public function test2000CharacterLimit(): void
+    {
+        $too_long = str_repeat('x', 3000);
+        $expected = str_repeat('x', 2000);
+        
+        Site::setPreference('setting', $too_long);
+
+        $this->assertSame($expected, Site::getPreference('setting'));
     }
 }

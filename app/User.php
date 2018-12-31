@@ -42,7 +42,7 @@ class User
     private $preferences = [];
 
     /** @var  User[]|null[] Only fetch users from the database once. */
-    private static $cache = [];
+    public static $cache = [];
 
     /**
      * Create a new user object from a row in the database.

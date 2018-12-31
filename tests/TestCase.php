@@ -29,8 +29,6 @@ class TestCase extends \PHPUnit\Framework\TestCase
 {
     protected static $uses_database = false;
 
-    protected static $uses_transactions = false;
-
     /**
      * Things to run once, before all the tests.
      */
@@ -38,11 +36,9 @@ class TestCase extends \PHPUnit\Framework\TestCase
     {
         parent::setUpBeforeClass();
 
-        defined('WT_BASE_URL') || define('WT_BASE_URL', 'http://localhost/');
-        defined('WT_ROOT') || define('WT_ROOT', dirname(__DIR__) . '/');
-        defined('WT_DATA_DIR') || define('WT_DATA_DIR', WT_ROOT . 'data/');
-
         if (static::$uses_database) {
+            defined('WT_ROOT') || define('WT_ROOT', dirname(__DIR__) . '/');
+
             static::createTestDatabase();
         }
     }
@@ -54,7 +50,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
     {
         if (static::$uses_database) {
             $pdo = DB::connection()->getPdo();
-            $pdo = null;
+            unset($pdo);
         }
 
         parent::tearDownAfterClass();
@@ -67,8 +63,8 @@ class TestCase extends \PHPUnit\Framework\TestCase
     {
         parent::setUp();
 
-        defined('WT_BASE_URL') || define('WT_BASE_URL', 'http://localhost/');
         defined('WT_ROOT') || define('WT_ROOT', dirname(__DIR__) . '/');
+        defined('WT_BASE_URL') || define('WT_BASE_URL', 'http://localhost/');
         defined('WT_DATA_DIR') || define('WT_DATA_DIR', WT_ROOT . 'data/');
         defined('WT_LOCALE') || define('WT_LOCALE', I18N::init('en-US'));
 
@@ -82,9 +78,15 @@ class TestCase extends \PHPUnit\Framework\TestCase
      */
     protected function tearDown()
     {
-        if (static::$uses_database && static::$uses_transactions) {
+        if (static::$uses_database) {
             DB::connection()->rollBack();
         }
+
+        Site::$preferences = [];
+        User::$cache = [];
+        Tree::$trees = [];
+
+        Auth::logout();
     }
 
     /**
