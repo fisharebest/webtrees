@@ -101,21 +101,40 @@ class User
      */
     public function delete()
     {
-        // Don't delete the logs.
-        Database::prepare("UPDATE `##log` SET user_id=NULL WHERE user_id =?")->execute([$this->user_id]);
+        // Don't delete the logs, just set the user to null.
+        DB::table('log')
+            ->where('user_id', '=', $this->user_id)
+            ->update(['user_id' => null]);
+
         // Take over the user’s pending changes. (What else could we do with them?)
-        Database::prepare("DELETE FROM `##change` WHERE user_id=? AND status='rejected'")->execute([$this->user_id]);
-        Database::prepare("UPDATE `##change` SET user_id=? WHERE user_id=?")->execute([
-            Auth::id(),
-            $this->user_id,
-        ]);
-        Database::prepare("DELETE `##block_setting` FROM `##block_setting` JOIN `##block` USING (block_id) WHERE user_id=?")->execute([$this->user_id]);
-        Database::prepare("DELETE FROM `##block` WHERE user_id=?")->execute([$this->user_id]);
-        Database::prepare("DELETE FROM `##user_gedcom_setting` WHERE user_id=?")->execute([$this->user_id]);
-        Database::prepare("DELETE FROM `##gedcom_setting` WHERE setting_value=? AND setting_name IN ('CONTACT_USER_ID', 'WEBMASTER_USER_ID')")->execute([(string) $this->user_id]);
-        Database::prepare("DELETE FROM `##user_setting` WHERE user_id=?")->execute([$this->user_id]);
-        Database::prepare("DELETE FROM `##message` WHERE user_id=?")->execute([$this->user_id]);
-        Database::prepare("DELETE FROM `##user` WHERE user_id=?")->execute([$this->user_id]);
+        DB::table('change')
+            ->where('user_id', '=', $this->user_id)
+            ->where('status', '=', 'rejected')
+            ->delete();
+
+        DB::table('change')
+            ->where('user_id', '=', $this->user_id)
+            ->update(['user_id' => Auth::id()]);
+
+        // Take over the user's contact details
+        DB::table('gedcom_setting')
+            ->where('setting_value', '=', $this->user_id)
+            ->whereIn('setting_name', ['CONTACT_USER_ID', 'WEBMASTER_USER_ID'])
+            ->update(['setting_value' => Auth::id()]);
+
+        // Delete settings and preferences
+        DB::table('block_setting')
+            ->join('block', 'block_setting.block_id', '=', 'block.block_id')
+            ->where('user_id', '=', $this->user_id)
+            ->delete();
+
+        DB::table('block')->where('user_id', '=', $this->user_id)->delete();
+        DB::table('user_gedcom_setting')->where('user_id', '=', $this->user_id)->delete();
+        DB::table('user_setting')->where('user_id', '=', $this->user_id)->delete();
+        DB::table('message')->where('user_id', '=', $this->user_id)->delete();
+        DB::table('user')->where('user_id', '=', $this->user_id)->delete();
+
+        unset(self::$cache[$this->user_id]);
     }
 
     /**
