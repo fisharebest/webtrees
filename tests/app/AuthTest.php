@@ -25,6 +25,7 @@ class AuthTest extends \Fisharebest\Webtrees\TestCase
     protected static $uses_database = true;
 
     /**
+     * @covers \Fisharebest\Webtrees\Auth::check
      * @covers \Fisharebest\Webtrees\Auth::login
      * @covers \Fisharebest\Webtrees\Auth::logout
      *
@@ -79,6 +80,8 @@ class AuthTest extends \Fisharebest\Webtrees\TestCase
 
         // Logged in.
         $user = User::create('user', 'User', 'user@example.com', 'secret');
+        Auth::login($user);
+        $user = Auth::user();
         $this->assertSame(1, $user->getUserId());
         $this->assertSame('user', $user->getUserName());
         $this->assertSame('User', $user->getRealName());
