@@ -428,7 +428,7 @@ switch ($action) {
                 <div>
                     <label for="user_email">
                         <?php echo I18N::translate('Email address'); ?>
-                        <input type="email" id="user_email" name="user_email" required maxlength="64" value="<?php echo Filter::escapeHtml($user_email); ?>">
+                        <input type="email" id="user_email" name="user_email" required maxlength="64" value="<?php echo Filter::escapeHtml($user_email); ?>" pattern=".*@[^.]+\..*">
                     </label>
                     <p class="small text-muted">
                         <?php echo I18N::translate('This email address will be used to send password reminders, website notifications, and messages from other family members who are registered on the website.'); ?>

@@ -441,7 +441,7 @@ if (empty($_POST['wtname']) || empty($_POST['wtuser']) || strlen($_POST['wtpass'
         I18N::translate('Type your password again, to make sure you have typed it correctly.'),
         '</td></tr><tr><td>',
         I18N::translate('Email address'), '</td><td>',
-        '<input type="email" name="wtemail" value="', Filter::escapeHtml($_POST['wtemail']), '"></td><td>',
+        '<input type="email" name="wtemail" value="', Filter::escapeHtml($_POST['wtemail']), '" pattern=".*@[^.]+\..*" maxlength="64"></td><td>',
         I18N::translate('This email address will be used to send password reminders, website notifications, and messages from other family members who are registered on the website.'),
         '</td></tr><tr><td>',
         '</td></tr></table>',

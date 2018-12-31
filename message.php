@@ -114,7 +114,7 @@ switch ($action) {
         }
         if (!Auth::check()) {
             echo '<tr style="vertical-align:top;"><td width="15%">', I18N::translate('Your name'), '</td>';
-            echo '<td><input type="text" name="from_name" size="40" value="', Filter::escapeHtml($from_name), '"></td></tr><tr style="vertical-align:top;"><td>', I18N::translate('Email address'), '</td><td><input type="email" name="from_email" size="40" value="', Filter::escapeHtml($from_email), '"><br>', I18N::translate('Please provide your email address so that we may contact you in response to this message. If you do not provide your email address we will not be able to respond to your inquiry. Your email address will not be used in any other way besides responding to this inquiry.'), '<br><br></td></tr>';
+            echo '<td><input type="text" name="from_name" size="40" value="', Filter::escapeHtml($from_name), '"></td></tr><tr style="vertical-align:top;"><td>', I18N::translate('Email address'), '</td><td><input type="email" name="from_email" size="40" value="', Filter::escapeHtml($from_email), '" pattern=".*@[^.]+\..*" maxlength="64"><br>', I18N::translate('Please provide your email address so that we may contact you in response to this message. If you do not provide your email address we will not be able to respond to your inquiry. Your email address will not be used in any other way besides responding to this inquiry.'), '<br><br></td></tr>';
         }
         echo '<tr style="vertical-align:top;"><td>', I18N::translate('Subject'), '</td>';
         echo '<td>';

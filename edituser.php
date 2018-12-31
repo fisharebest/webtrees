@@ -260,7 +260,7 @@ function checkform(frm) {
                 </label>
             </div>
             <div class="value">
-                <input type="email" id="form_email" name="form_email" value="<?php echo Filter::escapeHtml(Auth::user()->getEmail()); ?>" size="50">
+                <input type="email" id="form_email" name="form_email" value="<?php echo Filter::escapeHtml(Auth::user()->getEmail()); ?>" size="50" pattern=".*@[^.]+\..*" maxlength="64">
                 <p class="small text-muted">
                     <?php echo I18N::translate('This email address will be used to send password reminders, website notifications, and messages from other family members who are registered on the website.'); ?>
                 </p>

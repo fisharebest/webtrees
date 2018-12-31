@@ -361,7 +361,7 @@ switch (Filter::get('action')) {
                 <?php echo I18N::translate('Email address'); ?>
             </label>
             <div class="col-sm-9">
-                <input class="form-control" type="email" id="email" name="email" required maxlength="64" value="<?php echo Filter::escapeHtml($user->getEmail()); ?>">
+                <input class="form-control" type="email" id="email" name="email" required maxlength="64" value="<?php echo Filter::escapeHtml($user->getEmail()); ?>" pattern=".*@[^.]+\..*">
                 <p class="small text-muted">
                     <?php echo I18N::translate('This email address will be used to send password reminders, website notifications, and messages from other family members who are registered on the website.'); ?>
                 </p>
