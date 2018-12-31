@@ -7,7 +7,7 @@
         <tr>
             <td colspan="2">
                 <label>
-                    <input id="show-level-2-sources" type="checkbox">
+                    <input id="show-level-2-sources" type="checkbox" data-toggle="collapse" data-target=".wt-level-two-source">
                     <?= I18N::translate('Show all sources') ?>
                 </label>
             </td>
@@ -45,6 +45,6 @@
 <script>
   'use strict';
 
-  persistent_toggle("show-level-2-sources", ".row_sour2");
+  persistent_toggle("show-level-2-sources");
 </script>
 <?php View::endpush() ?>

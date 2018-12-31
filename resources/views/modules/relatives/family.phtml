@@ -161,7 +161,7 @@
                         <?php endif ?>
 
                         <?php if ($prev->isOK() && $next->isOK()) : ?>
-                            <div class="elderdate age">
+                            <div class="wt-date-difference collapse small">
                                 <?php $days = $next->maximumJulianDay() - $prev->minimumJulianDay(); ?>
                                 <?php if ($days < 0 || $child_number > 1 && $days > 1 && $days < 240) : ?>
                                     <i class="icon-warning"></i>

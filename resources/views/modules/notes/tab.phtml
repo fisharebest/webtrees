@@ -7,7 +7,7 @@
         <tr>
             <td colspan="2">
                 <label>
-                    <input id="show-level-2-notes" type="checkbox">
+                    <input id="show-level-2-notes" type="checkbox" data-toggle="collapse" data-target=".wt-level-two-note">
                     <?= I18N::translate('Show all notes') ?>
                 </label>
             </td>
@@ -57,6 +57,6 @@
 <script>
   'use strict';
 
-  persistent_toggle("show-level-2-notes", ".row_note2");
+  persistent_toggle("show-level-2-notes");
 </script>
 <?php View::endpush() ?>

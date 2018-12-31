@@ -643,36 +643,21 @@ function paste_char(value)
 /**
  * Persistant checkbox options to hide/show extra data.
 
- * @param checkbox_id
- * @param data_selector
+ * @param element_id
  */
-function persistent_toggle(checkbox_id, data_selector)
+function persistent_toggle(element_id)
 {
-    var checkbox = document.getElementById(checkbox_id);
-    var elements = document.querySelectorAll(data_selector);
-    var display = localStorage.getItem(checkbox_id);
+    let element = document.getElementById(element_id);
+    let key     = 'state-of-' + element_id;
+    let state   = localStorage.getItem(key);
 
-    if (!checkbox) {
-        return;
+    // Previously selected?
+    if (state === 'true') {
+        $(element).click();
     }
 
-    if (display !== '') {
-        display = 'none';
-    }
-
-    checkbox.checked = (display === '');
-    for (var i = 0; i < elements.length; ++i) {
-        elements[i].style.display = display;
-    }
-
-    checkbox.addEventListener('click', function () {
-        console.log(display);
-        display = (display === '' ? 'none' : '');
-        localStorage.setItem(checkbox_id, display);
-        for (var i = 0; i < elements.length; ++i) {
-            elements[i].style.display = display;
-        }
-    });
+    // Remember state for the next page load.
+    $(element).on('change', function() { localStorage.setItem(key, element.checked); });
 }
 
 function valid_lati_long(field, pos, neg)

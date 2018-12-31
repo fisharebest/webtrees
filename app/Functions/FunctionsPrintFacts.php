@@ -756,7 +756,7 @@ class FunctionsPrintFacts
             // Allow access to "1 SOUR @non_existent_source@", so it can be corrected/deleted
             if (!$source || $source->canShow()) {
                 if ($level > 1) {
-                    echo '<tr class="row_sour2">';
+                    echo '<tr class="wt-level-two-source collapse">';
                 } else {
                     echo '<tr>';
                 }
@@ -1003,7 +1003,7 @@ class FunctionsPrintFacts
             }
 
             if ($level >= 2) {
-                echo '<tr class="row_note2"><th scope="row" class="rela ', $styleadd, '">';
+                echo '<tr class="wt-level-two-note collapse"><th scope="row" class="rela ', $styleadd, '">';
             } else {
                 echo '<tr><th scope="row" class="', $styleadd, '">';
             }

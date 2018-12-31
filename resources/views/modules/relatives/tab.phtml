@@ -7,7 +7,7 @@
         <tr>
             <td>
                 <label>
-                    <input id="show-date-differences" type="checkbox" checked>
+                    <input id="show-date-differences" type="checkbox" data-toggle="collapse" data-target=".wt-date-difference">
                     <?= I18N::translate('Date differences') ?>
                 </label>
             </td>
@@ -141,6 +141,6 @@
 <script>
     'use strict';
 
-    persistent_toggle("show-date-differences", ".elderdate");
+    persistent_toggle("show-date-differences");
 </script>
 <?php View::endpush() ?>
