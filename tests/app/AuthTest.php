@@ -25,7 +25,8 @@ class AuthTest extends \Fisharebest\Webtrees\TestCase
     protected static $uses_database = true;
 
     /**
-     * @covers \Fisharebest\Webtrees\Auth::check
+     * @covers \Fisharebest\Webtrees\Auth::login
+     * @covers \Fisharebest\Webtrees\Auth::logout
      *
      * @return void
      */
@@ -62,7 +63,7 @@ class AuthTest extends \Fisharebest\Webtrees\TestCase
     }
 
     /**
-     * @covers \Fisharebest\Webtrees\Auth::id
+     * @covers \Fisharebest\Webtrees\Auth::user
      *
      * @return void
      */
