@@ -284,30 +284,6 @@ class Tree
     public static function getAll(): array
     {
         if (empty(self::$trees)) {
-            /*
-            $rows = Database::prepare(
-                "SELECT g.gedcom_id AS tree_id, g.gedcom_name AS tree_name, gs1.setting_value AS tree_title" .
-                " FROM `##gedcom` g" .
-                " LEFT JOIN `##gedcom_setting`      gs1 ON (g.gedcom_id=gs1.gedcom_id AND gs1.setting_name='title')" .
-                " LEFT JOIN `##gedcom_setting`      gs2 ON (g.gedcom_id=gs2.gedcom_id AND gs2.setting_name='imported')" .
-                " LEFT JOIN `##gedcom_setting`      gs3 ON (g.gedcom_id=gs3.gedcom_id AND gs3.setting_name='REQUIRE_AUTHENTICATION')" .
-                " LEFT JOIN `##user_gedcom_setting` ugs ON (g.gedcom_id=ugs.gedcom_id AND ugs.setting_name='canedit' AND ugs.user_id=?)" .
-                " WHERE " .
-                "  g.gedcom_id>0 AND (" . // exclude the "template" tree
-                "    EXISTS (SELECT 1 FROM `##user_setting` WHERE user_id=? AND setting_name='canadmin' AND setting_value=1)" . // Admin sees all
-                "   ) OR (" .
-                "    (gs2.setting_value = 1 OR ugs.setting_value = 'admin') AND (" . // Allow imported trees, with either:
-                "     gs3.setting_value <> 1 OR" . // visitor access
-                "     IFNULL(ugs.setting_value, 'none')<>'none'" . // explicit access
-                "   )" .
-                "  )" .
-                " ORDER BY g.sort_order, 3"
-            )->execute([
-                Auth::id(),
-                Auth::id(),
-            ])->fetchAll();
-            */
-
             // Admins see all trees
             $query = DB::table('gedcom')
                 ->leftJoin('gedcom_setting', function (JoinClause $join): void {
@@ -326,12 +302,11 @@ class Tree
             // Non-admins may not see all trees
             if (!Auth::isAdmin()) {
                 $query
-                    ->join('gedcom_setting AS gs2', 'gs2.gedcom_id', '=', 'gedcom.gedcom_id')
-                    ->where('gs2.setting_name', '=', 'imported');
-
-                // Some trees are private
-                $query
-                    ->leftJoin('gedcom_setting AS gs3', function (JoinClause $join): void {
+                    ->join('gedcom_setting AS gs2', function (JoinClause $join): void {
+                        $join->on('gs2.gedcom_id', '=', 'gedcom.gedcom_id')
+                            ->where('gs2.setting_name', '=', 'imported');
+                    })
+                    ->join('gedcom_setting AS gs3', function (JoinClause $join): void {
                         $join->on('gs3.gedcom_id', '=', 'gedcom.gedcom_id')
                             ->where('gs3.setting_name', '=', 'REQUIRE_AUTHENTICATION');
                     })
@@ -351,11 +326,11 @@ class Tree
                                     ->where('gs3.setting_value', '=', '1')
                                     ->where('user_gedcom_setting.setting_value', '<>', 'none');
                             })
-                            // Visitors
+                            // PUblic trees
                             ->orWhere(function (Builder $query): void {
                                 $query
                                     ->where('gs2.setting_value', '=', '1')
-                                    ->where(DB::raw("COALESCE(gs3.setting_value ,'0')"), '=', 0);
+                                    ->where('gs3.setting_value' , '<>', '1');
                             });
                     });
             }
