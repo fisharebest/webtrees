@@ -49,36 +49,6 @@ class Database
     private static $table_prefix = '';
 
     /**
-     * Begin a transaction.
-     *
-     * @return bool
-     */
-    public static function beginTransaction(): bool
-    {
-        return self::$pdo->beginTransaction();
-    }
-
-    /**
-     * Commit this transaction.
-     *
-     * @return bool
-     */
-    public static function commit(): bool
-    {
-        return self::$pdo->commit();
-    }
-
-    /**
-     * Disconnect from the server, so we can connect to another one
-     *
-     * @return void
-     */
-    public static function disconnect()
-    {
-        self::$pdo = null;
-    }
-
-    /**
      * Implement the singleton pattern, using a static accessor.
      *
      * @param string[] $config
@@ -205,16 +175,6 @@ class Database
         }
 
         return self::$prepared[$hash];
-    }
-
-    /**
-     * Roll back this transaction.
-     *
-     * @return bool
-     */
-    public static function rollBack(): bool
-    {
-        return self::$pdo->rollBack();
     }
 
     /**
