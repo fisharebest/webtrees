@@ -44,7 +44,8 @@ class Log
      */
     private static function addLog($message, $log_type, Tree $tree = null)
     {
-        $request    = Request::createFromGlobals();
+        // Can't use requestFromGloabls() as this will fail if we have already processed an uploaded file.
+        $request    = Request::create('', '', [], [], [], $_SERVER);
         $ip_address = $request->getClientIp() ?? '127.0.0.1';
         $tree_id    = $tree ? $tree->id() : null;
 
