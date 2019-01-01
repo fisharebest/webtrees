@@ -22,6 +22,7 @@ use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Functions\FunctionsDate;
 use Fisharebest\Webtrees\Functions\FunctionsImport;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
+use Illuminate\Database\Capsule\Manager as DB;
 use stdClass;
 
 /**
@@ -1388,5 +1389,31 @@ class GedcomRecord
                 $this->updateFact($fact->id(), $gedcom, $update_chan);
             }
         }
+    }
+
+    /**
+     * Fetch XREFs of all records linked to a record - when deleting an object, we must
+     * also delete all links to it.
+     *
+     * @return GedcomRecord[]
+     */
+    public function linkingRecords(): array
+    {
+        $union = DB::table('change')
+            ->where('gedcom_id', '=', $this->tree()->id())
+            ->where('new_gedcom', 'LIKE', '%@' . $this->xref() . '@%')
+            ->where('new_gedcom', 'NOT LIKE', '0 @' . $this->xref() . '@%')
+            ->select(['xref']);
+
+        $xrefs = DB::table('link')
+            ->where('l_file', '=', $this->tree()->id())
+            ->where('l_to', '=', $this->xref())
+            ->select('l_from')
+            ->union($union)
+            ->pluck('l_from');
+
+        return $xrefs->map(function (string $xref): GedcomRecord {
+            return GedcomRecord::getInstance($xref, $this->tree);
+        })->all();
     }
 }

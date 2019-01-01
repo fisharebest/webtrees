@@ -24,7 +24,6 @@ use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\FlashMessages;
-use Fisharebest\Webtrees\Functions\FunctionsDb;
 use Fisharebest\Webtrees\Functions\FunctionsImport;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
@@ -827,10 +826,9 @@ class AdminController extends AbstractBaseController
         }
 
         // Update records that link to the one we will be removing.
-        $ids = FunctionsDb::fetchAllLinks($xref2, $tree->id());
+        $linking_records = $record2->linkingRecords();
 
-        foreach ($ids as $id) {
-            $record = GedcomRecord::getInstance($id, $tree);
+        foreach ($linking_records as $record) {
             if (!$record->isPendingDeletion()) {
                 /* I18N: The placeholders are the names of individuals, sources, etc. */
                 FlashMessages::addMessage(I18N::translate(

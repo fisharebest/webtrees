@@ -19,7 +19,6 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\FlashMessages;
-use Fisharebest\Webtrees\Functions\FunctionsDb;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
@@ -116,12 +115,9 @@ class EditGedcomRecordController extends AbstractEditController
 
         if ($record && Auth::isEditor($record->tree()) && $record->canShow() && $record->canEdit()) {
             // Delete links to this record
-            foreach (FunctionsDb::fetchAllLinks($record->xref(), $record->tree()->id()) as $xref) {
-                $linker     = GedcomRecord::getInstance($xref, $tree);
+            foreach ($record->linkingRecords() as $linker) {
                 $old_gedcom = $linker->gedcom();
                 $new_gedcom = $this->removeLinks($old_gedcom, $record->xref());
-                // FunctionsDb::fetch_all_links() does not take account of pending changes. The links (or even the
-                // record itself) may have already been deleted.
                 if ($old_gedcom !== $new_gedcom) {
                     // If we have removed a link from a family to an individual, and it has only one member
                     if (preg_match('/^0 @' . Gedcom::REGEX_XREF . '@ FAM/', $new_gedcom) && preg_match_all('/\n1 (HUSB|WIFE|CHIL) @(' . Gedcom::REGEX_XREF . ')@/', $new_gedcom, $match) == 1) {
