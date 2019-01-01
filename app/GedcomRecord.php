@@ -163,8 +163,8 @@ class GedcomRecord
                 // Fetch all pending records in one database query
                 self::$pending_record_cache[$tree_id] = [];
                 $rows = DB::table('change')
-                    ->where('gedcom_id', '=' , $tree_id)
-                    ->where('status', '=' , 'pending')
+                    ->where('gedcom_id', '=', $tree_id)
+                    ->where('status', '=', 'pending')
                     ->orderBy('change_id')
                     ->select(['xref', 'new_gedcom'])
                     ->get();
