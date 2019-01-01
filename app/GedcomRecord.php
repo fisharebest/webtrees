@@ -271,7 +271,7 @@ class GedcomRecord
         }
 
         // Some other type of record...
-        return DB::table('o_gedcom')
+        return DB::table('other')
             ->where('o_file', '=', $tree_id)
             ->where('o_id', '=', $xref)
             ->value('o_gedcom');
@@ -1264,14 +1264,12 @@ class GedcomRecord
 
         if ($new_gedcom != $old_gedcom) {
             // Save the changes
-            Database::prepare(
-                "INSERT INTO `##change` (gedcom_id, xref, old_gedcom, new_gedcom, user_id) VALUES (?, ?, ?, ?, ?)"
-            )->execute([
-                $this->tree->id(),
-                $this->xref,
-                $old_gedcom,
-                $new_gedcom,
-                Auth::id(),
+            DB::table('change')->insert([
+                'gedcom_id'  => $this->tree->id(),
+                'xref'       => $this->xref,
+                'old_gedcom' => $old_gedcom,
+                'new_gedcom' => $new_gedcom,
+                'user_id'    => Auth::id(),
             ]);
 
             $this->pending = $new_gedcom;
@@ -1306,14 +1304,12 @@ class GedcomRecord
         }
 
         // Create a pending change
-        Database::prepare(
-            "INSERT INTO `##change` (gedcom_id, xref, old_gedcom, new_gedcom, user_id) VALUES (?, ?, ?, ?, ?)"
-        )->execute([
-            $this->tree->id(),
-            $this->xref,
-            $this->gedcom(),
-            $gedcom,
-            Auth::id(),
+        DB::table('change')->insert([
+            'gedcom_id'  => $this->tree->id(),
+            'xref'       => $this->xref,
+            'old_gedcom' => $this->gedcom(),
+            'new_gedcom' => $gedcom,
+            'user_id'    => Auth::id(),
         ]);
 
         // Clear the cache
@@ -1340,13 +1336,12 @@ class GedcomRecord
     {
         // Create a pending change
         if (!$this->isPendingDeletion()) {
-            Database::prepare(
-                "INSERT INTO `##change` (gedcom_id, xref, old_gedcom, new_gedcom, user_id) VALUES (?, ?, ?, '', ?)"
-            )->execute([
-                $this->tree->id(),
-                $this->xref,
-                $this->gedcom(),
-                Auth::id(),
+            DB::table('change')->insert([
+                'gedcom_id'  => $this->tree->id(),
+                'xref'       => $this->xref,
+                'old_gedcom' => $this->gedcom(),
+                'new_gedcom' => '',
+                'user_id'    => Auth::id(),
             ]);
         }
 
