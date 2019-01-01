@@ -18,7 +18,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Functions;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Gedcom;
@@ -30,6 +29,7 @@ use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Webtrees;
+use Illuminate\Database\Capsule\Manager as DB;
 
 /**
  * Class FunctionsExport - common functions
@@ -114,23 +114,17 @@ class FunctionsExport
             $COPR = $fact->value();
         }
         // Link to actual SUBM/SUBN records, if they exist
-        $subn =
-            Database::prepare("SELECT o_id FROM `##other` WHERE o_type=? AND o_file=?")
-                ->execute([
-                    'SUBN',
-                    $tree->id(),
-                ])
-                ->fetchOne();
+        $subn = DB::table('other')
+            ->where('o_type', '=', 'SUBN')
+            ->where('o_file', '=', $tree->id())
+            ->value('o_id');
         if ($subn) {
             $SUBN = "\n1 SUBN @{$subn}@";
         }
-        $subm =
-            Database::prepare("SELECT o_id FROM `##other` WHERE o_type=? AND o_file=?")
-                ->execute([
-                    'SUBM',
-                    $tree->id(),
-                ])
-                ->fetchOne();
+        $subm = DB::table('other')
+            ->where('o_type', '=', 'SUBM')
+            ->where('o_file', '=', $tree->id())
+            ->value('o_id');
         if ($subm) {
             $SUBM = "\n1 SUBM @{$subm}@";
         }
@@ -197,12 +191,12 @@ class FunctionsExport
         // Generate the OBJE/SOUR/REPO/NOTE records first, as their privacy calcualations involve
         // database queries, and we wish to avoid large gaps between queries due to MySQL connection timeouts.
         $tmp_gedcom = '';
-        $rows       = Database::prepare(
-            "SELECT m_id AS xref, m_gedcom AS gedcom" .
-            " FROM `##media` WHERE m_file = :tree_id ORDER BY m_id"
-        )->execute([
-            'tree_id' => $tree->id(),
-        ])->fetchAll();
+
+        $rows = DB::table('media')
+            ->where('m_file', '=', $tree->id())
+            ->orderBy('m_id')
+            ->select(['m_id AS xref', 'm_gedcom AS gedcom'])
+            ->get();
 
         foreach ($rows as $row) {
             $rec = Media::getInstance($row->xref, $tree, $row->gedcom)->privatizeGedcom($access_level);
@@ -213,12 +207,11 @@ class FunctionsExport
             $tmp_gedcom .= self::reformatRecord($rec);
         }
 
-        $rows = Database::prepare(
-            "SELECT s_id AS xref, s_file AS gedcom_id, s_gedcom AS gedcom" .
-            " FROM `##sources` WHERE s_file = :tree_id ORDER BY s_id"
-        )->execute([
-            'tree_id' => $tree->id(),
-        ])->fetchAll();
+        $rows = DB::table('sources')
+            ->where('s_file', '=', $tree->id())
+            ->orderBy('s_id')
+            ->select(['s_id AS xref', 's_gedcom AS gedcom'])
+            ->get();
 
         foreach ($rows as $row) {
             $rec = Source::getInstance($row->xref, $tree, $row->gedcom)->privatizeGedcom($access_level);
@@ -228,12 +221,12 @@ class FunctionsExport
             $tmp_gedcom .= self::reformatRecord($rec);
         }
 
-        $rows = Database::prepare(
-            "SELECT o_type AS type, o_id AS xref, o_gedcom AS gedcom" .
-            " FROM `##other` WHERE o_file = :tree_id AND o_type NOT IN ('HEAD', 'TRLR') ORDER BY o_id"
-        )->execute([
-            'tree_id' => $tree->id(),
-        ])->fetchAll();
+        $rows = DB::table('other')
+            ->where('o_file', '=', $tree->id())
+            ->whereNotIn('o_type', ['HEAD', 'TRLR'])
+            ->orderBy('o_id')
+            ->select(['o_id AS xref', 'o_gedcom AS gedcom'])
+            ->get();
 
         foreach ($rows as $row) {
             switch ($row->type) {
@@ -255,12 +248,11 @@ class FunctionsExport
             $tmp_gedcom .= self::reformatRecord($rec);
         }
 
-        $rows = Database::prepare(
-            "SELECT i_id AS xref, i_gedcom AS gedcom" .
-            " FROM `##individuals` WHERE i_file = :tree_id ORDER BY i_id"
-        )->execute([
-            'tree_id' => $tree->id(),
-        ])->fetchAll();
+        $rows = DB::table('individuals')
+            ->where('i_file', '=', $tree->id())
+            ->orderBy('i_id')
+            ->select(['i_id AS xref', 'i_gedcom AS gedcom'])
+            ->get();
 
         foreach ($rows as $row) {
             $rec = Individual::getInstance($row->xref, $tree, $row->gedcom)->privatizeGedcom($access_level);
@@ -274,12 +266,11 @@ class FunctionsExport
             }
         }
 
-        $rows = Database::prepare(
-            "SELECT f_id AS xref, f_gedcom AS gedcom" .
-            " FROM `##families` WHERE f_file = :tree_id ORDER BY f_id"
-        )->execute([
-            'tree_id' => $tree->id(),
-        ])->fetchAll();
+        $rows = DB::table('families')
+            ->where('f_file', '=', $tree->id())
+            ->orderBy('f_id')
+            ->select(['f_id AS xref', 'f_gedcom AS gedcom'])
+            ->get();
 
         foreach ($rows as $row) {
             $rec = Family::getInstance($row->xref, $tree, $row->gedcom)->privatizeGedcom($access_level);
