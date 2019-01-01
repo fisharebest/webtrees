@@ -126,10 +126,10 @@ class IndividualController extends AbstractBaseController
         // If this individual is linked to a user account, show the link
         $user_link = '';
         if (Auth::isAdmin()) {
-            $user = User::findByIndividual($individual);
-            if ($user) {
+            $users = User::findByIndividual($individual);
+            foreach ($users as $user) {
                 $user_link = ' —  <a href="' . e(route('admin-users', ['filter' => $user->getEmail()])) . '">' . e($user->getUserName()) . '</a>';
-            };
+            }
         }
 
         return $this->viewResponse('individual-page', [

@@ -195,24 +195,23 @@ class User
     }
 
     /**
-     * Find the user with a specified genealogy record.
+     * Find the user(s) with a specified genealogy record.
      *
      * @param Individual $individual
      *
-     * @return User|null
+     * @return User[]
      */
-    public static function findByIndividual(Individual $individual)
+    public static function findByIndividual(Individual $individual): array
     {
-        $user_id = (int) Database::prepare(
-            "SELECT user_id" .
-            " FROM `##user_gedcom_setting`" .
-            " WHERE gedcom_id = :tree_id AND setting_name = 'gedcomid' AND setting_value = :xref"
-        )->execute([
-            'tree_id' => $individual->tree()->id(),
-            'xref'    => $individual->xref(),
-        ])->fetchOne();
+        $user_ids = DB::table('user_gedcom_setting')
+            ->where('gedcom_id', '=', $individual->tree()->id())
+            ->where('setting_value', '=', $individual->xref())
+            ->where('setting_name', '=', 'gedcomid')
+            ->pluck('user_id');
 
-        return self::find($user_id);
+        return $user_ids->map(function (string $user_id): User {
+            return self::find((int) $user_id);
+        })->all();
     }
 
     /**
