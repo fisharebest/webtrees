@@ -162,11 +162,12 @@ class GedcomRecord
             if (!isset(self::$pending_record_cache[$tree_id])) {
                 // Fetch all pending records in one database query
                 self::$pending_record_cache[$tree_id] = [];
-                $rows                                 = Database::prepare(
-                    "SELECT xref, new_gedcom FROM `##change` WHERE status = 'pending' AND gedcom_id = :tree_id ORDER BY change_id"
-                )->execute([
-                    'tree_id' => $tree_id,
-                ])->fetchAll();
+                $rows = DB::table('change')
+                    ->where('gedcom_id', '=' , $tree_id)
+                    ->where('status', '=' , 'pending')
+                    ->orderBy('change_id')
+                    ->select(['xref', 'new_gedcom'])
+                    ->get();
 
                 foreach ($rows as $row) {
                     self::$pending_record_cache[$tree_id][$row->xref] = $row->new_gedcom;
@@ -245,38 +246,35 @@ class GedcomRecord
     {
         // We don't know what type of object this is. Try each one in turn.
         $data = Individual::fetchGedcomRecord($xref, $tree_id);
-        if ($data) {
+        if ($data !== null) {
             return $data;
         }
         $data = Family::fetchGedcomRecord($xref, $tree_id);
-        if ($data) {
+        if ($data !== null) {
             return $data;
         }
         $data = Source::fetchGedcomRecord($xref, $tree_id);
-        if ($data) {
+        if ($data !== null) {
             return $data;
         }
         $data = Repository::fetchGedcomRecord($xref, $tree_id);
-        if ($data) {
+        if ($data !== null) {
             return $data;
         }
         $data = Media::fetchGedcomRecord($xref, $tree_id);
-        if ($data) {
+        if ($data !== null) {
             return $data;
         }
         $data = Note::fetchGedcomRecord($xref, $tree_id);
-        if ($data) {
+        if ($data !== null) {
             return $data;
         }
 
         // Some other type of record...
-
-        return Database::prepare(
-            "SELECT o_gedcom FROM `##other` WHERE o_id = :xref AND o_file = :tree_id"
-        )->execute([
-            'xref'    => $xref,
-            'tree_id' => $tree_id,
-        ])->fetchOne();
+        return DB::table('o_gedcom')
+            ->where('o_file', '=', $tree_id)
+            ->where('o_id', '=', $xref)
+            ->value('o_gedcom');
     }
 
     /**
