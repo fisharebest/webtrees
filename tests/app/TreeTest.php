@@ -290,4 +290,25 @@ class TreeTest extends \Fisharebest\Webtrees\TestCase
         $tree->delete();
         $this->assertNull(Tree::findByName('demo.ged'));
     }
+
+    /**
+     * @covers \Fisharebest\Webtrees\Tree::hasPendingEdit
+     *
+     * @return void
+     */
+    public function testHasPendingEdits(): void
+    {
+        $tree = $this->importTree('demo.ged');
+        $user = User::create('admin', 'Administrator', 'admin@example.com', 'secret');
+        $user->setPreference('canadmin', '1');
+        Auth::login($user);
+
+        $user->setPreference('auto_accept', '1');
+        $tree->createIndividual("0 @@ INDI\n1 SEX F\n1 NAME Foo /Bar/");
+        $this->assertFalse($tree->hasPendingEdit());
+
+        $user->setPreference('auto_accept', '0');
+        $tree->createIndividual("0 @@ INDI\n1 SEX F\n1 NAME Foo /Bar/");
+        $this->assertTrue($tree->hasPendingEdit());
+    }
 }

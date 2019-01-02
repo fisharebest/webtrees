@@ -528,11 +528,10 @@ class Tree
      */
     public function hasPendingEdit(): bool
     {
-        return (bool) Database::prepare(
-            "SELECT 1 FROM `##change` WHERE status = 'pending' AND gedcom_id = :tree_id"
-        )->execute([
-            'tree_id' => $this->id,
-        ])->fetchOne();
+        return DB::table('change')
+            ->where('gedcom_id', '=', $this->id)
+            ->where('status', '=', 'pending')
+            ->exists();
     }
 
     /**
