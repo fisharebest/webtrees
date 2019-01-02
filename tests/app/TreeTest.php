@@ -48,7 +48,7 @@ class TreeTest extends \Fisharebest\Webtrees\TestCase
      *
      * @return void
      */
-    public function testPreferences(): void
+    public function testTreePreferences(): void
     {
         $tree = Tree::create('tree-name', 'Tree title');
 
@@ -57,6 +57,25 @@ class TreeTest extends \Fisharebest\Webtrees\TestCase
 
         $tree->setPreference('foo', 'bar');
         $pref = $tree->getPreference('foo', 'default');
+        $this->assertSame('bar', $pref);
+    }
+
+    /**
+     * @covers \Fisharebest\Webtrees\Tree::getUserPreference
+     * @covers \Fisharebest\Webtrees\Tree::seUsertPreference
+     *
+     * @return void
+     */
+    public function testUserTreePreferences(): void
+    {
+        $tree = Tree::create('tree-name', 'Tree title');
+        $user = User::create('user', 'User', 'user@example.com', 'secret');
+
+        $pref = $tree->getUserPreference($user, 'foo', 'default');
+        $this->assertSame('default', $pref);
+
+        $tree->setUserPreference($user, 'foo', 'bar');
+        $pref = $tree->getUserPreference($user, 'foo', 'default');
         $this->assertSame('bar', $pref);
     }
 }
