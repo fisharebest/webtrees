@@ -30,6 +30,9 @@ use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Tree;
+use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Query\Builder;
+use Illuminate\Database\Query\JoinClause;
 
 /**
  * Calculate anniversaries, etc.
@@ -78,40 +81,57 @@ class CalendarService
     /**
      * Get a list of events which occured during a given date range.
      *
-     * @param int    $jd1   the start range of julian day
-     * @param int    $jd2   the end range of julian day
-     * @param string $facts restrict the search to just these facts or leave blank for all
-     * @param Tree   $tree  the tree to search
+     * @param int      $jd1   the start range of julian day
+     * @param int      $jd2   the end range of julian day
+     * @param string[] $facts restrict the search to just these facts or leave blank for all
+     * @param Tree     $tree  the tree to search
      *
      * @return Fact[]
      */
-    public function getCalendarEvents(int $jd1, int $jd2, string $facts, Tree $tree): array
+    public function getCalendarEvents(int $jd1, int $jd2, array $facts, Tree $tree): array
     {
         // If no facts specified, get all except these
-        $skipfacts = 'CHAN,BAPL,SLGC,SLGS,ENDL,CENS,RESI,NOTE,ADDR,OBJE,SOUR';
+        $skipfacts = ['CHAN', 'BAPL', 'SLGC', 'SLGS', 'ENDL', 'CENS', 'RESI', 'NOTE', 'ADDR', 'OBJE', 'SOUR'];
 
-        $found_facts = [];
+        $i_query = DB::table('individuals')->join('dates', function(JoinClause $join): void {
+            $join->on('d_gid', '=', 'i_id');
+            $join->on('d_file', '=', 'i_file');
+        })
+        ->select(['i_id AS xref', 'i_gedcom AS gedcom', 'd_type', 'd_day', 'd_month', 'd_year', 'd_fact', 'd_type']);
 
-        // Events that start or end during the period
-        $where = "WHERE (d_julianday1>={$jd1} AND d_julianday1<={$jd2} OR d_julianday2>={$jd1} AND d_julianday2<={$jd2})";
-
-        // Restrict to certain types of fact
-        if (empty($facts)) {
-            $excl_facts = "'" . preg_replace('/\W+/', "','", $skipfacts) . "'";
-            $where      .= " AND d_fact NOT IN ({$excl_facts})";
-        } else {
-            $incl_facts = "'" . preg_replace('/\W+/', "','", $facts) . "'";
-            $where      .= " AND d_fact IN ({$incl_facts})";
-        }
-        // Only get events from the current gedcom
-        $where .= " AND d_file=" . $tree->id();
+        $f_query = DB::table('families')->join('dates', function(JoinClause $join): void {
+            $join->on('d_gid', '=', 'f_id');
+            $join->on('d_file', '=', 'f_file');
+        })
+        ->select(['f_id AS xref', 'f_gedcom AS gedcom', 'd_type', 'd_day', 'd_month', 'd_year', 'd_fact', 'd_type']);
 
         // Now fetch these events
-        $ind_sql = "SELECT d_gid AS xref, i_gedcom AS gedcom, d_type, d_day, d_month, d_year, d_fact, d_type FROM `##dates`, `##individuals` {$where} AND d_gid=i_id AND d_file=i_file ORDER BY d_julianday1";
-        $fam_sql = "SELECT d_gid AS xref, f_gedcom AS gedcom, d_type, d_day, d_month, d_year, d_fact, d_type FROM `##dates`, `##families`    {$where} AND d_gid=f_id AND d_file=f_file ORDER BY d_julianday1";
+        $found_facts = [];
 
-        foreach (['INDI' => $ind_sql, 'FAM'  => $fam_sql] as $type => $sql) {
-            $rows = Database::prepare($sql)->fetchAll();
+        foreach (['INDI' => $i_query, 'FAM' => $f_query] as $type => $query) {
+            // Events that start or end during the period
+            $query
+                ->where('d_file', '=', $tree->id())
+                ->where(function(Builder $query) use ($jd1, $jd2) {
+                $query->where(function(Builder $query) use ($jd1, $jd2) {
+                    $query
+                        ->where('d_julianday1', '>=', $jd1)
+                        ->where('d_julianday1', '<=', $jd2);
+                })->orWhere(function(Builder $query) use ($jd1, $jd2) {
+                    $query
+                        ->where('d_julianday2', '>=', $jd1)
+                        ->where('d_julianday2', '<=', $jd2);
+                });
+            });
+
+            // Restrict to certain types of fact
+            if (empty($facts)) {
+                $query->whereNotIn('d_fact', $skipfacts);
+            } else {
+                $query->whereIn('d_fact', $facts);
+            }
+
+            $rows = $query->get();
 
             foreach ($rows as $row) {
                 if ($type === 'INDI') {
