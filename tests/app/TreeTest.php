@@ -22,13 +22,41 @@ namespace Fisharebest\Webtrees;
  */
 class TreeTest extends \Fisharebest\Webtrees\TestCase
 {
+    protected static $uses_database = true;
+
     /**
-     * Test that the class exists
+     * @covers \Fisharebest\Webtrees\Tree::__construct
+     * @covers \Fisharebest\Webtrees\Tree::create
+     * @covers \Fisharebest\Webtrees\Tree::id
+     * @covers \Fisharebest\Webtrees\Tree::name
+     * @covers \Fisharebest\Webtrees\Tree::title
      *
      * @return void
      */
-    public function testClassExists()
+    public function testConstructor(): void
     {
-        $this->assertTrue(class_exists('\Fisharebest\Webtrees\Tree'));
+        $tree = Tree::create('tree-name', 'Tree title');
+
+        $this->assertSame(1, $tree->id());
+        $this->assertSame('tree-name', $tree->name());
+        $this->assertSame('Tree title', $tree->title());
+    }
+
+    /**
+     * @covers \Fisharebest\Webtrees\Tree::getPreference
+     * @covers \Fisharebest\Webtrees\Tree::setPreference
+     *
+     * @return void
+     */
+    public function testPreferences(): void
+    {
+        $tree = Tree::create('tree-name', 'Tree title');
+
+        $pref = $tree->getPreference('foo', 'default');
+        $this->assertSame('default', $pref);
+
+        $tree->setPreference('foo', 'bar');
+        $pref = $tree->getPreference('foo', 'default');
+        $this->assertSame('bar', $pref);
     }
 }

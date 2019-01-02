@@ -31,6 +31,7 @@ use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Soundex;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
+use Illuminate\Database\Capsule\Manager as DB;
 use PDOException;
 
 /**
@@ -632,13 +633,12 @@ class FunctionsImport
         // using an application which does not support (and deletes) media objects, then add them
         // back in.
         if ($tree->getPreference('keep_media') && $xref) {
-            $old_linked_media =
-                Database::prepare("SELECT l_to FROM `##link` WHERE l_from=? AND l_file=? AND l_type='OBJE'")
-                    ->execute([
-                        $xref,
-                        $tree_id,
-                    ])
-                    ->fetchOneColumn();
+            $old_linked_media = DB::table('link')
+                ->where('l_from', '=', $xref)
+                ->where('l_file', '=', $tree_id)
+                ->where('l_type', '=', 'OBJE')
+                ->pluck('l_to');
+
             foreach ($old_linked_media as $media_id) {
                 $gedrec .= "\n1 OBJE @" . $media_id . '@';
             }
@@ -655,15 +655,15 @@ class FunctionsImport
                 } else {
                     $rin = $xref;
                 }
-                Database::prepare(
-                    "INSERT INTO `##individuals` (i_id, i_file, i_rin, i_sex, i_gedcom) VALUES (?, ?, ?, ?, ?)"
-                )->execute([
-                    $xref,
-                    $tree_id,
-                    $rin,
-                    $record->getSex(),
-                    $gedrec,
+
+                DB::table('individuals')->insert([
+                    'i_id'     => $xref,
+                    'i_file'   => $tree_id,
+                    'i_rin'    => $rin,
+                    'i_sex'    => $record->getSex(),
+                    'i_gedcom' => $gedrec,
                 ]);
+
                 // Update the cross-reference/index tables.
                 self::updatePlaces($xref, $tree, $gedrec);
                 self::updateDates($xref, $tree_id, $gedrec);
@@ -688,16 +688,16 @@ class FunctionsImport
                 if (preg_match('/\n1 NCHI (\d+)/', $gedrec, $match)) {
                     $nchi = max($nchi, $match[1]);
                 }
-                Database::prepare(
-                    "INSERT INTO `##families` (f_id, f_file, f_husb, f_wife, f_gedcom, f_numchil) VALUES (?, ?, ?, ?, ?, ?)"
-                )->execute([
-                    $xref,
-                    $tree_id,
-                    $husb,
-                    $wife,
-                    $gedrec,
-                    $nchi,
+
+                DB::table('families')->insert([
+                    'f_id'      => $xref,
+                    'f_file'    => $tree_id,
+                    'f_husb'    => $husb,
+                    'f_wife'    => $wife,
+                    'f_gedcom'  => $gedrec,
+                    'f_numchil' => $nchi,
                 ]);
+
                 // Update the cross-reference/index tables.
                 self::updatePlaces($xref, $tree, $gedrec);
                 self::updateDates($xref, $tree_id, $gedrec);
@@ -715,14 +715,14 @@ class FunctionsImport
                 } else {
                     $name = $xref;
                 }
-                Database::prepare(
-                    "INSERT INTO `##sources` (s_id, s_file, s_name, s_gedcom) VALUES (?, ?, LEFT(?, 255), ?)"
-                )->execute([
-                    $xref,
-                    $tree_id,
-                    $name,
-                    $gedrec,
+
+                DB::table('sources')->insert([
+                    's_id'     => $xref,
+                    's_file'   => $tree_id,
+                    's_name'   => $name,
+                    's_gedcom' => $gedrec,
                 ]);
+
                 // Update the cross-reference/index tables.
                 self::updateLinks($xref, $tree_id, $gedrec);
                 self::updateNames($xref, $tree_id, $record);
@@ -732,50 +732,49 @@ class FunctionsImport
                 $gedrec = self::convertInlineMedia($tree, $gedrec);
 
                 $record = new Repository($xref, $gedrec, null, $tree);
-                Database::prepare(
-                    "INSERT INTO `##other` (o_id, o_file, o_type, o_gedcom) VALUES (?, ?, 'REPO', ?)"
-                )->execute([
-                    $xref,
-                    $tree_id,
-                    $gedrec,
+
+                DB::table('other')->insert([
+                    'o_id'     => $xref,
+                    'o_file'   => $tree_id,
+                    'o_type'   => 'REPO',
+                    'o_gedcom' => $gedrec,
                 ]);
+
                 // Update the cross-reference/index tables.
                 self::updateLinks($xref, $tree_id, $gedrec);
                 self::updateNames($xref, $tree_id, $record);
                 break;
             case 'NOTE':
                 $record = new Note($xref, $gedrec, null, $tree);
-                Database::prepare(
-                    "INSERT INTO `##other` (o_id, o_file, o_type, o_gedcom) VALUES (?, ?, 'NOTE', ?)"
-                )->execute([
-                    $xref,
-                    $tree_id,
-                    $gedrec,
+
+                DB::table('other')->insert([
+                    'o_id'     => $xref,
+                    'o_file'   => $tree_id,
+                    'o_type'   => 'NOTE',
+                    'o_gedcom' => $gedrec,
                 ]);
+
                 // Update the cross-reference/index tables.
                 self::updateLinks($xref, $tree_id, $gedrec);
                 self::updateNames($xref, $tree_id, $record);
                 break;
             case 'OBJE':
                 $record = new Media($xref, $gedrec, null, $tree);
-                Database::prepare(
-                    "INSERT INTO `##media` (m_id, m_file, m_gedcom) VALUES (:m_id, :m_file, :m_gedcom)"
-                )->execute([
+
+                DB::table('media')->insert([
                     'm_id'     => $xref,
                     'm_file'   => $tree_id,
                     'm_gedcom' => $gedrec,
                 ]);
 
                 foreach ($record->mediaFiles() as $media_file) {
-                    Database::prepare(
-                        "INSERT INTO `##media_file` (m_id, m_file, multimedia_file_refn, multimedia_format, source_media_type, descriptive_title) VALUES (:m_id, :m_file, LEFT(:multimedia_file_refn, 512), LEFT(:multimedia_format, 4), LEFT(:source_media_type, 15), LEFT(:descriptive_title, 248))"
-                    )->execute([
+                    DB::table('media_file')->insert([
                         'm_id'                 => $xref,
                         'm_file'               => $tree_id,
-                        'multimedia_file_refn' => $media_file->filename(),
-                        'multimedia_format'    => $media_file->format(),
-                        'source_media_type'    => $media_file->type(),
-                        'descriptive_title'    => $media_file->title(),
+                        'multimedia_file_refn' => mb_substr($media_file->filename(), 0, 512),
+                        'multimedia_format'    => mb_substr($media_file->format(), 0, 4),
+                        'source_media_type'    => mb_substr($media_file->type(), 15),
+                        'descriptive_title'    => mb_substr($media_file->title(), 248),
                     ]);
                 }
 
@@ -788,14 +787,14 @@ class FunctionsImport
                 if ($type === 'HEAD' && strpos($gedrec, "\n1 DATE ") === false) {
                     $gedrec .= "\n1 DATE " . date('j M Y');
                 }
-                Database::prepare(
-                    "INSERT INTO `##other` (o_id, o_file, o_type, o_gedcom) VALUES (?, ?, LEFT(?, 15), ?)"
-                )->execute([
-                    $xref,
-                    $tree_id,
-                    $type,
-                    $gedrec,
+
+                DB::table('other')->insert([
+                    'o_id'     => $xref,
+                    'o_file'   => $tree_id,
+                    'o_type'   => mb_substr($type, 0, 15),
+                    'o_gedcom' => $gedrec,
                 ]);
+
                 // Update the cross-reference/index tables.
                 self::updateLinks($xref, $tree_id, $gedrec);
                 break;
@@ -822,15 +821,16 @@ class FunctionsImport
             $place_id = self::importPlace($place, $tree);
 
             // Link the place to the record
-            // Insert IGNORE because collation differences (Quebec and Québec) can cause
-            // the same place name to be found twice.
-            Database::prepare(
-                "INSERT IGNORE INTO `##placelinks` (pl_p_id, pl_gid, pl_file) VALUES (:place_id, :xref, :tree_id)"
-            )->execute([
-                'place_id' => $place_id,
-                'xref'     => $xref,
-                'tree_id'  => $tree->id(),
-            ]);
+            try {
+                DB::table('placelinks')->insert([
+                    'pl_p_id' => $place_id,
+                    'pl_gid'  => $xref,
+                    'pl_file' => $tree->id(),
+                ]);
+            } catch (PDOException $ex) {
+                // Collation differences (Quebec and Québec) can cause the same place name to be found twice.
+                // @TODO - what if there is some other DB error?
+            }
         }
     }
 
@@ -867,27 +867,22 @@ class FunctionsImport
         }
 
         // Does the place already exist?
-        $place_id = (int) Database::prepare(
-            "SELECT p_id FROM `##places`" .
-            " WHERE p_file =:tree_id AND p_parent_id = :parent_id AND p_place = LEFT(:place, 150)"
-        )->execute([
-            'tree_id'   => $tree->id(),
-            'parent_id' => $parent_id,
-            'place'     => $place,
-        ])->fetchOne();
+        $place_id = (int) DB::table('places')
+            ->where('p_file', '=', $tree->id())
+            ->where('p_parent_id', '=', $parent_id)
+            ->where('p_place', '=', mb_substr($place, 0, 150))
+            ->value('p_id');
 
         if ($place_id === 0) {
-            Database::prepare(
-                "INSERT INTO `##places` (p_place, p_parent_id, p_file, p_std_soundex, p_dm_soundex)" .
-                " VALUES (LEFT(:place, 150), :parent_id, :tree_id, :std_soundex, :dm_soundex)"
-            )->execute([
-                'place'       => $place,
-                'parent_id'   => $parent_id,
-                'tree_id'     => $tree->id(),
-                'std_soundex' => Soundex::russell($place),
-                'dm_soundex'  => Soundex::daitchMokotoff($place),
+            DB::table('places')->insert([
+                'p_place'       => mb_substr($place, 0, 150),
+                'p_parent_id'   => $parent_id,
+                'p_file'        => $tree->id(),
+                'p_std_soundex' => Soundex::russell($place),
+                'p_dm_soundex'  => Soundex::daitchMokotoff($place),
             ]);
-            $place_id = Database::lastInsertId();
+
+            $place_id = (int) DB::connection()->getPdo()->lastInsertId();
         }
 
         $cache[$cache_key] = $place_id;
@@ -913,34 +908,31 @@ class FunctionsImport
                     $fact = $tmatch[1];
                 }
                 $date = new Date($match[2]);
-                Database::prepare(
-                    "INSERT INTO `##dates` (d_day,d_month,d_mon,d_year,d_julianday1,d_julianday2,d_fact,d_gid,d_file,d_type) VALUES (?,?,?,?,?,?,?,?,?,?)"
-                )->execute([
-                    $date->minimumDate()->day,
-                    $date->minimumDate()->format('%O'),
-                    $date->minimumDate()->month,
-                    $date->minimumDate()->year,
-                    $date->minimumDate()->minimumJulianDay(),
-                    $date->minimumDate()->maximumJulianDay(),
-                    $fact,
-                    $xref,
-                    $ged_id,
-                    $date->minimumDate()->format('%@'),
+                DB::table('dates')->insert([
+                    'd_day'        => $date->minimumDate()->day,
+                    'd_month'      => $date->minimumDate()->format('%O'),
+                    'd_mon'        => $date->minimumDate()->month,
+                    'd_year'       => $date->minimumDate()->year,
+                    'd_julianday1' => $date->minimumDate()->minimumJulianDay(),
+                    'd_julianday2' => $date->minimumDate()->maximumJulianDay(),
+                    'd_fact'       => $fact,
+                    'd_gid'        => $xref,
+                    'd_file'       => $ged_id,
+                    'd_type'       => $date->minimumDate()->format('%@'),
                 ]);
+
                 if ($date->minimumDate() !== $date->maximumDate()) {
-                    Database::prepare(
-                        "INSERT INTO `##dates` (d_day,d_month,d_mon,d_year,d_julianday1,d_julianday2,d_fact,d_gid,d_file,d_type) VALUES (?,?,?,?,?,?,?,?,?,?)"
-                    )->execute([
-                        $date->maximumDate()->day,
-                        $date->maximumDate()->format('%O'),
-                        $date->maximumDate()->month,
-                        $date->maximumDate()->year,
-                        $date->maximumDate()->minimumJulianDay(),
-                        $date->maximumDate()->maximumJulianDay(),
-                        $fact,
-                        $xref,
-                        $ged_id,
-                        $date->maximumDate()->format('%@'),
+                    DB::table('dates')->insert([
+                        'd_day'        => $date->maximumDate()->day,
+                        'd_month'      => $date->maximumDate()->format('%O'),
+                        'd_mon'        => $date->maximumDate()->month,
+                        'd_year'       => $date->maximumDate()->year,
+                        'd_julianday1' => $date->maximumDate()->minimumJulianDay(),
+                        'd_julianday2' => $date->maximumDate()->maximumJulianDay(),
+                        'd_fact'       => $fact,
+                        'd_gid'        => $xref,
+                        'd_file'       => $ged_id,
+                        'd_type'       => $date->minimumDate()->format('%@'),
                     ]);
                 }
             }
@@ -964,18 +956,15 @@ class FunctionsImport
                 // Include each link once only.
                 if (!in_array($match[1] . $match[2], $data)) {
                     $data[] = $match[1] . $match[2];
-                    // Ignore any errors, which may be caused by "duplicates" that differ on case/collation, e.g. "S1" and "s1"
                     try {
-                        Database::prepare(
-                            "INSERT INTO `##link` (l_from, l_to, l_type, l_file) VALUES (?, ?, ?, ?)"
-                        )->execute([
-                            $xref,
-                            $match[2],
-                            $match[1],
-                            $ged_id,
+                        DB::table('link')->insert([
+                            'l_from' => $xref,
+                            'l_to'   => $match[2],
+                            'l_type' => $match[1],
+                            'l_file' => $ged_id,
                         ]);
                     } catch (PDOException $ex) {
-                        // We could display a warning here....
+                        // Ignore any errors, which may be caused by "duplicates" that differ on case/collation, e.g. "S1" and "s1"
                     }
                 }
             }
@@ -1009,33 +998,29 @@ class FunctionsImport
                     $soundex_surn_std = Soundex::russell($name['surname']);
                     $soundex_surn_dm  = Soundex::daitchMokotoff($name['surname']);
                 }
-                Database::prepare(
-                    "INSERT INTO `##name` (n_file,n_id,n_num,n_type,n_sort,n_full,n_surname,n_surn,n_givn,n_soundex_givn_std,n_soundex_surn_std,n_soundex_givn_dm,n_soundex_surn_dm) VALUES (?, ?, ?, ?, LEFT(?, 255), LEFT(?, 255), LEFT(?, 255), LEFT(?, 255), ?, ?, ?, ?, ?)"
-                )->execute([
-                    $ged_id,
-                    $xref,
-                    $n,
-                    $name['type'],
-                    $name['sort'],
-                    $name['fullNN'],
-                    $name['surname'],
-                    $name['surn'],
-                    $name['givn'],
-                    $soundex_givn_std,
-                    $soundex_surn_std,
-                    $soundex_givn_dm,
-                    $soundex_surn_dm,
+                DB::table('name')->insert([
+                    'n_file'             => $ged_id,
+                    'n_id'               => $xref,
+                    'n_num'              => $n,
+                    'n_type'             => $name['type'],
+                    'n_sort'             => mb_substr($name['sort'], 0, 255),
+                    'n_full'             => mb_substr($name['fullNN'], 0, 255),
+                    'n_surname'          => mb_substr($name['surname'], 0, 255),
+                    'n_surn'             => mb_substr($name['surn'], 0, 255),
+                    'n_givn'             => mb_substr($name['givn'], 0, 255),
+                    'n_soundex_givn_std' => $soundex_givn_std,
+                    'n_soundex_surn_std' => $soundex_surn_std,
+                    'n_soundex_givn_dm'  => $soundex_givn_dm,
+                    'n_soundex_surn_dm'  => $soundex_surn_dm,
                 ]);
             } else {
-                Database::prepare(
-                    "INSERT INTO `##name` (n_file,n_id,n_num,n_type,n_sort,n_full) VALUES (?, ?, ?, ?, LEFT(?, 255), LEFT(?, 255))"
-                )->execute([
-                    $ged_id,
-                    $xref,
-                    $n,
-                    $name['type'],
-                    $name['sort'],
-                    $name['fullNN'],
+                DB::table('name')->insert([
+                    'n_file'             => $ged_id,
+                    'n_id'               => $xref,
+                    'n_num'              => $n,
+                    'n_type'             => $name['type'],
+                    'n_sort'             => mb_substr($name['sort'], 0, 255),
+                    'n_full'             => mb_substr($name['fullNN'], 0, 255),
                 ]);
             }
         }
@@ -1088,14 +1073,11 @@ class FunctionsImport
         }
 
         // Have we already created a media object with the same title/filename?
-        $xref = Database::prepare(
-            "SELECT m_id FROM `##media_file`" .
-            " WHERE multimedia_file_refn = :filename AND descriptive_title = :title AND m_file = :tree_id"
-        )->execute([
-            'filename' => $file,
-            'title'    => $titl,
-            'tree_id'  => $tree->id(),
-        ])->fetchOne();
+        $xref = DB::table('media_file')
+            ->where('m_file', '=', $tree->id())
+            ->where('descriptive_title', '=', $titl)
+            ->where('multimedia_file_refn', '=', $file)
+            ->value('m_id');
 
         if (!$xref) {
             $xref = $tree->getNewXref();
@@ -1118,24 +1100,20 @@ class FunctionsImport
             // Create new record
             $record = new Media($xref, $gedrec, null, $tree);
 
-            Database::prepare(
-                "INSERT INTO `##media` (m_id, m_file, m_gedcom) VALUES (:m_id, :m_file, :m_gedcom)"
-            )->execute([
+            DB::table('media')->insert([
                 'm_id'     => $xref,
                 'm_file'   => $tree->id(),
                 'm_gedcom' => $gedrec,
             ]);
 
             foreach ($record->mediaFiles() as $media_file) {
-                Database::prepare(
-                    "INSERT INTO `##media_file` (m_id, m_file, multimedia_file_refn, multimedia_format, source_media_type, descriptive_title) VALUES (:m_id, :m_file, LEFT(:multimedia_file_refn, 512), LEFT(:multimedia_format, 4), LEFT(:source_media_type, 15), LEFT(:descriptive_title, 248))"
-                )->execute([
+                DB::table('media_file')->insert([
                     'm_id'                 => $xref,
                     'm_file'               => $tree->id(),
-                    'multimedia_file_refn' => $media_file->filename(),
-                    'multimedia_format'    => $media_file->format(),
-                    'source_media_type'    => $media_file->type(),
-                    'descriptive_title'    => $media_file->title(),
+                    'multimedia_file_refn' => mb_substr($media_file->filename(), 0, 512),
+                    'multimedia_format'    => mb_substr($media_file->format(), 0, 4),
+                    'source_media_type'    => mb_substr($media_file->type(), 15),
+                    'descriptive_title'    => mb_substr($media_file->title(), 248),
                 ]);
             }
         }
@@ -1153,16 +1131,14 @@ class FunctionsImport
      */
     public static function acceptAllChanges($xref, Tree $tree)
     {
-        $changes = Database::prepare(
-            "SELECT change_id, gedcom_name, old_gedcom, new_gedcom" .
-            " FROM `##change` c" .
-            " JOIN `##gedcom` g USING (gedcom_id)" .
-            " WHERE c.status='pending' AND xref = :xref AND gedcom_id = :tree_id" .
-            " ORDER BY change_id"
-        )->execute([
-            'xref'    => $xref,
-            'tree_id' => $tree->id(),
-        ])->fetchAll();
+        $changes = DB::table('change')
+            ->join('gedcom', 'change.gedcom_id', '=', 'gedcom.gedcom_id')
+            ->where('status', '=', 'pending')
+            ->where('xref', '=', $xref)
+            ->where('gedcom.gedcom_id', '=', $tree->id())
+            ->orderBy('change_id')
+            ->select(['change_id', 'gedcom_name', 'old_gedcom', 'new_gedcom']);
+
         foreach ($changes as $change) {
             if (empty($change->new_gedcom)) {
                 // delete
@@ -1171,12 +1147,13 @@ class FunctionsImport
                 // add/update
                 self::updateRecord($change->new_gedcom, $tree, false);
             }
-            Database::prepare(
-                "UPDATE `##change` SET status='accepted' WHERE status='pending' AND xref=? AND gedcom_id=?"
-            )->execute([
-                $xref,
-                $tree->id(),
-            ]);
+
+            DB::table('change')
+                ->where('gedcom_id', '=', $tree->id())
+                ->where('xref', '=', $xref)
+                ->where('status', 'pending')
+                ->update(['status' => 'accepted']);
+
             Log::addEditLog("Accepted change {$change->change_id} for {$xref} / {$change->gedcom_name} into database", $tree);
         }
     }
@@ -1190,14 +1167,11 @@ class FunctionsImport
      */
     public static function rejectAllChanges(GedcomRecord $record)
     {
-        Database::prepare(
-            "UPDATE `##change`" .
-            " SET status = 'rejected'" .
-            " WHERE status = 'pending' AND xref = :xref AND gedcom_id = :tree_id"
-        )->execute([
-            'xref'    => $record->xref(),
-            'tree_id' => $record->tree()->id(),
-        ]);
+        DB::table('change')
+            ->where('gedcom_id', '=', $record->tree()->id())
+            ->where('xref', '=', $record->xref())
+            ->where('status', '=', 'pending')
+            ->update(['status' => 'rejected']);
     }
 
     /**
@@ -1223,113 +1197,88 @@ class FunctionsImport
             return;
         }
 
-        // TODO deleting unlinked places can be done more efficiently in a single query
-        $placeids =
-            Database::prepare(
-                "SELECT pl_p_id FROM `##placelinks` WHERE pl_gid=? AND pl_file=?"
-            )->execute([
-                $gid,
-                $tree->id(),
-            ])->fetchOneColumn();
+        // Place links
+        $placeids = DB::table('placelinks')
+            ->where('pl_gid', '=', $gid)
+            ->where('pl_file', '=', $tree->id())
+            ->pluck('pl_p_id');
 
-        Database::prepare(
-            "DELETE FROM `##placelinks` WHERE pl_gid = ? AND pl_file = ?"
-        )->execute([
-            $gid,
-            $tree->id(),
-        ]);
+        DB::table('placelinks')
+            ->where('pl_gid', '=', $gid)
+            ->where('pl_file', '=', $tree->id())
+            ->delete();
 
-        Database::prepare(
-            "DELETE FROM `##dates` WHERE d_gid =? AND d_file = ?"
-        )->execute([
-            $gid,
-            $tree->id(),
-        ]);
+        DB::table('dates')
+            ->where('d_gid', '=', $gid)
+            ->where('d_file', '=', $tree->id())
+            ->delete();
 
         //-- delete any unlinked places
         foreach ($placeids as $p_id) {
-            $num = (int) Database::prepare(
-                "SELECT count(pl_p_id) FROM `##placelinks` WHERE pl_p_id=? AND pl_file=?"
-            )->execute([
-                $p_id,
-                $tree->id(),
-            ])->fetchOne();
+            $num = DB::table('placelinks')
+                ->where('pl_p_id', '=', $p_id)
+                ->where('pl_file', '=', $tree->id())
+                ->count();
+
 
             if ($num === 0) {
-                Database::prepare(
-                    "DELETE FROM `##places` WHERE p_id=? AND p_file=?"
-                )->execute([
-                    $p_id,
-                    $tree->id(),
-                ]);
+                DB::table('places')
+                    ->where('p_id', '=', $p_id)
+                    ->where('p_file', '=', $tree->id())
+                    ->delete();
             }
         }
 
-        Database::prepare(
-            "DELETE FROM `##name` WHERE n_id=? AND n_file=?"
-        )->execute([
-            $gid,
-            $tree->id(),
-        ]);
+        DB::table('name')
+            ->where('n_id', '=', $gid)
+            ->where('n_file', '=', $tree->id())
+            ->delete();
 
-        Database::prepare(
-            "DELETE FROM `##link` WHERE l_from=? AND l_file=?"
-        )->execute([
-            $gid,
-            $tree->id(),
-        ]);
+        DB::table('link')
+            ->where('l_from', '=', $gid)
+            ->where('l_file', '=', $tree->id())
+            ->delete();
 
         switch ($type) {
             case 'INDI':
-                Database::prepare(
-                    "DELETE FROM `##individuals` WHERE i_id=? AND i_file=?"
-                )->execute([
-                    $gid,
-                    $tree->id(),
-                ]);
+                DB::table('individuals')
+                    ->where('i_id', '=', $gid)
+                    ->where('i_file', '=', $tree->id())
+                    ->delete();
                 break;
 
             case 'FAM':
-                Database::prepare(
-                    "DELETE FROM `##families` WHERE f_id=? AND f_file=?"
-                )->execute([
-                    $gid,
-                    $tree->id(),
-                ]);
+                DB::table('families')
+                    ->where('f_id', '=', $gid)
+                    ->where('f_file', '=', $tree->id())
+                    ->delete();
                 break;
 
             case 'SOUR':
-                Database::prepare(
-                    "DELETE FROM `##sources` WHERE s_id=? AND s_file=?"
-                )->execute([
-                    $gid,
-                    $tree->id(),
-                ]);
+                DB::table('sources')
+                    ->where('s_id', '=', $gid)
+                    ->where('s_file', '=', $tree->id())
+                    ->delete();
                 break;
 
             case 'OBJE':
-                Database::prepare(
-                    "DELETE FROM `##media` WHERE m_id=? AND m_file=?"
-                )->execute([
-                    $gid,
-                    $tree->id(),
-                ]);
 
-                Database::prepare(
-                    "DELETE FROM `##media_file` WHERE m_id=? AND m_file=?"
-                )->execute([
-                    $gid,
-                    $tree->id(),
-                ]);
+                DB::table('mediafile')
+                    ->where('m_id', '=', $gid)
+                    ->where('m_file', '=', $tree->id())
+                    ->delete();
+
+                DB::table('media')
+                    ->where('m_id', '=', $gid)
+                    ->where('m_file', '=', $tree->id())
+                    ->delete();
                 break;
 
             default:
-                Database::prepare(
-                    "DELETE FROM `##other` WHERE o_id=? AND o_file=?"
-                )->execute([
-                    $gid,
-                    $tree->id(),
-                ]);
+                DB::table('other')
+                    ->where('o_id', '=', $gid)
+                    ->where('o_file', '=', $tree->id())
+                    ->delete();
                 break;
         }
 

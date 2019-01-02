@@ -17,7 +17,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Fisharebest\Webtrees\Http\Controllers\GedcomFileController;
 use Fisharebest\Webtrees\Schema\SeedDatabase;
+use Fisharebest\Webtrees\Services\TimeoutService;
 use Illuminate\Database\Capsule\Manager as DB;
 use function basename;
 use function file_get_contents;
@@ -118,11 +120,15 @@ class TestCase extends \PHPUnit\Framework\TestCase
     protected function importTree(string $gedcom_file): Tree
     {
         $tree = Tree::create(basename($gedcom_file), basename($gedcom_file));
+        $tree->importGedcomFile(__DIR__ . '/../' . $gedcom_file, $gedcom_file);
 
-        DB::table('gedcom_chunk')->insert([
-            'gedcom_id'  => $tree->id(),
-            'chunk_data' => file_get_contents($gedcom_file),
-        ]);
+        $gedcom_file_controller = new GedcomFileController();
+
+        do {
+            $gedcom_file_controller->import(new TimeoutService(microtime()), $tree);
+
+            $imported = $tree->getPreference('imported');
+        } while (!$imported);
 
         return $tree;
     }

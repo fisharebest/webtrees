@@ -23,6 +23,8 @@ use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\TimeoutService;
 use Fisharebest\Webtrees\Tree;
+use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Support\Str;
 use PDOException;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -45,24 +47,23 @@ class GedcomFileController extends AbstractBaseController
     public function import(TimeoutService $timeout_service, Tree $tree): Response
     {
         // Only allow one process to import each gedcom at a time
-        Database::prepare(
-            "SELECT imported FROM `##gedcom_chunk` WHERE gedcom_id = :tree_id FOR UPDATE"
-        )->execute([
-            'tree_id' => $tree->id(),
-        ]);
+        DB::table('gedcom_chunk')
+            ->where('gedcom_id', '=', $tree->id())
+            ->lockForUpdate()
+            ->get();
 
         // What is the current import status?
-        $row = Database::prepare(
-            "SELECT" .
-            " SUM(IF(imported, LENGTH(chunk_data), 0)) AS import_offset," .
-            " SUM(LENGTH(chunk_data))                  AS import_total" .
-            " FROM `##gedcom_chunk` WHERE gedcom_id = :tree_id"
-        )->execute([
-            'tree_id' => $tree->id(),
-        ])->fetchOneRow();
+        $import_offset = (int) DB::table('gedcom_chunk')
+            ->where('gedcom_id', '=', $tree->id())
+            ->where('imported', '=', '1')
+            ->sum(DB::raw("LENGTH(chunk_data)"));
+
+        $import_total = (int) DB::table('gedcom_chunk')
+            ->where('gedcom_id', '=', $tree->id())
+            ->sum(DB::raw("LENGTH(chunk_data)"));
 
         // Finished?
-        if ($row->import_offset == $row->import_total) {
+        if ($import_offset === $import_total) {
             $tree->setPreference('imported', '1');
 
             $html = view('admin/import-complete');
@@ -71,47 +72,36 @@ class GedcomFileController extends AbstractBaseController
         }
 
         // Calculate progress so far
-        $progress = $row->import_offset / $row->import_total;
+        $progress = $import_offset / $import_total;
 
-        $first_time = ($row->import_offset == 0);
+        $first_time = ($import_offset === 0);
 
         // Run for a short period of time. This keeps the resource requirements low.
         do {
-            $data = Database::prepare(
-                "SELECT gedcom_chunk_id, REPLACE(chunk_data, '\r', '\n') AS chunk_data" .
-                " FROM `##gedcom_chunk`" .
-                " WHERE gedcom_id = :tree_id AND NOT imported" .
-                " ORDER BY gedcom_chunk_id" .
-                " LIMIT 1"
-            )->execute([
-                'tree_id' => $tree->id(),
-            ])->fetchOneRow();
+            $data = DB::table('gedcom_chunk')
+                ->where('gedcom_id', '=', $tree->id())
+                ->where('imported', '=', '0')
+                ->orderby('gedcom_chunk_id')
+                ->select('gedcom_chunk_id, chunk_data')
+                ->first();
 
             // If we are loading the first (header) record, make sure the encoding is UTF-8.
             if ($first_time) {
                 // Remove any byte-order-mark
-                Database::prepare(
-                    "UPDATE `##gedcom_chunk`" .
-                    " SET chunk_data=TRIM(LEADING :bom FROM chunk_data)" .
-                    " WHERE gedcom_chunk_id = :chunk_id"
-                )->execute([
-                    'bom'      => Gedcom::UTF8_BOM,
-                    'chunk_id' => $data->gedcom_chunk_id,
-                ]);
-                // Re-fetch the data, now that we have removed the BOM
-                $data = Database::prepare(
-                    "SELECT gedcom_chunk_id, REPLACE(chunk_data, '\r', '\n') AS chunk_data" .
-                    " FROM `##gedcom_chunk`" .
-                    " WHERE gedcom_chunk_id= :chunk_id"
-                )->execute([
-                    'chunk_id' => $data->gedcom_chunk_id,
-                ])->fetchOneRow();
+                if (Str::startsWith($data->chunk_data, Gedcom::UTF8_BOM)) {
+                    $data->chunk_data = Str::after($data->chunk_data, Gedcom::UTF8_BOM);
+                    // Put it back in the database, so we can do character conversion
+                    DB::table('gedcom_chunk')
+                        ->where('gedcom_chunk_id', '=', $data->gedcom_chunk_id)
+                        ->update(['chunk_data' => $data->chunk_data]);
+                }
 
-                if (substr($data->chunk_data, 0, 6) != '0 HEAD') {
+                if (!Str::startsWith($data->chunk_data, '0 HEAD')) {
                     return $this->viewResponse('admin/import-fail', [
                         'error' => I18N::translate('Invalid GEDCOM file - no header record found.'),
                     ]);
                 }
+
                 // What character set is this? Need to convert it to UTF8
                 if (preg_match('/[\r\n][ \t]*1 CHAR(?:ACTER)? (.+)/', $data->chunk_data, $match)) {
                     $charset = trim(strtoupper($match[1]));
@@ -122,13 +112,9 @@ class GedcomFileController extends AbstractBaseController
                 // have been encountered "in the wild".
                 switch ($charset) {
                     case 'ASCII':
-                        Database::prepare(
-                            "UPDATE `##gedcom_chunk`" .
-                            " SET chunk_data=CONVERT(CONVERT(chunk_data USING ascii) USING utf8)" .
-                            " WHERE gedcom_id = :tree_id"
-                        )->execute([
-                            'tree_id' => $tree->id(),
-                        ]);
+                        DB::table('gedcom_chunk')
+                            ->where('gedcom_id', '=', $tree->id())
+                            ->update(['chunk_data' => DB::raw('CONVERT(CONVERT(chunk_data USING ascii) USING utf8)')]);
                         break;
                     case 'IBMPC':   // IBMPC, IBM WINDOWS and MS-DOS could be anything. Mostly it means CP850.
                     case 'IBM WINDOWS':
@@ -136,13 +122,9 @@ class GedcomFileController extends AbstractBaseController
                     case 'CP437':
                     case 'CP850':
                         // CP850 has extra letters with diacritics to replace box-drawing chars in CP437.
-                        Database::prepare(
-                            "UPDATE `##gedcom_chunk`" .
-                            " SET chunk_data=CONVERT(CONVERT(chunk_data USING cp850) USING utf8)" .
-                            " WHERE gedcom_id = :tree_id"
-                        )->execute([
-                            'tree_id' => $tree->id(),
-                        ]);
+                        DB::table('gedcom_chunk')
+                            ->where('gedcom_id', '=', $tree->id())
+                            ->update(['chunk_data' => DB::raw('CONVERT(CONVERT(chunk_data USING cp850) USING utf8)')]);
                         break;
                     case 'ANSI': // ANSI could be anything. Most applications seem to treat it as latin1.
                     case 'WINDOWS':
@@ -152,13 +134,9 @@ class GedcomFileController extends AbstractBaseController
                     case 'LATIN1':
                     case 'LATIN-1':
                         // Convert from ISO-8859-1 (western european) to UTF8.
-                        Database::prepare(
-                            "UPDATE `##gedcom_chunk`" .
-                            " SET chunk_data=CONVERT(CONVERT(chunk_data USING latin1) USING utf8)" .
-                            " WHERE gedcom_id= = :tree_id"
-                        )->execute([
-                            'tree_id' => $tree->id(),
-                        ]);
+                        DB::table('gedcom_chunk')
+                            ->where('gedcom_id', '=', $tree->id())
+                            ->update(['chunk_data' => DB::raw('CONVERT(CONVERT(chunk_data USING latin1) USING utf8)')]);
                         break;
                     case 'CP1250':
                     case 'ISO8859-2':
@@ -166,23 +144,15 @@ class GedcomFileController extends AbstractBaseController
                     case 'LATIN2':
                     case 'LATIN-2':
                         // Convert from ISO-8859-2 (eastern european) to UTF8.
-                        Database::prepare(
-                            "UPDATE `##gedcom_chunk`" .
-                            " SET chunk_data=CONVERT(CONVERT(chunk_data USING latin2) USING utf8)" .
-                            " WHERE gedcom_id = :tree_id"
-                        )->execute([
-                            'tree_id' => $tree->id(),
-                        ]);
+                        DB::table('gedcom_chunk')
+                            ->where('gedcom_id', '=', $tree->id())
+                            ->update(['chunk_data' => DB::raw('CONVERT(CONVERT(chunk_data USING latin2) USING utf8)')]);
                         break;
                     case 'MACINTOSH':
                         // Convert from MAC Roman to UTF8.
-                        Database::prepare(
-                            "UPDATE `##gedcom_chunk`" .
-                            " SET chunk_data=CONVERT(CONVERT(chunk_data USING macroman) USING utf8)" .
-                            " WHERE gedcom_id = :tree_id"
-                        )->execute([
-                            'tree_id' => $tree->id(),
-                        ]);
+                        DB::table('gedcom_chunk')
+                            ->where('gedcom_id', '=', $tree->id())
+                            ->update(['chunk_data' => DB::raw('CONVERT(CONVERT(chunk_data USING macroman) USING utf8)')]);
                         break;
                     case 'UTF8':
                     case 'UTF-8':
@@ -197,18 +167,18 @@ class GedcomFileController extends AbstractBaseController
                 $first_time = false;
 
                 // Re-fetch the data, now that we have performed character set conversion.
-                $data = Database::prepare(
-                    "SELECT gedcom_chunk_id, REPLACE(chunk_data, '\r', '\n') AS chunk_data" .
-                    " FROM `##gedcom_chunk`" .
-                    " WHERE gedcom_chunk_id = :chunk_id"
-                )->execute([
-                    'chunk_id' => $data->gedcom_chunk_id,
-                ])->fetchOneRow();
+                $data = DB::table('gedcom_chunk')
+                    ->where('gedcom_chunk_id', '=', $data->gedcom_chunk_id)
+                    ->select('gedcom_chunk_id, chunk_data')
+                    ->first();
             }
+
+            $data->chunk_data = str_replace("\r", "\n", $data->chunk_data);
 
             if (!$data) {
                 break;
             }
+
             try {
                 // Import all the records in this chunk of data
                 foreach (preg_split('/\n+(?=0)/', $data->chunk_data) as $rec) {
