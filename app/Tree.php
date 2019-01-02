@@ -583,16 +583,19 @@ class Tree
 
         $this->deleteGenealogyData(false);
 
-        Database::prepare("DELETE `##block_setting` FROM `##block_setting` JOIN `##block` USING (block_id) WHERE gedcom_id=?")->execute([$this->id]);
-        Database::prepare("DELETE FROM `##block`               WHERE gedcom_id = ?")->execute([$this->id]);
-        Database::prepare("DELETE FROM `##user_gedcom_setting` WHERE gedcom_id = ?")->execute([$this->id]);
-        Database::prepare("DELETE FROM `##gedcom_setting`      WHERE gedcom_id = ?")->execute([$this->id]);
-        Database::prepare("DELETE FROM `##module_privacy`      WHERE gedcom_id = ?")->execute([$this->id]);
-        Database::prepare("DELETE FROM `##hit_counter`         WHERE gedcom_id = ?")->execute([$this->id]);
-        Database::prepare("DELETE FROM `##default_resn`        WHERE gedcom_id = ?")->execute([$this->id]);
-        Database::prepare("DELETE FROM `##gedcom_chunk`        WHERE gedcom_id = ?")->execute([$this->id]);
-        Database::prepare("DELETE FROM `##log`                 WHERE gedcom_id = ?")->execute([$this->id]);
-        Database::prepare("DELETE FROM `##gedcom`              WHERE gedcom_id = ?")->execute([$this->id]);
+        DB::table('block_setting')
+            ->join('block', 'block.block_id', '=', 'block_setting.block_id')
+            ->where('gedcom_id', '=', $this->id)
+            ->delete();
+        DB::table('block')->where('gedcom_id', '=', $this->id)->delete();
+        DB::table('user_gedcom_setting')->where('gedcom_id', '=', $this->id)->delete();
+        DB::table('gedcom_setting')->where('gedcom_id', '=', $this->id)->delete();
+        DB::table('module_privacy')->where('gedcom_id', '=', $this->id)->delete();
+        DB::table('hit_counter')->where('gedcom_id', '=', $this->id)->delete();
+        DB::table('default_resn')->where('gedcom_id', '=', $this->id)->delete();
+        DB::table('gedcom_chunk')->where('gedcom_id', '=', $this->id)->delete();
+        DB::table('log')->where('gedcom_id', '=', $this->id)->delete();
+        DB::table('gedcom')->where('gedcom_id', '=', $this->id)->delete();
 
         // After updating the database, we need to fetch a new (sorted) copy
         self::$trees = [];
@@ -645,7 +648,6 @@ class Tree
      * @param string $filename The preferred filename, for export/download.
      *
      * @return void
-     * @throws Exception
      */
     public function importGedcomFile(string $path, string $filename)
     {
@@ -656,10 +658,6 @@ class Tree
 
         $file_data = '';
         $fp        = fopen($path, 'rb');
-
-        if ($fp === false) {
-            throw new Exception('Cannot write file: ' . $path);
-        }
 
         $this->deleteGenealogyData((bool) $this->getPreference('keep_media'));
         $this->setPreference('gedcom_filename', $filename);

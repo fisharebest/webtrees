@@ -274,4 +274,20 @@ class TreeTest extends \Fisharebest\Webtrees\TestCase
         $tree->setUserPreference($user, 'rootid', $record4->xref());
         $this->assertSame($record4->xref(), $tree->significantIndividual($user)->xref());
     }
+
+    /**
+     * @covers \Fisharebest\Webtrees\Tree::importGedcomFile
+     * @covers \Fisharebest\Webtrees\Tree::deleteGenealogyData
+     * @covers \Fisharebest\Webtrees\Tree::delete
+     *
+     * @return void
+     */
+    public function testImportAndDeleteGedcomFile(): void
+    {
+        $tree = $this->importTree('demo.ged');
+        $this->assertNotNull(Tree::findByName('demo.ged'));
+
+        $tree->delete();
+        $this->assertNull(Tree::findByName('demo.ged'));
+    }
 }
