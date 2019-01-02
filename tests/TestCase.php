@@ -120,7 +120,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
     protected function importTree(string $gedcom_file): Tree
     {
         $tree = Tree::create(basename($gedcom_file), basename($gedcom_file));
-        $tree->importGedcomFile(__DIR__ . '/../' . $gedcom_file, $gedcom_file);
+        $tree->importGedcomFile(__DIR__ . '/../data/' . $gedcom_file, $gedcom_file);
 
         $gedcom_file_controller = new GedcomFileController();
 
