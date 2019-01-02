@@ -23,9 +23,9 @@ use Fisharebest\Webtrees\Functions\FunctionsImport;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\JoinClause;
+use Illuminate\Support\Str;
 use InvalidArgumentException;
 use PDOException;
-use function substr_compare;
 
 /**
  * Provide an interface to the wt_gedcom table.
@@ -741,12 +741,12 @@ class Tree
      */
     public function createRecord(string $gedcom): GedcomRecord
     {
-        if (substr_compare($gedcom, '0 @@', 0, 4) !== 0) {
+        if (!Str::startsWith($gedcom, '0 @@ ')) {
             throw new InvalidArgumentException('GedcomRecord::createRecord(' . $gedcom . ') does not begin 0 @@');
         }
 
         $xref   = $this->getNewXref();
-        $gedcom = '0 @' . $xref . '@' . substr($gedcom, 4);
+        $gedcom = '0 @' . $xref . '@ ' . Str::after($gedcom, '0 @@ ');
 
         // Create a change record
         $gedcom .= "\n1 CHAN\n2 DATE " . date('d M Y') . "\n3 TIME " . date('H:i:s') . "\n2 _WT_USER " . Auth::user()->getUserName();
@@ -780,12 +780,12 @@ class Tree
      */
     public function createFamily(string $gedcom): GedcomRecord
     {
-        if (substr_compare($gedcom, '0 @@ FAM', 0, 8) !== 0) {
+        if (!Str::startsWith($gedcom, '0 @@ FAM')) {
             throw new InvalidArgumentException('GedcomRecord::createFamily(' . $gedcom . ') does not begin 0 @@ FAM');
         }
 
         $xref   = $this->getNewXref();
-        $gedcom = '0 @' . $xref . '@' . substr($gedcom, 4);
+        $gedcom = '0 @' . $xref . '@ FAM' . Str::after($gedcom, '0 @@ FAM');
 
         // Create a change record
         $gedcom .= "\n1 CHAN\n2 DATE " . date('d M Y') . "\n3 TIME " . date('H:i:s') . "\n2 _WT_USER " . Auth::user()->getUserName();
@@ -819,12 +819,12 @@ class Tree
      */
     public function createIndividual(string $gedcom): GedcomRecord
     {
-        if (substr_compare($gedcom, '0 @@ INDI', 0, 9) !== 0) {
+        if (!Str::startsWith($gedcom, '0 @@ INDI')) {
             throw new InvalidArgumentException('GedcomRecord::createIndividual(' . $gedcom . ') does not begin 0 @@ INDI');
         }
 
         $xref   = $this->getNewXref();
-        $gedcom = '0 @' . $xref . '@' . substr($gedcom, 4);
+        $gedcom = '0 @' . $xref . '@ INDI' . Str::after($gedcom, '0 @@ INDI');
 
         // Create a change record
         $gedcom .= "\n1 CHAN\n2 DATE " . date('d M Y') . "\n3 TIME " . date('H:i:s') . "\n2 _WT_USER " . Auth::user()->getUserName();
@@ -858,12 +858,12 @@ class Tree
      */
     public function createMediaObject(string $gedcom): Media
     {
-        if (substr_compare($gedcom, '0 @@ OBJE', 0, 9) !== 0) {
+        if (!Str::startsWith($gedcom, '0 @@ OBJE')) {
             throw new InvalidArgumentException('GedcomRecord::createIndividual(' . $gedcom . ') does not begin 0 @@ OBJE');
         }
 
         $xref   = $this->getNewXref();
-        $gedcom = '0 @' . $xref . '@' . substr($gedcom, 4);
+        $gedcom = '0 @' . $xref . '@ OBJE' . Str::after($gedcom, '0 @@ OBJE');
 
         // Create a change record
         $gedcom .= "\n1 CHAN\n2 DATE " . date('d M Y') . "\n3 TIME " . date('H:i:s') . "\n2 _WT_USER " . Auth::user()->getUserName();
@@ -906,7 +906,7 @@ class Tree
             $individual = Individual::getInstance($this->getUserPreference($user, 'gedcomid'), $this);
         }
 
-        if ($individual === null) {
+        if ($individual === null && $this->getPreference('PEDIGREE_ROOT_ID') !== '') {
             $individual = Individual::getInstance($this->getPreference('PEDIGREE_ROOT_ID'), $this);
         }
         if ($individual === null) {

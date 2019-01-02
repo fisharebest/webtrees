@@ -67,10 +67,10 @@ class GedcomRecord
     protected $getSecondaryName;
 
     /** @var GedcomRecord[][] Allow getInstance() to return references to existing objects */
-    protected static $gedcom_record_cache;
+    public static $gedcom_record_cache;
 
     /** @var stdClass[][] Fetch all pending edits in one database query */
-    private static $pending_record_cache;
+    public static $pending_record_cache;
 
     /**
      * Create a GedcomRecord object from raw GEDCOM data.

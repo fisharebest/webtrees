@@ -17,7 +17,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Functions;
 
-use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
@@ -1015,12 +1014,12 @@ class FunctionsImport
                 ]);
             } else {
                 DB::table('name')->insert([
-                    'n_file'             => $ged_id,
-                    'n_id'               => $xref,
-                    'n_num'              => $n,
-                    'n_type'             => $name['type'],
-                    'n_sort'             => mb_substr($name['sort'], 0, 255),
-                    'n_full'             => mb_substr($name['fullNN'], 0, 255),
+                    'n_file' => $ged_id,
+                    'n_id'   => $xref,
+                    'n_num'  => $n,
+                    'n_type' => $name['type'],
+                    'n_sort' => mb_substr($name['sort'], 0, 255),
+                    'n_full' => mb_substr($name['fullNN'], 0, 255),
                 ]);
             }
         }
@@ -1220,7 +1219,6 @@ class FunctionsImport
                 ->where('pl_p_id', '=', $p_id)
                 ->where('pl_file', '=', $tree->id())
                 ->count();
-
 
             if ($num === 0) {
                 DB::table('places')

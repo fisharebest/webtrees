@@ -204,6 +204,42 @@ class TreeTest extends \Fisharebest\Webtrees\TestCase
     }
 
     /**
+     * @covers \Fisharebest\Webtrees\Tree::createRecord
+     * @expectedException \InvalidArgumentException
+     *
+     * @return void
+     */
+    public function testCreateInvalidRecord(): void
+    {
+        $tree = Tree::create('tree-name', 'Tree title');
+        $user = User::create('user', 'User', 'user@example.com', 'secret');
+        $user->setPreference('canadmin', '1');
+        Auth::login($user);
+
+        $tree->createRecord("0 @@FOO\n1 NOTE noted");
+    }
+
+    /**
+     * @covers \Fisharebest\Webtrees\Tree::createRecord
+     *
+     * @return void
+     */
+    public function testCreateRecord(): void
+    {
+        $tree = Tree::create('tree-name', 'Tree title');
+        $user = User::create('user', 'User', 'user@example.com', 'secret');
+        $user->setPreference('canadmin', '1');
+        Auth::login($user);
+
+        $record = $tree->createRecord("0 @@ FOO\n1 NOTE noted");
+        $this->assertTrue($record->isPendingAddition());
+
+        $user->setPreference('auto_accept', '1');
+        $record = $tree->createRecord("0 @@ FOO\n1 NOTE noted");
+        $this->assertFalse($record->isPendingAddition());
+    }
+
+    /**
      * @covers \Fisharebest\Webtrees\Tree::significantIndividual
      *
      * @return void
@@ -214,7 +250,6 @@ class TreeTest extends \Fisharebest\Webtrees\TestCase
         $user = User::create('user', 'User', 'user@example.com', 'secret');
         $user->setPreference('auto_accept', '1');
         Auth::login($user);
-        $individual = $tree->significantIndividual($user);
 
         // No individuals in tree?  Dummy individual
         $this->assertSame('I', $tree->significantIndividual($user)->xref());
