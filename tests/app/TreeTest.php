@@ -91,17 +91,84 @@ class TreeTest extends \Fisharebest\Webtrees\TestCase
         $user->setPreference('canadmin', '1');
         Auth::login($user);
 
-        $gedcom = "0 @@ INDI\n1 SEX F\n1 NAME Foo /Bar/";
-
-        $individual1 = $tree->createIndividual($gedcom);
-
-        $this->assertTrue($individual1->isPendingAddition());
+        $record = $tree->createIndividual("0 @@ INDI\n1 SEX F\n1 NAME Foo /Bar/");
+        $this->assertTrue($record->isPendingAddition());
 
         $user->setPreference('auto_accept', '1');
+        $record = $tree->createIndividual("0 @@ INDI\n1 SEX F\n1 NAME Foo /Bar/");
+        $this->assertFalse($record->isPendingAddition());
+    }
 
-        $individual2 = $tree->createIndividual($gedcom);
+    /**
+     * @covers \Fisharebest\Webtrees\Tree::getNewXref
+     *
+     * @return void
+     */
+    public function testGetNewXref(): void
+    {
+        $tree = Tree::create('tree-name', 'Tree title');
 
-        $this->assertFalse($individual2->isPendingAddition());
+        $this->assertSame('X1', $tree->getNewXref());
+        $this->assertSame('X2', $tree->getNewXref());
+        $this->assertSame('X3', $tree->getNewXref());
+        $this->assertSame('X4', $tree->getNewXref());
+        $this->assertSame('X5', $tree->getNewXref());
+    }
 
+    /**
+     * @covers \Fisharebest\Webtrees\Tree::createFamily
+     *
+     * @return void
+     */
+    public function testCreateFamily(): void
+    {
+        $tree = Tree::create('tree-name', 'Tree title');
+        $user = User::create('user', 'User', 'user@example.com', 'secret');
+        $user->setPreference('canadmin', '1');
+        Auth::login($user);
+
+        $record = $tree->createFamily("0 @@ FAM\n1 MARR Y");
+        $this->assertTrue($record->isPendingAddition());
+
+        $user->setPreference('auto_accept', '1');
+        $record = $tree->createFamily("0 @@ FAM\n1 MARR Y");
+        $this->assertFalse($record->isPendingAddition());
+    }
+
+    /**
+     * @covers \Fisharebest\Webtrees\Tree::significantIndividual
+     *
+     * @return void
+     */
+    public function testSignificantIndividual(): void
+    {
+        $tree = Tree::create('tree-name', 'Tree title');
+        $user = User::create('user', 'User', 'user@example.com', 'secret');
+        $user->setPreference('auto_accept', '1');
+        Auth::login($user);
+        $individual = $tree->significantIndividual($user);
+
+        // No individuals in tree?  Dummy individual
+        $this->assertSame('I', $tree->significantIndividual($user)->xref());
+
+        $record1 = $tree->createIndividual("0 @@ INDI\n1 SEX F\n1 NAME Foo /Bar/");
+        $record2 = $tree->createIndividual("0 @@ INDI\n1 SEX F\n1 NAME Foo /Bar/");
+        $record3 = $tree->createIndividual("0 @@ INDI\n1 SEX F\n1 NAME Foo /Bar/");
+        $record4 = $tree->createIndividual("0 @@ INDI\n1 SEX F\n1 NAME Foo /Bar/");
+
+        // Individuals exist?  First one (lowest XREF).
+        $this->assertSame($record1->xref(), $tree->significantIndividual($user)->xref());
+
+        // Preference for tree?
+        $tree->setPreference('PEDIGREE_ROOT_ID', $record2->xref());
+        $this->assertSame($record2->xref(), $tree->significantIndividual($user)->xref());
+
+        // User preference
+        $tree->setUserPreference($user, 'gedcomid', $record3->xref());
+        $this->assertSame($record3->xref(), $tree->significantIndividual($user)->xref());
+
+        // User record
+        $tree->setUserPreference($user, 'rootid', $record4->xref());
+        $this->assertSame($record4->xref(), $tree->significantIndividual($user)->xref());
     }
 }

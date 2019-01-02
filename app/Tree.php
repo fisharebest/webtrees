@@ -896,27 +896,27 @@ class Tree
      */
     public function significantIndividual(User $user): Individual
     {
-        static $individual; // Only query the DB once.
+        $individual = null;
 
-        if (!$individual && $this->getUserPreference($user, 'rootid') !== '') {
+        if ($this->getUserPreference($user, 'rootid') !== '') {
             $individual = Individual::getInstance($this->getUserPreference($user, 'rootid'), $this);
         }
-        if (!$individual && $this->getUserPreference($user, 'gedcomid') !== '') {
+
+        if ($individual === null && $this->getUserPreference($user, 'gedcomid') !== '') {
             $individual = Individual::getInstance($this->getUserPreference($user, 'gedcomid'), $this);
         }
-        if (!$individual) {
+
+        if ($individual === null) {
             $individual = Individual::getInstance($this->getPreference('PEDIGREE_ROOT_ID'), $this);
         }
-        if (!$individual) {
-            $xref = (string) Database::prepare(
-                "SELECT MIN(i_id) FROM `##individuals` WHERE i_file = :tree_id"
-            )->execute([
-                'tree_id' => $this->id(),
-            ])->fetchOne();
+        if ($individual === null) {
+            $xref = (string) DB::table('individuals')
+                ->where('i_file', '=', $this->id())
+                ->min('i_id');
 
             $individual = Individual::getInstance($xref, $this);
         }
-        if (!$individual) {
+        if ($individual === null) {
             // always return a record
             $individual = new Individual('I', '0 @I@ INDI', null, $this);
         }
