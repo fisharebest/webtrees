@@ -1,22 +1,58 @@
-<?php use Fisharebest\Webtrees\Database; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
+<?php use Illuminate\Database\Query\JoinClause; ?>
+<?php use Illuminate\Database\Capsule\Manager as DB; ?>
 
 <?php
 // Count the number of linked records. These numbers include private records.
 // It is not good to bypass privacy, but many servers do not have the resources
 // to process privacy for every record in the tree
-$count_individuals = Database::prepare(
-    "SELECT l_to, COUNT(*) FROM `##individuals` JOIN `##link` ON l_from = i_id AND l_file = i_file AND l_type = 'NOTE' AND l_file = :tree_id GROUP BY l_to"
-)->execute(['tree_id' => $tree->id()])->fetchAssoc();
-$count_families    = Database::prepare(
-    "SELECT l_to, COUNT(*) FROM `##families` JOIN `##link` ON l_from = f_id AND l_file = f_file AND l_type = 'NOTE' AND l_file = :tree_id GROUP BY l_to"
-)->execute(['tree_id' => $tree->id()])->fetchAssoc();
-$count_media       = Database::prepare(
-    "SELECT l_to, COUNT(*) FROM `##media` JOIN `##link` ON l_from = m_id AND l_file = m_file AND l_type = 'NOTE' AND l_file = :tree_id GROUP BY l_to"
-)->execute(['tree_id' => $tree->id()])->fetchAssoc();
-$count_sources = Database::prepare(
-    "SELECT l_to, COUNT(*) FROM `##sources` JOIN `##link` ON l_from = s_id AND l_file = s_file AND l_type = 'NOTE' AND l_file = :tree_id GROUP BY l_to"
-)->execute(['tree_id' => $tree->id()])->fetchAssoc();
+$count_individuals = DB::table('individuals')
+    ->join('link', function (JoinClause $join): void {
+        $join->on('l_from', '=', 'i_id');
+        $join->on('l_file', '=', 'i_file');
+    })
+    ->where('l_type', '=', 'NOTE')
+    ->where('l_file', '=', $tree->id())
+    ->groupBy('l_to')
+    ->select(['l_to', DB::raw('COUNT(*) AS total')])
+    ->pluck('total', 'l_to')
+    ->all();
+
+$count_individuals = DB::table('families')
+    ->join('link', function (JoinClause $join): void {
+        $join->on('l_from', '=', 'f_id');
+        $join->on('l_file', '=', 'f_file');
+    })
+    ->where('l_type', '=', 'NOTE')
+    ->where('l_file', '=', $tree->id())
+    ->groupBy('l_to')
+    ->select(['l_to', DB::raw('COUNT(*) AS total')])
+    ->pluck('total', 'l_to')
+    ->all();
+
+$count_media = DB::table('media')
+    ->join('link', function (JoinClause $join): void {
+        $join->on('l_from', '=', 'm_id');
+        $join->on('l_file', '=', 'm_file');
+    })
+    ->where('l_type', '=', 'NOTE')
+    ->where('l_file', '=', $tree->id())
+    ->groupBy('l_to')
+    ->select(['l_to', DB::raw('COUNT(*) AS total')])
+    ->pluck('total', 'l_to')
+    ->all();
+
+$count_sources = DB::table('sources')
+    ->join('link', function (JoinClause $join): void {
+        $join->on('l_from', '=', 's_id');
+        $join->on('l_file', '=', 's_file');
+    })
+    ->where('l_type', '=', 'NOTE')
+    ->where('l_file', '=', $tree->id())
+    ->groupBy('l_to')
+    ->select(['l_to', DB::raw('COUNT(*) AS total')])
+    ->pluck('total', 'l_to')
+    ->all();
 ?>
 
 <table

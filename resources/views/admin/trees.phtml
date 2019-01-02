@@ -1,8 +1,8 @@
 <?php use Fisharebest\Webtrees\Auth; ?>
-<?php use Fisharebest\Webtrees\Database; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
 <?php use Fisharebest\Webtrees\Site; ?>
 <?php use Fisharebest\Webtrees\View; ?>
+<?php use Illuminate\Database\Capsule\Manager as DB; ?>
 
 <?php if (!empty($all_trees)): ?>
     <?= view('components/breadcrumbs', ['links' => [route('admin-control-panel') => I18N::translate('Control panel'), $title]]) ?>
@@ -30,7 +30,7 @@
                 </div>
                 <div id="card-tree-content-<?= $managed_tree->id() ?>" class="collapse<?= $managed_tree == $tree || $managed_tree->getPreference('imported') === '0' ? ' show' : '' ?>" role="tabpanel" aria-labelledby="panel-tree-header-<?= $managed_tree->id() ?>">
                     <div class="card-body">
-                        <?php $importing = Database::prepare("SELECT 1 FROM `##gedcom_chunk` WHERE gedcom_id = ? AND imported = '0' LIMIT 1")->execute([$managed_tree->id()])->fetchOne() ?>
+                        <?php $importing = DB::table('gedcom_chunk')->where('gedcom_id', '=', $managed_tree->id())->where('imported', '=', 0)->exists() ?>
                         <?php if ($importing) : ?>
                             <div id="import<?= $managed_tree->id() ?>" class="col-xs-12">
                                 <div class="progress">

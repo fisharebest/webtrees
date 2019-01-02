@@ -1,17 +1,26 @@
-<?php use Fisharebest\Webtrees\Database; ?>
 <?php use Fisharebest\Webtrees\I18N; ?>
+<?php use Illuminate\Database\Query\JoinClause; ?>
+<?php use Illuminate\Database\Capsule\Manager as DB; ?>
 
 <?php
 // Count the number of linked records. These numbers include private records.
 // It is not good to bypass privacy, but many servers do not have the resources
 // to process privacy for every record in the tree
-$count_sources = Database::prepare(
-    "SELECT l_to, COUNT(*) FROM `##sources` JOIN `##link` ON l_from = s_id AND l_file = s_file AND l_type = 'REPO' AND l_file = :tree_id GROUP BY l_to"
-)->execute(['tree_id' => $tree->id()])->fetchAssoc();
+$count_sources = DB::table('sources')
+    ->join('link', function (JoinClause $join): void {
+        $join->on('l_from', '=', 's_id');
+        $join->on('l_file', '=', 's_file');
+    })
+    ->where('l_type', '=', 'REPO')
+    ->where('l_file', '=', $tree->id())
+    ->groupBy('l_to')
+    ->select(['l_to', DB::raw('COUNT(*) AS total')])
+    ->pluck('total', 'l_to')
+    ->all();
 ?>
 
 <table
-    class="table table-bordered table-sm wt-table-source datatables d-none"
+    class="table table-bordered table-sm wt-table-repository datatables d-none"
     <?= view('lists/datatables-attributes') ?>
     data-columns="<?= e(json_encode([
         null,
