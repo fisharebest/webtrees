@@ -560,7 +560,7 @@ class Tree
 
         if ($keep_media) {
             DB::table('link')->where('l_file', '=', $this->id)
-                ->where('l_type', '<>',  'OBJE')
+                ->where('l_type', '<>', 'OBJE')
                 ->delete();
         } else {
             DB::table('link')->where('l_file', '=', $this->id)->delete();
