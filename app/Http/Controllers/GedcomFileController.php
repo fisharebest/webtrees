@@ -82,7 +82,7 @@ class GedcomFileController extends AbstractBaseController
                 ->where('gedcom_id', '=', $tree->id())
                 ->where('imported', '=', '0')
                 ->orderby('gedcom_chunk_id')
-                ->select('gedcom_chunk_id, chunk_data')
+                ->select(['gedcom_chunk_id', 'chunk_data'])
                 ->first();
 
             // If we are loading the first (header) record, make sure the encoding is UTF-8.
@@ -169,15 +169,15 @@ class GedcomFileController extends AbstractBaseController
                 // Re-fetch the data, now that we have performed character set conversion.
                 $data = DB::table('gedcom_chunk')
                     ->where('gedcom_chunk_id', '=', $data->gedcom_chunk_id)
-                    ->select('gedcom_chunk_id, chunk_data')
+                    ->select(['gedcom_chunk_id', 'chunk_data'])
                     ->first();
             }
-
-            $data->chunk_data = str_replace("\r", "\n", $data->chunk_data);
 
             if (!$data) {
                 break;
             }
+
+            $data->chunk_data = str_replace("\r", "\n", $data->chunk_data);
 
             try {
                 // Import all the records in this chunk of data
@@ -185,11 +185,9 @@ class GedcomFileController extends AbstractBaseController
                     FunctionsImport::importRecord($rec, $tree, false);
                 }
                 // Mark the chunk as imported
-                Database::prepare(
-                    "UPDATE `##gedcom_chunk` SET imported=TRUE WHERE gedcom_chunk_id = :chunk_id"
-                )->execute([
-                    'chunk_id' => $data->gedcom_chunk_id,
-                ]);
+                DB::table('gedcom_chunk')
+                    ->where('gedcom_chunk_id', '=', $data->gedcom_chunk_id)
+                    ->update(['imported' => 1]);
             } catch (PDOException $ex) {
                 return $this->viewResponse('admin/import-fail', [
                     'error' => $ex->getMessage(),

@@ -122,10 +122,11 @@ class TestCase extends \PHPUnit\Framework\TestCase
         $tree = Tree::create(basename($gedcom_file), basename($gedcom_file));
         $tree->importGedcomFile(__DIR__ . '/data/' . $gedcom_file, $gedcom_file);
 
+        View::share('tree', $tree);
         $gedcom_file_controller = new GedcomFileController();
 
         do {
-            $gedcom_file_controller->import(new TimeoutService(microtime()), $tree);
+            $gedcom_file_controller->import(new TimeoutService(microtime(true)), $tree);
 
             $imported = $tree->getPreference('imported');
         } while (!$imported);

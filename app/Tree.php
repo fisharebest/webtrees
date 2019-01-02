@@ -547,23 +547,25 @@ class Tree
      */
     public function deleteGenealogyData(bool $keep_media)
     {
-        Database::prepare("DELETE FROM `##gedcom_chunk` WHERE gedcom_id = ?")->execute([$this->id]);
-        Database::prepare("DELETE FROM `##individuals`  WHERE i_file    = ?")->execute([$this->id]);
-        Database::prepare("DELETE FROM `##families`     WHERE f_file    = ?")->execute([$this->id]);
-        Database::prepare("DELETE FROM `##sources`      WHERE s_file    = ?")->execute([$this->id]);
-        Database::prepare("DELETE FROM `##other`        WHERE o_file    = ?")->execute([$this->id]);
-        Database::prepare("DELETE FROM `##places`       WHERE p_file    = ?")->execute([$this->id]);
-        Database::prepare("DELETE FROM `##placelinks`   WHERE pl_file   = ?")->execute([$this->id]);
-        Database::prepare("DELETE FROM `##name`         WHERE n_file    = ?")->execute([$this->id]);
-        Database::prepare("DELETE FROM `##dates`        WHERE d_file    = ?")->execute([$this->id]);
-        Database::prepare("DELETE FROM `##change`       WHERE gedcom_id = ?")->execute([$this->id]);
+        DB::table('gedcom_chunk')->where('gedcom_id', '=', $this->id)->delete();
+        DB::table('individuals')->where('i_file', '=', $this->id)->delete();
+        DB::table('families')->where('f_file', '=', $this->id)->delete();
+        DB::table('sources')->where('s_file', '=', $this->id)->delete();
+        DB::table('other')->where('o_file', '=', $this->id)->delete();
+        DB::table('places')->where('p_file', '=', $this->id)->delete();
+        DB::table('placelinks')->where('pl_file', '=', $this->id)->delete();
+        DB::table('name')->where('n_file', '=', $this->id)->delete();
+        DB::table('dates')->where('d_file', '=', $this->id)->delete();
+        DB::table('change')->where('gedcom_id', '=', $this->id)->delete();
 
         if ($keep_media) {
-            Database::prepare("DELETE FROM `##link` WHERE l_file =? AND l_type<>'OBJE'")->execute([$this->id]);
+            DB::table('link')->where('l_file', '=', $this->id)
+                ->where('l_type', '<>',  'OBJE')
+                ->delete();
         } else {
-            Database::prepare("DELETE FROM `##link`  WHERE l_file =?")->execute([$this->id]);
-            Database::prepare("DELETE FROM `##media` WHERE m_file =?")->execute([$this->id]);
-            Database::prepare("DELETE FROM `##media_file` WHERE m_file =?")->execute([$this->id]);
+            DB::table('link')->where('l_file', '=', $this->id)->delete();
+            DB::table('media_file')->where('m_file', '=', $this->id)->delete();
+            DB::table('media')->where('m_file', '=', $this->id)->delete();
         }
     }
 
@@ -673,20 +675,17 @@ class Tree
                 }
             }
             if ($pos) {
-                Database::prepare(
-                    "INSERT INTO `##gedcom_chunk` (gedcom_id, chunk_data) VALUES (?, ?)"
-                )->execute([
-                    $this->id,
-                    substr($file_data, 0, $pos),
+                DB::table('gedcom_chunk')->insert([
+                    'gedcom_id'  => $this->id,
+                    'chunk_data' => substr($file_data, 0, $pos),
                 ]);
+
                 $file_data = substr($file_data, $pos);
             }
         }
-        Database::prepare(
-            "INSERT INTO `##gedcom_chunk` (gedcom_id, chunk_data) VALUES (?, ?)"
-        )->execute([
-            $this->id,
-            $file_data,
+        DB::table('gedcom_chunk')->insert([
+            'gedcom_id'  => $this->id,
+            'chunk_data' => $file_data,
         ]);
 
         fclose($fp);
