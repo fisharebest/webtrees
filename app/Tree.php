@@ -698,50 +698,35 @@ class Tree
      */
     public function getNewXref(): string
     {
+        // Lock the row, so that only one new XREF may be generated at a time.
+        DB::table('site_setting')
+            ->where('setting_name', '=', 'next_xref')
+            ->lockForUpdate()
+            ->get();
+
         $prefix = 'X';
 
         $increment = 1.0;
         do {
-            // Use LAST_INSERT_ID(expr) to provide a transaction-safe sequence. See
-            // http://dev.mysql.com/doc/refman/5.6/en/information-functions.html#function_last-insert-id
-            $statement = Database::prepare(
-                "UPDATE `##site_setting` SET setting_value = LAST_INSERT_ID(setting_value + :increment) WHERE setting_name = 'next_xref'"
-            );
-            $statement->execute([
-                'increment' => (int) $increment,
-            ]);
-
-            if ($statement->rowCount() === 0) {
-                $num = '1';
-                Site::setPreference('next_xref', $num);
-            } else {
-                $num = (string) Database::prepare("SELECT LAST_INSERT_ID()")->fetchOne();
-            }
-
-            $xref = $prefix . $num;
-
-            // Records may already exist with this sequence number.
-            $already_used = Database::prepare(
-                "SELECT" .
-                " EXISTS (SELECT 1 FROM `##individuals` WHERE i_id = :i_id) OR" .
-                " EXISTS (SELECT 1 FROM `##families` WHERE f_id = :f_id) OR" .
-                " EXISTS (SELECT 1 FROM `##sources` WHERE s_id = :s_id) OR" .
-                " EXISTS (SELECT 1 FROM `##media` WHERE m_id = :m_id) OR" .
-                " EXISTS (SELECT 1 FROM `##other` WHERE o_id = :o_id) OR" .
-                " EXISTS (SELECT 1 FROM `##change` WHERE xref = :xref)"
-            )->execute([
-                'i_id' => $xref,
-                'f_id' => $xref,
-                's_id' => $xref,
-                'm_id' => $xref,
-                'o_id' => $xref,
-                'xref' => $xref,
-            ])->fetchOne();
+            $num = (int) Site::getPreference('next_xref') + (int) $increment;
 
             // This exponential increment allows us to scan over large blocks of
             // existing data in a reasonable time.
             $increment *= 1.01;
-        } while ($already_used !== '0');
+
+            $xref = $prefix . $num;
+
+            // Records may already exist with this sequence number.
+            $already_used =
+                DB::table('individuals')->where('i_id', '=', $xref)->exists() ||
+                DB::table('families')->where('f_id', '=', $xref)->exists() ||
+                DB::table('sources')->where('s_id', '=', $xref)->exists() ||
+                DB::table('media')->where('m_id', '=', $xref)->exists() ||
+                DB::table('other')->where('o_id', '=', $xref)->exists() ||
+                DB::table('change')->where('xref', '=', $xref)->exists();
+        } while ($already_used);
+
+        Site::setPreference('next_xref', (string) $num);
 
         return $xref;
     }
@@ -767,13 +752,12 @@ class Tree
         $gedcom .= "\n1 CHAN\n2 DATE " . date('d M Y') . "\n3 TIME " . date('H:i:s') . "\n2 _WT_USER " . Auth::user()->getUserName();
 
         // Create a pending change
-        Database::prepare(
-            "INSERT INTO `##change` (gedcom_id, xref, old_gedcom, new_gedcom, user_id) VALUES (?, ?, '', ?, ?)"
-        )->execute([
-            $this->id,
-            $xref,
-            $gedcom,
-            Auth::id(),
+        DB::table('change')->insert([
+            'gedcom_id'  => $this->id,
+            'xref'       => $xref,
+            'old_gedcom' => '',
+            'new_gedcom' => $gedcom,
+            'user_id'    => Auth::id(),
         ]);
 
         // Accept this pending change
@@ -807,13 +791,12 @@ class Tree
         $gedcom .= "\n1 CHAN\n2 DATE " . date('d M Y') . "\n3 TIME " . date('H:i:s') . "\n2 _WT_USER " . Auth::user()->getUserName();
 
         // Create a pending change
-        Database::prepare(
-            "INSERT INTO `##change` (gedcom_id, xref, old_gedcom, new_gedcom, user_id) VALUES (?, ?, '', ?, ?)"
-        )->execute([
-            $this->id,
-            $xref,
-            $gedcom,
-            Auth::id(),
+        DB::table('change')->insert([
+            'gedcom_id'  => $this->id,
+            'xref'       => $xref,
+            'old_gedcom' => '',
+            'new_gedcom' => $gedcom,
+            'user_id'    => Auth::id(),
         ]);
 
         // Accept this pending change
@@ -847,13 +830,12 @@ class Tree
         $gedcom .= "\n1 CHAN\n2 DATE " . date('d M Y') . "\n3 TIME " . date('H:i:s') . "\n2 _WT_USER " . Auth::user()->getUserName();
 
         // Create a pending change
-        Database::prepare(
-            "INSERT INTO `##change` (gedcom_id, xref, old_gedcom, new_gedcom, user_id) VALUES (?, ?, '', ?, ?)"
-        )->execute([
-            $this->id,
-            $xref,
-            $gedcom,
-            Auth::id(),
+        DB::table('change')->insert([
+            'gedcom_id'  => $this->id,
+            'xref'       => $xref,
+            'old_gedcom' => '',
+            'new_gedcom' => $gedcom,
+            'user_id'    => Auth::id(),
         ]);
 
         // Accept this pending change
@@ -887,13 +869,12 @@ class Tree
         $gedcom .= "\n1 CHAN\n2 DATE " . date('d M Y') . "\n3 TIME " . date('H:i:s') . "\n2 _WT_USER " . Auth::user()->getUserName();
 
         // Create a pending change
-        Database::prepare(
-            "INSERT INTO `##change` (gedcom_id, xref, old_gedcom, new_gedcom, user_id) VALUES (?, ?, '', ?, ?)"
-        )->execute([
-            $this->id,
-            $xref,
-            $gedcom,
-            Auth::id(),
+        DB::table('change')->insert([
+            'gedcom_id'  => $this->id,
+            'xref'       => $xref,
+            'old_gedcom' => '',
+            'new_gedcom' => $gedcom,
+            'user_id'    => Auth::id(),
         ]);
 
         // Accept this pending change

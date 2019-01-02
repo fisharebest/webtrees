@@ -78,4 +78,30 @@ class TreeTest extends \Fisharebest\Webtrees\TestCase
         $pref = $tree->getUserPreference($user, 'foo', 'default');
         $this->assertSame('bar', $pref);
     }
+
+    /**
+     * @covers \Fisharebest\Webtrees\Tree::createIndividual
+     *
+     * @return void
+     */
+    public function testCreateIndividual(): void
+    {
+        $tree = Tree::create('tree-name', 'Tree title');
+        $user = User::create('user', 'User', 'user@example.com', 'secret');
+        $user->setPreference('canadmin', '1');
+        Auth::login($user);
+
+        $gedcom = "0 @@ INDI\n1 SEX F\n1 NAME Foo /Bar/";
+
+        $individual1 = $tree->createIndividual($gedcom);
+
+        $this->assertTrue($individual1->isPendingAddition());
+
+        $user->setPreference('auto_accept', '1');
+
+        $individual2 = $tree->createIndividual($gedcom);
+
+        $this->assertFalse($individual2->isPendingAddition());
+
+    }
 }

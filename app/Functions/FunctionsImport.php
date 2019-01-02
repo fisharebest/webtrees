@@ -1137,7 +1137,8 @@ class FunctionsImport
             ->where('xref', '=', $xref)
             ->where('gedcom.gedcom_id', '=', $tree->id())
             ->orderBy('change_id')
-            ->select(['change_id', 'gedcom_name', 'old_gedcom', 'new_gedcom']);
+            ->select(['change_id', 'gedcom_name', 'old_gedcom', 'new_gedcom'])
+            ->get();
 
         foreach ($changes as $change) {
             if (empty($change->new_gedcom)) {
