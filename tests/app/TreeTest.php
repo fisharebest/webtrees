@@ -80,6 +80,38 @@ class TreeTest extends \Fisharebest\Webtrees\TestCase
     }
 
     /**
+     * @covers \Fisharebest\Webtrees\Tree::getNewXref
+     *
+     * @return void
+     */
+    public function testGetNewXref(): void
+    {
+        $tree = Tree::create('tree-name', 'Tree title');
+
+        $this->assertSame('X1', $tree->getNewXref());
+        $this->assertSame('X2', $tree->getNewXref());
+        $this->assertSame('X3', $tree->getNewXref());
+        $this->assertSame('X4', $tree->getNewXref());
+        $this->assertSame('X5', $tree->getNewXref());
+    }
+
+    /**
+     * @covers \Fisharebest\Webtrees\Tree::createIndividual
+     * @expectedException \InvalidArgumentException
+     *
+     * @return void
+     */
+    public function testCreateInvalidIndividual(): void
+    {
+        $tree = Tree::create('tree-name', 'Tree title');
+        $user = User::create('user', 'User', 'user@example.com', 'secret');
+        $user->setPreference('canadmin', '1');
+        Auth::login($user);
+
+        $tree->createIndividual("0 @@ FOO\n1 SEX U");
+    }
+
+    /**
      * @covers \Fisharebest\Webtrees\Tree::createIndividual
      *
      * @return void
@@ -100,19 +132,19 @@ class TreeTest extends \Fisharebest\Webtrees\TestCase
     }
 
     /**
-     * @covers \Fisharebest\Webtrees\Tree::getNewXref
+     * @covers \Fisharebest\Webtrees\Tree::createFamily
+     * @expectedException \InvalidArgumentException
      *
      * @return void
      */
-    public function testGetNewXref(): void
+    public function testCreateInvalidFamily(): void
     {
         $tree = Tree::create('tree-name', 'Tree title');
+        $user = User::create('user', 'User', 'user@example.com', 'secret');
+        $user->setPreference('canadmin', '1');
+        Auth::login($user);
 
-        $this->assertSame('X1', $tree->getNewXref());
-        $this->assertSame('X2', $tree->getNewXref());
-        $this->assertSame('X3', $tree->getNewXref());
-        $this->assertSame('X4', $tree->getNewXref());
-        $this->assertSame('X5', $tree->getNewXref());
+        $tree->createFamily("0 @@ FOO\n1 MARR Y");
     }
 
     /**
@@ -132,6 +164,42 @@ class TreeTest extends \Fisharebest\Webtrees\TestCase
 
         $user->setPreference('auto_accept', '1');
         $record = $tree->createFamily("0 @@ FAM\n1 MARR Y");
+        $this->assertFalse($record->isPendingAddition());
+    }
+
+    /**
+     * @covers \Fisharebest\Webtrees\Tree::createMediaObject
+     * @expectedException \InvalidArgumentException
+     *
+     * @return void
+     */
+    public function testCreateInvalidMediaObject(): void
+    {
+        $tree = Tree::create('tree-name', 'Tree title');
+        $user = User::create('user', 'User', 'user@example.com', 'secret');
+        $user->setPreference('canadmin', '1');
+        Auth::login($user);
+
+        $tree->createMediaObject("0 @@ FOO\n1 MARR Y");
+    }
+
+    /**
+     * @covers \Fisharebest\Webtrees\Tree::createMediaObject
+     *
+     * @return void
+     */
+    public function testCreateMediaObject(): void
+    {
+        $tree = Tree::create('tree-name', 'Tree title');
+        $user = User::create('user', 'User', 'user@example.com', 'secret');
+        $user->setPreference('canadmin', '1');
+        Auth::login($user);
+
+        $record = $tree->createMediaObject("0 @@ OBJE\n1 FILE foo.jpeg");
+        $this->assertTrue($record->isPendingAddition());
+
+        $user->setPreference('auto_accept', '1');
+        $record = $tree->createMediaObject("0 @@ OBJE\n1 FILE foo.jpeg");
         $this->assertFalse($record->isPendingAddition());
     }
 

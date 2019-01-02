@@ -1264,7 +1264,7 @@ class FunctionsImport
 
             case 'OBJE':
 
-                DB::table('mediafile')
+                DB::table('media_file')
                     ->where('m_id', '=', $gid)
                     ->where('m_file', '=', $tree->id())
                     ->delete();
