@@ -62,7 +62,7 @@ class TreeTest extends \Fisharebest\Webtrees\TestCase
 
     /**
      * @covers \Fisharebest\Webtrees\Tree::getUserPreference
-     * @covers \Fisharebest\Webtrees\Tree::seUsertPreference
+     * @covers \Fisharebest\Webtrees\Tree::setUserPreference
      *
      * @return void
      */
