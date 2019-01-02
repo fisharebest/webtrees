@@ -93,13 +93,13 @@ class CalendarService
         // If no facts specified, get all except these
         $skipfacts = ['CHAN', 'BAPL', 'SLGC', 'SLGS', 'ENDL', 'CENS', 'RESI', 'NOTE', 'ADDR', 'OBJE', 'SOUR'];
 
-        $i_query = DB::table('individuals')->join('dates', function(JoinClause $join): void {
+        $i_query = DB::table('individuals')->join('dates', function (JoinClause $join): void {
             $join->on('d_gid', '=', 'i_id');
             $join->on('d_file', '=', 'i_file');
         })
         ->select(['i_id AS xref', 'i_gedcom AS gedcom', 'd_type', 'd_day', 'd_month', 'd_year', 'd_fact', 'd_type']);
 
-        $f_query = DB::table('families')->join('dates', function(JoinClause $join): void {
+        $f_query = DB::table('families')->join('dates', function (JoinClause $join): void {
             $join->on('d_gid', '=', 'f_id');
             $join->on('d_file', '=', 'f_file');
         })
@@ -112,17 +112,17 @@ class CalendarService
             // Events that start or end during the period
             $query
                 ->where('d_file', '=', $tree->id())
-                ->where(function(Builder $query) use ($jd1, $jd2) {
-                $query->where(function(Builder $query) use ($jd1, $jd2) {
-                    $query
+                ->where(function (Builder $query) use ($jd1, $jd2) {
+                    $query->where(function (Builder $query) use ($jd1, $jd2) {
+                        $query
                         ->where('d_julianday1', '>=', $jd1)
                         ->where('d_julianday1', '<=', $jd2);
-                })->orWhere(function(Builder $query) use ($jd1, $jd2) {
-                    $query
+                    })->orWhere(function (Builder $query) use ($jd1, $jd2) {
+                        $query
                         ->where('d_julianday2', '>=', $jd1)
                         ->where('d_julianday2', '<=', $jd2);
+                    });
                 });
-            });
 
             // Restrict to certain types of fact
             if (empty($facts)) {
