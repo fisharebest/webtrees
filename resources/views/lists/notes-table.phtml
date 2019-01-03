@@ -18,7 +18,7 @@ $count_individuals = DB::table('individuals')
     ->pluck('total', 'l_to')
     ->all();
 
-$count_individuals = DB::table('families')
+$count_families = DB::table('families')
     ->join('link', function (JoinClause $join): void {
         $join->on('l_from', '=', 'f_id');
         $join->on('l_file', '=', 'f_file');
