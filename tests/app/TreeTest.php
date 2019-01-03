@@ -288,9 +288,12 @@ class TreeTest extends \Fisharebest\Webtrees\TestCase
     {
         $tree = $this->importTree('demo.ged');
         $this->assertNotNull(Tree::findByName('demo.ged'));
+        Site::setPreference('DEFAULT_GEDCOM', $tree->name());
 
         $tree->delete();
+
         $this->assertNull(Tree::findByName('demo.ged'));
+        $this->assertSame('', Site::getPreference('DEFAULT_GEDCOM'));
     }
 
     /**
