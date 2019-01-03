@@ -28,16 +28,15 @@ use Fisharebest\Webtrees\SurnameTradition\PortugueseSurnameTradition;
 use Fisharebest\Webtrees\SurnameTradition\SpanishSurnameTradition;
 
 /**
- * Test harness for the class Soundex
+ * Test harness for the class SurnameTradition
  */
 class SurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
 {
     /**
-     * Test create()
-     *
+     * @covers \Fisharebest\Webtrees\SurnameTradition::create
      * @return void
      */
-    public function testCreate()
+    public function testCreate(): void
     {
         $this->assertTrue(SurnameTradition::create('none') instanceof DefaultSurnameTradition);
         $this->assertTrue(SurnameTradition::create('icelandic') instanceof IcelandicSurnameTradition);
@@ -53,9 +52,10 @@ class SurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
     /**
      * Test create() with invalid input
      *
+     * @covers \Fisharebest\Webtrees\SurnameTradition::create
      * @return void
      */
-    public function testCreateInvalid()
+    public function testCreateInvalid(): void
     {
         $this->assertTrue(SurnameTradition::create('FOOBAR') instanceof DefaultSurnameTradition);
     }
@@ -63,9 +63,10 @@ class SurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
     /**
      * Test allDescriptions()
      *
+     * @covers \Fisharebest\Webtrees\SurnameTradition::allDescriptions
      * @return void
      */
-    public function testAllDescriptions()
+    public function testAllDescriptions(): void
     {
         $descriptions = SurnameTradition::allDescriptions();
         $this->assertCount(9, $descriptions);
