@@ -1,0 +1,118 @@
+<?php
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2019 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
+declare(strict_types=1);
+
+namespace Fisharebest\Webtrees\Services;
+
+use Closure;
+use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Query\Builder;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
+use function strtr;
+
+/**
+ * Paginate and search queries for datatables.
+ */
+class DatatablesService
+{
+    // We need to escape special characters in a LIKE clause, so we can search for them.
+    private const ESCAPE_LIKE = [
+        '%'  => '\\%',
+        '_'  => '\\_',
+        '\\' => '\\\\',
+    ];
+
+    /**
+     * Apply filtering and pagination to a query, and generate a response suitable for datatables.
+     *
+     * @link http://www.datatables.net/usage/server-side
+     *
+     * @param Request  $request        Includes the datatables request parameters.
+     * @param Builder  $query          A query to fetch the unfiltered rows and columns.
+     * @param string[] $search_columns The names of searchable columns.
+     * @param Closure  $callback       Converts a row-object to an array-of-columns.
+     *
+     * @return JsonResponse
+     */
+    public function handle(Request $request, Builder $query, array $search_columns, Closure $callback): JsonResponse
+    {
+        $search = $request->get('search', [])['value'] ?? '';
+        $start  = (int) $request->get('start');
+        $length = (int) $request->get('length');
+        $order  = $request->get('order', []);
+        $draw   = (int) $request->get('draw');
+
+        // Count unfiltered records
+        $recordsTotal = (clone $query)->count();
+
+        // Filtering
+        if ($search !== '') {
+            $search = $this->escapeLike($search);
+
+            $query->where(function (Builder $query) use ($search, $search_columns): void {
+                foreach ($search_columns as $search_column) {
+                    $query->orWhere($search_column, 'LIKE', '%' . $search . '%');
+                }
+            });
+        }
+
+        // Sorting
+        if (!empty($order)) {
+            foreach ($order as $value) {
+                // Columns in datatables are numbered from zero.
+                // Columns in MySQL are numbered starting with one.
+                $query->orderBy(DB::raw(1 + $value['column']), $value['dir']);
+            }
+        } else {
+            $query->orderBy(DB::raw(1));
+        }
+
+        // Paginating
+        if ($length > 0) {
+            $recordsFiltered = (clone $query)->count();
+
+            $query->skip($start)->limit($length);
+            $data = $query->get();
+        } else {
+            $data = $query->get();
+
+            $recordsFiltered = $data->count();
+        }
+
+        $data = $data->map($callback)->all();
+
+        return new JsonResponse([
+            'draw'            => $draw,
+            'recordsTotal'    => $recordsTotal,
+            'recordsFiltered' => $recordsFiltered,
+            'data'            => $data,
+        ]);
+    }
+
+    /**
+     * Escape a search term, so we can use it in a LIKE clause.
+     * This lets us search for percent signs, underscores, etc.
+     *
+     * @param string $string
+     *
+     * @return string
+     */
+    private function escapeLike(string $string): string
+    {
+        return strtr($string, self::ESCAPE_LIKE);
+    }
+}

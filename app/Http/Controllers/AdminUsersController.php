@@ -18,17 +18,20 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Functions\FunctionsDate;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Mail;
+use Fisharebest\Webtrees\Services\DatatablesService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
+use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Query\JoinClause;
+use stdClass;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -139,94 +142,75 @@ class AdminUsersController extends AbstractBaseController
     }
 
     /**
-     * @param Request $request
-     *
-     * @param User    $user
+     * @param DatatablesService $datatables_service
+     * @param Request           $request
+     * @param User              $user
      *
      * @return JsonResponse
      */
-    public function data(Request $request, User $user): JsonResponse
+    public function data(DatatablesService $datatables_service, Request $request, User $user): JsonResponse
     {
-        $search = $request->get('search')['value'];
-        $start  = (int) $request->get('start');
-        $length = (int) $request->get('length');
-        $order  = $request->get('order', []);
-        $draw   = (int) $request->get('draw');
-
-        $sql_select =
-            "SELECT SQL_CALC_FOUND_ROWS u.user_id, user_name, real_name, email, us1.setting_value AS language, us2.setting_value AS registered_at, us3.setting_value AS active_at, us4.setting_value AS verified, us5.setting_value AS verified_by_admin" .
-            " FROM `##user` u" .
-            " LEFT JOIN `##user_setting` us1 ON (u.user_id=us1.user_id AND us1.setting_name='language')" .
-            " LEFT JOIN `##user_setting` us2 ON (u.user_id=us2.user_id AND us2.setting_name='reg_timestamp')" .
-            " LEFT JOIN `##user_setting` us3 ON (u.user_id=us3.user_id AND us3.setting_name='sessiontime')" .
-            " LEFT JOIN `##user_setting` us4 ON (u.user_id=us4.user_id AND us4.setting_name='verified')" .
-            " LEFT JOIN `##user_setting` us5 ON (u.user_id=us5.user_id AND us5.setting_name='verified_by_admin')" .
-            " WHERE u.user_id > 0";
-
-        $args = [];
-
-        if ($search) {
-            $sql_select .= " AND (user_name LIKE CONCAT('%', :search_1, '%') OR real_name LIKE CONCAT('%', :search_2, '%') OR email LIKE CONCAT('%', :search_3, '%'))";
-            $args['search_1'] = $search;
-            $args['search_2'] = $search;
-            $args['search_3'] = $search;
-        }
-
-        if ($order) {
-            $sql_select .= " ORDER BY ";
-            foreach ($order as $key => $value) {
-                if ($key > 0) {
-                    $sql_select .= ',';
-                }
-                // Columns in datatables are numbered from zero.
-                // Columns in MySQL are numbered starting with one.
-                switch ($value['dir']) {
-                    case 'asc':
-                        $sql_select .= (1 + $value['column']) . " ASC ";
-                        break;
-                    case 'desc':
-                        $sql_select .= (1 + $value['column']) . " DESC ";
-                        break;
-                }
-            }
-        } else {
-            $sql_select = " ORDER BY 1 ASC";
-        }
-
-        if ($length > 0) {
-            $sql_select .= " LIMIT :limit OFFSET :offset";
-            $args['limit']  = $length;
-            $args['offset'] = $start;
-        }
-
-        $rows = Database::prepare($sql_select)->execute($args)->fetchAll();
-
-        // Total filtered/unfiltered rows
-        $recordsFiltered = (int) Database::prepare("SELECT FOUND_ROWS()")->fetchOne();
-        $recordsTotal    = (int) Database::prepare("SELECT COUNT(*) FROM `##user` WHERE user_id > 0")->fetchOne();
-
         $installed_languages = [];
         foreach (I18N::installedLocales() as $installed_locale) {
             $installed_languages[$installed_locale->languageTag()] = $installed_locale->endonym();
         }
 
-        // Reformat various columns for display
-        $data = [];
-        foreach ($rows as $row) {
-            $user_id   = $row->user_id;
-            $user_name = $row->user_name;
+        $query = DB::table('user')
+            ->leftJoin('user_setting AS us1', function (JoinClause $join): void {
+                $join
+                    ->on('us1.user_id', '=', 'user.user_id')
+                    ->where('us1.setting_name', '=', 'language');
+            })
+            ->leftJoin('user_setting AS us2', function (JoinClause $join): void {
+                $join
+                    ->on('us2.user_id', '=', 'user.user_id')
+                    ->where('us2.setting_name', '=', 'reg_timestamp');
+            })
+            ->leftJoin('user_setting AS us3', function (JoinClause $join): void {
+                $join
+                    ->on('us3.user_id', '=', 'user.user_id')
+                    ->where('us3.setting_name', '=', 'sessiontime');
+            })
+            ->leftJoin('user_setting AS us4', function (JoinClause $join): void {
+                $join
+                    ->on('us4.user_id', '=', 'user.user_id')
+                    ->where('us4.setting_name', '=', 'verified');
+            })
+            ->leftJoin('user_setting AS us5', function (JoinClause $join): void {
+                $join
+                    ->on('us5.user_id', '=', 'user.user_id')
+                    ->where('us5.setting_name', '=', 'verified_by_admin');
+            })
+            ->where('user.user_id', '>', '0')
+            ->select([
+                'user.user_id AS edit_menu', // Hidden column
+                'user.user_id',
+                'user_name',
+                'real_name',
+                'email',
+                'us1.setting_value AS language',
+                'us2.setting_value AS registered_at_sort', // Hidden column
+                'us2.setting_value AS registered_at',
+                'us3.setting_value AS active_at_sort', // Hidden column
+                'us3.setting_value AS active_at',
+                'us4.setting_value AS verified',
+                'us5.setting_value AS verified_by_admin',
+            ]);
 
-            if ($user_id != $user->getUserId()) {
-                $admin_options = '<div class="dropdown-item"><a href="#" onclick="return masquerade(' . $user_id . ')">' . view('icons/user') . ' ' . I18N::translate('Masquerade as this user') . '</a></div>' . '<div class="dropdown-item"><a href="#" data-confirm="' . I18N::translate('Are you sure you want to delete “%s”?', e($user_name)) . '" onclick="delete_user(this.dataset.confirm, ' . $user_id . ');">' . view('icons/delete') . ' ' . I18N::translate('Delete') . '</a></div>';
+        $search_columns = ['user_name', 'real_name', 'email'];
+
+        $callback = function (stdClass $row) use ($installed_languages, $user): array {
+            if ($row->user_id != $user->getUserId()) {
+                $admin_options = '<div class="dropdown-item"><a href="#" onclick="return masquerade(' . $row->user_id . ')">' . view('icons/user') . ' ' . I18N::translate('Masquerade as this user') . '</a></div>' . '<div class="dropdown-item"><a href="#" data-confirm="' . I18N::translate('Are you sure you want to delete “%s”?', e($row->user_name)) . '" onclick="delete_user(this.dataset.confirm, ' . $row->user_id . ');">' . view('icons/delete') . ' ' . I18N::translate('Delete') . '</a></div>';
             } else {
                 // Do not delete ourself!
                 $admin_options = '';
             }
 
             $datum = [
-                '<div class="dropdown"><button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" id="edit-user-button-' . $user_id . '" aria-haspopup="true" aria-expanded="false">' . view('icons/edit') . ' <span class="caret"></span></button><div class="dropdown-menu" aria-labelledby="edit-user-button-' . $user_id . '"><div class="dropdown-item"><a href="' . e(route('admin-users-edit', ['user_id' => $user_id])) . '">' . view('icons/edit') . ' ' . I18N::translate('Edit') . '</a></div><div class="divider"></div><div class="dropdown-item"><a href="' . e(route('user-page-user-edit', ['user_id' => $user_id])) . '">' . view('icons/block') . ' ' . I18N::translate('Change the blocks on this user’s “My page”') . '</a></div>' . $admin_options . '</div></div>',
-                $user_id,
-                '<span dir="auto">' . e($user_name) . '</span>',
+                '<div class="dropdown"><button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" id="edit-user-button-' . $row->user_id . '" aria-haspopup="true" aria-expanded="false">' . view('icons/edit') . ' <span class="caret"></span></button><div class="dropdown-menu" aria-labelledby="edit-user-button-' . $row->user_id . '"><div class="dropdown-item"><a href="' . e(route('admin-users-edit', ['user_id' => $row->user_id])) . '">' . view('icons/edit') . ' ' . I18N::translate('Edit') . '</a></div><div class="divider"></div><div class="dropdown-item"><a href="' . e(route('user-page-user-edit', ['user_id' => $row->user_id])) . '">' . view('icons/block') . ' ' . I18N::translate('Change the blocks on this user’s “My page”') . '</a></div>' . $admin_options . '</div></div>',
+                $row->user_id,
+                '<span dir="auto">' . e($row->user_name) . '</span>',
                 '<span dir="auto">' . e($row->real_name) . '</span>',
                 e($row->email),
                 $installed_languages[$row->language] ?? $row->language,
@@ -239,27 +223,19 @@ class AdminUsersController extends AbstractBaseController
             ];
 
             // Link to send email to other users.
-            if ($user_id != $user->getUserId()) {
-                $datum[4] = '<a href="' . e(route('message', ['to'  => $datum[2],
-                                                              'url' => route('admin-users'),
-                    ])) . '">' . $datum[4] . '</a>';
+            if ($row->user_id != $user->getUserId()) {
+                $datum[4] = '<a href="' . e(route('message', ['to'  => $datum[2], 'url' => route('admin-users')])) . '">' . $datum[4] . '</a>';
             }
 
             // Highlight old registrations.
             if (date('U') - $datum[6] > 604800 && !$datum[10]) {
-                $datum[7] = '<span class="red">' . $datum[7] . '</span>';
+                $datum[7] = '<span class="text-danger">' . $datum[7] . '</span>';
             }
 
-            $data[] = $datum;
-        }
+            return $datum;
+        };
 
-        // See http://www.datatables.net/usage/server-side
-        return new JsonResponse([
-            'draw'            => $draw,
-            'recordsTotal'    => $recordsTotal,
-            'recordsFiltered' => $recordsFiltered,
-            'data'            => $data,
-        ]);
+        return $datatables_service->handle($request, $query, $search_columns, $callback);
     }
 
     /**
@@ -362,7 +338,6 @@ class AdminUsersController extends AbstractBaseController
 
         return new RedirectResponse($url);
     }
-
 
     /**
      * @param Request $request
