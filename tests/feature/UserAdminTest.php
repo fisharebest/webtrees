@@ -33,7 +33,7 @@ class UserAdminTest extends \Fisharebest\Webtrees\TestCase
      * @covers \Fisharebest\Webtrees\Services\DatatablesService
      * @return void
      */
-    public function testUserNameAndRealNameAreShownOnUserAdminPage(): void
+    public function testUserDetailsAreShownOnUserAdminPage(): void
     {
         $admin = User::create('AdminName', 'Administrator', 'admin@example.com', 'secret');
         $user  = User::create('UserName', 'RealName', 'user@example.com', 'secret');
@@ -45,15 +45,77 @@ class UserAdminTest extends \Fisharebest\Webtrees\TestCase
 
         $this->assertContains('AdminName', $response->getContent());
         $this->assertContains('Administrator', $response->getContent());
+        $this->assertContains('admin@example.com', $response->getContent());
         $this->assertContains('UserName', $response->getContent());
         $this->assertContains('RealName', $response->getContent());
+        $this->assertContains('user@example.com', $response->getContent());
+    }
 
-        // And if we filter by "admin", the regular user is not shown.
+    /**
+     * @covers \Fisharebest\Webtrees\Http\Controllers\AdminUsersController
+     * @covers \Fisharebest\Webtrees\Services\DatatablesService
+     * @return void
+     */
+    public function testFilteringUserAdminPage(): void
+    {
+        $admin = User::create('AdminName', 'Administrator', 'admin@example.com', 'secret');
+        $user  = User::create('UserName', 'RealName', 'user@example.com', 'secret');
+
+        $controller         = new AdminUsersController();
+        $datatables_service = new DatatablesService();
         $request            = new Request(['search' => ['value' => 'admin']]);
         $response           = $controller->data($datatables_service, $request, $admin);
+
         $this->assertContains('AdminName', $response->getContent());
         $this->assertContains('Administrator', $response->getContent());
+        $this->assertContains('admin@example.com', $response->getContent());
         $this->assertNotContains('UserName', $response->getContent());
         $this->assertNotContains('RealName', $response->getContent());
+        $this->assertNotContains('user@example.com', $response->getContent());
+    }
+
+    /**
+     * @covers \Fisharebest\Webtrees\Http\Controllers\AdminUsersController
+     * @covers \Fisharebest\Webtrees\Services\DatatablesService
+     * @return void
+     */
+    public function testPaginatingUserAdminPage(): void
+    {
+        $admin = User::create('AdminName', 'Administrator', 'admin@example.com', 'secret');
+        $user  = User::create('UserName', 'RealName', 'user@example.com', 'secret');
+
+        $controller         = new AdminUsersController();
+        $datatables_service = new DatatablesService();
+        $request  = new Request(['length' => 1]);
+        $response = $controller->data($datatables_service, $request, $admin);
+
+        $this->assertContains('AdminName', $response->getContent());
+        $this->assertNotContains('UserName', $response->getContent());
+    }
+
+    /**
+     * @covers \Fisharebest\Webtrees\Http\Controllers\AdminUsersController
+     * @covers \Fisharebest\Webtrees\Services\DatatablesService
+     * @return void
+     */
+    public function testSortingUserAdminPage(): void
+    {
+        $admin = User::create('AdminName', 'Administrator', 'admin@example.com', 'secret');
+        $user  = User::create('UserName', 'RealName', 'user@example.com', 'secret');
+
+        $controller         = new AdminUsersController();
+        $datatables_service = new DatatablesService();
+
+        $request  = new Request(['order' => [['column' => 2, 'dir' => 'asc']]]);
+        $response = $controller->data($datatables_service, $request, $admin);
+        $pos1     = strpos($response->getContent(), 'AdminName');
+        $pos2     = strpos($response->getContent(), 'UserName');
+        $this->assertLessThan($pos2, $pos1);
+
+        $request  = new Request(['order' => [['column' => 2, 'dir' => 'desc']]]);
+        $response = $controller->data($datatables_service, $request, $admin);
+        $pos1     = strpos($response->getContent(), 'AdminName');
+        $pos2     = strpos($response->getContent(), 'UserName');
+        $this->assertGreaterThan($pos2, $pos1);
     }
 }
