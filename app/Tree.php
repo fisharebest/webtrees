@@ -17,12 +17,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-use Exception;
 use Fisharebest\Webtrees\Functions\FunctionsExport;
 use Fisharebest\Webtrees\Functions\FunctionsImport;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\JoinClause;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use InvalidArgumentException;
 use PDOException;
@@ -609,35 +609,46 @@ class Tree
      */
     public function exportGedcom($stream)
     {
-        $stmt = Database::prepare(
-            "SELECT i_gedcom AS gedcom, i_id AS xref, 1 AS n FROM `##individuals` WHERE i_file = :tree_id_1" .
-            " UNION ALL " .
-            "SELECT f_gedcom AS gedcom, f_id AS xref, 2 AS n FROM `##families`    WHERE f_file = :tree_id_2" .
-            " UNION ALL " .
-            "SELECT s_gedcom AS gedcom, s_id AS xref, 3 AS n FROM `##sources`     WHERE s_file = :tree_id_3" .
-            " UNION ALL " .
-            "SELECT o_gedcom AS gedcom, o_id AS xref, 4 AS n FROM `##other`       WHERE o_file = :tree_id_4 AND o_type NOT IN ('HEAD', 'TRLR')" .
-            " UNION ALL " .
-            "SELECT m_gedcom AS gedcom, m_id AS xref, 5 AS n FROM `##media`       WHERE m_file = :tree_id_5" .
-            " ORDER BY n, LENGTH(xref), xref"
-        )->execute([
-            'tree_id_1' => $this->id,
-            'tree_id_2' => $this->id,
-            'tree_id_3' => $this->id,
-            'tree_id_4' => $this->id,
-            'tree_id_5' => $this->id,
-        ]);
-
         $buffer = FunctionsExport::reformatRecord(FunctionsExport::gedcomHeader($this, 'UTF-8'));
-        while (($row = $stmt->fetch()) !== false) {
-            $buffer .= FunctionsExport::reformatRecord($row->gedcom);
-            if (strlen($buffer) > 65535) {
-                fwrite($stream, $buffer);
-                $buffer = '';
-            }
-        }
+
+        $union_families = DB::table('families')
+            ->where('f_file', '=', $this->id)
+            ->select(['f_gedcom AS gedcom', 'f_id AS xref', DB::raw('LENGTH(f_id) AS len'), DB::raw('2 AS n')]);
+
+        $union_sources = DB::table('sources')
+            ->where('s_file', '=', $this->id)
+            ->select(['s_gedcom AS gedcom', 's_id AS xref', DB::raw('LENGTH(s_id) AS len'), DB::raw('3 AS n')]);
+
+        $union_other = DB::table('other')
+            ->where('o_file', '=', $this->id)
+            ->whereNotIn('o_type', ['HEAD', 'TRLR'])
+            ->select(['o_gedcom AS gedcom', 'o_id AS xref', DB::raw('LENGTH(o_id) AS len'), DB::raw('4 AS n')]);
+
+        $union_media = DB::table('media')
+            ->where('m_file', '=', $this->id)
+            ->select(['m_gedcom AS gedcom', 'm_id AS xref', DB::raw('LENGTH(m_id) AS len'), DB::raw('5 AS n')]);
+
+        $rows = DB::table('individuals')
+            ->where('i_file', '=', $this->id)
+            ->select(['i_gedcom AS gedcom', 'i_id AS xref', DB::raw('LENGTH(i_id) AS len'), DB::raw('1 AS n')])
+            ->union($union_families)
+            ->union($union_sources)
+            ->union($union_other)
+            ->union($union_media)
+            ->orderBy('n')
+            ->orderBy('len')
+            ->orderBy('xref')
+            ->chunk(100, function(Collection $rows) use ($stream, &$buffer): void {
+                foreach ($rows as $row) {
+                    $buffer .= FunctionsExport::reformatRecord($row->gedcom);
+                    if (strlen($buffer) > 65535) {
+                        fwrite($stream, $buffer);
+                        $buffer = '';
+                    }
+                }
+            });
+
         fwrite($stream, $buffer . '0 TRLR' . Gedcom::EOL);
-        $stmt->closeCursor();
     }
 
     /**

@@ -17,6 +17,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use function stream_get_contents;
+
 /**
  * Test harness for the class Tree
  */
@@ -310,5 +312,32 @@ class TreeTest extends \Fisharebest\Webtrees\TestCase
         $user->setPreference('auto_accept', '0');
         $tree->createIndividual("0 @@ INDI\n1 SEX F\n1 NAME Foo /Bar/");
         $this->assertTrue($tree->hasPendingEdit());
+    }
+
+    /**
+     * @covers \Fisharebest\Webtrees\Tree::exportGedcom
+     *
+     * @return void
+     */
+    public function testExportGedcom(): void
+    {
+        $tree = $this->importTree('demo.ged');
+
+        $fp = fopen('php://memory', 'w');
+
+        $tree->exportGedcom($fp);
+
+        rewind($fp);
+
+        $original = file_get_contents(__DIR__ . '/../data/demo.ged');
+        $export   = stream_get_contents($fp);
+
+        // The date and time in the HEAD record will be different.
+        $original = preg_replace('/\n1 DATE .. ... ..../', '', $original, 1);
+        $export   = preg_replace('/\n1 DATE .. ... ..../', '', $export, 1);
+        $original = preg_replace('/\n2 TIME ..:..:../', '', $original, 1);
+        $export   = preg_replace('/\n2 TIME ..:..:../', '', $export, 1);
+
+        $this->assertSame($original, $export);
     }
 }
