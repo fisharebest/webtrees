@@ -227,7 +227,7 @@ class AdminUsersController extends AbstractBaseController
                 '<div class="dropdown"><button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" id="edit-user-button-' . $user_id . '" aria-haspopup="true" aria-expanded="false">' . view('icons/edit') . ' <span class="caret"></span></button><div class="dropdown-menu" aria-labelledby="edit-user-button-' . $user_id . '"><div class="dropdown-item"><a href="' . e(route('admin-users-edit', ['user_id' => $user_id])) . '">' . view('icons/edit') . ' ' . I18N::translate('Edit') . '</a></div><div class="divider"></div><div class="dropdown-item"><a href="' . e(route('user-page-user-edit', ['user_id' => $user_id])) . '">' . view('icons/block') . ' ' . I18N::translate('Change the blocks on this user’s “My page”') . '</a></div>' . $admin_options . '</div></div>',
                 $user_id,
                 '<span dir="auto">' . e($user_name) . '</span>',
-                '<span dir="auto">' . e($row->user_name) . '</span>',
+                '<span dir="auto">' . e($row->real_name) . '</span>',
                 e($row->email),
                 $installed_languages[$row->language] ?? $row->language,
                 $row->registered_at,
