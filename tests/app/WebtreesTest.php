@@ -20,6 +20,8 @@ namespace Fisharebest\Webtrees;
 use function date_default_timezone_get;
 use function date_default_timezone_set;
 use function error_reporting;
+use ErrorException;
+use function set_error_handler;
 
 /**
  * Test the Webtrees class
@@ -34,6 +36,7 @@ class WebtreesTest extends \Fisharebest\Webtrees\TestCase
     {
         date_default_timezone_set('Europe/London');
         error_reporting(0);
+        set_error_handler(null);
 
         Webtrees::init();
 
@@ -43,5 +46,16 @@ class WebtreesTest extends \Fisharebest\Webtrees\TestCase
         // webtrees sets the error reporting level.
         $this->assertNotSame(0, error_reporting());
         $this->assertSame(Webtrees::ERROR_REPORTING, error_reporting());
+
+        try {
+            // Trigger an error
+            fopen(__DIR__ . '/no-such-file', 'r');
+        } catch (ErrorException $ex) {
+            $this->assertSame(__FILE__, $ex->getFile());
+        }
+
+        // Disable error reporting (we could use "@"), and don't raise an exception.
+        error_reporting(0);
+        fopen(__DIR__ . '/no-such-file', 'r');
     }
 }
