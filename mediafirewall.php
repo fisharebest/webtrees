@@ -377,9 +377,11 @@ if ($if_modified_since === $filetimeHeader) {
     }
 }
 
+$disposition = (Filter::getBool('dl')) ? 'attachment' : 'inline';
+
 // send headers for the image
 header('Content-Type: ' . $mimetype);
-header('Content-Disposition: filename="' . addslashes(basename($media->getFilename())) . '"');
+header('Content-Disposition: ' . $disposition . '; filename="' . addslashes(basename($media->getFilename())) . '"');
 
 if ($generatewatermark) {
     // generate the watermarked image
