@@ -244,7 +244,7 @@ class User
             ->select(['user_id', 'user_name', 'real_name', 'email'])
             ->get();
 
-        return $rows->map(function(stdClass $row): User {
+        return $rows->map(function (stdClass $row): User {
             return new static($row);
         })->all();
     }
@@ -257,7 +257,7 @@ class User
     public static function administrators(): array
     {
         $rows = DB::table('user')
-            ->join('user_setting', function(JoinClause $join): void {
+            ->join('user_setting', function (JoinClause $join): void {
                 $join
                     ->on('user_setting.user_id', '=', 'user.user_id')
                     ->where('user_setting.setting_name', '=', 'canadmin')
@@ -268,7 +268,7 @@ class User
             ->select(['user.user_id', 'user_name', 'real_name', 'email'])
             ->get();
 
-        return $rows->map(function(stdClass $row): User {
+        return $rows->map(function (stdClass $row): User {
             return new static($row);
         })->all();
     }
@@ -305,7 +305,7 @@ class User
     public static function managers(): array
     {
         $rows = DB::table('user')
-            ->join('user_gedcom_setting', function(JoinClause $join): void {
+            ->join('user_gedcom_setting', function (JoinClause $join): void {
                 $join
                     ->on('user_gedcom_setting.user_id', '=', 'user.user_id')
                     ->where('user_gedcom_setting.setting_name', '=', 'canedit')
@@ -316,7 +316,7 @@ class User
             ->select(['user.user_id', 'user_name', 'real_name', 'email'])
             ->get();
 
-        return $rows->map(function(stdClass $row): User {
+        return $rows->map(function (stdClass $row): User {
             return new static($row);
         })->all();
     }
@@ -329,7 +329,7 @@ class User
     public static function moderators(): array
     {
         $rows = DB::table('user')
-            ->join('user_gedcom_setting', function(JoinClause $join): void {
+            ->join('user_gedcom_setting', function (JoinClause $join): void {
                 $join
                     ->on('user_gedcom_setting.user_id', '=', 'user.user_id')
                     ->where('user_gedcom_setting.setting_name', '=', 'canedit')
@@ -340,7 +340,7 @@ class User
             ->select(['user.user_id', 'user_name', 'real_name', 'email'])
             ->get();
 
-        return $rows->map(function(stdClass $row): User {
+        return $rows->map(function (stdClass $row): User {
             return new static($row);
         })->all();
     }
@@ -353,7 +353,7 @@ class User
     public static function unapproved(): array
     {
         $rows = DB::table('user')
-            ->join('user_setting', function(JoinClause $join): void {
+            ->join('user_setting', function (JoinClause $join): void {
                 $join
                     ->on('user_setting.user_id', '=', 'user.user_id')
                     ->where('user_setting.setting_name', '=', 'verified_by_admin')
@@ -364,7 +364,7 @@ class User
             ->select(['user.user_id', 'user_name', 'real_name', 'email'])
             ->get();
 
-        return $rows->map(function(stdClass $row): User {
+        return $rows->map(function (stdClass $row): User {
             return new static($row);
         })->all();
     }
@@ -377,7 +377,7 @@ class User
     public static function unverified(): array
     {
         $rows = DB::table('user')
-            ->join('user_setting', function(JoinClause $join): void {
+            ->join('user_setting', function (JoinClause $join): void {
                 $join
                     ->on('user_setting.user_id', '=', 'user.user_id')
                     ->where('user_setting.setting_name', '=', 'verified')
@@ -388,7 +388,7 @@ class User
             ->select(['user.user_id', 'user_name', 'real_name', 'email'])
             ->get();
 
-        return $rows->map(function(stdClass $row): User {
+        return $rows->map(function (stdClass $row): User {
             return new static($row);
         })->all();
     }
@@ -408,7 +408,7 @@ class User
             ->distinct()
             ->get();
 
-        return $rows->map(function(stdClass $row): User {
+        return $rows->map(function (stdClass $row): User {
             return new static($row);
         })->all();
     }
