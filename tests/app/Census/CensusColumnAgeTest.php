@@ -42,7 +42,7 @@ class CensusColumnAgeTest extends \Fisharebest\Webtrees\TestCase
      *
      * @return void
      */
-    public function testGenerateColumn()
+    public function testGenerateColumn(): void
     {
         $individual = Mockery::mock(Individual::class);
         $individual->shouldReceive('getEstimatedBirthDate')->andReturn(new Date('01 JAN 1800'));

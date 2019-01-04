@@ -29,7 +29,7 @@ class CensusOfDenmarkTest extends \Fisharebest\Webtrees\TestCase
      *
      * @return void
      */
-    public function testPlace()
+    public function testPlace(): void
     {
         $census = new CensusOfDenmark;
 
@@ -43,7 +43,7 @@ class CensusOfDenmarkTest extends \Fisharebest\Webtrees\TestCase
      *
      * @return void
      */
-    public function testAllDates()
+    public function testAllDates(): void
     {
         $census = new CensusOfDenmark;
 

@@ -41,7 +41,7 @@ class CensusColumnGivenNamesTest extends \Fisharebest\Webtrees\TestCase
      *
      * @return void
      */
-    public function testGivenNames()
+    public function testGivenNames(): void
     {
         $individual = Mockery::mock(Individual::class);
         $individual->shouldReceive('getAllNames')->andReturn([['givn' => 'Joe']]);
@@ -59,7 +59,7 @@ class CensusColumnGivenNamesTest extends \Fisharebest\Webtrees\TestCase
      *
      * @return void
      */
-    public function testNoName()
+    public function testNoName(): void
     {
         $individual = Mockery::mock(Individual::class);
         $individual->shouldReceive('getAllNames')->andReturn([]);

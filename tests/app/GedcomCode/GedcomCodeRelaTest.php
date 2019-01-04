@@ -27,7 +27,7 @@ class GedcomCodeRelaTest extends \Fisharebest\Webtrees\TestCase
      *
      * @return void
      */
-    public function testClassExists()
+    public function testClassExists(): void
     {
         $this->assertTrue(class_exists('\Fisharebest\Webtrees\GedcomCode\GedcomCodeRela'));
     }

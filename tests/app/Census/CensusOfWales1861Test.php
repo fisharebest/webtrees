@@ -29,7 +29,7 @@ class CensusOfWales1861Test extends \Fisharebest\Webtrees\TestCase
      *
      * @return void
      */
-    public function testPlaceAndDate()
+    public function testPlaceAndDate(): void
     {
         $census = new CensusOfWales1861;
 
@@ -45,7 +45,7 @@ class CensusOfWales1861Test extends \Fisharebest\Webtrees\TestCase
      *
      * @return void
      */
-    public function testColumns()
+    public function testColumns(): void
     {
         $census  = new CensusOfWales1861;
         $columns = $census->columns();

@@ -57,7 +57,7 @@ class CensusColumnBirthPlaceTest extends \Fisharebest\Webtrees\TestCase
      *
      * @return void
      */
-    public function testPlaceCountry()
+    public function testPlaceCountry(): void
     {
         $individual = Mockery::mock(Individual::class);
         $individual->shouldReceive('getBirthPlace')->andReturn($this->getPlaceMock('Westminster, London, England'));
@@ -76,7 +76,7 @@ class CensusColumnBirthPlaceTest extends \Fisharebest\Webtrees\TestCase
      *
      * @return void
      */
-    public function testPlaceAndCountry()
+    public function testPlaceAndCountry(): void
     {
         $individual = Mockery::mock(Individual::class);
         $individual->shouldReceive('getBirthPlace')->andReturn($this->getPlaceMock('England'));
@@ -95,7 +95,7 @@ class CensusColumnBirthPlaceTest extends \Fisharebest\Webtrees\TestCase
      *
      * @return void
      */
-    public function testDifferentCountry()
+    public function testDifferentCountry(): void
     {
         $individual = Mockery::mock(Individual::class);
         $individual->shouldReceive('getBirthPlace')->andReturn($this->getPlaceMock('Paris, France'));

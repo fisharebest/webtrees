@@ -41,7 +41,7 @@ class CensusColumnOccupationTest extends \Fisharebest\Webtrees\TestCase
      *
      * @return void
      */
-    public function testNoOccupation()
+    public function testNoOccupation(): void
     {
         $individual = Mockery::mock(Individual::class);
         $individual->shouldReceive('facts')->with(['OCCU'])->andReturn([]);
@@ -59,7 +59,7 @@ class CensusColumnOccupationTest extends \Fisharebest\Webtrees\TestCase
      *
      * @return void
      */
-    public function testOccupation()
+    public function testOccupation(): void
     {
         $fact = Mockery::mock(Fact::class);
         $fact->shouldReceive('value')->andReturn('Farmer');

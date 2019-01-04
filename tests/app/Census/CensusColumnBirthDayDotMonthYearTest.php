@@ -43,7 +43,7 @@ class CensusColumnBirthDayDotMonthYearTest extends \Fisharebest\Webtrees\TestCas
      *
      * @return void
      */
-    public function testGenerateColumn()
+    public function testGenerateColumn(): void
     {
         $cal_date = Mockery::mock(GregorianDate::class);
         $cal_date->shouldReceive('format')->andReturn('30. June 1832');

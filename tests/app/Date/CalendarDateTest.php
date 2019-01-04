@@ -28,7 +28,7 @@ class CalendarDateTest extends TestCase
      * @covers \Fisharebest\Webtrees\Date\AbstractCalendarDate::ageDifference
      * @return void
      */
-    public function testAgeDifference()
+    public function testAgeDifference(): void
     {
         $date1 = new GregorianDate(['1900', 'FEB', '4']);
         $date2 = new GregorianDate(['1930', 'FEB', '3']);
@@ -67,7 +67,7 @@ class CalendarDateTest extends TestCase
      * @covers \Fisharebest\Webtrees\Date\AbstractCalendarDate::ageDifference
      * @return void
      */
-    public function testAgeDifferenceIncomplete()
+    public function testAgeDifferenceIncomplete(): void
     {
         $date1 = new GregorianDate(['', 'FEB', '4']);
         $date2 = new GregorianDate(['1900', 'FEB', '3']);
@@ -110,7 +110,7 @@ class CalendarDateTest extends TestCase
      * @covers \Fisharebest\Webtrees\Date\AbstractCalendarDate::ageDifference
      * @return void
      */
-    public function testAgeDifferenceOverlap()
+    public function testAgeDifferenceOverlap(): void
     {
         $date1 = new GregorianDate(['1900', 'FEB', '4']);
         $date2 = new GregorianDate(['1900', 'FEB', '']);

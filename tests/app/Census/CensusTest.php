@@ -27,7 +27,7 @@ class CensusTest extends \Fisharebest\Webtrees\TestCase
      *
      * @return void
      */
-    public function testCensusPlaces()
+    public function testCensusPlaces(): void
     {
         $censuses = Census::censusPlaces('XX');
 

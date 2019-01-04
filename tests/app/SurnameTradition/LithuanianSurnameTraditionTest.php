@@ -45,7 +45,7 @@ class LithuanianSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      *
      * @return void
      */
-    public function testMarriedSurnames()
+    public function testMarriedSurnames(): void
     {
         $this->assertSame(true, $this->surname_tradition->hasMarriedNames());
     }
@@ -58,7 +58,7 @@ class LithuanianSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      *
      * @return void
      */
-    public function testSurnames()
+    public function testSurnames(): void
     {
         $this->assertSame(true, $this->surname_tradition->hasSurnames());
     }
@@ -71,7 +71,7 @@ class LithuanianSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      *
      * @return void
      */
-    public function testNewSonNames()
+    public function testNewSonNames(): void
     {
         $this->assertSame(
             [
@@ -90,7 +90,7 @@ class LithuanianSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      *
      * @return void
      */
-    public function testNewDaughterNames()
+    public function testNewDaughterNames(): void
     {
         $this->assertSame(
             [
@@ -109,7 +109,7 @@ class LithuanianSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      *
      * @return void
      */
-    public function testNewDaughterNamesInflected()
+    public function testNewDaughterNamesInflected(): void
     {
         $this->assertSame(
             [
@@ -163,7 +163,7 @@ class LithuanianSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      *
      * @return void
      */
-    public function testNewChildNames()
+    public function testNewChildNames(): void
     {
         $this->assertSame(
             [
@@ -182,7 +182,7 @@ class LithuanianSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      *
      * @return void
      */
-    public function testNewChildNamesWithNoParentsNames()
+    public function testNewChildNamesWithNoParentsNames(): void
     {
         $this->assertSame(
             ['NAME' => '//'],
@@ -198,7 +198,7 @@ class LithuanianSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      *
      * @return void
      */
-    public function testNewFatherNames()
+    public function testNewFatherNames(): void
     {
         $this->assertSame(
             [
@@ -217,7 +217,7 @@ class LithuanianSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      *
      * @return void
      */
-    public function testNewFatherNamesInflected()
+    public function testNewFatherNamesInflected(): void
     {
         $this->assertSame(
             [
@@ -257,7 +257,7 @@ class LithuanianSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      *
      * @return void
      */
-    public function testNewMotherNames()
+    public function testNewMotherNames(): void
     {
         $this->assertSame(
             ['NAME' => '//'],
@@ -273,7 +273,7 @@ class LithuanianSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      *
      * @return void
      */
-    public function testNewParentNames()
+    public function testNewParentNames(): void
     {
         $this->assertSame(
             ['NAME' => '//'],
@@ -289,7 +289,7 @@ class LithuanianSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      *
      * @return void
      */
-    public function testNewHusbandNames()
+    public function testNewHusbandNames(): void
     {
         $this->assertSame(
             ['NAME' => '//'],
@@ -305,7 +305,7 @@ class LithuanianSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      *
      * @return void
      */
-    public function testNewWifeNames()
+    public function testNewWifeNames(): void
     {
         $this->assertSame(
             [
@@ -324,7 +324,7 @@ class LithuanianSurnameTraditionTest extends \Fisharebest\Webtrees\TestCase
      *
      * @return void
      */
-    public function testNewSpouseNames()
+    public function testNewSpouseNames(): void
     {
         $this->assertSame(
             ['NAME' => '//'],

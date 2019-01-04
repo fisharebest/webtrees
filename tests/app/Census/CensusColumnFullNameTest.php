@@ -41,7 +41,7 @@ class CensusColumnFullNameTest extends \Fisharebest\Webtrees\TestCase
      *
      * @return void
      */
-    public function testFullName()
+    public function testFullName(): void
     {
         $individual = Mockery::mock(Individual::class);
         $individual->shouldReceive('getAllNames')->andReturn([['full' => 'Joe Bloggs']]);

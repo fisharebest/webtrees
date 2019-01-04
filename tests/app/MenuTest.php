@@ -23,11 +23,11 @@ namespace Fisharebest\Webtrees;
 class MenuTest extends \Fisharebest\Webtrees\TestCase
 {
     /**
-     * Test the constructor with default parameters.
+     * @covers \Fisharebest\Webtrees\Menu::__construct
      *
      * @return void
      */
-    public function testConstructorDefaults()
+    public function testConstructorDefaults(): void
     {
         $menu = new Menu('Test!');
 
@@ -39,11 +39,11 @@ class MenuTest extends \Fisharebest\Webtrees\TestCase
     }
 
     /**
-     * Test the constructor with non-default parameters.
+     * @covers \Fisharebest\Webtrees\Menu::__construct
      *
      * @return void
      */
-    public function testConstructorNonDefaults()
+    public function testConstructorNonDefaults(): void
     {
         $submenus = [new Menu('Submenu')];
         $menu     = new Menu('Test!', 'link.html', 'link-class', ['foo' => 'bar'], $submenus);
@@ -56,11 +56,12 @@ class MenuTest extends \Fisharebest\Webtrees\TestCase
     }
 
     /**
-     * Test the getter/setter for the label.
+     * @covers \Fisharebest\Webtrees\Menu::getLabel
+     * @covers \Fisharebest\Webtrees\Menu::setLabel
      *
      * @return void
      */
-    public function testGetterSetterLabel()
+    public function testGetterSetterLabel(): void
     {
         $menu = new Menu('Test!');
 
@@ -71,11 +72,12 @@ class MenuTest extends \Fisharebest\Webtrees\TestCase
     }
 
     /**
-     * Test the getter/setter for the link.
+     * @covers \Fisharebest\Webtrees\Menu::getLink
+     * @covers \Fisharebest\Webtrees\Menu::setLink
      *
      * @return void
      */
-    public function testGetterSetterLink()
+    public function testGetterSetterLink(): void
     {
         $menu = new Menu('Test!');
 
@@ -86,11 +88,12 @@ class MenuTest extends \Fisharebest\Webtrees\TestCase
     }
 
     /**
-     * Test the getter/setter for the ID.
+     * @covers \Fisharebest\Webtrees\Menu::getClass
+     * @covers \Fisharebest\Webtrees\Menu::setClass
      *
      * @return void
      */
-    public function testGetterSetterId()
+    public function testGetterSetterId(): void
     {
         $menu = new Menu('Test!');
 
@@ -101,11 +104,12 @@ class MenuTest extends \Fisharebest\Webtrees\TestCase
     }
 
     /**
-     * Test the getter/setter for the Attrs event.
+     * @covers \Fisharebest\Webtrees\Menu::getAttrs
+     * @covers \Fisharebest\Webtrees\Menu::setAttrs
      *
      * @return void
      */
-    public function testGetterSetterAttrs()
+    public function testGetterSetterAttrs(): void
     {
         $menu = new Menu('Test!');
 
@@ -116,11 +120,12 @@ class MenuTest extends \Fisharebest\Webtrees\TestCase
     }
 
     /**
-     * Test the getter/setter for the submenus.
+     * @covers \Fisharebest\Webtrees\Menu::getSubmenus
+     * @covers \Fisharebest\Webtrees\Menu::setSubmenus
      *
      * @return void
      */
-    public function testGetterSetterSubmenus()
+    public function testGetterSetterSubmenus(): void
     {
         $menu     = new Menu('Test!');
         $submenus = [
@@ -135,11 +140,11 @@ class MenuTest extends \Fisharebest\Webtrees\TestCase
     }
 
     /**
-     * Test the list rendering for a simple link.
+     * @covers \Fisharebest\Webtrees\Menu::getMenuAsList
      *
      * @return void
      */
-    public function testFormatAsList()
+    public function testFormatAsList(): void
     {
         $menu = new Menu('Test!', 'link.html');
 
@@ -147,11 +152,11 @@ class MenuTest extends \Fisharebest\Webtrees\TestCase
     }
 
     /**
-     * Test the list rendering for a simple link with a CSS ID.
+     * @covers \Fisharebest\Webtrees\Menu::getMenuAsList
      *
      * @return void
      */
-    public function testFormatAsListWithClass()
+    public function testFormatAsListWithClass(): void
     {
         $menu = new Menu('Test!', 'link.html', 'link-class');
 
@@ -159,11 +164,11 @@ class MenuTest extends \Fisharebest\Webtrees\TestCase
     }
 
     /**
-     * Test the list rendering for an empty target.
+     * @covers \Fisharebest\Webtrees\Menu::getMenuAsList
      *
      * @return void
      */
-    public function testFormatAsListWithNoTarget()
+    public function testFormatAsListWithNoTarget(): void
     {
         $menu = new Menu('Test!', '');
 
@@ -171,11 +176,11 @@ class MenuTest extends \Fisharebest\Webtrees\TestCase
     }
 
     /**
-     * Test the list rendering for a default (hash) target.
+     * @covers \Fisharebest\Webtrees\Menu::getMenuAsList
      *
      * @return void
      */
-    public function testFormatAsListWithHashTarget()
+    public function testFormatAsListWithHashTarget(): void
     {
         $menu = new Menu('Test!');
 
@@ -183,11 +188,11 @@ class MenuTest extends \Fisharebest\Webtrees\TestCase
     }
 
     /**
-     * Test the list rendering for an onclick link.
+     * @covers \Fisharebest\Webtrees\Menu::getMenuAsList
      *
      * @return void
      */
-    public function testFormatAsListWithAttrs()
+    public function testFormatAsListWithAttrs(): void
     {
         $menu = new Menu('Test!', '#', '', ['foo' => 'bar']);
 
@@ -195,11 +200,11 @@ class MenuTest extends \Fisharebest\Webtrees\TestCase
     }
 
     /**
-     * Test the list rendering for an onclick link.
+     * @covers \Fisharebest\Webtrees\Menu::getMenuAsList
      *
      * @return void
      */
-    public function testFormatAsListWithAttrsAndId()
+    public function testFormatAsListWithAttrsAndId(): void
     {
         $menu = new Menu('Test!', '#', 'link-class', ['foo' => 'bar']);
 

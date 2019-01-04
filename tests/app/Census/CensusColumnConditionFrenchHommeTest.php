@@ -44,7 +44,7 @@ class CensusColumnConditionFrenchHommeTest extends \Fisharebest\Webtrees\TestCas
      *
      * @return void
      */
-    public function testNoSpouseFamiliesMale()
+    public function testNoSpouseFamiliesMale(): void
     {
         $individual = Mockery::mock(Individual::class);
         $individual->shouldReceive('getSex')->andReturn('M');
@@ -65,7 +65,7 @@ class CensusColumnConditionFrenchHommeTest extends \Fisharebest\Webtrees\TestCas
      *
      * @return void
      */
-    public function testNoSpouseFamiliesFemale()
+    public function testNoSpouseFamiliesFemale(): void
     {
         $individual = Mockery::mock(Individual::class);
         $individual->shouldReceive('getSex')->andReturn('F');
@@ -86,7 +86,7 @@ class CensusColumnConditionFrenchHommeTest extends \Fisharebest\Webtrees\TestCas
      *
      * @return void
      */
-    public function testNoFamilyFactsMale()
+    public function testNoFamilyFactsMale(): void
     {
         $family = Mockery::mock(Family::class);
         $family->shouldReceive('getMarriageDate')->andReturn(new Date(''));
@@ -111,7 +111,7 @@ class CensusColumnConditionFrenchHommeTest extends \Fisharebest\Webtrees\TestCas
      *
      * @return void
      */
-    public function testNoFamilyFactsFemale()
+    public function testNoFamilyFactsFemale(): void
     {
         $family = Mockery::mock(Family::class);
         $family->shouldReceive('getMarriageDate')->andReturn(new Date(''));
@@ -136,7 +136,7 @@ class CensusColumnConditionFrenchHommeTest extends \Fisharebest\Webtrees\TestCas
      *
      * @return void
      */
-    public function testSpouseDeadMale()
+    public function testSpouseDeadMale(): void
     {
         $fact = Mockery::mock(Fact::class);
 
@@ -167,7 +167,7 @@ class CensusColumnConditionFrenchHommeTest extends \Fisharebest\Webtrees\TestCas
      *
      * @return void
      */
-    public function testSpouseDeadFemale()
+    public function testSpouseDeadFemale(): void
     {
         $fact = Mockery::mock(Fact::class);
 
@@ -198,7 +198,7 @@ class CensusColumnConditionFrenchHommeTest extends \Fisharebest\Webtrees\TestCas
      *
      * @return void
      */
-    public function testNoFamilyUnmarriedMale()
+    public function testNoFamilyUnmarriedMale(): void
     {
         $family = Mockery::mock(Family::class);
         $family->shouldReceive('getMarriageDate')->andReturn(new Date(''));
@@ -223,7 +223,7 @@ class CensusColumnConditionFrenchHommeTest extends \Fisharebest\Webtrees\TestCas
      *
      * @return void
      */
-    public function testNoFamilyUnmarriedFemale()
+    public function testNoFamilyUnmarriedFemale(): void
     {
         $family = Mockery::mock(Family::class);
         $family->shouldReceive('getMarriageDate')->andReturn(new Date(''));
@@ -248,7 +248,7 @@ class CensusColumnConditionFrenchHommeTest extends \Fisharebest\Webtrees\TestCas
      *
      * @return void
      */
-    public function testChildMale()
+    public function testChildMale(): void
     {
         $family = Mockery::mock(Family::class);
         $family->shouldReceive('getMarriageDate')->andReturn(new Date(''));
@@ -273,7 +273,7 @@ class CensusColumnConditionFrenchHommeTest extends \Fisharebest\Webtrees\TestCas
      *
      * @return void
      */
-    public function testChildFemale()
+    public function testChildFemale(): void
     {
         $family = Mockery::mock(Family::class);
         $family->shouldReceive('getMarriageDate')->andReturn(new Date(''));
@@ -298,7 +298,7 @@ class CensusColumnConditionFrenchHommeTest extends \Fisharebest\Webtrees\TestCas
      *
      * @return void
      */
-    public function testDivorcedMale()
+    public function testDivorcedMale(): void
     {
         $fact = Mockery::mock(Fact::class);
 
@@ -325,7 +325,7 @@ class CensusColumnConditionFrenchHommeTest extends \Fisharebest\Webtrees\TestCas
      *
      * @return void
      */
-    public function testDivorcedFemale()
+    public function testDivorcedFemale(): void
     {
         $fact = Mockery::mock(Fact::class);
 

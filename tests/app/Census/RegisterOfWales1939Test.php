@@ -29,7 +29,7 @@ class RegisterOfWales1939Test extends \Fisharebest\Webtrees\TestCase
      *
      * @return void
      */
-    public function testPlaceAndDate()
+    public function testPlaceAndDate(): void
     {
         $census = new RegisterOfWales1939;
 
@@ -45,7 +45,7 @@ class RegisterOfWales1939Test extends \Fisharebest\Webtrees\TestCase
      *
      * @return void
      */
-    public function testColumns()
+    public function testColumns(): void
     {
         $census  = new RegisterOfWales1939;
         $columns = $census->columns();

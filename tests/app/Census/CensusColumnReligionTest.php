@@ -41,7 +41,7 @@ class CensusColumnReligionTest extends \Fisharebest\Webtrees\TestCase
      *
      * @return void
      */
-    public function testReligion()
+    public function testReligion(): void
     {
         $individual = Mockery::mock(Individual::class);
 

@@ -65,12 +65,12 @@ class TimeoutServiceTest extends TestCase
     }
 
     /**
-     * @covers \Fisharebest\Webtrees\Services\TimeoutService::__construct()
-     * @covers \Fisharebest\Webtrees\Services\TimeoutService::isTimeNearlyUp()
+     * @covers \Fisharebest\Webtrees\Services\TimeoutService::__construct
+     * @covers \Fisharebest\Webtrees\Services\TimeoutService::isTimeNearlyUp
      *
      * @return void
      */
-    public function testNoTimeOut()
+    public function testNoTimeOut(): void
     {
         $now = \microtime(true);
 
@@ -86,12 +86,12 @@ class TimeoutServiceTest extends TestCase
     }
 
     /**
-     * @covers \Fisharebest\Webtrees\Services\TimeoutService::__construct()
-     * @covers \Fisharebest\Webtrees\Services\TimeoutService::isTimeNearlyUp()
+     * @covers \Fisharebest\Webtrees\Services\TimeoutService::__construct
+     * @covers \Fisharebest\Webtrees\Services\TimeoutService::isTimeNearlyUp
      *
      * @return void
      */
-    public function testTimeOutReached()
+    public function testTimeOutReached(): void
     {
         $now = \microtime(true);
 
@@ -113,12 +113,12 @@ class TimeoutServiceTest extends TestCase
     }
 
     /**
-     * @covers \Fisharebest\Webtrees\Services\TimeoutService::__construct()
-     * @covers \Fisharebest\Webtrees\Services\TimeoutService::isTimeNearlyUp()
+     * @covers \Fisharebest\Webtrees\Services\TimeoutService::__construct
+     * @covers \Fisharebest\Webtrees\Services\TimeoutService::isTimeNearlyUp
      *
      * @return void
      */
-    public function testTimeOutNotReached()
+    public function testTimeOutNotReached(): void
     {
         $now = \microtime(true);
 
@@ -140,12 +140,12 @@ class TimeoutServiceTest extends TestCase
     }
 
     /**
-     * @covers \Fisharebest\Webtrees\Services\TimeoutService::__construct()
-     * @covers \Fisharebest\Webtrees\Services\TimeoutService::isTimeLimitUp()
+     * @covers \Fisharebest\Webtrees\Services\TimeoutService::__construct
+     * @covers \Fisharebest\Webtrees\Services\TimeoutService::isTimeLimitUp
      *
      * @return void
      */
-    public function testTimeLimitNotReached()
+    public function testTimeLimitNotReached(): void
     {
         $now = \microtime(true);
 
@@ -161,12 +161,12 @@ class TimeoutServiceTest extends TestCase
     }
 
     /**
-     * @covers \Fisharebest\Webtrees\Services\TimeoutService::__construct()
-     * @covers \Fisharebest\Webtrees\Services\TimeoutService::isTimeLimitUp()
+     * @covers \Fisharebest\Webtrees\Services\TimeoutService::__construct
+     * @covers \Fisharebest\Webtrees\Services\TimeoutService::isTimeLimitUp
      *
      * @return void
      */
-    public function testTimeLimitReached()
+    public function testTimeLimitReached(): void
     {
         $now = \microtime(true);
 

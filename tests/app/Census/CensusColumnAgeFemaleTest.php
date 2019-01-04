@@ -42,7 +42,7 @@ class CensusColumnAgeFemaleTest extends \Fisharebest\Webtrees\TestCase
      *
      * @return void
      */
-    public function testMale()
+    public function testMale(): void
     {
         $individual = Mockery::mock(Individual::class);
         $individual->shouldReceive('getSex')->andReturn('M');
@@ -60,7 +60,7 @@ class CensusColumnAgeFemaleTest extends \Fisharebest\Webtrees\TestCase
      *
      * @return void
      */
-    public function testFemale()
+    public function testFemale(): void
     {
         $individual = Mockery::mock(Individual::class);
         $individual->shouldReceive('getSex')->andReturn('F');
@@ -80,7 +80,7 @@ class CensusColumnAgeFemaleTest extends \Fisharebest\Webtrees\TestCase
      *
      * @return void
      */
-    public function testUnknownSex()
+    public function testUnknownSex(): void
     {
         $individual = Mockery::mock(Individual::class);
         $individual->shouldReceive('getSex')->andReturn('U');
@@ -100,7 +100,7 @@ class CensusColumnAgeFemaleTest extends \Fisharebest\Webtrees\TestCase
      *
      * @return void
      */
-    public function testLessThanOneYear()
+    public function testLessThanOneYear(): void
     {
         $individual = Mockery::mock(Individual::class);
         $individual->shouldReceive('getSex')->andReturn('F');

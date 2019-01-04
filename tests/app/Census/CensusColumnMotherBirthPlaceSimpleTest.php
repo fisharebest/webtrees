@@ -61,7 +61,7 @@ class CensusColumnMotherBirthPlaceSimpleTest extends \Fisharebest\Webtrees\TestC
      *
      * @return void
      */
-    public function testKnownStateAndTown()
+    public function testKnownStateAndTown(): void
     {
         $father = Mockery::mock(Individual::class);
         $father->shouldReceive('getBirthPlace')->andReturn($this->getPlaceMock('Miami, Florida, United States'));

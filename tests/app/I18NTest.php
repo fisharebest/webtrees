@@ -23,33 +23,33 @@ namespace Fisharebest\Webtrees;
 class I18NTest extends \Fisharebest\Webtrees\TestCase
 {
     /**
-     * Test I18N::strtoupper()
+     * @covers \Fisharebest\Webtrees\I18N::strtoupper
      *
      * @return void
      */
-    public function testStrtoupper()
+    public function testStrtoupper(): void
     {
         $this->assertSame(I18N::strtoupper(''), '');
         $this->assertSame(I18N::strtoupper('Abc'), 'ABC');
     }
 
     /**
-     * Test I18N::strtolower()
+     * @covers \Fisharebest\Webtrees\I18N::strtolower
      *
      * @return void
      */
-    public function testStrtolower()
+    public function testStrtolower(): void
     {
         $this->assertSame(I18N::strtolower(''), '');
         $this->assertSame(I18N::strtolower('Abc'), 'abc');
     }
 
     /**
-     * Test I18N::strcasecmp()
+     * @covers \Fisharebest\Webtrees\I18N::strcasecmp()
      *
      * @return void
      */
-    public function testStrcasecmp()
+    public function testStrcasecmp(): void
     {
         $this->assertSame(I18N::strcasecmp('', ''), 0);
         $this->assertSame(I18N::strcasecmp('Abc', 'abc'), 0);
@@ -60,11 +60,11 @@ class I18NTest extends \Fisharebest\Webtrees\TestCase
     }
 
     /**
-     * Test I18N::reverseText()
+     * @covers \Fisharebest\Webtrees\I18N::reverseText
      *
      * @return void
      */
-    public function testReverseText()
+    public function testReverseText(): void
     {
         // Create these strings carefully, as text editors can display them in confusing ways.
         $rtl_abc = 'א' . 'ב' . 'ג';
@@ -85,11 +85,11 @@ class I18NTest extends \Fisharebest\Webtrees\TestCase
     }
 
     /**
-     * Test I18N::languageName()
+     * @covers \Fisharebest\Webtrees\I18N::languageName
      *
      * @return void
      */
-    public function testKnownLanguageName()
+    public function testKnownLanguageName(): void
     {
         $this->assertSame('العربية', I18N::languageName('ar'));
         $this->assertSame('Deutsch', I18N::languageName('de'));
@@ -99,11 +99,11 @@ class I18NTest extends \Fisharebest\Webtrees\TestCase
     }
 
     /**
-     * Test I18N::languageScript()
+     * @covers \Fisharebest\Webtrees\I18N::languageScript
      *
      * @return void
      */
-    public function testLanguageScript()
+    public function testLanguageScript(): void
     {
         $this->assertSame('Arab', I18N::languageScript('ar'));
         $this->assertSame('Latn', I18N::languageScript('de'));

@@ -41,7 +41,7 @@ class CensusColumnRelationToHeadGermanTest extends \Fisharebest\Webtrees\TestCas
      *
      * @return void
      */
-    public function testNull()
+    public function testNull(): void
     {
         $individual = Mockery::mock(Individual::class);
 

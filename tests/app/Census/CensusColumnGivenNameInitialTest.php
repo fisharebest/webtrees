@@ -41,7 +41,7 @@ class CensusColumnGivenNameInitialTest extends \Fisharebest\Webtrees\TestCase
      *
      * @return void
      */
-    public function testOneGivenName()
+    public function testOneGivenName(): void
     {
         $individual = Mockery::mock(Individual::class);
         $individual->shouldReceive('getAllNames')->andReturn([['givn' => 'Joe']]);
@@ -59,7 +59,7 @@ class CensusColumnGivenNameInitialTest extends \Fisharebest\Webtrees\TestCase
      *
      * @return void
      */
-    public function testMultipleGivenNames()
+    public function testMultipleGivenNames(): void
     {
         $individual = Mockery::mock(Individual::class);
         $individual->shouldReceive('getAllNames')->andReturn([['givn' => 'Joe Fred']]);
@@ -77,7 +77,7 @@ class CensusColumnGivenNameInitialTest extends \Fisharebest\Webtrees\TestCase
      *
      * @return void
      */
-    public function testNoName()
+    public function testNoName(): void
     {
         $individual = Mockery::mock(Individual::class);
         $individual->shouldReceive('getAllNames')->andReturn([]);

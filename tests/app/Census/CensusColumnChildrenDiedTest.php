@@ -42,7 +42,7 @@ class CensusColumnChildrenDiedTest extends \Fisharebest\Webtrees\TestCase
      *
      * @return void
      */
-    public function testMale()
+    public function testMale(): void
     {
         $individual = Mockery::mock(Individual::class);
         $individual->shouldReceive('getSex')->andReturn('M');
@@ -60,7 +60,7 @@ class CensusColumnChildrenDiedTest extends \Fisharebest\Webtrees\TestCase
      *
      * @return void
      */
-    public function testCountChildren()
+    public function testCountChildren(): void
     {
         // Stillborn
         $child1 = Mockery::mock(Individual::class);

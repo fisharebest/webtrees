@@ -42,7 +42,7 @@ class CensusColumnMonthIfBornWithinYearTest extends \Fisharebest\Webtrees\TestCa
      *
      * @return void
      */
-    public function testBornWithinYear()
+    public function testBornWithinYear(): void
     {
         $individual = Mockery::mock(Individual::class);
         $individual->shouldReceive('getBirthDate')->andReturn(new Date('01 JAN 1860'));
@@ -61,7 +61,7 @@ class CensusColumnMonthIfBornWithinYearTest extends \Fisharebest\Webtrees\TestCa
      *
      * @return void
      */
-    public function testBornOverYearBeforeTheCensus()
+    public function testBornOverYearBeforeTheCensus(): void
     {
         $individual = Mockery::mock(Individual::class);
         $individual->shouldReceive('getBirthDate')->andReturn(new Date('01 JAN 1859'));
@@ -80,7 +80,7 @@ class CensusColumnMonthIfBornWithinYearTest extends \Fisharebest\Webtrees\TestCa
      *
      * @return void
      */
-    public function testBornAfterTheCensus()
+    public function testBornAfterTheCensus(): void
     {
         $individual = Mockery::mock(Individual::class);
         $individual->shouldReceive('getBirthDate')->andReturn(new Date('02 JUN 1860'));
@@ -101,7 +101,7 @@ class CensusColumnMonthIfBornWithinYearTest extends \Fisharebest\Webtrees\TestCa
      *
      * @return void
      */
-    public function testNoBirth()
+    public function testNoBirth(): void
     {
         $individual = Mockery::mock(Individual::class);
         $individual->shouldReceive('getBirthDate')->andReturn(new Date(''));
