@@ -28,6 +28,24 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class SourceController extends AbstractBaseController
 {
+    // Show the source's facts in this order:
+    private const FACT_ORDER = [
+        'TITL' => 0,
+        'ABBR' => 1,
+        'AUTH' => 2,
+        'DATA' => 3,
+        'PUBL' => 4,
+        'TEXT' => 5,
+        'REPO' => 6,
+        'NOTE' => 7,
+        'OBJE' => 8,
+        'REFN' => 9,
+        'RIN'  => 10,
+        '_UID' => 11,
+        'CHAN' => 12,
+        'RESN' => 13,
+    ];
+
     /**
      * Show a repository's page.
      *
@@ -64,30 +82,12 @@ class SourceController extends AbstractBaseController
     {
         $facts = $record->facts();
 
-        usort(
-            $facts,
-            function (Fact $x, Fact $y): int {
-                static $order = [
-                    'TITL' => 0,
-                    'ABBR' => 1,
-                    'AUTH' => 2,
-                    'DATA' => 3,
-                    'PUBL' => 4,
-                    'TEXT' => 5,
-                    'NOTE' => 6,
-                    'OBJE' => 7,
-                    'REFN' => 8,
-                    'RIN'  => 9,
-                    '_UID' => 10,
-                    'CHAN' => 11,
-                ];
+        usort($facts, function (Fact $x, Fact $y): int {
+            $sort_x = self::FACT_ORDER[$x->getTag()] ?? PHP_INT_MAX;
+            $sort_y = self::FACT_ORDER[$y->getTag()] ?? PHP_INT_MAX;
 
-                return
-                    (array_key_exists($x->getTag(), $order) ? $order[$x->getTag()] : PHP_INT_MAX)
-                    -
-                    (array_key_exists($y->getTag(), $order) ? $order[$y->getTag()] : PHP_INT_MAX);
-            }
-        );
+            return $sort_x <=> $sort_y;
+        });
 
         return $facts;
     }
