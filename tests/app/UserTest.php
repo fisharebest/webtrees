@@ -27,6 +27,7 @@ class UserTest extends \Fisharebest\Webtrees\TestCase
     /**
      * @covers \Fisharebest\Webtrees\User::__construct
      * @covers \Fisharebest\Webtrees\User::create
+     * @covers \Fisharebest\Webtrees\User::getUserId
      * @return void
      */
     public function testCreate(): void
@@ -37,8 +38,6 @@ class UserTest extends \Fisharebest\Webtrees\TestCase
     }
 
     /**
-     * @covers \Fisharebest\Webtrees\User::setUserId
-     * @covers \Fisharebest\Webtrees\User::getUserId
      * @covers \Fisharebest\Webtrees\User::setUserName
      * @covers \Fisharebest\Webtrees\User::getUserName
      * @covers \Fisharebest\Webtrees\User::setRealName
