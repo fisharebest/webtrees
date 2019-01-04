@@ -86,7 +86,7 @@
             "### PHP-CODE-SNIFFER",
             "phpcs --standard=PSR12 -s --exclude=Generic.Files.LineLength,PSR2.ControlStructures.ControlStructureSpacing app routes",
             "### PHAN",
-            "PHAN_DISABLE_XDEBUG_WARN=1 phan --target-php-version=7.0 --processes=32 --progress-bar --directory . --exclude-directory-list data,resources,routes,tests,vendor",
+            "PHAN_DISABLE_XDEBUG_WARN=1 phan --target-php-version=7.1 --processes=32 --progress-bar --directory . --exclude-directory-list data,resources,routes,tests,vendor",
             "### PHPSTAN",
             "phpstan --level=7 analyze index.php app",
             "### PSALM",
