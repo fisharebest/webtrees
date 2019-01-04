@@ -28,7 +28,7 @@ class Individual extends GedcomRecord
 {
     public const RECORD_TYPE = 'INDI';
 
-    protected const ROUTE_NAME  = 'individual';
+    protected const ROUTE_NAME = 'individual';
 
     /** @var int used in some lists to keep track of this individual’s generation in that list */
     public $generation;

@@ -27,7 +27,7 @@ class Media extends GedcomRecord
 {
     public const RECORD_TYPE = 'OBJE';
 
-    protected const ROUTE_NAME  = 'media';
+    protected const ROUTE_NAME = 'media';
 
     /**
      * Get an instance of a media object. For single records,

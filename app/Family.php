@@ -26,7 +26,7 @@ class Family extends GedcomRecord
 {
     public const RECORD_TYPE = 'FAM';
 
-    protected const ROUTE_NAME  = 'family';
+    protected const ROUTE_NAME = 'family';
 
     /** @var Individual|null The husband (or first spouse for same-sex couples) */
     private $husb;
