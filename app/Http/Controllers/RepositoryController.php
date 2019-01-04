@@ -30,15 +30,15 @@ class RepositoryController extends AbstractBaseController
 {
     // Show the repository's facts in this order:
     private const FACT_ORDER = [
-        'NAME' => 0,
-        'ADDR' => 1,
-        'NOTE' => 2,
-        'WWW'  => 3,
-        'REFN' => 4,
-        'RIN'  => 5,
-        '_UID' => 6,
-        'CHAN' => 7,
-        'RESN' => 8,
+        1 => 'NAME',
+        'ADDR',
+        'NOTE',
+        'WWW',
+        'REFN',
+        'RIN',
+        '_UID',
+        'CHAN',
+        'RESN',
     ];
 
     /**
@@ -75,8 +75,8 @@ class RepositoryController extends AbstractBaseController
         $facts = $record->facts();
 
         usort($facts, function (Fact $x, Fact $y): int {
-            $sort_x = self::FACT_ORDER[$x->getTag()] ?? PHP_INT_MAX;
-            $sort_y = self::FACT_ORDER[$y->getTag()] ?? PHP_INT_MAX;
+            $sort_x = array_search($x->getTag(), self::FACT_ORDER) ?: PHP_INT_MAX;
+            $sort_y = array_search($y->getTag(), self::FACT_ORDER) ?: PHP_INT_MAX;
 
             return $sort_x <=> $sort_y;
         });

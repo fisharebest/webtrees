@@ -24,8 +24,8 @@ use Ramsey\Uuid\Uuid;
  */
 class GedcomTag
 {
-    /** @var string[] All tags that webtrees knows how to translate - including special/internal tags */
-    private static $ALL_TAGS = [
+    /** All tags that webtrees knows how to translate - including special/internal tags */
+    private const ALL_TAGS = [
         'ABBR',
         'ADDR',
         'ADR1',
@@ -398,7 +398,7 @@ class GedcomTag
     ];
 
     /** @var string[] Possible values for the Object-File-Format types */
-    private static $OBJE_FILE_FORM_TYPE = [
+    private const OBJE_FILE_FORM_TYPE = [
         'audio',
         'book',
         'card',
@@ -428,7 +428,7 @@ class GedcomTag
      */
     public static function isTag($tag): bool
     {
-        return in_array($tag, self::$ALL_TAGS);
+        return in_array($tag, self::ALL_TAGS);
     }
 
     /**
@@ -2411,10 +2411,10 @@ class GedcomTag
      */
     public static function getFileFormTypes(): array
     {
-        $values = [];
-        foreach (self::$OBJE_FILE_FORM_TYPE as $type) {
-            $values[$type] = self::getFileFormTypeValue($type);
-        }
+        $values = array_map(function (string $keyword): string {
+            return self::getFileFormTypeValue($keyword);
+        }, self::OBJE_FILE_FORM_TYPE);
+
         uasort($values, '\Fisharebest\Webtrees\I18N::strcasecmp');
 
         return $values;

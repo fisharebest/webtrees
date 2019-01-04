@@ -30,20 +30,20 @@ class SourceController extends AbstractBaseController
 {
     // Show the source's facts in this order:
     private const FACT_ORDER = [
-        'TITL' => 0,
-        'ABBR' => 1,
-        'AUTH' => 2,
-        'DATA' => 3,
-        'PUBL' => 4,
-        'TEXT' => 5,
-        'REPO' => 6,
-        'NOTE' => 7,
-        'OBJE' => 8,
-        'REFN' => 9,
-        'RIN'  => 10,
-        '_UID' => 11,
-        'CHAN' => 12,
-        'RESN' => 13,
+        1 => 'TITL',
+        'ABBR',
+        'AUTH',
+        'DATA',
+        'PUBL',
+        'TEXT',
+        'REPO',
+        'NOTE',
+        'OBJE',
+        'REFN',
+        'RIN',
+        '_UID',
+        'CHAN',
+        'RESN',
     ];
 
     /**
@@ -83,8 +83,8 @@ class SourceController extends AbstractBaseController
         $facts = $record->facts();
 
         usort($facts, function (Fact $x, Fact $y): int {
-            $sort_x = self::FACT_ORDER[$x->getTag()] ?? PHP_INT_MAX;
-            $sort_y = self::FACT_ORDER[$y->getTag()] ?? PHP_INT_MAX;
+            $sort_x = array_search($x->getTag(), self::FACT_ORDER) ?: PHP_INT_MAX;
+            $sort_y = array_search($y->getTag(), self::FACT_ORDER) ?: PHP_INT_MAX;
 
             return $sort_x <=> $sort_y;
         });
