@@ -39,7 +39,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
  */
 class PlaceHierarchyController extends AbstractBaseController
 {
-    const MAP_MODULE = 'openstreetmap';
+    private const MAP_MODULE = 'openstreetmap';
 
     /**
      * @param Request $request

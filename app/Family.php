@@ -24,8 +24,9 @@ use Illuminate\Database\Capsule\Manager as DB;
  */
 class Family extends GedcomRecord
 {
-    const RECORD_TYPE = 'FAM';
-    const ROUTE_NAME  = 'family';
+    public const RECORD_TYPE = 'FAM';
+
+    protected const ROUTE_NAME  = 'family';
 
     /** @var Individual|null The husband (or first spouse for same-sex couples) */
     private $husb;

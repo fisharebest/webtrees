@@ -34,7 +34,7 @@ use Throwable;
 class PageHitCounter implements MiddlewareInterface
 {
     // Which pages/routes do we count?
-    const PAGE_NAMES = [
+    private const PAGE_NAMES = [
         'family'     => 'family.php',
         'individual' => 'individual.php',
         'media'      => 'mediaviewer.php',

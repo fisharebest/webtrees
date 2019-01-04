@@ -26,12 +26,12 @@ use Symfony\Component\HttpFoundation\Request;
 class Log
 {
     // We can log the following types of message in the wt_log table.
-    const TYPE_AUTHENTICATION = 'auth';
-    const TYPE_CONFIGURATION  = 'config';
-    const TYPE_EDIT           = 'edit';
-    const TYPE_ERROR          = 'error';
-    const TYPE_MEDIA          = 'media';
-    const TYPE_SEARCH         = 'search';
+    private const TYPE_AUTHENTICATION = 'auth';
+    private const TYPE_CONFIGURATION  = 'config';
+    private const TYPE_EDIT           = 'edit';
+    private const TYPE_ERROR          = 'error';
+    private const TYPE_MEDIA          = 'media';
+    private const TYPE_SEARCH         = 'search';
 
     /**
      * Store a new message (of the appropriate type) in the message log.

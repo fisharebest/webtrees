@@ -25,7 +25,7 @@ use Fisharebest\Webtrees\I18N;
 abstract class AbstractGregorianJulianDate extends AbstractCalendarDate
 {
     // Convert GEDCOM month names to month numbers
-    const MONTH_ABBREVIATIONS = [
+    protected const MONTH_ABBREVIATIONS = [
         ''    => 0,
         'JAN' => 1,
         'FEB' => 2,

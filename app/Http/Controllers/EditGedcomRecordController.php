@@ -38,7 +38,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
  */
 class EditGedcomRecordController extends AbstractEditController
 {
-    const GEDCOM_FACT_REGEX = '^(1 .*(\n2 .*(\n3 .*(\n4 .*(\n5 .*(\n6 .*))))))?$';
+    private const GEDCOM_FACT_REGEX = '^(1 .*(\n2 .*(\n3 .*(\n4 .*(\n5 .*(\n6 .*))))))?$';
 
     /**
      * Copy a fact to the clipboard.

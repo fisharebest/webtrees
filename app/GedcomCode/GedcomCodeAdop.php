@@ -26,8 +26,8 @@ use Fisharebest\Webtrees\Individual;
  */
 class GedcomCodeAdop
 {
-    /** @var string[] A list of possible adoption codes */
-    private static $TYPES = [
+    // A list of possible adoption codes
+    private const TYPES = [
         'BOTH',
         'HUSB',
         'WIFE',
@@ -98,7 +98,7 @@ class GedcomCodeAdop
     public static function getValues(GedcomRecord $record = null): array
     {
         $values = [];
-        foreach (self::$TYPES as $type) {
+        foreach (self::TYPES as $type) {
             $values[$type] = self::getValue($type, $record);
         }
 

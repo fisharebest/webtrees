@@ -38,10 +38,10 @@ use InvalidArgumentException;
 abstract class AbstractCalendarDate
 {
     // GEDCOM calendar escape
-    const ESCAPE = '@#DUNKNOWN@';
+    public const ESCAPE = '@#DUNKNOWN@';
 
     // Convert GEDCOM month names to month numbers.
-    const MONTH_ABBREVIATIONS = [];
+    protected const MONTH_ABBREVIATIONS = [];
 
     /** @var CalendarInterface The calendar system used to represent this date */
     protected $calendar;

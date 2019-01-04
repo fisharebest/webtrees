@@ -28,9 +28,9 @@ class FabTheme extends AbstractTheme implements ThemeInterface
     /**
      * Where are our CSS, JS and other assets?
      */
-    const THEME_DIR  = 'fab';
-    const ASSET_DIR  = 'themes/' . self::THEME_DIR . '/css-2.0.0/';
-    const STYLESHEET = self::ASSET_DIR . 'style.css';
+    protected const THEME_DIR  = 'fab';
+    public const ASSET_DIR  = 'themes/' . self::THEME_DIR . '/css-2.0.0/';
+    protected const STYLESHEET = self::ASSET_DIR . 'style.css';
 
     /**
      * Add markup to the secondary menu.

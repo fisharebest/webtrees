@@ -32,9 +32,9 @@ use Symfony\Component\HttpFoundation\Response;
 class FamilyBookChartController extends AbstractChartController
 {
     // Defaults
-    const DEFAULT_GENERATIONS            = '2';
-    const DEFAULT_DESCENDANT_GENERATIONS = '5';
-    const DEFAULT_MAXIMUM_GENERATIONS    = '9';
+    private const DEFAULT_GENERATIONS            = '2';
+    private const DEFAULT_DESCENDANT_GENERATIONS = '5';
+    private const DEFAULT_MAXIMUM_GENERATIONS    = '9';
 
     /** @var stdClass */
     private $box;

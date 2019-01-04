@@ -34,16 +34,16 @@ use Symfony\Component\HttpFoundation\Response;
 class AncestorsChartController extends AbstractChartController
 {
     // Chart styles
-    const CHART_STYLE_LIST        = 0;
-    const CHART_STYLE_BOOKLET     = 1;
-    const CHART_STYLE_INDIVIDUALS = 2;
-    const CHART_STYLE_FAMILIES    = 3;
+    private const CHART_STYLE_LIST        = 0;
+    private const CHART_STYLE_BOOKLET     = 1;
+    private const CHART_STYLE_INDIVIDUALS = 2;
+    private const CHART_STYLE_FAMILIES    = 3;
 
     // Defaults
-    const DEFAULT_COUSINS             = false;
-    const DEFAULT_STYLE               = self::CHART_STYLE_LIST;
-    const DEFAULT_GENERATIONS         = '3';
-    const DEFAULT_MAXIMUM_GENERATIONS = '9';
+    private const DEFAULT_COUSINS             = false;
+    private const DEFAULT_STYLE               = self::CHART_STYLE_LIST;
+    private const DEFAULT_GENERATIONS         = '3';
+    private const DEFAULT_MAXIMUM_GENERATIONS = '9';
 
     /**
      * A form to request the chart parameters.

@@ -26,10 +26,10 @@ use Fisharebest\Webtrees\I18N;
 class JewishDate extends AbstractCalendarDate
 {
     // GEDCOM calendar escape
-    const ESCAPE = '@#DHEBREW@';
+    public const ESCAPE = '@#DHEBREW@';
 
     // Convert GEDCOM month names to month numbers
-    const MONTH_ABBREVIATIONS = [
+    protected const MONTH_ABBREVIATIONS = [
         ''    => 0,
         'TSH' => 1,
         'CSH' => 2,

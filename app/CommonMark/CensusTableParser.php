@@ -33,7 +33,7 @@ use Webuni\CommonMark\TableExtension\TableRow;
  */
 class CensusTableParser extends AbstractBlockParser
 {
-    const REGEX_CENSUS_TABLE_HEADER = '/^\.b\.[^.|]+(?:\|\.b\.[^.|]+)*$/';
+    private const REGEX_CENSUS_TABLE_HEADER = '/^\.b\.[^.|]+(?:\|\.b\.[^.|]+)*$/';
 
     /**
      * Parse a paragraph of text with the following stucture:

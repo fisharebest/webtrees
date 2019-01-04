@@ -24,8 +24,8 @@ use Fisharebest\Webtrees\I18N;
  */
 class GedcomCodeQuay
 {
-    /** @var string[] Valid values for a QUAY tag. */
-    private static $TYPES = [
+    // Valid values for a QUAY tag.
+    private const TYPES = [
         '3',
         '2',
         '1',
@@ -67,7 +67,7 @@ class GedcomCodeQuay
     public static function getValues(): array
     {
         $values = [];
-        foreach (self::$TYPES as $type) {
+        foreach (self::TYPES as $type) {
             $values[$type] = self::getValue($type);
         }
 

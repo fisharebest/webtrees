@@ -24,8 +24,9 @@ use Illuminate\Database\Capsule\Manager as DB;
  */
 class Source extends GedcomRecord
 {
-    const RECORD_TYPE = 'SOUR';
-    const ROUTE_NAME  = 'source';
+    public const RECORD_TYPE = 'SOUR';
+
+    protected const ROUTE_NAME  = 'source';
 
     /**
      * Get an instance of a source object. For single records,

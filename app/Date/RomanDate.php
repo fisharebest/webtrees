@@ -27,7 +27,7 @@ namespace Fisharebest\Webtrees\Date;
 class RomanDate extends JulianDate
 {
     // GEDCOM calendar escape
-    const ESCAPE = '@#DROMAN@';
+    public const ESCAPE = '@#DROMAN@';
 
     /**
      * Generate the %E format for a date.

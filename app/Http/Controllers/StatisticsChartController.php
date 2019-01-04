@@ -38,36 +38,34 @@ class StatisticsChartController extends AbstractChartController
     // We generate a bitmap chart with these dimensions in image pixels.
     // These set the aspect ratio.  The actual image is sized using CSS
     // The maximum size (width x height) is 300,000
-    const CHART_WIDTH  = 950;
-    const CHART_HEIGHT = 315;
+    private const CHART_WIDTH  = 950;
+    private const CHART_HEIGHT = 315;
 
-    const X_AXIS_INDIVIDUAL_MAP        = 1;
-    const X_AXIS_BIRTH_MAP             = 2;
-    const X_AXIS_DEATH_MAP             = 3;
-    const X_AXIS_MARRIAGE_MAP          = 4;
-    const X_AXIS_BIRTH_MONTH           = 11;
-    const X_AXIS_DEATH_MONTH           = 12;
-    const X_AXIS_MARRIAGE_MONTH        = 13;
-    const X_AXIS_FIRST_CHILD_MONTH     = 14;
-    const X_AXIS_FIRST_MARRIAGE_MONTH  = 15;
-    const X_AXIS_AGE_AT_DEATH          = 18;
-    const X_AXIS_AGE_AT_MARRIAGE       = 19;
-    const X_AXIS_AGE_AT_FIRST_MARRIAGE = 20;
-    const X_AXIS_NUMBER_OF_CHILDREN    = 21;
+    public const X_AXIS_INDIVIDUAL_MAP        = 1;
+    public const X_AXIS_BIRTH_MAP             = 2;
+    public const X_AXIS_DEATH_MAP             = 3;
+    public const X_AXIS_MARRIAGE_MAP          = 4;
+    public const X_AXIS_BIRTH_MONTH           = 11;
+    public const X_AXIS_DEATH_MONTH           = 12;
+    public const X_AXIS_MARRIAGE_MONTH        = 13;
+    public const X_AXIS_FIRST_CHILD_MONTH     = 14;
+    public const X_AXIS_FIRST_MARRIAGE_MONTH  = 15;
+    public const X_AXIS_AGE_AT_DEATH          = 18;
+    public const X_AXIS_AGE_AT_MARRIAGE       = 19;
+    public const X_AXIS_AGE_AT_FIRST_MARRIAGE = 20;
+    public const X_AXIS_NUMBER_OF_CHILDREN    = 21;
 
-    const Y_AXIS_NUMBERS = 201;
-    const Y_AXIS_PERCENT = 202;
+    public const Y_AXIS_NUMBERS = 201;
+    public const Y_AXIS_PERCENT = 202;
 
-    const Z_AXIS_ALL  = 300;
-    const Z_AXIS_SEX  = 301;
-    const Z_AXIS_TIME = 302;
+    public const Z_AXIS_ALL  = 300;
+    public const Z_AXIS_SEX  = 301;
+    public const Z_AXIS_TIME = 302;
 
     // First two colors are blue/pink, to work with Z_AXIS_SEX.
-    const Z_AXIS_COLORS = ['0000FF', 'FFA0CB', '9F00FF', 'FF7000', '905030', 'FF0000', '00FF00', 'F0F000'];
+    private const Z_AXIS_COLORS = ['0000FF', 'FFA0CB', '9F00FF', 'FF7000', '905030', 'FF0000', '00FF00', 'F0F000'];
 
-    const MONTHS = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
-
-    const DAYS_IN_YEAR = 365.25;
+    private const DAYS_IN_YEAR = 365.25;
 
     /**
      * A form to request the chart parameters.

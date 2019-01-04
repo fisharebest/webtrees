@@ -33,12 +33,12 @@ use Symfony\Component\HttpFoundation\Request;
 class YahrzeitModule extends AbstractModule implements ModuleBlockInterface
 {
     // Default values for new blocks.
-    const DEFAULT_CALENDAR = 'jewish';
-    const DEFAULT_DAYS     = '7';
-    const DEFAULT_STYLE    = 'table';
+    private const DEFAULT_CALENDAR = 'jewish';
+    private const DEFAULT_DAYS     = '7';
+    private const DEFAULT_STYLE    = 'table';
 
     // Can show this number of days into the future.
-    const MAX_DAYS = 30;
+    private const MAX_DAYS = 30;
 
     /** {@inheritdoc} */
     public function getTitle(): string

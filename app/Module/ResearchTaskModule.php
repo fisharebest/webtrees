@@ -29,10 +29,10 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
 {
-    const DEFAULT_SHOW_OTHER      = '1';
-    const DEFAULT_SHOW_UNASSIGNED = '1';
-    const DEFAULT_SHOW_FUTURE     = '1';
-    const DEFAULT_BLOCK           = '1';
+    private const DEFAULT_SHOW_OTHER      = '1';
+    private const DEFAULT_SHOW_UNASSIGNED = '1';
+    private const DEFAULT_SHOW_FUTURE     = '1';
+    private const DEFAULT_BLOCK           = '1';
 
     /** {@inheritdoc} */
     public function getTitle(): string

@@ -57,7 +57,7 @@ use Throwable;
 class AdminTreesController extends AbstractBaseController
 {
     // Show a reduced page when there are more than a certain number of trees
-    const MULTIPLE_TREE_THRESHOLD = '500';
+    private const MULTIPLE_TREE_THRESHOLD = '500';
 
     /** @var string */
     protected $layout = 'layouts/administration';

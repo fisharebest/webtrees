@@ -36,7 +36,7 @@ use Illuminate\Database\Query\Builder;
 class Module
 {
     // We use a list of core modules to help identify custom ones.
-    const CORE_MODULES = [
+    public const CORE_MODULES = [
         'GEDFact_assistant',
         'ahnentafel_report',
         'ancestors_chart',

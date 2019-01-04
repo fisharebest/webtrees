@@ -41,24 +41,24 @@ class I18N
     private static $collator;
 
     // Digits are always rendered LTR, even in RTL text.
-    const DIGITS = '0123456789٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹';
+    private const DIGITS = '0123456789٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹';
 
     // These locales need special handling for the dotless letter I.
-    const DOTLESS_I_LOCALES = [
+    private const DOTLESS_I_LOCALES = [
         'az',
         'tr',
     ];
-    const DOTLESS_I_TOLOWER = [
+    private const DOTLESS_I_TOLOWER = [
         'I' => 'ı',
         'İ' => 'i',
     ];
-    const DOTLESS_I_TOUPPER = [
+    private const DOTLESS_I_TOUPPER = [
         'ı' => 'I',
         'i' => 'İ',
     ];
 
     // The ranges of characters used by each script.
-    const SCRIPT_CHARACTER_RANGES = [
+    private const SCRIPT_CHARACTER_RANGES = [
         [
             'Latn',
             0x0041,
@@ -160,7 +160,7 @@ class I18N
     ];
 
     // Characters that are displayed in mirror form in RTL text.
-    const MIRROR_CHARACTERS = [
+    private const MIRROR_CHARACTERS = [
         '('  => ')',
         ')'  => '(',
         '['  => ']',
@@ -182,7 +182,7 @@ class I18N
     ];
 
     // Default list of locales to show in the menu.
-    const DEFAULT_LOCALES = [
+    private const DEFAULT_LOCALES = [
         'ar',
         'bg',
         'bs',

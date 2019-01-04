@@ -26,8 +26,8 @@ use Fisharebest\Webtrees\Individual;
  */
 class GedcomCodeRela
 {
-    /** @var string[] List of possible values for the RELA tag */
-    private static $TYPES = [
+    // List of possible values for the RELA tag
+    private const TYPES = [
         'attendant',
         'attending',
         'best_man',
@@ -362,7 +362,7 @@ class GedcomCodeRela
     public static function getValues(GedcomRecord $record = null): array
     {
         $values = [];
-        foreach (self::$TYPES as $type) {
+        foreach (self::TYPES as $type) {
             $values[$type] = self::getValue($type, $record);
         }
         uasort($values, '\Fisharebest\Webtrees\I18N::strcasecmp');

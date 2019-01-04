@@ -23,7 +23,7 @@ namespace Fisharebest\Webtrees\Services;
 class RomanNumeralsService
 {
     // Convert numbers to/from roman numerals
-    const ROMAN_NUMERALS = [
+    private const ROMAN_NUMERALS = [
         1000 => 'M',
         900  => 'CM',
         500  => 'D',

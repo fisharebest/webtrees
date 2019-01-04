@@ -29,13 +29,13 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 {
-    const DEFAULT_BLOCK      = '1';
-    const DEFAULT_DAYS       = '7';
-    const DEFAULT_HIDE_EMPTY = '0';
-    const DEFAULT_SHOW_USER  = '1';
-    const DEFAULT_SORT_STYLE = 'date_desc';
-    const DEFAULT_INFO_STYLE = 'table';
-    const MAX_DAYS           = 90;
+    private const DEFAULT_BLOCK      = '1';
+    private const DEFAULT_DAYS       = '7';
+    private const DEFAULT_HIDE_EMPTY = '0';
+    private const DEFAULT_SHOW_USER  = '1';
+    private const DEFAULT_SORT_STYLE = 'date_desc';
+    private const DEFAULT_INFO_STYLE = 'table';
+    private const MAX_DAYS           = 90;
 
     /** {@inheritdoc} */
     public function getTitle(): string

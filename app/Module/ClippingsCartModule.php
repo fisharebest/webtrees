@@ -56,7 +56,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
 {
     // Routes that have a record which can be added to the clipboard
-    const ROUTES_WITH_RECORDS = [
+    private const ROUTES_WITH_RECORDS = [
         'family',
         'individual',
         'media',

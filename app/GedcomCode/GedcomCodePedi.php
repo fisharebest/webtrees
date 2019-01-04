@@ -26,8 +26,8 @@ use Fisharebest\Webtrees\Individual;
  */
 class GedcomCodePedi
 {
-    /** @var string[] Possible values for pedigree field */
-    private static $TYPES = [
+    // Possible values for pedigree field
+    private const TYPES = [
         'adopted',
         'birth',
         'foster',
@@ -120,7 +120,7 @@ class GedcomCodePedi
     public static function getValues(GedcomRecord $record = null): array
     {
         $values = ['' => ''];
-        foreach (self::$TYPES as $type) {
+        foreach (self::TYPES as $type) {
             $values[$type] = self::getValue($type, $record);
         }
         uasort($values, '\Fisharebest\Webtrees\I18N::strcasecmp');

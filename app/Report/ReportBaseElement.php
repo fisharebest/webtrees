@@ -23,7 +23,7 @@ namespace Fisharebest\Webtrees\Report;
 class ReportBaseElement
 {
     // Special value for X or Y position, to indicate the current position.
-    const CURRENT_POSITION = -1.0;
+    public const CURRENT_POSITION = -1.0;
 
     /** @var string Text */
     public $text = '';

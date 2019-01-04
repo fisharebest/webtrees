@@ -31,12 +31,12 @@ use Symfony\Component\HttpFoundation\Response;
 class TimelineChartController extends AbstractChartController
 {
     // The user can alter the vertical scale
-    const SCALE_MIN     = 1;
-    const SCALE_MAX     = 200;
-    const SCALE_DEFAULT = 10;
+    private const SCALE_MIN     = 1;
+    private const SCALE_MAX     = 200;
+    private const SCALE_DEFAULT = 10;
 
     // GEDCOM events that may have DATE data, but should not be displayed
-    const NON_FACTS = [
+    private const NON_FACTS = [
         'BAPL',
         'ENDL',
         'SLGC',
@@ -46,7 +46,7 @@ class TimelineChartController extends AbstractChartController
     ];
 
     // Box height
-    const BHEIGHT = 30;
+    private const BHEIGHT = 30;
 
     /**
      * A form to request the chart parameters.

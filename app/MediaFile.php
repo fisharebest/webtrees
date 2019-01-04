@@ -27,7 +27,7 @@ use Throwable;
  */
 class MediaFile
 {
-    const MIME_TYPES = [
+    private const MIME_TYPES = [
         'bmp'  => 'image/bmp',
         'doc'  => 'application/msword',
         'docx' => 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',

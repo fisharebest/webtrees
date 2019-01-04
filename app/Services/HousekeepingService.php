@@ -28,7 +28,7 @@ class HousekeepingService
 {
     // This is a list of old files and directories, from earlier versions of webtrees.
     // git diff 1.7.9..master --name-status | grep ^D
-    const OLD_PATHS = [
+    private const OLD_PATHS = [
         // Removed in 1.0.2
         'language/en.mo',
         // Removed in 1.0.3

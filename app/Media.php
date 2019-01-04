@@ -25,8 +25,9 @@ use Illuminate\Database\Capsule\Manager as DB;
  */
 class Media extends GedcomRecord
 {
-    const RECORD_TYPE = 'OBJE';
-    const ROUTE_NAME  = 'media';
+    public const RECORD_TYPE = 'OBJE';
+
+    protected const ROUTE_NAME  = 'media';
 
     /**
      * Get an instance of a media object. For single records,

@@ -44,7 +44,7 @@ use const WT_BASE_URL;
  */
 class AdminUsersController extends AbstractBaseController
 {
-    const SECONDS_PER_DAY = 24 * 60 * 60;
+    private const SECONDS_PER_DAY = 24 * 60 * 60;
 
     /** @var string */
     protected $layout = 'layouts/administration';

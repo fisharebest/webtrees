@@ -28,40 +28,40 @@ use function set_error_handler;
 class Webtrees
 {
     // Location of the file containing the database connection details.
-    const CONFIG_FILE = __DIR__ . '/../data/config.ini.php';
+    public const CONFIG_FILE = __DIR__ . '/../data/config.ini.php';
 
     // Enable debugging on development builds.
-    const DEBUG = self::STABILITY !== '';
+    public const DEBUG = self::STABILITY !== '';
 
     // We want to know about all PHP errors during development, and fewer in production.
-    const ERROR_REPORTING = self::DEBUG ? E_ALL | E_STRICT | E_NOTICE | E_DEPRECATED : E_ALL;
+    public const ERROR_REPORTING = self::DEBUG ? E_ALL | E_STRICT | E_NOTICE | E_DEPRECATED : E_ALL;
 
     // The name of the application.
-    const NAME = 'webtrees';
+    public const NAME = 'webtrees';
 
     // Required version of database tables/columns/indexes/etc.
-    const SCHEMA_VERSION = 41;
+    public const SCHEMA_VERSION = 41;
 
     // e.g. "dev", "alpha", "beta.3", etc.
-    const STABILITY = 'dev';
+    public const STABILITY = 'dev';
 
     // Project website.
-    const URL = 'https://www.webtrees.net/';
+    public const URL = 'https://www.webtrees.net/';
 
     // Version number
-    const VERSION = '2.0.0' . (self::STABILITY === '' ? '' : '-') . self::STABILITY;
+    public const VERSION = '2.0.0' . (self::STABILITY === '' ? '' : '-') . self::STABILITY;
 
     // Location of our modules and themes. These are used as URLs and folder paths.
-    const MODULES_PATH = 'modules_v3/';
+    public const MODULES_PATH = 'modules_v3/';
 
     // Location of themes (core and custom).
-    const THEMES_PATH = 'themes/';
+    public const THEMES_PATH = 'themes/';
 
     // Location of CSS/JS/etc. assets. See also webpack.mix.js.
-    const ASSETS_PATH = 'public/assets-2.0.0/';
+    public const ASSETS_PATH = 'public/assets-2.0.0/';
 
     // Location of our installation of CK editor.
-    const CKEDITOR_PATH = 'public/ckeditor-4.5.2-custom/';
+    public const CKEDITOR_PATH = 'public/ckeditor-4.5.2-custom/';
 
     /**
      * Initialise the application.

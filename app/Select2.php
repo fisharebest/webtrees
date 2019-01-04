@@ -33,24 +33,13 @@ use RecursiveIteratorIterator;
 class Select2 extends Html
 {
     // Send this many results with each request.
-    const RESULTS_PER_PAGE = 20;
+    private const RESULTS_PER_PAGE = 20;
 
     // Don't send queries with fewer than this many characters
-    const MINIMUM_INPUT_LENGTH = '1';
+    private const MINIMUM_INPUT_LENGTH = '1';
 
     // Don't send queries until this many milliseconds.
-    const DELAY = '350';
-
-    // API endpoints
-    const URL_FAM  = 'index.php?route=select2-family';
-    const URL_INDI = 'index.php?route=select2-individual';
-    const URL_NOTE = 'index.php?route=select2-note';
-    const URL_OBJE = 'index.php?route=select2-media';
-    const URL_PLAC = 'index.php?route=select2-place';
-    const URL_REPO = 'index.php?route=select2-repository';
-    const URL_SOUR = 'index.php?route=select2-source';
-    const URL_SUBM = 'index.php?route=select2-submitter';
-    const URL_FLAG = 'index.php?route=select2-flag';
+    private const DELAY = '350';
 
     /**
      * Select2 configuration that is common to all searches.

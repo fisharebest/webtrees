@@ -29,8 +29,8 @@ use Symfony\Component\HttpFoundation\Request;
 class TopGivenNamesModule extends AbstractModule implements ModuleBlockInterface
 {
     // Default values for new blocks.
-    const DEFAULT_NUMBER = '10';
-    const DEFAULT_STYLE  = 'table';
+    private const DEFAULT_NUMBER = '10';
+    private const DEFAULT_STYLE  = 'table';
 
     /** {@inheritdoc} */
     public function getTitle(): string

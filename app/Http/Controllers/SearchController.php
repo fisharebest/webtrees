@@ -41,7 +41,7 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class SearchController extends AbstractBaseController
 {
-    const DEFAULT_ADVANCED_FIELDS = [
+    private const DEFAULT_ADVANCED_FIELDS = [
         'NAME:GIVN',
         'NAME:SURN',
         'BIRT:DATE',
@@ -56,7 +56,7 @@ class SearchController extends AbstractBaseController
         'FAMC:WIFE:NAME:SURN',
     ];
 
-    const OTHER_ADVANCED_FIELDS = [
+    private const OTHER_ADVANCED_FIELDS = [
         'ADOP:DATE',
         'ADOP:PLAC',
         'AFN',

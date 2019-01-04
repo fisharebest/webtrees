@@ -35,10 +35,10 @@ abstract class AbstractModule
     private $settings;
 
     /** @var string For custom modules - optional (recommended) version number */
-    const CUSTOM_VERSION = '';
+    public const CUSTOM_VERSION = '';
 
     /** @var string For custom modules - link for support, upgrades, etc. */
-    const CUSTOM_WEBSITE = '';
+    public const CUSTOM_WEBSITE = '';
 
     protected $layout = 'layouts/default';
 

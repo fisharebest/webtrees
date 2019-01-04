@@ -27,10 +27,10 @@ use Throwable;
 class View
 {
     // Where do our templates live
-    const TEMPLATE_PATH = 'resources/views/';
+    private const TEMPLATE_PATH = 'resources/views/';
 
     // File extension for our template files.
-    const TEMPLATE_EXTENSION = '.phtml';
+    private const TEMPLATE_EXTENSION = '.phtml';
 
     /**
      * @var string The (file) name of the view.

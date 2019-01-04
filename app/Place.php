@@ -22,7 +22,7 @@ namespace Fisharebest\Webtrees;
  */
 class Place
 {
-    const GEDCOM_SEPARATOR = ', ';
+    public const GEDCOM_SEPARATOR = ', ';
 
     /** @var string[] e.g. array('Westminster', 'London', 'England') */
     private $gedcom_place;

@@ -29,9 +29,9 @@ class CloudsTheme extends AbstractTheme implements ThemeInterface
     /**
      * Where are our CSS, JS and other assets?
      */
-    const THEME_DIR  = 'clouds';
-    const ASSET_DIR  = 'themes/' . self::THEME_DIR . '/css-2.0.0/';
-    const STYLESHEET = self::ASSET_DIR . 'style.css';
+    protected const THEME_DIR  = 'clouds';
+    public const ASSET_DIR  = 'themes/' . self::THEME_DIR . '/css-2.0.0/';
+    protected const STYLESHEET = self::ASSET_DIR . 'style.css';
 
     /**
      * Misecellaneous dimensions, fonts, styles, etc.

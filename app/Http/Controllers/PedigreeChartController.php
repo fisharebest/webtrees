@@ -33,21 +33,21 @@ use Symfony\Component\HttpFoundation\Response;
 class PedigreeChartController extends AbstractChartController
 {
     // With more than 8 generations, we run out of pixels on the <canvas>
-    const MAX_GENERATIONS = 8;
-    const MIN_GENERATIONS = 2;
+    private const MAX_GENERATIONS = 8;
+    private const MIN_GENERATIONS = 2;
 
-    const DEFAULT_GENERATIONS = 4;
+    private const DEFAULT_GENERATIONS = 4;
 
     /**
      * Chart orientation codes
      * Dont change them! the offset calculations rely on this order
      */
-    const PORTRAIT         = 0;
-    const LANDSCAPE        = 1;
-    const OLDEST_AT_TOP    = 2;
-    const OLDEST_AT_BOTTOM = 3;
+    public const PORTRAIT         = 0;
+    public const LANDSCAPE        = 1;
+    public const OLDEST_AT_TOP    = 2;
+    public const OLDEST_AT_BOTTOM = 3;
 
-    const DEFAULT_ORIENTATION = self::LANDSCAPE;
+    private const DEFAULT_ORIENTATION = self::LANDSCAPE;
 
     /** @var int Selected chart layout */
     private $orientation;
@@ -73,7 +73,7 @@ class PedigreeChartController extends AbstractChartController
     /**
      * Next and previous generation arrow size
      */
-    const ARROW_SIZE = 22; //pixels
+    private const ARROW_SIZE = 22; //pixels
 
     /**
      * A form to request the chart parameters.

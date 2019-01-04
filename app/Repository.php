@@ -24,8 +24,9 @@ use Illuminate\Database\Capsule\Manager as DB;
  */
 class Repository extends GedcomRecord
 {
-    const RECORD_TYPE = 'REPO';
-    const ROUTE_NAME  = 'repository';
+    public const RECORD_TYPE = 'REPO';
+
+    protected const ROUTE_NAME  = 'repository';
 
     /**
      * Get an instance of a repository object. For single records,

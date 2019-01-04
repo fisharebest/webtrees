@@ -30,8 +30,8 @@ use Symfony\Component\HttpFoundation\Request;
 class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
 {
     // Default values for new blocks.
-    const DEFAULT_NUMBER = '10';
-    const DEFAULT_STYLE  = 'table';
+    private const DEFAULT_NUMBER = '10';
+    private const DEFAULT_STYLE  = 'table';
 
     /**
      * How should this module be labelled on tabs, menus, etc.?

@@ -196,7 +196,7 @@ class Tree
     {
         if ($setting_value !== $this->getPreference($setting_name)) {
             DB::table('gedcom_setting')->updateOrInsert([
-                'gedcom_id' =>$this->id,
+                'gedcom_id'    => $this->id,
                 'setting_name' => $setting_name,
             ], [
                 'setting_value' => $setting_value,
@@ -248,8 +248,8 @@ class Tree
         if ($this->getUserPreference($user, $setting_name) !== $setting_value) {
             // Update the database
             DB::table('user_gedcom_setting')->updateOrInsert([
-                'gedcom_id' => $this->id(),
-                'user_id' =>$user->getUserId(),
+                'gedcom_id'    => $this->id(),
+                'user_id'      => $user->getUserId(),
                 'setting_name' => $setting_name,
             ], [
                 'setting_value' => $setting_value,

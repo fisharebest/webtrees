@@ -38,8 +38,8 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
  */
 class SiteMapModule extends AbstractModule implements ModuleConfigInterface
 {
-    const RECORDS_PER_VOLUME = 500; // Keep sitemap files small, for memory, CPU and max_allowed_packet limits.
-    const CACHE_LIFE         = 1209600; // Two weeks
+    private const RECORDS_PER_VOLUME = 500; // Keep sitemap files small, for memory, CPU and max_allowed_packet limits.
+    private const CACHE_LIFE         = 1209600; // Two weeks
 
     /**
      * How should this module be labelled on tabs, menus, etc.?

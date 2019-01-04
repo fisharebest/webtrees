@@ -30,17 +30,17 @@ use Symfony\Component\HttpFoundation\Response;
 class UpgradeService
 {
     // Regular expression to match a version string such as "1.7.10" or "2.0.0-alpha.1"
-    const REGEX_VERSION = '\d+\.\d+\.\d+(-[a-z0-9.-]+)?';
+    private const REGEX_VERSION = '\d+\.\d+\.\d+(-[a-z0-9.-]+)?';
 
     // Only check the webtrees server infrequently.
-    const CHECK_FOR_UPDATE_INTERVAL = 24 * 60 * 60;
+    private const CHECK_FOR_UPDATE_INTERVAL = 24 * 60 * 60;
 
     // Fetch information about upgrades from here.
     // Note: earlier versions of webtrees used svn.webtrees.net, so we must maintain both URLs.
-    const UPDATE_URL = 'https://dev.webtrees.net/build/latest-version.txt';
+    private const UPDATE_URL = 'https://dev.webtrees.net/build/latest-version.txt';
 
     // If the update server doesn't respond after this time, give up.
-    const HTTP_TIMEOUT = 3.0;
+    private const HTTP_TIMEOUT = 3.0;
 
     /**
      * @return bool

@@ -25,7 +25,7 @@ use InvalidArgumentException;
  */
 class Fact
 {
-    const FACT_ORDER = [
+    private const FACT_ORDER = [
         'BIRT',
         '_HNM',
         'ALIA',

@@ -26,7 +26,7 @@ namespace Fisharebest\Webtrees;
 class FontAwesome extends Html
 {
     /** Which font-awesome icon to use for which action/entity */
-    const ICONS = [
+    private const ICONS = [
         // Application icons
         'add'           => 'fas fa-plus wt-icon-add',
         'calendar'      => 'fas fa-calendar-alt wt-icon-calendar',

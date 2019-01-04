@@ -1261,7 +1261,6 @@ class FunctionsImport
                 break;
 
             case 'OBJE':
-
                 DB::table('media_file')
                     ->where('m_id', '=', $gid)
                     ->where('m_file', '=', $tree->id())

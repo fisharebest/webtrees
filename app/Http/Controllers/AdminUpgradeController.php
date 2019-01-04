@@ -40,17 +40,17 @@ use ZipArchive;
 class AdminUpgradeController extends AbstractBaseController
 {
     // Icons for success and failure
-    const SUCCESS = '<i class="fas fa-check" style="color:green"></i> ';
-    const FAILURE = '<i class="fas fa-times" style="color:red"></i> ';
+    private const SUCCESS = '<i class="fas fa-check" style="color:green"></i> ';
+    private const FAILURE = '<i class="fas fa-times" style="color:red"></i> ';
 
     // Options for fetching files using GuzzleHTTP
-    const GUZZLE_OPTIONS = [
+    private const GUZZLE_OPTIONS = [
         'connect_timeout' => 25,
         'read_timeout'    => 25,
         'timeout'         => 55,
     ];
 
-    const LOCK_FILE = 'data/offline.txt';
+    private const LOCK_FILE = 'data/offline.txt';
 
     /** @var string */
     protected $layout = 'layouts/administration';

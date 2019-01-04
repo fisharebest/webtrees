@@ -25,8 +25,9 @@ use Illuminate\Support\Str;
  */
 class Note extends GedcomRecord
 {
-    const RECORD_TYPE = 'NOTE';
-    const ROUTE_NAME  = 'note';
+    public const RECORD_TYPE = 'NOTE';
+
+    protected const ROUTE_NAME  = 'note';
 
     /**
      * Get an instance of a note object. For single records,

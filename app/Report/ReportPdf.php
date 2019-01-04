@@ -30,21 +30,21 @@ class ReportPdf extends AbstractReport
      *
      * @var bool const
      */
-    const COMPRESSION = true;
+    private const COMPRESSION = true;
 
     /**
      * If true reduce the RAM memory usage by caching temporary data on filesystem (slower).
      *
      * @var bool const
      */
-    const DISK_CACHE = false;
+    private const DISK_CACHE = false;
 
     /**
      * true means that the input text is unicode (PDF)
      *
      * @var bool const
      */
-    const UNICODE = true;
+    private const UNICODE = true;
 
     /**
      * false means that the full font is embedded, true means only the used chars
@@ -52,7 +52,7 @@ class ReportPdf extends AbstractReport
      *
      * @var bool const
      */
-    const SUBSETTING = false;
+    private const SUBSETTING = false;
 
     /**
      * A new object of the PDF class

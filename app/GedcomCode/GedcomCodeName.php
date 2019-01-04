@@ -26,8 +26,8 @@ use Fisharebest\Webtrees\Individual;
  */
 class GedcomCodeName
 {
-    /** @var string[] A list of possible types of name */
-    private static $TYPES = [
+    // A list of possible types of name
+    private const TYPES = [
         'adopted',
         'aka',
         'birth',
@@ -188,7 +188,7 @@ class GedcomCodeName
     public static function getValues(GedcomRecord $record = null): array
     {
         $values = ['' => ''];
-        foreach (self::$TYPES as $type) {
+        foreach (self::TYPES as $type) {
             $values[$type] = self::getValue($type, $record);
         }
         uasort($values, '\Fisharebest\Webtrees\I18N::strcasecmp');

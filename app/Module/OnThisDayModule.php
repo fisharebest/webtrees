@@ -31,7 +31,7 @@ use Symfony\Component\HttpFoundation\Request;
 class OnThisDayModule extends AbstractModule implements ModuleBlockInterface
 {
     // All standard GEDCOM 5.5.1 events except CENS, RESI and EVEN
-    const ALL_EVENTS = [
+    private const ALL_EVENTS = [
         'ADOP',
         'ANUL',
         'BAPM',
@@ -64,7 +64,7 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface
         'WILL',
     ];
 
-    const DEFAULT_EVENTS = [
+    private const DEFAULT_EVENTS = [
         'BIRT',
         'MARR',
         'DEAT',

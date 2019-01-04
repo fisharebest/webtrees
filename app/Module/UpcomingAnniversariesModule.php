@@ -31,17 +31,17 @@ use Symfony\Component\HttpFoundation\Request;
 class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockInterface
 {
     // Default values for new blocks.
-    const DEFAULT_DAYS   = '7';
-    const DEFAULT_FILTER = '1';
-    const DEFAULT_SORT   = 'alpha';
-    const DEFAULT_STYLE  = 'table';
+    private const DEFAULT_DAYS   = '7';
+    private const DEFAULT_FILTER = '1';
+    private const DEFAULT_SORT   = 'alpha';
+    private const DEFAULT_STYLE  = 'table';
 
     // Can show this number of days into the future.
-    const MIN_DAYS = 1;
-    const MAX_DAYS = 30;
+    private const MIN_DAYS = 1;
+    private const MAX_DAYS = 30;
 
     // All standard GEDCOM 5.5.1 events except CENS, RESI and EVEN
-    const ALL_EVENTS = [
+    private const ALL_EVENTS = [
         'ADOP',
         'ANUL',
         'BAPM',
@@ -74,7 +74,7 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
         'WILL',
     ];
 
-    const DEFAULT_EVENTS = [
+    private const DEFAULT_EVENTS = [
         'BIRT',
         'MARR',
         'DEAT',

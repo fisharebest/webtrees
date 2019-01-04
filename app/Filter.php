@@ -41,7 +41,7 @@ class Filter
     // (([^:/?#]+):)?(//([^/?#]*))?([^?#]*)(\?([^#]*))?(#(.*))?
     // This matches far too much while a “precise” regex is several pages long.
     // This is a compromise.
-    const URL_REGEX = '((https?|ftp]):)(//([^\s/?#<>]*))?([^\s?#<>]*)(\?([^\s#<>]*))?(#[^\s?#<>]+)?';
+    private const URL_REGEX = '((https?|ftp]):)(//([^\s/?#<>]*))?([^\s?#<>]*)(\?([^\s#<>]*))?(#[^\s?#<>]+)?';
 
     /**
      * Format block-level text such as notes or transcripts, etc.

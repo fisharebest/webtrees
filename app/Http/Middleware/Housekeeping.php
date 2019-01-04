@@ -31,19 +31,19 @@ use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 class Housekeeping implements MiddlewareInterface
 {
     // Delete cache files after 1 hour.
-    const MAX_CACHE_AGE = 60 * 60;
+    private const MAX_CACHE_AGE = 60 * 60;
 
     // Delete thumnnails after 90 days.
-    const MAX_THUMBNAIL_AGE = 60 * 60 * 24 * 90;
+    private const MAX_THUMBNAIL_AGE = 60 * 60 * 24 * 90;
 
     // Delete error logs after 90 days.
-    const MAX_LOG_AGE = 60 * 60 * 24 * 90;
+    private const MAX_LOG_AGE = 60 * 60 * 24 * 90;
 
     // Delete inactive sessions after 1 day.
-    const MAX_SESSION_AGE = 60 * 60 * 24;
+    private const MAX_SESSION_AGE = 60 * 60 * 24;
 
     // Run the cleanup every 100 requests.
-    const PROBABILITY = 100;
+    private const PROBABILITY = 100;
 
     /** @var HousekeepingService */
     private $housekeeping_service;

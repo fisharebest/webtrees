@@ -24,33 +24,33 @@ use Fisharebest\Webtrees\I18N;
  */
 class FunctionsRtl
 {
-    const UTF8_LRM = "\xE2\x80\x8E"; // U+200E (Left to Right mark:  zero-width character with LTR directionality)
-    const UTF8_RLM = "\xE2\x80\x8F"; // U+200F (Right to Left mark:  zero-width character with RTL directionality)
-    const UTF8_LRO = "\xE2\x80\xAD"; // U+202D (Left to Right override: force everything following to LTR mode)
-    const UTF8_RLO = "\xE2\x80\xAE"; // U+202E (Right to Left override: force everything following to RTL mode)
-    const UTF8_LRE = "\xE2\x80\xAA"; // U+202A (Left to Right embedding: treat everything following as LTR text)
-    const UTF8_RLE = "\xE2\x80\xAB"; // U+202B (Right to Left embedding: treat everything following as RTL text)
-    const UTF8_PDF = "\xE2\x80\xAC"; // U+202C (Pop directional formatting: restore state prior to last LRO, RLO, LRE, RLE)
+    private const UTF8_LRM = "\xE2\x80\x8E"; // U+200E (Left to Right mark:  zero-width character with LTR directionality)
+    private const UTF8_RLM = "\xE2\x80\x8F"; // U+200F (Right to Left mark:  zero-width character with RTL directionality)
+    private const UTF8_LRO = "\xE2\x80\xAD"; // U+202D (Left to Right override: force everything following to LTR mode)
+    private const UTF8_RLO = "\xE2\x80\xAE"; // U+202E (Right to Left override: force everything following to RTL mode)
+    private const UTF8_LRE = "\xE2\x80\xAA"; // U+202A (Left to Right embedding: treat everything following as LTR text)
+    private const UTF8_RLE = "\xE2\x80\xAB"; // U+202B (Right to Left embedding: treat everything following as RTL text)
+    private const UTF8_PDF = "\xE2\x80\xAC"; // U+202C (Pop directional formatting: restore state prior to last LRO, RLO, LRE, RLE)
 
-    const OPEN_PARENTHESES = '([{';
+    private const OPEN_PARENTHESES = '([{';
 
-    const CLOSE_PARENTHESES = ')]}';
+    private const CLOSE_PARENTHESES = ')]}';
 
-    const NUMBERS = '0123456789';
+    private const NUMBERS = '0123456789';
 
-    const NUMBER_PREFIX = '+-'; // Treat these like numbers when at beginning or end of numeric strings
+    private const NUMBER_PREFIX = '+-'; // Treat these like numbers when at beginning or end of numeric strings
 
-    const NUMBER_PUNCTUATION = '- ,.:/'; // Treat these like numbers when inside numeric strings
+    private const NUMBER_PUNCTUATION = '- ,.:/'; // Treat these like numbers when inside numeric strings
 
-    const PUNCTUATION = ',.:;?!';
+    private const PUNCTUATION = ',.:;?!';
 
     // Markup
-    const START_LTR    = '<LTR>';
-    const END_LTR      = '</LTR>';
-    const START_RTL    = '<RTL>';
-    const END_RTL      = '</RTL>';
-    const LENGTH_START = 5;
-    const LENGTH_END   = 6;
+    private const START_LTR    = '<LTR>';
+    private const END_LTR      = '</LTR>';
+    private const START_RTL    = '<RTL>';
+    private const END_RTL      = '</RTL>';
+    private const LENGTH_START = 5;
+    private const LENGTH_END   = 6;
 
     /** @var string Were we previously processing LTR or RTL. */
     private static $previousState;

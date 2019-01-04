@@ -35,10 +35,10 @@ use Symfony\Component\HttpFoundation\Response;
 class LifespansChartController extends AbstractChartController
 {
     // Parameters for generating colors
-    const RANGE      = 120; // degrees
-    const SATURATION = 100; // percent
-    const LIGHTNESS  = 30; // percent
-    const ALPHA      = 0.25;
+    private const RANGE      = 120; // degrees
+    private const SATURATION = 100; // percent
+    private const LIGHTNESS  = 30; // percent
+    private const ALPHA      = 0.25;
 
     /**
      * A form to request the chart parameters.

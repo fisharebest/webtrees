@@ -46,11 +46,11 @@ abstract class AbstractTheme
     /**
      * Where are our CSS, JS and other assets?
      */
-    const THEME_DIR  = '_common';
-    const ASSET_DIR  = 'themes/' . self::THEME_DIR . '/css-2.0.0/';
-    const STYLESHEET = self::ASSET_DIR . 'style.css';
+    protected const THEME_DIR  = '_common';
+    public const ASSET_DIR  = 'themes/' . self::THEME_DIR . '/css-2.0.0/';
+    protected const STYLESHEET = self::ASSET_DIR . 'style.css';
 
-    const PERSON_BOX_CLASSES = [
+    protected const PERSON_BOX_CLASSES = [
         'M' => 'person_box',
         'F' => 'person_boxF',
         'U' => 'person_boxNN',

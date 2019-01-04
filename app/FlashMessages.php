@@ -25,7 +25,7 @@ use stdClass;
 class FlashMessages
 {
     // Session storage key
-    const FLASH_KEY = 'flash_messages';
+    private const FLASH_KEY = 'flash_messages';
 
     /**
      * Add a message to the session storage.

@@ -23,10 +23,10 @@ namespace Fisharebest\Webtrees\Services;
 class TimeoutService
 {
     /** @var float Long-running scripts run in small chunks */
-    const TIME_LIMIT = 1.5;
+    private const TIME_LIMIT = 1.5;
 
     /** @var float Seconds until we run out of time */
-    const TIME_UP_THRESHOLD = 3.0;
+    private const TIME_UP_THRESHOLD = 3.0;
 
     /** @var float The start time of the request */
     private $start_time;

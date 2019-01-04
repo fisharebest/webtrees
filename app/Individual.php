@@ -26,8 +26,9 @@ use Illuminate\Database\Capsule\Manager as DB;
  */
 class Individual extends GedcomRecord
 {
-    const RECORD_TYPE = 'INDI';
-    const ROUTE_NAME  = 'individual';
+    public const RECORD_TYPE = 'INDI';
+
+    protected const ROUTE_NAME  = 'individual';
 
     /** @var int used in some lists to keep track of this individual’s generation in that list */
     public $generation;

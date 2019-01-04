@@ -37,7 +37,7 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class PedigreeMapModule extends AbstractModule implements ModuleChartInterface
 {
-    const LINE_COLORS = [
+    private const LINE_COLORS = [
         '#FF0000',
         // Red
         '#00FF00',

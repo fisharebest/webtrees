@@ -32,11 +32,11 @@ use Symfony\Component\HttpFoundation\Response;
 class HourglassChartController extends AbstractChartController
 {
     // Defaults
-    const DEFAULT_GENERATIONS         = '3';
-    const DEFAULT_MAXIMUM_GENERATIONS = '9';
+    private const DEFAULT_GENERATIONS         = '3';
+    private const DEFAULT_MAXIMUM_GENERATIONS = '9';
 
     // Limits
-    const MINIMUM_GENERATIONS = 2;
+    private const MINIMUM_GENERATIONS = 2;
 
     /**
      * A form to request the chart parameters.

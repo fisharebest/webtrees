@@ -23,16 +23,16 @@ namespace Fisharebest\Webtrees\Services;
 class GedcomService
 {
     // Gedcom allows 255 characters (not bytes), including the EOL character.
-    const EOL         = "\r\n";
-    const EOL_REGEX   = '\r|\r\n|\n|\n\r';
-    const LINE_LENGTH = 255 - 2;
+    private const EOL         = "\r\n";
+    private const EOL_REGEX   = '\r|\r\n|\n|\n\r';
+    private const LINE_LENGTH = 255 - 2;
 
 
     // User defined tags begin with an underscore
-    const USER_DEFINED_TAG_PREFIX = '_';
+    private const USER_DEFINED_TAG_PREFIX = '_';
 
     // Some applications, such as FTM, use GEDCOM tag names instead of the tags.
-    const TAG_NAMES = [
+    private const TAG_NAMES = [
         'ABBREVIATION'      => 'ABBR',
         'ADDRESS'           => 'ADDR',
         'ADDRESS1'          => 'ADR1',
@@ -176,24 +176,24 @@ class GedcomService
     ];
 
     // Custom tags used by other applications, with direct synonyms
-    const TAG_SYNONYMS = [
+    private const TAG_SYNONYMS = [
     ];
 
     // LATI and LONG tags
-    const DEGREE_FORMAT  = ' % .5f%s';
-    const LATITUDE_NORTH = 'N';
-    const LATITUDE_SOUTH = 'S';
-    const LONGITUDE_EAST = 'E';
-    const LONGITUDE_WEST = 'W';
+    private const DEGREE_FORMAT  = ' % .5f%s';
+    private const LATITUDE_NORTH = 'N';
+    private const LATITUDE_SOUTH = 'S';
+    private const LONGITUDE_EAST = 'E';
+    private const LONGITUDE_WEST = 'W';
 
     // PLAC tags
-    const PLACE_SEPARATOR       = ', ';
-    const PLACE_SEPARATOR_REGEX = ' *, *';
+    private const PLACE_SEPARATOR       = ', ';
+    private const PLACE_SEPARATOR_REGEX = ' *, *';
 
     // SEX tags
-    const SEX_FEMALE  = 'F';
-    const SEX_MALE    = 'M';
-    const SEX_UNKNOWN = 'U';
+    private const SEX_FEMALE  = 'F';
+    private const SEX_MALE    = 'M';
+    private const SEX_UNKNOWN = 'U';
 
     /**
      * Convert a GEDCOM tag to a canonical form.

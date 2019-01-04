@@ -44,8 +44,11 @@ use Throwable;
  */
 class EditMediaController extends AbstractEditController
 {
-    const EDIT_RESTRICTIONS    = ['locked'];
-    const PRIVACY_RESTRICTIONS = [
+    private const EDIT_RESTRICTIONS = [
+        'locked'
+    ];
+
+    private const PRIVACY_RESTRICTIONS = [
         'none',
         'privacy',
         'confidential',

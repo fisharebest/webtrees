@@ -30,20 +30,20 @@ use Symfony\Component\HttpFoundation\Response;
 class FanChartController extends AbstractChartController
 {
     // Chart styles
-    const STYLE_HALF_CIRCLE          = 2;
-    const STYLE_THREE_QUARTER_CIRCLE = 3;
-    const STYLE_FULL_CIRCLE          = 4;
+    private const STYLE_HALF_CIRCLE          = 2;
+    private const STYLE_THREE_QUARTER_CIRCLE = 3;
+    private const STYLE_FULL_CIRCLE          = 4;
 
     // Limits
-    const MINIMUM_GENERATIONS = 2;
-    const MAXIMUM_GENERATIONS = 9;
-    const MINIMUM_WIDTH       = 50;
-    const MAXIMUM_WIDTH       = 500;
+    private const MINIMUM_GENERATIONS = 2;
+    private const MAXIMUM_GENERATIONS = 9;
+    private const MINIMUM_WIDTH       = 50;
+    private const MAXIMUM_WIDTH       = 500;
 
     // Defaults
-    const DEFAULT_STYLE       = self::STYLE_THREE_QUARTER_CIRCLE;
-    const DEFAULT_GENERATIONS = 4;
-    const DEFAULT_WIDTH       = 100;
+    private const DEFAULT_STYLE       = self::STYLE_THREE_QUARTER_CIRCLE;
+    private const DEFAULT_GENERATIONS = 4;
+    private const DEFAULT_WIDTH       = 100;
 
     /**
      * A form to request the chart parameters.

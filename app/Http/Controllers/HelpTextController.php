@@ -28,7 +28,7 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class HelpTextController extends AbstractBaseController
 {
-    const FRENCH_DATES = [
+    private const FRENCH_DATES = [
         '@#DFRENCH R@ 12',
         '@#DFRENCH R@ VEND 12',
         'ABT @#DFRENCH R@ BRUM 12',
@@ -43,7 +43,7 @@ class HelpTextController extends AbstractBaseController
         '@#DFRENCH R@ 03 COMP 12',
     ];
 
-    const HIJRI_DATES = [
+    private const HIJRI_DATES = [
         '@#DHIJRI@ 1497',
         '@#DHIJRI@ MUHAR 1497',
         'ABT @#DHIJRI@ SAFAR 1497',
@@ -57,7 +57,7 @@ class HelpTextController extends AbstractBaseController
         '@#DHIJRI@ 03 DHUAH 1497',
     ];
 
-    const JEWISH_DATES = [
+    private const JEWISH_DATES = [
         '@#DHEBREW@ 5481',
         '@#DHEBREW@ TSH 5481',
         'ABT @#DHEBREW@ CSH 5481',
@@ -73,14 +73,14 @@ class HelpTextController extends AbstractBaseController
         '@#DHEBREW@ 03 ELL 5481',
     ];
 
-    const JULIAN_DATES = [
+    private const JULIAN_DATES = [
         '@#DJULIAN@ 14 JAN 1700',
         '@#DJULIAN@ 44 B.C.',
         '@#DJULIAN@ 20 FEB 1742/43',
         'BET @#DJULIAN@ 01 SEP 1752 AND @#DGREGORIAN@ 30 SEP 1752',
     ];
 
-    const DATE_SHORTCUTS = [
+    private const DATE_SHORTCUTS = [
         '1900'           => [],
         'JAN 1900'       => [],
         'FEB 1900'       => [],
@@ -100,7 +100,7 @@ class HelpTextController extends AbstractBaseController
         'INT 1900 (...)' => [],
     ];
 
-    const DATE_RANGE_SHORTCUTS = [
+    private const DATE_RANGE_SHORTCUTS = [
         'BET 1900 AND 1910'         => ['1900-1910'],
         'AFT 1900'                  => ['>1900'],
         'BEF 1910'                  => ['<1910'],
@@ -110,13 +110,13 @@ class HelpTextController extends AbstractBaseController
         'BET OCT 1900 AND DEC 1900' => ['Q4 1900'],
     ];
 
-    const DATE_PERIOD_SHORTCUTS = [
+    private const DATE_PERIOD_SHORTCUTS = [
         'FROM 1900 TO 1910' => ['1900~1910'],
         'FROM 1900'         => ['1900-'],
         'TO 1910'           => ['-1900'],
     ];
 
-    const DMY_SHORTCUTS = [
+    private const DMY_SHORTCUTS = [
         '11 DEC 1913' => [
             '11/12/1913',
             '11-12-1913',
@@ -129,7 +129,7 @@ class HelpTextController extends AbstractBaseController
         ],
     ];
 
-    const MDY_SHORTCUTS = [
+    private const MDY_SHORTCUTS = [
         '11 DEC 1913' => [
             '12/11/1913',
             '12-11-1913',
@@ -142,7 +142,7 @@ class HelpTextController extends AbstractBaseController
         ],
     ];
 
-    const YMD_SHORTCUTS = [
+    private const YMD_SHORTCUTS = [
         '11 DEC 1913' => [
             '11/12/1913',
             '11-12-1913',

@@ -28,7 +28,7 @@ use Fisharebest\Webtrees\Webtrees;
 abstract class AbstractReport
 {
     /** User measure unit. */
-    const UNITS = 'pt';
+    protected const UNITS = 'pt';
 
     /** @var float Left Margin (expressed in points) Default: 17.99 mm, 0.7083 inch */
     public $left_margin = 51.0;

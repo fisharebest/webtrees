@@ -30,8 +30,9 @@ use stdClass;
  */
 class GedcomRecord
 {
-    const RECORD_TYPE = 'UNKNOWN';
-    const ROUTE_NAME  = 'record';
+    public const RECORD_TYPE = 'UNKNOWN';
+
+    protected const ROUTE_NAME  = 'record';
 
     /** @var string The record identifier */
     protected $xref;
