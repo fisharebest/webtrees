@@ -32,7 +32,7 @@ class GedcomRecord
 {
     public const RECORD_TYPE = 'UNKNOWN';
 
-    protected const ROUTE_NAME  = 'record';
+    protected const ROUTE_NAME = 'record';
 
     /** @var string The record identifier */
     protected $xref;

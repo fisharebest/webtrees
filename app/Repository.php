@@ -26,7 +26,7 @@ class Repository extends GedcomRecord
 {
     public const RECORD_TYPE = 'REPO';
 
-    protected const ROUTE_NAME  = 'repository';
+    protected const ROUTE_NAME = 'repository';
 
     /**
      * Get an instance of a repository object. For single records,

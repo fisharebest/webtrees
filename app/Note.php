@@ -27,7 +27,7 @@ class Note extends GedcomRecord
 {
     public const RECORD_TYPE = 'NOTE';
 
-    protected const ROUTE_NAME  = 'note';
+    protected const ROUTE_NAME = 'note';
 
     /**
      * Get an instance of a note object. For single records,
