@@ -225,7 +225,7 @@ class FunctionsExport
             ->where('o_file', '=', $tree->id())
             ->whereNotIn('o_type', ['HEAD', 'TRLR'])
             ->orderBy('o_id')
-            ->select(['o_id AS xref', 'o_gedcom AS gedcom'])
+            ->select(['o_id AS xref', 'o_gedcom AS gedcom', 'o_type AS type'])
             ->get();
 
         foreach ($rows as $row) {
