@@ -22,101 +22,11 @@ namespace Fisharebest\Webtrees;
  */
 class Soundex
 {
-    /**
-     * Which algorithms are supported.
-     *
-     * @return string[]
-     */
-    public static function getAlgorithms(): array
-    {
-        return [
-            /* I18N: http://en.wikipedia.org/wiki/Soundex */
-            'std' => I18N::translate('Russell'),
-            /* I18N: http://en.wikipedia.org/wiki/Daitch–Mokotoff_Soundex */
-            'dm'  => I18N::translate('Daitch-Mokotoff'),
-        ];
-    }
-
-    /**
-     * Is there a match between two soundex codes?
-     *
-     * @param string $soundex1
-     * @param string $soundex2
-     *
-     * @return bool
-     */
-    public static function compare($soundex1, $soundex2): bool
-    {
-        if ($soundex1 !== '' && $soundex2 !== '') {
-            return !empty(array_intersect(explode(':', $soundex1), explode(':', $soundex2)));
-        }
-
-        return false;
-    }
-
-    /**
-     * Generate Russell soundex codes for a given text.
-     *
-     * @param string $text
-     *
-     * @return string
-     */
-    public static function russell(string $text): string
-    {
-        $words         = explode(' ', $text);
-        $soundex_array = [];
-
-        foreach ($words as $word) {
-            $soundex = soundex($word);
-
-            // Only return codes from recognisable sounds
-            if ($soundex !== '0000') {
-                $soundex_array[] = $soundex;
-            }
-        }
-
-        // Combine words, e.g. “New York” as “Newyork”
-        if (count($words) > 1) {
-            $soundex_array[] = soundex(strtr($text, ' ', ''));
-        }
-
-        // A varchar(255) column can only hold 51 4-character codes (plus 50 delimiters)
-        $soundex_array = array_slice(array_unique($soundex_array), 0, 51);
-
-        return implode(':', $soundex_array);
-    }
-
-    /**
-     * Generate Daitch–Mokotoff soundex codes for a given text.
-     *
-     * @param string $text
-     *
-     * @return string
-     */
-    public static function daitchMokotoff(string $text): string
-    {
-        $words         = explode(' ', $text);
-        $soundex_array = [];
-
-        foreach ($words as $word) {
-            $soundex_array = array_merge($soundex_array, self::daitchMokotoffWord($word));
-        }
-        // Combine words, e.g. “New York” as “Newyork”
-        if (count($words) > 1) {
-            $soundex_array = array_merge($soundex_array, self::daitchMokotoffWord(strtr($text, ' ', '')));
-        }
-
-        // A varchar(255) column can only hold 36 6-character codes (plus 35 delimiters)
-        $soundex_array = array_slice(array_unique($soundex_array), 0, 36);
-
-        return implode(':', $soundex_array);
-    }
-
     // Determine the Daitch–Mokotoff Soundex code for a word
     // Original implementation by Gerry Kroll, and analysis by Meliza Amity
 
     // Max. table key length (in ASCII bytes -- NOT in UTF-8 characters!)
-    const MAXCHAR = 7;
+    private const MAXCHAR = 7;
 
     /**
      * Name transformation arrays.
@@ -129,10 +39,8 @@ class Soundex
      * Note about the use of "\x01":
      * This code, which can’t legitimately occur in the kind of text we're dealing with,
      * is used as a place-holder so that conditional string replacements can be done.
-     *
-     * @var string[][]
      */
-    private static $transformNameTable = [
+    private const TRANSFORM_NAMES = [
         // Force Yiddish ligatures to be treated as separate letters
         [
             'װ',
@@ -210,10 +118,8 @@ class Soundex
      * [3]:  sound value for other cases
      * [1],[2],[3] can be repeated several times to create branches in the code
      * an empty sound value means "ignore in this state"
-     *
-     * @var string[][]
      */
-    private static $dmsounds = [
+    private const DM_SOUNDS = [
         'A'       => [
             '1',
             '0',
@@ -3572,6 +3478,96 @@ class Soundex
     ];
 
     /**
+     * Which algorithms are supported.
+     *
+     * @return string[]
+     */
+    public static function getAlgorithms(): array
+    {
+        return [
+            /* I18N: http://en.wikipedia.org/wiki/Soundex */
+            'std' => I18N::translate('Russell'),
+            /* I18N: http://en.wikipedia.org/wiki/Daitch–Mokotoff_Soundex */
+            'dm'  => I18N::translate('Daitch-Mokotoff'),
+        ];
+    }
+
+    /**
+     * Is there a match between two soundex codes?
+     *
+     * @param string $soundex1
+     * @param string $soundex2
+     *
+     * @return bool
+     */
+    public static function compare($soundex1, $soundex2): bool
+    {
+        if ($soundex1 !== '' && $soundex2 !== '') {
+            return !empty(array_intersect(explode(':', $soundex1), explode(':', $soundex2)));
+        }
+
+        return false;
+    }
+
+    /**
+     * Generate Russell soundex codes for a given text.
+     *
+     * @param string $text
+     *
+     * @return string
+     */
+    public static function russell(string $text): string
+    {
+        $words         = explode(' ', $text);
+        $soundex_array = [];
+
+        foreach ($words as $word) {
+            $soundex = soundex($word);
+
+            // Only return codes from recognisable sounds
+            if ($soundex !== '0000') {
+                $soundex_array[] = $soundex;
+            }
+        }
+
+        // Combine words, e.g. “New York” as “Newyork”
+        if (count($words) > 1) {
+            $soundex_array[] = soundex(strtr($text, ' ', ''));
+        }
+
+        // A varchar(255) column can only hold 51 4-character codes (plus 50 delimiters)
+        $soundex_array = array_slice(array_unique($soundex_array), 0, 51);
+
+        return implode(':', $soundex_array);
+    }
+
+    /**
+     * Generate Daitch–Mokotoff soundex codes for a given text.
+     *
+     * @param string $text
+     *
+     * @return string
+     */
+    public static function daitchMokotoff(string $text): string
+    {
+        $words         = explode(' ', $text);
+        $soundex_array = [];
+
+        foreach ($words as $word) {
+            $soundex_array = array_merge($soundex_array, self::daitchMokotoffWord($word));
+        }
+        // Combine words, e.g. “New York” as “Newyork”
+        if (count($words) > 1) {
+            $soundex_array = array_merge($soundex_array, self::daitchMokotoffWord(strtr($text, ' ', '')));
+        }
+
+        // A varchar(255) column can only hold 36 6-character codes (plus 35 delimiters)
+        $soundex_array = array_slice(array_unique($soundex_array), 0, 36);
+
+        return implode(':', $soundex_array);
+    }
+
+    /**
      * Calculate the Daitch-Mokotoff soundex for a word.
      *
      * @param string $name
@@ -3582,13 +3578,13 @@ class Soundex
     {
         // Apply special transformation rules to the input string
         $name = I18N::strtoupper($name);
-        foreach (self::$transformNameTable as $transformRule) {
+        foreach (self::TRANSFORM_NAMES as $transformRule) {
             $name = str_replace($transformRule[0], $transformRule[1], $name);
         }
 
         // Initialize
         $name_script = I18N::textScript($name);
-        $noVowels    = ($name_script == 'Hebr' || $name_script == 'Arab');
+        $noVowels    = ($name_script === 'Hebr' || $name_script === 'Arab');
 
         $lastPos         = strlen($name) - 1;
         $currPos         = 0;
@@ -3603,7 +3599,7 @@ class Soundex
             // Find the DM coding table entry for the chunk at the current position
             $thisEntry = substr($name, $currPos, self::MAXCHAR); // Get maximum length chunk
             while ($thisEntry != '') {
-                if (isset(self::$dmsounds[$thisEntry])) {
+                if (isset(self::DM_SOUNDS[$thisEntry])) {
                     break;
                 }
                 $thisEntry = substr($thisEntry, 0, -1); // Not in table: try a shorter chunk
@@ -3613,7 +3609,7 @@ class Soundex
                 continue; // and try again
             }
 
-            $soundTableEntry = self::$dmsounds[$thisEntry];
+            $soundTableEntry = self::DM_SOUNDS[$thisEntry];
             $workingResult   = $partialResult;
             $partialResult   = [];
             $currPos += strlen($thisEntry);
@@ -3624,7 +3620,7 @@ class Soundex
                     // Determine whether the next chunk is a vowel
                     $nextEntry = substr($name, $currPos, self::MAXCHAR); // Get maximum length chunk
                     while ($nextEntry != '') {
-                        if (isset(self::$dmsounds[$nextEntry])) {
+                        if (isset(self::DM_SOUNDS[$nextEntry])) {
                             break;
                         }
                         $nextEntry = substr($nextEntry, 0, -1); // Not in table: try a shorter chunk
@@ -3632,7 +3628,7 @@ class Soundex
                 } else {
                     $nextEntry = '';
                 }
-                if ($nextEntry != '' && self::$dmsounds[$nextEntry][0] != '0') {
+                if ($nextEntry != '' && self::DM_SOUNDS[$nextEntry][0] != '0') {
                     $state = 2;
                 } else {
                     // Next chunk is a vowel
