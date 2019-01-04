@@ -99,7 +99,7 @@ class AuthTest extends \Fisharebest\Webtrees\TestCase
         $user = User::create('admin', 'Administrator', 'admin@example.com', 'secret');
         $this->assertFalse(Auth::isAdmin($user));
 
-        // Make the user a manager.
+        // Make the user an administrator.
         $user->setPreference('canadmin', '1');
         $this->assertTrue(Auth::isAdmin($user));
 

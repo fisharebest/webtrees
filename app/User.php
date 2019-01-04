@@ -19,6 +19,7 @@ namespace Fisharebest\Webtrees;
 
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
+use Illuminate\Database\Query\JoinClause;
 use stdClass;
 
 /**
@@ -237,16 +238,15 @@ class User
      */
     public static function all(): array
     {
-        $rows = Database::prepare(
-            "SELECT user_id, user_name, real_name, email" .
-            " FROM `##user`" .
-            " WHERE user_id > 0" .
-            " ORDER BY real_name"
-        )->fetchAll();
+        $rows = DB::table('user')
+            ->where('user_id', '>', 0)
+            ->orderBy('real_name')
+            ->select(['user_id', 'user_name', 'real_name', 'email'])
+            ->get();
 
-        return array_map(function (stdClass $row): User {
+        return $rows->map(function(stdClass $row): User {
             return new static($row);
-        }, $rows);
+        })->all();
     }
 
     /**
@@ -256,17 +256,21 @@ class User
      */
     public static function administrators(): array
     {
-        $rows = Database::prepare(
-            "SELECT user_id, user_name, real_name, email" .
-            " FROM `##user`" .
-            " JOIN `##user_setting` USING (user_id)" .
-            " WHERE user_id > 0 AND setting_name = 'canadmin' AND setting_value = '1'" .
-            " ORDER BY real_name"
-        )->fetchAll();
+        $rows = DB::table('user')
+            ->join('user_setting', function(JoinClause $join): void {
+                $join
+                    ->on('user_setting.user_id', '=', 'user.user_id')
+                    ->where('user_setting.setting_name', '=', 'canadmin')
+                    ->where('user_setting.setting_value', '=', '1');
+            })
+            ->where('user.user_id', '>', 0)
+            ->orderBy('real_name')
+            ->select(['user.user_id', 'user_name', 'real_name', 'email'])
+            ->get();
 
-        return array_map(function (stdClass $row): User {
+        return $rows->map(function(stdClass $row): User {
             return new static($row);
-        }, $rows);
+        })->all();
     }
 
     /**
@@ -278,9 +282,9 @@ class User
      */
     public function checkPassword(string $password): bool
     {
-        $password_hash = Database::prepare(
-            "SELECT password FROM `##user` WHERE user_id = ?"
-        )->execute([$this->user_id])->fetchOne();
+        $password_hash = DB::table('user')
+            ->where('user_id', '=', $this->user_id)
+            ->value('password');
 
         if ($password_hash !== null && password_verify($password, $password_hash)) {
             if (password_needs_rehash($password_hash, PASSWORD_DEFAULT)) {
@@ -300,17 +304,21 @@ class User
      */
     public static function managers(): array
     {
-        $rows = Database::prepare(
-            "SELECT user_id, user_name, real_name, email" .
-            " FROM `##user` JOIN `##user_gedcom_setting` USING (user_id)" .
-            " WHERE setting_name = 'canedit' AND setting_value='admin'" .
-            " GROUP BY user_id, real_name" .
-            " ORDER BY real_name"
-        )->fetchAll();
+        $rows = DB::table('user')
+            ->join('user_gedcom_setting', function(JoinClause $join): void {
+                $join
+                    ->on('user_gedcom_setting.user_id', '=', 'user.user_id')
+                    ->where('user_gedcom_setting.setting_name', '=', 'canedit')
+                    ->where('user_gedcom_setting.setting_value', '=', 'admin');
+            })
+            ->where('user.user_id', '>', 0)
+            ->orderBy('real_name')
+            ->select(['user.user_id', 'user_name', 'real_name', 'email'])
+            ->get();
 
-        return array_map(function (stdClass $row): User {
+        return $rows->map(function(stdClass $row): User {
             return new static($row);
-        }, $rows);
+        })->all();
     }
 
     /**
@@ -320,17 +328,21 @@ class User
      */
     public static function moderators(): array
     {
-        $rows = Database::prepare(
-            "SELECT user_id, user_name, real_name, email" .
-            " FROM `##user` JOIN `##user_gedcom_setting` USING (user_id)" .
-            " WHERE setting_name = 'canedit' AND setting_value='accept'" .
-            " GROUP BY user_id, real_name" .
-            " ORDER BY real_name"
-        )->fetchAll();
+        $rows = DB::table('user')
+            ->join('user_gedcom_setting', function(JoinClause $join): void {
+                $join
+                    ->on('user_gedcom_setting.user_id', '=', 'user.user_id')
+                    ->where('user_gedcom_setting.setting_name', '=', 'canedit')
+                    ->where('user_gedcom_setting.setting_value', '=', 'accept');
+            })
+            ->where('user.user_id', '>', 0)
+            ->orderBy('real_name')
+            ->select(['user.user_id', 'user_name', 'real_name', 'email'])
+            ->get();
 
-        return array_map(function (stdClass $row): User {
+        return $rows->map(function(stdClass $row): User {
             return new static($row);
-        }, $rows);
+        })->all();
     }
 
     /**
@@ -340,16 +352,21 @@ class User
      */
     public static function unapproved(): array
     {
-        $rows = Database::prepare(
-            "SELECT user_id, user_name, real_name, email" .
-            " FROM `##user` JOIN `##user_setting` USING (user_id)" .
-            " WHERE setting_name = 'verified_by_admin' AND setting_value = '0'" .
-            " ORDER BY real_name"
-        )->fetchAll();
+        $rows = DB::table('user')
+            ->join('user_setting', function(JoinClause $join): void {
+                $join
+                    ->on('user_setting.user_id', '=', 'user.user_id')
+                    ->where('user_setting.setting_name', '=', 'verified_by_admin')
+                    ->where('user_setting.setting_value', '=', '0');
+            })
+            ->where('user.user_id', '>', 0)
+            ->orderBy('real_name')
+            ->select(['user.user_id', 'user_name', 'real_name', 'email'])
+            ->get();
 
-        return array_map(function (stdClass $row): User {
+        return $rows->map(function(stdClass $row): User {
             return new static($row);
-        }, $rows);
+        })->all();
     }
 
     /**
@@ -359,16 +376,21 @@ class User
      */
     public static function unverified(): array
     {
-        $rows = Database::prepare(
-            "SELECT user_id, user_name, real_name, email" .
-            " FROM `##user` JOIN `##user_setting` USING (user_id)" .
-            " WHERE setting_name = 'verified' AND setting_value = '0'" .
-            " ORDER BY real_name"
-        )->fetchAll();
+        $rows = DB::table('user')
+            ->join('user_setting', function(JoinClause $join): void {
+                $join
+                    ->on('user_setting.user_id', '=', 'user.user_id')
+                    ->where('user_setting.setting_name', '=', 'verified')
+                    ->where('user_setting.setting_value', '=', '0');
+            })
+            ->where('user.user_id', '>', 0)
+            ->orderBy('real_name')
+            ->select(['user.user_id', 'user_name', 'real_name', 'email'])
+            ->get();
 
-        return array_map(function (stdClass $row): User {
+        return $rows->map(function(stdClass $row): User {
             return new static($row);
-        }, $rows);
+        })->all();
     }
 
     /**
@@ -378,15 +400,17 @@ class User
      */
     public static function allLoggedIn(): array
     {
-        $rows = Database::prepare(
-            "SELECT DISTINCT user_id, user_name, real_name, email" .
-            " FROM `##user`" .
-            " JOIN `##session` USING (user_id)"
-        )->fetchAll();
+        $rows = DB::table('user')
+            ->join('session', 'session.user_id', '=', 'user.user_id')
+            ->where('user.user_id', '>', 0)
+            ->orderBy('real_name')
+            ->select(['user.user_id', 'user_name', 'real_name', 'email'])
+            ->distinct()
+            ->get();
 
-        return array_map(function (stdClass $row): User {
+        return $rows->map(function(stdClass $row): User {
             return new static($row);
-        }, $rows);
+        })->all();
     }
 
     /**
