@@ -83,8 +83,10 @@ class IndividualListService
     /**
      * Get a list of initial surname letters.
      *
-     * @param bool $marnm if set, include married names
-     * @param bool $fams  if set, only consider individuals with FAMS records
+     * @param bool   $marnm if set, include married names
+     * @param bool   $fams  if set, only consider individuals with FAMS records
+     * @param string $locale
+     * @param string $collation
      *
      * @return int[]
      */

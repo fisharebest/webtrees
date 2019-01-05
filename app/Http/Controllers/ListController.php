@@ -30,6 +30,8 @@ use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
+use Illuminate\Database\Capsule\Manager as DB;
+use stdClass;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -591,20 +593,16 @@ class ListController extends AbstractBaseController
      */
     private function allNotes(Tree $tree): array
     {
-        $rows = Database::prepare(
-            "SELECT o_id AS xref, o_gedcom AS gedcom FROM `##other` WHERE o_type = 'NOTE' AND o_file = :tree_id"
-        )->execute([
-            'tree_id' => $tree->id(),
-        ])->fetchAll();
-
-        $list = [];
-        foreach ($rows as $row) {
-            $list[] = Note::getInstance($row->xref, $tree, $row->gedcom);
-        }
-
-        return array_filter($list, function (Note $x): bool {
-            return $x->canShowName();
-        });
+        return DB::table('other')
+            ->where('o_file', '=', $tree->id())
+            ->where('o_type', '=', 'NOTE')
+            ->select(['o_id', 'o_gedcom'])
+            ->get()
+            ->map(function (stdClass $row) use ($tree): Note {
+                return Note::getInstance($row->o_id, $tree, $row->o_gedcom);
+            })->filter(function(Note $note): bool {
+                return $note->canShow();
+            })->all();
     }
 
     /**
@@ -616,20 +614,16 @@ class ListController extends AbstractBaseController
      */
     private function allRepositories(Tree $tree): array
     {
-        $rows = Database::prepare(
-            "SELECT o_id AS xref, o_gedcom AS gedcom FROM `##other` WHERE o_type = 'REPO' AND o_file = ?"
-        )->execute([
-            $tree->id(),
-        ])->fetchAll();
-
-        $list = [];
-        foreach ($rows as $row) {
-            $list[] = Repository::getInstance($row->xref, $tree, $row->gedcom);
-        }
-
-        return array_filter($list, function (Repository $x): bool {
-            return $x->canShowName();
-        });
+        return DB::table('other')
+            ->where('o_file', '=', $tree->id())
+            ->where('o_type', '=', 'REPO')
+            ->select(['o_id', 'o_gedcom'])
+            ->get()
+            ->map(function (stdClass $row) use ($tree): Repository {
+                return Repository::getInstance($row->o_id, $tree, $row->o_gedcom);
+            })->filter(function(Repository $repository): bool {
+                return $repository->canShow();
+            })->all();
     }
 
     /**
@@ -641,20 +635,15 @@ class ListController extends AbstractBaseController
      */
     private function allSources(Tree $tree): array
     {
-        $rows = Database::prepare(
-            "SELECT s_id AS xref, s_gedcom AS gedcom FROM `##sources` WHERE s_file = :tree_id"
-        )->execute([
-            'tree_id' => $tree->id(),
-        ])->fetchAll();
-
-        $list = [];
-        foreach ($rows as $row) {
-            $list[] = Source::getInstance($row->xref, $tree, $row->gedcom);
-        }
-
-        return array_filter($list, function (Source $x): bool {
-            return $x->canShow();
-        });
+        return DB::table('sources')
+            ->where('s_file', '=', $tree->id())
+            ->select(['s_id', 's_gedcom'])
+            ->get()
+            ->map(function (stdClass $row) use ($tree): Source {
+                return Source::getInstance($row->s_id, $tree, $row->s_gedcom);
+            })->filter(function(Source $source): bool {
+                return $source->canShow();
+            })->all();
     }
 
     /**
