@@ -18,20 +18,18 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Database;
-use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Repository;
+use Fisharebest\Webtrees\Services\IndividualListService;
 use Fisharebest\Webtrees\Services\LocalizationService;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
-use InvalidArgumentException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -40,17 +38,22 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class ListController extends AbstractBaseController
 {
+    /** @var IndividualListService */
+    private $individual_list_service;
+
     /** @var LocalizationService */
     private $localization_service;
 
     /**
      * ListController constructor.
      *
-     * @param LocalizationService $localization_service
+     * @param IndividualListService $individual_list_service
+     * @param LocalizationService   $localization_service
      */
-    public function __construct(LocalizationService $localization_service)
+    public function __construct(IndividualListService $individual_list_service, LocalizationService $localization_service)
     {
-        $this->localization_service = $localization_service;
+        $this->individual_list_service = $individual_list_service;
+        $this->localization_service    = $localization_service;
     }
 
     /**
@@ -142,7 +145,7 @@ class ListController extends AbstractBaseController
                     'ged'      => $tree->name(),
                     'show_all' => 'yes',
                 ];
-                $show = $request->get('show', 'surn');
+                $show    = $request->get('show', 'surn');
             }
         } elseif ($surname) {
             $alpha    = $this->localization_service->initialLetter($surname); // so we can highlight the initial letter
@@ -152,7 +155,7 @@ class ListController extends AbstractBaseController
             } else {
                 // The surname parameter is a root/canonical form.
                 // Display it as the actual surname
-                $legend = implode('/', array_keys($this->surnames($tree, $surname, $alpha, $show_marnm === 'yes', $families)));
+                $legend = implode('/', array_keys($this->individual_list_service->surnames($surname, $alpha, $show_marnm === 'yes', $families, WT_LOCALE, I18N::collation())));
             }
             $params = [
                 'ged'     => $tree->name(),
@@ -212,10 +215,10 @@ class ListController extends AbstractBaseController
         <div class="d-flex flex-column wt-page-options wt-page-options-individual-list d-print-none">
             <ul class="d-flex flex-wrap wt-initials-list">
 
-                <?php foreach ($this->surnameAlpha($tree, $show_marnm === 'yes', $families) as $letter => $count) : ?>
+                <?php foreach ($this->individual_list_service->surnameAlpha($show_marnm === 'yes', $families, WT_LOCALE, I18N::collation()) as $letter => $count) : ?>
                     <li class="wt-initials-list-item d-flex">
                         <?php if ($count > 0) : ?>
-                            <a href="<?= e(route($route, ['alpha' => $letter, 'ged' => $tree->name()])) ?>" class="wt-initial<?= $letter === $alpha ? ' active' : ''?> '" title="<?= I18N::number($count) ?>"><?= $this->surnameInitial((string) $letter) ?></a>
+                            <a href="<?= e(route($route, ['alpha' => $letter, 'ged' => $tree->name()])) ?>" class="wt-initial<?= $letter === $alpha ? ' active' : '' ?> '" title="<?= I18N::number($count) ?>"><?= $this->surnameInitial((string) $letter) ?></a>
                         <?php else : ?>
                             <span class="wt-initial text-muted"><?= $this->surnameInitial((string) $letter) ?></span>
 
@@ -242,7 +245,7 @@ class ListController extends AbstractBaseController
                 <?php else : ?>
                     <p>
                         <a href="<?= e(route($route, ['show' => $show, 'show_marnm' => 'yes'] + $params)) ?>">
-                            <?= I18N::translate('Include individuals with “%s” as a married name', $legend)?>
+                            <?= I18N::translate('Include individuals with “%s” as a married name', $legend) ?>
                         </a>
                     </p>
                 <?php endif ?>
@@ -257,7 +260,7 @@ class ListController extends AbstractBaseController
                     <?php else : ?>
                         <p>
                             <a href="<?= e(route($route, ['show' => 'surn', 'show_marnm' => 'no'] + $params)) ?>">
-                               <?= I18N::translate('Show the list of surnames') ?>
+                                <?= I18N::translate('Show the list of surnames') ?>
                             </a>
                         </p>
                     <?php endif ?>
@@ -269,7 +272,7 @@ class ListController extends AbstractBaseController
             <?php
 
             if ($show === 'indi' || $show === 'surn') {
-                $surns = $this->surnames($tree, $surname, $alpha, $show_marnm === 'yes', $families);
+                $surns = $this->individual_list_service->surnames($surname, $alpha, $show_marnm === 'yes', $families, WT_LOCALE, I18N::collation());
                 if ($show === 'surn') {
                     // Show the surname list
                     switch ($tree->getPreference('SURNAME_LIST_STYLE')) {
@@ -299,7 +302,7 @@ class ListController extends AbstractBaseController
                     if ($count < $tree->getPreference('SUBLIST_TRIGGER_I')) {
                         $falpha = '';
                     } else {
-                        $givn_initials = $this->givenAlpha($tree, $surname, $alpha, $show_marnm === 'yes', $families);
+                        $givn_initials = $this->individual_list_service->givenAlpha($surname, $alpha, $show_marnm === 'yes', $families, WT_LOCALE, I18N::collation());
                         // Break long lists by initial letter of given name
                         if ($surname || $show_all === 'yes') {
                             if ($show_all === 'no') {
@@ -339,13 +342,13 @@ class ListController extends AbstractBaseController
                     if ($show === 'indi') {
                         if ($route === 'individual-list') {
                             echo view('lists/individuals-table', [
-                                'individuals' => $this->individuals($tree, $surname, $alpha, $falpha, $show_marnm === 'yes', false),
+                                'individuals' => $this->individual_list_service->individuals($surname, $alpha, $falpha, $show_marnm === 'yes', false, I18N::collation()),
                                 'sosa'        => false,
                                 'tree'        => $tree,
                             ]);
                         } else {
                             echo view('lists/families-table', [
-                                'families' => $this->families($tree, $surname, $alpha, $falpha, $show_marnm === 'yes'),
+                                'families' => $this->individual_list_service->families($surname, $alpha, $falpha, $show_marnm === 'yes'),
                                 'tree'     => $tree,
                             ]);
                         }
@@ -502,7 +505,6 @@ class ListController extends AbstractBaseController
         return array_combine($folders, $folders);
     }
 
-
     /**
      * Generate a list of all the media objects matching the criteria in a current tree.
      *
@@ -518,7 +520,7 @@ class ListController extends AbstractBaseController
     private function allMedia(Tree $tree, string $folder, string $subfolders, string $sort, string $filter, string $form_type): array
     {
         // All files in the folder, plus external files
-        $sql =
+        $sql  =
             "SELECT m_id AS xref, m_gedcom AS gedcom" .
             " FROM `##media`" .
             " JOIN `##media_file` USING (m_id, m_file)" .
@@ -537,11 +539,11 @@ class ListController extends AbstractBaseController
         // Include / exclude subfolders (but always include external)
         switch ($subfolders) {
             case 'include':
-                $sql .= " AND (multimedia_file_refn LIKE CONCAT(?, '%') $sql_external)";
+                $sql    .= " AND (multimedia_file_refn LIKE CONCAT(?, '%') $sql_external)";
                 $args[] = Database::escapeLike($folder);
                 break;
             case 'exclude':
-                $sql .= " AND (multimedia_file_refn LIKE CONCAT(?, '%') AND multimedia_file_refn NOT LIKE CONCAT(?, '%/%') $sql_external)";
+                $sql    .= " AND (multimedia_file_refn LIKE CONCAT(?, '%') AND multimedia_file_refn NOT LIKE CONCAT(?, '%/%') $sql_external)";
                 $args[] = Database::escapeLike($folder);
                 $args[] = Database::escapeLike($folder);
                 break;
@@ -549,13 +551,13 @@ class ListController extends AbstractBaseController
 
         // Apply search terms
         if ($filter) {
-            $sql .= " AND (SUBSTRING_INDEX(multimedia_file_refn, '/', -1) LIKE CONCAT('%', ?, '%') OR descriptive_title LIKE CONCAT('%', ?, '%'))";
+            $sql    .= " AND (SUBSTRING_INDEX(multimedia_file_refn, '/', -1) LIKE CONCAT('%', ?, '%') OR descriptive_title LIKE CONCAT('%', ?, '%'))";
             $args[] = Database::escapeLike($filter);
             $args[] = Database::escapeLike($filter);
         }
 
         if ($form_type) {
-            $sql .= " AND source_media_type = ?";
+            $sql    .= " AND source_media_type = ?";
             $args[] = $form_type;
         }
 
@@ -653,420 +655,6 @@ class ListController extends AbstractBaseController
         return array_filter($list, function (Source $x): bool {
             return $x->canShow();
         });
-    }
-
-    /**
-     * Generate SQL to match a given letter, taking care of cases that
-     * are not covered by the collation setting.
-     * We must consider:
-     * potential substrings, such as Czech "CH" and "C"
-     * equivalent letters, such as Danish "AA" and "Å"
-     * We COULD write something that handles all languages generically,
-     * but its performance would most likely be poor.
-     * For languages that don't appear in this list, we could write
-     * simpler versions of the surnameAlpha() and givenAlpha() functions,
-     * but it gives no noticable improvement in performance.
-     *
-     * @param string $field
-     * @param string $letter
-     *
-     * @return mixed[] Where clause and array of bind variables
-     */
-    private function getInitialSql($field, $letter): array
-    {
-        $collate = 'COLLATE ' . I18N::collation();
-
-        switch ($field) {
-            case 'n_givn':
-                $where1 = " AND n_givn LIKE :n_givn1 " . $collate . " AND n_givn NOT LIKE :n_givn2 " . $collate;
-                $where2 = " AND (n_givn LIKE :n_givn1 " . $collate . " OR n_givn LIKE :n_givn2 " . $collate . ")";
-                $where3 = " AND n_givn LIKE CONCAT('@', :n_givn1, '%') " . $collate . " ESCAPE '@'";
-                break;
-
-            case 'n_surn':
-                $where1 = " AND n_surn LIKE :n_surn1 " . $collate . " AND n_surn NOT LIKE :n_surn2 " . $collate;
-                $where2 = " AND (n_surn LIKE :n_surn1 " . $collate . " OR n_surn LIKE :n_surn2 " . $collate . ")";
-                $where3 = " AND n_surn LIKE CONCAT('@', :n_surn1, '%') " . $collate . " ESCAPE '@'";
-                break;
-
-            default:
-                throw new InvalidArgumentException('ListController::getInitialSql(' . $field . ')');
-        }
-
-        switch (WT_LOCALE) {
-            case 'cs':
-                switch ($letter) {
-                    case 'C':
-                        return [$where1, [$field . '1' => 'C%', $field . '2' => 'CH%']];
-                }
-                break;
-            case 'da':
-            case 'nb':
-            case 'nn':
-                switch ($letter) {
-                    // AA gets listed under Å
-                    case 'A':
-                        return [$where1, [$field . '1' => 'A%', $field . '2' => 'AA%']];
-                    case 'Å':
-                        return [$where2, [$field . '1' => 'Å%', $field . '2' => 'AA%']];
-                }
-                break;
-            case 'hu':
-                switch ($letter) {
-                    case 'C':
-                        return [$where1, [$field . '1' => 'C%', $field . '2' => 'CS%']];
-                    case 'D':
-                        return [$where1, [$field . '1' => 'D%', $field . '2' => 'DZ%']];
-                    case 'DZ':
-                        return [$where1, [$field . '1' => 'DZ%', $field . '2' => 'DZS%']];
-                    case 'G':
-                        return [$where1, [$field . '1' => 'G%', $field . '2' => 'GY%']];
-                    case 'L':
-                        return [$where1, [$field . '1' => 'L%', $field . '2' => 'LY%']];
-                    case 'N':
-                        return [$where1, [$field . '1' => 'N%', $field . '2' => 'NY%']];
-                    case 'S':
-                        return [$where1, [$field . '1' => 'S%', $field . '2' => 'SZ%']];
-                    case 'T':
-                        return [$where1, [$field . '1' => 'T%', $field . '2' => 'TY%']];
-                    case 'Z':
-                        return [$where1, [$field . '1' => 'Z%', $field . '2' => 'ZS%']];
-                }
-                break;
-            case 'nl':
-                switch ($letter) {
-                    case 'I':
-                        return [$where1, [$field . '1' => 'I%', $field . '2' => 'IJ%']];
-                }
-                break;
-        }
-
-        // Easy cases: the MySQL collation rules take care of it
-        return [$where3, [$field . '1' => $letter]];
-    }
-
-    /**
-     * Get a list of initial surname letters for indilist.php and famlist.php
-     *
-     * @param Tree $tree
-     * @param bool $marnm  if set, include married names
-     * @param bool $fams   if set, only consider individuals with FAMS records
-     * @param bool $totals if set, count the number of names beginning with each letter
-     *
-     * @return int[]
-     */
-    private function surnameAlpha(Tree $tree, $marnm, $fams, $totals = true): array
-    {
-        $alphas = [];
-
-        $sql =
-            "SELECT COUNT(n_id)" .
-            " FROM `##name` " .
-            ($fams ? " JOIN `##link` ON (n_id=l_from AND n_file=l_file AND l_type='FAMS') " : "") .
-            " WHERE n_file=" . $tree->id() .
-            ($marnm ? "" : " AND n_type!='_MARNM'");
-
-        // Fetch all the letters in our alphabet, whether or not there
-        // are any names beginning with that letter. It looks better to
-        // show the full alphabet, rather than omitting rare letters such as X
-        foreach ($this->localization_service->alphabet() as $letter) {
-            $count = 1;
-            if ($totals) {
-                [$where, $args2] = $this->getInitialSql('n_surn', $letter);
-                $count = Database::prepare($sql . $where)->execute($args2)->fetchOne();
-            }
-            $alphas[$letter] = (int) $count;
-        }
-
-        // Now fetch initial letters that are not in our alphabet,
-        // including "@" (for "@N.N.") and "" for no surname.
-        $sql =
-            "SELECT initial, count FROM (SELECT UPPER(LEFT(n_surn, 1)) AS initial, COUNT(n_id) AS count" .
-            " FROM `##name` " .
-            ($fams ? " JOIN `##link` ON n_id = l_from AND n_file = l_file AND l_type = 'FAMS' " : "") .
-            " WHERE n_file = :tree_id AND n_surn <> ''" .
-            ($marnm ? "" : " AND n_type != '_MARNM'");
-
-        $args = [
-            'tree_id' => $tree->id(),
-        ];
-
-        foreach ($this->localization_service->alphabet() as $n => $letter) {
-            $sql .= " AND n_surn COLLATE :collate_" . $n . " NOT LIKE :letter_" . $n;
-            $args['collate_' . $n] = I18N::collation();
-            $args['letter_' . $n]  = $letter . '%';
-        }
-        $sql .= " GROUP BY UPPER(LEFT(n_surn, 1))) AS subquery ORDER BY initial = '', initial = '@', initial";
-        foreach (Database::prepare($sql)->execute($args)->fetchAssoc() as $alpha => $count) {
-            $alphas[$alpha] = (int) $count;
-        }
-
-        // Names with no surname
-        $sql =
-            "SELECT COUNT(n_id)" .
-            " FROM `##name` " .
-            ($fams ? " JOIN `##link` ON n_id = l_from AND n_file = l_file AND l_type = 'FAMS' " : "") .
-            " WHERE n_file = :tree_id AND n_surn = ''" .
-            ($marnm ? "" : " AND n_type != '_MARNM'");
-
-        $args = [
-            'tree_id' => $tree->id(),
-        ];
-
-        $count_no_surname = (int) Database::prepare($sql)->execute($args)->fetchOne();
-        if ($count_no_surname !== 0) {
-            // Special code to indicate "no surname"
-            $alphas[','] = $count_no_surname;
-        }
-
-        return $alphas;
-    }
-
-    /**
-     * Get a list of initial given name letters for indilist.php and famlist.php
-     *
-     * @param Tree   $tree
-     * @param string $surn   if set, only consider people with this surname
-     * @param string $salpha if set, only consider surnames starting with this letter
-     * @param bool   $marnm  if set, include married names
-     * @param bool   $fams   if set, only consider individuals with FAMS records
-     *
-     * @return int[]
-     */
-    private function givenAlpha(Tree $tree, $surn, $salpha, $marnm, $fams): array
-    {
-        $alphas = [];
-
-        $sql =
-            "SELECT COUNT(DISTINCT n_id)" .
-            " FROM `##name`" .
-            ($fams ? " JOIN `##link` ON (n_id=l_from AND n_file=l_file AND l_type='FAMS') " : "") .
-            " WHERE n_file=" . $tree->id() . " " .
-            ($marnm ? "" : " AND n_type!='_MARNM'");
-
-        $args = [];
-
-        if ($surn) {
-            $sql .= " AND n_surn = :surn COLLATE '" . I18N::collation() . "'";
-            $args['surn'] = $surn;
-        } elseif ($salpha == ',') {
-            $sql .= " AND n_surn=''";
-        } elseif ($salpha == '@') {
-            $sql .= " AND n_surn='@N.N.'";
-        } elseif ($salpha) {
-            [$where, $args2] = $this->getInitialSql('n_surn', $salpha);
-            $sql .= $where;
-            $args += $args2;
-        } else {
-            // All surnames
-            $sql .= " AND n_surn NOT IN ('', '@N.N.')";
-        }
-
-        // Fetch all the letters in our alphabet, whether or not there
-        // are any names beginning with that letter. It looks better to
-        // show the full alphabet, rather than omitting rare letters such as X
-        foreach ($this->localization_service->alphabet() as $letter) {
-            [$where, $args2] = $this->getInitialSql('n_surn', $salpha);
-
-            $count = Database::prepare($sql . $where)->execute($args + $args2)->fetchOne();
-
-            $alphas[$letter] = (int) $count;
-        }
-
-        // Now fetch initial letters that are not in our alphabet,
-        // including "@" (for "@N.N.") and "" for no surname
-        $sql =
-            "SELECT initial, total FROM (SELECT UPPER(LEFT(n_givn, 1)) AS initial, COUNT(DISTINCT n_id) AS total" .
-            " FROM `##name` " .
-            ($fams ? " JOIN `##link` ON (n_id = l_from AND n_file = l_file AND l_type = 'FAMS') " : "") .
-            " WHERE n_file = :tree_id" .
-            ($marnm ? "" : " AND n_type != '_MARNM'");
-
-        $args = [
-            'tree_id' => $tree->id(),
-        ];
-
-        if ($surn) {
-            $sql .= " AND n_surn COLLATE :collate_1 = :surn";
-            $args['collate_1'] = I18N::collation();
-            $args['surn']      = $surn;
-        } elseif ($salpha === ',') {
-            $sql .= " AND n_surn = ''";
-        } elseif ($salpha === '@') {
-            $sql .= " AND n_surn = '@N.N.'";
-        } elseif ($salpha) {
-            [$where, $args2] = $this->getInitialSql('n_surn', $salpha);
-            $sql .= $where;
-            $args += $args2;
-        } else {
-            // All surnames
-            $sql .= " AND n_surn NOT IN ('', '@N.N.')";
-        }
-
-        foreach ($this->localization_service->alphabet() as $letter) {
-            $sql .= " AND n_givn NOT LIKE '" . $letter . "%' COLLATE " . I18N::collation();
-        }
-
-        $sql .= " GROUP BY UPPER(LEFT(n_givn, 1))) AS subquery ORDER BY initial = '@', initial = '', initial";
-
-        foreach (Database::prepare($sql)->execute($args)->fetchAssoc() as $alpha => $count) {
-            $alphas[$alpha] = (int) $count;
-        }
-
-        return $alphas;
-    }
-
-    /**
-     * Get a count of actual surnames and variants, based on a "root" surname.
-     *
-     * @param Tree   $tree
-     * @param string $surn   if set, only count people with this surname
-     * @param string $salpha if set, only consider surnames starting with this letter
-     * @param bool   $marnm  if set, include married names
-     * @param bool   $fams   if set, only consider individuals with FAMS records
-     *
-     * @return int[][]
-     */
-    private function surnames(Tree $tree, $surn, $salpha, $marnm, $fams): array
-    {
-        $sql =
-            "SELECT UPPER(n_surn COLLATE :collate) AS n_surn, n_surname COLLATE utf8_bin AS n_surname, COUNT(*) AS total" .
-            " FROM `##name` " .
-            ($fams ? " JOIN `##link` ON n_id = l_from AND n_file = l_file AND l_type = 'FAMS' " : "") .
-            " WHERE n_file = :tree_id" .
-            ($marnm ? "" : " AND n_type != '_MARNM'");
-
-        $args = [
-            'tree_id' => $tree->id(),
-            'collate' => I18N::collation(),
-        ];
-
-        if ($surn) {
-            $sql .= " AND n_surn COLLATE :collate_1 = :surn";
-            $args['collate_1'] = I18N::collation();
-            $args['surn']      = $surn;
-        } elseif ($salpha === ',') {
-            $sql .= " AND n_surn = ''";
-        } elseif ($salpha === '@') {
-            $sql .= " AND n_surn = '@N.N.'";
-        } elseif ($salpha) {
-            [$where, $args2] = $this->getInitialSql('n_surn', $salpha);
-
-            $sql .= $where;
-            $args += $args2;
-        } else {
-            // All surnames
-            $sql .= " AND n_surn NOT IN ('', '@N.N.')";
-        }
-        $sql .= " GROUP BY 1,2";
-
-        $list = [];
-
-        foreach (Database::prepare($sql)->execute($args)->fetchAll() as $row) {
-            $list[$row->n_surn][$row->n_surname] = (int) $row->total;
-        }
-
-        return $list;
-    }
-
-    /**
-     * Fetch a list of individuals with specified names
-     * To search for unknown names, use $surn="@N.N.", $salpha="@" or $galpha="@"
-     * To search for names with no surnames, use $salpha=","
-     *
-     * @param Tree   $tree
-     * @param string $surn   if set, only fetch people with this surname
-     * @param string $salpha if set, only fetch surnames starting with this letter
-     * @param string $galpha if set, only fetch given names starting with this letter
-     * @param bool   $marnm  if set, include married names
-     * @param bool   $fams   if set, only fetch individuals with FAMS records
-     *
-     * @return Individual[]
-     */
-    private function individuals(Tree $tree, $surn, $salpha, $galpha, $marnm, $fams): array
-    {
-        $sql =
-            "SELECT i_id AS xref, i_gedcom AS gedcom, n_full " .
-            "FROM `##individuals` " .
-            "JOIN `##name` ON n_id = i_id AND n_file = i_file " .
-            ($fams ? "JOIN `##link` ON n_id = l_from AND n_file = l_file AND l_type = 'FAMS' " : "") .
-            "WHERE n_file = :tree_id " .
-            ($marnm ? "" : "AND n_type != '_MARNM'");
-
-        $args = [
-            'tree_id' => $tree->id(),
-        ];
-
-        if ($surn) {
-            $sql .= " AND n_surn COLLATE :collate_1 = :surn";
-            $args['collate_1'] = I18N::collation();
-            $args['surn']      = $surn;
-        } elseif ($salpha === ',') {
-            $sql .= " AND n_surn = ''";
-        } elseif ($salpha === '@') {
-            $sql .= " AND n_surn = '@N.N.'";
-        } elseif ($salpha) {
-            [$where, $args2] = $this->getInitialSql('n_surn', $salpha);
-            $sql .= $where;
-            $args += $args2;
-        } else {
-            // All surnames
-            $sql .= " AND n_surn NOT IN ('', '@N.N.')";
-        }
-        if ($galpha) {
-            [$where, $args2] = $this->getInitialSql('n_givn', $galpha);
-            $sql .= $where;
-            $args += $args2;
-        }
-
-        $sql .= " ORDER BY CASE n_surn WHEN '@N.N.' THEN 1 ELSE 0 END, n_surn COLLATE :collate_2, CASE n_givn WHEN '@P.N.' THEN 1 ELSE 0 END, n_givn COLLATE :collate_3";
-        $args['collate_2'] = I18N::collation();
-        $args['collate_3'] = I18N::collation();
-
-        $list = [];
-        $rows = Database::prepare($sql)->execute($args)->fetchAll();
-        foreach ($rows as $row) {
-            $person = Individual::getInstance($row->xref, $tree, $row->gedcom);
-            // The name from the database may be private - check the filtered list...
-            foreach ($person->getAllNames() as $n => $name) {
-                if ($name['fullNN'] == $row->n_full) {
-                    $person->setPrimaryName($n);
-                    // We need to clone $person, as we may have multiple references to the
-                    // same person in this list, and the "primary name" would otherwise
-                    // be shared amongst all of them.
-                    $list[] = clone $person;
-                    break;
-                }
-            }
-        }
-
-        return $list;
-    }
-
-    /**
-     * Fetch a list of families with specified names
-     * To search for unknown names, use $surn="@N.N.", $salpha="@" or $galpha="@"
-     * To search for names with no surnames, use $salpha=","
-     *
-     * @param Tree   $tree
-     * @param string $surn   if set, only fetch people with this surname
-     * @param string $salpha if set, only fetch surnames starting with this letter
-     * @param string $galpha if set, only fetch given names starting with this letter
-     * @param bool   $marnm  if set, include married names
-     *
-     * @return Family[]
-     */
-    private function families(Tree $tree, $surn, $salpha, $galpha, $marnm): array
-    {
-        $list = [];
-        foreach ($this->individuals($tree, $surn, $salpha, $galpha, $marnm, true) as $indi) {
-            foreach ($indi->getSpouseFamilies() as $family) {
-                $list[$family->xref()] = $family;
-            }
-        }
-        usort($list, '\Fisharebest\Webtrees\GedcomRecord::compare');
-
-        return $list;
     }
 
     /**

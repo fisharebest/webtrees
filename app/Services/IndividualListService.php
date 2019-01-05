@@ -1,0 +1,522 @@
+<?php
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2019 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
+declare(strict_types=1);
+
+namespace Fisharebest\Webtrees\Services;
+
+use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Tree;
+use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Query\Builder;
+use Illuminate\Database\Query\Expression;
+use Illuminate\Database\Query\JoinClause;
+
+/**
+ * Find lists and counts of individuals with specified initials, names and surnames.
+ */
+class IndividualListService
+{
+    /** @var LocalizationService */
+    private $localization_service;
+
+    /** @var Tree */
+    private $tree;
+
+    /**
+     * IndividualListService constructor.
+     *
+     * @param LocalizationService $localization_service
+     * @param Tree                $tree
+     */
+    public function __construct(LocalizationService $localization_service, Tree $tree)
+    {
+        $this->localization_service = $localization_service;
+        $this->tree                 = $tree;
+    }
+
+    /**
+     * Restrict a query to individuals that are a spouse in a family record.
+     *
+     * @param bool    $fams
+     * @param Builder $query
+     */
+    private function whereFamily(bool $fams, Builder $query): void
+    {
+        if ($fams) {
+            $query->join('link', function (JoinClause $join): void {
+                $join
+                    ->on('l_from', '=', 'n_id')
+                    ->on('l_file', '=', 'n_file')
+                    ->where('l_type', '=', 'FAMS');
+            });
+        }
+    }
+
+    /**
+     * Restrict a query to include/exclude married names.
+     *
+     * @param bool    $marnm
+     * @param Builder $query
+     */
+    private function whereMarriedName(bool $marnm, Builder $query): void
+    {
+        if (!$marnm) {
+            $query->where('n_type', '<>', '_MARNM');
+        }
+    }
+
+    /**
+     * Get a list of initial surname letters.
+     *
+     * @param bool $marnm if set, include married names
+     * @param bool $fams  if set, only consider individuals with FAMS records
+     *
+     * @return int[]
+     */
+    public function surnameAlpha(bool $marnm, bool $fams, string $locale, string $collation): array
+    {
+        $n_surn = $this->fieldWithCollation('n_surn', $collation);
+        $alphas = [];
+
+        $query = DB::table('name')->where('n_file', '=', $this->tree->id());
+
+        $this->whereFamily($fams, $query);
+        $this->whereMarriedName($marnm, $query);
+
+        // Fetch all the letters in our alphabet, whether or not there
+        // are any names beginning with that letter. It looks better to
+        // show the full alphabet, rather than omitting rare letters such as X.
+        foreach ($this->localization_service->alphabet() as $letter) {
+            $query2 = clone $query;
+
+            $this->whereInitial($query2, 'n_surn', $letter, $locale, $collation);
+
+            $alphas[$letter] = $query2->count();
+        }
+
+        // Now fetch initial letters that are not in our alphabet,
+        // including "@" (for "@N.N.") and "" for no surname.
+        $query2 = clone $query;
+        foreach ($this->localization_service->alphabet() as $n => $letter) {
+            $query2->where($n_surn, 'NOT LIKE', $letter . '%');
+        }
+
+        $rows = $query2
+            ->select([DB::raw('UPPER(LEFT(n_surn, 1)) AS initial'), DB::raw('COUNT(*) AS count')])
+            ->groupBy('initial')
+            ->orderBy(DB::raw("CASE initial WHEN '' THEN 1 ELSE 0 END"))
+            ->orderBy(DB::raw("CASE initial WHEN '@' THEN 1 ELSE 0 END"))
+            ->orderBy('initial')
+            ->pluck('count', 'initial');
+
+        foreach ($rows as $alpha => $count) {
+            $alphas[$alpha] = (int) $count;
+        }
+
+        $count_no_surname = $query->where('n_surn', '=', '')->count();
+
+        if ($count_no_surname !== 0) {
+            // Special code to indicate "no surname"
+            $alphas[','] = $count_no_surname;
+        }
+
+        return $alphas;
+    }
+
+    /**
+     * Get a list of initial given name letters for indilist.php and famlist.php
+     *
+     * @param string $surn   if set, only consider people with this surname
+     * @param string $salpha if set, only consider surnames starting with this letter
+     * @param bool   $marnm  if set, include married names
+     * @param bool   $fams   if set, only consider individuals with FAMS records
+     * @param string $locale
+     * @param string $collation
+     *
+     * @return int[]
+     */
+    public function givenAlpha(string $surn, string $salpha, bool $marnm, bool $fams, string $locale, string $collation): array
+    {
+        $alphas = [];
+
+        $query = DB::table('name')
+            ->where('n_file', '=', $this->tree->id());
+
+        $this->whereFamily($fams, $query);
+        $this->whereMarriedName($marnm, $query);
+
+        if ($surn !== '') {
+            $n_surn = $this->fieldWithCollation('n_surn', $collation);
+            $query->where($n_surn, '=', $surn);
+        } elseif ($salpha === ',') {
+            $query->where('n_surn', '=', '');
+        } elseif ($salpha === '@') {
+            $query->where('n_surn', '=', '@N.N.');
+        } elseif ($salpha !== '') {
+            $this->whereInitial($query, 'n_surn', $salpha, $locale, $collation);
+        } else {
+            // All surnames
+            $query->whereNotIn('n_surn', ['', '@N.N.']);
+        }
+
+        // Fetch all the letters in our alphabet, whether or not there
+        // are any names beginning with that letter. It looks better to
+        // show the full alphabet, rather than omitting rare letters such as X
+        foreach ($this->localization_service->alphabet() as $letter) {
+            $query2 = clone $query;
+
+            $this->whereInitial($query2, 'n_givn', $letter, $locale, $collation);
+
+            $alphas[$letter] = (int) $query2->distinct('n_id')->count('n_id');
+        }
+
+        $rows = $query
+            ->select([DB::raw('UPPER(LEFT(n_givn, 1)) AS initial'), DB::raw('COUNT(*) AS count')])
+            ->groupBy('initial')
+            ->orderBy(DB::raw("CASE initial WHEN '' THEN 1 ELSE 0 END"))
+            ->orderBy(DB::raw("CASE initial WHEN '@' THEN 1 ELSE 0 END"))
+            ->orderBy('initial')
+            ->pluck('count', 'initial');
+
+        foreach ($rows as $alpha => $count) {
+            $alphas[$alpha] = (int) $count;
+        }
+
+        return $alphas;
+    }
+
+    /**
+     * Get a count of actual surnames and variants, based on a "root" surname.
+     *
+     * @param string $surn   if set, only count people with this surname
+     * @param string $salpha if set, only consider surnames starting with this letter
+     * @param bool   $marnm  if set, include married names
+     * @param bool   $fams   if set, only consider individuals with FAMS records
+     * @param string $locale
+     * @param string $collation
+     *
+     * @return int[][]
+     */
+    public function surnames(string $surn, string $salpha, bool $marnm, bool $fams, string $locale, string $collation): array
+    {
+        $query = DB::table('name')
+            ->where('n_file', '=', $this->tree->id())
+            ->select([
+                DB::raw('UPPER(n_surn /*! COLLATE ' . I18N::collation() . ' */) AS n_surn'),
+                DB::raw('n_surname /*! COLLATE utf8_bin */ AS n_surname'),
+                DB::raw('COUNT(*) AS total'),
+            ])
+            ->groupBy(['n_surn'])
+            ->groupBy(['n_surname']);
+
+        $this->whereFamily($fams, $query);
+        $this->whereMarriedName($marnm, $query);
+
+        if ($surn !== '') {
+            $query->where('n_surn', '=', $surn);
+        } elseif ($salpha === ',') {
+            $query->where('n_surn', '=', '');
+        } elseif ($salpha === '@') {
+            $query->where('n_surn', '=', '@N.N.');
+        } elseif ($salpha !== '') {
+            $this->whereInitial($query, 'n_surn', $salpha, $locale, $collation);
+        } else {
+            // All surnames
+            $query->whereNotIn('n_surn', ['', '@N.N.']);
+        }
+        $query->groupBy(['n_surn'])->groupBy(['n_surname']);
+
+        $list = [];
+
+        foreach ($query->get() as $row) {
+            $list[$row->n_surn][$row->n_surname] = (int) $row->total;
+        }
+
+        return $list;
+    }
+
+    /**
+     * Fetch a list of individuals with specified names
+     * To search for unknown names, use $surn="@N.N.", $salpha="@" or $galpha="@"
+     * To search for names with no surnames, use $salpha=","
+     *
+     * @param string $surn   if set, only fetch people with this surname
+     * @param string $salpha if set, only fetch surnames starting with this letter
+     * @param string $galpha if set, only fetch given names starting with this letter
+     * @param bool   $marnm  if set, include married names
+     * @param bool   $fams   if set, only fetch individuals with FAMS records
+     * @param string $collation
+     *
+     * @return Individual[]
+     */
+    public function individuals($surn, $salpha, $galpha, $marnm, $fams, string $collation): array
+    {
+        // Use specific collation for name fields.
+        $n_givn = $this->fieldWithCollation('n_givn', $collation);
+        $n_surn = $this->fieldWithCollation('n_surn', $collation);
+
+        $query = DB::table('individuals')
+            ->join('name', function (JoinClause $join): void {
+                $join
+                    ->on('n_id', '=', 'i_id')
+                    ->on('n_file', '=', 'i_file');
+            })
+            ->where('i_file', '=', $this->tree->id())
+            ->select(['i_id AS xref', 'i_gedcom AS gedcom', 'n_full']);
+
+        $this->whereFamily($fams, $query);
+        $this->whereMarriedName($marnm, $query);
+
+        if ($surn) {
+            $query->where($n_surn, '=', $surn);
+        } elseif ($salpha === ',') {
+            $query->where($n_surn, '=', '');
+        } elseif ($salpha === '@') {
+            $query->where($n_surn, '=', '@N.N.');
+        } elseif ($salpha) {
+            $this->whereInitial($query, 'n_surn', $salpha, WT_LOCALE, I18N::collation());
+        } else {
+            // All surnames
+            $query->whereNotIn($n_surn, ['', '@N.N.']);
+        }
+        if ($galpha) {
+            $this->whereInitial($query, 'n_givn', $galpha, WT_LOCALE, I18N::collation());
+        }
+
+        $query
+            ->orderBy(DB::raw("CASE n_surn WHEN '@N.N.' THEN 1 ELSE 0 END"))
+            ->orderBy($n_surn)
+            ->orderBy(DB::raw("CASE n_givn WHEN '@N.N.' THEN 1 ELSE 0 END"))
+            ->orderBy($n_givn);
+
+        $list = [];
+        $rows = $query->get();
+
+        foreach ($rows as $row) {
+            $person = Individual::getInstance($row->xref, $this->tree, $row->gedcom);
+            // The name from the database may be private - check the filtered list...
+            foreach ($person->getAllNames() as $n => $name) {
+                if ($name['fullNN'] == $row->n_full) {
+                    $person->setPrimaryName($n);
+                    // We need to clone $person, as we may have multiple references to the
+                    // same person in this list, and the "primary name" would otherwise
+                    // be shared amongst all of them.
+                    $list[] = clone $person;
+                    break;
+                }
+            }
+        }
+
+        return $list;
+    }
+
+    /**
+     * Fetch a list of families with specified names
+     * To search for unknown names, use $surn="@N.N.", $salpha="@" or $galpha="@"
+     * To search for names with no surnames, use $salpha=","
+     *
+     * @param string $surn   if set, only fetch people with this surname
+     * @param string $salpha if set, only fetch surnames starting with this letter
+     * @param string $galpha if set, only fetch given names starting with this letter
+     * @param bool   $marnm  if set, include married names
+     *
+     * @return Family[]
+     */
+    public function families($surn, $salpha, $galpha, $marnm): array
+    {
+        $list = [];
+        foreach ($this->individuals($surn, $salpha, $galpha, $marnm, true, I18N::collation()) as $indi) {
+            foreach ($indi->getSpouseFamilies() as $family) {
+                $list[$family->xref()] = $family;
+            }
+        }
+        usort($list, '\Fisharebest\Webtrees\GedcomRecord::compare');
+
+        return $list;
+    }
+
+    /**
+     * Use MySQL-specific comments so we can run these queries on other RDBMS.
+     *
+     * @param string $field
+     * @param string $collation
+     *
+     * @return Expression
+     */
+    private function fieldWithCollation(string $field, string $collation): Expression
+    {
+        return DB::raw($field . ' /*! COLLATE ' . $collation . '*/');
+    }
+
+    /**
+     * Modify a query to restrict a field to a given initial letter.
+     * Take account of digraphs, equialent letters, etc.
+     *
+     * @param Builder $query
+     * @param string  $field
+     * @param string  $letter
+     * @param string  $locale
+     * @param string  $collation
+     *
+     * @return void
+     */
+    private function whereInitial(Builder $query, string $field, string $letter, string $locale, string $collation): void
+    {
+        // Use MySQL-specific comments so we can run these queries on other RDBMS.
+        $field = $this->fieldWithCollation($field, $collation);
+
+        switch ($locale) {
+            case 'cs':
+                $this->whereInitialCzech($query, $field, $letter);
+                break;
+
+            case 'da':
+            case 'nb':
+            case 'nn':
+                $this->whereInitialNorwegian($query, $field, $letter);
+                break;
+
+            case 'hu':
+                $this->whereInitialHungarian($query, $field, $letter);
+                break;
+
+            case 'nl':
+                $this->whereInitialDutch($query, $field, $letter);
+                break;
+
+            default:
+                $query->where($field, 'LIKE', '\\' . $letter . '%');
+        }
+    }
+
+    /**
+     * @param Builder    $query
+     * @param Expression $field
+     * @param string     $letter
+     */
+    private function whereInitialCzech(Builder $query, Expression $field, string $letter): void
+    {
+        switch ($letter) {
+            case 'C':
+                $query->where($field, 'LIKE', 'C%')->where($field, 'NOT LIKE', 'CH%');
+                break;
+
+            default:
+                $query->where($field, 'LIKE', '\\' . $letter . '%');
+                break;
+        }
+    }
+
+    /**
+     * @param Builder    $query
+     * @param Expression $field
+     * @param string     $letter
+     */
+    private function whereInitialDutch(Builder $query, Expression $field, string $letter): void
+    {
+        switch ($letter) {
+            case 'I':
+                $query->where($field, 'LIKE', 'I%')->where($field, 'NOT LIKE', 'IJ%');
+                break;
+
+            default:
+                $query->where($field, 'LIKE', '\\' . $letter . '%');
+                break;
+        }
+    }
+
+    /**
+     * Hungarian has many digraphs and trigraphs, so exclude these from prefixes.
+     *
+     * @param Builder    $query
+     * @param Expression $field
+     * @param string     $letter
+     */
+    private function whereInitialHungarian(Builder $query, Expression $field, string $letter): void
+    {
+        switch ($letter) {
+            case 'C':
+                $query->where($field, 'LIKE', 'C%')->where($field, 'NOT LIKE', 'CS%');
+                break;
+
+            case 'D':
+                $query->where($field, 'LIKE', 'D%')->where($field, 'NOT LIKE', 'DZ%');
+                break;
+
+            case 'DZ':
+                $query->where($field, 'LIKE', 'DZ%')->where($field, 'NOT LIKE', 'DZS%');
+                break;
+
+            case 'G':
+                $query->where($field, 'LIKE', 'G%')->where($field, 'NOT LIKE', 'GY%');
+                break;
+
+            case 'L':
+                $query->where($field, 'LIKE', 'L%')->where($field, 'NOT LIKE', 'LY%');
+                break;
+
+            case 'N':
+                $query->where($field, 'LIKE', 'N%')->where($field, 'NOT LIKE', 'NY%');
+                break;
+
+            case 'S':
+                $query->where($field, 'LIKE', 'S%')->where($field, 'NOT LIKE', 'SZ%');
+                break;
+
+            case 'T':
+                $query->where($field, 'LIKE', 'T%')->where($field, 'NOT LIKE', 'TY%');
+                break;
+
+            case 'Z':
+                $query->where($field, 'LIKE', 'Z%')->where($field, 'NOT LIKE', 'ZS%');
+                break;
+
+            default:
+                $query->where($field, 'LIKE', '\\' . $letter . '%');
+                break;
+        }
+    }
+
+    /**
+     * In Norwegian and Danish, AA gets listed under Å, NOT A
+     *
+     * @param Builder    $query
+     * @param Expression $field
+     * @param string     $letter
+     */
+    private function whereInitialNorwegian(Builder $query, Expression $field, string $letter): void
+    {
+        switch ($letter) {
+            case 'A':
+                $query->where($field, 'LIKE', 'A%')->where($field, 'NOT LIKE', 'AA%');
+                break;
+
+            case 'Å':
+                $query->where(function (Builder $query) use ($field): void {
+                    $query
+                        ->where($field, 'LIKE', 'Å%')
+                        ->orWhere($field, 'LIKE', 'AA%');
+                });
+                break;
+
+            default:
+                $query->where($field, 'LIKE', '\\' . $letter . '%');
+                break;
+        }
+    }
+}
