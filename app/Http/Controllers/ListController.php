@@ -600,7 +600,7 @@ class ListController extends AbstractBaseController
             ->get()
             ->map(function (stdClass $row) use ($tree): Note {
                 return Note::getInstance($row->o_id, $tree, $row->o_gedcom);
-            })->filter(function(Note $note): bool {
+            })->filter(function (Note $note): bool {
                 return $note->canShow();
             })->all();
     }
@@ -621,7 +621,7 @@ class ListController extends AbstractBaseController
             ->get()
             ->map(function (stdClass $row) use ($tree): Repository {
                 return Repository::getInstance($row->o_id, $tree, $row->o_gedcom);
-            })->filter(function(Repository $repository): bool {
+            })->filter(function (Repository $repository): bool {
                 return $repository->canShow();
             })->all();
     }
@@ -641,7 +641,7 @@ class ListController extends AbstractBaseController
             ->get()
             ->map(function (stdClass $row) use ($tree): Source {
                 return Source::getInstance($row->s_id, $tree, $row->s_gedcom);
-            })->filter(function(Source $source): bool {
+            })->filter(function (Source $source): bool {
                 return $source->canShow();
             })->all();
     }
