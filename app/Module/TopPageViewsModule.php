@@ -18,10 +18,10 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
+use Illuminate\Database\Capsule\Manager as DB;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -47,7 +47,7 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface
      */
     public function getDescription(): string
     {
-        /* I18N: Description of the “Most visited pages” module */
+        /* I18N: Description of the “Most viewed pages” module */
         return I18N::translate('A list of the pages that have been viewed the most number of times.');
     }
 
@@ -68,16 +68,12 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface
 
         extract($cfg, EXTR_OVERWRITE);
 
-        // load the lines from the file
-        $top10 = Database::prepare(
-            "SELECT page_parameter, page_count" .
-            " FROM `##hit_counter`" .
-            " WHERE gedcom_id = :tree_id AND page_name IN ('individual.php','family.php','source.php','repo.php','note.php','mediaviewer.php')" .
-            " ORDER BY page_count DESC LIMIT :limit"
-        )->execute([
-            'tree_id' => $tree->id(),
-            'limit'   => (int) $num,
-        ])->fetchAssoc();
+        $top10 = DB::table('hit_counter')
+            ->where('gedcom_id', '=', $tree->id())
+            ->whereIn('page_name', ['individual.php','family.php','source.php','repo.php','note.php','mediaviewer.php'])
+            ->orderByDesc('page_count')
+            ->limit((int) $num)
+            ->pluck('page_count', 'page_parameter');
 
         $content = '<table>';
         foreach ($top10 as $id => $count) {
