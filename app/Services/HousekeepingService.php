@@ -560,13 +560,11 @@ class HousekeepingService
      */
     public function deleteOldLogs(int $max_age_in_seconds)
     {
-        if (Database::isConnected()) {
-            Database::prepare(
-                "DELETE FROM `##log` WHERE log_type IN ('error', 'media') AND log_time < FROM_UNIXTIME(:timestamp)"
-            )->execute([
-                'timestamp' => WT_TIMESTAMP - $max_age_in_seconds
-            ]);
-        }
+        Database::prepare(
+            "DELETE FROM `##log` WHERE log_type IN ('error', 'media') AND log_time < FROM_UNIXTIME(:timestamp)"
+        )->execute([
+            'timestamp' => WT_TIMESTAMP - $max_age_in_seconds
+        ]);
     }
 
     /**
@@ -576,13 +574,11 @@ class HousekeepingService
      */
     public function deleteOldSessions(int $max_age_in_seconds)
     {
-        if (Database::isConnected()) {
-            Database::prepare(
-                "DELETE FROM `##session` WHERE session_time < FROM_UNIXTIME(:timestamp)"
-            )->execute([
-                'timestamp' => WT_TIMESTAMP - $max_age_in_seconds
-            ]);
-        }
+        Database::prepare(
+            "DELETE FROM `##session` WHERE session_time < FROM_UNIXTIME(:timestamp)"
+        )->execute([
+            'timestamp' => WT_TIMESTAMP - $max_age_in_seconds
+        ]);
     }
 
     /**

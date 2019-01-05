@@ -18,13 +18,13 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Exception;
-use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\TimeoutService;
 use Fisharebest\Webtrees\Services\UpgradeService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Webtrees;
 use GuzzleHttp\Client;
+use Illuminate\Database\Capsule\Manager as DB;
 use League\Flysystem\Adapter\Local;
 use League\Flysystem\Filesystem;
 use League\Flysystem\ZipArchive\ZipArchiveAdapter;
@@ -176,6 +176,7 @@ class AdminUpgradeController extends AbstractBaseController
         }
 
         /* I18N: %s is a version number, such as 1.2.3 */
+
         return $this->success(I18N::translate('Upgrade to webtrees %s.', e($latest_version)));
     }
 
@@ -184,9 +185,9 @@ class AdminUpgradeController extends AbstractBaseController
      */
     private function wizardStepPending(): Response
     {
-        $changes = Database::prepare("SELECT 1 FROM `##change` WHERE status='pending' LIMIT 1")->fetchOne();
+        $changes = DB::table('change')->where('status', '=', 'pending')->exists();
 
-        if (empty($changes)) {
+        if (!$changes) {
             return $this->success(I18N::translate('There are no pending changes.'));
         }
 
@@ -231,13 +232,13 @@ class AdminUpgradeController extends AbstractBaseController
             $download_url = $this->upgrade_service->downloadUrl();
             $zip_file     = WT_DATA_DIR . basename($download_url);
             $zip_stream   = fopen($zip_file, 'w');
-            
+
             if ($zip_stream === false) {
                 throw new Exception('Cannot read ZIP file: ' . $zip_file);
             }
 
-            $start_time   = microtime(true);
-            $client       = new Client();
+            $start_time = microtime(true);
+            $client     = new Client();
 
             $response = $client->get($download_url, self::GUZZLE_OPTIONS);
             $stream   = $response->getBody();
@@ -256,6 +257,7 @@ class AdminUpgradeController extends AbstractBaseController
                 $seconds = I18N::number($end_time - $start_time, 2);
 
                 /* I18N: %1$s is a number of KB, %2$s is a (fractional) number of seconds */
+
                 return $this->success(I18N::translate('%1$s KB were downloaded in %2$s seconds.', $kb, $seconds));
             }
 
@@ -303,6 +305,7 @@ class AdminUpgradeController extends AbstractBaseController
         $count    = count($paths);
 
         /* I18N: …from the .ZIP file, %2$s is a (fractional) number of seconds */
+
         return $this->success(I18N::plural('%1$s file was extracted in %2$s seconds.', '%1$s files were extracted in %2$s seconds.', $count, $count, $seconds));
     }
 
