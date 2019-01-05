@@ -17,8 +17,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Services;
 
-use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Date\AbstractCalendarDate;
 use Fisharebest\Webtrees\Date\FrenchDate;
 use Fisharebest\Webtrees\Date\GregorianDate;
 use Fisharebest\Webtrees\Date\HijriDate;
@@ -71,7 +71,6 @@ class CalendarService
                 $mon = $calendar_date->format('%O');
             }
 
-
             $month_names[$mon] = $calendar_date->format('%F');
         }
 
@@ -93,56 +92,56 @@ class CalendarService
         // If no facts specified, get all except these
         $skipfacts = ['CHAN', 'BAPL', 'SLGC', 'SLGS', 'ENDL', 'CENS', 'RESI', 'NOTE', 'ADDR', 'OBJE', 'SOUR'];
 
-        $i_query = DB::table('individuals')->join('dates', function (JoinClause $join): void {
-            $join->on('d_gid', '=', 'i_id');
-            $join->on('d_file', '=', 'i_file');
-        })
-        ->select(['i_id AS xref', 'i_gedcom AS gedcom', 'd_type', 'd_day', 'd_month', 'd_year', 'd_fact', 'd_type']);
+        // Events that start or end during the period
+        $query = DB::table('dates')
+            ->where('d_file', '=', $tree->id())
+            ->where(function (Builder $query) use ($jd1, $jd2) {
+                $query->where(function (Builder $query) use ($jd1, $jd2) {
+                    $query
+                        ->where('d_julianday1', '>=', $jd1)
+                        ->where('d_julianday1', '<=', $jd2);
+                })->orWhere(function (Builder $query) use ($jd1, $jd2) {
+                    $query
+                        ->where('d_julianday2', '>=', $jd1)
+                        ->where('d_julianday2', '<=', $jd2);
+                });
+            });
 
-        $f_query = DB::table('families')->join('dates', function (JoinClause $join): void {
-            $join->on('d_gid', '=', 'f_id');
-            $join->on('d_file', '=', 'f_file');
-        })
-        ->select(['f_id AS xref', 'f_gedcom AS gedcom', 'd_type', 'd_day', 'd_month', 'd_year', 'd_fact', 'd_type']);
+        // Restrict to certain types of fact
+        if (empty($facts)) {
+            $query->whereNotIn('d_fact', $skipfacts);
+        } else {
+            $query->whereIn('d_fact', $facts);
+        }
+
+        $ind_query = (clone $query)
+            ->join('individuals', function (JoinClause $join): void {
+                $join->on('d_gid', '=', 'i_id')->on('d_file', '=', 'i_file');
+            })
+            ->select(['i_id AS xref', 'i_gedcom AS gedcom', 'd_type', 'd_day', 'd_month', 'd_year', 'd_fact', 'd_type']);
+
+        $fam_query = (clone $query)
+            ->join('families', function (JoinClause $join): void {
+                $join->on('d_gid', '=', 'f_id')->on('d_file', '=', 'f_file');
+            })
+            ->select(['f_id AS xref', 'f_gedcom AS gedcom', 'd_type', 'd_day', 'd_month', 'd_year', 'd_fact', 'd_type']);
 
         // Now fetch these events
         $found_facts = [];
 
-        foreach (['INDI' => $i_query, 'FAM' => $f_query] as $type => $query) {
-            // Events that start or end during the period
-            $query
-                ->where('d_file', '=', $tree->id())
-                ->where(function (Builder $query) use ($jd1, $jd2) {
-                    $query->where(function (Builder $query) use ($jd1, $jd2) {
-                        $query
-                        ->where('d_julianday1', '>=', $jd1)
-                        ->where('d_julianday1', '<=', $jd2);
-                    })->orWhere(function (Builder $query) use ($jd1, $jd2) {
-                        $query
-                        ->where('d_julianday2', '>=', $jd1)
-                        ->where('d_julianday2', '<=', $jd2);
-                    });
-                });
-
-            // Restrict to certain types of fact
-            if (empty($facts)) {
-                $query->whereNotIn('d_fact', $skipfacts);
-            } else {
-                $query->whereIn('d_fact', $facts);
-            }
-
-            $rows = $query->get();
-
-            foreach ($rows as $row) {
+        foreach (['INDI' => $ind_query, 'FAM' => $fam_query] as $type => $query) {
+            foreach ($query->get() as $row) {
                 if ($type === 'INDI') {
                     $record = Individual::getInstance($row->xref, $tree, $row->gedcom);
                 } else {
                     $record = Family::getInstance($row->xref, $tree, $row->gedcom);
                 }
+
                 $anniv_date = new Date($row->d_type . ' ' . $row->d_day . ' ' . $row->d_month . ' ' . $row->d_year);
+
                 foreach ($record->facts() as $fact) {
                     // For date ranges, we need a match on either the start/end.
-                    if (($fact->date()->minimumJulianDay() === $anniv_date->minimumJulianDay() || $fact->date()->maximumJulianDay() == $anniv_date->maximumJulianDay()) && $fact->getTag() === $row->d_fact) {
+                    if (($fact->date()->minimumJulianDay() === $anniv_date->minimumJulianDay() || $fact->date()->maximumJulianDay() === $anniv_date->maximumJulianDay()) && $fact->getTag() === $row->d_fact) {
                         $fact->anniv   = 0;
                         $found_facts[] = $fact;
                     }
@@ -156,12 +155,12 @@ class CalendarService
     /**
      * Get the list of current and upcoming events, sorted by anniversary date
      *
-     * @param int     $jd1
-     * @param int     $jd2
-     * @param string  $events
-     * @param bool    $only_living
-     * @param string  $sort_by
-     * @param Tree    $tree
+     * @param int    $jd1
+     * @param int    $jd2
+     * @param string $events
+     * @param bool   $only_living
+     * @param string $sort_by
+     * @param Tree   $tree
      *
      * @return Fact[]
      */
@@ -221,7 +220,7 @@ class CalendarService
      *
      * @return Fact[]
      */
-    public function getAnniversaryEvents($jd, $facts, Tree $tree): array
+    public function getAnniversaryEvents($jd, string $facts, Tree $tree): array
     {
         $found_facts = [];
 
@@ -235,170 +234,77 @@ class CalendarService
         ];
 
         foreach ($anniversaries as $anniv) {
-            // Build a SQL where clause to match anniversaries in the appropriate calendar.
-            $ind_sql =
-                "SELECT DISTINCT i_id AS xref, i_gedcom AS gedcom, d_type, d_day, d_month, d_year, d_fact" .
-                " FROM `##dates` JOIN `##individuals` ON d_gid = i_id AND d_file = i_file" .
-                " WHERE d_type = :type AND d_file = :tree_id";
-            $fam_sql =
-                "SELECT DISTINCT f_id AS xref, f_gedcom AS gedcom, d_type, d_day, d_month, d_year, d_fact" .
-                " FROM `##dates` JOIN `##families` ON d_gid = f_id AND d_file = f_file" .
-                " WHERE d_type = :type AND d_file = :tree_id";
-            $args = [
-                'type'    => $anniv->format('%@'),
-                'tree_id' => $tree->id(),
-            ];
+            // Build a query to match anniversaries in the appropriate calendar.
+            $query = DB::table('dates')
+                ->distinct()
+                ->where('d_file', '=', $tree->id())
+                ->where('d_type', '=', $anniv->format('%@'));
 
-            $where = "";
             // SIMPLE CASES:
             // a) Non-hebrew anniversaries
             // b) Hebrew months TVT, SHV, IYR, SVN, TMZ, AAV, ELL
-            if (!$anniv instanceof JewishDate || in_array($anniv->month, [
-                    1,
-                    5,
-                    6,
-                    9,
-                    10,
-                    11,
-                    12,
-                    13,
-                ])) {
-                // Dates without days go on the first day of the month
-                // Dates with invalid days go on the last day of the month
-                if ($anniv->day === 1) {
-                    $where .= " AND d_day <= 1";
-                } elseif ($anniv->day === $anniv->daysInMonth()) {
-                    $where       .= " AND d_day >= :day";
-                    $args['day'] = $anniv->day;
-                } else {
-                    $where       .= " AND d_day = :day";
-                    $args['day'] = $anniv->day;
-                }
-                $where .= " AND d_mon = :month";
-                $args['month'] = $anniv->month;
+            if (!$anniv instanceof JewishDate || in_array($anniv->month, [1, 5, 6, 9, 10, 11, 12, 13])) {
+                $this->defaultAnniversaries($query, $anniv);
             } else {
                 // SPECIAL CASES:
                 switch ($anniv->month) {
                     case 2:
-                        // 29 CSH does not include 30 CSH (but would include an invalid 31 CSH if there were no 30 CSH)
-                        if ($anniv->day === 1) {
-                            $where .= " AND d_day <= 1 AND d_mon = 2";
-                        } elseif ($anniv->day === 30) {
-                            $where .= " AND d_day >= 30 AND d_mon = 2";
-                        } elseif ($anniv->day === 29 && $anniv->daysInMonth() === 29) {
-                            $where .= " AND (d_day = 29 OR d_day > 30) AND d_mon = 2";
-                        } else {
-                            $where .= " AND d_day = :day AND d_mon = 2";
-                            $args['day'] = $anniv->day;
-                        }
+                        $this->cheshvanAnniversaries($query, $anniv);
                         break;
                     case 3:
-                        // 1 KSL includes 30 CSH (if this year didn’t have 30 CSH)
-                        // 29 KSL does not include 30 KSL (but would include an invalid 31 KSL if there were no 30 KSL)
-                        if ($anniv->day === 1) {
-                            $tmp = new JewishDate([
-                                (string) $anniv->year,
-                                'CSH',
-                                1,
-                            ]);
-                            if ($tmp->daysInMonth() === 29) {
-                                $where .= " AND (d_day <= 1 AND d_mon = 3 OR d_day = 30 AND d_mon = 2)";
-                            } else {
-                                $where .= " AND d_day <= 1 AND d_mon = 3";
-                            }
-                        } elseif ($anniv->day === 30) {
-                            $where .= " AND d_day >= 30 AND d_mon = 3";
-                        } elseif ($anniv->day == 29 && $anniv->daysInMonth() === 29) {
-                            $where .= " AND (d_day = 29 OR d_day > 30) AND d_mon = 3";
-                        } else {
-                            $where .= " AND d_day = :day AND d_mon = 3";
-                            $args['day'] = $anniv->day;
-                        }
+                        $this->kislevAnniversaries($query, $anniv);
                         break;
                     case 4:
-                        // 1 TVT includes 30 KSL (if this year didn’t have 30 KSL)
-                        if ($anniv->day === 1) {
-                            $tmp = new JewishDate([
-                                (string) $anniv->year,
-                                'KSL',
-                                1,
-                            ]);
-                            if ($tmp->daysInMonth() === 29) {
-                                $where .= " AND (d_day <=1 AND d_mon = 4 OR d_day = 30 AND d_mon = 3)";
-                            } else {
-                                $where .= " AND d_day <= 1 AND d_mon = 4";
-                            }
-                        } elseif ($anniv->day === $anniv->daysInMonth()) {
-                            $where       .= " AND d_day >= :day AND d_mon=4";
-                            $args['day'] = $anniv->day;
-                        } else {
-                            $where       .= " AND d_day = :day AND d_mon=4";
-                            $args['day'] = $anniv->day;
-                        }
+                        $this->tevetAnniversaries($query, $anniv);
                         break;
-                    case 7: // ADS includes ADR (non-leap)
-                        if ($anniv->day === 1) {
-                            $where .= " AND d_day <= 1";
-                        } elseif ($anniv->day === $anniv->daysInMonth()) {
-                            $where       .= " AND d_day >= :day";
-                            $args['day'] = $anniv->day;
-                        } else {
-                            $where       .= " AND d_day = :day";
-                            $args['day'] = $anniv->day;
-                        }
-                        $where .= " AND (d_mon = 6 AND MOD(7 * d_year + 1, 19) >= 7 OR d_mon = 7)";
+                    case 7:
+                        $this->adarIIAnniversaries($query, $anniv);
                         break;
-                    case 8: // 1 NSN includes 30 ADR, if this year is non-leap
-                        if ($anniv->day === 1) {
-                            if ($anniv->isLeapYear()) {
-                                $where .= " AND d_day <= 1 AND d_mon = 8";
-                            } else {
-                                $where .= " AND (d_day <= 1 AND d_mon = 8 OR d_day = 30 AND d_mon = 6)";
-                            }
-                        } elseif ($anniv->day === $anniv->daysInMonth()) {
-                            $where       .= " AND d_day >= :day AND d_mon = 8";
-                            $args['day'] = $anniv->day;
-                        } else {
-                            $where       .= " AND d_day = :day AND d_mon = 8";
-                            $args['day'] = $anniv->day;
-                        }
+                    case 8:
+                        $this->nisanAnniversaries($query, $anniv);
                         break;
                 }
             }
             // Only events in the past (includes dates without a year)
-            $where .= " AND d_year <= :year";
-            $args['year'] = $anniv->year;
+            $query->where('d_year', '<=', $anniv->year());
 
-            if ($facts) {
+            preg_match_all('/([_A-Z]+)/', $facts, $matches);
+
+            if (!empty($matches[1])) {
                 // Restrict to certain types of fact
-                $where .= " AND d_fact IN (";
-                preg_match_all('/([_A-Z]+)/', $facts, $matches);
-                foreach ($matches[1] as $n => $fact) {
-                    $where              .= $n ? ", " : "";
-                    $where              .= ":fact_" . $n;
-                    $args['fact_' . $n] = $fact;
-                }
-                $where .= ")";
+                $query->whereIn('d_fact', $matches[1]);
             } else {
                 // If no facts specified, get all except these
-                $where .= " AND d_fact NOT IN ('CHAN', 'BAPL', 'SLGC', 'SLGS', 'ENDL', 'CENS', 'RESI', '_TODO')";
+                $query->whereNotIn('d_fact', ['CHAN', 'BAPL', 'SLGC', 'SLGS', 'ENDL', 'CENS', 'RESI', '_TODO']);
             }
 
-            $order_by = " ORDER BY d_day, d_year DESC";
+            $query
+                ->orderby('d_day')
+                ->orderbyDesc('d_year');
+
+            $ind_query = (clone $query)
+                ->join('individuals', function (JoinClause $join): void {
+                    $join->on('d_gid', '=', 'i_id')->on('d_file', '=', 'i_file');
+                })
+                ->select(['i_id AS xref', 'i_gedcom AS gedcom', 'd_type', 'd_day', 'd_month', 'd_year', 'd_fact']);
+
+            $fam_query = (clone $query)
+                ->join('families', function (JoinClause $join): void {
+                    $join->on('d_gid', '=', 'f_id')->on('d_file', '=', 'f_file');
+                })
+                ->select(['f_id AS xref', 'f_gedcom AS gedcom', 'd_type', 'd_day', 'd_month', 'd_year', 'd_fact']);
 
             // Now fetch these anniversaries
-            foreach ([
-                         'INDI' => $ind_sql . $where . $order_by,
-                         'FAM'  => $fam_sql . $where . $order_by,
-                     ] as $type => $sql) {
-                $rows = Database::prepare($sql)->execute($args)->fetchAll();
-                foreach ($rows as $row) {
+            foreach (['INDI' => $ind_query, 'FAM' => $fam_query] as $type => $query) {
+                foreach ($query->get() as $row) {
                     if ($type === 'INDI') {
                         $record = Individual::getInstance($row->xref, $tree, $row->gedcom);
                     } else {
                         $record = Family::getInstance($row->xref, $tree, $row->gedcom);
                     }
+
                     $anniv_date = new Date($row->d_type . ' ' . $row->d_day . ' ' . $row->d_month . ' ' . $row->d_year);
+
                     foreach ($record->facts() as $fact) {
                         if (($fact->date()->minimumJulianDay() === $anniv_date->minimumJulianDay() || $fact->date()->maximumJulianDay() === $anniv_date->maximumJulianDay()) && $fact->getTag() === $row->d_fact) {
                             $fact->anniv   = $row->d_year === '0' ? 0 : $anniv->year - $row->d_year;
@@ -411,5 +317,143 @@ class CalendarService
         }
 
         return $found_facts;
+    }
+
+    /**
+     * By default, missing days have anniversaries on the first of the month,
+     * and invalid days have anniversaries on the last day of the month.
+     *
+     * @param Builder              $query
+     * @param AbstractCalendarDate $anniv
+     */
+    private function defaultAnniversaries(Builder $query, AbstractCalendarDate $anniv): void
+    {
+        if ($anniv->day() === 1) {
+            $query->where('d_day', '<=', 1);
+        } elseif ($anniv->day() === $anniv->daysInMonth()) {
+            $query->where('d_day', '>=', $anniv->daysInMonth());
+        } else {
+            $query->where('d_day', '=', $anniv->day());
+        }
+
+        $query->where('d_mon', '=', $anniv->month());
+    }
+
+    /**
+     * 29 CSH does not include 30 CSH (but would include an invalid 31 CSH if there were no 30 CSH).
+     *
+     * @param Builder    $query
+     * @param JewishDate $anniv
+     */
+    private function cheshvanAnniversaries(Builder $query, JewishDate $anniv): void
+    {
+        if ($anniv->day === 29 && $anniv->daysInMonth() === 29) {
+            $query
+                ->where('d_mon', '=', 2)
+                ->where('d_day', '>=', 29)
+                ->where('d_day', '<>', 30);
+        } else {
+            $this->defaultAnniversaries($query, $anniv);
+        }
+    }
+
+    /**
+     * 1 KSL includes 30 CSH (if this year didn’t have 30 CSH).
+     * 29 KSL does not include 30 KSL (but would include an invalid 31 KSL if there were no 30 KSL).
+     *
+     * @param Builder    $query
+     * @param JewishDate $anniv
+     */
+    private function kislevAnniversaries(Builder $query, JewishDate $anniv): void
+    {
+        $tmp = new JewishDate([(string) $anniv->year, 'CSH', '1']);
+
+        if ($anniv->day() === 1 && $tmp->daysInMonth() === 29) {
+            $query->where(function (Builder $query): void {
+                $query->where(function (Builder $query): void {
+                    $query->where('d_day', '<=', 1)->where('d_mon', '=', 3);
+                })->orWhere(function (Builder $query): void {
+                    $query->where('d_day', '=', 30)->where('d_mon', '=', 2);
+                });
+            });
+        } elseif ($anniv->day === 29 && $anniv->daysInMonth() === 29) {
+            $query
+                ->where('d_mon', '=', 3)
+                ->where('d_day', '>=', 29)
+                ->where('d_day', '<>', 30);
+        } else {
+            $this->defaultAnniversaries($query, $anniv);
+        }
+    }
+
+    /**
+     * 1 TVT includes 30 KSL (if this year didn’t have 30 KSL).
+     *
+     * @param Builder    $query
+     * @param JewishDate $anniv
+     */
+    private function tevetAnniversaries(Builder $query, JewishDate $anniv): void
+    {
+        $tmp = new JewishDate([(string) $anniv->year, 'KSL', '1']);
+
+        if ($anniv->day === 1 && $tmp->daysInMonth() === 29) {
+            $query->where(function (Builder $query): void {
+                $query->where(function (Builder $query): void {
+                    $query->where('d_day', '<=', 1)->where('d_mon', '=', 4);
+                })->orWhere(function (Builder $query): void {
+                    $query->where('d_day', '=', 30)->where('d_mon', '=', 3);
+                });
+            });
+        } else {
+            $this->defaultAnniversaries($query, $anniv);
+        }
+    }
+
+    /**
+     * ADS includes non-leap ADR.
+     *
+     * @param Builder    $query
+     * @param JewishDate $anniv
+     */
+    private function adarIIAnniversaries(Builder $query, JewishDate $anniv): void
+    {
+        if ($anniv->day() === 1) {
+            $query->where('d_day', '<=', 1);
+        } elseif ($anniv->day() === $anniv->daysInMonth()) {
+            $query->where('d_day', '>=', $anniv->daysInMonth());
+        } else {
+            $query->where('d_day', '<=', 1);
+        }
+
+        $query->where(function (Builder $query): void {
+            $query
+                ->where('d_mon', '=', 7)
+                ->orWhere(function (Builder $query): void {
+                    $query
+                        ->where('d_mon', '=', 6)
+                        ->where(DB::raw('MOD(7 * d_year + 1, 19)'), '>=', 7);
+                });
+        });
+    }
+
+    /**
+     * 1 NSN includes 30 ADR, if this year is non-leap.
+     *
+     * @param Builder    $query
+     * @param JewishDate $anniv
+     */
+    private function nisanAnniversaries(Builder $query, JewishDate $anniv): void
+    {
+        if ($anniv->day === 1 && !$anniv->isLeapYear()) {
+            $query->where(function (Builder $query): void {
+                $query->where(function (Builder $query): void {
+                    $query->where('d_day', '<=', 1)->where('d_mon', '=', 8);
+                })->orWhere(function (Builder $query): void {
+                    $query->where('d_day', '=', 30)->where('d_mon', '=', 6);
+                });
+            });
+        } else {
+            $this->defaultAnniversaries($query, $anniv);
+        }
     }
 }
