@@ -1944,13 +1944,13 @@ class ReportParserGenerate extends ReportParserBase
                             $query
                                 ->join('places AS ' . $attr . 'a', 'p_file', '=', 'i_file')
                                 ->join('placelinks AS ' . $attr . 'b', function (JoinClause $join) use ($attr): void {
-                                $join
+                                    $join
                                     ->on($attr . 'b.pl_file', '=', $attr . 'a.p_file')
                                     ->on($attr . 'b.pl_p_id', '=', $attr . 'a.p_id');
-                            })
+                                })
                             ->where($attr . 'a.p_place', 'LIKE', '%' . $match[1] . '%');
 
-                            // Don't unset this filter. This is just initial filtering for performance
+                        // Don't unset this filter. This is just initial filtering for performance
                         } elseif (preg_match('/^(\w*):*(\w*) CONTAINS (.+)$/', $value, $match)) {
                             $query->where('i_gedcom', 'LIKE', '%' . $match[1] . '%' . $match[2] . '%' . $match[3] . '%');
                             // Don't unset this filter. This is just initial filtering for performance
@@ -2039,7 +2039,7 @@ class ReportParserGenerate extends ReportParserBase
                                 })
                                 ->where($attr . 'a.p_place', 'LIKE', '%' . $match[1] . '%');
 
-                            // Don't unset this filter. This is just initial filtering for performance
+                        // Don't unset this filter. This is just initial filtering for performance
                         } elseif (preg_match('/^(\w*):*(\w*) CONTAINS (.+)$/', $value, $match)) {
                             $query->where('f_gedcom', 'LIKE', '%' . $match[1] . '%' . $match[2] . '%' . $match[3] . '%');
                             // Don't unset this filter. This is just initial filtering for performance
