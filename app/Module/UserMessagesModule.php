@@ -18,12 +18,12 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\Functions\FunctionsDate;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
+use Illuminate\Database\Capsule\Manager as DB;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -59,14 +59,10 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
     {
         $message_ids = (array) $request->get('message_id', []);
 
-        $stmt = Database::prepare("DELETE FROM `##message` WHERE user_id = :user_id AND message_id = :message_id");
-
-        foreach ($message_ids as $message_id) {
-            $stmt->execute([
-                'message_id' => $message_id,
-                'user_id'    => Auth::id(),
-            ]);
-        }
+        DB::table('message')
+            ->where('user_id', '=', Auth::id())
+            ->whereIn('message_id', $message_ids)
+            ->delete();
 
         if ($request->get('ctype') === 'user') {
             $url = route('user-page', ['ged' => $tree->name()]);
@@ -89,13 +85,14 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
      */
     public function getBlock(Tree $tree, int $block_id, string $ctype = '', array $cfg = []): string
     {
-        $messages = Database::prepare("SELECT message_id, sender, subject, body, UNIX_TIMESTAMP(created) AS created FROM `##message` WHERE user_id=? ORDER BY message_id DESC")
-            ->execute([Auth::id()])
-            ->fetchAll();
+        $messages = DB::table('message')
+            ->where('user_id', '=', Auth::id())
+            ->orderByDesc('message_id')
+            ->select(['message_id', 'sender', 'subject', 'body', DB::raw('UNIX_TIMESTAMP(created) AS created')])
+            ->get();
 
-        $count = count($messages);
         $users = array_filter(User::all(), function (User $user) use ($tree): bool {
-            $public_tree = $tree->getPreference('REQUIRE_AUTHENTICATION') !== '1';
+            $public_tree  = $tree->getPreference('REQUIRE_AUTHENTICATION') !== '1';
             $can_see_tree = $public_tree || Auth::accessLevel($tree, $user) <= Auth::PRIV_USER;
 
             return
@@ -108,6 +105,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
         $content = '';
         if (!empty($users)) {
             $url = route('user-page', ['ged' => $tree->name()]);
+
             $content .= '<form onsubmit="return $(&quot;#to&quot;).val() !== &quot;&quot;">';
             $content .= '<input type="hidden" name="route" value="message">';
             $content .= '<input type="hidden" name="ged" value="' . e($tree->name()) . '">';
@@ -130,7 +128,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
             ])) . '" data-confirm="' . I18N::translate('Are you sure you want to delete this message? It cannot be retrieved later.') . '" onsubmit="return confirm(this.dataset.confirm);">';
         $content .= csrf_field();
 
-        if (!empty($messages)) {
+        if ($messages->isNotEmpty()) {
             $content .= '<table class="list_table w-100"><tr>';
             $content .= '<th class="list_label">' . I18N::translate('Delete') . '<br><a href="#" onclick="$(\'#block-' . $block_id . ' :checkbox\').prop(\'checked\', true); return false;">' . I18N::translate('All') . '</a></th>';
             $content .= '<th class="list_label">' . I18N::translate('Subject') . '</th>';
@@ -143,16 +141,20 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
                 $content .= '<td class="list_value_wrap"><a href="#" onclick="return expand_layer(\'message' . $message->message_id . '\');"><i id="message' . $message->message_id . '_img" class="icon-plus"></i> <b dir="auto">' . e($message->subject) . '</b></a></td>';
                 $content .= '<td class="list_value_wrap">' . FunctionsDate::formatTimestamp($message->created + WT_TIMESTAMP_OFFSET) . '</td>';
                 $content .= '<td class="list_value_wrap">';
+
                 $user = User::findByIdentifier($message->sender);
+
                 if ($user instanceof User) {
                     $content .= '<span dir="auto">' . e($user->getRealName()) . '</span> - <span dir="auto">' . $user->getEmail() . '</span>';
                 } else {
                     $content .= '<a href="mailto:' . e($message->sender) . '">' . e($message->sender) . '</a>';
                 }
+
                 $content .= '</td>';
                 $content .= '</tr>';
                 $content .= '<tr><td class="list_value_wrap" colspan="4"><div id="message' . $message->message_id . '" style="display:none;">';
                 $content .= '<div dir="auto" style="white-space: pre-wrap;">' . Filter::expandUrls($message->body, $tree) . '</div><br>';
+
                 /* I18N: When replying to an email, the subject becomes “RE: <subject>” */
                 if (strpos($message->subject, I18N::translate('RE: ')) !== 0) {
                     $message->subject = I18N::translate('RE: ') . $message->subject;
@@ -165,6 +167,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
                         'subject' => $message->subject,
                         'ged'     => $tree->name(),
                     ]);
+
                     $content .= '<a class="btn btn-primary" href="' . e($reply_url) . '" title="' . I18N::translate('Reply') . '">' . I18N::translate('Reply') . '</a> ';
                 }
                 $content .= '<button type="button" class="btn btn-danger" data-confirm="' . I18N::translate('Are you sure you want to delete this message? It cannot be retrieved later.') . '" onclick="if (confirm(this.dataset.confirm)) {$(\'#messageform :checkbox\').prop(\'checked\', false); $(\'#cb_message' . $message->message_id . '\').prop(\'checked\', true); document.messageform.submit();}">' . I18N::translate('Delete') . '</button></div></td></tr>';
@@ -175,6 +178,8 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
         $content .= '</form>';
 
         if ($ctype !== '') {
+            $count = $messages->count();
+
             return view('modules/block-template', [
                 'block'      => str_replace('_', '-', $this->getName()),
                 'id'         => $block_id,
