@@ -34,6 +34,8 @@ use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Tree;
+use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Str;
 use stdClass;
 use Symfony\Component\Cache\Adapter\NullAdapter;
@@ -1298,14 +1300,14 @@ class ReportParserGenerate extends ReportParserBase
             Functions::sortFacts($facts);
             $this->repeats = [];
             $nonfacts      = explode(',', $tag);
-            foreach ($facts as $event) {
-                if (!in_array($event->getTag(), $nonfacts)) {
-                    $this->repeats[] = $event->gedcom();
+            foreach ($facts as $fact) {
+                if (!in_array($fact->getTag(), $nonfacts)) {
+                    $this->repeats[] = $fact->gedcom();
                 }
             }
         } else {
             foreach ($record->facts() as $fact) {
-                if ($fact->isPendingAddition() && $fact->getTag() !== 'CHAN') {
+                if (($fact->isPendingAddition() || $fact->isPendingDeletion()) && $fact->getTag() !== 'CHAN') {
                     $this->repeats[] = $fact->gedcom();
                 }
             }
@@ -1858,23 +1860,26 @@ class ReportParserGenerate extends ReportParserBase
         } else {
             $listname = 'individual';
         }
+
         // Some filters/sorts can be applied using SQL, while others require PHP
         switch ($listname) {
             case 'pending':
-                $rows = Database::prepare(
-                    "SELECT xref, CASE new_gedcom WHEN '' THEN old_gedcom ELSE new_gedcom END AS gedcom" .
-                    " FROM `##change`" . " WHERE (xref, change_id) IN (" .
-                    "  SELECT xref, MAX(change_id)" .
-                    "  FROM `##change`" .
-                    "  WHERE status = 'pending' AND gedcom_id = :tree_id" .
-                    "  GROUP BY xref" .
-                    " )"
-                )->execute([
-                    'tree_id' => $this->tree->id(),
-                ])->fetchAll();
+                $rows = DB::table('change')
+                    ->whereIn('change_id', function (Builder $query): void {
+                        $query->select(DB::raw('MAX(change_id)'))
+                            ->from('change')
+                            ->where('gedcom_id', '=', $this->tree->id())
+                            ->where('status', '=', 'pending')
+                            ->groupBy('xref');
+                    })
+                    ->get();
+
                 $this->list = [];
                 foreach ($rows as $row) {
-                    $this->list[] = GedcomRecord::getInstance($row->xref, $this->tree, $row->gedcom);
+                    // Show the final version of pending deletions
+                    $gedcom = $row->new_gedcom ?: $row->old_gedcom;
+
+                    $this->list[] = GedcomRecord::getInstance($row->xref, $this->tree, $gedcom);
                 }
                 break;
             case 'individual':
