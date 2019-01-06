@@ -21,6 +21,7 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
+use Illuminate\Database\Capsule\Manager as DB;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -66,11 +67,16 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
     public function getBlock(Tree $tree, int $block_id, string $ctype = '', array $cfg = []): string
     {
         $articles = Database::prepare(
-            "SELECT news_id, user_id, gedcom_id, UNIX_TIMESTAMP(updated) + :offset AS updated, subject, body FROM `##news` WHERE user_id = :user_id ORDER BY updated DESC"
+            "SELECT news_id, user_id, gedcom_id, UNIX_TIMESTAMP(updated) AS updated, subject, body FROM `##news` WHERE user_id = :user_id ORDER BY updated DESC"
         )->execute([
-            'offset'  => WT_TIMESTAMP_OFFSET,
             'user_id' => Auth::id(),
         ])->fetchAll();
+
+        $articles = DB::table('news')
+            ->where('user_id', '=', Auth::id())
+            ->orderByDesc('updated')
+            ->select(['news_id', 'user_id', 'gedcom_id', DB::raw('UNIX_TIMESTAMP(updated) AS updated'), 'subject', 'body'])
+            ->get();
 
         $content = view('modules/user_blog/list', [
             'articles' => $articles,
@@ -147,12 +153,10 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
         $news_id = $request->get('news_id');
 
         if ($news_id > 0) {
-            $row = Database::prepare(
-                "SELECT subject, body FROM `##news` WHERE news_id = :news_id AND user_id = :user_id"
-            )->execute([
-                'news_id' => $news_id,
-                'user_id' => Auth::id(),
-            ])->fetchOneRow();
+            $row = DB::table('news')
+                ->where('news_id', '=', $news_id)
+                ->where('user_id', '=', Auth::id())
+                ->first();
         } else {
             $row = (object) [
                 'body'    => '',
@@ -187,19 +191,15 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
         $body    = $request->get('body');
 
         if ($news_id > 0) {
-            Database::prepare(
-                "UPDATE `##news` SET subject = :subject, body = :body, updated = CURRENT_TIMESTAMP" .
-                " WHERE news_id = :news_id AND user_id = :user_id"
-            )->execute([
-                'subject' => $subject,
+            DB::table('news')
+                ->where('news_id', '=', $news_id)
+                ->where('user_id', '=', Auth::id())
+                ->update([
                 'body'    => $body,
-                'news_id' => $news_id,
-                'user_id' => Auth::id(),
+                'subject' => $subject,
             ]);
         } else {
-            Database::prepare(
-                "INSERT INTO `##news` (user_id, subject, body, updated) VALUES (:user_id, :subject ,:body, CURRENT_TIMESTAMP)"
-            )->execute([
+            DB::table('news')->insert([
                 'body'    => $body,
                 'subject' => $subject,
                 'user_id' => Auth::id(),
@@ -223,16 +223,10 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
     {
         $news_id = $request->get('news_id');
 
-        if (!Auth::check()) {
-            throw new AccessDeniedHttpException();
-        }
-
-        Database::prepare(
-            "DELETE FROM `##news` WHERE news_id = :news_id AND user_id = :user_id"
-        )->execute([
-            'news_id' => $news_id,
-            'user_id' => Auth::id(),
-        ]);
+        DB::table('news')
+            ->where('news_id', '=', $news_id)
+            ->where('user_id', '=', Auth::id())
+            ->delete();
 
         $url = route('user-page', [
             'ged' => $tree->name(),

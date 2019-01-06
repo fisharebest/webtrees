@@ -215,9 +215,9 @@ class AdminUsersController extends AbstractBaseController
                 e($row->email),
                 $installed_languages[$row->language] ?? $row->language,
                 $row->registered_at,
-                $row->registered_at > 0 ? FunctionsDate::formatTimestamp($row->registered_at + WT_TIMESTAMP_OFFSET) : '',
+                $row->registered_at > 0 ? FunctionsDate::formatTimestamp((int) $row->registered_at) : '',
                 $row->active_at,
-                $row->active_at > 0 ? FunctionsDate::formatTimestamp($row->active_at + WT_TIMESTAMP_OFFSET) : I18N::translate('Never'),
+                $row->active_at > 0 ? FunctionsDate::formatTimestamp((int) $row->active_at) : I18N::translate('Never'),
                 $row->verified ? I18N::translate('yes') : I18N::translate('no'),
                 $row->verified_by_admin ? I18N::translate('yes') : I18N::translate('no'),
             ];

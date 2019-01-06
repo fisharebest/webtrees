@@ -265,15 +265,13 @@ class PendingChangesController extends AbstractBaseController
         $url = $request->get('url', route('tree-page', ['ged' => $tree->name()]));
 
         $rows = Database::prepare(
-            "SELECT c.*, UNIX_TIMESTAMP(c.change_time) + :offset AS change_timestamp, u.user_name, u.real_name, g.gedcom_name, new_gedcom, old_gedcom" .
+            "SELECT c.*, UNIX_TIMESTAMP(c.change_time) AS change_timestamp, u.user_name, u.real_name, g.gedcom_name, new_gedcom, old_gedcom" .
             " FROM `##change` c" .
             " JOIN `##user`   u USING (user_id)" .
             " JOIN `##gedcom` g USING (gedcom_id)" .
             " WHERE c.status='pending'" .
             " ORDER BY gedcom_id, c.xref, c.change_id"
-        )->execute([
-            'offset' => WT_TIMESTAMP_OFFSET,
-        ])->fetchAll();
+        )->execute([])->fetchAll();
 
         $changes = [];
         foreach ($rows as $row) {

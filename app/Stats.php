@@ -6418,7 +6418,7 @@ class Stats
      */
     public function browserDate(): string
     {
-        return FunctionsDate::timestampToGedcomDate(WT_TIMESTAMP + WT_TIMESTAMP_OFFSET)->display();
+        return FunctionsDate::timestampToGedcomDate(WT_TIMESTAMP)->display();
     }
 
     /**

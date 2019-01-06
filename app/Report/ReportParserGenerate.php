@@ -604,7 +604,7 @@ class ReportParserGenerate extends ReportParserBase
      */
     private function nowStartHandler()
     {
-        $g = FunctionsDate::timestampToGedcomDate(WT_TIMESTAMP + WT_TIMESTAMP_OFFSET);
+        $g = FunctionsDate::timestampToGedcomDate(WT_TIMESTAMP);
         $this->current_element->addText($g->display());
     }
 

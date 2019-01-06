@@ -66,9 +66,8 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
     public function getBlock(Tree $tree, int $block_id, string $ctype = '', array $cfg = []): string
     {
         $articles = Database::prepare(
-            "SELECT news_id, user_id, gedcom_id, UNIX_TIMESTAMP(updated) + :offset AS updated, subject, body FROM `##news` WHERE gedcom_id = :tree_id ORDER BY updated DESC"
+            "SELECT news_id, user_id, gedcom_id, UNIX_TIMESTAMP(updated), subject, body FROM `##news` WHERE gedcom_id = :tree_id ORDER BY updated DESC"
         )->execute([
-            'offset'  => WT_TIMESTAMP_OFFSET,
             'tree_id' => $tree->id(),
         ])->fetchAll();
 
