@@ -17,13 +17,13 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers\Auth;
 
-use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Http\Controllers\AbstractBaseController;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Mail;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
+use Illuminate\Database\Capsule\Manager as DB;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -66,27 +66,27 @@ class VerifyEmailController extends AbstractBaseController
             if ($webmaster instanceof User) {
                 I18N::init($webmaster->getPreference('language'));
 
+                /* I18N: %s is a server name/URL */
+                $subject = I18N::translate('New user at %s', WT_BASE_URL . ' ' . $tree->title());
+
                 Mail::send(
                     $sender,
                     $webmaster,
                     $sender,
-                    /* I18N: %s is a server name/URL */
-                    I18N::translate('New user at %s', WT_BASE_URL . ' ' . $tree->title()),
+                    $subject,
                     view('emails/verify-notify-text', ['user' => $user]),
                     view('emails/verify-notify-html', ['user' => $user])
                 );
 
                 $mail1_method = $webmaster->getPreference('CONTACT_METHOD');
+
                 if ($mail1_method !== 'messaging3' && $mail1_method !== 'mailto' && $mail1_method !== 'none') {
-                    Database::prepare(
-                        "INSERT INTO `##message` (sender, ip_address, user_id, subject, body) VALUES (? ,? ,? ,? ,?)"
-                    )->execute([
-                        $username,
-                        $request->getClientIp(),
-                        $webmaster->getUserId(),
-                        /* I18N: %s is a server name/URL */
-                        I18N::translate('New user at %s', WT_BASE_URL . ' ' . $tree->title()),
-                        view('emails/verify-notify-text', ['user' => $user]),
+                    DB::table('message')->insert([
+                        'sender'     => $username,
+                        'ip_address' => $request->getClientIp(),
+                        'user_id'    => $webmaster->getUserId(),
+                        'subject'    => $subject,
+                        'body'       => view('emails/verify-notify-text', ['user' => $user]),
                     ]);
                 }
                 I18N::init(WT_LOCALE);

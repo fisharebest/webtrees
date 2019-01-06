@@ -19,7 +19,6 @@ namespace Fisharebest\Webtrees\Http\Controllers\Auth;
 
 use Exception;
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Http\Controllers\AbstractBaseController;
 use Fisharebest\Webtrees\I18N;
@@ -29,6 +28,7 @@ use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
+use Illuminate\Database\Capsule\Manager as DB;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -98,11 +98,10 @@ class LoginController extends AbstractBaseController
      *
      * @param Request        $request
      * @param UpgradeService $upgrade_service
-     * @param Tree|null      $tree
      *
      * @return RedirectResponse
      */
-    public function loginAction(Request $request, UpgradeService $upgrade_service, Tree $tree = null): RedirectResponse
+    public function loginAction(Request $request, UpgradeService $upgrade_service): RedirectResponse
     {
         $username = $request->get('username', '');
         $password = $request->get('password', '');
@@ -118,10 +117,10 @@ class LoginController extends AbstractBaseController
             // If there was no referring page, redirect to "my page".
             if ($url === '') {
                 // Switch to a tree where we have a genealogy record (or keep to the current/default).
-                $ged = Database::prepare("SELECT gedcom_name FROM `##gedcom` JOIN `##user_gedcom_setting` USING (gedcom_id)" . " WHERE setting_name = 'gedcomid' AND user_id = :user_id" . " ORDER BY gedcom_id = :tree_id DESC")->execute([
-                    'user_id' => Auth::user()->getUserId(),
-                    'tree_id' => $tree ? $tree->id() : 0,
-                ])->fetchOne();
+                $ged = (string) DB::table('gedcom')
+                    ->join('user_gedcom_setting', 'gedcom.gedcom_id', '=', 'user_gedcom_setting.gedcom_id')
+                    ->where('user_id', '=', Auth::id())
+                    ->value('gedcom_name');
 
                 $url = route('tree-page', ['ged' => $ged]);
             }

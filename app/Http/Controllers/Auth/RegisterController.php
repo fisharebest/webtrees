@@ -18,7 +18,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers\Auth;
 
 use Exception;
-use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Http\Controllers\AbstractBaseController;
 use Fisharebest\Webtrees\I18N;
@@ -27,6 +26,7 @@ use Fisharebest\Webtrees\Mail;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
+use Illuminate\Database\Capsule\Manager as DB;
 use Ramsey\Uuid\Uuid;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -143,27 +143,26 @@ class RegisterController extends AbstractBaseController
             I18N::init($webmaster->getPreference('language'));
 
             /* I18N: %s is a server name/URL */
+            $subject = I18N::translate('New registration at %s', $tree->title());
+
+            /* I18N: %s is a server name/URL */
             Mail::send(
                 $sender,
                 $webmaster,
                 $user,
-                I18N::translate('New registration at %s', WT_BASE_URL . ' ' . $tree->title()),
+                $subject,
                 view('emails/register-notify-text', ['user' => $user, 'comments' => $comments]),
                 view('emails/register-notify-html', ['user' => $user, 'comments' => $comments])
             );
 
             $mail1_method = $webmaster->getPreference('contact_method');
             if ($mail1_method !== 'messaging3' && $mail1_method !== 'mailto' && $mail1_method !== 'none') {
-                Database::prepare("INSERT INTO `##message` (sender, ip_address, user_id, subject, body) VALUES (? ,? ,? ,? ,?)")->execute([
-                    $user->getEmail(),
-                    $request->getClientIp(),
-                    $webmaster->getUserId(),
-                    /* I18N: %s is a server name/URL */
-                    I18N::translate('New registration at %s', $tree->title()),
-                    view('emails/register-notify-text', [
-                        'user'     => $user,
-                        'comments' => $comments,
-                    ]),
+                DB::table('message')->insert([
+                    'sender'     => $user->getEmail(),
+                    'ip_address' => $request->getClientIp(),
+                    'user_id'    => $webmaster->getUserId(),
+                    'subject'    => $subject,
+                    'body'       => view('emails/register-notify-text', ['user' => $user, 'comments' => $comments]),
                 ]);
             }
         }
