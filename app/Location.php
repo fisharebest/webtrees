@@ -17,6 +17,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Query\JoinClause;
 use stdClass;
 
 /**
@@ -133,17 +135,17 @@ class Location
     }
 
     /**
-     * @return string
+     * @return int
      */
-    public function getId(): string
+    public function getId(): int
     {
         return $this->record->pl_id;
     }
 
     /**
-     * @return string
+     * @return int
      */
-    public function getLevel(): string
+    public function getLevel(): int
     {
         return $this->record->pl_level;
     }
@@ -193,21 +195,17 @@ class Location
      */
     public function add(): int
     {
-        $this->record->pl_id = (int) Database::prepare("SELECT IFNULL(MAX(pl_id)+1, 1) FROM `##placelocation`")
-            ->execute()
-            ->fetchOne();
+        $this->record->pl_id = 1 + (int) DB::table('placelocation')->max('pl_id');
 
-        Database::prepare(
-            "INSERT INTO `##placelocation` (pl_id, pl_parent_id, pl_level, pl_place, pl_long, pl_lati, pl_zoom, pl_icon) VALUES(:id, :parent_id, :level, :place, :long, :lati, :zoom, :icon)"
-        )->execute([
-            'id'        => $this->record->pl_id,
-            'parent_id' => $this->record->pl_parent_id,
-            'level'     => $this->record->pl_level,
-            'place'     => $this->record->pl_place,
-            'long'      => $this->record->pl_long ?? null,
-            'lati'      => $this->record->pl_lati ?? null,
-            'zoom'      => $this->record->pl_zoom ?? null,
-            'icon'      => $this->record->pl_icon ?? null,
+        DB::table('placelocation')->insert([
+            'pl_id'        => $this->record->pl_id,
+            'pl_parent_id' => $this->record->pl_parent_id,
+            'pl_level'     => $this->record->pl_level,
+            'pl_place'     => $this->record->pl_place,
+            'pl_long'      => $this->record->pl_long ?? null,
+            'pl_lati'      => $this->record->pl_lati ?? null,
+            'pl_zoom'      => $this->record->pl_zoom ?? null,
+            'pl_icon'      => $this->record->pl_icon ?? null,
         ]);
 
         return $this->record->pl_id;
@@ -220,15 +218,14 @@ class Location
      */
     public function update(stdClass $new_data)
     {
-        Database::prepare(
-            "UPDATE `##placelocation` SET pl_lati=:lati, pl_long=:long, pl_zoom=:zoom, pl_icon=:icon WHERE pl_id=:id"
-        )->execute([
-            'lati' => $new_data->pl_lati ?? $this->record->pl_lati,
-            'long' => $new_data->pl_long ?? $this->record->pl_long,
-            'zoom' => $new_data->pl_zoom ?? $this->record->pl_zoom,
-            'icon' => $new_data->pl_icon ?? $this->record->pl_icon,
-            'id'   => $this->record->pl_id,
-        ]);
+        DB::table('placelocation')
+            ->where('pl_id', '=', $this->record->pl_id)
+            ->update([
+                'pl_lati' => $new_data->pl_lati ?? $this->record->pl_lati,
+                'pl_long' => $new_data->pl_long ?? $this->record->pl_long,
+                'pl_zoom' => $new_data->pl_zoom ?? $this->record->pl_zoom,
+                'pl_icon' => $new_data->pl_icon ?? $this->record->pl_icon,
+            ]);
     }
 
     /**
@@ -238,22 +235,22 @@ class Location
      */
     private function getRecordFromName(string $gedcomName)
     {
-        return Database::prepare("
-            SELECT
-              CONCAT_WS(:separator, t1.pl_place, t2.pl_place, t3.pl_place, t4.pl_place, t5.pl_place, t6.pl_place, t7.pl_place, t8.pl_place) AS fqpn,
-                t1.pl_level, t1.pl_place, t1.pl_id, t1.pl_parent_id, t1.pl_lati, t1.pl_long, t1.pl_zoom, t1.pl_icon
-            FROM `##placelocation` AS t1
-            LEFT JOIN `##placelocation` AS t2 ON t1.pl_parent_id = t2.pl_id
-            LEFT JOIN `##placelocation` AS t3 ON t2.pl_parent_id = t3.pl_id
-            LEFT JOIN `##placelocation` AS t4 ON t3.pl_parent_id = t4.pl_id
-            LEFT JOIN `##placelocation` AS t5 ON t4.pl_parent_id = t5.pl_id
-            LEFT JOIN `##placelocation` AS t6 ON t5.pl_parent_id = t6.pl_id
-            LEFT JOIN `##placelocation` AS t7 ON t6.pl_parent_id = t7.pl_id
-            LEFT JOIN `##placelocation` AS t8 ON t7.pl_parent_id = t8.pl_id
-            HAVING fqpn = :gedcomName;
-        ")->execute([
-            'separator'  => Place::GEDCOM_SEPARATOR,
-            'gedcomName' => $gedcomName,
-        ])->fetchOneRow();
+        $places = explode(Place::GEDCOM_SEPARATOR, $gedcomName);
+
+        $query = DB::table('placelocation AS pl0')
+            ->where('pl0.pl_place', '=', $places[0])
+            ->select(['pl0.*']);
+
+        array_shift($places);
+
+        foreach ($places as $n => $place) {
+            $query->join('placelocation AS pl' . ($n + 1), function (JoinClause $join) use ($n, $place): void {
+                $join
+                    ->on('pl' . ($n + 1) . '.pl_id', '=', 'pl' . $n . '.pl_parent_id')
+                    ->where('pl' . ($n + 1) . '.pl_place', '=', $place);
+            });
+        };
+
+        return $query->first();
     }
 }

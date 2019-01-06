@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Location;
 use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Tree;
+use Illuminate\Database\Capsule\Manager as DB;
 use stdClass;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -144,32 +145,28 @@ class AdminLocationController extends AbstractBaseController
         $zoom      = $zoom === '' ? null : $zoom;
 
         if ($place_id === 0) {
-            Database::prepare(
-                "INSERT INTO `##placelocation` (pl_id, pl_parent_id, pl_level, pl_place, pl_long, pl_lati, pl_zoom, pl_icon)
-						  VALUES (:id, :parent, :level, :place, :lng, :lat, :zoom, :icon)"
-            )->execute(
-                [
-                    'id'     => (int) Database::prepare("SELECT MAX(pl_id)+1 FROM `##placelocation`")->fetchOne(),
-                    'parent' => $parent_id,
-                    'level'  => $level,
-                    'place'  => $request->get('new_place_name'),
-                    'lat'    => $request->get('lati_control') . $lat,
-                    'lng'    => $request->get('long_control') . $lng,
-                    'zoom'   => $zoom,
-                    'icon'   => $icon,
-                ]
-            );
-        } else {
-            Database::prepare(
-                "UPDATE `##placelocation` SET pl_place = :place, pl_lati = :lat, pl_long = :lng, pl_zoom = :zoom, pl_icon = :icon WHERE pl_id = :id"
-            )->execute([
-                'id'    => $place_id,
-                'place' => $request->get('new_place_name'),
-                'lat'   => $request->get('lati_control') . $lat,
-                'lng'   => $request->get('long_control') . $lng,
-                'zoom'  => (int) $request->get('new_zoom_factor'),
-                'icon'  => $icon,
+            $place_id = 1 + (int) DB::table('placelocation')->max('pl_id');
+
+            DB::table('placelocation')->insert([
+                'pl_id'        => $place_id,
+                'pl_parent_id' => $parent_id,
+                'pl_level'     => $level,
+                'pl_place'     => $request->get('new_place_name'),
+                'pl_lati'      => $request->get('lati_control') . $lat,
+                'pl_long'      => $request->get('long_control') . $lng,
+                'pl_zoom'      => $zoom,
+                'pl_icon'      => $icon,
             ]);
+        } else {
+            DB::table('place_location')
+                ->where('pl_id', '=', $place_id)
+                ->update([
+                    'pl_place' => $request->get('new_place_name'),
+                    'pl_lati'   => $request->get('lati_control') . $lat,
+                    'pl_long'   => $request->get('long_control') . $lng,
+                    'pl_zoom'  => (int) $request->get('new_zoom_factor'),
+                    'pl_icon'  => $icon,
+                ]);
         }
         FlashMessages::addMessage(
             I18N::translate(
@@ -195,13 +192,9 @@ class AdminLocationController extends AbstractBaseController
         $parent_id = (int) $request->get('parent_id');
 
         try {
-            Database::prepare(
-                "DELETE FROM `##placelocation` WHERE pl_id = :id"
-            )->execute(
-                [
-                    'id' => $place_id,
-                ]
-            );
+            DB::table('placelocation')
+                ->where('pl_id', '=', $place_id)
+                ->delete();
         } catch (Exception $ex) {
             FlashMessages::addMessage(
                 I18N::translate('Location not removed: this location contains sub-locations'),
@@ -209,20 +202,14 @@ class AdminLocationController extends AbstractBaseController
             );
         }
         // If after deleting there are no more places at this level then go up a level
-        $children = (int) Database::prepare(
-            "SELECT COUNT(pl_id) FROM `##placelocation` WHERE pl_parent_id = :parent_id"
-        )
-            ->execute(['parent_id' => $parent_id])
-            ->fetchOne();
+        $children = DB::table('placelocation')
+            ->where('pl_parent_id', '=', $parent_id)
+            ->count();
 
         if ($children === 0) {
-            $row = Database::prepare(
-                "SELECT pl_parent_id FROM `##placelocation` WHERE pl_id = :parent_id"
-            )->execute([
-                'parent_id' => $parent_id,
-            ])->fetchOneRow();
-
-            $parent_id = $row->pl_parent_id;
+            $parent_id = (int) DB::table('placelocation')
+                ->where('pl_id', '=', $parent_id)
+                ->value('pl_parent_id');
         }
 
         $url = route('map-data', ['parent_id' => $parent_id]);
@@ -239,7 +226,7 @@ class AdminLocationController extends AbstractBaseController
     {
         $parent_id = (int) $request->get('parent_id');
         $format    = $request->get('format');
-        $maxlevel  = (int) Database::prepare("SELECT max(pl_level) FROM `##placelocation`")->execute()->fetchOne();
+        $maxlevel  = (int) DB::table('placelocation')->max('pl_level');
         $startfqpn = [];
         $hierarchy = $this->gethierarchy($parent_id);
 
@@ -330,9 +317,9 @@ class AdminLocationController extends AbstractBaseController
      */
     public function importLocationsAction(Request $request): RedirectResponse
     {
-        $serverfile = $request->get('serverfile');
-        $options    = $request->get('import-options');
-        $parent_id  = $request->get('parent_id');
+        $serverfile     = $request->get('serverfile');
+        $options        = $request->get('import-options');
+        $clear_database = (bool) $request->get('cleardatabase');
 
         $filename    = '';
         $places      = [];
@@ -395,25 +382,13 @@ class AdminLocationController extends AbstractBaseController
 
             fclose($fp);
 
-            if ((bool) $request->get('cleardatabase')) {
-                Database::exec("DELETE FROM `##placelocation`");
+            if ($clear_database) {
+                DB::table('placelocation')->delete();
             }
 
             //process places
             $added   = 0;
             $updated = 0;
-
-            //sort places by level
-            usort(
-                $places,
-                function (array $a, array $b): int {
-                    if ((int) $a['pl_level'] === (int) $b['pl_level']) {
-                        return I18N::strcasecmp($a['fqpn'], $b['fqpn']);
-                    }
-
-                    return (int) $a['pl_level'] - (int) $b['pl_level'];
-                }
-            );
 
             foreach ($places as $place) {
                 $location = new Location($place['fqpn']);
@@ -440,20 +415,17 @@ class AdminLocationController extends AbstractBaseController
                     for ($i = count($place_parts) - 1; $i >= 0; $i--) {
                         $new_parts    = array_slice($place_parts, $i);
                         $new_fqpn     = implode(Place::GEDCOM_SEPARATOR, $new_parts);
-                        $new_location = new Location(
-                            $new_fqpn,
-                            [
-                                'fqpn'         => $new_fqpn,
-                                'pl_id'        => 0,
-                                'pl_parent_id' => $parent_id,
-                                'pl_level'     => count($new_parts) - 1,
-                                'pl_place'     => $new_parts[0],
-                                'pl_long'      => $i === 0 ? $place['pl_long'] : null,
-                                'pl_lati'      => $i === 0 ? $place['pl_lati'] : null,
-                                'pl_zoom'      => $i === 0 ? $place['pl_zoom'] : null,
-                                'pl_icon'      => $i === 0 ? $place['pl_icon'] : null,
-                            ]
-                        );
+                        $new_location = new Location($new_fqpn, [
+                            'fqpn'         => $new_fqpn,
+                            'pl_id'        => 0,
+                            'pl_parent_id' => $parent_id,
+                            'pl_level'     => count($new_parts) - 1,
+                            'pl_place'     => $new_parts[0],
+                            'pl_long'      => $i === 0 ? $place['pl_long'] : null,
+                            'pl_lati'      => $i === 0 ? $place['pl_lati'] : null,
+                            'pl_zoom'      => $i === 0 ? $place['pl_zoom'] : null,
+                            'pl_icon'      => $i === 0 ? $place['pl_icon'] : null,
+                        ]);
 
                         if ($new_location->isValid()) {
                             $parent_id = $new_location->getId();
@@ -472,7 +444,7 @@ class AdminLocationController extends AbstractBaseController
             throw new Exception('Unable to open file: ' . $filename);
         }
 
-        $url = route('map-data', ['parent_id' => $parent_id]);
+        $url = route('map-data', ['parent_id' => 0]);
 
         return new RedirectResponse($url);
     }
@@ -522,11 +494,7 @@ class AdminLocationController extends AbstractBaseController
         // ... and process the differences
         $inserted = 0;
         if (!empty($diff)) {
-            $nextRecordId    = Database::prepare("SELECT MAX(pl_id) FROM `##placelocation`")->fetchOne() + 1;
-            $insertRecordQry = Database::prepare(
-                "INSERT INTO `##placelocation` (pl_id, pl_parent_id, pl_level, pl_place)" .
-                " VALUES (:id, :parent, :level, :place)"
-            );
+            $nextRecordId    = 1 + (int) DB::table('placelocation')->max('pl_id');
 
             foreach ($diff as $place) {
                 // For Westminster, London, England, we must also create England and London, England
@@ -539,12 +507,13 @@ class AdminLocationController extends AbstractBaseController
                     $place_id = array_search($parent, $locations);
 
                     if ($place_id === false) {
-                        $insertRecordQry->execute([
-                            'id'     => $nextRecordId,
-                            'parent' => $parent_id,
-                            'level'  => $count - $i,
-                            'place'  => $place_parts[$i],
+                        DB::table('placelocation')->insert([
+                            'pl_id'        => $nextRecordId,
+                            'pl_parent_id' => $parent_id,
+                            'pl_level'     => $count - $i,
+                            'pl_place'     => $place_parts[$i],
                         ]);
+
                         $parent_id             = $nextRecordId;
                         $locations[$parent_id] = $parent;
                         $inserted++;
@@ -654,11 +623,11 @@ class AdminLocationController extends AbstractBaseController
     private function buildLevel(int $parent_id, array $placename, array &$places)
     {
         $level = array_search('', $placename);
-        $rows  = Database::prepare(
-            "SELECT pl_level, pl_id, pl_place, pl_long, pl_lati, pl_zoom, pl_icon FROM `##placelocation` WHERE pl_parent_id=? ORDER BY pl_place"
-        )
-            ->execute([$parent_id])
-            ->fetchAll();
+
+        $rows = DB::table('placelocation')
+            ->where('pl_parent_id', '=', $parent_id)
+            ->orderBy('pl_place')
+            ->get();
 
         foreach ($rows as $row) {
             $index             = (int) $row->pl_id;
@@ -675,11 +644,14 @@ class AdminLocationController extends AbstractBaseController
      */
     private function gethierarchy(int $id): array
     {
-        $statement = Database::prepare("SELECT pl_id, pl_parent_id, pl_place FROM `##placelocation` WHERE pl_id=:id");
-        $arr       = [];
-        $fqpn      = [];
+        $arr  = [];
+        $fqpn = [];
+
         while ($id !== 0) {
-            $row       = $statement->execute(['id' => $id])->fetchOneRow();
+            $row = DB::table('placelocation')
+                ->where('pl_id', '=', $id)
+                ->first();
+
             $fqpn[]    = $row->pl_place;
             $row->fqpn = implode(Place::GEDCOM_SEPARATOR, $fqpn);
             $id        = (int) $row->pl_parent_id;
@@ -797,9 +769,9 @@ class AdminLocationController extends AbstractBaseController
      */
     private function mapLocationData(int $id): array
     {
-        $row = Database::prepare("SELECT * FROM `##placelocation` WHERE pl_id = :id")
-            ->execute(['id' => $id])
-            ->fetchOneRow();
+        $row = DB::table('placelocation')
+            ->where('pl_id', '=', $id)
+            ->first();
 
         if (empty($row)) {
             $json = [
