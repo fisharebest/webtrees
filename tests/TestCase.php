@@ -104,6 +104,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
             'database' => ':memory:',
         ]);
         $capsule->setAsGlobal();
+        Database::registerMacros();
 
         // Create tables
         Database::updateSchema('\Fisharebest\Webtrees\Schema', 'WT_SCHEMA_VERSION', Webtrees::SCHEMA_VERSION);

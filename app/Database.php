@@ -92,7 +92,16 @@ class Database
         ]);
         $capsule->setAsGlobal();
 
-        // Register macros to help search for substrings
+        self::registerMacros();
+    }
+
+    /**
+     * Register macros to help search for substrings
+     *
+     * @return void
+     */
+    public static function registerMacros(): void
+    {
         Builder::macro('whereContains', function (string $column, string $search) {
             $search = strtr($search, ['\\' => '\\\\', '%'  => '\\%', '_'  => '\\_']);
 
