@@ -1864,7 +1864,7 @@ class ReportParserGenerate extends ReportParserBase
         // Some filters/sorts can be applied using SQL, while others require PHP
         switch ($listname) {
             case 'pending':
-                $rows = DB::table('change')
+                $xrefs = DB::table('change')
                     ->whereIn('change_id', function (Builder $query): void {
                         $query->select(DB::raw('MAX(change_id)'))
                             ->from('change')
@@ -1872,14 +1872,11 @@ class ReportParserGenerate extends ReportParserBase
                             ->where('status', '=', 'pending')
                             ->groupBy('xref');
                     })
-                    ->get();
+                    ->pluck('xref');
 
                 $this->list = [];
-                foreach ($rows as $row) {
-                    // Show the final version of pending deletions
-                    $gedcom = $row->new_gedcom ?: $row->old_gedcom;
-
-                    $this->list[] = GedcomRecord::getInstance($row->xref, $this->tree, $gedcom);
+                foreach ($xrefs as $xref) {
+                    $this->list[] = GedcomRecord::getInstance($xref, $this->tree);
                 }
                 break;
             case 'individual':
