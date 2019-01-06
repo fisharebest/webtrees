@@ -38,6 +38,7 @@ use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Fisharebest\Webtrees\View;
 use Fisharebest\Webtrees\Webtrees;
+use Illuminate\Database\Capsule\Manager as DB;
 use League\Flysystem\Adapter\Local;
 use League\Flysystem\Filesystem;
 use Symfony\Component\HttpFoundation\Request;
@@ -146,7 +147,7 @@ if ($max_execution_time !== '' && strpos(ini_get('disable_functions'), 'set_time
 Session::start();
 
 // Note that the database/webservers may not be synchronised, so use DB time throughout.
-define('WT_TIMESTAMP', (int) Database::prepare("SELECT UNIX_TIMESTAMP()")->fetchOne());
+define('WT_TIMESTAMP', DB::select('SELECT UNIX_TIMESTAMP() AS unix_timestamp')[0]->unix_timestamp);
 
 // Users get their own time-zone. Visitors get the site time-zone.
 try {
