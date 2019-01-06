@@ -1919,7 +1919,7 @@ class ReportParserGenerate extends ReportParserBase
                                 if ($match[1] != '') {
                                     $names = explode(' ', $match[1]);
                                     foreach ($names as $n => $name) {
-                                        $query->where($attr . '.n_full', 'LIKE', '%' . $name . '%');
+                                        $query->whereContains($attr . '.n_full', $name);
                                     }
                                 }
                             }
@@ -1943,10 +1943,10 @@ class ReportParserGenerate extends ReportParserBase
                                         ->on($attr . 'b.pl_file', '=', $attr . 'a.p_file')
                                         ->on($attr . 'b.pl_p_id', '=', $attr . 'a.p_id');
                                 })
-                                ->where($attr . 'a.p_place', 'LIKE', '%' . $match[1] . '%');
+                                ->whereContains($attr . 'a.p_place', $match[1]);
                         } elseif (preg_match('/^(\w*):*(\w*) CONTAINS (.+)$/', $value, $match)) {
                             // Don't unset this filter. This is just initial filtering for performance
-                            $query->where('i_gedcom', 'LIKE', '%' . $match[1] . '%' . $match[2] . '%' . $match[3] . '%');
+                            $query->whereContains('i_gedcom', $match[3]);
                         }
                     }
                 }
@@ -2010,7 +2010,7 @@ class ReportParserGenerate extends ReportParserBase
                                 if ($match[1] != '') {
                                     $names = explode(' ', $match[1]);
                                     foreach ($names as $n => $name) {
-                                        $query->where($attr . '.n_full', 'LIKE', '%' . $name . '%');
+                                        $query->whereContains($attr . '.n_full', $name);
                                     }
                                 }
                             }
@@ -2026,10 +2026,10 @@ class ReportParserGenerate extends ReportParserBase
                                         ->on($attr . 'b.pl_file', '=', $attr . 'a.p_file')
                                         ->on($attr . 'b.pl_p_id', '=', $attr . 'a.p_id');
                                 })
-                                ->where($attr . 'a.p_place', 'LIKE', '%' . $match[1] . '%');
+                                ->whereContains($attr . 'a.p_place', $match[1]);
                         } elseif (preg_match('/^(\w*):*(\w*) CONTAINS (.+)$/', $value, $match)) {
                             // Don't unset this filter. This is just initial filtering for performance
-                            $query->where('f_gedcom', 'LIKE', '%' . $match[1] . '%' . $match[2] . '%' . $match[3] . '%');
+                            $query->whereContains('f_gedcom', $match[3]);
                         }
                     }
                 }

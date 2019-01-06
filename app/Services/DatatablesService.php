@@ -29,13 +29,6 @@ use function strtr;
  */
 class DatatablesService
 {
-    // We need to escape special characters in a LIKE clause, so we can search for them.
-    private const ESCAPE_LIKE = [
-        '%'  => '\\%',
-        '_'  => '\\_',
-        '\\' => '\\\\',
-    ];
-
     /**
      * Apply filtering and pagination to a query, and generate a response suitable for datatables.
      *
@@ -61,11 +54,9 @@ class DatatablesService
 
         // Filtering
         if ($search !== '') {
-            $search = $this->escapeLike($search);
-
             $query->where(function (Builder $query) use ($search, $search_columns): void {
                 foreach ($search_columns as $search_column) {
-                    $query->orWhere($search_column, 'LIKE', '%' . $search . '%');
+                    $query->orWhereContains($search_column, $search);
                 }
             });
         }
@@ -101,18 +92,5 @@ class DatatablesService
             'recordsFiltered' => $recordsFiltered,
             'data'            => $data,
         ]);
-    }
-
-    /**
-     * Escape a search term, so we can use it in a LIKE clause.
-     * This lets us search for percent signs, underscores, etc.
-     *
-     * @param string $string
-     *
-     * @return string
-     */
-    private function escapeLike(string $string): string
-    {
-        return strtr($string, self::ESCAPE_LIKE);
     }
 }

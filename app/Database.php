@@ -20,6 +20,7 @@ namespace Fisharebest\Webtrees;
 use Exception;
 use Fisharebest\Webtrees\Schema\MigrationInterface;
 use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Query\Builder;
 use PDO;
 use PDOException;
 use PDOStatement;
@@ -90,6 +91,18 @@ class Database
             'enigne'         => 'InnoDB',
         ]);
         $capsule->setAsGlobal();
+
+        // Register macros to help search for substrings
+        Builder::macro('whereContains', function (string $column, string $search) {
+            $search = strtr($search, ['\\' => '\\\\', '%'  => '\\%', '_'  => '\\_']);
+
+            return $this->where($column, 'LIKE', '%' . $search . '%', 'and');
+        });
+        Builder::macro('orWhereContains', function (string $column, string $search) {
+            $search = strtr($search, ['\\' => '\\\\', '%'  => '\\%', '_'  => '\\_']);
+
+            return $this->where($column, 'LIKE', '%' . $search . '%', 'or');
+        });
     }
 
     /**

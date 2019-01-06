@@ -1380,7 +1380,7 @@ class GedcomRecord
     {
         $union = DB::table('change')
             ->where('gedcom_id', '=', $this->tree()->id())
-            ->where('new_gedcom', 'LIKE', '%@' . $this->xref() . '@%')
+            ->whereContains('new_gedcom', '@' . $this->xref() . '@')
             ->where('new_gedcom', 'NOT LIKE', '0 @' . $this->xref() . '@%')
             ->select(['xref']);
 
