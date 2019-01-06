@@ -18,7 +18,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Services;
 
 use Exception;
-use Fisharebest\Webtrees\Database;
+use Illuminate\Database\Capsule\Manager as DB;
 use League\Flysystem\Filesystem;
 
 /**
@@ -560,11 +560,10 @@ class HousekeepingService
      */
     public function deleteOldLogs(int $max_age_in_seconds)
     {
-        Database::prepare(
-            "DELETE FROM `##log` WHERE log_type IN ('error', 'media') AND log_time < FROM_UNIXTIME(:timestamp)"
-        )->execute([
-            'timestamp' => WT_TIMESTAMP - $max_age_in_seconds
-        ]);
+        DB::table('log')
+            ->whereIn('log_type', ['error', 'media'])
+            ->whereRaw('log_time < FROM_UNIXTIME(?)', [WT_TIMESTAMP - $max_age_in_seconds])
+            ->delete();
     }
 
     /**
@@ -574,11 +573,9 @@ class HousekeepingService
      */
     public function deleteOldSessions(int $max_age_in_seconds)
     {
-        Database::prepare(
-            "DELETE FROM `##session` WHERE session_time < FROM_UNIXTIME(:timestamp)"
-        )->execute([
-            'timestamp' => WT_TIMESTAMP - $max_age_in_seconds
-        ]);
+        DB::table('session')
+            ->whereRaw('session_time < FROM_UNIXTIME(?)', [WT_TIMESTAMP - $max_age_in_seconds])
+            ->delete();
     }
 
     /**
