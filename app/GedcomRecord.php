@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\Functions\FunctionsDate;
 use Fisharebest\Webtrees\Functions\FunctionsImport;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Query\JoinClause;
 use stdClass;
 
 /**
@@ -842,19 +843,15 @@ class GedcomRecord
      */
     public function linkedIndividuals(string $link): array
     {
-        $rows = Database::prepare(
-            "SELECT i_id AS xref, i_gedcom AS gedcom" .
-            " FROM `##individuals`" .
-            " JOIN `##link` ON i_file = l_file AND i_id = l_from" .
-            " LEFT JOIN `##name` ON i_file = n_file AND i_id = n_id AND n_num = 0" .
-            " WHERE i_file = :tree_id AND l_type = :link AND l_to = :xref" .
-            " ORDER BY n_sort COLLATE :collation"
-        )->execute([
-            'tree_id'   => $this->tree->id(),
-            'link'      => $link,
-            'xref'      => $this->xref,
-            'collation' => I18N::collation(),
-        ])->fetchAll();
+        $rows = DB::table('individuals')
+            ->join('link', function (JoinClause $join): void {
+                $join->on('l_file', '=', 'i_file')->on('l_from', '=', 'i_id');
+            })
+            ->where('i_file', '=', $this->tree->id())
+            ->where('l_type', '=', $link)
+            ->where('l_to', '=', $this->xref)
+            ->select(['i_id AS xref', 'i_gedcom AS gedcom'])
+            ->get();
 
         $list = [];
         foreach ($rows as $row) {
@@ -876,17 +873,15 @@ class GedcomRecord
      */
     public function linkedFamilies(string $link): array
     {
-        $rows = Database::prepare(
-            "SELECT f_id AS xref, f_gedcom AS gedcom" .
-            " FROM `##families`" .
-            " JOIN `##link` ON f_file = l_file AND f_id = l_from" .
-            " LEFT JOIN `##name` ON f_file = n_file AND f_id = n_id AND n_num = 0" .
-            " WHERE f_file = :tree_id AND l_type = :link AND l_to = :xref"
-        )->execute([
-            'tree_id' => $this->tree->id(),
-            'link'    => $link,
-            'xref'    => $this->xref,
-        ])->fetchAll();
+        $rows = DB::table('families')
+            ->join('link', function (JoinClause $join): void {
+                $join->on('l_file', '=', 'f_file')->on('l_from', '=', 'f_id');
+            })
+            ->where('f_file', '=', $this->tree->id())
+            ->where('l_type', '=', $link)
+            ->where('l_to', '=', $this->xref)
+            ->select(['f_id AS xref', 'f_gedcom AS gedcom'])
+            ->get();
 
         $list = [];
         foreach ($rows as $row) {
@@ -908,18 +903,15 @@ class GedcomRecord
      */
     public function linkedSources(string $link): array
     {
-        $rows = Database::prepare(
-            "SELECT s_id AS xref, s_gedcom AS gedcom" .
-            " FROM `##sources`" .
-            " JOIN `##link` ON s_file = l_file AND s_id = l_from" .
-            " WHERE s_file = :tree_id AND l_type = :link AND l_to = :xref" .
-            " ORDER BY s_name COLLATE :collation"
-        )->execute([
-            'tree_id'   => $this->tree->id(),
-            'link'      => $link,
-            'xref'      => $this->xref,
-            'collation' => I18N::collation(),
-        ])->fetchAll();
+        $rows = DB::table('sources')
+            ->join('link', function (JoinClause $join): void {
+                $join->on('l_file', '=', 's_file')->on('l_from', '=', 's_id');
+            })
+            ->where('s_file', '=', $this->tree->id())
+            ->where('l_type', '=', $link)
+            ->where('l_to', '=', $this->xref)
+            ->select(['s_id AS xref', 's_gedcom AS gedcom'])
+            ->get();
 
         $list = [];
         foreach ($rows as $row) {
@@ -941,16 +933,15 @@ class GedcomRecord
      */
     public function linkedMedia(string $link): array
     {
-        $rows = Database::prepare(
-            "SELECT m_id AS xref, m_gedcom AS gedcom" .
-            " FROM `##media`" .
-            " JOIN `##link` ON m_file = l_file AND m_id = l_from" .
-            " WHERE m_file = :tree_id AND l_type = :link AND l_to = :xref"
-        )->execute([
-            'tree_id' => $this->tree->id(),
-            'link'    => $link,
-            'xref'    => $this->xref,
-        ])->fetchAll();
+        $rows = DB::table('media')
+            ->join('link', function (JoinClause $join): void {
+                $join->on('l_file', '=', 'm_file')->on('l_from', '=', 'm_id');
+            })
+            ->where('m_file', '=', $this->tree->id())
+            ->where('l_type', '=', $link)
+            ->where('l_to', '=', $this->xref)
+            ->select(['m_id AS xref', 'm_gedcom AS gedcom'])
+            ->get();
 
         $list = [];
         foreach ($rows as $row) {
@@ -972,19 +963,16 @@ class GedcomRecord
      */
     public function linkedNotes(string $link): array
     {
-        $rows = Database::prepare(
-            "SELECT o_id AS xref, o_gedcom AS gedcom" .
-            " FROM `##other`" .
-            " JOIN `##link` ON o_file = l_file AND o_id = l_from" .
-            " LEFT JOIN `##name` ON o_file = n_file AND o_id = n_id AND n_num = 0" .
-            " WHERE o_file = :tree_id AND o_type = 'NOTE' AND l_type = :link AND l_to = :xref" .
-            " ORDER BY n_sort COLLATE :collation"
-        )->execute([
-            'tree_id'   => $this->tree->id(),
-            'link'      => $link,
-            'xref'      => $this->xref,
-            'collation' => I18N::collation(),
-        ])->fetchAll();
+        $rows = DB::table('other')
+            ->join('link', function (JoinClause $join): void {
+                $join->on('l_file', '=', 'o_file')->on('l_from', '=', 'o_id');
+            })
+            ->where('o_file', '=', $this->tree->id())
+            ->where('o_type', '=', 'NOTE')
+            ->where('l_type', '=', $link)
+            ->where('l_to', '=', $this->xref)
+            ->select(['o_id AS xref', 'o_gedcom AS gedcom'])
+            ->get();
 
         $list = [];
         foreach ($rows as $row) {
@@ -1006,19 +994,16 @@ class GedcomRecord
      */
     public function linkedRepositories(string $link): array
     {
-        $rows = Database::prepare(
-            "SELECT o_id AS xref, o_gedcom AS gedcom" .
-            " FROM `##other`" .
-            " JOIN `##link` ON o_file = l_file AND o_id = l_from" .
-            " LEFT JOIN `##name` ON o_file = n_file AND o_id = n_id AND n_num = 0" .
-            " WHERE o_file = :tree_id AND o_type = 'REPO' AND l_type = :link AND l_to = :xref" .
-            " ORDER BY n_sort COLLATE :collation"
-        )->execute([
-            'tree_id'   => $this->tree->id(),
-            'link'      => $link,
-            'xref'      => $this->xref,
-            'collation' => I18N::collation(),
-        ])->fetchAll();
+        $rows = DB::table('other')
+            ->join('link', function (JoinClause $join): void {
+                $join->on('l_file', '=', 'o_file')->on('l_from', '=', 'o_id');
+            })
+            ->where('o_file', '=', $this->tree->id())
+            ->where('o_type', '=', 'REPO')
+            ->where('l_type', '=', $link)
+            ->where('l_to', '=', $this->xref)
+            ->select(['o_id AS xref', 'o_gedcom AS gedcom'])
+            ->get();
 
         $list = [];
         foreach ($rows as $row) {
