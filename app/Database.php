@@ -58,10 +58,6 @@ class Database
      */
     public static function createInstance(array $config)
     {
-        if (self::$pdo !== null) {
-            throw new Exception('Database::createInstance() can only be called once.');
-        }
-
         self::$table_prefix = $config['tblpfx'];
 
         $dsn = (substr($config['dbhost'], 0, 1) === '/' ?
@@ -105,21 +101,7 @@ class Database
      */
     public static function getInstance()
     {
-        if (self::$pdo !== null) {
-            return self::$instance;
-        }
-
-        throw new Exception('createInstance() must be called before getInstance().');
-    }
-
-    /**
-     * Are we currently connected to a database?
-     *
-     * @return bool
-     */
-    public static function isConnected(): bool
-    {
-        return self::$pdo !== null;
+        return self::$instance;
     }
 
     /**
