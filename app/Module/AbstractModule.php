@@ -18,7 +18,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Symfony\Component\HttpFoundation\Response;
@@ -63,12 +62,10 @@ abstract class AbstractModule
      */
     public function getBlockSetting(int $block_id, string $setting_name, string $default_value = ''): string
     {
-        $setting_value = Database::prepare(
-            "SELECT setting_value FROM `##block_setting` WHERE block_id = :block_id AND setting_name = :setting_name"
-        )->execute([
-            'block_id'     => $block_id,
-            'setting_name' => $setting_name,
-        ])->fetchOne();
+        $setting_value = DB::table('block_setting')
+            ->where('block_id', '=', $block_id)
+            ->where('setting_name', '=', $setting_name)
+            ->value('setting_value');
 
         return $setting_value ?? $default_value;
     }
@@ -84,11 +81,10 @@ abstract class AbstractModule
      */
     public function setBlockSetting(int $block_id, string $setting_name, string $setting_value): self
     {
-        Database::prepare(
-            "REPLACE INTO `##block_setting` (block_id, setting_name, setting_value) VALUES (:block_id, :setting_name, :setting_value)"
-        )->execute([
+        DB::table('block_setting')->updateOrInsert([
             'block_id'      => $block_id,
             'setting_name'  => $setting_name,
+        ], [
             'setting_value' => $setting_value,
         ]);
 
@@ -170,27 +166,14 @@ abstract class AbstractModule
     {
         $this->loadAllSettings();
 
-        if (!array_key_exists($setting_name, $this->settings)) {
-            Database::prepare(
-                "INSERT INTO `##module_setting` (module_name, setting_name, setting_value) VALUES (?, ?, ?)"
-            )->execute([
-                $this->getName(),
-                $setting_name,
-                $setting_value,
-            ]);
+        DB::table('module_setting')->updateOrInsert([
+            'module_name'  => $this->getName(),
+            'setting_name' => $setting_name,
+        ], [
+            'setting_value' => $setting_value,
+        ]);
 
-            $this->settings[$setting_name] = $setting_value;
-        } elseif ($setting_value !== $this->getPreference($setting_name)) {
-            Database::prepare(
-                "UPDATE `##module_setting` SET setting_value = ? WHERE module_name = ? AND setting_name = ?"
-            )->execute([
-                $setting_value,
-                $this->getName(),
-                $setting_name,
-            ]);
-
-            $this->settings[$setting_name] = $setting_value;
-        }
+        $this->settings[$setting_name] = $setting_value;
 
         return $this;
     }
@@ -205,13 +188,11 @@ abstract class AbstractModule
      */
     public function getAccessLevel(Tree $tree, $component)
     {
-        $access_level = Database::prepare(
-            "SELECT access_level FROM `##module_privacy` WHERE gedcom_id = :gedcom_id AND module_name = :module_name AND component = :component"
-        )->execute([
-            'gedcom_id'   => $tree->id(),
-            'module_name' => $this->getName(),
-            'component'   => $component,
-        ])->fetchOne();
+        $access_level = DB::table('module_privacy')
+            ->where('gedcom_id', '=', $tree->id())
+            ->where('module_name', '=', $this->getName())
+            ->where('component', '=', $component)
+            ->value('access_level');
 
         if ($access_level === null) {
             return $this->defaultAccessLevel();
