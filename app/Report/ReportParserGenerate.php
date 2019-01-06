@@ -1906,11 +1906,6 @@ class ReportParserGenerate extends ReportParserBase
                                 $query->where($attr . '.d_julianday1', '>=', $date->minimumJulianDay());
                             }
 
-                            if ($sortby === $match[1]) {
-                                $sortby = '';
-                                $query->orderBy($attr . '.d_julianday1');
-                            }
-
                             // This filter has been fully processed
                             unset($attrs[$attr]);
                         } elseif (preg_match('/^NAME CONTAINS (.*)$/', $value, $match)) {
@@ -1988,11 +1983,6 @@ class ReportParserGenerate extends ReportParserBase
                                 $query->where($attr . '.d_julianday2', '<=', $date->maximumJulianDay());
                             } else {
                                 $query->where($attr . '.d_julianday1', '>=', $date->minimumJulianDay());
-                            }
-
-                            if ($sortby === $match[1]) {
-                                $sortby = '';
-                                $query->orderBy($attr . '.d_julianday1');
                             }
 
                             // This filter has been fully processed
