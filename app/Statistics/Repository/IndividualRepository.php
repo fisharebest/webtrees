@@ -853,7 +853,7 @@ class IndividualRepository
     }
 
     /**
-     * Create a chart of birth places.
+     * Get a list of birth dates.
      *
      * @param bool $sex
      * @param int  $year1
@@ -909,7 +909,7 @@ class IndividualRepository
     }
 
     /**
-     * Create a chart of death places.
+     * Get a list of death dates.
      *
      * @param bool $sex
      * @param int  $year1

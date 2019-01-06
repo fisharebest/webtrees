@@ -21,7 +21,7 @@ use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Statistics\Helper\Country;
 use Fisharebest\Webtrees\Statistics\AbstractGoogle;
-use Fisharebest\Webtrees\Statistics\Places;
+use Fisharebest\Webtrees\Statistics\Repository\PlaceRepository;
 use Fisharebest\Webtrees\Statistics\Repository\IndividualRepository;
 use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
@@ -39,7 +39,7 @@ class ChartDistribution extends AbstractGoogle
     /**
      * @var Country
      */
-    private $country;
+    private $countryHelper;
 
     /**
      * @var IndividualRepository
@@ -47,9 +47,9 @@ class ChartDistribution extends AbstractGoogle
     private $individualRepository;
 
     /**
-     * @var Places
+     * @var PlaceRepository
      */
-    private $places;
+    private $placeRepository;
 
     /**
      * Constructor.
@@ -59,14 +59,15 @@ class ChartDistribution extends AbstractGoogle
     public function __construct(Tree $tree)
     {
         $this->tree                 = $tree;
-        $this->country              = new Country();
+        $this->countryHelper        = new Country();
         $this->individualRepository = new IndividualRepository($tree);
-        $this->places               = new Places($tree);
+        $this->placeRepository      = new PlaceRepository($tree);
     }
 
     /**
      * Create a chart showing where events occurred.
      *
+     * @param int    $tot_pl      The total number of places
      * @param string $chart_shows
      * @param string $chart_type
      * @param string $surname
@@ -74,6 +75,7 @@ class ChartDistribution extends AbstractGoogle
      * @return string
      */
     public function chartDistribution(
+        int $tot_pl,
         string $chart_shows = 'world',
         string $chart_type  = '',
         string $surname     = ''
@@ -84,18 +86,18 @@ class ChartDistribution extends AbstractGoogle
         $WT_STATS_MAP_X        = Theme::theme()->parameter('distribution-chart-x');
         $WT_STATS_MAP_Y        = Theme::theme()->parameter('distribution-chart-y');
 
-        if ($this->totalPlacesQuery() === 0) {
+        if ($tot_pl === 0) {
             return '';
         }
 
-        $countries = $this->country->getAllCountries();
+        $countries = $this->countryHelper->getAllCountries();
 
         // Get the country names for each language
         $country_to_iso3166 = [];
         foreach (I18N::activeLocales() as $locale) {
             I18N::init($locale->languageTag());
 
-            foreach ($this->country->iso3166() as $three => $two) {
+            foreach ($this->countryHelper->iso3166() as $three => $two) {
                 $country_to_iso3166[$three]             = $two;
                 $country_to_iso3166[$countries[$three]] = $two;
             }
@@ -146,7 +148,7 @@ class ChartDistribution extends AbstractGoogle
                 $chart_title = I18N::translate('Birth by country');
                 // Count how many people were born in each country
                 $surn_countries = [];
-                $b_countries    = $this->places->statsPlaces('INDI', 'BIRT', 0, true);
+                $b_countries    = $this->placeRepository->statsPlaces('INDI', 'BIRT', 0, true);
                 foreach ($b_countries as $place => $count) {
                     $country = $place;
                     if (array_key_exists($country, $country_to_iso3166)) {
@@ -163,7 +165,7 @@ class ChartDistribution extends AbstractGoogle
                 $chart_title = I18N::translate('Death by country');
                 // Count how many people were death in each country
                 $surn_countries = [];
-                $d_countries    = $this->places->statsPlaces('INDI', 'DEAT', 0, true);
+                $d_countries    = $this->placeRepository->statsPlaces('INDI', 'DEAT', 0, true);
                 foreach ($d_countries as $place => $count) {
                     $country = $place;
                     if (array_key_exists($country, $country_to_iso3166)) {
@@ -180,7 +182,7 @@ class ChartDistribution extends AbstractGoogle
                 $chart_title = I18N::translate('Marriage by country');
                 // Count how many families got marriage in each country
                 $surn_countries = [];
-                $m_countries    = $this->places->statsPlaces('FAM');
+                $m_countries    = $this->placeRepository->statsPlaces('FAM');
                 // webtrees uses 3 letter country codes and localised country names, but google uses 2 letter codes.
                 foreach ($m_countries as $place) {
                     $country = $place->country;
@@ -199,7 +201,7 @@ class ChartDistribution extends AbstractGoogle
                 $chart_title = I18N::translate('Individual distribution chart');
                 // Count how many people have events in each country
                 $surn_countries = [];
-                $a_countries    = $this->places->statsPlaces('INDI');
+                $a_countries    = $this->placeRepository->statsPlaces('INDI');
                 // webtrees uses 3 letter country codes and localised country names, but google uses 2 letter codes.
                 foreach ($a_countries as $place) {
                     $country = $place->country;
@@ -234,18 +236,5 @@ class ChartDistribution extends AbstractGoogle
                 'WT_STATS_CHART_COLOR3' => $WT_STATS_CHART_COLOR3,
             ]
         );
-    }
-
-    /**
-     * Count total places.
-     *
-     * @return int
-     */
-    private function totalPlacesQuery(): int
-    {
-        return
-            (int) Database::prepare("SELECT COUNT(*) FROM `##places` WHERE p_file=?")
-                ->execute([$this->tree->id()])
-                ->fetchOne();
     }
 }

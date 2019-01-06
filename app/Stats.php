@@ -20,8 +20,6 @@ namespace Fisharebest\Webtrees;
 use Fisharebest\Webtrees\Functions\FunctionsDate;
 use Fisharebest\Webtrees\Module\ModuleBlockInterface;
 use Fisharebest\Webtrees\Module\ModuleInterface;
-use Fisharebest\Webtrees\Statistics\BirthPlaces;
-use Fisharebest\Webtrees\Statistics\DeathPlaces;
 use Fisharebest\Webtrees\Statistics\Google;
 use Fisharebest\Webtrees\Statistics\Helper\Country;
 use Fisharebest\Webtrees\Statistics\Helper\Sql;
@@ -46,6 +44,7 @@ use Fisharebest\Webtrees\Statistics\Repository\Interfaces\MediaRepositoryInterfa
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\MessageRepositoryInterface;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\NewsRepositoryInterface;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\NoteRepositoryInterface;
+use Fisharebest\Webtrees\Statistics\Repository\Interfaces\PlaceRepositoryInterface;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\RepositoryRepositoryInterface;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\ServerRepositoryInterface;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\SexRepositoryInterface;
@@ -57,6 +56,7 @@ use Fisharebest\Webtrees\Statistics\Repository\MediaRepository;
 use Fisharebest\Webtrees\Statistics\Repository\MessageRepository;
 use Fisharebest\Webtrees\Statistics\Repository\NewsRepository;
 use Fisharebest\Webtrees\Statistics\Repository\NoteRepository;
+use Fisharebest\Webtrees\Statistics\Repository\PlaceRepository;
 use Fisharebest\Webtrees\Statistics\Repository\RepositoryRepository;
 use Fisharebest\Webtrees\Statistics\Repository\ServerRepository;
 use Fisharebest\Webtrees\Statistics\Repository\SexRepository;
@@ -89,7 +89,8 @@ class Stats implements
     NewsRepositoryInterface,
     MessageRepositoryInterface,
     ContactRepositoryInterface,
-    FamilyDatesRepositoryInterface
+    FamilyDatesRepositoryInterface,
+    PlaceRepositoryInterface
 {
     /** @var Tree Generate statistics for a specified tree. */
     private $tree;
@@ -213,6 +214,11 @@ class Stats implements
     private $familyDatesRepository;
 
     /**
+     * @var PlaceRepositoryInterface
+     */
+    private $placeRepository;
+
+    /**
      * Create the statistics for a tree.
      *
      * @param Tree $tree Generate statistics for this tree
@@ -240,6 +246,7 @@ class Stats implements
         $this->newsRepository        = new NewsRepository($tree);
         $this->messageRepository     = new MessageRepository();
         $this->contactRepository     = new ContactRepository($tree);
+        $this->placeRepository       = new PlaceRepository($tree);
     }
 
     /**
@@ -1059,25 +1066,10 @@ class Stats implements
      * @param bool   $country
      *
      * @return int[]|stdClass[]
-     *
-     * @deprecated Use \Fisharebest\Webtrees\Statistics\Places::statsPlaces instead
      */
-    public function statsPlaces($what = 'ALL', $fact = '', $parent = 0, $country = false): array
+    public function statsPlaces(string $what = 'ALL', string $fact = '', int $parent = 0, bool $country = false): array
     {
-        return (new Places($this->tree))->statsPlaces($what, $fact, $parent, $country);
-    }
-
-    /**
-     * Count total places.
-     *
-     * @return int
-     */
-    private function totalPlacesQuery(): int
-    {
-        return
-            (int) Database::prepare("SELECT COUNT(*) FROM `##places` WHERE p_file=?")
-                ->execute([$this->tree->id()])
-                ->fetchOne();
+        return $this->placeRepository->statsPlaces($what, $fact, $parent, $country);
     }
 
     /**
@@ -1087,7 +1079,7 @@ class Stats implements
      */
     public function totalPlaces(): string
     {
-        return I18N::number($this->totalPlacesQuery());
+        return $this->placeRepository->totalPlaces();
     }
 
     /**
@@ -1104,8 +1096,7 @@ class Stats implements
         string $chart_type  = '',
         string $surname     = ''
     ) : string {
-        return (new Google\ChartDistribution($this->tree))
-            ->chartDistribution($chart_shows, $chart_type, $surname);
+        return $this->placeRepository->chartDistribution($chart_shows, $chart_type, $surname);
     }
 
     /**
@@ -1115,63 +1106,7 @@ class Stats implements
      */
     public function commonCountriesList(): string
     {
-        $countries = $this->statsPlaces();
-
-        if (empty($countries)) {
-            return '';
-        }
-
-        $top10 = [];
-        $i     = 1;
-
-        // Get the country names for each language
-        $country_names = [];
-        foreach (I18N::activeLocales() as $locale) {
-            I18N::init($locale->languageTag());
-            $all_countries = $this->countryHelper->getAllCountries();
-            foreach ($all_countries as $country_code => $country_name) {
-                $country_names[$country_name] = $country_code;
-            }
-        }
-
-        I18N::init(WT_LOCALE);
-
-        $all_db_countries = [];
-        foreach ($countries as $place) {
-            $country = trim($place->country);
-            if (array_key_exists($country, $country_names)) {
-                if (!isset($all_db_countries[$country_names[$country]][$country])) {
-                    $all_db_countries[$country_names[$country]][$country] = (int) $place->tot;
-                } else {
-                    $all_db_countries[$country_names[$country]][$country] += (int) $place->tot;
-                }
-            }
-        }
-        // get all the user’s countries names
-        $all_countries = $this->countryHelper->getAllCountries();
-
-        foreach ($all_db_countries as $country_code => $country) {
-            foreach ($country as $country_name => $tot) {
-                $tmp     = new Place($country_name, $this->tree);
-
-                $top10[] = [
-                    'place' => $tmp,
-                    'count' => $tot,
-                    'name'  => $all_countries[$country_code],
-                ];
-            }
-
-            if ($i++ === 10) {
-                break;
-            }
-        }
-
-        return view(
-            'statistics/other/top10-list',
-            [
-                'records' => $top10,
-            ]
-        );
+        return $this->placeRepository->commonCountriesList();
     }
 
     /**
@@ -1181,7 +1116,7 @@ class Stats implements
      */
     public function commonBirthPlacesList(): string
     {
-        return (string) new BirthPlaces($this->tree);
+        return $this->placeRepository->commonBirthPlacesList();
     }
 
     /**
@@ -1191,7 +1126,7 @@ class Stats implements
      */
     public function commonDeathPlacesList(): string
     {
-        return (string) new DeathPlaces($this->tree);
+        return $this->placeRepository->commonDeathPlacesList();
     }
 
     /**
@@ -1201,7 +1136,7 @@ class Stats implements
      */
     public function commonMarriagePlacesList(): string
     {
-        return (string) new MarriagePlaces($this->tree);
+        return $this->placeRepository->commonMarriagePlacesList();
     }
 
     /**
