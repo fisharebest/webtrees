@@ -85,8 +85,10 @@ class UserWelcomeModule extends AbstractModule implements ModuleBlockInterface
         ];
         $content = view('modules/user_welcome/welcome', ['links' => $links]);
 
+        $real_name = '<span dir="auto">' . e(Auth::user()->getRealName()) . '</span>';
+
         /* I18N: A %s is the user’s name */
-        $title = I18N::translate('Welcome %s', Auth::user()->getRealName());
+        $title = I18N::translate('Welcome %s', $real_name);
 
         if ($ctype !== '') {
             return view('modules/block-template', [
