@@ -1966,78 +1966,90 @@ class ReportParserGenerate extends ReportParserBase
                 break;
 
             case 'family':
-                $sql_select   = "SELECT f_id AS xref, f_gedcom AS gedcom FROM `##families`";
-                $sql_join     = "";
-                $sql_where    = " WHERE f_file = :tree_id";
-                $sql_order_by = "";
-                $sql_params   = ['tree_id' => $this->tree->id()];
+                $query = DB::table('families')
+                    ->where('f_file', '=', $this->tree->id())
+                    ->select(['f_id AS xref', 'f_gedcom AS gedcom'])
+                    ->distinct();
+
                 foreach ($attrs as $attr => $value) {
                     if (strpos($attr, 'filter') === 0 && $value) {
                         $value = $this->substituteVars($value, false);
                         // Convert the various filters into SQL
                         if (preg_match('/^(\w+):DATE (LTE|GTE) (.+)$/', $value, $match)) {
-                            $sql_join                   .= " JOIN `##dates` AS {$attr} ON ({$attr}.d_file=f_file AND {$attr}.d_gid=f_id)";
-                            $sql_where                  .= " AND {$attr}.d_fact = :{$attr}fact";
-                            $sql_params[$attr . 'fact'] = $match[1];
-                            $date                       = new Date($match[3]);
+                            $query->join('dates AS ' . $attr, function (JoinClause $join) use ($attr): void {
+                                $join
+                                    ->on($attr . '.d_gid', '=', 'f_id')
+                                    ->on($attr . '.d_file', '=', 'f_file');
+                            });
+
+                            $query->where($attr . '.d_fact', '=', $match[1]);
+
+                            $date = new Date($match[3]);
+
                             if ($match[2] === 'LTE') {
-                                $sql_where                  .= " AND {$attr}.d_julianday2 <= :{$attr}date";
-                                $sql_params[$attr . 'date'] = $date->maximumJulianDay();
+                                $query->where($attr . '.d_julianday2', '<=', $date->maximumJulianDay());
                             } else {
-                                $sql_where                  .= " AND {$attr}.d_julianday1 >= :{$attr}date";
-                                $sql_params[$attr . 'date'] = $date->minimumJulianDay();
+                                $query->where($attr . '.d_julianday1', '>=', $date->minimumJulianDay());
                             }
-                            if ($sortby == $match[1]) {
+
+                            if ($sortby === $match[1]) {
                                 $sortby = '';
-                                $sql_order_by .= ($sql_order_by ? ', ' : ' ORDER BY ') . "{$attr}.d_julianday1";
+                                $query->orderBy($attr . '.d_julianday1');
                             }
-                            unset($attrs[$attr]); // This filter has been fully processed
+
+                            // This filter has been fully processed
+                            unset($attrs[$attr]);
                         } elseif (preg_match('/^REGEXP \/(.+)\//', $value, $match)) {
-                            $sql_where .= " AND f_gedcom REGEXP :{$attr}gedcom";
-                            // PDO helpfully escapes backslashes for us, preventing us from matching "\n1 FACT"
+                            // Convert newline escape sequences to actual new lines
                             $sql_params[$attr . 'gedcom'] = str_replace('\n', "\n", $match[1]);
-                            unset($attrs[$attr]); // This filter has been fully processed
-                        } elseif (preg_match('/^NAME CONTAINS (.+)$/', $value, $match)) {
-                            // Do nothing, unless you have to
-                            if ($match[1] != '' || $sortby === 'NAME') {
-                                $sql_join .= " JOIN `##name` AS {$attr} ON n_file = f_file AND n_id IN (f_husb, f_wife)";
+
+                            $query->where('f_gedcom', 'REGEXP', $match[1]);
+
+                            // This filter has been fully processed
+                            unset($attrs[$attr]);
+                        } elseif (preg_match('/^NAME CONTAINS (.*)$/', $value, $match)) {
+                            if ($match[1] !== '' || $sortby === 'NAME') {
+                                $query->join('name AS ' . $attr, function (JoinClause $join) use ($attr): void {
+                                    $join
+                                        ->on($attr . '.n_file', '=', 'f_file')
+                                        ->where(function (Builder $query) use ($attr): void {
+                                            $query
+                                                ->whereColumn('n_id', '=', 'f_husb')
+                                                ->orWhereColumn('n_id', '=', 'f_wife');
+                                        });
+                                });
                                 // Search the DB only if there is any name supplied
                                 if ($match[1] != '') {
                                     $names = explode(' ', $match[1]);
                                     foreach ($names as $n => $name) {
-                                        $sql_where .= " AND {$attr}.n_full LIKE CONCAT('%', :{$attr}name{$n}, '%')";
-                                        $sql_params[$attr . 'name' . $n] = $name;
+                                        $query->where($attr . '.n_full', 'LIKE', '%' . $name . '%');
                                     }
                                 }
-                                // Let the DB do the name sorting even when no name was entered
-                                if ($sortby === 'NAME') {
-                                    $sortby = '';
-                                    $sql_order_by .= ($sql_order_by ? ', ' : ' ORDER BY ') . "{$attr}.n_sort";
-                                }
                             }
-                            unset($attrs[$attr]); // This filter has been fully processed
+
+                            // This filter has been fully processed
+                            unset($attrs[$attr]);
                         } elseif (preg_match('/^(?:\w+):PLAC CONTAINS (.+)$/', $value, $match)) {
-                            $sql_join                    .= " JOIN `##places` AS {$attr}a ON ({$attr}a.p_file=f_file)";
-                            $sql_join                    .= " JOIN `##placelinks` AS {$attr}b ON ({$attr}a.p_file={$attr}b.pl_file AND {$attr}b.pl_p_id={$attr}a.p_id AND {$attr}b.pl_gid=f_id)";
-                            $sql_where                   .= " AND {$attr}a.p_place LIKE CONCAT('%', :{$attr}place, '%')";
-                            $sql_params[$attr . 'place'] = $match[1];
-                        // Don't unset this filter. This is just initial filtering
+                            $query
+                                ->join('places AS ' . $attr . 'a', 'p_file', '=', 'f_file')
+                                ->join('placelinks AS ' . $attr . 'b', function (JoinClause $join) use ($attr): void {
+                                    $join
+                                        ->on($attr . 'b.pl_file', '=', $attr . 'a.p_file')
+                                        ->on($attr . 'b.pl_p_id', '=', $attr . 'a.p_id');
+                                })
+                                ->where($attr . 'a.p_place', 'LIKE', '%' . $match[1] . '%');
+
+                            // Don't unset this filter. This is just initial filtering for performance
                         } elseif (preg_match('/^(\w*):*(\w*) CONTAINS (.+)$/', $value, $match)) {
-                            $sql_where .= " AND f_gedcom LIKE CONCAT('%', :{$attr}contains1, '%', :{$attr}contains2, '%', :{$attr}contains3, '%')";
-                            $sql_params[$attr . 'contains1'] = $match[1];
-                            $sql_params[$attr . 'contains2'] = $match[2];
-                            $sql_params[$attr . 'contains3'] = $match[3];
-                            // Don't unset this filter. This is just initial filtering
+                            $query->where('f_gedcom', 'LIKE', '%' . $match[1] . '%' . $match[2] . '%' . $match[3] . '%');
+                            // Don't unset this filter. This is just initial filtering for performance
                         }
                     }
                 }
 
                 $this->list = [];
-                $rows       = Database::prepare(
-                    $sql_select . $sql_join . $sql_where . $sql_order_by
-                )->execute($sql_params)->fetchAll();
 
-                foreach ($rows as $row) {
+                foreach ($query->get() as $row) {
                     $this->list[$row->xref] = Family::getInstance($row->xref, $this->tree, $row->gedcom);
                 }
                 break;
