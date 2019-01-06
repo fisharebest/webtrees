@@ -121,14 +121,11 @@ class UpgradeService
      */
     private function serverParameters(): array
     {
-        $mysql_version = Database::prepare("SHOW VARIABLES LIKE 'version'")->fetchOneRow();
-
         $operating_system = DIRECTORY_SEPARATOR === '/' ? 'u' : 'w';
 
         return [
             'w' => Webtrees::VERSION,
             'p' => PHP_VERSION,
-            'm' => $mysql_version->value,
             'o' => $operating_system,
         ];
     }
