@@ -63,12 +63,11 @@ class Media extends GedcomRecord
     protected function canShowByType(int $access_level): bool
     {
         // Hide media objects if they are attached to private records
-        $linked_ids = Database::prepare(
-            "SELECT l_from FROM `##link` WHERE l_to = ? AND l_file = ?"
-        )->execute([
-            $this->xref,
-            $this->tree->id(),
-        ])->fetchOneColumn();
+        $linked_ids = DB::table('link')
+            ->where('l_file', '=', $this->tree->id())
+            ->where('l_to', '=', $this->xref)
+            ->pluck('l_from');
+
         foreach ($linked_ids as $linked_id) {
             $linked_record = GedcomRecord::getInstance($linked_id, $this->tree);
             if ($linked_record && !$linked_record->canShow($access_level)) {
