@@ -158,7 +158,7 @@ class AdminLocationController extends AbstractBaseController
                 'pl_icon'      => $icon,
             ]);
         } else {
-            DB::table('place_location')
+            DB::table('placelocation')
                 ->where('pl_id', '=', $place_id)
                 ->update([
                     'pl_place' => $request->get('new_place_name'),
