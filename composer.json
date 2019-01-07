@@ -123,10 +123,5 @@
         "webtrees:mo": "Compile the language files (*.mo)",
         "webtrees:po": "Update the language (webtrees.pot, *.po)",
         "webtrees:tools": "Install the tools needed to run webtrees-check"
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "2.0-dev"
-        }
     }
 }
