@@ -18,7 +18,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Exceptions\FamilyNotFoundException;
 use Fisharebest\Webtrees\Exceptions\IndividualNotFoundException;
 use Fisharebest\Webtrees\Exceptions\MediaNotFoundException;
@@ -177,28 +176,6 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
 
         // GEDCOM file header
         $filetext = FunctionsExport::gedcomHeader($tree, $convert ? 'ANSI' : 'UTF-8');
-
-        // Include SUBM/SUBN records, if they exist
-        $subn =
-            Database::prepare("SELECT o_gedcom FROM `##other` WHERE o_type=? AND o_file=?")
-                ->execute([
-                    'SUBN',
-                    $tree->name(),
-                ])
-                ->fetchOne();
-        if ($subn) {
-            $filetext .= $subn . "\n";
-        }
-        $subm =
-            Database::prepare("SELECT o_gedcom FROM `##other` WHERE o_type=? AND o_file=?")
-                ->execute([
-                    'SUBM',
-                    $tree->name(),
-                ])
-                ->fetchOne();
-        if ($subm) {
-            $filetext .= $subm . "\n";
-        }
 
         switch ($privatize_export) {
             case 'gedadmin':
