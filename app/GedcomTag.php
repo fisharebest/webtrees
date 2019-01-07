@@ -2413,7 +2413,7 @@ class GedcomTag
     {
         $values = array_map(function (string $keyword): string {
             return self::getFileFormTypeValue($keyword);
-        }, self::OBJE_FILE_FORM_TYPE);
+        }, array_combine(self::OBJE_FILE_FORM_TYPE, self::OBJE_FILE_FORM_TYPE));
 
         uasort($values, '\Fisharebest\Webtrees\I18N::strcasecmp');
 
