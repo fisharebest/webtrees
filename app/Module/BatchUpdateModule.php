@@ -18,7 +18,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
@@ -30,6 +29,7 @@ use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
+use Illuminate\Database\Capsule\Manager as DB;
 use stdClass;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -270,44 +270,49 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface
         foreach ($plugin->getRecordTypesToUpdate() as $type) {
             switch ($type) {
                 case 'INDI':
-                    $tmp += Database::prepare(
-                        "SELECT i_id AS xref, 'INDI' AS type, i_gedcom AS gedcom  FROM `##individuals` WHERE i_file = :tree_id"
-                    )->execute([
-                        'tree_id' => $tree->id(),
-                    ])->fetchAll();
+                    $rows = DB::table('individuals')
+                        ->where('i_file', '=', $tree->id())
+                        ->select(['i_id AS xref', DB::raw("'INDI' AS type"), 'i_gedcom AS gedcom'])
+                        ->get();
+
+                    $tmp = array_merge($tmp, $rows->all());
                     break;
 
                 case 'FAM':
-                    $tmp += Database::prepare(
-                        "SELECT f_id AS xref, 'FAM' AS type, f_gedcom AS gedcom  FROM `##families` WHERE f_file = :tree_id"
-                    )->execute([
-                        'tree_id' => $tree->id(),
-                    ])->fetchAll();
+                    $rows = DB::table('families')
+                        ->where('f_file', '=', $tree->id())
+                        ->select(['f_id AS xref', DB::raw("'FAM' AS type"), 'f_gedcom AS gedcom'])
+                        ->get();
+
+                    $tmp = array_merge($tmp, $rows->all());
                     break;
 
                 case 'SOUR':
-                    $tmp += Database::prepare(
-                        "SELECT s_id AS xref, 'SOUR' AS type, s_gedcom AS gedcom  FROM `##sources` WHERE s_file = :tree_id"
-                    )->execute([
-                        'tree_id' => $tree->id(),
-                    ])->fetchAll();
+                    $rows = DB::table('sources')
+                        ->where('s_file', '=', $tree->id())
+                        ->select(['s_id AS xref', DB::raw("'SOUR' AS type"), 's_gedcom AS gedcom'])
+                        ->get();
+
+                    $tmp = array_merge($tmp, $rows->all());
                     break;
 
                 case 'OBJE':
-                    $tmp += Database::prepare(
-                        "SELECT m_id AS xref, 'OBJE' AS type, m_gedcom AS gedcom  FROM `##media` WHERE m_file = :tree_id"
-                    )->execute([
-                        'tree_id' => $tree->id(),
-                    ])->fetchAll();
+                    $rows = DB::table('media')
+                        ->where('m_file', '=', $tree->id())
+                        ->select(['m_id AS xref', DB::raw("'OBJE' AS type"), 'm_gedcom AS gedcom'])
+                        ->get();
+
+                    $tmp = array_merge($tmp, $rows->all());
                     break;
 
                 default:
-                    $tmp += Database::prepare(
-                        "SELECT o_id AS xref, 'OBJE' AS type, o_gedcom AS gedcom  FROM `##other` WHERE o_file = :tree_id AND o_type = :type"
-                    )->execute([
-                        'tree_id' => $tree->id(),
-                        'type'    => $type,
-                    ])->fetchAll();
+                    $rows = DB::table('other')
+                        ->where('o_file', '=', $tree->id())
+                        ->where('o_type', '=', $type)
+                        ->select(['o_id AS xref', 'o_type AS type', 'o_gedcom AS gedcom'])
+                        ->get();
+
+                    $tmp = array_merge($tmp, $rows->all());
                     break;
             }
         }
