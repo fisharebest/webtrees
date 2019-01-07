@@ -67,13 +67,8 @@ class Database
 
         // Create the underlying PDO object.
         self::$pdo = new PDO($dsn, $config['dbuser'], $config['dbpass'], self::PDO_OPTIONS);
-
-        // Add logging/debugging.
-        self::$pdo = DebugBar::initPDO(self::$pdo);
-
         self::$pdo->exec("SET NAMES 'utf8' COLLATE 'utf8_unicode_ci'");
         self::$pdo->prepare("SET time_zone = :time_zone")->execute(['time_zone' => date('P')]);
-
         self::$instance = new self();
 
         $capsule = new DB();
@@ -91,6 +86,9 @@ class Database
             'enigne'         => 'InnoDB',
         ]);
         $capsule->setAsGlobal();
+
+        // Add logging/debugging.
+        DebugBar::initPDO($capsule->getConnection()->getPdo());
 
         self::registerMacros();
     }
