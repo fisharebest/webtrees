@@ -110,7 +110,7 @@ class Stats implements
     ];
 
     /**
-     * @var GedcomRepositoryInterface
+     * @var GedcomRepository
      */
     private $gedcomRepository;
 
@@ -130,82 +130,82 @@ class Stats implements
     private $sourceRepository;
 
     /**
-     * @var NoteRepositoryInterface
+     * @var NoteRepository
      */
     private $noteRepository;
 
     /**
-     * @var MediaRepositoryInterface
+     * @var MediaRepository
      */
     private $mediaRepository;
 
     /**
-     * @var EventRepositoryInterface
+     * @var EventRepository
      */
     private $eventRepository;
 
     /**
-     * @var SexRepositoryInterface
+     * @var SexRepository
      */
     private $sexRepository;
 
     /**
-     * @var UserRepositoryInterface
+     * @var UserRepository
      */
     private $userRepository;
 
     /**
-     * @var ServerRepositoryInterface
+     * @var ServerRepository
      */
     private $serverRepository;
 
     /**
-     * @var BrowserRepositoryInterface
+     * @var BrowserRepository
      */
     private $browserRepository;
 
     /**
-     * @var HitCountRepositoryInterface
+     * @var HitCountRepository
      */
     private $hitCountRepository;
 
     /**
-     * @var RepositoryRepositoryInterface
+     * @var RepositoryRepository
      */
     private $repositoryRepository;
 
     /**
-     * @var LatestRepositoryInterface
+     * @var LatestRepository
      */
     private $latestRepository;
 
     /**
-     * @var FavoritesRepositoryInterface
+     * @var FavoritesRepository
      */
     private $favoritesRepository;
 
     /**
-     * @var NewsRepositoryInterface
+     * @var NewsRepository
      */
     private $newsRepository;
 
     /**
-     * @var MessageRepositoryInterface
+     * @var MessageRepository
      */
     private $messageRepository;
 
     /**
-     * @var ContactRepositoryInterface
+     * @var ContactRepository
      */
     private $contactRepository;
 
     /**
-     * @var FamilyDatesRepositoryInterface
+     * @var FamilyDatesRepository
      */
     private $familyDatesRepository;
 
     /**
-     * @var PlaceRepositoryInterface
+     * @var PlaceRepository
      */
     private $placeRepository;
 
@@ -1645,9 +1645,7 @@ class Stats implements
     }
 
     /**
-     * Find the earliest event.
-     *
-     * @return string
+     * @inheritdoc
      */
     public function firstEvent(): string
     {
@@ -1655,9 +1653,7 @@ class Stats implements
     }
 
     /**
-     * Find the year of the earliest event.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function firstEventYear(): string
     {
@@ -1665,9 +1661,7 @@ class Stats implements
     }
 
     /**
-     * Find the type of the earliest event.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function firstEventType(): string
     {
@@ -1675,9 +1669,7 @@ class Stats implements
     }
 
     /**
-     * Find the name of the individual with the earliest event.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function firstEventName(): string
     {
@@ -1685,9 +1677,7 @@ class Stats implements
     }
 
     /**
-     * Find the location of the earliest event.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function firstEventPlace(): string
     {
@@ -1695,9 +1685,7 @@ class Stats implements
     }
 
     /**
-     * Find the latest event.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function lastEvent(): string
     {
@@ -1705,9 +1693,7 @@ class Stats implements
     }
 
     /**
-     * Find the year of the latest event.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function lastEventYear(): string
     {
@@ -1715,9 +1701,7 @@ class Stats implements
     }
 
     /**
-     * Find the type of the latest event.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function lastEventType(): string
     {
@@ -1725,9 +1709,7 @@ class Stats implements
     }
 
     /**
-     * Find the name of the individual with the latest event.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function lastEventName(): string
     {
@@ -1735,9 +1717,7 @@ class Stats implements
     }
 
     /**
-     * FInd the location of the latest event.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function lastEventPlace(): string
     {

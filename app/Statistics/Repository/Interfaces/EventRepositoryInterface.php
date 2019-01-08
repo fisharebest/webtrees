@@ -18,68 +18,77 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Statistics\Repository\Interfaces;
 
 /**
- * Statistics submodule providing all EVENT related methods.
+ * Statistics repository providing event related methods.
  */
 interface EventRepositoryInterface
 {
     /**
-     * Count the number of births.
+     * Count the number of events (with dates).
+     *
+     * @param string[] $events
+     *
+     * @return string
+     */
+    public function totalEvents(array $events = []): string;
+
+    /**
+     * Count the number of births events (BIRT, CHR, BAPM, ADOP).
      *
      * @return string
      */
     public function totalEventsBirth(): string;
 
     /**
-     * Count the number of births.
+     * Count the number of births (BIRT).
      *
      * @return string
      */
     public function totalBirths(): string;
 
     /**
-     * Count the number of deaths.
+     * Count the number of death events (DEAT, BURI, CREM).
      *
      * @return string
      */
     public function totalEventsDeath(): string;
 
     /**
-     * Count the number of deaths.
+     * Count the number of deaths (DEAT).
      *
      * @return string
      */
     public function totalDeaths(): string;
 
     /**
-     * Count the number of marriages.
+     * Count the number of marriage events (MARR, _NMR).
      *
      * @return string
      */
     public function totalEventsMarriage(): string;
 
     /**
-     * Count the number of marriages.
+     * Count the number of marriages (MARR).
      *
      * @return string
      */
     public function totalMarriages(): string;
 
     /**
-     * Count the number of divorces.
+     * Count the number of divorce events (DIV, ANUL, _SEPR).
      *
      * @return string
      */
     public function totalEventsDivorce(): string;
 
     /**
-     * Count the number of divorces.
+     * Count the number of divorces (DIV).
      *
      * @return string
      */
     public function totalDivorces(): string;
 
     /**
-     * Count the number of other events.
+     * Count the number of other events (not birth, death, marriage or divorce related).
      *
      * @return string
      */
@@ -93,39 +102,18 @@ interface EventRepositoryInterface
     public function firstEvent(): string;
 
     /**
-     * Find the year of the earliest event.
-     *
-     * @return string
-     */
-    public function firstEventYear(): string;
-
-    /**
-     * Find the type of the earliest event.
-     *
-     * @return string
-     */
-    public function firstEventType(): string;
-
-    /**
-     * Find the name of the individual with the earliest event.
-     *
-     * @return string
-     */
-    public function firstEventName(): string;
-
-    /**
-     * Find the location of the earliest event.
-     *
-     * @return string
-     */
-    public function firstEventPlace(): string;
-
-    /**
      * Find the latest event.
      *
      * @return string
      */
     public function lastEvent(): string;
+
+    /**
+     * Find the year of the earliest event.
+     *
+     * @return string
+     */
+    public function firstEventYear(): string;
 
     /**
      * Find the year of the latest event.
@@ -135,11 +123,25 @@ interface EventRepositoryInterface
     public function lastEventYear(): string;
 
     /**
+     * Find the type of the earliest event.
+     *
+     * @return string
+     */
+    public function firstEventType(): string;
+
+    /**
      * Find the type of the latest event.
      *
      * @return string
      */
     public function lastEventType(): string;
+
+    /**
+     * Find the name of the individual with the earliest event.
+     *
+     * @return string
+     */
+    public function firstEventName(): string;
 
     /**
      * Find the name of the individual with the latest event.
@@ -149,7 +151,14 @@ interface EventRepositoryInterface
     public function lastEventName(): string;
 
     /**
-     * FInd the location of the latest event.
+     * Find the location of the earliest event.
+     *
+     * @return string
+     */
+    public function firstEventPlace(): string;
+
+    /**
+     * Find the location of the latest event.
      *
      * @return string
      */

@@ -26,9 +26,11 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\EventRepositoryInterface;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Query\Builder;
 
 /**
- * Statistics submodule providing all EVENT related methods.
+ * Statistics repository providing event related methods.
  */
 class EventRepository implements EventRepositoryInterface
 {
@@ -85,11 +87,7 @@ class EventRepository implements EventRepositoryInterface
     }
 
     /**
-     * Count the number of events (with dates).
-     *
-     * @param string[] $events
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalEvents(array $events = []): string
     {
@@ -99,9 +97,7 @@ class EventRepository implements EventRepositoryInterface
     }
 
     /**
-     * Count the number of births events (BIRT, CHR, BAPM, ADOP).
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalEventsBirth(): string
     {
@@ -109,9 +105,7 @@ class EventRepository implements EventRepositoryInterface
     }
 
     /**
-     * Count the number of births (BIRT).
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalBirths(): string
     {
@@ -119,9 +113,7 @@ class EventRepository implements EventRepositoryInterface
     }
 
     /**
-     * Count the number of death events (DEAT, BURI, CREM).
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalEventsDeath(): string
     {
@@ -129,9 +121,7 @@ class EventRepository implements EventRepositoryInterface
     }
 
     /**
-     * Count the number of deaths (DEAT).
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalDeaths(): string
     {
@@ -139,9 +129,7 @@ class EventRepository implements EventRepositoryInterface
     }
 
     /**
-     * Count the number of marriage events (MARR, _NMR).
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalEventsMarriage(): string
     {
@@ -149,9 +137,7 @@ class EventRepository implements EventRepositoryInterface
     }
 
     /**
-     * Count the number of marriages (MARR).
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalMarriages(): string
     {
@@ -159,9 +145,7 @@ class EventRepository implements EventRepositoryInterface
     }
 
     /**
-     * Count the number of divorce events (DIV, ANUL, _SEPR).
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalEventsDivorce(): string
     {
@@ -169,9 +153,7 @@ class EventRepository implements EventRepositoryInterface
     }
 
     /**
-     * Count the number of divorces (DIV).
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalDivorces(): string
     {
@@ -179,294 +161,253 @@ class EventRepository implements EventRepositoryInterface
     }
 
     /**
-     * Count the number of other events.
+     * Retursn the list of common facts used query the data.
      *
-     * @return string
+     * @return array
      */
-    public function totalEventsOther(): string
+    private function getCommonFacts(): array
     {
-        $facts = array_merge(
+        // The list of facts used to limit the query result
+        return array_merge(
             Gedcom::BIRTH_EVENTS,
             Gedcom::MARRIAGE_EVENTS,
             Gedcom::DIVORCE_EVENTS,
             Gedcom::DEATH_EVENTS
         );
+    }
 
+    /**
+     * @inheritDoc
+     */
+    public function totalEventsOther(): string
+    {
         $no_facts = array_map(
             function (string $fact) {
                 return '!' . $fact;
             },
-            $facts
+            $this->getCommonFacts()
         );
 
         return $this->totalEvents($no_facts);
     }
 
     /**
-     * Returns the first/last event record from the given list of events.
+     * Returns the first/last event record from the given list of event facts.
      *
-     * @param string   $type      The requested result type
-     * @param string   $direction The sorting direction of the query (To return first or last record)
-     * @param string[] $facts     The list of facts used to limit the query result
+     * @param string $direction The sorting direction of the query (To return first or last record)
      *
-     * @return string
+     * @return Model|Builder|object|null
      */
-    private function eventQuery(string $type, string $direction, array $facts): string
+    private function eventQuery(string $direction)
     {
-        $event_types = [
-            'BIRT' => I18N::translate('birth'),
-            'DEAT' => I18N::translate('death'),
-            'MARR' => I18N::translate('marriage'),
-            'ADOP' => I18N::translate('adoption'),
-            'BURI' => I18N::translate('burial'),
-            'CENS' => I18N::translate('census added'),
-        ];
-
         if ($direction !== 'ASC') {
             $direction = 'DESC';
         }
 
-        $row = DB::table('dates')
+        return DB::table('dates')
             ->select(['d_gid as id', 'd_year as year', 'd_fact AS fact', 'd_type AS type'])
             ->where('d_file', '=', $this->tree->id())
             ->where('d_gid', '<>', 'HEAD')
-            ->whereIn('d_fact', $facts)
+            ->whereIn('d_fact', $this->getCommonFacts())
             ->where('d_julianday1', '<>', 0)
             ->orderBy('d_julianday1', $direction)
             ->orderBy('d_type')
             ->first();
-
-        if (!$row) {
-            return '';
-        }
-
-        $record = GedcomRecord::getInstance($row->id, $this->tree);
-
-        switch ($type) {
-            default:
-            case 'full':
-                if ($record && $record->canShow()) {
-                    $result = $record->formatList();
-                } else {
-                    $result = I18N::translate('This information is private and cannot be shown.');
-                }
-                break;
-
-            case 'year':
-                $date   = new Date($row->type . ' ' . $row->year);
-                $result = $date->display();
-                break;
-
-            case 'type':
-                $result = $event_types[$row->fact] ?? GedcomTag::getLabel($row->fact);
-                break;
-
-            case 'name':
-                $result = '<a href="' . e($record->url()) . '">' . $record->getFullName() . '</a>';
-                break;
-
-            case 'place':
-                $fact = $record->getFirstFact($row->fact);
-
-                if ($fact) {
-                    $result = FunctionsPrint::formatFactPlace($fact, true, true, true);
-                } else {
-                    $result = I18N::translate('Private');
-                }
-
-                break;
-        }
-
-        return $result;
     }
 
     /**
-     * Find the earliest event.
+     * Returns the formatted first/last occuring event.
+     *
+     * @param string $direction The sorting direction
      *
      * @return string
+     */
+    private function getFirstLastEvent(string $direction): string
+    {
+        $row = $this->eventQuery($direction);
+
+        if ($row) {
+            $record = GedcomRecord::getInstance($row->id, $this->tree);
+
+            if ($record && $record->canShow()) {
+                return $record->formatList();
+            }
+        }
+
+        return I18N::translate('This information is private and cannot be shown.');
+    }
+
+    /**
+     * @inheritDoc
      */
     public function firstEvent(): string
     {
-        return $this->eventQuery(
-            'full',
-            'ASC',
-            array_merge(
-                Gedcom::BIRTH_EVENTS,
-                Gedcom::MARRIAGE_EVENTS,
-                Gedcom::DIVORCE_EVENTS,
-                Gedcom::DEATH_EVENTS
-            )
-        );
+        return $this->getFirstLastEvent('ASC');
     }
 
     /**
-     * Find the year of the earliest event.
-     *
-     * @return string
-     */
-    public function firstEventYear(): string
-    {
-        return $this->eventQuery(
-            'year',
-            'ASC',
-            array_merge(
-                Gedcom::BIRTH_EVENTS,
-                Gedcom::MARRIAGE_EVENTS,
-                Gedcom::DIVORCE_EVENTS,
-                Gedcom::DEATH_EVENTS
-            )
-        );
-    }
-
-    /**
-     * Find the type of the earliest event.
-     *
-     * @return string
-     */
-    public function firstEventType(): string
-    {
-        return $this->eventQuery(
-            'type',
-            'ASC',
-            array_merge(
-                Gedcom::BIRTH_EVENTS,
-                Gedcom::MARRIAGE_EVENTS,
-                Gedcom::DIVORCE_EVENTS,
-                Gedcom::DEATH_EVENTS
-            )
-        );
-    }
-
-    /**
-     * Find the name of the individual with the earliest event.
-     *
-     * @return string
-     */
-    public function firstEventName(): string
-    {
-        return $this->eventQuery(
-            'name',
-            'ASC',
-            array_merge(
-                Gedcom::BIRTH_EVENTS,
-                Gedcom::MARRIAGE_EVENTS,
-                Gedcom::DIVORCE_EVENTS,
-                Gedcom::DEATH_EVENTS
-            )
-        );
-    }
-
-    /**
-     * Find the location of the earliest event.
-     *
-     * @return string
-     */
-    public function firstEventPlace(): string
-    {
-        return $this->eventQuery(
-            'place',
-            'ASC',
-            array_merge(
-                Gedcom::BIRTH_EVENTS,
-                Gedcom::MARRIAGE_EVENTS,
-                Gedcom::DIVORCE_EVENTS,
-                Gedcom::DEATH_EVENTS
-            )
-        );
-    }
-
-    /**
-     * Find the latest event.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function lastEvent(): string
     {
-        return $this->eventQuery(
-            'full',
-            'DESC',
-            array_merge(
-                Gedcom::BIRTH_EVENTS,
-                Gedcom::MARRIAGE_EVENTS,
-                Gedcom::DIVORCE_EVENTS,
-                Gedcom::DEATH_EVENTS
-            )
-        );
+        return $this->getFirstLastEvent('DESC');
     }
 
     /**
-     * Find the year of the latest event.
+     * Returns the formatted year of the first/last occuring event.
+     *
+     * @param string $direction The sorting direction
      *
      * @return string
+     */
+    private function getFirstLastEventYear(string $direction): string
+    {
+        $row = $this->eventQuery($direction);
+
+        if ($row) {
+            return (new Date($row->type . ' ' . $row->year))
+                ->display();
+        }
+
+        return '';
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function firstEventYear(): string
+    {
+        return $this->getFirstLastEventYear('ASC');
+    }
+
+    /**
+     * @inheritDoc
      */
     public function lastEventYear(): string
     {
-        return $this->eventQuery(
-            'year',
-            'DESC',
-            array_merge(
-                Gedcom::BIRTH_EVENTS,
-                Gedcom::MARRIAGE_EVENTS,
-                Gedcom::DIVORCE_EVENTS,
-                Gedcom::DEATH_EVENTS
-            )
-        );
+        return $this->getFirstLastEventYear('DESC');
     }
 
     /**
-     * Find the type of the latest event.
+     * Returns the formatted type of the first/last occuring event.
+     *
+     * @param string $direction The sorting direction
      *
      * @return string
+     */
+    private function getFirstLastEventType(string $direction): string
+    {
+        $row = $this->eventQuery($direction);
+
+        if ($row) {
+            $event_types = [
+                'BIRT' => I18N::translate('birth'),
+                'DEAT' => I18N::translate('death'),
+                'MARR' => I18N::translate('marriage'),
+                'ADOP' => I18N::translate('adoption'),
+                'BURI' => I18N::translate('burial'),
+                'CENS' => I18N::translate('census added'),
+            ];
+
+            return $event_types[$row->fact] ?? GedcomTag::getLabel($row->fact);
+        }
+
+        return '';
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function firstEventType(): string
+    {
+        return $this->getFirstLastEventType('ASC');
+    }
+
+    /**
+     * @inheritDoc
      */
     public function lastEventType(): string
     {
-        return $this->eventQuery(
-            'type',
-            'DESC',
-            array_merge(
-                Gedcom::BIRTH_EVENTS,
-                Gedcom::MARRIAGE_EVENTS,
-                Gedcom::DIVORCE_EVENTS,
-                Gedcom::DEATH_EVENTS
-            )
-        );
+        return $this->getFirstLastEventType('DESC');
     }
 
     /**
-     * Find the name of the individual with the latest event.
+     * Returns the formatted name of the first/last occuring event.
+     *
+     * @param string $direction The sorting direction
      *
      * @return string
+     */
+    private function getFirstLastEventName(string $direction): string
+    {
+        $row = $this->eventQuery($direction);
+
+        if ($row) {
+            $record = GedcomRecord::getInstance($row->id, $this->tree);
+
+            if ($record) {
+                return '<a href="' . e($record->url()) . '">' . $record->getFullName() . '</a>';
+            }
+        }
+
+        return '';
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function firstEventName(): string
+    {
+        return $this->getFirstLastEventName('ASC');
+    }
+
+    /**
+     * @inheritDoc
      */
     public function lastEventName(): string
     {
-        return $this->eventQuery(
-            'name',
-            'DESC',
-            array_merge(
-                Gedcom::BIRTH_EVENTS,
-                Gedcom::MARRIAGE_EVENTS,
-                Gedcom::DIVORCE_EVENTS,
-                Gedcom::DEATH_EVENTS
-            )
-        );
+        return $this->getFirstLastEventName('DESC');
     }
 
     /**
-     * FInd the location of the latest event.
+     * Returns the formatted place of the first/last occuring event.
+     *
+     * @param string $direction The sorting direction
      *
      * @return string
      */
+    private function getFirstLastEventPlace(string $direction): string
+    {
+        $row = $this->eventQuery($direction);
+
+        if ($row) {
+            $record = GedcomRecord::getInstance($row->id, $this->tree);
+
+            if ($record) {
+                $fact = $record->getFirstFact($row->fact);
+
+                if ($fact) {
+                    return FunctionsPrint::formatFactPlace($fact, true, true, true);
+                }
+            }
+        }
+
+        return I18N::translate('Private');
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function firstEventPlace(): string
+    {
+        return $this->getFirstLastEventPlace('ASC');
+    }
+
+    /**
+     * @inheritDoc
+     */
     public function lastEventPlace(): string
     {
-        return $this->eventQuery(
-            'place',
-            'DESC',
-            array_merge(
-                Gedcom::BIRTH_EVENTS,
-                Gedcom::MARRIAGE_EVENTS,
-                Gedcom::DIVORCE_EVENTS,
-                Gedcom::DEATH_EVENTS
-            )
-        );
+        return $this->getFirstLastEventPlace('DESC');
     }
 }
