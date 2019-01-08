@@ -18,11 +18,11 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
+use Illuminate\Database\Capsule\Manager as DB;
 use stdClass;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -152,23 +152,20 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
      */
     public function getFavorites(Tree $tree, User $user): array
     {
-        $favorites = Database::prepare(
-            "SELECT favorite_id, user_id, gedcom_id, xref, favorite_type, title, note, url" .
-            " FROM `##favorite` WHERE gedcom_id = :tree_id AND user_id = :user_id"
-        )->execute([
-            'tree_id' => $tree->id(),
-            'user_id' => $user->getUserId(),
-        ])->fetchAll();
+        return DB::table('favorite')
+            ->where('gedcom_id', '=', $tree->id())
+            ->where('user_id', '=', $user->getUserId())
+            ->get()
+            ->map(function (stdClass $row) use ($tree): stdClass {
+                if ($row->xref !== null) {
+                    $row->record = GedcomRecord::getInstance($row->xref, $tree);
+                } else {
+                    $row->record = null;
+                }
 
-        foreach ($favorites as $favorite) {
-            if ($favorite->xref !== null) {
-                $favorite->record = GedcomRecord::getInstance($favorite->xref, $tree);
-            } else {
-                $favorite->record = null;
-            }
-        }
-
-        return $favorites;
+                return $row;
+            })
+            ->all();
     }
 
     /**
@@ -214,14 +211,10 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
     {
         $favorite_id = (int) $request->get('favorite_id');
 
-        if (Auth::check()) {
-            Database::prepare(
-                "DELETE FROM `##favorite` WHERE favorite_id = :favorite_id AND user_id = :user_id"
-            )->execute([
-                'favorite_id' => $favorite_id,
-                'user_id'     => $user->getUserId(),
-            ]);
-        }
+        DB::table('favorite')
+            ->where('favorite_id', '=', $favorite_id)
+            ->where('user_id', '=', $user->getUserId())
+            ->delete();
 
         $url = route('user-page', ['ged' => $tree->name()]);
 
@@ -239,33 +232,15 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
      */
     private function addUrlFavorite(Tree $tree, User $user, string $url, string $title, string $note)
     {
-        $favorite = Database::prepare(
-            "SELECT * FROM `##favorite` WHERE gedcom_id = :gedcom_id AND user_id = :user_id AND url = :url"
-        )->execute([
+        DB::table('favorite')->updateOrInsert([
             'gedcom_id' => $tree->id(),
             'user_id'   => $user->getUserId(),
             'url'       => $url,
-        ])->fetchOneRow();
-
-        if ($favorite === null) {
-            Database::prepare(
-                "INSERT INTO `##favorite` (gedcom_id, favorite_type, user_id, url, note, title) VALUES (:gedcom_id, 'URL', :user_id, :url, :note, :title)"
-            )->execute([
-                'gedcom_id' => $tree->id(),
-                'user_id'   => $user->getUserId(),
-                'url'       => $url,
-                'note'      => $note,
-                'title'     => $title,
-            ]);
-        } else {
-            Database::prepare(
-                "UPDATE `##favorite` SET note = :note, title = :title WHERE favorite_id = :favorite_id"
-            )->execute([
-                'note'        => $note,
-                'title'       => $title,
-                'favorite_id' => $favorite->favorite_id,
-            ]);
-        }
+        ], [
+            'favorite_type' => 'URL',
+            'note'          => $note,
+            'title'         => $title,
+        ]);
     }
 
     /**
@@ -278,31 +253,13 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
      */
     private function addRecordFavorite(Tree $tree, User $user, GedcomRecord $record, string $note)
     {
-        $favorite = Database::prepare(
-            "SELECT * FROM `##favorite` WHERE gedcom_id = :gedcom_id AND user_id = :user_id AND xref = :xref"
-        )->execute([
+        DB::table('favorite')->updateOrInsert([
             'gedcom_id' => $tree->id(),
             'user_id'   => $user->getUserId(),
             'xref'      => $record->xref(),
-        ])->fetchOneRow();
-
-        if ($favorite === null) {
-            Database::prepare(
-                "INSERT INTO `##favorite` (gedcom_id, user_id, favorite_type, xref, note) VALUES (:gedcom_id, :user_id, :favorite_type, :xref, :note)"
-            )->execute([
-                'gedcom_id'     => $tree->id(),
-                'user_id'       => $user->getUserId(),
-                'favorite_type' => $record::RECORD_TYPE,
-                'xref'          => $record->xref(),
-                'note'          => $note,
-            ]);
-        } else {
-            Database::prepare(
-                "UPDATE `##favorite` SET note = :note WHERE favorite_id = :favorite_id"
-            )->execute([
-                'note'        => $note,
-                'favorite_id' => $favorite->favorite_id,
-            ]);
-        }
+        ], [
+            'favorite_type' => $record::RECORD_TYPE,
+            'note'          => $note,
+        ]);
     }
 }
