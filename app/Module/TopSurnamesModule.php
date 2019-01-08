@@ -18,10 +18,10 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
+use Illuminate\Database\Capsule\Manager as DB;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -73,30 +73,25 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
         extract($cfg, EXTR_OVERWRITE);
 
         // Use the count of base surnames.
-        $top_surnames = Database::prepare(
-            "SELECT n_surn FROM `##name`" .
-            " WHERE n_file = :tree_id AND n_type != '_MARNM' AND n_surn NOT IN ('@N.N.', '')" .
-            " GROUP BY n_surn" .
-            " ORDER BY COUNT(n_surn) DESC" .
-            " LIMIT :limit"
-        )->execute([
-            'tree_id' => $tree->id(),
-            'limit'   => $num,
-        ])->fetchOneColumn();
+        $top_surnames = DB::table('name')
+            ->where('n_file', '=', $tree->id())
+            ->where('n_type', '<>', '_MARNM')
+            ->whereNotIn('n_surn', ['@N.N.', ''])
+            ->groupBy('n_surn')
+            ->orderByDesc(DB::raw('COUNT(n_surn)'))
+            ->take($num)
+            ->pluck('n_surn');
 
         $all_surnames = [];
-        foreach ($top_surnames as $top_surname) {
-            $variants = Database::prepare(
-                "SELECT n_surname COLLATE utf8_bin, COUNT(*) FROM `##name` WHERE n_file = :tree_id AND n_surn COLLATE :collate = :surname GROUP BY 1"
-            )->execute([
-                'collate' => I18N::collation(),
-                'surname' => $top_surname,
-                'tree_id' => $tree->id(),
-            ])->fetchAssoc();
 
-            $variants = array_map(function (string $count): int {
-                return (int) $count;
-            }, $variants);
+        foreach ($top_surnames as $top_surname) {
+            $variants = DB::table('name')
+                ->where('n_file', '=', $tree->id())
+                ->where(DB::raw('n_surn /*! COLLATE utf8_bin */'), '=', $top_surname)
+                ->groupBy('surname')
+                ->select([DB::raw('n_surname /*! COLLATE utf8_bin */ AS surname'), DB::raw('count(*) AS total')])
+                ->pluck('total', 'surname')
+                ->all();
 
             $all_surnames[$top_surname] = $variants;
         }
