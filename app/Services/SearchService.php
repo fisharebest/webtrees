@@ -184,16 +184,16 @@ class SearchService
         return $this->paginateQuery($query, $row_mapper, $offset, $limit);
     }
 
-     /**
-     * Search for sources by name.
-     *
-     * @param Tree   $tree
-     * @param string $search
-     * @param int    $offset
-     * @param int    $limit
-     *
-     * @return Collection|Source[]
-     */
+    /**
+    * Search for sources by name.
+    *
+    * @param Tree   $tree
+    * @param string $search
+    * @param int    $offset
+    * @param int    $limit
+    *
+    * @return Collection|Source[]
+    */
     public function searchSourcesByName(Tree $tree, string $search, int $offset = 0, int $limit = PHP_INT_MAX): Collection
     {
         $query = DB::table('sources')
