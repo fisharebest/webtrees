@@ -56,7 +56,7 @@ class DatatablesService
         if ($search !== '') {
             $query->where(function (Builder $query) use ($search, $search_columns): void {
                 foreach ($search_columns as $search_column) {
-                    $query->orWhereContains($search_column, $search);
+                    $query->whereContains($search_column, $search, 'or');
                 }
             });
         }

@@ -100,15 +100,10 @@ class Database
      */
     public static function registerMacros(): void
     {
-        Builder::macro('whereContains', function (string $column, string $search) {
-            $search = strtr($search, ['\\' => '\\\\', '%'  => '\\%', '_'  => '\\_']);
+        Builder::macro('whereContains', function (string $column, string $search, string $boolean = 'and') {
+            $search = strtr($search, ['\\' => '\\\\', '%'  => '\\%', '_'  => '\\_', ' ' => '%']);
 
-            return $this->where($column, 'LIKE', '%' . $search . '%', 'and');
-        });
-        Builder::macro('orWhereContains', function (string $column, string $search) {
-            $search = strtr($search, ['\\' => '\\\\', '%'  => '\\%', '_'  => '\\_']);
-
-            return $this->where($column, 'LIKE', '%' . $search . '%', 'or');
+            return $this->where($column, 'LIKE', '%' . $search . '%', $boolean);
         });
     }
 
