@@ -23,14 +23,12 @@ use Fisharebest\Webtrees\Statistics\Repository\Interfaces\MessageRepositoryInter
 use Illuminate\Database\Capsule\Manager as DB;
 
 /**
- * Statistics submodule providing all MESSAGE related methods.
+ * A repository providing methods for user message related statistics.
  */
 class MessageRepository implements MessageRepositoryInterface
 {
     /**
-     * How many messages in the user's inbox.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalUserMessages(): string
     {

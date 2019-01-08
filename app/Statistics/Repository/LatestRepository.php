@@ -27,7 +27,7 @@ use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\JoinClause;
 
 /**
- * Statistics submodule providing all LATEST related methods.
+ * A repository providing methods for latest user related statistics.
  */
 class LatestRepository implements LatestRepositoryInterface
 {
@@ -64,9 +64,7 @@ class LatestRepository implements LatestRepositoryInterface
     }
 
     /**
-     * Get the newest registered user's ID.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function latestUserId(): string
     {
@@ -74,9 +72,7 @@ class LatestRepository implements LatestRepositoryInterface
     }
 
     /**
-     * Get the newest registered user's username.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function latestUserName(): string
     {
@@ -84,9 +80,7 @@ class LatestRepository implements LatestRepositoryInterface
     }
 
     /**
-     * Get the newest registered user's real name.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function latestUserFullName(): string
     {
@@ -94,11 +88,7 @@ class LatestRepository implements LatestRepositoryInterface
     }
 
     /**
-     * Get the date of the newest user registration.
-     *
-     * @param string|null $format
-     *
-     * @return string
+     * @inheritDoc
      */
     public function latestUserRegDate(string $format = null): string
     {
@@ -111,11 +101,7 @@ class LatestRepository implements LatestRepositoryInterface
     }
 
     /**
-     * Find the timestamp of the latest user to register.
-     *
-     * @param string|null $format
-     *
-     * @return string
+     * @inheritDoc
      */
     public function latestUserRegTime(string $format = null): string
     {
@@ -126,12 +112,7 @@ class LatestRepository implements LatestRepositoryInterface
     }
 
     /**
-     * Is the most recently registered user logged in right now?
-     *
-     * @param string|null $yes
-     * @param string|null $no
-     *
-     * @return string
+     * @inheritDoc
      */
     public function latestUserLoggedin(string $yes = null, string $no = null): string
     {

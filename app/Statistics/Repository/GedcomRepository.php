@@ -25,7 +25,7 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 
 /**
- * Statistics submodule providing all GEDCOM related methods.
+ * A repository providing methods for GEDCOM related statistics.
  */
 class GedcomRepository implements GedcomRepositoryInterface
 {
@@ -61,8 +61,8 @@ class GedcomRepository implements GedcomRepositoryInterface
             $sour = $head->getFirstFact('SOUR');
 
             if ($sour !== null) {
-                $source = $sour->value();
-                $title = $sour->attribute('NAME');
+                $source  = $sour->value();
+                $title   = $sour->attribute('NAME');
                 $version = $sour->attribute('VERS');
             }
         }
@@ -75,9 +75,7 @@ class GedcomRepository implements GedcomRepositoryInterface
     }
 
     /**
-     * Get the name used for GEDCOM files and URLs.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function gedcomFilename(): string
     {
@@ -85,9 +83,7 @@ class GedcomRepository implements GedcomRepositoryInterface
     }
 
     /**
-     * Get the internal ID number of the tree.
-     *
-     * @return int
+     * @inheritDoc
      */
     public function gedcomId(): int
     {
@@ -95,9 +91,7 @@ class GedcomRepository implements GedcomRepositoryInterface
     }
 
     /**
-     * Get the descriptive title of the tree.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function gedcomTitle(): string
     {
@@ -105,20 +99,15 @@ class GedcomRepository implements GedcomRepositoryInterface
     }
 
     /**
-     * Get the software originally used to create the GEDCOM file.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function gedcomCreatedSoftware(): string
     {
-        $head = $this->gedcomHead();
-        return $head[0];
+        return $this->gedcomHead()[0];
     }
 
     /**
-     * Get the version of software which created the GEDCOM file.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function gedcomCreatedVersion(): string
     {
@@ -144,9 +133,7 @@ class GedcomRepository implements GedcomRepositoryInterface
     }
 
     /**
-     * Get the date the GEDCOM file was created.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function gedcomDate(): string
     {
@@ -164,9 +151,7 @@ class GedcomRepository implements GedcomRepositoryInterface
     }
 
     /**
-     * When was this tree last updated?
-     *
-     * @return string
+     * @inheritDoc
      */
     public function gedcomUpdated(): string
     {
@@ -189,9 +174,7 @@ class GedcomRepository implements GedcomRepositoryInterface
     }
 
     /**
-     * What is the significant individual from this tree?
-     *
-     * @return string
+     * @inheritDoc
      */
     public function gedcomRootId(): string
     {

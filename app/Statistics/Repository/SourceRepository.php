@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 
 /**
- * Statistics submodule providing all SOURCE related methods.
+ * A repository providing methods for source related statistics.
  */
 class SourceRepository implements SourceRepositoryInterface
 {
@@ -56,9 +56,7 @@ class SourceRepository implements SourceRepositoryInterface
     }
 
     /**
-     * Count the total number of sources.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalSources(): string
     {
@@ -66,9 +64,7 @@ class SourceRepository implements SourceRepositoryInterface
     }
 
     /**
-     * Show the number of sources as a percentage.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalSourcesPercentage(): string
     {

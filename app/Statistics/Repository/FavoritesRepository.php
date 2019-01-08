@@ -27,7 +27,7 @@ use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Webtrees;
 
 /**
- * Statistics submodule providing all FAVORITES related methods.
+ * A repository providing methods for favorites related statistics.
  */
 class FavoritesRepository implements FavoritesRepositoryInterface
 {
@@ -47,9 +47,7 @@ class FavoritesRepository implements FavoritesRepositoryInterface
     }
 
     /**
-     * Find the favorites for the tree.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function gedcomFavorites(): string
     {
@@ -65,9 +63,7 @@ class FavoritesRepository implements FavoritesRepositoryInterface
     }
 
     /**
-     * Find the favorites for the user.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function userFavorites(): string
     {
@@ -81,9 +77,7 @@ class FavoritesRepository implements FavoritesRepositoryInterface
     }
 
     /**
-     * Find the number of favorites for the tree.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalGedcomFavorites(): string
     {
@@ -98,9 +92,7 @@ class FavoritesRepository implements FavoritesRepositoryInterface
     }
 
     /**
-     * Find the number of favorites for the user.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalUserFavorites(): string
     {

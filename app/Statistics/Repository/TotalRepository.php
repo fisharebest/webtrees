@@ -22,7 +22,7 @@ use Fisharebest\Webtrees\Statistics\Repository\Interfaces\TotalRepositoryInterfa
 use Fisharebest\Webtrees\Tree;
 
 /**
- * Statistics submodule providing all BROWSER related methods.
+ * A repository providing methods for total records related statistics.
  */
 class TotalRepository implements TotalRepositoryInterface
 {
@@ -54,9 +54,7 @@ class TotalRepository implements TotalRepositoryInterface
     }
 
     /**
-     * How many GEDCOM records exist in the tree.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalRecords(): string
     {

@@ -21,7 +21,7 @@ use Fisharebest\Webtrees\Functions\FunctionsDate;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\ServerRepositoryInterface;
 
 /**
- * Statistics submodule providing all SERVER related methods.
+ * A repository providing methods for server related statistics.
  */
 class ServerRepository implements ServerRepositoryInterface
 {
@@ -36,9 +36,7 @@ class ServerRepository implements ServerRepositoryInterface
     }
 
     /**
-     * What is the current time on the server (in 12 hour clock)?
-     *
-     * @return string
+     * @inheritDoc
      */
     public function serverTime(): string
     {
@@ -46,9 +44,7 @@ class ServerRepository implements ServerRepositoryInterface
     }
 
     /**
-     * What is the current time on the server (in 24 hour clock)?
-     *
-     * @return string
+     * @inheritDoc
      */
     public function serverTime24(): string
     {
@@ -56,9 +52,7 @@ class ServerRepository implements ServerRepositoryInterface
     }
 
     /**
-     * What is the timezone of the server.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function serverTimezone(): string
     {

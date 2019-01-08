@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 
 /**
- * Statistics submodule providing all NEWS related methods.
+ * A repository providing methods for news related statistics.
  */
 class NewsRepository implements NewsRepositoryInterface
 {
@@ -44,9 +44,7 @@ class NewsRepository implements NewsRepositoryInterface
     }
 
     /**
-     * How many blog entries exist for this user.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalUserJournal(): string
     {
@@ -58,9 +56,7 @@ class NewsRepository implements NewsRepositoryInterface
     }
 
     /**
-     * How many news items exist for this tree.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalGedcomNews(): string
     {

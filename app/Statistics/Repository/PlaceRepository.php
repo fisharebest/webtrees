@@ -28,7 +28,7 @@ use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 
 /**
- * Statistics submodule providing all PLACE related methods.
+ * A repository providing methods for place related statistics.
  */
 class PlaceRepository implements PlaceRepositoryInterface
 {

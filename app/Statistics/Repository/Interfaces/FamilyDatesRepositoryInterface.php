@@ -18,7 +18,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Statistics\Repository\Interfaces;
 
 /**
- * Statistics submodule providing all methods related to family dates (birth, death, marriage, divorce).
+ * A repository providing methods for family dates related statistics (birth, death, marriage, divorce).
  */
 interface FamilyDatesRepositoryInterface
 {

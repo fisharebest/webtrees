@@ -18,19 +18,19 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Statistics\Repository\Interfaces;
 
 /**
- * Statistics submodule providing all CONTACT related methods.
+ * A repository providing methods for contact related statistics.
  */
 interface ContactRepositoryInterface
 {
     /**
-     * Create a link to contact the webmaster.
+     * Returns a link to contact the webmaster.
      *
      * @return string
      */
     public function contactWebmaster(): string;
 
     /**
-     * Create a link to contact the genealogy contact.
+     * Returns a link to contact the genealogy contact.
      *
      * @return string
      */

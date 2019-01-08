@@ -18,7 +18,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Statistics\Repository\Interfaces;
 
 /**
- * Statistics submodule providing all BROWSER related methods.
+ * A repository providing methods for browser related statistics.
  */
 interface BrowserRepositoryInterface
 {

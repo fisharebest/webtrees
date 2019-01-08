@@ -18,7 +18,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Statistics\Repository\Interfaces;
 
 /**
- * Statistics submodule providing all USER related methods.
+ * A repository providing methods for user related statistics.
  */
 interface UserRepositoryInterface
 {

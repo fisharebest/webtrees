@@ -330,9 +330,7 @@ class Stats implements
     }
 
     /**
-     * Get the name used for GEDCOM files and URLs.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function gedcomFilename(): string
     {
@@ -340,9 +338,7 @@ class Stats implements
     }
 
     /**
-     * Get the internal ID number of the tree.
-     *
-     * @return int
+     * @inheritDoc
      */
     public function gedcomId(): int
     {
@@ -350,9 +346,7 @@ class Stats implements
     }
 
     /**
-     * Get the descriptive title of the tree.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function gedcomTitle(): string
     {
@@ -360,9 +354,7 @@ class Stats implements
     }
 
     /**
-     * Get the software originally used to create the GEDCOM file.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function gedcomCreatedSoftware(): string
     {
@@ -370,9 +362,7 @@ class Stats implements
     }
 
     /**
-     * Get the version of software which created the GEDCOM file.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function gedcomCreatedVersion(): string
     {
@@ -380,9 +370,7 @@ class Stats implements
     }
 
     /**
-     * Get the date the GEDCOM file was created.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function gedcomDate(): string
     {
@@ -390,9 +378,7 @@ class Stats implements
     }
 
     /**
-     * When was this tree last updated?
-     *
-     * @return string
+     * @inheritDoc
      */
     public function gedcomUpdated(): string
     {
@@ -400,9 +386,7 @@ class Stats implements
     }
 
     /**
-     * What is the significant individual from this tree?
-     *
-     * @return string
+     * @inheritDoc
      */
     public function gedcomRootId(): string
     {
@@ -410,9 +394,8 @@ class Stats implements
     }
 
     /**
-     * How many GEDCOM records exist in the tree.
-     *
-     * @return string
+     * @inheritDoc
+     * @todo
      */
     public function totalRecords(): string
     {
@@ -420,9 +403,7 @@ class Stats implements
     }
 
     /**
-     * How many individuals exist in the tree.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalIndividuals(): string
     {
@@ -430,9 +411,7 @@ class Stats implements
     }
 
     /**
-     * How many individuals have one or more sources.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalIndisWithSources(): string
     {
@@ -440,13 +419,7 @@ class Stats implements
     }
 
     /**
-     * Create a chart showing individuals with/without sources.
-     *
-     * @param string|null $size
-     * @param string|null $color_from
-     * @param string|null $color_to
-     *
-     * @return string
+     * @inheritDoc
      */
     public function chartIndisWithSources(
         string $size       = null,
@@ -457,9 +430,7 @@ class Stats implements
     }
 
     /**
-     * Show the total individuals as a percentage.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalIndividualsPercentage(): string
     {
@@ -467,9 +438,7 @@ class Stats implements
     }
 
     /**
-     * Count the total families.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalFamilies(): string
     {
@@ -477,9 +446,7 @@ class Stats implements
     }
 
     /**
-     * Show the total families as a percentage.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalFamiliesPercentage(): string
     {
@@ -487,9 +454,7 @@ class Stats implements
     }
 
     /**
-     * Count the families with with source records.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalFamsWithSources(): string
     {
@@ -497,13 +462,7 @@ class Stats implements
     }
 
     /**
-     * Create a chart of individuals with/without sources.
-     *
-     * @param string|null $size
-     * @param string|null $color_from
-     * @param string|null $color_to
-     *
-     * @return string
+     * @inheritDoc
      */
     public function chartFamsWithSources(
         string $size       = null,
@@ -514,9 +473,7 @@ class Stats implements
     }
 
     /**
-     * Count the total number of sources.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalSources(): string
     {
@@ -524,9 +481,7 @@ class Stats implements
     }
 
     /**
-     * Show the number of sources as a percentage.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalSourcesPercentage(): string
     {
@@ -534,9 +489,7 @@ class Stats implements
     }
 
     /**
-     * Count the number of notes.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalNotes(): string
     {
@@ -544,9 +497,7 @@ class Stats implements
     }
 
     /**
-     * Show the number of notes as a percentage.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalNotesPercentage(): string
     {
@@ -554,9 +505,7 @@ class Stats implements
     }
 
     /**
-     * Count the number of repositories
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalRepositories(): string
     {
@@ -564,9 +513,7 @@ class Stats implements
     }
 
     /**
-     * Show the total number of repositories as a percentage.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalRepositoriesPercentage(): string
     {
@@ -574,11 +521,7 @@ class Stats implements
     }
 
     /**
-     * Count the surnames.
-     *
-     * @param string ...$params
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalSurnames(...$params): string
     {
@@ -586,12 +529,7 @@ class Stats implements
     }
 
     /**
-     * Count the number of distinct given names, or count the number of
-     * occurrences of a specific name or names.
-     *
-     * @param string ...$params
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalGivennames(...$params): string
     {
@@ -599,11 +537,7 @@ class Stats implements
     }
 
     /**
-     * Count the number of events (with dates).
-     *
-     * @param string[] $events
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalEvents(array $events = []): string
     {
@@ -611,9 +545,7 @@ class Stats implements
     }
 
     /**
-     * Count the number of births.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalEventsBirth(): string
     {
@@ -621,9 +553,7 @@ class Stats implements
     }
 
     /**
-     * Count the number of births.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalBirths(): string
     {
@@ -631,9 +561,7 @@ class Stats implements
     }
 
     /**
-     * Count the number of deaths.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalEventsDeath(): string
     {
@@ -641,9 +569,7 @@ class Stats implements
     }
 
     /**
-     * Count the number of deaths.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalDeaths(): string
     {
@@ -651,9 +577,7 @@ class Stats implements
     }
 
     /**
-     * Count the number of marriages.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalEventsMarriage(): string
     {
@@ -661,9 +585,7 @@ class Stats implements
     }
 
     /**
-     * Count the number of marriages.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalMarriages(): string
     {
@@ -671,9 +593,7 @@ class Stats implements
     }
 
     /**
-     * Count the number of divorces.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalEventsDivorce(): string
     {
@@ -681,9 +601,7 @@ class Stats implements
     }
 
     /**
-     * Count the number of divorces.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalDivorces(): string
     {
@@ -691,9 +609,7 @@ class Stats implements
     }
 
     /**
-     * Count the number of other events.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalEventsOther(): string
     {
@@ -701,9 +617,7 @@ class Stats implements
     }
 
     /**
-     * Count the number of males.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalSexMales(): string
     {
@@ -711,9 +625,7 @@ class Stats implements
     }
 
     /**
-     * Count the number of males
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalSexMalesPercentage(): string
     {
@@ -721,9 +633,7 @@ class Stats implements
     }
 
     /**
-     * Count the number of females.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalSexFemales(): string
     {
@@ -731,9 +641,7 @@ class Stats implements
     }
 
     /**
-     * Count the number of females.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalSexFemalesPercentage(): string
     {
@@ -741,9 +649,7 @@ class Stats implements
     }
 
     /**
-     * Count the number of individuals with unknown sex.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalSexUnknown(): string
     {
@@ -751,9 +657,7 @@ class Stats implements
     }
 
     /**
-     * Count the number of individuals with unknown sex.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalSexUnknownPercentage(): string
     {
@@ -761,14 +665,7 @@ class Stats implements
     }
 
     /**
-     * Generate a chart showing sex distribution.
-     *
-     * @param string|null $size
-     * @param string|null $color_female
-     * @param string|null $color_male
-     * @param string|null $color_unknown
-     *
-     * @return string
+     * @inheritDoc
      */
     public function chartSex(
         string $size          = null,
@@ -780,9 +677,7 @@ class Stats implements
     }
 
     /**
-     * Count the number of living individuals.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalLiving(): string
     {
@@ -790,9 +685,7 @@ class Stats implements
     }
 
     /**
-     * Count the number of living individuals.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalLivingPercentage(): string
     {
@@ -800,9 +693,7 @@ class Stats implements
     }
 
     /**
-     * Count the number of dead individuals.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalDeceased(): string
     {
@@ -810,9 +701,7 @@ class Stats implements
     }
 
     /**
-     * Count the number of dead individuals.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalDeceasedPercentage(): string
     {
@@ -820,13 +709,7 @@ class Stats implements
     }
 
     /**
-     * Create a chart showing mortality.
-     *
-     * @param string|null $size
-     * @param string|null $color_living
-     * @param string|null $color_dead
-     *
-     * @return string
+     * @inheritDoc
      */
     public function chartMortality(string $size = null, string $color_living = null, string $color_dead = null): string
     {
@@ -834,9 +717,7 @@ class Stats implements
     }
 
     /**
-     * Count the number of media records.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalMedia(): string
     {
@@ -844,9 +725,7 @@ class Stats implements
     }
 
     /**
-     * Count the number of media records with type "audio".
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalMediaAudio(): string
     {
@@ -854,9 +733,7 @@ class Stats implements
     }
 
     /**
-     * Count the number of media records with type "book".
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalMediaBook(): string
     {
@@ -864,9 +741,7 @@ class Stats implements
     }
 
     /**
-     * Count the number of media records with type "card".
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalMediaCard(): string
     {
@@ -874,9 +749,7 @@ class Stats implements
     }
 
     /**
-     * Count the number of media records with type "certificate".
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalMediaCertificate(): string
     {
@@ -884,9 +757,7 @@ class Stats implements
     }
 
     /**
-     * Count the number of media records with type "coat of arms".
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalMediaCoatOfArms(): string
     {
@@ -894,9 +765,7 @@ class Stats implements
     }
 
     /**
-     * Count the number of media records with type "document".
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalMediaDocument(): string
     {
@@ -904,9 +773,7 @@ class Stats implements
     }
 
     /**
-     * Count the number of media records with type "electronic".
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalMediaElectronic(): string
     {
@@ -914,9 +781,7 @@ class Stats implements
     }
 
     /**
-     * Count the number of media records with type "magazine".
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalMediaMagazine(): string
     {
@@ -924,9 +789,7 @@ class Stats implements
     }
 
     /**
-     * Count the number of media records with type "manuscript".
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalMediaManuscript(): string
     {
@@ -934,9 +797,7 @@ class Stats implements
     }
 
     /**
-     * Count the number of media records with type "map".
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalMediaMap(): string
     {
@@ -944,9 +805,7 @@ class Stats implements
     }
 
     /**
-     * Count the number of media records with type "microfiche".
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalMediaFiche(): string
     {
@@ -954,9 +813,7 @@ class Stats implements
     }
 
     /**
-     * Count the number of media records with type "microfilm".
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalMediaFilm(): string
     {
@@ -964,9 +821,7 @@ class Stats implements
     }
 
     /**
-     * Count the number of media records with type "newspaper".
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalMediaNewspaper(): string
     {
@@ -974,9 +829,7 @@ class Stats implements
     }
 
     /**
-     * Count the number of media records with type "painting".
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalMediaPainting(): string
     {
@@ -984,9 +837,7 @@ class Stats implements
     }
 
     /**
-     * Count the number of media records with type "photograph".
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalMediaPhoto(): string
     {
@@ -994,9 +845,7 @@ class Stats implements
     }
 
     /**
-     * Count the number of media records with type "tombstone".
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalMediaTombstone(): string
     {
@@ -1004,9 +853,7 @@ class Stats implements
     }
 
     /**
-     * Count the number of media records with type "video".
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalMediaVideo(): string
     {
@@ -1014,9 +861,7 @@ class Stats implements
     }
 
     /**
-     * Count the number of media records with type "other".
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalMediaOther(): string
     {
@@ -1024,9 +869,7 @@ class Stats implements
     }
 
     /**
-     * Count the number of media records with type "unknown".
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalMediaUnknown(): string
     {
@@ -1034,13 +877,7 @@ class Stats implements
     }
 
     /**
-     * Create a chart of media types.
-     *
-     * @param string|null $size
-     * @param string|null $color_from
-     * @param string|null $color_to
-     *
-     * @return string
+     * @inheritDoc
      */
     public function chartMedia(string $size = null, string $color_from = null, string $color_to = null): string
     {
@@ -1048,14 +885,7 @@ class Stats implements
     }
 
     /**
-     * Places
-     *
-     * @param string $what
-     * @param string $fact
-     * @param int    $parent
-     * @param bool   $country
-     *
-     * @return int[]|stdClass[]
+     * @inheritDoc
      */
     public function statsPlaces(string $what = 'ALL', string $fact = '', int $parent = 0, bool $country = false): array
     {
@@ -1063,9 +893,7 @@ class Stats implements
     }
 
     /**
-     * Count total places.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalPlaces(): string
     {
@@ -1073,13 +901,7 @@ class Stats implements
     }
 
     /**
-     * Create a chart showing where events occurred.
-     *
-     * @param string $chart_shows
-     * @param string $chart_type
-     * @param string $surname
-     *
-     * @return string
+     * @inheritDoc
      */
     public function chartDistribution(
         string $chart_shows = 'world',
@@ -1090,9 +912,7 @@ class Stats implements
     }
 
     /**
-     * A list of common countries.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function commonCountriesList(): string
     {
@@ -1100,9 +920,7 @@ class Stats implements
     }
 
     /**
-     * A list of common birth places.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function commonBirthPlacesList(): string
     {
@@ -1110,9 +928,7 @@ class Stats implements
     }
 
     /**
-     * A list of common death places.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function commonDeathPlacesList(): string
     {
@@ -1120,9 +936,7 @@ class Stats implements
     }
 
     /**
-     * A list of common marriage places.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function commonMarriagePlacesList(): string
     {
@@ -1130,9 +944,7 @@ class Stats implements
     }
 
     /**
-     * Find the earliest birth.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function firstBirth(): string
     {
@@ -1140,9 +952,7 @@ class Stats implements
     }
 
     /**
-     * Find the earliest birth year.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function firstBirthYear(): string
     {
@@ -1150,9 +960,7 @@ class Stats implements
     }
 
     /**
-     * Find the name of the earliest birth.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function firstBirthName(): string
     {
@@ -1160,9 +968,7 @@ class Stats implements
     }
 
     /**
-     * Find the earliest birth place.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function firstBirthPlace(): string
     {
@@ -1170,9 +976,7 @@ class Stats implements
     }
 
     /**
-     * Find the latest birth.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function lastBirth(): string
     {
@@ -1180,9 +984,7 @@ class Stats implements
     }
 
     /**
-     * Find the latest birth year.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function lastBirthYear(): string
     {
@@ -1190,9 +992,7 @@ class Stats implements
     }
 
     /**
-     * Find the latest birth name.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function lastBirthName(): string
     {
@@ -1200,9 +1000,7 @@ class Stats implements
     }
 
     /**
-     * Find the latest birth place.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function lastBirthPlace(): string
     {
@@ -1210,14 +1008,7 @@ class Stats implements
     }
 
     /**
-     * Create a chart of birth places.
-     *
-     * @param bool $simple
-     * @param bool $sex
-     * @param int  $year1
-     * @param int  $year2
-     *
-     * @return array
+     * @inheritDoc
      */
     public function statsBirthQuery($simple = true, $sex = false, $year1 = -1, $year2 = -1): array
     {
@@ -1225,13 +1016,7 @@ class Stats implements
     }
 
     /**
-     * General query on births.
-     *
-     * @param string|null $size
-     * @param string|null $color_from
-     * @param string|null $color_to
-     *
-     * @return string
+     * @inheritDoc
      */
     public function statsBirth(string $size = null, string $color_from = null, string $color_to = null): string
     {
@@ -1239,9 +1024,7 @@ class Stats implements
     }
 
     /**
-     * Find the earliest death.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function firstDeath(): string
     {
@@ -1249,9 +1032,7 @@ class Stats implements
     }
 
     /**
-     * Find the earliest death year.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function firstDeathYear(): string
     {
@@ -1259,9 +1040,7 @@ class Stats implements
     }
 
     /**
-     * Find the earliest death name.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function firstDeathName(): string
     {
@@ -1269,9 +1048,7 @@ class Stats implements
     }
 
     /**
-     * Find the earliest death place.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function firstDeathPlace(): string
     {
@@ -1279,9 +1056,7 @@ class Stats implements
     }
 
     /**
-     * Find the latest death.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function lastDeath(): string
     {
@@ -1289,9 +1064,7 @@ class Stats implements
     }
 
     /**
-     * Find the latest death year.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function lastDeathYear(): string
     {
@@ -1299,9 +1072,7 @@ class Stats implements
     }
 
     /**
-     * Find the latest death name.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function lastDeathName(): string
     {
@@ -1309,9 +1080,7 @@ class Stats implements
     }
 
     /**
-     * Find the place of the latest death.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function lastDeathPlace(): string
     {
@@ -1319,14 +1088,7 @@ class Stats implements
     }
 
     /**
-     * Create a chart of death places.
-     *
-     * @param bool $simple
-     * @param bool $sex
-     * @param int  $year1
-     * @param int  $year2
-     *
-     * @return array
+     * @inheritDoc
      */
     public function statsDeathQuery($simple = true, $sex = false, $year1 = -1, $year2 = -1): array
     {
@@ -1334,13 +1096,7 @@ class Stats implements
     }
 
     /**
-     * General query on deaths.
-     *
-     * @param string|null $size
-     * @param string|null $color_from
-     * @param string|null $color_to
-     *
-     * @return string
+     * @inheritDoc
      */
     public function statsDeath(string $size = null, string $color_from = null, string $color_to = null): string
     {
@@ -1348,15 +1104,7 @@ class Stats implements
     }
 
     /**
-     * General query on ages.
-     *
-     * @param bool   $simple
-     * @param string $related
-     * @param string $sex
-     * @param int    $year1
-     * @param int    $year2
-     *
-     * @return array|string
+     * @inheritDoc
      */
     public function statsAgeQuery($simple = true, $related = 'BIRT', $sex = 'BOTH', $year1 = -1, $year2 = -1)
     {
@@ -1364,11 +1112,7 @@ class Stats implements
     }
 
     /**
-     * General query on ages.
-     *
-     * @param string $size
-     *
-     * @return string
+     * @inheritDoc
      */
     public function statsAge(string $size = '230x250'): string
     {
@@ -1376,9 +1120,7 @@ class Stats implements
     }
 
     /**
-     * Find the longest lived individual.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function longestLife(): string
     {
@@ -1386,9 +1128,7 @@ class Stats implements
     }
 
     /**
-     * Find the age of the longest lived individual.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function longestLifeAge(): string
     {
@@ -1396,9 +1136,7 @@ class Stats implements
     }
 
     /**
-     * Find the name of the longest lived individual.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function longestLifeName(): string
     {
@@ -1406,9 +1144,7 @@ class Stats implements
     }
 
     /**
-     * Find the longest lived female.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function longestLifeFemale(): string
     {
@@ -1416,9 +1152,7 @@ class Stats implements
     }
 
     /**
-     * Find the age of the longest lived female.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function longestLifeFemaleAge(): string
     {
@@ -1426,9 +1160,7 @@ class Stats implements
     }
 
     /**
-     * Find the name of the longest lived female.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function longestLifeFemaleName(): string
     {
@@ -1436,9 +1168,7 @@ class Stats implements
     }
 
     /**
-     * Find the longest lived male.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function longestLifeMale(): string
     {
@@ -1446,9 +1176,7 @@ class Stats implements
     }
 
     /**
-     * Find the age of the longest lived male.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function longestLifeMaleAge(): string
     {
@@ -1456,20 +1184,14 @@ class Stats implements
     }
 
     /**
-     * Find the name of the longest lived male.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function longestLifeMaleName(): string
     {
         return $this->individualRepository->longestLifeMaleName();
     }
     /**
-     * Find the oldest individuals.
-     *
-     * @param string $total
-     *
-     * @return string
+     * @inheritDoc
      */
     public function topTenOldest(string $total = '10'): string
     {
@@ -1477,11 +1199,7 @@ class Stats implements
     }
 
     /**
-     * Find the oldest living individuals.
-     *
-     * @param string $total
-     *
-     * @return string
+     * @inheritDoc
      */
     public function topTenOldestList(string $total = '10'): string
     {
@@ -1489,11 +1207,7 @@ class Stats implements
     }
 
     /**
-     * Find the oldest females.
-     *
-     * @param string $total
-     *
-     * @return string
+     * @inheritDoc
      */
     public function topTenOldestFemale(string $total = '10'): string
     {
@@ -1501,11 +1215,7 @@ class Stats implements
     }
 
     /**
-     * Find the oldest living females.
-     *
-     * @param string $total
-     *
-     * @return string
+     * @inheritDoc
      */
     public function topTenOldestFemaleList(string $total = '10'): string
     {
@@ -1513,11 +1223,7 @@ class Stats implements
     }
 
     /**
-     * Find the longest lived males.
-     *
-     * @param string $total
-     *
-     * @return string
+     * @inheritDoc
      */
     public function topTenOldestMale(string $total = '10'): string
     {
@@ -1525,11 +1231,7 @@ class Stats implements
     }
 
     /**
-     * Find the longest lived males.
-     *
-     * @param string $total
-     *
-     * @return string
+     * @inheritDoc
      */
     public function topTenOldestMaleList(string $total = '10'): string
     {
@@ -1537,11 +1239,7 @@ class Stats implements
     }
 
     /**
-     * Find the oldest living individuals.
-     *
-     * @param string|null $total
-     *
-     * @return string
+     * @inheritDoc
      */
     public function topTenOldestAlive(string $total = '10'): string
     {
@@ -1549,11 +1247,7 @@ class Stats implements
     }
 
     /**
-     * Find the oldest living individuals.
-     *
-     * @param string|null $total
-     *
-     * @return string
+     * @inheritDoc
      */
     public function topTenOldestListAlive(string $total = '10'): string
     {
@@ -1561,11 +1255,7 @@ class Stats implements
     }
 
     /**
-     * Find the oldest living females.
-     *
-     * @param string|null $total
-     *
-     * @return string
+     * @inheritDoc
      */
     public function topTenOldestFemaleAlive(string $total = '10'): string
     {
@@ -1573,11 +1263,7 @@ class Stats implements
     }
 
     /**
-     * Find the oldest living females.
-     *
-     * @param string|null $total
-     *
-     * @return string
+     * @inheritDoc
      */
     public function topTenOldestFemaleListAlive(string $total = '10'): string
     {
@@ -1585,11 +1271,7 @@ class Stats implements
     }
 
     /**
-     * Find the longest lived living males.
-     *
-     * @param string|null $total
-     *
-     * @return string
+     * @inheritDoc
      */
     public function topTenOldestMaleAlive(string $total = '10'): string
     {
@@ -1597,11 +1279,7 @@ class Stats implements
     }
 
     /**
-     * Find the longest lived living males.
-     *
-     * @param string|null $total
-     *
-     * @return string
+     * @inheritDoc
      */
     public function topTenOldestMaleListAlive(string $total = '10'): string
     {
@@ -1609,11 +1287,7 @@ class Stats implements
     }
 
     /**
-     * Find the average lifespan.
-     *
-     * @param bool $show_years
-     *
-     * @return string
+     * @inheritDoc
      */
     public function averageLifespan($show_years = false): string
     {
@@ -1621,11 +1295,7 @@ class Stats implements
     }
 
     /**
-     * Find the average lifespan of females.
-     *
-     * @param bool $show_years
-     *
-     * @return string
+     * @inheritDoc
      */
     public function averageLifespanFemale($show_years = false): string
     {
@@ -1633,11 +1303,7 @@ class Stats implements
     }
 
     /**
-     * Find the average male lifespan.
-     *
-     * @param bool $show_years
-     *
-     * @return string
+     * @inheritDoc
      */
     public function averageLifespanMale($show_years = false): string
     {
@@ -1645,7 +1311,7 @@ class Stats implements
     }
 
     /**
-     * @inheritdoc
+     * @inheritDoc
      */
     public function firstEvent(): string
     {
@@ -1725,9 +1391,7 @@ class Stats implements
     }
 
     /**
-     * Find the earliest marriage.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function firstMarriage(): string
     {
@@ -1735,9 +1399,7 @@ class Stats implements
     }
 
     /**
-     * Find the year of the earliest marriage.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function firstMarriageYear(): string
     {
@@ -1745,9 +1407,7 @@ class Stats implements
     }
 
     /**
-     * Find the names of spouses of the earliest marriage.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function firstMarriageName(): string
     {
@@ -1755,9 +1415,7 @@ class Stats implements
     }
 
     /**
-     * Find the place of the earliest marriage.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function firstMarriagePlace(): string
     {
@@ -1765,9 +1423,7 @@ class Stats implements
     }
 
     /**
-     * Find the latest marriage.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function lastMarriage(): string
     {
@@ -1775,9 +1431,7 @@ class Stats implements
     }
 
     /**
-     * Find the year of the latest marriage.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function lastMarriageYear(): string
     {
@@ -1785,9 +1439,7 @@ class Stats implements
     }
 
     /**
-     * Find the names of spouses of the latest marriage.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function lastMarriageName(): string
     {
@@ -1795,9 +1447,7 @@ class Stats implements
     }
 
     /**
-     * Find the location of the latest marriage.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function lastMarriagePlace(): string
     {
@@ -1805,14 +1455,7 @@ class Stats implements
     }
 
     /**
-     * General query on marriages.
-     *
-     * @param bool $simple
-     * @param bool $first
-     * @param int  $year1
-     * @param int  $year2
-     *
-     * @return array
+     * @inheritDoc
      */
     public function statsMarrQuery($simple = true, $first = false, $year1 = -1, $year2 = -1): array
     {
@@ -1820,13 +1463,7 @@ class Stats implements
     }
 
     /**
-     * General query on marriages.
-     *
-     * @param string|null $size
-     * @param string|null $color_from
-     * @param string|null $color_to
-     *
-     * @return string
+     * @inheritDoc
      */
     public function statsMarr(string $size = null, string $color_from = null, string $color_to = null): string
     {
@@ -1834,9 +1471,7 @@ class Stats implements
     }
 
     /**
-     * Find the earliest divorce.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function firstDivorce(): string
     {
@@ -1844,9 +1479,7 @@ class Stats implements
     }
 
     /**
-     * Find the year of the earliest divorce.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function firstDivorceYear(): string
     {
@@ -1854,9 +1487,7 @@ class Stats implements
     }
 
     /**
-     * Find the names of individuals in the earliest divorce.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function firstDivorceName(): string
     {
@@ -1864,9 +1495,7 @@ class Stats implements
     }
 
     /**
-     * Find the location of the earliest divorce.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function firstDivorcePlace(): string
     {
@@ -1874,9 +1503,7 @@ class Stats implements
     }
 
     /**
-     * Find the latest divorce.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function lastDivorce(): string
     {
@@ -1884,9 +1511,7 @@ class Stats implements
     }
 
     /**
-     * Find the year of the latest divorce.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function lastDivorceYear(): string
     {
@@ -1894,9 +1519,7 @@ class Stats implements
     }
 
     /**
-     * Find the names of the individuals in the latest divorce.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function lastDivorceName(): string
     {
@@ -1904,9 +1527,7 @@ class Stats implements
     }
 
     /**
-     * Find the location of the latest divorce.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function lastDivorcePlace(): string
     {
@@ -1914,13 +1535,7 @@ class Stats implements
     }
 
     /**
-     * General divorce query.
-     *
-     * @param string|null $size
-     * @param string|null $color_from
-     * @param string|null $color_to
-     *
-     * @return string
+     * @inheritDoc
      */
     public function statsDiv(string $size = null, string $color_from = null, string $color_to = null): string
     {
@@ -1928,9 +1543,7 @@ class Stats implements
     }
 
     /**
-     * Find the youngest wife.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function youngestMarriageFemale(): string
     {
@@ -1938,9 +1551,7 @@ class Stats implements
     }
 
     /**
-     * Find the name of the youngest wife.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function youngestMarriageFemaleName(): string
     {
@@ -1948,11 +1559,7 @@ class Stats implements
     }
 
     /**
-     * Find the age of the youngest wife.
-     *
-     * @param string $show_years
-     *
-     * @return string
+     * @inheritDoc
      */
     public function youngestMarriageFemaleAge(string $show_years = ''): string
     {
@@ -1960,9 +1567,7 @@ class Stats implements
     }
 
     /**
-     * Find the oldest wife.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function oldestMarriageFemale(): string
     {
@@ -1970,9 +1575,7 @@ class Stats implements
     }
 
     /**
-     * Find the name of the oldest wife.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function oldestMarriageFemaleName(): string
     {
@@ -1980,11 +1583,7 @@ class Stats implements
     }
 
     /**
-     * Find the age of the oldest wife.
-     *
-     * @param string $show_years
-     *
-     * @return string
+     * @inheritDoc
      */
     public function oldestMarriageFemaleAge(string $show_years = ''): string
     {
@@ -1992,9 +1591,7 @@ class Stats implements
     }
 
     /**
-     * Find the youngest husband.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function youngestMarriageMale(): string
     {
@@ -2002,9 +1599,7 @@ class Stats implements
     }
 
     /**
-     * Find the name of the youngest husband.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function youngestMarriageMaleName(): string
     {
@@ -2012,11 +1607,7 @@ class Stats implements
     }
 
     /**
-     * Find the age of the youngest husband.
-     *
-     * @param string $show_years
-     *
-     * @return string
+     * @inheritDoc
      */
     public function youngestMarriageMaleAge(string $show_years = ''): string
     {
@@ -2024,9 +1615,7 @@ class Stats implements
     }
 
     /**
-     * Find the oldest husband.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function oldestMarriageMale(): string
     {
@@ -2034,9 +1623,7 @@ class Stats implements
     }
 
     /**
-     * Find the name of the oldest husband.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function oldestMarriageMaleName(): string
     {
@@ -2044,11 +1631,7 @@ class Stats implements
     }
 
     /**
-     * Find the age of the oldest husband.
-     *
-     * @param string $show_years
-     *
-     * @return string
+     * @inheritDoc
      */
     public function oldestMarriageMaleAge(string $show_years = ''): string
     {
@@ -2056,14 +1639,7 @@ class Stats implements
     }
 
     /**
-     * General query on ages at marriage.
-     *
-     * @param bool   $simple
-     * @param string $sex
-     * @param int    $year1
-     * @param int    $year2
-     *
-     * @return array
+     * @inheritDoc
      */
     public function statsMarrAgeQuery($simple = true, $sex = 'M', $year1 = -1, $year2 = -1): array
     {
@@ -2071,11 +1647,7 @@ class Stats implements
     }
 
     /**
-     * General query on marriage ages.
-     *
-     * @param string $size
-     *
-     * @return string
+     * @inheritDoc
      */
     public function statsMarrAge(string $size = '200x250'): string
     {
@@ -2083,11 +1655,7 @@ class Stats implements
     }
 
     /**
-     * Find the age between husband and wife.
-     *
-     * @param string $total
-     *
-     * @return string
+     * @inheritDoc
      */
     public function ageBetweenSpousesMF(string $total = '10'): string
     {
@@ -2095,11 +1663,7 @@ class Stats implements
     }
 
     /**
-     * Find the age between husband and wife.
-     *
-     * @param string $total
-     *
-     * @return string
+     * @inheritDoc
      */
     public function ageBetweenSpousesMFList(string $total = '10'): string
     {
@@ -2107,11 +1671,7 @@ class Stats implements
     }
 
     /**
-     * Find the age between wife and husband..
-     *
-     * @param string $total
-     *
-     * @return string
+     * @inheritDoc
      */
     public function ageBetweenSpousesFM(string $total = '10'): string
     {
@@ -2119,11 +1679,7 @@ class Stats implements
     }
 
     /**
-     * Find the age between wife and husband..
-     *
-     * @param string $total
-     *
-     * @return string
+     * @inheritDoc
      */
     public function ageBetweenSpousesFMList(string $total = '10'): string
     {
@@ -2131,9 +1687,7 @@ class Stats implements
     }
 
     /**
-     * General query on marriage ages.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function topAgeOfMarriageFamily(): string
     {
@@ -2141,9 +1695,7 @@ class Stats implements
     }
 
     /**
-     * General query on marriage ages.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function topAgeOfMarriage(): string
     {
@@ -2151,11 +1703,7 @@ class Stats implements
     }
 
     /**
-     * General query on marriage ages.
-     *
-     * @param string $total
-     *
-     * @return string
+     * @inheritDoc
      */
     public function topAgeOfMarriageFamilies(string $total = '10'): string
     {
@@ -2163,11 +1711,7 @@ class Stats implements
     }
 
     /**
-     * General query on marriage ages.
-     *
-     * @param string $total
-     *
-     * @return string
+     * @inheritDoc
      */
     public function topAgeOfMarriageFamiliesList(string $total = '10'): string
     {
@@ -2175,9 +1719,7 @@ class Stats implements
     }
 
     /**
-     * General query on marriage ages.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function minAgeOfMarriageFamily(): string
     {
@@ -2185,9 +1727,7 @@ class Stats implements
     }
 
     /**
-     * General query on marriage ages.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function minAgeOfMarriage(): string
     {
@@ -2195,11 +1735,7 @@ class Stats implements
     }
 
     /**
-     * General query on marriage ages.
-     *
-     * @param string $total
-     *
-     * @return string
+     * @inheritDoc
      */
     public function minAgeOfMarriageFamilies(string $total = '10'): string
     {
@@ -2207,11 +1743,7 @@ class Stats implements
     }
 
     /**
-     * General query on marriage ages.
-     *
-     * @param string $total
-     *
-     * @return string
+     * @inheritDoc
      */
     public function minAgeOfMarriageFamiliesList(string $total = '10'): string
     {
@@ -2219,9 +1751,7 @@ class Stats implements
     }
 
     /**
-     * Find the youngest mother
-     *
-     * @return string
+     * @inheritDoc
      */
     public function youngestMother(): string
     {
@@ -2229,9 +1759,7 @@ class Stats implements
     }
 
     /**
-     * Find the name of the youngest mother.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function youngestMotherName(): string
     {
@@ -2239,11 +1767,7 @@ class Stats implements
     }
 
     /**
-     * Find the age of the youngest mother.
-     *
-     * @param string $show_years
-     *
-     * @return string
+     * @inheritDoc
      */
     public function youngestMotherAge(string $show_years = ''): string
     {
@@ -2251,9 +1775,7 @@ class Stats implements
     }
 
     /**
-     * Find the oldest mother.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function oldestMother(): string
     {
@@ -2261,9 +1783,7 @@ class Stats implements
     }
 
     /**
-     * Find the name of the oldest mother.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function oldestMotherName(): string
     {
@@ -2271,11 +1791,7 @@ class Stats implements
     }
 
     /**
-     * Find the age of the oldest mother.
-     *
-     * @param string $show_years
-     *
-     * @return string
+     * @inheritDoc
      */
     public function oldestMotherAge(string $show_years = ''): string
     {
@@ -2283,9 +1799,7 @@ class Stats implements
     }
 
     /**
-     * Find the youngest father.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function youngestFather(): string
     {
@@ -2293,9 +1807,7 @@ class Stats implements
     }
 
     /**
-     * Find the name of the youngest father.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function youngestFatherName(): string
     {
@@ -2303,11 +1815,7 @@ class Stats implements
     }
 
     /**
-     * Find the age of the youngest father.
-     *
-     * @param string $show_years
-     *
-     * @return string
+     * @inheritDoc
      */
     public function youngestFatherAge(string $show_years = ''): string
     {
@@ -2315,9 +1823,7 @@ class Stats implements
     }
 
     /**
-     * Find the oldest father.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function oldestFather(): string
     {
@@ -2325,9 +1831,7 @@ class Stats implements
     }
 
     /**
-     * Find the name of the oldest father.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function oldestFatherName(): string
     {
@@ -2335,11 +1839,7 @@ class Stats implements
     }
 
     /**
-     * Find the age of the oldest father.
-     *
-     * @param string $show_years
-     *
-     * @return string
+     * @inheritDoc
      */
     public function oldestFatherAge(string $show_years = ''): string
     {
@@ -2347,9 +1847,7 @@ class Stats implements
     }
 
     /**
-     * Number of husbands.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalMarriedMales(): string
     {
@@ -2357,9 +1855,7 @@ class Stats implements
     }
 
     /**
-     * Number of wives.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalMarriedFemales(): string
     {
@@ -2367,11 +1863,7 @@ class Stats implements
     }
 
     /**
-     * Find the month in the year of the birth of the first child.
-     *
-     * @param bool $sex
-     *
-     * @return stdClass[]
+     * @inheritDoc
      */
     public function monthFirstChildQuery(bool $sex = false): array
     {
@@ -2379,9 +1871,7 @@ class Stats implements
     }
 
     /**
-     * Find the family with the most children.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function largestFamily(): string
     {
@@ -2389,9 +1879,7 @@ class Stats implements
     }
 
     /**
-     * Find the number of children in the largest family.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function largestFamilySize(): string
     {
@@ -2399,9 +1887,7 @@ class Stats implements
     }
 
     /**
-     * Find the family with the most children.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function largestFamilyName(): string
     {
@@ -2409,11 +1895,7 @@ class Stats implements
     }
 
     /**
-     * The the families with the most children.
-     *
-     * @param string $total
-     *
-     * @return string
+     * @inheritDoc
      */
     public function topTenLargestFamily(string $total = '10'): string
     {
@@ -2421,11 +1903,7 @@ class Stats implements
     }
 
     /**
-     * Find the families with the most children.
-     *
-     * @param string $total
-     *
-     * @return string
+     * @inheritDoc
      */
     public function topTenLargestFamilyList(string $total = '10'): string
     {
@@ -2433,14 +1911,7 @@ class Stats implements
     }
 
     /**
-     * Create a chart of the largest families.
-     *
-     * @param string|null $size
-     * @param string|null $color_from
-     * @param string|null $color_to
-     * @param string      $total
-     *
-     * @return string
+     * @inheritDoc
      */
     public function chartLargestFamilies(
         string $size       = null,
@@ -2452,9 +1923,7 @@ class Stats implements
     }
 
     /**
-     * Count the total children.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalChildren(): string
     {
@@ -2462,9 +1931,7 @@ class Stats implements
     }
 
     /**
-     * Find the average number of children in families.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function averageChildren(): string
     {
@@ -2472,14 +1939,7 @@ class Stats implements
     }
 
     /**
-     * General query on familes/children.
-     *
-     * @param bool   $simple
-     * @param string $sex
-     * @param int    $year1
-     * @param int    $year2
-     *
-     * @return stdClass[]
+     * @inheritDoc
      */
     public function statsChildrenQuery($simple = true, $sex = 'BOTH', $year1 = -1, $year2 = -1): array
     {
@@ -2487,11 +1947,7 @@ class Stats implements
     }
 
     /**
-     * Genearl query on families/children.
-     *
-     * @param string $size
-     *
-     * @return string
+     * @inheritDoc
      */
     public function statsChildren(string $size = '220x200'): string
     {
@@ -2499,12 +1955,7 @@ class Stats implements
     }
 
     /**
-     * Find the names of siblings with the widest age gap.
-     *
-     * @param string $total
-     * @param string $one
-     *
-     * @return string
+     * @inheritDoc
      */
     public function topAgeBetweenSiblingsName(string $total = '10', string $one = ''): string
     {
@@ -2512,12 +1963,7 @@ class Stats implements
     }
 
     /**
-     * Find the widest age gap between siblings.
-     *
-     * @param string $total
-     * @param string $one
-     *
-     * @return string
+     * @inheritDoc
      */
     public function topAgeBetweenSiblings(string $total = '10', string $one = ''): string
     {
@@ -2525,12 +1971,7 @@ class Stats implements
     }
 
     /**
-     * Find the name of siblings with the widest age gap.
-     *
-     * @param string $total
-     * @param string $one
-     *
-     * @return string
+     * @inheritDoc
      */
     public function topAgeBetweenSiblingsFullName(string $total = '10', string $one = ''): string
     {
@@ -2538,12 +1979,7 @@ class Stats implements
     }
 
     /**
-     * Find the siblings with the widest age gaps.
-     *
-     * @param string $total
-     * @param string $one
-     *
-     * @return string
+     * @inheritDoc
      */
     public function topAgeBetweenSiblingsList(string $total = '10', string $one = ''): string
     {
@@ -2551,9 +1987,7 @@ class Stats implements
     }
 
     /**
-     * Find the families with no children.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function noChildrenFamilies(): string
     {
@@ -2561,11 +1995,7 @@ class Stats implements
     }
 
     /**
-     * Find the families with no children.
-     *
-     * @param string $type
-     *
-     * @return string
+     * @inheritDoc
      */
     public function noChildrenFamiliesList($type = 'list'): string
     {
@@ -2573,13 +2003,7 @@ class Stats implements
     }
 
     /**
-     * Create a chart of children with no families.
-     *
-     * @param string $size
-     * @param string $year1
-     * @param string $year2
-     *
-     * @return string
+     * @inheritDoc
      */
     public function chartNoChildrenFamilies(string $size = '220x200', $year1 = '-1', $year2 = '-1'): string
     {
@@ -2587,11 +2011,7 @@ class Stats implements
     }
 
     /**
-     * Find the couple with the most grandchildren.
-     *
-     * @param string $total
-     *
-     * @return string
+     * @inheritDoc
      */
     public function topTenLargestGrandFamily(string $total = '10'): string
     {
@@ -2599,11 +2019,7 @@ class Stats implements
     }
 
     /**
-     * Find the couple with the most grandchildren.
-     *
-     * @param string $total
-     *
-     * @return string
+     * @inheritDoc
      */
     public function topTenLargestGrandFamilyList(string $total = '10'): string
     {
@@ -2611,11 +2027,7 @@ class Stats implements
     }
 
     /**
-     * Find common surnames.
-     *
-     * @return string
-     *
-     * @deprecated
+     * @inheritDoc
      */
     public function getCommonSurname(): string
     {
@@ -2623,13 +2035,7 @@ class Stats implements
     }
 
     /**
-     * Find common surnames.
-     *
-     * @param string $threshold
-     * @param string $number_of_surnames
-     * @param string $sorting
-     *
-     * @return string
+     * @inheritDoc
      */
     public function commonSurnames(
         string $threshold = '1',
@@ -2640,13 +2046,7 @@ class Stats implements
     }
 
     /**
-     * Find common surnames.
-     *
-     * @param string $threshold
-     * @param string $number_of_surnames
-     * @param string $sorting
-     *
-     * @return string
+     * @inheritDoc
      */
     public function commonSurnamesTotals(
         string $threshold = '1',
@@ -2657,13 +2057,7 @@ class Stats implements
     }
 
     /**
-     * Find common surnames.
-     *
-     * @param string $threshold
-     * @param string $number_of_surnames
-     * @param string $sorting
-     *
-     * @return string
+     * @inheritDoc
      */
     public function commonSurnamesList(
         string $threshold = '1',
@@ -2674,13 +2068,7 @@ class Stats implements
     }
 
     /**
-     * Find common surnames.
-     *
-     * @param string $threshold
-     * @param string $number_of_surnames
-     * @param string $sorting
-     *
-     * @return string
+     * @inheritDoc
      */
     public function commonSurnamesListTotals(
         string $threshold = '1',
@@ -2691,14 +2079,7 @@ class Stats implements
     }
 
     /**
-     * Create a chart of common surnames.
-     *
-     * @param string|null $size
-     * @param string|null $color_from
-     * @param string|null $color_to
-     * @param string      $number_of_surnames
-     *
-     * @return string
+     * @inheritDoc
      */
     public function chartCommonSurnames(
         string $size = null,
@@ -2710,12 +2091,7 @@ class Stats implements
     }
 
     /**
-     * Find common give names.
-     *
-     * @param string $threshold
-     * @param string $maxtoshow
-     *
-     * @return string
+     * @inheritDoc
      */
     public function commonGiven(string $threshold = '1', string $maxtoshow = '10'): string
     {
@@ -2723,12 +2099,7 @@ class Stats implements
     }
 
     /**
-     * Find common give names.
-     *
-     * @param string $threshold
-     * @param string $maxtoshow
-     *
-     * @return string
+     * @inheritDoc
      */
     public function commonGivenTotals(string $threshold = '1', string $maxtoshow = '10'): string
     {
@@ -2736,12 +2107,7 @@ class Stats implements
     }
 
     /**
-     * Find common give names.
-     *
-     * @param string $threshold
-     * @param string $maxtoshow
-     *
-     * @return string
+     * @inheritDoc
      */
     public function commonGivenList(string $threshold = '1', string $maxtoshow = '10'): string
     {
@@ -2749,12 +2115,7 @@ class Stats implements
     }
 
     /**
-     * Find common give names.
-     *
-     * @param string $threshold
-     * @param string $maxtoshow
-     *
-     * @return string
+     * @inheritDoc
      */
     public function commonGivenListTotals(string $threshold = '1', string $maxtoshow = '10'): string
     {
@@ -2762,12 +2123,7 @@ class Stats implements
     }
 
     /**
-     * Find common give names.
-     *
-     * @param string $threshold
-     * @param string $maxtoshow
-     *
-     * @return string
+     * @inheritDoc
      */
     public function commonGivenTable(string $threshold = '1', string $maxtoshow = '10'): string
     {
@@ -2775,12 +2131,7 @@ class Stats implements
     }
 
     /**
-     * Find common give names of females.
-     *
-     * @param string $threshold
-     * @param string $maxtoshow
-     *
-     * @return string
+     * @inheritDoc
      */
     public function commonGivenFemale(string $threshold = '1', string $maxtoshow = '10'): string
     {
@@ -2788,12 +2139,7 @@ class Stats implements
     }
 
     /**
-     * Find common give names of females.
-     *
-     * @param string $threshold
-     * @param string $maxtoshow
-     *
-     * @return string
+     * @inheritDoc
      */
     public function commonGivenFemaleTotals(string $threshold = '1', string $maxtoshow = '10'): string
     {
@@ -2801,12 +2147,7 @@ class Stats implements
     }
 
     /**
-     * Find common give names of females.
-     *
-     * @param string $threshold
-     * @param string $maxtoshow
-     *
-     * @return string
+     * @inheritDoc
      */
     public function commonGivenFemaleList(string $threshold = '1', string $maxtoshow = '10'): string
     {
@@ -2814,12 +2155,7 @@ class Stats implements
     }
 
     /**
-     * Find common give names of females.
-     *
-     * @param string $threshold
-     * @param string $maxtoshow
-     *
-     * @return string
+     * @inheritDoc
      */
     public function commonGivenFemaleListTotals(string $threshold = '1', string $maxtoshow = '10'): string
     {
@@ -2827,12 +2163,7 @@ class Stats implements
     }
 
     /**
-     * Find common give names of females.
-     *
-     * @param string $threshold
-     * @param string $maxtoshow
-     *
-     * @return string
+     * @inheritDoc
      */
     public function commonGivenFemaleTable(string $threshold = '1', string $maxtoshow = '10'): string
     {
@@ -2840,12 +2171,7 @@ class Stats implements
     }
 
     /**
-     * Find common give names of males.
-     *
-     * @param string $threshold
-     * @param string $maxtoshow
-     *
-     * @return string
+     * @inheritDoc
      */
     public function commonGivenMale(string $threshold = '1', string $maxtoshow = '10'): string
     {
@@ -2853,12 +2179,7 @@ class Stats implements
     }
 
     /**
-     * Find common give names of males.
-     *
-     * @param string $threshold
-     * @param string $maxtoshow
-     *
-     * @return string
+     * @inheritDoc
      */
     public function commonGivenMaleTotals(string $threshold = '1', string $maxtoshow = '10'): string
     {
@@ -2866,12 +2187,7 @@ class Stats implements
     }
 
     /**
-     * Find common give names of males.
-     *
-     * @param string $threshold
-     * @param string $maxtoshow
-     *
-     * @return string
+     * @inheritDoc
      */
     public function commonGivenMaleList(string $threshold = '1', string $maxtoshow = '10'): string
     {
@@ -2879,12 +2195,7 @@ class Stats implements
     }
 
     /**
-     * Find common give names of males.
-     *
-     * @param string $threshold
-     * @param string $maxtoshow
-     *
-     * @return string
+     * @inheritDoc
      */
     public function commonGivenMaleListTotals(string $threshold = '1', string $maxtoshow = '10'): string
     {
@@ -2892,12 +2203,7 @@ class Stats implements
     }
 
     /**
-     * Find common give names of males.
-     *
-     * @param string $threshold
-     * @param string $maxtoshow
-     *
-     * @return string
+     * @inheritDoc
      */
     public function commonGivenMaleTable(string $threshold = '1', string $maxtoshow = '10'): string
     {
@@ -2905,12 +2211,7 @@ class Stats implements
     }
 
     /**
-     * Find common give names of unknown sexes.
-     *
-     * @param string $threshold
-     * @param string $maxtoshow
-     *
-     * @return string
+     * @inheritDoc
      */
     public function commonGivenUnknown(string $threshold = '1', string $maxtoshow = '10'): string
     {
@@ -2918,12 +2219,7 @@ class Stats implements
     }
 
     /**
-     * Find common give names of unknown sexes.
-     *
-     * @param string $threshold
-     * @param string $maxtoshow
-     *
-     * @return string
+     * @inheritDoc
      */
     public function commonGivenUnknownTotals(string $threshold = '1', string $maxtoshow = '10'): string
     {
@@ -2931,12 +2227,7 @@ class Stats implements
     }
 
     /**
-     * Find common give names of unknown sexes.
-     *
-     * @param string $threshold
-     * @param string $maxtoshow
-     *
-     * @return string
+     * @inheritDoc
      */
     public function commonGivenUnknownList(string $threshold = '1', string $maxtoshow = '10'): string
     {
@@ -2944,12 +2235,7 @@ class Stats implements
     }
 
     /**
-     * Find common give names of unknown sexes.
-     *
-     * @param string $threshold
-     * @param string $maxtoshow
-     *
-     * @return string
+     * @inheritDoc
      */
     public function commonGivenUnknownListTotals(string $threshold = '1', string $maxtoshow = '10'): string
     {
@@ -2957,12 +2243,7 @@ class Stats implements
     }
 
     /**
-     * Find common give names of unknown sexes.
-     *
-     * @param string $threshold
-     * @param string $maxtoshow
-     *
-     * @return string
+     * @inheritDoc
      */
     public function commonGivenUnknownTable(string $threshold = '1', string $maxtoshow = '10'): string
     {
@@ -2970,14 +2251,7 @@ class Stats implements
     }
 
     /**
-     * Create a chart of common given names.
-     *
-     * @param string|null $size
-     * @param string|null $color_from
-     * @param string|null $color_to
-     * @param string      $maxtoshow
-     *
-     * @return string
+     * @inheritDoc
      */
     public function chartCommonGiven(
         string $size       = null,
@@ -2989,9 +2263,7 @@ class Stats implements
     }
 
     /**
-     * Who is currently logged in?
-     *
-     * @return string
+     * @inheritDoc
      */
     public function usersLoggedIn(): string
     {
@@ -2999,9 +2271,7 @@ class Stats implements
     }
 
     /**
-     * Who is currently logged in?
-     *
-     * @return string
+     * @inheritDoc
      */
     public function usersLoggedInList(): string
     {
@@ -3009,9 +2279,7 @@ class Stats implements
     }
 
     /**
-     * Who is currently logged in?
-     *
-     * @return int
+     * @inheritDoc
      */
     public function usersLoggedInTotal(): int
     {
@@ -3019,9 +2287,7 @@ class Stats implements
     }
 
     /**
-     * Which visitors are currently logged in?
-     *
-     * @return int
+     * @inheritDoc
      */
     public function usersLoggedInTotalAnon(): int
     {
@@ -3029,9 +2295,7 @@ class Stats implements
     }
 
     /**
-     * Which visitors are currently logged in?
-     *
-     * @return int
+     * @inheritDoc
      */
     public function usersLoggedInTotalVisible(): int
     {
@@ -3039,9 +2303,7 @@ class Stats implements
     }
 
     /**
-     * Get the current user's ID.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function userId(): string
     {
@@ -3049,11 +2311,7 @@ class Stats implements
     }
 
     /**
-     * Get the current user's username.
-     *
-     * @param string $visitor_text
-     *
-     * @return string
+     * @inheritDoc
      */
     public function userName(string $visitor_text = ''): string
     {
@@ -3061,9 +2319,7 @@ class Stats implements
     }
 
     /**
-     * Get the current user's full name.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function userFullName(): string
     {
@@ -3071,9 +2327,7 @@ class Stats implements
     }
 
     /**
-     * Count the number of users.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalUsers(): string
     {
@@ -3081,9 +2335,7 @@ class Stats implements
     }
 
     /**
-     * Count the number of administrators.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalAdmins(): string
     {
@@ -3091,9 +2343,7 @@ class Stats implements
     }
 
     /**
-     * Count the number of administrators.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalNonAdmins(): string
     {
@@ -3101,9 +2351,7 @@ class Stats implements
     }
 
     /**
-     * Get the newest registered user's ID.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function latestUserId(): string
     {
@@ -3111,9 +2359,7 @@ class Stats implements
     }
 
     /**
-     * Get the newest registered user's username.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function latestUserName(): string
     {
@@ -3121,9 +2367,7 @@ class Stats implements
     }
 
     /**
-     * Get the newest registered user's real name.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function latestUserFullName(): string
     {
@@ -3131,11 +2375,7 @@ class Stats implements
     }
 
     /**
-     * Get the date of the newest user registration.
-     *
-     * @param string|null $format
-     *
-     * @return string
+     * @inheritDoc
      */
     public function latestUserRegDate(string $format = null): string
     {
@@ -3143,11 +2383,7 @@ class Stats implements
     }
 
     /**
-     * Find the timestamp of the latest user to register.
-     *
-     * @param string|null $format
-     *
-     * @return string
+     * @inheritDoc
      */
     public function latestUserRegTime(string $format = null): string
     {
@@ -3155,12 +2391,7 @@ class Stats implements
     }
 
     /**
-     * Is the most recently registered user logged in right now?
-     *
-     * @param string|null $yes
-     * @param string|null $no
-     *
-     * @return string
+     * @inheritDoc
      */
     public function latestUserLoggedin(string $yes = null, string $no = null): string
     {
@@ -3168,9 +2399,7 @@ class Stats implements
     }
 
     /**
-     * Create a link to contact the webmaster.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function contactWebmaster(): string
     {
@@ -3178,9 +2407,7 @@ class Stats implements
     }
 
     /**
-     * Create a link to contact the genealogy contact.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function contactGedcom(): string
     {
@@ -3188,9 +2415,7 @@ class Stats implements
     }
 
     /**
-     * What is the current date on the server?
-     *
-     * @return string
+     * @inheritDoc
      */
     public function serverDate(): string
     {
@@ -3198,9 +2423,7 @@ class Stats implements
     }
 
     /**
-     * What is the current time on the server (in 12 hour clock)?
-     *
-     * @return string
+     * @inheritDoc
      */
     public function serverTime(): string
     {
@@ -3208,9 +2431,7 @@ class Stats implements
     }
 
     /**
-     * What is the current time on the server (in 24 hour clock)?
-     *
-     * @return string
+     * @inheritDoc
      */
     public function serverTime24(): string
     {
@@ -3228,9 +2449,7 @@ class Stats implements
     }
 
     /**
-     * What is the client's date.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function browserDate(): string
     {
@@ -3238,9 +2457,7 @@ class Stats implements
     }
 
     /**
-     * What is the client's timestamp.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function browserTime(): string
     {
@@ -3248,9 +2465,7 @@ class Stats implements
     }
 
     /**
-     * What is the browser's tiemzone.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function browserTimezone(): string
     {
@@ -3258,11 +2473,7 @@ class Stats implements
     }
 
     /**
-     * How many times has a page been viewed.
-     *
-     * @param string $page_parameter
-     *
-     * @return string
+     * @inheritDoc
      */
     public function hitCount(string $page_parameter = ''): string
     {
@@ -3270,11 +2481,7 @@ class Stats implements
     }
 
     /**
-     * How many times has a page been viewed.
-     *
-     * @param string $page_parameter
-     *
-     * @return string
+     * @inheritDoc
      */
     public function hitCountUser(string $page_parameter = ''): string
     {
@@ -3282,11 +2489,7 @@ class Stats implements
     }
 
     /**
-     * How many times has a page been viewed.
-     *
-     * @param string $page_parameter
-     *
-     * @return string
+     * @inheritDoc
      */
     public function hitCountIndi(string $page_parameter = ''): string
     {
@@ -3294,11 +2497,7 @@ class Stats implements
     }
 
     /**
-     * How many times has a page been viewed.
-     *
-     * @param string $page_parameter
-     *
-     * @return string
+     * @inheritDoc
      */
     public function hitCountFam(string $page_parameter = ''): string
     {
@@ -3306,11 +2505,7 @@ class Stats implements
     }
 
     /**
-     * How many times has a page been viewed.
-     *
-     * @param string $page_parameter
-     *
-     * @return string
+     * @inheritDoc
      */
     public function hitCountSour(string $page_parameter = ''): string
     {
@@ -3318,11 +2513,7 @@ class Stats implements
     }
 
     /**
-     * How many times has a page been viewed.
-     *
-     * @param string $page_parameter
-     *
-     * @return string
+     * @inheritDoc
      */
     public function hitCountRepo(string $page_parameter = ''): string
     {
@@ -3330,11 +2521,7 @@ class Stats implements
     }
 
     /**
-     * How many times has a page been viewed.
-     *
-     * @param string $page_parameter
-     *
-     * @return string
+     * @inheritDoc
      */
     public function hitCountNote(string $page_parameter = ''): string
     {
@@ -3342,11 +2529,7 @@ class Stats implements
     }
 
     /**
-     * How many times has a page been viewed.
-     *
-     * @param string $page_parameter
-     *
-     * @return string
+     * @inheritDoc
      */
     public function hitCountObje(string $page_parameter = ''): string
     {
@@ -3354,9 +2537,7 @@ class Stats implements
     }
 
     /**
-     * Find the favorites for the tree.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function gedcomFavorites(): string
     {
@@ -3364,9 +2545,7 @@ class Stats implements
     }
 
     /**
-     * Find the favorites for the user.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function userFavorites(): string
     {
@@ -3374,9 +2553,7 @@ class Stats implements
     }
 
     /**
-     * Find the number of favorites for the tree.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalGedcomFavorites(): string
     {
@@ -3384,9 +2561,7 @@ class Stats implements
     }
 
     /**
-     * Find the number of favorites for the user.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalUserFavorites(): string
     {
@@ -3394,9 +2569,7 @@ class Stats implements
     }
 
     /**
-     * How many messages in the user's inbox.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalUserMessages(): string
     {
@@ -3404,9 +2577,7 @@ class Stats implements
     }
 
     /**
-     * How many blog entries exist for this user.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalUserJournal(): string
     {
@@ -3414,9 +2585,7 @@ class Stats implements
     }
 
     /**
-     * How many news items exist for this tree.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalGedcomNews(): string
     {

@@ -30,7 +30,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Query\Builder;
 
 /**
- * Statistics repository providing event related methods.
+ * A repository providing methods for event related statistics.
  */
 class EventRepository implements EventRepositoryInterface
 {

@@ -18,7 +18,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Statistics\Repository\Interfaces;
 
 /**
- * Statistics repository providing event related methods.
+ * A repository providing methods for event related statistics.
  */
 interface EventRepositoryInterface
 {

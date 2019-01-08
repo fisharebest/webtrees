@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 
 /**
- * Statistics submodule providing all USER related methods.
+ * A repository providing methods for user related statistics.
  */
 class UserRepository implements UserRepositoryInterface
 {
@@ -101,7 +101,9 @@ class UserRepository implements UserRepositoryInterface
                     $content .= e($user->getRealName()) . ' - ' . e($user->getUserName());
                 }
 
-                if (Auth::id() !== $user->id() && $user->getPreference('contactmethod') !== 'none') {
+                if (($user->getPreference('contactmethod') !== 'none')
+                    && (Auth::id() !== $user->id())
+                ) {
                     if ($type === 'list') {
                         $content .= '<br>';
                     }
@@ -153,9 +155,7 @@ class UserRepository implements UserRepositoryInterface
     }
 
     /**
-     * Who is currently logged in?
-     *
-     * @return string
+     * @inheritDoc
      */
     public function usersLoggedIn(): string
     {
@@ -163,9 +163,7 @@ class UserRepository implements UserRepositoryInterface
     }
 
     /**
-     * Who is currently logged in?
-     *
-     * @return string
+     * @inheritDoc
      */
     public function usersLoggedInList(): string
     {
@@ -173,9 +171,7 @@ class UserRepository implements UserRepositoryInterface
     }
 
     /**
-     * Who is currently logged in?
-     *
-     * @return int
+     * @inheritDoc
      */
     public function usersLoggedInTotal(): int
     {
@@ -183,9 +179,7 @@ class UserRepository implements UserRepositoryInterface
     }
 
     /**
-     * Which visitors are currently logged in?
-     *
-     * @return int
+     * @inheritDoc
      */
     public function usersLoggedInTotalAnon(): int
     {
@@ -193,9 +187,7 @@ class UserRepository implements UserRepositoryInterface
     }
 
     /**
-     * Which visitors are currently logged in?
-     *
-     * @return int
+     * @inheritDoc
      */
     public function usersLoggedInTotalVisible(): int
     {
@@ -203,9 +195,7 @@ class UserRepository implements UserRepositoryInterface
     }
 
     /**
-     * Get the current user's ID.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function userId(): string
     {
@@ -213,11 +203,7 @@ class UserRepository implements UserRepositoryInterface
     }
 
     /**
-     * Get the current user's username.
-     *
-     * @param string $visitor_text
-     *
-     * @return string
+     * @inheritDoc
      */
     public function userName(string $visitor_text = ''): string
     {
@@ -230,9 +216,7 @@ class UserRepository implements UserRepositoryInterface
     }
 
     /**
-     * Get the current user's full name.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function userFullName(): string
     {
@@ -240,9 +224,7 @@ class UserRepository implements UserRepositoryInterface
     }
 
     /**
-     * Count the number of users.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalUsers(): string
     {
@@ -252,9 +234,7 @@ class UserRepository implements UserRepositoryInterface
     }
 
     /**
-     * Count the number of administrators.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalAdmins(): string
     {
@@ -262,9 +242,7 @@ class UserRepository implements UserRepositoryInterface
     }
 
     /**
-     * Count the number of administrators.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalNonAdmins(): string
     {

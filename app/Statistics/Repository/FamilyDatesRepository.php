@@ -27,7 +27,7 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 
 /**
- * Statistics submodule providing all methods related to family dates (birth, death, marriage, divorce).
+ * A repository providing methods for family dates related statistics (birth, death, marriage, divorce).
  */
 class FamilyDatesRepository implements FamilyDatesRepositoryInterface
 {
@@ -144,9 +144,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
     }
 
     /**
-     * Find the earliest birth.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function firstBirth(): string
     {
@@ -154,9 +152,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
     }
 
     /**
-     * Find the earliest birth year.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function firstBirthYear(): string
     {
@@ -164,9 +160,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
     }
 
     /**
-     * Find the name of the earliest birth.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function firstBirthName(): string
     {
@@ -174,9 +168,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
     }
 
     /**
-     * Find the earliest birth place.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function firstBirthPlace(): string
     {
@@ -184,9 +176,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
     }
 
     /**
-     * Find the latest birth.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function lastBirth(): string
     {
@@ -194,9 +184,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
     }
 
     /**
-     * Find the latest birth year.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function lastBirthYear(): string
     {
@@ -204,9 +192,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
     }
 
     /**
-     * Find the latest birth name.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function lastBirthName(): string
     {
@@ -214,9 +200,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
     }
 
     /**
-     * Find the latest birth place.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function lastBirthPlace(): string
     {
@@ -224,9 +208,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
     }
 
     /**
-     * Find the earliest death.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function firstDeath(): string
     {
@@ -234,9 +216,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
     }
 
     /**
-     * Find the earliest death year.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function firstDeathYear(): string
     {
@@ -244,9 +224,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
     }
 
     /**
-     * Find the earliest death name.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function firstDeathName(): string
     {
@@ -254,9 +232,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
     }
 
     /**
-     * Find the earliest death place.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function firstDeathPlace(): string
     {
@@ -264,9 +240,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
     }
 
     /**
-     * Find the latest death.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function lastDeath(): string
     {
@@ -274,9 +248,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
     }
 
     /**
-     * Find the latest death year.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function lastDeathYear(): string
     {
@@ -284,9 +256,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
     }
 
     /**
-     * Find the latest death name.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function lastDeathName(): string
     {
@@ -294,9 +264,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
     }
 
     /**
-     * Find the place of the latest death.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function lastDeathPlace(): string
     {
@@ -304,9 +272,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
     }
 
     /**
-     * Find the earliest marriage.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function firstMarriage(): string
     {
@@ -314,9 +280,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
     }
 
     /**
-     * Find the year of the earliest marriage.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function firstMarriageYear(): string
     {
@@ -324,9 +288,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
     }
 
     /**
-     * Find the names of spouses of the earliest marriage.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function firstMarriageName(): string
     {
@@ -334,9 +296,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
     }
 
     /**
-     * Find the place of the earliest marriage.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function firstMarriagePlace(): string
     {
@@ -344,9 +304,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
     }
 
     /**
-     * Find the latest marriage.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function lastMarriage(): string
     {
@@ -354,9 +312,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
     }
 
     /**
-     * Find the year of the latest marriage.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function lastMarriageYear(): string
     {
@@ -364,9 +320,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
     }
 
     /**
-     * Find the names of spouses of the latest marriage.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function lastMarriageName(): string
     {
@@ -374,9 +328,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
     }
 
     /**
-     * Find the location of the latest marriage.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function lastMarriagePlace(): string
     {
@@ -384,9 +336,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
     }
 
     /**
-     * Find the earliest divorce.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function firstDivorce(): string
     {
@@ -394,9 +344,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
     }
 
     /**
-     * Find the year of the earliest divorce.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function firstDivorceYear(): string
     {
@@ -404,9 +352,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
     }
 
     /**
-     * Find the names of individuals in the earliest divorce.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function firstDivorceName(): string
     {
@@ -414,9 +360,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
     }
 
     /**
-     * Find the location of the earliest divorce.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function firstDivorcePlace(): string
     {
@@ -424,9 +368,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
     }
 
     /**
-     * Find the latest divorce.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function lastDivorce(): string
     {
@@ -434,9 +376,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
     }
 
     /**
-     * Find the year of the latest divorce.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function lastDivorceYear(): string
     {
@@ -444,9 +384,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
     }
 
     /**
-     * Find the names of the individuals in the latest divorce.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function lastDivorceName(): string
     {
@@ -454,9 +392,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
     }
 
     /**
-     * Find the location of the latest divorce.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function lastDivorcePlace(): string
     {

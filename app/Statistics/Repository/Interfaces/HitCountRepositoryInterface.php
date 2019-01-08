@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 
 /**
- * Statistics submodule providing all HITCOUNT related methods.
+ * A repository providing methods for hit count related statistics.
  */
 interface HitCountRepositoryInterface
 {

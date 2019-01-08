@@ -25,7 +25,7 @@ use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 
 /**
- * Statistics submodule providing all HITCOUNT related methods.
+ * A repository providing methods for hit count related statistics.
  */
 class HitCountRepository implements HitCountRepositoryInterface
 {
@@ -74,11 +74,7 @@ class HitCountRepository implements HitCountRepositoryInterface
     }
 
     /**
-     * How many times has a page been viewed.
-     *
-     * @param string $page_parameter
-     *
-     * @return string
+     * @inheritDoc
      */
     public function hitCount(string $page_parameter = ''): string
     {
@@ -86,11 +82,7 @@ class HitCountRepository implements HitCountRepositoryInterface
     }
 
     /**
-     * How many times has a page been viewed.
-     *
-     * @param string $page_parameter
-     *
-     * @return string
+     * @inheritDoc
      */
     public function hitCountUser(string $page_parameter = ''): string
     {
@@ -98,11 +90,7 @@ class HitCountRepository implements HitCountRepositoryInterface
     }
 
     /**
-     * How many times has a page been viewed.
-     *
-     * @param string $page_parameter
-     *
-     * @return string
+     * @inheritDoc
      */
     public function hitCountIndi(string $page_parameter = ''): string
     {
@@ -110,11 +98,7 @@ class HitCountRepository implements HitCountRepositoryInterface
     }
 
     /**
-     * How many times has a page been viewed.
-     *
-     * @param string $page_parameter
-     *
-     * @return string
+     * @inheritDoc
      */
     public function hitCountFam(string $page_parameter = ''): string
     {
@@ -122,11 +106,7 @@ class HitCountRepository implements HitCountRepositoryInterface
     }
 
     /**
-     * How many times has a page been viewed.
-     *
-     * @param string $page_parameter
-     *
-     * @return string
+     * @inheritDoc
      */
     public function hitCountSour(string $page_parameter = ''): string
     {
@@ -134,11 +114,7 @@ class HitCountRepository implements HitCountRepositoryInterface
     }
 
     /**
-     * How many times has a page been viewed.
-     *
-     * @param string $page_parameter
-     *
-     * @return string
+     * @inheritDoc
      */
     public function hitCountRepo(string $page_parameter = ''): string
     {
@@ -146,11 +122,7 @@ class HitCountRepository implements HitCountRepositoryInterface
     }
 
     /**
-     * How many times has a page been viewed.
-     *
-     * @param string $page_parameter
-     *
-     * @return string
+     * @inheritDoc
      */
     public function hitCountNote(string $page_parameter = ''): string
     {
@@ -158,11 +130,7 @@ class HitCountRepository implements HitCountRepositoryInterface
     }
 
     /**
-     * How many times has a page been viewed.
-     *
-     * @param string $page_parameter
-     *
-     * @return string
+     * @inheritDoc
      */
     public function hitCountObje(string $page_parameter = ''): string
     {

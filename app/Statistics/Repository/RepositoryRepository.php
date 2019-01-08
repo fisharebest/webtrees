@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 
 /**
- * Statistics submodule providing all REPOSITORY related methods.
+ * A repository providing methods for repository related statistics.
  */
 class RepositoryRepository implements RepositoryRepositoryInterface
 {
@@ -57,9 +57,7 @@ class RepositoryRepository implements RepositoryRepositoryInterface
     }
 
     /**
-     * Count the number of repositories
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalRepositories(): string
     {
@@ -67,9 +65,7 @@ class RepositoryRepository implements RepositoryRepositoryInterface
     }
 
     /**
-     * Show the total number of repositories as a percentage.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalRepositoriesPercentage(): string
     {

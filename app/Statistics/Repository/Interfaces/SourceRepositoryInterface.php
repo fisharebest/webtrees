@@ -18,7 +18,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Statistics\Repository\Interfaces;
 
 /**
- * Statistics submodule providing all SOURCE related methods.
+ * A repository providing methods for source related statistics.
  */
 interface SourceRepositoryInterface
 {

@@ -25,7 +25,7 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 
 /**
- * Statistics submodule providing all MEDIA related methods.
+ * A repository providing methods for media type related statistics.
  */
 class MediaRepository implements MediaRepositoryInterface
 {
@@ -120,9 +120,7 @@ class MediaRepository implements MediaRepositoryInterface
     }
 
     /**
-     * Count the number of media records.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalMedia(): string
     {
@@ -130,9 +128,7 @@ class MediaRepository implements MediaRepositoryInterface
     }
 
     /**
-     * Count the number of media records with type "audio".
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalMediaAudio(): string
     {
@@ -140,9 +136,7 @@ class MediaRepository implements MediaRepositoryInterface
     }
 
     /**
-     * Count the number of media records with type "book".
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalMediaBook(): string
     {
@@ -150,9 +144,7 @@ class MediaRepository implements MediaRepositoryInterface
     }
 
     /**
-     * Count the number of media records with type "card".
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalMediaCard(): string
     {
@@ -160,9 +152,7 @@ class MediaRepository implements MediaRepositoryInterface
     }
 
     /**
-     * Count the number of media records with type "certificate".
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalMediaCertificate(): string
     {
@@ -170,9 +160,7 @@ class MediaRepository implements MediaRepositoryInterface
     }
 
     /**
-     * Count the number of media records with type "coat of arms".
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalMediaCoatOfArms(): string
     {
@@ -180,9 +168,7 @@ class MediaRepository implements MediaRepositoryInterface
     }
 
     /**
-     * Count the number of media records with type "document".
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalMediaDocument(): string
     {
@@ -190,9 +176,7 @@ class MediaRepository implements MediaRepositoryInterface
     }
 
     /**
-     * Count the number of media records with type "electronic".
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalMediaElectronic(): string
     {
@@ -200,9 +184,7 @@ class MediaRepository implements MediaRepositoryInterface
     }
 
     /**
-     * Count the number of media records with type "magazine".
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalMediaMagazine(): string
     {
@@ -210,9 +192,7 @@ class MediaRepository implements MediaRepositoryInterface
     }
 
     /**
-     * Count the number of media records with type "manuscript".
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalMediaManuscript(): string
     {
@@ -220,9 +200,7 @@ class MediaRepository implements MediaRepositoryInterface
     }
 
     /**
-     * Count the number of media records with type "map".
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalMediaMap(): string
     {
@@ -230,9 +208,7 @@ class MediaRepository implements MediaRepositoryInterface
     }
 
     /**
-     * Count the number of media records with type "microfiche".
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalMediaFiche(): string
     {
@@ -240,9 +216,7 @@ class MediaRepository implements MediaRepositoryInterface
     }
 
     /**
-     * Count the number of media records with type "microfilm".
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalMediaFilm(): string
     {
@@ -250,9 +224,7 @@ class MediaRepository implements MediaRepositoryInterface
     }
 
     /**
-     * Count the number of media records with type "newspaper".
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalMediaNewspaper(): string
     {
@@ -260,9 +232,7 @@ class MediaRepository implements MediaRepositoryInterface
     }
 
     /**
-     * Count the number of media records with type "painting".
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalMediaPainting(): string
     {
@@ -270,9 +240,7 @@ class MediaRepository implements MediaRepositoryInterface
     }
 
     /**
-     * Count the number of media records with type "photograph".
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalMediaPhoto(): string
     {
@@ -280,9 +248,7 @@ class MediaRepository implements MediaRepositoryInterface
     }
 
     /**
-     * Count the number of media records with type "tombstone".
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalMediaTombstone(): string
     {
@@ -290,9 +256,7 @@ class MediaRepository implements MediaRepositoryInterface
     }
 
     /**
-     * Count the number of media records with type "video".
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalMediaVideo(): string
     {
@@ -300,9 +264,7 @@ class MediaRepository implements MediaRepositoryInterface
     }
 
     /**
-     * Count the number of media records with type "other".
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalMediaOther(): string
     {
@@ -310,9 +272,7 @@ class MediaRepository implements MediaRepositoryInterface
     }
 
     /**
-     * Count the number of media records with type "unknown".
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalMediaUnknown(): string
     {
@@ -320,13 +280,7 @@ class MediaRepository implements MediaRepositoryInterface
     }
 
     /**
-     * Create a chart of media types.
-     *
-     * @param string|null $size
-     * @param string|null $color_from
-     * @param string|null $color_to
-     *
-     * @return string
+     * @inheritDoc
      */
     public function chartMedia(string $size = null, string $color_from = null, string $color_to = null): string
     {

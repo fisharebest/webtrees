@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 
 /**
- * Statistics submodule providing all NOTE related methods.
+ * A repository providing methods for note related statistics.
  */
 class NoteRepository implements NoteRepositoryInterface
 {
@@ -57,9 +57,7 @@ class NoteRepository implements NoteRepositoryInterface
     }
 
     /**
-     * Count the number of notes.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalNotes(): string
     {
@@ -67,9 +65,7 @@ class NoteRepository implements NoteRepositoryInterface
     }
 
     /**
-     * Show the number of notes as a percentage.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalNotesPercentage(): string
     {

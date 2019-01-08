@@ -25,7 +25,7 @@ use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 
 /**
- * Statistics submodule providing all SEX related methods.
+ * A repository providing methods for sex related statistics.
  */
 class SexRepository implements SexRepositoryInterface
 {
@@ -90,9 +90,7 @@ class SexRepository implements SexRepositoryInterface
     }
 
     /**
-     * Count the number of males.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalSexMales(): string
     {
@@ -100,9 +98,7 @@ class SexRepository implements SexRepositoryInterface
     }
 
     /**
-     * Count the number of males
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalSexMalesPercentage(): string
     {
@@ -110,9 +106,7 @@ class SexRepository implements SexRepositoryInterface
     }
 
     /**
-     * Count the number of females.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalSexFemales(): string
     {
@@ -120,9 +114,7 @@ class SexRepository implements SexRepositoryInterface
     }
 
     /**
-     * Count the number of females.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalSexFemalesPercentage(): string
     {
@@ -130,9 +122,7 @@ class SexRepository implements SexRepositoryInterface
     }
 
     /**
-     * Count the number of individuals with unknown sex.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalSexUnknown(): string
     {
@@ -140,9 +130,7 @@ class SexRepository implements SexRepositoryInterface
     }
 
     /**
-     * Count the number of individuals with unknown sex.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function totalSexUnknownPercentage(): string
     {
@@ -150,14 +138,7 @@ class SexRepository implements SexRepositoryInterface
     }
 
     /**
-     * Generate a chart showing sex distribution.
-     *
-     * @param string|null $size
-     * @param string|null $color_female
-     * @param string|null $color_male
-     * @param string|null $color_unknown
-     *
-     * @return string
+     * @inheritDoc
      */
     public function chartSex(
         string $size          = null,

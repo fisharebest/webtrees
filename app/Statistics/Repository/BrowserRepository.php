@@ -22,14 +22,12 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\BrowserRepositoryInterface;
 
 /**
- * Statistics submodule providing all BROWSER related methods.
+ * A repository providing methods for browser related statistics.
  */
 class BrowserRepository implements BrowserRepositoryInterface
 {
     /**
-     * What is the client's date.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function browserDate(): string
     {
@@ -37,9 +35,7 @@ class BrowserRepository implements BrowserRepositoryInterface
     }
 
     /**
-     * What is the client's timestamp.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function browserTime(): string
     {
@@ -50,9 +46,7 @@ class BrowserRepository implements BrowserRepositoryInterface
     }
 
     /**
-     * What is the browser's tiemzone.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function browserTimezone(): string
     {
