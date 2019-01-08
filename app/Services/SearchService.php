@@ -71,7 +71,7 @@ class SearchService
             ->select(['families.f_id', 'families.f_gedcom', 'husb_name.n_sort', 'wife_name.n_sort'])
             ->distinct();
 
-        $row_mapper = $this->familyRowMapper($tree);
+        $row_mapper = Family::rowMapper($tree);
 
         return $this->paginateQuery($query, $row_mapper, $offset, $limit);
     }
@@ -99,7 +99,7 @@ class SearchService
             ->select(['individuals.i_id', 'individuals.i_gedcom', 'n_sort'])
             ->distinct();
 
-        $row_mapper = $this->individualRowMapper($tree);
+        $row_mapper = Individual::rowMapper($tree);
 
         return $this->paginateQuery($query, $row_mapper, $offset, $limit);
     }
@@ -131,7 +131,7 @@ class SearchService
             ->select(['media.m_id', 'media.m_gedcom'])
             ->distinct();
 
-        $row_mapper = $this->mediaRowMapper($tree);
+        $row_mapper = Media::rowMapper($tree);
 
         return $this->paginateQuery($query, $row_mapper, $offset, $limit);
     }
@@ -155,7 +155,7 @@ class SearchService
             ->orderBy('o_id')
             ->select(['o_id', 'o_gedcom']);
 
-        $row_mapper = $this->noteRowMapper($tree);
+        $row_mapper = Note::rowMapper($tree);
 
         return $this->paginateQuery($query, $row_mapper, $offset, $limit);
     }
@@ -179,7 +179,7 @@ class SearchService
             ->orderBy('o_id')
             ->select(['o_id', 'o_gedcom']);
 
-        $row_mapper = $this->repositoryRowMapper($tree);
+        $row_mapper = Repository::rowMapper($tree);
 
         return $this->paginateQuery($query, $row_mapper, $offset, $limit);
     }
@@ -202,7 +202,7 @@ class SearchService
             ->orderBy('s_name')
             ->select(['s_id', 's_gedcom']);
 
-        $row_mapper = $this->sourceRowMapper($tree);
+        $row_mapper = Source::rowMapper($tree);
 
         return $this->paginateQuery($query, $row_mapper, $offset, $limit);
     }
@@ -226,7 +226,7 @@ class SearchService
             ->orderBy('o_id')
             ->select(['o_id', 'o_gedcom']);
 
-        $row_mapper = $this->submitterRowMapper($tree);
+        $row_mapper = GedcomRecord::rowMapper($tree);
 
         return $this->paginateQuery($query, $row_mapper, $offset, $limit);
     }
@@ -266,103 +266,5 @@ class SearchService
         }
 
         return $collection;
-    }
-
-    /**
-     * A closure to map a database row to a family.
-     *
-     * @param Tree $tree
-     *
-     * @return Closure
-     */
-    private function familyRowMapper(Tree $tree): Closure
-    {
-        return function (stdClass $row) use ($tree): Family {
-            return Family::getInstance($row->f_id, $tree, $row->f_gedcom);
-        };
-    }
-
-    /**
-     * A closure to map a database row to an individual.
-     *
-     * @param Tree $tree
-     *
-     * @return Closure
-     */
-    private function individualRowMapper(Tree $tree): Closure
-    {
-        return function (stdClass $row) use ($tree): Individual {
-            return Individual::getInstance($row->i_id, $tree, $row->i_gedcom);
-        };
-    }
-
-    /**
-     * A closure to map a database row to a media object.
-     *
-     * @param Tree $tree
-     *
-     * @return Closure
-     */
-    private function mediaRowMapper(Tree $tree): Closure
-    {
-        return function (stdClass $row) use ($tree): Media {
-            return Media::getInstance($row->m_id, $tree, $row->m_gedcom);
-        };
-    }
-
-    /**
-     * A closure to map a database row to a note.
-     *
-     * @param Tree $tree
-     *
-     * @return Closure
-     */
-    private function noteRowMapper(Tree $tree): Closure
-    {
-        return function (stdClass $row) use ($tree): GedcomRecord {
-            return Note::getInstance($row->o_id, $tree, $row->o_gedcom);
-        };
-    }
-
-    /**
-     * A closure to map a database row to a repository.
-     *
-     * @param Tree $tree
-     *
-     * @return Closure
-     */
-    private function repositoryRowMapper(Tree $tree): Closure
-    {
-        return function (stdClass $row) use ($tree): GedcomRecord {
-            return Repository::getInstance($row->o_id, $tree, $row->o_gedcom);
-        };
-    }
-
-    /**
-     * A closure to map a database row to an source.
-     *
-     * @param Tree $tree
-     *
-     * @return Closure
-     */
-    private function sourceRowMapper(Tree $tree): Closure
-    {
-        return function (stdClass $row) use ($tree): Source {
-            return Source::getInstance($row->s_id, $tree, $row->s_gedcom);
-        };
-    }
-
-    /**
-     * A closure to map a database row to a submitter.
-     *
-     * @param Tree $tree
-     *
-     * @return Closure
-     */
-    private function submitterRowMapper(Tree $tree): Closure
-    {
-        return function (stdClass $row) use ($tree): GedcomRecord {
-            return GedcomRecord::getInstance($row->o_id, $tree, $row->o_gedcom);
-        };
     }
 }

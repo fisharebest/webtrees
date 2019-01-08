@@ -19,6 +19,7 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
+use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Media;
@@ -31,6 +32,7 @@ use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Support\Collection;
 use stdClass;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -589,20 +591,17 @@ class ListController extends AbstractBaseController
      *
      * @param Tree $tree
      *
-     * @return array
+     * @return Collection|Note[]
      */
-    private function allNotes(Tree $tree): array
+    private function allNotes(Tree $tree): Collection
     {
         return DB::table('other')
             ->where('o_file', '=', $tree->id())
             ->where('o_type', '=', 'NOTE')
             ->select(['o_id', 'o_gedcom'])
             ->get()
-            ->map(function (stdClass $row) use ($tree): Note {
-                return Note::getInstance($row->o_id, $tree, $row->o_gedcom);
-            })->filter(function (Note $note): bool {
-                return $note->canShow();
-            })->all();
+            ->map(Note::rowMapper($tree))
+            ->filter(GedcomRecord::filter());
     }
 
     /**
@@ -610,20 +609,17 @@ class ListController extends AbstractBaseController
      *
      * @param Tree $tree
      *
-     * @return array
+     * @return Collection|Repository[]
      */
-    private function allRepositories(Tree $tree): array
+    private function allRepositories(Tree $tree): Collection
     {
         return DB::table('other')
             ->where('o_file', '=', $tree->id())
             ->where('o_type', '=', 'REPO')
             ->select(['o_id', 'o_gedcom'])
             ->get()
-            ->map(function (stdClass $row) use ($tree): Repository {
-                return Repository::getInstance($row->o_id, $tree, $row->o_gedcom);
-            })->filter(function (Repository $repository): bool {
-                return $repository->canShow();
-            })->all();
+            ->map(Repository::rowMapper($tree))
+            ->filter(GedcomRecord::filter());
     }
 
     /**
@@ -631,19 +627,16 @@ class ListController extends AbstractBaseController
      *
      * @param Tree $tree
      *
-     * @return array
+     * @return Collection|Source[]
      */
-    private function allSources(Tree $tree): array
+    private function allSources(Tree $tree): Collection
     {
         return DB::table('sources')
             ->where('s_file', '=', $tree->id())
             ->select(['s_id', 's_gedcom'])
             ->get()
-            ->map(function (stdClass $row) use ($tree): Source {
-                return Source::getInstance($row->s_id, $tree, $row->s_gedcom);
-            })->filter(function (Source $source): bool {
-                return $source->canShow();
-            })->all();
+            ->map(Source::rowMapper($tree))
+            ->filter(GedcomRecord::filter());
     }
 
     /**

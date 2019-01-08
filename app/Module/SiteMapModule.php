@@ -28,6 +28,7 @@ use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Support\Collection;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -217,9 +218,9 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
      * @param int    $limit
      * @param int    $offset
      *
-     * @return array
+     * @return Collection|GedcomRecord[]
      */
-    private function sitemapRecords(Tree $tree, string $type, int $limit, int $offset): array
+    private function sitemapRecords(Tree $tree, string $type, int $limit, int $offset): Collection
     {
         switch ($type) {
             case 'i':
@@ -246,13 +247,8 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
                 throw new NotFoundHttpException('Invalid record type: ' . $type);
         }
 
-        // Skip records that no longer exist.
-        $records = array_filter($records);
-
         // Skip private records.
-        $records = array_filter($records, function (GedcomRecord $record): bool {
-            return $record->canShow();
-        });
+        $records = $records->filter(GedcomRecord::filter());
 
         return $records;
     }
@@ -262,24 +258,17 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
      * @param int  $limit
      * @param int  $offset
      *
-     * @return array
+     * @return Collection|Individual[]
      */
-    private function sitemapIndividuals(Tree $tree, int $limit, int $offset): array
+    private function sitemapIndividuals(Tree $tree, int $limit, int $offset): Collection
     {
-        $rows = DB::table('individuals')
+        return DB::table('individuals')
             ->where('i_file', '=', $tree->id())
             ->orderBy('i_id')
             ->skip($offset)
             ->take($limit)
-            ->get();
-
-        $records = [];
-
-        foreach ($rows as $row) {
-            $records[] = Individual::getInstance($row->xref, $tree, $row->gedcom);
-        }
-
-        return $records;
+            ->get()
+            ->map(Individual::rowMapper($tree));
     }
 
     /**
@@ -287,24 +276,17 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
      * @param int  $limit
      * @param int  $offset
      *
-     * @return array
+     * @return Collection|Media[]
      */
-    private function sitemapMedia(Tree $tree, int $limit, int $offset): array
+    private function sitemapMedia(Tree $tree, int $limit, int $offset): Collection
     {
-        $rows = DB::table('media')
+        return DB::table('media')
             ->where('m_file', '=', $tree->id())
             ->orderBy('m_id')
             ->skip($offset)
             ->take($limit)
-            ->get();
-
-        $records = [];
-
-        foreach ($rows as $row) {
-            $records[] = Media::getInstance($row->xref, $tree, $row->gedcom);
-        }
-
-        return $records;
+            ->get()
+            ->map(Media::rowMapper($tree));
     }
 
     /**
@@ -312,25 +294,18 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
      * @param int  $limit
      * @param int  $offset
      *
-     * @return array
+     * @return Collection|Note[]
      */
-    private function sitemapNotes(Tree $tree, int $limit, int $offset): array
+    private function sitemapNotes(Tree $tree, int $limit, int $offset): Collection
     {
-        $rows = DB::table('other')
+        return DB::table('other')
             ->where('o_file', '=', $tree->id())
             ->where('o_type', '=', 'NOTE')
             ->orderBy('o_id')
             ->skip($offset)
             ->take($limit)
-            ->get();
-
-        $records = [];
-
-        foreach ($rows as $row) {
-            $records[] = Note::getInstance($row->xref, $tree, $row->gedcom);
-        }
-
-        return $records;
+            ->get()
+            ->map(Note::rowMapper($tree));
     }
 
     /**
@@ -338,25 +313,18 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
      * @param int  $limit
      * @param int  $offset
      *
-     * @return array
+     * @return Collection|Repository[]
      */
-    private function sitemapRepositories(Tree $tree, int $limit, int $offset): array
+    private function sitemapRepositories(Tree $tree, int $limit, int $offset): Collection
     {
-        $rows = DB::table('other')
+        return DB::table('other')
             ->where('o_file', '=', $tree->id())
             ->where('o_type', '=', 'REPO')
             ->orderBy('o_id')
             ->skip($offset)
             ->take($limit)
-            ->get();
-
-        $records = [];
-
-        foreach ($rows as $row) {
-            $records[] = Repository::getInstance($row->xref, $tree, $row->gedcom);
-        }
-
-        return $records;
+            ->get()
+            ->map(Repository::rowMapper($tree));
     }
 
     /**
@@ -364,23 +332,16 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
      * @param int  $limit
      * @param int  $offset
      *
-     * @return array
+     * @return Collection|Source[]
      */
-    private function sitemapSources(Tree $tree, int $limit, int $offset): array
+    private function sitemapSources(Tree $tree, int $limit, int $offset): Collection
     {
-        $rows = DB::table('sources')
+        return DB::table('sources')
             ->where('s_file', '=', $tree->id())
             ->orderBy('s_id')
             ->skip($offset)
             ->take($limit)
-            ->get();
-
-        $records = [];
-
-        foreach ($rows as $row) {
-            $records[] = Source::getInstance($row->xref, $tree, $row->gedcom);
-        }
-
-        return $records;
+            ->get()
+            ->map(Source::rowMapper($tree));
     }
 }

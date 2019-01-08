@@ -17,7 +17,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Closure;
 use Illuminate\Database\Capsule\Manager as DB;
+use stdClass;
 
 /**
  * A GEDCOM source (SOUR) object.
@@ -27,6 +29,20 @@ class Source extends GedcomRecord
     public const RECORD_TYPE = 'SOUR';
 
     protected const ROUTE_NAME  = 'source';
+
+    /**
+     * A closure which will create a record from a database row.
+     *
+     * @param Tree $tree
+     *
+     * @return Closure
+     */
+    public static function rowMapper(Tree $tree): Closure
+    {
+        return function (stdClass $row) use ($tree): Source {
+            return Source::getInstance($row->s_id, $tree, $row->s_gedcom);
+        };
+    }
 
     /**
      * Get an instance of a source object. For single records,

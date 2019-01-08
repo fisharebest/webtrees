@@ -17,9 +17,11 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Closure;
 use Fisharebest\ExtCalendar\GregorianCalendar;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodePedi;
 use Illuminate\Database\Capsule\Manager as DB;
+use stdClass;
 
 /**
  * A GEDCOM individual (INDI) object.
@@ -38,6 +40,20 @@ class Individual extends GedcomRecord
 
     /** @var Date The estimated date of death */
     private $estimated_death_date;
+
+    /**
+     * A closure which will create a record from a database row.
+     *
+     * @param Tree $tree
+     *
+     * @return Closure
+     */
+    public static function rowMapper(Tree $tree): Closure
+    {
+        return function (stdClass $row) use ($tree): Individual {
+            return Individual::getInstance($row->i_id, $tree, $row->i_gedcom);
+        };
+    }
 
     /**
      * Get an instance of an individual object. For single records,

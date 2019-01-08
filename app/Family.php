@@ -17,7 +17,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Closure;
 use Illuminate\Database\Capsule\Manager as DB;
+use stdClass;
 
 /**
  * A GEDCOM family (FAM) object.
@@ -58,6 +60,20 @@ class Family extends GedcomRecord
         if (preg_match('/^1 WIFE @(.+)@/m', $gedcom . $pending, $match)) {
             $this->wife = Individual::getInstance($match[1], $tree);
         }
+    }
+
+    /**
+     * A closure which will create a record from a database row.
+     *
+     * @param Tree $tree
+     *
+     * @return Closure
+     */
+    public static function rowMapper(Tree $tree): Closure
+    {
+        return function (stdClass $row) use ($tree): Family {
+            return Family::getInstance($row->f_id, $tree, $row->f_gedcom);
+        };
     }
 
     /**

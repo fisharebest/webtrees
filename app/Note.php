@@ -17,8 +17,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Closure;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Str;
+use stdClass;
 
 /**
  * A GEDCOM note (NOTE) object.
@@ -28,6 +30,20 @@ class Note extends GedcomRecord
     public const RECORD_TYPE = 'NOTE';
 
     protected const ROUTE_NAME = 'note';
+
+    /**
+     * A closure which will create a record from a database row.
+     *
+     * @param Tree $tree
+     *
+     * @return Closure
+     */
+    public static function rowMapper(Tree $tree): Closure
+    {
+        return function (stdClass $row) use ($tree): Note {
+            return Note::getInstance($row->o_id, $tree, $row->o_gedcom);
+        };
+    }
 
     /**
      * Get an instance of a note object. For single records,

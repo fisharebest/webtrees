@@ -17,7 +17,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Closure;
 use Illuminate\Database\Capsule\Manager as DB;
+use stdClass;
 
 /**
  * A GEDCOM repository (REPO) object.
@@ -27,6 +29,20 @@ class Repository extends GedcomRecord
     public const RECORD_TYPE = 'REPO';
 
     protected const ROUTE_NAME = 'repository';
+
+    /**
+     * A closure which will create a record from a database row.
+     *
+     * @param Tree $tree
+     *
+     * @return Closure
+     */
+    public static function rowMapper(Tree $tree): Closure
+    {
+        return function (stdClass $row) use ($tree): Repository {
+            return Repository::getInstance($row->o_id, $tree, $row->o_gedcom);
+        };
+    }
 
     /**
      * Get an instance of a repository object. For single records,

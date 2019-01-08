@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Closure;
 use Exception;
 use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Functions\FunctionsDate;
@@ -91,6 +92,32 @@ class GedcomRecord
         $this->tree    = $tree;
 
         $this->parseFacts();
+    }
+
+    /**
+     * A closure which will create a record from a database row.
+     *
+     * @param Tree $tree
+     *
+     * @return Closure
+     */
+    public static function rowMapper(Tree $tree): Closure
+    {
+        return function (stdClass $row) use ($tree): GedcomRecord {
+            return GedcomRecord::getInstance($row->o_id, $tree, $row->o_gedcom);
+        };
+    }
+
+    /**
+     * A closure which will filter out private records.
+     *
+     * @return Closure
+     */
+    public static function filter(): Closure
+    {
+        return function (GedcomRecord $record): bool {
+            return $record->canShow();
+        };
     }
 
     /**

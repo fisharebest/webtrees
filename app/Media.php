@@ -17,8 +17,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Closure;
 use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
 use Illuminate\Database\Capsule\Manager as DB;
+use stdClass;
 
 /**
  * A GEDCOM media (OBJE) object.
@@ -28,6 +30,20 @@ class Media extends GedcomRecord
     public const RECORD_TYPE = 'OBJE';
 
     protected const ROUTE_NAME = 'media';
+
+    /**
+     * A closure which will create a record from a database row.
+     *
+     * @param Tree $tree
+     *
+     * @return Closure
+     */
+    public static function rowMapper(Tree $tree): Closure
+    {
+        return function (stdClass $row) use ($tree): Media {
+            return Media::getInstance($row->m_id, $tree, $row->m_gedcom);
+        };
+    }
 
     /**
      * Get an instance of a media object. For single records,
