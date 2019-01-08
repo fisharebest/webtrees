@@ -20,9 +20,14 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 use FilesystemIterator;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Media;
+use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Place;
+use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Select2;
+use Fisharebest\Webtrees\Services\SearchService;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use RecursiveDirectoryIterator;
@@ -35,6 +40,20 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class AutocompleteController extends AbstractBaseController
 {
+    /** @var SearchService */
+    private $search_service;
+
+    /**
+     * AutocompleteController constructor.
+     *
+     * @param SearchService $search_service
+     */
+    public function __construct(SearchService $search_service)
+    {
+        // Dependency injection
+        $this->search_service = $search_service;
+    }
+
     /**
      * Autocomplete for media folders.
      *
@@ -84,7 +103,7 @@ class AutocompleteController extends AbstractBaseController
         $pages = [];
 
         // Escape the query for MySQL and PHP, converting spaces to wildcards.
-        $like_query = strtr($query, [
+        $like_query  = strtr($query, [
             '_' => '\\_',
             '%' => '\\%',
             ' ' => '%',
@@ -146,7 +165,6 @@ class AutocompleteController extends AbstractBaseController
     }
 
     /**
-     *
      * /**
      * Autocomplete for place names.
      *
@@ -209,7 +227,26 @@ class AutocompleteController extends AbstractBaseController
         $page  = (int) $request->get('page');
         $query = $request->get('q', '');
 
-        return new JsonResponse(Select2::familySearch($tree, $page, $query));
+        // Fetch one more row than we need, so we can know if more rows exist.
+        $offset = $page * Select2::RESULTS_PER_PAGE;
+        $limit  = Select2::RESULTS_PER_PAGE + 1;
+
+        $results = $this->search_service
+            ->searchFamiliesByName($tree, $query, $offset, $limit)
+            ->map(function (Family $family): array {
+                return [
+                    'id'    => $family->xref(),
+                    'text'  => view('selects/family', ['family' => $family]),
+                    'title' => ' ',
+                ];
+            });
+
+        return new JsonResponse([
+            'results'    => $results->slice(0, Select2::RESULTS_PER_PAGE)->all(),
+            'pagination' => [
+                'more' => $results->count() > Select2::RESULTS_PER_PAGE,
+            ],
+        ]);
     }
 
     /**
@@ -236,7 +273,26 @@ class AutocompleteController extends AbstractBaseController
         $page  = (int) $request->get('page');
         $query = $request->get('q', '');
 
-        return new JsonResponse(Select2::individualSearch($tree, $page, $query));
+        // Fetch one more row than we need, so we can know if more rows exist.
+        $offset = $page * Select2::RESULTS_PER_PAGE;
+        $limit  = Select2::RESULTS_PER_PAGE + 1;
+
+        $results = $this->search_service
+            ->searchIndividualsByName($tree, $query, $offset, $limit)
+            ->map(function (Individual $individual): array {
+                return [
+                    'id'    => $individual->xref(),
+                    'text'  => view('selects/individual', ['individual' => $individual]),
+                    'title' => ' ',
+                ];
+            });
+
+        return new JsonResponse([
+            'results'    => $results->slice(0, Select2::RESULTS_PER_PAGE)->all(),
+            'pagination' => [
+                'more' => $results->count() > Select2::RESULTS_PER_PAGE,
+            ],
+        ]);
     }
 
     /**
@@ -250,7 +306,26 @@ class AutocompleteController extends AbstractBaseController
         $page  = (int) $request->get('page');
         $query = $request->get('q', '');
 
-        return new JsonResponse(Select2::mediaObjectSearch($tree, $page, $query));
+        // Fetch one more row than we need, so we can know if more rows exist.
+        $offset = $page * Select2::RESULTS_PER_PAGE;
+        $limit  = Select2::RESULTS_PER_PAGE + 1;
+
+        $results = $this->search_service
+            ->searchMedia($tree, $query, $offset, $limit)
+            ->map(function (Media $media): array {
+                return [
+                    'id'    => $media->xref(),
+                    'text'  => view('selects/media', ['media' => $media]),
+                    'title' => ' ',
+                ];
+            });
+
+        return new JsonResponse([
+            'results'    => $results->slice(0, Select2::RESULTS_PER_PAGE)->all(),
+            'pagination' => [
+                'more' => $results->count() > Select2::RESULTS_PER_PAGE,
+            ],
+        ]);
     }
 
     /**
@@ -264,7 +339,26 @@ class AutocompleteController extends AbstractBaseController
         $page  = (int) $request->get('page');
         $query = $request->get('q', '');
 
-        return new JsonResponse(Select2::noteSearch($tree, $page, $query));
+        // Fetch one more row than we need, so we can know if more rows exist.
+        $offset = $page * Select2::RESULTS_PER_PAGE;
+        $limit  = Select2::RESULTS_PER_PAGE + 1;
+
+        $results = $this->search_service
+            ->searchNotes($tree, $query, $offset, $limit)
+            ->map(function (Note $note): array {
+                return [
+                    'id'    => $note->xref(),
+                    'text'  => view('selects/note', ['note' => $note]),
+                    'title' => ' ',
+                ];
+            });
+
+        return new JsonResponse([
+            'results'    => $results->slice(0, Select2::RESULTS_PER_PAGE)->all(),
+            'pagination' => [
+                'more' => $results->count() > Select2::RESULTS_PER_PAGE,
+            ],
+        ]);
     }
 
     /**
@@ -292,7 +386,26 @@ class AutocompleteController extends AbstractBaseController
         $page  = (int) $request->get('page');
         $query = $request->get('q', '');
 
-        return new JsonResponse(Select2::repositorySearch($tree, $page, $query));
+        // Fetch one more row than we need, so we can know if more rows exist.
+        $offset = $page * Select2::RESULTS_PER_PAGE;
+        $limit  = Select2::RESULTS_PER_PAGE + 1;
+
+        $results = $this->search_service
+            ->searchRepositories($tree, $query, $offset, $limit)
+            ->map(function (Repository $repository): array {
+                return [
+                    'id'    => $repository->xref(),
+                    'text'  => view('selects/repository', ['repository' => $repository]),
+                    'title' => ' ',
+                ];
+            });
+
+        return new JsonResponse([
+            'results'    => $results->slice(0, Select2::RESULTS_PER_PAGE)->all(),
+            'pagination' => [
+                'more' => $results->count() > Select2::RESULTS_PER_PAGE,
+            ],
+        ]);
     }
 
     /**
@@ -306,12 +419,31 @@ class AutocompleteController extends AbstractBaseController
         $page  = (int) $request->get('page');
         $query = $request->get('q', '');
 
-        return new JsonResponse(Select2::sourceSearch($tree, $page, $query));
+        // Fetch one more row than we need, so we can know if more rows exist.
+        $offset = $page * Select2::RESULTS_PER_PAGE;
+        $limit  = Select2::RESULTS_PER_PAGE + 1;
+
+        $results = $this->search_service
+            ->searchSourcesByName($tree, $query, $offset, $limit)
+            ->map(function (Source $source): array {
+                return [
+                    'id'    => $source->xref(),
+                    'text'  => view('selects/source', ['source' => $source]),
+                    'title' => ' ',
+                ];
+            });
+
+        return new JsonResponse([
+            'results'    => $results->slice(0, Select2::RESULTS_PER_PAGE)->all(),
+            'pagination' => [
+                'more' => $results->count() > Select2::RESULTS_PER_PAGE,
+            ],
+        ]);
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param Request       $request
+     * @param Tree          $tree
      *
      * @return JsonResponse
      */
@@ -320,6 +452,25 @@ class AutocompleteController extends AbstractBaseController
         $page  = (int) $request->get('page');
         $query = $request->get('q', '');
 
-        return new JsonResponse(Select2::submitterSearch($tree, $page, $query));
+        // Fetch one more row than we need, so we can know if more rows exist.
+        $offset = $page * Select2::RESULTS_PER_PAGE;
+        $limit  = Select2::RESULTS_PER_PAGE + 1;
+
+        $results = $this->search_service
+            ->searchSubmitters($tree, $query, $offset, $limit)
+            ->map(function (GedcomRecord $submitter): array {
+                return [
+                    'id'    => $submitter->xref(),
+                    'text'  => view('selects/submitter', ['submitter' => $submitter]),
+                    'title' => ' ',
+                ];
+            });
+
+        return new JsonResponse([
+            'results'    => $results->slice(0, Select2::RESULTS_PER_PAGE)->all(),
+            'pagination' => [
+                'more' => $results->count() > Select2::RESULTS_PER_PAGE,
+            ],
+        ]);
     }
 }

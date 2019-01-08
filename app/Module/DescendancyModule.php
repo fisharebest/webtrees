@@ -17,11 +17,11 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\FontAwesome;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Services\SearchService;
 use Fisharebest\Webtrees\Tree;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -46,35 +46,25 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
     }
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param Request       $request
+     * @param Tree          $tree
+     * @param SearchService $search_service
      *
      * @return Response
      */
-    public function getSearchAction(Request $request, Tree $tree): Response
+    public function getSearchAction(Request $request, Tree $tree, SearchService $search_service): Response
     {
         $search = $request->get('search', '');
 
         $html = '';
 
         if (strlen($search) >= 2) {
-            $rows = Database::prepare(
-                "SELECT i_id AS xref" .
-                " FROM `##individuals`" .
-                " JOIN `##name` ON i_id = n_id AND i_file = n_file" .
-                " WHERE n_sort LIKE CONCAT('%', :query, '%') AND i_file = :tree_id" .
-                " ORDER BY n_sort"
-            )->execute([
-                'query'   => $search,
-                'tree_id' => $tree->id(),
-            ])->fetchAll();
-
-            foreach ($rows as $row) {
-                $individual = Individual::getInstance($row->xref, $tree);
-                if ($individual !== null && $individual->canShow()) {
-                    $html .= $this->getPersonLi($individual);
-                }
-            }
+            $html = $search_service
+                ->searchIndividualsByName($tree, $search)
+                ->map(function (Individual $individual): string {
+                    return $this->getPersonLi($individual);
+                })
+                ->implode('');
         }
 
         if ($html !== '') {

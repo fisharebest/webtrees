@@ -100,7 +100,7 @@ class Database
      */
     public static function registerMacros(): void
     {
-        Builder::macro('whereContains', function (string $column, string $search, string $boolean = 'and') {
+        Builder::macro('whereContains', function ($column, string $search, string $boolean = 'and') {
             $search = strtr($search, ['\\' => '\\\\', '%'  => '\\%', '_'  => '\\_', ' ' => '%']);
 
             return $this->where($column, 'LIKE', '%' . $search . '%', $boolean);

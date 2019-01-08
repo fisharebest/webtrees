@@ -33,7 +33,7 @@ use RecursiveIteratorIterator;
 class Select2 extends Html
 {
     // Send this many results with each request.
-    private const RESULTS_PER_PAGE = 20;
+    public const RESULTS_PER_PAGE = 20;
 
     // Don't send queries with fewer than this many characters
     private const MINIMUM_INPUT_LENGTH = '1';
@@ -71,67 +71,6 @@ class Select2 extends Html
         $url = route('select2-family', ['ged' => $tree->name()]);
 
         return self::commonConfig() + ['data-ajax--url' => $url];
-    }
-
-    /**
-     * Look up a family.
-     *
-     * @param Tree   $tree  Search this tree.
-     * @param int    $page  Skip this number of pages.  Starts with zero.
-     * @param string $query Search terms.
-     *
-     * @return mixed[]
-     */
-    public static function familySearch(Tree $tree, $page, $query): array
-    {
-        $offset  = $page * self::RESULTS_PER_PAGE;
-        $more    = false;
-        $results = [];
-
-        $cursor = Database::prepare(
-            "SELECT DISTINCT 'FAM' AS type, f_id AS xref, f_gedcom AS gedcom, husb_name.n_sort, wife_name.n_sort" .
-            " FROM `##families`" .
-            " JOIN `##name` AS husb_name ON f_husb = husb_name.n_id AND f_file = husb_name.n_file" .
-            " JOIN `##name` AS wife_name ON f_wife = wife_name.n_id AND f_file = wife_name.n_file" .
-            " WHERE (CONCAT(husb_name.n_full, ' ', wife_name.n_full) LIKE CONCAT('%', REPLACE(:query, ' ', '%'), '%') OR f_id = :xref) AND f_file = :tree_id" .
-            " AND husb_name.n_type <> '_MARNM' AND wife_name.n_type <> '_MARNM'" .
-            " ORDER BY husb_name.n_sort, wife_name.n_sort COLLATE :collation"
-        )->execute([
-            'query'     => $query,
-            'xref'      => $query,
-            'tree_id'   => $tree->id(),
-            'collation' => I18N::collation(),
-        ]);
-
-        while (is_object($row = $cursor->fetch())) {
-            $family = Family::getInstance($row->xref, $tree, $row->gedcom);
-            // Filter for privacy
-            if ($family !== null && $family->canShowName()) {
-                if ($offset > 0) {
-                    // Skip results
-                    $offset--;
-                } elseif (count($results) === self::RESULTS_PER_PAGE) {
-                    // Stop when we have found a page of results
-                    $more = true;
-                    break;
-                } else {
-                    // Add to the results
-                    $results[] = [
-                        'id'    => $row->xref,
-                        'text'  => view('selects/family', ['family' => $family]),
-                        'title' => ' ',
-                    ];
-                }
-            }
-        }
-        $cursor->closeCursor();
-
-        return [
-            'results'    => $results,
-            'pagination' => [
-                'more' => $more,
-            ],
-        ];
     }
 
     /**
@@ -220,59 +159,6 @@ class Select2 extends Html
     }
 
     /**
-     * Look up an individual.
-     *
-     * @param Tree   $tree  Search this tree.
-     * @param int    $page  Skip this number of pages.  Starts with zero.
-     * @param string $query Search terms.
-     *
-     * @return mixed[]
-     */
-    public static function individualSearch(Tree $tree, int $page, string $query): array
-    {
-        $offset  = $page * self::RESULTS_PER_PAGE;
-        $more    = false;
-        $results = [];
-        $cursor  = Database::prepare("SELECT i_id AS xref, i_gedcom AS gedcom, n_num" . " FROM `##individuals`" . " JOIN `##name` ON i_id = n_id AND i_file = n_file" . " WHERE (n_full LIKE CONCAT('%', REPLACE(:query, ' ', '%'), '%') OR i_id = :xref) AND i_file = :tree_id" . " ORDER BY n_full COLLATE :collation")->execute([
-            'query'     => $query,
-            'xref'      => $query,
-            'tree_id'   => $tree->id(),
-            'collation' => I18N::collation(),
-        ]);
-
-        while (is_object($row = $cursor->fetch())) {
-            $individual = Individual::getInstance($row->xref, $tree, $row->gedcom);
-            $individual->setPrimaryName((int) $row->n_num);
-            // Filter for privacy
-            if ($individual !== null && $individual->canShowName()) {
-                if ($offset > 0) {
-                    // Skip results
-                    $offset--;
-                } elseif (count($results) === self::RESULTS_PER_PAGE) {
-                    // Stop when we have found a page of results
-                    $more = true;
-                    break;
-                } else {
-                    // Add to the results
-                    $results[] = [
-                        'id'    => $row->xref,
-                        'text'  => view('selects/individual', ['individual' => $individual]),
-                        'title' => ' ',
-                    ];
-                }
-            }
-        }
-        $cursor->closeCursor();
-
-        return [
-            'results'    => $results,
-            'pagination' => [
-                'more' => $more,
-            ],
-        ];
-    }
-
-    /**
      * Select2 configuration for a media object lookup.
      *
      * @param Tree $tree
@@ -287,58 +173,6 @@ class Select2 extends Html
     }
 
     /**
-     * Look up a media object.
-     *
-     * @param Tree   $tree  Search this tree.
-     * @param int    $page  Skip this number of pages.  Starts with zero.
-     * @param string $query Search terms.
-     *
-     * @return mixed[]
-     */
-    public static function mediaObjectSearch(Tree $tree, int $page, string $query): array
-    {
-        $offset  = $page * self::RESULTS_PER_PAGE;
-        $more    = false;
-        $results = [];
-        $cursor  = Database::prepare("SELECT m_id AS xref, m_gedcom AS gedcom, n_full" . " FROM `##media`" . " JOIN `##name` ON m_id = n_id AND m_file = n_file" . " WHERE (n_full LIKE CONCAT('%', REPLACE(:query, ' ', '%'), '%') OR m_id = :xref) AND m_file = :tree_id" . " ORDER BY n_full COLLATE :collation")->execute([
-            'query'     => $query,
-            'xref'      => $query,
-            'tree_id'   => $tree->id(),
-            'collation' => I18N::collation(),
-        ]);
-
-        while (is_object($row = $cursor->fetch())) {
-            $media = Media::getInstance($row->xref, $tree, $row->gedcom);
-            // Filter for privacy
-            if ($media !== null && $media->canShow()) {
-                if ($offset > 0) {
-                    // Skip results
-                    $offset--;
-                } elseif (count($results) === self::RESULTS_PER_PAGE) {
-                    // Stop when we have found a page of results
-                    $more = true;
-                    break;
-                } else {
-                    // Add to the results
-                    $results[] = [
-                        'id'    => $row->xref,
-                        'text'  => view('selects/media', ['media' => $media]),
-                        'title' => ' ',
-                    ];
-                }
-            }
-        }
-        $cursor->closeCursor();
-
-        return [
-            'results'    => $results,
-            'pagination' => [
-                'more' => $more,
-            ],
-        ];
-    }
-
-    /**
      * Select2 configuration for a note.
      *
      * @param Tree $tree
@@ -350,58 +184,6 @@ class Select2 extends Html
         $url = route('select2-note', ['ged' => $tree->name()]);
 
         return self::commonConfig() + ['data-ajax--url' => $url];
-    }
-
-    /**
-     * Look up a note.
-     *
-     * @param Tree   $tree  Search this tree.
-     * @param int    $page  Skip this number of pages.  Starts with zero.
-     * @param string $query Search terms.
-     *
-     * @return mixed[]
-     */
-    public static function noteSearch(Tree $tree, int $page, string $query): array
-    {
-        $offset  = $page * self::RESULTS_PER_PAGE;
-        $more    = false;
-        $results = [];
-        $cursor  = Database::prepare("SELECT o_id AS xref, o_gedcom AS gedcom, n_full" . " FROM `##other`" . " JOIN `##name` ON o_id = n_id AND o_file = n_file" . " WHERE (n_full LIKE CONCAT('%', REPLACE(:query, ' ', '%'), '%') OR o_id = :xref) AND o_file = :tree_id AND o_type='NOTE'" . " ORDER BY n_full COLLATE :collation")->execute([
-            'query'     => $query,
-            'xref'      => $query,
-            'tree_id'   => $tree->id(),
-            'collation' => I18N::collation(),
-        ]);
-
-        while (is_object($row = $cursor->fetch())) {
-            $note = Note::getInstance($row->xref, $tree, $row->gedcom);
-            // Filter for privacy
-            if ($note !== null && $note->canShowName()) {
-                if ($offset > 0) {
-                    // Skip results
-                    $offset--;
-                } elseif (count($results) === self::RESULTS_PER_PAGE) {
-                    // Stop when we have found a page of results
-                    $more = true;
-                    break;
-                } else {
-                    // Add to the results
-                    $results[] = [
-                        'id'    => $row->xref,
-                        'text'  => view('selects/note', ['note' => $note]),
-                        'title' => ' ',
-                    ];
-                }
-            }
-        }
-        $cursor->closeCursor();
-
-        return [
-            'results'    => $results,
-            'pagination' => [
-                'more' => $more,
-            ],
-        ];
     }
 
     /**
@@ -520,58 +302,6 @@ class Select2 extends Html
     }
 
     /**
-     * Look up a repository.
-     *
-     * @param Tree   $tree  Search this tree.
-     * @param int    $page  Skip this number of pages.  Starts with zero.
-     * @param string $query Search terms.
-     *
-     * @return mixed[]
-     */
-    public static function repositorySearch(Tree $tree, int $page, string $query): array
-    {
-        $offset  = $page * self::RESULTS_PER_PAGE;
-        $more    = false;
-        $results = [];
-        $cursor  = Database::prepare("SELECT o_id AS xref, o_gedcom AS gedcom, n_full" . " FROM `##other`" . " JOIN `##name` ON o_id = n_id AND o_file = n_file" . " WHERE (n_full LIKE CONCAT('%', REPLACE(:query, ' ', '%'), '%') OR o_id = :xref) AND o_file = :tree_id AND o_type = 'REPO'" . " ORDER BY n_full COLLATE :collation")->execute([
-            'query'     => $query,
-            'xref'      => $query,
-            'tree_id'   => $tree->id(),
-            'collation' => I18N::collation(),
-        ]);
-
-        while (is_object($row = $cursor->fetch())) {
-            $repository = Repository::getInstance($row->xref, $tree, $row->gedcom);
-            // Filter for privacy
-            if ($repository !== null && $repository->canShow()) {
-                if ($offset > 0) {
-                    // Skip results
-                    $offset--;
-                } elseif (count($results) === self::RESULTS_PER_PAGE) {
-                    // Stop when we have found a page of results
-                    $more = true;
-                    break;
-                } else {
-                    // Add to the results
-                    $results[] = [
-                        'id'    => $row->xref,
-                        'text'  => view('selects/repository', ['repository' => $repository]),
-                        'title' => ' ',
-                    ];
-                }
-            }
-        }
-        $cursor->closeCursor();
-
-        return [
-            'results'    => $results,
-            'pagination' => [
-                'more' => $more,
-            ],
-        ];
-    }
-
-    /**
      * Select2 configuration for a source lookup.
      *
      * @param Tree $tree
@@ -586,58 +316,6 @@ class Select2 extends Html
     }
 
     /**
-     * Look up a source.
-     *
-     * @param Tree   $tree  Search this tree.
-     * @param int    $page  Skip this number of pages.  Starts with zero.
-     * @param string $query Search terms.
-     *
-     * @return mixed[]
-     */
-    public static function sourceSearch(Tree $tree, int $page, string $query): array
-    {
-        $offset  = $page * self::RESULTS_PER_PAGE;
-        $more    = false;
-        $results = [];
-        $cursor  = Database::prepare("SELECT s_id AS xref, s_gedcom AS gedcom, n_full" . " FROM `##sources`" . " JOIN `##name` ON s_id = n_id AND s_file = n_file" . " WHERE (n_full LIKE CONCAT('%', REPLACE(:query, ' ', '%'), '%') OR s_id = :xref) AND s_file = :tree_id" . " ORDER BY n_full COLLATE :collation")->execute([
-            'query'     => $query,
-            'xref'      => $query,
-            'tree_id'   => $tree->id(),
-            'collation' => I18N::collation(),
-        ]);
-
-        while (is_object($row = $cursor->fetch())) {
-            $source = Source::getInstance($row->xref, $tree, $row->gedcom);
-            // Filter for privacy
-            if ($source !== null && $source->canShow()) {
-                if ($offset > 0) {
-                    // Skip results
-                    $offset--;
-                } elseif (count($results) === self::RESULTS_PER_PAGE) {
-                    // Stop when we have found a page of results
-                    $more = true;
-                    break;
-                } else {
-                    // Add to the results
-                    $results[] = [
-                        'id'    => $row->xref,
-                        'text'  => view('selects/source', ['source' => $source]),
-                        'title' => ' ',
-                    ];
-                }
-            }
-        }
-        $cursor->closeCursor();
-
-        return [
-            'results'    => $results,
-            'pagination' => [
-                'more' => $more,
-            ],
-        ];
-    }
-
-    /**
      * Select2 configuration for a submitter lookup.
      *
      * @param Tree $tree
@@ -649,62 +327,5 @@ class Select2 extends Html
         $url = route('select2-submitter', ['ged' => $tree->name()]);
 
         return self::commonConfig() + ['data-ajax--url' => $url];
-    }
-
-    /**
-     * Look up a submitter.
-     *
-     * @param Tree   $tree  Search this tree.
-     * @param int    $page  Skip this number of pages.  Starts with zero.
-     * @param string $query Search terms.
-     *
-     * @return mixed[]
-     */
-    public static function submitterSearch(Tree $tree, int $page, string $query): array
-    {
-        $offset  = $page * self::RESULTS_PER_PAGE;
-        $more    = false;
-        $results = [];
-        $cursor  = Database::prepare(
-            "SELECT o_id AS xref, o_gedcom AS gedcom" .
-            " FROM `##other`" .
-            " WHERE (o_id LIKE CONCAT('%', REPLACE(:query, ' ', '%'), '%') OR o_id = :xref) AND o_file = :tree_id AND o_type = 'SUBM'" .
-            " ORDER BY o_id COLLATE :collation"
-        )->execute([
-            'query'     => $query,
-            'xref'      => $query,
-            'tree_id'   => $tree->id(),
-            'collation' => I18N::collation(),
-        ]);
-
-        while (is_object($row = $cursor->fetch())) {
-            $submitter = GedcomRecord::getInstance($row->xref, $tree, $row->gedcom);
-            // Filter for privacy
-            if ($submitter !== null && $submitter->canShow()) {
-                if ($offset > 0) {
-                    // Skip results
-                    $offset--;
-                } elseif (count($results) === self::RESULTS_PER_PAGE) {
-                    // Stop when we have found a page of results
-                    $more = true;
-                    break;
-                } else {
-                    // Add to the results
-                    $results[] = [
-                        'id'    => $row->xref,
-                        'text'  => view('selects/submitter', ['submitter' => $submitter]),
-                        'title' => ' ',
-                    ];
-                }
-            }
-        }
-        $cursor->closeCursor();
-
-        return [
-            'results'    => $results,
-            'pagination' => [
-                'more' => $more,
-            ],
-        ];
     }
 }
