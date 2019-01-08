@@ -18,9 +18,9 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
+use Illuminate\Database\Capsule\Manager as DB;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -65,11 +65,11 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
      */
     public function getBlock(Tree $tree, int $block_id, string $ctype = '', array $cfg = []): string
     {
-        $articles = Database::prepare(
-            "SELECT news_id, user_id, gedcom_id, UNIX_TIMESTAMP(updated) AS updated, subject, body FROM `##news` WHERE gedcom_id = :tree_id ORDER BY updated DESC"
-        )->execute([
-            'tree_id' => $tree->id(),
-        ])->fetchAll();
+        $articles = DB::table('news')
+            ->where('gedcom_id', '=', $tree->id())
+            ->orderByDesc('updated')
+            ->select(['news_id', 'user_id', 'gedcom_id', DB::raw('UNIX_TIMESTAMP(updated) AS updated'), 'subject', 'body'])
+            ->get();
 
         $content = view('modules/gedcom_news/list', [
             'articles' => $articles,
@@ -147,12 +147,10 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
         $news_id = $request->get('news_id');
 
         if ($news_id > 0) {
-            $row = Database::prepare(
-                "SELECT subject, body FROM `##news` WHERE news_id = :news_id AND gedcom_id = :tree_id"
-            )->execute([
-                'news_id' => $news_id,
-                'tree_id' => $tree->id(),
-            ])->fetchOneRow();
+            $row = DB::table('news')
+                ->where('news_id', '=', $news_id)
+                ->where('gedcom_id', '=', $tree->id())
+                ->first();
         } else {
             $row = (object) [
                 'body'    => '',
@@ -187,22 +185,18 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
         $body    = $request->get('body');
 
         if ($news_id > 0) {
-            Database::prepare(
-                "UPDATE `##news` SET subject = :subject, body = :body, updated = CURRENT_TIMESTAMP" .
-                " WHERE news_id = :news_id AND gedcom_id = :tree_id"
-            )->execute([
-                'subject' => $subject,
+            DB::table('news')
+                ->where('news_id', '=', $news_id)
+                ->where('gedcom_id', '=', $tree->id())
+                ->update([
                 'body'    => $body,
-                'news_id' => $news_id,
-                'tree_id' => $tree->id(),
+                'subject' => $subject,
             ]);
         } else {
-            Database::prepare(
-                "INSERT INTO `##news` (gedcom_id, subject, body, updated) VALUES (:tree_id, :subject ,:body, CURRENT_TIMESTAMP)"
-            )->execute([
-                'body'    => $body,
-                'subject' => $subject,
-                'tree_id' => $tree->id(),
+            DB::table('news')->insert([
+                'body'      => $body,
+                'subject'   => $subject,
+                'gedcom_id' => $tree->id(),
             ]);
         }
 
@@ -227,12 +221,10 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
             throw new AccessDeniedHttpException();
         }
 
-        Database::prepare(
-            "DELETE FROM `##news` WHERE news_id = :news_id AND gedcom_id = :tree_id"
-        )->execute([
-            'news_id' => $news_id,
-            'tree_id' => $tree->id(),
-        ]);
+        DB::table('news')
+            ->where('news_id', '=', $news_id)
+            ->where('gedcom_id', '=', $tree->id())
+            ->delete();
 
         $url = route('tree-page', [
             'ged' => $tree->name(),
