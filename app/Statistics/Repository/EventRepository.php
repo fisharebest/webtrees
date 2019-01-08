@@ -23,7 +23,6 @@ use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Statistics\Helper\Sql;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\EventRepositoryInterface;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
@@ -204,29 +203,17 @@ class EventRepository implements EventRepositoryInterface
     }
 
     /**
-     * Run an SQL query and cache the result.
+     * Returns the first/last event record from the given list of events.
      *
-     * @param string $sql
-     *
-     * @return \stdClass[]
-     */
-    private function runSql($sql): array
-    {
-        return Sql::runSql($sql);
-    }
-
-    /**
-     * Events
-     *
-     * @param string   $type
-     * @param string   $direction
-     * @param string[] $facts
+     * @param string   $type      The requested result type
+     * @param string   $direction The sorting direction of the query (To return first or last record)
+     * @param string[] $facts     The list of facts used to limit the query result
      *
      * @return string
      */
     private function eventQuery(string $type, string $direction, array $facts): string
     {
-        $eventTypes = [
+        $event_types = [
             'BIRT' => I18N::translate('birth'),
             'DEAT' => I18N::translate('death'),
             'MARR' => I18N::translate('marriage'),
@@ -235,34 +222,26 @@ class EventRepository implements EventRepositoryInterface
             'CENS' => I18N::translate('census added'),
         ];
 
-        $fact_query = "IN ('" . implode("','", $facts) . "')";
-
         if ($direction !== 'ASC') {
             $direction = 'DESC';
         }
 
-        $rows = $this->runSql(
-            ' SELECT' .
-            ' d_gid AS id,' .
-            ' d_year AS year,' .
-            ' d_fact AS fact,' .
-            ' d_type AS type' .
-            ' FROM' .
-            " `##dates`" .
-            ' WHERE' .
-            " d_file={$this->tree->id()} AND" .
-            " d_gid<>'HEAD' AND" .
-            " d_fact {$fact_query} AND" .
-            ' d_julianday1<>0' .
-            ' ORDER BY' .
-            " d_julianday1 {$direction}, d_type LIMIT 1"
-        );
+        $row = DB::table('dates')
+            ->select(['d_gid as id', 'd_year as year', 'd_fact AS fact', 'd_type AS type'])
+            ->where('d_file', '=', $this->tree->id())
+            ->where('d_gid', '<>', 'HEAD')
+            ->whereIn('d_fact', $facts)
+            ->where('d_julianday1', '<>', 0)
+            ->orderBy('d_julianday1', $direction)
+            ->orderBy('d_type')
+            ->first();
 
-        if (!isset($rows[0])) {
+        if (!$row) {
             return '';
         }
-        $row    = $rows[0];
+
         $record = GedcomRecord::getInstance($row->id, $this->tree);
+
         switch ($type) {
             default:
             case 'full':
@@ -279,11 +258,7 @@ class EventRepository implements EventRepositoryInterface
                 break;
 
             case 'type':
-                if (isset($eventTypes[$row->fact])) {
-                    $result = $eventTypes[$row->fact];
-                } else {
-                    $result = GedcomTag::getLabel($row->fact);
-                }
+                $result = $event_types[$row->fact] ?? GedcomTag::getLabel($row->fact);
                 break;
 
             case 'name':
@@ -292,11 +267,13 @@ class EventRepository implements EventRepositoryInterface
 
             case 'place':
                 $fact = $record->getFirstFact($row->fact);
+
                 if ($fact) {
                     $result = FunctionsPrint::formatFactPlace($fact, true, true, true);
                 } else {
                     $result = I18N::translate('Private');
                 }
+
                 break;
         }
 
