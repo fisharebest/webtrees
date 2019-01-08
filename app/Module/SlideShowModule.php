@@ -18,12 +18,13 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\MediaFile;
 use Fisharebest\Webtrees\Tree;
+use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Query\JoinClause;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -61,16 +62,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
         $controls = $this->getBlockSetting($block_id, 'controls', '1');
         $start    = (bool) $this->getBlockSetting($block_id, 'start', '0');
 
-        // We can apply the filters using SQL
-        // Do not use "ORDER BY RAND()" - it is very slow on large tables. Use PHP::array_rand() instead.
-        $all_media = Database::prepare(
-            "SELECT m_id FROM `##media`" .
-            " JOIN `##media_file` USING (m_file, m_id)" .
-            " WHERE m_file = ?" .
-            " AND multimedia_format  IN ('jpg', 'jpeg', 'png', 'gif', 'tiff', 'bmp')" .
-            " AND source_media_type IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, '')"
-        )->execute([
-            $tree->id(),
+        $media_types = [
             $this->getBlockSetting($block_id, 'filter_audio', '0') ? 'audio' : null,
             $this->getBlockSetting($block_id, 'filter_book', '1') ? 'book' : null,
             $this->getBlockSetting($block_id, 'filter_card', '1') ? 'card' : null,
@@ -89,7 +81,23 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
             $this->getBlockSetting($block_id, 'filter_photo', '1') ? 'photo' : null,
             $this->getBlockSetting($block_id, 'filter_tombstone', '1') ? 'tombstone' : null,
             $this->getBlockSetting($block_id, 'filter_video', '0') ? 'video' : null,
-        ])->fetchOneColumn();
+        ];
+
+        $media_types = array_filter($media_types);
+
+        // We can apply the filters using SQL
+        // Do not use "ORDER BY RAND()" - it is very slow on large tables. Use PHP::array_rand() instead.
+        $all_media = DB::table('media')
+            ->join('media_file', function (JoinClause $join): void {
+                $join
+                    ->on('media_file.m_file', '=', 'media.m_file')
+                    ->on('media_file.m_id', '=', 'media.m_id');
+            })
+            ->where('media.m_file', '=', $tree->id())
+            ->whereIn('media_file.multimedia_format', ['jpg', 'jpeg', 'png', 'gif', 'tiff', 'bmp'])
+            ->whereIn('media_file.source_media_type', $media_types)
+            ->pluck('media.m_id')
+            ->all();
 
         // Keep looking through the media until a suitable one is found.
         $random_media = null;
