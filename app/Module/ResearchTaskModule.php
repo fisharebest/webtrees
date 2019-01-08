@@ -18,10 +18,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Database;
+use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Tree;
+use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Query\JoinClause;
+use Illuminate\Support\Collection;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -32,7 +36,6 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
     private const DEFAULT_SHOW_OTHER      = '1';
     private const DEFAULT_SHOW_UNASSIGNED = '1';
     private const DEFAULT_SHOW_FUTURE     = '1';
-    private const DEFAULT_BLOCK           = '1';
 
     /** {@inheritdoc} */
     public function getTitle(): string
@@ -68,17 +71,11 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
 
         $end_jd = $show_future ? 99999999 : WT_CLIENT_JD;
 
-        $xrefs = Database::prepare(
-            "SELECT DISTINCT d_gid FROM `##dates`" .
-            " WHERE d_file = :tree_id AND d_fact = '_TODO' AND d_julianday1 < :jd"
-        )->execute([
-            'tree_id' => $tree->id(),
-            'jd'      => $end_jd,
-        ])->fetchOneColumn();
+        $individuals = $this->individualsWithTasks($tree, $end_jd);
+        $families    = $this->familiesWithTasks($tree, $end_jd);
 
-        $records = array_map(function ($xref) use ($tree): GedcomRecord {
-            return GedcomRecord::getInstance($xref, $tree);
-        }, $xrefs);
+        /** @var GedcomRecord[] $records */
+        $records = $individuals->merge($families);
 
         $tasks = [];
 
@@ -177,5 +174,49 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
             'show_other'      => $show_other,
             'show_unassigned' => $show_unassigned,
         ]);
+    }
+
+    /**
+     * @param Tree $tree
+     * @param int  $max_julian_day
+     *
+     * @return Collection
+     */
+    private function familiesWithTasks(Tree $tree, int $max_julian_day): Collection
+    {
+        return DB::table('families')
+            ->join('dates', function (JoinClause $join): void {
+                $join
+                    ->on('f_file', '=', 'd_file')
+                    ->on('f_id', '=', 'd_gid');
+            })
+            ->where('f_file', '=', $tree->id())
+            ->where('d_fact', '=', '_TODO')
+            ->where('d_julianday1', '<', $max_julian_day)
+            ->select(['f_id', 'f_gedcom'])
+            ->get()
+            ->map(Family::rowMapper($tree));
+    }
+
+    /**
+     * @param Tree $tree
+     * @param int  $max_julian_day
+     *
+     * @return Collection
+     */
+    private function individualsWithTasks(Tree $tree, int $max_julian_day): Collection
+    {
+        return DB::table('individuals')
+            ->join('dates', function (JoinClause $join): void {
+                $join
+                    ->on('i_file', '=', 'd_file')
+                    ->on('i_id', '=', 'd_gid');
+            })
+            ->where('i_file', '=', $tree->id())
+            ->where('d_fact', '=', '_TODO')
+            ->where('d_julianday1', '<', $max_julian_day)
+            ->select(['i_id', 'i_gedcom'])
+            ->get()
+            ->map(Individual::rowMapper($tree));
     }
 }
