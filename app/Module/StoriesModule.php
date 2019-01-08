@@ -18,11 +18,11 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Tree;
+use Illuminate\Database\Capsule\Manager as DB;
 use stdClass;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -101,18 +101,11 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
      */
     private function getStoriesForIndividual(Individual $individual): array
     {
-        $block_ids =
-            Database::prepare(
-                "SELECT block_id" .
-                " FROM `##block`" .
-                " WHERE module_name = :module_name" .
-                " AND xref          = :xref" .
-                " AND gedcom_id     = :tree_id"
-            )->execute([
-                'module_name' => $this->getName(),
-                'xref'        => $individual->xref(),
-                'tree_id'     => $individual->tree()->id(),
-            ])->fetchOneColumn();
+        $block_ids = DB::table('block')
+            ->where('module_name', '=', $this->getName())
+            ->where('xref', '=', $individual->xref())
+            ->where('gedcom_id', '=', $individual->tree()->id())
+            ->pluck('block_id');
 
         $stories = [];
         foreach ($block_ids as $block_id) {
@@ -181,16 +174,11 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
     {
         $this->layout = 'layouts/administration';
 
-        $stories = Database::prepare(
-            "SELECT block_id, xref, gedcom_id" .
-            " FROM `##block` b" .
-            " WHERE module_name = :module_name" .
-            " AND gedcom_id = :tree_id" .
-            " ORDER BY gedcom_id, xref"
-        )->execute([
-            'tree_id'     => $tree->id(),
-            'module_name' => $this->getName(),
-        ])->fetchAll();
+        $stories = DB::table('block')
+            ->where('module_name', '=', $this->getName())
+            ->where('gedcom_id', '=', $tree->id())
+            ->orderBy('xref')
+            ->get();
 
         foreach ($stories as $story) {
             $block_id = (int) $story->block_id;
@@ -230,11 +218,9 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
             $title = I18N::translate('Add a story') . ' — ' . e($tree->title());
         } else {
             // Editing an existing story
-            $xref = (string) Database::prepare(
-                "SELECT xref FROM `##block` WHERE block_id = :block_id"
-            )->execute([
-                'block_id' => $block_id,
-            ])->fetchOne();
+            $xref = (string) DB::table('block')
+                ->where('block_id', '=', $block_id)
+                ->value('xref');
 
             $individual  = Individual::getInstance($xref, $tree);
             $story_title = $this->getBlockSetting($block_id, 'title', '');
@@ -270,22 +256,21 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
         $languages   = $request->get('languages', []);
 
         if ($block_id !== 0) {
-            Database::prepare(
-                "UPDATE `##block` SET gedcom_id = :tree_id, xref = :xref WHERE block_id = :block_id"
-            )->execute([
-                'tree_id'  => $tree->id(),
-                'xref'     => $xref,
-                'block_id' => $block_id,
-            ]);
+            DB::table('block')
+                ->where('block_id', '=', $block_id)
+                ->update([
+                    'gedcom_id' => $tree->id(),
+                    'xref'      => $xref,
+                ]);
         } else {
-            Database::prepare(
-                "INSERT INTO `##block` (gedcom_id, xref, module_name, block_order) VALUES (:tree_id, :xref, 'stories', 0)"
-            )->execute([
-                'tree_id' => $tree->id(),
-                'xref'    => $xref,
+            DB::table('block')->insert([
+                'gedcom_id'   => $tree->id(),
+                'xref'        => $xref,
+                'module_name' => $this->getName(),
+                'block_order' => 0,
             ]);
 
-            $block_id = Database::lastInsertId();
+            $block_id = (int) DB::connection()->getPdo()->lastInsertId();
         }
 
         $this->setBlockSetting($block_id, 'story_body', $story_body);
@@ -311,17 +296,13 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
     {
         $block_id = (int) $request->get('block_id');
 
-        Database::prepare(
-            "DELETE FROM `##block_setting` WHERE block_id = :block_id"
-        )->execute([
-            'block_id' => $block_id,
-        ]);
+        DB::table('block_setting')
+            ->where('block_id', '=', $block_id)
+            ->delete();
 
-        Database::prepare(
-            "DELETE FROM `##block` WHERE block_id = :block_id"
-        )->execute([
-            'block_id' => $block_id,
-        ]);
+        DB::table('block')
+            ->where('block_id', '=', $block_id)
+            ->delete();
 
         $url = route('module', [
             'module' => 'stories',
@@ -339,34 +320,25 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
      */
     public function getShowListAction(Tree $tree): Response
     {
-        $stories = Database::prepare(
-            "SELECT block_id, xref" .
-            " FROM `##block` b" .
-            " WHERE module_name = :module_name" .
-            " AND gedcom_id = :tree_id" .
-            " ORDER BY xref"
-        )->execute([
-            'module_name' => $this->getName(),
-            'tree_id'     => $tree->id(),
-        ])->fetchAll();
+        $stories = DB::table('block')
+            ->where('module_name', '=', $this->getName())
+            ->where('gedcom_id', '=', $tree->id())
+            ->get()
+            ->map(function (stdClass $story) use ($tree): stdClass {
+                $block_id = (int) $story->block_id;
 
-        foreach ($stories as $story) {
-            $block_id = (int) $story->block_id;
+                $story->individual = Individual::getInstance($story->xref, $tree);
+                $story->title      = $this->getBlockSetting($block_id, 'title');
+                $story->languages  = $this->getBlockSetting($block_id, 'languages');
 
-            $story->individual = Individual::getInstance($story->xref, $tree);
-            $story->title      = $this->getBlockSetting($block_id, 'title');
-            $story->languages  = $this->getBlockSetting($block_id, 'languages');
-        }
-
-        // Filter non-existant and private individuals.
-        $stories = array_filter($stories, function (stdClass $story): bool {
-            return $story->individual !== null && $story->individual->canShow();
-        });
-
-        // Filter foreign languages.
-        $stories = array_filter($stories, function (stdClass $story): bool {
-            return $story->languages === '' || in_array(WT_LOCALE, explode(',', $story->languages));
-        });
+                return $story;
+            })->filter(function (stdClass $story): bool {
+                // Filter non-existant and private individuals.
+                return $story->individual instanceof Individual && $story->individual->canShow();
+            })->filter(function (stdClass $story): bool {
+                // Filter foreign languages.
+                return $story->languages === '' || in_array(WT_LOCALE, explode(',', $story->languages));
+            });
 
         return $this->viewResponse('modules/stories/list', [
             'stories' => $stories,
