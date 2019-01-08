@@ -17,12 +17,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-use Fisharebest\Webtrees\Functions\FunctionsDate;
 use Fisharebest\Webtrees\Module\ModuleBlockInterface;
 use Fisharebest\Webtrees\Module\ModuleInterface;
-use Fisharebest\Webtrees\Statistics\Google;
-use Fisharebest\Webtrees\Statistics\Helper\Country;
-use Fisharebest\Webtrees\Statistics\Helper\Sql;
 use Fisharebest\Webtrees\Statistics\Repository\BrowserRepository;
 use Fisharebest\Webtrees\Statistics\Repository\ContactRepository;
 use Fisharebest\Webtrees\Statistics\Repository\EventRepository;
@@ -139,11 +135,6 @@ class Stats implements
     private $noteRepository;
 
     /**
-     * @var Country
-     */
-    private $countryHelper;
-
-    /**
      * @var MediaRepositoryInterface
      */
     private $mediaRepository;
@@ -226,7 +217,6 @@ class Stats implements
     public function __construct(Tree $tree)
     {
         $this->tree                  = $tree;
-        $this->countryHelper         = new Country();
         $this->gedcomRepository      = new GedcomRepository($tree);
         $this->individualRepository  = new IndividualRepository($tree);
         $this->familyRepository      = new FamilyRepository($tree);
@@ -1358,292 +1348,6 @@ class Stats implements
     }
 
     /**
-     * Lifespan
-     *
-     * @param string $type
-     * @param string $sex
-     *
-     * @return string
-     */
-    private function longlifeQuery($type, $sex): string
-    {
-        $sex_search = ' 1=1';
-        if ($sex === 'F') {
-            $sex_search = " i_sex='F'";
-        } elseif ($sex === 'M') {
-            $sex_search = " i_sex='M'";
-        }
-
-        $rows = $this->runSql(
-            " SELECT" .
-            " death.d_gid AS id," .
-            " death.d_julianday2-birth.d_julianday1 AS age" .
-            " FROM" .
-            " `##dates` AS death," .
-            " `##dates` AS birth," .
-            " `##individuals` AS indi" .
-            " WHERE" .
-            " indi.i_id=birth.d_gid AND" .
-            " birth.d_gid=death.d_gid AND" .
-            " death.d_file={$this->tree->id()} AND" .
-            " birth.d_file=death.d_file AND" .
-            " birth.d_file=indi.i_file AND" .
-            " birth.d_fact='BIRT' AND" .
-            " death.d_fact='DEAT' AND" .
-            " birth.d_julianday1<>0 AND" .
-            " death.d_julianday1>birth.d_julianday2 AND" .
-            $sex_search .
-            " ORDER BY" .
-            " age DESC LIMIT 1"
-        );
-        if (!isset($rows[0])) {
-            return '';
-        }
-        $row    = $rows[0];
-        $person = Individual::getInstance($row->id, $this->tree);
-        switch ($type) {
-            default:
-            case 'full':
-                if ($person->canShowName()) {
-                    $result = $person->formatList();
-                } else {
-                    $result = I18N::translate('This information is private and cannot be shown.');
-                }
-                break;
-            case 'age':
-                $result = I18N::number((int) ($row->age / 365.25));
-                break;
-            case 'name':
-                $result = '<a href="' . e($person->url()) . '">' . $person->getFullName() . '</a>';
-                break;
-        }
-
-        return $result;
-    }
-
-    /**
-     * Find the oldest individuals.
-     *
-     * @param string $type
-     * @param string $sex
-     * @param int    $total
-     *
-     * @return array
-     */
-    private function topTenOldestQuery(string $type, string $sex, int $total): array
-    {
-        if ($sex === 'F') {
-            $sex_search = " AND i_sex='F' ";
-        } elseif ($sex === 'M') {
-            $sex_search = " AND i_sex='M' ";
-        } else {
-            $sex_search = '';
-        }
-
-        $rows = $this->runSql(
-            "SELECT " .
-            " MAX(death.d_julianday2-birth.d_julianday1) AS age, " .
-            " death.d_gid AS deathdate " .
-            "FROM " .
-            " `##dates` AS death, " .
-            " `##dates` AS birth, " .
-            " `##individuals` AS indi " .
-            "WHERE " .
-            " indi.i_id=birth.d_gid AND " .
-            " birth.d_gid=death.d_gid AND " .
-            " death.d_file={$this->tree->id()} AND " .
-            " birth.d_file=death.d_file AND " .
-            " birth.d_file=indi.i_file AND " .
-            " birth.d_fact='BIRT' AND " .
-            " death.d_fact='DEAT' AND " .
-            " birth.d_julianday1<>0 AND " .
-            " death.d_julianday1>birth.d_julianday2 " .
-            $sex_search .
-            "GROUP BY deathdate " .
-            "ORDER BY age DESC " .
-            "LIMIT " . $total
-        );
-
-        if (!isset($rows[0])) {
-            return [];
-        }
-
-        $top10 = [];
-        foreach ($rows as $row) {
-            $person = Individual::getInstance($row->deathdate, $this->tree);
-            $age    = $row->age;
-
-            if ((int) ($age / 365.25) > 0) {
-                $age = (int) ($age / 365.25) . 'y';
-            } elseif ((int) ($age / 30.4375) > 0) {
-                $age = (int) ($age / 30.4375) . 'm';
-            } else {
-                $age .= 'd';
-            }
-
-            if ($person->canShow()) {
-                $top10[] = [
-                    'person' => $person,
-                    'age'    => FunctionsDate::getAgeAtEvent($age),
-                ];
-            }
-        }
-
-        // TODO
-//        if (I18N::direction() === 'rtl') {
-//            $top10 = str_replace([
-//                '[',
-//                ']',
-//                '(',
-//                ')',
-//                '+',
-//            ], [
-//                '&rlm;[',
-//                '&rlm;]',
-//                '&rlm;(',
-//                '&rlm;)',
-//                '&rlm;+',
-//            ], $top10);
-//        }
-
-        return $top10;
-    }
-
-    /**
-     * Find the oldest living individuals.
-     *
-     * @param string $sex
-     * @param int    $total
-     *
-     * @return array
-     */
-    private function topTenOldestAliveQuery(string $sex = 'BOTH', int $total = 10): array
-    {
-        $total = (int) $total;
-
-        // TODO
-//        if (!Auth::isMember($this->tree)) {
-//            return I18N::translate('This information is private and cannot be shown.');
-//        }
-
-        if ($sex === 'F') {
-            $sex_search = " AND i_sex='F'";
-        } elseif ($sex === 'M') {
-            $sex_search = " AND i_sex='M'";
-        } else {
-            $sex_search = '';
-        }
-
-        $rows  = $this->runSql(
-            "SELECT" .
-            " birth.d_gid AS id," .
-            " MIN(birth.d_julianday1) AS age" .
-            " FROM" .
-            " `##dates` AS birth," .
-            " `##individuals` AS indi" .
-            " WHERE" .
-            " indi.i_id=birth.d_gid AND" .
-            " indi.i_gedcom NOT REGEXP '\\n1 (" . implode('|', Gedcom::DEATH_EVENTS) . ")' AND" .
-            " birth.d_file={$this->tree->id()} AND" .
-            " birth.d_fact='BIRT' AND" .
-            " birth.d_file=indi.i_file AND" .
-            " birth.d_julianday1<>0" .
-            $sex_search .
-            " GROUP BY id" .
-            " ORDER BY age" .
-            " ASC LIMIT " . $total
-        );
-
-        $top10 = [];
-
-        foreach ($rows as $row) {
-            $person = Individual::getInstance($row->id, $this->tree);
-            $age    = (WT_CLIENT_JD - $row->age);
-
-            if ((int) ($age / 365.25) > 0) {
-                $age = (int) ($age / 365.25) . 'y';
-            } elseif ((int) ($age / 30.4375) > 0) {
-                $age = (int) ($age / 30.4375) . 'm';
-            } else {
-                $age .= 'd';
-            }
-
-            $top10[] = [
-                'person' => $person,
-                'age'    => FunctionsDate::getAgeAtEvent($age),
-            ];
-        }
-
-        // TODO
-//        if (I18N::direction() === 'rtl') {
-//            $top10 = str_replace([
-//                '[',
-//                ']',
-//                '(',
-//                ')',
-//                '+',
-//            ], [
-//                '&rlm;[',
-//                '&rlm;]',
-//                '&rlm;(',
-//                '&rlm;)',
-//                '&rlm;+',
-//            ], $top10);
-//        }
-
-        return $top10;
-    }
-
-    /**
-     * Find the average lifespan.
-     *
-     * @param string $sex
-     * @param bool   $show_years
-     *
-     * @return string
-     */
-    private function averageLifespanQuery($sex = 'BOTH', $show_years = false): string
-    {
-        if ($sex === 'F') {
-            $sex_search = " AND i_sex='F' ";
-        } elseif ($sex === 'M') {
-            $sex_search = " AND i_sex='M' ";
-        } else {
-            $sex_search = '';
-        }
-        $rows = $this->runSql(
-            "SELECT IFNULL(AVG(death.d_julianday2-birth.d_julianday1), 0) AS age" .
-            " FROM `##dates` AS death, `##dates` AS birth, `##individuals` AS indi" .
-            " WHERE " .
-            " indi.i_id=birth.d_gid AND " .
-            " birth.d_gid=death.d_gid AND " .
-            " death.d_file=" . $this->tree->id() . " AND " .
-            " birth.d_file=death.d_file AND " .
-            " birth.d_file=indi.i_file AND " .
-            " birth.d_fact='BIRT' AND " .
-            " death.d_fact='DEAT' AND " .
-            " birth.d_julianday1<>0 AND " .
-            " death.d_julianday1>birth.d_julianday2 " .
-            $sex_search
-        );
-
-        $age = $rows[0]->age;
-        if ($show_years) {
-            if ((int) ($age / 365.25) > 0) {
-                $age = (int) ($age / 365.25) . 'y';
-            } elseif ((int) ($age / 30.4375) > 0) {
-                $age = (int) ($age / 30.4375) . 'm';
-            } elseif (!empty($age)) {
-                $age .= 'd';
-            }
-
-            return FunctionsDate::getAgeAtEvent($age);
-        }
-
-        return I18N::number($age / 365.25);
-    }
-
-    /**
      * General query on ages.
      *
      * @param bool   $simple
@@ -1678,7 +1382,7 @@ class Stats implements
      */
     public function longestLife(): string
     {
-        return $this->longlifeQuery('full', 'BOTH');
+        return $this->individualRepository->longestLife();
     }
 
     /**
@@ -1688,7 +1392,7 @@ class Stats implements
      */
     public function longestLifeAge(): string
     {
-        return $this->longlifeQuery('age', 'BOTH');
+        return $this->individualRepository->longestLifeAge();
     }
 
     /**
@@ -1698,9 +1402,68 @@ class Stats implements
      */
     public function longestLifeName(): string
     {
-        return $this->longlifeQuery('name', 'BOTH');
+        return $this->individualRepository->longestLifeName();
     }
 
+    /**
+     * Find the longest lived female.
+     *
+     * @return string
+     */
+    public function longestLifeFemale(): string
+    {
+        return $this->individualRepository->longestLifeFemale();
+    }
+
+    /**
+     * Find the age of the longest lived female.
+     *
+     * @return string
+     */
+    public function longestLifeFemaleAge(): string
+    {
+        return $this->individualRepository->longestLifeFemaleAge();
+    }
+
+    /**
+     * Find the name of the longest lived female.
+     *
+     * @return string
+     */
+    public function longestLifeFemaleName(): string
+    {
+        return $this->individualRepository->longestLifeFemaleName();
+    }
+
+    /**
+     * Find the longest lived male.
+     *
+     * @return string
+     */
+    public function longestLifeMale(): string
+    {
+        return $this->individualRepository->longestLifeMale();
+    }
+
+    /**
+     * Find the age of the longest lived male.
+     *
+     * @return string
+     */
+    public function longestLifeMaleAge(): string
+    {
+        return $this->individualRepository->longestLifeMaleAge();
+    }
+
+    /**
+     * Find the name of the longest lived male.
+     *
+     * @return string
+     */
+    public function longestLifeMaleName(): string
+    {
+        return $this->individualRepository->longestLifeMaleName();
+    }
     /**
      * Find the oldest individuals.
      *
@@ -1710,14 +1473,7 @@ class Stats implements
      */
     public function topTenOldest(string $total = '10'): string
     {
-        $records = $this->topTenOldestQuery('nolist', 'BOTH', (int) $total);
-
-        return view(
-            'statistics/individuals/top10-nolist',
-            [
-                'records' => $records,
-            ]
-        );
+        return $this->individualRepository->topTenOldest($total);
     }
 
     /**
@@ -1729,94 +1485,7 @@ class Stats implements
      */
     public function topTenOldestList(string $total = '10'): string
     {
-        $records = $this->topTenOldestQuery('list', 'BOTH', (int) $total);
-
-        return view(
-            'statistics/individuals/top10-list',
-            [
-                'records' => $records,
-            ]
-        );
-    }
-
-    /**
-     * Find the oldest living individuals.
-     *
-     * @param string|null $total
-     *
-     * @return string
-     */
-    public function topTenOldestAlive(string $total = '10'): string
-    {
-        $records = $this->topTenOldestAliveQuery('BOTH', (int) $total);
-
-        return view(
-            'statistics/individuals/top10-nolist',
-            [
-                'records' => $records,
-            ]
-        );
-    }
-
-    /**
-     * Find the oldest living individuals.
-     *
-     * @param string|null $total
-     *
-     * @return string
-     */
-    public function topTenOldestListAlive(string $total = '10'): string
-    {
-        $records = $this->topTenOldestAliveQuery('BOTH', (int) $total);
-
-        return view(
-            'statistics/individuals/top10-list',
-            [
-                'records' => $records,
-            ]
-        );
-    }
-
-    /**
-     * Find the average lifespan.
-     *
-     * @param bool $show_years
-     *
-     * @return string
-     */
-    public function averageLifespan($show_years = false): string
-    {
-        return $this->averageLifespanQuery('BOTH', $show_years);
-    }
-
-    /**
-     * Find the longest lived female.
-     *
-     * @return string
-     */
-    public function longestLifeFemale(): string
-    {
-        return $this->longlifeQuery('full', 'F');
-    }
-
-    /**
-     * Find the age of the longest lived female.
-     *
-     * @return string
-     */
-    public function longestLifeFemaleAge(): string
-    {
-        return $this->longlifeQuery('age', 'F');
-    }
-
-    /**
-     * Find the name of the longest lived female.
-     *
-     * @return string
-     */
-    public function longestLifeFemaleName(): string
-    {
-        return $this->longlifeQuery('name', 'F');
+        return $this->individualRepository->topTenOldestList($total);
     }
 
     /**
@@ -1828,14 +1497,7 @@ class Stats implements
      */
     public function topTenOldestFemale(string $total = '10'): string
     {
-        $records = $this->topTenOldestQuery('nolist', 'F', (int) $total);
-
-        return view(
-            'statistics/individuals/top10-nolist',
-            [
-                'records' => $records,
-            ]
-        );
+        return $this->individualRepository->topTenOldestFemale($total);
     }
 
     /**
@@ -1847,94 +1509,7 @@ class Stats implements
      */
     public function topTenOldestFemaleList(string $total = '10'): string
     {
-        $records = $this->topTenOldestQuery('list', 'F', (int) $total);
-
-        return view(
-            'statistics/individuals/top10-list',
-            [
-                'records' => $records,
-            ]
-        );
-    }
-
-    /**
-     * Find the oldest living females.
-     *
-     * @param string|null $total
-     *
-     * @return string
-     */
-    public function topTenOldestFemaleAlive(string $total = '10'): string
-    {
-        $records = $this->topTenOldestAliveQuery('F', (int) $total);
-
-        return view(
-            'statistics/individuals/top10-nolist',
-            [
-                'records' => $records,
-            ]
-        );
-    }
-
-    /**
-     * Find the oldest living females.
-     *
-     * @param string|null $total
-     *
-     * @return string
-     */
-    public function topTenOldestFemaleListAlive(string $total = '10'): string
-    {
-        $records = $this->topTenOldestAliveQuery('F', (int) $total);
-
-        return view(
-            'statistics/individuals/top10-list',
-            [
-                'records' => $records,
-            ]
-        );
-    }
-
-    /**
-     * Find the average lifespan of females.
-     *
-     * @param bool $show_years
-     *
-     * @return string
-     */
-    public function averageLifespanFemale($show_years = false): string
-    {
-        return $this->averageLifespanQuery('F', $show_years);
-    }
-
-    /**
-     * Find the longest lived male.
-     *
-     * @return string
-     */
-    public function longestLifeMale(): string
-    {
-        return $this->longlifeQuery('full', 'M');
-    }
-
-    /**
-     * Find the age of the longest lived male.
-     *
-     * @return string
-     */
-    public function longestLifeMaleAge(): string
-    {
-        return $this->longlifeQuery('age', 'M');
-    }
-
-    /**
-     * Find the name of the longest lived male.
-     *
-     * @return string
-     */
-    public function longestLifeMaleName(): string
-    {
-        return $this->longlifeQuery('name', 'M');
+        return $this->individualRepository->topTenOldestFemaleList($total);
     }
 
     /**
@@ -1946,14 +1521,7 @@ class Stats implements
      */
     public function topTenOldestMale(string $total = '10'): string
     {
-        $records = $this->topTenOldestQuery('nolist', 'M', (int) $total);
-
-        return view(
-            'statistics/individuals/top10-nolist',
-            [
-                'records' => $records,
-            ]
-        );
+        return $this->individualRepository->topTenOldestMale($total);
     }
 
     /**
@@ -1965,14 +1533,55 @@ class Stats implements
      */
     public function topTenOldestMaleList(string $total = '10'): string
     {
-        $records = $this->topTenOldestQuery('list', 'M', (int) $total);
+        return $this->individualRepository->topTenOldestMaleList($total);
+    }
 
-        return view(
-            'statistics/individuals/top10-list',
-            [
-                'records' => $records,
-            ]
-        );
+    /**
+     * Find the oldest living individuals.
+     *
+     * @param string|null $total
+     *
+     * @return string
+     */
+    public function topTenOldestAlive(string $total = '10'): string
+    {
+        return $this->individualRepository->topTenOldestAlive($total);
+    }
+
+    /**
+     * Find the oldest living individuals.
+     *
+     * @param string|null $total
+     *
+     * @return string
+     */
+    public function topTenOldestListAlive(string $total = '10'): string
+    {
+        return $this->individualRepository->topTenOldestListAlive($total);
+    }
+
+    /**
+     * Find the oldest living females.
+     *
+     * @param string|null $total
+     *
+     * @return string
+     */
+    public function topTenOldestFemaleAlive(string $total = '10'): string
+    {
+        return $this->individualRepository->topTenOldestFemaleAlive($total);
+    }
+
+    /**
+     * Find the oldest living females.
+     *
+     * @param string|null $total
+     *
+     * @return string
+     */
+    public function topTenOldestFemaleListAlive(string $total = '10'): string
+    {
+        return $this->individualRepository->topTenOldestFemaleListAlive($total);
     }
 
     /**
@@ -1984,14 +1593,7 @@ class Stats implements
      */
     public function topTenOldestMaleAlive(string $total = '10'): string
     {
-        $records = $this->topTenOldestAliveQuery('M', (int) $total);
-
-        return view(
-            'statistics/individuals/top10-nolist',
-            [
-                'records' => $records,
-            ]
-        );
+        return $this->individualRepository->topTenOldestMaleAlive($total);
     }
 
     /**
@@ -2003,14 +1605,31 @@ class Stats implements
      */
     public function topTenOldestMaleListAlive(string $total = '10'): string
     {
-        $records = $this->topTenOldestAliveQuery('M', (int) $total);
+        return $this->individualRepository->topTenOldestMaleListAlive($total);
+    }
 
-        return view(
-            'statistics/individuals/top10-list',
-            [
-                'records' => $records,
-            ]
-        );
+    /**
+     * Find the average lifespan.
+     *
+     * @param bool $show_years
+     *
+     * @return string
+     */
+    public function averageLifespan($show_years = false): string
+    {
+        return $this->individualRepository->averageLifespan($show_years);
+    }
+
+    /**
+     * Find the average lifespan of females.
+     *
+     * @param bool $show_years
+     *
+     * @return string
+     */
+    public function averageLifespanFemale($show_years = false): string
+    {
+        return $this->individualRepository->averageLifespanFemale($show_years);
     }
 
     /**
@@ -2022,7 +1641,7 @@ class Stats implements
      */
     public function averageLifespanMale($show_years = false): string
     {
-        return $this->averageLifespanQuery('M', $show_years);
+        return $this->individualRepository->averageLifespanMale($show_years);
     }
 
     /**
@@ -2231,8 +1850,7 @@ class Stats implements
      */
     public function statsMarr(string $size = null, string $color_from = null, string $color_to = null): string
     {
-        return (new Google\ChartMarriage($this->tree))
-            ->chartMarriage($size, $color_from, $color_to);
+        return $this->familyRepository->statsMarr($size, $color_from, $color_to);
     }
 
     /**
@@ -2326,8 +1944,7 @@ class Stats implements
      */
     public function statsDiv(string $size = null, string $color_from = null, string $color_to = null): string
     {
-        return (new Google\ChartDivorce($this->tree))
-            ->chartDivorce($size, $color_from, $color_to);
+        return $this->familyRepository->statsDiv($size, $color_from, $color_to);
     }
 
     /**
@@ -3872,17 +3489,5 @@ class Stats implements
     public function webtreesVersion(): string
     {
         return Webtrees::VERSION;
-    }
-
-    /**
-     * Run an SQL query and cache the result.
-     *
-     * @param string $sql
-     *
-     * @return stdClass[]
-     */
-    private function runSql($sql): array
-    {
-        return Sql::runSql($sql);
     }
 }
