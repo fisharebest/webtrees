@@ -17,15 +17,14 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Statistics\Repository;
 
-use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Statistics\Google\ChartDistribution;
 use Fisharebest\Webtrees\Statistics\Helper\Country;
-use Fisharebest\Webtrees\Statistics\Helper\Sql;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\PlaceRepositoryInterface;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Query\JoinClause;
 
 /**
  * A repository providing methods for place related statistics.
@@ -54,18 +53,6 @@ class PlaceRepository implements PlaceRepositoryInterface
     }
 
     /**
-     * Run an SQL query and cache the result.
-     *
-     * @param string $sql
-     *
-     * @return \stdClass[]
-     */
-    private function runSql($sql): array
-    {
-        return Sql::runSql($sql);
-    }
-
-    /**
      * Places
      *
      * @param string $what
@@ -78,18 +65,22 @@ class PlaceRepository implements PlaceRepositoryInterface
     public function statsPlaces(string $what = 'ALL', string $fact = '', int $parent = 0, bool $country = false): array
     {
         if ($fact) {
+            $rows = [];
+
             if ($what === 'INDI') {
-                $rows = Database::prepare(
-                    "SELECT i_gedcom AS ged FROM `##individuals` WHERE i_file = :tree_id AND i_gedcom LIKE '%\n2 PLAC %'"
-                )->execute([
-                    'tree_id' => $this->tree->id(),
-                ])->fetchAll();
+                $rows = DB::table('individuals')
+                    ->select(['i_gedcom as ged'])
+                    ->where('i_file', '=', $this->tree->id())
+                    ->where('i_gedcom', 'LIKE', "%\n2 PLAC %")
+                    ->get()
+                    ->all();
             } elseif ($what === 'FAM') {
-                $rows = Database::prepare(
-                    "SELECT f_gedcom AS ged FROM `##families` WHERE f_file = :tree_id AND f_gedcom LIKE '%\n2 PLAC %'"
-                )->execute([
-                    'tree_id' => $this->tree->id(),
-                ])->fetchAll();
+                $rows = DB::table('families')
+                    ->select(['f_gedcom as ged'])
+                    ->where('f_file', '=', $this->tree->id())
+                    ->where('f_gedcom', 'LIKE', "%\n2 PLAC %")
+                    ->get()
+                    ->all();
             }
 
             $placelist = [];
@@ -102,10 +93,11 @@ class PlaceRepository implements PlaceRepositoryInterface
                     } else {
                         $place = $match[1];
                     }
-                    if (!isset($placelist[$place])) {
-                        $placelist[$place] = 1;
-                    } else {
+
+                    if (isset($placelist[$place])) {
                         $placelist[$place]++;
+                    } else {
+                        $placelist[$place] = 1;
                     }
                 }
             }
@@ -113,55 +105,41 @@ class PlaceRepository implements PlaceRepositoryInterface
             return $placelist;
         }
 
-        if ($parent > 0) {
-            // used by placehierarchy googlemap module
-            if ($what === 'INDI') {
-                $join = " JOIN `##individuals` ON pl_file = i_file AND pl_gid = i_id";
-            } elseif ($what === 'FAM') {
-                $join = " JOIN `##families` ON pl_file = f_file AND pl_gid = f_id";
-            } else {
-                $join = "";
-            }
-            $rows = $this->runSql(
-                " SELECT" .
-                " p_place AS place," .
-                " COUNT(*) AS tot" .
-                " FROM" .
-                " `##places`" .
-                " JOIN `##placelinks` ON pl_file=p_file AND p_id=pl_p_id" .
-                $join .
-                " WHERE" .
-                " p_id={$parent} AND" .
-                " p_file={$this->tree->id()}" .
-                " GROUP BY place"
-            );
+        $query = DB::table('places')
+            ->join('placelinks', function (JoinClause $join) {
+                $join->on('pl_file', '=', 'p_file')
+                    ->on('pl_p_id', '=', 'p_id');
+            })
+            ->where('p_file', '=', $this->tree->id());
 
-            return $rows;
+        if ($parent > 0) {
+            // Used by placehierarchy map modules
+            $query->select(['p_place AS place'])
+                ->selectRaw('COUNT(*) AS tot')
+                ->where('p_id', '=', $parent)
+                ->groupBy(['place']);
+        } else {
+            $query->select(['p_place AS country'])
+                ->selectRaw('COUNT(*) AS tot')
+                ->where('p_parent_id', '=', 0)
+                ->groupBy(['country'])
+                ->orderByDesc('tot')
+                ->orderBy('country');
         }
 
         if ($what === 'INDI') {
-            $join = " JOIN `##individuals` ON pl_file = i_file AND pl_gid = i_id";
+            $query->join('individuals', function (JoinClause $join) {
+                $join->on('pl_file', '=', 'i_file')
+                    ->on('pl_gid', '=', 'i_id');
+            });
         } elseif ($what === 'FAM') {
-            $join = " JOIN `##families` ON pl_file = f_file AND pl_gid = f_id";
-        } else {
-            $join = "";
+            $query->join('families', function (JoinClause $join) {
+                $join->on('pl_file', '=', 'f_file')
+                    ->on('pl_gid', '=', 'f_id');
+            });
         }
 
-        $rows = $this->runSql(
-            " SELECT" .
-            " p_place AS country," .
-            " COUNT(*) AS tot" .
-            " FROM" .
-            " `##places`" .
-            " JOIN `##placelinks` ON pl_file=p_file AND p_id=pl_p_id" .
-            $join .
-            " WHERE" .
-            " p_file={$this->tree->id()}" .
-            " AND p_parent_id='0'" .
-            " GROUP BY country ORDER BY tot DESC, country ASC"
-        );
-
-        return $rows;
+        return $query->get()->all();
     }
 
     /**
@@ -279,13 +257,14 @@ class PlaceRepository implements PlaceRepositoryInterface
         foreach ($countries as $place) {
             $country = trim($place->country);
             if (array_key_exists($country, $country_names)) {
-                if (!isset($all_db_countries[$country_names[$country]][$country])) {
-                    $all_db_countries[$country_names[$country]][$country] = (int) $place->tot;
-                } else {
+                if (isset($all_db_countries[$country_names[$country]][$country])) {
                     $all_db_countries[$country_names[$country]][$country] += (int) $place->tot;
+                } else {
+                    $all_db_countries[$country_names[$country]][$country] = (int) $place->tot;
                 }
             }
         }
+
         // get all the user’s countries names
         $all_countries = $this->countryHelper->getAllCountries();
 
