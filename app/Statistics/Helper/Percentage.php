@@ -18,10 +18,9 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Statistics\Helper;
 
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Statistics\Repository\IndividualRepository;
 use Fisharebest\Webtrees\Statistics\Repository\FamilyRepository;
+use Fisharebest\Webtrees\Statistics\Repository\IndividualRepository;
 use Fisharebest\Webtrees\Statistics\Repository\SourceRepository;
-use Fisharebest\Webtrees\Statistics\Repository\NoteRepository;
 use Fisharebest\Webtrees\Tree;
 
 /**
@@ -45,11 +44,6 @@ class Percentage
     private $sourceRepository;
 
     /**
-     * @var NoteRepository
-     */
-    private $noteRepository;
-
-    /**
      * Constructor.
      *
      * @param Tree $tree
@@ -59,7 +53,6 @@ class Percentage
         $this->individualRepository = new IndividualRepository($tree);
         $this->familyRepository     = new FamilyRepository($tree);
         $this->sourceRepository     = new SourceRepository($tree);
-        $this->noteRepository       = new NoteRepository($tree);
     }
 
     /**
@@ -75,18 +68,6 @@ class Percentage
         switch ($type) {
             case 'individual':
                 $count = $this->individualRepository->totalIndividualsQuery();
-                break;
-
-            case 'family':
-                $count = $this->familyRepository->totalFamiliesQuery();
-                break;
-
-            case 'source':
-                $count = $this->sourceRepository->totalSourcesQuery();
-                break;
-
-            case 'note':
-                $count = $this->noteRepository->totalNotesQuery();
                 break;
 
             case 'all':
