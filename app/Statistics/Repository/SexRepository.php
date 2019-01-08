@@ -51,42 +51,46 @@ class SexRepository implements SexRepositoryInterface
     }
 
     /**
-     * Count the number of males.
+     * Returns the total count of a specific sex.
+     *
+     * @return int
+     */
+    private function getTotalSexQuery(string $sex): int
+    {
+        return DB::table('individuals')
+            ->where('i_file', '=', $this->tree->id())
+            ->where('i_sex', '=', $sex)
+            ->count();
+    }
+
+    /**
+     * Returns the total number of males.
      *
      * @return int
      */
     private function totalSexMalesQuery(): int
     {
-        return DB::table('individuals')
-            ->where('i_file', '=', $this->tree->id())
-            ->where('i_sex', '=', 'M')
-            ->count();
+        return $this->getTotalSexQuery('M');
     }
 
     /**
-     * Count the number of females.
+     * Returns the total number of females.
      *
      * @return int
      */
     private function totalSexFemalesQuery(): int
     {
-        return DB::table('individuals')
-            ->where('i_file', '=', $this->tree->id())
-            ->where('i_sex', '=', 'F')
-            ->count();
+        return $this->getTotalSexQuery('F');
     }
 
     /**
-     * Count the number of individuals with unknown sex.
+     * Returns the total number of individuals with unknown sex.
      *
      * @return int
      */
     private function totalSexUnknownQuery(): int
     {
-        return DB::table('individuals')
-            ->where('i_file', '=', $this->tree->id())
-            ->where('i_sex', '=', 'U')
-            ->count();
+        return $this->getTotalSexQuery('U');
     }
 
     /**

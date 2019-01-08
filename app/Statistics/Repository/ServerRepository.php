@@ -32,6 +32,7 @@ class ServerRepository implements ServerRepositoryInterface
      */
     public function serverDate(): string
     {
+        // TODO: Duplicates BrowserRepository::browserDate
         return FunctionsDate::timestampToGedcomDate(WT_TIMESTAMP)->display();
     }
 
