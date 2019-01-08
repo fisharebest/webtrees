@@ -17,7 +17,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Html;
@@ -28,6 +27,7 @@ use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
+use Illuminate\Database\Capsule\Manager as DB;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -129,25 +129,32 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
         if ($timestamp > WT_TIMESTAMP - self::CACHE_LIFE) {
             $content = $this->getPreference('sitemap.xml');
         } else {
-            $count_individuals = Database::prepare(
-                "SELECT i_file, COUNT(*) FROM `##individuals` GROUP BY i_file"
-            )->execute()->fetchAssoc();
+            $count_individuals = DB::table('individuals')
+                ->groupBy('i_file')
+                ->select([DB::raw('COUNT(*) AS total'), 'i_file'])
+                ->pluck('total', 'i_file');
 
-            $count_media = Database::prepare(
-                "SELECT m_file, COUNT(*) FROM `##media` GROUP BY m_file"
-            )->execute()->fetchAssoc();
+            $count_media = DB::table('media')
+                ->groupBy('m_file')
+                ->select([DB::raw('COUNT(*) AS total'), 'm_file'])
+                ->pluck('total', 'm_file');
 
-            $count_notes = Database::prepare(
-                "SELECT o_file, COUNT(*) FROM `##other` WHERE o_type='NOTE' GROUP BY o_file"
-            )->execute()->fetchAssoc();
+            $count_notes = DB::table('other')
+                ->where('o_type', '=', 'NOTE')
+                ->groupBy('o_file')
+                ->select([DB::raw('COUNT(*) AS total'), 'o_file'])
+                ->pluck('total', 'o_file');
 
-            $count_repositories = Database::prepare(
-                "SELECT o_file, COUNT(*) FROM `##other` WHERE o_type='REPO' GROUP BY o_file"
-            )->execute()->fetchAssoc();
+            $count_repositories = DB::table('other')
+                ->where('o_type', '=', 'REPO')
+                ->groupBy('o_file')
+                ->select([DB::raw('COUNT(*) AS total'), 'o_file'])
+                ->pluck('total', 'o_file');
 
-            $count_sources = Database::prepare(
-                "SELECT s_file, COUNT(*) FROM `##sources` GROUP BY s_file"
-            )->execute()->fetchAssoc();
+            $count_sources = DB::table('sources')
+                ->groupBy('s_file')
+                ->select([DB::raw('COUNT(*) AS total'), 's_file'])
+                ->pluck('total', 's_file');
 
             $content = view('modules/sitemap/sitemap-index.xml', [
                 'all_trees'          => Tree::getAll(),
@@ -259,17 +266,12 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
      */
     private function sitemapIndividuals(Tree $tree, int $limit, int $offset): array
     {
-        $rows = Database::prepare(
-            "SELECT i_id AS xref, i_gedcom AS gedcom" .
-            " FROM `##individuals`" .
-            " WHERE i_file = :tree_id" .
-            " ORDER BY i_id" .
-            " LIMIT :limit OFFSET :offset"
-        )->execute([
-            'tree_id' => $tree->id(),
-            'limit'   => $limit,
-            'offset'  => $offset,
-        ])->fetchAll();
+        $rows = DB::table('individuals')
+            ->where('i_file', '=', $tree->id())
+            ->orderBy('i_id')
+            ->skip($offset)
+            ->take($limit)
+            ->get();
 
         $records = [];
 
@@ -289,17 +291,12 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
      */
     private function sitemapMedia(Tree $tree, int $limit, int $offset): array
     {
-        $rows = Database::prepare(
-            "SELECT m_id AS xref, m_gedcom AS gedcom" .
-            " FROM `##media`" .
-            " WHERE m_file = :tree_id" .
-            " ORDER BY m_id" .
-            " LIMIT :limit OFFSET :offset"
-        )->execute([
-            'tree_id' => $tree->id(),
-            'limit'   => $limit,
-            'offset'  => $offset,
-        ])->fetchAll();
+        $rows = DB::table('media')
+            ->where('m_file', '=', $tree->id())
+            ->orderBy('m_id')
+            ->skip($offset)
+            ->take($limit)
+            ->get();
 
         $records = [];
 
@@ -319,17 +316,13 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
      */
     private function sitemapNotes(Tree $tree, int $limit, int $offset): array
     {
-        $rows = Database::prepare(
-            "SELECT o_id AS xref, o_gedcom AS gedcom" .
-            " FROM `##other`" .
-            " WHERE o_file = :tree_id AND o_type = 'NOTE'" .
-            " ORDER BY o_id" .
-            " LIMIT :limit OFFSET :offset"
-        )->execute([
-            'tree_id' => $tree->id(),
-            'limit'   => $limit,
-            'offset'  => $offset,
-        ])->fetchAll();
+        $rows = DB::table('other')
+            ->where('o_file', '=', $tree->id())
+            ->where('o_type', '=', 'NOTE')
+            ->orderBy('o_id')
+            ->skip($offset)
+            ->take($limit)
+            ->get();
 
         $records = [];
 
@@ -349,17 +342,13 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
      */
     private function sitemapRepositories(Tree $tree, int $limit, int $offset): array
     {
-        $rows = Database::prepare(
-            "SELECT o_id AS xref, o_gedcom AS gedcom" .
-            " FROM `##other`" .
-            " WHERE o_file = :tree_id AND o_type = 'REPO'" .
-            " ORDER BY o_id" .
-            " LIMIT :limit OFFSET :offset"
-        )->execute([
-            'tree_id' => $tree->id(),
-            'limit'   => $limit,
-            'offset'  => $offset,
-        ])->fetchAll();
+        $rows = DB::table('other')
+            ->where('o_file', '=', $tree->id())
+            ->where('o_type', '=', 'REPO')
+            ->orderBy('o_id')
+            ->skip($offset)
+            ->take($limit)
+            ->get();
 
         $records = [];
 
@@ -379,17 +368,12 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
      */
     private function sitemapSources(Tree $tree, int $limit, int $offset): array
     {
-        $rows = Database::prepare(
-            "SELECT s_id AS xref, s_gedcom AS gedcom" .
-            " FROM `##sources`" .
-            " WHERE s_file = :tree_id" .
-            " ORDER BY s_id" .
-            " LIMIT :limit OFFSET :offset"
-        )->execute([
-            'tree_id' => $tree->id(),
-            'limit'   => $limit,
-            'offset'  => $offset,
-        ])->fetchAll();
+        $rows = DB::table('sources')
+            ->where('s_file', '=', $tree->id())
+            ->orderBy('s_id')
+            ->skip($offset)
+            ->take($limit)
+            ->get();
 
         $records = [];
 
