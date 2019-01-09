@@ -18,7 +18,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\DebugBar;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module;
@@ -49,7 +48,7 @@ class HomePageController extends AbstractBaseController
     public function treePageBlockEdit(Request $request, Tree $tree, User $user): Response
     {
         $block_id = (int) $request->get('block_id');
-        $block    = $this->treeBlock($request, $user);
+        $block    = $this->treeBlock($request, $tree, $user);
         $title    = $block->getTitle() . ' — ' . I18N::translate('Preferences');
 
         return $this->viewResponse('modules/edit-block-config', [
@@ -72,7 +71,7 @@ class HomePageController extends AbstractBaseController
      */
     public function treePageBlockUpdate(Request $request, Tree $tree, User $user): RedirectResponse
     {
-        $block    = $this->treeBlock($request, $user);
+        $block    = $this->treeBlock($request, $tree, $user);
         $block_id = (int) $request->get('block_id');
 
         $block->saveBlockConfiguration($request, $block_id);
@@ -84,35 +83,36 @@ class HomePageController extends AbstractBaseController
      * Load a block and check we have permission to edit it.
      *
      * @param Request $request
+     * @param Tree    $tree
      * @param User    $user
      *
      * @return ModuleBlockInterface
      */
-    private function treeBlock(Request $request, User $user): ModuleBlockInterface
+    private function treeBlock(Request $request, Tree $tree, User $user): ModuleBlockInterface
     {
         $block_id = (int) $request->get('block_id');
 
-        $block_info = Database::prepare(
-            "SELECT module_Name, user_id FROM `##block` WHERE block_id = :block_id"
-        )->execute([
-            'block_id' => $block_id,
-        ])->fetchOneRow();
+        $block = DB::table('block')
+            ->where('block_id', '=', $block_id)
+            ->where('gedcom_id', '=', $tree->id())
+            ->whereNull('user_id')
+            ->first();
 
-        if ($block_info === null) {
+        if ($block === null) {
             throw new NotFoundHttpException();
         }
 
-        $block = Module::getModuleByName($block_info->module_name);
+        $module = Module::getModuleByName($block->module_name);
 
-        if (!$block instanceof ModuleBlockInterface) {
+        if (!$module instanceof ModuleBlockInterface) {
             throw new NotFoundHttpException();
         }
 
-        if ($block_info->user_id !== $user->getUserId() && !Auth::isAdmin()) {
+        if ($block->user_id !== $user->getUserId() && !Auth::isAdmin()) {
             throw new AccessDeniedHttpException();
         }
 
-        return $block;
+        return $module;
     }
 
     /**
@@ -170,29 +170,29 @@ class HomePageController extends AbstractBaseController
     {
         $block_id = (int) $request->get('block_id');
 
-        $block_info = Database::prepare(
-            "SELECT module_Name, user_id FROM `##block` WHERE block_id = :block_id"
-        )->execute([
-            'block_id' => $block_id,
-        ])->fetchOneRow();
+        $block = DB::table('block')
+            ->where('block_id', '=', $block_id)
+            ->where('user_id', '=', $user->getUserId())
+            ->whereNull('gedcom_id')
+            ->first();
 
-        if ($block_info === null) {
+        if ($block === null) {
             throw new NotFoundHttpException('This block does not exist');
         }
 
-        $block = Module::getModuleByName($block_info->module_name);
+        $module = Module::getModuleByName($block->module_name);
 
-        if (!$block instanceof ModuleBlockInterface) {
-            throw new NotFoundHttpException($block_info->module_name . ' is not a block');
+        if (!$module instanceof ModuleBlockInterface) {
+            throw new NotFoundHttpException($block->module_name . ' is not a block');
         }
 
-        $block_owner_id = (int) $block_info->user_id;
+        $block_owner_id = (int) $block->user_id;
 
         if ($block_owner_id !== $user->getUserId() && !Auth::isAdmin()) {
             throw new AccessDeniedHttpException('You are not allowed to edit this block');
         }
 
-        return $block;
+        return $module;
     }
 
     /**
@@ -230,12 +230,11 @@ class HomePageController extends AbstractBaseController
     {
         $block_id = (int) $request->get('block_id');
 
-        $block = Database::prepare(
-            "SELECT * FROM `##block` WHERE block_id = :block_id AND gedcom_id = :tree_id AND user_id IS NULL"
-        )->execute([
-            'block_id' => $block_id,
-            'tree_id'  => $tree->id(),
-        ])->fetchOneRow();
+        $block = DB::table('block')
+            ->where('block_id', '=', $block_id)
+            ->where('gedcom_id', '=', $tree->id())
+            ->whereNull('user_id')
+            ->first();
 
         $module = $this->getBlockModule($tree, $block_id);
 
@@ -385,12 +384,11 @@ class HomePageController extends AbstractBaseController
     {
         $block_id = (int) $request->get('block_id');
 
-        $block = Database::prepare(
-            "SELECT * FROM `##block` WHERE block_id = :block_id AND gedcom_id IS NULL AND user_id = :user_id"
-        )->execute([
-            'block_id' => $block_id,
-            'user_id'  => $user->getUserId(),
-        ])->fetchOneRow();
+        $block = DB::table('block')
+            ->where('block_id', '=', $block_id)
+            ->where('user_id', '=', $user->getUserId())
+            ->whereNull('gedcom_id')
+            ->first();
 
         $module = $this->getBlockModule($tree, $block_id);
 
@@ -681,25 +679,20 @@ class HomePageController extends AbstractBaseController
      */
     private function updateTreeBlocks(int $tree_id, array $main_blocks, array $side_blocks)
     {
-        $existing_block_ids = Database::prepare(
-            "SELECT block_id FROM `##block` WHERE gedcom_id = :tree_id"
-        )->execute([
-            'tree_id' => $tree_id,
-        ])->fetchOneColumn();
+        $existing_block_ids = DB::table('block')
+            ->where('gedcom_id', '=', $tree_id)
+            ->pluck('block_id');
 
         // Deleted blocks
         foreach ($existing_block_ids as $existing_block_id) {
             if (!in_array($existing_block_id, $main_blocks) && !in_array($existing_block_id, $side_blocks)) {
-                Database::prepare(
-                    "DELETE FROM `##block_setting` WHERE block_id = :block_id"
-                )->execute([
-                    'block_id' => $existing_block_id,
-                ]);
-                Database::prepare(
-                    "DELETE FROM `##block` WHERE block_id = :block_id"
-                )->execute([
-                    'block_id' => $existing_block_id,
-                ]);
+                DB::table('block_setting')
+                    ->where('block_id', '=', $existing_block_id)
+                    ->delete();
+
+                DB::table('block')
+                    ->where('block_id', '=', $existing_block_id)
+                    ->delete();
             }
         }
 
@@ -712,22 +705,16 @@ class HomePageController extends AbstractBaseController
             foreach ($updated_blocks as $block_order => $block_id) {
                 if (is_numeric($block_id)) {
                     // Updated block
-                    Database::prepare(
-                        "UPDATE `##block`" .
-                        " SET block_order = :block_order, location = :location" .
-                        " WHERE block_id = :block_id"
-                    )->execute([
-                        'block_order' => $block_order,
-                        'block_id'    => $block_id,
-                        'location'    => $location,
-                    ]);
+                    DB::table('block')
+                        ->where('block_id', '=', $block_id)
+                        ->update([
+                            'block_order' => $block_order,
+                            'location'    => $location,
+                        ]);
                 } else {
                     // New block
-                    Database::prepare(
-                        "INSERT INTO `##block` (gedcom_id, location, block_order, module_name)" .
-                        " VALUES (:tree_id, :location, :block_order, :module_name)"
-                    )->execute([
-                        'tree_id'     => $tree_id,
+                    DB::table('block')->insert([
+                        'gedcom_id'   => $tree_id,
                         'location'    => $location,
                         'block_order' => $block_order,
                         'module_name' => $block_id,
@@ -748,25 +735,20 @@ class HomePageController extends AbstractBaseController
      */
     private function updateUserBlocks(int $user_id, array $main_blocks, array $side_blocks)
     {
-        $existing_block_ids = Database::prepare(
-            "SELECT block_id FROM `##block` WHERE user_id = :user_id"
-        )->execute([
-            'user_id' => $user_id,
-        ])->fetchOneColumn();
+        $existing_block_ids = DB::table('block')
+            ->where('user_id', '=', $user_id)
+            ->pluck('block_id');
 
         // Deleted blocks
         foreach ($existing_block_ids as $existing_block_id) {
             if (!in_array($existing_block_id, $main_blocks) && !in_array($existing_block_id, $side_blocks)) {
-                Database::prepare(
-                    "DELETE FROM `##block_setting` WHERE block_id = :block_id"
-                )->execute([
-                    'block_id' => $existing_block_id,
-                ]);
-                Database::prepare(
-                    "DELETE FROM `##block` WHERE block_id = :block_id"
-                )->execute([
-                    'block_id' => $existing_block_id,
-                ]);
+                DB::table('block_setting')
+                    ->where('block_id', '=', $existing_block_id)
+                    ->delete();
+
+                DB::table('block')
+                    ->where('block_id', '=', $existing_block_id)
+                    ->delete();
             }
         }
 
@@ -777,21 +759,15 @@ class HomePageController extends AbstractBaseController
             foreach ($updated_blocks as $block_order => $block_id) {
                 if (is_numeric($block_id)) {
                     // Updated block
-                    Database::prepare(
-                        "UPDATE `##block`" .
-                        " SET block_order = :block_order, location = :location" .
-                        " WHERE block_id = :block_id"
-                    )->execute([
-                        'block_order' => $block_order,
-                        'block_id'    => $block_id,
-                        'location'    => $location,
-                    ]);
+                    DB::table('block')
+                        ->where('block_id', '=', $block_id)
+                        ->update([
+                            'block_order' => $block_order,
+                            'location'    => $location,
+                        ]);
                 } else {
                     // New block
-                    Database::prepare(
-                        "INSERT INTO `##block` (user_id, location, block_order, module_name)" .
-                        " VALUES (:user_id, :location, :block_order, :module_name)"
-                    )->execute([
+                    DB::table('block')->insert([
                         'user_id'     => $user_id,
                         'location'    => $location,
                         'block_order' => $block_order,
