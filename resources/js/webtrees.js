@@ -755,6 +755,7 @@ function autocomplete(selector)
 {
   // Use typeahead/bloodhound for autocomplete
     $(selector).each(function () {
+        let that = this;
         $(this).typeahead(null, {
             display: 'value',
             source: new Bloodhound({
@@ -762,7 +763,15 @@ function autocomplete(selector)
                 queryTokenizer: Bloodhound.tokenizers.whitespace,
                 remote: {
                     url: this.dataset.autocompleteUrl,
-                    wildcard: 'QUERY'
+                    replace: function(url, uriEncodedQuery) {
+                        if (that.dataset.autocompleteExtra) {
+                            let extra = $(document.querySelector(that.dataset.autocompleteExtra)).val();
+                            return url.replace("QUERY",uriEncodedQuery) + '&extra=' + encodeURIComponent(extra)
+                        }
+                        return url.replace("QUERY",uriEncodedQuery);
+                    },
+                    wildcard: 'QUERY',
+
                 }
             })
         });

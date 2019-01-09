@@ -240,6 +240,7 @@ if ($tree instanceof Tree && $tree->getPreference('imported') === '1' && Auth::i
 if ($tree instanceof Tree && $tree->getPreference('imported') === '1') {
     $routes += [
         'GET:autocomplete-folder'    => 'AutocompleteController@folder',
+        'GET:autocomplete-page'      => 'AutocompleteController@page',
         'GET:autocomplete-place'     => 'AutocompleteController@place',
         'GET:branches'               => 'BranchesController@page',
         'GET:branches-list'          => 'BranchesController@list',

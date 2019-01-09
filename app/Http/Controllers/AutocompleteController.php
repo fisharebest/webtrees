@@ -29,6 +29,8 @@ use Fisharebest\Webtrees\Select2;
 use Fisharebest\Webtrees\Services\SearchService;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
+use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Query\JoinClause;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -102,66 +104,57 @@ class AutocompleteController extends AbstractBaseController
 
         $this->checkSourceAccess($source);
 
-        $pages = [];
-
-        // Escape the query for MySQL and PHP, converting spaces to wildcards.
-        $like_query  = strtr($query, [
-            '_' => '\\_',
-            '%' => '\\%',
-            ' ' => '%',
-        ]);
         $regex_query = preg_quote(strtr($query, [' ' => '.+']), '/');
 
-        $regex_xref = preg_quote($xref, '/');
+        // Fetch all records with a link to this source
+        $individuals = DB::table('individuals')
+            ->join('link', function (JoinClause $join): void {
+                $join
+                    ->on('l_file', '=', 'i_file')
+                    ->on('l_from', '=', 'i_id');
+            })
+            ->where('i_file', '=', $tree->id())
+            ->where('l_to', '=', $xref)
+            ->where('l_type', '=', 'SOUR')
+            ->distinct()
+            ->select(['i_id', 'i_gedcom'])
+            ->get()
+            ->map(Individual::rowMapper($tree))
+            ->filter(GedcomRecord::filter());
 
-        // Fetch all individuals with a link to this source
-        $rows = Database::prepare(
-            "SELECT i_id AS xref, i_gedcom AS gedcom" .
-            " FROM `##individuals`" .
-            " JOIN `##link ON i_file = l_file AND i_from = i_id AND i_to = :xref AND i_type = 'SOUR'" .
-            " WHERE i_gedcom LIKE CONCAT('%\n_ SOUR @', :xref, '@%', REPLACE(:term, ' ', '%'), '%')" .
-            " AND   i_file = :tree_id"
-        )->execute([
-            'xref'    => $xref,
-            'term'    => $like_query,
-            'tree_id' => $tree->id(),
-        ])->fetchAll();
+        $families = DB::table('families')
+            ->join('link', function (JoinClause $join): void {
+                $join
+                    ->on('l_file', '=', 'f_file')
+                    ->on('l_from', '=', 'f_id')
+                    ->where('l_type', '=', 'SOUR');
+            })
+            ->where('f_file', '=', $tree->id())
+            ->where('l_to', '=', $xref)
+            ->where('l_type', '=', 'SOUR')
+            ->distinct()
+            ->select(['f_id', 'f_gedcom'])
+            ->get()
+            ->map(Family::rowMapper($tree))
+            ->filter(GedcomRecord::filter());
 
-        // Filter for privacy
-        foreach ($rows as $row) {
-            $individual = Individual::getInstance($row->xref, $tree, $row->gedcom);
-            if (preg_match('/\n1 SOUR @' . $regex_xref . '@(?:\n[2-9].*)*\n2 PAGE (.*' . $regex_query . '.*)/i', $individual->gedcom(), $match)) {
-                $pages[] = $match[1];
+        $pages = [];
+
+        foreach ($individuals->merge($families) as $record) {
+            if (preg_match_all('/\n1 SOUR @' . $xref . '@(?:\n[2-9].*)*\n2 PAGE (.*' . $regex_query . '.*)/i', $record->gedcom(), $matches)) {
+                $pages = array_merge($pages, $matches[1]);
             }
-            if (preg_match('/\n2 SOUR @' . $xref . '@(?:\n[3-9].*)*\n3 PAGE (.*' . $regex_query . '.*)/i', $individual->gedcom(), $match)) {
-                $pages[] = $match[1];
+
+            if (preg_match_all('/\n2 SOUR @' . $xref . '@(?:\n[3-9].*)*\n3 PAGE (.*' . $regex_query . '.*)/i', $record->gedcom(), $matches)) {
+                $pages = array_merge($pages, $matches[1]);
             }
         }
-        // Fetch all data, regardless of privacy
-        $rows = Database::prepare(
-            "SELECT f_id AS xref, f_gedcom AS gedcom" .
-            " FROM `##families`" .
-            " WHERE f_gedcom LIKE CONCAT('%\n_ SOUR @', :xref, '@%', REPLACE(:term, ' ', '%'), '%') AND f_file = :tree_id"
-        )->execute([
-            'xref'    => $xref,
-            'term'    => $query,
-            'tree_id' => $tree->id(),
-        ])->fetchAll();
-        // Filter for privacy
-        foreach ($rows as $row) {
-            $family = Family::getInstance($row->xref, $tree, $row->gedcom);
-            if (preg_match('/\n1 SOUR @' . $xref . '@(?:\n[2-9].*)*\n2 PAGE (.*' . str_replace(' ', '.+', preg_quote($query, '/')) . '.*)/i', $family->gedcom(), $match)) {
-                $pages[] = $match[1];
-            }
-            if (preg_match('/\n2 SOUR @' . $xref . '@(?:\n[3-9].*)*\n3 PAGE (.*' . str_replace(' ', '.+', preg_quote($query, '/')) . '.*)/i', $family->gedcom(), $match)) {
-                $pages[] = $match[1];
-            }
-        }
-        // array_unique() converts the keys from integer to string, which breaks
-        // the JSON encoding - so need to call array_values() to convert them
-        // back into integers.
-        $pages = array_values(array_unique($pages));
-        echo json_encode($pages);
+
+        $pages = array_unique($pages);
+
+        $pages = array_map(function (string $page): array {
+            return ['value' => $page];
+        }, $pages);
 
         return new JsonResponse($pages);
     }

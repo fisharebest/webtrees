@@ -671,7 +671,19 @@ class FunctionsEdit
                 ]) .
                 '</div>';
         } elseif ($fact === 'PAGE') {
-            $html .= '<input class="form-control" type="text" id="' . $id . '" name="' . $name . '" value="' . e($value) . '"   data-autocomplete-type="PAGE" data-autocomplete-extra="#' . $previous_ids['SOUR'] . '">';
+            $html .= '<input ' . Html::attributes([
+                    'autocomplete'          => 'off',
+                    'class'                 => 'form-control',
+                    'id'                    => $id,
+                    'name'                  => $name,
+                    'value'                 => $value,
+                    'type'                  => 'text',
+                    'data-autocomplete-url' => route('autocomplete-page', [
+                        'ged'   => $tree->name(),
+                        'query' => 'QUERY',
+                    ]),
+                    'data-autocomplete-extra' => '#' . $previous_ids['SOUR'],
+                ]) . '>';
         } elseif ($fact === 'PEDI') {
             $html .= Bootstrap4::select(GedcomCodePedi::getValues(), $value, [
                 'id'   => $id,
