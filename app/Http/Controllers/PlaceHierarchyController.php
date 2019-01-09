@@ -17,17 +17,18 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
-use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Family;
-use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Location;
 use Fisharebest\Webtrees\Place;
+use Fisharebest\Webtrees\Services\SearchService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Stats;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Webtrees;
+use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Query\JoinClause;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -42,12 +43,13 @@ class PlaceHierarchyController extends AbstractBaseController
     private const MAP_MODULE = 'openstreetmap';
 
     /**
-     * @param Request $request
-     * @param Tree    $tree
+     * @param Request       $request
+     * @param Tree          $tree
+     * @param SearchService $search_service
      *
      * @return Response
      */
-    public function show(Request $request, Tree $tree): Response
+    public function show(Request $request, Tree $tree, SearchService $search_service): Response
     {
         $action     = $request->query->get('action', 'hierarchy');
         $parent     = $request->query->get('parent', []);
@@ -71,7 +73,7 @@ class PlaceHierarchyController extends AbstractBaseController
         switch ($action) {
             case 'list':
                 $nextaction = ['hierarchy' => I18N::translate('Show place hierarchy')];
-                $content .= view('place-list', $this->getList($tree));
+                $content .= view('place-list', $this->getList($tree, $search_service));
                 break;
             case 'hierarchy':
             case 'hierarchy-e':
@@ -106,36 +108,18 @@ class PlaceHierarchyController extends AbstractBaseController
     }
 
     /**
-     * @param Tree $tree
+     * @param Tree          $tree
+     * @param SearchService $search_service
      *
      * @return Place[][]
      */
-    private function getList(Tree $tree): array
+    private function getList(Tree $tree, SearchService $search_service): array
     {
-        $places = [];
-        $rows   =
-            Database::prepare(
-                "SELECT CONCAT_WS(', ', p1.p_place, p2.p_place, p3.p_place, p4.p_place, p5.p_place, p6.p_place, p7.p_place, p8.p_place, p9.p_place)" .
-                " FROM      `##places` AS p1" .
-                " LEFT JOIN `##places` AS p2 ON (p1.p_parent_id = p2.p_id)" .
-                " LEFT JOIN `##places` AS p3 ON (p2.p_parent_id = p3.p_id)" .
-                " LEFT JOIN `##places` AS p4 ON (p3.p_parent_id = p4.p_id)" .
-                " LEFT JOIN `##places` AS p5 ON (p4.p_parent_id = p5.p_id)" .
-                " LEFT JOIN `##places` AS p6 ON (p5.p_parent_id = p6.p_id)" .
-                " LEFT JOIN `##places` AS p7 ON (p6.p_parent_id = p7.p_id)" .
-                " LEFT JOIN `##places` AS p8 ON (p7.p_parent_id = p8.p_id)" .
-                " LEFT JOIN `##places` AS p9 ON (p8.p_parent_id = p9.p_id)" .
-                " WHERE p1.p_file = :tree_id" .
-                " ORDER BY CONCAT_WS(', ', p9.p_place, p8.p_place, p7.p_place, p6.p_place, p5.p_place, p4.p_place, p3.p_place, p2.p_place, p1.p_place) COLLATE :collate"
-            )
-                ->execute([
-                    'tree_id' => $tree->id(),
-                    'collate' => I18N::collation(),
-                ])->fetchOneColumn();
-
-        foreach ($rows as $row) {
-            $places[] = new Place($row, $tree);
-        }
+        $places = $search_service->searchPlaces($tree, '')
+            ->sort(function (Place $x, Place $y): int {
+                return $x->getGedcomName() <=> $y->getGedcomName();
+            })
+            ->all();
 
         $numfound = count($places);
 
@@ -190,33 +174,40 @@ class PlaceHierarchyController extends AbstractBaseController
      */
     private function getEvents($tree, $place): array
     {
-        $indilist = [];
-        $famlist  = [];
+        $indilist = DB::table('individuals')
+            ->join('placelinks', function (JoinClause $join): void {
+                $join
+                    ->on('pl_file', '=', 'i_file')
+                    ->on('pl_gid', '=', 'i_id');
+            })
+            ->where('i_file', '=', $tree->id())
+            ->where('pl_p_id', '=', $place->getPlaceId())
+            ->select(['i_id', 'i_gedcom'])
+            ->distinct()
+            ->get()
+            ->map(Individual::rowMapper($tree))
+            ->filter(Individual::filter())
+            ->all();
 
-        $xrefs = Database::prepare(
-            "SELECT DISTINCT pl_gid FROM `##placelinks` WHERE pl_p_id=:id AND pl_file=:gedcom"
-        )->execute([
-            'id'     => $place->getPlaceId(),
-            'gedcom' => $tree->id(),
-        ])->fetchOneColumn();
+        $famlist = DB::table('families')
+            ->join('placelinks', function (JoinClause $join): void {
+                $join
+                    ->on('pl_file', '=', 'f_file')
+                    ->on('pl_gid', '=', 'f_id');
+            })
+            ->where('f_file', '=', $tree->id())
+            ->where('pl_p_id', '=', $place->getPlaceId())
+            ->select(['f_id', 'f_gedcom'])
+            ->distinct()
+            ->get()
+            ->map(Family::rowMapper($tree))
+            ->filter(Family::filter())
+            ->all();
 
-        foreach ($xrefs as $xref) {
-            $record = GedcomRecord::getInstance($xref, $tree);
-            if ($record && $record->canShow()) {
-                if ($record instanceof Individual) {
-                    $indilist[] = $record;
-                }
-                if ($record instanceof Family) {
-                    $famlist[] = $record;
-                }
-            }
-        }
-
-        return
-            [
-                'indilist' => $indilist,
-                'famlist'  => $famlist,
-            ];
+        return [
+            'indilist' => $indilist,
+            'famlist'  => $famlist,
+        ];
     }
 
     /**
