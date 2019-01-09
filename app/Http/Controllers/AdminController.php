@@ -43,6 +43,7 @@ use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
+use Illuminate\Database\Query\JoinClause;
 use Intervention\Image\ImageManager;
 use League\Flysystem\Adapter\Local;
 use League\Flysystem\Filesystem;
@@ -176,8 +177,15 @@ class AdminController extends AbstractBaseController
         }
 
         // First and last change in the database.
-        $earliest = Database::prepare("SELECT IFNULL(DATE(MIN(change_time)), CURDATE()) FROM `##change`")->fetchOne();
-        $latest   = Database::prepare("SELECT IFNULL(DATE(MAX(change_time)), CURDATE()) FROM `##change`")->fetchOne();
+        $earliest = DB::table('change')->min('change_time');
+        $latest   = DB::table('change')->max('change_time');
+
+        $earliest = $earliest ? new Carbon($earliest) : Carbon::now();
+        $latest   = $latest ? new Carbon($latest) : Carbon::now();
+
+        $earliest = $earliest->toDateString();
+        $latest   = $latest->toDateString();
+
 
         $ged      = $request->get('ged');
         $from     = $request->get('from', $earliest);
@@ -409,11 +417,12 @@ class AdminController extends AbstractBaseController
      * If media objects are wronly linked to top-level records, reattach them
      * to facts/events.
      *
-     * @param Request $request
+     * @param Request           $request
+     * @param DatatablesService $datatables_service
      *
      * @return JsonResponse
      */
-    public function fixLevel0MediaData(Request $request): JsonResponse
+    public function fixLevel0MediaData(Request $request, DatatablesService $datatables_service): JsonResponse
     {
         $ignore_facts = [
             'FAMC',
@@ -427,51 +436,31 @@ class AdminController extends AbstractBaseController
             'RESN',
         ];
 
-        $start  = (int) $request->get('start', 0);
-        $length = (int) $request->get('length', 20);
-        $search = $request->get('search', []);
-        $search = $search['value'] ?? '';
+        $prefix = DB::connection()->getTablePrefix();
 
-        $select1 = "SELECT SQL_CALC_FOUND_ROWS m.*, i.* from `##media` AS m" .
-            " JOIN `##media_file` USING (m_id, m_file)" .
-            " JOIN `##link` AS l ON m.m_file = l.l_file AND m.m_id = l.l_to" .
-            " JOIN `##individuals` AS i ON l.l_file = i.i_file AND l.l_from = i.i_id" .
-            " WHERE i.i_gedcom LIKE CONCAT('%\n1 OBJE @', m.m_id, '@%')";
+        $query = DB::table('media')
+            ->join('media_file', function (JoinClause $join): void {
+                $join
+                    ->on('media_file.m_file', '=', 'media.m_file')
+                    ->on('media_file.m_id', '=', 'media.m_id');
+            })
+            ->join('link', function (JoinClause $join): void {
+                $join
+                    ->on('link.l_file', '=', 'media.m_file')
+                    ->on('link.l_to', '=', 'media.m_id');
+            })
+            ->join('individuals', function (JoinClause $join): void {
+                $join
+                    ->on('individuals.i_file', '=', 'link.l_file')
+                    ->on('individuals.i_id', '=', 'link.l_from');
+            })
+            ->where('i_gedcom', 'LIKE', DB::raw("CONCAT('%\n1 OBJE @', ". $prefix ."media.m_id, '@%')"))
+            ->orderby('individuals.i_file')
+            ->orderBy('individuals.i_id')
+            ->orderBy('media.m_id')
+            ->select(['media.m_file', 'media.m_id', 'media.m_gedcom', 'individuals.i_id', 'individuals.i_gedcom']);
 
-        $select2 = "SELECT SQL_CALC_FOUND_ROWS count(*) from `##media` AS m" .
-            " JOIN `##media_file` USING (m_id, m_file)" .
-            " JOIN `##link` AS l ON m.m_file = l.l_file AND m.m_id = l.l_to" .
-            " JOIN `##individuals` AS i ON l.l_file = i.i_file AND l.l_from = i.i_id" .
-            " WHERE i.i_gedcom LIKE CONCAT('%\n1 OBJE @', m.m_id, '@%')";
-
-        $where = '';
-        $args  = [];
-
-        if ($search !== '') {
-            $where .= " AND (multimedia_file_refn LIKE CONCAT('%', :search1, '%') OR multimedia_file_refn LIKE CONCAT('%', :search2, '%'))";
-            $args['search1'] = $search;
-            $args['search2'] = $search;
-        }
-
-        $limit          = " LIMIT :limit OFFSET :offset";
-        $args['limit']  = $length;
-        $args['offset'] = $start;
-
-        // Need a consistent order
-        $order_by = " ORDER BY i.i_file, i.i_id, m.m_id";
-
-        $data = Database::prepare(
-            $select1 . $where . $order_by . $limit
-        )->execute(
-            $args
-        )->fetchAll();
-
-        // Total filtered/unfiltered rows
-        $recordsFiltered = (int) Database::prepare("SELECT FOUND_ROWS()")->fetchOne();
-        $recordsTotal    = (int) Database::prepare($select2)->fetchOne();
-
-        // Turn each row from the query into a row for the table
-        $data = array_map(function (stdClass $datum) use ($ignore_facts): array {
+        return $datatables_service->handle($request, $query, [], function (stdClass $datum) use ($ignore_facts): array {
             $tree       = Tree::findById($datum->m_file);
             $media      = Media::getInstance($datum->m_id, $tree, $datum->m_gedcom);
             $individual = Individual::getInstance($datum->i_id, $tree, $datum->i_gedcom);
@@ -507,14 +496,7 @@ class AdminController extends AbstractBaseController
                 '<a href="' . e($individual->url()) . '">' . $individual->getFullName() . '</a>',
                 implode(' ', $facts),
             ];
-        }, $data);
-
-        return new JsonResponse([
-            'draw'            => (int) $request->get('draw'),
-            'recordsTotal'    => $recordsTotal,
-            'recordsFiltered' => $recordsFiltered,
-            'data'            => $data,
-        ]);
+        });
     }
 
     /**
