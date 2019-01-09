@@ -18,7 +18,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Algorithm\Dijkstra;
-use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\FontAwesome;
 use Fisharebest\Webtrees\Functions\Functions;
@@ -28,6 +27,8 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module\RelationshipsChartModule;
 use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
+use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Query\JoinClause;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -228,11 +229,11 @@ class RelationshipsChartController extends AbstractChartController
      */
     private function calculateRelationships(Individual $individual1, Individual $individual2, $recursion, $ancestor = false): array
     {
-        $rows = Database::prepare(
-            "SELECT l_from, l_to FROM `##link` WHERE l_file = :tree_id AND l_type IN ('FAMS', 'FAMC')"
-        )->execute([
-            'tree_id' => $individual1->tree()->id(),
-        ])->fetchAll();
+        $rows = DB::table('link')
+            ->where('l_file', '=', $individual1->tree()->id())
+            ->whereIn('l_type', ['FAMS', 'FAMC'])
+            ->select(['l_from', 'l_to'])
+            ->get();
 
         // Optionally restrict the graph to the ancestors of the individuals.
         if ($ancestor) {
@@ -385,18 +386,17 @@ class RelationshipsChartController extends AbstractChartController
             $xref2,
         ];
         while (!empty($queue)) {
-            $placeholders = implode(',', array_fill(0, count($queue), '?'));
-            $parameters   = $queue;
-            $parameters[] = $tree_id;
-
-            $parents = Database::prepare(
-                "SELECT l2.l_from" .
-                " FROM `##link` AS l1" .
-                " JOIN `##link` AS l2 USING (l_to, l_file) " .
-                " WHERE l1.l_type = 'FAMC' AND l2.l_type = 'FAMS' AND l1.l_from IN (" . $placeholders . ") AND l_file = ?"
-            )->execute(
-                $parameters
-            )->fetchOneColumn();
+            $parents = DB::table('link AS l1')
+                ->join('link AS l2', function (JoinClause $join): void {
+                    $join
+                        ->on('l1.l_to', '=', 'l2.l_to')
+                        ->on('l1.l_file', '=', 'l2.l_file');
+                })
+                ->where('l1.l_file', '=', $tree_id)
+                ->where('l1.l_type', '=', 'FAMC')
+                ->where('l2.l_type', '=', 'FAMS')
+                ->whereIn('l1.l_from', $queue)
+                ->pluck('l2.l_from');
 
             $queue = [];
             foreach ($parents as $parent) {
@@ -421,16 +421,19 @@ class RelationshipsChartController extends AbstractChartController
      */
     private function excludeFamilies($xref1, $xref2, $tree_id): array
     {
-        return Database::prepare(
-            "SELECT l_to" .
-            " FROM `##link` AS l1" .
-            " JOIN `##link` AS l2 USING (l_type, l_to, l_file) " .
-            " WHERE l_type = 'FAMS' AND l1.l_from = :spouse1 AND l2.l_from = :spouse2 AND l_file = :tree_id"
-        )->execute([
-            'spouse1' => $xref1,
-            'spouse2' => $xref2,
-            'tree_id' => $tree_id,
-        ])->fetchOneColumn();
+        return DB::table('link AS l1')
+            ->join('link AS l2', function (JoinClause $join): void {
+                $join
+                    ->on('l1.l_to', '=', 'l2.l_to')
+                    ->on('l1.l_type', '=', 'l2.l_type')
+                    ->on('l1.l_file', '=', 'l2.l_file');
+            })
+            ->where('l1.l_file', '=', $tree_id)
+            ->where('l1.l_type', '=', 'FAMS')
+            ->where('l1.l_from', '=', $xref1)
+            ->where('l2.l_from', '=', $xref2)
+            ->pluck('l1.l_to')
+            ->all();
     }
 
     /**
