@@ -247,8 +247,6 @@ class SearchService
      */
     public function searchPlaces(Tree $tree, string $search, int $offset = 0, int $limit = PHP_INT_MAX): Collection
     {
-        $searches = explode(',', $search);
-
         $query = DB::table('places AS p0')
             ->where('p0.p_file', '=', $tree->id())
             ->leftJoin('places AS p1', 'p1.p_id', '=', 'p0.p_parent_id')
