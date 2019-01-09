@@ -17,11 +17,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Carbon\Carbon;
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
+use Illuminate\Database\Capsule\Manager as DB;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -29,9 +30,7 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 {
-    private const DEFAULT_BLOCK      = '1';
     private const DEFAULT_DAYS       = '7';
-    private const DEFAULT_HIDE_EMPTY = '0';
     private const DEFAULT_SHOW_USER  = '1';
     private const DEFAULT_SORT_STYLE = 'date_desc';
     private const DEFAULT_INFO_STYLE = 'table';
@@ -215,27 +214,19 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
      */
     private function getRecentChanges(Tree $tree, int $days): array
     {
-        $sql =
-            "SELECT xref FROM `##change`" .
-            " WHERE new_gedcom != '' AND change_time > DATE_SUB(NOW(), INTERVAL :days DAY) AND gedcom_id = :tree_id" .
-            " GROUP BY xref" .
-            " ORDER BY MAX(change_id) DESC";
-
-        $vars = [
-            'days'    => $days,
-            'tree_id' => $tree->id(),
-        ];
-
-        $xrefs = Database::prepare($sql)->execute($vars)->fetchOneColumn();
-
-        $records = [];
-        foreach ($xrefs as $xref) {
-            $record = GedcomRecord::getInstance($xref, $tree);
-            if ($record && $record->canShow()) {
-                $records[] = $record;
-            }
-        }
-
-        return $records;
+        return DB::table('change')
+            ->where('gedcom_id', '=', $tree->id())
+            ->where('status', '=', 'accepted')
+            ->where('new_gedcom', '<>', '')
+            ->where('change_time', '>', Carbon::now()->subDays($days))
+            ->groupBy('xref')
+            ->pluck('xref')
+            ->map(function (string $xref) use ($tree): ?GedcomRecord {
+                return GedcomRecord::getInstance($xref, $tree);
+            })
+            ->filter(function (?GedcomRecord $record): bool {
+                return $record instanceof GedcomRecord && $record->canShow();
+            })
+            ->all();
     }
 }

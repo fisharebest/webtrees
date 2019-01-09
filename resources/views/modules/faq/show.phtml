@@ -21,6 +21,6 @@
         </div>
     </div>
     <div class="faq_body">
-        <?= substr($faq->body, 0, 1) == '<' ? e($faq->body) : nl2br(e($faq->body), false) ?>
+        <?= substr($faq->faqbody, 0, 1) == '<' ? $faq->faqbody : nl2br(e($faq->faqbody), false) ?>
     </div>
 <?php endforeach ?>

@@ -18,7 +18,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Functions\FunctionsDate;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
@@ -26,6 +25,7 @@ use Fisharebest\Webtrees\Mail;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
+use Illuminate\Database\Capsule\Manager as DB;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -64,14 +64,11 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
 
         extract($cfg, EXTR_OVERWRITE);
 
-        $changes = Database::prepare(
-            "SELECT 1" .
-            " FROM `##change`" .
-            " WHERE status='pending'" .
-            " LIMIT 1"
-        )->fetchOne();
+        $changes_exist = DB::table('change')
+            ->where('status', 'pending')
+            ->exists();
 
-        if ($changes === '1' && $sendmail === '1') {
+        if ($changes_exist && $sendmail === '1') {
             // There are pending changes - tell moderators/managers/administrators about them.
             if (WT_TIMESTAMP - (int) Site::getPreference('LAST_CHANGE_EMAIL') > (60 * 60 * 24 * $days)) {
                 // Which users have pending changes?
@@ -123,13 +120,12 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
                 $content .= I18N::translate('Next email reminder will be sent after ') . FunctionsDate::formatTimestamp($last_email_timestamp + 60 * 60 * 24 * $days) . '<br><br>';
             }
             $content .= '<ul>';
-            $changes = Database::prepare(
-                "SELECT xref" .
-                " FROM  `##change`" .
-                " WHERE status='pending'" .
-                " AND   gedcom_id=?" .
-                " GROUP BY xref"
-            )->execute([$tree->id()])->fetchAll();
+
+            $changes = DB::table('change')
+                ->where('gedcom_id', '=', $tree->id())
+                ->select(['xref'])
+                ->get();
+
             foreach ($changes as $change) {
                 $record = GedcomRecord::getInstance($change->xref, $tree);
                 if ($record->canShow()) {
