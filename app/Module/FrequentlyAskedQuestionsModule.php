@@ -390,7 +390,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
             ->orderBy('block_order')
             ->select(['block.block_id', 'block_order', 'gedcom_id', 'bs1.setting_value AS header', 'bs2.setting_value AS faqbody', 'bs3.setting_value AS languages'])
             ->get();
-     }
+    }
 
     /**
      * @param Tree   $tree
@@ -398,9 +398,9 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
      *
      * @return bool
      */
-     private function faqsExist(Tree $tree, string $language): bool
-     {
-         return DB::table('block')
+    private function faqsExist(Tree $tree, string $language): bool
+    {
+        return DB::table('block')
              ->join('block_setting', 'block_setting.block_id', '=', 'block.block_id')
              ->where('module_name', '=', $this->getName())
              ->where('setting_name', '=', 'languages')
@@ -415,5 +415,5 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
                  return $faq->languages === '' || in_array($language, explode(',', $faq->languages));
              })
             ->isNotEmpty();
-     }
+    }
 }
