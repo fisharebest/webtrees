@@ -226,12 +226,14 @@ class EventRepository implements EventRepositoryInterface
     {
         $row = $this->eventQuery($direction);
 
-        if ($row) {
-            $record = GedcomRecord::getInstance($row->id, $this->tree);
+        if (!$row) {
+            return '';
+        }
 
-            if ($record && $record->canShow()) {
-                return $record->formatList();
-            }
+        $record = GedcomRecord::getInstance($row->id, $this->tree);
+
+        if ($record && $record->canShow()) {
+            return $record->formatList();
         }
 
         return I18N::translate('This information is private and cannot be shown.');
@@ -264,12 +266,12 @@ class EventRepository implements EventRepositoryInterface
     {
         $row = $this->eventQuery($direction);
 
-        if ($row) {
-            return (new Date($row->type . ' ' . $row->year))
-                ->display();
+        if (!$row) {
+            return '';
         }
 
-        return '';
+        return (new Date($row->type . ' ' . $row->year))
+            ->display();
     }
 
     /**
@@ -382,13 +384,14 @@ class EventRepository implements EventRepositoryInterface
 
         if ($row) {
             $record = GedcomRecord::getInstance($row->id, $this->tree);
+            $fact   = null;
 
             if ($record) {
                 $fact = $record->getFirstFact($row->fact);
+            }
 
-                if ($fact) {
-                    return FunctionsPrint::formatFactPlace($fact, true, true, true);
-                }
+            if ($fact) {
+                return FunctionsPrint::formatFactPlace($fact, true, true, true);
             }
         }
 

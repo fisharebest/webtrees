@@ -224,13 +224,31 @@ class UserRepository implements UserRepositoryInterface
     }
 
     /**
+     * Returns the user count.
+     *
+     * @return int
+     */
+    private function getUserCount(): int
+    {
+        return count(User::all());
+    }
+
+    /**
+     * Returns the administrator count.
+     *
+     * @return int
+     */
+    private function getAdminCount(): int
+    {
+        return count(User::administrators());
+    }
+
+    /**
      * @inheritDoc
      */
     public function totalUsers(): string
     {
-        $total = count(User::all());
-
-        return I18N::number($total);
+        return I18N::number($this->getUserCount());
     }
 
     /**
@@ -238,7 +256,7 @@ class UserRepository implements UserRepositoryInterface
      */
     public function totalAdmins(): string
     {
-        return I18N::number(count(User::administrators()));
+        return I18N::number($this->getAdminCount());
     }
 
     /**
@@ -246,6 +264,6 @@ class UserRepository implements UserRepositoryInterface
      */
     public function totalNonAdmins(): string
     {
-        return I18N::number(count(User::all()) - count(User::administrators()));
+        return I18N::number($this->getUserCount() - $this->getAdminCount());
     }
 }

@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\FamilyDatesRepositoryInterface;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Query\Builder;
 
 /**
@@ -49,98 +50,50 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
     /**
      * Birth and Death
      *
-     * @param string $type
-     * @param string $life_dir
-     * @param string $birth_death
+     * @param string $fact
+     * @param string $operation
      *
-     * @return string
+     * @return Model|object|static|null
      */
-    private function mortalityQuery($type, $life_dir, $birth_death): string
+    private function mortalityQuery(string $fact, string $operation)
     {
-        if ($birth_death === 'MARR') {
-            $query_field = 'MARR';
-        } elseif ($birth_death === 'DIV') {
-            $query_field = 'DIV';
-        } elseif ($birth_death === 'BIRT') {
-            $query_field = 'BIRT';
-        } else {
-            $query_field = 'DEAT';
-        }
-
-        if ($life_dir === 'ASC') {
-            $dmod = 'MIN';
-        } else {
-            $dmod = 'MAX';
-        }
-
-        $row = DB::table('dates')
-            ->select(['d_year', 'd_type', 'd_fact', 'd_gid'])
+        return DB::table('dates')
+            ->select(['d_gid as id', 'd_year as year', 'd_fact AS fact', 'd_type AS type'])
             ->where('d_file', '=', $this->tree->id())
-            ->where('d_fact', '=', $query_field)
-            ->where('d_julianday1', '=', function (Builder $query) use ($dmod, $query_field) {
-                $query->selectRaw($dmod . '(d_julianday1)')
+            ->where('d_fact', '=', $fact)
+            ->where('d_julianday1', '=', function (Builder $query) use ($operation, $fact) {
+                $query->selectRaw($operation . '(d_julianday1)')
                     ->from('dates')
                     ->where('d_file', '=', $this->tree->id())
-                    ->where('d_fact', '=', $query_field)
+                    ->where('d_fact', '=', $fact)
                     ->where('d_julianday1', '<>', 0);
             })
             ->first();
+    }
+
+    /**
+     * Returns the formatted year of the first/last occuring event.
+     *
+     * @param string $type      The fact to query
+     * @param string $operation The sorting operation
+     *
+     * @return string
+     */
+    private function getFirstLastEvent(string $type, string $operation): string
+    {
+        $row = $this->mortalityQuery($type, $operation);
 
         if (!$row) {
             return '';
         }
 
-        $result = '';
+        $record = GedcomRecord::getInstance($row->id, $this->tree);
 
-        switch ($type) {
-            default:
-            case 'full':
-                $record = GedcomRecord::getInstance($row->d_gid, $this->tree);
-
-                if ($record && $record->canShow()) {
-                    $result = $record->formatList();
-                } else {
-                    $result = I18N::translate('This information is private and cannot be shown.');
-                }
-
-                break;
-
-            case 'year':
-                if ($row->d_year < 0) {
-                    $row->d_year = abs($row->d_year) . ' B.C.';
-                }
-
-                $date   = new Date($row->d_type . ' ' . $row->d_year);
-                $result = $date->display();
-                break;
-
-            case 'name':
-                $record = GedcomRecord::getInstance($row->d_gid, $this->tree);
-
-                if ($record) {
-                    $result = '<a href="' . e($record->url()) . '">' . $record->getFullName() . '</a>';
-                }
-
-                break;
-
-            case 'place':
-                $record = GedcomRecord::getInstance($row->d_gid, $this->tree);
-                $fact   = null;
-
-                if ($record) {
-                    $fact = $record->getFirstFact($row->d_fact);
-                }
-
-                if ($fact) {
-                    $result = FunctionsPrint::formatFactPlace($fact, true, true, true);
-                } else {
-                    $result = I18N::translate('Private');
-                }
-
-                break;
+        if ($record && $record->canShow()) {
+            return $record->formatList();
         }
 
-        return $result;
+        return I18N::translate('This information is private and cannot be shown.');
     }
 
     /**
@@ -148,31 +101,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
      */
     public function firstBirth(): string
     {
-        return $this->mortalityQuery('full', 'ASC', 'BIRT');
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function firstBirthYear(): string
-    {
-        return $this->mortalityQuery('year', 'ASC', 'BIRT');
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function firstBirthName(): string
-    {
-        return $this->mortalityQuery('name', 'ASC', 'BIRT');
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function firstBirthPlace(): string
-    {
-        return $this->mortalityQuery('place', 'ASC', 'BIRT');
+        return $this->getFirstLastEvent('BIRT', 'MIN');
     }
 
     /**
@@ -180,31 +109,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
      */
     public function lastBirth(): string
     {
-        return $this->mortalityQuery('full', 'DESC', 'BIRT');
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function lastBirthYear(): string
-    {
-        return $this->mortalityQuery('year', 'DESC', 'BIRT');
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function lastBirthName(): string
-    {
-        return $this->mortalityQuery('name', 'DESC', 'BIRT');
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function lastBirthPlace(): string
-    {
-        return $this->mortalityQuery('place', 'DESC', 'BIRT');
+        return $this->getFirstLastEvent('BIRT', 'MAX');
     }
 
     /**
@@ -212,31 +117,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
      */
     public function firstDeath(): string
     {
-        return $this->mortalityQuery('full', 'ASC', 'DEAT');
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function firstDeathYear(): string
-    {
-        return $this->mortalityQuery('year', 'ASC', 'DEAT');
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function firstDeathName(): string
-    {
-        return $this->mortalityQuery('name', 'ASC', 'DEAT');
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function firstDeathPlace(): string
-    {
-        return $this->mortalityQuery('place', 'ASC', 'DEAT');
+        return $this->getFirstLastEvent('DEAT', 'MIN');
     }
 
     /**
@@ -244,31 +125,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
      */
     public function lastDeath(): string
     {
-        return $this->mortalityQuery('full', 'DESC', 'DEAT');
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function lastDeathYear(): string
-    {
-        return $this->mortalityQuery('year', 'DESC', 'DEAT');
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function lastDeathName(): string
-    {
-        return $this->mortalityQuery('name', 'DESC', 'DEAT');
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function lastDeathPlace(): string
-    {
-        return $this->mortalityQuery('place', 'DESC', 'DEAT');
+        return $this->getFirstLastEvent('DEAT', 'MAX');
     }
 
     /**
@@ -276,31 +133,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
      */
     public function firstMarriage(): string
     {
-        return $this->mortalityQuery('full', 'ASC', 'MARR');
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function firstMarriageYear(): string
-    {
-        return $this->mortalityQuery('year', 'ASC', 'MARR');
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function firstMarriageName(): string
-    {
-        return $this->mortalityQuery('name', 'ASC', 'MARR');
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function firstMarriagePlace(): string
-    {
-        return $this->mortalityQuery('place', 'ASC', 'MARR');
+        return $this->getFirstLastEvent('MARR', 'MIN');
     }
 
     /**
@@ -308,31 +141,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
      */
     public function lastMarriage(): string
     {
-        return $this->mortalityQuery('full', 'DESC', 'MARR');
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function lastMarriageYear(): string
-    {
-        return $this->mortalityQuery('year', 'DESC', 'MARR');
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function lastMarriageName(): string
-    {
-        return $this->mortalityQuery('name', 'DESC', 'MARR');
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function lastMarriagePlace(): string
-    {
-        return $this->mortalityQuery('place', 'DESC', 'MARR');
+        return $this->getFirstLastEvent('MARR', 'MAX');
     }
 
     /**
@@ -340,31 +149,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
      */
     public function firstDivorce(): string
     {
-        return $this->mortalityQuery('full', 'ASC', 'DIV');
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function firstDivorceYear(): string
-    {
-        return $this->mortalityQuery('year', 'ASC', 'DIV');
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function firstDivorceName(): string
-    {
-        return $this->mortalityQuery('name', 'ASC', 'DIV');
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function firstDivorcePlace(): string
-    {
-        return $this->mortalityQuery('place', 'ASC', 'DIV');
+        return $this->getFirstLastEvent('DIV', 'MIN');
     }
 
     /**
@@ -372,7 +157,87 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
      */
     public function lastDivorce(): string
     {
-        return $this->mortalityQuery('full', 'DESC', 'DIV');
+        return $this->getFirstLastEvent('DIV', 'MAX');
+    }
+
+    /**
+     * Returns the formatted year of the first/last occuring event.
+     *
+     * @param string $type      The fact to query
+     * @param string $operation The sorting operation
+     *
+     * @return string
+     */
+    private function getFirstLastEventYear(string $type, string $operation): string
+    {
+        $row = $this->mortalityQuery($type, $operation);
+
+        if (!$row) {
+            return '';
+        }
+
+        if ($row->year < 0) {
+            $row->year = abs($row->year) . ' B.C.';
+        }
+
+        return (new Date($row->type . ' ' . $row->year))
+            ->display();
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function firstBirthYear(): string
+    {
+        return $this->getFirstLastEventYear('BIRT', 'MIN');
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function lastBirthYear(): string
+    {
+        return $this->getFirstLastEventYear('BIRT', 'MAX');
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function firstDeathYear(): string
+    {
+        return $this->getFirstLastEventYear('DEAT', 'MIN');
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function lastDeathYear(): string
+    {
+        return $this->getFirstLastEventYear('DEAT', 'MAX');
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function firstMarriageYear(): string
+    {
+        return $this->getFirstLastEventYear('MARR', 'MIN');
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function lastMarriageYear(): string
+    {
+        return $this->getFirstLastEventYear('MARR', 'MAX');
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function firstDivorceYear(): string
+    {
+        return $this->getFirstLastEventYear('DIV', 'MIN');
     }
 
     /**
@@ -380,7 +245,86 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
      */
     public function lastDivorceYear(): string
     {
-        return $this->mortalityQuery('year', 'DESC', 'DIV');
+        return $this->getFirstLastEventYear('DIV', 'MAX');
+    }
+
+    /**
+     * Returns the formatted name of the first/last occuring event.
+     *
+     * @param string $type      The fact to query
+     * @param string $operation The sorting operation
+     *
+     * @return string
+     */
+    private function getFirstLastEventName(string $type, string $operation): string
+    {
+        $row = $this->mortalityQuery($type, $operation);
+
+        if ($row) {
+            $record = GedcomRecord::getInstance($row->id, $this->tree);
+
+            if ($record) {
+                return '<a href="' . e($record->url()) . '">' . $record->getFullName() . '</a>';
+            }
+        }
+
+        return '';
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function firstBirthName(): string
+    {
+        return $this->getFirstLastEventName('BIRT', 'MIN');
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function lastBirthName(): string
+    {
+        return $this->getFirstLastEventName('BIRT', 'MAX');
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function firstDeathName(): string
+    {
+        return $this->getFirstLastEventName('DEAT', 'MIN');
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function lastDeathName(): string
+    {
+        return $this->getFirstLastEventName('DEAT', 'MAX');
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function firstMarriageName(): string
+    {
+        return $this->getFirstLastEventName('MARR', 'MIN');
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function lastMarriageName(): string
+    {
+        return $this->getFirstLastEventName('MARR', 'MAX');
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function firstDivorceName(): string
+    {
+        return $this->getFirstLastEventName('DIV', 'MIN');
     }
 
     /**
@@ -388,7 +332,91 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
      */
     public function lastDivorceName(): string
     {
-        return $this->mortalityQuery('name', 'DESC', 'DIV');
+        return $this->getFirstLastEventName('DIV', 'MAX');
+    }
+
+    /**
+     * Returns the formatted place of the first/last occuring event.
+     *
+     * @param string $type      The fact to query
+     * @param string $operation The sorting operation
+     *
+     * @return string
+     */
+    private function getFirstLastEventPlace(string $type, string $operation): string
+    {
+        $row = $this->mortalityQuery($type, $operation);
+
+        if ($row) {
+            $record = GedcomRecord::getInstance($row->id, $this->tree);
+            $fact   = null;
+
+            if ($record) {
+                $fact = $record->getFirstFact($row->fact);
+            }
+
+            if ($fact) {
+                return FunctionsPrint::formatFactPlace($fact, true, true, true);
+            }
+        }
+
+        return I18N::translate('Private');
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function firstBirthPlace(): string
+    {
+        return $this->getFirstLastEventPlace('BIRT', 'MIN');
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function lastBirthPlace(): string
+    {
+        return $this->getFirstLastEventPlace('BIRT', 'MAX');
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function firstDeathPlace(): string
+    {
+        return $this->getFirstLastEventPlace('DEAT', 'MIN');
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function lastDeathPlace(): string
+    {
+        return $this->getFirstLastEventPlace('DEAT', 'MAX');
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function firstMarriagePlace(): string
+    {
+        return $this->getFirstLastEventPlace('MARR', 'MIN');
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function lastMarriagePlace(): string
+    {
+        return $this->getFirstLastEventPlace('MARR', 'MAX');
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function firstDivorcePlace(): string
+    {
+        return $this->getFirstLastEventPlace('DIV', 'MIN');
     }
 
     /**
@@ -396,6 +424,6 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
      */
     public function lastDivorcePlace(): string
     {
-        return $this->mortalityQuery('place', 'DESC', 'DIV');
+        return $this->getFirstLastEventPlace('DIV', 'MAX');
     }
 }
