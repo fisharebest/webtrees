@@ -147,22 +147,22 @@
                         <?= I18N::number(array_sum($changes)) ?>
                     </td>
                     <td class="d-none d-sm-table-cell text-right">
-                        <?= I18N::number(array_sum($individuals)) ?>
+                        <?= I18N::number($individuals->sum()) ?>
                     </td>
                     <td class="d-none d-lg-table-cell text-right">
-                        <?= I18N::number(array_sum($families)) ?>
+                        <?= I18N::number($families->sum()) ?>
                     </td>
                     <td class="d-none d-sm-table-cell text-right">
-                        <?= I18N::number(array_sum($sources)) ?>
+                        <?= I18N::number($sources->sum()) ?>
                     </td>
                     <td class="d-none d-lg-table-cell text-right">
-                        <?= I18N::number(array_sum($repositories)) ?>
+                        <?= I18N::number($repositories->sum()) ?>
                     </td>
                     <td class="d-none d-sm-table-cell text-right">
-                        <?= I18N::number(array_sum($media)) ?>
+                        <?= I18N::number($media->sum()) ?>
                     </td>
                     <td class="d-none d-lg-table-cell text-right">
-                        <?= I18N::number(array_sum($notes)) ?>
+                        <?= I18N::number($notes->sum()) ?>
                     </td>
                 </tr>
             </tfoot>

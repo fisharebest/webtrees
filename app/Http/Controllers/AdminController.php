@@ -44,6 +44,7 @@ use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\JoinClause;
+use Illuminate\Support\Collection;
 use Intervention\Image\ImageManager;
 use League\Flysystem\Adapter\Local;
 use League\Flysystem\Filesystem;
@@ -1554,60 +1555,104 @@ class AdminController extends AbstractBaseController
     /**
      * Count the number of families in each tree.
      *
-     * @return string[]
+     * @return Collection|int[]
      */
-    private function totalFamilies(): array
+    private function totalFamilies(): Collection
     {
-        return Database::prepare("SELECT gedcom_id, COUNT(f_id) FROM `##gedcom` LEFT JOIN `##families` ON gedcom_id = f_file GROUP BY gedcom_id")->fetchAssoc();
+        return DB::table('gedcom')
+            ->leftJoin('families', 'f_file', '=', 'gedcom_id')
+            ->groupBy('gedcom_id')
+            ->pluck(DB::raw('COUNT(f_id)'), 'gedcom_id')
+            ->map(function (string $count) {
+                return (int) $count;
+            });
     }
 
     /**
      * Count the number of individuals in each tree.
      *
-     * @return string[]
+     * @return Collection|int[]
      */
-    private function totalIndividuals(): array
+    private function totalIndividuals(): Collection
     {
-        return Database::prepare("SELECT gedcom_id, COUNT(i_id) FROM `##gedcom` LEFT JOIN `##individuals` ON gedcom_id = i_file GROUP BY gedcom_id")->fetchAssoc();
+        return DB::table('gedcom')
+            ->leftJoin('individuals', 'i_file', '=', 'gedcom_id')
+            ->groupBy('gedcom_id')
+            ->pluck(DB::raw('COUNT(i_id)'), 'gedcom_id')
+            ->map(function (string $count) {
+                return (int) $count;
+            });
     }
 
     /**
      * Count the number of media objects in each tree.
      *
-     * @return string[]
+     * @return Collection|int[]
      */
-    private function totalMediaObjects(): array
+    private function totalMediaObjects(): Collection
     {
-        return Database::prepare("SELECT gedcom_id, COUNT(m_id) FROM `##gedcom` LEFT JOIN `##media` ON gedcom_id = m_file GROUP BY gedcom_id")->fetchAssoc();
+        return DB::table('gedcom')
+            ->leftJoin('media', 'm_file', '=', 'gedcom_id')
+            ->groupBy('gedcom_id')
+            ->pluck(DB::raw('COUNT(m_id)'), 'gedcom_id')
+            ->map(function (string $count) {
+                return (int) $count;
+            });
     }
 
     /**
      * Count the number of notes in each tree.
      *
-     * @return string[]
+     * @return Collection|int[]
      */
-    private function totalNotes(): array
+    private function totalNotes(): Collection
     {
-        return Database::prepare("SELECT gedcom_id, COUNT(o_id) FROM `##gedcom` LEFT JOIN `##other` ON gedcom_id = o_file AND o_type = 'NOTE' GROUP BY gedcom_id")->fetchAssoc();
+        return DB::table('gedcom')
+            ->leftJoin('other', function (JoinClause $join): void {
+                $join
+                    ->on('o_file', '=', 'gedcom_id')
+                    ->where('o_type', '=', 'NOTE');
+            })
+            ->groupBy('gedcom_id')
+            ->pluck(DB::raw('COUNT(o_id)'), 'gedcom_id')
+            ->map(function (string $count) {
+                return (int) $count;
+            });
     }
 
     /**
      * Count the number of repositorie in each tree.
      *
-     * @return string[]
+     * @return Collection|int[]
      */
-    private function totalRepositories(): array
+    private function totalRepositories(): Collection
     {
-        return Database::prepare("SELECT gedcom_id, COUNT(o_id) FROM `##gedcom` LEFT JOIN `##other` ON gedcom_id = o_file AND o_type = 'REPO' GROUP BY gedcom_id")->fetchAssoc();
+        return DB::table('gedcom')
+            ->leftJoin('other', function (JoinClause $join): void {
+                $join
+                    ->on('o_file', '=', 'gedcom_id')
+                    ->where('o_type', '=', 'REPO');
+            })
+            ->groupBy('gedcom_id')
+            ->pluck(DB::raw('COUNT(o_id)'), 'gedcom_id')
+            ->map(function (string $count) {
+                return (int) $count;
+            });
     }
 
     /**
      * Count the number of sources in each tree.
      *
-     * @return string[]
+     * @return Collection|int[]
      */
-    private function totalSources(): array
+    private function totalSources(): Collection
     {
-        return Database::prepare("SELECT gedcom_id, COUNT(s_id) FROM `##gedcom` LEFT JOIN `##sources` ON gedcom_id = s_file GROUP BY gedcom_id")->fetchAssoc();
+        return DB::table('gedcom')
+            ->leftJoin('sources', 's_file', '=', 'gedcom_id')
+            ->groupBy('gedcom_id')
+            ->pluck(DB::raw('COUNT(s_id)'), 'gedcom_id')
+            ->map(function (string $count) {
+                return (int) $count;
+            });
     }
 }
