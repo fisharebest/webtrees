@@ -99,7 +99,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
     {
         $this->layout = 'layouts/administration';
 
-        $faqs = $this->faqsForTree($tree, '');
+        $faqs = $this->faqsForTree($tree);
 
         $min_block_order = DB::table('block')
             ->where('module_name', '=', $this->getName())
