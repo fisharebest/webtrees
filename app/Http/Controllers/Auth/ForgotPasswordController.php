@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Mail;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
+use Illuminate\Support\Str;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -97,15 +98,6 @@ class ForgotPasswordController extends AbstractBaseController
      */
     private function createNewPassword(): string
     {
-        $passchars = 'abcdefghijklmnopqrstuvqxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-        $password  = '';
-        $max       = strlen($passchars) - 1;
-
-        for ($i = 0; $i < 8; $i++) {
-            $index = random_int(0, $max);
-            $password .= $passchars{$index};
-        }
-
-        return $password;
+        return Str::random(8);
     }
 }

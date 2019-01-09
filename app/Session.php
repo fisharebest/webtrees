@@ -19,6 +19,7 @@ namespace Fisharebest\Webtrees;
 
 use Carbon\Carbon;
 use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Support\Str;
 use Symfony\Component\HttpFoundation\Request;
 use function session_status;
 
@@ -274,12 +275,7 @@ class Session
     public static function getCsrfToken(): string
     {
         if (!Session::has('CSRF_TOKEN')) {
-            $charset    = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcedfghijklmnopqrstuvwxyz0123456789';
-            $csrf_token = '';
-            for ($n = 0; $n < 32; ++$n) {
-                $csrf_token .= substr($charset, random_int(0, 61), 1);
-            }
-            Session::put('CSRF_TOKEN', $csrf_token);
+            Session::put('CSRF_TOKEN', Str::random(32));
         }
 
         return Session::get('CSRF_TOKEN');
