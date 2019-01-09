@@ -19,7 +19,6 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Exception;
 use FilesystemIterator;
-use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\File;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Functions\FunctionsImport;
@@ -29,6 +28,7 @@ use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Tree;
+use Illuminate\Database\Capsule\Manager as DB;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
@@ -617,13 +617,12 @@ class EditMediaController extends AbstractEditController
      */
     private function unusedFiles(Tree $tree): array
     {
-        $used_files = Database::prepare(
-            "SELECT multimedia_file_refn FROM `##media_file`" .
-            " WHERE m_file = :tree_id" .
-            " AND multimedia_file_refn NOT LIKE 'http://%' AND multimedia_file_refn NOT LIKE 'https://%'"
-        )->execute([
-            'tree_id' => $tree->id(),
-        ])->fetchOneColumn();
+        $used_files = DB::table('media_file')
+            ->where('m_file', '=', $tree->id())
+            ->where('multimedia_file_refn', 'NOT LIKE', 'http://%')
+            ->where('multimedia_file_refn', 'NOT LIKE', 'https://%')
+            ->pluck('multimedia_file_refn')
+            ->all();
 
         $disk_files = [];
         $media_dir  = WT_DATA_DIR . $tree->getPreference('MEDIA_DIRECTORY', 'media/');
