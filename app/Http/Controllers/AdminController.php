@@ -1212,7 +1212,7 @@ class AdminController extends AbstractBaseController
         }
 
         if ($ged !== '') {
-            $query->whereContains('gedcom_name', $query);
+            $query->whereContains('gedcom_name', $ged);
         }
 
         return $query;
