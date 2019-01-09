@@ -493,11 +493,6 @@ class AdminSiteController extends AbstractBaseController
      */
     public function serverInformation(): Response
     {
-        $mysql_variables = Database::prepare("SHOW VARIABLES")->fetchAssoc();
-        $mysql_variables = array_map(function (string $text): string {
-            return str_replace(',', ', ', $text);
-        }, $mysql_variables);
-
         ob_start();
         phpinfo(INFO_ALL & ~INFO_CREDITS & ~INFO_LICENSE);
         $phpinfo = ob_get_clean();
@@ -507,7 +502,6 @@ class AdminSiteController extends AbstractBaseController
         return $this->viewResponse('admin/server-information', [
             'title'           => I18N::translate('Server information'),
             'phpinfo'         => $phpinfo,
-            'mysql_variables' => $mysql_variables,
         ]);
     }
 
