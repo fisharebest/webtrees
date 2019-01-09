@@ -1179,7 +1179,7 @@ class AdminController extends AbstractBaseController
             $query->where(function (Builder $query) use ($search): void {
                 $query
                     ->whereContains('old_gedcom', $search)
-                    ->orWhereContains('new_gedcom', $search);
+                    ->whereContains('new_gedcom', $search, 'or');
             });
         }
 
