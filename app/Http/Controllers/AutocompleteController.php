@@ -177,7 +177,7 @@ class AutocompleteController extends AbstractBaseController
      */
     public function place(Request $request, Tree $tree): JsonResponse
     {
-        $query = $request->get('query');
+        $query = $request->get('query', '');
         $data  = [];
 
         foreach ($this->search_service->searchPlaces($tree, $query) as $place) {
