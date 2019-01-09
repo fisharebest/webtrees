@@ -17,8 +17,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-use function session_status;
+use Carbon\Carbon;
+use Illuminate\Database\Capsule\Manager as DB;
 use Symfony\Component\HttpFoundation\Request;
+use function session_status;
 
 /**
  * Session handling
@@ -192,11 +194,9 @@ class Session
      */
     private static function destroy(string $id): bool
     {
-        Database::prepare(
-            "DELETE FROM `##session` WHERE session_id = :session_id"
-        )->execute([
-            'session_id' => $id,
-        ]);
+        DB::table('session')
+            ->where('session_id', '=', $id)
+            ->delete();
 
         return true;
     }
@@ -210,11 +210,9 @@ class Session
      */
     private static function gc(int $maxlifetime): bool
     {
-        Database::prepare(
-            "DELETE FROM `##session` WHERE session_time < DATE_SUB(NOW(), INTERVAL :maxlifetime SECOND)"
-        )->execute([
-            'maxlifetime' => $maxlifetime,
-        ]);
+        DB::table('session')
+            ->where('session_time', '<', Carbon::now()->subSeconds($maxlifetime))
+            ->delete();
 
         return true;
     }
@@ -238,11 +236,9 @@ class Session
      */
     private static function read(string $id): string
     {
-        return (string) Database::prepare(
-            "SELECT session_data FROM `##session` WHERE session_id = :session_id"
-        )->execute([
-            'session_id' => $id,
-        ])->fetchOne();
+        return (string) DB::table('session')
+            ->where('session_id', '=', $id)
+            ->value('session_data');
     }
 
     /**
@@ -257,25 +253,17 @@ class Session
     {
         $request = Request::createFromGlobals();
 
-        // Only update the session table once per minute, unless the session data has actually changed.
-        Database::prepare(
-            "INSERT INTO `##session` (session_id, user_id, ip_address, session_data, session_time)" .
-            " VALUES (:session_id, :user_id, :ip_address, :data, CURRENT_TIMESTAMP - SECOND(CURRENT_TIMESTAMP))" .
-            " ON DUPLICATE KEY UPDATE" .
-            " user_id      = VALUES(user_id)," .
-            " ip_address   = VALUES(ip_address)," .
-            " session_data = VALUES(session_data)," .
-            " session_time = CURRENT_TIMESTAMP - SECOND(CURRENT_TIMESTAMP)"
-        )->execute([
+        DB::table('session')->updateOrInsert([
             'session_id' => $id,
-            'user_id'    => (int) Auth::id(),
-            'ip_address' => $request->getClientIp(),
-            'data'       => $data,
+        ], [
+            'session_time' => Carbon::now(),
+            'user_id'      => (int) Auth::id(),
+            'ip_address'   => $request->getClientIp(),
+            'session_data' => $data,
         ]);
 
         return true;
     }
-
 
     /**
      * Cross-Site Request Forgery tokens - ensure that the user is submitting
