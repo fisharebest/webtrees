@@ -17,16 +17,21 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use Carbon\Carbon;
 use Exception;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\File;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Services\DatatablesService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
+use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Query\Builder;
 use League\Flysystem\Filesystem;
+use stdClass;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -195,8 +200,14 @@ class AdminSiteController extends AbstractBaseController
      */
     public function logs(Request $request): Response
     {
-        $earliest = Database::prepare("SELECT IFNULL(DATE(MIN(log_time)), CURDATE()) FROM `##log`")->execute([])->fetchOne();
-        $latest   = Database::prepare("SELECT IFNULL(DATE(MAX(log_time)), CURDATE()) FROM `##log`")->execute([])->fetchOne();
+        $earliest = DB::table('log')->min('log_time');
+        $latest   = DB::table('log')->max('log_time');
+
+        $earliest = $earliest ? new Carbon($earliest) : Carbon::now();
+        $latest   = $latest ? new Carbon($latest) : Carbon::now();
+
+        $earliest = $earliest->toDateString();
+        $latest   = $latest->toDateString();
 
         $action   = $request->get('action', '');
         $from     = $request->get('from', $earliest);
@@ -237,101 +248,17 @@ class AdminSiteController extends AbstractBaseController
     }
 
     /**
-     * @param Request $request
+     * @param Request           $request
+     * @param DatatablesService $datatables_service
      *
      * @return JsonResponse
      */
-    public function logsData(Request $request): JsonResponse
+    public function logsData(Request $request, DatatablesService $datatables_service): JsonResponse
     {
-        $from     = $request->get('from');
-        $to       = $request->get('to');
-        $type     = $request->get('type', '');
-        $text     = $request->get('text', '');
-        $ip       = $request->get('ip', '');
-        $username = $request->get('username', '');
-        $gedc     = $request->get('gedc');
-        $search   = $request->get('search', []);
-        $search   = $search['value'] ?? '';
+        $query = $this->logsQuery($request);
 
-        $start  = (int) $request->get('start');
-        $length = (int) $request->get('length');
-        $order  = $request->get('order', []);
-        $draw   = (int) $request->get('draw');
-
-        $sql =
-            "SELECT SQL_CALC_FOUND_ROWS log_id, log_time, log_type, log_message, ip_address, IFNULL(user_name, '<none>') AS user_name, IFNULL(gedcom_name, '<none>') AS gedcom_name" .
-            " FROM `##log`" .
-            " LEFT JOIN `##user` USING (user_id)" . // user may be deleted
-            " LEFT JOIN `##gedcom` USING (gedcom_id)" . // gedcom may be deleted
-            " WHERE 1";
-
-        $args = [];
-        if ($search) {
-            $sql .= " AND log_message LIKE CONCAT('%', :search, '%')";
-            $args['search'] = $search;
-        }
-        if ($from) {
-            $sql .= " AND log_time >= :from";
-            $args['from'] = $from;
-        }
-        if ($to) {
-            $sql .= " AND log_time < TIMESTAMPADD(DAY, 1 , :to)"; // before end of the day
-            $args['to'] = $to;
-        }
-        if ($type) {
-            $sql .= " AND log_type = :type";
-            $args['type'] = $type;
-        }
-        if ($text) {
-            $sql .= " AND log_message LIKE CONCAT('%', :text, '%')";
-            $args['text'] = $text;
-        }
-        if ($ip) {
-            $sql .= " AND ip_address LIKE CONCAT('%', :ip, '%')";
-            $args['ip'] = $ip;
-        }
-        if ($username) {
-            $sql .= " AND user_name LIKE CONCAT('%', :user, '%')";
-            $args['user'] = $username;
-        }
-        if ($gedc) {
-            $sql .= " AND gedcom_name = :gedc";
-            $args['gedc'] = $gedc;
-        }
-
-        if ($order) {
-            $sql .= " ORDER BY ";
-            foreach ($order as $key => $value) {
-                if ($key > 0) {
-                    $sql .= ',';
-                }
-                // Columns in datatables are numbered from zero.
-                // Columns in MySQL are numbered starting with one.
-                switch ($value['dir']) {
-                    case 'asc':
-                        $sql .= (1 + $value['column']) . " ASC ";
-                        break;
-                    case 'desc':
-                        $sql .= (1 + $value['column']) . " DESC ";
-                        break;
-                }
-            }
-        } else {
-            $sql .= " ORDER BY 1 ASC";
-        }
-
-        if ($length > 0) {
-            $sql .= " LIMIT :limit OFFSET :offset";
-            $args['limit']  = $length;
-            $args['offset'] = $start;
-        }
-
-        $rows = Database::prepare($sql)->execute($args)->fetchAll();
-
-        // Reformat various columns for display
-        $data = [];
-        foreach ($rows as $row) {
-            $data[] = [
+        return $datatables_service->handle($request, $query, [], function (stdClass $row): array {
+            return [
                 $row->log_id,
                 $row->log_time,
                 $row->log_type,
@@ -340,18 +267,7 @@ class AdminSiteController extends AbstractBaseController
                 '<span dir="auto">' . e($row->user_name) . '</span>',
                 '<span dir="auto">' . e($row->gedcom_name) . '</span>',
             ];
-        }
-
-        // Total filtered/unfiltered rows
-        $recordsFiltered = (int) Database::prepare("SELECT FOUND_ROWS()")->fetchOne();
-        $recordsTotal    = (int) Database::prepare("SELECT COUNT(*) FROM `##log`")->fetchOne();
-
-        return new JsonResponse([
-            'draw'            => $draw,
-            'recordsTotal'    => $recordsTotal,
-            'recordsFiltered' => $recordsFiltered,
-            'data'            => $data,
-        ]);
+        });
     }
 
     /**
@@ -361,57 +277,7 @@ class AdminSiteController extends AbstractBaseController
      */
     public function logsDelete(Request $request): Response
     {
-        $from     = $request->get('from');
-        $to       = $request->get('to');
-        $type     = $request->get('type', '');
-        $text     = $request->get('text', '');
-        $ip       = $request->get('ip', '');
-        $username = $request->get('username', '');
-        $gedc     = $request->get('gedc');
-        $search   = $request->get('search', []);
-        $search   = $search['value'] ?? '';
-
-        $sql =
-            "DELETE `##log` FROM `##log`" .
-            " LEFT JOIN `##user` USING (user_id)" . // user may be deleted
-            " LEFT JOIN `##gedcom` USING (gedcom_id)" . // gedcom may be deleted
-            " WHERE 1";
-
-        $args = [];
-        if ($search) {
-            $sql .= " AND log_message LIKE CONCAT('%', :search, '%')";
-            $args['search'] = $search;
-        }
-        if ($from) {
-            $sql .= " AND log_time >= :from";
-            $args['from'] = $from;
-        }
-        if ($to) {
-            $sql .= " AND log_time < TIMESTAMPADD(DAY, 1 , :to)"; // before end of the day
-            $args['to'] = $to;
-        }
-        if ($type) {
-            $sql .= " AND log_type = :type";
-            $args['type'] = $type;
-        }
-        if ($text) {
-            $sql .= " AND log_message LIKE CONCAT('%', :text, '%')";
-            $args['text'] = $text;
-        }
-        if ($ip) {
-            $sql .= " AND ip_address LIKE CONCAT('%', :ip, '%')";
-            $args['ip'] = $ip;
-        }
-        if ($username) {
-            $sql .= " AND user_name LIKE CONCAT('%', :user, '%')";
-            $args['user'] = $username;
-        }
-        if ($gedc) {
-            $sql .= " AND gedcom_name = :gedc";
-            $args['gedc'] = $gedc;
-        }
-
-        Database::prepare($sql)->execute($args);
+        $this->logsQuery($request)->delete();
 
         return new Response('');
     }
@@ -423,6 +289,37 @@ class AdminSiteController extends AbstractBaseController
      */
     public function logsExport(Request $request): Response
     {
+        $content = $this->logsQuery($request)
+            ->orderBy('log_id')
+            ->get()
+            ->map(function (stdClass $row): string {
+                return
+                    '"' . $row->log_time . '",' .
+                    '"' . $row->log_type . '",' .
+                    '"' . str_replace('"', '""', $row->log_message) . '",' .
+                    '"' . $row->ip_address . '",' .
+                    '"' . str_replace('"', '""', $row->user_name) . '",' .
+                    '"' . str_replace('"', '""', $row->gedcom_name) . '"' .
+                    "\n";
+            })
+            ->implode('');
+
+        $response = new Response($content);
+        $response->headers->set('Content-Type', 'text/plain');
+        $response->headers->set('Content-Disposition', 'attachment; filename="webtrees-logs.csv');
+
+        return $response;
+    }
+
+    /**
+     * Generate a query for filtering the site log.
+     *
+     * @param Request $request
+     *
+     * @return Builder
+     */
+    private function logsQuery(Request $request): Builder
+    {
         $from     = $request->get('from');
         $to       = $request->get('to');
         $type     = $request->get('type', '');
@@ -431,65 +328,41 @@ class AdminSiteController extends AbstractBaseController
         $username = $request->get('username', '');
         $gedc     = $request->get('gedc');
 
-        $sql =
-            "SELECT SQL_CALC_FOUND_ROWS log_id, log_time, log_type, log_message, ip_address, IFNULL(user_name, '<none>') AS user_name, IFNULL(gedcom_name, '<none>') AS gedcom_name" .
-            " FROM `##log`" .
-            " LEFT JOIN `##user` USING (user_id)" . // user may be deleted
-            " LEFT JOIN `##gedcom` USING (gedcom_id)" . // gedcom may be deleted
-            " WHERE 1";
+        $query = DB::table('log')
+            ->leftJoin('user', 'user.user_id', '=', 'log.user_id')
+            ->leftJoin('gedcom', 'gedcom.gedcom_id', '=', 'log.gedcom_id')
+            ->select(['log.*', DB::raw("IFNULL(user_name, '<none>') AS user_name"), DB::raw("IFNULL(gedcom_name, '<none>') AS gedcom_name")]);
 
-        $args = [];
-        if ($from) {
-            $sql .= " AND log_time >= :from";
-            $args['from'] = $from;
+        if ($from !== '') {
+            $query->where('log_time', '>=', $from);
         }
-        if ($to) {
-            $sql .= " AND log_time < TIMESTAMPADD(DAY, 1 , :to)"; // before end of the day
-            $args['to'] = $to;
+
+        if ($to !== '') {
+            // before end of the day
+            $query->where('log_time', '<', (new Carbon($to))->addDay());
         }
-        if ($type) {
-            $sql .= " AND log_type = :type";
-            $args['type'] = $type;
+
+        if ($type !== '') {
+            $query->where('log_type', '=', $type);
         }
+
         if ($text) {
-            $sql .= " AND log_message LIKE CONCAT('%', :text, '%')";
-            $args['text'] = $text;
+            $query->whereContains('log_message', $text);
         }
+
         if ($ip) {
-            $sql .= " AND ip_address LIKE CONCAT('%', :ip, '%')";
-            $args['ip'] = $ip;
+            $query->whereContains('ip_address', $ip);
         }
+
         if ($username) {
-            $sql .= " AND user_name LIKE CONCAT('%', :user, '%')";
-            $args['user'] = $username;
+            $query->whereContains('user_name', $ip);
         }
+
         if ($gedc) {
-            $sql .= " AND gedcom_name = :gedc";
-            $args['gedc'] = $gedc;
+            $query->where('gedcom_name', '=', $gedc);
         }
 
-        $sql .= " ORDER BY log_id";
-
-        $rows = Database::prepare($sql)->execute($args)->fetchAll();
-
-        $data = '';
-
-        foreach ($rows as $row) {
-            $data .=
-                '"' . $row->log_time . '",' .
-                '"' . $row->log_type . '",' .
-                '"' . str_replace('"', '""', $row->log_message) . '",' .
-                '"' . $row->ip_address . '",' .
-                '"' . str_replace('"', '""', $row->user_name) . '",' .
-                '"' . str_replace('"', '""', $row->gedcom_name) . '"' .
-                "\n";
-        }
-
-        $response = new Response($data);
-        $response->headers->set('Content-Type', 'text/plain');
-        $response->headers->set('Content-Disposition', 'attachment; filename="webtrees-logs.csv');
-
-        return $response;
+        return $query;
     }
 
     /**
