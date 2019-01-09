@@ -17,6 +17,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Illuminate\Database\Capsule\Manager as DB;
+
 /**
  * A GEDCOM place (PLAC) object.
  */
@@ -66,13 +68,11 @@ class Place
         $place_id = 0;
 
         foreach (array_reverse($this->gedcom_place) as $place) {
-            $place_id = (int) Database::prepare(
-                "SELECT p_id FROM `##places` WHERE p_parent_id = :parent_id AND p_place = :place AND p_file = :tree_id"
-            )->execute([
-                'parent_id' => $place_id,
-                'place'     => $place,
-                'tree_id'   => $this->tree->id(),
-            ])->fetchOne();
+            $place_id = (int) DB::table('places')
+                ->where('p_file', '=', $this->tree->id())
+                ->where('p_place', '=', $place)
+                ->where('p_parent_id', '=', $place_id)
+                ->value('p_id');
         }
 
         return $place_id;
@@ -95,27 +95,21 @@ class Place
      */
     public function getChildPlaces(): array
     {
-        $children = [];
         if ($this->getPlaceId()) {
             $parent_text = self::GEDCOM_SEPARATOR . $this->getGedcomName();
         } else {
             $parent_text = '';
         }
 
-        $rows = Database::prepare(
-            "SELECT p_place FROM `##places`" .
-            " WHERE p_parent_id = :parent_id AND p_file = :tree_id" .
-            " ORDER BY p_place COLLATE :collation"
-        )->execute([
-            'parent_id' => $this->getPlaceId(),
-            'tree_id'   => $this->tree->id(),
-            'collation' => I18N::collation(),
-        ])->fetchOneColumn();
-        foreach ($rows as $row) {
-            $children[] = new self($row . $parent_text, $this->tree);
-        }
-
-        return $children;
+        return DB::table('places')
+            ->where('p_file', '=', $this->tree->id())
+            ->where('p_parent_id', '=', $this->getPlaceId())
+            ->orderBy(DB::raw('p_place /*! COLLATE ' . I18N::collation() . ' */'))
+            ->pluck('p_place')
+            ->map(function (string $place) use ($parent_text): Place {
+                return new self($place . $parent_text, $this->tree);
+            })
+            ->all();
     }
 
     /**
@@ -226,42 +220,6 @@ class Place
         }
 
         return implode(I18N::$list_separator, $tmp);
-    }
-
-    /**
-     * Fetch all places from the database.
-     *
-     * @param Tree $tree
-     *
-     * @return Place[]
-     */
-    public static function allPlaces(Tree $tree): array
-    {
-        $places = [];
-        $rows   =
-            Database::prepare(
-                "SELECT CONCAT_WS(', ', p1.p_place, p2.p_place, p3.p_place, p4.p_place, p5.p_place, p6.p_place, p7.p_place, p8.p_place, p9.p_place)" .
-                " FROM      `##places` AS p1" .
-                " LEFT JOIN `##places` AS p2 ON (p1.p_parent_id = p2.p_id)" .
-                " LEFT JOIN `##places` AS p3 ON (p2.p_parent_id = p3.p_id)" .
-                " LEFT JOIN `##places` AS p4 ON (p3.p_parent_id = p4.p_id)" .
-                " LEFT JOIN `##places` AS p5 ON (p4.p_parent_id = p5.p_id)" .
-                " LEFT JOIN `##places` AS p6 ON (p5.p_parent_id = p6.p_id)" .
-                " LEFT JOIN `##places` AS p7 ON (p6.p_parent_id = p7.p_id)" .
-                " LEFT JOIN `##places` AS p8 ON (p7.p_parent_id = p8.p_id)" .
-                " LEFT JOIN `##places` AS p9 ON (p8.p_parent_id = p9.p_id)" .
-                " WHERE p1.p_file = :tree_id" .
-                " ORDER BY CONCAT_WS(', ', p9.p_place, p8.p_place, p7.p_place, p6.p_place, p5.p_place, p4.p_place, p3.p_place, p2.p_place, p1.p_place) COLLATE :collate"
-            )
-                ->execute([
-                    'tree_id' => $tree->id(),
-                    'collate' => I18N::collation(),
-                ])->fetchOneColumn();
-        foreach ($rows as $row) {
-            $places[] = new self($row, $tree);
-        }
-
-        return $places;
     }
 
     /**

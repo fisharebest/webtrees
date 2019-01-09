@@ -376,27 +376,6 @@ class FunctionsEdit
     }
 
     /**
-     * Create a form control to select a place.
-     *
-     * @param Tree    $tree
-     * @param string  $place
-     * @param mixed[] $attributes
-     *
-     * @return string
-     */
-    public static function formControlPlace(Tree $tree, $place, array $attributes = []): string
-    {
-        $value   = '';
-        $options = ['' => ''];
-
-        if ($place !== '') {
-            $options = [$place => $place];
-        }
-
-        return Bootstrap4::select($options, $value, Select2::placeConfig($tree) + $attributes);
-    }
-
-    /**
      * Create a form control to select a repository.
      *
      * @param Tree            $tree
