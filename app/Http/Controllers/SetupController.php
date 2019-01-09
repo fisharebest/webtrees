@@ -165,7 +165,6 @@ class SetupController extends AbstractBaseController
                 'dbpass' => $dbpass,
                 'tblpfx' => '',
             ]);
-            Database::disconnect();
         } catch (PDOException $ex) {
             return I18N::translate('Unable to connect using this username and password. Your server gave the following error.') . '<br><br>' . e($ex->getMessage()) . '<br><br>' . I18N::translate('Check the settings and try again.');
         }
@@ -209,7 +208,6 @@ class SetupController extends AbstractBaseController
             ]);
             Database::exec("CREATE DATABASE IF NOT EXISTS `{$dbname}` COLLATE utf8_unicode_ci");
             Database::exec("USE `{$dbname}`");
-            Database::disconnect();
         } catch (PDOException $ex) {
             return I18N::translate('Unable to connect using this username and password. Your server gave the following error.') . '<br><br>' . e($ex->getMessage()) . '<br><br>' . I18N::translate('Check the settings and try again.');
         }
