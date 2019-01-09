@@ -20,7 +20,6 @@ namespace Fisharebest\Webtrees\Services;
 use Closure;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomRecord;
-use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Note;
@@ -99,7 +98,8 @@ class SearchService
                     ->on('name.n_id', '=', 'individuals.i_id')
                     ->whereContains('n_full', $search);
             })
-            ->select(['individuals.i_id', 'individuals.i_gedcom', 'n_sort'])
+            ->orderBy('n_sort')
+            ->select(['individuals.i_id', 'individuals.i_gedcom', 'n_sort', 'n_num'])
             ->distinct();
 
         $row_mapper = Individual::rowMapper($tree);
