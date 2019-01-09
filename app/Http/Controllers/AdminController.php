@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use Carbon\Carbon;
 use FilesystemIterator;
 use Fisharebest\Algorithm\MyersDiff;
 use Fisharebest\Webtrees\Auth;
@@ -34,12 +35,14 @@ use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Repository;
+use Fisharebest\Webtrees\Services\DatatablesService;
 use Fisharebest\Webtrees\Services\HousekeepingService;
 use Fisharebest\Webtrees\Services\UpgradeService;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Query\Builder;
 use Intervention\Image\ImageManager;
 use League\Flysystem\Adapter\Local;
 use League\Flysystem\Filesystem;
@@ -169,8 +172,7 @@ class AdminController extends AbstractBaseController
 
         // @TODO This ought to be a POST action
         if ($action === 'delete') {
-            [, $delete, $where, $args] = $this->changesQuery($request);
-            Database::prepare($delete . $where)->execute($args);
+            $this->changesQuery($request)->delete();
         }
 
         // First and last change in the database.
@@ -225,31 +227,21 @@ class AdminController extends AbstractBaseController
     /**
      * Show the edit history for a tree.
      *
-     * @param Request $request
+     * @param Request           $request
+     * @param DatatablesService $datatables_service
+     * @param MyersDiff         $myers_diff
      *
      * @return Response
      */
-    public function changesLogData(Request $request): Response
+    public function changesLogData(Request $request, DatatablesService $datatables_service, MyersDiff $myers_diff): Response
     {
-        [$select, , $where, $args1] = $this->changesQuery($request);
-        [$order_by, $limit, $args2] = $this->dataTablesPagination($request);
+        $query = $this->changesQuery($request);
 
-        $rows = Database::prepare(
-            $select . $where . $order_by . $limit
-        )->execute(array_merge($args1, $args2))->fetchAll();
-
-        // Total filtered/unfiltered rows
-        $recordsFiltered = (int) Database::prepare("SELECT FOUND_ROWS()")->fetchOne();
-        $recordsTotal    = (int) Database::prepare("SELECT COUNT(*) FROM `##change`")->fetchOne();
-
-        $data      = [];
-        $algorithm = new MyersDiff();
-
-        foreach ($rows as $row) {
+        $callback = function (stdClass $row) use ($myers_diff): array {
             $old_lines = preg_split('/[\n]+/', $row->old_gedcom, -1, PREG_SPLIT_NO_EMPTY);
             $new_lines = preg_split('/[\n]+/', $row->new_gedcom, -1, PREG_SPLIT_NO_EMPTY);
 
-            $differences = $algorithm->calculate($old_lines, $new_lines);
+            $differences = $myers_diff->calculate($old_lines, $new_lines);
             $diff_lines  = [];
 
             foreach ($differences as $difference) {
@@ -268,7 +260,8 @@ class AdminController extends AbstractBaseController
             // Only convert valid xrefs to links
             $tree   = Tree::findByName($row->gedcom_name);
             $record = GedcomRecord::getInstance($row->xref, $tree);
-            $data[] = [
+
+            return [
                 $row->change_id,
                 $row->change_time,
                 I18N::translate($row->status),
@@ -287,15 +280,9 @@ class AdminController extends AbstractBaseController
                 $row->user_name,
                 $row->gedcom_name,
             ];
-        }
+        };
 
-        // See http://www.datatables.net/usage/server-side
-        return new JsonResponse([
-            'draw'            => (int) $request->get('draw'),
-            'recordsTotal'    => $recordsTotal,
-            'recordsFiltered' => $recordsFiltered,
-            'data'            => $data,
-        ]);
+        return $datatables_service->handle($request, $query, [], $callback);
     }
 
     /**
@@ -307,24 +294,23 @@ class AdminController extends AbstractBaseController
      */
     public function changesLogDownload(Request $request): Response
     {
-        [$select, , $where, $args] = $this->changesQuery($request);
+        $content = $this->changesQuery($request)
+            ->get()
+            ->map(function (stdClass $row): string {
+                // Convert to CSV
+                return implode(',', [
+                    '"' . $row->change_time . '"',
+                    '"' . $row->status . '"',
+                    '"' . $row->xref . '"',
+                    '"' . strtr($row->old_gedcom, '"', '""') . '"',
+                    '"' . strtr($row->new_gedcom, '"', '""') . '"',
+                    '"' . strtr($row->user_name, '"', '""') . '"',
+                    '"' . strtr($row->gedcom_name, '"', '""') . '"',
+                ]);
+            })
+            ->implode("\n");
 
-        $rows = Database::prepare($select . $where)->execute($args)->fetchAll();
-
-        // Convert to CSV
-        $rows = array_map(function (stdClass $row): string {
-            return implode(',', [
-                '"' . $row->change_time . '"',
-                '"' . $row->status . '"',
-                '"' . $row->xref . '"',
-                '"' . strtr($row->old_gedcom, '"', '""') . '"',
-                '"' . strtr($row->new_gedcom, '"', '""') . '"',
-                '"' . strtr($row->user_name, '"', '""') . '"',
-                '"' . strtr($row->gedcom_name, '"', '""') . '"',
-            ]);
-        }, $rows);
-
-        $response    = new Response(implode("\n", $rows));
+        $response    = new Response($content);
         $disposition = $response->headers->makeDisposition(ResponseHeaderBag::DISPOSITION_ATTACHMENT, 'changes.csv');
         $response->headers->set('Content-Disposition', $disposition);
         $response->headers->set('Content-Type', 'text/csv; charset=UTF-8');
@@ -1165,14 +1151,13 @@ class AdminController extends AbstractBaseController
     }
 
     /**
-     * Generate a WHERE clause for filtering the changes log.
+     * Generate a query for filtering the changes log.
      *
      * @param Request $request
      *
-     * @return array
-     *
+     * @return Builder
      */
-    private function changesQuery(Request $request): array
+    private function changesQuery(Request $request): Builder
     {
         $from     = $request->get('from', '');
         $to       = $request->get('to', '');
@@ -1185,57 +1170,52 @@ class AdminController extends AbstractBaseController
         $search   = $request->get('search', '');
         $search   = $search['value'] ?? '';
 
-        $where = ' WHERE 1';
-        $args  = [];
+        $query = DB::table('change')
+            ->leftJoin('user', 'user.user_id', '=', 'change.user_id')
+            ->join('gedcom', 'gedcom.gedcom_id', '=', 'change.gedcom_id')
+            ->select(['change.*', DB::raw("IFNULL(user_name, '<none>') AS user_name"), 'gedcom_name']);
+
         if ($search !== '') {
-            $where .= " AND (old_gedcom LIKE CONCAT('%', :search_1, '%') OR new_gedcom LIKE CONCAT('%', :search_2, '%'))";
-            $args['search_1'] = $search;
-            $args['search_2'] = $search;
+            $query->where(function (Builder $query) use ($search): void {
+                $query
+                    ->whereContains('old_gedcom', $search)
+                    ->orWhereContains('new_gedcom', $search);
+            });
         }
+
         if ($from !== '') {
-            $where .= " AND change_time >= :from";
-            $args['from'] = $from;
+            $query->where('change_time', '>=', $from);
         }
+
         if ($to !== '') {
-            $where .= ' AND change_time < TIMESTAMPADD(DAY, 1 , :to)'; // before end of the day
-            $args['to'] = $to;
+            // before end of the day
+            $query->where('change_time', '<', (new Carbon($to))->addDay());
         }
+
         if ($type !== '') {
-            $where .= ' AND status = :status';
-            $args['status'] = $type;
+            $query->where('status', '=', $type);
         }
+
         if ($oldged !== '') {
-            $where .= " AND old_gedcom LIKE CONCAT('%', :old_ged, '%')";
-            $args['old_ged'] = $oldged;
+            $query->whereContains('old_gedcom', $oldged);
         }
         if ($newged !== '') {
-            $where .= " AND new_gedcom LIKE CONCAT('%', :new_ged, '%')";
-            $args['new_ged'] = $newged;
+            $query->whereContains('new_gedcom', $oldged);
         }
+
         if ($xref !== '') {
-            $where .= " AND xref = :xref";
-            $args['xref'] = $xref;
+            $query->where('xref', '=', $xref);
         }
+
         if ($username !== '') {
-            $where .= " AND user_name LIKE CONCAT('%', :user, '%')";
-            $args['user'] = $username;
+            $query->whereContains('user_name', $username);
         }
+
         if ($ged !== '') {
-            $where       .= " AND gedcom_name LIKE CONCAT('%', :ged, '%')";
-            $args['ged'] = $ged;
+            $query->whereContains('gedcom_name', $query);
         }
 
-        $select = "SELECT SQL_CALC_FOUND_ROWS change_id, change_time, status, xref, old_gedcom, new_gedcom, IFNULL(user_name, '<none>') AS user_name, gedcom_name FROM `##change`";
-        $delete = 'DELETE `##change` FROM `##change`';
-
-        $join = ' LEFT JOIN `##user` USING (user_id) JOIN `##gedcom` USING (gedcom_id)';
-
-        return [
-            $select . $join,
-            $delete . $join,
-            $where,
-            $args,
-        ];
+        return $query;
     }
 
     /**
