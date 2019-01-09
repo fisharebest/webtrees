@@ -18,12 +18,12 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Mail;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
+use Illuminate\Database\Capsule\Manager as DB;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -376,21 +376,29 @@ class MessageController extends AbstractBaseController
         // Temporarily switch to the recipient's language
         I18N::init($recipient->getPreference('language'));
 
+        $body_text = view('emails/message-user-text', [
+            'sender'    => $sender,
+            'recipient' => $recipient,
+            'message'   => $body,
+            'url'       => $url,
+        ]);
+
+        $body_html = view('emails/message-user-html', [
+            'sender'    => $sender,
+            'recipient' => $recipient,
+            'message'   => $body,
+            'url'       => $url,
+        ]);
+
         // Send via the internal messaging system.
         if ($this->sendInternalMessage($recipient)) {
-            Database::prepare("INSERT INTO `##message` (sender, ip_address, user_id, subject, body) VALUES (? ,? ,? ,? ,?)")
-                ->execute([
-                    Auth::check() ? Auth::user()->getEmail() : $sender_email,
-                    $ip,
-                    $recipient->getUserId(),
-                    $subject,
-                    view('emails/message-user-text', [
-                        'sender'    => $sender,
-                        'recipient' => $recipient,
-                        'message'   => $body,
-                        'url'       => $url,
-                    ]),
-                ]);
+            DB::table('message')->insert([
+                'sender'     => Auth::check() ? Auth::user()->getEmail() : $sender_email,
+                'ip_address' => $ip,
+                'user_id'    => $recipient->getUserId(),
+                'subject'    => $subject,
+                'body'       => $body_text,
+            ]);
         }
 
         // Send via email
@@ -400,18 +408,8 @@ class MessageController extends AbstractBaseController
                 $recipient,
                 $sender,
                 I18N::translate('webtrees message') . ' - ' . $subject,
-                view('emails/message-user-text', [
-                    'sender'    => $sender,
-                    'recipient' => $recipient,
-                    'message'   => $body,
-                    'url'       => $url,
-                ]),
-                view('emails/message-user-html', [
-                    'sender'    => $sender,
-                    'recipient' => $recipient,
-                    'message'   => $body,
-                    'url'       => $url,
-                ])
+                $body_text,
+                $body_html
             );
         }
 
