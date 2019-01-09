@@ -19,7 +19,7 @@ namespace Fisharebest\Webtrees\Statistics\Google;
 
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Statistics\AbstractGoogle;
-use Fisharebest\Webtrees\Statistics\Repository\SexRepository;
+use Fisharebest\Webtrees\Statistics\Repository\IndividualRepository;
 use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
 
@@ -29,9 +29,9 @@ use Fisharebest\Webtrees\Tree;
 class ChartSex extends AbstractGoogle
 {
     /**
-     * @var SexRepository
+     * @var IndividualRepository
      */
-    private $sexRepository;
+    private $individualRepository;
 
     /**
      * Constructor.
@@ -40,7 +40,7 @@ class ChartSex extends AbstractGoogle
      */
     public function __construct(Tree $tree)
     {
-        $this->sexRepository = new SexRepository($tree);
+        $this->individualRepository = new IndividualRepository($tree);
     }
 
     /**
@@ -79,9 +79,9 @@ class ChartSex extends AbstractGoogle
         $tot = $tot_f + $tot_m + $tot_u;
 
         // I18N data - for display
-        $per_f = $this->sexRepository->totalSexFemalesPercentage();
-        $per_m = $this->sexRepository->totalSexMalesPercentage();
-        $per_u = $this->sexRepository->totalSexUnknownPercentage();
+        $per_f = $this->individualRepository->totalSexFemalesPercentage();
+        $per_m = $this->individualRepository->totalSexMalesPercentage();
+        $per_u = $this->individualRepository->totalSexUnknownPercentage();
 
         if ($tot === 0) {
             return '';

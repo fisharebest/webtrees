@@ -35,29 +35,20 @@ use Fisharebest\Webtrees\Statistics\Repository\Interfaces\FamilyDatesRepositoryI
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\FavoritesRepositoryInterface;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\GedcomRepositoryInterface;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\HitCountRepositoryInterface;
+use Fisharebest\Webtrees\Statistics\Repository\Interfaces\IndividualRepositoryInterface;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\LatestRepositoryInterface;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\MediaRepositoryInterface;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\MessageRepositoryInterface;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\NewsRepositoryInterface;
-use Fisharebest\Webtrees\Statistics\Repository\Interfaces\NoteRepositoryInterface;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\PlaceRepositoryInterface;
-use Fisharebest\Webtrees\Statistics\Repository\Interfaces\RepositoryRepositoryInterface;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\ServerRepositoryInterface;
-use Fisharebest\Webtrees\Statistics\Repository\Interfaces\SexRepositoryInterface;
-use Fisharebest\Webtrees\Statistics\Repository\Interfaces\SourceRepositoryInterface;
-use Fisharebest\Webtrees\Statistics\Repository\Interfaces\TotalRepositoryInterface;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\UserRepositoryInterface;
 use Fisharebest\Webtrees\Statistics\Repository\LatestRepository;
 use Fisharebest\Webtrees\Statistics\Repository\MediaRepository;
 use Fisharebest\Webtrees\Statistics\Repository\MessageRepository;
 use Fisharebest\Webtrees\Statistics\Repository\NewsRepository;
-use Fisharebest\Webtrees\Statistics\Repository\NoteRepository;
 use Fisharebest\Webtrees\Statistics\Repository\PlaceRepository;
-use Fisharebest\Webtrees\Statistics\Repository\RepositoryRepository;
 use Fisharebest\Webtrees\Statistics\Repository\ServerRepository;
-use Fisharebest\Webtrees\Statistics\Repository\SexRepository;
-use Fisharebest\Webtrees\Statistics\Repository\SourceRepository;
-use Fisharebest\Webtrees\Statistics\Repository\TotalRepository;
 use Fisharebest\Webtrees\Statistics\Repository\UserRepository;
 use ReflectionMethod;
 use const PREG_SET_ORDER;
@@ -69,17 +60,13 @@ use const PREG_SET_ORDER;
  */
 class Stats implements
     GedcomRepositoryInterface,
+    IndividualRepositoryInterface,
     EventRepositoryInterface,
     MediaRepositoryInterface,
-    SexRepositoryInterface,
-    NoteRepositoryInterface,
-    SourceRepositoryInterface,
     UserRepositoryInterface,
     ServerRepositoryInterface,
     BrowserRepositoryInterface,
     HitCountRepositoryInterface,
-    TotalRepositoryInterface,
-    RepositoryRepositoryInterface,
     LatestRepositoryInterface,
     FavoritesRepositoryInterface,
     NewsRepositoryInterface,
@@ -125,16 +112,6 @@ class Stats implements
     private $familyRepository;
 
     /**
-     * @var SourceRepository
-     */
-    private $sourceRepository;
-
-    /**
-     * @var NoteRepository
-     */
-    private $noteRepository;
-
-    /**
      * @var MediaRepository
      */
     private $mediaRepository;
@@ -143,11 +120,6 @@ class Stats implements
      * @var EventRepository
      */
     private $eventRepository;
-
-    /**
-     * @var SexRepository
-     */
-    private $sexRepository;
 
     /**
      * @var UserRepository
@@ -168,11 +140,6 @@ class Stats implements
      * @var HitCountRepository
      */
     private $hitCountRepository;
-
-    /**
-     * @var RepositoryRepository
-     */
-    private $repositoryRepository;
 
     /**
      * @var LatestRepository
@@ -221,16 +188,12 @@ class Stats implements
         $this->individualRepository  = new IndividualRepository($tree);
         $this->familyRepository      = new FamilyRepository($tree);
         $this->familyDatesRepository = new FamilyDatesRepository($tree);
-        $this->sourceRepository      = new SourceRepository($tree);
-        $this->noteRepository        = new NoteRepository($tree);
         $this->mediaRepository       = new MediaRepository($tree);
         $this->eventRepository       = new EventRepository($tree);
-        $this->sexRepository         = new SexRepository($tree);
         $this->userRepository        = new UserRepository($tree);
         $this->serverRepository      = new ServerRepository();
         $this->browserRepository     = new BrowserRepository();
         $this->hitCountRepository    = new HitCountRepository($tree);
-        $this->repositoryRepository  = new RepositoryRepository($tree);
         $this->latestRepository      = new LatestRepository();
         $this->favoritesRepository   = new FavoritesRepository($tree);
         $this->newsRepository        = new NewsRepository($tree);
@@ -395,11 +358,10 @@ class Stats implements
 
     /**
      * @inheritDoc
-     * @todo
      */
     public function totalRecords(): string
     {
-        return (new TotalRepository($this->tree))->totalRecords();
+        return $this->individualRepository->totalRecords();
     }
 
     /**
@@ -442,7 +404,7 @@ class Stats implements
      */
     public function totalFamilies(): string
     {
-        return $this->familyRepository->totalFamilies();
+        return $this->individualRepository->totalFamilies();
     }
 
     /**
@@ -450,7 +412,7 @@ class Stats implements
      */
     public function totalFamiliesPercentage(): string
     {
-        return $this->familyRepository->totalFamiliesPercentage();
+        return $this->individualRepository->totalFamiliesPercentage();
     }
 
     /**
@@ -458,7 +420,7 @@ class Stats implements
      */
     public function totalFamsWithSources(): string
     {
-        return $this->familyRepository->totalFamsWithSources();
+        return $this->individualRepository->totalFamsWithSources();
     }
 
     /**
@@ -469,7 +431,7 @@ class Stats implements
         string $color_from = null,
         string $color_to   = null
     ): string {
-        return $this->familyRepository->chartFamsWithSources($size, $color_from, $color_to);
+        return $this->individualRepository->chartFamsWithSources($size, $color_from, $color_to);
     }
 
     /**
@@ -477,7 +439,7 @@ class Stats implements
      */
     public function totalSources(): string
     {
-        return $this->sourceRepository->totalSources();
+        return $this->individualRepository->totalSources();
     }
 
     /**
@@ -485,7 +447,7 @@ class Stats implements
      */
     public function totalSourcesPercentage(): string
     {
-        return $this->sourceRepository->totalSourcesPercentage();
+        return $this->individualRepository->totalSourcesPercentage();
     }
 
     /**
@@ -493,7 +455,7 @@ class Stats implements
      */
     public function totalNotes(): string
     {
-        return $this->noteRepository->totalNotes();
+        return $this->individualRepository->totalNotes();
     }
 
     /**
@@ -501,7 +463,7 @@ class Stats implements
      */
     public function totalNotesPercentage(): string
     {
-        return $this->noteRepository->totalNotesPercentage();
+        return $this->individualRepository->totalNotesPercentage();
     }
 
     /**
@@ -509,7 +471,7 @@ class Stats implements
      */
     public function totalRepositories(): string
     {
-        return $this->repositoryRepository->totalRepositories();
+        return $this->individualRepository->totalRepositories();
     }
 
     /**
@@ -517,7 +479,7 @@ class Stats implements
      */
     public function totalRepositoriesPercentage(): string
     {
-        return $this->repositoryRepository->totalRepositoriesPercentage();
+        return $this->individualRepository->totalRepositoriesPercentage();
     }
 
     /**
@@ -621,7 +583,7 @@ class Stats implements
      */
     public function totalSexMales(): string
     {
-        return $this->sexRepository->totalSexMales();
+        return $this->individualRepository->totalSexMales();
     }
 
     /**
@@ -629,7 +591,7 @@ class Stats implements
      */
     public function totalSexMalesPercentage(): string
     {
-        return $this->sexRepository->totalSexMalesPercentage();
+        return $this->individualRepository->totalSexMalesPercentage();
     }
 
     /**
@@ -637,7 +599,7 @@ class Stats implements
      */
     public function totalSexFemales(): string
     {
-        return $this->sexRepository->totalSexFemales();
+        return $this->individualRepository->totalSexFemales();
     }
 
     /**
@@ -645,7 +607,7 @@ class Stats implements
      */
     public function totalSexFemalesPercentage(): string
     {
-        return $this->sexRepository->totalSexFemalesPercentage();
+        return $this->individualRepository->totalSexFemalesPercentage();
     }
 
     /**
@@ -653,7 +615,7 @@ class Stats implements
      */
     public function totalSexUnknown(): string
     {
-        return $this->sexRepository->totalSexUnknown();
+        return $this->individualRepository->totalSexUnknown();
     }
 
     /**
@@ -661,7 +623,7 @@ class Stats implements
      */
     public function totalSexUnknownPercentage(): string
     {
-        return $this->sexRepository->totalSexUnknownPercentage();
+        return $this->individualRepository->totalSexUnknownPercentage();
     }
 
     /**
@@ -673,7 +635,7 @@ class Stats implements
         string $color_male    = null,
         string $color_unknown = null
     ): string {
-        return $this->sexRepository->chartSex($size, $color_female, $color_male, $color_unknown);
+        return $this->individualRepository->chartSex($size, $color_female, $color_male, $color_unknown);
     }
 
     /**

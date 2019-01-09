@@ -28,17 +28,20 @@ use Fisharebest\Webtrees\Statistics\Google\ChartBirth;
 use Fisharebest\Webtrees\Statistics\Google\ChartCommonGiven;
 use Fisharebest\Webtrees\Statistics\Google\ChartCommonSurname;
 use Fisharebest\Webtrees\Statistics\Google\ChartDeath;
+use Fisharebest\Webtrees\Statistics\Google\ChartFamily;
 use Fisharebest\Webtrees\Statistics\Google\ChartIndividual;
 use Fisharebest\Webtrees\Statistics\Google\ChartMortality;
-use Fisharebest\Webtrees\Statistics\Helper\Percentage;
+use Fisharebest\Webtrees\Statistics\Google\ChartSex;
 use Fisharebest\Webtrees\Statistics\Helper\Sql;
+use Fisharebest\Webtrees\Statistics\Repository\Interfaces\IndividualRepositoryInterface;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Query\JoinClause;
 
 /**
  *
  */
-class IndividualRepository
+class IndividualRepository implements IndividualRepositoryInterface
 {
     /**
      * @var Tree
@@ -65,39 +68,6 @@ class IndividualRepository
     private function runSql($sql): array
     {
         return Sql::runSql($sql);
-    }
-
-    /**
-     * How many individuals exist in the tree.
-     *
-     * @return int
-     */
-    public function totalIndividualsQuery(): int
-    {
-        return DB::table('individuals')
-            ->where('i_file', '=', $this->tree->id())
-            ->count();
-    }
-
-    /**
-     * How many individuals exist in the tree.
-     *
-     * @return string
-     */
-    public function totalIndividuals(): string
-    {
-        return I18N::number($this->totalIndividualsQuery());
-    }
-
-    /**
-     * Show the total individuals as a percentage.
-     *
-     * @return string
-     */
-    public function totalIndividualsPercentage(): string
-    {
-        $percentageHelper = new Percentage($this->tree);
-        return $percentageHelper->getPercentage($this->totalIndividualsQuery(), 'all');
     }
 
     /**
@@ -199,29 +169,6 @@ class IndividualRepository
     public function commonGiven(string $threshold = '1', string $maxtoshow = '10'): string
     {
         return $this->commonGivenQuery('B', 'nolist', false, (int) $threshold, (int) $maxtoshow);
-    }
-
-    /**
-     * Create a chart of common given names.
-     *
-     * @param string|null $size
-     * @param string|null $color_from
-     * @param string|null $color_to
-     * @param string      $maxtoshow
-     *
-     * @return string
-     */
-    public function chartCommonGiven(
-        string $size = null,
-        string $color_from = null,
-        string $color_to = null,
-        string $maxtoshow = '7'
-    ): string {
-        $tot_indi = $this->totalIndividualsQuery();
-        $given    = $this->commonGivenQuery('B', 'chart', false, 1, (int) $maxtoshow);
-
-        return (new ChartCommonGiven())
-            ->chartCommonGiven($tot_indi, $given, $size, $color_from, $color_to);
     }
 
     /**
@@ -685,173 +632,6 @@ class IndividualRepository
         string $sorting = 'rcount'
     ): string {
         return $this->commonSurnamesQuery('list', true, (int) $threshold, (int) $number_of_surnames, $sorting);
-    }
-
-    /**
-     * Create a chart of common surnames.
-     *
-     * @param string|null $size
-     * @param string|null $color_from
-     * @param string|null $color_to
-     * @param string      $number_of_surnames
-     *
-     * @return string
-     */
-    public function chartCommonSurnames(
-        string $size = null,
-        string $color_from = null,
-        string $color_to = null,
-        string $number_of_surnames = '10'
-    ): string {
-        $all_surnames = $this->topSurnames((int) $number_of_surnames, 0);
-
-        return (new ChartCommonSurname($this->tree))
-            ->chartCommonSurnames($all_surnames, $size, $color_from, $color_to);
-    }
-
-    /**
-     * How many individuals have one or more sources.
-     *
-     * @return int
-     */
-    private function totalIndisWithSourcesQuery(): int
-    {
-        return (int) Database::prepare(
-            "SELECT COUNT(DISTINCT i_id)" .
-            " FROM `##individuals` JOIN `##link` ON i_id = l_from AND i_file = l_file" .
-            " WHERE l_file = :tree_id AND l_type = 'SOUR'"
-        )->execute([
-            'tree_id' => $this->tree->id(),
-        ])->fetchOne();
-    }
-
-    /**
-     * How many individuals have one or more sources.
-     *
-     * @return string
-     */
-    public function totalIndisWithSources(): string
-    {
-        return I18N::number($this->totalIndisWithSourcesQuery());
-    }
-
-    /**
-     * Create a chart showing individuals with/without sources.
-     *
-     * @param string|null $size        // Optional parameter, set from tag
-     * @param string|null $color_from
-     * @param string|null $color_to
-     *
-     * @return string
-     */
-    public function chartIndisWithSources(
-        string $size = null,
-        string $color_from = null,
-        string $color_to = null
-    ): string {
-        $tot_indi        = $this->totalIndividualsQuery();
-        $tot_indi_source = $this->totalIndisWithSourcesQuery();
-
-        return (new ChartIndividual())
-            ->chartIndisWithSources($tot_indi, $tot_indi_source, $size, $color_from, $color_to);
-
-    }
-
-    /**
-     * Count the number of living individuals.
-     *
-     * The totalLiving/totalDeceased queries assume that every dead person will
-     * have a DEAT record. It will not include individuals who were born more
-     * than MAX_ALIVE_AGE years ago, and who have no DEAT record.
-     * A good reason to run the “Add missing DEAT records” batch-update!
-     *
-     * @return int
-     */
-    private function totalLivingQuery(): int
-    {
-        return (int) Database::prepare(
-            "SELECT COUNT(*) FROM `##individuals` WHERE i_file = :tree_id AND i_gedcom NOT REGEXP '\\n1 ("
-            . implode('|', Gedcom::DEATH_EVENTS) . ")'"
-        )->execute([
-            'tree_id' => $this->tree->id(),
-        ])->fetchOne();
-    }
-
-    /**
-     * Count the number of living individuals.
-     *
-     * @return string
-     */
-    public function totalLiving(): string
-    {
-        return I18N::number($this->totalLivingQuery());
-    }
-
-    /**
-     * Count the number of living individuals.
-     *
-     * @return string
-     */
-    public function totalLivingPercentage(): string
-    {
-        $percentageHelper = new Percentage($this->tree);
-        return $percentageHelper->getPercentage($this->totalLivingQuery(), 'individual');
-    }
-
-    /**
-     * Count the number of dead individuals.
-     *
-     * @return int
-     */
-    private function totalDeceasedQuery(): int
-    {
-        return (int) Database::prepare(
-            "SELECT COUNT(*) FROM `##individuals` WHERE i_file = :tree_id AND i_gedcom REGEXP '\\n1 ("
-            . implode('|', Gedcom::DEATH_EVENTS) . ")'"
-        )->execute([
-            'tree_id' => $this->tree->id(),
-        ])->fetchOne();
-    }
-
-    /**
-     * Count the number of dead individuals.
-     *
-     * @return string
-     */
-    public function totalDeceased(): string
-    {
-        return I18N::number($this->totalDeceasedQuery());
-    }
-
-    /**
-     * Count the number of dead individuals.
-     *
-     * @return string
-     */
-    public function totalDeceasedPercentage(): string
-    {
-        $percentageHelper = new Percentage($this->tree);
-        return $percentageHelper->getPercentage($this->totalDeceasedQuery(), 'individual');
-    }
-
-    /**
-     * Create a chart showing mortality.
-     *
-     * @param string|null $size
-     * @param string|null $color_living
-     * @param string|null $color_dead
-     *
-     * @return string
-     */
-    public function chartMortality(string $size = null, string $color_living = null, string $color_dead = null): string
-    {
-        $tot_l = $this->totalLivingQuery();
-        $tot_d = $this->totalDeceasedQuery();
-        $per_l = $this->totalLivingPercentage();
-        $per_d = $this->totalDeceasedPercentage();
-
-        return (new ChartMortality())
-            ->chartMortality($tot_l, $tot_d, $per_l, $per_d, $size, $color_living, $color_dead);
     }
 
     /**
@@ -1673,5 +1453,561 @@ class IndividualRepository
     public function averageLifespanMale($show_years = false): string
     {
         return $this->averageLifespanQuery('M', $show_years);
+    }
+
+    /**
+     * Convert totals into percentages.
+     *
+     * @param int $count
+     * @param int $total
+     *
+     * @return string
+     */
+    private function getPercentage(int $count, int $total): string
+    {
+        return I18N::percentage($count / $total, 1);
+    }
+
+    /**
+     * Returns how many individuals exist in the tree.
+     *
+     * @return int
+     */
+    private function totalIndividualsQuery(): int
+    {
+        return DB::table('individuals')
+            ->where('i_file', '=', $this->tree->id())
+            ->count();
+    }
+
+    /**
+     * Count the number of living individuals.
+     *
+     * The totalLiving/totalDeceased queries assume that every dead person will
+     * have a DEAT record. It will not include individuals who were born more
+     * than MAX_ALIVE_AGE years ago, and who have no DEAT record.
+     * A good reason to run the “Add missing DEAT records” batch-update!
+     *
+     * @return int
+     */
+    private function totalLivingQuery(): int
+    {
+        return DB::table('individuals')
+            ->where('i_file', '=', $this->tree->id())
+            ->where(
+                'i_gedcom',
+                'not regexp',
+                "\n1 (" . implode('|', Gedcom::DEATH_EVENTS) . ')'
+            )
+            ->count();
+    }
+
+    /**
+     * Count the number of dead individuals.
+     *
+     * @return int
+     */
+    private function totalDeceasedQuery(): int
+    {
+        return DB::table('individuals')
+            ->where('i_file', '=', $this->tree->id())
+            ->where(
+                'i_gedcom',
+                'regexp',
+                "\n1 (" . implode('|', Gedcom::DEATH_EVENTS) . ')'
+            )
+            ->count();
+    }
+
+    /**
+     * Returns the total count of a specific sex.
+     *
+     * @param string $sex The sex to query
+     *
+     * @return int
+     */
+    private function getTotalSexQuery(string $sex): int
+    {
+        return DB::table('individuals')
+            ->where('i_file', '=', $this->tree->id())
+            ->where('i_sex', '=', $sex)
+            ->count();
+    }
+
+    /**
+     * Returns the total number of males.
+     *
+     * @return int
+     */
+    private function totalSexMalesQuery(): int
+    {
+        return $this->getTotalSexQuery('M');
+    }
+
+    /**
+     * Returns the total number of females.
+     *
+     * @return int
+     */
+    private function totalSexFemalesQuery(): int
+    {
+        return $this->getTotalSexQuery('F');
+    }
+
+    /**
+     * Returns the total number of individuals with unknown sex.
+     *
+     * @return int
+     */
+    private function totalSexUnknownQuery(): int
+    {
+        return $this->getTotalSexQuery('U');
+    }
+
+    /**
+     * Count the total families.
+     *
+     * @return int
+     */
+    private function totalFamiliesQuery(): int
+    {
+        return DB::table('families')
+            ->where('f_file', '=', $this->tree->id())
+            ->count();
+    }
+
+    /**
+     * How many individuals have one or more sources.
+     *
+     * @return int
+     */
+    private function totalIndisWithSourcesQuery(): int
+    {
+        return DB::table('individuals')
+            ->select(['i_id'])
+            ->distinct()
+            ->join('link', function (JoinClause $join) {
+                $join->on('i_id', '=', 'l_from')
+                    ->on('i_file', '=', 'l_file');
+            })
+            ->where('l_file', '=', $this->tree->id())
+            ->where('l_type', '=', 'SOUR')
+            ->count('i_id');
+    }
+
+    /**
+     * Count the families with source records.
+     *
+     * @return int
+     */
+    private function totalFamsWithSourcesQuery(): int
+    {
+        return DB::table('families')
+            ->select(['f_id'])
+            ->distinct()
+            ->join('link', function (JoinClause $join) {
+                $join->on('f_id', '=', 'l_from')
+                    ->on('f_file', '=', 'l_file');
+            })
+            ->where('l_file', '=', $this->tree->id())
+            ->where('l_type', '=', 'SOUR')
+            ->count('f_id');
+    }
+
+    /**
+     * Count the number of repositories.
+     *
+     * @return int
+     */
+    private function totalRepositoriesQuery(): int
+    {
+        return DB::table('other')
+            ->where('o_file', '=', $this->tree->id())
+            ->where('o_type', '=', 'REPO')
+            ->count();
+    }
+
+    /**
+     * Count the total number of sources.
+     *
+     * @return int
+     */
+    private function totalSourcesQuery(): int
+    {
+        return DB::table('sources')
+            ->where('s_file', '=', $this->tree->id())
+            ->count();
+    }
+
+    /**
+     * Count the number of notes.
+     *
+     * @return int
+     */
+    private function totalNotesQuery(): int
+    {
+        return DB::table('other')
+            ->where('o_file', '=', $this->tree->id())
+            ->where('o_type', '=', 'NOTE')
+            ->count();
+    }
+
+    /**
+     * Returns the total number of records.
+     *
+     * @return int
+     */
+    private function totalRecordsQuery(): int
+    {
+        return $this->totalIndividualsQuery()
+            + $this->totalFamiliesQuery()
+            + $this->totalNotesQuery()
+            + $this->totalRepositoriesQuery()
+            + $this->totalSourcesQuery();
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function totalRecords(): string
+    {
+        return I18N::number($this->totalRecordsQuery());
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function totalIndividuals(): string
+    {
+        return I18N::number($this->totalIndividualsQuery());
+    }
+
+    /**
+     * Count the number of living individuals.
+     *
+     * @return string
+     */
+    public function totalLiving(): string
+    {
+        return I18N::number($this->totalLivingQuery());
+    }
+
+    /**
+     * Count the number of dead individuals.
+     *
+     * @return string
+     */
+    public function totalDeceased(): string
+    {
+        return I18N::number($this->totalDeceasedQuery());
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function totalSexMales(): string
+    {
+        return I18N::number($this->totalSexMalesQuery());
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function totalSexFemales(): string
+    {
+        return I18N::number($this->totalSexFemalesQuery());
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function totalSexUnknown(): string
+    {
+        return I18N::number($this->totalSexUnknownQuery());
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function totalFamilies(): string
+    {
+        return I18N::number($this->totalFamiliesQuery());
+    }
+
+    /**
+     * How many individuals have one or more sources.
+     *
+     * @return string
+     */
+    public function totalIndisWithSources(): string
+    {
+        return I18N::number($this->totalIndisWithSourcesQuery());
+    }
+
+    /**
+     * Count the families with with source records.
+     *
+     * @return string
+     */
+    public function totalFamsWithSources(): string
+    {
+        return I18N::number($this->totalFamsWithSourcesQuery());
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function totalRepositories(): string
+    {
+        return I18N::number($this->totalRepositoriesQuery());
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function totalSources(): string
+    {
+        return I18N::number($this->totalSourcesQuery());
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function totalNotes(): string
+    {
+        return I18N::number($this->totalNotesQuery());
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function totalIndividualsPercentage(): string
+    {
+        return $this->getPercentage(
+            $this->totalIndividualsQuery(),
+            $this->totalRecordsQuery()
+        );
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function totalFamiliesPercentage(): string
+    {
+        return $this->getPercentage(
+            $this->totalFamiliesQuery(),
+            $this->totalRecordsQuery()
+        );
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function totalRepositoriesPercentage(): string
+    {
+        return $this->getPercentage(
+            $this->totalRepositoriesQuery(),
+            $this->totalRecordsQuery()
+        );
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function totalSourcesPercentage(): string
+    {
+        return $this->getPercentage(
+            $this->totalSourcesQuery(),
+            $this->totalRecordsQuery()
+        );
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function totalNotesPercentage(): string
+    {
+        return $this->getPercentage(
+            $this->totalNotesQuery(),
+            $this->totalRecordsQuery()
+        );
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function totalLivingPercentage(): string
+    {
+        return $this->getPercentage(
+            $this->totalLivingQuery(),
+            $this->totalIndividualsQuery()
+        );
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function totalDeceasedPercentage(): string
+    {
+        return $this->getPercentage(
+            $this->totalDeceasedQuery(),
+            $this->totalIndividualsQuery()
+        );
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function totalSexMalesPercentage(): string
+    {
+        return $this->getPercentage(
+            $this->totalSexMalesQuery(),
+            $this->totalIndividualsQuery()
+        );
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function totalSexFemalesPercentage(): string
+    {
+        return $this->getPercentage(
+            $this->totalSexFemalesQuery(),
+            $this->totalIndividualsQuery()
+        );
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function totalSexUnknownPercentage(): string
+    {
+        return $this->getPercentage(
+            $this->totalSexUnknownQuery(),
+            $this->totalIndividualsQuery()
+        );
+    }
+
+    /**
+     * Create a chart of common given names.
+     *
+     * @param string|null $size
+     * @param string|null $color_from
+     * @param string|null $color_to
+     * @param string      $maxtoshow
+     *
+     * @return string
+     */
+    public function chartCommonGiven(
+        string $size = null,
+        string $color_from = null,
+        string $color_to = null,
+        string $maxtoshow = '7'
+    ): string {
+        $tot_indi = $this->totalIndividualsQuery();
+        $given    = $this->commonGivenQuery('B', 'chart', false, 1, (int) $maxtoshow);
+
+        return (new ChartCommonGiven())
+            ->chartCommonGiven($tot_indi, $given, $size, $color_from, $color_to);
+    }
+
+    /**
+     * Create a chart of common surnames.
+     *
+     * @param string|null $size
+     * @param string|null $color_from
+     * @param string|null $color_to
+     * @param string      $number_of_surnames
+     *
+     * @return string
+     */
+    public function chartCommonSurnames(
+        string $size = null,
+        string $color_from = null,
+        string $color_to = null,
+        string $number_of_surnames = '10'
+    ): string {
+        $tot_indi     = $this->totalIndividualsQuery();
+        $all_surnames = $this->topSurnames((int) $number_of_surnames, 0);
+
+        return (new ChartCommonSurname($this->tree))
+            ->chartCommonSurnames($tot_indi, $all_surnames, $size, $color_from, $color_to);
+    }
+
+    /**
+     * Create a chart showing mortality.
+     *
+     * @param string|null $size
+     * @param string|null $color_living
+     * @param string|null $color_dead
+     *
+     * @return string
+     */
+    public function chartMortality(string $size = null, string $color_living = null, string $color_dead = null): string
+    {
+        $tot_l = $this->totalLivingQuery();
+        $tot_d = $this->totalDeceasedQuery();
+
+        return (new ChartMortality($this->tree))
+            ->chartMortality($tot_l, $tot_d, $size, $color_living, $color_dead);
+    }
+
+    /**
+     * Create a chart showing individuals with/without sources.
+     *
+     * @param string|null $size        // Optional parameter, set from tag
+     * @param string|null $color_from
+     * @param string|null $color_to
+     *
+     * @return string
+     */
+    public function chartIndisWithSources(
+        string $size       = null,
+        string $color_from = null,
+        string $color_to   = null
+    ): string {
+        $tot_indi        = $this->totalIndividualsQuery();
+        $tot_indi_source = $this->totalIndisWithSourcesQuery();
+
+        return (new ChartIndividual())
+            ->chartIndisWithSources($tot_indi, $tot_indi_source, $size, $color_from, $color_to);
+    }
+
+    /**
+     * Create a chart of individuals with/without sources.
+     *
+     * @param string|null $size
+     * @param string|null $color_from
+     * @param string|null $color_to
+     *
+     * @return string
+     */
+    public function chartFamsWithSources(
+        string $size       = null,
+        string $color_from = null,
+        string $color_to   = null
+    ): string {
+        $tot_fam        = $this->totalFamiliesQuery();
+        $tot_fam_source = $this->totalFamsWithSourcesQuery();
+
+        return (new ChartFamily($this->tree))
+            ->chartFamsWithSources($tot_fam, $tot_fam_source, $size, $color_from, $color_to);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function chartSex(
+        string $size          = null,
+        string $color_female  = null,
+        string $color_male    = null,
+        string $color_unknown = null
+    ): string {
+        $tot_m = $this->totalSexMalesQuery();
+        $tot_f = $this->totalSexFemalesQuery();
+        $tot_u = $this->totalSexUnknownQuery();
+
+        return (new ChartSex($this->tree))
+            ->chartSex($tot_m, $tot_f, $tot_u, $size, $color_female, $color_male, $color_unknown);
     }
 }

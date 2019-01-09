@@ -19,7 +19,6 @@ namespace Fisharebest\Webtrees\Statistics\Google;
 
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Statistics\AbstractGoogle;
-use Fisharebest\Webtrees\Statistics\Repository\IndividualRepository;
 use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
 
@@ -34,25 +33,20 @@ class ChartCommonSurname extends AbstractGoogle
     private $tree;
 
     /**
-     * @var IndividualRepository
-     */
-    private $individualRepository;
-
-    /**
      * Constructor.
      *
      * @param Tree $tree
      */
     public function __construct(Tree $tree)
     {
-        $this->tree                 = $tree;
-        $this->individualRepository = new IndividualRepository($tree);
+        $this->tree = $tree;
     }
 
     /**
      * Create a chart of common surnames.
      *
-     * @param array       $all_surnames
+     * @param int         $tot_indi     The total number of individuals
+     * @param array       $all_surnames The list of common surnames
      * @param string|null $size
      * @param string|null $color_from
      * @param string|null $color_to
@@ -60,6 +54,7 @@ class ChartCommonSurname extends AbstractGoogle
      * @return string
      */
     public function chartCommonSurnames(
+        int $tot_indi,
         array $all_surnames,
         string $size = null,
         string $color_from = null,
@@ -73,9 +68,7 @@ class ChartCommonSurname extends AbstractGoogle
         $size       = $size ?? ($WT_STATS_S_CHART_X . 'x' . $WT_STATS_S_CHART_Y);
         $color_from = $color_from ?? $WT_STATS_CHART_COLOR1;
         $color_to   = $color_to ?? $WT_STATS_CHART_COLOR2;
-
-        $sizes    = explode('x', $size);
-        $tot_indi = $this->individualRepository->totalIndividualsQuery();
+        $sizes      = explode('x', $size);
 
         if (empty($all_surnames)) {
             return '';
@@ -91,34 +84,38 @@ class ChartCommonSurname extends AbstractGoogle
 
         $chd = '';
         $chl = [];
+
         foreach ($all_surnames as $surns) {
             $count_per = 0;
             $max_name  = 0;
             $top_name  = '';
+
             foreach ($surns as $spfxsurn => $count) {
                 $per = $count;
                 $count_per += $per;
+
                 // select most common surname from all variants
                 if ($per > $max_name) {
                     $max_name = $per;
                     $top_name = $spfxsurn;
                 }
             }
-            switch ($SURNAME_TRADITION) {
-                case 'polish':
-                    // most common surname should be in male variant (Kowalski, not Kowalska)
-                    $top_name = preg_replace([
-                        '/ska$/',
-                        '/cka$/',
-                        '/dzka$/',
-                        '/żka$/',
-                    ], [
-                        'ski',
-                        'cki',
-                        'dzki',
-                        'żki',
-                    ], $top_name);
+
+            if ($SURNAME_TRADITION === 'polish') {
+                // Most common surname should be in male variant (Kowalski, not Kowalska)
+                $top_name = preg_replace([
+                    '/ska$/',
+                    '/cka$/',
+                    '/dzka$/',
+                    '/żka$/',
+                ], [
+                    'ski',
+                    'cki',
+                    'dzki',
+                    'żki',
+                ], $top_name);
             }
+
             $per   = intdiv(100 * $count_per, $tot_indi);
             $chd .= $this->arrayToExtendedEncoding([$per]);
             $chl[] = $top_name . ' - ' . I18N::number($count_per);

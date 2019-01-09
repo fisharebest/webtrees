@@ -27,7 +27,6 @@ use Fisharebest\Webtrees\Statistics\Google\ChartDivorce;
 use Fisharebest\Webtrees\Statistics\Google\ChartFamily;
 use Fisharebest\Webtrees\Statistics\Google\ChartMarriage;
 use Fisharebest\Webtrees\Statistics\Google\ChartMarriageAge;
-use Fisharebest\Webtrees\Statistics\Helper\Percentage;
 use Fisharebest\Webtrees\Statistics\Helper\Sql;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
@@ -115,83 +114,6 @@ class FamilyRepository
     private function runSql($sql): array
     {
         return Sql::runSql($sql);
-    }
-
-    /**
-     * Count the total families.
-     *
-     * @return int
-     */
-    public function totalFamiliesQuery(): int
-    {
-        return DB::table('families')
-            ->where('f_file', '=', $this->tree->id())
-            ->count();
-    }
-
-    /**
-     * Count the total families.
-     *
-     * @return string
-     */
-    public function totalFamilies(): string
-    {
-        return I18N::number($this->totalFamiliesQuery());
-    }
-
-    /**
-     * Show the total families as a percentage.
-     *
-     * @return string
-     */
-    public function totalFamiliesPercentage(): string
-    {
-        $percentageHelper = new Percentage($this->tree);
-        return $percentageHelper->getPercentage($this->totalFamiliesQuery(), 'all');
-    }
-
-    /**
-     * Count the families with source records.
-     *
-     * @return int
-     */
-    private function totalFamsWithSourcesQuery(): int
-    {
-        return (int) Database::prepare(
-            "SELECT COUNT(DISTINCT f_id)" .
-            " FROM `##families` JOIN `##link` ON f_id = l_from AND f_file = l_file" .
-            " WHERE l_file = :tree_id AND l_type = 'SOUR'"
-        )->execute([
-            'tree_id' => $this->tree->id(),
-        ])->fetchOne();
-    }
-
-    /**
-     * Count the families with with source records.
-     *
-     * @return string
-     */
-    public function totalFamsWithSources(): string
-    {
-        return I18N::number($this->totalFamsWithSourcesQuery());
-    }
-
-    /**
-     * Create a chart of individuals with/without sources.
-     *
-     * @param string|null $size
-     * @param string|null $color_from
-     * @param string|null $color_to
-     *
-     * @return string
-     */
-    public function chartFamsWithSources(string $size = null, string $color_from = null, string $color_to = null): string
-    {
-        $tot_fam        = $this->totalFamiliesQuery();
-        $tot_fam_source = $this->totalFamsWithSourcesQuery();
-
-        return (new ChartFamily($this->tree))
-            ->chartFamsWithSources($tot_fam, $tot_fam_source, $size, $color_from, $color_to);
     }
 
     /**

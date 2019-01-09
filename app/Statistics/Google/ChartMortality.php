@@ -19,7 +19,9 @@ namespace Fisharebest\Webtrees\Statistics\Google;
 
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Statistics\AbstractGoogle;
+use Fisharebest\Webtrees\Statistics\Repository\IndividualRepository;
 use Fisharebest\Webtrees\Theme;
+use Fisharebest\Webtrees\Tree;
 
 /**
  *
@@ -27,12 +29,25 @@ use Fisharebest\Webtrees\Theme;
 class ChartMortality extends AbstractGoogle
 {
     /**
+     * @var IndividualRepository
+     */
+    private $individualRepository;
+
+    /**
+     * Constructor.
+     *
+     * @param Tree $tree
+     */
+    public function __construct(Tree $tree)
+    {
+        $this->individualRepository = new IndividualRepository($tree);
+    }
+
+    /**
      * Create a chart showing mortality.
      *
      * @param int         $tot_l
      * @param int         $tot_d
-     * @param string      $per_l
-     * @param string      $per_d
      * @param string|null $size
      * @param string|null $color_living
      * @param string|null $color_dead
@@ -42,8 +57,6 @@ class ChartMortality extends AbstractGoogle
     public function chartMortality(
         int $tot_l,
         int $tot_d,
-        string $per_l,
-        string $per_d,
         string $size = null,
         string $color_living = null,
         string $color_dead = null
@@ -68,6 +81,9 @@ class ChartMortality extends AbstractGoogle
             intdiv(4095 * $tot_l, $tot),
             intdiv(4095 * $tot_d, $tot),
         ]);
+
+        $per_l = $this->individualRepository->totalLivingPercentage();
+        $per_d = $this->individualRepository->totalDeceasedPercentage();
 
         $chl =
             I18N::translate('Living') . ' - ' . $per_l . '|' .

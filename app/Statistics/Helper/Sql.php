@@ -33,6 +33,8 @@ class Sql
      */
     public static function runSql($sql): array
     {
+var_dump($sql);
+
         static $cache = [];
 
         $id = md5($sql);
