@@ -24,7 +24,6 @@ use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Note;
-use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Select2;
 use Fisharebest\Webtrees\Services\SearchService;
@@ -395,8 +394,7 @@ class AutocompleteController extends AbstractBaseController
         $results = [];
         $found   = false;
 
-        // Do not filter by privacy. Place names on their own do not identify individuals.
-        foreach (Place::findPlaces($query, $tree) as $place) {
+        foreach ($this->search_service->searchPlaces($tree, $query) as $place) {
             $place_name = $place->getGedcomName();
             if ($place_name === $query) {
                 $found = true;

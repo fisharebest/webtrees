@@ -221,42 +221,4 @@ class Place
 
         return implode(I18N::$list_separator, $tmp);
     }
-
-    /**
-     * Search for a place name.
-     *
-     * @param string $filter
-     * @param Tree   $tree
-     *
-     * @return Place[]
-     */
-    public static function findPlaces($filter, Tree $tree): array
-    {
-        $places = [];
-        $rows   =
-            Database::prepare(
-                "SELECT CONCAT_WS(', ', p1.p_place, p2.p_place, p3.p_place, p4.p_place, p5.p_place, p6.p_place, p7.p_place, p8.p_place, p9.p_place)" .
-                " FROM      `##places` AS p1" .
-                " LEFT JOIN `##places` AS p2 ON (p1.p_parent_id = p2.p_id)" .
-                " LEFT JOIN `##places` AS p3 ON (p2.p_parent_id = p3.p_id)" .
-                " LEFT JOIN `##places` AS p4 ON (p3.p_parent_id = p4.p_id)" .
-                " LEFT JOIN `##places` AS p5 ON (p4.p_parent_id = p5.p_id)" .
-                " LEFT JOIN `##places` AS p6 ON (p5.p_parent_id = p6.p_id)" .
-                " LEFT JOIN `##places` AS p7 ON (p6.p_parent_id = p7.p_id)" .
-                " LEFT JOIN `##places` AS p8 ON (p7.p_parent_id = p8.p_id)" .
-                " LEFT JOIN `##places` AS p9 ON (p8.p_parent_id = p9.p_id)" .
-                " WHERE CONCAT_WS(', ', p1.p_place, p2.p_place, p3.p_place, p4.p_place, p5.p_place, p6.p_place, p7.p_place, p8.p_place, p9.p_place) LIKE CONCAT('%', :filter_1, '%') AND CONCAT_WS(', ', p1.p_place, p2.p_place, p3.p_place, p4.p_place, p5.p_place, p6.p_place, p7.p_place, p8.p_place, p9.p_place) NOT LIKE CONCAT('%,%', :filter_2, '%') AND p1.p_file = :tree_id" .
-                " ORDER BY  CONCAT_WS(', ', p1.p_place, p2.p_place, p3.p_place, p4.p_place, p5.p_place, p6.p_place, p7.p_place, p8.p_place, p9.p_place) COLLATE :collation"
-            )->execute([
-                'filter_1' => preg_quote($filter),
-                'filter_2' => preg_quote($filter),
-                'tree_id' => $tree->id(),
-                'collation' => I18N::collation(),
-            ])->fetchOneColumn();
-        foreach ($rows as $row) {
-            $places[] = new self($row, $tree);
-        }
-
-        return $places;
-    }
 }
