@@ -41,7 +41,6 @@ use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
-use Illuminate\Database\Query\JoinClause;
 use League\Flysystem\Filesystem;
 use League\Flysystem\ZipArchive\ZipArchiveAdapter;
 use stdClass;
@@ -74,45 +73,49 @@ class AdminTreesController extends AbstractBaseController
         // We need to work with raw GEDCOM data, as we are looking for errors
         // which may prevent the GedcomRecord objects from working.
 
-        $rows = Database::prepare(
-            "SELECT i_id AS xref, 'INDI' AS type, i_gedcom AS gedrec FROM `##individuals` WHERE i_file=?" .
-            " UNION " .
-            "SELECT f_id AS xref, 'FAM'  AS type, f_gedcom AS gedrec FROM `##families`    WHERE f_file=?" .
-            " UNION " .
-            "SELECT s_id AS xref, 'SOUR' AS type, s_gedcom AS gedrec FROM `##sources`     WHERE s_file=?" .
-            " UNION " .
-            "SELECT m_id AS xref, 'OBJE' AS type, m_gedcom AS gedrec FROM `##media`       WHERE m_file=?" .
-            " UNION " .
-            "SELECT o_id AS xref, o_type AS type, o_gedcom AS gedrec FROM `##other`       WHERE o_file=? AND o_type NOT IN ('HEAD', 'TRLR')"
-        )->execute([
-            $tree->id(),
-            $tree->id(),
-            $tree->id(),
-            $tree->id(),
-            $tree->id(),
-        ])->fetchAll();
+        $q1 = DB::table('individuals')
+            ->where('i_file', '=', $tree->id())
+            ->select(['i_id AS xref', 'i_gedcom AS gedcom', DB::raw("'INDI' AS type")]);
+        $q2 = DB::table('families')
+            ->where('f_file', '=', $tree->id())
+            ->select(['f_id AS xref', 'f_gedcom AS gedcom', DB::raw("'FAM' AS type")]);
+        $q3 = DB::table('media')
+            ->where('m_file', '=', $tree->id())
+            ->select(['m_id AS xref', 'm_gedcom AS gedcom', DB::raw("'OBJE' AS type")]);
+        $q4 = DB::table('sources')
+            ->where('s_file', '=', $tree->id())
+            ->select(['s_id AS xref', 's_gedcom AS gedcom', DB::raw("'SOUR' AS type")]);
+        $q5 = DB::table('other')
+            ->where('o_file', '=', $tree->id())
+            ->whereNotIn('o_type', ['HEAD', 'TRLR'])
+            ->select(['o_id AS xref', 'o_gedcom AS gedcom', 'o_type']);
+        $q6 = DB::table('change')
+            ->where('gedcom_id', '=', $tree->id())
+            ->where('status', '=', 'pending')
+            ->orderBy('change_id')
+            ->select(['xref', 'new_gedcom AS gedcom', DB::raw("'' AS type")]);
+
+        $rows = $q1
+            ->unionAll($q2)
+            ->unionAll($q3)
+            ->unionAll($q4)
+            ->unionAll($q5)
+            ->unionAll($q6)
+            ->get()
+            ->map(function (stdClass $row): stdClass {
+                // Extract type for pending record
+                if ($row->type === '' && preg_match('/^0 @[^@]*@ ([_A-Z0-9]+)/', $row->gedcom, $match)) {
+                    $row->type = $match[1];
+                }
+
+                return $row;
+            });
 
         $records = [];
-        foreach ($rows as $row) {
-            $records[$row->xref] = $row;
-        }
-
-        // Need to merge pending new/changed/deleted records
-
-        $rows = Database::prepare(
-            "SELECT xref, SUBSTRING_INDEX(SUBSTRING_INDEX(SUBSTRING_INDEX(CASE WHEN old_gedcom='' THEN new_gedcom ELSE old_gedcom END, '\n', 1), ' ', 3), ' ', -1) AS type, new_gedcom AS gedrec" .
-            " FROM (" .
-            "  SELECT MAX(change_id) AS change_id" .
-            "  FROM `##change`" .
-            "  WHERE gedcom_id=? AND status='pending'" .
-            "  GROUP BY xref" .
-            " ) AS t1" .
-            " JOIN `##change` t2 USING (change_id)"
-        )->execute([$tree->id()])->fetchAll();
 
         foreach ($rows as $row) {
-            if ($row->gedrec) {
-                // new/updated record
+            if ($row->gedcom !== '') {
+                // existing or updated record
                 $records[$row->xref] = $row;
             } else {
                 // deleted record
@@ -203,7 +206,7 @@ class AdminTreesController extends AbstractBaseController
         foreach ($records as $record) {
             $all_links[$record->xref]               = [];
             $upper_links[strtoupper($record->xref)] = $record->xref;
-            preg_match_all('/\n\d (' . Gedcom::REGEX_TAG . ') @([^#@\n][^\n@]*)@/', $record->gedrec, $matches, PREG_SET_ORDER);
+            preg_match_all('/\n\d (' . Gedcom::REGEX_TAG . ') @([^#@\n][^\n@]*)@/', $record->gedcom, $matches, PREG_SET_ORDER);
             foreach ($matches as $match) {
                 $all_links[$record->xref][$match[2]] = $match[1];
             }
@@ -640,9 +643,9 @@ class AdminTreesController extends AbstractBaseController
         $tree2 = Tree::findByName($tree2_name);
 
         if ($tree1 !== null && $tree2 !== null && $tree1->id() !== $tree2->id()) {
-            $xrefs = $this->commonXrefs($tree1, $tree2);
+            $xrefs = $this->countCommonXrefs($tree1, $tree2);
         } else {
-            $xrefs = [];
+            $xrefs = 0;
         }
 
         $tree_list = Tree::getNameList();
@@ -671,7 +674,7 @@ class AdminTreesController extends AbstractBaseController
         $tree1 = Tree::findByName($tree1_name);
         $tree2 = Tree::findByName($tree2_name);
 
-        if ($tree1 !== null && $tree2 !== null && $tree1 !== $tree2 && empty($this->commonXrefs($tree1, $tree2))) {
+        if ($tree1 !== null && $tree2 !== null && $tree1 !== $tree2 && $this->countCommonXrefs($tree1, $tree2) === 0) {
             Database::prepare(
                 "INSERT INTO `##individuals` (i_id, i_file, i_rin, i_sex, i_gedcom)" .
                 " SELECT i_id, ?, i_rin, i_sex, i_gedcom FROM `##individuals` AS individuals2 WHERE i_file = ?"
@@ -1773,52 +1776,56 @@ class AdminTreesController extends AbstractBaseController
     }
 
     /**
-     * Every XREF used by two trees at the same time.
+     * Count of XREFs used by two trees at the same time.
      *
      * @param Tree $tree1
      * @param Tree $tree2
      *
-     * @return string[]
+     * @return int
      */
-    private function commonXrefs(Tree $tree1, Tree $tree2): array
+    private function countCommonXrefs(Tree $tree1, Tree $tree2): int
     {
-        return Database::prepare(
-            "SELECT xref, type FROM (" .
-            " SELECT i_id AS xref, 'INDI' AS type FROM `##individuals` WHERE i_file = ?" .
-            "  UNION " .
-            " SELECT f_id AS xref, 'FAM' AS type FROM `##families` WHERE f_file = ?" .
-            "  UNION " .
-            " SELECT s_id AS xref, 'SOUR' AS type FROM `##sources` WHERE s_file = ?" .
-            "  UNION " .
-            " SELECT m_id AS xref, 'OBJE' AS type FROM `##media` WHERE m_file = ?" .
-            "  UNION " .
-            " SELECT o_id AS xref, o_type AS type FROM `##other` WHERE o_file = ? AND o_type NOT IN ('HEAD', 'TRLR')" .
-            ") AS this_tree JOIN (" .
-            " SELECT xref FROM `##change` WHERE gedcom_id = ?" .
-            "  UNION " .
-            " SELECT i_id AS xref FROM `##individuals` WHERE i_file = ?" .
-            "  UNION " .
-            " SELECT f_id AS xref FROM `##families` WHERE f_file = ?" .
-            "  UNION " .
-            " SELECT s_id AS xref FROM `##sources` WHERE s_file = ?" .
-            "  UNION " .
-            " SELECT m_id AS xref FROM `##media` WHERE m_file = ?" .
-            "  UNION " .
-            " SELECT o_id AS xref FROM `##other` WHERE o_file = ? AND o_type NOT IN ('HEAD', 'TRLR')" .
-            ") AS other_trees USING (xref)"
-        )->execute([
-            $tree1->id(),
-            $tree1->id(),
-            $tree1->id(),
-            $tree1->id(),
-            $tree1->id(),
-            $tree2->id(),
-            $tree2->id(),
-            $tree2->id(),
-            $tree2->id(),
-            $tree2->id(),
-            $tree2->id(),
-        ])->fetchAssoc();
+        $subquery1 = DB::table('individuals')
+            ->where('i_file', '=', $tree1->id())
+            ->select(['i_id AS xref'])
+            ->union(DB::table('families')
+                ->where('f_file', '=', $tree1->id())
+                ->select(['f_id AS xref']))
+            ->union(DB::table('sources')
+                ->where('s_file', '=', $tree1->id())
+                ->select(['s_id AS xref']))
+            ->union(DB::table('media')
+                ->where('m_file', '=', $tree1->id())
+                ->select(['m_id AS xref']))
+            ->union(DB::table('other')
+                ->where('o_file', '=', $tree1->id())
+                ->whereNotIn('o_type', ['HEAD', 'TRLR'])
+                ->select(['o_id AS xref']));
+
+        $subquery2 = DB::table('change')
+            ->where('gedcom_id', '=', $tree2->id())
+            ->select(['xref AS other_xref'])
+            ->union(DB::table('individuals')
+                ->where('i_file', '=', $tree2->id())
+                ->select(['i_id AS xref']))
+            ->union(DB::table('families')
+                ->where('f_file', '=', $tree2->id())
+                ->select(['f_id AS xref']))
+            ->union(DB::table('sources')
+                ->where('s_file', '=', $tree2->id())
+                ->select(['s_id AS xref']))
+            ->union(DB::table('media')
+                ->where('m_file', '=', $tree2->id())
+                ->select(['m_id AS xref']))
+            ->union(DB::table('other')
+                ->where('o_file', '=', $tree2->id())
+                ->whereNotIn('o_type', ['HEAD', 'TRLR'])
+                ->select(['o_id AS xref']));
+
+        return DB::table(DB::raw('(' . $subquery1->toSql() . ') AS sub1'))
+            ->mergeBindings($subquery1)
+            ->joinSub($subquery2, 'sub2', 'other_xref', '=', 'xref')
+            ->count();
     }
 
     /**

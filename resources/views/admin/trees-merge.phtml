@@ -5,12 +5,12 @@
 
 <h1><?= $title ?></h1>
 
-<?php if (!empty($xrefs)) : ?>
+<?php if ($xrefs > 0) : ?>
     <p>
         <?= I18N::translate('In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”.') ?>
     </p>
     <p>
-        <?= I18N::plural(/* I18N: An XREF is the identification number used in GEDCOM files. */ 'The two family trees have %1$s record which uses the same “XREF”.', 'The two family trees have %1$s records which use the same “XREF”.', count($xrefs), count($xrefs)) ?>
+        <?= I18N::plural(/* I18N: An XREF is the identification number used in GEDCOM files. */ 'The two family trees have %1$s record which uses the same “XREF”.', 'The two family trees have %1$s records which use the same “XREF”.', $xrefs, I18N::number($xrefs)) ?>
     </p>
     <p>
         <?= I18N::translate('You must renumber the records in one of the trees before you can merge them.') ?>
