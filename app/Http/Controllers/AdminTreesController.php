@@ -40,6 +40,8 @@ use Fisharebest\Webtrees\SurnameTradition;
 use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
+use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Query\JoinClause;
 use League\Flysystem\Filesystem;
 use League\Flysystem\ZipArchive\ZipArchiveAdapter;
 use stdClass;
@@ -809,7 +811,7 @@ class AdminTreesController extends AbstractBaseController
         }
 
         /* I18N: Renumber the records in a family tree */
-        $title = I18N::translate('Renumber family tree') . ' — ' . e($tree->title());
+        $title = I18N::translate('Update place names') . ' — ' . e($tree->title());
 
         return $this->viewResponse('admin/trees-places', [
             'changes' => $changes,
@@ -1928,44 +1930,49 @@ class AdminTreesController extends AbstractBaseController
      */
     private function duplicateXrefs(Tree $tree): array
     {
-        return Database::prepare(
-            "SELECT xref, type FROM (" .
-            " SELECT i_id AS xref, 'INDI' AS type FROM `##individuals` WHERE i_file = :tree_id_1" .
-            "  UNION " .
-            " SELECT f_id AS xref, 'FAM' AS type FROM `##families` WHERE f_file = :tree_id_2" .
-            "  UNION " .
-            " SELECT s_id AS xref, 'SOUR' AS type FROM `##sources` WHERE s_file = :tree_id_3" .
-            "  UNION " .
-            " SELECT m_id AS xref, 'OBJE' AS type FROM `##media` WHERE m_file = :tree_id_4" .
-            "  UNION " .
-            " SELECT o_id AS xref, o_type AS type FROM `##other` WHERE o_file = :tree_id_5 AND o_type NOT IN ('HEAD', 'TRLR')" .
-            ") AS this_tree JOIN (" .
-            " SELECT xref FROM `##change` WHERE gedcom_id <> :tree_id_6" .
-            "  UNION " .
-            " SELECT i_id AS xref FROM `##individuals` WHERE i_file <> :tree_id_7" .
-            "  UNION " .
-            " SELECT f_id AS xref FROM `##families` WHERE f_file <> :tree_id_8" .
-            "  UNION " .
-            " SELECT s_id AS xref FROM `##sources` WHERE s_file <> :tree_id_9" .
-            "  UNION " .
-            " SELECT m_id AS xref FROM `##media` WHERE m_file <> :tree_id_10" .
-            "  UNION " .
-            " SELECT o_id AS xref FROM `##other` WHERE o_file <> :tree_id_11 AND o_type NOT IN ('HEAD', 'TRLR')" .
-            ") AS other_trees USING (xref)"
-        )->execute([
-            'tree_id_1'  => $tree->id(),
-            'tree_id_2'  => $tree->id(),
-            'tree_id_3'  => $tree->id(),
-            'tree_id_4'  => $tree->id(),
-            'tree_id_5'  => $tree->id(),
-            'tree_id_6'  => $tree->id(),
-            'tree_id_7'  => $tree->id(),
-            'tree_id_8'  => $tree->id(),
-            'tree_id_9'  => $tree->id(),
-            'tree_id_10' => $tree->id(),
-            'tree_id_11' => $tree->id(),
-        ])->fetchAssoc();
-    }
+        $subquery1 = DB::table('individuals')
+            ->where('i_file', '=', $tree->id())
+            ->select(['i_id AS xref', DB::raw("'INDI' AS type")])
+            ->union(DB::table('families')
+                ->where('f_file', '=', $tree->id())
+                ->select(['f_id AS xref', DB::raw("'FAM' AS type")]))
+            ->union(DB::table('sources')
+                ->where('s_file', '=', $tree->id())
+                ->select(['s_id AS xref', DB::raw("'SOUR' AS type")]))
+            ->union(DB::table('media')
+                ->where('m_file', '=', $tree->id())
+                ->select(['m_id AS xref', DB::raw("'OBJE' AS type")]))
+            ->union(DB::table('other')
+                ->where('o_file', '=', $tree->id())
+                ->whereNotIn('o_type', ['HEAD', 'TRLR'])
+                ->select(['o_id AS xref', 'o_type AS type']));
+
+        $subquery2 = DB::table('change')
+            ->where('gedcom_id', '<>', $tree->id())
+            ->select(['xref AS other_xref'])
+            ->union(DB::table('individuals')
+                ->where('i_file', '<>', $tree->id())
+                ->select(['i_id AS xref']))
+            ->union(DB::table('families')
+                ->where('f_file', '<>', $tree->id())
+                ->select(['f_id AS xref']))
+            ->union(DB::table('sources')
+                ->where('s_file', '<>', $tree->id())
+                ->select(['s_id AS xref']))
+            ->union(DB::table('media')
+                ->where('m_file', '<>', $tree->id())
+                ->select(['m_id AS xref']))
+            ->union(DB::table('other')
+                ->where('o_file', '<>', $tree->id())
+                ->whereNotIn('o_type', ['HEAD', 'TRLR'])
+                ->select(['o_id AS xref']));
+
+        return DB::table(DB::raw('(' . $subquery1->toSql() . ') AS sub1'))
+            ->mergeBindings($subquery1)
+            ->joinSub($subquery2, 'sub2', 'other_xref', '=', 'xref')
+            ->pluck('type', 'xref')
+            ->all();
+   }
 
     /**
      * Find a list of GEDCOM files in a folder
