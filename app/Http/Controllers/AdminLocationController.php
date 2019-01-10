@@ -457,54 +457,79 @@ class AdminLocationController extends AbstractBaseController
     public function importLocationsFromTree(Tree $tree): RedirectResponse
     {
         // Get all the places from the places table ...
-        $places = Database::prepare(
-            "SELECT
-            CONCAT_WS(',', t1.p_place, t2.p_place, t3.p_place, t4.p_place, t5.p_place, t6.p_place, t7.p_place, t8.p_place, t9.p_place)
-            FROM `##places` t1
-            LEFT JOIN `##places` t2 ON t1.p_parent_id = t2.p_id
-            LEFT JOIN `##places` t3 ON t2.p_parent_id = t3.p_id
-            LEFT JOIN `##places` t4 ON t3.p_parent_id = t4.p_id
-            LEFT JOIN `##places` t5 ON t4.p_parent_id = t5.p_id
-            LEFT JOIN `##places` t6 ON t5.p_parent_id = t6.p_id
-            LEFT JOIN `##places` t7 ON t6.p_parent_id = t7.p_id
-            LEFT JOIN `##places` t8 ON t7.p_parent_id = t8.p_id
-            LEFT JOIN `##places` t9 ON t8.p_parent_id = t9.p_id
-            WHERE t1.p_file = :gedcom"
-        )->execute([
-            'gedcom' => $tree->id(),
-        ])->fetchOneColumn();
+        $places = DB::table('places AS p0')
+            ->leftJoin('places AS p1', 'p1.p_id', '=', 'p0.p_parent_id')
+            ->leftJoin('places AS p2', 'p2.p_id', '=', 'p1.p_parent_id')
+            ->leftJoin('places AS p3', 'p3.p_id', '=', 'p2.p_parent_id')
+            ->leftJoin('places AS p4', 'p4.p_id', '=', 'p3.p_parent_id')
+            ->leftJoin('places AS p5', 'p5.p_id', '=', 'p4.p_parent_id')
+            ->leftJoin('places AS p6', 'p6.p_id', '=', 'p5.p_parent_id')
+            ->leftJoin('places AS p7', 'p7.p_id', '=', 'p6.p_parent_id')
+            ->leftJoin('places AS p8', 'p8.p_id', '=', 'p7.p_parent_id')
+            ->where('p0.p_file', '=', $tree->id())
+            ->select([
+                'p0.p_place AS place0',
+                'p1.p_place AS place1',
+                'p2.p_place AS place2',
+                'p3.p_place AS place3',
+                'p4.p_place AS place4',
+                'p5.p_place AS place5',
+                'p6.p_place AS place6',
+                'p7.p_place AS place7',
+                'p8.p_place AS place8',
+            ])
+            ->get()
+            ->map(function (stdClass $row): string {
+                return implode(', ', array_filter((array) $row));
+            });
 
         // ... and the placelocation table
-        $locations = Database::prepare(
-            "SELECT t1.pl_id, CONCAT_WS(',', t1.pl_place, t2.pl_place, t3.pl_place, t4.pl_place, t5.pl_place, t6.pl_place, t7.pl_place, t8.pl_place, t9.pl_place)
-            FROM `##placelocation` AS t1
-            LEFT JOIN `##placelocation` AS t2 ON t1.pl_parent_id = t2.pl_id
-            LEFT JOIN `##placelocation` AS t3 ON t2.pl_parent_id = t3.pl_id
-            LEFT JOIN `##placelocation` AS t4 ON t3.pl_parent_id = t4.pl_id
-            LEFT JOIN `##placelocation` AS t5 ON t4.pl_parent_id = t5.pl_id
-            LEFT JOIN `##placelocation` AS t6 ON t5.pl_parent_id = t6.pl_id
-            LEFT JOIN `##placelocation` AS t7 ON t6.pl_parent_id = t7.pl_id
-            LEFT JOIN `##placelocation` AS t8 ON t7.pl_parent_id = t8.pl_id
-            LEFT JOIN `##placelocation` AS t9 ON t8.pl_parent_id = t9.pl_id"
-        )->fetchAssoc();
+        $locations = DB::table('placelocation AS p0')
+            ->leftJoin('placelocation AS p1', 'p1.pl_id', '=', 'p0.pl_parent_id')
+            ->leftJoin('placelocation AS p2', 'p2.pl_id', '=', 'p1.pl_parent_id')
+            ->leftJoin('placelocation AS p3', 'p3.pl_id', '=', 'p2.pl_parent_id')
+            ->leftJoin('placelocation AS p4', 'p4.pl_id', '=', 'p3.pl_parent_id')
+            ->leftJoin('placelocation AS p5', 'p5.pl_id', '=', 'p4.pl_parent_id')
+            ->leftJoin('placelocation AS p6', 'p6.pl_id', '=', 'p5.pl_parent_id')
+            ->leftJoin('placelocation AS p7', 'p7.pl_id', '=', 'p6.pl_parent_id')
+            ->leftJoin('placelocation AS p8', 'p8.pl_id', '=', 'p7.pl_parent_id')
+            ->select([
+                'p0.pl_id',
+                'p0.pl_place AS place0',
+                'p1.pl_place AS place1',
+                'p2.pl_place AS place2',
+                'p3.pl_place AS place3',
+                'p4.pl_place AS place4',
+                'p5.pl_place AS place5',
+                'p6.pl_place AS place6',
+                'p7.pl_place AS place7',
+                'p8.pl_place AS place8',
+            ])
+            ->get()
+            ->map(function (stdClass $row): stdClass {
+                $row->place = implode(', ', array_filter(array_slice((array) $row, 1)));
+
+                return $row;
+            })
+            ->pluck('place', 'pl_id');
 
         // Compare the two ...
-        $diff = array_diff($places, $locations);
+        $diff = $places->diff($locations);
 
         // ... and process the differences
         $inserted = 0;
-        if (!empty($diff)) {
+        if ($diff->isNotEmpty()) {
             $nextRecordId    = 1 + (int) DB::table('placelocation')->max('pl_id');
 
             foreach ($diff as $place) {
                 // For Westminster, London, England, we must also create England and London, England
-                $place_parts = explode(',', $place);
+                $place_parts = explode(', ', $place);
                 $count       = count($place_parts);
 
                 $parent_id = 0;
                 for ($i = $count - 1; $i >= 0; $i--) {
-                    $parent   = implode(',', array_slice($place_parts, $i));
-                    $place_id = array_search($parent, $locations);
+                    $parent   = implode(', ', array_slice($place_parts, $i));
+                    $place_id = $locations->search($parent);
 
                     if ($place_id === false) {
                         DB::table('placelocation')->insert([
