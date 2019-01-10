@@ -68,8 +68,7 @@ class Individual extends GedcomRecord
      */
     public static function birthDateComparator(): Closure
     {
-        return function (Individual $x, Individual $y): int
-        {
+        return function (Individual $x, Individual $y): int {
             return Date::compare($x->getEstimatedBirthDate(), $y->getEstimatedBirthDate());
         };
     }
@@ -81,8 +80,7 @@ class Individual extends GedcomRecord
      */
     public static function deathDateComparator(): Closure
     {
-        return function (Individual $x, Individual $y): int
-        {
+        return function (Individual $x, Individual $y): int {
             return Date::compare($x->getEstimatedBirthDate(), $y->getEstimatedBirthDate());
         };
     }
