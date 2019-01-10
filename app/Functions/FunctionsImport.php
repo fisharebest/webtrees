@@ -1157,23 +1157,6 @@ class FunctionsImport
             Log::addEditLog("Accepted change {$change->change_id} for {$xref} / {$change->gedcom_name} into database", $tree);
         }
     }
-
-    /**
-     * Reject all pending changes for a specified record.
-     *
-     * @param GedcomRecord $record
-     *
-     * @return void
-     */
-    public static function rejectAllChanges(GedcomRecord $record)
-    {
-        DB::table('change')
-            ->where('gedcom_id', '=', $record->tree()->id())
-            ->where('xref', '=', $record->xref())
-            ->where('status', '=', 'pending')
-            ->update(['status' => 'rejected']);
-    }
-
     /**
      * update a record in the database
      *

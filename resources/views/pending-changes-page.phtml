@@ -78,7 +78,7 @@
                                     </a>
                                 </td>
                                 <td>
-                                    <?= FunctionsDate::formatTimestamp($record_change->change_timestamp) ?>
+                                    <?= FunctionsDate::formatTimestamp($record_change->change_time->timestamp) ?>
                                 </td>
                                 <td>
                                     <form action="<?= e(route('reject-pending', ['change_id' => $record_change->change_id, 'xref' => $record_change->xref, 'ged' => $record_change->gedcom_name, 'url' => $url])) ?>" method="POST">

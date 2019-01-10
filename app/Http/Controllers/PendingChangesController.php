@@ -17,8 +17,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
+use Carbon\Carbon;
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Functions\FunctionsImport;
@@ -32,6 +32,7 @@ use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
+use Illuminate\Database\Capsule\Manager as DB;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -53,15 +54,11 @@ class PendingChangesController extends AbstractBaseController
     {
         $url = $request->get('url', '');
 
-        $changes = Database::prepare(
-            "SELECT change_id, xref, gedcom_id, old_gedcom, new_gedcom" .
-            " FROM `##change` c" .
-            " JOIN `##gedcom` g USING (gedcom_id)" .
-            " WHERE c.status = 'pending' AND gedcom_id = :tree_id" .
-            " ORDER BY change_id"
-        )->execute([
-            'tree_id' => $tree->id(),
-        ])->fetchAll();
+        $changes = DB::table('change')
+            ->where('gedcom_id', '=', $tree->id())
+            ->where('status', '=', 'pending')
+            ->orderBy('change_id')
+            ->get();
 
         foreach ($changes as $change) {
             if (empty($change->new_gedcom)) {
@@ -72,11 +69,9 @@ class PendingChangesController extends AbstractBaseController
                 FunctionsImport::updateRecord($change->new_gedcom, $tree, false);
             }
 
-            Database::prepare(
-                "UPDATE `##change` SET status = 'accepted' WHERE change_id = :change_id"
-            )->execute([
-                'change_id' => $change->change_id,
-            ]);
+            DB::table('change')
+                ->where('change_id', '=', $change->change_id)
+                ->update(['status' => 'accepted']);
 
             Log::addEditLog('Accepted change ' . $change->change_id . ' for ' . $change->xref . ' / ' . $tree->name(), $tree);
         }
@@ -101,20 +96,13 @@ class PendingChangesController extends AbstractBaseController
         $xref      = $request->get('xref', '');
         $change_id = (int)$request->get('change_id');
 
-        $changes = Database::prepare(
-            "SELECT change_id, xref, old_gedcom, new_gedcom" .
-            " FROM  `##change` c" .
-            " JOIN  `##gedcom` g USING (gedcom_id)" .
-            " WHERE c.status   = 'pending'" .
-            " AND   gedcom_id  = :tree_id" .
-            " AND   xref       = :xref" .
-            " AND   change_id <= :change_id" .
-            " ORDER BY change_id"
-        )->execute([
-            'tree_id'   => $tree->id(),
-            'xref'      => $xref,
-            'change_id' => $change_id,
-        ])->fetchAll();
+        $changes = DB::table('change')
+            ->where('gedcom_id', '=', $tree->id())
+            ->where('xref', '=', $xref)
+            ->where('change_id', '<=', $change_id)
+            ->where('status', '=', 'pending')
+            ->orderBy('change_id')
+            ->get();
 
         foreach ($changes as $change) {
             if (empty($change->new_gedcom)) {
@@ -124,11 +112,10 @@ class PendingChangesController extends AbstractBaseController
                 // add/update
                 FunctionsImport::updateRecord($change->new_gedcom, $tree, false);
             }
-            Database::prepare(
-                "UPDATE `##change` SET status = 'accepted' WHERE change_id = :change_id"
-            )->execute([
-                'change_id' => $change->change_id,
-            ]);
+
+            DB::table('change')
+                ->where('change_id', '=', $change->change_id)
+                ->update(['status' => 'accepted']);
 
             Log::addEditLog('Accepted change ' . $change->change_id . ' for ' . $change->xref . ' / ' . $tree->name(), $tree);
         }
@@ -181,11 +168,10 @@ class PendingChangesController extends AbstractBaseController
     {
         $url = $request->get('url', '');
 
-        Database::prepare(
-            "UPDATE `##change` SET status = 'rejected' WHERE status = 'pending' AND gedcom_id = :tree_id"
-        )->execute([
-            'tree_id' => $tree->id(),
-        ]);
+        DB::table('change')
+            ->where('gedcom_id', '=', $tree->id())
+            ->where('status', '=', 'pending')
+            ->update(['status' => 'rejected']);
 
         return new RedirectResponse(route('show-pending', [
             'ged' => $tree->name(),
@@ -208,18 +194,12 @@ class PendingChangesController extends AbstractBaseController
         $change_id = (int)$request->get('change_id');
 
         // Reject a change, and subsequent changes to the same record
-        Database::prepare(
-            "UPDATE `##change`" .
-            " SET   status     = 'rejected'" .
-            " WHERE status     = 'pending'" .
-            " AND   gedcom_id  = :tree_id" .
-            " AND   xref       = :xref" .
-            " AND   change_id >= :change_id"
-        )->execute([
-            'tree_id'   => $tree->id(),
-            'xref'      => $xref,
-            'change_id' => $change_id,
-        ]);
+        DB::table('change')
+            ->where('gedcom_id', '=', $tree->id())
+            ->where('xref', '=', $xref)
+            ->where('change_id', '>=', $change_id)
+            ->where('status', '=', 'pending')
+            ->update(['status' => 'rejected']);
 
         return new RedirectResponse(route('show-pending', [
             'ged' => $tree->name(),
@@ -241,12 +221,17 @@ class PendingChangesController extends AbstractBaseController
 
         $record = GedcomRecord::getInstance($xref, $tree);
 
-        $this->checkRecordAccess($record, false);
+        $this->checkRecordAccess($record);
 
-        if ($record && Auth::isModerator($tree)) {
+        if (Auth::isModerator($tree)) {
+            DB::table('change')
+                ->where('gedcom_id', '=', $record->tree()->id())
+                ->where('xref', '=', $record->xref())
+                ->where('status', '=', 'pending')
+                ->update(['status' => 'rejected']);
+
             /* I18N: %s is the name of an individual, source or other record */
             FlashMessages::addMessage(I18N::translate('The changes to “%s” have been rejected.', $record->getFullName()));
-            FunctionsImport::rejectAllChanges($record);
         }
 
         return new Response();
@@ -264,17 +249,20 @@ class PendingChangesController extends AbstractBaseController
     {
         $url = $request->get('url', route('tree-page', ['ged' => $tree->name()]));
 
-        $rows = Database::prepare(
-            "SELECT c.*, UNIX_TIMESTAMP(c.change_time) AS change_timestamp, u.user_name, u.real_name, g.gedcom_name, new_gedcom, old_gedcom" .
-            " FROM `##change` c" .
-            " JOIN `##user`   u USING (user_id)" .
-            " JOIN `##gedcom` g USING (gedcom_id)" .
-            " WHERE c.status='pending'" .
-            " ORDER BY gedcom_id, c.xref, c.change_id"
-        )->execute([])->fetchAll();
+        $rows = DB::table('change')
+            ->join('user', 'user.user_id', '=', 'change.user_id')
+            ->join('gedcom', 'gedcom.gedcom_id', '=', 'change.gedcom_id')
+            ->where('status', '=', 'pending')
+            ->orderBy('change.gedcom_id')
+            ->orderBy('change.xref')
+            ->orderBy('change.change_id')
+            ->select(['change.*', 'user.user_name', 'user.real_name', 'gedcom_name'])
+            ->get();
 
         $changes = [];
         foreach ($rows as $row) {
+            $row->change_time = new Carbon($row->change_time);
+
             $change_tree = Tree::findById($row->gedcom_id);
 
             preg_match('/^0 (?:@' . Gedcom::REGEX_XREF . '@ )?(' . Gedcom::REGEX_TAG . ')/', $row->old_gedcom . $row->new_gedcom, $match);
