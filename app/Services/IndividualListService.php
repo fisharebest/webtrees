@@ -120,7 +120,7 @@ class IndividualListService
         }
 
         $rows = $query2
-            ->select([DB::raw('UPPER(LEFT(n_surn, 1)) AS initial'), DB::raw('COUNT(*) AS count')])
+            ->select([DB::raw('UPPER(SUBSTR(n_surn, 0, 1)) AS initial'), DB::raw('COUNT(*) AS count')])
             ->groupBy('initial')
             ->orderBy(DB::raw("CASE initial WHEN '' THEN 1 ELSE 0 END"))
             ->orderBy(DB::raw("CASE initial WHEN '@' THEN 1 ELSE 0 END"))
@@ -189,7 +189,7 @@ class IndividualListService
         }
 
         $rows = $query
-            ->select([DB::raw('UPPER(LEFT(n_givn, 1)) AS initial'), DB::raw('COUNT(*) AS count')])
+            ->select([DB::raw('UPPER(SUBSTR(n_givn, 0, 1)) AS initial'), DB::raw('COUNT(*) AS count')])
             ->groupBy('initial')
             ->orderBy(DB::raw("CASE initial WHEN '' THEN 1 ELSE 0 END"))
             ->orderBy(DB::raw("CASE initial WHEN '@' THEN 1 ELSE 0 END"))
@@ -363,7 +363,7 @@ class IndividualListService
      */
     private function fieldWithCollation(string $field, string $collation): Expression
     {
-        return DB::raw($field . ' /*! COLLATE ' . $collation . '*/');
+        return DB::raw($field . ' /*! COLLATE ' . $collation . ' */');
     }
 
     /**

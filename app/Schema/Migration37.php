@@ -74,7 +74,7 @@ class Migration37 implements MigrationInterface
                     'm_file',
                     'm_filename',
                     'm_ext',
-                    'm_type', //DB::raw('LEFT(m_type, 15)'),
+                    'm_type',
                     'm_titl',
                 ])->from('media');
             });
