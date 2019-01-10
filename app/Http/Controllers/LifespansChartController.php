@@ -19,12 +19,13 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\ExtCalendar\GregorianCalendar;
 use Fisharebest\Webtrees\ColorGenerator;
-use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Tree;
+use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Query\JoinClause;
 use stdClass;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -272,18 +273,18 @@ class LifespansChartController extends AbstractChartController
      */
     private function findIndividualsByDate(Date $start, Date $end, Tree $tree): array
     {
-        return Database::prepare(
-            "SELECT d_gid" .
-            " FROM `##dates`" .
-            " WHERE d_file = :tree_id" .
-            " AND d_julianday1 <= :max_jd" .
-            " AND d_julianday2 >= :min_jd" .
-            " AND d_fact NOT IN ('BAPL', 'ENDL', 'SLGC', 'SLGS', '_TODO', 'CHAN')"
-        )->execute([
-            'tree_id' => $tree->id(),
-            'max_jd'  => $end->maximumJulianDay(),
-            'min_jd'  => $start->minimumJulianDay(),
-        ])->fetchOneColumn();
+        return DB::table('individuals')
+            ->join('dates', function (JoinClause $join): void {
+                $join
+                    ->on('d_file', '=', 'i_file')
+                    ->on('d_gid', '=', 'i_id');
+            })
+            ->where('i_file', '=', $tree->id())
+            ->where('d_julianday1', '<=', $end->maximumJulianDay())
+            ->where('d_julianday2', '>=', $start->minimumJulianDay())
+            ->whereNotIn('d_fact', ['BAPL', 'ENDL', 'SLGC', 'SLGS', '_TODO', 'CHAN'])
+            ->pluck('i_id')
+            ->all();
     }
 
     /**
@@ -294,20 +295,16 @@ class LifespansChartController extends AbstractChartController
      */
     private function findIndividualsByPlace(Place $place, Tree $tree): array
     {
-        return Database::prepare(
-            "SELECT DISTINCT `i_id` FROM `##placelinks`" .
-            " JOIN `##individuals` ON `pl_gid`=`i_id` AND `pl_file`=`i_file`" .
-            " WHERE `i_file`=:tree_id" .
-            " AND `pl_p_id`=:place_id" .
-            " UNION" .
-            " SELECT DISTINCT `f_id` FROM `##placelinks`" .
-            " JOIN `##families` ON `pl_gid`=`f_id` AND `pl_file`=`f_file`" .
-            " WHERE `f_file`=:tree_id" .
-            " AND `pl_p_id`=:place_id"
-        )->execute([
-            'tree_id'  => $tree->id(),
-            'place_id' => $place->getPlaceId(),
-        ])->fetchOneColumn();
+        return DB::table('individuals')
+            ->join('placelinks', function (JoinClause $join): void {
+                $join
+                    ->on('pl_file', '=', 'i_file')
+                    ->on('pl_gid', '=', 'i_id');
+            })
+            ->where('i_file', '=', $tree->id())
+            ->where('pl_p_id', '=', $place->getPlaceId())
+            ->pluck('i_id')
+            ->all();
     }
 
     /**
