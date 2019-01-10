@@ -121,6 +121,44 @@ class GedcomRecord
     }
 
     /**
+     * A closure which will compare records by name.
+     *
+     * @return Closure
+     */
+    public static function nameComparator(): Closure
+    {
+        return function (GedcomRecord $x, GedcomRecord $y): int {
+            if ($x->canShowName()) {
+                if ($y->canShowName()) {
+                    return I18N::strcasecmp($x->getSortName(), $y->getSortName());
+                }
+
+                return -1; // only $y is private
+            }
+
+            if ($y->canShowName()) {
+                return 1; // only $x is private
+            }
+
+            return 0; // both $x and $y private
+        };
+    }
+
+    /**
+     * A closure which will compare records by change time.
+     *
+     * @param int $direction +1 to sort ascending, -1 to sort descending
+     *
+     * @return Closure
+     */
+    public static function lastChangeComparator(int $direction = 1): Closure
+    {
+        return function (GedcomRecord $x, GedcomRecord $y) use ($direction): int {
+            return $direction * ($x->lastChangeTimestamp(true) <=> $y->lastChangeTimestamp(true));
+        };
+    }
+
+    /**
      * Split the record into facts
      *
      * @return void
@@ -169,7 +207,6 @@ class GedcomRecord
      * @param string|null $gedcom
      *
      * @throws Exception
-     *
      * @return GedcomRecord|Individual|Family|Source|Repository|Media|Note|null
      */
     public static function getInstance(string $xref, Tree $tree, string $gedcom = null)
@@ -191,7 +228,7 @@ class GedcomRecord
             if (!isset(self::$pending_record_cache[$tree_id])) {
                 // Fetch all pending records in one database query
                 self::$pending_record_cache[$tree_id] = [];
-                $rows = DB::table('change')
+                $rows                                 = DB::table('change')
                     ->where('gedcom_id', '=', $tree_id)
                     ->where('status', '=', 'pending')
                     ->orderBy('change_id')
@@ -735,32 +772,7 @@ class GedcomRecord
     }
 
     /**
-     * Static helper function to sort an array of objects by name
-     * Records whose names cannot be displayed are sorted at the end.
-     *
-     * @param GedcomRecord $x
-     * @param GedcomRecord $y
-     *
-     * @return int
-     */
-    public static function compare(GedcomRecord $x, GedcomRecord $y)
-    {
-        if ($x->canShowName()) {
-            if ($y->canShowName()) {
-                return I18N::strcasecmp($x->getSortName(), $y->getSortName());
-            }
-
-            return -1; // only $y is private
-        }
-
-        if ($y->canShowName()) {
-            return 1; // only $x is private
-        }
-
-        return 0; // both $x and $y private
-    }
-
-    /**
+     * /**
      * Get variants of the name
      *
      * @return string

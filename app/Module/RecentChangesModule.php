@@ -64,21 +64,15 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 
         switch ($sortStyle) {
             case 'name':
-                uasort($records, function (GedcomRecord $a, GedcomRecord $b): int {
-                    return GedcomRecord::compare($a, $b) ?: $b->lastChangeTimestamp(true) - $a->lastChangeTimestamp(true);
-                });
+                uasort($records, GedcomRecord::nameComparator());
                 break;
 
             case 'date_asc':
-                uasort($records, function (GedcomRecord $a, GedcomRecord $b): int {
-                    return $a->lastChangeTimestamp(true) - $b->lastChangeTimestamp(true) ?: GedcomRecord::compare($b, $a);
-                });
+                uasort($records, GedcomRecord::lastChangeComparator());
                 break;
 
             case 'date_desc':
-                uasort($records, function (GedcomRecord $a, GedcomRecord $b): int {
-                    return $b->lastChangeTimestamp(true) - $a->lastChangeTimestamp(true) ?: GedcomRecord::compare($a, $b);
-                });
+                uasort($records, GedcomRecord::lastChangeComparator(-1));
         }
 
         if (empty($records)) {

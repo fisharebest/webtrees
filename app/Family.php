@@ -77,6 +77,19 @@ class Family extends GedcomRecord
     }
 
     /**
+     * A closure which will compare families by marriage date.
+     *
+     * @return Closure
+     */
+    public static function marriageDateComparator(): Closure
+    {
+        return function (Family $x, Family $y): int
+        {
+            return Date::compare($x->getMarriageDate(), $y->getMarriageDate());
+        };
+    }
+
+    /**
      * Get an instance of a family object. For single records,
      * we just receive the XREF. For bulk records (such as lists
      * and search results) we can receive the GEDCOM data as well.
@@ -267,19 +280,6 @@ class Family extends GedcomRecord
         }
 
         return $children;
-    }
-
-    /**
-     * Static helper function to sort an array of families by marriage date
-     *
-     * @param Family $x
-     * @param Family $y
-     *
-     * @return int
-     */
-    public static function compareMarrDate(Family $x, Family $y): int
-    {
-        return Date::compare($x->getMarriageDate(), $y->getMarriageDate());
     }
 
     /**

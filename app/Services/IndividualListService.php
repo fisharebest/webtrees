@@ -18,6 +18,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Services;
 
 use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Tree;
@@ -347,7 +348,7 @@ class IndividualListService
                 $list[$family->xref()] = $family;
             }
         }
-        usort($list, '\Fisharebest\Webtrees\GedcomRecord::compare');
+        usort($list, GedcomRecord::nameComparator());
 
         return $list;
     }

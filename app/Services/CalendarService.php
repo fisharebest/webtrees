@@ -202,7 +202,7 @@ class CalendarService
                 break;
             case 'alpha':
                 uasort($facts, function (Fact $x, Fact $y): int {
-                    return GedcomRecord::compare($x->record(), $y->record());
+                    return GedcomRecord::nameComparator()($x->record(), $y->record());
                 });
                 break;
         }

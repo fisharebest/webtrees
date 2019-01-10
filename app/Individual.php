@@ -62,6 +62,32 @@ class Individual extends GedcomRecord
     }
 
     /**
+     * A closure which will compare individuals by birth date.
+     *
+     * @return Closure
+     */
+    public static function birthDateComparator(): Closure
+    {
+        return function (Individual $x, Individual $y): int
+        {
+            return Date::compare($x->getEstimatedBirthDate(), $y->getEstimatedBirthDate());
+        };
+    }
+
+    /**
+     * A closure which will compare individuals by death date.
+     *
+     * @return Closure
+     */
+    public static function deathDateComparator(): Closure
+    {
+        return function (Individual $x, Individual $y): int
+        {
+            return Date::compare($x->getEstimatedBirthDate(), $y->getEstimatedBirthDate());
+        };
+    }
+
+    /**
      * Get an instance of an individual object. For single records,
      * we just receive the XREF. For bulk records (such as lists
      * and search results) we can receive the GEDCOM data as well.
@@ -295,32 +321,6 @@ class Individual extends GedcomRecord
             ->where('i_id', '=', $xref)
             ->where('i_file', '=', $tree_id)
             ->value('i_gedcom');
-    }
-
-    /**
-     * Static helper function to sort an array of people by birth date
-     *
-     * @param Individual $x
-     * @param Individual $y
-     *
-     * @return int
-     */
-    public static function compareBirthDate(Individual $x, Individual $y): int
-    {
-        return Date::compare($x->getEstimatedBirthDate(), $y->getEstimatedBirthDate());
-    }
-
-    /**
-     * Static helper function to sort an array of people by death date
-     *
-     * @param Individual $x
-     * @param Individual $y
-     *
-     * @return int
-     */
-    public static function compareDeathDate(Individual $x, Individual $y): int
-    {
-        return Date::compare($x->getEstimatedDeathDate(), $y->getEstimatedDeathDate());
     }
 
     /**

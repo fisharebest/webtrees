@@ -183,7 +183,7 @@ class BranchesController extends AbstractBaseController
             ->filter(GedcomRecord::filter())
             ->all();
 
-        usort($individuals, '\Fisharebest\Webtrees\Individual::compareBirthDate');
+        usort($individuals, Individual::birthDateComparator());
 
         return $individuals;
     }
@@ -287,7 +287,7 @@ class BranchesController extends AbstractBaseController
         // spouses and children
         $spouse_families = $individual->getSpouseFamilies();
         if ($spouse_families) {
-            usort($spouse_families, '\Fisharebest\Webtrees\Family::compareMarrDate');
+            usort($spouse_families, Family::marriageDateComparator());
             $fam_html = '';
             foreach ($spouse_families as $family) {
                 $fam_html .= $indi_html; // Repeat the individual details for each spouse.

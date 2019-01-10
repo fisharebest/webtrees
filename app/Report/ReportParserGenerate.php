@@ -2198,21 +2198,19 @@ class ReportParserGenerate extends ReportParserBase
 
         switch ($sortby) {
             case 'NAME':
-                uasort($this->list, '\Fisharebest\Webtrees\GedcomRecord::compare');
+                uasort($this->list, GedcomRecord::nameComparator());
                 break;
             case 'CHAN':
-                uasort($this->list, function (GedcomRecord $x, GedcomRecord $y): int {
-                    return $y->lastChangeTimestamp(true) - $x->lastChangeTimestamp(true);
-                });
+                uasort($this->list, GedcomRecord::lastChangeComparator());
                 break;
             case 'BIRT:DATE':
-                uasort($this->list, '\Fisharebest\Webtrees\Individual::compareBirthDate');
+                uasort($this->list, Individual::birthDateComparator());
                 break;
             case 'DEAT:DATE':
-                uasort($this->list, '\Fisharebest\Webtrees\Individual::compareDeathDate');
+                uasort($this->list, Individual::deathDateComparator());
                 break;
             case 'MARR:DATE':
-                uasort($this->list, '\Fisharebest\Webtrees\Family::compareMarrDate');
+                uasort($this->list, Family::marriageDateComparator());
                 break;
             default:
                 // unsorted or already sorted by SQL
@@ -2442,13 +2440,13 @@ class ReportParserGenerate extends ReportParserBase
 
         switch ($sortby) {
             case 'NAME':
-                uasort($this->list, '\Fisharebest\Webtrees\GedcomRecord::compare');
+                uasort($this->list, GedcomRecord::nameComparator());
                 break;
             case 'BIRT:DATE':
-                uasort($this->list, '\Fisharebest\Webtrees\Individual::compareBirthDate');
+                uasort($this->list, Individual::birthDateComparator());
                 break;
             case 'DEAT:DATE':
-                uasort($this->list, '\Fisharebest\Webtrees\Individual::compareDeathDate');
+                uasort($this->list, Individual::deathDateComparator());
                 break;
             case 'generation':
                 $newarray = [];
