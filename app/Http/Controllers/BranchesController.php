@@ -17,14 +17,17 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
-use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodePedi;
+use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Soundex;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
+use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Query\Builder;
+use Illuminate\Database\Query\JoinClause;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -142,47 +145,43 @@ class BranchesController extends AbstractBaseController
      */
     private function loadIndividuals(Tree $tree, string $surname, bool $soundex_dm, bool $soundex_std): array
     {
-        $sql =
-            "SELECT DISTINCT i_id AS xref, i_gedcom AS gedcom" .
-            " FROM `##individuals`" .
-            " JOIN `##name` ON (i_id=n_id AND i_file=n_file)" .
-            " WHERE n_file = ?" .
-            " AND n_type != ?" .
-            " AND (n_surn = ? OR n_surname = ?";
+        $individuals = DB::table('individuals')
+            ->join('name', function (JoinClause $join): void {
+                $join
+                    ->on('name.n_file', '=', 'individuals.i_file')
+                    ->on('name.n_id', '=', 'individuals.i_id');
+            })
+            ->where('i_file', '=', $tree->id())
+            ->where('n_type', '<>', '_MARNM')
+            ->where(function (Builder $query) use ($surname, $soundex_dm, $soundex_std): void {
+                $query
+                    ->where('n_surn', '=', $surname)
+                    ->orWhere('n_surname', '=', $surname);
 
-        $args = [
-            $tree->id(),
-            '_MARNM',
-            $surname,
-            $surname,
-        ];
-        if ($soundex_std) {
-            $sdx = Soundex::russell($surname);
-            if ($sdx !== '') {
-                foreach (explode(':', $sdx) as $value) {
-                    $sql .= " OR n_soundex_surn_std LIKE CONCAT('%', ?, '%')";
-                    $args[] = $value;
+                if ($soundex_std) {
+                    $sdx = Soundex::russell($surname);
+                    if ($sdx !== '') {
+                        foreach (explode(':', $sdx) as $value) {
+                            $query->whereContains('n_soundex_surn_std', $value, 'or');
+                        }
+                    }
                 }
-            }
-        }
 
-        if ($soundex_dm) {
-            $sdx = Soundex::daitchMokotoff($surname);
-            if ($sdx !== '') {
-                foreach (explode(':', $sdx) as $value) {
-                    $sql .= " OR n_soundex_surn_dm LIKE CONCAT('%', ?, '%')";
-                    $args[] = $value;
+                if ($soundex_dm) {
+                    $sdx = Soundex::daitchMokotoff($surname);
+                    if ($sdx !== '') {
+                        foreach (explode(':', $sdx) as $value) {
+                            $query->whereContains('n_soundex_surn_dm', $value, 'or');
+                        }
+                    }
                 }
-            }
-        }
-        $sql .= ')';
-
-        $rows = Database::prepare($sql)->execute($args)->fetchAll();
-
-        $individuals = [];
-        foreach ($rows as $row) {
-            $individuals[] = Individual::getInstance($row->xref, $tree, $row->gedcom);
-        }
+            })
+            ->select(['i_id', 'i_gedcom'])
+            ->distinct()
+            ->get()
+            ->map(Individual::rowMapper($tree))
+            ->filter(GedcomRecord::filter())
+            ->all();
 
         usort($individuals, '\Fisharebest\Webtrees\Individual::compareBirthDate');
 
