@@ -1979,7 +1979,7 @@ class AdminTreesController extends AbstractBaseController
             ->joinSub($subquery2, 'sub2', 'other_xref', '=', 'xref')
             ->pluck('type', 'xref')
             ->all();
-   }
+    }
 
     /**
      * Find a list of GEDCOM files in a folder
