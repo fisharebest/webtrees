@@ -83,8 +83,7 @@ class Family extends GedcomRecord
      */
     public static function marriageDateComparator(): Closure
     {
-        return function (Family $x, Family $y): int
-        {
+        return function (Family $x, Family $y): int {
             return Date::compare($x->getMarriageDate(), $y->getMarriageDate());
         };
     }
