@@ -256,7 +256,7 @@ class PlaceRepository implements PlaceRepositoryInterface
         $all_db_countries = [];
         foreach ($countries as $place) {
             $country = trim($place->country);
-            if (array_key_exists($country, $country_names)) {
+            if (\array_key_exists($country, $country_names)) {
                 if (isset($all_db_countries[$country_names[$country]][$country])) {
                     $all_db_countries[$country_names[$country]][$country] += (int) $place->tot;
                 } else {

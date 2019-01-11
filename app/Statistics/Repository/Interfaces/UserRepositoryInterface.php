@@ -37,21 +37,21 @@ interface UserRepositoryInterface
     public function usersLoggedInList(): string;
 
     /**
-     * Who is currently logged in?
+     * Returns the total number of logged in users (visible or anonymous).
      *
      * @return int
      */
     public function usersLoggedInTotal(): int;
 
     /**
-     * Which visitors are currently logged in?
+     * Returns the total number of anonymous logged in users.
      *
      * @return int
      */
     public function usersLoggedInTotalAnon(): int;
 
     /**
-     * Which visitors are currently logged in?
+     * Returns the total number of visible logged in users.
      *
      * @return int
      */

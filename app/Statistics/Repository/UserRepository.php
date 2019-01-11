@@ -68,7 +68,7 @@ class UserRepository implements UserRepositoryInterface
             }
         }
 
-        $LoginUsers = count($loggedusers);
+        $LoginUsers = \count($loggedusers);
         if ($LoginUsers === 0 && $NumAnonymous === 0) {
             return I18N::translate('No signed-in and no anonymous users');
         }
@@ -124,37 +124,6 @@ class UserRepository implements UserRepositoryInterface
     }
 
     /**
-     * NUmber of users who are currently logged in?
-     *
-     * @param string $type
-     *
-     * @return int
-     */
-    private function usersLoggedInTotalQuery($type = 'all'): int
-    {
-        $anon    = 0;
-        $visible = 0;
-
-        foreach (User::allLoggedIn() as $user) {
-            if (Auth::isAdmin() || $user->getPreference('visibleonline')) {
-                ++$visible;
-            } else {
-                ++$anon;
-            }
-        }
-
-        if ($type === 'anon') {
-            return $anon;
-        }
-
-        if ($type === 'visible') {
-            return $visible;
-        }
-
-        return $visible + $anon;
-    }
-
-    /**
      * @inheritDoc
      */
     public function usersLoggedIn(): string
@@ -171,11 +140,23 @@ class UserRepository implements UserRepositoryInterface
     }
 
     /**
+     * Returns true if the given user is visible to others.
+     *
+     * @param User $user
+     *
+     * @return bool
+     */
+    private function isUserVisible(User $user): bool
+    {
+        return Auth::isAdmin() || $user->getPreference('visibleonline');
+    }
+
+    /**
      * @inheritDoc
      */
     public function usersLoggedInTotal(): int
     {
-        return $this->usersLoggedInTotalQuery();
+        return \count(User::allLoggedIn());
     }
 
     /**
@@ -183,7 +164,15 @@ class UserRepository implements UserRepositoryInterface
      */
     public function usersLoggedInTotalAnon(): int
     {
-        return $this->usersLoggedInTotalQuery('anon');
+        $anonymous = 0;
+
+        foreach (User::allLoggedIn() as $user) {
+            if (!$this->isUserVisible($user)) {
+                ++$anonymous;
+            }
+        }
+
+        return $anonymous;
     }
 
     /**
@@ -191,7 +180,15 @@ class UserRepository implements UserRepositoryInterface
      */
     public function usersLoggedInTotalVisible(): int
     {
-        return $this->usersLoggedInTotalQuery('visible');
+        $visible = 0;
+
+        foreach (User::allLoggedIn() as $user) {
+            if ($this->isUserVisible($user)) {
+                ++$visible;
+            }
+        }
+
+        return $visible;
     }
 
     /**
@@ -230,7 +227,7 @@ class UserRepository implements UserRepositoryInterface
      */
     private function getUserCount(): int
     {
-        return count(User::all());
+        return \count(User::all());
     }
 
     /**
@@ -240,7 +237,7 @@ class UserRepository implements UserRepositoryInterface
      */
     private function getAdminCount(): int
     {
-        return count(User::administrators());
+        return \count(User::administrators());
     }
 
     /**

@@ -85,7 +85,7 @@ class FavoritesRepository implements FavoritesRepositoryInterface
         $module = Module::getModuleByName('gedcom_favorites');
 
         if ($module instanceof FamilyTreeFavoritesModule) {
-            $count = count($module->getFavorites($this->tree));
+            $count = \count($module->getFavorites($this->tree));
         }
 
         return I18N::number($count);
@@ -100,7 +100,7 @@ class FavoritesRepository implements FavoritesRepositoryInterface
         $module = Module::getModuleByName('user_favorites');
 
         if ($module instanceof UserFavoritesModule) {
-            $count = count($module->getFavorites($this->tree, Auth::user()));
+            $count = \count($module->getFavorites($this->tree, Auth::user()));
         }
 
         return I18N::number($count);

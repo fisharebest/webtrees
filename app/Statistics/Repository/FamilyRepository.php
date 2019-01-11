@@ -29,7 +29,6 @@ use Fisharebest\Webtrees\Statistics\Google\ChartMarriage;
 use Fisharebest\Webtrees\Statistics\Google\ChartMarriageAge;
 use Fisharebest\Webtrees\Statistics\Helper\Sql;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Database\Capsule\Manager as DB;
 
 /**
  *
@@ -429,7 +428,7 @@ class FamilyRepository
 //            }
 
             if ($type === 'list') {
-                if ($one && !in_array($fam->family, $dist)) {
+                if ($one && !\in_array($fam->family, $dist, true)) {
                     if ($child1->canShow() && $child2->canShow()) {
                         $top10[] = [
                             'child1' => $child1,
@@ -578,7 +577,7 @@ class FamilyRepository
      */
     public function statsChildrenQuery($sex = 'BOTH', $year1 = -1, $year2 = -1): array
     {
-        if ($sex == 'M') {
+        if ($sex === 'M') {
             $sql =
                 "SELECT num, COUNT(*) AS total FROM " .
                 "(SELECT count(i_sex) AS num FROM `##link` " .
@@ -588,7 +587,7 @@ class FamilyRepository
                 ") boys" .
                 " GROUP BY num" .
                 " ORDER BY num";
-        } elseif ($sex == 'F') {
+        } elseif ($sex === 'F') {
             $sql =
                 "SELECT num, COUNT(*) AS total FROM " .
                 "(SELECT count(i_sex) AS num FROM `##link` " .
@@ -1182,7 +1181,10 @@ class FamilyRepository
             }
             $husb = $family->getHusband();
             $wife = $family->getWife();
-            if ($husb && $wife && ($husb->getAllDeathDates() && $wife->getAllDeathDates() || !$husb->isDead() || !$wife->isDead())) {
+
+            if (($husb && ($husb->getAllDeathDates() || !$husb->isDead()))
+                && ($wife && ($wife->getAllDeathDates() || !$wife->isDead()))
+            ) {
                 if ($family && $family->canShow()) {
                     if ($type === 'list') {
                         $top10[] = '<li><a href="' . e($family->url()) . '">' . $family->getFullName() . '</a> (' . $age . ')' . '</li>';

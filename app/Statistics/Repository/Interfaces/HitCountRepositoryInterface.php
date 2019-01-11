@@ -17,12 +17,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Statistics\Repository\Interfaces;
 
-use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Http\Middleware\PageHitCounter;
-use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\User;
-
 /**
  * A repository providing methods for hit count related statistics.
  */

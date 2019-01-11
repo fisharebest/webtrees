@@ -89,7 +89,7 @@ class MediaRepository implements MediaRepositoryInterface
     {
         if (($type !== 'all')
             && ($type !== 'unknown')
-            && !in_array($type, $this->getMediaTypes(), true)
+            && !\in_array($type, $this->getMediaTypes(), true)
         ) {
             return 0;
         }

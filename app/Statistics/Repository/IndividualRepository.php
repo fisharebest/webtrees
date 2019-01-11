@@ -112,7 +112,7 @@ class IndividualRepository implements IndividualRepositoryInterface
             foreach (explode(' ', $row->n_givn) as $given) {
                 // Exclude initials and particles.
                 if (!preg_match('/^([A-Z]|[a-z]{1,3})$/', $given)) {
-                    if (array_key_exists($given, $nameList)) {
+                    if (\array_key_exists($given, $nameList)) {
                         $nameList[$given] += (int) $row->num;
                     } else {
                         $nameList[$given] = (int) $row->num;
@@ -121,7 +121,7 @@ class IndividualRepository implements IndividualRepositoryInterface
             }
         }
         arsort($nameList);
-        $nameList = array_slice($nameList, 0, $maxtoshow);
+        $nameList = \array_slice($nameList, 0, $maxtoshow);
 
         foreach ($nameList as $given => $total) {
             if ($total < $threshold) {
@@ -429,7 +429,7 @@ class IndividualRepository implements IndividualRepositoryInterface
     public function totalGivennames(...$params): string
     {
         if ($params) {
-            $qs       = implode(',', array_fill(0, count($params), '?'));
+            $qs       = implode(',', array_fill(0, \count($params), '?'));
             $params[] = $this->tree->id();
             $total    = (int) Database::prepare(
                 "SELECT COUNT( n_givn) FROM `##name` WHERE n_givn IN ({$qs}) AND n_file=?"
@@ -457,7 +457,7 @@ class IndividualRepository implements IndividualRepositoryInterface
     public function totalSurnames(...$params): string
     {
         if ($params) {
-            $opt      = 'IN (' . implode(',', array_fill(0, count($params), '?')) . ')';
+            $opt      = 'IN (' . implode(',', array_fill(0, \count($params), '?')) . ')';
             $distinct = '';
         } else {
             $opt      = "IS NOT NULL";
