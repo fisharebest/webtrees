@@ -35,6 +35,20 @@ use Illuminate\Database\Query\Builder;
 class EventRepository implements EventRepositoryInterface
 {
     /**
+     * Sorting directions.
+     */
+    private const SORT_ASC  = 'ASC';
+    private const SORT_DESC = 'DESC';
+
+    /**
+     * Event facts.
+     */
+    private const EVENT_BIRTH    = 'BIRT';
+    private const EVENT_DEATH    = 'DEAT';
+    private const EVENT_MARRIAGE = 'MARR';
+    private const EVENT_DIVORCE  = 'DIV';
+
+    /**
      * @var Tree
      */
     private $tree;
@@ -109,7 +123,7 @@ class EventRepository implements EventRepositoryInterface
      */
     public function totalBirths(): string
     {
-        return $this->totalEvents(['BIRT']);
+        return $this->totalEvents([self::EVENT_BIRTH]);
     }
 
     /**
@@ -125,7 +139,7 @@ class EventRepository implements EventRepositoryInterface
      */
     public function totalDeaths(): string
     {
-        return $this->totalEvents(['DEAT']);
+        return $this->totalEvents([self::EVENT_DEATH]);
     }
 
     /**
@@ -141,7 +155,7 @@ class EventRepository implements EventRepositoryInterface
      */
     public function totalMarriages(): string
     {
-        return $this->totalEvents(['MARR']);
+        return $this->totalEvents([self::EVENT_MARRIAGE]);
     }
 
     /**
@@ -157,7 +171,7 @@ class EventRepository implements EventRepositoryInterface
      */
     public function totalDivorces(): string
     {
-        return $this->totalEvents(['DIV']);
+        return $this->totalEvents([self::EVENT_DIVORCE]);
     }
 
     /**
@@ -200,10 +214,6 @@ class EventRepository implements EventRepositoryInterface
      */
     private function eventQuery(string $direction)
     {
-        if ($direction !== 'ASC') {
-            $direction = 'DESC';
-        }
-
         return DB::table('dates')
             ->select(['d_gid as id', 'd_year as year', 'd_fact AS fact', 'd_type AS type'])
             ->where('d_file', '=', $this->tree->id())
@@ -224,19 +234,20 @@ class EventRepository implements EventRepositoryInterface
      */
     private function getFirstLastEvent(string $direction): string
     {
-        $row = $this->eventQuery($direction);
+        $row    = $this->eventQuery($direction);
+        $result = '';
 
-        if (!$row) {
-            return '';
+        if ($row) {
+            $record = GedcomRecord::getInstance($row->id, $this->tree);
+
+            if ($record && $record->canShow()) {
+                $result = $record->formatList();
+            } else {
+                $result = I18N::translate('This information is private and cannot be shown.');
+            }
         }
 
-        $record = GedcomRecord::getInstance($row->id, $this->tree);
-
-        if ($record && $record->canShow()) {
-            return $record->formatList();
-        }
-
-        return I18N::translate('This information is private and cannot be shown.');
+        return $result;
     }
 
     /**
@@ -244,7 +255,7 @@ class EventRepository implements EventRepositoryInterface
      */
     public function firstEvent(): string
     {
-        return $this->getFirstLastEvent('ASC');
+        return $this->getFirstLastEvent(self::SORT_ASC);
     }
 
     /**
@@ -252,7 +263,7 @@ class EventRepository implements EventRepositoryInterface
      */
     public function lastEvent(): string
     {
-        return $this->getFirstLastEvent('DESC');
+        return $this->getFirstLastEvent(self::SORT_DESC);
     }
 
     /**
@@ -279,7 +290,7 @@ class EventRepository implements EventRepositoryInterface
      */
     public function firstEventYear(): string
     {
-        return $this->getFirstLastEventYear('ASC');
+        return $this->getFirstLastEventYear(self::SORT_ASC);
     }
 
     /**
@@ -287,7 +298,7 @@ class EventRepository implements EventRepositoryInterface
      */
     public function lastEventYear(): string
     {
-        return $this->getFirstLastEventYear('DESC');
+        return $this->getFirstLastEventYear(self::SORT_DESC);
     }
 
     /**
@@ -303,9 +314,9 @@ class EventRepository implements EventRepositoryInterface
 
         if ($row) {
             $event_types = [
-                'BIRT' => I18N::translate('birth'),
-                'DEAT' => I18N::translate('death'),
-                'MARR' => I18N::translate('marriage'),
+                self::EVENT_BIRTH    => I18N::translate('birth'),
+                self::EVENT_DEATH    => I18N::translate('death'),
+                self::EVENT_MARRIAGE => I18N::translate('marriage'),
                 'ADOP' => I18N::translate('adoption'),
                 'BURI' => I18N::translate('burial'),
                 'CENS' => I18N::translate('census added'),
@@ -322,7 +333,7 @@ class EventRepository implements EventRepositoryInterface
      */
     public function firstEventType(): string
     {
-        return $this->getFirstLastEventType('ASC');
+        return $this->getFirstLastEventType(self::SORT_ASC);
     }
 
     /**
@@ -330,7 +341,7 @@ class EventRepository implements EventRepositoryInterface
      */
     public function lastEventType(): string
     {
-        return $this->getFirstLastEventType('DESC');
+        return $this->getFirstLastEventType(self::SORT_DESC);
     }
 
     /**
@@ -360,7 +371,7 @@ class EventRepository implements EventRepositoryInterface
      */
     public function firstEventName(): string
     {
-        return $this->getFirstLastEventName('ASC');
+        return $this->getFirstLastEventName(self::SORT_ASC);
     }
 
     /**
@@ -368,7 +379,7 @@ class EventRepository implements EventRepositoryInterface
      */
     public function lastEventName(): string
     {
-        return $this->getFirstLastEventName('DESC');
+        return $this->getFirstLastEventName(self::SORT_DESC);
     }
 
     /**
@@ -403,7 +414,7 @@ class EventRepository implements EventRepositoryInterface
      */
     public function firstEventPlace(): string
     {
-        return $this->getFirstLastEventPlace('ASC');
+        return $this->getFirstLastEventPlace(self::SORT_ASC);
     }
 
     /**
@@ -411,6 +422,6 @@ class EventRepository implements EventRepositoryInterface
      */
     public function lastEventPlace(): string
     {
-        return $this->getFirstLastEventPlace('DESC');
+        return $this->getFirstLastEventPlace(self::SORT_DESC);
     }
 }

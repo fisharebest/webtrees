@@ -33,6 +33,20 @@ use Illuminate\Database\Query\Builder;
 class FamilyDatesRepository implements FamilyDatesRepositoryInterface
 {
     /**
+     * Sorting directions.
+     */
+    private const SORT_MIN = 'MIN';
+    private const SORT_MAX = 'MAX';
+
+    /**
+     * Event facts.
+     */
+    private const EVENT_BIRTH    = 'BIRT';
+    private const EVENT_DEATH    = 'DEAT';
+    private const EVENT_MARRIAGE = 'MARR';
+    private const EVENT_DIVORCE  = 'DIV';
+
+    /**
      * @var Tree
      */
     private $tree;
@@ -48,14 +62,14 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
     }
 
     /**
-     * Birth and Death
+     * Returns the first/last event record for the given event fact.
      *
      * @param string $fact
      * @param string $operation
      *
      * @return Model|object|static|null
      */
-    private function mortalityQuery(string $fact, string $operation)
+    private function eventQuery(string $fact, string $operation)
     {
         return DB::table('dates')
             ->select(['d_gid as id', 'd_year as year', 'd_fact AS fact', 'd_type AS type'])
@@ -81,19 +95,20 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
      */
     private function getFirstLastEvent(string $type, string $operation): string
     {
-        $row = $this->mortalityQuery($type, $operation);
+        $row    = $this->eventQuery($type, $operation);
+        $result = '';
 
-        if (!$row) {
-            return '';
+        if ($row) {
+            $record = GedcomRecord::getInstance($row->id, $this->tree);
+
+            if ($record && $record->canShow()) {
+                $result = $record->formatList();
+            } else {
+                $result = I18N::translate('This information is private and cannot be shown.');
+            }
         }
 
-        $record = GedcomRecord::getInstance($row->id, $this->tree);
-
-        if ($record && $record->canShow()) {
-            return $record->formatList();
-        }
-
-        return I18N::translate('This information is private and cannot be shown.');
+        return $result;
     }
 
     /**
@@ -101,7 +116,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
      */
     public function firstBirth(): string
     {
-        return $this->getFirstLastEvent('BIRT', 'MIN');
+        return $this->getFirstLastEvent(self::EVENT_BIRTH, self::SORT_MIN);
     }
 
     /**
@@ -109,7 +124,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
      */
     public function lastBirth(): string
     {
-        return $this->getFirstLastEvent('BIRT', 'MAX');
+        return $this->getFirstLastEvent(self::EVENT_BIRTH, self::SORT_MAX);
     }
 
     /**
@@ -117,7 +132,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
      */
     public function firstDeath(): string
     {
-        return $this->getFirstLastEvent('DEAT', 'MIN');
+        return $this->getFirstLastEvent(self::EVENT_DEATH, self::SORT_MIN);
     }
 
     /**
@@ -125,7 +140,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
      */
     public function lastDeath(): string
     {
-        return $this->getFirstLastEvent('DEAT', 'MAX');
+        return $this->getFirstLastEvent(self::EVENT_DEATH, self::SORT_MAX);
     }
 
     /**
@@ -133,7 +148,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
      */
     public function firstMarriage(): string
     {
-        return $this->getFirstLastEvent('MARR', 'MIN');
+        return $this->getFirstLastEvent(self::EVENT_MARRIAGE, self::SORT_MIN);
     }
 
     /**
@@ -141,7 +156,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
      */
     public function lastMarriage(): string
     {
-        return $this->getFirstLastEvent('MARR', 'MAX');
+        return $this->getFirstLastEvent(self::EVENT_MARRIAGE, self::SORT_MAX);
     }
 
     /**
@@ -149,7 +164,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
      */
     public function firstDivorce(): string
     {
-        return $this->getFirstLastEvent('DIV', 'MIN');
+        return $this->getFirstLastEvent(self::EVENT_DIVORCE, self::SORT_MIN);
     }
 
     /**
@@ -157,7 +172,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
      */
     public function lastDivorce(): string
     {
-        return $this->getFirstLastEvent('DIV', 'MAX');
+        return $this->getFirstLastEvent(self::EVENT_DIVORCE, self::SORT_MAX);
     }
 
     /**
@@ -170,7 +185,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
      */
     private function getFirstLastEventYear(string $type, string $operation): string
     {
-        $row = $this->mortalityQuery($type, $operation);
+        $row = $this->eventQuery($type, $operation);
 
         if (!$row) {
             return '';
@@ -189,7 +204,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
      */
     public function firstBirthYear(): string
     {
-        return $this->getFirstLastEventYear('BIRT', 'MIN');
+        return $this->getFirstLastEventYear(self::EVENT_BIRTH, self::SORT_MIN);
     }
 
     /**
@@ -197,7 +212,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
      */
     public function lastBirthYear(): string
     {
-        return $this->getFirstLastEventYear('BIRT', 'MAX');
+        return $this->getFirstLastEventYear(self::EVENT_BIRTH, self::SORT_MAX);
     }
 
     /**
@@ -205,7 +220,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
      */
     public function firstDeathYear(): string
     {
-        return $this->getFirstLastEventYear('DEAT', 'MIN');
+        return $this->getFirstLastEventYear(self::EVENT_DEATH, self::SORT_MIN);
     }
 
     /**
@@ -213,7 +228,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
      */
     public function lastDeathYear(): string
     {
-        return $this->getFirstLastEventYear('DEAT', 'MAX');
+        return $this->getFirstLastEventYear(self::EVENT_DEATH, self::SORT_MAX);
     }
 
     /**
@@ -221,7 +236,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
      */
     public function firstMarriageYear(): string
     {
-        return $this->getFirstLastEventYear('MARR', 'MIN');
+        return $this->getFirstLastEventYear(self::EVENT_MARRIAGE, self::SORT_MIN);
     }
 
     /**
@@ -229,7 +244,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
      */
     public function lastMarriageYear(): string
     {
-        return $this->getFirstLastEventYear('MARR', 'MAX');
+        return $this->getFirstLastEventYear(self::EVENT_MARRIAGE, self::SORT_MAX);
     }
 
     /**
@@ -237,7 +252,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
      */
     public function firstDivorceYear(): string
     {
-        return $this->getFirstLastEventYear('DIV', 'MIN');
+        return $this->getFirstLastEventYear(self::EVENT_DIVORCE, self::SORT_MIN);
     }
 
     /**
@@ -245,7 +260,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
      */
     public function lastDivorceYear(): string
     {
-        return $this->getFirstLastEventYear('DIV', 'MAX');
+        return $this->getFirstLastEventYear(self::EVENT_DIVORCE, self::SORT_MAX);
     }
 
     /**
@@ -258,7 +273,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
      */
     private function getFirstLastEventName(string $type, string $operation): string
     {
-        $row = $this->mortalityQuery($type, $operation);
+        $row = $this->eventQuery($type, $operation);
 
         if ($row) {
             $record = GedcomRecord::getInstance($row->id, $this->tree);
@@ -276,7 +291,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
      */
     public function firstBirthName(): string
     {
-        return $this->getFirstLastEventName('BIRT', 'MIN');
+        return $this->getFirstLastEventName(self::EVENT_BIRTH, self::SORT_MIN);
     }
 
     /**
@@ -284,7 +299,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
      */
     public function lastBirthName(): string
     {
-        return $this->getFirstLastEventName('BIRT', 'MAX');
+        return $this->getFirstLastEventName(self::EVENT_BIRTH, self::SORT_MAX);
     }
 
     /**
@@ -292,7 +307,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
      */
     public function firstDeathName(): string
     {
-        return $this->getFirstLastEventName('DEAT', 'MIN');
+        return $this->getFirstLastEventName(self::EVENT_DEATH, self::SORT_MIN);
     }
 
     /**
@@ -300,7 +315,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
      */
     public function lastDeathName(): string
     {
-        return $this->getFirstLastEventName('DEAT', 'MAX');
+        return $this->getFirstLastEventName(self::EVENT_DEATH, self::SORT_MAX);
     }
 
     /**
@@ -308,7 +323,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
      */
     public function firstMarriageName(): string
     {
-        return $this->getFirstLastEventName('MARR', 'MIN');
+        return $this->getFirstLastEventName(self::EVENT_MARRIAGE, self::SORT_MIN);
     }
 
     /**
@@ -316,7 +331,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
      */
     public function lastMarriageName(): string
     {
-        return $this->getFirstLastEventName('MARR', 'MAX');
+        return $this->getFirstLastEventName(self::EVENT_MARRIAGE, self::SORT_MAX);
     }
 
     /**
@@ -324,7 +339,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
      */
     public function firstDivorceName(): string
     {
-        return $this->getFirstLastEventName('DIV', 'MIN');
+        return $this->getFirstLastEventName(self::EVENT_DIVORCE, self::SORT_MIN);
     }
 
     /**
@@ -332,7 +347,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
      */
     public function lastDivorceName(): string
     {
-        return $this->getFirstLastEventName('DIV', 'MAX');
+        return $this->getFirstLastEventName(self::EVENT_DIVORCE, self::SORT_MAX);
     }
 
     /**
@@ -345,7 +360,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
      */
     private function getFirstLastEventPlace(string $type, string $operation): string
     {
-        $row = $this->mortalityQuery($type, $operation);
+        $row = $this->eventQuery($type, $operation);
 
         if ($row) {
             $record = GedcomRecord::getInstance($row->id, $this->tree);
@@ -368,7 +383,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
      */
     public function firstBirthPlace(): string
     {
-        return $this->getFirstLastEventPlace('BIRT', 'MIN');
+        return $this->getFirstLastEventPlace(self::EVENT_BIRTH, self::SORT_MIN);
     }
 
     /**
@@ -376,7 +391,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
      */
     public function lastBirthPlace(): string
     {
-        return $this->getFirstLastEventPlace('BIRT', 'MAX');
+        return $this->getFirstLastEventPlace(self::EVENT_BIRTH, self::SORT_MAX);
     }
 
     /**
@@ -384,7 +399,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
      */
     public function firstDeathPlace(): string
     {
-        return $this->getFirstLastEventPlace('DEAT', 'MIN');
+        return $this->getFirstLastEventPlace(self::EVENT_DEATH, self::SORT_MIN);
     }
 
     /**
@@ -392,7 +407,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
      */
     public function lastDeathPlace(): string
     {
-        return $this->getFirstLastEventPlace('DEAT', 'MAX');
+        return $this->getFirstLastEventPlace(self::EVENT_DEATH, self::SORT_MAX);
     }
 
     /**
@@ -400,7 +415,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
      */
     public function firstMarriagePlace(): string
     {
-        return $this->getFirstLastEventPlace('MARR', 'MIN');
+        return $this->getFirstLastEventPlace(self::EVENT_MARRIAGE, self::SORT_MIN);
     }
 
     /**
@@ -408,7 +423,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
      */
     public function lastMarriagePlace(): string
     {
-        return $this->getFirstLastEventPlace('MARR', 'MAX');
+        return $this->getFirstLastEventPlace(self::EVENT_MARRIAGE, self::SORT_MAX);
     }
 
     /**
@@ -416,7 +431,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
      */
     public function firstDivorcePlace(): string
     {
-        return $this->getFirstLastEventPlace('DIV', 'MIN');
+        return $this->getFirstLastEventPlace(self::EVENT_DIVORCE, self::SORT_MIN);
     }
 
     /**
@@ -424,6 +439,6 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
      */
     public function lastDivorcePlace(): string
     {
-        return $this->getFirstLastEventPlace('DIV', 'MAX');
+        return $this->getFirstLastEventPlace(self::EVENT_DIVORCE, self::SORT_MAX);
     }
 }
