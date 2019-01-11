@@ -658,7 +658,7 @@ class SearchController extends AbstractBaseController
         $rows = Database::prepare($sql)->execute($args)->fetchAll();
         foreach ($rows as $row) {
             // SQL may have matched on private data or gedcom tags, so check again against privatized data.
-            $record = Family::getInstance($row->xref, Tree::findById($row->gedcom_id), $row->gedcom);
+            $record = Family::getInstance($row->xref, Tree::findById((int) $row->gedcom_id), $row->gedcom);
             // Ignore non-genealogy data
             $gedrec = preg_replace('/\n\d (_UID|_WT_USER|FILE|FORM|TYPE|CHAN|RESN) .*/', '', $record->gedcom());
             // Ignore links and tags
@@ -717,7 +717,7 @@ class SearchController extends AbstractBaseController
         $list = [];
         $rows = Database::prepare($sql)->execute($args)->fetchAll();
         foreach ($rows as $row) {
-            $list[] = Family::getInstance($row->xref, Tree::findById($row->gedcom_id), $row->gedcom);
+            $list[] = Family::getInstance($row->xref, Tree::findById((int) $row->gedcom_id), $row->gedcom);
         }
 
         $list = array_filter($list, function (Family $x) use ($search_terms): bool {
@@ -767,7 +767,7 @@ class SearchController extends AbstractBaseController
         $rows = Database::prepare($sql)->execute($args)->fetchAll();
         foreach ($rows as $row) {
             // SQL may have matched on private data or gedcom tags, so check again against privatized data.
-            $record = Individual::getInstance($row->xref, Tree::findById($row->gedcom_id), $row->gedcom);
+            $record = Individual::getInstance($row->xref, Tree::findById((int) $row->gedcom_id), $row->gedcom);
             // Ignore non-genealogy data
             $gedrec = preg_replace('/\n\d (_UID|_WT_USER|FILE|FORM|TYPE|CHAN|RESN) .*/', '', $record->gedcom());
             // Ignore links and tags
@@ -1285,7 +1285,7 @@ class SearchController extends AbstractBaseController
         $rows = Database::prepare($sql)->execute($args)->fetchAll();
 
         foreach ($rows as $row) {
-            $list[] = Individual::getInstance($row->xref, Tree::findById($row->gedcom_id), $row->gedcom);
+            $list[] = Individual::getInstance($row->xref, Tree::findById((int) $row->gedcom_id), $row->gedcom);
         }
 
         $list = array_filter($list, function (Individual $x): bool {
@@ -1328,7 +1328,7 @@ class SearchController extends AbstractBaseController
         $rows = Database::prepare($sql)->execute($args)->fetchAll();
         foreach ($rows as $row) {
             // SQL may have matched on private data or gedcom tags, so check again against privatized data.
-            $record = Note::getInstance($row->xref, Tree::findById($row->gedcom_id), $row->gedcom);
+            $record = Note::getInstance($row->xref, Tree::findById((int) $row->gedcom_id), $row->gedcom);
             // Ignore non-genealogy data
             $gedrec = preg_replace('/\n\d (_UID|_WT_USER|FILE|FORM|TYPE|CHAN|RESN) .*/', '', $record->gedcom());
             // Ignore links and tags
@@ -1384,7 +1384,7 @@ class SearchController extends AbstractBaseController
         $rows = Database::prepare($sql)->execute($args)->fetchAll();
         foreach ($rows as $row) {
             // SQL may have matched on private data or gedcom tags, so check again against privatized data.
-            $record = Repository::getInstance($row->xref, Tree::findById($row->gedcom_id), $row->gedcom);
+            $record = Repository::getInstance($row->xref, Tree::findById((int) $row->gedcom_id), $row->gedcom);
             // Ignore non-genealogy data
             $gedrec = preg_replace('/\n\d (_UID|_WT_USER|FILE|FORM|TYPE|CHAN|RESN) .*/', '', $record->gedcom());
             // Ignore links and tags
@@ -1440,7 +1440,7 @@ class SearchController extends AbstractBaseController
         $rows = Database::prepare($sql)->execute($args)->fetchAll();
         foreach ($rows as $row) {
             // SQL may have matched on private data or gedcom tags, so check again against privatized data.
-            $record = Source::getInstance($row->xref, Tree::findById($row->gedcom_id), $row->gedcom);
+            $record = Source::getInstance($row->xref, Tree::findById((int) $row->gedcom_id), $row->gedcom);
             // Ignore non-genealogy data
             $gedrec = preg_replace('/\n\d (_UID|_WT_USER|FILE|FORM|TYPE|CHAN|RESN) .*/', '', $record->gedcom());
             // Ignore links and tags

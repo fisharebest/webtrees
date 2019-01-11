@@ -598,9 +598,8 @@ class ListController extends AbstractBaseController
         return DB::table('other')
             ->where('o_file', '=', $tree->id())
             ->where('o_type', '=', 'NOTE')
-            ->select(['o_id', 'o_gedcom'])
             ->get()
-            ->map(Note::rowMapper($tree))
+            ->map(Note::rowMapper())
             ->filter(GedcomRecord::filter());
     }
 
@@ -616,9 +615,8 @@ class ListController extends AbstractBaseController
         return DB::table('other')
             ->where('o_file', '=', $tree->id())
             ->where('o_type', '=', 'REPO')
-            ->select(['o_id', 'o_gedcom'])
             ->get()
-            ->map(Repository::rowMapper($tree))
+            ->map(Repository::rowMapper())
             ->filter(GedcomRecord::filter());
     }
 
@@ -633,9 +631,8 @@ class ListController extends AbstractBaseController
     {
         return DB::table('sources')
             ->where('s_file', '=', $tree->id())
-            ->select(['s_id', 's_gedcom'])
             ->get()
-            ->map(Source::rowMapper($tree))
+            ->map(Source::rowMapper())
             ->filter(GedcomRecord::filter());
     }
 

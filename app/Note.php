@@ -34,14 +34,12 @@ class Note extends GedcomRecord
     /**
      * A closure which will create a record from a database row.
      *
-     * @param Tree $tree
-     *
      * @return Closure
      */
-    public static function rowMapper(Tree $tree): Closure
+    public static function rowMapper(): Closure
     {
-        return function (stdClass $row) use ($tree): Note {
-            return Note::getInstance($row->o_id, $tree, $row->o_gedcom);
+        return function (stdClass $row): Note {
+            return Note::getInstance($row->o_id, Tree::findById($row->o_file), $row->o_gedcom);
         };
     }
 

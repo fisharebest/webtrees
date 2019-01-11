@@ -268,7 +268,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
             ->skip($offset)
             ->take($limit)
             ->get()
-            ->map(Individual::rowMapper($tree));
+            ->map(Individual::rowMapper());
     }
 
     /**
@@ -286,7 +286,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
             ->skip($offset)
             ->take($limit)
             ->get()
-            ->map(Media::rowMapper($tree));
+            ->map(Media::rowMapper());
     }
 
     /**
@@ -305,7 +305,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
             ->skip($offset)
             ->take($limit)
             ->get()
-            ->map(Note::rowMapper($tree));
+            ->map(Note::rowMapper());
     }
 
     /**
@@ -324,7 +324,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
             ->skip($offset)
             ->take($limit)
             ->get()
-            ->map(Repository::rowMapper($tree));
+            ->map(Repository::rowMapper());
     }
 
     /**
@@ -342,6 +342,6 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
             ->skip($offset)
             ->take($limit)
             ->get()
-            ->map(Source::rowMapper($tree));
+            ->map(Source::rowMapper());
     }
 }

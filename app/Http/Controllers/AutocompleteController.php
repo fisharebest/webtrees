@@ -117,9 +117,9 @@ class AutocompleteController extends AbstractBaseController
             ->where('l_to', '=', $xref)
             ->where('l_type', '=', 'SOUR')
             ->distinct()
-            ->select(['i_id', 'i_gedcom'])
+            ->select(['individuals.*'])
             ->get()
-            ->map(Individual::rowMapper($tree))
+            ->map(Individual::rowMapper())
             ->filter(GedcomRecord::filter());
 
         $families = DB::table('families')
@@ -133,9 +133,9 @@ class AutocompleteController extends AbstractBaseController
             ->where('l_to', '=', $xref)
             ->where('l_type', '=', 'SOUR')
             ->distinct()
-            ->select(['f_id', 'f_gedcom'])
+            ->select(['families.*'])
             ->get()
-            ->map(Family::rowMapper($tree))
+            ->map(Family::rowMapper())
             ->filter(GedcomRecord::filter());
 
         $pages = [];

@@ -263,7 +263,7 @@ class PendingChangesController extends AbstractBaseController
         foreach ($rows as $row) {
             $row->change_time = new Carbon($row->change_time);
 
-            $change_tree = Tree::findById($row->gedcom_id);
+            $change_tree = Tree::findById((int) $row->gedcom_id);
 
             preg_match('/^0 (?:@' . Gedcom::REGEX_XREF . '@ )?(' . Gedcom::REGEX_TAG . ')/', $row->old_gedcom . $row->new_gedcom, $match);
 

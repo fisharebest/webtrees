@@ -219,7 +219,7 @@ class AdminMediaController extends AbstractBaseController
 
                 $data = [];
                 foreach ($rows as $row) {
-                    $media       = Media::getInstance($row->xref, Tree::findById($row->gedcom_id), $row->gedcom);
+                    $media       = Media::getInstance($row->xref, Tree::findById((int) $row->gedcom_id), $row->gedcom);
                     $media_files = $media->mediaFiles();
                     $media_files = array_map(function (MediaFile $media_file): string {
                         return $media_file->displayImage(150, 150, '', []);
@@ -289,7 +289,7 @@ class AdminMediaController extends AbstractBaseController
 
                 $data = [];
                 foreach ($rows as $row) {
-                    $media  = Media::getInstance($row->xref, Tree::findById($row->gedcom_id), $row->gedcom);
+                    $media  = Media::getInstance($row->xref, Tree::findById((int) $row->gedcom_id), $row->gedcom);
                     $data[] = [
                         GedcomTag::getLabelValue('URL', $row->multimedia_file_refn),
                         $media->displayImage(150, 150, '', []),

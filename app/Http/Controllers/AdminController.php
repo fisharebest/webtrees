@@ -391,7 +391,7 @@ class AdminController extends AbstractBaseController
         $fact_id   = $request->get('fact_id');
         $indi_xref = $request->get('indi_xref');
         $obje_xref = $request->get('obje_xref');
-        $tree_id   = $request->get('tree_id');
+        $tree_id   = (int) $request->get('tree_id');
 
         $tree       = Tree::findById($tree_id);
         $individual = Individual::getInstance($indi_xref, $tree);
@@ -462,7 +462,7 @@ class AdminController extends AbstractBaseController
             ->select(['media.m_file', 'media.m_id', 'media.m_gedcom', 'individuals.i_id', 'individuals.i_gedcom']);
 
         return $datatables_service->handle($request, $query, [], function (stdClass $datum) use ($ignore_facts): array {
-            $tree       = Tree::findById($datum->m_file);
+            $tree       = Tree::findById((int) $datum->m_file);
             $media      = Media::getInstance($datum->m_id, $tree, $datum->m_gedcom);
             $individual = Individual::getInstance($datum->i_id, $tree, $datum->i_gedcom);
 
@@ -1307,7 +1307,7 @@ class AdminController extends AbstractBaseController
         $media = [];
 
         foreach ($rows as $row) {
-            $tree    = Tree::findById($row->m_file);
+            $tree    = Tree::findById((int) $row->m_file);
             $media[] = Media::getInstance($row->m_id, $tree, $row->m_gedcom);
         }
 

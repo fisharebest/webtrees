@@ -33,14 +33,12 @@ class Source extends GedcomRecord
     /**
      * A closure which will create a record from a database row.
      *
-     * @param Tree $tree
-     *
      * @return Closure
      */
-    public static function rowMapper(Tree $tree): Closure
+    public static function rowMapper(): Closure
     {
-        return function (stdClass $row) use ($tree): Source {
-            return Source::getInstance($row->s_id, $tree, $row->s_gedcom);
+        return function (stdClass $row): Source {
+            return Source::getInstance($row->s_id, Tree::findById($row->s_file), $row->s_gedcom);
         };
     }
 

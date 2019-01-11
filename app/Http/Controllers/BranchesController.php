@@ -176,10 +176,10 @@ class BranchesController extends AbstractBaseController
                     }
                 }
             })
-            ->select(['i_id', 'i_gedcom'])
+            ->select(['individuals.*'])
             ->distinct()
             ->get()
-            ->map(Individual::rowMapper($tree))
+            ->map(Individual::rowMapper())
             ->filter(GedcomRecord::filter())
             ->all();
 

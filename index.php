@@ -181,13 +181,11 @@ $route   = $request->get('route');
 
 try {
     // Most requests will need the current tree and user.
-    $all_trees = Tree::getAll();
-
-    $tree = $all_trees[$request->get('ged')] ?? null;
+    $tree = Tree::findByName($request->get('ged')) ?? null;
 
     // No tree specified/available?  Choose one.
     if ($tree === null && $request->getMethod() === Request::METHOD_GET) {
-        $tree = $all_trees[Site::getPreference('DEFAULT_GEDCOM')] ?? array_values($all_trees)[0] ?? null;
+        $tree = Tree::findByName(Site::getPreference('DEFAULT_GEDCOM')) ?? Tree::getAll()[0] ?? null;
     }
 
     // Select a locale

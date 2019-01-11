@@ -97,14 +97,12 @@ class GedcomRecord
     /**
      * A closure which will create a record from a database row.
      *
-     * @param Tree $tree
-     *
      * @return Closure
      */
-    public static function rowMapper(Tree $tree): Closure
+    public static function rowMapper(): Closure
     {
-        return function (stdClass $row) use ($tree): GedcomRecord {
-            return GedcomRecord::getInstance($row->o_id, $tree, $row->o_gedcom);
+        return function (stdClass $row): GedcomRecord {
+            return GedcomRecord::getInstance($row->o_id, Tree::findById($row->o_file), $row->o_gedcom);
         };
     }
 

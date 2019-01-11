@@ -50,7 +50,7 @@ class Tree
     /** @var integer[][] Default access rules for individual facts in this tree */
     private $individual_fact_privacy;
 
-    /** @var Tree[] All trees that we have permission to see. */
+    /** @var Tree[] All trees that we have permission to see, indexed by ID. */
     public static $trees = [];
 
     /** @var string[] Cached copy of the wt_gedcom_setting table. */
@@ -338,7 +338,7 @@ class Tree
             $rows = $query->get();
 
             foreach ($rows as $row) {
-                self::$trees[$row->tree_name] = new self((int) $row->tree_id, $row->tree_name, $row->tree_title);
+                self::$trees[$row->tree_id] = new self((int) $row->tree_id, $row->tree_name, $row->tree_title);
             }
         }
 
@@ -350,17 +350,11 @@ class Tree
      *
      * @param int $tree_id
      *
-     * @throws \DomainException
      * @return Tree
      */
-    public static function findById($tree_id): Tree
+    public static function findById(int $tree_id): Tree
     {
-        foreach (self::getAll() as $tree) {
-            if ($tree->id == $tree_id) {
-                return $tree;
-            }
-        }
-        throw new \DomainException();
+        return self::getAll()[$tree_id];
     }
 
     /**
@@ -436,9 +430,6 @@ class Tree
             // A tree with that name already exists?
             return self::findByName($tree_name);
         }
-
-        // Update the list of trees - to include this new one
-        self::$trees[$tree_name] = $tree;
 
         $tree->setPreference('imported', '0');
         $tree->setPreference('title', $tree_title);

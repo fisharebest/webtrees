@@ -70,12 +70,10 @@ class SearchService
             ->whereContains(DB::raw("CONCAT(" . $prefix . "husb_name.n_full, ' ', " . $prefix . "wife_name.n_full)"), $search)
             ->orderBy('husb_name.n_sort')
             ->orderBy('wife_name.n_sort')
-            ->select(['families.f_id', 'families.f_gedcom', 'husb_name.n_sort', 'wife_name.n_sort'])
+            ->select(['families.*', 'husb_name.n_sort', 'wife_name.n_sort'])
             ->distinct();
 
-        $row_mapper = Family::rowMapper($tree);
-
-        return $this->paginateQuery($query, $row_mapper, $offset, $limit);
+        return $this->paginateQuery($query, Family::rowMapper(), $offset, $limit);
     }
 
     /**
@@ -99,12 +97,10 @@ class SearchService
                     ->whereContains('n_full', $search);
             })
             ->orderBy('n_sort')
-            ->select(['individuals.i_id', 'individuals.i_gedcom', 'n_sort', 'n_num'])
+            ->select(['individuals.*', 'n_sort', 'n_num'])
             ->distinct();
 
-        $row_mapper = Individual::rowMapper($tree);
-
-        return $this->paginateQuery($query, $row_mapper, $offset, $limit);
+        return $this->paginateQuery($query, Individual::rowMapper(), $offset, $limit);
     }
 
     /**
@@ -131,12 +127,10 @@ class SearchService
                     ->whereContains('multimedia_file_refn', $search)
                     ->whereContains('descriptive_title', $search, 'or');
             })
-            ->select(['media.m_id', 'media.m_gedcom'])
+            ->select(['media.*'])
             ->distinct();
 
-        $row_mapper = Media::rowMapper($tree);
-
-        return $this->paginateQuery($query, $row_mapper, $offset, $limit);
+        return $this->paginateQuery($query, Media::rowMapper(), $offset, $limit);
     }
 
     /**
@@ -155,12 +149,9 @@ class SearchService
             ->where('o_file', '=', $tree->id())
             ->where('o_type', '=', 'NOTE')
             ->whereContains('o_gedcom', $search)
-            ->orderBy('o_id')
-            ->select(['o_id', 'o_gedcom']);
+            ->orderBy('o_id');
 
-        $row_mapper = Note::rowMapper($tree);
-
-        return $this->paginateQuery($query, $row_mapper, $offset, $limit);
+        return $this->paginateQuery($query, Note::rowMapper(), $offset, $limit);
     }
 
     /**
@@ -179,12 +170,9 @@ class SearchService
             ->where('o_file', '=', $tree->id())
             ->where('o_type', '=', 'REPO')
             ->whereContains('o_gedcom', $search)
-            ->orderBy('o_id')
-            ->select(['o_id', 'o_gedcom']);
+            ->orderBy('o_id');
 
-        $row_mapper = Repository::rowMapper($tree);
-
-        return $this->paginateQuery($query, $row_mapper, $offset, $limit);
+        return $this->paginateQuery($query, Repository::rowMapper(), $offset, $limit);
     }
 
     /**
@@ -202,12 +190,9 @@ class SearchService
         $query = DB::table('sources')
             ->where('s_file', '=', $tree->id())
             ->whereContains('s_name', $search)
-            ->orderBy('s_name')
-            ->select(['s_id', 's_gedcom']);
+            ->orderBy('s_name');
 
-        $row_mapper = Source::rowMapper($tree);
-
-        return $this->paginateQuery($query, $row_mapper, $offset, $limit);
+        return $this->paginateQuery($query, Source::rowMapper(), $offset, $limit);
     }
 
     /**
@@ -226,12 +211,9 @@ class SearchService
             ->where('o_file', '=', $tree->id())
             ->where('o_type', '=', 'SUBM')
             ->whereContains('o_gedcom', $search)
-            ->orderBy('o_id')
-            ->select(['o_id', 'o_gedcom']);
+            ->orderBy('o_id');
 
-        $row_mapper = GedcomRecord::rowMapper($tree);
-
-        return $this->paginateQuery($query, $row_mapper, $offset, $limit);
+        return $this->paginateQuery($query, GedcomRecord::rowMapper(), $offset, $limit);
     }
 
     /**

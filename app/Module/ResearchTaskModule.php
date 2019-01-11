@@ -193,9 +193,10 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
             ->where('f_file', '=', $tree->id())
             ->where('d_fact', '=', '_TODO')
             ->where('d_julianday1', '<', $max_julian_day)
-            ->select(['f_id', 'f_gedcom'])
+            ->select(['families.*'])
+            ->distinct()
             ->get()
-            ->map(Family::rowMapper($tree));
+            ->map(Family::rowMapper());
     }
 
     /**
@@ -215,7 +216,8 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
             ->where('i_file', '=', $tree->id())
             ->where('d_fact', '=', '_TODO')
             ->where('d_julianday1', '<', $max_julian_day)
-            ->select(['i_id', 'i_gedcom'])
+            ->select(['individuals.*'])
+            ->distinct()
             ->get()
             ->map(Individual::rowMapper($tree));
     }
