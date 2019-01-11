@@ -20,7 +20,7 @@ namespace Fisharebest\Webtrees\Statistics\Repository;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Functions\FunctionsDate;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Statistics\Repository\Interfaces\LatestRepositoryInterface;
+use Fisharebest\Webtrees\Statistics\Repository\Interfaces\LatestUserRepositoryInterface;
 use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
@@ -29,7 +29,7 @@ use Illuminate\Database\Query\JoinClause;
 /**
  * A repository providing methods for latest user related statistics.
  */
-class LatestRepository implements LatestRepositoryInterface
+class LatestUserRepository implements LatestUserRepositoryInterface
 {
     /**
      * Find the newest user on the site.
@@ -39,7 +39,7 @@ class LatestRepository implements LatestRepositoryInterface
      *
      * @return User
      */
-    private function latestUser(): User
+    private function latestUserQuery(): User
     {
         static $user;
 
@@ -68,7 +68,7 @@ class LatestRepository implements LatestRepositoryInterface
      */
     public function latestUserId(): string
     {
-        return (string) $this->latestUser()->id();
+        return (string) $this->latestUserQuery()->id();
     }
 
     /**
@@ -76,7 +76,7 @@ class LatestRepository implements LatestRepositoryInterface
      */
     public function latestUserName(): string
     {
-        return e($this->latestUser()->getUserName());
+        return e($this->latestUserQuery()->getUserName());
     }
 
     /**
@@ -84,7 +84,7 @@ class LatestRepository implements LatestRepositoryInterface
      */
     public function latestUserFullName(): string
     {
-        return e($this->latestUser()->getRealName());
+        return e($this->latestUserQuery()->getRealName());
     }
 
     /**
@@ -93,7 +93,7 @@ class LatestRepository implements LatestRepositoryInterface
     public function latestUserRegDate(string $format = null): string
     {
         $format = $format ?? I18N::dateFormat();
-        $user   = $this->latestUser();
+        $user   = $this->latestUserQuery();
 
         return FunctionsDate::timestampToGedcomDate(
             (int) $user->getPreference('reg_timestamp')
@@ -106,7 +106,7 @@ class LatestRepository implements LatestRepositoryInterface
     public function latestUserRegTime(string $format = null): string
     {
         $format = $format ?? str_replace('%', '', I18N::timeFormat());
-        $user   = $this->latestUser();
+        $user   = $this->latestUserQuery();
 
         return date($format, (int) $user->getPreference('reg_timestamp'));
     }
@@ -118,7 +118,7 @@ class LatestRepository implements LatestRepositoryInterface
     {
         $yes  = $yes ?? I18N::translate('yes');
         $no   = $no ?? I18N::translate('no');
-        $user = $this->latestUser();
+        $user = $this->latestUserQuery();
 
         $is_logged_in = DB::table('session')
             ->selectRaw('1')

@@ -20,7 +20,7 @@ namespace Fisharebest\Webtrees\Statistics\Repository\Interfaces;
 /**
  * A repository providing methods for latest user related statistics.
  */
-interface LatestRepositoryInterface
+interface LatestUserRepositoryInterface
 {
     /**
      * Get the newest registered user's ID.
