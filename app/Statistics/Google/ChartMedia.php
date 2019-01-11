@@ -20,9 +20,7 @@ namespace Fisharebest\Webtrees\Statistics\Google;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Statistics\AbstractGoogle;
-use Fisharebest\Webtrees\Statistics\Repository\MediaRepository;
 use Fisharebest\Webtrees\Theme;
-use Fisharebest\Webtrees\Tree;
 
 /**
  *
@@ -30,35 +28,25 @@ use Fisharebest\Webtrees\Tree;
 class ChartMedia extends AbstractGoogle
 {
     /**
-     * @var MediaRepository
-     */
-    private $mediaRepository;
-
-    /**
-     * Constructor.
-     *
-     * @param Tree $tree
-     */
-    public function __construct(Tree $tree)
-    {
-        $this->mediaRepository = new MediaRepository($tree);
-    }
-
-    /**
      * Create a chart of media types.
      *
      * @param int         $tot        The total number of media files
-     * @param array       $med_types  The list of available media types
+     * @param array       $media      The list of media types to display
      * @param string|null $size
      * @param string|null $color_from
      * @param string|null $color_to
      *
      * @return string
      */
-    public function chartMedia(int $tot, array $med_types, string $size = null, string $color_from = null, string $color_to = null): string
-    {
-        $WT_STATS_CHART_COLOR1 = Theme::theme()->parameter('distribution-chart-no-values');
-        $WT_STATS_CHART_COLOR2 = Theme::theme()->parameter('distribution-chart-high-values');
+    public function chartMedia(
+        int $tot,
+        array $media,
+        string $size       = null,
+        string $color_from = null,
+        string $color_to   = null
+    ): string {
+        $WT_STATS_CHART_COLOR1 = (string) Theme::theme()->parameter('distribution-chart-no-values');
+        $WT_STATS_CHART_COLOR2 = (string) Theme::theme()->parameter('distribution-chart-high-values');
         $WT_STATS_S_CHART_X    = Theme::theme()->parameter('stats-small-chart-x');
         $WT_STATS_S_CHART_Y    = Theme::theme()->parameter('stats-small-chart-y');
 
@@ -77,46 +65,13 @@ class ChartMedia extends AbstractGoogle
         $mediaCounts = [];
         $mediaTypes  = '';
         $chart_title = '';
-        $c           = 0;
-        $max         = 0;
-        $media       = [];
 
-        foreach ($med_types as $type) {
-            $count = $this->mediaRepository->totalMediaType($type);
-            if ($count > 0) {
-                $media[$type] = $count;
-                if ($count > $max) {
-                    $max = $count;
-                }
-                $c += $count;
-            }
-        }
-        $count = $this->mediaRepository->totalMediaType('unknown');
-        if ($count > 0) {
-            $media['unknown'] = $tot - $c;
-            if ($tot - $c > $max) {
-                $max = $count;
-            }
-        }
-        if (($max / $tot) > 0.6 && count($media) > 10) {
-            arsort($media);
-            $media = array_slice($media, 0, 10);
-            $c     = $tot;
-            foreach ($media as $cm) {
-                $c -= $cm;
-            }
-            if (isset($media['other'])) {
-                $media['other'] += $c;
-            } else {
-                $media['other'] = $c;
-            }
-        }
-        asort($media);
         foreach ($media as $type => $count) {
             $mediaCounts[] = intdiv(100 * $count, $tot);
             $mediaTypes    .= GedcomTag::getFileFormTypeValue($type) . ' - ' . I18N::number($count) . '|';
             $chart_title   .= GedcomTag::getFileFormTypeValue($type) . ' (' . $count . '), ';
         }
+
         $chart_title = substr($chart_title, 0, -2);
         $chd         = $this->arrayToExtendedEncoding($mediaCounts);
         $chl         = substr($mediaTypes, 0, -1);

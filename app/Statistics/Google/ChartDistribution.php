@@ -131,8 +131,8 @@ class ChartDistribution extends AbstractGoogle
                         // webtrees uses 3 letter country codes and localised country names,
                         // but google uses 2 letter codes.
                         foreach ($matches[1] as $country) {
-                            if (array_key_exists($country, $country_to_iso3166)) {
-                                if (array_key_exists($country_to_iso3166[$country], $surn_countries)) {
+                            if (\array_key_exists($country, $country_to_iso3166)) {
+                                if (\array_key_exists($country_to_iso3166[$country], $surn_countries)) {
                                     $surn_countries[$country_to_iso3166[$country]]++;
                                 } else {
                                     $surn_countries[$country_to_iso3166[$country]] = 1;
@@ -151,7 +151,7 @@ class ChartDistribution extends AbstractGoogle
                 $b_countries    = $this->placeRepository->statsPlaces('INDI', 'BIRT', 0, true);
                 foreach ($b_countries as $place => $count) {
                     $country = $place;
-                    if (array_key_exists($country, $country_to_iso3166)) {
+                    if (\array_key_exists($country, $country_to_iso3166)) {
                         if (!isset($surn_countries[$country_to_iso3166[$country]])) {
                             $surn_countries[$country_to_iso3166[$country]] = $count;
                         } else {
@@ -168,7 +168,7 @@ class ChartDistribution extends AbstractGoogle
                 $d_countries    = $this->placeRepository->statsPlaces('INDI', 'DEAT', 0, true);
                 foreach ($d_countries as $place => $count) {
                     $country = $place;
-                    if (array_key_exists($country, $country_to_iso3166)) {
+                    if (\array_key_exists($country, $country_to_iso3166)) {
                         if (!isset($surn_countries[$country_to_iso3166[$country]])) {
                             $surn_countries[$country_to_iso3166[$country]] = $count;
                         } else {
@@ -186,7 +186,7 @@ class ChartDistribution extends AbstractGoogle
                 // webtrees uses 3 letter country codes and localised country names, but google uses 2 letter codes.
                 foreach ($m_countries as $place) {
                     $country = $place->country;
-                    if (array_key_exists($country, $country_to_iso3166)) {
+                    if (\array_key_exists($country, $country_to_iso3166)) {
                         if (!isset($surn_countries[$country_to_iso3166[$country]])) {
                             $surn_countries[$country_to_iso3166[$country]] = $place->tot;
                         } else {
@@ -205,7 +205,7 @@ class ChartDistribution extends AbstractGoogle
                 // webtrees uses 3 letter country codes and localised country names, but google uses 2 letter codes.
                 foreach ($a_countries as $place) {
                     $country = $place->country;
-                    if (array_key_exists($country, $country_to_iso3166)) {
+                    if (\array_key_exists($country, $country_to_iso3166)) {
                         if (!isset($surn_countries[$country_to_iso3166[$country]])) {
                             $surn_countries[$country_to_iso3166[$country]] = $place->tot;
                         } else {

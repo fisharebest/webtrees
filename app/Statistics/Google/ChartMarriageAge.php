@@ -173,7 +173,7 @@ class ChartMarriageAge extends AbstractGoogle
             $chxl .= '1:||' . I18N::translate('century') . '|2:|0|10|20|30|40|50|60|70|80|90|100|3:||' . I18N::translate('Age') . '|';
         }
 
-        if (count($rows) > 4 || mb_strlen(I18N::translate('Average age in century of marriage')) < 30) {
+        if (\count($rows) > 4 || mb_strlen(I18N::translate('Average age in century of marriage')) < 30) {
             $chtt = I18N::translate('Average age in century of marriage');
         } else {
             $offset  = 0;
@@ -183,7 +183,7 @@ class ChartMarriageAge extends AbstractGoogle
                 $counter[] = $offset;
             }
 
-            $half = intdiv(count($counter), 2);
+            $half = intdiv(\count($counter), 2);
             $chtt = substr_replace(I18N::translate('Average age in century of marriage'), '|', $counter[$half], 1);
         }
 

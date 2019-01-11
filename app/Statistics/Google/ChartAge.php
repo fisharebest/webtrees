@@ -129,7 +129,7 @@ class ChartAge extends AbstractGoogle
         $chxl  .= '1:||' . I18N::translate('century') . '|2:' . $decades . '|3:||' . I18N::translate('Age') . '|';
         $title = I18N::translate('Average age related to death century');
 
-        if (count($rows) > 6 || mb_strlen($title) < 30) {
+        if (\count($rows) > 6 || mb_strlen($title) < 30) {
             $chtt = $title;
         } else {
             $offset  = 0;
@@ -139,7 +139,7 @@ class ChartAge extends AbstractGoogle
                 $counter[] = $offset;
             }
 
-            $half = intdiv(count($counter), 2);
+            $half = intdiv(\count($counter), 2);
             $chtt = substr_replace($title, '|', $counter[$half], 1);
         }
 

@@ -85,7 +85,7 @@ class MediaRepository implements MediaRepositoryInterface
      *
      * @return int
      */
-    public function totalMediaType(string $type): int
+    private function totalMediaTypeQuery(string $type): int
     {
         if (($type !== 'all')
             && ($type !== 'unknown')
@@ -124,7 +124,7 @@ class MediaRepository implements MediaRepositoryInterface
      */
     public function totalMedia(): string
     {
-        return I18N::number($this->totalMediaType('all'));
+        return I18N::number($this->totalMediaTypeQuery('all'));
     }
 
     /**
@@ -132,7 +132,7 @@ class MediaRepository implements MediaRepositoryInterface
      */
     public function totalMediaAudio(): string
     {
-        return I18N::number($this->totalMediaType('audio'));
+        return I18N::number($this->totalMediaTypeQuery('audio'));
     }
 
     /**
@@ -140,7 +140,7 @@ class MediaRepository implements MediaRepositoryInterface
      */
     public function totalMediaBook(): string
     {
-        return I18N::number($this->totalMediaType('book'));
+        return I18N::number($this->totalMediaTypeQuery('book'));
     }
 
     /**
@@ -148,7 +148,7 @@ class MediaRepository implements MediaRepositoryInterface
      */
     public function totalMediaCard(): string
     {
-        return I18N::number($this->totalMediaType('card'));
+        return I18N::number($this->totalMediaTypeQuery('card'));
     }
 
     /**
@@ -156,7 +156,7 @@ class MediaRepository implements MediaRepositoryInterface
      */
     public function totalMediaCertificate(): string
     {
-        return I18N::number($this->totalMediaType('certificate'));
+        return I18N::number($this->totalMediaTypeQuery('certificate'));
     }
 
     /**
@@ -164,7 +164,7 @@ class MediaRepository implements MediaRepositoryInterface
      */
     public function totalMediaCoatOfArms(): string
     {
-        return I18N::number($this->totalMediaType('coat'));
+        return I18N::number($this->totalMediaTypeQuery('coat'));
     }
 
     /**
@@ -172,7 +172,7 @@ class MediaRepository implements MediaRepositoryInterface
      */
     public function totalMediaDocument(): string
     {
-        return I18N::number($this->totalMediaType('document'));
+        return I18N::number($this->totalMediaTypeQuery('document'));
     }
 
     /**
@@ -180,7 +180,7 @@ class MediaRepository implements MediaRepositoryInterface
      */
     public function totalMediaElectronic(): string
     {
-        return I18N::number($this->totalMediaType('electronic'));
+        return I18N::number($this->totalMediaTypeQuery('electronic'));
     }
 
     /**
@@ -188,7 +188,7 @@ class MediaRepository implements MediaRepositoryInterface
      */
     public function totalMediaMagazine(): string
     {
-        return I18N::number($this->totalMediaType('magazine'));
+        return I18N::number($this->totalMediaTypeQuery('magazine'));
     }
 
     /**
@@ -196,7 +196,7 @@ class MediaRepository implements MediaRepositoryInterface
      */
     public function totalMediaManuscript(): string
     {
-        return I18N::number($this->totalMediaType('manuscript'));
+        return I18N::number($this->totalMediaTypeQuery('manuscript'));
     }
 
     /**
@@ -204,7 +204,7 @@ class MediaRepository implements MediaRepositoryInterface
      */
     public function totalMediaMap(): string
     {
-        return I18N::number($this->totalMediaType('map'));
+        return I18N::number($this->totalMediaTypeQuery('map'));
     }
 
     /**
@@ -212,7 +212,7 @@ class MediaRepository implements MediaRepositoryInterface
      */
     public function totalMediaFiche(): string
     {
-        return I18N::number($this->totalMediaType('fiche'));
+        return I18N::number($this->totalMediaTypeQuery('fiche'));
     }
 
     /**
@@ -220,7 +220,7 @@ class MediaRepository implements MediaRepositoryInterface
      */
     public function totalMediaFilm(): string
     {
-        return I18N::number($this->totalMediaType('film'));
+        return I18N::number($this->totalMediaTypeQuery('film'));
     }
 
     /**
@@ -228,7 +228,7 @@ class MediaRepository implements MediaRepositoryInterface
      */
     public function totalMediaNewspaper(): string
     {
-        return I18N::number($this->totalMediaType('newspaper'));
+        return I18N::number($this->totalMediaTypeQuery('newspaper'));
     }
 
     /**
@@ -236,7 +236,7 @@ class MediaRepository implements MediaRepositoryInterface
      */
     public function totalMediaPainting(): string
     {
-        return I18N::number($this->totalMediaType('painting'));
+        return I18N::number($this->totalMediaTypeQuery('painting'));
     }
 
     /**
@@ -244,7 +244,7 @@ class MediaRepository implements MediaRepositoryInterface
      */
     public function totalMediaPhoto(): string
     {
-        return I18N::number($this->totalMediaType('photo'));
+        return I18N::number($this->totalMediaTypeQuery('photo'));
     }
 
     /**
@@ -252,7 +252,7 @@ class MediaRepository implements MediaRepositoryInterface
      */
     public function totalMediaTombstone(): string
     {
-        return I18N::number($this->totalMediaType('tombstone'));
+        return I18N::number($this->totalMediaTypeQuery('tombstone'));
     }
 
     /**
@@ -260,7 +260,7 @@ class MediaRepository implements MediaRepositoryInterface
      */
     public function totalMediaVideo(): string
     {
-        return I18N::number($this->totalMediaType('video'));
+        return I18N::number($this->totalMediaTypeQuery('video'));
     }
 
     /**
@@ -268,7 +268,7 @@ class MediaRepository implements MediaRepositoryInterface
      */
     public function totalMediaOther(): string
     {
-        return I18N::number($this->totalMediaType('other'));
+        return I18N::number($this->totalMediaTypeQuery('other'));
     }
 
     /**
@@ -276,7 +276,64 @@ class MediaRepository implements MediaRepositoryInterface
      */
     public function totalMediaUnknown(): string
     {
-        return I18N::number($this->totalMediaType('unknown'));
+        return I18N::number($this->totalMediaTypeQuery('unknown'));
+    }
+
+    /**
+     * Returns a sorted list of media types and their total counts.
+     *
+     * @param int $tot The total number of media files
+     *
+     * @return array
+     */
+    private function getSortedMediaTypeList(int $tot): array
+    {
+        $med_types = $this->getMediaTypes();
+        $media     = [];
+        $c         = 0;
+        $max       = 0;
+
+        foreach ($med_types as $type) {
+            $count = $this->totalMediaTypeQuery($type);
+
+            if ($count > 0) {
+                $media[$type] = $count;
+
+                if ($count > $max) {
+                    $max = $count;
+                }
+
+                $c += $count;
+            }
+        }
+
+        $count = $this->totalMediaTypeQuery('unknown');
+        if ($count > 0) {
+            $media['unknown'] = $tot - $c;
+            if ($tot - $c > $max) {
+                $max = $count;
+            }
+        }
+
+        if (($max / $tot) > 0.6 && \count($media) > 10) {
+            arsort($media);
+            $media = \array_slice($media, 0, 10);
+            $c     = $tot;
+
+            foreach ($media as $cm) {
+                $c -= $cm;
+            }
+
+            if (isset($media['other'])) {
+                $media['other'] += $c;
+            } else {
+                $media['other'] = $c;
+            }
+        }
+
+        asort($media);
+
+        return $media;
     }
 
     /**
@@ -284,10 +341,10 @@ class MediaRepository implements MediaRepositoryInterface
      */
     public function chartMedia(string $size = null, string $color_from = null, string $color_to = null): string
     {
-        $tot       = $this->totalMediaType('all');
-        $med_types = $this->getMediaTypes();
+        $tot   = $this->totalMediaTypeQuery('all');
+        $media = $this->getSortedMediaTypeList($tot);
 
-        return (new ChartMedia($this->tree))
-            ->chartMedia($tot, $med_types, $size, $color_from, $color_to);
+        return (new ChartMedia())
+            ->chartMedia($tot, $media, $size, $color_from, $color_to);
     }
 }
