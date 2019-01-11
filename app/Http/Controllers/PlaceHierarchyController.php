@@ -186,7 +186,7 @@ class PlaceHierarchyController extends AbstractBaseController
             ->distinct()
             ->get()
             ->map(Individual::rowMapper())
-            ->filter(Individual::filter())
+            ->filter(Individual::accessFilter())
             ->all();
 
         $famlist = DB::table('families')
@@ -201,7 +201,7 @@ class PlaceHierarchyController extends AbstractBaseController
             ->distinct()
             ->get()
             ->map(Family::rowMapper())
-            ->filter(Family::filter())
+            ->filter(Family::accessFilter())
             ->all();
 
         return [

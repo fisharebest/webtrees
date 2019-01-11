@@ -111,7 +111,7 @@ class GedcomRecord
      *
      * @return Closure
      */
-    public static function filter(): Closure
+    public static function accessFilter(): Closure
     {
         return function (GedcomRecord $record): bool {
             return $record->canShow();

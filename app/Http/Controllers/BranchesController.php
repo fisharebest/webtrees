@@ -180,7 +180,7 @@ class BranchesController extends AbstractBaseController
             ->distinct()
             ->get()
             ->map(Individual::rowMapper())
-            ->filter(GedcomRecord::filter())
+            ->filter(GedcomRecord::accessFilter())
             ->all();
 
         usort($individuals, Individual::birthDateComparator());

@@ -248,7 +248,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface
         }
 
         // Skip private records.
-        $records = $records->filter(GedcomRecord::filter());
+        $records = $records->filter(GedcomRecord::accessFilter());
 
         return $records;
     }

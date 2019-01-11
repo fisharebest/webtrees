@@ -120,7 +120,7 @@ class AutocompleteController extends AbstractBaseController
             ->select(['individuals.*'])
             ->get()
             ->map(Individual::rowMapper())
-            ->filter(GedcomRecord::filter());
+            ->filter(GedcomRecord::accessFilter());
 
         $families = DB::table('families')
             ->join('link', function (JoinClause $join): void {
@@ -136,7 +136,7 @@ class AutocompleteController extends AbstractBaseController
             ->select(['families.*'])
             ->get()
             ->map(Family::rowMapper())
-            ->filter(GedcomRecord::filter());
+            ->filter(GedcomRecord::accessFilter());
 
         $pages = [];
 
