@@ -72,7 +72,7 @@ class SearchService
             ->get()
             ->map(Family::rowMapper())
             ->filter(GedcomRecord::accessFilter())
-            ->filter(self::rawGedcomFilter($search));
+            ->filter($this->rawGedcomFilter($search));
     }
 
     /**
@@ -133,7 +133,7 @@ class SearchService
             ->get()
             ->map(Individual::rowMapper())
             ->filter(GedcomRecord::accessFilter())
-            ->filter(self::rawGedcomFilter($search));
+            ->filter($this->rawGedcomFilter($search));
     }
 
     /**
