@@ -20,7 +20,6 @@ namespace Fisharebest\Webtrees\Services;
 use Fisharebest\Localization\Locale\LocaleEnUs;
 use Fisharebest\Webtrees\TestCase;
 use Illuminate\Support\Collection;
-use Mockery;
 
 /**
  * Test harness for the class SearchService
@@ -39,34 +38,37 @@ class SearchServiceTest extends TestCase
         $search_service = new SearchService(new LocaleEnUs());
         $tree           = $this->importTree('demo.ged');
 
-        $result = $search_service->searchFamilies([$tree], ['foo']);
+        $result = $search_service->searchFamilies([$tree], ['windsor']);
         $this->assertInstanceOf(Collection::class, $result);
 
-        $result = $search_service->searchFamilyNames([$tree], ['foo']);
+        $result = $search_service->searchFamilyNames([$tree], ['windsor']);
         $this->assertInstanceOf(Collection::class, $result);
 
-        $result = $search_service->searchIndividuals([$tree], ['foo']);
+        $result = $search_service->searchIndividuals([$tree], ['windsor']);
         $this->assertInstanceOf(Collection::class, $result);
 
-        $result = $search_service->searchIndividualNames([$tree], ['foo']);
+        $result = $search_service->searchIndividualNames([$tree], ['windsor']);
         $this->assertInstanceOf(Collection::class, $result);
 
-        $result = $search_service->searchMedia([$tree], ['foo']);
+        $result = $search_service->searchMedia([$tree], ['windsor']);
         $this->assertInstanceOf(Collection::class, $result);
 
-        $result = $search_service->searchNotes([$tree], ['foo']);
+        $result = $search_service->searchNotes([$tree], ['windsor']);
         $this->assertInstanceOf(Collection::class, $result);
 
-        $result = $search_service->searchRepositories([$tree], ['foo']);
+        $result = $search_service->searchRepositories([$tree], ['windsor']);
         $this->assertInstanceOf(Collection::class, $result);
 
-        $result = $search_service->searchSourcesByName([$tree], ['foo']);
+        $result = $search_service->searchSources([$tree], ['windsor']);
         $this->assertInstanceOf(Collection::class, $result);
 
-        $result = $search_service->searchSubmitters([$tree], ['foo']);
+        $result = $search_service->searchSourcesByName([$tree], ['windsor']);
         $this->assertInstanceOf(Collection::class, $result);
 
-        $result = $search_service->searchPlaces($tree, 'foo');
+        $result = $search_service->searchSubmitters([$tree], ['windsor']);
+        $this->assertInstanceOf(Collection::class, $result);
+
+        $result = $search_service->searchPlaces($tree, 'England');
         $this->assertInstanceOf(Collection::class, $result);
     }
 }
