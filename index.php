@@ -185,7 +185,7 @@ try {
 
     // No tree specified/available?  Choose one.
     if ($tree === null && $request->getMethod() === Request::METHOD_GET) {
-        $tree = Tree::findByName(Site::getPreference('DEFAULT_GEDCOM')) ?? Tree::getAll()[0] ?? null;
+        $tree = Tree::findByName(Site::getPreference('DEFAULT_GEDCOM')) ?? array_values(Tree::getAll())[0] ?? null;
     }
 
     // Select a locale
