@@ -60,8 +60,7 @@ class Migration37 implements MigrationInterface
         });
 
         if (DB::schema()->hasColumn('media', 'm_filename')) {
-            $builder = new Builder(DB::connection());
-            $builder->from('media_file')->insertUsing([
+            (new Builder(DB::connection()))->from('media_file')->insertUsing([
                 'm_id',
                 'm_file',
                 'multimedia_file_refn',

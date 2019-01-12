@@ -41,6 +41,7 @@ use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Query\Builder;
 use League\Flysystem\Filesystem;
 use League\Flysystem\ZipArchive\ZipArchiveAdapter;
 use stdClass;
@@ -438,12 +439,12 @@ class AdminTreesController extends AbstractBaseController
             $zip_filesystem->writeStream($download_filename, $tmp_stream);
 
             if ($media) {
-                $rows = Database::prepare(
-                    "SELECT m_id, m_gedcom FROM `##media` WHERE m_file = :tree_id"
-                )->execute([
-                    'tree_id' => $tree->id(),
-                ])->fetchAll();
+                $rows = DB::table('media')
+                    ->where('m_file', '=', $tree->id())
+                    ->get();
+
                 $path = $tree->getPreference('MEDIA_DIRECTORY');
+
                 foreach ($rows as $row) {
                     $record = Media::getInstance($row->m_id, $tree, $row->m_gedcom);
                     if ($record->canShow()) {
@@ -675,111 +676,181 @@ class AdminTreesController extends AbstractBaseController
         $tree2 = Tree::findByName($tree2_name);
 
         if ($tree1 !== null && $tree2 !== null && $tree1 !== $tree2 && $this->countCommonXrefs($tree1, $tree2) === 0) {
-            Database::prepare(
-                "INSERT INTO `##individuals` (i_id, i_file, i_rin, i_sex, i_gedcom)" .
-                " SELECT i_id, ?, i_rin, i_sex, i_gedcom FROM `##individuals` AS individuals2 WHERE i_file = ?"
-            )->execute([
-                $tree2->id(),
-                $tree1->id(),
-            ]);
+            (new Builder(DB::connection()))->from('individuals')->insertUsing([
+                'i_file',
+                'i_id',
+                'i_rin',
+                'i_sex',
+                'i_gedcom',
+            ], function (Builder $query) use ($tree1, $tree2): void {
+                $query->select([
+                    DB::raw($tree2->id()),
+                    'i_id',
+                    'i_rin',
+                    'i_sex',
+                    'i_gedcom',
+                ])->from('individuals')
+                ->where('i_file', '=', $tree1->id());
+            });
 
-            Database::prepare(
-                "INSERT INTO `##families` (f_id, f_file, f_husb, f_wife, f_gedcom, f_numchil)" .
-                " SELECT f_id, ?, f_husb, f_wife, f_gedcom, f_numchil FROM `##families` AS families2 WHERE f_file = ?"
-            )->execute([
-                $tree2->id(),
-                $tree1->id(),
-            ]);
+            (new Builder(DB::connection()))->from('families')->insertUsing([
+                'f_file',
+                'f_id',
+                'f_husb',
+                'f_wife',
+                'f_gedcom',
+                'f_numchil',
+            ], function (Builder $query) use ($tree1, $tree2): void {
+                $query->select([
+                    DB::raw($tree2->id()),
+                    'f_id',
+                    'f_husb',
+                    'f_wife',
+                    'f_gedcom',
+                    'f_numchil',
+                ])->from('families')
+                ->where('f_file', '=', $tree1->id());
+            });
 
-            Database::prepare(
-                "INSERT INTO `##sources` (s_id, s_file, s_name, s_gedcom)" .
-                " SELECT s_id, ?, s_name, s_gedcom FROM `##sources` AS sources2 WHERE s_file = ?"
-            )->execute([
-                $tree2->id(),
-                $tree1->id(),
-            ]);
+            (new Builder(DB::connection()))->from('sources')->insertUsing([
+                's_file',
+                's_id',
+                's_name',
+                's_gedcom',
+            ], function (Builder $query) use ($tree1, $tree2): void {
+                $query->select([
+                    DB::raw($tree2->id()),
+                    's_id',
+                    's_name',
+                    's_gedcom',
+                ])->from('sources')
+                ->where('s_file', '=', $tree1->id());
+            });
 
-            Database::prepare(
-                "INSERT INTO `##media` (m_id, m_file, m_gedcom)" .
-                " SELECT m_id, ?, m_gedcom FROM `##media` AS media2 WHERE m_file = ?"
-            )->execute([
-                $tree2->id(),
-                $tree1->id(),
-            ]);
+            (new Builder(DB::connection()))->from('media')->insertUsing([
+                'm_file',
+                'm_id',
+                'm_gedcom',
+            ], function (Builder $query) use ($tree1, $tree2): void {
+                $query->select([
+                    DB::raw($tree2->id()),
+                    'm_id',
+                    'm_gedcom',
+                ])->from('media')
+                ->where('m_file', '=', $tree1->id());
+            });
 
-            Database::prepare(
-                "INSERT INTO `##media_file` (m_id, m_file, multimedia_file_refn, multimedia_format, source_media_type, descriptive_title)" .
-                " SELECT m_id, ?, multimedia_file_refn, multimedia_format, source_media_type, descriptive_title FROM `##media_file` AS media_file2 WHERE m_file = ?"
-            )->execute([
-                $tree2->id(),
-                $tree1->id(),
-            ]);
+            (new Builder(DB::connection()))->from('media_file')->insertUsing([
+                'm_file',
+                'm_id',
+                'multimedia_file_refn',
+                'multimedia_format',
+                'source_media_type',
+                'descriptive_title',
+            ], function (Builder $query) use ($tree1, $tree2): void {
+                $query->select([
+                    DB::raw($tree2->id()),
+                    'm_id',
+                    'multimedia_file_refn',
+                    'multimedia_format',
+                    'source_media_type',
+                    'descriptive_title',
+                ])->from('media_file')
+                ->where('m_file', '=', $tree1->id());
+            });
 
-            Database::prepare(
-                "INSERT INTO `##other` (o_id, o_file, o_type, o_gedcom)" .
-                " SELECT o_id, ?, o_type, o_gedcom FROM `##other` AS other2 WHERE o_file = ? AND o_type NOT IN ('HEAD', 'TRLR')"
-            )->execute([
-                $tree2->id(),
-                $tree1->id(),
-            ]);
+            (new Builder(DB::connection()))->from('other')->insertUsing([
+                'o_file',
+                'o_id',
+                'o_type',
+                'o_gedcom',
+            ], function (Builder $query) use ($tree1, $tree2): void {
+                $query->select([
+                    DB::raw($tree2->id()),
+                    'o_id',
+                    'o_type',
+                    'o_gedcom',
+                ])->from('other')
+                    ->whereNotIn('o_type', ['HEAD', 'TRLR'])
+                    ->where('o_file', '=', $tree1->id());
+            });
 
-            Database::prepare(
-                "INSERT INTO `##name` (n_file, n_id, n_num, n_type, n_sort, n_full, n_surname, n_surn, n_givn, n_soundex_givn_std, n_soundex_surn_std, n_soundex_givn_dm, n_soundex_surn_dm)" .
-                " SELECT ?, n_id, n_num, n_type, n_sort, n_full, n_surname, n_surn, n_givn, n_soundex_givn_std, n_soundex_surn_std, n_soundex_givn_dm, n_soundex_surn_dm FROM `##name` AS name2 WHERE n_file = ?"
-            )->execute([
-                $tree2->id(),
-                $tree1->id(),
-            ]);
+            (new Builder(DB::connection()))->from('name')->insertUsing([
+                'n_file',
+                'n_id',
+                'n_num',
+                'n_type',
+                'n_sort',
+                'n_full',
+                'n_surname',
+                'n_surn',
+                'n_givn',
+                'n_soundex_givn_std',
+                'n_soundex_surn_std',
+                'n_soundex_givn_dm',
+                'n_soundex_surn_dm',
+            ], function (Builder $query) use ($tree1, $tree2): void {
+                $query->select([
+                    DB::raw($tree2->id()),
+                    'n_id',
+                    'n_num',
+                    'n_type',
+                    'n_sort',
+                    'n_full',
+                    'n_surname',
+                    'n_surn',
+                    'n_givn',
+                    'n_soundex_givn_std',
+                    'n_soundex_surn_std',
+                    'n_soundex_givn_dm',
+                    'n_soundex_surn_dm',
+                ])->from('name')
+                    ->where('n_file', '=', $tree1->id());
+            });
 
-            Database::prepare(
-                "INSERT INTO `##placelinks` (pl_p_id, pl_gid, pl_file)" .
-                " SELECT pl_p_id, pl_gid, ? FROM `##placelinks` AS placelinks2 WHERE pl_file = ?"
-            )->execute([
-                $tree2->id(),
-                $tree1->id(),
-            ]);
+            // @TODO placelinks is harder than the others...
 
-            Database::prepare(
-                "INSERT INTO `##dates` (d_day, d_month, d_mon, d_year, d_julianday1, d_julianday2, d_fact, d_gid, d_file, d_type)" .
-                " SELECT d_day, d_month, d_mon, d_year, d_julianday1, d_julianday2, d_fact, d_gid, ?, d_type FROM `##dates` AS dates2 WHERE d_file = ?"
-            )->execute([
-                $tree2->id(),
-                $tree1->id(),
-            ]);
+            (new Builder(DB::connection()))->from('dates')->insertUsing([
+                'd_file',
+                'd_gid',
+                'd_day',
+                'd_month',
+                'd_mon',
+                'd_year',
+                'd_julianday1',
+                'd_julianday2',
+                'd_fact',
+                'd_type',
+            ], function (Builder $query) use ($tree1, $tree2): void {
+                $query->select([
+                    DB::raw($tree2->id()),
+                    'd_gid',
+                    'd_day',
+                    'd_month',
+                    'd_mon',
+                    'd_year',
+                    'd_julianday1',
+                    'd_julianday2',
+                    'd_fact',
+                    'd_type',
+                ])->from('dates')
+                    ->where('d_file', '=', $tree1->id());
+            });
 
-            Database::prepare(
-                "INSERT INTO `##default_resn` (gedcom_id, xref, tag_type, resn)" .
-                " SELECT ?, xref, tag_type, resn FROM `##default_resn` AS default_resn2 WHERE gedcom_id = ?"
-            )->execute([
-                $tree2->id(),
-                $tree1->id(),
-            ]);
-
-            Database::prepare(
-                "INSERT INTO `##link` (l_file, l_from, l_type, l_to)" .
-                " SELECT ?, l_from, l_type, l_to FROM `##link` AS link2 WHERE l_file = ?"
-            )->execute([
-                $tree2->id(),
-                $tree1->id(),
-            ]);
-
-            // This table may contain old (deleted) references, which could clash. IGNORE these.
-            Database::prepare(
-                "INSERT IGNORE INTO `##change` (change_time, status, gedcom_id, xref, old_gedcom, new_gedcom, user_id)" .
-                " SELECT change_time, status, ?, xref, old_gedcom, new_gedcom, user_id FROM `##change` AS change2 WHERE gedcom_id = ?"
-            )->execute([
-                $tree2->id(),
-                $tree1->id(),
-            ]);
-
-            // This table may contain old (deleted) references, which could clash. IGNORE these.
-            Database::prepare(
-                "INSERT IGNORE INTO `##hit_counter` (gedcom_id, page_name, page_parameter, page_count)" .
-                " SELECT ?, page_name, page_parameter, page_count FROM `##hit_counter` AS hit_counter2 WHERE gedcom_id = ? AND page_name <> 'index.php'"
-            )->execute([
-                $tree2->id(),
-                $tree1->id(),
-            ]);
+            (new Builder(DB::connection()))->from('link')->insertUsing([
+                'l_file',
+                'l_from',
+                'l_type',
+                'l_to',
+            ], function (Builder $query) use ($tree1, $tree2): void {
+                $query->select([
+                    DB::raw($tree2->id()),
+                    'l_from',
+                    'l_type',
+                    'l_to',
+                ])->from('link')
+                    ->where('l_file', '=', $tree1->id());
+            });
 
             FlashMessages::addMessage(I18N::translate('The family trees have been merged successfully.'), 'success');
 
