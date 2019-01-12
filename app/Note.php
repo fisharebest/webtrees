@@ -39,7 +39,7 @@ class Note extends GedcomRecord
     public static function rowMapper(): Closure
     {
         return function (stdClass $row): Note {
-            return Note::getInstance($row->o_id, Tree::findById($row->o_file), $row->o_gedcom);
+            return Note::getInstance($row->o_id, Tree::findById((int) $row->o_file), $row->o_gedcom);
         };
     }
 

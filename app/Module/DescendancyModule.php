@@ -60,7 +60,7 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
 
         if (strlen($search) >= 2) {
             $html = $search_service
-                ->searchIndividualsByName($tree, $search)
+                ->searchIndividualNames([$tree], [$search])
                 ->map(function (Individual $individual): string {
                     return $this->getPersonLi($individual);
                 })

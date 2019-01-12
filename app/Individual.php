@@ -49,7 +49,7 @@ class Individual extends GedcomRecord
     public static function rowMapper(): Closure
     {
         return function (stdClass $row): Individual {
-            $individual = Individual::getInstance($row->i_id, Tree::findById($row->i_file), $row->i_gedcom);
+            $individual = Individual::getInstance($row->i_id, Tree::findById((int) $row->i_file), $row->i_gedcom);
 
             if ($row->n_num ?? null) {
                 $individual->setPrimaryName($row->n_num);

@@ -70,7 +70,7 @@ class Family extends GedcomRecord
     public static function rowMapper(): Closure
     {
         return function (stdClass $row): Family {
-            return Family::getInstance($row->f_id, Tree::findById($row->f_file), $row->f_gedcom);
+            return Family::getInstance($row->f_id, Tree::findById((int) $row->f_file), $row->f_gedcom);
         };
     }
 

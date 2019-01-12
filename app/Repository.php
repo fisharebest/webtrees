@@ -38,7 +38,7 @@ class Repository extends GedcomRecord
     public static function rowMapper(): Closure
     {
         return function (stdClass $row): Repository {
-            return Repository::getInstance($row->o_id, Tree::findById($row->o_file), $row->o_gedcom);
+            return Repository::getInstance($row->o_id, Tree::findById((int) $row->o_file), $row->o_gedcom);
         };
     }
 

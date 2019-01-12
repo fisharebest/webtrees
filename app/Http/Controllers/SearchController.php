@@ -19,19 +19,17 @@ namespace Fisharebest\Webtrees\Http\Controllers;
 
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Date;
-use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
-use Fisharebest\Webtrees\Note;
-use Fisharebest\Webtrees\Repository;
+use Fisharebest\Webtrees\Services\SearchService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Soundex;
-use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
+use Illuminate\Support\Collection;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -128,6 +126,19 @@ class SearchController extends AbstractBaseController
         '_MILI',
     ];
 
+    /** @var SearchService */
+    private $search_service;
+
+    /**
+     * SearchController constructor.
+     *
+     * @param SearchService $search_service
+     */
+    public function __construct(SearchService $search_service)
+    {
+        $this->search_service = $search_service;
+    }
+
     /**
      * The "omni-search" box in the header.
      *
@@ -154,8 +165,8 @@ class SearchController extends AbstractBaseController
     /**
      * The standard search.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param Request       $request
+     * @param Tree          $tree
      *
      * @return Response
      */
@@ -195,58 +206,55 @@ class SearchController extends AbstractBaseController
             $search_trees = [$tree];
         }
 
-        // Force to be zero-indexed.
-        $search_trees = array_values($search_trees);
-
         // Do the search
         if ($search_individuals && !empty($search_terms)) {
-            $individuals = $this->searchIndividuals($search_terms, $search_trees);
+            $individuals = $this->search_service->searchIndividuals($search_trees, $search_terms);
         } else {
-            $individuals = [];
+            $individuals = new Collection();
         }
 
         if ($search_families && !empty($search_terms)) {
-            $families = array_unique(array_merge(
-                $this->searchFamilies($search_terms, $search_trees),
-                $this->searchFamilyNames($search_terms, $search_trees)
-            ));
+            $tmp1 = $this->search_service->searchFamilies($search_trees, $search_terms);
+            $tmp2 = $this->search_service->searchFamilyNames($search_trees, $search_terms);
+
+            $families = $tmp1->merge($tmp2)->unique();
         } else {
-            $families = [];
+            $families = new Collection();
         }
 
         if ($search_repositories && !empty($search_terms)) {
-            $repositories = $this->searchRepositories($search_terms, $search_trees);
+            $repositories = $this->search_service->searchRepositories($search_trees, $search_terms);
         } else {
-            $repositories = [];
+            $repositories = new Collection();
         }
 
         if ($search_sources && !empty($search_terms)) {
-            $sources = $this->searchSources($search_terms, $search_trees);
+            $sources = $this->search_service->searchSources($search_trees, $search_terms);
         } else {
-            $sources = [];
+            $sources = new Collection();
         }
 
         if ($search_notes && !empty($search_terms)) {
-            $notes = $this->searchNotes($search_terms, $search_trees);
+            $notes = $this->search_service->searchNotes($search_trees, $search_terms);
         } else {
-            $notes = [];
+            $notes = new Collection();
         }
 
         // If only 1 item is returned, automatically forward to that item
-        if (count($individuals) === 1 && empty($families) && empty($sources) && empty($notes)) {
-            return new RedirectResponse($individuals[0]->url());
+        if ($individuals->count() === 1 && $families->isEmpty() && $sources->isEmpty() && $notes->isEmpty()) {
+            return new RedirectResponse($individuals->first()->url());
         }
 
-        if (empty($individuals) && count($families) === 1 && empty($sources) && empty($notes)) {
-            return new RedirectResponse($families[0]->url());
+        if ($individuals->isEmpty() && $families->count() === 1 && $sources->isEmpty() && $notes->isEmpty()) {
+            return new RedirectResponse($families->first()->url());
         }
 
-        if (empty($individuals) && empty($families) && count($sources) === 1 && empty($notes)) {
-            return new RedirectResponse($sources[0]->url());
+        if (empty($individuals) && $families->isEmpty() && $sources->count() === 1 && $notes->isEmpty()) {
+            return new RedirectResponse($sources->first()->url());
         }
 
-        if (empty($individuals) && empty($families) && empty($sources) && count($notes) === 1) {
-            return new RedirectResponse($notes[0]->url());
+        if (empty($individuals) && $families->isEmpty() && $sources->isEmpty() && $notes->count() === 1) {
+            return new RedirectResponse($notes->first()->url());
         }
 
         $title = I18N::translate('General search');
@@ -354,8 +362,8 @@ class SearchController extends AbstractBaseController
     /**
      * Search and replace.
      *
-     * @param Request $request
-     * @param Tree    $tree
+     * @param Request       $request
+     * @param Tree          $tree
      *
      * @return RedirectResponse
      */
@@ -367,23 +375,23 @@ class SearchController extends AbstractBaseController
 
         switch ($context) {
             case 'all':
-                $records = $this->searchIndividuals([$search], [$tree]);
+                $records = $this->search_service->searchIndividuals([$tree], [$search])->all();
                 $count   = $this->replaceRecords($records, $search, $replace);
                 FlashMessages::addMessage(I18N::plural('%s individual has been updated.', '%s individuals have been updated.', $count, I18N::number($count)));
 
-                $records = $this->searchFamilies([$search], [$tree]);
+                $records = $this->search_service->searchFamilies([$tree], [$search])->all();
                 $count   = $this->replaceRecords($records, $search, $replace);
                 FlashMessages::addMessage(I18N::plural('%s family has been updated.', '%s families have been updated.', $count, I18N::number($count)));
 
-                $records = $this->searchRepositories([$search], [$tree]);
+                $records = $this->search_service->searchRepositories([$tree], [$search]);
                 $count   = $this->replaceRecords($records, $search, $replace);
                 FlashMessages::addMessage(I18N::plural('%s repository has been updated.', '%s repositories have been updated.', $count, I18N::number($count)));
 
-                $records = $this->searchSources([$search], [$tree]);
+                $records = $this->search_service->searchSources([$tree], [$search]);
                 $count   = $this->replaceRecords($records, $search, $replace);
                 FlashMessages::addMessage(I18N::plural('%s source has been updated.', '%s sources have been updated.', $count, I18N::number($count)));
 
-                $records = $this->searchNotes([$search], [$tree]);
+                $records = $this->search_service->searchNotes([$tree], [$search]);
                 $count   = $this->replaceRecords($records, $search, $replace);
                 FlashMessages::addMessage(I18N::plural('%s note has been updated.', '%s notes have been updated.', $count, I18N::number($count)));
                 break;
@@ -401,17 +409,17 @@ class SearchController extends AbstractBaseController
                     '_AKA',
                 ], $adv_name_tags));
 
-                $records = $this->searchIndividuals([$search], [$tree]);
+                $records = $this->search_service->searchIndividuals([$tree], [$search])->all();
                 $count   = $this->replaceIndividualNames($records, $search, $replace, $name_tags);
                 FlashMessages::addMessage(I18N::plural('%s individual has been updated.', '%s individuals have been updated.', $count, I18N::number($count)));
                 break;
 
             case 'place':
-                $records = $this->searchIndividuals([$search], [$tree]);
+                $records = $this->search_service->searchIndividuals([$tree], [$search])->all();
                 $count   = $this->replacePlaces($records, $search, $replace);
                 FlashMessages::addMessage(I18N::plural('%s individual has been updated.', '%s individuals have been updated.', $count, I18N::number($count)));
 
-                $records = $this->searchFamilies([$search], [$tree]);
+                $records = $this->search_service->searchFamilies([$tree], [$search])->all();
                 $count   = $this->replacePlaces($records, $search, $replace);
                 FlashMessages::addMessage(I18N::plural('%s family has been updated.', '%s families have been updated.', $count, I18N::number($count)));
                 break;
@@ -623,169 +631,6 @@ class SearchController extends AbstractBaseController
         }
 
         return $search_terms;
-    }
-
-    /**
-     * @param string[] $search_terms
-     * @param Tree[]   $search_trees
-     *
-     * @return Family[]
-     */
-    private function searchFamilies(array $search_terms, array $search_trees): array
-    {
-        // Convert the query into a regular expression
-        $queryregex = [];
-
-        $sql  = "SELECT f_id AS xref, f_file AS gedcom_id, f_gedcom AS gedcom FROM `##families` WHERE 1";
-        $args = [];
-
-        foreach ($search_terms as $n => $q) {
-            $queryregex[]          = preg_quote(I18N::strtoupper($q), '/');
-            $sql .= " AND f_gedcom COLLATE :collate_" . $n . " LIKE CONCAT('%', :query_" . $n . ", '%')";
-            $args['collate_' . $n] = I18N::collation();
-            $args['query_' . $n]   = Database::escapeLike($q);
-        }
-
-        $sql .= " AND f_file IN (";
-        foreach ($search_trees as $n => $tree) {
-            $sql                   .= $n ? ', ' : '';
-            $sql                   .= ':tree_id_' . $n;
-            $args['tree_id_' . $n] = $tree->id();
-        }
-        $sql .= ")";
-
-        $list = [];
-        $rows = Database::prepare($sql)->execute($args)->fetchAll();
-        foreach ($rows as $row) {
-            // SQL may have matched on private data or gedcom tags, so check again against privatized data.
-            $record = Family::getInstance($row->xref, Tree::findById((int) $row->gedcom_id), $row->gedcom);
-            // Ignore non-genealogy data
-            $gedrec = preg_replace('/\n\d (_UID|_WT_USER|FILE|FORM|TYPE|CHAN|RESN) .*/', '', $record->gedcom());
-            // Ignore links and tags
-            $gedrec = preg_replace('/\n\d ' . Gedcom::REGEX_TAG . '( @' . Gedcom::REGEX_XREF . '@)?/', '', $gedrec);
-            // Ignore tags
-            $gedrec = preg_replace('/\n\d ' . Gedcom::REGEX_TAG . ' ?/', '', $gedrec);
-            // Re-apply the filtering
-            $gedrec = I18N::strtoupper($gedrec);
-            foreach ($queryregex as $regex) {
-                if (!preg_match('/' . $regex . '/', $gedrec)) {
-                    continue 2;
-                }
-            }
-            $list[] = $record;
-        }
-        $list = array_filter($list, function (Family $x): bool {
-            return $x->canShowName();
-        });
-
-        return $list;
-    }
-
-    /**
-     * @param string[] $search_terms
-     * @param Tree[]   $search_trees
-     *
-     * @return Family[]
-     */
-    private function searchFamilyNames(array $search_terms, array $search_trees): array
-    {
-        $sql =
-            "SELECT DISTINCT f_id AS xref, f_file AS gedcom_id, f_gedcom AS gedcom" .
-            " FROM `##families`" .
-            " LEFT JOIN `##name` husb ON f_husb = husb.n_id AND f_file = husb.n_file" .
-            " LEFT JOIN `##name` wife ON f_wife = wife.n_id AND f_file = wife.n_file" .
-            " WHERE 1";
-        $args = [];
-
-        foreach ($search_terms as $n => $q) {
-            $sql .= " AND (husb.n_full COLLATE :husb_collate_" . $n . " LIKE CONCAT('%', :husb_query_" . $n . ", '%') OR wife.n_full COLLATE :wife_collate_" . $n . " LIKE CONCAT('%', :wife_query_" . $n . ", '%'))";
-            $args['husb_collate_' . $n] = I18N::collation();
-            $args['husb_query_' . $n]   = Database::escapeLike($q);
-            $args['wife_collate_' . $n] = I18N::collation();
-            $args['wife_query_' . $n]   = Database::escapeLike($q);
-        }
-
-        $sql .= " AND f_file IN (";
-
-        foreach ($search_trees as $n => $tree) {
-            $sql                   .= $n ? ", " : "";
-            $sql                   .= ":tree_id_" . $n;
-            $args['tree_id_' . $n] = $tree->id();
-        }
-        $sql .= ")";
-
-        $list = [];
-        $rows = Database::prepare($sql)->execute($args)->fetchAll();
-        foreach ($rows as $row) {
-            $list[] = Family::getInstance($row->xref, Tree::findById((int) $row->gedcom_id), $row->gedcom);
-        }
-
-        $list = array_filter($list, function (Family $x) use ($search_terms): bool {
-            $name = I18N::strtolower(strip_tags($x->getFullName()));
-            foreach ($search_terms as $q) {
-                if (stripos($name, I18N::strtolower($q)) === false) {
-                    return false;
-                }
-            }
-
-            return true;
-        });
-
-        return $list;
-    }
-
-    /**
-     * @param string[] $search_terms
-     * @param Tree[]   $search_trees
-     *
-     * @return Individual[]
-     */
-    private function searchIndividuals(array $search_terms, array $search_trees): array
-    {
-        // Convert the query into a regular expression
-        $queryregex = [];
-
-        $sql  = "SELECT i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom FROM `##individuals` WHERE 1";
-        $args = [];
-
-        foreach ($search_terms as $n => $q) {
-            $queryregex[]          = preg_quote(I18N::strtoupper($q), '/');
-            $sql .= " AND i_gedcom COLLATE :collate_" . $n . " LIKE CONCAT('%', :query_" . $n . ", '%')";
-            $args['collate_' . $n] = I18N::collation();
-            $args['query_' . $n]   = Database::escapeLike($q);
-        }
-
-        $sql .= " AND i_file IN (";
-        foreach ($search_trees as $n => $tree) {
-            $sql                   .= $n ? ", " : "";
-            $sql                   .= ":tree_id_" . $n;
-            $args['tree_id_' . $n] = $tree->id();
-        }
-        $sql .= ")";
-
-        $list = [];
-        $rows = Database::prepare($sql)->execute($args)->fetchAll();
-        foreach ($rows as $row) {
-            // SQL may have matched on private data or gedcom tags, so check again against privatized data.
-            $record = Individual::getInstance($row->xref, Tree::findById((int) $row->gedcom_id), $row->gedcom);
-            // Ignore non-genealogy data
-            $gedrec = preg_replace('/\n\d (_UID|_WT_USER|FILE|FORM|TYPE|CHAN|RESN) .*/', '', $record->gedcom());
-            // Ignore links and tags
-            $gedrec = preg_replace('/\n\d ' . Gedcom::REGEX_TAG . '( @' . Gedcom::REGEX_XREF . '@)?/', '', $gedrec);
-            // Re-apply the filtering
-            $gedrec = I18N::strtoupper($gedrec);
-            foreach ($queryregex as $regex) {
-                if (!preg_match('/' . $regex . '/', $gedrec)) {
-                    continue 2;
-                }
-            }
-            $list[] = $record;
-        }
-        $list = array_filter($list, function (Individual $x): bool {
-            return $x->canShowName();
-        });
-
-        return $list;
     }
 
     /**
@@ -1289,174 +1134,6 @@ class SearchController extends AbstractBaseController
         }
 
         $list = array_filter($list, function (Individual $x): bool {
-            return $x->canShowName();
-        });
-
-        return $list;
-    }
-
-    /**
-     * @param string[] $search_terms
-     * @param Tree[]   $search_trees
-     *
-     * @return Note[]
-     */
-    private function searchNotes(array $search_terms, array $search_trees): array
-    {
-        // Convert the query into a regular expression
-        $queryregex = [];
-
-        $sql  = "SELECT o_id AS xref, o_file AS gedcom_id, o_gedcom AS gedcom FROM `##other` WHERE o_type = 'NOTE'";
-        $args = [];
-
-        foreach ($search_terms as $n => $q) {
-            $queryregex[]          = preg_quote(I18N::strtoupper($q), '/');
-            $sql .= " AND o_gedcom COLLATE :collate_" . $n . " LIKE CONCAT('%', :query_" . $n . ", '%')";
-            $args['collate_' . $n] = I18N::collation();
-            $args['query_' . $n]   = Database::escapeLike($q);
-        }
-
-        $sql .= " AND o_file IN (";
-        foreach ($search_trees as $n => $tree) {
-            $sql                   .= $n ? ", " : "";
-            $sql                   .= ":tree_id_" . $n;
-            $args['tree_id_' . $n] = $tree->id();
-        }
-        $sql .= ")";
-
-        $list = [];
-        $rows = Database::prepare($sql)->execute($args)->fetchAll();
-        foreach ($rows as $row) {
-            // SQL may have matched on private data or gedcom tags, so check again against privatized data.
-            $record = Note::getInstance($row->xref, Tree::findById((int) $row->gedcom_id), $row->gedcom);
-            // Ignore non-genealogy data
-            $gedrec = preg_replace('/\n\d (_UID|_WT_USER|FILE|FORM|TYPE|CHAN|RESN) .*/', '', $record->gedcom());
-            // Ignore links and tags
-            $gedrec = preg_replace('/\n\d ' . Gedcom::REGEX_TAG . '( @' . Gedcom::REGEX_XREF . '@)?/', '', $gedrec);
-            // Ignore tags
-            $gedrec = preg_replace('/\n\d ' . Gedcom::REGEX_TAG . ' ?/', '', $gedrec);
-            // Re-apply the filtering
-            $gedrec = I18N::strtoupper($gedrec);
-            foreach ($queryregex as $regex) {
-                if (!preg_match('/' . $regex . '/', $gedrec)) {
-                    continue 2;
-                }
-            }
-            $list[] = $record;
-        }
-        $list = array_filter($list, function (Note $x): bool {
-            return $x->canShowName();
-        });
-
-        return $list;
-    }
-
-    /**
-     * @param string[] $search_terms
-     * @param Tree[]   $search_trees
-     *
-     * @return Repository[]
-     */
-    private function searchRepositories(array $search_terms, array $search_trees): array
-    {
-        // Convert the query into a regular expression
-        $queryregex = [];
-
-        $sql  = "SELECT o_id AS xref, o_file AS gedcom_id, o_gedcom AS gedcom FROM `##other` WHERE o_type = 'REPO'";
-        $args = [];
-
-        foreach ($search_terms as $n => $q) {
-            $queryregex[]          = preg_quote(I18N::strtoupper($q), '/');
-            $sql .= " AND o_gedcom COLLATE :collate_" . $n . " LIKE CONCAT('%', :query_" . $n . ", '%')";
-            $args['collate_' . $n] = I18N::collation();
-            $args['query_' . $n]   = Database::escapeLike($q);
-        }
-
-        $sql .= " AND o_file IN (";
-        foreach ($search_trees as $n => $tree) {
-            $sql                   .= $n ? ", " : "";
-            $sql                   .= ":tree_id_" . $n;
-            $args['tree_id_' . $n] = $tree->id();
-        }
-        $sql .= ")";
-
-        $list = [];
-        $rows = Database::prepare($sql)->execute($args)->fetchAll();
-        foreach ($rows as $row) {
-            // SQL may have matched on private data or gedcom tags, so check again against privatized data.
-            $record = Repository::getInstance($row->xref, Tree::findById((int) $row->gedcom_id), $row->gedcom);
-            // Ignore non-genealogy data
-            $gedrec = preg_replace('/\n\d (_UID|_WT_USER|FILE|FORM|TYPE|CHAN|RESN) .*/', '', $record->gedcom());
-            // Ignore links and tags
-            $gedrec = preg_replace('/\n\d ' . Gedcom::REGEX_TAG . '( @' . Gedcom::REGEX_XREF . '@)?/', '', $gedrec);
-            // Ignore tags
-            $gedrec = preg_replace('/\n\d ' . Gedcom::REGEX_TAG . ' ?/', '', $gedrec);
-            // Re-apply the filtering
-            $gedrec = I18N::strtoupper($gedrec);
-            foreach ($queryregex as $regex) {
-                if (!preg_match('/' . $regex . '/', $gedrec)) {
-                    continue 2;
-                }
-            }
-            $list[] = $record;
-        }
-        $list = array_filter($list, function (Repository $x): bool {
-            return $x->canShowName();
-        });
-
-        return $list;
-    }
-
-    /**
-     * @param string[] $search_terms
-     * @param Tree[]   $search_trees
-     *
-     * @return Source[]
-     */
-    private function searchSources(array $search_terms, array $search_trees): array
-    {
-        // Convert the query into a regular expression
-        $queryregex = [];
-
-        $sql  = "SELECT s_id AS xref, s_file AS gedcom_id, s_gedcom AS gedcom FROM `##sources` WHERE 1";
-        $args = [];
-
-        foreach ($search_terms as $n => $q) {
-            $queryregex[]          = preg_quote(I18N::strtoupper($q), '/');
-            $sql .= " AND s_gedcom COLLATE :collate_" . $n . " LIKE CONCAT('%', :query_" . $n . ", '%')";
-            $args['collate_' . $n] = I18N::collation();
-            $args['query_' . $n]   = Database::escapeLike($q);
-        }
-
-        $sql .= " AND s_file IN (";
-        foreach ($search_trees as $n => $tree) {
-            $sql                   .= $n ? ", " : "";
-            $sql                   .= ":tree_id_" . $n;
-            $args['tree_id_' . $n] = $tree->id();
-        }
-        $sql .= ")";
-
-        $list = [];
-        $rows = Database::prepare($sql)->execute($args)->fetchAll();
-        foreach ($rows as $row) {
-            // SQL may have matched on private data or gedcom tags, so check again against privatized data.
-            $record = Source::getInstance($row->xref, Tree::findById((int) $row->gedcom_id), $row->gedcom);
-            // Ignore non-genealogy data
-            $gedrec = preg_replace('/\n\d (_UID|_WT_USER|FILE|FORM|TYPE|CHAN|RESN) .*/', '', $record->gedcom());
-            // Ignore links and tags
-            $gedrec = preg_replace('/\n\d ' . Gedcom::REGEX_TAG . '( @' . Gedcom::REGEX_XREF . '@)?/', '', $gedrec);
-            // Ignore tags
-            $gedrec = preg_replace('/\n\d ' . Gedcom::REGEX_TAG . ' ?/', '', $gedrec);
-            // Re-apply the filtering
-            $gedrec = I18N::strtoupper($gedrec);
-            foreach ($queryregex as $regex) {
-                if (!preg_match('/' . $regex . '/', $gedrec)) {
-                    continue 2;
-                }
-            }
-            $list[] = $record;
-        }
-        $list = array_filter($list, function (Source $x): bool {
             return $x->canShowName();
         });
 

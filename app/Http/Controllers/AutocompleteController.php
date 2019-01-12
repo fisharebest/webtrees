@@ -18,7 +18,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Controllers;
 
 use FilesystemIterator;
-use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Individual;
@@ -54,7 +53,6 @@ class AutocompleteController extends AbstractBaseController
      */
     public function __construct(SearchService $search_service)
     {
-        // Dependency injection
         $this->search_service = $search_service;
     }
 
@@ -227,7 +225,7 @@ class AutocompleteController extends AbstractBaseController
         $limit  = self::RESULTS_PER_PAGE + 1;
 
         $results = $this->search_service
-            ->searchFamiliesByName($tree, $query, $offset, $limit)
+            ->searchFamilyNames([$tree], [$query], $offset, $limit)
             ->map(function (Family $family): array {
                 return [
                     'id'    => $family->xref(),
@@ -273,7 +271,7 @@ class AutocompleteController extends AbstractBaseController
         $limit  = self::RESULTS_PER_PAGE + 1;
 
         $results = $this->search_service
-            ->searchIndividualsByName($tree, $query, $offset, $limit)
+            ->searchIndividualNames([$tree], [$query], $offset, $limit)
             ->map(function (Individual $individual): array {
                 return [
                     'id'    => $individual->xref(),
@@ -306,7 +304,7 @@ class AutocompleteController extends AbstractBaseController
         $limit  = self::RESULTS_PER_PAGE + 1;
 
         $results = $this->search_service
-            ->searchMedia($tree, $query, $offset, $limit)
+            ->searchMedia([$tree], [$query], $offset, $limit)
             ->map(function (Media $media): array {
                 return [
                     'id'    => $media->xref(),
@@ -339,7 +337,7 @@ class AutocompleteController extends AbstractBaseController
         $limit  = self::RESULTS_PER_PAGE + 1;
 
         $results = $this->search_service
-            ->searchNotes($tree, $query, $offset, $limit)
+            ->searchNotes([$tree], [$query], $offset, $limit)
             ->map(function (Note $note): array {
                 return [
                     'id'    => $note->xref(),
@@ -473,7 +471,7 @@ class AutocompleteController extends AbstractBaseController
         $limit  = self::RESULTS_PER_PAGE + 1;
 
         $results = $this->search_service
-            ->searchRepositories($tree, $query, $offset, $limit)
+            ->searchRepositories([$tree], [$query], $offset, $limit)
             ->map(function (Repository $repository): array {
                 return [
                     'id'    => $repository->xref(),
@@ -506,7 +504,7 @@ class AutocompleteController extends AbstractBaseController
         $limit  = self::RESULTS_PER_PAGE + 1;
 
         $results = $this->search_service
-            ->searchSourcesByName($tree, $query, $offset, $limit)
+            ->searchSourcesByName([$tree], [$query], $offset, $limit)
             ->map(function (Source $source): array {
                 return [
                     'id'    => $source->xref(),
@@ -539,7 +537,7 @@ class AutocompleteController extends AbstractBaseController
         $limit  = self::RESULTS_PER_PAGE + 1;
 
         $results = $this->search_service
-            ->searchSubmitters($tree, $query, $offset, $limit)
+            ->searchSubmitters([$tree], [$query], $offset, $limit)
             ->map(function (GedcomRecord $submitter): array {
                 return [
                     'id'    => $submitter->xref(),

@@ -84,6 +84,14 @@ class Database
             'charset'        => 'utf8',
             'collation'      => 'utf8_unicode_ci',
             'enigne'         => 'InnoDB',
+            'modes'          => [
+                'ANSI',
+                'ONLY_FULL_GROUP_BY',
+                'STRICT_TRANS_TABLES',
+                'NO_ZERO_IN_DATE',
+                'NO_ZERO_DATE',
+                'ERROR_FOR_DIVISION_BY_ZERO',
+            ],
         ]);
         $capsule->setAsGlobal();
 

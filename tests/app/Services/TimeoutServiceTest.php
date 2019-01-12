@@ -29,6 +29,10 @@ use Mockery;
  */
 function ini_get(...$args)
 {
+    if (TimeoutServiceTest::$mock_functions === null) {
+        return \ini_get(...$args);
+    }
+
     return TimeoutServiceTest::$mock_functions->ini_get(...$args);
 }
 
@@ -41,11 +45,15 @@ function ini_get(...$args)
  */
 function microtime(...$args)
 {
+    if (TimeoutServiceTest::$mock_functions === null) {
+        return \microtime(...$args);
+    }
+
     return TimeoutServiceTest::$mock_functions->microtime(...$args);
 }
 
 /**
- * Test harness for the class TimeoutServiceTest
+ * Test harness for the class TimeoutService
  */
 class TimeoutServiceTest extends TestCase
 {
@@ -62,6 +70,18 @@ class TimeoutServiceTest extends TestCase
         parent::setUp();
 
         self::$mock_functions = Mockery::mock();
+    }
+
+    /**
+     * Initialize the test script
+     *
+     * @return void
+     */
+    protected function tearDown()
+    {
+        parent::setUp();
+
+        self::$mock_functions = null;
     }
 
     /**
