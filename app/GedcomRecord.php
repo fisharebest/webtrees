@@ -102,7 +102,7 @@ class GedcomRecord
     public static function rowMapper(): Closure
     {
         return function (stdClass $row): GedcomRecord {
-            return GedcomRecord::getInstance($row->o_id, Tree::findById($row->o_file), $row->o_gedcom);
+            return GedcomRecord::getInstance($row->o_id, Tree::findById((int) $row->o_file), $row->o_gedcom);
         };
     }
 
