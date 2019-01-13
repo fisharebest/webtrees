@@ -17,7 +17,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Controllers;
 
-use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
@@ -32,6 +31,8 @@ use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Query\Builder;
+use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -488,22 +489,21 @@ class ListController extends AbstractBaseController
      */
     private function allFolders(Tree $tree): array
     {
-        $folders = Database::prepare(
-            "SELECT LEFT(multimedia_file_refn, CHAR_LENGTH(multimedia_file_refn) - CHAR_LENGTH(SUBSTRING_INDEX(multimedia_file_refn, '/', -1))) AS media_path" .
-            " FROM  `##media_file`" .
-            " WHERE m_file = ?" .
-            " AND   multimedia_file_refn NOT LIKE 'http://%'" .
-            " AND   multimedia_file_refn NOT LIKE 'https://%'" .
-            " GROUP BY 1" .
-            " ORDER BY 1"
-        )->execute([
-            $tree->id(),
-        ])->fetchOneColumn();
+        $folders = DB::table('media_file')
+            ->where('m_file', '=', $tree->id())
+            ->where('multimedia_file_refn', 'NOT LIKE', 'http:%')
+            ->where('multimedia_file_refn', 'NOT LIKE', 'https:%')
+            ->where('multimedia_file_refn', 'LIKE', '%/%')
+            ->pluck('multimedia_file_refn', 'multimedia_file_refn')
+            ->map(function (string $path): string {
+                return dirname($path);
+            })
+            ->unique()
+            ->sort()
+            ->all();
 
         // Ensure we have an empty (top level) folder.
-        if (!$folders || reset($folders) !== '') {
-            array_unshift($folders, '');
-        }
+        array_unshift($folders, '');
 
         return array_combine($folders, $folders);
     }
@@ -522,67 +522,55 @@ class ListController extends AbstractBaseController
      */
     private function allMedia(Tree $tree, string $folder, string $subfolders, string $sort, string $filter, string $form_type): array
     {
-        // All files in the folder, plus external files
-        $sql  =
-            "SELECT m_id AS xref, m_gedcom AS gedcom" .
-            " FROM `##media`" .
-            " JOIN `##media_file` USING (m_id, m_file)" .
-            " WHERE m_file = ?";
-        $args = [
-            $tree->id(),
-        ];
+        $query = DB::table('media')
+            ->join('media_file', function (JoinClause $join): void {
+                $join
+                    ->on('media_file.m_file', '=', 'media.m_file')
+                    ->on('media_file.m_id', '=', 'media.m_id');
+            })
+            ->where('media.m_file', '=', $tree->id())
+            ->distinct();
 
-        // Only show external files when we are looking at the root folder
-        if ($folder == '') {
-            $sql_external = " OR multimedia_file_refn LIKE 'http://%' OR multimedia_file_refn LIKE 'https://%'";
-        } else {
-            $sql_external = "";
-        }
-
-        // Include / exclude subfolders (but always include external)
-        switch ($subfolders) {
-            case 'include':
-                $sql    .= " AND (multimedia_file_refn LIKE CONCAT(?, '%') $sql_external)";
-                $args[] = Database::escapeLike($folder);
-                break;
-            case 'exclude':
-                $sql    .= " AND (multimedia_file_refn LIKE CONCAT(?, '%') AND multimedia_file_refn NOT LIKE CONCAT(?, '%/%') $sql_external)";
-                $args[] = Database::escapeLike($folder);
-                $args[] = Database::escapeLike($folder);
-                break;
-        }
+        // Match all external files, and whatever folders were specified
+        $query->where(function (Builder $query) use ($folder, $subfolders): void {
+            $query
+                ->where('multimedia_file_refn', 'LIKE', 'http:%')
+                ->orWhere('multimedia_file_refn', 'LIKE', 'https:%')
+                ->orWhere(function (Builder $query) use ($folder, $subfolders): void {
+                    $query->where('multimedia_file_refn', 'LIKE', $folder . '%');
+                    if ($subfolders === 'exclude') {
+                        $query->where('multimedia_file_refn', 'NOT LIKE', $folder . '/%/%');
+                    }
+                });
+        });
 
         // Apply search terms
-        if ($filter) {
-            $sql    .= " AND (SUBSTRING_INDEX(multimedia_file_refn, '/', -1) LIKE CONCAT('%', ?, '%') OR descriptive_title LIKE CONCAT('%', ?, '%'))";
-            $args[] = Database::escapeLike($filter);
-            $args[] = Database::escapeLike($filter);
+        if ($filter !== '') {
+            $query->where(function (Builder $query) use ($filter): void {
+                $query
+                    ->whereContains('multimedia_file_refn', $filter)
+                    ->whereContains('descriptive_title', $filter, 'or');
+            });
         }
 
         if ($form_type) {
-            $sql    .= " AND source_media_type = ?";
-            $args[] = $form_type;
+            $query->where('source_media_type', '=', $form_type);
         }
 
         switch ($sort) {
             case 'file':
-                $sql .= " ORDER BY multimedia_file_refn";
+                $query->orderBy('multimedia_file_refn');
                 break;
             case 'title':
-                $sql .= " ORDER BY descriptive_title";
+                $query->orderBy('descriptive_title');
                 break;
         }
 
-        $rows = Database::prepare($sql)->execute($args)->fetchAll();
-        $list = [];
-        foreach ($rows as $row) {
-            $media = Media::getInstance($row->xref, $tree, $row->gedcom);
-            if ($media->canShow()) {
-                $list[] = $media;
-            }
-        }
-
-        return $list;
+        return $query
+            ->get()
+            ->map(Media::rowMapper())
+            ->filter(GedcomRecord::accessFilter())
+            ->all();
     }
 
     /**
