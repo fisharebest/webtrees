@@ -27,6 +27,7 @@ use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Repository;
+use Fisharebest\Webtrees\Soundex;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
@@ -408,6 +409,24 @@ class SearchService
     }
 
     /**
+     * Apply soundex search filters to a SQL query column.
+     *
+     * @param Builder           $query
+     * @param Expression|string $field
+     * @param string            $soundex
+     */
+    private function wherePhonetic(Builder $query, $field, string $soundex): void
+    {
+        if ($soundex !== '') {
+            $query->where(function (Builder $query) use ($soundex, $field): void {
+                foreach (explode(':', $soundex) as $sdx) {
+                    $query->orWhere($field, 'LIKE', '%' . $sdx . '%');
+                }
+            });
+        }
+    }
+
+    /**
      * @param Builder $query
      * @param string  $tree_id_field
      * @param Tree[]  $trees
@@ -446,5 +465,79 @@ class SearchService
 
             return true;
         };
+    }
+
+    /**
+     * @param string $soundex
+     * @param string $lastname
+     * @param string $firstname
+     * @param string $place
+     * @param Tree[] $search_trees
+     *
+     * @return Collection|Individual[]
+     */
+    public function searchIndividualsPhonetic(string $soundex, string $lastname, string $firstname, string $place, array $search_trees)
+    {
+        switch ($soundex) {
+            default:
+            case 'Russell':
+                $givn_sdx   = Soundex::russell($firstname);
+                $surn_sdx   = Soundex::russell($lastname);
+                $plac_sdx   = Soundex::russell($place);
+                $givn_field = 'n_soundex_givn_std';
+                $surn_field = 'n_soundex_surn_std';
+                $plac_field = 'p_std_soundex';
+                break;
+            case 'DaitchM':
+                $givn_sdx   = Soundex::daitchMokotoff($firstname);
+                $surn_sdx   = Soundex::daitchMokotoff($lastname);
+                $plac_sdx   = Soundex::daitchMokotoff($place);
+                $givn_field = 'n_soundex_givn_dm';
+                $surn_field = 'n_soundex_surn_dm';
+                $plac_field = 'p_dm_soundex';
+                break;
+        }
+
+        // Nothing to search for? Return nothing.
+        if ($givn_sdx === '' && $surn_sdx === '' && $plac_sdx === '') {
+            return new Collection;
+        }
+
+        $query = DB::table('individuals')
+            ->select(['individuals.*'])
+            ->distinct();
+
+        $this->whereTrees($query, 'i_file', $search_trees);
+
+        if ($plac_sdx !== '') {
+            $query->join('placelinks', function (JoinClause $join): void {
+                $join
+                    ->on('placelinks.pl_file', '=', 'individuals.i_file')
+                    ->on('placelinks.pl_gid', '=', 'individuals.i_id');
+            });
+            $query->join('places', function (JoinClause $join): void {
+                $join
+                    ->on('places.p_file', '=', 'placelinks.pl_file')
+                    ->on('places.p_id', '=', 'placelinks.pl_p_id');
+            });
+
+            $this->wherePhonetic($query, $plac_field, $plac_sdx);
+        }
+
+        if ($givn_sdx !== '' || $surn_sdx !== '') {
+            $query->join('name', function (JoinClause $join): void {
+                $join
+                    ->on('name.n_file', '=', 'individuals.i_file')
+                    ->on('name.n_id', '=', 'individuals.i_id');
+            });
+
+            $this->wherePhonetic($query, $givn_field, $givn_sdx);
+            $this->wherePhonetic($query, $surn_field, $surn_sdx);
+        }
+
+        return $query
+            ->get()
+            ->map(Individual::rowMapper())
+            ->filter(GedcomRecord::accessFilter());
     }
 }
